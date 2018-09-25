@@ -9,12 +9,12 @@ ms.author: mattfarm
 ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.date: 06/15/2018
-ms.openlocfilehash: 7081c9e4f6e6deee196255f04180a8f2cc792876
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 5ed6fa9f514bae3ea651edba6702714e2680091f
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43122495"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46955945"
 ---
 # <a name="simple-enterprise-integration-architecture"></a>Egyszerű vállalati integráció architektúrája
 
@@ -162,7 +162,7 @@ Az API Management objektumokban, úgynevezett használatával kezeli a titkos ku
 
 ## <a name="diagnostics-and-monitoring"></a>Diagnosztika és figyelés
 
-Használhat [Azure Monitor](../monitoring-and-diagnostics/monitoring-overview-azure-monitor.md) mindkét üzemi figyeléséhez [az API Management](../api-management/api-management-howto-use-azure-monitor.md) és [Logic Apps](../logic-apps/logic-apps-monitor-your-logic-apps.md). Az Azure Monitor nyújt információkat a metrikák minden szolgáltatáshoz beállítva az alapján, és alapértelmezés szerint engedélyezve van.
+Használhat [Azure Monitor](../azure-monitor/overview.md) mindkét üzemi figyeléséhez [az API Management](../api-management/api-management-howto-use-azure-monitor.md) és [Logic Apps](../logic-apps/logic-apps-monitor-your-logic-apps.md). Az Azure Monitor nyújt információkat a metrikák minden szolgáltatáshoz beállítva az alapján, és alapértelmezés szerint engedélyezve van.
 
 Minden szolgáltatás van még ezeket a beállításokat:
 

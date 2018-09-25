@@ -1,5 +1,5 @@
 ---
-title: A Functions az Azure Cosmos DB-kötéseket 2.x (előzetes verzió)
+title: A Functions az Azure Cosmos DB-kötéseket 2.x
 description: Megtudhatja, hogyan használhatja az Azure Cosmos DB-eseményindítók és kötések az Azure Functions szolgáltatásban.
 services: functions
 documentationcenter: na
@@ -11,14 +11,14 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 11/21/2017
 ms.author: glenga
-ms.openlocfilehash: ea1403ed8afe6e84a3118d891e8c2d34b390d158
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: d39c27614fd4d534db36df1af61b2d419493c4d3
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44093430"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46953478"
 ---
-# <a name="azure-cosmos-db-bindings-for-azure-functions-2x-preview"></a>Az Azure Functions az Azure Cosmos DB-kötéseket 2.x (előzetes verzió)
+# <a name="azure-cosmos-db-bindings-for-azure-functions-2x"></a>Az Azure Functions az Azure Cosmos DB-kötéseket 2.x
 
 > [!div class="op_single_selector" title1="Select the version of the Azure Functions runtime you are using: "]
 > * [1. verzió – Általánosan elérhető](functions-bindings-cosmosdb.md)
@@ -27,7 +27,7 @@ ms.locfileid: "44093430"
 Ez a cikk azt ismerteti, hogyan használható a [Azure Cosmos DB](..\cosmos-db\serverless-computing-database.md) az Azure Functions kötések 2.x. Az Azure Functions támogatja a-trigger, bemeneti és kimeneti kötések az Azure Cosmos DB.
 
 > [!NOTE]
-> Ez a cikk [Azure Functions verzió 2.x](functions-versions.md), amely jelenleg előzetes verzióban.  Ilyen kötést ahhoz a függvények használatával kapcsolatos információ 1.x, lásd: [Azure Cosmos DB-kötések az Azure Functions 1.x](functions-bindings-cosmosdb.md).
+> Ez a cikk [Azure Functions verzió 2.x](functions-versions.md).  Ilyen kötést ahhoz a függvények használatával kapcsolatos információ 1.x, lásd: [Azure Cosmos DB-kötések az Azure Functions 1.x](functions-bindings-cosmosdb.md).
 >
 > Ennek a kötésnek a DocumentDB eredetileg neve. A Functions verzió 2.x, az eseményindító, a kötések és a csomag összes neve Cosmos DB.
 

@@ -17,12 +17,12 @@ ms.topic: conceptual
 ms.date: 08/30/2018
 ms.author: aliceku
 monikerRange: = azuresqldb-current || = azure-sqldw-latest || = sqlallproducts-allversions
-ms.openlocfilehash: b4ed1c8b5079ad0984879db6f84138bfdb579d49
-ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
+ms.openlocfilehash: d87747e60c375f844681ed6cfd40dba84f46a9b2
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45542599"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46963611"
 ---
 # <a name="transparent-data-encryption-with-bring-your-own-key-support-for-azure-sql-database-and-data-warehouse"></a>Transzparens adattitkosítás Bring Your Own Key-támogatással az Azure SQL Database és a Data warehouse-bA
 
@@ -57,17 +57,17 @@ TDE először a TDE-védőhöz, a Key Vault használatára van konfigurálva, am
 
 ### <a name="general-guidelines"></a>Általános irányelvek
 - Győződjön meg, hogy az Azure Key Vault és az Azure SQL Database gazdakiszolgálói lesznek ugyanabban a bérlőben.  Több-bérlős key vault és a kiszolgáló kapcsolati **használata nem támogatott**.
-- Döntse el, melyik előfizetések fogják használni a szükséges erőforrásokhoz – a kiszolgáló áthelyezése előfizetések között később egy új TDE BYOKs-beállítást igényel. Tudjon meg többet [erőforrások áthelyezése](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-move-resources)
-- TDE byok konfigurálásakor fontos figyelembe venni a terhelést a key vault helyezett ismétlődő újraindulás/kicsomagolása műveletek által. Például a logikai kiszolgálóhoz tartozó összes adatbázis használja ugyanazt a TDE-védőhöz, mivel az adott kiszolgáló feladatátvevő indítja, számos kulcsfontosságú műveletek a tárolókhoz is vannak olyan adatbázisok, a kiszolgálón. Tapasztalataink alapján és dokumentált [key vault szolgáltatáskorlátjai](https://docs.microsoft.com/en-us/azure/key-vault/key-vault-service-limits), javasoljuk, hogy legfeljebb 500 Standard társítása / általános célú vagy 200 prémium / üzletileg kritikus fontosságú adatbázisok egy Azure Key Vault egy előfizetés annak biztosítása érdekében folyamatosan magas rendelkezésre állás a TDE-védőhöz, a tároló elérésekor. 
-- Ajánlott: Megőrzi a TDE-védőhöz, a helyszínen.  Ehhez egy HSM-eszköz létrehozása a TDE-Védőhöz helyileg és a egy kulcsletét rendszer tárolja a TDE-Védőhöz helyi másolatot.  Ismerje meg, [hogyan viheti át a kulcsát a helyi HSM-ből az Azure Key Vaultba](https://docs.microsoft.com/en-us/azure/key-vault/key-vault-hsm-protected-keys).
+- Döntse el, melyik előfizetések fogják használni a szükséges erőforrásokhoz – a kiszolgáló áthelyezése előfizetések között később egy új TDE BYOKs-beállítást igényel. Tudjon meg többet [erőforrások áthelyezése](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-move-resources)
+- TDE byok konfigurálásakor fontos figyelembe venni a terhelést a key vault helyezett ismétlődő újraindulás/kicsomagolása műveletek által. Például a logikai kiszolgálóhoz tartozó összes adatbázis használja ugyanazt a TDE-védőhöz, mivel az adott kiszolgáló feladatátvevő indítja, számos kulcsfontosságú műveletek a tárolókhoz is vannak olyan adatbázisok, a kiszolgálón. Tapasztalataink alapján és dokumentált [key vault szolgáltatáskorlátjai](https://docs.microsoft.com/azure/key-vault/key-vault-service-limits), javasoljuk, hogy legfeljebb 500 Standard társítása / általános célú vagy 200 prémium / üzletileg kritikus fontosságú adatbázisok egy Azure Key Vault egy előfizetés annak biztosítása érdekében folyamatosan magas rendelkezésre állás a TDE-védőhöz, a tároló elérésekor. 
+- Ajánlott: Megőrzi a TDE-védőhöz, a helyszínen.  Ehhez egy HSM-eszköz létrehozása a TDE-Védőhöz helyileg és a egy kulcsletét rendszer tárolja a TDE-Védőhöz helyi másolatot.  Ismerje meg, [hogyan viheti át a kulcsát a helyi HSM-ből az Azure Key Vaultba](https://docs.microsoft.com/azure/key-vault/key-vault-hsm-protected-keys).
 
 
 ### <a name="guidelines-for-configuring-azure-key-vault"></a>Útmutató az Azure Key Vault beállítása
 
-- A key vault létrehozása [helyreállítható Törlés](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-soft-delete) adatok elvesztése esetén véletlen kulcs – vagy a key vault – törlés elleni védelme érdekében engedélyezve van.  Használjon [PowerShell-lel engedélyezze a "helyreállítható törlés" tulajdonságot](https://docs.microsoft.com/en-us/azure/key-vault/key-vault-soft-delete-powershell) (Ez a beállítás még nem áll az AKV portálról érhető el – azonban szükséges az SQL) a kulcstartóra vonatkozó:  
+- A key vault létrehozása [helyreállítható Törlés](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-soft-delete) adatok elvesztése esetén véletlen kulcs – vagy a key vault – törlés elleni védelme érdekében engedélyezve van.  Használjon [PowerShell-lel engedélyezze a "helyreállítható törlés" tulajdonságot](https://docs.microsoft.com/azure/key-vault/key-vault-soft-delete-powershell) (Ez a beállítás még nem áll az AKV portálról érhető el – azonban szükséges az SQL) a kulcstartóra vonatkozó:  
   - Helyreállíthatóan törölt erőforrásokat egy megadott ideig, 90 nappal a megmaradnak, kivéve, ha azokat helyre, vagy törölve.
   - A **helyreállítása** és **kiürítése** műveletek rendelkezik saját a kulcstartó hozzáférési házirendben tartozó engedélyeket. 
-- Állítsa be a key vaultban, hogy ki a kritikus fontosságú erőforrás törölheti, és megakadályozza a véletlen vagy jogosulatlan törlése egy erőforrás-zárolás.  [További információ az erőforrás-zárolások](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-lock-resources)
+- Állítsa be a key vaultban, hogy ki a kritikus fontosságú erőforrás törölheti, és megakadályozza a véletlen vagy jogosulatlan törlése egy erőforrás-zárolás.  [További információ az erőforrás-zárolások](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-lock-resources)
 
 - A logikai kiszolgáló hozzáférést a key vault használatával az Azure Active Directory (Azure AD) identitás.  A portál felhasználói felületének használata esetén az Azure AD identity automatikusan létrejön, és a kiszolgáló számára a kulcstartó-hozzáférési engedélyek.  TDE BYOK konfigurálása a PowerShell segítségével, az Azure AD-identitásnak kell létrehozni, és befejezési ellenőrizni kell. Lásd: [BYOK TDE konfigurálása](transparent-data-encryption-byok-azure-sql-configure.md) részletes útmutatásért PowerShell használatakor.
 
@@ -93,11 +93,11 @@ TDE először a TDE-védőhöz, a Key Vault használatára van konfigurálva, am
     
 - Kulcs lejárati dátummal – nélkül használja, és soha ne állítson be egy lejárati dátuma már használatban van egy kulcs: **után lejár, a kulcsot, a titkosított adatbázis elveszíti a hozzáférést a TDE-Védőhöz, és 24 órán belül a rendszer elveti**.
 - Győződjön meg arról, a kulcs engedélyezve van, és jogosult végrehajtásához *első*, *kulcs becsomagolása*, és *kulcs kicsomagolása* műveleteket.
-- Hozzon létre egy Azure Key Vault-kulcs biztonsági mentése előtt először az Azure Key Vaultban kulccsal. Tudjon meg többet a [Backup-AzureKeyVaultKey](https://docs.microsoft.com/en-us/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?view=azurermps-5.1.1) parancsot.
+- Hozzon létre egy Azure Key Vault-kulcs biztonsági mentése előtt először az Azure Key Vaultban kulccsal. Tudjon meg többet a [Backup-AzureKeyVaultKey](https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?view=azurermps-5.1.1) parancsot.
 - Hozzon létre egy új biztonsági másolatot, amikor végzett módosítások a kulcsot (például hozzáférés-vezérlési listák, adjon hozzá címkéket adhat hozzá, kulcs attribútumok hozzáadása).
 - **Korábbi verziók megtartása** a kulcs a kulcsok a key vaultban, így régebbi adatbázis biztonsági másolatok visszaállíthatók. Ha a TDE-Védőhöz módosul, a régi biztonsági másolatok, az adatbázis egy adatbázis **nem frissülnek a** a legújabb TDE-Védőhöz használatára.  Minden egyes biztonsági másolat a TDE-Védőhöz lett létrehozva a helyreállításkor szüksége van. Kulcsrotálás végrehajtható megadott utasítások [elforgatása a transzparens adatok titkosítási védelmet a PowerShell](transparent-data-encryption-byok-azure-sql-key-rotation.md).
 - Minden korábban használt kulcsok Azure Key Vault vegye vissza a szolgáltatás által kezelt kulcsokkal módosítása után.  Ez biztosítja az adatbázisok biztonsági mentése az Azure Key vaultban tárolt a TDE-protectors vissza tudja állítani.  TDE kulcsvédők az Azure Key Vault létrehozása szükséges fenn kell tartani, amíg a szolgáltatás által kezelt kulcsokkal létrehozott összes tárolt biztonsági másolat.  
-- Győződjön meg arról, ezek a kulcsok használatával helyreállítható biztonsági másolatait [Backup-AzureKeyVaultKey](https://docs.microsoft.com/en-us/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?view=azurermps-5.1.1).
+- Győződjön meg arról, ezek a kulcsok használatával helyreállítható biztonsági másolatait [Backup-AzureKeyVaultKey](https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?view=azurermps-5.1.1).
 - Egy esetleg feltört kulcsot egy biztonsági incidens anélkül, hogy az adatvesztést eltávolításához kövesse [egy esetleg feltört kulcs eltávolítására](transparent-data-encryption-byok-azure-sql-remove-tde-protector.md).
 
 
@@ -123,14 +123,14 @@ A következő szakaszban fog haladnak át a beállítási és konfigurációs l�
 
 ### <a name="azure-key-vault-configuration-steps"></a>Az Azure Key Vault konfigurációs lépések
 
-- Telepítés [PowerShell](https://docs.microsoft.com/en-us/powershell/azure/install-azurerm-ps?view=azurermps-5.6.0) 
-- Hozzon létre két Azure Key vault-Kulcstartók használatával két különböző régióban [PowerShell-lel engedélyezze a "helyreállítható törlés" tulajdonságot](https://docs.microsoft.com/en-us/azure/key-vault/key-vault-soft-delete-powershell) a a kulcstartók (Ez a beállítás még nem áll az AKV portálról érhető el – azonban szükséges az SQL).
-- Mind az Azure Key vault-Kulcstartók a két rendelkezésre ahhoz, hogy a biztonsági mentési és helyreállítási kulcsok működéséhez ugyanabban az Azure a földrajzi régióban kell elhelyezkednie.  Ha a Geo-Dr-beli SQL-követelményeinek, hajtsa végre a különböző helyeken található két fő tárolóra van szüksége a [BYOK folyamat](https://docs.microsoft.com/en-us/azure/key-vault/key-vault-hsm-protected-keys) , amely lehetővé teszi, hogy a kulcsok importálni egy helyszíni HSM-ből.
+- Telepítés [PowerShell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-5.6.0) 
+- Hozzon létre két Azure Key vault-Kulcstartók használatával két különböző régióban [PowerShell-lel engedélyezze a "helyreállítható törlés" tulajdonságot](https://docs.microsoft.com/azure/key-vault/key-vault-soft-delete-powershell) a a kulcstartók (Ez a beállítás még nem áll az AKV portálról érhető el – azonban szükséges az SQL).
+- Mind az Azure Key vault-Kulcstartók a két rendelkezésre ahhoz, hogy a biztonsági mentési és helyreállítási kulcsok működéséhez ugyanabban az Azure a földrajzi régióban kell elhelyezkednie.  Ha a Geo-Dr-beli SQL-követelményeinek, hajtsa végre a különböző helyeken található két fő tárolóra van szüksége a [BYOK folyamat](https://docs.microsoft.com/azure/key-vault/key-vault-hsm-protected-keys) , amely lehetővé teszi, hogy a kulcsok importálni egy helyszíni HSM-ből.
 - Hozzon létre egy új kulcsot az első kulcstárolóját:  
   - Az RSA/RSA-HSA 2048 bites kulcsot 
   - Nincs lejárati dátuma 
   - Kulcs engedélyezve van, és jogosult végrehajtani a get, wrap key és kulcsműveletek kicsomagolása 
-- Az elsődleges kulcs biztonsági mentése, és állítsa vissza a kulcsot a második key vaulthoz.  Lásd: [BackupAzureKeyVaultKey](https://docs.microsoft.com/en-us/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?view=azurermps-5.1.1) és [Restore-AzureKeyVaultKey](https://docs.microsoft.com/en-us/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-5.5.0). 
+- Az elsődleges kulcs biztonsági mentése, és állítsa vissza a kulcsot a második key vaulthoz.  Lásd: [BackupAzureKeyVaultKey](https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?view=azurermps-5.1.1) és [Restore-AzureKeyVaultKey](https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-5.5.0). 
 
 ### <a name="azure-sql-database-configuration-steps"></a>Az Azure SQL Database konfigurációs lépések
 
@@ -141,9 +141,9 @@ Egy új üzembe helyezésének lépései:
 - Válassza ki a logikai kiszolgáló TDE ablaktáblán, és minden egyes logikai SQL-kiszolgáló:  
    - Válassza ki az AKV ugyanabban a régióban 
    - Válassza ki a kulcsot használja, mint a TDE-Védőhöz – minden kiszolgálón a helyi példány a TDE-Védőhöz fogja használni. 
-   - Ezzel a portálon létrehoz egy [AppID](https://docs.microsoft.com/en-us/azure/active-directory/managed-service-identity/overview) a logikai SQL-kiszolgálón, amelyet a logikai SQL Server engedélyeket az eléréséhez a key vault – ne törölje ezt az identitást. Engedélyeinek eltávolításával az Azure Key Vaultban inkább a logikai SQL-kiszolgálón, amely a logikai SQL Server-engedélyeket a key vault eléréséhez használható visszavonhatja a hozzáférést.
+   - Ezzel a portálon létrehoz egy [AppID](https://docs.microsoft.com/azure/active-directory/managed-service-identity/overview) a logikai SQL-kiszolgálón, amelyet a logikai SQL Server engedélyeket az eléréséhez a key vault – ne törölje ezt az identitást. Engedélyeinek eltávolításával az Azure Key Vaultban inkább a logikai SQL-kiszolgálón, amely a logikai SQL Server-engedélyeket a key vault eléréséhez használható visszavonhatja a hozzáférést.
 - Az elsődleges adatbázis létrehozásához. 
-- Kövesse a [aktív georeplikáció útmutatást](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-geo-replication-overview) szeretné próbálni a folyamatot, ebben a lépésben létrehozza a másodlagos adatbázis.
+- Kövesse a [aktív georeplikáció útmutatást](https://docs.microsoft.com/azure/sql-database/sql-database-geo-replication-overview) szeretné próbálni a folyamatot, ebben a lépésben létrehozza a másodlagos adatbázis.
 
 ![Feladatátvételi csoportok és a geo-Dr-beli](./media/transparent-data-encryption-byok-azure-sql/Geo_DR_Config.PNG)
 

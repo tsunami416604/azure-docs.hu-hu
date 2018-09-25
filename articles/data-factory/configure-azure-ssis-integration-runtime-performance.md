@@ -1,6 +1,6 @@
 ---
-title: Konfigurálja az Azure-SSIS-integrációs futásidejű teljesítményét |} Microsoft Docs
-description: Az Azure-SSIS integrációs futásidejű tartozó nagyteljesítményű tulajdonságainak konfigurálása
+title: Az Azure-SSIS integrációs modul teljesítményének konfigurálása |} A Microsoft Docs
+description: Ismerje meg, hogyan konfigurálhatja a tulajdonságait, a nagy teljesítményű Azure-SSIS integrációs modul
 services: data-factory
 ms.date: 01/10/2018
 ms.topic: conceptual
@@ -10,23 +10,23 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: ac53e1a8a7c6c1b2c2959b92e14c7911065aed6d
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 2592c81947f48c10891fe920647612d5c30af64f
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37052028"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46989081"
 ---
-# <a name="configure-the-azure-ssis-integration-runtime-for-high-performance"></a>Az Azure-SSIS integrációs futásidejű tartozó nagyteljesítményű konfigurálása
+# <a name="configure-the-azure-ssis-integration-runtime-for-high-performance"></a>A nagy teljesítményű, az Azure-SSIS integrációs modul konfigurálása
 
-Ez a cikk ismerteti az Azure-SSIS integrációs futásidejű (IR) tartozó nagyteljesítményű konfigurálása. Az Azure-SSIS infravörös lehetővé teszi, telepítéséhez és futtatásához az SQL Server Integration Services (SSIS) csomag az Azure-ban. Azure-SSIS-IR kapcsolatos további információkért lásd: [integrációs futásidejű](concepts-integration-runtime.md#azure-ssis-integration-runtime) cikk. További információ a központi telepítéséhez és futtatásához SSIS-csomagok Azure: [növekedési és shift a felhőbe az SQL Server Integration Services-munkaterhelések](/sql/integration-services/lift-shift/ssis-azure-lift-shift-ssis-packages-overview).
+Ez a cikk ismerteti, hogyan konfigurálhatja egy Azure-SSIS integrációs modul (IR) a magas teljesítmény. Az Azure-SSIS integrációs modul üzembe helyezése és az SQL Server Integration Services (SSIS)-csomagok futtatása az Azure-ban lehetővé teszi. Az Azure-SSIS integrációs modul kapcsolatos további információkért lásd: [integrációs modul](concepts-integration-runtime.md#azure-ssis-integration-runtime) cikk. További információ a központi telepítéséhez és futtatásához az SSIS-csomagok az Azure-ban: [átemeléses SQL Server integrációs szolgáltatások számítási feladatok felhőbe](/sql/integration-services/lift-shift/ssis-azure-lift-shift-ssis-packages-overview).
 
 > [!IMPORTANT]
-> Ez a cikk a teljesítményeredmények és a belső fejlesztésű tesztelése a SSIS-fejlesztési csapat által elvégzett megfigyelések tartalmazza. Az eredmény változhat. A saját tesztelés előtt véglegesítése a konfigurációs beállításokat, mind a költség, pedig a teljesítményt befolyásoló végrehajtásához.
+> Ez a cikk a teljesítmény és a belső fejlesztésű tesztelése az SSIS-fejlesztői csapat tagjai által végzett megfigyelések tartalmazza. Az eredmények eltérőek lehetnek. Ezt a saját tesztelési a konfigurációs beállítások, amelyek befolyásolják a költségek és a teljesítmény véglegesítése előtt.
 
 ## <a name="properties-to-configure"></a>Tulajdonságok konfigurálása
 
-A következő része egy konfigurációs parancsfájl jeleníti meg a tulajdonságokat, amelyeket konfigurálhat egy Azure-SSIS-integrációs futásidejű létrehozásakor. A teljes PowerShell-parancsfájlt és a leírás [Azure csomagok központi telepítése az SQL Server Integration Services](tutorial-deploy-ssis-packages-azure-powershell.md).
+A konfigurációs parancsfájlt a következő részét, amelyeket konfigurálhat egy Azure-SSIS integrációs modul létrehozásakor tulajdonságait mutatja. A teljes PowerShell-szkript és a leírás, lásd: [üzembe helyezése az SQL Server Integration Services-csomagok az Azure-bA](tutorial-deploy-ssis-packages-azure-powershell.md).
 
 ```powershell
 $SubscriptionName = "<Azure subscription name>"
@@ -51,77 +51,77 @@ $AzureSSISMaxParallelExecutionsPerNode = 2
 $SSISDBServerEndpoint = "<Azure SQL server name>.database.windows.net"
 $SSISDBServerAdminUserName = "<Azure SQL server - user name>"
 $SSISDBServerAdminPassword = "<Azure SQL server - user password>"
-# Remove the SSISDBPricingTier variable if you are using Azure SQL Managed Instance (Preview)
+# Remove the SSISDBPricingTier variable if you are using Azure SQL Database Managed Instance
 # This parameter applies only to Azure SQL Database. For the basic pricing tier, specify "Basic", not "B". For standard tiers, specify "S0", "S1", "S2", 'S3", etc.
 $SSISDBPricingTier = "<pricing tier of your Azure SQL server. Examples: Basic, S0, S1, S2, S3, etc.>"
 ```
 
 ## <a name="azuressislocation"></a>AzureSSISLocation
-**AzureSSISLocation** a integrációs futásidejű munkavégző csomópont helye. A munkavégző csomópont SSIS-katalógus adatbázis (SSISDB) Azure SQL-adatbázis állandó kapcsolatot tart fenn. Állítsa be a **AzureSSISLocation** ugyanarra a helyre, amelyen az SSISDB SQL adatbázis-kiszolgálóként, amely lehetővé teszi, hogy az integrációs futásidejű lehető leghatékonyabb módon működnek.
+**AzureSSISLocation** meg az integration runtime feldolgozó csomóponton. A munkavégző csomópont az SSIS-katalógusadatbázist (SSISDB) az Azure SQL-adatbázis állandó kapcsolatot tart fenn. Állítsa be a **AzureSSISLocation** ugyanarra a helyre, amelyen az SSISDB SQL adatbázis-kiszolgálóként, amely lehetővé teszi, hogy az integrációs modul működjön a lehető leghatékonyabb.
 
 ## <a name="azuressisnodesize"></a>AzureSSISNodeSize
-Adat-előállítót, beleértve az Azure-SSIS infravörös támogatja a következő beállításokat:
--   Standard\_A4\_v2
--   Standard\_A8\_v2
--   Standard\_D1\_v2
--   Standard\_D2\_v2
--   Standard\_D3\_v2
--   Standard\_D4\_v2.
+A Data Factory, többek között az Azure-SSIS integrációs modul támogatja a következő beállításokat:
+-   Standard szintű\_A4\_v2
+-   Standard szintű\_a8-as\_v2
+-   Standard szintű\_D1\_v2
+-   Standard szintű\_D2\_v2
+-   Standard szintű\_D3\_v2
+-   Standard szintű\_D4\_v2.
 
-A hivatalos belső fejlesztésű alá vonni a SSIS mérnöki csapat által, a D sorozat úgy tűnik, hogy megfelelőbbek SSIS-csomag végrehajtásra, mint az A-sorozatú.
+A munkaköröket külsős informatikusok belső tesztjei az SSIS-mérnöki csapata a D sorozat jelenik meg jobban működik, az SSIS-csomag végrehajtása, mint az A sorozatú.
 
--   A teljesítmény/ár arány a D sorozat értéke magasabb, mint az A-sorozatú.
--   Az átviteli sebesség a D sorozat nagyobb, mint az A-sorozatú ugyanazon az áron.
+-   A D sorozat a teljesítmény és ár arány, magasabb, mint az A sorozatú.
+-   A D-sorozat az átviteli sebesség nagyobb, mint az A sorozatú ugyanazon az áron.
 
-### <a name="configure-for-execution-speed"></a>A végrehajtási sebességű konfigurálása
-Ha nincs futtatásához csomagok számát, és azt szeretné, hogy a csomagok gyorsan futtatásához, olvassa el az alábbi táblázat a virtuális gép a forgatókönyvnek megfelelő típus.
+### <a name="configure-for-execution-speed"></a>A végrehajtási sebesség konfigurálása
+Ha nem kell futtatni a csomagok számát, és azt szeretné, hogy gyorsan futhassanak-csomagok, az információk segítségével az alábbi táblázat a forgatókönyvnek megfelelő virtuális gép típusának kiválasztása.
 
-Ezek az adatok egy egyetlen csomag végrehajtását egyetlen munkavégző csomóponton jelöli. A csomag 10 millió rekordot Utónév és a név utolsó oszlopok betölti az Azure Blob Storage, állít elő, a teljes oszlopa, és írja a rekordokat, amelyek rendelkeznek a teljes név hosszabb, mint az Azure Blob Storage 20 karakter.
+Ezeket az adatokat egy egyetlen csomag végrehajtása egy egyetlen munkavégző csomóponton jelöli. A csomag 10 millió rekordot az utónév és a legutóbbi nevet tartalmazó oszlopot tölt be az Azure Blob Storage, egy teljes neve oszlopot hoz létre, és írja a rekordokat, amelyek rendelkeznek a teljes fájlvisszaállítási név hosszabb 20 karakternél, az Azure Blob Storage.
 
-![SSIS-integrációs futásidejű csomag végrehajtási sebesség](media/configure-azure-ssis-integration-runtime-performance/ssisir-execution-speed.png)
+![SSIS integrációs modul csomag végrehajtási sebességét](media/configure-azure-ssis-integration-runtime-performance/ssisir-execution-speed.png)
 
-### <a name="configure-for-overall-throughput"></a>A teljes teljesítményt konfigurálása
+### <a name="configure-for-overall-throughput"></a>Teljes átviteli sebesség beállítása
 
-Ha sok csomagot kell futtatni, és Ön számára legfontosabb a teljes teljesítményt, olvassa el az alábbi táblázat a virtuális gép a forgatókönyvnek megfelelő típus.
+Ha, örömét fogja lelni csomagot kell futtatni, és az Ön számára legfontosabb általános, az információk segítségével az alábbi táblázat a forgatókönyvnek megfelelő virtuális gép típusának kiválasztása.
 
-![SSIS-integrációs futásidejű maximális teljes átviteli sebesség](media/configure-azure-ssis-integration-runtime-performance/ssisir-overall-throughput.png)
+![SSIS integrációs modul maximális teljes átviteli sebesség](media/configure-azure-ssis-integration-runtime-performance/ssisir-overall-throughput.png)
 
 ## <a name="azuressisnodenumber"></a>AzureSSISNodeNumber
 
-**AzureSSISNodeNumber** integrációs futásidejű méretezhetőségét módosíthatja. Az átviteli sebesség integrációs futásidejű azzal arányos, hogy a **AzureSSISNodeNumber**. Állítsa be a **AzureSSISNodeNumber** először kisebb értékre, az átviteli sebesség integrációs futásidejű figyelése, majd módosítsa a helyzetnek értékét. Konfigurálja újra a munkavégző csomópontok száma, lásd: [kezelése az Azure-SSIS-integrációs futásidejű](manage-azure-ssis-integration-runtime.md).
+**AzureSSISNodeNumber** Itt állíthatja be az integrációs modul méretezhetőségét. Az integrációs modul arányos a **AzureSSISNodeNumber**. Állítsa be a **AzureSSISNodeNumber** először egy kisebb értékre, az átviteli sebességet, az integrációs modul monitorozása, majd módosítsa az értékét a forgatókönyvhöz. Konfigurálja újra a munkavégző csomópontok száma, lásd: [egy Azure-SSIS integrációs modul kezelése](manage-azure-ssis-integration-runtime.md).
 
 ## <a name="azuressismaxparallelexecutionspernode"></a>AzureSSISMaxParallelExecutionsPerNode
 
-Ha már használ egy hatékony munkavégző csomópont csomagok futtatásához, növekvő **AzureSSISMaxParallelExecutionsPerNode** növelheti a teljes teljesítményt integrációs futásidejű. Standard D1 v2 típusú csomópontok 1-4 párhuzamos végrehajtások csomópontonként támogatottak. Bármilyen típusú csomópontok 1-8 párhuzamos végrehajtások csomópontonként esetén támogatottak.
-A megfelelő értéket, a csomag és a következő beállításokat, az ezen csomópontokhoz tartozó költsége alapján megbecsülheti. További információkért lásd: [általános célú virtuálisgép-méretek](../virtual-machines/windows/sizes-general.md).
+Hatékony munkavégző csomópont használatával már-csomagok futtatása, ha növekvő **AzureSSISMaxParallelExecutionsPerNode** előfordulhat, hogy általános növeléséhez, az integrációs modul. Standard D1 v2 csomópontok 1 – 4 párhuzamos végrehajtások száma csomópontonként támogatottak. A csomópontok minden más típusú 1 – 8 párhuzamos végrehajtások száma csomópontonként támogatottak.
+A megfelelő értéket a csomag és a következő konfigurációk a munkavégző csomópontok alapján meg tudja becsülni. További információkért lásd: [általános célú virtuális gépek méretei](../virtual-machines/windows/sizes-general.md).
 
 | Méret             | vCPU | Memória: GiB | Ideiglenes tárterület (SSD) GiB | Ideiglenes tárterület maximális teljesítménye: IOPS / Olvasási MBps / Írási MBps | Adatlemezek max. száma / teljesítménye: IOPS | Hálózati adapterek max. száma / várt hálózati teljesítmény (Mbps) |
 |------------------|------|-------------|------------------------|------------------------------------------------------------|-----------------------------------|------------------------------------------------|
-| Standard\_D1\_v2 | 1    | 3.5         | 50                     | 3000 / 46 / 23                                             | 2 / 2x500                         | 2 / 750                                        |
-| Standard\_D2\_v2 | 2    | 7           | 100                    | 6000 / 93 / 46                                             | 4 / 4x500                         | 2 / 1500                                       |
-| Standard\_D3\_v2 | 4    | 14          | 200                    | 12000 / 187 / 93                                           | 8 / 8x500                         | 4 / 3000                                       |
-| Standard\_D4\_v2 | 8    | 28          | 400                    | 24000 / 375 / 187                                          | 16 / 16x500                       | 8 / 6000                                       |
-| Standard\_A4\_v2 | 4    | 8           | 40                     | 4000 / 80 / 40                                             | 8 / 8x500                         | 4 / 1000                                       |
-| Standard\_A8\_v2 | 8    | 16          | 80                     | 8000 / 160 / 80                                            | 16 / 16x500                       | 8 / 2000                                       |
+| Standard szintű\_D1\_v2 | 1    | 3.5         | 50                     | 3000 / 46 / 23                                             | 2 / 2x500                         | 2 / 750                                        |
+| Standard szintű\_D2\_v2 | 2    | 7           | 100                    | 6000 / 93 / 46                                             | 4 / 4x500                         | 2 / 1500                                       |
+| Standard szintű\_D3\_v2 | 4    | 14          | 200                    | 12000 / 187 / 93                                           | 8 / 8x500                         | 4 / 3000                                       |
+| Standard szintű\_D4\_v2 | 8    | 28          | 400                    | 24000 / 375 / 187                                          | 16 / 16x500                       | 8 / 6000                                       |
+| Standard szintű\_A4\_v2 | 4    | 8           | 40                     | 4000 / 80 / 40                                             | 8 / 8x500                         | 4 / 1000                                       |
+| Standard szintű\_a8-as\_v2 | 8    | 16          | 80                     | 8000 / 160 / 80                                            | 16 / 16x500                       | 8 / 2000                                       |
 
-Az alábbiakban a megfelelő értékének beállításakor irányelveiről a **AzureSSISMaxParallelExecutionsPerNode** tulajdonság: 
+Az alábbiakban az irányelvek a megfelelő értéket a **AzureSSISMaxParallelExecutionsPerNode** tulajdonság: 
 
-1. Állítsa az értékét először kis értéket.
-2. Ellenőrizze, hogy a teljes átviteli sebesség növelése kis mennyiséggel növeléséhez azt.
-3. Állítsa le az érték növelése, ha a teljes teljesítményt eléri a maximális érték.
+1. Állítsa be, először egy kisebb értékre.
+2. Ellenőrizze, hogy a teljes átviteli sebesség növelése kis mértékben nő.
+3. Állítsa le az érték növelése, ha általános eléri a maximális értéket.
 
 ## <a name="ssisdbpricingtier"></a>SSISDBPricingTier
 
-**SSISDBPricingTier** SSIS-katalógus adatbázis (SSISDB) Azure SQL-adatbázis tarifacsomagjának van. Ez a beállítás hatással van a munkavállalók az IR-példány, a a várólistába helyezni egy csomag végrehajtását, és a sebesség betöltése a végrehajtási napló maximális számát.
+**SSISDBPricingTier** az SSIS-katalógusadatbázist (SSISDB) az Azure SQL-adatbázis tarifacsomagjának van. Ez a beállítás hatással van a végrehajtási naplóból betöltése az integrációs modul példányt, a várólistára-csomag végrehajtása, és a sebesség a feldolgozók maximális száma.
 
--   Nem érdeklik a sebesség, várólista csomag végrehajtását, és a végrehajtási naplóban betölteni, ha a legalacsonyabb az adatbázis árképzési szintjének választhat. Az Azure SQL-adatbázisok alapszintű árképzési 8 munkavállalók integrációs futásidejű példány támogatja.
+-   Ha nem érdeklik a sebesség, várólista-csomag végrehajtása és betölteni a végrehajtási naplóból, kiválaszthatja a legalacsonyabb az adatbázis tarifacsomagjának. Az Azure SQL Database az alapszintű díjszabás az integrációsmodul-példány 8 feldolgozó támogatja.
 
--   Alapszintű-nál nagyobb teljesítményű adatbázis akkor válassza, ha a feldolgozó száma legfeljebb 8, vagy a magok száma nagyobb, mint 50. Ha nem az adatbázis méretének integrációs futásidejű példány szűk, és legyen negatív hatással az általános teljesítményét.
+-   Az alapszintűnél nagyobb teljesítményű adatbázis akkor válassza, ha a feldolgozók száma több mint 8, vagy a magok száma 50-nél nagyobb. Ellenkező esetben az adatbázis az integration runtime-példány szűk keresztmetszetté válik, és legyen negatív hatással az általános teljesítménye.
 
-Az adatbázis árképzési szint alapján is módosíthatja [adatbázis tranzakciós egység](../sql-database/sql-database-what-is-a-dtu.md) (DTU) használati információk érhetők el az Azure portálon.
+Is beállíthatja az adatbázis alapján tarifacsomag [adatbázis-tranzakciós egységek](../sql-database/sql-database-what-is-a-dtu.md) (DTU) használati adatokhoz az Azure Portalon.
 
 ## <a name="design-for-high-performance"></a>Nagy teljesítményű rendszer tervezése
-Egy SSIS-csomag futtatásához Azure tervezése eltér a helyszíni végrehajtási csomagok megtervezése. Ahelyett, hogy ugyanaz a csomag több független feladatokat kombinálásával, külön őket az az Azure-SSIS infravörös hatékonyabb végrehajtása több csomagot Hozzon létre egy csomag végrehajtását minden csomag esetében, így nem rendelkeznek várjon egymástól befejezéséhez. Ezt a módszert használja az Azure-SSIS-integrációs futásidejű méretezhetőségét előnyeivel, és növeli az általános teljesítményt.
+Tervezése futtathatják az Azure-SSIS-csomag eltér a helyi végrehajtásra csomag tervezése. Ugyanaz a csomag több független feladatokat ötvöző helyett válassza el őket, több csomagot az hatékonyabb végrehajtása az Azure-SSIS integrációs modult. Hozzon létre egy csomag végrehajtása az egyes csomagok, így nem kell egymással a befejezéshez várja. Ez a megközelítés számos előnyt biztosít az az Azure-SSIS integrációs modul méretezhetőségét, és javítja az általános.
 
 ## <a name="next-steps"></a>További lépések
-További tudnivalók az Azure-SSIS-integrációs futásidejű. Lásd: [Azure-SSIS integrációs futásidejű](concepts-integration-runtime.md#azure-ssis-integration-runtime).
+További információ az Azure-SSIS integrációs modul. Lásd: [Azure-SSIS integrációs modul](concepts-integration-runtime.md#azure-ssis-integration-runtime).

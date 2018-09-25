@@ -1,6 +1,6 @@
 ---
-title: Az Azure IoT-Eszközfelügyelet az IoT-bővítmény az Azure CLI 2.0 |} A Microsoft Docs
-description: Az IoT-bővítmény használata az Azure CLI 2.0 eszközt az Azure IoT Hub eszközfelügyeleti közvetlen módszerek és lehetőségek az Ikereszköz kívánt tulajdonságait.
+title: Az Azure IoT-Eszközfelügyelet az IoT-bővítmény az Azure CLI-vel |} A Microsoft Docs
+description: Az IoT-bővítmény használata az Azure CLI-vel eszközök Azure IoT Hub eszközfelügyeleti közvetlen módszerek és lehetőségek az Ikereszköz kívánt tulajdonságait.
 author: chrissie926
 manager: ''
 keywords: az Azure iot-Eszközfelügyelet, az azure iot hub-Eszközfelügyelet, eszközök kezelése iot, iot hub-Eszközfelügyelet
@@ -10,20 +10,20 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 01/16/2018
 ms.author: menchi
-ms.openlocfilehash: dc96e70a031d6080217e71b829ec5de3c64e4cf7
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: e36b8a680f0dc5bf6b438ab00620d4f2a5b9770c
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38971754"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46980593"
 ---
-# <a name="use-the-iot-extension-for-azure-cli-20-for-azure-iot-hub-device-management"></a>Azure CLI 2.0 az Azure IoT Hub-Eszközfelügyelet az IoT-bővítmény használata
+# <a name="use-the-iot-extension-for-azure-cli-for-azure-iot-hub-device-management"></a>Azure CLI az Azure IoT Hub-Eszközfelügyelet az IoT-bővítmény használata
 
 ![Végpontok közötti diagram](media/iot-hub-get-started-e2e-diagram/2.png)
 
 [!INCLUDE [iot-hub-get-started-note](../../includes/iot-hub-get-started-note.md)]
 
-[Az IoT-bővítmény, az Azure CLI 2.0](https://github.com/Azure/azure-iot-cli-extension) egy új nyílt forráskódú IoT-bővítmény, amely hozzáadja a képességeit [Azure CLI 2.0](https://docs.microsoft.com/cli/azure/overview?view=azure-cli-latest). Az Azure CLI 2.0 az Azure resource manager és a felügyeleti végpont folytatott interakcióra szolgáló parancsokat is tartalmaz. Például az Azure CLI 2.0 használatával hozzon létre egy Azure virtuális Gépen vagy egy IoT hubot. A CLI-bővítmény lehetővé teszi, hogy az Azure-szolgáltatások révén az Azure CLI-vel így további szolgáltatásspecifikus funkciókat elérhetővé. Az IoT-bővítmény hozzáférést IoT fejlesztői parancssor minden IoT Hub, IoT Edge és IoT Hub Device Provisioning Service-képességeket.
+[Az Azure CLI-vel az IoT-bővítmény](https://github.com/Azure/azure-iot-cli-extension) egy új nyílt forráskódú IoT-bővítmény, amely hozzáadja a képességeit a [Azure CLI-vel](https://docs.microsoft.com/cli/azure/overview?view=azure-cli-latest). Az Azure CLI Azure resource manager és a felügyeleti végpontok folytatott interakcióra szolgáló parancsokat is tartalmaz. Ha például az Azure CLI használatával hozzon létre egy Azure virtuális Gépen vagy egy IoT hubot. A CLI-bővítmény lehetővé teszi, hogy az Azure-szolgáltatások révén az Azure CLI-vel így további szolgáltatásspecifikus funkciókat elérhetővé. Az IoT-bővítmény hozzáférést IoT fejlesztői parancssor minden IoT Hub, IoT Edge és IoT Hub Device Provisioning Service-képességeket.
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
@@ -41,11 +41,11 @@ Az ikereszközök JSON-dokumentumok, amelyek az eszközök állapotinformációi
 
 ## <a name="what-you-learn"></a>Ismertetett témák
 
-Megismerheti az Azure CLI 2.0 az IoT-bővítmény használata a fejlesztési számítógépén különböző felügyeleti lehetőségek.
+Megismerheti az Azure CLI használata az IoT-bővítmény különböző lehetőségek a fejlesztői gépen.
 
 ## <a name="what-you-do"></a>TEENDŐ
 
-Azure CLI 2.0 és az IoT-bővítmény futtatása Azure CLI 2.0 a különböző felügyeleti lehetőségek.
+Azure CLI és az IoT-bővítmény futtatása Azure CLI-hez a különböző felügyeleti lehetőségek.
 
 ## <a name="what-you-need"></a>Mi szükséges
 
@@ -57,9 +57,7 @@ Azure CLI 2.0 és az IoT-bővítmény futtatása Azure CLI 2.0 a különböző f
 - Győződjön meg arról, hogy az eszköz fut az ügyfélalkalmazásban, ez az oktatóanyag során.
 
 - [Python 2.7x vagy Python 3.x](https://www.python.org/downloads/)
-
-- Azure CLI 2.0 telepítése. Windows rendszeren a legegyszerűbb megoldás a telepítésre az [MSI](https://aka.ms/InstallAzureCliWindows) letöltése és telepítése. A telepítési utasításokat is követheti [Microsoft Docs](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) az Azure CLI 2.0 telepítéséhez a környezetében. Az Azure CLI 2.0 legalább 2.0.24-es verzióját kell használnia. A verziószámot az `az –version` paranccsal ellenőrizheti. 
-
+- Az Azure parancssori felület. Ha szeretné telepíteni, tekintse meg [az Azure CLI telepítése](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest). Legalább az Azure CLI 2.0.24-es verzióját kell vagy újabb. A verziószámot az `az –version` paranccsal ellenőrizheti. 
 - Az IoT-bővítmény telepítése. A legegyszerűbb módszer az `az extension add --name azure-cli-iot-ext` futtatása. [Az IoT-bővítmény fontos (readme) fájlja](https://github.com/Azure/azure-iot-cli-extension/blob/master/README.md) több módszert is ismertet a bővítmény telepítésére.
 
 

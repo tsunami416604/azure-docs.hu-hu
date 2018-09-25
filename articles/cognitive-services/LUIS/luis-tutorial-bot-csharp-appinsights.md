@@ -1,24 +1,26 @@
 ---
-title: A LUIS-adatok hozzáadása az Application Insights használata a C# |} A Microsoft Docs
-titleSuffix: Azure
+title: Application Insights-adatok a LUIS C# használatával
+titleSuffix: Azure Cognitive Services
 description: A robot a LUIS alkalmazás és a C# használatával az Application Insights szolgáltatással integrált hozhat létre.
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 03/07/2018
+ms.date: 09/24/2018
 ms.author: diberry
-ms.openlocfilehash: f1efe305f5659bfab50cee13ac30d56531cc6093
-ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
+ms.openlocfilehash: 83ad70e1242af1e01af06206a3a141f455072a44
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39237791"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47038952"
 ---
-# <a name="add-luis-results-to-application-insights-from-a-web-app-bot"></a>Az Application Insights web app-robot a LUIS eredmények hozzáadása
-Ez az oktatóanyag hozzáad a LUIS válasz információkat [Application Insights](https://azure.microsoft.com/services/application-insights/) telemetriai adatok tárolására. Miután az adatokat, kérdezhet le róla a Kusto-nyelv, vagy elemezheti, összesítése, a Power bi és a jelentés a szándékok és entitások, valós idejű utterance (kifejezés). Az elemzés segít annak meghatározásában, ha kell hozzáadása vagy szerkesztése a szándékok és entitások, a LUIS-alkalmazás.
+# <a name="add-luis-results-to-application-insights"></a>A LUIS-eredményeket ad hozzá az Application Insights
+Ez az oktatóanyag hozzáad a LUIS válasz információkat [Application Insights](https://azure.microsoft.com/services/application-insights/) telemetriai adatok tárolására. Miután az adatokat, kérdezhet le róla a Kusto-nyelv, vagy elemezheti, összesítése, a Power bi és a jelentés a szándékok és entitások, valós idejű utterance (kifejezés). Az elemzés segít annak meghatározásában, ha kell hozzáadása vagy szerkesztése a szándékok és entitások, a LUIS-alkalmazás. 
+
+A robot épül fel a Bot keretrendszer 3.x és az Azure Web app bot.
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
@@ -231,7 +233,7 @@ Az Application Insights lehetővé teszi az adatok lekérdezéséhez a [Kusto](h
     ![Egyéni elemzési jelentés](./media/luis-tutorial-bot-csharp-appinsights/analytics-query-2.png)
 
 
-Tudjon meg többet a [Kusto-lekérdezés nyelvi](https://docs.loganalytics.io/docs/Learn/Getting-Started/Getting-started-with-queries) vagy [az adatok exportálása Power bi-bA](https://docs.microsoft.com/azure/application-insights/app-insights-export-power-bi). 
+Tudjon meg többet a [Kusto-lekérdezés nyelvi](https://docs.microsoft.com/azure/log-analytics/query-language/get-started-queries) vagy [az adatok exportálása Power bi-bA](https://docs.microsoft.com/azure/application-insights/app-insights-export-power-bi). 
 
 
 ## <a name="learn-more-about-bot-framework"></a>További tudnivalók a Bot Framework

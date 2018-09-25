@@ -11,16 +11,19 @@ ms.component: core
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/25/2017
-ms.openlocfilehash: 101c47f4916ca3fab56800eaf012c55150769302
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ROBOTS: NOINDEX
+ms.openlocfilehash: 7084251102984445e7c2341b78b44f85811ebea7
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35646243"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46958220"
 ---
 # <a name="logging-api-reference"></a>Naplózás az API-referencia
 
-Az Azure ML-naplózási könyvtár lehetővé teszi, hogy a program a metrikák és újabb analysis előzmények szolgáltatás által nyomon követett fájlok gridre bocsáthatja ki. Jelenleg a metrikák és a fájlok néhány alapvető típusok támogatottak, és a támogatott típusok készlete növekszik a jövőbeni kiadásokban a Python-csomag.
+[!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)] 
+
+Az Azure ML-naplózási könyvtár lehetővé teszi, hogy a program a metrikák és újabb analysis előzmények szolgáltatás által nyomon követett fájlok gridre bocsáthatja ki. 
 
 ## <a name="uploading-metrics"></a>Metrikák feltöltése
 

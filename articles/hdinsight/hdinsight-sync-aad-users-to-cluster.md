@@ -5,36 +5,36 @@ services: hdinsight
 ms.service: hdinsight
 author: ashishthaps
 ms.author: ashishth
-ms.reviewer: jasonh
+ms.reviewer: mamccrea
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 08/19/2018
-ms.openlocfilehash: 7e002a43c774bd1a6df9cfe46207ddebd02284b3
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.date: 09/24/2018
+ms.openlocfilehash: b63f2566220d556f9695687dc743a7d47e27acf1
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43104223"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46984313"
 ---
 # <a name="synchronize-azure-active-directory-users-to-an-hdinsight-cluster"></a>Egy HDInsight-fürtön az Azure Active Directory-felhasználók szinkronizálása
 
-[Tartományhoz csatlakoztatott HDInsight-fürtök](hdinsight-domain-joined-introduction.md) is erős hitelesítés használata a felhasználók Azure Active Directory (Azure AD), valamint használja *szerepköralapú hozzáférés-vezérlés* (RBAC) házirendeket. Az Azure AD-felhasználók és csoportok hozzáadásakor, szinkronizálhatja a felhasználókat, akiknek szükség van a fürthöz való hozzáféréssel.
+[HDInsight-fürtön vállalati biztonsági csomag (ESP)](hdinsight-domain-joined-introduction.md) is erős hitelesítés használata a felhasználók Azure Active Directory (Azure AD), valamint használja *szerepköralapú hozzáférés-vezérlés* (RBAC) házirendeket. Az Azure AD-felhasználók és csoportok hozzáadásakor, szinkronizálhatja a felhasználókat, akiknek szükség van a fürthöz való hozzáféréssel.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ha Ön még nem tette, [egy tartományhoz csatlakoztatott HDInsight-fürt létrehozása](hdinsight-domain-joined-configure.md).
+Ha Ön még nem tette, [egy HDInsight-fürt létrehozása a vállalati biztonsági csomag](hdinsight-domain-joined-configure.md).
 
 ## <a name="add-new-azure-ad-users"></a>Adja hozzá az új Azure AD-felhasználók
 
 A gazdagépek megtekintéséhez nyissa meg az Ambari webes Kezelőfelületen. Minden egyes csomópontot az új felügyelet nélküli frissítési beállítások frissülni fog.
 
-1. Az a [az Azure portal](https://portal.azure.com), keresse meg a tartományhoz csatlakozó fürthöz társított Azure AD-címtárat.
+1. Az a [az Azure portal](https://portal.azure.com), keresse meg az ESP-fürthöz társított Azure AD-címtárat.
 
 2. Válassza ki **minden felhasználó** elemet a bal oldali menüben, majd válassza ki **új felhasználó**.
 
     ![Az összes felhasználó panel](./media/hdinsight-sync-aad-users-to-cluster/aad-users.png)
 
-3. Töltse ki az új felhasználói űrlapot. Válassza ki a létrehozott fürt-alapú engedélyek hozzárendelése a csoportokhoz. Ebben a példában a neve "HiveUsers", amelyhez új felhasználókat rendelhet csoport létrehozása. A [példa utasításokat](hdinsight-domain-joined-configure.md) a tartományhoz csatlakoztatott fürtöt létrehozni tartalmazza a két csoport hozzáadása `HiveUsers` és `AAD DC Administrators`.
+3. Töltse ki az új felhasználói űrlapot. Válassza ki a létrehozott fürt-alapú engedélyek hozzárendelése a csoportokhoz. Ebben a példában a neve "HiveUsers", amelyhez új felhasználókat rendelhet csoport létrehozása. A [példa utasításokat](hdinsight-domain-joined-configure.md) egy ESP fürtöt tartalmazza a két csoport hozzáadása `HiveUsers` és `AAD DC Administrators`.
 
     ![Új felhasználó ablaktábla](./media/hdinsight-sync-aad-users-to-cluster/aad-new-user.png)
 
@@ -148,6 +148,6 @@ Amikor az Ambari bejelentkezik az új felhasználó (vagy bármely más tartomá
 
 ## <a name="see-also"></a>Lásd még
 
-* [A tartományhoz csatlakoztatott HDInsight Hive-házirendek konfigurálása](hdinsight-domain-joined-run-hive.md)
-* [Tartományhoz csatlakoztatott HDInsight-fürtök kezelése](hdinsight-domain-joined-manage.md)
+* [ESP a HDInsight Hive-házirendek konfigurálása](hdinsight-domain-joined-run-hive.md)
+* [ESP a HDInsight-fürtök kezelése](hdinsight-domain-joined-manage.md)
 * [A felhasználóknak engedélyezik, Ambari](hdinsight-authorize-users-to-ambari.md)

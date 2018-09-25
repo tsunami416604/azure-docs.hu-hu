@@ -10,16 +10,16 @@ ms.topic: conceptual
 ms.date: 08/13/2018
 ms.author: jovanpop
 manager: craigg
-ms.openlocfilehash: 73e046c153af5c69ab343a90d1f9027b84b4deb1
-ms.sourcegitcommit: 8b694bf803806b2f237494cd3b69f13751de9926
+ms.openlocfilehash: c23fbf0af7d1a15b0efee8af123150feb42c708e
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/20/2018
-ms.locfileid: "46498453"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46966897"
 ---
 # <a name="azure-sql-database-managed-instance-t-sql-differences-from-sql-server"></a>Az SQL Serverről Azure SQL Database felügyelt példány T-SQL különbségek 
 
-Az Azure SQL Database felügyelt példány (előzetes verzió) biztosít a nagy mértékben kompatibilis a helyszíni SQL Server Database Engine. Felügyelt példány az SQL Server adatbázismotor-szolgáltatások többsége támogatottak. Különbségek is vannak a továbbra is a szintaxist és a viselkedés, mivel ez a cikk összefoglalja, és ismerteti a különbségeket.
+Az Azure SQL Database felügyelt példánya a nagy mértékben kompatibilis a helyszíni SQL Server Database Engine, biztosít. Felügyelt példány az SQL Server adatbázismotor-szolgáltatások többsége támogatottak. Különbségek is vannak a továbbra is a szintaxist és a viselkedés, mivel ez a cikk összefoglalja, és ismerteti a különbségeket.
  - [T-SQL különbségek, és nem támogatott funkciók](#Differences)
  - [A felügyelt példány eltérő viselkedéssel rendelkező szolgáltatások](#Changes)
  - [Ideiglenes korlátozásai és ismert problémák](#Issues)
@@ -415,15 +415,58 @@ Győződjön meg arról, hogy távolítsa el a vezető `?` az Azure portal haszn
 
 SQL Server Management Studio és az SQL Server Data Tools néhány probléma lehet felügyelt példány elérése közben. Eszközökkel kapcsolatos összes problémát általános rendelkezésre állás előtti kibocsátásokban megtörténik.
 
-### <a name="incorrect-database-names"></a>Helytelen adatbázis neve
+### <a name="incorrect-database-names-in-some-views-logs-and-messages"></a>Az egyes nézetek, naplók és üzenetek helytelen adatbázis neve
 
-Felügyelt példány előfordulhat, hogy megjelenítése adatbázis neve helyett guid-érték, visszaállítás során, vagy a bizonyos hibaüzenetek. Általános megjelenés előtt javítani fogja ezeket a problémákat.
+Több rendszernézetek, teljesítményszámlálók, hibaüzenetek, xevent típusú eseményekhez és hibanapló-bejegyzést jelennek meg a GUID adatbázis-azonosítókat a tényleges adatbázis neve helyett. Ne támaszkodjon kizárólag ezek GUID azonosítókat, mert azok kellene írni a tényleges adatbázisnevek a jövőben.
 
 ### <a name="database-mail-profile"></a>Adatbázisbeli levelezési profil
 Csak egy adatbázisbeli levelezési profil lehet és kell meghívni `AzureManagedInstance_dbmail_profile`. Ez az egy átmeneti korlátozás, amely hamarosan törlődnek.
+
+### <a name="error-logs-are-not-persisted"></a>Hibanaplók nem megőrzött
+Hibanaplókat a felügyelt példány nem rögzíti, és a méret nem szerepel a maximális méretkorlátot. Hibanaplók automatikusan törölni lehet, hogy a feladatátvétel esetén.
+
+### <a name="error-logs-are-verbose"></a>Hibanaplók részletes.
+Felügyelt példány hibanaplók helyezi részletes információkat, és nem vonatkoznak ezek közül számos. A jövőben a hibanaplók információ mennyisége csökkenni fog.
+
+**Megkerülő megoldás**: egyéni eljárással hibanaplókat, hogy néhány nem megfelelő bejegyzések szűrő kimenő olvasásához. További információkért lásd: [Azure SQL DB felügyelt példányainak – sp_readmierrorlog](https://blogs.msdn.microsoft.com/sqlcat/2018/05/04/azure-sql-db-managed-instance-sp_readmierrorlog/).
+
+### <a name="transaction-scope-on-two-databases-within-the-same-instance-is-not-supported"></a>A két adatbázis belül ugyanazon tranzakció-hatókörben nem támogatott.
+`TransactionScope` az osztály a .NET-es nem működik, ha két lekérdezést küld a két adatbázis ugyanazon a ugyanazon tranzakció-hatókörben alatt belül:
+
+```C#
+using (var scope = new TransactionScope())
+{
+    using (var conn1 = new SqlConnection("Server=quickstartbmi.neu15011648751ff.database.windows.net;Database=b;User ID=myuser;Password=mypassword;Encrypt=true"))
+    {
+        conn1.Open();
+        SqlCommand cmd1 = conn1.CreateCommand();
+        cmd1.CommandText = string.Format("insert into T1 values(1)");
+        cmd1.ExecuteNonQuery();
+    }
+
+    using (var conn2 = new SqlConnection("Server=quickstartbmi.neu15011648751ff.database.windows.net;Database=b;User ID=myuser;Password=mypassword;Encrypt=true"))
+    {
+        conn2.Open();
+        var cmd2 = conn2.CreateCommand();
+        cmd2.CommandText = string.Format("insert into b.dbo.T2 values(2)");        cmd2.ExecuteNonQuery();
+    }
+
+    scope.Complete();
+}
+
+```
+
+Bár ez a kód ugyanazon adatok együttműködik az MSDTC megadása kötelező.
+
+**Megkerülő megoldás**: használata [SqlConnection.ChangeDatabase(String)](https://docs.microsoft.com/dotnet/api/system.data.sqlclient.sqlconnection.changedatabase) más database két kapcsolat használata helyett a kapcsolati környezet használata.
+
+### <a name="clr-modules-and-linked-servers-sometime-cannot-reference-local-ip-address"></a>CLR-beli modulok és a egy ideig a csatolt kiszolgálók nem hivatkozhat helyi IP-cím
+CLR-beli modulok helyezi el a felügyelt példány és a egy ideig hivatkoznak a jelenlegi példány csatolt kiszolgálók/elosztott lekérdezések nem tudja feloldani az IP-címét a helyi példány. Ez az átmeneti hiba.
+
+**Megkerülő megoldás**: Ha lehetséges használja a helyi kapcsolatok CLR-beli modulban.
 
 ## <a name="next-steps"></a>További lépések
 
 - Felügyelt példánnyal kapcsolatos részletekért lásd: [mit jelent a felügyelt példány?](sql-database-managed-instance.md)
 - Az a funkciók és összehasonlító listában, lásd: [általános SQL-szolgáltatások](sql-database-features.md).
-- Bemutatja, hogyan hozzon létre egy új felügyelt példány oktatóanyagért lásd: [hozzon létre egy felügyelt példányt](sql-database-managed-instance-get-started.md).
+- A rövid útmutató bemutatja, hogyan hozzon létre egy új felügyelt példányt, lásd: [hozzon létre egy felügyelt példányt](sql-database-managed-instance-get-started.md).

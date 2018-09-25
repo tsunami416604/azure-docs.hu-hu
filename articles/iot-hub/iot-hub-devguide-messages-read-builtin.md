@@ -1,6 +1,6 @@
 ---
 title: Megismerheti az Azure IoT Hub beépített végpont |} A Microsoft Docs
-description: Fejlesztői útmutató – ismerteti, hogyan használható a beépített, Event Hub-kompatibilis végpont toread eszköz – felhő üzeneteket.
+description: Fejlesztői útmutató – útmutató a beépített, Event Hub-kompatibilis végpont használata az eszköz a felhőbe irányuló üzenetek olvasását.
 author: dominicbetts
 manager: timlt
 ms.service: iot-hub
@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 07/18/2018
 ms.author: dobett
-ms.openlocfilehash: 767c91e4926e553b63b8331ac99edcd7823d2c13
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: 02624b4f3b0fceb1816f4f43b1f435356f8d5235
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44055015"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46984041"
 ---
 # <a name="read-device-to-cloud-messages-from-the-built-in-endpoint"></a>Az eszközről a felhőbe irányuló üzenetek beolvasása a beépített végpontról
 
@@ -26,7 +26,7 @@ Alapértelmezés szerint üzenetek irányíthatók át a beépített szolgáltat
 
 Az IoT Hub lehetővé teszi olyan kezelése a beépített eszköz-felhő a felhasználói csoportok végpont kap.
 
-Alapértelmezés szerint a beépített végpont írt összes üzenetet, egy üzenet-útválasztási szabály explicit módon nem megfelelő. Ha letiltja ezt az útvonalat tartalék, bármely üzenet-útválasztási szabályok nem kifejezetten megfelelő üzeneteket a rendszer elveti.
+Ha használ [üzenet-útválasztása](iot-hub-devguide-messages-d2c.md) és a [tartalék útvonal](iot-hub-devguide-messages-d2c.md#fallback-route) van engedélyezve van, egy lekérdezést minden olyan útvonal a nem megfelelő összes üzenetet írja a beépített végpont. Ha letiltja ezt az útvonalat tartalék, a rendszer elveti, amelyek nem egyeznek meg a lekérdezés üzeneteket.
 
 Módosíthatja a megőrzési időtartam vagy programozott módon használja a [az IoT Hub erőforrás-szolgáltató REST API-k][lnk-resource-provider-apis], vagy a [az Azure portal] [ lnk-management-portal].
 
@@ -39,9 +39,8 @@ Használatakor a [Azure Service Bus SDK for .NET] [ lnk-servicebus-sdk] vagy a [
 Amikor az SDK-k (vagy termékintegrációk), amely észleli az IoT Hub, le kell kérnie egy Event Hub-kompatibilis végpont és az Event Hub-kompatibilis nevet:
 
 1. Jelentkezzen be a [az Azure portal] [ lnk-management-portal] , és keresse meg az IoT hubot.
-1. Kattintson a **Végpontok** elemre.
-1. Az a **beépített végpontokról** területén kattintson **események**. 
-1. Megnyílik egy tulajdonságok oldal, amely tartalmazza a következő értékeket: **Event Hub-kompatibilis végpont**, **Event Hub-kompatibilis nevet**, **partíciók**,  **Megőrzési idő**, és **fogyasztói csoportok**.
+1. Kattintson a **beépített végpontokról**.
+1. A **események** szakasz tartalmazza a következő értékeket: **Event Hub-kompatibilis végpont**, **Event Hub-kompatibilis nevet**, **partíciók**, **Megőrzési időtartama**, és **fogyasztói csoportok**.
 
     ![Eszközről-a-felhőbe típusú üzenetek beállításai][img-eventhubcompatible]
 
@@ -63,11 +62,9 @@ SDK-k és integrációk használható, amely közzéteszi az IoT Hub Event Hub-k
 
 ## <a name="next-steps"></a>További lépések
 
-IoT Hub-végpontok kapcsolatos további információkért lásd: [IoT Hub-végpontok][lnk-endpoints].
-
-A [útmutatóink] [ lnk-get-started] bemutatják, hogyan eszköz – felhő üzeneteket küldhet a szimulált eszközök és a beépített végpont érkező üzenetek olvasásához. További részletekért tekintse meg a [folyamat az IoT Hub eszköz – felhő üzenetek útvonalak] [ lnk-d2c-tutorial] oktatóanyag.
-
-Ha szeretné az eszköz a felhőbe irányuló üzenetek átirányítása egyéni végpontok, [üzenet útvonalak és az egyedi végpontok használata az eszköz – felhő üzeneteket][lnk-custom].
+* IoT Hub-végpontok kapcsolatos további információkért lásd: [IoT Hub-végpontok][lnk-endpoints].
+* A [útmutatóink] [ lnk-get-started] bemutatják, hogyan eszköz – felhő üzeneteket küldhet a szimulált eszközök és a beépített végpont érkező üzenetek olvasásához. További részletekért tekintse meg a [folyamat az IoT Hub eszköz – felhő üzenetek útvonalak] [ lnk-d2c-tutorial] oktatóanyag.
+* Ha szeretné az eszköz a felhőbe irányuló üzenetek átirányítása egyéni végpontok, [üzenet útvonalak és az egyedi végpontok használata az eszköz – felhő üzeneteket][lnk-custom].
 
 [img-eventhubcompatible]: ./media/iot-hub-devguide-messages-read-builtin/eventhubcompatible.png
 

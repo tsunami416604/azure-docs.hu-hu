@@ -13,19 +13,19 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: d89abfd0ec2ae5de8366a12bb38d9358aa8ab76d
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: a9a4b7728eff3057b9677d12df51cc8c477744ca
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42060153"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46953939"
 ---
 # <a name="join-an-azure-ssis-integration-runtime-to-a-virtual-network"></a>Egy Azure-SSIS integrációs modul csatlakoztatása virtuális hálózathoz
 Csatlakozás az Azure-SSIS integrációs modulját (IR) az Azure virtual Networkhöz a következő esetekben: 
 
 - Az Azure SSIS integrációs modulon futó SSIS-csomagokkal helyszíni adattárakhoz szeretne csatlakozni. 
 
-- Az SQL Server Integration Services (SSIS) katalógust adatbázis az Azure SQL Database virtuális hálózati szolgáltatás végpontok/Managed Instance (előzetes verzió) üzemelteti. 
+- Az SQL Server Integration Services (SSIS) katalógust adatbázis az Azure SQL Database virtuális hálózati szolgáltatás végpontok/Managed Instance üzemeltet. 
 
  Az Azure Data Factory használatával csatlakoztathatja az Azure-SSIS integrációs modult a klasszikus üzemi modellel vagy az Azure Resource Manager üzemi modell használatával létrehozott virtuális hálózatban. 
 
@@ -42,11 +42,11 @@ Az alábbiakban néhány fontos tudnivalók:
  
 - Ha egy meglévő Azure Resource Manager virtuális hálózatot a helyszíni hálózat egy másik helyen lévő csatlakozott az Azure-SSIS integrációs modul a, először létrehozhat egy [Azure Resource Managerbeli virtuális hálózat](../virtual-network/quick-create-portal.md##create-a-virtual-network) az Azure-SSIS-hez Integrációs modul csatlakozni. Ezt követően konfigurálja egy Azure Resource Manager – Azure Resource Manager virtuális hálózati kapcsolat. Vagy létrehozhat egy [klasszikus virtuális hálózat](../virtual-network/virtual-networks-create-vnet-classic-pportal.md) csatlakozni az Azure-SSIS integrációs modul számára. Ezt követően konfigurálja a [klasszikus – Azure Resource Managerbeli virtuális hálózat](../vpn-gateway/vpn-gateway-connect-different-deployment-models-portal.md) kapcsolat. 
 
-## <a name="host-the-ssis-catalog-database-in-azure-sql-database-with-virtual-network-service-endpointsmanaged-instance-preview"></a>Az SSIS-katalógus adatbázist, az Azure SQL Database virtuális hálózati szolgáltatás végpontok/Managed Instance (előzetes verzió)
-Az SSIS katalógus Azure SQL Database-ben üzemeltetett esetén a virtuális hálózati Szolgáltatásvégpontok vagy a felügyelt példány (előzetes verzió), az Azure-SSIS integrációs modul csatlakozhat: 
+## <a name="host-the-ssis-catalog-database-in-azure-sql-database-with-virtual-network-service-endpointsmanaged-instance"></a>Az SSIS-katalógus adatbázist, az Azure SQL Database virtuális hálózati szolgáltatás végpontok/Managed Instance
+Az SSIS katalógus Azure SQL Database-ben üzemeltetett esetén a virtuális hálózati Szolgáltatásvégpontok vagy a felügyelt példány, az Azure-SSIS integrációs modul csatlakozhat: 
 
 - Az azonos virtuális hálózatban 
-- Egy másik virtuális hálózatot, amely rendelkezik egy Azure SQL Database virtuális hálózati szolgáltatás végpontok/Managed Instance (előzetes verzió) használt hálózatok közötti kapcsolatot 
+- Egy másik virtuális hálózatot, amely rendelkezik egy Azure SQL Database virtuális hálózati szolgáltatás végpontok/Managed Instance használt hálózatok közötti kapcsolatot 
 
 Ha az Azure-SSIS integrációs modul csatlakoztatása a felügyelt példány ugyanazon a virtuális hálózaton, győződjön meg róla, hogy az Azure-SSIS integrációs modul egy másik alhálózatot, mint a felügyelt példány. Ha az Azure-SSIS integrációs modul csatlakoztatása a felügyelt példány, mint egy másik virtuális hálózatot, javasoljuk, virtuális hálózatok közötti társviszony (amely ugyanabban a régióban legfeljebb) vagy a virtuális hálózat virtuális hálózati kapcsolat. Lásd: [alkalmazását az Azure SQL Database felügyelt példányába való csatlakozás](../sql-database/sql-database-managed-instance-connect-app.md).
 
@@ -72,7 +72,7 @@ A következő szakaszok további részleteket.
 
 -   Győződjön meg arról, hogy rendelkezik-e elegendő elérhető címtereket Azure-SSIS integrációs modul használatára, válassza ki az alhálózatot. Hagyja üresen, legalább 2 * integrációs modul csomópont elérhető IP-címek számát. Az Azure lefoglalja minden egyes alhálózaton belül néhány IP-cím, és ezek a címek nem használható. Az alhálózatok első és utolsó IP-címét a protokollok megfelelősége érdekében, az Azure-szolgáltatásokhoz használt három további címek számára vannak fenntartva. További információkért lásd: [vannak ezen alhálózatok belüli IP-címek használatával korlátozások?](../virtual-network/virtual-networks-faq.md#are-there-any-restrictions-on-using-ip-addresses-within-these-subnets). 
 
--   Ne használjon egy alhálózatot, amely kizárólag más Azure-szolgáltatások (például az SQL Database felügyelt példány (előzetes verzió), az App Service, stb.) foglalt. 
+-   Ne használjon egy alhálózatot, amely kizárólag más Azure-szolgáltatások (például az SQL Database felügyelt példányain, az App Service, stb.) foglalt. 
 
 ### <a name="dns_server"></a> Tartomány neve Services-kiszolgáló 
 Ha szeretné használni a saját tartománynév-szolgáltatásokat (DNS) kiszolgáló segítségével az Azure-SSIS integrációs modult egy virtuális hálózatban, ellenőrizze, hogy a nyilvános Azure-gazdagép nevét feloldja (például egy Azure Storage blob neve `<your storage account>.blob.core.windows.net`). 
@@ -92,7 +92,7 @@ Ha egy hálózati biztonsági csoport (NSG) megvalósítása az Azure-SSIS integ
 |---|---|---|---|---|---|---|
 | Bejövő | TCP | Internet | * | VirtualNetwork | 29876-os, a 29877-es portot (ha az integrációs modul csatlakoztatása egy Azure Resource Managerbeli virtuális hálózat) <br/><br/>10100, 20100, 30100-as portokat (ha az integrációs modul csatlakoztatása egy klasszikus virtuális hálózat)| A Data Factory szolgáltatás használ a ezeket a portokat a virtuális hálózatban, az Azure-SSIS integrációs modul csomópontján folytatott kommunikációhoz. <br/><br/> Egy alhálózat-szintű NSG-t hoz létre, vagy sem, hogy Data Factory mindig konfigurálja a hálózati biztonsági csoportok, amelyek az Azure-SSIS integrációs modult. a virtuális gépekhez csatlakoztatott hálózati adapterek (NIC) szintjén Csak az Data Factory IP-címek a megadott porton érkező bejövő forgalmat a NIC-szintű NSG által engedélyezett. Akkor is, ha megnyitja ezeket a portokat az internetes forgalmat az alhálózatok, IP-címek, amelyek nem a Data Factory IP-címek érkező forgalom le van tiltva, a hálózati adapterek szintjén. |
 | Kimenő | TCP | VirtualNetwork | * | Internet | 443 | A virtuális hálózatban, az Azure-SSIS integrációs modul csomópontján el az Azure-szolgáltatások, például az Azure Storage és az Azure Event Hubs ezen a porton. |
-| Kimenő | TCP | VirtualNetwork | * | Az Internet vagy az Sql | 1433-as, 11000-11999, 14000-14999 | Az Azure-SSIS integrációs modul az Azure SQL Database-kiszolgáló – futó SSISDB el ezeket a portokat a virtuális hálózat használatban csomópontjai az erre a célra nem alkalmazható a felügyelt példány (előzetes verzió) futó SSISDB. |
+| Kimenő | TCP | VirtualNetwork | * | Az Internet vagy az Sql | 1433-as, 11000-11999, 14000-14999 | Az Azure-SSIS integrációs modul az Azure SQL Database-kiszolgáló – futó SSISDB el ezeket a portokat a virtuális hálózat használatban csomópontjai az erre a célra nem alkalmazható a felügyelt példány által üzemeltetett KATALÓGUSADATBÁZISBA. |
 ||||||||
 
 ### <a name="route"></a> Használja az Azure expressroute-on vagy a felhasználó által megadott útvonal
@@ -357,6 +357,6 @@ Ez a parancs a 20-30 percet vesz igénybe.
 További információ az Azure-SSIS modult tekintse meg a következő témaköröket: 
 - [Az Azure-SSIS integrációs modul](concepts-integration-runtime.md#azure-ssis-integration-runtime). Ez a cikk tájékoztatást integrációs modulok általában, beleértve az Azure-SSIS integrációs modult. 
 - [Oktatóanyag: SSIS-csomagok üzembe helyezése az Azure-ban](tutorial-create-azure-ssis-runtime-portal.md). Ez a cikk részletes utasításokat követve hozzon létre egy Azure-SSIS integrációs modult. Azure SQL Database használ az SSIS-katalógus futtatására. 
-- [Azure-SSIS integrációs modul létrehozása](create-azure-ssis-integration-runtime.md). Ez a cikk az oktatóanyagon alapul, és útmutatóul szolgál az Azure SQL Database használata a virtuális hálózati szolgáltatás végpontok/Managed Instance (előzetes verzió) az SSIS-katalógus futtatására, illetve az integrációs modul csatlakoztatása virtuális hálózathoz. 
+- [Azure-SSIS integrációs modul létrehozása](create-azure-ssis-integration-runtime.md). Ez a cikk az oktatóanyagon alapul, és útmutatóul szolgál az Azure SQL Database használata a virtuális hálózati szolgáltatás végpontok/Managed Instance az SSIS-katalógus futtatására, illetve az integrációs modul csatlakoztatása virtuális hálózathoz. 
 - [Azure-SSIS integrációs modul monitorozása](monitor-integration-runtime.md#azure-ssis-integration-runtime). Ez a cikk bemutatja, hogyan kérhet le információkat egy Azure-SSIS integrációs modulról, és ismerteti a visszaadott információkban található állapotok leírását. 
 - [Azure-SSIS integrációs modul kezelése](manage-azure-ssis-integration-runtime.md). Ez a cikk bemutatja, hogyan lehet leállítani, elindítani vagy eltávolítani egy Azure-SSIS integrációs modult. Azt is bemutatja, hogyan skálázhatja fel horizontálisan a az Azure-SSIS integrációs modul csomópontok hozzáadásával. 

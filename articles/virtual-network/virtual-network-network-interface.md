@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/24/2017
 ms.author: jdial
-ms.openlocfilehash: 4b584dfa49c42328a44fff0645dcdec2504abaa2
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: 78578197c5f764c8e197d3426506cb1eb13b838f
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37904220"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46956796"
 ---
 # <a name="create-change-or-delete-a-network-interface"></a>Létrehozása, módosítása vagy egy hálózati adapter törlése
 
@@ -35,7 +35,7 @@ Ez a cikk bármely szakaszban ismertetett lépések elvégzése előtt hajtsa v�
 - Ha még nincs Azure-fiókkal, regisztráljon egy [ingyenes próbafiókot](https://azure.microsoft.com/free).
 - Ha a portál használatával, nyissa meg a https://portal.azure.com, és jelentkezzen be az Azure-fiókjával.
 - Ha a PowerShell-parancsokkal cikkben leírt feladatok elvégzéséhez, vagy futtassa a parancsokat a [Azure Cloud Shell](https://shell.azure.com/powershell), vagy a számítógépről futtatja a Powershellt. Az Azure Cloud Shell egy olyan ingyenes interaktív kezelőfelület, amelyet a jelen cikkben található lépések futtatására használhat. A fiókjával való használat érdekében a gyakran használt Azure-eszközök már előre telepítve és konfigurálva vannak rajta. Ehhez az oktatóanyaghoz az Azure PowerShell-modul 5.4.1-es vagy újabb. A telepített verzió azonosításához futtassa a következőt: `Get-Module -ListAvailable AzureRM`. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-azurerm-ps) ismertető cikket. Ha helyileg futtatja a PowerShellt, akkor emellett a `Connect-AzureRmAccount` futtatásával kapcsolatot kell teremtenie az Azure-ral.
-- Ha használja az Azure parancssori felület (CLI) parancsai cikkben leírt feladatok elvégzéséhez, vagy futtassa a parancsokat a [Azure Cloud Shell](https://shell.azure.com/bash), vagy a parancssori felület futtatásával a számítógépről. Ehhez az oktatóanyaghoz az Azure CLI 2.0.28-as vagy újabb. A telepített verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI 2.0 telepítése](/cli/azure/install-azure-cli). Ha helyileg futtatja az Azure CLI, is futtatni szeretné `az login` kapcsolat létrehozása az Azure-ral.
+- Ha használja az Azure parancssori felület (CLI) parancsai cikkben leírt feladatok elvégzéséhez, vagy futtassa a parancsokat a [Azure Cloud Shell](https://shell.azure.com/bash), vagy a parancssori felület futtatásával a számítógépről. Ehhez az oktatóanyaghoz az Azure CLI 2.0.28-as vagy újabb. A telepített verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése](/cli/azure/install-azure-cli). Ha helyileg futtatja az Azure CLI, is futtatni szeretné `az login` kapcsolat létrehozása az Azure-ral.
 
 Jelentkezzen be, vagy csatlakozhat az Azure-ban, a fiókot hozzá kell rendelni a [hálózati közreműködő](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) szerepkör vagy egy [egyéni szerepkör](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) szerepel a megfelelő műveleteket rendelt [engedélyek ](#permissions).
 
@@ -164,7 +164,7 @@ Módosíthatja az alhálózaton, de nem a virtuális hálózat, amely egy háló
 Csak adja hozzá a hálózati adaptert, vagy egy hálózati adapter eltávolítása a portál használatával, ha egy virtuális géphez csatlakoztatott hálózati adapter van egy biztonsági csoportot. A hálózati adapter hozzáadása PowerShell vagy az Azure CLI használatával, vagy egy hálózati adapter eltávolítása egy biztonsági csoportot, hogy a virtuális géphez csatlakoztatott hálózati adapter, vagy nem. Tudjon meg többet [az alkalmazásbiztonsági csoportok](security-overview.md#application-security-groups) és annak [hozzon létre egy alkalmazásbiztonsági csoportot](manage-network-security-group.md#create-an-application-security-group).
 
 1. Az a *erőforrások, szolgáltatások és dokumentumok keresése* a portál tetején lévő mezőbe írja be a nevét, amely rendelkezik egy hálózati adapter, amelyet szeretne hozzáadni, vagy távolítsa el, egy biztonsági csoportot a virtuális gép. Amikor a virtuális gép neve megjelenik a keresési eredmények között, kattintson rá.
-2. A **beállítások**válassza **hálózatkezelés**.  Válassza ki **konfigurálása az alkalmazásbiztonsági csoportok**az alkalmazásbiztonsági csoportok hozzáadása a hálózati adapter kívánt jelölje be, és törölje az alkalmazásbiztonsági csoportok, amelyek a el kívánja távolítani, a hálózati adapter majd **mentése**. Csak az azonos virtuális hálózatban található hálózati adapterek az ugyanahhoz az alkalmazásbiztonsági csoporthoz lehet hozzáadni. Az alkalmazásbiztonsági csoporthoz léteznie kell a hálózati adapter ugyanazon a helyen.
+2. A **BEÁLLÍTÁSOK** területen válassza a **Hálózatkezelés** elemet.  Válassza ki **konfigurálása az alkalmazásbiztonsági csoportok**az alkalmazásbiztonsági csoportok hozzáadása a hálózati adapter kívánt jelölje be, és törölje az alkalmazásbiztonsági csoportok, amelyek a el kívánja távolítani, a hálózati adapter majd **mentése**. Csak az azonos virtuális hálózatban található hálózati adapterek az ugyanahhoz az alkalmazásbiztonsági csoporthoz lehet hozzáadni. Az alkalmazásbiztonsági csoporthoz léteznie kell a hálózati adapter ugyanazon a helyen.
 
 **Parancsok**
 

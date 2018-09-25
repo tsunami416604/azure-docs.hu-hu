@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/22/2018
-ms.openlocfilehash: e83d51a18c7ab5861699114e4622bda167dab41d
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: a90ec3102f3ce821193d58b6d14ca119f6d7e916
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43042097"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46959682"
 ---
 # <a name="use-interactive-query-with-hdinsight"></a>HDInsight interaktív lekérdezés használata
 Interaktív lekérdezés (más néven a Hive LLAP vagy [alacsony késés Analytical Processing](https://cwiki.apache.org/confluence/display/Hive/LLAP)) van egy Azure HDInsight [fürt típusa](../hdinsight-hadoop-provision-linux-clusters.md#cluster-types). Interaktív lekérdezés támogatja a memórián belüli gyorsítótárazáshoz, ami lehetővé teszi a Hive-lekérdezések gyorsabb és interaktívabb sokkal.
@@ -24,7 +24,7 @@ Interaktív lekérdezés (más néven a Hive LLAP vagy [alacsony késés Analyti
 Az interaktív lekérdezési fürt különbözik egy Hadoop-fürtöt. Csak a Hive-szolgáltatást tartalmaz. 
 
 > [!NOTE]
-> A Hive-szolgáltatást, az az interaktív lekérdezési fürt csak az Ambari, Hive-nézet, Beeline és a Microsoft Hive adatforrásnevet illesztőprogram (Hive ODBC) keresztül érheti el. Nem férhet hozzá, a Hive konzolt, templeton eszközön keresztül végzett, az Azure parancssori felület (Azure CLI) vagy az Azure PowerShell használatával. 
+> A Hive-szolgáltatást, az az interaktív lekérdezési fürt csak az Ambari, Hive-nézet, Beeline és a Microsoft Hive adatforrásnevet illesztőprogram (Hive ODBC) keresztül érheti el. Nem férhet hozzá, a Hive konzolt, templeton eszközön keresztül végzett, a klasszikus Azure CLI vagy az Azure PowerShell használatával. 
 > 
 > 
 

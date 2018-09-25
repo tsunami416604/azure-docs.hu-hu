@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/19/2018
 ms.author: mbullwin
-ms.openlocfilehash: 73bb1e3d06066c422614bc9d6d3431b49be9c6de
-ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
+ms.openlocfilehash: 86c0343a3492bf91eedda9303e3c6ac9cf86c4c3
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38991309"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46947319"
 ---
 # <a name="set-up-application-insights-for-your-aspnet-website"></a>Az Application Insights beállítása az ASP.NET-webhelyhez
 
@@ -105,7 +105,7 @@ A portálon az egyik csempére vagy diagramra kattintva további részleteket te
 ## <a name="step-4-publish-your-app"></a>4. lépés: Az alkalmazás közzététele
 Tegye közzé alkalmazását az IIS-kiszolgálón vagy az Azure-on. Az [Élő mérőszámok streammel](app-insights-metrics-explorer.md#live-metrics-stream) ellenőrizheti, hogy minden rendben működik-e.
 
-A telemetria az Application Insights portálon épül fel, ahol figyelheti a mérőszámokat, kereshet a telemetriára és [irányítópultokat](app-insights-dashboards.md) állíthat be. Használhatja a sokoldalú [Log Analytics lekérdezési nyelvet](https://docs.loganalytics.io/) a használat és a teljesítmény elemzéséhez, vagy adott események megtalálásához.
+A telemetria az Application Insights portálon épül fel, ahol figyelheti a mérőszámokat, kereshet a telemetriára és [irányítópultokat](app-insights-dashboards.md) állíthat be. Használhatja a sokoldalú [Log Analytics lekérdezési nyelvet](https://aka.ms/LogAnalyticsLanguage) a használat és a teljesítmény elemzéséhez, vagy adott események megtalálásához.
 
 Folytathatja a telemetria elemzését a [Visual Studióban](app-insights-visual-studio.md) olyan eszközökkel, mint például a diagnosztikai keresés és a [trendek](app-insights-visual-studio-trends.md).
 

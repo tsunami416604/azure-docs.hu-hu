@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 12/12/2017
 ms.author: negat
 ms.custom: na
-ms.openlocfilehash: b61b6b730d645e2ffd518628abe2a121f119fd09
-ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
+ms.openlocfilehash: 9ec049ebbfaa8e6ee5dbf585488d5c2e8ff25802
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39715063"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46949706"
 ---
 # <a name="azure-virtual-machine-scale-sets-faqs"></a>Azure-beli virtuálisgép-méretezési csoportok – gyakori kérdések
 
@@ -49,7 +49,7 @@ Válaszok a virtual machine scale sets – gyakori kérdések az Azure-ban.
 
 **K.** Hogyan lehet egyéni rendszerképekből méretezési csoportot létrehozni?
 
-**V.** Hozzon létre egy Virtuálisgép-lemezkép rögzítése, majd forrásaként, amely a méretezési csoporthoz használni. Hogyan hozhat létre és használhat egyéni Virtuálisgép-rendszerképet oktatóanyagot, használhatja a [Azure CLI 2.0](tutorial-use-custom-image-cli.md) vagy [Azure PowerShell-lel](tutorial-use-custom-image-powershell.md)
+**V.** Hozzon létre egy Virtuálisgép-lemezkép rögzítése, majd forrásaként, amely a méretezési csoporthoz használni. Hogyan hozhat létre és használhat egyéni Virtuálisgép-rendszerképet oktatóanyagot, használhatja a [Azure CLI-vel](tutorial-use-custom-image-cli.md) vagy [Azure PowerShell-lel](tutorial-use-custom-image-powershell.md)
 
 **K.** Ha a méretezési csoportom kapacitását 20-ról 15-re csökkentem, mely virtuális gépek lesznek eltávolítva?
 
@@ -129,7 +129,7 @@ Riasztást beállítani kívánt mérőszámként lehetősége van minden olyan 
 
 ### <a name="how-do-i-set-up-autoscale-on-a-virtual-machine-scale-set-by-using-powershell"></a>Hogyan állíthatok be az automatikus skálázás beállítása a PowerShell használatával virtuálisgép-méretezési csoportot?
 
-Állítsa be az automatikus skálázás egy virtuális gép méretezési csoport PowerShell-lel, tekintse meg [egy virtuálisgép-méretezési csoport automatikus méretezése](tutorial-autoscale-powershell.md). Is konfigurálhatja az automatikus méretezés a [Azure CLI 2.0](tutorial-autoscale-cli.md) és [Azure-sablonok](tutorial-autoscale-template.md)
+Állítsa be az automatikus skálázás egy virtuális gép méretezési csoport PowerShell-lel, tekintse meg [egy virtuálisgép-méretezési csoport automatikus méretezése](tutorial-autoscale-powershell.md). Is konfigurálhatja az automatikus méretezés a [Azure CLI-vel](tutorial-autoscale-cli.md) és [Azure-sablonok](tutorial-autoscale-template.md)
 
 
 ### <a name="if-i-have-stopped-deallocated-a-vm-is-that-vm-started-as-part-of-an-autoscale-operation"></a>Ha rendelkezik e leállítva (felszabadítva) egy virtuális Gépet, a virtuális gép elindítása egy automatikus skálázási művelet részeként?

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
-ms.openlocfilehash: d0720c23e0831b446a92855383fab06b0bfacbc7
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: e66d896a7df48645dad39b5b978c4f7c2f8d8cb9
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39525467"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46954551"
 ---
 # <a name="how-to-disenroll-a-device-from-azure-iot-hub-device-provisioning-service"></a>Hogyan lehet egy eszköz, az Azure IoT Hub Device Provisioning Service disenroll
 
@@ -34,9 +34,12 @@ Ideiglenes tiltólistára tiltsa le a regisztrációs bejegyzés az eszközön:
 2. Az erőforrások listájában válassza ki a kiépítési szolgáltatás, amelyet az eszköz tiltólistára szeretne.
 3. Válassza ki az eszközkiépítési szolgáltatás **beléptetések kezelése**, majd válassza ki a **egyéni regisztrációk** fülre.
 4. Válassza ki a tiltólistára kívánt eszköz beléptetési bejegyzésében. 
-5. Görgessen le, és válassza ki **letiltása** a a **bejegyzés engedélyezése** váltson, és válassza **mentése**.  
 
-   [![Tiltsa le a portálon az egyéni regisztrációs bejegyzéssel](./media/how-to-revoke-device-access-portal/disable-individual-enrollment.png)](./media/how-to-revoke-device-access-portal/disable-individual-enrollment.png#lightbox)  
+    ![Válassza ki az egyéni regisztráció](./media/how-to-revoke-device-access-portal/select-individual-enrollment.png)
+
+5. A regisztrációs oldalon görgessen le, és válassza ki **letiltása** számára a **bejegyzés engedélyezése** váltson, és válassza ki **mentése**.  
+
+   ![Tiltsa le a portálon az egyéni regisztrációs bejegyzéssel](./media/how-to-revoke-device-access-portal/disable-individual-enrollment.png)
 
 A végleges tiltólistára az eszköz a regisztrációs bejegyzés törlésével:
 
@@ -47,7 +50,8 @@ A végleges tiltólistára az eszköz a regisztrációs bejegyzés törlésével
 5. Válassza ki **törlése** az ablakot, és válassza ki a felső **Igen** annak ellenőrzéséhez, hogy el kívánja távolítani a regisztrációt. 
 
    ![A portál az egyéni regisztrációs bejegyzés törlése](./media/how-to-revoke-device-access-portal/delete-individual-enrollment.png)
-    
+
+
 Az eljárás befejezése után megtekintheti a bejegyzés el lett távolítva, az egyéni regisztrációk listájából.  
 
 ## <a name="blacklist-an-x509-intermediate-or-root-ca-certificate-by-using-an-enrollment-group"></a>A regisztrációs csoportot egy köztes X.509 vagy a legfelső szintű Hitelesítésszolgáltatói tanúsítványt tiltólistára
@@ -91,14 +95,18 @@ A tiltólistára egy adott eszköz egy regisztrációs csoportnak, kövesse az a
 1. Jelentkezzen be az Azure Portalon, és válassza **összes erőforrás** a bal oldali menüből.
 2. Az erőforrások listájában válassza ki a kiépítési szolgáltatás, amely tartalmazza a regisztrációs csoport a tiltólistára kívánt eszköz.
 3. Válassza ki az eszközkiépítési szolgáltatás **beléptetések kezelése**, majd válassza ki a **egyéni regisztrációk** fülre.
-4. Válassza ki a **Hozzáadás** gombra az oldal tetején. 
-5. Válassza ki **X.509** az eszközhöz, és töltsön fel az eszköz tanúsítványt az igazolási mechanizmusként. Ez az az aláírt végfelhasználói tanúsítvány telepítve az eszközön. Az eszköz-hitelesítési tanúsítványok létrehozásához használja azt.
-6. A **IoT Hub-Eszközazonosító**, adja meg az Azonosítót az eszközhöz. 
-7. Válassza ki **letiltása** a a **bejegyzés engedélyezése** váltson, és válassza ki **mentése**. 
+4. Válassza ki a **egyéni regisztráció hozzáadása** gombra az oldal tetején. 
+5. Az a **regisztráció hozzáadása** lapon jelölje be **X.509** elemet az igazolási **mechanizmus** az eszközhöz.
+
+    Töltse fel az eszköz tanúsítványt, és adja meg az eszköz azonosítója, az eszköz a tiltólistán lehet. A tanúsítvány használata az aláírt végfelhasználói tanúsítvány telepítve az eszközön. Az eszköz, a végfelhasználói önaláírt tanúsítványt használ.
+
+    ![Állítsa be a Feketelistára tett eszköz tulajdonságai](./media/how-to-revoke-device-access-portal/disable-individual-enrollment-in-enrollment-group-1.png)
+
+6. Alján görgessen a **regisztráció hozzáadása** lapon, és válassza **letiltása** a a **bejegyzés engedélyezése** váltson, és válassza ki **mentése**. 
 
     [![Használata le van tiltva az egyéni regisztrációs bejegyzés csoportregisztráció a portálon az eszköz letiltása](./media/how-to-revoke-device-access-portal/disable-individual-enrollment-in-enrollment-group.png)](./media/how-to-revoke-device-access-portal/disable-individual-enrollment-in-enrollment-group.png#lightbox)
 
-A regisztráció sikeresen létrehozásakor jelennek meg az eszköz megjelenik a **egyéni regisztrációk** fülre.
+A regisztráció sikeresen létrehozásakor megjelenik a letiltott eszközök regisztrálásával visszalépve megtekintheti a **egyéni regisztrációk** fülre. 
 
 ## <a name="next-steps"></a>További lépések
 

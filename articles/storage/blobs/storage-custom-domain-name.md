@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 06/26/2018
 ms.author: tamram
 ms.component: blobs
-ms.openlocfilehash: 5fd823e9105157f8292d5a9554850b0f4338a392
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.openlocfilehash: beacb39752b2af51aba4ddeb41c9bff68803df1b
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39398852"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46954772"
 ---
 # <a name="configure-a-custom-domain-name-for-your-azure-storage-account"></a>Az Azure Storage-fiókhoz tartozó egyéni tartománynév konfigurálása
 
@@ -118,7 +118,7 @@ Hajtsa végre a következő eltávolítani az egyéni tartomány beállítása a
 
 Az egyéni tartomány sikeresen el lett távolítva, látni fogja a portal értesítése arról, hogy a tárfiók frissítése sikerült.
 
-### <a name="azure-cli-20"></a>Azure CLI 2.0
+### <a name="azure-cli"></a>Azure CLI
 
 Használja a [storage-fiók frissítése az](https://docs.microsoft.com/cli/azure/storage/account#az_storage_account_update) CLI parancsot, és adjon meg egy üres karakterláncot (`""`) számára a `--custom-domain` argumentum értéke egy egyéni tartomány regisztráció eltávolítása.
 

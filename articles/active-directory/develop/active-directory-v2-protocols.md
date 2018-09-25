@@ -13,26 +13,26 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/22/2018
+ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 645ce394c09f5cdd9f45b085e8d86cdc07ee9158
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: 4245cd4cf1f67007ced190e15d95929d854e303a
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39591332"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46992745"
 ---
 # <a name="v20-protocols---oauth-20--openid-connect"></a>v2.0 protokoll – az OAuth 2.0 és OpenID Connect
+
 A v2.0-végpontra is használhatja az Azure AD identitás--szolgáltatásként az iparági szabványos protokollok, OpenID Connect és az OAuth 2.0. Szabványokkal kompatibilis a szolgáltatás pedig finom eltérések ezeket a protokollokat bármely két megvalósítása között lehet. Az adatok itt lesznek lehet hasznos, ha úgy dönt, hogy a kód írása közvetlenül elküldött & kezelése a HTTP-kérelmek vagy használja a 3. fél nyílt forráskódú kódtár, nem pedig az egyik a [nyissa meg a forráskódtárak](reference-v2-libraries.md).
 
 > [!NOTE]
 > Nem minden Azure Active Directory-forgatókönyvet és funkciót támogatja a v2.0-végpontra. Annak megállapításához, ha a v2.0-végpont használja, olvassa el [v2.0 korlátozások](active-directory-v2-limitations.md).
->
->
 
-## <a name="the-basics"></a>Alapismeretek
+## <a name="the-basics"></a>Az alapok
+
 A gyakorlatilag az összes OAuth és OpenID Connect folyamatok találhatók négy felek részt az exchange:
 
 ![Az OAuth 2.0-szerepkörök](../../media/active-directory-v2-flows/protocols_roles.png)
@@ -52,6 +52,7 @@ A v2.0-végpont használó alkalmazásokat kell regisztrálható [apps.dev.micro
 További részletekért ismerkedjen meg az [alkalmazások regisztrálásának folyamatával](quickstart-v2-register-an-app.md).
 
 ## <a name="endpoints"></a>Végpontok
+
 Regisztrálása után az alkalmazás kommunikál az Azure AD v2.0-végpontra való kérések küldésével:
 
 ```
@@ -71,15 +72,17 @@ Ha a `{tenant}` négy különböző értékek valamelyikét hajthatja végre:
 Hogyan kezelheti ezeket a végpontokat az bővebben az alábbi adott alkalmazás típusának kiválasztása.
 
 ## <a name="tokens"></a>Tokenek
+
 Az OAuth 2.0 és OpenID Connect v2.0 megvalósítását győződjön erősen igénybe veszi a tulajdonosi jogkivonatokat, beleértve a tulajdonosi jogkivonatokat JWTs-kiszolgálókként. A tulajdonosi jogkivonatot, amely hozzáférést biztosít a "tulajdonos" védett erőforrásokhoz való könnyű biztonsági jogkivonat. Ebben az értelemben a "tulajdonos" minden olyan entitás, amely a token is jelenthet. Bár egy entitás először hitelesítenie kell magát az Azure AD-fogadni a tulajdonosi jogkivonattal, ha a szükséges lépéseket a rendszer nem hajtja végre a biztonságos átvitelét és tárolását a jogkivonatot, hozzá, és egy nem kívánt entitás használják. Néhány biztonsági jogkivonatokat rendelkezik egy beépített mechanizmus megakadályozza az illetéktelen fél használja őket, amíg a tulajdonosi jogkivonatokat nem kell ezt a mechanizmust, és kell szállítani, például a transport layer security (HTTPS) biztonságos csatornán. A titkosítatlan továbbított tulajdonosi jogkivonattal, ha a man-a a középső támadás segítségével egy rosszindulatú fél beszerezni a jogkivonatot, és használja a védett erőforrások jogosulatlan hozzáférési. A biztonsági alapelveket alkalmazható, ha a tárolásával, sem a gyorsítótárazás a tulajdonosi jogkivonatokat későbbi használatra. Mindig győződjön meg arról, hogy az alkalmazás továbbítja, és biztonságosan tárolja a tulajdonosi jogkivonatokat. A tulajdonosi jogkivonatokat további biztonsági szempontokért lásd: [RFC 6750 5. szakasz](http://tools.ietf.org/html/rfc6750).
 
 További részletekért lásd a v2.0-végpont használt tokenek különböző típusú érhető el a [a v2.0-végpont jogkivonat referenciái](v2-id-and-access-tokens.md).
 
 ## <a name="protocols"></a>Protokollok
+
 Ha szeretné látni, néhány példa kérelmek, az egyik első lépései az alábbi oktatóanyagok. Mindegyik felel meg egy adott hitelesítési forgatókönyv. Ha az Ön számára a megfelelő folyamat megállapításához segítségre van szüksége, tekintse meg az [a típusú alkalmazásokat hozhat létre a v2.0-](v2-app-types.md).
 
-* [Mobil- és natív alkalmazás OAuth 2.0-val készíthet](v2-oauth2-auth-code-flow.md)
-* [Hozhat létre Web Apps Open ID Connect](v2-protocols-oidc.md)
+* [Az OAuth 2.0-val a mobil- és natív alkalmazás létrehozása](v2-oauth2-auth-code-flow.md)
+* [Az Open ID Connect web Apps-alkalmazások](v2-protocols-oidc.md)
 * [Az OAuth 2.0 Implicit folyamat egyoldalas alkalmazások fejlesztése](v2-oauth2-implicit-grant-flow.md)
-* [Build démonok vagy a kiszolgáló oldalán folyamatok az OAuth 2.0 ügyfél-hitelesítő adatok Flow](v2-oauth2-client-creds-grant-flow.md)
-* [A webes API-hoz, az OAuth 2.0-s más nevében Flow a jogkivonatokhoz](v2-oauth2-on-behalf-of-flow.md)
+* [Démonok vagy az OAuth 2.0 ügyfél hitelesítő adatai Flow-kiszolgáló oldalán folyamatok létrehozása](v2-oauth2-client-creds-grant-flow.md)
+* [A jogkivonatok lekérésére, webes API-t az OAuth 2.0--meghatalmazásos folyamat](v2-oauth2-on-behalf-of-flow.md)

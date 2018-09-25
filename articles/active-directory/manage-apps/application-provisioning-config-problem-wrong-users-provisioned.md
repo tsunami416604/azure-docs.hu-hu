@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/11/2017
+ms.date: 09/20/2018
 ms.author: barbkess
 ms.reviewer: asteen
-ms.openlocfilehash: 2c2dd2208cf910456fa8f94ca739b7ef8875d475
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: df32ed7a6d3bc0c9e349f576f5f48832bf9906dd
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44357118"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47041922"
 ---
 # <a name="wrong-set-of-users-are-being-provisioned-to-an-azure-ad-gallery-application"></a>A felhasználók megfelelővel lettek létrehozva egy Azure AD katalógusából származó alkalmazásba
 
@@ -109,7 +109,7 @@ Ha a kiépítés van beállítva, és a egy alkalmazás fut, új felhasználóka
 >
 >
 
-Csoportok kiépítése engedélyezve van, ha mindenképpen tekintse át a annak érdekében, hogy a megfelelő mezőben használatos a "egyező ID" attribútum-leképezéshez. Ez a megjelenítendő név vagy e-mail alias, a csoportot és annak tagjait nem építhető ki, ha a megfelelő tulajdonság nem üres, vagy nincs feltöltve az egy csoportot az Azure ad-ben.
+Csoportok kiépítése engedélyezve van, ha mindenképpen tekintse át a annak érdekében, hogy a megfelelő mezőben használatos a "egyező ID" attribútum-leképezéshez. Ez az egyező azonosító a megjelenítési név vagy e-mail-alias lehet. A csoportot és annak tagjait kiépítése nem történt-e a megfelelő tulajdonság üres vagy nem feltöltött csoport az Azure ad-ben.
 
 ## <a name="next-steps"></a>További lépések
 [Felhasználók átadásának és megszüntetésének automatizálása a SaaS-alkalmazásokban az Azure Active Directoryval](user-provisioning.md)

@@ -12,14 +12,18 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 11/16/2017
-ms.openlocfilehash: 4cf86466d5fca4f5095c67a8400643bff29bb56c
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ROBOTS: NOINDEX
+ms.openlocfilehash: a2867545e454e2b13360d87f5282e684753d6476
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35646096"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46994496"
 ---
 # <a name="troubleshooting-service-deployment-and-environment-setup"></a>Hibaelhárítási szolgáltatás üzembe helyezésének és a környezet beállítása
+
+[!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)]
+
 A következő információ segíthet a hiba okának megállapításához a modell felügyeleti környezetének beállítása során.
 
 ## <a name="model-management-environment"></a>Modell felügyeleti környezetének

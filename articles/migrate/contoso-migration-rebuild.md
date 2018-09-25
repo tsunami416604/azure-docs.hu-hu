@@ -5,14 +5,14 @@ services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 09/06/2018
+ms.date: 09/20/2018
 ms.author: raynew
-ms.openlocfilehash: 58ea0859af42f7614e69d1693bbd9f8e3a17ccb8
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: f0dc199f8a91ac06993f4ccbc9dff7dfad9f8a19
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44300545"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47042482"
 ---
 # <a name="contoso-migration-rebuild-an-on-premises-app-to-azure"></a>Contoso áttelepítése: az Azure-bA a helyszíni alkalmazás újraépítése
 
@@ -55,7 +55,7 @@ A Contoso felhőalapú csapat le az áttelepítés alkalmazáskövetelmények va
  - Az alkalmazás ne használja az IaaS-összetevőket. Minden kell kialakítani, PaaS, vagy a kiszolgáló nélküli szolgáltatások használatához.
  - Az app build futhat a cloud services, és a tárolókat a felhőben saját vállalati szintű tároló-beállításjegyzék kell tárolni.
  - Az API-szolgáltatás, amely kisállat fényképek kell lennie a pontos és megbízható a való világból, mivel a döntések az alkalmazás által a saját szállodák kell figyelembe. Bármely kisállat kapnak a hozzáférés engedélyezett a "Hotels" maradjon.
- - Fejlesztési és üzemeltetési folyamatok követelményeinek, Contoso fogja használni a Visual Studio Team Services (VSTS) az adatforrás kód Management (SCM), a Git-Adattárral.  Automatizált buildekig és kiadások használandó kód felépítéséhez és üzembe helyezése az Azure Web Apps, az Azure Functions és az AKS az.
+ - Fejlesztési és üzemeltetési folyamatok követelményeinek, Contoso fogja használni az Azure DevOps a forrás kód Management (SCM), a Git-Adattárral.  Automatizált buildekig és kiadások használandó kód felépítéséhez és üzembe helyezése az Azure Web Apps, az Azure Functions és az AKS az.
  - Különböző CI/CD-folyamatok háttérbeli mikroszolgáltatások, és a webhely az előtér van szükség.
  - A háttérszolgáltatások és az előtérbeli webes alkalmazás közötti váltás másik verzió van.  Ez a követelmény teljesítéséhez két különböző fejlesztési és üzemeltetési folyamatot telepíti azokat.
  - Contoso minden előtér webhely-üzembehelyezési jóváhagyásra van szüksége, és a CI/CD-folyamat meg kell adnia ezt.
@@ -81,7 +81,7 @@ Után rögzíthet célokat és követelményeket állapította meg, a Contoso te
 - A kisállat fénykép függvény a Cognitive Services Látástechnológia API és a cosmos DB modul.
 - A webhely háttérrendszere mikroszolgáltatások használatával lett összeállítva. Ezek kezelése pedig az Azure Kubernetes service (AKS) tárolókat fog települni.
 - Tárolók az Azure DevOps használatával jönnek létre, és az Azure Container Registry (ACR) leküldött.
-- Most Contoso manuális telepítése a webes alkalmazás és a függvény kódját a Visual Studio használatával.
+- Most Contoso fog manuális központi telepítése a webes alkalmazás és a függvény kódját a Visual Studio használatával
 - Mikroszolgáltatások telepíti egy PowerShell-parancsfájl, amely meghívja a Kubernetes parancssori eszközök használatával.
 
     ![Forgatókönyv-architektúra](./media/contoso-migration-rebuild/architecture.png) 
@@ -224,15 +224,15 @@ Contoso hoz létre az Azure DevOps-projekt, és konfigurálja a tároló létreh
     ![Azure DevOps](./media/contoso-migration-rebuild/vsts1.png) 
 
 
-3. A GitHub-adattárat importálja azokat.
+3. Importálják az [GitHub-adattárat](https://github.com/Microsoft/SmartHotel360-Azure-backend.git).
 
     ![Azure DevOps](./media/contoso-migration-rebuild/vsts2.png)
     
-4. A **készítése és kiadása**, hoznak létre egy új folyamatot az Azure Git-Adattárakkal használatával, az importált adatforrásként **smarthotel** tárház. 
+4. A **folyamatok**, kattintanak **összeállítása**, és hozzon létre egy új folyamatot az Azure Git-Adattárakkal használatával forrásként, a tárházból. 
 
     ![Azure DevOps](./media/contoso-migration-rebuild/vsts3.png)
 
-6. Egy üres folyamatot használ első lépésként válassza ki.
+6. Egy üres feladat használ első lépésként válassza ki.
 
     ![Azure DevOps](./media/contoso-migration-rebuild/vsts4.png)  
 
@@ -252,7 +252,7 @@ Contoso hoz létre az Azure DevOps-projekt, és konfigurálja a tároló létreh
 
     ![Azure DevOps](./media/contoso-migration-rebuild/vsts8.png)
 
-9. Az elérési útját kell adnia a **docket-compose.yaml** fájlban, az a **src** mappát a tárház. Szolgáltatás-lemezképeket, és a legújabb címke kiválasztásával. Mikor változik a művelet **szolgáltatás lemezképeket**, az Azure DevOps-feladat neve módosul a **automatikusan-szolgáltatások létrehozásához**
+9. Az elérési útját kell adnia a **docker-compose.yaml** fájlban, az a **src** mappát a tárház. Szolgáltatás-lemezképeket, és tartalmazza a legújabb címke válassza ki. Mikor változik a művelet **szolgáltatás lemezképeket**, az Azure DevOps-feladat neve módosul a **automatikusan-szolgáltatások létrehozásához**
 
     ![Azure DevOps](./media/contoso-migration-rebuild/vsts9.png)
 
@@ -303,7 +303,7 @@ Most a Contoso rendszergazdák tegye a következőket:
 
 - Az NGINX bejövőforgalom-vezérlőt a engedélyezik a bejövő forgalmat a szolgáltatások üzembe helyezése.
 - A mikroszolgáltatások üzembe az AKS-fürtöt.
-- Első lépésként, a VSTS használatával mikroszolgáltatásokat, frissítse a kapcsolati karakterláncokat. Ezután konfigurálja egy új VSTS-kiadási folyamatot, a mikroszolgáltatások üzembe helyezéséhez.
+- Első lépésként a mikroszolgáltatás-alapú Azure DevOps használatával, akkor frissítse a kapcsolati karakterláncokat. Ezután konfigurálja egy új Azure DevOps kiadási folyamatot, a mikroszolgáltatások üzembe helyezéséhez.
 - Az utasításokat a jelen szakasz használata a [SmartHotel360 – Azure-háttérrendszer](https://github.com/Microsoft/SmartHotel360-Azure-backend) adattárat.
 - Vegye figyelembe, hogy a konfigurációs beállításokat (például az Active Directory B2C-vel) némelyike nem terjed ki ebben a cikkben. Olvassa el ezeket a beállításokat a tárházon belüli további információt.
 
@@ -313,17 +313,14 @@ Ezek a folyamat létrehozása:
 
     ![Adatbázis-kapcsolatok](./media/contoso-migration-rebuild/back-pipe1.png)
 
-2. Nyissa meg a vsts-ben, és a a SmartHotel360 projektet, a **kiadásokban**, kattintanak **+ új adatcsatorna**.
+2. Nyissa meg az Azure DevOps, és a a SmartHotel360 projektet, a **kiadásokban**, kattintanak **+ új adatcsatorna**.
 
     ![Új adatcsatorna](./media/contoso-migration-rebuild/back-pipe2.png)
 
 3. Kattintanak **üres feladat** elindítani a folyamatot sablon nélkül.
+4. Ezek biztosítanak a szakaszt, és a folyamat nevét.
 
-    ![Üres projekt](./media/contoso-migration-rebuild/back-pipe3.png)
-
-4. Ezek biztosítanak a környezet és a folyamat nevét.
-
-      ![Környezet neve](./media/contoso-migration-rebuild/back-pipe4.png)
+      ![Fázis neve](./media/contoso-migration-rebuild/back-pipe4.png)
 
       ![Folyamat neve](./media/contoso-migration-rebuild/back-pipe5.png)
 
@@ -339,7 +336,7 @@ Ezek a folyamat létrehozása:
 
     ![Tevékenység hivatkozás](./media/contoso-migration-rebuild/back-pipe8.png)
 
-8. Új bevezetésének PowerShell feladat adnak hozzá, így futtathatók az Azure-környezet egy PowerShell-parancsfájlt.
+8. Azure PowerShell új feladat adnak hozzá, így futtathatók az Azure-környezet egy PowerShell-parancsfájlt.
 
     ![PowerShell az Azure-ban](./media/contoso-migration-rebuild/back-pipe9.png)
 
@@ -455,7 +452,7 @@ Az Azure Portalon a Contoso-rendszergazdák a Függvényalkalmazás üzembe hely
 
 2. Biztosítanak az alkalmazás nevét (**smarthotelpetchecker**). Azok az éles erőforráscsoport helyezze az alkalmazás **ContosoRG**. A üzemeltetési helyet beállítása **Használatalapú csomagban**, és az USA keleti RÉGIÓJA 2 régióban helyezze el az alkalmazást. Egy új storage-fiók létrejön, és a figyelés az Application Insights-példányt.
 
-    ![Függvényalkalmazás beállításai](./media/contoso-migration-rebuild/function-app2.png)
+    ![A függvényalkalmazás beállításai](./media/contoso-migration-rebuild/function-app2.png)
 
 
 3. Az alkalmazás telepítése után, keresse meg az alkalmazás címére, ellenőrizze, hogy sikeresen létrejött.
@@ -465,18 +462,18 @@ Az Azure Portalon a Contoso-rendszergazdák a Függvényalkalmazás üzembe hely
 
 Contoso-rendszergazdák az előtér-webhely két különböző projektek létrehozása. 
 
-1. A vsts-ben, akkor hozzon létre egy projektet **SmartHotelFrontend**.
+1. Az Azure DevOps, a projekt létrehozása **SmartHotelFrontend**.
 
     ![Előtér-projekt](./media/contoso-migration-rebuild/function-app1.png)
 
 2. Importálják az [előtér SmartHotel360](https://github.com/Microsoft/SmartHotel360-public-web.git) Git-adattár az új projektbe.
-3. A függvényalkalmazás, egy másik (SmartHotelPetChecker) VSTS-projekt létrehozása és importálása a [PetChecker](https://github.com/Microsoft/SmartHotel360-PetCheckerFunction ) Git-adattárat a projektbe.
+3. A függvényalkalmazás, egy másik (SmartHotelPetChecker) az Azure DevOps-projekt létrehozása és importálása a [PetChecker](https://github.com/Microsoft/SmartHotel360-PetCheckerFunction ) Git-adattárat a projektbe.
 
 ### <a name="configure-the-web-app"></a>A webalkalmazás konfigurálása
 
 Most a Contoso-rendszergazdák a webes alkalmazások, a Contoso erőforrások konfigurálását.
 
-1. Kapcsolódjon a vsts-ben, és klónozza az adattárat helyileg a fejlesztői gépen.
+1. Az Azure DevOps-projekt csatlakozhat, és klónozza az adattárat helyileg a fejlesztői gépen.
 2. A Visual Studióban akkor nyissa meg a mappát az adattárban lévő összes fájl megjelenítéséhez.
 
     ![Tárház-fájlok](./media/contoso-migration-rebuild/configure-webapp1.png)
@@ -513,52 +510,45 @@ Most a Contoso-rendszergazdák a webes alkalmazások, a Contoso erőforrások ko
 Contoso-rendszergazdák mostantól teheti közzé a webhelyén.
 
 
-1. Megnyitják a vsts-ben, majd a a **SmartHotelFrontend** projektre a **műveletek**, kattintanak **+ új adatcsatorna**.
-2. Kiválasztják **VSTS Git** forrásként.
-
-    ![Új adatcsatorna](./media/contoso-migration-rebuild/vsts-publishfront1.png)
-
+1. Megnyitja az Azure DevOps, majd a a **SmartHotelFrontend** projektre a **műveletek**, kattintanak **+ új adatcsatorna**.
+2. Kiválasztják **Azure DevOps Git** forrásként.
 3. Akkor válassza ki a **ASP.NET Core** sablont.
 4. Tekintse át a folyamat, és ellenőrizze, hogy **webes projektek közzététele** és **közzétett projektek Zip** ki van jelölve.
 
     ![Folyamat beállításai](./media/contoso-migration-rebuild/vsts-publishfront2.png)
 
-5. A **eseményindítók**, engedélyezze a folyamatos integrációt, és adja hozzá a master ágról. Ez biztosítja, hogy minden egyes tim a megoldás a főágba véglegesített új kódot tartalmaz, a létrehozási folyamat elindul.
+5. A **eseményindítók**, engedélyezze a folyamatos integrációt, és adja hozzá a master ágról. Ez biztosítja, hogy minden alkalommal, amikor a megoldás a főágba véglegesített új kódot tartalmaz a buildelési folyamat elindul.
 
     ![Folyamatos integráció](./media/contoso-migration-rebuild/vsts-publishfront3.png)
 
 6. Kattintanak **várólistára & mentése** build elindításához.
 7. A létrehozás befejezése után ezek a kibocsátási folyamat használatával konfigurálása a **Azure App Service üzembe helyezési**.
-8. Egy környezet neve nyújtanak **átmeneti**.
+8. Szakaszban nevezze azokat **átmeneti**.
 
     ![Környezet neve](./media/contoso-migration-rebuild/vsts-publishfront4.png)
 
-9. Adjon hozzá egy összetevő, és válassza ki az imént konfigurált build.
+9. Ezek egy összetevő hozzáadása, és válassza ki az imént konfigurált build.
 
      ![Összetevő hozzáadása](./media/contoso-migration-rebuild/vsts-publishfront5.png)
 
-6. Kattintson a artifcat villámgyors bolt ikonjára, és folyamatos üzembe helyezés engedélyezése.
+10. Kattintson a Villám bolt ikonra az az összetevő, és folyamatos üzembe helyezés engedélyezése.
 
     ![Folyamatos üzembe helyezés](./media/contoso-migration-rebuild/vsts-publishfront6.png)
-
-7. A **környezet**, kattintanak **1. fázis, 1. feladat** alatt **átmeneti**.
-8. Miután kijelölte az előfizetés, és az alkalmazás neve, megnyitja a **üzembe helyezése az Azure App Service** feladat. Az üzemelő példány használatára van konfigurálva a **átmeneti** üzembe helyezési pont. Ez a kód áttekintésre és jóváhagyásra tárolóhelyen található automatikusan létrehozza.
+11. A **környezet**, kattintanak **1 feladat, 1. feladat** alatt **átmeneti**.
+12. Miután kijelölte az előfizetés, és az alkalmazás neve, megnyitja a **üzembe helyezése az Azure App Service** feladat. Az üzemelő példány használatára van konfigurálva a **átmeneti** üzembe helyezési pont. Ez a kód áttekintésre és jóváhagyásra tárolóhelyen található automatikusan létrehozza.
 
      ![Üzembe helyezési pont](./media/contoso-migration-rebuild/vsts-publishfront7.png)
 
-9. Az a **új kibocsátásában**, adnak hozzá egy új környezetben.
+13. Az a **folyamat**, adnak hozzá egy új szakaszt.
 
     ![Új környezet](./media/contoso-migration-rebuild/vsts-publishfront8.png)
 
-10. Kiválasztják **Azure App Service üzembe helyezési tárolóhellyel**, és nevezze el a ellenőrzésével **éles**.
-
-    ![Környezet neve](./media/contoso-migration-rebuild/vsts-publishfront9.png)
-
-11. Kattintson a **fázis 1, 2 feladatok**, és válassza ki az előfizetés, az app service-neve, és **átmeneti** tárolóhely.
+14. Kiválasztják **Azure App Service üzembe helyezési tárolóhellyel**, és nevezze el a ellenőrzésével **éles**.
+15. Kattintanak a **1 feladat, 2 feladatok**, és válassza ki az előfizetés, az app service-neve, és a **átmeneti** tárolóhely.
 
     ![Környezet neve](./media/contoso-migration-rebuild/vsts-publishfront10.png)
 
-12. Eltávolítja azokat a **üzembe helyezése az Azure App Service-tárolóhely** a folyamatból. Ez volt során ide kerülnek az előző lépésekben.
+16. Eltávolítja azokat a **üzembe helyezése az Azure App Service-tárolóhely** a folyamatból. Ez volt során ide kerülnek az előző lépésekben.
 
     ![Folyamat eltávolítása](./media/contoso-migration-rebuild/vsts-publishfront11.png)
 
@@ -571,8 +561,8 @@ Contoso-rendszergazdák mostantól teheti közzé a webhelyén.
     ![Üzembe helyezés utáni jóváhagyása](./media/contoso-migration-rebuild/vsts-publishfront13.png)
 
 15. A Buildelési folyamat azokat manuálisan elindít egy buildet. Ez elindítja az új kiadási folyamatot, amely telepíti a helyet az előkészítési pont. A Contoso, az üzembe helyezési pont URL-je **https://smarthotelcontoso-staging.azurewebsites.net/**.
-16. Miután a létrehozás befejezése, és a tárolóhely kiadását telepíti, a VSTS a fejlesztési vezető jóváhagyási e-mailek.
-17. A fejlesztési vezető kattintással **jóváhagyás megtekintése**, és jóváhagyhatja vagy elutasíthatja a kérelmet a VSTS-portálon.
+16. Miután a létrehozás befejezése, és a tárolóhely kiadását telepíti, az Azure DevOps a fejlesztési vezető jóváhagyási e-mailek.
+17. A fejlesztési vezető kattintással **jóváhagyás megtekintése**, és jóváhagyhatja vagy elutasíthatja a kérelmet az Azure DevOps-portálon.
 
     ![Jóváhagyó e-mailt](./media/contoso-migration-rebuild/vsts-publishfront14.png)
 
@@ -591,19 +581,19 @@ Contoso-rendszergazdák mostantól teheti közzé a webhelyén.
 
 Contoso-rendszergazdák a következő telepíteni az alkalmazást.
 
-1. A VSTS-projektben való csatlakozással helyileg az adattárat a fejlesztői gépen, klónozza.
+1. Csatlakozik az Azure DevOps-projekt, klónozza az adattárat a fejlesztői gépen helyileg.
 2. A Visual Studióban akkor nyissa meg a mappát az adattárban lévő összes fájl megjelenítéséhez.
 3. Megnyitja a **src/PetCheckerFunction/local.settings.json** fájlt, és adja hozzá a tárolás, a Cosmos-adatbázis és a Computer Vision API app-beállításokat.
 
     ![A függvény üzembe helyezése](./media/contoso-migration-rebuild/function5.png)
 
-4. A kódot, és szinkronizálhatja a vsts-ben, a módosításokat küld vissza.
-5. Adjon hozzá egy új Buildelési folyamat, és válassza ki **VSTS Git** a forrás.
+4. A kódot, és szinkronizálhatja vissza az Azure DevOps, hogyan lehet továbbítani rá a módosításokat.
+5. Adjon hozzá egy új Buildelési folyamat, és válassza ki **Azure DevOps Git** a forrás.
 6. Akkor válassza ki a **ASP.NET Core (.NET Framework)** sablont.
 7. Az alapértelmezett értékeket, a sablon elfogadja őket.
 8. A **eseményindítók**, majd válassza a **engedélyezze a folyamatos integrációt**, és kattintson a **várólistára & mentése** build indítása.
 9. A build sikeres lesz, miután azok hozhat létre egy kibocsátási folyamatok hozzáadása a **Azure App Service üzembe helyezési tárolóhellyel**.
-10. Ezek a környezet neve **éles**, és válassza ki az előfizetést. Függetlenül a **alkalmazástípus** való **függvény Ap**, és az app service néven **smarthotelpetchecker**.
+10. Ezek a környezet neve **éles**, és válassza ki az előfizetést. Függetlenül a **alkalmazástípus** való **Függvényalkalmazás**, és az app service néven **smarthotelpetchecker**.
 
     ![Függvényalkalmazás](./media/contoso-migration-rebuild/petchecker2.png)
 

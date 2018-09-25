@@ -8,20 +8,20 @@ keywords: ''
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: conceptual
-ms.date: 09/16/2018
+ms.date: 09/22/2018
 ms.author: glenga
-ms.openlocfilehash: f7299b9193c5ab24431feb9c73a0a3cf97596da3
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: 4e40a731530e9423c7be6f2e2449aad970bb327c
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45734941"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47040244"
 ---
 # <a name="app-settings-reference-for-azure-functions"></a>Az Azure Functions – alkalmazásbeállítási referencia
 
 Alkalmazásbeállításokat a függvényalkalmazáshoz, amelyek befolyásolják, hogy a függvényalkalmazás a függvények globális konfigurációs beállításokat tartalmaznak. Ha helyileg futtatja, ezeket a beállításokat a környezeti változók találhatók. Ez a cikk az alkalmazásbeállításokat a függvényalkalmazások sorolja fel.
 
-[! BELEFOGLALÁS [Függvényalkalmazás-beállításokat] (.. /.. /includes/Functions-App-Settings.md]
+[!INCLUDE [Function app settings](../../includes/functions-app-settings.md)]
 
 Egyéb globális konfigurációs lehetőségek a [host.json](functions-host-json.md) fájl és a [local.settings.json](functions-run-local.md#local-settings-file) fájlt.
 
@@ -40,6 +40,9 @@ Nem kötelező tárfiók kapcsolati sztringje naplók tárolására, és azokat 
 |Kulcs|Mintaérték|
 |---|------------|
 |AzureWebJobsDashboard|DefaultEndpointsProtocol = https; AccountName = [name]; AccountKey = [kulcs]|
+
+> [!TIP]
+> A teljesítmény és felhasználói élményt érdekében javasolt használni állítani az APPINSIGHTS_INSTRUMENTATIONKEY és az App Insights AzureWebJobsDashboard helyett
 
 ## <a name="azurewebjobsdisablehomepage"></a>AzureWebJobsDisableHomepage
 
@@ -111,11 +114,19 @@ A használt TypeScript-fordítóprogram elérési útja. Ha szeretné az alapér
 
 ## <a name="functionsextensionversion"></a>FÜGGVÉNYEK\_BŐVÍTMÉNY\_VERZIÓ
 
-A függvényalkalmazás használata az Azure Functions futtatókörnyezettel verziója. A főverzió tilde azt jelenti, hogy a főverzió (például "~ 1") legújabb verzióját használja. Érhetők el ugyanazon új verziók, automatikusan települ a függvényalkalmazáshoz. Alkalmazás rögzítése a egy adott verziót, használja a teljes verziószám (például "1.0.12345"). Alapértelmezett érték a "~ 1".
+A függvényalkalmazás használata az Azure Functions futtatókörnyezettel verziója. A főverzió tilde azt jelenti, hogy jelentős 2-es verziójú (például "~") legújabb verzióját használja. Érhetők el ugyanazon új verziók, automatikusan települ a függvényalkalmazáshoz. Alkalmazás rögzítése a egy adott verziót, használja a teljes verziószám (például "2.0.12345"). Alapértelmezett érték a "~ 2".
 
 |Kulcs|Mintaérték|
 |---|------------|
-|FÜGGVÉNYEK\_BŐVÍTMÉNY\_VERZIÓ|~1|
+|FÜGGVÉNYEK\_BŐVÍTMÉNY\_VERZIÓ|KB. 2|
+
+## <a name="functionsworkerruntime"></a>FÜGGVÉNYEK\_FELDOLGOZÓ\_MODUL
+
+A nyelvi feldolgozói modul betöltése a függvényalkalmazáshoz.  Ez felel meg a nyelvet, az alkalmazásban (például "dotnet") használja. Functions több nyelven is szüksége lesz, ha közzétesszük őket, több alkalmazás, amelyek mindegyike egy megfelelő értéket a worker futásidejű.  Érvényes értékek a következők `dotnet`, `node`, és `java`.
+
+|Kulcs|Mintaérték|
+|---|------------|
+|FÜGGVÉNYEK\_FELDOLGOZÓ\_MODUL|DotNet|
 
 ## <a name="websitecontentazurefileconnectionstring"></a>WEBSITE_CONTENTAZUREFILECONNECTIONSTRING
 
@@ -138,19 +149,19 @@ A használatalapú csomagok csak. A fájl elérési útja a függvény kódját 
 A függvényalkalmazás lehet horizontálisan-példányok maximális száma. Alapértelmezett érték a nincs korlátozva.
 
 > [!NOTE]
-> Ez a beállítás olyan előzetes verziójú funkció.
+> Ez a beállítás nem egy előzetes verziójú funkció - és csak megbízható if értéke < = 5
 
 |Kulcs|Mintaérték|
 |---|------------|
-|WEBHELY\_MAXIMÁLIS\_DINAMIKUS\_ALKALMAZÁS\_MÉRETEZÉSI\_KI|10|
+|WEBHELY\_MAXIMÁLIS\_DINAMIKUS\_ALKALMAZÁS\_MÉRETEZÉSI\_KI|5|
 
 ## <a name="websitenodedefaultversion"></a>WEBHELY\_CSOMÓPONT\_DEFAULT_VERSION
 
-Az alapértelmezett érték "6.5.0".
+Az alapértelmezett érték "8.11.1".
 
 |Kulcs|Mintaérték|
 |---|------------|
-|WEBHELY\_CSOMÓPONT\_DEFAULT_VERSION|6.5.0|
+|WEBHELY\_CSOMÓPONT\_DEFAULT_VERSION|8.11.1|
 
 ## <a name="websiterunfrompackage"></a>WEBHELY\_FUTTATÁSA\_FROM\_CSOMAG
 

@@ -4,18 +4,18 @@ titleSuffix: Azure
 description: Az előre összeállított tartományok, amelyek előre elkészített gyűjteménye szándékokat és entitásokat a Language Understanding Intelligent Services (LUIS) referenciája.
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 06/20/2018
 ms.author: diberry
-ms.openlocfilehash: 36e527f9afdce58475ca4c3c6e54ce393c48c983
-ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
+ms.openlocfilehash: f424abd339bda6c29079e3d286cbe96593f16f52
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39238896"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47040040"
 ---
 # <a name="prebuilt-domain-reference"></a>Előre összeállított tartományhivatkozás
 Ez az útmutató információkkal szolgál a [előre összeállított tartományok](luis-how-to-use-prebuilt-domains.md), amely gyűjteményei előre összeállított szándékok és entitások, amelyek a LUIS kínál.
@@ -180,7 +180,7 @@ Az események tartományban szándékok biztosít, és lefoglalási jegyeket, Ko
 | Cím | Az esemény helyszíne vagy címe. |Rendszert futtató Palo Alto<br/>300 112th Ave képlet használata <br/> Seattle |
 | Name (Név) | Egy esemény neve.|Az a Park Shakespeare|
 | PlaceName| Az esemény hely nevét.|Louvre<br/>Opera ház<br/>Broadway|
-| PlaceType | A hely típusa az esemény tárolandók.|Cafe<br/>Terület<br/>Részletes ismertetés|
+| PlaceType | A hely típusa az esemény tárolandók.|Kávéház<br/>Terület<br/>Részletes ismertetés|
 | Típus | Az esemény típusa.|Concert<br/>Sport-játék|
 
 ## <a name="fitness"></a>Alkalmasságát 
@@ -197,7 +197,7 @@ A mentességre tartományban szándékok és entitások mentességre tevékenys�
 ### <a name="entities"></a>Entitások
 | Entitás neve | Leírás | Példák |
 | ---------------- |-----------------------|----|
-| Tevékenységtípus | Nyomon követő tevékenység típusa. |Futtassa a következőt:<br/>Az útmutató<br/>Úszni<br/>Ciklus |
+| Tevékenységtípus | Nyomon követő tevékenység típusa. |Futtassa a következőt:<br/>Gyaloglás<br/>Úszni<br/>Ciklus |
 | Élelmiszer | Élelmiszer mentességre alkalmazásban nyomon követéséhez egy típusa. |Banán<br/>Lazacvörös<br/>Fehérjék rázó|
 | MealType| Állapot és a valamilyen alkalmazásban nyomon dara típusa.|A reggeli<br/>Vacsora<br/>Ebéd<br/>Supper|
 | Mérés| Idő, a távolságot vagy a súly alkalmasságra vagy egészségügyi alkalmazásban használható méréseket típusát.|Adja meg kilométerben<br/>Mérföld<br/>perc<br/>Kg|
@@ -217,7 +217,7 @@ A játék tartományban szándékok és entitások egy több résztvevős játé
 ### <a name="entities"></a>Entitások
 | Entitás neve | Leírás | Példák |
 | ---------------- |-----------------------|----|
-| Kapcsolatfelvétel| Több résztvevős játék használata a kapcsolattartó nevét.|Carol<br/>Jim|
+| Kapcsolattartó| Több résztvevős játék használata a kapcsolattartó nevét.|Carol<br/>Jim|
 
 
 ## <a name="homeautomation"></a>HomeAutomation 
@@ -234,7 +234,7 @@ A HomeAutomation tartományban szándékok és entitások intelligens otthoni es
 | Entitás neve | Leírás | Példák |
 | ---------------- |-----------------------|----|
 | Eszköz | Eszköz, amely be vagy ki kell kapcsolni egy típusa.|kávét készítő<br/>Thermostat<br/>lámpa|
-| Művelet | Az eszköz beállítása állapota.|zárolás<br/>megnyitás<br/>be<br/>kikapcsolva|
+| Művelet | Az eszköz beállítása állapota.|zárolás<br/>nyitás<br/>be<br/>kikapcsolva|
 | Hely | A hely vagy az eszköz a helyiségben.|nappali<br/>szobája<br/>megjelenítő kijelzőket a konyhai|
 
 ## <a name="movietickets"></a>MovieTickets 
@@ -430,13 +430,13 @@ restart|
 | Levegőben | A levegőben hely.|gyerek mobilbarát<br/>az alkalmi éttermi<br/>sporty|
 | Cuisine | Egy hely cuisine. |Mediterrán<br/>olasz<br/>Indiai|
 | DestinationAddress| A célhely vagy címe.|Rendszert futtató Palo Alto<br/>300 112th Ave képlet használata<br/>Seattle|
-| DestinationPlaceName| A cél, amely egy üzleti, vendéglátás, nyilvános vonzás vagy intézmény neve.|Közép-India park<br/>safeway<br/>walmart|
-| DestinationPlaceType | A cél, amely egy helyi üzleti, vendéglátás, nyilvános vonzás vagy intézmény típusa. |Éttermek<br/>Opera<br/>mozi|
+| DestinationPlaceName| A cél, amely egy üzleti, vendéglátás, nyilvános vonzás vagy intézmény neve.|Közép-India park<br/>Safeway<br/>Walmart|
+| DestinationPlaceType | A cél, amely egy helyi üzleti, vendéglátás, nyilvános vonzás vagy intézmény típusa. |Étterem<br/>Opera<br/>mozi|
 | Távolság | A távolság egy helyen.|15 mérföld<br/>5 mérföld<br/>10 mérföld távolságban|
 | MealType | Például a reggeli vagy ebédszünetet beiktatni dara típusa. |A reggeli<br/>Vacsora<br/>Ebéd<br/>Supper|
 | OpenStatus | Azt jelzi, hogy egy helyen nyílt vagy lezárt.|Open program<br/>Lezárt<br/>megnyitása|
 | PlaceName | A hely neve.|Cheesecake gyári|
-| PlaceType | Hely típusa.|Cafe<br/>Terület<br/>Részletes ismertetés|
+| PlaceType | Hely típusa.|Kávéház<br/>Terület<br/>Részletes ismertetés|
 | PreferredRoute | Az előnyben részesített a felhasználó által megadott útvonal. | 101 <br/>202 <br/>401-es útvonal|
 | Product | A termék által egy helyen érhető el. | Ruhák<br/>Az ASR digitális fényképezőgépek<br/>Friss hal | 
 | PublicTransportationRoute | A nyilvános szállítás útvonal, amely a felhasználó keres neve. | Északkelet folyosó train<br/>3-szor Bus útvonal |
@@ -494,7 +494,7 @@ Table for 3 in Palo Alto at 7
 | Cuisine | Élelmiszer, cuisine vagy cuisine állampolgárság típusát. |kínai<br/>olasz<br/>Mexikói|
 | MealType | A Foglalás társított dara típus.|A reggeli<br/>Vacsora<br/>Ebéd<br/>Supper|
 | PlaceName | Egy helyi üzleti, vendéglátás, nyilvános vonzás vagy intézmény neve.|IHOP<br/>Cheesecake gyári<br/>Louvre|
-| PlaceType | Egy helyi üzleti, vendéglátás, nyilvános vonzás vagy intézmény típusa.|éttermek<br/>Opera<br/>mozi|
+| PlaceType | Egy helyi üzleti, vendéglátás, nyilvános vonzás vagy intézmény típusa.|Éttermek<br/>Opera<br/>mozi|
 | Minősítés | Egy hely vagy egy éttermi minősítése.|5 csillag<br/>3 csillag<br/>4 csillag|
 
 ## <a name="taxi"></a>Taxi 
@@ -521,9 +521,9 @@ Cancel my Uber
 | Cím| Foglalás-i taxik társított cím. |Rendszert futtató Palo Alto<br/>300 112th Ave képlet használata<br/>Seattle|
 | DestinationAddress| A célhely vagy címe. |Rendszert futtató Palo Alto<br/>300 112th Ave képlet használata<br/>Seattle|
 | DestinationPlaceName | A cél, amely egy helyi üzleti, vendéglátás, nyilvános vonzás vagy intézmény neve. |Közép-India Park<br/>Safeway<br/>Walmart|
-| DestinationPlaceType | A cél, amely egy helyi üzleti, vendéglátás, nyilvános vonzás vagy intézmény típusa. |Éttermek<br/>Opera<br/>mozi|
+| DestinationPlaceType | A cél, amely egy helyi üzleti, vendéglátás, nyilvános vonzás vagy intézmény típusa. |Étterem<br/>Opera<br/>mozi|
 | PlaceName | Helyi üzleti, vendéglátás, nyilvános vonzás vagy intézmény neve. |Közép-India Park<br/>Safeway<br/>Walmart|
-| PlaceType| A kérelem-i taxik foglalható le a hely típusa.|Éttermek<br/>Opera<br/>mozi|
+| PlaceType| A kérelem-i taxik foglalható le a hely típusa.|Étterem<br/>Opera<br/>mozi|
 | TransportationCompany | A szállítási szolgáltató neve.|Amtrak<br/>Acela<br/>Greyhound|
 | TransportationType | A szállítási típusa.|Busz<br/>Betanítás<br/>Vezetés|
 

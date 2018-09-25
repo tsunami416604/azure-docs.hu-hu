@@ -6,14 +6,14 @@ author: mahilleb-msft
 ms.service: cognitive-services
 ms.technology: speech
 ms.topic: article
-ms.date: 06/28/2018
+ms.date: 09/24/2018
 ms.author: mahilleb
-ms.openlocfilehash: d2c40935504f6c2d477eae1830e58bf782d28b11
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: 8485caeff3a7c96ed8f7403befac0026fae16e90
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46366200"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46987560"
 ---
 # <a name="regions-of-the-speech-service"></a>A beszédfelismerési szolgáltatás régiók
 
@@ -29,8 +29,7 @@ Lásd: [REST API-k](rest-apis.md) részleteiről.
 
 ## <a name="speech-sdk"></a>Beszéd SDK
 
-Az a [beszéd SDK](speech-sdk.md), régiók karakterláncként vannak megadva.
-Például, hogy paraméterként [SpeechFactory.FromSubscription](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechfactory.fromsubscription) beszéd használata a C# SDK-ban.
+Az a [beszéd SDK](speech-sdk.md), régiók karakterláncként vannak megadva (például, hogy paraméterként `SpeechConfig.FromSubscription` beszéd használata a C# SDK-ban).
 
 ### <a name="regions-for-speech-recognition-and-translation"></a>A beszédfelismerés és -fordítási régiók
 

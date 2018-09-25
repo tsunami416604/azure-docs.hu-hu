@@ -1,31 +1,33 @@
 ---
-title: Az Azure Cost Management költségvetések kezeléséhez |} A Microsoft Docs
-description: Ez a cikk segít hozhat létre és kezelhet a Cost Management költségvetése.
+title: Az Azure-ban a Cloudyn költségvetések kezeléséhez |} A Microsoft Docs
+description: Ez a cikk segít hozhat létre és kezelhet a Cloudyn költségvetése.
 services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 06/25/2018
+ms.date: 9/18/2018
 ms.topic: conceptual
 ms.service: cost-management
 manager: dougeby
 ms.custom: ''
-ms.openlocfilehash: 106e8f082d148ed9a8c58313177be81ee074a2c3
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: bbd232c819a11de691c4d3c3209273b064eddf62
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45578463"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46963432"
 ---
 # <a name="manage-budgets"></a>Költségvetések kezelése
 
-Költségvetés létrehozása és a költségvetés-alapú súgó a felhő cégirányítási és felelősségre vonhatóság riasztást küld. Ez a cikk segít gyorsan költségvetéshez létrehozása és kezelése őket a Cost Management – első lépések.
+Költségvetés létrehozása és a költségvetés-alapú súgó a felhő cégirányítási és felelősségre vonhatóság riasztást küld. Ez a cikk segítséget nyújt a létre gyorsan költségvetéshez, és azokat a Cloudyn kezelésének megkezdéséhez.
 
 Ha egy vállalati vagy MSP-fiókkal rendelkezik, használhatja a hierarchikus költség entitásstruktúrát havi költségvetés kvótákat rendelhet hozzá a különböző üzleti egységek, részlegek vagy bármely más költségentitás. Ha egy prémium szintű fiókkal rendelkezik, használhatja a költségvetés management szolgáltatásra, a rendszer ezután alkalmazza a teljes felhőalapú kiadások. Az összes költségvetés manuálisan hozzá vannak rendelve.
 
 Hozzárendelt költségvetése alapján, a költségvetés felhasznált aránya alapján küszöbérték riasztásokat állíthat be, és minden egyes küszöbérték súlyosságát határozza meg.
 
 Költségvetés szóló jelentésekben megtekintheti a hozzárendelt költségvetést. Felhasználók megtekinthetik, ha a költségkeret-beállítási keresztül, alatt, vagy a használat idővel rendelkező névértéken. Ha bejelöli **mezők megjelenítése/elrejtése** költség, a költségvetés, a összesített költségeit vagy a teljes fennmaradó is megtekintheti a költségvetés jelentés tetején.
+
+Az Azure Cost Management hasonló funkciókat kínál a Cloudyn. Az Azure Cost Management natív Azure cost management megoldás is. Segít a költségek elemzése, hozzon létre és kezelhetők költségvetése exportálhat adatokat, és tekintse át és optimalizálási ajánlásoknak pénzt takaríthat meg. A Cost Management költségvetése kapcsolatos további információkért lásd: [létrehozása és kezelése költségvetése](tutorial-acm-create-budgets.md).
 
 ## <a name="create-budgets"></a>Hozzon létre költségvetése
 
@@ -83,5 +85,5 @@ A a Cost VS-ben. Idő a jelentés felett költségvetési, kattintson a **művel
 
 ## <a name="next-steps"></a>További lépések
 
-- Cost Management már az első oktatóanyag még nem végezte el, ha olvasni a [tekintse át a használat és költségek](https://docs.microsoft.com/azure/cost-management/tutorial-review-usage).
-- Tudjon meg többet a [a Cost Management elérhető jelentések](use-reports.md).
+- Ha a Cloudyn már még nem végezte el az első oktatóanyaga, olvassa el, a [tekintse át a használat és költségek](tutorial-review-usage.md).
+- Tudjon meg többet a [elérhető a Cloudyn-jelentések](use-reports.md).

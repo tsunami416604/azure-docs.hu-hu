@@ -9,45 +9,43 @@ ms.component: bing-custom-search
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: v-brapel
-ms.openlocfilehash: 88bf82805ba46abf79b7899e0428a83485062302
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: 3666e92372e9bed80e5c0c7991dcac730cebb588
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39504967"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46967592"
 ---
 # <a name="call-bing-custom-search-endpoint-python"></a>Hívást a Bing Custom Search-végpont (Python)
 
-Ez a rövid útmutató bemutatja, hogyan keresési eredmények kérhet az egyéni keresőpéldányok: a Bing Custom Search-végpont meghívása a Python használatával. 
+Ez a rövid útmutató bemutatja, hogyan kérhet a keresési eredmények a Python használatával hívja meg a Bing Custom Search-végpont egyéni keresési példány. 
 
 ## <a name="prerequisites"></a>Előfeltételek
+
 A rövid útmutató elvégzéséhez a következőkre lesz szüksége:
 
-- Egy egyéni keresési példány. Lásd: [az első Bing Custom Search-példány létrehozása](quick-start.md).
+- Egy használatra kész egyéni keresési példány. Lásd: [az első Bing Custom Search-példány létrehozása](quick-start.md).
+- [Python](https://www.python.org/) telepítve.
+- Egy előfizetési kulcsot. Is kap egy előfizetési kulcsot, aktiválásakor a [az ingyenes próbaidőszak](https://azure.microsoft.com/try/cognitive-services/?api=bing-custom-search), vagy használhat egy díjköteles előfizetési kulcsot az Azure irányítópultján (lásd: [Cognitive Services API-fiók](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)).    
 
--  [Python](https://www.python.org/) telepítve.
-
-- A [Cognitive Services API-fiók](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) a **Bing Search APIs**. A [az ingyenes próbaidőszak](https://azure.microsoft.com/try/cognitive-services/?api=bing-custom-search) elegendő ehhez a gyors útmutatóhoz. Szüksége lesz a hozzáférési kulcsot, ha az ingyenes próbaverzió aktiválásának, vagy használhat egy díjköteles előfizetési kulcsot az Azure irányítópultján. 
 
 ## <a name="run-the-code"></a>A kód futtatása
 
-A Bing Custom Search végpont meghívására, kövesse az alábbi lépéseket:
+Ez a példa futtatásához kövesse az alábbi lépéseket:
 
-1. Hozzon létre egy mappát a kódot.
-
-2. Rendszergazdai parancssorból vagy egy terminálban keresse meg az imént létrehozott mappára.
-
-3. Telepítse a **kérelmek** python modult:
-
+1. Hozzon létre egy mappát a kódot.  
+  
+2. Rendszergazdai parancssorból vagy egy terminálban keresse meg az imént létrehozott mappára.  
+  
+3. Telepítse a **kérelmek** python modult:  
+  
     <pre>
     pip install pipenv
     pipenv install requests
-    </pre>
-    
-7. A fájl BingCustomSearch.py létrehozásához, és másolja a következő kód azt.
-
-8. Cserélje le **YOUR-SUBSCRIPTION-KEY** és **YOUR-CUSTOM-CONFIG-ID** a kulcs és a konfigurációs azonosítóval (lásd az 1. lépés).
-
+    </pre>  
+      
+4. Hozzon létre egy fájlt a mappában létrehozott BingCustomSearch.py, és másolja az alábbi kódot a fájlba. Cserélje le **YOUR-SUBSCRIPTION-KEY** és **YOUR-CUSTOM-CONFIG-ID** a subscriptioin kulcs és a konfiguráció azonosítója.  
+  
     ``` Python
     import json
     import requests
@@ -59,8 +57,10 @@ A Bing Custom Search végpont meghívására, kövesse az alábbi lépéseket:
     url = 'https://api.cognitive.microsoft.com/bingcustomsearch/v7.0/search?q=' + searchTerm + '&customconfig=' + customConfigId
     r = requests.get(url, headers={'Ocp-Apim-Subscription-Key': subscriptionKey})
     print(r.text)
-    ```
-9. Futtassa a kódot az alábbi paranccsal.
+    ```  
+  
+7. Futtassa a kódot az alábbi paranccsal.  
+  
     ```
     python BingCustomSearch.py
     ```

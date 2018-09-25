@@ -10,12 +10,13 @@ ms.component: translator-speech
 ms.topic: conceptual
 ms.date: 3/5/2018
 ms.author: v-jansko
-ms.openlocfilehash: 216a3caf9b4e6f3f512ba13361de9f3933f83b13
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ROBOTS: NOINDEX
+ms.openlocfilehash: 3c0d0e17026dc0c970138c30f83dc9eb98db4228
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45985145"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46950182"
 ---
 # <a name="languages-supported-by-the-translator-speech-api"></a>A Translator Speech API által támogatott nyelvek
 A következő nyelvek támogatottak beszédalapú fordítási. Ha mindkét nyelveket támogatja a tolmácsolás, beszédfelismerés, beszédfelismerési vagy Diktálás érhető el. Ha a célként megadott nyelv nem támogatott beszédalapú fordítási, szövegfordítás csak beszédfelismerés érhető el. 

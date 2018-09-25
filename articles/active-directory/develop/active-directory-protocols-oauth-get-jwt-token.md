@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 06/12/2018
 ms.author: routlaw
 ms.custom: aaddev
-ms.openlocfilehash: eb26101229ad60abae7a8a84f8dfa496488e84ba
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: d77af898d5baef4fa7970132b0eb8deddb8f68cb
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39579003"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46981797"
 ---
 # <a name="request-an-access-token-using-oauth-20-to-access-web-apis-and-applications-secured-by-azure-active-directory"></a>OAuth 2.0 használatával hozzáférés webes API-kat és alkalmazásokat az Azure Active Directory által biztosított hozzáférési jogkivonat kérése
 
@@ -59,7 +59,7 @@ A következő fejléceket szükség:
 | redirect_uri  | szükséges              | Az azonos redirect_uri használt értékkel beszerezni a authorization_code.                                                                                                                                                                                                                                                                                                                                                             |
 | client_secret | a web apps szükséges | Az alkalmazás titkos, amelyet az alkalmazás az alkalmazás regisztrációs portálon létrehozott. Ne használjon egy natív alkalmazást, mert client_secrets megbízhatóan nem tárolható az eszközökön. Web apps és a webes API-kat, amelynek a titkos ügyfélkódot tárolja biztonságos helyen a kiszolgálói oldalon lehetősége.  Ügyfél titkos kódok kell URL-kódolású elküldése előtt.                                                                                 |
 | code_verifier | választható              | Az azonos code_verifier a authorization_code beszerzéséhez használt. Szükséges, ha az engedélyezési kód engedélyezési kérésben PKCE használt. További információkért lásd: a [PKCE RFC](https://tools.ietf.org/html/rfc7636)                                                                                                                                                                                                                                                                                             |
-## <a name="handle-the-response"></a>A válasz kezeléséhez
+## <a name="handle-the-response"></a>A válasz kezelése
 
 Token sikeres válasz tartalmazni fogja a JWT jogkivonat és fog kinézni:
 
@@ -75,12 +75,12 @@ Token sikeres válasz tartalmazni fogja a JWT jogkivonat és fog kinézni:
 ```
 | Paraméter     | Leírás                                                                                                                                                                                                                                                                                                                                                                                                                                              |
 |---------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| access_token  | A kért hozzáférési jogkivonatot. Az alkalmazás a jogkivonat használatával hitelesítik magukat a védett erőforráshoz, például a webes API-t.                                                                                                                                                                                                                                                                                                                                    |
+| access_token  | A kért [hozzáférési jogkivonat](access-tokens.md). Az alkalmazás a jogkivonat használatával hitelesítik magukat a védett erőforráshoz, például a webes API-t.                                                                                                                                                                                                                                                                                                                                    |
 | token_type    | Typ tokenu értékét jelöli. Az egyetlen típus, amely támogatja az Azure ad-ben tulajdonosi                                                                                                                                                                                                                                                                                                                                                                           |
 | expires_in    | Mennyi ideig a hozzáférési jogkivonat érvénytelen (másodpercben).                                                                                                                                                                                                                                                                                                                                                                                                       |
 | scope         | A hatókörök, amely a access_token érvényes.                                                                                                                                                                                                                                                                                                                                                                                                         |
-| refresh_token | Az OAuth 2.0-s frissítési jogkivonatot. Az alkalmazás használhatja ezt a jogkivonatot a jelenlegi hozzáférési jogkivonat lejárata után szerzi be a további hozzáférési jogkivonatokat. Refresh_tokens hosszú élettartamú, és az erőforrásokhoz való hozzáférés megőrzése hosszabb ideig is használható. További részletekért tekintse meg a [v2.0 jogkivonat referenciái](v2-id-and-access-tokens.md). <br> **Megjegyzés:** csak a megadott if `offline_access` a kért hatókörhöz.                                               |
-| id_token      | Az előjel nélküli JSON webes jogkivonat (JWT). Az alkalmazásnak a bejelentkezett felhasználóval kapcsolatos információkat a token a szegmensek is dekódol. Az alkalmazás gyorsítótárazzák az értékeket, és megjelenítheti őket, de azt nem igazolható azokat bármilyen engedélyezési és biztonsági határokat. Id_tokens kapcsolatos további információkért lásd: a [v2.0-végpont jogkivonat referenciái](v2-id-and-access-tokens.md). <br> **Megjegyzés:** csak a megadott if `openid` a kért hatókörhöz. |
+| refresh_token | Az OAuth 2.0-s frissítési jogkivonatot. Az alkalmazás használhatja ezt a jogkivonatot a jelenlegi hozzáférési jogkivonat lejárata után szerzi be a további hozzáférési jogkivonatokat. Refresh_tokens hosszú élettartamú, és az erőforrásokhoz való hozzáférés megőrzése hosszabb ideig is használható. További részletekért tekintse meg a [v2.0-kód megadása referencia](v2-oauth2-auth-code-flow.md#refresh-the-access-token). <br> **Megjegyzés:** csak a megadott if `offline_access` a kért hatókörhöz.                                               |
+| id_token      | Az előjel nélküli JSON webes jogkivonat (JWT). Az alkalmazásnak a bejelentkezett felhasználóval kapcsolatos információkat a token a szegmensek is dekódol. Az alkalmazás gyorsítótárazzák az értékeket, és megjelenítheti őket, de azt nem igazolható azokat bármilyen engedélyezési és biztonsági határokat. Id_tokens kapcsolatos további információkért lásd: a [ `id_token reference` ](id-tokens.md). <br> **Megjegyzés:** csak a megadott if `openid` a kért hatókörhöz. |
 
 
 

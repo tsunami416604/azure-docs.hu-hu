@@ -11,14 +11,17 @@ ms.component: core
 ms.workload: data-services
 ms.topic: article
 ms.date: 01/12/2018
-ms.openlocfilehash: 654b2559518cd52978153310fbb1e89a91838a8a
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ROBOTS: NOINDEX
+ms.openlocfilehash: 6167e10219791466ca275ff02cc051e3227634e8
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35645780"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46980039"
 ---
 # <a name="how-to-use-microsoft-machine-learning-library-for-apache-spark"></a>Microsoft Machine Learning Library for Apache Spark használata
+
+[!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)]
 
 ## <a name="introduction"></a>Bevezetés
 
@@ -30,7 +33,7 @@ ms.locfileid: "35645780"
 ## <a name="prerequisites"></a>Előfeltételek
 
 Ez az útmutató elvégezhető, kell tennie:
-- [Az Azure Machine Learning Workbench telepítése](../service/quickstart-installation.md)
+- [Az Azure Machine Learning Workbench telepítése](quickstart-installation.md)
 - [Az Azure HDInsight Spark-fürt beállítása](https://docs.microsoft.com/azure/hdinsight/hdinsight-apache-spark-jupyter-spark-sql)
 
 ## <a name="run-your-experiment-in-docker-container"></a>A kísérlet futtatásához a Docker-tárolóban

@@ -3,19 +3,19 @@ title: Tudásbázis – QnA Maker tesztelése
 titlesuffix: Azure Cognitive Services
 description: A QnA Maker Tudásbázis tesztelése egy, a visszaadott válaszokat pontosságának javítása iteratív folyamat fontos részét képezi. A Tudásbázis is lehetővé teszi a Szerkesztés továbbfejlesztett Csevegés felületen tesztelheti.
 services: cognitive-services
-author: nstulasi
+author: tulasim88
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: qna-maker
 ms.topic: article
 ms.date: 09/12/2018
-ms.author: saneppal
-ms.openlocfilehash: d2b93e62513f256e151d3ab3b34d6dc6d9a49d79
-ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
+ms.author: tulasim
+ms.openlocfilehash: 6ce3fc774d23914ab150e1dc1371391fc9fc548b
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45542616"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47034385"
 ---
 # <a name="test-your-knowledge-base"></a>A Tudásbázis tesztelése
 

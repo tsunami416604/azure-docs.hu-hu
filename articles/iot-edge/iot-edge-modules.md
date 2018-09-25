@@ -8,12 +8,12 @@ ms.date: 02/15/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 9064e0da6dde6c4b30235adf771f06a4f25d709a
-ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
+ms.openlocfilehash: 76b0bab0f2eb34d7283d38eb0442f4f2f2083db3
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2018
-ms.locfileid: "42057229"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46995377"
 ---
 # <a name="understand-azure-iot-edge-modules"></a>Az Azure IoT Edge-modulok megismerése
 
@@ -67,7 +67,7 @@ Twin twin = await client.GetTwinAsync();
 
 ## <a name="offline-capabilities"></a>Offline képességeiről
 
-Az Azure IoT Edge az IoT Edge-eszközök offline műveleteket támogatja. Most ezeket a képességeket korlátozva, és további forgatókönyvek fejlesztenek. 
+Az Azure IoT Edge az IoT Edge-eszközök offline műveleteket támogatja. Most ezeket a képességeket korlátozva. 
 
 IoT Edge-modulok mindaddig, amíg az alábbi követelmények teljesülnek-e hosszabb ideig offline állapotban lehet: 
 
@@ -75,6 +75,8 @@ IoT Edge-modulok mindaddig, amíg az alábbi követelmények teljesülnek-e hoss
 * **Modulok hitelesítse magát újra, az offline állapotban az IoT Edge hub nem kell**. Modulok csak hitelesítheti az Edge hub, amely az IoT hub-aktív internetkapcsolat. Modulok kell újra hitelesíteni kell, ha azok bármilyen okból újra lesz indítva. Modulok továbbra is küldhet üzeneteket az Edge hub követően a SAS-token érvényessége lejárt. Amikor visszatér a kapcsolatot, ha az Edge hub egy új jogkivonatot kér a modult, és érvényesíti azt az IoT hubbal. Sikeres művelet esetén az Edge hub továbbítja a modul üzeneteket tárolt, még a üzeneteinek során a modul jogkivonat lejárt. 
 * **A modul közben az üzeneteket küldő offline esetén továbbra is működőképes kapcsolat folytatja**. Után az IoT hubhoz való csatlakozáshoz, az Edge hub kell érvényesítenie modul új jogkivonatot (Ha egy korábbi lejárt) előtt továbbíthatja a modul üzeneteket. Ha a modul nem érhető el új jogkivonatot biztosítani, az Edge hub tárolt üzenetek a modul nem cselekedhet. 
 * **Az Edge hub az üzenetek tárolására lemezterülettel rendelkezik**. Alapértelmezés szerint üzeneteket az Edge hub tároló fájlrendszer vannak tárolva. Nincs olyan konfigurációs beállítást adja meg az üzenetek tárolására helyette egy csatlakoztatott kötetre. Mindkét esetben szükség van a késleltetett kézbesítéséhez az IoT Hub az üzenetek tárolásához rendelkezésre álló terület.  
+
+További offline funkciók is elérhetők a nyilvános előzetes verzióban érhető el. További információkért lásd: [ismertetése az IoT Edge kiterjesztett offline képességeiről, eszközök, a modulok és a gyermek eszközök](offline-capabilities.md).
 
 ## <a name="next-steps"></a>További lépések
  - [Az Azure IoT Edge-futtatókörnyezet és architektúrájának ismertetése][lnk-runtime]

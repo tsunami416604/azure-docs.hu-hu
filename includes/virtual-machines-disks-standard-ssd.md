@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/14/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: a7a4e4b487c324bada818d4815f253110f7f7a60
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: f8ca716f4ab991fecca52ca2d5fed080e6f4c177
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "40234974"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47060466"
 ---
 # <a name="standard-ssd-managed-disks-for-azure-virtual-machine-workloads"></a>Standard SSD Managed Disks-Azure-beli virtuális gépek számítási feladataihoz
 
@@ -39,9 +39,12 @@ Az alábbi táblázat tartalmazza a jelenleg rendelkezésre állnak az Standard 
 |E10     |128 GiB         |Legfeljebb 500         |Másodpercenként legfeljebb 60 MiB         |
 |E15     |256 GiB         |Legfeljebb 500         |Másodpercenként legfeljebb 60 MiB         |
 |E20     |512 GiB         |Legfeljebb 500         |Másodpercenként legfeljebb 60 MiB         |
-|E30     |1024 GB         |Legfeljebb 500         |Másodpercenként legfeljebb 60 MiB         |
-|E40     |2048 giB         |Legfeljebb 500         |Másodpercenként legfeljebb 60 MiB         |
-|E50     |4095 giB         |Legfeljebb 500         |Másodpercenként legfeljebb 60 MiB         |
+|E30     |1 024 GB       |Legfeljebb 500         |Másodpercenként legfeljebb 60 MiB         |
+|E40     |2048 giB       |Legfeljebb 500         |Másodpercenként legfeljebb 60 MiB         |
+|E50     |4095 giB       |Legfeljebb 500         |Másodpercenként legfeljebb 60 MiB         |
+|E60     |Futtathat 8192 giB       |Akár 1300       |Másodpercenként legfeljebb 300 MiB        |
+|E70     |16 384 giB      |Legfeljebb 2000       |Másodpercenként akár 500 MiB        |
+|E80     |– 32 767 giB      |Legfeljebb 2000       |Másodpercenként akár 500 MiB        |
 
 Standard SSD-k úgy tervezték, egyszámjegyű ezredmásodperces késéseket nyújt a legtöbb i/o-műveletek és az IOPS és átviteli sebesség, akár a fenti táblázat ismerteti a korlátokat. Tényleges IOPS és átviteli sebesség függvénye néha a forgalmi minták. Standard SSD-k, mint a HDD-lemezek stabilabb teljesítményt biztosít a kisebb hálózati késést.
 

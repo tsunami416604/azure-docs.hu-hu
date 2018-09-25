@@ -1,21 +1,26 @@
 ---
 title: Az Azure Machine Learning hardveres gyorsítás FPGA-csomagja
 description: További információ az Azure Machine Learning-felhasználók számára, a python-csomagokat.
+services: machine-learning
 ms.service: machine-learning
 ms.component: core
-ms.topic: conceptual
+ms.topic: reference
 ms.reviewer: jmartens
 ms.author: tedway
 author: tedway
 ms.date: 05/07/2018
-ms.openlocfilehash: a81f5f811058f3c7940da79419b9801225716e6b
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ROBOTS: NOINDEX
+ms.openlocfilehash: 4f23e8987a3abd9cdace85b0a3dc52ca464245df
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "42056080"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46995431"
 ---
 # <a name="azure-machine-learning-hardware-acceleration-package"></a>Az Azure Machine Learning hardveres gyorsítás csomag
+
+>[!Note]
+>**Ez a cikk elavult.** Ez a csomag FPGA kivezettük. Ez a funkció támogatása az Azure Machine Learning SDK lett hozzáadva. A csomag támogatja a növekményes lejár. [A támogatási idősor megtekintése](overview-what-happened-to-workbench.md#timeline). Ismerje meg, készül frissíteni [FPGA támogatási](concept-accelerate-with-fpgas.md).
 
 Az Azure Machine Learning hardveres gyorsítás csomag egy Python pip telepíthető bővítmény az Azure Machine Learning, amely lehetővé teszi az adatszakértők és a Mesterségesintelligencia-fejlesztőknek, hogy gyorsan el:
 
@@ -29,7 +34,7 @@ Az Azure Machine Learning hardveres gyorsítás csomag egy Python pip telepíthe
 
 1. Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
-1. Létre kell hoznia egy Azure Machine Learning Modellkezelés-fiókot. A fiók létrehozásával kapcsolatos további információkért lásd: a [Azure Machine Learning gyors üzembe helyezés és a Workbench telepítési](../service/quickstart-installation.md) dokumentumot. 
+1. Létre kell hoznia egy Azure Machine Learning Modellkezelés-fiókot. A fiók létrehozásával kapcsolatos további információkért lásd: a [Azure Machine Learning gyors üzembe helyezés és a Workbench telepítési](../desktop-workbench/quickstart-installation.md) dokumentumot. 
 
 1. A csomag telepítve kell lennie. 
 

@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/21/2017
 ms.author: dimakwan
-ms.openlocfilehash: 90de671d8e57244765f1da439649e57485814533
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: 60b13c8284708ce46d62b6659b2631a4f551c2ab
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44051663"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46983113"
 ---
 # <a name="create-an-azure-cosmos-db-account-using-powershell"></a>Egy PowerShell-lel az Azure Cosmos DB-fiók létrehozása
 
-Ez az útmutató azt ismerteti, automatizált felügyelete az Azure Powershell-lel az Azure Cosmos DB-adatbázisfiókhoz a parancsokat. Fiókkulcsok és a feladatátvételi prioritások kezelésére szolgáló parancsokat is tartalmaz [többrégiós adatbázisfiókhoz][scaling-globally]. Az adatbázis-fiók frissítése lehetővé teszi módosítása konzisztencia házirendek és régiók hozzáadása/eltávolítása. Platformfüggetlen kezelése érdekében az Azure Cosmos DB-fiókot, vagy használhatja [Azure CLI-vel](cli-samples.md), a [erőforrás-szolgáltató REST API][rp-rest-api], vagy a [Azure Portalon ](create-sql-api-dotnet.md#create-account).
+Ez az útmutató azt ismerteti, automatizált felügyelete az Azure Powershell-lel az Azure Cosmos DB-adatbázisfiókhoz a parancsokat. Fiókkulcsok és a feladatátvételi prioritásokat a [többrégiós adatbázisfiókhoz] kezelésére szolgáló parancsokat is tartalmaz [terjesztése, adatok, globally.md]. Az adatbázis-fiók frissítése lehetővé teszi módosítása konzisztencia házirendek és régiók hozzáadása/eltávolítása. Platformfüggetlen kezelése érdekében az Azure Cosmos DB-fiókot, vagy használhatja [Azure CLI-vel](cli-samples.md), a [erőforrás-szolgáltató REST API][rp-rest-api], vagy a [Azure Portalon ](create-sql-api-dotnet.md#create-account).
 
 ## <a name="getting-started"></a>Első lépések
 
@@ -33,7 +33,7 @@ Kövesse a [telepítése és konfigurálása az Azure PowerShell-lel] [ powershe
 
 ## <a id="create-documentdb-account-powershell"></a> Egy Azure Cosmos DB-fiók létrehozása
 
-Ez a parancs lehetővé teszi, hogy hozzon létre egy Azure Cosmos DB-adatbázisfiók. Konfigurálja az új adatbázis-fiók vagy egyetlen régióban vagy [többrégiós] [ scaling-globally] az egy adott [konzisztencia-szabályzat](consistency-levels.md).
+Ez a parancs lehetővé teszi, hogy hozzon létre egy Azure Cosmos DB-adatbázisfiók. Konfigurálja az új adatbázis-fiók vagy az egyetlen régióban, vagy az [többrégiós] [terjesztése, adatok, globally.md] egy bizonyos [konzisztencia-szabályzat](consistency-levels.md).
 
     $locations = @(@{"locationName"="<write-region-location>"; "failoverPriority"=0}, @{"locationName"="<read-region-location>"; "failoverPriority"=1})
     $iprangefilter = "<ip-range-filter>"
@@ -60,7 +60,7 @@ Példa:
     New-AzureRmResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" -ApiVersion "2015-04-08" -ResourceGroupName "rg-test" -Location "West US" -Name "docdb-test" -Properties $CosmosDBProperties
 
 ### <a name="notes"></a>Megjegyzések
-* Az előző példában egy adatbázis-fiókot hoz létre két régióban. Akkor is egy adatbázis-fiók létrehozása az egyik régió (amely ki van jelölve, az írási régió, és a feladatátvételi prioritási értéke 0) vagy a több mint két régióban. További információkért lásd: [többrégiós adatbázisfiókhoz][scaling-globally].
+* Az előző példában egy adatbázis-fiókot hoz létre két régióban. Akkor is egy adatbázis-fiók létrehozása az egyik régió (amely ki van jelölve, az írási régió, és a feladatátvételi prioritási értéke 0) vagy a több mint két régióban. További információkért lásd: [többrégiós adatbázisfiókhoz] [terjesztése, adatok, globally.md].
 * A helyek, amelyben az Azure Cosmos DB általánosan elérhető a régióban kell lennie. Aktuális régiók listája, a megadott a [Azure-régiók lap](https://azure.microsoft.com/regions/#services).
 
 ## <a id="update-documentdb-account-powershell"></a> Frissítés az Azure Cosmos DB-adatbázisfiók

@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 09/13/2018
 ms.author: andret
 ms.custom: include file
-ms.openlocfilehash: 2e23a15a6bff81f0b48b703e516de8a1a1820972
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 02b36d8f8c8c9be2532b440bd9858766e8b524ca
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46293757"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47060686"
 ---
 ## <a name="set-up-your-project"></a>A projekt beállítása
 
@@ -47,7 +47,7 @@ Biztosan ehelyett töltse le ezt a mintát Android Studio project? [Töltse le a
 <!--start-collapse-->
 ### <a name="about-this-package"></a>A csomaggal kapcsolatos
 
-A fenti kód a csomag telepíti a Microsoft-hitelesítési tár. Az MSAL kezeli az összes jogkivonat műveleteket, köztük a beszerzéséhez, gyorsítótárazás, frissítése és törlése.  A jogkivonatok az API-k a Microsoft identity platform által védett eléréséhez szükséges.
+A fenti kód a csomag telepíti a Microsoft-hitelesítési tár. Az MSAL kezeli az összes jogkivonat műveleteket, köztük a beszerzéséhez, gyorsítótárazás, frissítése és törlése.  A Microsoft identity platform által védett API-k elérésére a jogkivonatok van szükség.
 <!--end-collapse-->
 
 ## <a name="create-the-apps-ui"></a>Az alkalmazás felhasználói felület létrehozása

@@ -3,19 +3,19 @@ title: Az API – QnA Maker GenerateAnswer metaadatok
 titleSuffix: Azure Cognitive Services
 description: QnA Maker segítségével adhat hozzá a metaadatokat, kulcs/érték párok formájában a kérdés-válasz csoportjai. Ezt az információt a felhasználói lekérdezések az eredmények szűréséhez és tárolására is használható információk követő témák használható.
 services: cognitive-services
-author: pchoudhari
+author: tulasim88
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: qna-maker
 ms.topic: article
 ms.date: 09/12/2018
-ms.author: pchoudh
-ms.openlocfilehash: d715707217803355aea35eece0a9963b0a213c65
-ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
+ms.author: tulasim88
+ms.openlocfilehash: eef26cf1f5a11d7dcd1fdc41747aac675e0bc528
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45542667"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47031084"
 ---
 # <a name="using-metadata-and-the-generateanswer-api"></a>Metaadatok és a GenerateAnswer API használatával
 

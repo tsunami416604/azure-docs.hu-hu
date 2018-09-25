@@ -7,12 +7,12 @@ ms.service: storage
 ms.topic: article
 ms.date: 04/26/2017
 ms.author: tamram
-ms.openlocfilehash: bf7dabc1c3765d86e7a0f87acaa6f06a68d3d530
-ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
+ms.openlocfilehash: e27be86a7a14a38c5083949a1a7255574d2d0dc6
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43782008"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46956081"
 ---
 # <a name="manage-anonymous-read-access-to-containers-and-blobs"></a>Tárolók és blobok névtelen olvasási hozzáférésének kezelése
 Engedélyezheti a névtelen, nyilvános olvasási hozzáférést a tárolóhoz és annak blobjaihoz, az Azure Blob storage-ban. Ezzel a módszerrel csak olvasási hozzáféréssel ezekhez az erőforrásokhoz a fiókkulcs megosztása nélkül, és anélkül, hogy egy közös hozzáférésű jogosultságkód (SAS) adhat meg.
@@ -32,7 +32,7 @@ A következő segítségével a tároló engedélyeinek beállítása:
 
 * [Azure Portal](https://portal.azure.com)
 * [Azure PowerShell](../common/storage-powershell-guide-full.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
-* [Azure CLI 2.0](../common/storage-azure-cli.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#create-and-manage-blobs)
+* [Azure CLI](../common/storage-azure-cli.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#create-and-manage-blobs)
 * Programozott módon a storage ügyfélkódtáraival vagy a REST API segítségével szerint
 
 ### <a name="set-container-permissions-in-the-azure-portal"></a>Az Azure Portalon a tároló engedélyeinek beállítása
@@ -128,7 +128,7 @@ Az alábbi táblázatban látható, hogy mely műveletek előfordulhat, hogy hí
 | A Blob lekérése |Összes |Összes |
 | A Blob tulajdonságainak lekérése |Összes |Összes |
 | A Blob tulajdonságainak megadása |Csak a tulajdonosa |Csak a tulajdonosa |
-| Blob metaadatainak beolvasása |Összes |Összes |
+| A Blob metaadatainak beolvasása |Összes |Összes |
 | Állítsa be a Blob metaadatai |Csak a tulajdonosa |Csak a tulajdonosa |
 | PUT letiltása |Csak a tulajdonosa |Csak a tulajdonosa |
 | (Csak a véglegesített blokkolja) blokk-lista lekérése |Összes |Összes |

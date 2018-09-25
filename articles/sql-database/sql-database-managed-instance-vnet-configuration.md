@@ -7,19 +7,19 @@ manager: craigg
 ms.service: sql-database
 ms.custom: managed instance
 ms.topic: conceptual
-ms.date: 09/18/2018
+ms.date: 09/20/2018
 ms.author: srbozovi
 ms.reviewer: bonova, carlrab
-ms.openlocfilehash: c2caa9ebbc3a4e6b9180466950775524986fd244
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: dfcd61abd9f995a9bb848c23143adb99b0620956
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46364567"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47042159"
 ---
 # <a name="configure-a-vnet-for-azure-sql-database-managed-instance"></a>Virtuális hálózat konfigurálása az Azure SQL Database felügyelt példány
 
-Az Azure SQL Database felügyelt példány (előzetes verzió) kell üzembe helyezni egy Azure-ban [virtuális hálózat (VNet)](../virtual-network/virtual-networks-overview.md). A központi telepítés lehetővé teszi, hogy a következő esetekben: 
+Az Azure SQL Database felügyelt példányain telepíteni kell egy Azure-ban [virtuális hálózat (VNet)](../virtual-network/virtual-networks-overview.md). A központi telepítés lehetővé teszi, hogy a következő esetekben: 
 - Felügyelt példány csatlakozik közvetlenül egy a helyszíni hálózatból 
 - Felügyelt példány csatlakozik a csatolt kiszolgáló vagy egy másik helyszíni adattár 
 - Felügyelt példány csatlakozik az Azure-erőforrások  
@@ -34,7 +34,7 @@ Tervezze meg, hogyan kívánja üzembe helyezni egy virtuális hálózat, az al�
 
    Ha azt tervezi, használja a meglévő virtuális hálózattal, módosítania, hogy a felügyelt példány megfeleljen a hálózati konfigurációt. További információkért lásd: [meglévő virtuális hálózat módosítása a felügyelt példány](#modify-an-existing-virtual-network-for-managed-instances). 
 
-   Ha azt tervezi, hozzon létre új virtuális hálózatot, [új virtuális hálózat létrehozása felügyelt példány](#create-a-new-virtual-network-for-managed-instances).
+   Ha azt tervezi, hozzon létre új virtuális hálózatot, [új virtuális hálózat létrehozása felügyelt példány](#create-a-new-virtual-network-for-a-managed-instance).
 
 ## <a name="requirements"></a>Követelmények
 
@@ -84,7 +84,7 @@ Ha azt tervezi, az alhálózaton belül több felügyelt példány üzembe helye
 > [!IMPORTANT]
 > További fejlesztések fog elavulnak számítási fent látható. 
 
-## <a name="create-a-new-virtual-network-for-managed-instance-using-azure-resource-manager-deployment"></a>A felügyelt példányhoz az Azure Resource Manager üzembe helyezése egy új virtuális hálózat létrehozása
+## <a name="create-a-new-virtual-network-for-a-managed-instance"></a>Hozzon létre egy új virtuális hálózatot a felügyelt példányhoz
 
 A létrehozása és konfigurálása virtuális hálózat legegyszerűbben az Azure Resource Manager üzembe helyezési sablon használata.
 
@@ -143,8 +143,6 @@ Alhálózat előkészítési három egyszerű lépésben történik:
 **Egyéni DNS-kiszolgáló konfigurálva van?** 
 
 Ha igen, tekintse meg [egy egyéni DNS konfigurálása](sql-database-managed-instance-custom-dns.md). 
-
-- Hozzon létre a szükséges útválasztási táblázatot, és társítsa azt: lásd: [hozzon létre a szükséges útválasztási táblázatot, és társítsa azt](#create-the-required-route-table-and-associate-it)
 
 ## <a name="next-steps"></a>További lépések
 

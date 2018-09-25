@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 08/01/2018
 ms.author: lakasa
 ms.component: common
-ms.openlocfilehash: f14ffc7bfbdabdd93e7743c7932dae1af7730e60
-ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
+ms.openlocfilehash: 6b73a802b186e5fcf2380f5f4c80c1bb67d253fa
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43781564"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46981865"
 ---
 # <a name="storage-service-encryption-using-customer-managed-keys-in-azure-key-vault"></a>Felhasználó által kezelt kulcsok használata az Azure Key Vaultban a Storage Service Encryption
 A Microsoft Azure számára fontos, hogy segítséget nyújt a szervezeti biztonsági és megfelelőségi követelmények kielégítése érdekében az adatok biztonságos megőrzésében. Egyik módja, hogy az Azure storage-platform védi az adatokat a keresztül Storage Service Encryption (SSE), amely titkosítja az adatokat, amikor a tárfiókba történő írása, és visszafejti az adatokat, lekérésekor. A titkosítási és visszafejtési automatikus, átlátható, és használja 256 bites [AES-titkosítás](https://wikipedia.org/wiki/Advanced_Encryption_Standard), egyik legerősebb Rejtjelek érhető el.
@@ -31,7 +31,7 @@ Miért érdemes létrehozni a saját kulcsok? Egyéni kulcsok nagyobb rugalmass�
 Felhasználó által kezelt kulcsok használata SSE, létrehozhat egy új kulcstartóba, és a kulcs, vagy használhatja egy meglévő kulcstároló és egy kulcsot. A storage-fiók és a key vault ugyanabban a régióban kell lennie, de különböző előfizetésekhez is lehetnek. 
 
 ### <a name="step-1-create-a-storage-account"></a>1. lépés: Tárfiók létrehozása
-Először hozzon létre egy storage-fiókot, ha még nincs ilyen. További információkért lásd: [hozzon létre egy új tárfiókot](storage-quickstart-create-account.md).
+Először hozzon létre egy storage-fiókot, ha még nincs ilyen. További információkért lásd: [hozzon létre egy tárfiókot](storage-quickstart-create-account.md).
 
 ### <a name="step-2-enable-sse-for-blob-and-file-storage"></a>2. lépés: A Blobok és fájlok tárolási engedélyezéséről
 Ahhoz, hogy az ügyfél által felügyelt kulcsokkal SSE, két Kulcsvédelmi szolgáltatás: a helyreállítható törlés és nem kiürítése, is engedélyezni kell az Azure Key Vaultban. Ezek a beállítások biztosítása érdekében a kulcsok nem lehet véletlenül vagy szándékosan törölve. A kulcsok a megőrzési időszak 90 nap, a felhasználók rosszindulatú vagy zsarolóprogram-támadások elleni védelem van beállítva.

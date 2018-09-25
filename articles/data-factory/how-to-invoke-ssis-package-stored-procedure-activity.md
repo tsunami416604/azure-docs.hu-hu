@@ -1,6 +1,6 @@
 ---
-title: A tárolt eljárási tevékenység - Azure SSIS-csomag futtatása |} Microsoft Docs
-description: Ez a cikk ismerteti, hogyan egy SQL Server Integration Services (SSIS) csomag futtatása az Azure Data Factory-folyamat a tárolt eljárási tevékenység használatával.
+title: SSIS-csomag futtatása a tárolt eljárási tevékenység – Azure |} A Microsoft Docs
+description: Ez a cikk ismerteti, hogyan futtathat egy SQL Server Integration Services (SSIS) csomag az Azure Data Factory-folyamatot a tárolt eljárási tevékenység használatával.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -13,29 +13,29 @@ ms.devlang: powershell
 ms.topic: conceptual
 ms.date: 04/17/2018
 ms.author: jingwang
-ms.openlocfilehash: 42abb5fdaf05424d5f39ecf4a2c88afcefd17312
-ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
+ms.openlocfilehash: 98a833667aa4073e05b94a62a3e3aea4355e8fb0
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2018
-ms.locfileid: "37084739"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46958969"
 ---
-# <a name="run-an-ssis-package-with-the-stored-procedure-activity-in-azure-data-factory"></a>Futtassa az SSIS-csomagot az Azure Data Factory a tárolt eljárási tevékenység
-Ez a cikk ismerteti, hogyan egy SSIS-csomag futtatása az Azure Data Factory-folyamat a tárolt eljárási tevékenység használatával. 
+# <a name="run-an-ssis-package-with-the-stored-procedure-activity-in-azure-data-factory"></a>A tárolt eljárási tevékenységgel az Azure Data Factory SSIS-csomag futtatása
+Ez a cikk ismerteti, hogyan futtathat egy SSIS-csomag az Azure Data Factory-folyamatot egy tárolt eljárási tevékenység használatával. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 ### <a name="azure-sql-database"></a>Azure SQL Database 
-Ez a cikk a forgatókönyv, amelyen az SSIS-katalógus Azure SQL-adatbázis. Egy Azure SQL felügyelt példányát (előzetes verzió) is használhatja.
+Ebben a cikkben található útmutatások követéséhez használja az Azure SQL database, amelyen az SSIS-katalógus. Egy Azure SQL Database felügyelt példánya is használhatja.
 
 ## <a name="create-an-azure-ssis-integration-runtime"></a>Azure SSIS integrációs modul létrehozása
-Ha még nem rendelkezik a részletes utasításokat a következő, hozzon létre egy Azure-SSIS-integrációs futásidejű a [oktatóanyag: telepítése SSIS-csomagok](tutorial-create-azure-ssis-runtime-portal.md).
+Hozzon létre egy Azure-SSIS integrációs modult, ha még nincs fiókja, a részletes utasításokat a következő a [oktatóanyag: üzembe SSIS-csomagok](tutorial-create-azure-ssis-runtime-portal.md).
 
-## <a name="data-factory-ui-azure-portal"></a>Data Factory felhasználói felület (Azure-portál)
-Ebben a szakaszban a Data Factory felhasználói felület egy tárolt eljárás tevékenység, amely hívja meg az SSIS-csomag létrehozása a Data Factory-folyamat használhat.
+## <a name="data-factory-ui-azure-portal"></a>Data Factory felhasználói felülete (Azure portal)
+Ebben a szakaszban a Data Factory felhasználói felülete egy tárolt eljárási tevékenység, amely SSIS-csomag elindítja a Data Factory-folyamatok létrehozásához használhatja.
 
 ### <a name="create-a-data-factory"></a>Data factory létrehozása
-Első lépés az adat-előállító létrehozása az Azure-portál használatával. 
+Első lépés az adat-előállító létrehozása az Azure portal használatával. 
 
 1. Indítsa el a **Microsoft Edge** vagy a **Google Chrome** böngészőt. A Data Factory felhasználói felületének használata jelenleg csak a Microsoft Edge-ben és a Google Chrome-ban támogatott.
 2. Lépjen az [Azure Portalra](https://portal.azure.com). 
@@ -56,7 +56,7 @@ Első lépés az adat-előállító létrehozása az Azure-portál használatáv
       - Kattintson az **Új létrehozása** elemre, és adja meg az erőforráscsoport nevét.   
          
     Az erőforráscsoportokkal kapcsolatos információkért tekintse meg a [Using resource groups to manage your Azure resources](../azure-resource-manager/resource-group-overview.md) (Erőforráscsoportok használata az Azure-erőforrások kezeléséhez) című cikket.  
-4. Válassza ki **V2** a a **verzió**.
+4. A **Verzió** résznél válassza a **V2** értéket.
 5. Válassza ki a Data Factory **helyét**. A legördülő listában csak a Data Factory által támogatott helyek jelennek meg. Az adat-előállítók által használt adattárak (Azure Storage, Azure SQL Database stb.) és számítási erőforrások (HDInsight stb.) más helyeken is lehetnek.
 6. Válassza a **Rögzítés az irányítópulton** lehetőséget.     
 7. Kattintson a **Create** (Létrehozás) gombra.
@@ -68,88 +68,88 @@ Első lépés az adat-előállító létrehozása az Azure-portál használatáv
     ![Data factory kezdőlap](./media/how-to-invoke-ssis-package-stored-procedure-activity/data-factory-home-page.png)
 10. Az Azure Data Factory felhasználói felület (UI) alkalmazás külön lapon történő elindításához kattintson az **Létrehozás és monitorozás** csempére. 
 
-### <a name="create-a-pipeline-with-stored-procedure-activity"></a>Hozzon létre egy folyamatot tárolt eljárási tevékenység
-Ebben a lépésben használatával a Data Factory felhasználói felületén hozzon létre egy folyamatot. A tárolt eljárás tevékenység hozzáadása a folyamat, és konfigurálja úgy, hogy a sp_executesql tárolt eljárás használatával futtassa a SSIS-csomag. 
+### <a name="create-a-pipeline-with-stored-procedure-activity"></a>Tárolt eljárási tevékenység rendelkező folyamat létrehozása
+Ebben a lépésben a Data Factory felhasználói felülete létrehoz egy folyamatot használja. Tárolt eljárás tevékenység hozzáadása a folyamatban, és konfigurálja azt az SSIS-csomag futtatása a sp_executesql tárolt eljárás használatával. 
 
-1. A get elindított oldalon kattintson **létrehozási folyamat**: 
+1. Az első lépések oldalán kattintson **folyamat létrehozása**: 
 
     ![Első lépések lap](./media/how-to-invoke-ssis-package-stored-procedure-activity/get-started-page.png)
-2. Az a **tevékenységek** eszközkészlet, bontsa ki a **általános**, és az egérrel **tárolt eljárás** tevékenység a csővezeték-Tervező felületére. 
+2. Az a **tevékenységek** eszközkészletben bontsa ki a **általános**, és húzza **tárolt eljárás** tevékenységet a folyamat tervezőfelületére. 
 
     ![Fogd és vidd tárolt eljárási tevékenység](./media/how-to-invoke-ssis-package-stored-procedure-activity/drag-drop-sproc-activity.png)
-3. A tárolt eljárás tevékenység tulajdonságai ablakban váltson a **SQL fiók** fülre, majd **+ új**. Kapcsolatot hoz létre az Azure SQL Database, amely futtatja az SSIS-katalógusban (adatbázis SSIDB). 
+3. A tárolt eljárási tevékenység tulajdonságok ablakában váltson a **SQL-fiók** fülre, majd **+ új**. Kapcsolatot hoz létre az Azure SQL Database üzemeltető az SSIS-katalógus (SSIDB-adatbázis). 
    
     ![Új társított szolgáltatás gomb](./media/how-to-invoke-ssis-package-stored-procedure-activity/new-linked-service-button.png)
 4. Az **Új társított szolgáltatás** ablakban végezze el az alábbi lépéseket: 
 
-    1. Válassza ki **Azure SQL adatbázis** a **típus**.
-    2. Válassza ki a **alapértelmezett** Azure integrációs futásidejű csatlakozni az Azure SQL Database, amelyen a `SSISDB` adatbázis.
-    3. Válassza ki az Azure SQL Database az SSISDB adatbázist üzemeltető a **kiszolgálónév** mező.
+    1. Válassza ki **az Azure SQL Database** a **típus**.
+    2. Válassza ki a **alapértelmezett** Azure integrációs modul csatlakozni az Azure SQL Database, amelyen a `SSISDB` adatbázis.
+    3. Válassza ki az Azure SQL Database, az SSISDB adatbázist üzemeltető a **kiszolgálónév** mező.
     4. Válassza ki **SSISDB** a **adatbázisnév**.
-    5. A **felhasználónév**, adja meg a nevét, a felhasználó, aki hozzáféréssel rendelkezik az adatbázishoz.
+    5. A **felhasználónév**, adja meg az adatbázishoz hozzáféréssel rendelkező felhasználó nevét.
     6. A **jelszó**, adja meg a felhasználó jelszavát. 
-    7. Tesztelje a kapcsolatot az adatbázis kattintva **tesztkapcsolat** gombra.
-    8. A társított szolgáltatás gombra kattintva mentse a **mentése** gombra. 
+    7. Az adatbázis kapcsolatának teszteléséhez kattintson **kapcsolat tesztelése** gombra.
+    8. A társított szolgáltatás mentéséhez kattintson a **mentése** gombra. 
 
         ![Azure SQL Database társított szolgáltatás](./media/how-to-invoke-ssis-package-stored-procedure-activity/azure-sql-database-linked-service-settings.png)
-5. A Tulajdonságok ablakban váltson a **tárolt eljárás** a lap a **SQL fiók** lapot, és hajtsa végre a következő lépéseket: 
+5. A Tulajdonságok ablakában váltson a **tárolt eljárás** lapról a **SQL-fiók** lapra, és kövesse az alábbi lépéseket: 
 
     1. Válassza a **Szerkesztés** elemet. 
-    2. Az a **tárolt eljárás neve** mezőbe írjon be `sp_executesql`. 
-    3. Kattintson a **+ új** a a **tárolt eljárás paramétereit** szakasz. 
+    2. Az a **tárolt eljárás neveként** mezőben adjon meg `sp_executesql`. 
+    3. Kattintson a **+ új** a a **tárolt eljárás paraméterei** szakaszban. 
     4. A **neve** adja meg a paraméter **utasításban**. 
     5. A **típus** adja meg a paraméter **karakterlánc**. 
-    6. A **érték** a paraméter adja meg a következő SQL-lekérdezést:
+    6. A **érték** paraméter, adja meg a következő SQL-lekérdezést:
 
-        Az SQL-lekérdezést, adja meg a megfelelő értékeket a **mappa_neve**, **projektnév**, és **csomag_neve** paraméterek. 
+        Az SQL-lekérdezésben, adja meg a megfelelő értékeit a **mappa_neve**, **projektnév**, és **csomag_neve** paramétereket. 
 
         ```sql
         DECLARE @return_value INT, @exe_id BIGINT, @err_msg NVARCHAR(150)    EXEC @return_value=[SSISDB].[catalog].[create_execution] @folder_name=N'<FOLDER name in SSIS Catalog>', @project_name=N'<PROJECT name in SSIS Catalog>', @package_name=N'<PACKAGE name>.dtsx', @use32bitruntime=0, @runinscaleout=1, @useanyworker=1, @execution_id=@exe_id OUTPUT    EXEC [SSISDB].[catalog].[set_execution_parameter_value] @exe_id, @object_type=50, @parameter_name=N'SYNCHRONIZED', @parameter_value=1    EXEC [SSISDB].[catalog].[start_execution] @execution_id=@exe_id, @retry_count=0    IF(SELECT [status] FROM [SSISDB].[catalog].[executions] WHERE execution_id=@exe_id)<>7 BEGIN SET @err_msg=N'Your package execution did not succeed for execution ID: ' + CAST(@exe_id AS NVARCHAR(20)) RAISERROR(@err_msg,15,1) END
         ```
 
         ![Azure SQL Database társított szolgáltatás](./media/how-to-invoke-ssis-package-stored-procedure-activity/stored-procedure-settings.png)
-6. Az adatcsatorna konfiguráció érvényesítése céljából kattintson **ellenőrzése** az eszköztáron. A **Folyamatérvényesítési jelentés** bezárásához kattintson a **>>** jelre.
+6. A folyamat konfiguráció érvényesítéséhez kattintson **ellenőrzése** az eszköztáron. A **Folyamatérvényesítési jelentés** bezárásához kattintson a **>>** jelre.
 
     ![Folyamat érvényesítése](./media/how-to-invoke-ssis-package-stored-procedure-activity/validate-pipeline.png)
-7. A feldolgozási sor közzétételére az adat-előállító kattintva **összes** gombra. 
+7. A folyamat közzétételére az adat-előállító kattintva **összes közzététele** gombra. 
 
     ![Közzététel](./media/how-to-invoke-ssis-package-stored-procedure-activity/publish-all-button.png)    
 
-### <a name="run-and-monitor-the-pipeline"></a>Futtathatja és figyelheti a folyamatot
-Ebben a szakaszban indít folyamatot futtató, és megfigyeli azt. 
+### <a name="run-and-monitor-the-pipeline"></a>Futtassa a és a folyamat figyelése
+Ebben a szakaszban a folyamat futásának aktiválásához, és megfigyeli azt. 
 
-1. Futtassa egy folyamat indításához kattintson **eseményindító** az eszköztáron, és kattintson **aktiválhatja most**. 
+1. Folyamat futásának aktiválásához kattintson **eseményindító** az eszköztáron, majd kattintson a **Aktiválás most**. 
 
     ![Aktiválás most](media/how-to-invoke-ssis-package-stored-procedure-activity/trigger-now.png)
 
 2. A **Folyamatfuttatás** ablakban kattintson a **Befejezés** gombra. 
-3. Váltson a bal oldali **Monitorozás** lapra. A Futtatás futószalag és egyéb információk (például futtassa Kezdés időpontja) mellett állapota látható. A nézet frissítéséhez kattintson a **Frissítés** parancsra.
+3. Váltson a bal oldali **Monitorozás** lapra. Megjelenik a folyamat futtatása és egyéb információk (például a Futtatás kezdő időpont) és annak állapotát. A nézet frissítéséhez kattintson a **Frissítés** parancsra.
 
     ![Folyamatfuttatások](./media/how-to-invoke-ssis-package-stored-procedure-activity/pipeline-runs.png)
 
-3. Kattintson az **Actions** (Műveletek) oszlopban található **View Activity Runs** (Tevékenységfuttatások megtekintése) hivatkozásra. Futtassa az adatcsatorna esetében van (a tárolt eljárási tevékenység) csak egy tevékenység csak egy tevékenység megjelenik.
+3. Kattintson az **Actions** (Műveletek) oszlopban található **View Activity Runs** (Tevékenységfuttatások megtekintése) hivatkozásra. Láthatja, hogy csak egy tevékenységfuttatás, a folyamat egyetlen tevékenységgel (tárolt eljárás tevékenység) rendelkezik.
 
     ![Tevékenységfuttatások](./media/how-to-invoke-ssis-package-stored-procedure-activity/activity-runs.png)
 
-4. Futtathatja a következő **lekérdezés** szemben az SSISDB adatbázis annak ellenőrzésére, hogy az Azure SQL Server a csomag végrehajtása. 
+4. Futtathatja a következő **lekérdezés** szemben az SSISDB adatbázis-az Azure SQL Serveren, ellenőrizze, hogy a csomag végrehajtása. 
 
     ```sql
     select * from catalog.executions
     ```
 
-    ![Ellenőrizze a csomag végrehajtások](./media/how-to-invoke-ssis-package-stored-procedure-activity/verify-package-executions.png)
+    ![Csomag végrehajtásának ellenőrzése](./media/how-to-invoke-ssis-package-stored-procedure-activity/verify-package-executions.png)
 
 
 > [!NOTE]
-> Is létrehozhat egy ütemezett eseményindító a tölcsér, hogy az adatcsatorna (óránként, naponta, stb.) ütemezés szerint futtatott. Egy vonatkozó példáért lásd: [tartalmazó data factory - létrehozása a Data Factory felhasználói felület](quickstart-create-data-factory-portal.md#trigger-the-pipeline-on-a-schedule).
+> Is létrehozhat ütemezett eseményindítóként a folyamathoz, hogy a folyamat fut egy ütemezés szerint (óránként, naponta stb.). Egy vonatkozó példáért lásd: [- adat-előállító létrehozása a Data Factory felhasználói felülete](quickstart-create-data-factory-portal.md#trigger-the-pipeline-on-a-schedule).
 
 ## <a name="azure-powershell"></a>Azure PowerShell
-Ebben a szakaszban Azure PowerShell egy tárolt eljárás tevékenység, amely hívja meg az SSIS-csomag létrehozása a Data Factory-folyamat használja. 
+Ebben a szakaszban az Azure PowerShell használatával hozzon létre egy Data Factory-folyamatot egy tárolt eljárási tevékenység, amely SSIS-csomag hív meg. 
 
 Kövesse [az Azure PowerShell telepítését és konfigurálását](/powershell/azure/install-azurerm-ps) ismertető cikkben szereplő utasításokat a legújabb Azure PowerShell-modulok telepítéséhez. 
 
 ### <a name="create-a-data-factory"></a>Data factory létrehozása
-Használja az ugyanazon adat-előállítóban, amely rendelkezik az Azure-SSIS infravörös, vagy hozzon létre egy külön adat-előállítóban. Az alábbi eljárás lépéseit egy adat-előállító létrehozása. A tárolt eljárási tevékenység a data factory hoz létre egy folyamatot. A tárolt eljárási tevékenység végrehajtja a tárolt eljárás az SSISDB adatbázis a SSIS-csomag futtatásához. 
+Az azonos adat-előállítót, amely rendelkezik az Azure-SSIS integrációs modul használata, vagy egy különálló adat-előállító létrehozásához. Az alábbi eljárás lépéseit egy adat-előállító létrehozásához. Egy tárolt eljárási tevékenység, a data factory-folyamatot hoz létre. A tárolt eljárási tevékenység végrehajt egy tárolt eljárást az SSISDB adatbázis futtatásához az SSIS-csomag. 
 
 1. Adjon meg egy olyan változót, amelyet később a PowerShell-parancsokban az erőforráscsoport neveként fog használni. Másolja az alábbi parancsszöveget a PowerShellbe, adja meg az [Azure-erőforráscsoport](../azure-resource-manager/resource-group-overview.md) nevét idézőjelek között, majd futtassa a parancsot. Például: `"adfrg"`. 
    
@@ -187,15 +187,15 @@ Vegye figyelembe a következő szempontokat:
     The specified Data Factory name 'ADFv2QuickStartDataFactory' is already in use. Data Factory names must be globally unique.
     ```
 * Data Factory-példányok létrehozásához a felhasználói fióknak, amellyel belép az Azure-ba, a **közreműködő** vagy **tulajdonos** szerepkörök tagjának, vagy az Azure-előfizetés **rendszergazdájának** kell lennie.
-* Amelyben adat-előállító érhető Azure-régiók listáját, válassza ki, amely megkeresheti az Önt érdeklő a következő oldalon, majd bontsa ki a régiók **Analytics** található **adat-előállító**: [ Régiónként rendelkezésre álló termékek](https://azure.microsoft.com/global-infrastructure/services/). Az adat-előállítók által használt adattárak (Azure Storage, Azure SQL Database stb.) és számítási erőforrások (HDInsight stb.) más régiókban is lehetnek.
+* Azon Azure-régiók megtekintéséhez, amelyekben jelenleg elérhető a Data Factory, a következő lapon válassza ki az Önt érdeklő régiókat, majd bontsa ki az **Elemzés** részt, és keresse meg a **Data Factory**: [Elérhető termékek régiók szerint](https://azure.microsoft.com/global-infrastructure/services/) szakaszt. Az adat-előállítók által használt adattárak (Azure Storage, Azure SQL Database stb.) és számítási erőforrások (HDInsight stb.) más régiókban is lehetnek.
 
 ### <a name="create-an-azure-sql-database-linked-service"></a>Azure SQL Database-beli társított szolgáltatás létrehozása
-A társított szolgáltatás, amely futtatja az Azure SQL database összekapcsolására. az SSIS-katalógusban a data factory létrehozása. Data Factory szolgáltatásnak információk használatával kapcsolódik az SSISDB adatbázist, és végrehajtja a tárolt eljárás egy SSIS-csomag futtatásához. 
+Hozzon létre egy társított szolgáltatást, az Azure SQL-adatbázis üzemeltető az SSIS-katalógus a data factoryjához. A Data Factory információkat használja ezt a társított szolgáltatást az SSISDB-adatbázishoz való csatlakozáshoz, és végrehajt egy tárolt eljárást az SSIS-csomag futtatásához. 
 
-1. Hozzon létre egy JSON fájlt **AzureSqlDatabaseLinkedService.json** a **C:\ADF\RunSSISPackage** mappa a következő tartalmát: 
+1. Hozzon létre egy JSON-fájlt **AzureSqlDatabaseLinkedService.json** a **C:\ADF\RunSSISPackage** mappában az alábbi tartalommal: 
 
     > [!IMPORTANT]
-    > Cserélje le &lt;kiszolgálónév&gt;, &lt;felhasználónév&gt;, és &lt;jelszó&gt; a fájl mentése előtt az Azure SQL Database értékekkel.
+    > Cserélje le &lt;servername&gt;, &lt;felhasználónév&gt;, és &lt;jelszó&gt; értékeket az Azure SQL Database, a fájl mentése előtt.
 
     ```json
     {
@@ -212,7 +212,7 @@ A társított szolgáltatás, amely futtatja az Azure SQL database összekapcsol
     }
     ```
 
-2. A **Azure PowerShell**, váltson a **C:\ADF\RunSSISPackage** mappa.
+2. A **Azure PowerShell-lel**, váltson át a **C:\ADF\RunSSISPackage** mappát.
 
 3. Futtassa a **Set-AzureRmDataFactoryV2LinkedService** parancsmagot az **AzureSqlDatabaseLinkedService** társított szolgáltatás létrehozásához. 
 
@@ -220,13 +220,13 @@ A társított szolgáltatás, amely futtatja az Azure SQL database összekapcsol
     Set-AzureRmDataFactoryV2LinkedService -DataFactoryName $DataFactory.DataFactoryName -ResourceGroupName $ResGrp.ResourceGroupName -Name "AzureSqlDatabaseLinkedService" -File ".\AzureSqlDatabaseLinkedService.json"
     ```
 
-### <a name="create-a-pipeline-with-stored-procedure-activity"></a>Hozzon létre egy folyamatot tárolt eljárási tevékenység 
-Ebben a lépésben hoz létre egy folyamatot egy tárolt eljárás tevékenység. A tevékenység a SSIS-csomag futtatásához a sp_executesql tárolt eljárást hív meg. 
+### <a name="create-a-pipeline-with-stored-procedure-activity"></a>Tárolt eljárási tevékenység rendelkező folyamat létrehozása 
+Ebben a lépésben létrehoz egy folyamatot egy tárolt eljárási tevékenység a. A tevékenység futtatása az SSIS-csomag sp_executesql tárolt eljárást hív meg. 
 
-1. Hozzon létre egy JSON fájlt **RunSSISPackagePipeline.json** a a **C:\ADF\RunSSISPackage** mappa a következő tartalmát:
+1. Hozzon létre egy JSON-fájlt **RunSSISPackagePipeline.json** a a **C:\ADF\RunSSISPackage** mappában az alábbi tartalommal:
 
     > [!IMPORTANT]
-    > Cserélje le &lt;MAPPANÉV&gt;, &lt;projekt neve&gt;, &lt;CSOMAGNÉV&gt; nevű mappa, a projekt és a csomag az SSIS-katalógusban a fájl mentése előtt. 
+    > Cserélje le &lt;MAPPANEVET&gt;, &lt;PROJEKTNÉV&gt;, &lt;CSOMAGNÉV&gt; nevű mappa, projektek és az SSIS-katalógus a fájl mentése előtt a csomagot. 
 
     ```json
     {
@@ -255,7 +255,7 @@ Ebben a lépésben hoz létre egy folyamatot egy tárolt eljárás tevékenység
     }
     ```
 
-2. A folyamat létrehozása: **RunSSISPackagePipeline**- ben futtassa a **Set-AzureRmDataFactoryV2Pipeline** parancsmag.
+2. A folyamat létrehozásához: **RunSSISPackagePipeline**futtassa a **Set-AzureRmDataFactoryV2Pipeline** parancsmagot.
 
     ```powershell
     $DFPipeLine = Set-AzureRmDataFactoryV2Pipeline -DataFactoryName $DataFactory.DataFactoryName -ResourceGroupName $ResGrp.ResourceGroupName -Name "RunSSISPackagePipeline" -DefinitionFile ".\RunSSISPackagePipeline.json"
@@ -272,7 +272,7 @@ Ebben a lépésben hoz létre egy folyamatot egy tárolt eljárás tevékenység
     ```
 
 ### <a name="create-a-pipeline-run"></a>Folyamat futásának létrehozása
-Használja a **Invoke-AzureRmDataFactoryV2Pipeline** parancsmag futtatjuk a folyamatot. A parancsmag visszaadja a folyamat futásának azonosítóját a későbbi monitorozás céljából.
+Használja a **Invoke-AzureRmDataFactoryV2Pipeline** parancsmagot futtathatja a folyamatot. A parancsmag visszaadja a folyamat futásának azonosítóját a későbbi monitorozás céljából.
 
 ```powershell
 $RunId = Invoke-AzureRmDataFactoryV2Pipeline -DataFactoryName $DataFactory.DataFactoryName -ResourceGroupName $ResGrp.ResourceGroupName -PipelineName $DFPipeLine.Name
@@ -299,10 +299,10 @@ while ($True) {
 }   
 ```
 
-### <a name="create-a-trigger"></a>Egy eseményindító létrehozása
-Az előző lépésben a csővezeték-igény szerinti meghívni. Egy ütemezés eseményindító fussanak ütemezés szerint (óránként, naponta, stb.) a feldolgozási sor is létrehozhat.
+### <a name="create-a-trigger"></a>Eseményindító létrehozása
+Az előző lépésben a folyamat igény szerinti meghívása. A folyamatok futtatása ütemezés szerint (óránként, naponta stb.) az ütemezési eseményindító is létrehozhat.
 
-1. Hozzon létre egy JSON fájlt **MyTrigger.json** a **C:\ADF\RunSSISPackage** mappa a következő tartalmát: 
+1. Hozzon létre egy JSON-fájlt **MyTrigger.json** a **C:\ADF\RunSSISPackage** mappában az alábbi tartalommal: 
 
     ```json
     {
@@ -328,29 +328,29 @@ Az előző lépésben a csővezeték-igény szerinti meghívni. Egy ütemezés e
         }
     }    
     ```
-2. A **Azure PowerShell**, váltson a **C:\ADF\RunSSISPackage** mappa.
+2. A **Azure PowerShell-lel**, váltson át a **C:\ADF\RunSSISPackage** mappát.
 3. Futtassa a **Set-AzureRmDataFactoryV2Trigger** parancsmagot, amely az eseményindítót hoz létre. 
 
     ```powershell
     Set-AzureRmDataFactoryV2Trigger -ResourceGroupName $ResGrp.ResourceGroupName -DataFactoryName $DataFactory.DataFactoryName -Name "MyTrigger" -DefinitionFile ".\MyTrigger.json"
     ```
-4. Alapértelmezés szerint az eseményindító leállított állapotban van. Indítsa el az eseményindító futtatásával a **Start-AzureRmDataFactoryV2Trigger** parancsmag. 
+4. Alapértelmezés szerint az eseményindító leállított állapotban van. Az eseményindító elindításához futtassa a **Start-AzureRmDataFactoryV2Trigger** parancsmagot. 
 
     ```powershell
     Start-AzureRmDataFactoryV2Trigger -ResourceGroupName $ResGrp.ResourceGroupName -DataFactoryName $DataFactory.DataFactoryName -Name "MyTrigger" 
     ```
-5. Győződjön meg arról, hogy az eseményindító elindításával a **Get-AzureRmDataFactoryV2Trigger** parancsmag. 
+5. Győződjön meg arról, hogy az eseményindító futtatásával el van-e a **Get-AzureRmDataFactoryV2Trigger** parancsmagot. 
 
     ```powershell
     Get-AzureRmDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name "MyTrigger"     
     ```    
-6. A következő parancsot a következő óra múlva. Például ha az aktuális idő du. 3:25 UTC, futtassa a parancsot du. 4 UTC. 
+6. Futtassa a következő parancsot a következő óra elteltével. Például ha az aktuális idő 3:25-kor (UTC), futtassa a parancsot, 4 Órakor (UTC). 
     
     ```powershell
     Get-AzureRmDataFactoryV2TriggerRun -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -TriggerName "MyTrigger" -TriggerRunStartedAfter "2017-12-06" -TriggerRunStartedBefore "2017-12-09"
     ```
 
-    A következő lekérdezés alapján futtathatók az SSISDB adatbázis annak ellenőrzésére, hogy az Azure SQL Server a csomag végrehajtása. 
+    Futtathatja a következő lekérdezés az SSISDB-adatbázison annak ellenőrzéséhez, hogy az Azure SQL Serveren a csomag végrehajtása. 
 
     ```sql
     select * from catalog.executions
@@ -358,4 +358,4 @@ Az előző lépésben a csővezeték-igény szerinti meghívni. Egy ütemezés e
 
 
 ## <a name="next-steps"></a>További lépések
-Ugyanígy figyelheti a folyamatot, az Azure portál használatával. Részletes útmutatásért lásd: [a folyamat figyelése](quickstart-create-data-factory-resource-manager-template.md#monitor-the-pipeline).
+Is figyelemmel kísérheti a folyamat az Azure portal használatával. Lépésenkénti útmutatásért lásd: [a folyamat figyelése](quickstart-create-data-factory-resource-manager-template.md#monitor-the-pipeline).

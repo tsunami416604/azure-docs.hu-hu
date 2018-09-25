@@ -1,6 +1,6 @@
 ---
-title: Írjanak elő irányelvek egyéni beszéd szolgáltatásban az Azure-on |} Microsoft Docs
-description: Ismerje meg, hogyan készíti elő az adatok kognitív szolgáltatások egyéni beszéd-szolgáltatása.
+title: Custom Speech Service az Azure-ban az átírási irányelveket |} A Microsoft Docs
+description: Ismerje meg, hogyan készíti elő az adatok a Cognitive Services Custom Speech Service.
 services: cognitive-services
 author: PanosPeriorellis
 manager: onano
@@ -9,99 +9,100 @@ ms.component: custom-speech
 ms.topic: article
 ms.date: 02/08/2017
 ms.author: panosper
-ms.openlocfilehash: 2785a35ac7583ac3d9503cb721d10078d86aa365
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ROBOTS: NOINDEX
+ms.openlocfilehash: 2772665107f94a273731d2147154e546225b22dd
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35347171"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46999732"
 ---
-# <a name="transcription-guidelines"></a>Írjanak elő irányelvek
-Ahhoz, hogy a lehető legjobb felhasználását a szöveges adatokat akusztikus és nyelvi modell testreszabáshoz, a következő írjanak elő irányelveket kell követni. Ezeket az irányelveket nyelvspecifikus.
+# <a name="transcription-guidelines"></a>Átírási irányelvek
+Ahhoz, hogy az a szöveges adatok akusztikai és nyelvi modell testreszabása a legjobb használatát, a következő beszédátírási irányelveket kell követni. Ezeket az irányelveket a nyelvspecifikus.
 
 ## <a name="text-normalization"></a>Szöveg normalizálási
 
-A akusztikus vagy nyelvi modell testreszabási optimális használható a szöveges adatokat normalizálni kell, ami azt jelenti, a rendszer egy szabványos egyértelműen űrlap olvasható alakítja át. Ez a szakasz ismerteti a szöveg normalizálási végzi el az egyéni beszéd szolgáltatás adatok importálásakor és a szöveg normalizálási, amely a felhasználói adatok importálása előtt kell végrehajtania.
+Az akusztikai és nyelvi modell testreszabása az optimális használatra a szöveges adatokat normalizálni kell, ami azt jelenti, a rendszer által olvasható szabványos, egyértelmű űrlap alakítja át. Ez a szakasz ismerteti az adatok importálásakor a Custom Speech Service által végrehajtott szöveg normalizálási és a szöveg normalizálási, amely a felhasználói adatok importálása előtt kell végrehajtania.
 
 ## <a name="inverse-text-normalization"></a>Más néven Inverz szöveg normalizálási
 
-A "nyers" formázatlan szöveges átalakítása vissza formázott szöveget, azaz a kis-és nagybetűk és írásjelek, folyamathoz Inverz szöveg normalizálási (ITN). A Microsoft kognitív szolgáltatások Diktálásfelismerési API által visszaadott eredmények ITN történik. Egy egyéni az egyéni beszéd szolgáltatással telepített végpont az azonos ITN használja, mint a Microsoft kognitív szolgáltatások Diktálásfelismerési API. Azonban ez a szolgáltatás jelenleg nem támogatja egyéni ITN, egy egyéni nyelvi modell bevezetett új feltételek elfogadását a felismerési eredmények nem lesz formázva.
+Vissza a formázott szöveget, például a kis-és nagybetűk és írásjelek, a "raw" formázatlan szöveges átalakításának folyamata, más néven Inverz szöveg normalizálási (fel) nevezzük. A Microsoft Cognitive Services beszédfelismerő API által visszaadott eredmények fel történik. A Custom Speech Service használatával üzembe helyezett egyéni végpontok az azonos fel használja, mint a Microsoft Cognitive Services beszédfelismerő API. Azonban ez a szolgáltatás jelenleg nem támogatja egyéni fel, így egyéni nyelvi modell által bevezetett új feltételek elfogadását a felismerés eredmények nem lesz formázva.
 
-## <a name="transcription-guidelines-for-en-us"></a>En-US írjanak elő irányelveiről
+## <a name="transcription-guidelines-for-en-us"></a>En-US beszédátírási irányelvek
 
-A szolgáltatásba való feltöltés szöveges adatok csak az ASCII nyomtatható használatával egyszerű szövegként kell megírni karakterkészlet. A fájl minden egyes sorának tartalmaznia kell egy egyetlen utterance szövege.
+Egyszerű szöveges használatával csak nyomtatható ASCII szöveges adatok feltöltődtek a szolgáltatásra kell írni karakterkészlet. A fájl minden sorának tartalmaznia kell egy egyetlen utterance szövegét.
 
-Fontos, hogy kerülje el a Unicode írásjeleket. Ez akkor fordulhat elő, akaratlanul Ha az adatok a word feldolgozásakor a program vagy adatai lekaparást előkészítése. Cserélje le ezeket a karaktereket megfelelő ASCII helyettesítések szempontjából. Példa:
+Fontos Unicode írásjeleket használatának elkerülése érdekében. Ez akkor fordulhat elő véletlenül, ha az adatok a word programot feldolgozása vagy automatizované získávání dat weblapokról származó adatok előkészítése. Cserélje le a megfelelő ASCII helyettesítések ezeket a karaktereket. Példa:
 
 | Unicode elkerülése érdekében | ASCII-helyettesítés |
 |----- | ----- |
-| "Hello world" (megnyitására és bezárására a dupla idézőjelek között) | "Hello world" (idézőjelek) |
-| János napja (jobb oldali szimpla idézőjel) | János napja (aposztróf) |
+| "Hello world" (Nyissa meg, és zárja be az idézőjelekkel együtt) | "Hello world" (dupla idézőjel) |
+| János napja (jobb szimpla idézőjel) | János napja (aposztrófot) |
 
-### <a name="text-normalization-performed-by-the-custom-speech-service"></a>Az egyéni beszéd szolgáltatás által végrehajtott szöveg normalizálási
+### <a name="text-normalization-performed-by-the-custom-speech-service"></a>A Custom Speech Service által végrehajtott szöveg normalizálási
 
-Ez a szolgáltatás akkor hajtja végre a következő szöveg normalizálási a nyelvi adatkészlet vagy egy akusztikus adatkészletnél transcriptions importált adatok. Ez magában foglalja
+Ez a szolgáltatás a következő szöveg normalizálási végrehajtják a nyelvi adatkészlet vagy akusztikai adatkészletnél beszédátírás importált adatokat. Ez magában foglalja
 
-*   Alsó-kis-és az összes szöveg
-*   A word-belső aposztrófot kivételével minden írásjelet eltávolítása
-*   A szóbeli űrlaphoz, többek között a dollár összegek számok bővítése
+*   Alsó – kis-és a teljes szöveg
+*   A word-belső aposztrófot kivételével az összes írásjelek eltávolítása
+*   Használja a beszélt űrlaphoz, például összegeket számok bővítése
 
-Néhány példa
+Íme néhány példa
 
 | Eredeti szöveg | Normalizálási után |
 |----- | ----- |
-| Starbucks kávé | starbucks kávé |
-| "Szent vonatkozó!" említett Batman. | Szent vonatkozó említett batman |
-| "Mi?" említett Batman sidekick, multiplexelés. | milyen említett batman sidekick multiplexelés |
-| Nyissa meg a get - em! | Nyissa meg get em |
-| Double-jointed vagyok | i kettős vagyok szimuláló |
-| 104-es fő utca. | egy bizony négy fő utca. |
-| Állítson be 102.7 | Állítson be egy bizony két pont hét |
-| A pi készül 3.14 | a pi körülbelül három pont egy négy |
-| $3.14 költséggel | három tizennégy költséggel |
+| Kávézik kávé | kávézik kávé |
+| "Szent vonatkozó!" említett Batman. | Szent vonatkozó mondta batman |
+| "Mi?" említett Batman sidekick, a terheléselosztást. | milyen említett batman sidekick multiplexelés |
+| Nyissa meg a get - em! | Nyissa meg a get-em |
+| Double-jointed vagyok | i double szimuláló vagyok |
+| 104 fő utca. | egy hoppá négy fő út |
+| A 102.7 hangolása | Állítson be egy hoppá két pont hét |
+| A pi készül 3,14 | a pi körülbelül három pont egy négy |
+| $3,14 költségei | három tizennégy költségei |
 
 ### <a name="text-normalization-required-by-users"></a>Szöveg normalizálási felhasználók által
 
-Ahhoz, hogy az adatok a lehető legjobb felhasználását, a következő normalizálási szabályokat alkalmazni kívánja az adatok importálása előtt.
+Ahhoz, hogy az adatok használható a leghatékonyabban, az alábbi normalizálási szabályok az adatait, mielőtt importálná azokat a alkalmazni kell.
 
-*   Kell írható rövidítések szóbeli űrlap tükrözik a szavakat a
-*   Nem szabványos numerikus karakterláncok kell megírni szavakat
-*   Vegyes alfanumerikus karaktereket és nem alfabetikus karaktereket szavak kell kért, mert hangsúlyozottan
-*   Közös mozaikszavak maradhatnak, pontokból vagy szóközökből nélkül egyetlen egységként a betűk között, de más mozaikszavak kell megírni külön betűk, minden egyes betűvel, egy szóközzel elválasztva
+*   Rövidítések szavak kimondott űrlap megfelelően kell megírni
+*   Nem szabványos numerikus karakterláncokat kell írni a szavak
+*   Szavak vegyes alfanumerikus karakterek vagy nem alfabetikus karaktereket kell megjelenített érzéseket, mivel ejtsd
+*   A betűk között köznapi mozaikszavak is hagyható pontokból vagy szóközökből nélkül egyetlen egységként, de minden más betűszavakat nyelven kell megírni külön betűket, minden egyes betűvel egy szóközzel elválasztva
 
-Néhány példa
+Íme néhány példa
 
 | Eredeti szöveg | Normalizálási után |
 |----- | ----- |
-| 14 Üzenetnek 3. Dr. | 14 northeast harmadik meghajtó |
-| Dr. Strangelove | Orvosi Strangelove |
-| 007 James kötés | James táblarelációk kettős bizony hét |
-| Ke$ magas rendelkezésre állású | Kesha |
-| Milyen hosszú legyen a 2 darab 4 | Milyen hosszú legyen a két négy |
-| Az értekezlet kerül az 1-3 pm | Az értekezlet kerül egy három délután |
-| a vér típus O + | A vér típus pozitív O: |
-| Vízjel H20 | Vízjel H 2 O |
-| Van Halen által OU812 lejátszása | O-U 8 1-2 szerint Van Halen lejátszása |
+| 14 új 3. vészhelyreállítás. | tizennégy északkelet harmadik meghajtó |
+| Dr. Strangelove | Orvos Strangelove |
+| James Bond 007 | James táblarelációk double hoppá hét |
+| Ke$ magas rendelkezésre állás | Kesha |
+| Mennyi ideig tart a 2 x 4 | Mennyi ideig tart a két négy |
+| Az értekezlet kerül az 1-3 pm | Az értekezlet kerül egy és három pm |
+| saját vér típus O + | Saját vér típus pozitív O |
+| víz H20 | víz H 2 O |
+| által Van Halen OU812 lejátszása | O U 8 1-2 szerint Van Halen lejátszása |
 
-## <a name="transcription-guidelines-for-zh-cn"></a>Zh-CN írjanak elő irányelveiről
+## <a name="transcription-guidelines-for-zh-cn"></a>Zh-CN beszédátírási irányelvek
 
-Az egyéni beszéd szolgáltatás feltöltött szöveg adatok használandó **UTF-8 kódolást (beleértve a AJ)**. A fájl minden egyes sorának tartalmaznia kell egy egyetlen utterance szövege.
+A Custom Speech Service feltöltött szöveges adatok használjon **UTF-8 kódolást (beleértve a AJ)**. A fájl minden sorának tartalmaznia kell egy egyetlen utterance szövegét.
 
-Fontos, hogy kerülje el a teljes szélességű írásjeleket. Ez akkor fordulhat elő, akaratlanul Ha az adatok a word feldolgozásakor a program vagy adatai lekaparást előkészítése. Cserélje le ezeket a karaktereket megfelelő teljes szélességű helyettesítések szempontjából. Példa:
+Fontos fél szélességű írásjeleket használatának elkerülése érdekében. Ez akkor fordulhat elő véletlenül, ha az adatok a word programot feldolgozása vagy automatizované získávání dat weblapokról származó adatok előkészítése. Cserélje le a megfelelő teljes szélességű helyettesítések ezeket a karaktereket. Példa:
 
 | Unicode elkerülése érdekében | ASCII-helyettesítés |
 |----- | ----- |
-| "你好" (Megnyitás és Bezárás dupla idézőjelek között) | "你好" (dupla idézőjelek között) |
+| "你好" (Megnyitás és Bezárás idézőjelekkel együtt) | "你好" (az idézőjelekkel együtt) |
 | 需要什么帮助? (kérdőjel) | 需要什么帮助? |
 
-### <a name="text-normalization-performed-by-the-custom-speech-service"></a>Az egyéni beszéd szolgáltatás által végrehajtott szöveg normalizálási
+### <a name="text-normalization-performed-by-the-custom-speech-service"></a>A Custom Speech Service által végrehajtott szöveg normalizálási
 
-A beszédfelismerés szolgáltatás akkor hajtja végre a következő szöveg normalizálási a nyelvi adatkészlet vagy egy akusztikus adatkészletnél transcriptions importált adatok. Ez magában foglalja
+A beszédfelismerési szolgáltatás a következő szöveg normalizálási végrehajtják a nyelvi adatkészlet vagy akusztikai adatkészletnél beszédátírás importált adatokat. Ez magában foglalja
 
-*   Minden írásjelet eltávolítása
-*   A számok szóbeli űrlaphoz bővítése
+*   Az összes írásjelek eltávolítása
+*   Használja a beszélt űrlap számokat bővítése
 *   Kétbájtos karaktereket átalakítása félig karaktereket.
-*   Felső – kis-és az összes angol szavak
+*   Felső – kis-és az összes angol szavakat
 
 Néhány példa:
 
@@ -117,70 +118,70 @@ Néhány példa:
 
 ### <a name="text-normalization-required-by-users"></a>Szöveg normalizálási felhasználók által
 
-Ahhoz, hogy az adatok a lehető legjobb felhasználását, a következő normalizálási szabályokat alkalmazni kell az adatok _előzetes_ való importálásához.
+Ahhoz, hogy az adatok használható a leghatékonyabban, az alábbi normalizálási szabályokat kell alkalmazni az adatok _előzetes_ való importálás.
 
-*   Kell írható rövidítések szóbeli űrlap tükrözik a szavakat a
-*   Ez a szolgáltatás nem fedi le az összes numerikus mennyiség. További megbízható numerikus karakterláncok kiírni szóbeli formában
+*   Rövidítések szavak kimondott űrlap megfelelően kell megírni
+*   Ez a szolgáltatás nem fedi le minden numerikus mennyiséget. További megbízható numerikus karakterláncok kiírni a kimondott képernyőn
 
-Néhány példa
+Íme néhány példa
 
 | Eredeti szöveg | Normalizálási után |
 |----- | ----- |
 | 我今年21 | 我今年二十一 |
 | 3号楼504 | 三号 楼 五 零 四 |
 
-## <a name="transcription-guidelines-for-de-de"></a>De-DE írjanak elő irányelveiről
+## <a name="transcription-guidelines-for-de-de"></a>De-DE beszédátírási irányelvek
 
-Az egyéni beszéd szolgáltatás feltöltött szöveg adatok csak használja a **UTF-8 kódolást (beleértve a AJ)**. A fájl minden egyes sorának tartalmaznia kell egy egyetlen utterance szövege.
+A Custom Speech Service feltöltött szöveges adatok csak használja a **UTF-8 kódolást (beleértve a AJ)**. A fájl minden sorának tartalmaznia kell egy egyetlen utterance szövegét.
 
-### <a name="text-normalization-performed-by-the-custom-speech-service"></a>Az egyéni beszéd szolgáltatás által végrehajtott szöveg normalizálási
+### <a name="text-normalization-performed-by-the-custom-speech-service"></a>A Custom Speech Service által végrehajtott szöveg normalizálási
 
-Ez a szolgáltatás akkor hajtja végre a következő szöveg normalizálási a nyelvi adatkészlet vagy egy akusztikus adatkészletnél transcriptions importált adatok. Ez magában foglalja
+Ez a szolgáltatás a következő szöveg normalizálási végrehajtják a nyelvi adatkészlet vagy akusztikai adatkészletnél beszédátírás importált adatokat. Ez magában foglalja
 
-*   Alsó-kis-és az összes szöveg
-*   Például angol vagy német idézőjelek ("teszt", a "test", a "teszt" vagy a "teszt" ok) minden írásjelet eltávolítása
-*   Vesse el az összes sort tartalmazó semmilyen különleges karakter többek között: ^ ˘ l ¤ y ¦ § © ª ¬® ° ± ² µ × y Ø¬¬
-*   Word űrlaphoz, beleértve a dollár vagy euró összegek számok bővítése
-*   Jelenleg csak umlautokat fogadja el az olyan, o u; mások lesz cserélve "th" vagy elvetett
+*   Alsó – kis-és a teljes szöveg
+*   Minden írásjelek, beleértve az angol vagy német idézőjelek ("teszt", "teszt", "teszt" vagy "teszt" olyan ok) eltávolítása
+*   Vesse el az összes sort tartalmazó, bármely speciális karaktert, köztük: ^ ˘ l ¤ y ¦ § © ª ¬® ° ± ² µ x y Ø¬¬
+*   Számok szóformaként, többek között a dollár vagy euró összegek bővítése
+*   Csak umlautokat fogadunk a, b, az u. mások lesz lecserélve az "adatok" vagy elvetett
 
-Néhány példa
+Íme néhány példa
 
 | Eredeti szöveg | Normalizálási után |
 |----- | ----- |
-| Frankfurter Ring | Frankfurter ring |
+| Frankfurter kör | Frankfurter kör |
 | "Hallo, Mama!" sagt die Tochter. | hallo mama sagt die tochter |
 | ¡Eine Frage! | eine frage |
 | WIR, haben | WIR haben |
-| Das macht $10 | das macht zehn dollár |
+| Das macht 10 USD | das macht zehn dollár |
 
 
 ### <a name="text-normalization-required-by-users"></a>Szöveg normalizálási felhasználók által
 
-Ahhoz, hogy az adatok a lehető legjobb felhasználását, a következő normalizálási szabályokat alkalmazni kívánja az adatok importálása előtt.
+Ahhoz, hogy az adatok használható a leghatékonyabban, az alábbi normalizálási szabályok az adatait, mielőtt importálná azokat a alkalmazni kell.
 
-*   Tizedesjel kell lennie, és nem. például 2,3-nem 2.3 %
-*   Idő elválasztó óra és perc között kell lennie: és nem., pl., 12:00 Uhr
-*   Rövidítések "ca.", "bzw." nem cserélhető. A teljes formátumot használja ahhoz, hogy rendelkezik a megfelelő kiejtés javasoljuk.
-*   A rendszer eltávolítja az öt fő matematikai operátorok: +, -, \*, /.
- Azt javasoljuk, hogy cserélje le a szövegkonstans formájukban plusz és mínusz kárte, geteilt.
-*   Ugyanez vonatkozik a szaporodó (=, <>,) – a gleich, kleiner als, grösser als
-*   Azon részét, 3 vagy 4 például használja a "drei viertel" helyett ¾ word-formátumban
-*   A "szimbólum cserélje le a word"Euro"képernyő
+*   Tizedesjel kell lennie, és nem. például 2,3 és nem 2.3-as %
+*   Idő elválasztó óra és perc között kell lennie:, és nem., pl.: 12:00 Uhr
+*   Rövidítéseket, például a "ca.',"bzw." nem cserélhető le. Annak érdekében, hogy rendelkezik a megfelelő kiejtés a teljes képernyőn használata ajánlott.
+*   Az öt fő matematikai operátorokat el lesznek távolítva: +, -, \*, /.
+ Cserélje le a szövegkonstans formájukban plusz és kártevő, geteilt mínusz javasoljuk.
+*   Ugyanez érvényes a szaporodó (=, <>,) – gleich, kleiner als, grösser als
+*   3/4-es például töredék használata a szóformaként "drei viertel" ¾ helyett
+*   Cserélje le a szóformaként "Euró" a "szimbólumot
 
 
-Néhány példa
+Íme néhány példa
 
-| Eredeti szöveg | Felhasználó normalizálási után | Rendszer normalizálási után
+| Eredeti szöveg | A felhasználó normalizálási után | Rendszer normalizálási után
 |--------  | ----- | -------- |
-| Es ist 12.23Uhr | Es ist 12:23Uhr | es ist zwölf uhr drei és zwanzig uhr |
+| Es Izraeli normál idő szerint 12.23Uhr | Es Izraeli normál idő szerint 12:23Uhr | es Izraeli normál idő szerint zwölf uhr drei és zwanzig uhr |
 | {12.45} | {12,45} | zwölf komma vier fünf |
 | 3 < 5 | 3 kleiner als 5 | drei kleiner als vier |
-| 2 + 3 – 4 | 2 és 3 mínusz 4 | zwei és mínusz vier drei|
-| Das macht 12 " | Das macht 12 Euros | das macht zwölf euros |
+| 2 és 3-4 | 2 és 3-4 mínusz | zwei plusz -mínusz vier drei|
+| Das macht "12" | Das macht 12 számlázni | das macht zwölf számlázni |
 
 
 
 ## <a name="next-steps"></a>További lépések
-* [Egy egyéni beszéd-szöveg endpoint használatáról](cognitive-services-custom-speech-create-endpoint.md)
-* A pontosság növeléséhez a [egyéni akusztikus modell](cognitive-services-custom-speech-create-acoustic-model.md)
+* [Egy egyéni hang-szöveg transzformációs végpont használata](cognitive-services-custom-speech-create-endpoint.md)
+* A pontosság növeléséhez a [importálni akusztikai modell](cognitive-services-custom-speech-create-acoustic-model.md)
 * A pontosság növeléséhez egy [egyéni nyelvi modell](cognitive-services-custom-speech-create-language-model.md)

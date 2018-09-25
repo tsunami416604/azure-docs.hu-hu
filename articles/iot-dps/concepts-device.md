@@ -1,6 +1,6 @@
 ---
-title: Azure eszköz üzembe helyezése eszköz fogalmak |} Microsoft Docs
-description: Eszköz-üzembehelyezési a eszköz kiépítése szolgáltatáshoz és az IoT-központ jellemző fogalmakat ismerteti
+title: Az Azure device provisioning Device fogalmak |} A Microsoft Docs
+description: A device provisioning alapfogalmai és az IoT Hub Device Provisioning Service-eszközökre vonatkozó ismerteti
 author: nberdy
 ms.author: nberdy
 ms.date: 09/05/2017
@@ -8,53 +8,54 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: briz
-ms.openlocfilehash: bd77a56acee948995bb2fcbb5beea60f69cda9ee
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 354ef48f7935536864cde9dc0d9a130fa5aeb865
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34630153"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46972861"
 ---
-# <a name="iot-hub-device-provisioning-service-device-concepts"></a>IoT Hub eszköz kiépítése szolgáltatáshoz eszköz fogalmak
+# <a name="iot-hub-device-provisioning-service-device-concepts"></a>IoT Hub Device Provisioning Service-eszközökkel kapcsolatos alapelveket ismertető
 
-IoT Hub eszköz kiépítése szolgáltatáshoz olyan IoT hub, amely egy megadott IoT-központ nulla érintéssel eszközkiépítési konfigurálására használt segítő szolgáltatás. A Device Provisioning Service-szel több millió eszköz kiépítését végezheti el biztonságosan és skálázható módon.
+IoT Hub Device Provisioning Service, amellyel egy adott IoT hub használatával beavatkozás nélküli eszközök konfigurálása IoT hub segítő szolgáltatása. A Device Provisioning Service-szel több millió eszköz kiépítését végezheti el biztonságosan és skálázható módon.
 
-Ez a cikk áttekintést a *eszköz* fogalmak részt vevő eszközök kiépítését. Ez a cikk az érintett személyeknek igényeinek jobban megfelelő a [gyártási lépés](about-iot-dps.md#manufacturing-step) az eszköz telepítési felkészülés.
+Ez a cikk áttekintést nyújt a *eszköz* fogalmak vesz részt az eszközök kiépítését. Ez a cikk a megfelelő személyeknek, résztvevő a [gyártási lépés](about-iot-dps.md#manufacturing-step) szerezhető egy eszköz telepítésre készen áll.
 
-## <a name="attestation-mechanism"></a>Állapotigazolási mechanizmus
+## <a name="attestation-mechanism"></a>Igazolási mechanizmus
 
-Az igazolás módszer használata általában egy eszközidentitás használt módszert. Az igazolás mechanizmus a tanúsítványigénylési listája, amely arra kéri a létesítési szolgáltatás melyik adott eszközzel használni kívánt igazolási módszert is fontos.
+Az igazolási mechanizmus a megerősítő egy eszközidentitást használt módszer. Az igazolási mechanizmust is fontos a regisztrációs listához, amely arra kéri a kiépítési szolgáltatás, mely metódus igazolási egy adott eszköz használata.
 
 > [!NOTE]
-> Az IoT-központ "hitelesítési séma" hasonló fogalma az adott szolgáltatást használ.
+> Az IoT Hub egy hasonló fogalom a szolgáltatás "hitelesítési séma" használ.
 
-Az eszköz kiépítése szolgáltatás igazolási két formáját támogatja:
-* **X.509 tanúsítvány** a szabványos X.509 tanúsítvány hitelesítési folyamat alapján.
-* **Platformmegbízhatósági modul (TPM) megbízható** nonce kihívást, a TPM szabvány a kulcsok használatával van a közös hozzáférésű Jogosultságkód (SAS) aláírt jogkivonat alapján. Ennek a fizikai TPM az eszközön nem szükséges, de a szolgáltatás várhatóan igazolják, hogy az ellenőrzőkulcsot / használatával az [TPM spec](https://trustedcomputinggroup.org/work-groups/trusted-platform-module/).
+A Device Provisioning Service-állapotigazolási következő formáját támogatja:
+* **X.509-tanúsítványokat** X.509 tanúsítványt a szabványos hitelesítési folyamat alapján.
+* **Platformmegbízhatósági modul (TPM) megbízható** nonce problémásnak bizonyulhatnak, a TPM szabvány a kulcsok használatával nyújtjuk egy közös hozzáférésű Jogosultságkód (SAS) aláírt jogkivonat alapján. A fizikai TPM az eszközön nem igényel, de a szolgáltatás használatával az ellenőrzőkulcs kiszolgálónként auditokkal vár a [TPM specifikáció](https://trustedcomputinggroup.org/work-groups/trusted-platform-module/).
+* **Szimmetrikus kulcs** közös hozzáférésű jogosultságkód (SAS) alapuló [biztonsági jogkivonatokat](../iot-hub/iot-hub-devguide-security.md#security-tokens), többek között a kivonatolt aláírás és a egy beágyazott lejárati. További információkért lásd: [szimmetrikus kulcsát a kulcsigazoláshoz](concepts-symmetric-key-attestation.md).
 
 ## <a name="hardware-security-module"></a>Hardveres biztonsági modul
 
-A hardveres biztonsági modult, vagy a hardveres biztonsági MODULT, biztonságos, hardver-alapú eszköz titkos kulcsok tárolására szolgál, és a titkos tárolási legbiztonságosabb formája. X.509-tanúsítványokat és a SAS-tokenje tárolható a HSM-ben. Hardveres biztonsági modulok mindkét igazolás mechanizmusok használható a létesítési szolgáltatás támogat.
+A hardveres biztonsági modul vagy a HSM-be, biztonságos, a hardveres eszköz titkos kulcsok tárolására szolgál, és a titkos tárolási legbiztonságosabb formája. X.509-tanúsítványokat és a SAS-tokeneket is tárolható a HSM-ben. HSM-EK használható mindkét igazolási mechanizmusok az eszközkiépítési szolgáltatás által támogatott.
 
 > [!TIP]
-> Erősen ajánlott eszközök biztonságosan tárolni a titkos kulcsok az eszközök hardveres biztonsági modul használata.
+> Javasoljuk, hogy az eszközök HSM használata az eszközök titkos kulcsok biztonságos tárolása.
 
-Eszköz titkokat is tárolhatók a szoftver (memória), de tárolási kevésbé biztonságos formája, mint a hardveres biztonsági MODULT.
+Eszköz titkos kulcsokat is tárolhatók a szoftver (memória), de kevésbé biztonságos űrlap tárhelyet, mint a hardveres biztonsági MODULT.
 
 ## <a name="registration-id"></a>Regisztrációs azonosító
 
-A regisztrációs Azonosítót az eszköz kiépítése szolgáltatásban eszköz egyedi azonosítására szolgál. Az eszköz azonosítója a létesítési szolgáltatás egyedinek kell lennie [azonosító hatókör](#id-scope). Minden egyes eszközének rendelkeznie kell egy regisztrációs azonosítót. A regisztrációs Azonosítót alfanumerikus, nagybetűk, és kötőjeleket tartalmazhat.
+A regisztrációs azonosító a Device Provisioning Service az eszköz egyedi azonosítására szolgál. Az eszköz azonosítója az eszközkiépítési szolgáltatás egyedinek kell lennie [azonosító hatóköre](#id-scope). Minden egyes eszközének rendelkeznie kell egy regisztrációs azonosítót. A regisztrációs azonosító az alfanumerikus karakterek, kisbetűs, és kötőjeleket tartalmazhat.
 
-* Esetén a TPM-regisztrációs Azonosítót biztosítja a TPM-be.
-* Esetén a tanúsítvány X.509-alapú regisztrációs Azonosítót valósul meg a tanúsítvány tulajdonosának nevével.
+* A TPM esetén a regisztrációs azonosító magából a TPM által biztosított.
+* X.509-alapú igazolás esetén a regisztrációs azonosító közöljük a tanúsítvány tulajdonosának nevét.
 
 ## <a name="device-id"></a>Eszközazonosító
 
-Az Eszközazonosítót az azonosítója megegyezik az IoT-központ jelenik meg. A regisztrációs bejegyzés adható meg a kívánt eszköz azonosítója, de nincs rá szükség kell beállítani. Ha nem kívánt eszköz azonosító van megadva a beléptetési listájában, a regisztrációs azonosítója lesz az Eszközazonosítót az eszköz regisztrálásakor. További információ [IoT-központ eszközazonosítók](../iot-hub/iot-hub-devguide-identity-registry.md).
+Az eszköz azonosítója az azonosítója megegyezik az IoT Hub megjelenik. A regisztrációs bejegyzés adható meg a kívánt eszköz azonosítója, de nem kötelező megadni. Ha nem kívánt eszköz Azonosítóját a regisztrációs listában van megadva, a regisztrációs azonosító szolgál az eszköz azonosítója az eszköz regisztrálásakor. Tudjon meg többet [eszközazonosítókat az IoT Hub](../iot-hub/iot-hub-devguide-identity-registry.md).
 
-## <a name="id-scope"></a>Hatókör azonosítója
+## <a name="id-scope"></a>Azonosító hatóköre
 
-Az azonosító hatókör van rendelve egy eszköz kiépítése szolgáltatáshoz, amikor a felhasználó által létrehozott, és egyedi módon azonosítja az adott létesítési szolgáltatás segítségével regisztrálja az eszközt. Az azonosító hatókörben az szolgáltatás által létrehozott és nem módosítható, amely biztosítja, hogy az egyediségi is.
+Az azonosító hatókörének hozzá van rendelve a Device Provisioning Service, amikor a felhasználó által létrehozott és keresztül regisztrálja az eszközt a kiépítési szolgáltatás egyedi azonosítására szolgál. Az azonosító hatókörének a szolgáltatás által létrehozott, és nem módosítható, amely garantálja, hogy egyedi-e.
 
 > [!NOTE]
-> Egyediségi hosszan futó üzembe helyezési műveletek és egyesülés és beszerzési forgatókönyvek esetében fontos.
+> Egyedi-e hosszú ideig futó központi telepítési műveletek és egyesülési és felvásárlási forgatókönyvek fontos.

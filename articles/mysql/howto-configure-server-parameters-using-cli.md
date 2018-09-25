@@ -10,12 +10,12 @@ ms.service: mysql
 ms.devlang: azure-cli
 ms.topic: article
 ms.date: 07/18/2018
-ms.openlocfilehash: 61fee0771d6847a0ec56de656057409bbcdcba16
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: b45975bc019da2859da87a40e46970d849312e38
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39433746"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46957057"
 ---
 # <a name="customize-server-configuration-parameters-by-using-azure-cli"></a>Kiszolgáló konfigurációs paramétereinek testreszabása az Azure CLI-vel
 Lista, megjelenítése és konfigurációs paramétereinek frissítése egy Azure Database for MySQL-kiszolgálóhoz az Azure CLI, az Azure parancssori segédprogram használatával. Motor konfigurációk egy részét a kiszolgálói szinten érhető el, és módosíthatók. 
@@ -23,7 +23,7 @@ Lista, megjelenítése és konfigurációs paramétereinek frissítése egy Azur
 ## <a name="prerequisites"></a>Előfeltételek
 Ez az útmutató lépéseinek, az alábbiak szükségesek:
 - [Egy Azure Database for MySQL-kiszolgáló](quickstart-create-mysql-server-database-using-azure-cli.md)
-- [Az Azure CLI 2.0](/cli/azure/install-azure-cli) parancssori segédprogram, vagy használja az Azure Cloud Shellt a böngészőben.
+- [Az Azure CLI](/cli/azure/install-azure-cli) parancssori segédprogram, vagy használja az Azure Cloud Shellt a böngészőben.
 
 ## <a name="list-server-configuration-parameters-for-azure-database-for-mysql-server"></a>Kiszolgáló konfigurációs paramétereinek listázása az Azure Database for MySQL-kiszolgáló
 A kiszolgáló és az értéküket az összes módosíthatóvá paraméter listázásához, futtassa a [az mysql server configuration list](/cli/azure/mysql/server/configuration#az-mysql-server-configuration-list) parancsot.

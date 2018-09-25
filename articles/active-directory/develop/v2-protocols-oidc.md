@@ -13,16 +13,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/12/2018
+ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 4c7b46972a8c07675e1318a900c1f07043beb3de
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: 51c7bacbfa30a74aef89abba133e48c483375032
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39591935"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46971450"
 ---
 # <a name="azure-active-directory-v20-and-the-openid-connect-protocol"></a>Az Azure Active Directory 2.0-s verzió és az OpenID Connect protokoll
 
@@ -139,7 +139,7 @@ id_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik1uQ19WWmNB...&state=12345
 
 | Paraméter | Leírás |
 | --- | --- |
-| id_token |Az azonosító jogkivonat, amely az alkalmazás kéri. Használhatja a `id_token` paraméter segítségével ellenőrizze a felhasználó identitását, és megkezdheti a felhasználói munkamenetet. Azonosító-jogkivonatokat, és azok tartalmát kapcsolatos további információkért lásd: a [v2.0-végpont jogkivonatok referencia](v2-id-and-access-tokens.md). |
+| id_token |Az azonosító jogkivonat, amely az alkalmazás kéri. Használhatja a `id_token` paraméter segítségével ellenőrizze a felhasználó identitását, és megkezdheti a felhasználói munkamenetet. Azonosító-jogkivonatokat, és azok tartalmát kapcsolatos további információkért lásd: a [ `id_tokens` referencia](id-tokens.md). |
 | state |Ha egy `state` paraméter tartalmazza a kérés ugyanazt az értéket meg kell jelennie a választ. Az alkalmazás ellenőrizze, hogy a kérés- és állapot értékei azonosak. |
 
 ### <a name="error-response"></a>Hiba történt a válasz
@@ -175,20 +175,18 @@ A következő táblázat ismerteti azokat a hibakódokat, a visszaadható a `err
 
 ## <a name="validate-the-id-token"></a>Az azonosító jogkivonat érvényesítése
 
-Egy azonosító jogkivonat fogadása azonban nem a felhasználó hitelesítéséhez. Kell érvényesíteni az azonosító jogkivonat aláírása, és ellenőrizze a jogcímeket az alkalmazáskövetelmények szerint. Használja a v2.0-végpont [JSON webes jogkivonatainak (JWTs)](http://self-issued.info/docs/draft-ietf-oauth-json-web-token.html) és a nyilvános kulcsú hitelesítésen jogkivonatok aláírásához, és ellenőrizze, hogy azok érvényesek.
+Id_token érkező azonban nem hitelesíti a felhasználót; kell érvényesíteni az aláírást a id_token, és ellenőrizze a jogcímeket az alkalmazáskövetelmények szerint. Használja a v2.0-végpont [JSON webes jogkivonatainak (JWTs)](http://self-issued.info/docs/draft-ietf-oauth-json-web-token.html) és a nyilvános kulcsú hitelesítésen jogkivonatok aláírásához, és ellenőrizze, hogy azok érvényesek.
 
-Dönthet úgy, hogy az ügyfélkód a azonosító jogkivonat érvényesítéséhez, de általános gyakorlat, hogy az azonosító jogkivonat háttér-kiszolgálónak küldött, majd az ellenőrzési hiba. Az azonosító jogkivonat aláírása érvényesítése után kell néhány jogcímek ellenőrzése. További információkat, beleértve kapcsolatos további [jogkivonatok érvényességének](v2-id-and-access-tokens.md#validating-tokens) és [aláírókulcs kapcsolatos fontos információkat](v2-id-and-access-tokens.md#validating-tokens), tekintse meg a [2.0-s verziójú jogkivonatok referencia](v2-id-and-access-tokens.md). Elemezheti és érvényesítse a kódtár használatát javasoljuk. Nincs legalább egy ezeket a könyvtárakat a legtöbb nyelvekhez és platformokhoz érhető el.
+Ha szeretné ellenőrizni a `id_token` ügyfél kódot, de általános gyakorlat az, hogy küldjön a `id_token` háttérkiszolgálóhoz, és végezze el az érvényesítési hiba. A id_token aláírásának ellenőrzése után, ha nincsenek néhány jogcímek ellenőrzéséhez meg kell adni. Tekintse meg a [ `id_token` referencia](id-tokens.md) további információért többek között [jogkivonatok érvényesítése](id-tokens.md#validating-idtokens) és [fontos információkat kapcsolatos aláíró kulcs váltása](active-directory-signing-key-rollover.md). Javasoljuk, hogy a jogkivonatok használata a tár elemzés és ellenőrzése – nincs legalább egy elérhető a legtöbb nyelvekhez és platformokhoz.
 <!--TODO: Improve the information on this-->
 
-Emellett érdemes további jogcímek a forgatókönyvtől függően ellenőrzése. Néhány gyakori ellenőrzések a következők:
+Érdemes ellenőrizni a forgatókönyvtől függően további jogcímek is. Néhány gyakori ellenőrzések a következők:
 
-* Győződjön meg arról, hogy a felhasználó vagy a szervezet regisztrált az alkalmazáshoz.
-* Győződjön meg arról, hogy a felhasználó engedélyezési vagy jogosultság szükséges.
-* Győződjön meg arról, hogy egy bizonyos hitelesítés erőssége történt, például többtényezős hitelesítést.
+* Annak biztosítása, a felhasználó és szervezet regisztrált az alkalmazáshoz.
+* Biztosítása a felhasználó rendelkezik a megfelelő engedélyezési vagy jogosultságokkal
+* Egy bizonyos hitelesítés erőssége biztosító történt, például többtényezős hitelesítést.
 
-Egy azonosító jogkivonat jogcímeiben kapcsolatos további információkért lásd: a [v2.0-végpont jogkivonatok referencia](v2-id-and-access-tokens.md).
-
-Miután ellenőrizte az azonosító jogkivonat, munkamenet megkezdheti a felhasználóval. Az azonosító jogkivonat a jogcímek segítségével a felhasználó adatainak lekérése az alkalmazásban. Használhatja ezt az információt a megjelenített, rekordok, engedélyek és így tovább.
+Teljesen ellenőrzése a id_token, után megkezdheti a felhasználói munkamenetet, és a jogcímek használata a id_token az információkat kaphat az alkalmazás a felhasználó. Ez az információ használható megjelenített, a rekordokat, a személyre szabása, stb.
 
 ## <a name="send-a-sign-out-request"></a>Kijelentkezési kérés küldése
 
@@ -257,7 +255,7 @@ id_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik1uQ19WWmNB...&code=AwABAA
 
 | Paraméter | Leírás |
 | --- | --- |
-| id_token |Az azonosító jogkivonat, amely az alkalmazás kéri. Az azonosító jogkivonat segítségével ellenőrizze a felhasználó identitását, és megkezdheti a felhasználói munkamenetet. Azonosító-jogkivonatokat és azok tartalmát, a további információt találhat a [v2.0-végpont jogkivonatok referencia](v2-id-and-access-tokens.md). |
+| id_token |Az azonosító jogkivonat, amely az alkalmazás kéri. Az azonosító jogkivonat segítségével ellenőrizze a felhasználó identitását, és megkezdheti a felhasználói munkamenetet. Azonosító-jogkivonatokat és azok tartalmát, a további információt találhat a [ `id_tokens` referencia](id-tokens.md). |
 | Kód |Az engedélyezési kód, amely az alkalmazás kéri. Az alkalmazás az engedélyezési kód használatával a célként megadott erőforrás-hozzáférési jogkivonat kérése. Az engedélyezési kódot nagyon rövid ideig tartó. Általában egy hozzáférési kód körülbelül 10 perc múlva lejár. |
 | state |Ha a kérelem tartalmazza a state paraméterben, ugyanazt az értéket meg kell jelennie a választ. Az alkalmazás ellenőrizze, hogy a kérés- és állapot értékei azonosak. |
 
@@ -280,4 +278,4 @@ error=access_denied&error_description=the+user+canceled+the+authentication
 
 Egy lehetséges hibakódok és ajánlott ügyfél válaszok ismertetését lásd: [hibakódok hitelesítési végpont hibák](#error-codes-for-authorization-endpoint-errors).
 
-Ha az engedélyezési kódot, és a egy azonosító jogkivonat, jelentkezzen be a felhasználó, és hozzáférési tokenek beszerzése a felhasználók nevében. A felhasználó a aláírásához, ellenőrizni kell az azonosító jogkivonat [leírtak szerint pontosan](#validate-the-id-token). Hozzáférési jogkivonatok beszerzéséhez kövesse a leírt lépéseket követve [OAuth-protokoll dokumentációját](v2-oauth2-auth-code-flow.md#request-an-access-token).
+Ha az engedélyezési kódot, és a egy azonosító jogkivonat, jelentkezzen be a felhasználó, és hozzáférési tokenek beszerzése a felhasználók nevében. A felhasználó a aláírásához, ellenőrizni kell az azonosító jogkivonat [leírtak szerint pontosan](id-tokens.md#validating-idtokens). Hozzáférési jogkivonatok beszerzéséhez kövesse a leírt lépéseket követve [OAuth kód flow dokumentáció](v2-oauth2-auth-code-flow.md#request-an-access-token).

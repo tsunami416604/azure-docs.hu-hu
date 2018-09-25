@@ -1,162 +1,162 @@
 ---
-title: Azure költség felügyeleti költség jelentések ismertetése |} Microsoft Docs
-description: Ez a cikk segít megérteni a Cloudyn költség felügyeleti jelentések alapszintű struktúrát és funkcióit.
+title: Understanding Cloudyn cost jelentések az Azure-ban |} A Microsoft Docs
+description: Ez a cikk segítségével megismerheti a Cloudyn cost management jelentések alapszintű struktúrát és funkciók.
 services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 06/18/2018
+ms.date: 09/18/2018
 ms.topic: conceptual
 ms.service: cost-management
 manager: dougeby
 ms.custom: ''
-ms.openlocfilehash: 75709e099c6126997d91bf4b679de473fc75a485
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: e4d4c2115ddae592e9ca7bdf119b36d0ccee2da4
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37064004"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46998712"
 ---
-# <a name="understanding-cost-management-reports"></a>Költség jelentések ismertetése
+# <a name="understanding-cloudyn-cost-management-reports"></a>Understanding Cloudyn cost management jelentések
 
-Ez a cikk segít megérteni a Cloudyn költség felügyeleti jelentések alapszintű struktúrát és funkcióit. A legtöbb Cloudyn jelentések intuitív és egy egységes megjelenés és működés. Ez a cikk elolvasása után készen áll a költség felügyeleti jelentéseket használhatja. Számos szabványos szolgáltatást a különböző jelentéseket, lehetővé téve, keresse meg a jelentések kihívásokra keresztül érhetőek el. Jelentések testre szabható, és kiszámításához ki és jelenítheti meg az eredmények több lehetőség közül választhat.
+Ez a cikk segítségével megismerheti a Cloudyn cost management jelentések alapszintű struktúrát és funkciók. A legtöbb Cloudyn-jelentések intuitív, és rendelkezik egy egységes megjelenés és működés. Miután ez a cikk a cost management jelentésekre készen áll. A különböző jelentéseket, így egyszerűen nyissa meg a jelentések teljes számos standard funkciók érhetők el. Jelentésekhez testre szabható, és alapján számítja ki, és az eredmények megjelenítése több lehetőség közül választhat.
 
 ## <a name="report-fields-and-options"></a>Jelentésmezők és beállítások
 
-Íme egy példa a költség keresztül idő a jelentés egy pillantást. A legtöbb Cloudyn jelentések csak hasonló elrendezése lehet.
+Íme egy példa az időalapú költségeket tartalmazó jelentést egy pillantást. A legtöbb a Cloudyn jelentésekben hasonló elrendezés rendelkezik.
 
-![a minta-jelentés](./media/understanding-cost-reports/sample-report.png)
+![mintajelentés](./media/understanding-cost-reports/sample-report.png)
 
-Az előző ábrán minden számozott területen a következő információ részletes leírását lásd:
+Minden egyes számozott terület az előző képen leírt részletei a következő információkat:
 
 1. **Dátumtartomány**
 
-    A dátumtartományt lista segítségével adja meg az előre definiált vagy egyéni jelentés időközt.
-2. **Mentett szűrőkészlet**
+    A dátumtartomány lista használatával adja meg az előre definiált vagy egyéni jelentés időközt.
+2. **Mentett szűrő**
 
-    A mentett lista használatával mentheti azokat a csoportokat és a jelentésre alkalmazott szűrőket. Mentett szűrők a költségeket és a teljesítmény jelentések, beleértve a különböző érhetők el:
+    A mentett lista használatával az aktuális csoportok és a jelentésben alkalmazott szűrők mentése. Költség- és jelentéseket, beleértve a különböző mentett szűrők közül választhat:
 
-      - Költség elemzés
-      - Foglalási
+      - Költségelemzés
+      - Felosztás
       - Eszközgazdálkodás
       - Optimalizálás
 
-  Adja meg egy szűrőnevet, és kattintson a **mentése**.
+  Írja be a szűrő nevét, és kattintson a **mentése**.
 
 3. **Címkék**
 
-    A címkék területen csoport címke kategóriák használatához. A menüben szereplő címkék Azure részleg vagy költség center címkék vagy azok Cloudyn tartozó költség entitás és az előfizetés címkék. Válassza ki a címkék eredmények szűrésére. A címke nevét (kulcsszó) eredmények szűrését is megadhatja.
+    Használja a címkék területen csoporthoz címke kategóriák szerint. A menüben szereplő címkék Azure részleg vagy költség center címkéket és azok a Cloudyn költség entitás- és előfizetés-címkék. Válassza ki a címkékkel szűrheti az eredményeket. Írja be a címke neve (kulcsszó) szűrheti az eredményeket is.
 
-    ![Válassza ki a beállítások](./media/understanding-cost-reports/select-options.png)
+    ![beállítások kiválasztása](./media/understanding-cost-reports/select-options.png)
 
     Kattintson a **Hozzáadás** új szűrő hozzáadásához.
 
     ![szűrő hozzáadása](./media/understanding-cost-reports/add-filter.png)
 
-    Címke csoportosítás, vagy a szűrés nem vonatkozik a Azure-erőforrások vagy erőforráscímkék csoport.
+    Címkét, csoportosítást, vagy a szűrés nem vonatkozik Azure-erőforrások vagy erőforrás-csoport címkék.
 
-    Költség foglalási címke csoportosítás és a szűrés érhetők el a **csoportok** menüjét.
+    A költséglefoglalás címke csoportosítás és a szűrés érhető el a **csoportok** menüpont.
 
 4. **Csoportokkal a jelentésekben**
 
-    Csoportok használata költség elemzés-jelentést a szokásos, megjelenítése a jelentésben szereplő adatok számlázási kategóriákról részletezett.  Azonban a csoportokat az költség foglalási jelentések megjelenítése nézetkategóriák címke-alapú. Címke-alapú kategóriák költség foglalási modellben és számlázási adatok szabványos részletezett kategóriákról vannak definiálva.
+    Csoportok használata költségelemzést a standard szintű, hogy a jelentések részletezett kategóriák a számlázás a jelentésben.  A Költséglefoglalási jelentések megjelenítése a csoportokat azonban címke-alapú kategóriák megtekintéséhez. Címke-alapú kategóriák a költséglefoglalási modell és a standard tételes kategóriák az elszámolási adatok vannak definiálva.
 
     ![csoportok címkék](./media/understanding-cost-reports/groups-tags01.png)
 
     ![csoportok címkék](./media/understanding-cost-reports/groups-tags02.png)
 
-    Jelentések költség, a kód alapú csoport kategóriákban csoportok lehetnek:
+    Költségek felosztási jelentésekben csoportok csoporthoz címke-alapú kategóriák a következők lehetnek:
       - Címkék
-      - az erőforráscímkék csoport
-      - Cloudyn entitáscímkék költsége
-      - Előfizetés címke kategóriák költség foglalási célokra
+      - erőforráscímkék csoport
+      - A Cloudyn-entitáscímkék költség
+      - Előfizetés címke kategóriák költségek felosztási célokra
 
   Példák a következők lehetnek:
      - Költséghely
      - Részleg
      - Alkalmazás
      - Környezet
-     - Költség kódot
+     - A Cost kód
 
-    Ez egy lista beépített csoportok jelentésekben:
+    Íme a jelentésekben elérhető beépített csoportok listája:
 
     - **Költségtípus**
-      - Válasszon ki egy költségtípus vagy többféle költség, vagy válassza ki az összes. Költség típusok a következők:
-        - Egyszeri díj
+      - Válassza ki a költségek típus vagy több költségtípusok, vagy válassza ki az összes. A Cost típusok a következők:
+        - Egyszeri
         - Támogatás
-        - Felhasználás költsége
+        - Használatért díjat kell fizetni
     - **Ügyfél**
-        - Válassza ki az adott ügyfélhez, több ügyfélhez, vagy válassza ki az összes ügyfél számára.
-    - **Fióknév**
-        - A fiók vagy előfizetés nevét. Az Azure az Azure-előfizetés nevét is.
-    - **Fiók nem**
-        - Jelöljön ki egy fiókot, a több fiók vagy a fiókokhoz. Az Azure az Azure-előfizetés GUID is.
-    - **Szülő**
-        - Válassza ki a szülő, több fiók, vagy válassza ki az összes.
+        - Jelöljön ki egy adott ügyfél több ügyfelet, vagy minden ügyfélnek.
+    - **Fiók neve**
+        - A fiók vagy előfizetés nevét. Az Azure-ban az Azure-előfizetés neve.
+    - **Fiók nélkül**
+        - Válasszon egy fiókot, több fiókot, vagy minden fiók. Az Azure-ban akkor az Azure-előfizetés GUID.
+    - **Szülő-fiók**
+        - Válassza ki a fölérendelt, több fiókot, vagy válassza ki minden.
     - **Szolgáltatás**
-        - Jelöljön ki egy szolgáltatást, több szolgáltatás vagy az összes szolgáltatás.
+        - Jelöljön ki egy szolgáltatást, több szolgáltatást, vagy az összes szolgáltatás.
     - **Szolgáltató**
-        - A felhő szolgáltató, ahol eszközök és a is társítva.
+        - A felhőszolgáltató, ahol a eszközök és a költségek tartoznak.
     - **Régió**
-        - Az régió, ahol az erőforrás tárolása.
-    - **Rendelkezésre állási zóna**
-        - Elkülönített AWS helyek régión belül.
+        - Régió, amelyen az erőforrás található.
+    - **Rendelkezésre állási zónában**
+        - Az AWS elkülönített helyek egy adott régión belül.
     - **Erőforrás típusa**
         - A használatban lévő erőforrás típusát.
     - **Sub-Type**
         - Válassza ki a altípusa.
     - **Művelet**
         - Válassza ki a műveletet, vagy **az összes megjelenítése**.
-    - **Árlista modell**
-        - Minden előzetes megfizetése esetén
-        - Előzetes megfizetése esetén nem.
-        - Részleges előzetes megfizetése esetén
+    - **Díjszabási modell**
+        - Összes előre
+        - Előre nem.
+        - Részlegesen előre
         - Igény szerinti
         - Foglalás
         - Helyszíni
-    - **Ingyenesen elérhető típusa**
-        - Válassza ki a negatív vagy pozitív kell fizetni típus vagy mindkettő.
-    - **Bérlős működés támogatása**
-        - Hogy a számítógép egy dedikált gépként fut.
+    - **Díj típusa**
+        - Válassza ki a negatív és pozitív díj típus vagy mindkettőt.
+    - **Bérleti**
+        - Egy gép van futtat-e egy dedikált géppel.
     -   **Használat típusa**
-          - Használat típusa lehet díjak egyszeri vagy ismétlődő díjakat.
+          - Használati típus lehet egyszeri díjak vagy ismétlődő díjak.
 
 5. **Szűrők**
 
-    Egyetlen vagy többszörös kiválasztási szűrők segítségével beállíthatja a kijelölt értékekre tartományokat. Szeretne szűrőt beállítani, kattintson a **Hozzáadás** , és válassza ki a szűrő kategóriákat és az értékeket.
+    Tartományok megadása a kiválasztott értékek egyetlen vagy többszörös kiválasztási szűrőit használhatja. Állítson be egy szűrőt, kattintson a **Hozzáadás** , majd a szűrés kategóriákat és az értékeket.
 
-6. **Költség modell**
+6. **A Cost modell**
 
-    Költség-modell segítségével költség foglalási 360 korábban létrehozott költség modell kiválasztása. Lehetséges, hogy több Cloudyn költség modellek, a költség foglalási követelményektől függően. Előfordulhat, hogy néhány szervezeti csoport költség eltér a többi foglalási követelményeinek. Minden team rendelkezhet saját dedikált költség modell.
+    Költségmodell segítségével válassza ki a Cost Allocation 360 korábban létrehozott költségmodellt. Lehetséges, hogy a Cloudyn cost több modell, a költségek felosztási követelményeitől függően. Előfordulhat, hogy a szervezeti csoportok némelyike költség foglalási követelményeknek, amelyek eltérnek a mások. Minden egyes csapat rendelkezhet saját dedikált költségmodellt.
 
-    Egy költség foglalási model definition létrehozásával kapcsolatos további információkért lásd: [egyéni címkék használata költségek lefoglalni](tutorial-manage-costs.md#use-custom-tags-to-allocate-costs).
+    Foglalási költség modell definícióját létrehozásával kapcsolatos információkért lásd: [költségek lefoglalása egyéni címkék használatával](tutorial-manage-costs.md#use-custom-tags-to-allocate-costs).
 
-7. **Sablon**
+7. **Amortizáció**
 
-    Nem használat megtekintéséhez a költség jelentések használata sablon alapú szolgáltatás költség vagy egyszeri fizetendő, és azok költségét eloszlatva egyenletesen az élettartamot közben. Egyszeri díjak példái a következők lehetnek:
+    Nem használati adatok megtekintéséhez a Költséglefoglalási jelentésekben használható amortizációs szolgáltatás költség vagy egyszeri fizetendő alapulnak, és azok költségei eloszlatva egyenletesen azok élettartama során. Példák egyszeri díjak a következők lehetnek:
     - Éves támogatási díjak
     - Éves biztonsági összetevők díjak
-    - Fenntartott példányok beszerzési díjak
-    - Bizonyos Azure piactéren elemek.
+    - Fenntartott példányok vásárlására díjak
+    - Néhány Azure Marketplace-elemek.
 
-  A sablon, válassza a **költség Amortized** vagy **tényleges költség**.
+  Amortizáció, válassza a **amortizált költségek** vagy **tényleges költségek**.
 
-8. **megoldás**
+8. **Felbontás**
 
-    Megoldás segítségével válassza ki a kijelölt dátumtartományban idő felbontása. A idő felbontása határozza meg, hogyan jelennek meg a jelentés egységeket, és lehet:
+    Megoldás segítségével válassza ki a alkalommal feloldási belül a kijelölt dátumtartományban. A alkalommal feloldási határozza meg, hogyan egységek jelennek meg a jelentést, és lehet:
     - Napi
     - Hetente
     - Havi
     - Negyedévente
     - Éves
 
-9. **Elosztási szabályai**
+9. **Lefoglalási szabályokat**
 
-    Felosztási szabályok segítségével alkalmazni, vagy tiltsa le a költség foglalási költség újraszámításkor módosulnak. Engedélyezheti vagy letilthatja a költség elosztási számítás számlázási adatok. A számítás a jelentés a kiválasztott kategóriákra vonatkozik. Lehetővé teszi a költség foglalási újraszámítás hatásának nyers számlázási adatok alapján.
+    Foglalási szabályok segítségével a alkalmazni, vagy tiltsa le a költségek felosztási költségek újraszámítása. Engedélyezheti vagy letilthatja a költségek felosztási újraszámítás számlázási adatok. A jelentés a kiválasztott kategóriákra az újraszámítás vonatkozik. Lehetővé teszi a költségek felosztási újraszámítás hatásának nyers számlázási adatok.
 
 10. **Kategorizálatlan**
 
-    Kategorizálatlan segítségével bevonhat vagy kizárhat a jelentésben nem kategorizált költségeket.
+    Kategorizálatlan használatával bevonhat vagy kizárhat a jelentésben szereplő Kategorizálatlan költségeket.
 
 11. **Mezők megjelenítése/elrejtése**
 
@@ -164,44 +164,44 @@ Az előző ábrán minden számozott területen a következő információ rész
 
 12.   **Megjelenítési formátum**
 
-    Megjelenítési formátum segítségével válassza ki a grafikon vagy tábla különböző nézeteket.
+    Megjelenítési formátum segítségével válassza ki a különböző graph vagy tábla nézetek.
 
     ![megjelenítési formátum](./media/understanding-cost-reports/display-formats.png)
 
 13. **Multi-color**
 
-    A jelentésben szereplő diagramok színének beállításához használja több szín.
+    Több szín használatával a jelentésben szereplő diagramok színének beállítását.
 
 14. **Műveletek**
 
-    Műveletek segítségével mentése, exportálhatja vagy ütemezni a jelentést.
+    Mentse, exportálását és a jelentés ütemezése műveletek használata.
 
 15. **Szabályzat**
 
-    Bár nem használatosak, a bizonyos jelentéseket tartalmazza a tervezett költség számítási házirendet. A jelentésekben a **konszolidált** házirend minden fiókjaihoz és előfizetéseihez alatt az aktuális entitás, például a Microsoft regisztrációs vagy AWS fizető javaslatok jeleníti meg. A **önálló** házirend mutatja egy fiók vagy előfizetés ajánlásokat, mintha csak egyetlen másik előfizetés létezik. A kiválasztott házirendet az optimalizálás stratégiát a szervezet által használt függően változik. Költség leképezések az elmúlt 30 napban használati alapulnak.
+    Nem szerepel, bár egyes jelentések plánované náklady számítási szabályzat közé tartozik. A jelentésekben a **konszolidált** házirend az összes fiók és -előfizetések az aktuális entitás, például a Microsoft regisztrációs vagy AWS fizető javaslatait mutatja be. A **önálló** házirend egy fiók vagy előfizetés javaslatait mutatja be, mint ha nincs más előfizetés. A szabályzat kiválasztott függ attól, a szervezet által használt optimalizálási stratégia. A Cost leképezések az elmúlt 30 nap használati alapulnak.
 
-## <a name="save-and-schedule-reports"></a>Mentse és jelentések ütemezése
+## <a name="save-and-schedule-reports"></a>Mentés és a jelentések ütemezése
 
-Miután létrehozott egy jelentést, mentheti későbbi használatra. Mentett jelentések érhetők el **saját eszközök** > **jelentések**. Ha módosítja egy meglévő jelentést, és menti, a jelentés mentése új verzióként. Vagy új jelentésként mentheti.
+Miután létrehozott egy jelentést, mentheti későbbi használatra. Mentett jelentések érhetők el a **saját eszközök** > **jelentések mappa**. Ha módosítja egy meglévő jelentés, és mentheti, a jelentés mentése új verzióként. Vagy új jelentésként is mentheti.
 
-### <a name="save-a-report-to-the-cloudyn-portal"></a>Jelentés mentése a Cloudyn portálra
+### <a name="save-a-report-to-the-cloudyn-portal"></a>A Cloudyn portálhoz a jelentés mentése
 
-Kattintson a jelentés megtekintésekor **műveletek** , és válassza **saját jelentések mentése**. A jelentés neve és majd adjon hozzá egy saját URL-cím vagy az automatikusan létrehozott URL-címet használja. Igény szerint is **megosztása** nyilvánosan másokkal a szervezet vagy a jelentés megoszthatja az entitáshoz. Ha nem ugyanazt a jelentést, személyes jelentés marad, és megtekintheti, hogy csak. Mentse a jelentést.
+Kattintson bármely jelentés megtekintésekor **műveletek** majd **saját jelentések mentése**. Nevezze el a jelentést, és ezután adjon hozzá egy saját URL-cím vagy az automatikusan létrehozott URL-címet használja. Igény szerint is **megosztása** nyilvánosan másokkal a szervezetben, vagy a jelentést megoszthatja azt az entitást. Ha nem oszt meg a jelentést, személyes jelentést is marad, és megtekintheti, hogy csak. Mentse a jelentést.
 
 
-### <a name="save-a-report-to-cloud-provider-storage"></a>A tárolási szolgáltató felhőbe jelentés mentése
+### <a name="save-a-report-to-cloud-provider-storage"></a>A felhőalapú tárolási szolgáltató jelentés mentése
 
-Ahhoz, hogy a jelentés mentése a felhőbeli szolgáltatás szolgáltatója, már konfigurálnia kell egy tárfiókot. Kattintson a jelentés megtekintésekor **műveletek** , és válassza **ütemezni a jelentést**. A jelentés neve és majd adjon hozzá egy saját URL-cím vagy az automatikusan létrehozott URL-címet használja. Válassza ki **tárolási mentése** majd válassza ki a tárfiókot, vagy vegyen fel egy másikat. Adja meg, amely lekérdezi a jelentés fájlnév fűzött előtagot. Válassza ki a fürt megosztott kötetei szolgáltatás vagy a JSON formátumú fájlokat, és mentse a jelentést.
+Annak érdekében, hogy a jelentés mentése a felhőszolgáltatóhoz, már konfigurálnia kell egy storage-fiókot. Kattintson bármely jelentés megtekintésekor **műveletek** majd **jelentés ütemezése**. Nevezze el a jelentést, és ezután adjon hozzá egy saját URL-cím vagy az automatikusan létrehozott URL-címet használja. Válassza ki **Storage mentése** majd válassza ki a tárfiókot, vagy vegyen fel egy másikat. Adja meg, amely lekérdezi a jelentés fájlnév fűzött előtagot. Válassza ki a CSV vagy JSON-fájl formátumát, és mentse a jelentést.
 
-### <a name="schedule-a-report"></a>Ütemezhet egy jelentést
+### <a name="schedule-a-report"></a>Jelentés ütemezése
 
-Rendszeres időközönként jelentéseket futtathat, és képes címzett lista vagy a felhőbeli szolgáltatás szolgáltatója tárfiók küldött. Kattintson a jelentés megtekintésekor **műveletek** , és válassza **ütemezni a jelentést**. E-mailben elküldi a jelentést, és a storage-fiók mentése. A **ütemezés**, válassza ki az időköz (napi, heti vagy havi). Heti és havi válassza ki a napot vagy a dátumok kézbesíti, és válassza ki azt az időpontot. Mentse az ütemezett jelentést. Ha az Excel jelentés formátumot, a program mellékletként küldi a jelentést. E-mailek tartalomformátumra kiválasztásakor jelentés eredményeinek formátuma a diagramon megjelenő érkeznek, mint egy grafikonon.
+Rendszeres időközönként jelentéseket futtathat, és képes címzett lista vagy a cloud service provider tárfiók küldött. Kattintson bármely jelentés megtekintésekor **műveletek** majd **jelentés ütemezése**. A jelentés elküldése e-mailben, és mentse egy tárfiókba. A **ütemezés**, válassza ki az időköz (naponta, hetente vagy havonta). A heti és havi válassza ki a nap vagy dátumokat elküldésére, és válassza ki az időpontot. Mentse az ütemezett jelentést. Ha az Excel-jelentés formátuma választja, a jelentést küld mellékletként. E-mail formátum tartalmak kiválasztásakor a diagram formájában jelenik meg a jelentés eredményeket gráfként érkeznek.
 
-### <a name="export-a-report-as-a-csv-file"></a>Jelentés exportálása CSV-fájlként
+### <a name="export-a-report-as-a-csv-file"></a>Jelentések exportálása CSV-fájlként
 
-Kattintson a jelentés megtekintésekor **műveletek** , és válassza **összes jelentésadatok exportálása**. Megjelenik egy előugró ablak, és egy CSV-fájl letöltése.
+Kattintson bármely jelentés megtekintésekor **műveletek** , majd **összes jelentések adatainak exportálása**. Ekkor megjelenik egy előugró ablak, és a egy CSV-fájl letöltése.
 
 ## <a name="next-steps"></a>További lépések
 
-- További tudnivalók a jelentések, amelyek szerepelnek a Cloudyn [használata költség felügyeleti jelentések](use-reports.md).
-- Megtudhatja, hogyan jelentések létrehozásához használandó [irányítópultok](dashboards.md).
+- Ismerje meg a jelentéseket, amelyek szerepelnek a Cloudyn [használja a Cloudyn-jelentések](use-reports.md).
+- Megtudhatja, hogyan hozhat létre a jelentések segítségével [irányítópultok](dashboards.md).

@@ -9,44 +9,45 @@ ms.component: bing-custom-search
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: v-brapel
-ms.openlocfilehash: 32644fe0cf0a6e1666d2d1ee6efb826bf753f001
-ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
+ms.openlocfilehash: ed00b75fa956d0197d3672d84b097f99ec3c35ec
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42814863"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46956385"
 ---
 # <a name="call-bing-custom-search-endpoint-c"></a>Hívást a Bing Custom Search végpont (C#)
 
-Ez a rövid útmutató bemutatja, hogyan használatával C#, a Bing Custom Search-végpont meghívása az egyéni keresőpéldányok keresési eredmények kérhet. 
+Ez a rövid útmutató bemutatja, hogyan kérhet a keresési eredmények a C# használatával hívja meg a Bing Custom Search-végpont egyéni keresési példány. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
--  Egy használatra kész egyéni keresési példány. Lásd: [az első Bing Custom Search-példány létrehozása](quick-start.md).
--  [.NET core](https://www.microsoft.com/net/download/core) telepítve.
-- A [Cognitive Services API-fiók](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) a **Bing Search APIs**. A [az ingyenes próbaidőszak](https://azure.microsoft.com/try/cognitive-services/?api=bing-custom-search) elegendő ehhez a gyors útmutatóhoz. Szüksége lesz a hozzáférési kulcsot, ha az ingyenes próbaverzió aktiválásának, vagy használhat egy díjköteles előfizetési kulcsot az Azure irányítópultján.  
+A rövid útmutató elvégzéséhez a következőkre lesz szüksége:
 
-  >[!NOTE]  
-  >Bing Custom Search rendelkezik egy kulcsot az előzetes verzióhoz, legkésőbb 2017. október 15-meglévő ügyfeleink fogja tudni azok kulcsait használja, 2017. November 30-ig vagy addig, amíg azok ügynökönként lekérdezések engedélyezett maximális számát. Ezt követően azok kell migrálnia az Azure-on általánosan elérhető verziót. 
- 
+- Egy használatra kész egyéni keresési példány. Lásd: [az első Bing Custom Search-példány létrehozása](quick-start.md).
+- [.NET core](https://www.microsoft.com/net/download/core) telepítve.
+- Egy előfizetési kulcsot. Is kap egy előfizetési kulcsot, aktiválásakor a [az ingyenes próbaidőszak](https://azure.microsoft.com/try/cognitive-services/?api=bing-custom-search), vagy használhat egy díjköteles előfizetési kulcsot az Azure irányítópultján (lásd: [Cognitive Services API-fiók](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)).    
+
+
 ## <a name="run-the-code"></a>A kód futtatása
 
 Ez a példa futtatásához kövesse az alábbi lépéseket:
 
-1. Hozzon létre egy mappát a kódot.
-2. A parancssorba vagy terminálba keresse meg az imént létrehozott mappára.
+1. Hozzon létre egy mappát a kódot.  
+  
+2. A parancssorba vagy terminálba keresse meg az imént létrehozott mappára.  
+  
 3. Futtassa az alábbi parancsot:
     ```
     dotnet new console -o BingCustomSearch
     cd BingCustomSearch
     dotnet add package Newtonsoft.Json
     dotnet restore
-   ```
+    ```
+  
+4. Másolja az alábbi kódot a program.cs fájlhoz. Cserélje le **YOUR-SUBSCRIPTION-KEY** és **YOUR-CUSTOM-CONFIG-ID** az előfizetési kulcs és a konfiguráció azonosítója.
 
-4. Másolja az alábbi kódot a program.cs fájlhoz.
-5. Cserélje le **YOUR-SUBSCRIPTION-KEY** és **YOUR-CUSTOM-CONFIG-ID** konfigurációját ID azonosítójával.
-
-    ``` CSharp
+    ```csharp
     using System;
     using System.Net.Http;
     using System.Web;
@@ -118,13 +119,13 @@ Ez a példa futtatásához kövesse az alábbi lépéseket:
         }
     }
     ```
-6. Hozza létre az alkalmazást, az alábbi paranccsal. Megjegyzés: a parancs kimenete által hivatkozott dll elérési útja.
+6. Hozza létre az alkalmazást, az alábbi paranccsal. Megjegyzés: a parancs kimenete által hivatkozott DLL elérési útja.
 
     <pre>
     dotnet build 
     </pre>
     
-7. Futtassa az alkalmazást a következő parancs cseréje **elérési UTAT a kimeneti** az elérési útját a buildelési lépést hivatkozik.
+7. Futtassa az alkalmazást a következő parancs cseréje **elérési UTAT a kimeneti** hivatkozott 6. lépésben, az dll-fájl elérési útját.
 
     <pre>    
     dotnet **PATH TO OUTPUT**

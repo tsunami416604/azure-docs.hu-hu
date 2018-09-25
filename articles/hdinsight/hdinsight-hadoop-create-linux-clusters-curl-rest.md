@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/02/2018
 ms.author: jasonh
-ms.openlocfilehash: 79ab8ad9d827b3d2dda8138260b9857f241afc45
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 6d2e0b06f0402ae26212be45a00b4c9a5394a117
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43094067"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46983701"
 ---
 # <a name="create-hadoop-clusters-using-the-azure-rest-api"></a>Az Azure REST API segítségével Hadoop-fürtök létrehozása
 
@@ -218,7 +218,7 @@ Ebben a példában a jelen dokumentumban leírt lépések használatban van. Cse
 
 ## <a name="log-in-to-your-azure-subscription"></a>Bejelentkezés az Azure-előfizetésbe
 
-Kövesse a leírt lépéseket [Azure CLI 2.0 használatának első lépései](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2) , és az előfizetés használatával kapcsolódhat a `az login` parancsot.
+Kövesse a leírt lépéseket [Azure CLI használatának első lépései](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2) , és az előfizetés használatával kapcsolódhat a `az login` parancsot.
 
 ## <a name="create-a-service-principal"></a>Egyszerű szolgáltatás létrehozása
 

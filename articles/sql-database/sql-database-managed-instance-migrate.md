@@ -9,28 +9,28 @@ manager: craigg
 ms.service: sql-database
 ms.custom: managed instance
 ms.topic: conceptual
-ms.date: 07/24/2018
+ms.date: 09/20/2018
 ms.author: bonova
-ms.openlocfilehash: cf3f7e131b177634318a6114b4f1efefcb9a9cec
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: 5aad6060691c796906232d9625ff00b748616a77
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45985660"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47038992"
 ---
 # <a name="sql-server-instance-migration-to-azure-sql-database-managed-instance"></a>Az SQL Server-példány migrálása az Azure SQL Database felügyelt példánya
 
-Ebben a cikkben megismerkedhet az áttelepítés egy SQL Server 2005 vagy újabb verzió-példány módszerek [Azure SQL Database felügyelt példányába](sql-database-managed-instance.md) (előzetes verzió).
+Ebben a cikkben megismerkedhet az áttelepítés egy SQL Server 2005 vagy újabb verzió-példány módszerek [Azure SQL Database felügyelt példányába](sql-database-managed-instance.md).
 
 Magas szintű az adatbázis-áttelepítési folyamat hasonlóan néz ki:
 
 ![Áttelepítési folyamat](./media/sql-database-managed-instance-migration/migration-process.png)
 
-- [Felügyelt példány kompatibilitási felmérése](sql-database-managed-instance-migrate.md#assess-managed-instance-compatibility)
-- [Válassza ki a kapcsolat lehetőséget](sql-database-managed-instance-migrate.md#choose-app-connectivity-option)
-- [Az optimálisan méretezett felügyelt példány üzembe helyezése](sql-database-managed-instance-migrate.md#deploy-to-an-optimally-sized-managed-instance)
-- [Áttelepítési módszer kiválasztása és áttelepítése](sql-database-managed-instance-migrate.md#select-migration-method-and-migrate)
-- [Alkalmazások figyelése](sql-database-managed-instance-migrate.md#monitor-applications)
+- [Felügyelt példány kompatibilitási felmérése](#assess-managed-instance-compatibility)
+- [Válassza ki a kapcsolat lehetőséget](sql-database-managed-instance-connect-app.md)
+- [Az optimálisan méretezett felügyelt példány üzembe helyezése](#deploy-to-an-optimally-sized-managed-instance)
+- [Áttelepítési módszer kiválasztása és áttelepítése](#select-migration-method-and-migrate)
+- [Alkalmazások figyelése](#monitor-applications)
 
 > [!NOTE]
 > Önálló adatbázis egy önálló adatbázis vagy a rugalmas készlet áttelepítéséhez lásd: [SQL Server-adatbázis áttelepítése az Azure SQL Database](sql-database-cloud-migrate.md).
@@ -41,7 +41,7 @@ Először határozza meg, hogy-e az adatbázis-követelmények az alkalmazás ko
 
 Használat [Data Migration Assistant (DMA)](https://docs.microsoft.com/sql/dma/dma-overview) észleli a potenciális kompatibilitási problémák az Azure SQL Database érintő funkció. DMA még nem támogatja a felügyelt példány áttelepítési céljaként, de javasoljuk, hogy az értékelés futtatása az Azure SQL-adatbázison, és gondosan tekintse át a listában, jelentett funkció és kompatibilitási hibáit, szemben a termék dokumentációját. Lásd: [Azure SQL Database szolgáltatások](sql-database-features.md) ellenőrzéséhez bizonyos jelentett blokkoló problémák, hogy nem blockers a felügyelt példány, mert a blokkolás a legtöbb problémák az Azure SQL Database-áttelepítés megakadályozza, hogy el lettek távolítva a felügyelt A példány. Példány, szolgáltatások, mint az adatbázisközi lekérdezések, adatbázisközi tranzakciók belül ugyanazon, más SQL forrásokból, CLR, globális ideiglenes táblák, csatolt kiszolgáló példány szintű nézetek, a Service Broker és a hasonló érhetők el a felügyelt példányok. 
 
-Ha egy jelentett problémák elhárítását, amelyek a rendszer nem távolítja el az Azure SQL felügyelt példánya, szüksége lehet fontolja meg egy másik lehetőség, mint például [az Azure-beli virtuális gépeken futó SQL Server](https://azure.microsoft.com/services/virtual-machines/sql-server/). Néhány példa:
+Ha néhány jelentett problémák elhárítását, amelyek a rendszer nem távolítja el az Azure SQL Database felügyelt példányába, szüksége lehet egy másik lehetőség, mint például figyelembe [az Azure-beli virtuális gépeken futó SQL Server](https://azure.microsoft.com/services/virtual-machines/sql-server/). Néhány példa:
 
 - Ha az operációs rendszer vagy a fájlrendszerben, például telepítés harmadik féltől származó és egyéni ugyanahhoz a virtuális géphez, az SQL Server-ügynökök közvetlen elérésére van szüksége.
 - Ha továbbra is nem támogatott funkciók, például a FileStream a szigorú függőségi / filetable objektum, a PolyBase és a kereszt-példány tranzakció.
@@ -81,7 +81,7 @@ Felügyelt példány támogatja a következő adatbázis áttelepítési lehető
 
 A [Azure Database Migration Service (DMS)](../dms/dms-overview.md) egy teljes körűen felügyelt szolgáltatás, amely lehetővé teszi a zökkenőmentes migrálást a több adatbázis-forrásokhoz, az Azure-adatplatformokra minimális állásidővel. Ez a szolgáltatás leegyszerűsíti a meglévő harmadik féltől származó és az SQL Server-adatbázisok áthelyezése az Azure-bA szükséges feladatok. A nyilvános előzetes verzióban telepítési lehetőségek között az Azure SQL Database felügyelt példány és az SQL Server egy Azure virtuális gépet. A DMS az ajánlott módszer az áttelepítés a vállalati számítási feladatokat. 
 
-Ha az SQL Server, a helyszíni SQL Server Integration Services (SSIS) használ, a DMS áttelepítése SSIS-katalógus (SSISDB), amely tárolja az SSIS-csomagok jelenleg nem támogatja, de is kioszthatja az Azure-SSIS integrációs modul (IR) az Azure Data Factory (ADF), amely lesz Hozzon létre egy új SSISDB az Azure SQL Database/Managed Instance, majd is ismételt üzembe helyezése a csomagok, lásd: [Azure-SSIS integrációs modul létrehozása az ADF-ben](https://docs.microsoft.com/en-us/azure/data-factory/create-azure-ssis-integration-runtime).
+Ha az SQL Server, a helyszíni SQL Server Integration Services (SSIS) használ, a DMS áttelepítése SSIS-katalógus (SSISDB), amely tárolja az SSIS-csomagok jelenleg nem támogatja, de is kioszthatja az Azure-SSIS integrációs modul (IR) az Azure Data Factory (ADF), amely lesz Hozzon létre egy új SSISDB az Azure SQL Database/Managed Instance, majd is ismételt üzembe helyezése a csomagok, lásd: [Azure-SSIS integrációs modul létrehozása az ADF-ben](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime).
 
 Ez a forgatókönyv és a konfigurációs lépéseket DMS-bővebben lásd: [Migrate a helyszíni adatbázis egy felügyelt példányra DMS használatával](../dms/tutorial-sql-server-to-managed-instance.md).  
 
@@ -103,7 +103,7 @@ Az alábbi táblázatban bővebb információt a forrás SQL Server verzióját�
 |Felügyelt példány visszaállítása az Azure Storage-ból|[Állítsa vissza az URL-címet az SAS-hitelesítő adatot](sql-database-managed-instance-get-started-restore.md)|
 
 > [!IMPORTANT]
-> - Amikor [transzparens adattitkosítással](transparent-data-encryption-azure-sql.md) védett adatbázist migrál egy felügyelt Azure SQL-példányra a natív visszaállítási megoldással, az adatbázis visszaállítása előtt migrálni kell a helyszíni vagy az IaaS SQL Server-példányról a megfelelő tanúsítványt. Részletes lépéseiért lásd: [áttelepítése TDE cert egy felügyelt példányra](sql-database-managed-instance-migrate-tde-certificate.md)
+> - Által védett adatbázis áttelepítését [transzparens adattitkosítás](transparent-data-encryption-azure-sql.md) Azure SQL Database felügyelt példányába történő natív visszaállítási lehetőséggel, a megfelelő tanúsítványt a helyszíni vagy IaaS SQL Server kell áttelepíteni Mielőtt az adatbázis-visszaállítás. Részletes lépéseiért lásd: [áttelepítése TDE cert egy felügyelt példányra](sql-database-managed-instance-migrate-tde-certificate.md)
 > - Rendszer-adatbázisok visszaállítása nem támogatott. Példány szolgáltatásszint-objektumokhoz (master vagy msdb-adatbázisokban tárolt) áttelepítéséhez, javasoljuk, hogy parancsfájl, és T-SQL-szkriptek a cél-példányon futnak.
 
 A rövid útmutató, amely egy adatbázis biztonsági másolatának visszaállítása egy felügyelt példányra, SAS-hitelesítő adatok használatával, lásd: [visszaállítása biztonsági másolatból egy felügyelt példányra](sql-database-managed-instance-get-started-restore.md).

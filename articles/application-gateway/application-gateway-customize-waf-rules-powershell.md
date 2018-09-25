@@ -1,6 +1,6 @@
 ---
-title: Webes alkalmazás tűzfalszabályok Azure Application Gateway - PowerShell testreszabása |} Microsoft Docs
-description: Ez a cikk bemutatja, hogy miként web Application Gateway a PowerShell alkalmazás tűzfalszabályok testreszabásához.
+title: Testre szabhatja a webalkalmazási tűzfalszabályok az Azure Application Gatewayjel – PowerShell |} A Microsoft Docs
+description: Ez a cikk webalkalmazási tűzfalszabályok az Application Gatewayen PowerShell-lel testreszabása ismertetése.
 documentationcenter: na
 services: application-gateway
 author: vhorne
@@ -14,35 +14,35 @@ ms.custom: ''
 ms.workload: infrastructure-services
 ms.date: 07/26/2017
 ms.author: victorh
-ms.openlocfilehash: f992fbf9ab223e18c24c27ce0577b1af2017281a
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: 7dce3657656effd3765f77ae957c1cfc4d3f4316
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/04/2018
-ms.locfileid: "33201368"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46964398"
 ---
-# <a name="customize-web-application-firewall-rules-through-powershell"></a>Webes alkalmazás tűzfalszabályok Powershellen keresztül testreszabása
+# <a name="customize-web-application-firewall-rules-through-powershell"></a>Webalkalmazási tűzfalszabályok Powershellen keresztül testreszabása
 
 > [!div class="op_single_selector"]
 > * [Azure Portal](application-gateway-customize-waf-rules-portal.md)
 > * [PowerShell](application-gateway-customize-waf-rules-powershell.md)
-> * [Azure CLI 2.0](application-gateway-customize-waf-rules-cli.md)
+> * [Azure CLI](application-gateway-customize-waf-rules-cli.md)
 
-Az Azure Application Gateway webalkalmazási tűzfal (WAF) webalkalmazások védelmet biztosít. A védelem által a nyitott webes alkalmazás biztonsági Project (OWASP) Core szabály beállítása (CRS) vannak megadva. Néhány szabály okozhat a vakriasztások és valós adatforgalmat. Emiatt Application Gateway lehetővé teszi a csoportok és a szabályok testreszabásához. Az adott szabály csoportokról és a szabályok további információkért lásd: [webes alkalmazás tűzfal CRS csoportok és a szabályok listája](application-gateway-crs-rulegroups-rules.md).
+Az Azure Application Gateway webalkalmazási tűzfala (WAF) védelmet kínál a webes alkalmazásokhoz. Ezek a védelmi által az Open Web Application Security Project (OWASP) Core szabály beállítása (CRS) vannak megadva. Néhány szabály által kiváltott hamis pozitív okozhat, és valódi adatforgalmat. Ebből kifolyólag az Application Gateway lehetővé teszi a csoportok és a szabályok testreszabása. Az adott csoportok és a szabályok további információkért lásd: [webes alkalmazás tűzfal CRS-szabálycsoportjainak és szabályok listája](application-gateway-crs-rulegroups-rules.md).
 
 ## <a name="view-rule-groups-and-rules"></a>A szabály csoportok megtekintése és szabályok
 
-A következő kód példák szemléltetik a szabályok és konfigurálható egy WAF-kompatibilis alkalmazások átjárón csoportok megtekintése.
+A következő hitelesítésikód-példák bemutatják, hogyan-szabályok és konfigurálható a WAF-kompatibilis application gatewayen megtekintéséhez.
 
 ### <a name="view-rule-groups"></a>A szabály csoportok megtekintése
 
-A következő példa bemutatja, hogyan szabály csoportok megtekintése:
+Az alábbi példa bemutatja, hogyan szabály csoportok megtekintése:
 
 ```powershell
 Get-AzureRmApplicationGatewayAvailableWafRuleSets
 ```
 
-A következő az előző példából csonkolt válasz kimenete:
+A következő kimenet az előző példából csonkolt választ:
 
 ```
 OWASP (Ver. 3.0):
@@ -82,7 +82,7 @@ OWASP (Ver. 2.2.9):
 
 ## <a name="disable-rules"></a>Szabályok letiltása
 
-A következő példa letiltja a szabályok `910018` és `910017` az Alkalmazásátjáró:
+A következő példa letiltja a szabályok `910018` és `910017` egy application gateway-en:
 
 ```powershell
 $disabledrules=New-AzureRmApplicationGatewayFirewallDisabledRuleGroupConfig -RuleGroupName REQUEST-910-IP-REPUTATION -Rules 910018,910017
@@ -91,7 +91,7 @@ Set-AzureRmApplicationGatewayWebApplicationFirewallConfiguration -ApplicationGat
 
 ## <a name="next-steps"></a>További lépések
 
-Miután konfigurálta a letiltott szabályok, megismerheti a WAF naplók megtekintéséhez. További információkért lásd: [átjáró Alkalmazásdiagnosztika](application-gateway-diagnostics.md#diagnostic-logging).
+Miután konfigurálta a letiltott szabályok, megismerheti a WAF-naplók megtekintéséhez. További információkért lásd: [Application Gateway-diagnosztika](application-gateway-diagnostics.md#diagnostic-logging).
 
 [fig1]: ./media/application-gateway-customize-waf-rules-portal/1.png
 [1]: ./media/application-gateway-customize-waf-rules-portal/figure1.png

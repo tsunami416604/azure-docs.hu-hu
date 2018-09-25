@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 04/25/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 92ebd399cea88440e0f76ee1f34cb5930d3121d9
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: c4e237af7e85223839b3f26bcc33007f8abb9d0a
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45578684"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47034229"
 ---
 # <a name="automate-resources-in-your-datacenter-or-cloud-by-using-hybrid-runbook-worker"></a>Automatizálhatja az erőforrások az adatközpontban vagy a felhőben a hibrid Runbook-feldolgozó
 
@@ -26,11 +26,11 @@ Az alábbi ábrán ez a funkció:
 
 Minden egyes hibrid Runbook-feldolgozó, amely az ügynök telepítésekor adja meg egy hibrid Runbook-feldolgozó csoport tagja. Egy csoport egy adott ügynök is tartalmazhat, de több ügynök is telepíthető egy csoportot a magas rendelkezésre állás érdekében.
 
-Amikor elindít egy runbookot a hibrid Runbook-feldolgozón, adja meg a csoportot, amely a futtatott. A csoport minden egyes feldolgozóhoz kérdezze le az Azure Automation-feladat elérhető megtekintéséhez. Ha egy feladat érhető el, az első worker a feladatot veszi. Egy adott feldolgozó nem adható meg.
+Amikor elindít egy runbookot a hibrid Runbook-feldolgozón, adja meg a csoportot, amely a futtatott. A csoport minden egyes feldolgozóhoz kérdezze le az Azure Automation-feladat elérhető megtekintéséhez. Ha egy feladat érhető el, az első worker a feladatot veszi. Egy adott feldolgozó nem adható meg. A feladat [korlátok](../azure-subscription-service-limits.md#automation-limits) Azure próbakörnyezetbe lefordítja a és a hibrid Runbook-feldolgozók egyaránt érvényesek.
 
 ## <a name="install-a-hybrid-runbook-worker"></a>A hibrid Runbook Worker telepítése
 
-A folyamat egy hibrid Runbook Worker telepítése az operációs rendszer függ. Az alábbi táblázat a módszereket, a telepítéshez használható hivatkozásokat tartalmaz. 
+A folyamat egy hibrid Runbook Worker telepítése az operációs rendszer függ. Az alábbi táblázat a módszereket, a telepítéshez használható hivatkozásokat tartalmaz.
 
 Telepítése és konfigurálása a Windows hibrid Runbook-feldolgozók, két módszert használhatja. Az ajánlott módszer az Automation-runbook segítségével teljesen automatizálja a Windows-számítógép konfigurálásának folyamatán. A második módszer által követett kézi telepítését és konfigurálását a szerepkör lépésenkénti útmutatót. A Linux rendszerű gépek futtassa az ügynök telepítéséhez a számítógépen egy Python-szkriptet.
 

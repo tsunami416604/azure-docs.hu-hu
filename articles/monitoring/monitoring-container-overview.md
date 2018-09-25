@@ -1,6 +1,6 @@
 ---
-title: Figyelési Azure tárolók áttekintés |} Microsoft Docs
-description: Ez a cikk áttekintést nyújt a tárolókat az Azure gyors megérteni a fürtök állapotának és rendelkezésre állásának figyelése Azure-ban a különböző módszerekre.
+title: Az Azure tárolók monitorozásának áttekintése |} A Microsoft Docs
+description: Ez a cikk áttekintést tárolók az Azure-ban könnyen felismerhető, a fürt állapotának és rendelkezésre állás monitorozása az Azure-ban elérhető különböző módszereket.
 services: log-analytics
 documentationcenter: ''
 author: MGoedtel
@@ -12,22 +12,22 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/26/2018
+ms.date: 09/24/2018
 ms.author: magoedte
-ms.openlocfilehash: 0d511c1f6dfd482e5754741da15b2852ee77c11e
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: db85f85011154dcc7adfa9d569e9015a9c5c33ca
+ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/04/2018
-ms.locfileid: "33207527"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47055059"
 ---
-# <a name="overview-of-monitoring-containers-in-azure"></a>Az Azure-ban tárolók figyelése áttekintése
-Az Azure-ral hatékonyan figyelheti és kezelheti a az Azure-tárolókon Kubernetes vagy Docker üzembe helyezett munkaterhelések tekintetében. Fontos tudni, hogyan működnek tárolók mikroszolgáltatási több alkalmazással rendelkező ahhoz, hogy egy megbízható szolgáltatás biztosításához léptékű, és támogatja a felügyeleti csomag. Ez a cikk röviden áttekinti a felügyeleti és figyelési képességek segítségével az Azure-ban minden egyes ismernie és megfelelő ezek a követelmények alapján.
+# <a name="overview-of-monitoring-containers-in-azure"></a>Az Azure-beli tárolók áttekintése
+Az Azure-ban, hatékonyan monitorozni és kezelni a számítási feladatok Azure-tárolók Kubernetes vagy a Docker telepítve. Fontos tudni, hogyan tárolók, mikroszolgáltatások több alkalmazással rendelkező végez annak érdekében, hogy egy megbízható szolgáltatás biztosításához ipari méretekben, és a figyelési csomag támogatja. Ez a cikk röviden áttekinti az a felügyeleti és monitorozási képességeket nyújt az Azure segítségével megismerheti azokat, és amelyek megfelelőek az igényei alapján.
 
-Használatával [Azure figyelő tároló állapotát](monitoring-container-health.md), a teljesítmény és a Linux tároló-infrastruktúra állapotát egy pillanat alatt tekintheti meg és vizsgálja meg a problémák gyorsan. A telemetriai adatok tárolva van a Naplóelemzési munkaterület, és az Azure portálon, ahol megismerheti, integrált szűréséhez, és szegmens összevont adatok nyomon követheti a terhelés, teljesítmény és állapotát az irányítópultok.  
+Használatával [-tárolókhoz az Azure Monitor](monitoring-container-insights-overview.md), a teljesítmény és a Linux tároló-infrastruktúra állapotát megtekintheti egy pillantással és gyorsan problémák kivizsgálásában. A telemetriai adatokat a Log Analytics-munkaterületen tárolja, és szűrése az Azure Portalon, ahol megismerheti, integrált és szegmens összesített adatok az irányítópultok a terhelés, teljesítmény és állapotának figyeléséhez.  
 
-Az üzemeltetett Azure Kubernetes szolgáltatás, a Naplóelemzési kívül futó tárolókat [Windows és a Docker-tároló megoldás](../log-analytics/log-analytics-containers.md) megtekinthető és kezelhető a Windows és a Docker-tároló gazdagépek nyújt segítséget. A Naplóelemzési munkaterület megtekintheti leltár részleteit, a teljesítmény és a csomópontok és a tárolók származó események a környezetben. Tárolók használt parancsok bemutató részletes naplózási információk is megtekinthetők, és elháríthatja az tárolók megtekintésével és központosított naplók keresése anélkül, hogy a Docker vagy a Windows rendszerű távoli eléréséhez.
+Az üzemeltetett Azure-beli Kubernetes-szolgáltatás, a Log Analytics-on kívül futó tárolók [Windows- és Docker-tároló megoldás](../log-analytics/log-analytics-containers.md) megtekinthető és kezelhető a Windows és a Docker-tároló gazdagépek segít. A Log Analytics-munkaterületen, megtekintheti a környezet leltáradatait, teljesítmény és a csomópontok és a tárolók eseményeket. Részletes naplózási adatait megjelenítő parancsok használják tárolókhoz is megtekintheti, és a tárolók háríthatóak el megtekintésével és központosított naplók keresése távolról elérni a Docker és a Windows gazdagépekre nélkül.
 
-Körű vagy végpontok figyelés az alkalmazás eléréséhez bármely függőségi azt egy Azure vagy a helyi erőforrás, ellenőrizni kell az Azure-megfigyelőt vagy a Naplóelemzési.  Az alkalmazási rétegre ahhoz, hogy egy további tájékoztatáshoz állapotfigyelő mindkét szinten a platformot, és az alkalmazás használatával az Application Insights réteget tartalmaznia kell. A platform szintjén nincs Application Insights SDK-k a [Kubernetes]( https://github.com/Microsoft/ApplicationInsights-Kubernetes), [Docker](https://hub.docker.com/r/microsoft/applicationinsights/), és [Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-event-analysis-appinsights). Mikroszolgáltatási alkalmazások esetén a rendszer támogatja a [Java](../application-insights/app-insights-java-get-started.md), [Node.js](../application-insights/app-insights-nodejs-quick-start.md), [.Net](../application-insights/app-insights-asp-net.md), [.Net Core](../application-insights/app-insights-asp-net-core.md), valamint egyéb számos[nyelvet vagy keretrendszert](../application-insights/app-insights-platforms.md). 
+Átfogó, vagy – teljes körű figyelést az alkalmazás elérése érdekében minden olyan függőséget, az Azure vagy a helyszíni erőforráshoz, hogy ellenőrizni kell az Azure Monitor vagy a Log Analytics.  Az alkalmazási rétegre tartalmaznia kell egy további rétegét állapotának figyelése, az Application Insights használatával platform és az alkalmazás szintjén egyaránt hozzáadásához. A platform szintjén vannak az Application Insights SDK-k [Kubernetes]( https://github.com/Microsoft/ApplicationInsights-Kubernetes), [Docker](https://hub.docker.com/r/microsoft/applicationinsights/), és [Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-event-analysis-appinsights). Mikroszolgáltatás-alkalmazások esetén nincs támogatása [Java](../application-insights/app-insights-java-get-started.md), [Node.js](../application-insights/app-insights-nodejs-quick-start.md), [.Net](../application-insights/app-insights-asp-net.md), [.Net Core](../application-insights/app-insights-asp-net-core.md), valamint számos más [nyelvek és keretrendszerek](../application-insights/app-insights-platforms.md). 
 
-Ellenkező esetben problémák azonosítatlan kerül, amely jelentős hatással lehet az alkalmazás rendelkezésre állásának és a szolgáltatási szint célkitűzések nem teljesül.  
+Ellenkező esetben problémák azonosítatlan kerül, amely hatással lehet az alkalmazás rendelkezésre állásának és a szolgáltatási szintű célok nem teljesül.  

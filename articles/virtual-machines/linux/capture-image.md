@@ -1,6 +1,6 @@
 ---
-title: Az Azure CLI 2.0 használatával Linux virtuális gép lemezképének |} A Microsoft Docs
-description: Készítsen lemezképet arról az olyan tömeges telepítésekhez az Azure CLI 2.0 használatával egy Azure virtuális Gépen.
+title: Az Azure CLI használatával Azure-beli Linuxos virtuális gép lemezképének |} A Microsoft Docs
+description: Készítsen lemezképet arról az olyan tömeges telepítésekhez az Azure CLI használatával egy Azure virtuális Gépen.
 services: virtual-machines-linux
 documentationcenter: ''
 author: cynthn
@@ -15,12 +15,12 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 03/22/2018
 ms.author: cynthn
-ms.openlocfilehash: ea202cad06130cfaaa134cad94ac08bede2f41a9
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: 98d98c1337830ce54c7ff96c19812169be129584
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37867701"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46946816"
 ---
 # <a name="how-to-create-an-image-of-a-virtual-machine-or-vhd"></a>Hogyan hozhat létre virtuális gépet vagy virtuális merevlemez képe
 
@@ -38,7 +38,7 @@ Győződjön meg arról, hogy megfelel-e a következő előfeltételek vonatkozn
 
 * Szüksége lesz egy Azure virtuális gép létrehozása a Resource Manager-alapú üzemi modellben, felügyelt lemezeket használ. Ha még nem hozott létre egy Linux rendszerű virtuális gép, használhatja a [portál](quick-create-portal.md), a [Azure CLI-vel](quick-create-cli.md), vagy [Resource Manager-sablonok](create-ssh-secured-vm-from-template.md). Konfigurálja a virtuális Gépet igény szerint. Ha például [adatlemezek hozzáadása](add-disk.md), alkalmazza a frissítéseket és az alkalmazások telepítésére. 
 
-* Szükség van a legújabb [Azure CLI 2.0](/cli/azure/install-az-cli2) telepítve van, és a egy Azure-fiók használatával kell jelentkeznie [az bejelentkezési](/cli/azure/reference-index#az_login).
+* Szükség van a legújabb [Azure CLI-vel](/cli/azure/install-az-cli2) telepítve van, és a egy Azure-fiók használatával kell jelentkeznie [az bejelentkezési](/cli/azure/reference-index#az_login).
 
 ## <a name="quick-commands"></a>Gyors parancsok
 
@@ -62,7 +62,7 @@ A virtuális gép adott fájlokat és adatokat törli az Azure-beli Virtuálisg�
 4. A parancs befejeződése után írja be a **kilépéshez**. Ebben a lépésben az SSH-ügyfél bezárása.
 
 ## <a name="step-2-create-vm-image"></a>2. lépés: A virtuális gép rendszerképének létrehozása
-Az Azure CLI 2.0 használatával a virtuális gép megjelölése általánosként és a lemezképének rögzítése. A következő példákban cserélje le a példa a paraméter nevét a saját értékeire. Példa a paraméter nevek a következők *myResourceGroup*, *myVnet*, és *myVM*.
+Az Azure CLI segítségével jelölje meg a virtuális gép általánosként és a lemezképének rögzítése. A következő példákban cserélje le a példa a paraméter nevét a saját értékeire. Példa a paraméter nevek a következők *myResourceGroup*, *myVnet*, és *myVM*.
 
 1. Szabadítsa fel a virtuális Gépet, amely a – figyelmeztetés megszüntetésről [az vm deallocate](/cli//azure/vm#deallocate). Az alábbi példa felszabadítja a virtuális gép nevű *myVM* az erőforráscsoport neve *myResourceGroup*:
    
@@ -146,4 +146,4 @@ A forrás Virtuálisgép-rendszerképről több virtuális gépet hozhat létre.
 - Kövesse a lépéseket újra megszüntetése, felszabadítása, generalize és hozzon létre egy rendszerképet.
 - Az új rendszerkép használata a későbbiekben. Ha szükséges, törölje az eredeti képet.
 
-A CLI-vel a virtuális gépek kezeléséről további információkért lásd: [Azure CLI 2.0](/cli/azure).
+A CLI-vel a virtuális gépek kezeléséről további információkért lásd: [Azure CLI-vel](/cli/azure).

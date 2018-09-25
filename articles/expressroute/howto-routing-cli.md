@@ -1,6 +1,6 @@
 ---
-title: 'Az Azure ExpressRoute-kapcsolatcsoportot útválasztás konfigurálása: CLI |} Microsoft Docs'
-description: Ez a cikk segítséget nyújt a létrehozása, és helyezze üzembe a magánfelhő, nyilvános és a Microsoft társviszony-létesítést az ExpressRoute-kapcsolatcsoportot. A cikk azt is bemutatja, hogyan ellenőrizheti a kapcsolatcsoport társviszonyainak állapotát, illetve hogyan frissítheti vagy törölheti őket.
+title: 'Az Azure ExpressRoute-kapcsolatcsoport útválasztásának konfigurálása: parancssori felület |} A Microsoft Docs'
+description: Ez a cikk segítséget nyújt a létrehozása és kiépítése a privát, nyilvános és Microsoft társviszony-létesítési ExpressRoute-Kapcsolatcsoportok. A cikk azt is bemutatja, hogyan ellenőrizheti a kapcsolatcsoport társviszonyainak állapotát, illetve hogyan frissítheti vagy törölheti őket.
 documentationcenter: na
 services: expressroute
 author: cherylmc
@@ -15,68 +15,68 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/11/2017
 ms.author: cherylmc
-ms.openlocfilehash: f4ad959de1425e828ce11fb658f8b5304e9d8775
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: cd7a6c43cb791ed607a763f10e781794ef513500
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/03/2018
-ms.locfileid: "30316426"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46950403"
 ---
-# <a name="create-and-modify-routing-for-an-expressroute-circuit-using-cli"></a>Létrehozásához és módosításához útválasztás az ExpressRoute-kapcsolatcsoportot parancssori felület használatával
+# <a name="create-and-modify-routing-for-an-expressroute-circuit-using-cli"></a>ExpressRoute-kapcsolatcsoport CLI-vel útválasztás létrehozása vagy módosítása
 
-Ez a cikk segít hozhat létre és kezelhet a Resource Manager üzembe helyezési modellel parancssori felület használatával ExpressRoute-kapcsolatcsoportot útválasztási konfigurációja. Ellenőrizze az állapot, frissítési vagy törlési is, és az ExpressRoute-kör társviszony kiosztásának megszüntetése. Ha más módszert használja a kapcsolatcsoport dolgozni szeretne, válassza ki egy cikk az alábbi listából:
+Ez a cikk segítséget nyújt a létrehozása és kezelése a parancssori felület használatával Resource Manager-alapú üzemi modellben az ExpressRoute-Kapcsolatcsoportok útválasztási konfigurációjának. Ellenőrizze az állapotot, frissítési vagy törlési is, és ExpressRoute-kapcsolatcsoport társviszonyainak megszüntetése. Ha szeretne egy másik módszer használható a kapcsolatcsoport-, válassza ki a cikk az alábbi listából:
 
 > [!div class="op_single_selector"]
 > * [Azure Portal](expressroute-howto-routing-portal-resource-manager.md)
 > * [PowerShell](expressroute-howto-routing-arm.md)
 > * [Azure CLI](howto-routing-cli.md)
-> * [Video - privát társviszony-létesítés](http://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-azure-private-peering-for-your-expressroute-circuit)
-> * [Video - nyilvános társviszony-létesítés](http://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-azure-public-peering-for-your-expressroute-circuit)
-> * [Videó – a Microsoft társviszony-létesítés](http://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-microsoft-peering-for-your-expressroute-circuit)
+> * [Videó - privát társviszony](http://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-azure-private-peering-for-your-expressroute-circuit)
+> * [Videó - nyilvános társviszony-létesítés](http://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-azure-public-peering-for-your-expressroute-circuit)
+> * [Videó – Microsoft társviszony-létesítés](http://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-microsoft-peering-for-your-expressroute-circuit)
 > * [PowerShell (klasszikus)](expressroute-howto-routing-classic.md)
 > 
 
 ## <a name="configuration-prerequisites"></a>Konfigurációs előfeltételek
 
-* A folyamat elkezdése előtt telepítse a CLI-parancsok legújabb verzióit (2.0-s vagy újabb). Információk a CLI-parancsok telepítéséről: [Az Azure CLI 2.0-s verziójának telepítése](/cli/azure/install-azure-cli).
-* Győződjön meg arról, hogy tekintse át a [Előfeltételek](expressroute-prerequisites.md), [útválasztási követelmények](expressroute-routing.md), és [munkafolyamat](expressroute-workflows.md) lapok: konfigurálás elkezdése előtt.
-* Egy aktív ExpressRoute-kapcsolatcsoportra lesz szüksége. Kövesse az [ExpressRoute-kapcsolatcsoport létrehozása](howto-circuit-cli.md) részben foglalt lépéseket, és engedélyeztesse a kapcsolatcsoportot kapcsolatszolgáltatójával, mielőtt továbblépne. Az ExpressRoute-kapcsolatcsoport ahhoz, hogy ebben a cikkben a parancsok futtatásához kiépített és engedélyezett állapotban kell lennie.
+* A folyamat elkezdése előtt telepítse a CLI-parancsok legújabb verzióit (2.0-s vagy újabb). A CLI-parancsok telepítéséről további információkért lásd: [az Azure CLI telepítése](/cli/azure/install-azure-cli).
+* Győződjön meg arról, hogy áttekintette a [Előfeltételek](expressroute-prerequisites.md), [útválasztási követelmények](expressroute-routing.md), és [munkafolyamat](expressroute-workflows.md) lapok a konfigurálás megkezdése előtt.
+* Egy aktív ExpressRoute-kapcsolatcsoportra lesz szüksége. Kövesse az [ExpressRoute-kapcsolatcsoport létrehozása](howto-circuit-cli.md) részben foglalt lépéseket, és engedélyeztesse a kapcsolatcsoportot kapcsolatszolgáltatójával, mielőtt továbblépne. Az ExpressRoute-kapcsolatcsoport számára, hogy ebben a cikkben a parancsokat futtathatnak kiosztott és engedélyezett állapotban kell lennie.
 
-Az utasítások csak 2. rétegbeli kapcsolatszolgáltatásokat kínáló szolgáltatóknál létrehozott kapcsolatcsoportokra vonatkoznak. A szolgáltató által kezelt használata réteg (általában egy IPVPN, például az MPLS) 3 szolgáltatások, a kapcsolat szolgáltatójánál konfigurálása és kezelése az Ön útválasztást.
+Az utasítások csak 2. rétegbeli kapcsolatszolgáltatásokat kínáló szolgáltatóknál létrehozott kapcsolatcsoportokra vonatkoznak. Ha használja a szolgáltató által kínált felügyelt Layer 3 szolgáltatások (általában egy IPVPN, mint az MPLS), a kapcsolatszolgáltató konfigurálása és kezelése az útválasztást Ön helyett.
 
-Beállíthatja, hogy egy, kettő vagy ExpressRoute-kör összes három esetében (Azure saját, az Azure nyilvános, és a Microsoft). A társviszony-létesítéseket tetszőleges sorrendben konfigurálhatja. Az egyes társviszony-létesítéseket azonban mindenképp egyenként kell végrehajtania. További információ az útválasztási tartományok és esetében: [ExpressRoute útválasztási tartományok](expressroute-circuit-peerings.md).
+Egy, kettő vagy az összes mindhárom társviszony-létesítést (Azure privát, Azure nyilvános és Microsoft) ExpressRoute-kapcsolatcsoport konfigurálhatja. A társviszony-létesítéseket tetszőleges sorrendben konfigurálhatja. Az egyes társviszony-létesítéseket azonban mindenképp egyenként kell végrehajtania. Útválasztási tartományok és a társviszony-létesítéseket kapcsolatos további információkért lásd: [ExpressRoute útválasztási tartományok](expressroute-circuit-peerings.md).
 
-## <a name="msft"></a>A Microsoft társviszony-létesítés
+## <a name="msft"></a>Microsoft társviszony-létesítés
 
-Ez a szakasz segítséget nyújt a létrehozása, beolvasása, frissítése és a Microsoft társviszony-létesítési konfiguráció az ExpressRoute-kapcsolatcsoportot törli.
+Ez a szakasz segítséget nyújt a létrehozása, beolvasása, frissíteni és törölni az ExpressRoute-kapcsolatcsoport Microsoft társviszony-létesítési konfigurációjának.
 
 > [!IMPORTANT]
-> A Microsoft társviszony-létesítést az ExpressRoute-Kapcsolatcsoportok 2017. augusztus 1. előtt konfigurált meghirdetett keresztül a Microsoft társviszony-létesítést, még akkor is, ha az útvonal-szűrők nem definiált összes szolgáltatás előtagok fog rendelkezni. A Microsoft társviszony-létesítést az ExpressRoute-Kapcsolatcsoportok vannak konfigurálva, vagy azt követően 2017. augusztus 1. nem rendelkezik a előtagokat amíg útvonal szűrő nem csatlakoztatja a kapcsolatcsoport hirdetve. További információkért lásd: [konfigurálása a Microsoft társviszony-létesítéshez útvonal szűrő](how-to-routefilter-powershell.md).
+> Microsoft társviszony-létesítés voltak beállítva a 2017. augusztus 1. ExpressRoute-Kapcsolatcsoportok az összes szolgáltatás előtagkészletet hirdeti meg a Microsoft társviszony-létesítéshez, akkor is, ha nincsenek meghatározva útvonalszűrők fog rendelkezni. Microsoft társviszony-létesítésre vannak konfigurálva, vagy 2017. augusztus 1. után az ExpressRoute-Kapcsolatcsoportok, nem rendelkezik minden olyan előtagok mindaddig, amíg egy útvonalszűrőhöz csatolva van a kapcsolatcsoport hirdetve. További információkért lásd: [konfigurálása a Microsoft társviszony-létesítés egy útvonalszűrőhöz](how-to-routefilter-powershell.md).
 > 
 > 
 
 ### <a name="to-create-microsoft-peering"></a>Microsoft társviszony-létesítés létrehozása
 
-1. Az Azure parancssori felület legújabb verziójának telepítéséhez. Az az Azure parancssori felület (CLI) legújabb verzióját használja. * tekintse át a [Előfeltételek](expressroute-prerequisites.md) és [munkafolyamatok](expressroute-workflows.md) konfigurálás elkezdése előtt.
+1. Telepítse az Azure CLI legújabb verzióját. Az az Azure parancssori felület (CLI) legújabb verzióját használja. * tekintse át a [Előfeltételek](expressroute-prerequisites.md) és [munkafolyamatok](expressroute-workflows.md) konfigurálás megkezdése előtt.
 
   ```azurecli
   az login
   ```
 
-  Válassza ki az előfizetést, amelyekhez ExpressRoute-kapcsolatcsoportot létrehozni.
+  Válassza ki az előfizetést, amelynek meg szeretné ExpressRoute-kapcsolatcsoport létrehozása.
 
   ```azurecli
   az account set --subscription "<subscription ID>"
   ```
-2. Hozzon létre egy ExpressRoute-kapcsolatcsoportot. Kövesse az utasításokat az [ExpressRoute-kapcsolatcsoport](howto-circuit-cli.md) létrehozásához, és kérje meg kapcsolatszolgáltatóját, hogy ossza ki azt. Ha a kapcsolat szolgáltatójánál felügyelt 3. rétegbeli szolgáltatásokat nyújt, kérje meg a kapcsolat szolgáltatójánál engedélyezése a Microsoft társviszony-létesítés meg. Ebben az esetben nem szükséges a következő szakaszokban foglalt lépéseket végrehajtania. Azonban ha a kapcsolat szolgáltatójánál nem kezeli az útválasztást, a kapcsolat létrehozása után továbbra is a konfiguráció a következő lépéseket. 
+2. Hozzon létre egy ExpressRoute-kapcsolatcsoportot. Kövesse az utasításokat az [ExpressRoute-kapcsolatcsoport](howto-circuit-cli.md) létrehozásához, és kérje meg kapcsolatszolgáltatóját, hogy ossza ki azt. Ha kapcsolatszolgáltatója felügyelt 3. rétegbeli szolgáltatásokat kínál, megkérheti a Microsoft társviszony-létesítés, a kapcsolat szolgáltatóját. Ebben az esetben nem szükséges a következő szakaszokban foglalt lépéseket végrehajtania. Azonban ha a kapcsolatszolgáltató felügyeli az útválasztást, a kapcsolatcsoport létrehozását követően továbbra is a konfiguráció a következő lépéseket. 
 
-3. Ellenőrizze, hogy üzembe helyezve, és is engedélyezve van az ExpressRoute-kapcsolatcsoportot. Használja a következő példát:
+3. Ellenőrizze a ExpressRoute-kapcsolatcsoport győződjön meg arról, hogy kiosztott és engedélyezett. Használja a következő példát:
 
   ```azurecli
   az network express-route list
   ```
 
-  A rendszer a választ az alábbi példához hasonló:
+  A válasz a következő példához hasonló:
 
   ```azurecli
   "allowClassicOperations": false,
@@ -113,20 +113,20 @@ Ez a szakasz segítséget nyújt a létrehozása, beolvasása, frissítése és 
   * Egy /30 alhálózat a másodlagos kapcsolat számára. Ennek egy érvényes nyilvános IPv4-előtagnak kell lennie, amely az Ön tulajdonában van, és regisztrálva van egy RIR-/IRR-jegyzékben.
   * Egy érvényes VLAN-azonosító a tárviszony-létesítés létrehozásához. Győződjön meg róla, hogy a kapcsolatcsoporton egy másik társviszony-létesítés sem használja ugyanezt a VLAN-azonosítót.
   * Egy AS-szám a társviszony-létesítéshez. 2 és 4 bájtos AS-számokat is használhat.
-  * Meghirdetett előtagok: Meg kell adnia a BGP-munkamenetben meghirdetni kívánt összes előtag listáját. A rendszer kizárólag a nyilvános IP-cím-előtagokat fogadja el. Ha szeretne elküldhető a előtagokat, elküldheti egy vesszővel elválasztott listában. Az előtagoknak egy RIR/IRR jegyzékben regisztrálva kell lenniük az Ön neve alatt.
-  * **Választható -** ügyfél ASN: Ha nincs regisztrálva a társviszony-létesítés SZÁMOT hirdetési előtagok, megadhatja a AS számot, amelyhez regisztrálja azokat a rendszer.
+  * Meghirdetett előtagok: Meg kell adnia a BGP-munkamenetben meghirdetni kívánt összes előtag listáját. A rendszer kizárólag a nyilvános IP-cím-előtagokat fogadja el. Ha azt tervezi, az előtagok megadni, küldhet egy vesszővel tagolt lista. Az előtagoknak egy RIR/IRR jegyzékben regisztrálva kell lenniük az Ön neve alatt.
+  * **Nem kötelező –** ügyfél ASN: Ha olyan előtagokat hirdet meg, amelyek nem a társviszony-létesítési AS-szám, megadhatja az AS-számot, amelyre regisztrálva vannak.
   * Útválasztási jegyzék neve: Megadhatja az RIR/IRR jegyzék nevét, amelyben az AS-szám és az előtagok regisztrálva vannak.
-  * **Választható -** az MD5 kivonatoló, ha úgy dönt, hogy egyetlen módszer alkalmazása.
+  * **Nem kötelező –** egy MD5-kivonat, ha használni kívánja.
 
-   Futtassa a következő példa a kör társviszony Microsoft konfigurálása:
+   Futtassa az alábbi példa a Microsoft társviszony-létesítést a kapcsolatcsoporthoz konfigurálása:
 
   ```azurecli
   az network express-route peering create --circuit-name MyCircuit --peer-asn 100 --primary-peer-subnet 123.0.0.0/30 -g ExpressRouteResourceGroup --secondary-peer-subnet 123.0.0.4/30 --vlan-id 300 --peering-type MicrosoftPeering --advertised-public-prefixes 123.1.0.0/24
   ```
 
-### <a name="getmsft"></a>A Microsoft társviszony-létesítési részleteinek megtekintése
+### <a name="getmsft"></a>A Microsoft társviszony-létesítés részleteinek megtekintése
 
-Konfigurációs részletek kaphat az alábbi példa:
+Konfiguráció részleteit az alábbi példa használatával kérheti le:
 
 ```azurecli
 az network express-route peering show -g ExpressRouteResourceGroup --circuit-name MyCircuit --name AzureMicrosoftPeering
@@ -166,35 +166,35 @@ A kimenet a következő példához hasonló:
 }
 ```
 
-### <a name="updatemsft"></a>A Microsoft társviszony-létesítési konfiguráció frissítése
+### <a name="updatemsft"></a>A Microsoft társviszony-létesítés konfigurációjának frissítése
 
-Frissítheti, a konfiguráció bármely részeként. A hirdetett előtagjait, a kapcsolatcsoport 124.1.0.0/24 az alábbi példában a programból 123.1.0.0/24 frissített:
+A konfiguráció bármelyik részét frissítheti. A kapcsolatcsoport a meghirdetett előtagokat, az alábbi példában 124.1.0.0/24 programból 123.1.0.0/24 frissített:
 
 ```azurecli
 az network express-route peering update --circuit-name MyCircuit -g ExpressRouteResourceGroup --peering-type MicrosoftPeering --advertised-public-prefixes 124.1.0.0/24
 ```
 
-### <a name="addIPv6msft"></a>IPv6-alapú Microsoft társviszony-létesítési beállítások hozzáadása egy meglévő IPv4-konfiguráció
+### <a name="addIPv6msft"></a>IPv6 Microsoft társviszony-létesítési beállítások hozzáadása egy meglévő IPv4-konfigurációt
 
 ```azurecli
 az network express-route peering update -g ExpressRouteResourceGroup --circuit-name MyCircuit --peering-type MicrosoftPeering --ip-version ipv6 --primary-peer-subnet 2002:db00::/126 --secondary-peer-subnet 2003:db00::/126 --advertised-public-prefixes 2002:db00::/126
 ```
 
-### <a name="deletemsft"></a>A Microsoft társviszony törlése
+### <a name="deletemsft"></a>A Microsoft társviszony-létesítés törlése
 
-Futtassa a következő példa a társviszony-létesítési konfiguráció eltávolítása:
+A társviszony-létesítés konfigurációját a következő példa futtatásával távolíthatja el:
 
 ```azurecli
 az network express-route peering delete -g ExpressRouteResourceGroup --circuit-name MyCircuit --name MicrosoftPeering
 ```
 
-## <a name="private"></a>Az Azure magánhálózati társviszony-létesítés
+## <a name="private"></a>Az Azure privát társviszony-létesítés
 
-Ez a szakasz segítséget nyújt a létrehozása, beolvasása, frissítése és törölni az Azure magánhálózati társviszony-létesítési ExpressRoute-kapcsolatcsoportot.
+Ez a szakasz segítséget nyújt a létrehozása, beolvasása, frissíteni és törölni az ExpressRoute-kapcsolatcsoport Azure privát társviszony-létesítési konfigurációjának.
 
 ### <a name="to-create-azure-private-peering"></a>Azure privát társviszony-létesítés létrehozása
 
-1. Az Azure parancssori felület legújabb verziójának telepítéséhez. A legújabb verziót, az Azure parancssori felület (CLI) kell használnia. * tekintse át a [Előfeltételek](expressroute-prerequisites.md) és [munkafolyamatok](expressroute-workflows.md) konfigurálás elkezdése előtt.
+1. Telepítse az Azure CLI legújabb verzióját. Az az Azure parancssori felület (CLI) legújabb verzióját kell használnia. * tekintse át a [Előfeltételek](expressroute-prerequisites.md) és [munkafolyamatok](expressroute-workflows.md) konfigurálás megkezdése előtt.
 
   ```azurecli
   az login
@@ -205,15 +205,15 @@ Ez a szakasz segítséget nyújt a létrehozása, beolvasása, frissítése és 
   ```azurecli
   az account set --subscription "<subscription ID>"
   ```
-2. Hozzon létre egy ExpressRoute-kapcsolatcsoportot. Kövesse az utasításokat az [ExpressRoute-kapcsolatcsoport](howto-circuit-cli.md) létrehozásához, és kérje meg kapcsolatszolgáltatóját, hogy ossza ki azt. Ha a kapcsolat szolgáltatójánál felügyelt 3. rétegbeli szolgáltatásokat nyújt, kérje meg a kapcsolat szolgáltatójánál engedélyezése az Azure magánhálózati társviszony-létesítés meg. Ebben az esetben nem szükséges a következő szakaszokban foglalt lépéseket végrehajtania. Azonban ha a kapcsolat szolgáltatójánál nem kezeli az útválasztást, a kapcsolat létrehozása után továbbra is a konfiguráció a következő lépéseket.
+2. Hozzon létre egy ExpressRoute-kapcsolatcsoportot. Kövesse az utasításokat az [ExpressRoute-kapcsolatcsoport](howto-circuit-cli.md) létrehozásához, és kérje meg kapcsolatszolgáltatóját, hogy ossza ki azt. Ha kapcsolatszolgáltatója felügyelt 3. rétegbeli szolgáltatásokat kínál, megkérheti engedélyezése az Azure privát társviszony-létesítést, a kapcsolat szolgáltatóját. Ebben az esetben nem szükséges a következő szakaszokban foglalt lépéseket végrehajtania. Azonban ha a kapcsolatszolgáltató felügyeli az útválasztást, a kapcsolatcsoport létrehozását követően továbbra is a konfiguráció a következő lépéseket.
 
-3. Ellenőrizze, hogy üzembe helyezve, és is engedélyezve van az ExpressRoute-kapcsolatcsoportot. Használja a következő példát:
+3. Ellenőrizze a ExpressRoute-kapcsolatcsoport győződjön meg arról, hogy kiosztott és engedélyezett. Használja a következő példát:
 
   ```azurecli
   az network express-route show --resource-group ExpressRouteResourceGroup --name MyCircuit
   ```
 
-  A rendszer a választ az alábbi példához hasonló:
+  A válasz a következő példához hasonló:
 
   ```azurecli
   "allowClassicOperations": false,
@@ -246,19 +246,19 @@ Ez a szakasz segítséget nyújt a létrehozása, beolvasása, frissítése és 
 
 4. Konfigurálja az Azure privát társviszony-létesítést a kapcsolatcsoport számára. Mielőtt folytatná a következő lépésekkel, ellenőrizze az alábbi elemek meglétét:
 
-  * Egy /30 alhálózat az elsődleges kapcsolat számára. Az alhálózat nem virtuális hálózatok számára fenntartott címtartomány részének kell lennie.
-  * Egy /30 alhálózat a másodlagos kapcsolat számára. Az alhálózat nem virtuális hálózatok számára fenntartott címtartomány részének kell lennie.
+  * Egy /30 alhálózat az elsődleges kapcsolat számára. Az alhálózat nem kell minden olyan virtuális hálózatok számára lefoglalt címtér részét.
+  * Egy /30 alhálózat a másodlagos kapcsolat számára. Az alhálózat nem kell minden olyan virtuális hálózatok számára lefoglalt címtér részét.
   * Egy érvényes VLAN-azonosító a tárviszony-létesítés létrehozásához. Győződjön meg róla, hogy a kapcsolatcsoporton egy másik társviszony-létesítés sem használja ugyanezt a VLAN-azonosítót.
   * Egy AS-szám a társviszony-létesítéshez. 2 és 4 bájtos AS-számokat is használhat. Ehhez a társviszony-létesítéshez használhat privát AS-számokat is. Ne használja a 65515 számot.
-  * **Választható -** az MD5 kivonatoló, ha úgy dönt, hogy egyetlen módszer alkalmazása.
+  * **Nem kötelező –** egy MD5-kivonat, ha használni kívánja.
 
-  Az alábbi példát követve Azure magánhálózati társviszony-létesítés a kapcsolat konfigurálása:
+  Konfigurálhatja az Azure privát társviszony-létesítést a kapcsolatcsoporthoz. használja a következő példát:
 
   ```azurecli
   az network express-route peering create --circuit-name MyCircuit --peer-asn 100 --primary-peer-subnet 10.0.0.0/30 -g ExpressRouteResourceGroup --secondary-peer-subnet 10.0.0.4/30 --vlan-id 200 --peering-type AzurePrivatePeering
   ```
 
-  Ha az MD5 kivonatoló használatát választja, használja a következő példát:
+  Ha MD5-kivonatot használja, használja a következő példát:
 
   ```azurecli
   az network express-route peering create --circuit-name MyCircuit --peer-asn 100 --primary-peer-subnet 10.0.0.0/30 -g ExpressRouteResourceGroup --secondary-peer-subnet 10.0.0.4/30 --vlan-id 200 --peering-type AzurePrivatePeering --SharedKey "A1B2C3D4"
@@ -269,9 +269,9 @@ Ez a szakasz segítséget nyújt a létrehozása, beolvasása, frissítése és 
   > 
   > 
 
-### <a name="getprivate"></a>Az Azure a magánhálózati társviszony-létesítési részletek megtekintéséhez
+### <a name="getprivate"></a>Az Azure privát társviszony-létesítés részleteinek megtekintése
 
-Konfigurációs részletek kaphat az alábbi példa:
+Konfiguráció részleteit az alábbi példa használatával kérheti le:
 
 ```azurecli
 az network express-route peering show -g ExpressRouteResourceGroup --circuit-name MyCircuit --name AzurePrivatePeering
@@ -305,20 +305,20 @@ A kimenet a következő példához hasonló:
 }
 ```
 
-### <a name="updateprivate"></a>Az Azure magánhálózati társviszony-létesítési konfiguráció frissítése
+### <a name="updateprivate"></a>Azure privát társviszony-létesítés konfigurációjának frissítése
 
-Frissítheti, az alábbi példa konfiguráció bármely részeként. Ebben a példában a VLAN-Azonosítót a áramkör frissül 100 500.
+Az alábbi példa a konfiguráció bármelyik részét frissítheti. Ebben a példában a kör VLAN-azonosító frissítése folyamatban van a 100 500.
 
 ```azurecli
 az network express-route peering update --vlan-id 500 -g ExpressRouteResourceGroup --circuit-name MyCircuit --name AzurePrivatePeering
 ```
 
-### <a name="deleteprivate"></a>Az Azure magánhálózati társviszony-létesítés törlése
+### <a name="deleteprivate"></a>Az Azure privát társviszony-létesítés törlése
 
-Futtassa a következő példa a társviszony-létesítési konfiguráció eltávolítása:
+A társviszony-létesítés konfigurációját a következő példa futtatásával távolíthatja el:
 
 > [!WARNING]
-> Bizonyosodjon meg, hogy az összes virtuális hálózatot megszüntetni az ExpressRoute-kapcsolatcsoport az ebben a példában futtatása előtt. 
+> Bizonyosodjon meg, hogy minden virtuális hálózat az ExpressRoute-kapcsolatcsoport leválasztása a példa futtatása előtt. 
 > 
 > 
 
@@ -328,30 +328,30 @@ az network express-route peering delete -g ExpressRouteResourceGroup --circuit-n
 
 ## <a name="public"></a>Az Azure nyilvános társviszony-létesítés
 
-Ez a szakasz segítséget nyújt a létrehozása, beolvasása, frissítése és törlése az Azure nyilvános társviszony-létesítési konfiguráció ExpressRoute-kör.
+Ez a szakasz segítséget nyújt a létrehozása, beolvasása, frissíteni és törölni az ExpressRoute-kapcsolatcsoport Azure nyilvános társviszony-létesítési konfigurációjának.
 
 ### <a name="to-create-azure-public-peering"></a>Azure nyilvános társviszony-létesítés létrehozása
 
-1. Az Azure parancssori felület legújabb verziójának telepítéséhez. A legújabb verziót, az Azure parancssori felület (CLI) kell használnia. * tekintse át a [Előfeltételek](expressroute-prerequisites.md) és [munkafolyamatok](expressroute-workflows.md) konfigurálás elkezdése előtt.
+1. Telepítse az Azure CLI legújabb verzióját. Az az Azure parancssori felület (CLI) legújabb verzióját kell használnia. * tekintse át a [Előfeltételek](expressroute-prerequisites.md) és [munkafolyamatok](expressroute-workflows.md) konfigurálás megkezdése előtt.
 
   ```azurecli
   az login
   ```
 
-  Válassza ki az előfizetést, amelyekhez ExpressRoute-kapcsolatcsoportot létrehozni.
+  Válassza ki az előfizetést, amelynek meg szeretné ExpressRoute-kapcsolatcsoport létrehozása.
 
   ```azurecli
   az account set --subscription "<subscription ID>"
   ```
-2. Hozzon létre egy ExpressRoute-kapcsolatcsoportot.  Kövesse az utasításokat az [ExpressRoute-kapcsolatcsoport](howto-circuit-cli.md) létrehozásához, és kérje meg kapcsolatszolgáltatóját, hogy ossza ki azt. Ha a kapcsolat szolgáltatójánál felügyelt 3. rétegbeli szolgáltatásokat nyújt, kérje meg a kapcsolat szolgáltatójánál engedélyezése az Azure nyilvános társviszony-létesítés meg. Ebben az esetben nem szükséges a következő szakaszokban foglalt lépéseket végrehajtania. Azonban ha a kapcsolat szolgáltatójánál nem kezeli az útválasztást, a kapcsolat létrehozása után továbbra is a konfiguráció a következő lépéseket.
+2. Hozzon létre egy ExpressRoute-kapcsolatcsoportot.  Kövesse az utasításokat az [ExpressRoute-kapcsolatcsoport](howto-circuit-cli.md) létrehozásához, és kérje meg kapcsolatszolgáltatóját, hogy ossza ki azt. Ha kapcsolatszolgáltatója felügyelt 3. rétegbeli szolgáltatásokat kínál, megkérheti engedélyezése az Azure nyilvános társviszony-létesítést, a kapcsolat szolgáltatóját. Ebben az esetben nem szükséges a következő szakaszokban foglalt lépéseket végrehajtania. Azonban ha a kapcsolatszolgáltató felügyeli az útválasztást, a kapcsolatcsoport létrehozását követően továbbra is a konfiguráció a következő lépéseket.
 
-3. Ellenőrizze a ExpressRoute-kapcsolatcsoportot annak érdekében van üzembe helyezve, és is engedélyezve van. Használja a következő példát:
+3. Ellenőrizze a ExpressRoute-kapcsolatcsoport győződjön meg arról, hogy kiosztott és engedélyezett. Használja a következő példát:
 
   ```azurecli
   az network express-route list
   ```
 
-  A rendszer a választ az alábbi példához hasonló:
+  A válasz a következő példához hasonló:
 
   ```azurecli
   "allowClassicOperations": false,
@@ -382,21 +382,21 @@ Ez a szakasz segítséget nyújt a létrehozása, beolvasása, frissítése és 
   "type": "Microsoft.Network/expressRouteCircuits]
   ```
 
-4. Konfigurálja az Azure nyilvános társviszony-létesítést a kapcsolatcsoporthoz. Győződjön meg arról, hogy rendelkezik a következő adatokat, mielőtt végrehajtásának folytatásához.
+4. Konfigurálja az Azure nyilvános társviszony-létesítést a kapcsolatcsoporthoz. Győződjön meg arról, hogy rendelkezik a következő adatokat, mielőtt folytatná.
 
   * Egy /30 alhálózat az elsődleges kapcsolat számára. Ennek egy érvényes nyilvános IPv4-előtagnak kell lennie.
   * Egy /30 alhálózat a másodlagos kapcsolat számára. Ennek egy érvényes nyilvános IPv4-előtagnak kell lennie.
   * Egy érvényes VLAN-azonosító a tárviszony-létesítés létrehozásához. Győződjön meg róla, hogy a kapcsolatcsoporton egy másik társviszony-létesítés sem használja ugyanezt a VLAN-azonosítót.
   * Egy AS-szám a társviszony-létesítéshez. 2 és 4 bájtos AS-számokat is használhat.
-  * **Választható -** az MD5 kivonatoló, ha úgy dönt, hogy egyetlen módszer alkalmazása.
+  * **Nem kötelező –** egy MD5-kivonat, ha használni kívánja.
 
-  Futtassa az alábbi példát követve konfigurálhatja az Azure nyilvános társviszony-létesítés a kör:
+  Futtassa az alábbi példa az Azure nyilvános társviszony-létesítést a kapcsolatcsoporthoz konfigurálása:
 
   ```azurecli
   az network express-route peering create --circuit-name MyCircuit --peer-asn 100 --primary-peer-subnet 12.0.0.0/30 -g ExpressRouteResourceGroup --secondary-peer-subnet 12.0.0.4/30 --vlan-id 200 --peering-type AzurePublicPeering
   ```
 
-  Ha az MD5 kivonatoló használatát választja, használja a következő példát:
+  Ha MD5-kivonatot használja, használja a következő példát:
 
   ```azurecli
   az network express-route peering create --circuit-name MyCircuit --peer-asn 100 --primary-peer-subnet 12.0.0.0/30 -g ExpressRouteResourceGroup --secondary-peer-subnet 12.0.0.4/30 --vlan-id 200 --peering-type AzurePublicPeering --SharedKey "A1B2C3D4"
@@ -405,9 +405,9 @@ Ez a szakasz segítséget nyújt a létrehozása, beolvasása, frissítése és 
   > [!IMPORTANT]
   > Az AS-számot mindenképp társviszony-létesítési ASN-ként, és ne ügyfél ASN-ként adja meg.
 
-### <a name="getpublic"></a>Az Azure nyilvános társviszony-létesítési részleteinek megtekintése
+### <a name="getpublic"></a>Az Azure nyilvános társviszony-létesítés részleteinek megtekintése
 
-Az alábbi példa konfigurációs részletek szerezheti be:
+Konfiguráció részleteit az alábbi példa használatával kérheti le:
 
 ```azurecli
 az network express-route peering show -g ExpressRouteResourceGroup --circuit-name MyCircuit --name AzurePublicPeering
@@ -440,17 +440,17 @@ A kimenet a következő példához hasonló:
 }
 ```
 
-### <a name="updatepublic"></a>Az Azure nyilvános társviszony-létesítési konfiguráció frissítése
+### <a name="updatepublic"></a>Az Azure nyilvános társviszony-létesítés konfigurációjának frissítése
 
-Frissítheti, az alábbi példa konfiguráció bármely részeként. Ebben a példában a VLAN-Azonosítót a kapcsolatcsoport, frissül a 200-as 600 értékre.
+Az alábbi példa a konfiguráció bármelyik részét frissítheti. Ebben a példában a kör VLAN-azonosító frissítése folyamatban van 200-ról 600-ra.
 
 ```azurecli
 az network express-route peering update --vlan-id 600 -g ExpressRouteResourceGroup --circuit-name MyCircuit --name AzurePublicPeering
 ```
 
-### <a name="deletepublic"></a>Az Azure nyilvános társviszony törlése
+### <a name="deletepublic"></a>Az Azure nyilvános társviszony-létesítés törlése
 
-Futtassa a következő példa a társviszony-létesítési konfiguráció eltávolítása:
+A társviszony-létesítés konfigurációját a következő példa futtatásával távolíthatja el:
 
 ```azurecli
 az network express-route peering delete -g ExpressRouteResourceGroup --circuit-name MyCircuit --name AzurePublicPeering

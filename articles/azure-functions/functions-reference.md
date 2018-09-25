@@ -12,12 +12,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 10/12/2017
 ms.author: glenga
-ms.openlocfilehash: d97766b0a8c0df3b414d78f563406530f67c313b
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 38d73f38a5e04a42ee15c9206ce760936e3e10c9
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46125372"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46980304"
 ---
 # <a name="azure-functions-developers-guide"></a>Az Azure Functions fejlesztői útmutatója
 Az Azure Functions, a speciális szoftverfrissítési funkciókat ossza meg néhány alapvető technikai kapcsolatos fogalmakról és összetevőkről, függetlenül a nyelvet, vagy a kötés használja. Mielőtt megkezdi a munkát egy adott nyelven vagy a kötési adatait tanuló, mindenképpen olvassa végig az áttekintés, amely mindegyik vonatkozik.
@@ -55,12 +55,15 @@ A `bindings` tulajdonság, eseményindítók és kötések is konfigurálhatja. 
 | `name` |sztring |A kötött adatokhoz a függvényben használt neve. C# Ez az argumentumot; a JavaScript esetén a kulcsot a kulcs/érték listáját. |
 
 ## <a name="function-app"></a>Függvényalkalmazás
-Függvényalkalmazás áll egy vagy több különálló függvények, amelyek együttesen kezeli az Azure App Service-ben. A függvényalkalmazás összes ossza meg az azonos díjszabással, a folyamatos üzembe helyezés és a futtatókörnyezet-verzió. Több nyelven írt Functions összes oszthatnak meg ugyanaz a függvényalkalmazás. Függvényalkalmazás felfoghatók arra, hogy rendszerezése és a függvények együttesen kezelése. 
+A függvényalkalmazás szolgáltat-végrehajtási környezet az Azure-ban, amelyben a függvények futnak. Függvényalkalmazás áll egy vagy több különálló függvények, amelyek együttesen kezeli az Azure App Service-ben. A függvényalkalmazás összes ossza meg az azonos díjszabással, a folyamatos üzembe helyezés és a futtatókörnyezet-verzió. Függvényalkalmazás felfoghatók arra, hogy rendszerezése és a függvények együttesen kezelése. 
 
-## <a name="runtime-script-host-and-web-host"></a>Futásidejű (parancsfájlfuttató és webes gazdagép)
-A runtime vagy a parancsfájlfuttató, nem a mögöttes WebJobs SDK-állomás, amelyek az eseményeket figyeli, gyűjti össze és adatokat küld és végső soron futtatja a kódot. 
+> [!NOTE]
+> Kezdve [verzió 2.x](functions-versions.md) az Azure Functions Runtime a függvényalkalmazás a függvények kell hozhatóak létre ugyanazon a nyelven.
 
-HTTP-eseményindítók megkönnyítése érdekében, nincs célja, hogy a parancsfájlfuttató éles forgatókönyvekben elé Dőljön webes gazdagépet. Segít elkülöníteni a parancsfájlfuttató elejéről végén kellene két gazdagép-gazdagép kezelheti a webes forgalom.
+## <a name="runtime"></a>Futtatókörnyezet
+Az Azure Functions runtime vagy a parancsfájlfuttató, nem a mögöttes állomás, amelyek az eseményeket figyeli, gyűjti össze és adatokat küld és végső soron futtatja a kódot. Az ugyanazon a gazdagépen a WebJobs SDK-t használják.
+
+Emellett van egy webes gazdagépet, amely a HTTP-eseményindító kéréseket a modul. Segít elkülöníteni a futtatókörnyezet elejéről végén kellene két gazdagép-gazdagép kezelheti a webes forgalom.
 
 ## <a name="folder-structure"></a>gyökérmappa-szerkezetében
 [!INCLUDE [functions-folder-structure](../../includes/functions-folder-structure.md)]
@@ -75,21 +78,12 @@ A függvény-szerkesztő, az Azure portal beépített lehetővé teszi, hogy fri
 
 Függvény alkalmazások beépített App Service-ben, tehát a [standard web Apps szolgáltatásban elérhető telepítési lehetőségek](../app-service/app-service-deploy-local-git.md) alkalmazások esetében is elérhetők. Az alábbiakban néhány módszert használhat, fel-vagy alkalmazásfájlok függvény frissítése. 
 
-#### <a name="to-use-app-service-editor"></a>Az App Service Editor használata
-1. Az Azure Functions portálon kattintson a **platformfunkciók**.
-2. Az a **FEJLESZTŐESZKÖZÖK** területén kattintson **az App Service Editor**.   
-   Miután az App Service Editor betöltődött, látni fog a *host.json* fájl- és függvény appájában *wwwroot*. 
-5. Nyissa meg a fájlok szerkeszthetők, vagy húzza a fejlesztői gépről a fájlok feltöltéséhez.
-
-#### <a name="to-use-the-function-apps-scm-kudu-endpoint"></a>A függvényalkalmazás SCM (Kudu) végpont használata
-1. Navigáljon a: `https://<function_app_name>.scm.azurewebsites.net`.
-2. Kattintson a **konzol Debug > CMD**.
-3. Navigáljon a `D:\home\site\wwwroot\` frissíteni *host.json* vagy `D:\home\site\wwwroot\<function_name>` egy függvény fájlok frissítéséhez.
-4. És húzza a megfelelő mappába, a fájl rács feltölteni kívánt fájl. A fájl rács, ahol vethetők el egy fájl két területen találhatók. A *.zip* fájlokat, megjelenik egy a címkével ellátott "húzza ide, és csomagolja ki." Minden olyan fájltípus esetében dobja el a fájlt rácsban, de a "csomagolja ki" mezőben kívül.
+#### <a name="use-local-tools-and-publishing"></a>Helyi eszközök és a közzététel használata
+Függvényalkalmazások hozhat létre, és közzétette a különböző eszközöket, beleértve a használatával [Visual Studio](./functions-develop-vs.md), [Visual Studio Code](functions-create-first-function-vs-code.md), [IntelliJ](./functions-create-maven-intellij.md), [Eclipse](./functions-create-maven-eclipse.md), és a [az Azure Functions Core Tools](./functions-develop-local.md). További információkért lásd: [kódolás és tesztelés az Azure Functions helyi](./functions-develop-local.md).
 
 <!--NOTE: I've removed documentation on FTP, because it does not sync triggers on the consumption plan --glenga -->
 
-#### <a name="to-use-continuous-deployment"></a>Folyamatos üzembe helyezés használata
+#### <a name="continuous-deployment"></a>Folyamatos üzembe helyezés
 Kövesse a témakör a [Azure Functions – folyamatos üzembe helyezés](functions-continuous-deployment.md).
 
 ## <a name="parallel-execution"></a>Párhuzamos végrehajtás
@@ -97,7 +91,7 @@ Több riasztást kiváltó események bekövetkezésekor gyorsabb, mint egy egys
 
 ## <a name="functions-runtime-versioning"></a>Functions runtime verziószámozás
 
-Konfigurálhatja a Functions runtime használatával verziója a `FUNCTIONS_EXTENSION_VERSION` alkalmazásbeállítást. Például a "~ 1" érték azt jelzi, hogy a Függvényalkalmazás 1 fogja használni a főverzió. Függvényalkalmazások frissül az egyes új alverzió vannak. További információk, beleértve a függvényalkalmazás pontos verziójának megtekintése: [bemutatásához az Azure Functions runtime verziók](set-runtime-version.md).
+Konfigurálhatja a Functions runtime használatával verziója a `FUNCTIONS_EXTENSION_VERSION` alkalmazásbeállítást. Például a "~ 2" érték azt jelzi, hogy a Függvényalkalmazás 2.x fogja használni a főverzió. Függvényalkalmazások frissül az egyes új alverzió vannak. További információk, beleértve a függvényalkalmazás pontos verziójának megtekintése: [bemutatásához az Azure Functions runtime verziók](set-runtime-version.md).
 
 ## <a name="repositories"></a>Adattárak
 Azure Functions a kód nyílt forráskódú és GitHub-adattárak tárolja:

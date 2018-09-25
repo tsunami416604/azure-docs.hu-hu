@@ -2,27 +2,27 @@
 author: wolfma61
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 07/27/2018
+ms.date: 09/24/2018
 ms.author: wolfma
-ms.openlocfilehash: ee50a104a75d3cd5ff958bd49a1ff7010c5d5083
-ms.sourcegitcommit: a1140e6b839ad79e454186ee95b01376233a1d1f
+ms.openlocfilehash: dc2e025cdd9fcc153f3cb81988a9ca3ec729c934
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43144568"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47021137"
 ---
 <!-- N.B. no header, language-agnostic -->
 
 A Microsoft Cognitive Services [beszéd SDK](~/articles/cognitive-services/speech-service/speech-sdk.md) nyújt a használatának legegyszerűbb módja **beszédalapú fordítási** az alkalmazásban.
 Az SDK szolgáltatás összes funkcióját biztosítja. Az alapvető folyamat beszédalapú fordítási végrehajtásához a következő lépésekből áll:
 
-1. Egy beszéd-előállítót hoz létre, és adja meg a Speech service előfizetési kulcs és a egy engedélyezési jogkivonatot és a egy [régió](~/articles/cognitive-services/speech-service/regions.md) paraméterekként.
-   
-1. Hozzon létre egy fordítási felismerő speech gyári. Akkor is konfigurálja a forrás és cél szövegfordítási nyelv, valamint adja meg, hogy szöveg és beszéd kimeneti. Nincsenek fordítási felismerő a hangbemeneti forrás, amelyet használhat alapján különböző változataira jellemző.
+1. Hozzon létre egy beszéd fordítási konfigurációt, és adja meg a Speech service előfizetési kulcs (vagy egy engedélyezési jogkivonatot) és a egy [régió](~/articles/cognitive-services/speech-service/regions.md) paraméterekként. Szükség szerint változtassa meg a konfigurációt. Például akkor is konfigurálja a forrás és cél szövegfordítási nyelv, valamint adja meg, hogy szöveg és beszéd kimeneti.
+
+1. Hozzon létre egy fordítási felismerő speech gyári. Adjon meg egy hang-konfigurációt, ha azt szeretné, hogy ismeri fel az alapértelmezett mikrofon (például hang stream vagy hangfájl) eltérő forrásból.
 
 1. Az események aszinkron művelethez lefoglalhatnak, ha szükséges. A felismerő ekkor meghívja az eseménykezelőket, átmeneti és a végső eredmények, valamint a nem kötelező hangkimeneti egy összefoglaló esemény, ha. Ellenkező esetben az alkalmazás csak a végleges átírást eredményt kap.
 
-1. Indítsa el a felismerése. Egylépéses fordítási használja a `RecognizeAsync()` metódussal, amely az első felismert utterance (kifejezés) adja vissza. A hosszú ideig futó fordításokat, használja a `StartContinuousRecognitionAsync()` metódust, és tie fel az eseményeket az aszinkron felismerési eredményeket.
+1. Indítsa el a felismerése. Egylépéses fordítási használja a `RecognizeOnceAsync()` metódussal, amely az első felismert utterance (kifejezés) adja vissza. A hosszú ideig futó fordításokat, használja a `StartContinuousRecognitionAsync()` metódust, és tie fel az eseményeket az aszinkron felismerési eredményeket.
 
 Tekintse meg az alábbi kódrészleteket speech fordítási forgatókönyvet, amely a Speech SDK-val.
 

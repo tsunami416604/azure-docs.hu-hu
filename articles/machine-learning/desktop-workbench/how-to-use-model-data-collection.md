@@ -12,14 +12,17 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 09/12/2017
-ms.openlocfilehash: 5c1a884ebe6216c4e8099f2ada2182ccff68b63e
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ROBOTS: NOINDEX
+ms.openlocfilehash: 435ef29192682f1bf19a9a53923dd043676256ab
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39449784"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46954942"
 ---
 # <a name="collect-model-data-by-using-data-collection"></a>Az adatgyűjtés modelladatok gyűjtése
+
+[!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)]
 
 A modell adatok gyűjtési szolgáltatás az Azure Machine Learning segítségével archiválja modellbemenetek és előrejelzések webszolgáltatásból.
 
@@ -105,7 +108,7 @@ Az összegyűjtött adatok megtekintése a blob storage-ban:
 Az Azure-blobokból tudják használni a többféle módon, Microsoft szoftvereket és nyílt forráskódú eszközök használatával. Néhány példa:
 - Az Azure Machine Learning Workbench: A .csv-fájlt az Azure Machine Learning Workbenchben való felvételével nyissa meg a .csv-fájlt adatforrásként.
 - Excel: Nyissa meg a napi csv-fájlokat a táblázatként.
-- [Power bi-ban](https://powerbi.microsoft.com/en-us/documentation/powerbi-azure-and-power-bi/): hozzon létre diagramokat a .csv nyerhető a blobok lekért adatokkal.
+- [Power bi-ban](https://powerbi.microsoft.com/documentation/powerbi-azure-and-power-bi/): hozzon létre diagramokat a .csv nyerhető a blobok lekért adatokkal.
 - [A Spark](https://docs.microsoft.com/azure/hdinsight/hdinsight-apache-spark-overview): adatkeretek hozzon létre egy .csv-adatok nagy része.
     ```python
     var df = spark.read.format("com.databricks.spark.csv").option("inferSchema","true").option("header","true").load("wasb://modeldata@<storageaccount>.blob.core.windows.net/<subscription_id>/<resource_group_name>/<model_management_account_name>/<webservice_name>/<model_id>-<model_name>-<model_version>/<identifier>/<year>/<month>/<date>/*")

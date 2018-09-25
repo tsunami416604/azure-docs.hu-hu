@@ -13,19 +13,19 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: 3a43c0cd13300918979ae03c7f6c703796b65dc9
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: b2e0b65f210774f760ce2d0898c601115ab3a94d
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39114225"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46960158"
 ---
 # <a name="run-an-ssis-package-with-the-execute-ssis-package-activity-in-azure-data-factory"></a>A végrehajtás SSIS csomag tevékenységgel rendelkező Azure Data Factory SSIS-csomag futtatása
 Ez a cikk ismerteti az Azure Data Factory-folyamatot egy SSIS-csomag futtatása SSIS-csomag végrehajtása tevékenységek segítségével. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-**Azure SQL Database** Ebben a cikkben található útmutatások követéséhez használja az Azure SQL database, amelyen az SSIS-katalógus. Egy Azure SQL felügyelt példány (előzetes verzió) is használhatja.
+**Azure SQL Database** Ebben a cikkben található útmutatások követéséhez használja az Azure SQL database, amelyen az SSIS-katalógus. Egy Azure SQL Database felügyelt példánya is használhatja.
 
 ## <a name="create-an-azure-ssis-integration-runtime"></a>Azure SSIS integrációs modul létrehozása
 Hozzon létre egy Azure-SSIS integrációs modult, ha még nincs fiókja, a részletes utasításokat a következő a [oktatóanyag: üzembe SSIS-csomagok](tutorial-create-azure-ssis-runtime-portal.md).

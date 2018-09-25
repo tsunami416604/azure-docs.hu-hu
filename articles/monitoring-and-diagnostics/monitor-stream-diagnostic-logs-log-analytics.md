@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.date: 04/04/2018
 ms.author: johnkem
 ms.component: logs
-ms.openlocfilehash: 134c33ac28c6a094bdc50deb7206db95bf4436fc
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: c419a3c44a38f72d56f2b7b362c62e683fc20c7f
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45574531"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46993017"
 ---
 # <a name="stream-azure-diagnostic-logs-to-log-analytics"></a>A Log Analytics az Azure diagnosztikai naplók Stream
 
-**[Az Azure diagnosztikai naplók](monitoring-overview-of-diagnostic-logs.md)**  továbbítható közel valós időben az Azure Log Analyticshez a portal, PowerShell-parancsmagok vagy az Azure CLI 2.0 használatával.
+**[Az Azure diagnosztikai naplók](monitoring-overview-of-diagnostic-logs.md)**  továbbítható közel valós időben az Azure Log Analyticshez a portal, PowerShell-parancsmagok vagy az Azure CLI használatával.
 
 ## <a name="what-you-can-do-with-diagnostics-logs-in-log-analytics"></a>A Log Analytics mire képes a diagnosztikai naplók
 
@@ -73,9 +73,9 @@ Set-AzureRmDiagnosticSetting -ResourceId [your resource ID] -WorkspaceID [resour
 
 Vegye figyelembe, hogy a munkaterület azonosítója tulajdonság szükséges a teljes körű Azure erőforrás-azonosító, a munkaterület, nem a munkaterület azonosítója és kulcsa jelenik meg a Log Analytics-portálon.
 
-### <a name="via-azure-cli-20"></a>Via Azure CLI 2.0
+### <a name="via-azure-cli"></a>Az Azure CLI-n keresztül
 
-Keresztül streamelésének engedélyezéséhez a [Azure CLI 2.0](insights-cli-samples.md), használhatja a [az monitor diagnostic-settings létrehozása](/cli/azure/monitor/diagnostic-settings#az-monitor-diagnostic-settings-create) parancsot.
+Keresztül streamelésének engedélyezéséhez a [Azure CLI-vel](insights-cli-samples.md), használhatja a [az monitor diagnostic-settings létrehozása](/cli/azure/monitor/diagnostic-settings#az-monitor-diagnostic-settings-create) parancsot.
 
 ```azurecli
 az monitor diagnostic-settings create --name <diagnostic name> \

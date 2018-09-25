@@ -10,12 +10,12 @@ ms.custom: DBs & servers
 ms.topic: conceptual
 ms.date: 09/14/2018
 ms.author: carlrab
-ms.openlocfilehash: 57e83376747b9a3e2d30dec37d4a378a167580e5
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: 66ed36ea3d7b38166b9214e36289e32119659856
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45733110"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46965463"
 ---
 # <a name="choose-a-cloud-sql-server-option-azure-sql-paas-database-or-sql-server-on-azure-vms-iaas"></a>Felhőalapú SQL Server-verzió választása: Azure SQL Database (PaaS) adatbázis vagy az Azure virtuális gépeken futó SQL Server (IaaS)
 
@@ -24,17 +24,15 @@ Az Azure-ban, az SQL Server számítási feladatok egy szolgáltatott infrastruk
 - [Az Azure SQL Database](https://azure.microsoft.com/services/sql-database/): egy SQL-adatbázismotor, az Enterprise Edition az SQL Server, a modern alkalmazások fejlesztését optimalizált alapján. Az Azure SQL Database több központi telepítési lehetőséget kínál:
   - Telepíthet egyetlen-adatbázist egy [logikai kiszolgáló](sql-database-logical-servers.md).
   - Üzembe helyezhető egy [rugalmas készlet](sql-database-elastic-pool.md) a egy [logikai kiszolgáló](sql-database-logical-servers.md) erőforrások megosztásához, és csökkentheti a költségeket. 
+  - Telepíthet egy [Azure SQL Database felügyelt példányain](sql-database-managed-instance.md). 
+      
+   Az alábbi ábra ezt a három üzembehelyezési modellt mutatja be:
 
-      > [!NOTE]
-      > Egyetlen vagy készletezett adatbázisokat tartalmazó Azure SQL Database az SQL Server adatbázis-specifikus szolgáltatások többsége kínál.
+     ![deployment-options](./media/sql-database-technical-overview/deployment-options.png) 
 
-      Az alábbi ábra ezt a három üzembehelyezési modellt mutatja be:
+     > [!NOTE]
+     > Összes három verzió, az Azure SQL Database ad a további funkciók, amelyek nem érhetők el az SQL Server, például a beépített intelligenciával és a felügyeleti. Egy logikai kiszolgálón egyetlen vagy készletezett adatbázisokat tartalmazó legtöbb az SQL Server adatbázis-specifikus szolgáltatást kínál. Az Azure SQL Database felügyelt példányába az Azure SQL Database megosztott erőforrásokat az adatbázisok és további példányok hatókörébe tartozó szolgáltatásokat kínál. Az Azure SQL Database felügyelt példánya támogatja az adatbázis-migrálás minimális nincs adatbázis módosítása. 
 
-      ![deployment-options](./media/sql-database-technical-overview/deployment-options.png) 
-  - Telepíthet egy [Azure SQL Database felügyelt példányain (előzetes verzió)](sql-database-managed-instance.md). 
-
-      > [!NOTE]
-      > Mindkét verziót, az Azure SQL Database ad a további funkciók, amelyek nem érhetők el az SQL Server, például a beépített intelligenciával és a felügyeleti. Az első verziója, az Azure SQL Database felügyelt példányába, az Azure SQL Database kínálja a megosztott erőforrásokat az adatbázisok és további példányok hatókörébe tartozó funkciók. Az Azure SQL Database felügyelt példánya támogatja az adatbázis-migrálás minimális nincs adatbázis módosítása.
 - [Az SQL Server Azure virtuális gépeken](https://azure.microsoft.com/services/virtual-machines/sql-server/): SQL Server telepítve van, és az Azure-ban, más néven egy infrastruktúra-szolgáltatás (IaaS) futó Windows Server vagy Linux rendszerű virtuális gépeken (VM) a felhőben. Migrálás jó választás a helyszíni SQL Server-adatbázisokat és alkalmazásokat adatbázis változás nélkül, egy SQL Server Azure-beli virtuális gépeken. Az összes legújabb verzióit és kiadásait az SQL Server telepítési IaaS virtuális gépen érhetők el. Az SQL Database-ből legfontosabb különbség az, hogy engedélyezik-e teljes körűen felügyelve az adatbázismotor SQL Server virtuális gépek. Amikor karbantartás vagy javítások elindul, változtassa meg a helyreállítási modelljét egyszerűre vagy Tömegesen naplózott ahhoz, hogy gyorsabban betöltődő kevésbé napló, szüneteltetése vagy indítsa el a motor, amikor szükséges, és teljes mértékben testre szabható az SQL Server adatbázismotor választhat. A további felügyelet együttműködik a hozzáadott feladata, hogy a virtuális gépek felügyeletéhez.
 
 Ismerje meg, hogyan illeszkedik a különböző telepítési lehetőségek a Microsoft data platformon, és rátalálhat az üzleti igényeinek leginkább megfelelő lehetőségre. Akár az adminisztrációs terhek csökkentését, akár a költségek csökkentését helyezi előtérbe, ez a cikk segít eldönteni, hogy melyik megközelítés képes teljesíteni az Ön számára legfontosabb üzleti igényekhez kötődő elvárásokat.
@@ -74,7 +72,7 @@ Az alábbi táblázatban az SQL Database és az Azure virtuális gépeken futó 
 | **A következőkre alkalmas:** |Új felhőalapú alkalmazásai számára, amelyeket szeretne a legújabb stabil SQL Server szolgáltatásai andhave szűkösebb időkeret fejlesztési és a marketing használja. | Új alkalmazások vagy a meglévő helyszíni alkalmazásokat, amelyeket szeretne a legújabb stabil SQL Server-funkciók és, amely a felhőbe legfeljebb minimális változtatásokra lesznek áttelepítve.  | Igénylő alkalmazásokhoz, gyors áttelepítés a felhőbe, a minimális módosításait vagy módosítása nélkül. Ha gyorsan kell elvégezni a fejlesztést és a tesztelést, és nem szeretne helyszíni nem üzemi SQL Server-hardvert vásárolni. |
 |  | Olyan csoportok számára, amelyeknek beépített magas rendelkezésre állási, vészhelyreállítási és frissítési mechanizmusokkal rendelkező adatbázisokra van szüksége. | Ugyanaz, mint az SQL Database. | Csoportok, amelyek konfigurálni, részletes hangolása, testreszabása és magas rendelkezésre állást, vészhelyreállítást és javítása az SQL Server kezeléséhez. Mindezeket egyes beépített automatizált funkciók jelentősen leegyszerűsítik. | |
 |  | Olyan csoportok számára, amelyek nem szeretnének az alkalmazás mögötti operációs rendszer beállításával és egyéb konfigurációs feladatokkal foglalkozni. | Ugyanaz, mint az SQL Database. | Teljes körű rendszergazdai jogosultságokkal rendelkező testre szabott környezetre van szüksége. | |
-|  | Akár 4 TB-os adatbázisokhoz, vagy nagyobb adatbázisokhoz [vízszintesen vagy függőlegesen particionálható](sql-database-elastic-scale-introduction.md#horizontal-and-vertical-scaling) horizontális minta használatával. | Ugyanaz, mint az SQL Database. | Akár 64 TB tárterülettel rendelkező SQL Server-példányokhoz. A példányok annyi adatbázist képesek támogatni, amennyire szükség van. |
+|  | Akár 100 TB-os adatbázis. | Ugyanaz, mint az SQL Database. | Akár 64 TB tárterülettel rendelkező SQL Server-példányokhoz. A példányok annyi adatbázist képesek támogatni, amennyire szükség van. |
 | **Kompatibilitási** | Támogatja a legtöbb a helyszíni adatbázis-szintű képességeit. | Szinte minden támogatja a helyszíni példányszintű és az adatbázis-szintű képességek. | Támogatja az összes helyszíni képességeit. |
 | **Erőforrások:** | Ha nem szeretne az alapul szolgáló infrastruktúra konfigurálására és felügyeletére informatikai erőforrásokat fordítani, hanem az alkalmazásrétegre kíván összpontosítani. | Ugyanaz, mint az SQL Database. | Ha rendelkezik bizonyos informatikai erőforrásokkal a konfigurációhoz és felügyelethez. Mindezeket egyes beépített automatizált funkciók jelentősen leegyszerűsítik. |
 | **Tulajdonosi költségek:** | Nincsenek hardverköltségek és alacsonyabbak a felügyeleti költségek. | Ugyanaz, mint az SQL Database. | Nincsenek hardverköltségek. |
@@ -138,20 +136,6 @@ Az **Azure virtuális gépeken futó SQL Server** esetében a Microsoft 99,95%-o
 **SQL Database felügyelt példányain** jelentősen leegyszerűsíti a meglévő alkalmazások az Azure SQL Database, lehetővé téve a migrált adatbázis-alkalmazások az Azure-ban gyorsan piacra használata az áttelepítés.
 
 **Azure virtuális gépeken futó SQL Server** tökéletes megoldás, ha meglévő vagy új alkalmazásainak nagy méretű adatbázisokhoz szükséges, vagy az SQL Server vagy Windows/Linux, az összes funkciójához hozzáférést, és el szeretné kerülni az idő és új beszerzésének költségek a helyszíni hardver. Az is jó megoldás, ha meg szeretné áttelepíteni meglévő helyszíni alkalmazásokat és adatbázisokat az Azure-ba,-van – az esetekben, ahol az Azure SQL Database felügyelt példánya nem jó megoldás. Mivel így nincs szükség a prezentációs, alkalmazási és adatréteg módosítására, időt és pénzt takarít meg, amit nem kell meglévő termékeinek egy új architektúrára való áthelyezésére fordítania. Ehelyett termékeinek az Azure-ra történő áttelepítésére, illetve az Azure-platformon való működéshez esetleg szükséges teljesítményoptimalizálásra összpontosíthat. További információk: [Performance Best Practices for SQL Server on Azure Virtual Machines](../virtual-machines/windows/sql/virtual-machines-windows-sql-performance.md) (Teljesítményre vonatkozó ajánlott eljárások az Azure Virtual Machines szolgáltatásban futtatott SQL Server esetében).
-
-## <a name="summary"></a>Összegzés
-Ebben a cikkben bemutattuk az SQL Database-t és az Azure virtuális gépeken futó SQL Servert, és szót ejtettünk azokról az üzleti szempontokról, amelyek hatással lehetnek választására. Az alábbiakban a megfontolásra érdemes tényeket foglaljuk össze:
-
-Válassza az **Azure SQL Database-t**, ha:
-
-* Új felhőalapú alkalmazásokat fejleszt, hogy igénybe vehesse a felhőszolgáltatások által biztosított költségmegtakarításokat és optimalizált teljesítményt. Ezzel a verzióval a teljes körűen felügyelt felhőszolgáltatások minden előnyét élvezheti, ezenfelül csökkentheti a piacra jutási időt, illetve hosszú távon is optimalizálhatja kiadásait.
-* E megoldás választása esetén érdemes a Microsoftra bízni az adatbázisok általános felügyeleti műveleteinek elvégzését, és erősebb rendelkezésre állási SLA-kat igényelni az adatbázisokhoz.
-* Szeretne áttelepíteni egy meglévő alkalmazás – Azure SQL Database felügyelt példányába történő, és kihasználhatja az SQL Server és/vagy fejlett biztonsági és hálózatkezelési további paritásos. Felügyelt példány a megfelelő választás az olyan új és meglévő alkalmazásokat.
-
-Válassza az **Azure virtuális gépeken futó SQL Servert**, ha:
-
-* Meglévő helyszíni alkalmazásokat, amelyet szeretne áthelyezni vagy kiterjeszteni a felhőre, vagy ha 4 TB-nál nagyobb méretű vállalati alkalmazásokat. Ezt a módszert biztosít az SQL Server verziója és kiadása a választás, nagy adatbázis-kapacitást, az SQL Server- és Windows/Linux rendszerű teljes hozzáféréssel, és biztonságos helyszíni bújtatást. Ez a verzió a lehető legalacsonyabbra csökkenti a meglévő alkalmazások fejlesztési és átalakítási költségeit.
-* Meglévő számítógépes erőforrások használatával Ön irányíthatja a frissítéseket, a biztonsági mentéseket és az adatbázisok magas rendelkezésre állását. Megjegyzendő, hogy egyes automatizált funkciók jelentősen leegyszerűsítik ezeket a műveleteket. 
 
 ## <a name="next-steps"></a>További lépések
 

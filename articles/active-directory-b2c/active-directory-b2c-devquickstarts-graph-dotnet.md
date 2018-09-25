@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/07/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: ce2c92f984f835c8e8f49ec94d65a9f3390812f9
-ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
+ms.openlocfilehash: 013fd019771fb9994c87e363c78eae36431f91de
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39493122"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46953225"
 ---
 # <a name="azure-ad-b2c-use-the-azure-ad-graph-api"></a>Az Azure AD B2C: Az Azure AD Graph API használata
 
@@ -27,7 +27,7 @@ Az Azure Active Directory (Azure AD) B2C-bérlők általában nagyon nagy. Ez az
 B2C-bérlők a Graph API-val való kommunikáció során két elsődleges módban van.
 
 * Interaktív, egyszeri futtatású feladatok esetén meg kell szerepét egy rendszergazdai fiókot a B2C-bérlőben a feladatok végrehajtásakor. Ebben a módban előírja a rendszergazda számára, hogy a rendszergazda bármilyen a Graph API-hívások végrehajtása előtt jelentkezzen be hitelesítő adataival.
-* Automatikus, a folyamatos feladatokat valamilyen típusú adja meg a felügyeleti feladatok végrehajtásához szükséges jogosultságokkal rendelkező szolgáltatásfiókot kell használnia. Az Azure ad-ben akkor ehhez az alkalmazások regisztrálásának és az Azure AD-hitelesítés. Ez történik, az egy **Alkalmazásazonosító** , amely használja a [OAuth 2.0-ügyfél hitelesítő adatainak megadása](../active-directory/develop/authentication-scenarios.md#daemon-or-server-application-to-web-api). Ebben az esetben az alkalmazás funkcionál, magát, nem pedig a felhasználó a Graph API hívása.
+* Automatikus, a folyamatos feladatokat valamilyen típusú adja meg a felügyeleti feladatok végrehajtásához szükséges jogosultságokkal rendelkező szolgáltatásfiókot kell használnia. Az Azure ad-ben akkor ehhez az alkalmazások regisztrálásának és az Azure AD-hitelesítés. Ez történik, az egy **Alkalmazásazonosító** , amely használja a [OAuth 2.0-ügyfél hitelesítő adatainak megadása](../active-directory/develop/service-to-service.md). Ebben az esetben az alkalmazás funkcionál, magát, nem pedig a felhasználó a Graph API hívása.
 
 Ebben a cikkben megismerheti, hogyan hajthat végre automatikus használati eset. A .NET 4.5-ös épít `B2CGraphClient` , amely végrehajtja a felhasználó létrehozása, olvasása, frissítése és törlési (CRUD) műveleteket. Az ügyfél egy Windows-parancssori felület (CLI), amely lehetővé teszi, hogy különböző metódusokat hívhat meg lesz. Azonban a kód írása a nem interaktív, automatizált módon viselkednek.
 

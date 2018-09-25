@@ -3,19 +3,19 @@ title: Támogatott nyelvek – QnA Maker
 titlesuffix: Azure Cognitive Services
 description: Tudásbázis nyelvének hatással van a QnA Maker válaszokat automatikusan kinyerni kérdések és válaszok forrásokból, valamint a QnA Maker felhasználói lekérdezések maximális kézbesítésszáma biztosít az eredmények relevancia alapján végzett.
 services: cognitive-services
-author: nstulasi
+author: tulasim88
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: qna-maker
 ms.topic: article
 ms.date: 09/12/2018
-ms.author: saneppal
-ms.openlocfilehash: ee04733064ec4e3d131b800fe1f18b27e5127fe8
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.author: tulasim
+ms.openlocfilehash: f690a620988135fe1347934a2b394021aa0bd334
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45572940"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47035997"
 ---
 # <a name="supported-languages"></a>Támogatott nyelvek
 

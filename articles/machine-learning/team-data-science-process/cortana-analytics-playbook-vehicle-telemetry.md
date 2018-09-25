@@ -1,9 +1,10 @@
 ---
-title: Előre jelezni a vehicle állapotát, és ki irányítja az szokásait - Azure |} Microsoft Docs
-description: A Cortana Intelligence szolgáltatásai segítségével a vehicle állapotát, és ki irányítja a valós idejű és prediktív dcu szokásokat.
+title: Előrejelezheti állapotát, és a vezetési szokásokat – Azure |} A Microsoft Docs
+description: A Cortana Intelligence képességeit használatával valós idejű és prediktív elemzéseket az állapotát és a vezetési szokásokat.
 services: machine-learning
 documentationcenter: ''
 author: deguhath
+ms.author: deguhath
 manager: cgronlun
 editor: cgronlun
 ms.assetid: 09fad60b-2f48-488b-8a7e-47d1f969ec6f
@@ -14,43 +15,42 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2018
-ms.author: deguhath
-ms.openlocfilehash: fc8dfbbfc40db33f19d2b183546ed9c6df0159fa
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 02a12e917ed36367ffac1ac2e7a1fef1c6098ea7
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34836402"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46985367"
 ---
-# <a name="vehicle-telemetry-analytics-solution-playbook"></a>Vehicle Telemetriai elemzési megoldások forgatókönyv
-Ez a forgatókönyv a fejezetek menü hivatkozásokat: 
+# <a name="vehicle-telemetry-analytics-solution-playbook"></a>Járműtelemetria-Telemetria elemzési megoldás forgatókönyve
+Ez a menü a fejezetek a forgatókönyv mutató hivatkozásokat tartalmaz: 
 
 [!INCLUDE [cap-vehicle-telemetry-playbook-selector](../../../includes/cap-vehicle-telemetry-playbook-selector.md)]
 
 ## <a name="overview"></a>Áttekintés
-Super számítógépek kívül a labor került át és garázsok leparkolni most vannak. Ezek most éppen a legmodernebb autók tárfiókokhoz érzékelők tartalmazó helyezi. Ilyen érzékelő számukra követheti és figyelheti az másodpercenként több millió esemény lehetőséget. Által 2020 ezek járművekről gyűjtött többsége fog csatlakozni az internethez. Koppintson a számos olyan adatokat a nagyobb biztonságot, a megbízhatóság, biztosít, és így jobban távolsági tapasztalhat. A Microsoft teszi ezt a helyzetet a Cortana Intelligence megváltozz.
+A szuperszámítógépek kikerültek a labor létrehozása, és a garázsok ma már egyenesen. Ezeket most már folyamatban van a legmodernebb tulajdonságkészletét számtalan érzékelők tartalmazó kerül. Érzékelőktől lehetővé teheti a őket nyomon követése és több millió eseményt másodpercenként. Szerint 2020-ra a legtöbb járművek fog csatlakozni az internethez. Koppintson az adatok rengeteg be kínál a nagyobb biztonság, megbízhatóság, és így jobban vezetési élmény. A Microsoft-ben Ez a Cortana Intelligence valóra kelnek.
 
-A Cortana Intelligence egy teljes körűen felügyelt big Data típusú adatok és a speciális analytics suite, amelyek segítségével az adatok átalakítása intelligens művelet. A Cortana Intelligence Vehicle Telemetriai Analytics Megoldássablonban bemutatja, hogyan car kereskedők autó gyártók és biztosítási vállalatok szerezhet valós idejű és prediktív elemzések a vehicle állapotát, és ki irányítja a szokásokat.
+Cortana Intelligence egy teljesen felügyelt, big data és a speciális analitikai csomag, amely segítségével az adatok átalakítása intelligens műveletekké. A Cortana Intelligence Járműtelemetriai analitikai Megoldássablonját bemutatja, hogyan autó autókereskedők, autó és biztosítási cégek képesek beszerezni a valós idejű és prediktív elemzéseket az állapotát és a vezetési szokásokat.
 
-A megoldás bevezetése egy [lambda architektúra mintát](https://en.wikipedia.org/wiki/Lambda_architecture), amely mutatja a teljes lehetséges a Cortana Intelligence Platform for valós idejű és kötegelt feldolgozást.
+A megoldás megvalósítása a egy [lambdaarchitektúrát](https://en.wikipedia.org/wiki/Lambda_architecture), amely megjeleníti az összes kihasználja a Cortana Intelligence platform valós idejű kötegelt feldolgozást.
 
 ## <a name="architecture"></a>Architektúra
-A Vehicle Telemetriai elemzési megoldások architektúrájának ezen a diagramon látható:
+Ez az ábra mutatja be a jármű-Telemetria Analytics megoldás architektúrája:
 
-![Megoldás architektúrája](./media/cortana-analytics-playbook-vehicle-telemetry/fig1-vehicle-telemetry-annalytics-solution-architecture.png)
+![A megoldás architektúrájának ábrája](./media/cortana-analytics-playbook-vehicle-telemetry/fig1-vehicle-telemetry-annalytics-solution-architecture.png)
 
 
-Ez a megoldás a következő Cortana Intelligence összetevőket tartalmazza, és az integráció bővíthető:
+Ez a megoldás a Cortana Intelligence következő összetevőket tartalmazza, és bemutatja az integráció:
 
-* **Az Azure Event Hubs** vehicle telemetriai események több millió ingests az Azure.
-* **Az Azure Stream Analytics** biztosít a valós idejű elemzése a vehicle állapotát, és továbbra is fennáll, hogy az adatok a hosszú távú tároló gazdagabb kötegelt elemzéséhez.
-* **Az Azure Machine Learning** rendellenességeket észleli a valós idejű és kötegfeldolgozási prediktív elemzések biztosításához használt.
-* **Az Azure HDInsight** átalakítja az adatokat a skála.
-* **Az Azure Data Factory** vezénylési, ütemezés, erőforrás-kezelés és figyelés, a köteges feldolgozás folyamatának kezeli.
-* **A Power BI** Ez a megoldás részletes irányítópult ad valós idejű adatok és a prediktív elemzés képi megjelenítések.
+* **Az Azure Event Hubs** jármű-telemetria-eseményeinek millió feltölti az Azure-bA.
+* **Az Azure Stream Analytics** állapotát valós idejű elemzéseket nyújt, és továbbra is fennáll az adatokat pedig hosszú távú tárolással a részletesebb kötegelt feldolgozáshoz.
+* **Az Azure Machine Learning** valós időben észleli a rendellenességeket, és használja a kötegelt feldolgozás révén prediktív előrejelzéseket kínál.
+* **Az Azure HDInsight** alakítja át a nagy mennyiségű adat.
+* **Az Azure Data Factory** kezeli a vezénylési, ütemezését, erőforrás-kezelés és a kötegelt feldolgozási folyamat figyelését.
+* **Power bi-ban** biztosít a megoldás egy informatív irányítópulton a valós idejű adatok és prediktív elemzési vizualizációt.
 
 Ez a megoldás két különböző adatforrásokhoz fér hozzá: 
 
-* **Szimulált vehicle jelek és diagnosztikai**: bocsát ki diagnosztikai adatokat, és azt jelzi, hogy megfelelnek a vehicle és adott vezetői mintát állapotának vehicle telematika szimulátor időben. 
-* **Vehicle katalógus**: A referencia-adatkészlet VIN számok leképezve modellek.
+* **Járműtelemetria jelek és diagnosztikai szimulált**: bocsát ki diagnosztikai adatokat, és azt jelzi, hogy felel meg a jármű és a vezetési minta egy adott időpontban állapotát jármű-telematika szimulátort időben. 
+* **Járműtelemetria katalógus**: A referencia-adatkészlet VIN számok képez le modellek.
 

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: cynthn
-ms.openlocfilehash: 18a9709893533c2c0b606077a126437282f9195e
-ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
+ms.openlocfilehash: eb88501c5daf0b79d22f4407a372c4606a173db1
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/15/2018
-ms.locfileid: "42061378"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46987696"
 ---
 # <a name="virtual-machines-in-an-azure-resource-manager-template"></a>Virtuális gépek az Azure Resource Manager-sablon
 
@@ -164,7 +164,7 @@ Ezek a lehetőségek lekérhesse a legújabb API-verziók használata:
 
 - REST API - [összes erőforrás-szolgáltató listázása](https://docs.microsoft.com/rest/api/resources/providers#Providers_List)
 - PowerShell - [Get-AzureRmResourceProvider](/powershell/module/azurerm.resources/get-azurermresourceprovider)
-- Az Azure CLI 2.0 - [az provider show](https://docs.microsoft.com/cli/azure/provider#az_provider_show)
+- Az Azure CLI - [az provider show](https://docs.microsoft.com/cli/azure/provider#az_provider_show)
 
 ## <a name="parameters-and-variables"></a>Paraméterek és változók
 
@@ -442,7 +442,7 @@ A bővítmények beállítások a portálon a telepített bővítmények állapo
 
 ![Bővítmény állapotának beolvasása](./media/template-description/virtual-machines-show-extensions.png)
 
-Emellett információkat szerezhet a bővítmény használatával a **Get-AzureRmVMExtension** PowerShell-parancsot a **vm-bővítmény get** Azure CLI 2.0 parancs, vagy a **sémakiterjesztésiadatoklekérése** REST API-T.
+Emellett információkat szerezhet a bővítmény használatával a **Get-AzureRmVMExtension** PowerShell-parancsot a **vm-bővítmény get** Azure CLI-paranccsal, vagy a **sémakiterjesztésiadatoklekérése**REST API-t.
 
 ## <a name="deployments"></a>Központi telepítés
 

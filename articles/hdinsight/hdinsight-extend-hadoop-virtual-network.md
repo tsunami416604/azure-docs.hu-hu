@@ -8,14 +8,16 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 07/26/2018
-ms.openlocfilehash: 659c33ec0e989003e68b5165fab70f50c607868c
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: 98c62f54e2413bd67600db182c452d0d5965f239
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39591881"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46972181"
 ---
 # <a name="extend-azure-hdinsight-using-an-azure-virtual-network"></a>Az Azure Virtual Network használata Azure HDInsight kiterjesztése
+
+[!INCLUDE [classic-cli-warning](../../includes/requires-classic-cli.md)]
 
 Ismerje meg, hogyan használható a HDInsight- [Azure Virtual Network](../virtual-network/virtual-networks-overview.md). Az Azure Virtual Network használatával lehetővé teszi, hogy a következő esetekben:
 
@@ -70,7 +72,7 @@ Kövesse a lépéseket ebben a szakaszban egy új HDInsight hozzáadása egy meg
 
     HDInsight különböző portok használata több szolgáltatások üzemelteti. Ne blokkolják ezeket a portokat a forgalmat. Engedélyezett a virtuális készülék tűzfalak, portok listáját lásd: a [biztonsági](#security) szakaszban.
 
-    A meglévő biztonsági konfiguráció, használja a következő Azure PowerShell vagy az Azure CLI-parancsokat:
+    A meglévő biztonsági konfiguráció, használja a következő Azure PowerShell vagy a klasszikus Azure CLI-parancsokat:
 
     * Network security groups (Hálózati biztonsági csoportok)
 
@@ -107,7 +109,7 @@ Kövesse a lépéseket ebben a szakaszban egy új HDInsight hozzáadása egy meg
 
     * [HDInsight létrehozása az Azure Portalon](hdinsight-hadoop-create-linux-clusters-portal.md)
     * [HDInsight létrehozása az Azure PowerShell-lel](hdinsight-hadoop-create-linux-clusters-azure-powershell.md)
-    * [Azure CLI 1.0 használatával HDInsight létrehozása](hdinsight-hadoop-create-linux-clusters-azure-cli.md)
+    * [Klasszikus Azure CLI-vel HDInsight létrehozása](hdinsight-hadoop-create-linux-clusters-azure-cli.md)
     * [A HDInsight használata az Azure Resource Manager-sablon létrehozása](hdinsight-hadoop-create-linux-clusters-arm-templates.md)
 
   > [!IMPORTANT]
@@ -441,7 +443,7 @@ $vnet | Set-AzureRmVirtualNetwork
 > Add-AzureRmNetworkSecurityRuleConfig -Name "SSH" -Description "SSH" -Protocol "*" -SourcePortRange "*" -DestinationPortRange "22" -SourceAddressPrefix "*" -DestinationAddressPrefix "VirtualNetwork" -Access Allow -Priority 306 -Direction Inbound
 > ```
 
-### <a name="azure-cli"></a>Azure CLI
+### <a name="azure-classic-cli"></a>Az Azure klasszikus parancssori felület
 
 Az alábbi lépések segítségével hozzon létre egy virtuális hálózatot, amely korlátozza a bejövő forgalmat, de lehetővé teszi, hogy a HDInsight által igényelt IP-címekről érkező forgalom.
 
@@ -510,7 +512,7 @@ Ebben a példában feltételezésekre a következő:
 
 Az egyéni DNS-kiszolgálón a virtuális hálózat:
 
-1. Azure PowerShell vagy az Azure CLI használatával keresse meg a virtuális hálózat DNS-utótag:
+1. Azure PowerShell vagy a klasszikus Azure CLI használatával keresse meg a virtuális hálózat DNS-utótag:
 
     ```powershell
     $resourceGroupName = Read-Input -Prompt "Enter the resource group that contains the virtual network used with HDInsight"
@@ -592,7 +594,7 @@ Ebben a példában feltételezésekre a következő:
 
 * [Kötési](https://www.isc.org/downloads/bind/) telepítve van az egyéni DNS-kiszolgálók.
 
-1. Azure PowerShell vagy az Azure CLI segítségével mindkét virtuális hálózat DNS-utótagját keresése:
+1. Azure PowerShell vagy a klasszikus Azure CLI segítségével mindkét virtuális hálózat DNS-utótagját keresése:
 
     ```powershell
     $resourceGroupName = Read-Input -Prompt "Enter the resource group that contains the virtual network used with HDInsight"

@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 09/15/2017
 ms.author: glenga
-ms.openlocfilehash: 89f222d28a284abff50e60b12c691be2f8691255
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: fb9de98a80d348c3ba1e84ae19551c7ca080628b
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44718950"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46966843"
 ---
 # <a name="monitor-azure-functions"></a>Az Azure Functions monitorozása
 
@@ -530,9 +530,9 @@ Akkor is, ha a **figyelő** lapon látható az Application Insights-adatait úgy
 
 ### <a name="real-time-monitoring"></a>Valós idejű figyelés
 
-A fájlokat egy parancssori munkamenetet egy helyi munkaállomáson használatával streamelheti a [Azure parancssori felület (CLI) 2.0-s](/cli/azure/install-azure-cli) vagy [Azure PowerShell-lel](/powershell/azure/overview).  
+A fájlokat egy parancssori munkamenetet egy helyi munkaállomáson használatával streamelheti a [Azure parancssori felület (CLI)](/cli/azure/install-azure-cli) vagy [Azure PowerShell-lel](/powershell/azure/overview).  
 
-Azure CLI 2.0 használatával a következő parancsok jelentkezzen be, válassza ki az előfizetést és a stream naplófájlokat:
+Az Azure CLI használatával az alábbi parancsok jelentkezzen be, válassza ki az előfizetést és a stream naplófájlokat:
 
 ```
 az login

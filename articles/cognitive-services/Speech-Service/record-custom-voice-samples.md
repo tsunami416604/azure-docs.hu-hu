@@ -9,12 +9,12 @@ ms.component: speech-service
 ms.topic: article
 ms.date: 07/5/2018
 ms.author: v-jerkin
-ms.openlocfilehash: 31bfe954a58d232408fd66a1f98911e079824fb0
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 3e9907450680d6984a644b43014ba90b1a9d987e
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44715210"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46991929"
 ---
 # <a name="record-voice-samples-to-create-a-custom-voice"></a>Hozzon létre egy egyéni beszédfelismerési rekord hangalapú minták
 
@@ -106,10 +106,10 @@ Szerencsére a lehetőség a problémák teljes egészében elkerülése érdek�
 |Szöveg forrás|Leírás|
 |-|-|
 |[CMU tavi forrásgyűjteményébe](http://festvox.org/cmu_arctic/)|Kifejezetten a speech összefoglaló projektekben használható out-az-szerzői jogok a kiválasztott készül 1100 mondatokat. Egy remek kiindulási pont.|
-|Már nem működik.<br>a szerzői jogi|Általában works 1923 előtt közzé. Az angol nyelvű tájékoztatáshoz [projekt Gutenberg](https://www.gutenberg.org/) kínál több ezer, az ilyen működik. Érdemes összpontosíthat újabb működik, mert a nyelv modern angol közelebb lesz.|
-|Kormányzati&nbsp;működik|Működik az Egyesült Államok kormánya által létrehozott nem szerzői jogvédelem alatt állnak az Egyesült Államokban, bár a kormányzati igényelhet a szerzői jog más országokban.|
-|Nyilvános tartományt|Melyik copyright explicit módon biztosítják, illetve, hogy működik a nyilvános tartomány rendelkezik lett kijelölve. (Hogy előfordulhat, hogy nem lehet elengedni copyright teljes mértékben az egyes jogi szabályozásainak.)|
-|Permissively licenccel rendelkező működése|Forgalmazva egy licencet, például a Creative Commons szervezetről, vagy a GNU ingyenes dokumentáció licenc (GFDL) működik. Wikipedia a GFDL használ. Néhány licenccel, azonban előfordulhat, hogy kivetett korlátozásokat a licenccel rendelkező tartalmát, amelyek hatással lehetnek egy egyéni beszédfelismerési modell létrehozása teljesítményét így figyelmesen olvassa el a licencfeltételeket.|
+|Már nem működik.<br>a szerzői jogi|Általában works 1923 előtt közzé. Az angol nyelvű tájékoztatáshoz [projekt Gutenberg](https://www.gutenberg.org/) kínál több ezer, az ilyen működik. Előfordulhat, hogy szeretné, a nyelv modern angol közelebb lesz újabb works összpontosíthat.|
+|Kormányzati&nbsp;működik|Az Egyesült Államok kormánya által létrehozott működése nem szerzői jogvédelem alatt állnak az Egyesült Államokban, ha a kormányzat igényelhet a szerzői jog más országokban.|
+|Nyilvános tartományt|Melyik copyright explicit módon biztosítják, illetve, hogy működik a nyilvános tartomány rendelkezik lett kijelölve. (Ez nem lehetséges elengedni copyright teljes mértékben az egyes jogi szabályozásainak.)|
+|Permissively licenccel rendelkező működése|Például a Creative Commons licencet, vagy a GNU ingyenes dokumentáció licenc (GFDL) forgalmazva működik. Wikipedia a GFDL használ. Néhány licenccel, azonban előfordulhat, hogy korlátozásokat alkalmazzanak a teljesítmény, a licencelt tartalom, amely hatással lehet egy egyéni beszédfelismerési modell létrehozását, olvassa el a licencet.|
 
 ## <a name="recording-your-script"></a>A szkript rögzítése
 
@@ -150,7 +150,7 @@ Itt a tartomány (magasság) a legtöbb használatos, de a jel a legmagasabb cs�
 
 Rekord közvetlenül egy kiváló minőségű hang felületen vagy egy USB-porttal használatával a számítógépbe, attól függően, a mic használ. Analóg, tartsa meg a hang lánc egyszerű: mic, preamp, hang felület, a számítógép. Mindkét licencelheti [Avid Pro eszközök](http://www.avid.com/en/pro-tools) és [Adobe Audition](https://www.adobe.com/products/audition.html) havi elfogadható áron. Ha a költségvetés rendkívül szoros, próbálja ki az ingyenes [Audacity](https://www.audacityteam.org/).
 
-Jegyezze fel a 44.1 KHz 16-bites monophonic (CD minőség), vagy jobb. Az aktuális legmodernebb 48 KHz 24-bites, ha a készülék támogatja azt. Lehetővé teszi a felbontásának a hangot a 16 bites KHz 16 az egyéni beszédfelismerési portálra való elküldése előtt. Továbbra is hogy megéri rendelkezik egy kiváló minőségű eredeti rögzítése abban az esetben, ha módosítások szükségesek.
+Jegyezze fel minőségben 44,1 kHz 16 bites monophonic (CD), vagy még jobb. Aktuális állapot,-legújabb 48 kHz 24 bites esetén a berendezés támogatja azt. Akkor lesz lefelé-sample 16 kHz 16 bites, a hang az egyéni beszédfelismerési portálra való mentése előtt. Továbbra is hogy megéri rendelkezik egy kiváló minőségű eredeti rögzítése abban az esetben, ha módosítások szükségesek.
 
 A szerepkörök igazgató, a visszafejtés és szakembereket szolgálja ki a különböző emberek ideális esetben van. Ne kísérelje meg ezt az összes saját magának. A csippentés több személy lehet az igazgató és a visszafejtés is.
 
@@ -198,7 +198,7 @@ Rendszeres oldaltörések igénybe vehet, és adjon meg egy ital érdekében a h
 
 ### <a name="after-the-session"></a>A munkamenet után
 
-A modern felvétel studios futtasson azokon a számítógépeken. A munkamenet végén egy vagy több audio-fájlokat kap, nem szalagon. Ezek a fájlok valószínűleg a CD-minőségi (44,1 KHz 16-bit) WAV vagy AIFF formátumot kell használni, vagy jobb. 48 kHz 24 bites a közös és kívánatos. Nagyobb mintavételi arányt, 96 KHz, például általában nincs szükség.
+A modern felvétel studios futtasson azokon a számítógépeken. A munkamenet végén egy vagy több audio-fájlokat kap, nem szalagon. Ezek a fájlok valószínűleg a CD-minőségi (44,1 kHz 16-bit) WAV vagy AIFF formátumot kell használni, vagy jobb. 48 kHz 24 bites a közös és kívánatos. Nagyobb mintavételi arányt, 96 kHz, például általában nincs szükség.
 
 Az egyéni beszédfelismerési portálon minden egyes megadott utterance (kifejezés) kell lennie a saját fájl szükséges. A studio által kínált egyes hangfájl több kimondott szöveg tartalmazza. Ezért az elsődleges utáni üzemi feladata felosztani a máshogy a felvételt, és készítse elő azokat küldésének. A rögzítés mérnök lehet, hogy a fájlban elhelyezni jelölők (vagy egy külön köteg listában megadott) annak jelzésére, ahol minden kimondásakor kezdődik.
 
@@ -208,7 +208,7 @@ Hagyja üresen a csend elején és végén, az első kivételével minden klip m
 
 Alaposan az egyes fájlok figyelésére. Ezen a ponton ki, amelyek kimaradtak a felvételt, például egy sort, mielőtt egy enyhe nyelvi csomag smack kis nemkívánatos hangok szerkesztheti, de ügyeljen arra, hogy bármilyen tényleges speech eltávolítása. Ha egy fájl nem oldja meg, távolítsa el az adatkészletet, és vegye figyelembe, hogy még meg.
 
-Minden fájl konvertálása 16 bit, és a egy mintavételi gyakoriság 16 kHz mentheti és, ha a studio chatter rögzített törlése előtt a második csatornát. Mentse a fájlokat a WAV-formátumban, és nevezze el a fájlokat, beleértve az utterance (kifejezés) számot a parancsfájlból származó által.
+Minden egyes fájl átalakítása 16 bites és a egy mintavételi gyakoriság 16 kHz mentés előtt, és ha a studio chatter rögzített, távolítsa el a második csatornát. Mentse a fájlokat a WAV-formátumban, a fájlok elnevezési a parancsfájl az utterance (kifejezés) számát.
 
 Végül hozza létre a *átirat* egyes WAV-fájl, amely társítja a megfelelő utterance (kifejezés) megjelenő szöveges változata. [Egyéni hangtípust létrehozása](how-to-customize-voice-font.md) olyan, megfelelő formátumú adatokat tartalmaz. Közvetlenül a szkriptet a másolhatja a szöveget. Ezután hozzon létre egy Zip-fájlban a WAV-fájlok és a szöveg a szövegben.
 

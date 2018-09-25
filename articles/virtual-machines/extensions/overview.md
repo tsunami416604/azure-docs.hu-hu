@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/30/2018
 ms.author: roiyz
-ms.openlocfilehash: ec201f7f82aea97b9927b85a6b185fad51f6081d
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: c54bcc1239c2d8b8a88d5e30b06f8856b73b47ae
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39412600"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46960685"
 ---
 # <a name="azure-virtual-machine-extensions-and-features"></a>Az Azure virtuális gépi bővítmények és szolgáltatások
 Az Azure virtuális gép (VM) a bővítmények olyan kisebb alkalmazásoknál, amelyek az üzembe helyezés utáni konfigurációs és automatizálási feladatokat biztosít az Azure virtuális gépeken, majd testre szabhatja őket a központi telepítések részeként lekérdezése a business, az egyéni tartományon kívül és használhatja a meglévő rendszerképek rendszerkép létrehozása.
@@ -41,7 +41,7 @@ Egy új virtuális gép üzembe helyezésének bővítményeket is telepíthet. 
 Extensions alatt a portálon a virtuális gép paneljén megtekintheti az elérhető bővítmények, ez jelenti, hogy csak egy kis összeget, a teljes listát a CLI-eszközök használata, hogy [Virtuálisgép-bővítmények felfedezése Linux](features-linux.md) és [ A Windows Virtuálisgép-bővítmények felderítése](features-windows.md).
 
 ## <a name="how-can-i-install-an-extension"></a>Hogyan telepíthetem egy bővítmény?
-Az Azure Virtuálisgép-bővítmények használatával vagy az Azure CLI 2.0, Azure PowerShell-lel, az Azure Resource Manager-sablonokkal és az Azure Portalon kezelhetők. Megismétli a bővítményekhez, is nyissa meg az Azure Portalon, válassza az egyéni szkriptek futtatására szolgáló bővítmény, ezután adja át a parancs / script és futtathat a bővítmények.
+Az Azure Virtuálisgép-bővítmények használatával vagy az Azure CLI, Azure PowerShell-lel, az Azure Resource Manager-sablonokkal és az Azure Portalon kezelhetők. Megismétli a bővítményekhez, is nyissa meg az Azure Portalon, válassza az egyéni szkriptek futtatására szolgáló bővítmény, ezután adja át a parancs / script és futtathat a bővítmények.
 
 Ha szeretné a CLI vagy a Resource Manager-sablon által hozzáadott a portálon kiterjesztése, lásd másik kiterjesztést dokumentációját, például [Windows egyéni szkriptek futtatására szolgáló bővítmény](custom-script-windows.md) és [Linux egyéni szkriptek futtatására szolgáló bővítmény](custom-script-linux.md).
 

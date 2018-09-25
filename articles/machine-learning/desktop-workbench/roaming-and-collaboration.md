@@ -11,20 +11,24 @@ ms.component: core
 ms.workload: data-services
 ms.topic: article
 ms.date: 11/16/2017
-ms.openlocfilehash: 0abc5e34d2bfa1cf2a9fc0569831e21ed295891c
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ROBOTS: NOINDEX
+ms.openlocfilehash: 07a9d46dff17b43d01a6b411292cf240c32476f3
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44296499"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46983718"
 ---
 # <a name="roaming-and-collaboration-in-azure-machine-learning-workbench"></a>Barangolás és együttműködés az Azure Machine Learning Workbenchben
+
+[!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)] 
+
 Ez a cikk bemutatja, hogyan használhatja az Azure Machine Learning Workbench a számítógépek között központi projektek és együttműködhet a csapat tagjai. 
 
 Amikor létrehoz egy Azure Machine Learning-projektet, amely rendelkezik egy távoli Git-tárház (adattár) hivatkozást, a projekt metaadatok és a pillanatképekhez tárolódnak a felhőben. Használhatja a felhő hivatkozásra a projekthez egy másik számítógépről (központi) eléréséhez. Is együttműködhet a csapat tagjai által hozzáférést ad nekik a projekthez. 
 
 ## <a name="prerequisites"></a>Előfeltételek
-1. A Machine Learning Workbench alkalmazás telepítéséhez. Győződjön meg arról, hogy az Azure Machine Learning-Kísérletezési fiókhoz való hozzáférés. További információkért lásd: a [telepítési útmutató](../service/quickstart-installation.md).
+1. A Machine Learning Workbench alkalmazás telepítéséhez. Győződjön meg arról, hogy az Azure Machine Learning-Kísérletezési fiókhoz való hozzáférés. További információkért lásd: a [telepítési útmutató](quickstart-installation.md).
 
 2. Hozzáférés [Azure DevOps](https://www.visualstudio.com) , majd hozzon létre olyan adattárat a projekthez, hogy mutató hivatkozást. További információkért lásd: [egy Machine Learning Workbench-projekt Git-tárház használatával](using-git-ml-project.md).
 

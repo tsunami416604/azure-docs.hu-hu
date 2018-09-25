@@ -1,6 +1,6 @@
 ---
-title: Az Azure Functions – HTTP- és webhookkötések
-description: Megtudhatja, hogyan használja a HTTP- és webhook eseményindítók és kötések az Azure Functions szolgáltatásban.
+title: Az Azure Functions – HTTP-eseményindítók és kötések
+description: Megtudhatja, hogyan használja a HTTP-eseményindítók és kötések az Azure Functions szolgáltatásban.
 services: functions
 documentationcenter: na
 author: ggailey777
@@ -11,18 +11,18 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 11/21/2017
 ms.author: glenga
-ms.openlocfilehash: eef84e8c5fb67faef99beec934f29e55365ce811
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: a1b34484978ad95f0945e93411ac2e2a74fff238
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44715958"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46980974"
 ---
-# <a name="azure-functions-http-and-webhook-bindings"></a>Az Azure Functions – HTTP- és webhookkötések
+# <a name="azure-functions-http-triggers-and-bindings"></a>Az Azure Functions – HTTP-eseményindítók és kötések
 
-Ez a cikk ismerteti a HTTP-eseményindítók és a kimeneti kötések az Azure Functions használata. Az Azure Functions támogatja a HTTP-eseményindítók és a kimeneti kötések.
+Ez a cikk ismerteti a HTTP-eseményindítók és a kimeneti kötések az Azure Functions használata.
 
-HTTP-trigger válaszolni a testre szabható [webhookok](https://en.wikipedia.org/wiki/Webhook). A webhook eseményindítóhoz csak egy JSON-adattartalmat fogad, és érvényesíti a JSON. Nincsenek speciális-verziók a webhook eseményindítóhoz könnyebb kezeléséhez webhookok az egyes szolgáltatók, például a GitHub és Slack.
+HTTP-trigger válaszolni a testre szabható [webhookok](https://en.wikipedia.org/wiki/Webhook).
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
@@ -312,164 +312,6 @@ public HttpResponseMessage<String> hello(@HttpTrigger(name = "req", methods = {"
     }
 }
 ```
-     
-## <a name="trigger---webhook-example"></a>Eseményindító - webhook példa
-
-Tekintse meg az adott nyelvű példa:
-
-* [C#](#webhook---c-example)
-* [C# script (.csx)](#webhook---c-script-example)
-* [F#](#webhook---f-example)
-* [JavaScript](#webhook---javascript-example)
-
-### <a name="webhook---c-example"></a>Webhook – C#-példa
-
-A következő példa bemutatja egy [C#-függvény](functions-dotnet-class-library.md) , amely egy HTTP 200 küld egy általános JSON irányuló kérelemre adott válasz.
-
-```cs
-[FunctionName("HttpTriggerCSharp")]
-public static HttpResponseMessage Run([HttpTrigger(AuthorizationLevel.Anonymous, WebHookType = "genericJson")] HttpRequestMessage req)
-{
-    return req.CreateResponse(HttpStatusCode.OK);
-}
-```
-
-### <a name="webhook---c-script-example"></a>Webhook – C#-szkript példa
-
-Az alábbi példa bemutatja egy a kötelező érvényű webhooktrigger egy *function.json* fájl és a egy [C#-szkriptfüggvény](functions-reference-csharp.md) , amely a kötés használja. A függvény GitHub-probléma megjegyzések naplózza.
-
-Íme a *function.json* fájlt:
-
-```json
-{
-  "bindings": [
-    {
-      "type": "httpTrigger",
-      "direction": "in",
-      "webHookType": "github",
-      "name": "req"
-    },
-    {
-      "type": "http",
-      "direction": "out",
-      "name": "res"
-    }
-  ],
-  "disabled": false
-}
-```
-
-A [konfigurációs](#trigger---configuration) szakasz mutatja be ezeket a tulajdonságokat.
-
-Íme a C#-szkriptkódot:
-
-```csharp
-#r "Newtonsoft.Json"
-
-using System;
-using System.Net;
-using System.Threading.Tasks;
-using Newtonsoft.Json;
-
-public static async Task<object> Run(HttpRequestMessage req, TraceWriter log)
-{
-    string jsonContent = await req.Content.ReadAsStringAsync();
-    dynamic data = JsonConvert.DeserializeObject(jsonContent);
-
-    log.Info($"WebHook was triggered! Comment: {data.comment.body}");
-
-    return req.CreateResponse(HttpStatusCode.OK, new {
-        body = $"New GitHub comment: {data.comment.body}"
-    });
-}
-```
-
-### <a name="webhook---f-example"></a>Webhook – F #-példa
-
-Az alábbi példa bemutatja egy a kötelező érvényű webhooktrigger egy *function.json* fájl és a egy [F #-függvény](functions-reference-fsharp.md) , amely a kötés használja. A függvény GitHub-probléma megjegyzések naplózza.
-
-Íme a *function.json* fájlt:
-
-```json
-{
-  "bindings": [
-    {
-      "type": "httpTrigger",
-      "direction": "in",
-      "webHookType": "github",
-      "name": "req"
-    },
-    {
-      "type": "http",
-      "direction": "out",
-      "name": "res"
-    }
-  ],
-  "disabled": false
-}
-```
-
-A [konfigurációs](#trigger---configuration) szakasz mutatja be ezeket a tulajdonságokat.
-
-Az F #-kód itt látható:
-
-```fsharp
-open System.Net
-open System.Net.Http
-open FSharp.Interop.Dynamic
-open Newtonsoft.Json
-
-type Response = {
-    body: string
-}
-
-let Run(req: HttpRequestMessage, log: TraceWriter) =
-    async {
-        let! content = req.Content.ReadAsStringAsync() |> Async.AwaitTask
-        let data = content |> JsonConvert.DeserializeObject
-        log.Info(sprintf "GitHub WebHook triggered! %s" data?comment?body)
-        return req.CreateResponse(
-            HttpStatusCode.OK,
-            { body = sprintf "New GitHub comment: %s" data?comment?body })
-    } |> Async.StartAsTask
-```
-
-### <a name="webhook---javascript-example"></a>Webhook – JavaScript-példa
-
-Az alábbi példa bemutatja egy a kötelező érvényű webhooktrigger egy *function.json* fájl és a egy [JavaScript-függvény](functions-reference-node.md) , amely a kötés használja. A függvény GitHub-probléma megjegyzések naplózza.
-
-Itt van a kötési adatait a *function.json* fájlt:
-
-```json
-{
-  "bindings": [
-    {
-      "type": "httpTrigger",
-      "direction": "in",
-      "webHookType": "github",
-      "name": "req"
-    },
-    {
-      "type": "http",
-      "direction": "out",
-      "name": "res"
-    }
-  ],
-  "disabled": false
-}
-```
-
-A [konfigurációs](#trigger---configuration) szakasz mutatja be ezeket a tulajdonságokat.
-
-A következő JavaScript-kódot:
-
-```javascript
-module.exports = function (context, data) {
-    context.log('GitHub WebHook triggered!', data.comment.body);
-    context.res = { body: 'New GitHub comment: ' + data.comment.body };
-    context.done();
-};
-```
 
 ## <a name="trigger---attributes"></a>Eseményindító - attribútumok
 
@@ -480,7 +322,7 @@ Beállíthatja az engedélyezési engedélyezett és a egy HTTP-metódusok attri
 ```csharp
 [FunctionName("HttpTriggerCSharp")]
 public static HttpResponseMessage Run(
-    [HttpTrigger(AuthorizationLevel.Anonymous, WebHookType = "genericJson")] HttpRequestMessage req)
+    [HttpTrigger(AuthorizationLevel.Anonymous)] HttpRequestMessage req)
 {
     ...
 }
@@ -500,7 +342,7 @@ A következő táblázat ismerteti a megadott kötés konfigurációs tulajdons�
 | <a name="http-auth"></a>**authLevel** |  **AuthLevel** |Meghatározza, hogy milyen kulcsok, az esetleges kell jelen lennie ahhoz, hogy a függvény hívása a kérésre. A jogosultsági szinteket a következő értékek egyike lehet: <ul><li><code>anonymous</code>&mdash;Egyetlen API-kulcs nem szükséges.</li><li><code>function</code>&mdash;Egy adott API-kulcs megadása kötelező. Ez az az alapértelmezett érték, ha egyiket sem.</li><li><code>admin</code>&mdash;A fő kulcsot kötelező megadni.</li></ul> További információkért lásd a szakasz [engedélyezési kulcsok](#authorization-keys). |
 | **Módszerek** |**Módszerek** | A HTTP-metódusok, amelyre a függvény válasza tömbje. Ha nincs megadva, a függvény az összes HTTP-metódusok válaszol. Lásd: [testre szabhatja a http-végpontot](#customize-the-http-endpoint). |
 | **útvonal** | **útvonal** | Meghatározza az útvonalsablonhoz, szabályozásával, amelyhez a kérés URL-címeket, a függvény válasza. Az alapértelmezett érték, ha egyiket sem `<functionname>`. További információkért lásd: [testre szabhatja a http-végpontot](#customize-the-http-endpoint). |
-| **webHookType** | **WebHookType** |A HTTP-eseményindítóval, hogy működjön, konfigurálja a [webhook](https://en.wikipedia.org/wiki/Webhook) fogadót a megadott szolgáltatón. Nincs beállítva a `methods` tulajdonságot, ha ezzel a tulajdonsággal. A webhook típusa a következő értékek egyike lehet:<ul><li><code>genericJson</code>&mdash;Egy általános célú webhook-végpontot egy szolgáltató logika nélkül. Ez a beállítás korlátozza a kérelmek Ha csak a HTTP-n keresztül, közzététel és az a `application/json` tartalom típusa.</li><li><code>github</code>&mdash;A függvény válaszol [GitHub-webhookok](https://developer.github.com/webhooks/). Ne használja a _authLevel_ tulajdonság GitHub-webhookok használatával. További információkért tekintse meg a GitHub-webhookok szakaszban Ez a cikk későbbi részében.</li><li><code>slack</code>&mdash;A függvény válaszol [webhookok Slack](https://api.slack.com/outgoing-webhooks). Ne használja a _authLevel_ tulajdonság Slack webhookok használatával. További információkért tekintse meg a Slack webhookok szakaszt, a cikk későbbi részében.</li></ul>|
+| **webHookType** | **WebHookType** | _Csak az a verzió 1.x futásidejű támogatott._<br/><br/>A HTTP-eseményindítóval, hogy működjön, konfigurálja a [webhook](https://en.wikipedia.org/wiki/Webhook) fogadót a megadott szolgáltatón. Nincs beállítva a `methods` tulajdonságot, ha ezzel a tulajdonsággal. A webhook típusa a következő értékek egyike lehet:<ul><li><code>genericJson</code>&mdash;Egy általános célú webhook-végpontot egy szolgáltató logika nélkül. Ez a beállítás korlátozza a kérelmek Ha csak a HTTP-n keresztül, közzététel és az a `application/json` tartalom típusa.</li><li><code>github</code>&mdash;A függvény válaszol [GitHub-webhookok](https://developer.github.com/webhooks/). Ne használja a _authLevel_ tulajdonság GitHub-webhookok használatával. További információkért tekintse meg a GitHub-webhookok szakaszban Ez a cikk későbbi részében.</li><li><code>slack</code>&mdash;A függvény válaszol [webhookok Slack](https://api.slack.com/outgoing-webhooks). Ne használja a _authLevel_ tulajdonság Slack webhookok használatával. További információkért tekintse meg a Slack webhookok szakaszt, a cikk későbbi részében.</li></ul>|
 
 ## <a name="trigger---usage"></a>Eseményindító - használat
 
@@ -508,21 +350,10 @@ A C# és az F # függvény, a bemeneti adatokat lehet az eseményindító típus
 
 A JavaScript-függvények a Functions futtatókörnyezete biztosít, a kérelem törzsében a támogatásikérelem-objektum helyett. További információkért lásd: a [JavaScript eseményindító példa](#trigger---javascript-example).
 
-### <a name="github-webhooks"></a>GitHub-webhookok
-
-GitHub-webhookok válaszolni, először a függvény HTTP-Trigger létrehozása, és állítsa be a **webHookType** tulajdonságot `github`. Az URL-CÍMÉT és API-kulcsát, majd másolja a **webhook hozzáadása** a GitHub-adattár oldalát. 
-
-![](./media/functions-bindings-http-webhook/github-add-webhook.png)
-
-Példaként tekintse meg a [GitHub-webhookok által aktivált függvények létrehozását](functions-create-github-webhook-triggered-function.md).
-
-### <a name="slack-webhooks"></a>Slack-webhookok
-
-A Slack webhook állít elő, helyett adja meg, így konfigurálnia kell egy adott kulcs a jogkivonatot a Slack, ami lehetővé teszi egy tokent az Ön számára. Lásd: [engedélyezési kulcsok](#authorization-keys).
 
 ### <a name="customize-the-http-endpoint"></a>A HTTP-végpontot testreszabása
 
-Alapértelmezés szerint létrehozott egy függvényt egy HTTP-eseményindítóval vagy a Webhookot, a függvény a megcímezhető az útvonal a következő formában:
+Alapértelmezés szerint létrehozott egy függvényt a HTTP-trigger, a függvény a megcímezhető az útvonal a következő formában:
 
     http://<yourapp>.azurewebsites.net/api/<funcname> 
 
@@ -603,10 +434,13 @@ Alapértelmezés szerint az összes funkció útvonal van fűzve előtagként *a
 
 ### <a name="authorization-keys"></a>Hitelesítési kulcsok
 
-Functions-kulcsok használata a HTTP-függvény végpontjainak eléréséhez a fejlesztés során nehezebb teszi lehetővé.  Egy normál HTTP-eseményindító ilyen egy API-kulcsot kell a kérelemben szereplő lehet szükség. Webhookok kulcsok segítségével többféle módon, attól függően, a szolgáltató támogatja a kérelmek engedélyezését végzi.
+Functions-kulcsok használata a HTTP-függvény végpontjainak eléréséhez a fejlesztés során nehezebb teszi lehetővé.  Egy normál HTTP-eseményindító ilyen egy API-kulcsot kell a kérelemben szereplő lehet szükség. 
 
 > [!IMPORTANT]
 > Kulcsok segítségére lehetnek a HTTP-végpontokat rejtse fejlesztése során, amíg azok nem tartozhat arra, hogy biztonságos HTTP-trigger, éles környezetben. További tudnivalókért lásd: [egy HTTP-végpontot, éles környezetben biztonságos](#secure-an-http-endpoint-in-production).
+
+> [!NOTE]
+> Az a funkciók 1.x-futtatókörnyezet a webhook-szolgáltatók a kulcsok használatával előfordulhat, hogy többféle módon, attól függően, a szolgáltató támogatja a kérelmek engedélyezését végzi. Ez foglalkozik [Webhookok és kulcsok](#webhooks-and-keys). A verzió 2.x verziójú futtatókörnyezet nem tartalmaz beépített támogatást nyújt a webhook-szolgáltatók.
 
 Kulcsok két típusa van:
 
@@ -641,26 +475,45 @@ Névtelen kérések, amelyek nem igénylik a kulcsok engedélyezheti. A főkulcs
 > [!NOTE]
 > Ha helyileg futtatja a functions, engedélyezési le van tiltva, a megadott hitelesítési szint beállítástól függetlenül. Az Azure-bA közzétételt követően a `authLevel` az eseményindító a beállítás lép életbe.
 
-### <a name="keys-and-webhooks"></a>Kulcsok és webhookok
 
-Webhook engedélyezési kezelje a webhook fogadó összetevő, a HTTP-eseményindítóval része, és a mechanizmus a webhook típusa alapján változik. Minden egyes mechanizmus támaszkodik egy kulcsot. Alapértelmezés szerint az "alapértelmezett" nevű függvény kulcsot használja. Egy másik kulcsot használatához adja meg a webhook-szolgáltatót, hogy a kulcs nevét, a kérés küldése a következő módszerek valamelyikével:
-
-* **Lekérdezési karakterlánc**: A szolgáltató adja át a kulcs nevét a `clientid` például a lekérdezési sztring paramétereként, `https://<yourapp>.azurewebsites.net/api/<funcname>?clientid=<keyname>`.
-* **Kérelem fejléce**: A szolgáltató adja át a kulcs nevét a `x-functions-clientid` fejléc.
-
-Egy webhook által védett kulcs egy példa: [GitHub-webhookok által aktivált függvény létrehozása](functions-create-github-webhook-triggered-function.md).
 
 ### <a name="secure-an-http-endpoint-in-production"></a>Biztonságos egy HTTP-végpontot, éles környezetben
 
 Teljes körűen biztonságossá tételéhez a függvény végpontok éles környezetben, érdemes megfontolni megvalósítását függvény alkalmazásszintű biztonság az alábbi lehetőségek közül:
 
-* App Service a függvényalkalmazás-engedélyezési/hitelesítés bekapcsolása. Az App Service platform lehetővé teszi az Azure Active Directory (AAD), egyszerű szolgáltatásnév hitelesítésével és megbízható harmadik fél Identitásszolgáltatók használatával hitelesítheti a felhasználókat. Ez a szolgáltatás engedélyezve van csak a hitelesített felhasználók hozzáférhet a függvényalkalmazást. További tudnivalókért lásd: [konfigurálása az App Service-alkalmazás Azure Active Directory-bejelentkezés használatához](../app-service/app-service-mobile-how-to-configure-active-directory-authentication.md).
+* Kapcsolja be az App Service-hitelesítés / engedélyezés a függvényalkalmazás számára. Az App Service platform lehetővé teszi az Azure Active Directory (AAD) és több külső identitásszolgáltató használatával ügyfelek hitelesítéséhez. Ezzel a Functions egyéni engedélyezési szabályok megvalósításához, és használhatja a felhasználói adatokat a függvénykódban. További tudnivalókért lásd: [hitelesítése és engedélyezése Azure App Service-ben](../app-service/app-service-authentication-overview.md).
 
 * Az Azure API Management (APIM) használatával-kérések hitelesítéséhez. APIM API biztonsági beállítások a bejövő kéréseket széles skáláját kínálja. További tudnivalókért lásd: [az API Management a hitelesítési házirendek](../api-management/api-management-authentication-policies.md). Az APIM-helyen konfigurálhatja a függvényalkalmazás csak a PI címet az APIM-példány érkező kéréseket fogadják. További tudnivalókért lásd: [IP-címkorlátozások](ip-addresses.md#ip-address-restrictions).
 
 * A függvényalkalmazás, egy Azure App Service Environment (ASE) üzembe helyezése. ASE a függvények futtatására dedikált üzemeltetési környezetet biztosít. ASE lehetővé teszi, hogy az összes bejövő kérések hitelesítéséhez használhatja egyetlen előtér-átjáró konfigurálását. További információkért lásd: [egy webalkalmazási tűzfal (WAF) konfigurálása App Service Environment-környezet](../app-service/environment/app-service-app-service-environment-web-application-firewall.md).
 
 Ezek függvény alkalmazási szintű biztonsági módszer használata esetén állítsa be a HTTP-eseményindítóval aktivált függvényt hitelesítési szintet `anonymous`.
+
+### <a name="webhooks"></a>Webhookok
+
+> [!NOTE]
+> Webhook mód csak verzió érhető el a Functions futtatókörnyezet 1.x.
+
+Webhook mód a webhook hasznos adat található további ellenőrzést biztosít. A verzió 2.x, az alapszintű HTTP-eseményindító továbbra is működik, és a webhookok az ajánlott eljárás.
+
+#### <a name="github-webhooks"></a>GitHub-webhookok
+
+GitHub-webhookok válaszolni, először a függvény HTTP-Trigger létrehozása, és állítsa be a **webHookType** tulajdonságot `github`. Az URL-CÍMÉT és API-kulcsát, majd másolja a **webhook hozzáadása** a GitHub-adattár oldalát. 
+
+![](./media/functions-bindings-http-webhook/github-add-webhook.png)
+
+Példaként tekintse meg a [GitHub-webhookok által aktivált függvények létrehozását](functions-create-github-webhook-triggered-function.md).
+
+#### <a name="slack-webhooks"></a>Slack-webhookok
+
+A Slack webhook állít elő, helyett adja meg, így konfigurálnia kell egy adott kulcs a jogkivonatot a Slack, ami lehetővé teszi egy tokent az Ön számára. Lásd: [engedélyezési kulcsok](#authorization-keys).
+
+### <a name="webhooks-and-keys"></a>Webhookok és kulcsok
+
+Webhook engedélyezési kezelje a webhook fogadó összetevő, a HTTP-eseményindítóval része, és a mechanizmus a webhook típusa alapján változik. Minden egyes mechanizmus támaszkodik egy kulcsot. Alapértelmezés szerint az "alapértelmezett" nevű függvény kulcsot használja. Egy másik kulcsot használatához adja meg a webhook-szolgáltatót, hogy a kulcs nevét, a kérés küldése a következő módszerek valamelyikével:
+
+* **Lekérdezési karakterlánc**: A szolgáltató adja át a kulcs nevét a `clientid` például a lekérdezési sztring paramétereként, `https://<yourapp>.azurewebsites.net/api/<funcname>?clientid=<keyname>`.
+* **Kérelem fejléce**: A szolgáltató adja át a kulcs nevét a `x-functions-clientid` fejléc.
 
 ## <a name="trigger---limits"></a>Eseményindító - korlátok
 
@@ -692,7 +545,7 @@ A következő táblázat ismerteti a megadott kötés konfigurációs tulajdons�
 
 HTTP-választ küldeni, a nyelv – standard válasz minták használatával. C# vagy C#-szkript, győződjön meg arról, a függvény visszatérési típusa `HttpResponseMessage` vagy `Task<HttpResponseMessage>`. A C# a visszatérési érték attribútum nem szükséges.
 
-Például a válaszokat, tekintse meg a [eseményindító példa](#trigger---example) és a [webhook példa](#trigger---webhook-example).
+Például a válaszokat, tekintse meg a [eseményindító példa](#trigger---example).
 
 ## <a name="next-steps"></a>További lépések
 

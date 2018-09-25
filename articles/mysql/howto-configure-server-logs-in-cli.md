@@ -10,12 +10,12 @@ ms.service: mysql
 ms.devlang: azure-cli
 ms.topic: article
 ms.date: 02/28/2018
-ms.openlocfilehash: 57b72ded77484dc1c8ca4c62811b62e171365db4
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: e3940f07ab97eb2ad03c347c39bf2412a8497f5e
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39423457"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46978454"
 ---
 # <a name="configure-and-access-server-logs-by-using-azure-cli"></a>Konfigurálja és kiszolgálói naplók elérése az Azure CLI-vel
 Azure CLI, az Azure parancssori segédprogram használatával töltheti le az Azure Database for MySQL-kiszolgáló naplóit.
@@ -23,7 +23,7 @@ Azure CLI, az Azure parancssori segédprogram használatával töltheti le az Az
 ## <a name="prerequisites"></a>Előfeltételek
 Ez az útmutató lépéseinek, az alábbiak szükségesek:
 - [Azure Database for MySQL-kiszolgáló](quickstart-create-mysql-server-database-using-azure-cli.md)
-- A [Azure CLI 2.0](/cli/azure/install-azure-cli) vagy az Azure Cloud Shellt a böngészőben
+- A [Azure CLI-vel](/cli/azure/install-azure-cli) vagy az Azure Cloud Shellt a böngészőben
 
 ## <a name="configure-logging-for-azure-database-for-mysql"></a>MySQL-hez készült Azure-adatbázis naplózásának konfigurálása
 A kiszolgálóhoz a MySQL lassú lekérdezések naplója a következő lépések végrehajtásával konfigurálhatja:

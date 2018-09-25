@@ -1,6 +1,6 @@
 ---
-title: Irányítópultok és az Azure Application Insights navigációs |} Microsoft Docs
-description: A kulcs APM diagramok és a lekérdezések nézetek létrehozása.
+title: Irányítópultok és navigáció a az Azure Application Insights |} A Microsoft Docs
+description: Az APM kulcsfontosságú diagramokat és lekérdezések létrehozásához.
 services: application-insights
 documentationcenter: ''
 author: mrbullwinkle
@@ -13,147 +13,147 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 03/14/2017
 ms.author: mbullwin
-ms.openlocfilehash: 72859f68fc1bb76a6c71bbd7b98cd713f1f0fe02
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 8161fda80b5fa498f9321371c9ad2c8a2d97441a
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35296400"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46962419"
 ---
-# <a name="navigation-and-dashboards-in-the-application-insights-portal"></a>Navigációs és az Application Insights portálon irányítópultok
-Miután [Application Insights beállítása a projekten](app-insights-overview.md), az alkalmazás teljesítmény- és használati telemetriai adatokat fog megjelenni az Application Insights-erőforrás a projekt a [Azure-portálon](https://portal.azure.com).
+# <a name="navigation-and-dashboards-in-the-application-insights-portal"></a>Navigáció és irányítópultok az Application Insights portálon
+Miután [Application Insights beállítása a projektben](app-insights-overview.md), az alkalmazás teljesítményének és használatának telemetriai adatait jelenik meg a projekt Application Insights-erőforrást a [az Azure portal](https://portal.azure.com).
 
-## <a name="find-your-telemetry"></a>A telemetriai adat található
-Jelentkezzen be a [Azure-portálon](https://portal.azure.com) , és keresse meg az Application Insights-erőforrást, amelyet az alkalmazás hozott létre.
+## <a name="find-your-telemetry"></a>A telemetria keresése
+Jelentkezzen be a [az Azure portal](https://portal.azure.com) , és keresse meg az alkalmazás számára létrehozott Application Insights-erőforrás.
 
-![Kattintson a Tallózás gombra, válassza ki az Application Insights, majd az alkalmazást.](./media/app-insights-dashboards/00-start.png)
+![Kattintson a Tallózás gombra, és válassza az Application Insights, majd az alkalmazást.](./media/app-insights-dashboards/00-start.png)
 
-Az Áttekintés panel (oldal) az alkalmazás az alkalmazás fő diagnosztikai metrikáinak összegzését jeleníti meg, és egy átjárót a portál más szolgáltatásokhoz.
+Az Áttekintés panelen (oldal) az alkalmazás számára az alkalmazás fő diagnosztikai metrikák összegzését jeleníti meg, és egy átjárót a portálon a más szolgáltatásokhoz.
 
-![A telemetriai adatok megtekintéséhez fő útvonalak](./media/app-insights-dashboards/010-oview.png)
+![Fő útvonalakat a telemetriai adatok megtekintése](./media/app-insights-dashboards/010-oview.png)
 
-Testre szabhatja a diagramok és rácsok és irányítópulton rögzítheti őket. Ily módon helyezheti együtt a kulcs telemetriai adatokat más alkalmazásokból központi irányítópulton.
+A diagramok és táblázatok bármely, és rögzítheti őket az irányítópulton. Ezzel a módszerrel összeállíthatók a legfontosabb telemetriát a különböző alkalmazások egy központi irányítópulton.
 
 ## <a name="dashboards"></a>Irányítópultok
-Először is látni való bejelentkezés után a [Microsoft Azure-portálon](https://portal.azure.com) olyan irányítópult. Itt helyezheti együtt a diagramok, amelyek számára fontos összes az Azure-erőforrások, például a telemetriai adatok között [Azure Application Insights](app-insights-overview.md).
+Először is látja a bejelentkezés után a [Microsoft Azure-portálon](https://portal.azure.com) egy irányítópult szerepel. Itt összeállíthatók a legfontosabb, Önnek az Azure-erőforrások, beleértve a használati adatok gyűjtése a különböző diagramok [Azure Application Insights](app-insights-overview.md).
 
-![Személyre szabott irányítópultot.](./media/app-insights-dashboards/31.png)
+![Egy testreszabott irányítópulttal.](./media/app-insights-dashboards/31.png)
 
-1. **Navigáljon a konkrét erőforrásokat** például az alkalmazás az Application Insightsban: a bal oldali sávon használja.
-2. **Térjen vissza az aktuális irányítópulton**, vagy más használt nézetek váltani: a legördülő menü bal felső használatát.
-3. **Váltás az irányítópultok**: a legördülő menü használatát az irányítópult-cím
-4. **Létrehozására, szerkesztésére és irányítópultok megosztása** irányítópult eszköztárán.
-5. **Az irányítópult szerkesztése**: rámutat egy csempe majd a felső sávon használatával helyezze át, testre, illetve nem távolítható el.
+1. **Keresse meg az adott erőforrásokhoz** például az alkalmazás az Application Insightsban: használja a bal oldali sávon.
+2. **Térjen vissza az aktuális irányítópulton**, vagy váltson át a legutóbbi nézeteit: a legördülő menü használatának bal felső sarokban.
+3. **Váltás az irányítópultok**: használja a legördülő menüből az irányítópult címe
+4. **Létrehozására, szerkesztésére és oszthat meg irányítópultokat** az irányítópult eszköztáron.
+5. **Az irányítópult szerkesztése**: vigye az egérmutatót egy csempe fölé, majd a felső sávon áthelyezni, testre szabhatja, vagy távolítsa el.
 
-## <a name="add-to-a-dashboard"></a>Irányítópult felvétele
-A panel vagy diagramok készletét, amely különösen fontos van szüksége, amikor rögzíthető egy másolatát az irányítópulton. Megjelenik a legközelebb van vissza.
+## <a name="add-to-a-dashboard"></a>Irányítópult hozzáadása
+Dolgozik egy panel vagy diagramokat, amely különösen érdekes, amikor egy másolatot, az irányítópulton is rögzíthet. Megjelenik a legközelebb van adja vissza.
 
-![PIN-kód egy diagram, akkor mutat, és kattintson a "...", a fejlécben.](./media/app-insights-dashboards/33.png)
+![Diagram rögzítése rámutatnak, majd kattintson a "...", a fejlécben.](./media/app-insights-dashboards/33.png)
 
-1. PIN-kód a diagram az irányítópulton. A diagram másolata megjelenik az irányítópulton.
-2. PIN-kód a teljes panelen az irányítópult - csempe, amely keresztül kattintson az irányítópulton megjelenő.
-3. Kattintson a bal felső az aktuális irányítópulton való visszatéréshez. A legördülő menü segítségével majd térjen vissza az aktuális nézet.
+1. Diagram rögzítése az irányítópulton. A diagram a Másolás megjelenik az irányítópulton.
+2. Rögzítés az irányítópulton az egész panelt – az Irányítópulton egy csempe, amely végigkattinthat jelenik meg.
+3. Kattintson a bal felső sarokban az aktuális irányítópultra való visszatéréshez. Majd a legördülő menü használatával térjen vissza az aktuális nézet.
 
-Figyelje meg, hogy diagramok csempék vannak csoportosítva: egy csempe tartalmazhat egynél több diagram. A teljes csempe az irányítópulton rögzíti.
+Figyelje meg, hogy diagramok csempék vannak csoportosítva: egy csempe több diagramot is tartalmazhat. A teljes csempét az irányítópulton rögzítheti.
 
-A rendszer automatikusan frissíti a diagram, amelyek elengedhetetlenek az időtartományt a diagram gyakorisággal:
+A rendszer automatikusan frissíti a diagram, amely attól függ, a diagram időtartomány gyakorisággal:
 
-* Idő legfeljebb 1 óra között: 5 percenként frissítése
-* 1-24 óránként időtartománynak: 15 percenként frissítése
-* 24 óra fent időtartománynak: (időtartománynak) 60.
+* Időtartomány legfeljebb 1 óra: 5 percenként frissítése
+* 1 – 24 óra időtartomány: 15 percenként frissítése
+* Időtartomány 24 óra feletti: (időtartomány) / 60.
 
-### <a name="pin-any-query-in-analytics"></a>A lekérdezés Analytics PIN-kód
-Is [PIN-kód Analytics](app-insights-analytics-using.md#pin-to-dashboard) a diagramok egy [megosztott](#share-dashboards-with-your-team) irányítópult. Ez lehetővé teszi, hogy bármilyen tetszőleges lekérdezés mellé a standard metrikák diagramokat hozzáadni. 
+### <a name="pin-any-query-in-analytics"></a>Analytics minden lekérdezés rögzítése
+Emellett [Analytics rögzítése](../log-analytics/query-language/get-started-analytics-portal.md) a diagram egy [megosztott](#share-dashboards-with-your-team) irányítópult. Ez lehetővé teszi, hogy bármilyen tetszőleges lekérdezés mellett a standard metrikák diagramok. 
 
-Automatikusan újraszámítás óránként. Kattintson a diagram hatására újraszámította az azonnal frissítési ikonjára. (Böngésző frissítési nem újraszámítása.)
+Eredmények a rendszer automatikusan újraszámít minden órában. Kattintson a diagramban azonnal számítsa ki újra a frissítés ikont. (Böngésző frissítés nem újraszámítása.)
 
-## <a name="adjust-a-tile-on-the-dashboard"></a>Egy csempe az irányítópulton beállítása
-Ha egy csempére az irányítópulton, beállíthatja azt.
+## <a name="adjust-a-tile-on-the-dashboard"></a>Állítsa be a csempét az irányítópulton
+Ha egy csempe az irányítópulton, beállíthatja azt.
 
-![Ahhoz, hogy szerkesztheti a diagram mutasson.](./media/app-insights-dashboards/36.png)
+![Annak érdekében, hogy szerkesztheti a kurzort a diagram.](./media/app-insights-dashboards/36.png)
 
-1. A diagram hozzáadása a csempén.
-2. Állítsa be a metrika, csoportosítási dimenzió és diagram stílusát (táblázat, diagramhoz).
-3. Húzza a diagram a nagyításhoz; keresztül a visszavonási gombra a timespan; a csempére a diagramok szűrő tulajdonságainak beállítása.
+1. Diagram hozzáadása csempéhez.
+2. Állítsa be a metrika, a csoportosítási dimenzió és a egy diagram stílusa (tábla-, graph).
+3. Húzza a nagyításhoz; diagram keresztül alaphelyzetbe állítja a timespan; a Visszavonás gomb Szűrő tulajdonságainak megadása, hogy a diagramok, a csempére.
 4. Állítsa be a csempe neve.
 
-Az Áttekintés panelen szolgáltatásból rögzített mozaiklapok-nál több szerkesztési lehetősége van a metrika explorer paneleken szolgáltatásból rögzített mozaiklapok.
+Metrika explorer panelek származó csempék vannak rögzítve, mint az Áttekintés panelen rögzített csempék több szerkesztési lehetősége van.
 
-Az eredeti csempét rögzített folyamatot nem befolyásolja a módosításokat.
+A módosítások nem befolyásolja az eredeti csempét rögzített.
 
-## <a name="switch-between-dashboards"></a>Irányítópultok közötti váltáshoz
-Egynél több irányítópult mentése és a kettő közötti váltás. A diagram vagy a panel rögzíti, amikor azok az aktuális irányítópulton van adva.
+## <a name="switch-between-dashboards"></a>Az irányítópultok közötti váltás
+Több irányítópult mentése, és a kettő közötti váltás. Ha rögzít egy diagramot vagy panelen, a rendszer hozzáadja azt az aktuális irányítópulton.
 
-![Irányítópultok közötti váltáshoz kattintson az irányítópulton, és válasszon ki egy mentett irányítópultot. Hozzon létre, és mentse az új irányítópult, kattintson az új gombra. Átrendezését, kattintson a Szerkesztés gombra.](./media/app-insights-dashboards/32.png)
+![Az irányítópultok közötti váltáshoz kattintson az irányítópult, és válassza ki, mentett irányítópult. Hozzon létre, és mentse egy új irányítópultot, kattintson az új gombra. Rendezni, kattintson a Szerkesztés gombra.](./media/app-insights-dashboards/32.png)
 
-Például lehetséges, hogy a teljes képernyős megjelenő a csapat helyiségben, és egy másik általános fejlesztési egy irányítópultot.
+Előfordulhat például, hogy a csoportszobában, és a egy másik általános üzembe helyezés a teljes képernyős megjelenítése egyetlen irányítópulton.
 
-Az irányítópult egy panel csempe jelenik meg: a gombra kattintva nyissa meg a paneljét. A diagram a diagram az eredeti helyére replikálja.
+Az irányítópulton csempe formájában megjelenik egy panel: kattintson rá a paneljéről. A diagram a diagram az eredeti helyére replikálja.
 
-![Nyissa meg a panelt, amely egy csempére kattint](./media/app-insights-dashboards/35.png)
+![Kattintson egy csempére nyissa meg a panelt, amely jelöl](./media/app-insights-dashboards/35.png)
 
 ## <a name="share-dashboards"></a>Irányítópultok megosztása
-Ha létrehozott egy irányítópultot, más felhasználókkal megoszthatja azt.
+Ha létrehozott egy irányítópultot, megoszthatja azt más felhasználókkal.
 
-![Az irányítópult-fejlécben kattintson a megosztás](./media/app-insights-dashboards/41.png)
+![Az irányítópult fejlécében kattintson a megosztás](./media/app-insights-dashboards/41.png)
 
-További tudnivalók [szerepkörök és hozzáférés-vezérlés](app-insights-resources-roles-access-control.md).
+Ismerje meg [szerepkörök és hozzáférés-vezérlés](app-insights-resources-roles-access-control.md).
 
-## <a name="create-dashboards-programmatically"></a>Irányítópultok programozott módon létrehozása
-Irányítópult létrehozása használatával automatizálhatja [Azure Resource Manager](https://docs.microsoft.com/azure/azure-portal/azure-portal-dashboards-create-programmatically) és egy egyszerű JSON-szerkesztő.
+## <a name="create-dashboards-programmatically"></a>Programozott módon létrehozhat irányítópultokat
+Irányítópult létrehozása használatával automatizálható [Azure Resource Manager](https://docs.microsoft.com/azure/azure-portal/azure-portal-dashboards-create-programmatically) és a egy egyszerű JSON-szerkesztőt.
 
-## <a name="app-navigation"></a>Alkalmazás navigációs
-Az Áttekintés panel az alkalmazással kapcsolatos további információkat az átjárót.
+## <a name="app-navigation"></a>Alkalmazás-navigáció
+Az Áttekintés panelen az alkalmazással kapcsolatos további információkat az átjárót.
 
-* **A diagram vagy a csempe** – kattintson a csempére vagy a diagramon megjelenő információk kapcsolatos részletek megtekintéséhez.
+* **Bármely diagramra vagy a csempe** - Csempékre vagy a diagramon megjelenő információk kapcsolatos további részletek megtekintéséhez.
 
-### <a name="overview-blade-buttons"></a>Áttekintés panel gombok
-![Áttekintés panel felső navigációs sáv](./media/app-insights-dashboards/app-overview-top-nav.png)
+### <a name="overview-blade-buttons"></a>Áttekintés panelen gombok
+![Áttekintés panel felső navigációs sávban](./media/app-insights-dashboards/app-overview-top-nav.png)
 
-* [**Metrikaböngésző** ](app-insights-metrics-explorer.md) -teljesítményt és a használati saját diagramokat.
-* [**Keresési** ](app-insights-diagnostic-search.md) - vizsgálja meg az esemény, például a kérelmekről, kivételek, olyan specifikus példányai, vagy a nyomkövetési naplófájl.
-* [**Elemzés** ](app-insights-analytics.md) -hatékony a lekérdezések a telemetriai adatokat.
-* **Időtartománynak** -állítsa be a a panelen a diagramok szerint jelenik meg.
-* **Törlés** -törli az Application Insights-erőforrást az alkalmazáshoz. Meg kell is távolítsa el az Application Insights csomagokat az alkalmazás kódját, vagy szerkesztheti a [instrumentation kulcs](app-insights-create-new-resource.md#copy-the-instrumentation-key) át tudja irányítani a telemetria bekapcsolásával egy másik Application Insights-erőforrást az alkalmazásban.
+* [**Metrikaböngésző** ](app-insights-metrics-explorer.md) – hozzon létre saját diagramokat, teljesítményét és használatát.
+* [**Keresés** ](app-insights-diagnostic-search.md) - specifikus példányai, például kérések, kivételek, események vizsgálata vagy a nyomkövetési naplók.
+* [**Analytics** ](app-insights-analytics.md) – hatékony telemetriai lekérdezéseket hajthat végre a.
+* **Időtartomány** – állítsa be a a panelen a diagramok szerint jelenik meg.
+* **Törlés** – az alkalmazás Application Insights-erőforrás törlése. Meg kell is vagy távolítsa el az Application Insights-csomagokat a kód, vagy szerkesztheti a [kialakítási kulcs](app-insights-create-new-resource.md#copy-the-instrumentation-key) közvetlen telemetriai adatokat a különböző Application Insights-erőforrást az alkalmazásban.
 
-### <a name="essentials-tab"></a>Alapvető erőforrások lapon
-* [Instrumentation kulcs](app-insights-create-new-resource.md#copy-the-instrumentation-key) -azonosítja az alkalmazás-erőforrást.
+### <a name="essentials-tab"></a>Alapvető erőforrások lapján
+* [Rendszerállapotkulcs](app-insights-create-new-resource.md#copy-the-instrumentation-key) -azonosítja az alkalmazás-erőforrást.
 
 ### <a name="app-navigation-bar"></a>Alkalmazás navigációs sáv
-![Bal oldali navigációs sáv](./media/app-insights-dashboards/app-left-nav-bar.png)
+![Bal oldali navigációs sávon](./media/app-insights-dashboards/app-left-nav-bar.png)
 
-* **Áttekintés** – térjen vissza az Áttekintés panelen.
+* **Áttekintés** – az alkalmazás áttekintése panelre való visszatéréshez.
 * **Tevékenységnapló** -riasztások és az Azure felügyeleti események.
-* [**Hozzáférés-vezérlés** ](app-insights-resources-roles-access-control.md) -hozzáférést biztosítson a csoport tagjai, míg más.
-* [**Címkék** ](../azure-resource-manager/resource-group-using-tags.md) -címkék használata az alkalmazás másokkal csoportosításához.
+* [**Hozzáférés-vezérlés** ](app-insights-resources-roles-access-control.md) -hozzáférés biztosítása a csapattagok és mások.
+* [**A címkék** ](../azure-resource-manager/resource-group-using-tags.md) -címkék használata a csoport az alkalmazás másokkal.
 
 VIZSGÁLAT
 
-* [**Alkalmazás-hozzárendelés** ](app-insights-app-map.md) -Active térkép, amely az alkalmazás összetevői a függőségi adatokat származik.
-* [**Észlelési intelligens** ](app-insights-proactive-diagnostics.md) -tekintse át a legutóbbi teljesítményével kapcsolatos riasztások.
-* [**Élő Stream** ](app-insights-live-stream.md) – A rögzített szinte azonnali mérőszámokat, akkor hasznos, ha egy új build telepítése vagy a hibakeresést.
-* [**Rendelkezésre állás / a webalkalmazás-tesztek** ](app-insights-monitor-web-app-availability.md) -rendszeres kérelmeket küldeni a webalkalmazás a world.* körül
-* [**Hibák, a teljesítmény** ](app-insights-web-monitor-performance.md) -kivételek, hiba díjszabás és válaszidejének a kéréseket az alkalmazáshoz, és az alkalmazásnak, hogy a érkező kéréseket [függőségek](app-insights-asp-net-dependencies.md).
-* [**Teljesítmény** ](app-insights-web-monitor-performance.md) -válaszidőt, függőség válaszidejét.
-* [Kiszolgálók](app-insights-web-monitor-performance.md) -teljesítményszámlálókat. Ha elérhető, [Állapotmonitor telepítése](app-insights-monitor-performance-live-website-now.md).
-* **Böngésző** -nézet és AJAX teljesítmény lapon. Ha elérhető, [állíthatnak be a weblapok](app-insights-javascript.md).
-* **Használati** -lapon nézet, a felhasználó és a munkamenet számát. Ha elérhető, [állíthatnak be a weblapok](app-insights-javascript.md).
+* [**Alkalmazás-hozzárendelés** ](app-insights-app-map.md) – aktív térképként ábrázolja a az alkalmazás összetevőinek a függőségi adatok származnak.
+* [**Intelligens detektálás** ](app-insights-proactive-diagnostics.md) – tekintse át a legutóbbi teljesítményével kapcsolatos riasztások.
+* [**Élő Stream** ](app-insights-live-stream.md) – A rögzített közel azonnali mérőszámokat, akkor hasznos, ha egy új buildet üzembe helyezéséhez, vagy a hibakeresés.
+* [**Rendelkezésre állás / webes teszteket** ](app-insights-monitor-web-app-availability.md) -rendszeres kérelmeket küldjön a webes alkalmazás körül a world.*
+* [**Hibák, a teljesítmény** ](app-insights-web-monitor-performance.md) -kivételek, hibaarányok és a válaszidők a kérelmek az alkalmazás és az alkalmazás kéréseit [függőségek](app-insights-asp-net-dependencies.md).
+* [**Teljesítmény** ](app-insights-web-monitor-performance.md) -válaszidőt, a válaszidők függőségi.
+* [Kiszolgálók](app-insights-web-monitor-performance.md) -teljesítményszámlálók. Ha elérhető, [telepítse az Állapotfigyelőt](app-insights-monitor-performance-live-website-now.md).
+* **Böngésző** -nézet és az AJAX teljesítménye lapon. Ha elérhető, [alakítsa ki a weblapok](app-insights-javascript.md).
+* **Használati** -lapon nézet, felhasználók és munkamenetek száma. Ha elérhető, [alakítsa ki a weblapok](app-insights-javascript.md).
 
 KONFIGURÁLÁS
 
-* **Első lépések** -beágyazott oktatóanyag.
-* **Tulajdonságok** -instrumentation kulcs, az előfizetés és az erőforrás-azonosító.
+* **Első lépések** – beágyazott oktatóanyag.
+* **Tulajdonságok** -kialakítási kulcsot, az előfizetés és az erőforrás-azonosító.
 * [Riasztások](app-insights-alerts.md) -riasztási konfigurációja.
-* [A folyamatos exportálás](app-insights-export-telemetry.md) -konfigurálása az Azure storage telemetriai adatainak exportálása.
-* [A teljesítmény tesztelése](app-insights-monitor-web-app-availability.md#performance-tests) -állítsa be a webhely szintetikus terhelése.
-* [Kvóta és árképzési](app-insights-pricing.md) és [adatfeldolgozást mintavételi](app-insights-sampling.md).
-* **API-hozzáférés** -létrehozása [kiadási jegyzetek](app-insights-annotations.md) és az adatok hozzáférés az API-hoz.
-* [**Munkaelemek** ](app-insights-diagnostic-search.md#create-work-item) -nyomkövetési rendszer, így hibák telemetriai vizsgálatakor hozhat létre a munkájukhoz való csatlakozásban.
+* [A folyamatos exportálás](app-insights-export-telemetry.md) -konfigurálása az Azure storage-telemetria exportálása.
+* [Teljesítménytesztelés](app-insights-monitor-web-app-availability.md#performance-tests) – állítsa be a webhely szintetikus terhelését.
+* [Kvóta és díjszabás](app-insights-pricing.md) és [betöltési mintavételt](app-insights-sampling.md).
+* **API-hozzáférés** -létrehozása [kiadási jegyzetek](app-insights-annotations.md) és az adatok hozzáférés API-hoz.
+* [**Munkaelemek** ](app-insights-diagnostic-search.md#create-work-item) -követési rendszer, így hozhat létre hibák telemetriai vizsgálata során munkahelyi csatlakozás.
 
 BEÁLLÍTÁSOK
 
-* [**Zárolja** ](../azure-resource-manager/resource-group-lock-resources.md) -Azure-erőforrások zárolása
-* [**Automatizálási parancsfájl** ](app-insights-powershell.md) -exportálása olyan az Azure erőforrás-definícióval, így használhatja a sablont létrehozni az új erőforrásokat.
+* [**Zárolja** ](../azure-resource-manager/resource-group-lock-resources.md) – zárolhatja az Azure-erőforrások
+* [**Automation-szkript** ](app-insights-powershell.md) -Exportálás egy az Azure-erőforrás definícióját, hogy ezzel sablonként új erőforrásokat hozhatnak létre.
 
 
 ## <a name="video"></a>Videó
@@ -164,6 +164,6 @@ BEÁLLÍTÁSOK
 
 |  |  |
 | --- | --- |
-| [Metrikaböngésző](app-insights-metrics-explorer.md)<br/>Szűrő és a szegmens metrikák |![Keresés – példa](./media/app-insights-dashboards/64.png) |
-| [Diagnosztikai keresése](app-insights-diagnostic-search.md)<br/>Található és vizsgálja meg az események, kapcsolódó események és hibák létrehozása |![Keresés – példa](./media/app-insights-dashboards/61.png) |
-| [Elemzés](app-insights-analytics.md)<br/>Hatékony lekérdezési nyelv |![Keresés – példa](./media/app-insights-dashboards/63.png) |
+| [Metrikaböngésző](app-insights-metrics-explorer.md)<br/>Szegmentálására és szűrésére is metrikák |![Keresés példa](./media/app-insights-dashboards/64.png) |
+| [Diagnosztikai keresés](app-insights-diagnostic-search.md)<br/>Keresse meg és események, kapcsolódó események vizsgálata és létrehozása a hibák |![Keresés példa](./media/app-insights-dashboards/61.png) |
+| [Elemzés](app-insights-analytics.md)<br/>Hatékony lekérdezési nyelvet |![Keresés példa](./media/app-insights-dashboards/63.png) |

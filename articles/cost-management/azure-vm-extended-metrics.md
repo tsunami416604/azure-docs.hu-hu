@@ -5,33 +5,33 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 06/12/2018
+ms.date: 08/07/2018
 ms.topic: conceptual
 ms.service: cost-management
 manager: dougeby
 ms.custom: ''
-ms.openlocfilehash: b7e4665dc3579f357ce1e28bf34be35c931736bd
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ms.openlocfilehash: 9c09f473f5d8b399c4fb1b1ad449c783c797f4dd
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35645228"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46968509"
 ---
 # <a name="add-extended-metrics-for-azure-virtual-machines"></a>Azure-beli virtuális gépek kiterjesztett metrikák hozzáadása
 
-A Cost Management az Azure-beli virtuális gépekről származó Azure metrikaadatok részletes saját erőforrásaival kapcsolatos információk megjelenítéséhez használ. Teljesítményszámlálók, más néven metrikaadatok jelentések Cost Management használják. Azonban Cost Management nem automatikusan gyűjtse össze az összes Azure metrikaadatok Vendég virtuális gépek – engedélyeznie kell a metrika gyűjtemény. Ez a cikk segít engedélyezze és konfigurálja a további diagnosztikai metrikák az Azure virtuális gépeknél.
+A Cloudyn az Azure-beli virtuális gépekről származó Azure metrikaadatok részletes saját erőforrásaival kapcsolatos információk megjelenítéséhez használ. Metrikaadatok teljesítményszámlálók, más néven Cloudyn használják jelentések készítéséhez. Azonban a Cloudyn nem automatikusan gyűjtse össze az összes Azure metrikaadatok Vendég virtuális gépek – engedélyeznie kell a metrika gyűjtemény. Ez a cikk segít engedélyezze és konfigurálja a további diagnosztikai metrikák az Azure virtuális gépeknél.
 
 Miután engedélyezte a metrika gyűjtemény, akkor a következőket teheti:
 
 - Tudnia kell, ha a virtuális gépek vannak éri el a memória, lemez és a CPU-korlátok.
 - Használati trendek és rendellenességek észlelése.
 - Méretezési használat alapján szabályozhatja a költségeket.
-- Költség hatékony méretezése a Cost Management optimalizálási javaslatainak beolvasása.
+- Költség hatékony méretezése a Cloudyn optimalizálási javaslatokat kaphat.
 
 Például előfordulhat, hogy szeretné figyelni a CPU-memória %-át az Azure-beli virtuális. Az Azure-beli Virtuálisgép-metrikák megfelelnek _[gazdagép] százalékos Processzorhasználat_ és _[Vendég] memóriahasználat (%)_.
 
 > [!NOTE]
-> Kiterjesztett metrikaadatok gyűjtemény csak az Azure vendégszintű figyelést is támogatja. A Cost Management, ezért nem kompatibilis az a Log Analytics Virtuálisgép-bővítményt.
+> Kiterjesztett metrikaadatok gyűjtemény csak az Azure vendégszintű figyelést is támogatja. A Cloudyn, ezért nem kompatibilis az a Log Analytics Virtuálisgép-bővítményt.
 
 ## <a name="verify-that-metrics-are-enabled-on-vms"></a>Győződjön meg arról, hogy a metrikák engedélyezve vannak a virtuális gépeken
 
@@ -68,7 +68,7 @@ Amikor új virtuális gépeket hoz létre, győződjön meg arról, hogy kivála
 
 ## <a name="resource-manager-credentials"></a>Erőforrás-kezelő hitelesítő adatai
 
-Miután engedélyezte a kiterjesztett metrikák, győződjön meg arról, hogy Cost Management hozzáfér a [erőforrás-kezelő hitelesítő adatai](activate-subs-accounts.md). Cost Management segítségével begyűjtheti és megjelenítheti a teljesítményadatokat a virtuális gépek számára a hitelesítő adatok szükségesek. Is használhatók, a költségek optimalizálása javaslatok létrehozása. A Cost Management kell meghatározni, hogy egy adott downsizing javaslat jelölt-példányból származó teljesítményadatok legalább három nap.
+Miután engedélyezte a kiterjesztett metrikák, győződjön meg arról, hogy Cloudyn hozzáfér a [erőforrás-kezelő hitelesítő adatai](activate-subs-accounts.md). A hitelesítő adatok szükségesek a Cloudyn segítségével begyűjtheti és megjelenítheti a teljesítményadatokat a virtuális gépek számára. Is használhatók, a költségek optimalizálása javaslatok létrehozása. A Cloudyn kell meghatározni, hogy egy adott downsizing javaslat jelölt-példányból származó teljesítményadatok legalább három nap.
 
 ## <a name="enable-vm-metrics-with-a-script"></a>A parancsfájl a VM-metrikák engedélyezése
 

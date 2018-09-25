@@ -1,6 +1,6 @@
 ---
-title: Töltse fel, vagy az Azure CLI 2.0-val egyéni Linux rendszerű virtuális gép másolása |} A Microsoft Docs
-description: Töltse fel, vagy a Resource Manager-alapú üzemi modellel és az Azure CLI 2.0 egyéni virtuális gép másolása
+title: Töltse fel, vagy az Azure CLI-vel egyéni Linuxos virtuális gép másolása |} A Microsoft Docs
+description: Töltse fel vagy másolja egy egyéni virtuális gépet, a Resource Manager-alapú üzemi modellel és az Azure CLI
 services: virtual-machines-linux
 documentationcenter: ''
 author: cynthn
@@ -15,14 +15,14 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 07/06/2017
 ms.author: cynthn
-ms.openlocfilehash: 3fb6957cf6af5c09a355b61c7c2440a929d1b837
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: b5df02c9f07549aec406cf449bb0ae49ee9e280a
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45736671"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46957431"
 ---
-# <a name="create-a-linux-vm-from-custom-disk-with-the-azure-cli-20"></a>Linux rendszerű virtuális gép létrehozása egyéni lemezről az Azure CLI 2.0 használatával
+# <a name="create-a-linux-vm-from-custom-disk-with-the-azure-cli"></a>Linux rendszerű virtuális gép létrehozása egyéni lemezről az Azure CLI-vel
 
 <!-- rename to create-vm-specialized -->
 
@@ -57,7 +57,7 @@ A következő lépések végrehajtásához szüksége:
 > 
 
 
-* Győződjön meg arról, hogy rendelkezik-e a legújabb [Azure CLI 2.0](/cli/azure/install-az-cli2) telepítve, és bejelentkezett egy Azure-fiókba az [az bejelentkezési](/cli/azure/reference-index#az_login).
+* Győződjön meg arról, hogy rendelkezik-e a legújabb [Azure CLI-vel](/cli/azure/install-az-cli2) telepítve, és bejelentkezett egy Azure-fiókba az [az bejelentkezési](/cli/azure/reference-index#az_login).
 
 A következő példákban cserélje le a példa a paraméter nevét a saját értékeire. Példa paraméterneveket foglalt *myResourceGroup*, *mystorageaccount*, és *mydisks*.
 

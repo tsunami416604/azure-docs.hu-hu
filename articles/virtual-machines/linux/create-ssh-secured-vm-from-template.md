@@ -16,16 +16,19 @@ ms.topic: article
 ms.date: 05/30/2018
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3e6b431ee55ee73b4f5a69471cca3cc16270198c
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.openlocfilehash: 33b0b2b4148a8cfbe97413bf3cdec23d375206bb
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37930239"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46983888"
 ---
 # <a name="how-to-create-a-linux-virtual-machine-with-azure-resource-manager-templates"></a>Linux rendszerű virtuális gép létrehozása Azure Resource Manager-sablonokkal
-Ez a cikk bemutatja, hogyan helyezhet üzembe gyorsan egy Linux rendszerű virtuális gép (VM) az Azure Resource Manager-sablonokkal és az Azure parancssori felület. 
 
+Ez a cikk bemutatja, hogyan helyezhet üzembe gyorsan egy Linux rendszerű virtuális gép (VM) az Azure Resource Manager-sablonokkal és az Azure parancssori felület. Is elvégezheti ezeket a lépéseket a [Azure klasszikus parancssori felület](create-ssh-secured-vm-from-template-nodejs.md).
+
+
+Ez a cikk bemutatja, hogyan helyezhet üzembe gyorsan egy Linux rendszerű virtuális gép (VM) az Azure Resource Manager-sablonokkal és az Azure parancssori felület. 
 
 ## <a name="templates-overview"></a>Sablonok – áttekintés
 Az Azure Resource Manager-sablonok JSON-fájlok, amelyek meghatározzák az infrastruktúra és az Azure-megoldás konfigurációs. A sablonok segítségével a megoldás a teljes életciklusa során ismételten üzembe helyezhető, és az erőforrások üzembe helyezése biztosan konzisztens lesz. A sablont, és hogyan formázásával kapcsolatos további információkért lásd: [az első Azure Resource Manager-sablon létrehozása](../../azure-resource-manager/resource-manager-create-first-template.md). Az erőforrástípusok JSON-szintaxisának megtekintéséért lásd [az Azure Resource Manager-sablonokban az erőforrások meghatározásával kapcsolatos](/azure/templates/) témakört.

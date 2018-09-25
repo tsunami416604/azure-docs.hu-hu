@@ -1,6 +1,6 @@
 ---
-title: Ajánlott eljárások az automatikus skálázás
-description: Automatikus skálázás minták Azure Web Apps, a virtuálisgép-méretezési készletek és a Cloud Services csomag
+title: Ajánlott eljárások az automatikus méretezéshez
+description: Automatikus skálázási minták az Azure Web Apps, a Virtual Machine Scale sets és a Cloud Services
 author: anirudhcavale
 services: azure-monitor
 ms.service: azure-monitor
@@ -8,145 +8,145 @@ ms.topic: conceptual
 ms.date: 07/07/2017
 ms.author: ancav
 ms.component: autoscale
-ms.openlocfilehash: e9fc5a4c5d2e23750493cc320dffa380724347fb
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 30210d15950302ead0a2406ffb59a61a28d4e54e
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35262443"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46997318"
 ---
 # <a name="best-practices-for-autoscale"></a>Ajánlott eljárások az automatikus méretezéshez
-Ez a cikk útmutatást ad az ajánlott eljárások az Azure-ban automatikus skálázást. Az Azure a figyelő automatikus skálázás vonatkozik csak a [virtuálisgép-méretezési csoportok](https://azure.microsoft.com/services/virtual-machine-scale-sets/), [Felhőszolgáltatások](https://azure.microsoft.com/services/cloud-services/), és [App Service - webalkalmazások](https://azure.microsoft.com/services/app-service/web/). Más Azure-szolgáltatások különböző méretezési módszer használatára.
+Az Azure Monitor automatikus skálázása csak érvényes [Virtual Machine Scale Sets](https://azure.microsoft.com/services/virtual-machine-scale-sets/), [Cloud Services](https://azure.microsoft.com/services/cloud-services/), [App Service - webalkalmazások](https://azure.microsoft.com/services/app-service/web/), és [APIManagement-szolgáltatások](https://docs.microsoft.com/azure/api-management/api-management-key-concepts).
 
-## <a name="autoscale-concepts"></a>Automatikus skálázás fogalmak
-* Egy erőforrás csak rendelkezhet *egy* automatikus skálázási beállítás
-* Az automatikus skálázási beállítás egy vagy több profilok és az egyes profilok lehet egy vagy több automatikus skálázási szabályok.
-* Az automatikus skálázási beállítás méretezi példányok vízszintesen, amely *kimenő* a példányok növelésével és *a* példányok számának csökkentésével.
-  Az automatikus skálázási beállítás tartozik egy maximális, minimális és példányok alapértelmezett értéke.
-* Az automatikus skálázási feladat mindig bővítse a, a kapcsolódó metrikát ellenőrizni, hogy az elért kibővített vagy méretezési a beállított küszöbértéket. Listáját megtekintheti a mérőszámok, hogy az automatikus skálázás méretezheti által a [Azure figyelő automatikus skálázás közös metrikák](insights-autoscale-common-metrics.md).
-* Minden küszöbértéke egy példány szintjén kiszámítása. Például "1 példány által végzett méretezési amikor átlagos CPU > 80 %, ha a példányok száma 2", azt jelenti, hogy a kibővített 80 %-nál nagyobb átlagos CPU-csomagbeli összes példányra esetén.
-* A műveletnapló minden automatikus skálázási hibák naplózása. Ezután úgy konfigurálhatja egy [figyelmeztetés a napló](./monitoring-activity-log-alerts.md) , hogy akkor is értesítést e-mailben, SMS-webhook, amikor az automatikus skálázás sikertelen stb.
-* Hasonlóképpen az összes sikeres skálázási művelet feladja a műveletnapló. Is konfigurálhat egy figyelmeztetés a naplót, hogy akkor is értesítést e-mailben, SMS-webhookokkal, amikor a sikeres automatikus skálázási művelet stb. E-mailben vagy webhook értesítések tájékoztatást kaphat az automatikus skálázási beállítás értesítések lapján keresztül sikeres skálázási műveletekhez is konfigurálhatja.
+## <a name="autoscale-concepts"></a>Automatikus skálázási fogalmak
+* Csak egy erőforráshoz lehet *egy* automatikus skálázási beállítás
+* Az automatikus skálázási beállítás egy vagy több profilok és az egyes profilok egy vagy több automatikus méretezési szabályokat is rendelkezhet.
+* Az automatikus skálázási beállítás méretezhető példányok vízszintesen, amely *ki* növeli a példányok és *a* példányok számának csökkentésével.
+  Az automatikus skálázási beállításhoz egy maximális, minimális és példányok alapértelmezett értékét.
+* Az automatikus skálázási feladat, mindig a skálázás, a kapcsolódó metrikát ellenőrzi, hogy a beállított küszöbértéket. a horizontális felskálázás vagy horizontális leskálázási elért. Megtekintheti a lista metrikák az automatikus méretezés, hogy a skálázás [Azure Monitor automatikus skálázás gyakori metrikák](insights-autoscale-common-metrics.md).
+* Minden küszöbértéke számítása a példány szintjén. Például "horizontális felskálázás egy példánnyal mikor átlagos CPU > 80 %-os, ha a példányok száma 2", azt jelenti, horizontális felskálázás, ha az összes példányra vetítve az átlagos Processzorhasználat 80 %-nál.
+* Az összes automatikus skálázási hibák naplózása a tevékenységnaplóban. Konfigurálhatja egy [tevékenységnapló-riasztás](./monitoring-activity-log-alerts.md) így értesítést kaphat e-mailben, SMS vagy webhook, amikor az automatikus skálázás sikertelen.
+* Hasonlóképpen az összes sikeres skálázási műveletek feladja a tevékenységnaplóban. Ezután konfigurálhatja a tevékenységnapló-riasztás, így értesítést kaphat e-mailben, SMS vagy webhook, amikor egy sikeres automatikus skálázási művelet. Az automatikus skálázási beállítás értesítések lapján keresztül sikeres skálázási műveletek értesítést kaphat e-mailben vagy webhook értesítések is konfigurálhatja.
 
-## <a name="autoscale-best-practices"></a>Automatikus skálázás gyakorlati tanácsok
-Használhatja az automatikus skálázás használja az alábbi gyakorlati tanácsokat.
+## <a name="autoscale-best-practices"></a>Automatikus méretezés ajánlott eljárásairól
+Használja az alábbi ajánlott eljárásokat használhatja az automatikus méretezés.
 
-### <a name="ensure-the-maximum-and-minimum-values-are-different-and-have-an-adequate-margin-between-them"></a>Győződjön meg arról, a maximális és minimális értékek különböző és közöttük egy megfelelő margóval rendelkeznie
-Ha a beállítást, amely rendelkezik a minimális = 2, maximális = 2, és az aktuális példányszám: 2, akkor fordulhat elő, nem skálázási művelet. Tartsa meg egy megfelelő margója közötti a maximális és minimális példányok számát, amely átfogó jellegűek. Automatikus skálázás mindig méretezze át a korlátok között.
+### <a name="ensure-the-maximum-and-minimum-values-are-different-and-have-an-adequate-margin-between-them"></a>Győződjön meg arról, a maximális és minimális értékek különböző, és ezek között egy megfelelő margóval rendelkeznie
+Ha egy beállítás, amely rendelkezik a minimális = 2, maximális = 2, és a jelenlegi példányszám: 2, akkor fordulhat elő, nem skálázási műveletet. Tartsa meg egy megfelelő margó között a maximális és minimális példányok számát, amelyek között lehet. Automatikus skálázási mindig méretezze át, ezek a korlátok között.
 
-### <a name="manual-scaling-is-reset-by-autoscale-min-and-max"></a>Manuális skálázás automatikus skálázás min és max alaphelyzetbe állítása
-Manuálisan frissítse a példányok száma fölött vagy alatt a maximális értéket, ha az automatikus skálázás motor automatikusan méretezi a minimális (Ha alacsonyabb) vagy a maximális (Ha újabb). Például állítsa be a 3. és 6 közötti tartományba esik. Ha egy futó példány, az automatikus skálázás motor méretezi a következő futásakor 3 példányára. Hasonlóképpen ha manuálisan a skálázási 8 példányok, a következő futtatási automatikus skálázási lesz skálázva azt vissza a következő futásakor 6 példányok.  Manuális skálázás csak nagyon ideiglenes, kivéve, ha alaphelyzetbe állítja az automatikus skálázási szabályok is.
+### <a name="manual-scaling-is-reset-by-autoscale-min-and-max"></a>Manuális skálázás van állítsa alaphelyzetbe az automatikus skálázás minimális és maximális száma
+Ha manuálisan frissíti a példányszám felett vagy alatt a maximális értéket, az automatikus skálázási motor automatikusan alkalmazkodik vissza (ha alább) minimális vagy maximális (Ha a fent). Például állítsa be a 3. és 6 közötti tartományba esik. Ha egy futó példány, az automatikus skálázási motor a következő futtatáskor három példányban méretezhető. Hasonlóan, ha manuálisan állítsa be a méretezési csoport-példányokhoz nyolc, a következő futtatási maximumára skálázza azt vissza a hat példány a következő futásakor.  Manuális skálázás csak átmenetileg létezik, kivéve, ha alaphelyzetbe állítja az automatikus méretezési szabályokat is.
 
-### <a name="always-use-a-scale-out-and-scale-in-rule-combination-that-performs-an-increase-and-decrease"></a>Mindig használja a kibővített és skálázási szabály, amely végrehajtja az növekedés és csökkentése
-Csak egy részét együttes használatakor automatikus skálázás méretezési modul, amely egyetlen, vagy, amíg a maximálisan engedélyezett, vagy a minimális, elérésekor.
+### <a name="always-use-a-scale-out-and-scale-in-rule-combination-that-performs-an-increase-and-decrease"></a>Mindig használja a horizontális felskálázást és a horizontális leskálázási szabály, amely végrehajtja az növelése és csökkentése
+Csak egy részét a kombinációt használja, ha az automatikus méretezés csak lépnek művelet (horizontális felskálázás, vagy a) egy irányban mindaddig, amíg eléri a maximális, vagy a minimális távolság megjelenítése megszámolja a profilban megadott. Ez nem optimális, ideális esetben azt szeretné, hogy az erőforrást az vertikális felskálázás a rendelkezésre állás biztosítása érdekében magas kihasználtságú időszakokban. Ehhez hasonlóan időnként, azt szeretné, hogy az erőforrás használatával csökkentheti az alacsony kihasználtságú, így is kiderülhet költséget takaríthat meg.
 
-### <a name="choose-the-appropriate-statistic-for-your-diagnostics-metric"></a>Válassza ki a megfelelő statisztika a diagnosztika mérőszám
-Diagnosztika metrikáihoz közül választhat *átlagos*, *minimális*, *maximális* és *teljes* , bővítse a metrikát. A leggyakoribb statisztikai adat *átlagos*.
+### <a name="choose-the-appropriate-statistic-for-your-diagnostics-metric"></a>Válassza ki a megfelelő statisztika a diagnosztikai metrika
+Diagnosztikai metrikák, közül választhat *átlagos*, *minimális*, *maximális* és *teljes* mint metrika szerint méretezhető. A leggyakrabban használt érték *átlagos*.
 
-### <a name="choose-the-thresholds-carefully-for-all-metric-types"></a>Válassza ki a küszöbértékeket, gondosan az összes mérték
-Azt javasoljuk, körültekintően a kibővített és a skála gyakorlati helyzetek alapján különböző küszöbértékek kiválasztása.
+### <a name="choose-the-thresholds-carefully-for-all-metric-types"></a>Válassza ki a küszöbértékeket, gondosan az összes metrikus típus esetén
+Azt javasoljuk, körültekintően a horizontális felskálázást és a horizontális leskálázási gyakorlati helyzetek alapján különböző küszöbértékek kiválasztása.
 
-A Microsoft *nem javasoljuk* automatikus skálázás beállításai többek között az alábbi példák az azonos vagy nagyon hasonló küszöbérték értékkel, és a feltételek:
+Hogy *nem ajánlott* automatikus méretezési beállításokkal, mint az azonos vagy nagyon hasonló küszöbértékei horizontális fel- és feltételeket az alábbi példák:
 
-* 1 növeléséhez a példányok száma, amikor szálak száma < = 600
-* 1 csökkentése példányok száma, amikor szálak száma > = 600
+* 1-kal növelni a példányok száma, amikor szálak száma < = 600
+* 1 csökkentse a példányok száma, amikor szálak száma > = 600
 
-Nézzük például mi is vezethet, hogy tűnhet félrevezető. Vegye figyelembe az alábbi sorrendben.
+Lássunk egy példát, hogy mi a probléma, amely először szokatlannak tűnhet majd vezethet. Vegye figyelembe a következő lépéseket.
 
-1. Tegyük fel, 2 esetben először állnak, és majd példányonként szálak átlagos száma eléri a 625.
-2. Automatikus skálázás arányosan kimenő hozzáadja a 3. példányt.
-3. A következő azt feltételezik, hogy 575 hárul példány között az átlagos szálak száma.
-4. Előtt skálázás, milyen a végső állapot becsléséhez automatikus skálázás próbál lesz, ha a kiterjesztett. Például 575 x 3 (aktuális példányszám) = 1,725 / 2 (ha méretezhető végleges száma) 862.5 szálak =. Ez azt jelenti, hogy automatikus skálázás kellene azonnal kibővített újra még azt követően, méretezhető, ha a átlagos szálak számának változatlan marad, vagy csak kis mértékben is tartozik. Azonban ha azt újra, a teljes folyamat akár méretezhető lenne ismételje meg a, ami ki végtelen ciklus.
-5. Ez a helyzet ("flapping" hívják) elkerülése érdekében automatikus skálázás nem csökkentheti egyáltalán. Ehelyett kihagyja, és a feltétel reevaluates legközelebb a szolgáltatás feladatot hajt végre. Ez sikerült megzavarják sokan, mert automatikus skálázás nem működik, amikor az átlagos szál 575 volt.
+1. Nincsenek elsőként a két példányt, és majd példányonként szálak átlagos száma folyamatosan nő, hogy a 625 feltételezik.
+2. Az automatikus méretezés egy harmadik példány hozzáadásával méretezhető.
+3. Ezután azt feltételezik, hogy az átlagos szálak száma több példány 575 alá csökkent.
+4. Vertikális leskálázást, mielőtt automatikus skálázási megpróbálja milyen a végállapot becslése lesz, ha méretezi az. Például 575 x 3 (jelenlegi példányszám) = 1,725 / 2 (Ha a vertikálisan leskálázni végleges száma) = 862.5 szálat. Ez azt jelenti, hogy az automatikus méretezés kellene azonnal kibővített újra után azt van ellátva, ha az átlagos szálak száma változatlan marad, vagy csak egy kis ideig még csökken is. Azonban ha azt vertikálisan újra, a teljes folyamat lenne ismételje meg, és a egy végtelen ciklust.
+5. Ebben a helyzetben ("flapping" hívják) elkerülése érdekében az automatikus méretezés nem méretezhető egyáltalán. Ehelyett kihagyja, és a feltétel reevaluates legközelebb a szolgáltatás feladatának végrehajtása. Ez félreértésekhez vezethet legtöbben, mert az automatikus méretezés nem úgy tűnik, hogy működnek, ha az átlagos szálak száma 575 volt.
 
-Során egy méretezési a becslés célja "váltakozó állapotú" olyan helyzetekben, a méretezés és a kibővített műveletek folyamatosan hová oda-vissza elkerülése érdekében. Ez a viselkedés tartani, szem előtt, ha úgy dönt, hogy a kibővített azonos küszöbértékeit, és a.
+Becslés során egy horizontális leskálázási célja "váltakozó" olyan esetekben, ahol horizontális le- és horizontális felskálázási műveletek folyamatosan oda-vissza go elkerülése érdekében. Őrizze meg ezt a viselkedést, vegye figyelembe, ha úgy dönt, hogy a horizontális felskálázás azonos küszöbértékeinek, és a.
 
-Azt javasoljuk, hogy a kibővített között, és a küszöbértékek egy megfelelő margó kiválasztása. Tegyük fel fontolja meg a következő jobb szabály kombinációja.
+Azt javasoljuk, hogy a kibővített között, és a küszöbértékeket egy megfelelő margó kiválasztása. Tegyük fel fontolja meg a következő jobb szabály kombináció.
 
-* 1 növeléséhez a példányok száma, amikor CPU % > = 80
-* 1 csökkentése példányok száma, amikor CPU % < = 60
+* 1-kal növelni a példányok száma, ha processzorhasználatról > = 80
+* 1 csökkentse a példányok száma, amikor processzorhasználatról < = 60
 
 Ebben az esetben  
 
-1. Tegyük fel, 2 esetben kezdje állnak.
-2. Ha példányok között az átlagos CPU % kerül a 80-as, automatikus skálázás méretezi a kimenő hozzáadja egy harmadik példányt.
-3. Mostantól azt feltételezi, hogy idővel a CPU % esik 60.
-4. Az automatikus skálázás tartozó skála a szabály a végső állapot becslése, mintha méretezési az. Például 60 x 3 (aktuális példányszám) = 180 / 2 (ha méretezhető végleges száma) = 90. Így az automatikus skálázás nem méretezési be, mert a kibővített azonnal újra kellene. Ehelyett kihagyja skálázás.
-5. Ellenőrzi a következő alkalommal automatikus skálázás, a CPU-t továbbra is fennáll, 50 essen. Becslése újra - példány 50 x 3 = 150 / 2 példányok = 80-as és a kibővített os küszöb alatt van, a méretezés a sikeresen 2 példányokhoz 75.
+1. Tegyük fel, hogy nincsenek 2 példány a következővel kell kezdődnie.
+2. Ha az átlagos CPU-példányán: % kerül a 80-as, automatikus méretezés elvégzi a horizontális felskálázást, egy harmadik példány hozzáadása.
+3. Most tegyük fel, hogy idővel a processzorhasználatról 60 tartozik.
+4. Az automatikus méretezés a horizontális leskálázási szabály becslése a végső állapotának, mintha a horizontális leskálázási. Ha például 60 x 3 (jelenlegi példányszám) = 180 / 2 (Ha a vertikálisan leskálázni végleges száma) = 90. Így az automatikus méretezés nem horizontális leskálázási mert kibővített azonnal újra kellene. Ehelyett azt kihagyja vertikális leskálázást.
+5. Ellenőrzi a következő alkalommal automatikus méretezés, továbbra is 50-re csökken a Processzor. Újra – 50 x 3-as példány becslése = 150 / 2 példányok = 75, amely a 80-as, a horizontális felskálázás küszöbérték alatt van, így méretezhetőségének köszönhetően a sikeresen 2 példány.
 
-### <a name="considerations-for-scaling-threshold-values-for-special-metrics"></a>Különleges metrikák küszöbértékei skálázás szempontjai
- Például a tároló- és Service Bus-üzenetsorba hossza metrika különleges metrikáihoz küszöbértéke kiszolgálónként példányok jelenlegi száma üzenetek átlagos száma. Gondosan válassza ki a mérőszám a küszöbértéket.
+### <a name="considerations-for-scaling-threshold-values-for-special-metrics"></a>Méretezés speciális metrikák küszöbértékei szempontjai
+ Speciális mérőszámokat, például a Storage vagy a Service Bus-üzenetsor hossza mérőszám a küszöbérték elérhető példányok jelenlegi száma üzenetek átlagos száma. Alaposan válassza ki a mérőszám a küszöbértéket.
 
-Egy példa jobb viselkedés ismerje meg, hogy a most bemutatják azt.
+Nézzük mutatnak be, egy példával szemlélteti, hogy biztosan megismerje a jobb viselkedését.
 
-* Példányok növelhető 1 száma szerint, ha a tároló várólista üzenet-száma > = 50
-* Példányok csökkentése 1 száma szerint, ha Storage Üzenetsorába száma < = 10
+* Példányok növelhető 1 száma szerint, ha a tárolási üzenetsor message count > = 50
+* Példányok csökkentése 1 száma szerint, amikor a Storage-üzenetsor üzenetet száma < = 10
 
-Vegye figyelembe az alábbi sorrendben:
+Vegye figyelembe a következő lépéseket:
 
-1. Nincsenek 2 tároló várólista példányok.
-2. Üzeneteket érkezni, és a tároló várólista tekintse át, ha a számuk beolvassa az 50. Ön azt feltételezik, hogy az automatikus skálázási elindul egy kibővíthető műveletet. Azonban ügyeljen arra, hogy a rendszer továbbra is 50/2 = példányonként 25 üzeneteket. Igen kibővített nem történik meg. Az első kibővített megtörténjen-e a tároló várólista az összes üzenet számán legyen 100.
-3. A következő azt feltételezik, hogy az összes üzenet számán eléri-e a 100 értéket.
-4. A 3. tároló várólista példánya kerül egy kibővített művelet miatt.  A következő kibővített művelet nem történik meg, amíg az összes üzenet számán a várólista eléri a 150, mert 150/3 = 50.
-5. Most már a várólistában lévő üzenetek számának beolvasása kisebb. 3 osztályt, az első skálázási művelet történik, ha az összes várólistán található összes üzenet 30-ig felvenni, mert 30/3 = a skála a küszöbérték, példányonként 10 üzeneteket.
+1. Nincsenek tárolási üzenetsor két példánnyal.
+2. Üzenetek érkezni, és tekintse át a tárolási üzenetsort, ha a számuk beolvassa az 50. Előfordulhat, hogy azt feltételezik, hogy az automatikus skálázási el kell indulnia a horizontális felskálázási művelet. Azonban fontos megjegyezni, hogy továbbra is 50/2 = példányonként 25 üzeneteket. Tehát horizontális felskálázás nem történik meg. Az első horizontális felskálázás történhet meg, hogy a tárolási üzenetsor teljes üzenet száma 100 kell lennie.
+3. Ezután azt feltételezik, hogy az üzenetek teljes száma eléri a 100.
+4. A 3. tárolási üzenetsor példány kerül egy horizontális felskálázási művelet miatt.  A következő horizontális felskálázási művelet nem történik meg, amíg a várólista a teljes üzenetek száma eléri a 150, mert 150/3 = 50.
+5. Most már az üzenetsorban lévő üzenetek száma kisebb beolvasása. A három példányban, az első horizontális leskálázási művelet történik, ha az összes várólistán található összes üzenet 30-ig adható hozzá, mert 30/3 = a horizontális leskálázási küszöbérték, példányonként 10 üzenetet.
 
-### <a name="considerations-for-scaling-when-multiple-profiles-are-configured-in-an-autoscale-setting"></a>Ha az automatikus skálázási beállításban több profilok méretezéshez szempontok
-Az automatikus skálázási beállításban választhat egy alapértelmezett profilt, amely minden függőség ütemezés vagy idő nélkül mindig érvényes, vagy választhatja azt egy ismétlődő vagy profil egy meghatározott ideig dátum és idő tartománnyal.
+### <a name="considerations-for-scaling-when-multiple-profiles-are-configured-in-an-autoscale-setting"></a>Méretezés, amikor az automatikus skálázási beállítás több profilok szempontjai
+Az automatikus skálázási beállítás választhat egy alapértelmezett profilt, amely minden olyan függőséget, ütemezés szerint, vagy idő nélkül mindig érvényes, vagy választhat egy ismétlődő vagy profil egy dátum- és időtartományt a fix időszakra.
 
-Amikor az automatikus skálázás szolgáltatás feldolgozza azokat, mindig ellenőrzi a következő sorrendben:
+Amikor az automatikus skálázási szolgáltatás feldolgozza őket, mindig ellenőrzi a következő sorrendben:
 
 1. Rögzített dátum profil
 2. Ismétlődő profil
-3. Alapértelmezett profil ("Always")
+3. Alapértelmezett profil ("mindig")
 
-Ha egy profil feltétel teljesül, automatikus skálázás nem ellenőrzi, a következő profil feltétel alá. Automatikus skálázás egyszerre csak egy profil dolgozza fel. Ez azt jelenti, ha azt szeretné, így magába foglalja a feldolgozási feltétel alsó szintű profilból, meg kell adnia ezeket a szabályokat, valamint az aktuális profil.
+Ha egy profil feltétel teljesül, az automatikus méretezés nem ellenőrzi, a következő profil feltétel alá. Automatikus skálázási egyszerre csak egy profil dolgozza fel. Ez azt jelenti, ha szeretne egy alacsonyabb szintű profilból feldolgozási feltétel is tartalmazhatnak, meg kell adnia ezeket a szabályokat, valamint a jelenlegi profilban.
 
-Tekintsük át, ennek egy példát:
+Tekintsük át, ez egy példa:
 
-Az alábbi képen láthatók az automatikus skálázási beállítás minimális példányok alapértelmezett profillal = 2 és a maximális példányok = 10. Ebben a példában szabályok kibővített az a várólistán lévő üzenetek száma nagyobb, mint 10 esetén és a skála-a az üzenetek száma a várólistán kevesebb mint 3 esetén. Ezzel az erőforrás méretezhető 2 és 10 példányai között.
+Az alábbi képen láthatók az automatikus skálázási beállítás minimális példányok alapértelmezett profil a = 2 és a maximális példányok = 10. Ebben a példában szabályok vannak konfigurálva, horizontális felskálázás Ha az a várólistán lévő üzenetek száma meghaladja a 10-es és horizontális leskálázási Ha az a várólistán lévő üzenetek száma kevesebb mint három. Az erőforrás így most már méretezheti két és tíz példányai között.
 
-Emellett nincs egy ismétlődő profil hétfő beállítása. A példányok minimális érték 3 és legfeljebb példányok = = 10. Ez azt jelenti, hétfőn, az első alkalommal automatikus skálázási ellenőrzi, hogy ez az állapot, ha a példányok száma 2, 3 új minimális méretezés. Mindaddig, amíg az automatikus skálázás továbbra is fennáll, ez a profil feltétel található egyező (hétfő), azt csak dolgozza fel a CPU-alapú scale-out/a szabályok konfigurálva ehhez a profilhoz. Most azt nem ellenőrzi a várólista hossza. Azonban ha azt szeretné ellenőrizni a várólista hossza feltétel is, bele kell foglalni ezeket a szabályokat, az alapértelmezett profil, valamint a hétfő profil.
+Emellett nincs egy ismétlődő profil hétfő beállítása. Példányok minimális értéke = 3 és legfeljebb = 10. Ez azt jelenti, hétfőn, az első automatikus skálázási ellenőrzi ezt az állapotot, ha a példányok száma a kettőt, méretezhetőségének köszönhetően a három új minimális. Mindaddig, amíg az automatikus méretezés továbbra is fennáll, ez a profil feltétel található egyező (hétfő), csak feldolgozza a CPU-alapú scale-out/a konfigurált szabályok ehhez a profilhoz. Jelenleg ez nem ellenőrzi az az üzenetsor hossza. Azonban ha azt szeretné ellenőrizni a várólista hossza feltételt is, kell vennie a ezeket a szabályokat, az alapértelmezett profil, valamint a hétfő profiljában.
 
-Hasonlóképpen automatikus skálázás visszatér az alapértelmezett profil, amikor először ellenőrzi, ha a minimális és maximális feltételek teljesülnek-e. Ha a jelenleg a példányok száma 12, méretezés a 10-re, az alapértelmezett profil engedélyezett maximumot.
+Hasonlóképpen amikor az automatikus skálázási vált vissza az alapértelmezett profil, először ellenőrzi, ha a minimális és maximális feltételek teljesülnek-e. Ha időben példányok 12, méretezhetőségének köszönhetően a 10., az alapértelmezett profil számára engedélyezett maximális értéket.
 
-![automatikus skálázási beállításokat](./media/insights-autoscale-best-practices/insights-autoscale-best-practices-2.png)
+![Az automatikus méretezési beállítások](./media/insights-autoscale-best-practices/insights-autoscale-best-practices-2.png)
 
-### <a name="considerations-for-scaling-when-multiple-rules-are-configured-in-a-profile"></a>Több szabály profil konfigurálásakor skálázás szempontjai
-Előfordulhatnak olyan esetek, ahol előfordulhat, hogy több szabályt beállítani egy profilt. A következő automatikus skálázási szabályok készletét szolgáltatások használatával használata, amikor több szabályok be vannak állítva.
+### <a name="considerations-for-scaling-when-multiple-rules-are-configured-in-a-profile"></a>Méretezés több szabály profil konfigurálásakor szempontjai
+Nincsenek előfordulhat, hogy rendelkezik egy profil több szabályokat állíthat be. Ha több szabályok be vannak állítva a következő automatikus skálázási szabályok készletét használja szolgáltatások használatát.
 
-A *horizontális felskálázás*, automatikus skálázás fut, ha minden szabály teljesül.
-A *méretezési a*, automatikus skálázás szükséges összes szabályt teljesülniük kell.
+A *horizontális felskálázása*, automatikus méretezés fut le, ha minden szabály teljesül.
+A *horizontális leskálázási*, automatikus méretezés szükséges összes szabályt, amelyeknek teljesülniük kell.
 
-Mutatja be, hogy rendelkezik-e a következő 4 automatikus skálázási szabályok használata:
+Példa kedvéért tegyük fel, hogy rendelkezik-e a következő négy automatikus skálázási szabályok:
 
-* Ha a CPU < 30 %, méretezési-1
-* Ha memória < 50 %-kal, méretezési-1
-* Ha a CPU-> 75 %, kibővített 1
-* Ha memória > 75 %, kibővített 1
+* Ha a CPU < 30 %, a horizontális leskálázási 1
+* Ha a memória < 50 %, a horizontális leskálázási 1
+* Ha a CPU-> 75 %, horizontális felskálázás 1
+* Ha a memória > 75 %, horizontális felskálázás 1
 
 Ezután a következő történik:
 
-* Ha CPU 76 % és memória 50 %-át, hogy a kibővített.
-* Ha CPU 50 %-át, és memória 76 % azt kibővített.
+* Ha CPU 76 % és memória mérete 50 %-át, hogy horizontális felskálázást.
+* Ha CPU 50 %-os és memória-e a 76 % azt horizontális felskálázást.
 
-Másrészről, ha a CPU 25 % pedig memória 51 % automatikus skálázás nem **nem** méretezési a. Annak érdekében, hogy méretezési a CPU 29 % és a memória 49 % legyen.
+Másrészről, ha a CPU 25 % pedig memória 51 % automatikus skálázás nem **nem** horizontális leskálázási. Annak érdekében, hogy méretezési – CPU kell lennie 29 % és a memória 49 %.
 
 ### <a name="always-select-a-safe-default-instance-count"></a>Mindig jelölje be a biztonságos alapértelmezett példányszám
-Az alapértelmezett példányszám fontos automatikus skálázás méretezi, hogy ez a szolgáltatás, ha metrikák nem érhetők el. Ezért válasszon egy alapértelmezett példányok száma, amelyek a munkaterhelések biztonságos.
+Az alapértelmezett példányszám fontos az automatikus méretezés, hogy ez a szolgáltatás skálázható, ha a metrikák nem érhetők el. Ezért válasszon egy alapértelmezett példányszámot, amely biztonságos, a számítási feladatokhoz.
 
-### <a name="configure-autoscale-notifications"></a>Értesítések automatikus skálázás konfigurálása
-Automatikus skálázás fogja elküldeni a tevékenység naplóba, ha az alábbi feltételek bármelyike teljesül:
+### <a name="configure-autoscale-notifications"></a>Automatikus skálázási értesítések konfigurálása
+Automatikus skálázási közzéteszi azt a tevékenységnapló, ha az alábbi feltételek bármelyike előfordul:
 
-* Automatikus skálázás kibocsát egy skálázási művelet
-* Automatikus skálázási szolgáltatás sikeresen befejezte a skálázási művelet
-* Automatikus skálázás szolgáltatás nem tud a méretezési művelet végrehajtása.
-* Metrikák automatikus skálázás szolgáltatás egy méretezési döntést nem érhetők el.
-* Adatok gyűjtése le elérhető (helyreállítási) újból, hogy a skála döntést hoznak.
+* Automatikus skálázási kiad egy skálázási művelet
+* Automatikus skálázási szolgáltatás sikeresen végrehajtotta a skálázási műveletek
+* Automatikus skálázási szolgáltatás meghibásodik, egy skálázási műveletet.
+* Automatikus méretezési szolgáltatás a méretezési csoport döntéshozáshoz metrikák nem érhetők el.
+* Metrikák elérhető (helyreállítási) ismét a méretezési csoport döntéshozáshoz.
 
-Tevékenységnapló riasztást használhatja az automatikus skálázás motor állapotának figyelésére is. Az alábbiakban példákat [hozzon létre egy tevékenység napló riasztási figyelheti az előfizetés minden automatikus skálázási motor műveletek](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-alert) vagy [hozzon létre egy tevékenység napló riasztási figyelheti az összes sikertelen automatikus skálázás méretezési / műveleteket az előfizetés kiterjesztése](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-failed-alert).
+Tevékenységnapló-riasztások segítségével figyelheti az automatikus skálázási motor állapotát. A példa [hozzon létre egy tevékenység Log riasztási az előfizetés összes automatikus skálázási motor műveletek figyelése](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-alert) vagy [hozzon létre egy tevékenység Log riasztási figyelheti az összes sikertelen automatikus vertikális / horizontális felskálázás műveletek a a előfizetés](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-failed-alert).
 
-Mellett napló tevékenységriasztásokat, e-mailben vagy webhook értesítések tájékoztatást kaphat az automatikus skálázási beállítás értesítések lapján keresztül sikeres skálázási műveletekhez is konfigurálhatja.
+A tevékenységnapló-riasztások használatán sikeres skálázási műveletek automatikus skálázási beállítás értesítések lapján keresztül értesítés küldése e-mailben vagy webhook értesítéseket is konfigurálhatja.
 
 ## <a name="next-steps"></a>További lépések
-- [Hozzon létre egy tevékenység napló riasztási előfizetés minden automatikus skálázási motor műveletek figyelése.](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-alert)
-- [Hozzon létre egy tevékenység napló riasztási figyelheti az összes sikertelen automatikus skálázás méretezési / műveleteket az előfizetés kiterjesztése](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-failed-alert)
+- [Hozzon létre egy tevékenység Log riasztási az előfizetés összes automatikus skálázási motor műveletek figyelése.](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-alert)
+- [Egy tevékenység Log riasztási figyelheti az összes sikertelen automatikus vertikális / horizontális felskálázás műveleteket az előfizetés létrehozása](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-failed-alert)

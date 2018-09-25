@@ -13,14 +13,19 @@ ms.custom: ''
 ms.devlang: ''
 ms.topic: article
 ms.date: 02/01/2018
-ms.openlocfilehash: 07b9ac8389a2bf06e0356f65d816d75d49cc0cf5
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ROBOTS: NOINDEX
+ms.openlocfilehash: 9168ac1d26432ca3eee5a59b63aa0cec3ae72856
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35646431"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46989056"
 ---
 # <a name="supported-matrix-for-this-release"></a>Ebben a kiadásban támogatott mátrix 
+
+[!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)] 
+
+
 Ha a kódot az Azure Machine Learning-adatforrások vagy az Azure Machine Learning adat előkészített, vagy egy Pandas első adatokat tölt, vagy Spark dataframe, kísérlet a következő fájlattribútumok számítási környezet és helyek támogatottak:
 
 |     |Helyi fájlok  |Azure Blob Storage  |Az SQL Server adatbázis x  |

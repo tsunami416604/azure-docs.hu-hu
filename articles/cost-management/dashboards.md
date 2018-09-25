@@ -1,21 +1,21 @@
 ---
-title: Fontos metrikákat jeleníthet meg az Azure Cost Management irányítópultokon |} A Microsoft Docs
-description: Ez a cikk azt ismerteti, hogyan irányítópultokkal fontos metrikákat jeleníthet meg az Azure Cost Managementben.
+title: A Cloudyn irányítópultjain fontos metrikákat jeleníthet meg az Azure-ban |} A Microsoft Docs
+description: Ez a cikk azt ismerteti, hogyan irányítópultokkal fontos metrikákat jeleníthet meg a Cloudyn.
 services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 06/12/2018
+ms.date: 09/18/2018
 ms.topic: conceptual
 ms.service: cost-management
 manager: dougeby
 ms.custom: ''
-ms.openlocfilehash: 4f51598dd2b026f1c3a4b0d763b1547a44eedc7b
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ms.openlocfilehash: 1d2b4a0cd78f3d68a76bd9186be4174f2dd1d86c
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35644944"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46999708"
 ---
 # <a name="view-key-cost-metrics-with-dashboards"></a>Költségeket az irányítópultok metrikák nézet kulcs
 
@@ -34,7 +34,7 @@ Irányítópult-verziók kezelése (MSP), Enterprise és prémium szintű Cloudy
 
 Irányítópult rendelkezésre állási attól függ, hogy a cloud service provider használt fiók irányítópultok megtekintésekor típusát. Elérhető és a Cloudyn által összegyűjtött információ típusa hatással van a jelentések az irányítópultokkal. Például ha AWS-fiók nem rendelkezik majd meg nem jelenik meg az S3-követő irányítópultot. Ehhez hasonlóan ha nem engedélyezi az Azure Resource Manager hozzáférhetnek, majd meg nem jelenik meg az irányítópult widgetek optimalizáló bármely Azure-ra vonatkozó információkat.
 
-Az előzetesen irányítópultok bármelyikét használhatja, vagy testre szabott jelentéseket hozhat létre saját irányítópultját. Ha még nem ismeri a Cloudyn-jelentések, [használata Cost Management jelentések](use-reports.md).
+Az előzetesen irányítópultok bármelyikét használhatja, vagy testre szabott jelentéseket hozhat létre saját irányítópultját. Ha még nem ismeri a Cloudyn-jelentések, [használja a Cloudyn-jelentések](use-reports.md).
 
 ## <a name="create-a-custom-dashboard"></a>Egyéni irányítópult létrehozása
 
@@ -297,4 +297,4 @@ A widget rávilágít arra, hogy a legjobb leképezést, rugalmas számítási e
 - Kattintson a widget nyissa meg a példányok adattípus-hozzárendelése jelentést.
 
 ## <a name="next-steps"></a>További lépések
-- Olvassa el a [használata Cost Management jelentések](use-reports.md) jelentésekkel kapcsolatos további cikk.
+- Olvassa el a [használja a Cloudyn-jelentések](use-reports.md) további jelentésekkel kapcsolatos cikket.

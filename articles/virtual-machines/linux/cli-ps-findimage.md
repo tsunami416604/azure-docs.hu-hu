@@ -16,19 +16,19 @@ ms.workload: infrastructure
 ms.date: 02/28/2018
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f1091b9d252f32086c237e7c62f11c166eb558a6
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: 33ffb9d1685f3d76e884ae0d90545f659b5ec87c
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39345157"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46953348"
 ---
 # <a name="how-to-find-linux-vm-images-in-the-azure-marketplace-with-the-azure-cli"></a>Hogyan lehet az Azure CLI-vel az Azure Marketplace-rendszerképek keresése a Linux rendszerű virtuális gép
-Ez a témakör ismerteti, hogyan használhatja az Azure CLI 2.0 az Azure piactéren Virtuálisgép-rendszerképek keresése. Ezen információk használatával adja meg a Piactéri lemezképet, ha egy virtuális Gépet hoz létre programozott módon a CLI-vel Resource Manager-sablonok vagy más eszközök.
+Ez a témakör ismerteti, hogyan használhatja az Azure CLI az Azure piactéren Virtuálisgép-rendszerképek keresése. Ezen információk használatával adja meg a Piactéri lemezképet, ha egy virtuális Gépet hoz létre programozott módon a CLI-vel Resource Manager-sablonok vagy más eszközök.
 
 Elérhető rendszerképeket és a használatával ajánlatokkal keresse a [Azure Marketplace-en](https://azuremarketplace.microsoft.com/) kirakat, a [az Azure portal](https://portal.azure.com), vagy [Azure PowerShell-lel](../windows/cli-ps-findimage.md). 
 
-Győződjön meg arról, hogy telepítette-e a legújabb [Azure CLI 2.0](/cli/azure/install-az-cli2) és a egy Azure-fiókkal van bejelentkezve (`az login`).
+Győződjön meg arról, hogy telepítette-e a legújabb [Azure CLI-vel](/cli/azure/install-azure-cli) és a egy Azure-fiókkal van bejelentkezve (`az login`).
 
 [!INCLUDE [virtual-machines-common-image-terms](../../../includes/virtual-machines-common-image-terms.md)]
 

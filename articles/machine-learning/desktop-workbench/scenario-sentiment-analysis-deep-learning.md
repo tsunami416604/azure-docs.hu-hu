@@ -16,14 +16,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/20/2018
 ms.author: miprasad
-ms.openlocfilehash: 97e3a621e291935db2e0c70eb2b596e77c7bffb7
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ROBOTS: NOINDEX
+ms.openlocfilehash: e2fbb0b7b0dede198be0e57ffcd2b58a7da7fce7
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35646359"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46947771"
 ---
 # <a name="sentiment-analysis-using-deep-learning-with-azure-machine-learning"></a>Hangulatelemzés mély tanulás használatával az Azure Machine Learning
+
+[!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)] 
+
+
 
 Hangulatelemzés a jól ismert feladat természetes nyelvi feldolgozás tartozik. Adja meg a szövegek készletét, célja, hogy határozza meg, hogy a szöveg a róluk szóló véleményeket. Ez a megoldás célja, Deep Learning használandó movie felülvizsgálatok hangulatának előrejelzésére.
 
@@ -45,7 +50,7 @@ Hangulatelemzés érték lekéréséhez vállalkozások lehetővé teszi hatalma
 
 * Egy [Azure-fiók](https://azure.microsoft.com/free/) (az ingyenes próbaverziók érhető el).
 
-* Egy telepített példánya [Azure Machine Learning Workbench](../service/overview-what-is-azure-ml.md) következő a [rövid telepítési útmutatójában](../service/quickstart-installation.md) telepítse a programot, és hozzon létre egy munkaterületet.
+* Egy telepített példánya [Azure Machine Learning Workbench](../service/overview-what-is-azure-ml.md) következő a [rövid telepítési útmutatójában](quickstart-installation.md) telepítse a programot, és hozzon létre egy munkaterületet.
 
 * Az operacionalizálás célszerű Ha helyben telepített és futtatott Docker-motor. Ha nem, a fürt lehetőséget is használhatja. Azonban egy Azure Container Service (ACS) futó költséges lehet.
 

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/14/2018
 ms.author: sashan
 ms.reviewer: carlrab
-ms.openlocfilehash: c3d8ec77275024b6d959a15ee716a02b0dc2738a
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: 2e052c34834ae2ebe99b3329d312f03846e9beb0
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45985830"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46977757"
 ---
 # <a name="overview-active-geo-replication-and-auto-failover-groups"></a>Áttekintés: Aktív georeplikációs és automatikus feladatátvételi csoportok
 
@@ -121,7 +121,7 @@ Amikor egy olyan szolgáltatást tervez az üzletmenet-folytonossági szem előt
 - **Adatvesztés előkészítése**: kimaradás észlelhető, ha az SQL automatikusan aktiválja a írási-olvasási feladatátvételi a legjobb, az ismeretek adatvesztés esetén. Ellenkező esetben megvárja az Ön által megadott időszakban **Leváltó**. Ha a megadott **Leváltó**, elő kell készíteni az adatvesztést a. Leállás, általában az Azure rendelkezésre állási periodicitásának. Ha az adatok elvesztése nem elfogadható, feltétlenül állítson be **Leváltó** elég nagy számú, például a 24 órán keresztül. 
 
 > [!IMPORTANT]
-> Rugalmas készletek 800 vagy annál kisebb dtu-k és több mint 250 adatbázisaihoz georeplikációs többek között már tervezett feladatátvételeket problémák merülhetnek fel, és a teljesítménycsökkenést.  Ezeket a problémákat nagyobb valószínűséggel írási igényű számítási feladatokhoz fordulhat elő, ha a georeplikáció végpontok széles körben külön földrajzi hely szerint, vagy több másodlagos végpont az egyes adatbázisok használatakor.  Ezek a problémák tüneteit jelzi, ha a georeplikáció lag idővel növekszik.  A lag segítségével követhetők [sys.dm_geo_replication_link_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-geo-replication-link-status-azure-sql-database).  Ha ezeket a problémákat, majd megoldások például készlet dtu-k számának növelésével vagy a georeplikált azonos egy készletben található adatbázisok számának csökkentését.
+> Rugalmas készletek 800 vagy kevesebb dtu-k és több mint 250 adatbázisaihoz georeplikációs többek között már tervezett feladatátvételeket problémák merülhetnek fel, és a teljesítménycsökkenést.  Ezeket a problémákat nagyobb valószínűséggel írási igényű számítási feladatokhoz fordulhat elő, ha a georeplikáció végpontok széles körben külön földrajzi hely szerint, vagy több másodlagos végpont az egyes adatbázisok használatakor.  Ezek a problémák tüneteit jelzi, ha a georeplikáció lag idővel növekszik.  A lag segítségével követhetők [sys.dm_geo_replication_link_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-geo-replication-link-status-azure-sql-database).  Ha ezeket a problémákat, majd megoldások például készlet dtu-k számának növelésével vagy a georeplikált azonos egy készletben található adatbázisok számának csökkentését.
 
 ## <a name="failover-groups-and-network-security"></a>Feladatátvételi csoportok és hálózati biztonság 
 

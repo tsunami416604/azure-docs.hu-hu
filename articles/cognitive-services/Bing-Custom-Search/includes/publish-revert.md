@@ -1,4 +1,4 @@
-## <a name="publish-or-revert"></a>Közzététel vagy visszaállítása
-Megteheti, hogy egy egyéni keresés példány módosítás történt a **konfigurációs** lapon, hogy ellenőrizhesse a módosításokat. Amikor elkészült, készen áll a közzététel vagy azt, kattintson a **közzététel**. Módosítások nem tükröződnek az éles végpontok ellen, amíg tesz közzé.
+## <a name="publish-or-revert"></a>Közzététel szülővé és visszaalakítás szülőből
+Egy egyéni keresési példány módosítások történnek a **konfigurációs** lapon, hogy ellenőrizhesse a módosításokat. Ha elkészült, és módosítások és a közzétételre kész, kattintson a **közzététel**. Módosítások nem tükröződnek a termelési végpontokon, amíg a közzététel.
 
-A közzététel előtt Ha úgy dönt, hogy meg szeretne tartani a módosításokat végzett, kattintson a **visszaállítás**. Visszaállítja a módosításokat, ha az élő állapotkonfiguráció nem változott, és a konfiguráció lapon felel meg az élő állapot tért vissza.
+A közzététel előtt Ha úgy dönt, hogy nem szeretné tartani a módosításokat végzett, kattintson a **visszaállítás**. Visszaállítja a módosításokat, ha az élő állapotkonfiguráció nem változik, és a **konfigurációs** lapon megfelelően az élő állapot vissza lett vonva.

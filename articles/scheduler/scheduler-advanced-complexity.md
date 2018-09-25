@@ -1,187 +1,214 @@
 ---
-title: Összetett ütemezés és a speciális ismétlődési és Azure-ütemező hozhat létre.
-description: Ismerje meg, hogyan hozhat létre ütemezése összetett és speciális ismétlődési és Azure-ütemező.
+title: Speciális feladatok ütemezését és ismétlődések – Azure Scheduler szolgáltatásával
+description: Speciális ütemezések és ismétlődések-feladatok létrehozása az Azure Schedulerben
 services: scheduler
-documentationcenter: .NET
-author: derek1ee
-manager: kevinlam1
-editor: ''
-ms.assetid: 5c124986-9f29-4cbc-ad5a-c667b37fbe5a
 ms.service: scheduler
-ms.workload: infrastructure-services
-ms.tgt_pltfrm: na
-ms.devlang: dotnet
+author: derek1ee
+ms.author: deli
+ms.reviewer: klam
+ms.suite: infrastructure-services
+ms.assetid: 5c124986-9f29-4cbc-ad5a-c667b37fbe5a
 ms.topic: article
 ms.date: 08/18/2016
-ms.author: deli
-ms.openlocfilehash: 4293442e13fc4bae871b1f32a3ed4231d9f32632
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: f5a8b929cf5af6e4e43c6003e6b622d04a50b93e
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2018
-ms.locfileid: "29692334"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46980940"
 ---
-# <a name="build-complex-schedules-and-advanced-recurrence-with-azure-scheduler"></a>Összetett ütemezés és a speciális ismétlődési és Azure-ütemező hozhat létre.
+# <a name="build-advanced-schedules-and-recurrences-for-jobs-in-azure-scheduler"></a>Az Azure Scheduler-feladatok az ismétlődések és a speciális ütemezések létrehozása
 
-Egy Azure Scheduler feladat mag az ütemezés. Az ütemezés határozza meg, mikor és hogyan Feladatütemező végrehajtja-e a feladatot. 
+> [!IMPORTANT]
+> [Az Azure Logic Apps](../logic-apps/logic-apps-overview.md) kivezetjük, az Azure Scheduler lecseréli. Feladatok ütemezése [helyette próbálkozzon az Azure Logic Apps](../scheduler/migrate-from-scheduler-to-logic-apps.md). 
 
-A Feladatütemező segítségével feladat több egyszeri és ismétlődő ütemezéseket állíthat be. Egyszeri ütemezések érvényesítést egyszer, egy megadott időpontban. Egyszeri ütemezések hatékonyan amelyek ismétlődő ütemezéseket csak egyszer hajtható végre. Ismétlődő ütemezés tűz az előre meghatározott gyakoriságát.
+Belül egy [Azure Scheduler](../scheduler/scheduler-intro.md) feladat, az ütemezés a következő alapvető fontosságú, amely meghatározza, mikor és hogyan a Scheduler szolgáltatás fut-e a feladatot. A Scheduler állíthat be egy feladat több egyszeri és ismétlődő ütemezéseket. Egyszeri ütemezés futtatása csak egyszer, egy megadott időpontban, és alapvetően ismétlődő ütemezések csak egyszer futtatott. A megadott gyakorisággal ismétlődő ütemezések szerint futtatni. Az ezt a rugalmasságot is használhat Scheduler különböző üzleti forgatókönyvekben, például:
 
-Erre a rugalmasságra Feladatütemező segítségével számos különböző üzleti forgatókönyvek:
+* **Távolítsa el az adatokat rendszeresen**: hozzon létre egy napi feladatot, amely törli a három hónapnál régebbi összes tweeteket.
 
-* **Rendszeres adat-karbantartási**. Naponta, például az összes Twitter-üzeneteket, amelyek a három hónapnál régebbi törlése.
-* **Archiválás**. Például minden hónap, leküldéses számla előzményeinek a biztonsági mentési szolgáltatáshoz.
-* **Külső adatokra vonatkozó**. 15 percenként, például egy új ski időjárás-jelentés lekérés a NOAA.
-* **Kép feldolgozási**. Minden hétköznap, amikor kevesen, például a lemezképeket, amelyek adott napon töltődtek tömörítendő felhőszámítási használja.
+* **Adatok archiválása**: hozzon létre, hogy a leküldés előzményeit, hogy egy biztonsági mentési szolgáltatás számlázása havi feladat.
 
-Ebben a cikkben azt ismerteti, hogy a Feladatütemező használatával hozhat létre például feladatok keresztül. Azt adja meg, amely leírja azokat a JSON-adatokat. Ha használja a [Feladatütemező REST API](https://msdn.microsoft.com/library/mt629143.aspx), használhatja ezt a azonos JSON [hozzon létre egy Scheduler feladatot](https://msdn.microsoft.com/library/mt629145.aspx).
+* **Külső adatok kérése**: hozzon létre egy feladatot, amely 15 percenként fut le, és a NOAA időjárási új jelentés lekéri.
+
+* **Dolgozhassa**: hozzon létre egy hét napja feladatot, amikor kevesen fut, és a felhő-számítástechnika a tömörítés során a naponta feltöltött képek.
+
+Ez a cikk azt ismerteti, például feladatokat a Scheduler használatával hozhat létre és és a [Azure Scheduler REST API](https://docs.microsoft.com/rest/api/schedule), és minden egyes ütemezés JavaScript Object Notation (JSON) definícióját tartalmazza. 
 
 ## <a name="supported-scenarios"></a>Támogatott esetek
-Ebben a cikkben szereplő példák bemutatják a forgatókönyvet, amely támogatja a Feladatütemező hardverekről. A példák körben vnetek létrehozásának ütemezése a viselkedés sok kombinációját, beleértve:
 
-* Egyszeri futtatás a egy adott időpontban.
-* Futtassa, és meghatározott számú alkalommal megismétlődik.
-* Azonnal futtatni, és megismétlődik.
-* Futtassa és megismétlődik minden  *n*  perc, óra, nap, hét és hónap, kezdve egy megadott időpontban.
-* Futtassa, és heti vagy havi gyakorisággal, de csak a hét meghatározott napjain vagy a hónap adott napjain megismétlődik.
-* Futtassa, és időn belül többször ismétlődik. Például, utolsó péntekén és minden hónap vagy Reggel 5:15 és 5:15 előtti minden nap az előző hétfőn.
+A példákból látható, amely támogatja az Azure Scheduler forgatókönyvek és ütemezése a különböző viselkedési mintákat, például létrehozása:
 
-## <a name="date-and-date-time"></a>Dátum és a dátum-idő
-Feladatütemező feladatai kövesse elemben található hivatkozások dátum a [ISO 8601 specification](http://en.wikipedia.org/wiki/ISO_8601), és csak a dátum.
+* Egy adott dátummal és időponttal, futtassa egyszer.
+* Futtassa, és a egy adott számú ismétlődés.
+* Azonnal futtatni, és az ismétlődés.
+* Futtassa, és az Ismétlődés minden *n* perc, óra, nap, hét vagy egy adott időpontban hónapig.
+* Futtassa, és hetente vagy havonta, de csak a hét meghatározott napjain vagy a hónap meghatározott napjain ismétlődés.
+* Futtassa, és a egy adott időszakra vonatkozó többször ismétlődés. Ha például minden hónap utolsó péntekjén és hétfő, vagy a napi 05:15-kor és 17:15-kor.
 
-Dátum-idő hivatkozások ütemezőjének kövesse a [ISO 8601 specification](http://en.wikipedia.org/wiki/ISO_8601), és a dátum és idő is. Egy dátum-idő nem adja meg a UTC eltolás UTC adottnak.  
+Ez a cikk későbbi ismerteti részletesebben ezeket a forgatókönyveket.
 
-## <a name="use-json-and-the-rest-api-to-create-a-schedule"></a>Használja a JSON és a REST API ütemezés létrehozása
-Használatával egy egyszerű ütemezés létrehozásához a [Feladatütemező REST API](https://msdn.microsoft.com/library/mt629143), első [az előfizetés regisztrálása egy erőforrás-szolgáltató](https://msdn.microsoft.com/library/azure/dn790548.aspx). A szolgáltató neve az ütemező **Microsoft.Scheduler**. Ezt követően [hozzon létre egy feladatgyűjtemény](https://msdn.microsoft.com/library/mt629159.aspx). Végezetül [hozzon létre egy feladatot](https://msdn.microsoft.com/library/mt629145.aspx). 
+<a name="create-scedule"></a>
 
-Egy feladat létrehozásakor megadhatja ütemezés és ismétlődési használatával JSON, például a cikkből:
+## <a name="create-schedule-with-rest-api"></a>Ütemezés létrehozása a REST API-val
 
-    {
-        "startTime": "2012-08-04T00:00Z", // Optional
-         …
-        "recurrence":                     // Optional
-        {
-            "frequency": "week",     // Can be "year", "month", "day", "week", "hour", or "minute"
-            "interval": 1,                // How often to fire
-            "schedule":                   // Optional (advanced scheduling specifics)
-            {
-                "weekDays": ["monday", "wednesday", "friday"],
-                "hours": [10, 22]                      
-            },
-            "count": 10,                  // Optional (default to recur infinitely)
-            "endTime": "2012-11-04",      // Optional (default to recur infinitely)
-        },
-        …
-    }
+Az alapszintű ütemezés létrehozása a [Azure Scheduler REST API](https://docs.microsoft.com/rest/api/schedule), kövesse az alábbi lépéseket:
 
-## <a name="job-schema-basics"></a>Feladat séma alapjai
-A következő táblázat a fő elemet ismétlődési és az ütemezés beállítása a feladatok használó magas szintű áttekintést nyújt:
+1. Azure-előfizetés regisztrálása az erőforrás-szolgáltató használatával a [művelet – Resource Manager REST API regisztrálása](https://docs.microsoft.com/rest/api/resources/providers#Providers_Register). A szolgáltató neve, az Azure Scheduler szolgáltatás **Microsoft.Scheduler**. 
 
-| JSON-név | Leírás |
-|:--- |:--- |
-| **startTime** |Egy dátum-idő értéknek megfelelően. Az alapvető ütemezések **startTime** első van. Az összetett ütemezések a feladat legkorábban elindul **startTime**. |
-| **recurrence** |Adja meg a feladatot, és az ismétlődési, amelyen a feladat futtatása ismétlődési szabályait. Az ismétlődési objektum támogatja az elemek **gyakoriság**, **időköz**, **endTime**, **száma**, és **ütemezése**. Ha **ismétlődési** van definiálva, **gyakoriság** szükséges. Más **ismétlődési** elemek egyike sem kötelező. |
-| **frequency** |A gyakoriság egységet, amelyen a feladat ismétlési idejét jelölő karakterlánccá. Támogatott értékei a "perc", "hour", "day", "hetente" és "honap". |
-| **interval** |Egy pozitív egész szám. **időköz** intervallumát jelöli a **gyakoriság** érték, amely meghatározza, hogy milyen gyakran a feladat futtatásakor. Például ha **időköz** 3 és **gyakoriság** "hét", a feladat minden három hét ismétlődik.<br /><br />A Feladatütemező legfeljebb **időköz** 18 havi gyakoriság, a heti gyakoriság 78 és a napi gyakoriság 548. Az órában és percben gyakoriságát, a támogatott értéktartomány: 1 < = **időköz** < = 1000. |
-| **endTime** |A dátum-idő, amelyek a feladat futtatása nem karakterlánc. Egy érték a **endTime** , amely a múltban van. Ha **endTime** és **száma** nincsenek megadva, a feladat futtatása végtelenül. Nem adhat meg mindkét **endTime** és **száma** ugyanazt a feladatot. |
-| **Száma** |Egy pozitív egész szám (nullánál nagyobb), amely meghatározza a szám, ahányszor a feladat fut. a befejeződése előtt.<br /><br />**Count** jelenti. a szám, ahányszor a feladat futtatása előtt határozzák meg. Például egy feladatot, amely a naponta végrehajtása egy **száma** 5 és a kezdő dátum hétfő, a feladat befejeződik, péntek végrehajtása után. Ha a kezdő dátuma a múltban, az első végrehajtása kiszámítása a létrehozása óta.<br /><br />Ha nincs **endTime** vagy **száma** van megadva, a feladat futtatása végtelenül. Nem adhat meg mindkét **endTime** és **száma** ugyanazt a feladatot. |
-| **schedule** |Egy feladat a megadott gyakorisággal megváltoztatja az ismétlődési a ismétlődési ütemezés szerint. A **ütemezés** érték perc, a üzemideje (óra), a hét nap, a hónap és a hetek száma alapján módosításokat tartalmaz. |
+1. Feladatgyűjtemények létrehozása használatával a [létrehozási vagy frissítési műveletben a feladatgyűjtemények](https://docs.microsoft.com/rest/api/scheduler/jobcollections#JobCollections_CreateOrUpdate) a Scheduler REST API-ban. 
 
-## <a name="job-schema-defaults-limits-and-examples"></a>Feladat séma alapértelmezett értékeket, korlátok és példák
-A cikk későbbi részében tárgyaljuk részletesen a következő elemmel:
+1. Hozzon létre egy feladatot a használatával a [létrehozási vagy frissítési műveletben feladatok](https://docs.microsoft.com/rest/api/scheduler/jobs/createorupdate). 
 
-| JSON-név | Érték típusa | Kötelező? | Alapértelmezett érték | Érvényes értékek | Példa |
-|:--- |:--- |:--- |:--- |:--- |:--- |
-| **startTime** |karakterlánc |Nem |Nincs |ISO 8601 dátum-idő |`"startTime" : "2013-01-09T09:30:00-08:00"` |
-| **recurrence** |objektum |Nem |Nincs |A ütemezésismétlődési objektum |`"recurrence" : { "frequency" : "monthly", "interval" : 1 }` |
-| **frequency** |karakterlánc |Igen |Nincs |"minute", "hour", "day", "week", "month" |`"frequency" : "hour"` |
-| **interval** |szám |Igen |Nincs |1-1000. |`"interval":10` |
-| **endTime** |karakterlánc |Nem |Nincs |Egy ideje a jövőben jelölő dátum-idő érték |`"endTime" : "2013-02-09T09:30:00-08:00"` |
-| **Száma** |szám |Nem |None |>= 1 |`"count": 5` |
-| **schedule** |objektum |Nem |Nincs |Az ütemterv objektum |`"schedule" : { "minute" : [30], "hour" : [8,17] }` |
+## <a name="job-schema-elements"></a>Feladat séma elemei
 
-## <a name="deep-dive-starttime"></a>A startTime részletes bemutatása
-A következő táblázat ismerteti, hogyan **startTime** meghatározza, hogy egy feladat futtatása:
+Ez a táblázat magas szintű áttekintést nyújt a fő JSON-elemek ismétlődések és a feladatok ütemezésének beállításakor használható. 
 
-| startTime értéke | Nincs ismétlődés. | Ismétlődési ütemezés nélkül | Ismétlődés ütemezéssel |
-|:--- |:--- |:--- |:--- |
-| **A Kezdés időpontja** |Egyszer, azonnal futtatni. |Egyszer, azonnal futtatni. Futtassa a későbbi végrehajtások során legutóbbi végrehajtásának időpontja számítva. |Egyszer, azonnal futtatni.<br /><br />A későbbi végrehajtások során a ismétlődési ütemezés szerint futtatni. |
-| **Kezdő dátuma a múltban** |Egyszer, azonnal futtatni. |Az első jövőbeli végrehajtási idő kiszámítása a kezdési idő utánra, és akkor futnak.<br /><br />Futtassa a későbbi végrehajtások során legutóbbi végrehajtásának időpontja számítva. <br /><br />További információkért lásd a táblázatot követő példában. |Sikertelen feladat indítása *nem sooner mint* a megadott kezdési időponttal. Az első előfordulás a kezdési időpontból kiszámított ütemezésen alapul.<br /><br />A későbbi végrehajtások során a ismétlődési ütemezés szerint futtatni. |
-| **Kezdési idő, a jövőben vagy a jelenlegi időpontnál** |Futtassa egyszer a megadott kezdési időpontban. |Futtassa egyszer a megadott kezdési időpontban.<br /><br />Futtassa a későbbi végrehajtások során legutóbbi végrehajtásának időpontja számítva.|Sikertelen feladat indítása *nem sooner mint* a megadott kezdési időponttal. A első előfordulása az ütemezés kezdési idejét számítva alapul.<br /><br />A későbbi végrehajtások során a ismétlődési ütemezés szerint futtatni. |
+| Elem | Szükséges | Leírás | 
+|---------|----------|-------------|
+| **startTime** | Nem | A dátum/idő karakterlánc-érték [ISO 8601 formátumú](http://en.wikipedia.org/wiki/ISO_8601) , amely meghatározza a feladat első indításakor az alapszintű ütemezés szerint. <p>Komplex ütemezések a feladat nem indul korábban, mint **startTime**. | 
+| **recurrence** | Nem | A feladat futtatásakor tartozó ismétlődési szabályokat. A **ismétlődési** objektum támogatja ezeket az elemeket: **gyakorisága**, **időköz**, **ütemezés**, **száma**, és **endTime**. <p>Ha használja a **ismétlődési** elemben is használnia kell a **gyakorisága** elem, míg más **ismétlődési** elemek egyike sem kötelező. |
+| **frequency** | Igen, használatakor **ismétlődés** | Az időegység előfordulások között, és ezeket az értékeket támogatja: "Perces", "Hour", "Day", "Week", "Month" és "Year" | 
+| **interval** | Nem | Határozza meg, hogy időegységek előfordulások közötti pozitív egész szám alapján **gyakorisága**. <p>Például ha **időköz** 10 és **gyakorisága** pedig "Week", a feladat 10 hetente ismétlődik. <p>Az alábbiakban időközönként minden gyakoriságának maximális száma: <p>– 18 hónap <br>-78 hét <br>-548 nap <br>– A óra és perc, a tartomány: 1 < = <*időköz*>< = 1000. | 
+| **schedule** | Nem | Határozza meg a módosítások a megadott perc-jelek, óra-jelek, a hét azon napjai, és a hónap napjain alapuló az ismétlődés | 
+| **Száma** | Nem | Pozitív egész szám, amely meghatározza, hogy a feladat futtatása a befejezés előtt hányszor. <p>Például, ha napi feladat, **száma** 7 beállítása, és a kezdő dátum hétfő, a feladat futásának vasárnap. Ha már elhagyta a kezdő dátum, az első futtatásakor kiszámítása a létrehozás ideje. <p>Nélkül **endTime** vagy **száma**, a feladat korlátlanul futtatása. Nem használhatja mindkettő **száma** és **endTime** ugyanazt a feladatot, de a szabályt, hogy befejezi először van figyelembe véve. | 
+| **endTime** | Nem | Egy dátum vagy dátum/idő karakterlánc értéket [ISO 8601 formátumú](http://en.wikipedia.org/wiki/ISO_8601) , amely meghatározza, amikor a feladat leáll futtatása. Beállíthatja a egy értéke **endTime** , amely a múltban van. <p>Nélkül **endTime** vagy **száma**, a feladat korlátlanul futtatása. Nem használhatja mindkettő **száma** és **endTime** ugyanazt a feladatot, de a szabályt, hogy befejezi először van figyelembe véve. |
+|||| 
 
-Nézzük például mi történik, amikor **startTime** ismétlődési, de nincs ütemezés a múltbeli.  Feltételezik, hogy az aktuális idő 2015-04-08 13:00, **startTime** 2015-04-07 14:00 és **ismétlődési** minden két nap (definiálva **gyakoriság**: nap és **időköz**: 2.) Vegye figyelembe, hogy **startTime** a múltban van, és az aktuális időpont előtt következik be.
+A JSON-sémájában például egy egyszerű ütemezés és a egy feladat ismétlődése ismerteti: 
 
-Ebben az első végrehajtása 2015-04-09: 14:00\ lesz. Az ütemezőmotor a kezdési időpont alapján kiszámítja a végrehajtási alkalmakat. A múltbéli időpontokat a rendszer elveti. A motor az első jövőbeli alkalmat használja. Ebben az esetben **startTime** 2015-04-07 jelenleg 2:00 PM, így a következő példány kezdve, amely 2015-04-09, 2:00 PM két nap.
+```json
+"properties": {
+   "startTime": "2012-08-04T00:00Z", 
+   "recurrence": {
+      "frequency": "Week",
+      "interval": 1,
+      "schedule": {
+         "weekDays": ["Monday", "Wednesday", "Friday"],
+         "hours": [10, 22]                      
+      },
+      "count": 10,       
+      "endTime": "2012-11-04"
+   },
+},
+``` 
 
-Vegye figyelembe, hogy az első végrehajtása változatlan marad e **startTime** 2015-04-05 14:00 vagy 2015-04-01 14:00\. Az első végrehajtás után a rendszer a következő végrehajtási időpontokat az ütemezés alapján számítja ki. Hogy 2015-04-11, 2:00 PM, majd 2015-04-13 2:00 PM, majd 2015-04-15, 2:00 PM kell, és így tovább.
+*Dátum- és dátum/idő értékek*
 
-Végül, ha a feladat rendelkezik egy ütemezést, órákban és percekben nincsenek beállítva az ütemezésben, az értékek alapértelmezett órában és percben az első végrehajtásának, illetve ha.
+* A Scheduler-feladatok dátumok csak a dátum, és kövesse a [ISO 8601-specifikáció](http://en.wikipedia.org/wiki/ISO_8601).
 
-## <a name="deep-dive-schedule"></a>Részletes bemutatója: ütemezése
-Használhat **ütemezés** való *korlát* feladat végrehajtások száma. Például, ha a feladatot egy **gyakoriság** "hónap" ütemezés szerint csak a 31 nap futtatja, akkor a feladat fut, csak egy harminc-első napon hónapokban.
+* Dátum-idő a Scheduler-feladatok közé tartozik a dátum- és, hajtsa végre a [ISO 8601-specifikáció](http://en.wikipedia.org/wiki/ISO_8601), és adottnak tekintik (UTC), ha nem az UTC-eltérés van megadva. 
 
-Is **ütemezés** való *bontsa ki a* feladat végrehajtások száma. Például, ha a feladatot egy **gyakoriság** "hónap" egy ütemezést, amely a hónap napjain 1 és 2 fut, akkor a feladat futtatása helyett csak egyszer a hónap első és második napjain egy hónap.
+További információkért lásd: [alapfogalmai, terminológiája és entitásai](../scheduler/scheduler-concepts-terms.md).
 
-Ha több ütemezést elemet ad meg, a kiértékelés sorrendjét van legnagyobbaktól a legkisebbekig: hetek száma, hónap és nap, hét nap, óra és perc.
+<a name="start-time"></a>
+
+## <a name="details-starttime"></a>Részletek: startTime
+
+Ez a táblázat azt ismerteti, hogyan **startTime** befolyásolja a feladat fut:
+
+| startTime | Nincs ismétlődés. | Ismétlődés ütemezés nélkül | Ismétlődés ütemezéssel |
+|-----------|---------------|-------------------------|--------------------------|
+| **A Kezdés időpontja** | Ha azonnal futtatni. | Ha azonnal futtatni. Futtassa a következő végrehajtási időpontokat az utolsó végrehajtási időpont alapján számítja ki. | Ha azonnal futtatni. Futtassa az azt követő végrehajtások az ismétlődési ütemezés alapján. | 
+| **Múltbeli kezdési időpontja** | Ha azonnal futtatni. | Kiszámíthatja az első jövőbeli futtatáskor a kezdési idő után, és jelenleg futtatható. <p>Futtassa a következő végrehajtási időpontokat az utolsó végrehajtási időpont alapján számítja ki. <p>Tekintse meg a példát a táblázat után. | Feladat indítása *nem indulhat hamarabb* a megadott kezdési időpontban. Az első előfordulás a kezdési időpontból kiszámított ütemezésen alapul. <p>Futtassa az azt követő végrehajtások az ismétlődési ütemezés alapján. | 
+| **Kezdő időpont jövőbeli, illetve az aktuális időpont** | Egyszer, a megadott kezdési időpontban fut le. | Egyszer, a megadott kezdési időpontban fut le. <p>Futtassa a következő végrehajtási időpontokat az utolsó végrehajtási időpont alapján számítja ki. | Feladat indítása *nem indulhat hamarabb* a megadott kezdési időpontban. Az első előfordulás a kezdő időpontból kiszámított ütemezésen alapul. <p>Futtassa az azt követő végrehajtások az ismétlődési ütemezés alapján. |
+||||| 
+
+Tegyük fel, hogy ebben a példában az alábbi feltételek: egy kezdő dátuma a múltban ismétlődéssel, de ütemezés nélkül.
+
+```json
+"properties": {
+   "startTime": "2015-04-07T14:00Z", 
+   "recurrence": {
+      "frequency": "Day",
+      "interval": 2
+   }
+}
+```
+
+* Az aktuális dátum és idő "2015-04-08 13:00".
+
+* A kezdő dátum és idő "2015-04-07 14:00", azaz az aktuális dátum és idő előtt.
+
+* Az ismétlődés kétnaponta van.
+
+1. Ezen feltételek mellett az első végrehajtási időpont a 2015-04-09 14:00-kor. 
+
+   A Scheduler a végrehajtási alkalmakat, a kezdési időpont alapján példányok elveti a múltban, és a jövőben használja a következő alkalom számítja ki. 
+   Ebben az esetben **startTime** jelenleg a 2015-04-07 2:00 Órakor, így a következő alkalom két napra esik ettől, amely 2015-04-09: 2:00-kor.
+
+   Az első végrehajtási időpont megegyezik-e **startTime** 2015-04-05 14:00 vagy 2015-04-01 14:00. Az első végrehajtás után az azt követő végrehajtások kiszámítása alapján az ütemezést. 
+   
+1. A végrehajtás majd kövesse az itt látható sorrendben: 
+   
+   1. 2015-04-11: 2:00-kor
+   1. 2015-04-13: 2:00-kor 
+   1. 2015-04-15: 2:00-kor
+   1. és így tovább...
+
+1. Végül ha egy feladat ütemezés szerint, de nem rendelkezik megadott óra és perc, óra és perc az első végrehajtás ezen értékek alapértelmezett jelölik.
+
+<a name="schedule"></a>
+
+## <a name="details-schedule"></a>Részletek: ütemezés
+
+Használhat **ütemezés** való *korlát* a feladat végrehajtásainak számát. Például, ha a feladat egy **gyakorisága** "Month" csak a 31. napon futó ütemezés van, a feladat csak a harmincegy napos hónapokban futtatható.
+
+Is **ütemezés** való *bontsa ki a* a feladat végrehajtásainak számát. Például, ha a feladat egy **gyakorisága** "Month" 1. és 2 futó ütemezés van, a feladat futtatása helyett csak egyszer a hónap első és második napjain egy hónapban.
+
+Ha több ütemezési elem adja meg, a kiértékelési sorrend a legnagyobb van-e a legkisebb: hét száma, hónap napja, hét napja, óra és perc.
 
 A következő táblázat részletesen ismerteti a schedule elemeit:
 
 | JSON-név | Leírás | Érvényes értékek |
 |:--- |:--- |:--- |
-| **minutes** |A feladat futtatása az óra perc. |Egy számokból álló tömb. |
-| **hours** |A feladat futtatása napot. |Egy számokból álló tömb. |
-| **weekDays** |A feladat futtatása a hét nap. Csak a heti gyakorisággal adható meg. |Tömb (maximális tömb mérete 7) a következő értékek egyikét sem:<br />-"Hétfő"<br />-"Kedd"<br />-"Szerda"<br />-"Csütörtök"<br />-"Péntek"<br />-"Szombat"<br />-"Vasárnap"<br /><br />Nem kis-és nagybetűket. |
-| **monthlyOccurrences** |Meghatározza, hogy mely hónap napjai a feladat futtatásakor. Csak a havi gyakorisággal adható meg. |A tömb **monthlyOccurrences** objektumok:<br /> `{ "day": day, "occurrence": occurrence}`<br /><br /> **nap** a feladat futtatása a hét napja. Például *{vasárnap}* a hónap minden vasárnap. Kötelező.<br /><br />**előfordulás** a napot a hónapban előfordulása. Például *{vasárnap, -1}* a hónap utolsó vasárnap. Választható. |
-| **monthDays** |A feladat fut. a hónap napjának. Csak a havi gyakorisággal adható meg. |A következő értékek tömbje:<br />-Bármely értéke < = -1 és > =-31<br />-Bármely érték > = 1 és < = 31|
+| **minutes** |A feladat futtatása óra perc. |Egész számok tömbje. |
+| **hours** |A feladat futtatása napot. |Egész számok tömbje. |
+| **weekDays** |A feladat futtatása a hét napjait. Csak heti gyakorisággal adható meg. |(A tömb maximális mérete 7) a következő értékek bármelyikének tömbje:<br />– "Hétfő"<br />– "Kedd"<br />– "Szerda"<br />– "Thursday"<br />– "Péntek"<br />– "Saturday"<br />– "Sunday értékkel"<br /><br />Nem kis-és nagybetűket. |
+| **monthlyOccurrences** |Meghatározza, hogy a hónap mely napjain a feladat futtatásakor. Csak havi gyakoriság mellett adható meg. |Egy tömbjét **monthlyOccurrences** objektumok:<br /> `{ "day": day, "occurrence": occurrence}`<br /><br /> **nap** a feladat futtatása a hét napja. Ha például *{vasárnap}* a hónap minden vasárnapja. Kötelező.<br /><br />**előfordulás** előfordulása a hónapban a nap. Ha például *{vasárnap, a -1}* a hónap utolsó vasárnapja. Választható. |
+| **monthDays** |A feladat futtatása a hónap napját. Csak havi gyakoriság mellett adható meg. |Egy tömb, a következő értékeket:<br />– Bármilyen érték -1 és -31 között<br />– Bármilyen érték 1 és 31 között|
 
-## <a name="examples-recurrence-schedules"></a>Példák: Ismétlődési ütemezés
-Az alábbi példák bemutatják a különböző ismétlődési ütemezés. A példák összpontosítanak az ütemterv objektum és a alelemeiket mutatják be.
+## <a name="examples-recurrence-schedules"></a>Példák: Ismétlődésütemezések
 
-Ezeket az ütemezéseket feltételeztük, hogy **időköz** értéke 1\. A példákban is feltételezzük a megfelelő **gyakoriság** értékek az értékek **ütemezés**. Például nem használható egy **gyakoriság** "nap", és egy **monthDays** módosításra **ütemezés**. Azt ismertetik, hogy ezek a korlátozások, a cikk korábbi részében.
+Az alábbi példák bemutatják a különböző ismétlődésütemezésekre. A példák az ütemezési objektumra és annak alelemeire koncentrálhat.
+
+Ezeket az ütemezéseket feltételeztük, hogy **időköz** értéke 1\. A példák is feltételezik a megfelelő **gyakorisága** értékek az értékek **ütemezés**. Például nem használható egy **gyakorisága** "Day", és egy **monthDays** módosítás **ütemezés**. Ezek a korlátozások a cikk korábbi részében ismertetünk.
 
 | Példa | Leírás |
 |:--- |:--- |
-| `{"hours":[5]}` |Futtatás minden nap 5 órakor.<br /><br />Ütemező másolatot minden egyes érték felel meg a "hours" minden érték a "minutes", egyenként, a feladat fut, amelyen az összes idő a lista létrehozásához. |
+| `{"hours":[5]}` |Minden nap 05-kor fut.<br /><br />A Scheduler minden értéket felel meg az "hours", "minutes" szereplő összes értékhez, egyenként, hozzon létre egy listát, ahol minden alkalommal a feladat futtatása. |
 | `{"minutes":[15], "hours":[5]}` |Minden nap 05:15-kor fut le. |
 | `{"minutes":[15], "hours":[5,17]}` |Minden nap 05:15-kor és 17:15-kor fut le. |
 | `{"minutes":[15,45], "hours":[5,17]}` |Minden nap 05:15-kor, 05:45-kor, 17:15-kor és 17:45-kor fut le. |
 | `{"minutes":[0,15,30,45]}` |15 percenként fut le. |
-| `{hours":[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23]}` |Óránként fut le.<br /><br />Ez a feladat óránként fut. A percet értéke által szabályozott **startTime**, ha van megadva. Ha nincs **startTime** érték van megadva, a perc vezérli a létrehozásának ideje. Például, ha a kezdési ideje vagy létrehozásának idejét (amelyik vonatkozik) du. 12:25, a feladat fut. a 00:25, 01:25, 02:25,..., 23:25.<br /><br />Az ütemezés értéke megegyezik egy feladatot a **gyakoriság** "hour", az egy **időköz** 1, és nem **ütemezés** érték. A különbség az, hogy az ütemezés használható másik **gyakoriság** és **időköz** értékek más feladatok létrehozására. Például ha **gyakoriság** van "honap", az ütemezés futtatása helyett naponta csak egyszer a hónap (Ha **gyakoriság** van "day"). |
-| `{minutes:[0]}` |Minden óra kezdetén fut le.<br /><br />Ez a feladat is fut, óránként, de egész (12 óra, Reggel 1, 2 AM és így tovább). Ez megegyezik a feladatot egy **gyakorisága** "hour", a egy **startTime** értéke nulla perc, és nem **ütemezés**, ha a gyakoriság értéke "day". Azonban ha a **gyakoriság** van "hét" vagy "honap", az ütemezés egy hét vagy havi, egy nap csak egy nap végrehajtja a kulcsattribútumokkal. |
-| `{"minutes":[15]}` |Minden órában 15 perc futtatni.<br /><br />Kezdő pozíció: 00:15 AM, 1:15 AM, 2:15 AM, óránként fut és így tovább. A 11:15 előtti végződik. |
-| `{"hours":[17], "weekDays":["saturday"]}` |Futtassa a szombat délután 5 óra minden héten. |
-| `{hours":[17], "weekDays":["monday", "wednesday", "friday"]}` |Minden héten futtatni hétfőn, szerdán és pénteken délután 5 óra. |
+| `{hours":[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23]}` |Óránként fut le.<br /><br />Ez a feladat óránként fut le. A perc értéke által szabályozott **startTime**, ha a célgyűjtemény meg van adva. Ha nincs **startTime** érték van megadva, a percnek a létrehozás ideje szabályozza. Például ha a Kezdés időpontja vagy a Létrehozás időpontja (amelyik alkalmazható) 12:25-kor, a feladat fut, 00:25-kor, 01:25-kor, 02:25-kor,..., 23:25-kor.<br /><br />Az ütemezés megegyezik egy feladathoz egy **gyakorisága** "Hour", egy **időköz** az 1- es nem **ütemezés** értéket. A különbség az, hogy ez az ütemezés használható különböző **gyakorisága** és **időköz** értékeket más feladatok létrehozásához. Például ha **gyakorisága** van "month", az ütemezés fut, nem naponta egy hónapban csak egyszer (Ha **gyakorisága** "Day"). |
+| `{minutes:[0]}` |Minden óra kezdetén fut le.<br /><br />Ez a feladat szintén óránként fut az adott óra kezdetén (12 AM, 1 AM, 2 AM és így tovább). Ez az egy feladathoz egyenértékű egy **gyakorisága** "Hour", egy **startTime** értéke nulla perc, és nincs **ütemezés**, ha a gyakoriság "day". Azonban ha a **gyakorisága** van "week" vagy "month", az ütemezés egyszer fut csak egy héten egyszer vagy egy hónapban, illetve. |
+| `{"minutes":[15]}` |Minden óra 15 perc, futtassa.<br /><br />00:15-kor, 1:15-kor, 2:15-kor, díjtól óránként fut és így tovább. Este 11:15-kor ér véget. |
+| `{"hours":[17], "weekDays":["saturday"]}` |Minden héten szombaton 17: 00-kor fut. |
+| `{hours":[17], "weekDays":["monday", "wednesday", "friday"]}` |Minden héten hétfőn, szerdán és pénteken 17: 00-kor fut. |
 | `{"minutes":[15,45], "hours":[17], "weekDays":["monday", "wednesday", "friday"]}` |Minden héten hétfőn, szerdán és pénteken, 17:15-kor és 17:45-kor fut le. |
-| `{"hours":[5,17], "weekDays":["monday", "wednesday", "friday"]}` |Minden héten, hétfőn, szerdán és pénteken 5 óra és 5 futtassa. |
-| `{"minutes":[15,45], "hours":[5,17], "weekDays":["monday", "wednesday", "friday"]}` |Futtatás éjfélre (5:15), 5 óra 45 Perckor, 5:15 előtti, és délután 5:45 óra a hétfőn, szerdán és pénteken minden héten. |
+| `{"hours":[5,17], "weekDays":["monday", "wednesday", "friday"]}` |05-kor és 17: 00, hétfőn, szerdán és pénteken futtatása minden héten. |
+| `{"minutes":[15,45], "hours":[5,17], "weekDays":["monday", "wednesday", "friday"]}` |Futtatás: 05:15-kor, 05:45-kor, 17:15-kor és 17:45-kor hétfőn, szerdán és pénteken, minden héten. |
 | `{"minutes":[0,15,30,45], "weekDays":["monday", "tuesday", "wednesday", "thursday", "friday"]}` |Hétköznapokon 15 percenként fut le. |
-| `{"minutes":[0,15,30,45], "hours": [9, 10, 11, 12, 13, 14, 15, 16] "weekDays":["monday", "tuesday", "wednesday", "thursday", "friday"]}` |15 percenként futtatható létrehozását, Reggel 9 és du. 4:45 között. |
-| `{"weekDays":["sunday"]}` |Minden vasárnap futni kezdési időpontban. |
-| `{"weekDays":["tuesday", "thursday"]}` |Futtassa a keddi és csütörtöki napokon kezdési időpontban. |
-| `{"minutes":[0], "hours":[6], "monthDays":[28]}` |Minden hónap erdőtopológia kezelésre-nyolcadik napon 6 órakor futtassa (feltéve, hogy egy **gyakoriság** "hónap"). |
-| `{"minutes":[0], "hours":[6], "monthDays":[-1]}` |Futtatás a hónap utolsó napján 6 órakor.<br /><br />Ha azt szeretné, a feladat futtatásához a hónap utolsó napján, használja a -1 nap 28, 29, 30 és 31 helyett. |
-| `{"minutes":[0], "hours":[6], "monthDays":[1,-1]}` |Minden hónap első és utolsó napján reggel 6 óra futtatni. |
-| `{monthDays":[1,-1]}` |Futtatás kezdési időpontban minden hónap első és utolsó napján. |
-| `{monthDays":[1,14]}` |Futtatás kezdési időpontban minden hónap első és tizennegyedik napján. |
-| `{monthDays":[2]}` |Futtassa a második napot a hónapban kezdési időpontban. |
-| `{"minutes":[0], "hours":[5], "monthlyOccurrences":[{"day":"friday", "occurrence":1}]}` |Futtassa a 5 órakor minden hónap első péntekig. |
-| `{"monthlyOccurrences":[{"day":"friday", "occurrence":1}]}` |Futtatás kezdési időpontban minden hónap első péntekén. |
-| `{"monthlyOccurrences":[{"day":"friday", "occurrence":-3}]}` |Futtatás a hónap minden hónapban, kezdési időpontban végén harmadik péntekén. |
+| `{"minutes":[0,15,30,45], "hours": [9, 10, 11, 12, 13, 14, 15, 16] "weekDays":["monday", "tuesday", "wednesday", "thursday", "friday"]}` |Hétköznapokon 15 percenként, 9: 00 és 16:45 között. |
+| `{"weekDays":["sunday"]}` |Vasárnap futtassa a megadott kezdési időpontban. |
+| `{"weekDays":["tuesday", "thursday"]}` |Keddenként és csütörtökönként futtassa a megadott kezdési időpontban. |
+| `{"minutes":[0], "hours":[6], "monthDays":[28]}` |Minden hónap huszonnyolcadik napján 6-kor fut (feltéve, hogy egy **gyakorisága** "Month"). |
+| `{"minutes":[0], "hours":[6], "monthDays":[-1]}` |A hónap utolsó napján 6: 00-kor fut le.<br /><br />Ha azt szeretné, a feladat futtatásához a hónap utolsó napján, -1 nap helyett használjon 28, 29, 30 és 31. |
+| `{"minutes":[0], "hours":[6], "monthDays":[1,-1]}` |Minden hónap első és utolsó napján 6: 00-kor fut le. |
+| `{monthDays":[1,-1]}` |Futtassa a megadott kezdési időpontban minden hónap első és utolsó napján. |
+| `{monthDays":[1,14]}` |Futtassa a megadott kezdési időpontban minden hónap első és tizennegyedik nap. |
+| `{monthDays":[2]}` |A második nap a hónapban megadott kezdési időpontban fut. |
+| `{"minutes":[0], "hours":[5], "monthlyOccurrences":[{"day":"friday", "occurrence":1}]}` |Futtassa az első péntekjén, 05-kor, havonta. |
+| `{"monthlyOccurrences":[{"day":"friday", "occurrence":1}]}` |Futtassa a megadott kezdési időpontban minden hónap első péntekjén. |
+| `{"monthlyOccurrences":[{"day":"friday", "occurrence":-3}]}` |A harmadik pénteken, a hónap, minden hónapban, a megadott kezdési időpontban fut. |
 | `{"minutes":[15], "hours":[5], "monthlyOccurrences":[{"day":"friday", "occurrence":1},{"day":"friday", "occurrence":-1}]}` |Minden hónap első és utolsó péntekjén, 05:15-kor fut le. |
-| `{"monthlyOccurrences":[{"day":"friday", "occurrence":1},{"day":"friday", "occurrence":-1}]}` |Az első és utolsó péntekén legyen minden hónap Futtatás kezdési időpontban. |
-| `{"monthlyOccurrences":[{"day":"friday", "occurrence":5}]}` |Futtatás kezdési időpontban havonta ötödik péntekén.<br /><br />Ha nincs ötödik péntek hónap, a feladat nem futtatható. Érdemes a-1 érték 5 helyett a előfordulásakor Ha azt szeretné, hogy fusson a feladat az utolsó bekövetkező hónap péntekig. |
+| `{"monthlyOccurrences":[{"day":"friday", "occurrence":1},{"day":"friday", "occurrence":-1}]}` |Első és utolsó péntekjén, havonta, futtassa a megadott kezdési időpontban. |
+| `{"monthlyOccurrences":[{"day":"friday", "occurrence":5}]}` |Futtassa a megadott kezdési időpontban minden hónap ötödik péntek.<br /><br />Ha az adott hónapban nincs ötödik péntek, akkor a feladat nem fut le. Érdemes a -1 5 helyett inkább az előfordulás esetében ha szeretné futtatni a feladatot az utolsó bekövetkező péntekjén, a hónap. |
 | `{"minutes":[0,15,30,45], "monthlyOccurrences":[{"day":"friday", "occurrence":-1}]}` |Minden hónap utolsó péntekjén, 15 percenként fut le. |
 | `{"minutes":[15,45], "hours":[5,17], "monthlyOccurrences":[{"day":"wednesday", "occurrence":3}]}` |Minden hónap harmadik szerdáján, 05:15-kor, 05:45-kor, 17:15-kor és 17:45-kor fut le. |
 
 ## <a name="see-also"></a>Lásd még
 
-- [A Scheduler ismertetése](scheduler-intro.md)
-- [Az Azure Scheduler alapfogalmai, terminológiája és entitáshierarchiája](scheduler-concepts-terms.md)
-- [Ismerkedés a Scheduler szolgáltatás Azure Portalon való használatával](scheduler-get-started-portal.md)
-- [Csomagok és számlázás az Azure Schedulerben](scheduler-plans-billing.md)
-- [Az Azure Scheduler REST API-jának leírása](https://msdn.microsoft.com/library/mt629143)
-- [Az Azure Scheduler PowerShell-parancsmagjainak leírása](scheduler-powershell-reference.md)
-- [Az Azure Scheduler magas rendelkezésre állás és a megbízhatóság](scheduler-high-availability-reliability.md)
-- [Azure Scheduler – korlátozások, alapértékek és hibakódok](scheduler-limits-defaults-errors.md)
-- [Kimenő hitelesítés az Azure Schedulerben](scheduler-outbound-authentication.md)
-
+* [Mi az Azure Scheduler?](scheduler-intro.md)
+* [Az Azure Scheduler alapfogalmai, terminológiája és entitáshierarchiája](scheduler-concepts-terms.md)
+* [Azure Scheduler – korlátozások, alapértékek és hibakódok](scheduler-limits-defaults-errors.md)

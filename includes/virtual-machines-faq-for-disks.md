@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/03/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: e8005da056c08b21bf0b91dc71b3dafac281de1f
-ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
+ms.openlocfilehash: c0c215c4c599bbd5551891cdf6f999719983d31e
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "40237858"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47060649"
 ---
 # <a name="frequently-asked-questions-about-azure-iaas-vm-disks-and-managed-and-unmanaged-premium-disks"></a>Azure IaaS virtuális gépek és a felügyelt és nem felügyelt prémium szintű lemezek – gyakori kérdések
 
@@ -101,7 +101,7 @@ Csak olvasható közös hozzáférésű jogosultságkód (SAS) URI-t a felügyel
 
 Igen, támogatja a nem felügyelt, és a felügyelt lemezek támogatottak. Azt javasoljuk, hogy az új számítási feladatok a felügyelt lemezek használata, és az aktuális számítási feladatok migrálása felügyelt lemezekre.
 
-**Ha hozzon létre egy 128 GB-os lemezt, és növelje a 130 GB méretű, kell fizetnem az a következő lemez mérete (256 GB)?**
+**Ha hozzon létre egy 128 GB-os lemezt, és ezután a 130 GIB-ra méretének növeléséhez, kell fizetnem az a következő lemez mérete (256 GB)?**
 
 Igen.
 
@@ -137,10 +137,10 @@ Nem, ha az új lemez jön létre, hogy a blob teljes önálló másolatát ekkor
 
 Felügyelt lemezek nem nevezhető át őket. Azonban nem felügyelt lemez is átnevezése, mindaddig, amíg azt nem jelenleg csatlakozik egy virtuális Merevlemezt vagy virtuális Gépet.
 
-## <a name="standard-ssd-disks-preview"></a>Standard SSD-lemezeket (előzetes verzió)
+## <a name="standard-ssd-disks"></a>Standard SSD-lemez
 
 **Mik az Azure Standard SSD-lemez?**
-Standard SSD-lemez IOPS alacsonyabb szinten egységes teljesítményt igénylő számítási feladatok költséghatékony tárolására optimalizált SSD adathordozóján által támogatott standard szintű lemezek. Előzetes verzióban érhetők el a korlátozott számú régióban, és korlátozott kezelhetőségi (Resource Manager-sablonok keresztül érhető el).
+Standard SSD-lemez IOPS alacsonyabb szinten egységes teljesítményt igénylő számítási feladatok költséghatékony tárolására optimalizált SSD adathordozóján által támogatott standard szintű lemezek.
 
 <a id="standard-ssds-azure-regions"></a>**Mik a Standard SSD-lemez jelenleg támogatott régiókat?**
 Minden Azure-régióban mostantól támogatja a Standard SSD-lemezeket.
@@ -275,7 +275,7 @@ Nincs minden lemez méretét, amelyet az adott korlátok kiosztott IOPS és átv
 
 **Mik azok az IOPS és átviteli sebességet, amelyet a lemez gyorsítótárból szoftverei korlátai?**
 
-A gyorsítótár összesített korlátok és helyi SSD-DS-sorozat: a magonként 4000 IOPS és 33 MB / s magonként. A GS sorozat magonként 5000 IOPS és az 50 MB / s magonként érhetők el.
+A gyorsítótár összesített korlátok és helyi SSD-DS-sorozat: a magonként 4000 IOPS és magonként másodpercenként 33 MiB. A GS sorozat magonként 5000 IOPS és magonként másodpercenként 50 MiB érhetők el.
 
 **Helyi SSD-Managed Disks Virtuálisgép támogatott?**
 
@@ -287,38 +287,60 @@ Nincs nem hátulütője TRIM vagy prémium szintű Azure-lemezek vagy a standard
 
 ## <a name="new-disk-sizes-managed-and-unmanaged"></a>Új lemez méretek: felügyelt és nem felügyelt
 
-**Mi az a legnagyobb lemez méretét a támogatott operációs rendszer és az adatlemezeket?**
+**Mi az a legnagyobb felügyelt lemez méretét a támogatott operációs rendszer és az adatlemezek?**
 
-A partíció típusa, amely az Azure támogatja az operációsrendszer-lemez a fő rendszerindító rekord (MBR). A fő rendszertöltő rekord formátumot támogatja egy lemezt méret 2 TB-ig. A legnagyobb, amely az Azure támogatja az operációsrendszer-lemez mérete 2 TB. Az Azure az adatlemezek akár 4 TB-os támogatja. 
+A partíció típusa, amely az Azure támogatja az operációsrendszer-lemez a fő rendszerindító rekord (MBR). A fő rendszertöltő rekord formátum támogatja a lemez mérete legfeljebb 2 Tib-ra. A legnagyobb, amely az Azure támogatja az operációsrendszer-lemez mérete 2 Tib-ra. Az Azure felügyelt adatlemezek akár 32 TiB támogatja. Felügyelt lemez mérete nagyobb, mint 4 Tib-ra vannak előzetes verzióban érhető el. Azokat a további információk: a [blogbejegyzés](http://aka.ms/azure-large-disk-32TB-preview-blog).
+
+**Mi az a legnagyobb támogatott operációs rendszer és az adatlemezek nem felügyelt lemez mérete?**
+
+A partíció típusa, amely az Azure támogatja az operációsrendszer-lemez a fő rendszerindító rekord (MBR). A fő rendszertöltő rekord formátum támogatja a lemez mérete legfeljebb 2 Tib-ra. A legnagyobb Azure támogatja a nem felügyelt operációsrendszer-lemez mérete 2 Tib-ra. Az Azure data nem felügyelt lemezek akár 4 Tib-ra támogatja.
 
 **Mi az a legnagyobb lapblob méretét, amely támogatott?**
 
-A legnagyobb lapblob méretét, amely támogatja az Azure esetében 8 TB (8,191 GB). A maximális blog, amikor a virtuális Géphez csatolt adatok vagy operációsrendszer-lemezek mérete 4 TB-ig (4095 GB).
+A legnagyobb lapblob méretét, amely támogatja az Azure 8 Tib-ra (8,191 GiB). A maximális blog, amikor a virtuális Géphez csatolt adatok vagy operációsrendszer-lemezek mérete 4 Tib-ra (4095 GiB).
 
-**Kell létrehozása, csatlakoztatása, átméretezése és 1 TB-nál nagyobb lemezek feltöltése az Azure-eszközök új verziójának használatával?**
+**Kell létrehozása, csatlakoztatása, átméretezése és 1 TiB-nál nagyobb lemezek feltöltése az Azure-eszközök új verziójának használatával?**
 
-Nem kell frissíteni a meglévő Azure-eszközök létrehozása, csatlakoztatása és 1 TB-nál nagyobb lemezek átméretezése. A VHD-fájl feltöltése a helyszínről az Azure lapblob vagy nem felügyelt lemez, használhatja a legújabb eszköz csoportokat kell:
+Nem kell frissíteni a meglévő Azure-eszközök létrehozása, csatlakoztatása vagy 1 TiB-nál nagyobb lemezek átméretezése. A VHD-fájl feltöltése a helyszínről az Azure lapblob vagy nem felügyelt lemez, szüksége használhatja az alább felsorolt legújabb eszköz csoportokat. Csak támogatjuk a VHD feltöltése legfeljebb 8 Tib-ra.
 
 |Azure-eszközök      | Támogatott verziók                                |
 |-----------------|---------------------------------------------------|
 |Azure PowerShell | Verziószám 4.1.0: 2017 június kiadás vagy újabb|
 |Azure CLI v1     | Verziószám 0.10.13: 2017 május kiadás vagy újabb|
+|Az Azure CLI v2     | 2.0.12-es verziószám: 2017 július kiadás vagy újabb|
 |AzCopy           | Verziószám 6.1.0: 2017 június kiadás vagy újabb|
-
-Az Azure CLI-vel v2 és az Azure Storage Explorer támogatása hamarosan elérhető lesz. 
 
 **Támogatottak a P4 és a P6 szintű lemezméretek nem felügyelt lemezek és lapblobok esetében?**
 
-Nem. P4 (32 GB) és P6 (64 GB-os) lemez mérete csak a felügyelt lemezek támogatottak. Nem felügyelt lemezek és lapblobok támogatása hamarosan elérhető lesz.
+P4 (32 GiB) és P6 (64 GiB) lemezméretek nem támogatottak az alapértelmezett lemez réteget nem felügyelt lemezek és lapblobok. Kell külön [a Blobszint beállítása](https://docs.microsoft.com/rest/api/storageservices/set-blob-tier) a lemezt, ezek a rétegek leképezve a P4 és a P6. Ha telepít egy nem felügyelt lemez vagy lap blob, a lemez mérete vagy a tartalom hossza kisebb, mint 32 GIB-ra vagy 64 GIB-ra a Blobszint beállítása nélkül 32 GiB közötti, továbbra is a P10 500 IOPS és 100 MiB/s és a csatlakoztatott tarifacsomag kerül.
 
-**Ha a meglévő prémium szintű felügyelt lemez kevesebb, mint 64 GB-os lett létrehozva, mielőtt a kis méretű lemez (körülbelül 2017. június 15.) engedélyezve lett, hogyan számlázzuk?**
+**Ha a meglévő prémium szintű felügyelt lemez kevesebb, mint 64 GiB lett létrehozva, mielőtt a kis méretű lemez (körülbelül 2017. június 15.) engedélyezve lett, hogyan számlázzuk?**
 
-Meglévő kis méretű prémium szintű lemezek kisebb, mint 64 GB-os továbbra is a P10 tarifacsomag szerint számlázzuk. 
+Meglévő kis méretű prémium szintű lemezek kisebb, mint 64 GiB továbbra is a P10 tarifacsomag szerint számlázzuk.
 
-**Hogyan válthatok a P4 és a P6 a P10-es 64 GB-nál kisebb kis méretű prémium szintű lemezek lemez szintjét?**
+**Hogyan válthatok kis méretű prémium szintű lemezek szintjének lemez kevesebb, mint 64 GiB P10 a P4 és a P6?**
 
-Pillanatkép készítése a kis méretű lemezek, és hozzon létre egy lemezt automatikusan átvált a tarifacsomag P4 vagy P6 kiépített mérete alapján. 
+Pillanatkép készítése a kis méretű lemezek, és hozzon létre egy lemezt automatikusan átvált a tarifacsomag P4 vagy P6 kiépített mérete alapján.
 
+**Ön átméretezhető méretek meglévő felügyelt lemezeket kevesebb mint 4 Tib-ra való új újonnan bevezetett lemezméretek legfeljebb 32 Tib-ra?**
+
+Új felügyelt lemezek méretei 8 Tib-ra, 16 TiB és 32 TiB jelenleg előzetes verzióban érhető el. Nem még támogatjuk a meglévő lemezméretek, az új lemezméret átméretezése.
+
+**Mi az a legnagyobb lemezméret az Azure Backup és az Azure Site Recovery szolgáltatás által támogatott?**
+
+A legnagyobb lemez méretét, az Azure Backup és az Azure Site Recovery szolgáltatás által támogatott 4 Tib-ra.
+
+**Mik azok a virtuális gép ajánlott mérete a nagyméretű lemezek (> 4TiB) optimalizált Standard SSD és HDD standard szintű lemezek elérése érdekében a lemez IOPS és sávszélesség?**
+
+Standard SSD és Standard HDD nagy lemezméretek, az adatátviteli sebességet eléréséhez (> 4 TB-os) meghaladja az 500 IOPS és 60 MiB/s, használjon egy, a következő Virtuálisgép-méretek optimalizálhatja a teljesítményt: a B sorozat, DSv2-sorozat, a Dsv3-sorozat, az ESv3-adatsorok, Fs sorozatú Fsv2-sorozat, M-sorozat, GS-sorozat, NCv2 sorozat, az NCv3 sorozatú vagy Ls-sorozat virtuális gépei.
+
+**Mely régiók csak a felügyelt lemezek mérete nagyobb, mint a támogatott 4 Tib-ra?**
+
+Az előzetes verzióban érhető el jelenleg a felügyelt lemezek mérete támogatottak nyugati USA középső régiója csak.
+
+**Hogy támogatják-állomás gyorsítótárazásának engedélyezése az újabb lemezméretek a?**
+
+Lemezméret kisebb 4TiB állomás gyorsítótárazása az írásvédett és az olvasási/írási támogatjuk. Adatlemez-méretet a több mint 4 Tib-ra, nem támogatjuk a gyorsítótár-beállítás none. Azt javasoljuk, hogy kisebb lemezméretet, ahol várható és jobb teljesítményt boost figyelje a virtuális géphez gyorsítótárazott adatok gyorsítótárazásának kihasználva.
 
 ## <a name="what-if-my-question-isnt-answered-here"></a>Mi történik, ha kérdésem itt nem választ?
 

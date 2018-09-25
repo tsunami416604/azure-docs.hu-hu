@@ -1,79 +1,82 @@
 ---
-title: Üdvözli a Wingtips alkalmazás – az Azure SQL adatbázis |} Microsoft Docs
-description: Ismerje meg az adatbázis-bérlőhöz modelleket, és a minta Wingtips SaaS-alkalmazáshoz, az Azure SQL Database a felhőalapú környezetben.
+title: Üdvözli a wingtips alkalmazás – az Azure SQL Database |} A Microsoft Docs
+description: Ismerje meg az adatbázis-bérlős modelleket, és arról a minta wingtips SaaS-alkalmazás, az Azure SQL Database a felhőalapú környezetben.
 keywords: sql database-oktatóanyag
 services: sql-database
-author: billgib
-manager: craigg
 ms.service: sql-database
-ms.custom: scale out apps
+ms.subservice: scenario
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
+author: stevestein
+ms.author: sstein
+ms.reviewer: billgib
+manager: craigg
 ms.date: 04/01/2018
-ms.author: billgib
-ms.openlocfilehash: 3c7d1d40af3a0b8f70302171eb13ac0a180b0bfe
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: a05a8ad495e33734a531405902ce34e3591bfe15
+ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34644392"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47056318"
 ---
-# <a name="the-wingtip-tickets-saas-application"></a>A Wingtip jegyek SaaS-alkalmazáshoz
+# <a name="the-wingtip-tickets-saas-application"></a>A Wingtip Tickets SaaS-alkalmazás
 
-Azonos *Wingtip jegyek* SaaS-alkalmazás meg van valósítva egyes három minta. Az alkalmazás az egyszerű esemény listázása és jegykezelési SaaS-alkalmazás célzó kis helyszínek - színház, treff, stb. Egyes helyszínekkel a bérlő az alkalmazást, és a saját adatok rendelkezik: helyszínére részleteit, listák események, az ügyfelek, jegy rendelések, stb.  Az alkalmazás, kezelési parancsprogramok és oktatóanyagok egy végpontok közötti Szolgáltatottszoftver-forgatókönyvek bővíthető. Ez magában foglalja a létesítési bérlők, figyeléséhez és felügyeletéhez a teljesítmény, séma kezelése, és több-bérlős jelentéskészítés és elemzés.
+Azonos *Wingtip Tickets* minden három minta SaaS-alkalmazás megvalósítása. Az alkalmazás az egyszerű esemény listázása és jegykiadás SaaS-alkalmazás célzó kis helyszínek - mozik, sportklubokat, stb. Minden egyes helyszín egy bérlőt az alkalmazás, és rendelkezik a saját adatai: helyszín részleteit, listák, események, ügyfelek, a jegy megrendelések, stb.  Az alkalmazást, a kezelő parancsfájlok és oktatóanyagok és bemutatja egy teljes körű SaaS-környezetben. Ez magában foglalja a kiépítési bérlők, figyeléséhez és felügyeletéhez a teljesítmény, sémakezelés, és a bérlők közötti jelentéskészítés és elemzés.
 
-## <a name="three-saas-application-and-tenancy-patterns"></a>Három SaaS alkalmazás és a vállalat kiszolgálása minták
+## <a name="three-saas-application-and-tenancy-patterns"></a>Három SaaS alkalmazás- és bérlős minták
 
-Az alkalmazás három változatban érhetők el; az Azure SQL Database minden egyes felderíti egy másik adatbázishoz bérleti mintát.  Az első bérlőnként egy önálló alkalmazás, a saját adatbázis használ. A második bérlőnként egy adatbázist egy több-bérlős alkalmazást használ. A harmadik minta szilánkos több-bérlős adatbázisok használja egy több-bérlős alkalmazást.
+Az alkalmazás három változatban érhetők el; az Azure SQL Database egy másik adatbázishoz bérlős minta egyes ismerteti.  Az első saját adatbázis bérlőnként egy önálló alkalmazás használ. A második egy több-bérlős alkalmazás bérlőnkénti adatbázis használ. A harmadik példa egy több-bérlős alkalmazást több-bérlős szilánkokra osztott adatbázisok.
 
-![Három bérleti minták][image-three-tenancy-patterns]
+![Három bérlős minták][image-three-tenancy-patterns]
 
- A mintákat a alkalmazáskód, valamint a felügyeleti parancsfájlok és a oktatóprogramot kínál, amelyek számos különböző kialakítási és felügyeleti minták felfedezése tartalmazza.  A mintákat a kisebb telepíti, hogy öt perc.  Három lehet egymás melletti telepített, így a különbségek a tervezési és kezelése.
+ Minden egyes mintát tartalmaz, az alkalmazás kódját, és -kezelés parancsfájljai és oktatóanyagok kialakításokat és felügyeleti mintákat számos tárgyaljuk.  Minden mintához belül helyez üzembe, hogy öt perc alatt.  Mindhárom lehet egymás mellett telepíthető, így összehasonlíthatja a különbségek a tervezési és kezelése.
 
-## <a name="standalone-application-per-tenant-pattern"></a>Bérlői minta egy önálló alkalmazás
+## <a name="standalone-application-per-tenant-pattern"></a>Önálló alkalmazás bérlői mintában
 
-Az önálló app típusú bérlői mintában egy egybérlős alkalmazást használó adatbázisokban az egyes bérlők számára. Mindegyik bérlő alkalmazás, az adatbázisát, beleértve az önálló Azure erőforráscsoport üzembe van helyezve. Az erőforráscsoport üzembe helyezve a szolgáltató előfizetés vagy a bérlői előfizetéshez, és a bérlői nevében a szolgáltató által kezelt. Az önálló app típusú bérlői mintában a legnagyobb bérlői elkülönítést is biztosít, de általában a legtöbb költséges, mivel nincs lehetőség megosztott erőforrások közötti több bérlő.  Ebben a mintában, előfordulhat, hogy bonyolult és bérlők kisebb számú telepített alkalmazások megfelelőek.  Az önálló verziója telepítéseinek, az alkalmazás testre szabható, az egyes bérlők számára egyszerűbb, mint a más kombinációját.  
+Bérlő mintában az önálló app-adatbázissal egy egybérlős alkalmazást használ az egyes bérlők számára. Minden bérlő alkalmazást, beleértve az adatbázisát, helyezünk üzembe egy külön Azure-erőforráscsoportot. Az erőforráscsoport a szolgáltató előfizetés vagy a bérlő előfizetés telepíthető és a bérlő nevében a szolgáltató felügyeli. A bérlő mintában önálló alkalmazás biztosítja a legnagyobb bérlők elkülönítését, de általában a legtöbb költséges, mivel nincs lehetőség az erőforrások több bérlő közötti megosztása nem lett.  Ez a minta kiválóan alkalmazható, amely összetettebb lehet, és a bérlők kisebb számú telepített alkalmazások számára.  Az önálló verziója telepítéseinek, az alkalmazás testre szabható az egyes bérlők számára egyszerűbb, mint a többi mintákat.  
 
-Tekintse meg a [oktatóanyagok] [ docs-tutorials-for-wingtip-sa] és kódja a Githubon [.../Microsoft/WingtipTicketsSaaS-StandaloneApp][github-code-for-wingtip-sa].
+Tekintse meg a [oktatóanyagok] [ docs-tutorials-for-wingtip-sa] és a kódját a Githubon [.../Microsoft/WingtipTicketsSaaS-StandaloneApp][github-code-for-wingtip-sa].
 
-## <a name="database-per-tenant-pattern"></a>Adatbázis típusú bérlői mintában
+## <a name="database-per-tenant-pattern"></a>Bérlő mintában adatbázis
 
-Az adatbázis típusú bérlői mintában érvényben, amely érintett a bérlők elszigetelésére, és szeretné futtatni a központi szolgáltatása költséghatékony, a megosztott erőforrások használatát lehetővé. Egy adatbázis minden helyszínére vagy bérlő jön létre, és az adatbázisok központilag felügyelt. Adatbázisok rugalmas készletek biztosításához költséghatékony és könnyen teljesítménykezelés, amely kihasználja a bérlők előre nem látható munkaterhelés mintáinak lehet üzemeltetni. Katalógus-adatbázis tárolja a bérlők és a hozzájuk tartozó adatbázisok közötti leképezést. Ez a leképezés kezelése a shard térkép felügyeleti szolgáltatását használja a [Elastic Database ügyféloldali kódtár](sql-database-elastic-database-client-library.md), amely biztosítja, hogy az alkalmazás hatékony kapcsolatok kezeléséhez.
+Az adatbázis bérlői mintában szolgáltatók által érintett a bérlők elkülönítését és szeretne futtatni egy központosított szolgáltatásba, amely lehetővé teszi a megosztott erőforrások költséghatékony használata esetén. Egy adatbázis jön létre minden egyes helyszín, vagy a bérlő számára, és központilag kezelt összes adatbázishoz. A rugalmas készletek az biztosítanak költséghatékony és egyszerűen alkalmazásteljesítmény-felügyelet, amely kihasználja a kiszámíthatatlan számítási feladat mintázatait, a bérlők adatbázisok lehet üzemeltetni. A katalógus-adatbázisban tárolja a bérlők és az adatbázisok közötti leképezéseket. Ez a leképezés a a szegmensek felügyeleti funkcióinak használatával kezeli a [Elastic Database-Ügyfélkódtár](sql-database-elastic-database-client-library.md), amely biztosítja a hatékony kapcsolat kezelése az alkalmazáshoz.
 
-Tekintse meg a [oktatóanyagok] [ docs-tutorials-for-wingtip-dpt] és kódja a Githubon [.../Microsoft/WingtipTicketsSaaS-DbPerTenant][github-code-for-wingtip-dpt].
+Tekintse meg a [oktatóanyagok] [ docs-tutorials-for-wingtip-dpt] és a kódját a Githubon [.../Microsoft/WingtipTicketsSaaS-DbPerTenant][github-code-for-wingtip-dpt].
 
-## <a name="sharded-multi-tenant-database-pattern"></a>Horizontálisan skálázott több-bérlős adatbázis minta
+## <a name="sharded-multi-tenant-database-pattern"></a>Több-bérlős szilánkokra osztott adatbázis minta
 
-Több-bérlős adatbázisok érvényben a bérlők és az alacsonyabb bérlői elkülönítés gépházban / alacsonyabb költségek keres szolgáltatók. Ebben a mintában lehetővé teszi a bérlők nagy számú csomagolási egyetlen adatbázisba, a költség-/-bérlő vezetői le. Közel végtelen méretezési által horizontális lehetőség a bérlők több adatbázis között. Katalógus-adatbázis bérlők adatbázisok rendeli hozzá.  
+Több-bérlős adatbázisok az olyan hatékony szolgáltatók,-bérlőt és -rendben csökkentett bérlők elkülönítését az alacsonyabb költség keres. Ez a minta lehetővé teszi a bérlők nagy számú csomagolási egy önálló adatbázis, a költség-bérlőnkénti vezetési le azokat. Majdnem végtelen skálázási lehetőség szerint horizontális skálázási a bérlők több adatbázis között. A katalógus-adatbázis bérlői adatbázisok rendeli hozzá.  
 
-Ebben a mintában is lehetővé teszi, hogy egy *hibrid* modell, amelyben egy adatbázis több bérlő költséget optimalizálás, vagy egy egyetlen bérlővel saját adatbázis elkülönítési optimalizálás. A választott végre lehessen hajtani a bérlő-bérlő alapon, vagy a bérlő az kiosztott vagy újabb, az alkalmazás érintő forgalomkiesés nélkül.  Ez a modell hatékonyan használható, ha a bérlő csoportok eltérően kell kezelni. Például alacsony költségű bérlők rendelhet megosztott adatbázisok, amíg prémium bérlők saját adatbázisok lehet hozzárendelni. 
+Ez a minta lehetővé teszi egy *hibrid* modell, amelyben optimalizálás költsége az adatbázisban több bérlő számára, vagy optimalizálás elkülönített, a saját adatbázis létrehozása egyetlen bérlő számára. A választás lehet tenni a bérlő-bérlő alapon, vagy amikor a bérlő az üzembe helyezett vagy újabb verzió, nincs hatással az alkalmazásra.  Ez a modell hatékonyan használható, amikor a bérlők csoportjai eltérően kell kezelni kell. Például alacsony költségű bérlők rendelhető megosztott adatbázisokhoz, amíg a prémium szintű bérlők esetén hozzárendelheti a saját adatbázisok. 
 
-Tekintse meg a [oktatóanyagok] [ docs-tutorials-for-wingtip-mt] és kódja a Githubon [.../Microsoft/WingtipTicketsSaaS-MultiTenantDb][github-code-for-wingtip-mt].
+Tekintse meg a [oktatóanyagok] [ docs-tutorials-for-wingtip-mt] és a kódját a Githubon [.../Microsoft/WingtipTicketsSaaS-MultiTenantDb][github-code-for-wingtip-mt].
 
 ## <a name="next-steps"></a>További lépések
 
 #### <a name="conceptual-descriptions"></a>Fogalmi leírása
 
-- Annak az alkalmazás a vállalat kiszolgálása részletes ismertetése megtalálható [több-bérlős Szolgáltatottszoftver-adatbázis bérleti minták][saas-tenancy-app-design-patterns-md]
+- A részletes ismertetése a alkalmazásminták bérlős mindig elérhető legyen [több-bérlős SaaS-bérlős adatbázis][saas-tenancy-app-design-patterns-md]
 
-#### <a name="tutorials-and-code"></a>Oktatóanyagok és kód
+#### <a name="tutorials-and-code"></a>Az oktatóanyagok és kód
 
-- Önálló alkalmazás bérlőnként:
-    - [Az önálló app oktatóanyagok ] [ docs-tutorials-for-wingtip-sa].
-    - [Önálló alkalmazás, a Githubon Code][github-code-for-wingtip-sa].
+- Önálló alkalmazás bérlőnkénti:
+    - [Önálló alkalmazás oktatóanyagok ] [ docs-tutorials-for-wingtip-sa].
+    - [Önálló alkalmazás, a Githubon kódját][github-code-for-wingtip-sa].
 
-- Adatbázis bérlőnként:
-    - [Bérlőnként adatbázis oktatóanyagok][docs-tutorials-for-wingtip-dpt].
-    - [A Githubon bérlőnként adatbázis kódját][github-code-for-wingtip-dpt].
+- Bérlőnkénti adatbázis:
+    - [Bérlőnkénti adatbázis számára oktatóanyagokkal][docs-tutorials-for-wingtip-dpt].
+    - [Kódját a Githubon bérlőnkénti adatbázis][github-code-for-wingtip-dpt].
 
-- Horizontálisan skálázott több-bérlős:
-    - [Horizontálisan skálázott több-bérlős oktatóanyag][docs-tutorials-for-wingtip-mt].
-    - [Horizontálisan skálázott több-bérlős a Githubon kódját][github-code-for-wingtip-mt].
+- Szilánkokra osztott több-bérlős:
+    - [Szilánkokra osztott több-bérlős oktatóanyagok][docs-tutorials-for-wingtip-mt].
+    - [Szilánkokra osztott több-bérlős a Githubon kódját][github-code-for-wingtip-mt].
 
 
 
 <!-- Image references. -->
 
-[image-three-tenancy-patterns]: media/saas-tenancy-welcome-wingtip-tickets-app/three-tenancy-patterns.png "Három bérleti kombinációját."
+[image-three-tenancy-patterns]: media/saas-tenancy-welcome-wingtip-tickets-app/three-tenancy-patterns.png "Három bérlős mintákat."
 
 <!-- Docs.ms.com references. -->
 

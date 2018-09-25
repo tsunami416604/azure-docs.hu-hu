@@ -3,8 +3,8 @@ title: Hitelesítésszolgáltatók engedélyezett az Azure CDN egyéni HTTPS eng
 description: Egyéni tartomány HTTPS engedélyezéséhez a saját tanúsítványt használ, ha egy engedélyezett hitelesítésszolgáltató (CA) létrehozásához kell használnia.
 services: cdn
 documentationcenter: ''
-author: KumudD
-manager: jeconnoc
+author: mdgattuso
+manager: danielgi
 editor: ''
 ms.assetid: ''
 ms.service: cdn
@@ -12,15 +12,15 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/12/2018
-ms.author: kumud
+ms.date: 09/17/2018
+ms.author: magattus
 ms.custom: mvc
-ms.openlocfilehash: 28d6d24266c11b1295c57c8ec46c2bd5ec690b28
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: e9d9f5b053537b3d6881763bcb39d7894ba78869
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39005917"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46969504"
 ---
 # <a name="allowed-certificate-authorities-for-enabling-custom-https-on-azure-cdn"></a>Hitelesítésszolgáltatók engedélyezett az Azure CDN egyéni HTTPS engedélyezése
 
@@ -33,6 +33,10 @@ Az Azure Content Delivery Network (CDN) egyéni tartomány egy **Azure CDN Stand
 A következő CAs engedélyezettek a saját tanúsítvány létrehozásakor:
 
 - AddTrust külső hitelesítésszolgáltató legfelső szintű
+- AlphaSSL legfelső szintű hitelesítésszolgáltató
+- Infrastruktúra AME hitelesítésszolgáltató 01
+- Infrastruktúra AME hitelesítésszolgáltató 02
+- Ameroot
 - Hozzáférési pont legfelső szintű hitelesítésszolgáltató
 - Hozzáférési pont legfelső szintű hitelesítésszolgáltató 2013-hoz
 - Hozzáférési pont legfelső szintű hitelesítésszolgáltató 2014
@@ -47,16 +51,25 @@ A következő CAs engedélyezettek a saját tanúsítvány létrehozásakor:
 - A DigiCert globális legfelső szintű hitelesítésszolgáltató
 - A DigiCert nagy frissítési garanciát biztosító hitelesítésszolgáltató – 3
 - A DigiCert nagy garancia, Bővített legfelső szintű hitelesítésszolgáltató
+- A DigiCert SHA2 bővített ellenőrzés kiszolgáló hitelesítésszolgáltató
 - A DigiCert SHA2 magas szintű megbízhatóság kiszolgáló hitelesítésszolgáltató
 - A DigiCert SHA2 biztonságos kiszolgáló hitelesítésszolgáltató
+- Nyári Időszámítás legfelső szintű hitelesítésszolgáltató X3
+- D – megbízható legfelső szintű osztály 3 hitelesítésszolgáltató 2 2009
+- Sokfelé kell tárolnia a titkosítási DV TLS hitelesítésszolgáltató
+- Entrust-legfelső szintű hitelesítésszolgáltató
+- Entrust-legfelső szintű hitelesítésszolgáltató - G2 csomag
+- Hitelesítésszolgáltató Entrust.NET (2048)
 - GeoTrust globális hitelesítésszolgáltató
 - GeoTrust elsődleges hitelesítésszolgáltató
 - GeoTrust elsődleges hitelesítésszolgáltató - G2 csomag
+- Geotrust RSA CA-2018.
 - GlobalSign
 - Bővített ellenőrzés CA - SHA256 - G2 GlobalSign
 - GlobalSign szervezet érvényesítési CA - G2 csomag
 - GlobalSign legfelső szintű hitelesítésszolgáltató
 - Go Daddy legfelső szintű hitelesítésszolgáltató - G2 csomag
+- Go Daddy biztonságos hitelesítésszolgáltató - G2 csomag
 - A Microsoft Authenticode(tm) főtanúsítvány tanúsítványláncát.
 - A Microsoft Exchange-szolgáltatások hitelesítésszolgáltató 2015.
 - A Microsoft belső, vállalati legfelső szintű
@@ -78,6 +91,7 @@ A következő CAs engedélyezettek a saját tanúsítvány létrehozásakor:
 - MSIT HITELESÍTÉSSZOLGÁLTATÓ Z2
 - MSIT vállalati hitelesítésszolgáltató 1
 - MSIT vállalati hitelesítésszolgáltató 3
+- RapidSSL RSA CA-2018.
 - Legfelső szintű Hivatal
 - A Symantec osztály 3 Bővített SSL CA - G3 csomag
 - A Symantec osztály 3 biztonságos kiszolgáló CA - G4
@@ -85,7 +99,9 @@ A következő CAs engedélyezettek a saját tanúsítvány létrehozásakor:
 - Thawte elsődleges legfelső szintű hitelesítésszolgáltató
 - Thawte elsődleges legfelső szintű hitelesítésszolgáltató - G2 csomag
 - Thawte elsődleges legfelső szintű hitelesítésszolgáltató - G3 csomag
+- Thawte RSA CA-2018.
 - Hitelesítésszolgáltató Thawte időbélyegző
+- TrustAsia TLS RSA hitelesítésszolgáltató
 - UTN-USERFirst-Object
 - SSL-Hitelesítésszolgáltatói VeriSign osztály 3 bővített ellenőrzés
 - A VeriSign osztály 3 bővített ellenőrzés SSL kiszolgáló által Kezdeményezett hitelesítésszolgáltató

@@ -12,14 +12,19 @@ ms.workload: data-services
 ms.topic: article
 ms.custom: mvc
 ms.date: 10/05/2017
-ms.openlocfilehash: a5531ae256a263f1c34496819ac435ce67156b49
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ROBOTS: NOINDEX
+ms.openlocfilehash: c154b0124acb5bee93211adb611356555526d2c0
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35645724"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46996213"
 ---
 # <a name="predictive-maintenance-for-real-world-scenarios"></a>A valós életből vett prediktív karbantartás
+
+[!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)] 
+
+
 
 A berendezések váratlan üzemkimaradása minden cég számára káros lehet. Rendkívül fontos, hogy a mező berendezések kihasználtságát és a teljesítmény maximalizálása érdekében, illetve minimálisra csökkentheti a költséges, nem ütemezett üzemszünet futtatása. Problémák korai azonosítása segíthet korlátozott karbantartási erőforrásokat lefoglalni a költséghatékony és minőség javítása és ellátási lánc folyamatokat. 
 
@@ -41,10 +46,10 @@ Ezen szimulált adatok az üzleti problémát az összetevő hibák által okozo
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Egy [Azure-fiók](https://azure.microsoft.com/free/) (az ingyenes próbaverziók érhető el).
-* Egy telepített példánya [Azure Machine Learning Workbench](../service/overview-what-is-azure-ml.md). Kövesse a [rövid telepítési útmutatójában](../service/quickstart-installation.md) telepítse a programot, és hozzon létre egy munkaterületet.
+* Egy telepített példánya [Azure Machine Learning Workbench](../service/overview-what-is-azure-ml.md). Kövesse a [rövid telepítési útmutatójában](quickstart-installation.md) telepítse a programot, és hozzon létre egy munkaterületet.
 * Az Azure Machine Learning Operacionalizálás megköveteli egy helyi környezet és a egy [Azure Machine Learning Modellkezelés-fiók](model-management-overview.md).
 
-Ebben a példában minden Machine Learning Workbench számítási környezetben futtatja. Azonban azt javasoljuk, hogy a példa Futtatás legalább 16 GB memóriája. Ebben a forgatókönyvben beépített és a egy távoli DS4_V2 standard futó Windows 10-es gépre tesztelt [adatelemzési virtuális gép (DSVM) Linux (Ubuntu)](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/microsoft-ads.linux-data-science-vm-ubuntu).
+Ebben a példában minden Machine Learning Workbench számítási környezetben futtatja. Azonban azt javasoljuk, hogy a példa Futtatás legalább 16 GB memóriája. Ebben a forgatókönyvben beépített és a egy távoli DS4_V2 standard futó Windows 10-es gépre tesztelt [adatelemzési virtuális gép (DSVM) Linux (Ubuntu)](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-ads.linux-data-science-vm-ubuntu).
 
 Modell operacionalizálás verzió 0.1.0a22, az Azure Machine Learning parancssori felület használatával végezhető el.
 
@@ -71,7 +76,7 @@ Ez a parancs biztosítja a https használata hitelesítési kulcs:\\aka.ms\devic
 az ml experiment prepare --target docker --run-configuration docker
 ```
 
-Ezért célszerű futtatni egy [DSVM Linux (Ubuntu)](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/microsoft-ads.linux-data-science-vm-ubuntu) a memória-és. A dsvm-hez van konfigurálva, miután előkészítése az alábbi két parancsot a távoli Docker-környezetben:
+Ezért célszerű futtatni egy [DSVM Linux (Ubuntu)](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-ads.linux-data-science-vm-ubuntu) a memória-és. A dsvm-hez van konfigurálva, miután előkészítése az alábbi két parancsot a távoli Docker-környezetben:
 
 ```
 az ml computetarget attach remotedocker --name [Connection_Name] --address [VM_IP_Address] --username [VM_Username] --password [VM_UserPassword]

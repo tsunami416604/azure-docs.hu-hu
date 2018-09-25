@@ -1,6 +1,6 @@
 ---
-title: 'Létrehozása és módosítása az Azure ExpressRoute-kapcsolatcsoportot: CLI |} Microsoft Docs'
-description: Ez a cikk ismerteti, hogyan hozzon létre, kiépítéséhez, győződjön meg arról, frissítése, törlése és kiosztásának megszüntetése parancssori felület használatával ExpressRoute-kapcsolatcsoportot.
+title: 'Egy Azure ExpressRoute-kör létrehozása és módosítása: parancssori felület |} A Microsoft Docs'
+description: Ez a cikk bemutatja, hogyan hozhat létre, üzembe helyezése, győződjön meg arról, frissítése, törlése és parancssori felület használatával egy ExpressRoute-kapcsolatcsoport megszüntetése.
 documentationcenter: na
 services: expressroute
 author: cherylmc
@@ -15,36 +15,36 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/19/2017
 ms.author: anzaman;cherylmc
-ms.openlocfilehash: cd4e31336fd0e90b13f1c3984de89f24e65b052b
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 21cd06692fe1c26cfa276d1f8ec7ace77b11d3c2
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2017
-ms.locfileid: "23933248"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46979981"
 ---
-# <a name="create-and-modify-an-expressroute-circuit-using-cli"></a>Létrehozásához és módosításához az ExpressRoute-kapcsolatcsoportot parancssori felület használatával
+# <a name="create-and-modify-an-expressroute-circuit-using-cli"></a>Létrehozása és módosítása egy ExpressRoute-kapcsolatcsoport parancssori felület használatával
 
 
-Ez a cikk ismerteti, hogyan hozhat létre Azure ExpressRoute-kapcsolatcsoportot a parancssori felület (CLI) használatával. Ez a cikk is bemutatja, hogyan ellenőrizze az állapot, update vagy delete és az expressroute-kapcsolatcsoporthoz kiosztásának megszüntetése. Ha más módszert használhatja a ExpressRoute-Kapcsolatcsoportok, választhat a cikk az alábbi listából:
+Ez a cikk ismerteti az Azure ExpressRoute-kapcsolatcsoport létrehozása a parancssori felület (CLI) használatával. Ez a cikk emellett bemutatja, hogyan ellenőrizze az állapotot, update vagy delete és a egy kapcsolatcsoport megszüntetése. Ha szeretne egy másik módszer használható az ExpressRoute-Kapcsolatcsoportok, kiválaszthatja a cikk az alábbi listából:
 
 > [!div class="op_single_selector"]
 > * [Azure Portal](expressroute-howto-circuit-portal-resource-manager.md)
 > * [PowerShell](expressroute-howto-circuit-arm.md)
 > * [Azure CLI](howto-circuit-cli.md)
-> * [Video - Azure-portálon](http://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-an-expressroute-circuit)
+> * [Videó – Azure portal](http://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-an-expressroute-circuit)
 > * [PowerShell (klasszikus)](expressroute-howto-circuit-classic.md)
 > 
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-* A folyamat elkezdése előtt telepítse a CLI-parancsok legújabb verzióit (2.0-s vagy újabb). Információk a CLI-parancsok telepítéséről: [Az Azure CLI 2.0-s verziójának telepítése](/cli/azure/install-azure-cli) és [Bevezetés az Azure CLI 2.0-s verziójának használatába](/cli/azure/get-started-with-azure-cli).
-* Tekintse át a [Előfeltételek](expressroute-prerequisites.md) és [munkafolyamatok](expressroute-workflows.md) konfigurálás elkezdése előtt.
+* A folyamat elkezdése előtt telepítse a CLI-parancsok legújabb verzióit (2.0-s vagy újabb). A CLI-parancsok telepítéséről további információkért lásd: [az Azure CLI telepítése](/cli/azure/install-azure-cli) és [Azure CLI használatának első lépései](/cli/azure/get-started-with-azure-cli).
+* Tekintse át a [Előfeltételek](expressroute-prerequisites.md) és [munkafolyamatok](expressroute-workflows.md) konfigurálás megkezdése előtt.
 
-## <a name="create"></a>Hozzon létre, és helyezze üzembe az ExpressRoute-kapcsolatcsoportot
+## <a name="create"></a>Létrehozása és kiépítése az ExpressRoute-kapcsolatcsoport
 
-### <a name="1-sign-in-to-your-azure-account-and-select-your-subscription"></a>1. Jelentkezzen be az Azure-fiókjával, és jelölje ki az előfizetését
+### <a name="1-sign-in-to-your-azure-account-and-select-your-subscription"></a>1. Jelentkezzen be az Azure-fiókjával, és válassza ki az előfizetését
 
-A konfiguráció első lépésként jelentkezzen be az Azure-fiókjával. Az alábbi példák segítségével csatlakozzon:
+A konfiguráció első lépésként jelentkezzen be az Azure-fiókjával. Az alábbi példák segítségével segíthet a kapcsolódásban:
 
 ```azurecli
 az login
@@ -56,21 +56,21 @@ Keresse meg a fiókot az előfizetésekben.
 az account list
 ```
 
-Válassza ki az előfizetést, amely számára ExpressRoute-kapcsolatcsoportot létrehozni kívánja.
+Válassza ki az előfizetést, amelynek meg szeretné ExpressRoute-kapcsolatcsoport létrehozása.
 
 ```azurecli
 az account set --subscription "<subscription ID>"
 ```
 
-### <a name="2-get-the-list-of-supported-providers-locations-and-bandwidths"></a>2. A támogatott szolgáltatók, a helyek és a sávszélesség listájának lekérdezése
+### <a name="2-get-the-list-of-supported-providers-locations-and-bandwidths"></a>2. A támogatott szolgáltatók, a helyek és a sávszélesség-lista lekérése
 
-ExpressRoute-kapcsolatcsoportot létrehozni, meg kell támogatott kapcsolat szolgáltatókat, a helyek és a sávszélesség-beállítások listája. A parancssori felület parancs "az hálózati expressroute lista--szolgáltatók" ezt az információt fogja használni a későbbi lépésekben adja vissza:
+ExpressRoute-kapcsolatcsoport létrehozása, birtokában támogatott kapcsolatszolgáltatók, helyek és sávszélesség-lehetőségek listája. A CLI parancs "az network express-route lista szolgáltatók" értéket ad vissza, ezt az információt fogja használni a későbbi lépésekben:
 
 ```azurecli
 az network express-route list-service-providers
 ```
 
-A rendszer a választ az alábbi példához hasonló:
+A válasz a következő példához hasonló:
 
 ```azurecli
 [
@@ -123,52 +123,52 @@ A rendszer a választ az alábbi példához hasonló:
   },
 ```
 
-Ellenőrizze a válasz szerepel-e a kapcsolat szolgáltatóját. Jegyezze fel az expressroute-kapcsolatcsoporthoz létrehozásakor kell a következő információkat:
+Ellenőrizze a válasz megtekintéséhez, hogy a kapcsolatszolgáltató szerepel-e. Jegyezze fel a kapcsolatcsoport létrehozásakor kell a következő információkat:
 
 * Name (Név)
 * PeeringLocations
 * BandwidthsOffered
 
-Most már készen áll az ExpressRoute-kapcsolatcsoportot létrehozni.
+Most már készen áll az ExpressRoute-kapcsolatcsoport létrehozása.
 
 ### <a name="3-create-an-expressroute-circuit"></a>3. ExpressRoute-kapcsolatcsoport létrehozása
 
 > [!IMPORTANT]
-> Az ExpressRoute-kapcsolatcsoportot lesz számlázva abban a pillanatban a szolgáltatási kulcs ad ki. Hajtsa végre ezt a műveletet, amikor a kapcsolat szolgáltatójánál kiépíteni a kapcsolat készen áll.
+> Az ExpressRoute-kapcsolatcsoport számlázása a szolgáltatáskulcs pillanatától kezdve. Hajtsa végre ezt a műveletet, amikor üzembe helyezi a kapcsolatcsoportot készen áll-e a kapcsolat szolgáltatóját.
 > 
 > 
 
-Ha még nem rendelkezik egy erőforráscsoport, kell létrehoznia egyet az ExpressRoute-kapcsolatcsoportot létrehozása előtt. Létrehozhat egy erőforráscsoportot a következő parancs futtatásával:
+Ha még nem rendelkezik egy erőforráscsoport, egy az ExpressRoute-kapcsolatcsoport létrehozása előtt kell létrehoznia. Létrehozhat egy erőforráscsoportot a következő parancs futtatásával:
 
 ```azurecli
 az group create -n ExpressRouteResourceGroup -l "West US"
 ```
 
-A következő példa bemutatja, hogyan szilícium Valley egy 200 MB/s Equinix keresztül ExpressRoute-kapcsolatcsoportot létrehozni. Különböző szolgáltatók és más beállítások használata, amikor a kérést helyettesítse be ezt az információt. 
+Az alábbi példa bemutatja, hogyan hozhat létre egy 200 Mbps ExpressRoute-kapcsolatcsoporton keresztül Equinix szilícium-völgy. Másik szolgáltatóhoz, és különböző beállításokat használja, ha helyettesítse be ezt az információt, amikor a kérést. 
 
-Győződjön meg arról, hogy megadja a helyes SKU réteg és SKU-család:
+Ügyeljen arra, hogy megadja a helyes Termékváltozat-szint és a Termékváltozat-család:
 
-* Termékváltozat szint határozza meg, egy ExpressRoute standard vagy ExpressRoute prémium bővítmény engedélyezve van-e. A standard Termékváltozat vagy "Prémium" lekérése a prémium szintű bővítmény "Standard" adhatja meg.
-* SKU-család határozza meg a számlázási. Megadhat "Metereddata" mért adatforgalmi és a "Unlimiteddata" egy adatforgalmi. Módosíthatja a számlázási típus az "Metereddata" a "Unlimiteddata", de nem módosíthatja a típusát, a "Unlimiteddata" a "Metereddata".
+* Termékváltozat-szint határozza meg, hogy egy ExpressRoute-standard vagy az ExpressRoute prémium bővítmény engedélyezve van. Megadhatja a "Standard", a standard Termékváltozat vagy "Prémium" beolvasni a premium bővítményt.
+* Termékváltozat-család határozza meg a számlázási. Megadhat "Metereddata" a forgalmi díjas csomag és a "Unlimiteddata" korlátlan adatforgalmú. Módosíthatja a számlázási típusát, a "Metereddata", "Unlimiteddata", de nem módosíthatja a típusát, a 'Unlimiteddata', "Metereddata".
 
 
-Az ExpressRoute-kapcsolatcsoportot lesz számlázva abban a pillanatban a szolgáltatási kulcs ad ki. Az alábbi példa tulajdonképpen egy kérelem egy új szolgáltatás kulcs:
+Az ExpressRoute-kapcsolatcsoport számlázása a szolgáltatáskulcs pillanatától kezdve. Az alábbi példa tulajdonképpen egy kérelem egy új kulcsot:
 
 ```azurecli
 az network express-route create --bandwidth 200 -n MyCircuit --peering-location "Silicon Valley" -g ExpressRouteResourceGroup --provider "Equinix" -l "West US" --sku-family MeteredData --sku-tier Standard
 ```
 
-A válasz tartalmazza a szolgáltatási kulcs.
+A válasz tartalmazza a kulcsot.
 
-### <a name="4-list-all-expressroute-circuits"></a>4. A lista összes ExpressRoute-Kapcsolatcsoportok
+### <a name="4-list-all-expressroute-circuits"></a>4. Minden ExpressRoute-kapcsolatcsoport listázása
 
-Minden létrehozott ExpressRoute-Kapcsolatcsoportok listájának lekéréséhez futtassa a "az hálózati expressroute list" parancsot. Ez a parancs használatával ezt az információt bármikor kérheti le. Összes áramkör listázásához, a hívást paraméter nélkül.
+Az összes Ön által létrehozott ExpressRoute-Kapcsolatcsoportok listájának lekéréséhez futtassa a "az network express-route list" parancsot. Bármikor ezt az információt a következő paranccsal kérheti le. Minden kapcsolatcsoportra listázásához, a hívást nélkül.
 
 ```azurecli
 az network express-route list
 ```
 
-A szolgáltatás kulcs szerepel az *ServiceKey* mezőjét, a válasz.
+A szolgáltatás kulcs szerepel az *ServiceKey* mezőt, a válasz.
 
 ```azurecli
 "allowClassicOperations": false,
@@ -199,46 +199,46 @@ A szolgáltatás kulcs szerepel az *ServiceKey* mezőjét, a válasz.
 "type": "Microsoft.Network/expressRouteCircuits]
 ```
 
-Részletes leírását, a paraméterek kaphat a parancs segítségével futtassa a "-h" paraméter.
+Megjelenik a részletes leírását az összes paramétert, a parancs használatával futtassa a "-h" paraméter.
 
 ```azurecli
 az network express-route list -h
 ```
 
-### <a name="5-send-the-service-key-to-your-connectivity-provider-for-provisioning"></a>5. A szolgáltatás kulcs küldése a kapcsolat szolgáltatójánál történő üzembe helyezéséhez
+### <a name="5-send-the-service-key-to-your-connectivity-provider-for-provisioning"></a>5. A kulcs küldése a kapcsolatszolgáltató a kiépítés
 
-"ServiceProviderProvisioningState" szolgáltatói oldalán kiépítés aktuális állapotára vonatkozó információkat nyújt. Az állapot a Microsoft oldalon az állapot biztosít. További információkért lásd: a [munkafolyamatok cikk](expressroute-workflows.md#expressroute-circuit-provisioning-states).
+"ServiceProviderProvisioningState" provisioning service-szolgáltató oldalán aktuális állapotát ismerteti. Az állapot az állapot biztosít a Microsoft oldalán. További információkért lásd: a [munkafolyamatok cikk](expressroute-workflows.md#expressroute-circuit-provisioning-states).
 
-Amikor létrehoz egy új ExpressRoute-kapcsolatcsoportot, a kapcsolat a következő állapotban van:
+Amikor létrehoz egy új ExpressRoute-kapcsolatcsoportot, a kapcsolatcsoport a következő állapotban van:
 
 ```azurecli
 "serviceProviderProvisioningState": "NotProvisioned"
 "circuitProvisioningState": "Enabled"
 ```
 
-A kapcsolatcsoport módosítja a következő állapotot, ha a kapcsolat szolgáltatójánál folyamatban van, lehetővé téve az Ön:
+A kapcsolatcsoport változik a következő állapotot, amikor a kapcsolatszolgáltató van folyamatban, amely lehetővé teszi az Ön számára:
 
 ```azurecli
 "serviceProviderProvisioningState": "Provisioning"
 "circuitProvisioningState": "Enabled"
 ```
 
-Meg kell tudni használni az ExpressRoute-kapcsolatcsoportot a következő állapotban kell lennie:
+ExpressRoute-kapcsolatcsoport segítségével tudja meg a következő állapotban kell lennie:
 
 ```azurecli
 "serviceProviderProvisioningState": "Provisioned"
 "circuitProvisioningState": "Enabled
 ```
 
-### <a name="6-periodically-check-the-status-and-the-state-of-the-circuit-key"></a>6. Ellenőrizze rendszeresen a kapcsolatcsoport kulcs állapotát és az állapot
+### <a name="6-periodically-check-the-status-and-the-state-of-the-circuit-key"></a>6. Rendszeresen ellenőrizze a kapcsolatcsoport kulcs állapotát és az állapot
 
-Az állapot és a kapcsolatcsoport kulcs állapotának ellenőrzése értesíti Önt arról, amikor a szolgáltató a kapcsolatcsoport engedélyezve van. A kapcsolat konfigurálása után "ServiceProviderProvisioningState" jelenik meg "Kiépítve", a következő példában látható módon:
+A kapcsolatcsoport kulcs állapotát és az állapot ellenőrzése jelzi, ha a szolgáltató engedélyezve van a kapcsolatcsoport. A kapcsolatcsoport konfigurálása után a "ServiceProviderProvisioningState" jelenik meg "Kiépítve", az alábbi példában látható módon:
 
 ```azurecli
 az network express-route show --resource-group ExpressRouteResourceGroup --name MyCircuit
 ```
 
-A rendszer a választ az alábbi példához hasonló:
+A válasz a következő példához hasonló:
 
 ```azurecli
 "allowClassicOperations": false,
@@ -269,98 +269,98 @@ A rendszer a választ az alábbi példához hasonló:
 "type": "Microsoft.Network/expressRouteCircuits]
 ```
 
-### <a name="7-create-your-routing-configuration"></a>7. Az útválasztó-konfiguráció létrehozása
+### <a name="7-create-your-routing-configuration"></a>7. Az útválasztási konfiguráció létrehozása
 
-Részletes útmutatásért lásd: a [ExpressRoute-áramkör útválasztási konfigurációja](howto-routing-cli.md) cikk létrehozásához és módosításához a kapcsolatcsoport esetében.
+Részletes útmutatásért tekintse meg a [ExpressRoute-Kapcsolatcsoportok útválasztási konfigurációja](howto-routing-cli.md) cikk létrehozásához és módosításához a kapcsolatcsoport társviszony-létesítéseket.
 
 > [!IMPORTANT]
-> Ezek az utasítások csak a szolgáltatók által biztosított réteg 2 internetkapcsolati szolgáltatás használatával létrehozott kapcsolatok vonatkoznak. A szolgáltató által kezelt használata réteg (általában az IP VPN, például az MPLS) 3 szolgáltatások, a kapcsolat szolgáltatójánál konfigurálja és kezeli az Ön útválasztást.
+> Ezek az utasítások csak 2 réteg szolgáltatás kínáló szolgáltatóknál létrehozott Kapcsolatcsoportok vonatkoznak. Ha használja a szolgáltató által kínált felügyelt réteg (általában egy IP VPN, mint az MPLS) 3 szolgáltatások, a kapcsolatszolgáltató konfigurálja és kezeli az útválasztást Ön helyett.
 > 
 > 
 
 ### <a name="8-link-a-virtual-network-to-an-expressroute-circuit"></a>8. Virtuális hálózat összekapcsolása egy ExpressRoute-kapcsolatcsoporttal
 
-A következő csatolja az ExpressRoute-kapcsolatcsoportot egy virtuális hálózatot. Használja a [virtuális hálózatok összekapcsolása ExpressRoute-Kapcsolatcsoportok](howto-linkvnet-cli.md) cikk.
+Ezután egy virtuális hálózat összekapcsolása az ExpressRoute-kapcsolatcsoportot. Használja a [virtuális hálózatok összekapcsolása az ExpressRoute-Kapcsolatcsoportok](howto-linkvnet-cli.md) cikk.
 
-## <a name="modify"></a>Egy ExpressRoute-kapcsolatcsoportot módosítása
+## <a name="modify"></a>Az ExpressRoute-Kapcsolatcsoportok módosítása
 
-ExpressRoute-kapcsolatcsoportot egyes tulajdonságait módosíthatja kapcsolat befolyásolása nélkül. Állásidő nélkül a következő módosításokat végezheti el:
+Egyes ExpressRoute-kapcsolatcsoport tulajdonságainak kapcsolat befolyásolása nélkül módosíthatja. A következő módosításokat üzemkimaradás nélkül végezheti el:
 
-* Engedélyezheti vagy ExpressRoute prémium bővítményeket tiltsa le az ExpressRoute-kapcsolatcsoport esetében.
-* Az ExpressRoute-kapcsolatcsoportot sávszélességét növelheti, feltéve, hogy kapacitás érhető el a port. Alacsonyabb verziójúra változtatása a sávszélességet a kapcsolat azonban nem támogatott. 
-* A mérési terv díjköteles adatokból adatforgalmi módosítható. A mérési terv módosítása az korlátlan adatforgalom díjköteles adatok azonban nem támogatott.
-* Engedélyezheti és letilthatja *klasszikus műveletek engedélyezése*.
+* Engedélyezheti vagy az ExpressRoute prémium bővítmény letiltása az ExpressRoute-kapcsolatcsoport esetében.
+* Az ExpressRoute-kapcsolatcsoport sávszélességét, növelheti, feltéve, hogy kapacitás érhető el a porton. Alacsonyabb verziójúra változtatása a kapcsolatcsoport sávszélességétől azonban nem támogatott. 
+* A mérési terv a korlátlan díjas módosítható. Mérési csomag módosítása a korlátlan, a forgalmi díjas adatokhoz azonban nem támogatott.
+* Engedélyezheti és letilthatja az *klasszikus működés engedélyezése*.
 
-Korlátai és korlátozásai további információkért tekintse meg a [ExpressRoute – gyakori kérdések](expressroute-faqs.md).
+További információ a korlátok és korlátozások: a [ExpressRoute – gyakori kérdések](expressroute-faqs.md).
 
-### <a name="to-enable-the-expressroute-premium-add-on"></a>A prémium szintű ExpressRoute-bővítmény engedélyezése
+### <a name="to-enable-the-expressroute-premium-add-on"></a>Az ExpressRoute prémium bővítmény engedélyezése
 
-A prémium szintű ExpressRoute-bővítmény engedélyezheti a meglévő kapcsolat a következő parancsot:
+Az ExpressRoute prémium bővítmény a következő parancs segítségével engedélyezheti a meglévő kapcsolatcsoport:
 
 ```azurecli
 az network express-route update -n MyCircuit -g ExpressRouteResourceGroup --sku-tier Premium
 ```
 
-A kapcsolatcsoport most már engedélyezett ExpressRoute prémium bővítmény funkciók. Az első lépések számlázási, a prémium szintű bővítmény képességhez, amint sikeresen futtatta a parancsot.
+A kapcsolatcsoport most már engedélyezve van az ExpressRoute prémium bővítmény szolgáltatásokat. Az első lépések a premium bővítmény funkció számlázása, amint a parancs már sikeresen futott.
 
-### <a name="to-disable-the-expressroute-premium-add-on"></a>A prémium szintű ExpressRoute-bővítmény letiltása
+### <a name="to-disable-the-expressroute-premium-add-on"></a>Az ExpressRoute prémium bővítmény letiltása
 
 > [!IMPORTANT]
-> A művelet sikertelen lesz, amely nagyobb, mint mi a szabványos kör megengedett erőforrások használata.
+> Ez a művelet sikertelen lehet, ha erőforrást, amely nagyobb, mint a megengedett a standard szintű kapcsolatcsoportot használ.
 > 
 > 
 
-Az ExpressRoute prémium bővítmény letiltása előtt ismertetése a következő feltételeknek:
+Mielőtt letiltaná az ExpressRoute prémium bővítmény, ismerje meg a következő feltételeknek:
 
-* Mielőtt visszaminősítését prémiumról szabvány, győződjön meg arról, hogy rendelkezik-e kapcsolva a kapcsolatcsoport legfeljebb 10 virtuális hálózatok. Ha több mint 10, a frissítési kérelem sikertelen lesz, és a prémium ütemben számlázás meg.
-* Minden virtuális hálózat más geopolitikai régiókban kell választható. Az összes virtuális hálózat nem választható, ha a frissítési kérelem sikertelen lesz, és a prémium ütemben számlázás meg.
-* Az útvonaltábla a magánhálózati társviszony-létesítés kisebb, mint 4000 útvonalait kell lennie. Ha az útvonal tábla mérete nagyobb, mint 4000 útvonalakat, csökken a BGP-munkamenetet. A munkamenet nem kell újra, amíg hirdetett előtagok száma nem éri el 4000 engedélyezve.
+* Mielőtt standard Visszaléptetés a prémium szintű, győződjön meg arról, hogy legfeljebb 10 virtuális hálózatokat a kapcsolatcsoporthoz kapcsolt. Ha több mint 10, a frissítési kérelem meghiúsul, és a megadott prémium szintű alapján számlázunk.
+* Más geopolitikai régiókban lévő összes virtuális hálózatot kell leválasztása. Ha Ön nem leválasztása a virtuális hálózatok, a frissítési kérelem sikertelen lesz, és a Díjszámítás, prémium szintű díjakat.
+* Az útvonaltábla kisebb, mint 4000 útvonalak privát társviszony-létesítés kell lennie. Ha az útválasztási táblázat mérete nagyobb, mint 4000, csökken a BGP-munkamenetben. A munkamenet nem fog újra engedélyezve, amíg a meghirdetett előtagok száma nem éri a 4000.
 
-Letilthatja a ExpressRoute prémium bővítmény a meglévő kapcsolat az alábbi példa szerint:
+Az ExpressRoute prémium bővítmény a meglévő kapcsolatcsoport letilthatja az alábbi példa szerint:
 
 ```azurecli
 az network express-route update -n MyCircuit -g ExpressRouteResourceGroup --sku-tier Standard
 ```
 
-### <a name="to-update-the-expressroute-circuit-bandwidth"></a>Az ExpressRoute-kapcsolatcsoport sávszélessége frissítése
+### <a name="to-update-the-expressroute-circuit-bandwidth"></a>Az ExpressRoute-kapcsolatcsoport sávszélességét frissítése
 
-A támogatott sávszélesség-beállításait a szolgáltató, ellenőrizze a [ExpressRoute – gyakori kérdések](expressroute-faqs.md). Kiválaszthatja a mérete nagyobb, mint a meglévő expressroute méretét.
+A támogatott sávszélesség-lehetőségek a szolgáltató, ellenőrizze a [ExpressRoute – gyakori kérdések](expressroute-faqs.md). Választhat a meglévő kapcsolatcsoport méreténél nagyobb méretű.
 
 > [!IMPORTANT]
-> Ha nincs elég kapacitás a meglévő porton, előfordulhat, hogy újra létre kell hozni az ExpressRoute-kapcsolatcsoportot. A kapcsolat nem frissíthető, ha nincsenek további kapacitást érhető el az adott helyhez.
+> Ha nincs elegendő kapacitás a meglévő porton, akkor előfordulhat, hogy hozza létre újból az ExpressRoute-kapcsolatcsoporthoz. A kapcsolatcsoport nem frissíthető, ha nincsenek további kapacitás érhető el az adott helyhez.
 >
-> Nem csökkenti a sávszélesség az ExpressRoute-kapcsolatcsoportot megszakítása nélkül. Alacsonyabb verziójúra változtatása a sávszélesség szükséges, hogy az ExpressRoute-kapcsolatcsoport kiosztásának megszüntetése, és ezután ossza az új ExpressRoute-kapcsolatcsoportot.
+> Megszakítás nélküli ExpressRoute-kapcsolatcsoport sávszélességét nem csökkenthető. Alacsonyabb verziójúra változtatása sávszélesség megköveteli, hogy az ExpressRoute-kapcsolatcsoport megszüntetése, és ezután építse ki újra a ExpressRoute-kapcsolatcsoporttal.
 >
 
-Miután eldöntötte, hogy van szüksége, az alábbi parancs segítségével méretezze át a kapcsolatcsoport mérete:
+Miután eldöntötte, hogy van szüksége, használja az alábbi parancsot a kapcsolatcsoport átméretezése mérete:
 
 ```azurecli
 az network express-route update -n MyCircuit -g ExpressRouteResourceGroup --bandwidth 1000
 ```
 
-A kör mérete a Microsoft oldalon. Ezután lépjen kapcsolatba a kapcsolat szolgáltatójánál, ez a módosítás megfelelő a ügyféloldali konfigurációjának frissítése. Miután elvégezte ezt az értesítést, az első lépések számlázást, a frissített sávszélesség-beállítás.
+A kapcsolatcsoport van méretezni a Microsoft oldalán. Ezután lépjen kapcsolatba a kapcsolatszolgáltató frissíteni a saját oldalán, a módosítás megfelelő a konfigurációk. Miután végrehajtotta ezt az értesítést, megkezdjük a számlázást, a frissített sávszélesség-beállítás.
 
-### <a name="to-move-the-sku-from-metered-to-unlimited"></a>A Termékváltozat áthelyezése díjköteles korlátlanra
+### <a name="to-move-the-sku-from-metered-to-unlimited"></a>A Termékváltozat a áthelyezése díjköteles korlátlan
 
-Az alábbi példa használatával módosíthatja az ExpressRoute-kapcsolatcsoport Termékváltozata:
+Az ExpressRoute-kapcsolatcsoport SKU-ja a következő példa használatával módosíthatja:
 
 ```azurecli
 az network express-route update -n MyCircuit -g ExpressRouteResourceGroup --sku-family UnlimitedData
 ```
 
-### <a name="to-control-access-to-the-classic-and-resource-manager-environments"></a>A klasszikus és Resource Manager-környezetben való hozzáférés szabályozása
+### <a name="to-control-access-to-the-classic-and-resource-manager-environments"></a>A klasszikus és Resource Manager-környezetben való hozzáférés szabályozásához
 
-Tekintse át a utasításait [a Resource Manager üzembe helyezési modellben a klasszikus áthelyezése ExpressRoute-Kapcsolatcsoportok](expressroute-howto-move-arm.md).
+Tekintse át a következő témakör utasításait [helyezze át az ExpressRoute-Kapcsolatcsoportok a klasszikusból a Resource Manager-alapú üzemi modellbe](expressroute-howto-move-arm.md).
 
-## <a name="delete"></a>Megszüntetés és az ExpressRoute-kapcsolatcsoport törlése
+## <a name="delete"></a>A megszüntetés és a egy ExpressRoute-kapcsolatcsoport törlése
 
-Kiosztásának megszüntetése, és az ExpressRoute-kapcsolatcsoport törléséhez, tudja, hogy a következő feltételeknek:
+Megszüntetése, és a egy ExpressRoute-kapcsolatcsoport törlése, győződjön meg arról, hogy megértette a következő feltételeknek:
 
-* Az ExpressRoute-kapcsolatcsoport az összes virtuális hálózatot kell választható. Ha ez a művelet sikertelen, ellenőrizze, hogy ha a virtuális hálózatok a kapcsolatcsoport van csatolva.
-* Ha az ExpressRoute-kapcsolatcsoport szolgáltatás szolgáltató üzembe helyezési állapota **kiépítési** vagy **kiépítve**, hogy kiosztásának megszüntetése a kapcsolatcsoport az oldalon a szolgáltató együttműködve. A Folytatás kiszámlázni Önnek, amíg a szolgáltató befejeződött, a kapcsolat megszüntetés, és értesíti, és az erőforrásokat.
-* A kapcsolatcsoport törölheti, ha a szolgáltató a kapcsolatcsoport rendelkezik platformelőfizetés. Ha expressroute-kapcsolatcsoporthoz platformelőfizetés van, az üzembe helyezési állapota szolgáltató beállítása **nincs kiépítve**. Ezzel leállítja a számlázási a kör.
+* Az összes virtuális hálózatot le kell választania az ExpressRoute-kapcsolatcsoportról. Ha ez a művelet nem sikerül, ellenőrizze, hogy ha bármely virtuális hálózatokhoz kapcsolódnak-e a kapcsolatcsoportot.
+* Ha az ExpressRoute kapcsolatcsoport szolgáltató üzembe helyezési állapota **kiépítési** vagy **kiépített**,-e, hogy azok oldalán a kapcsolatcsoport megszüntetése a szolgáltató. Továbbra is erőforrásokat tartalékolnia, és addig, amíg a szolgáltató befejeződött, a kapcsolatcsoport megszüntetése, és értesítést küld nekünk fel díjat.
+* Törölje a kapcsolatcsoportot, ha a szolgáltató eltávolította a kapcsolatcsoportot. Kapcsolatcsoport megszüntetése van, az üzembe helyezési állapota szolgáltató beállítás **nincs kiépítve**. Ez leállítja a kapcsolatcsoport számlázását.
 
-Az ExpressRoute-kapcsolatcsoport törlése a következő parancs futtatásával:
+Az ExpressRoute-kapcsolatcsoport a következő parancs futtatásával törölheti:
 
 ```azurecli
 az network express-route delete  -n MyCircuit -g ExpressRouteResourceGroup
@@ -368,7 +368,7 @@ az network express-route delete  -n MyCircuit -g ExpressRouteResourceGroup
 
 ## <a name="next-steps"></a>További lépések
 
-Miután létrehozta a kapcsolatcsoport, győződjön meg arról, hogy a következő feladatokat hajthatnak végre:
+Miután létrehozta a kapcsolatcsoportot, győződjön meg arról, hogy a következő feladatokat végezheti el:
 
-* [Létrehozásához és módosításához az ExpressRoute-kapcsolatcsoport esetében routing](howto-routing-cli.md)
-* [A virtuális hálózat csatolása az ExpressRoute-kapcsolatcsoportot](howto-linkvnet-cli.md)
+* [Útválasztás az ExpressRoute-kapcsolatcsoport létrehozása vagy módosítása](howto-routing-cli.md)
+* [A virtuális hálózat összekapcsolása az ExpressRoute-kapcsolatcsoport](howto-linkvnet-cli.md)

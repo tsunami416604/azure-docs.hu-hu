@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/27/2018
 ms.author: jasonh
-ms.openlocfilehash: 9a214aa51bcd4b7aab7a65cf2989edd9e9dd3dc6
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: ebc4c918745e273700a0efb54db4408bb702c75e
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43044891"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46991368"
 ---
 # <a name="use-c-user-defined-functions-with-hive-and-pig-streaming-on-hadoop-in-hdinsight"></a>C# felhasználó által definiált függvények használata a Hive és a Pig, a hadoop együttes használata a HDInsight streaming
 
@@ -31,7 +31,7 @@ Mind a Hive és Pig adhat át adatokat a feldolgozáshoz külső alkalmazások. 
 
     * Bármilyen kívánt IDE használata. Javasoljuk, hogy [Visual Studio](https://www.visualstudio.com/vs) 2015, 2017-es, vagy [Visual Studio Code](https://code.visualstudio.com/). A jelen dokumentumban leírt lépések a Visual Studio 2017-et használja.
 
-* Oly módon, .exe fájlok feltöltése a fürtöt, és futtassa a Pig and Hive-feladatokat. Javasoljuk, hogy a Data Lake Tools for Visual Studio, az Azure PowerShell-lel és az Azure CLI. Ez a dokumentum használatát a Data Lake Tools for Visual Studio használatával töltse fel a fájlokat, és futtassa a példa lépései Hive-lekérdezés.
+* Oly módon, .exe fájlok feltöltése a fürtöt, és futtassa a Pig and Hive-feladatokat. Javasoljuk, hogy a Data Lake Tools for Visual Studio, az Azure PowerShell-lel és az Azure klasszikus parancssori felület. Ez a dokumentum használatát a Data Lake Tools for Visual Studio használatával töltse fel a fájlokat, és futtassa a példa lépései Hive-lekérdezés.
 
     Információ más különböző módon futtathatja a Hive-lekérdezések és a Pig-feladatokhoz, az alábbi dokumentumokban talál:
 

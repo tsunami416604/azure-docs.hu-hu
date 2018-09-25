@@ -17,29 +17,30 @@ ms.date: 06/22/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 815311797e1897259b961debc8a0f81157495570
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: 23d041311c33110bf11efc78d162243a4bb25778
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39596500"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46997760"
 ---
 # <a name="azure-active-directory-v20-tokens-reference"></a>Az Azure Active Directory 2.0-s verziójú jogkivonatok leírása
+
 Az Azure Active Directory (Azure AD) v2.0-végpont bocsát ki biztonsági jogkivonatokat az egyes számos különböző típusú [hitelesítési folyamat](v2-app-types.md). Ez a hivatkozás formátuma, biztonsági jellemzőkkel és különböző típusú jogkivonat tartalma ismerteti.
 
 > [!NOTE]
 > A v2.0-végpont nem támogatja az összes Azure Active Directory-forgatókönyvek és funkciók. Annak megállapításához, hogy használjon a v2.0-végpont, olvassa el [v2.0 korlátozások](active-directory-v2-limitations.md).
->
->
 
 ## <a name="types-of-tokens"></a>Jogkivonatok típusai
+
 A v2.0-végpont támogatja a [OAuth 2.0 engedélyezési protokollt](active-directory-v2-protocols.md), mely használt hozzáférési jogkivonatokat és frissítési jogkivonatok. A v2.0-végpontra is támogatja a hitelesítést és a bejelentkezési keresztül [OpenID Connect](active-directory-v2-protocols.md). OpenID Connect vezet be a jogkivonatot, az azonosító jogkivonat egy harmadik típusú. Mindegyik token jelenik meg egy *tulajdonosi* token.
 
 A tulajdonosi jogkivonatot, amely hozzáférést biztosít a tulajdonosi védett erőforrásokhoz való könnyű biztonsági jogkivonat. A tulajdonosi minden olyan entitás, amely a token is jelenthet. Egy entitás fogadni a tulajdonosi jogkivonattal, Azure AD-vel kell hitelesítenie, ha a lépéseket a rendszer nem hajtja végre a jogkivonat biztonságos átvitelét és tárolását során, bár hozzá, és egy nem kívánt entitás használják. Néhány biztonsági jogkivonatokat rendelkezik egy beépített mechanizmus, amellyel megakadályozza, hogy illetéktelen fél használja őket, de ne tulajdonosi jogkivonatokat. Egy biztonságos csatornát, például a transport layer security (HTTPS) kell szállítani, tulajdonosi jogkivonatokat. Egy tulajdonosi jogkivonat nélkül az ilyen típusú biztonsági átvitt, ha egy rosszindulatú fél használhat egy "man-in-the-middle támadás" beszerezni a jogkivonatot, és azt a védett erőforrásokhoz való jogosulatlan hozzáférést. A biztonsági alapelveket alkalmazható, ha a tárolásával, sem a gyorsítótárazás a tulajdonosi jogkivonatokat későbbi használatra. Mindig győződjön meg arról, hogy az alkalmazás biztonságos módon továbbítja a tárolja a tulajdonosi jogkivonatokat. A tulajdonosi jogkivonatokat további biztonsági szempontokért lásd: [RFC 6750 5. szakasz](http://tools.ietf.org/html/rfc6750).
 
 Számos, a v2.0-végpont által kiállított jogkivonatokat használják, mint a JSON webes jogkivonatainak (JWTs). A JWT módja a tömör, URL-cím környezetben is biztonságos két fél közötti adatátvitelhez. Az adatokat a jwt-t hívja a *jogcím*. Egy helyességi feltétel a tulajdonosi és a jogkivonat tárgyában. A jogcímeket a jwt-t olyan JavaScript Object Notation (JSON) objektumok, kódolt és szerializálni számára az átvitelhez. A v2.0-végpont által kiállított JWTs jelentkezett, de nincs titkosítva, mert könnyen vizsgálhatja meg a jwt-t tartalmát hibakeresési célra. JWTs kapcsolatos további információkért lásd: a [JWT-specifikáció](http://self-issued.info/docs/draft-ietf-oauth-json-web-token.html).
 
-### <a name="id-tokens"></a>Azonosító-jogkivonatokat
+### <a name="id-tokens"></a>Azonosító jogkivonatok
+
 Egy azonosító jogkivonat egy biztonsági jogkivonatot, amely az alkalmazás fogad a használatával végzett hitelesítés formája [OpenID Connect](active-directory-v2-protocols.md). Azonosító-jogkivonatokat jelentésekként jelennek meg [JWTs](#types-of-tokens), és használhatja a bejelentkezni a felhasználó az alkalmazás jogcímeket tartalmaznak. Egy azonosító jogkivonat többféle módon is használhatja a jogcímeket. Általában segítségével a rendszergazdák azonosító-jogkivonatokat fiók információk megjelenítéséhez vagy egy alkalmazásban a döntést hozhasson a hozzáférésről. A v2.0-végpont problémák azonosító jogkivonat, amely rendelkezik a konzisztens jogcímeket, függetlenül attól, hogy a bejelentkezett felhasználó típusa csak egyféle típusú. A formátum és a tartalom azonosító-jogkivonatokat ugyanazok a személyes Microsoft-fiókok felhasználóinak és a munkahelyi vagy iskolai fiókok esetében.
 
 Jelenleg azonosító-jogkivonatokat jelentkezett, de nem titkosított. Amikor az alkalmazás megkapja egy azonosító jogkivonat, kell [érvényesíteni az aláírást](#validating-tokens) a token hitelességének igazolásához, és ellenőrizni annak érvényességét igazolásához néhány jogcímeket. A jogcímek, az alkalmazás által ellenőrzött forgatókönyv követelményeitől függően eltérőek lehetnek, de az alkalmazás kell végeznie néhány [közös jogcím ellenőrzések](#validating-tokens) minden forgatókönyvben.
@@ -47,16 +48,16 @@ Jelenleg azonosító-jogkivonatokat jelentkezett, de nem titkosított. Amikor az
 Is biztosítunk a jogcímekre vonatkozó részletes információk az azonosító-jogkivonatokat egy mintául szolgáló azonosító jogkivonat mellett a következő szakaszokban. Vegye figyelembe, hogy az azonosító-jogkivonatokat a jogcím nem meghatározott sorrendben adja vissza. Emellett új jogcímeket is léptethetők be azonosító-jogkivonatokat bármikor. Az alkalmazás nem kell szünet, amikor új jogcímeket jelennek meg. Az alábbi lista tartalmazza a jogcímeket, amelyeket az alkalmazás jelenleg is megbízhatóan értelmezni. További részleteket talál a [OpenID Connect specifikáció](http://openid.net/specs/openid-connect-core-1_0.html).
 
 #### <a name="sample-id-token"></a>Minta azonosító jogkivonat
+
 ```
 eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6Ik1uQ19WWmNBVGZNNXBPWWlKSE1iYTlnb0VLWSJ9.eyJhdWQiOiI2NzMxZGU3Ni0xNGE2LTQ5YWUtOTdiYy02ZWJhNjkxNDM5MWUiLCJpc3MiOiJodHRwczovL2xvZ2luLm1pY3Jvc29mdG9ubGluZS5jb20vYjk0MTk4MTgtMDlhZi00OWMyLWIwYzMtNjUzYWRjMWYzNzZlL3YyLjAiLCJpYXQiOjE0NTIyODUzMzEsIm5iZiI6MTQ1MjI4NTMzMSwiZXhwIjoxNDUyMjg5MjMxLCJuYW1lIjoiQmFiZSBSdXRoIiwibm9uY2UiOiIxMjM0NSIsIm9pZCI6ImExZGJkZGU4LWU0ZjktNDU3MS1hZDkzLTMwNTllMzc1MGQyMyIsInByZWZlcnJlZF91c2VybmFtZSI6InRoZWdyZWF0YmFtYmlub0BueXkub25taWNyb3NvZnQuY29tIiwic3ViIjoiTUY0Zi1nZ1dNRWppMTJLeW5KVU5RWnBoYVVUdkxjUXVnNWpkRjJubDAxUSIsInRpZCI6ImI5NDE5ODE4LTA5YWYtNDljMi1iMGMzLTY1M2FkYzFmMzc2ZSIsInZlciI6IjIuMCJ9.p_rYdrtJ1oCmgDBggNHB9O38KTnLCMGbMDODdirdmZbmJcTHiZDdtTc-hguu3krhbtOsoYM2HJeZM3Wsbp_YcfSKDY--X_NobMNsxbT7bqZHxDnA2jTMyrmt5v2EKUnEeVtSiJXyO3JWUq9R0dO-m4o9_8jGP6zHtR62zLaotTBYHmgeKpZgTFB9WtUq8DVdyMn_HSvQEfz-LWqckbcTwM_9RNKoGRVk38KChVJo4z5LkksYRarDo8QgQ7xEKmYmPvRr_I7gvM2bmlZQds2OeqWLB1NSNbFZqyFOCgYn3bAQ-nEQSKwBaA36jYGPOVG2r2Qv1uKcpSOxzxaQybzYpQ
 ```
 
 > [!TIP]
 > A gyakorlatban vizsgálhatja meg a minta azonosító jogkivonat jogcímeiben, illessze be a a mintául szolgáló azonosító jogkivonatot [jwt.ms](http://jwt.ms/).
->
->
 
 #### <a name="claims-in-id-tokens"></a>Azonosító-jogkivonatokat a jogcím
+
 | Name (Név) | Jogcím | Példaérték | Leírás |
 | --- | --- | --- | --- |
 | Célközönség |`aud` |`6731de76-14a6-49ae-97bc-6eba6914391e` |A jogkivonat az illetékes címzett azonosítja. Az azonosító tokenekhez a célközönségét az alkalmazás Alkalmazásazonosító, az alkalmazás a Microsoft alkalmazás regisztrációs portálon rendelt. Az alkalmazás kell érvényesíteni ezt az értéket, és elutasítja a tokent, ha az érték nem egyezik. |
@@ -82,22 +83,25 @@ A v2.0-végpont lehetővé teszi, hogy a harmadik féltől származó alkalmazá
 Ha egy hozzáférési jogkivonatot kér a v2.0-végpont, a v2.0-végpontra, az is metaadatait, az alkalmazások a hozzáférési jogkivonatát adja vissza. Ezen információk közé tartozik a hozzáférési jogkivonatot, és a hatóköröket, amelyek esetében érvényes lejárati idejét. Az alkalmazás ezeket a metaadatokat használja intelligens gyorsítótárazás hozzáférési jogkivonatok, nem kell elemezni, nyissa meg a hozzáférési jogkivonat magát.
 
 ### <a name="refresh-tokens"></a>Frissítési jogkivonatok
+
 Frissítési jogkivonatok olyan biztonsági jogkivonatok, amelyek az alkalmazás használatával új hozzáférési jogkivonatok lépjen be az OAuth 2.0 folyamat. Az alkalmazás frissítési biztonsági jogkivonat segítségével anélkül, hogy a felhasználói hosszú távú egy felhasználó nevében erőforrásokhoz való hozzáférés érdekében.
 
 Frissítési biztonsági jogkivonat több erőforrást is. A frissítési jogkivonatot kapott egy erőforráshoz jogkivonatkérések közben váltható hozzáférési jogkivonatok egy teljesen más erőforráshoz.
 
 Kell igényelnie az alkalmazás egy frissítési jogkivonat választ kap, és biztosítani a `offline_access` hatókör. További információkat talál a `offline_access` hatókörét, tekintse meg a [beleegyezése és hatókörök](v2-permissions-and-consent.md) cikk.
 
-Frissítési jogkivonatok, és mindig, teljesen átlátszatlan, az alkalmazáshoz. Azok az Azure AD v2.0-végpont által kiállított, és csak kell megvizsgálni és értelmezi a v2.0-végpontra. Hosszú élettartamú, azonban az alkalmazás várható, hogy a frissítési jogkivonatok minden időszak, amíg a rendszer utolsó nem kell írni. Lehet, hogy a frissítési biztonsági jogkivonat érvénytelenített bármely pillanatban különböző okok miatt – további információkért lásd: [jogkivonat-visszavonási](v1-id-and-access-tokens.md#token-revocation). Az egyetlen módszer az alkalmazás tudja, hogy ha egy frissítési jogkivonat érvényes, hogy egy jogkivonat kérése a v2.0-végpont, így a beváltáshoz kísérlet.
+Frissítési jogkivonatok, és mindig, teljesen átlátszatlan, az alkalmazáshoz. Azok az Azure AD v2.0-végpont által kiállított, és csak kell megvizsgálni és értelmezi a v2.0-végpontra. Hosszú élettartamú, azonban az alkalmazás várható, hogy a frissítési jogkivonatok minden időszak, amíg a rendszer utolsó nem kell írni. Lehet, hogy a frissítési biztonsági jogkivonat érvénytelenített bármely pillanatban különböző okok miatt – további információkért lásd: [jogkivonat-visszavonási](access-tokens.md#revocation). Az egyetlen módszer az alkalmazás tudja, hogy ha egy frissítési jogkivonat érvényes, hogy egy jogkivonat kérése a v2.0-végpont, így a beváltáshoz kísérlet.
 
 Amikor egy új hozzáférési jogkivonatot a frissítési jogkivonat beváltása (és ha megadták az alkalmazás a `offline_access` hatókör), egy új frissítési jogkivonatot a jogkivonat választ kap. Mentse az újonnan kiállított frissítési jogkivonat, amelyet a kérés helyett. Ez garantálja, hogy a frissítési biztonsági jogkivonat érvényes, amíg maradnak.
 
 ## <a name="validating-tokens"></a>Token ellenőrzése
+
 Jelenleg a csak jogkivonat érvényesítésére, az alkalmazások végrehajtásához szükséges azonosító-jogkivonatokat érvényesíti. Egy azonosító jogkivonat érvényesítéséhez, az alkalmazás az azonosító jogkivonat aláírása és az azonosító jogkivonat jogcímeiben is ellenőrizni kell.
 
 <!-- TODO: Link --> A Microsoft biztosít, kódtárak és kódmintákkal, amelyek bemutatják, hogyan könnyedén megfelelhet a jogkivonat érvényesítésére. A következő szakaszban ismertetünk, az alapul szolgáló folyamat. Számos harmadik fél nyílt forráskódú könyvtáraink is érhetők el JWT-ellenőrzés céljából. Szinte minden platform és nyelv legalább egy tárat lehetőség van.
 
 ### <a name="validate-the-signature"></a>Az aláírás ellenőrzése
+
 Jwt-t tartalmaz három szegmensek, amelyeket a `.` karakter. Az első szegmens más néven a *fejléc*, a második szegmens a *törzs*, és a harmadik szegmens pedig az a *aláírás*. Az aláírás-szegmens az azonosító jogkivonat hitelességének ellenőrzéséhez, hogy az alkalmazás által is megbízhatónak használható.
 
 Azonosító-jogkivonatokat az iparági szabványnak megfelelő aszimmetrikus titkosítási algoritmusok, például RSA 256 jelentkezett. Az azonosító jogkivonat fejlécében a token aláírásához használt kulcs és a titkosítási módra vonatkozó információkat tartalmaz. Példa:
@@ -131,6 +135,7 @@ Ez a dokumentum metaadatait a JSON-objektum, amely rendelkezik a számos hasznos
 Aláírás-ellenőrzés végrehajtása ebben a dokumentumban hatókörén kívül esik. Számos nyílt forráskódú kódtár segítségével a érhetők el.
 
 ### <a name="validate-the-claims"></a>A jogcímek ellenőrzése
+
 Ha az alkalmazás-azonosító jogkivonat felhasználói bejelentkezés után kap, azt az azonosító jogkivonat is végre kell hajtania néhány ellenőrzi a jogcímek ellen. Ezek közé tartozik, de nem korlátozódnak:
 
 * **célközönség** jogcímet, győződjön meg arról, hogy az azonosító jogkivonat kell fordítani az alkalmazás szándéka
@@ -143,6 +148,7 @@ Jogcím-ellenőrzések, végre kell hajtania, az alkalmazás teljes listáját l
 Ezeket a jogcímeket várt értéket részletek szerepelnek a [azonosító-jogkivonatokat](# ID tokens) szakaszban.
 
 ## <a name="token-lifetimes"></a>A jogkivonatok élettartama
+
 Az információk csak a következő jogkivonatok élettartamának biztosítunk. Az információk segíthetnek fejlesztése és hibakeresése alkalmazásokat. Az alkalmazások nem kell írni állandó maradjon ezen élettartam bármelyikét várható. Token a jogkivonatok élettartamának is, és bármikor változik.
 
 | Jogkivonat | Élettartam | Leírás |

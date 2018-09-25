@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 08/20/2018
 ms.author: bwren
 ms.component: na
-ms.openlocfilehash: 2c35d71d127903a67dce2280b2d0ab335079b480
-ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
+ms.openlocfilehash: 3bcc5368a99dc7c7c32381ca0226119d81fc2c0a
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45604467"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46978199"
 ---
 # <a name="get-started-with-log-analytics-in-the-azure-portal"></a>Ismerkedés a Log Analytics használatával az Azure Portalon
 
@@ -47,7 +47,7 @@ A Log Analytics-lap egy olyan webes eszköz, írható és az Azure Log Analytics
 ## <a name="basic-queries"></a>Alapszintű lekérdezéseket
 Lekérdezések keresési feltételek, azonosíthatja a trendeket, mintáinak elemzése és sok más összefüggéseket az adatok alapján az használható. Kezdje egy egyszerű lekérdezést:
 
-```KQL
+```Kusto
 Event | search "error"
 ```
 
@@ -57,7 +57,7 @@ Lekérdezések megkezdheti a következők egyikével táblanév vagy egy **keres
 
 Egy másik módja, hogy ugyanabból a lekérdezés írása a következő lesz:
 
-```KQL
+```Kusto
 search in (Event) "error"
 ```
 
@@ -81,7 +81,7 @@ Minden tábla adatok felépítéséről oszlopok különböző adattípusokkal, 
 ## <a name="filter-the-results"></a>Az eredmények szűréséhez
 Első lépésként előkészítés véglegesítése a _esemény_ tábla.
 
-```KQL
+```Kusto
 Event
 ```
 
@@ -135,7 +135,7 @@ Ha a lekérdezés kifejezetten egy szűrőt tartalmaz _TimeGenerated_választó 
 ## <a name="charts"></a>Diagramok
 Mellett eredményt adnak vissza egy táblázat, lekérdezési eredmények vizuális formátumban is megjeleníthetők. Például használja a következő lekérdezést:
 
-```KQL
+```Kusto
 Event 
 | where EventLevelName == "Error" 
 | where TimeGenerated > ago(1d) 

@@ -15,21 +15,21 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/29/2018
 ms.author: cynthn
-ms.openlocfilehash: a93467404232b0fff51136cb7648d84a81165bdb
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 4ae9d8053f7463c069a7305bbd07a91a387e31d2
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38697959"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46972300"
 ---
 # <a name="automatically-scale-a-virtual-machine-scale-set-in-the-azure-portal"></a>Az Azure portal virtuális gép méretezési csoport automatikus méretezése
 Méretezési csoport létrehozásakor meghatározza a futtatni kívánt virtuálisgép-példányok számát. Az alkalmazás igényeihez igazodva automatikusan növelheti vagy csökkentheti a virtuálisgép-példányok számát. Az automatikus méretezésnek köszönhetően lépést tarthat az ügyfeleik igényeivel és az alkalmazás teljes élettartama alatt reagálhat az alkalmazás teljesítményében bekövetkezett változásokra.
 
-Ez a cikk bemutatja, hogyan automatikus skálázási szabályok létrehozása az Azure Portalon, amely monitorozza a méretezési csoportban lévő Virtuálisgép-példányok teljesítményét. Ezek a szabályok automatikus skálázási növelheti vagy csökkentheti a teljesítménymetrikák Virtuálisgép-példányok számát. Akkor is elvégezhetik ezeket a lépéseket [Azure PowerShell-lel](tutorial-autoscale-powershell.md) vagy a [Azure CLI 2.0](tutorial-autoscale-cli.md).
+Ez a cikk bemutatja, hogyan automatikus skálázási szabályok létrehozása az Azure Portalon, amely monitorozza a méretezési csoportban lévő Virtuálisgép-példányok teljesítményét. Ezek a szabályok automatikus skálázási növelheti vagy csökkentheti a teljesítménymetrikák Virtuálisgép-példányok számát. Akkor is elvégezhetik ezeket a lépéseket [Azure PowerShell-lel](tutorial-autoscale-powershell.md) vagy a [Azure CLI-vel](tutorial-autoscale-cli.md).
 
 
 ## <a name="prerequisites"></a>Előfeltételek
-Az automatikus skálázási szabályok létrehozásához, egy meglévő virtuális gépet kell méretezési csoportot. Létrehozhat egy méretezési csoportot a [az Azure portal](quick-create-portal.md), [Azure PowerShell-lel](quick-create-powershell.md), vagy [Azure CLI 2.0](quick-create-cli.md).
+Az automatikus skálázási szabályok létrehozásához, egy meglévő virtuális gépet kell méretezési csoportot. Létrehozhat egy méretezési csoportot a [az Azure portal](quick-create-portal.md), [Azure PowerShell-lel](quick-create-powershell.md), vagy [Azure CLI-vel](quick-create-cli.md).
 
 
 ## <a name="create-a-rule-to-automatically-scale-out"></a>Automatikus horizontális felskálázási szabály létrehozása
@@ -55,7 +55,7 @@ Az alkalmazás növekvő igényeivel párhuzamosan a méretezési csoportban lé
     | *Operátor*             | A metrikaadatok és a küszöbérték összehasonlításához használt operátor.                                                     | Nagyobb, mint   |
     | *Küszöbérték*            | A százalékos aránya, amelyek hatására az automatikus skálázási szabály aktivál egy műveletet.                                                 | 70             |
     | *Időtartam*             | A mérőszám és a küszöbértékek összehasonlítása előtt monitorozott időtartam.                                   | 10 perc     |
-    | *Művelet*            | Meghatározza, hogy a méretezési csoport felfelé vagy lefelé a szabály alkalmazásakor és milyen növekményű                        | Százalék növelése a következővel: |
+    | *Művelet*            | Meghatározza, hogy a méretezési csoport felfelé vagy lefelé a szabály alkalmazásakor és milyen növekményű                        | Százalék szerint növelése |
     | *Példányok száma*       | Megadja, hogy a virtuálisgép-példányok hány százalékát kell módosítani a szabály aktiválásakor.                                            | 20             |
     | *Lehűlés (percben)*  | Mennyi idő teljen el a szabály újbóli alkalmazása előtt, hogy az automatikus skálázási műveletek kifejthessék a hatásukat. | 5 perc      |
 
@@ -78,7 +78,7 @@ Az este vagy a hétvége folyamán az alkalmazás igényei csökkenhetnek. Ha a 
     |------------------------|----------------------------------------------------------------------------------------------------------------------|----------------|
     | *Operátor*             | A metrikaadatok és a küszöbérték összehasonlításához használt operátor.                                                      | Kisebb mint   |
     | *Küszöbérték*            | A százalékos aránya, amelyek hatására az automatikus skálázási szabály aktivál egy műveletet.                                                 | 30             |
-    | *Művelet*            | Meghatározza, hogy a méretezési csoport felfelé vagy lefelé a szabály alkalmazásakor és milyen növekményű                         | Százalék csökkentése a következővel: |
+    | *Művelet*            | Meghatározza, hogy a méretezési csoport felfelé vagy lefelé a szabály alkalmazásakor és milyen növekményű                         | Százalék szerint csökkentése a következővel |
     | *Példányok száma*       | Megadja, hogy a virtuálisgép-példányok hány százalékát kell módosítani a szabály aktiválásakor.                                             | 20             |
 
 3. A szabály létrehozásához válassza **hozzáadása**

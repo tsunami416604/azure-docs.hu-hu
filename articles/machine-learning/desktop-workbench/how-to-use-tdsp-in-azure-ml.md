@@ -8,7 +8,6 @@ ms.author: deguhath
 manager: cgronlun
 editor: cgronlun
 ms.assetid: ''
-ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.service: machine-learning
 ms.component: core
 ms.workload: data-services
@@ -16,17 +15,19 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/16/2017
-ms.openlocfilehash: 05cb2a62cf0f001012f5faa022de233d7cbdce97
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ROBOTS: NOINDEX
+ms.openlocfilehash: 2fd0fe55b975010a1eaafeb455d61a6cb3ebff77
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42059503"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46970923"
 ---
 # <a name="structure-projects-with-the-team-data-science-process-template"></a>Projektek strukturálása a csoportos adatelemzési folyamat sablon
 
-Jelen dokumentum útmutatásokat nyújt az adatelemzési projektek létrehozása az Azure Machine Learning a csoportos adatelemzési folyamat (TDSP) sablonok segítségével. Ezek a sablonok segítségével az együttműködéshez és megismételhetőség projektek. 
+Jelen dokumentum útmutatásokat nyújt adatelemzési projektek létrehozása az Azure Machine Learning egy korábbi verzióját a csoportos adatelemzési folyamat (TDSP) sablonok segítségével. Ezek a sablonok segítségével az együttműködéshez és megismételhetőség projektek. 
 
+[!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)] 
 
 ## <a name="what-is-the-team-data-science-process"></a>Mi a csoportos adatelemzési folyamat?
 A TDSP az egy rugalmas és iteratív, adatelemzési folyamat végrehajtása és a fejlett analitikai megoldások kidolgozását. Feladata, hogy az együttműködés és a vállalati szervezetek adatok adattudománnyal foglalkozó csapatai hatékonyságát javítása. A négy fő összetevőből e célok támogatja:
@@ -52,7 +53,7 @@ Az alábbi elemek áttekintésével *előtt* egy új projektet hoz létre:
 * Tekintse át a TDSP Machine Learning [sablon](https://aka.ms/tdspamlgithubrepo).
 * (Nem a Mi már szerepel a "dokumentumok" mappában) tartalma 25 MB-nál kevesebb lehet szükséges. Tekintse meg az alábbi ebben a listában.
 * A minta\_Adatmappa van csak a kis méretű adatfájlokat (5 MB-nál kevesebb), amellyel tesztelheti a kódját vagy indítsa el a korai fejlesztési.
-* Fájlok, például a Word és PowerPoint-fájlokat tárolja, növelheti a "dokumentumok" mappában mérete közel teljes értékesítése miatt. Azt javasoljuk, hogy egy együttműködésen alapuló Wiki megtalálhatók [SharePoint](https://products.office.com/en-us/sharepoint/collaboration), vagy más együttműködésen alapuló erőforrás az ilyen fájlok tárolására.
+* Fájlok, például a Word és PowerPoint-fájlokat tárolja, növelheti a "dokumentumok" mappában mérete közel teljes értékesítése miatt. Azt javasoljuk, hogy egy együttműködésen alapuló Wiki megtalálhatók [SharePoint](https://products.office.com/sharepoint/collaboration), vagy más együttműködésen alapuló erőforrás az ilyen fájlok tárolására.
 * Nagy méretű fájlok és a Machine Learning kimenetek kezelésének módját, olvassa el [módosítások megőrzése, és a nagy méretű fájlok foglalkozó](http://aka.ms/aml-largefiles).
 
 > [!NOTE]

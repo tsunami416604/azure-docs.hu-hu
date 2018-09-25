@@ -17,29 +17,30 @@ ms.date: 07/23/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 3fb6cad6243bd6cd0b6a09827d590f7097550e31
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: d94aaa93596a18cf92b745267a6be9966454e36f
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42055735"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46971548"
 ---
-# <a name="v20-protocols---oauth-20-authorization-code-flow"></a>2.0-s protokollok – az OAuth 2.0 hitelesítési Kódfolyamat
+# <a name="v20-protocols---oauth-20-authorization-code-flow"></a>2.0-s protokollok – az OAuth 2.0 hitelesítési kódfolyamat
+
 Az OAuth 2.0 hitelesítési kódmegadás alkalmazást, amely egy eszközön a védett erőforrások, például a webes API-k eléréséhez használható. Az app model v2.0 megvalósítását az OAuth 2.0 használatával, hozzáadhat jelentkezzen be, és az API eléréséhez a mobil- és asztali alkalmazásokhoz. Ez az Útmutató nyelvtől független, és ismerteti, hogyan küldhetők és fogadhatók HTTP-üzenetek bármelyikének használata nélkül a [Azure nyílt forráskódú hitelesítési tárak](active-directory-authentication-libraries.md).
 
 > [!NOTE]
 > Nem minden Azure Active Directory-forgatókönyvet és funkciót támogatja a v2.0-végpontra. Annak megállapításához, ha a v2.0-végpont használja, olvassa el [v2.0 korlátozások](active-directory-v2-limitations.md).
-> 
-> 
 
 Az OAuth 2.0 hitelesítési kódfolyamat leírt [, az OAuth 2.0 ismertetőjének 4.1 szakaszában](http://tools.ietf.org/html/rfc6749). A legtöbb alkalmazástípust, beleértve a hitelesítési és engedélyezési végrehajtásához használatos [webes alkalmazások](v2-app-types.md#web-apps) és [natív módon telepített alkalmazások](v2-app-types.md#mobile-and-native-apps). A folyamat lehetővé teszi, hogy az alkalmazások biztonságos beszerezni a v2.0-végpont által védett erőforrások eléréséhez használható access_tokens. 
 
 ## <a name="protocol-diagram"></a>Protokoll diagramja
+
 Magas szinten a teljes hitelesítési folyamat egy natív/mobile alkalmazás egy kicsit nézhet ki:
 
 ![OAuth hitelesítési Kódfolyamat](./media/v2-oauth2-auth-code-flow/convergence_scenarios_native.png)
 
 ## <a name="request-an-authorization-code"></a>Hozzáférési kód kérése
+
 A hitelesítési kódfolyamat irányítja a felhasználót, hogy az ügyfél kezdődik a `/authorize` végpont. A kéréshez az ügyfél azt jelzi, hogy az engedélyeket kell beszerezni a felhasználó elől:
 
 ```
@@ -57,8 +58,6 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 > [!TIP]
 > A kérelem végrehajtása a hivatkozásra kattintva! Miután bejelentkezett, a böngésző át kell irányítani `https://localhost/myapp/` együtt egy `code` címet a címsorba.
 > <a href="https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id=6731de76-14a6-49ae-97bc-6eba6914391e&response_type=code&redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F&response_mode=query&scope=openid%20offline_access%20https%3A%2F%2Fgraph.microsoft.com%2Fmail.read&state=12345" target="_blank">https://login.microsoftonline.com/common/oauth2/v2.0/authorize...</a>
-> 
-> 
 
 | Paraméter             |             | Leírás                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
 |-----------------------|-------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -80,6 +79,7 @@ Ezen a ponton a felhasználó kell adnia megadják hitelesítő adataikat, és a
 A felhasználó végzi a hitelesítést, és engedélyezi a jóváhagyás után a v2.0-végpont választ küld az alkalmazáshoz, a kijelzett `redirect_uri`, a megadott metódussal a `response_mode` paraméter.
 
 #### <a name="successful-response"></a>A sikeres válasz
+
 A sikeres válasz használatával `response_mode=query` következőhöz hasonló:
 
 ```
@@ -94,6 +94,7 @@ code=AwABAAAAvPM1KaPlrEqdFSBzjqfTGBCmLdgfSTLEMPGYuNHSUYBrq...
 | state     | Ha a kérelem tartalmazza a state paraméterben, ugyanazt az értéket meg kell jelennie a választ. Az alkalmazás ellenőrizze, hogy a kérés- és állapot értékei azonosak.                                            |
 
 #### <a name="error-response"></a>Hiba történt a válasz
+
 Hibaválaszok is elküldheti az `redirect_uri` , az alkalmazás képes kezelni őket megfelelően:
 
 ```
@@ -108,6 +109,7 @@ error=access_denied
 | error_description | Egy adott hibaüzenet, amelyek segítségével a fejlesztők hitelesítési hiba kiváltó okának azonosításához.          |
 
 #### <a name="error-codes-for-authorization-endpoint-errors"></a>Hitelesítési végpont hibák hibakódok
+
 A következő táblázat ismerteti a különböző visszaadható hibakódok a `error` válaszként küldött hibaüzenetben paraméterében.
 
 | Hibakód                | Leírás                                                                                                           | Ügyfélművelet                                                                                                                                                                                                                               |
@@ -123,6 +125,7 @@ A következő táblázat ismerteti a különböző visszaadható hibakódok a `e
 |interaction_required       | A kérelem felhasználói beavatkozást igényel. | Egy további hitelesítési lépés vagy hozzájárulás megadása kötelező. Ismételje meg a kérelmet anélkül `prompt=none`. |
 
 ## <a name="request-an-access-token"></a>Hozzáférési jogkivonat kérése
+
 Most, hogy egy authorization_code beszerezett, és engedéllyel rendelkezik a felhasználó által, beválthatja a `code` számára egy `access_token` a kívánt erőforrást. Ehhez küldésével egy `POST` kérelmet a `/token` végpont:
 
 ```
@@ -142,8 +145,6 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 
 > [!TIP]
 > Próbálja ki a Postmanben a kérelem végrehajtása! (Ne felejtse el lecserélni a `code`) [ ![Postman futtatása](./media/v2-oauth2-auth-code-flow/runInPostman.png)](https://app.getpostman.com/run-collection/8f5715ec514865a07e6a)
-> 
-> 
 
 | Paraméter     |                       | Leírás                                                                                                                                                                                                                                                                                                                                                                                                                                |
 |---------------|-----------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -155,7 +156,9 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | redirect_uri  | szükséges              | Az azonos redirect_uri használt értékkel beszerezni a authorization_code.                                                                                                                                                                                                                                                                                                                                                             |
 | client_secret | a web apps szükséges | Az alkalmazás titkos, amelyet az alkalmazás az alkalmazás regisztrációs portálon létrehozott. Azt kell nem használható egy natív alkalmazást, mert client_secrets megbízhatóan nem tárolható az eszközökön. Web apps és a webes API-kat, amelynek a titkos ügyfélkódot tárolja biztonságos helyen a kiszolgálói oldalon lehetősége.  A titkos ügyfélkulcsot kell URL-kódolású elküldése előtt.                                                                                                                    |
 | code_verifier | választható              | Az azonos code_verifier a authorization_code beszerzéséhez használt. Szükséges, ha az engedélyezési kód engedélyezési kérésben PKCE használt. További információkért lásd: a [PKCE RFC](https://tools.ietf.org/html/rfc7636)                                                                                                                                                                                                                                                                                             |
+
 #### <a name="successful-response"></a>A sikeres válasz
+
 Token sikeres válasz fog kinézni:
 
 ```json
@@ -174,8 +177,8 @@ Token sikeres válasz fog kinézni:
 | token_type    | Typ tokenu értékét jelöli. Az egyetlen típus, amely támogatja az Azure ad-ben tulajdonosi                                                                                                                                                                                                                                                                                                                                                                           |
 | expires_in    | Mennyi ideig a hozzáférési jogkivonat érvénytelen (másodpercben).                                                                                                                                                                                                                                                                                                                                                                                                       |
 | scope         | A hatókörök, amely a access_token érvényes.                                                                                                                                                                                                                                                                                                                                                                                                         |
-| refresh_token | Az OAuth 2.0-s frissítési jogkivonatot. Az alkalmazás használhatja ezt a jogkivonatot a jelenlegi hozzáférési jogkivonat lejárata után szerzi be a további hozzáférési jogkivonatokat. Refresh_tokens hosszú élettartamú, és az erőforrásokhoz való hozzáférés megőrzése hosszabb ideig is használható. További részletekért tekintse meg a [v2.0 jogkivonat referenciái](v2-id-and-access-tokens.md). <br> **Megjegyzés:** csak a megadott if `offline_access` a kért hatókörhöz.                                               |
-| id_token      | Az előjel nélküli JSON webes jogkivonat (JWT). Az alkalmazás is base64Url dekódolni a szegmensek a token a bejelentkezett felhasználóval kapcsolatos információkat. Az alkalmazás gyorsítótárazzák az értékeket, és megjelenítheti őket, de azt nem igazolható azokat bármilyen engedélyezési és biztonsági határokat. Id_tokens kapcsolatos további információkért lásd: a [v2.0-végpont jogkivonat referenciái](v2-id-and-access-tokens.md). <br> **Megjegyzés:** csak a megadott if `openid` a kért hatókörhöz. |
+| refresh_token | Az OAuth 2.0-s frissítési jogkivonatot. Az alkalmazás használhatja ezt a jogkivonatot a jelenlegi hozzáférési jogkivonat lejárata után szerzi be a további hozzáférési jogkivonatokat. Refresh_tokens hosszú élettartamú, és az erőforrásokhoz való hozzáférés megőrzése hosszabb ideig is használható. A hozzáférési jogkivonat frissítése További részletekért tekintse meg a [az alábbi szakasz](#refresh-the-access-token). <br> **Megjegyzés:** csak a megadott if `offline_access` a kért hatókörhöz.                                               |
+| id_token      | Az előjel nélküli JSON webes jogkivonat (JWT). Az alkalmazásnak a bejelentkezett felhasználóval kapcsolatos információkat a token a szegmensek is dekódol. Az alkalmazás gyorsítótárazzák az értékeket, és megjelenítheti őket, de azt nem igazolható azokat bármilyen engedélyezési és biztonsági határokat. Id_tokens kapcsolatos további információkért lásd: a [ `id_token reference` ](id-tokens.md). <br> **Megjegyzés:** csak a megadott if `openid` a kért hatókörhöz. |
 #### <a name="error-response"></a>Hiba történt a válasz
 Hibaválaszok ehhez hasonló lesz:
 
@@ -202,6 +205,7 @@ Hibaválaszok ehhez hasonló lesz:
 | correlation_id    | A különböző összetevők a diagnosztikát segítő kérelem egyedi azonosítója.                             |
 
 #### <a name="error-codes-for-token-endpoint-errors"></a>A jogkivonat-végpont hibákat hibakódok
+
 | Hibakód              | Leírás                                                                                                           | Ügyfélművelet                                                                                                                                                                                                                               |
 |-------------------------|-----------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | invalid_request         | Protokollhiba történt, például egy hiányzó kötelező paraméter.                                                               | Javítsa ki és küldje el újra a kérelmet                                                                                                                                                                                                                |
@@ -214,6 +218,7 @@ Hibaválaszok ehhez hasonló lesz:
 | temporarily_unavailable | A kiszolgáló nem túlságosan elfoglalt a kérelem kezelése.                                                            | Ismételje meg a kérelmet. Az ügyfélalkalmazás megmagyarázhatják a felhasználót, hogy a válasz egy ideiglenes állapot miatt késik.                                                                                                                |
 
 ## <a name="use-the-access-token"></a>A hozzáférési jogkivonattal
+
 Most, hogy sikeresen szerezte- `access_token`, használhatja a jogkivonatot a webes API-kérések, beleértve a `Authorization` fejléc:
 
 > [!TIP]
@@ -228,6 +233,7 @@ Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZn
 ```
 
 ## <a name="refresh-the-access-token"></a>A hozzáférési jogkivonat frissítéséhez
+
 Access_tokens rövid életűek, és frissítenie kell azokat után folytatja az erőforrások eléréséhez. Ha elküldi egy másik megteheti `POST` kérelmet a `/token` végpont, ezúttal biztosítása a `refresh_token` helyett a `code`:
 
 ```
@@ -261,6 +267,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | client_secret | a web apps szükséges | Az alkalmazás titkos, amelyet az alkalmazás az alkalmazás regisztrációs portálon létrehozott. Azt kell nem használható egy natív alkalmazást, mert client_secrets megbízhatóan nem tárolható az eszközökön. Web apps és a webes API-kat, amelynek a titkos ügyfélkódot tárolja biztonságos helyen a kiszolgálói oldalon lehetősége.                                                                                                                                                    |
 
 #### <a name="successful-response"></a>A sikeres válasz
+
 Token sikeres válasz fog kinézni:
 
 ```json
@@ -280,7 +287,7 @@ Token sikeres válasz fog kinézni:
 | expires_in    | Mennyi ideig a hozzáférési jogkivonat érvénytelen (másodpercben).                                                                                                                                                                                                                                                                                                                                                                                                        |
 | scope         | A hatókörök, amely a access_token érvényes.                                                                                                                                                                                                                                                                                                                                                                                                          |
 | refresh_token | Egy új OAuth 2.0-s frissítési jogkivonatot. Ez újonnan megszerzett frissítési jogkivonat annak érdekében, hogy a frissítési biztonsági jogkivonat továbbra is érvényesek, amíg a régi frissítési jogkivonat kell cserélni. <br> **Megjegyzés:** csak a megadott if `offline_access` a kért hatókörhöz.                                                                                                                                                                                                |
-| id_token      | Az előjel nélküli JSON webes jogkivonat (JWT). Az alkalmazás is base64Url dekódolni a szegmensek a token a bejelentkezett felhasználóval kapcsolatos információkat. Az alkalmazás gyorsítótárazzák az értékeket, és megjelenítheti őket, de azt nem igazolható azokat bármilyen engedélyezési és biztonsági határokat. Id_tokens kapcsolatos további információkért lásd: a [v2.0-végpont jogkivonat referenciái](v2-id-and-access-tokens.md). <br> **Megjegyzés:** csak a megadott if `openid` a kért hatókörhöz. |
+| id_token      | Az előjel nélküli JSON webes jogkivonat (JWT). Az alkalmazásnak a bejelentkezett felhasználóval kapcsolatos információkat a token a szegmensek is dekódol. Az alkalmazás gyorsítótárazzák az értékeket, és megjelenítheti őket, de azt nem igazolható azokat bármilyen engedélyezési és biztonsági határokat. Id_tokens kapcsolatos további információkért lásd: a [ `id_token reference` ](id-tokens.md). <br> **Megjegyzés:** csak a megadott if `openid` a kért hatókörhöz. |
 
 #### <a name="error-response"></a>Hiba történt a válasz
 

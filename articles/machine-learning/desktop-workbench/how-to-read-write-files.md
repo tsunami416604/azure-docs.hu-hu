@@ -11,14 +11,18 @@ ms.component: core
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/10/2017
-ms.openlocfilehash: 5a772f8792c02139e45977e207b5be4bebc63a9c
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ROBOTS: NOINDEX
+ms.openlocfilehash: 4a2dff4dd57bdb0b010bbb4568d796f1e197a728
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37908237"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46971501"
 ---
 # <a name="persisting-changes-and-working-with-large-files"></a>Módosítások megőrzése, és a nagy méretű fájlok használata
+
+[!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)]
+
 Az Azure Machine Learning-Kísérletezési szolgáltatással konfigurálhatja úgy a végrehajtási célok különböző. Egyes tárolók olyan helyi, például a helyi számítógépen vagy egy Docker-tárolót a helyi számítógépen. Mások olyan távoli, például egy távoli gépen vagy egy HDInsight-fürtöt a Docker-tárolóban. További információkért lásd: [áttekintése az Azure Machine Learning-kísérletezés végrehajtási szolgáltatás](experimentation-service-configuration.md). 
 
 Mielőtt a célhelyen hajthat végre, a számítási célnak a projektmappa fájllistájának kell másolnia. Így még a helyi végrehajtásra, amely egy helyi ideiglenes mappát használ erre a célra a kell elvégeznie. 
@@ -48,6 +52,9 @@ A gyakori alkalmazási helyzetek a következők:
 * A modell tanítása
 * Adatkészlet létrehozása
 * A modell-képzési végrehajtási részeként képfájlban grafikon 
+
+>[!Note]
+> Kimeneti mappa egy futtatása után a nyomon követett fájl maximális mérete 512 MB. Ez azt jelenti, hogy ha a szkript létrehoz egy fájlt, a kimeneti mappában 512 MB-nál nagyobb, akkor nem lesznek begyűjtve van. 
 
 Emellett szeretné a kimenetek összehasonlíthasson futtatja, jelölje be egy kimeneti fájl (például egy modell), amely egy korábbi készítette futtassa, és használata egy azt követő feladat (például pontozási).
 

@@ -12,14 +12,19 @@ ms.workload: data-services
 ms.custom: mvc, reference
 ms.topic: article
 ms.date: 09/14/2017
-ms.openlocfilehash: dbda4b7b6d82e8cf1e89dc78ce82efbac08b9933
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ROBOTS: NOINDEX
+ms.openlocfilehash: 0a5cbca114b220686d656f93edb00a199e3cbeeb
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35646396"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46989821"
 ---
 # <a name="expand-json-transformation"></a>Bontsa ki a JSON-átalakítás
+
+[!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)] 
+
+
 A **bontsa ki a JSON** átalakító lehetővé teszi a felhasználóknak egy létező oszlop érvényes JSON-szöveget tartalmazó több oszlopba.
 
 ## <a name="how-to-perform-this-transformation"></a>Az átalakítás végrehajtása
@@ -33,7 +38,7 @@ Kövesse az alábbi lépéseket az átalakítás végrehajtásához:
 
 ## <a name="examples"></a>Példák
 
-A forrás columnn *ügyfél* ki van bontva, két oszlopra *Customer.Name* és *Customer.Phone*.
+A forrásoszlop *ügyfél* ki van bontva, két oszlopra *Customer.Name* és *Customer.Phone*.
 
 | Ügyfél                                                | Customer.Name   | Customer.Phone |
 |---------------------------------------------------------|-----------------|----------------|

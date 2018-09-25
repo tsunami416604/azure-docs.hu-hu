@@ -12,14 +12,19 @@ ms.component: core
 ms.workload: data-services
 ms.topic: article
 ms.date: 10/17/2017
-ms.openlocfilehash: a8c258a9bc8e006d5bbae4b7bbb61c7ef6e95412
-ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
+ROBOTS: NOINDEX
+ms.openlocfilehash: 83d6f529330a05e6a7c46ad45b19f0338f93bfc7
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45605946"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46995091"
 ---
 # <a name="image-classification-using-azure-machine-learning-workbench"></a>Képek besorolása Azure Machine Learning Workbench használatával
+
+[!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)] 
+
+
 
 Kép besorolási megközelítések nagy számú számítógépes Látástechnológiai problémák megoldásához használható.
 Ezek közé tartozik a modellek, amelyek például egyéb kérdésre készítése: *szerepel a lemezkép objektum?* ahol objektum lehet például *kutya*, *autó*, vagy  *szállításra*. Vagy összetettebb kérdések, például: *milyen osztályba tartozó szemmel betegségek súlyosság szerint a betegek retinal vizsgálat van érintő?*.
@@ -51,7 +56,7 @@ Míg a korábbi élmény gépi tanulással és a CNTK nem kötelező, hasznos le
 Ez a példa futtatásához az Előfeltételek a következők:
 
 1. Egy [Azure-fiók](https://azure.microsoft.com/free/) (az ingyenes próbaverziók érhető el).
-2. A [Azure Machine Learning Workbench](../service/overview-what-is-azure-ml.md) következő a [rövid telepítési útmutatójában](../service/quickstart-installation.md) telepítse a programot, és hozzon létre egy munkaterületet.  
+2. A [Azure Machine Learning Workbench](../service/overview-what-is-azure-ml.md) következő a [rövid telepítési útmutatójában](quickstart-installation.md) telepítse a programot, és hozzon létre egy munkaterületet.  
 3. Egy Windows-gépen. Windows operációs rendszer szükség, mivel a Workbench támogatja, csak a Windows és MacOS, miközben a Microsoft Cognitive Toolkit (amely használjuk, deep learning-kódtár) csak támogatja a Windows és Linux rendszereken.
 4. Egy dedikált GPU, nem hajtható végre a SVM képzés 1,. rész az szükséges, azonban szükség van a 2. rész ismertetett DNN finomítása. Ha nem áll rendelkezésre az erős GPU, a több gpu-n be szeretne, vagy nem rendelkezik egy Windows-gépen, majd fontolja meg az Azure Deep Learning virtuális gép Windows operációs rendszerrel. Lásd: [Itt](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-ads.dsvm-deep-learning) 1 kattintással üzembe helyezési útmutató. Üzembe helyezését követően csatlakozzon a virtuális Géphez távoli asztali kapcsolaton keresztül, Workbench telepítése van, és futtassa a kódot helyileg a virtuális gépről.
 5. Például OpenCV különböző Python-kódtárakat kell telepíteni. Kattintson a *parancssor megnyitása* származó a *fájl* menüjében a Workbench, és futtassa a következő parancsokat a függőségek telepítéséhez:  

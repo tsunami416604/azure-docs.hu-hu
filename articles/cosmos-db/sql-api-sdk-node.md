@@ -2,22 +2,21 @@
 title: 'Az Azure Cosmos DB: SQL Node.js API, SDK és -erőforrások |} A Microsoft Docs'
 description: Mindent megtudhat a SQL Node.js API-t és az SDK kiadási dátum, kivezetési dátum és az Azure Cosmos DB Node.js SDK minden verziója közötti végzett módosításokat.
 services: cosmos-db
-author: rnagpal
-manager: kfile
+author: deborahc
 editor: cgronlun
 ms.service: cosmos-db
 ms.component: cosmosdb-sql
 ms.devlang: nodejs
 ms.topic: reference
-ms.date: 5/3/2018
+ms.date: 09/24/2018
 ms.author: rnagpal
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e19c1cb7b297d2537e969e0dd632dae3e1c3d211
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: b6983b49135b5a8adbef1d0cfc5a407cb7b0c7ac
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39594360"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46960549"
 ---
 # <a name="azure-cosmos-db-nodejs-sdk-for-sql-api-release-notes-and-resources"></a>Az Azure Cosmos DB Node.js SDK-t az SQL API-hoz: kibocsátási megjegyzések és erőforrások
 > [!div class="op_single_selector"]
@@ -40,12 +39,16 @@ ms.locfileid: "39594360"
 |Az API dokumentációja  |  [A JavaScript SDK-forrásdokumentáció](https://docs.microsoft.com/javascript/api/%40azure/cosmos/?view=azure-node-latest)
 |SDK telepítési utasításokat  |  [Telepítési utasítások](https://github.com/Azure/azure-cosmos-js#installation)
 |Hozzájárul az SDK-t | [GitHubon](https://github.com/Azure/azure-cosmos-js/tree/master)
-| Példák | [NODE.js-Kódminták](sql-api-nodejs-samples-preview.md)
-| Kezdeti lépéseket ismertető oktatóanyag | [A JavaScript SDK használatának első lépései](sql-api-nodejs-get-started-preview.md)
-| Alapú webappokról szóló oktatóanyagunkat | [Az Azure Cosmos DB Node.js webalkalmazás létrehozása](sql-api-nodejs-application-preview.md)
+| Példák | [NODE.js-Kódminták](sql-api-nodejs-samples.md)
+| Kezdeti lépéseket ismertető oktatóanyag | [A JavaScript SDK használatának első lépései](sql-api-nodejs-get-started.md)
+| Alapú webappokról szóló oktatóanyagunkat | [Az Azure Cosmos DB Node.js webalkalmazás létrehozása](sql-api-nodejs-application.md)
 | Aktuális támogatott platform | [NODE.js 6.x-es](https://nodejs.org/en/blog/release/v6.10.3/) – SDK 2.0.0-s verzió vagy újabb szükséges.<br/>[NODE.js v4.2.0](https://nodejs.org/en/blog/release/v4.2.0/)<br/> [NODE.js v0.12](https://nodejs.org/en/blog/release/v0.12.0/)<br/> [NODE.js v0.10](https://nodejs.org/en/blog/release/v0.10.0/) 
 
 ## <a name="release-notes"></a>Kibocsátási megjegyzések
+
+### <a name="2.0.0"/>2.0.0</a>
+* A JavaScript SDK 2.0.0-s verziójának általánosan elérhető
+* Többrégiós írási műveletek támogatása.
 
 ### <a name="2.0.0-3"/>2.0.0-3</a>
 * RC1-es verziójának 2.0.0-s a JavaScript SDK-t a nyilvános előzetes verziójához.

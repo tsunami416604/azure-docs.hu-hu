@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/14/2018
-ms.openlocfilehash: d717737bc2b15e57ae32faffaece96f78a7cc013
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: d75a91ea0925ef0860b8e6dee310156bef21a1ba
+ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45577820"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47056821"
 ---
 # <a name="understand-outputs-from-azure-stream-analytics"></a>Kimenő adatait az Azure Stream Analytics ismertetése
 Ez a cikk bemutatja a kimenetek elérhető az Azure Stream Analytics-feladat különböző típusú. Kimenetek segítségével tárolhatja, és a Stream Analytics-feladat eredményének mentése. A kimeneti adatokat használja, végezhet további üzleti elemzés és az adattárház az adatokat. 
@@ -63,7 +63,7 @@ Engedély megújítása **leállítása** a feladat > Nyissa meg a Data Lake Sto
 ![Data Lake Store engedélyezése](./media/stream-analytics-define-outputs/08-stream-analytics-define-outputs.png)  
 
 ## <a name="sql-database"></a>SQL Database
-[Az Azure SQL Database](https://azure.microsoft.com/services/sql-database/) használható kimenetként, amely a relációs jellegű adatokhoz vagy alkalmazásokhoz, amelyek egy relációs adatbázisban szolgáltatott tartalmaktól függnek. Stream Analytics-feladatok írni egy létező táblázat egy Azure SQL Database-ben.  A következő tábla sémáját pontosan egyeznie kell a mezőket és azok típusát, hogy a feladat kimenete. Egy [Azure SQL Data Warehouse](https://azure.microsoft.com/documentation/services/sql-data-warehouse/) is megadható kimenetként, valamint az SQL Database output paraméter használatával. Az alábbi táblázat felsorolja a tulajdonságnevek és a egy SQL Database-kimenet létrehozása leírását.
+[Az Azure SQL Database](https://azure.microsoft.com/services/sql-database/) használható kimenetként, amely a relációs jellegű adatokhoz vagy alkalmazásokhoz, amelyek egy relációs adatbázisban szolgáltatott tartalmaktól függnek. Stream Analytics-feladatok írni egy létező táblázat egy Azure SQL Database-ben.  A következő tábla sémáját pontosan egyeznie kell a mezőket és azok típusát, hogy a feladat kimenete. Egy [Azure SQL Data Warehouse](https://azure.microsoft.com/documentation/services/sql-data-warehouse/) is megadható kimenetként, valamint az SQL Database output paraméter használatával. Írási teljesítmény javítására kapcsolatos további információkért tekintse meg a [Stream Analytics és az Azure SQL Database kimenetként](stream-analytics-sql-output-perf.md) cikk. Az alábbi táblázat felsorolja a tulajdonságnevek és a egy SQL Database-kimenet létrehozása leírását.
 
 | Tulajdonság neve | Leírás |
 | --- | --- |
@@ -297,7 +297,7 @@ A következő táblázat összefoglalja a partíció-támogatás és a kimeneti 
 | Kimenet típusa | Particionálási támogatása | Partíciókulcs  | Kimeneti írók száma | 
 | --- | --- | --- | --- |
 | Azure Data Lake Store | Igen | Használja {a date} és {time} az elérési út előtagmintája tokeneket. Válassza ki a dátum formátuma éééé/hh/nn például, nn/hh/éééé-hh-nn-éééé. Az időformátum ÓÓ használható. | A bemeneti particionálási követi [teljes párhuzamosítható lekérdezések](stream-analytics-scale-jobs.md). | 
-| Azure SQL Database | Nem | None | Nem alkalmazható. | 
+| Azure SQL Database | Igen | A PARTITION BY záradék a lekérdezés alapján | A bemeneti particionálási követi [teljes párhuzamosítható lekérdezések](stream-analytics-scale-jobs.md). | 
 | Azure Blob Storage | Igen | Használja {a date} és {time} token az esemény mezőiből az elérésiút-minta. Válassza ki a dátum formátuma éééé/hh/nn például, nn/hh/éééé-hh-nn-éééé. Az időformátum ÓÓ használható. Részeként a [előzetes](https://aka.ms/ASAPreview), blob kimeneti lehet particionálni egy egyéni esemény egyetlen attribútum {fieldname} vagy {dátum és idő:\<specifikátor >}. | A bemeneti particionálási követi [teljes párhuzamosítható lekérdezések](stream-analytics-scale-jobs.md). | 
 | Azure-eseményközpont | Igen | Igen | Partíció igazítás függően változik.</br> Ha a kimeneti partíciós kulccsal egyaránt igazodik a felsőbb rétegbeli (korábbi) lekérdezési lépésre, írók száma az Eseményközpont megegyezik a számát kimeneti Event Hubs-partíciók. Minden egyes író használja az EventHub [EventHubSender osztály](/dotnet/api/microsoft.servicebus.messaging.eventhubsender?view=azure-dotnet) eseményeket küldhet az adott partíció. </br> Ha a partíciókulcs felsőbb rétegbeli (korábbi) lekérdezési lépésre, írók száma nem igazodik az Eseményközpont kimenete ugyanaz, mint a korábbi lépésben partíciók száma. Minden egyes író használ EventHubClient [SendBatchAsync osztály](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.eventhubclient.sendasync?view=azure-dotnet) az események küldése az összes kimeneti partíciót. |
 | Power BI | Nem | None | Nem alkalmazható. | 
@@ -317,7 +317,7 @@ Az alábbi táblázat ismerteti azokat a kötegelés kimeneti szempontok:
 | Azure Data Lake Store | Lásd: [korlátozza a Data Lake Storage](../azure-subscription-service-limits.md#data-lake-store-limits) | Legfeljebb 4 MB / írási művelet |
 | Azure SQL Database | Max. 10 000 sorosak egyetlen tömeges beszúrás</br>Egyetlen tömeges beszúrás sorosak 100 perc </br>Lásd még: [Azure SQL-korlátozások](../sql-database/sql-database-resource-limits.md) |  Minden batch először tömeges maximális kötegméret együtt, és előfordulhat, hogy ossza fel a batch felét (csak minimális köteg mérete) – Újrapróbálkozást lehetővé tevő hiba esetén az SQL-alapú. |
 | Azure Blob Storage | Lásd: [korlátozza az Azure Storage](../azure-subscription-service-limits.md#storage-limits) | Maximális Blob blokkblob mérete 4 MB</br>Blobok bock maximális száma 50000 |
-| Azure-eseményközpont   | Egy üzenet 256 KB </br>Lásd még: [korlátozza az Event Hubs](../event-hubs/event-hubs-quotas.md) |    Bemeneti kimeneti particionálás nem igazodnak, ha minden egyes esemény egy EventData külön-külön csomagolni és kötegelt akár a maximális üzenetméret (prémium szintű termékváltozat 1 MB) küldi el. </br></br>  Bemeneti-kimeneti particionálás van igazítva, ha több esemény maximális mérete legfeljebb egy egyetlen EventData elhelyezve, és küldött.    |
+| Azure Event Hub   | Egy üzenet 256 KB </br>Lásd még: [korlátozza az Event Hubs](../event-hubs/event-hubs-quotas.md) |    Bemeneti kimeneti particionálás nem igazodnak, ha minden egyes esemény egy EventData külön-külön csomagolni és kötegelt akár a maximális üzenetméret (prémium szintű termékváltozat 1 MB) küldi el. </br></br>  Bemeneti-kimeneti particionálás van igazítva, ha több esemény maximális mérete legfeljebb egy egyetlen EventData elhelyezve, és küldött.    |
 | Power BI | Lásd: [Power BI Rest API-korlátok](https://msdn.microsoft.com/library/dn950053.aspx) |
 | Azure Table Storage | Lásd: [korlátozza az Azure Storage](../azure-subscription-service-limits.md#storage-limits) | Alapértelmezett egyszeri tranzakciónként 100 entitást, és egy kisebb értékre, igény szerint konfigurálható. |
 | Az Azure Service Bus-üzenetsorba   | Egy üzenet 256 KB</br> Lásd még: [korlátozza a Service Bus](../service-bus-messaging/service-bus-quotas.md) | Egy üzenet egyszeri esemény |

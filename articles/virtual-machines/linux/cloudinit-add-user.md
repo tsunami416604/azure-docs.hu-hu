@@ -1,6 +1,6 @@
 ---
-title: Felhasználó hozzáadása a Linux virtuális gépek Azure-felhő inicializálás használatával |} Microsoft Docs
-description: Felhő inicializálás használata a Linux virtuális gép létrehozása az Azure CLI 2.0 során a felhasználó hozzáadása
+title: Felhasználó hozzáadása az Azure-on Linuxos VM cloud-init használata |} A Microsoft Docs
+description: A cloud-init használata Linux rendszerű virtuális gép létrehozásakor az Azure CLI-vel a felhasználó hozzáadása
 services: virtual-machines-linux
 documentationcenter: ''
 author: rickstercdn
@@ -14,20 +14,20 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 11/29/2017
 ms.author: rclaus
-ms.openlocfilehash: ce4421fc8276f215564cb7a171a215cc166c8517
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 905d701437b1b580c019c800d13b18f725580fdd
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2018
-ms.locfileid: "29123463"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46972946"
 ---
-# <a name="use-cloud-init-to-add-a-user-to-a-linux-vm-in-azure"></a>Használja a felhő inicializálás hozzáadni egy felhasználót egy Linux virtuális Gépet az Azure-ban
-Ez a cikk bemutatja, hogyan használható [felhő inicializálás](https://cloudinit.readthedocs.io) felhasználó hozzáadása a virtuális gép (VM) vagy virtuális gép méretezési beállítja (VMSS) kiépítési idő az Azure-ban. A felhő inicializálás parancsprogram lefut a első indítása, ha az erőforrások az Azure-ban kiépített. Felhő inicializálás működése natív Azure-ban és a Linux támogatott disztribúciókkal kapcsolatos további információkért lásd: [felhő inicializálás áttekintése](using-cloud-init.md).
+# <a name="use-cloud-init-to-add-a-user-to-a-linux-vm-in-azure"></a>Felhasználók hozzáadása az Azure-beli Linuxos virtuális gép a cloud-init használatával
+Ez a cikk bemutatja, hogyan használható [a cloud-init](https://cloudinit.readthedocs.io) felhasználó hozzáadása egy virtuális gép (VM) vagy virtuálisgép-méretezési csoportok (VMSS): kiépítés az Azure-ban ideje. Ez a szkript a cloud-init egyszer az erőforrásokat az Azure-ban kiépített fut az első rendszerindításkor. A cloud-init működése natív módon az Azure és a támogatott Linux-disztribúciók kapcsolatos további információkért lásd: [cloud-init áttekintése](using-cloud-init.md).
 
-## <a name="add-a-user-to-a-vm-with-cloud-init"></a>Felhasználó hozzáadása a virtuális gép és felhő inicializálás
-Az első feladatok számára bármely új Linux virtuális gép egyik hozzáadni a szolgáltatást, hogy kerülje el a további felhasználó *legfelső szintű*. SSH-kulcsok a biztonsági és a használhatóság ajánlott eljárás. Kulcsok bekerülnek a *~/.ssh/authorized_keys* a felhő inicializálás parancsfájl-fájlt.
+## <a name="add-a-user-to-a-vm-with-cloud-init"></a>Felhasználó hozzáadása egy virtuális Gépet, a cloud-Init használatával
+Minden olyan új Linux rendszerű virtuális gépen az első feladatok egyik maga használatának elkerülése érdekében további felhasználó felvétele *legfelső szintű*. SSH-kulcsokat is ajánlott eljárás, biztonsági és a használhatóságot. Kulcsok kerülnek a *~/.ssh/authorized_keys* ezt a szkriptet a cloud-init-fájlt.
 
-Felhasználó hozzáadása a Linux virtuális gép, hozzon létre egy fájlt az aktuális rendszerhéjban nevű *cloud_init_add_user.txt* , majd illessze be a következő konfigurációt. Hozzon létre a fájl ebben a példában a felhő rendszerhéj nem a helyi számítógépen. A szerkesztő kívánja használata. Írja be a `sensible-editor cloud_init_add_user.txt` parancsot a fájl létrehozásához és az elérhető szerkesztők listájának megtekintéséhez. Válassza ki a használandó #1 a **nano** szerkesztő. Győződjön meg arról, hogy az egész felhő inicializálás fájl megfelelően lett lemásolva különösen az első sor.  Meg kell adnia a saját nyilvános kulcs (például a tartalmát *~/.ssh/id_rsa.pub*) értékének `ssh-authorized-keys:` -egyszerűbbé teheti a példa itt lerövidítette.
+Felhasználó hozzáadása egy Linux rendszerű virtuális géphez, hozzon létre egy fájlt az aktuális felületen *cloud_init_add_user.txt* , és illessze be a következő konfigurációt. Ebben a példában a Cloud shellben, nem a helyi gépén hozzon létre a fájlt. Bármelyik szerkesztőt használhatja. Írja be a `sensible-editor cloud_init_add_user.txt` parancsot a fájl létrehozásához és az elérhető szerkesztők listájának megtekintéséhez. Válassza ki a használandó #1 a **nano** szerkesztő. Győződjön meg arról, hogy a teljes cloud-init-fájlt, másolja, különösen az első sort.  Meg kell adnia a saját nyilvános kulcs (például a tartalmát *~/.ssh/id_rsa.pub*) értékeként `ssh-authorized-keys:` – példa egyszerűsítése érdekében itt csonkult.
 
 ```yaml
 #cloud-config
@@ -41,15 +41,15 @@ users:
       - ssh-rsa AAAAB3<snip>
 ```
 > [!NOTE] 
-> A #cloud-konfigurációs fájl tartalmazza a `- default` paraméter. Ez a felhasználó hozzáfűzése a meglévő rendszergazdai jogú felhasználó kiépítés során létrehozott. Ha létrehoz egy felhasználó nélkül a `- default` paraméter – az automatikusan létrehozott rendszergazdai jogú felhasználó hozta létre az Azure platformon felülírt lenne. 
+> A #cloud-konfigurációs fájl tartalmazza a `- default` paramétert tartalmaz. Ez a felhasználó hozzáfűzése a meglévő rendszergazdai felhasználó a kiépítés során létrehozott. Ha egy felhasználói nélkül hoz létre a `- default` paraméter – az automatikusan létrehozott rendszergazdai felhasználó hozta létre az Azure platform felülírt lenne. 
 
-Ez a rendszerkép telepítés megkezdése előtt hozzon létre egy erőforráscsoportot a kell a [az csoport létrehozása](/cli/azure/group#az_group_create) parancsot. Az Azure-erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat. A következő példában létrehozunk egy *myResourceGroup* nevű erőforráscsoportot az *eastus* helyen.
+Ez a rendszerkép üzembe helyezése előtt hozzon létre egy erőforráscsoportot kell a [az csoport létrehozása](/cli/azure/group#az_group_create) parancsot. Az Azure-erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat. A következő példában létrehozunk egy *myResourceGroup* nevű erőforráscsoportot az *eastus* helyen.
 
 ```azurecli-interactive 
 az group create --name myResourceGroup --location eastus
 ```
 
-Ezután hozzon létre a virtuális gép és [az virtuális gép létrehozása](/cli/azure/vm#az_vm_create) , és adja meg a felhő inicializálás fájl `--custom-data cloud_init_add_user.txt` az alábbiak szerint:
+Most hozzon létre egy virtuális Gépet a [az virtuális gép létrehozása](/cli/azure/vm#az_vm_create) , és adja meg a cloud-init fájl `--custom-data cloud_init_add_user.txt` módon:
 
 ```azurecli-interactive 
 az vm create \
@@ -60,19 +60,19 @@ az vm create \
   --generate-ssh-keys 
 ```
 
-SSH-kapcsolatot a virtuális Gépet, a fenti parancs kimenetében megjelennek a nyilvános IP-címét. Adja meg a saját **publicIpAddress** az alábbiak szerint:
+SSH nyilvános IP-címet a virtuális gép az előző parancs kimenetében látható. Adja meg a saját **publicIpAddress** módon:
 
 ```bash
 ssh <publicIpAddress>
 ```
 
-Ellenőrizze, hogy a felhasználó lett felvéve a virtuális gép és a megadott csoportokra, tekintse meg a tartalmát a */etc/csoport* fájlt az alábbiak szerint:
+Annak ellenőrzéséhez, hogy a felhasználó lett felvéve a virtuális gép és a megadott csoportokat, megtekintheti a tartalmát a */etc/csoport* fájlt az alábbiak szerint:
 
 ```bash
 cat /etc/group
 ```
 
-Az alábbi példa kimenetben látható a felhasználó nem a *cloud_init_add_user.txt* fájl hozzá lett adva a virtuális gép és a megfelelő csoporthoz:
+Az alábbi Példakimenet azt mutatja, hogy a felhasználó a *cloud_init_add_user.txt* fájl van adva a virtuális gép és a megfelelő csoporthoz:
 
 ```bash
 root:x:0:
@@ -83,9 +83,9 @@ myadminuser:x:1000:
 ```
 
 ## <a name="next-steps"></a>További lépések
-Konfigurációs módosítások további felhőalapú inicializálás példákért lásd a következő:
+Konfigurációs módosítások további a cloud-init példákért tekintse meg a következőket:
  
-- [Egy további Linux-felhasználó hozzáadása a virtuális gépek](cloudinit-add-user.md)
-- [Futtassa a Csomagkezelő első indításakor meglévő csomagok frissítése](cloudinit-update-vm.md)
-- [Módosítsa a virtuális gép helyi állomásnév](cloudinit-update-vm-hostname.md) 
-- [Alkalmazáscsomag telepítését, a konfigurációs fájlokat és a kulcsok beszúrása](tutorial-automate-vm-deployment.md)
+- [További Linux-felhasználó hozzáadása virtuális Géphez](cloudinit-add-user.md)
+- [Az első rendszerindításkor a meglévő csomagokat frissíteni Csomagkezelő futtatása](cloudinit-update-vm.md)
+- [Módosítsa a virtuális gép helyi gazdagépnév](cloudinit-update-vm-hostname.md) 
+- [Alkalmazáscsomag telepítése, a konfigurációs fájlokat és a kulcsok beszúrása](tutorial-automate-vm-deployment.md)

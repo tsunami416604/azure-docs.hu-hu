@@ -1,6 +1,6 @@
 ---
-title: 'Bing egyéni keresés: Egyéni keresés megosztása |} Microsoft Docs'
-description: Egy egyéni keresési példány megosztása
+title: 'Bing Custom Search: Megosztani az egyéni keresés |} A Microsoft Docs'
+description: Ismerteti, hogyan oszthat meg egy egyéni keresési példány
 services: cognitive-services
 author: brapel
 manager: ehansen
@@ -9,21 +9,30 @@ ms.component: bing-custom-search
 ms.topic: article
 ms.date: 09/28/2017
 ms.author: v-brapel
-ms.openlocfilehash: 7e513b3e565e5edf06dae8f11404203b4154e182
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 4a9761ce0671b57d802fe332c92e32d1f410fa6f
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35347854"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46960957"
 ---
-# <a name="share-your-custom-search-instance"></a>Az egyéni keresés példány megosztása
-Az egyéni keresési példányát használt e-mail címüket csak bárkivel megoszthatja. Megosztása lehetővé teszi, hogy mások számára az egyéni keresés példányok módosítása. Jelentkezzen be [egyéni keresés](https://customsearch.ai), válasszon ki egy egyéni keresés példányt, és kattintson a beállítások ikonra (egy fogaskerék jelenik meg). Az a **a példány megosztása** területen adja meg a példány megosztásához, és kattintson a személy e-mail címe **megosztása**. Az e-mail cím látható a listában **megosztott példány**. Ismételje meg minden olyan személy meg szeretné osztani az egyéni keresés. 
+# <a name="share-your-custom-search-instance"></a>Az egyéni keresési példány megosztása
 
-Más személy e-mail hozzáadni a listához, nem szükséges, hogy egyéni keresés fiókkal rendelkezik. Akkor kell Regisztráljon egyéni keresés ahhoz, azok konfigurációs módosításokat. Példány megosztása másokkal, után azok megjelenik az egyéni keresés példányok listáját. Csak egy személy módosíthatja a példány egyszerre. Ha úgy próbál módosítani egy példányát, hogy valaki más szerkeszt, figyelmeztetés jelenik meg. Legfeljebb 10 olyan felhasználót egy példány megosztható legyen.
+Könnyen engedélyezheti szerkesztését, és a tesztelést a példány szert a csapat tagjai által biztosított együttműködési környezettel. A példány csak az e-mail-címmel bárkivel megoszthatja. Egy példány megosztása:
 
-## <a name="stop-sharing"></a>Megosztásának befejezése
-Példány megosztása valaki leállításához használja a remove ikont az e-mail cím eltávolítása a listáról.
+- Jelentkezzen be a [egyéni keresés](https://customsearch.ai)
+- Válassza ki egy egyéni keresési példány
+- Kattintson a beállítások ikonra (a fogaskerék jelenik meg). 
+- A **a példány megosztása**, adja meg a példány megosztását, és kattintson a személy e-mail-címe **megosztása**. 
+
+Miután hozzáadta az e-mail-cím, megjelenik a **példány megosztva** listája. Ismételje meg a folyamatot a példány a megosztani kívánt minden egyes személy számára. 
+
+Egy másik személy e-mail hozzáadása a listához, nem szükséges, hogy egyéni keresés fiókkal rendelkezik. Akkor kell Feliratkozás a egyéni keresés, mielőtt azok konfigurációs módosítások azonban. Példány megoszt valakivel, miután azok saját egyéni keresési példányok listájában megjelenik. Csak egy személy módosíthatja egy példányt, egyszerre. Ha próbál módosítani egy példányt, hogy valaki más szerkeszt, egy figyelmeztetés jelenik meg. Egy példányt, amely legfeljebb 10 felhasználót is megoszthatók.
+
+## <a name="stop-sharing"></a>Megosztás leállítása
+
+Egy példány megosztása valakivel leállításához használja a remove-ikonra a saját e-mail címének eltávolításához ebből a listából. Ez is eltávolítja a példány a példányok listáját.
 
 ## <a name="next-steps"></a>További lépések
 
-- [Az egyéni automatikus kiegészítési felhasználói beállítása](define-custom-suggestions.md)
+- [Az egyéni automatikus kiegészítés felhasználói beállítása](define-custom-suggestions.md)

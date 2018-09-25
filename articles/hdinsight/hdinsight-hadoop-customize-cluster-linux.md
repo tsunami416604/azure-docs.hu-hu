@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: jasonh
-ms.openlocfilehash: e12379dbb63e57ee12e1cebb1761f0b103d50ef1
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: e9662a0a0def91fa2cace1eb47dceffed5ff1ae6
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43110527"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46978029"
 ---
 # <a name="customize-linux-based-hdinsight-clusters-using-script-actions"></a>Szkriptműveletek használatával Linux-alapú HDInsight-fürtök testre szabása
 
@@ -89,7 +89,7 @@ Szkriptműveletet egy HDInsight-fürt csomópontjain futó Bash-szkript. Az alá
 
 * Futtassa a **gyökér szintű jogosultságok** a fürtcsomópontokon.
 
-* Keresztül is használható a **az Azure portal**, **Azure PowerShell-lel**, **Azure CLI 1.0-s verziójú**, vagy **HDInsight .NET SDK-val**
+* Keresztül is használható a **az Azure portal**, **Azure PowerShell-lel**, **Azure klasszikus parancssori felület**, vagy **HDInsight .NET SDK-val**
 
 A fürt összes lett futtatott parancsfájlok előzményeket. Az előzmények akkor hasznos, ha meg kell keresnie egy parancsfájl azonosítója előléptetés vagy a lefokozási műveletekhez.
 
@@ -147,7 +147,7 @@ Parancsprogram-művelet parancsfájlok keresztül az alábbi segédprogramokat h
 
 * Azure Portal
 * Azure PowerShell
-* Azure CLI v1.0
+* Az Azure klasszikus parancssori felület
 * HDInsight .NET SDK
 
 HDInsight parancsprogramokkal történő telepítését a következő összetevőket a HDInsight-fürtökön biztosítja:
@@ -292,10 +292,9 @@ A művelet befejezése után az alábbi szöveghez hasonló információt kap:
 
 ### <a name="apply-a-script-action-to-a-running-cluster-from-the-azure-cli"></a>Egy futó fürt szkriptműveletet alkalmazni az Azure parancssori felületen
 
-A folytatás előtt győződjön meg arról, hogy telepítette és konfigurálta az Azure parancssori felület. További információkért lásd: [az Azure CLI 1.0 telepítése](../cli-install-nodejs.md).
+A folytatás előtt győződjön meg arról, hogy telepítette és konfigurálta az Azure parancssori felület. További információkért lásd: [a klasszikus Azure CLI telepítése](../cli-install-nodejs.md).
 
-> [!IMPORTANT]
-> HDInsight az Azure CLI 1.0-t igényel. Jelenleg az Azure CLI 2.0-t biztosít parancsok használata a HDInsight.
+[!INCLUDE [classic-cli-warning](../../includes/requires-classic-cli.md)]
 
 1. Váltson Azure Resource Manager módra, használja a következő parancsot a parancssorban:
 
@@ -380,7 +379,7 @@ Az alábbi példa parancsfájl bemutatja a parancsmagokkal történő előlépte
 
 [!code-powershell[main](../../powershell_scripts/hdinsight/use-script-action/use-script-action.ps1?range=123-140)]
 
-### <a name="using-the-azure-cli"></a>Az Azure parancssori felületének használata
+### <a name="using-the-azure-classic-cli"></a>A klasszikus Azure CLI használatával
 
 | Használja a következő... | A... |
 | --- | --- |

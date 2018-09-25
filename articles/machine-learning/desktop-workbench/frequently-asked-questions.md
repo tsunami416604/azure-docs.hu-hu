@@ -11,14 +11,17 @@ ms.component: core
 ms.workload: data-services
 ms.topic: article
 ms.date: 08/30/2017
-ms.openlocfilehash: 94a1f3bbba83e8e71cf9440b5ded0784f4616c99
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ROBOTS: NOINDEX
+ms.openlocfilehash: 4785f87515663831b1177c6c0958d3d965351797
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38674155"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46996570"
 ---
 # <a name="azure-machine-learning-frequently-asked-questions"></a>Az Azure Machine Learning – gyakori kérdések
+
+[!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)] 
 
 Egy teljes körűen felügyelt Azure-szolgáltatás, amely lehetővé teszi, hogy hozzon létre, tesztelheti, kezelése és gépi tanulási és AI-modellek üzembe helyezése az Azure Machine Learning. A szolgáltatások és a letölthető alkalmazás kínálnak a kód megközelítés, amely a felhőben, a helyszíni és a peremhálózati adja meg a szerelvény, helyezhet üzembe, kezelhet, és figyelheti a modelleket, a sebesség és a rugalmasságot. Azt is megteheti az Azure Machine Learning Studio kínál a böngésző alapú, vizuális fogd és vidd szerzői környezet, amelyben nincs kódolásra szükséges. 
 
@@ -31,10 +34,6 @@ Az Azure Blob Storage és az Azure Container Registry az Azure Machine Learning 
 **Hogyan kapcsolódnak az Azure Machine Learning Microsoft Machine Learning-szolgáltatások az SQL Server 2017-ben?**   
 
 Machine Learning-szolgáltatások az SQL Server 2017-ben az adatbázis munkafolyamatok gépi tanulási feladatok integrálása egy bővíthető, méretezhető platform. Olyan forgatókönyvekben, ahol egy helyszíni megoldás szükséges, ahol az adatmozgás, költséges vagy tarthatatlan például tökéletes választás. Ezzel szemben a felhőalapú vagy hibrid számítási feladatok egy kiválóan alkalmas a az új Azure-szolgáltatásokat. 
-
-**Támogatják a Python- és R? Mi a helyzet a más programozási nyelvet, például C++**
-
-Jelenleg Python csak. A Microsoft R-integráció dolgozik, és várhatóan hamarosan rendelkezik nem érhető el. 
 
 **Az Azure Machine Learning milyen kapcsolatban áll a Microsoft a gépi tanulás a Spark?**
 
@@ -152,7 +151,7 @@ A Workbench adatelőkészítési eszközök jelenleg a következő formátumok A
 Nyilvános előzetes verzió a Workbench adatbetöltést támogatja: 
 - Helyi merevlemez-meghajtóról vagy a csatlakoztatott hálózati tárolási helye
 - Az Azure BLOB vagy az Azure Storage (Azure-előfizetés szükséges)
-- Azure SQL Server-kiszolgáló
+- Az Azure SQL-kiszolgáló
 - Microsoft SQL Server
 
 
@@ -172,4 +171,4 @@ Előzetes verzió termékei és szolgáltatásai közé tartozik a nyílt forrá
 
 **Hogyan kapcsolódnak az Azure Machine Learning a Microsoft Cognitive Toolkit?**
 
-A [Microsoft Cognitive Toolkit](https://www.microsoft.com/en-us/cognitive-toolkit/) egyike a számos keretrendszer, az új eszközök és szolgáltatások által támogatott. A Cognitive Toolkit egy egységesített mélytanulási eszközkészlet, amely lehetővé teszi, hogy használják, és kombinálhatja közkedvelt machine learning-modellek, például Feed-Forward Neurális hálózatokat, Konvolúciós hálózatokat, a feladatütemezés-sorozat, és ismétlődő hálózatokat. A Microsoft Cognitive Toolkit további információért látogasson el a [termékdokumentáció](https://docs.microsoft.com/cognitive-toolkit/). 
+A [Microsoft Cognitive Toolkit](https://www.microsoft.com/cognitive-toolkit/) egyike a számos keretrendszer, az új eszközök és szolgáltatások által támogatott. A Cognitive Toolkit egy egységesített mélytanulási eszközkészlet, amely lehetővé teszi, hogy használják, és kombinálhatja közkedvelt machine learning-modellek, például Feed-Forward Neurális hálózatokat, Konvolúciós hálózatokat, a feladatütemezés-sorozat, és ismétlődő hálózatokat. A Microsoft Cognitive Toolkit további információért látogasson el a [termékdokumentáció](https://docs.microsoft.com/cognitive-toolkit/). 

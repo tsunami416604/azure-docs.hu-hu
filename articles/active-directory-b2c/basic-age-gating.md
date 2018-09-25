@@ -10,17 +10,17 @@ ms.topic: conceptual
 ms.date: 04/29/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 9d24e37642a41e4d60b33f42a60d7e56cb4b35b5
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 9a9a86d445deaea4872615f443ad53f76638a758
+ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37446724"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47056522"
 ---
 #<a name="using-age-gating-in-azure-ad-b2c"></a>Koralapú Azure AD B2C-ben
 
 >[!IMPORTANT]
->Ez a szolgáltatás private preview verzióban van.  Tekintse át a [szolgáltatási blogunkat](https://blogs.msdn.microsoft.com/azureadb2c/) részleteket, mivel ezt lesz elérhető, vagy forduljon AADB2CFeedback@microsoft.com.  Ne használja ezt a termelési könyvtárak, használja ezeket a funkciókat az adatvesztést eredményezhet, és előfordulhat, hogy váratlan módosítások mindaddig, amíg meg is vagyunk általánosan működésében.  
+>Ez a szolgáltatás private preview verzióban van.  Tekintse át a [szolgáltatási blogunkat](https://blogs.msdn.microsoft.com/azureadb2c/) részleteket, mivel ezt lesz elérhető, vagy forduljon AADB2CPreview@microsoft.com.  Ne használja ezt a termelési könyvtárak, használja ezeket a funkciókat az adatvesztést eredményezhet, és előfordulhat, hogy váratlan módosítások mindaddig, amíg meg is vagyunk általánosan működésében.  
 >
 
 ##<a name="age-gating"></a>Korhatáralapú
@@ -56,13 +56,3 @@ Felhasználói folyamatok, amelyek lehetővé teszik vagy jelentkezzen be, jelen
 Felhasználói folyamatok, amelyek lehetővé teszik vagy jelentkezzen be, jelentkezzen be vagy mindkettőt beállíthatja blokkolása kiskorúak alkalmazásból beleegyezése nélkül.  Az Azure AD B2C-ben a letiltott felhasználók kezelésére két lehetőség van:
 * A JSON küldése az alkalmazásnak – ezt a beállítást olyan választ küld az alkalmazásnak, hogy egy kisebb blokkolása.
 * A felhasználó megjelenik egy oldal, amely tájékoztatja őket, hogy nem tudják elérni az alkalmazást - hibalap megjelenítése
-
-##<a name="known-issues"></a>Ismert problémák
-###<a name="format-for-the-response-when-a-minor-is-blocked"></a>A válasz egy kisebb letiltásakor formátuma.
-A válasz jelenleg megfelelően szintaxisa nem, a hiba a következő frissítés kibocsátásokban megtörténik.
-
-###<a name="deleting-specific-attributes-that-were-added-during-setup-can-make-your-directory-unable-to-use-age-gating"></a>Törlése a konkrét attribútumok, amelyek a telepítés során lettek hozzáadva a címtárban nem használható a korhatáralapú is felvehető.
-A korhatáralapú beállításai, a keresztül lehetőséget a könyvtárhoz konfigurált a `Properties`.  Ha törli vagy `legalCountry` vagy `dateOfBirth` keresztül grafikon, a címtárban nem használható korhatáralapú, és ezeket a tulajdonságokat nem lehet újból létre kell hozni.
-
-###<a name="list-of-countries-is-incomplete"></a>Országok listája nem fejeződött be
-Jelenleg a legalCountry országok listája nem teljes, a többi országok, egy következő frissítés adjuk hozzá.

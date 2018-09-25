@@ -5,14 +5,14 @@ services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 09/05/2018
+ms.date: 09/20/2018
 ms.author: raynew
-ms.openlocfilehash: 00a0f396160c964144019b4cb8014f8abc34fe7a
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 80234610eda264976f3ec20da2a0ef12c73ccba6
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44304662"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47035708"
 ---
 # <a name="contoso-migration-rearchitect-an-on-premises-app-to-an-azure-container-and-azure-sql-database"></a>Contoso áttelepítési: egy Azure container és az Azure SQL Database a helyszíni alkalmazás újratervezése
 
@@ -34,9 +34,9 @@ Ez a dokumentum az egyik, a cikkeket, amelyek megmutatják, hogyan a fiktív Con
 [10. cikk: Újrabontás egy Linux-alkalmazás Azure Web Apps és az Azure MySQL](contoso-migration-refactor-linux-app-service-mysql.md) | Contoso áttelepíti a Linux-osTicket alkalmazás egy Azure-webalkalmazást az Azure Traffic Managerrel, a folyamatos készregyártás a GitHub integrált több Azure-régióban található. Contoso áttelepíti az alkalmazás-adatbázis egy Azure Database for MySQL-példányt. | Elérhető 
 [11. cikk: Újrabontás a TFS-t az Azure DevOps-szolgáltatásokkal](contoso-migration-tfs-vsts.md) | Contoso áttelepíti a helyi Team Foundation Server központi Azure DevOps-szolgáltatásokkal az Azure-ban. | Elérhető
 A cikk 12: Azure-tárolók és az Azure SQL Database az alkalmazás újratervezése | Contoso annak SmartHotel app áttelepíti az Azure-bA. Ezután azt rearchitects az alkalmazás webes réteg az Azure Service Fabric és az adatbázis az Azure SQL Database-ban futó Windows tárolójaként. | Ez a cikk
-[Cikk 13: Építse újra az alkalmazást az Azure-ban](contoso-migration-rebuild.md) | Contoso annak SmartHotel app számos Azure-szolgáltatások és szolgáltatások, beleértve az Azure App Service, Azure Kubernetes Service (AKS), az Azure Functions, Azure Cognitive Services és az Azure Cosmos DB segítségével újraépíti... | Elérhető    
+[Cikk 13: Építse újra az alkalmazást az Azure-ban](contoso-migration-rebuild.md) | Contoso újraépíti a SmartHotel alkalmazás számos Azure-szolgáltatások és szolgáltatások, beleértve az Azure App Service, Azure Kubernetes Service (AKS), az Azure Functions, Azure Cognitive Services és az Azure Cosmos DB használatával. | Elérhető 
 
-Ez a cikk a Contoso áttelepíti a kétrétegű Windows. NET SmartHotel360 alkalmazás VMware virtuális gépeken futó Azure-bA. Ha szeretné használni ezt az alkalmazást, nyílt forráskódú nyújtja, és töltheti le a [GitHub](https://github.com/Microsoft/SmartHotel360).
+Ebben a cikkben a Contoso áttelepíti a kétrétegű Windows WPF, a XAML SmartHotel360 űrlapalkalmazásokat VMware virtuális gépeken futó Azure-bA. Ha szeretné használni ezt az alkalmazást, nyílt forráskódú nyújtja, és töltheti le a [GitHub](https://github.com/Microsoft/SmartHotel360).
 
 ## <a name="business-drivers"></a>A stratégiai
 
@@ -79,10 +79,10 @@ Után rögzíthet célokat és követelményeket állapította meg, a Contoso te
     - Contoso kihasználja az egyszerűsített Data Migration Assistant (DMA) segítségével mérheti fel, és a helyszíni adatbázis migrálása az Azure SQL.
     - Frissítési garanciával működő a Contoso a kedvezményes díjszabás a egy SQL Database, az Azure Hybrid Benefit használatával az SQL Server meglévő licenceinek tudjon cserélni. Ez akár 30 %-os megtakarítás nyújtani.
     - Az SQL Database számos olyan biztonsági funkciók, például mindig titkosított, dinamikus adatmaszkolást és a sorszintű biztonság/fenyegetések észlelése.
-- Az alkalmazás webes réteg Contoso határozott alakíthatja át a Windows-tárolót, a Visual Studio használatával.
+- Az alkalmazás webes réteg Contoso határozott alakíthatja át a Windows-tároló használata az Azure DevOps-szolgáltatásokkal.
     - Contoso az Azure Service Fabric-alkalmazás üzembe helyezése, és kérje le a Windows-tároló rendszerképét az Azure Container Registry (ACR).
     - Az alkalmazás hangulatelemzés kiterjesztése prototípusát egy másik szolgáltatás a Service Fabric segítségével a Cosmos DB-hez csatlakoztatott hajtja végre.  Ezzel kiolvasni az információt a Tweeteket, és az alkalmazás megjelenítéséhez.
-- A DevOps-folyamat implementálásához Contoso fogja használni az Azure DevOps-szolgáltatásokkal source code Management (SCM), Git-adattárral.  Automatizált buildekig és kiadások kód felépítéséhez használt, és hogyan telepítheti az Azure Container Registry és Azure Service Fabric.
+- DevOps-folyamat implementálásához, Contoso forrás kód Management (SCM), a Git-tárház fogja használni az Azure DevOps.  Automatizált buildekig és kiadások kód felépítéséhez használt, és hogyan telepítheti az Azure Container Registry és Azure Service Fabric.
 
     ![Forgatókönyv-architektúra](./media/contoso-migration-rearchitect-container-sql/architecture.png) 
 
@@ -114,6 +114,7 @@ Contoso kiértékeli a javasolt tervezési által bármik lehetnek, és hátrán
 [Azure SQL Database](https://azure.microsoft.com/services/sql-database/) | Itt egy intelligens, teljes körűen felügyelt felhőalapú relációsadatbázis-szolgáltatás. | Költség funkciók, az átviteli sebesség és a mérete alapján. [További információk](https://azure.microsoft.com/pricing/details/sql-database/managed/).
 [Az Azure Container Registrybe](https://azure.microsoft.com/services/container-registry/) | Tárolja a lemezképeket a tárolópéldányok összes típusára vonatkozóan. | A Funkciók, a storage és a használati időtartama alapján költsége. [További információk](https://azure.microsoft.com/pricing/details/container-registry/).
 [Azure Service Fabric](https://azure.microsoft.com/services/service-fabric/) | Hozza létre, és folyamatosan elérhető, skálázható és elosztott alkalmazások üzemeltetése | Költség méretét, helyét és a számítási csomópontok időtartama alapján. [További információk](https://azure.microsoft.com/pricing/details/service-fabric/).
+[Az Azure DevOps](https://docs.microsoft.com/azure/azure-portal/tutorial-azureportal-devops) | Folyamatos integráció és készregyártás (CI/CD) folyamatot biztosít az alkalmazások fejlesztéséhez. A folyamat egy Git-tárház kódját, egy kibocsátáskezelési rendszert, csomagok és más build-összetevőket és egy rendszert üzembe helyezéséhez a változások fejlesztési, tesztelési és éles környezetek kezelése kezdődik.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -138,7 +139,7 @@ Itt látható, hogyan Contoso fut-e az áttelepítés:
 > * **4. lépés: A service fabric-tanúsítványok kezelése**: Contoso állítja be a tanúsítványok a fürt az Azure DevOps-szolgáltatások eléréséhez.
 > * **5. lépés: A DMA-adatbázis áttelepítése**:, az a Database Migration Assistant alkalmazás adatbázis áttelepítése.
 > * **6. lépés: Állítsa be az Azure DevOps-szolgáltatásokkal**: Contoso állít be egy új projekt az Azure DevOps-szolgáltatásokkal, és a kód importálja a Git-tárház.
-> * **7. lépés: Az alkalmazás átalakítása**: Contoso konvertálja az alkalmazás egy tárolóban, a Visual Studio és az SDK-eszközök használatával.
+> * **7. lépés: Az alkalmazás átalakítása**: Contoso konvertálja az alkalmazás egy tárolót az Azure DevOps és az SDK-eszközök használatával.
 > * **8. lépés: Állítsa be a build és kiadás**: Contoso állítja be a buildelési és kiadási folyamatok létrehozásához, és az alkalmazás közzététele az ACR-REL és a Service Fabric-fürt.
 > * **9. lépés: Az alkalmazás kiterjesztése**: Miután az alkalmazás nyilvános, Contoso terjeszti ki, hogy az Azure képességek előnyeit, és azt az Azure-ban a folyamat addig.
 
@@ -203,7 +204,7 @@ A SmartHotel360 tárolót az Azure Service Fabric Sluster fog futni. Contoso-ren
 
      ![Service Fabric](./media/contoso-migration-rearchitect-container-sql/service-fabric1.png)
 
-2. A **alapszintű**, DS egyedi nevet a fürt és a helyszíni virtuális gép eléréséhez szükséges hitelesítő adatok biztosítanak. Azok az erőforrás helyezze el a termelési erőforráscsoportban (**ContosoRG**) az elsődleges régióban USA keleti RÉGIÓJA 2.
+2. A **alapjai**, DS egyedi nevet a fürt és a helyszíni virtuális gép eléréséhez szükséges hitelesítő adatok biztosítanak. Azok az erőforrás helyezze el a termelési erőforráscsoportban (**ContosoRG**) az elsődleges régióban USA keleti RÉGIÓJA 2.
 
     ![Service Fabric](./media/contoso-migration-rearchitect-container-sql/service-fabric2.png) 
 
@@ -364,16 +365,13 @@ Contoso rendszergazdák mostantól át az adatbázist.
 Contoso cégnek szüksége van, fejlesztési és üzemeltetési infrastruktúra és az alkalmazás folyamatokat hozhat létre.  Ehhez Contoso rendszergazdák hozzon létre egy új Azure DevOps-projektet, importálja a kódra összpontosítsanak, és ezután létrehozhatja és folyamatok felszabadítása.
 
 1.   A Contoso Azure DevOps-fiókban lévő új projekt létrehozása (**ContosoSmartHotelRearchitect**), és válassza ki **Git** verziókezeléshez.
-
-    ![Új projekt](./media/contoso-migration-rearchitect-container-sql/vsts1.png)
+![Új projekt](./media/contoso-migration-rearchitect-container-sql/vsts1.png)
 
 2. A Git-adattár, amely jelenleg rendelkezik az alkalmazás kódját importálja azokat. Van egy [nyilvános adattár](https://github.com/Microsoft/SmartHotel360-internal-booking-apps) és töltheti le.
 
     ![Alkalmazáskód letöltése](./media/contoso-migration-rearchitect-container-sql/vsts2.png)
 
 3. A kód az importálása után, a Visual Studio csatlakozni az adattárhoz, és klónozza a kód Team Explorer használatával.
-
-    ![Az adattár csatlakoztatása](./media/contoso-migration-rearchitect-container-sql/vsts3.png)
 
 4. A-adattárat a fejlesztői gépen való klónozták, miután az alkalmazás a megoldás fájl megnyitásakor. A web app és a wcf service rendelkező külön projekt a fájlon belül.
 
@@ -444,11 +442,11 @@ Contoso-rendszergazdák mostantól konfigurálásához hajtsa végre a build és
 
      ![Háló és a docker használatával](./media/contoso-migration-rearchitect-container-sql/pipeline3.png)
     
-4. Módosíthatja a címke képek-rendszerkép létrehozásához, és konfigurálja a feladatot a kiépített ACR használata.
+4. A művelet címke képek módosítását **állítson össze egy rendszerképet**, és konfigurálja a feladatot a kiépített ACR használata.
 
      ![Beállításjegyzék](./media/contoso-migration-rearchitect-container-sql/pipeline4.png)
 
-5. Az a **rendszerképeket** feladat, azok a rendszerképet az ACR-REL való puhed konfigurálása, és válassza a legújabb címke tartalmazza.
+5. Az a **rendszerképeket** feladat, akkor konfigurálja a rendszerképet kell leküldeni, az ACR-REL, és válassza ki a legújabb címke tartalmazza.
 6. A **eseményindítók**, engedélyezze a folyamatos integrációt, és adja hozzá a master ágról.
 
     ![Eseményindítók](./media/contoso-migration-rearchitect-container-sql/pipeline5.png)
@@ -458,11 +456,11 @@ Contoso-rendszergazdák mostantól konfigurálásához hajtsa végre a build és
 
     ![Kibocsátási folyamatok](./media/contoso-migration-rearchitect-container-sql/pipeline6.png)    
 
-9. Akkor válassza ki a **Azure Service Fabric deployment** sablont, és a környezet nevét (**SmartHotelSF**).
+9. Akkor válassza ki a **Azure Service Fabric deployment** sablont, és a fázis neve (**SmartHotelSF**).
 
     ![Környezet](./media/contoso-migration-rearchitect-container-sql/pipeline7.png)
 
-10. Akkor adja meg a folyamat nevét (**ContosoSmartHotelRearchitect**). A környezet kattintson **1. fázis, 1. feladat** a Service Fabric központi telepítésnek a konfigurálásához.
+10. Akkor adja meg a folyamat nevét (**ContosoSmartHotel360Rearchitect**). A szakaszban kattintson **1 feladat, 1. feladat** a Service Fabric központi telepítésnek a konfigurálásához.
 
     ![Fázis és tevékenység](./media/contoso-migration-rearchitect-container-sql/pipeline8.png)
 
@@ -499,7 +497,7 @@ Contoso-rendszergazdák mostantól konfigurálásához hajtsa végre a build és
 
     ![Közzététel](./media/contoso-migration-rearchitect-container-sql/publish4.png)
 
-19. Szeretne csatlakozni az alkalmazást, azok irányítja a forgalmat a nyilvános IP-címét az Azure load balancer elé a Service Fabric csomópontjaival.
+19. Szeretne csatlakozni az alkalmazást, azok közvetlen forgalom a Service Fabric csomópontjaival előtt az Azure load balancer nyilvános IP-címét.
 
     ![Közzététel](./media/contoso-migration-rearchitect-container-sql/publish5.png)
 

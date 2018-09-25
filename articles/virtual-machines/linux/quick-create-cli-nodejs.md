@@ -1,6 +1,6 @@
 ---
-title: Linux-alapú virtuális gép létrehozása az Azure CLI 1.0-val | Microsoft Docs
-description: Linux-alapú virtuális gép létrehozása az Azure CLI 1.0-val
+title: Linux virtuális gép létrehozása az Azure klasszikus parancssori felület |} A Microsoft Docs
+description: Linux rendszerű virtuális gép létrehozása az Azure-ban az Azure klasszikus parancssori felület használatával
 services: virtual-machines-linux
 documentationcenter: ''
 author: vlivech
@@ -14,23 +14,23 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 12/15/2016
 ms.author: v-livech
-ms.openlocfilehash: ea9eab1a02a29005917848ed54ab8ba160b89b63
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 94362256dfb5b8deff233f7c575d0720f29eec5c
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30901809"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46987851"
 ---
-# <a name="create-a-linux-vm-using-the-azure-cli-10"></a>Linux virtuális gép létrehozása az Azure.CLI 1.0-val
+# <a name="create-a-linux-vm-using-the-azure-classic-cli"></a>A klasszikus Azure CLI-vel Linux rendszerű virtuális gép létrehozása
 
 Ez a cikk bemutatja, hogyan helyezhet üzembe gyorsan Linux virtuális gépet (VM) az Azure-ban az Azure parancssori felület (CLI) `azure vm quick-create` parancsának használatával. A `quick-create` parancs egy alapvető, biztonságos infrastruktúrában lévő virtuális gépet helyez üzembe, amelyet prototípusként vagy egy elgondolás gyors teszteléséhez használhat.
 
 > [!NOTE]
-Ha az Azure CLI 2.0-s verziójával szeretne virtuális gépet létrehozni, tekintse meg a [Virtuális gép létrehozása az Azure parancssori felülettel](../windows/quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) című cikket.
+Hozzon létre egy virtuális Gépet az Azure CLI-vel, tekintse meg [virtuális gép létrehozása az Azure CLI-vel](../windows/quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
 Linux virtuális gépet az [Azure Portallal](quick-create-portal.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) is gyorsan üzembe helyezhet.
 
-A cikk szükséges egy [SSH nyilvános és titkos kulcs fájlok](mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+A cikkben foglaltak végrehajtásához egy [SSH nyilvános és titkos kulcs fájljai](mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -63,7 +63,7 @@ Az alábbi szakaszok az **ImageURN** kapcsoló (`-Q`) `UbuntuLTS` aliasát haszn
 
 A korábbi `quick-create` példa csak az `-M` jelölőt emelte ki a feltöltendő nyilvános SSH-kulcs azonosításához, és közben letiltotta az SSH-jelszavakat, így a rendszer a következő argumentumok megadását kéri:
 
-* az erőforráscsoport neve (az első Azure-erőforráscsoport esetén általában bármilyen karakterlánc használható)
+* az erőforráscsoport neve (az első Azure-erőforráscsoport esetén általában bármilyen sztring használható)
 * a virtuális gép neve
 * hely (`westus` vagy `westeurope` jó alapértelmezett értékek)
 * Linux (hogy az Azure tudja, melyik operációs rendszert kívánja használni)

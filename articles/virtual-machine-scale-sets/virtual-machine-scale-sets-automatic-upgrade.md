@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/03/2018
 ms.author: yeki
-ms.openlocfilehash: 6b20ef98e008d9c5d984ba29eed894b1c5ec8c09
-ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
+ms.openlocfilehash: 935b3ff0fe03984b02dc2e1137f48e53b06ce0c2
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39263248"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46995108"
 ---
 # <a name="azure-virtual-machine-scale-set-automatic-os-upgrades"></a>Azure-beli virtuálisgép-méretezési csoport operációs rendszer automatikus verziófrissítése
 
@@ -199,7 +199,7 @@ az policy assignment create --display-name "Enforce automatic OS upgrades with a
 ```
 
 ## <a name="configure-auto-updates"></a>Automatikus frissítések konfigurálása
-Az automatikus frissítések konfigurálása, ellenőrizze, hogy a *verziófrissítését* tulajdonsága *igaz* a méretezésicsoport-modell definícióját. Ez a tulajdonság az Azure PowerShell vagy az Azure CLI 2.0 használatával konfigurálhatja.
+Az automatikus frissítések konfigurálása, ellenőrizze, hogy a *verziófrissítését* tulajdonsága *igaz* a méretezésicsoport-modell definícióját. Ez a tulajdonság az Azure PowerShell vagy az Azure CLI konfigurálhatja.
 
 ### <a name="powershell"></a>PowerShell
 Az alábbi példában az Azure PowerShell-lel (4.4.1 vagy újabb) nevű méretezési az automatikus frissítések konfigurálása *myVMSS* az erőforráscsoport neve *myResourceGroup*:
@@ -223,7 +223,7 @@ az vmss update --name $vmssname --resource-group $rgname --set upgradePolicy.Aut
 
 
 ## <a name="check-the-status-of-an-automatic-os-upgrade"></a>Az operációs rendszer automatikus verziófrissítése állapotának ellenőrzése
-Ellenőrizheti a legújabb operációs rendszer frissítése a méretezési csoportban Azure PowerShell-lel, az Azure CLI 2.0-s vagy a REST API-k végrehajtott állapotát.
+Ellenőrizheti a legújabb operációs rendszer frissítése a méretezési csoportban Azure PowerShell-lel, az Azure CLI vagy a REST API-k végrehajtott állapotát.
 
 ### <a name="powershell"></a>PowerShell
 Az alábbi példa az Azure Powershellt (4.4.1 vagy újabb) ellenőrizheti az állapotot, a méretezési csoport nevű *myVMSS* az erőforráscsoport neve *myResourceGroup*:
@@ -232,7 +232,8 @@ Az alábbi példa az Azure Powershellt (4.4.1 vagy újabb) ellenőrizheti az ál
 Get-AzureRmVmssRollingUpgrade -ResourceGroupName myResourceGroup -VMScaleSetName myVMSS
 ```
 
-### <a name="cli-20"></a>CLI 2.0
+### <a name="azure-cli"></a>Azure CLI
+
 Az alábbi példában az Azure parancssori felület (2.0.20-as vagy újabb) ellenőrizheti az állapotot, a méretezési csoport nevű *myVMSS* az erőforráscsoport neve *myResourceGroup*:
 
 ```azurecli

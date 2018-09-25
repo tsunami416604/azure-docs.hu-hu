@@ -8,17 +8,17 @@ ms.topic: conceptual
 ms.date: 07/07/2017
 ms.author: rajram
 ms.component: autoscale
-ms.openlocfilehash: b303632c236e492bbf57ee60d5e7b0cc7b2f9e5c
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: e96e3abc05353aa3ea134b7d11256a29fe64c300
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39448968"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46989226"
 ---
 # <a name="get-started-with-autoscale-in-azure"></a>Az automatikus méretezés az Azure-ban – első lépések
 Ez a cikk azt ismerteti, hogyan állítható be az automatikus skálázási beállítások a Microsoft Azure Portalon az erőforrás.
 
-Az Azure Monitor automatikus skálázása csak a virtual machine scale sets, a cloud services, Azure App Service-csomagot és App Service Environment-környezetek vonatkozik. 
+Az Azure Monitor automatikus skálázása csak érvényes [Virtual Machine Scale Sets](https://azure.microsoft.com/services/virtual-machine-scale-sets/), [Cloud Services](https://azure.microsoft.com/services/cloud-services/), [App Service - webalkalmazások](https://azure.microsoft.com/services/app-service/web/), és [APIManagement-szolgáltatások](https://docs.microsoft.com/azure/api-management/api-management-key-concepts).
 
 ## <a name="discover-the-autoscale-settings-in-your-subscription"></a>Fedezze fel az előfizetés az automatikus méretezési beállításokkal
 Felfedezheti, hogy, amelynek automatikus skálázás alkalmazható az Azure monitorban összes erőforrást. Részletes útmutató használja az alábbi lépéseket:
@@ -47,8 +47,8 @@ Vegyük most fel keresztül egyszerű lépésenkénti útmutató az első automa
 1. Adjon meg egy nevet a skálázási beállítás, és kattintson a **egy szabály hozzáadásához**. Figyelje meg, nyisson meg egy helyi panel jobb oldalán skálázási szabály beállításainak. Alapértelmezés szerint ez a beállítás arra, hogy a példányok száma 1 méretezhető, ha az erőforrás Processzorhasználat aránya meghaladja a 70 %-os. Meghagyhatja az alapértelmezett értékeit, és kattintson a **Hozzáadás**.
   ![A skálázási beállítás egy webalkalmazás létrehozása][6]
 1. Sikeresen létrehozott az első skálázási szabályhoz. Vegye figyelembe, hogy a felhasználói felület azt javasolja, ajánlott eljárások és kijelenti, hogy "azt javasoljuk, hogy legalább egy skálázási szabály." Ehhez tegye a következőket:
-  
-    a. Kattintson a **egy szabály hozzáadásához**. 
+
+    a. Kattintson a **egy szabály hozzáadásához**.
 
     b. Állítsa be **operátor** való **kevesebb mint**.
 
@@ -62,7 +62,7 @@ Vegyük most fel keresztül egyszerű lépésenkénti útmutató az első automa
 
 Gratulálunk! Most már sikeresen létrehozta az első, CPU-használat alapján a webalkalmazás automatikus skálázási beállítás.
 
-> [!NOTE] 
+> [!NOTE]
 > Ugyanazokat a lépéseket kell a alkalmazni egy virtuálisgép-méretezési csoportot használatának első lépései, vagy a felhőbeli szerepkör-szolgáltatás.
 
 ## <a name="other-considerations"></a>Egyéb szempontok
@@ -105,8 +105,8 @@ Előfordulhat, hogy azt szeretné, tiltsa le az aktuális skálázási beállít
 Kattintson a **automatikus skálázás letiltása** gombra az oldal tetején.
 ![Automatikus skálázás letiltása][13]
 
-> [!NOTE] 
-> Ez a beállítás letiltja a konfigurációt. Azonban visszatérhet azt követően újra engedélyezni az automatikus méretezés. 
+> [!NOTE]
+> Ez a beállítás letiltja a konfigurációt. Azonban visszatérhet azt követően újra engedélyezni az automatikus méretezés.
 
 Most már beállíthatja a manuális skálázása kívánt példányok számát.
 
@@ -133,4 +133,3 @@ Kattintva mindig visszatérhet az automatikus méretezés **automatikus skáláz
 [12]: ./media/monitoring-autoscale-get-started/scale-definition-json.png
 [13]: ./media/monitoring-autoscale-get-started/disable-autoscale.png
 [14]: ./media/monitoring-autoscale-get-started/set-manualscale.png
-

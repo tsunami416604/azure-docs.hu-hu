@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/11/2018
 ms.author: ashishth
-ms.openlocfilehash: aab5be7f98f5fdf6e7304485c3d1fc5ddb7afdba
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 339d5d39c637369420e197acf65df802cefd5cb9
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43106917"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46988492"
 ---
 # <a name="manage-logs-for-an-hdinsight-cluster"></a>HDInsight-fürt naplóinak kezelése
 
@@ -43,12 +43,13 @@ A következő fürt részletes adatai hasznosak lehetnek abban, hogy a napló-ke
 * Fürt állapota, beleértve az utolsó állapotváltozás részleteit
 * A master, a core és a feladat csomópontok megadott HDInsight-példányok száma és típusa
 
-A legtöbb a legfelső szintű adatokat az Azure portal használatával kérheti le.  Másik lehetőségként az Azure CLI segítségével információ jelenik meg a HDInsight-fürt:
+A legtöbb a legfelső szintű adatokat az Azure portal használatával kérheti le.  A klasszikus Azure CLI segítségével azt is megteheti, információ jelenik meg a HDInsight-fürt:
 
 ```
     azure hdinsight cluster list
     azure hdinsight cluster show <ClusterName>
 ```
+[!INCLUDE [classic-cli-warning](../../includes/requires-classic-cli.md)]
 
 PowerShell használatával ezt az információt.  További információkért lásd: [kezelése Hadoop-fürtök HDInsight az Azure PowerShell-lel](hdinsight-administer-use-powershell.md).
 

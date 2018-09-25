@@ -3,19 +3,22 @@ title: 'Always Encrypted: Azure SQL Database – Windows-tanúsítványtároló 
 description: Ez a cikk bemutatja, hogyan az adatbázis-titkosítást az SQL-adatbázisban tárolt bizalmas adatok védelme az Always Encrypted varázsló az SQL Server Management Studio (SSMS) használatával. Bemutatja azt is, hogyan lehet a Windows-tanúsítványtároló tárolja a titkosítási kulcsokat.
 keywords: Always Encrypted adatok, sql-titkosítás, az adatbázis-titkosítás, bizalmas adatok titkosítása
 services: sql-database
-author: VanMSFT
-manager: craigg
 ms.service: sql-database
-ms.custom: security
+ms.subservice: security
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 04/01/2018
+author: VanMSFT
 ms.author: vanto
-ms.openlocfilehash: c6656a1ef5e52782461d9b9e7106ff81eb3983ee
-ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
+ms.reviwer: ''
+manager: craigg
+ms.date: 04/01/2018
+ms.openlocfilehash: 4c9b2099308bc6a239a72fe2ebe559cdfa2fd3a1
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45544047"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47064220"
 ---
 # <a name="always-encrypted-protect-sensitive-data-in-sql-database-and-store-your-encryption-keys-in-the-windows-certificate-store"></a>Always Encrypted: SQL Database-ben a bizalmas adatok védelme és a Windows-tanúsítványtároló tárolja a titkosítási kulcsok
 

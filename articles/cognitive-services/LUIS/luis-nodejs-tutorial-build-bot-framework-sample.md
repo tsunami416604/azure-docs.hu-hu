@@ -1,24 +1,25 @@
 ---
-title: A robot a jelentéskészítő SDK használatával az Azure-ban Node.js-hez a robot a LUIS integrálása |} A Microsoft Docs
+title: A LUIS-robot a Node.js - webalkalmazás app Bot - Bot Framework 3.0-s SDK
+titleSuffix: Azure Cognitive Services
 description: A robot a LUIS-alkalmazás a Bot keretrendszer használatával integrálva hozhat létre.
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 03/06/2018
+ms.date: 09/24/2018
 ms.author: diberry
-ms.openlocfilehash: 6d6937105b11d94138b51660dc9f3c5e682e19bc
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: 0bd191da3f2625bc202ee66100e7dac25d9d65de
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39224075"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47042329"
 ---
-# <a name="integrate-luis-with-a-bot-using-the-bot-builder-sdk-for-nodejs"></a>A LUIS integrálása egy robot, az a robot a jelentéskészítő SDK for node.js használatával
+# <a name="luis-bot-in-nodejs"></a>A robot a LUIS Node.js-ben
 
-Ez az oktatóanyag végigvezeti a robotprogramok létrehozásához a [Bot Framework] [ BotFramework] , amely integrálva van a LUIS-alkalmazás.
+A language understanding (LUIS) szolgáltatással integrált csevegőrobotot Node.js használatával hozhat létre. Ez csevegőrobot az előre összeállított HomeAutomation tartomány segítségével rövid idő alatt kiépíthet egy robot megoldás. A robot épül fel a Bot keretrendszer 3.x és az Azure Web app bot.
 
 ## <a name="prerequisite"></a>Előfeltétel
 
@@ -26,7 +27,7 @@ Mielőtt létrehozna a robot, kövesse a [hozzon létre egy alkalmazást](./luis
 
 A robot a HomeAutomation tartományból, amelyek a LUIS alkalmazás válaszol szándék fog vonatkozni. Minden egyes ezeket a leképezéseket a LUIS-alkalmazás biztosítja a megjelölésű, amely hozzá van leképezve. A robot biztosít egy párbeszédpanel, amely kezeli a szándéka, hogy a LUIS észleli.
 
-| Leképezés | Példa utterance (kifejezés) | A robot funkció |
+| Szándék | Példa utterance (kifejezés) | A robot funkció |
 |:----:|:----------:|---|
 | HomeAutomation.TurnOn | Kapcsolja be a lámpák. | A robot meghívja a `TurnOnDialog` amikor a `HomeAutomation.TurnOn` észlel. Ezen a párbeszédpanelen, ahol szeretné hívhat meg egy IoT-szolgáltatás, kapcsolja be az eszközön, és ossza meg a felhasználót, hogy az eszköz be van kapcsolva. |
 | HomeAutomation.TurnOff | Kapcsolja ki a szobája lámpa. | A robot meghívja a `TurnOffDialog` amikor a `HomeAutomation.TurnOff` észlel. A párbeszédpanel, ahol szeretné meghívni egy IoT-szolgáltatás, kapcsolja ki az eszközt, és ossza meg a felhasználót, hogy az eszköz ki lett kapcsolva a. |
@@ -45,7 +46,10 @@ A robot a HomeAutomation tartományból, amelyek a LUIS alkalmazás válaszol sz
 3. Az a **Bot Service** panelen adja meg a szükséges információkat, és válassza ki **létrehozás**. Ez létrehozza és telepíti a bot service és a LUIS-alkalmazás az Azure-bA. Ha a használni kívánt [speech betanítási művelet](https://docs.microsoft.com/bot-framework/bot-service-manage-speech-priming), tekintse át [régió követelmények](luis-resources-faq.md#what-luis-regions-support-bot-framework-speech-priming) előtt a robot létrehozásának. 
     * Állítsa be **alkalmazásnév** a robot neve. A robot a felhőben (például mynotesbot.azurewebsites.net) történő telepítése során az altartomány neve lesz. <!-- This name is also used as the name of the LUIS app associated with your bot. Copy it to use later, to find the LUIS app associated with the bot. -->
     * Válassza ki az előfizetést [erőforráscsoport](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview), App service-csomagot, és [hely](https://azure.microsoft.com/regions/).
-    * Válassza ki a **Language understanding (Node.js)** sablonját a **Bot sablon** mező.
+    * A **Bot sablon**, jelölje be:
+        * **SDK-t v3**
+        * **Node.js**
+        * **Hangfelismerés**
     * Válassza ki a **LUIS alkalmazás hely**. Ez az a szerzői műveletekhez részben [régió] [ LUIS] jön létre az alkalmazást.
     * Jelölje be a megerősítő a jogi nyilatkozat. A jogi nyilatkozat feltételeit az alábbiakban olvashatják be a jelölőnégyzetet.
 

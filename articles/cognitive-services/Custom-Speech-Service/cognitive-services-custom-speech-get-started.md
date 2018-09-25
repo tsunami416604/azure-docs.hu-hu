@@ -1,6 +1,6 @@
 ---
-title: Első lépések az Azure egyéni beszéd szolgáltatással |} Microsoft Docs
-description: Az egyéni beszéd előfizet, majd kapcsolja a szolgáltatás Azure-előfizetés a modellek betanítása és telepítésére.
+title: A Custom Speech Service az Azure-ban – első lépések |} A Microsoft Docs
+description: Fizessen elő a Custom Speech service és a szolgáltatás tevékenységek összekapcsolása a modell betanítását és üzembe helyezést az Azure-előfizetés.
 services: cognitive-services
 author: PanosPeriorellis
 manager: onano
@@ -9,55 +9,56 @@ ms.component: custom-speech
 ms.topic: article
 ms.date: 02/08/2017
 ms.author: panosper
-ms.openlocfilehash: fe7a140f5ba2d712014f03663a88d516958d188e
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ROBOTS: NOINDEX
+ms.openlocfilehash: bf674261a58aab4fee37920d12ce6a2ac54b58b8
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35347114"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46975783"
 ---
-# <a name="get-started-with-custom-speech-service"></a>Az egyéni beszéd Service
+# <a name="get-started-with-custom-speech-service"></a>Ismerkedés a Custom Speech Service
 
-Az egyéni beszéd szolgáltatás fő funkcióinak vizsgálatát, és megtudhatja, hogyan létrehozásához, telepítéséhez és akusztikus és nyelvi modellek használata az alkalmazás igényeinek. További részletes dokumentációt és részletes útmutatás található az egyéni beszéd szolgáltatások Portal a regisztrációt követően.
+Ismerkedés a Custom Speech Service fő funkciói, és megtudhatja, hogyan hozhatók létre, telepíthetők és akusztikai és nyelvi modellek használata az alkalmazásnak szüksége van. Több széles körű dokumentációval és részletes útmutatás található a Custom Speech Services portálon a regisztrációt követően.
 
 ## <a name="samples"></a>Példák  
-Egy jó mintáját, az első is, amelyek az általunk biztosított [Itt](https://github.com/Microsoft/Cognitive-Custom-Speech-Service).
+Egy jó mintáját találkozása, amelyek az általunk biztosított [Itt](https://github.com/Microsoft/Cognitive-Custom-Speech-Service).
 
 ## <a name="prerequisites"></a>Előfeltételek  
 
-### <a name="subscribe-to-custom-speech-service-and-get-a-subscription-key"></a>Egyéni beszéd előfizet és előfizetés-kulcs beszerzése
-Előtt játszik és a fenti példában kell egyéni beszéd előfizet és lekérése egy előfizetés, tekintse meg [előfizetések](https://portal.azure.com/#create/Microsoft.CognitiveServices/apitype/CustomSpeech) vagy hajtsa végre a magyarázatokat [Itt](CustomSpeech-How-to-Topics/cognitive-services-custom-speech-subscribe.md). Ebben az oktatóanyagban mind az elsődleges és másodlagos kulcsot is használható. Ügyeljen arra, hogy kövesse a bevált gyakorlatokat, hogy az API-kulcs titkos kulcsot, és biztonságáról.
+### <a name="subscribe-to-custom-speech-service-and-get-a-subscription-key"></a>Előfizetés a Custom Speech Service és az előfizetési kulcs lekérése
+A fentiekben lejátszás előtt a példában a kell előfizetni a Custom Speech Service és lekérése egy előfizetést, tekintse meg [előfizetések](https://portal.azure.com/#create/Microsoft.CognitiveServices/apitype/CustomSpeech) , vagy kövesse a magyarázatokat [Itt](CustomSpeech-How-to-Topics/cognitive-services-custom-speech-subscribe.md). Ebben az oktatóanyagban az elsődleges és másodlagos kulcsot egyaránt használható. Győződjön meg arról, hogy az API-kulcs titkos ajánlott eljárások követése, és biztonságos.
 
-### <a name="get-the-client-library-and-example"></a>Az ügyfél első könyvtár és példa
-Egy ügyféloldali kódtár és példa segítségével letöltheti [SDK](https://www.microsoft.com/cognitive-services/en-us/SDK-Sample?api=bing%20speech&category=sdk). A letöltött zip-fájl szükséges a kiválasztott mappába kinyerni, sok felhasználó válassza ki a Visual Studio 2015 mappát.
+### <a name="get-the-client-library-and-example"></a>Az ügyfél első példa és könyvtár
+Előfordulhat, hogy töltse le a egy ügyféloldali kódtár és egy példa keresztül [SDK](https://www.microsoft.com/cognitive-services/en-us/SDK-Sample?api=bing%20speech&category=sdk). A letöltött zip-fájlt egy tetszőleges mappába kinyerni van szüksége, számos felhasználó, válassza ki a Visual Studio 2015 mappát.
 
-## <a name="creating-a-custom-acoustic-model"></a>Egy egyéni akusztikus modell létrehozása
-Egy adott tartományhoz akusztikus modell testreszabásához beszéd adatok gyűjteménye szükség. A gyűjtemény a beszédfelismerés adatok hang fájlokat, és hang fájlnévkiterjesztésének transcriptions szövegfájlba áll. A hangadatok kell modelleznie, ahol szeretné használni a felismerő forgatókönyv
+## <a name="creating-a-custom-acoustic-model"></a>Egy egyéni akusztikai modell létrehozása
+Testre szabhatja az akusztikai modell egy adott tartományhoz, a beszéd adatok gyűjteménye szükség. A gyűjtemény beszédadatokat tartalmazó hangfájlokból, valamint az ezek mindegyikének szöveges átiratát tartalmazó szövegfájlból áll. A hívásaiból kell modelleznie, amelyben a felismerő használni kívánt forgatókönyv
 
-Példa: Ha szeretné jobban ismeri fel a beszédfelismerés zajos gyári környezetben, a hangfájlok zajos gyárból beszéd személyek kell állnia.
-Ha érdekli az egyetlen hangalapú teljesítményének optimalizálása, pl. szeretné átírni összes FDR tartozó Fireside csevegés, majd a hangfájlok csak adott hangalapú számos példát kell állnia.
+Példa: Ha szeretné jobban beszédfelismerést zajos gyári környezetben, a hangfájlokat beszél a zajos gyár személyek kell állnia.
+Önt érdeklő egyetlen beszélő teljesítményének optimalizálása, például szeretné lefényképezze összes FDR a Fireside csevegés, akkor a példákat, hogy a beszélő csak hangfájlt kell állnia.
 
-Egy egyéni akusztikus modell létrehozása a részletes leírást talál [Itt](CustomSpeech-How-to-Topics/cognitive-services-custom-speech-create-acoustic-model.md).
+Egy egyéni akusztikai modell létrehozása a részletes leírást talál [Itt](CustomSpeech-How-to-Topics/cognitive-services-custom-speech-create-acoustic-model.md).
 
-## <a name="creating-a-custom-language-model"></a>Egy egyéni nyelvi modell létrehozása
-Az eljárás olyan egyéni nyelvi modell létrehozásához egy akusztikus modell létrehozása kivételével nincs elérhető hang adat, csak szöveg hasonlít. A szöveges lekérdezések számos példát kell állnia, vagy mondja ki a felhasználók utterances várt felhasználók vannak bejelentkezve, vagy az alkalmazás arról (vagy írja be).
+## <a name="creating-a-custom-language-model"></a>Egyéni nyelvi modell létrehozása
+Az eljárás egyéni nyelvi modell létrehozásához nagyon hasonlít az akusztikai modell, azzal a különbséggel nem szerepel megjeleníthető hang adat, csak szöveg. A szöveg állhat számos példa lekérdezéseket vagy utterances várt tegyük fel, hogy a felhasználók vagy a felhasználók bejelentkezés az alkalmazás közli, hogy (vagy írja be).
 
-Egy egyéni nyelvi modell létrehozása a részletes leírást talál [Itt](CustomSpeech-How-to-Topics/cognitive-services-custom-speech-create-language-model.md).
+Egyéni nyelvi modell létrehozásáról részletes leírást talál [Itt](CustomSpeech-How-to-Topics/cognitive-services-custom-speech-create-language-model.md).
 
-## <a name="creating-a-custom-speech-to-text-endpoint"></a>Egy egyéni beszéd-szöveg-végpont létrehozása
-Egyéni akusztikus modellek és/vagy nyelvi modellek létrehozása után, akkor egy egyéni beszéd-szöveg végpont is telepíthető. Új egyéni végpont létrehozásához kattintson a "Központi" a "CRIS" menüben, az oldal tetején. Ezzel megnyitná a jelenlegi egyéni végpontok "központi" nevű tábla. Ha még nem hozott létre végpontok, a táblázat üres lesz. Az aktuális területi beállítása a táblázat címsorában megjelenik. Ha azt szeretné, más nyelven telepítést hozhat létre, kattintson a "Módosítás területi beállítás". További információ a támogatott nyelvek módosítása területi című szakaszban található.
+## <a name="creating-a-custom-speech-to-text-endpoint"></a>Egy egyéni hang-szöveg transzformációs-végpont létrehozása
+Testreszabott akusztikai modell és/vagy nyelvi modellek létrehozása után, akkor a hang-szöveg transzformációs egyéni végpontok is telepíthető. Új egyéni végpont létrehozásához kattintson a "Központi" elemre a lap tetején a "CRIS" menüből. Ekkor megjelenik egy "Telepítés" aktuális egyéni végpontok nevű táblát. Ha még nem hozott olyan végpontok, a tábla üres lesz. A tábla címe az aktuális területi beállítást mutatja. Ha szeretné más nyelven üzembe helyezése, kattintson a "Change területi beállítása". További információ a támogatott nyelvek módosítása területi beállítás című szakaszban található.
 
-Részletes leírás található egyéni beszéd-szöveg-végpont létrehozása [Itt](CustomSpeech-How-to-Topics/cognitive-services-custom-speech-create-endpoint.md).
+Egy egyéni hang-szöveg transzformációs végpont létrehozása a részletes leírást talál [Itt](CustomSpeech-How-to-Topics/cognitive-services-custom-speech-create-endpoint.md).
 
-## <a name="using-a-custom-speech-endpoint"></a>Egy egyéni beszéd végpont használatával
-Kérelmek lehet küldeni egy CRIS beszéd-szöveg végpont nagyon hasonló módon az alapértelmezett Microsoft kognitív szolgáltatások beszéd végpontként. Ne feledje, hogy ezeket a végpontokat a hang transzformációs API az alapértelmezett végpontok gyakorlatilag azonos. Ebből kifolyólag a ügyféloldali kódtár vagy a hang transzformációs API REST API-n keresztül elérhető ugyanezeket a funkciókat érhető el a a egyéni végponthoz.
+## <a name="using-a-custom-speech-endpoint"></a>Egy egyéni beszéd-végpont használatával
+Kérelmek lehet küldeni a CRIS hang-szöveg transzformációs végpont nagyon hasonló módon az alapértelmezett Microsoft Cognitive Services beszédfelismerési végpontként. Vegye figyelembe, hogy ezeket a végpontokat az alapértelmezett végpontok a beszédfelismerő API funkcionálisan azonos. Így az ügyféloldali kódtár vagy a beszédfelismerő API REST API-val keresztül elérhető ugyanazokat a funkciókat is a érhető el az egyéni végpont.
 
-Részletes leírást talál egy egyéni beszéd-szöveg endpoint használatáról [Itt](CustomSpeech-How-to-Topics/cognitive-services-custom-speech-use-endpoint.md).
+Részletes leírást talál a hang-szöveg transzformációs egyéni végpont használatát [Itt](CustomSpeech-How-to-Topics/cognitive-services-custom-speech-use-endpoint.md).
 
 
-Vegye figyelembe, hogy a végpontok CRIS keresztül képes-e a különböző számú egyidejű kérelmek attól függően, hogy a réteg az előfizetés társítva. Ha további elfpgads, mint a kért, hibakód: 429 visszaadható (túl sok kérelem). További információt talál a [árakról](https://www.microsoft.com/cognitive-services/en-us/pricing). Emellett nincs a havi kvóta az ingyenes szint kérelmek. Azokban az esetekben, hozzáférhet a végpont felett a havi kvóta a szolgáltatás ingyenes szint adja vissza a 403-as hibakód tiltott.
+Vegye figyelembe, hogy a CRIS segítségével létrehozott végpontok a csomagtól függően egyidejű kérelmek, az előfizetés társítva a különböző számú tud feldolgozni. Ha több, mint a felismerés kérnek, a 429-es hibakód visszaadja (túl sok kérés). További információt a [díjszabási információk](https://www.microsoft.com/cognitive-services/en-us/pricing). Emellett nincs kérések az ingyenes egy havi kvótáját. Azokban az esetekben érhetők el az ingyenes szint feletti havi kvótájának a szolgáltatás az a végpont adja vissza a 403-as hibakód tiltott.
 
-A szolgáltatás azt feltételezi, hogy a valós idejű átkerülnek a hang. Ha gyorsabb továbbítja, a kérelem akkor veszi figyelembe működését, amíg a valós idejű időtartama megfelelt.
+A szolgáltatás feltételezi, hogy a valós idejű hang továbbított. Ha gyorsabban továbbítja, a kérelem akkor minősül, amíg a valós idejű időtartam letelte.
 
 * [Áttekintés](cognitive-services-custom-speech-home.md)
 * [GYIK](cognitive-services-custom-speech-faq.md)

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/17/2017
 ms.author: juliako
-ms.openlocfilehash: 08b7f50c3051c174158cff0b4c591a2b22fb4ab4
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: d6fe69588c44e489f37ad0908df569c2b5a4b96c
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39502702"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46967812"
 ---
 # <a name="access-the-azure-media-services-api-with-azure-ad-authentication"></a>Hozzáférés az Azure Media Services API Azure AD-hitelesítés
  
@@ -146,7 +146,7 @@ Megoldás: A Media Services REST kérelem sikeres, a hívó felhasználónak kel
 
 Az alábbi cikkeket is az Azure AD-hitelesítés – fogalmak áttekintése: 
 
-- [Hitelesítési forgatókönyvek tárgyalt Azure ad-ben](../../active-directory/develop/authentication-scenarios.md#basics-of-authentication-in-azure-ad)
+- [Hitelesítési forgatókönyvek tárgyalt Azure ad-ben](../../active-directory/develop/authentication-scenarios.md)
 - [Hozzáadása, módosítása és alkalmazás eltávolítása az Azure ad-ben](../../active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad.md)
 - [Konfigurálja és szerepköralapú hozzáférés-vezérlés kezelése a PowerShell használatával](../../role-based-access-control/role-assignments-powershell.md)
 

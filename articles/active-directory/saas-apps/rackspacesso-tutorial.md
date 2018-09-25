@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/11/2018
+ms.date: 09/20/2018
 ms.author: jeedes
-ms.openlocfilehash: e7a4dd57c7da3350e610b5f005aa59ea9d51dd56
-ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
+ms.openlocfilehash: b825fb1d7f56aae923f6760c4fd6384e03274b7a
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45607786"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47042057"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-rackspace-sso"></a>Oktatóanyag: Azure Active Directory-integráció Rackspace SSO-val
 
@@ -49,12 +49,14 @@ Ebben az oktatóanyagban a lépéseket teszteléséhez kövesse ezeket a javasla
 - Ha nem rendelkezik egy Azure ad-ben a próbakörnyezet, [egy hónapos próbaverzió beszerzése](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
+
 Ebben az oktatóanyagban tesztelni az Azure AD egyszeri bejelentkezés egy tesztkörnyezetben. Az ebben az oktatóanyagban ismertetett forgatókönyvben két fő építőelemeket áll:
 
 1. Rackspace SSO hozzáadása a katalógusból
 2. Konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés
 
 ## <a name="adding-rackspace-sso-from-the-gallery"></a>Rackspace SSO hozzáadása a katalógusból
+
 Az Azure AD integrálása a Rackspace egyszeri bejelentkezés konfigurálásához hozzá kell Rackspace SSO a galériából a felügyelt SaaS-alkalmazások listájára.
 
 **Adja hozzá a Rackspace SSO a katalógusból, hajtsa végre az alábbi lépéseket:**
@@ -66,7 +68,7 @@ Az Azure AD integrálása a Rackspace egyszeri bejelentkezés konfigurálásáho
 2. Navigáljon a **vállalati alkalmazások**. Ezután lépjen a **minden alkalmazás**.
 
     ![A vállalati alkalmazások panelen][2]
-    
+
 3. Új alkalmazás hozzáadásához kattintson **új alkalmazás** gombra a párbeszédpanel tetején.
 
     ![Az új alkalmazás gomb][3]
@@ -100,7 +102,7 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
     ![Egyszeri bejelentkezési hivatkozás konfigurálása][4]
 
 2. Az a **egyszeri bejelentkezési** párbeszédablakban válassza **mód** , **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezéséhez.
- 
+
     ![Egyszeri bejelentkezési párbeszédpanel](./media/rackspacesso-tutorial/tutorial_rackspacesso_samlbase.png)
 
 3. Az a **Rackspace SSO tartomány és URL-címek** szakaszban, hajtsa végre az alábbi lépéseket:
@@ -111,7 +113,7 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
 
 4. Az a **SAML-aláíró tanúsítvány** területén kattintson **metaadatainak XML** , és mentse a metaadat-fájlt a számítógépen.
 
-    ![A tanúsítvány letöltési hivatkozás](./media/rackspacesso-tutorial/tutorial_rackspacesso_certificate.png) 
+    ![A tanúsítvány letöltési hivatkozás](./media/rackspacesso-tutorial/tutorial_rackspacesso_certificate.png)
 
 5. Kattintson a **mentése** gombra.
 
@@ -150,16 +152,16 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
     c. Válassza ki a **jelszó megjelenítése** jelölje be a jelölőnégyzetet, és jegyezze fel a megjelenített érték a **jelszó** mezőbe.
 
     d. Kattintson a **Create** (Létrehozás) gombra.
- 
+
 ### <a name="create-a-rackspace-sso-test-user"></a>Rackspace SSO tesztfelhasználó létrehozása
 
-Ebben a szakaszban egy Britta Simon nevű Rackspace egyszeri Bejelentkezést a felhasználó hoz létre. Együttműködve [Rackspace SSO támogatási csapatának](https://support.rackspace.com/) a felhasználók hozzáadása a Rackspace SSO-platformon. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
+Ebben a szakaszban működik az [Rackspace SSO támogatási csoport](https://support.rackspace.com/) bevezetni a Rackspace SSO-platform a fiókhoz.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 
 Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés Rackspace SSO Azure egyszeri bejelentkezés használatára.
 
-![A felhasználói szerepkör hozzárendelése][200] 
+![A felhasználói szerepkör hozzárendelése][200]
 
 **Britta Simon rendel Rackspace SSO, hajtsa végre az alábbi lépéseket:**
 
@@ -184,7 +186,7 @@ Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés 
 6. Kattintson a **kiválasztása** gombot **felhasználók és csoportok** párbeszédpanel.
 
 7. Kattintson a **hozzárendelése** gombot **hozzárendelés hozzáadása** párbeszédpanel.
-    
+
 ### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
@@ -196,8 +198,6 @@ A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezet�
 
 * [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](tutorial-list.md)
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
-
-
 
 <!--Image references-->
 
@@ -212,4 +212,3 @@ A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezet�
 [201]: ./media/rackspacesso-tutorial/tutorial_general_201.png
 [202]: ./media/rackspacesso-tutorial/tutorial_general_202.png
 [203]: ./media/rackspacesso-tutorial/tutorial_general_203.png
-

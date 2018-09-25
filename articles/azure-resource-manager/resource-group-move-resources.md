@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/07/2018
 ms.author: tomfitz
-ms.openlocfilehash: 2448b1f799c5253b36a18f108af1ff2de8b6ced3
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: e79419c764229e7dc52a32389b8b1116668dddfc
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46127448"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47039735"
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>Erőforrások áthelyezése új erőforráscsoportba vagy előfizetésbe
 
@@ -204,6 +204,7 @@ Az alábbi lista egy új erőforráscsoportot és egy előfizetést is áthelyez
 * Log Analytics
 * Logic Apps
 * Machine Learning - webszolgáltatások helyezheti át egy erőforráscsoport ugyanabban az előfizetésben, de nem egy másik előfizetésben található Machine Learning Studióban. Egyéb Machine Learning-erőforrások áthelyezhetők, előfizetések között.
+* Tekintse meg a Managed Disks - [megkötések virtuális gépek korlátozásai](#virtual-machines-limitations)
 * Felügyelt identitás - felhasználó által hozzárendelt
 * Media Services
 * Mobile Engagement
@@ -254,7 +255,6 @@ Az alábbi lista nem lehet áthelyezni egy új erőforráscsoportot és egy elő
 * A Lab Services – áthelyezése új erőforráscsoportba ugyanahhoz az előfizetéshez engedélyezve van, de az előfizetés közötti áthelyezése nem engedélyezett.
 * Terheléselosztók – lásd: [Load Balancer-korlátozások](#lb-limitations)
 * Felügyelt alkalmazások
-* Tekintse meg a Managed Disks - [virtuális gépek korlátozások](#virtual-machines-limitations)
 * Microsoft Genomics
 * NetApp
 * Nyilvános IP-Címek – lásd: [nyilvános IP-korlátozások](#pip-limitations)
@@ -267,22 +267,36 @@ Az alábbi lista nem lehet áthelyezni egy új erőforráscsoportot és egy elő
 
 ## <a name="virtual-machines-limitations"></a>Virtuális gépek korlátozások
 
-Felügyelt lemezek nem támogatják az áthelyezési. Ez a korlátozás, az azt jelenti, hogy néhány kapcsolódó erőforrások túl nem lehet áthelyezni. Nem helyezhető át:
+2018. szeptember 24-én áthelyezése a felügyelt lemezek támogatottak. Ez a funkció engedélyezéséhez regisztrálni kell
 
-* Felügyelt lemezek
+#### <a name="powershell"></a>PowerShell
+`Register-AzureRmProviderFeature -FeatureName ManagedResourcesMove -ProviderNamespace Microsoft.Compute`
+#### <a name="cli"></a>parancssori felület
+`az feature register Microsoft.Compute ManagedResourcesMove`
+
+
+Ez azt jelenti, hogy is áthelyezheti:
+
 * A felügyelt lemezekkel rendelkező virtuális gépek
-* A felügyelt lemezekről létrehozott rendszerképek
-* A pillanatképek a felügyelt lemezek létrehozása
+* Felügyelt képek
+* Felügyelt pillanatképek
 * A felügyelt lemezekkel rendelkező virtuális gépek rendelkezésre állási csoportok
 
-Bár a felügyelt lemez nem helyezhető át, hozzon létre egy másolatot, és ezután hozzon létre egy új virtuális gépet a meglévő felügyelt lemezről. További információkért lásd:
+Az alábbiakban a korlátozásokat, amelyek még nem támogatottak
 
-* Felügyelt lemezek másolása a ugyanahhoz az előfizetéshez vagy a másik előfizetésben [PowerShell](../virtual-machines/scripts/virtual-machines-windows-powershell-sample-copy-managed-disks-to-same-or-different-subscription.md) vagy [Azure CLI-vel](../virtual-machines/scripts/virtual-machines-linux-cli-sample-copy-managed-disks-to-same-or-different-subscription.md)
-* A meglévő felügyelt operációsrendszer-lemezt használó virtuális gép létrehozása [PowerShell](../virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-vm-from-managed-os-disks.md) vagy [Azure CLI-vel](../virtual-machines/scripts/virtual-machines-linux-cli-sample-create-vm-from-managed-os-disks.md).
+* Egy új erőforráscsoport ugyanabban az előfizetésben, de az előfizetések között nem helyezheti át virtuális gépeket a Key Vault-tanúsítvánnyal.
+* Az Azure Backup szolgáltatással konfigurált virtuális gépek. Használja az alábbi megkerülő megoldás e virtuális gépek áthelyezése
+  * Keresse meg a virtuális gép helyét.
+  * Keresse meg a következő elnevezési mintának egy erőforráscsoportot: "AzureBackupRG_<location of your VM>_1" például AzureBackupRG_westus2_1
+  * Ha az Azure Portalon, majd ellenőrizze "rejtett típusok megjelenítése"
+  * Ha a PowerShellben használja a `Get-AzureRmResource -ResourceGroupName AzureBackupRG_<location of your VM>_1` parancsmag
+  * Ha a CLI-t, használja a `az resource list -g AzureBackupRG_<location of your VM>_1`
+  * Keresse meg az erőforrás-típussal `Microsoft.Compute/restorePointCollections` , amely rendelkezik az elnevezési minta `AzureBackup_<name of your VM that you're trying to move>_###########`
+  * Ez az erőforrás törlése
+  * Törlés befejezése után lesz a virtuális gép áthelyezése
+* Virtual Machine Scale Sets Standard Termékváltozatú terheléselosztó vagy a Standard Termékváltozat nyilvános IP-cím nem lehet áthelyezni.
+* A csatolt tervek Piactéri erőforrások alapján létrehozott virtuális gépeken nem lehet áthelyezni, erőforráscsoport vagy előfizetés között. Az aktuális előfizetésben a virtuális gép megszüntetése, és telepítse újra az új előfizetés.
 
-A csatolt tervek Piactéri erőforrások alapján létrehozott virtuális gépeken nem lehet áthelyezni, erőforráscsoport vagy előfizetés között. Az aktuális előfizetésben a virtuális gép megszüntetése, és telepítse újra az új előfizetés.
-
-Egy új erőforráscsoport ugyanabban az előfizetésben, de az előfizetések között nem helyezheti át virtuális gépeket a Key Vault-tanúsítvánnyal.
 
 ## <a name="virtual-networks-limitations"></a>Virtuális hálózatok korlátozások
 

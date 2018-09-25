@@ -1,6 +1,6 @@
 ---
 title: Lemezek titkosítása az Azure méretezési csoportokhoz az Azure CLI-vel |} A Microsoft Docs
-description: Ismerje meg, hogyan használhatja az Azure CLI 2.0 Virtuálisgép-példányok és a egy Linux virtuálisgép-méretezési csoportot a csatlakoztatott lemezek titkosítása
+description: Az Azure CLI használata a Virtuálisgép-példányok és a egy Linux virtuálisgép-méretezési csoportot a csatlakoztatott lemezek titkosítása
 services: virtual-machine-scale-sets
 documentationcenter: ''
 author: cynthn
@@ -15,14 +15,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: cynthn
-ms.openlocfilehash: a01a0ae09b91b550af4617a46f7c0d8647a5f4be
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: fecf7e121b1c0404f1ec67d46cc88008250b9d68
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38704555"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46981059"
 ---
-# <a name="encrypt-os-and-attached-data-disks-in-a-virtual-machine-scale-set-with-the-azure-cli-20-preview"></a>Az operációs rendszer és a egy virtuálisgép-méretezési csoportot az Azure CLI 2.0 (előzetes verzió) az a csatlakoztatott adatlemezekkel titkosítása
+# <a name="encrypt-os-and-attached-data-disks-in-a-virtual-machine-scale-set-with-the-azure-cli-preview"></a>Az operációs rendszer és a egy virtuálisgép-méretezési csoportot az Azure CLI (előzetes verzió) az a csatlakoztatott adatlemezekkel titkosítása
 
 És iparági szabványos titkosítási technológiával az inaktív adatok megvédeni, a virtual machine scale sets támogatja az Azure Disk Encryption (ADE). Titkosítási engedélyezhető a Linux vagy Windows virtuálisgép-méretezési csoportokban. További információkért lásd: [Linux és Windows Azure Disk Encryption](../security/azure-security-disk-encryption.md).
 
@@ -38,7 +38,7 @@ Skálázási készlet virtuális gép rendszerkép alaphelyzetbe állítását �
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Ha a helyi telepítése és használata a parancssori felület választja, az oktatóanyaghoz, hogy futnak-e az Azure CLI 2.0.31-es verzió vagy újabb. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI 2.0 telepítése]( /cli/azure/install-azure-cli).
+Ha a helyi telepítése és használata a parancssori felület választja, az oktatóanyaghoz, hogy futnak-e az Azure CLI 2.0.31-es verzió vagy újabb. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése]( /cli/azure/install-azure-cli).
 
 ## <a name="register-for-disk-encryption-preview"></a>Lemez titkosítása előzetes regisztráció
 
@@ -180,6 +180,6 @@ az vmss encryption disable --resource-group myResourceGroup --name myScaleSet
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a cikkben az Azure CLI 2.0 egy virtuálisgép-méretezési csoportot titkosításához használt. Is [Azure PowerShell-lel](virtual-machine-scale-sets-encrypt-disks-ps.md) vagy sablonok [Windows](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-vmss-windows-jumpbox) vagy [Linux](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-vmss-linux-jumpbox).
+Ebben a cikkben, az Azure CLI titkosításához használt virtuálisgép-méretezési csoportot. Is [Azure PowerShell-lel](virtual-machine-scale-sets-encrypt-disks-ps.md) vagy sablonok [Windows](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-vmss-windows-jumpbox) vagy [Linux](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-vmss-linux-jumpbox).
 
 Linux rendszerű méretezési csoport adatok lemeztitkosítás teljes körű batch fájl példa található [Itt](https://gist.githubusercontent.com/ejarvi/7766dad1475d5f7078544ffbb449f29b/raw/03e5d990b798f62cf188706221ba6c0c7c2efb3f/enable-linux-vmss.bat). Ebben a példában egy erőforráscsoportot, a Linux rendszerű méretezési csoportot hoz létre, 5 GB-os adatlemezt csatlakoztat és titkosítja a virtuálisgép-méretezési csoportot.

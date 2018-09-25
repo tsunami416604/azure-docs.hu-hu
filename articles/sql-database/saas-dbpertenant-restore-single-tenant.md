@@ -1,133 +1,134 @@
 ---
-title: A több-bérlős SaaS-alkalmazás az Azure SQL-adatbázis visszaállítása |} Microsoft Docs
-description: 'Útmutató: a egybérlős SQL-adatbázis visszaállítása után véletlenül az adatok törlése'
-keywords: sql database-oktatóanyag
+title: Egy Azure SQL-adatbázist egy több-bérlős SaaS-alkalmazás visszaállításához |} A Microsoft Docs
+description: Ismerje meg, hogyan adatok véletlen törlését követően egy egybérlős SQL-adatbázis visszaállítása
 services: sql-database
-author: stevestein
-manager: craigg
 ms.service: sql-database
-ms.custom: scale out apps
+ms.subservice: scenario
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 04/01/2018
+author: stevestein
 ms.author: sstein
 ms.reviewer: billgib
-ms.openlocfilehash: 319195ceb98b5b760d4d92055faa6e09c8fb0e3d
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+manager: craigg
+ms.date: 04/01/2018
+ms.openlocfilehash: 228f5135165cbf8806516e5e932f210586013402
+ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34644348"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47056743"
 ---
-# <a name="restore-a-single-tenant-with-a-database-per-tenant-saas-application"></a>Állítsa vissza egy egy bérlőt egy adatbázis-/-bérlő SaaS-alkalmazáshoz
+# <a name="restore-a-single-tenant-with-a-database-per-tenant-saas-application"></a>A bérlőnkénti adatbázis SaaS-alkalmazásokkal egyetlen bérlő visszaállítása
 
-Az adatbázis-/-bérlős modell segítségével egyszerűen visszaállítása egy egybérlős egy korábbi idő nem befolyásolja a többi bérlő.
+A bérlőnkénti adatbázis modellt megkönnyíti az egyetlen bérlő visszaállítása egy korábbi időpontra időben anélkül, hogy befolyásolná a többi bérlőtől.
 
-Ebben az oktatóanyagban elsajátíthatja, két adatok helyreállítási minták:
+Ebből az oktatóanyagból megtudhatja, adat-helyreállítási két mintát:
 
 > [!div class="checklist"]
 
-> * Adatbázis helyreállítása egy párhuzamos adatbázisba (egymás mellett).
-> * A mag cseréje a meglévő adatbázis helyben, adatbázis visszaállítása.
+> * Adatbázis visszaállítása egy párhuzamos adatbázisba (egymás mellett).
+> * Teljesülnek, és cserélje le a meglévő adatbázis adatbázis visszaállítása.
 
 
 |||
 |:--|:--|
-| Egy párhuzamos adatbázisba | Ez a minta segítségével olyan feladatokhoz, mint tekintse át, a naplózás és a megfelelőség engedélyezése a bérlő az adatok korábbi pontról vizsgálata. A bérlő aktuális adatbázis online állapotú, és változatlan marad. |
-| A hely visszaállítása | Ebben a mintában általában egy bérlőt egy korábbi időpontbeli helyreállítása után a bérlő véletlenül törli vagy adatok megsérülnek használatos. Az eredeti adatbázist offline állapotba hozni, és a visszaállított adatbázis helyett. |
+| Párhuzamos adatbázisba történő visszaállítása | Ez a minta olyan feladatokhoz, mint a felülvizsgálatot, naplózással és megfelelőségi használható, hogy a bérlő vizsgálja meg saját adatainak egy korábbi időpontra. A bérlő aktuális adatbázis online és a változatlan marad. |
+| A hely visszaállítása | Ez a minta általában állíthatók helyre egy bérlőt egy korábbi időpontra, egy bérlő véletlenül törli vagy megsérülnek adatok után. Az eredeti adatbázis offline állapotú venni és a visszaállított adatbázis helyére. |
 |||
 
 Az oktatóanyag teljesítéséhez meg kell felelnie az alábbi előfeltételeknek:
 
-* A Wingtip SaaS-alkalmazás telepítve van. Kevesebb mint öt perc alatt telepítéséhez lásd: [központi telepítése és vizsgálja meg a Wingtip SaaS-alkalmazás](saas-dbpertenant-get-started-deploy.md).
-* Az Azure PowerShell telepítve van. További információkért lásd: [Ismerkedés az Azure PowerShell](https://docs.microsoft.com/powershell/azure/get-started-azureps).
+* A Wingtip SaaS-alkalmazás telepítve van. Kevesebb mint öt perc alatt üzembe helyezéséhez lásd: [üzembe helyezése és megismerése a Wingtip SaaS-alkalmazás](saas-dbpertenant-get-started-deploy.md).
+* Az Azure PowerShell telepítve van. További információkért lásd: [Azure PowerShell használatának első lépései](https://docs.microsoft.com/powershell/azure/get-started-azureps).
 
-## <a name="introduction-to-the-saas-tenant-restore-patterns"></a>A Szolgáltatottszoftver-bérlői visszaállítási minták bemutatása
+## <a name="introduction-to-the-saas-tenant-restore-patterns"></a>A SaaS-bérlő visszaállítási minták bemutatása
 
-Nincsenek egy adott bérlő adatok visszaállításához két egyszerű mintát. Bérlői adatbázisok el különítve egymástól, mert egy bérlő visszaállítása nem hatást gyakorol semmilyen más bérlővel adatokat. Az Azure SQL Database pontot-idő visszaállítási (PITR) szolgáltatással két minta használatban van. PITR mindig létrehoz egy új adatbázist.   
+Nincsenek egy adott bérlő adatok visszaállításához két egyszerű mintát. Bérlői adatbázisok elkülönülnek egymástól, mert egyetlen bérlő visszaállítása nem befolyásolja a semmilyen más bérlővel adatok. Az Azure SQL Database pont a-időponthoz kötött visszaállítás (PITR) szolgáltatás mindkét minták használatban van. PITR mindig létrehoz egy új adatbázist.   
 
-* **Párhuzamos visszaállítása**: az első mintában új párhuzamos adatbázis mellett az aktuális adatbázisban a bérlő jön létre. A bérlő majd írásvédett való hozzáférése a visszaállított adatbázis. A visszaállított adatok tekintse át, és felülírja a jelenlegi adatértékek potenciálisan használt. Már a Tervező annak meghatározásához, hogy a bérlő hogyan érheti el a visszaállított adatbázis, és milyen helyreállítási lehetőségeket. Egyszerűen lehetővé teszi a bérlő, hogy tekintse át az adatokat egy olyan korábbi időpontban minden egyes esetekben szükséges lehet. 
+* **Párhuzamos visszaállítási**: az első mintájában új párhuzamos létrehozott adatbázisok esetében a jelenlegi adatbázis a bérlő mellett. A bérlő majd a visszaállított adatbázis való csak olvasási hozzáféréssel kap. A visszaállított adatok azok áttekinthetők és aktuális adatokat értékeket felülírására potenciálisan használható. Fontos az alkalmazástervező, hogyan a bérlő fér hozzá a visszaállított adatbázis és rendelkezésre milyen helyreállítási lehetőségek meghatározása. Egyszerűen lehetővé teszi a bérlő, tekintse át az adatokat egy korábbi időpontra való minden egyes esetekben szükséges lehet. 
 
-* **A hely visszaállítása**: A második minta akkor hasznos, ha adatok elvesztésének vagy sérült, és a bérlői szeretne rendelni egy korábbi állapotba való visszaállítását. A bérlő offline állapotú lesz végrehajtva, amíg az adatbázis helyreállítása. Az eredeti adatbázis törlődik, és a rendszer átnevezi a visszaállított adatbázis. Az eredeti adatbázis a biztonsági mentési láncolatát a törlés után elérhető marad, így helyreállíthatja az adatbázis egy korábbi állapotba időben, ha szükséges.
+* **A hely visszaállítása**: A második minta akkor hasznos, ha a adatok elvesztésének vagy sérült állapotba kerül, és a bérlő szeretne visszaállítása egy korábbi időpontra. A bérlő offline állapotú használatban van, amíg az adatbázis helyreállítása. Az eredeti adatbázis törlődik, és a visszaállított adatbázis neve. Az eredeti adatbázist a biztonsági mentési láncolata marad elérhető a törlés után, így visszaállíthatja az adatbázist egy korábbi időpontra történik, ha szükséges.
 
-Ha az adatbázis használ [georeplikáció](sql-database-geo-replication-overview.md) és visszaállítása párhuzamosan, azt javasoljuk, bármilyen szükséges adatok másolása a visszaállított másolja át az eredeti adatbázist a. Ha az eredeti adatbázis cserélje a visszaállított adatbázis, kell konfigurálnia, majd szinkronizálja újra a georeplikáció.
+Ha az adatbázis használ [georeplikációs](sql-database-geo-replication-overview.md) és visszaállítása párhuzamosan, javasoljuk, hogy a szükséges adatokat a visszaállított másolatból az eredeti adatbázisba másolja. Ha lecseréli az eredeti adatbázist a visszaállítottra, meg kell konfigurálnia és szinkronizálnia a georeplikáció.
 
-## <a name="get-the-wingtip-tickets-saas-database-per-tenant-application-scripts"></a>A Wingtip jegyek SaaS adatbázis / bérlői alkalmazás parancsfájlok beolvasása
+## <a name="get-the-wingtip-tickets-saas-database-per-tenant-application-scripts"></a>A Wingtip Tickets SaaS bérlőnkénti adatbázis alkalmazásszkriptek beolvasása
 
-A Wingtip jegyek SaaS több-Bérlős adatbázis parancsfájlok és az alkalmazás forráskódjához érhetők el a [WingtipTicketsSaaS-DbPerTenant](https://github.com/Microsoft/WingtipTicketsSaaS-DbPerTenant) GitHub-tárház. Töltse le és feloldása a Wingtip jegyek Szolgáltatottszoftver-parancsfájlok lépéseiért lásd: a [általános útmutatást](saas-tenancy-wingtip-app-guidance-tips.md).
+A Wingtip Tickets SaaS több-Bérlős adatbázis parancsfájlok és az alkalmazás forráskódjának érhető el a [WingtipTicketsSaaS-DbPerTenant](https://github.com/Microsoft/WingtipTicketsSaaS-DbPerTenant) GitHub-adattárban. Töltse le és feloldása a Wingtip Tickets SaaS-parancsfájlok lépéseiért lásd: a [általános útmutatást](saas-tenancy-wingtip-app-guidance-tips.md).
 
 ## <a name="before-you-start"></a>Előkészületek
 
-Amikor egy adatbázist hoz létre, 10 – 15 perc múlva az első teljes biztonsági másolatból történő visszaállítását is igénybe vehet. Ha éppen most telepítette az alkalmazást, akkor várjon néhány percig, mielőtt újból ebben a forgatókönyvben módosítania.
+Ha egy adatbázis jön létre, 10 – 15 percet, mielőtt érhető el az első teljes biztonsági másolatból történő visszaállítását is igénybe vehet. Ha éppen most telepítette az alkalmazást, szüksége lehet Várjon néhány percet, mielőtt megpróbálná ebben a forgatókönyvben.
 
-## <a name="simulate-a-tenant-accidentally-deleting-data"></a>A bérlő véletlenül törli az adatok szimulálása
+## <a name="simulate-a-tenant-accidentally-deleting-data"></a>A bérlői adatok véletlen törlését szimulálása
 
-Helyreállítási forgatókönyvekben bemutatásához, először "véletlenül" esemény törlése a bérlő adatbázisok egyikében. 
+Ezek a helyreállítási forgatókönyvek bemutatása érdekében először "véletlenül" töröljön egy eseményt egy, a bérlői adatbázisok. 
 
-### <a name="open-the-events-app-to-review-the-current-events"></a>Nyissa meg az események alkalmazásnak, hogy tekintse át a jelenlegi eseményeket
+### <a name="open-the-events-app-to-review-the-current-events"></a>Nyissa meg az események alkalmazás áttekintheti az aktuális események
 
-1. Nyissa meg az események Hub (http://events.wtp.&lt; felhasználói&gt;. trafficmanager.net), és válassza ki **Contoso energiaoptimalizálást egyszerre Hall**.
+1. Nyissa meg az Eseményközpontot (http://events.wtp.&lt; felhasználó&gt;. trafficmanager.net), és válassza ki **Contoso Concert Hall**.
 
-   ![Események Hub](media/saas-dbpertenant-restore-single-tenant/events-hub.png)
+   ![Eseményközpont](media/saas-dbpertenant-restore-single-tenant/events-hub.png)
 
-2. Görgessen az események listájának, és jegyezze fel az utolsó esemény a listában.
+2. Görgessen az események, és jegyezze fel az utolsó esemény a listában.
 
-   ![Utolsó esemény jelenik meg](media/saas-dbpertenant-restore-single-tenant/last-event.png)
+   ![Legutóbbi esemény jelenik meg.](media/saas-dbpertenant-restore-single-tenant/last-event.png)
 
 
 ### <a name="accidentally-delete-the-last-event"></a>Az utolsó esemény "Véletlenül" törlése
 
-1. A PowerShell ISE megnyitása... \\Tanulási modulok\\az üzletmenet folytonossága és vészhelyreállítás\\RestoreTenant\\*bemutató-RestoreTenant.ps1*, és a következő értéket:
+1. A PowerShell ISE-ben nyissa meg a... \\Tanulási modulok\\üzletmenet-folytonossági és vészhelyreállítási\\RestoreTenant\\*Demo-RestoreTenant.ps1*, és állítsa be a következő értéket:
 
-   * **$DemoScenario** = **1**, *delete utolsó esemény (nincs jegy értékesítési)*.
-2. Nyomja le az F5 billentyűt a parancsfájl futtatásához és az utolsó esemény törlése. A következő megerősítő üzenet jelenik meg:
+   * **$DemoScenario** = **1**, *törlése (a nem jegyeladásokkal) utolsó esemény*.
+2. Nyomja le az F5 billentyűt a szkript futtatásához és az utolsó esemény törlése. A következő megerősítő üzenetet jelenik meg:
 
    ```Console
    Deleting last unsold event from Contoso Concert Hall ...
    Deleted event 'Seriously Strauss' from Contoso Concert Hall venue.
    ```
 
-3. A Contoso események lap nyílik meg. Görgessen lefelé, és győződjön meg arról, hogy az esemény már nem. Ha az esemény továbbra is szerepel a listán, válassza ki a **frissítése** , és ellenőrizze a állapotba került.
+3. A Contoso események lap nyílik meg. Görgessen lefelé, és győződjön meg arról, hogy az esemény szűnt. Ha az esemény továbbra is szerepel a listában, válassza ki a **frissítése** , és ellenőrizze, hogy felment.
 
    ![Legutóbbi esemény eltávolítása](media/saas-dbpertenant-restore-single-tenant/last-event-deleted.png)
 
 
-## <a name="restore-a-tenant-database-in-parallel-with-the-production-database"></a>Az éles adatbázis párhuzamosan bérlői adatbázis visszaállítása
+## <a name="restore-a-tenant-database-in-parallel-with-the-production-database"></a>Az éles adatbázisban párhuzamosan bérlői adatbázis visszaállítása
 
-Ebben a gyakorlatban adatbázisát állítja vissza a Contoso energiaoptimalizálást egyszerre Hall pontra előtti az esemény törölve lett. Ebben a forgatókönyvben azt feltételezi, hogy szeretné-e megtekinteni a törölt adatokat egy párhuzamos adatbázisban.
+Ebben a gyakorlatban a Contoso Concert Hall adatbázis visszaállítása egy időben az esemény törlése előtti. Ebben a forgatókönyvben azt feltételezi, hogy szeretné-e ellenőrizni a törölt adatokat egy párhuzamos adatbázisban.
 
- A *visszaállítási-TenantInParallel.ps1* parancsfájl egy párhuzamos bérlői nevű adatbázist hoz létre *ContosoConcertHall\_régi*, a párhuzamos katalógusbejegyzés. Ebben a mintában a visszaállítás olyan kisebb adatvesztés helyreállítására. Is használhatja ezt a mintát Ha meg szeretné tekinteni a megfelelőségi és naplózási célokra adatokat. Ez az ajánlott módszer használata esetén [georeplikáció](sql-database-geo-replication-overview.md).
+ A *Restore-TenantInParallel.ps1* a szkript létrehoz egy párhuzamos bérlői adatbázist *ContosoConcertHall\_régi*, a párhuzamos katalógusbejegyzés. Ez a minta a visszaállítás olyan kisebb adatvesztés utáni helyreállításhoz. Is használhatja ezt a mintát, ha meg szeretné tekinteni a megfelelőségi és naplózási célokra adatok. Ez az ajánlott módszer használata esetén [georeplikációs](sql-database-geo-replication-overview.md).
 
-1. Fejezze be a [véletlenül törli az adatokat a bérlők szimulálása](#simulate-a-tenant-accidentally-deleting-data) szakasz.
-2. A PowerShell ISE megnyitása... \\Tanulási modulok\\az üzletmenet folytonossága és vészhelyreállítás\\RestoreTenant\\_bemutató-RestoreTenant.ps1_.
+1. Végezze el a [véletlenül törli az adatokat egy bérlő szimulálása](#simulate-a-tenant-accidentally-deleting-data) szakaszban.
+2. A PowerShell ISE-ben nyissa meg a... \\Tanulási modulok\\üzletmenet-folytonossági és vészhelyreállítási\\RestoreTenant\\_Demo-RestoreTenant.ps1_.
 3. Állítsa be **$DemoScenario** = **2**, *párhuzamos visszaállítási bérlői*.
-4. A parancsfájl futtatásához nyomja le az F5 billentyűt.
+4. A szkript futtatásához nyomja le az F5.
 
-A parancsfájl adatbázisát állítja vissza a bérlő pontra időben az esemény törlése előtt. Az adatbázis helyreállítása nevű új adatbázis _ContosoConcertHall\_régi_. A katalógus metaadat már szerepel a visszaállított adatbázis törlődik, és ezután az adatbázis hozzáadódik a katalógus értékekből összeállított kulcs használatával a *ContosoConcertHall\_régi* nevét.
+Az parancsfájl visszaállítja a bérlői adatbázis egy időben az esemény törlése előtt. Az adatbázis helyreállítása egy új adatbázist a _ContosoConcertHall\_régi_. A katalógus metaadat, hogy megtalálható-e a visszaállított adatbázis törlődik, és majd az adatbázis bekerül a katalógusba értékekből összeállított kulcs használatával a *ContosoConcertHall\_régi* nevét.
 
-A bemutató-parancsfájl az új bérlő adatbázishoz az események lapot a böngészőben nyílik meg. Megjegyzés: az URL-címről ```http://events.wingtip-dpt.&lt;user&gt;.trafficmanager.net/contosoconcerthall_old``` , hogy ezen a lapon látható-e a visszaállított adatbázis ahol *_old* hozzáadódik a neve.
+A bemutató-parancsfájl az új bérlői adatbázis az események lapot a böngészőben nyílik meg. Megjegyzés: az URL-címből ```http://events.wingtip-dpt.&lt;user&gt;.trafficmanager.net/contosoconcerthall_old``` , hogy ezen a lapon látható-e adatokat a visszaállított adatbázisból ahol *_old* adnak hozzá a neve.
 
-Görgessen az eseményeket, az esemény törölve az előző szakaszban szerepel annak ellenőrzésére, hogy a böngésző vissza lett állítva.
+Az események a böngészőben, hogy ellenőrizze, hogy az esemény törölve az előző szakaszban felsorolt görgessen vissza lett állítva.
 
-Az ilyen egy további bérlői saját események az alkalmazással, mint a visszaállított bérlő nem valószínű, hogy hogyan kívánja megadni a visszaállított adatok egy bérlő hozzáférést kell. Azt mutatja be a visszaállítási mintát szolgálja ki. Általában a régi adatok csak olvasási hozzáférést, és tartsa meg a visszaállított adatbázis számára meghatározott ideig. A példában a visszaállított bérlői bejegyzés után törölhető végzett a futtatásával a _eltávolítása vissza bérlői_ forgatókönyv.
+A visszaállított bérlőjéhez egy további bérlői, saját eseményeket alkalmazással is közzéteheti valószínű, hogy hogyan adja meg a visszaállított adatok bérlői hozzáférést lehet. A visszaállítási minta bemutatására szolgál. Általában csak olvasható hozzáférést biztosít a régi adatok, és a visszaállított adatbázis megőrzése egy adott időszakban. A mintában a visszaállított bérlői bejegyzés után törölheti a futó végzett a _távolítsa el a bérlő visszaállítása_ forgatókönyv.
 
-1. Állítsa be **$DemoScenario** = **4**, *eltávolítása vissza bérlői*.
-2. A parancsfájl futtatásához nyomja le az F5 billentyűt.
-3. A *ContosoConcertHall\_régi* bejegyzés törlődik a katalógusból. Zárja be az események lapról ennél a bérlőnél a böngészőben.
+1. Állítsa be **$DemoScenario** = **4**, *távolítsa el a bérlő visszaállítása*.
+2. A szkript futtatásához nyomja le az F5.
+3. A *ContosoConcertHall\_régi* bejegyzés törlődik a katalógusból. Zárja be az események lapot a böngészőben a bérlőhöz.
 
 
-## <a name="restore-a-tenant-in-place-replacing-the-existing-tenant-database"></a>A bérlő helyen, a mag cseréje a meglévő bérlő adatbázis visszaállítása
+## <a name="restore-a-tenant-in-place-replacing-the-existing-tenant-database"></a>Egy bérlő helyen, és cserélje le a meglévő bérlői adatbázis visszaállítása
 
-Ebben a gyakorlatban a Contoso energiaoptimalizálást egyszerre Hall bérlő visszaállítása egy pont előtti az esemény törölve lett. A *visszaállítási-TenantInPlace* parancsfájl egy bérlő adatbázis visszaállítása egy új adatbázist, és törli az eredeti. Súlyos adatsérülés helyreállítani a visszaállítási zárolás olyan környezethez a legalkalmasabb, és a bérlői lehet jelentős adatvesztés befogadásához.
+Ebben a gyakorlatban a Contoso Concert Hall bérlő egy pontot állítja vissza az esemény törlése előtti. A *Restore-TenantInPlace* szkript visszaállít egy bérlői adatbázist egy új adatbázist, és törli az eredeti. A visszaállítási minta a legalkalmasabb, helyreállítás, az súlyos adatvesztést, és a bérlő előfordulhat, hogy jelentős adatvesztés alkalmazkodnia kell.
 
-1. A PowerShell ISE nyissa meg a **bemutató-RestoreTenant.ps1** fájlt.
+1. A PowerShell ISE-ben nyissa meg a **Demo-RestoreTenant.ps1** fájlt.
 2. Állítsa be **$DemoScenario** = **5**, *visszaállítási bérlői helyen*.
-3. A parancsfájl futtatásához nyomja le az F5 billentyűt.
+3. A szkript futtatásához nyomja le az F5.
 
-A parancsfájl a bérlő adatbázis visszaállítása a pont előtti az esemény törölve lett. A Contoso energiaoptimalizálást egyszerre Hall bérlő offline állapotú további frissítések megelőzése érdekében először vesz igénybe. Ezt követően egy párhuzamos adatbázis állítja vissza a visszaállítási pont létrehozása. A visszaállított adatbázis egy időbélyeg nevű győződjön meg arról, hogy az adatbázis neve nem ütközik a meglévő bérlő adatbázis nevét. Ezután a régi bérlői adatbázisa törlődik, és a visszaállított adatbázis átnevezése az eredeti adatbázis neve. Végezetül Contoso energiaoptimalizálást egyszerre Hall online állapotba a visszaállított adatbázis alkalmazás hozzá.
+A parancsfájl visszaállítja Önnek a bérlői adatbázis pontra, mielőtt az esemény törölve lett. Először a Contoso Concert Hall bérlő offline állapotú ahhoz, hogy tovább tart. Ezt követően párhuzamos létrehozott adatbázisok esetében a visszaállítási pontból történő helyreállításával. A visszaállított adatbázis nevű időbélyeg, hogy az adatbázis neve nem lehet azonos a meglévő bérlői adatbázis nevére. Ezután a régi bérlői adatbázis törlődik, és a rendszer átnevezi a visszaállított adatbázis az eredeti adatbázis neve. Végül Contoso Concert Hall online állapotúra a visszaállított adatbázisból az alkalmazás hozzáférésének engedélyezéséhez.
 
-Sikeresen visszaállította a az adatbázis pontra előtti az esemény törölve lett. Ha a **események** lap megnyitásakor, győződjön meg arról, hogy az utolsó esemény lett visszaállítva.
+Sikeresen visszaállította a az adatbázis egy időben előtt az eseményt törölték. Ha a **események** lap megnyitásakor, győződjön meg arról, hogy az utolsó esemény helyreállt.
 
-Az adatbázis helyreállítása után visszaállíthatja őket ismét érhető el az első teljes biztonsági mentés előtt egy másik 10 – 15 percet vesz igénybe. 
+Miután visszaállította az adatbázis, előtt érhető el az első teljes biztonsági mentés visszaállítása újra egy másik 10 – 15 percet vesz igénybe. 
 
 ## <a name="next-steps"></a>További lépések
 
@@ -135,13 +136,13 @@ Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
 
-> * Adatbázis helyreállítása egy párhuzamos adatbázisba (egymás mellett).
+> * Adatbázis visszaállítása egy párhuzamos adatbázisba (egymás mellett).
 > * Egy helyen adatbázis visszaállítása.
 
-Próbálja meg a [kezelése bérlői adatbázisséma](saas-tenancy-schema-management.md) oktatóanyag.
+Próbálja ki a [kezelés bérlői adatbázis-séma](saas-tenancy-schema-management.md) oktatóanyag.
 
 ## <a name="additional-resources"></a>További források
 
-* [További oktatóprogramot kínál, amelyek a Wingtip SaaS-alkalmazás létrehozása](saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials)
-* [Az Azure SQL Database üzletmenet áttekintése](sql-database-business-continuity.md)
-* [További tudnivalók az SQL-adatbázis biztonsági mentése](sql-database-automated-backups.md)
+* [A Wingtip SaaS-alkalmazás létrehozásához, további oktatóanyagok](saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials)
+* [Az Azure SQL Database üzletmenet-folytonossági funkcióinak áttekintése](sql-database-business-continuity.md)
+* [Ismerje meg az SQL-adatbázisok biztonsági mentése](sql-database-automated-backups.md)

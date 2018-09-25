@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 02/16/2017
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f4f6a40fde23ee70391c5057762f17ce1eb44123
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 0ffcf483b2852ec87c263573a97b4508d5b5d39c
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38561128"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46997471"
 ---
 # <a name="configure-private-ip-addresses-for-a-virtual-machine-using-the-azure-cli"></a>Az Azure CLI használatával virtuális gép magánhálózati IP-címek konfigurálása
 
@@ -42,13 +42,13 @@ Ez a cikk a Resource Manager-alapú üzemi modellt ismerteti. Emellett [kezelés
 
 Nevű virtuális gép létrehozása *DNS01* a a *előtérbeli* nevű virtuális hálózat alhálózatának *TestVNet* egy statikus magánhálózati IP-címét *192.168.1.101*, teljes az alábbi lépéseket:
 
-1. Ha még nem még, telepítése és konfigurálása a legújabb [Azure CLI 2.0](/cli/azure/install-az-cli2) , és jelentkezzen be az Azure-fiók használatával [az bejelentkezési](/cli/azure/reference-index#az_login). 
+1. Ha még nem még, telepítése és konfigurálása a legújabb [Azure CLI-vel](/cli/azure/install-azure-cli) , és jelentkezzen be az Azure-fiók használatával [az bejelentkezési](/cli/azure/reference-index#az_login).
 
 2. Hozzon létre egy nyilvános IP-címet a virtuális Gépet a [az network public-ip létrehozása](/cli/azure/network/public-ip#az_network_public_ip_create) parancsot. A kimenet után látható lista ismerteti a használt paramétereket.
 
     > [!NOTE]
     > Azt szeretné, vagy kell használnia az argumentumok a jelen eltérő értékeket, és azt követő lépéseit, attól függően, hogy a környezetben.
-   
+
     ```azurecli
     az network public-ip create \
     --name TestPIP \
@@ -58,7 +58,7 @@ Nevű virtuális gép létrehozása *DNS01* a a *előtérbeli* nevű virtuális 
     ```
 
     Várt kimenet:
-   
+
    ```json
    {
         "publicIp": {

@@ -9,12 +9,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 9/6/2018
 ms.author: victorh
-ms.openlocfilehash: e180f0912bdb9145f3d36492fb9bcdcb551037f0
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: 56c66418b9f47e0ae0d345cd6e8a7d3ef2914b82
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44022916"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46986676"
 ---
 # <a name="frequently-asked-questions-for-application-gateway"></a>Az Application Gateway gyakori kérdések
 
@@ -360,6 +360,12 @@ Auditnaplók az Application Gateway számára érhetők el. Kattintson a portál
 **Q. Beállíthatom a riasztásokat az Application Gateway?**
 
 Igen, az Application Gateway támogatja a riasztások, értesítések metrikák ki vannak konfigurálva. Az Application Gateway jelenleg rendelkezik egy "átviteli", amely konfigurálható a metrika riasztásra. További információ a riasztásokkal kapcsolatban, látogasson el [riasztási értesítések fogadása](../monitoring-and-diagnostics/insights-receive-alert-notifications.md).
+
+**Q. Hogyan elemzi a forgalom statisztikák az Application Gateway?**
+
+Megtekintheti és keresztül mechanizmusokkal, mint például az Azure Log Analytics, az Excel, a Power BI stb számos hozzáférés-naplók elemzése.
+
+A Resource Manager-sablon, amely telepíti és futtatja a népszerű Microsoft közzétette is [GoAccess](https://goaccess.io/) analyzer keresse meg a Application Gateway-hozzáférési naplók. GoAccess értékes olyan HTTP-forgalom statisztikáit, például egyedi látogatóinak, a kért fájlokat, a gazdagépek, a operációs rendszerek, a böngészők, HTTP-állapotkódok és egyéb biztosít. További részletekért tekintse meg a [a Resource Manager-sablon mappája a Githubon található információs fájlt](https://aka.ms/appgwgoaccessreadme).
 
 **Q. Háttérkiszolgáló állapotadatainak adja vissza a állapota ismeretlen, Mi ez az állapot okozza?**
 

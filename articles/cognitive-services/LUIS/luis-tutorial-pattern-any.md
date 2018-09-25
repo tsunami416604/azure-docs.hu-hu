@@ -4,20 +4,20 @@ titleSuffix: Azure Cognitive Services
 description: Használja a pattern.any entitás adatok kinyerését utterances ahol megcímkézzen helyes formátumú, és ahol az adatok végéig lehet, hogy könnyen keverendő össze a az utterance (kifejezés), a fennmaradó szavakat.
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
 ms.technology: language-understanding
 ms.topic: article
 ms.date: 09/09/2018
 ms.author: diberry
-ms.openlocfilehash: dce75710137f4d4160cb2f55f856066c7c93ac78
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.openlocfilehash: a5b964877f1c089015812abdf365b22c57267bb0
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45628983"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47031370"
 ---
-# <a name="tutorial-5-extract-free-form-data"></a>Oktatóanyag: 5. Szabad formátumú adatokat nyerhet ki
+# <a name="tutorial-5-extract-free-form-data"></a>Oktatóanyag: 5. Szabad formátumú adatok kinyerése
 
 Ebben az oktatóanyagban a pattern.any entitás használatával adatok kinyerése kimondott szöveg, amelyben megcímkézzen helyes formátumú, és ahol az adatok végéig lehet, hogy könnyen keverendő össze a az utterance (kifejezés), a fennmaradó szavakat. 
 

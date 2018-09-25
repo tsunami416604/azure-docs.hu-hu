@@ -2,21 +2,22 @@
 title: Azure Active Directory-hitelesítés – az SQL konfigurálása |} A Microsoft Docs
 description: Ismerje meg, hogyan csatlakozhat az SQL Database felügyelt példány és az SQL Data warehouse-bA az Azure Active Directory-hitelesítés – az Azure AD konfigurálása után.
 services: sql-database
-author: GithubMirek
-manager: craigg
 ms.service: sql-database
-ms.prod_service: sql-database, sql-data-warehouse
-ms.custom: security
+ms.subservice: security
+ms.custom: data warehouse
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 03/07/2018
+author: GithubMirek
 ms.author: mireks
-ms.reviewer: vanto
-ms.openlocfilehash: f04846275fbad1673a00d820e8b44adc402b0242
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.reviewer: vanto, carlrab
+manager: craigg
+ms.date: 09/20/2018
+ms.openlocfilehash: efec5b3d8ac2ec3f757d06e88df65fe5f50aae17
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46294203"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47064305"
 ---
 # <a name="configure-and-manage-azure-active-directory-authentication-with-sql-database-managed-instance-or-sql-data-warehouse"></a>Konfigurálhatja és kezelheti az Azure Active Directory-hitelesítés az SQL Database felügyelt példányába vagy az SQL Data warehouse-bA
 
@@ -195,10 +196,10 @@ Azure Active Directory-rendszergazda a REST API-k használatával is kiépíthet
 Azure AD-rendszergazdát a következő CLI-parancsok meghívásával is kiépíthetők:
 | Parancs | Leírás |
 | --- | --- |
-|[az sql server-ad-rendszergazda létrehozása](https://docs.microsoft.com/cli/azure/sql/server/ad-admin#az_sql_server_ad_admin_create) |Az Azure Active Directory-rendszergazda, az Azure SQL server- vagy Azure SQL Data Warehouse kiépítése. (Kell lennie az aktuális előfizetésben.) |
-|[az sql server ad-rendszergazda törlése](https://docs.microsoft.com/cli/azure/sql/server/ad-admin#az_sql_server_ad_admin_delete) |Eltávolítja az Azure Active Directory-rendszergazda, az Azure SQL server- vagy Azure SQL Data warehouse-bA. |
-|[az sql server ad-rendszergazdák listájának](https://docs.microsoft.com/cli/azure/sql/server/ad-admin#az_sql_server_ad_admin_list) |Az Azure SQL-kiszolgáló vagy az Azure SQL Data Warehouse jelenleg konfigurált Azure Active Directory-rendszergazda adatait adja vissza. |
-|[az sql server ad-rendszergazda frissítése](https://docs.microsoft.com/cli/azure/sql/server/ad-admin#az_sql_server_ad_admin_update) |Frissíti egy Azure SQL-kiszolgáló vagy az Azure SQL Data Warehouse számára az Active Directory-rendszergazda. |
+|[az sql server-ad-rendszergazda létrehozása](https://docs.microsoft.com/cli/azure/sql/server/ad-admin#az-sql-server-ad-admin-create) |Az Azure Active Directory-rendszergazda, az Azure SQL server- vagy Azure SQL Data Warehouse kiépítése. (Kell lennie az aktuális előfizetésben.) |
+|[az sql server ad-rendszergazda törlése](https://docs.microsoft.com/cli/azure/sql/server/ad-admin#az-sql-server-ad-admin-delete) |Eltávolítja az Azure Active Directory-rendszergazda, az Azure SQL server- vagy Azure SQL Data warehouse-bA. |
+|[az sql server ad-rendszergazdák listájának](https://docs.microsoft.com/cli/azure/sql/server/ad-admin#az-sql-server-ad-admin-list) |Az Azure SQL-kiszolgáló vagy az Azure SQL Data Warehouse jelenleg konfigurált Azure Active Directory-rendszergazda adatait adja vissza. |
+|[az sql server ad-rendszergazda frissítése](https://docs.microsoft.com/cli/azure/sql/server/ad-admin#az-sql-server-ad-admin-update) |Frissíti egy Azure SQL-kiszolgáló vagy az Azure SQL Data Warehouse számára az Active Directory-rendszergazda. |
 
 CLI-parancsokkal kapcsolatos további információkért lásd: [SQL - az sql](https://docs.microsoft.com/cli/azure/sql/server).  
 

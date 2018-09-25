@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/30/2018
 ms.author: jasonh
-ms.openlocfilehash: cb2ca9ac3be0034f5a90add58249a2c2043975d0
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: ee97d2005752c9e0cd40de238d1f4a946bb9ee3d
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43094084"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46948417"
 ---
 # <a name="migrate-from-a-windows-based-hdinsight-cluster-to-a-linux-based-cluster"></a>Windows-alapú HDInsight-fürtök áttelepítése Linux-alapú fürtre
 
@@ -97,7 +97,7 @@ Azt is megteheti, előfordulhat, hogy szeretné használni a `Start-AzureStorage
 
 ## <a name="client-side-technologies"></a>Ügyféloldali technológiák
 
-Ügyféloldali technológiák, például [Azure PowerShell-parancsmagok](/powershell/azureps-cmdlets-docs), [Azure CLI-vel](../cli-install-nodejs.md), vagy a [.NET SDK a Hadoophoz](https://hadoopsdk.codeplex.com/) Linux-alapú fürtök működni. Ezek a technológiák válik a REST API-k, amelyek azonosak mindkét fürt operációs rendszerének típusa.
+Ügyféloldali technológiák, például [Azure PowerShell-parancsmagok](/powershell/azureps-cmdlets-docs), [Azure klasszikus parancssori felület](../cli-install-nodejs.md), vagy a [.NET SDK a Hadoophoz](https://hadoopsdk.codeplex.com/) Linux-alapú fürtök működni. Ezek a technológiák válik a REST API-k, amelyek azonosak mindkét fürt operációs rendszerének típusa.
 
 ## <a name="server-side-technologies"></a>Kiszolgálóoldali technológiák
 
@@ -106,7 +106,7 @@ A következő tábla áttelepítése kiszolgálóoldali összetevőivel, amelyek
 | Ha ezt a technológiát használ... | Ez a művelet eltarthat... |
 | --- | --- |
 | **PowerShell** (kiszolgálóoldali parancsprogramok, beleértve a fürt létrehozása során használt Szkriptműveletek) |Újraírási, Bash-szkriptek. Szkriptműveletek, lásd: [testreszabása Linux-alapú HDInsight parancsfájlműveletekkel](hdinsight-hadoop-customize-cluster-linux.md) és [parancsfájlművelet-alapú fejlesztés a Linux-alapú HDInsight](hdinsight-hadoop-script-actions-linux.md). |
-| **Az Azure CLI** (kiszolgálóoldali parancsprogramokat) |Az Azure CLI a Linux rendszeren érhető el, amíg azt nem olyan előre telepített a HDInsight-fürt átjárócsomópontjaiból a. Az Azure CLI telepítésével kapcsolatos további információkért lásd: [Azure CLI 2.0 használatának első lépései](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli). |
+| **Az Azure klasszikus parancssori felület** (kiszolgálóoldali parancsprogramokat) |A klasszikus Azure-CLI a Linux rendszeren érhető el, amíg azt nem olyan előre telepített a HDInsight-fürt átjárócsomópontjaiból a. A klasszikus Azure-CLI telepítésével kapcsolatos további információkért lásd: [klasszikus Azure-CLI használatának első lépései](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli). |
 | **.NET-összetevők** |Linux-alapú HDInsight segítségével a támogatott .NET [Mono](https://mono-project.com). További információkért lásd: [át .NET – megoldások a Linux-alapú HDInsight](hdinsight-hadoop-migrate-dotnet-to-linux.md). |
 | **A Win32-összetevők és egyéb csak Windows technológiák** |Útmutatás az összetevő vagy technológiai függ. Előfordulhat, hogy egy olyanra, amely kompatibilis a Linux találja. Ha nem, ha egy másik megoldás, vagy ha újraírási ezt az összetevőt. |
 

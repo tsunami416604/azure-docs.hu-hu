@@ -1,6 +1,6 @@
 ---
-title: A szolgáltatás paraméterei PostgreSQL Azure-adatbázis konfigurálása
-description: Ez a cikk ismerteti a paramétereket az Azure-adatbázis konfigurálása az Azure CLI parancssorból PostgreSQL.
+title: A szolgáltatás paramétereinek konfigurálása az Azure Database for postgresql-hez
+description: Ez a cikk ismerteti a szolgáltatás paramétereinek konfigurálása az Azure Database for postgresql-hez az Azure CLI parancssori használatával.
 services: postgresql
 author: rachel-msft
 ms.author: raagyema
@@ -10,47 +10,47 @@ ms.service: postgresql
 ms.devlang: azure-cli
 ms.topic: article
 ms.date: 02/28/2018
-ms.openlocfilehash: df32578c92b1973568c9b811cb7f9e9db067915f
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: 5520c08d2bf5dba85ece1de0bca7329286625911
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2018
-ms.locfileid: "29691393"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46968050"
 ---
-# <a name="customize-server-configuration-parameters-using-azure-cli"></a>Testre szabhatja a kiszolgáló konfigurációs paraméterek Azure parancssori felület használatával
-Listában, megjelenítése, és frissíti a parancssori felület (Azure CLI) használatával Azure PostgreSQL-kiszolgáló konfigurációs paramétereket. Egy részhalmazát motor konfigurációk kiszolgálói szinten van közzétéve, és módosíthatja. 
+# <a name="customize-server-configuration-parameters-using-azure-cli"></a>Azure CLI-vel a kiszolgáló konfigurációs paramétereinek testreszabása
+Lista, megjelenítése és a parancssori felület (Azure CLI) használatával egy Azure PostgreSQL-kiszolgáló konfigurációs paramétereinek frissítése. Egy részhalmazát motor konfigurációk kiszolgálói szinten érhető el, és módosíthatók. 
 
 ## <a name="prerequisites"></a>Előfeltételek
-Ez az útmutató Útmutató lépéseit, az alábbiak szükségesek:
-- Hozzon létre egy PostgreSQL-kiszolgálóhoz tartozó Azure-adatbázis és adatbázis [PostgreSQL az Azure-adatbázis létrehozása](quickstart-create-server-database-azure-cli.md)
-- Telepítse [Azure CLI 2.0](/cli/azure/install-azure-cli) parancssori felület a gépen, vagy használja a [Azure Cloud rendszerhéj](../cloud-shell/overview.md) az Azure portálon, a böngésző használatával.
+Ez az útmutató lépéseinek, az alábbiak szükségesek:
+- Azure Database for PostgreSQL-kiszolgáló- és adatbázis létrehozása a következő [hozzon létre egy Azure Database for postgresql-hez](quickstart-create-server-database-azure-cli.md)
+- Telepítés [Azure CLI-vel](/cli/azure/install-azure-cli) a gépen, vagy használja a parancssori felület a [Azure Cloud Shell](../cloud-shell/overview.md) a böngésző használata az Azure Portalon.
 
-## <a name="list-server-configuration-parameters-for-azure-database-for-postgresql-server"></a>Lista kiszolgáló konfigurációs paraméterek az Azure Database PostgreSQL-kiszolgáló
-Minden módosíthatóvá paraméter a kiszolgáló, az értékek listában, futtassa a [az postgres kiszolgálólista konfigurációs](/cli/azure/postgres/server/configuration#az_postgres_server_configuration_list) parancsot.
+## <a name="list-server-configuration-parameters-for-azure-database-for-postgresql-server"></a>Kiszolgáló konfigurációs paramétereinek listázása az Azure Database for PostgreSQL-kiszolgáló
+A kiszolgáló és az értéküket az összes módosíthatóvá paraméter listázásához, futtassa a [az postgres server configuration list](/cli/azure/postgres/server/configuration#az_postgres_server_configuration_list) parancsot.
 
-A kiszolgáló konfigurációs paraméterek, a kiszolgáló listázhatja **mydemoserver.postgres.database.azure.com** erőforráscsoportba tartozó **myresourcegroup**.
+A kiszolgáló a kiszolgáló konfigurációs paramétereinek listázhatja **mydemoserver.postgres.database.azure.com** erőforráscsoportba tartozó **myresourcegroup**.
 ```azurecli-interactive
 az postgres server configuration list --resource-group myresourcegroup --server mydemoserver
 ```
-## <a name="show-server-configuration-parameter-details"></a>Kiszolgálókonfiguráció paraméter részletek megjelenítése
-Egy adott konfigurációs paraméter a kiszolgáló részletei láthatók, futtassa a [az postgres kiszolgáló konfigurációs megjelenítése](/cli/azure/postgres/server/configuration#az_postgres_server_configuration_show) parancsot.
+## <a name="show-server-configuration-parameter-details"></a>Kiszolgáló konfigurációs paraméter részletek megjelenítése
+Egy adott konfigurációs paraméter a kiszolgáló részleteinek megjelenítéséhez, futtassa a [az postgres server configuration show](/cli/azure/postgres/server/configuration#az_postgres_server_configuration_show) parancsot.
 
-Ez a példa bemutatja részleteit a **napló\_min\_üzenetek** kiszolgáló konfigurációs paraméter kiszolgáló **mydemoserver.postgres.database.azure.com** erőforráscsoportba tartozó **myresourcegroup.**
+Ebben a példában a részleteket jeleníti meg a **log\_min\_üzenetek** kiszolgáló konfigurációs paraméter kiszolgáló **mydemoserver.postgres.database.azure.com** erőforráscsoport alatt **myresourcegroup.**
 ```azurecli-interactive
 az postgres server configuration show --name log_min_messages --resource-group myresourcegroup --server mydemoserver
 ```
-## <a name="modify-server-configuration-parameter-value"></a>Módosítsa a kiszolgáló konfigurációs paraméter értéke
-Módosíthatja egy bizonyos kiszolgáló konfigurációs paraméter, amely frissíti az alapul szolgáló konfigurációs értéket a PostgreSQL-kiszolgáló motor értékét is. Frissítse a konfigurációt, használja a [az postgres server configuration set](/cli/azure/postgres/server/configuration#az_postgres_server_configuration_set) parancsot. 
+## <a name="modify-server-configuration-parameter-value"></a>Kiszolgáló konfigurációs paraméter értékének módosítása
+Egy bizonyos kiszolgáló konfigurációs paraméter értékét, amely frissíti az alapul szolgáló konfigurációs értéket a PostgreSQL-kiszolgáló motor módosíthatja is. Frissítse a konfigurációt, használja a [az postgres server configuration set](/cli/azure/postgres/server/configuration#az_postgres_server_configuration_set) parancsot. 
 
-Frissítése az **napló\_min\_üzenetek** kiszolgáló konfigurációs paraméter kiszolgáló **mydemoserver.postgres.database.azure.com** erőforráscsoportba tartozó  **contoso.com.**
+Frissítése az **log\_min\_üzenetek** kiszolgáló konfigurációs paraméter kiszolgáló **mydemoserver.postgres.database.azure.com** erőforráscsoportba tartozó  **myresourcegroup.**
 ```azurecli-interactive
 az postgres server configuration set --name log_min_messages --resource-group myresourcegroup --server mydemoserver --value INFO
 ```
-Ha szeretne egy konfigurációs paraméter értékének alaphelyzetbe állítása, egyszerűen választja hagyja ki az opcionális `--value` paraméter, és a szolgáltatás az alapértelmezett érték vonatkozik. A fenti példában az alábbihoz hasonlóan fog kinézni:
+Ha szeretne egy konfigurációs paraméter értékének alaphelyzetbe állítása, egyszerűen választhatja hagyja ki a nem kötelező `--value` paraméterhez, és a szolgáltatás az alapértelmezett érték vonatkozik. A fenti példában, jelenne meg:
 ```azurecli-interactive
 az postgres server configuration set --name log_min_messages --resource-group myresourcegroup --server mydemoserver
 ```
-Visszaállítja a **napló\_min\_üzenetek** konfigurációját, és az alapértelmezett érték **figyelmeztetés**. További információ a kiszolgáló konfigurációját és a megengedett értékek dokumentációja PostgreSQL [kiszolgálókonfiguráció](https://www.postgresql.org/docs/9.6/static/runtime-config.html).
+A parancs alaphelyzetbe állítja a **log\_min\_üzenetek** konfigurációját, és az alapértelmezett érték **figyelmeztetés**. További információ a konfigurációs kiszolgáló és a megengedett értékek PostgreSQL a dokumentációjában talál [kiszolgálókonfiguráció](https://www.postgresql.org/docs/9.6/static/runtime-config.html).
 
 ## <a name="next-steps"></a>További lépések
-- Konfigurálja, és hozzáférést kiszolgálónaplókban, [Server PostgreSQL az Azure Database-naplók](concepts-server-logs.md)
+- Kiszolgálói naplók elérése és konfigurálása: [, Azure Database for PostgreSQL Server-naplók](concepts-server-logs.md)

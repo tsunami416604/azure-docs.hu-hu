@@ -10,18 +10,18 @@ ms.service: mysql
 ms.devlang: azure-cli
 ms.topic: article
 ms.date: 02/28/2018
-ms.openlocfilehash: e6bb06d8ae46afbb946754113e1d81a90e3ddc57
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 45df284d29ea2d5eb799697b22deeab03cb66622
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39423691"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46956660"
 ---
 # <a name="create-and-manage-azure-database-for-mysql-firewall-rules-by-using-the-azure-cli"></a>Hozzon létre és kezelhető az Azure Database for MySQL tűzfalszabályok az Azure CLI-vel
 Kiszolgálószintű tűzfalszabályok lehetővé teszik a rendszergazdák számára, hogy hozzáférésének kezelése az Azure Database for MySQL-kiszolgáló megadott IP-címet vagy egy IP-címtartományt. Kényelmes megoldás az Azure parancssori felület parancsait használva, létrehozhat, frissítése, törlése, a listában, és kezelheti a kiszolgálót a tűzfalszabályok megjelenítése. Azure Database for MySQL-tűzfalak áttekintése, lásd: [, Azure Database for MySQL-kiszolgáló tűzfalszabályait](./concepts-firewall-rules.md)
 
 ## <a name="prerequisites"></a>Előfeltételek
-* [Azure CLI 2.0 telepítése](https://docs.microsoft.com/cli/azure/install-azure-cli).
+* [Az Azure CLI telepítése](https://docs.microsoft.com/cli/azure/install-azure-cli).
 * Egy [, Azure Database for MySQL-kiszolgáló és adatbázis](quickstart-create-mysql-server-database-using-azure-cli.md).
 
 ## <a name="firewall-rule-commands"></a>Tűzfal szabály parancsok:

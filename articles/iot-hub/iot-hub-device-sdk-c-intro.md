@@ -9,12 +9,12 @@ ms.devlang: c
 ms.topic: conceptual
 ms.date: 08/25/2017
 ms.author: yizhon
-ms.openlocfilehash: 4f8ad67fafa20fd9adce62e8beb619999203ef62
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: db9c22acfba0f6f1781348b36a1d253a515cc063
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39346661"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46977272"
 ---
 # <a name="azure-iot-device-sdk-for-c"></a>Az Azure IoT eszközoldali SDK-t a c nyelvhez készült
 
@@ -71,7 +71,7 @@ Nincsenek számos nyílt forráskódú eszközöket, amelyek segítségével kez
 
 * Egy Windows-alkalmazás nevű [device explorer](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer).
 * A platformok közötti átjárhatóságról a Visual Studio Code bővítmény nevű [Azure IoT-eszközkészlet](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit).
-* Olyan többplatformos Python CLI eszköz nevű [az IoT-bővítmény, az Azure CLI 2.0](https://github.com/Azure/azure-iot-cli-extension).
+* Egy Python platformfüggetlen CLI nevű [az IoT-bővítmény, az Azure CLI-vel](https://github.com/Azure/azure-iot-cli-extension).
 
 Ebben az oktatóanyagban a grafikus *device explorer* eszközt. Használhatja a *a VS Code Azure IoT-eszközkészlet bővítmény* Ha fejleszt, a VS Code-ban. Is használhatja a *az IoT-bővítmény, az Azure CLI 2.0* eszközt, ha szeretné használni a CLI eszközt.
 

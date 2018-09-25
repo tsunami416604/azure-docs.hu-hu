@@ -12,14 +12,14 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/15/2018
+ms.date: 09/13/2018
 ms.author: magattus
-ms.openlocfilehash: c3a20bd4fa1cccdca7cba0de52620f09fe01abc5
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: 2468462170f970cd597dd1296417d5b93a88c2ec
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42056674"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46997273"
 ---
 # <a name="improve-performance-by-compressing-files-in-azure-cdn"></a>Teljesítmény javítása a fájlok tömörítésével az Azure CDN-ben
 Fájlok tömörítési a egyszerű és hatékony módszer fájl átviteli sebességének növelése és a egy fájl méretének csökkentésével, a kiszolgálóról továbbítás előtt oldal betöltési teljesítmény érdekében. Fájlok tömörítési adatforgalmi költségek csökkentése és a egy rugalmasabb ügyfélkapcsolatok kialakítását élményt biztosíthat a felhasználóknak.
@@ -102,13 +102,14 @@ A standard és prémium szintű CDN-csomag biztosítja a tömörítés, de a fel
 
 ### <a name="azure-cdn-standard-from-microsoft-profiles"></a>Az Azure CDN Standard a Microsoft-profilok közül
 
-A **Azure CDN Standard a Microsoft** profilok fájlok kerülnek a tömörítést. Azonban kell lennie egy fájl a MIME-típust, amelynek már [tömörítési konfigurált](#enabling-compression).
+A **Azure CDN Standard a Microsoft** profilok, csak a megfelelő fájlok tömörítve vannak. Jogosult a tömörítést, egy fájlt kell:-óta MIME típusú [tömörítési konfigurált](#enabling-compression).
+-Lehet 1 KB-nál nagyobb – 8 MB-nál kisebb lehet
 
 Ezek a profilok az alábbi tömörítési kódolásokat támogatják:
 - a gzip (GNU zip)
 - brotli 
  
-Ha a kérés egynél több tömörítési típus támogatja, akkor ezeket a tömörítési típusok élveznek brotli tömörítést.
+Ha a kérés támogatja egynél több tömörítési típus, brotli tömörítési élvez elsőbbséget.
 
 Amikor egy kérelem egy eszköz tömörítése a gzip és a kérés eredményét adja meg a gyorsítótár-tévesztés, az Azure CDN az eszköz tömörítése a gzip közvetlenül a POP-kiszolgálón hajt végre. A tömörített fájlt a későbbiekben a gyorsítótár szolgáltatja.
 

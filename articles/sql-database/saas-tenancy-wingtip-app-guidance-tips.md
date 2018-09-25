@@ -1,70 +1,72 @@
 ---
-title: Útmutatás például SQL-adatbázis több-bérlős alkalmazás - Wingtip SaaS |} Microsoft Docs
-description: Lépéseket és útmutatást biztosít telepítéséhez és futtatásához a több-bérlős mintaalkalmazás, amely az Azure SQL Database, a Wingtip jegyek SaaS példa használja.
-keywords: sql database-oktatóanyag
+title: Útmutató az SQL Database több-bérlős alkalmazás példa – a Wingtip SaaS |} A Microsoft Docs
+description: Útmutató és lépéseket biztosít telepítéséhez és futtatásához a több-bérlős mintaalkalmazás, amely az Azure SQL Database, a Wingtip Tickets SaaS-példa.
 services: sql-database
-author: MightyPen
-manager: craigg
 ms.service: sql-database
-ms.custom: scale out apps
+ms.subservice: scenario
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 04/01/2018
+author: MightyPen
 ms.author: genemi
-ms.openlocfilehash: 6c352298c701c827cd01c0ed7f427b7ed6015e29
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.reviewer: ''
+manager: craigg
+ms.date: 04/01/2018
+ms.openlocfilehash: da8814cfd8fca8da061c27d9c5b69af15bff5007
+ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34646677"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47054404"
 ---
-# <a name="general-guidance-for-working-with-wingtip-tickets-sample-saas-apps"></a>Wingtip jegyek való munkához általános útmutatás mintavételhez SaaS-alkalmazásokhoz
+# <a name="general-guidance-for-working-with-wingtip-tickets-sample-saas-apps"></a>A Wingtip Tickets használatának általános útmutatást minta SaaS-alkalmazások
 
-Ez a cikk általános útmutatást nyújt a futó Wingtip jegyek minta SaaS-alkalmazásokhoz Azure SQL Database szolgáltatást használna. 
+Ez a cikk a Wingtip Tickets minta SaaS-alkalmazásokhoz Azure SQL Database használata futó általános útmutatást tartalmaz. 
 
-## <a name="download-and-unblock-the-wingtip-tickets-saas-scripts"></a>Töltse le és a Wingtip jegyek Szolgáltatottszoftver-parancsfájlok feloldása
+## <a name="download-and-unblock-the-wingtip-tickets-saas-scripts"></a>Töltse le és a Wingtip Tickets SaaS-parancsfájlok feloldása
 
-Ha egy zip-fájl külső forrásból letöltött és kibontott végrehajtható tartalma (parancsfájlok, DLL-ek) blokkolhatja Windows. Ha a parancsfájlok kibontása zip-fájl, **tiltásának feloldása a .zip fájl kibontása előtt az alábbi lépésekkel**. Ez biztosítja, hogy a parancsfájlok futtatásának engedélyezése.
+Végrehajtható tartalom (szkriptek, DLL-ek) Windows előfordulhat, hogy blokkolja, amikor a zip-fájlokat egy külső forrásból letöltődnek és ki kell olvasni. Ha a parancsfájlok kibontása zip-fájlból **tiltásának feloldása a .zip fájl beolvasása előtt az alábbi lépésekkel**. Ez biztosítja, hogy a parancsfájlok futtatását engedélyezi.
 
-1. Keresse meg az adatbázis bérleti szabály felfedezése kívánja a Wingtip jegyek SaaS GitHub-tárház: 
+1. Keresse meg a Wingtip Tickets SaaS GitHub-adattárat a az adatbázis bérlős minta kívánt felfedezése: 
     - [WingtipTicketsSaaS-StandaloneApp](https://github.com/Microsoft/WingtipTicketsSaaS-StandaloneApp)
     - [WingtipTicketsSaaS-DbPerTenant](https://github.com/Microsoft/WingtipTicketsSaaS-DbPerTenant)
     - [WingtipTicketsSaaS-MultiTenantDb](https://github.com/Microsoft/WingtipTicketsSaaS-MultiTenantDb)
-2. Kattintson a **Klónozás vagy letöltési**.
-3. Kattintson a **zip letöltése** , és mentse a fájlt.
-4. Kattintson a jobb gombbal a zip-fájl, és válassza ki **tulajdonságok**. A zip-fájl nevét a tárház nevének felel meg. (például) _WingtipTicketsSaaS-DbPerTenant-master.zip_)
-5. Az a **általános** lapon jelölje be **Unblock**.
+2. Kattintson a **Klónozás vagy letöltés**.
+3. Kattintson a **zip letöltése** és mentse a fájlt.
+4. Kattintson a jobb gombbal a zip-fájlt, és válassza ki **tulajdonságok**. A zip-fájl neve a tárház nevének felel meg. (például. _WingtipTicketsSaaS-DbPerTenant-master.zip_)
+5. Az a **általános** lapon jelölje be **feloldása**.
 6. Kattintson az **OK** gombra.
 7. Bontsa ki a fájlokat.
 
 Parancsfájlok a találhatók a *... \\Tanulási modulok* mappát.
 
 
-## <a name="working-with-the-wingtip-tickets-powershell-scripts"></a>A Wingtip jegyek PowerShell-parancsfájlok használata
+## <a name="working-with-the-wingtip-tickets-powershell-scripts"></a>A Wingtip Tickets PowerShell-parancsfájlok használata
 
-A legtöbbet hozhatja ki a minta alaposabban tanulmányozhatja a megadott parancsfájlok kell. Töréspontokat használja, és még hajtható végre, és vizsgálja meg, hogyan vannak megvalósítva a különböző Szolgáltatottszoftver-minták a parancsfájlok lépéseit. Könnyen végighaladhat a megadott parancsfájlok és a modulok legjobb megértéséhez, ajánlott használata a [PowerShell ISE](https://msdn.microsoft.com/powershell/scripting/core-powershell/ise/introducing-the-windows-powershell-ise).
+A legtöbbet hozhassa ki a minta a megadott szkriptek mélyedjen kell. Töréspontok használja, és elvégezhető a parancsfájlok, hajtsa végre, és vizsgálja meg, hogyan valósíthatók meg a különböző SaaS-minták. Egyszerűen elvégezhető a megadott szkriptek és modulok ajánlott megértéséhez, javasoljuk a [PowerShell ISE-ben](https://msdn.microsoft.com/powershell/scripting/core-powershell/ise/introducing-the-windows-powershell-ise).
 
 ### <a name="update-the-configuration-file-for-your-deployment"></a>A központi telepítés konfigurációs fájljának frissítése
 
-Szerkessze a **UserConfig.psm1** fájl központi telepítése során beállított erőforrás csoportot és felhasználót értékét:
+Szerkessze a **UserConfig.psm1** az erőforrás-csoport és felhasználó értéke üzembe helyezése során beállított fájlt:
 
-1. Nyissa meg a *PowerShell ISE* és betöltése... \\Tanulási modulok\\*UserConfig.psm1* 
-2. Frissítés *ResourceGroupName* és *neve* a központi telepítés (sorok 10-es és 11 csak) az adott értékkel.
-3. A módosítások mentése!
+1. Nyissa meg a *PowerShell ISE-ben* és betöltése... \\Tanulási modulok\\*UserConfig.psm1* 
+2. Frissítés *ResourceGroupName* és *neve* jellemző egyedi értékekkel (a 10-es és 11 csak vonalakat) az üzembe helyezéshez.
+3. A módosítások mentéséhez.
 
-Ezek az értékek beállítás itt egyszerűen révén nem minden parancsfájlban a központi telepítési tartományspecifikus értékeinek frissítéséhez.
+Az értékek beállításával itt egyszerűen révén nem, frissítse az összes parancsfájl-specifikus értékeket.
 
-### <a name="execute-the-scripts-by-pressing-f5"></a>A parancsfájlok végrehajtása az F5 billentyű lenyomásával
+### <a name="execute-the-scripts-by-pressing-f5"></a>Hajtsa végre a szkripteket az F5 billentyű lenyomásával
 
-Több parancsfájlok használata *$PSScriptRoot* navigáljon a mappákat, és *$PSScriptRoot* csak értékeli a parancsfájlok billentyűkombináció lenyomásával végrehajtásakor **F5**.  Kiemelése és futtató egy kijelölést (**F8**) is hibákat eredményez, így nyomja le az **F5** Ha a parancsfájlok futtatásához.
+Számos szkript használata *$PSScriptRoot* nyissa meg a mappákban és *$PSScriptRoot* csak akkor történik meg parancsfájlok lenyomásával végrehajtásakor **F5**.  Kiemelés, és a kijelöltek futtatása (**F8**) is hibákat eredményezhet, ezért nyomja le az **F5** amikor futtatja a parancsfájlokat.
 
 ### <a name="step-through-the-scripts-to-examine-the-implementation"></a>A megvalósítás vizsgálatához lépjen végig a szkripteken
 
-A legjobb módszer megértéséhez a parancsfájlok által számukra látni enged ezek lépésenkénti végrehajtás van. Tekintse meg a megadott **bemutató -** parancsfájlok, amelyek jelenleg egy könnyen kövesse az általános munkafolyamat. A **bemutató -** parancsfájlok szemlélteti a lépéseket minden feladatnak, így állítson be töréspontokat és elemezze szükséges mélyebb be az egyes hívások tekintse meg a különböző Szolgáltatottszoftver-minták megvalósítási részleteit.
+A legjobb módja, tudni, hogy a parancsfájlok, vétel őket, hogy mit tesznek azt. Tekintse meg a benne foglalt **Demo -** parancsfájlok, amelyek könnyen hajtsa végre a munkafolyamathoz. A **Demo -** parancsfájlok megjelenítése bemutatják a feladat elvégzéséhez, hogy állítson be töréspontokat, és részletes lépéseit mélyebben az egyes hívásokat a különböző SaaS-minták megvalósítási részleteit megtekintheti.
 
-Tippek az fel, és lépjen az PowerShell-parancsfájlokkal:
+Tippek a böngészést és a PowerShell-parancsfájlok:
 
-- Nyissa meg **bemutató -** a PowerShell ISE parancsfájlok.
-- Hajtható végre, vagy folytassa a **F5** (használatával **F8** nem ajánlott, mert *$PSScriptRoot* nem kerül kiértékelésre beállításokat egy parancsfájl futtatásakor).
+- Nyissa meg **Demo -** szkripteket a PowerShell ISE-ben.
+- Hajtsa végre vagy folytassa **F5** (használatával **F8** használata nem javasolt, mert *$PSScriptRoot* nem kerül kiértékelésre, szkript kijelöléseinek futtatásakor).
 - Töréspontok elhelyezéséhez kattintson egy sorra, vagy válasszon ki egyet, és nyomja le az **F9** billentyűt.
 - Függvény- vagy szkripthívás átlépéséhez használja az **F10** billentyűt.
 - Függvény- vagy szkripthívásba az **F11** billentyűvel léphet.
@@ -73,20 +75,20 @@ Tippek az fel, és lépjen az PowerShell-parancsfájlokkal:
 
 ## <a name="explore-database-schema-and-execute-sql-queries-using-ssms"></a>Adatbázisséma vizsgálatát és SQL-lekérdezések végrehajtása SSMS használatával
 
-Használjon [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) csatlakozzanak, és keresse meg az alkalmazás-kiszolgálókat és adatbázisokat.
+Használat [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) csatlakozhat, és keresse meg az alkalmazás-kiszolgálókra és adatbázisokra.
 
-A központi telepítés kezdetben van a bérlők és a katalógus SQL adatbázis-kiszolgálókhoz való kapcsolódáshoz. A kiszolgálók elnevezési attól függ, hogy az adatbázis bérleti mintát (lásd lent rögzítésen). 
+Az üzembe helyezés kezdetben a bérlők és a katalógus SQL Database-kiszolgálókra való csatlakozáshoz rendelkezik. A kiszolgálók elnevezési attól függ, hogy az adatbázis bérlős minta (lásd alább a részletekért). 
 
-   - **Önálló alkalmazás:** kiszolgálók az egyes bérlők (például) *contosoconcerthall -&lt;felhasználói&gt;*  server) és *katalógus-sa -&lt;felhasználó&gt;*
-   - **Adatbázis bérlőnként:** *tenants1-dpt -&lt;felhasználói&gt;*  és *katalógus-dpt -&lt;felhasználói&gt;*  kiszolgálók
+   - **Önálló alkalmazás:** minden egyes bérlőhöz (például kiszolgálók *contosoconcerthall -&lt;felhasználói&gt;*  kiszolgáló) és *katalógus-sa -&lt;felhasználó&gt;*
+   - **Bérlőnkénti adatbázis:** *tenants1-dpt -&lt;felhasználói&gt;*  és *katalógus-dpt -&lt;felhasználói&gt;*  kiszolgálók
    - **Több-bérlős adatbázis:** *tenants1-mt -&lt;felhasználói&gt;*  és *katalógus-mt -&lt;felhasználói&gt;*  kiszolgálók
 
-Ahhoz, hogy a sikeres bemutató kapcsolatot, az összes kiszolgáló rendelkezik egy [tűzfalszabály](sql-database-firewall-configure.md) így minden IP-címen keresztül.
+Ahhoz, hogy egy sikeres bemutató kapcsolat, minden kiszolgáló rendelkezik egy [tűzfalszabály](sql-database-firewall-configure.md) lehetővé teszi az összes IP-címek használatával.
 
 
-1. Nyissa meg *SSMS* és a bérlők kapcsolódni. A kiszolgáló nevét az adatbázis bérleti mintát (lásd lent rögzítésen) kijelölt függ:
-    - **Önálló alkalmazás:** kiszolgálók az egyes bérlők számára (például) *contosoconcerthall -&lt;felhasználói&gt;. database.windows.net*) 
-    - **Adatbázis bérlőnként:** *tenants1-dpt -&lt;felhasználói&gt;. database.windows.net*
+1. Nyissa meg *SSMS* és a bérlők kapcsolódni. A kiszolgáló nevét a database bérlős minta (lásd lent bírálattal) kiválasztott függ:
+    - **Önálló alkalmazás:** kiszolgálók (például az egyes bérlők *contosoconcerthall -&lt;felhasználói&gt;. database.windows.net*) 
+    - **Bérlőnkénti adatbázis:** *tenants1-dpt -&lt;felhasználói&gt;. database.windows.net*
     - **Több-bérlős adatbázis:** *tenants1-mt -&lt;felhasználói&gt;. database.windows.net* 
 2. Kattintson a **Kapcsolódás** > **Adatbázismotor...** :
 
@@ -94,27 +96,27 @@ Ahhoz, hogy a sikeres bemutató kapcsolatot, az összes kiszolgáló rendelkezik
 
 3. Bemutató hitelesítő adatai: bejelentkezés = *fejlesztő*, jelszó =*P@ssword1*
 
-    Az alábbi képen azt mutatja be, a bejelentkezési adatait a következő a *bérlőnként adatbázis* mintát. 
-    ![Kapcsolat](media/saas-tenancy-wingtip-app-guidance-tips/tenants1-connect.png)
+    Az az alábbi képen láthatja a bejelentkezési adatait a következő a *bérlőnkénti adatbázis* mintát. 
+    ![kapcsolat](media/saas-tenancy-wingtip-app-guidance-tips/tenants1-connect.png)
     
    
 
-4. Ismételje meg a 2-3 és az alkalmazáskatalógus-kiszolgálóhoz (lásd lent adott kiszolgálók nevei a kijelölt adatbázis bérleti mintája alapján)
+4. Ismételje meg a 2-3, és csatlakozzon a katalóguskiszolgálón (lásd lent megadott kiszolgálók nevei a kiválasztott adatbázis-bérlős minta alapján)
     - **Önálló alkalmazás:** *katalógus-sa -&lt;felhasználói&gt;. database.windows.net*
-    - **Adatbázis bérlőnként:** *katalógus-dpt -&lt;felhasználói&gt;. database.windows.net*
+    - **Bérlőnkénti adatbázis:** *katalógus-dpt -&lt;felhasználói&gt;. database.windows.net*
     - **Több-bérlős adatbázis:** *katalógus-mt -&lt;felhasználói&gt;. database.windows.net*
 
 
-Sikeres csatlakozást követően megtekintheti az összes kiszolgálót. Az adatbázisok listája, a bérlők ellátta függően eltérőek lehetnek.
+Sikeres csatlakozás után megtekintheti az összes kiszolgálót. Az adatbázisok listája a bérlők kiépítése függően eltérő lehet.
 
-Az alábbi képen azt mutatja be, a bejelentkezés a *bérlőnként adatbázis* mintát.
+Az alábbi képen azt ismerteti, a bejelentkezés a *bérlőnkénti adatbázis* mintát.
 
 ![Object Explorer](media/saas-tenancy-wingtip-app-guidance-tips/object-explorer.png)
 
 
 
 ## <a name="next-steps"></a>További lépések
-- [A Wingtip jegyek SaaS önálló alkalmazás központi telepítése](saas-standaloneapp-get-started-deploy.md)
-- [Bérlői alkalmazásonként Wingtip jegyek SaaS adatbázis központi telepítése](saas-dbpertenant-get-started-deploy.md)
-- [A Wingtip jegyek SaaS több-bérlős adatbázis-alkalmazás központi telepítése](saas-multitenantdb-get-started-deploy.md)
+- [A Wingtip Tickets SaaS önálló alkalmazás üzembe helyezése](saas-standaloneapp-get-started-deploy.md)
+- [A Wingtip Tickets SaaS adatbázis bérlői alkalmazásonként üzembe helyezése](saas-dbpertenant-get-started-deploy.md)
+- [A Wingtip Tickets SaaS több-bérlős adatbázis üzembe helyezése](saas-multitenantdb-get-started-deploy.md)
 

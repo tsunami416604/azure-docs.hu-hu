@@ -1,6 +1,6 @@
 ---
 title: Hadoop-feladatok adatainak feltöltése a HDInsightba
-description: Ismerje meg, hogyan töltse fel, és a hozzáférési adatokat Hadoop-feladatokat a HDInsight az Azure CLI, Azure Storage Explorer, az Azure PowerShell, a Hadoop parancssor vagy Sqoop használatával.
+description: Ismerje meg, hogyan töltse fel, és a hozzáférési adatokat a klasszikus Azure CLI, Azure Storage Explorer, az Azure PowerShell, a Hadoop parancssor vagy Sqoop használatával HDInsight Hadoop-feladatok.
 keywords: etl hadoop, hadoop, hadoop-adatok betöltése az adatok beolvasása
 services: hdinsight
 author: jasonwhowell
@@ -10,12 +10,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 05/14/2018
-ms.openlocfilehash: 838444898500ce7127e1a9e999d0b5ee7b1e3687
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 44aaccee436011bd7d27bec87515fde0e898732e
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43051824"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46985979"
 ---
 # <a name="upload-data-for-hadoop-jobs-in-hdinsight"></a>Hadoop-feladatok adatainak feltöltése a HDInsightba
 
@@ -38,22 +38,22 @@ A Microsoft az Azure Storage használatához az alábbi segédprogramokat biztos
 
 | Eszköz | Linux | OS X | Windows |
 | --- |:---:|:---:|:---:|
-| [Az Azure parancssori felület][azurecli] |✔ |✔ |✔ |
+| [Az Azure klasszikus parancssori felület][azurecli] |✔ |✔ |✔ |
 | [Azure PowerShell-lel][azure-powershell] | | |✔ |
 | [Az AzCopy][azure-azcopy] |✔ | |✔ |
 | [Hadoop-parancs](#commandline) |✔ |✔ |✔ |
 
 > [!NOTE]
-> Bár az Azure CLI-vel, az Azure PowerShell és az AzCopy az összes használható Azure-on kívülről, a Hadoop-parancs érhető el csak a HDInsight-fürtön. Így a parancs csak a helyi fájlrendszerből adatok betöltése az Azure Storage-bA.
+> Míg a klasszikus Azure CLI, az Azure PowerShell-lel és az AzCopy az összes használható Azure-on kívülről, a Hadoop-parancs érhető el csak a HDInsight-fürtön. Így a parancs csak a helyi fájlrendszerből adatok betöltése az Azure Storage-bA.
 >
 >
 
-#### <a id="xplatcli"></a>Az Azure CLI
-Az Azure CLI-vel egy platformfüggetlen eszköz, amellyel az Azure-szolgáltatások kezelését. Használja az alábbi lépéseket az Azure Storage-ba való adatfeltöltést:
+#### <a id="xplatcli"></a>Az Azure klasszikus parancssori felület
+A klasszikus Azure-CLI egy platformfüggetlen eszköz, amellyel az Azure-szolgáltatások kezelését. Használja az alábbi lépéseket az Azure Storage-ba való adatfeltöltést:
 
-[!INCLUDE [use-latest-version](../../includes/hdinsight-use-latest-cli.md)]
+[!INCLUDE [classic-cli-warning](../../includes/requires-classic-cli.md)]
 
-1. [Telepítse és konfigurálja az Azure parancssori felület Mac, Linux és Windows](../cli-install-nodejs.md).
+1. [Telepítse és konfigurálja az Azure klasszikus parancssori felület Mac, Linux és Windows](../cli-install-nodejs.md).
 2. Nyisson meg egy parancssort, bash vagy más rendszerhéj, és használja a következő hitelesítéséhez az Azure-előfizetéshez.
 
     ```cli

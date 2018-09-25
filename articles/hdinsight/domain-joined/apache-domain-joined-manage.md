@@ -1,23 +1,23 @@
 ---
-title: Tartományhoz csatlakoztatott HDInsight-fürtök – Azure kezelése
-description: Ismerje meg, hogyan lehet tartományhoz csatlakoztatott HDInsight-fürtök kezelése
+title: Vállalati biztonsági Enterprise – Azure HDInsight-fürtök kezelése
+description: Ismerje meg, hogyan kezelheti a vállalati biztonsági csomag HDInsight-fürtöket.
 services: hdinsight
 ms.service: hdinsight
 author: omidm1
 ms.author: omidm
-ms.reviewer: jasonh
+ms.reviewer: mamccrea
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 04/17/2018
-ms.openlocfilehash: 494049cffe77e23c33528747e04bf96065fac2e2
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.date: 08/24/2018
+ms.openlocfilehash: 02a77ef9589a42a6f33087ba7e22efc3144a8f2c
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43051604"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46973558"
 ---
-# <a name="manage-domain-joined-hdinsight-clusters"></a>Tartományhoz csatlakoztatott HDInsight-fürtök kezelése
-Ismerje meg, a felhasználók és a tartományhoz csatlakoztatott HDInsight és a tartományhoz csatlakoztatott HDInsight-fürtök kezelése a szerepkörök.
+# <a name="manage-hdinsight-clusters-with-enterprise-security-package"></a>A vállalati biztonsági csomaggal HDInsight-fürtök kezelése
+Ismerje meg, a felhasználók és a HDInsight vállalati biztonsági csomag (ESP) és az ESP-fürtök kezelése a szerepkörök.
 
 ## <a name="use-vscode-to-link-to-domain-joined-cluster"></a>VSCode használata egy tartományhoz csatlakozó fürthöz való kapcsolódáshoz
 
@@ -140,12 +140,12 @@ Egy átjárócsomópontjával teljesen minősített tartományneve megkeresésé
 
 
 
-## <a name="users-of-domain-joined-hdinsight-clusters"></a>Felhasználók tartományhoz csatlakoztatott HDInsight-fürtök
-Egy HDInsight-fürtöt, amely a nem tartományhoz csatlakoztatott két felhasználói fiókot a fürt létrehozása során létrehozott rendelkezik:
+## <a name="users-of-hdinsight-clusters-with-esp"></a>HDInsight-fürtök ESP-felhasználók
+ESP HDInsight fürt rendelkezik a két felhasználói fiókot, amely a fürt létrehozása során jönnek létre:
 
 * **Az Ambari rendszergazdai**: Ez a fiók akkor is *Hadoop-felhasználóra* vagy *HTTP-felhasználó*. Ez a fiók segítségével jelentkezzen be az Ambari, https://&lt;clustername >. azurehdinsight.NET formátumban van. Is használható lekérdezéseket futtathat az Ambari-nézetek, hajtsa végre a külső eszközöket (például PowerShell, templeton eszközön keresztül végzett, a Visual Studio)-feladatok és a Hive ODBC-illesztőt és az Üzletiintelligencia-eszközökkel (például az Excel, a Power bi vagy a Tableau) a hitelesítéshez.
 
-A tartományhoz csatlakoztatott HDInsight-fürt Ambari rendszergazda mellett három új felhasználó rendelkezik
+ESP HDInsight fürtök az Ambari rendszergazda mellett három új felhasználók rendelkezik
 
 * **Ranger felügyeleti**: A fiók az Apache Ranger helyi rendszergazdai fiók legyen. Akkor sem az active directory tartományi felhasználó. Ez a fiók használható beállítási házirendek, és győződjön meg arról, más felhasználók rendszergazdák vagy a meghatalmazott rendszergazdák (úgy, hogy ezek a felhasználók kezelhetik a szabályzatok). Alapértelmezés szerint a felhasználónevet a *rendszergazdai* és a jelszó nem ugyanaz, mint az Ambari rendszergazdai jelszót. A jelszó (Ranger beállítások) lapján lehet frissíteni.
 * **Fürt rendszergazdai tartományi felhasználó**: ezt a fiókot az active directory tartományi felhasználó megjelölte a Hadoop-fürt többek között az Ambari és a Ranger felügyeleti. A fürt létrehozásakor meg kell adni a felhasználó hitelesítő adatait. Ez a felhasználó rendelkezik a következő jogosultságokat:
@@ -159,8 +159,8 @@ A tartományhoz csatlakoztatott HDInsight-fürt Ambari rendszergazda mellett há
     Vannak bizonyos végpontok a fürtben (például templeton eszközön keresztül végzett) amely Ranger által nem kezelt, és ezért nem biztonságos. Ezek a végpontok le az összes felhasználó számára, kivéve a fürt rendszergazdai tartományi felhasználó zárolva vannak.
 * **Rendszeres**: fürt létrehozása során, adjon meg több active directory-csoportokat. A megadott csoportokban szereplő felhasználók Ranger és az Ambari vannak szinkronizálva. Ezek a felhasználók tartományi felhasználók, és csak Ranger által felügyelt végpontok (például hiveserver2-n) birtokában. Az RBAC-házirendeket és a naplózási fogja ezeket a felhasználókat a alkalmazni kell.
 
-## <a name="roles-of-domain-joined-hdinsight-clusters"></a>Tartományhoz csatlakoztatott HDInsight-fürtök szerepkörök
-Tartományhoz csatlakoztatott HDInsight a következő szerepkörök rendelkeznek:
+## <a name="roles-of-hdinsight-clusters-with-esp"></a>HDInsight-fürtök ESP-szerepkörök
+HDInsight vállalati biztonsági csomaggal rendelkezik, a következő szerepkörök:
 
 * Fürt rendszergazdája
 * Fürt operátor
@@ -174,7 +174,7 @@ Tartományhoz csatlakoztatott HDInsight a következő szerepkörök rendelkeznek
 2. A bal oldali menüben kattintson a **szerepkörök**.
 3. Kattintson a kék kérdőjel az engedélyek megtekintéséhez:
 
-    ![Tartományhoz csatlakoztatott HDInsight-szerepköri engedélyek](./media/apache-domain-joined-manage/hdinsight-domain-joined-roles-permissions.png)
+    ![ESP HDInsight szerepköri engedélyek](./media/apache-domain-joined-manage/hdinsight-domain-joined-roles-permissions.png)
 
 ## <a name="open-the-ambari-management-ui"></a>Nyissa meg az Ambari felhasználói felület kezelése
 
@@ -184,43 +184,43 @@ Tartományhoz csatlakoztatott HDInsight a következő szerepkörök rendelkeznek
 4. Jelentkezzen be az Ambari a fürt rendszergazdai tartományi felhasználónevével és jelszavával.
 5. Kattintson a **rendszergazdai** felső legördülő menüben kattintson a jobb sarokban található, és kattintson **kezelése az Ambari**.
 
-    ![Tartományhoz csatlakoztatott HDInsight kezelése az Ambari](./media/apache-domain-joined-manage/hdinsight-domain-joined-manage-ambari.png)
+    ![ESP HDInsight kezelése az Ambari](./media/apache-domain-joined-manage/hdinsight-domain-joined-manage-ambari.png)
 
     A felhasználói felület hasonlóan néz ki:
 
-    ![Tartományhoz csatlakoztatott HDInsight az Ambari felügyeleti felhasználói Felületét](./media/apache-domain-joined-manage/hdinsight-domain-joined-ambari-management-ui.png)
+    ![ESP HDInsight az Ambari felügyeleti felhasználói Felületét](./media/apache-domain-joined-manage/hdinsight-domain-joined-ambari-management-ui.png)
 
 ## <a name="list-the-domain-users-synchronized-from-your-active-directory"></a>A tartományi felhasználók az Active Directoryból szinkronizált listázása
 1. Nyissa meg az Ambari felügyeleti felhasználói Felületét.  Lásd: [nyissa meg az Ambari felügyeleti felhasználói Felületét](#open-the-ambari-management-ui).
 2. A bal oldali menüben kattintson a **felhasználók**. A HDInsight-fürt az Active Directoryból szinkronizált az összes felhasználó látni.
 
-    ![Tartományhoz csatlakoztatott HDInsight az Ambari management UI felhasználók listázása](./media/apache-domain-joined-manage/hdinsight-domain-joined-ambari-management-ui-users.png)
+    ![ESP HDInsight az Ambari management UI felhasználók listázása](./media/apache-domain-joined-manage/hdinsight-domain-joined-ambari-management-ui-users.png)
 
 ## <a name="list-the-domain-groups-synchronized-from-your-active-directory"></a>A tartományi csoportokat az Active Directoryból szinkronizált
 1. Nyissa meg az Ambari felügyeleti felhasználói Felületét.  Lásd: [nyissa meg az Ambari felügyeleti felhasználói Felületét](#open-the-ambari-management-ui).
 2. A bal oldali menüben kattintson a **csoportok**. A HDInsight-fürt az Active Directoryból szinkronizált az összes csoportot látni.
 
-    ![Tartományhoz csatlakoztatott HDInsight az Ambari management UI csoportok listázása](./media/apache-domain-joined-manage/hdinsight-domain-joined-ambari-management-ui-groups.png)
+    ![ESP HDInsight az Ambari management UI csoportok listázása](./media/apache-domain-joined-manage/hdinsight-domain-joined-ambari-management-ui-groups.png)
 
 ## <a name="configure-hive-views-permissions"></a>Hive-nézetek-engedélyek konfigurálása
 1. Nyissa meg az Ambari felügyeleti felhasználói Felületét.  Lásd: [nyissa meg az Ambari felügyeleti felhasználói Felületét](#open-the-ambari-management-ui).
 2. A bal oldali menüben kattintson a **nézetek**.
 3. Kattintson a **HIVE** részleteinek megjelenítéséhez.
 
-    ![Tartományhoz csatlakoztatott HDInsight az Ambari management UI Hive-nézetek](./media/apache-domain-joined-manage/hdinsight-domain-joined-ambari-management-ui-hive-views.png)
+    ![ESP HDInsight az Ambari management UI Hive-nézetek](./media/apache-domain-joined-manage/hdinsight-domain-joined-ambari-management-ui-hive-views.png)
 4. Kattintson a **Hive-nézet** hivatkozás Hive-nézetek konfigurálásához.
 5. Görgessen le a **engedélyek** szakaszban.
 
-    ![Tartományhoz csatlakoztatott HDInsight az Ambari management UI Hive-nézetek-engedélyek konfigurálása](./media/apache-domain-joined-manage/hdinsight-domain-joined-ambari-management-ui-hive-views-permissions.png)
+    ![ESP HDInsight az Ambari felügyeleti felhasználói felület Hive-nézetek-engedélyek konfigurálása](./media/apache-domain-joined-manage/hdinsight-domain-joined-ambari-management-ui-hive-views-permissions.png)
 6. Kattintson a **felhasználó hozzáadása** vagy **csoport hozzáadása**, majd adja meg a felhasználókat vagy csoportokat, amelyek a Hive-nézetek használatával.
 
 ## <a name="configure-users-for-the-roles"></a>A felhasználók a szerepkörök konfigurálása
- Szerepkörök és a rájuk vonatkozó engedélyek listáját lásd: [szerepkörök a tartományhoz csatlakoztatott HDInsight-fürtök](#roles-of-domain---joined-hdinsight-clusters).
+ Szerepkörök és a rájuk vonatkozó engedélyek listáját lásd: [szerepkörök a HDInsight-fürtök ESP](#roles-of-domain---joined-hdinsight-clusters).
 
 1. Nyissa meg az Ambari felügyeleti felhasználói Felületét.  Lásd: [nyissa meg az Ambari felügyeleti felhasználói Felületét](#open-the-ambari-management-ui).
 2. A bal oldali menüben kattintson a **szerepkörök**.
 3. Kattintson a **felhasználó hozzáadása** vagy **csoport hozzáadása** felhasználók és csoportok hozzárendelése különböző szerepköröket.
 
 ## <a name="next-steps"></a>További lépések
-* A tartományhoz csatlakoztatott HDInsight-fürtök konfigurálásához lásd: [Tartományhoz csatlakoztatott HDInsight-fürtök konfigurálása](apache-domain-joined-configure.md).
-* A Hive-házirendek konfigurálásához és a Hive-lekérdezések futtatásához lásd: [Hive-házirendek konfigurálása a tartományhoz csatlakoztatott HDInsight-fürtökben](apache-domain-joined-run-hive.md).
+* A vállalati biztonsági csomaggal egy HDInsight-fürt konfigurálásához lásd: [konfigurálása HDInsight-fürtök ESP](apache-domain-joined-configure.md).
+* Hive-házirendek és a Hive-lekérdezések futtatásához konfigurálásához lásd: [Hive-házirendek konfigurálása a HDInsight-fürtök ESP](apache-domain-joined-run-hive.md).

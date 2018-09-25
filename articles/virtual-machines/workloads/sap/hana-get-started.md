@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/06/2018
 ms.author: hermannd
-ms.openlocfilehash: 5ce80e85f00c4c3542bf61e910baec9ccd635bcd
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: 6355a7ce203f2bf75b5c93d225502f961deeee43
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44161305"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47032081"
 ---
 # <a name="quickstart-manual-installation-of-single-instance-sap-hana-on-azure-vms"></a>Gyors útmutató: Egy példányban – SAP HANA az Azure virtuális gépek manuális telepítése
 ## <a name="introduction"></a>Bevezetés
@@ -93,6 +93,11 @@ Az SAP az SAP NetWeaver és az S/4HANA alkalmazásrétegre hitelesített Azure V
 >Integráció az SAP-Linux-Azure-hoz csak Azure Resource Manager és a klasszikus üzemi modellben nem támogatott. 
 
 ## <a name="manual-installation-of-sap-hana"></a>SAP HANA manuális telepítése
+
+> [!IMPORTANT]
+> Győződjön meg róla, hogy az operációs rendszer választja SAP-minősítéssel rendelkező SAP Hana, az adott virtuális gépek típusai, használja a. Az SAP HANA listája tanúsított Virtuálisgép-típusok és az operációs rendszer kiadások az azokat kereshetők [SAP HANA Certified IaaS platformok](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure). Ellenőrizze, hogy a virtuális gép típusú felsorolt lekérni az SAP HANA teljes listáját a részletek megtekintéséhez kattintson az adott virtuális gép típusa támogatott kiadásainak listáját. Vegye figyelembe, hogy a példában a jelen dokumentum használtuk a SLES operációsrendszer-kiadás, amely M-sorozat virtuális gépei az SAP Hana SAP által nem támogatott.
+>
+
 Ez az útmutató ismerteti, hogyan manuális telepítéséhez az SAP HANA az Azure virtuális gépek két különböző módon:
 
 * A "telepítés adatbázispéldány" lépésben elosztott NetWeaver telepítés részeként SAP Software kiépítés Manager (SWPM) használatával

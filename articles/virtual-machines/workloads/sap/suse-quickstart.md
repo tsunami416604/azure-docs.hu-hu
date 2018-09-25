@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/14/2017
 ms.author: hermannd
-ms.openlocfilehash: cc4438a770a8092275373ccf8da9cc9951a1f906
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: 8a16fa9f639a6a4a17d6904d6bc9a0e31f774e0c
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37858612"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46950046"
 ---
 # <a name="running-sap-netweaver-on-microsoft-azure-suse-linux-vms"></a>Az SAP NetWeaver futtatása Microsoft Azure-beli SUSE Linux-alapú virtuális gépeken
 Ez a cikk ismerteti a különböző dolgot figyelembe kell venni a Microsoft Azure SUSE Linux rendszerű virtuális gépek (VM) az SAP NetWeaver futtatja. 2016. május 19 SAP NetWeaver SUSE Linux rendszerű virtuális gépek az Azure-ban hivatalosan támogatott. Linux-verziók, SAP-kernel-verzióknál és egyéb előfeltételeket minden részletei találhatók SAP Megjegyzés 1928533 "SAP-alkalmazások az Azure-on: támogatott termékek és Azure virtuális gépek típusai".
@@ -119,7 +119,7 @@ Az Azure Linux-ügynök (waagent) elkerülése érdekében potenciális problém
    ```
 A sablon JSON-fájlok kapcsolatos további információkért lásd: [Azure Resource Manager-sablonok készítése](../../../resource-group-authoring-templates.md) és [Azure gyorsindítási sablonok](https://azure.microsoft.com/documentation/templates/).
 
-További információ a parancssori felület és Azure Resource Manager: [használata az Azure parancssori felület Mac, Linux és Windows az Azure Resource Manager](../../../xplat-cli-azure-resource-manager.md).
+Az Azure klasszikus parancssori felület és Azure Resource Managerrel kapcsolatos további információkért lásd: [használata az Azure klasszikus parancssori felület Mac, Linux és Windows az Azure Resource Manager](../../../xplat-cli-azure-resource-manager.md).
 
 ## <a name="sap-license-and-hardware-key"></a>Az SAP-licenc- és kulcs
 A hivatalos SAP Azure-beli hitelesítésre egy új mechanizmust alapján számítja ki az SAP az SAP-licenccel használt hardverkulcsra váltásával jelent meg. Győződjön meg arról, hogy módosítani kell a korábban az SAP-kernel, az új algoritmust használja. Linux-SAP kernel korábbi verziók nem tartalmazta a kód megváltoztatására. Ezért, bizonyos esetekben (például az Azure virtuális gép átméretezése), az SAP hardverkulcsra váltásával megváltozott, és az SAP-licenc volt már nem érvényes. A megoldás az újabb SAP Linux-kernelek vannak van megadva.  A részletes SAP kernel javítások SAP-jegyzetnek 1928533 vannak dokumentálva.

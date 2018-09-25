@@ -1,6 +1,6 @@
 ---
-title: Használja a parancssori – Azure HDInsight Hadoop-fürtök létrehozása
-description: Ismerje meg, hogyan hozhat létre HDInsight-fürtök a platformfüggetlen Azure CLI 1.0 használatával.
+title: Az Azure klasszikus parancssori felület használatával – Azure HDInsight Hadoop-fürtök létrehozása
+description: Ismerje meg, hogyan hozhat létre HDInsight-fürtöket a platformfüggetlen Azure klasszikus parancssori felület használatával.
 services: hdinsight
 author: jasonwhowell
 ms.reviewer: jasonh
@@ -9,23 +9,20 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/27/2018
 ms.author: jasonh
-ms.openlocfilehash: 523c2a85929d8474c283055a8ae38d489cbd4b12
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 84b352fea0c5b9c98cd3b4e814e448cf8b706402
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43090974"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46992813"
 ---
-# <a name="create-hdinsight-clusters-using-the-azure-cli"></a>Az Azure CLI használatával HDInsight-fürtök létrehozása
+# <a name="create-hdinsight-clusters-using-the-azure-classic-cli"></a>A klasszikus Azure CLI-vel HDInsight-fürtök létrehozása
 
 [!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]
 
-Ez a dokumentum az útmutató egy HDInsight 3.5-fürtöt az Azure CLI 1.0 használatával lépéseit.
+A klasszikus Azure CLI-vel HDInsight 3.5-ös fürtöt hoz létre a dokumentum útmutatóban leírt lépéseket.
 
-> [!IMPORTANT]
-> Ez a témakör ismerteti, hogyan hozhat létre HDInsight-fürtöt az Azure CLI 1.0 használatával. Ez a CLI verziója elavult, és a HDInsight-fürtök létrehozása során nem már támogatja az Azure CLI 2.0-t.
->
-> Azure PowerShell használatával HDInsight-fürtök létrehozása és felügyelete. További információkért lásd: a [létre HDInsight-fürtök Azure PowerShell-lel](hdinsight-hadoop-create-linux-clusters-azure-powershell.md) dokumentumot.
+[!INCLUDE [classic-cli-warning](../../includes/requires-classic-cli.md)]
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -33,14 +30,11 @@ Ez a dokumentum az útmutató egy HDInsight 3.5-fürtöt az Azure CLI 1.0 haszn�
 
 * **Azure-előfizetés**. Lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
 
-* **Azure parancssori felület (CLI)**. A jelen dokumentumban leírt lépések az Azure CLI-vel verzió 0.10.14 utolsó tesztelt.
-
-    > [!IMPORTANT]
-    > Az Azure CLI 1.0 elavult, és a HDInsight-fürtök létrehozása során nem már támogatja az Azure CLI 2.0-t.
+* **Az Azure klasszikus parancssori felület**. A jelen dokumentumban leírt lépések az Azure klasszikus parancssori felület verziója 0.10.14 utolsó tesztelt.
 
 ## <a name="log-in-to-your-azure-subscription"></a>Bejelentkezés az Azure-előfizetésbe
 
-Kövesse a [Csatlakozás Azure-előfizetéshez az Azure parancssori felületről](/cli/azure/authenticate-azure-cli) lépéseit, és csatlakoztassa az előfizetését a **bejelentkezéses** módszerrel.
+Kövesse a leírt lépéseket [csatlakozás az Azure-előfizetés az Azure parancssori felület](/cli/azure/authenticate-azure-cli) , és az előfizetés használatával kapcsolódhat a **bejelentkezési** metódus.
 
 ## <a name="create-a-cluster"></a>Fürt létrehozása
 
@@ -50,7 +44,7 @@ Például a PowerShell vagy a Bash-parancssorból a következő lépéseket kell
 
         azure login
 
-    Adja meg a nevét és jelszavát kéri. Ha több Azure-előfizetéssel rendelkezik, használja a `azure account set <subscriptionname>` beállítása az előfizetést, amelyhez az Azure CLI-parancsok használata.
+    Adja meg a nevét és jelszavát kéri. Ha több Azure-előfizetéssel rendelkezik, használja a `azure account set <subscriptionname>` beállítása az előfizetést, amely a klasszikus parancssori felület parancsai használni.
 
 2. Váltson Azure Resource Manager módra az alábbi paranccsal:
 
@@ -124,7 +118,7 @@ Ha problémába ütközik a HDInsight-fürtök létrehozása során, tekintse me
 
 ## <a name="next-steps"></a>További lépések
 
-Most, hogy sikeresen létrehozott egy HDInsight-fürtöt az Azure CLI-vel, megtudhatja, hogyan használható a fürt a következő használatával:
+Most, hogy sikeresen létrehozott egy HDInsight-fürtön a klasszikus parancssori felület, megtudhatja, hogyan használható a fürt a következő használatával:
 
 ### <a name="hadoop-clusters"></a>Hadoop-fürtök
 

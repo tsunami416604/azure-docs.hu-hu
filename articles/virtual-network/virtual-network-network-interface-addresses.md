@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/24/2017
 ms.author: jdial
-ms.openlocfilehash: 7fe4fdbf6c6b3cbbd6d01ef5309699c3d3991d53
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.openlocfilehash: 3a74450ca8025f07b00dc18c9b81b147afa7439c
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40003814"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46975298"
 ---
 # <a name="add-change-or-remove-ip-addresses-for-an-azure-network-interface"></a>Hozzáadása, módosítása vagy törlése az Azure-beli hálózati adapter IP-címek
 
@@ -35,7 +35,7 @@ Ez a cikk bármely szakaszban ismertetett lépések elvégzése előtt hajtsa v�
 - Ha még nincs Azure-fiókkal, regisztráljon egy [ingyenes próbafiókot](https://azure.microsoft.com/free).
 - Ha a portál használatával, nyissa meg a https://portal.azure.com, és jelentkezzen be az Azure-fiókjával.
 - Ha a PowerShell-parancsokkal cikkben leírt feladatok elvégzéséhez, vagy futtassa a parancsokat a [Azure Cloud Shell](https://shell.azure.com/powershell), vagy a számítógépről futtatja a Powershellt. Az Azure Cloud Shell egy olyan ingyenes interaktív kezelőfelület, amelyet a jelen cikkben található lépések futtatására használhat. A fiókjával való használat érdekében a gyakran használt Azure-eszközök már előre telepítve és konfigurálva vannak rajta. Az oktatóanyaghoz az Azure PowerShell-modul 5.7.0-s vagy újabb verziójára lesz szükség. A telepített verzió azonosításához futtassa a következőt: `Get-Module -ListAvailable AzureRM`. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-azurerm-ps) ismertető cikket. Ha helyileg futtatja a PowerShellt, akkor emellett a `Login-AzureRmAccount` futtatásával kapcsolatot kell teremtenie az Azure-ral.
-- Ha használja az Azure parancssori felület (CLI) parancsai cikkben leírt feladatok elvégzéséhez, vagy futtassa a parancsokat a [Azure Cloud Shell](https://shell.azure.com/bash), vagy a parancssori felület futtatásával a számítógépről. Ehhez az oktatóanyaghoz az Azure CLI 2.0.31-es verzió vagy újabb. A telepített verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI 2.0 telepítése](/cli/azure/install-azure-cli). Ha helyileg futtatja az Azure CLI, is futtatni szeretné `az login` kapcsolat létrehozása az Azure-ral.
+- Ha használja az Azure parancssori felület (CLI) parancsai cikkben leírt feladatok elvégzéséhez, vagy futtassa a parancsokat a [Azure Cloud Shell](https://shell.azure.com/bash), vagy a parancssori felület futtatásával a számítógépről. Ehhez az oktatóanyaghoz az Azure CLI 2.0.31-es verzió vagy újabb. A telepített verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése](/cli/azure/install-azure-cli). Ha helyileg futtatja az Azure CLI, is futtatni szeretné `az login` kapcsolat létrehozása az Azure-ral.
 
 Jelentkezzen be, vagy csatlakozhat az Azure-ban, a fiókot hozzá kell rendelni a [hálózati közreműködő](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) szerepkör vagy egy [egyéni szerepkör](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) szerepel a megfelelő műveleteket rendelt [hálózati engedélyek csatoló](virtual-network-network-interface.md#permissions).
 
@@ -92,7 +92,7 @@ Eltávolíthatja [privát](#private) és [nyilvános](#public) IP-címek a hál�
 1. A szöveget tartalmazó mezőbe *erőforrások keresése* írja be az Azure portal tetején *hálózati adapterek*. Amikor **hálózati adapterek** jelennek meg a keresési eredmények közül válassza ki azt.
 2. Válassza ki a hálózati adaptert, amely a el kívánja távolítani az IP-címeket a listában.
 3. A **beállítások**válassza **IP-konfigurációk**.
-4. Jobb gombbal válassza egy [másodlagos](#secondary) IP-konfiguráció (nem lehet törölni a [elsődleges](#primary) konfigurációs) válassza ki a törölni kívánt **törlése**, majd ** Igen**, a törlés megerősítéséhez. Ha a konfiguráció egy nyilvános IP-cím erőforrás tartozik, az erőforrás van leválasztása az IP-konfigurációból, de az erőforrás nem törlődik.
+4. Jobb gombbal válassza egy [másodlagos](#secondary) IP-konfiguráció (nem lehet törölni a [elsődleges](#primary) konfigurációs) válassza ki a törölni kívánt **törlése**, majd  **Igen**, a törlés megerősítéséhez. Ha a konfiguráció egy nyilvános IP-cím erőforrás tartozik, az erőforrás van leválasztása az IP-konfigurációból, de az erőforrás nem törlődik.
 
 **Parancsok**
 
@@ -188,7 +188,7 @@ Mindegyik hálózati interfész rendelkeznie kell egy [elsődleges](#primary) ki
 Nulla vagy egy privát rendelhet [IPv6](#ipv6) egy másodlagos IP-konfiguráció hálózati adapter címe. A hálózati adapter nem lehet minden meglévő másodlagos IP-konfigurációt. Az IPv6-címet, a portál használatával nem adhat hozzá egy IP-konfigurációt. Használja a Powershellt vagy a parancssori Felületet egy IP-konfigurációt a magánhálózati IPv6-címek hozzáadása egy meglévő hálózati adaptert. A hálózati adapter nem lehet csatolni a meglévő virtuális géphez.
 
 > [!NOTE]
-> Bár létrehozhat egy hálózati adapter IPv6-címet, a portál használatával, nem adhat egy meglévő hálózati adaptert egy új vagy meglévő virtuális gépet, a portál használatával. Hozzon létre egy hálózati adapter magánhálózati IPv6-címek a PowerShell vagy az Azure CLI 2.0 használatával, majd a hálózati adapter csatlakoztatása egy virtuális gép létrehozásakor. Egy hálózati adapterrel rendelkező meglévő virtuális géphez rendelt magánhálózati IPv6-címek nem csatolható. Egy IP-konfiguráció bármely olyan eszközöket (portal, PowerShell vagy parancssori felület) használatával virtuális géphez csatolt hálózati adapter magánhálózati IPv6-címek nem lehet hozzáadni.
+> Bár létrehozhat egy hálózati adapter IPv6-címet, a portál használatával, nem adhat egy meglévő hálózati adaptert egy új vagy meglévő virtuális gépet, a portál használatával. PowerShell vagy az Azure CLI használatával hozzon létre egy hálózati adapter magánhálózati IPv6-címmel, akkor a hálózati adapter csatlakoztatása egy virtuális gép létrehozásakor. Egy hálózati adapterrel rendelkező meglévő virtuális géphez rendelt magánhálózati IPv6-címek nem csatolható. Egy IP-konfiguráció bármely olyan eszközöket (portal, PowerShell vagy parancssori felület) használatával virtuális géphez csatolt hálózati adapter magánhálózati IPv6-címek nem lehet hozzáadni.
 
 Nyilvános IPv6-cím nem rendelhető hozzá egy elsődleges vagy másodlagos IP-konfigurációhoz.
 

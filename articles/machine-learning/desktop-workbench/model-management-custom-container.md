@@ -11,14 +11,19 @@ ms.component: core
 ms.workload: data-services
 ms.topic: article
 ms.date: 3/26/2018
-ms.openlocfilehash: 7879cf1891e071da1a0ad3ddfc30f90fc7be8ca5
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ROBOTS: NOINDEX
+ms.openlocfilehash: d4cfb7067510ec06df3319035dee5e2195cb2f9d
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35646160"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46997539"
 ---
 # <a name="customize-the-container-image-used-for-azure-ml-models"></a>A tároló rendszerképét használja az Azure ML-modellek testreszabása
+
+[!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)] 
+
+
 
 Ez a cikk egy tárolórendszerképet az Azure Machine Learning-modellek testreszabásának módját ismerteti.  Az Azure ML Workbench tárolók használja a machine learning-modellek üzembe helyezéséhez. A modellek üzembe van helyezve, azok függőségeivel együtt, és az Azure ML összeállít egy képet a modellt, a függőségeket és társított fájlokat.
 

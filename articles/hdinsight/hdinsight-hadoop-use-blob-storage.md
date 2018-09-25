@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 05/14/2018
-ms.openlocfilehash: 027204065429a9eebd2e8121cbac8bc18b9d9ce6
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 91be34468dae0fb1c24080fbe53c3c8056e8c1a3
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43091435"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46967848"
 ---
 # <a name="use-azure-storage-with-azure-hdinsight-clusters"></a>Az Azure Storage és az Azure HDInsight-fürtök együttes használata
 
@@ -133,11 +133,11 @@ Ha [telepítette és konfigurálta az Azure PowerShellt][powershell-install], a 
     $destContext = New-AzureStorageContext -StorageAccountName $storageAccountName -StorageAccountKey $storageAccountKey  
     New-AzureStorageContainer -Name $containerName -Context $destContext
 
-### <a name="use-azure-cli"></a>Az Azure parancssori felület használatával
+### <a name="use-azure-classic-cli"></a>Az Azure klasszikus parancssori felület használata
 
-[!INCLUDE [use-latest-version](../../includes/hdinsight-use-latest-cli.md)]
+[!INCLUDE [classic-cli-warning](../../includes/requires-classic-cli.md)]
 
-Ha [telepítette és konfigurálta az Azure CLI parancssori felületet](../cli-install-nodejs.md), a következő parancs használható a tárfiókokhoz és tárolóhoz.
+Ha rendelkezik [telepítése és konfigurálása a klasszikus Azure-CLI](../cli-install-nodejs.md), a következő parancs használható egy tárfiókot és tárolót.
 
     azure storage account create <storageaccountname> --type LRS
 
@@ -264,24 +264,24 @@ $clusterName = "<HDInsightClusterName>"
 
     Invoke-AzureRmHDInsightHiveJob -Defines $defines -Query "dfs -ls wasb://$undefinedContainer@$undefinedStorageAccount.blob.core.windows.net/;"
 
-### <a name="use-azure-cli"></a>Az Azure parancssori felület használatával
+### <a name="use-azure-classic-cli"></a>Az Azure klasszikus parancssori felület használata
 Használja az alábbi parancsot a blobbal kapcsolatos parancsok listázásához:
 
     azure storage blob
 
-**Az Azure parancssori felület használatának példája fájlok feltöltéséhez**
+**Az Azure klasszikus parancssori felület használatának példája fájlok feltöltéséhez**
 
     azure storage blob upload <sourcefilename> <containername> <blobname> --account-name <storageaccountname> --account-key <storageaccountkey>
 
-**Az Azure parancssori felület használatának példája fájlok letöltéséhez**
+**Az Azure klasszikus parancssori felület használatának példája fájlok letöltéséhez**
 
     azure storage blob download <containername> <blobname> <destinationfilename> --account-name <storageaccountname> --account-key <storageaccountkey>
 
-**Az Azure parancssori felület használatának példája fájlok törléséhez**
+**Az Azure klasszikus parancssori felület használatának példája fájlok törléséhez**
 
     azure storage blob delete <containername> <blobname> --account-name <storageaccountname> --account-key <storageaccountkey>
 
-**Az Azure parancssori felület használatának példája fájlok listázásához**
+**Az Azure klasszikus parancssori felület használatának példája fájlok listázásához**
 
     azure storage blob list <containername> <blobname|prefix> --account-name <storageaccountname> --account-key <storageaccountkey>
 

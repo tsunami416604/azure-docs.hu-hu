@@ -9,12 +9,12 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.date: 06/19/2018
-ms.openlocfilehash: 1aa55728b222c2838026cf5b06175736c5c84194
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 75094ad17474cd07039724fb0b5e5e377808b51f
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43123290"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46956656"
 ---
 # <a name="monitor-and-get-insights-about-logic-app-runs-with-log-analytics"></a>Monitorozása és elemzése a Log Analytics logikaialkalmazás-futtatások kapcsolatos
 
@@ -135,7 +135,7 @@ Ha már van kapcsolva a Log Analytics, a logikai alkalmazás létrehozásakor, k
      ![Műveletek és a egy logikai alkalmazás futtatásának részletei](media/logic-apps-monitor-your-logic-apps-oms/log-search-page.png)
      
      Itt az Azure Log Analytics lapon frissítheti lekérdezéseket, és tekintse meg az eredményeket a táblából. 
-     Ez a lekérdezés használ [Kusto-lekérdezés nyelvi](https://docs.loganalytics.io/docs/Language-Reference), amely szerkesztheti, ha meg szeretné tekinteni a különböző eredményt. 
+     Ez a lekérdezés használ [Kusto-lekérdezés nyelvi](https://aka.ms/LogAnalyticsLanguageReference), amely szerkesztheti, ha meg szeretné tekinteni a különböző eredményt. 
 
      ![Az Azure Log Analytics - lekérdezés megtekintése](media/logic-apps-monitor-your-logic-apps-oms/query.png)
 

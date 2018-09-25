@@ -14,12 +14,12 @@ ms.tgt_pltfrm: Azure
 ms.workload: na
 ms.date: 01/05/2017
 ms.author: hascipio; v-divte
-ms.openlocfilehash: bf2ba6d31c170715a52b84439276c45665293c35
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: 893b0ee70f577d9240d577e76062eea36b704058
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "42056705"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46989872"
 ---
 # <a name="guide-to-create-a-virtual-machine-image-for-the-azure-marketplace"></a>Útmutató a virtuálisgép-lemezkép létrehozása az Azure Marketplace-en
 Ez a cikk **2. lépés**, a virtuális merevlemezek (VHD), amely központilag telepíti az Azure Marketplace-en való előkészítésének módját mutatja. A virtuális merevlemezek az alapítvány termékváltozat. A folyamat eltér attól függően, hogy egy Linux-alapú vagy Windows-alapú Termékváltozatot. Ez a cikk mindkét forgatókönyvvel foglalkozunk. Ez a folyamat végrehajtható párhuzamosan [fióklétrehozás és a regisztrációs][link-acct-creation].
@@ -189,9 +189,9 @@ Virtuálisgép-rendszerképek kapcsolatos további információkért tekintse á
 * [Virtuális gép rendszerkép PowerShell hogyan](https://azure.microsoft.com/blog/vm-image-powershell-how-to-blog-post/)
 * [Tudnivalók az Azure-beli Virtuálisgép-rendszerképek](https://msdn.microsoft.com/library/azure/dn790290.aspx)
 
-### <a name="set-up-the-necessary-tools-powershell-and-azure-cli"></a>A szükséges eszközök, PowerShell és az Azure CLI beállítása
+### <a name="set-up-the-necessary-tools-powershell-and-azure-classic-cli"></a>A szükséges eszközök, PowerShell és az Azure klasszikus parancssori felület beállítása
 * [PowerShell-telepítés](/powershell/azure/overview)
-* [Azure CLI beállítása](../cli-install-nodejs.md)
+* [Az Azure klasszikus parancssori felület beállítása](../cli-install-nodejs.md)
 
 ### <a name="41-create-a-user-vm-image"></a>4.1 felhasználói Virtuálisgép-lemezkép létrehozása
 #### <a name="capture-vm"></a>Virtuális gép rögzítése
@@ -427,11 +427,13 @@ Az alábbiakban a lépéseket az SAS URL-cím létrehozása a Microsoft Azure St
 
 11. A termékváltozatban található minden egyes virtuális merevlemeznél ismételje meg a fenti lépéseket.
 
-**Az Azure parancssori felület (nem Windows és a folyamatos integráció esetén ajánlott)**
+**Az Azure klasszikus parancssori felület (nem-Windows és a folyamatos integráció ajánlott)**
 
-Az SAS URL-cím létrehozása az Azure CLI-vel lépései a következők
+Az SAS URL-cím létrehozása a klasszikus Azure CLI-vel lépései a következők
 
-1.  Töltse le a Microsoft Azure parancssori felületét [Itt](https://azure.microsoft.com/en-in/documentation/articles/xplat-cli-install/). Különböző mutató hivatkozásokat is talál **[Windows](http://aka.ms/webpi-azure-cli)** és  **[MAC OS](http://aka.ms/mac-azure-cli)**.
+[!INCLUDE [outdated-cli-content](../../includes/contains-classic-cli-content.md)]
+
+1.  Töltse le az Azure klasszikus parancssori felületét [Itt](https://azure.microsoft.com/en-in/documentation/articles/xplat-cli-install/). Különböző mutató hivatkozásokat is talál **[Windows](http://aka.ms/webpi-azure-cli)** és  **[MAC OS](http://aka.ms/mac-azure-cli)**.
 
 2.  Miután letöltötte, telepítse a
 
@@ -447,9 +449,9 @@ Az SAS URL-cím létrehozása az Azure CLI-vel lépései a következők
 
     b. **`<Storage Account Key>`**: Adjon a tárfiók kulcsa
 
-    c. **`<Permission Start Date>`**: A védelme érdekében, UTC szerinti idő, válassza ki a nap, az aktuális dátum előtt. Például, ha az aktuális dátum későbbi, 2016. október 26., majd mesterpéldányaként 2016/10/25. Ha az Azure CLI 2.0 (az parancs) használ, adja meg a dátum- és a kezdő és záró dátumát, például: 10-25 – 2016T00:00:00Z.
+    c. **`<Permission Start Date>`**: A védelme érdekében, UTC szerinti idő, válassza ki a nap, az aktuális dátum előtt. Például, ha az aktuális dátum későbbi, 2016. október 26., majd mesterpéldányaként 2016/10/25. Ha az Azure CLI 2.0-s vagy újabb verzióját használja, adja meg a dátum- és a kezdő és záró dátumát, például: 10-25 – 2016T00:00:00Z.
 
-    d. **`<Permission End Date>`**: Adjon meg egy dátumot, amely legalább 3 hét után a **Kezdődátum**. Az érték lehet **11-02-2016**. Ha az Azure CLI 2.0 (az parancs) használ, adja meg a dátum- és a kezdő és záró dátumát, például: 11-02-2016T00:00:00Z.
+    d. **`<Permission End Date>`**: Adjon meg egy dátumot, amely legalább 3 hét után a **Kezdődátum**. Az érték lehet **11-02-2016**. Ha az Azure CLI 2.0-s vagy újabb verzióját használja, adja meg a dátum- és a kezdő és záró dátumát, például: 11-02-2016T00:00:00Z.
 
     Következő példakód a megfelelő paramétereinek frissítése után
 
@@ -520,7 +522,7 @@ Az ajánlat és a Termékváltozat létrehozása után a Termékváltozathoz tá
 |Hiba történt a lemezképek – "sp = rl" nem az SAS URL-cím másolása|Hiba: A lemezképek másolása. Nem sikerült letölteni a blob SAS URI-t használó megadott|Beállítás "Olvasási" & "List engedélyeket a SAS URL-cím frissítése|[https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/](https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/)|
 |Hiba történt a lemezképek - SAS URL-cím másolása térközt rendelkezik a virtuális merevlemez neve|Hiba: A lemezképek másolása. Nem sikerült letölteni a blob használatával a megadott SAS URI-t.|Frissítse a SAS URL-címét, szóközök nélkül|[https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/](https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/)|
 |Hiba történt a lemezképek – SAS URL-engedélyezési hiba másolása|Hiba: A lemezképek másolása. Töltse le a blob engedélyezési hiba miatt nem sikerült|Az SAS URL-címet generálni|[https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/](https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/)|
-|Hiba történt a lemezképek – az SAS URL-címe "st" és "se" paraméterek másolása nem rendelkezik teljes dátum-idő specifikáció|Hiba: A lemezképek másolása. Nem sikerült helytelen SAS URL-cím miatt blob letöltése |Teljes dátum-idő előírás 11 például SAS URL-cím indítása és a záró dátum paraméter ("st", "se") van szüksége-02-2017T00:00:00Z, és nem csak a dátum vagy akkor használhatja rövidített verzió alkalommal. Akkor lehet, hogy ezt a forgatókönyvet az Azure CLI 2.0 (az parancs). Mindenképpen adja meg a teljes dátum-idő specifikációinak, és az SAS URL-címet generálni.|[https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/](https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/)|
+|Hiba történt a lemezképek – az SAS URL-címe "st" és "se" paraméterek másolása nem rendelkezik teljes dátum-idő specifikáció|Hiba: A lemezképek másolása. Nem sikerült helytelen SAS URL-cím miatt blob letöltése |Teljes dátum-idő előírás 11 például SAS URL-cím indítása és a záró dátum paraméter ("st", "se") van szüksége-02-2017T00:00:00Z, és nem csak a dátum vagy akkor használhatja rövidített verzió alkalommal. Lehetséges, hogy ezt a forgatókönyvet az Azure CLI 2.0-s vagy újabb verzió. Mindenképpen adja meg a teljes dátum-idő specifikációinak, és az SAS URL-címet generálni.|[https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/](https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/)|
 
 ## <a name="next-step"></a>Következő lépés
 Miután elkészült, a Termékváltozat adatokkal, áthelyezheti előre a [Azure Marketplace-en marketing content útmutató][link-pushstaging]. Hogy a közzétételi folyamat lépésben biztosítanak a marketinganyagot, a díjszabást és a szükséges egyéb információkat előtti **3. lépés: a virtuális gép tesztelése az átmeneti állapotában is kínálnak**, tesztelni különböző használatieset-forgatókönyvek üzembe helyezése előtt, a az Azure piactér nyilvános átláthatósága és beszerzési kínálnak.  

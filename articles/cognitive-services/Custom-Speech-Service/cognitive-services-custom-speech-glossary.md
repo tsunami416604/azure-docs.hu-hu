@@ -1,6 +1,6 @@
 ---
-title: Az egyéni beszéd szolgáltatás Azure szószedet |} Microsoft Docs
-description: Terminológiát a szószedet a munka az egyéni beszéd szolgáltatás során előforduló kifejezések meghatározása.
+title: A Custom Speech Service az Azure-ban a szószedet |} A Microsoft Docs
+description: A szószedet a terminológia végzett munka során a Custom Speech Service előforduló kifejezések határozza meg.
 services: cognitive-services
 author: PanosPeriorellis
 manager: onano
@@ -9,34 +9,35 @@ ms.component: custom-speech
 ms.topic: article
 ms.date: 02/08/2017
 ms.author: panosper
-ms.openlocfilehash: 2b6c54f023eccfa813817256bdcc1cbde83d49a8
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ROBOTS: NOINDEX
+ms.openlocfilehash: f57809fee463213cbb427146325666656b022e41
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35347063"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46956744"
 ---
 # <a name="glossary"></a>Szószedet
 
 ## <a name="a"></a>A
 
-### <a name="acoustic-model"></a>Akusztikus modell
+### <a name="acoustic-model"></a>Akusztikai modell
 
-A akusztikus modell besorolás, amely az hang rövid darabjai több Fonémák vagy a hang egység, egy adott nyelv valamelyikére. Az angol „speech” (beszéd) szó például négy fonémából áll: „sz, p, í, cs”. Ezekbe a besorolásokba válnak, a rendelés: 100 alkalommal / másodperc
+Az akusztikai modell, amely egy több fonémából vagy hang egység, az adott nyelv fonémáiként feliratok besorolás. Az angol „speech” (beszéd) szó például négy fonémából áll: „sz, p, í, cs”. Ezek a besorolások másodpercenként 100-szor végrehajtott a rendelés:
 
 ## <a name="b"></a>B
 
 ## <a name="c"></a>C
 
-### <a name="conversational-model"></a>Conversational modell
+### <a name="conversational-model"></a>Természetes nyelvi modell
 
-A modell megfelelő conversational Style szóbeli beszéd ismer fel. A Microsoft Conversational AM általában egy másik személyre megcélzó beszéd igazítani.
+Megfelelő speech beszélt természetes nyelvi stílus FELISMERVE modell. A Microsoft Conversational AM kell igazítani, beszéd általában egy másik személy irányulnia.
 
 ## <a name="d"></a>D
 
 ### <a name="deployment"></a>Környezet
 
-A folyamat, amelyen keresztül a igazítani egyéni modell szolgáltatás válik, és közzétesz egy URI-t
+A folyamat keresztül, amely a igazítani egyéni modell egy szolgáltatás válik, és egy URI-t tesz elérhetővé
 
 ## <a name="e"></a>E
 
@@ -50,7 +51,7 @@ A folyamat, amelyen keresztül a igazítani egyéni modell szolgáltatás válik
 
 ### <a name="inverse-text-normalization"></a>Más néven Inverz szöveg normalizálási
 
-A "nyers" formázatlan szöveges átalakítása vissza formázott szöveget, azaz a kis-és nagybetűk és írásjelek, folyamathoz Inverz szöveg normalizálási (ITN).
+Vissza a formázott szöveget, például a kis-és nagybetűk és írásjelek, a "raw" formázatlan szöveges átalakításának folyamata, más néven Inverz szöveg normalizálási (fel) nevezzük.
 
 ## <a name="j"></a>C
 
@@ -60,7 +61,7 @@ A "nyers" formázatlan szöveges átalakítása vissza formázott szöveget, aza
 
 ### <a name="language-model"></a>Nyelvi modell
 
-A nyelvi modell szószekvenciák valószínűségi eloszlását jelenti. A nyelvi modell segítségével döntse el, hogy hangkártya hasonló, a word szekvenciák valószínűségét alapján sorrendek közül a rendszer
+A nyelvi modell szószekvenciák valószínűségi eloszlását jelenti. A nyelvi modell segíti a rendszert abban, hogy válasszon hasonló hangzású szószekvenciák maguk valószínűségét alapján
 
 ## <a name="m"></a>M
 
@@ -68,31 +69,31 @@ A nyelvi modell szószekvenciák valószínűségi eloszlását jelenti. A nyelv
 
 ### <a name="normalization"></a>Normalizálás
 
-Normalizálási (szöveg): Átalakítása, így a szöveg (azaz írjanak elő) formába egy szabványos, egyértelműen a rendszer által is olvasható.
+Normalizálási (szöveg): Átalakítását az eredményül kapott szöveg (azaz beszédátírási) egy szabványos, egyértelmű űrlapra, a rendszer által is olvasható.
 
 ## <a name="o"></a>O
 
 ## <a name="p"></a>P
 
-## <a name="q"></a>A Q
+## <a name="q"></a>VÁLASZOK
 
 ## <a name="r"></a>R
 
 ## <a name="s"></a>S
 
-### <a name="search-and-dictate-model"></a>Keresés és a modell előírják
+### <a name="search-and-dictate-model"></a>Keresse meg és diktálni modell
 
-Egy megfelelő parancsok feldolgozásakor akusztikus modellt. A Microsoft Search és a Diktálás AM megfelelő megcélzó egy alkalmazás vagy eszköz, például parancsok például a beszéd:
+Az akusztikai modell megfelelő parancsok feldolgozásakor. A Microsoft Search és Diktálás AM alkalmas a speech megcélzó egy alkalmazást vagy eszközt, többek között például parancsok
 
 ### <a name="subscription-key"></a>Előfizetői azonosító
 
-Előfizetés kulcs egy karakterláncot, amelyet meg kell adnia egy lekérdezési karakterlánc paraméterként ahhoz, hogy bármilyen egyéni beszéd modell meghívni. Egy előfizetés kulcs egységekre a [Azure Portal](https://portal.azure.com/#create/Microsoft.CognitiveServices/apitype/CustomSpeech) , és egyszer az megtalálható a "Saját előfizetések" az egyéni beszéd portált.
+Az előfizetői azonosító karakterlánc, amely meg kell adnia egy lekérdezési karakterlánc paramétereként, annak érdekében, hogy minden Custom Speech Service-modell meghívása. Egy előfizetési kulcsot szerezhető [az Azure Portal](https://portal.azure.com/#create/Microsoft.CognitiveServices/apitype/CustomSpeech) és a kapott egyszer, található "Saját előfizetések" a Custom Speech Service portálon.
 
 ## <a name="t"></a>T
 
-### <a name="transcription"></a>Írjanak elő
+### <a name="transcription"></a>Beszédátírási
 
-Írjanak elő: Szöveg, amelyet a folyamat egy darab hang .wav fájl annak az eredménye adat
+Beszédátírási: Az adott szöveg, amely a folyamat egy darab hang .wav fájl való
 
 ## <a name="u"></a>U
 
@@ -104,7 +105,7 @@ Előfizetés kulcs egy karakterláncot, amelyet meg kell adnia egy lekérdezési
 
 ## <a name="y"></a>I
 
-## <a name="z"></a>Z-IG
+## <a name="z"></a>Z
 
 * [Áttekintés](cognitive-services-custom-speech-home.md)
 * [Első lépések](cognitive-services-custom-speech-get-started.md)

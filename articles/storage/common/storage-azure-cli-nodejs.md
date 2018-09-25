@@ -1,6 +1,6 @@
 ---
-title: Az Azure CLI 1.0 használatával és az Azure Storage |} A Microsoft Docs
-description: Ismerje meg, hogyan használható az Azure parancssori felület (Azure CLI) 1.0-t az Azure Storage létrehozása és a storage-fiókok felügyeletéhez és az Azure-blobok és fájlok. Az Azure parancssori felület egy olyan platformfüggetlen eszköz
+title: A klasszikus Azure CLI használatával az Azure Storage |} A Microsoft Docs
+description: Ismerje meg, hogyan használhatja az Azure klasszikus parancssori felület (CLI) az Azure Storage létrehozása és a storage-fiókok kezelése és használata Azure-blobok és fájlok.
 services: storage
 author: seguler
 ms.service: storage
@@ -8,31 +8,31 @@ ms.topic: article
 ms.date: 01/30/2017
 ms.author: seguler
 ms.component: common
-ms.openlocfilehash: f406f12b3313670e8e2d89296f7c24478bb58c6c
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: e563c7000b600bed917f42d8ffb87df883564ef8
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39521506"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46979328"
 ---
-# <a name="using-the-azure-cli-10-with-azure-storage"></a>Az Azure Storage az Azure CLI 1.0 használatával
+# <a name="using-the-azure-classic-cli-with-azure-storage"></a>Az Azure Storage az Azure klasszikus parancssori felület használatával
 
 ## <a name="overview"></a>Áttekintés
 
-Az Azure parancssori felülete nyílt forráskódú, platformfüggetlen parancsokat biztosít az Azure Platform használatához. Nagy része megtalálható ugyanazokat a funkciókat biztosít a [az Azure portal](https://portal.azure.com) , valamint gazdag adat-hozzáférési funkcióit.
+Az Azure klasszikus parancssori felület felülete nyílt forráskódú, platformfüggetlen parancsokat biztosít az Azure Platform használatához. Nagy része megtalálható ugyanazokat a funkciókat biztosít a [az Azure portal](https://portal.azure.com) , valamint gazdag adat-hozzáférési funkcióit.
 
-Ez az útmutató azt vizsgáljuk használata [Azure parancssori felület (Azure CLI)](../../cli-install-nodejs.md) fejlesztési és felügyeleti feladatokat az Azure Storage számos végrehajtásához. Azt javasoljuk, hogy letöltése és telepítése vagy frissítése az Azure CLI legújabb verziójára az útmutató használata előtt.
+Ez az útmutató azt vizsgáljuk használata [Azure klasszikus parancssori felület](../../cli-install-nodejs.md) fejlesztési és felügyeleti feladatokat az Azure Storage számos végrehajtásához. Azt javasoljuk, hogy letöltése és telepítése vagy frissítése a legújabb klasszikus parancssori felület az útmutató használata előtt.
 
-Ez az útmutató feltételezi, hogy ismeri az Azure Storage az alapvető fogalmait. Az útmutató számos olyan parancsprogramok használatával az Azure CLI az Azure Storage használatát mutatja be. Ügyeljen arra, hogy frissítse a parancsfájl-változókat minden parancsprogram futtatása előtt a konfiguráció alapján.
+Ez az útmutató feltételezi, hogy ismeri az Azure Storage az alapvető fogalmait. Az útmutató számos olyan parancsprogramok használatával a klasszikus parancssori felület az Azure Storage használatát mutatja be. Ügyeljen arra, hogy frissítse a parancsfájl-változókat minden parancsprogram futtatása előtt a konfiguráció alapján.
 
 > [!NOTE]
-> Útmutató a példákat az Azure CLI-vel parancsot és a parancsfájl a klasszikus tárfiókokkal. Lásd: [Mac, Linux és Windows, az Azure Felhőerőforrás-kezelés az Azure CLI használatával](../../virtual-machines/azure-cli-arm-commands.md#azure-storage-commands-to-manage-your-storage-objects) a Resource Manager-tárfiókok az Azure CLI-parancsokat.
+> Útmutató a példákat az Azure klasszikus parancssori felület parancs és a parancsfájl a klasszikus tárfiókokkal. Lásd: [Mac, Linux és Windows, az Azure Felhőerőforrás-kezelés az Azure CLI használatával](../../virtual-machines/azure-cli-arm-commands.md#azure-storage-commands-to-manage-your-storage-objects) az Azure klasszikus parancssori felület parancsai Resource Manager-tárfiókok esetében.
 >
 >
 
 [!INCLUDE [storage-cli-versions](../../../includes/storage-cli-versions.md)]
 
-## <a name="get-started-with-azure-storage-and-the-azure-cli-in-5-minutes"></a>Ismerkedés az Azure Storage és az Azure CLI kipróbálása
+## <a name="get-started-with-azure-storage-and-the-azure-classic-cli-in-5-minutes"></a>Ismerkedés az Azure Storage és az Azure klasszikus parancssori felület kipróbálása
 Ez az útmutató Ubuntu használja példák, de más platformokon, az operációs rendszer hasonlóképpen végre kell hajtania.
 
 **Új Azure-bA:** egy Microsoft Azure-előfizetés és a egy adott előfizetéshez hozzárendelt Microsoft-fiókot. Az Azure vásárlási lehetőségeket ismertető további információkért lásd: [ingyenes próbaverzió](https://azure.microsoft.com/pricing/free-trial/), [beszerzési lehetőségek](https://azure.microsoft.com/pricing/purchase-options/), és [ajánlatok tagoknak](https://azure.microsoft.com/pricing/member-offers/) (MSDN, Microsoft Partner Network és BizSpark,-tagok számára, és egyéb Microsoft programok).
@@ -41,12 +41,12 @@ Lásd: [rendszergazdai szerepkörök hozzárendelése az Azure Active Directory 
 
 **Miután létrehozta a Microsoft Azure-előfizetés és a fiók:**
 
-1. Töltse le és telepítse az Azure CLI leírt utasítások [az Azure CLI telepítése](../../cli-install-nodejs.md).
-2. Az Azure parancssori felület telepítése után lesz használja az azure parancsot a parancssori felületről (Bash, terminál, parancssor) eléréséhez az Azure CLI-parancsokat. Írja be a _azure_ parancsot, és a következő kimenetet kell látnia.
+1. Töltse le és telepítse az Azure klasszikus parancssori leírt utasítások [a klasszikus Azure CLI telepítése](../../cli-install-nodejs.md).
+2. A klasszikus parancssori felület telepítése után fogja tudni használni az azure-parancs a parancssori felületről (Bash, terminál, parancssor használatával) a klasszikus parancssori felület parancsai eléréséhez. Írja be a _azure_ parancsot, és a következő kimenetet kell látnia.
 
     ![Az Azure parancs kimenete](./media/storage-azure-cli/azure_command.png)   
-3. Írja be a parancssori felület `azure storage` ki az azure storage-parancsok listázása és a egy első benyomást az funkciók az Azure CLI első biztosít. Írja be a parancsnév **-h** paraméter (például `azure storage share create -h`) parancs szintaxisát részleteinek megtekintéséhez.
-4. Most adjunk meg egy egyszerű szkript, amely tartalmazza az alapszintű Azure CLI-parancsok az Azure Storage eléréséhez. A szkript először rákérdez, hogy a storage-fiók és a kulcs két változókat. Ezt követően a parancsfájl hozzon létre egy új tárolót az új storage-fiókban, és meglévő képfájl (blob) feltöltése a tárolóba. Miután a parancsfájl listázza a tárolóban lévő összes BLOB, a cél könyvtárba, amely létezik a helyi számítógépen le fogja tölteni a képfájlt.
+3. Írja be a parancssori felület `azure storage` ki az azure storage-parancsok listázása és a egy első benyomást az funkciók lekérése a klasszikus parancssori felület biztosít. Írja be a parancsnév **-h** paraméter (például `azure storage share create -h`) parancs szintaxisát részleteinek megtekintéséhez.
+4. Most adjunk meg egy egyszerű szkript, amely az Azure Storage eléréséhez alapszintű klasszikus parancssori felület parancsait tartalmazza. A szkript először rákérdez, hogy a storage-fiók és a kulcs két változókat. Ezt követően a parancsfájl hozzon létre egy új tárolót az új storage-fiókban, és meglévő képfájl (blob) feltöltése a tárolóba. Miután a parancsfájl listázza a tárolóban lévő összes BLOB, a cél könyvtárba, amely létezik a helyi számítógépen le fogja tölteni a képfájlt.
 
     ```azurecli
     #!/bin/bash
@@ -88,9 +88,9 @@ Lásd: [rendszergazdai szerepkörök hozzárendelése az Azure Active Directory 
 
 A szkript futtatása után a rendelkeznie kell egy helyi célmappát, amely a letöltött bináris fájl tartalmaz.
 
-## <a name="manage-storage-accounts-with-the-azure-cli"></a>Az Azure CLI-vel a storage-fiókok kezelése
+## <a name="manage-storage-accounts-with-the-azure-classic-cli"></a>A klasszikus Azure CLI-vel a storage-fiókok kezelése
 ### <a name="connect-to-your-azure-subscription"></a>Csatlakozás az Azure-előfizetéshez
-A storage-parancsok a legtöbb Azure-előfizetés nélkül fog működni, amíg azt javasoljuk, hogy csatlakozzon az előfizetéséhez az Azure parancssori felületen. Az Azure CLI használatával az előfizetés használata konfigurálásához kövesse a lépéseket a [csatlakozhat az Azure-előfizetés az Azure parancssori felületen](/cli/azure/authenticate-azure-cli).
+A storage-parancsok a legtöbb Azure-előfizetés nélkül fog működni, amíg azt javasoljuk, hogy csatlakozzon az előfizetéséhez, a klasszikus parancssori felület.
 
 ### <a name="create-a-new-storage-account"></a>Új tárfiók létrehozása
 Az Azure storage használatához szüksége lesz egy storage-fiókot. Új Azure storage-fiókot hozhat létre, a számítógép csatlakozni az előfizetés konfigurálása után.
@@ -102,7 +102,7 @@ azure storage account create <account_name>
 A tárfiók neve lehet 3 – 24 karakter közötti hosszúságúnak, és csak számokat és kisbetűket tartalmazhat.
 
 ### <a name="set-a-default-azure-storage-account-in-environment-variables"></a>Környezeti változók egy alapértelmezett Azure storage-fiók beállítása
-Több tárfiókot is rendelkezik az előfizetésében. Válasszon egyet ezek közül, és beállíthatja a környezeti változókat a storage-parancsok a ugyanabban a munkamenetben. Ez lehetővé teszi, hogy a storage Azure CLI-parancsokat a tárfiók megadása nélkül futtatja, és explicit módon kulcsát.
+Több tárfiókot is rendelkezik az előfizetésében. Válasszon egyet ezek közül, és beállíthatja a környezeti változókat a storage-parancsok a ugyanabban a munkamenetben. Ez lehetővé teszi, hogy a CLI-parancsokkal a klasszikus tárolása a storage-fiók megadása nélkül, és explicit módon kulcsát.
 
 ```azurecli
 export AZURE_STORAGE_ACCOUNT=<account_name>
@@ -177,7 +177,7 @@ azure storage blob delete mycontainer myBlockBlob2
 ```
 
 ## <a name="create-and-manage-file-shares"></a>Hozzon létre, és a fájlmegosztások felügyelete
-Az Azure Files a szabványos SMB protokollt használó alkalmazások közös tárhelyet kínál. A Microsoft Azure virtuális gépek és felhőszolgáltatások, valamint a helyszíni alkalmazásokat, oszthatnak meg keresztül csatlakoztatott megosztások. Fájlmegosztások és a fájladatok az Azure CLI-n keresztül is kezelheti. További információ az Azure Files: [Bevezetés az Azure Files használatába](../files/storage-files-introduction.md).
+Az Azure Files a szabványos SMB protokollt használó alkalmazások közös tárhelyet kínál. A Microsoft Azure virtuális gépek és felhőszolgáltatások, valamint a helyszíni alkalmazásokat, oszthatnak meg keresztül csatlakoztatott megosztások. Fájlmegosztások és a fájladatok klasszikus parancssori felületén is kezelheti. További információ az Azure Files: [Bevezetés az Azure Files használatába](../files/storage-files-introduction.md).
 
 ### <a name="create-a-file-share"></a>Fájlmegosztás létrehozása
 Azure-fájlmegosztások az SMB-fájlmegosztás az Azure-ban. Minden könyvtárnak és fájlnak léteznie kell egy fájlmegosztásban. Egy fiók korlátlan számú megosztást tartalmazhat, és a egy megosztás korlátlan számú fájl, egészen a tárfiók kapacitásának korlátjáig tárolhatja. A következő példában létrehozunk egy nevű fájlmegosztást **myshare**.
@@ -214,7 +214,7 @@ azure storage file list myshare myDir
 Vegye figyelembe, hogy a könyvtár neve a listázási művelet esetén nem kötelező. Ha nincs megadva, a parancs felsorolja a gyökérkönyvtár a megosztás tartalma.
 
 ### <a name="copy-files"></a>Fájlok másolása
-Azure CLI 0.9.8-as verzióját verziótól kezdve, másolhat egy fájlt egy másik fájlba, egy fájlt egy blobba vagy egy blobot egy fájlba. Az alábbiakban bemutatjuk, hogyan hajthat végre ezeket a parancssori felület parancsait használva másolási műveleteket. Fájl másolása az új mappába:
+A klasszikus CLI 0.9.8-as verzióját verziótól kezdve, másolhat egy fájlt egy másik fájlba, egy fájlt egy blobba vagy egy blobot egy fájlba. Az alábbiakban bemutatjuk, hogyan hajthat végre ezeket a parancssori felület parancsait használva másolási műveleteket. Fájl másolása az új mappába:
 
 ```azurecli
 azure storage file copy start --source-share srcshare --source-path srcdir/hello.txt --dest-share destshare
@@ -230,9 +230,9 @@ azure storage file copy start --source-container srcctn --source-blob hello2.txt
 
 ## <a name="next-steps"></a>További lépések
 
-Azure CLI 1.0 parancsainak útmutatója használata a tárolási erőforrások itt találja:
+Az Azure klasszikus parancssori felület parancsdokumentációja használata a tárolási erőforrások itt találja:
 
-* [Resource Manager módban az Azure CLI-parancsok](../../virtual-machines/azure-cli-arm-commands.md#azure-storage-commands-to-manage-your-storage-objects)
-* [Az Azure CLI-parancsok az Azure szolgáltatásfelügyelet módban](../../cli-install-nodejs.md)
+* [Resource Manager módban az Azure klasszikus parancssori felület parancsai](../../virtual-machines/azure-cli-arm-commands.md#azure-storage-commands-to-manage-your-storage-objects)
+* [Azure szolgáltatásfelügyelet módban az Azure klasszikus parancssori felület parancsai](../../cli-install-nodejs.md)
 
-Ez is érdekelheti, próbálja meg a [Azure CLI 2.0](../storage-azure-cli.md), a következő generációs pythonban írt parancssori, a Resource Manager üzemi modellel történő használathoz.
+Szeretné kipróbálni a legújabb verzióját is érdekelheti a [Azure CLI-vel](../storage-azure-cli.md), a Resource Manager üzemi modellel történő használathoz.

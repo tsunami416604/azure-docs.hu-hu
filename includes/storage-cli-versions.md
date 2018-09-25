@@ -2,5 +2,5 @@
 
 Az Azure parancssori felületének (CLI) jelenleg két verziója érhető el:
 
-* [Azure CLI 2.0](../articles/storage/common/storage-azure-cli.md): A következő generációs, Pythonban írt parancssori felületünk, Resource Manager-alapú üzemi modellel történő használathoz.
-* [Azure CLI 1.0](../articles/storage/common/storage-azure-cli-nodejs.md): A Node.js-ben írt parancssori felületünk, klasszikus és Resource Manager-alapú üzemi modellel történő használathoz.
+* [Az Azure CLI](../articles/storage/common/storage-azure-cli.md): az Azure parancssori felületen, használja a Resource Manager üzemi modellel jelenlegi verziójával.
+* [Az Azure klasszikus parancssori felület](../articles/storage/common/storage-azure-cli-nodejs.md): egy régebbi verzióját az Azure CLI, csak a klasszikus üzemi modellben való használatra készült.

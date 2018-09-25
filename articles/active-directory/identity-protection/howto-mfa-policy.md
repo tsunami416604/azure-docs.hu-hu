@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 09/13/2018
 ms.author: markvi
 ms.reviewer: raluthra
-ms.openlocfilehash: e626260dba3155ef56ee4a784aab2c6fd6897295
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: 792a1fc2403e672c973577efd7a05c9c81d45ad4
+ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45581362"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47054081"
 ---
 # <a name="how-to-configure-the-multi-factor-authentication-registration-policy"></a>Útmutató: A többtényezős hitelesítési regisztrációs házirend konfigurálása
 
@@ -30,37 +30,52 @@ Az Azure AD Identity Protection segítséget az üzembe helyezést (MFA) többt�
 ## <a name="what-is-the-multi-factor-authentication-registration-policy"></a>Mi az a többtényezős hitelesítési regisztrációs házirend?
 
 Az Azure multi-factor authentication a egy módszer annak ellenőrzése, akik, amely több, mint felhasználónév és jelszó szükséges. Biztosít egy második biztonsági szintként, felhasználói bejelentkezéseket és tranzakciókat.  
+
 Azt javasoljuk, hogy az Azure multi-factor authentication a felhasználók bejelentkezési folyamatába igényel el, mert azt:
 
-* Szolgáltatás egyszerű ellenőrzési lehetőség számos szigorú hitelesítést végez
-* A szervezet védelme és helyreállítása a fiók feltörések előkészítése a kulcsfontosságú szerepet játszik az
+- Szolgáltatás egyszerű ellenőrzési lehetőség számos szigorú hitelesítést végez
 
-![Felhasználói kockázati házirend](./media/howto-mfa-policy/1019.png "felhasználói kockázati házirend")
+- A szervezet védelme és helyreállítása a fiók feltörések előkészítése a kulcsfontosságú szerepet játszik az
+
 
 További részletekért lásd: [Mi az Azure multi-factor Authentication?](../authentication/multi-factor-authentication.md)
 
-## <a name="configuration"></a>Konfiguráció
 
-**A kapcsolódó konfigurációs párbeszédpanel megnyitásához**:
+## <a name="how-do-i-access-the-mfa-registration-policy"></a>Hogyan érhetem el az MFA regisztrációs szabályzatának?
+   
+Az MFA regisztrációs szabályzatának szerepel a **konfigurálása** szakaszában a [Azure AD Identity Protection lapról](https://portal.azure.com/#blade/Microsoft_AAD_ProtectionCenter/IdentitySecurityDashboardMenuBlade/SignInPolicy).
+   
+![Többtényezős hitelesítési szabályzat](./media/howto-mfa-policy/1014.png)
 
-- Az a **Azure AD Identity Protection** panelen, a a **konfigurálása** területén kattintson **többtényezős hitelesítési regisztráció**.
 
-    ![Többtényezős hitelesítési szabályzat](./media/howto-mfa-policy/1019.png "többtényezős hitelesítési szabályzat")
 
-### <a name="settings"></a>Beállítások
 
-* Állítsa be a felhasználókat és csoportokat a szabályzat vonatkozik:
+## <a name="policy-settings"></a>Szabályzat beállításai
 
-    ![Többtényezős hitelesítési szabályzat](./media/howto-mfa-policy/1020.png "többtényezős hitelesítési szabályzat")
-* Állítsa be az aktiválásakor a szabályzatot érvényesíteni kívánt vezérlőket::  
+A bejelentkezési kockázati házirend konfigurálásakor kell beállítani:
 
-    ![Többtényezős hitelesítési szabályzat](./media/howto-mfa-policy/1021.png "többtényezős hitelesítési szabályzat")
-* Váltás a házirend állapota:
+- A felhasználók és csoportok, a szabályzat vonatkozik:
 
-    ![Többtényezős hitelesítési szabályzat](./media/howto-mfa-policy/403.png "többtényezős hitelesítési szabályzat")
-* Az aktuális regisztrációs állapot megtekintése:
+    ![Felhasználók és csoportok](./media/howto-mfa-policy/11.png)
 
-    ![Többtényezős hitelesítési szabályzat](./media/howto-mfa-policy/1022.png "többtényezős hitelesítési szabályzat")
+- Milyen típusú hozzáférést szeretne érvényesíteni:  
+
+    ![Felhasználók és csoportok](./media/howto-mfa-policy/12.png)
+
+- A szabályzat állapotát:
+
+    ![Szabályzat kényszerítése](./media/howto-mfa-policy/14.png)
+
+
+A szabályzat konfigurációs párbeszédpanel a konfiguráció hatásának megbecsüléséhez lehetőséget biztosít.
+
+![Becsült hatás](./media/howto-mfa-policy/15.png)
+
+
+
+
+## <a name="user-experience"></a>Felhasználói élmény
+
 
 A kapcsolódó felhasználói szolgáltatások áttekintését lásd:
 

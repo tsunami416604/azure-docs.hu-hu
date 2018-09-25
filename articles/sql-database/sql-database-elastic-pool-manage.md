@@ -7,16 +7,16 @@ author: CarlRabeler
 manager: craigg
 ms.service: sql-database
 ms.custom: DBs & servers
-ms.date: 08/01/2018
+ms.date: 09/20/2018
 ms.author: ninarn
 ms.topic: conceptual
 ms.reviewer: carlrab
-ms.openlocfilehash: 4c5bb0ab3431fa951871e64d7bdd8a3a313f480f
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: ab37a714635b716a80bd869cffd2d5a37d76aff0
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44721500"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47040363"
 ---
 # <a name="create-and-manage-elastic-pools-in-azure-sql-database"></a>Az Azure SQL Database rugalmas készletek létrehozása és kezelése
 
@@ -70,12 +70,12 @@ Létrehozásához és kezeléséhez az SQL Database rugalmas készletei az [Azur
 
 | Parancsmag | Leírás |
 | --- | --- |
-|[az sql elastic-pool létrehozása](/cli/azure/sql/elastic-pool#az_sql_elastic_pool_create)|Egy rugalmas készletet hoz létre.|
-|[az sql elastic-pool list](/cli/azure/sql/elastic-pool#az_sql_elastic_pool_list)|Rugalmas készletek listáját adja vissza a kiszolgálón.|
-|[az sql elastic-pool list-dbs](/cli/azure/sql/elastic-pool#az_sql_elastic_pool_list_dbs)|Rugalmas készletben található adatbázisok listáját adja vissza.|
-|[az sql elastic-pool list-editions](/cli/azure/sql/elastic-pool#az_sql_elastic_pool_list_editions)|Emellett tartalmazza a rendelkezésre álló készlet dtu-k beállításait, tárhelykorlátait, és az adatbázis-beállításokként. Annak érdekében, hogy csökkentse a részletesség, további tárhelyet és az adatbázisonkénti beállítások alapértelmezés szerint rejtettek.|
-|[az sql elastic-pool update](/cli/azure/sql/elastic-pool#az_sql_elastic_pool_update)|Rugalmas készlet frissíti.|
-|[az sql elastic-pool delete](/cli/azure/sql/elastic-pool#az_sql_elastic_pool_delete)|A rugalmas készlet törlése.|
+|[az sql elastic-pool létrehozása](/cli/azure/sql/elastic-pool#az-sql-elastic-pool-create)|Egy rugalmas készletet hoz létre.|
+|[az sql elastic-pool list](/cli/azure/sql/elastic-pool#az-sql-elastic-pool-list)|Rugalmas készletek listáját adja vissza a kiszolgálón.|
+|[az sql elastic-pool list-dbs](/cli/azure/sql/elastic-pool#az-sql-elastic-pool-list-dbs)|Rugalmas készletben található adatbázisok listáját adja vissza.|
+|[az sql elastic-pool list-editions](/cli/azure/sql/elastic-pool#az-sql-elastic-pool-list-editions)|Emellett tartalmazza a rendelkezésre álló készlet dtu-k beállításait, tárhelykorlátait, és az adatbázis-beállításokként. Annak érdekében, hogy csökkentse a részletesség, további tárhelyet és az adatbázisonkénti beállítások alapértelmezés szerint rejtettek.|
+|[az sql elastic-pool update](/cli/azure/sql/elastic-pool#az-sql-elastic-pool-update)|Rugalmas készlet frissíti.|
+|[az sql elastic-pool delete](/cli/azure/sql/elastic-pool#az-sql-elastic-pool-delete)|A rugalmas készlet törlése.|
 
 ## <a name="transact-sql-manage-pooled-databases"></a>A Transact-SQL: Készletezett adatbázisok kezelése
 

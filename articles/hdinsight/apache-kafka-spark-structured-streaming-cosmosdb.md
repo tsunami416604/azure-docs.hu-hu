@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: jasonh
-ms.openlocfilehash: c18234e50711b2496b793263ca8d314f16347cbe
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 8f0a16320091f8b2efa98ee96a63801e841c082e
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43107795"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46971314"
 ---
 # <a name="use-spark-structured-streaming-with-kafka-and-azure-cosmos-db"></a>Használja a Spark strukturált Stream Kafka és az Azure Cosmos DB-vel
 
@@ -104,7 +104,7 @@ Bár létrehozhat egy Azure virtuális hálózatra, a Kafka, és a Spark-fürtö
 
 Az itt bemutatott projekt Cosmos DB tárolja az adatokat. A kód futtatása előtt létre kell hoznia egy _adatbázis_ és _gyűjtemény_ Cosmos DB-példányában. Is le kell kérnie a dokumentum végpont és a _kulcs_ Cosmos DB-hez kérelmek hitelesítéséhez. 
 
-Ehhez a egyirányú azt használja a [Azure CLI 2.0](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest). A következő szkript létrehoz egy adatbázist `kafkadata` és a egy nevű gyűjtemény `kafkacollection`. Ezután az elsődleges kulcsot adja vissza.
+Ehhez a egyirányú azt használja a [Azure CLI-vel](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest). A következő szkript létrehoz egy adatbázist `kafkadata` és a egy nevű gyűjtemény `kafkacollection`. Ezután az elsődleges kulcsot adja vissza.
 
 ```azurecli
 #!/bin/bash

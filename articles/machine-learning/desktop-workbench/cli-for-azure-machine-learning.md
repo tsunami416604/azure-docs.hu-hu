@@ -11,16 +11,19 @@ ms.component: core
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 03/10/2018
-ms.openlocfilehash: 0e37e1839d2248507a30de08e2ac4c975bd3b859
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ROBOTS: NOINDEX
+ms.openlocfilehash: 06e85845d41b240638a5b5b4d75d64fd460a99bf
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35645381"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46953327"
 ---
 # <a name="install-and-use-the-machine-learning-cli-for-top-tasks-in-azure-machine-learning"></a>Telepítése és a gépi tanulási CLI a leggyakoribb feladatokat az Azure Machine Learning használata
 
-Az Azure Machine Learning-szolgáltatások rendszer integrált, teljes körű adatelemzési és fejlett adatelemzési megoldás. A hivatásos adatszakértők adatok előkészítéséhez, a kísérletek kidolgozásához és a modellek felhőméretű üzembe helyezése a az Azure Machine Learning-szolgáltatások használatával. 
+[!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)]
+
+Az Azure Machine Learning szolgáltatásnak egy integrált, teljes körű adatelemzési és fejlett adatelemzési megoldás. A hivatásos adatszakértők Azure Machine Learning szolgáltatás segítségével adatok előkészítéséhez, a kísérletek kidolgozásához és a modellek felhőméretű üzembe helyezése. 
 
 Az Azure Machine Learning a parancssori felület (CLI) amely is biztosít:
 + Munkaterület és projektek felügyelete
@@ -39,7 +42,7 @@ Ez a cikk bemutatja a leghasznosabb a CLI-parancsok a felhasználók kényelme �
 Azure-előfizetéssel, vagy egy erőforráscsoport, ahol a modellek telepíthet közreműködői hozzáférés szükséges. Emellett szüksége annak érdekében, hogy futtassa a CLI az Azure Machine Learning Workbench telepítése. 
 
 >[!IMPORTANT]
->Az Azure Machine Learning-szolgáltatások kiadásaiban CLI eltér a [Azure CLI-vel](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest), használt Azure-erőforrások kezeléséhez.
+>A parancssori felület elérhető az Azure Machine Learning szolgáltatás eltér a [Azure CLI-vel](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest), használt Azure-erőforrások kezeléséhez.
 
 ## <a name="get-and-start-cli"></a>GET, és indítsa el a parancssori felület
 
@@ -201,7 +204,7 @@ az ml env set -n <environment name> -g <resource group name>
 ## <a name="next-steps"></a>További lépések
 
 Első lépések a egyet az alábbi cikkek: 
-+ [Telepítse és indítsa el az Azure Machine Learning segítségével](../service/quickstart-installation.md)
++ [Telepítse és indítsa el az Azure Machine Learning segítségével](quickstart-installation.md)
 + [Írisz osztályozása adatok oktatóanyag: 1. rész](tutorial-classifying-iris-part-1.md)
 
 Ásson mélyebbre egyet az alábbi cikkek:

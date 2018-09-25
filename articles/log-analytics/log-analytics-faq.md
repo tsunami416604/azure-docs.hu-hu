@@ -1,6 +1,6 @@
 ---
-title: Naplófájl Analytics – gyakori kérdések |} Microsoft Docs
-description: Az Azure Naplóelemzés szolgáltatással kapcsolatos gyakran feltett kérdésekre adott válaszokat.
+title: Log Analytics – gyakori kérdések |} A Microsoft Docs
+description: Az Azure Log Analytics szolgáltatással kapcsolatos gyakori kérdésekre adott válaszokat.
 services: log-analytics
 documentationcenter: ''
 author: mgoedtel
@@ -12,164 +12,223 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/19/2018
+ms.date: 09/18/2018
 ms.author: magoedte
 ms.component: na
-ms.openlocfilehash: eb1a60ff533e9e24f3dc80057129da47a2d9a726
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: d873d28ec772735b8f21551cde1c7d0eab79a18c
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37128530"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47035139"
 ---
 # <a name="log-analytics-faq"></a>Log Analytics – gyakori kérdések
-A Microsoft FAQ a Microsoft Azure Naplóelemzés gyakran feltett kérdésekre listáját. Amennyiben a Naplóelemzési kapcsolatos további kérdése van, a [vitafóruma](https://social.msdn.microsoft.com/Forums/azure/home?forum=opinsights) és kérdéseit. Ha kérdése van gyakori, azt adja hozzá a cikkben, hogy gyorsan és könnyen megtalálhatók.
+A Microsoft FAQ a Microsoft Azure Log Analytics kapcsolatos gyakori kérdések listáját. Ha a Log Analytics szolgáltatásról további kérdése van, lépjen a [fórum](https://social.msdn.microsoft.com/Forums/azure/home?forum=opinsights) és felteheti kérdéseit. Egy kérdést gyakran ismételt, amikor hozzáadjuk ehhez a cikkhez, hogy gyorsan és könnyen megtalálhatók.
+
+
+## <a name="new-logs-experience"></a>Az új naplók élmény
+
+### <a name="q-whats-the-difference-between-the-new-logs-experience-and-log-analytics"></a>K: Mi a különbség az új naplók élmény és a Log Analytics?
+
+V: azok ugyanaz. [A log Analytics az Azure Monitor szolgáltatásban integráció](../azure-monitor/azure-monitor-rebrand.md) biztosít egy egységes felügyeleti kezelőfelület. Az új naplók az Azure monitorban felhasználói felület pontosan ugyanaz, mint a Log Analytics-lekérdezéseket, amelyek a számos ügyfél már használt.
+
+### <a name="q-can-i-still-use-log-search"></a>K: továbbra is használható a naplóbeli keresés? 
+
+V: naplóbeli keresés jelenleg továbbra is elérhető, az OMS-portálon, és a név alatt az Azure Portalon **naplók (klasszikus)**. Az OMS-portálon a 2019. január 15 hivatalosan megszűnik. Az Azure Portalon a klasszikus naplók élményt fokozatosan megszűnik, és az új naplók felület helyett. 
+
+### <a name="q-can-i-still-use-advanced-analytics-portal"></a>K. Továbbra is használható a speciális analitika portálon? 
+Az új naplók az Azure Portal felhasználói felület alapul a [Advanced Analytics-portál](https://portal.loganalytics.io/), de továbbra is elérhető az Azure Portalon kívül. Az ütemterv kivonása a külső portál hamarosan fogjuk bejelenteni.
+
+### <a name="q-why-cant-i-see-query-explorer-and-save-buttons-in-the-new-logs-experience"></a>K. Miért nem lásd: a Query Explorer és gombok mentse az új naplók funkció?
+
+**Lekérdezési Explorer**, **mentése** és **riasztási beállítása** gombok nem érhetők el, egy adott erőforrás kontextusában naplók vizsgálata esetén. Mentse az értesítések létrehozásakor, vagy egy lekérdezés betöltése, naplók hatókörét kell állítani egy munkaterülethez. Nyissa meg a naplók munkaterület a környezetben, jelölje be **minden szolgáltatás** > **figyelő** > **naplók**. Az utolsó használt munkaterület van kijelölve, de más munkaterületekhez is kiválaszthat. Lásd: [megtekintése és elemzése a Log Analytics data](../log-analytics/log-analytics-log-search-portals.md) további információt.
+
+### <a name="q-how-do-i-extract-custom-fields-in-the-new-logs-experience"></a>K. Hogyan kinyerése az új naplók élmény az egyéni mezők? 
+
+Válasz: egyéni mezők kinyerése a hagyományos naplók élmény jelenleg támogatottak. 
+
+### <a name="q-where-do-i-find-list-view-in-the-new-logs"></a>K. Hol találhatók az új naplók az listanézet? 
+
+V: lista nézet nem érhető el az új naplók. Az egyes rekordok az eredmények táblázatában balra nyíl van. Kattintson a nyílra kattintva nyissa meg a egy adott rekord részleteit. 
+
+### <a name="q-after-running-a-query-a-list-of-suggested-filters-shows-up-but-it-doesnt-include-all-filters-how-can-i-see-the-rest"></a>K. A lekérdezés futtatása után javasolt szűrők listája megjelenik-e, de nem tartalmazza az összes szűrő. Hogyan tekinthetem meg a többi? 
+
+V: jelenleg látható előzetes verziója új szűrőket végrehajtására. Ez most már folyamatban van a felhasználói felület legfeljebb 10 000 rekordot korlátozza helyett a teljes eredményhalmaz alapul. Ez a funkció jelenleg a legnépszerűbb szűrőket és az egyes szűrők a 10 leggyakrabban használt értékek listáját. 
+
+### <a name="q-why-am-i-getting-the-error-register-resource-provider-microsoftinsights-for-this-subscription-to-enable-this-query-in-logs-after-drilling-in-from-vm"></a>K. Miért jelenik meg a hiba: "Erőforrás-szolgáltató regisztrálása ahhoz, hogy ez a lekérdezés ehhez az előfizetéshez" Microsoft.Insights"" naplókat, a virtuális gépről a részletező elemzés után? 
+
+V: alapértelmezés szerint sok erőforrás-szolgáltató a rendszer automatikusan regisztrálja, azonban előfordulhat, hogy néhány erőforrás-szolgáltatókat manuálisan regisztrálni kell. Ez konfigurálja a-előfizetés használata az erőforrás-szolgáltató. Regisztráció a hatókör, mindig az előfizetést. További információ: [Erőforrás-szolgáltatók és típusaik](../azure-resource-manager/resource-manager-supported-services.md#portal).
+
+### <a name="q-why-am-i-am-getting-no-access-error-message-when-accessing-logs-from-a-vm-page"></a>K. Miért érkeznek meg hozzám a nincs hozzáférés hibaüzenet egy virtuális gép oldaláról naplók elérésekor? 
+
+V: a virtuális gépek naplóinak megtekintéséhez kell olvasási engedéllyel a munkaterülethez, amely tárolja a virtuális gépek naplóinak meg kell adni. Ezekben az esetekben a rendszergazda biztosítania kell, és az engedélyek az Azure-ban.
+
+### <a name="q-why-can-i-can-access-my-workspace-in-oms-portal-but-i-get-the-error-you-have-no-access-in-the-azure-portal"></a>K. Miért a saját munkaterület OMS-portál eléréséhez lehet, de jelenik meg a hiba "van nincs hozzáférés" az Azure Portalon?  
+
+V: a munkaterület az Azure-ban hozzárendelt Azure-engedélyeket kell rendelkeznie. Vannak bizonyos esetekben, ahol nem lehetséges, hogy rendelkezik megfelelő hozzáférési engedélyekkel. Ezekben az esetekben a rendszergazda kell biztosítania, az engedélyeket a Azure.See [Azure-bA az OMS-portálon](../log-analytics/log-analytics-oms-portal-transition.md) további információt.
+
+### <a name="q-why-cant-i-cant-see-view-designer-entry-in-logs"></a>K. Miért nem nem látok adatforrásnézet-tervezőből belépési naplók? 
+V: adatforrásnézet-tervezőből csak naplók rendelkező közreműködői engedélyekkel rendelkező vagy újabb verziója érhető el.
+
+### <a name="q-can-i-still-use-the-analytics-portal-outside-of-azure"></a>K. Továbbra is használható az Azure-on kívül Analytics-portálon?
+A. Igen, a naplók lapon, az Azure-ban és a [bővített analitika portál](https://portal.loganalytics.io) ugyanazt a kódot alapulnak. A log Analytics az Azure monitorban több egységes felügyeleti élmény érdekében szolgáltatásként való integráció. Továbbra is hozzáférhet az URL-Analytics-portálon: https://portal.loganalytics.io/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/workspaces/{workspaceName}.
+
+
 
 ## <a name="general"></a>Általános kérdések
 
-### <a name="q-does-log-analytics-use-the-same-agent-as-azure-security-center"></a>Q. Log Analytics használata ugyanaz az ügynök, az Azure Security Center?
+### <a name="q-how-can-i-see-my-views-and-solutions-in-azure-portal"></a>K. Hogyan tekinthetem meg saját nézeteket és a megoldások az Azure Portalon? 
 
-A. Korai. június 2017 az Azure Security Center megkezdte a Microsoft Monitoring Agent használatával gyűjt, és adatokat. További tudnivalókért lásd: [Azure Security Center Platform áttelepítési gyakran ismételt kérdések](../security-center/security-center-platform-migration-faq.md).
+V: a nézetek és a telepített megoldások listáját az Azure Portalon érhetők el. Kattintson a **Minden szolgáltatás** lehetőségre. Az erőforrások listájában válassza ki a **figyelő**, majd kattintson a **... További**. Az utolsó használt munkaterület van kijelölve, de más munkaterületekhez is kiválaszthat. 
 
-### <a name="q-what-checks-are-performed-by-the-ad-and-sql-assessment-solutions"></a>Q. A rendszer, mely ellenőrzi az AD és az SQL-értékelési megoldás?
+### <a name="q-why-i-cant-create-workspaces-in-west-central-us-region"></a>K. Miért nem tudok létrehozni munkaterületek az USA nyugati középső régiójában? 
 
-A. A következő lekérdezés az összes elvégzett jelenleg leírását jeleníti meg:
+V: Ebben a régióban jelenleg átmeneti kapacitásának határát. A korlát tervezett ezeket az első felében 2019.
+
+
+### <a name="q-does-log-analytics-use-the-same-agent-as-azure-security-center"></a>K. A Log Analytics használata ugyanaz az ügynök, az Azure Security Center?
+
+V: a 2017 júniusának az Azure Security Center már a Microsoft Monitoring Agent használatával gyűjti össze és tárolja az adatokat. További tudnivalókért lásd: [Azure Security Center Platform áttelepítési – gyakori kérdések](../security-center/security-center-platform-migration-faq.md).
+
+### <a name="q-what-checks-are-performed-by-the-ad-and-sql-assessment-solutions"></a>K. Milyen ellenőrzéseket hajtja végre az AD és az SQL-értékeléssel megoldások?
+
+V: a következő lekérdezés az összes elvégzett jelenleg leírását jeleníti meg:
 
 ```
 (Type=SQLAssessmentRecommendation OR Type=ADAssessmentRecommendation) | dedup RecommendationId | select FocusArea, ActionArea, Recommendation, Description | sort Type, FocusArea,ActionArea, Recommendation
 ```
 
-Az eredmények majd exportálhatja Excel további ellenőrzésre.
+Az eredményeket ezután exportálhatók Excelbe további ellenőrzésre.
 
-### <a name="q-why-do-i-see-something-different-than-oms-in-the-system-center-operations-manager-console"></a>Kérdés: Miért látom azt egy másik, mint a System Center Operations Manager konzolon OMS?
+### <a name="q-why-do-i-see-something-different-than-oms-in-the-system-center-operations-manager-console"></a>K. Miért látok más, mint az OMS a System Center Operations Manager konzolon?
 
-A: attól függően milyen frissítés összesítése az Operations Manager van, megjelenik egy csomópont *System Center Advisor*, *Operational Insights*, vagy *Naplóelemzési*.
+V: attól függően, melyik frissítési kumulatív Operations Manager a, láthatja a csomópontokat a *System Center Advisor*, *Operational Insights*, vagy *Log Analytics*.
 
-A szöveges karakterlánc frissítés *OMS* szerepel a felügyeleti csomagot kézzel kell importálni. Az aktuális szöveggel és -funkcióinak megtekintéséhez kövesse az utasításokat a legújabb System Center Operations Manager frissítés összesítő KB cikk, és frissítse a konzolt.
+A szöveges karakterlánc frissítésének *OMS* szerepel a felügyeleti csomag, amely manuálisan importálni kell. Tekintse meg a jelenlegi szöveg és a Funkciók, kövesse az utasításokat a legújabb System Center Operations Manager frissítési kumulatív KB cikk, és frissítse a konzolt.
 
-### <a name="q-is-there-an-on-premises-version-of-log-analytics"></a>K: van Log Analytics egy helyszíni verzióját?
+### <a name="q-is-there-an-on-premises-version-of-log-analytics"></a>K: van egy Log Analytics helyszíni verzióját?
 
-V: nem. A Naplóelemzési egy méretezhető felhőalapú szolgáltatás, amely feldolgozza, és nagy mennyiségű adatot tárolja. 
+V: nem. A log Analytics egy méretezhető felhőalapú szolgáltatás, amely feldolgozza, és nagy mennyiségű adatot tárol a. 
 
-### <a name="q-how-do-i-troubleshoot-if-log-analytics-is-no-longer-collecting-data"></a>Q. Hogyan hibaelhárítása Ha Log Analyticshez már nem gyűjt adatokat?
+### <a name="q-how-do-i-troubleshoot-if-log-analytics-is-no-longer-collecting-data"></a>K. Hogyan háríthatom el, ha a Log Analytics már nem gyűjt adatokat?
 
-V: az előfizetés és 2018. április 2. előtt létrehozott munkaterületen lévő a *szabad* adatgyűjtés leáll IP-címek, ha 500 MB-nál több adat küldése naponta, a többi nap. Napi korlát elérése gyakori oka, hogy Naplóelemzési leállítja az adatgyűjtést, vagy az adatok akkor jelenik meg, hogy hiányzik.  
+V: a egy előfizetésre, és 2018. április 2. előtt létrehozott munkaterületet, amely a *ingyenes* adatgyűjtés leállítása tarifacsomagban van, ha több mint 500 MB adatot küldik egy nap alatt, a nap hátralevő. Napi korlát elérése a gyakori oka, hogy a Log Analytics leállítja az adatgyűjtést, vagy adatokat úgy tűnik, hogy hiányzik.  
 
-Naplóelemzési hoz létre eseményt, típusú *szívverés* és segítségével határozza meg, ha az adatgyűjtés leáll. 
+A log Analytics eseményt hoz létre típusú *szívverés* és a segítségével határozza meg, ha leállítja az adatgyűjtést. 
 
-Futtassa a következő lekérdezést a keresést, hogy ellenőrizze, hogy vannak napi korlát elérése és hiányzó adat: `Heartbeat | summarize max(TimeGenerated)`
+A keresés, ellenőrizze, hogy vannak napi korlát elérése és adatok hiányoznak a következő lekérdezés futtatásával: `Heartbeat | summarize max(TimeGenerated)`
 
-Egy adott számítógép ellenőrzéséhez futtassa az alábbi lekérdezést: `Heartbeat | where Computer=="contosovm" | summarize max(TimeGenerated)`
+Egy adott számítógép ellenőrzéséhez futtassa a következő lekérdezést: `Heartbeat | where Computer=="contosovm" | summarize max(TimeGenerated)`
 
-Adatgyűjtés leáll, attól függően, hogy az időtartományt kiválasztva, akkor addig nem jelennek meg minden visszaadott rekordok.   
+Amikor az adatgyűjtés leáll, az időtartományt kiválasztva, attól függően minden visszaadott rekord nem jelenik meg.   
 
-A következő táblázat ismerteti az oka, hogy leállítja az adatgyűjtést, és folytathatja az adatgyűjtést a javasolt művelet:
+A következő táblázat ismerteti az oka, hogy leállítja az adatgyűjtést, és folytathatja az adatgyűjtést javasolt művelet:
 
-| OK adatgyűjtés leállítása                       | Adatgyűjtés folytatása |
+| OK adatgyűjtés leállítása                       | Az adatgyűjtés folytatása |
 | -------------------------------------------------- | ----------------  |
-| Az ingyenes adatok határértékét<sup>1</sup>       | Várja meg, amíg a következő hónap gyűjtemény automatikus újraindítása, vagy<br> A fizetős tarifacsomag módosítása |
-| Azure-előfizetés miatt felfüggesztett állapotban van: <br> Ingyenes próbaverzió befejeződött <br> Az Azure hozzáférési lejárt <br> Havi költségkeret érhető el (például a az MSDN webhelyen vagy a Visual Studio előfizetői)                          | A szolgáltatás fizetős átalakítása <br> A szolgáltatás fizetős átalakítása <br> Távolítsa el a korlátot, vagy várjon, amíg a korlát alaphelyzetbe állítása |
+| Elérte az ingyenes adatmennyiség korlátot<sup>1</sup>       | Várja meg, amíg a következő hónapban automatikusan, újraindítása, gyűjtemény vagy<br> Módosítása fizetős tarifacsomagra |
+| Azure-előfizetés miatt felfüggesztett állapotban van: <br> Ingyenes próbaidőszak véget ért <br> Az Azure pass lejárt <br> Havonta költségkeret elérése (például az MSDN vagy a Visual Studio előfizetési)                          | Fizetős előfizetéssé alakítani <br> Fizetős előfizetéssé alakítani <br> Távolítsa el a korlátot, vagy várjon, amíg a korlát alaphelyzetbe állítása |
 
-<sup>1</sup> Ha a munkaterületet a *szabad* IP-címek, tehát legfeljebb 500 MB naponkénti adat küldése a szolgáltatást. Ha eléri a napi korlátot, adatgyűjtés leáll, a következő napig. Adatgyűjtés leállítása küldött adatok nem indexelt, és nem érhető el a kereséshez. Adatok gyűjtése folytatódik, ha csak az új adatok feldolgozása következik be. 
+<sup>1</sup> Ha munkaterületét a *ingyenes* tarifacsomag, Ön legfeljebb napi 500 MB-os küld a szolgáltatásnak. Amikor eléri a napi korlátot, az adatgyűjtés leáll, csak a következő napon. Adatgyűjtés leállítása elküldött adatok nem indexelt, és nem áll rendelkezésre a kereséshez. Adatok gyűjtése folytatódik, ha csak az új adatok feldolgozása következik be. 
 
-A Naplóelemzési UTC időt használja, és minden nap UTC idő szerint éjfélkor kezdődik. Ha a munkaterületet eléri a napi korlátot, a feldolgozási folytatja a következő UTC nap első órában.
+A log Analytics UTC időt használ, és minden nap elindul éjfélkor (UTC). Ha a munkaterület eléri a napi korlátot, a feldolgozási folytatja az első óráért a következő (UTC) nap során.
 
-### <a name="q-how-can-i-be-notified-when-data-collection-stops"></a>Q. Hogyan tudom értesítést kaphat leállítja az adatok gyűjtését?
+### <a name="q-how-can-i-be-notified-when-data-collection-stops"></a>K. Hogyan kaphatok értesítést adatgyűjtés leállása esetén?
 
-A: a leírt lépésekkel [hozzon létre egy új naplófájl riasztás](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md) értesítést leállítja az adatgyűjtést.
+V: használata leírt lépéseket követve [hozzon létre egy új riasztás](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md) értesítést, ha leállítja az adatgyűjtést.
 
-Amikor leállítja az adatgyűjtést kapcsolatos riasztás létrehozása, ha a:
+Amikor az adatgyűjtés leáll a riasztás létrehozásakor állítsa be a:
 
 - A **riasztási feltétel megadásával** határozza meg a célerőforrásként használt Log Analytics-munkaterületet.
 - A **Riasztási feltételek** résznél az alábbiakat adja meg:
-   - **A jelzés neve** válasszon **egyéni napló keresés**.
+   - **Jel neve** kiválasztása **egyéni naplóbeli keresés**.
    - A **Keresési lekérdezés** legyen a következő: `Heartbeat | summarize LastCall = max(TimeGenerated) by Computer | where LastCall < ago(15m)`
    - A **Riasztási logika** **alapja** legyen az *eredmények száma*, a **Feltétel** pedig legyen *nagyobb mint* a következő **küszöbérték** : *0*
-   - **Adott időszakban** a *30* perc és **riasztási gyakoriságot** minden *10* perc
+   - **Adott időszakban** , *30* perc és **riasztási időköz** minden *10* perc
 - **Határozza meg a riasztás részleteit** az alábbiak megadásával:
-   - **Név** való *adatgyűjtés leállítása*
+   - **Név** való *leállította az adatgyűjtést*
    - A **Súlyosság** legyen *Figyelmeztetés*
 
-Adjon meg egy meglévő, vagy hozzon létre egy új [művelet csoport](../monitoring-and-diagnostics/monitoring-action-groups.md) , hogy amikor a napló riasztás feltételeinek felel meg, ha több mint 15 percig hiányzó szívverés értesítést.
+Adjon meg egy meglévő, vagy hozzon létre egy új [műveletcsoport](../monitoring-and-diagnostics/monitoring-action-groups.md) , hogy ha a riasztás megfelel a feltételnek, ha több mint 15 percig hiányzó szívverés értesítést.
 
 ## <a name="configuration"></a>Konfiguráció
-### <a name="q-can-i-change-the-name-of-the-tableblob-container-used-to-read-from-azure-diagnostics-wad"></a>Q. Módosítható az az Azure Diagnostics (ÜVEGVATTA) olvasásához használt tábla/blob-tároló neve?
+### <a name="q-can-i-change-the-name-of-the-tableblob-container-used-to-read-from-azure-diagnostics-wad"></a>K. Módosíthatom a tábla/blob-tároló az Azure Diagnostics (WAD) olvasásához használt neve?
 
-A. Nem, lehetetlen jelenleg tetszőleges táblák vagy a tárolókat az Azure storage olvasni.
+A. Nem, akkor nem alkalmas jelenleg tetszőleges táblákat vagy az Azure BLOB storage tárolók olvasni.
 
-### <a name="q-what-ip-addresses-does-the-log-analytics-service-use-how-do-i-ensure-that-my-firewall-only-allows-traffic-to-the-log-analytics-service"></a>Q. IP-címek nem Naplóelemzés szolgáltatás használata? Hogyan ellenőrizze, hogy a tűzfal csak a Naplóelemzés szolgáltatás-forgalmát engedélyezi?
+### <a name="q-what-ip-addresses-does-the-log-analytics-service-use-how-do-i-ensure-that-my-firewall-only-allows-traffic-to-the-log-analytics-service"></a>K. IP-címek nem a Log Analytics szolgáltatás használata? Hogyan biztosítja, hogy a tűzfal csak lehetővé teszi a Log Analytics szolgáltatás forgalom?
 
-A. A Naplóelemzési szolgáltatás Azure épül. Napló Analytics IP-címek szerepelnek a [Microsoft Azure Datacenter IP-címtartományok](http://www.microsoft.com/download/details.aspx?id=41653).
+A. A Log Analytics szolgáltatás Azure épül. Log Analytics IP-címek szerepelnek a [a Microsoft Azure adatközpont IP-címtartományok](http://www.microsoft.com/download/details.aspx?id=41653).
 
-Mivel szolgáltatástelepítések történik, megváltozik a Naplóelemzés szolgáltatás a tényleges IP-címe. A tűzfalon keresztül engedélyezi a DNS-nevek szerepelnek a [hálózati vonatkozó követelmények](log-analytics-concept-hybrid.md#network-firewall-requirements).
+Szolgáltatás központi telepítések később, a tényleges IP-címek a Log Analytics szolgáltatás módosítani. A DNS-nevek engedélyezése a tűzfalon keresztül vannak dokumentálva [hálózati követelmények](log-analytics-concept-hybrid.md#network-firewall-requirements).
 
-### <a name="q-i-use-expressroute-for-connecting-to-azure-does-my-log-analytics-traffic-use-my-expressroute-connection"></a>Q. Kapcsolódás Azure ExpressRoute használatával. A Naplóelemzési forgalom használ a saját ExpressRoute-kapcsolatot?
+### <a name="q-i-use-expressroute-for-connecting-to-azure-does-my-log-analytics-traffic-use-my-expressroute-connection"></a>K. Csatlakozás az Azure-bA ExpressRoute használatával. A Log Analytics-forgalmat használ a saját ExpressRoute-kapcsolat?
 
-A. A különböző típusú ExpressRoute forgalom ismerteti a [ExpressRoute dokumentációja](../expressroute/expressroute-faqs.md#supported-services).
+A. Az ExpressRoute-forgalmat a különböző típusú ismertetett a [az ExpressRoute dokumentációja](../expressroute/expressroute-faqs.md#supported-services).
 
-Log Analytics-forgalom használ a nyilvános társviszony ExpressRoute-kapcsolatcsoportot.
+A Log Analytics-forgalom nyilvános társviszony-létesítési ExpressRoute-kapcsolatcsoportot használ.
 
-### <a name="q-is-there-a-simple-and-easy-way-to-move-an-existing-log-analytics-workspace-to-another-log-analytics-workspaceazure-subscription"></a>Q. Egy egyszerű és egyszerűen elvégezhető egy meglévő Naplóelemzési munkaterület áthelyezése egy másik Naplóelemzési munkaterület vagy az Azure-előfizetés van?
+### <a name="q-is-there-a-simple-and-easy-way-to-move-an-existing-log-analytics-workspace-to-another-log-analytics-workspaceazure-subscription"></a>K. Van egy meglévő Log Analytics-munkaterület áthelyezése egy másik Log Analytics munkaterület vagy az Azure-előfizetés egyszerű és könnyen mód?
 
-A. A `Move-AzureRmResource` parancsmag lehetővé teszi, hogy áthelyezése a Naplóelemzési munkaterület, valamint az Automation-fiók egy Azure-előfizetés között. További információkért lásd: [Move-AzureRmResource](http://msdn.microsoft.com/library/mt652516.aspx).
+A. A `Move-AzureRmResource` parancsmag lehetővé teszi a Log Analytics-munkaterülettel, valamint az Automation-fiók áthelyezése egy Azure-előfizetésből egy másikba. További információkért lásd: [Move-AzureRmResource](http://msdn.microsoft.com/library/mt652516.aspx).
 
-Ez a módosítás is az Azure portálon hajtható végre.
+Ez a változás is módosíthatók az Azure Portalon.
 
-Adatok áthelyezése egy Naplóelemzési munkaterület másik nem, vagy módosítsa a régiót, amelyben a Naplóelemzési adatokat tárolja.
+Adatok áthelyezése egy Log Analytics-munkaterület között nem, vagy módosítsa a régiót, amelyben a Log Analytics-adatok tárolva van.
 
-### <a name="q-how-do-i-add-log-analytics-to-system-center-operations-manager"></a>K: hogyan Naplóelemzési hozzáadása a System Center Operations Manager?
+### <a name="q-how-do-i-add-log-analytics-to-system-center-operations-manager"></a>K: hogyan adja hozzá a Log Analytics a System Center Operations Manager?
 
-V: frissítése a legújabb kumulatív frissítése és a felügyeleti csomagok importálása teszi csatlakoztatása az Operations Manager szolgáltatáshoz.
+V: a legújabb kumulatív frissítés és a felügyeleti csomagok importálása lehetővé teszi, hogy az Operations Manager csatlakoztatása a Log Analytics szolgáltatásba.
 
 >[!NOTE]
->Az Operations Manager kapcsolatát szolgáltatáshoz csak érhető el, a System Center Operations Manager 2012 SP1 és újabb verzióihoz.
+>A Log Analytics az Operations Manager-kapcsolat csak akkor használható, a System Center Operations Manager 2012 SP1 és újabb verziók.
 
-### <a name="q-how-can-i-confirm-that-an-agent-is-able-to-communicate-with-log-analytics"></a>K: hogyan győződhet meg, hogy egy ügynök nem tud kommunikálni a Log Analytics?
+### <a name="q-how-can-i-confirm-that-an-agent-is-able-to-communicate-with-log-analytics"></a>K: hogyan győződhet meg, hogy, hogy az ügynök képes kommunikálni a Log Analytics-e?
 
-V: Győződjön meg arról, hogy az ügynök OMS kommunikál, keresse fel: Vezérlőpult, a biztonság és a beállítások, **Microsoft Monitoring Agent**.
+Válasz: Győződjön meg arról, hogy az ügynök kommunikálni tudjon OMS, lépjen a: Vezérlőpult, a biztonság és a beállítások, **Microsoft Monitoring Agent**.
 
-Az a **Azure Naplóelemzés (OMS)** lapon, a zöld pipa jelzi. Egy zöld pipa ikon megerősíti, hogy az ügynök nem tud kommunikálni az Azure-szolgáltatás.
+Alatt a **Azure Log Analytics (OMS)** fülre, keressen egy zöld pipa. Egy zöld pipa ikon megerősíti, hogy az ügynök nem tud kommunikálni az Azure-szolgáltatás.
 
-Sárga figyelmeztető ikon azt jelenti, hogy az ügynök nehézségekkel Naplóelemzési problémák kommunikál. Egy leggyakoribb oka, a Microsoft Monitoring Agent szolgáltatása leállt. Helyvezérlés-kezelő használatával indítsa újra a szolgáltatást.
+Egy sárga figyelmeztető ikon azt jelenti, hogy az ügynök a Log Analytics-szel kapcsolatos problémák kommunikációs tapasztalja. Egyik gyakori oka a Microsoft Monitoring Agent szolgáltatás leállt. Helyvezérlés-kezelő használatával indítsa újra a szolgáltatást.
 
-### <a name="q-how-do-i-stop-an-agent-from-communicating-with-log-analytics"></a>K: hogyan állítsa le a az ügynök kommunikáljon a Log Analytics?
+### <a name="q-how-do-i-stop-an-agent-from-communicating-with-log-analytics"></a>K: hogyan leállítja az ügynök kommunikáljon a Log Analytics?
 
-V: a System Center Operations Manager, a számítógép eltávolítása az OMS felügyelt számítógépek listáját. Az Operations Manager már nem a jelentéskészítő szolgáltatáshoz frissíti az ügynök konfigurációját. Naplóelemzési közvetlenül csatlakoztatott ügynökök, leállíthatja azok keresztül: Vezérlőpult, a biztonság és a beállítások, **Microsoft Monitoring Agent**.
-A **Azure Naplóelemzés (OMS)**, távolítsa el a felsorolt összes munkaterületet.
+V: a System Center Operations Manager, a számítógépet eltávolítja az OMS a felügyelt számítógépek listája. Az Operations Manager már nem a jelentés a Log Analytics frissíti az ügynök konfigurációját. Közvetlenül csatlakozik a Log Analytics-ügynökök, leállíthatja őket keresztül folytatott kommunikációját: Vezérlőpult, a biztonság és a beállítások, **Microsoft Monitoring Agent**.
+A **Azure Log Analytics (OMS)**, felsorolva minden munkaterület eltávolítása.
 
-### <a name="q-why-am-i-getting-an-error-when-i-try-to-move-my-workspace-from-one-azure-subscription-to-another"></a>K: Miért jelenik hiba a saját munkaterület áthelyezése egy Azure-előfizetés másik közben?
+### <a name="q-why-am-i-getting-an-error-when-i-try-to-move-my-workspace-from-one-azure-subscription-to-another"></a>K: Miért jelenik meg hibaüzenet jelenik meg a saját munkaterület áthelyezése egy Azure-előfizetés másik?
 
-A:, ha az Azure-portált használja, ügyeljen arra, csak a munkaterület az áthelyezés van kijelölve. Nem, válassza a megoldások – ezek automatikusan áthelyezi a munkaterület helyezi át. 
+V: Ha az Azure Portalon használ, győződjön meg arról, csak a munkaterület az áthelyezés van kiválasztva. Ne válassza a megoldások – automatikusan áthelyezi a munkaterület áthelyezése után. 
 
-Ellenőrizze, hogy Ön a két Azure-előfizetések.
+Győződjön meg arról, mind az Azure-előfizetések az Önnek megfelelő engedélye.
 
-## <a name="agent-data"></a>Ügynök adatok
-### <a name="q-how-much-data-can-i-send-through-the-agent-to-log-analytics-is-there-a-maximum-amount-of-data-per-customer"></a>Q. Mennyi adatot lehet küldeni az ügynök keresztül szolgáltatáshoz? Van egy / felhasználói adatok maximális mérete?
-A. Az ingyenes csomagban egy napi cap 500 MB / munkaterület állítja be. A standard és premium tervek nincs korlátozva van feltöltött adatok mennyiségét. Felhő alapú szolgáltatásként Log Analytics célja, hogy automatikusan legfeljebb leíró a kötet méretezési érkező ügyfél –, akkor is, ha TB naponta.
+## <a name="agent-data"></a>Az ügynök adatok
+### <a name="q-how-much-data-can-i-send-through-the-agent-to-log-analytics-is-there-a-maximum-amount-of-data-per-customer"></a>K. Mennyi adatot lehet küldeni az ügynökön keresztül a Log Analytics? Van egy minden ügyfél adatok maximális mérete?
+A. Az ingyenes csomag 500 MB-os maximális napi adatmennyiséget Munkaállomásonként állítja be. A standard és prémium szintű csomag is feltöltött adatok mennyisége nincs korlátozva van. Felhőalapú szolgáltatás, a Log Analytics célja, hogy az automatikus vertikális felskálázás legfeljebb leíró a kötet érkező ügyfél –, akkor is, ha több terabájtnyi naponta.
 
-A Naplóelemzési ügynök úgy lett kialakítva, annak érdekében, hogy kevés erőforrást tartalmaz. Engedélyezi a megoldások adatmennyiség függ. Részletes információk a adatmennyiség, és tekintse meg a részletes információkat a megoldás a [használati](log-analytics-usage.md) lap.
+A Log Analytics-ügynököket úgy lett kialakítva, annak érdekében, hogy egy kis erőforrás-igényű rendelkezik. Engedélyezi a megoldások adatmennyiség függvényében. Adatmennyiség részletes információkat találhat, és tekintse meg a táblázat összefoglalja a megoldással a [használati](log-analytics-usage.md) lapot.
 
-További információk olvashatók a [ügyfél blog](http://thoughtsonopsmgr.blogspot.com/2015/09/one-small-footprint-for-server-one.html) az erőforrás-használat (tárhely) az OMS-ügynök kiértékelése után az eredményeket megjelenítő.
+További információt talál a [ügyfél blog](http://thoughtsonopsmgr.blogspot.com/2015/09/one-small-footprint-for-server-one.html) eredményeket megjelenítő az erőforrás-használat (jelenlét), az OMS-ügynök kiértékelése után.
 
-### <a name="q-how-much-network-bandwidth-is-used-by-the-microsoft-management-agent-mma-when-sending-data-to-log-analytics"></a>Q. Mekkora hálózati sávszélességet a Microsoft Management Agent (MMA) használatos, ha a Log Analyticshez való adatküldés?
+### <a name="q-how-much-network-bandwidth-is-used-by-the-microsoft-management-agent-mma-when-sending-data-to-log-analytics"></a>K. Amikor adatokat küld a Log Analytics mekkora hálózati sávszélesség használatát a Microsoft Management Agent (MMA)?
 
-A. Sávszélesség, akkor a függvény az elküldött adatok mennyisége. A rendszer tömöríti az adatokat, a hálózaton keresztül küldött.
+A. Egy függvény küldött adatok mennyisége korlátozott a sávszélesség. A hálózaton keresztül küldött adatok tömörítése.
 
-### <a name="q-how-much-data-is-sent-per-agent"></a>Q. Mennyi adatot küldött ügynök /?
+### <a name="q-how-much-data-is-sent-per-agent"></a>K. Mennyi adatot küld, az ügynök?
 
-A. Az ügynök / elküldött adatok mennyisége függ:
+A. Az ügynök / küldött adatok mennyiségét függ:
 
-* Engedélyezte a megoldások
-* A naplók és a szabály a gyűjtendő kérelemteljesítmény-számlálókat száma
-* A naplókban lévő adatok mennyisége
+* Engedélyezte a megoldásokat
+* A naplók és a gyűjtött teljesítményszámlálók számát
+* A naplók adatmennyiség
 
-Az ingyenes tarifacsomag jó módja a előkészítésére több kiszolgálók és a tipikus adatmennyiség mérőműszer. Általános felhasználás jelenik meg a [használati](log-analytics-usage.md) lap.
+Az ingyenes tarifacsomag jó módja a előkészítése több kiszolgálók és a tipikus adatmennyiség mérőműszer. Összesített használat jelenik meg a [használati](log-analytics-usage.md) lapot.
 
-A számítógépek számára, amely a WireData ügynök futhasson használja a következő lekérdezést küld a begyűjtött adatok megjelenítéséhez:
+A számítógépeken, amelyek a WireData-ügynök futhasson használja a következő lekérdezést megtekintéséhez, hogy mennyi adatot küld:
 
 ```
 Type=WireData (ProcessName="C:\\Program Files\\Microsoft Monitoring Agent\\Agent\\MonitoringHost.exe") (Direction=Outbound) | measure Sum(TotalBytes) by Computer
 ```
 
 ## <a name="next-steps"></a>További lépések
-* [Ismerkedés a Naplóelemzési](log-analytics-get-started.md) tudjon meg többet a Naplóelemzési, és működik, és perc múlva.
+* [Ismerkedés a Log Analytics](log-analytics-get-started.md) további tudnivalók a Log Analytics és az első lépésekhez percek alatt.

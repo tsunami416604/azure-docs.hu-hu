@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 08/04/2017
 ms.author: bryanla
-ms.openlocfilehash: 0554e2e184ce3f3140d3b9e90eb33c20774ed789
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 73ece43c26c3957a1b7dba02a673099f7d35e8d6
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44303004"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46951780"
 ---
 # <a name="how-to-use-key-vault-soft-delete-with-cli"></a>Key Vault helyreállítható törlés funkciójának használata parancssori felülettel
 
@@ -25,9 +25,9 @@ Az Azure Key Vault helyreállítható törlési funkció lehetővé teszi, hogy 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Az Azure CLI 2.0 – Ha ezt a beállítást nincs a környezetben, lásd: [kezelése a Key Vault parancssori felület 2.0-val](key-vault-manage-with-cli2.md).
+- Az Azure CLI - Ha ez a környezet beállítása, lásd: nincs [kezelése a Key Vault Azure parancssori felületével](key-vault-manage-with-cli2.md).
 
-A Key Vault műveletekre vonatkozó specifikus információkat CLI, lásd: [Azure CLI 2.0-s Key Vault referencia](https://docs.microsoft.com/cli/azure/keyvault).
+A Key Vault műveletekre vonatkozó specifikus információkat CLI, lásd: [Azure parancssori felület a Key Vault referencia](https://docs.microsoft.com/cli/azure/keyvault).
 
 ## <a name="required-permissions"></a>Szükséges engedélyek
 

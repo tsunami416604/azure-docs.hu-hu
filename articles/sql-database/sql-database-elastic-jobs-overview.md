@@ -10,12 +10,12 @@ ms.custom: scale out apps
 ms.topic: conceptual
 ms.date: 06/14/2018
 ms.author: sstein
-ms.openlocfilehash: 3fc9ab0505fda84464ead01b4937756707993cf0
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ms.openlocfilehash: 21cd1b171f25d5abdaa89f631ac5bab8e4a351af
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35645644"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46968872"
 ---
 # <a name="managing-scaled-out-cloud-databases"></a>Horizontálisan felskálázott felhőalapú adatbázisok kezelése
 
@@ -33,7 +33,7 @@ Horizontálisan felskálázott szilánkokra osztott adatbázisok, kezelheti a **
 * [Az Elastic Database-feladat összetevőinek telepítése](sql-database-elastic-jobs-service-installation.md). 
 * [Ismerkedés a rugalmas adatbázis-feladatok](sql-database-elastic-jobs-getting-started.md).
 * [PowerShell-lel feladatok létrehozása és kezelése](sql-database-elastic-jobs-powershell.md).
-* [Létrehozása és kezelése az Azure SQL Database-bővítő](sql-database-elastic-jobs-getting-started.md)
+* [Létrehozása és kezelése az Azure SQL Database-adatbázisok bővítő](sql-database-elastic-jobs-getting-started.md)
 
 
 
@@ -46,11 +46,11 @@ Egyszerűen tegye sémamódosítások, hitelesítő adatok kezelése, referencia
 
 **Jelentések**
 
-Összesített adatok gyűjteményből egy Azure SQL Database-adatbázisok egy videóanyagai egyetlen táblába.
+Összesítheti az Azure SQL Database-adatbázisok egy gyűjteményéből származó adatokat egy céltáblában.
 
 **Terhelés csökkentése érdekében**
 
-Általában mindegyik adatbázist függetlenül kell csatlakoztatnia, hogy Transact-SQL utasításokat futtasson vagy egyéb adminisztratív feladatokat hajtson végre. Egy feladat kezeli a bejelentkezéseket egy célcsoport összes adatbázisába. Meg is definiálása, fenntartására és a Transact-SQL szkriptek hajtható végre, egy Azure SQL Database-adatbázisok csoport közötti megőrzése.
+Általában mindegyik adatbázist függetlenül kell csatlakoztatnia, hogy Transact-SQL utasításokat futtasson vagy egyéb adminisztratív feladatokat hajtson végre. Egy feladat kezeli a bejelentkezéseket egy célcsoport összes adatbázisába. Emellett meghatározhat, fenntarthat és megőrizhet Transact-SQL-szkripteket, amelyeket Azure SQL Database-adatbázisok egy csoportján futtat.
 
 **Számlázás**
 
@@ -58,7 +58,7 @@ Feladatok futtassa a szkriptet, és jelentkezzen az egyes adatbázisok végrehaj
 
 **Rugalmasság**
 
-Az Azure SQL Database egyéni csoportjait határozzák meg, és a feladat futtatására ütemterveket.
+Meghatározhatja Azure SQL Database-adatbázisok egyéni csoportjait, valamint a feladatok futtatásának ütemezését.
 
 > [!NOTE]
 > Az Azure Portalon az SQL Azure rugalmas készletek korlátozott funkciók csak egy csökkentett készletét érhető el. A PowerShell API-k eléréséhez a jelenlegi funkciók teljes készletét használja.

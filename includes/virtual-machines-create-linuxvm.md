@@ -1,5 +1,5 @@
 
-1. Jelentkezzen be Azure-előfizetésébe a [Csatlakozás az Azure-hoz az Azure CLI 1.0-s verziójáról](/cli/azure/authenticate-azure-cli) című cikkben felsorolt lépések végrehajtásával.
+1. Jelentkezzen be az Azure-előfizetés a szükséges lépések [csatlakozás az Azure-bA az Azure klasszikus parancssori felületen](/cli/azure/authenticate-azure-cli).
 
 2. Az alábbiak szerint győződjön meg róla, hogy a klasszikus üzembe helyezési módban van:
 
@@ -52,5 +52,5 @@
     ```
 
 ## <a name="next-steps"></a>További lépések
-További részletek az Azure CLI 1.0 virtuális gépekre vonatkozó parancsairól: [Az Azure CLI 1.0 használata a klasszikus üzembehelyezési API-val](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2).
+Az összes ezeket az Azure klasszikus parancssori felület virtuális gépekre vonatkozó további tudnivalókért olvassa el a [az Azure klasszikus parancssori felület használatával a klasszikus üzembe helyezési API](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2).
 

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/25/2017
 ms.author: cbrooks
 ms.component: common
-ms.openlocfilehash: 05a7dda67ca9747c5d6205952bc9337af628de8f
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: ff382becb71f187ac38b0ef5d31c1b29c43f3fe7
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44296737"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46972555"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>Az Azure Storage-tűzfalak és virtuális hálózatok konfigurálása
 Az Azure Storage lehetővé teszi, hogy a tárfiókok meghatározott engedélyezett hálózatok biztonságos többrétegű biztonsági modellt biztosít.  Ha a hálózati szabályok vannak beállítva, csak az engedélyezett hálózatok alkalmazások férhetnek hozzá egy tárfiókot.  Egy engedélyezett hálózatról hívásakor az alkalmazások továbbra is megfelelő jogosultságokkal (egy érvényes hozzáférési kulcs vagy SAS-token) a tárfiók eléréséhez szükséges.
@@ -70,7 +70,7 @@ Update-AzureRmStorageAccountNetworkRuleSet -ResourceGroupName "myresourcegroup" 
 ```    
 
 #### <a name="cliv2"></a>CLIv2
-1. [Azure CLI 2.0 telepítése](/cli/azure/install-azure-cli) és [bejelentkezési](/cli/azure/authenticate-azure-cli).
+1. [Az Azure CLI telepítése](/cli/azure/install-azure-cli) és [bejelentkezési](/cli/azure/authenticate-azure-cli).
 2. Az alapértelmezett szabályt, a tárfiók állapota megjelenítéséhez.
 ```azurecli
 az storage account show --resource-group "myresourcegroup" --name "mystorageaccount" --query networkRuleSet.defaultAction
@@ -152,7 +152,7 @@ Remove-AzureRmStorageAccountNetworkRule -ResourceGroupName "myresourcegroup" -Na
 >
 
 #### <a name="cliv2"></a>CLIv2
-1. [Azure CLI 2.0 telepítése](/cli/azure/install-azure-cli) és [bejelentkezési](/cli/azure/authenticate-azure-cli).
+1. [Az Azure CLI telepítése](/cli/azure/install-azure-cli) és [bejelentkezési](/cli/azure/authenticate-azure-cli).
 2. A virtuális hálózati szabályok listája
 ```azurecli
 az storage account network-rule list --resource-group "myresourcegroup" --account-name "mystorageaccount" --query virtualNetworkRules
@@ -243,7 +243,7 @@ Remove-AzureRMStorageAccountNetworkRule -ResourceGroupName "myresourcegroup" -Ac
 >
 
 #### <a name="cliv2"></a>CLIv2
-1. [Azure CLI 2.0 telepítése](/cli/azure/install-azure-cli) és [bejelentkezési](/cli/azure/authenticate-azure-cli).
+1. [Az Azure CLI telepítése](/cli/azure/install-azure-cli) és [bejelentkezési](/cli/azure/authenticate-azure-cli).
 2. IP-hálózati szabályok listája
 ```azurecli
 az storage account network-rule list --resource-group "myresourcegroup" --account-name "mystorageaccount" --query ipRules
@@ -290,7 +290,9 @@ Ha a "Megbízható Microsoft-szolgáltatások" kivétel engedélyezve van, a kö
 |Azure Event Grid|Microsoft.EventGrid|A Blob Storage esemény-közzététel engedélyezése.  [További információk](https://docs.microsoft.com/azure/event-grid/overview).|
 |Azure Event Hubs|Microsoft.EventHub|Az Event Hubs Capture adatok archiválása.  [További](https://docs.microsoft.com/azure/event-hubs/event-hubs-capture-overview).|
 |Azure-hálózatok|Microsoft.Networking|Store és a hálózati forgalom naplóinak elemzése.  [További információk](https://docs.microsoft.com/azure/network-watcher/network-watcher-packet-capture-overview).|
-||||
+|Azure Monitor|Microsoft.Insights| Lehetővé teszi, hogy a figyelési adatok egy biztonságos storaage fiókba írásos [további](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-roles-permissions-security#monitoring-and-secured-Azure-storage-and-networks).|
+|
+
 
 ### <a name="storage-analytics-data-access"></a>Storage analytics-adatok elérése
 Bizonyos esetekben a diagnosztikai naplók és mérőszámok olvasási hozzáférést szükség a a hálózathatáron kívül.  A hálózati szabályok alóli kivételek is megadható, hogy a tárolási fiók naplófájlok, tabulky metrik vagy mindkettő írásvédett. [További tudnivalók a storage analytics használata.](/azure/storage/storage-analytics)
@@ -327,7 +329,7 @@ Update-AzureRmStorageAccountNetworkRuleSet -ResourceGroupName "myresourcegroup" 
 >
 
 #### <a name="cliv2"></a>CLIv2
-1. [Azure CLI 2.0 telepítése](/cli/azure/install-azure-cli) és [bejelentkezési](/cli/azure/authenticate-azure-cli).
+1. [Az Azure CLI telepítése](/cli/azure/install-azure-cli) és [bejelentkezési](/cli/azure/authenticate-azure-cli).
 2. A storage-fiók hálózati szabályok esetében a kivételek jelennek meg.
 ```azurecli
 az storage account show --resource-group "myresourcegroup" --name "mystorageaccount" --query networkRuleSet.bypass

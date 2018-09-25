@@ -8,28 +8,29 @@ manager: craigg
 ms.service: sql-database
 ms.custom: monitor & tune
 ms.topic: conceptual
-ms.date: 03/16/2018
+ms.date: 09/20/2018
 ms.author: v-daljep
 ms.reviewer: carlrab
-ms.openlocfilehash: aa031b87df51bd9f7dec40a6c3e56023e2d82d96
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: 2c848ba87d7f42f6329e7b3166a4410cadbd63a0
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45579496"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47037949"
 ---
 # <a name="azure-sql-database-metrics-and-diagnostics-logging"></a>Az Azure SQL Database-metrikák és diagnosztikai naplózás 
-Az Azure SQL Database kibocsátható, metrikák és diagnosztikai naplókat megkönnyíteni a felügyeletet. Az SQL Database beállítható az erőforrás-használatra, feldolgozókra és munkamenetekre, valamint kapcsolatokra vonatkozó adatok tárolására a következő Azure-erőforrások valamelyikén:
 
-* **Az Azure Storage**: hatalmas mennyiségű telemetriai archiválására archiválásra használják.
+Az Azure SQL Database és a felügyelt példányok adatbázisai kibocsátható könnyebben alkalmazásteljesítmény-figyelési metrikák és diagnosztikai naplókat. Az adatbázis erőforrás-használat a stream, a dolgozók és a munkamenetek és a egy ezen Azure-erőforrások kapcsolat konfigurálhatja:
+
+* **Az Azure SQL Analytics**: használt integrált Azure database intelligens teljesítményfigyelési megoldás jelentéskészítő, riasztó és enyhítő funkciókkal.
 * **Az Azure Event Hubs**: SQL Database telemetriai adatainak integrálása saját egyedi monitorozási megoldásokkal vagy élő adatfolyamatokkal használt.
-* **Az Azure Log Analytics**: egy-az-beépített monitorozási megoldás jelentéskészítő, riasztó és enyhítő funkciókkal használt. Ez az [Operations Management Suite (OMS)](../operations-management-suite/operations-management-suite-overview.md) egyik funkciója
+* **Az Azure Storage**: hatalmas mennyiségű telemetriai archiválására archiválásra használják.
 
     ![Architektúra](./media/sql-database-metrics-diag-logging/architecture.png)
 
-## <a name="enable-logging"></a>Naplózás engedélyezése
+## <a name="enable-logging-for-a-database"></a>-Adatbázis naplózásának engedélyezése
 
-Metrikák és diagnosztikai naplózás alapértelmezés szerint nincs engedélyezve. Engedélyezheti és kezelheti a metrikák és diagnosztikai naplózása a következő módszerek egyikével:
+Metrikák és diagnosztikai naplózás az SQL Database- vagy Felügyeltpéldány-adatbázis alapértelmezés szerint nincs engedélyezve. Engedélyezheti és, adatbázis-naplózás az alábbi módszerek egyikének használatával mérőszámai és diagnosztikái telemetriájának kezelése:
 
 - Azure Portal
 - PowerShell
@@ -37,40 +38,56 @@ Metrikák és diagnosztikai naplózás alapértelmezés szerint nincs engedélye
 - Az Azure Monitor REST API-val 
 - Azure Resource Manager-sablon
 
-Ha engedélyezi a metrikák és diagnosztikai naplózás, adja meg, ahol a kijelölt adatok gyűjtése az Azure-erőforrás kell. Elérhető lehetőségek a következők:
+Ha engedélyezi a metrikák és diagnosztikai naplózás, adja meg, hova legyenek összegyűjtve kijelölt adatok az Azure-erőforrás kell. Elérhető lehetőségek a következők:
 
-- Log Analytics
+- Az SQL Analytics
 - Event Hubs
 - Storage 
 
-Új Azure-erőforrás kiépítéséhez, vagy egy meglévő erőforrás kiválasztása. Miután kiválasztotta a tárolási erőforrások, adja meg, mely adatokat gyűjthet kell. Elérhető lehetőségek a következők:
+Új Azure-erőforrás kiépítéséhez, vagy egy meglévő erőforrás kiválasztása. Egy erőforrás diagnosztikai beállítás, adatbázis kiválasztása után adja meg, mely adatokat gyűjthet kell. Azure SQL Database és a felügyelt példány adatbázis-támogatással, elérhető lehetőségek a következők:
 
-- [Minden metrika](sql-database-metrics-diag-logging.md#all-metrics): tartalmaz DTU százalékos értéke, a dtu-k korlátot, a processzorhasználat, napló írási fizikai adatolvasási százalékos aránya, százalékos aránya, sikeres/sikertelen/letiltott tűzfalkapcsolatok, munkamenetek százaléka, feldolgozók százalékos, storage, a tárolási százalékos aránya , és XTP-tároló (%).
-- [QueryStoreRuntimeStatistics](sql-database-metrics-diag-logging.md#query-store-runtime-statistics): a lekérdezések futásidejének statisztikai adatait, például a CPU-használat és a lekérdezés időtartama információkat tartalmaz.
-- [QueryStoreWaitStatistics](sql-database-metrics-diag-logging.md#query-store-wait-statistics): a lekérdezés várakozási statisztika, amely arra kéri, mi a lekérdezések várta, ha a következőkre például a Processzor, a napló és a ZÁROLÁS információkat tartalmaz.
-- [Hibák](sql-database-metrics-diag-logging.md#errors-dataset): történt az adatbázis az SQL-hibákkal kapcsolatos információkat tartalmaz.
-- [DatabaseWaitStatistics](sql-database-metrics-diag-logging.md#database-wait-statistics-dataset): Várakozás a különböző várakozási típusok kapcsolatos mennyi idő adatbázis töltött információkat tartalmaz.
-- [Időtúllépések](sql-database-metrics-diag-logging.md#time-outs-dataset): időtúllépés történt egy adatbázis információkat tartalmaz.
-- [Blokkok](sql-database-metrics-diag-logging.md#blockings-dataset): blokkolja-e az adatbázisok történt események információkat tartalmaz.
-- [SQLInsights](sql-database-metrics-diag-logging.md#intelligent-insights-dataset): Intelligent Insights tartalmazza. [További információ az Intelligent Insights](sql-database-intelligent-insights.md).
-- **Naplózási** / **SQLSecurityAuditEvents**: jelenleg nem érhető el.
+| Telemetriai adatok figyelése | Az Azure SQL Database-támogatás | A felügyelt példány támogatási adatbázis |
+| :------------------- | ------------------- | ------------------- |
+| [Minden metrika](sql-database-metrics-diag-logging.md#all-metrics): tartalmaz DTU/Processzorhasználat (%), dtu-k/CPU korlátozza, fizikai adatok százalékos aránya, százalékos aránya, napló írási, olvasási sikeres/sikertelen/letiltott tűzfalkapcsolatok, munkamenetek százaléka, feldolgozók százalékos, storage, a storage százalékos aránya, és XTP tárolási százalék. | Igen | Nem |
+| [QueryStoreRuntimeStatistics](sql-database-metrics-diag-logging.md#query-store-runtime-statistics): tudnivalókkal kapcsolatban a lekérdezések futásidejének statisztikai adatait, például a CPU-használat és lekérdezése időtartam statisztikák. | Igen | Igen |
+| [QueryStoreWaitStatistics](sql-database-metrics-diag-logging.md#query-store-wait-statistics): a lekérdezés várakozási statisztika, amely arra kéri, mi a lekérdezések várta, ha a következőkre például a Processzor, a napló és a ZÁROLÁS információkat tartalmaz. | Igen | Igen |
+| [Hibák](sql-database-metrics-diag-logging.md#errors-dataset): történt az adatbázis az SQL-hibákkal kapcsolatos információkat tartalmaz. | Igen | Nem |
+| [DatabaseWaitStatistics](sql-database-metrics-diag-logging.md#database-wait-statistics-dataset): Várakozás a különböző várakozási típusok kapcsolatos mennyi idő adatbázis töltött információkat tartalmaz. | Igen | Nem |
+| [Időtúllépések](sql-database-metrics-diag-logging.md#time-outs-dataset): időtúllépés történt egy adatbázis információkat tartalmaz. | Igen | Nem |
+| [Blokkok](sql-database-metrics-diag-logging.md#blockings-dataset): blokkolja-e az adatbázisok történt események információkat tartalmaz. | Igen | Nem |
+| [SQLInsights](sql-database-metrics-diag-logging.md#intelligent-insights-dataset): Intelligent Insights tartalmazza a teljesítményt. [További információ az Intelligent Insights](sql-database-intelligent-insights.md). | Igen | Igen |
+
+**Vegye figyelembe, hogy**: használandó naplózási és SQLSecurityAuditEvents naplókat, bár ezek a beállítások belül adatbázis diagnosztikai beállítások érhetők el, ezek a naplók engedélyezni kell csak keresztül **SQL-naplózás** megoldás konfigurálása streamelési telemetriai adatokat a Log Analytics, az Event Hubs vagy a tárolás.
 
 Ha az Event Hubs vagy a storage-fiók lehetőséget választja, megadhatja az adatmegőrzési. Ez a szabályzat egy kiválasztott időszakban régebbi adatokat törli. Ha megadja a Log Analytics, a megőrzési házirend a kiválasztott tarifacsomag függ. További információkért lásd: [Log Analytics díjszabása](https://azure.microsoft.com/pricing/details/log-analytics/). 
 
-Megtudhatja, hogyan engedélyezi a naplózást, és megismerheti a különböző Azure-szolgáltatások által támogatott mérőszámokban és naplófájlokban kategóriák, azt javasoljuk, hogy olvassa el: 
+## <a name="enable-logging-for-elastic-pools-or-managed-instance"></a>Rugalmas készletek és a felügyelt példány naplózásának engedélyezése
+
+Metrikák és diagnosztikai naplózás rugalmas készletek vagy felügyelt példány alapértelmezés szerint nincs engedélyezve. Engedélyezheti és kezelheti a metrikák és diagnosztikai telemetriai naplózás rugalmas készlet vagy a felügyelt példány. A következő adatokat a gyűjtemény érhető el:
+
+| Telemetriai adatok figyelése | Rugalmas készlet támogatása | Felügyelt példány támogatása |
+| :------------------- | ------------------- | ------------------- |
+| [Minden metrika](sql-database-metrics-diag-logging.md#all-metrics) (a rugalmas készletek): eDTU/Processzorhasználat (%), eDTU/CPU-korlát, fizikai tartalmazza az beolvasott adatok százalékos aránya, napló írási százalékos, munkamenetek százaléka, feldolgozók százalékos, storage, tárolási százalékos, tárolási kapacitása és XTP tárolási százalékos aránya . | Igen | – |
+| [ResourceUsageStats](sql-database-metrics-diag-logging.md#resource-usage-stats) (felügyelt példány): tartalmazza a virtuális magok száma, átlagos Processzorhasználat (%), i/o-kérelmek, írt vagy olvasott bájtok, a foglalt tárhely, a használt tárterület. | – | Igen |
+
+A metrikák és a különböző Azure-szolgáltatások által támogatott kategóriába jelentkezzen, javasoljuk, hogy olvassa el:
 
 * [A Microsoft Azure-ban mérőszámok áttekintése](../monitoring-and-diagnostics/monitoring-overview-metrics.md)
 * [Azure-beli diagnosztikai naplók áttekintése](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md) 
 
 ### <a name="azure-portal"></a>Azure Portal
 
-1. Ahhoz, hogy a metrikák és diagnosztikai naplók gyűjtése a portálon, nyissa meg az SQL Database vagy a rugalmas készlet lap, és válassza ki **diagnosztikai beállítások**.
+- Metrikák és diagnosztikai naplókat gyűjtemény részéhez SQL-adatbázisok vagy a felügyelt példányok adatbázisai engedélyezéséhez nyissa meg az adatbázis, és válassza ki **diagnosztikai beállítások**. Válassza ki **+ diagnosztikai beállítás hozzáadása** az új beállításokat, vagy **beállítás szerkesztése** szerkesztheti a meglévő beállításokat.
 
    ![Engedélyezze az Azure Portalon](./media/sql-database-metrics-diag-logging/enable-portal.png)
 
-2. Új létrehozása vagy meglévő diagnosztikai beállítások szerkesztése kiválaszthatja a cél és a telemetriai adatokat.
+- A **Azure SQL Database** új létrehozása vagy meglévő diagnosztikai beállítások szerkesztése kiválaszthatja a cél és a telemetriai adatokat.
 
    ![Diagnosztikai beállítások](./media/sql-database-metrics-diag-logging/diagnostics-portal.png)
+
+- A **felügyelt példány adatbázisa** új létrehozása vagy meglévő diagnosztikai beállítások szerkesztése kiválaszthatja a cél és a telemetriai adatokat.
+
+   ![Diagnosztikai beállítások](./media/sql-database-metrics-diag-logging/diagnostics-portal-mi.png)
 
 ### <a name="powershell"></a>PowerShell
 
@@ -174,7 +191,7 @@ Egy SQL Database fleet figyelési használata a Log Analytics egyszerű. Három 
 
 2. Rekord metrikák és diagnosztikai naplókat-adatbázisok konfigurálása a létrehozott Log Analytics-erőforrás.
 
-3. Telepítse a **Azure SQL Analytics** megoldás a Log Analyticsben a galériából.
+3. Telepítse a **Azure SQL Analytics** megoldás az Azure Marketplace-ről.
 
 ### <a name="create-a-log-analytics-resource"></a>Hozzon létre egy Log Analytics-erőforrás
 
@@ -259,15 +276,52 @@ Ismerje meg, hogyan [metrikák és diagnosztikai naplók letöltése a Storage-b
 
 ## <a name="metrics-and-logs-available"></a>Metrikák és naplók érhető el
 
-### <a name="all-metrics"></a>Az összes metrikák
+Megtalálja részletes figyelési telemetriai tartalma elérhető naplók és mérőszámok az Azure SQL Database, a rugalmas készletek, a felügyelt példány és az adatbázisok a felügyelt példány.
+
+## <a name="all-metrics"></a>Az összes metrikák
+
+### <a name="all-metrics-for-elastic-pools"></a>Rugalmas készletek minden metrika
 
 |**Erőforrás**|**Metrikák**|
 |---|---|
-|Adatbázis|Napló írási DTU százalékos értéke, dtu-k használt, DTU-korlát, processzor, fizikai adatok olvasási százalékos aránya, százalékos aránya, a sikeres/sikertelen/letiltott tűzfalkapcsolatok, munkamenetek százaléka, feldolgozók százalékos aránya, storage, tárolási százalékos aránya, XTP tárolási százalékos aránya, és holtpontok |
 |Rugalmas készlet|eDTU százalékos értéke, eDTU használja, az eDTU-korlát, processzor, fizikai adatok olvasási százalékos aránya, napló írási százalékos, munkamenetek százaléka, feldolgozók százalékos, tárhely, tárolási százalékos, tárolási kapacitása, XTP tárolási százalékos aránya |
-|||
 
-### <a name="logs"></a>Logs
+### <a name="all-metrics-for-azure-sql-database"></a>Az Azure SQL Database összes metrikák
+
+|**Erőforrás**|**Metrikák**|
+|---|---|
+|Azure SQL Database|Napló írási DTU százalékos értéke, dtu-k használt, DTU-korlát, processzor, fizikai adatok olvasási százalékos aránya, százalékos aránya, a sikeres/sikertelen/letiltott tűzfalkapcsolatok, munkamenetek százaléka, feldolgozók százalékos aránya, storage, tárolási százalékos aránya, XTP tárolási százalékos aránya, és holtpontok |
+
+## <a name="logs"></a>Logs
+
+### <a name="logs-for-managed-instance"></a>Felügyelt példány naplók
+
+### <a name="resource-usage-stats"></a>Erőforrás-használati statisztikái
+
+|Tulajdonság|Leírás|
+|---|---|
+|TenantId|A bérlő azonosítója.|
+|SourceSystem|Mindig: Azure|
+|TimeGenerated [UTC]|Időbélyeg, ha rögzít a naplóban.|
+|Típus|Mindig: AzureDiagnostics|
+|ResourceProvider|Az erőforrás-szolgáltató neve. Always: MICROSOFT.SQL|
+|Kategória|A kategória nevét. Mindig: ResourceUsageStats|
+|Erőforrás|Az erőforrás neve.|
+|ResourceType|Az erőforrástípus neve. Mindig: MANAGEDINSTANCES|
+|SubscriptionId|Előfizetés GUID-azonosítója, amely az adatbázis tartozik.|
+|ResourceGroup|Az erőforráscsoportot, amelyhez tartozik az adatbázis neve.|
+|LogicalServerName_s|A felügyelt példány neve.|
+|ResourceId|Erőforrás-URI.|
+|SKU_s|Felügyelt példány termékváltozat|
+|virtual_core_count_s|Az elérhető virtuális magok Numver|
+|avg_cpu_percent_s|Átlagos Processzorhasználat (%)|
+|reserved_storage_mb_s|A felügyelt példány fenntartott tárolási kapacitás|
+|storage_space_used_mb_s|A felügyelt példány használatban lévő|
+|io_requests_s|IOPS száma|
+|io_bytes_read_s|IOPS olvasott bájtok|
+|io_bytes_written_s|Iops-t írt bájtok száma|
+
+### <a name="logs-for-azure-sql-database-and-managed-instance-database"></a>Az Azure SQL Database és a felügyelt példány database naplók
 
 ### <a name="query-store-runtime-statistics"></a>Query Store futásidejű statisztikája
 

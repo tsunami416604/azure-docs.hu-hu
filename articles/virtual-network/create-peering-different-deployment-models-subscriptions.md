@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/15/2017
 ms.author: jdial;anavin
-ms.openlocfilehash: 4883791a32a65746a72afb63755ecf608dc840d9
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: 01e8b5c518931411ba6e2d75168de6753bf55260
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39503825"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46971722"
 ---
 # <a name="create-a-virtual-network-peering---different-deployment-models-and-subscriptions"></a>Hozzon létre egy virtuális hálózati társviszony - másik üzembe helyezési modellek és -előfizetések
 
@@ -97,18 +97,17 @@ Ez az oktatóanyag az egyes előfizetésekhez külön fiókot használja. Mindk�
 
 ## <a name="cli"></a>Társviszony - létrehozása az Azure CLI
 
-Ez az oktatóanyag az egyes előfizetésekhez külön fiókot használja. Mindkét előfizetés engedéllyel rendelkező fiók használata, használja ugyanazt a fiókot az összes lépést, hagyja ki a lépéseket a naplózás az Azure-ból és a sorok szkript által létrehozott felhasználói szerepkör-hozzárendelések eltávolításához. Cserélje le UserA@azure.com és UserB@azure.com az alábbi parancsfájlok a Felhasználóa és Felhasználób használata a felhasználónevek mindegyikét. 
+Ez az oktatóanyag az egyes előfizetésekhez külön fiókot használja. Mindkét előfizetés engedéllyel rendelkező fiók használata, használja ugyanazt a fiókot az összes lépést, hagyja ki a lépéseket a naplózás az Azure-ból és a sorok szkript által létrehozott felhasználói szerepkör-hozzárendelések eltávolításához. Cserélje le UserA@azure.com és UserB@azure.com az alábbi parancsfájlok a Felhasználóa és Felhasználób használata a felhasználónevek mindegyikét. A következő lépéseket a klasszikus Azure CLI és az Azure CLI használatával. Csak kiválasztásával kitöltheti a lépéseket követve az Azure Cloud Shell a **próbálja ki** gombot a következő lépésekből áll, vagy telepítse a [klasszikus parancssori felület](/cli/azure/install-cli-version-1.0.md?toc=%2fazure%2fvirtual-network%2ftoc.json) és [CLI](/cli/azure/install-azure-cli.md?toc=%2fazure%2fvirtual-network%2ftoc.json) és a parancsok futtatása a helyi számítógépen.
 
-1. [Telepítés](../cli-install-nodejs.md?toc=%2fazure%2fvirtual-network%2ftoc.json) az Azure CLI 1.0 a virtuális hálózat (klasszikus) létrehozásához.
-2. Nyisson meg egy parancssori munkamenetet, és jelentkezzen be az Azure-bA Felhasználób használatával a `azure login` parancsot. A bejelentkezés a következővel fiók jogosult arra, hogy a virtuális hálózati társviszony-létesítés kell rendelkeznie. Engedélyek listáját lásd: [virtuális hálózatok közötti társviszonyra vonatkozó engedélyek](virtual-network-manage-peering.md#permissions).
-3. Futtassa a CLI szolgáltatásfelügyelet módban megadásával a `azure config mode asm` parancsot.
-4. Adja meg a következő parancsot a virtuális hálózat (klasszikus) létrehozása:
- 
+1. A Cloud Shell használata esetén ugorjon a 2, mert a Cloud Shell automatikusan bejelentkezik, az Azure-bA. Nyisson meg egy parancssori munkamenetet, és jelentkezzen be Azure-bA a `azure login` parancsot.
+2. A klasszikus parancssori felület futtatása szolgáltatásfelügyelet módban megadásával a `azure config mode asm` parancsot.
+3. Adja meg a következő klasszikus parancssori felület parancsot a virtuális hálózat létrehozása (klasszikus modell):
+
     ```azurecli
     azure network vnet create --vnet myVnetB --address-space 10.1.0.0 --cidr 16 --location "East US"
     ```
-5. A hátralévő lépéseket kell végrehajtani egy bash héjastól az Azure CLI 2.0.4-es vagy újabb verzió használatával [telepített](/cli/azure/install-azure-cli?toc=%2fazure%2fvirtual-network%2ftoc.json), vagy az Azure Cloud Shell használatával. Az Azure Cloud Shell olyan ingyenes Bash-felület, amelyet közvetlenül futtathat az Azure Portalon. A fiókjával való használat érdekében az Azure CLI már előre telepítve és konfigurálva van rajta. Kattintson a **kipróbálás** olvashat, amely egy, amely az Azure-fiókjába, a Cloud Shell megnyílik a parancsfájlok gombra. Lehetőségek a futó bash-CLI-szkriptek Windows-ügyfélen, lásd: [az Azure CLI telepítése Windows](/cli/azure/install-azure-cli-windows). 
-6. Másolja a következő parancsfájl egy szövegszerkesztőbe, a számítógépen. Cserélje le `<SubscriptionB-Id>` az előfizetés-azonosítóval. Ha az előfizetés-azonosító nem ismeri, adja meg a `az account show` parancsot. Az érték **azonosító** kimenet az előfizetés azonosítóját. Másolja a módosított szkripttel, illessze be a CLI 2.0-munkamenethez, és nyomja le az `Enter`. 
+4. A további lépéseket kell elvégezni a bash rendszerhéj használatával az Azure CLI-vel (nem a klasszikus parancssori felület).
+5. Másolja a következő parancsfájl egy szövegszerkesztőbe, a számítógépen. Cserélje le `<SubscriptionB-Id>` az előfizetés-azonosítóval. Ha az előfizetés-azonosító nem ismeri, adja meg a `az account show` parancsot. Az érték **azonosító** kimenet az előfizetés azonosítóját. Másolja a módosított szkripttel, illessze be a CLI-munkamenetet, és nyomja le az `Enter`.
 
     ```azurecli-interactive
     az role assignment create \
@@ -118,8 +117,8 @@ Ez az oktatóanyag az egyes előfizetésekhez külön fiókot használja. Mindk�
     ```
 
     Ha a virtuális hálózat (klasszikus), a 4. lépésben létrehozott, Azure létrehozott-e a virtuális hálózatot a a *alapértelmezett hálózati* erőforráscsoportot.
-7. Azure, és jelentkezzen be a Felhasználób jelentkezzen a CLI 2.0-t a Felhasználóa felhasználóként.
-8. Hozzon létre egy erőforráscsoportot és a egy virtuális hálózatot (Resource Manager). Másolja a következő, illessze be a CLI-munkamenetet, és nyomja le az `Enter`. 
+6. Azure, és jelentkezzen be a Felhasználób jelentkezzen a parancssori felületen Felhasználóa felhasználóként.
+7. Hozzon létre egy erőforráscsoportot és a egy virtuális hálózatot (Resource Manager). Másolja a következő, illessze be a CLI-munkamenetet, és nyomja le az `Enter`.
 
     ```azurecli-interactive
     #!/bin/bash
@@ -153,7 +152,7 @@ Ez az oktatóanyag az egyes előfizetésekhez külön fiókot használja. Mindk�
       --scope $vNetAId
     ```
 
-9. A két, a különböző üzembehelyezési modellel létrehozott virtuális hálózatok közötti társviszony-létesítés virtuális hálózat létrehozása. Másolja a következő parancsfájl egy szövegszerkesztőbe, a számítógépen. Cserélje le `<SubscriptionB-id>` -előfizetése azonosítóját. Ha az előfizetés-azonosító nem ismeri, adja meg a `az account show` parancsot. Az érték **azonosító** kimenet az előfizetés azonosítóját. Azure a virtuális hálózat (klasszikus), a 4. lépésben az erőforráscsoport neve hozott létre *alapértelmezett hálózati*. Illessze be a módosított szkriptet a CLI-munkamenetben, és nyomja le az `Enter`.
+8. A két, a különböző üzembehelyezési modellel létrehozott virtuális hálózatok közötti társviszony-létesítés virtuális hálózat létrehozása. Másolja a következő parancsfájl egy szövegszerkesztőbe, a számítógépen. Cserélje le `<SubscriptionB-id>` -előfizetése azonosítóját. Ha az előfizetés-azonosító nem ismeri, adja meg a `az account show` parancsot. Az érték **azonosító** kimenet az előfizetés azonosítóját. Azure a virtuális hálózat (klasszikus), a 4. lépésben az erőforráscsoport neve hozott létre *alapértelmezett hálózati*. Illessze be a módosított szkriptet a CLI-munkamenetben, és nyomja le az `Enter`.
 
     ```azurecli-interactive
     # Peer VNet1 to VNet2.
@@ -165,7 +164,7 @@ Ez az oktatóanyag az egyes előfizetésekhez külön fiókot használja. Mindk�
       --allow-vnet-access
     ```
 
-10. A szkript végrehajtása után tekintse át a társviszony-létesítés virtuális hálózatok (Resource Manager). Másolja a következő szkriptet, és illessze a CLI-munkamenetben:
+9. A szkript végrehajtása után tekintse át a társviszony-létesítés virtuális hálózatok (Resource Manager). Másolja a következő szkriptet, és illessze a CLI-munkamenetben:
 
     ```azurecli-interactive
     az network vnet peering list \
@@ -177,8 +176,8 @@ Ez az oktatóanyag az egyes előfizetésekhez külön fiókot használja. Mindk�
 
     Bármelyik virtuális hálózatban hoz létre Azure-erőforrások immár képes az IP-címekkel kommunikálhatnak egymással. Ha Azure névfeloldási szolgáltatása alapértelmezett a virtuális hálózatok használata esetén a virtuális hálózatokban az erőforrások nem lesznek tudják feloldani a virtuális hálózatok között. Ha szeretné feloldani az egy társviszony-létesítés virtuális hálózatok között, létre kell hoznia a saját DNS-kiszolgáló. Ismerje meg, hogyan állítható be [névfeloldás saját DNS-kiszolgáló használatával](virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server).
 
-11. **Nem kötelező**: azonban ebben az oktatóanyagban a virtuális gépekre nem vonatkozik, az egyes virtuális hálózatok virtuális gép létrehozása és csatlakoztatása egy virtuális gépről a másikra, a kapcsolat ellenőrzéséhez.
-12. **Nem kötelező**: az ebben az oktatóanyagban létrehozott erőforrás törléséhez hajtsa végre a lépéseit [törölje az erőforrást](#delete-cli) ebben a cikkben.
+10. **Nem kötelező**: azonban ebben az oktatóanyagban a virtuális gépekre nem vonatkozik, az egyes virtuális hálózatok virtuális gép létrehozása és csatlakoztatása egy virtuális gépről a másikra, a kapcsolat ellenőrzéséhez.
+11. **Nem kötelező**: az ebben az oktatóanyagban létrehozott erőforrás törléséhez hajtsa végre a lépéseit [törölje az erőforrást](#delete-cli) ebben a cikkben.
 
 ## <a name="powershell"></a>-Társviszony-létesítés PowerShell
 
@@ -284,45 +283,45 @@ Ez az oktatóanyag befejezése után érdemes törölni, így nem használati d�
 
 ### <a name="delete-cli"></a>Az Azure CLI
 
-1. Jelentkezzen be az Azure CLI 2.0-val törölni a virtuális hálózatot (Resource Manager) a következő paranccsal:
+1. Jelentkezzen be az Azure-ban a parancssori felületről törölni a virtuális hálózatot (Resource Manager) a következő paranccsal:
 
-    ```azurecli-interactive
-    az group delete --name myResourceGroupA --yes
-    ```
+   ```azurecli-interactive
+   az group delete --name myResourceGroupA --yes
+   ```
 
-2. Jelentkezzen be az Azure-bA az Azure CLI 1.0 használatával törli a virtuális hálózat (klasszikus) a következő parancsokkal:
+2. Jelentkezzen be Azure-bA a klasszikus parancssori felület használatával törli a virtuális hálózat (klasszikus) a következő parancsokkal:
 
-    ```azurecli
-    azure config mode asm 
+   ```azurecli-interactive
+   azure config mode asm
 
-    azure network vnet delete --vnet myVnetB --quiet
-    ```
+   azure network vnet delete --vnet myVnetB --quiet
+   ```
 
 ### <a name="delete-powershell"></a>PowerShell
 
 1. A PowerShell parancssorába írja be a törölni a virtuális hálózatot (Resource Manager) a következő parancsot:
 
-    ```powershell
-    Remove-AzureRmResourceGroup -Name myResourceGroupA -Force
-    ```
+   ```powershell
+   Remove-AzureRmResourceGroup -Name myResourceGroupA -Force
+   ```
 
 2. A virtuális hálózat törlése a PowerShell (klasszikus modell) kell módosítani egy meglévő hálózati konfigurációs fájlt. Ismerje meg, hogyan [exportálása, frissítése és importálása a hálózati konfigurációs fájlokban](virtual-networks-using-network-configuration-file.md). Távolítsa el a virtuális hálózat, a jelen oktatóanyagban használt VirtualNetworkSite a következő elemet:
 
-    ```xml
-    <VirtualNetworkSite name="myVnetB" Location="East US">
-      <AddressSpace>
-        <AddressPrefix>10.1.0.0/16</AddressPrefix>
-      </AddressSpace>
-      <Subnets>
-        <Subnet name="default">
-          <AddressPrefix>10.1.0.0/24</AddressPrefix>
-        </Subnet>
-      </Subnets>
-    </VirtualNetworkSite>
-    ```
+   ```xml
+   <VirtualNetworkSite name="myVnetB" Location="East US">
+     <AddressSpace>
+       <AddressPrefix>10.1.0.0/16</AddressPrefix>
+     </AddressSpace>
+     <Subnets>
+       <Subnet name="default">
+         <AddressPrefix>10.1.0.0/24</AddressPrefix>
+       </Subnet>
+     </Subnets>
+   </VirtualNetworkSite>
+   ```
 
-    > [!WARNING]
-    > Megváltozott hálózati konfigurációs fájl importálása okozhat a módosításokat a meglévő virtuális hálózatok (klasszikus) az előfizetésében. Győződjön meg arról, csak távolítsa el a korábbi virtuális hálózatot, és nem módosítja a, illetve bármely más meglévő virtuális hálózatok eltávolítása az előfizetésből. 
+   > [!WARNING]
+   > Megváltozott hálózati konfigurációs fájl importálása okozhat a módosításokat a meglévő virtuális hálózatok (klasszikus) az előfizetésében. Győződjön meg arról, csak távolítsa el a korábbi virtuális hálózatot, és nem módosítja a, illetve bármely más meglévő virtuális hálózatok eltávolítása az előfizetésből. 
 
 ## <a name="next-steps"></a>További lépések
 

@@ -4,20 +4,20 @@ titleSuffix: Azure Cognitive Services
 description: Minták használatával növelheti a leképezés és egyéb entitások előrejelzési művelet során gondoskodik a kevesebb példa kimondott szöveg. A minta példaképpen egy sablon utterance (kifejezés), beleértve a szintaxist, entitások és figyelmen kívül hagyható, szöveg van megadva.
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
 ms.technology: language-understanding
 ms.topic: article
 ms.date: 09/09/2018
 ms.author: diberry
-ms.openlocfilehash: 3b41105a20b765abd084fc387370a49b657d1cba
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.openlocfilehash: ec006d8941d8832d139a09b1e8af13000ff5a43e
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45634727"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47040703"
 ---
-# <a name="tutorial-3-add-common-utterance-formats"></a>Oktatóanyag: 3. Adja hozzá a közös utterance (kifejezés) formátumok
+# <a name="tutorial-3-add-common-utterance-formats"></a>Oktatóanyag: 3. Gyakori kimondottszöveg-formátumok hozzáadása
 
 Ebben az oktatóanyagban minták használatával növelheti a leképezés és egyéb entitások előrejelzési művelet során gondoskodik a kevesebb példa kimondott szöveg. A minta példaképpen egy sablon utterance (kifejezés), beleértve a szintaxist, entitások és figyelmen kívül hagyható, szöveg van megadva. A minta akkor kifejezések egyeztetésének és a gépi tanulás.  Az utterance (kifejezés) példasablonban szándék megcímkézzen, valamint egy jobb megértéséhez, hogy milyen kimondott szöveg igazítása a célt adjon meg a LUIS. 
 

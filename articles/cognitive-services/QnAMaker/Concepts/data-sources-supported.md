@@ -3,19 +3,19 @@ title: Támogatott – az adatforrásokat a QnA Maker
 titleSuffix: Azure Cognitive Services
 description: A QnA Maker – gyakori kérdések és kézikönyvek például közös félig strukturált tartalom formátumok automatikusan kinyerheti az kérdés-válasz párt. Tartalmakat is hozzáadhat a Tudásbázis strukturált fájlokból.
 services: cognitive-services
-author: nstulasi
+author: tulasim88
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: qna-maker
 ms.topic: article
-ms.date: 09/12/2018
-ms.author: saneppal
-ms.openlocfilehash: 0436d5015ee4b369aeead7691f87ef313259d391
-ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
+ms.date: 09/24/2018
+ms.author: tulasim
+ms.openlocfilehash: b9214d44061edad967212a1f904c2cdb6687dba2
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45543996"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47039054"
 ---
 # <a name="data-sources"></a>Adatforrások 
 A QnA Maker – gyakori kérdések és kézikönyvek például közös félig strukturált tartalom formátumok automatikusan kinyerheti az kérdés-válasz párt. Tartalmakat is hozzáadhat a Tudásbázis strukturált fájlokból.
@@ -71,8 +71,8 @@ Ha nem rendelkezik már meglévő tartalom feltöltéséhez a Tudásbázis, is f
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [A QnA Maker szolgáltatás beállítása](../How-To/set-up-qnamaker-service-azure.md)
+> [Válaszok chit csevegési személyeknek az személyiségelemző hozzáadása](../How-To/chit-chat-knowledge-base.md)
 
 ## <a name="see-also"></a>Lásd még 
 
-[A QnA Maker – áttekintés](../Overview/overview.md)
+[A QnA Maker áttekintése](../Overview/overview.md)

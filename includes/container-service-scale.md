@@ -1,6 +1,6 @@
 [Az Azure Container Service-fürt üzembe helyezését követően](../articles/container-service/dcos-swarm/container-service-deployment.md) előfordulhat, hogy módosítania kell az ügynökcsomópontok számát. Például ha több ügynökre van szüksége további tárolóalkalmazások vagy -példányok futtatásához. 
 
-Az Azure Portal vagy az Azure CLI 2.0 használatával módosíthatja az ügynökcsomópontok számát DC/OS-, Docker Swarm- vagy Kubernetes-fürtökben. 
+Módosíthatja a DC/OS, Docker Swarm vagy Kubernetes-fürtben ügynökcsomópontok számát az Azure Portalon vagy az Azure CLI használatával. 
 
 ## <a name="scale-with-the-azure-portal"></a>Méretezés az Azure Portal használatával
 
@@ -12,9 +12,9 @@ Az Azure Portal vagy az Azure CLI 2.0 használatával módosíthatja az ügynök
 
 4. A konfiguráció mentéséhez kattintson a **Mentés** gombra.
 
-## <a name="scale-with-the-azure-cli-20"></a>Méretezés az Azure CLI 2.0 használatával
+## <a name="scale-with-the-azure-cli"></a>Méretezés az Azure CLI-vel
 
-Győződjön meg arról, hogy Ön [telepített](/cli/azure/install-az-cli2) a legfrissebb Azure CLI 2.0, és hogy bejelentkezett egy Azure-fiókjába (`az login`).
+Győződjön meg arról, hogy Ön [telepítve](/cli/azure/install-az-cli2) a legfrissebb Azure CLI és a egy Azure-fiókkal jelentkezett be (`az login`).
 
 ### <a name="see-the-current-agent-count"></a>Az ügynökök aktuális számának megtekintése
 A jelenleg a fürtben lévő ügynökök számának megtekintéséhez futtassa az `az acs show` parancsot. Ez megjeleníti a fürtkonfigurációt. Az alábbi parancs például a `myResourceGroup` erőforráscsoportban lévő `containerservice-myACSName` nevű tárolószolgáltatás konfigurációját jeleníti meg:
@@ -34,7 +34,7 @@ Például ha az előző fürtben az ügynökök számát 10-re szeretné módos�
 az acs scale -g myResourceGroup -n containerservice-myACSName --new-agent-count 10
 ```
 
-Az Azure CLI 2.0 egy JSON-sztringet ad vissza, amely a tárolószolgáltatás új konfigurációját jelöli, beleértve az ügynökök új számát is.
+Az Azure CLI, beleértve az ügynökök új számát, a tárolószolgáltatás új konfigurációját jelöli JSON-karakterláncot ad vissza.
 
 További parancsbeállításokért futtassa az `az acs scale --help` parancsot.
 
@@ -50,6 +50,6 @@ További parancsbeállításokért futtassa az `az acs scale --help` parancsot.
 
 
 ## <a name="next-steps"></a>További lépések
-* Tekintse meg az Azure CLI 2.0-parancsok az Azure Container Service szolgáltatásban való használatát bemutató [további példákat](../articles/container-service/dcos-swarm/container-service-create-acs-cluster-cli.md).
+* Lásd: [további példákat](../articles/container-service/dcos-swarm/container-service-create-acs-cluster-cli.md) az Azure CLI-parancsok használata az Azure Container Service.
 * Ismerkedjen meg a [DC/OS-ügynökkészletekkel](../articles/container-service/dcos-swarm/container-service-dcos-agents.md) az Azure Container Service szolgáltatásban.
 

@@ -9,28 +9,28 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/21/2018
 ms.author: jasonh
-ms.openlocfilehash: 1988593fa7cb0d84baffc4264147d350962bb6bc
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: d036922d68116689d1c54c2c3e89be5accedb533
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43093067"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46983486"
 ---
 # <a name="migrating-to-azure-resource-manager-based-development-tools-for-hdinsight-clusters"></a>Áttelepítés az Azure Resource Manager-alapú fejlesztői eszközöket a HDInsight-fürtök
 
-HDInsight-alapú Azure Service Manager ASM-eszközök van kivezetése a HDInsight. Ha már használja az Azure PowerShell-lel, az Azure CLI vagy a HDInsight .NET SDK-val a HDInsight-fürtökkel működik, akkor arra biztatjuk a PowerShell, CLI és a jövőben .NET SDK-t az Azure Resource Manager-verziókat használhat. Ez a cikk mutatók történő áttelepítés az új Resource Manager-alapú megközelítést. Bárhol is alkalmazható, ez a dokumentum kiemeli a HDInsight az ASM- és erőforrás-kezelő módszerek közötti különbségeket.
+HDInsight-alapú Azure Service Manager ASM-eszközök van kivezetése a HDInsight. Ha már használja az Azure PowerShell-lel, az Azure klasszikus parancssori felület vagy a HDInsight .NET SDK-val a HDInsight-fürtökkel működik, akkor arra biztatjuk a PowerShell, CLI és a jövőben .NET SDK-t az Azure Resource Manager-verziókat használhat. Ez a cikk mutatók történő áttelepítés az új Resource Manager-alapú megközelítést. Bárhol is alkalmazható, ez a dokumentum kiemeli a HDInsight az ASM- és erőforrás-kezelő módszerek közötti különbségeket.
 
 > [!IMPORTANT]
 > A címterület-kezelési támogatás PowerShell parancssori felület, és a .NET SDK nem küld a **2017. január 1**.
 > 
 > 
 
-## <a name="migrating-azure-cli-to-azure-resource-manager"></a>Áttelepítés az Azure CLI Azure Resource Manager
+## <a name="migrating-azure-classic-cli-to-azure-resource-manager"></a>Áttelepítés klasszikus Azure CLI Azure Resource Manager
 
 > [!IMPORTANT]
-> Az Azure CLI 2.0-val a HDInsight-fürt használata esetén nem biztosít támogatást. Továbbra is használhatja az Azure CLI 1.0-t a HDInsight, azonban az Azure CLI 1.0 elavult.
+> Az Azure CLI nem biztosít támogatást a HDInsight-fürt használata esetén. Továbbra is használhatja az Azure klasszikus parancssori felület a HDInsight, azonban a klasszikus Azure-CLI elavult.
 
-Az alábbiakban az alapszintű parancsainak Azure CLI 1.0 használatával HDInsight használata:
+A klasszikus Azure-CLI-n keresztül a HDInsight használata az alapvető parancsok a következők:
 
 * `azure hdinsight cluster create` – egy új HDInsight-fürtöt hoz létre
 * `azure hdinsight cluster delete` – egy meglévő HDInsight-fürt törlése

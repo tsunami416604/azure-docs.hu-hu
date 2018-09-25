@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 07/18/2018
 ms.author: dobett
-ms.openlocfilehash: bf23046b8a80b02bc1667f647cb1d475503a8feb
-ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
+ms.openlocfilehash: e6b4ee3425f6a490f33f998cab4f33734b23df22
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39125776"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46982103"
 ---
 # <a name="reference---iot-hub-endpoints"></a>Referencia – IoT Hub-végpontok
 
@@ -61,7 +61,7 @@ Minden IoT Hub-végpontok használata a [TLS] [ lnk-tls] protokoll és a nem fig
 
 ## <a name="custom-endpoints"></a>Egyéni végpontok
 
-Meglévő Azure-szolgáltatások az előfizetésben az IoT hubhoz való működésre üzenet-útválasztása végpontjaiként kapcsolat. Ezeket a végpontokat Szolgáltatásvégpontok-kiszolgálóként, amely fogadóként üzenet útvonalak. Eszközök közvetlenül a további végpontok nem lehet írni. Üzenet útvonalakkal kapcsolatos további tudnivalókért tekintse meg a fejlesztői útmutató a [az IoT hub-üzenetek küldése és fogadása][lnk-devguide-messaging].
+Meglévő Azure-szolgáltatások az előfizetésben az IoT hubhoz való működésre üzenet-útválasztása végpontjaiként kapcsolat. Ezeket a végpontokat Szolgáltatásvégpontok-kiszolgálóként, amely fogadóként üzenet útvonalak. Eszközök közvetlenül a további végpontok nem lehet írni. Tudjon meg többet [üzenet-útválasztása](../iot-hub/iot-hub-devguide-messages-d2c.md).
 
 Az IoT Hub a következő Azure-szolgáltatások jelenleg további végpontokat támogatja:
 
@@ -70,32 +70,7 @@ Az IoT Hub a következő Azure-szolgáltatások jelenleg további végpontokat t
 * Service Bus által kezelt üzenetsorok
 * Service Bus-üzenettémák
 
-Az IoT Hub szolgáltatás a végpontokkal való írási hozzáférés van szüksége üzenet-útválasztása működjön. Ha a konfigurálja a végpontokat az Azure Portalon keresztül, a szükséges engedélyekkel meg lesz hozzáadva. Ellenőrizze, hogy konfigurálja a szolgáltatások, a várt teljesítményről támogatásához. Amikor először konfigurálja az IoT-megoldás, szükség lehet a további végpontok monitorozása és a tényleges betöltést a szükséges módosításokat.
-
-Ha egy üzenet egyezést több irányítja, hogy az összes mutasson egyazon végpont, az IoT Hub továbbítja az üzenet, hogy a végpont csak egyszer. Így nem kell a deduplikáció konfigurálása a Service Bus-üzenetsor vagy témakör. A particionált üzenetsorok a partíció affinitás üzenetrendezés garantálja.
-
 Hozzáadhat végpontok számának korlátozásairól lásd: [kvóták és szabályozás][lnk-devguide-quotas].
-
-### <a name="when-using-azure-storage-containers"></a>Az Azure Storage-tárolók használata esetén
-
-IoT Hub által támogatott csak, írja az adatokat az Azure Storage-tárolók, blobok a [Apache Avro](http://avro.apache.org/) formátumban. Az IoT Hub kötegeli az üzeneteket, és abba adatokat író egy blobot, ha:
-
-* A köteg bizonyos méretet elér.
-* Vagy egy bizonyos mennyi idő telt el.
-
-Az IoT Hub üres blob fog írni, ha ott nem szerepel megjeleníthető adat írni.
-
-Az IoT Hub az alapértelmezett fájl alábbi elnevezési szabályt követik:
-
-```
-{iothub}/{partition}/{YYYY}/{MM}/{DD}/{HH}/{mm}
-```
-
-Használhat bármilyen fájlelnevezési, szeretné, azonban kell használnia minden felsorolt jogkivonatokat.
-
-### <a name="when-using-service-bus-queues-and-topics"></a>Service Bus-üzenetsorok és témakörök használata esetén
-
-Service Bus-üzenetsorok és témakörök használt IoT Hub-végpontok nesmí mít **munkamenetek** vagy **duplikáltelem-észlelési** engedélyezve van. Ha ezek a lehetőségek valamelyikét engedélyezve vannak, a végpont megjelenik **nem elérhető** az Azure Portalon.
 
 ## <a name="field-gateways"></a>Helyszíni átjárók
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 06/19/2018
 ms.author: echuvyrov
-ms.openlocfilehash: 1af96b686a1502d638b4335e22259b79169d1065
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.openlocfilehash: 0943bd1bffb3df7beda97ea0619f1aced4ca3a41
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39173247"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46946782"
 ---
 # <a name="install-and-configure-terraform-to-provision-vms-and-other-infrastructure-into-azure"></a>Virtuális gépek és egyéb infrastruktúra kiépítéséhez az Azure-bA Terraform telepítése és konfigurálása
  
@@ -65,17 +65,17 @@ Használja az egyszerű szolgáltatás most már a terraform használatával hoz
 az ad sp create-for-rbac --role="Contributor" --scopes="/subscriptions/${SUBSCRIPTION_ID}"
 ```
 
-A *appId*, *jelszó*, *sp_name*, és *bérlői* adja vissza. Jegyezze fel az *appID* és a *password* értékét.
+A `appId`, `password`, `sp_name`, és `tenant` adja vissza. Jegyezze fel a `appId` és `password`.
 
 ## <a name="configure-terraform-environment-variables"></a>A Terraform környezeti változók konfigurálása
 
 Konfigurálja a Terraform használata az Azure AD egyszerű szolgáltatást, állítsa be az alábbi környezeti változókat, majd által használt a [Azure Terraform moduljaival](https://registry.terraform.io/modules/Azure). Ha egy Azure-felhő más, mint az Azure nyilvános is beállítaná a környezetet.
 
-- ARM_SUBSCRIPTION_ID
-- ARM_CLIENT_ID
-- ARM_CLIENT_SECRET
-- ARM_TENANT_ID
-- ARM_ENVIRONMENT
+- `ARM_SUBSCRIPTION_ID`
+- `ARM_CLIENT_ID`
+- `ARM_CLIENT_SECRET`
+- `ARM_TENANT_ID`
+- `ARM_ENVIRONMENT`
 
 Az alábbi shell-parancsprogram segítségével állítsa be ezeket a változókat:
 

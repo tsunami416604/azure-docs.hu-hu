@@ -8,24 +8,20 @@ ms.service: firewall
 ms.topic: article
 ms.date: 7/11/2018
 ms.author: victorh
-ms.openlocfilehash: 1a732e22d72c36afe11030e42bae529baa35df1a
-ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
+ms.openlocfilehash: d32e6e29c287d140c28206743e36dc025b26158b
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38991378"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46991334"
 ---
 # <a name="deploy-azure-firewall-using-a-template"></a>Üzembe helyezése Azure tűzfal-sablon használatával
 
-[!INCLUDE [firewall-preview-notice](../../includes/firewall-preview-notice.md)]
+Ez a sablon létrehoz egy tűzfal és a egy tesztelési hálózati környezet. A hálózat egy virtuális hálózatot három alhálózattal rendelkezik: *AzureFirewallSubnet*, *ServersSubnet*, és a egy *JumpboxSubnet*. A ServersSubnet és a JumpboxSubnet tartalmaz egy-egy 2 magos Windows Servert.
 
-Az Azure-tűzfal cikkekben szereplő példák feltételezik, hogy, hogy már engedélyezte az Azure-tűzfal nyilvános előzetes verziója. További információkért lásd: [az Azure-tűzfal nyilvános előzetes verziójának engedélyezése](public-preview.md).
+A tűzfal az AzureFirewallSubnet alhálózaton található, és egy egyetlen szabályt tartalmazó alkalmazásszabály-gyűjteménnyel van konfigurálva, amely a www.microsoft.com webhelyhez való hozzáférést engedélyezi.
 
-Ez a sablon létrehoz egy tűzfal és a egy tesztelési hálózati környezet. A hálózat egy virtuális hálózatot három alhálózattal rendelkezik: *AzureFirewallSubnet*, *ServersSubnet*, és a egy *JumpboxSubnet*. A ServersSubnet és JumpboxSubnet is egy 2 magos Windows Server bennük.
-
-A tűzfal a AzureFirewallSubnet van, és az alkalmazás-szabálygyűjtemény egyetlen szabállyal, amely lehetővé teszi a hozzáférést, www.microsoft.com van konfigurálva.
-
-Egy felhasználó által definiált útvonal jön létre, amely a hálózati forgalom mutat a ServersSubnet a tűzfalon keresztül, az, ahol a tűzfalszabályok vannak alkalmazva.
+A felhasználó által létrehozott útvonal a ServersSubnet alhálózatról érkező hálózati forgalmat átirányítja a tűzfalon, amelyen a tűzfalszabályok alkalmazva vannak.
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
@@ -48,5 +44,5 @@ Remove-AzureRmResourceGroup -Name myResourceGroup
 
 Ezután az Azure tűzfalnaplók figyelheti:
 
-- [Oktatóanyag: A figyelő Azure tűzfal-naplókon](./tutorial-diagnostics.md)
+- [Oktatóanyag: Az Azure Firewall naplóinak monitorozása](./tutorial-diagnostics.md)
 

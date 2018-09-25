@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 09/18/2018
 ms.author: mihauss
 ms.component: blobs
-ms.openlocfilehash: e6b016d437011f8e9ebe3e2d3a6f3c9f737f6ecc
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 14b5dfb0a12df6c5251ee9f9e6b35a7ce527a1d3
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46129573"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46961977"
 ---
 # <a name="store-business-critical-data-in-azure-blob-storage"></a>Az Azure Blob storage-ban üzleti szempontból kritikus fontosságú adatok Store
 
@@ -95,7 +95,7 @@ Nem jár további költségekkel a szolgáltatást. Nem módosítható adatok re
 
 ## <a name="getting-started"></a>Első lépések
 
-A legújabb verzióiban a [az Azure portal](http://portal.azure.com) és [Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) előzetes verzióját, valamint [Azure PowerShell-lel](https://github.com/Azure/azure-powershell/releases/tag/Azure.Storage.v4.4.0-preview-May2018) nem módosítható storage támogatja az Azure Blob storage.
+A legújabb verzióiban a [az Azure portal](http://portal.azure.com) és [Azure CLI-vel](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) előzetes verzióját, valamint [Azure PowerShell-lel](https://github.com/Azure/azure-powershell/releases/tag/Azure.Storage.v4.4.0-preview-May2018) nem módosítható storage támogatja az Azure Blob storage.
 
 ### <a name="azure-portal"></a>Azure Portal
 
@@ -131,7 +131,7 @@ A legújabb verzióiban a [az Azure portal](http://portal.azure.com) és [Azure 
 
 8. Ha törölni szeretne egy jogi céllal zároltak közé, egyszerűen címke eltávolítása.
 
-### <a name="azure-cli-20"></a>Azure CLI 2.0
+### <a name="azure-cli"></a>Azure CLI
 
 A szolgáltatás a következő parancs csoportokat tartalmazza: `az storage container immutability-policy` és `az storage container legal-hold`. Futtatás `-h` meg azokat a parancsokat.
 

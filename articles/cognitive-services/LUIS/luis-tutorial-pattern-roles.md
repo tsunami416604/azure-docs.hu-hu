@@ -4,20 +4,20 @@ titleSuffix: Azure Cognitive Services
 description: Egy minta segítségével az adatok kinyerése egy megfelelően formázott sablon utterance (kifejezés). A sablon utterance (kifejezés) használja a szerepkörök és a egy egyszerű entitás például a feladás helyét és a célhely kapcsolódó adatokat szeretne kinyerni.
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
 ms.technology: language-understanding
 ms.topic: article
 ms.date: 09/09/2018
 ms.author: diberry
-ms.openlocfilehash: f3ddbad350ed42823ca95136ae2a507c46c3c763
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.openlocfilehash: 07fc753f7f60b51fc6b27e43ffb8c181c570bb5a
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45634540"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47032512"
 ---
-# <a name="tutorial-4-extract-contextually-related-patterns"></a>Oktatóanyag: 4. Bontsa ki a kontextusban kapcsolódó minták
+# <a name="tutorial-4-extract-contextually-related-patterns"></a>Oktatóanyag: 4. Szövegkörnyezet szerint kapcsolódó minták kinyerése
 
 Ebben az oktatóanyagban a minta használatával adatok kinyerése egy megfelelően formázott sablon utterance (kifejezés). A sablon utterance (kifejezés) használja a szerepkörök és a egy egyszerű entitás például a feladás helyét és a célhely kapcsolódó adatokat szeretne kinyerni.  Minták használata esetén kevesebb példa utterances célja van szükség.
 

@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/15/2018
-ms.openlocfilehash: 0d675b3efa165f36b93d791975a8007a68b02e12
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: cfc71f34f4b1d8027714c9fb610beebf8cd3be47
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45734758"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46978539"
 ---
 # <a name="set-up-hbase-cluster-replication-in-azure-virtual-networks"></a>HBase-fürt replikációja az Azure virtuális hálózatok beállítása
 
@@ -277,7 +277,7 @@ Hozhat létre egy **névjegyek** táblában és adatok beszúrása a táblázatb
 
 ## <a name="enable-replication"></a>A replikáció engedélyezése
 
-A következő lépések bemutatják, hogyan hívja a parancsfájl parancsfájlművelet az Azure Portalról. Azure PowerShell és az Azure parancssori felület (Azure CLI) használatával szkriptműveletet futtatásával kapcsolatos további információkért lásd: [testreszabása HDInsight-fürtök parancsfájlműveletekkel használatával](../hdinsight-hadoop-customize-cluster-linux.md).
+A következő lépések bemutatják, hogyan hívja a parancsfájl parancsfájlművelet az Azure Portalról. Azure PowerShell és a klasszikus Azure CLI használatával szkriptműveletet futtatásával kapcsolatos további információkért lásd: [testreszabása HDInsight-fürtök parancsfájlműveletekkel használatával](../hdinsight-hadoop-customize-cluster-linux.md).
 
 **Az Azure Portalról HBase-replikáció engedélyezése**
 

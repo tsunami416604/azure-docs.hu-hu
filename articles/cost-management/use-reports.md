@@ -1,29 +1,31 @@
 ---
-title: Cost Management jelentéseinek használata az Azure Cost Managementben |} A Microsoft Docs
-description: Ez a cikk ismerteti a különböző Cost Management jelentéseinek használata a Cloudyn portálon.
+title: A Cloudyn-jelentések használata az Azure-ban |} A Microsoft Docs
+description: Ez a cikk ismerteti, hogyan használható a különböző jelentéseket a Cloudyn portálon.
 services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 07/06/2018
+ms.date: 09/18/2018
 ms.topic: conceptual
 ms.service: cost-management
 manager: dougeby
 ms.custom: ''
-ms.openlocfilehash: 055584bd27c978fb71e6c09995c28be7348acda8
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: 8267401a0dade0ca7cfb1dbf69d2fdfd6786f1df
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37908272"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46976786"
 ---
-# <a name="use-cost-management-reports"></a>Költségkezelési jelentések használata
+# <a name="use-cloudyn-reports"></a>A Cloudyn-jelentések használata
 
-Ez a cikk ismerteti a költségkezelési jelentések, amelyek szerepelnek a Cloudyn portálon célját. Azt is ismerteti, hogyan hatékonyan használhatja a jelentéseket. A legtöbb jelentések intuitív, és rendelkezik egy egységes megjelenés és működés. A legtöbb művelet elvégezhető egy jelentésben, műveletek végezhetők az egyéb jelentésekben. Költségkezelési jelentések, beleértve az testreszabásához, és mentse vagy ütemezett jelentéseket, használatáról lásd [ismertetése költségjelentéseket](understanding-cost-reports.md).
+Ez a cikk ismerteti a Cloudyn-jelentések, amelyek szerepelnek a Cloudyn portálon célját. Azt is ismerteti, hogyan hatékonyan használhatja a jelentéseket. A legtöbb jelentések intuitív, és rendelkezik egy egységes megjelenés és működés. A legtöbb művelet elvégezhető egy jelentésben, műveletek végezhetők az egyéb jelentésekben. A Cloudyn jelentésekben, beleértve az testreszabásához, és mentse vagy ütemezett jelentéseket, használatáról lásd [ismertetése költségjelentéseket](understanding-cost-reports.md).
+
+Az Azure Cost Management hasonló funkciókat kínál a Cloudyn. Az Azure Cost Management natív Azure cost management megoldás is. Segít a költségek elemzése, hozzon létre és kezelhetők költségvetése exportálhat adatokat, és tekintse át és optimalizálási ajánlásoknak pénzt takaríthat meg. További információkért lásd: [Azure Cost Management](overview-cost-mgt.md).
 
 ## <a name="report-types"></a>Jelentéstípusok
 
-Költségkezelési jelentések három típusa van:
+A Cloudyn jelentésekben három típusa van:
 
 - Többlet idő jelentéseket. Ha például az időalapú költségeket tartalmazó jelentést. Többlet idő a jelentések egy idősorozat-adatok megjelenítése egy kiválasztott időszakban előre meghatározott megoldást, és heti felbontása megjelenítése az utolsó két hónapig. Csoportosítás és szűrés segítségével különböző adatpontok nagyítás.
   - Többlet idő jelentések segítségével megtekinthessék a szalagfelhasználási tendenciákat, és a csúcsok és a rendellenességek észlelését.
@@ -49,7 +51,7 @@ _Elemzés_ jelentések jelenítik meg a felhőszolgáltatók számlázási adato
 
 Néhány _költségelemzés_ jelentések költségeket az erőforráscímkék nem csoportosítás. És a számlázási adatokat címke-alapú csak akkor jelenik meg a jelentésekben, hozzon létre egy költség modell használatával költségek lefoglalása után [Cost Allocation 360](tutorial-manage-costs.md#use-custom-tags-to-allocate-costs).
 
-_Foglalási költség_ jelentés érhető el, miután létrehozott egy költség modell használatával [Cost Allocation 360](tutorial-manage-costs.md#use-custom-tags-to-allocate-costs). Cost Management dolgozza fel a költségek és a számlázási adatokat, és _megegyezik_ cloud-fiókok használatát, és a címke adatait az adatokat. Az adatok megfelelő, a Cost Management a használati adatok hozzáférésre van szüksége. Ha fiókok, amelyekről frissítések hiányoznak a hitelesítő adatokat, azok van jelölve _Kategorizálatlan erőforrások_.
+_Foglalási költség_ jelentés érhető el, miután létrehozott egy költség modell használatával [Cost Allocation 360](tutorial-manage-costs.md#use-custom-tags-to-allocate-costs). A Cloudyn költség- és számlázási adatokat feldolgozó és _megegyezik_ cloud-fiókok használatát, és a címke adatait az adatokat. Az adatok megfelelő, a Cloudyn a használati adatok hozzáférésre van szüksége. Ha fiókok, amelyekről frissítések hiányoznak a hitelesítő adatokat, azok van jelölve _Kategorizálatlan erőforrások_.
 
 ## <a name="dashboards"></a>Irányítópultok
 
@@ -57,7 +59,7 @@ Irányítópultok Cloudy a jelentések magas szintű áttekintést biztosítanak
 
 ## <a name="budget-information-in-reports"></a>A jelentésekben költségvetési információk
 
-Felügyeleti jelentések megjelenítése költségvetési információk számos költség, manuálisan egy létrehozását követően. Így a jelentések nem jelennek meg a költségvetési információk költségvetési létrehozásáig. További információkért lásd: [költségvetés-beállítások](#budget-settings).
+Cloudyn-jelentések megjelenítése a költségvetési információk után manuálisan létrehozott egy. Így a jelentések nem jelennek meg a költségvetési információk költségvetési létrehozásáig. További információkért lásd: [költségvetés-beállítások](#budget-settings).
 
 ## <a name="reports-and-reporting-features"></a>Jelentések és a jelentéskészítési szolgáltatások
 
@@ -81,7 +83,7 @@ A Költségelemzési jelentést egy számítási, költséghelyi visszacsatolás
 
 A szabályzatok beállítása [Cost Allocation 360](tutorial-manage-costs.md#use-custom-tags-to-allocate-costs) szolgálnak a költségek elemzése az jelentés és az eredmények majd mostantól a nyers adatoktól a felhő gyártója által biztosított információkkal.
 
-Hogyan számítják az ebben a jelentésben? A Cost Management szolgáltatás biztosítja, hogy foglalási megőrzi minden társított fiók biztonságának alkalmazásával _affinitás fiók_. Affinitás biztosítja, hogy egy fiókot, amely nem használja egy adott szolgáltatás nem rendelkezik a szolgáltatás számára lefoglalt költségek. A költségek abban, hogy a fiók továbbra is az adott fiókban, és nem számítja ki a foglalási szabályzatok által elhatárolt. Előfordulhat például, hogy öt összekapcsolt fiókok. Ha csak a tárolási szolgáltatások használatához három a majd csak a tárolási szolgáltatások költsége van lefoglalva a három fiókot a címkék között.
+Hogyan számítják az ebben a jelentésben? A Cloudyn szolgáltatás biztosítja, hogy foglalási megőrzi minden társított fiók biztonságának alkalmazásával _affinitás fiók_. Affinitás biztosítja, hogy egy fiókot, amely nem használja egy adott szolgáltatás nem rendelkezik a szolgáltatás számára lefoglalt költségek. A költségek abban, hogy a fiók továbbra is az adott fiókban, és nem számítja ki a foglalási szabályzatok által elhatárolt. Előfordulhat például, hogy öt összekapcsolt fiókok. Ha csak a tárolási szolgáltatások használatához három a majd csak a tárolási szolgáltatások költsége van lefoglalva a három fiókot a címkék között.
 
 A költségelemzés jelentésben használja:
 
@@ -147,7 +149,7 @@ Amortizált költség jelentések linearizált mutat be nem-használat egy kész
 - Fenntartott példányok vásárlására díjak
 - Néhány Azure Marketplace-elemek
 
-A számlázási fájlban egyszeri díjak jellemző, ha a szolgáltatás használatalapú kezdő és záró dátum (timestamp) egyenlő értékek találhatók. A Cost Management szolgáltatás majd felismeri, hogy a rendszer amortizált például egyszeri díjak. Egyéb fogyasztásalapú szolgáltatások igény szerinti használat költségei nem amortizált vannak.
+A számlázási fájlban egyszeri díjak jellemző, ha a szolgáltatás használatalapú kezdő és záró dátum (timestamp) egyenlő értékek találhatók. A Cloudyn szolgáltatás majd felismeri, hogy a rendszer amortizált például egyszeri díjak. Egyéb fogyasztásalapú szolgáltatások igény szerinti használat költségei nem amortizált vannak.
 
 Amortizált költségek jelentései a következők:
 
@@ -158,9 +160,9 @@ Amortizált költségek jelentései a következők:
 
 A Költségelemzési jelentést biztosít a felhőbeli fogyasztást és a egy kiválasztott időszakban költségeit. A szabályzatok beállítása a [Cost Allocation 360](tutorial-manage-costs.md#use-custom-tags-to-allocate-costs) használatban vannak a Költségelemzési jelentést.
 
-Hogyan Cost Managementben Ez a jelentés kiszámítása?
+Hogyan Cloudyn Ez a jelentés kiszámítása?
 
-A Cost Management biztosítja, hogy a kiosztási integritását, egyes társított fiók megőrzi alkalmazásával _affinitás fiók_. Affinitás biztosítja, hogy egy fiókot, amely egy adott szolgáltatás nem használja még nem rendelkezik a szolgáltatás számára lefoglalt költségek. A költségek azt, hogy a fiók továbbra is az adott fiókban a foglalási szabályzatok nem számítja ki. Előfordulhat például, hogy öt összekapcsolt fiókok. Ha csak a tárolási szolgáltatások használatához három a majd csak a tárolási szolgáltatások költsége van lefoglalva a három fiókot a címkék között.
+A Cloudyn biztosítja, hogy a kiosztási integritását, egyes társított fiók megőrzi alkalmazásával _affinitás fiók_. Affinitás biztosítja, hogy egy fiókot, amely egy adott szolgáltatás nem használja még nem rendelkezik a szolgáltatás számára lefoglalt költségek. A költségek azt, hogy a fiók továbbra is az adott fiókban a foglalási szabályzatok nem számítja ki. Előfordulhat például, hogy öt összekapcsolt fiókok. Ha csak a tárolási szolgáltatások használatához három a majd csak a tárolási szolgáltatások költsége van lefoglalva a három fiókot a címkék között.
 
 A költségelemzés jelentésben használja:
 
@@ -206,7 +208,7 @@ Egyéni díjak költségjelentésben megjelennek. A tényleges költségelemzés
 
 Cost Allocation 360 használatával egyéni foglalási modelljeinek költségek hozzárendelése felhasznált felhőalapú erőforrásokhoz. Számos jelentést az egyéni modellek létrehozott egyéni modellek adatainak megjelenítése. És egyes jelentések csak adatok megjelenítése egyéni költségmodell a költséglefoglalási a létrehozása után.
 
-Egyéni modellek létrehozásával kapcsolatos további információkért lásd: [oktatóanyag: költségek kezelése az Azure Cost managementtel](tutorial-manage-costs.md).
+Egyéni modellek létrehozásával kapcsolatos további információkért lásd: [oktatóanyag: költségek kezelése az Cloudyn](tutorial-manage-costs.md).
 
 ### <a name="cost-vs-budget-over-time-report"></a>A Cost vs. Költségvetés időalapú jelentés
 
@@ -248,11 +250,11 @@ Amikor elkészült, költségelemzés jelentésekben és a költségek és az a 
 
 ### <a name="azure-resource-explorer-report"></a>Az Azure erőforrás-kezelő jelentés
 
-Az Azure Resource Explorer jelentésben tömeges a az Azure Cost Management szolgáltatásban elérhető erőforrások listáját. A hatékony használatot a jelentést, az Azure-fiókokhoz kell bővítette a metrikák engedélyezve. Kiterjesztett metrikák Cost Management hozzáférést biztosítanak az Azure-beli virtuális gépek. További információkért lásd: [kiterjesztett metrikák az Azure-beli virtuális gépek hozzáadása](azure-vm-extended-metrics.md).
+Az Azure Resource Explorer jelentés az Azure-erőforrások rendelkezésre a Cloudyn tömeges listáját jeleníti meg. A hatékony használatot a jelentést, az Azure-fiókokhoz kell bővítette a metrikák engedélyezve. Kiterjesztett metrikák Cloudyn-hozzáférést biztosít az Azure-beli virtuális gépek. További információkért lásd: [kiterjesztett metrikák az Azure-beli virtuális gépek hozzáadása](azure-vm-extended-metrics.md).
 
 ### <a name="azure-resources-over-time-report"></a>Az Azure erőforrások időalapú jelentés
 
-Az Azure erőforrások időalapú jelentés egy adott időszak alatt futó összes erőforrás bontását mutatja. A hatékony használatot a jelentést, az Azure-fiókokhoz kell bővítette a metrikák engedélyezve. Kiterjesztett metrikák Cost Management hozzáférést biztosítanak az Azure-beli virtuális gépek. További információkért lásd: [kiterjesztett metrikák az Azure-beli virtuális gépek hozzáadása](azure-vm-extended-metrics.md).
+Az Azure erőforrások időalapú jelentés egy adott időszak alatt futó összes erőforrás bontását mutatja. A hatékony használatot a jelentést, az Azure-fiókokhoz kell bővítette a metrikák engedélyezve. Kiterjesztett metrikák Cloudyn-hozzáférést biztosít az Azure-beli virtuális gépek. További információkért lásd: [kiterjesztett metrikák az Azure-beli virtuális gépek hozzáadása](azure-vm-extended-metrics.md).
 
 ### <a name="instance-explorer-report"></a>Példány Explorer jelentés
 
@@ -355,7 +357,7 @@ A fenntartott példányok, amelyek minden előzetes három fizetési beállítá
 - Nincs előre - található, amely a fenntartott példányok költségeinek fizetős havi részletben a fenntartott példányok időtartama alatt, a legalacsonyabb kedvezményeket kínál
 - Részlegesen előre, mely ¼ –, akkor az ár ½ fizetni meghozni, és a többi havi részletben, és a kedvezményes díjszabás alacsonyabb, de zárja be, minden előzetes díjaival
 
-A Cost Management hasznos üzemidejének az egyes gépek kiértékeli az elmúlt 30 napra vonatkozóan. A Cost Management használatát javasolja, hogy a fenntartott példányok vásárlása, ha a gép futtatásához a Hónapjánál az aktuális szinten üzemidő helyett.
+A Cloudyn hasznos üzemidejének az egyes gépek kiértékeli az elmúlt 30 napra vonatkozóan. A Cloudyn azt javasolja, hogy a fenntartott példányok vásárlása, ha a gép futtatásához a Hónapjánál az aktuális szinten üzemidő helyett.
 
 A jelentés megjeleníti a javaslatokat, a legtöbb pénzt takaríthat meg az évben indoklásának a következőt tartalmazza. A javaslatok javasolni, és cserélje le a fenntartott példányok igény szerinti példányok. A fenntartott példányok közvetlenül a jelentés vásárolhat.
 
@@ -363,9 +365,9 @@ Minden lapon teljes jelentésként nyitja meg. Lapok jelentős szakaszai a köve
 
 - **EC2 fenntartott példányok vásárlásának hatását ismertető** – Ez a szakasz szimulálja a különbség a fenntartott példányok igény szerinti vs. Kattintson a **nagyítás**, a teljes EC2 fenntartott példányok vásárlásának hatását ismertető jelentés megtekintéséhez, a szűrők már meg van adva, a javaslat. Ez a jelentés tartalmazza az összes lehetséges a fenntartott példányok vásárlási beszerzési hatását. Módosíthatja a várható átlagos üzemidő megtekintéséhez a mentése való EC2 fenntartott példány megvásárlása lehetséges.
 
-- **Elemzés mentése** – Ez a szakasz tartalmazza a lehetséges megtakarítás érhető el, és a hónap, a megtakarítások actualized vannak, amikor a Cost Management javaslatokat követve. A tényleges megtakarítások és a százalékérték mentett pirossal ki vannak emelve.
+- **Elemzés mentése** – Ez a szakasz tartalmazza a lehetséges megtakarítás érhető el, és a hónap, a megtakarítások actualized vannak, akkor a Cloudyn, ajánlások. A tényleges megtakarítások és a százalékérték mentett pirossal ki vannak emelve.
 
-- **EC2 fenntartott példány típusok összehasonlítása** – Ez a szakasz a megtérülési ráta főbb újdonságai a Cost Management ajánlott üzembe helyezési, például az összes releváns lehetőségeit emeli ki. Ebben a jelentésben az eredmények azt feltételezik, hogy a gép fut-e a 100 %-os üzemidő. Kattintson a **nagyítás** nyissa meg a részletes jelentést.
+- **EC2 fenntartott példány típusok összehasonlítása** – Ez a szakasz a megtérülési ráta főbb újdonságai a Cloudyn által ajánlott üzembe helyezési, például az összes releváns lehetőségeit emeli ki. Ebben a jelentésben az eredmények azt feltételezik, hogy a gép fut-e a 100 %-os üzemidő. Kattintson a **nagyítás** nyissa meg a részletes jelentést.
 
 - **Példányok időalapú** – ebben a szakaszban egy a javaslat, az OnDemand, a fenntartott példányok és a helyszíni társított összes példány áttekintését jeleníti meg. Kattintson a **nagyítás** nyissa meg a részletes jelentést.
 - **Breakeven pontok** – Ez a szakasz az összes lehetséges ajánlott központi telepítések és a megtérülés és a hónap, a befektetési megtérülés bekövetkezésekor táblázatot jelenít meg. Kattintson a **nagyítás** nyissa meg a részletes jelentést.
@@ -394,7 +396,7 @@ A távoli asztali szolgáltatások a fenntartott példányok vásárlási javasl
 Minden lapon teljes jelentésként nyitja meg. Lapok jelentős szakaszai a következők:
 
 - **A távoli asztali szolgáltatások a fenntartott példányok vásárlásának hatását ismertető** – Ez a szakasz tartalmazza a szimuláció közötti különbség az igény szerinti és a fenntartott példányok. Kattintson a **nagyítás** a teljes a távoli asztali szolgáltatások a fenntartott példányok vásárlásának hatását ismertető jelentés megtekintéséhez, a szűrők már meg van adva, a javaslat. Ez a jelentés lehetővé teszi, hogy az összes lehetséges a fenntartott példányok vásárlási vásárlásának hatását ismertető témakörben talál.  Állítsa be a várt átlagos rendelkezésre állását, és tekintse meg a fenntartott példányok vásárlásával mentése lehetséges.
-- **Elemzés mentése** – Ez a szakasz tartalmazza a lehetséges megtakarítás érhető el, és a hónap, a megtakarítások actualized vannak, amikor a Cost Management javaslatokat követve. A tényleges megtakarítások és a százalékérték mentett pirossal ki vannak emelve.
+- **Elemzés mentése** – Ez a szakasz tartalmazza a lehetséges megtakarítás érhető el, és a hónap, a megtakarítások actualized vannak, akkor a Cloudyn, ajánlások. A tényleges megtakarítások és a százalékérték mentett pirossal ki vannak emelve.
 
 - **A távoli asztali szolgáltatások a fenntartott példányok típusok összehasonlítása** – Ez a szakasz a megtérülési ráta emeli ki, beleértve a vonatkozó beállítások az összes ajánlott üzembe helyezési emeli ki. Ebben a jelentésben az eredmények azt feltételezik, hogy a gép fut-e a 100 %-os üzemidő. Kattintson a **nagyítás** nyissa meg a részletes jelentést a kiválasztott gép.
 - **Példányok időalapú** – ebben a szakaszban egy a javaslat, az OnDemand, a fenntartott példányok és a helyszíni társított összes példány áttekintését jeleníti meg. Kattintson a **nagyítás** nyissa meg a részletes jelentést.
@@ -417,7 +419,7 @@ Példány azonosítóját, amely ebből a jelentésből becsléseim javasolt lis
 
 Vegye figyelembe a következő downsizing példa:
 
-Hogy hat m3.xlarge futó példányát tekintve. A Cost Management elemzés azt mutatja, hogy azokat az öt CPU-kihasználtság alacsony. Javasolt csökkenteni őket.
+Hogy hat m3.xlarge futó példányát tekintve. A Cloudyn elemzés azt mutatja, hogy azokat az öt CPU-kihasználtság alacsony. Javasolt csökkenteni őket.
 
 A költségekre gyakorolt hatás a költségekre gyakorolt hatás számítja. Ebben a példában a vonal elem kibontásával láthatja az aktuális egy m3.xlarge példány (Linux/Unix) díjszabása a költségeket az óránkénti egységszám és a egy m3.large példány (Linux/Unix) költségek 0.266 $0.133 $ / óra. Tehát éves költsége, 100 %-ot futtató öt m3.xlarge példányok 11,651 $. Az éves költség, 100 %-ot futtató öt m3.large példányok 5,825 $. A lehetséges megtakarítás $5,825.
 
@@ -425,7 +427,7 @@ A költséghatékony méretezési a indoklások megtekintéséhez kattintson a +
 
 - A **javaslat indoklása** szakasz jelenít meg a jelenlegi üzemelő példány és ajánlott, hogy becsléseim példányainak számát.
 - A **költségekre gyakorolt hatás** szakasz azt határozza meg, lehetséges megtakarítás kiszámítása jelenít meg.
-- A **éves szinten lehetséges megtakarításokat** szakasz éves szinten lehetséges megtakarításokat jelenik meg, ha a Cost Management ajánlás szerint downsizing.
+- A **éves szinten lehetséges megtakarításokat** szakasz éves szinten lehetséges megtakarításokat jelenik meg, ha a Cloudyn ajánlás szerint downsizing.
 
 ### <a name="all-sizing-recommendations-report"></a>Az összes méretezési javaslatokat tartalmazó jelentés
 
@@ -483,11 +485,11 @@ Egy adott példányt metrikák megtekintése idővel:
 
 ### <a name="rds-sizing-recommendations-report"></a>A távoli asztali szolgáltatások méretezési javaslatokat tartalmazó jelentés
 
-A távoli asztali szolgáltatások méretezési javaslatokat tartalmazó jelentés a távoli asztali szolgáltatások méretezésének javaslatokkal optimalizálhatja a felhőbeli használati biztosít. Azt a deduplikációra becsléseim kihasználatlan példányok listáját jeleníti meg. A Cost Management javaslatok az elmúlt 30 napban használatának és teljesítményének adatait alapulnak. Javaslatok fióknév, régió, példánytípus és állapot szerint szűrheti.
+A távoli asztali szolgáltatások méretezési javaslatokat tartalmazó jelentés a távoli asztali szolgáltatások méretezésének javaslatokkal optimalizálhatja a felhőbeli használati biztosít. Azt a deduplikációra becsléseim kihasználatlan példányok listáját jeleníti meg. A Cloudyn, ajánlások az elmúlt 30 napban használatának és teljesítményének adatait alapulnak. Javaslatok fióknév, régió, példánytípus és állapot szerint szűrheti.
 
 ### <a name="sizing-threshold-manager-report"></a>Méretezési küszöbérték Manager-jelentés
 
-A Cost Management beépített méretezési javaslatok pontos méretezési javaslatokat biztosít egy összetett algoritmus használatával számítjuk ki. Módosíthatja a küszöbértékek downsizing javaslatokat.
+A Cloudyn beépített méretezési javaslatok pontos méretezési javaslatokat biztosít egy összetett algoritmus használatával számítjuk ki. Módosíthatja a küszöbértékek downsizing javaslatokat.
 
 Manuálisan módosíthatja a küszöbérték méretezési javaslatok:
 

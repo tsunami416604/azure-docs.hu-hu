@@ -1,26 +1,26 @@
 ---
-title: Hive-házirendek konfigurálása a tartományhoz csatlakoztatott HDInsight – Azure
-description: Ismerje meg, az Apache Ranger-házirendek konfigurálása a Hive egy tartományhoz csatlakoztatott Azure HDInsight szolgáltatásban.
+title: A vállalati biztonsági csomaggal – Azure HDInsight Hive-házirendek konfigurálása
+description: Ismerje meg, az Apache Ranger-házirendek konfigurálása a Hive a vállalati biztonsági csomaggal egy Azure HDInsight szolgáltatásban.
 services: hdinsight
 ms.service: hdinsight
 author: omidm1
 ms.author: omidm
-ms.reviewer: jasonh
+ms.reviewer: mamccrea
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 04/17/2018
-ms.openlocfilehash: 55abb5331da24c3914075c21579e5082853b3c1f
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.date: 09/24/2018
+ms.openlocfilehash: bdad0bac0d320b641359df4093ae10c9505b7de2
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43042080"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46993425"
 ---
-# <a name="configure-hive-policies-in-domain-joined-hdinsight"></a>A tartományhoz csatlakoztatott HDInsight Hive-házirendek konfigurálása
+# <a name="configure-hive-policies-in-hdinsight-with-enterprise-security-package"></a>Hive-házirendek konfigurálása a HDInsight vállalati biztonsági csomaggal
 Útmutató ahhoz, hogyan lehet az Apache Ranger-házirendeket a Hive számára konfigurálni. Ebben a cikkben két Ranger-házirendet hoz létre a hivesampletable nevű táblához való hozzáférés korlátozása érdekében. A hivesampletable HDInsight-fürtöket tartalmaz. Miután konfigurálta a házirendeket, az Excel és az ODBC-illesztőprogram használatával kapcsolódjon a HDInsight Hive-tábláihoz.
 
 ## <a name="prerequisites"></a>Előfeltételek
-* Tartományhoz csatlakoztatott HDInsight-fürt. Lásd a [Tartományhoz csatlakoztatott HDInsight-fürtök konfigurálása](apache-domain-joined-configure.md) című részt.
+* Egy vállalati biztonsági csomag rendelkező HDInsight-fürt. Lásd: [konfigurálása HDInsight-fürtök ESP](apache-domain-joined-configure.md).
 * Office 2016, Office 2013 Professional Plus, Office 365 Pro Plus, az Excel 2013 Standalone vagy Office 2010 Professional Plus rendszert futtató munkaállomás.
 
 ## <a name="connect-to-apache-ranger-admin-ui"></a>Csatlakozás az Apache Ranger felügyeleti felhasználói felületéhez
@@ -34,15 +34,15 @@ ms.locfileid: "43042080"
    >
 2. Jelentkezzen be a fürt rendszergazdai tartományi felhasználónevével és jelszavával:
 
-    ![HDInsight-tartományhoz csatlakoztatott Ranger kezdőlapja](./media/apache-domain-joined-run-hive/hdinsight-domain-joined-ranger-home-page.png)
+    ![HDInsight ESP Ranger kezdőlapja](./media/apache-domain-joined-run-hive/hdinsight-domain-joined-ranger-home-page.png)
 
     A Ranger jelenleg csak a Yarn és a Hive rendszerrel működik.
 
 ## <a name="create-domain-users"></a>Tartományi felhasználók létrehozása
-Lásd: [egy tartományhoz csatlakoztatott HDInsight-fürt létrehozása](apache-domain-joined-configure-using-azure-adds.md#create-a-domain-joined-hdinsight-cluster), hiveuser1 és egy hiveuser2 létrehozásával kapcsolatos információkat. Ebben az oktatóanyagban használja a két felhasználói fiókokat.
+Lásd: [egy HDInsight-fürt létrehozása a ESP](apache-domain-joined-configure-using-azure-adds.md#create-a-hdinsight-cluster-with-esp), hiveuser1 és egy hiveuser2 létrehozásával kapcsolatos információkat. Ebben az oktatóanyagban használja a két felhasználói fiókokat.
 
 ## <a name="create-ranger-policies"></a>Ranger-házirendek létrehozása
-Ebben a szakaszban két Ranger-házirendet a hivesampletable eléréséhez hozzon létre. Adjon kiválasztási engedélyt a különböző oszlopcsoportokra vonatkozóan. Mindkét felhasználó használatával létrehozott [egy tartományhoz csatlakoztatott HDInsight-fürt létrehozása](apache-domain-joined-configure-using-azure-adds.md#create-a-domain-joined-hdinsight-cluster). A következő szakaszban a két házirendet Excelben fogja tesztelni.
+Ebben a szakaszban két Ranger-házirendet a hivesampletable eléréséhez hozzon létre. Adjon kiválasztási engedélyt a különböző oszlopcsoportokra vonatkozóan. Mindkét felhasználó használatával létrehozott [egy HDInsight-fürt létrehozása a ESP](apache-domain-joined-configure-using-azure-adds.md#create-a-hdinsight-cluster-with-esp). A következő szakaszban a két házirendet Excelben fogja tesztelni.
 
 **Ranger-házirendek létrehozása**
 
@@ -57,7 +57,7 @@ Ebben a szakaszban két Ranger-házirendet a hivesampletable eléréséhez hozzo
    * Felhasználó kiválasztása: hiveuser1
    * Engedélyek: kiválasztás
 
-     ![HDInsight-tartományhoz csatlakoztatott Ranger Hive-házirendjének konfigurálása](./media/apache-domain-joined-run-hive/hdinsight-domain-joined-configure-ranger-policy.png).
+     ![HDInsight ESP Ranger Hive-házirendjének konfigurálása](./media/apache-domain-joined-run-hive/hdinsight-domain-joined-configure-ranger-policy.png).
 
      > [!NOTE]
      > Ha egy tartományi felhasználó nem töltődik be a Felhasználó kiválasztása részben, várjon néhány másodpercig, amíg a Ranger szinkronizálódik az AAD-val.
@@ -85,7 +85,7 @@ Az utasítások a [Hive ODBC-adatforrás létrehozása](../hadoop/apache-hadoop-
  | Hive Server típusa | Válassza ki a **Hive Server 2** típust |
  | Mechanizmus | Válassza ki az **Azure HDInsight szolgáltatást** |
  | HTTP elérési útja | Hagyja üresen. |
- | Felhasználónév | Adja meg hiveuser1@contoso158.onmicrosoft.com. Ha eltérő, frissítse a tartománynevet. |
+ | Felhasználónév | Írja be a hiveuser1@contoso158.onmicrosoft.com (igen) kifejezést. Ha eltérő, frissítse a tartománynevet. |
  | Jelszó | Adja meg a hiveuser1 jelszavát. |
 
 Az adatforrás mentése előtt kattintson a **Tesztelés** gombra.
@@ -131,9 +131,9 @@ A második (read-hivesampletable-devicemake) házirend tesztelése, az előző s
     Amikor kész van, két importáltadat-oszlopnak kell megjelennie.
 
 ## <a name="next-steps"></a>További lépések
-* A tartományhoz csatlakoztatott HDInsight-fürtök konfigurálásához lásd: [Tartományhoz csatlakoztatott HDInsight-fürtök konfigurálása](apache-domain-joined-configure.md).
-* A tartományhoz csatlakoztatott HDInsight-fürt kezeléséhhez lásd: [kezelése tartományhoz csatlakoztatott HDInsight-fürtök](apache-domain-joined-manage.md).
-* Az SSH használata a tartományhoz csatlakoztatott HDInsight-fürtök Hive-lekérdezések futtatásához, tekintse meg a [az SSH használata a HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md#domainjoined).
+* A vállalati biztonsági csomaggal egy HDInsight-fürt konfigurálásához lásd: [konfigurálása HDInsight-fürtök ESP](apache-domain-joined-configure.md).
+* ESP HDInsight fürtök kezeléséhhez lásd: [kezelése a HDInsight-fürtök ESP](apache-domain-joined-manage.md).
+* Az SSH használata a HDInsight-fürtök ESP Hive-lekérdezések futtatásához, tekintse meg a [az SSH használata a HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md#domainjoined).
 * A Hive JDBC segítségével történő Hive-csatlakoztatáshoz olvassa el a [Csatlakozás a Hive-hoz az Azure HDInsight rendszerben a Hive JDBC-illesztőprogrammal](../hadoop/apache-hadoop-connect-hive-jdbc-driver.md) című részt
 * Ha az Excelt a Hive ODBC segítségével szeretné a Hadoophoz csatlakoztatni, olvassa el [Az Excel csatlakoztatása a Hadoophoz a Microsoft Hive ODBC-meghajtó segítségével](../hadoop/apache-hadoop-connect-excel-hive-odbc-driver.md) című részt
 * Ha az Excelt a Power Query segítségével szeretné a Hadoophoz csatlakoztatni, olvassa el [Az Excel csatlakoztatása a Hadoophoz a Power Query segítségével](../hadoop/apache-hadoop-connect-excel-power-query.md) című részt

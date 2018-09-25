@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 12/14/2017
 ms.author: cynthn
-ms.openlocfilehash: 1bd13c35ed49aeaab1a4f4aa94c984dc28f6c111
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: d6a98e49df96f2427d37c1d401e8c5207bc2268e
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38308005"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46993816"
 ---
 # <a name="redeploy-linux-virtual-machine-to-new-azure-node"></a>Ismételt üzembe helyezése Linux rendszerű virtuális gépet az új Azure csomópontra
 Ha SSH hibaelhárítási nehézségek között, vagy segítségére lehetnek az alkalmazás elérését egy Linux rendszerű virtuális gép (VM) az Azure-ban, a virtuális gép újratelepítése. Ha egy virtuális gép újbóli telepítése, a virtuális gép áthelyezése egy másik csomópontra az Azure infrastruktúráján belül, és majd használja újra. A konfigurációs beállításokat és a kapcsolódó erőforrásokat megmaradnak. Ez a cikk bemutatja, hogyan újratelepíteni a virtuális gép Azure parancssori felület vagy az Azure portal használatával.
@@ -29,12 +29,12 @@ Ha SSH hibaelhárítási nehézségek között, vagy segítségére lehetnek az 
 
 Egy virtuális Gépet a következő lehetőségek egyikének használatával is telepítse újra. Csak ki kell újratelepíteni a virtuális gép egy lehetőséget:
 
-- [Azure CLI 2.0](#azure-cli-20)
-- [Azure CLI 1.0](#azure-cli-10)
+- [Azure CLI](#azure-cli-20)
+- [Az Azure klasszikus parancssori felület](#azure-cli-10)
 - [Azure Portal](#using-azure-portal)
 
-## <a name="use-the-azure-cli-20"></a>Az Azure CLI 2.0 használata
-Telepítse a legújabb [Azure CLI 2.0](/cli/azure/install-az-cli2) és jelentkezzen be az Azure-fiók használatával [az bejelentkezési](/cli/azure/reference-index#az_login).
+## <a name="use-the-azure-cli"></a>Az Azure parancssori felületének használata
+Telepítse a legújabb [Azure CLI-vel](/cli/azure/install-az-cli2) és jelentkezzen be az Azure-fiók használatával [az bejelentkezési](/cli/azure/reference-index#az_login).
 
 Ismételt üzembe helyezése virtuális Gépen való [az vm redeploy](/cli/azure/vm#az_vm_redeploy). Az alábbi példa ismét üzembe helyezi a virtuális gép nevű *myVM* az erőforráscsoport neve *myResourceGroup*:
 
@@ -42,8 +42,8 @@ Ismételt üzembe helyezése virtuális Gépen való [az vm redeploy](/cli/azure
 az vm redeploy --resource-group myResourceGroup --name myVM 
 ```
 
-## <a name="use-the-azure-cli-10"></a>Az Azure CLI 1.0 használata
-Telepítse a [legfrissebb Azure CLI 1.0](../../cli-install-nodejs.md) , és jelentkezzen be az Azure-fiókjával. Győződjön meg arról, hogy biztosan megfeleljen az erőforrás-kezelő módban (`azure config mode arm`).
+## <a name="use-the-azure-classic-cli"></a>A klasszikus Azure parancssori felületének használata
+Telepítse a [legújabb Azure klasszikus parancssori felület](../../cli-install-nodejs.md) , és jelentkezzen be az Azure-fiókjával. Győződjön meg arról, hogy biztosan megfeleljen az erőforrás-kezelő módban (`azure config mode arm`).
 
 Az alábbi példa ismét üzembe helyezi a virtuális gép nevű *myVM* az erőforráscsoport neve *myResourceGroup*:
 

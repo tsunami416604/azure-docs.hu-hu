@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 11/08/2016
 ms.author: sedusch
-ms.openlocfilehash: a2daf75e5a75a4fb0be06986903a2f4f9be8adf0
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.openlocfilehash: c6d7b4515546ea51264b094316c5da52dbb321c2
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45634846"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46957023"
 ---
 # <a name="azure-virtual-machines-deployment-for-sap-netweaver"></a>Az SAP NetWeaver számára az Azure virtuális gépek üzembe helyezése
 [767598]:https://launchpad.support.sap.com/#/notes/767598
@@ -919,9 +919,7 @@ A parancsfájl kimenete a következő információkat tartalmazza:
 #### <a name="408f3779-f422-4413-82f8-c57a23b4fc2f"></a>Linux rendszerű virtuális gépekhez az Azure CLI
 Az Azure Enhanced Monitoring bővítményt az SAP telepítése az Azure CLI-vel:
 
-1. Telepítse az Azure CLI 1.0 használatával
-
-   1. Azure CLI 1.0 telepítése leírtak szerint [az Azure CLI 1.0 telepítése][azure-cli].
+   1. Az Azure klasszikus parancssori felület telepítése leírtak szerint [a klasszikus Azure CLI telepítése][azure-cli].
    1. Jelentkezzen be az Azure-fiókjával:
 
       ```

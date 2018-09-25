@@ -1,6 +1,6 @@
 ---
-title: Azure hálózati figyelőt - PowerShell-kapcsolatok hibáinak elhárítása |} Microsoft Docs
-description: Ismerje meg, hogyan használható a kapcsolati hibáinak elhárítása az Azure hálózati figyelőt PowerShell-lel képességét.
+title: Az Azure Network Watcher – PowerShell-kapcsolatok hibaelhárítása |} A Microsoft Docs
+description: Ismerje meg, hogyan használható a kapcsolat hibaelhárítása az Azure Network Watcher PowerShell-lel funkciója.
 services: network-watcher
 documentationcenter: na
 author: jimdial
@@ -13,34 +13,34 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/11/2017
 ms.author: jdial
-ms.openlocfilehash: 7e8c04fd2284a3a00d4847f39fd34982a543cc29
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: aac23f616cb9d7c3fb29e516cfa2daa47c00e8e2
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32181861"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46989260"
 ---
-# <a name="troubleshoot-connections-with-azure-network-watcher-using-powershell"></a>Kapcsolatok hibaelhárítása az Azure hálózati figyelőt PowerShell használatával
+# <a name="troubleshoot-connections-with-azure-network-watcher-using-powershell"></a>Kapcsolatok hibaelhárítása az Azure Network Watcher PowerShell-lel
 
 > [!div class="op_single_selector"]
-> - [Portal](network-watcher-connectivity-portal.md)
+> - [Portál](network-watcher-connectivity-portal.md)
 > - [PowerShell](network-watcher-connectivity-powershell.md)
-> - [CLI 2.0](network-watcher-connectivity-cli.md)
-> - [Az Azure REST API-n](network-watcher-connectivity-rest.md)
+> - [Azure CLI](network-watcher-connectivity-cli.md)
+> - [Az Azure REST API-val](network-watcher-connectivity-rest.md)
 
-Megtudhatja, hogyan használja a kapcsolat ellenőrzése, hogy egy közvetlen TCP-kapcsolatot a virtuális gép egy adott végpont is hozható létre hibaelhárítása.
+Ismerje meg, hogyan használja a kapcsolat ellenőrzése, hogy közvetlen TCP-kapcsolatot a virtuális gépről egy adott végpontot is létesíthető hibaelhárítása.
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-* Végezzen hibaelhárítást a kapcsolaton kívánt hálózati figyelőt régióban példánya.
-* Virtuális gépek kapcsolatok hibaelhárításához.
+* A Network Watcher-kapcsolat hibaelhárítása szeretné a régióban egy példányát.
+* Virtuális gépek a kapcsolatok hibaelhárítása.
 
 > [!IMPORTANT]
-> Csatlakozási hibáinak elhárítása az szükséges, hogy a virtuális gép a hibaelhárítás a `AzureNetworkWatcherExtension` telepített virtuális gépi bővítményt. A bővítmény telepítése a Windows virtuális gép a Microsoft [a Windows Azure hálózati figyelő ügynök virtuálisgép-bővítmény](../virtual-machines/windows/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) és a Linux virtuális gép helyezést [Azure hálózati figyelő ügynök virtuálisgép-bővítmény Linux](../virtual-machines/linux/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json). A bővítmény nem szükséges a cél-végponthoz.
+> Kapcsolódási hibák elhárítása megköveteli, hogy rendelkezik-e a virtuális gép a hibaelhárítás a `AzureNetworkWatcherExtension` Virtuálisgép-bővítmény telepítve van. A bővítmény telepítését egy Windows virtuális gépen látogasson el [Azure Network Watcher-ügynök virtuálisgép-bővítmény Windows](../virtual-machines/windows/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) és Linux rendszerű virtuális gép látogasson el a [Azure Network Watcher-ügynök virtuálisgép-bővítmény Linuxhoz](../virtual-machines/linux/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json). A bővítmény nem szükséges a cél-végponton.
 
 ## <a name="check-connectivity-to-a-virtual-machine"></a>Ellenőrizze a kapcsolatot a virtuális géphez
 
-Ebben a példában a cél virtuális gép kapcsolat ellenőrzi a 80-as porton keresztül. Ebben a példában megköveteli, hogy rendelkezik-e engedélyezve van a régióban, amely tartalmazza a forrás virtuális gép hálózati figyelőt.  
+Ebben a példában ellenőrzi a kapcsolatot a cél virtuális gép 80-as porton keresztül. Ebben a példában megköveteli, hogy Ön a Network Watcher engedélyezve van a régióban, amely tartalmazza a forrás virtuális gép.  
 
 ### <a name="example"></a>Példa
 
@@ -62,7 +62,7 @@ Test-AzureRmNetworkWatcherConnectivity -NetworkWatcher $networkWatcher -SourceId
 
 ### <a name="response"></a>Válasz
 
-Az előző példában a rendszer a következő választ.  A válaszban a `ConnectionStatus` van **Unreachable**. Láthatja, hogy a mintavételt küldése sikertelen. A kapcsolat a felhasználó által konfigurált miatt a virtuális készülék meghiúsult `NetworkSecurityRule` nevű **UserRule_Port80**, beállítva, hogy a bejövő forgalom blokkolása a 80-as porton. Ezek az információk segítségével kutatás kapcsolódási problémák.
+A következő választ az előző példában van.  A válaszban a `ConnectionStatus` van **nem elérhető**. Láthatja, hogy minden a mintavételezők küldött sikertelen. A kapcsolat a virtuális készülék egy felhasználó által konfigurált miatt nem sikerült `NetworkSecurityRule` nevű **UserRule_Port80**, a 80-as porton bejövő forgalom blokkolására konfigurált. Ez az információ a kapcsolódási problémák kutatás használható.
 
 ```
 ConnectionStatus : Unreachable
@@ -135,7 +135,7 @@ Hops             : [
 
 ## <a name="validate-routing-issues"></a>Útválasztási problémák ellenőrzése
 
-Ebben a példában egy virtuális gép és a távoli végpont közötti kapcsolatot ellenőrzi. Ebben a példában megköveteli, hogy rendelkezik-e engedélyezve van a régióban, amely tartalmazza a forrás virtuális gép hálózati figyelőt.  
+Ebben a példában egy virtuális gép és a egy távoli végpont közötti kapcsolatot ellenőrzi. Ebben a példában megköveteli, hogy Ön a Network Watcher engedélyezve van a régióban, amely tartalmazza a forrás virtuális gép.  
 
 ### <a name="example"></a>Példa
 
@@ -154,7 +154,7 @@ Test-AzureRmNetworkWatcherConnectivity -NetworkWatcher $networkWatcher -SourceId
 
 ### <a name="response"></a>Válasz
 
-A következő példában a `ConnectionStatus` jelenik meg, mint **Unreachable**. Az a `Hops` részleteket megtekintheti a `Issues` , amely a forgalom miatt blokkolta a `UserDefinedRoute`. 
+A következő példában a `ConnectionStatus` jelenik meg, mint **nem elérhető**. Az a `Hops` alatt látható részletes `Issues` , amely a forgalom miatt le lett tiltva a `UserDefinedRoute`. 
 
 ```
 ConnectionStatus : Unreachable
@@ -199,7 +199,7 @@ Hops             : [
 
 ## <a name="check-website-latency"></a>Ellenőrizze a webhely késés
 
-A következő példa a webhely kapcsolatát ellenőrzi. Ebben a példában megköveteli, hogy rendelkezik-e engedélyezve van a régióban, amely tartalmazza a forrás virtuális gép hálózati figyelőt.  
+Az alábbi példa ellenőrzi a kapcsolatot egy webhelyre. Ebben a példában megköveteli, hogy Ön a Network Watcher engedélyezve van a régióban, amely tartalmazza a forrás virtuális gép.  
 
 ### <a name="example"></a>Példa
 
@@ -219,7 +219,7 @@ Test-AzureRmNetworkWatcherConnectivity -NetworkWatcher $networkWatcher -SourceId
 
 ### <a name="response"></a>Válasz
 
-A következő válasz láthatja a `ConnectionStatus` jeleníti meg, mint a **elérhető**. Sikeres kapcsolat esetén a késési értékek találhatók.
+A következő választ, láthatja a `ConnectionStatus` állapota **elérhető**. Ha a kapcsolat létrejött, késés fel van tüntetve.
 
 ```
 ConnectionStatus : Reachable
@@ -250,9 +250,9 @@ Hops             : [
                    ]
 ```
 
-## <a name="check-connectivity-to-a-storage-endpoint"></a>Ellenőrizze a kapcsolatot a storage-végponthoz
+## <a name="check-connectivity-to-a-storage-endpoint"></a>Ellenőrizze a kapcsolatot egy storage-végponthoz
 
-A következő példa egy blog tárfiókot és a virtuális gépek közötti kapcsolatot ellenőrzi. Ebben a példában megköveteli, hogy rendelkezik-e engedélyezve van a régióban, amely tartalmazza a forrás virtuális gép hálózati figyelőt.  
+Az alábbi példa ellenőrzi a kapcsolatot a virtuális gépről blog storage-fiókba. Ebben a példában megköveteli, hogy Ön a Network Watcher engedélyezve van a régióban, amely tartalmazza a forrás virtuális gép.  
 
 ### <a name="example"></a>Példa
 
@@ -272,7 +272,7 @@ Test-AzureRmNetworkWatcherConnectivity -NetworkWatcher $networkWatcher -SourceId
 
 ### <a name="response"></a>Válasz
 
-A következő json-ja a példa egy válasz az előző parancsmag futtatását. A cél nem érhető el, mert a `ConnectionStatus` tulajdonság jeleníti meg, mint a **elérhető**.  A tárolási blob és a késleltetés eléréséhez szükséges ugrások száma kapcsolatos részleteket rendelkezésre állnak.
+A következő json az előző parancsmag futtatását a példaválasz. A cél érhető el, mert a `ConnectionStatus` tulajdonság állapota **elérhető**.  A részleteket az ugrások számát, a storage blob és a késés eléréséhez szükséges kapcsolatban állnak rendelkezésre.
 
 ```json
 ConnectionStatus : Reachable
@@ -305,6 +305,6 @@ Hops             : [
 
 ## <a name="next-steps"></a>További lépések
 
-Határozza meg, hogy bizonyos forgalom engedélyezett kívül a virtuális gép vagy ellátogatva [ellenőrizze IP folyamata ellenőrizze](diagnose-vm-network-traffic-filtering-problem.md).
+Határozza meg, hogy bizonyos forgalom engedélyezve van a vagy a virtuális gép funkcionáló [ellenőrizze IP-folyamat ellenőrzésével](diagnose-vm-network-traffic-filtering-problem.md).
 
-Ha a forgalmat blokkol, és nem kell, lásd: [hálózati biztonsági csoportok kezelése](../virtual-network/manage-network-security-group.md) nyomon követheti a hálózati biztonsági csoport és a biztonsági meghatározott szabályokat.
+Ha a forgalmat blokkol, és nem lehet, [hálózati biztonsági csoportok kezelése](../virtual-network/manage-network-security-group.md) nyomon követheti a hálózati biztonsági csoport és biztonsági meghatározott szabályokat.

@@ -1,6 +1,6 @@
 ---
 title: Bontsa ki a virtuális merevlemezek egy Linux rendszerű virtuális gépen az Azure-ban |} A Microsoft Docs
-description: Ismerje meg, hogyan bontsa ki a virtuális merevlemezek egy Linux rendszerű virtuális gépen az Azure CLI 2.0 használatával
+description: Ismerje meg, hogyan bontsa ki a virtuális merevlemezek egy Linux rendszerű virtuális gépen az Azure CLI-vel
 services: virtual-machines-linux
 documentationcenter: ''
 author: roygara
@@ -14,21 +14,22 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 12/13/2017
 ms.author: rogarana
-ms.openlocfilehash: 96d50260663f00f5ae2e9b2e0495c91ecb5da4b2
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 0c2d4d1413b6cfd0b5e457e720b59c6c7b575092
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39421188"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46974544"
 ---
 # <a name="how-to-expand-virtual-hard-disks-on-a-linux-vm-with-the-azure-cli"></a>Hogyan bontsa ki a virtuális merevlemezek egy Linux rendszerű virtuális gépen az Azure CLI-vel
-Az alapértelmezett virtuális merevlemezt az operációs rendszer (OS) mérete általában 30 GB egy Linux rendszerű virtuális gépre (VM) az Azure-ban. Is [adatlemezek hozzáadása](add-disk.md) nyújt a további tárterületre, de előfordulhat, hogy is szeretne egy már meglévő adatlemez kibontása. Ez a cikk részletesen bemutatja, bontsa ki a felügyelt lemezeket az Azure CLI 2.0 használatával Linux virtuális gép számára. 
+
+Az alapértelmezett virtuális merevlemezt az operációs rendszer (OS) mérete általában 30 GB egy Linux rendszerű virtuális gépre (VM) az Azure-ban. Is [adatlemezek hozzáadása](add-disk.md) nyújt a további tárterületre, de előfordulhat, hogy is szeretne egy már meglévő adatlemez kibontása. Ez a cikk részletesen bemutatja a Linux rendszerű virtuális gép az Azure CLI-vel bontsa ki a felügyelt lemezek. 
 
 > [!WARNING]
 > Mindig győződjön meg arról, hogy biztonsági másolatot az adatokat, mielőtt végrehajtaná a lemez átméretezése operations. További információkért lásd: [az Azure-ban a Linux rendszerű virtuális gépek biztonsági mentése](tutorial-backup-vms.md).
 
 ## <a name="expand-azure-managed-disk"></a>Az Azure felügyelt lemez kibontása
-Győződjön meg arról, hogy rendelkezik-e a legújabb [Azure CLI 2.0](/cli/azure/install-az-cli2) telepítve, és bejelentkezett egy Azure-fiókba az [az bejelentkezési](/cli/azure/reference-index#az_login).
+Győződjön meg arról, hogy rendelkezik-e a legújabb [Azure CLI-vel](/cli/azure/install-az-cli2) telepítve, és bejelentkezett egy Azure-fiókba az [az bejelentkezési](/cli/azure/reference-index#az_login).
 
 Ez a cikk az Azure-ban egy meglévő virtuális gép legalább egy adatlemezt csatolni, és előkészíti igényel. Ha Ön még nem rendelkezik egy virtuális Gépet, amelyet használhat, lásd: [létrehozás és adatlemezekkel rendelkező virtuális gép előkészítése](tutorial-manage-disks.md#create-and-attach-disks).
 

@@ -10,27 +10,28 @@ ms.assetid: 35af95cb-ced3-46ad-b01d-5d2f6fd064a3
 ms.service: active-directory
 ms.component: develop
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/27/2018
+ms.date: 09/24/2018
 ms.author: celested
-ms.reviewer: elisol
+ms.reviewer: justhu, elisol
 ms.custom: aaddev
-ms.openlocfilehash: d2ed90b0bb1d2ef7b830c9394628872e1a775f9e
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: abca81e0db565c6c84d9be9df07b46c8c338030b
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39593400"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46960277"
 ---
-# <a name="how-to-sign-in-any-azure-active-directory-user-using-the-multi-tenant-application-pattern"></a>Hogyan lehet Azure Active Directory-felhasználók bejelentkeztetése több-bérlős alkalmazásminta használatával
-Ha egy alkalmazás számos szervezet hasonló, konfigurálhatja az alkalmazás minden olyan Azure Active Directory (AD) bérlő történő bejelentkezések fogadására. Ez a konfiguráció nevezzük, így az alkalmazás több-bérlős. Minden olyan Azure AD-bérlőben felhasználók tudják, beleegyezik abba, hogy az alkalmazás-fiókjuk használata után az alkalmazásnak bejelentkezni. 
+# <a name="how-to-sign-in-any-azure-active-directory-user-using-the-multi-tenant-application-pattern"></a>Útmutató: Azure Active Directory-felhasználók bejelentkeztetése több-bérlős alkalmazásminta használatával
 
-Ha rendelkezik egy meglévő alkalmazást, amely a saját fiók rendszerrel rendelkezik, vagy egyéb felhőszolgáltatók történő bejelentkezések egyéb típusú támogatja, hozzáadása az Azure AD-be minden bérlő használata egyszerű. Csak az alkalmazás regisztrálására, adja hozzá az OAuth2, OpenID Connect vagy SAML bejelentkezési kódot, és helyezze egy ["Sign In with Microsoft" gomb] [ AAD-App-Branding] az alkalmazásban.
+Ha egy szoftver (saas biztosított) alkalmazás számos szervezet hasonló, konfigurálhatja az alkalmazás minden olyan Azure Active Directory (Azure AD) bérlő történő bejelentkezések fogadására. Ez a konfiguráció neve *így az alkalmazás több-bérlős*. Minden olyan Azure AD-bérlőben felhasználók tudják, beleegyezik abba, hogy az alkalmazás-fiókjuk használata után az alkalmazásnak bejelentkezni. 
+
+Ha rendelkezik egy meglévő alkalmazást, amely a saját fiók rendszerrel rendelkezik, vagy egyéb felhőszolgáltatók történő bejelentkezések egyéb típusú támogatja, hozzáadása az Azure AD-be minden bérlő használata egyszerű. Csak az alkalmazás regisztrálására, adja hozzá az OAuth2, OpenID Connect vagy SAML bejelentkezési kódot, és helyezze egy ["Sign in with Microsoft" gomb] [ AAD-App-Branding] az alkalmazásban.
 
 > [!NOTE] 
-> Ez a cikk feltételezi, hogy már ismeri az Azure AD-hez egy egybérlős alkalmazást készít. Ha nem Ön, először érdemes egy a rövid útmutatók a a [fejlesztői útmutató kezdőlapja][AAD-Dev-Guide].
+> Ez a cikk feltételezi, hogy már ismeri az Azure AD-hez egy egybérlős alkalmazást készít. Ha nem Ön, a kezdéshez válasszon egyet a rövid útmutatók, az a [fejlesztői útmutató kezdőlapja][AAD-Dev-Guide].
 
 Az alkalmazás alakítható át egy Azure ad-ben több-bérlős alkalmazás négy egyszerű lépésben történik:
 
@@ -42,19 +43,21 @@ Az alkalmazás alakítható át egy Azure ad-ben több-bérlős alkalmazás nég
 Tekintsük át részletesen minden lépése. Emellett egyenesen is ugorhat [ezen a listán szereplő minták több-bérlős][AAD-Samples-MT].
 
 ## <a name="update-registration-to-be-multi-tenant"></a>Frissíteni kell a több-bérlős regisztrációt
+
 Alapértelmezés szerint a web app és az API regisztrációkat az Azure ad-ben egyetlen új bérlő. Akkor is használhatja a regisztrációs több-bérlős keresése a **több ábráját** kapcsolható be a a **tulajdonságok** ablaktábláján az alkalmazás regisztrálása az a [az Azure portal] [ AZURE-portal] értékre állítaná, és **Igen**.
 
-Egy alkalmazás több-bérlős lehet tenni, mielőtt az Azure AD szükséges az Alkalmazásazonosító URI-t az alkalmazás globálisan egyedinek kell lennie. Az Alkalmazásazonosító URI az az alkalmazás a protokollüzenetekről azonosítja módszerekkel egyik. Egybérlős alkalmazás esetén a rendszer megfelelő az Alkalmazásazonosító URI a bérlőn belül egyedinek kell lennie. Több-bérlős alkalmazás esetében, globálisan egyedinek kell lennie, az Azure ad-ben található az alkalmazás az összes bérlőre kiterjedő. Globális egyedi-e kényszerítve van azzal, hogy az Alkalmazásazonosító URI-t szeretné, hogy egy állomásnevet, amely megfelel az Azure AD-bérlő ellenőrzött tartományt. Alapértelmezés szerint az Azure Portalon létrehozott alkalmazás rendelkezik egy globálisan egyedi Alkalmazásazonosító URI-t állítsa be az alkalmazás létrehozása, de módosíthatja ezt az értéket.
+Egy alkalmazás több-bérlős lehet tenni, mielőtt az Azure AD szükséges az Alkalmazásazonosító URI-t az alkalmazás globálisan egyedinek kell lennie. Az Alkalmazásazonosító URI az az alkalmazás a protokollüzenetekről azonosítja módszerekkel egyik. Egybérlős alkalmazás esetén a rendszer megfelelő az Alkalmazásazonosító URI a bérlőn belül egyedinek kell lennie. Több-bérlős alkalmazás esetében, globálisan egyedinek kell lennie, az Azure ad-ben található az alkalmazás az összes bérlőre kiterjedő. Globális egyedi-e kényszerítve van azzal, hogy az Alkalmazásazonosító URI-t szeretné, hogy egy állomásnevet, amely megfelel az Azure AD-bérlő ellenőrzött tartományt. 
 
-Például, ha a bérlő nevével contoso.onmicrosoft.com és a egy érvényes App ID URI lenne `https://contoso.onmicrosoft.com/myapp`. Ha a bérlő ellenőrzött tartományának `contoso.com`, és a egy érvényes Alkalmazásazonosító URI-t is lenne `https://contoso.com/myapp`. Ha az Alkalmazásazonosító URI nem követi a ebben a mintában beállítása egy alkalmazást, több-bérlős sikertelen lesz.
+Alapértelmezés szerint az Azure Portalon létrehozott alkalmazás rendelkezik egy globálisan egyedi Alkalmazásazonosító URI-t állítsa be az alkalmazás létrehozása, de módosíthatja ezt az értéket. Például, ha a bérlő nevével contoso.onmicrosoft.com és a egy érvényes App ID URI lenne `https://contoso.onmicrosoft.com/myapp`. Ha a bérlő ellenőrzött tartományának `contoso.com`, és a egy érvényes Alkalmazásazonosító URI-t is lenne `https://contoso.com/myapp`. Ha az Alkalmazásazonosító URI nem követi a ebben a mintában beállítása egy alkalmazást, több-bérlős sikertelen lesz.
 
 > [!NOTE] 
-> Natív ügyfél-regisztrációk, valamint [v2 alkalmazások](./active-directory-appmodel-v2-overview.md) több-bérlős alapértelmezés szerint. Nem kell semmit sem, hogy ezek alkalmazásregisztrációkat, több-bérlős.
+> Natív ügyfél-regisztrációk, valamint [v2.0 alkalmazások](./active-directory-appmodel-v2-overview.md) több-bérlős alapértelmezés szerint. Nem kell semmit sem, hogy ezek alkalmazásregisztrációkat, több-bérlős.
 
 ## <a name="update-your-code-to-send-requests-to-common"></a>Kérések/Common küldéséhez a kód frissítése
-Bejelentkezési kérelmek egy egybérlős alkalmazást, a bérlő bejelentkezési végpont kell küldeni. Ha például a contoso.onmicrosoft.com a végpont a következő lesz: `https://login.microsoftonline.com/contoso.onmicrosoft.com`
 
-Egy bérlő végpontra küldött kérelmeket a felhasználókat (vagy a vendégek) bejelentkezhet a bérlőt, az adott bérlőn belüli alkalmazások. Egy több-bérlős alkalmazással az alkalmazás nem ismert meghozni milyen bérlő, a felhasználó nem származik, így Ön nem végpontra kérést küldhet egy bérlőt. Ehelyett küld egy végpontot, amely minden Azure AD-bérlőre kiterjedő eszközalkalmazásnál: `https://login.microsoftonline.com/common`
+Bejelentkezési kérelmek egy egybérlős alkalmazást, a bérlő bejelentkezési végpont kell küldeni. Ha például a contoso.onmicrosoft.com a végpont lenne: `https://login.microsoftonline.com/contoso.onmicrosoft.com`. Egy bérlő végpontra küldött kérelmeket a felhasználókat (vagy a vendégek) bejelentkezhet a bérlőt, az adott bérlőn belüli alkalmazások. 
+
+Egy több-bérlős alkalmazással az alkalmazás nem ismert meghozni milyen bérlő, a felhasználó nem származik, így Ön nem végpontra kérést küldhet egy bérlőt. Ehelyett küld egy végpontot, amely minden Azure AD-bérlőre kiterjedő eszközalkalmazásnál: `https://login.microsoftonline.com/common`
 
 Ha az Azure AD meg az/Common kérést kap végpont, azt a felhasználó bejelentkezik, és, következésképpen felderíti a felhasználó melyik bérlőhöz. A/közös végpont működik, az összes az Azure AD által támogatott hitelesítési protokollok: OpenID Connect, az OAuth 2.0, az SAML 2.0 és WS-Federation.
 
@@ -64,6 +67,7 @@ Az alkalmazás ezután a bejelentkezési választ a felhasználó jelképező jo
 > A/közös végpontja nem a bérlő pedig nem kibocsátó, csak a multiplexer. / Common használatakor a jogkivonatainak érvényesítéséhez szükséges az alkalmazás logikáját ezt figyelembe kell venni frissíteni kell. 
 
 ## <a name="update-your-code-to-handle-multiple-issuer-values"></a>Több kiállítók a következők kezeléséhez a kód frissítése
+
 Webalkalmazások és webes API-k fogadása, és érvényesítse az Azure ad-ből. 
 
 > [!NOTE]
@@ -95,7 +99,8 @@ Például ha egy több-bérlős alkalmazást csak lehetővé teszi, hogy jelentk
 
 Az a [minták több-bérlős][AAD-Samples-MT], kibocsátó ellenőrzése le van tiltva, ahhoz, hogy minden olyan Azure AD-bérlővel való bejelentkezéshez.
 
-## <a name="understanding-user-and-admin-consent"></a>Understanding felhasználói és rendszergazdai jóváhagyás
+## <a name="understand-user-and-admin-consent"></a>Felhasználói és rendszergazdai hozzájárulás ismertetése
+
 Jelentkezzen be az Azure AD-alkalmazás egy felhasználó az alkalmazás meg kell jelennie a felhasználó bérlőjéhez. Ez lehetővé teszi a szervezet van például egyedi házirendek alkalmazása a felhasználók bejelentkezésekor a bérlők közül az alkalmazáshoz. Egybérlős alkalmazás esetében a regisztráció az egyszerű; azt, amelyik akkor fordul elő, amikor regisztrálja az alkalmazás legyen a [az Azure portal][AZURE-portal].
 
 Több-bérlős alkalmazás esetében a kezdeti regisztráció az alkalmazás fejlesztője által használt Azure AD-bérlő él. Ha egy felhasználó egy másik bérlőben történő az alkalmazás első alkalommal jelentkezik be, az Azure AD megkéri, hogy engedélyt adjanak az alkalmazás által kért engedélyeket. Azok a hozzájárulás, akkor az alkalmazás reprezentációját nevű egy *szolgáltatásnév* jön létre a felhasználó bérlőjéhez, és jelentkezzen be. A delegálás is jön létre, amely rögzíti a felhasználó beleegyezésével az alkalmazáshoz a címtárban. További információ az alkalmazás alkalmazás- és ServicePrincipal objektumot, és hogyan kapcsolódnak egymáshoz: [alkalmazásobjektumok és egyszerű szolgáltatási objektumok][AAD-App-SP-Objects].
@@ -110,6 +115,7 @@ A jóváhagyási felületen befolyásolja az alkalmazás által kért engedélye
 Bizonyos jogosultságokat is lehet fogadta el a normál felhasználói, míg mások egy bérlői rendszergazdai jóváhagyást igényelnek. 
 
 ### <a name="admin-consent"></a>Rendszergazdai jóváhagyás
+
 Csak az alkalmazásra vonatkozó engedélyeket mindig szükség van egy bérlői rendszergazdai jóváhagyást. Ha az alkalmazás egy csak az alkalmazásra vonatkozó engedélyt kér, és a egy felhasználó megpróbál bejelentkezni az alkalmazásba, egy hibaüzenet jelenik meg arról, hogy a felhasználó nem tudja, hogy engedélyt adjanak.
 
 Egyes delegált engedélyeket is egy bérlői rendszergazdai jóváhagyás szükséges. Írási vissza az Azure AD a bejelentkezett felhasználó, például egy Bérlői rendszergazda jóváhagyást igényel. Csak az alkalmazásra vonatkozó engedélyeket, mint egy átlagos felhasználó próbál bejelentkezni az olyan alkalmazás, amely kéri a rendszergazdai jóváhagyást, igénylő delegált engedély az alkalmazás kap hibaüzenetet. Engedélyt igényel-e rendszergazdai jóváhagyásra határozza meg a fejlesztői, az erőforrás közzétett el, és az erőforrás a dokumentációban található. Az engedélyek dokumentációját a [Azure AD Graph API] [ AAD-Graph-Perm-Scopes] és [Microsoft Graph API] [ MSFT-Graph-permision-scopes] azt jelzik, milyen engedélyeket igényel rendszergazdai hozzájárulás megadása.
@@ -123,9 +129,10 @@ A `prompt=admin_consent` paraméterrel is használhatja az alkalmazásokat, amel
 Ha egy alkalmazás rendszergazdai jóváhagyást igénylő és nélkül bejelentkezik egy rendszergazda a `prompt=admin_consent` küldi el, ha a rendszergazda sikeresen járul hozzá a alkalmazni fogja az alkalmazás paraméter **csak a felhasználói fiókjuk**. Normál felhasználók továbbra is nem képesek lesznek a bejelentkezéshez vagy a hozzájárulás az alkalmazáshoz. Ez a funkció akkor hasznos, ha lehetővé teheti a bérlői rendszergazda Fedezze fel az alkalmazást, mielőtt más felhasználóknak hozzáférést szeretne.
 
 > [!NOTE]
-> Egyes alkalmazások szeretné egy felület, ahol a normál felhasználók be tudnak kezdetben jóváhagyást, és később a kérelmet is magában foglalhat a rendszergazda és a kérés engedélyeket, amelyek rendszergazdai jóváhagyásra van szükség. Semmilyen módon nem lehet elvégezni egy v1 alkalmazás regisztrálása az Azure AD ma; azonban a v2 végpont használata lehetővé teszi az alkalmazások engedélyek kéréséhez helyett futásidőben regisztrációs időpontban, amely lehetővé teszi, hogy ebben a forgatókönyvben. További információkért lásd: a [v2 végpont][AAD-V2-Dev-Guide].
+> Egyes alkalmazások szeretné egy felület, ahol a normál felhasználók be tudnak kezdetben jóváhagyást, és később a kérelmet is magában foglalhat a rendszergazda és a kérés engedélyeket, amelyek rendszergazdai jóváhagyásra van szükség. Semmilyen módon nem lehet elvégezni egy 1.0-s verziójú alkalmazás regisztrálása az Azure AD ma; azonban a v2.0-végpont használatával lehetővé teszi az alkalmazások engedélyek kéréséhez helyett futásidőben regisztrációs időpontban, amely lehetővé teszi, hogy ebben a forgatókönyvben. További információkért lásd: a [v2.0-végpont][AAD-V2-Dev-Guide].
 
 ### <a name="consent-and-multi-tier-applications"></a>Jóváhagyás és Többrétegű alkalmazások
+
 Az alkalmazásnak lehetnek több réteget, mindegyik a saját regisztrációs által jelölt Azure AD-ben. Például egy natív alkalmazást, amely meghívja a webes API-hoz vagy egy webalkalmazást, amely meghívja a webes API-t. Mindkét ezekben az esetekben az ügyfél (a natív alkalmazás vagy a web app) kér engedélyeket hívja az erőforrás (webes API-t). Az ügyfél lehet sikeresen megadta a hozzájárulást az ügyfél-bérlőbe minden erőforrás, amely engedélyt kér már léteznie kell az ügyfél-bérlőben. Ha ez a feltétel nem teljesül, az Azure AD, hogy az erőforrás először kell adni a hibát adja vissza.
 
 **Több réteget egy bérlőben**
@@ -146,7 +153,7 @@ A fejlesztői API-Microsofton kívül más szervezetek által készített API es
 
 1. Kövesse a korábbi szakaszokban, annak érdekében, hogy az API-t valósít meg a több-bérlős alkalmazás regisztrációs/kód követelményeknek.
 2. Mellett is közzéteheti az API-k hatóköröket vagy szerepköröket, ellenőrizze, hogy a regisztráció tartalmazza a "Bejelentkezés és felhasználói profil olvasása" (alapértelmezés szerint biztosított) az Azure AD engedélyt.
-3. A webes ügyfél, a következő bejelentkezési-a vagy a regisztráláshoz oldal implementálása a [rendszergazdai jóváhagyás](#admin-consent) korábban ismertetett útmutatást.
+3. Bejelentkezés – a vagy a regisztráláshoz oldal megvalósítása a webes ügyfél, és kövesse a [rendszergazdai jóváhagyás](#admin-consent) útmutatást.
 4. Miután a felhasználó hozzájárul, hogy az alkalmazás, a szolgáltatás egyszerű és jóváhagyás delegálás hivatkozásokat hoz létre a bérlő, és a natív alkalmazás jogkivonatokat beszerezheti az API-hoz.
 
 Az alábbi ábrán egy többrétegű alkalmazás regisztrálva a különböző bérlők hozzájárulási áttekintést nyújt.
@@ -154,6 +161,7 @@ Az alábbi ábrán egy többrétegű alkalmazás regisztrálva a különböző b
 ![Többrétegű több résztvevős alkalmazásba hozzájárulás megadása][Consent-Multi-Tier-Multi-Party] 
 
 ### <a name="revoking-consent"></a>Jóváhagyás visszavonása
+
 A felhasználók és rendszergazdák hozzájárulás az alkalmazáshoz, bármikor visszavonhatja:
 
 * Felhasználók egyedi alkalmazásokhoz való hozzáférés visszavonása eltávolításával, a saját [hozzáférési Panel alkalmazásai] [ AAD-Access-Panel] listája.
@@ -162,12 +170,15 @@ A felhasználók és rendszergazdák hozzájárulás az alkalmazáshoz, bármiko
 Egy rendszergazda jóváhagy egy alkalmazás a bérlő összes felhasználója esetében, ha a felhasználók hozzáférési külön-külön nem tudja visszavonni. Csak a rendszergazda visszavonhatja a hozzáférést, és csak a teljes alkalmazáshoz.
 
 ## <a name="multi-tenant-applications-and-caching-access-tokens"></a>Több-bérlős alkalmazások és a hozzáférési jogkivonatok gyorsítótárazása
+
 Több-bérlős alkalmazásokat is tokenekhez is hozzáférhetnek az Azure AD által védett API-k meghívására. Gyakori hiba az Active Directory Authentication Library (ADAL) használatával több-bérlős alkalmazás esetén először a/Common, használó felhasználó számára egy jogkivonat kérelmezéséhez kap választ, akkor szükséges, hogy a felhasználók is használja a/Common későbbi jogkivonat kérése. Mivel az Azure AD-ből a válasz nem származik a bérlőt, és közös, ADAL gyorsítótárazza a jogkivonat, hogy a bérlő. A hozzáférési jogkivonatot kapjon a felhasználó/Common későbbi hívása a gyorsítótárbeli sikertelen keresések a gyorsítótár-bejegyzés, és kéri a felhasználót, hogy jelentkezzen be újra. Elkerülése érdekében a gyorsítótár hiányzik, ellenőrizze, egy már bejelentkezett felhasználó hívások a bérlő végpont menjenek végbe.
 
 ## <a name="next-steps"></a>További lépések
-Ebben a cikkben megtanulta, hogyan hozhat létre olyan alkalmazás, amely bármely Azure AD-bérlőből a felhasználó bejelentkezhet. Egyszeri bejelentkezés (SSO) engedélyezése az alkalmazás és az Azure AD között, után is frissítheti az alkalmazás által az Office 365-höz hasonló Microsoft-erőforrások API-k elérésére. Ez lehetővé teszi a személyre szabott élményt az alkalmazásban, például a környezeti információk megjelenítése a felhasználóknak, mint a saját profilképét vagy a következő naptári időpontot. API végrehajtásával kapcsolatos további meghívja az Azure AD és az Office 365, Exchange, SharePoint, onedrive vállalati verzió, a OneNote, Planner, Excel és további információkért látogasson el a szolgáltatások [Microsoft Graph API][MSFT-Graph-overview].
+
+Ebben a cikkben megtanulta, hogyan hozhat létre olyan alkalmazás, amely bármely Azure AD-bérlőből a felhasználó bejelentkezhet. Egyszeri bejelentkezés (SSO) engedélyezése az alkalmazás és az Azure AD között, után is frissítheti az alkalmazás által az Office 365-höz hasonló Microsoft-erőforrások API-k elérésére. Ez lehetővé teszi a személyre szabott élményt az alkalmazásban, például a környezeti információk megjelenítése a felhasználóknak, mint a saját profilképét vagy a következő naptári időpontot. API végrehajtásával kapcsolatos további meghívja az Azure AD és az Office 365, Exchange, SharePoint, OneDrive, a OneNote és további információkért látogasson el a szolgáltatások [Microsoft Graph API][MSFT-Graph-overview].
 
 ## <a name="related-content"></a>Kapcsolódó tartalom
+
 * [A minták több-bérlős alkalmazást][AAD-Samples-MT]
 * [Alkalmazások arculati útmutatóját][AAD-App-Branding]
 * [Alkalmazásobjektumok és egyszerű szolgáltatási objektumok][AAD-App-SP-Objects]
@@ -182,7 +193,7 @@ Ebben a cikkben megtanulta, hogyan hozhat létre olyan alkalmazás, amely bárme
 [AAD-App-Manifest]:reference-azure-ad-app-manifest.md
 [AAD-App-SP-Objects]:app-objects-and-service-principals.md
 [AAD-Auth-Scenarios]:authentication-scenarios.md
-[AAD-Consent-Overview]:quickstart-v1-integrate-apps-with-azure-ad.md#overview-of-the-consent-framework
+[AAD-Consent-Overview]:consent-framework.md
 [AAD-Dev-Guide]:azure-ad-developers-guide.md
 [AAD-Graph-Overview]: https://azure.microsoft.com/documentation/articles/active-directory-graph-api/
 [AAD-Graph-Perm-Scopes]: https://msdn.microsoft.com/library/azure/ad/graph/howto/azure-ad-graph-api-permission-scopes
@@ -211,8 +222,8 @@ Ebben a cikkben megtanulta, hogyan hozhat létre olyan alkalmazás, amely bárme
 [AAD-Graph-User-Entity]: https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#user-entity
 [AAD-How-To-Integrate]: ./active-directory-how-to-integrate.md
 [AAD-Security-Token-Claims]: ./active-directory-authentication-scenarios/#claims-in-azure-ad-security-tokens
-[AAD-Tokens-Claims]:v1-id-and-access-tokens.md
-[AAD-V2-Dev-Guide]: ../active-directory-appmodel-v2-overview.md
+[AAD-Tokens-Claims]:access-tokens.md
+[AAD-V2-Dev-Guide]: v2-overview.md
 [AZURE-portal]: https://portal.azure.com
 [Duyshant-Role-Blog]: http://www.dushyantgill.com/blog/2014/12/10/roles-based-access-control-in-cloud-applications-using-azure-ad/
 [JWT]: https://tools.ietf.org/html/draft-ietf-oauth-json-web-token-32
@@ -224,17 +235,3 @@ Ebben a cikkben megtanulta, hogyan hozhat létre olyan alkalmazás, amely bárme
 [OAuth2-Role-Def]: https://tools.ietf.org/html/rfc6749#page-6
 [OpenIDConnect]: http://openid.net/specs/openid-connect-core-1_0.html
 [OpenIDConnect-ID-Token]: http://openid.net/specs/openid-connect-core-1_0.html#IDToken
-
-
-
-
-
-
-
-
-
-
-
-
-
-

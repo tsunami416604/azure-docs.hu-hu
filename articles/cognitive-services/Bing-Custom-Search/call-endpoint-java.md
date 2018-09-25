@@ -1,6 +1,6 @@
 ---
-title: Java - Bing egyéni keresés – Microsoft kognitív szolgáltatásokkal hívás végpont
-description: A gyors üzembe helyezés keresési eredmények kérhet az egyéni keresési példányát hívni a Bing egyéni keresési végpont Java használatával mutatja be.
+title: Végpont meghívása a Microsoft Cognitive Services – Bing egyéni keresés – Java használatával
+description: 'Ez a rövid útmutató bemutatja, hogyan keresési eredmények kérhet az egyéni keresőpéldányok: a Bing Custom Search-végpont meghívása a Java használatával.'
 services: cognitive-services
 author: brapel
 manager: ehansen
@@ -9,34 +9,34 @@ ms.component: bing-custom-search
 ms.topic: conceptual
 ms.date: 05/07/2018
 ms.author: v-brapel
-ms.openlocfilehash: 03d622e3c7a3315238f2bceedae529bbe06af299
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 7ef4de749d5b9152bbe043a26d3c60fe7f09f869
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "35349778"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46951814"
 ---
-# <a name="call-bing-custom-search-endpoint-java"></a>Hívás Bing egyéni keresés végpont (Java)
+# <a name="call-bing-custom-search-endpoint-java"></a>Hívást a Bing Custom Search-végpont (Java)
 
-A gyors üzembe helyezés keresési eredmények kérhet az egyéni keresési példányát hívni a Bing egyéni keresési végpont Java használatával mutatja be. 
+Ez a rövid útmutató bemutatja, hogyan kérhet a keresési eredmények a Java használatával hívja meg a Bing Custom Search-végpont egyéni keresési példány. 
 
 ## <a name="prerequisites"></a>Előfeltételek
+
 A rövid útmutató elvégzéséhez a következőkre lesz szüksége:
-- Egy egyéni keresési példányát. Lásd: [hozza létre az első Bing egyéni keresési példányát](quick-start.md).
 
+- Egy használatra kész egyéni keresési példány. Lásd: [az első Bing Custom Search-példány létrehozása](quick-start.md).
 - [Java](https://www.java.com) telepítve.
-
-- A [kognitív szolgáltatások API-fiók](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) rendelkező **Bing keresési API-k**. A [ingyenes próbaverzió](https://azure.microsoft.com/try/cognitive-services/?api=bing-custom-search) elegendő-e a gyors üzembe helyezés. Az elérési kulcsot, ha aktiválja az ingyenes próbaverzió, vagy egy fizetős kulcsot használhatja az Azure irányítópultról van szüksége.
+- Egy előfizetési kulcsot. Is kap egy előfizetési kulcsot, aktiválásakor a [az ingyenes próbaidőszak](https://azure.microsoft.com/try/cognitive-services/?api=bing-custom-search), vagy használhat egy díjköteles előfizetési kulcsot az Azure irányítópultján (lásd: [Cognitive Services API-fiók](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)).    
 
 ## <a name="run-the-code"></a>A kód futtatása
 
-A Bing egyéni keresés végpont hívására, kövesse az alábbi lépéseket:
+Ez a példa futtatásához kövesse az alábbi lépéseket:
 
-1. A választott Java IDE használatával hozzon létre egy csomagot.
-2. Hozza létre a fájlt CustomSrchJava.java, és másolja azt a következő kódot.
-3. Cserélje le **YOUR-ELŐFIZETÉS-kulcs** és **YOUR-egyéni-CONFIG-ID** a kulcs és a konfigurációs azonosítóval.
-
-    ``` Java
+1. A Java ide Környezethez választott hozzon létre egy csomagot.  
+  
+2. Hozzon létre egy fájlt CustomSrchJava.java a csomagban, és másolja az alábbi kódot a fájlba. Cserélje le **YOUR-SUBSCRIPTION-KEY** és **YOUR-CUSTOM-CONFIG-ID** az előfizetési kulcs és a konfiguráció azonosítója.  
+  
+    ```java
     import java.io.InputStream;
     import java.net.URL;
     import java.net.URLEncoder;
@@ -58,9 +58,9 @@ A Bing egyéni keresés végpont hívására, kövesse az alábbi lépéseket:
         static String subscriptionKey = "YOUR-SUBSCRIPTION-KEY"; 
         static String customConfigId = "YOUR-CUSTOM-CONFIG-ID";  
     
-        static String searchTerm = "Microsoft";  // Replace with search term specific to your defined sources.
+        static String searchTerm = "Microsoft";  // Replace with search term specific to your search scenario.
     
-        public static SearchResults SearchImages (String searchQuery) throws Exception {
+        public static SearchResults SearchWeb (String searchQuery) throws Exception {
             // construct URL of search request (endpoint + query string)
             URL url = new URL(host + path + "?q=" +  URLEncoder.encode(searchTerm, "UTF-8") + "&CustomConfig=" + customConfigId);
             HttpsURLConnection connection = (HttpsURLConnection)url.openConnection();
@@ -96,15 +96,15 @@ A Bing egyéni keresés végpont hívására, kövesse az alábbi lépéseket:
     
         public static void main (String[] args) {
             if (subscriptionKey.length() != 32) {
-                System.out.println("Invalid Bing Search API subscription key!");
+                System.out.println("Invalid Custom Search subscription key!");
                 System.out.println("Please paste yours into the source code.");
                 System.exit(1);
             }
     
             try {
-                System.out.println("Searching the Web for: " + searchTerm);
+                System.out.println("Searching your slice of the Web for: " + searchTerm);
     
-                SearchResults result = SearchImages(searchTerm);
+                SearchResults result = SearchWeb(searchTerm);
     
                 System.out.println("\nRelevant HTTP Headers:\n");
                 for (String header : result.relevantHeaders.keySet())
@@ -130,11 +130,11 @@ A Bing egyéni keresés végpont hívására, kövesse az alábbi lépéseket:
         }
     
     }
-    
-    ```
+    ```  
+  
 4. Futtassa a programot.
     
 ## <a name="next-steps"></a>További lépések
-- [A központi felhasználói felületi élmény konfigurálása](./hosted-ui.md)
-- [Jelölje ki a szöveget decoration jelölők használatával](./hit-highlighting.md)
-- [Lap szolgáltatásának konfigurálása](./page-webpages.md)
+- [A központi felhasználói felület konfigurálása](./hosted-ui.md)
+- [Kiemeli a szöveget decoration jelölők használatával](./hit-highlighting.md)
+- [Oldal weblapok](./page-webpages.md)

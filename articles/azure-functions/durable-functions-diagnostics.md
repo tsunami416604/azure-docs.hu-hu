@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 04/30/2018
 ms.author: azfuncdf
-ms.openlocfilehash: e1211241ec3a2b32647260d1a5c7dc561019cfdf
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: 1ebca858632a64b5822658182a3b83c48f310164
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44092241"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46953035"
 ---
 # <a name="diagnostics-in-durable-functions-azure-functions"></a>Durable Functions (az Azure Functions)-diagnosztika
 
@@ -80,7 +80,7 @@ A részletes vezénylési visszajátszását események kibocsátó engedélyez�
 
 ### <a name="single-instance-query"></a>Egypéldányos lekérdezés
 
-A következő lekérdezés egyetlen példánya korábbi követési adatait jeleníti meg a [Hello feladatütemezési](durable-functions-sequence.md) vezénylési működik. Használatával írt a [Application Insights lekérdezési nyelv (AIQL)](https://docs.loganalytics.io/docs/Language-Reference). Kiszűri a visszajátszás végrehajtási, hogy csak a *logikai* végrehajtási elérési út jelenik meg. Események is rendezve szerinti rendezés `timestamp` és `sequenceNumber` , ahogyan az alábbi lekérdezést: 
+A következő lekérdezés egyetlen példánya korábbi követési adatait jeleníti meg a [Hello feladatütemezési](durable-functions-sequence.md) vezénylési működik. Használatával írt a [Application Insights lekérdezési nyelv (AIQL)](https://aka.ms/LogAnalyticsLanguageReference). Kiszűri a visszajátszás végrehajtási, hogy csak a *logikai* végrehajtási elérési út jelenik meg. Események is rendezve szerinti rendezés `timestamp` és `sequenceNumber` , ahogyan az alábbi lekérdezést: 
 
 ```AIQL
 let targetInstanceId = "ddd1aaa685034059b545eb004b15d4eb";

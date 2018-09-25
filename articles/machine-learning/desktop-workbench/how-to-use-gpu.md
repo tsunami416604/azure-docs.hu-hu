@@ -11,18 +11,22 @@ ms.component: core
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/14/2017
-ms.openlocfilehash: 09d8e3da543cdf4433d986b321697abcad88eb22
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ROBOTS: NOINDEX
+ms.openlocfilehash: 8e8944a9bdfa2b75f6442e03d45dfb6977c2a122
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44157990"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46974357"
 ---
 # <a name="how-to-use-gpu-in-azure-machine-learning"></a>Az Azure Machine Learning GPU használata
+
+[!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)]
+
 Grafikus feldolgozóegység (GPU) széles körben használt, nagy számítási igényű feladatokat, amelyek általában fordulhat elő, amikor bizonyos Neurális hálózat modellek betanítása feldolgozásához. Gpu-k használatával jelentősen csökkentheti a modellek képzési idején. Ebből a dokumentumból megismerheti, hogyan konfigurálhatja az Azure Machine Learning Workbench használata [DSVM (adatelemző virtuális gép)](https://docs.microsoft.com/azure/machine-learning/data-science-virtual-machine/overview) gpu-kkal felszerelt végrehajtási célként. 
 
 ## <a name="prerequisites"></a>Előfeltételek
-- Ez az útmutató elvégezhető, először szüksége [Azure Machine Learning Workbench telepítése](../service/quickstart-installation.md).
+- Ez az útmutató elvégezhető, először szüksége [Azure Machine Learning Workbench telepítése](quickstart-installation.md).
 - Szüksége lesz az NVidia gpu-kkal felszerelt számítógépeken való hozzáférést.
     - Gpu-k használatával közvetlenül a helyi gépen (Windows vagy macOS) futtathatók a parancsprogramok.
     - Gpu-k használatával Linux rendszerű gépen a Docker-tárolóban is futtathatja parancsfájlok...

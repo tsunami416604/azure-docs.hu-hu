@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 03/24/2017
 ms.reviewer: vitalyg
 ms.author: mbullwin
-ms.openlocfilehash: b1dd37c07f3c887005d87e3231f62a4bca2f4a3d
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 893495a5c37495438d9620595719ca6e733df012
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43093115"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46958118"
 ---
 # <a name="sampling-in-application-insights"></a>Application Insights-mintavétel
 
@@ -35,7 +35,7 @@ Mintavételezés csökkenti a forgalom és az költségeket, és elkerülheti a 
 * Mintavétel manuálisan is beállíthat, vagy a portál, a használat és becsült költségek lapot; vagy az ASP.NET SDK-ban a .config fájlban vagy a Java SDK az ApplicationInsights.xml fájl is a hálózati forgalom csökkentése érdekében.
 * Ha egyéni események naplózása, és győződjön meg arról, hogy események egy meghatározott készletének megőrzött vagy elvetett együtt szeretne, győződjön meg arról, arról, hogy rendelkezik-e OperationId ugyanazt az értéket.
 * A mintavételi osztó *n* tulajdonságában rekordokban levő jelentett `itemCount`, amely a Keresés a rövid név "kérések száma" vagy "események száma" alatt jelenik meg. Amikor a mintavételi nem szerepel a művelet, `itemCount==1`.
-* Ha Analytics-lekérdezések írása, akkor [figyelembevétele mintavételi](app-insights-analytics-tour.md#counting-sampled-data). Különösen helyett egyszerűen Rekordok számlálása, használjon `summarize sum(itemCount)`.
+* Ha Analytics-lekérdezések írása, akkor [figyelembevétele mintavételi](../log-analytics/query-language/aggregations.md). Különösen helyett egyszerűen Rekordok számlálása, használjon `summarize sum(itemCount)`.
 
 ## <a name="types-of-sampling"></a>Mintavételi típusai
 Vannak más mintavételi három módszer:

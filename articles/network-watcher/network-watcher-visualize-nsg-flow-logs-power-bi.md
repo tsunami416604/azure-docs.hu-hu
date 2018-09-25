@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: mareat
-ms.openlocfilehash: 8f5bb54e12348fd915b2c4413bbacdc083a2a879
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: bcd67d2e879d199296289dbaef2141ba659b2412
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42058755"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47032680"
 ---
 # <a name="visualizing-network-security-group-flow-logs-with-power-bi"></a>A Power bi-JAL visualizing hálózati biztonsági csoport folyamatnaplóit
 
@@ -54,7 +54,7 @@ A Power BI Desktop-ügyfél telepítve a gépre, és töltse le és betölteni a
 1. Töltse le és nyissa meg a következő Power BI-sablon a Power BI Desktop alkalmazás [a Power bi Network Watcher flow-sablon naplók](https://aka.ms/networkwatcherpowerbiflowlogstemplate)
 1. Adja meg a szükséges lekérdezési paraméterek
     1. **StorageAccountName** – tartalmazó az NSG-Folyamatnaplók, amelyeket szeretne betölteni, és jelenítheti meg a tárfiók nevét határozza meg.
-    1. **NumberOfLogFiles** – számát határozza meg, töltse le és a Power bi-ban jelenítheti meg szeretné naplófájlok. Ha például 50 meg van adva a 50 legfrissebb naplófájlokat. 2 NSG-k engedélyezve és konfigurálva van ennek a fióknak NSG-Folyamatnaplók küldendő van kikapcsolva, majd a naplók az elmúlt 25 óra tekinthet meg.
+    1. **NumberOfLogFiles** – számát határozza meg, töltse le és a Power bi-ban jelenítheti meg szeretné naplófájlok. Ha például 50 meg van adva a 50 legfrissebb naplófájlokat. Ha 2 NSG-k engedélyezve és konfigurálva van az NSG-Folyamatnaplók küldeni ennek a fióknak, majd a naplók az elmúlt 25 óra is megtekinthetők.
 
     ![a Power BI-fő][2]
 

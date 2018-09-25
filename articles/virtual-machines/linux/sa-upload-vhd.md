@@ -1,6 +1,6 @@
 ---
-title: Töltse fel az Azure CLI 2.0-val egyéni Linux lemez |} A Microsoft Docs
-description: Hozzon létre és töltse fel a virtuális merevlemez (VHD) az Azure-bA a Resource Manager üzemi modell és az Azure CLI 2.0 használatával
+title: Töltse fel az Azure CLI-vel egyéni Linux lemez |} A Microsoft Docs
+description: Hozzon létre, és a egy virtuális merevlemezt (VHD) feltöltése az Azure-bA a Resource Manager-alapú üzemi modellel és az Azure CLI
 services: virtual-machines-linux
 documentationcenter: ''
 author: cynthn
@@ -15,22 +15,23 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 07/10/2017
 ms.author: cynthn
-ms.openlocfilehash: 4b05c4c7db1e1c1953af2466d2c6a277baa07082
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: 1926f0bcf7efca786e97bd973601888e5a8d4463
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45737345"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46966503"
 ---
-# <a name="upload-and-create-a-linux-vm-from-custom-disk-with-the-azure-cli-20"></a>Töltse fel, és a egy Linux virtuális gép létrehozása egyéni lemezről az Azure CLI 2.0 használatával
-Ez a cikk bemutatja, hogyan töltse fel a virtuális merevlemez (VHD) az Azure storage-fiókba az Azure CLI 2.0 használatával, és a Linux rendszerű virtuális gépek létrehozása az egyéni lemezről. Ez a funkció lehetővé teszi telepítése és konfigurálása a Linux-disztribúció, az igényeinek megfelelően, valamint a virtuális merevlemez használatával gyorsan létrehozhat az Azure-beli virtuális gépek (VM).
+# <a name="upload-and-create-a-linux-vm-from-custom-disk-with-the-azure-cli"></a>Töltse fel, és a egy Linux virtuális gép létrehozása egyéni lemezről az Azure CLI-vel
+
+Ez a cikk bemutatja, hogyan töltse fel a virtuális merevlemez (VHD) az Azure storage-fiókba az Azure CLI-vel és a Linux rendszerű virtuális gépek létrehozása az egyéni lemezről. Ez a funkció lehetővé teszi telepítése és konfigurálása a Linux-disztribúció, az igényeinek megfelelően, valamint a virtuális merevlemez használatával gyorsan létrehozhat az Azure-beli virtuális gépek (VM).
 
 Ez a témakör a storage-fiókok használja a végleges virtuális merevlemezek, de is elvégezheti ezeket a lépéseket használatával [felügyelt lemezek](upload-vhd.md). 
 
 ## <a name="quick-commands"></a>Gyors parancsok
 Ha szeretne gyorsan elvégezni a feladatot, a következő szakaszban részletek alap parancsok VHD feltöltése az Azure-bA. Részletes információkat és a környezet minden lépés találja a dokumentum többi részén [itt indítása](#requirements).
 
-Győződjön meg arról, hogy rendelkezik-e a legújabb [Azure CLI 2.0](/cli/azure/install-az-cli2) telepítve, és bejelentkezett egy Azure-fiókba az [az bejelentkezési](/cli/azure/reference-index#az_login).
+Győződjön meg arról, hogy rendelkezik-e a legújabb [Azure CLI-vel](/cli/azure/install-az-cli2) telepítve, és bejelentkezett egy Azure-fiókba az [az bejelentkezési](/cli/azure/reference-index#az_login).
 
 A következő példákban cserélje le a példa a paraméter nevét a saját értékeire. Példa paraméterneveket foglalt `myResourceGroup`, `mystorageaccount`, és `mydisks`.
 
@@ -96,7 +97,7 @@ A következő lépések végrehajtásához szüksége:
   * Hozzon létre egy storage-fiók és az egyéni lemez és a létrehozott virtuális gépek tárolására szolgáló tároló
   * Miután létrehozta a virtuális gépek, nyugodtan törölheti a lemez
 
-Győződjön meg arról, hogy rendelkezik-e a legújabb [Azure CLI 2.0](/cli/azure/install-az-cli2) telepítve, és bejelentkezett egy Azure-fiókba az [az bejelentkezési](/cli/azure/reference-index#az_login).
+Győződjön meg arról, hogy rendelkezik-e a legújabb [Azure CLI-vel](/cli/azure/install-az-cli2) telepítve, és bejelentkezett egy Azure-fiókba az [az bejelentkezési](/cli/azure/reference-index#az_login).
 
 A következő példákban cserélje le a példa a paraméter nevét a saját értékeire. Példa paraméterneveket foglalt `myResourceGroup`, `mystorageaccount`, és `mydisks`.
 

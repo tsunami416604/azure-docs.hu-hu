@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/04/2018
 ms.author: juluk
-ms.openlocfilehash: 639eff5806ef84c526ae8d0d0ed55ca790bdac08
-ms.sourcegitcommit: 8b694bf803806b2f237494cd3b69f13751de9926
+ms.openlocfilehash: 67624e7ad21e6c3526b3ca47ff4b8e2df3b6ae54
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/20/2018
-ms.locfileid: "46498028"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46962264"
 ---
 # <a name="overview-of-azure-cloud-shell"></a>Az Azure Cloud Shell áttekintése
 Az Azure Cloud Shell egy interaktív, a böngésző által elérhető shell Azure-erőforrások kezeléséhez.
@@ -48,7 +48,7 @@ Linux-felhasználók használhatja a Cloud Shellben, a Bash közben Windows felh
 ![A PowerShell Cloud shellben (előzetes verzió)](media/overview/overview-ps-pic.png)
 
 ### <a name="authenticated-and-configured-azure-workstation"></a>Hitelesített és konfigurált Azure munkaállomás
-A cloud Shell Microsoft által kezelt, népszerű parancssori eszközökkel és a nyelvi támogatás származik. A cloud Shell is biztonságosan hitelesíti automatikusan azonnali hozzáférés az erőforrásokhoz az Azure CLI 2.0 vagy az Azure PowerShell parancsmagokon keresztül.
+A cloud Shell Microsoft által kezelt, népszerű parancssori eszközökkel és a nyelvi támogatás származik. A cloud Shell is biztonságosan hitelesíti automatikusan azonnali hozzáférés az erőforrásokhoz az Azure CLI-vel vagy az Azure PowerShell parancsmagokon keresztül.
 
 Megtekintheti az összes [a Cloud Shellben telepített eszközök listáját.](features.md#tools)
 
@@ -61,7 +61,7 @@ A cloud Shell biztosít egy integrált grafikus szövegszerkesztőben a nyílt f
 A cloud Shell rugalmas eszköz használható a következő:
 * [portal.azure.com](https://portal.azure.com)
 * [shell.azure.com](https://shell.azure.com)
-* [Az Azure CLI 2.0-val "Próbálja ki" dokumentációja](https://docs.microsoft.com/cli/azure?view=azure-cli-latest)
+* [Az Azure parancssori felület "Próbálja ki" dokumentációja](https://docs.microsoft.com/cli/azure?view=azure-cli-latest)
 * [Azure-mobilalkalmazás](https://azure.microsoft.com/features/azure-portal/mobile-app/)
 * [A VS Code Azure-fiók bővítmény](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-account)
 

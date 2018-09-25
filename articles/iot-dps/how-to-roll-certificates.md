@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
-ms.openlocfilehash: a8ba667e6af316620d7a8530f29a6640edada13d
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.openlocfilehash: a40f4489e63c30a101dd708b5a175c25788fb04b
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "42057250"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46976754"
 ---
 # <a name="how-to-roll-x509-device-certificates"></a>Hogyan szeretné visszaállítani az X.509 tanúsítványok
 
@@ -41,7 +41,7 @@ Tanúsítványokat az eszközön mindig például biztonságos helyen kell táro
 
 Ha a tanúsítványok kapott egy harmadik féltől származó, meg kell megvizsgáljuk hogyan állítja, a tanúsítványaikat. A folyamat szerepelni fog a megállapodás velük, vagy lehet egy külön szolgáltatás kínálnak. 
 
-Ha a saját tanúsítványok felügyeli, kell a saját folyamatát, a tanúsítványok frissítése. Ellenőrizze, hogy mindkét korábbi és új levél tanúsítványának rendelkeznie kell az azonos köznapi név (CN). Az azonos CN azzal az eszköz is építse ki újra a magát egy ismétlődő regisztrációs bejegyzés létrehozása nélkül.
+Ha a saját tanúsítványok felügyeli, kell a saját folyamatát, a tanúsítványok frissítése. Ellenőrizze, hogy mindkét korábbi és új levél tanúsítványának rendelkeznie kell az azonos köznapi név (CN). Az azonos CN azzal az eszköz is építse ki újra a magát egy ismétlődő regisztrációs bejegyzés létrehozása nélkül. 
 
 
 ## <a name="roll-the-certificate-in-the-iot-hub"></a>A tanúsítvány állítsa az IoT hubban
@@ -78,10 +78,13 @@ Ha tanúsítványokat a biztonsági incidensek válaszul is elérhetőek, a köv
 
     ![Egyéni regisztrációk kezelése](./media/how-to-roll-certificates/manage-individual-enrollments-portal.png)
 
-3. Miután a kiépítési szolgáltatás el lett távolítva a sérült biztonságú tanúsítványt, keresse meg az IoT hubot, és távolítsa el az eszközök regisztrációját a feltört tanúsítványhoz.     
+3. A feltört tanúsítvány el lett távolítva a kiépítési szolgáltatást, miután a tanúsítvány továbbra is használható, amennyiben létezik egy eszközregisztráció, az IoT hub eszköz kapcsolatok létrehozására. Meg lehet oldani ezt két módon: 
+
+    Az első módszer lehet manuálisan keresse meg az IoT hubhoz, és azonnal törli az eszköz regisztrációját, a feltört tanúsítványhoz. Majd az eszköz újra egy frissített tanúsítvánnyal látja el, amikor létrejön egy új eszköz regisztrálása.     
 
     ![IoT hub-eszköz regisztrációjának törlése](./media/how-to-roll-certificates/remove-hub-device-registration.png)
 
+    A második módja lehet a reprovisioning támogatási használatával építse ki újra ugyanazt az IoT hubon az eszközön. Ez a módszer használható cserélje le a tanúsítványt az eszköz regisztrációját, és az IoT hub számára. További információkért lásd: [építenie az eszközök hogyan](how-to-reprovision.md).
 
 ## <a name="individual-enrollments-and-certificate-expiration"></a>Egyéni regisztrációk és a tanúsítvány lejárata
 
@@ -118,9 +121,14 @@ Biztonsági incidensek válaszul egy csoportos regisztráció frissítése, hasz
 
     ![Válassza ki az új legfelső szintű Hitelesítésszolgáltatói tanúsítvány](./media/how-to-roll-certificates/select-new-root-cert.png)
 
-6. Miután a kiépítési szolgáltatás el lett távolítva a sérült biztonságú tanúsítványt, keresse meg a csatolt IoT hubot, amely tartalmazza a feltört eszköz regisztrálása, és eltávolítani a regisztrációkat a feltört tanúsítványhoz.
+6. A feltört tanúsítvány el lett távolítva a kiépítési szolgáltatást, miután a tanúsítvány továbbra is használható, hogy az IoT hub eszköz kapcsolatokat, amíg az eszköz regisztrálása, létezik. Meg lehet oldani ezt két módon: 
+
+    Az első módszer lehet manuálisan keresse meg az IoT hubhoz, és azonnal törli az eszköz regisztrációját, a feltört tanúsítványhoz. Ezután az eszközök újra üzembe a frissített tanúsítványokkal, egy új eszköz regisztrálása az minden egyes létrejön.     
 
     ![IoT hub-eszköz regisztrációjának törlése](./media/how-to-roll-certificates/remove-hub-device-registration.png)
+
+    A második módszer reprovisioning támogatási használatával építse ki újra ugyanazt az IoT hubon az eszközök lenne. Ez a megközelítés cserélje le a tanúsítványokat az eszköz regisztrálása az IoT hub is használható. További információkért lásd: [építenie az eszközök hogyan](how-to-reprovision.md).
+
 
 
 #### <a name="update-compromised-intermediate-certificates"></a>Sérült biztonságú köztes tanúsítványok frissítése
@@ -134,9 +142,13 @@ Biztonsági incidensek válaszul egy csoportos regisztráció frissítése, hasz
     ![Egyéni regisztrációk kezelése](./media/how-to-roll-certificates/enrollment-group-delete-intermediate-cert.png)
 
 
-3. A feltört tanúsítványt az Eltávolítás után a kiépítési szolgáltatás, keresse meg a csatolt IoT hubot, amely tartalmazza az eszköz regisztrációját, és távolítsa el a regisztrációt a feltört tanúsítványhoz.
+3. A feltört tanúsítvány el lett távolítva a kiépítési szolgáltatást, miután a tanúsítvány továbbra is használható, hogy az IoT hub eszköz kapcsolatokat, amíg az eszköz regisztrálása, létezik. Meg lehet oldani ezt két módon: 
+
+    Az első módszer lehet manuálisan keresse meg az IoT hubhoz, és azonnal törli az eszköz regisztrációját, a feltört tanúsítványhoz. Ezután az eszközök újra üzembe a frissített tanúsítványokkal, egy új eszköz regisztrálása az minden egyes létrejön.     
 
     ![IoT hub-eszköz regisztrációjának törlése](./media/how-to-roll-certificates/remove-hub-device-registration.png)
+
+    A második módszer reprovisioning támogatási használatával építse ki újra ugyanazt az IoT hubon az eszközök lenne. Ez a megközelítés cserélje le a tanúsítványokat az eszköz regisztrálása az IoT hub is használható. További információkért lásd: [építenie az eszközök hogyan](how-to-reprovision.md).
 
 
 ## <a name="enrollment-groups-and-certificate-expiration"></a>Regisztrációs csoportok és a tanúsítvány lejárata

@@ -5,37 +5,35 @@ services: firewall
 author: vhorne
 ms.service: ''
 ms.topic: include
-ms.date: 8/13/2018
+ms.date: 9/14/2018
 ms.author: victorh
 ms.custom: include file
-ms.openlocfilehash: a63a12658bd0a4b4d018d51824af9814691a3cbf
-ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
+ms.openlocfilehash: 4c6aaea836302732b1af3d22923c965575cfc9d2
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "40183401"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47020472"
 ---
 ### <a name="what-is-azure-firewall"></a>Mi az Azure Firewall?
 
-Az Azure Firewall egy felügyelt, felhőalapú hálózatbiztonsági szolgáltatás, amely Azure Virtual Network-erőforrásait védi. Egy teljes körűen állapot-nyilvántartó tűzfal--szolgáltatásként beépített magas rendelkezésre állás és a korlátlan felhőbeli méretezhetőséget. Központilag hozhatja létre, érvényesítheti és naplózhatja az alkalmazás- és hálózatelérési szabályzatokat az előfizetésekre és a virtuális hálózatokra vonatkozóan. Az Azure tűzfal jelenleg nyilvános előzetes verzióban érhető el.
+Az Azure Firewall egy felügyelt, felhőalapú hálózatbiztonsági szolgáltatás, amely Azure Virtual Network-erőforrásait védi. Egy teljes körűen állapot-nyilvántartó tűzfal--szolgáltatásként beépített magas rendelkezésre állás és a korlátlan felhőbeli méretezhetőséget. Központilag hozhatja létre, érvényesítheti és naplózhatja az alkalmazás- és hálózatelérési szabályzatokat az előfizetésekre és a virtuális hálózatokra vonatkozóan.
 
-### <a name="which-capabilities-are-supported-in-the-azure-firewall-public-preview-release"></a>Mely funkciókat támogat az Azure-tűzfal nyilvános előzetes kiadás?  
+### <a name="what-capabilities-are-supported-in-azure-firewall"></a>Azure tűzfal milyen funkciók támogatottak?  
 
 * Állapotalapú tűzfal mint szolgáltatás
 * Beépített magas rendelkezésre állás korlátlan felhőbeli skálázással
-* FQDN-szűrés 
+* FQDN-szűrés
+* Teljes tartománynév-címke
 * Hálózati forgalomra vonatkozó szűrési szabályok
 * Kimenő SNAT-támogatás
-* Központilag létrehozása, érvényesítése, és alkalmazás és a hálózati kapcsolat házirendek jelentkezzen az Azure-előfizetések és a virtuális hálózatok között
-* Teljes integráció az Azure monitorral, a naplózás és analitika 
-
-### <a name="how-can-i-join-the-azure-firewall-public-preview"></a>Hogyan csatlakozhat az Azure tűzfal nyilvános előzetes verziója?
-
-Az Azure tűzfal jelenleg felügyelt előzetes verziója, amely a Register-AzureRmProviderFeature PowerShell-parancs használatával is csatlakozhat. Ez a parancs ismertetése az Azure-tűzfal nyilvános előzetes verziójának dokumentációja.
+* Bejövő DNAT-támogatás
+* Központilag létrehozása, érvényesítése, és jelentkezzen alkalmazás és a hálózati kapcsolat házirendek az Azure-előfizetések és a virtuális hálózatok között
+* Teljes integráció az Azure Monitorral a naplózáshoz és az elemzéshez 
 
 ### <a name="what-is-the-pricing-for-azure-firewall"></a>Mi az Azure-tűzfal a díjszabása?
 
-Azure-tűzfalon egy rögzített és változó költség rendelkezik. A díjak az alábbiak szerint, és további képest 50 %-kal nyilvános előzetes verzió ideje alatt.
+Azure tűzfal tartalmaz egy állandó költség + változó költség:
 
 * Rögzített díj: $1.25/firewall/hour
 * Változó díj: a tűzfal (bejövő vagy kimenő) által feldolgozott $ 0,03/GB
@@ -59,7 +57,7 @@ Szabálygyűjtemény két típusa van:
 
 ### <a name="does-azure-firewall-support-inbound-traffic-filtering"></a>Azure-tűzfal támogatja a bejövő forgalom szűrése?
 
-Azure tűzfal nyilvános előzetes verziója támogatja a csak kimenő szűrés. Nem HTTP/Https-protokoll (például RDP, SSH vagy FTP) bejövő védelmi feltételesen tervezett Azure-tűzfal általánosan elérhető  
+Azure-tűzfalon támogatja a bejövő és kimenő szerinti szűrés konfigurálható. Bejövő protection egy nem HTTP/Https protokollokhoz. Például az RDP, SSH és FTP protokollt.
  
 ### <a name="which-logging-and-analytics-services-are-supported-by-the-azure-firewall"></a>Naplózás és elemzési szolgáltatásokat az Azure-tűzfal által támogatott?
 
@@ -110,3 +108,11 @@ Set-AzureRmFirewall -AzureFirewall $azfw
 * Egy példányát a központi virtuális hálózaton futó Azure tűzfal a virtuális hálózati korlátozások, mely legfeljebb 50 küllő virtuális hálózatok közötti társviszony rendelkezik.  
 * Azure-tűzfalon nem működik globális társviszony-létesítéshez, ezért rendelkeznie kell legalább egy tűzfal központi telepítési régiónként.
 * Az Azure tűzfal 10 k alkalmazás és 10 k hálózati szabályok támogatja.
+
+### <a name="can-azure-firewall-in-a-hub-virtual-network-forward-and-filter-network-traffic-between-two-spoke-virtual-networks"></a>A központi virtuális hálózaton előre Azure tűzfal is, és küllő virtuális hálózatok közötti hálózati forgalom szűrése?
+
+Igen, az Azure tűzfal hub virtuális hálózatban két küllő virtuális hálózat közötti útvonal és a szűrő forgalom. Minden küllő virtuális hálózatok alhálózatokat megfelelően működjön az Azure-tűzfal mutató ebben a forgatókönyvben az alapértelmezett átjáróként UDR kell rendelkeznie.
+
+### <a name="can-azure-firewall-forward-and-filter-network-traffic-between-subnets-in-the-same-virtual-network"></a>Azure-tűzfal előre is, és az azonos virtuális hálózatban lévő alhálózatok közötti hálózati forgalom szűrése?
+
+Az azonos virtuális hálózatba, vagy közvetlenül két társviszonyban álló virtuális hálózatban lévő alhálózatok közötti forgalmat irányítja közvetlenül, még akkor is, ha az udr-t mutat az Azure-tűzfal alapértelmezett átjáróként. A belső hálózati szegmentálást ajánlott módszer, hogy a hálózati biztonsági csoportok. Ebben a forgatókönyvben a tűzfalon az alhálózat alhálózati forgalom küldésére, udr-t a cél alhálózat hálózati előtagot mindkét alhálózat a explicit módon kell tartalmaznia.

@@ -3,19 +3,19 @@ title: Tudásbázis – QnA Maker
 titleSuffix: Azure Cognitive Services
 description: A QnA Maker Tudásbázis kérdés-válasz (QnA) párok, és nem kötelező, a kérdések és válaszok párjaihoz társított metaadatokat tartalmaz.
 services: cognitive-services
-author: nstulasi
+author: tulasim88
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: qna-maker
 ms.topic: article
 ms.date: 09/12/2018
-ms.author: saneppal
-ms.openlocfilehash: e1ac7bd3322f613888ca82cbd3c23c726f0c0e15
-ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
+ms.author: tulasim
+ms.openlocfilehash: cb3426a960a6644b3ae149f02055cdb083febca7
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45541181"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47040761"
 ---
 # <a name="knowledge-base"></a>Tudásbázis
 
@@ -44,4 +44,4 @@ Metaadatokat tartalmazó mezőket állnak, amelyek egy pontosvesszővel elválas
 
 ## <a name="see-also"></a>Lásd még
 
-[A QnA Maker – áttekintés](../Overview/overview.md)
+[A QnA Maker áttekintése](../Overview/overview.md)

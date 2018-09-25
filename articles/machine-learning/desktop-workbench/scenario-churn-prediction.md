@@ -16,14 +16,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/17/2017
 ms.author: miprasad
-ms.openlocfilehash: 7c7b50098cfd1bcac534156dd905b37affab80bd
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ROBOTS: NOINDEX
+ms.openlocfilehash: 0210e65c0859b00caac0fe66baa1c73063f644c8
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35645365"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46947941"
 ---
 # <a name="customer-churn-prediction-using-azure-machine-learning"></a>Vásárlók lemorzsolódásának prognosztizálása az Azure Machine Learning segítségével
+
+[!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)] 
+
+
 
 Átlagosan meglévő ügyfelek az ötször olcsóbb, mint az új felvételi költsége. Ennek eredményeképpen marketingvezetőket gyakran tapasztalhatja maguk próbálja meg a lemorzsolódás valószínűségét, és megtalálni a szükséges lépéseket a lemorzsolódási ráta minimalizálásához.
 
@@ -61,7 +66,7 @@ Ebben a megoldásban használjuk egy konkrét példa telekommunikációs cég pr
 
 * Egy [Azure-fiók](https://azure.microsoft.com/free/) (az ingyenes próbaverziók érhető el)
 
-* Egy telepített példánya [Azure Machine Learning Workbench](../service/overview-what-is-azure-ml.md) következő a [rövid telepítési útmutatójában](../service/quickstart-installation.md) telepítse a programot, és a egy munkaterület létrehozása
+* Egy telepített példánya [Azure Machine Learning Workbench](../service/overview-what-is-azure-ml.md) következő a [rövid telepítési útmutatójában](quickstart-installation.md) telepítse a programot, és a egy munkaterület létrehozása
 
 * Az operacionalizálás célszerű Ha helyben telepített és futtatott Docker-motor. Ha nem, akkor a fürt lehetőséget használja, de vegye figyelembe, hogy egy Azure Container Service (ACS) futó költséges lehet.
 

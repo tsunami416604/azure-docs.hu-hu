@@ -1,0 +1,2 @@
+>[!Note]
+>**Ez a cikk elavult.** Ez a szolgáltatás korábbi verzióinak támogatása a növekményes megszűnik. [A támogatási idősor megtekintése](../articles/machine-learning/service/overview-what-happened-to-workbench.md#timeline). Ez a legújabb verzió használatának megkezdéséhez [rövid](../articles/machine-learning/service/index.yml).

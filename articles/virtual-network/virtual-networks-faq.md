@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/16/2018
 ms.author: jdial
-ms.openlocfilehash: 2802a725bca7f63f6956293048b0e854ebfb59b5
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: e92c099d9e0dfacff71c13382059acb06037bb1e
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42056401"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46999868"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Az Azure Virtual Network – gyakori kérdések (GYIK)
 
@@ -257,5 +257,26 @@ Virtuális hálózatok közötti társviszony-kapcsolatok lépnek *leválasztott
 Nem. Tranzitív társviszony-létesítés nem támogatott. Meg kell társviszonyt létesíteni, hálózattal és a Társviszonyban kerül sor.
 
 ### <a name="are-there-any-bandwidth-limitations-for-peering-connections"></a>Minden társviszony-kapcsolatok sávszélesség-korlátozások vannak?
-Nem. Virtuális hálózatok közötti társviszonyt, hogy a helyi vagy globális, sávszélesség-korlátozások nem ír elő. A virtuális gép vagy a számítási erőforrás által csak limites a sávszélesség.
+Nem. Virtuális hálózatok közötti társviszonyt, hogy a helyi vagy globális, sávszélesség-korlátozások nem ír elő. A virtuális gép vagy a számítási erőforrás által csak korlátok a sávszélesség.
 
+## <a name="virtual-network-tap"></a>Virtuális hálózati TAP
+
+### <a name="which-azure-regions-are-available-for-virtual-network-tap"></a>Mely Azure-régiók érhetők el a virtuális hálózati TAP?
+Fejlesztői előzetes verzióban a funkció érhető el az USA nyugati középső régiójában. A figyelt hálózati adapterek, a virtuális hálózati TAP erőforrás és a gyűjtő vagy analytics megoldás ugyanabban a régióban kell telepíteni.
+
+### <a name="does-virtual-network-tap-support-any-filtering-capabilities-on-the-mirrored-packets"></a>Virtuális hálózati TAP támogat bármilyen szűrési képességek a tükrözött csomagok?
+A virtuális hálózati TAP-előzetes verzió használata nem támogatott szűrési képességek. Amikor egy KOPPINTÁSSAL konfigurációt adnak hozzá egy hálózati adaptert a bejövő forgalom mély másolatát, és KOPPINTSON a célhelyre irányuló kimenő adatforgalmat a hálózati adapter adatfolyamként.
+
+### <a name="can-multiple-tap-configurations-be-added-to-a-monitored-network-interface"></a>Hozzáadhat több KOPPINTSON konfiguráció egy figyelt hálózati adapter?
+A figyelt hálózati adapter rendelkezhet egyetlen KOPPINTÁSSAL konfiguráció. Az egyes egyeztessen [partneri megoldások](virtual-network-tap-overview.md#virtual-network-tap-partner-solutions) számára teszi, hogy a választott elemzőeszközök KOPPINTSON a forgalmat több példányának adatfolyam.
+
+### <a name="can-the-same-virtual-network-tap-resource-aggregate-traffic-from-monitored-network-interfaces-in-more-than-one-virtual-network"></a>Összesítheti ugyanazon virtuális hálózati TAP erőforrás forgalmat a figyelt hálózati adapterek egynél több virtuális hálózaton?
+Igen. Az azonos virtuális hálózatban KOPPINTSON erőforrás az alábbiakra használhatók porttükrözéses adatokra összesíti a figyelt hálózati adapterek ugyanabban az előfizetésben vagy egy másik előfizetésben lévő virtuális társhálózaton belüli. A virtuális hálózati TAP erőforrás és a cél terheléselosztók, illetve a cél hálózati adapter ugyanabban az előfizetésben kell lennie. Az összes előfizetés ugyanahhoz az Azure Active Directory-bérlőhöz kell tartozniuk.
+
+### <a name="are-there-any-performance-considerations-on-production-traffic-if-i-enable-a-virtual-network-tap-configuration-on-a-network-interface"></a>Vannak-e bármilyen teljesítménnyel kapcsolatos megfontolások az éles forgalmat, ha egy hálózati adapter egy virtuális hálózati TAP konfigurációját engedélyezni?
+
+Virtuális hálózati TAP van fejlesztői előzetes verzióban érhető el. Előzetes verzióban nem nincs szolgáltatásszint-szerződés. A funkció nem használható éles számítási feladatok esetében. Ha egy virtuális gép hálózati adapteréhez TAP-konfigurációval rendelkező engedélyezve van, ugyanazokat az erőforrásokat az Azure-beli gazdagépre a virtuális gép számára lefoglalt az éles forgalmat a tükrözési funkció végrehajtására és a tükrözött csomagok küldése szolgál. Válassza ki a megfelelő [Linux](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) vagy [Windows](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) annak érdekében, hogy elegendő erőforrással az éles és a tükrözött forgalom küldése a virtuális gép számára elérhető virtuálisgép-méretet.
+
+### <a name="is-accelerated-networking-for-linuxcreate-vm-accelerated-networking-climd-or-windowscreate-vm-accelerated-networking-powershellmd-supported-with-virtual-network-tap"></a>A gyorsított hálózatkezelése [Linux](create-vm-accelerated-networking-cli.md) vagy [Windows](create-vm-accelerated-networking-powershell.md) virtuális hálózati TAP támogatott?
+
+Akkor lesz, amelyen engedélyezve van a gyorsított hálózatkezelés virtuális géphez csatolt hálózati adapter egy KOPPINTÁSSAL konfigurációt adhat hozzá. Azonban a teljesítmény és a késés, a virtuális gépen, mivel az Azure jelenleg nem támogatja a kiszervezési az adatforgalom tükrözés a következő KOPPINTSON konfigurációs gyorsított hálózatkezelés hozzáadásával érinti.

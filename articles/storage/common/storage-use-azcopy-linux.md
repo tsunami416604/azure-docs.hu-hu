@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 04/26/2018
 ms.author: seguler
 ms.component: common
-ms.openlocfilehash: d674b0a6a16e22ed06577f7306ed6f4b9755dd0e
-ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
+ms.openlocfilehash: d441176c55ceb75c3f44df90224647ded802aeb6
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2018
-ms.locfileid: "42060137"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46986635"
 ---
 # <a name="transfer-data-with-azcopy-on-linux"></a>Adatok áthelyezése az Azcopyval Linux rendszeren
 
@@ -706,7 +706,7 @@ További, az Azure Storage szolgáltatással és az AzCopyval kapcsolatos adatok
 * [A Microsoft Azure Storage bemutatása](../storage-introduction.md)
 * [Tárfiók létrehozása](../storage-create-storage-account.md)
 * [Blobok kezelése a Storage Explorerrel](https://docs.microsoft.com/azure/vs-azure-tools-storage-explorer-blobs)
-* [Az Azure Storage az Azure CLI 2.0 használatával](../storage-azure-cli.md)
+* [Using the Azure CLI with Azure Storage (Az Azure parancssori felülete és az Azure Storage együttes használata)](../storage-azure-cli.md)
 * [A c++ segítségével Blob storage használata](../blobs/storage-c-plus-plus-how-to-use-blobs.md)
 * [How to use Blob storage from Java (A Blob Storage használata Javával)](../blobs/storage-java-how-to-use-blob-storage.md)
 * [How to use Blob storage from Node.js (A Blob Storage használata Node.js-sel)](../blobs/storage-nodejs-how-to-use-blob-storage.md)

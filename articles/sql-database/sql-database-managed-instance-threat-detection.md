@@ -10,16 +10,16 @@ ms.topic: conceptual
 ms.date: 09/19/2018
 ms.author: ronmat
 ms.reviewer: vanto
-ms.openlocfilehash: af93a1c0f1e132b04d3bf5c5511f5db1f29ba30c
-ms.sourcegitcommit: 8b694bf803806b2f237494cd3b69f13751de9926
+ms.openlocfilehash: 28676d0e027b73281fcb9874669aa6447ec622ff
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/20/2018
-ms.locfileid: "46498640"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46964258"
 ---
 # <a name="azure-sql-database-managed-instance-threat-detection"></a>Az Azure SQL Database felügyelt példány Fenyegetésészlelési
 
-Az SQL Fenyegetésészlelés észleli a szokatlan és vélhetően kárt okozó jelző rendellenes tevékenységek próbál egy Azure SQL Database felügyelt példány (előzetes verzió) az adatbázisokat elérni vagy kiaknázni.
+Az SQL Fenyegetésészlelés észleli az Azure SQL Database felügyelt példánya az adatbázisokat elérni vagy kiaknázni a szokatlan és vélhetően kárt okozó kísérleteket jelző rendellenes tevékenységek.
 
 ## <a name="overview"></a>Áttekintés
 

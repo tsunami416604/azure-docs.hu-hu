@@ -1,6 +1,6 @@
 ---
 title: Az Azure Access Control service át |} A Microsoft Docs
-description: Beállítások, alkalmazások és szolgáltatások áthelyezésére az Azure Access Control service-ből
+description: Az alkalmazások és szolgáltatások áthelyezésére az Azure Access Control Service (ACS) a lehetőségek ismertetése.
 services: active-directory
 documentationcenter: dev-center-name
 author: CelesteDG
@@ -13,17 +13,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/06/2018
+ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: jlu, annaba, hirsin
-ms.openlocfilehash: 3120bf36c32a8be42f325ef584bfc8a2c5cd04df
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: 59856418adde1ea29a0513a1ca7c0c60531768d8
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44055294"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47036541"
 ---
-# <a name="migrate-from-the-azure-access-control-service"></a>A hozzáférés-vezérlés az Azure-szolgáltatás áttelepítése
+# <a name="how-to-migrate-from-the-azure-access-control-service"></a>Útmutató: a hozzáférés-vezérlés az Azure-szolgáltatás áttelepítése
 
 A Microsoft Azure Access Control Service (ACS), az Azure Active Directory (Azure AD), a szolgáltatás 2018. November 7 kivezetjük. Alkalmazások és szolgáltatások, amelyek jelenleg használják a hozzáférés-vezérlés kell teljes áttelepíteni meg egy másik hitelesítési mechanizmust. Ez a cikk ismerteti a javaslatok a jelenlegi ügyfelek tervezésekor kivezetjük a hozzáférés-vezérlés használatát. Ha hozzáférés-vezérlés jelenleg nem használja, akkor nem kell semmit sem.
 
@@ -37,7 +37,7 @@ Hozzáférés-vezérlés alkalmazási helyzetei bonthatók három fő kategóri�
 - Hozzáadásával hitelesítést a webes alkalmazásokhoz, egyéni és az előre összeállított (például SharePoint). "Passzív" hitelesítési hozzáférés-vezérlés használatával a webes alkalmazások támogathat, jelentkezzen be Microsoft-fiókhoz (korábban Live ID), és a Google, Facebook, a Yahoo!, az Azure AD-ben lévő fiókok és az Active Directory összevonási szolgáltatások (AD FS).
 - Egyéni webkiszolgáló-szolgáltatások biztosítása a hozzáférés-vezérlés által kiállított jogkivonatokban. Webszolgáltatások "aktív" hitelesítés használatával biztosítható, hogy azok engedélyezik a hozzáférést csak ismert, hitelesített ügyfelek a hozzáférés-vezérléssel.
 
-Minden egyes használatieset-forgatókönyveit és a javasolt migrálási stratégiák ismertetése a következő szakaszokban. 
+Minden egyes használatieset-forgatókönyveit és a javasolt migrálási stratégiák ismertetése a következő szakaszokban.
 
 > [!WARNING]
 > A legtöbb esetben a jelentős kódmódosítás szükségesek a meglévő alkalmazások és szolgáltatások áttelepítése újabb technológiák. Azt javasoljuk, hogy azonnal kezdje el, és minden lehetséges valamilyen okból kimaradás lép, és az üzemkimaradások elkerülése érdekében a migrálás végrehajtása.
@@ -61,6 +61,51 @@ Az STS és felügyeleti műveletek folytatott minden kommunikáció zajlik az UR
 Ez a kivétel, az összes bejövő forgalom `https://accounts.accesscontrol.windows.net`. Az URL-címet a forgalmat egy másik szolgáltatás már kezeli és **nem** a hozzáférés-vezérlés elavulásának által érintett. 
 
 Hozzáférés-vezérléssel kapcsolatos további információkért lásd: [Access Control Service 2.0 (archivált)](https://msdn.microsoft.com/library/hh147631.aspx).
+
+## <a name="find-out-which-of-your-apps-will-be-impacted"></a>Ismerje meg, amely az alkalmazások érint
+
+Kövesse az ebben a szakaszban megtudhatja, hogy az alkalmazások, amelyek ACS használatból való kivonást egyaránt érinti.
+
+### <a name="download-and-install-acs-powershell"></a>Töltse le és telepítse az ACS PowerShell
+
+1. Nyissa meg a PowerShell-galériából, és töltse le [Acs.Namespaces](https://www.powershellgallery.com/packages/Acs.Namespaces/1.0.2).
+1. Futtassa a modul telepítése
+
+    ```powershell
+    Install-Module -Name Acs.Namespaces
+    ```
+
+1. Az összes lehetséges parancsok listájának lekéréséhez futtassa
+
+    ```powershell
+    Get-Command -Module Acs.Namespaces
+    ```
+
+    Segítség kérése egy bizonyos paranccsal, futtassa:
+
+    ```
+     Get-Help [Command-Name] -Full
+    ```
+    
+    ahol `[Command-Name]` az ACS-parancs neve.
+
+### <a name="list-your-acs-namespaces"></a>Az Access Control-névtereket listázása
+
+1. Az ACS használatával csatlakozhat a **Connect-AcsAccount** parancsmagot.
+  
+    Szükség lehet futtatni `Set-ExecutionPolicy -ExecutionPolicy Bypass` előtt futtathat parancsokat és a rendszergazda ezen előfizetések kell ahhoz, hogy hajtsa végre a parancsokat.
+
+1. Az használatával érhető el az Azure-előfizetések listájának a **Get-AcsSubscription** parancsmagot.
+1. Az ACS névterek használatával listázása a **Get-AcsNamespace** parancsmagot.
+
+### <a name="check-which-applications-will-be-impacted"></a>Ellenőrizze, hogy mely alkalmazások érinti.
+
+1. A névtér használatára az előző lépésből, és nyissa meg `https://<namespace>.accesscontrol.windows.net`
+
+    Például ha a névterek egyik, a contoso-test, lépjen a `https://contoso-test.accesscontrol.windows.net`
+
+1. Alatt **megbízhatósági kapcsolatok**válassza **függő fél alkalmazások** ACS használatból való kivonást egyaránt által érintett alkalmazások listájának megtekintéséhez.
+1. Bármely más ACS namespace(s), amely rendelkezik ismételje meg az 1 – 2.
 
 ## <a name="retirement-schedule"></a>Kivezetési ütemezése
 

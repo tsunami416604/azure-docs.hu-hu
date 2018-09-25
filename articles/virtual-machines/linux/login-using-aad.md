@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 06/17/2018
 ms.author: cynthn
-ms.openlocfilehash: 2201455477af2bd871f8e8e401536d45af4a02f7
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 2ec712dcce1295a91f552176ddcf6572d3f23ecc
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46294652"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46993561"
 ---
 # <a name="log-in-to-a-linux-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>Jelentkezzen be egy Linux rendszerű virtuális gép az Azure-ban az Azure Active Directory-hitelesítés (előzetes verzió)
 
@@ -59,7 +59,7 @@ A következő Azure-régiók jelenleg a szolgáltatás az előzetes verzióban t
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Ha a helyi telepítése és használata a parancssori felület választja, az oktatóanyaghoz, hogy futnak-e az Azure CLI 2.0.31-es verzió vagy újabb. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI 2.0 telepítése]( /cli/azure/install-azure-cli).
+Ha a helyi telepítése és használata a parancssori felület választja, az oktatóanyaghoz, hogy futnak-e az Azure CLI 2.0.31-es verzió vagy újabb. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése]( /cli/azure/install-azure-cli).
 
 ## <a name="create-a-linux-virtual-machine"></a>Linuxos virtuális gépek létrehozása
 
@@ -117,7 +117,7 @@ az role assignment create \
 > [!NOTE]
 > Ha az AAD-tartomány és a tartomány felhasználónév nem egyezik, meg kell adnia a felhasználói fiókjához való Objektumazonosítóját a *--assignee-object-id*, nem csak a felhasználónév *--assignee*. Objektumazonosító szerezheti be a felhasználói fiókjához [az ad felhasználó-lista](/cli/azure/ad/user#az-ad-user-list).
 
-RBAC használata az Azure-előfizetések erőforrásaihoz való hozzáférés kezelése a további információkért tekintse meg a használatával a [Azure CLI 2.0](../../role-based-access-control/role-assignments-cli.md), [az Azure portal](../../role-based-access-control/role-assignments-portal.md), vagy [Azure PowerShell-lel](../../role-based-access-control/role-assignments-powershell.md).
+RBAC használata az Azure-előfizetések erőforrásaihoz való hozzáférés kezelése a további információkért tekintse meg a használatával a [Azure CLI-vel](../../role-based-access-control/role-assignments-cli.md), [az Azure portal](../../role-based-access-control/role-assignments-portal.md), vagy [Azure PowerShell-lel](../../role-based-access-control/role-assignments-powershell.md).
 
 Beállíthatja, hogy jelentkezzen be a Linux rendszerű virtuális gép egy adott felhasználót többtényezős hitelesítés megkövetelése az Azure ad-ben. További információkért lásd: [Azure multi-factor Authentication a felhőben – első lépések](../../multi-factor-authentication/multi-factor-authentication-get-started-cloud.md).
 

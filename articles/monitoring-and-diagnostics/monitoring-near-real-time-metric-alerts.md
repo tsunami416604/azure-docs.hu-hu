@@ -1,6 +1,6 @@
 ---
-title: Az Azure Monitor újabb metrikákhoz kapcsolódó riasztások támogatott erőforrások
-description: Támogatási metrikákat és naplókat közel valós idejű metrikákhoz kapcsolódó riasztások újabb Azure-hivatkozás.
+title: Metrikákhoz kapcsolódó riasztások az Azure monitorban támogatott erőforrások
+description: Referencia a támogatási metrikákat és naplókat a további metrikákhoz kapcsolódó riasztások az Azure monitorban
 author: snehithm
 services: monitoring
 ms.service: azure-monitor
@@ -8,17 +8,18 @@ ms.topic: conceptual
 ms.date: 06/29/2018
 ms.author: snmuvva
 ms.component: alerts
-ms.openlocfilehash: 019f245a7cc1feedcbd520c336f53a60ed1e9ddc
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: 102f087f31aa304aaaee49e0e39ff8c6874127b4
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45579089"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46966796"
 ---
-# <a name="supported-resources-for-newer-azure-monitor-metric-alerts"></a>Az Azure Monitor újabb metrikákhoz kapcsolódó riasztások támogatott erőforrások
-Az Azure Monitor mostantól támogatja a [új metrika riasztástípus](monitoring-overview-unified-alerts.md) amely jelentős előnyökkel jár a korábbi keresztül [klasszikus metrikariasztásokat](insights-alerts-portal.md). Metrikák érhetők el a [az Azure-szolgáltatások nagy lista](monitoring-supported-metrics.md). Az újabb riasztások az erőforrástípus (növekvő) részét támogatja. Ez a cikk adott részére sorolja fel. 
+# <a name="supported-resources-for-metric-alerts-in-azure-monitor"></a>Metrikákhoz kapcsolódó riasztások az Azure monitorban támogatott erőforrások
 
-A népszerű Log Analytics-naplók, metrikák, naplók (előzetes verzió) részét képező mérőszámokként kinyert is használhatja újabb metrikákhoz kapcsolódó riasztások  
+Az Azure Monitor mostantól támogatja a [új metrika riasztástípus](monitoring-overview-unified-alerts.md) amely jelentős előnyökkel jár a korábbi keresztül [klasszikus metrikariasztásokat](insights-alerts-portal.md). Metrikák érhetők el a [az Azure-szolgáltatások nagy lista](monitoring-supported-metrics.md). Az újabb riasztások az erőforrástípus (növekvő) részét támogatja. Ez a cikk adott részére sorolja fel.
+
+A népszerű Log Analytics-naplók, metrikák, naplók, metrikák részeként kinyert is használhatja újabb metrikákhoz kapcsolódó riasztások 
 - [Teljesítményszámlálók](../log-analytics/log-analytics-data-sources-performance-counters.md) Windows és Linux rendszerű gépek
 - [Szívverés rekordok az ügynök állapota](../operations-management-suite/oms-solution-agenthealth.md)
 - [Frissítéskezelés](../operations-management-suite/oms-solution-update-management.md) rekordok
@@ -28,7 +29,7 @@ A népszerű Log Analytics-naplók, metrikák, naplók (előzetes verzió) rész
 > Adott metrika és/vagy a dimenzió csak megjelenik létezik-e adatokat, a választott időszakban. Ezek a metrikák az Azure Log Analytics-munkaterületek az USA keleti RÉGIÓJA, USA Középnyugati Régiójában és Nyugat-Európa rendelkező ügyfelek számára érhetők el. A Log Analytics mérőszámainak jelenleg nyilvános előzetes verzióban érhető el, és változhat.
 
 ## <a name="portal-powershell-cli-rest-support"></a>Portál, PowerShell, CLI, REST-támogatással
-Jelenleg csak az Azure Portalon létrehozhat újabb metrikákhoz kapcsolódó riasztások [REST API-val](https://docs.microsoft.com/rest/api/monitor/metricalerts/createorupdate) vagy [Resource Manager-sablonok](monitoring-create-metric-alerts-with-templates.md). Konfigurálás a PowerShell és az Azure parancssori felület (Azure CLI 2.0) használatával újabb riasztások támogatása hamarosan elérhető lesz.
+Jelenleg csak az Azure Portalon létrehozhat újabb metrikákhoz kapcsolódó riasztások [REST API-val](https://docs.microsoft.com/rest/api/monitor/metricalerts/createorupdate) vagy [Resource Manager-sablonok](monitoring-create-metric-alerts-with-templates.md). Konfigurálása a PowerShell és az Azure CLI 2.0-s és újabb verziók használata újabb riasztások támogatása hamarosan elérhető lesz.
 
 ## <a name="metrics-and-dimensions-supported"></a>Metrikák és a támogatott méretek
 Újabb metrikákhoz kapcsolódó riasztások támogatja a dimenziók használó metrikákhoz riasztásokat. Dimenziók segítségével szűrheti a metrika a megfelelő szintre. Az összes támogatott mérőszámok együtt alkalmazható dimenziók fel és az ábrázolt [Azure Monitor - metrikák Explorer (előzetes verzió)](monitoring-metric-charts.md).
@@ -66,7 +67,9 @@ A következő teljes listája megtalálható az Azure monitor metrika források 
 |Microsoft.Storage/storageAccounts/services     |     Igen    | [BLOB szolgáltatás](monitoring-supported-metrics.md#microsoftstoragestorageaccountsblobservices), [Fájlszolgáltatások](monitoring-supported-metrics.md#microsoftstoragestorageaccountsfileservices), [Queue szolgáltatások](monitoring-supported-metrics.md#microsoftstoragestorageaccountsqueueservices) és [Table szolgáltatások](monitoring-supported-metrics.md#microsoftstoragestorageaccountstableservices)|
 |Microsoft.StreamAnalytics/streamingjobs     |  –       | [Stream Analytics](monitoring-supported-metrics.md#microsoftstreamanalyticsstreamingjobs)|
 | Microsoft.Web/serverfarms | Igen | [App Service-csomagok](monitoring-supported-metrics.md#microsoftwebserverfarms)  |
-|Microsoft.OperationalInsights/workspaces (előzetes verzió) | Igen|[Log Analytics-munkaterületek](monitoring-supported-metrics.md#microsoftoperationalinsightsworkspaces)|
+| Microsoft.Web/sites | Igen | [App Services](monitoring-supported-metrics.md#microsoftwebsites-excluding-functions) és [funkciók](monitoring-supported-metrics.md#microsoftwebsites-functions)|
+| Microsoft.Web/sites/slots | Igen | [Az App Service-tárolóhely](monitoring-supported-metrics.md#microsoftwebsitesslots)|
+|Microsoft.OperationalInsights/workspaces| Igen|[Log Analytics-munkaterületek](monitoring-supported-metrics.md#microsoftoperationalinsightsworkspaces)|
 
 
 

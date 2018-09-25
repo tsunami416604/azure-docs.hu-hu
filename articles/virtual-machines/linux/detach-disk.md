@@ -1,6 +1,6 @@
 ---
 title: Linux virtuális gépek – az Azure data lemez leválasztása |} A Microsoft Docs
-description: Ismerje meg, leválasztása adatlemez egy virtuális gépről az Azure CLI 2.0-t vagy az Azure portal használatával.
+description: Ismerje meg, leválasztása adatlemez egy virtuális gépről az Azure-ban az Azure CLI-vel vagy az Azure Portalon.
 services: virtual-machines-linux
 documentationcenter: ''
 author: cynthn
@@ -15,12 +15,12 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 07/18/2018
 ms.author: cynthn
-ms.openlocfilehash: 0225c6605109489c4b9b599918dc09983ae25ac8
-ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
+ms.openlocfilehash: b087040e5d219941ec0b2ee0f58dfe0058a1ad04
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39144074"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46968348"
 ---
 # <a name="how-to-detach-a-data-disk-from-a-linux-virtual-machine"></a>A Linux rendszerű virtuális gépről adatlemez leválasztása
 
@@ -99,7 +99,7 @@ sudo umount /dev/sdc1 /datadrive
 ```
 
 
-## <a name="detach-a-data-disk-using-cli-20"></a>A CLI 2.0-val adatlemez leválasztása
+## <a name="detach-a-data-disk-using-azure-cli"></a>Azure CLI-vel adatlemez leválasztása 
 
 Ez a példa leválasztja a *myDataDisk* nevű virtuális gép lemeze *myVM* a *myResourceGroup*.
 

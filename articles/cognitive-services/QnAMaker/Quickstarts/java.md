@@ -10,12 +10,12 @@ ms.technology: qna-maker
 ms.topic: article
 ms.date: 09/12/2018
 ms.author: diberry
-ms.openlocfilehash: 48876a9cc1e79b99a94e99ced2ad823e7c368a60
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 8cf9df5130f11fd07dbf468ad0ad93dff4584b21
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44721670"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47031485"
 ---
 # <a name="quickstart-for-microsoft-qna-maker-api-with-java"></a>Gyors útmutató: a Microsoft a QnA Maker API a Javával 
 <a name="HOLTop"></a>
@@ -37,21 +37,23 @@ Ez a cikk bemutatja, hogyan használható a [Microsoft QnA Maker API](../Overvie
 - [Első word változtatások az aktuális készletét.](#GetAlterations)
 - [Cserélje le a word változtatások az aktuális készletét.](#PutAlterations)
 
+[!INCLUDE [Code is available in Azure-Samples Github repo](../../../../includes/cognitive-services-qnamaker-java-repo-note.md)]
+
 ## <a name="prerequisites"></a>Előfeltételek
 
-Szüksége lesz [JDK 7 vagy 8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) fordítsa le és futtassa ezt a kódot. Ha kedvencként, de egy szövegszerkesztőben elegendő használhatja a Java ide Környezethez.
+A kód lefordításához és futtatásához a [JDK 7 vagy 8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) telepítése szükséges. Ha kedvencként, de egy szövegszerkesztőben elegendő használhatja a Java ide Környezethez.
 
-Rendelkeznie kell egy [Cognitive Services API-fiók](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) a **Microsoft QnA Maker API**. Szüksége lesz egy fizetős kulcs a [Azure irányítópultján](https://portal.azure.com/#create/Microsoft.CognitiveServices).
+Egy **Microsoft QnA Maker API-t** tartalmazó [Cognitive Services API-fiókkal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) kell rendelkeznie. Egy fizetős előfizetői kulcsra van szüksége az [Azure-irányítópultról](https://portal.azure.com/#create/Microsoft.CognitiveServices).
 
 <a name="Create"></a>
 
 ## <a name="create-knowledge-base"></a>Tudásbázis létrehozása
 
-Az alábbi kód létrehoz egy új ismeretek körét, használja a [létrehozás](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75ff) metódust.
+A következő kód egy új tudásbázist hoz létre a [Create](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75ff) metódussal.
 
-1. Hozzon létre egy új Java-projektet a kedvenc IDE-ben.
+1. Hozzon létre egy új Java-projektet kedvenc IDE-környezetében.
 2. Adja hozzá az alábbi kódot.
-3. Cserélje le a `key` az előfizetéshez tartozó érvényes hozzáférési kulcs-érték.
+3. A `key` értéket cserélje le az előfizetéshez érvényes hozzáférési kulcsra.
 4. Futtassa a programot.
 
 ```java
@@ -262,7 +264,7 @@ public class CreateKB {
 
 **Tudásbázis válasz létrehozása**
 
-A sikeres válasz JSON-fájlban, az alábbi példában látható módon: 
+A rendszer JSON formátumban ad vissza egy sikeres választ a következő példában látható módon: 
 
 ```json
 {
@@ -297,11 +299,11 @@ A sikeres válasz JSON-fájlban, az alábbi példában látható módon:
 
 ## <a name="update-knowledge-base"></a>Tudásbázis frissítése
 
-Az alábbi kód frissíti egy meglévő ismeretek körét, használja a [frissítés](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da7600) metódust.
+A következő kód egy meglévő tudásbázist frissít az [Update](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da7600) metódussal.
 
-1. Hozzon létre egy új Java-projektet a kedvenc IDE-ben.
+1. Hozzon létre egy új Java-projektet kedvenc IDE-környezetében.
 2. Adja hozzá az alábbi kódot.
-3. Cserélje le a `key` az előfizetéshez tartozó érvényes hozzáférési kulcs-érték.
+3. A `key` értéket cserélje le az előfizetéshez érvényes hozzáférési kulcsra.
 4. Futtassa a programot.
 
 ```java
@@ -571,7 +573,7 @@ public class UpdateKB {
 
 **Tudásbázis válasz frissítése**
 
-A sikeres válasz JSON-fájlban, az alábbi példában látható módon: 
+A rendszer JSON formátumban ad vissza egy sikeres választ a következő példában látható módon: 
 
 ```json
 {
@@ -597,9 +599,9 @@ Press any key to continue.
 
 <a name="Status"></a>
 
-## <a name="get-request-status"></a>Kérelem állapotának beolvasása
+## <a name="get-request-status"></a>Kérés állapotának lekérése
 
-Hívása a [művelet](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/operations_getoperationdetails) metódus egy kérelmet létrehozni vagy frissíteni a Tudásbázis állapotának ellenőrzéséhez. Szeretné látni, ez a módszer használatáról, tekintse át a mintakód a [létrehozás](#Create) vagy [frissítés](#Update) metódust.
+Az [Operation](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/operations_getoperationdetails) metódussal ellenőrizheti a kérések állapotát egy tudásbázis létrehozásához vagy frissítéséhez. A metódus használatának megismeréséhez tekintse meg a [Create](#Create) vagy az [Update](#Update) metódus mintakódját.
 
 [Vissza a tetejére](#HOLTop)
 
@@ -607,11 +609,11 @@ Hívása a [művelet](https://westus.dev.cognitive.microsoft.com/docs/services/5
 
 ## <a name="publish-knowledge-base"></a>Tudásbázis közzététele
 
-A következő kódot egy meglévő ismeretek körét, használatával teszi közzé a [közzététel](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75fe) metódust.
+A következő kód egy meglévő tudásbázist tesz közzé a [Publish](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75fe) metódussal.
 
-1. Hozzon létre egy új Java-projektet a kedvenc IDE-ben.
+1. Hozzon létre egy új Java-projektet kedvenc IDE-környezetében.
 2. Adja hozzá az alábbi kódot.
-3. Cserélje le a `key` az előfizetéshez tartozó érvényes hozzáférési kulcs-érték.
+3. A `key` értéket cserélje le az előfizetéshez érvényes hozzáférési kulcsra.
 4. Futtassa a programot.
 
 ```java
@@ -722,7 +724,7 @@ public class PublishKB {
 
 **Tudásbázis válasz közzététele**
 
-A sikeres válasz JSON-fájlban, az alábbi példában látható módon: 
+A rendszer JSON formátumban ad vissza egy sikeres választ a következő példában látható módon: 
 
 ```json
 {
@@ -738,9 +740,9 @@ A sikeres válasz JSON-fájlban, az alábbi példában látható módon:
 
 A következő kódot váltja fel a körét, használja a megadott Tudásbázis tartalmát a [cseréje](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/knowledgebases_publish) metódust.
 
-1. Hozzon létre egy új Java-projektet a kedvenc IDE-ben.
+1. Hozzon létre egy új Java-projektet kedvenc IDE-környezetében.
 2. Adja hozzá az alábbi kódot.
-3. Cserélje le a `key` az előfizetéshez tartozó érvényes hozzáférési kulcs-érték.
+3. A `key` értéket cserélje le az előfizetéshez érvényes hozzáférési kulcsra.
 4. Futtassa a programot.
 
 ```java
@@ -892,7 +894,7 @@ public class ReplaceKB {
 
 **Cserélje le a Tudásbázis-válasz**
 
-A sikeres válasz JSON-fájlban, az alábbi példában látható módon: 
+A rendszer JSON formátumban ad vissza egy sikeres választ a következő példában látható módon: 
 
 ```json
 {
@@ -908,9 +910,9 @@ A sikeres válasz JSON-fájlban, az alábbi példában látható módon:
 
 Az alábbi kód letölti a körét, használja a megadott Tudásbázis tartalmát a [töltse le a Tudásbázis](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/knowledgebases_download) metódust.
 
-1. Hozzon létre egy új Java-projektet a kedvenc IDE-ben.
+1. Hozzon létre egy új Java-projektet kedvenc IDE-környezetében.
 2. Adja hozzá az alábbi kódot.
-3. Cserélje le a `key` az előfizetéshez tartozó érvényes hozzáférési kulcs-érték.
+3. A `key` értéket cserélje le az előfizetéshez érvényes hozzáférési kulcsra.
 4. Futtassa a programot.
 
 ```java
@@ -1011,7 +1013,7 @@ public class GetQnA {
 
 **Töltse le a Tudásbázis-válasz**
 
-A sikeres válasz JSON-fájlban, az alábbi példában látható módon: 
+A rendszer JSON formátumban ad vissza egy sikeres választ a következő példában látható módon: 
 
 ```json
 {
@@ -1052,7 +1054,7 @@ A sikeres válasz JSON-fájlban, az alábbi példában látható módon:
 
 A következő kód lekéri egy kérdést a megadott Tudásbázis használatával, a segítségével választ a **készítése a válaszok** metódust.
 
-1. Hozzon létre egy új Java-projektet a kedvenc IDE-ben.
+1. Hozzon létre egy új Java-projektet kedvenc IDE-környezetében.
 1. Adja hozzá az alábbi kódot.
 1. Cserélje le a `host` a webhely nevét, a QnA Maker előfizetéshez tartozó értéket. További információ: [QnA Maker szolgáltatás létrehozása](../How-To/set-up-qnamaker-service-azure.md).
 1. Cserélje le a `endpoint_key` az előfizetéshez tartozó érvényes végponti kulcs-érték. Vegye figyelembe, hogy ez nem ugyanaz, mint az előfizetési kulcs. A végpont kulcsok használatával megtekintheti a [végpont kulcsok beolvasása](#GetKeys) metódus.
@@ -1167,7 +1169,7 @@ public class GetAnswers {
 
 **Válaszok válasz**
 
-A sikeres válasz JSON-fájlban, az alábbi példában látható módon: 
+A rendszer JSON formátumban ad vissza egy sikeres választ a következő példában látható módon: 
 
 ```json
 {
@@ -1195,9 +1197,9 @@ A sikeres válasz JSON-fájlban, az alábbi példában látható módon:
 
 Az alábbi kód adatainak beolvasása, a megadott Tudásbázis körét, használja a [részletek a Tudásbázis](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/knowledgebases_getknowledgebasedetails) metódust.
 
-1. Hozzon létre egy új Java-projektet a kedvenc IDE-ben.
+1. Hozzon létre egy új Java-projektet kedvenc IDE-környezetében.
 2. Adja hozzá az alábbi kódot.
-3. Cserélje le a `key` az előfizetéshez tartozó érvényes hozzáférési kulcs-érték.
+3. A `key` értéket cserélje le az előfizetéshez érvényes hozzáférési kulcsra.
 4. Futtassa a programot.
 
 ```java
@@ -1294,7 +1296,7 @@ public class GetKB {
 
 **Tudásbázis részletek válasz**
 
-A sikeres válasz JSON-fájlban, az alábbi példában látható módon: 
+A rendszer JSON formátumban ad vissza egy sikeres választ a következő példában látható módon: 
 
 ```json
 {
@@ -1322,9 +1324,9 @@ A sikeres válasz JSON-fájlban, az alábbi példában látható módon:
 
 A következő kódot egy adott felhasználó összes tudásbázisok olyan adatainak beolvasása használatával a [első felhasználó tudásbázisok](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/knowledgebases_getknowledgebasesforuser) metódust.
 
-1. Hozzon létre egy új Java-projektet a kedvenc IDE-ben.
+1. Hozzon létre egy új Java-projektet kedvenc IDE-környezetében.
 2. Adja hozzá az alábbi kódot.
-3. Cserélje le a `key` az előfizetéshez tartozó érvényes hozzáférési kulcs-érték.
+3. A `key` értéket cserélje le az előfizetéshez érvényes hozzáférési kulcsra.
 4. Futtassa a programot.
 
 ```java
@@ -1418,7 +1420,7 @@ public class GetKBsByUser {
 
 **A felhasználói válaszra tudásbázisok beolvasása**
 
-A sikeres válasz JSON-fájlban, az alábbi példában látható módon: 
+A rendszer JSON formátumban ad vissza egy sikeres választ a következő példában látható módon: 
 
 ```json
 {
@@ -1462,9 +1464,9 @@ Press any key to continue.
 
 Az alábbi kód törli a megadott alap használatával ismereteket a [Tudásbázis törlése](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/knowledgebases_delete) metódust.
 
-1. Hozzon létre egy új Java-projektet a kedvenc IDE-ben.
+1. Hozzon létre egy új Java-projektet kedvenc IDE-környezetében.
 2. Adja hozzá az alábbi kódot.
-3. Cserélje le a `key` az előfizetéshez tartozó érvényes hozzáférési kulcs-érték.
+3. A `key` értéket cserélje le az előfizetéshez érvényes hozzáférési kulcsra.
 4. Futtassa a programot.
 
 ```java
@@ -1567,7 +1569,7 @@ public class DeleteKB {
 
 **Tudásbázis válasz törlése**
 
-A sikeres válasz JSON-fájlban, az alábbi példában látható módon: 
+A rendszer JSON formátumban ad vissza egy sikeres választ a következő példában látható módon: 
 
 ```json
 {
@@ -1583,9 +1585,9 @@ A sikeres válasz JSON-fájlban, az alábbi példában látható módon:
 
 A következő kódot lekérdezi az aktuális végpont kulcsok használatával a [végpont kulcsok beolvasása](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/endpointkeys_getendpointkeys) metódust.
 
-1. Hozzon létre egy új Java-projektet a kedvenc IDE-ben.
+1. Hozzon létre egy új Java-projektet kedvenc IDE-környezetében.
 2. Adja hozzá az alábbi kódot.
-3. Cserélje le a `key` az előfizetéshez tartozó érvényes hozzáférési kulcs-érték.
+3. A `key` értéket cserélje le az előfizetéshez érvényes hozzáférési kulcsra.
 4. Futtassa a programot.
 
 ```java
@@ -1679,7 +1681,7 @@ public class GetEndpointKeys {
 
 **Végpont kulcsok válasz**
 
-A sikeres válasz JSON-fájlban, az alábbi példában látható módon: 
+A rendszer JSON formátumban ad vissza egy sikeres választ a következő példában látható módon: 
 
 ```json
 {
@@ -1696,9 +1698,9 @@ A sikeres válasz JSON-fájlban, az alábbi példában látható módon:
 
 Aktuális végpont kulcsainak, használatával újragenerálása a következő kódot a [végpont kulcsok frissítése](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/endpointkeys_refreshendpointkeys) metódust.
 
-1. Hozzon létre egy új Java-projektet a kedvenc IDE-ben.
+1. Hozzon létre egy új Java-projektet kedvenc IDE-környezetében.
 2. Adja hozzá az alábbi kódot.
-3. Cserélje le a `key` az előfizetéshez tartozó érvényes hozzáférési kulcs-érték.
+3. A `key` értéket cserélje le az előfizetéshez érvényes hozzáférési kulcsra.
 4. Futtassa a programot.
 
 ```java
@@ -1843,7 +1845,7 @@ public class RefreshKeys {
 
 **Kulcsok válasz végpont frissítése**
 
-A sikeres válasz JSON-fájlban, az alábbi példában látható módon: 
+A rendszer JSON formátumban ad vissza egy sikeres választ a következő példában látható módon: 
 
 ```json
 {
@@ -1860,9 +1862,9 @@ A sikeres válasz JSON-fájlban, az alábbi példában látható módon:
 
 A következő kód lekéri a jelenlegi word változtatások, amely használatával a [töltse le a változtatások](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75fc) metódust.
 
-1. Hozzon létre egy új Java-projektet a kedvenc IDE-ben.
+1. Hozzon létre egy új Java-projektet kedvenc IDE-környezetében.
 2. Adja hozzá az alábbi kódot.
-3. Cserélje le a `key` az előfizetéshez tartozó érvényes hozzáférési kulcs-érték.
+3. A `key` értéket cserélje le az előfizetéshez érvényes hozzáférési kulcsra.
 4. Futtassa a programot.
 
 ```java
@@ -1956,7 +1958,7 @@ public class GetAlterations {
 
 **A word változásokból válasz**
 
-A sikeres válasz JSON-fájlban, az alábbi példában látható módon: 
+A rendszer JSON formátumban ad vissza egy sikeres választ a következő példában látható módon: 
 
 ```json
 {
@@ -1979,9 +1981,9 @@ A sikeres válasz JSON-fájlban, az alábbi példában látható módon:
 
 A következő kódot váltja fel az aktuális word változtatások, amely használatával a [cserélje le a változtatások](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75fd) metódust.
 
-1. Hozzon létre egy új Java-projektet a kedvenc IDE-ben.
+1. Hozzon létre egy új Java-projektet kedvenc IDE-környezetében.
 2. Adja hozzá az alábbi kódot.
-3. Cserélje le a `key` az előfizetéshez tartozó érvényes hozzáférési kulcs-érték.
+3. A `key` értéket cserélje le az előfizetéshez érvényes hozzáférési kulcsra.
 4. Futtassa a programot.
 
 ```java
@@ -2113,7 +2115,7 @@ public class PutAlterations {
 
 **Cserélje le a word változásokból válasz**
 
-A sikeres válasz JSON-fájlban, az alábbi példában látható módon: 
+A rendszer JSON formátumban ad vissza egy sikeres választ a következő példában látható módon: 
 
 ```json
 {
@@ -2126,8 +2128,8 @@ A sikeres válasz JSON-fájlban, az alábbi példában látható módon:
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [A QnA Maker (V4) REST API-referencia](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75ff)
+> [QnA Maker (V4) REST API-referencia](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75ff)
 
 ## <a name="see-also"></a>Lásd még 
 
-[A QnA Maker – áttekintés](../Overview/overview.md)
+[A QnA Maker áttekintése](../Overview/overview.md)

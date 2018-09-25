@@ -16,14 +16,19 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/17/2017
-ms.openlocfilehash: edc3fc5e2a625a14bcb48b03f32cd99069a0ad53
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ROBOTS: NOINDEX
+ms.openlocfilehash: 8533023a16cb350828127d0603e6add0876b37a8
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "42058145"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46948849"
 ---
 # <a name="income-classification-with-team-data-science-process-tdsp-project"></a>A csoportos adatelemzési folyamat (TDSP) project bevételek besorolása
+
+[!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)] 
+
+
 
 ## <a name="introduction"></a>Bevezetés
 
@@ -55,7 +60,7 @@ Lásd: [csoportos adatelemzési folyamat (TDSP) életciklus](https://github.com/
 1. Azure-beli [előfizetés](https://azure.microsoft.com). Megjelenik egy [ingyenes előfizetés](https://azure.microsoft.com/free/?v=17.16&WT.srch=1&WT.mc_id=AID559320_SEM_cZGgGOIg) is végrehajtani ezt a mintát.
 2. Egy [Azure adatelemzési virtuális gép (DSVM) a Windows Server 2016](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-ads.windows-data-science-vm), (Virtuálisgép-méret: [DS3_V2](https://docs.microsoft.com/azure/virtual-machines/windows/sizes), 4 virtuális processzorok és 14 Gb RAM). Bár az Azure-DSVM tesztelve, akkor valószínű, bármilyen Windows 10-es gépen.
 3. Tekintse át a dokumentáció az Azure Machine Learning és a kapcsolódó szolgáltatásokat (lásd lent kapcsolatokhoz).
-4. Győződjön meg arról, hogy megfelelően telepítette az Azure Machine Learning által a [rövid telepítési útmutatójában](../service/quickstart-installation.md).
+4. Győződjön meg arról, hogy megfelelően telepítette az Azure Machine Learning által a [rövid telepítési útmutatójában](quickstart-installation.md).
 
 Az adatkészlet ehhez a mintához van a UCI ML adattárból [[-hivatkozás]](https://archive.ics.uci.edu/ml/datasets/adult). A 1994 USA népszámlálási adatbázis származik, és körülbelül 50 000 egyének népszámlálási és a bevételi adatait tartalmazza. Numerikus kellene strukturált adathalmaz és a kategorikus funkciók és a egy kategorikus cél álló jövedelem két kategóriába ('> 50 K "vagy" < = 50 K "). 
 
@@ -65,7 +70,7 @@ Ha szeretné menteni a verzió és a projektet, és annak tartalmát, szüksége
 ### <a name="informational-about-azure-machine-learning"></a>Tájékoztató: Az Azure Machine Learning szolgáltatásról
 * [Gyakori kérdések – első lépések](frequently-asked-questions.md)
 * [Áttekintés](../service/overview-what-is-azure-ml.md)
-* [Telepítés](../service/quickstart-installation.md)
+* [Telepítés](quickstart-installation.md)
 * [Végrehajtás](experimentation-service-configuration.md)
 * [TDSP használata](https://aka.ms/how-to-use-tdsp-in-aml)
 * [Fájlok olvasása és írása](how-to-read-write-files.md)

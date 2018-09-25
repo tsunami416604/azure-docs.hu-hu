@@ -4,19 +4,19 @@ description: Azure Event Grid használatával előfizetni a Media Services felad
 services: media-services
 documentationcenter: ''
 author: Juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 03/19/2018
+ms.date: 09/20/2018
 ms.author: juliako
-ms.openlocfilehash: e9df0cd24ef890765b78c25a073d671889be10a7
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: e7268a066acf41c454de0c66aa21603199d85a60
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38724063"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47034841"
 ---
 # <a name="route-azure-media-services-events-to-a-custom-web-endpoint-using-cli"></a>Az Azure Media Services-események átirányítása egyéni webes végpontra parancssori felület használatával
 
@@ -26,17 +26,14 @@ Az Azure Event Grid egy felhőalapú eseménykezelési szolgáltatás. Ebben a c
 
 A cikkben leírt lépések elvégzése után látni fogja, hogy az eseményadatokat egy végpontnak küldte el a rendszer.
 
-## <a name="log-in-to-azure"></a>Jelentkezzen be az Azure-ba
+## <a name="prerequisites"></a>Előfeltételek
 
-Jelentkezzen be az [Azure Portalra](http://portal.azure.com), és indítsa el a **CloudShell** szolgáltatást a parancssori felületi parancsok végrehajtásához, ahogy az az alábbi lépésekben látható.
+- Aktív Azure-előfizetéssel rendelkezik.
+- [A Media Services-fiók létrehozása](create-account-cli-how-to.md).
 
-[!INCLUDE [cloud-shell-powershell.md](../../../includes/cloud-shell-powershell.md)]
+    Ellenőrizze, hogy ne felejtse el az értékeket, amelyeket meg az erőforráscsoport-nevet és a Media Services-fiók neve.
 
-Ha a parancssori felület helyi telepítését és használatát választja, akkor ehhez a cikkhez az Azure CLI 2.0-s vagy újabb verziójára lesz szükség. A rendelkezésére álló verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni, tekintse meg kell [az Azure CLI telepítése](/cli/azure/install-azure-cli). 
-
-[!INCLUDE [media-services-cli-create-v3-account-include](../../../includes/media-services-cli-create-v3-account-include.md)]
-
-Ellenőrizze, hogy ne felejtse el az értékeket, amelyeket Ön a Media Services-fiók neve, a tároló neve és a erőforrás neve.
+- Telepítse a [az Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest). Ez a cikk az Azure CLI 2.0-s vagy újabb verziója szükséges. A rendelkezésére álló verzió azonosításához futtassa a következőt: `az --version`. Is használhatja a [Azure Cloud Shell](https://shell.azure.com/bash).
 
 ## <a name="enable-event-grid-resource-provider"></a>Event Grid erőforrás-szolgáltató engedélyezése
 
@@ -132,7 +129,7 @@ Nyomja meg **mentés és Futtatás** az ablak tetején.
 
 Event Grid megállapítani, hogy mely eseményeket kívánja nyomon követni egy cikk fizet. Az alábbi példa feliratkozik a Media Services-fiók létrehozása, és az Azure-függvény webhook hozott létre az eseményértesítés végpontjaként adja át az URL-címet. 
 
-Cserélje le `<event_subscription_name>` az esemény-feliratkozás egyedi nevére. A `<resource_group_name>` és `<ams_account_name>` elemnél a korábban létrehozott értékeket adja meg.  Az a `<endpoint_URL>` illessze be a végpont URL-CÍMÉT. Távolítsa el *& clientID = default* az URL-címből. Ha megadja a végpontot a feliratkozáskor, az Event Grid az adott végpontra irányítja az eseményeket. 
+Cserélje le `<event_subscription_name>` az esemény-feliratkozás egyedi nevére. A `<resource_group_name>` és `<ams_account_name>`, használja a Media Services-fiók létrehozásakor használt értékeket. Az a `<endpoint_URL>` illessze be a végpont URL-CÍMÉT. Távolítsa el *& clientID = default* az URL-címből. Ha megadja a végpontot a feliratkozáskor, az Event Grid az adott végpontra irányítja az eseményeket. 
 
 ```cli
 amsResourceId=$(az ams account show --name <ams_account_name> --resource-group <resource_group_name> --query id --output tsv)
@@ -145,7 +142,9 @@ az eventgrid event-subscription create \
 
 A Media Services fiók erőforrás-azonosító értéke ehhez hasonlóan néz ki:
 
-/Subscriptions/81212121-2f4f-4b5d-a3dc-ba0015515f7b/resourceGroups/amsResourceGroup/Providers/Microsoft.Media/mediaservices/amstestaccount
+```
+/subscriptions/81212121-2f4f-4b5d-a3dc-ba0015515f7b/resourceGroups/amsResourceGroup/providers/Microsoft.Media/mediaservices/amstestaccount
+```
 
 ## <a name="test-the-events"></a>Az események tesztelése
 
@@ -153,7 +152,7 @@ Egy kódolási feladat futtatásához. Például leírtak szerint a [videofájlo
 
 Ön kiváltotta az eseményt, az Event Grid pedig elküldte az üzenetet a feliratkozáskor konfigurált végpontnak. Keresse meg a korábban létrehozott webhook. Kattintson a **figyelő** és **frissítése**. Láthatja, hogy a feladat állapota események: "Sorba állított", "Ütemezett", "Feldolgozási", "Kész", "Error", "Megszakítva", "Megszakítás".  További információkért lásd: [Media Services Eseménysémák](media-services-event-schemas.md).
 
-Példa:
+Az alábbi példa bemutatja a séma JobStateChange esemény:
 
 ```json
 [{
@@ -172,16 +171,6 @@ Példa:
 ```
 
 ![Vizsgálati esemény](./media/job-state-events-cli-how-to/test_events.png)
-
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
-
-Ha azt tervezi, hogy folytatja a tárfiók és az esemény előfizetésének használatát, akkor ne törölje a cikkben létrehozott erőforrásokat. Ha nem folytatja a munkát, akkor a következő paranccsal törölheti a cikkben létrehozott erőforrásokat.
-
-A `<resource_group_name>` elemet cserélje le a fent létrehozott erőforráscsoportra.
-
-```azurecli-interactive
-az group delete --name <resource_group_name>
-```
 
 ## <a name="next-steps"></a>További lépések
 

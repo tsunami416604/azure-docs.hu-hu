@@ -9,12 +9,12 @@ ms.custom: DBs & servers
 ms.topic: conceptual
 ms.date: 09/14/2018
 ms.author: carlrab
-ms.openlocfilehash: ca6d36a4f06865b630e869623752bc5d488b6251
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: 46789f5f3449baead12133522997936c8a992d3b
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45732940"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46964769"
 ---
 # <a name="azure-sql-database-vcore-based-purchasing-model-limits-for-a-single-database"></a>Az Azure SQL Database Virtuálismag-alapú vásárlási modell korlátok egy önálló adatbázis
 
@@ -84,7 +84,7 @@ Az önálló adatbázisok számára az alábbi táblázatok egy önálló adatb�
 |H/W generálása|4|4|4|4|4|4|
 |Virtuális magok|1|2|4|8|16|24|
 |Memória (GB)|7|14|28|56|112|168|
-|Oszlopcentrikus támogatása|Igen|Igen|Igen|Igen|Igen|Igen|
+|Oszlopcentrikus támogatása|–|N/A|N/A|N/A|N/A|–|
 |Memóriabeli OLTP storage (GB)|1|2|4|8|20|36|
 |Tárolási típus|Helyi SSD|Helyi SSD|Helyi SSD|Helyi SSD|Helyi SSD|Helyi SSD|
 |Maximális adatméret (GB)|1024|1024|1024|1024|1024|1024|
@@ -122,8 +122,52 @@ Az önálló adatbázisok számára az alábbi táblázatok egy önálló adatb�
 |Biztonsági mentési tárterület|1 X-adatbázis mérete|1 X-adatbázis mérete|1 X-adatbázis mérete|1 X-adatbázis mérete|1 X-adatbázis mérete|1 X-adatbázis mérete|1 X-adatbázis mérete|1 X-adatbázis mérete|
 |||
 
+### <a name="hyperscale-service-tier-preview"></a>Nagy kapacitású szolgáltatási szint (előzetes verzió)
+
+#### <a name="generation-4-compute-platform"></a>4. generációs számítási platform
+|Teljesítményszint|HS_Gen4_1|HS_Gen4_2|HS_Gen4_4|HS_Gen4_8|HS_Gen4_16|HS_Gen4_24|
+|:--- | --: |--: |--: |--: |--: |--: |--: |
+|H/W generálása|4|4|4|4|4|4|
+|Virtuális magok|1|2|4|8|16|24|
+|Memória (GB)|7|14|28|56|112|168|
+|Oszlopcentrikus támogatása|Igen|Igen|Igen|Igen|Igen|Igen|
+|Memóriabeli OLTP storage (GB)|–|N/A|N/A|N/A|N/A|–|
+|Tárolási típus|Helyi SSD|Helyi SSD|Helyi SSD|Helyi SSD|Helyi SSD|Helyi SSD|
+|Maximális adatméret (TB)|100 |100 |100 |100 |100 |100 |
+|Max. napló mérete (TB)|1 |1 |1 |1 |1 |1 |
+|A TempDB mérete (GB)|32|64|128|256|384|384|
+|Cél IOPS (64 KB)|Meghatározott|Meghatározott|Meghatározott|Meghatározott|Meghatározott|Meghatározott|
+|IO-késés (becsült)|Meghatározott|Meghatározott|Meghatározott|Meghatározott|Meghatározott|Meghatározott|
+|Egyidejű feldolgozók (kérelmek) maximális|200|400|800|1600|3200|4800|
+|Maximális engedélyezett munkamenetek|30000|30000|30000|30000|30000|30000|
+|Replikák száma|2|2|2|2|2|2|
+|Több-AZ|–|N/A|N/A|N/A|N/A|–|
+|Felskálázás olvasása|Igen|Igen|Igen|Igen|Igen|Igen|
+|Biztonsági mentési tárterület|7|7|7|7|7|7|
+|||
+### <a name="generation-5-compute-platform"></a>5. generáció számítási platform
+|Teljesítményszint|HS_Gen5_2|HS_Gen5_4|HS_Gen5_8|HS_Gen5_16|HS_Gen5_24|HS_Gen5_32|HS_Gen5_40|HS_Gen5_80|
+|:--- | --: |--: |--: |--: |---: | --: |--: |--: |--: |--: |--: |--: |--: |
+|H/W generálása|5|5|5|5|5|5|5|5|
+|Virtuális magok|2|4|8|16|24|32|40|80|
+|Memória (GB)|11|22|44|88|132|176|220|440|
+|Oszlopcentrikus támogatása|Igen|Igen|Igen|Igen|Igen|Igen|Igen|Igen|
+|Memóriabeli OLTP storage (GB)|–|N/A|N/A|N/A|N/A|N/A|N/A|–|
+|Tárolási típus|Helyi SSD|Helyi SSD|Helyi SSD|Helyi SSD|Helyi SSD|Helyi SSD|Helyi SSD|Helyi SSD|
+|Maximális adatméret (TB)|100 |100 |100 |100 |100 |100 |100 |100 |
+|Max. napló mérete (TB)|1 |1 |1 |1 |1 |1 |1 |1 |
+|A TempDB mérete (GB)|64|128|256|384|384|384|384|384|
+|Cél IOPS (64 KB)|Meghatározott|Meghatározott|Meghatározott|Meghatározott|Meghatározott|Meghatározott|Meghatározott|Meghatározott|
+|IO-késés (becsült)|Meghatározott|Meghatározott|Meghatározott|Meghatározott|Meghatározott|Meghatározott|Meghatározott|Meghatározott|
+|Egyidejű feldolgozók (kérelmek) maximális|200|400|800|1600|2400|3200|4000|8000|
+|Maximális engedélyezett munkamenetek|30000|30000|30000|30000|30000|30000|30000|30000|
+|Replikák száma|2|2|2|2|2|2|2|2|
+|Több-AZ|–|N/A|N/A|N/A|N/A|N/A|N/A|–|
+|Felskálázás olvasása|Igen|Igen|Igen|Igen|Igen|Igen|Igen|Igen|
+|Biztonsági mentési tárterület (előzetes verzió korlát)|7|7|7|7|7|7|7|7|
+|||
+
 ## <a name="next-steps"></a>További lépések
 
 - Lásd: [SQL Database: gyakori kérdések](sql-database-faq.md) kapcsolatos gyakori kérdésekre adott válaszokat.
-- Lásd: [áttekintése az Azure SQL Database erőforrás-korlátozások](sql-database-resource-limits.md) kapcsolatos korlátozásokat a kiszolgálók és az előfizetés szintjén.
 - Azure – általános korlátozások kapcsolatos információkért lásd: [Azure-előfizetés és a szolgáltatások korlátozásai, kvótái és megkötései](../azure-subscription-service-limits.md).

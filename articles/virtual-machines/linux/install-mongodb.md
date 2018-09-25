@@ -1,6 +1,6 @@
 ---
 title: A MongoDB telepítése egy Linux rendszerű virtuális gépen az Azure CLI-vel |} A Microsoft Docs
-description: Ismerje meg, hogyan telepítse és konfigurálja a MongoDB egy Linux rendszerű virtuális gép iusing az Azure CLI 2.0 használatával
+description: Ismerje meg, hogyan telepítse és konfigurálja a MongoDB egy Linux rendszerű virtuális gép iusing az Azure CLI
 services: virtual-machines-linux
 documentationcenter: ''
 author: cynthn
@@ -14,15 +14,16 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 12/15/2017
 ms.author: cynthn
-ms.openlocfilehash: d066b412fb722318824a408861fe7d9595c71537
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.openlocfilehash: a6228290eb5f35d687c26042c87551471462ab85
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37928233"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46987832"
 ---
 # <a name="how-to-install-and-configure-mongodb-on-a-linux-vm"></a>Telepítése és konfigurálása a MongoDB egy Linux rendszerű virtuális gépen
-[MongoDB](http://www.mongodb.org) egy népszerű nyílt forráskódú, nagy teljesítményű NoSQL-adatbázis. Ez a cikk bemutatja, hogyan telepítése és konfigurálása a MongoDB egy Linux rendszerű virtuális gépen az Azure CLI 2.0 használatával. Példák hogyan jelenik meg, amelyek részletesen a:
+
+[MongoDB](http://www.mongodb.org) egy népszerű nyílt forráskódú, nagy teljesítményű NoSQL-adatbázis. Ez a cikk bemutatja, hogyan telepítése és konfigurálása a MongoDB egy Linux rendszerű virtuális gépen az Azure CLI használatával. Példák hogyan jelenik meg, amelyek részletesen a:
 
 * [Kézi telepítését és konfigurálását egy alapszintű MongoDB-példányban](#manually-install-and-configure-mongodb-on-a-vm)
 * [Hozzon létre egy alapszintű MongoDB-példányban, Resource Manager-sablon használatával](#create-basic-mongodb-instance-on-centos-using-a-template)
@@ -30,7 +31,7 @@ ms.locfileid: "37928233"
 
 
 ## <a name="manually-install-and-configure-mongodb-on-a-vm"></a>Kézi telepítését és konfigurálását a MongoDB egy virtuális gépen
-MongoDB [adja meg a telepítési utasításokat](https://docs.mongodb.com/manual/administration/install-on-linux/) többek között a Red Hat Linux-disztribúciók esetében / CentOS, SUSE, Ubuntu és a Debian. A következő példában létrehozunk egy *CentOS* virtuális Gépet. A környezet létrehozására, a legújabb kell [Azure CLI 2.0](/cli/azure/install-az-cli2) telepítve, és bejelentkezett egy Azure-fiókba az [az bejelentkezési](/cli/azure/reference-index#az_login).
+MongoDB [adja meg a telepítési utasításokat](https://docs.mongodb.com/manual/administration/install-on-linux/) többek között a Red Hat Linux-disztribúciók esetében / CentOS, SUSE, Ubuntu és a Debian. A következő példában létrehozunk egy *CentOS* virtuális Gépet. A környezet létrehozására, a legújabb kell [Azure CLI-vel](/cli/azure/install-az-cli2) telepítve, és bejelentkezett egy Azure-fiókba az [az bejelentkezési](/cli/azure/reference-index#az_login).
 
 Hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group#az_group_create) paranccsal. A következő példában létrehozunk egy *myResourceGroup* nevű erőforráscsoportot az *EastUS* helyen:
 
@@ -120,7 +121,7 @@ Egy alapszintű MongoDB-példányban githubból az alábbi Azure gyors üzembe h
 
 * [Alapszintű, a CentOS MongoDB-példányban](https://github.com/Azure/azure-quickstart-templates/tree/master/mongodb-on-centos) - https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/mongodb-on-centos/azuredeploy.json
 
-A környezet létrehozására, a legújabb kell [Azure CLI 2.0](/cli/azure/install-az-cli2) telepítve, és bejelentkezett egy Azure-fiókba az [az bejelentkezési](/cli/azure/reference-index#az_login). Először hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group#az_group_create) paranccsal. A következő példában létrehozunk egy *myResourceGroup* nevű erőforráscsoportot az *EastUS* helyen:
+A környezet létrehozására, a legújabb kell [Azure CLI-vel](/cli/azure/install-az-cli2) telepítve, és bejelentkezett egy Azure-fiókba az [az bejelentkezési](/cli/azure/reference-index#az_login). Először hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group#az_group_create) paranccsal. A következő példában létrehozunk egy *myResourceGroup* nevű erőforráscsoportot az *EastUS* helyen:
 
 ```azurecli
 az group create --name myResourceGroup --location eastus
@@ -171,7 +172,7 @@ Létrehozhat egy összetett MongoDB horizontálisan skálázott fürtöt a köve
 > [!WARNING]
 > Ez összetett horizontálisan skálázott MongoDB-fürt üzembe helyezésekor kell lennie, több mint 20 mag, ami általában az előfizetéshez tartozó régiónkénti alapértelmezett-magok száma. Nyisson meg egy Azure-támogatási kérést, hogy növelje a magok száma.
 
-A környezet létrehozására, a legújabb kell [Azure CLI 2.0](/cli/azure/install-az-cli2) telepítve, és bejelentkezett egy Azure-fiókba az [az bejelentkezési](/cli/azure/reference-index#az_login). Először hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group#az_group_create) paranccsal. A következő példában létrehozunk egy *myResourceGroup* nevű erőforráscsoportot az *EastUS* helyen:
+A környezet létrehozására, a legújabb kell [Azure CLI-vel](/cli/azure/install-az-cli2) telepítve, és bejelentkezett egy Azure-fiókba az [az bejelentkezési](/cli/azure/reference-index#az_login). Először hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group#az_group_create) paranccsal. A következő példában létrehozunk egy *myResourceGroup* nevű erőforráscsoportot az *EastUS* helyen:
 
 ```azurecli
 az group create --name myResourceGroup --location eastus

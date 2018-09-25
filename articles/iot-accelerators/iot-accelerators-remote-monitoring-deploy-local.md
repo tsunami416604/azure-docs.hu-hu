@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 09/17/2018
 ms.topic: conceptual
-ms.openlocfilehash: 966af342937a36adc5932a7a4c92ee127723b4a0
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 5853730a5e3408e33deb483f6ce6652c1c22efab
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46295733"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47034977"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-locally"></a>A távoli figyelési megoldásgyorsító helyileg üzembe helyezése
 
@@ -39,24 +39,28 @@ A helyi telepítés befejezéséhez, szüksége van a helyi fejlesztői gépen t
 
 A távoli figyelési GitHub forráskódraktárban kell letölteni, konfigurálásához és futtatásához, amelyek tartalmazzák a mikroszolgáltatások Docker-rendszerképek Docker konfigurációs fájljait tartalmazza. Klónozza, valamint a tárház helyi verzióját használja a parancssori környezetet keresse meg a megfelelő mappát a helyi gépen, és a következő parancsok egyikét futtatja:
 
-A mikroszolgáltatások Java-implementációk telepítéséhez futtassa:
+Töltse le a legújabb verzióját a Java-mikroszolgáltatások megvalósításokhoz, futtassa:
 
 ```cmd/sh
 git clone --recurse-submodules https://github.com/Azure/azure-iot-pcs-remote-monitoring-java.git
+cd azure-iot-pcs-remote-monitoring-java
+git submodule foreach git pull origin master
 ```
 
-Telepítse a .net-megvalósítások, mikroszolgáltatások, futtassa:
+Töltse le a legújabb verzióját a .NET mikroszolgáltatás-megvalósítások, futtassa:
 
 ```cmd\sh
 git clone --recurse-submodules https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet.git
+cd azure-iot-pcs-remote-monitoring-dotnet
+git submodule foreach git pull origin master
 ```
 
 > [!NOTE]
-> Ezek a parancsok letöltheti a forráskódot, az a mikroszolgáltatásokat. Már nincs szüksége a forráskódra futtassa a mikroszolgáltatások a Dockerben, bár a forráskód hasznos, ha később kívánja módosítani a megoldásgyorsító és módosítások helyi tesztelése.
+> Ezek a parancsok letöltheti a forráskódot, a mikroszolgáltatások helyi futtatásához használja a parancsfájlok mellett a mikroszolgáltatások. Már nincs szüksége a forráskódra futtassa a mikroszolgáltatások a Dockerben, bár a forráskód hasznos, ha később kívánja módosítani a megoldásgyorsító és módosítások helyi tesztelése.
 
 ## <a name="deploy-the-azure-services"></a>Az Azure-szolgáltatások üzembe helyezése
 
-Bár ez a cikk bemutatja, hogyan helyileg történő futtatása a mikroszolgáltatás-alapú, Azure-szolgáltatások a felhőben futó függenek. Telepítheti az Azure-szolgáltatások [manuálisan az Azure Portalon keresztül](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Manual-steps-to-create-azure-resources-for-local-setup), vagy parancsfájl. A következő parancsfájl példák feltételezik, hogy egy Windows-gépen használja a .NET-adattárban. Ha egy másik környezetben dolgozik, állítsa be az elérési utak, fájlkiterjesztések, és elérési út elválasztók megfelelően. A megadott szkriptek használata:
+Bár ez a cikk bemutatja, hogyan helyileg történő futtatása a mikroszolgáltatás-alapú, Azure-szolgáltatások a felhőben futó függenek. Telepítheti az Azure-szolgáltatások [manuálisan az Azure Portalon keresztül](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Manual-steps-to-create-azure-resources-for-local-setup), vagy parancsfájl. A következő parancsfájl példák feltételezik, hogy egy Windows-gépen használja a .NET-adattárban. Ha egy másik környezetben dolgozik, állítsa be az elérési utak, fájlkiterjesztések, és elérési út elválasztók megfelelően. A megadott parancsfájlok használata:
 
 ### <a name="create-new-azure-resources"></a>Új Azure-erőforrások létrehozása
 
@@ -64,33 +68,18 @@ Ha még nem hozott a szükséges Azure-erőforrásokat, kövesse az alábbi lép
 
 1. A parancssori környezetben, keresse meg a **azure-iot-pcs-remote-monitoring-dotnet\services\scripts\local\launch** mappájához klónozott másolatának a tárházban.
 
-2. Futtassa a **start.cmd** szkriptet, és kövesse az utasításokat. A parancsfájl kérni fogja, hogy a következő információkat:
+2. Futtassa a **start.cmd** szkriptet, és kövesse az utasításokat. A parancsfájl kérni fogja, hogy jelentkezzen be az Azure-fiókjával, és indítsa újra a parancsfájlt. A parancsprogram kéri a következő információkat:
     * A megoldás nevét.
     * A használandó előfizetés.
     * Használata az Azure-adatközpont helyét.
 
     A parancsfájl hoz létre, a megoldás nevű erőforráscsoportot az Azure-ban. Ez az erőforráscsoport tartalmazza az Azure-erőforrások a megoldásgyorsító használja.
 
-3. A parancssori környezetben, keresse meg a **azure-iot-pcs-remote-monitoring-dotnet\services\scripts\local\launch\os\win** mappájához klónozott másolatának a tárházban.
-
-4. Futtassa a **set-boríték-uri.cmd** parancsfájlt.
-
-5. A git-almodulok ahhoz, hogy a legújabb verzióra frissíteni: `cd <repo-name>` , majd futtassa a következő parancsot `git submodule foreach git pull origin master`
-
-> [!NOTE]
-> Azure-iot-pcs-remote-monitoring-dotnet tárház rendelkeznie klónozta, a parancsfájlok mappájába hogy található-e a szolgáltatások submodule (mappa). Ez a szkript lehet szükség rendszergazdai jogosultságokkal, vagy a sudo jogosultsági, szerint próbál meg telepíteni a [számítógépek-cli](https://github.com/Azure/pcs-cli).
+3. Miután a parancsfájl futása befejeződött, a környezeti változók listáját jeleníti meg. Kövesse az utasításokat menteni ezeket a változókat, hogy a **azure-iot-pcs-remote-monitoring-dotnet\services\scripts\local\.env** fájlt.
 
 ### <a name="use-existing-azure-resources"></a>A meglévő Azure-erőforrások
 
-Ha már létrehozta a szükséges Azure-erőforrásokat, és csak azokat kell, végezze el csak **egy** a következők közül:
-
-* Állítsa be a környezeti változókat globálisan a gépen.
-* **A VS Code:** állítsa be a környezeti változókat az indítási konfiguráció szerkesztésével a **launch.json** fájlt.
-* **A Visual Studio:** beállíthatja a környezeti változókat, mikroszolgáltatások webszolgáltatás projekthez való hozzáadásával **tulajdonságai > Debug > környezeti változók**.
-
-Végül frissítse a git-almodulok ahhoz, hogy a legújabb verzió: `cd <repo-name>` , majd futtassa a következő parancs `git submodule foreach git pull origin master`.
-
-Noha nem ajánlott, de a környezeti változók is megadható az egyes mikroszolgáltatások a webszolgáltatás mappában található appsettings.ini fájlban.
+Ha már létrehozta a szükséges Azure-erőforrások szerkesztése a környezeti változó definíciókat a **azure-iot-pcs-remote-monitoring-dotnet\services\scripts\local\.env** fájlt a kívánt értékekkel. A **.env** fájl tartalmaz részletes információkat, hogy hol található a szükséges értékeket.
 
 ## <a name="run-the-microservices-in-docker"></a>Futtassa a mikroszolgáltatások a Dockerben
 

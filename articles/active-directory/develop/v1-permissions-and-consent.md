@@ -12,27 +12,32 @@ ms.component: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 08/27/2018
+ms.topic: conceptual
+ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: jesakowi, justhu
 ms.custom: aaddev
-ms.openlocfilehash: 735c5a3645f5e2e0f31bac4d4b2f61d73dfe069e
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 93bc3db2b7cf3002efc93f1e8006c5362eddab9f
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43128779"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46959971"
 ---
-# <a name="permissions-in-azure-active-directory"></a>Engedélyek az Azure Active Directoryban
+# <a name="permissions-and-consent-in-the-azure-active-directory-v10-endpoint"></a>Engedélyek és jóváhagyás az az Azure Active Directory 1.0-s verziójú végpontján
 
-Az Azure Active Directory (Azure AD) jelentősen igénybe veszi az OAuth és az OpenID Connect (OIDC) folyamatok engedélyeit is. Amikor az alkalmazás hozzáférési jogkivonatot szerez az Azure AD-tól, a hozzáférési jogkivonat olyan jogcímeket foglal magába, amelyek leírják az alkalmazás által adott erőforrással kapcsolatban használt engedélyeket. A hatókörként is ismert engedélyek megkönnyítik az engedélyezést az erőforrás számára, mert csak ellenőriznie kell, hogy a jogkivonat tartalmazza-e a hívott API-hoz megfelelő engedélyeket. 
+[!INCLUDE [active-directory-develop-applies-v1](../../../includes/active-directory-develop-applies-v1.md)]
+
+Az Azure Active Directory (Azure AD) jelentősen igénybe veszi az OAuth és az OpenID Connect (OIDC) folyamatok engedélyeit is. Amikor az alkalmazás hozzáférési jogkivonatot szerez az Azure AD-tól, a hozzáférési jogkivonat olyan jogcímeket foglal magába, amelyek leírják az alkalmazás által adott erőforrással kapcsolatban használt engedélyeket.
+
+*Engedélyek*, más néven *hatókörök*, győződjön meg arról, engedélyezési egyszerűen az erőforrást, mert az erőforrás csak be kell jelölnie, hogy a jogkivonat tartalmaz-e bármilyen API-t az alkalmazás hívja a megfelelő engedéllyel.
 
 ## <a name="types-of-permissions"></a>Engedélytípusok
 
-Az Azure AD kétféle engedélyt határoz meg: 
-* **Delegált engedélyek** – Olyan alkalmazások használják, amelyeken bejelentkezett felhasználó szerepel. Ezekben az alkalmazásokban a felhasználó vagy egy rendszergazda elfogadja az alkalmazás által kért engedélyeket, és az alkalmazáshoz engedély van delegálva, amely szerint az alkalmazás a bejelentkezett felhasználóként viselkedik, amikor API-t hív. Az API-tól függően előfordulhat, hogy a felhasználó nem tudja közvetlenül elfogadni az API-t, és ehelyett [egy rendszergazdának kell „rendszergazdai hozzájárulást” adnia.](/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview#understanding-user-and-admin-consent)
-* **Alkalmazásengedélyek** – Olyan alkalmazások használják, amelyek bejelentkezett felhasználó nélkül futnak, például háttérszolgáltatásokként vagy démonokként futó alkalmazások. Az alkalmazásengedélyeket csak [rendszergazda fogadhatja el](/azure/active-directory/develop/active-directory-v2-scopes#requesting-consent-for-an-entire-tenant), mert általában széles körűek, és a felhasználói határok között engedélyezik az adatok hozzáférését, vagy olyan adatok hozzáférését engedélyezik, amelyeket egyébként a rendszergazdák korlátoznának. 
+Az Azure AD kétféle engedélyt határoz meg:
+
+* **Delegált engedélyek** – Olyan alkalmazások használják, amelyeken bejelentkezett felhasználó szerepel. Ezekben az alkalmazásokban a felhasználó vagy egy rendszergazda elfogadja az alkalmazás által kért engedélyeket, és az alkalmazáshoz engedély van delegálva, amely szerint az alkalmazás a bejelentkezett felhasználóként viselkedik, amikor API-t hív. Attól függően, az API-t, a felhasználó nem lehet beleegyezik abba, hogy az API-t közvetlenül, és szeretné inkább [csak rendszergazdai adja meg a "rendszergazdai jóváhagyás"](/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview#understanding-user-and-admin-consent).
+* **Alkalmazásengedélyek** – Olyan alkalmazások használják, amelyek bejelentkezett felhasználó nélkül futnak, például háttérszolgáltatásokként vagy démonokként futó alkalmazások. Az alkalmazásengedélyeket csak [rendszergazda fogadhatja el](/azure/active-directory/develop/active-directory-v2-scopes#requesting-consent-for-an-entire-tenant), mert általában széles körűek, és a felhasználói határok között engedélyezik az adatok hozzáférését, vagy olyan adatok hozzáférését engedélyezik, amelyeket egyébként a rendszergazdák korlátoznának.
 
 A hatályos engedélyek olyan engedélyek, amelyekkel az alkalmazás rendelkezik, amikor kéréseket küld egy API-nak. 
 

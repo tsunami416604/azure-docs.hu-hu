@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 08/09/2018
-ms.openlocfilehash: 0b22e51814f79b00257433a7e601349ad25cd2b7
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: d725bbe31de0f93d1b741ffd008bf39086904b61
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43104300"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46997505"
 ---
 # <a name="information-about-using-hdinsight-on-linux"></a>Információk a HDInsight Linuxon való használatáról
 
@@ -29,7 +29,7 @@ A jelen dokumentumban leírt lépések számos használja az alábbi segédprogr
 
 * [cURL](https://curl.haxx.se/) – webes szolgáltatások folytatott kommunikációhoz használatos
 * [jq](https://stedolan.github.io/jq/) – használt JSON-dokumentumok elemzése
-* [Az Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-az-cli2) – az távolról kezelheti az Azure-szolgáltatások
+* [Az Azure CLI](https://docs.microsoft.com/cli/azure/install-az-cli2) – az távolról kezelheti az Azure-szolgáltatások
 
 ## <a name="users"></a>Felhasználók
 
@@ -55,7 +55,7 @@ Ez a parancs visszaadja a szolgáltatás leíró JSON-dokumentumok, és ezután 
 
 ## <a name="remote-access-to-services"></a>Távoli szolgáltatásokhoz való hozzáférés
 
-* **Az Ambari (web)** -https://&lt;clustername >. azurehdinsight.NET formátumban van
+* **Az Ambari (web)** - https://&lt;clustername >. azurehdinsight.NET formátumban van
 
     A fürt rendszergazdai felhasználónév és jelszó használatával hitelesíteni, és az Ambari, majd jelentkezzen be.
 
@@ -66,14 +66,14 @@ Ez a parancs visszaadja a szolgáltatás leíró JSON-dokumentumok, és ezután 
     >
     > Az Ambari webes felület összes funkciójának használatához egy SSH-alagutat a proxy webes forgalom, a fürt fő csomópontjának. Lásd: [használata SSH-bújtatással való eléréséről az Ambari web UI, ResourceManager, JobHistory, NameNode, Oozie és egyéb webes](hdinsight-linux-ambari-ssh-tunnel.md)
 
-* **Az Ambari (REST)** -https://&lt;clustername >.azurehdinsight.net/ambari
+* **Az Ambari (REST)** - https://&lt;clustername >.azurehdinsight.net/ambari
 
     > [!NOTE]
     > A fürt rendszergazdai felhasználónév és jelszó használatával hitelesíteni.
     >
     > Hitelesítés egyszerű szövegként – mindig HTTPS PROTOKOLLT használnak annak biztosítására, hogy a kapcsolat nem biztonságos.
 
-* **WebHCat (templeton eszközön keresztül végzett)** -https://&lt;clustername >.azurehdinsight.net/templeton
+* **WebHCat (templeton eszközön keresztül végzett)** - https://&lt;clustername >.azurehdinsight.net/templeton
 
     > [!NOTE]
     > A fürt rendszergazdai felhasználónév és jelszó használatával hitelesíteni.
@@ -176,7 +176,7 @@ A HDInsight-fürtön kívülről származó adatok eléréséhez a különböző
 
 Ha használ __Azure Storage__, tekintse meg a következő hivatkozások módon, hogy érheti el az adatokat:
 
-* [Az Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-az-cli2): parancssori felület parancsai használata az Azure-ral. Telepítés után használja a `az storage` a Súgó a tároló, a parancs vagy `az storage blob` blob-specifikus parancsokhoz.
+* [Az Azure CLI](https://docs.microsoft.com/cli/azure/install-az-cli2): parancssori felület parancsai használata az Azure-ral. Telepítés után használja a `az storage` a Súgó a tároló, a parancs vagy `az storage blob` blob-specifikus parancsokhoz.
 * [blobxfer.PY](https://github.com/Azure/azure-batch-samples/tree/master/Python/Storage): egy python-szkript az Azure Storage-blobokkal dolgozik.
 * Különböző SDK-k:
 
@@ -192,7 +192,7 @@ Ha használ __Azure Data Lake Store__, tekintse meg a következő hivatkozások 
 
 * [Webböngésző](../data-lake-store/data-lake-store-get-started-portal.md)
 * [PowerShell](../data-lake-store/data-lake-store-get-started-powershell.md)
-* [Azure CLI 2.0](../data-lake-store/data-lake-store-get-started-cli-2.0.md)
+* [Azure CLI](../data-lake-store/data-lake-store-get-started-cli-2.0.md)
 * [WebHDFS REST API](../data-lake-store/data-lake-store-get-started-rest-api.md)
 * [A Data Lake Tools for Visual Studio](https://www.microsoft.com/download/details.aspx?id=49504)
 * [.NET](../data-lake-store/data-lake-store-get-started-net-sdk.md)

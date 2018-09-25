@@ -11,14 +11,17 @@ ms.component: core
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/26/2017
-ms.openlocfilehash: 211f60b9c25b4bd20769f6a4840afaecf8373b9f
-ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
+ROBOTS: NOINDEX
+ms.openlocfilehash: 60abe46670353121ad308f8926a7ee178c76e74e
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43782345"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46951661"
 ---
 # <a name="create-dsvm-and-hdi-spark-cluster-as-compute-targets"></a>DSVM és HDI Spark-fürt a tárolók számítási létrehozása
+
+[!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)]
 
 Egyszerűen vertikális vagy horizontális felskálázáshoz a machine learning-kísérlet adjon hozzá további számítási célnak például az Ubuntu-alapú DSVM (adatelemző virtuális gép), és az Apache Spark for Azure HDInsight-fürt. Ez a cikk útmutatást nyújt az ezek létrehozásának lépésein keresztül számítási tárolók az Azure-ban. További információt az Azure ML számítási célnak, [áttekintése az Azure Machine Learning-Kísérletezési szolgáltatás](experimentation-service-configuration.md).
 

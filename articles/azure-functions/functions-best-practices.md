@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 10/16/2017
 ms.author: glenga
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 9fe8b2cc09c7a08ab6d897a0fe1f1204d1903eca
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: dbb21e63a25d6e357287f2f91181f2326850a898
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44090863"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46952851"
 ---
 # <a name="optimize-the-performance-and-reliability-of-azure-functions"></a>A teljesítmény-és az Azure Functions megbízhatóság
 
@@ -73,6 +73,10 @@ Használhatja az Azure Functions platformon összetevők nyújtott védelmi int�
 ## <a name="scalability-best-practices"></a>Méretezhetőség ajánlott eljárások
 
 Nincsenek hatással a módját a függvényalkalmazás példánya méretezése tényező. A részletek a dokumentációban szerepelnek [függvény méretezése](functions-scale.md).  Az alábbiakban néhány ajánlott eljárást annak biztosítása érdekében a függvényalkalmazás optimális méretezhetőségét.
+
+### <a name="share-and-manage-connections"></a>Megosztás és a kapcsolatok kezelése
+
+Újra felhasználhatja a külső erőforrásokhoz, amikor csak lehetséges.  Lásd: [kezelése az Azure Functions kapcsolatok](./manage-connections.md).
 
 ### <a name="dont-mix-test-and-production-code-in-the-same-function-app"></a>Ne keverje a tesztelési és éles kód ugyanaz a függvényalkalmazás
 

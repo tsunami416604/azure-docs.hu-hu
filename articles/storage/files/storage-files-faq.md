@@ -4,15 +4,15 @@ description: Azure Files szolgáltatással kapcsolatos gyakori kérdésekre adot
 services: storage
 author: RenaShahMSFT
 ms.service: storage
-ms.date: 07/19/2018
+ms.date: 09/11/2018
 ms.author: renash
 ms.component: files
-ms.openlocfilehash: 31f5b2792aa83d15a1478cf201ca674995816430
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: 43acff5c4d37c46245566fb2e1d74d3e14d527bb
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "42059181"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46949842"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>Az Azure Files kapcsolatos gyakori kérdések (GYIK)
 [Az Azure Files](storage-files-introduction.md) teljes körűen felügyelt fájlmegosztást kínáló, amely az iparági szabványnak megfelelő keresztül érhető el a felhőben [Server Message Block (SMB) protokoll](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx). Azure-fájlmegosztások párhuzamosan csatlakoztathatja felhőbeli vagy helyszíni üzemelő példányok esetében a Windows, Linux és macOS. A Windows Server-gépek Azure-fájlmegosztások közel, ahol az adatok felhasználásának gyors hozzáférés az Azure File Sync használatával képes gyorsítótárazni.
@@ -196,44 +196,97 @@ Ez a cikk az Azure Files szolgáltatást és funkciót, beleértve az Azure File
 **Áthelyezhető a társzinkronizálási szolgáltatás és/vagy a storage-fiók egy másik erőforráscsoportba vagy előfizetésbe?**  
    Igen, a társzinkronizálási szolgáltatás és/vagy a storage-fiókot is áthelyezhető másik erőforráscsoportba vagy előfizetésbe. Ha a tárfiókot, a hibrid File Sync szolgáltatásbeli hozzáférést a tárfiókhoz kell (lásd: [biztosítása érdekében az Azure File Sync hozzáfér a tárfiókhoz](https://docs.microsoft.com/en-us/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cportal#troubleshoot-rbac)).
 
+* <a id="afs-ntfs-acls"></a>
+**Azure File Sync megőrzése nem könyvtár szinten NTFS hozzáférés-vezérlési listák Azure Files szolgáltatásban tárolt adatok együtt?**
+
+    Az NTFS hozzáférés-vezérlési listák végzett a kiszolgálók az Azure File Sync metaadatokként megmaradnak a helyi fájlból. Az Azure Files nem támogatja a hitelesítés az Azure AD hitelesítő adatait az Azure File Sync szolgáltatás által felügyelt fájlmegosztások eléréséhez.
+    
 ## <a name="security-authentication-and-access-control"></a>Biztonság, hitelesítés és hozzáférés-vezérlés
 * <a id="ad-support"></a>
 **Az Active Directory-alapú hitelesítés és hozzáférés-vezérlés az Azure Files által támogatott?**  
-    Az Azure Files kezelése a hozzáférés-vezérlés két lehetőséget kínál:
+    
+    Igen, támogatja az Azure Files a azonosító-alapú hitelesítés és hozzáférés-vezérlés az Azure Active Directoryval (Azure AD) (előzetes verzió). Az Azure Files SMB-n keresztül az Azure AD authentication használ az Azure Active Directory Domain Services engedélyezése a tartományhoz csatlakoztatott virtuális gépek eléréséhez, megosztások, könyvtárak és fájlok használatával az Azure AD hitelesítő adatait. További részletekért lásd: [áttekintése az Azure Active Directory hitelesítési SMB-n keresztül az Azure Files (előzetes verzió)](storage-files-active-directory-overview.md). 
+
+    Az Azure Files kezelése a hozzáférés-vezérlés két további lehetőséget kínál:
 
     - Közös hozzáférésű jogosultságkódok (SAS) használatával, amely van konkrét engedélyük, és amely érvényes a megadott időtartam alatt jogkivonatokat hoz létre. Például egy jogkivonatot a csak olvasási hozzáférést egy adott fájlt, amely rendelkezik egy 10 perc elteltével is létrehozhat. Csak olvasási hozzáféréssel bárki, aki ismeri a jogkivonatot, amíg a jogkivonat érvényes rendelkezik, amely a fájl 10 percnek. Jelenleg a közös hozzáférési aláírási kulcsokat csak a REST API-val vagy a klienskódtárak támogatottak. Csatlakoztatnia kell az Azure-fájlmegosztás SMB-n keresztül a storage-fiók kulcsainak használatával.
 
     - Az Azure File Sync megőrzi, és minden tulajdonosi hozzáférés-vezérlési listák vagy DACL-EK, replikálja az (akár Active Directory-alapú vagy helyi) az összes kiszolgálói végpontot, amely a szinkronizált. A Windows Server Active Directoryval már hitelesíthetők, mert az Azure File Sync teljes körűen támogatja az Active Directory-alapú hitelesítésre amíg hatékony stop-gap lehetőség, és ACL-támogatás érkezik.
 
-    Jelenleg az Azure Files nem támogatja az Active Directory közvetlenül.
+* <a id="ad-support-regions"></a>
+**Érhető el az előzetes verzió, az Azure AD SMB-n keresztül az Azure Files számára az összes Azure-régióban?**
+
+    Az összes nyilvános régióban, az alábbiakat kivéve az előzetes verzió érhető el: USA nyugati RÉGIÓJA, USA nyugati RÉGIÓJA 2, USA déli középső Régiója, USA keleti RÉGIÓJA, USA keleti RÉGIÓJA 2, USA középső RÉGIÓJA, USA északi középső Régiója, Kelet-Ausztrália, Nyugat-Európa, Észak-Európa.
+
+* <a id="ad-support-on-premises"></a>
+**Támogatja az Azure AD-hitelesítés SMB-n keresztül az Azure Files (előzetes verzió) hitelesítés a helyszíni gépeket az Azure AD-vel?**
+
+    Nem, az Azure Files nem támogatja a helyszíni gépeket az Azure AD-hitelesítés az előzetes kiadásban.
+
+* <a id="ad-support-devices"></a>
+**Biztosítja az Azure AD hitelesítési SMB-n keresztül az Azure Files (előzetes verzió) támogatás SMB hozzáférés eszközök Azure AD hitelesítő adataival csatlakozik, vagy regisztrálva az Azure AD?**
+
+    Nem, ez a forgatókönyv nem támogatott.
+
+* <a id="ad-support-rest-apis"></a>
+**REST API-kat támogató Get/Set/másolás/könyvtárfájl NTFS hozzáférés-vezérlési listák vannak?**
+
+    Az előzetes kiadás nem támogatja a REST API-kkal kapni, állítsa be, vagy másolja be az NTFS hozzáférés-vezérlési listák könyvtárak és fájlok.
+
+* <a id="ad-vm-subscription"></a>
+**Az Azure AD hitelesítő adatait egy virtuális gépről egy másik előfizetésben elérhető számomra az Azure Files?**
+
+    Ha az előfizetés, amely alatt a fájlmegosztás üzembe lesz helyezve az Azure AD-bérlőhöz, a virtuális gép tartomány részeként csatlakoztatva, majd az Azure Files Azure AD hitelesítő adatokkal érheti el az Azure AD tartományi szolgáltatások deploymnet társítva. A korlátozás nem az előfizetés a várakozásnak, de a társított Azure ad-bérlőben.    
+    
+* <a id="ad-support-subscription"></a>
+**Lehet engedélyezni az Azure AD-hitelesítés SMB-n keresztül az Azure Files számára az Azure AD-bérlő, amely különbözik az elsődleges bérlőt, amelyhez a fájlmegosztás assoicated?**
+
+    Az Azure Files nem, csak az Azure AD-integráció az Azure AD-bérlő, amely ugyanahhoz az előfizetéshez, mivel a fájlmegosztás található támogatja. Lehet, hogy csak egy előfizetéssel társított Azure AD-bérlővel.
+
+* <a id="ad-linux-vms"></a>
+**Azure AD-hitelesítés SMB-n keresztül az Azure Files (előzetes verzió) támogatja a Linux rendszerű virtuális gépek?**
+
+    Hitelesítés a Linux rendszerű virtuális gépek nem, nem támogatott az előzetes kiadásban.
+
+* <a id="ad-aad-smb-afs"></a>
+**Az Azure AD-hitelesítés hasznosíthatom SMB képességek kezeli az Azure File Sync-fájlmegosztásokon keresztül?**
+
+    Nem, az Azure Files nem támogatja az Azure File Sync által felügyelt fájlmegosztások megőrzi az NTFS hozzáférés-vezérlési listák. A fájl hozzáférés-vezérlési listák végezni a helyszíni fájlkiszolgálók megmaradnak az Azure File Sync. Bármely NTFS hozzáférés-vezérlési listák ellen az Azure Files natív módon konfigurált az Azure File Sync szolgáltatás felülíródik. Emellett az Azure Files nem támogatja a fájlmegosztások az Azure File Sync szolgáltatás kezeli a hozzáférést a hitelesítés az Azure AD hitelesítő adatait.
 
 * <a id="encryption-at-rest"></a>
 **Hogyan tudok biztosíthatja, hogy az Azure-fájlmegosztás titkosítása?**  
+
     Az Azure Storage Service Encryption az összes régióban alapértelmezés szerint engedélyezése folyamatban van. Ezekben a régiókban nem kell minden olyan műveleteket, engedélyezze a titkosítást. Más régiókban, lásd: [kiszolgálóoldali titkosítás](../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json).
 
 * <a id="access-via-browser"></a>
 **Hogyan is biztosít egy webes böngésző használatával egy adott fájlhoz történő hozzáférés?**  
+
     Közös hozzáférésű jogosultságkódok használatával, amely van konkrét engedélyük, és amely érvényes a megadott időtartam alatt jogkivonatokat hoz létre. Ha például egy jogkivonatot, amely egy adott fájl csak olvasható hozzáférést biztosít egy megadott ideig is létrehozhat. Bárki, aki ismeri az URL-címet is elérheti a fájl bármely webböngészőben amíg a token érvényes. Egyszerűen létrehozhat egy közös hozzáférésű jogosultságkód kulcsot egy felhasználói felületen, mint a Storage Explorer.
 
 * <a id="file-level-permissions"></a>
 **Ennyi az egész lehetséges adja meg a csak olvasási vagy csak írási engedélyeket a megosztáson belüli mappákhoz?**  
+
     Csatlakoztatja a fájlmegosztást SMB használatával, ha nem rendelkezik engedélyekkel mappaszintű felett. Azonban a REST API vagy klienskódtárak használatával hoz létre egy közös hozzáférésű jogosultságkódot, csak olvasható, vagy csak írási engedélyeket a a megosztáson belüli mappákhoz is megadhat.
 
 * <a id="ip-restrictions"></a>
 **Megvalósíthat egy Azure-fájlmegosztást az IP-korlátozások?**  
+
     Igen. A hozzáférést az Azure-fájlmegosztást a storage-fiók szintjén korlátozható. További információkért lásd: [konfigurálása az Azure Storage-tűzfalak és virtuális hálózatok](../common/storage-network-security.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json).
 
 * <a id="data-compliance-policies"></a>
 **Milyen adatok megfelelőségi szabályzatok támogatja az Azure Files?**  
+
    Az Azure Files fut. a más tárolási szolgáltatásokra az Azure Storage-ban használt azonos tárolási architektúrával. Az Azure Files az azonos megfelelőségi szabályzatok az egyéb Azure storage-szolgáltatások által használt vonatkozik. Az Azure Storage-adatok megfelelőségi kapcsolatos további információkért olvassa el [Azure Storage-megfelelőségi ajánlatok](https://docs.microsoft.com/en-us/azure/storage/common/storage-compliance-offerings), és nyissa meg a [Microsoft Trust Center](https://microsoft.com/en-us/trustcenter/default.aspx).
 
 ## <a name="on-premises-access"></a>Helyszíni hozzáférés
 * <a id="expressroute-not-required"></a>
 **Kell az Azure Files csatlakozás az Azure ExpressRoute használatával vagy az Azure File Sync használata a helyszínen?**  
+
     Nem. Az ExpressRoute nem szükséges Azure-fájlmegosztás eléréséhez. Ha a rendszer csatlakoztatása egy Azure-fájlmegosztás közvetlenül a helyszínen, az összes, amely szükséges az, hogy a 445-ös (TCP, kimenő) nyissa meg az internet-hozzáférés (Ez az SMB által való kommunikációra használt port). Ha az Azure File Sync használata esetén szükséges csak HTTPS-hozzáféréshez (nem szükséges SMB) a 443-as (TCP, kimenő) porton. Azonban Ön *is* bármelyik hozzáférést az expressroute-ot használni.
 
 * <a id="mount-locally"></a>
 **Hogyan csatlakoztathatom Azure-fájlmegosztás a helyi gépemen?**  
+
     A fájlmegosztás akkor is csatlakoztathatja az SMB protokoll használatával, ha a 445-ös (TCP, kimenő) meg nyitva, és az ügyfél támogatja az SMB 3.0 protokollt (például, ha a Windows 10-es vagy Windows Server 2016 használ). Ha a 445-ös port le van tiltva, a szervezeti házirend vagy az Internetszolgáltató által, az Azure File Sync használatával az Azure-fájlmegosztás eléréséhez.
 
 ## <a name="backup"></a>Backup
@@ -242,6 +295,7 @@ Ez a cikk az Azure Files szolgáltatást és funkciót, beleértve az Azure File
     Rendszeres használható [megosztási pillanatképek](storage-snapshots-files.md) véletlen törlés elleni védelem. Is használhatja az AzCopy, Robocopy vagy egy külső biztonsági mentési eszköz, amely egy csatlakoztatott fájlmegosztás készíthető. Az Azure Backup kínál az Azure Files biztonsági mentése. Tudjon meg többet [biztonsági mentése az Azure-fájlmegosztások az Azure Backup](https://docs.microsoft.com/en-us/azure/backup/backup-azure-files).
 
 ## <a name="share-snapshots"></a>Megosztási pillanatképek
+
 ### <a name="share-snapshots-general"></a>A fájlmegosztások pillanatképeinek: általános
 * <a id="what-are-snaphots"></a>
 **Mik azok a fájlmegosztások pillanatképei?**  
@@ -262,10 +316,14 @@ Ez a cikk az Azure Files szolgáltatást és funkciót, beleértve az Azure File
 * <a id="snapshot-limits"></a>
 **Használhatom a megosztási pillanatképek száma korlátozva van?**  
     Igen. Az Azure Files őrizheti meg egy legfeljebb 200 megosztási pillanatképek. Megosztási pillanatképek nem számítanak felé a fájlmegosztás kvótájának, így a teljes terület, a fájlmegosztási pillanatképekből által használt fájlmegosztásonként korlátlan. Tárfiókok korlátai továbbra is érvényesek. Után 200 megosztási pillanatképek törölnie kell a korábbi pillanatképek új megosztási pillanatképek létrehozása.
+
 * <a id="snapshot-cost"></a>
-**Mennyi nem meg pillanatkép költség?**  
+**IP-címek fenntartási tegye meg a pillanatképek költség?**  
     Standard szintű tranzakció, és standard tárterület költségeit pillanatkép vonatkoznak. A pillanatképeket növekményes jellegűek. A kiinduló pillanatkép maga a megosztást. Az ezt követő pillanatképek növekményes, és csak fogja tárolni a korábbi pillanatképből a különbözeti. Ez azt jelenti, hogy az új módosításokkal, amely látható lesz a számlán minimális, ha a munkaterhelés forgalma minimális lesz. Lásd: [díjszabási oldalunkon](https://azure.microsoft.com/pricing/details/storage/files/) szabványos Azure Files a díjszabásról. A megosztási pillanatképek által felhasznált méret nézze módja a számlázott kapacitás összevetésével ma használt kapacitás. Dolgozunk a javítása, a jelentés azokat az eszközöket.
 
+* <a id="ntfs-acls-snaphsots"></a>
+**Az NTFS hozzáférés-vezérlési listák a könyvtárak és fájlok a megosztási pillanatképek őrzött?**
+    Az NTFS hozzáférés-vezérlési listák könyvtárak és fájlok megmaradnak a megosztási pillanatképek.
 
 ### <a name="create-share-snapshots"></a>Megosztási pillanatképek létrehozása
 * <a id="file-snaphsots"></a>
@@ -285,7 +343,7 @@ Ez a cikk az Azure Files szolgáltatást és funkciót, beleértve az Azure File
 ### <a name="manage-share-snapshots"></a>Megosztási pillanatképek kezelése
 * <a id="browse-snapshots-linux"></a>
 **Megnyithatja a megosztási pillanatképek Linux rendszerben?**  
-    Azure CLI 2.0 használatával létrehozása, listázása, keresse meg és állítsa vissza a megosztási pillanatképek Linux rendszeren.
+    Azure CLI segítségével létrehozása, listázása, keresse meg és állítsa vissza a megosztási pillanatképek Linux rendszeren.
 
 * <a id="copy-snapshots-to-other-storage-account"></a>
 **Képes a megosztási pillanatképek is másolja egy másik tárfiókba?**  

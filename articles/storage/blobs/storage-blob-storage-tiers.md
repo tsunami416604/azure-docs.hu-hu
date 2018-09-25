@@ -1,6 +1,6 @@
 ---
-title: Az Azure blobtárolási rétege gyakran és ritkán használt, valamint archivált adatokhoz | Microsoft Docs
-description: A gyakran és a ritkán használt, valamint az archivált adatok tárolása Azure Storage-fiókok esetében.
+title: Prémium szintű, a gyakori és ritka elérésű, valamint az archív tárolási blobok – Azure Storage
+description: Prémium szintű, a gyakori és ritka elérésű és archív tároló Azure storage-fiókok.
 services: storage
 author: kuhussai
 ms.service: storage
@@ -8,28 +8,64 @@ ms.topic: article
 ms.date: 09/11/2018
 ms.author: kuhussai
 ms.component: blobs
-ms.openlocfilehash: 66c47a97eee6759eb963db43d5c573fb6612bde6
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: 6acea70ca929310fe37f36fe98698e6adb76101b
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45735918"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46997828"
 ---
-# <a name="azure-blob-storage-hot-cool-and-archive-storage-tiers"></a>Azure Blob Storage: A gyakori és ritka elérésű, valamint az archív tárolási szintek
+# <a name="azure-blob-storage-premium-preview-hot-cool-and-archive-storage-tiers"></a>Az Azure Blob storage: prémium szintű (előzetes verzió), gyakori, ritka és archív tárolási szintek
 
 ## <a name="overview"></a>Áttekintés
 
-Az Azure Storage három tárolási szintet kínál a Blob-objektumok tárolásához, hogy adatait a legköltséghatékonyabb módon tárolhassa a használat függvényében. Az Azure **gyakori elérésű tárolási szintje** a gyakran használt adatok tárolására van optimalizálva. Az Azure **ritka elérésű tárolási szintje** a ritkábban használt adatok legkevesebb 30 napi tárolására van optimalizálva. Az Azure **archív tárolási szintje** az alig használt adatok legkevesebb 180 napi, rugalmas (órákban mért) késési követelményekkel rendelkező tárolására van optimalizálva. Az archív tárolási szint csak a blobok szintjén érhető el, a tárfiók szintjén nem. A ritka elérésű tárolási szinten lévő adatok esetében ugyan alacsonyabb rendelkezésre állás is elegendő lehet, azonban továbbra is magas tartósság és a gyakran használt adatokkal egyező hozzáférési idő és teljesítmény szükséges. A ritkán használt adatok esetében a valamelyest alacsonyabb rendelkezésre állási szolgáltatási szintek és a gyakran használt adatokhoz képest magasabb hozzáférési költségek elfogadható kompromisszumot jelentenek az alacsonyabb tárolási költségek ellenében. Az archív tárolás offline, és ez jár a legalacsonyabb tárolási, de ezzel párhuzamosan a legmagasabb hozzáférési költségekkel. A fiók szintjén csak a gyakori és a ritka elérésű tárolási szintet (nem archív) lehet beállítani. Az objektumok szintjén mindhárom szintet be lehet állítani.
+Az Azure storage a különböző tárolási rétegek, amelyek a leginkább költséghatékony módon Blob objektum adatok tárolását is lehetővé teszik kínál. Az elérhető csomagok a következők:
 
-Napjainkban a felhőben tárolt adatok mennyisége exponenciálisan nő. A növekvő tárolási szükségletek költségeinek kezelése érdekében hasznos lehet az adatokat olyan attribútumok alapján szervezni, mint a hozzáférés gyakorisága vagy a tervezett megőrzési időtartam, így optimalizálhatók a költségek. A felhőben tárolt adatok az előállítás, a feldolgozás és a hozzáférés tekintetében különbözőek lehetnek az élettartamuk során. Egyes adatokat aktívan használnak és módosítanak teljes élettartamuk során. Egyes adatokat élettartamuk korai szakaszában sokat használnak, az adatok életkorának növekedésével azonban a hozzáférések mennyisége drasztikusan csökken. Egyes adatok pedig inaktívan a felhőben maradnak, és a tárolást követően csak nagyon ritkán használják őket, ha használják őket egyáltalán.
+- **A Premium storage (előzetes verzió)** nagy teljesítményű hardver biztosít a gyakran elért adatokat.
+ 
+- **Ritkáról gyakori elérésű tárolási**: gyakran használt adatok tárolására van optimalizálva. 
+
+- **Ritka elérésű tárolási** ritkán elért és legalább 30 nappal a tárolt adatok tárolására van optimalizálva.
+ 
+- **Archív tárolási** a ritkán elért és a legkevesebb 180 napi, rugalmas késési követelményekkel (órákban mért) tárolt adatok tárolására van optimalizálva.
+
+A következő szempontokat kell kísérnie a különböző tárolási rétegek:
+
+- Az archív tárolási szint csak a blobok szintjén érhető el, a tárfiók szintjén nem.
+ 
+- A ritka elérésű tárolási szinten lévő adatok esetében ugyan alacsonyabb rendelkezésre állás is elegendő lehet, azonban továbbra is magas tartósság és a gyakran használt adatokkal egyező hozzáférési idő és teljesítmény szükséges. A ritkán használt adatok esetében a valamelyest alacsonyabb rendelkezésre állási szolgáltatási szintek és a gyakran használt adatokhoz képest magasabb hozzáférési költségek elfogadható kompromisszumot jelentenek az alacsonyabb tárolási költségek ellenében.
+
+- Az archív tárolás offline, és ez jár a legalacsonyabb tárolási, de ezzel párhuzamosan a legmagasabb hozzáférési költségekkel.
+ 
+- A fiók szintjén csak a gyakori és a ritka elérésű tárolási szintet (nem archív) lehet beállítani.
+ 
+- Minden szinten az objektumok szintjén állítható.
+
+A felhőben tárolt adatok mennyisége exponenciálisan nő növekszik. A növekvő tárolási szükségletek költségeinek kezelése érdekében hasznos lehet az adatokat olyan attribútumok alapján szervezni, mint a hozzáférés gyakorisága vagy a tervezett megőrzési időtartam, így optimalizálhatók a költségek. A felhőben tárolt adatok az előállítás, a feldolgozás és a hozzáférés tekintetében különbözőek lehetnek az élettartamuk során. Egyes adatokat aktívan használnak és módosítanak teljes élettartamuk során. Egyes adatokat élettartamuk korai szakaszában sokat használnak, az adatok életkorának növekedésével azonban a hozzáférések mennyisége drasztikusan csökken. Egyes adatok pedig inaktívan a felhőben maradnak, és a tárolást követően csak nagyon ritkán használják őket, ha használják őket egyáltalán.
 
 Az egyes adathozzáférési forgatókönyvek esetében számos előnyt biztosít az olyan, szintekre osztott tárolási megoldás, amely egy adott hozzáférési mintára van optimalizálva. A gyakori és a ritka elérésű, valamint az archív tárolási szintekkel az Azure Blob Storage a különböző tárolási igényeket célozza meg, különböző árképzési modellekkel.
 
 ## <a name="storage-accounts-that-support-tiering"></a>Rétegezést támogató Storage-fiókok
 
-Az objektum tárolási adataihoz csak a Blob Storage- vagy a General Purpose v2 (GPv2) (általános célú) fiókokban használhatja a gyakori, ritka elérésű, vagy archív tárolási szinteket. General Purpose v1 (GPv1) fiókok nem támogatják a rétegezést. Az ügyfelek azonban könnyedén, egyetlen kattintással átalakíthatják meglévő GPv1- vagy Blob Storage-fiókjukat GPv2-fiókká az Azure Portalon. A GPv2 új díjszabási struktúrát nyújt a blobokhoz, fájlokhoz és üzenetsorokhoz, továbbá hozzáférést biztosít különféle egyéb, új tárolási szolgáltatásokhoz is. Továbbá, a későbbiek során egyes új szolgáltatások és árengedmények csak a GPv2-fiókok esetében lesznek elérhetők. Az ügyfeleknek tehát érdemes megfontolni a GPv2 fiókok használatát. A használatot azonban csak akkor kezdjék meg, ha áttekintették az összes szolgáltatás díjszabását. Egyes számítási feladatok ugyanis drágábbak lehetnek GPv2-fiókokon, mint a GPv1-fiókok esetében. További információkért lásd: [az Azure storage-fiók áttekintése](../common/storage-account-overview.md).
+Az objektum tárolási adataihoz csak a Blob Storage- vagy a General Purpose v2 (GPv2) (általános célú) fiókokban használhatja a gyakori, ritka elérésű, vagy archív tárolási szinteket. General Purpose v1 (GPv1) fiókok nem támogatják a rétegezést. Az ügyfelek azonban könnyedén, egyetlen kattintással átalakíthatják meglévő GPv1- vagy Blob Storage-fiókjukat GPv2-fiókká az Azure Portalon. A GPv2 új díjszabási struktúrát nyújt a blobokhoz, fájlokhoz és üzenetsorokhoz, továbbá hozzáférést biztosít különféle egyéb, új tárolási szolgáltatásokhoz is. Továbbá, a későbbiek során egyes új szolgáltatások és árengedmények csak a GPv2-fiókok esetében lesznek elérhetők. Az ügyfeleknek tehát érdemes megfontolni a GPv2 fiókok használatát. A használatot azonban csak akkor kezdjék meg, ha áttekintették az összes szolgáltatás díjszabását. Egyes számítási feladatok ugyanis drágábbak lehetnek GPv2-fiókokon, mint a GPv1-fiókok esetében. További információkat az [Azure Storage-fiókok áttekintésében](../common/storage-account-overview.md) találhat.
 
 A Blob Storage- és GPv2-fiókokban fiókszinten elérhető a **Hozzáférési szint** attribútum, amellyel megadható, hogy a tárfiók alapértelmezett szintje gyakori vagy ritka elérésű legyen minden olyan, a tárfiókban található blob esetében, amelyhez nincs az objektumok szintjén beállított szint. Azon objektumok esetében, amelyek szintje az objektumok szintjén van megadva, a fiókszint nem lesz érvényes. Az archív szint csak az objektumok szintjén alkalmazható. Bármikor válthat a tárolási szintek között.
+
+## <a name="premium-access-tier"></a>Prémium szintű hozzáférési szint
+
+Előzetes verzióban elérhető van egy prémium szintű hozzáférési szint, mely teszi a gyakran használt adatok nagy teljesítményű hardveren keresztül érhető el. Ezen a szinten tárolt adatok tárolják, SSD-meghajtókat, amely a hagyományos merevlemezek képest egy nagyobb tranzakciós díjszabás alacsonyabb késést vannak optimalizálva. A prémium szintű hozzáférési szint a Blokkblob típusú tárfiók típusa csak keresztül érhető el.
+
+Ez a szint a gyors és következetes válaszidők megkövetelő számítási feladatokhoz ideális. Olyan adatok, amely magában foglalja a végfelhasználók számára, például az interaktív videó szerkesztésére statikus webes tartalom online tranzakció- és hasonló a prémium szintű hozzáférési szint a deduplikációra. Ez a szint személyre szabott sok kis tranzakció, például a telemetriai adatok rögzítését, üzenetküldési és átalakítását végző számítási feladatokhoz.
+
+Ez a csomag használatára, új Block Blob storage-fiók kiépítése, és kezdjen el tárolók és blobok használatával a [Blob Service REST API](/rest/api/storageservices/blob-service-rest-api), [AzCopy](/azure/storage/common/storage-use-azcopy), vagy [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/).
+
+Az előzetes verzióban a prémium szintű hozzáférési szint:
+
+- Helyileg redundáns tárolás (LRS) érhető el
+- Csak érhető el ezekben a régiókban: USA keleti régiója 2, USA középső régiója és USA nyugati régiója
+- Nem támogatja az automatikus rétegezést és az adatok életciklus-kezelés
+
+Megtudhatja, hogyan regisztrálhat a prémium szint előzetes verzió eléréséhez, lásd: [Azure prémium szintű Blob Storage bemutatása](http://aka.ms/premiumblob).
 
 ## <a name="hot-access-tier"></a>Gyakran használt adatok hozzáférési szintje
 
@@ -73,6 +109,8 @@ Egy adott fiók tartalmazhat blobokat egyszerre akár mindhárom szinten is. Azo
 
 > [!NOTE]
 > Az archív tárolás és a blobszintű rétegezés csak a blokkblobokat támogatja. A pillanatképeket tartalmazó blokkblob szintje sem módosítható.
+
+Hozzáférés prémium szinten tárolt adatok nem helyezhető el, a ritkáról gyakori elérésű, ritka elérésű vagy archív tárolási szint használatával [Blobszint beállítása](/rest/api/storageservices/set-blob-tier) vagy Azure Blob Storage életciklus-felügyelet használatával. Az adatok áthelyezéséhez szinkron módon másolja az blobok az prémium szintű hozzáférést a gyakran használt adatok használata a [blokk helyezze a API URL-címet a](/rest/api/storageservices/put-block-from-url) vagy az AzCopy az API-t támogató verzióját. A *URL blokk Put* API szinkron módon másolja az adatokat a kiszolgálón, ami azt jelenti, a hívás befejezése csak egyszer minden az adatokat a rendeltetési helyre áthelyezik az eredeti kiszolgálón.
 
 ### <a name="blob-lifecycle-management"></a>BLOB életciklus-felügyelete
 A BLOB Storage életciklus-felügyelet (előzetes verzió) kínál egy gazdag, szabályalapú házirend, amelyet használhat való áttérés a adatait, hogy a legjobb hozzáférési szint és az adatok életciklusa végén lejár. Lásd: [kezelése az Azure Blob storage életciklus](https://docs.microsoft.com/en-us/azure/storage/common/storage-lifecycle-managment-concepts) további.  
@@ -153,7 +191,7 @@ Az összes storage-fiókok árképzési modellt alkalmaznak a Blob minden egyes 
 
 Javasoljuk, hogy Blob Storage-fiókok helyett használjon GPv2-fiókokat a rétegzéshez kialakításához. A GPv2 a Blob Storage-fiókok által támogatott szolgáltatások mellett sok mást is támogat. A Blob Storage és GPv2-fiókok díjszabása majdnem teljesen megegyezik, azonban egyes új szolgáltatások és árengedmények csak GPv2-fiókokhoz lesznek elérhetők. A GPv1-fiókok nem támogatják a rétegezést.
 
-A GPv1- és GPv2-fiókok díjszabási struktúrája eltér egymástól, ezért az ügyfeleknek érdemes mindkettőt alaposan áttekinteni, mielőtt a GPv2-fiókok használata mellett döntenek. Meglévő Blob Storage- vagy GPv1-fiókját könnyedén, egyetlen kattintással átalakíthatja GPv2-fiókká. További információkért lásd: [az Azure storage-fiók áttekintése](../common/storage-account-overview.md).
+A GPv1- és GPv2-fiókok díjszabási struktúrája eltér egymástól, ezért az ügyfeleknek érdemes mindkettőt alaposan áttekinteni, mielőtt a GPv2-fiókok használata mellett döntenek. Meglévő Blob Storage- vagy GPv1-fiókját könnyedén, egyetlen kattintással átalakíthatja GPv2-fiókká. További információkat az [Azure Storage-fiókok áttekintésében](../common/storage-account-overview.md) találhat.
 
 **Tárolhatok objektumokat mindhárom (gyakori és ritka elérésű, valamint archív) tárolási szinten egyazon fiók esetében?**
 

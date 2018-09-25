@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2018
 ms.author: juluk
-ms.openlocfilehash: 1321645d97e7f6ff2faed1e61ddb608afcb7b413
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: 5087b8a1d675fb6fb2bbfb2b46a09c215bf5e9ae
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "42058090"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46998763"
 ---
 # <a name="features--tools-for-azure-cloud-shell"></a>Funkciók és eszközök az Azure Cloud Shell
 
@@ -31,7 +31,7 @@ Az Azure Cloud Shell futtat `Ubuntu 16.04 LTS`.
 
 ### <a name="secure-automatic-authentication"></a>Automatikus hitelesítésre
 
-A cloud Shell biztonságosan és automatikusan végzi a hitelesítést felhasználóifiók-hozzáférés az Azure CLI 2.0 és az Azure PowerShell.
+A cloud Shell biztonságosan és automatikusan végzi a hitelesítést felhasználóifiók-hozzáférés az Azure CLI és az Azure PowerShell.
 
 ### <a name="home-persistence-across-sessions"></a>$Home megőrzése munkamenetek között
 
@@ -60,7 +60,7 @@ A cloud Shell nyílt forráskódú eszközök, például a Terraform, az Ansible
 |Kategória   |Name (Név)   |
 |---|---|
 |Linux rendszerű eszközök            |A bash<br> a zsh<br> SH<br> tmux<br> tájékozódjon<br>               |
-|Azure-eszközök            |[Az Azure CLI 2.0](https://github.com/Azure/azure-cli) és [1.0](https://github.com/Azure/azure-xplat-cli)<br> [AzCopy](https://docs.microsoft.com/azure/storage/storage-use-azcopy)<br> [Service Fabric parancssori felület](https://docs.microsoft.com/azure/service-fabric/service-fabric-cli) |
+|Azure-eszközök            |[Az Azure CLI](https://github.com/Azure/azure-cli) és [Azure klasszikus parancssori felület](https://github.com/Azure/azure-xplat-cli)<br> [AzCopy](https://docs.microsoft.com/azure/storage/storage-use-azcopy)<br> [Service Fabric parancssori felület](https://docs.microsoft.com/azure/service-fabric/service-fabric-cli) |
 |Szövegszerkesztő           |VIM<br> a nano<br> emacs       |
 |Verziókövetés         |git                    |
 |Eszközök létrehozása            |Győződjön meg arról<br> Maven<br> npm<br> a pip         |
@@ -82,5 +82,5 @@ A cloud Shell nyílt forráskódú eszközök, például a Terraform, az Ansible
 ## <a name="next-steps"></a>További lépések
 [A bash Cloud Shell rövid](quickstart.md) <br>
 [A PowerShell Cloud Shell (előzetes verzió) a rövid útmutatóban](quickstart-powershell.md) <br>
-[További tudnivalók az Azure CLI 2.0 használatával](https://docs.microsoft.com/cli/azure/) <br>
+[További tudnivalók az Azure CLI](https://docs.microsoft.com/cli/azure/) <br>
 [További tudnivalók az Azure PowerShell](https://docs.microsoft.com/powershell/azure/) <br>

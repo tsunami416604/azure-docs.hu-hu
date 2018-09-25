@@ -5,11 +5,12 @@ Ha még nem telepítette az Azure CLI-t, és nem csatlakoztatta az előfizetés�
 ## <a name="cli-versions-to-complete-the-task"></a>A feladat befejezéséhez használható CLI-verziók
 A következő CLI-verziók egyikével elvégezheti a feladatot:
 
-- Azure CLI 10 – parancssori felületünk a klasszikus és a Resource Management üzemi modellekhez (a jelen cikkben)
-- [Azure CLI 2.0](../articles/virtual-machines/linux/cli-manage.md) – a Resource Management üzemi modellhez tartozó parancssori felületek következő generációját képviseli.
+- Az Azure klasszikus parancssori felület – parancssori felületünk a klasszikus és a resource management üzemi modellekhez (a jelen cikkben)
+- [Az Azure CLI](../articles/virtual-machines/linux/cli-manage.md) – a parancssori következő generációját képviseli a resource management üzemi modellhez tartozó
 
-## <a name="basic-azure-resource-manager-commands-in-azure-cli"></a>Alapszintű Azure Resource Manager-parancsok az Azure CLI-ben
-Ez a cikk ismerteti az alapszintű parancsokat, amelyeket az Azure CLI-vel használhat az erőforrások (elsősorban virtuális gépek) kezeléséhez és használatához az Azure-előfizetésben.  Az adott parancssori kapcsolókkal és beállításokkal kapcsolatos részletesebb segítségért használja az online parancsok súgóját és lehetőségeit az `azure <command> <subcommand> --help` vagy `azure help <command> <subcommand>` beírását követően.
+## <a name="basic-azure-resource-manager-commands-in-azure-classic-cli"></a>Alapszintű Azure Resource Manager-parancsok az Azure klasszikus parancssori felület
+
+Ez a cikk ismerteti az alapszintű parancsokat, amelyeket a klasszikus Azure CLI segítségével kezelhesse és használhassa az Azure-előfizetésében az erőforrások (elsősorban virtuális gépek).  Az adott parancssori kapcsolókkal és beállításokkal kapcsolatos részletesebb segítségért használja az online parancsok súgóját és lehetőségeit az `azure <command> <subcommand> --help` vagy `azure help <command> <subcommand>` beírását követően.
 
 > [!NOTE]
 > Ezek a példák nem tartalmazzák a sablonalapú műveleteket, amelyek általában ajánlottak a virtuális gépek a Resource Managerben történő üzembe helyezéséhez. További információt [az Azure CLI az Azure Resource Managerrel történő használatát](../articles/xplat-cli-azure-resource-manager.md) és a [virtuális gépek Azure Resource Manager-sablonokkal és az Azure CLI-vel történő üzembe helyezését és kezelését](../articles/virtual-machines/linux/create-ssh-secured-vm-from-template.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) ismertető cikkben talál.
@@ -40,5 +41,5 @@ Ez a cikk ismerteti az alapszintű parancsokat, amelyeket az Azure CLI-vel haszn
 | A virtuálisgép-erőforrások használatának megtekintése |`azure vm list-usage [options] <location>` |
 | Minden elérhető virtuálisgép-méret megtekintése |`azure vm sizes [options]` |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * Az alapszintű virtuálisgép-kezelésen túlmutató CLI-parancsok további példáit [az Aure CLI az Azure Resource Managerrel történő használatát](../articles/virtual-machines/azure-cli-arm-commands.md) ismertető cikkből ismerheti meg.

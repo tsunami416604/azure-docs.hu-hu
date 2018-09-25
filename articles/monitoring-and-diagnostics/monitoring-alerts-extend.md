@@ -1,6 +1,6 @@
 ---
-title: (Másolás) Naplóelemzési riasztások kiterjeszti Azure riasztások – áttekintés
-description: Áttekintése másolása riasztások a Naplóelemzési az OMS-portálon az Azure-riasztásokat, és részletesen vásárlói címzési gyakori kérdésekre.
+title: (Másolás) Log Analytics-riasztások kiterjesztése az Azure-riasztások – áttekintés
+description: Másolnunk riasztások a Log Analytics az OMS-portálon az Azure-riasztások, a folyamat áttekintése olyan címzési gyakori ügyfél problémákat ismerteti.
 author: msvijayn
 services: azure-monitor
 ms.service: azure-monitor
@@ -8,57 +8,57 @@ ms.topic: conceptual
 ms.date: 05/24/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: 6484142eafa8388117c1e96ab31eefeab188e488
-ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
+ms.openlocfilehash: 13a84b7254207a9cfcfff4af43283130a0f6c587
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36750272"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46998474"
 ---
-# <a name="extend-log-analytics-alerts-to-azure-alerts"></a>Terjessze ki a Naplóelemzési riasztások Azure riasztások
-Nemrég, amíg Azure Log Analytics tartalmazza a saját riasztási működését, ami proaktív értesítheti a feltételek Naplóelemzési adatok alapján. Riasztási szabályok a Microsoft Operations Management Suite-portálon kezelt meg. Az új riasztások felületet most integrálva van a Microsoft Azure-ban a különböző szolgáltatásokhoz különböző riasztások. Ez **riasztások** alatt Azure figyelése az Azure portálon, és támogatja a tevékenység naplókat, metrikákat, a riasztás és Naplóelemzési és Azure Application Insights naplózza. 
+# <a name="extend-log-analytics-alerts-to-azure-alerts"></a>A Log Analytics-riasztások kiterjesztése az Azure-riasztások
+Nemrég, amíg az Azure Log Analytics a saját riasztási funkcióval rendelkezik, amely sikerült proaktívan kaphat értesítést a Log Analytics-adatok alapuló feltételek tartalmazza. A Microsoft Operations Management Suite portál riasztási szabályok felügyelt. A riasztások új kezelőfelülete mostantól integrálva van riasztási között különböző szolgáltatások, Microsoft Azure-ban. Érhető el **riasztások** alatt az Azure Monitor az Azure Portalon, és támogatja a vizsgálati naplók, metrikák, a riasztások és a Log Analytics és az Azure Application Insights-naplók. 
 
-## <a name="benefits-of-extending-your-alerts"></a>A riasztások kiterjesztése előnyei
-Létrehozásának és kezelésének, mint az Azure-portálon riasztások több előnye van:
+## <a name="benefits-of-extending-your-alerts"></a>A riasztások kiterjesztését az előnyei
+Nincsenek számos előnnyel jár. a létrehozása és kezelése például a riasztások az Azure Portalon:
 
-- Eltérően az Operations Management Suite-portálon, ahol csak 250 riasztások létrehozása sikerült, és megtekinthetők, Azure riasztások nincs ilyen-korlátozás van érvényben.
-- Az Azure riasztások kezelése, enumerálásához és megtekintése a riasztási típusokat. Korábban sikerült csak ezt teszi Naplóelemzési riasztások esetén.
-- A felhasználóknak, hogy csak a figyelést, és riasztást a hozzáférés korlátozható a [Azure figyelő szerepkör](monitoring-roles-permissions-security.md).
-- Azure riasztásokat használhat [művelet csoportok](monitoring-action-groups.md). Ez lehetővé teszi, hogy az egyes riasztások egynél több művelettel rendelkezik. SMS, akkor küldjön a telefonhívás, egy Azure Automation-runbook meghívása, egy webhook meghívása és konfigurálja az informatikai szolgáltatás-felügyeleti (ITSM) összekötőt. 
+- Eltérően az Operations Management Suite portálján, ahol csak 250 riasztások létrehozása sikerült, és tekinthetők meg, az Azure Alerts rendelkezik ilyen korlátozás nélkül.
+- Az Azure Alerts kezelése, enumerálásához és megtekintheti a riasztási típusokat. Korábban a sikerült csak ekkor a Log Analytics-riasztásokkal.
+- A figyelés és riasztások, a felhasználók számára hozzáférést korlátozhatja a [Azure Monitor szerepkör](monitoring-roles-permissions-security.md).
+- Az Azure Alerts használhat [Műveletcsoportok](monitoring-action-groups.md). Ez lehetővé teszi, hogy egynél több olyan művelet végrehajtását. Akkor is, az SMS küldése a telefonhívás, egy Azure Automation-runbook meghívása, egy webhook meghívása és az IT Service Management (ITSM)-összekötő konfigurálása. 
 
-## <a name="process-of-extending-your-alerts"></a>A folyamat, amely a figyelmeztetéseket
-Naplóelemzési riasztások áthelyezése Azure riasztások folyamata nem tartalmaz, amely a riasztás definíciója, lekérdezés vagy bármely olyan módon konfiguráció módosítása. Mindössze annyi a változás, szükség, hogy az Azure, akkor minden művelet végrehajtására egy művelet csoport használatával. Ha a művelet csoport már társítva van a riasztás, nem foglalja azokat az Azure kiterjesztésekor.
+## <a name="process-of-extending-your-alerts"></a>A riasztások kiterjesztésének folyamata
+Áttérés a riasztások a Log Analytics az Azure Alerts folyamata nem foglalja magában a riasztások definícióit, a lekérdezés vagy a konfiguráció semmilyen módon módosítása. Az egyetlen változás szükség, hogy az Azure-ban, akkor minden művelet végrehajtására műveletcsoport használatával. Műveletcsoportok már társítva a riasztás, ha azok szerepelnek a kiterjesztett az Azure-bA.
 
 > [!NOTE]
-> Microsoft automatikusan kiterjed Naplóelemzési Azure riasztás létre riasztásokat, kezdve a 2018. május 14., ismétlődő több befejeződéséig. Ha problémába ütközik a létrehozása [művelet csoportok](monitoring-action-groups.md), használjon [következő javítási lépéseket](monitoring-alerts-extend-tool.md#troubleshooting) automatikusan létrehozott művelet csoportok segítségével. 2018. július 5. amíg használhatja ezeket a lépéseket. 
+> A Microsoft automatikusan kiterjeszti a nyilvános felhő példányát az Azure Alerts szolgáltatáshoz, a Log Analytics létrehozott riasztásokat egy ismétlődő sorozat, amíg befejeződik a 2018. május 14., kezdve. Ha problémába ütközik létrehozása [Műveletcsoportok](monitoring-action-groups.md), használjon [javítási lépések](monitoring-alerts-extend-tool.md#troubleshooting) beolvasni a Műveletcsoportok jönnek létre automatikusan. 2018. július 5-ig is használhatja ezeket a lépéseket. *Nem alkalmazható Azure kormány Esettanulmányának és a Log Analytics Soveriegn felhőbeli felhasználók*. 
 > 
 
-A Naplóelemzési munkaterület Azure kell terjeszteni a riasztások ütemezésekor működik, és nem a módon veszélyeztetheti a konfigurációs mindaddig. Ütemezése, a riasztások előfordulhat, hogy nem érhető el módosításra ideiglenesen, de továbbra is hozzon létre új Azure-riasztások ebben az időszakban. Ha megpróbálja szerkeszteni vagy létrehozni a riasztásokat az Operations Management Suite-portálról, lehetősége van a Naplóelemzési munkaterület hozza létre őket a folytatáshoz. Választhatja azt is, az Azure-portálon az Azure riasztásokból létrehozni őket.
+Riasztások a Log Analytics-munkaterület, ki kell terjeszteni az Azure-bA ütemezésekor mindaddig működnek, és nem az egyébként veszélyeztetheti a konfigurációt. Ütemezése, a riasztások előfordulhat, hogy nem érhető el, a módosítás átmenetileg, de továbbra is új Azure-riasztások létrehozásához ebben az időszakban. Ha próbál szerkeszteni vagy létrehozni a riasztásokat az Operations Management Suite-portálon, akkor a beállítást, így a Log Analytics-munkaterületet hoz létre. Azt is beállíthatja az Azure Portalon az Azure-riasztások létrehozásához őket.
 
- ![Képernyőkép a beállítás Naplóelemzési vagy Azure riasztásokat a riasztások létrehozásához](./media/monitor-alerts-extend/ScheduledDirection.png)
+ ![Riasztások létrehozása Log Analytics vagy az Azure Alerts beállítás képernyőképe](./media/monitor-alerts-extend/ScheduledDirection.png)
 
 > [!NOTE]
-> Az Azure Log Analytics riasztások kiterjedő nem függő díj terheli a fiókjához. Azure riasztások használata lekérdezés alapú Naplóelemzési riasztások nem számlázva, keretein belül használatakor, és meghatározott feltételek a [házirend árképzési Azure figyelő](https://azure.microsoft.com/pricing/details/monitor/).  
+> Riasztások kiterjesztése a Log Analytics az Azure-ba nem díjkötelesek a fiókjához. Lekérdezés alapú Log Analytics-riasztások Azure Alerts használatával nem kell fizetniük keretein belül, és a megadott feltételek a [házirend díjszabás az Azure Monitor](https://azure.microsoft.com/pricing/details/monitor/).  
 
 
 ### <a name="how-to-extend-your-alerts-voluntarily"></a>A riasztások önkéntesen bővítése
-Azure riasztásokat a riasztások kiterjesztéséhez érhető el az Operations Management Suite portálját varázsló használatával, vagy teheti úgy programozottan az API-k használatával. További információkért lásd: [kiterjesztése a riasztásokat az Operations Management Suite-portál és API használatával Azure](monitoring-alerts-extend-tool.md).
+Kiterjeszti a riasztásokat az Azure Alerts szolgáltatáshoz, az Operations Management Suite portálon elérhető a varázslót használhatja, vagy megteheti szoftveresen egy API-val. További információkért lásd: [riasztások kiterjesztése az Azure Operations Management Suite portál és API-bA](monitoring-alerts-extend-tool.md).
 
-## <a name="experience-after-extending-your-alerts"></a>A riasztások történő bővítése után élmény
-Azure riasztásokat a riasztások kiterjednek, miután azok továbbra is elérhetők az Operations Management Suite-felügyeleti portálon nem működnek, mint a előtt.
+## <a name="experience-after-extending-your-alerts"></a>A riasztások kiterjesztését az után élmény
+Után a riasztások bővítve lettek az Azure Alerts szolgáltatáshoz, ezek továbbra is az Operations Management Suite portálon felügyeleti nem működnek, mint a korábban is.
 
-![Képernyőkép az Operations Management Suite portálját, a riasztások felsorolt](./media/monitor-alerts-extend/PostExtendList.png)
+![Képernyőkép az Operations Management Suite portálján, a felsorolt riasztások](./media/monitor-alerts-extend/PostExtendList.png)
 
-Ha megpróbálja szerkesztheti a meglévő riasztást, vagy hozzon létre egy új riasztás az Operations Management Suite portálját, ekkor automatikusan megnyílik Azure riasztásokat.  
+Ha egy meglévő riasztást szerkesztheti, vagy hozzon létre egy új riasztás az Operations Management Suite portálon próbál, automatikusan átirányítjuk az Azure Alerts szolgáltatáshoz.  
 
 > [!NOTE]
-> Győződjön meg arról, hogy az egyéni felhasználók számára, akik hozzáadása vagy szerkesztése riasztások rendelt engedélyeket állít be megfelelően az Azure-ban. Szeretné megtudni, milyen engedélyeket kell biztosítania, lásd: [Azure figyelő és riasztás használatára vonatkozó engedélyek](monitoring-roles-permissions-security.md).  
+> Győződjön meg arról, hogy az egyéni felhasználók számára, akik hozzáadása vagy szerkesztése a riasztások rendelt engedélyek megfelelően hozzárendeli az Azure-ban. Szeretné megtudni, hogy milyen engedélyeket kell biztosítania, lásd: [engedélyek az Azure Monitor és a riasztások](monitoring-roles-permissions-security.md).  
 > 
 
-Továbbra is az értesítések a [napló Analytics API](../log-analytics/log-analytics-api-alerts.md) és [napló Analytics erőforrás sablon](../monitoring/monitoring-solutions-resources-searches-alerts.md). Ha így tesz, meg kell adnia művelet csoportok.
+Hozzon létre a riasztások továbbra is a [Log Analytics API](../log-analytics/log-analytics-api-alerts.md) és [Log Analytics-erőforrás sablon](../monitoring/monitoring-solutions-resources-searches-alerts.md). Ha így tesz, meg kell adnia Műveletcsoportok.
 
 ## <a name="next-steps"></a>További lépések
 
-* További tudnivalók az eszközöket, amelyekkel [kezdeményezhet az Azure Naplóelemzés riasztások kiterjedő](monitoring-alerts-extend-tool.md).
-* További információ a [Azure riasztások élmény](monitoring-overview-unified-alerts.md).
-* Megtudhatja, hogyan hozzon létre [riasztások jelentkezzen be Azure riasztások](monitor-alerts-unified-log.md).
+* Ismerje meg az eszközöket, [kezdeményezési Log Analyticsből származó riasztások kiterjesztése az Azure-ba való](monitoring-alerts-extend-tool.md).
+* Tudjon meg többet a [Azure Alerts élmény](monitoring-overview-unified-alerts.md).
+* Ismerje meg, hogyan hozhat létre [naplóriasztások az Azure Alerts](monitor-alerts-unified-log.md).

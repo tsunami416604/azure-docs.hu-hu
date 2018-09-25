@@ -3,23 +3,26 @@ title: SQL Server-adatbázis áttelepítése az Azure SQL Database-be | Microsof
 description: Útmutató az SQL Server-adatbázisok felhőbeli Azure SQL Database-be történő migrálásához.
 keywords: adatbázis-áttelepítés,sql server-adatbázis áttelepítése,adatbázis-áttelepítési eszközök,adatbázis áttelepítése,sql database áttelepítése
 services: sql-database
-author: CarlRabeler
-manager: craigg
 ms.service: sql-database
-ms.custom: migrate
+ms.subservice: operations
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 09/14/2018
+author: CarlRabeler
 ms.author: carlrab
-ms.openlocfilehash: 88b46fbda3bd459d5ec66b5c9d6eb443e8d275ed
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.reviewer: ''
+manager: craigg
+ms.date: 09/14/2018
+ms.openlocfilehash: 65258622c006cc384df24898c18b154b4c523a7f
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45735292"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47064288"
 ---
 # <a name="sql-server-database-migration-to-azure-sql-database"></a>Az SQL Server-adatbázis áttelepítése az Azure SQL Database
 
-Ebben a cikkben megismerkedhet az áttelepítés egy SQL Server 2005 vagy újabb adatbázisok Azure SQL Database-ben egyetlen vagy készletezett adatbázis elsődleges módszere. Egy felügyelt példányába történő migrálás információkért lásd: [áttelepítése az Azure SQL Database felügyelt példány (előzetes verzió) az SQL Server-példány](sql-database-managed-instance-migrate.md). 
+Ebben a cikkben megismerkedhet az áttelepítés egy SQL Server 2005 vagy újabb adatbázisok Azure SQL Database-ben egyetlen vagy készletezett adatbázis elsődleges módszere. Egy felügyelt példányába történő migrálás információkért lásd: [SQL Server-példány az Azure SQL Database felügyelt példányába történő áttelepítés](sql-database-managed-instance-migrate.md). 
 
 ## <a name="migrate-to-a-single-database-or-a-pooled-database"></a>Egyetlen, vagy egy készletezett adatbázis áttelepítése
 Nincsenek két elsődleges módszere egy SQL Server 2005 vagy újabb adatbázisok Azure SQL Database-ben egyetlen vagy készletezett adatbázis-ba való migrálás. Az első módszer egyszerűbb, azonban jelentős állásidőt igényelhet a migrálás során. A második módszer bonyolultabb, viszont nem jár állásidővel a migrálás közben.

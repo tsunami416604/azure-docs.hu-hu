@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/30/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 7cd19945e316ebc5462642006255103b4631ce29
-ms.sourcegitcommit: 99a6a439886568c7ff65b9f73245d96a80a26d68
-ms.translationtype: HT
+ms.openlocfilehash: 3a4e45aa2c1aca461ef32ebec2cfb50a470037ed
+ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39361380"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47060721"
 ---
 ### <a name="how-many-vpn-client-endpoints-can-i-have-in-my-point-to-site-configuration"></a>Hány VPN-ügyfélvégpont lehet a pont–hely konfigurációban?
 
@@ -30,8 +30,7 @@ A következő ügyféloldali operációs rendszerek támogatottak:
 * Windows Server 2012 R2 (csak 64 bites)
 * Windows Server 2016 (csak 64 bites)
 * Windows 10
-* Mac OS X 10.11-es verzió (El Capitan)
-* Mac OS X 10.12-es verzió (Sierra)
+* Mac OS X verziója 10.11-es vagy újabb
 * Linux (StrongSwan)
 * iOS
 

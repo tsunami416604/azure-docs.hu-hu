@@ -8,12 +8,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 08/23/2018
 ms.author: marsma
-ms.openlocfilehash: 6ff83885ba80f0399f7b085970b1191e8e4cd999
-ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
+ms.openlocfilehash: 4b29804690b951083810d4f75b68ff23fca44a44
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/23/2018
-ms.locfileid: "42746508"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47039615"
 ---
 # <a name="quickstart-send-container-registry-events-to-event-grid"></a>Gyors útmutató: Tároló beállításjegyzék események küldése az Event Grid
 
@@ -141,20 +141,20 @@ Az előfizetés befejezése után kimenete az alábbihoz hasonló:
 
 ## <a name="trigger-registry-events"></a>Az eseményindító beállításjegyzék események
 
-Most, hogy működik a mintaalkalmazást, és fut, és a regisztrációs adatbázisba, az Event Griddel feliratkozott, készen áll az egyes eseményeket létrehozásához. Ebben a szakaszban ACR Builddel hozhat létre és használhat továbbít egy rendszerképet a tárolójegyzékbe. ACR Builddel funkciója az Azure Container Registry, amely lehetővé teszi, hogy hozhat létre tárolórendszerképeket a felhőben anélkül, hogy a Docker-motor telepítve a helyi gépen.
+Most, hogy működik a mintaalkalmazást, és fut, és a regisztrációs adatbázisba, az Event Griddel feliratkozott, készen áll az egyes eseményeket létrehozásához. Ebben a szakaszban ACR-feladatokat hozhat létre és használhat továbbít egy rendszerképet a tárolójegyzékbe. ACR-feladatokat az Azure Container Registry, amely lehetővé teszi, hogy hozhat létre tárolórendszerképeket a felhőben anélkül, hogy a Docker-motor telepítve van a helyi gépén funkciója.
 
 ### <a name="build-and-push-image"></a>Hozhat létre, és a rendszerkép leküldése
 
-Hajtsa végre a következő Azure CLI-paranccsal hozhat létre a tartalmát egy GitHub-adattárban található tárolórendszerképet. Alapértelmezés szerint ACR Builddel automatikusan leküldi a sikeresen összeállított rendszerképet a beállításjegyzékbe, amely létrehozza a `ImagePushed` esemény.
+Hajtsa végre a következő Azure CLI-paranccsal hozhat létre a tartalmát egy GitHub-adattárban található tárolórendszerképet. Alapértelmezés szerint ACR feladatok automatikusan leküldi a sikeresen összeállított rendszerképet a beállításjegyzékbe, amely létrehozza a `ImagePushed` esemény.
 
 ```azurecli-interactive
-az acr build --registry $ACR_NAME --image myimage:v1 https://github.com/Azure-Samples/acr-build-helloworld-node.git
+az acr build --registry $ACR_NAME --image myimage:v1 -f Dockerfile https://github.com/Azure-Samples/acr-build-helloworld-node.git
 ```
 
-ACR Builddel épít, és majd leküldi a lemezképet a következőhöz hasonló kimenetnek kell megjelennie. Az alábbi kimeneti példa kivonatosan csonkolva lettek.
+ACR-feladatok épít, és majd leküldi a lemezképet a következőhöz hasonló kimenetnek kell megjelennie. Az alábbi kimeneti példa kivonatosan csonkolva lettek.
 
 ```console
-$ az acr build -r $ACR_NAME --image myimage:v1 https://github.com/Azure-Samples/acr-build-helloworld-node.git
+$ az acr build -r $ACR_NAME --image myimage:v1 -f Dockerfile https://github.com/Azure-Samples/acr-build-helloworld-node.git
 Sending build context to ACR...
 Queued a build with build ID: aa2
 Waiting for build agent...
@@ -227,10 +227,10 @@ Az Azure Container Registry esemény üzenet séma referencia az Event Grid doku
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a rövid, üzembe helyezett egy tároló-beállításjegyzéket, beépített lemezkép ACR builddel, törölte azt és használt fel, a beállításjegyzék események Event Grid egy mintaalkalmazással. Ezután helyezze át a tudhat meg többet a felhőben, a tárolórendszerképek létrehozása automatikus többek között az ACR Builddel oktatóanyag rendszerkép alapszintű frissítésének épül:
+Ebben a rövid, üzembe helyezett egy tároló-beállításjegyzéket, egy rendszerképet az ACR-feladatok beépített, törlése, és használt fel, a beállításjegyzék események Event Grid egy mintaalkalmazással. Ezután helyezze át a tudhat meg többet a felhőben, a tárolórendszerképek létrehozása automatikus többek között az ACR-feladatok oktatóanyag rendszerkép alapszintű frissítésének épül:
 
 > [!div class="nextstepaction"]
-> [A felhőben tárolórendszerképek létrehozása ACR builddel](container-registry-tutorial-quick-build.md)
+> [Az ACR-feladatokat a felhőben tárolórendszerképek létrehozása](container-registry-tutorial-quick-task.md)
 
 <!-- IMAGES -->
 [sample-app-01]: ./media/container-registry-event-grid-quickstart/sample-app-01.png

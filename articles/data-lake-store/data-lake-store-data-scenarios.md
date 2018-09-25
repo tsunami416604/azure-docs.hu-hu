@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: nitinme
-ms.openlocfilehash: c492709ca3da0f9f3ab4b1457be34dd5d6fc7b35
-ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
+ms.openlocfilehash: 64c7985508ed7f03b32340cbb2c78de61242f7e1
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44391235"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46984279"
 ---
 # <a name="using-azure-data-lake-storage-gen1-for-big-data-requirements"></a>Az Azure Data Lake Storage Gen1 használata big data-követelményekhez
 
@@ -40,7 +40,7 @@ Ez jelöli, amelyek kisebb adatkészletek használt prototípus-készítés big 
 
 | Adatforrás | Kigyűjtés használatával |
 | --- | --- |
-| Helyi számítógép |<ul> <li>[Azure Portal](data-lake-store-get-started-portal.md)</li> <li>[Azure PowerShell](data-lake-store-get-started-powershell.md)</li> <li>[Az Azure platformfüggetlen parancssori felület 2.0-s](data-lake-store-get-started-cli-2.0.md)</li> <li>[A Data Lake Tools for Visual Studio használatával](../data-lake-analytics/data-lake-analytics-data-lake-tools-get-started.md) </li></ul> |
+| Helyi számítógép |<ul> <li>[Azure Portal](data-lake-store-get-started-portal.md)</li> <li>[Azure PowerShell](data-lake-store-get-started-powershell.md)</li> <li>[Azure CLI](data-lake-store-get-started-cli-2.0.md)</li> <li>[A Data Lake Tools for Visual Studio használatával](../data-lake-analytics/data-lake-analytics-data-lake-tools-get-started.md) </li></ul> |
 | Azure Storage Blob |<ul> <li>[Azure Data Factory](../data-factory/connector-azure-data-lake-store.md)</li> <li>[Az AdlCopy eszköz](data-lake-store-copy-data-azure-storage-blob.md)</li><li>[HDInsight-fürtön futó DistCp](data-lake-store-copy-data-wasb-distcp.md)</li> </ul> |
 
 ### <a name="streamed-data"></a>Streamelési adatok hangulatelemzéséhez
@@ -61,7 +61,7 @@ A forrásadatok relációs adatbázisból. Egy időszakon belül a relációs ad
 ### <a name="web-server-log-data-upload-using-custom-applications"></a>Web server naplóadatok (feltöltés használó egyéni alkalmazások)
 Ez a fajta adatkészlet azért hívjuk fel, mert a web server naplóadatok elemzése egy gyakori alkalmazási helyzet a big data-alkalmazások és a Data Lake Storage Gen1 fel kell tölteni a naplófájlok nagy mennyiségű kell. A következő eszközök bármelyikét használhatja saját parancsfájlok vagy alkalmazások töltse fel az adatokat írni.
 
-* [Az Azure platformfüggetlen parancssori felület 2.0-s](data-lake-store-get-started-cli-2.0.md)
+* [Azure CLI](data-lake-store-get-started-cli-2.0.md)
 * [Azure PowerShell](data-lake-store-get-started-powershell.md)
 * [Az Azure Data Lake Storage Gen1 .NET SDK-val](data-lake-store-get-started-net-sdk.md)
 * [Azure Data Factory](../data-factory/copy-activity-overview.md)
@@ -81,7 +81,7 @@ Nagy mennyiségű adat tárolható a meglévő Hadoop-fürtök helyi HDFS haszn�
 | A módszer | Részletek | Előnyök | Megfontolandó szempontok |
 | --- | --- | --- | --- |
 | Adatok másolása az Azure Data Lake Storage Gen1 közvetlenül a Hadoop-fürtök az Azure Data Factory (ADF) használatával |[Az ADF támogatja a HDFS adatforrásként](../data-factory/connector-hdfs.md) |Az ADF HDFS és elsőrangú – teljes körű felügyeleti és figyelési-a-beépített támogatást nyújt a |Az adatkezelési átjáró üzembe helyezhető a helyszínen vagy az iaas-fürt szükséges |
-| Adatok exportálása a Hadoop-fájlok formájában. Ezután másolja a fájlokat, és az Azure Data Lake Storage Gen1 megfelelő mechanizmussal. |Az Azure Data Lake Storage Gen1 használatával másolja a fájlokat: <ul><li>[Az Azure PowerShell, a Windows operációs rendszer](data-lake-store-get-started-powershell.md)</li><li>[Az Azure platformfüggetlen parancssori felület 2.0 a nem Windows operációsrendszer-](data-lake-store-get-started-cli-2.0.md)</li><li>Minden Data Lake Storage Gen1 SDK használatával egyéni alkalmazás</li></ul> |A gyors kezdéshez. Testre szabott feltöltések hajthatja végre. |Többlépéses folyamat, amely magában foglalja a több technológiákat. Felügyeleti és monitorozási növekszik, nagy kihívást jelent az eszközök testreszabott természetéből idővel |
+| Adatok exportálása a Hadoop-fájlok formájában. Ezután másolja a fájlokat, és az Azure Data Lake Storage Gen1 megfelelő mechanizmussal. |Az Azure Data Lake Storage Gen1 használatával másolja a fájlokat: <ul><li>[Az Azure PowerShell, a Windows operációs rendszer](data-lake-store-get-started-powershell.md)</li><li>[Azure CLI](data-lake-store-get-started-cli-2.0.md)</li><li>Minden Data Lake Storage Gen1 SDK használatával egyéni alkalmazás</li></ul> |A gyors kezdéshez. Testre szabott feltöltések hajthatja végre. |Többlépéses folyamat, amely magában foglalja a több technológiákat. Felügyeleti és monitorozási növekszik, nagy kihívást jelent az eszközök testreszabott természetéből idővel |
 | A Distcp használatával adatokat másol a Hadoop az Azure Storage. Ezután másolja az adatokat az Azure Storage a Data Lake Storage Gen1 megfelelő mechanizmussal. |A Data Lake Storage Gen1 használatával másolhat adatokat az Azure Storage-ból: <ul><li>[Azure Data Factory](../data-factory/copy-activity-overview.md)</li><li>[Az AdlCopy eszköz](data-lake-store-copy-data-azure-storage-blob.md)</li><li>[A HDInsight-fürtökön futó Apache DistCp](data-lake-store-copy-data-wasb-distcp.md)</li></ul> |Nyílt forráskódú eszközöket is használhat. |Többlépéses folyamat, amely magában foglalja a több technológiák |
 
 ### <a name="really-large-datasets"></a>Nagyon nagy méretű adatkészletek
@@ -121,7 +121,7 @@ Ilyen esetben a következő lehetőségek bármelyikét használhatja:
 
 Az alábbi módszerek használatával írja a saját adatokat letölteni a Data Lake Storage Gen1 parancsfájl/alkalmazást.
 
-* [Az Azure platformfüggetlen parancssori felület 2.0-s](data-lake-store-get-started-cli-2.0.md)
+* [Azure CLI](data-lake-store-get-started-cli-2.0.md)
 * [Azure PowerShell](data-lake-store-get-started-powershell.md)
 * [Az Azure Data Lake Storage Gen1 .NET SDK-val](data-lake-store-get-started-net-sdk.md)
 

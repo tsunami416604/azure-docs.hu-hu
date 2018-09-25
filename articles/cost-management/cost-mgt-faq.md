@@ -1,31 +1,31 @@
 ---
-title: Gyakori kérdések az Azure Cost Managementben |} A Microsoft Docs
-description: Itt az Azure Cost Management kapcsolatos gyakori kérdésekre adott válaszokat.
+title: Gyakori kérdések az Azure a Cloudyn |} A Microsoft Docs
+description: Cloudyn kapcsolatos gyakori kérdésekre adott válaszokat biztosít.
 services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 07/20/2018
+ms.date: 09/18/2018
 ms.topic: troubleshooting
 ms.service: cost-management
 manager: dougeby
 ms.custom: ''
-ms.openlocfilehash: 255056390cdbdbee49eba47f8168618929b386c8
-ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
+ms.openlocfilehash: 2126875a18d4a6581629ea1c8362236242a666a8
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39187257"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46961025"
 ---
-# <a name="frequently-asked-questions-for-azure-cost-management"></a>Gyakori kérdések az Azure Cost Management
+# <a name="frequently-asked-questions-for-cloudyn"></a>A Cloudyn kapcsolatos gyakori kérdések
 
-Ez a cikk foglalkozik az Azure Cost Management (más néven Cloudyn) kapcsolatos gyakori kérdésekre. Cost Management kapcsolatos kérdése van, ha megkérheti csatlakoztatásukról [– gyakori kérdések az Azure Cost Management](https://social.msdn.microsoft.com/Forums/en-US/231bf072-2c71-4121-8339-ac9d868137b9/faqs-for-azure-cost-management-by-cloudyn?forum=Cloudyn).
+Ez a cikk foglalkozik a Cloudyn kapcsolatos gyakori kérdésekre. Ha kérdései vannak a Cloudyn, megkérheti csatlakoztatásukról [– gyakori kérdések a Cloudyn](https://social.msdn.microsoft.com/Forums/231bf072-2c71-4121-8339-ac9d868137b9/faqs-for-azure-cost-management-by-cloudyn?forum=Cloudyn).
 
 ## <a name="how-can-i-resolve-common-indirect-enterprise-setup-problems"></a>Hogyan oldhatom fel a közvetett nagyvállalati telepítő kapcsolatos gyakori problémák?
 
 A Cloudyn portál első használatakor, ha Ön egy vállalati szerződésben, vagy a Cloud Solution Provider (CSP) felhasználó láthatja az alábbi üzenetek:
 
-- "A megadott API-kulcs nem legfelső szintű regisztrációs kulcs" megjelennek a **állítsa be az Azure Cost Management** varázsló.
+- "A megadott API-kulcs nem legfelső szintű regisztrációs kulcs" megjelennek a **Cloudyn beállítása** varázsló.
 - "A közvetlen regisztráció – nem" a nagyvállalati szerződés portálon jelenik meg.
 - "Nem használati adatok az elmúlt 30 napban nem található. A Cloudyn portálon lépjen kapcsolatba a terjesztőt, hogy ellenőrizze, hogy jelölőnyelvi engedélyezve lett, az Azure-fiók"jelenik meg.
 
@@ -35,9 +35,9 @@ A problémák megoldása:
 
 1. A viszonteladónak engedélyeznie kell a _korrektúrát_ a fiókjában. Útmutatás: [Közvetett ügyfeleknek szóló előkészítési útmutató](https://ea.azure.com/api/v3Help/v2IndirectCustomerOnboardingGuide).
 
-2. Az Azure nagyvállalati szerződéssel kulcs a Cloudyn segítségével hozza létre. Útmutatásért lásd: [hozzáadása az Azure nagyvállalati szerződéssel rendelkező](https://support.cloudyn.com/hc/en-us/articles/210429585-Adding-Your-AZURE-EA) vagy [keresse meg az EA regisztrációs azonosító és API-kulcs](https://youtu.be/u_phLs_udig).
+2. Az Azure nagyvállalati szerződéssel kulcs a Cloudyn segítségével hozza létre. Útmutatásért lásd: [hozzáadása az Azure nagyvállalati szerződéssel rendelkező](https://support.cloudyn.com/hc/articles/210429585-Adding-Your-AZURE-EA) vagy [keresse meg az EA regisztrációs azonosító és API-kulcs](https://youtu.be/u_phLs_udig).
 
-A Cost Management szolgáltatást csak egy Azure-szolgáltatásadminisztrátor engedélyezheti. A társadminisztrátori jogosultság ehhez nem elegendő.
+Csak egy Azure-szolgáltatás-rendszergazda engedélyezheti a Cloudyn. A társadminisztrátori jogosultság ehhez nem elegendő.
 
 Mielőtt beállításához a Cloudyn Azure nagyvállalati szerződés API-kulcsot is létrehozhat, engedélyeznie kell az Azure Billing API webhelyen található utasításokat követve:
 
@@ -74,7 +74,7 @@ Miután elvégezte az előző lépéseket, megtekintheti a optimalizáló javasl
 
 Először tekintsük át azokat a leggyakoribb forgatókönyvet, amelynek hatására a felhasználói fiókok beolvasásához *initiallySuspended*.
 
-> Rendszergazda1 a Microsoft Cloud Solution Provider és a nagyvállalati szerződés felhasználó lehet. A szervezet készen áll a Cost Management használatához.  Ő regisztrálja az Azure Portalon keresztül, és bejelentkezik a Cloudyn portálon. A személy, aki regisztrál a Cost Management szolgáltatást, és bejelentkezhet a Cloudyn portált, mint az ő válik a *elsődleges rendszergazdai*. Rendszergazda1 nem hoz létre az összes felhasználói fiókot. Azonban a Cloudyn portált használja, akkor létrehozása az Azure-fiókok és állít be egy entitáshierarchiára. Rendszergazda1 Admin2, egy Bérlői rendszergazda, hogy Regisztráljon a Cost Management, és jelentkezzen be a Cloudyn portálon kell figyelmeztet.
+> Rendszergazda1 a Microsoft Cloud Solution Provider és a nagyvállalati szerződés felhasználó lehet. A szervezet készen áll a Cloudyn használatának megkezdéséhez.  Ő regisztrálja az Azure Portalon keresztül, és bejelentkezik a Cloudyn portálon. Regisztrálja a Cloudyn szolgáltatás és a jelentkezik be a Cloudyn portálra személynek, ő válik a *elsődleges rendszergazdai*. Rendszergazda1 nem hoz létre az összes felhasználói fiókot. Azonban a Cloudyn portált használja, akkor létrehozása az Azure-fiókok és állít be egy entitáshierarchiára. Rendszergazda1 Admin2, egy Bérlői rendszergazda, amely regisztrálja a Cloudyn, és jelentkezzen be a Cloudyn portálon kell figyelmeztet.
 
 > Admin2 regisztrálja az Azure Portalon keresztül. Azonban ha ő próbál bejelentkezni a Cloudyn portálon, kapjuk fiókját próbálnak hiba **felfüggesztve**. Az elsődleges rendszergazdai rendszergazda1, értesítést kap, a fiók felfüggesztését. Rendszergazda1 kell aktiválni Admin2 a fiókot, és biztosítson számára *rendszergazdai entitás hozzáférés* a megfelelő entitások, és lehetővé teszi a felhasználói hozzáférés-kezelési és aktív felhasználói fiók.
 
@@ -94,13 +94,13 @@ Ha módosítja az alapértelmezett cím, az Azure-ban az e-mail-címét a Cloudy
 
 Azt javasoljuk, hogy legalább két Cloudyn rendszergazdai fiókokat hozhat létre abban az esetben az egyik fiók lekérdezi zárolva.
 
-Ha nem jelentkezhet be a Cloudyn portálra, győződjön meg arról, hogy a Cloudyn bejelentkezni a megfelelő Azure Cost Management URL-CÍMÉT használja. Használat [ https://azure.cloudyn.com ](https://ms.portal.azure.com/#blade/Microsoft_Azure_CostManagement/CloudynMainBlade).
+Ha nem tud bejelentkezni a Cloudyn portált, győződjön meg arról, hogy a helyes URL-címet használ a Cloudyn bejelentkezni. Használat [ https://azure.cloudyn.com ](https://ms.portal.azure.com/#blade/Microsoft_Azure_CostManagement/CloudynMainBlade).
 
 Kerülje a Cloudyn közvetlen URL-cím https://app.cloudyn.com.
 
 ## <a name="how-do-i-activate-unactivated-accounts-with-azure-credentials"></a>Hogyan lehet aktiválni az Azure-beli hitelesítő időközét adja meg fiókokat?
 
-Amint az Azure-fiókok a Cloudyn által felfedezett költségadatok azonnal nyújtott költség-alapú jelentésekhez. Azonban a Cloudyn használati és teljesítményadatokat biztosít, akkor regisztrálnia kell a fiókok Azure hitelesítő adatait. Útmutatásért lásd: [hozzáadása Azure Resource Manager](https://support.cloudyn.com/hc/en-us/articles/212784085-Adding-Azure-Resource-Manager).
+Amint az Azure-fiókok a Cloudyn által felfedezett költségadatok azonnal nyújtott költség-alapú jelentésekhez. Azonban a Cloudyn használati és teljesítményadatokat biztosít, akkor regisztrálnia kell a fiókok Azure hitelesítő adatait. Útmutatásért lásd: [hozzáadása Azure Resource Manager](https://support.cloudyn.com/hc/articles/212784085-Adding-Azure-Resource-Manager).
 
 Az Azure a hitelesítő adatait, a Cloudyn portálon hozzáadásához válassza a Szerkesztés szimbólum jobb oldalán a fiók neve, nem az előfizetés.
 
@@ -110,8 +110,8 @@ Az Azure-beli hitelesítő hozzá vannak adva a Cloudyn, amíg a fiók megjeleni
 
 További entitásokat segítségével további nagyvállalati szerződések hozzáadása a Cloudyn-előfizetéshez. Az alábbi hivatkozások további entitások hozzáadása ismertetik:
 
-- [Entitás hozzáadása](https://support.cloudyn.com/hc/en-us/articles/212016145-Adding-an-Entity) cikk
-- [A hierarchiában a költségelemek meghatározása](https://support.cloudyn.com/hc/en-us/articles/115005142529-Video-Defining-your-hierarchy-with-Cost-Entities) videó
+- [Entitás hozzáadása](https://support.cloudyn.com/hc/articles/212016145-Adding-an-Entity) cikk
+- [A hierarchiában a költségelemek meghatározása](https://support.cloudyn.com/hc/articles/115005142529-Video-Defining-your-hierarchy-with-Cost-Entities) videó
 
 A CSP-k:
 
@@ -141,7 +141,7 @@ Ha az Azure-ból történő adatküldés a Cloudyn késés, adatok továbbra is 
 
 ## <a name="cost-fluctuations-in-cloudyn-cost-reports"></a>Cloudyn-Költségjelentésekben ingadozása költség
 
-Költségjelentésben költség ingadozások által megkövetelt jeleníti meg, amikor a felhőszolgáltatók számlázási frissített fájlok küldése. Változó költségű fordulhat elő, ha új fájlokat a felhőszolgáltató a szokásos módon kívül a napi és havi ütemezés reporting érkezik. A Cost módosítások Cloudyn újraszámítás nem eredménye. 
+Költségjelentésben költség ingadozások által megkövetelt jeleníti meg, amikor a felhőszolgáltatók számlázási frissített fájlok küldése. Változó költségű fordulhat elő, ha új fájlokat a felhőszolgáltató a szokásos módon kívül a napi és havi ütemezés reporting érkezik. A Cost módosítások Cloudyn újraszámítás nem eredménye.
 
 A hónap során a felhőszolgáltató által küldött minden elszámolási fájlok a napi költségek becslése. Néha adatok gyakran frissülő – alkalmanként többször naponta. Frissítések állnak az AWS üzemezésnél gyakoribb Azure. Költség tekintetében stabil maradjon, ha az előző havi számlázási kiszámítása befejeződött, és a végső számlázási fájl érkezik. Általában a hónap 10.
 
@@ -155,7 +155,7 @@ Változások történnek, amikor költség korrekciók kapott a felhőszolgálta
 
 Miután hozzáadta az Azure Resource Manager-hozzáférés és a gyűjtött, kell megjelennie a **optimalizáló** lehetőséget. Tekintse meg az Azure Resource Manager-hozzáférésének aktiválásához [hogyan lehet aktiválni az Azure-beli hitelesítő időközét adja meg fiókokat?](#how-do-i-activate-unactivated-accounts-with-azure-credentials)
 
-## <a name="is-cost-managementcloudyn-agent-based"></a>Cost Management/Cloudyn ügynök alapján?
+## <a name="is-cloudyn-agent-based"></a>A Cloudyn ügynök alapján?
 
 Nem. Ügynökök nem használ. A Microsoft insights-beli API-beli virtuális gépek az Azure virtuális gép metrikaadatok összegyűjtött. Ha azt szeretné, az Azure virtuális gépek metrikai adatok gyűjtését, szükségük a diagnosztikai beállítások engedélyezve van.
 

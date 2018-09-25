@@ -8,12 +8,12 @@ ms.date: 6/20/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 5ffb1b5c9889e2325eab32306b61899b37d22488
-ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
+ms.openlocfilehash: e9de037f886db7a48411959ef62e1e6687e54beb
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39187468"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46984296"
 ---
 # <a name="create-a-windows-iot-edge-device-that-acts-as-a-transparent-gateway"></a>Hozzon létre egy Windows IoT Edge-eszköz, amely transzparens átjáróként
 
@@ -206,6 +206,8 @@ Az IoT Edge-futtatókörnyezet továbbíthatnak hasonlóan modulok által küld�
    ```
 
 Tekintse meg a [modul összeállítás cikk] [ lnk-module-composition] üzenet-útválasztással kapcsolatos részletekért.
+
+[!INCLUDE [](../../includes/iot-edge-extended-offline-preview.md)]
 
 ## <a name="next-steps"></a>További lépések
 [A követelmények és az eszközök IoT Edge-modulok megismerése][lnk-module-dev].

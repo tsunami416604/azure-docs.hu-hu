@@ -4,7 +4,7 @@ description: Ismerje meg, hogyan fejlesztése és hibakeresése a Data Factory-f
 author: douglaslMS
 ms.author: douglasl
 manager: craigg
-ms.date: 05/14/2018
+ms.date: 09/21/2018
 ms.topic: conceptual
 ms.service: data-factory
 services: data-factory
@@ -12,12 +12,12 @@ documentationcenter: ''
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.openlocfilehash: a4d3f991dbba8a686c7242aabff11d9228300777
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: ca1ca616fdd097811b3f02285706b3ae8977d737
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37865165"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47034133"
 ---
 # <a name="iterative-development-and-debugging-with-azure-data-factory"></a>Iteratív fejlesztés és hibakeresés az Azure Data Factoryvel
 
@@ -40,13 +40,21 @@ Egy tesztfuttatás sikeres lesz, miután további tevékenységek hozzáadása a
 
 ![Egy tesztfuttatás megszakítása](media/iterative-development-debugging/iterative-development-image3.png)
 
-Ha fut, nem kell a módosítások közzététele a data Factory kiválasztása előtt **Debug**. Ez hasznos forgatókönyvekben, ahol szeretné győződjön meg arról, hogy a módosítások a data factory munkafolyamat frissítése előtt várt módon működik-e.
+Ha fut, nem kell a módosítások közzététele a data Factory kiválasztása előtt **Debug**. Ez a funkció akkor hasznos, forgatókönyvekben, ahol szeretné győződjön meg arról, hogy a módosítások a data factory munkafolyamat frissítése előtt várt módon működik-e.
 
 ## <a name="more-info-about-debugging"></a>További információ a hibakeresés
 
 1. A teszt futtatása a kezdeményezett a **Debug** képességek nem érhetők el a listában a **figyelő** fülre. Csak lásd futtatja az aktivált **Aktiválás most**, **ütemezés**, vagy **Átfedésmentes ablak** eseményindítókra a **figyelő** fülre. Láthatja, hogy az utolsó teszt futtatásakor a kezdeményezett a **Debug** a képesség a **kimeneti** folyamatvásznon ablakában.
 
 2. Kiválasztásával **Debug** ténylegesen futtatja a folyamatot. Így például, ha a folyamat másolási tevékenységet tartalmaz, a teszt futtatása adatokat másol forrás célhelyre. Emiatt ajánlott teszt mappákat használni a másolási tevékenységek és egyéb tevékenységeket történő hibakeresése során. A folyamat már hibakereséséhez, váltson a normál műveletek során használni kívánt tényleges mappákat.
+
+## <a name="visualizing-debug-runs"></a>Jelenítenek hibakeresési fut.
+
+A data Factory egy helyen folyamatban lévő összes hibakeresési futó jelenítheti meg. Válassza ki **nézet hibakeresési fut** az oldal jobb felső sarokban. Ez a funkció akkor hasznos, forgatókönyvekben, ahol tisztításához alárendelt folyamatok hibakeresési futtatásának fő folyamatok rendelkezik, és azt szeretné, hogy egyetlen nézetben minden aktív hibakeresési fog látni.
+
+![Válassza ki az aktív hibakeresési futtatások megtekintése ikon](media/iterative-development-debugging/view-debug-runs-image1.png)
+
+![Minta aktív hibakeresési futtatások listája](media/iterative-development-debugging/view-debug-runs-image2.png)
 
 ## <a name="setting-breakpoints-for-debugging"></a>Hibakeresési töréspontok beállításával
 

@@ -1,6 +1,6 @@
 ---
-title: Hozzon létre egy Azure Application Gateway – Azure CLI 1.0-s |} A Microsoft Docs
-description: Ismerje meg, hogyan kell Application Gateway létrehozása a Resource Managerben az Azure CLI 1.0 használatával.
+title: Az Azure Application Gateway - létrehozása az Azure klasszikus parancssori felület |} A Microsoft Docs
+description: Ismerje meg, hogyan hozhat létre egy Application Gateway az Azure klasszikus parancssori felület használatával a Resource Managerben
 services: application-gateway
 documentationcenter: na
 author: vhorne
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/31/2017
 ms.author: victorh
-ms.openlocfilehash: 29eec4ad1883db9d824b416bdfc7e984a5af4fbe
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ms.openlocfilehash: e834b1633f17ecec74ae17e962de445ad8d6dccd
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35645589"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46974425"
 ---
 # <a name="create-an-application-gateway-by-using-the-azure-cli"></a>Application gateway létrehozása az Azure CLI-vel
 
@@ -29,8 +29,8 @@ ms.locfileid: "35645589"
 > * [Azure Resource Manager PowerShell](application-gateway-create-gateway-arm.md)
 > * [Klasszikus Azure PowerShell](application-gateway-create-gateway.md)
 > * [Azure Resource Manager-sablon](application-gateway-create-gateway-arm-template.md)
-> * [Azure CLI 1.0](application-gateway-create-gateway-cli.md)
-> * [Azure CLI 2.0](application-gateway-create-gateway-cli.md)
+> * [Az Azure klasszikus parancssori felület](application-gateway-create-gateway-cli.md)
+> * [Azure CLI](application-gateway-create-gateway-cli.md)
 > 
 > 
 
@@ -38,7 +38,7 @@ Az Azure Application Gateway egy 7. rétegbeli terheléselosztó. Feladatátvét
 
 ## <a name="prerequisite-install-the-azure-cli"></a>Előfeltétel: Az Azure CLI telepítése
 
-Ebben a cikkben szereplő lépések végrehajtásához kell [telepítse az Azure parancssori felület Mac, Linux és Windows (Azure CLI)](../xplat-cli-install.md) és kell [jelentkezzen be Azure](/cli/azure/authenticate-azure-cli). 
+Ebben a cikkben szereplő lépések végrehajtásához kell [az Azure CLI telepítése](../xplat-cli-install.md) és kell [jelentkezzen be Azure](/cli/azure/authenticate-azure-cli). 
 
 > [!NOTE]
 > Ha nem rendelkezik Azure-fiókra, kell egyet. Itt regisztrálhat az [ingyenes próbaverzióra](../active-directory/fundamentals/sign-up-organization.md).

@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 09/06/2018
 ms.author: sedusch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 274f9d89113f583cc7b65ae01f3132d35b82b920
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: 6257f1f9c237422174d695489b8ed39c7c37ebe2
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44380420"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46969155"
 ---
 # <a name="azure-virtual-machines-planning-and-implementation-for-sap-netweaver"></a>Az Azure virtuális gépek tervezése és megvalósítása SAP NetWeaver
 [767598]:https://launchpad.support.sap.com/#/notes/767598
@@ -823,9 +823,9 @@ Az Azure parancssori felülete nyílt forráskódú, platformfüggetlen parancso
 
 További információ a telepítéshez, konfiguráláshoz és parancssori felület használata parancsok Azure feladatok elvégzéséhez:
 
-* [Az Azure CLI telepítése][xplat-cli]
+* [A klasszikus Azure CLI telepítése][xplat-cli]
 * [Telepítését és kezelését a virtuális gépek Azure Resource Manager-sablonok és az Azure parancssori felület használatával][../../linux/create-ssh-secured-vm-from-template.md]
-* [Az Azure CLI használata Mac, Linux és Windows Azure Resource Managerrel][xplat-cli-azure-resource-manager]
+* [Használja az Azure klasszikus parancssori felület Mac, Linux és Windows az Azure Resource Managerrel][xplat-cli-azure-resource-manager]
 
 Is olvasható fejezet [Linux virtuális gépek Azure CLI][deployment-guide-4.5.2] a a [telepítési útmutató][planning-guide] központi telepítése az Azure-figyelés az Azure parancssori felület használatával Az SAP-kiterjesztés.
 
@@ -959,7 +959,7 @@ Ebben az esetben azt szeretné, akár anélkül, az operációs rendszer VHD fel
 * Egy új virtuális gép létrehozása a virtuális gép konfigurációt *New-AzureRmVM* – lásd: <https://docs.microsoft.com/powershell/module/azurerm.compute/new-azurermvm>
 * Adatlemez hozzáadása egy új virtuális Gépet *Add-AzureRmVMDataDisk* – lásd: <https://docs.microsoft.com/powershell/module/azurerm.compute/add-azurermvmdatadisk>
 
-**Azure CLI 2.0**
+**Azure CLI**
 
 * Jelentkezzen be az előfizetéshez *az login*
 * Válassza ki az előfizetését *az fiók beállítása – előfizetés `<subscription name or id`>*
@@ -987,7 +987,7 @@ Egy meglévő virtuális Gépet vagy virtuális merevlemez feltöltéséhez a he
   * Felügyelt lemez rendszerképének *Set-AzureRmVMSourceImage* – lásd: <https://docs.microsoft.com/powershell/module/azurerm.compute/set-azurermvmsourceimage>
 * Egy új virtuális gép létrehozása a virtuális gép konfigurációt *New-AzureRmVM* – lásd: <https://docs.microsoft.com/powershell/module/azurerm.compute/new-azurermvm>
 
-**Azure CLI 2.0**
+**Azure CLI**
 
 * Használja *sysprep* a Windows vagy *waagent-deprovision* Linux általánosítani a virtuális gép – lásd: [technikai útmutató a Sysprep](https://technet.microsoft.com/library/cc766049.aspx) a Windows vagy [rögzítése egy Linuxos virtuális gép használja, mint egy Resource Manager-sablon] [ capture-image-linux-step-2-create-vm-image] linuxhoz
 * Jelentkezzen be az előfizetéshez *az login*
@@ -1036,7 +1036,7 @@ A letöltés ideje alatt a VHD-k vagy a felügyelt lemezeket nem lehet aktív. A
 
   A Save-AzureRmVhd parancsmag további részletekért ellenőrizze az itt <https://docs.microsoft.com/powershell/module/azurerm.compute/save-azurermvhd>.
 
-#### <a name="cli-20"></a>CLI 2.0
+#### <a name="azure-cli"></a>Azure CLI
   * Felügyelt lemez letöltése  
   Először az alapul szolgáló blob a felügyelt lemez eléréséhez. Ezután az alapul szolgáló blob átmásolása egy új tárfiókot, és a blob letöltése a storage-fiókból.
   ```
@@ -1074,7 +1074,7 @@ $config = New-AzureRmDiskConfig -CreateOption Copy -SourceUri "/subscriptions/<s
 New-AzureRmDisk -ResourceGroupName <resource group name> -DiskName <disk name> -Disk $config
 ```
 
-##### <a name="cli-20"></a>CLI 2.0
+##### <a name="azure-cli"></a>Azure CLI
 Azure CLI használatával másolja egy VHD-t, ahogyan az [Ez a cikk][storage-azure-cli-copy-blobs]. Az új felügyelt lemez létrehozásához használja *az lemez létrehozása* az alábbi példában látható módon.
 
 ```
@@ -1115,7 +1115,7 @@ $disk = New-AzureRmDisk -DiskName <disk name> -Disk $diskConfig -ResourceGroupNa
 $vm = Add-AzureRmVMDataDisk -VM $vm -Caching <caching option> -Lun <lun, for example 0> -CreateOption attach -ManagedDiskId $disk.Id
 $vm | Update-AzureRmVM
 ```
-##### <a name="cli-20"></a>CLI 2.0
+##### <a name="azure-cli"></a>Azure CLI
 ```
 
 # attach a vhd to a vm
@@ -1158,7 +1158,7 @@ Get-AzureStorageBlobCopyState -Blob <target blob name> -Container <target contai
 
 További példák: [Ez a cikk][storage-powershell-guide-full-copy-vhd].
 
-##### <a name="cli-20"></a>CLI 2.0
+##### <a name="azure-cli"></a>Azure CLI
 * Indítsa el a másolatot
 
 ```

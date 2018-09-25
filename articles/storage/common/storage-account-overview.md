@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 09/13/2018
 ms.author: tamram
 ms.component: common
-ms.openlocfilehash: c0d028b2e6f5e759b46293bc3e1cbef6902ea8ea
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: b942b85c954bb765833426f3f9a010a66f016a90
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45740851"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46972317"
 ---
 # <a name="azure-storage-account-overview"></a>Az Azure storage-fiókok áttekintése
 
@@ -94,8 +94,8 @@ Ne feledje ezeket a szabályokat a tárfiók elnevezésekor:
 
 Általános célú tárfiókok esetében az alábbi teljesítményszintek valamelyike konfigurálható:
 
-* Egy standard tárolási teljesítményszinttel blobok, fájlok, táblák, üzenetsorok és Azure virtuális gépek lemezeinek tárolására.
-* Egy prémium szintű storage teljesítményszinttel csak Azure-beli virtuálisgép-lemezek tárolására. A Premium Storage részletesebb áttekintéséért lásd: [Premium Storage: High-performance Storage for Azure Virtual Machine Workloads](../../virtual-machines/windows/premium-storage.md) (Premium Storage: Nagy teljesítményű tárterület az Azure virtuális gépek számítási feladataihoz).
+* Standard teljesítményszint blobok, fájlok, táblák, üzenetsorok és Azure virtuális gépek lemezeinek tárolására.
+* A premium teljesítményszint csak Azure-beli virtuálisgép-lemezek tárolására. A Premium Storage részletesebb áttekintéséért lásd: [Premium Storage: High-performance Storage for Azure Virtual Machine Workloads](../../virtual-machines/windows/premium-storage.md) (Premium Storage: Nagy teljesítményű tárterület az Azure virtuális gépek számítási feladataihoz).
 
 ## <a name="access-tiers-for-block-blob-data"></a>A blokkblobok adataival elérési szint
 
@@ -107,12 +107,15 @@ A rendelkezésre álló hozzáférési szintek a következők:
 * A **ritkán használt adatok** hozzáférési szint, amely nagy mennyiségű, ritkán elért és legalább 30 nappal a tárolt adatok tárolására van optimalizálva. Adatok tárolása a lassú elérési szint költséghatékonyabban, de valamelyest drágábbak, mint a gyakori elérésű szint adatok elérése, hogy az adatok elérése lehet.
 * A **archív** szint, amely csak egyedi blokkblobokhoz érhető el. Az archív szinten az adatokat, amelyeket lekérés több órás késése legalább 180 napig maradnak az archív szinten van optimalizálva. Az archív szinten adatok tárolására szolgáló a leginkább költséghatékony lehetőséget, de az adatok elérése drágább, mint a gyors vagy lassú elérésű szinteken adatok elérése. 
 
+> [!NOTE]
+> A [prémium szintű hozzáférési szint](../blobs/storage-blob-storage-tiers.md#premium-access-tier) egy helyileg redundáns tárolás (LRS) fiókot az Észak-Európa, USA 2. keleti régiója, USA középső régiója és USA nyugati régiójában régiókban korlátozott előzetes verzióban érhető el. Ismerje meg, hogyan kell regisztrálni az előzetes verzióra, lásd: [Azure prémium szintű Blob Storage bemutatása](http://aka.ms/premiumblob).
+
 Ha változik az adatok használati módja, bármikor hozzáférési szintek között válthat. 
 
 > [!IMPORTANT]
 > Egy meglévő tárfiókot vagy blob esetében a hozzáférési szint módosítása további díjakat vonhat.
 
-A hozzáférési rétegek kapcsolatos további információkért lásd: [Azure Blob storage: gyakori, ritka és archív tárolási szintek](../blobs/storage-blob-storage-tiers.md).
+A hozzáférési rétegek kapcsolatos további információkért lásd: [Azure Blob storage: prémium szintű (előzetes verzió), gyakori, ritka és archív tárolási szintek](../blobs/storage-blob-storage-tiers.md).
 
 ## <a name="replication"></a>Replikáció
 

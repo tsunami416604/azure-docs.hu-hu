@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 05/25/2017
 ms.author: jasonh
 ROBOTS: NOINDEX
-ms.openlocfilehash: 7b39724c3d382637a048dc4fb9a3436ac1dbeae8
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 130f684b69a9cfa1936c2a9aa5175f3d5a7631ac
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43108024"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46970277"
 ---
 # <a name="manage-windows-based-hadoop-clusters-in-hdinsight-by-using-the-azure-portal"></a>A HDInsight Windows-alapú Hadoop-fürtök kezelése az Azure portal használatával
 
@@ -207,7 +207,7 @@ Számos módon meg a program a folyamatot:
 
 * Az Azure Data Factory felhasználói. Lásd: [Azure HDInsight társított szolgáltatás](../data-factory/compute-linked-services.md) és [át és elemez az Azure Data Factory használatával](../data-factory/transform-data.md) az igény szerinti és önálló meghatározott HDInsight társított szolgáltatás.
 * Az Azure PowerShell-lel.  Lásd: [repülőjáratok késési adatainak elemzése](hdinsight-analyze-flight-delay-data.md).
-* Az Azure CLI használatával. Lásd: [kezelése a HDInsight-fürtök Azure CLI-vel](hdinsight-administer-use-command-line.md).
+* Klasszikus Azure CLI használatával. Lásd: [kezelése a HDInsight-fürtök használatával a klasszikus Azure CLI](hdinsight-administer-use-command-line.md).
 * HDInsight .NET SDK használata. Lásd: [elküldése Hadoop-feladatok](hadoop/submit-apache-hadoop-jobs-programmatically.md).
 
 Díjszabási információkért lásd: [HDInsight díjszabása](https://azure.microsoft.com/pricing/details/hdinsight/). Tekintse meg a fürt törlésének a portálról, [fürtök törlése](#delete-clusters)
@@ -364,7 +364,7 @@ Az előző képernyőképen a mappa nevét a Hadoop-verziószám beágyazott ren
 Ebben a cikkben megtanulhatta, hogyan hozhat létre egy HDInsight-fürtöt a portálon, és hogyan nyithat meg a Hadoop parancssori eszköz. További tudnivalókért tekintse meg a következő cikkeket:
 
 * [Az Azure PowerShell használatával HDInsight felügyelete](hdinsight-administer-use-powershell.md)
-* [A HDInsight az Azure CLI használatával felügyelheti](hdinsight-administer-use-command-line.md)
+* [Felügyelheti a HDInsight az Azure klasszikus parancssori felület használatával](hdinsight-administer-use-command-line.md)
 * [HDInsight-fürtök létrehozása](hdinsight-hadoop-provision-linux-clusters.md)
 * [Programozott módon a Hadoop-feladatok elküldése](hadoop/submit-apache-hadoop-jobs-programmatically.md)
 * [Az Azure HDInsight – első lépések](hadoop/apache-hadoop-linux-tutorial-get-started.md)

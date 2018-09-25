@@ -15,12 +15,12 @@ ms.date: 01/31/2018
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: 85a7b133655a3b1e4ca60c28e695e3057b293fdc
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: 91f75fdbe7bc7c66bbe581e9d4b295467acd4cd5
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39504515"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46989668"
 ---
 # <a name="how-to-enable-native-client-apps-to-interact-with-proxy-applications"></a>Együttműködhet a proxy-alkalmazások natív ügyfélalkalmazások engedélyezése
 
@@ -30,7 +30,7 @@ Az alkalmazásproxy által kiállított jogkivonatokban fejlécében átvevő Az
 
 ![A végfelhasználók, az Azure Active Directory és a közzétett alkalmazások közötti kapcsolat](./media/application-proxy-configure-native-client-application/richclientflow.png)
 
-Használja az Azure AD Authentication Library, amely gondoskodik a hitelesítési és sok ügyfél környezet támogatja, natív alkalmazásokat tehet közzé. Az alkalmazásproxy hogyan illik bele a [natív alkalmazás webes API-forgatókönyv](../develop/authentication-scenarios.md#native-application-to-web-api). 
+Használja az Azure AD Authentication Library, amely gondoskodik a hitelesítési és sok ügyfél környezet támogatja, natív alkalmazásokat tehet közzé. Az alkalmazásproxy hogyan illik bele a [natív alkalmazás webes API-forgatókönyv](../develop/native-app.md). 
 
 Ez a cikk végigvezeti az Application Proxy és az Azure AD Authentication Library natív alkalmazás közzététele a négy lépést. 
 
@@ -96,6 +96,6 @@ Ezekkel a paraméterekkel szerkeszti az adal-t, miután a felhasználók tudni h
 
 ## <a name="next-steps"></a>További lépések
 
-A natív alkalmazás folyamat kapcsolatos további információkért lásd: [natív alkalmazás webes API-hoz](../develop/authentication-scenarios.md#native-application-to-web-api)
+A natív alkalmazás folyamat kapcsolatos további információkért lásd: [natív alkalmazás webes API-hoz](../develop/native-app.md)
 
 Ismerje meg beállítása [egyszeri bejelentkezést az alkalmazásproxy](application-proxy-single-sign-on.md)

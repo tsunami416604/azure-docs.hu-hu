@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 04/13/2018
 ms.author: chrisgre
-ms.openlocfilehash: f81ef3c231874f314d6fe023ba247a0bcff61e90
-ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
+ms.openlocfilehash: 6535eee93b0fcaa2c0888fc6b647811c21e564d9
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2018
-ms.locfileid: "42057231"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46971909"
 ---
 # <a name="configure-and-monitor-iot-devices-at-scale-using-the-azure-cli"></a>Konfigurálhatja és figyelheti az Azure CLI használatával nagy mennyiségű IoT-eszközök
 
@@ -34,8 +34,8 @@ Automatikus konfigurációk munkahelyi ikereszközök készletét frissítése a
 ## <a name="cli-prerequisites"></a>Parancssori felület Előfeltételek
 
 * Egy [az IoT hub](../iot-hub/iot-hub-create-using-cli.md) az Azure-előfizetésében. 
-* [Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli) a saját környezetében. Az Azure CLI 2.0 legalább 2.0.24-es verzióját kell használnia. A verziószámot az `az –-version` paranccsal ellenőrizheti. Ez a verzió támogatja az „az” bővítményparancsokat, és ebben a verzióban került bevezetésre a Knack parancskeretrendszer. 
-* A [IoT-bővítmény az Azure CLI 2.0](https://github.com/Azure/azure-iot-cli-extension).
+* [Az Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) a környezetben. Legalább az Azure CLI 2.0.24-es verzióját kell vagy újabb. A verziószámot az `az –-version` paranccsal ellenőrizheti. Ez a verzió támogatja az „az” bővítményparancsokat, és ebben a verzióban került bevezetésre a Knack parancskeretrendszer. 
+* A [IoT-bővítmény az Azure CLI-vel](https://github.com/Azure/azure-iot-cli-extension).
 
 ## <a name="implement-device-twins-to-configure-devices"></a>Eszközök konfigurálása ikereszközök megvalósítása
 
@@ -56,7 +56,7 @@ Mielőtt létrehozna egy konfigurációt, mely eszközöket szeretné befolyáso
 
 ## <a name="define-the-target-content-and-metrics"></a>A célként megadott tartalom és a metrikák megadása
 
-A célként megadott tartalom és a metrika lekérdezések vannak megadva, az eszköz leíró JSON-dokumentumok ikereszköz kívánt tulajdonságot be beállítása és a jelentett tulajdonságok alapján mérhető.  Hozzon létre egy Azure CLI 2.0 használatával automatikus eszközkonfiguráció, mentse a célként megadott tartalom és a metrikák helyileg .txt-fájlként. A fájlelérési út egy újabb a következő szakaszban használnia, ha futtatja a parancsot a alkalmazni a konfigurációt az eszközre. 
+A célként megadott tartalom és a metrika lekérdezések vannak megadva, az eszköz leíró JSON-dokumentumok ikereszköz kívánt tulajdonságot be beállítása és a jelentett tulajdonságok alapján mérhető.  Hozzon létre egy Azure CLI-vel automatikus eszközkonfiguráció, mentse a célként megadott tartalom és a metrikák helyileg .txt-fájlként. A Fájlelérési utak fogja használni egy későbbi következő szakasz ismerteti, amikor futtatja a parancsot a alkalmazni a konfigurációt az eszközre. 
 
 Íme egy alapszintű cél tartalom példa:
 

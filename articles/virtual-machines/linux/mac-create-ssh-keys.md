@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/11/2018
 ms.author: cynthn
-ms.openlocfilehash: 4b86749f8a2e68dd5bae11ae440db4d6524e3a91
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 63a7602deee402bed056937c8465fd87c8256cd8
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44713765"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46962846"
 ---
 # <a name="quick-steps-create-and-use-an-ssh-public-private-key-pair-for-linux-vms-in-azure"></a>Gyors lépések: létrehozása és használata az SSH nyilvános-titkos kulcspárt Linux rendszerű virtuális gépekhez az Azure-ban
 
@@ -45,7 +45,7 @@ A következő parancsot egy SSH-kulcspár, RSA-titkosítás és 2048 bit hosszú
 ssh-keygen -t rsa -b 2048
 ```
 
-Használatakor a [Azure CLI 2.0](/cli/azure) virtuális Gépen való létrehozásához a [az virtuális gép létrehozása](/cli/azure/vm#az-vm-create) parancsot, igény szerint hozhat létre SSH nyilvános és titkos kulcs fájlokat a `--generate-ssh-keys` lehetőséget. A kulcsfontosságú fájlokat tárolja a ~/.ssh címtárban, hacsak nincs másképpen megadva az a `--ssh-dest-key-path` lehetőséget. A `--generate-ssh-keys` beállítás nem felülírja a meglévő kulcsfájlok, helyette a hibát adnak vissza. A következő parancsban cserélje le a *VMname* és *RGname* a saját értékeire:
+Használatakor a [Azure CLI-vel](/cli/azure) virtuális Gépen való létrehozásához a [az virtuális gép létrehozása](/cli/azure/vm#az-vm-create) parancsot, igény szerint hozhat létre SSH nyilvános és titkos kulcs fájlokat a `--generate-ssh-keys` lehetőséget. A kulcsfontosságú fájlokat tárolja a ~/.ssh címtárban, hacsak nincs másképpen megadva az a `--ssh-dest-key-path` lehetőséget. A `--generate-ssh-keys` beállítás nem felülírja a meglévő kulcsfájlok, helyette a hibát adnak vissza. A következő parancsban cserélje le a *VMname* és *RGname* a saját értékeire:
 
 ```azurecli
 az vm create --name VMname --resource-group RGname --generate-ssh-keys 

@@ -10,22 +10,22 @@ ms.service: active-directory
 ms.workload: identity
 ms.component: users-groups-roles
 ms.topic: article
-ms.date: 08/01/2018
+ms.date: 09/20/2018
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
-ms.openlocfilehash: 9c0bb676cc59820d3ae83612893c8920d5d0aebe
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: c3121f8b303d9f82ed949d598a942906d0d24f7e
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39424371"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47041023"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>Az Azure Active Directory a dinamikus tagsági szabályok
 
 Az Azure Active Directory (Azure AD) létrehozhat összetett Attribútumalapú szabályok dinamikus csoporttagságok engedélyezése. Dinamikus csoporttagság csökkenti az adminisztratív terhelést, a felhasználók hozzáadása és eltávolítása. Ez a cikk részletesen, a tulajdonságok és a felhasználók vagy eszközök számára a dinamikus tagsági szabályok létrehozásához szintaxisát. Biztonsági vagy Office 365-csoportok esetében dinamikustagság-szabály beállítására is lehetőség van.
 
-Ha módosítja olyan felhasználó vagy eszköz attribútumai, a rendszer kiértékeli az összes dinamikus szabályok annak ellenőrzéséhez, hogy aktiválja a változás minden olyan csoportot ad hozzá vagy távolít el egy könyvtárban. Ha egy felhasználó vagy az eszköz megfelel a egy egy csoportra vonatkozó szabálynak, kerülnek, a csoport tagjaként. Ezek a szabály már nem felel meg, ha eltávolítja.
+Ha módosítja olyan felhasználó vagy eszköz attribútumai, a rendszer kiértékeli az összes dinamikus szabályok annak ellenőrzéséhez, hogy aktiválja a változás minden olyan csoportot ad hozzá vagy távolít el egy könyvtárban. Ha egy felhasználó vagy az eszköz megfelel a egy egy csoportra vonatkozó szabálynak, kerülnek, a csoport tagjaként. Ezek a szabály már nem felel meg, ha eltávolítja. Nem lehet manuálisan hozzáadásakor vagy eltávolításakor egy dinamikus csoport tagja.
 
 * Eszközök vagy felhasználók dinamikus csoportot hozhat létre, de nem hozhat létre egy szabályt, amely tartalmazza a felhasználókat és eszközöket egyaránt.
 * Nem hozható létre egy eszközcsoportot a eszköztulajdonosok attribútumok alapján. Eszköz tagsági szabályok csak is lehet hivatkozni az eszköz attribútumait.

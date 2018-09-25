@@ -10,12 +10,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 12/11/2017
 ms.author: jasonh
-ms.openlocfilehash: 7e8f4900143372f9030e157cfd71dd7d84eabd80
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: db2c4281f23685c00e63058a5cfd8caaf663b0fb
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43093841"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46948740"
 ---
 # <a name="install-and-use-hue-on-hdinsight-hadoop-clusters"></a>Telepítse, és a Hue használata a HDInsight Hadoop-fürtök
 
@@ -48,7 +48,7 @@ A parancsfájl a Hue telepítése egy Linux-alapú HDInsight-fürtön elérhető
 Ez a szakasz a fürt az Azure portal használatával üzembe helyezésekor a parancsfájl használatával kapcsolatos útmutatást.
 
 > [!NOTE]
-> Az Azure PowerShell, az Azure CLI-vel, a HDInsight .NET SDK vagy az Azure Resource Manager-sablonok a alkalmazni parancsfájlműveletekkel is használható. Már fut a fürtök parancsfájlműveletekkel is alkalmazhat. További információkért lásd: [testreszabása HDInsight fürtök parancsfájlműveletekkel](hdinsight-hadoop-customize-cluster-linux.md).
+> Az Azure PowerShell, az Azure klasszikus parancssori felület, a HDInsight .NET SDK vagy az Azure Resource Manager-sablonok a alkalmazni parancsfájlműveletekkel is használható. Már fut a fürtök parancsfájlműveletekkel is alkalmazhat. További információkért lásd: [testreszabása HDInsight fürtök parancsfájlműveletekkel](hdinsight-hadoop-customize-cluster-linux.md).
 >
 >
 

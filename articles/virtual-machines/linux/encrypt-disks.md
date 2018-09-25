@@ -1,6 +1,6 @@
 ---
 title: Az Azure-beli Linuxos virtuális gép lemezeinek titkosításához |} A Microsoft Docs
-description: A fokozott biztonság az Azure CLI 2.0 használatával Linux virtuális Gépet a virtuális lemezek titkosítása
+description: A fokozott biztonság az Azure CLI használatával egy Linux rendszerű virtuális gépen a virtuális lemezek titkosítása
 services: virtual-machines-linux
 documentationcenter: ''
 author: cynthn
@@ -15,19 +15,20 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 05/31/2018
 ms.author: cynthn
-ms.openlocfilehash: 75ec087536d6f833a9a2106b1fdf4ed1fd73ef8e
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 044486424f8bcc9d66998f775154eff9c52e7d1b
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38634620"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46981229"
 ---
 # <a name="how-to-encrypt-a-linux-virtual-machine-in-azure"></a>Az Azure-beli Linuxos virtuális gép titkosítása
-Bővített virtuális gép (VM) biztonsági és megfelelőségi virtuális lemezeket és a virtuális gépre titkosíthatók. Virtuális gépek vannak titkosítva, amely egy Azure Key vaultban biztosított titkosítási kulcsok használatával. Szabályozhatja a kriptográfiai kulcsokat és naplózhatja azok használatát. Ez a cikk részletesen bemutatja az Azure CLI 2.0 használatával Linux virtuális gép virtuális lemezeinek titkosításához. 
+
+Bővített virtuális gép (VM) biztonsági és megfelelőségi virtuális lemezeket és a virtuális gépre titkosíthatók. Virtuális gépek vannak titkosítva, amely egy Azure Key vaultban biztosított titkosítási kulcsok használatával. Szabályozhatja a kriptográfiai kulcsokat és naplózhatja azok használatát. Ez a cikk részletesen bemutatja az Azure parancssori felületével Linux virtuális gép virtuális lemezeinek titkosításához. 
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Ha helyi telepítése és használata a parancssori felület, ez a cikk megköveteli, hogy futnak-e az Azure CLI 2.0.30-as verzió vagy újabb. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI 2.0 telepítése]( /cli/azure/install-azure-cli).
+Ha helyi telepítése és használata a parancssori felület, ez a cikk megköveteli, hogy futnak-e az Azure CLI 2.0.30-as verzió vagy újabb. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése]( /cli/azure/install-azure-cli).
 
 ## <a name="overview-of-disk-encryption"></a>Lemeztitkosítás – áttekintés
 Rest használatával titkosított virtuális lemezhez a Linux rendszerű virtuális gépek [dm-crypt](https://wikipedia.org/wiki/Dm-crypt). Nem jár költséggel az Azure-beli virtuális lemezek titkosításához. Titkosítási kulcsok Azure Key Vault szoftver védelemmel vannak tárolva, vagy Ön importálhat vagy hozhat létre a kulcsokat hardveres biztonsági modulokban (HSM) certified FIPS 140-2 szabványnak megfelelő 2. szint. Ezek a titkosítási kulcsok feletti ellenőrzés megtartása és naplózhatja azok használatát. Ezek a titkosítási kulcsok titkosítására és visszafejtésére a virtuális Géphez csatolt virtuális lemezek segítségével. Egy Azure Active Directory egyszerű szolgáltatás lehetővé teszi a biztonságos kiállító a kriptográfiai kulcsokat, a virtuális gépek vannak kapcsolva, és ki.

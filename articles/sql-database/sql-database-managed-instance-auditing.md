@@ -8,14 +8,14 @@ ms.reviewer: vanto
 ms.service: sql-database
 ms.custom: security
 ms.topic: conceptual
-ms.date: 08/28/2018
+ms.date: 09/20/2018
 ms.author: giladm
-ms.openlocfilehash: 7671b49921799e63b01d0eb85e90a8b75b2d5a48
-ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
+ms.openlocfilehash: 3971d6966088ccb19a35ab938408a1c9dc835d3b
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45544294"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47031815"
 ---
 # <a name="get-started-with-azure-sql-database-managed-instance-auditing"></a>Ismerkedés az Azure SQL Database felügyelt példány naplózási szolgáltatásával
 
@@ -104,7 +104,7 @@ Az alábbi szakasz ismerteti a felügyelt példány naplózásának konfigurál�
     Ha nincs megadva, `RETENTION_DAYS` alapértelmezett érték a 0 (korlátlan a megőrzés).
 
     További információ:
-    - [Naplózás a felügyelt példány, az Azure SQL Database és az SQL Server közötti különbségek](#subheading-3)
+    - [Naplózás a felügyelt példány, az Azure SQL Database és az SQL Server közötti különbségek](#auditing-differences-between-managed-instance-azure-sql-database-and-sql-server)
     - [KISZOLGÁLÓ NAPLÓZÁSI LÉTREHOZÁSA](https://docs.microsoft.com/sql/t-sql/statements/create-server-audit-transact-sql)
     - [AZ ALTER SERVER AUDIT](https://docs.microsoft.com/sql/t-sql/statements/alter-server-audit-transact-sql)
 

@@ -2,22 +2,22 @@
 title: Az Azure Bot Service – QnA Maker QnA robotot
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
-author: nstulasi
+author: tulasim88
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: qna-maker
 ms.topic: article
 ms.date: 09/12/2018
-ms.author: nstulasi
-ms.openlocfilehash: 0c6feb67b273ec30afba89f2d4d9b59a8a9f5acf
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.author: tulasim
+ms.openlocfilehash: 74c7bc5c601cd36a8dd2454506745406bc00dac0
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45731416"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47031288"
 ---
-# <a name="create-a-qna-bot-with-azure-bot-service"></a>A QnA robotot létrehozása az Azure Bot Service-szel
-Ez az oktatóanyag végigvezeti a QnA robotot az Azure Bot service az Azure Portalon való létrehozásakor.
+# <a name="create-a-qna-bot-with-azure-bot-service-v3"></a>A QnA robotot létrehozása az Azure Bot Service v3
+Ez az oktatóanyag végigvezeti a QnA robotot az Azure Bot service v3 létrehozása az Azure Portalon.
 
 ## <a name="prerequisite"></a>Előfeltétel
 Mielőtt hoz létre, kövesse a [Tudásbázis létrehozása](../How-To/create-knowledge-base.md) QnA Maker szolgáltatás létrehozása a kérdések és válaszok.
@@ -33,16 +33,24 @@ A robot a Tudásbázis hozta létre, a QnAMakerDialog keresztül érkező kérd�
 
     ![bot service kiválasztása](../media/qnamaker-tutorials-create-bot/bot-service-selection.png)
 
-3. Az a **Bot Service panel**, adja meg a szükséges információkat, és válassza ki **létrehozás**. Ez létrehozza és telepíti az QnAMakerDialog a bot service az Azure-bA.
+3. Az a **Bot Service panel**, adja meg a szükséges információkat:
 
     - Állítsa be **alkalmazásnév** a robot neve. A robot a felhőben (például mynotesbot.azurewebsites.net) történő telepítése során az altartomány neve lesz.
     - Válassza ki az előfizetést, erőforráscsoportot, App service-csomag és helyét.
-    - Válassza ki a **kérdést és választ** (Node.js vagy a C#) sablont a robot sablon mező.
-    - Jelölje be a megerősítő a jogi nyilatkozat. A jogi nyilatkozat feltételeit az alábbiakban olvashatják be a jelölőnégyzetet.
 
-        ![bot service kiválasztása](../media/qnamaker-tutorials-create-bot/bot-service-qna-template.PNG)
+4. Az SDK v4 a QnA robotot létrehozására vonatkozó utasításokat talál – lásd: [QnA v4 bot sablon](https://aka.ms/qna-bot-v4). A v3-sablonok használatával válassza ki az SDK-verziót **SDK v3** és az SDK nyelvi **C#** vagy **Node.js**.
 
-4. Győződjön meg arról, hogy a bot service van telepítve.
+    ![a robot sdk-beállítások](../media/qnamaker-tutorials-create-bot/bot-v3.png)
+
+5. Válassza ki a **kérdést és választ** sablon a robot sablon mező, majd mentse a sablon beállításokat kiválasztásával **kiválasztása**.
+
+    ![bot service kiválasztása](../media/qnamaker-tutorials-create-bot/bot-v3-template.png)
+
+6. Tekintse át a beállításokat, majd válassza a **létrehozás**. Ez létrehozza és telepíti az QnAMakerDialog a bot service az Azure-bA.
+
+    ![bot service kiválasztása](../media/qnamaker-tutorials-create-bot/bot-blade-settings-v3.png)
+
+7. Győződjön meg arról, hogy a bot service van telepítve.
 
     - Válassza ki **értesítések** (Harang ikon, amely mentén felső szegélyéhez, hogy az Azure Portalon található). Az értesítés módosul **központi telepítés elindítva** való **üzembe helyezés sikeres**.
     - Miután az értesítés megváltozik, és **üzembe helyezés sikeres**, jelölje be **erőforrás megnyitása** adott értesítésre.
@@ -63,7 +71,7 @@ A robot válaszol "állítsa be QnAKnowledgebaseId és QnASubscriptionKey az alk
     ![Alkalmazásbeállítások](../media/qnamaker-tutorials-create-bot/application-settings.PNG)
 
 2. A Tudásbázis Azonosítóját, gazdagép URL-cím és a végpont kulcs lekérése a Tudásbázis a beállítások lapján https://qnamaker.ai.
-    - Jelentkezzen be [a QnA Maker](https://qnamaker.ai)
+    - Jelentkezzen be a [a QnA Maker](https://qnamaker.ai)
     - Nyissa meg a Tudásbázis
     - Kattintson a **beállítások** lap
     - **Közzététel** a Tudásbázis, ha még nem tette

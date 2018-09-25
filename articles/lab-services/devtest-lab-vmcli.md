@@ -1,6 +1,6 @@
 ---
 title: Hozzon létre és kezelhet virtuális gépeket az Azure CLI-vel a DevTest Labs szolgáltatásban |} A Microsoft Docs
-description: Ismerje meg, hogyan használható az Azure DevTest Labs szolgáltatásban hozhat létre és kezelhet virtuális gépeket az Azure CLI 2.0 használatával
+description: Ismerje meg, hogyan használható az Azure DevTest Labs szolgáltatásban hozhat létre és kezelhet virtuális gépeket az Azure CLI-vel
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
-ms.openlocfilehash: 5e50bc3c6804a6f3d3dafd07b2918605c4cbc6ab
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: ccf9b08856fcc652e3ad4b2b31587d43d7ef9cca
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39434679"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46995952"
 ---
 # <a name="create-and-manage-virtual-machines-with-devtest-labs-using-the-azure-cli"></a>Hozzon létre és kezelhet virtuális gépeket a DevTest Labs szolgáltatással az Azure CLI használatával
 Ez a rövid útmutató végigvezeti létrehozása, indítása, csatlakozás, frissítése és a fejlesztői gépen, a laborban karbantartása. 
@@ -27,7 +27,7 @@ Előkészületek:
 
 * Ha a labor nem lett létrehozva, útmutató [Itt](devtest-lab-create-lab.md).
 
-* [Telepítse a CLI 2.0-s](https://docs.microsoft.com/cli/azure/install-azure-cli). Indításához futtassa az jelentkezzen be a kapcsolat létrehozása az Azure-ral. 
+* [Az Azure CLI telepítése](https://docs.microsoft.com/cli/azure/install-azure-cli). Indításához futtassa az jelentkezzen be a kapcsolat létrehozása az Azure-ral. 
 
 ## <a name="create-and-verify-the-virtual-machine"></a>Hozzon létre, és ellenőrizze a virtuális gép 
 Hozzon létre egy virtuális gép egy Piactéri rendszerképből ssh hitelesítés.

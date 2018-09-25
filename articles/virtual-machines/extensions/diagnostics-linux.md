@@ -9,12 +9,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 05/09/2017
 ms.author: agaiha
-ms.openlocfilehash: a51e4e61b8d0a9f9a80acc513dbba32c74372f5e
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: ac09754876d52798add58d9e0752d776ca29f247
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44348854"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46994802"
 ---
 # <a name="use-linux-diagnostic-extension-to-monitor-metrics-and-logs"></a>Linux diagnosztikai bővítmény használatával figyelheti a metrikák és naplók
 
@@ -54,7 +54,7 @@ A letölthető konfigurációs csak egy példa; Módosítsa azt a saját igénye
 ### <a name="prerequisites"></a>Előfeltételek
 
 * **Az Azure Linux-ügynök 2.2.0-ás verzió vagy újabb**. A legtöbb Azure-beli virtuális gép Linuxos katalógus lemezképek tartalmaznak 2.2.7 verzió vagy újabb. Futtatás `/usr/sbin/waagent -version` a virtuális gépen telepített verzió megerősítéséhez. Ha a virtuális gép a vendégügynök egy régebbi verziója fut, hajtsa végre a [ezek az utasítások](https://docs.microsoft.com/azure/virtual-machines/linux/update-agent) frissíteni.
-* **Azure parancssori felület (CLI)**. [Az Azure CLI 2.0 beállítása](https://docs.microsoft.com/cli/azure/install-azure-cli) környezet a gépen.
+* **Azure parancssori felület (CLI)**. [Az Azure parancssori felület beállítása](https://docs.microsoft.com/cli/azure/install-azure-cli) környezet a gépen.
 * A wget parancs, ha már nincs: futtassa `sudo apt-get install wget`.
 * Meglévő Azure-előfizetése és a egy meglévő tárfiókot, benne az adatok tárolásához.
 * Támogatott Linux-disztribúciók listáját be van kapcsolva https://github.com/Azure/azure-linux-extensions/tree/master/Diagnostic#supported-linux-distributions

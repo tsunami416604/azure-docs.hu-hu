@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/14/2018
+ms.date: 09/21/2018
 ms.author: jeedes
-ms.openlocfilehash: 677c40932a557b8a15a51b947794b4281801f65a
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.openlocfilehash: 0f8878505280371bf6046c1d1f0d7fc1275dd496
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45637652"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47039887"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-dmarcian"></a>Oktatóanyag: Azure Active Directory-integráció az dmarcian
 
@@ -111,15 +111,15 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
     | |
     | -- |
     | `https://us.dmarcian.com/sso/saml/<ACCOUNT_ID>/sp.xml` |
-    | `https://dmarcian.com-eu/sso/saml/<ACCOUNT_ID>/sp.xml ` |
-    | `https://dmarcian.com-ap/sso/saml/<ACCOUNT_ID>/sp.xml` |
+    | `https://dmarcian-eu.com/sso/saml/<ACCOUNT_ID>/sp.xml` |
+    | `https://dmarcian-ap.com/sso/saml/<ACCOUNT_ID>/sp.xml` |
 
     b. Az a **válasz URL-cím** szövegmezőbe írja be a következő minta használatával URL-címe:
     | |
     |--|
     | `https://us.dmarcian.com/login/<ACCOUNT_ID>/handle/` |
-    | `https://dmarcian.com-eu/login/<ACCOUNT_ID>/handle/ `|
-    | `https://dmarcian.com-ap/login/<ACCOUNT_ID>/handle/`|
+    | `https://dmarcian-eu.com/login/<ACCOUNT_ID>/handle/` |
+    | `https://dmarcian-ap.com/login/<ACCOUNT_ID>/handle/` |
 
 4. Ellenőrizze **speciális URL-beállítások megjelenítése** , és hajtsa végre a következő lépést, ha az alkalmazás a konfigurálni kívánt **SP** kezdeményezett mód:
 
@@ -129,8 +129,8 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
     | |
     |--|
     | `https://us.dmarcian.com/login/<ACCOUNT_ID>` |
-    | `https://dmarcian.com-eu/login/<ACCOUNT_ID>` |
-    | `https://dmarcian.com-ap/login/<ACCOUNT_ID>` |
+    | `https://dmarcian-eu.com/login/<ACCOUNT_ID>` |
+    | `https://dmarciam-ap.com/login/<ACCOUNT_ID>` |
      
     > [!NOTE] 
     > Ezek a értékei nem valódi. A tényleges azonosítója, válasz URL-cím és bejelentkezési URL-címet az oktatóanyag későbbi részében ismertetett frissíteni ezeket az értékeket. 

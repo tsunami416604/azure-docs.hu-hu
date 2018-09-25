@@ -13,14 +13,19 @@ ms.custom: mvc
 ms.devlang: ''
 ms.topic: article
 ms.date: 11/22/2017
-ms.openlocfilehash: 83e1f14db317f59ab2063a9d020adbdb6fe78e5f
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ROBOTS: NOINDEX
+ms.openlocfilehash: 5d52433a32d8dc764c7535dacf5872e55f0082ac
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35646471"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46995516"
 ---
 # <a name="deep-learning-for-predictive-maintenance-real-world-scenarios"></a>Deep learninget a prediktív karbantartási valós életből vett példák
+
+[!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)] 
+
+
 
 Deep learning egy gépi tanulás a legnépszerűbb trendekkel és sok terület, például alkalmazások:
 - Driverless ábrázolja és robotika.
@@ -75,7 +80,7 @@ Ez a parancs biztosítja a https használható hitelesítési kulcs:\\aka.ms\dev
 az ml experiment prepare --target docker --run-configuration docker
 ```
 
-Ezért célszerű futtatni egy [adatelemzési virtuális gép (DSVM) Linux (Ubuntu)](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/microsoft-ads.linux-data-science-vm-ubuntu) a memória-és. A dsvm-hez van konfigurálva, miután előkészítése az alábbi két parancsot a távoli Docker-környezetben:
+Ezért célszerű futtatni egy [adatelemzési virtuális gép (DSVM) Linux (Ubuntu)](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-ads.linux-data-science-vm-ubuntu) a memória-és. A dsvm-hez van konfigurálva, miután előkészítése az alábbi két parancsot a távoli Docker-környezetben:
 
 ```
 az ml computetarget attach remotedocker --name [Connection_Name] --address [VM_IP_Address] --username [VM_Username] --password [VM_UserPassword]

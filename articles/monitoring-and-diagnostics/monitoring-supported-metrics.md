@@ -8,12 +8,12 @@ ms.topic: reference
 ms.date: 09/14/2018
 ms.author: ancav
 ms.component: metrics
-ms.openlocfilehash: b7e18d943bea179cb6163d7f91a0761311ecf38e
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: 15cac40e743f44ea7e0954c94683674ad9372a7a
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45985243"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46962947"
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>Az Azure monitorban támogatott mérőszámok
 Az Azure Monitor használatával kommunikálhat a metrikák, beleértve a diagramkészítési őket a portálon, a hozzájuk férni a REST API-n keresztül vagy a lekérdezési őket több módot nyújt a PowerShell vagy parancssori felület használatával. Alább érhető el minden metrika teljes listáját jelenleg az Azure Monitor metrika folyamattal. Más metrikák elérhető a portálon vagy az örökölt API-k használatával lehet. Az alábbi listán csak a metrikák elérhető az Azure Monitor konszolidált metrika folyamat használatával tartalmazza. És -lekérdezés számára, ezek a metrikák, használja a [2018-01-01-es api-verzió](https://docs.microsoft.com/rest/api/monitor/metricdefinitions)
@@ -520,6 +520,24 @@ Az Azure Monitor használatával kommunikálhat a metrikák, beleértve a diagra
 |WriteRequests|Írási kérelmek|Darabszám|Összes|Az adatok száma a fiók írási kérelmeket.|Nincs dimenzió|
 |ReadRequests|Olvasási kérelmek|Darabszám|Összes|Az adatok száma olvasási kérelmek ahhoz a fiókhoz.|Nincs dimenzió|
 
+## <a name="microsoftdbformariadbservers"></a>Microsoft.DBforMariaDB/servers
+
+|Metrika|Metrika megjelenített neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|---|---|---|---|---|---|
+|cpu_percent|Százalékos Processzorhasználat|Százalék|Átlag|Százalékos Processzorhasználat|Nincs dimenzió|
+|memory_percent|Memória százalékos aránya|Százalék|Átlag|Memória százalékos aránya|Nincs dimenzió|
+|io_consumption_percent|I/o-százalék|Százalék|Átlag|I/o-százalék|Nincs dimenzió|
+|storage_percent|Tárolási százalék|Százalék|Átlag|Tárolási százalék|Nincs dimenzió|
+|storage_used|Felhasznált tárterület|Bájt|Átlag|Felhasznált tárterület|Nincs dimenzió|
+|storage_limit|Tárolási kapacitása|Bájt|Átlag|Tárolási kapacitása|Nincs dimenzió|
+|serverlog_storage_percent|Server Log storage százalékban|Százalék|Átlag|Server Log storage százalékban|Nincs dimenzió|
+|serverlog_storage_usage|Kiszolgálói naplók tárolására használt|Bájt|Átlag|Kiszolgálói naplók tárolására használt|Nincs dimenzió|
+|serverlog_storage_limit|Log storage maximális|Bájt|Átlag|Log storage maximális|Nincs dimenzió|
+|active_connections|Az aktív kapcsolatok|Darabszám|Átlag|Az aktív kapcsolatok|Nincs dimenzió|
+|connections_failed|Sikertelen kapcsolatok|Darabszám|Összes|Sikertelen kapcsolatok|Nincs dimenzió|
+|network_bytes_egress|Hálózat kimenő adatforgalma|Bájt|Összes|Kimenő hálózati forgalom között az aktív kapcsolatok|Nincs dimenzió|
+|network_bytes_ingress|Hálózat bejövő adatforgalma|Bájt|Összes|Hálózati az aktív kapcsolatok között|Nincs dimenzió|
+
 ## <a name="microsoftdbformysqlservers"></a>Microsoft.DBforMySQL/servers
 
 |Metrika|Metrika megjelenített neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
@@ -748,6 +766,41 @@ Az Azure Monitor használatával kommunikálhat a metrikák, beleértve a diagra
 |ObservedCapacity|Megfigyelt kapacitás|Darabszám|Átlag|Az automatikus skálázás számára annak végrehajtásakor jelentett kapacitás.|Nincs dimenzió|
 |ScaleActionsInitiated|Elindított skálázási műveletek|Darabszám|Összes|A skálázási művelet iránya.|ScaleDirection|
 
+## <a name="microsoftinsightscomponents"></a>Microsoft.Insights/Components
+(Nyilvános előzetes verzió)
+
+|Metrika|Metrika megjelenített neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|---|---|---|---|---|---|
+|availabilityResults/időtartama|Tesztek időtartama|Ideje ezredmásodpercben|Átlag|Tesztek időtartama|availabilityResult/name, availabilityResult /-helyet, availabilityResult/sikeres|
+|billingMeters/telemetryCount|Adatpontok száma|Darabszám|Összes|Az Application Insights-erőforrásnak elküldött adatpontok száma. Ezen metrika feldolgozása akár két órás késéssel történik.|Számlázás/telemetryItemType, a számlázás/telemetryItemSource|
+|billingMeters/telemetrySize|Adatpontok mennyisége|Bájt|Összes|Az Application Insights-erőforrás felé küldött adatok mennyisége. Ezen metrika feldolgozása akár két órás késéssel történik.|Számlázás/telemetryItemType, a számlázás/telemetryItemSource|
+|browserTimings/networkDuration|Hálózati kapcsolat ideje lapbetöltéskor|Ideje ezredmásodpercben|Átlag|A felhasználói kérelem és a hálózati kapcsolat között eltelt idő. Magában foglalja a DNS-keresési és -átviteli kapcsolat.|Nincs dimenzió|
+|browserTimings/processingDuration|Ügyfél feldolgozási ideje|Ideje ezredmásodpercben|Átlag|Az utolsó bájtig eltelt egy dokumentum fogadása, mindaddig, amíg a DOM betöltése között eltelt idő. Aszinkron kérelmek feldolgozása még folyamatban lehet is.|Nincs dimenzió|
+|browserTimings/receiveDuration|Válasz fogadási ideje|Ideje ezredmásodpercben|Átlag|Az első és az utolsó bájt között, vagy a kapcsolat bontásáig eltelt idő.|Nincs dimenzió|
+|browserTimings/sendDuration|Kérelem küldési ideje|Ideje ezredmásodpercben|Átlag|A hálózati kapcsolódástól az első bájt érkezéséig eltelt idő.|Nincs dimenzió|
+|browserTimings/totalDuration|Böngésző lapbetöltési ideje|Ideje ezredmásodpercben|Átlag|A felhasználói kérelemtől a DOM, a stíluslapok, a szkriptek és a képek betöltéséig eltelt idő.|Nincs dimenzió|
+|függőségek és száma|Függőségi hívások|Darabszám|Darabszám|Az alkalmazás által külső erőforrások felé indított hívások száma.|függőség/típusa, függőségi/performanceBucket, függőségi/sikeres, művelet/szintetikus, felhőbeli/roleInstance, felhőbeli/roleName|
+|függőségek/időtartama|Függőségi időtartam|Ideje ezredmásodpercben|Átlag|Az alkalmazás által külső erőforrások felé indított hívások időtartama.|függőség/típusa, függőségi/performanceBucket, függőségi/sikeres, művelet/szintetikus, felhőbeli/roleInstance, felhőbeli/roleName|
+|függőségek/nem sikerült|Függőségi hibák|Darabszám|Darabszám|Az alkalmazás által külső erőforrások felé indított sikertelen függőségi hívások száma.|függőség/típusa, függőségi/performanceBucket, művelet/szintetikus, felhőbeli/roleInstance, felhőbeli/roleName|
+|Oldalmegtekintések és száma|Lapmegtekintések|Darabszám|Darabszám|Lapmegtekintések száma.|a művelet/szintetikus|
+|Oldalmegtekintések/időtartama|Lapmegtekintés betöltési ideje|Ideje ezredmásodpercben|Átlag|Lapmegtekintés betöltési ideje|a művelet/szintetikus|
+|performanceCounters/requestExecutionTime|HTTP-kérés végrehajtási ideje|Ideje ezredmásodpercben|Átlag|A legutóbbi kérelem végrehajtási ideje.|felhő/roleInstance|
+|performanceCounters/requestsInQueue|HTTP-kérések az alkalmazás sorában|Darabszám|Átlag|Az alkalmazás kérelem-várólistájának hossza.|felhő/roleInstance|
+|performanceCounters/requestsPerSecond|HTTP-kérések gyakorisága|Egység/s|Átlag|Az ASP.NET által az alkalmazásnak küldött összes kérelem száma másodpercenként.|felhő/roleInstance|
+|performanceCounters/exceptionsPerSecond|Kivételek gyakorisága|Egység/s|Átlag|A Windowsnak jelentett kezelt és nem kezelt kivételek száma, beleértve a .NET-kivételeket és a .NET-kivételekké konvertált nem kezelt kivételeket is.|felhő/roleInstance|
+|performanceCounters/processIOBytesPerSecond|Folyamat átviteli sebessége|Bájt/s|Átlag|Olvasási-írási műveletek fájlokon, hálózaton és eszközökön összesen (bájt/mp).|felhő/roleInstance|
+|performanceCounters/processCpuPercentage|Folyamat CPU|Százalék|Átlag|Az, hogy az összes folyamat szálak eltelt idő százalékában használták a processzort utasítások végrehajtásához. Ez 0 és 100 között változhat. Ez a metrika a w3wp folyamat teljesítményét jelzi.|felhő/roleInstance|
+|performanceCounters/processorCpuPercentage|Processzoridő|Százalék|Átlag|A processzor nem üresjárati szálak futtatásával töltött százalékos időhányada.|felhő/roleInstance|
+|performanceCounters/memoryAvailableBytes|Elérhető memória|Bájt|Átlag|Folyamatok vagy rendszerfeladatok számára azonnal kiosztható fizikai memória mennysége.|felhő/roleInstance|
+|performanceCounters/processPrivateBytes|Folyamat saját bájtjai|Bájt|Átlag|A kizárólag a megfigyelt alkalmazás folyamataihoz hozzárendelt memória mennyisége.|felhő/roleInstance|
+|kérések/időtartama|Kiszolgáló válaszideje|Ideje ezredmásodpercben|Átlag|Egy HTTP-kérelem fogadása és a válasz küldésének befejezése között eltelt idő.|kérés/performanceBucket, kérelem/eredménykód, művelet/szintetikus, felhő/roleInstance, kérelem/sikeres, felhőbeli/roleName|
+|kérelmek és száma|Kiszolgálói kérelmek|Darabszám|Darabszám|Befejezett HTTP-kérelmek száma.|kérés/performanceBucket, kérelem/eredménykód, művelet/szintetikus, felhő/roleInstance, kérelem/sikeres, felhőbeli/roleName|
+|sikertelen kérések /|Sikertelen kérelmek|Darabszám|Darabszám|Nem sikerült megjelölt HTTP-kérelmek száma. A legtöbb esetben ezek a kérelmek válaszkód > = 400-as és a 401-es nem egyenlő.|kérés/performanceBucket, kérés/resultCode, művelet/szintetikus, felhőbeli/roleInstance, felhőbeli/roleName|
+|kivételek és száma|Kivételek|Darabszám|Összes|A nem kezelt kivételek száma összesen.|felhő/roleName, felhőbeli/roleInstance, ügyfél/típusa|
+|kivételek és böngésző|Böngészőkivételek|Darabszám|Összes|A böngészőben fellépő nem kezelt kivételek száma.|Nincs dimenzió|
+|kivételek és a kiszolgáló|Kiszolgálókivételek|Darabszám|Összes|A kiszolgálói alkalmazásban fellépő nem kezelt kivételek száma.|felhő/roleName, felhőbeli/roleInstance|
+|nyomkövetési és száma|Hívásláncok száma|Darabszám|Összes|Híváslánc-dokumentumok száma|nyomkövetési/ERR, művelet/szintetikus, felhőbeli/roleName, felhőbeli/roleInstance|
+
 ## <a name="microsoftkeyvaultvaults"></a>Microsoft.KeyVault/vaults
 
 |Metrika|Metrika megjelenített neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
@@ -755,6 +808,20 @@ Az Azure Monitor használatával kommunikálhat a metrikák, beleértve a diagra
 |ServiceApiHit|Összes szolgáltatási API-találat|Darabszám|Darabszám|Szolgáltatási API-találatok teljes száma|Tevékenységtípus, ActivityName|
 |ServiceApiLatency|A szolgáltatási API teljes késése|Ezredmásodperc|Átlag|A szolgáltatási API-kérelmek teljes késése|Tevékenységtípus, ActivityName, StatusCode|
 |ServiceApiResult|Összes szolgáltatási API-eredmény|Darabszám|Darabszám|A szolgáltatási API-eredmények teljes száma|Tevékenységtípus, ActivityName, StatusCode|
+
+## <a name="microsoftkustoclusters"></a>Microsoft.Kusto/Clusters
+
+|Metrika|Metrika megjelenített neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|---|---|---|---|---|---|
+|ClusterDataCapacityFactor|Gyorsítótár-kihasználtság|Százalék|Átlag|A fürt hatókörében kihasználtsága|Nincs dimenzió|
+|QueryDuration|Lekérdezések időtartama|Ezredmásodperc|Átlag|A lekérdezések időtartama másodpercben|QueryStatus|
+|IngestionsLoadFactor|Adatbetöltési kihasználtsága|Százalék|Átlag|A fürtben használt adatfeldolgozási pontok aránya|Nincs dimenzió|
+|IsEngineAnsweringQuery|Életben tartási|Darabszám|Átlag|Megerősítést jelölőnégyzet azt jelzi, hogy a fürt respondes lekérdezések|Nincs dimenzió|
+|IngestCommandOriginalSizeInMb|Adatbetöltési kötet (megabájtban)|Darabszám|Összes|A fürthöz (megabájtban) a feldolgozott adatok teljes mennyisége|Nincs dimenzió|
+|EventAgeSeconds|Adatbetöltési késés (másodpercben)|másodperc|Átlag|A betöltési idő másodpercben a fürthöz a forrás (pl. üzenet jelenik meg az EventHub)|Nincs dimenzió|
+|EventRecievedFromEventHub|(Az Event Hubs) feldolgozott események|Darabszám|Összes|Ha az Event Hubs fürtjét a fürt által feldolgozott események száma|Nincs dimenzió|
+|IngestionResult|Adatbetöltési eredménye|Darabszám|Darabszám|Az Adatbetöltési műveletek száma|IngestionResultDetails|
+|EngineCPU|CPU|Százalék|Átlag|CPU-kihasználtsága|Nincs dimenzió|
 
 ## <a name="microsoftlocationbasedservicesaccounts"></a>Microsoft.LocationBasedServices/accounts
 
@@ -963,6 +1030,19 @@ Az Azure Monitor használatával kommunikálhat a metrikák, beleértve a diagra
 |ProbesFailedPercent|Nem sikerült a(z) % mintavételek|Százalék|Átlag|a figyelés mintavételek kapcsolat % sikertelen|Nincs dimenzió|
 |AverageRoundtripMs|Átl. Üzenetváltási idő (ms)|Ideje ezredmásodpercben|Átlag|Átlagos hálózati üzenetváltási idő (ms) figyelési mintavételek elküldve a forrás és cél közötti kapcsolat|Nincs dimenzió|
 
+## <a name="microsoftnetworkfrontdoors"></a>Microsoft.Network/frontdoors
+
+|Metrika|Metrika megjelenített neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|---|---|---|---|---|---|
+|RequestCount|A kérelmek száma|Darabszám|Összes|A HTTP-vagy Https-proxy által kiszolgált ügyfélkérelmek száma|Válaszállapotok összege HTTP, HttpStatusGroup, ClientRegion, ClientCountry|
+|RequestSize|Kérés mérete|Bájt|Összes|A HTTP-vagy Https-proxyval ügyfelektől érkező kérések küldött bájtok száma|Válaszállapotok összege HTTP, HttpStatusGroup, ClientRegion, ClientCountry|
+|ResponseSize|Válasz mérete|Bájt|Összes|HTTP-vagy Https-proxy által az ügyfelek, válaszok küldött bájtok száma|Válaszállapotok összege HTTP, HttpStatusGroup, ClientRegion, ClientCountry|
+|BackendRequestCount|Háttér-kérések száma|Darabszám|Összes|A HTTP-vagy Https-proxy háttérkomponenseinek küldött kérelmek száma|Válaszállapotok összege HTTP, HttpStatusGroup, háttér|
+|BackendRequestLatency|Háttérbeli késleltetése|Ideje ezredmásodpercben|Átlag|Amikor a kérést küld a HTTP-vagy Https-proxy által a háttérrendszer mindaddig, amíg a HTTP-vagy Https-proxy kapott válasz utolsó bájtját a háttérbeli számított idő|Háttérszolgáltatás|
+|TotalLatency|Teljes késés|Ideje ezredmásodpercben|Átlag|Ha az ügyfél kérést kapott a HTTP-vagy Https-proxy mindaddig, amíg az ügyfél arra vonatkozik, a HTTP-vagy Https-proxy a válasz utolsó bájtját számított idő|Válaszállapotok összege HTTP, HttpStatusGroup, ClientRegion, ClientCountry|
+|BackendHealthPercentage|Háttérkiszolgáló állapotadatainak százalékos aránya|Százalék|Átlag|Sikeres állapotjelentés aránya mintavételek a HTTP-vagy Https-proxy által háttérkomponenseinek|Háttér, Háttérkészletek|
+|WebApplicationFirewallRequestCount|Web Application Firewall kérések száma|Darabszám|Összes|A webalkalmazási tűzfal által feldolgozott ügyfél-kérelmek száma|PolicyName, RuleName, a művelet|
+
 ## <a name="microsoftnotificationhubsnamespacesnotificationhubs"></a>Microsoft.NotificationHubs/Namespaces/NotificationHubs
 
 |Metrika|Metrika megjelenített neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
@@ -1031,72 +1111,80 @@ Az Azure Monitor használatával kommunikálhat a metrikák, beleértve a diagra
 |Incoming.all.failedrequests|Minden sikertelen bejövő kérelem|Darabszám|Összes|Egy értesítési központ összes sikertelen bejövő kérelme|Nincs dimenzió|
 
 ## <a name="microsoftoperationalinsightsworkspaces"></a>Microsoft.OperationalInsights/workspaces
-(Nyilvános előzetes verzió)
 
 |Metrika|Metrika megjelenített neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|
-Average_ % szabad Inode-OK|Szabad Inode-OK|Darabszám|Átlag|Average_ % szabad Inode-OK|A számítógépen, a konfigurált, InstanceName, Számláló_elérési_útja, SourceSystem|
-Average_ % szabad terület|% Szabad terület|Darabszám|Átlag|Average_ % szabad terület|A számítógépen, a konfigurált, InstanceName, Számláló_elérési_útja, SourceSystem|
-Foglalt Inode-OK Average_ %|Foglalt Inode-OK %|Darabszám|Átlag|Foglalt Inode-OK Average_ %|A számítógépen, a konfigurált, InstanceName, Számláló_elérési_útja, SourceSystem|
-Foglalt hely Average_ %|Foglalt hely %|Darabszám|Átlag|Foglalt hely Average_ %|A számítógépen, a konfigurált, InstanceName, Számláló_elérési_útja, SourceSystem|
-Average_Disk olvasott bájt/mp|Lemezolvasási sebesség (bájt/s)|Darabszám|Átlag|Average_Disk olvasott bájt/mp|A számítógépen, a konfigurált, InstanceName, Számláló_elérési_útja, SourceSystem|
-Average_Disk/mp|Lemezolvasások/mp|Darabszám|Átlag|Average_Disk/mp|A számítógépen, a konfigurált, InstanceName, Számláló_elérési_útja, SourceSystem|
-Average_Disk átvitel/mp|Átvitel/mp|Darabszám|Átlag|Average_Disk átvitel/mp|A számítógépen, a konfigurált, InstanceName, Számláló_elérési_útja, SourceSystem|
-Average_Disk Zapsané Bajty/s|Lemezírási sebesség (bájt/s)|Darabszám|Átlag|Average_Disk Zapsané Bajty/s|A számítógépen, a konfigurált, InstanceName, Számláló_elérési_útja, SourceSystem|
-Average_Disk Lemezírások/mp|Lemezírások/mp|Darabszám|Átlag|Average_Disk Lemezírások/mp|A számítógépen, a konfigurált, InstanceName, Számláló_elérési_útja, SourceSystem|
-Average_Free (MB)|Szabad hely MB-ban|Darabszám|Átlag|Average_Free (MB)|A számítógépen, a konfigurált, InstanceName, Számláló_elérési_útja, SourceSystem|
-Average_Logical bájt/mp|Logikai lemez bájt/mp|Darabszám|Átlag|Average_Logical bájt/mp|A számítógépen, a konfigurált, InstanceName, Számláló_elérési_útja, SourceSystem|
-Average_ rendelkezésre álló memória %|Rendelkezésre álló memória %|Darabszám|Átlag|Average_ rendelkezésre álló memória %|A számítógépen, a konfigurált, InstanceName, Számláló_elérési_útja, SourceSystem|
-Average_ rendelkezésre álló Lapozóterület %|Rendelkezésre álló Lapozóterület %|Darabszám|Átlag|Average_ rendelkezésre álló Lapozóterület %|A számítógépen, a konfigurált, InstanceName, Számláló_elérési_útja, SourceSystem|
-Foglalt memória Average_ %|Foglalt memória %|Darabszám|Átlag|Foglalt memória Average_ %|A számítógépen, a konfigurált, InstanceName, Számláló_elérési_útja, SourceSystem|
-Foglalt Lapozóterület Average_ %|Foglalt Lapozóterület %|Darabszám|Átlag|Foglalt Lapozóterület Average_ %|A számítógépen, a konfigurált, InstanceName, Számláló_elérési_útja, SourceSystem|
-Average_Available álló memória|Rendelkezésre álló memória|Darabszám|Átlag|Average_Available álló memória|A számítógépen, a konfigurált, InstanceName, Számláló_elérési_útja, SourceSystem|
-Average_Available lapozási memória|Rendelkezésre álló Lapozóterület|Darabszám|Átlag|Average_Available lapozási memória|A számítógépen, a konfigurált, InstanceName, Számláló_elérési_útja, SourceSystem|
-Average_Page/mp|Olvasott lap/mp|Darabszám|Átlag|Average_Page/mp|A számítógépen, a konfigurált, InstanceName, Számláló_elérési_útja, SourceSystem|
-Average_Page Lemezírások/mp|Írt lap/mp|Darabszám|Átlag|Average_Page Lemezírások/mp|A számítógépen, a konfigurált, InstanceName, Számláló_elérési_útja, SourceSystem|
-Average_Pages/sec|Lap/mp|Darabszám|Átlag|Average_Pages/sec|A számítógépen, a konfigurált, InstanceName, Számláló_elérési_útja, SourceSystem|
-Average_Used álló Lapozóterület|Rendelkezésre álló memória|Darabszám|Átlag|Average_Used álló Lapozóterület|A számítógépen, a konfigurált, InstanceName, Számláló_elérési_útja, SourceSystem|
-Average_Used memória (MB)|Rendelkezésre álló Lapozóterület|Darabszám|Átlag|Average_Used memória (MB)|A számítógépen, a konfigurált, InstanceName, Számláló_elérési_útja, SourceSystem|
-Average_Total átvitt bájtok|Küldött bájtok száma összesen|Darabszám|Átlag|Average_Total átvitt bájtok|A számítógépen, a konfigurált, InstanceName, Számláló_elérési_útja, SourceSystem|
-Average_Total fogadott bájtok száma|Fogadott bájtok teljes száma|Darabszám|Átlag|Average_Total fogadott bájtok száma|A számítógépen, a konfigurált, InstanceName, Számláló_elérési_útja, SourceSystem|
-Average_Total bájtok|Összes bájt|Darabszám|Átlag|Average_Total bájtok|A számítógépen, a konfigurált, InstanceName, Számláló_elérési_útja, SourceSystem|
-Átvitt Average_Total csomagok|Az összes csomag továbbított adatok köre|Darabszám|Átlag|Átvitt Average_Total csomagok|A számítógépen, a konfigurált, InstanceName, Számláló_elérési_útja, SourceSystem|
-Fogadott Average_Total csomag|Összes fogadott csomag|Darabszám|Átlag|Fogadott Average_Total csomag|A számítógépen, a konfigurált, InstanceName, Számláló_elérési_útja, SourceSystem|
-Average_Total Rx hibák|Teljes Rx-hibák|Darabszám|Átlag|Average_Total Rx hibák|A számítógépen, a konfigurált, InstanceName, Számláló_elérési_útja, SourceSystem|
-Average_Total Tx hibák|Teljes Tx-hibák|Darabszám|Átlag|Average_Total Tx hibák|A számítógépen, a konfigurált, InstanceName, Számláló_elérési_útja, SourceSystem|
-Average_Total ütközések|Teljes ütközések|Darabszám|Átlag|Average_Total ütközések|A számítógépen, a konfigurált, InstanceName, Számláló_elérési_útja, SourceSystem|
-Average_Avg. Lemez mp/Olvasás|Átl. Lemez mp/Olvasás|Darabszám|Átlag|Average_Avg. Lemez mp/Olvasás|A számítógépen, a konfigurált, InstanceName, Számláló_elérési_útja, SourceSystem|
-Average_Avg. Lemez mp/átvitel|Átl. Lemez mp/átvitel|Darabszám|Átlag|Average_Avg. Lemez mp/átvitel|A számítógépen, a konfigurált, InstanceName, Számláló_elérési_útja, SourceSystem|
-Average_Avg. Lemez mp/írás|Átl. Lemez mp/írás|Darabszám|Átlag|Average_Avg. Lemez mp/írás|A számítógépen, a konfigurált, InstanceName, Számláló_elérési_útja, SourceSystem|
-Average_Physical bájt/mp|Fizikai lemez bájt/mp|Darabszám|Átlag|Average_Physical bájt/mp|A számítógépen, a konfigurált, InstanceName, Számláló_elérési_útja, SourceSystem|
-Védett módú Average_Pct|A PCT kiemelt idő|Darabszám|Átlag|Védett módú Average_Pct|A számítógépen, a konfigurált, InstanceName, Számláló_elérési_útja, SourceSystem|
-Felhasználói idő Average_Pct|A PCT felhasználói idő|Darabszám|Átlag|Felhasználói idő Average_Pct|A számítógépen, a konfigurált, InstanceName, Számláló_elérési_útja, SourceSystem|
-Average_Used memória KB|Használt memória mérete kilobájtban|Darabszám|Átlag|Average_Used memória KB|A számítógépen, a konfigurált, InstanceName, Számláló_elérési_útja, SourceSystem|
-A megosztott memória Average_Virtual|A megosztott virtuális memória|Darabszám|Átlag|A megosztott memória Average_Virtual|A számítógépen, a konfigurált, InstanceName, Számláló_elérési_útja, SourceSystem|
-Average_ DPC idő %|DPC idő %|Darabszám|Átlag|Average_ DPC idő %|A számítógépen, a konfigurált, InstanceName, Számláló_elérési_útja, SourceSystem|
-Average_ inaktivitási idő %|Inaktivitási idő %|Darabszám|Átlag|Average_ inaktivitási idő %|A számítógépen, a konfigurált, InstanceName, Számláló_elérési_útja, SourceSystem|
-Average_ megszakítási idő %|Megszakítási idő %|Darabszám|Átlag|Average_ megszakítási idő %|A számítógépen, a konfigurált, InstanceName, Számláló_elérési_útja, SourceSystem|
-Average_ % IO várakozási idő|A(z) % IO várakozási idő|Darabszám|Átlag|Average_ % IO várakozási idő|A számítógépen, a konfigurált, InstanceName, Számláló_elérési_útja, SourceSystem|
-Average_ %-ban a processzoron idő|Idő %-ban a processzoron|Darabszám|Átlag|Average_ %-ban a processzoron idő|A számítógépen, a konfigurált, InstanceName, Számláló_elérési_útja, SourceSystem|
-Védett módú Average_ %|Védett módú használat % idő|Darabszám|Átlag|Védett módú Average_ %|A számítógépen, a konfigurált, InstanceName, Számláló_elérési_útja, SourceSystem|
-Average_ processzoridő|Processzoridő|Darabszám|Átlag|Average_ processzoridő|A számítógépen, a konfigurált, InstanceName, Számláló_elérési_útja, SourceSystem|
-Felhasználói idő Average_ %|Felhasználói idő %|Darabszám|Átlag|Felhasználói idő Average_ %|A számítógépen, a konfigurált, InstanceName, Számláló_elérési_útja, SourceSystem|
-Average_Free fizikai memória|Szabad fizikai memória|Darabszám|Átlag|Average_Free fizikai memória|A számítógépen, a konfigurált, InstanceName, Számláló_elérési_útja, SourceSystem|
-Average_Free hely a Lapozófájlokban|Szabad hely a Lapozófájlokban|Darabszám|Átlag|Average_Free hely a Lapozófájlokban|A számítógépen, a konfigurált, InstanceName, Számláló_elérési_útja, SourceSystem|
-Average_Free virtuális memória|Szabad virtuális memória|Darabszám|Átlag|Average_Free virtuális memória|A számítógépen, a konfigurált, InstanceName, Számláló_elérési_útja, SourceSystem|
-Average_Processes|Folyamatok|Darabszám|Átlag|Average_Processes|A számítógépen, a konfigurált, InstanceName, Számláló_elérési_útja, SourceSystem|
-A Lapozófájlokban tárolt Average_Size|A Lapozófájlokban tárolt méret|Darabszám|Átlag|A Lapozófájlokban tárolt Average_Size|A számítógépen, a konfigurált, InstanceName, Számláló_elérési_útja, SourceSystem|
-Average_Uptime|Hasznos üzemidő|Darabszám|Átlag|Average_Uptime|A számítógépen, a konfigurált, InstanceName, Számláló_elérési_útja, SourceSystem|
-Average_Users|Felhasználók|Darabszám|Átlag|Average_Users|A számítógépen, a konfigurált, InstanceName, Számláló_elérési_útja, SourceSystem|
-Average_Current Lemezvárólista hossza|Lemezvárólista jelenlegi hossza|Darabszám|Átlag|Average_Current Lemezvárólista hossza|A számítógépen, a konfigurált, InstanceName, Számláló_elérési_útja, SourceSystem|
-Average_Available (MB)|Rendelkezésre álló memória|Darabszám|Átlag|Average_Available (MB)|A számítógépen, a konfigurált, InstanceName, Számláló_elérési_útja, SourceSystem|
-Average_ véglegesített % bájt használatban|Előjegyzett kihasználtsága (%)|Darabszám|Átlag|Average_ véglegesített % bájt használatban|A számítógépen, a konfigurált, InstanceName, Számláló_elérési_útja, SourceSystem|
-Fogadott Average_Bytes/mp|Fogadott bájtok/mp|Darabszám|Átlag|Fogadott Average_Bytes/mp|A számítógépen, a konfigurált, InstanceName, Számláló_elérési_útja, SourceSystem|
-Average_Bytes küldött/mp|Küldött bájtok/s|Darabszám|Átlag|Average_Bytes küldött/mp|A számítógépen, a konfigurált, InstanceName, Számláló_elérési_útja, SourceSystem|
-Average_Bytes összes/mp|Összes bájt/mp|Darabszám|Átlag|Average_Bytes összes/mp|A számítógépen, a konfigurált, InstanceName, Számláló_elérési_útja, SourceSystem|
-Szívverés|Szívverés|Darabszám|Átlag|Szívverés|Számítógép, OSType, verzió, SourceComputerId|
-Frissítés|Frissítés|Darabszám|Átlag|Frissítés|Számítógép, termék, a besorolás, a UpdateState, nem kötelező, jóváhagyott|
-Esemény|Esemény|Darabszám|Átlag|Esemény|Forrás, az eseménynaplóban, számítógép, EventCategory, EventLevel, Error, eseményazonosító|
+|Average_ % szabad Inode-OK|Szabad Inode-OK|Darabszám|Átlag|Average_ % szabad Inode-OK|A számítógépen, a konfigurált, InstanceName, Számláló_elérési_útja, SourceSystem|
+|Average_ % szabad terület|% Szabad terület|Darabszám|Átlag|Average_ % szabad terület|A számítógépen, a konfigurált, InstanceName, Számláló_elérési_útja, SourceSystem|
+|Foglalt Inode-OK Average_ %|Foglalt Inode-OK %|Darabszám|Átlag|Foglalt Inode-OK Average_ %|A számítógépen, a konfigurált, InstanceName, Számláló_elérési_útja, SourceSystem|
+|Foglalt hely Average_ %|Foglalt hely %|Darabszám|Átlag|Foglalt hely Average_ %|A számítógépen, a konfigurált, InstanceName, Számláló_elérési_útja, SourceSystem|
+|Average_Disk olvasott bájt/mp|Lemezolvasási sebesség (bájt/s)|Darabszám|Átlag|Average_Disk olvasott bájt/mp|A számítógépen, a konfigurált, InstanceName, Számláló_elérési_útja, SourceSystem|
+|Average_Disk/mp|Lemezolvasások/mp|Darabszám|Átlag|Average_Disk/mp|A számítógépen, a konfigurált, InstanceName, Számláló_elérési_útja, SourceSystem|
+|Average_Disk átvitel/mp|Átvitel/mp|Darabszám|Átlag|Average_Disk átvitel/mp|A számítógépen, a konfigurált, InstanceName, Számláló_elérési_útja, SourceSystem|
+|Average_Disk Zapsané Bajty/s|Lemezírási sebesség (bájt/s)|Darabszám|Átlag|Average_Disk Zapsané Bajty/s|A számítógépen, a konfigurált, InstanceName, Számláló_elérési_útja, SourceSystem|
+|Average_Disk Lemezírások/mp|Lemezírások/mp|Darabszám|Átlag|Average_Disk Lemezírások/mp|A számítógépen, a konfigurált, InstanceName, Számláló_elérési_útja, SourceSystem|
+|Average_Free (MB)|Szabad hely MB-ban|Darabszám|Átlag|Average_Free (MB)|A számítógépen, a konfigurált, InstanceName, Számláló_elérési_útja, SourceSystem|
+|Average_Logical bájt/mp|Logikai lemez bájt/mp|Darabszám|Átlag|Average_Logical bájt/mp|A számítógépen, a konfigurált, InstanceName, Számláló_elérési_útja, SourceSystem|
+|Average_ rendelkezésre álló memória %|Rendelkezésre álló memória %|Darabszám|Átlag|Average_ rendelkezésre álló memória %|A számítógépen, a konfigurált, InstanceName, Számláló_elérési_útja, SourceSystem|
+|Average_ rendelkezésre álló Lapozóterület %|Rendelkezésre álló Lapozóterület %|Darabszám|Átlag|Average_ rendelkezésre álló Lapozóterület %|A számítógépen, a konfigurált, InstanceName, Számláló_elérési_útja, SourceSystem|
+|Foglalt memória Average_ %|Foglalt memória %|Darabszám|Átlag|Foglalt memória Average_ %|A számítógépen, a konfigurált, InstanceName, Számláló_elérési_útja, SourceSystem|
+|Foglalt Lapozóterület Average_ %|Foglalt Lapozóterület %|Darabszám|Átlag|Foglalt Lapozóterület Average_ %|A számítógépen, a konfigurált, InstanceName, Számláló_elérési_útja, SourceSystem|
+|Average_Available álló memória|Rendelkezésre álló memória|Darabszám|Átlag|Average_Available álló memória|A számítógépen, a konfigurált, InstanceName, Számláló_elérési_útja, SourceSystem|
+|Average_Available lapozási memória|Rendelkezésre álló Lapozóterület|Darabszám|Átlag|Average_Available lapozási memória|A számítógépen, a konfigurált, InstanceName, Számláló_elérési_útja, SourceSystem|
+|Average_Page/mp|Olvasott lap/mp|Darabszám|Átlag|Average_Page/mp|A számítógépen, a konfigurált, InstanceName, Számláló_elérési_útja, SourceSystem|
+|Average_Page Lemezírások/mp|Írt lap/mp|Darabszám|Átlag|Average_Page Lemezírások/mp|A számítógépen, a konfigurált, InstanceName, Számláló_elérési_útja, SourceSystem|
+|Average_Pages/sec|Lap/mp|Darabszám|Átlag|Average_Pages/sec|A számítógépen, a konfigurált, InstanceName, Számláló_elérési_útja, SourceSystem|
+|Average_Used álló Lapozóterület|Használt lapozási memória terület|Darabszám|Átlag|Average_Used álló Lapozóterület|A számítógépen, a konfigurált, InstanceName, Számláló_elérési_útja, SourceSystem|
+|Average_Used memória (MB)|Használt memória (MB)|Darabszám|Átlag|Average_Used memória (MB)|A számítógépen, a konfigurált, InstanceName, Számláló_elérési_útja, SourceSystem|
+|Average_Total átvitt bájtok|Küldött bájtok száma összesen|Darabszám|Átlag|Average_Total átvitt bájtok|A számítógépen, a konfigurált, InstanceName, Számláló_elérési_útja, SourceSystem|
+|Average_Total fogadott bájtok száma|Fogadott bájtok teljes száma|Darabszám|Átlag|Average_Total fogadott bájtok száma|A számítógépen, a konfigurált, InstanceName, Számláló_elérési_útja, SourceSystem|
+|Average_Total bájtok|Összes bájt|Darabszám|Átlag|Average_Total bájtok|A számítógépen, a konfigurált, InstanceName, Számláló_elérési_útja, SourceSystem|
+|Átvitt Average_Total csomagok|Az összes csomag továbbított adatok köre|Darabszám|Átlag|Átvitt Average_Total csomagok|A számítógépen, a konfigurált, InstanceName, Számláló_elérési_útja, SourceSystem|
+|Fogadott Average_Total csomag|Összes fogadott csomag|Darabszám|Átlag|Fogadott Average_Total csomag|A számítógépen, a konfigurált, InstanceName, Számláló_elérési_útja, SourceSystem|
+|Average_Total Rx hibák|Teljes Rx-hibák|Darabszám|Átlag|Average_Total Rx hibák|A számítógépen, a konfigurált, InstanceName, Számláló_elérési_útja, SourceSystem|
+|Average_Total Tx hibák|Teljes Tx-hibák|Darabszám|Átlag|Average_Total Tx hibák|A számítógépen, a konfigurált, InstanceName, Számláló_elérési_útja, SourceSystem|
+|Average_Total ütközések|Teljes ütközések|Darabszám|Átlag|Average_Total ütközések|A számítógépen, a konfigurált, InstanceName, Számláló_elérési_útja, SourceSystem|
+|Average_Avg. Lemez mp/Olvasás|Átl. Lemez mp/Olvasás|Darabszám|Átlag|Average_Avg. Lemez mp/Olvasás|A számítógépen, a konfigurált, InstanceName, Számláló_elérési_útja, SourceSystem|
+|Average_Avg. Lemez mp/átvitel|Átl. Lemez mp/átvitel|Darabszám|Átlag|Average_Avg. Lemez mp/átvitel|A számítógépen, a konfigurált, InstanceName, Számláló_elérési_útja, SourceSystem|
+|Average_Avg. Lemez mp/írás|Átl. Lemez mp/írás|Darabszám|Átlag|Average_Avg. Lemez mp/írás|A számítógépen, a konfigurált, InstanceName, Számláló_elérési_útja, SourceSystem|
+|Average_Physical bájt/mp|Fizikai lemez bájt/mp|Darabszám|Átlag|Average_Physical bájt/mp|A számítógépen, a konfigurált, InstanceName, Számláló_elérési_útja, SourceSystem|
+|Védett módú Average_Pct|A PCT kiemelt idő|Darabszám|Átlag|Védett módú Average_Pct|A számítógépen, a konfigurált, InstanceName, Számláló_elérési_útja, SourceSystem|
+|Felhasználói idő Average_Pct|A PCT felhasználói idő|Darabszám|Átlag|Felhasználói idő Average_Pct|A számítógépen, a konfigurált, InstanceName, Számláló_elérési_útja, SourceSystem|
+|Average_Used memória KB|Használt memória mérete kilobájtban|Darabszám|Átlag|Average_Used memória KB|A számítógépen, a konfigurált, InstanceName, Számláló_elérési_útja, SourceSystem|
+|A megosztott memória Average_Virtual|A megosztott virtuális memória|Darabszám|Átlag|A megosztott memória Average_Virtual|A számítógépen, a konfigurált, InstanceName, Számláló_elérési_útja, SourceSystem|
+|Average_ DPC idő %|DPC idő %|Darabszám|Átlag|Average_ DPC idő %|A számítógépen, a konfigurált, InstanceName, Számláló_elérési_útja, SourceSystem|
+|Average_ inaktivitási idő %|Inaktivitási idő %|Darabszám|Átlag|Average_ inaktivitási idő %|A számítógépen, a konfigurált, InstanceName, Számláló_elérési_útja, SourceSystem|
+|Average_ megszakítási idő %|Megszakítási idő %|Darabszám|Átlag|Average_ megszakítási idő %|A számítógépen, a konfigurált, InstanceName, Számláló_elérési_útja, SourceSystem|
+|Average_ % IO várakozási idő|A(z) % IO várakozási idő|Darabszám|Átlag|Average_ % IO várakozási idő|A számítógépen, a konfigurált, InstanceName, Számláló_elérési_útja, SourceSystem|
+|Average_ %-ban a processzoron idő|Idő %-ban a processzoron|Darabszám|Átlag|Average_ %-ban a processzoron idő|A számítógépen, a konfigurált, InstanceName, Számláló_elérési_útja, SourceSystem|
+|Védett módú Average_ %|Védett módú használat % idő|Darabszám|Átlag|Védett módú Average_ %|A számítógépen, a konfigurált, InstanceName, Számláló_elérési_útja, SourceSystem|
+|Average_ processzoridő|Processzoridő|Darabszám|Átlag|Average_ processzoridő|A számítógépen, a konfigurált, InstanceName, Számláló_elérési_útja, SourceSystem|
+|Felhasználói idő Average_ %|Felhasználói idő %|Darabszám|Átlag|Felhasználói idő Average_ %|A számítógépen, a konfigurált, InstanceName, Számláló_elérési_útja, SourceSystem|
+|Average_Free fizikai memória|Szabad fizikai memória|Darabszám|Átlag|Average_Free fizikai memória|A számítógépen, a konfigurált, InstanceName, Számláló_elérési_útja, SourceSystem|
+|Average_Free hely a Lapozófájlokban|Szabad hely a Lapozófájlokban|Darabszám|Átlag|Average_Free hely a Lapozófájlokban|A számítógépen, a konfigurált, InstanceName, Számláló_elérési_útja, SourceSystem|
+|Average_Free virtuális memória|Szabad virtuális memória|Darabszám|Átlag|Average_Free virtuális memória|A számítógépen, a konfigurált, InstanceName, Számláló_elérési_útja, SourceSystem|
+|Average_Processes|Folyamatok|Darabszám|Átlag|Average_Processes|A számítógépen, a konfigurált, InstanceName, Számláló_elérési_útja, SourceSystem|
+|A Lapozófájlokban tárolt Average_Size|A Lapozófájlokban tárolt méret|Darabszám|Átlag|A Lapozófájlokban tárolt Average_Size|A számítógépen, a konfigurált, InstanceName, Számláló_elérési_útja, SourceSystem|
+|Average_Uptime|Hasznos üzemidő|Darabszám|Átlag|Average_Uptime|A számítógépen, a konfigurált, InstanceName, Számláló_elérési_útja, SourceSystem|
+|Average_Users|Felhasználók|Darabszám|Átlag|Average_Users|A számítógépen, a konfigurált, InstanceName, Számláló_elérési_útja, SourceSystem|
+|Average_Avg. Lemez mp/Olvasás|Átl. Lemez mp/Olvasás|Darabszám|Átlag|Average_Avg. Lemez mp/Olvasás|A számítógépen, a konfigurált, InstanceName, Számláló_elérési_útja, SourceSystem|
+|Average_Avg. Lemez mp/írás|Átl. Lemez mp/írás|Darabszám|Átlag|Average_Avg. Lemez mp/írás|A számítógépen, a konfigurált, InstanceName, Számláló_elérési_útja, SourceSystem|
+|Average_Current Lemezvárólista hossza|Lemezvárólista jelenlegi hossza|Darabszám|Átlag|Average_Current Lemezvárólista hossza|A számítógépen, a konfigurált, InstanceName, Számláló_elérési_útja, SourceSystem|
+|Average_Disk/mp|Lemezolvasások/mp|Darabszám|Átlag|Average_Disk/mp|A számítógépen, a konfigurált, InstanceName, Számláló_elérési_útja, SourceSystem|
+|Average_Disk átvitel/mp|Átvitel/mp|Darabszám|Átlag|Average_Disk átvitel/mp|A számítógépen, a konfigurált, InstanceName, Számláló_elérési_útja, SourceSystem|
+|Average_Disk Lemezírások/mp|Lemezírások/mp|Darabszám|Átlag|Average_Disk Lemezírások/mp|A számítógépen, a konfigurált, InstanceName, Számláló_elérési_útja, SourceSystem|
+|Average_Free (MB)|Szabad hely MB-ban|Darabszám|Átlag|Average_Free (MB)|A számítógépen, a konfigurált, InstanceName, Számláló_elérési_útja, SourceSystem|
+|Average_ % szabad terület|% Szabad terület|Darabszám|Átlag|Average_ % szabad terület|A számítógépen, a konfigurált, InstanceName, Számláló_elérési_útja, SourceSystem|
+|Average_Available (MB)|Rendelkezésre álló memória|Darabszám|Átlag|Average_Available (MB)|A számítógépen, a konfigurált, InstanceName, Számláló_elérési_útja, SourceSystem|
+|Average_ véglegesített % bájt használatban|Előjegyzett kihasználtsága (%)|Darabszám|Átlag|Average_ véglegesített % bájt használatban|A számítógépen, a konfigurált, InstanceName, Számláló_elérési_útja, SourceSystem|
+|Fogadott Average_Bytes/mp|Fogadott bájtok/mp|Darabszám|Átlag|Fogadott Average_Bytes/mp|A számítógépen, a konfigurált, InstanceName, Számláló_elérési_útja, SourceSystem|
+|Average_Bytes küldött/mp|Küldött bájtok/s|Darabszám|Átlag|Average_Bytes küldött/mp|A számítógépen, a konfigurált, InstanceName, Számláló_elérési_útja, SourceSystem|
+|Average_Bytes összes/mp|Összes bájt/mp|Darabszám|Átlag|Average_Bytes összes/mp|A számítógépen, a konfigurált, InstanceName, Számláló_elérési_útja, SourceSystem|
+|Average_ processzoridő|Processzoridő|Darabszám|Átlag|Average_ processzoridő|A számítógépen, a konfigurált, InstanceName, Számláló_elérési_útja, SourceSystem|
+|Average_Processor várólistájának hossza|Processzor-várólista hossza|Darabszám|Átlag|Average_Processor várólistájának hossza|A számítógépen, a konfigurált, InstanceName, Számláló_elérési_útja, SourceSystem|
+|Szívverés|Szívverés|Darabszám|Összes|Szívverés|Számítógép, OSType, verzió, SourceComputerId|
+|Frissítés|Frissítés|Darabszám|Átlag|Frissítés|Számítógép, termék, a besorolás, a UpdateState, nem kötelező, jóváhagyott|
+|Esemény|Esemény|Darabszám|Átlag|Esemény|Forrás, az eseménynaplóban, számítógép, EventCategory, EventLevel, Error, eseményazonosító|
 
 
 ## <a name="microsoftpowerbidedicatedcapacities"></a>Microsoft.PowerBIDedicated/capacities
@@ -1205,6 +1293,18 @@ Esemény|Esemény|Darabszám|Átlag|Esemény|Forrás, az eseménynaplóban, szá
 |eDTU_used|használt edtu-k|Darabszám|Átlag|használt edtu-k|Nincs dimenzió|
 |storage_used|Felhasznált tárterület|Bájt|Átlag|Felhasznált tárterület|Nincs dimenzió|
 |xtp_storage_percent|Memóriabeli OLTP storage százalék|Százalék|Átlag|Memóriabeli OLTP storage százalék|Nincs dimenzió|
+
+## <a name="microsoftsqlmanagedinstances"></a>Microsoft.Sql/managedInstances
+
+|Metrika|Metrika megjelenített neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|---|---|---|---|---|---|
+|virtual_core_count|Virtuális magok száma|Darabszám|Átlag|Virtuális magok száma|Nincs dimenzió|
+|avg_cpu_percent|Átlagos Processzorhasználat (%)|Százalék|Átlag|Átlagos Processzorhasználat (%)|Nincs dimenzió|
+|reserved_storage_mb|Lefoglalt lemezterület|Darabszám|Átlag|Lefoglalt lemezterület|Nincs dimenzió|
+|storage_space_used_mb|Felhasznált lemezterület|Darabszám|Átlag|Felhasznált lemezterület|Nincs dimenzió|
+|io_requests|I/o-kérelmek száma|Darabszám|Átlag|I/o-kérelmek száma|Nincs dimenzió|
+|io_bytes_read|Olvasási i/o-bájtok|Bájt|Átlag|Olvasási i/o-bájtok|Nincs dimenzió|
+|io_bytes_written|I/o írt bájtok száma|Bájt|Átlag|I/o írt bájtok száma|Nincs dimenzió|
 
 ## <a name="microsoftstoragestorageaccounts"></a>Microsoft.Storage/storageAccounts
 

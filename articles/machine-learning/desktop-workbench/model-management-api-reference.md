@@ -13,14 +13,17 @@ ms.workload: data-services
 ms.devlang: na
 ms.topic: article
 ms.date: 09/20/2017
-ms.openlocfilehash: c0f51e47038737d6aa743be718ad6b28c161c766
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ROBOTS: NOINDEX
+ms.openlocfilehash: 07f8a31244acca48a0bbae8ad26b0c5b509f0c0a
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35645764"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46959580"
 ---
 # <a name="azure-machine-learning-model-management-account-api-reference"></a>Az Azure Machine Learning minta felügyeleti fiók API-referencia
+
+[!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)] 
 
 A környezet beállításával kapcsolatos további információkért lásd: [Modellkezelési fiók beállítása](deployment-setup-configuration.md).
 
@@ -34,7 +37,7 @@ Az Azure Machine Learning minta felügyeleti fiók API valósít meg a következ
 Ez a rendszerkép használatával akár helyileg és a egy távoli Azure Container Service-fürt vagy egy másik Docker-val támogatott környezetben tetszőleges webszolgáltatás létrehozása.
 
 ## <a name="prerequisites"></a>Előfeltételek
-Győződjön meg arról, hogy elvégezte a telepítés lépéseit, a [telepítése és létrehozási rövid útmutató](../service/quickstart-installation.md) dokumentumot.
+Győződjön meg arról, hogy elvégezte a telepítés lépéseit, a [telepítése és létrehozási rövid útmutató](quickstart-installation.md) dokumentumot.
 
 A következőkre szükség, a folytatás előtt:
 1. Minta felügyeleti fiók kiépítése

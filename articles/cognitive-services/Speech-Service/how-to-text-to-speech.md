@@ -7,14 +7,14 @@ author: v-jerkin
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: article
-ms.date: 05/07/2018
+ms.date: 09/08/2018
 ms.author: v-jerkin
-ms.openlocfilehash: 2bcba37d5bf0e508c1f9aa1ad30ab1c039cff83f
-ms.sourcegitcommit: 8b694bf803806b2f237494cd3b69f13751de9926
+ms.openlocfilehash: 776b8496ea3f46287e2eeec7c150b8d60ca3e553
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/20/2018
-ms.locfileid: "46497756"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46964104"
 ---
 # <a name="use-text-to-speech-in-speech-service"></a>Használja a "Szöveg-beszéd átalakítás" Speech service-ben
 
@@ -47,12 +47,12 @@ Egy szöveg-beszéd átalakítás HTTP kérés érkezik POST módban a szöveget
 Fejléc|Értékek|Megjegyzések
 -|-|-
 |`Content-Type` | `application/ssml+xml` | A bemeneti szöveges formátum.
-|`X-Microsoft-OutputFormat`|     `raw-16khz-16bit-mono-pcm`<br>`audio-16khz-16kbps-mono-siren`<br>`riff-16khz-16kbps-mono-siren`<br>`riff-16khz-16bit-mono-pcm`<br>`audio-16khz-128kbitrate-mono-mp3`<br>`audio-16khz-64kbitrate-mono-mp3`<br>`audio-16khz-32kbitrate-mono-mp3`<br>`raw-24khz-16bit-mono-pcm`<br>`riff-24khz-16bit-mono-pcm`<br>`audio-24khz-160kbitrate-mono-mp3`<br>`audio-24khz-96kbitrate-mono-mp3`<br>`audio-24khz-48kbitrate-mono-mp3` | A kimeneti audio formátum.
+|`X-Microsoft-OutputFormat`|     `raw-16khz-16bit-mono-pcm`<br>`riff-16khz-16bit-mono-pcm`<br>`raw-8khz-8bit-mono-mulaw`<br>`riff-8khz-8bit-mono-mulaw`<br>`audio-16khz-128kbitrate-mono-mp3`<br>`audio-16khz-64kbitrate-mono-mp3`<br>`audio-16khz-32kbitrate-mono-mp3`<br>`raw-24khz-16bit-mono-pcm`<br>`riff-24khz-16bit-mono-pcm`<br>`audio-24khz-160kbitrate-mono-mp3`<br>`audio-24khz-96kbitrate-mono-mp3`<br>`audio-24khz-48kbitrate-mono-mp3` | A kimeneti audio formátum.
 |`User-Agent`   |Alkalmazásnév | Az alkalmazásnév megadása kötelező, és legfeljebb 255 karakterből állhat.
 | `Authorization`   | A jogkivonat-szolgáltatás az előfizetési kulcs szabályzatkérelem kapott engedélyezési jogkivonatot. Minden tokenhez a tíz percig érvényes. Lásd: [REST API-k: hitelesítés](rest-apis.md#authentication).
 
 > [!NOTE]
-> Ha a kiválasztott hang- és kimeneti formátum különböző átviteli sebességet, a hanganyag szükség szerint módosítva a felbontása. nem támogatja a 24khz beszédhangot `audio-16khz-16kbps-mono-siren` és `riff-16khz-16kbps-mono-siren` kimeneti formátumot. 
+> Ha a kiválasztott hang- és kimeneti formátum különböző átviteli sebességet, a hanganyag szükség szerint módosítva a felbontása.
 
 Az alábbiakban látható egy mintakérelmet.
 
@@ -87,7 +87,8 @@ Ha hiba történik, az alábbi állapotkódok használja. A válasz törzse a hi
 |-|-|-|
 400 |Hibás kérelem |Egy kötelező paraméter hiányzik, üres vagy null értékű. Másik lehetőségként átadott vagy egy kötelező vagy választható paraméter értéke érvénytelen. Egy gyakori probléma egy fejlécet, amely túl hosszú.
 401|Nem engedélyezett |A kérelem nem engedélyezett. Ellenőrizze, hogy érvényes-e az előfizetés, vagy egy token.
-413|Kérelem az entitás túl nagy|A SSML bemeneti adat 1024 karakternél hosszabb.
+413|Kérelem az entitás túl nagy|A bemeneti SSML túl nagy, vagy több mint 3 tartalmaz `<voice>` elemeket.
+429|Túl sok kérelem|Túllépte a kvótát, vagy engedélyezett az előfizetéséhez kérelmek száma.
 |502|Hibás átjáró    | Hálózati vagy kiszolgálóoldali probléma. Érvénytelen fejlécek is jelezhet.
 
 A szöveg Speech REST API további információkért lásd: [REST API-k](rest-apis.md#text-to-speech).

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/14/2018
 ms.author: jingwang
-ms.openlocfilehash: a9df3d9d181ed210a7c6aaec7974fa719b4f072e
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: dafbfb959e70563f8619f7aea877a3aa1c380453
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43086882"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46997403"
 ---
 # <a name="integration-runtime-in-azure-data-factory"></a>Integrációs modul az Azure Data Factoryban
 Az integrációs modul (Integration Runtime, IR), az Azure Data Factory által használt számítási infrastruktúra a következő adatintegrációs képességeket biztosítja különböző hálózati környezetekben:
@@ -90,14 +90,14 @@ A meglévő SSIS számítási feladat átemeléséhez létrehozhat egy Azure-SSI
 Az Azure-SSIS integrációs modul kiépíthető nyilvános hálózaton vagy magánhálózaton is.  A helyszíni adathozzáférés támogatása az Azure-SSIS integrációs modulnak a helyszíni hálózathoz csatlakoztatott virtuális hálózattal való összekapcsolása révén történik.  
 
 ### <a name="azure-ssis-ir-compute-resource-and-scaling"></a>Azure-SSIS integrációs modul számítási erőforrásai és skálázása
-Az Azure-SSIS integrációs modul egy, az SSIS-csomagok futtatására dedikált Azure-beli virtuális gépekből álló teljesen felügyelt fürt. A saját Azure SQL Database- vagy felügyeltpéldány- (előzetes verzió) kiszolgálóját is használhatja az SSIS-projektek/csomagok (SSISDB) csatolandó katalógusának üzemeltetésére. A számítási teljesítmény vertikális felskálázásához adjon meg egy csomópontméretet, és skálázza fel horizontálisan a fürt csomópontszámának megadásával. Az Azure-SSIS integrációs modul futtatási költségének kezeléséhez igény szerint leállíthatja és elindíthatja azt.
+Az Azure-SSIS integrációs modul egy, az SSIS-csomagok futtatására dedikált Azure-beli virtuális gépekből álló teljesen felügyelt fürt. A saját Azure SQL Database- vagy Felügyeltpéldány-kiszolgáló üzemeltetésére az SSIS-projektek/csomagok (SSISDB) csatolandó katalógusának fog is tenné. A számítási teljesítmény vertikális felskálázásához adjon meg egy csomópontméretet, és skálázza fel horizontálisan a fürt csomópontszámának megadásával. Az Azure-SSIS integrációs modul futtatási költségének kezeléséhez igény szerint leállíthatja és elindíthatja azt.
 
 További információkért tekintse meg az útmutatók között az Azure-SSIS integrációs modul létrehozását és konfigurálását ismertető cikket.  Létrehozásukat követően kevés vagy szinte semmilyen módosítással, a helyszíni SSIS-csomagokkal megegyező módon üzembe helyezheti és kezelheti meglévő SSIS-csomagjait az olyan jól ismert eszközök használatával, mint az SQL Server Data Tools (SSDT) és az SQL Server Management Studio (SSMS).
 
 Az Azure-SSIS integrációs modullal kapcsolatos további információkért tekintse át a következő cikkeket: 
 
 - [Oktatóanyag: SSIS-csomagok üzembe helyezése az Azure-ban](tutorial-create-azure-ssis-runtime-portal.md). Ez a cikk lépésenként mutatja be egy Azure-SSIS integrációs modul létrehozását, és egy Azure SQL-adatbázist használ az SSIS-katalógus futtatására. 
-- [Útmutató: Azure-SSIS integrációs modul létrehozása](create-azure-ssis-integration-runtime.md). Ez a cikk az oktatóanyagon alapul, és útmutatóul szolgál az Azure SQL felügyelt példányának (előzetes verzió) használatához, illetve az integrációs modul virtuális hálózathoz történő csatlakoztatásához. 
+- [Útmutató: Azure-SSIS integrációs modul létrehozása](create-azure-ssis-integration-runtime.md). Ez a cikk az oktatóanyagon alapul, és útmutatás az Azure SQL Database felügyelt példány használatával és az integrációs modul csatlakoztatása virtuális hálózathoz. 
 - [Azure-SSIS integrációs modul monitorozása](monitor-integration-runtime.md#azure-ssis-integration-runtime). Ez a cikk bemutatja, hogyan kérhet le információkat egy Azure-SSIS integrációs modulról, és ismerteti a visszaadott információkban található állapotok leírását. 
 - [Azure-SSIS integrációs modul kezelése](manage-azure-ssis-integration-runtime.md). Ez a cikk bemutatja, hogyan lehet leállítani, elindítani vagy eltávolítani egy Azure-SSIS integrációs modult. Azt is bemutathatja, hogyan skálázhatja fel horizontálisan az Azure-SSIS integrációs modult úgy, hogy további csomópontokat ad hozzá. 
 - [Azure-SSIS integrációs modul csatlakoztatása virtuális hálózathoz](join-azure-ssis-integration-runtime-virtual-network.md). Ez a cikk egy Azure-SSIS integrációs modul Azure virtuális hálózathoz való csatlakoztatásával kapcsolatos elméleti információkat tartalmaz. Azt is ismerteti, hogyan használható az Azure Portal a virtuális hálózat oly módon való konfigurálására, hogy az Azure-SSIS integrációs modul csatlakozhasson ahhoz. 
@@ -128,9 +128,9 @@ Ha adatmozgás végrehajtásához használja, a saját üzemeltetésű integrác
 ### <a name="azure-ssis-ir-location"></a>Az Azure-SSIS integrációs modul helye
 Az Azure-SSIS integrációs modul számára a megfelelő helyet kiválasztása az ETL folyamatokban létfontosságú a magas teljesítmény eléréséhez.
 
-- Az Azure-SSIS integrációs modul helyének nem kell megegyeznie az adat-előállítója helyével, de meg kell egyeznie a saját, az SSISDB üzemeltetési helyéül szolgáló Azure SQL Database-/felügyeltpéldány- (előzetes verzió) kiszolgálójának helyével. Ily módon az Azure-SSIS integrációs modul könnyen hozzáfér az SSISDB-hez anélkül, hogy jelentős adatforgalom zajlana különböző helyek között.
-- Ha nincs meglévő Azure SQL Database-/felügyeltpéldány- (előzetes verzió) kiszolgálója az SSISDB üzemeltetésére, de rendelkezik helyszíni adatforrásokkal/célokkal, érdemes létrehoznia egy új Azure SQL Database-/felügyeltpéldány- (előzetes verzió) kiszolgálót egy, a helyszíni hálózatához csatlakoztatott virtuális hálózat helyével megegyező helyen.  Ily módon létrehozhatja az Azure-SSIS integrációs modulját az új Azure SQL Database-/felügyeltpéldány- (előzetes verzió) kiszolgálóval, és a virtuális hálózathoz csatlakozva hatékonyan minimalizálhatja a különböző helyek közötti adatforgalmat, hiszen minden egy helyen található.
-- Ha rendelkezik meglévő Azure SQL Database-/felügyeltpéldány- (előzetes verzió) kiszolgálóval az SSISDB üzemeltetésére, de nem a helyszíni hálózatához csatlakoztatott virtuális hálózat helyével megegyező helyen, először hozza létre az Azure-SSIS integrációs modult a meglévő Azure SQL Database-/felügyeltpéldány- (előzetes verzió) kiszolgálóval, majd csatlakozzon egy másik virtuális hálózathoz azon a helyen, végül a különböző helyek között konfiguráljon egy virtuális hálózatok közötti kapcsolatot.
+- Az Azure-SSIS integrációs modul helyének nem kell egyeznie az adat-előállító helyét, de meg kell ugyanaz, mint a saját Azure SQL Database/Managed Instance-kiszolgálóját, helyével SSISDB üzemeltetni. Ily módon az Azure-SSIS integrációs modul könnyen hozzáfér az SSISDB-hez anélkül, hogy jelentős adatforgalom zajlana különböző helyek között.
+- Ha nem rendelkezik meglévő Azure SQL Database/Managed Instance kiszolgáló SSISDB-gazdagépre, de rendelkezik helyszíni adatforrásokkal/célokkal, létre kell hoznia egy új Azure SQL Database/Managed Instance-kiszolgálóhoz csatlakoztatott virtuális hálózat ugyanazon a helyen a helyszíni hálózathoz.  Ily módon létrehozhatja az Azure-SSIS integrációs modul az új Azure SQL Database/Managed Instance-kiszolgáló használatával, és a virtuális hálózatban, az összes ugyanazon a helyen, csatlakozva hatékonyan minimalizálhatja a különböző helyek közötti adatmozgást.
+- Ha a meglévő Azure SQL Database/Managed Instance-kiszolgáló helyét üzemeltető SSISDB nem ugyanaz, mint a helyszíni hálózatához csatlakoztatott virtuális hálózat helyét, először hozzon létre az Azure-SSIS integrációs modul egy meglévő Azure SQL Database használatával / A felügyelt kiszolgálópéldányt, és ugyanazon a helyen lévő másik virtuális hálózatokhoz való csatlakozás, és adja meg a virtuális hálózat virtuális hálózati kapcsolat a különböző helyek között.
 
 Az alábbi ábrán a Data Factory és a hozzá tartozó integrációs modul beállításai találhatók:
 
@@ -158,4 +158,4 @@ Minden átalakítási tevékenységhez tartozik egy cél számítási társítot
 Lásd az alábbi cikkeket:
 
 - [Saját üzemeltetésű integrációs modul létrehozása](create-self-hosted-integration-runtime.md)
-- [Azure-SSIS integrációs modul létrehozása](create-azure-ssis-integration-runtime.md). Ez a cikk az oktatóanyagon alapul, és útmutatóul szolgál az Azure SQL felügyelt példányának (előzetes verzió) használatához, illetve az integrációs modul virtuális hálózathoz történő csatlakoztatásához. 
+- [Azure-SSIS integrációs modul létrehozása](create-azure-ssis-integration-runtime.md). Ez a cikk az oktatóanyagon alapul, és útmutatás az Azure SQL Database felügyelt példány használatával és az integrációs modul csatlakoztatása virtuális hálózathoz. 

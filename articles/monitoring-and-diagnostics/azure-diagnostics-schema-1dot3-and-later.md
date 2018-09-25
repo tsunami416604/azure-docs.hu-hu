@@ -6,25 +6,25 @@ author: rboucher
 ms.service: azure-monitor
 ms.devlang: dotnet
 ms.topic: reference
-ms.date: 06/20/2018
+ms.date: 09/20/2018
 ms.author: robb
 ms.component: diagnostic-extension
-ms.openlocfilehash: d9d61762a2e7956c95356cb4e884675e38deeb1b
-ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
+ms.openlocfilehash: a1f6aae69580f2afe5aceabd70cfe8e6fd3151b8
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39145383"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46977944"
 ---
 # <a name="azure-diagnostics-13-and-later-configuration-schema"></a>Az Azure Diagnostics 1.3 és újabb konfigurációs séma
 > [!NOTE]
 > Az Azure Diagnostics bővítmény az a komponens, teljesítményszámlálók és más statisztikáin összegyűjtéséhez használt:
-> - Azure-alapú virtuális gépek 
+> - Azure-alapú virtuális gépek
 > - Virtual Machine Scale Sets
-> - Service Fabric 
-> - Cloud Services 
+> - Service Fabric
+> - Cloud Services
 > - Network Security Groups (Hálózati biztonsági csoportok)
-> 
+>
 > Ez a lap csak akkor jelentősége, ha ezek a szolgáltatások valamelyikét használja.
 
 Ez az oldal akkor érvényes verziója 1.3 és újabb (az Azure SDK 2.4-es és újabb). Újabb konfigurációs szakaszokat a megjelenítése, melyik verzió a addig adták hozzá vannak ellátva.  
@@ -53,7 +53,7 @@ Azure Diagnostics használatával kapcsolatos további információkért lásd: 
     <WadCfg>  
       <DiagnosticMonitorConfiguration overallQuotaInMB="10000">  
 
-        <PerformanceCounters scheduledTransferPeriod="PT1M">  
+        <PerformanceCounters scheduledTransferPeriod="PT1M", sinks="AzureMonitorSink">  
           <PerformanceCounterConfiguration counterSpecifier="\Processor(_Total)\% Processor Time" sampleRate="PT1M" unit="percent" />  
         </PerformanceCounters>  
 
@@ -105,13 +105,19 @@ Azure Diagnostics használatával kapcsolatos további információkért lásd: 
           <CrashDumpConfiguration processName="badapp.exe"/>  
         </CrashDumps>  
 
-        <DockerSources> <!-- Added in 1.9 --> 
+        <DockerSources> <!-- Added in 1.9 -->
           <Stats enabled="true" sampleRate="PT1M" scheduledTransferPeriod="PT1M" />
         </DockerSources>
 
       </DiagnosticMonitorConfiguration>  
 
       <SinksConfig>   <!-- Added in 1.5 -->  
+        <Sink name="AzureMonitorSink">
+            <AzureMonitor> <!-- Added in 1.11 -->
+                <resourceId>{insert resourceId}</ResourceId> <!-- Parameter only needed for classic VMs and Classic Cloud Services, exclude VMSS and Resource Manager VMs-->
+                <Region>{insert Azure region of resource}</Region> <!-- Parameter only needed for classic VMs and Classic Cloud Services, exclude VMSS and Resource Manager VMs -->
+            </AzureMonitor>
+        </Sink>
         <Sink name="ApplicationInsights">   
           <ApplicationInsights>{Insert InstrumentationKey}</ApplicationInsights>   
           <Channels>   
@@ -139,11 +145,18 @@ Azure Diagnostics használatával kapcsolatos további információkért lásd: 
   <PrivateConfig>  <!-- Added in 1.3 -->  
     <StorageAccount name="" key="" endpoint="" sasToken="{sas token}"  />  <!-- sasToken in Private config added in 1.8.1 -->  
     <EventHub Url="https://myeventhub-ns.servicebus.windows.net/diageventhub" SharedAccessKeyName="SendRule" SharedAccessKey="{base64 encoded key}" />
-   
+
+    <AzureMonitorAccount>
+        <ServicePrincipalMeta> <!-- Added in 1.11; only needed for classic VMs and Classic cloud services -->
+            <PrincipalId>{Insert service principal clientId}</PrincipalId>
+            <Secret>{Insert service principal client secret}</Secret>
+        </ServicePrincipalMeta>
+    </AzureMonitorAccount>
+
     <SecondaryStorageAccounts>
        <StorageAccount name="secondarydiagstorageaccount" key="{base64 encoded key}" endpoint="https://core.windows.net" sasToken="{sas token}" />
     </SecondaryStorageAccounts>
-   
+
     <SecondaryEventHubs>
        <EventHub Url="https://myeventhub-ns.servicebus.windows.net/secondarydiageventhub" SharedAccessKeyName="SendRule" SharedAccessKey="{base64 encoded key}" />
     </SecondaryEventHubs>
@@ -153,10 +166,14 @@ Azure Diagnostics használatával kapcsolatos további információkért lásd: 
 </DiagnosticsConfiguration>  
 
 ```  
+> [!NOTE]
+> A nyilvános Azure Monitor-fogadó definíció konfigurációs van két tulajdonság, az erőforrás-azonosító és a régió. Ezek csak a klasszikus virtuális gépeket és a klasszikus felhőalapú szolgáltatásokhoz szükséges. Ezek a tulajdonságok nem használhatók a Resource Manager virtuális gépek vagy virtuálisgép-méretezési csoportok.
+> Emellett van egy további saját konfigurációs elem számára az Azure Monitor gyűjtőjéhez, amelyet átad a rendszerbiztonsági tag azonosítója és kulcsa. Ez a tulajdonság csak a klasszikus virtuális gépeket és a klasszikus Cloud Services szükséges. A Resource Manager virtuális gépek és az Azure Monitor VMSS zárhatók ki a saját konfigurációs elem definíciója.
+>
 
-JSON megfelelője az előző konfigurációs XML-fájl. 
+JSON megfelelője az előző konfigurációs XML-fájl.
 
-A PublicConfig és PrivateConfig vannak elkülönítve, mert az json használati esetek többségében azok adhatók be különböző változók. Ezekben az esetekben a Resource Manager-sablonok tartalmaznak, a virtuálisgép-méretezési csoport beállítása a PowerShell és a Visual Studio. 
+A PublicConfig és PrivateConfig vannak elkülönítve, mert az json használati esetek többségében azok adhatók be különböző változók. Ezekben az esetekben a Resource Manager-sablonok tartalmaznak, a virtuálisgép-méretezési csoport beállítása a PowerShell és a Visual Studio.
 
 ```json
 "PublicConfig" {
@@ -168,6 +185,7 @@ A PublicConfig és PrivateConfig vannak elkülönítve, mert az json használati
             },
             "PerformanceCounters": {
                 "scheduledTransferPeriod": "PT1M",
+                "sinks": "AzureMonitorSink",
                 "PerformanceCounterConfiguration": [
                     {
                         "counterSpecifier": "\\Processor(_Total)\\% Processor Time",
@@ -278,6 +296,14 @@ A PublicConfig és PrivateConfig vannak elkülönítve, mert az json használati
         "SinksConfig": {
             "Sink": [
                 {
+                    "name": "AzureMonitorSink",
+                    "AzureMonitor":
+                    {
+                        "ResourceId": "{insert resourceId if a classic VM or cloud service, else property not needed}",
+                        "Region": "{insert Azure region of resource if a classic VM or cloud service, else property not needed}"
+                    }
+                },
+                {
                     "name": "ApplicationInsights",
                     "ApplicationInsights": "{Insert InstrumentationKey}",
                     "Channels": {
@@ -324,6 +350,11 @@ A PublicConfig és PrivateConfig vannak elkülönítve, mert az json használati
 }
 ```
 
+> [!NOTE]
+> A nyilvános Azure Monitor-fogadó definíció konfigurációs van két tulajdonság, az erőforrás-azonosító és a régió. Ezek csak a klasszikus virtuális gépeket és a klasszikus felhőalapú szolgáltatásokhoz szükséges.
+> Ezek a tulajdonságok nem használhatók a Resource Manager virtuális gépek vagy virtuálisgép-méretezési csoportok.
+>
+
 ```json
 "PrivateConfig" {
     "storageAccountName": "diagstorageaccount",
@@ -334,6 +365,12 @@ A PublicConfig és PrivateConfig vannak elkülönítve, mert az json használati
         "Url": "https://myeventhub-ns.servicebus.windows.net/diageventhub",
         "SharedAccessKeyName": "SendRule",
         "SharedAccessKey": "{base64 encoded key}"
+    },
+    "AzureMonitorAccount": {
+        "ServicePrincipalMeta": {
+            "PrincipalId": "{Insert service principal client Id}",
+            "Secret": "{Insert service principal client secret}"
+        }
     },
     "SecondaryStorageAccounts": {
         "StorageAccount": [
@@ -357,6 +394,11 @@ A PublicConfig és PrivateConfig vannak elkülönítve, mert az json használati
 }
 
 ```
+
+> [!NOTE]
+> Van egy további saját konfigurációs elem számára az Azure Monitor gyűjtőjéhez, amelyet átad a rendszerbiztonsági tag azonosítója és kulcsa. Ez a tulajdonság csak a klasszikus virtuális gépeket és a klasszikus Cloud Services szükséges. A Resource Manager virtuális gépek és az Azure Monitor VMSS zárhatók ki a saját konfigurációs elem definíciója.
+>
+
 
 ## <a name="reading-this-page"></a>Ez a lap olvasása  
  A következő címkék pedig körülbelül az előző példában is látható sorrendben.  Ha nem lát teljes leírása, a várt, keresse meg az oldal az elem vagy attribútum.  
@@ -396,14 +438,14 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
 ## <a name="wadcfg-element"></a>WadCFG elem  
  *Fa: Gyökér - DiagnosticsConfiguration - - PublicConfig WadCFG*
- 
+
  Azonosítja, és konfigurálja a telemetriai adatokat gyűjteni.  
 
 
-## <a name="diagnosticmonitorconfiguration-element"></a>DiagnosticMonitorConfiguration elem 
+## <a name="diagnosticmonitorconfiguration-element"></a>DiagnosticMonitorConfiguration elem
  *Fa: Gyökér - DiagnosticsConfiguration - PublicConfig - WadCFG - DiagnosticMonitorConfiguration*
 
- Szükséges 
+ Szükséges
 
 |Attribútumok|Leírás|  
 |----------------|-----------------|  
@@ -422,14 +464,14 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 |**EtwProviders**|Lásd: leírás máshol ezen az oldalon.|  
 |**Metrikák**|Lásd: leírás máshol ezen az oldalon.|  
 |**PerformanceCounters**|Lásd: leírás máshol ezen az oldalon.|  
-|**WindowsEventLog**|Lásd: leírás máshol ezen az oldalon.| 
-|**DockerSources**|Lásd: leírás máshol ezen az oldalon. | 
+|**WindowsEventLog**|Lásd: leírás máshol ezen az oldalon.|
+|**DockerSources**|Lásd: leírás máshol ezen az oldalon. |
 
 
 
 ## <a name="crashdumps-element"></a>CrashDumps elem  
  *Fa: Gyökér - DiagnosticsConfiguration - PublicConfig - WadCFG - DiagnosticMonitorConfiguration - CrashDumps*
- 
+
  Az összeomlási memóriaképek gyűjtésének engedélyezéséhez.  
 
 |Attribútumok|Leírás|  
@@ -442,7 +484,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 |--------------------|-----------------|  
 |**CrashDumpConfiguration**|Kötelező. Minden folyamathoz konfigurációs értékeket határozza meg.<br /><br /> A következő attribútumot is szükség:<br /><br /> **processName** – a nevét, a folyamat egy összeomlási memóriakép a gyűjtendő Azure Diagnostics szeretne.|  
 
-## <a name="directories-element"></a>Könyvtárak elem 
+## <a name="directories-element"></a>Könyvtárak elem
  *Fa: Gyökér - DiagnosticsConfiguration - PublicConfig - WadCFG - DiagnosticMonitorConfiguration - könyvtárak*
 
  Lehetővé teszi a tartalmát egy könyvtárat, az IIS nem sikerült hozzáférést kérelmekről készült naplók és/vagy IIS-naplók gyűjtését.  
@@ -453,7 +495,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 |--------------------|-----------------|  
 |**IISLogs**|Például ez az elem a konfigurációban lehetővé teszi az IIS-naplók gyűjtésére:<br /><br /> **containerName** -az IIS-naplók tárolására szolgáló Azure Storage-fiókját a blobtároló nevét.|   
 |**FailedRequestLogs**|Például ez az elem a konfigurációban lehetővé teszi, hogy a sikertelen kérelmek egy IIS-webhely vagy alkalmazás naplókat gyűjteménye. Is engedélyeznie kell a nyomkövetést **rendszer. Webkiszolgáló** a **Web.config**.|  
-|**Adatforrások**|Figyelendő könyvtárainak listáját.| 
+|**Adatforrások**|Figyelendő könyvtárainak listáját.|
 
 
 
@@ -541,14 +583,15 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
 |Gyermekelemet|Leírás|  
 |-------------------|-----------------|  
-|**PerformanceCounterConfiguration**|A következő attribútumok szükség:<br /><br /> - **counterSpecifier** – a teljesítményszámláló neve. Például: `\Processor(_Total)\% Processor Time`. A gazdagépen futó teljesítményszámlálók listájának lekéréséhez futtassa a parancsot `typeperf`.<br /><br /> - **sampleRate** -gyakoriságát. a számláló kell mintát venni.<br /><br /> Nem kötelező attribútum:<br /><br /> **egység** – a számláló mértékegysége.|  
+|**PerformanceCounterConfiguration**|A következő attribútumok szükség:<br /><br /> - **counterSpecifier** – a teljesítményszámláló neve. Például: `\Processor(_Total)\% Processor Time`. A gazdagépen futó teljesítményszámlálók listájának lekéréséhez futtassa a parancsot `typeperf`.<br /><br /> - **sampleRate** -gyakoriságát. a számláló kell mintát venni.<br /><br /> Nem kötelező attribútum:<br /><br /> **egység** – a számláló mértékegysége.|
+|**fogadóként** | 1.5-ös hozzá. Választható. A fogadó hely is a diagnosztikai adatok küldése mutat. Ha például az Azure Monitor vagy az Event Hubs.|    
 
 
 
 
 ## <a name="windowseventlog-element"></a>WindowsEventLog elem
  *Fa: Gyökér - DiagnosticsConfiguration - PublicConfig - WadCFG - DiagnosticMonitorConfiguration - WindowsEventLog*
- 
+
  Lehetővé teszi, hogy a gyűjtemény Windows eseménynaplók.  
 
  Nem kötelező **scheduledTransferPeriod** attribútum. Tekintse meg a korábban a magyarázatot.  
@@ -632,7 +675,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 |**name**|**string**|Tekintse meg a csatorna egyedi nevet|  
 
 
-## <a name="privateconfig-element"></a>PrivateConfig elem 
+## <a name="privateconfig-element"></a>PrivateConfig elem
  *Fa: Gyökér - DiagnosticsConfiguration - PrivateConfig*
 
  1.3-as verziójában hozzáadva.  

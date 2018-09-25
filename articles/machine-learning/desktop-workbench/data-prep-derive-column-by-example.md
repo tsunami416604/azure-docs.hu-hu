@@ -12,14 +12,19 @@ ms.workload: data-services
 ms.custom: mvc, reference
 ms.topic: article
 ms.date: 09/14/2017
-ms.openlocfilehash: 026ffed925606e2fdf31461035c9a0d73ad609e9
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ROBOTS: NOINDEX
+ms.openlocfilehash: 311fd39792274ef01b1b03fdf8252eb7ac93c922
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39060571"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46978859"
 ---
 # <a name="derive-column-by-example-transformation"></a>Oszlopok származtatása példa átalakítása
+
+[!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)] 
+
+
 
 A **származtatása példa** átalakítás lehetővé teszi a felhasználók leszármazottja, származtatott eredménye a felhasználó által megadott példák segítségével egy vagy több meglévő oszlop létrehozása. A származtatott a támogatott karakterlánc, dátum és számátalakítások tetszőleges kombinációját is lehet. 
 
@@ -295,25 +300,25 @@ Ezek a részek különböző szerint – példa átalakítások használata az a
 |DateTime|Hét napja|Dátum|Hónap|Év|Óra|Perc|Másodperc|
 |-----:|-----:|-----:|-----:|-----:|-----:|-----:|-----:|
 |31 – Jan-2031 05:54:18|**Fri**|**31**|**Jan**|**2031**|**5**|**54**|**18**|
-|13:32:01 17-Jan-1990|Sze|17|Jan|1990|13|32|01|
-|05:36:07 14-február-2034|K|14|Feb|2034|5|36|07|
-|Március 14-2002 13:16:16|Cs|14|már.|2002|13|16|16|
-|21-Jan-1985 05:44:43|H|21|Jan|1985|5|44|**43**|
-|01:11:56 16-Aug-1985.|P|16|Aug|1985|1|11|56|
-|20-Dec-2033 18:36:29|K|20|Dec|2033|18|36|29|
-|10:21:59 16-júliusban-1984|H|16|júl.|1984|10|21|59|
-|10:59:36 a 2038 Jan 13|Sze|13|Jan|2038|10|59|36|
-|15:13:54 14-Aug-1982|Szo|14|Aug|1982|15|13|54|
-|22-Nov-2030 08:18:08|P|22|Nov|2030|8|18|08|
-|21-Oct-1997 08:42:58|K|21|Okt|1997|8|42|58|
-|28-Nov-2006 14:19:15|K|28|Nov|2006|14|19|15|
-|29-Apr-2031 04:59:45|K|29|ápr.|2031|4|59|45|
-|02:38:36 29-Jan-2032|Cs|29|Jan|2032|2|38|36|
-|11 – május-2028 15:31:52|Cs|11|Május|2028|15|31|52|
-|12:45:39 15-júliusban-1977|P|15|júl.|1977|12|45|39|
-|27-Jan-2029 05:55:41|Szo|27|Jan|2029|5|55|41|
-|03-Mar-2024 10:17:49|V|3|már.|2024|10|17|49|
-|00:23:13 14-Diagramhalmazban – 2010|Sze|14|ápr.|2010|0|23|13|
+|13:32:01 17-Jan-1990|Em engedélyezett|17|Jan|1990|13|32|01|
+|05:36:07 14-február-2034|Kedd|14|Feb|2034|5|36|07|
+|Március 14-2002 13:16:16|Thu|14|Március|2002|13|16|16|
+|21-Jan-1985 05:44:43|Hétfő|21|Jan|1985|5|44|**43**|
+|01:11:56 16-Aug-1985.|Fri|16|Aug|1985|1|11|56|
+|20-Dec-2033 18:36:29|Kedd|20|Dec|2033|18|36|29|
+|10:21:59 16-júliusban-1984|Hétfő|16|Július|1984|10|21|59|
+|10:59:36 a 2038 Jan 13|Em engedélyezett|13|Jan|2038|10|59|36|
+|15:13:54 14-Aug-1982|Rövidítéssel|14|Aug|1982|15|13|54|
+|22-Nov-2030 08:18:08|Fri|22|Nov|2030|8|18|08|
+|21-Oct-1997 08:42:58|Kedd|21|Okt|1997|8|42|58|
+|28-Nov-2006 14:19:15|Kedd|28|Nov|2006|14|19|15|
+|29-Apr-2031 04:59:45|Kedd|29|Képest|2031|4|59|45|
+|02:38:36 29-Jan-2032|Thu|29|Jan|2032|2|38|36|
+|11 – május-2028 15:31:52|Thu|11|Május|2028|15|31|52|
+|12:45:39 15-júliusban-1977|Fri|15|Július|1977|12|45|39|
+|27-Jan-2029 05:55:41|Rövidítéssel|27|Jan|2029|5|55|41|
+|03-Mar-2024 10:17:49|Sun|3|Március|2024|10|17|49|
+|00:23:13 14-Diagramhalmazban – 2010|Em engedélyezett|14|Képest|2010|0|23|13|
 
 ### <a name="d2-formatting-dates"></a>D2. A dátumok formázásához
 

@@ -13,12 +13,12 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 07/11/2018
 ms.author: cynthn
-ms.openlocfilehash: 224f017decc3f48a23cb3fbf14f9a4e744bfaded
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 9fbbbb4f73b5295b648008878c8145fe926fbaad
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39007005"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46974391"
 ---
 # <a name="create-a-snapshot"></a>Pillanatkép létrehozása 
 
@@ -26,7 +26,7 @@ Pillanatkép készítése egy rendszer- és lemez, a biztonsági mentéshez vagy
 
 ## <a name="use-azure-cli"></a>Az Azure parancssori felület használatával 
 
-Az alábbi példa használatát igényli [Cloud Shell](https://shell.azure.com/bash) vagy az Azure CLI 2.0 telepítve van. A verzió megkereséséhez futtassa a következő parancsot: **az --version**. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI 2.0 telepítése](/cli/azure/install-azure-cli). 
+Az alábbi példa használatát igényli [Cloud Shell](https://shell.azure.com/bash) vagy az Azure CLI telepítve van.
 
 A következő lépések bemutatják, hogyan egy pillanatkép segítségével a **az pillanatkép létrehozása** parancsot a **--forráslemez** paraméter. Az alábbi példa azt feltételezi, hogy nincs-e nevű virtuális gép *myVM* a a *myResourceGroup* erőforráscsoportot.
 
@@ -60,7 +60,7 @@ az snapshot list \
    - table
 ```
 
-## <a name="use-azure-portal"></a>Az Azure-portál használata 
+## <a name="use-azure-portal"></a>Az Azure Portal használata 
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 2. Kattintson a bal felső sarokban kezdődően **erőforrás létrehozása** és keressen rá a **pillanatkép**. Válassza ki **pillanatkép** a keresési eredmények közül.

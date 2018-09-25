@@ -11,14 +11,19 @@ ms.component: core
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/07/2017
-ms.openlocfilehash: 34fe72087a3de133d65ea4a4737ab5dba45242f4
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ROBOTS: NOINDEX
+ms.openlocfilehash: 52b02460d444464211fc74c8982379424abebb5c
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35645036"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46965515"
 ---
 # <a name="how-to-use-run-history-and-model-metrics-in-azure-machine-learning-workbench"></a>Futtatási előzmények használata és a modell mérőszámok az Azure Machine Learning Workbenchben
+
+[!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)] 
+
+
 
 Az Azure Machine Learning Workbench data science Kísérletezési keresztül támogatja a **futtatási előzmények** és **modell metrikák** funkciókat.
 **Futtatási előzmények** segítségével nyomon követheti a machine learning-példakísérleteket kimeneteire, és lehetővé teszi a szűrési és az eredmények összehasonlítása.
@@ -27,8 +32,8 @@ Ez a cikk ismerteti, hogyan javíthatja ezeket a szolgáltatásokat a sebesség 
 
 ## <a name="prerequisites"></a>Előfeltételek
 Ez az útmutató elvégezhető, kell tennie:
-* [Hozzon létre és telepítse az Azure Machine Learning](../service/quickstart-installation.md)
-- [Projekt létrehozása](../service/quickstart-installation.md)
+* [Hozzon létre és telepítse az Azure Machine Learning](quickstart-installation.md)
+- [Projekt létrehozása](quickstart-installation.md)
 
 
 ## <a name="azure-ml-logging-api-overview"></a>Az Azure ml saját naplózási API – áttekintés
@@ -51,7 +56,7 @@ logger.log("all values", [5, 6, 7])
 A naplózó belül az Azure ML Workbench projektek használatához egyszerűen, és ez a cikk bemutatja, hogyan.
 
 ## <a name="create-a-project-in-azure-ml-workbench"></a>Az Azure ML Workbench-projekt létrehozása
-Ha még nem rendelkezik egy projektet, létrehozhat egyet a [létrehozása és telepítése a rövid útmutató](../service/quickstart-installation.md) származó a **projekt-irányítópult**, megnyithatja a **iris_sklearn.py** parancsfájl () ahogy.)
+Ha még nem rendelkezik egy projektet, létrehozhat egyet a [létrehozása és telepítése a rövid útmutató](quickstart-installation.md) származó a **projekt-irányítópult**, megnyithatja a **iris_sklearn.py** parancsfájl () ahogy.)
 
 ![a fájlok lapon a parancsfájl elérése](media/how-to-use-run-history-model-metrics/how-to-use-run-history-model-metrics-01b.png)
 

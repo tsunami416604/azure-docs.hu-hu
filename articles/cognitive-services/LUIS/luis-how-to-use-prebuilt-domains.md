@@ -4,18 +4,18 @@ titleSuffix: Azure Cognitive Services
 description: Language Understanding (LUIS) biztosít az előre összeállított tartományok, az ügyfélalkalmazások általános kategóriáit vagy előre létrehozott adatkészletek szándékok és entitások, amelyek együtt, a tartományok számára. Az előre összeállított tartományok előre betanított, és készen áll, hogy a LUIS-alkalmazás.
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 09/06/2018
 ms.author: diberry
-ms.openlocfilehash: 80a83fdb1e2b84ac03d0ae0cf969f1635f00cca0
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: 1aa7e1bf9c1a584803a60a5061b4ae4cc8664ff4
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44053723"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47037371"
 ---
 # <a name="use-prebuilt-domains-in-luis-apps"></a>A LUIS-alkalmazások előre összeállított tartományok használata  
 

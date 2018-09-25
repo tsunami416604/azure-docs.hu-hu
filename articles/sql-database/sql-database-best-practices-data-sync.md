@@ -2,18 +2,22 @@
 title: Ajánlott eljárások az Azure SQL Data Sync |} A Microsoft Docs
 description: Konfigurálása és futtatása az Azure SQL Data Sync bevált gyakorlatok megismeréséhez.
 services: sql-database
-ms.date: 08/20/2018
-ms.topic: conceptual
 ms.service: sql-database
+ms.subservice: data-movement
+ms.custom: ''
+ms.devlang: ''
+ms.topic: conceptual
 author: allenwux
 ms.author: xiwu
+ms.reviewer: ''
 manager: craigg
-ms.openlocfilehash: 96fff35b95a63e4f806258eff59d08afb2db0ffd
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.date: 08/20/2018
+ms.openlocfilehash: 1d292007b06e12b6be28e053bc6def3b12c7befe
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42059174"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47063651"
 ---
 # <a name="best-practices-for-sql-data-sync"></a>Az SQL Data Synchez ajánlott eljárások 
 

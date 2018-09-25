@@ -1,6 +1,6 @@
 ---
-title: Nyissa meg a portokat a Linux rendszerű virtuális gép az Azure CLI 2.0 használatával |} A Microsoft Docs
-description: Ismerje meg, hogyan nyisson meg egy portot / hozzon létre egy végpontot a Linux rendszerű virtuális géphez az Azure resource manager üzemi modell és az Azure CLI 2.0 használatával
+title: Nyissa meg a portokat a Linux rendszerű virtuális gép az Azure CLI-vel |} A Microsoft Docs
+description: Ismerje meg, hogyan nyisson meg egy portot / hozzon létre egy végpontot a Linux rendszerű virtuális géphez az Azure resource manager üzemi modell és az Azure CLI használatával
 services: virtual-machines-linux
 documentationcenter: ''
 author: cynthn
@@ -14,17 +14,19 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 12/13/2017
 ms.author: cynthn
-ms.openlocfilehash: 7125523b051441a2547560ff3af650ccd91f07a0
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.openlocfilehash: 4244520fa30fece53e1d01e50044cfeca496066c
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37928889"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46973337"
 ---
 # <a name="open-ports-and-endpoints-to-a-linux-vm-with-the-azure-cli"></a>Nyitott portok és végpontok egy Linux rendszerű virtuális géphez az Azure CLI-vel
-Nyisson meg egy portot, vagy hozzon létre egy végpontot a virtuális géphez (VM) az Azure-ban egy alhálózatot vagy virtuális hálózati adapter hálózati szűrő létrehozásával. Ezeket a szűrőket, amely a bejövő és kimenő adatforgalom vezérlésére, helyezze el az erőforrás a forgalmat fogadó csatolt hálózati biztonsági csoport. Használjuk a webes forgalom ilyenek például a 80-as porton. Ez a cikk bemutatja, hogyan nyithat meg egy portot egy virtuális géphez az Azure CLI 2.0 használatával. 
 
-A hálózati biztonsági csoport és a legújabb szükséges szabályok létrehozásához [Azure CLI 2.0](/cli/azure/install-az-cli2) telepítve, és bejelentkezett egy Azure-fiókba az [az bejelentkezési](/cli/azure/reference-index#az_login).
+Nyisson meg egy portot, vagy hozzon létre egy végpontot a virtuális géphez (VM) az Azure-ban egy alhálózatot vagy virtuális hálózati adapter hálózati szűrő létrehozásával. Ezeket a szűrőket, amely a bejövő és kimenő adatforgalom vezérlésére, helyezze el az erőforrás a forgalmat fogadó csatolt hálózati biztonsági csoport. Használjuk a webes forgalom ilyenek például a 80-as porton. Ez a cikk bemutatja, hogyan virtuális port megnyitásához az Azure CLI használatával. 
+
+
+A hálózati biztonsági csoport és a legújabb szükséges szabályok létrehozásához [Azure CLI-vel](/cli/azure/install-az-cli2) telepítve, és bejelentkezett egy Azure-fiókba az [az bejelentkezési](/cli/azure/reference-index#az_login).
 
 A következő példákban cserélje le a példa a paraméter nevét a saját értékeire. Példa a paraméter nevek a következők *myResourceGroup*, *myNetworkSecurityGroup*, és *myVnet*.
 

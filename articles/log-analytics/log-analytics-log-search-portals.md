@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/13/2018
-ms.author: magoedte; bwren
+ms.date: 09/17/2018
+ms.author: bwren
 ms.component: na
-ms.openlocfilehash: 996502ffe5a31fcfa1b73dab9a041c336c4ea98f
-ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
+ms.openlocfilehash: 4677b8d5601dcafbf4760e6f185ef70393229b1a
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45602631"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46961059"
 ---
 # <a name="viewing-and-analyzing-data-in-log-analytics"></a>A Log Analytics adatok megtekintésére és elemzésére
 Két lehetőség van a Log analytics szolgáltatásban tárolt adatok elemzése és az alkalmi elemzési lekérdezések létrehozásához az Azure Portalon érhető el. A lekérdezések létrehozásakor használja a fenti portálokhoz más funkciók, például a riasztások és az irányítópultok is használható.
@@ -27,7 +27,7 @@ Két lehetőség van a Log analytics szolgáltatásban tárolt adatok elemzése 
 ## <a name="log-analytics-page"></a>Log Analytics-lap
 Nyissa meg a Log Analytics lapot **naplók** a Log Analytics menüben. Ez az új felülettel jelentkezik a naplóadatok használatának és lekérdezések létrehozásáról. Ismerkedjen meg ezen a portálon, és vizsgálja meg a szolgáltatásokat [Ismerkedés a Log Analytics-oldal az Azure Portalon](query-language/get-started-analytics-portal.md).
 
-A Log Analytics lapot a következő fejlesztéseket kínálja keresztül a [naplóbeli keresés](#log-search) tapasztalható.
+A Log Analytics lapot a következő fejlesztéseket kínálja keresztül a [naplóbeli keresés (klasszikus)](#log-search-classic) tapasztalható.
 
 * Több lap – hozzon létre külön lapokra több lekérdezés használata.
 * Látványos vizualizációkkal – különböző értékeléséről vagy beállítások.
@@ -44,6 +44,18 @@ A Log Analytics lapot a következő fejlesztéseket kínálja keresztül a [napl
 
 ![A speciális analitika portálon](media/log-analytics-log-search-portals/advanced-analytics-portal.png)
 
+### <a name="resource-logs"></a>Erőforrás-naplók
+Az új Log Analytics felhasználói felület különböző Azure-erőforrások például a virtuális gépek integrálható. Ez azt jelenti, hogy meg tudja nyitni a Log Analytics lapot, közvetlenül az erőforrás figyelési menü Váltás az Azure Monitor vagy a Log Analytics és az erőforrás-környezet elvesztése nélkül. **Naplók** még nincs engedélyezve az összes Azure-erőforrások, de elindul, a különböző erőforrások menü a portálon megjelenő típusok esetében.
+
+A Log Analytics egy adott erőforráshoz megnyitásakor automatikusan hatóköre csak erőforrás rekordok naplózására.   Ha szeretné, hogy más rekordokat tartalmaz, majd kell azt a Log Analytics vagy az Azure figyelő menü megnyitásához.
+
+A következő beállítások még nem érhető el a Log Analytics-erőforrás nézeten keresztül:
+
+- Mentés
+- riasztás beállítása
+- Lekérdezéskezelő
+- Váltás másik munkaterületet és az erőforrások (jelenleg nem tervezett)
+
 
 ### <a name="firewall-requirements"></a>Tűzfalra vonatkozó követelmények
 A böngészőben a Log Analytics lapot, és a bővített analitika portál eléréséhez a következő címek hozzáférésre van szüksége.  Ha a böngésző tűzfalon keresztül fér hozzá az Azure Portalon, engedélyeznie kell ezeket a címeket a hozzáférést.
@@ -56,7 +68,8 @@ A böngészőben a Log Analytics lapot, és a bővített analitika portál elér
 
 
 ## <a name="log-search-classic"></a>Naplókeresés (klasszikus)
-Nyissa meg a keresési oldalon a **naplók (klasszikus)** a Log Analytics menüben, vagy a **Log Analytics** az Azure figyelő menü. Ez a alapvető lekérdezések segítségével naplóadatokat elemzésére alkalmas. Szerkesztési lekérdezések több funkciókat biztosít a lekérdezési nyelv a teljes ismerete nélkül.  Megtekintheti ezeket a funkciókat az összegzését [naplókeresések létrehozása az Azure Log Analytics naplóbeli keresés](log-analytics-log-search-log-search-portal.md). 
+Nyissa meg a keresési oldalon a **naplók (klasszikus)** a Log Analytics menüben, vagy a **Log Analytics** az Azure figyelő menü. Ez az a klasszikus oldal használt funkcióját, amely nem rendelkezik a további Log Analytics-lekérdezések használata a [Log Analytics lapot](#log-analytics-page) fent.
+
 
 
 ![Log Search lap](media/log-analytics-log-search-portals/log-search-portal.png)

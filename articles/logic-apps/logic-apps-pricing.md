@@ -1,70 +1,77 @@
 ---
-title: Árképzési & számlázási - Azure Logic Apps |} Microsoft Docs
-description: Ismerje meg, az Azure Logic Apps árak és számlázás működése
+title: Díjszabás és számlázás – Azure Logic Apps |} A Microsoft Docs
+description: Megtudhatja, hogyan árak és számlázás használható az Azure Logic Apps
 services: logic-apps
-author: kevinlam1
-manager: jeconnoc
-editor: ''
-documentationcenter: ''
-ms.assetid: f8f528f5-51c5-4006-b571-54ef74532f32
 ms.service: logic-apps
-ms.workload: logic-apps
-ms.tgt_pltfrm: ''
-ms.devlang: ''
-ms.topic: article
-ms.date: 05/11/2018
+ms.suite: logic-apps
+author: kevinlam1
 ms.author: klam
-ms.openlocfilehash: e1702de42be8510412a6479b594a198a84d15ae2
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.reviewer: estfan, LADocs
+ms.assetid: f8f528f5-51c5-4006-b571-54ef74532f32
+ms.topic: article
+ms.date: 09/24/2018
+ms.openlocfilehash: b75fba2ba0e9fa922b1252378e0bab326cada7d2
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35299256"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46974306"
 ---
-# <a name="logic-apps-pricing-model"></a>Logic Apps díjszabási modell
+# <a name="pricing-model-for-azure-logic-apps"></a>Az Azure Logic Apps díjszabási modell
 
-Hozzon létre, és a felhőben az Azure Logic Apps automatizált méretezhető integrációs munkafolyamatok futtatására. Az alábbiakban a Logic Apps a számlázással és a díjszabással működése részleteit. 
+Hozzon létre, és automatizált méretezhető integrációs a munkafolyamatok futtatásához a felhőben az Azure Logic Apps. Az alábbiakban a Logic Apps számlázási és díjszabás működését részleteit. 
 
-## <a name="consumption-pricing-model"></a>Felhasználás árképzési modellt
+<a name="consumption-pricing"></a>
 
-A újonnan létrehozott logikai alkalmazások kell fizetnie csak akkor használja. Új logic apps fogyasztás terv és árképzési modellt, ami azt jelenti, hogy a logic app-példány által végrehajtott művelet végrehajtások mérése használnia. A logic app-definíciót minden lépése művelet, beleértve eseményindítók, ellenőrzési folyamat lépéseit, beépített műveletek hívások és összekötők hívásainak. További információkért lásd: [Logic Apps árképzési](https://azure.microsoft.com/pricing/details/logic-apps).
+## <a name="consumption-pricing-model"></a>Használatalapú díjszabási modellje
+
+Új logic Apps, amely a nyilvános vagy "globális" Logic Apps szolgáltatás használatával hoz létre akkor csak azért fizet, használja. Ezek a logic apps használata egy fogyasztásalapú tervet és díjszabási modell, ami azt jelenti, hogy a logikai alkalmazás által végzett minden művelet-végrehajtások díjkötelesek. A logic app-definíciójának minden lépése a műveletet, például a triggereket, vezérlőelem a folyamat lépései, beépített műveletek hívásainak és összekötők hívásainak. További információkért lásd: [Logic Apps díjszabási](https://azure.microsoft.com/pricing/details/logic-apps).
+
+<a name="fixed-pricing"></a>
+
+## <a name="fixed-pricing-model"></a>Rögzített díjszabási modell
+
+> [!NOTE]
+> Az integrációs service-környezet *privát előzetes verzió*. Hozzáférés igényléséhez [itt csatlakozni a kérelem létrehozása](https://aka.ms/iseprivatepreview).
+
+Létrehozott egy új logikai alkalmazásokhoz egy [ *integrációs szolgáltatás környezet* (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md), amely egy privát elkülönül a Logic Apps-példány dedikált erőforrásokat használ, fizet a fix havi díja beépített műveletek és a standard szintű ISE címkével összekötők. Az ISE-ben egy vállalati összekötő díjmentes, míg további vállalati összekötők vannak a vállalati használati díj alapján tartalmaz. További információkért lásd: [Logic Apps díjszabási](https://azure.microsoft.com/pricing/details/logic-apps).
 
 <a name="triggers"></a>
 
 ## <a name="triggers"></a>Eseményindítók
 
-Eseményindítók olyan speciális művelet, hozzon létre egy logic app-példány, ha egy adott esemény történik. Eseményindítók különböző módokon, amelyek befolyásolják, hogyan a logic app forgalmi díjas jár el.
+Eseményindítók olyan speciális művelet, hozzon létre egy logikaialkalmazás-példányt egy meghatározott esemény. Eseményindítók különböző módokon, amelyek befolyásolják a logikai alkalmazás milyen forgalmi díjas jár el.
 
-* **Lekérdezési eseményindító** – ehhez az eseményindítóhoz folyamatosan ellenőrzi az üzenetek, amely megfelel a feltételeknek a logic app-példány létrehozásához, és elindítja a munkafolyamatot a végpont. Egyes lekérdezési kérelmek egy végrehajtását számít, és a forgalmi díjas, akkor is, ha nincs logic app-példány jön létre. Adja meg a lekérdezési időköztől számított, állítsa be az eseményindító a Logic App Designer keresztül.
+* **Lekérdezési eseményindító** – Ez az eseményindító folyamatosan ellenőrzi a végpont létrehozásához egy logikaialkalmazás-példányt, és elindítja a munkafolyamatot a feltételeknek megfelelő üzenetek. Minden lekérdezési kérelem-végrehajtási számít, és forgalmi díjas, még akkor is, ha nincs logikaialkalmazás-példányt jön létre. Adja meg a lekérdezési időköz, állítsa be – a Logic App Designerben az eseményindító.
 
   [!INCLUDE [logic-apps-polling-trigger-non-standard-metering](../../includes/logic-apps-polling-trigger-non-standard-metering.md)]
 
-* **Webhook eseményindító** – ehhez az eseményindítóhoz megvárja-e az ügyfél kérelmet küld egy adott végpont számára. Minden a webhook végpontnak küldött kérelemben egy művelet végrehajtási számít. A kérelem és a HTTP Webhook eseményindító például mindkét webhook eseményindítók.
+* **Webhook-eseményindító** – Ez az eseményindító megvárja, amíg egy ügyfél kérelmet küld egy adott végpontnak. Minden egyes a webhook-végpontot küldött kérelem számít egy művelet végrehajtását. Például a kérés és a HTTP-Webhook eseményindító mindkét webhook eseményindítók.
 
-* **Ismétlődés eseményindító** – ehhez az eseményindítóhoz hoz létre egy logic app-példány az ismétlődési az eseményindító beállított alapján. Például három naponként futó ismétlődési trigger mentése vagy összetett ütemezés szerint állíthatja be.
+* **Ismétlődési trigger** – Ez az eseményindító létrehoz egy logikaialkalmazás-példányt, amely beállította az eseményindító-ismétlődési időköze alapján. Például beállíthat egy ismétlődési eseményindítót, amely három naponta fut, vagy egy összetettebb ütemezés szerint.
 
-A Logic Apps alkalmazást áttekintés ablaktábláján az eseményindító előzmények szakaszban található trigger végrehajtások.
+Eseményindító-végrehajtások a logikai alkalmazás áttekintése panelen a Triggerelőzmények szakaszában találhatja meg.
 
 ## <a name="actions"></a>Műveletek
 
-Beépített műveletek, például HTTP, az Azure Functions vagy az API Management, amely is szabályozhatja a folyamat lépései műveleteket mérése műveletként natív, amely rendelkezik a megfelelő típusú. Műveletek hívó [összekötők](https://docs.microsoft.com/connectors) "ApiConnection" típusú. Az összekötők standard vagy enterprise összekötők, amelyek mérése a megfelelő alapján besorolt [árképzési][pricing]. 
+Beépített műveletek, például a műveleteket, amelyeket hívja fel a HTTP, az Azure Functions vagy az API Management, és azt is szabályozzák, a folyamat lépései natív műveleteket, amelyek rendelkeznek a megfelelő típusú mérjük. Műveletek, [összekötők](https://docs.microsoft.com/connectors) az "ApiConnection" típusa lehet. Ezeket az összekötőket besorolt standard vagy enterprise összekötők, amelyek mérjük, valamint saját alapján [díjszabás][pricing]. 
 
-Sikeres és sikertelen futtatási műveletek számítanak és művelet végrehajtások, díjköteles. Azonban végrehajtandó műveleteket a rendszer kihagyja, miatt unmet feltételek vagy a műveletek, amelyek nem futnak, mert a logikai alkalmazás befejezése előtt megszakadt a művelet végrehajtások nem számít. Letiltott logic Apps alkalmazások nem hozható létre új példányok, így azok nem számítjuk fel, amíg le vannak tiltva.
+Az összes sikeres és sikertelen feldolgozásokat is beleértve futtatási műveletek számoljuk és forgalmi díjas, műveletvégrehajtások. Műveleteket, amelyeket a rendszer kihagyja, miatt teljesítetlen feltételeket vagy műveleteket, amelyeket nem futnak, mert a logikai alkalmazás befejezését, mielőtt befejeződött, műveletvégrehajtások nem számít. Letiltva a logic apps nem hozható létre új példányokat, így azokat nem kell fizetnie, amikor le van tiltva.
 
 > [!NOTE]
-> Logikai alkalmazás letiltása után a folyamatban levő példányok eltarthat egy ideig, teljesen leállítása előtt.
+> Miután letiltja az egy logikai alkalmazást, a jelenleg futó példányok eltarthat egy ideig, mielőtt teljes mértékben meggátolni.
 
-Műveletek hurkokon belül futó minden ciklusonként a hurkon bájtjai számítanak. "Az egyes" ismétlődő, amely feldolgozza a 10-cikk lista egyetlen művelettel számít például a listaelemek (10) száma megszorozzuk a hurok (1) a műveletek száma plusz egy, a hurok indításához. Igen, ebben a példában a számítási esetén (10 * 1) + 1, 11 művelet végrehajtások eredményez.
+Hurkok belül futó műveleteket a hurok minden ciklusonként bájtjai számítanak. Ha például egyetlen művelettel egy "mindegyikre" hurkot, amely 10-elemek listáját dolgozza fel a listaelemek (10) számát megszorozva a hurok (1) a műveletek számát plusz egy, az iteráció megkezdése a akkor számít. Tehát ebben a példában a számítás (10 * 1) + 1, 11, műveletvégrehajtások eredményez.
 
-## <a name="integration-account-usage"></a>Integráció fiók használata
+## <a name="integration-account-usage"></a>Integrációs fiók használata
 
-Használati fogyasztás alapján tartalmaz egy [integrációs fiók](logic-apps-enterprise-integration-create-integration-account.md) ahol megismerheti, fejlesztése és tesztelése a [B2B/EDI](logic-apps-enterprise-integration-b2b.md) és [XML-feldolgozás](logic-apps-enterprise-integration-xml.md) nem a Logic Apps szolgáltatásokat További költség nélkül. Valamint régió és tároló specifikus legfeljebb egy integrációs fiók lehet [az összetevők számát](../logic-apps/logic-apps-limits-and-config.md), például EDI kereskedelmi partnereknek és megállapodások maps, sémákat, szerelvényeket, tanúsítványok vagy kötegelt konfigurációk.
+Használati fogyasztásalapú tartalmaz egy [integrációs fiók](logic-apps-enterprise-integration-create-integration-account.md) , ismerje meg, fejlesztheti és tesztelheti a [B2B/EDI](logic-apps-enterprise-integration-b2b.md) és [XML-feldolgozás](logic-apps-enterprise-integration-xml.md) nélkül a Logic Apps funkciói További költség. Használhat egy integrációs fiók / régió és áruházbeli specifikus legfeljebb [összetevők számú](../logic-apps/logic-apps-limits-and-config.md), például a kereskedelmi EDI-partnerek és szerződések, térképek, sémák, szerelvényeket, tanúsítványok és kötegkonfigurációk.
 
-A Logic Apps is biztosít, egyszerű és szabványos integrációs fiókok támogatott Logic Apps SLA-t. Az alapszintű integrációt fiókokat is használhatja, ha csak a kezelési üzenet használni szeretne, vagy működjön, és egy kis üzleti partner, amely nagyobb üzleti entitás kereskedelmi partner kapcsolattal rendelkezik. Standard integrációs fiókok összetettebb B2B kapcsolatokat támogatja, és az entitások felügyelhető számának növeléséhez. További információkért lásd: [Azure-beli árakról](https://azure.microsoft.com/pricing/details/logic-apps).
+A Logic Apps is kínál az alapszintű és standard szintű integrációs fiók támogatott Logic Apps SLA-val. Alapszintű integrációs fiók is használhatja, ha szeretné használni, csak a kezelési üzenetet, vagy olyan kisméretű vállalkozások partner, amely a kereskedelmi partneri kapcsolatban áll azzal a nagyobb üzleti entitásban szerepét. Standard szintű integrációs fiókok összetettebb B2B-kapcsolatokat támogatja, és növelje a felügyelt entitások számát. További információkért lásd: [az Azure díjszabása](https://azure.microsoft.com/pricing/details/logic-apps).
 
 ## <a name="next-steps"></a>További lépések
 
-* [További információk a Logic Apps][whatis]
+* [További tudnivalók a Logic Apps][whatis]
 * [Az első logikai alkalmazás létrehozása][create]
 
 [pricing]: https://azure.microsoft.com/pricing/details/logic-apps/

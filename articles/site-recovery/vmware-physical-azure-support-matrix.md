@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 09/10/2018
 ms.author: raynew
-ms.openlocfilehash: 8c50930404b12f37c709af87ff7def99dcd5100d
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: 0878bdd435b6ec9efccca2cc825242a65bd79909
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44378873"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47042227"
 ---
 # <a name="support-matrix-for-vmware-and-physical-server-replication-to-azure"></a>VMware-alapú és fizikai kiszolgáló replikálása az Azure-támogatási mátrixa
 
@@ -64,7 +64,7 @@ A Site Recovery támogatja az egy támogatott gépen futó bármilyen számítá
 --- | ---
 Gép beállításai | Az Azure-bA replikált gépek meg kell felelnie [Azure-követelmények](#azure-vm-requirements).
 Windows operációs rendszer | 64 bites Windows Server 2016 (Server Core, kiszolgáló asztali kezelőfelülettel), Windows Server 2012 R2, Windows Server 2012, Windows Server 2008 R2, legalább SP1. </br></br>  [A Windows Server 2008, legalább SP2 – 32 bites és 64 bites](migrate-tutorial-windows-server-2008.md) (csak a migrálás). </br></br> Windows 2016 Nano Server nem támogatott.
-Linux operációs rendszer | Red Hat Enterprise Linux: 5.2 5.11<b>\*\*</b>, 6.1, 6.10<b>\*\*</b>, 7.0-ban való 7.5 <br/><br/>CentOS: 5.2 5.11<b>\*\*</b>, 6.1, 6.10<b>\*\*</b>, 7.0-ban való 7.5 <br/><br/>Ubuntu 14.04 LTS server[ (támogatott kernel-verzióknál)](#ubuntu-kernel-versions)<br/><br/>Ubuntu 16.04 LTS server[ (támogatott kernel-verzióknál)](#ubuntu-kernel-versions)<br/><br/>Debian 7/Debian 8[ (támogatott kernel-verzióknál)](#debian-kernel-versions)<br/><br/>SUSE Linux Enterprise Server 12 SP1, SP2 SP3 [ (támogatott kernel-verzióknál)](#suse-linux-enterprise-server-12-supported-kernel-versions)<br/><br/>SUSE Linux Enterprise Server 11 SP3<b>\*\*</b>, SUSE Linux Enterprise Server 11 SP4 * </br></br>Oracle Enterprise Linux 6.4, 6.5, a Red Hat-kompatibilis kernel vagy a szoros vállalati Kernel kiadási 3 (UEK3) <br/><br/></br>* *Replikált gépek frissítése az SUSE Linux Enterprise Server 11 SP3 SP4 szervizcsomag nem támogatott. Szeretné frissíteni, tiltsa le a replikációt, és engedélyezze újra a frissítés után.*</br></br><b>\*\*</b> *Tekintse meg [támogatja a Linux rendszerű virtuális gépek az Azure-ban](https://support.microsoft.com/help/2941892/support-for-linux-and-open-source-technology-in-azure) tudni, hogy Linux- és az Azure-ban nyílt forráskódú technológia támogatása. Az Azure Site Recovery feladatátvételi teszi lehetővé, és futtassa a Linux-kiszolgálók az Azure-ban, azonban Linux-szállítók korlátozhatja csak verziókat, azok elosztásának, amely nem éri el életciklusának vége a támogatási.*
+Linux operációs rendszer | Red Hat Enterprise Linux: 5.2 5.11<b>\*\*</b>, 6.1, 6.10<b>\*\*</b>, 7.0-ban való 7.5 <br/><br/>CentOS: 5.2 5.11<b>\*\*</b>, 6.1, 6.10<b>\*\*</b>, 7.0-ban való 7.5 <br/><br/>Ubuntu 14.04 LTS server[ (támogatott kernel-verzióknál)](#ubuntu-kernel-versions)<br/><br/>Ubuntu 16.04 LTS server[ (támogatott kernel-verzióknál)](#ubuntu-kernel-versions)<br/><br/>Debian 7/Debian 8[ (támogatott kernel-verzióknál)](#debian-kernel-versions)<br/><br/>SUSE Linux Enterprise Server 12 SP1, SP2 SP3 [ (támogatott kernel-verzióknál)](#suse-linux-enterprise-server-12-supported-kernel-versions)<br/><br/>SUSE Linux Enterprise Server 11 SP3<b>\*\*</b>, SUSE Linux Enterprise Server 11 SP4 * </br></br>Oracle Enterprise Linux 6.4, 6.5, 6.6, a Red Hat-kompatibilis kernel vagy a szoros vállalati Kernel kiadási 3 (UEK3) 6.7 <br/><br/></br>* *Replikált gépek frissítése az SUSE Linux Enterprise Server 11 SP3 SP4 szervizcsomag nem támogatott. Szeretné frissíteni, tiltsa le a replikációt, és engedélyezze újra a frissítés után.*</br></br><b>\*\*</b> *Tekintse meg [támogatja a Linux rendszerű virtuális gépek az Azure-ban](https://support.microsoft.com/help/2941892/support-for-linux-and-open-source-technology-in-azure) tudni, hogy Linux- és az Azure-ban nyílt forráskódú technológia támogatása. Az Azure Site Recovery feladatátvételi teszi lehetővé, és futtassa a Linux-kiszolgálók az Azure-ban, azonban Linux-szállítók korlátozhatja csak verziókat, azok elosztásának, amely nem éri el életciklusának vége a támogatási.*
 
 
 >[!NOTE]
@@ -73,7 +73,7 @@ Linux operációs rendszer | Red Hat Enterprise Linux: 5.2 5.11<b>\*\*</b>, 6.1,
 >
 > - Frissíti a védett számítógépek közötti fő Linux terjesztési verziója nem támogatott. Szeretné frissíteni, tiltsa le a replikációt, és frissítse az operációs rendszert, majd újból engedélyezze a replikációt.
 >
-> - Red Hat Enterprise Linux 5.2 5.11 vagy CentOS 5.2 5.11 futtató kiszolgálókat kell rendelkeznie ahhoz, hogy a gépek Azure-ban a Linux integrációs Services(LIS) összetevőit.
+> - Red Hat Enterprise Linux 5.2 futtató 5.11 vagy CentOS 5.2 a 5.11 kiszolgálók kell rendelkeznie a [Services(LIS) a Linux Integration components](https://www.microsoft.com/en-us/download/details.aspx?id=55106) ahhoz, hogy a gépek Azure-ban telepítve.
 
 ### <a name="ubuntu-kernel-versions"></a>Ubuntu kernel-verzióknál
 

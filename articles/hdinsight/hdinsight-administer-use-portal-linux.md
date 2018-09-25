@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/18/2018
 ms.author: jasonh
-ms.openlocfilehash: 0e584343e568c5cd0d91a1e6ff51dc899c5434d7
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: b00c88e526bf72f51df0d2a3d6a87fbd5bc1f991
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43106529"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46991980"
 ---
 # <a name="manage-hadoop-clusters-in-hdinsight-by-using-the-azure-portal"></a>A HDInsight Hadoop-fürtök kezelése az Azure portal használatával
 
@@ -207,7 +207,7 @@ Számos módon meg a program a folyamatot:
 
 * Az Azure Data Factory felhasználói. Lásd: [létrehozása igény szerinti Linux-alapú Hadoop-fürtök az Azure Data Factory használatával HDInsight](hdinsight-hadoop-create-linux-clusters-adf.md) létrehozásához igény szerinti HDInsight társított szolgáltatás.
 * Az Azure PowerShell-lel.  Lásd: [repülőjáratok késési adatainak elemzése](hdinsight-analyze-flight-delay-data.md).
-* Az Azure CLI használatával. Lásd: [kezelése a HDInsight-fürtök Azure CLI-vel](hdinsight-administer-use-command-line.md).
+* Klasszikus Azure CLI használatával. Lásd: [kezelése a HDInsight-fürtök használatával a klasszikus Azure CLI](hdinsight-administer-use-command-line.md).
 * HDInsight .NET SDK használata. Lásd: [elküldése Hadoop-feladatok](hadoop/submit-apache-hadoop-jobs-programmatically.md).
 
 Díjszabási információkért lásd: [HDInsight díjszabása](https://azure.microsoft.com/pricing/details/hdinsight/). Tekintse meg a fürt törlésének a portálról, [fürtök törlése](#delete-clusters)
@@ -291,7 +291,7 @@ HDInsight-fürtök a következő HTTP webes szolgáltatások (ezen szolgáltatá
 * Oozie
 * Templeton eszközön keresztül végzett
 
-Alapértelmezés szerint ezek a szolgáltatások hozzáférés kapnak. Akkor is visszavonása/biztosítása a hozzáférés használatával [Azure CLI-vel](hdinsight-administer-use-command-line.md#enabledisable-http-access-for-a-cluster) és [Azure PowerShell-lel](hdinsight-administer-use-powershell.md#grantrevoke-access).
+Alapértelmezés szerint ezek a szolgáltatások hozzáférés kapnak. Akkor is visszavonása/biztosítása a hozzáférés használatával [Azure klasszikus parancssori felület](hdinsight-administer-use-command-line.md#enabledisable-http-access-for-a-cluster) és [Azure PowerShell-lel](hdinsight-administer-use-powershell.md#grantrevoke-access).
 
 ## <a name="find-the-subscription-id"></a>Keresse meg az előfizetés-azonosító
 
@@ -363,7 +363,7 @@ A **használati** szakasz a HDInsight-fürt panelén, a HDInsight segítségéve
 Ebben a cikkben megismerkedett néhány alapvető felügyeleti funkciókat. További tudnivalókért tekintse meg a következő cikkeket:
 
 * [Az Azure PowerShell használatával HDInsight felügyelete](hdinsight-administer-use-powershell.md)
-* [A HDInsight az Azure CLI használatával felügyelheti](hdinsight-administer-use-command-line.md)
+* [Felügyelheti a HDInsight az Azure klasszikus parancssori felület használatával](hdinsight-administer-use-command-line.md)
 * [HDInsight-fürtök létrehozása](hdinsight-hadoop-provision-linux-clusters.md)
 * [További információ az Ambari webes felhasználói felülettel](hdinsight-hadoop-manage-ambari.md)
 * [Az Ambari REST API használatával](hdinsight-hadoop-manage-ambari-rest-api.md)

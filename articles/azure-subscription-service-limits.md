@@ -10,12 +10,12 @@ ms.service: billing
 ms.topic: article
 ms.date: 09/11/2018
 ms.author: byvinyal
-ms.openlocfilehash: a24fc56bf455fbc487cb6f93e06678d52e5b1c0b
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: c67cc5cb13e2c1112c4752660c82c3ab18360b00
+ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46295765"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47056624"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Az Azure-előfizetésekre és -szolgáltatásokra vonatkozó korlátozások, kvóták és megkötések
 Ez a dokumentum felsorolja az egyes a leggyakrabban használt Microsoft Azure korlátok, kvóták néven is ismert. Ez a dokumentum jelenleg nem vonatkozik Azure-szolgáltatásokhoz. Az idő múlásával a lista fog kibontható vagy frissítve, hogy biztosítsák a platform további.
@@ -71,6 +71,7 @@ Az alábbi korlátok egy új táblát bővült, hogy minden korlátokat különb
 * [DNS](#dns-limits)
 * [Event Hubs](#event-hubs-limits)
 * [Az Azure-tűzfal](#azure-firewall-limits)
+* [Bejárati ajtajának](#azure-front-door-service-limits)
 * [IoT Hub](#iot-hub-limits)
 * [IoT Hub eszközregisztrációs szolgáltatás](#iot-hub-device-provisioning-service-limits)
 * [Key Vault](#key-vault-limits)
@@ -88,6 +89,7 @@ Az alábbi korlátok egy új táblát bővült, hogy minden korlátokat különb
 * [Scheduler](#scheduler-limits)
 * [Search](#search-limits)
 * [Service Bus](#service-bus-limits)
+* [SignalR Service](#signalr-service-limits)
 * [Site Recovery](#site-recovery-limits)
 * [SQL Database](#sql-database-limits)
 * [SQL Data Warehouse](#sql-data-warehouse-limits)
@@ -156,6 +158,9 @@ Az alábbi táblázat ismerteti a funkciókat és korlátokat az alapszintű, St
 
 #### <a name="azure-firewall-limits"></a>Azure tűzfal korlátai
 [!INCLUDE [azure-firewall-limits](../includes/firewall-limits.md)]
+
+#### <a name="azure-front-door-service-limits"></a>Az Azure bejárati ajtajának szolgáltatási korlátozások
+[!INCLUDE [azure-front-door-service-limits](../includes/front-door-limits.md)]
 
 ### <a name="storage-limits"></a>Tárolási korlátok
 <!--like # storage accts -->
@@ -232,9 +237,6 @@ Az Azure Database for MySQL-korlátok, lásd: [korlátozások az Azure Database 
 
 ### <a name="azure-database-for-postgresql"></a>Azure Database for PostgreSQL
 Az Azure Database for PostgreSQL-korlátok, lásd: [korlátozások az Azure Database for postgresql-hez](postgresql/concepts-limits.md).
-
-### <a name="mobile-engagement-limits"></a>A Mobile Engagement-korlátok
-[!INCLUDE [azure-mobile-engagement-limits](../includes/azure-mobile-engagement-limits.md)]
 
 ### <a name="search-limits"></a>Keresés korlátok
 Tarifacsomag határozza meg, a kapacitás és a keresési szolgáltatás korlátozásait. Szintek a következők:
@@ -315,6 +317,9 @@ További kapcsolatos részletesebb szintű, például a dokumentumok méretétő
 
 ### <a name="backup-limits"></a>Biztonsági mentési korlátok
 [!INCLUDE [azure-backup-limits](../includes/azure-backup-limits.md)]
+
+### <a name="signalr-service-limits"></a>A SignalR szolgáltatási korlátozások
+[!INCLUDE [signalr-service-limits](../includes/signalr-service-limits.md)]
 
 ### <a name="site-recovery-limits"></a>A Site Recovery korlátai
 [!INCLUDE [site-recovery-limits](../includes/site-recovery-limits.md)]

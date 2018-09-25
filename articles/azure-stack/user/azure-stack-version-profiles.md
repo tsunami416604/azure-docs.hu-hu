@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 09/17/2018
 ms.author: sethm
 ms.reviewer: sijuman
-ms.openlocfilehash: 68514f1bc569d876f4cf851f97a690ae84cf43a6
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
-ms.translationtype: HT
+ms.openlocfilehash: 8bebec23d7a0199d8efbc55b3cde50c628306f01
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 09/24/2018
-ms.locfileid: "46970294"
+ms.locfileid: "47034368"
 ---
 # <a name="manage-api-version-profiles-in-azure-stack"></a>Az Azure Stackben API-verzióprofilok kezelése
 
@@ -86,7 +86,7 @@ A GO SDK egy profil a különböző szolgáltatásokhoz különböző verziójú
 - **Ruby**  
 A Ruby SDK az Azure Stack Resource Manager biztosít eszközöket és az infrastruktúra kezelését. Az SDK-t az erőforrás-szolgáltató például számítási, a virtuális hálózatok és a tárolási Ruby nyelven. További információ: [használata API-verzióprofilok Ruby használatával](azure-stack-version-profiles-ruby.md)
 - **Python**  
-- A Python SDK API-verzióprofilok célozhat meg például az Azure Stack és a globális Azure más felhőalapú platformot támogatja. Használhat API-t egy hibrid felhőalapú megoldások létrehozásához. További információ: [használata API-verzióprofilok Python használatával](azure-stack-version-profiles-python.md)
+A Python SDK API-verzióprofilok célozhat meg például az Azure Stack és a globális Azure más felhőalapú platformot támogatja. Használhat API-t egy hibrid felhőalapú megoldások létrehozásához. További információ: [használata API-verzióprofilok Python használatával](azure-stack-version-profiles-python.md)
 
 ## <a name="next-steps"></a>További lépések
 

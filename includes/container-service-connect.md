@@ -19,7 +19,7 @@ Kövesse a következő lépéseket a `kubectl` telepítéséhez és konfigurál�
 > 
 
 ### <a name="install-kubectl"></a>A kubectl telepítése
-Az eszköz telepítésének egyik módja az `az acs kubernetes install-cli` Azure CLI 2.0 parancs használata. A parancs futtatásához, győződjön meg arról, hogy [telepítve](/cli/azure/install-az-cli2) 2.0-s és Azure-fiókkal történő bejelentkezés a legújabb Azure parancssori felület (`az login`).
+Ez az eszköz telepítésének egyik módja az, hogy használja a `az acs kubernetes install-cli` Azure CLI-parancsot. A parancs futtatásához, ellenőrizze, hogy Ön [telepített](/cli/azure/install-az-cli2) az Azure CLI legújabb verzióját és a egy Azure-fiókkal van bejelentkezve (`az login`).
 
 ```azurecli
 # Linux or macOS

@@ -8,12 +8,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 08/13/2018
 ms.author: babanisa
-ms.openlocfilehash: ce0e766a07fd19f523f1f35b9a3cbc865cfb8c71
-ms.sourcegitcommit: 0fcd6e1d03e1df505cf6cb9e6069dc674e1de0be
+ms.openlocfilehash: 257f7cbd20d21903f4cf7daf68b5f185d0af10bc
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2018
-ms.locfileid: "42057552"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46965455"
 ---
 # <a name="event-grid-security-and-authentication"></a>Event Grid biztonsági és hitelesítés 
 
@@ -39,7 +39,7 @@ Ha bármilyen más típusú végpont, például egy HTTP-eseményindító-alapú
 
 2. **ValidationURL kézfogás (manuális kézfogás)**: bizonyos esetekben valószínűleg nem rendelkezik a forráskódot a végpont tudják megvalósítani a alapú ValidationCode kézfogás ellenőrzése. Például, ha egy külső szolgáltatást használ (például [Zapier](https://zapier.com) vagy [IFTTT](https://ifttt.com/)), nem fogja tudni programozott módon reagálhat az érvényesítési kóddal vissza. Ezért verzió 2018-05-01-preview verziótól kezdődően EventGrid mostantól támogatja az egy manuális érvényesítésre kézfogás. Az új API verzió (2018-05-01-preview), EventGrid küld használó SDK és eszközök használatával egy esemény-előfizetés létrehozásakor egy `validationUrl` tulajdonság (mellett a `validationCode` tulajdonság) az előfizetés érvényesítése esemény adatok részének részeként. A kézfogás elvégzéséhez tegye egy GET kérelmek az URL-CÍMRE, vagy a REST-ügyféllel, vagy a webböngésző használatával. A megadott érvényesítési URL-CÍMÉT a érvényes csak nagyjából 10 percet. Az időszakban az üzembe helyezési az esemény-előfizetés állapota `AwaitingManualAction`. Ha nem végezte el a kézi ellenőrzés 10 percen belül, a kiépítési állapot értéke `Failed`. Az esemény-előfizetés létrehozása naplófájljában, mielőtt újra a manuális érvényesítésre kísérel meg kell.
 
-Ez a mechanizmus manuális érvényesítésének az előzetes verzióban. A használatához telepítenie kell az [Event Grid-bővítményt](/cli/azure/azure-cli-extensions-list) az [AZ CLI 2.0](/cli/azure/install-azure-cli) interfészhez. A telepítést az `az extension add --name eventgrid` paranccsal tudja végrehajtani. A REST API használata esetén ügyeljen rá, hogy az `api-version=2018-05-01-preview` verziót használja.
+Ez a mechanizmus manuális érvényesítésének az előzetes verzióban. A használatához telepítenie kell az [Event Grid-bővítményt](/cli/azure/azure-cli-extensions-list) az [Azure CLI](/cli/azure/install-azure-cli)-hez. A telepítést az `az extension add --name eventgrid` paranccsal tudja végrehajtani. A REST API használata esetén ügyeljen rá, hogy az `api-version=2018-05-01-preview` verziót használja.
 
 ### <a name="validation-details"></a>Az érvényesítés részletei
 

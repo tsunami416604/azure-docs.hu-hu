@@ -16,14 +16,15 @@ ms.date: 07/23/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 6dc156e94ee8b30bef8c25b3dcaa1d70f76e26e5
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: bd9d3a677d9fea54331200258d4b9b8e07a54312
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39581605"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46956897"
 ---
 # <a name="authorize-access-to-azure-active-directory-web-applications-using-the-oauth-20-code-grant-flow"></a>Az OAuth 2.0 kód engedélyezési folyamatával használatával az Azure Active Directory webes alkalmazásokhoz való hozzáférés engedélyezése
+
 Az Azure Active Directory (Azure AD) az OAuth 2.0 használatával lehetővé teszi, hogy engedélyezze a hozzáférést a webalkalmazásokhoz és webes API-k az Azure AD-bérlőben. Ez az útmutató nyelvektől független, és hogyan küldhetők és fogadhatók HTTP-üzenetek bármelyikének használata nélkül ismerteti meg [nyílt forráskódú könyvtáraink](active-directory-authentication-libraries.md).
 
 Az OAuth 2.0 hitelesítési kódfolyamat leírt [, az OAuth 2.0 ismertetőjének 4.1 szakaszában](https://tools.ietf.org/html/rfc6749#section-4.1). Hitelesítési és engedélyezési végezhető a legtöbb alkalmazás típusok, többek között a web apps és a natív módon telepített alkalmazásokat.
@@ -31,11 +32,13 @@ Az OAuth 2.0 hitelesítési kódfolyamat leírt [, az OAuth 2.0 ismertetőjének
 [!INCLUDE [active-directory-protocols-getting-started](../../../includes/active-directory-protocols-getting-started.md)]
 
 ## <a name="oauth-20-authorization-flow"></a>OAuth 2.0 engedélyezési folyamat
+
 Magas szinten a teljes engedélyezési folyamatot egy alkalmazáshoz egy kicsit nézhet ki:
 
 ![OAuth hitelesítési Kódfolyamat](./media/v1-protocols-oauth-code/active-directory-oauth-code-flow-native-app.png)
 
 ## <a name="request-an-authorization-code"></a>Hozzáférési kód kérése
+
 A hitelesítési kódfolyamat irányítja a felhasználót, hogy az ügyfél kezdődik a `/authorize` végpont. A kéréshez az ügyfél azt jelzi, hogy az engedélyeket kell beszerezni a felhasználó elől. Megtekintheti az OAuth 2.0 engedélyezési végpont a bérlőhöz tartozó kiválasztásával **alkalmazásregisztrációk > végpontok** az Azure Portalon.
 
 ```
@@ -56,15 +59,15 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | client_id |szükséges |Az Alkalmazásazonosítót az alkalmazáshoz rendelt Azure AD-vel való regisztrációja. Az Azure Portalon találja. Kattintson a **Azure Active Directory** a szolgáltatások oldalsávon kattintson **alkalmazásregisztrációk**, és válassza ki az alkalmazást. |
 | response_type |szükséges |Tartalmaznia kell `code` az engedélyezési kód folyamata. |
 | redirect_uri |Ajánlott |Az alkalmazás, ahol küldött és az alkalmazás által fogadott a hitelesítési válaszokat redirect_uri tulajdonsága. Pontosan egyeznie kell a redirect_uris regisztrálta a portálon, kivéve azt az URL-kódolású kell lennie. A natív és mobil alkalmazások esetén az alapértelmezett értéket használjon `urn:ietf:wg:oauth:2.0:oob`. |
-| response_mode |Ajánlott |Meghatározza a létrejövő jogkivonat vissza küldhet az alkalmazáshoz használandó módszert. Lehet `query`, `fragment`, vagy `form_post`. `query` a kódot biztosít az átirányítási URI-t a lekérdezési sztring paramétereként. Ha Ön a kért egy azonosító jogkivonat, használja az implicit folyamatot, nem használhatja `query` meghatározott a [OpenID specifikációja](https://openid.net/specs/oauth-v2-multiple-response-types-1_0.html#Combinations). Ha csak a kódot kért, `query`, `fragment`, vagy `form_post`. `form_post` az átirányítási URI-t a kódot egy HOZZÁSZÓLÁSRA hajtja végre. |
+| response_mode |választható |Meghatározza a létrejövő jogkivonat vissza küldhet az alkalmazáshoz használandó módszert. Lehet `query`, `fragment`, vagy `form_post`. `query` a kódot biztosít az átirányítási URI-t a lekérdezési sztring paramétereként. Ha Ön a kért egy azonosító jogkivonat, használja az implicit folyamatot, nem használhatja `query` meghatározott a [OpenID specifikációja](https://openid.net/specs/oauth-v2-multiple-response-types-1_0.html#Combinations). Ha csak a kódot kért, `query`, `fragment`, vagy `form_post`. `form_post` az átirányítási URI-t a kódot egy HOZZÁSZÓLÁSRA hajtja végre. Az alapértelmezett érték `query` egy kódot folyamathoz.  |
 | state |Ajánlott |A kérésben is a token válaszban visszaadott érték. Egy véletlenszerűen generált egyedi érték jellemzően a [webhelyközi kérések hamisításának megakadályozása támadások](http://tools.ietf.org/html/rfc6749#section-10.12). Az állapot az alkalmazás a felhasználói állapot információt kódolásához, előtt a hitelesítési kérelmet, például az oldal vagy voltak a nézet is szolgál. |
 | erőforrás | Ajánlott |Az Alkalmazásazonosító URI-t a cél a webes API (védett erőforrás). Az Alkalmazásazonosító URI-t, az Azure Portalon kattintson **Azure Active Directory**, kattintson a **alkalmazást az alkalmazásregisztrációk**, nyissa meg az alkalmazás **beállítások** lapon, majd kattintson a  **Tulajdonságok**. Például egy külső erőforrás is lehet `https://graph.microsoft.com`. Ez azért szükséges, egy engedélyezési vagy jogkivonat-kérelmeket. Annak biztosítása érdekében kevesebb hitelesítési kérések helyezze el az engedélyezési kérésben, ha biztosítani szeretné, jóváhagyás a felhasználó. |
 | scope | **figyelmen kívül hagyva** | V1 az Azure AD-alkalmazásokhoz, hatókörök statikusan konfigurálni kell lennie az alkalmazások az Azure portál **beállítások**, **szükséges engedélyek**. |
 | parancssor |választható |A felhasználói beavatkozás szükséges típusát jelzi.<p> Érvényes értékek a következők: <p> *bejelentkezési*: A felhasználó a rendszer kéri, hogy hitelesítse magát újra. <p> *select_account*: kéri a felhasználót, válassza ki a fiókot, hogy az egyszeri bejelentkezés megszakítása. A felhasználó előfordulhat, hogy válasszon egy meglévő bejelentkezett fiókot, adja meg a hitelesítő adataikat a korábban megjegyzett fiók vagy teljesen használt egy másik fiókot. <p> *hozzájárulás*: felhasználói beleegyezés kapott, de frissíteni kell. A felhasználó jóváhagyást kell kérni. <p> *admin_consent*: A rendszergazda a rendszer kéri a szervezetben lévő összes felhasználó nevében jóváhagyást |
 | login_hint |választható |Segítségével előre töltse ki a felhasználónév, e-mail-cím mező a bejelentkezési oldal a felhasználó számára, ha ismeri a kívánt időben felhasználóneve. Gyakran alkalmazások újrahitelesítés, hogy már kinyert a felhasználónevet egy előző jelentkezzen be az során használja ezt a paramétert a `preferred_username` jogcím. |
 | domain_hint |választható |A bérlő és a tartományhoz, amely a felhasználónak kell használnia, hogy jelentkezzen be a mutatót. A domain_hint értéke a bérlő regisztrált tartományhoz. Ha a bérlő összevonást használ, egy helyszíni címtár, az adott bérlő összevonási kiszolgáló átirányítja a aad-ben. |
-| code_challenge_method | választható    | Kódolás használt módszer a `code_verifier` számára a `code_challenge` paraméter. Lehetnek `plain` vagy `S256`. Ha ki van zárva, `code_challenge` adatforrásmérete egyszerű szöveges Ha `code_challenge` részét képezi. Az Azure AAD 1.0-s verziója is támogatja `plain` és `S256`. További információkért lásd: a [PKCE RFC](https://tools.ietf.org/html/rfc7636). |
-| code_challenge        | választható    | Használt kód engedélyezések koncepció kulcs használatával a kód Exchange (PKCE) egy nyilvános vagy natív ügyfél. Kötelező, ha `code_challenge_method` részét képezi. További információkért lásd: a [PKCE RFC](https://tools.ietf.org/html/rfc7636). |
+| code_challenge_method | Ajánlott    | Kódolás használt módszer a `code_verifier` számára a `code_challenge` paraméter. Lehetnek `plain` vagy `S256`. Ha ki van zárva, `code_challenge` adatforrásmérete egyszerű szöveges Ha `code_challenge` részét képezi. Az Azure AAD 1.0-s verziója is támogatja `plain` és `S256`. További információkért lásd: a [PKCE RFC](https://tools.ietf.org/html/rfc7636). |
+| code_challenge        | Ajánlott    | Használt kód engedélyezések koncepció kulcs használatával a kód Exchange (PKCE) egy nyilvános vagy natív ügyfél. Kötelező, ha `code_challenge_method` részét képezi. További információkért lásd: a [PKCE RFC](https://tools.ietf.org/html/rfc7636). |
 
 > [!NOTE]
 > Ha a felhasználó egy szervezet része, a szervezet rendszergazdája hozzájárulás megadása vagy elutasítása a felhasználó nevében, vagy lehetővé teszik a felhasználó beleegyezését. A felhasználó a beállítás csak akkor, ha a rendszergazda lehetővé teszi, hogy jóváhagyást kap.
@@ -149,7 +152,7 @@ grant_type=authorization_code
 Az Alkalmazásazonosító URI-t, az Azure Portalon kattintson **Azure Active Directory**, kattintson a **alkalmazást az alkalmazásregisztrációk**, nyissa meg az alkalmazás **beállítások** lapon, majd kattintson a  **Tulajdonságok**.
 
 ### <a name="successful-response"></a>A sikeres válasz
-Az Azure AD hozzáférési jogkivonatot a sikeres válasz alapján ad vissza. Hálózati hívások az ügyfélalkalmazás és azok kapcsolódó késés minimalizálása érdekében az ügyfélalkalmazásnak kell hozzáférési jogkivonatok gyorsítótárazása az OAuth 2.0-válaszban megadott jogkivonat élettartama. Annak megállapításához, a jogkivonat élettartamát, vagy használja a `expires_in` vagy `expires_on` paraméterértékeket.
+Az Azure AD vissza egy [hozzáférési jogkivonat](access-tokens.md) sikeres válasz alapján. Hálózati hívások az ügyfélalkalmazás és azok kapcsolódó késés minimalizálása érdekében az ügyfélalkalmazásnak kell hozzáférési jogkivonatok gyorsítótárazása az OAuth 2.0-válaszban megadott jogkivonat élettartama. Annak megállapításához, a jogkivonat élettartamát, vagy használja a `expires_in` vagy `expires_on` paraméterértékeket.
 
 Ha egy webes API-erőforrás adja vissza egy `invalid_token` hibakód, ez azt jelentheti, hogy az erőforrás megállapította, hogy a jogkivonat lejárt. Ha az ügyfél- és erőforrás óra alkalommal különböző (vagyis egy "időeltérés"), az erőforrás érdemes lehet a token lejárt előtt a jogkivonatot az ügyfél gyorsítótárában törlődik. Ha ez történik, akkor is, ha számított élettartamuk belül törölje a jogkivonatot a gyorsítótárból.
 
@@ -171,59 +174,16 @@ A sikeres válasz nézhet ki:
 
 | Paraméter | Leírás |
 | --- | --- |
-| access_token |A kért hozzáférési jogkivonatot, egy aláírt JSON webes jogkivonat (JWT). Az alkalmazás a jogkivonat használatával hitelesítik magukat a védett erőforráshoz, például a webes API-t. |
+| access_token |A kért [hozzáférési jogkivonat](access-tokens.md) , egy aláírt JSON webes jogkivonat (JWT). Az alkalmazás a jogkivonat használatával hitelesítik magukat a védett erőforráshoz, például a webes API-t. |
 | token_type |Typ tokenu értékét jelöli. Az egyetlen, amely támogatja az Azure ad-ben típus tulajdonosi. További információ a tulajdonosi jogkivonatokat: [OAuth2.0 engedélyezési keretrendszer: tulajdonosi jogkivonat-használat (RFC 6750)](http://www.rfc-editor.org/rfc/rfc6750.txt) |
 | expires_in |Mennyi ideig a hozzáférési jogkivonat érvénytelen (másodpercben). |
 | expires_on |A hozzáférési jogkivonat lejáratának időpontja. A dátum jelenik meg a másodpercek számát, 1970-01-01T0:0:0Z UTC a lejárati időpontig. Ez az érték a gyorsítótárazott jogkivonatok élettartama meghatározására szolgál. |
 | erőforrás |Az Alkalmazásazonosító URI a webes API (védett erőforrás). |
 | scope |Az ügyfélalkalmazás számára biztosított megszemélyesítési engedélyeket. Az alapértelmezett engedély `user_impersonation`. A védett erőforrás tulajdonosa további értékek regisztrálhat az Azure ad-ben. |
 | refresh_token |Az OAuth 2.0-s frissítési jogkivonatot. Az alkalmazás a jogkivonat használatával szerzi be a további hozzáférési jogkivonatokat a jelenlegi hozzáférési jogkivonat lejárata után. Frissítési jogkivonatok hosszú élettartamú, és az erőforrásokhoz való hozzáférés megőrzése hosszabb ideig is használható. |
-| id_token |Az előjel nélküli JSON webes jogkivonat (JWT). Az alkalmazás is base64Url dekódolni a szegmensek a token a bejelentkezett felhasználóval kapcsolatos információkat. Az alkalmazás gyorsítótárazzák az értékeket, és megjelenítheti őket, de azt nem igazolható azokat bármilyen engedélyezési és biztonsági határokat. |
+| id_token |Az előjel nélküli JSON webes jogkivonat (JWT) jelölő egy [azonosító jogkivonat](id-tokens.md). Az alkalmazás is base64Url dekódolni a szegmensek a token a bejelentkezett felhasználóval kapcsolatos információkat. Az alkalmazás gyorsítótárazzák az értékeket, és megjelenítheti őket, de azt nem igazolható azokat bármilyen engedélyezési és biztonsági határokat. |
 
-### <a name="jwt-token-claims"></a>JWT jogkivonat jogcímek
-A JWT jogkivonat értékét a `id_token` paraméter a következő jogcímekké alakítja vissza tudja fejteni:
-
-```
-{
- "typ": "JWT",
- "alg": "none"
-}.
-{
- "aud": "2d4d11a2-f814-46a7-890a-274a72a7309e",
- "iss": "https://sts.windows.net/7fe81447-da57-4385-becb-6de57f21477e/",
- "iat": 1388440863,
- "nbf": 1388440863,
- "exp": 1388444763,
- "ver": "1.0",
- "tid": "7fe81447-da57-4385-becb-6de57f21477e",
- "oid": "68389ae2-62fa-4b18-91fe-53dd109d74f5",
- "upn": "frank@contoso.com",
- "unique_name": "frank@contoso.com",
- "sub": "JWvYdCWPhhlpS1Zsf7yYUxShUwtUm5yzPmw_-jX3fHY",
- "family_name": "Miller",
- "given_name": "Frank"
-}.
-```
-
-JSON webes jogkivonatainak kapcsolatos további információkért lásd: a [JWT IETF draft specifikáció](http://go.microsoft.com/fwlink/?LinkId=392344). A token típusát és a jogcímek kapcsolatos további információkért olvassa el a [támogatott jogkivonatok és jogcímtípusok](v1-id-and-access-tokens.md)
-
-A `id_token` paraméter tartalmazza a következő jogcímtípusokat:
-
-| Jogcím típusa | Leírás |
-| --- | --- |
-| AUD |A jogkivonat célközönség. Amikor egy ügyfélalkalmazás a jogkivonat kiadása a célközönségét a `client_id` az ügyfél. |
-| Exp |Lejárati idő. Az az időpont, amikor a jogkivonat érvényessége lejár. A jogkivonat érvényes, az aktuális dátum/idő kisebbnek kell lennie, mint vagy egyenlő a `exp` értéket. Az idő 1970. január 1. a jelenik meg a másodpercek számát (1970-01-01T0:0:0Z) (UTC), amíg a token érvényessége lejár.|
-| family_name |Felhasználó legutóbbi neve vagy vezetékneve. Az alkalmazás megjelenítheti ezt az értéket. |
-| given_name |Felhasználó utóneve. Az alkalmazás megjelenítheti ezt az értéket. |
-| IAT |Kiadott időpontban. Az idő, amikor a JWT lett kiállítva. Az idő 1970. január 1. a jelenik meg a másodpercek számát (1970-01-01T0:0:0Z) (UTC), amíg a token lett kiállítva. |
-| iss |Azonosítja a jogkivonat kibocsátója |
-| NBF |Hatálybalépési idő. Az az időpont, amikor a jogkivonat életbe lép. A jogkivonat érvényes az aktuális dátum/idő nagyobb vagy egyenlő a Nbf-értéke kell lennie. Az idő 1970. január 1. a jelenik meg a másodpercek számát (1970-01-01T0:0:0Z) (UTC), amíg a token lett kiállítva. |
-| objektumazonosító |Az Azure AD-beli felhasználóobjektum objektumazonosítója. |
-| Sub |Token tulajdonos azonosítója. Ez az a felhasználót, hogy a jogkivonat ismerteti egy állandó, és nem módosítható azonosítója. A gyorsítótárazás logikai értéket használja. |
-| TID |Bérlő azonosítója (ID) az Azure AD-bérlővel, amely kiállította a jogkivonatot. |
-| unique_name |A felhasználó egyedi azonosítója, amely képes jeleníthető meg. Ez általában a egyszerű felhasználónév (UPN). |
-| egyszerű felhasználónév |A felhasználó egyszerű felhasználóneve. |
-| ver |Verzió. A JWT jogkivonat, általában az 1.0-s verziója. |
+JSON webes jogkivonatainak kapcsolatos további információkért lásd: a [JWT IETF draft specifikáció](http://go.microsoft.com/fwlink/?LinkId=392344).   Tudjon meg többet a `id_tokens`, tekintse meg a [folyamat OpenID Connect 1.0-s verziójú](v1-protocols-openid-connect-code.md).
 
 ### <a name="error-response"></a>Hiba történt a válasz
 Kiállítási végpont olyan HTTP-hibakódok, mert az ügyfél közvetlenül a kiállítási végpont hívja. A HTTP-állapotkódot mellett az Azure AD-kiállítási végpont is objektumok, amelyek a hiba a JSON-dokumentumok adja vissza.
@@ -313,6 +273,7 @@ Az RFC 6750 specifikáció határozza meg a következő hibák a válaszban a WW
 | 403 |insufficient_access |A jogkivonat a tulajdonos nem rendelkezik az erőforrás eléréséhez szükséges engedélyekkel. |Kéri a felhasználót egy másik fiók használata vagy a megadott erőforráshoz engedélyek kéréséhez. |
 
 ## <a name="refreshing-the-access-tokens"></a>A hozzáférési jogkivonatok frissítése
+
 Hozzáférési jogkivonatok rövid életű, és folytatja az erőforrások elérése után frissíteni kell. Frissítheti a `access_token` Ha elküldi egy másik `POST` kérelmet a `/token` végpont, de ez idő kezeléséről a `refresh_token` helyett a `code`.
 
 Frissítési jogkivonatok nem rendelkezik megadott élettartam. A frissítési biztonsági jogkivonat élettartamának jellemzően viszonylag hosszú. Azonban bizonyos esetekben frissítési biztonsági jogkivonat lejár, vissza lenne vonva, vagy nem rendelkezik megfelelő jogosultsággal a kívánt műveletet. Az alkalmazás várható és megfelelően a kiállítási végpont által visszaadott hibák kezelni kell.

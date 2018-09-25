@@ -1,6 +1,6 @@
 ---
-title: Egyéni beszéd-végpont létrehozása az Azure-on egyéni beszéd szolgáltatással |} Microsoft Docs
-description: Megtudhatja, hogyan hozzon létre egy egyéni beszéd-szöveg végpontot kognitív szolgáltatásban az egyéni beszéd szolgáltatással.
+title: Hozzon létre egy egyéni beszédfelismerési végpontot a Custom Speech Service az Azure-ban |} A Microsoft Docs
+description: Ismerje meg, hogyan hozhat létre egy egyéni hang-szöveg transzformációs végpontot a Cognitive Services Custom Speech Service.
 services: cognitive-services
 author: PanosPeriorellis
 manager: onano
@@ -9,28 +9,29 @@ ms.component: custom-speech
 ms.topic: article
 ms.date: 07/08/2017
 ms.author: panosper
-ms.openlocfilehash: 99bc275db1f0c1b45b3db440d2e03d0db9ab5cf6
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ROBOTS: NOINDEX
+ms.openlocfilehash: ed93afa8e10fdfbb0d45f4500b4a648716e25e00
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35347039"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46952222"
 ---
-# <a name="create-a-custom-speech-to-text-endpoint"></a>Egyéni beszéd-szöveg-végpont létrehozása
-Egyéni akusztikus modellek vagy nyelvi modellek létrehozása után egy egyéni beszéd-szöveg végpont telepítheti őket. 
+# <a name="create-a-custom-speech-to-text-endpoint"></a>Egyéni beszédfelismerési végpont létrehozása
+Miután létrehozta a testreszabott akusztikai modell vagy nyelvi modell, egy egyéni hang-szöveg transzformációs végpontját telepíthetné őket. 
 
 ## <a name="create-an-endpoint"></a>Végpont létrehozása
-Új egyéni végpont létrehozásához válassza **központi telepítések** a a **egyéni beszéd** menü az oldal tetején. Ez a művelet időt vesz igénybe, hogy a **központi telepítések** lapon, amely a jelenlegi egyéni végpontok táblát tartalmaz. Ha még nem hozott létre végpontok, a tábla mező üres. Az aktuális területi beállítása a táblázat címsorában megjelenik. 
+Új egyéni végpont létrehozásához válassza **központi telepítések** a a **Custom Speech** az oldal tetején lévő menüben. Ez a művelet eltarthat, hogy a **központi telepítések** oldal, amely tartalmazza a jelenlegi egyéni végpontok. Ha még nem hozott olyan végpontok, a tábla je prázdná. A tábla címe az aktuális területi beállítást mutatja. 
 
-A központi telepítés más nyelven létrehozásához válassza **módosítás területi**. További információ a támogatott nyelvek: [területi beállításokat támogatja egyéni beszéd szolgáltatás](cognitive-services-custom-speech-change-locale.md).
+Hozzon létre egy másik nyelven üzemelő példánya, válassza a **módosítása területi beállítás**. További információ a támogatott nyelvek: [területi beállításokat támogatja a Custom Speech Service](cognitive-services-custom-speech-change-locale.md).
 
-Új végpont létrehozásához válassza **hozzon létre új**. Az a **létrehozása központi telepítési** panelen adja meg az adatokat a **neve** és **leírása** mezőkbe az egyéni központi telepítés.
+Új végpont létrehozásához válassza **hozzon létre új**. Az a **központi telepítés létrehozása** panelen adja meg az adatokat a **neve** és **leírás** mezőkbe az egyéni üzembe helyezés.
 
-Az a **előfizetés** kombinált jelölje ki a használni kívánt előfizetést. Ha olyan S2-előfizetéssel, kiválaszthatja a méretezési egységek és a tartalom naplózása. További információ a méretezési egységek és naplózás: [egyéni beszéd szolgáltatás mérőszámok és kvóták](../cognitive-services-custom-speech-meters.md).
+Az a **előfizetés** kombinált mezőben válassza ki a használni kívánt előfizetést. Ha egy S2-előfizetést, kiválaszthatja a skálázási egység és tartalmának naplózását. További információ a skálázási egység és a naplózás: [Custom Speech Service-mérőszámok és kvóták](../cognitive-services-custom-speech-meters.md).
 
-Az alábbi táblázat bemutatja, hogyan használható egyidejű kérelmek méretezési egységek hozzárendelését:
+Az alábbi táblázat bemutatja, hogyan skálázási egységek leképezése az egyidejű kérelmek érhető el:
 
-| Méretezési egység | Egyidejű kérelmek száma |
+| Skálázási egység | Az egyidejű kérelmek száma |
 | ------ | ----- |
 | 0 | 1 |
 | 1 | 5 |
@@ -38,38 +39,38 @@ Az alábbi táblázat bemutatja, hogyan használható egyidejű kérelmek méret
 | 3 | 15 |
 | n | 5 * n |
 
-Választhatja, hogy a tartalom naplózási be- és kikapcsolása át lett váltva. Ez azt jelenti hogy a végpont forgalom tárolja a Microsoft belső használatra van kiválasztása. Ha nincs bejelölve, a forgalom tárolja a rendszer letiltja. Tartalom naplózási eredményez további költségek letiltása. Tekintse át a [információk díjszabása](https://azure.microsoft.com/pricing/details/cognitive-services/custom-speech-service/) részleteiről.
+Akkor is kiválasztható, hogy tartalomnaplózás át lett váltva a be- és kikapcsolása. Választjuk, a végpont forgalom a Microsoft belső használatra tárolja-e. Ha nincs bejelölve, a forgalom tárolja a rendszer letiltja. Tartalomnaplózás eredményez további költségek újrainduljanak. Tekintse át a [díjszabási információkat tartalmazó oldal](https://azure.microsoft.com/pricing/details/cognitive-services/custom-speech-service/) részleteiről.
 
 > [!NOTE]
-> Tartalom naplózás "No Trace" nevezzük az árképzést ismertető oldalra.
+> Tartalomnaplózás "No nyomkövetési" nevezzük az árképzést ismertető oldalra.
 >
 
 
-Emellett a Microsoft a nyers becsült költség biztosítja, hogy tisztában lehet a méretezési egységek és a tartalom naplózási járó költségek gyakorolt hatása. Ez a becslés egy durva becslést, és a tényleges költségek eltérő lehet.
+Emellett a Microsoft biztosít durva becslést a költségek, így mindig tisztában a skálázási egység és tartalomnaplózás költségeinek gyakorolt hatást. Ez a becslés durva becslést, és a tényleges költségek eltérhetnek.
 
 > [!NOTE]
-> Ezek a beállítások F0 (ingyenes szint) előfizetések nem érhetők el.
+> Ezek a beállítások F0 (ingyenes csomag) előfizetés nem érhetők el.
 >
 
-Az a **akusztikus modell** listára, válassza ki a használni kívánt akusztikus modell és a **nyelvi modell** listára, válassza ki a használni kívánt nyelvi modell. A választási lehetőségek akusztikus és nyelvi modellek mindig adja meg az alap Microsoft modellek. A kijelölés alap modell a kombinációk korlátozza. Nem conversational alap modellek keverje keresési és előírják az alap modellek.
+Az a **akusztikai modell** listájához, válassza ki az akusztikai modell, amelyet szeretne, majd a a **nyelvi modell** listájához, válassza ki a használni kívánt nyelvi modell. A lehetőségek a akusztikai és nyelvi modelleket mindig foglalja bele az alapszintű Microsoft modellek. Az alapszintű modell kiválasztása a kombinációk korlátozza. Nem kombinálhatók az alapvető természetes nyelvi modellek való kereséssel, majd szabja alapvető modellek.
 
 ![A központi telepítés létrehozása lap](../../../media/cognitive-services/custom-speech-service/custom-speech-deployment-create2.png)
 
 > [!NOTE]
-> Ügyeljen arra, hogy fogadja el a feltételeket és a jelölőnégyzet bejelölésével díjszabási információkat.
+> Ügyeljen arra, hogy fogadja el a használati feltételeit és a díjszabásról a jelölőnégyzet bejelölésével.
 >
 
-Miután kiválasztotta a akusztikus és nyelvi modellek, válassza ki a **létrehozása**. Ez a művelet visszaadja, hogy a **központi telepítések** lap. A tábla most már tartalmaz egy bejegyzést, amely megfelel az új végpont. A végpont állapota a jelenlegi állapotában tükrözi, akkor létrehozása közben. Az egyéni modellek új végpont példányosítani akár 30 percet is igénybe vehet. Ha a központi telepítés állapota *Complete*, a végpont esetében használatra kész.
+Miután kiválasztotta a akusztikai és nyelvi modelljeit, válassza ki a **létrehozás**. Ez a művelet visszaadja, hogy a **központi telepítések** lapot. A táblázat most már tartalmaz egy bejegyzést, amely megfelel az új végpont. A végpont állapota a jelenlegi állapotában mutatja, miközben létrehozása folyamatban van. Egyéni modellek az új végpont vezérlőként akár 30 percet is igénybe vehet. Ha a központi telepítés állapota *Complete*, a végpont készen áll a használatra.
 
 ![A központi telepítések lap](../../../media/cognitive-services/custom-speech-service/custom-speech-deployment-ready.png)
 
-Amikor készen áll a központi telepítést, a telepítés neve lesz hivatkozást. Megjeleníti a hivatkozási kiválasztása a **központi telepítési információk** lapon, amely megjeleníti vagy HTTP-kérések használata az egyéni végpontjának URL-címei vagy a Microsoft kognitív szolgáltatások beszéd ügyféloldali kódtár, amely webes szoftvercsatornák használ.
+Amikor készen áll az üzembe helyezés, az üzemelő példány neve lesz a hivatkozást. A hivatkozásra kattintva megjelenik a **központi telepítési információk** oldal, amely az egyéni végpont használata vagy egy HTTP-kérelem URL-címek vagy a Microsoft Cognitive Services beszédfelismerő Ügyfélkódtárának, amely használja a websockets jeleníti meg.
 
-![A központi telepítési információi lap](../../../media/cognitive-services/custom-speech-service/custom-speech-deployment-info2.png)
+![A központi telepítési információkat tartalmazó oldal](../../../media/cognitive-services/custom-speech-service/custom-speech-deployment-info2.png)
 
 ## <a name="next-steps"></a>További lépések
 
-További oktatóanyagokat tekintse meg:
-* [Egyéni beszéd-szöveg végpont használatára](cognitive-services-custom-speech-use-endpoint.md)
-* [Egyéni akusztikus modell létrehozása](cognitive-services-custom-speech-create-acoustic-model.md)
-* [Egyéni nyelvi modell létrehozása](cognitive-services-custom-speech-create-language-model.md)
+További oktatóanyagokban talál:
+* [Egy egyéni hang-szöveg transzformációs végpont használata](cognitive-services-custom-speech-use-endpoint.md)
+* [Egyéni akusztikai modell létrehozása](cognitive-services-custom-speech-create-acoustic-model.md)
+* [Testreszabott nyelvi modell létrehozása](cognitive-services-custom-speech-create-language-model.md)

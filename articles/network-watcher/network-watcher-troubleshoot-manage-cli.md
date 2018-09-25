@@ -1,6 +1,6 @@
 ---
-title: Hibaelhárítás az Azure virtuális hálózati átjáró és kapcsolatok – Azure CLI 2.0 használatával |} A Microsoft Docs
-description: Jelen lap bemutatja, hogyan használható az Azure Network Watcher hibaelhárítása az Azure CLI 2.0 használatával
+title: Hibaelhárítás az Azure virtuális hálózati átjáró és kapcsolatok – Azure CLI |} A Microsoft Docs
+description: Jelen lap bemutatja, hogyan használható az Azure Network Watcher hibaelhárítása az Azure CLI-vel
 services: network-watcher
 documentationcenter: na
 author: jimdial
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/19/2017
 ms.author: jdial
-ms.openlocfilehash: 5f843b42a108968e2fbefacddcd22f331a04691e
-ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
+ms.openlocfilehash: 5a8ac32f43ecadb8908582fa853fc3f2bec7ac55
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39091101"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46970991"
 ---
-# <a name="troubleshoot-virtual-network-gateway-and-connections-using-azure-network-watcher-azure-cli-20"></a>Végezzen hibaelhárítást a virtuális hálózati átjáró és kapcsolatok az Azure Network Watcher Azure CLI 2.0 használatával
+# <a name="troubleshoot-virtual-network-gateway-and-connections-using-azure-network-watcher-azure-cli"></a>Virtuális hálózati átjáró és az Azure Network Watcher Azure CLI-vel kapcsolatok hibaelhárítása
 
 > [!div class="op_single_selector"]
 > - [Portál](diagnose-communication-problem-between-networks.md)
@@ -31,9 +31,7 @@ ms.locfileid: "39091101"
 
 A Network Watcher számos funkciót kínál a ismertetése az Azure-ban a hálózati erőforrások vonatkozik. Ezek a képességek egyik erőforrás hibaelhárítás. Erőforrások hibaelhárítása a portal, PowerShell, CLI vagy REST API használatával is meghívható. Meghívni, Network Watcher megvizsgálja a virtuális hálózati átjáró vagy a kapcsolat állapotát, és a csapatával az eredményeket adja vissza.
 
-Ez a cikk használja felületek következő generációját képviseli CLI a resource management üzemi modellhez, az Azure CLI 2.0 használatával, amely Windows, Mac és Linux rendszereken érhető el.
-
-Ebben a cikkben szereplő lépések végrehajtásához kell [telepítse az Azure parancssori felület Mac, Linux és Windows (Azure CLI)](https://docs.microsoft.com/cli/azure/install-az-cli2).
+Ebben a cikkben szereplő lépések végrehajtásához kell [telepítse az Azure parancssori felület Mac, Linux és Windows (CLI)](/cli/azure/install-azure-cli).
 
 ## <a name="before-you-begin"></a>Előkészületek
 

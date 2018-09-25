@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/16/2017
 ms.author: monicar
-ms.openlocfilehash: b262f42fffdbfd00f0c57c987e36346957f0f25c
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ms.openlocfilehash: e62910cc760a200abba6d56e4fa1eb87973285ec
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35645535"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46963594"
 ---
 # <a name="microsoft-azure-glossary-a-dictionary-of-cloud-terminology-on-the-azure-platform"></a>A Microsoft Azure szószedet: egy szótár, az Azure platform felhőalapú terminológia
 
@@ -47,7 +47,7 @@ Lásd: [Windows virtuális gépek rendelkezésre állásának kezelése](virtual
 Egy két [üzembe helyezési modellek](resource-manager-deployment-model.md) segítségével helyezheti üzembe az erőforrásokat az Azure-ban (az új modell az Azure Resource Manager). Bizonyos Azure-szolgáltatások csak a Resource Manager üzemi modell támogatja, néhány csak a klasszikus üzemi modell támogatja, és néhány egyaránt támogatja. Az egyes Azure-szolgáltatások dokumentációját Itt adhatja meg, mely támogatja a modellek.
 
 ## <a name="cli"></a>Az Azure parancssori felület (CLI)
-Parancssori felület, amely Windows, macOS és Linux rendszerű Azure-szolgáltatások kezelésére is használható.  Néhány szolgáltatás és a szolgáltatások csak a PowerShell vagy a parancssori felület használatával kezelhetők. Lásd: [Azure CLI 2.0 használatával](/cli/azure)
+Parancssori felület, amely Windows, macOS és Linux rendszerű Azure-szolgáltatások kezelésére is használható.  Néhány szolgáltatás és a szolgáltatások csak a PowerShell vagy a parancssori felület használatával kezelhetők. Lásd: [az Azure CLI](/cli/azure)
 
 ## <a name="powershell"></a>Azure PowerShell
 Azure-szolgáltatások egy parancssor segítségével kezelheti a Windows rendszerű számítógépek a parancssori felület. Néhány szolgáltatás és a szolgáltatások csak a PowerShell vagy a parancssori felület használatával kezelhetők.

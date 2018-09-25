@@ -8,19 +8,19 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 02/26/2018
 ms.author: elioda
-ms.openlocfilehash: f6959e0fec77ff046e4db86bad30502259775a49
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: 2e4b356fec642e06e3223700967eeacd19f1c49c
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44022839"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46952477"
 ---
-# <a name="iot-hub-query-language-for-device-and-module-twins-jobs-and-message-routing"></a>IoT Hub lekérdezési nyelv az eszköz és a modul twins, feladatokkal és üzenet-útválasztása
+# <a name="iot-hub-query-language-for-device-and-module-twins-jobs-and-message-routing"></a>IoT Hub lekérdezési nyelv az eszköz és a modul twins, feladatok és üzenet-útválasztása
 
 IoT Hub által biztosított információk lekéréséhez hatékony SQL-szerű nyelv kapcsolatos [ikereszközök] [ lnk-twins] és [feladatok][lnk-jobs], és [üzenet-útválasztása][lnk-devguide-messaging-routes]. Ez a cikk bemutatja:
 
 * Az IoT Hub lekérdezési nyelv, a fő funkciókat bemutató és
-* A nyelv részletes leírása.
+* A nyelv részletes leírása. További információ a lekérdezési nyelv az üzenet-útválasztása: [lekérdezések az üzenet-útválasztása](../iot-hub/iot-hub-devguide-routing-query-syntax.md).
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-partial.md)]
 
@@ -305,126 +305,6 @@ Jelenleg a lekérdezések **devices.jobs** nem támogatják:
 * Tekintse meg az ikereszközön (lásd az előző szakaszban) feladat tulajdonságai mellett feltételeknek.
 * Összesítések, például a száma, avg, csoportosítás hajt végre.
 
-## <a name="device-to-cloud-message-routes-query-expressions"></a>Eszközről-a-felhőbe üzenetútvonalai lekérdezési kifejezések
-
-Használatával [eszközről a felhőbe útvonalak][lnk-devguide-messaging-routes], konfigurálhatja úgy az IoT Hub tart elküldeni a különböző végpontok eszköz – felhő üzeneteket. Zahájeno szemben az egyes üzenetek értékelt kifejezések alapján történik.
-
-Az útvonal [feltétel] [ lnk-query-expressions] használja az IoT Hub lekérdezési nyelv szintaxisát, ikereszköz és feladat-lekérdezéseket, de csak az a funkciók egy részét a feltételek érhetők el. A fejlécek és törzs útvonal feltételek értékeli ki. Az útválasztási lekérdezési kifejezés is igénybe vehet csak üzenetfejlécekben, csak az üzenet szövegét, vagy mindkettő fejlécek üzenet, és üzenet törzse. Az IoT Hub feltételezi, hogy egy adott sémát a fejlécek és az üzenet törzse számára ahhoz, hogy az üzenetek, és a következő szakaszok ismertetik, hogy mire szükség, az IoT Hub megfelelően továbbítani.
-
-### <a name="routing-on-message-headers"></a>Fejlécek az Útválasztás
-
-Az IoT Hub a következő JSON-reprezentációja az üzenet-útválasztása üzenetfejlécekben feltételezi:
-
-```json
-{
-  "message": {
-    "systemProperties": {
-      "contentType": "application/json",
-      "contentEncoding": "utf-8",
-      "iothub-message-source": "deviceMessages",
-      "iothub-enqueuedtime": "2017-05-08T18:55:31.8514657Z"
-    },
-    "appProperties": {
-      "processingPath": "<optional>",
-      "verbose": "<optional>",
-      "severity": "<optional>",
-      "testDevice": "<optional>"
-    },
-    "body": "{\"Weather\":{\"Temperature\":50}}"
-  }
-}
-```
-
-Üzenet Rendszertulajdonságok van fűzve előtagként a `'$'` szimbólum.
-Felhasználói tulajdonságok, amelyek neve mindig érhetők el. Ha egy felhasználó tulajdonságnév időpontjával rendszer tulajdonsággal rendelkező (például `$contentType`), a felhasználó tulajdonság kérhető le a `$contentType` kifejezés.
-Mindig elérheti a zárójelek használatával rendszertulajdonság `{}`: például használhatja a kifejezés `{$contentType}` eléréséhez a rendszer tulajdonság `contentType`. A tulajdonságnevek zárójeles mindig kérik le a rendszer tulajdonsága.
-
-Ne feledje, hogy tulajdonságnevek megkülönböztetik a kis-és nagybetűket.
-
-> [!NOTE]
-> Összes üzenet tulajdonság olyan karakterláncok. Rendszertulajdonságok leírtak szerint a [fejlesztői útmutató][lnk-devguide-messaging-format], jelenleg nem használható lekérdezésekben.
->
-
-Ha például egy `messageType` tulajdonságot használja, érdemes lehet az összes telemetriai átirányítása egy végpontot, és a egy másik végpontra minden riasztás. Írhat irányíthatja a telemetriát a következő kifejezést:
-
-```sql
-messageType = 'telemetry'
-```
-
-És a figyelmeztető üzenetek a következő kifejezést:
-
-```sql
-messageType = 'alert'
-```
-
-A logikai kifejezéseket és funkciók is támogatottak. Ez a funkció lehetővé teszi, hogy megkülönböztethetők egymástól a súlyossági szintet, például:
-
-```sql
-messageType = 'alerts' AND as_number(severity) <= 2
-```
-
-Tekintse meg a [kifejezés és kikötések] [ lnk-query-expressions] támogatott operátorok és funkciók teljes listáját szakaszában.
-
-### <a name="routing-on-message-bodies"></a>Az üzenet törzse az Útválasztás
-
-Az IoT Hub csak irányíthatja üzenettörzs alapján tartalmát, ha az üzenet törzse nem megfelelően formázott JSON-kódolású UTF-8, UTF-16 vagy UTF-32. Üzenet a tartalomtípus beállítása `application/json`. Állítsa be a tartalmat, a támogatott UTF kódolást az üzenetfejlécekben egyik kódolást. Ha a fejlécek vagy nincs megadva, az IoT Hub nem kísérli meg bármely szemben az üzenet törzsében is érintő lekérdezési kifejezés kiértékelése. Ha nem az üzenet egy JSON-üzenetet, vagy ha az üzenet nem határoz meg a tartalom típusa és a tartalomkódolás, továbbra is használhatja az üzenetirányítással, továbbítsa az üzenetet a fejlécek alapján.
-
-Az alábbi példa bemutatja, hogyan hozhat létre egy üzenetet egy megfelelően formázott és kódolt JSON-törzse:
-
-```csharp
-string messageBody = @"{ 
-                            ""Weather"":{ 
-                                ""Temperature"":50, 
-                                ""Time"":""2017-03-09T00:00:00.000Z"", 
-                                ""PrevTemperatures"":[ 
-                                    20, 
-                                    30, 
-                                    40 
-                                ], 
-                                ""IsEnabled"":true, 
-                                ""Location"":{ 
-                                    ""Street"":""One Microsoft Way"", 
-                                    ""City"":""Redmond"", 
-                                    ""State"":""WA"" 
-                                }, 
-                                ""HistoricalData"":[ 
-                                    { 
-                                    ""Month"":""Feb"", 
-                                    ""Temperature"":40 
-                                    }, 
-                                    { 
-                                    ""Month"":""Jan"", 
-                                    ""Temperature"":30 
-                                    } 
-                                ] 
-                            } 
-                        }"; 
- 
-// Encode message body using UTF-8 
-byte[] messageBytes = Encoding.UTF8.GetBytes(messageBody); 
- 
-using (var message = new Message(messageBytes)) 
-{ 
-    // Set message body type and content encoding. 
-    message.ContentEncoding = "utf-8"; 
-    message.ContentType = "application/json"; 
- 
-    // Add other custom application properties.  
-    message.Properties["Status"] = "Active";    
- 
-    await deviceClient.SendEventAsync(message); 
-}
-```
-
-Használhat `$body` továbbítsa az üzenetet, a lekérdezési kifejezésben. Használhatja egy egyszerű törzs hivatkozást, törzs tömb hivatkozás vagy több szervezet hivatkozást a lekérdezési kifejezésben. A lekérdezési kifejezés kombinálhatja a szervezet odkazu s parametrem üzenet fejléc hivatkozást is. Ha például a következők az összes érvényes lekérdezési kifejezések:
-
-```sql
-$body.Weather.HistoricalData[0].Month = 'Feb'
-$body.Weather.Temperature = 50 AND $body.Weather.IsEnabled
-length($body.Weather.Location.State) = 2
-$body.Weather.Temperature = 50 AND Status = 'Active'
-```
-
 ## <a name="basics-of-an-iot-hub-query"></a>Az IoT Hub lekérdezési alapjai
 Minden IoT Hub lekérdezési válassza ki és záradékok esetén nem kötelező hol és a GROUP BY záradékot tartalmaz. Minden lekérdezés fut, a JSON-dokumentumok, például az ikereszközök gyűjteménye. A FROM záradék azt jelzi, hogy a dokumentum egy dokumentumgyűjteményben, meg kell iterálni (**eszközök** vagy **devices.jobs**). Ezt követően a WHERE záradékban a szűrő alkalmazása. Az összesítéseket, az eredményeket az ebben a lépésben csoportosítva vannak benne a GROUP BY záradékban megadott. Minden csoport jön létre egy sort a SELECT záradékban megadott.
 
@@ -614,8 +494,7 @@ Ismerje meg, hogyan hajthat végre lekérdezéseket alkalmazásaiba [Azure IoT S
 [lnk-devguide-endpoints]: iot-hub-devguide-endpoints.md
 [lnk-devguide-quotas]: iot-hub-devguide-quotas-throttling.md
 [lnk-devguide-mqtt]: iot-hub-mqtt-support.md
-[lnk-devguide-messaging-routes]: iot-hub-devguide-messages-read-custom.md
+[lnk-devguide-messaging-routes]: iot-hub-devguide-messages-d2c.md
 [lnk-devguide-messaging-format]: iot-hub-devguide-messages-construct.md
-[lnk-devguide-messaging-routes]: ./iot-hub-devguide-messages-read-custom.md
 
 [lnk-hub-sdks]: iot-hub-devguide-sdks.md

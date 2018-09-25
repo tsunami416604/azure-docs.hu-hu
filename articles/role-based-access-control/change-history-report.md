@@ -15,12 +15,12 @@ ms.date: 05/23/2018
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 10e0df78d75763dfcf8636983c9f9092b78b9c3b
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
+ms.openlocfilehash: d5a67cdcef7f39830b747dec5f2c980483e1ab91
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37437649"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46978335"
 ---
 # <a name="view-activity-logs-for-rbac-changes"></a>Az RBAC-módosítások Tevékenységnaplók megtekintése
 
@@ -125,7 +125,7 @@ az monitor activity-log list --resource-provider "Microsoft.Authorization" --sta
 
    ![A portál a log Analytics beállítás](./media/change-history-report/azure-log-analytics-option.png)
 
-1. Lehetősége van a [naplóbeli keresés](../log-analytics/log-analytics-log-search.md) lap vagy az [bővített analitika portál](https://docs.loganalytics.io/docs/Learn) lekérdezése és a naplók megtekintéséhez. E két beállítás kapcsolatos további információkért lásd: [naplók keresése oldalát, vagy a bővített analitika portál](../log-analytics/log-analytics-log-search-portals.md).
+1. Lehetősége van a [naplóbeli keresés](../log-analytics/log-analytics-log-search.md) lap vagy az [bővített analitika portál](../log-analytics/query-language/get-started-analytics-portal.md) lekérdezése és a naplók megtekintéséhez. E két beállítás kapcsolatos további információkért lásd: [naplók keresése oldalát, vagy a bővített analitika portál](../log-analytics/log-analytics-log-search-portals.md).
 
 Íme egy lekérdezést, amely az új szerepkör-hozzárendelések célként megadott erőforrás-szolgáltató szerint rendezve adja vissza:
 

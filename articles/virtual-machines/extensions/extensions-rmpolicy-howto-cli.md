@@ -13,18 +13,18 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/23/2018
 ms.author: roiyz;cynthn
-ms.openlocfilehash: f11d08e56fe1970aa7a0d82f368eb73589ece2fe
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: 08fcb244ada319dccf62c134a0155dd117e79184
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39412299"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46977040"
 ---
 # <a name="use-azure-policy-to-restrict-extensions-installation-on-linux-vms"></a>Az Azure Policy használatával korlátozhatja a bővítmények telepítése Linux rendszerű virtuális gépeken
 
 Ha azt szeretné, hogy használatát vagy a Linux rendszerű virtuális gépek az egyes bővítmények telepítését, létrehozhat egy Azure szabályzat a parancssori felületről bővítmények korlátozni a virtuális gépek erőforráscsoporton belül. 
 
-Ebben az oktatóanyagban a parancssori felület belül az Azure Cloud Shellt, amely folyamatosan frissül a legújabb verzióra. Ha azt szeretné, az Azure parancssori felület helyi futtatását, 2.0.26-os verzió telepítenie kell, vagy később. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI 2.0 telepítése]( /cli/azure/install-azure-cli). 
+Ebben az oktatóanyagban a parancssori felület belül az Azure Cloud Shellt, amely folyamatosan frissül a legújabb verzióra. Ha azt szeretné, az Azure parancssori felület helyi futtatását, 2.0.26-os verzió telepítenie kell, vagy később. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése]( /cli/azure/install-azure-cli). 
 
 ## <a name="create-a-rules-file"></a>Hozzon létre egy szabályok fájlt
 

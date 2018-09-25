@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 06/05/2018
 ms.author: cynthn
-ms.openlocfilehash: 0f77b46be0207b0ce96e6dc2562fb5298afbe36b
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.openlocfilehash: 11d9f5efb452d46e5ca30169861582f6f2bbbd1b
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37928182"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46969393"
 ---
 # <a name="create-a-linux-virtual-machine-that-uses-ssh-authentication-with-the-rest-api"></a>Hozzon létre egy Linux virtuális gép SSH-hitelesítést használó REST API-val
 
@@ -141,9 +141,9 @@ Egy tömörített *201 Created* az előző példában kérelem törzse, amely l�
 
 ## <a name="next-steps"></a>További lépések
 
-További információ az Azure REST API-kat vagy más felügyeleti eszközök, például az Azure CLI 2.0 vagy az Azure PowerShell-lel tekintse meg a következőket:
+További információ az Azure REST API-kat vagy más felügyeleti eszközök, például az Azure CLI-vel vagy az Azure PowerShell-lel tekintse meg a következőket:
 
 - [Az Azure Compute-szolgáltató REST API-val](/rest/api/compute/)
 - [Azure REST API használatának első lépései](/rest/api/azure/)
-- [Azure CLI 2.0](/cli/azure/)
+- [Azure CLI](/cli/azure/)
 - [Azure PowerShell-modul](/powershell/azure/overview)

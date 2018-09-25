@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 06/29/2018
+ms.date: 09/24/2018
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 0abf0a5971435fc3842a93e79d39468cba5c74da
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: fb0fb4e0f23413cb56b1bb5ec419c44dfc52e7b6
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37445211"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46996842"
 ---
 # <a name="elevate-access-for-a-global-administrator-in-azure-active-directory"></a>Az Azure Active Directoryban egy globális rendszergazda hozzáférési szintjének emelése
 
@@ -37,7 +37,9 @@ A jogosultságszint-emelés a ideiglenes és csak szükség esetén kész kell l
 
 [!INCLUDE [gdpr-dsr-and-stp-note](../../includes/gdpr-dsr-and-stp-note.md)]
 
-## <a name="elevate-access-for-a-global-administrator-using-the-azure-portal"></a>Az Azure portal használatával egy globális rendszergazda hozzáférési szintjének emelése
+## <a name="azure-portal"></a>Azure Portal
+
+Kövesse az alábbi lépéseket az Azure portal használatával egy globális rendszergazda hozzáférési szintjének emelése.
 
 1. Jelentkezzen be a [az Azure portal](https://portal.azure.com) vagy a [Azure Active Directory felügyeleti központ](https://aad.portal.azure.com).
 
@@ -59,7 +61,9 @@ A jogosultságszint-emelés a ideiglenes és csak szükség esetén kész kell l
 
 1. Végre kell hajtania az emelt szintű hozzáférési feladatokat. Amikor elkészült, a kapcsoló állítsa vissza a **nem**.
 
-## <a name="list-role-assignment-at-the-root-scope--using-powershell"></a>Szerepkör-hozzárendelés lista a gyökérszintű hatókörben (/) PowerShell-lel
+## <a name="azure-powershell"></a>Azure PowerShell
+
+### <a name="list-role-assignment-at-the-root-scope-"></a>A gyökérszintű hatókörben (/) szerepkör-hozzárendelés listája
 
 A gyökérszintű hatókörben egy felhasználó a felhasználói hozzáférés rendszergazdája szerepkör-hozzárendelés felsorolása (`/`), használja a [Get-AzureRmRoleAssignment](/powershell/module/azurerm.resources/get-azurermroleassignment) parancsot.
 
@@ -79,7 +83,7 @@ ObjectId           : d65fd0e9-c185-472c-8f26-1dafa01f72cc
 ObjectType         : User
 ```
 
-## <a name="remove-a-role-assignment-at-the-root-scope--using-powershell"></a>A gyökérszintű hatókörben (/) PowerShell-lel a szerepkör-hozzárendelés eltávolítása
+### <a name="remove-a-role-assignment-at-the-root-scope-"></a>A gyökérszintű hatókörben (/) szerepkör-hozzárendelés eltávolítása
 
 A gyökérszintű hatókörben egy felhasználó a felhasználói hozzáférés rendszergazdája szerepkör-hozzárendelés eltávolítása (`/`), használja a [Remove-AzureRmRoleAssignment](/powershell/module/azurerm.resources/remove-azurermroleassignment) parancsot.
 
@@ -88,7 +92,9 @@ Remove-AzureRmRoleAssignment -SignInName <username@example.com> `
   -RoleDefinitionName "User Access Administrator" -Scope "/"
 ```
 
-## <a name="elevate-access-for-a-global-administrator-using-the-rest-api"></a>A REST API-val egy globális rendszergazda hozzáférési szintjének emelése
+## <a name="rest-api"></a>REST API
+
+### <a name="elevate-access-for-a-global-administrator"></a>Egy globális rendszergazda hozzáférési szintjének emelése
 
 Az alábbi alapvető lépéseket használatával jogosultságszintjének emelése egy globális rendszergazda, a REST API használatával.
 
@@ -117,7 +123,7 @@ Az alábbi alapvető lépéseket használatával jogosultságszintjének emelés
 
 1. Távolítsa el a felhasználói hozzáférés rendszergazdai jogosultságokkal, amíg szükség van rájuk újra.
 
-## <a name="list-role-assignments-at-the-root-scope--using-the-rest-api"></a>A gyökérszintű hatókörben (/) a REST API-val szerepkör-hozzárendelések listázása
+### <a name="list-role-assignments-at-the-root-scope-"></a>A gyökérszintű hatókörben (/) szerepkör-hozzárendelések listát
 
 A szerepkör-hozzárendeléseket a gyökérszintű hatókörben egy felhasználó összes listázhatja (`/`).
 
@@ -127,7 +133,17 @@ A szerepkör-hozzárendeléseket a gyökérszintű hatókörben egy felhasznál�
    GET https://management.azure.com/providers/Microsoft.Authorization/roleAssignments?api-version=2015-07-01&$filter=principalId+eq+'{objectIdOfUser}'
    ```
 
-## <a name="remove-elevated-access-using-the-rest-api"></a>A REST API használatával emelt szintű hozzáférés eltávolítása
+### <a name="list-deny-assignments-at-the-root-scope-"></a>Listában elutasítása hozzárendelések a gyökérszintű hatókörben (/)
+
+Listázhatja az összes, a Megtagadás hozzárendelését az olyan a gyökérszintű hatókörben (`/`).
+
+- Hívja a GET-denyAssignments ahol `{objectIdOfUser}` azon megtagadása hozzárendelések szeretné beolvasni a felhasználói objektum azonosítója.
+
+   ```http
+   GET https://management.azure.com/providers/Microsoft.Authorization/denyAssignments?api-version=2018-07-01-preview&$filter=gdprExportPrincipalId+eq+'{objectIdOfUser}'
+   ```
+
+### <a name="remove-elevated-access"></a>Emelt szintű hozzáférés eltávolítása
 
 Meghívásakor `elevateAccess`, szerepkör-hozzárendelés hoz létre a saját maga számára, így ezeket a jogosultságokat visszavonása el kell távolítania a hozzárendelést.
 

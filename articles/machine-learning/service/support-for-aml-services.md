@@ -1,42 +1,41 @@
 ---
-title: Támogatás és a képzés az Azure Machine Learning-szolgáltatások
-description: Ez a cikk bemutatja, hogyan kezdheti támogatási és képzési Azure Machine Learning-szolgáltatások és az Azure Machine Learning Workbenchben
+title: Támogatás és a képzés az Azure Machine Learning szolgáltatás
+description: Ez a cikk bemutatja, hogyan kaphat támogatást és képzés az Azure Machine Learning szolgáltatás
 services: machine-learning
-author: j-martens
-ms.author: jmartens
-manager: cgronlund
-ms.reviewer: mldocs
 ms.service: machine-learning
 ms.component: core
-ms.workload: data-services
-ms.topic: article
-ms.date: 03/01/2018
-ms.openlocfilehash: a9529a2b38105274f021483cfce51f30fd38fb62
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ms.topic: conceptual
+ms.reviewer: jmartens
+author: j-martens
+ms.author: jmartens
+ms.date: 09/24/2018
+ms.openlocfilehash: b5834bfd47cf2ab8462462c43394c8f05e43afa3
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35645380"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46971399"
 ---
-# <a name="get-support-and-training-for-azure-machine-learning-services"></a>Támogatás és a képzés az Azure Machine Learning-szolgáltatások
+# <a name="get-support-and-training-for-azure-machine-learning-service"></a>Támogatás és a képzés az Azure Machine Learning szolgáltatás
 
-Ez a cikk információt nyújt az tudjon meg többet az Azure Machine Learning-szolgáltatások, valamint a támogatás a problémákat és kérdéseket. 
+Ez a cikk információt nyújt az tudjon meg többet az Azure Machine Learning szolgáltatáshoz, valamint a támogatás a problémákat és kérdéseket. 
 
 ## <a name="learn-more-about-azure-machine-learning"></a>További információ az Azure Machine Learning
 
-Az [Azure Machine Learning dokumentációs központjában](../desktop-workbench/overview-what-is-azure-ml.md) oktatóvideókat és útmutatókat talál az Azure Machine Learning használatáról. Ezek a részletes útmutatók bemutatják a szolgáltatásokat, és az adatelemzési életciklusát ismertetik. A Machine Learning központját folyamatosan új anyagokkal bővítjük. 
-
-Emellett nincsenek [további megtekinthet videókat](https://azure.microsoft.com/resources/videos/index/?services=machine-learning)
+Mellett a dokumentáció ezen a helyen található:
++ [Az oktatóanyagok és útmutatók](../service/index.yml)
++ [az architektúra áttekintése](../service/concept-azure-machine-learning-architecture.md)
++ [Videók](https://azure.microsoft.com/resources/videos/index/?services=machine-learning)
 
 Is **kérelmek elküldése** a további oktatási anyagainak a cikk alján lévő visszajelzési hivatkozásra kattintva használatával.
 
-## <a name="get-support-for-azure-machine-learning-services"></a>Támogatás kérése az Azure Machine Learning-szolgáltatások
+## <a name="get-support-for-azure-machine-learning-service"></a>Támogatás kérése az Azure Machine Learning szolgáltatás
 
-Az alábbi módokon is kérhet támogatást az Azure Machine Learning-szolgáltatások:
+Tekintse meg ezeket erőforrások támogatása:
 
-+ **Technikai támogatás**: forduljon az Azure műszaki támogatási funkcionáló [Azure-támogatási](https://azure.microsoft.com/support/options/) és kiválasztása a Machine Learning. 
++ **Technikai támogatás**: keresse fel [technikai Azure-támogatás](https://azure.microsoft.com/support/options/) , és válassza ki a Machine Learning. 
 
-+ **MSDN-felhasználói fórum**: tegyen fel kérdéseket, válaszolnak kérdéseire, és csatlakozás a más felhasználókkal a [Azure Machine Learning-szolgáltatások támogatási fórum az MSDN-en](https://social.msdn.microsoft.com/Forums/windowsdesktop/home?forum=MachineLearning).
++ **Felhasználói fórum**: tegyen fel kérdéseket, válaszolnak kérdéseire, és csatlakozás a más felhasználókkal a [Azure Machine Learning szolgáltatás támogatási fórum az MSDN-en](https://social.msdn.microsoft.com/Forums/windowsdesktop/home?forum=MachineLearning).
 
 + **Stack Overflow**: keresse meg az Azure Machine Learning-Közösség a [StackOverflow](https://stackoverflow.com/questions/tagged/azure-machine-learning) címkével ellátott "Azure-gépi tanulási".
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: briz
-ms.openlocfilehash: 70ce30bdc5a12aec198a2bb1b78c9bdfa8a18882
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.openlocfilehash: cfbebf8570ee044698b0f4e0abdd58370b04f759
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "42057248"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46992864"
 ---
 # <a name="how-to-use-azure-cli-and-the-iot-extension-to-manage-the-iot-hub-device-provisioning-service"></a>Azure CLI-vel és az IoT-bővítmény használata az IoT Hub Device Provisioning Service kezelése
 
@@ -29,7 +29,7 @@ Ebben az oktatóanyagban, először hajtsa végre az Azure CLI-vel és az IoT-b�
 
 [Python 2.7x vagy Python 3.x](https://www.python.org/downloads/) szükséges.
 
-### <a name="step-2---install-azure-cli"></a>2. lépés – az Azure CLI telepítése
+### <a name="step-2---install-the-azure-cli"></a>2. lépés – az Azure CLI telepítése
 
 Kövesse a [– telepítési utasítások](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) állíthatja be az Azure CLI-vel a környezetben. Legalább az Azure CLI 2.0.24-es verzióját kell vagy újabb. A verziószámot az `az –version` paranccsal ellenőrizheti. Ez a verzió támogatja az „az” bővítményparancsokat, és ebben a verzióban került bevezetésre a Knack parancskeretrendszer. Windows rendszeren a legegyszerűbb megoldás a telepítésre az [MSI](https://aka.ms/InstallAzureCliWindows) letöltése és telepítése.
 

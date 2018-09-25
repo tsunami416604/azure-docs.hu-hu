@@ -16,14 +16,19 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/10/2017
-ms.openlocfilehash: f6ce43c2d290bacee10e102cc6c382981db9917f
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ROBOTS: NOINDEX
+ms.openlocfilehash: 775d0701f9eeaf7d26a83b814711bea630efb2a6
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42055134"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46973762"
 ---
 # <a name="biomedical-entity-recognition-using-team-data-science-process-tdsp-template"></a>Orvosbiológiai entitásfelismerés csoportos adatelemzési folyamat (TDSP) sablon használatával
+
+[!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)] 
+
+
 
 Entitások kinyeréséhez az információk kinyerése alfeladat (más néven [elnevezett entitásfelismerés (NER)](https://en.wikipedia.org/wiki/Named-entity_recognition), darabolás entitás és az entitás azonosítója). A való életből vett forgatókönyv célja, hogy arról, hogy az Azure Machine Learning Workbench használata a természetes nyelvi feldolgozási (NLP) például az entitás kinyerése strukturálatlan szövegből bonyolult feladat megoldásához:
 
@@ -95,7 +100,7 @@ Az alábbiakban a a hivatkozásra kattintva a nyilvános GitHub-tárházat a val
 ## <a name="prerequisites"></a>Előfeltételek 
 
 * Azure-beli [előfizetés](https://azure.microsoft.com/free/)
-* Az Azure Machine Learning Workbench alkalmazásban. Lásd: [telepítési útmutató](../service/quickstart-installation.md). Az Azure Machine Learning Workbench jelenleg csak az alábbi operációs rendszereken telepíthető: 
+* Az Azure Machine Learning Workbench alkalmazásban. Lásd: [telepítési útmutató](quickstart-installation.md). Az Azure Machine Learning Workbench jelenleg csak az alábbi operációs rendszereken telepíthető: 
     * Windows 10 vagy Windows Server 2016
     * macOS Sierra operációs rendszert (vagy újabb)
 
@@ -118,7 +123,7 @@ A szükséges függőségek a aml_config/conda_dependencies.yml fájlt a forgat�
 
 ### <a name="basic-instructions-for-azure-machine-learning-aml-workbench"></a>Alapvető utasításokat a Workbench az Azure Machine Learning (AML)
 * [Áttekintés](../service/overview-what-is-azure-ml.md)
-* [Telepítés](../service/quickstart-installation.md)
+* [Telepítés](quickstart-installation.md)
 * [TDSP használata](how-to-use-tdsp-in-azure-ml.md)
 * [Fájlok írása és olvasása](how-to-read-write-files.md)
 * [A Jupyter notebookok használata](how-to-use-jupyter-notebooks.md)

@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 08/16/2018
 ms.author: bwren
 ms.component: na
-ms.openlocfilehash: acf51056a084abc08bda2d7f73b561f442f57784
-ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
+ms.openlocfilehash: e63345c0265d52fdd80fe4542efb7f13324926cf
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45605528"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46989618"
 ---
 # <a name="creating-charts-and-diagrams-from-log-analytics-queries"></a>Diagramok és ábrák hoz létre a Log Analytics-lekérdezések
 
@@ -34,7 +34,7 @@ Ez a cikk ismerteti az Azure Log Analytics az adatokat különböző módon megj
 ## <a name="charting-the-results"></a>Az eredmények diagramkészítési
 Indítsa el vannak egy operációs rendszer, az elmúlt órában hány számítógép áttekintésével:
 
-```KQL
+```Kusto
 Heartbeat
 | where TimeGenerated > ago(1h)
 | summarize count(Computer) by OSType  
@@ -52,7 +52,7 @@ Jobb képet kaphat, jelölje be **diagram**, és válassza ki a **torta** beáll
 ## <a name="timecharts"></a>Timecharts
 Az átlag, a processzor kihasználtsága az 50, és a 95. percentilisei megjelenítése bins 1 óra. A lekérdezés több sorozat állít elő, és ezután kiválaszthatja, melyik sorozat a diagram megjelenítése:
 
-```KQL
+```Kusto
 Perf
 | where TimeGenerated > ago(1d) 
 | where CounterName == "% Processor Time" 
@@ -67,7 +67,7 @@ Válassza ki a **sor** diagram megjelenítési beállítás:
 
 Referenciavonalak segítségével egyszerűbb azonosításához, ha a metrika túllépte az egy adott küszöbértéket. Adjon hozzá egy sort egy diagramra, hogy az adatkészlet egy állandó oszloppal kiterjesztése:
 
-```KQL
+```Kusto
 Perf
 | where TimeGenerated > ago(1d) 
 | where CounterName == "% Processor Time" 
@@ -80,7 +80,7 @@ Perf
 ## <a name="multiple-dimensions"></a>Több dimenzióban
 Több kifejezésének a `by` záradékában `summarize` hozzon létre több sort az eredmények között, egy az egyes kombinaci hodnot.
 
-```KQL
+```Kusto
 SecurityEvent
 | where TimeGenerated > ago(1d)
 | summarize count() by tostring(EventID), AccountType, bin(TimeGenerated, 1h)

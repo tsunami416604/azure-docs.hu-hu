@@ -8,12 +8,12 @@ ms.technology: Speech to Text
 ms.topic: article
 ms.date: 04/26/2018
 ms.author: panosper
-ms.openlocfilehash: fcc57ea7729f8a907fd39fe346270cc52c148f07
-ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
+ms.openlocfilehash: 860b58a18fbc14532a8591fc753453d60492d3c0
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45605587"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46981372"
 ---
 # <a name="batch-transcription"></a>Kötegelt átírás
 
@@ -100,7 +100,7 @@ Miután beszerezte a jogkivonatot, meg kell adnia a SAS URI-t igénylő beszéd�
 ```cs
    static async Task TranscribeAsync()
         { 
-            private const string SubscriptionKey = "<your Speech[Preview] subscription key>";
+            private const string SubscriptionKey = "<your Speech subscription key>";
             private const string HostName = "westus.cris.ai";
             private const int Port = 443;
     
@@ -169,7 +169,7 @@ Miután beszerezte a jogkivonatot, meg kell adnia a SAS URI-t igénylő beszéd�
 ```
 
 > [!NOTE]
-> A fenti kóddal, a az előfizetési kulcs van, az Azure Portalon létrehozott Speech(Preview) erőforrásból. A Custom Speech Service erőforrás származó kulcsok nem működnek.
+> A fenti kóddal, a az előfizetési kulcs van, a beszéd erőforrás, amely az Azure Portalon hoz létre. A Custom Speech Service erőforrás származó kulcsok nem működnek.
 
 Figyelje meg, hogy az aszinkron beállítás könyvelési hang és a fogadás beszédátírási állapot. Az ügyfél létrehozása a .NET-Http-alapú. Van egy `PostTranscriptions` metódus küld el a hangfájl részleteit, és a egy `GetTranscriptions` metódus az eredmények. `PostTranscriptions` a fogópont adja vissza és `GetTranscriptions` hozható létre lekérni beszédátírási állapotát leíró ezt az azonosítót használja.
 

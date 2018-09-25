@@ -1,147 +1,149 @@
 ---
-title: Több-bérlős Szolgáltatottszoftver-oktatóanyag – az Azure SQL Database |} Microsoft Docs
-description: A különálló alkalmazás minta használatával biztosítása és a katalógus új bérlők
-keywords: sql database-oktatóanyag
+title: Több-bérlős SaaS-oktatóanyag – Azure SQL Database |} A Microsoft Docs
+description: Önálló alkalmazásminta használatával új bérlők kiépítése és katalógusba
 services: sql-database
-author: stevestein
-manager: craigg
 ms.service: sql-database
-ms.custom: SaaS
+ms.subservice: scenario
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
+author: stevestein
+ms.author: sstein
+ms.reviewer: billgib
+manager: craigg
 ms.date: 01/31/2018
-ms.author: billgib
-ms.openlocfilehash: 0f2495ddc5d5053582d67bd44cdf80d018f79e42
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 92a1745f8da9783a22c7cbf417acb0709759f41c
+ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34646153"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47054310"
 ---
-# <a name="provision-and-catalog-new-tenants-using-the--application-per-tenant-saas-pattern"></a>A Szolgáltatottszoftver-mintát bérlőnként alkalmazással biztosítása és a katalógus új bérlők
+# <a name="provision-and-catalog-new-tenants-using-the--application-per-tenant-saas-pattern"></a>Az alkalmazás bérlőnkénti SaaS-minta használatával új bérlők kiépítése és katalógusba
 
-Ez a cikk ismerteti a kiépítés és a Szolgáltatottszoftver-mintát bérlőnként különálló alkalmazás használatával új bérlő katalogizálni.
+Ez a cikk ismerteti a kiépítés és katalogizálás bérlőnként SaaS-minta a különálló alkalmazás használatával új bérlők.
 Ez a cikk két fő részből áll:
-* Fogalmi leírását az üzembe helyezési és az új bérlők katalogizálása
-* Egy oktatóanyag, amely kiemeli a minta PowerShell-kódot, amely éri el a kiépítési és katalogizálása
-    * Az oktatóprogram a Wingtip jegyek minta SaaS-alkalmazáshoz, az önálló app típusú bérlői mintában igazodó.
+* Fogalmi vitafórum üzembe helyezésének és az új bérlők katalogizálása
+* Oktatóanyag, amely kiemeli a minta PowerShell-kód, amely a kiépítés és katalogizálás feladatot el
+    * Az oktatóanyag a Wingtip Tickets SaaS-mintaalkalmazás, az önálló app bérlői mintában igazodó használja.
 
-## <a name="standalone-application-per-tenant-pattern"></a>Bérlői minta egy önálló alkalmazás
-Az önálló app típusú bérlői mintában a több-bérlős SaaS-alkalmazásokhoz több mintái egyike.  Ebben a mintában egy különálló alkalmazás ki van építve, az egyes bérlők számára. Az alkalmazás alkalmazás-szintű összetevők és az SQL-adatbázis foglalja magában.  Minden bérlő alkalmazás gyártója által biztosított előfizetés is telepíthető.  Másik lehetőségként az Azure kínál a [kezelt alkalmazások program](https://docs.microsoft.com/azure/managed-applications/overview) alkalmazás is lehet üzembe helyezett egy bérlői előfizetéshez és a bérlői nevében a szállító által felügyelt. 
+## <a name="standalone-application-per-tenant-pattern"></a>Önálló alkalmazás bérlői mintában
+Az önálló app bérlői mintában az egyik több minták a több-bérlős SaaS-alkalmazásokhoz.  Ebben a mintában egy önálló alkalmazás minden egyes bérlőhöz van kiépítve. Az alkalmazás magában foglalja a szolgáltatói alkalmazás-összetevők és a egy SQL-adatbázist.  Minden egyes bérlő alkalmazást is üzembe helyezhetők a szállító előfizetésben.  Másik lehetőségként az Azure kínál egy [felügyelt alkalmazások program](https://docs.microsoft.com/azure/managed-applications/overview) , ahol egy alkalmazás is lehet egy bérlő előfizetésben telepített, illetve a bérlő nevében a szállító által kezelt. 
 
-   ![alkalmazás / bérlői minta](media/saas-standaloneapp-provision-and-catalog/standalone-app-pattern.png)
+   ![alkalmazás bérlőnkénti minta](media/saas-standaloneapp-provision-and-catalog/standalone-app-pattern.png)
 
-Amikor egy bérlő számára az alkalmazások központi telepítése, az alkalmazás- és rendszerbeli egy új erőforráscsoportot, a bérlő létre.  Elkülönített erőforrás-csoportok használata elkülöníti az egyes bérlők alkalmazás-erőforrásokat, és így függetlenül kezelhetők. Mindegyik erőforráscsoporton belül minden alkalmazáspéldány van konfigurálva a megfelelő adatbázishoz való közvetlen hozzáféréshez.  Ez a kapcsolat modell más broker kapcsolatok az alkalmazás és az adatbázis közötti katalógus használó mintákat ellenkezőjét szemlélteti.  És mivel nincs erőforrás-megosztás, minden egyes bérlői adatbázisához a csúcsterhelés kezeléséhez elegendő erőforrással rendelkező kell telepíthető. Ebben a mintában általában kevesebb bérlők, SaaS-alkalmazásokhoz használandó ahol nincs tenant nagy hangsúlyt, elkülönítési és kisebb erőforrás költségek hangsúlyt.  
+Amikor egy bérlő számára az alkalmazás telepítését a az alkalmazás- és vannak kiépítve egy új erőforráscsoportot létrehozni a bérlő számára.  Külön erőforráscsoportok használata elkülöníti az egyes bérlők alkalmazásokra vonatkozó erőforrásokhoz, és lehetővé teszi, hogy egymástól függetlenül kell kezelni. Mindegyik erőforráscsoporton belül az egyes alkalmazáspéldányokról közvetlenül elérni a megfelelő adatbázist van konfigurálva.  Ez a kapcsolat modell ellenkezőjét más mintákat, amelyek a katalógus átvitelszervező-kapcsolatokra az alkalmazás és az adatbázis között.  És mivel nincs erőforrás-megosztást, minden bérlői adatbázis ki kell építenie annak maximális terhelés kezeléséhez elegendő erőforrással rendelkező. Ez a minta általában kevesebb bérlő, SaaS-alkalmazásokhoz használható, ha van a bérlőn nagy hangsúlyt elkülönítési és erőforrás-használati díjak kevesebb figyelmet fordítva.  
 
-## <a name="using-a-tenant-catalog-with-the-application-per-tenant-pattern"></a>A bérlői katalógussal típusú bérlői mintában az alkalmazással
-Míg a bérlő az alkalmazás- és teljesen elkülönített, különböző felügyeleti és elemzés forgatókönyvek bérlők között működik.  Például egy alkalmazás új verziót a sémamódosítás alkalmazása módosítását igényli az egyes bérlői adatbázis sémája. Jelentéskészítés és elemzés forgatókönyvek is szüksége lehet függetlenül attól, ahol központilag telepítették őket összes bérlői adatbázis elérésére.
+## <a name="using-a-tenant-catalog-with-the-application-per-tenant-pattern"></a>Bérlői katalógus használata az alkalmazás a bérlő mintában
+Habár minden bérlő az alkalmazás- és teljes mértékben elkülönített, különböző kezelési és analitikai forgatókönyvet bérlők között működik.  Például az alkalmazás új kiadása séma változását alkalmazása sémáját, minden bérlői adatbázis módosítását igényli. Jelentéskészítési és elemzési forgatókönyvek is szüksége lehet függetlenül, melyekre telepítve vannak az összes bérlői adatbázison.
 
-   ![alkalmazás / bérlői minta](media/saas-standaloneapp-provision-and-catalog/standalone-app-pattern-with-catalog.png)
+   ![alkalmazás bérlőnkénti minta](media/saas-standaloneapp-provision-and-catalog/standalone-app-pattern-with-catalog.png)
 
-A bérlői katalógus tárolja a bérlő azonosítója és a bérlői adatbázist, így lesz hozzárendelve a kiszolgáló és az adatbázis nevét azonosítót közötti leképezést.  A Wingtip SaaS-alkalmazás a bérlő azonosítója számítja ki, hogy egy kivonatot bérlőjének a nevével, bár egyéb rendszerek is használható.  Önálló alkalmazások nincs szüksége a katalógus használatával kezelheti a kapcsolatokat, amíg a katalógus más műveletek bérlői adatbázisok készleteit hatókörének használható. Például rugalmas lekérdezés segítségével a katalógus-adatbázisok között, amelyek lekérdezéseket küld a jelentési kereszt-bérlő meg.
+A bérlői katalógus tartalmazza a bérlő azonosítóját és a egy bérlői adatbázis, így a kiszolgáló és az adatbázis nevének feloldása azonosítót közötti leképezést.  A Wingtip SaaS-alkalmazás, az a bérlőazonosító számítja ki, hogy egy kivonatot a bérlő nevéből, bár egyéb sémák is használhatók.  Önálló alkalmazásokat nem kell a katalógus kapcsolatok kezeléséhez, míg a katalógus más műveletek körét a bérlői adatbázisok hatókörének beállításához használható. Például rugalmas lekérdezés használatával a katalógus határozza meg a bérlők közötti jelentéskészítés elosztott lekérdezések között, amelyek adatbázisok körét.
 
 ## <a name="elastic-database-client-library"></a>Elastic Database-kezelési klienskódtár
-A Wingtip mintaalkalmazást a katalógus megvalósítja a shard kezelési funkciókat a [Elastic Database ügyféloldali kódtár](https://docs.microsoft.com/azure/sql-database/sql-database-elastic-database-client-library) (EDCL).  A könyvtár lehetővé teszi az alkalmazás létrehozására, kezelésére és használja a-adatbázisban tárolt shard leképezését. A Wingtip jegyek mintában a katalógus tárolja a *bérlői katalógus* adatbázis.  A szilánkok a bérlőkulcsát, hogy a shard (adatbázis) szolgáltatástérképek adott bérlői adatokat tárolja.  EDCL funkciók kezelése egy *globális shard térkép* a táblákban tárolt a *bérlői katalógus* adatbázis és a *helyi shard térkép* minden shard tárolja.
+A Wingtip mintaalkalmazásban valósul meg a katalógusban lévő szegmensek kezelési funkciókat a [Elastic Database-Ügyfélkódtár](https://docs.microsoft.com/azure/sql-database/sql-database-elastic-database-client-library) (EDCL).  A kódtár lehetővé teszi, hogy az alkalmazás létrehozása, kezelése és használata egy szegmenstérképet, amely egy adatbázisban vannak tárolva. A Wingtip Tickets mintát, a katalógus tárolja a *bérlői katalógus* adatbázis.  A szilánkleképezések a bérlők adatainak tárolása a bérlőkulcsot a szegmenshez (adatbázis).  Az EDCL funkciók kezelése egy *globális szegmenstérkép* a táblákban tárolt a *bérlői katalógus* adatbázis és a egy *helyi szegmenstérkép* minden egyes szegmens tárolná.
 
-EDCL függvények hívhatók alkalmazások vagy a PowerShell-parancsfájlok létrehozását és kezelését a shard térkép bejegyzései. Más EDCL funkciók segítségével kéri le a szilánkok készletét, vagy a megfelelő adatbázishoz csatlakozni, a megadott bérlőkulcs. 
+Az EDCL funkciók alkalmazások vagy a PowerShell-parancsfájlok létrehozását és kezelését a szegmenstérkép bejegyzést is meghívható. Az EDCL függvényekkel használható kérje le a szegmensek készletét, vagy a megfelelő adatbázishoz csatlakozni, a megadott bérlői kulccsá. 
     
 > [!IMPORTANT] 
-> Ne szerkessze az adatokat a katalógus adatbázisban vagy a helyi shard leképezés a bérlő adatbázisokban közvetlenül. Közvetlen frissítések nem támogatottak a magas kockázatú adatsérülés miatt. Ehelyett a hozzárendelési adatok szerkesztéséhez csak EDCL API-k használatával.
+> Ne módosítsa a katalógus-adatbázisban lévő adatok vagy a bérlői adatbázisok a helyi horizontális skálázási térképet közvetlenül. Közvetlen frissítések nem támogatottak a magas kockázatú az adatsérülés miatt. Ehelyett szerkesztésével a társítási adatok csak az EDCL API-k használatával.
 
-## <a name="tenant-provisioning"></a>Bérlő kiépítésének 
-Mindegyik bérlő szükséges egy új Azure erőforráscsoport, amely erőforrások belül kiépítése előtt létre kell hozni. A csoport létezik, miután az Azure Resource Manager sablon segítségével az alkalmazás-összetevők és az adatbázis központi telepítése, és adja meg az adatbázis-kapcsolatot. Az adatbázisséma inicializálni a sablon bacpac fájlt importál.  Másik lehetőségként az adatbázis "template" adatbázis másolatának hozhatók létre.  Az adatbázis további majd kezdeti helyszínére adatok frissítése és a katalógus regisztrálni.
+## <a name="tenant-provisioning"></a>A bérlő kiépítésének 
+Minden egyes bérlőhöz van szükség egy új Azure-erőforráscsoportot, amely a benne lévő erőforrások kiépítése előtt létre kell hozni. Miután az erőforráscsoport létezik, egy Azure Resource Management-sablon használható az alkalmazás-összetevők és az adatbázis üzembe helyezése, és adja meg az adatbázis-kapcsolat. Az adatbázisséma inicializálása, a sablon importálhatja egy bacpac-fájlba.  Az adatbázis azt is megteheti, mint a "sablon" adatbázisának egy másolatát is létrehozható.  Adatbázis további majd kezdeti helyszín adatokkal frissíti, regisztrálása a katalógusban.
 
 ## <a name="tutorial"></a>Oktatóanyag
 
 Ezen oktatóanyag segítségével megtanulhatja a következőket:
 * A katalógus kiépítése
-* A bérlői mintaadatbázisokat központilag telepített regisztrálása során korábban küldje el a katalógusban
-* Egy további bérlői kiépíteni, és regisztrálja a katalógusban
+* A minta bérlői adatbázisok üzembe helyezett regisztrálása a katalógusban korábban
+* Egy további új bérlő kiépítéséhez, és regisztrálja a katalógusban
 
-Az Azure Resource Manager sablon telepítése és konfigurálja az alkalmazást, a bérlő adatbázis létrehozása és inicializálása azt bacpac fájl majd importálása szolgál. A kérést, előfordulhat, hogy több percig, mielőtt a műveletet kiváltó várósorba kerülnek.
+Az Azure Resource Manager-sablon üzembe helyezése és az alkalmazás konfigurálása a, a bérlői adatbázis létrehozása és a egy bacpac-fájlba inicializálása, majd importálja szolgál. Az importálási kérelem előfordulhat, hogy nem helyezi várólistára, a több percig, mielőtt actioned.
 
-Ez az oktatóanyag végén önálló bérlői alkalmazások, amelynek az egyes adatbázisok a katalógusban regisztrált rendelkezik.
+Ez az oktatóanyag végén önálló bérlői alkalmazások, a katalógusban regisztrált minden adatbázissal rendelkezik.
 
 ## <a name="prerequisites"></a>Előfeltételek
 Az oktatóanyag teljesítéséhez meg kell felelnie az alábbi előfeltételeknek: 
 * Az Azure PowerShell telepítve van. A részletekért lásd: [Ismerkedés az Azure PowerShell-lel](https://docs.microsoft.com/powershell/azure/get-started-azureps)
-* A három minta bérlői alkalmazások vannak telepítve. Ezen alkalmazások telepítését a öt percen belül, lásd: [központi telepítése és vizsgálja meg a Wingtip jegyek SaaS önálló alkalmazásminta](https://docs.microsoft.com/azure/sql-database/saas-standaloneapp-get-started-deploy).
+* A három minta bérlői alkalmazások üzembe vannak helyezve. Ezek az alkalmazások telepítéséről kevesebb mint öt perc alatt: [üzembe helyezés és Fedezze fel a Wingtip Tickets SaaS önálló alkalmazás minta](https://docs.microsoft.com/azure/sql-database/saas-standaloneapp-get-started-deploy).
 
-## <a name="provision-the-catalog"></a>Az alkalmazáskatalógus létesítése
-Ebben a feladatban megismerheti, hogyan regisztrálhatók a bérlő adatbázisok katalógus kiépítéséhez. Az alábbiakat fogja elvégezni: 
-* **A katalógus adatbázis létesítéséhez** az Azure erőforrás-kezelés sablonnal. Az adatbázis bacpac fájl importálásával inicializálva van.  
-* **Regisztrálja a bérlőt mintaalkalmazások** korábban telepített.  Mindegyik bérlő regisztrálva van, a bérlő neve kivonatát értékekből összeállított kulcs segítségével.  A bérlő nevét egy bővítmény tábla a katalógus is tárolódik.
+## <a name="provision-the-catalog"></a>A katalógus kiépítése
+Ebben a feladatban megismerheti, hogyan építheti ki a katalógus regisztrálható az összes bérlői adatbázison. Az alábbiakat fogja elvégezni: 
+* **A katalógus-adatbázis kiépítése** az Azure resource management-sablonnal. Az adatbázis inicializálása egy bacpac-fájl importálásával.  
+* **A mintaalkalmazások bérlői regisztrálásához** korábban üzembe helyezett.  Minden egyes bérlő regisztrálva lett a bérlő neve kivonatát értékekből összeállított kulcs használatával.  A bérlő nevét is tárolja, a katalógus-bővítmény táblában.
 
-1. Nyissa meg a PowerShell ISE *...\Learning Modules\UserConfig.psm* , és frissítse a **\<felhasználói\>** értéket a három minta alkalmazások központi telepítésekor használt érték.  **Mentse a fájlt**.  
-1. Nyissa meg a PowerShell ISE *...\Learning Modules\ProvisionTenants\Demo-ProvisionAndCatalog.ps1* és **$Scenario = 1**. A bérlői katalógus telepíti, és regisztrálja az előre definiált bérlők.
+1. A PowerShell ISE-ben nyissa meg a *...\Learning Modules\UserConfig.psm* és frissítheti a **\<felhasználói\>** érték, a három minta-alkalmazás üzembe helyezésekor használt értékkel.  **Mentse a fájlt**.  
+1. A PowerShell ISE-ben nyissa meg a *...\Learning Modules\ProvisionTenants\Demo-ProvisionAndCatalog.ps1* és **$Scenario = 1**. A bérlői katalógus üzembe, és regisztrálja az előre definiált bérlők számára.
 
-1. A kurzor bárhol tegyen a sor, amely szerint, vegye fel a töréspont `& $PSScriptRoot\New-Catalog.ps1`, majd nyomja le az **F9**.
+1. Adjon hozzá egy töréspontot ehhez vigye a kurzort bárhol, amely szerint, a sor `& $PSScriptRoot\New-Catalog.ps1`, és nyomja le az **F9**.
 
-    ![a nyomkövetés Töréspont beállítása](media/saas-standaloneapp-provision-and-catalog/breakpoint.png)
+    ![egy töréspontot a nyomkövetés beállítása](media/saas-standaloneapp-provision-and-catalog/breakpoint.png)
 
-1. Futtassa a parancsfájlt billentyűkombináció lenyomásával **F5**. 
-1.  Miután a parancsfájl végrehajtása a töréspont megáll, nyomja le az **F11** lépésre a New-Catalog.ps1 parancsfájlba.
-1.  A parancsfájl végrehajtása a hibakeresési menüpontok, F10 és F11 segítségével nyomon követni, több mint vagy a lépés neve a funkciók.
-    *   PowerShell-parancsfájlok hibakereső kapcsolatban további információkért lásd: [kezelése és a PowerShell-parancsfájlok hibakeresési tippeket](https://msdn.microsoft.com/powershell/scripting/core-powershell/ise/how-to-debug-scripts-in-windows-powershell-ise).
+1. Futtassa a szkriptet lenyomásával **F5**. 
+1.  Miután a parancsfájl végrehajtása a töréspont leáll, nyomja le az ENTER **F11** lépéssel a New-Catalog.ps1 parancsfájlba.
+1.  Nyomon követheti a szkript végrehajtását, F10 és F11, a hibakeresési menüpontok segítségével vagy az meghívott függvényeken keresztül. lépésre.
+    *   Hibakeresés a PowerShell-parancsfájlokkal kapcsolatos további információkért lásd: [tippekkel szolgál az használatához és hibakereséséhez PowerShell-parancsfájlok](https://msdn.microsoft.com/powershell/scripting/core-powershell/ise/how-to-debug-scripts-in-windows-powershell-ise).
 
-A parancsfájl befejeztét követően a katalógus van jelen, és a minta-bérlő regisztrálva lesz. 
+Miután a parancsfájl futása befejeződött, a katalógus fog létezik, és regisztrálva lesz az összes minta bérlővel. 
 
-Most tekintse meg a létrehozott erőforrások.
+Most nézzük meg a létrehozott erőforrásokat.
 
-1. Nyissa meg a [Azure-portálon](https://portal.azure.com/) , és keresse meg az erőforráscsoportokat.  Nyissa meg a **wingtip-sa-katalógus -\<felhasználói\>**  erőforrás csoportnak, és jegyezze fel a globáliskatalógus-kiszolgálónak és az adatbázis.
-1. Nyissa meg az adatbázis a portálon, és válasszon *adatkezelő* a bal oldali menüből.  A bejelentkezési parancsra, és írja be a jelszót = **P@ssword1**.
+1. Nyissa meg a [az Azure portal](https://portal.azure.com/) , és keresse meg az erőforráscsoportot.  Nyissa meg a **wingtip-sa-katalógus -\<felhasználói\>**  erőforrás csoportot, és jegyezze fel a globáliskatalógus-kiszolgálónak és az adatbázis.
+1. Nyissa meg az adatbázis a portálon, válassza a *adatkezelő* elemet a bal oldali menüben.  Kattintson a bejelentkezési parancsot, és írja be a jelszót = **P@ssword1**.
 
 
-1. Sémája megismerkedhet a *tenantcatalog* adatbázis.  
-   * Az objektumok a `__ShardManagement` séma összes által biztosított a rugalmas adatbázis ügyféloldali Kódtárára.
-   * A `Tenants` tábla és `TenantsExtended` nézet hozzáadva a mintában szereplő bővítmények, amelyek bemutatják, hogyan bővítheti a katalógus adni további értéket.
+1. Ismerje meg, a sémát a *tenantcatalog* adatbázis.  
+   * Az objektumok a `__ShardManagement` séma összes által biztosított az Elastic Database-Ügyfélkódtár.
+   * A `Tenants` tábla és `TenantsExtended` nézet bővítmény hozzáadva a minta, amelyek bemutatják, hogyan terjesztheti ki a katalógust, ezzel további értéket adjon meg.
 1. A lekérdezés futtatásához `SELECT * FROM dbo.TenantsExtended`.          
 
    ![adatkezelő](media/saas-standaloneapp-provision-and-catalog/data-explorer-tenantsextended.png)
 
-    Ahelyett, hogy az adatkezelő használatával csatlakozhat az adatbázishoz az SQL Server Management Studio. Ehhez csatlakoznia kell a kiszolgáló wingtip- 
+    Az adatkezelő segítségével alternatívájaként csatlakozhat az adatbázishoz az SQL Server Management Studióval. Ehhez a kiszolgáló wingtip-csatlakozás 
 
     
-    Vegye figyelembe, hogy ne módosítsa a katalógus - közvetlenül az adatok mindig használja a shard felügyeleti API-k. 
+    Vegye figyelembe, hogy ne módosítsa a katalógus - közvetlenül az adatok mindig használja az API-k szilánkkezelési. 
 
-## <a name="provision-a-new-tenant-application"></a>Egy új bérlő alkalmazás telepítéséhez
+## <a name="provision-a-new-tenant-application"></a>Egy új bérlő alkalmazás üzembe helyezése
 
-Ebben a feladatban megismerheti, hogyan lehet kiépíteni egy bérlő egyetlen alkalmazást. Az alábbiakat fogja elvégezni:  
+Ebben a feladatban megismerheti, hogyan helyezhet üzembe egy egybérlős alkalmazást. Az alábbiakat fogja elvégezni:  
 * **Hozzon létre egy új erőforráscsoportot** a bérlő számára. 
-* **Az alkalmazás- és adatbázis kiépítése** be az új erőforráscsoportot az Azure erőforrás-kezelés sablonnal.  Ez a művelet magában foglalja, inicializálja a közös séma- és referenciaadatok adatbázis bacpac fájl importálásával. 
-* **Alapszintű bérlői adatait adatbázis inicializálása**. Ez a művelet tartalmaz, amely megadja, hogy a háttereként az események webhelyen fénykép helyszínére típusának megadásával. 
-* **Regisztrálja a katalógus-adatbázis az adatbázis**. 
+* **Az alkalmazás- és adatbázis üzembe helyezése** az Azure resource management-sablonnal új erőforrás-csoportba.  Ez a művelet magában foglalja az adatbázis közös sémával és referenciaadatokkal inicializálása egy bacpac-fájl importálásával. 
+* **Az adatbázis az alapszintű bérlőinformációk inicializálása**. Ez a művelet magában foglalja a helyszín típusának felhasználásával, amely megadja, hogy a fényképet, a háttérben, az események webhelyen használt megadása. 
+* **A katalógus-adatbázis az adatbázis regisztrálásához**. 
 
-1. Nyissa meg a PowerShell ISE *...\Learning Modules\ProvisionTenants\Demo-ProvisionAndCatalog.ps1* és **$Scenario = 2**. A bérlő katalógus telepíteni és regisztrálni az előre definiált bérlők
+1. A PowerShell ISE-ben nyissa meg a *...\Learning Modules\ProvisionTenants\Demo-ProvisionAndCatalog.ps1* és **$Scenario = 2**. A bérlői katalógus telepíti és regisztrálja az előre definiált bérlők
 
-1. A kurzor bárhol tegyen sor 49, amely szerint, a parancsfájl töréspont adja hozzá `& $PSScriptRoot\New-TenantApp.ps1`, majd nyomja le az **F9**.
-1. Futtassa a parancsfájlt billentyűkombináció lenyomásával **F5**. 
-1.  Miután a parancsfájl végrehajtása a töréspont megáll, nyomja le az **F11** lépésre a New-Catalog.ps1 parancsfájlba.
-1.  A parancsfájl végrehajtása a hibakeresési menüpontok, F10 és F11 segítségével nyomon követni, több mint vagy a lépés neve a funkciók.
+1. Adjon hozzá egy töréspontot a szkriptben ehhez vigye a kurzort bárhol feliratú, 49 sor `& $PSScriptRoot\New-TenantApp.ps1`, és nyomja le az **F9**.
+1. Futtassa a szkriptet lenyomásával **F5**. 
+1.  Miután a parancsfájl végrehajtása a töréspont leáll, nyomja le az ENTER **F11** lépéssel a New-Catalog.ps1 parancsfájlba.
+1.  Nyomon követheti a szkript végrehajtását, F10 és F11, a hibakeresési menüpontok segítségével vagy az meghívott függvényeken keresztül. lépésre.
 
-Miután a bérlő van megadva, az új tenanthoz események webhely van megnyitva.
+Után a bérlő kiépítését követően az új bérlő események webhely megnyitásakor.
 
-   ![piros maple racing](media/saas-standaloneapp-provision-and-catalog/redmapleracing.png)
+   ![Red maple racing](media/saas-standaloneapp-provision-and-catalog/redmapleracing.png)
 
-Az új erőforrások az Azure-portálon létrehozott majd vizsgálhatja meg. 
+Ezután vizsgálhatja meg az Azure Portalon létrehozott új erőforrásokat. 
 
-   ![piros maple verseny erőforrások](media/saas-standaloneapp-provision-and-catalog/redmapleracing-resources.png)
+   ![Red maple verseny erőforrások](media/saas-standaloneapp-provision-and-catalog/redmapleracing-resources.png)
 
 
-## <a name="to-stop-billing-delete-resource-groups"></a>Számlázási leállításához erőforrás csoportok törlése ##
+## <a name="to-stop-billing-delete-resource-groups"></a>Számlázás megszüntetéséhez törölje az erőforráscsoportok ##
 
-Ha befejezte a minta felfedezése, állítsa le a társított számlázási létrehozott összes erőforráscsoport törlése
+Miután végzett, a minta elemzésével, a kapcsolódó számlázások leállításához létrehozott összes erőforráscsoport törlése.
 
 ## <a name="additional-resources"></a>További források
 
-- Több-bérlős SaaS-adatbázis alkalmazások kapcsolatos további információkért lásd: [kialakítási minták a több-bérlős SaaS-alkalmazásokhoz](saas-tenancy-app-design-patterns.md).
+- Több-bérlős SaaS-adatbázis alkalmazások kapcsolatos további információkért lásd: [tervezési minták több-bérlős SaaS-alkalmazások](saas-tenancy-app-design-patterns.md).
 
 ## <a name="next-steps"></a>További lépések
 
 Ez az oktatóanyag bemutatta az alábbiakat:
 
 > [!div class="checklist"]
-> * Ügyfélszoftverek központi telepítése a Wingtip jegyek SaaS önálló alkalmazás.
-> * A kiszolgálók és adatbázisok, amelyek az alkalmazás alkotják.
-> * Hogyan mintaerőforrásokat leállításához kapcsolódó számlázási törlése.
+> * A Wingtip Tickets SaaS önálló alkalmazás telepítésének módjáról.
+> * A kiszolgálók és adatbázisok az alkalmazás alkotó.
+> * Hogyan törlése a kapcsolódó számlázások leállításához.
 
-Ismerje meg az adatbázis-/-bérlő verziójával különböző több-bérlős forgatókönyvek támogatása céljából a katalógus használatáról az [Wingtip jegyek SaaS-alkalmazás](https://docs.microsoft.com/azure/sql-database/saas-dbpertenant-wingtip-app-overview).  
+Megismerheti a bérlőnkénti adatbázis verzióját használja, különféle több-bérlős forgatókönyvek támogatásához a katalógus használatáról az [Wingtip Tickets SaaS-alkalmazás](https://docs.microsoft.com/azure/sql-database/saas-dbpertenant-wingtip-app-overview).  

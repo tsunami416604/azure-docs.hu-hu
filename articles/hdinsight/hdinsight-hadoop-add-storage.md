@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 04/23/2018
 ms.author: jasonh
 ms.custom: H1Hack27Feb2017,hdinsightactive
-ms.openlocfilehash: 7d37a60ad3ae3bea8490006bdd35dc47d728b88e
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: bdf4c7527e2c0056b2de2321fbae280e9008cb1b
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43103854"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46990673"
 ---
 # <a name="add-additional-storage-accounts-to-hdinsight"></a>A HDInsight további tárfiókok hozzáadása
 
@@ -58,7 +58,7 @@ __Követelmények__:
 
 ## <a name="to-use-the-script"></a>A parancsfájl használata
 
-Ez a szkript az Azure Portalon, az Azure PowerShell vagy az Azure CLI 1.0 használhatók. További információkért lásd: a [testreszabása Linux-alapú HDInsight-fürtök szkriptműveletekkel](hdinsight-hadoop-customize-cluster-linux.md#apply-a-script-action-to-a-running-cluster) dokumentumot.
+Ez a szkript az Azure Portalon, az Azure PowerShell vagy az Azure klasszikus parancssori felület is használható. További információkért lásd: a [testreszabása Linux-alapú HDInsight-fürtök szkriptműveletekkel](hdinsight-hadoop-customize-cluster-linux.md#apply-a-script-action-to-a-running-cluster) dokumentumot.
 
 > [!IMPORTANT]
 > A Testreszabás dokumentumban leírt lépések használata esetén használja a következő információkat a alkalmazni ezt a parancsfájlt:
@@ -71,7 +71,7 @@ Ez a szkript az Azure Portalon, az Azure PowerShell vagy az Azure CLI 1.0 haszn�
 
 ### <a name="storage-accounts-not-displayed-in-azure-portal-or-tools"></a>Storage-fiókok nem jelenik meg az Azure Portalon vagy az eszközök
 
-A HDInsight-fürt az Azure Portalon megtekintésekor kiválasztása a __Tárfiókok__ bejegyzés alatt __tulajdonságok__ nem jelennek meg a parancsprogram-művelet során hozzáadott tárfiókok. Az Azure PowerShell és az Azure CLI-vel nem jelennek meg a további tárfiókot vagy.
+A HDInsight-fürt az Azure Portalon megtekintésekor kiválasztása a __Tárfiókok__ bejegyzés alatt __tulajdonságok__ nem jelennek meg a parancsprogram-művelet során hozzáadott tárfiókok. Az Azure PowerShell és az Azure klasszikus parancssori felület nem jelennek meg a további tárfiókot vagy.
 
 A storage-adatokat nem jelenik meg, mert a parancsfájl csak módosítja a core-site.xml a fürt konfigurációját. Ezeket az információkat nem használja az Azure felügyeleti API-k használatával fürtinformációkat lekérésekor.
 

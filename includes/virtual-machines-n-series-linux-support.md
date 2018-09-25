@@ -5,15 +5,15 @@ services: virtual-machines-linux
 author: dlepow
 ms.service: virtual-machines-linux
 ms.topic: include
-ms.date: 05/29/2018
+ms.date: 09/24/2018
 ms.author: danlep
 ms.custom: include file
-ms.openlocfilehash: 1813367a2d143f75fb51a3160dd00219c709c57b
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.openlocfilehash: dc03f49a684bfeb43ffd8bac9f551a67f034a04f
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37935803"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47042877"
 ---
 ## <a name="supported-distributions-and-drivers"></a>Támogatott disztribúciók és illesztőprogramok
 
@@ -26,11 +26,11 @@ NVIDIA CUDA-illesztőprogramok a hálózati vezérlő, NCv2, az NCv3 és ND soro
 
 | Disztribúció | Illesztőprogram |
 | --- | -- | 
-| Ubuntu 16.04 LTS<br/><br/> Red Hat Enterprise Linux 7.4 vagy a 7.3<br/><br/> CentOS-alapú 7.3-as és 7.4-es, CentOS-alapú 7.4-es HPC | NVIDIA CUDA 9.1 R390 illesztőprogram-ág |
+| Ubuntu 16.04 LTS<br/><br/> Red Hat Enterprise Linux 7.4 vagy a 7.3<br/><br/> CentOS-alapú 7.3-as és 7.4-es, CentOS-alapú 7.4-es HPC | NVIDIA CUDA 10.0, illesztőprogram-ág R410 |
 
 ### <a name="nvidia-grid-drivers"></a>Az NVIDIA GRID illesztőprogramok
 
-A Microsoft újraterjeszti az NVIDIA GRID illesztőprogramok telepítők használt virtuális munkaállomásait NV-sorozat virtuális gépei vagy a virtuális alkalmazásokhoz. Csak GRID illesztőprogramok telepítése Azure virtuális gépeken NV, csak a szerepel a következő táblázat a disztribúciók. Ezeket az illesztőprogramokat tartalmazza a licencelési rács virtuális GPU szoftverek az Azure-ban.
+A Microsoft újraterjeszti az NVIDIA GRID illesztőprogramok telepítők NV és virtuális munkaállomásait használt NVv2 sorozatú virtuális gépek vagy a virtuális alkalmazásokhoz. Csak GRID illesztőprogramok telepítése Azure virtuális gépeken NV, csak a szerepel a következő táblázat a disztribúciók. Ezeket az illesztőprogramokat tartalmazza a licencelési rács virtuális GPU szoftverek az Azure-ban.
 
 | Disztribúció | Illesztőprogram |
 | --- | -- |

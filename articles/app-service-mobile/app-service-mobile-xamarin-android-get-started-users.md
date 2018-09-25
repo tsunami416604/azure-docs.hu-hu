@@ -1,6 +1,6 @@
 ---
-title: Ismerkedés a Mobile Apps a Xamarin Android hitelesítés
-description: Útmutató a Mobile Apps segítségével hitelesíti a felhasználókat az identitás-szolgáltatóktól, beleértve az aad-ben, a Google, a Facebook, a Twitter és a Microsoft számos Xamarin Android-alkalmazás.
+title: Ismerkedés a Xamarin Android Mobile Apps hitelesítése
+description: Ismerje meg, hogyan hitelesítheti a felhasználókat az identitás-szolgáltatóktól, többek között az aad-ben, Google, Facebook, Twitter és a Microsoft számos Xamarin Android-alkalmazás a Mobile Apps segítségével.
 services: app-service\mobile
 documentationcenter: xamarin
 author: conceptdev
@@ -12,48 +12,48 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-xamarin-android
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 07/05/2017
+ms.date: 09/24/2018
 ms.author: panarasi
-ms.openlocfilehash: 97207b722b65ccf98c57304cd559b0927aacd5a4
-ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
+ms.openlocfilehash: d496801894560310a4225eae8a32fced52bcc428
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2018
-ms.locfileid: "27595295"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47063540"
 ---
 # <a name="add-authentication-to-your-xamarinandroid-app"></a>Hitelesítés hozzáadása Xamarin.Android-alkalmazáshoz
 [!INCLUDE [app-service-mobile-selector-get-started-users](../../includes/app-service-mobile-selector-get-started-users.md)]
 
-Ez a témakör bemutatja, hogyan hitelesítheti a Mobile Apps, az ügyfélalkalmazás felhasználóit. Ebben az oktatóanyagban hitelesítés használata az Azure Mobile Apps által támogatott identitásszolgáltató gyorsútmutató-projekt hozzáadhat. Miután sikeresen alatt hitelesítése és engedélyezése a mobileszköz-alkalmazás, a felhasználói azonosító értéke jelenik meg.
+Ez a témakör bemutatja, hogyan hitelesítheti az ügyfélalkalmazás egy Mobile Apps felhasználóit. Ebben az oktatóanyagban hozzáadja hitelesítés a példaprojekthez az identitásszolgáltató az Azure Mobile Apps által támogatott. Miután sikeresen folyamatban hitelesítése és engedélyezése a Mobile App, a felhasználói azonosító értéke jelenik meg.
 
-Ez az oktatóanyag a Mobile Apps gyors üzembe helyezés alapul. Először is el kell végeznie az oktatóanyag [Xamarin.Android-alkalmazás létrehozása]. Ha nem használja a letöltött gyors üzembe helyezési kiszolgálóprojektet, hozzá kell adnia a hitelesítési kiterjesztés csomag fel a projektbe. Kiszolgáló bővítménycsomagok kapcsolatos további információkért lásd: [használható a .NET-háttérrendszer server SDK az Azure Mobile Apps a](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md).
+Ez az oktatóanyag a Mobile alkalmazás – rövid útmutató alapján történik. Először is kell végeznie az oktatóanyag [Xamarin.Android-alkalmazás létrehozása]. Ha nem használja a letöltött gyorsútmutató-kiszolgálói projektet, hozzá kell adnia a hitelesítési kiterjesztés csomagot a projekthez. Kiszolgáló bővítménycsomagok kapcsolatos további információkért lásd: [használható a .NET háttérkiszolgáló-SDK az Azure Mobile Apps a](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md).
 
-## <a name="register"></a>Regisztrálja az alkalmazást a hitelesítéshez, és konfigurálja az App Service szolgáltatások
+## <a name="register"></a>Regisztrálja az alkalmazást a hitelesítés és az App Services konfigurálása
 [!INCLUDE [app-service-mobile-register-authentication](../../includes/app-service-mobile-register-authentication.md)]
 
 ## <a name="redirecturl"></a>Az alkalmazás hozzáadása az engedélyezett külső átirányítási URL-címek
 
-Biztonságos hitelesítéshez az szükséges, hogy az alkalmazás adja meg egy új URL-sémát. Ez lehetővé teszi a hitelesítési rendszer visszairányítja az alkalmazás a hitelesítési folyamat befejezése után. Ebben az oktatóanyagban az URL-séma használjuk _appname_ egész. Bármely választja URL-sémát is használhatja. A mobilalkalmazás egyedinek kell lennie. A kiszolgáló oldalán engedélyezése:
+Hitelesítésre van szükség, hogy az alkalmazás egy új URL-séma meghatározása. Ez lehetővé teszi a hitelesítési rendszer visszairányítja az alkalmazás a hitelesítési folyamat befejeződése után. Ebben az oktatóanyagban azt használja az URL-séma _appname_ során. Bármely URL-séma választja is használhatja. A mobilalkalmazás egyedinek kell lennie. A kiszolgálói oldalon az átirányítás engedélyezése:
 
-1. Válassza ki az App Service az [Azure-portálon].
+1. Az [Azure Portalon] válassza ki az App Service.
 
-2. Kattintson a **hitelesítési / engedélyezési** menüjét.
+2. Kattintson a **hitelesítési / engedélyezési** menüpont.
 
-3. Az a **engedélyezett külső átirányítási URL-t**, adja meg `url_scheme_of_your_app://easyauth.callback`.  A **url_scheme_of_your_app** ezt a karakterláncot a rendszer az URL-séma, a mobilalkalmazás.  Akkor érdemes követnie normál URL-cím meghatározása (használata betűket és számokat csak, és betűvel kezdődik) protokoll.  Meg kell győződnie, jegyezze fel a karakterláncot, amely úgy dönt, mivel úgy, hogy az URL-séma több helyen a mobilalkalmazás kódot kell.
+3. Az a **engedélyezett külső átirányítási URL-címeket**, adja meg `url_scheme_of_your_app://easyauth.callback`.  A **url_scheme_of_your_app** Ez a karakterlánc a következő az URL-séma esetében.  Normál URL-cím-specifikáció (használata betűket és csak számokból állhat, és betűvel kezdődhet) protokoll, érdemes követnie.  Meg kell jegyezze fel a karakterlánc, amely úgy dönt, mert szüksége lesz a mobilalkalmazás-kód az URL-séma több helyen való beállításához.
 
 4. Kattintson az **OK** gombra.
 
 5. Kattintson a **Save** (Mentés) gombra.
 
-## <a name="permissions"></a>A hitelesített felhasználókhoz jogosultságok korlátozása
+## <a name="permissions"></a>A hitelesített felhasználók engedélyeinek korlátozása
 [!INCLUDE [app-service-mobile-restrict-permissions-dotnet-backend](../../includes/app-service-mobile-restrict-permissions-dotnet-backend.md)]
 
-A Visual Studio és Xamarin Studio futtatható az ügyfélprojekt egy eszközt vagy emulátort. Győződjön meg arról, hogy egy állapotkód: nem kezelt kivétel a 401-es (nem engedélyezett) jelenik meg, az alkalmazás indítása után. Ez akkor fordul elő, mert az alkalmazás megpróbál hozzáférni a mobil-háttéralkalmazást, nem hitelesített felhasználónak. A *TodoItem* tábla most hitelesítést igényel.
+A Visual Studióban vagy a Xamarin Studióban futtassa az eszközt vagy emulátort a. Győződjön meg arról, hogy a 401-es (nem engedélyezett) állapotkódot a nem kezelt kivétel az alkalmazás indítása után jelenik meg. Ennek oka az, az alkalmazást próbál meg hozzáférni egy nem hitelesített felhasználóként a mobilalkalmazás háttérrendszerének. A *TodoItem* táblázat most már hitelesítést igényel.
 
-A következő később frissíteni az ügyfélalkalmazás az erőforrásokat a Mobile Apps-háttéralkalmazás a hitelesített felhasználók.
+Ezután az ügyfélalkalmazás szeretne frissíteni erőforrás-kérelmek a Mobile Apps-háttéralkalmazást a hitelesített felhasználóval.
 
 ## <a name="add-authentication"></a>Hitelesítés hozzáadása az alkalmazáshoz
-A felhasználók koppintson frissítette az alkalmazást a **bejelentkezés** gombra, és hitelesíti a, mielőtt adatok jelennek meg.
+Koppintson a felhasználóknak kötelező frissítette az alkalmazást a **jelentkezzen be a** gombra, és hitelesíti a, mielőtt adatai jelennek meg.
 
 1. Adja hozzá a következő kódot a **TodoActivity** osztály:
    
@@ -93,16 +93,16 @@ A felhasználók koppintson frissítette az alkalmazást a **bejelentkezés** go
             }
         }
    
-    Ezzel létrehoz egy új módszer a felhasználók és a metódus kezelő hitelesítésére az új **bejelentkezés** gombra. A fenti példa kód a felhasználó hitelesítése egy Facebook-bejelentkezési használatával. A párbeszédpanel segítségével egyszer hitelesített felhasználói azonosító megjelenítése.
+    Ez létrehoz egy új módszer az új felhasználó és a egy metódust kezelő hitelesítéséhez **jelentkezzen be a** gombra. A fenti példa kódban a felhasználó hitelesítése egy Facebook-bejelentkezés használatával. Egy párbeszédpanel a felhasználói azonosító után megjelenítésére szolgál.
    
    > [!NOTE]
-   > Ha eltérő Facebook identitásszolgáltató használ, módosítsa az értéket, átadott **LoginAsync** fent a következőhöz: *MicrosoftAccount*, *Twitter*, *Google*, vagy *WindowsAzureActiveDirectory*.
+   > Eltérő Facebook identitásszolgáltatót használja, módosítsa az átadott érték **LoginAsync** felett, a következők egyikét: *MicrosoftAccount*, *Twitter*,  *Google*, vagy *WindowsAzureActiveDirectory*.
    > 
    > 
-2. Az a **OnCreate** metódus, törlése vagy a következő kódsort a Megjegyzés kibővített:
+2. Az a **OnCreate** metódus, törölje vagy tegyen Megjegyzés jelzést az alábbi kódsort:
    
         OnRefreshItemsSelected ();
-3. A Activity_To_Do.axml fájlban adja hozzá a következő *LoginUser* -definíciót, mielőtt a meglévő gomb *additem metódust* gombra:
+3. A Activity_To_Do.axml fájlban adja hozzá a következő *LoginUser* definíciót, mielőtt a meglévő gombra *AddItem* gombra:
    
           <Button
             android:id="@+id/buttonLoginUser"
@@ -110,10 +110,10 @@ A felhasználók koppintson frissítette az alkalmazást a **bejelentkezés** go
             android:layout_height="wrap_content"
             android:onClick="LoginUser"
             android:text="@string/login_button_text" />
-4. A következő elem hozzáadása a Strings.xml erőforrások fájlhoz:
+4. Adja hozzá a következő elem a Strings.xml erőforrások fájlba:
    
         <string name="login_button_text">Sign in</string>
-5. Nyissa meg az AndroidManifest.xml fájlhoz, adja hozzá a következő kódot `<application>` XML-elem:
+5. Nyissa meg az AndroidManifest.xml fájlhoz, adja hozzá a következő kódot a `<application>` XML-elem:
 
         <activity android:name="com.microsoft.windowsazure.mobileservices.authentication.RedirectUrlActivity" android:launchMode="singleTop" android:noHistory="true">
           <intent-filter>
@@ -124,7 +124,13 @@ A felhasználók koppintson frissítette az alkalmazást a **bejelentkezés** go
           </intent-filter>
         </activity>
 
-6. A Visual Studio és Xamarin Studio a ügyfélprojekt futtatnak egy eszközt vagy emulátort, és jelentkezzen be a választott identitásszolgáltató. Amikor sikeresen bejelentkezett, az alkalmazás megjelenik a bejelentkezési azonosító és a teendőlista elemeinek listáját, és frissíthetik az adatokat.
+6. A Visual Studióban vagy a Xamarin Studióban futtassa az eszközt vagy emulátort a, és jelentkezzen be a választott identitásszolgáltató. Ha sikeresen bejelentkezett, az alkalmazás megjelenik a bejelentkezési azonosító és a teendőlista elemeinek listáját, és az adatok lehetővé teszi a frissítések.
+
+## <a name="troubleshooting"></a>Hibaelhárítás
+
+**Az alkalmazás az összeomlott `Java.Lang.NoSuchMethodError: No static method startActivity`**
+
+Bizonyos esetekben ütközik a támogatási csomagok, csak a Visual studio, de ehhez a kivételhez futásidőben az alkalmazás-összeomlásokat figyelmeztetés jelenik meg. Ebben az esetben kell győződjön meg arról, hogy a projekt hivatkozott összes támogatási csomag verziójával rendelkezik-e. A [Azure Mobile Apps NuGet-csomagot](https://www.nuget.org/packages/Microsoft.Azure.Mobile.Client/) rendelkezik `Xamarin.Android.Support.CustomTabs` függőséget az Android platformhoz, így ha a projekt újabb használja a támogatási csomagok, a csomag telepítéséhez szükséges verziójú ütközések elkerülése érdekében közvetlenül kell.
 
 <!-- URLs. -->
 [Xamarin.Android-alkalmazás létrehozása]: app-service-mobile-xamarin-android-get-started.md

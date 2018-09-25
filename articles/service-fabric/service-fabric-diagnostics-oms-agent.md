@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/16/2018
 ms.author: srrengar
-ms.openlocfilehash: b97a32e2e859a5bb370873bfbdc5c6b4dffa1ac1
-ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
+ms.openlocfilehash: 3d7cf50bd2c845764aa2c3ac3b3db6891ff5c8d8
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39237842"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46993850"
 ---
 # <a name="performance-monitoring-with-log-analytics"></a>Alkalmazásteljesítmény-figyelés a Log Analytics használatával
 
@@ -30,7 +30,7 @@ Ez a cikk ismerteti a lépéseket egy virtuális gép méretezési csoport bőv�
 
 ## <a name="add-the-agent-extension-via-azure-cli"></a>Adja hozzá az ügynök bővítményt, az Azure CLI-n keresztül
 
-A legjobb módszer a Log Analytics-ügynököket a fürt hozzáadása a virtuálisgép-méretezési csoport keresztül beállítása API-kat az Azure CLI használatával. Ha az Azure parancssori felület beállítása még nem rendelkezik, látogasson el az Azure Portalon, és nyissa meg a [Cloud Shell](../cloud-shell/overview.md) példány, vagy [Azure CLI 2.0 telepítése](https://docs.microsoft.com/cli/azure/install-azure-cli).
+A legjobb módszer a Log Analytics-ügynököket a fürt hozzáadása a virtuálisgép-méretezési csoport keresztül beállítása API-kat az Azure CLI használatával. Ha az Azure parancssori felület beállítása még nem rendelkezik, látogasson el az Azure Portalon, és nyissa meg a [Cloud Shell](../cloud-shell/overview.md) példány, vagy [az Azure CLI telepítése](https://docs.microsoft.com/cli/azure/install-azure-cli).
 
 1. Miután a Cloud Shell van szükség, győződjön meg arról, dolgozik, és az erőforrásnak ugyanabban az előfizetésben. Ennek az ellenőrzéséhez `az account show` és ellenőrizze, hogy a "name" érték megegyezik a fürt előfizetés.
 

@@ -9,12 +9,12 @@ ms.date: 06/06/2018
 ms.topic: conceptual
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: 8649b96c9cf95e4a25b24dedf447aef133ef299a
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: 5b906b4a90dbceb62c6f2381d0ffa8bc1bee7ef1
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37865403"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47033821"
 ---
 # <a name="onboard-update-management-change-tracking-and-inventory-solutions"></a>Előkészítése az Update Management, Change Tracking és Inventory megoldásainak
 
@@ -102,6 +102,43 @@ Az összes rendelkezésre álló és jövőbeli gépen összes megoldás engedé
 ### <a name="selected-machines"></a>Kijelölt gépek
 
 Egy vagy több gépet a megoldás engedélyezéséhez válassza **engedélyezése a kiválasztott gépeken** kattintson **hozzáadása** mellett minden gép, a megoldáshoz hozzá szeretné. Ez a feladat a keresési lekérdezés megoldás mentett számítógépcsoport-ad hozzá a kijelölt számítógépek nevével.
+
+## <a name="unlink-workspace"></a>Munkaterület leválasztása
+
+A következő megoldásokat a Log Analytics-munkaterület függnek:
+
+* [Frissítéskezelés](automation-update-management.md)
+* [Változáskövetés](automation-change-tracking.md)
+* [Virtuális gépek indítása/leállítása munkaidőn kívül](automation-solution-vm-management.md)
+
+Ha úgy dönt, hogy már nem szeretne az Automation-fiók integrálása a Log Analytics-szel, megszüntetheti a fiók közvetlenül az Azure Portalról.  Mielőtt továbblépne, először el kell távolítania a megoldások azt korábban említettük, ellenkező esetben ez a folyamat megakadályozza a folytatás. Tekintse át a cikk az adott megoldás importált távolítsa el a szükséges lépések megértéséhez.
+
+Miután eltávolítja ezeket a megoldásokat, az Automation-fiók leválasztása a következő lépéseket végezheti.
+
+> [!NOTE]
+> Egyes megoldások, beleértve az Azure SQL-figyelési megoldás a korábbi lehet, hogy létre automation-adategységeket, és is szükség lehet a munkaterület leválasztása előtt el kell távolítani.
+
+1. Az Azure Portalról nyissa meg az Automation-fiókját, és a az Automation-fiók oldalon válassza ki **csatolt munkaterület** a szakaszában **kapcsolódó erőforrások** a bal oldalon.
+
+1. A leválasztás munkaterület oldalán kattintson a **munkaterület leválasztása**.
+
+   ![Munkaterület oldalán leválasztása](media/automation-onboard-solutions-from-automation-account/automation-unlink-workspace-blade.png).
+
+   A rendszer felkéri, hogy erősítse meg, valóban folytani kívánja-e.
+
+1. Bár az Azure Automation próbál meg a fiók leválasztása a Log Analytics-munkaterület, nyomon követheti a folyamat állapotát **értesítések** a menüből.
+
+Az Update Management megoldás használata esetén igény szerint, előfordulhat, hogy el kívánja távolítani a következő elemek, amelyek a megoldás eltávolítása után már nem szükséges.
+
+* Frissítés ütemezése – a neve megegyezik a létrehozott frissítéstelepítések lesz)
+
+* A megoldás - számára létrehozott hibrid feldolgozócsoportok egyes lesznek elnevezve hasonlóan a: gép1.contoso.com_9ceb8108 - 26 c 9-4051-b6b3-227600d715c8).
+
+Virtuális gépek indítása/leállítása munkaidőn kívül megoldás használata esetén igény szerint, előfordulhat, hogy el kívánja távolítani a következő elemek, amelyek a megoldás eltávolítása után már nem szükséges.
+
+* Elindíthatja és leállíthatja a virtuális gép runbook ütemezése
+* Virtuális gép runbookok elindítása és leállítása
+* Változók
 
 ## <a name="next-steps"></a>További lépések
 

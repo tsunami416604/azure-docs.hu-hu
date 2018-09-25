@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 09/05/2018
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 14ac23e6b69302ac412aac3ecab06345e5d722fd
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 1cac4e4cee408e5208d2d5d84f81b8ad7a89f03b
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44296346"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47033991"
 ---
 # <a name="manage-access-using-rbac-and-the-azure-portal"></a>Hozzáférés kezelése az RBAC és az Azure Portal használatával
 
@@ -207,7 +207,7 @@ Ahhoz, hogy a felhasználó az Azure-előfizetés rendszergazdájának, hozzáre
 
 1. Az a **szerepkör** legördülő listában válassza ki a megfelelő szerepkör **felügyeleti csoport közreműködői**.
 
-    Információ a támogatott műveletekről a különböző szerepkörökhöz tartozó felügyeleti csoportok: [az erőforrások rendszerezéséhez az Azure felügyeleti csoportok](../azure-resource-manager/management-groups-overview.md#management-group-access).
+    Információ a támogatott műveletekről a különböző szerepkörökhöz tartozó felügyeleti csoportok: [az erőforrások rendszerezéséhez az Azure felügyeleti csoportok](../governance/management-groups/index.md#management-group-access).
 
 1. A **Kiválasztás** listában válasszon ki egy felhasználót, csoportot vagy alkalmazást. Ha a listában nem látja a rendszerbiztonsági tagot, írhat a **Kiválasztás** mezőbe megjelenítendő nevek, e-mail-címek és objektumazonosítók a címtárban történő kereséséhez.
 

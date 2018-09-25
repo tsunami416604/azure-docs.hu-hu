@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 8/08/2018
 ms.author: johnkem
 ms.component: ''
-ms.openlocfilehash: b21afecc27f1550cf557305ef069278ed66acaf0
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.openlocfilehash: 3a15cfeb39cea31a24d27fd8b350d7e8a6696f31
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40005317"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46955367"
 ---
 # <a name="azure-monitor-partner-integrations"></a>Az Azure Monitor partnerintegrációk
 | Partnerek |  |  |
@@ -21,8 +21,8 @@ ms.locfileid: "40005317"
 | [**AlertLogic**<br/>![Partner-embléma][alertlogic-logo]][alertlogic-anchor] | [**AppDynamics**<br/>![Partner-embléma][appdynamics-logo]][appdynamics-anchor]  | [**Atlassian**<br/>![Partner-embléma][atlassian-logo]][atlassian-anchor] 
 | [**Botmetric**][botmetric-anchor] | [**Circonus**<br/>![Partner-embléma][circonus-logo]][circonus-anchor]  | [**CloudHealth**<br/>![Partner-embléma][cloudhealth-logo]][cloudhealth-anchor] 
 | [**CloudMonix** <br/> ![Partner-embléma][cloudmonix-logo]][cloudmonix-anchor] | [**A Cloudyn**<br/>![Partner-embléma][cloudyn-logo]][cloudyn-anchor] | [**Datadoggal**<br/>![Partner-embléma][datadog-logo]][datadog-anchor] 
-| [**Dynatrace** <br/> ![Partner-embléma][dynatrace-logo]][dynatrace-anchor] | [**Grafana**<br/>![Partner-embléma][grafana-logo]][grafana-anchor] | [**Logikai figyelő**<br/>![Partner-embléma][logicmonitor-logo]][logicmonitor-anchor] 
-| [**Moogsoft**<br/>![Partner-embléma][moogsoft-logo]][moogsoft-anchor] | [**NewRelic**<br/>![Partner-embléma][newrelic-logo]][newrelic-anchor] | [**Opsgenie segítségével**<br/>![Partner-embléma][opsgenie-logo]][opsgenie-anchor] 
+| [**Dynatrace** <br/> ![Partner-embléma][dynatrace-logo]][dynatrace-anchor] | [**Grafana**<br/>![Partner-embléma][grafana-logo]][grafana-anchor] | [**Influxdata**<br/>![Partner-embléma][influxdata-logo]][influxdata-anchor]
+| [**Logikai figyelő**<br/>![Partner-embléma][logicmonitor-logo]][logicmonitor-anchor] | [**Moogsoft**<br/>![Partner-embléma][moogsoft-logo]][moogsoft-anchor] | [**NewRelic**<br/>![Partner-embléma][newrelic-logo]][newrelic-anchor] | [**Opsgenie segítségével**<br/>![Partner-embléma][opsgenie-logo]][opsgenie-anchor] 
 | [**PagerDuty**<br/>![Partner-embléma][pagerduty-logo]][pagerduty-anchor] | [**QRadar**<br/>![Partner-embléma][qradar-logo]][qradar-anchor] | [**ScienceLogic**<br/>![Partner-embléma][sciencelogic-logo]][sciencelogic-anchor] 
 | [**SignalFx**<br/>![Partner-embléma][signalfx-logo]<br/>][signalfx-anchor] | [**SIGNL4**<br/>![Partner-embléma][signl4-logo]][signl4-anchor] | [**SolarWinds**][solarwinds-anchor] 
 | [**Splunk** <br/> ![Partner-embléma][splunk-logo]][splunk-anchor] | [**Sumo logikai**<br/>![Partner-embléma][sumologic-logo]][sumologic-anchor] | [**A Turbonomic**<br/>![Partner-embléma][turbonomic-logo]][turbonomic-anchor] 
@@ -82,6 +82,12 @@ Grafana egy nyílt forráskódú alkalmazás, amely lehetővé teszi, hogy a met
 
 [Nyissa meg a dokumentációt.][grafana-doc]
 
+## <a name="influxdata"></a>InfluxData
+InfluxData, InfluxDB, létrehozója ennek a kezdetektől fogva a metrikák és események (idősorozat-adatok) a DevOps és az IoT-alkalmazások elemzése alapján összeállított modern nyílt forráskódú Platform. Az adatokat láthatják, érzékelő vagy gépek származik, hogy InfluxData felhatalmazza build generációs figyelést, elemzési és IoT-alkalmazások gyorsabb, a fejlesztők, egyszerűbb, és hogy a valódi hozzáadott üzleti érték gyors kidolgozását. A San franciscóban, InfluxData a alapján több mint 420 között a Cisco, eBay, IBM és a Siemens.
+
+[Nyissa meg a dokumentációt.][influxdata-doc]
+
+
 ## <a name="logic-monitor"></a>Logikai figyelője
 LogicMonitor® a vezető SaaS-alapú, teljesítményfigyelés platform bonyolult informatikai infrastruktúrát. Több ezer olyan technológiák lefedettségét LogicMonitor infrastruktúra és az alkalmazások teljesítményének részletes betekintést biztosít. Az LM felhő átfogó Azure monitoring lehetővé teszi a felhasználók korrelációját, ha az Azure-felhőbeli, helyszíni és hibrid felhőalapú erőforrások – mindezt egyetlen platformról teljesítményét. Automatizált erőforrás-felderítés, figyelés sablonokat, a beépített, előre konfigurált a riasztástípusok küszöbértékét, és testre szabható irányítópultokkal össze informatikai sikeres végrehajtásához szükséges a gyorsabb, rugalmasságot és látható-e.
 
@@ -94,7 +100,10 @@ A Microsoft Azure Automation and Control-eszközökkel egy valós idejű állapo
 
 Moogsoft AIOps automatizálja a szervizelési munkafolyamatok esemény meglévő folyamatok és a szervezeti felépítés módosítása nélkül. 
 
-Az Azure-ingatlan-integráció figyelése és automatizálási eszközök között a hibrid fabric futtatható Moogsoft. Azt aktívan alkalmazást érintő incidensek korábban észleli, dinamikusan hangolja össze a megfelelő erőforrásokon, így helyzetét figyelembe és csökkenti az időt, javíthatja és kedvezőtlen hatással lehet a felhasználói élményt nyújt. 
+Az Azure-ingatlan-integráció figyelése és automatizálási eszközök között a hibrid fabric futtatható Moogsoft. Moogsoft 
+ - aktívan észleli korábban alkalmazást érintő incidensek 
+ - dinamikusan hangolja össze a megfelelő erőforrásokon, így helyzetét figyelembe 
+ - csökkenti a fordított időt, javíthatja és kedvezőtlen hatással lehet a felhasználói élményt nyújt. 
 
 [Nyissa meg a dokumentációt.][moogsoft-doc]
 
@@ -107,7 +116,7 @@ Opsgenie segítségével egy Azure által létrehozott riasztásokról dispatche
 [Nyissa meg a dokumentációt.][opsgenie-doc]
 
 ## <a name="pagerduty"></a>PagerDuty
-PagerDuty, a vezető incidenskezelés megoldás biztosított kiváló támogatást nyújt az Azure-riasztások a metrikák. PagerDuty értesítéseket támogatja az Azure Monitor riasztások, a automatikus skálázási értesítések, a naplózási események naplózása és a platform-szintű metrikákat az Azure-szolgáltatásokhoz. E fejlesztések adjon növeli az Azure Platform alapvető betekintést. Teljes mértékben kihasználhatja a PagerDuty incidens felügyeleti képességeket a valós idejű válasz is igénybe vehet. A kibontott Azure-beli integrációs webhookok keresztül történik. Webhookok és a megoldás testreszabása, gyorsan és egyszerűen teszi lehetővé.
+PagerDuty, a vezető incidenskezelés megoldás biztosított kiváló támogatást nyújt az Azure-riasztások a metrikák. PagerDuty értesítéseket támogatja az Azure Monitor riasztások, automatikus méretezési értesítésekhez, tevékenységnapló-események és az Azure-szolgáltatásokhoz a platform-szintű metrikákat. E fejlesztések adjon növeli az Azure Platform alapvető betekintést. Teljes mértékben kihasználhatja a PagerDuty incidens felügyeleti képességeket a valós idejű válasz is igénybe vehet. A kibontott Azure-beli integrációs webhookok keresztül történik. Webhookok és a megoldás testreszabása, gyorsan és egyszerűen teszi lehetővé.
 
 [Nyissa meg a dokumentációt.][pagerduty-doc]
 
@@ -144,7 +153,7 @@ Sumo logikai egy biztonságos, natív felhőalapú, gépi elemzési szolgáltat�
 [tudj meg többet.][sumologic-doc]
 
 ## <a name="turbonomic"></a>A Turbonomic
-A Turbonomic hibrid felhőkhöz biztosítja a számítási feladatok automatizálását a teljesítmény, a költségek és a megfelelőség valós időben való párhuzamos optimalizálásával. A Turbonomic segítséget nyújt a szervezetek kell rugalmas a saját Azure hagyatéki folyamatosan alkalmazásbeolvasási igényelnek, hogy az SLA-t és művelet között további erőforrások biztosításához a hagyatéki folyamatosan optimalizálásával számítási, tárolási és hálózati az IaaS és PaaS réteg. Szervezetek is áttelepítések szimulálása megfelelően-alapú számítási feladatait és kivonják az adatközpontbeli erőforrásokat osztott áttelepítése Azure időben, költségvetési, teljesítmény és a megfelelőségi biztosítva. A Turbonomic API-vezérelt, és ügynök nélküli virtuális gépként fut az Azure-ban vagy a helyszínen.
+A Turbonomic hibrid felhőkhöz biztosítja a számítási feladatok automatizálását a teljesítmény, a költségek és a megfelelőség valós időben való párhuzamos optimalizálásával. A Turbonomic segít a szervezeteknek a kell rugalmas a saját Azure hagyatéki folyamatosan alkalmazásbeolvasási az erőforrások igényelnek, hogy az SLA-t és semmi további számítási, tárolási és hálózati az IaaS és PaaS biztosításához a hagyatéki folyamatosan optimalizálásával réteg. Szervezetek is áttelepítések szimulálása megfelelően-alapú számítási feladatait és kivonják az adatközpontbeli erőforrásokat osztott áttelepítése Azure időben, költségvetési, teljesítmény és a megfelelőségi biztosítva. A Turbonomic API-vezérelt, és ügynök nélküli virtuális gépként fut az Azure-ban vagy a helyszínen.
 
 [tudj meg többet.][turbonomic-doc]
 
@@ -168,6 +177,7 @@ A Turbonomic hibrid felhőkhöz biztosítja a számítási feladatok automatizá
 [dynatrace-anchor]: #dynatrace "Dynatrace-szel"
 [newrelic-anchor]: #newrelic "NewRelic"
 [grafana-anchor]: #grafana "Grafana"
+[influxdata-anchor]: #Influxdata "Influxdata"
 [logicmonitor-anchor]: #logic-monitor "Logikai figyelője"
 [moogsoft-anchor]: #moogsoft "Moogsoft"
 [opsgenie-anchor]: #opsgenie "Opsgenie segítségével"
@@ -193,6 +203,7 @@ A Turbonomic hibrid felhőkhöz biztosítja a számítási feladatok automatizá
 [dynatrace-logo]: ./media/partner-logos/dynatrace.png
 [newrelic-logo]: ./media/partner-logos/newrelic.png
 [grafana-logo]: ./media/partner-logos/grafana.png
+[influxdata-logo]: ./media/partner-logos/influxdata.png
 [logicmonitor-logo]: ./media/partner-logos/logicmonitor.png
 [moogsoft-logo]: ./media/partner-logos/moogsoft.png
 [opsgenie-logo]: ./media/partner-logos/opsgenie.png
@@ -217,6 +228,7 @@ A Turbonomic hibrid felhőkhöz biztosítja a számítási feladatok automatizá
 [datadog-doc]: http://docs.datadoghq.com/integrations/azure/ "Datadoggal dokumentációját."
 [dynatrace-doc]: https://help.dynatrace.com/infrastructure-monitoring/paas/how-do-i-monitor-microsoft-azure-web-apps/ "Dokumentáció a dynatrace-szel."
 [grafana-doc]: ./monitor-send-to-grafana.md "Az Azure Monitor Grafana integráció."
+[influxdata-doc]: ./metrics-store-custom-linux-telegraf.md "Az Azure Monitor Influxdata Telegraf integráció."
 [logicmonitor-doc]: https://www.logicmonitor.com/lmcloud-azure/ "Logikai dokumentációja."
 [moogsoft-doc]: https://www.moogsoft.com/partners/microsoft-azure "Moogsoft dokumentációját."
 [newrelic-doc]: https://newrelic.com/azure "NewRelic dokumentációját."
