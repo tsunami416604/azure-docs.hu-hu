@@ -1,6 +1,6 @@
 ---
-title: Teljes Linux-környezet létrehozása az Azure CLI 1.0 |} A Microsoft Docs
-description: Hozzon létre a storage, Linux rendszerű virtuális gép, virtuális hálózat és alhálózat, egy terheléselosztó, egy hálózati Adaptert, nyilvános IP-cím és egy hálózati biztonsági csoportot, mind az alapoktól az Azure CLI 1.0 használatával.
+title: Teljes Linux-környezet létrehozása a klasszikus Azure CLI-vel |} A Microsoft Docs
+description: Hozzon létre a storage, Linux rendszerű virtuális gép, virtuális hálózat és alhálózat, egy terheléselosztó, egy hálózati Adaptert, nyilvános IP-cím és egy hálózati biztonsági csoportot, mind az alapoktól az Azure klasszikus parancssori felület használatával.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: cynthn
@@ -15,14 +15,14 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 02/09/2017
 ms.author: cynthn
-ms.openlocfilehash: 1fb5542af77fbb584effca24a74b9e233359cf0e
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.openlocfilehash: 560d1c55b159ed817c0b080171862c28ebe73f3e
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37932342"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46952800"
 ---
-# <a name="create-a-complete-linux-environment-with-the-azure-cli-10"></a>Teljes Linux-környezet létrehozása az Azure CLI 1.0
+# <a name="create-a-complete-linux-environment-with-the-azure-classic-cli"></a>Teljes Linux-környezet létrehozása a klasszikus Azure CLI-vel
 Ebben a cikkben egy egyszerű hálózati terheléselosztó és a virtuális gépek, amelyek hasznosak a fejlesztési és egyszerű számítástechnika párjai készítünk. A folyamat által parancs parancsot, amíg nincs két működő, biztonságos Linux virtuális gépet, amelyhez csatlakozhat bárhol az interneten azt bemutatására. Majd továbbléphet összetettebb hálózatokhoz és környezeteket.
 
 A vizualizáción, ismerje meg a függőség-hierarchia, hogy a Resource Manager üzembe helyezési modellt biztosít, és mekkora kapcsolatos meghajtójába biztosít. Miután látta, hogyan épül fel a rendszer, újraépítését, sokkal gyorsabban használatával [Azure Resource Manager-sablonok](../../resource-group-authoring-templates.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). Emellett után megtudhatja, hogyan működnek a környezet részeit együtt, egyszerűbb automatizálhatják is azokat a sablonok létrehozásával válik.
@@ -33,20 +33,20 @@ A környezet tartalmazza:
 * Egy terheléselosztó, terheléselosztási szabállyal a 80-as porton.
 * Hálózati biztonsági csoport (NSG) szabályai a kéretlen forgalmat a virtuális gép védelmét.
 
-Az egyéni környezet létrehozásához, a legújabb kell [Azure CLI 1.0](../../cli-install-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) erőforrás-kezelő módban (`azure config mode arm`). Egy JSON-elemzési eszközt is szükséges. Ez a példa [jq](https://stedolan.github.io/jq/).
+Az egyéni környezet létrehozásához, a legújabb kell [Azure klasszikus parancssori felület](../../cli-install-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) erőforrás-kezelő módban (`azure config mode arm`). Egy JSON-elemzési eszközt is szükséges. Ez a példa [jq](https://stedolan.github.io/jq/).
 
 
 ## <a name="cli-versions-to-complete-the-task"></a>A feladat befejezéséhez használható CLI-verziók
 A következő CLI-verziók egyikével elvégezheti a feladatot:
 
-- [Az Azure CLI 1.0](#quick-commands) – parancssori felületünk a klasszikus és a resource management üzemi modellekhez (a jelen cikkben)
-- [Azure CLI 2.0](create-cli-complete.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) – a Resource Management üzemi modellhez tartozó parancssori felületek következő generációját képviseli.
+- [Az Azure klasszikus parancssori felület](#quick-commands) – parancssori felületünk a klasszikus és a resource management üzemi modellekhez (a jelen cikkben)
+- [Az Azure CLI](create-cli-complete.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) – a parancssori következő generációját képviseli a resource management üzemi modellhez tartozó
 
 
 ## <a name="quick-commands"></a>Gyors parancsok
 Ha szeretne gyorsan elvégezni a feladatot, a következő szakaszban részletek alap parancsok VM feltöltése az Azure-bA. Részletes információkat és a környezetben az egyes lépések indítása, a dokumentum többi részén található [Itt](#detailed-walkthrough).
 
-Győződjön meg arról, hogy rendelkezik-e [az Azure CLI 1.0](../../cli-install-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) bejelentkezett, és a Resource Manager-módban:
+Győződjön meg arról, hogy rendelkezik-e [a klasszikus Azure-CLI](../../cli-install-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) bejelentkezett, és a Resource Manager-módban:
 
 ```azurecli
 azure config mode arm
@@ -270,7 +270,7 @@ azure group export myResourceGroup
 ## <a name="detailed-walkthrough"></a>Részletes bemutató
 A részletes lépések ismertetik, hogy milyen minden parancs módon ki a környezet létrehozása. Ezek a fogalmak hasznosak, a saját egyéni fejlesztési vagy éles üzemi környezetek készítése során.
 
-Győződjön meg arról, hogy rendelkezik-e [az Azure CLI 1.0](../../cli-install-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) bejelentkezett, és a Resource Manager-módban:
+Győződjön meg arról, hogy rendelkezik-e [a klasszikus Azure-CLI](../../cli-install-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) bejelentkezett, és a Resource Manager-módban:
 
 ```azurecli
 azure config mode arm
@@ -301,7 +301,7 @@ data:
 info:    group create command OK
 ```
 
-## <a name="create-a-storage-account"></a>Create a storage account
+## <a name="create-a-storage-account"></a>Tárfiók létrehozása
 Storage-fiókok VM-lemezeit, és a hozzáadni kívánt további adatlemezt kell. Storage-fiókok szinte azonnal erőforráscsoportok létrehozását követően hozzon létre.
 
 Jelen példában használjuk a `azure storage account create` parancsot, és átadja a fiók, az erőforráscsoport helye, amely szabályozza, és a kívánt storage-támogatás típusát. Az alábbi példa létrehoz egy tárfiókot, nevű `mystorageaccount`:

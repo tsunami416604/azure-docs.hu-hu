@@ -16,14 +16,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/15/2017
 ms.author: daden
-ms.openlocfilehash: 7a13cafd3dcfb4637a5deae2c678c518019ad168
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ROBOTS: NOINDEX
+ms.openlocfilehash: 8f3bd4e62aa85c69a0bfafeacf13bc3e472136d5
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39460246"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46964701"
 ---
 # <a name="server-workload-forecasting-on-terabytes-of-data"></a>A több terabájtnyi adatot feldolgozó kiszolgálói számítási feladatok előrejelzése
+
+[!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)] 
 
 Ez a cikk ismerteti, hogyan adatszakértők az Azure Machine Learning Workbench használatát a big Data-megoldások fejlesztéséhez. Indítsa el a nagyméretű mintát, iteráció az adat-előkészítési funkciófejlesztési és gépi tanulási és majd kiterjeszthetik az a folyamat a teljes nagyméretű adathalmazon. 
 
@@ -49,11 +52,11 @@ Ebben a forgatókönyvben összpontosíthat számítási feladatok előrejelzés
 Ez a példa futtatásához az Előfeltételek a következők:
 
 * Egy [Azure-fiók](https://azure.microsoft.com/free/) (az ingyenes próbaverziók érhető el).
-* Egy telepített példánya [Azure Machine Learning Workbench](../service/overview-what-is-azure-ml.md). Telepítse a programot, és hozzon létre egy munkaterületet, tekintse meg a [rövid telepítési útmutatójában](../service/quickstart-installation.md). Ha több előfizetéssel rendelkezik, akkor az [állítsa be a kívánt előfizetést, az aktuális aktív előfizetést kell](https://docs.microsoft.com/cli/azure/account?view=azure-cli-latest#az-account-set).
+* Egy telepített példánya [Azure Machine Learning Workbench](../service/overview-what-is-azure-ml.md). Telepítse a programot, és hozzon létre egy munkaterületet, tekintse meg a [rövid telepítési útmutatójában](quickstart-installation.md). Ha több előfizetéssel rendelkezik, akkor az [állítsa be a kívánt előfizetést, az aktuális aktív előfizetést kell](https://docs.microsoft.com/cli/azure/account?view=azure-cli-latest#az_account_set).
 * A Windows 10-es (az ebben a példában általában ugyanezek az utasítások érvényesek a macOS rendszerekhez).
 * Egy adatelemzési virtuális gép (DSVM) Linux (Ubuntu), lehetőleg az USA keleti régiójában, ahol az adatokat keresi meg. A következő kiépíthet egy Ubuntu DSVM [ezek az utasítások](https://docs.microsoft.com/azure/machine-learning/data-science-virtual-machine/dsvm-ubuntu-intro). Emellett megtekintheti [ebben a rövid útmutatóban](https://ms.portal.azure.com/#create/microsoft-ads.linux-data-science-vm-ubuntulinuxdsvmubuntu). Legalább 8 maggal és 32 GB memóriát a virtuális gép használatát javasoljuk. 
 
-Kövesse a [utasítás](../service/known-issues-and-troubleshooting-guide.md#remove-vm-execution-error-no-tty-present) a virtuális Gépet a jelszó nélküli sudoer-hozzáférésének engedélyezésére vonatkozó AML Workbench.  Ha szeretné használni [SSH-alapú hitelesítés létrehozásáról és használatáról a virtuális gép AML workbenchben](experimentation-service-configuration.md#using-ssh-key-based-authentication-for-creating-and-using-compute-targets). Ebben a példában a jelszó eléri a virtuális Gépet használjuk.  Mentse az alábbi táblázat a DSVM-adatokat a későbbi lépésekben:
+Kövesse a [utasítás](../desktop-workbench/known-issues-and-troubleshooting-guide.md#remove-vm-execution-error-no-tty-present) a virtuális Gépet a jelszó nélküli sudoer-hozzáférésének engedélyezésére vonatkozó AML Workbench.  Ha szeretné használni [SSH-alapú hitelesítés létrehozásáról és használatáról a virtuális gép AML workbenchben](experimentation-service-configuration.md#using-ssh-key-based-authentication-for-creating-and-using-compute-targets). Ebben a példában a jelszó eléri a virtuális Gépet használjuk.  Mentse az alábbi táblázat a DSVM-adatokat a későbbi lépésekben:
 
  Mező neve| Érték |  
  |------------|------|

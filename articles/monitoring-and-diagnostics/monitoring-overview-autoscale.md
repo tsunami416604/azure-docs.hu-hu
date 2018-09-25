@@ -1,121 +1,122 @@
 ---
-title: A virtuális gépek, a Cloud Services és a Web Apps automatikus skálázás áttekintése
-description: Automatikus skálázási a Microsoft Azure-ban. Virtuális gépek, a virtuálisgép-skálázási készletekben, a Cloud Services és a Web Apps vonatkozik.
+title: Az automatikus méretezés a Virtual Machines, Cloud Services és a Web Apps áttekintése
+description: Az automatikus méretezés a Microsoft Azure-ban. Virtuális gépek, a virtuálisgép-méretezési csoportok, a Cloud Services és a Web Apps vonatkozik.
 author: rboucher
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 03/02/2016
+ms.date: 09/24/2018
 ms.author: robb
 ms.component: autoscale
-ms.openlocfilehash: 4eeca81e08a0ecae9ba41ccdd2bf8a2f395f579c
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: fe63ce931da9fbe94b47d00805820affddfb1bc1
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35264670"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46946986"
 ---
-# <a name="overview-of-autoscale-in-microsoft-azure-virtual-machines-cloud-services-and-web-apps"></a>A Microsoft Azure virtuális gépek, a Cloud Services és a Web Apps automatikus skálázás áttekintése
-Ez a cikk ismerteti, milyen Microsoft Azure automatikus skálázás, előnye, valamint Ismerkedés használja azt.  
+# <a name="overview-of-autoscale-in-microsoft-azure-virtual-machines-cloud-services-and-web-apps"></a>Az automatikus méretezés a Microsoft Azure Virtual Machines, Cloud Services és a Web Apps áttekintése
+Ez a cikk azt ismerteti, milyen a Microsoft Azure automatikus méretezési funkciójával, annak előnyeit, és hogyan kezdheti el használni.  
 
-Az Azure a figyelő automatikus skálázás vonatkozik csak a [virtuálisgép-méretezési csoportok](https://azure.microsoft.com/services/virtual-machine-scale-sets/), [Felhőszolgáltatások](https://azure.microsoft.com/services/cloud-services/), és [App Service - webalkalmazások](https://azure.microsoft.com/services/app-service/web/).
+Az Azure Monitor automatikus skálázása csak érvényes [Virtual Machine Scale Sets](https://azure.microsoft.com/services/virtual-machine-scale-sets/), [Cloud Services](https://azure.microsoft.com/services/cloud-services/), [App Service - webalkalmazások](https://azure.microsoft.com/services/app-service/web/), és [APIManagement-szolgáltatások](https://docs.microsoft.com/azure/api-management/api-management-key-concepts).
 
 > [!NOTE]
-> Azure automatikus skálázás két módszer van. Automatikus skálázás régebbi verzióját a virtuális gépek (rendelkezésre állási készletek) vonatkozik. Ez a szolgáltatás korlátozott mértékben támogatja, és ajánlott az áttelepítés a virtuálisgép-méretezési csoportok gyorsabb és megbízhatóbb automatikus skálázás támogatásához. A régebbi technológia használatával hivatkozásra kattintva szerepel ebben a cikkben.  
+> Az Azure automatikus méretezési kétféleképpen rendelkezik. Az automatikus méretezés egy régebbi verzióját (rendelkezésre állási csoportok) virtuális gépekre vonatkozik. Ez a szolgáltatás korlátozott támogatással rendelkezik, és azt javasoljuk, hogy a gyorsabb és megbízhatóbb automatikus méretezés támogatása a virtuális gép méretezési-ba való migrálás. Ez a cikk tartalmazza egy hivatkozást a régebbi technológia használatával.  
 >
 >
 
-## <a name="what-is-autoscale"></a>Mi az az automatikus skálázás?
-Automatikus skálázás lehetővé teszi, hogy rendelkezik a megfelelő mennyiségű erőforrást fut az alkalmazás a terhelés kezelésére. Lehetővé teszi a terhelés növekszik, és is költségtakarékosabb munkavégzésben erőforrásokat, amelyek ül eltávolításával erőforrások hozzáadása tétlen. A minimális és maximális mennyiségű példánnyal futtatásához, és vegye fel vagy távolítsa el a virtuális gépek meghatározott szabályok alapján automatikusan megadja. A minimális elérhetővé válnak meg arról, hogy az alkalmazás mindig fut még nincs terhelés alatt. A legfeljebb korlátozza a teljes lehetséges óránkénti költsége. Automatikus méretezése hoz létre szabályokkal e két érték között.
+## <a name="what-is-autoscale"></a>Mi az automatikus méretezés?
+Az automatikus méretezés lehetővé teszi a megfelelő mennyiségű erőforrást fut az alkalmazás terhelés kezelésére. Lehetővé teszi a terhelés növekedését kezelni és is pénzt takaríthat meg, amelyek úgy vannak erőforrások eltávolítása erőforrások hozzáadásához inaktív. Azt adja meg a futtassa, és adja hozzá, vagy távolítsa el a virtuális gépek szabályok alapján automatikusan-példányok minimális és maximális számát. Egy minimális teszi meg arról, hogy az alkalmazás mindig fut még nincs terhelés alatt. A legfeljebb korlátozza az összes lehetséges óránkénti költség. Automatikus méretezése létrehozott szabályok használatával e két érték között.
 
- ![Automatikus skálázás ismertetése. Virtuális gépek hozzáadása és eltávolítása](./media/monitoring-overview-autoscale/AutoscaleConcept.png)
+ ![Automatikus skálázási ismertetése. Virtuális gépek hozzáadása és eltávolítása](./media/monitoring-overview-autoscale/AutoscaleConcept.png)
 
-Ha a szabály feltételek teljesülnek, egy vagy több automatikus skálázási művelet aktiválódnak. Hozzáadása és eltávolítása a virtuális gépek vagy egyéb műveleteket hajthat végre. A következő fogalmi diagramja jeleníti meg ezt a folyamatot.  
+Ha a szabály feltételei teljesülnek, egy vagy több automatikus skálázási műveletek aktiválódnak. Adja hozzá, és távolítsa el a virtuális gépeket, vagy egyéb műveleteket hajthat végre. A következő fogalmi ábrán ez a folyamat.  
 
- ![Automatikus skálázás folyamatábrája](./media/monitoring-overview-autoscale/Autoscale_Overview_v4.png)
+ ![Automatikus skálázási folyamatábrája](./media/monitoring-overview-autoscale/Autoscale_Overview_v4.png)
 
-A következő magyarázatot az előző ábrán a eszközökre vonatkozik.   
+A következő magyarázatot az előző ábrán az eszközökre vonatkozik.   
 
-## <a name="resource-metrics"></a>Erőforrás metrikáit
-Erőforrások kibocsátás metrikákat, ezeket a mérési szabályok később dolgoznak. Metrikák keresztül különböző módszereket származnak.
-Virtuálisgép-méretezési csoportok telemetriai adatokat az Azure diagnostics ügynökök használja, mivel a webes alkalmazások és a felhőszolgáltatások telemetriai származik, közvetlenül az Azure infrastruktúra. Néhány gyakran használt statisztikai közé tartozik a CPU-használat, a memória használata, a szál száma, a várólista hossza és a lemezek használata terén. Milyen telemetriai adatok használható listájáért lásd: [automatikus skálázás közös metrikák](insights-autoscale-common-metrics.md).
+## <a name="resource-metrics"></a>Erőforrás-metrikák
+Erőforrás szolgáltat metrikák, ezek a metrikák később dolgozza fel a szabályokat. Metrikák származnak, különböző módszerekkel keresztül.
+A Virtual machine scale sets használ az Azure diagnostics-ügynököktől származó telemetriai adatok, míg a Web apps és a Cloud services telemetriája származik, közvetlenül az Azure-infrastruktúra. Néhány gyakran használt statisztikai közé tartozik a CPU-használat, memóriahasználat, szálak számát, várólista hossza és lemezek használata terén. Milyen telemetriai adatokat használhatja listáját lásd: [gyakori metrikák az automatikus méretezés](insights-autoscale-common-metrics.md).
 
 ## <a name="custom-metrics"></a>Egyéni metrikák
-Kihasználhatja a saját egyéni metrikákat, amelyek az alkalmazás esetleg kibocsátó. Ha konfigurálta a metrikák küldhet az Application Insights alkalmazás(ok) használhatja ezeket metrikákat, hogy méretezhető-e a vonatkozó döntések meghozatalában. 
+Saját egyéni metrikákat, amely az alkalmazás is lehet úgy is használhatja. Ha konfigurálta a mérőszámok küldése az Application Insightsba alkalmazás(ok) kihasználhatja követhesse döntést e skálázásra vagy nem található.
 
 ## <a name="time"></a>Time
-Ütemezésalapú szabályok UTC alapulnak. Meg kell adni az időzónájának megfelelően a szabályok beállítása során.  
+Ütemezésalapú szabályok UTC alapulnak. Be kell állítani az időzóna megfelelően a szabályok beállítása során.  
 
 ## <a name="rules"></a>Szabályok
-Az ábrán csak egy automatikus skálázási szabály, de ezek is. Létrehozhat összetett átfedő szabályokat a helyzetnek igény szerint.  Szabály típusa  
+Az ábrán csak egy automatikus skálázási szabály, de ezek közül számos rendelkezhet. Összetett átfedésben lévő szabályok az adott helyzetben igény szerint hozhat létre.  A szabály típusok:  
 
-* **A metrika-alapú** – például a művelet végrehajtására, 50 % feletti CPU-használat esetén.
-* **Időalapú** – például olyan webhook minden szombaton adott időzónában 8 am eseményindító.
+* **A mérőszám-alapú** – például a művelet végrehajtására, amikor a CPU-használat 50 % fölött van.
+* **Időalapú** – például a trigger minden 8 -kor egy adott időzóna szombatján webhook.
 
-Metrika-alapú szabályok mérésére alkalmazásterhelés, és adja hozzá, vagy távolítsa el a virtuális gépek terhelés alapján. Ütemezésalapú szabályok engedélyezik, hogy ha a betöltési idő szabályszerűségek és méretezésére előtt a lehetséges terhelés növelését, vagy csökkentse történik.  
+A mérőszám-alapú szabályok mérheti az alkalmazások terhelésének, és adja hozzá, vagy távolítsa el a virtuális gépeket, hogy a terhelés alapján. Ütemezésalapú szabályok lehetővé teszik méretezhető idő jelenik meg a terhelését, és a egy lehetséges terhelés megnövekedése előtt méretezésére vagy csökkenése történik.  
 
 ## <a name="actions-and-automation"></a>Műveletek és automatizálás
-Szabályok is elindíthatja egy vagy több típusú műveleteket.
+Szabályok is indíthat egy vagy több típusú műveleteket.
 
-* **Skála** -skálázási virtuális gépek bejövő vagy kimenő
-* **E-mailek** – e-mail küldése az előfizetés rendszergazdái, a társadminisztrátoroknak és/vagy a megadott további e-mail cím
-* **Webhook segítségével automatizálhatja** -hívás webhookokkal, melyek több összetett műveletek belül vagy kívül Azure elindítható. Azure-ban belül egy Azure Automation forgatókönyv, az Azure-függvény vagy az Azure Logic App is elindítható. Példa külső URL-cím kívül Azure-szolgáltatásokat, mint a Slackhez és Twilio tartalmaznak.
+* **Méretezési csoport** – méretezési csoport virtuális gépek és leskálázása
+* **E-mailek** – e-mail küldése az előfizetés-adminisztrátorok, társrendszergazdák, illetve megadhat további e-mail-cím
+* **Webhookokkal automatizálása** -hívás webhookokkal, melyek több összetett művelet belül, vagy az Azure-on kívülről is aktiválhatja. Azure,-on belül elkezdheti egy Azure Automation runbook, az Azure-függvény vagy az Azure Logic Apps. Példa külső URL-cím kívül az Azure-szolgáltatások, például Slack és a Twilio tartalmazza.
 
-## <a name="autoscale-settings"></a>Automatikus skálázási beállításokat
-Automatikus skálázás használja a következő terminológia és struktúra.
+## <a name="autoscale-settings"></a>Automatikus méretezési beállítások
+Az automatikus méretezés használata a következő terminológia és struktúra.
 
-- Egy **automatikus skálázási beállítás** az automatikus skálázás motor határozza meg, hogy felfelé vagy lefelé méretezési olvasható. Egy vagy több profilok, a cél erőforráson, és az értesítési beállítások kapcsolatos információkat tartalmaz.
+- Egy **automatikus skálázási beállítás** annak megállapításához, hogy a kisebbre vagy nagyobbra méretezhetők az automatikus skálázási motor által olvasható. Egy vagy több profilok, a célként megadott erőforrás, és az értesítési beállítások kapcsolatos információkat tartalmaz.
 
-    - Egy **automatikus skálázási profil** a: kombinációja
+    - Egy **automatikus skálázási profil** v: kombinációja
 
         - **kapacitás beállítás**, ami azt jelenti, hogy a minimális, maximális és alapértelmezett értékei a példányok számát.
-        - **szabályok**, amelyek mindegyike tartalmaz egy eseményindító (idő vagy metrika) és a méretezési művelet (felfelé vagy lefelé).
-        - **Ismétlődés**, ami azt jelzi, ha automatikus skálázás kell a profil hatályba léptetni.
+        - **Szabálykészlet**, amelyek mindegyike tartalmaz egy eseményindító (idő vagy metrika) és a egy skálázási műveletet (feljebb vagy lejjebb).
+        - **ismétlődési**, ami azt jelenti, hogy az automatikus méretezés kell üzembe helyezés a profil lép érvénybe.
 
-        Több profilok, amelyek lehetővé teszik különböző átfedő követelmények irányuló lehet. Különböző automatikus skálázási profilok például is rendelkezik különböző időpontokban, vagy a hét napjait az.
+        Több profilt, melyek lehetővé teszik a különböző egymást átfedő követelmények irányuló rendelkezhet. Különböző automatikus méretezési profilok például is rendelkezhet a napot vagy a hét azon napjai, különböző időpontokban.
 
-    - A **beállítása** határozza meg, milyen értesítéseket megtörténik az automatikus skálázási beállítás profilok egyik feltételeknek eleget tevő alapján automatikus skálázás esemény bekövetkezésekor. Automatikus skálázás értesítés egy vagy több e-mail címet, vagy egy vagy több webhook meghíváshoz.
+    - A **értesítési beállítás** határozza meg, milyen értesítéseket alapján a profilok az automatikus skálázási beállítás egyik feltételeknek eleget tevő automatikus skálázási esemény bekövetkezésekor kerül sor. Automatikus skálázási értesítése egy vagy több e-mail címet vagy egy vagy több webhook hívásokat is.
 
 
 ![Az Azure automatikus skálázási beállítás, a profil és a szabály struktúra](./media/monitoring-overview-autoscale/AzureResourceManagerRuleStructure3.png)
 
-A konfigurálható mezőket és leírások teljes listája megtalálható a [automatikus skálázás REST API](https://msdn.microsoft.com/library/dn931928.aspx).
+Konfigurálható mezőket és -leírások teljes listája megtalálható a [automatikus skálázási REST API-val](https://msdn.microsoft.com/library/dn931928.aspx).
 
-Kódminták lásd:
+Hitelesítésikód-példák lásd:
 
-* [Speciális automatikus skálázás konfigurációs Resource Manager sablonok Virtuálisgép-méretezési készlet használata](insights-advanced-autoscale-virtual-machine-scale-sets.md)  
-* [Automatikus skálázás REST API-n](https://msdn.microsoft.com/library/dn931953.aspx)
+* [Resource Manager-sablonok használata Virtuálisgép-méretezési csoportok speciális automatikus skálázási konfiguráció](insights-advanced-autoscale-virtual-machine-scale-sets.md)  
+* [Az automatikus méretezés – REST API](https://msdn.microsoft.com/library/dn931953.aspx)
 
-## <a name="horizontal-vs-vertical-scaling"></a>Vízszintes vagy függőleges skálázás
-Automatikus skálázás csak arányosan vízszintesen, ez ("out") növelését vagy csökkenését ("") a Virtuálisgép-példányok száma.  Vízszintes rugalmasabb felhő helyzetben, lehetővé teszi több ezer virtuális gépek terhelés kezelése érdekében potenciálisan futtatásához.
+## <a name="horizontal-vs-vertical-scaling"></a>Vízszintes és függőleges skálázás
+Az automatikus méretezés csak méretezéssel vízszintesen, ("ki") növekedése vagy csökkenése ("") a Virtuálisgép-példányok számát.  Rugalmas felhőalapú helyzetben, mert Ön futtatásához potenciálisan több ezer virtuális gép terhelés kezeléséhez, a vízszintes.
 
-Ezzel szemben függőleges skálázás nem azonos. A virtuális gépek azonos számú tartja, de lehetővé teszi a virtuális gépek ("Mentés") több vagy kevesebb ("le") hatékony. A memória, Processzor sebessége, lemezterület stb mérik.  További korlátozások függőleges skálázás rendelkezik. Elérhetőségétől függ nagyobb hardver, amely gyorsan találatok száma a felső korlátja, és régiónként eltérőek lehetnek. Általában is függőleges skálázáshoz kell a virtuális gépek leállítása és újraindítása.
+Ezzel szemben a vertikális skálázás eltér. Az azonos számú virtuális gépek megtartja, hanem lehetővé teszi a virtuális gépek ("be") több vagy kevesebb, ("üzemen kívül") hatékony. Energiagazdálkodási mérik a memória, CPU-sebesség, lemezterület stb.  Függőleges méretezés további korlátozások vonatkoznak. Célszerű a nagyobb hardverekhez, ami gyors találatok száma a felső korlát és régiónként rendelkezésre állásának függ. Vertikális skálázás is általában egy virtuális gép leállítása és újraindítása van szükség.
 
-További információkért lásd: [függőleges skálázása az Azure virtuális gép az Azure Automation szolgáltatásban](../virtual-machines/linux/vertical-scaling-automation.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+További információkért lásd: [vertikális skálázása az Azure virtuális gépen az Azure Automation](../virtual-machines/linux/vertical-scaling-automation.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
 ## <a name="methods-of-access"></a>Hozzáférési módok
-Automatikus skálázás keresztül állíthat be
+Beállíthat automatikus skálázási keresztül
 
 * [Azure Portal](insights-how-to-scale.md)
 * [PowerShell](insights-powershell-samples.md#create-and-manage-autoscale-settings)
-* [Többplatformos parancssori felület (CLI)](insights-cli-samples.md#autoscale)
-* [Az Azure figyelő REST API-n](https://msdn.microsoft.com/library/azure/dn931953.aspx)
+* [Platformfüggetlen parancssori felület (CLI)](insights-cli-samples.md#autoscale)
+* [Az Azure Monitor REST API-val](https://msdn.microsoft.com/library/azure/dn931953.aspx)
 
-## <a name="supported-services-for-autoscale"></a>Az automatikus skálázás támogatott szolgáltatások
-| Szolgáltatás | Séma & Docs |
+## <a name="supported-services-for-autoscale"></a>Támogatott szolgáltatások, az automatikus méretezéshez
+| Szolgáltatás | Séma és a dokumentumok |
 | --- | --- |
-| Web Apps |[Webalkalmazások skálázás](insights-how-to-scale.md) |
-| Cloud Services |[Automatikus skálázás egy felhőalapú szolgáltatás](../cloud-services/cloud-services-how-to-scale-portal.md) |
-| Virtuális gépek: klasszikus |[Méretezési klasszikus virtuális gép rendelkezésre állási csoportok](https://blogs.msdn.microsoft.com/kaevans/2015/02/20/autoscaling-azurevirtual-machines/) |
-| Virtuális gépek: Windows méretezési csoportok |[A Windows virtuálisgép-méretezési skálázás beállítása](../virtual-machine-scale-sets/virtual-machine-scale-sets-windows-autoscale.md) |
-| Virtuális gépek: Linux-skálázási készletekben |[A Linux virtuálisgép-méretezési skálázás beállítása](../virtual-machine-scale-sets/virtual-machine-scale-sets-linux-autoscale.md) |
-| Virtuális gépek: Windows – példa |[Speciális automatikus skálázás konfigurációs Resource Manager sablonok Virtuálisgép-méretezési készlet használata](insights-advanced-autoscale-virtual-machine-scale-sets.md) |
+| Web Apps |[Webes alkalmazások skálázása](insights-how-to-scale.md) |
+| Cloud Services |[Automatikus skálázási Felhőszolgáltatás](../cloud-services/cloud-services-how-to-scale-portal.md) |
+| Virtuális gépek: klasszikus |[Klasszikus virtuális gép rendelkezésre állási csoportok méretezése](https://blogs.msdn.microsoft.com/kaevans/2015/02/20/autoscaling-azurevirtual-machines/) |
+| Virtual Machines: Windows méretezési csoportok |[A Windows virtuálisgép-méretezési csoport skálázási beállítása](../virtual-machine-scale-sets/virtual-machine-scale-sets-windows-autoscale.md) |
+| Virtuális gépek: Linux rendszerű méretezési csoportok |[A Linux virtuálisgép-méretezési csoport skálázási beállítása](../virtual-machine-scale-sets/virtual-machine-scale-sets-linux-autoscale.md) |
+| Virtual Machines: Windows-példa |[Resource Manager-sablonok használata Virtuálisgép-méretezési csoportok speciális automatikus skálázási konfiguráció](insights-advanced-autoscale-virtual-machine-scale-sets.md) |
+| API Management-szolgáltatás|[Automatikus skálázása az Azure API Management-példány](https://docs.microsoft.com/azure/api-management/api-management-howto-autoscale)
 
 ## <a name="next-steps"></a>További lépések
-Automatikus méretezéssel kapcsolatos további tudnivalókért használja az automatikus skálázás forgatókönyvek, előzőleg felsorolt, vagy tekintse meg a következőket:
+További információ az automatikus méretezés, használja az automatikus skálázási útmutatók korábban felsorolt, vagy tekintse meg a következő:
 
-* [Az Azure a figyelő automatikus skálázás közös metrikák](insights-autoscale-common-metrics.md)
-* [Ajánlott eljárások az Azure a figyelő automatikus skálázás](insights-autoscale-best-practices.md)
-* [A automatikus skálázási műveletek is elküldhetik e-mailek és a webhook riasztási értesítésekre](insights-autoscale-to-webhook-email.md)
-* [Automatikus skálázás REST API-n](https://msdn.microsoft.com/library/dn931953.aspx)
-* [Hibaelhárítási virtuális gép méretezési készlet automatikus skálázás](../virtual-machine-scale-sets/virtual-machine-scale-sets-troubleshoot.md)
+* [Gyakori metrikák az Azure Monitor automatikus méretezés](insights-autoscale-common-metrics.md)
+* [Ajánlott eljárások az Azure Monitor automatikus skálázása](insights-autoscale-best-practices.md)
+* [Automatikus skálázási műveletek használatával küldjön e-mailt és webhookot riasztási értesítések](insights-autoscale-to-webhook-email.md)
+* [Az automatikus méretezés – REST API](https://msdn.microsoft.com/library/dn931953.aspx)
+* [Hibaelhárítási virtuális gép méretezési csoportok automatikus skálázási](../virtual-machine-scale-sets/virtual-machine-scale-sets-troubleshoot.md)

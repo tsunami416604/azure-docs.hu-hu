@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 08/30/2018
 ms.author: iainfou
-ms.openlocfilehash: 9bcfa7996b301ea5ff26464315b16a08e054ba60
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 71a2409f91927b7584aef629109a6da363857f62
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44357103"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47036643"
 ---
 # <a name="create-an-ingress-controller-with-a-static-public-ip-address-in-azure-kubernetes-service-aks"></a>Hozzon létre egy bejövőforgalom-vezérlőt egy statikus nyilvános IP-cím az Azure Kubernetes Service (AKS)
 
@@ -52,7 +52,7 @@ az network public-ip create --resource-group MC_myResourceGroup_myAKSCluster_eas
 Már üzembe helyezheti a *nginx-belépő* Helm-diagramot. Adja hozzá a `--set controller.service.loadBalancerIP` paramétert, és adja meg saját nyilvános IP-címet az előző lépésben létrehozott.
 
 > [!TIP]
-> A következő példa telepíti a bejövőforgalom-vezérlőt az `kube-system` névtér. Megadhat egy másik névtér a saját környezetben, ha szükséges. Ha az AKS-fürt nem RBAC engedélyezve, vegye fel `--set rbac.create=false` parancsok.
+> Az alábbi példák a bejövőforgalom-vezérlőt, és a tanúsítványok telepítése a `kube-system` névtér. Megadhat egy másik névtér a saját környezetben, ha szükséges. Ezenkívül ha az AKS-fürt nem RBAC engedélyezve, vegye fel `--set rbac.create=false` parancsok.
 
 ```console
 helm install stable/nginx-ingress --namespace kube-system --set controller.service.loadBalancerIP="40.121.63.72"
@@ -99,16 +99,20 @@ Az NGINX bejövőforgalom-vezérlőjéhez támogatja a TLS megszüntetése. Szá
 > [!NOTE]
 > Ez a cikk a `staging` környezetet hozzunk titkosítása. Használja az éles környezetekben, `letsencrypt-prod` és `https://acme-v02.api.letsencrypt.org/directory` az erőforrás-definíciókban, és a Helm-diagram telepítésekor.
 
-Az RBAC-t fürtben a tanúsítvány-kezelő tartományvezérlő telepítéséhez használja a következő `helm install` parancsot:
+Az RBAC-t fürtben a tanúsítvány-kezelő tartományvezérlő telepítéséhez használja a következő `helm install` parancsot. Újra, ha szükséges, módosítsa `--namespace` valami nem *kube rendszer*:
 
 ```console
-helm install stable/cert-manager --set ingressShim.defaultIssuerName=letsencrypt-staging --set ingressShim.defaultIssuerKind=ClusterIssuer
+helm install stable/cert-manager \
+  --namespace kube-system \
+  --set ingressShim.defaultIssuerName=letsencrypt-staging \
+  --set ingressShim.defaultIssuerKind=ClusterIssuer
 ```
 
 Ha a fürt nem engedélyezett az RBAC, ehelyett a következő paranccsal:
 
 ```console
 helm install stable/cert-manager \
+  --namespace kube-system \
   --set ingressShim.defaultIssuerName=letsencrypt-staging \
   --set ingressShim.defaultIssuerKind=ClusterIssuer \
   --set rbac.create=false \

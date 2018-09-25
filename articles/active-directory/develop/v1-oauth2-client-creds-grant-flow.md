@@ -17,12 +17,12 @@ ms.date: 02/08/2017
 ms.author: celested
 ms.reviewer: nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: 8f7c6c2bef747d00188cac2c3601fdad739b92a8
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: eb43589b04be8b2b9c3be45d33c94592e97d308e
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39581546"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46948264"
 ---
 # <a name="service-to-service-calls-using-client-credentials-shared-secret-or-certificate"></a>Szolgáltatások közötti hívások ügyfél-hitelesítő adatok (közös titkos kulcsot vagy tanúsítvány) használatával
 Az OAuth 2.0 ügyfél hitelesítő adatok engedélyezési folyamatát engedélyezi a webszolgáltatás (*bizalmas ügyfél*) a saját hitelesítő adatait használja a felhasználó megszemélyesítése helyett egy másik webszolgáltatás hívásakor. Ebben a forgatókönyvben az ügyfél nem általában egy középső rétegű webszolgáltatás, démonszolgáltatás vagy webhely. A magasabb szintű megbízhatóságra Azure ad-ben is lehetővé teszi a hívó szolgáltatás (és nem egy közös titkos kulcsot) egy tanúsítvány használandó hitelesítő adatokat.
@@ -61,7 +61,7 @@ A közös titkos kulcsot használja, amikor egy szolgáltatások közötti hozz�
 | erőforrás |szükséges |Adja meg az Alkalmazásazonosító URI-t a fogadó webszolgáltatás. Az Alkalmazásazonosító URI-t, az Azure Portalon kattintson **Azure Active Directory**, kattintson a **alkalmazásregisztrációk**, kattintson a szolgáltatásalkalmazás, majd **beállítások** és  **Tulajdonságok**. |
 
 #### <a name="example"></a>Példa
-A következő HTTP POST kéréseket a hozzáférési jogkivonatot a https://service.contoso.com/ webes szolgáltatás. A `client_id` azonosítja a webszolgáltatás, amelyet a hozzáférési jogkivonatot kér.
+A következő HTTP POST-kérések egy [hozzáférési jogkivonat](access-tokens.md) számára a https://service.contoso.com/ webes szolgáltatás. A `client_id` azonosítja a webszolgáltatás, amelyet a hozzáférési jogkivonatot kér.
 
 ```
 POST /contoso.com/oauth2/token HTTP/1.1

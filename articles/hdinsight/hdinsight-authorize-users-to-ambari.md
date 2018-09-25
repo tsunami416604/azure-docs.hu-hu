@@ -1,6 +1,6 @@
 ---
 title: Ambari-nézetek – Azure HDInsight használatának engedélyezése a felhasználók
-description: Tartományhoz csatlakoztatott HDInsight-fürtök az Ambari felhasználói és engedélyek kezelésének módja.
+description: ESP engedélyezve-fürtök kezelése a HDInsight az Ambari felhasználói és engedélyeket.
 services: hdinsight
 author: maxluk
 ms.reviewer: jasonh
@@ -9,23 +9,23 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/26/2017
 ms.author: maxluk
-ms.openlocfilehash: f1aa80ec9df8faee4cf5ea98910e28cfc11a7920
-ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
+ms.openlocfilehash: 4e05d4ff9c090fac0242921e15ef16439d3ed27f
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43782127"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46954449"
 ---
 # <a name="authorize-users-for-ambari-views"></a>Az Ambari Views használatának engedélyezése felhasználók számára
 
-[Tartományhoz csatlakoztatott HDInsight-fürtök](./domain-joined/apache-domain-joined-introduction.md) adja meg a nagyvállalati szintű funkciókat, beleértve az Azure Active Directory-alapú hitelesítés. Is [új felhasználók szinkronizálása](hdinsight-sync-aad-users-to-cluster.md) hozzá az Azure AD-csoportokat, amelyek adtak meg a fürthöz való hozzáférés lehetővé teszi adott felhasználók bizonyos műveletek elvégzéséhez. Felhasználók, csoportok és az Ambari az engedélyek használatának tartományhoz csatlakoztatott HDInsight-fürt és a standard szintű HDInsight-fürt támogatott.
+[Vállalati biztonsági csomag (ESP) engedélyezve van a HDInsight-fürtök](./domain-joined/apache-domain-joined-introduction.md) adja meg a nagyvállalati szintű funkciókat, beleértve az Azure Active Directory-alapú hitelesítés. Is [új felhasználók szinkronizálása](hdinsight-sync-aad-users-to-cluster.md) hozzá az Azure AD-csoportokat, amelyek adtak meg a fürthöz való hozzáférés lehetővé teszi adott felhasználók bizonyos műveletek elvégzéséhez. Felhasználók, csoportok és az Ambari az engedélyek használatának ESP HDInsight-fürtök és a standard szintű HDInsight-fürtök esetén támogatott.
 
 Active Directory-felhasználók a fürtcsomópontok tartományi hitelesítő adataik használatával jelentkezhet be. Tartományi hitelesítő adataik egyéb engedélyezett végpontokban, mint például a Hue, Ambari Views, ODBC, JDBC, PowerShell és REST API-k fürt interakció hitelesítéséhez szolgáltatást is alkalmazhatja.
 
 > [!WARNING]
 > Ne módosítsa a jelszavát a Linux-alapú HDInsight-fürt Ambari figyelő (hdinsightwatchdog). A jelszó módosítása működésképtelenné válik a parancsfájlműveletekkel vagy a fürt skálázási műveleteket végez.
 
-Ha még nem tette meg, hajtsa végre a [ezek az utasítások](./domain-joined/apache-domain-joined-configure.md) egy tartományhoz csatlakoztatott új fürt kiépítéséhez.
+Ha még nem tette meg, hajtsa végre a [ezek az utasítások](./domain-joined/apache-domain-joined-configure.md) egy új ESP-fürt kiépítéséhez.
 
 ## <a name="access-the-ambari-management-page"></a>Az Ambari felügyeleti lap megnyitása
 
@@ -116,7 +116,7 @@ A listanézet kétféle gyors szerkesztési képességeket biztosít: felhaszná
 
     ![Szerepkörök listanézet - felhasználók](./media/hdinsight-authorize-users-to-ambari/roles-list-view-users.png)
 
-* A listanézet csoportok kategóriáját jeleníti meg, az összes csoport és az egyes csoporthoz hozzárendelt szerepkör. Ebben a példában azokat a csoportokat szinkronizálása a megadott Azure AD-csoportokat a **hozzáférési felhasználói csoport** a fürt tartománybeállítások tulajdonságát. Lásd: [egy tartományhoz csatlakoztatott HDInsight-fürt létrehozása](./domain-joined/apache-domain-joined-configure-using-azure-adds.md#create-a-domain-joined-hdinsight-cluster).
+*  A listanézet csoportok kategóriáját jeleníti meg, az összes csoport és az egyes csoporthoz hozzárendelt szerepkör. Ebben a példában azokat a csoportokat szinkronizálása a megadott Azure AD-csoportokat a **hozzáférési felhasználói csoport** a fürt tartománybeállítások tulajdonságát. Lásd: [egy HDInsight-fürt létrehozása a engedélyezve ESP](./domain-joined/apache-domain-joined-configure-using-azure-adds.md#create-a-hdinsight-cluster-with-esp).
 
     ![Szerepkörök listanézet - csoportok](./media/hdinsight-authorize-users-to-ambari/roles-list-view-groups.png)
 
@@ -136,7 +136,7 @@ Mi az Azure AD tartományi felhasználói "hiveuser2" rendelt hozzá a *fürt fe
 
 ## <a name="next-steps"></a>További lépések
 
-* [A tartományhoz csatlakoztatott HDInsight Hive-házirendek konfigurálása](./domain-joined/apache-domain-joined-run-hive.md)
-* [Tartományhoz csatlakoztatott HDInsight-fürtök kezelése](./domain-joined/apache-domain-joined-manage.md)
+* [ESP a HDInsight Hive-házirendek konfigurálása](./domain-joined/apache-domain-joined-run-hive.md)
+* [ESP HDInsight-fürtök kezelése](./domain-joined/apache-domain-joined-manage.md)
 * [A Hive-nézet használata a HDInsight Hadoop-keretrendszerrel](hadoop/apache-hadoop-use-hive-ambari-view.md)
 * [A fürt az Azure AD-felhasználók szinkronizálása](hdinsight-sync-aad-users-to-cluster.md)

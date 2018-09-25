@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/02/2018
 ms.author: ashish
-ms.openlocfilehash: d554cdf5e89898874811ea113985fac4b332fac6
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 93eb6fb0da86909dfc880db2a9bb2331abe4418a
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43109931"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46948127"
 ---
 # <a name="scale-hdinsight-clusters"></a>HDInsight-fürtök méretezése
 
@@ -28,11 +28,13 @@ Például ha van néhány kötegelt feldolgozás naponta egyszer vagy egy hónap
     Set-AzureRmHDInsightClusterSize -ClusterName <Cluster Name> -TargetInstanceCount <NewSize>
     ```
     
-* A fürt méretezése a [Azure CLI-vel](hdinsight-administer-use-command-line.md):
+* A fürt méretezése a [Azure klasszikus parancssori felület](hdinsight-administer-use-command-line.md):
 
     ```
     azure hdinsight cluster resize [options] <clusterName> <Target Instance Count>
     ```
+
+[!INCLUDE [classic-cli-warning](../../includes/requires-classic-cli.md)]
     
 * Keresztül a fürtök skálázásának a [az Azure portal](https://portal.azure.com), a HDInsight-fürt panel megnyitásához, jelölje ki **fürt méretezése** a bal oldali menüben, majd a fürthöz méretezés panelen írja be a munkavégző csomópontok számát, és Válassza a mentés.
 

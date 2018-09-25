@@ -1,48 +1,48 @@
 ---
-title: Az Azure SQL Database-alkalmazás teljesítményének javítása érdekében a kötegelés használata
-description: A témakör igazolja, hogy kötegelési adatbázis-műveletek sebessége nagy mértékben imroves és méretezhetőséget biztosít a az Azure SQL adatbázis-alkalmazások. Habár ezek a technológiák kötegelési bármely SQL Server-adatbázis is működik, a cikk célja az Azure-on.
+title: Kötegelés használata Azure SQL Database-alkalmazások teljesítményének javítása érdekében
+description: A témakör igazolja, hogy kötegelés adatbázis-műveletek sebessége nagy mértékben imroves és az Azure SQL Database az alkalmazások méretezhetősége. Bár a kötegelés technikák ugyanúgy alkalmazhatók bármely SQL Server-adatbázis, a cikk célja az Azure-ban.
 services: sql-database
 author: stevestein
 manager: craigg
 ms.service: sql-database
 ms.custom: develop apps
 ms.topic: conceptual
-ms.date: 04/01/2018
+ms.date: 09/20/2018
 ms.author: sstein
-ms.openlocfilehash: c0e1ff3cf018e185ae2dfb329e2aa56766cc247c
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 92640eeb068b8e9a95dbe1209b2c8834e5f29da8
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34649781"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47036099"
 ---
-# <a name="how-to-use-batching-to-improve-sql-database-application-performance"></a>SQL-adatbázis teljesítményének javítása érdekében a kötegelés használata
-Az Azure SQL Database-műveletek kötegelése jelentősen javítja a teljesítményét és méretezhetőségét, az alkalmazások. Előnyeinek megismerése, hogy ez a cikk első része ismertet néhány minta vizsgálati eredmények, hasonlítsa össze az SQL-adatbázis szekvenciális és kötegelt kérelmek. A cikk fennmaradó a technikák, a forgatókönyvek és a szempontokat tartalmaz, amelyek segítséget nyújtanak az Azure-alkalmazásokban sikeresen kötegelés használandó jeleníti meg.
+# <a name="how-to-use-batching-to-improve-sql-database-application-performance"></a>Kötegelés használata SQL Database-alkalmazások teljesítményének javítása érdekében
+Műveletek az Azure SQL Database kötegelés jelentősen növeli a teljesítményét és méretezhetőségét, az alkalmazások. Annak érdekében, hogy tájékozódjon, ez a cikk első részében vonatkozik néhány minta vizsgálati eredmények, amelyek egymást követő és kötegelt kérések egy SQL Database összehasonlítása. A cikk többi része a technikák, forgatókönyvek és annak érdekében, hogy az Azure-alkalmazások sikeresen kötegelés használata szempontok jeleníti meg.
 
-## <a name="why-is-batching-important-for-sql-database"></a>Miért van kötegelés fontos az SQL Database?
-A távoli szolgáltatás hívásainak kötegelés növelését a teljesítmény és méretezhetőség jól ismert stratégiáját. Egy távoli szolgáltatással, például a szerializálás, a hálózati átvitel és a deszerializálás kölcsönhatások feldolgozási költségek rögzítettek. Ezek a költségek azokat a kötegek sok külön tranzakciókat minimálisra csökkenti.
+## <a name="why-is-batching-important-for-sql-database"></a>Ezért a kötegelés fontos az SQL Database?
+Kötegelés hívások egy távoli szolgáltatásnak egy jól ismert stratégiát teljesítmény és méretezhetőség növelése. Egy távoli szolgáltatással, például a szerializálási, a hálózati átvitel és a deszerializálás kölcsönhatások feldolgozási költségek vannak rögzítve. Ezeket a díjakat az egy kötegben több különálló tranzakciókat csomagolására minimálisra csökkenthető.
 
-A dokumentum azt szeretnénk vizsgálja meg a különböző SQL-adatbázis kötegelés azokat a stratégiákat és forgatókönyvek. Bár ezek stratégiák is fontos SQL Server használó helyszíni alkalmazások esetén, több oka konzolban kötegelés SQL-adatbázis használatát:
+Ebből a cikkből szeretnénk vizsgálni különböző stratégiákat és forgatókönyvek kötegelés SQL-adatbázis. Bár ezek a stratégiák az SQL Server használó helyszíni alkalmazások számára is fontosak, több oka a kiemelés kötegelés az SQL Database használatát:
 
-* Nincs potenciálisan nagyobb hálózati késés SQL-adatbázis, különösen akkor, ha az ugyanahhoz a Microsoft Azure adatközponton kívülről SQL-adatbázis elérésére.
-* SQL-adatbázis több-bérlős jellemzői azt jelenti, hogy az adatok hozzáférési réteg felel meg az adatbázis átfogó méretezhetősége hatékonyságát. SQL-adatbázis az egyes bérlői felhasználók megakadályozása kell legaktívabbak más bérlők hátrányára adatbázis-erőforrások. SQL-adatbázis használati, amelyek átlépik ezt az előre definiált kvóták válaszul, átviteli csökkentheti vagy szabályozási kivételeket válaszolni. Hatékonyság, például a kötegelés, lehetővé teszik a munkájuk elvégzéséhez további SQL-adatbázis a működés felső korlátjának elérése előtt. 
-* Kötegelés esetében is, amelyek több adatbázist (horizontális) architektúrára való hatékony. Az adatbázis tárolóegységekhez folytatott kommunikációt hatékonyságát még mindig a teljes méretezhetőség kulcsfontosságú tényező. 
+* Nincs esetleg nagyobb késést éri el az SQL Database, különösen akkor, ha az SQL-adatbázis elérésére a Microsoft Azure-adatközpontokon kívülre.
+* Az SQL Database több-bérlős jellemzőit azt jelenti, hogy az adatok hozzáférési réteg utal. az adatbázis teljes méretezhetőségét hatékonyságát. Az SQL Database akadályozza meg, hogy az egyes bérlői felhasználók kisajátíthassa az adatbázis-erőforrások más bérlők rovására. Előre meghatározott kvóták felhasználást válaszul SQL Database csökkentheti az átviteli sebesség vagy szabályozási kivételeket elhárítását. Így a hatékonyságot, például a kötegelés, lehetővé teszi ezeket a korlátokat érhesse el az SQL Database további munkát. 
+* Kötegelés akkor is, amelyeket több adatbázis (sharding) használata esetén. Az adatbázis-egységenként-szal hatékonyságát még egy kulcsfontosságú tényező az általános méretezhetőség. 
 
-Az SQL-adatbázis használatának előnyei egyike, hogy nem kell az adatbázist üzemeltető kiszolgáló kezeléséhez. Azonban a felügyelt infrastruktúra is azt jelenti, hogy másképp gondolniuk adatbázis optimalizálás. Már nem megtekintheti az adatbázis hardver- vagy hálózati infrastruktúra javítása érdekében. A Microsoft Azure határozza meg azokat a környezetben. A fő területet, amely befolyásolhatja az SQL-adatbázis és az alkalmazás együttműködését. Kötegelés egyike ezek az optimalizálások. 
+Az SQL Database használatával járó előnyöket egyik célja, hogy nem kell az adatbázist üzemeltető kiszolgálók felügyeletére. Azonban ez a felügyelt infrastruktúra is azt jelenti, hogy másképp állításoknak adatbázis-optimalizálást. Már nem megtekintheti az adatbázis hardverének vagy a hálózati infrastruktúra javítása érdekében. A Microsoft Azure szkriptjét szabályozza. Szabályozhatja a fő területen, hogy az alkalmazás hogyan használja az SQL Database. Kötegelés az ezek az optimalizációk egyik. 
 
-A dokumentum első része SQL-adatbázis használata a .NET-alkalmazások különböző kötegelési technikák megvizsgálja. Az utolsó két szakaszok fedik le a kötegelési irányelvek és forgatókönyvek.
+A tanulmány első része a SQL Database használata .NET-alkalmazásokban különböző kötegelés technikák megvizsgálja. Az utolsó két szakasz tárgyalja a kötegelés irányelvek és forgatókönyvek.
 
-## <a name="batching-strategies"></a>Kötegelési stratégiák
-### <a name="note-about-timing-results-in-this-article"></a>Megjegyzés: Ebben a cikkben időzítési eredmény
+## <a name="batching-strategies"></a>Kötegelés stratégiák
+### <a name="note-about-timing-results-in-this-article"></a>Ebben a cikkben időzítési eredmények kapcsolatos megjegyzés:
 > [!NOTE]
-> Eredmények nem referenciaalapokhoz képest, de van kialakítva, hogy megjelenítése **relatív teljesítménye**. Időzítés legalább 10 teszt futtatása átlagosan alapulnak. Műveletek esetében a beszúrások, a program üres táblát. Ezek a tesztek mért előtti-12-es verzióra, és ezek nem feltétlenül felelnek meg, hogy Ön is szembesülhet egy 12-es verziójú adatbázis, az új átviteli [DTU szolgáltatásszintek](sql-database-service-tiers-dtu.md) vagy [vCore szolgáltatásszintek](sql-database-service-tiers-vcore.md). A relatív előnye, hogy a kötegelési technika hasonlónak kell lenniük.
+> Eredmények nem referenciaalapokhoz képest történő, de van kialakítva, hogy megjelenítése **relatív teljesítmény**. Időzítés legalább 10 tesztelések átlagosan alapulnak. Üres táblába beilleszti a műveletekre. Ezek a tesztek mért előtti-12-es, és nem feltétlenül felelnek az átviteli sebességet, amelyet Ön is szembesülhet az új V12-es adatbázisban [DTU szolgáltatásszintek](sql-database-service-tiers-dtu.md) vagy [virtuális mag szolgáltatásszintek](sql-database-service-tiers-vcore.md). A relatív előnye, hogy a kötegelés technika hasonlónak kell lenniük.
 > 
 > 
 
 ### <a name="transactions"></a>Tranzakciók
-Furcsa megvitatása tranzakciók által kötegelés áttekintése megkezdéséhez tűnik. De a tranzakciók ügyféloldali használata finom kiszolgálóoldali kötegelési hatással van, amely javítja a teljesítményt. És a tranzakciók hozzáadása is lehetséges csak néhány sornyi kódot, így gyorsan egymást követő műveletek teljesítményének javításával biztosítanak.
+Úgy tűnik, rendellenes megvizsgálja a tranzakciók által kötegelés felülvizsgálatát a kezdéshez. De a tranzakciók ügyféloldali használata hatása a változás is kiszolgálóoldali kötegelés, amely javítja a teljesítményt. És a tranzakciók is hozzáadhatók csak néhány sornyi kóddal, így gyorsan egymást követő műveletek teljesítményének javítása érdekében biztosítanak.
 
-Vegye figyelembe a következő C#-kódban insert sorozatát tartalmazó és a frissítési műveletek egyszerű táblán.
+Vegye figyelembe az alábbi C#-kódot, amely tartalmazza a Beszúrás sorozatát, és frissítési műveleteket végez egy egyszerű táblázat.
 
     List<string> dbOperations = new List<string>();
     dbOperations.Add("update MyTable set mytext = 'updated text' where id = 1");
@@ -65,7 +65,7 @@ A következő ADO.NET kód egymás után végrehajtja ezeket a műveleteket.
         }
     }
 
-A legjobb módja, ez a kód optimalizálása érdekében, hogy az adott hívások kötegelés ügyféloldali valamilyen alkalmazza. Azonban ez a kód a teljesítmény növelése érdekében használatával egyszerűen a hívások sorrendjét a tranzakcióban egyszerű módszert. Itt található, amely egy tranzakció használja ugyanazt a kódot.
+Ez a kód optimalizálása érdekében a legjobb módja, hogy valamilyen ügyféloldali kötegelés hívások. Azonban egy egyszerű módja, ez a kód a teljesítmény növeléséhez a egyszerűen alkalmazásburkoló hívások sorrendjét a tranzakcióban. Íme egy tranzakció használja ugyanazt a kódot.
 
     using (SqlConnection connection = new SqlConnection(CloudConfigurationManager.GetSetting("Sql.ConnectionString")))
     {
@@ -81,22 +81,22 @@ A legjobb módja, ez a kód optimalizálása érdekében, hogy az adott híváso
         transaction.Commit();
     }
 
-Tranzakciók mindkét ezekben a példákban ténylegesen használatban van. Az első példában minden egyes tekintendő, amely az implicit tranzakciókban. A második példában az explicit tranzakciók becsomagolja a hívások mindegyikét. / Dokumentációját a [írási előre tranzakciónapló](https://msdn.microsoft.com/library/ms186259.aspx), naplórekordokat kiürített a lemezre, ha a tranzakció véglegesítése. Így több hívást együtt egy tranzakcióban, az írás a tranzakciós napló tudja elhalasztani, amíg a tranzakció. Érvényben engedélyezi az írási műveleteket ad ki a kiszolgáló tranzakciónapló a kötegelés.
+Tranzakciók ténylegesen használnak a mindkét példa. Az első példában az egyes hívások egy implicit tranzakciók. A második példában az explicit tranzakciók burkolja az összes, a hívások. A dokumentációban száma a [írási előre tranzakciónapló](https://msdn.microsoft.com/library/ms186259.aspx), naplórekordok kiürített a lemezre, ha a tranzakció-véglegesítések. További hívások együtt egy tranzakcióban, így az a tranzakciós naplóba írás késleltetheti mindaddig, amíg a tranzakció véglegesítve. Érvényben engedélyezi az írási műveletek a kiszolgáló tranzakciónapló-kötegelésében.
 
-Az alábbi táblázat néhány alkalmi vizsgálati eredményeket jeleníti meg. A következő tesztek kerülnek végrehajtásra, és anélkül tranzakciók azonos szekvenciális beszúrása. Több szempont az első készletét tesztek futott távolról a hordozható az adatbázis a Microsoft Azure-ban. A második készlet tesztet hajt végre egy felhőalapú szolgáltatás, hogy mindkét tartózkodott belül az azonos Microsoft Azure datacenter (USA nyugati régiója) adatbázis futott. A következő táblázat az időtartam a szekvenciális Beszúrások rendelkező és anélküli tranzakciók ezredmásodpercben.
+Az alábbi táblázat néhány ad hoc vizsgálati eredményeket jeleníti meg. A tesztek kerülnek végrehajtásra azonos szekvenciális Beszúrások rendelkező és anélküli tranzakciók. Több szempontból a tesztek első készlete futtatott esetében távolról a laptopjáról a Microsoft Azure-adatbázishoz. Tesztek a második csoporton futtatott felhőszolgáltatást, illetve, hogy mindkét tartózkodott a ugyanazt a Microsoft Azure-adatközpont (USA nyugati RÉGIÓJA) adatbázis. Az alábbi táblázat az időtartam ezredmásodpercben, egymást követő Beszúrások rendelkező és anélküli tranzakciók.
 
 **Az Azure-bA helyszíni**:
 
-| Műveletek | Nincs tranzakció (ms) | Tranzakció (ms) |
+| Műveletek | Nem tranzakciós (ms) | Tranzakció (ms) |
 | --- | --- | --- |
 | 1 |130 |402 |
 | 10 |1208 |1226 |
 | 100 |12662 |10395 |
 | 1000 |128852 |102917 |
 
-**Azure-az Azure-ba (ugyanabban az adatközpontban)**:
+**Azure-ba (ugyanabban az adatközpontban)**:
 
-| Műveletek | Nincs tranzakció (ms) | Tranzakció (ms) |
+| Műveletek | Nem tranzakciós (ms) | Tranzakció (ms) |
 | --- | --- | --- |
 | 1 |21 |26 |
 | 10 |220 |56 |
@@ -104,27 +104,25 @@ Az alábbi táblázat néhány alkalmi vizsgálati eredményeket jeleníti meg. 
 | 1000 |21479 |2756 |
 
 > [!NOTE]
-> A eredményei nem referenciaalapokhoz képest. Tekintse meg a [időzítési eredményezi, hogy ez a témakör Megjegyzés](#note-about-timing-results-in-this-topic).
-> 
-> 
+> Eredmények nem referenciaalapokhoz képest történő állnak. Tekintse meg a [időzítési eredmények ebben a cikkben kapcsolatos megjegyzés](#note-about-timing-results-in-this-article).
 
-Az előző teszt eredményei alapján teljesítmény ténylegesen csökkenti alkalmazásburkoló egyetlen műveletben szerepel egy tranzakcióban. De növelésével egy tranzakción belül műveletek számát, a teljesítmény fokozása több lesz megjelölve. A teljesítménybeli különbség az akkor is jobban észlelhető, ha minden műveletnél fordulhat elő, a Microsoft Azure adatközponton belül. Az SQL-adatbázisát használja a Microsoft Azure adatközponton kívülről nagyobb késéseket overshadows tranzakciók használatával jobb a teljesítménye.
+Az előző ellenőrzés eredménye alapján a teljesítmény ténylegesen csökkenti alkalmazásburkoló egyetlen művelettel a tranzakcióban. De növelésével egy tranzakción belül műveletek számát, a teljesítmény fokozása több lesz megjelölve. A teljesítménybeli különbség akkor is jobban észlelhető, ha minden művelet fordul elő a Microsoft Azure-adatközpontban. Az SQL-adatbázisát használja a Microsoft Azure adatközponton kívülről a késések overshadows tranzakciók használatával, a teljesítmény miatt.
 
-Bár a tranzakciók használata növelheti a teljesítményt, továbbra is [tekintse át az ajánlott eljárások az tranzakciók és kapcsolatok](https://msdn.microsoft.com/library/ms187484.aspx). Tartsa a lehető legrövidebb tranzakció, és a munka végeztével, zárja be az adatbázis-kapcsolatot. Az utasítás használatával az előző példában szereplő biztosítja, hogy a kapcsolat megszakad, a következő kódblokk befejezéséről.
+A tranzakciók használata növelheti a teljesítményt, bár továbbra is [tekintse át az ajánlott eljárások tranzakciók és a kapcsolatok](https://msdn.microsoft.com/library/ms187484.aspx). Tartsa a lehető legrövidebb tranzakciót, és a munka végeztével, zárja be az adatbázis-kapcsolat. Az utasítás használatával az előző példában biztosítja, hogy a kapcsolat megszakad, a következő kódblokk befejezéséről.
 
-A korábbi példa bemutatja, hogy adhat hozzá egy helyi tranzakció ADO.NET kódok esetén is tenné két sort. Tranzakciók ajánlatot gyorsan kódot, amely lehetővé teszi a szekvenciális beszúrási, frissítési és törlési műveletek teljesítményének növelésében. Azonban a leggyorsabb teljesítmény érdekében fontolja meg a kódot használja ki az ügyféloldali kötegelés, például a táblázat értékű paramétereket tovább.
+Az előző példa bemutatja, hogy adhat hozzá egy helyi tranzakció két sort az ADO.NET kód. Tranzakciók ajánlat gyorsan kódot, amely lehetővé teszi a szekvenciális beszúrási, frissítési és törlési műveletek teljesítményének javítása érdekében. Azonban a leggyorsabb teljesítmény érdekében érdemes igénybe veszi az ügyféloldali kötegelés, ilyenek például a tábla értékű paraméterek tovább a kód megváltoztatása.
 
-Az ADO.NET tranzakciókkal kapcsolatos további információkért lásd: [ADO.NET helyi tranzakciók](https://docs.microsoft.com/dotnet/framework/data/adonet/local-transactions).
+ADO.NET-tranzakciók kapcsolatos további információkért lásd: [helyi ADO.NET-tranzakciók](https://docs.microsoft.com/dotnet/framework/data/adonet/local-transactions).
 
-### <a name="table-valued-parameters"></a>tábla értékű paraméter
-Tábla értékű paraméter paraméterekkel a Transact-SQL-utasítások, tárolt eljárások és függvények, felhasználó által definiált táblatípusokban támogatja. Ez az ügyféloldali kötegelési módszer lehetővé teszi, hogy több sornyi adatot belül a tábla értékű paraméter küldhet. Tábla értékű paraméter használatához először meg kell határoznia egy táblatípus. A következő Transact-SQL-utasítást hoz létre nevű tábla típus **MyTableType**.
+### <a name="table-valued-parameters"></a>tábla értékű paraméterek
+Tábla értékű paraméter támogatja a felhasználó által definiált táblatípusokban a Transact-SQL-utasítások, a tárolt eljárások és függvények paraméterekként. Ez az ügyféloldali kötegelés módszer lehetővé teszi, hogy a tábla értékű paraméter belül több adatsor küldhet. Tábla értékű paraméterek használatához először meg kell határoznia egy táblatípus. A következő Transact-SQL-utasítást hoz létre, egy táblatípus, nevű **MyTableType**.
 
     CREATE TYPE MyTableType AS TABLE 
     ( mytext TEXT,
       num INT );
 
 
-A kódban, hozzon létre egy **DataTable** pontos azonos nevét és a táblatípus típusú. Ez átadni **DataTable** egy paraméterben, szöveges lekérdezés vagy tárolt eljárás hívása. A következő példa bemutatja, ezzel a módszerrel:
+A kódban, hozzon létre egy **DataTable** pontosan ugyanazokat a neveket és a táblatípus típusú. Továbbítja **DataTable** szöveges lekérdezés vagy tárolt eljárás paraméter hívja. A következő példa ezt a módszert mutatja:
 
     using (SqlConnection connection = new SqlConnection(CloudConfigurationManager.GetSetting("Sql.ConnectionString")))
     {
@@ -155,9 +153,9 @@ A kódban, hozzon létre egy **DataTable** pontos azonos nevét és a táblatíp
         cmd.ExecuteNonQuery();
     }
 
-Az előző példában a **SqlCommand** objektum egy tábla értékű paraméter a sor beszúrása **@TestTvp**. A korábban létrehozott **DataTable** objektum ezt a paramétert hozzá van rendelve a **SqlCommand.Parameters.Add** metódust. A teljesítmény egy hívásban Beszúrások kötegelés jelentősen növeli a szekvenciális Beszúrások keresztül.
+Az előző példában a **SqlCommand** objektum egy tábla értékű paraméter a sor beszúrása **@TestTvp**. A korábban létrehozott **DataTable** objektumot hozzá van rendelve ezt a paramétert a **SqlCommand.Parameters.Add** metódust. A teljesítmény hívásonként Beszúrások kötegelés jelentősen növeli a szekvenciális Beszúrások keresztül.
 
-Az előző példa folytatásaként javításához használja a tárolt eljárás egy szöveges parancs helyett. A következő Transact-SQL-parancs létrehoz egy tárolt eljárás, amely a **SimpleTestTableType** tábla értékű paraméter.
+Az előző példában további javításához használja a tárolt eljárás egy szöveges alapú parancs helyett. A következő Transact-SQL parancs létrehoz egy tárolt eljárást, amely a **SimpleTestTableType** tábla értékű paraméter.
 
     CREATE PROCEDURE [dbo].[sp_InsertRows] 
     @TestTvp as MyTableType READONLY
@@ -168,16 +166,16 @@ Az előző példa folytatásaként javításához használja a tárolt eljárás
     END
     GO
 
-Módosítsa a **SqlCommand** objektum az előző példakódban csatlakoztatása a következő nyilatkozatot.
+Módosítsa a **SqlCommand** objektumot az előző példakódban a következő nyilatkozatot.
 
     SqlCommand cmd = new SqlCommand("sp_InsertRows", connection);
     cmd.CommandType = CommandType.StoredProcedure;
 
-A legtöbb esetben a tábla értékű paraméter rendelkezik egyenértékű vagy jobb teljesítményt biztosít, mint más kötegelési módszerek. Tábla értékű paraméterek gyakran érdemes, mivel rugalmasabb, mint más beállítások. Egyéb módszerek, például SQL tömeges másolás, például csak új sorok beszúrását lehetővé teszik. De tábla értékű paraméter segítségével programot a tárolt eljárás annak meghatározására, hogy mely sorai frissítések, és amelyek beszúrása. A táblatípus is módosíthatja a tartalmaz egy "Művelet" oszlopot, amely jelzi, hogy a megadott sor kell beszúrni, frissíteni, vagy törölve.
+A legtöbb esetben tábla értékű paraméterek rendelkezik egyenértékű vagy annál nagyobb teljesítmény, mint a többi kötegelés technikákat. Tábla értékű paraméterek gyakran előnyös, mivel olyan rugalmasabb, mint a többi példány. Egyéb technikák, például az SQL tömeges másolási, például csak az új sorok beszúrását teszi lehetővé. De a tábla értékű paraméter használható logikai a tárolt eljárás annak meghatározására, hogy mely sorokat frissítések és amelyek szúr be. A tábla típusa is módosíthatja, amely azt jelzi, hogy egy megadott sorának kell lennie beszúrt, frissített vagy törölt egy "Művelet" oszlop tartalmazhat.
 
-A következő táblázat a tábla értékű paraméterek használatával vizsgálati eredményeket ad hoc ezredmásodpercben.
+Az alábbi táblázat mutatja a tábla értékű paraméterek használatával ad-hoc terhelésiteszt-eredményei ezredmásodpercben.
 
-| Műveletek | A helyszíni Azure-ba (ms) | Az Azure ugyanabban az adatközpontban (ms) |
+| Műveletek | A helyszíni az Azure-ba (ms) | Az Azure ugyanabban az adatközpontban (ms) |
 | --- | --- | --- |
 | 1 |124 |32 |
 | 10 |131 |25 |
@@ -186,16 +184,16 @@ A következő táblázat a tábla értékű paraméterek használatával vizsgá
 | 10000 |23830 |3586 |
 
 > [!NOTE]
-> A eredményei nem referenciaalapokhoz képest. Tekintse meg a [időzítési eredményezi, hogy ez a témakör Megjegyzés](#note-about-timing-results-in-this-topic).
+> Eredmények nem referenciaalapokhoz képest történő állnak. Tekintse meg a [időzítési eredmények ebben a cikkben kapcsolatos megjegyzés](#note-about-timing-results-in-this-article).
 > 
 > 
 
-A kötegelés jobb a teljesítménye azonnal kétségtelenül. Az előző szekvenciális teszt 1000 műveletek 129 másodperc az adatközponton kívülről és az adatközponton belül a 21 másodpercet vett igénybe. De tábla értékű paraméter 1000 műveletek másodpercre csak 2.6-os és az adatközponton belül idõtartamtól az adatközponton kívülről.
+A teljesítmény nyereség a kötegelés azonnal látható. Az előző szekvenciális teszt 1000 műveletek tartott 129 másodperc az adatközponton kívülről és az adatközponton belül a 21-én másodperc. De tábla értékű paraméterek, 1000 operations csak az adatközponton kívülről és az adatközponton belül 0,4 másodperc 2.6-os másodpercig is eltarthat.
 
-További információ a tábla értékű paraméter: [Table-Valued paraméterek](https://msdn.microsoft.com/library/bb510489.aspx).
+A tábla értékű paraméterek további információkért lásd: [Table-Valued paraméterek](https://msdn.microsoft.com/library/bb510489.aspx).
 
-### <a name="sql-bulk-copy"></a>SQL tömeges másolási
-SQL tömeges másolási egy másik módja a nagy mennyiségű adat elhelyezni a céladatbázis. .NET-alkalmazások használhatják a **SqlBulkCopy** osztály végrehajtására tömeges beszúrási műveletek. **SqlBulkCopy** a parancssori eszköz, a függvény hasonló **Bcp.exe**, vagy a Transact-SQL-utasítás **TÖMEGES Beszúrás**. Az alábbi példakód bemutatja, hogyan tömegesen másolni a sorokat a forráshelyen **DataTable**, táblázatra, az SQL Server, a céltábla táblanév.
+### <a name="sql-bulk-copy"></a>A tömeges másolási SQL
+A tömeges másolási SQL egy másik módja a nagy mennyiségű adat beillesztése a céladatbázis. .NET-alkalmazások használhatják a **kapcsolatot az SqlBulkCopy** osztály végrehajtásához tömeges beszúrási műveletek. **Kapcsolatot az SqlBulkCopy** a parancssori eszköz, a függvény hasonló **Bcp.exe**, vagy a Transact-SQL utasítás **TÖMEGES Beszúrás**. Az alábbi példakód bemutatja, hogyan tömegesen másolni a sorokat a forrás **DataTable**, tábla-, az SQL Server, a céltábla MyTable.
 
     using (SqlConnection connection = new SqlConnection(CloudConfigurationManager.GetSetting("Sql.ConnectionString")))
     {
@@ -210,11 +208,11 @@ SQL tömeges másolási egy másik módja a nagy mennyiségű adat elhelyezni a 
         }
     }
 
-Néhány esetben, ha tömeges másolás előnyben részesített tábla értékű paraméter felett van. Tekintse meg a tábla értékű paramétert, és TÖMEGES beszúrási műveletek a cikkben összehasonlító táblázatot [Table-Valued paraméterek](https://msdn.microsoft.com/library/bb510489.aspx).
+Vannak bizonyos esetekben, amikor a tömeges másolási előnyben részesített tábla értékű paraméterek keresztül. Lásd a táblázat értékű paraméterek a cikk a TÖMEGES Beszúrás műveletek és-összehasonlító táblázatot [Table-Valued paraméterek](https://msdn.microsoft.com/library/bb510489.aspx).
 
-A következő alkalmi vizsgálati eredmények megjelenítése a kötegelés teljesítményének **SqlBulkCopy** ezredmásodpercben.
+A következő ad hoc vizsgálati eredmények megjelenítése a kötegelés teljesítményét **kapcsolatot az SqlBulkCopy** ezredmásodpercben.
 
-| Műveletek | A helyszíni Azure-ba (ms) | Az Azure ugyanabban az adatközpontban (ms) |
+| Műveletek | A helyszíni az Azure-ba (ms) | Az Azure ugyanabban az adatközpontban (ms) |
 | --- | --- | --- |
 | 1 |433 |57 |
 | 10 |441 |32 |
@@ -223,16 +221,16 @@ A következő alkalmi vizsgálati eredmények megjelenítése a kötegelés telj
 | 10000 |21605 |2737 |
 
 > [!NOTE]
-> A eredményei nem referenciaalapokhoz képest. Tekintse meg a [időzítési eredményezi, hogy ez a témakör Megjegyzés](#note-about-timing-results-in-this-topic).
+> Eredmények nem referenciaalapokhoz képest történő állnak. Tekintse meg a [időzítési eredmények ebben a cikkben kapcsolatos megjegyzés](#note-about-timing-results-in-this-article).
 > 
 > 
 
-A Köteg mérete kisebb, használja a tábla értékű paraméterek outperformed a **SqlBulkCopy** osztály. Azonban **SqlBulkCopy** gyorsabb, mint a tábla értékű paraméterek a 12-31 % elvégzi a tesztek 1000 és 10 000 sorok. Tábla értékű paraméterek, például **SqlBulkCopy** van a kötegelt Beszúrás jó választás, különösen akkor, ha nem kötegelni műveletek teljesítményének képest.
+A batch kisebb méretű, tábla értékű paraméterek használatát outperformed a **kapcsolatot az SqlBulkCopy** osztály. Azonban **kapcsolatot az SqlBulkCopy** hajtottak végre 12-31 %-kal gyorsabb, mint a tábla értékű paraméterek a tesztek 1000 és 10 000 sort. Tábla értékű paraméterek, például **kapcsolatot az SqlBulkCopy** beállítás hasznos a kötegelt Beszúrás, különösen akkor, ha nem kötegelt műveletek teljesítményének képest.
 
 A tömeges másolás az ADO.NET további információkért lásd: [az SQL Server tömeges másolási műveletek](https://msdn.microsoft.com/library/7ek5da1a.aspx).
 
-### <a name="multiple-row-parameterized-insert-statements"></a>Több soron kívüli Beszúrás paraméteres utasításokat
-Egy kis kötegek esetben nagy paraméteres utasítást, amely több sor beszúrása összeállításához. Az alábbi példakód mutatja be, ezzel a módszerrel.
+### <a name="multiple-row-parameterized-insert-statements"></a>Több-sor BESZÚRÁSA paraméteres utasításokat
+Kis kötegei esetében egy alternatív, hogy hozhat létre egy nagy paraméteres INSERT utasítás, amely több sort szúr be. Az alábbi példakód bemutatja ezt a módszert.
 
     using (SqlConnection connection = new SqlConnection(CloudConfigurationManager.GetSetting("Sql.ConnectionString")))
     {
@@ -253,9 +251,9 @@ Egy kis kötegek esetben nagy paraméteres utasítást, amely több sor beszúr�
     }
 
 
-Ez a példa arra szolgál, hogy az alapvető fogalma megjelenítése. A modell forgatókönyv volna ismétlése a lekérdezési karakterláncot és a parancs paraméterei egyidejűleg összeállításához szükséges entitásokat. Azonban legfeljebb összesen 2100 lekérdezési paraméterek, ez korlátozza az ilyen módon feldolgozható sorok száma.
+Ebben a példában az adott megjelenítése alapvető fogalma. Ha valószerűbb forgatókönyvet szeretne egyszerre létrehozni a lekérdezési karakterláncot, és a parancs paraméterei a szükséges entitások lenne hurkot. Ön 2100 lekérdezési paramétereket, összesen legfeljebb ez korlátozza az ilyen módon feldolgozható sorok száma.
 
-A következő alkalmi teszteredmények utasítást ilyen típusú teljesítményének megjelenítése ezredmásodpercben.
+A következő ad hoc vizsgálati eredmények megjelenítése a teljesítmény, az ilyen típusú insert utasítás ezredmásodpercben.
 
 | Műveletek | Tábla értékű paraméter (ms) | Utasításból INSERT (ms) |
 | --- | --- | --- |
@@ -264,41 +262,41 @@ A következő alkalmi teszteredmények utasítást ilyen típusú teljesítmény
 | 100 |33 |51 |
 
 > [!NOTE]
-> A eredményei nem referenciaalapokhoz képest. Tekintse meg a [időzítési eredményezi, hogy ez a témakör Megjegyzés](#note-about-timing-results-in-this-topic).
+> Eredmények nem referenciaalapokhoz képest történő állnak. Tekintse meg a [időzítési eredmények ebben a cikkben kapcsolatos megjegyzés](#note-about-timing-results-in-this-article).
 > 
 > 
 
-Ezt a módszert használja, amelyek 100-nál kevesebb sort kötegek némileg gyorsabb lehet. Bár a javítása kis, ez a módszer akkor egy másik lehetőség, amely előfordulhat, hogy kiválóan működjenek az adott alkalmazás helyzetnek.
+Ez a megközelítés, amelyek 100-nál kevesebb sort kötegek némileg gyorsabb lehet. Bár a javítása kis méretű, ez a módszer egy másik lehetőség, amely előfordulhat, hogy kiválóan működjenek az adott forgatókönyvnek.
 
 ### <a name="dataadapter"></a>DataAdapter
-A **DataAdapter** osztály lehetővé teszi, hogy módosítsa egy **DataSet** objektumot, és küldje el az INSERT, UPDATE és DELETE műveletek változik. Ha használja a **DataAdapter** ezen a módon kikapcsolja, fontos megjegyezni, hogy külön hívások legyenek-e készülve az egyes különálló műveletet. A teljesítmény javítása érdekében használja a **UpdateBatchSize** tulajdonságot, amely egyszerre kell lehet kötegelni műveletek száma. További információkért lásd: [végrehajtása kötegelt műveletek használatával DataAdapters](https://msdn.microsoft.com/library/aadf8fk2.aspx).
+A **DataAdapter** osztály lehetővé teszi, hogy módosítsa egy **adatkészlet** objektumra, és ezután küldje el a módosításokat, mint a beszúrási, frissítési és törlési műveleteket. Ha használja a **DataAdapter** ezen a módon kikapcsolja, a fontos megjegyezni, hogy külön hívások végrehajtott egyes különböző műveletek. A teljesítmény javítása érdekében használja a **UpdateBatchSize** tulajdonságot, amely egyszerre kell kötegelni műveletek száma. További információkért lásd: [végrehajtása kötegelt műveletek használatával DataAdapters](https://msdn.microsoft.com/library/aadf8fk2.aspx).
 
 ### <a name="entity-framework"></a>Entitás-keretrendszer
-Entitás-keretrendszer jelenleg nem támogatja kötegelés. A közösségi különböző fejlesztők próbált meg lehetséges megoldások, például a felülbírálás bemutatása a **a SaveChanges metódus** metódust. De a megoldások általában összetett és testreszabott, az alkalmazás és az adatmodell. Az Entity Framework codeplex-projekt jelenleg is rendelkezik az ismertető a szolgáltatás kérésre. Az ismertető megtekintése: [tervezési értekezlet megjegyzések - 2012 augusztus 2](http://entityframework.codeplex.com/wikipage?title=Design%20Meeting%20Notes%20-%20August%202%2c%202012).
+Entity Framework jelenleg nem támogatja kötegelés. Különböző, a közösségi fejlesztők próbált megkerülő megoldások, például felülbírálás bemutatásához a **létrehozva** metódust. De a megoldások jellemzően összetett és testre szabható, az alkalmazás és az adatmodellben. Az Entity Framework codeplex-projekt jelenleg rendelkezik egy hozzászólás oldalt a szolgáltatással kapcsolatos kéréseit. A hozzászólás megtekintése: [tervezési értekezleti feljegyzések - 2012. augusztus 2](http://entityframework.codeplex.com/wikipage?title=Design%20Meeting%20Notes%20-%20August%202%2c%202012).
 
 ### <a name="xml"></a>XML
-A teljesség kedvéért azt látja, hogy fontos, mint egy kötegelési stratégia XML kapcsolatban. Az XML-kód használatát azonban más módszerekkel nem előnyöket és számos hátránya rendelkezik. A megoldás, tábla értékű paraméter hasonló, de egy XML-fájl vagy karakterlánc objektumnak átadott helyett a felhasználó által definiált tábla tárolt eljárást. A tárolt eljárás elemzi a parancsok a tárolt eljárást.
+A teljesség kedvéért gondoljuk, hogy fontos kötegelés stratégiánk XML beszélni. Az XML használatának viszont nincs keresztül más módszerekkel és több hátrányait rendelkezik. A megközelítés tábla értékű paraméterek hasonló, de egy XML-fájl vagy karakterlánc átadott egy felhasználó által definiált táblázat helyett egy tárolt eljárást. A tárolt eljárás elemzi a parancsok a tárolt eljárásban.
 
-Ezt a megközelítést több hátrányai van:
+Van ennek a megoldásnak számos hátrányait:
 
-* Az XML működő nehézkes lehet, és hibalehetőségeket rejt magában hiba.
-* Az adatbázis az XML-elemzés processzorigényes is lehet.
-* A legtöbb esetben ez a módszer lassabb, mint a tábla értékű paraméter.
+* Az XML működő nehézkes lehet, és hibalehetőségeket rejt magában.
+* Az adatbázis az XML-elemzés, CPU-igényes lehet.
+* A legtöbb esetben ez a módszer lassabb, mint a tábla értékű paraméterek.
 
-Ezen okok miatt a XML kötegelt lekérdezések használata nem ajánlott.
+Ebből kifolyólag a XML kötegelt lekérdezések használata nem ajánlott.
 
-## <a name="batching-considerations"></a>Kötegelési kapcsolatos szempontok
-Az alábbi szakaszokban további útmutatás nyújtása a kötegelés SQL-adatbázis alkalmazások használatát.
+## <a name="batching-considerations"></a>Kötegelés szempontok
+A következő szakaszok további útmutatást az SQL Database szolgáltatást használó alkalmazások kötegelés használatát.
 
-### <a name="tradeoffs"></a>Mellékhatásokkal
-Attól függően, hogy az architektúrák kötegelés magába foglaló a teljesítményt és rugalmasságot közötti kompromisszumot. Vegyük példaként a forgatókönyvet, ahol a szerepkör váratlanul leáll. Ha elveszíti egy adatsornak, szempontjából kisebb, mint egy nagy sorköteg el nem küldött elvesztése hatását. Nagyobb veszélynek van Ha sorok elegendő pufferrel, mielőtt elküldi őket az adatbázishoz megadott időkeretnél.
+### <a name="tradeoffs"></a>Kompromisszumot kínál a
+Attól függően, az architektúra kötegelés is magában foglalhat egy teljesítmény és rugalmasság közötti egyensúlyt. Vegyük példaként a forgatókönyvet, ahol a szerepkör váratlanul leáll. Ha elveszíti egy sornyi adatot, a hatás kisebb, mint egy nagy méretű batch el nem küldött sorok elvesztése hatása. Nagyobb veszélynek van, amikor az adatbázist egy adott időszak küldés előtt a sorok puffer.
 
-Miatt ez kompromisszumot kiértékelheti, hogy Ön kötegelt működés. A Batch-agresszívabb (nagyobb kötegek és hosszabb idő windows) kevésbé fontos adatokkal.
+Miatt a kompromisszummal jár értékelje ki operations típusát, akkor a batch. Batch-agresszívabb (nagyobb kötegek és hosszabb idő-windows) kevésbé fontos adatokkal.
 
 ### <a name="batch-size"></a>Köteg mérete
-A tesztelés során történt általában nagy kötegek ossza kisebb csoportjai való nem szolgál előnyökkel. Gyakran ez felosztása, mint egy egyetlen nagy kötegelt lassabban eredményezett. Vegyük példaként egy olyan forgatókönyvet, ahol szeretné 1000 sor beszúrása. Az alábbi táblázatban látható, mennyi ideig tart a tábla értékű paraméter használatával 1000 sor, amikor kisebb kötegekben osztva.
+A tesztek a van nem általában nincs előnye az, hogy használhatatlanná tévő nagy kötegeket szeletekre. Sőt gyakran ez felosztása lassabban, mint egy egyetlen nagy kötegelt eredményezett. Például vegyünk egy forgatókönyvet, ahol szeretné 1000 sor beszúrásához. Az alábbi táblázat bemutatja, hogy mennyi ideig tart amikor kisebb kötegekben osztható 1000 sor beszúrása a tábla értékű paraméter segítségével.
 
-| Köteg mérete | Az ismétlés | Tábla értékű paraméter (ms) |
+| Köteg mérete | Az ismétlések | Tábla értékű paraméter (ms) |
 | --- | --- | --- |
 | 1000 |1 |347 |
 | 500 |2 |355 |
@@ -306,20 +304,20 @@ A tesztelés során történt általában nagy kötegek ossza kisebb csoportjai 
 | 50 |20 |630 |
 
 > [!NOTE]
-> A eredményei nem referenciaalapokhoz képest. Tekintse meg a [időzítési eredményezi, hogy ez a témakör Megjegyzés](#note-about-timing-results-in-this-topic).
+> Eredmények nem referenciaalapokhoz képest történő állnak. Tekintse meg a [időzítési eredmények ebben a cikkben kapcsolatos megjegyzés](#note-about-timing-results-in-this-article).
 > 
 > 
 
-Láthatja, hogy-e a legjobb teljesítményt 1000 sor elküldeni őket egyszerre. Más tesztekben (itt nem látható) egy 10000 sor kötegelt felosztása két kötegek 5000 jobb a teljesítménye kis történt. Azonban ezekben a tesztekben a következő tábla sémáját viszonylag egyszerű, végre kell hajtania az adatokat és a Köteg mérete ezen eredmények ellenőrzése tesztek.
+Láthatja, hogy-e a legjobb teljesítmény elérése érdekében 1000 sor elküldeni őket egyszerre. Más teszteket (itt nem látható), a kis jobb a teljesítménye 10000 sor kötegelt felosztása két kötegek 5000-es történt. Azonban ezekben a tesztekben a következő tábla sémáját viszonylag egyszerű, így végre kell hajtania az adott adatok és a köteg méretek ezen eredmények ellenőrzése a teszteket.
 
-Egy másik szempont az, hogy, hogy a teljes kötegelt túl nagyra nő, ha SQL-adatbázis előfordulhat, hogy sávszélesség-szabályozási és elutasítja a kötegelt véglegesítéséhez. A legjobb eredmény elérése érdekében tesztelje az adott forgatókönyv annak meghatározásához, hogy van-e az épp ezért tökéletes választás a köteg méretének. Ellenőrizze a Köteg mérete konfigurálható teljesítmény vagy hibák alapján gyors módosításának engedélyezése a futási időben.
+Egy másik szempont az, hogy, hogy az összes köteg túl nagy lesz, ha az SQL Database előfordulhat, hogy sávszélesség-szabályozási és elutasítja a batch véglegesítéséhez. A legjobb eredmények meghatározni, hogy van-e egy ideális köteg mérete az adott forgatókönyv teszteléséhez. Győződjön meg arról, a kötegméret konfigurálható teljesítmény vagy a hibák gyors beállításainak engedélyezése futásidőben.
 
-Végezetül egyenleg a Köteg mérete a kötegelés kapcsolódó kockázatokat. Ha átmeneti hiba merül fel, vagy a szerepkör nem sikerül, fontolja meg, majd próbálja megismételni a műveletet, vagy az adatvesztés a kötegben következményeit.
+Végül egyenleg a Köteg mérete a kötegelés kockázatokat. Ha átmeneti hibák, vagy a szerepkör nem sikerül, fontolja meg a következmények megismételni a műveletet, illetve a batch szolgáltatásban az adatok elvesztése.
 
 ### <a name="parallel-processing"></a>Párhuzamos feldolgozás
-Mi történik, ha a köteg méretének csökkentését megközelítés tartott, de több szál hajthatók végre a munkahelyi? Ebben az esetben a tesztek bemutatta, hogy több kisebb többszálas kötegek általában végre a nagyobb kötegek rosszabb. A következő teszt megkísérli 1000 sor beszúrása egy vagy több párhuzamos kötegekben. Ez a vizsgálat bemutatja, hogyan több egyidejű kötegek ténylegesen csökkent teljesítményt.
+Mi történik, ha tartott a megközelítés a köteg méretének csökkentését, de a munka végrehajtásához több szálon használt? Újra a tesztek kimutatta, hogy több kisebb többszálú kötegek tárgyalja rosszabb, mint a nagyobb kötegek. A következő vizsgálat próbál 1000 sor beszúrása egy vagy több párhuzamos kötegekben. Ez a teszt bemutatja, hogyan több egyidejű kötegek ténylegesen csökkent teljesítményt.
 
-| A köteg méretének [ismétlési] | Két szállal (ms) | Négy szálak (ms) | Hat szálak (ms) |
+| [Az ismétlések] kötegmérete | Két szállal (ms) | Négy szál (ms) | Hat szálak (ms) |
 | --- | --- | --- | --- |
 | 1000 [1] |277 |315 |266 |
 | 500 [2] |548 |278 |256 |
@@ -327,39 +325,39 @@ Mi történik, ha a köteg méretének csökkentését megközelítés tartott, 
 | 100 [10] |488 |439 |391 |
 
 > [!NOTE]
-> A eredményei nem referenciaalapokhoz képest. Tekintse meg a [időzítési eredményezi, hogy ez a témakör Megjegyzés](#note-about-timing-results-in-this-topic).
+> Eredmények nem referenciaalapokhoz képest történő állnak. Tekintse meg a [időzítési eredmények ebben a cikkben kapcsolatos megjegyzés](#note-about-timing-results-in-this-article).
 > 
 > 
 
-Van több lehetséges oka a akár teljesítménycsökkenés párhuzamosság miatt:
+A párhuzamosság miatt a teljesítmény romlása több lehetséges oka is van:
 
-* Nincsenek egy helyett több egyidejű hálózati hívást.
-* Egyetlen tábla több műveleteket versengés és blokkolja a eredményezhet.
-* Nincsenek társított terhek többszálas.
-* Több kapcsolat megnyitásának járó költségek ez fontosabb, mint az az előnye, hogy a párhuzamos feldolgozást.
+* Nincsenek több egyidejű hálózati hívások helyett.
+* Egyetlen tábla több műveleteket a versengés és blokkolja a eredményezhet.
+* Nincsenek társított terhek többszálas folyamatokhoz.
+* Több kapcsolat megnyitása járó költségek megvalósításának párhuzamos feldolgozási előnyeit.
 
-Különböző táblákhoz vagy adatbázisok célozhat meg, akkor megállapíthatja, hogy ezt a stratégiát, hogy néhány teljesítmény. Adatbázis horizontális vagy összevonási lenne a forgatókönyv ezt a módszert használja. Horizontális több adatbázist használ, és továbbítja a különböző adatokat az egyes adatbázisok. Ha egy kis köteg egy másik adatbázishoz, hatékonyabb lehet majd a műveletet hajt végre párhuzamosan. Jobb a teljesítménye azonban nem elég jelentős döntést alapjául használandó adatbázis horizontális használja a megoldásban.
+Ha különböző tábla vagy adatbázisok céljaként, megállapíthatja, hogy bizonyos teljesítményt, ezzel a stratégiával szerezhet. Adatbázis horizontális skálázást vagy az összevonási lenne egy forgatókönyv esetében ez a megközelítés. A horizontális skálázás több adatbázist használ, és továbbítja a különböző adatokat minden egyes adatbázishoz. Ha egy másik adatbázishoz egyes kisebb kötegekben, hatékonyabb lehet majd hajt végre a műveleteket párhuzamosan. Teljesítmény viszont nem elég jelentős ahhoz a döntés alapjául használandó adatbázis horizontális skálázási a megoldásban használható.
 
-Néhány terveibe kisebb kötegekben párhuzamos végrehajtása eredményezhet továbbfejlesztett kapacitásának terhelés alatt a rendszer. Ebben az esetben akkor is, ha gyorsabb, nagyobb a kötegek feldolgozni, párhuzamosan több kötegenként lehet hatékonyabb.
+Az egyes műveletekhez kisebb kötegekben párhuzamos végrehajtása kérések nagyobb átviteli sebességet eredményez a terhelés alatt a rendszer. Ebben az esetben akkor is, ha egyetlen nagyobb kötegelt feldolgozásához gyorsabb, párhuzamosan több köteg feldolgozása valószínűleg hatékonyabb.
 
-Ha párhuzamos végrehajtás, érdemes a munkaszálak maximális számának vezérlése. Kevesebb gyorsabb végrehajtási idő, és kevesebb a versengés eredményezheti. Is fontolja meg az egyéb terheléseket, amelyeket a ez helyez el a céladatbázist, kapcsolatok és a tranzakciók egyaránt.
+Ha párhuzamos futtatáshoz, érdemes szabályozása a munkaszálak maximális számát. Kevesebb kevesebb a versengés és a egy gyorsabb végrehajtási időt eredményezhet. Emellett érdemes lehet a terheléseket, amelyeket ez helyez el a céladatbázist, kapcsolatok és a tranzakciók is.
 
-### <a name="related-performance-factors"></a>A teljesítmény kapcsolódó tényezők
-Adatbázis teljesítménye jellemző útmutatást is kötegelés hatással van. Például be nagy elsődleges kulcs, vagy sok fürtözetlen indexeire rendelkező táblák csökken a teljesítmény.
+### <a name="related-performance-factors"></a>Kapcsolódó teljesítmény tényezők
+Adatbázis teljesítményének jellemző útmutatást is érinti a kötegelés. Például be nagy elsődleges kulcs, vagy számos nem fürtözött indexekkel rendelkező táblák esetén csökken a teljesítmény.
 
-Ha a tábla értékű paraméter tárolt eljárás használatához a paranccsal **SET NOCOUNT ON** az eljárás elején. A jelen nyilatkozat mellőzi a visszatérési az eljárás az érintett sorok száma. Azonban a tesztelés során használatát **SET NOCOUNT ON** kellett nincs hatása, vagy teljesítménye csökkent. A vizsgálati tárolt eljárás egyetlen egyszerű volt **BESZÚRÁSA** parancsot a tábla értékű paraméter. Akkor lehet, hogy összetettebb tárolt eljárások a jelen nyilatkozat előnyös. Nem érdemes feltételezni, hogy hozzáadása, de **SET NOCOUNT ON** a tárolt eljárás automatikusan javítja a teljesítményt. Szeretné megtudni, a hatás, tesztelje a tárolt eljárás használatával és anélkül a **SET NOCOUNT ON** utasítást.
+Ha a tábla értékű paraméterek egy tárolt eljárást használja, a paranccsal **SET NOCOUNT ON** az eljárás elején. A jelen nyilatkozat elrejti az eljárásban az érintett sorok száma, a visszatérési. Azonban a tesztek használatát a **SET NOCOUNT ON** csökkent teljesítményt vagy nem érintette. A vizsgálati tárolt eljárás egyetlen egyszerű volt **BESZÚRÁSA** parancsot, és a tábla értékű paraméter. Akkor lehet, hogy a jelen nyilatkozatban összetettebb tárolt eljárások előnyeit. De nem érdemes feltételezni, hogy hozzáadása **SET NOCOUNT ON** a tárolt eljárás automatikusan javítja a teljesítményt. Hatásának megértéséhez, a tárolt eljárást, és anélkül tesztelje a **SET NOCOUNT ON** utasítást.
 
-## <a name="batching-scenarios"></a>Kötegelése forgatókönyvek
-Az alábbi szakaszok ismertetik a tábla értékű paraméter három alkalmazás helyzetekben használhatja. Az első forgatókönyv bemutatja, hogyan pufferelés és kötegelés hogyan tudnak együttműködni. A második forgatókönyv javítja a teljesítményt, egyetlen tárolt eljárás hívása a fő-részletek műveletet hajt végre. A végső forgatókönyv bemutatja, hogyan tábla értékű paraméterek használatához a "UPSERT" művelet.
+## <a name="batching-scenarios"></a>Kötegelés forgatókönyvek
+A következő szakaszok ismertetik a tábla értékű paraméterek használata az három alkalmazási esetekben. Az első forgatókönyv bemutatja, hogyan pufferelés és kötegelés hogyan tudnak együttműködni. A második forgatókönyvben javítja a teljesítményt, egy tárolt eljáráshívási a fő-részletek műveleteket végez. Végső forgatókönyv bemutatja, hogyan használható a tábla értékű paraméter "UPSERT" művelet.
 
 ### <a name="buffering"></a>Pufferelés
-Habár van néhány olyan forgatókönyvet, nyilvánvaló jelölt kötegelés, ott sikerült előnyeit által késleltetett feldolgozási kötegelés több forgatókönyv áll. Késleltetett feldolgozási is, hogy az adatok nem vesztek el meghibásodása nagyobb veszélynek végzi. Fontos megérteni a kockázat, és vegye figyelembe a következményekkel.
+Bár vannak bizonyos forgatókönyvek, amelyek kézenfekvő jelöltek a kötegelés, nincsenek sikerült előnyeit úgy késleltetett kötegelés számos forgatókönyv. Késleltetett feldolgozási is, hogy az adatok váratlan meghibásodás elvész nagyobb veszélynek végzi. Fontos a kockázat és megfontolnia a következményekkel.
 
-Vegye figyelembe például egy webes alkalmazás, amely nyomon követi a minden felhasználó előzménylistáján. A lap lekérése az alkalmazás sikerült hívható meg a felhasználó lapmegtekintés rögzítésére adatbázis. De a nagyobb teljesítmény és méretezhetőség legyen elérhető a felhasználók navigációs tevékenységek pufferelés, és elküldi ezeket az adatokat az adatbázisba kötegekben. Az adatbázis frissítést a futása közben eltelt idő és/vagy puffer mérete indíthat el. Egy szabály például megadhatja, hogy a kötegelt 20 másodperc, vagy amikor a puffer eléri-e 1000 elemek után fel kell dolgozni.
+Vegyük példaként egy webalkalmazást, amely nyomon követi az egyes felhasználók navigációs előzményeit. Az egyes az alkalmazás sikerült hívja fel a felhasználói lap megtekintése egy adatbázis. De a nagyobb teljesítmény és méretezhetőség biztosíthatja a felhasználók navigációs tevékenységek pufferelés, és elküldi ezeket az adatokat az adatbázisba, és kötegekben. A database-frissítés során eltelt idő és/vagy puffer mérete alapján is indíthat. Egy szabály például megadhatja, hogy a batch 20 másodperc, vagy amikor a puffer eléri-e 1000 elemek után kell feldolgozni.
 
-Az alábbi példakód [reaktív bővítmények – a Rx](https://msdn.microsoft.com/data/gg577609) figyelési osztály által kiváltott pufferelt események feldolgozásához. Amikor beírja a puffer, vagy időkorlátot, a felhasználói adatok kötegelt zajlik egy tábla értékű paraméter az adatbázisba.
+Az alábbi példakód [Reactive Extensions - Rx](https://msdn.microsoft.com/data/gg577609) figyelési osztály által kiváltott pufferelt események feldolgozásához. Amikor beírja a puffer, vagy időtúllépését, a felhasználói adatok kötegelt érkezik egy tábla értékű paraméter az adatbázisba.
 
-A következő NavHistoryData osztály modellek a felhasználó navigációs adatait. Például a felhasználói azonosító az elért URL-cím vagy a hozzáférés idejének alapszintű információkat tartalmaz.
+A következő NavHistoryData osztály modellek a felhasználói navigációs adatai. Például a felhasználói azonosító, az elért URL-cím és a hozzáférés ideje alapvető információkat tartalmaz.
 
     public class NavHistoryData
     {
@@ -370,7 +368,7 @@ A következő NavHistoryData osztály modellek a felhasználó navigációs adat
         public DateTime AccessTime { get; set; }
     }
 
-A NavHistoryDataMonitor osztály a felhasználói navigációs adatokat az adatbázisba pufferelés felelős. Tartalmaz egy metódust, RecordUserNavigationEntry, amely válaszol-e megjelenítve jelzi egy **OnAdded** esemény. A következő kód bemutatja a konstruktor logika, amely használja a Rx hozzon létre egy megfigyelhető gyűjteményt az események alapján. Majd feliratkozva a megfigyelhető gyűjteményhez a következő puffer metódussal. A túlterhelés határozza meg, hogy a memóriapuffer 20 másodpercenként vagy 1000 bejegyzések küldjön.
+A NavHistoryDataMonitor osztály felelős az adatbázis felhasználói navigációs adatainak pufferelése. Egy módszer, RecordUserNavigationEntry, amely különböző tudásbázisokból megjelenítve jelzi a problémákat tartalmaz egy **OnAdded** esemény. A következő kód bemutatja a konstruktor logika, amely Rx használ egy esemény alapján megfigyelhető gyűjtemény létrehozásához. Majd feliratkozik a megfigyelhető gyűjtemény a puffer módszerrel oszthatók ki. A túlterhelés Megadja, hogy a puffer kell küldeni, 20 másodpercenként vagy 1000 bejegyzések.
 
     public NavHistoryDataMonitor()
     {
@@ -380,7 +378,7 @@ A NavHistoryDataMonitor osztály a felhasználói navigációs adatokat az adatb
         observableData.Buffer(TimeSpan.FromSeconds(20), 1000).Subscribe(Handler);           
     }
 
-A kezelő összes pufferelt elem alakítja át a tábla értékű típus, és majd átadja a ehhez a típushoz, amely feldolgozza a kötegelt tárolt eljárást. A következő kód bemutatja a NavHistoryDataEventArgs, mind a NavHistoryDataMonitor osztályok teljes definíciója.
+A kezelő a pufferelt elemek mindegyikét alakítja át a tábla értékű típusa, és továbbítja majd ilyen egy tárolt eljárást, amely feldolgozza a batch. A következő kód bemutatja a NavHistoryDataEventArgs, mind a NavHistoryDataMonitor osztályok teljes definíciója.
 
     public class NavHistoryDataEventArgs : System.EventArgs
     {
@@ -439,10 +437,10 @@ A kezelő összes pufferelt elem alakítja át a tábla értékű típus, és ma
         }
     }
 
-Ez az osztály pufferelési használatához az alkalmazás egy statikus NavHistoryDataMonitor objektumot hoz létre. Minden alkalommal, amikor egy felhasználó egy lap fér hozzá az alkalmazás meghívja a NavHistoryDataMonitor.RecordUserNavigationEntry metódust. Ezek a bejegyzések küldése az adatbázis kötegekben irányuló pufferelési logika eltérő lehet.
+Ez az osztály pufferelési használatához az alkalmazás egy statikus NavHistoryDataMonitor-objektumot hoz létre. Minden alkalommal, amikor egy felhasználó hozzáfér egy oldal, az alkalmazás meghívja a NavHistoryDataMonitor.RecordUserNavigationEntry metódust. Ezek a bejegyzések küldését az adatbázist, és kötegekben gondoskodik abból pufferelési logikát.
 
-### <a name="master-detail"></a>Fő részletei
-Tábla értékű paraméter egyszerű INSERT forgatókönyvek hasznosak. Azonban lehet, például az egynél több tábla kötegelt Beszúrás további kihívást. A "kapcsolatú" például az is jó példa. A fő táblázat azonosítja az elsődleges entitás. Egy vagy több részletek tábla entitás több adatot tároljon. Ebben a forgatókönyvben a külső kulcsok kapcsolatai kényszerítése a kapcsolat egy egyedi fő entitásra részletességi. Vegye figyelembe a PurchaseOrder és a kapcsolódó OrderDetail tábla egyszerűsített verziója. A következő Transact-SQL négy oszlopot hoz létre a PurchaseOrder tábla: OrderID, orderdate oszlopra, CustomerID és állapotát.
+### <a name="master-detail"></a>Fő részletek
+Tábla értékű paraméterek egyszerű INSERT forgatókönyvek hasznosak. Azonban lehet kötegelt Beszúrás egynél több tábla érintő nehéz lehet. A "kapcsolatú" forgatókönyv egy jó példa. A fő táblázat azonosítja az elsődleges entitásnál. Egy vagy több részlet táblát entitás több adatot tároljon. Ebben a forgatókönyvben a külső kulcsok kapcsolatai kényszerítése a kapcsolat adatainak egy egyedi fölérendelt entitásba. Fontolja meg egy PurchaseOrder és a kapcsolódó OrderDetail tábla egyszerűsített változata. A következő Transact-SQL az PurchaseOrder táblát hoz létre négy oszlopot: OrderID, OrderDate, CustomerID és állapotát.
 
     CREATE TABLE [dbo].[PurchaseOrder](
     [OrderID] [int] IDENTITY(1,1) NOT NULL,
@@ -452,7 +450,7 @@ Tábla értékű paraméter egyszerű INSERT forgatókönyvek hasznosak. Azonban
      CONSTRAINT [PrimaryKey_PurchaseOrder] 
     PRIMARY KEY CLUSTERED ( [OrderID] ASC ))
 
-Minden egyes rendelés egy vagy több termék vásárlás tartalmazza. Ezt az információt a PurchaseOrderDetail tábla rögzített. A következő Transact-SQL hoz létre a PurchaseOrderDetail tábla öt oszlopok: OrderID, OrderDetailID, ProductID, Egységár és OrderQty.
+Minden egyes ahhoz egy vagy több termék vásárlások tartalmazza. Ez az információ a PurchaseOrderDetail tábla van rögzítve. A következő Transact-SQL az PurchaseOrderDetail táblát hoz létre öt oszlopok: OrderID, OrderDetailID, ProductID, UnitPrice és OrderQty.
 
     CREATE TABLE [dbo].[PurchaseOrderDetail](
     [OrderID] [int] NOT NULL,
@@ -463,13 +461,13 @@ Minden egyes rendelés egy vagy több termék vásárlás tartalmazza. Ezt az in
      CONSTRAINT [PrimaryKey_PurchaseOrderDetail] PRIMARY KEY CLUSTERED 
     ( [OrderID] ASC, [OrderDetailID] ASC ))
 
-Az OrderID oszlop a PurchaseOrderDetail tábla sorrendben kell hivatkoznia, a PurchaseOrder táblából. A következő idegen kulcs definícióját a korlátozás érvényesítése.
+Az OrderID oszlop a PurchaseOrderDetail tábla egy megrendelés kell hivatkoznia a PurchaseOrder táblából. A következő idegen kulcs-definíciót kikényszeríti ezt a korlátozást.
 
     ALTER TABLE [dbo].[PurchaseOrderDetail]  WITH CHECK ADD 
     CONSTRAINT [FK_OrderID_PurchaseOrder] FOREIGN KEY([OrderID])
     REFERENCES [dbo].[PurchaseOrder] ([OrderID])
 
-Tábla értékű paraméter használatához rendelkeznie kell egy felhasználó által definiált táblatípus minden céloldali táblához.
+Tábla értékű paraméterek használatához rendelkeznie kell egy felhasználó által definiált táblatípus egyes céloldali táblához.
 
     CREATE TYPE PurchaseOrderTableType AS TABLE 
     ( OrderID INT,
@@ -485,7 +483,7 @@ Tábla értékű paraméter használatához rendelkeznie kell egy felhasználó 
       OrderQty SMALLINT );
     GO
 
-Majd adja meg, amely támogatja a következő típusú táblák tárolt eljárást. Ez az eljárás lehetővé teszi az helyileg a batch-rendeléseket és egy hívás a rendelés részleteit. A következő Transact-SQL beszerzési sorrendje a példa a teljes tárolt eljárás nyilatkozat biztosít.
+Megadhatja, egy tárolt eljárást, amely az ilyen jellegű táblákat fogad el. Ez az eljárás lehetővé teszi, hogy az alkalmazás helyileg batch-rendeléseket és a egy hívással rendelés részleteit. A következő Transact-SQL beszerzési rendelés Példánk esetében a teljes tárolt eljárás nyilatkozat biztosít.
 
     CREATE PROCEDURE sp_InsertOrdersBatch (
     @orders as PurchaseOrderTableType READONLY,
@@ -528,9 +526,9 @@ Majd adja meg, amely támogatja a következő típusú táblák tárolt eljárá
     JOIN @IdentityLink L ON L.SubmittedKey = D.OrderID;
     GO
 
-Ebben a példában a helyileg definiált @IdentityLink tábla tárolja az újonnan behelyezett sorainak tényleges OrderID értéke. Ilyen rendelés azonosítókat az ideiglenes OrderID értékek eltérnek a @orders és @details tábla értékű paraméter. Emiatt a @IdentityLink tábla csatlakoztatja az OrderID értékeit a @orders paramétert az új sort a PurchaseOrder tábla valós OrderID értékeit. Ez a lépés után a @IdentityLink tábla megkönnyítheti a rendelés részleteit és a tényleges OrderID, amely eleget tesz a Külsőkulcs-korlátozást beszúrni.
+Ebben a példában a helyileg definiált @IdentityLink tábla tárolja az újonnan behelyezett sorok tényleges OrderID értékeit. Ezeket az azonosítókat sorrend nem ideiglenes OrderID értékei azonosak a @orders és @details táblázat értékű paramétereket. Ebből kifolyólag a @IdentityLink tábla csatlakoztatja az OrderID értékeket a @orders paraméter az a PurchaseOrder táblázatban új sorok valós OrderID értékek. Elvégezte a lépést a @IdentityLink tábla megkönnyítheti a Beszúrás, a tényleges OrderID, amely eleget tesz a Külsőkulcs-korlátozást a rendelés részleteit.
 
-Ez a tárolt eljárás használható kód vagy más Transact-SQL-hívások. A dokumentum a kód például a táblázat értékű paramétereket című szakaszában talál. A következő Transact-SQL bemutatja, hogyan hívhatja meg a sp_InsertOrdersBatch.
+Ez a tárolt eljárás használható a kódot, vagy más Transact-SQL-hívások. Ez a tanulmány a kód például a tábla értékű paraméterek című szakaszában talál. A következő Transact-SQL bemutatja, hogyan hívhat meg a sp_InsertOrdersBatch.
 
     declare @orders as PurchaseOrderTableType
     declare @details as PurchaseOrderDetailTableType
@@ -550,14 +548,14 @@ Ez a tárolt eljárás használható kód vagy más Transact-SQL-hívások. A do
 
     exec sp_InsertOrdersBatch @orders, @details
 
-Ez a megoldás lehetővé teszi, hogy az egyes kötegekben OrderID értékek: 1 kezdődő használandó. Ideiglenes OrderID értékeiről leírják a kötegben lévő kapcsolatok, de a tényleges OrderID értékek az insert művelet időpontjában határozza meg. Futtassa az előző példában szereplő ismételten a azonos utasításokat, és egyedi rendeléseket lehet létrehozni az adatbázist. Emiatt érdemes további kóddal vagy az adatbázis logika, amely megakadályozza a duplikált rendelések használatakor ezzel a technikával kötegelés.
+Ez a megoldás lehetővé teszi, hogy az egyes kötegek OrderID értékek 1-gyel kezdődő használatára. Ezek az értékek ideiglenes OrderID ismertetik a kapcsolatokat, a batch szolgáltatásban, de a tényleges OrderID értékek határozzák meg a beillesztési művelet idején. Futtassa az előző példában ismételten a azonos utasításokat, és egyedi rendelések létrehozása az adatbázisban. Emiatt fontolja meg, további kódot vagy az adatbázis logika, amely megakadályozza a duplikált rendelések használatakor ez technika kötegelés hozzáadását.
 
-Ez a példa mutatja be, hogy még inkább összetett adatbázis-műveletek, például a részletezés master operations, is lehet kötegelni tábla értékű paraméterek használatával.
+Ez a példa bemutatja, hogy még inkább összetett adatbázis-műveletek, például a részletezés master operations, is lehet kötegelni tábla értékű paraméterek használatával.
 
 ### <a name="upsert"></a>UPSERT
-Egy másik kötegelési forgatókönyv magában foglalja a egyidejűleg frissíteni a létező sorok és új sort beszúrni. Ez a művelet van más néven "UPSERT" (frissítés + insert) műveletet. Ahelyett, hogy külön hívások BESZÚRÁSA, és FRISSÍTI a MERGE utasítás bizonyul a legalkalmasabbnak a tevékenységhez. A MERGE utasítás végrehajtása mindkét insert és frissítési művelet egyetlen hívással.
+Egy másik kötegelés forgatókönyv magában foglalja a egyidejűleg frissíti a létező sorok és új sor beszúrása. Ez a művelet van más néven "UPSERT" (frissítés + Beszúrás) művelet. Ahelyett, hogy külön hívások BESZÚRÁSA és frissítése, a MERGE utasítás ez a feladat a legmegfelelőbb. A MERGE utasítás végrehajtása mindkét insert és a frissítési műveletek egyetlen hívással.
 
-Tábla értékű paraméter frissítések és a Beszúrás elvégzéséhez használható a MERGE utasítással. Vegyük példaként a következő oszlopokat tartalmazó egyszerűsített alkalmazott táblázat: EmployeeID, az Utónév, a Vezetéknév, a SocialSecurityNumber:
+Tábla értékű paraméterek a frissítések és beilleszti a MERGE utasítás használható. Vegyük példaként egy egyszerűsített alkalmazott tábla, amely a következő oszlopokat tartalmazza: EmployeeID, Utónév, Vezetéknév, SocialSecurityNumber:
 
     CREATE TABLE [dbo].[Employee](
     [EmployeeID] [int] IDENTITY(1,1) NOT NULL,
@@ -567,7 +565,7 @@ Tábla értékű paraméter frissítések és a Beszúrás elvégzéséhez haszn
      CONSTRAINT [PrimaryKey_Employee] PRIMARY KEY CLUSTERED 
     ([EmployeeID] ASC ))
 
-Ebben a példában használhatja arra, hogy a SocialSecurityNumber egyedi több alkalmazott EGYESÍTÉSÉVEL végrehajtásához. Először hozza létre a felhasználó által definiált táblatípus:
+Ebben a példában használhatja arra, hogy a SocialSecurityNumber egyedi több alkalmazottak az egyesítési művelet végrehajtásával. Először hozza létre a felhasználó által definiált táblatípus:
 
     CREATE TYPE EmployeeTableType AS TABLE 
     ( Employee_ID INT,
@@ -576,7 +574,7 @@ Ebben a példában használhatja arra, hogy a SocialSecurityNumber egyedi több 
       SocialSecurityNumber NVARCHAR(50) );
     GO
 
-A következő tárolt eljárás létrehozása, vagy kiírhatja a MERGE utasítás segítségével hajtsa végre a frissítést, majd szúrja be a kódját. Az alábbi példában a MERGE utasítás egy tábla értékű paraméter @employees, EmployeeTableType típusú. A tartalmát a @employees tábla itt nem látható.
+Ezután hozzon létre egy tárolt eljárást, vagy hajtsa végre a frissítést, majd szúrja be a MERGE utasítás használatával kód írására. Az alábbi példában a MERGE utasítás egy tábla értékű paraméter @employees, EmployeeTableType típusú. A tartalmát a @employees tábla nem jelennek meg itt.
 
     MERGE Employee AS target
     USING (SELECT [FirstName], [LastName], [SocialSecurityNumber] FROM @employees) 
@@ -590,28 +588,28 @@ A következő tárolt eljárás létrehozása, vagy kiírhatja a MERGE utasítá
        INSERT ([FirstName], [LastName], [SocialSecurityNumber])
        VALUES (source.[FirstName], source.[LastName], source.[SocialSecurityNumber]);
 
-További információkért lásd: a dokumentáció és példák a MERGE utasításban. Bár a többlépéses tárolt ugyanaz a munkahelyi sikerült végezhető el a eljáráshívási külön INSERT, és frissítési műveleteket, a MERGE utasítás hatékonyabban. Adatbázis kód hogyan hozhat létre a MERGE utasítás közvetlenül nélkül két adatbázis hívások az INSERT vagy UPDATE használó Transact-SQL-hívások is.
+További információkért lásd: a dokumentáció és a példák a MERGE utasítás. Bár ugyanazzal a munkahelyi sikerült végezhető el egy több lépésből álló tárolt eljáráshívási az INSERT külön, és frissítési műveleteket, a MERGE utasítás hatékonyabb. Adatbázis-kódot is hozhatnak létre, amelyek a MERGE utasítás közvetlenül anélkül, hogy a két adatbázis-hívások a INSERT és UPDATE Transact-SQL-hívásokat.
 
-## <a name="recommendation-summary"></a>A javaslat összefoglaló
-Az alábbi lista a cikkben szereplő kötegelési ajánlások összegzését tartalmazza:
+## <a name="recommendation-summary"></a>Az ajánlás összegzése
+Az alábbi lista a kötegelés javaslatok ebben a cikkben tárgyalt összegzését tartalmazza:
 
-* Pufferelés és kötegelés segítségével növelheti a teljesítményét és méretezhetőségét SQL adatbázis-alkalmazások.
-* Ismerje meg a mellékhatásokkal kötegelés/pufferelés és a rugalmasság között. Adott szerepkör meghibásodás során a egy feldolgozatlan kötegelt az üzleti szempontból kritikus fontosságú adatok elvesztését kockáztatja a teljesítmény előnye, hogy kötegelés előfordulhat, hogy járó.
-* Tartsa a késés csökkentése érdekében az adatbázis egy adatközponton belül minden hívások történt kísérlet.
-* Ha úgy dönt, hogy egyetlen kötegelési technika, tábla értékű paraméter nyújtanak a legjobb teljesítményt és rugalmasságot biztosít.
+* Pufferelés és kötegelés használatával növelheti a teljesítmény- és SQL Database az alkalmazások méretezhetősége.
+* Ismerje meg, a kötegelés/pufferelés és rugalmasság közötti kompromisszumot. Szerepkör hiba esetén az üzleti szempontból kritikus fontosságú adatok olyan feldolgozatlan batch fennállna a kockázat, ellensúlyozhatja a kötegelés teljesítmény előnyeit.
+* Megkísérlik kívül tartani a késés csökkentése érdekében egyetlen adatközponton belül az adatbázis összes híváshoz.
+* Ha úgy dönt, hogy egyetlen kötegelés technika, a tábla értékű paraméterek a legjobb teljesítményt és rugalmasságot kínálnak.
 * A leggyorsabb insert teljesítmény érdekében kövesse az alábbi általános irányelveket, de a forgatókönyv teszteléséhez:
-  * < 100 sorai egy paraméteres INSERT parancs használata.
-  * A < 1000 sor használja a táblázat értékű paramétereket.
-  * A > = 1000 sorok, SqlBulkCopy használja.
-* A és törlési műveletek frissítéséhez használja tábla értékű paraméter tárolt eljárás logikával határozza meg, hogy a megfelelő műveletet az egyes sorokkal. a tábla paraméterben.
+  * < 100 sor egyetlen paraméteres INSERT parancs használható.
+  * < 1000 sor táblázat értékű paramétereket használja.
+  * A > = 1000 sort, használja a kapcsolatot az SqlBulkCopy.
+* Az update és törlési műveletek, tábla értékű paraméterek használata tárolt eljárás logika, amely meghatározza, hogy a megfelelő műveletet az egyes sorokkal. a tábla paraméterben.
 * Köteg mérete irányelveket:
-  * A legnagyobb kötegelt méretek számára az alkalmazás- és üzleti követelmények célszerű használni.
-  * A jobb teljesítménye nagy köteg a kockázatot jelentő ideiglenes vagy végzetes hibák elosztása. Mi az a következménye az újrapróbálkozások és az adatvesztés a kötegben? 
-  * A legnagyobb kötegméret ellenőrzése, hogy SQL-adatbázis nem elutasítania tesztelése.
-  * A vezérlő kötegelés, például a köteg méretének vagy a pufferelési időszak-konfigurációs beállítások létrehozása. Ezek a beállítások rugalmasságot biztosít. Éles környezetben kötegelési viselkedést a felhőalapú szolgáltatás ismételt üzembe helyezésével módosíthatja.
-* Kerülje a párhuzamos végrehajtás kötegek, amely több adatbázis egyetlen táblájára működik. Ha a kötegek osztja szét több munkavégző szál, tesztek futtatása annak szálak ideális számának meghatározásához. Után egy nem meghatározott küszöbértéket több szál fog miatta a teljesítmény, nem pedig növeli azt.
-* Vegye figyelembe a pufferelés méret és így további forgatókönyvek kötegelés végrehajtási idő.
+  * Használja a legnagyobb köteg méretek, amelyek az alkalmazás és az üzleti követelmények jelentéssel bírnak.
+  * Az ideiglenes vagy a katasztrofális hibák kockázatát nagy kötegeket teljesítmény miatt kiegyenlítése. Mi az az újrapróbálkozások következményei és az adatvesztés a batch szolgáltatásban? 
+  * Tesztelje a legnagyobb kötegméret, győződjön meg arról, hogy az SQL Database nem utasít el azt.
+  * A vezérlő kötegelés, például a Köteg mérete vagy a pufferelési időablak létrehozása konfigurációs beállítások. Ezek a beállítások rugalmasságot biztosítanak. Módosíthatja a kötegelés viselkedés éles környezetben a felhőalapú szolgáltatás újbóli telepítése nélkül.
+* Ne használjon, amely egy adatbázisban lévő egyetlen táblából a kötegek állapotkezelését párhuzamos végrehajtás. Ha az egy kötegben osztja szét több munkavégző szál, tesztek futtatása annak ideális szálak számának meghatározásához. Után egy nem meghatározott küszöbértéket több szál fog rontja a teljesítményt, nem pedig növeli.
+* Vegye figyelembe, hogy a mérete és az egyik módja a kötegelés további forgatókönyvek végrehajtási idő pufferelés.
 
 ## <a name="next-steps"></a>További lépések
-Ez a cikk összpontosított hogyan adatbázis tervezési és a kapcsolódó kötegelés technikák kódolási javíthatja az alkalmazás teljesítményét és méretezhetőségét. Ez azonban csak egy tényező az általános stratégiában. A jobb teljesítmény és méretezhetőség további részleteket lásd: [Azure SQL Database teljesítményét útmutatást az önálló adatbázisok](sql-database-performance-guidance.md) és [rugalmas készletek ára és teljesítménye szempontok](sql-database-elastic-pool-guidance.md).
+Ez a cikk összpontosított hogyan adatbázis-tervezésben és a kódolási kötegelés kapcsolatos technikák javíthatja az alkalmazás teljesítményét és méretezhetőségét. Ez azonban csak egy tényező az általános stratégia. További részleteket a jobb teljesítmény és méretezhetőség, lásd: [útmutató az önálló adatbázisok teljesítményének növeléséhez Azure SQL Database](sql-database-performance-guidance.md) és [rugalmas készletek ára és teljesítménye szempontok](sql-database-elastic-pool-guidance.md).
 

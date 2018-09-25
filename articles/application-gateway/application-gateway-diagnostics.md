@@ -1,6 +1,6 @@
 ---
-title: Az Alkalmazásátjáró belépési naplók, a Teljesítménynaplók, a háttér-állapotának és a metrikák figyelése
-description: Megtudhatja, hogyan engedélyezheti és kezelheti a belépési naplók és a Teljesítménynaplók az Alkalmazásátjáró
+title: Hozzáférés a naplókhoz, a Teljesítménynaplók, a háttérrendszer állapota és a metrikák figyelése az Application Gateway számára
+description: Ismerje meg, hogyan engedélyezheti és kezelheti a naplók elérése és a Teljesítménynaplók az Application Gateway számára
 services: application-gateway
 author: amitsriva
 manager: rossort
@@ -12,53 +12,53 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 6/20/2018
 ms.author: amitsriva
-ms.openlocfilehash: 256eac99feacc18a51e45c3f07cdceb7d687cacf
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ms.openlocfilehash: 563194ea0b3e4bda2021c75c544d068f00d74ba7
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36293621"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46963832"
 ---
-# <a name="back-end-health-diagnostic-logs-and-metrics-for-application-gateway"></a>Háttér-állapot, a diagnosztikai naplók és a metrikák az Alkalmazásátjáró
+# <a name="back-end-health-diagnostic-logs-and-metrics-for-application-gateway"></a>Háttérrendszer állapota, diagnosztikai naplók és mérőszámok az Application Gateway számára
 
-Azure Application Gateway használatával figyelheti erőforrások a következő módon:
+Az Azure Application Gateway használatával figyelemmel kísérheti az erőforrásokat a következőképpen:
 
-* [Háttér-állapotfigyelő](#back-end-health): Application Gateway biztosítja a kiszolgálók az Azure portálon keresztül, és a PowerShell segítségével a háttér-készletek állapotának figyelésére. A háttér-készletek a diagnosztikai Teljesítménynaplók keresztül állapotát is tájékozódhat.
+* [Háttér-állapotfigyelő](#back-end-health): Application Gateway lehetővé teszi, hogy a háttér-készleteket az Azure Portalon keresztül, és a PowerShell lévő kiszolgálók állapotának monitorozásához. A háttér-készleteket, a teljesítmény-diagnosztikai naplók keresztül állapotát is megtalálhatja.
 
-* [Naplók](#diagnostic-logging): a teljesítmény, hozzáférési és egyéb adatok mentése vagy egy erőforráshoz, ellenőrzési célból felhasznált naplóihoz.
+* [Naplók](#diagnostic-logging): naplók lehetővé teszik a teljesítmény, a hozzáférési és egyéb adatok mentése vagy ezek az erőforrás figyelési célból.
 
-* [Metrikák](#metrics): Application Gateway tartoznak a hét mérni kívánt teljesítményszámlálóinak megtekintése.
+* [Metrikák](#metrics): Application Gateway jelenleg rendelkezik hét metrikák megtekintéséhez a teljesítményszámlálókat.
 
-## <a name="back-end-health"></a>Háttér-állapota
+## <a name="back-end-health"></a>Háttér-health
 
-Alkalmazásátjáró lehetővé teszi az egyes tagok a háttér-készletek a portálon, PowerShell és a parancssori felület (CLI) keresztül állapotának figyelésére. Is megkeresheti az összesített állapotát összesítő a háttér-címkészletek diagnosztikai Teljesítménynaplók keresztül. 
+Az Application Gateway lehetővé teszi, hogy a háttér-készletek a portal, PowerShell és a parancssori felület (CLI) egyes tagjai állapotának monitorozásához. Az összesített állapotát is megtalálhatja a teljesítmény-diagnosztikai naplók keresztül háttérkészlet összefoglalása. 
 
-A háttér-állapotjelentés tükrözi az Alkalmazásátjáró állapotmintáihoz a háttér-példányokhoz kimenetét. Ha az ellenőrzés sikeres és a hátteret forgalom fogadására, akkor tekinthető kifogástalan. Ellenkező esetben azt nem megfelelő állapotúnak számít.
+A háttér-állapotjelentés tükrözi az Application Gateway állapotmintát a háttérpéldányok kimenetét. Ha a tesztelés sikeres és a háttérrendszer képes forgalom fogadására, kifogástalan állapotú számít. Ellenkező esetben ez nem megfelelő állapotúnak számít.
 
 > [!IMPORTANT]
-> Ha egy alkalmazás átjáró-alhálózatot a hálózati biztonsági csoport (NSG), nyissa meg az alkalmazás átjáróalhálózatot, a bejövő forgalom 65503-65534 porttartományok. A porttartomány szükség az Azure infrastruktúra-kommunikációhoz. A portokat Azure-tanúsítványok védik (zárják le). Megfelelő tanúsítványok nélkül külső entitások, beleértve az e-átjárók, az ügyfelek nem tudnak kezdeményezése ezekre a végpontokra végzett módosításokat.
+> Ha egy Application Gateway-alhálózatot a hálózati biztonsági csoport (NSG), nyissa meg a bejövő forgalmat az Application Gateway alhálózatának 65503 – 65534 alkalmazásport-tartományok. Ezen a porttartományon szükség Azure-infrastruktúra kommunikációjához. A portokat Azure-tanúsítványok védik (zárják le). Megfelelő tanúsítványok nélkül a külső entitások – például az ügyfelek átjárók nem lesz a végpontokra módosításokat kezdeményezhetnek.
 
 
 ### <a name="view-back-end-health-through-the-portal"></a>Háttér-állapotának megtekintése a portálon keresztül
 
-A portál háttér-állapotfigyelő valósul meg automatikusan. Válassza ki egy meglévő Alkalmazásátjáró **figyelés** > **háttér állapotfigyelő**. 
+A portál háttérrendszer állapota automatikusan nyújtja. Válassza ki egy meglévő application gateway **figyelés** > **háttérkiszolgáló állapotadatainak**. 
 
-Minden tag a háttér-készlet szerepel ezen a lapon (hogy-e a hálózati adapter, IP vagy FQDN Formátumban). Háttér-alkalmazáskészlet neve, a port, a háttér HTTP beállítások neve és az állapot látható. Érvényes állapot értékei **kifogástalan**, **nem kifogástalan állapotú**, és **ismeretlen**.
+A háttérkészlet minden tagjának szerepel ezen a lapon (akár egy hálózati adapter, IP vagy FQDN szó). Háttérkészlet neve, a port, a háttér-HTTP-beállítások nevét és az állapot jelenik meg. Állapot érvényes értékei a következők **kifogástalan**, **nem kifogástalan**, és **ismeretlen**.
 
 > [!NOTE]
-> Ha megjelenik egy háttér-állapotát **ismeretlen**, győződjön meg arról, hogy a háttér elérésére ne tiltsa le az NSG-szabályok, a felhasználó által megadott útvonal (UDR) vagy egy egyéni DNS-beli virtuális hálózaton.
+> Ha megjelenik egy háttér-állapotát **ismeretlen**, győződjön meg arról, hogy a háttérbe való hozzáférés nem blokkolja egy NSG-szabályt, a felhasználó által megadott útvonal (UDR) vagy egy egyéni DNS, a virtuális hálózatban.
 
-![Háttér-állapota][10]
+![Háttér-health][10]
 
-### <a name="view-back-end-health-through-powershell"></a>Háttér-állapotának megtekintése a PowerShell segítségével
+### <a name="view-back-end-health-through-powershell"></a>Háttér-állapotának megtekintése a PowerShell-lel
 
-A következő PowerShell-kód bemutatja, hogyan a háttér-állapotának megtekintéséhez a `Get-AzureRmApplicationGatewayBackendHealth` parancsmagot:
+A következő PowerShell-kód bemutatja, hogyan háttér-állapotának megtekintéséhez használja a `Get-AzureRmApplicationGatewayBackendHealth` parancsmagot:
 
 ```powershell
 Get-AzureRmApplicationGatewayBackendHealth -Name ApplicationGateway1 -ResourceGroupName Contoso
 ```
 
-### <a name="view-back-end-health-through-azure-cli-20"></a>Azure CLI 2.0 keresztül háttér-állapotának megtekintése
+### <a name="view-back-end-health-through-azure-cli"></a>Háttér-állapotának megtekintése az Azure CLI-n keresztül
 
 ```azurecli
 az network application-gateway show-backend-health --resource-group AdatumAppGatewayRG --name AdatumAppGateway
@@ -66,7 +66,7 @@ az network application-gateway show-backend-health --resource-group AdatumAppGat
 
 ### <a name="results"></a>Results (Eredmények)
 
-A következő kódrészletet a válasz példáját mutatja be:
+Az alábbi kódrészletben látható egy példa a válasz:
 
 ```json
 {
@@ -95,93 +95,93 @@ A következő kódrészletet a válasz példáját mutatja be:
 
 ## <a name="diagnostic-logging"></a>Diagnosztikai naplók
 
-Különböző típusú naplók az Azure-ban kezelésére és hibaelhárítására alkalmazásátjárót használja. Néhányat ezek a naplók a portálon keresztül érheti el. Összes napló kinyert Azure Blob Storage tárolóban, és a különböző eszközök, például a megtekintett [Naplóelemzési](../log-analytics/log-analytics-azure-networking-analytics.md), az Excel és a Power bi-ban. Ön többet is megtudhat a különböző típusú naplók az alábbi listából:
+Segítségével különböző típusú naplók az Azure-ban felügyelet és hibaelhárítás az application Gateway átjárókkal. Ezen naplók egy része a portálról érhető el. Az összes napló ki kell olvasni az Azure Blob storage-ból, és a különböző eszközök, például a megtekintett [Log Analytics](../log-analytics/log-analytics-azure-networking-analytics.md), Excel és a Power bi-ban. További információ a különböző típusú naplók az alábbi listából:
 
-* **Tevékenységnapló**: használható [Azure tevékenységi naplóit](../monitoring-and-diagnostics/insights-debugging-with-events.md) (korábbi nevén műveleti naplókat, és a vizsgálati naplók ismert) összes művelet, amely elküldi az Azure-előfizetéshez, és azok állapotának megtekintése. Tevékenység naplóbejegyzések alapértelmezett által gyűjtött, és megtekintheti azokat az Azure portálon.
-* **Hozzáférési napló**: Ez a napló segítségével Alkalmazásátjáró hozzáférési minták megtekintése és elemzése a fontos információk, például a hívó IP, kért URL-cím, válasz késés, visszatérési kód, és bájt növelésére és csökkentésére. A hozzáférési napló gyűjtése 300 másodpercenként. Ez a napló Application Gateway-példányonként egy bejegyzést tartalmaz. Az alkalmazás átjárópéldány meghatározható az instanceId tulajdonság.
-* **Teljesítménynapló**: Ez a napló segítségével megtekintheti, hogyan Alkalmazásátjáró példányok hajtja végre. Ez a napló minden egyes előfordulás esetén kérelmek teljes száma a kiszolgált, beleértve az átviteli sebesség bájtban teljesítmény információit rögzíti, kiszolgált kérelmek teljes száma, sikertelen kérelmek száma, és a megfelelő és nem megfelelő a háttér-példányok száma. A Teljesítménynapló 60 másodpercenként gyűjti.
-* **Tűzfal napló**: Ez a napló segítségével megtekintheti a kérelmeket, amelyeket a rendszer keresztül, amelynek része a webalkalmazási tűzfal Alkalmazásátjáró észlelési vagy megelőzési módját.
+* **Tevékenységnapló**: használhatja [Azure-Tevékenységnaplók](../monitoring-and-diagnostics/insights-debugging-with-events.md) (nevén műveleti naplók és a vizsgálati naplók) minden művelet, amely elküldi az Azure-előfizetéshez, és azok állapotának megtekintése. A tevékenységnaplók bejegyzéseit alapértelmezés szerint gyűjti a rendszer, ezeket az Azure Portalon tekintheti meg.
+* **Hozzáférési napló**: Ez a napló használatával az Application Gateway hozzáférési minták megtekintése és elemzése a fontos információkat, többek között a hívó IP, kért URL-cím, válasz késése, visszatérési kód és bájt be és ki. Egy hozzáférési napló 300 másodpercenként gyűjti. Ez a napló az Application Gateway-példányonként több rekordot tartalmaz. Az Application Gateway-példány segítségével azonosítható a instanceId tulajdonság.
+* **Teljesítménynaplóban**: Ez a napló segítségével megtekintheti, hogyan Application Gateway-példány működését. Ez a napló rögzíti minden példány esetében, beleértve, kiszolgált kérések teljes átviteli sebesség (bájt) teljesítményadatok, a kiszolgált kérések teljes, a sikertelen kérések száma, és a megfelelő és nem kifogástalan állapotú háttér-példányok száma. A teljesítménynaplóban gyűjtött minden 60 másodpercben.
+* **Tűzfal naplója**: Ez a napló segítségével, amelynek része a webalkalmazási tűzfallal rendelkező application gateway az észlelésük vagy a megelőzési módban a rendszer naplózza a kérések megtekintését.
 
 > [!NOTE]
-> Csak az Azure Resource Manager üzembe helyezési modellben telepített erőforrások esetén érhetők el naplók. A klasszikus üzembe helyezési modellel erőforrások naplók nem használható. Szeretné jobban megismerni a két modell, tekintse meg a [Understanding Resource Manager üzembe helyezési és a klasszikus üzembe helyezési](../azure-resource-manager/resource-manager-deployment-model.md) cikk.
+> Naplók csak az Azure Resource Manager-alapú üzemi modellben üzembe helyezett erőforrásokhoz érhetők el. Naplók az erőforrások a klasszikus üzemi modellben nem használhat. Szeretné jobban megismerni a két modell, tekintse meg a [Understanding Resource Manager-alapú és klasszikus üzembe helyezési](../azure-resource-manager/resource-manager-deployment-model.md) cikk.
 
 A naplók tárolásához három lehetőség közül választhat:
 
-* **A tárfiók**: tárfiókok használata leginkább a naplók Ha naplók hosszabb ideig tárolja, és szükség esetén tekintse át.
-* **Az Event hubs**: az Event hubs pedig integrálása az egyéb biztonsági adatokat, és eseményt (SEIM) kezelőeszközök megkapja az értesítéseket a erőforrástól függ.
-* **Naplófájl Analytics**: Naplóelemzési használható általános valós idejű figyelés az alkalmazás, vagy megtekint trendeket.
+* **Storage-fiók**: A Storage-fiókok akkor a legmegfelelőbbek a naplók tárolására, ha a naplókat hosszabb ideig tárolják, és szükség esetén áttekintik őket.
+* **Event Hubs-eseményközpont**: Az eseményközpontok ideális megoldások egyéb biztonsági információkkal és eseménykezelési (SEIM) eszközökkel való integrációhoz, amelyekkel az erőforrásokra vonatkozó riasztásokat kaphat.
+* **Log Analytics**: A Log Analytics a legmegfelelőbb az alkalmazás általános valós idejű monitorozásához vagy trendek megtekintéséhez.
 
-### <a name="enable-logging-through-powershell"></a>A PowerShell segítségével naplózásának engedélyezése
+### <a name="enable-logging-through-powershell"></a>PowerShell-lel naplózás engedélyezése
 
-Minden erőforrás-kezelő erőforrás naplózása automatikusan engedélyezve van. Engedélyeznie kell a hozzáférési és naplózási lesznek a naplók keresztül elérhető adatok gyűjtésének elindítása a teljesítményt. A naplózás engedélyezéséhez használja az alábbi lépéseket:
+A tevékenységnaplózás automatikusan engedélyezve van minden Resource Manager-erőforráshoz. Elérhetőség és teljesítmény érdekében ezeket a naplókat keresztül elérhető adatok gyűjtésének megkezdéséhez naplózását engedélyezni kell. A naplózás engedélyezéséhez használja az alábbi lépéseket:
 
-1. Vegye figyelembe a tárfiók erőforrás-azonosító, a naplózási adatok tárolására. Az értéke a következő formátumban: /subscriptions/\<subscriptionId\>/resourceGroups/\<erőforráscsoport-név\>/providers/Microsoft.Storage/storageAccounts/\<tárfióknév\>. Használhatja a tárfiók az előfizetésben. Az Azure portál segítségével előkeresheti ezt az információt.
+1. Jegyezze fel azon Storage-fiók erőforrás-azonosítóját, ahol a naplóadatokat tárolja. Ez az érték a következő formában van: /subscriptions/\<subscriptionId\>/resourceGroups/\<erőforráscsoport-név\>/providers/Microsoft.Storage/storageAccounts/\<tárfiókneve\>. Az előfizetés bármilyen tárfiókját használhatja. Ezeket az információkat az Azure Portalon találhatja meg.
 
-    ![Portál: tárfiók erőforrás-azonosító](./media/application-gateway-diagnostics/diagnostics1.png)
+    ![Portál: storage-fiók erőforrás-azonosító](./media/application-gateway-diagnostics/diagnostics1.png)
 
-2. Vegye figyelembe az Alkalmazásátjáró erőforrás-azonosító, amelynek a naplózás engedélyezve van. Az értéke a következő formátumban: /subscriptions/\<subscriptionId\>/resourceGroups/\<erőforráscsoport-név\>/providers/Microsoft.Network/applicationGateways/\<átjáró alkalmazásnév \>. A portál segítségével előkeresheti ezt az információt.
+2. Vegye figyelembe az application gateway-erőforrás azonosítója, amelyhez a naplózás engedélyezve van. Ez az érték a következő formában van: /subscriptions/\<subscriptionId\>/resourceGroups/\<erőforráscsoport-név\>/providers/Microsoft.Network/applicationGateways/\<application gateway neve \>. Ezeket az információkat a portálon találhatja meg.
 
-    ![Portál: az Alkalmazásátjáró erőforrás-azonosító](./media/application-gateway-diagnostics/diagnostics2.png)
+    ![Portál: az application gateway erőforrás-azonosító](./media/application-gateway-diagnostics/diagnostics2.png)
 
-3. Diagnosztikai naplózás engedélyezése a következő PowerShell-parancsmag segítségével:
+3. Engedélyezze a diagnosztikai naplózást az alábbi PowerShell-parancsmaggal:
 
     ```powershell
     Set-AzureRmDiagnosticSetting  -ResourceId /subscriptions/<subscriptionId>/resourceGroups/<resource group name>/providers/Microsoft.Network/applicationGateways/<application gateway name> -StorageAccountId /subscriptions/<subscriptionId>/resourceGroups/<resource group name>/providers/Microsoft.Storage/storageAccounts/<storage account name> -Enabled $true     
     ```
     
 > [!TIP] 
->Tevékenység naplók nem igényelnek külön tárfiókot. A hozzáférés- és teljesítménynaplózás tárolás használatát szolgáltatás terhel.
+>Tevékenységnaplók nem igényel külön tárfiókot. A Storage hozzáférés- és teljesítménynaplózásra való használata szolgáltatási díjjal jár.
 
-### <a name="enable-logging-through-the-azure-portal"></a>Az Azure portálon keresztül naplózásának engedélyezése
+### <a name="enable-logging-through-the-azure-portal"></a>Naplózás engedélyezése az Azure Portalon
 
-1. Az Azure portálon, az erőforrás található, és kattintson a **diagnosztikai naplók**.
+1. Az Azure Portalon keresse meg az erőforrást, és kattintson **diagnosztikai naplók**.
 
-   Az Alkalmazásátjáró három érhetők el naplók:
+   Az Application Gateway három naplók érhetők el:
 
    * Hozzáférési napló
    * Teljesítmény-napló
-   * Tűzfal-napló
+   * Tűzfal naplója
 
-2. Adatgyűjtés elindításához kattintson **a diagnosztika bekapcsolásához**.
+2. Az adatok gyűjtésének elkezdéséhez kattintson a **Diagnosztika bekapcsolása** elemre.
 
    ![Diagnosztika bekapcsolása][1]
 
-3. A **diagnosztikai beállítások** panel biztosít a diagnosztikai naplók beállításait. Ebben a példában a Naplóelemzési tárolja a naplókat. Kattintson a **konfigurálása** alatt **Naplóelemzési** a munkaterület konfigurálásához. Az event hubs és a storage-fiók használatával is menteni a diagnosztikai naplók.
+3. A **diagnosztikai beállítások** panel biztosít a diagnosztikai naplók beállításait. Ebben a példában a Log Analytics tárolja a naplókat. Kattintson a **konfigurálása** alatt **Log Analytics** a munkaterület konfigurálásához. Eseményközpontot és tárfiókot is használhat a diagnosztikai naplók mentésére.
 
-   ![A konfigurációs folyamat elindítása][2]
+   ![A konfigurációs folyamat indítása][2]
 
-4. Válassza ki egy meglévő Naplóelemzési munkaterületet, vagy hozzon létre egy újat. A példa egy meglévőt.
+4. Válasszon egy meglévő Log Analytics-munkaterületet, vagy hozzon létre egy újat. Ebben a példában egy már meglévőt.
 
-   ![A Naplóelemzési munkaterület beállítások][3]
+   ![Log Analytics-munkaterületek lehetőségei][3]
 
-5. Ellenőrizze a beállításokat, majd kattintson a **mentése**.
+5. Hagyja jóvá a beállításokat, és kattintson a **mentése**.
 
-   ![Diagnosztikai beállítások panel választása esetén][4]
+   ![Diagnosztikai beállítások panelen választása esetén][4]
 
 ### <a name="activity-log"></a>Tevékenységnapló
 
-Alapértelmezés szerint az Azure létrehoz a műveletnapló. A naplók Azure eseménynaplók tárolójában 90 napig megőrződnek. További információ a naplók olvasásával a [események és tevékenységnapló](../monitoring-and-diagnostics/insights-debugging-with-events.md) cikk.
+Az Azure alapértelmezés szerint létrehozza a tevékenységnaplóban. A naplók az Azure-eseménynaplók áruházban 90 napig megőrződnek. További információ a naplók olvassa el a [megtekintése, események és a tevékenységnaplóhoz](../monitoring-and-diagnostics/insights-debugging-with-events.md) cikk.
 
 ### <a name="access-log"></a>Hozzáférési napló
 
-A hozzáférési napló jön létre, csak akkor, ha engedélyezte az összes Application Gateway-példányt, ahogy az az előző lépésben. A tárfiók, ha engedélyezte a naplózást a megadott tárolja az adatokat. Minden egyes hozzáférés Alkalmazásátjáró JSON formátumban jegyzi fel az alábbi példában látható módon:
+A hozzáférési napló jön létre, csak akkor, ha engedélyezte az egyes Application Gateway-példányokon, az előző lépésekben leírtaknak megfelelően. Az adatok a storage-fiók, ha engedélyezte a naplózást a megadott tárolódik. Minden egyes hozzáférés az Application Gateway JSON formátumban rögzíti, az alábbi példában látható módon:
 
 
 |Érték  |Leírás  |
 |---------|---------|
-|instanceId     | A kérés átjáró alkalmazáspéldányt.        |
-|clientIP     | A kérelem származási IP.        |
-|clientPort     | A kérelem származási port.       |
+|instanceId     | Application Gateway-példány a kérés.        |
+|clientIP     | A kérés eredeti IP-cím.        |
+|clientPort     | A kérés eredeti port.       |
 |httpMethod     | A kérelem által használt HTTP-metódus.       |
-|requestUri     | URI-címe, a kérelem érkezett.        |
-|RequestQuery     | **Kiszolgáló irányított**: háttér-készlet-példányt, a kérelem lett elküldve.</br>**X-AzureApplicationGateway-napló-ID**: a kérelemhez használt korrelációs azonosítója. A háttér-kiszolgálókon forgalom problémák hibaelhárításához használható. </br>**KISZOLGÁLÓ-állapota**: Application Gateway kapott a háttér HTTP válaszkódot.       |
-|Felhasználói ügynök     | Felhasználói ügynök a HTTP-kérelem fejléc.        |
-|httpStatus     | HTTP-állapotkód küld vissza az ügyfélnek az Alkalmazásátjáró.       |
-|httpVersion     | A kérelem HTTP-verzió.        |
-|receivedBytes     | Csomag érkezett, bájtban kifejezett mérete.        |
-|SentBytes| Küldött bájtok a csomag mérete.|
-|TimeTaken| (Ezredmásodpercben), hogy mennyi ideig tart a feldolgozandó kérelmet, és a válasz küldését. Ez az az idő, amikor az Alkalmazásátjáró megkapja az idő, amikor a válasz küldése művelet befejezésekor HTTP-kérelem első bájtját időszakaként kiszámítása. Fontos megjegyezni, hogy a Time-Taken mező általában tartalmazza az idő, amely a kérelem-válasz csomagok utazás a hálózaton keresztül. |
-|sslEnabled| Hogy a kommunikáció a háttér-címkészletek SSL használható. Érvényes értékei a be- és kikapcsolható.|
+|requestUri     | A fogadott kérelem URI azonosítója.        |
+|RequestQuery     | **Kiszolgáló útválasztásos**: háttér-készlet-példányt, amely a kérés érkezett.</br>**X-AzureApplicationGateway-LOG-ID**: kérelmében korrelációs Azonosítót. Hibaelhárítás forgalmat a háttér-kiszolgálókon is használható. </br>**A KISZOLGÁLÓÁLLAPOT**: Application Gateway kapott a háttérrendszer HTTP-válaszkód.       |
+|UserAgent     | A HTTP-kérelem fejléce a felhasználói ügynök.        |
+|httpStatus     | HTTP-állapotkódot küld vissza az ügyfélnek, az Application Gateway.       |
+|httpVersion     | A kérelem HTTP-verzióját.        |
+|receivedBytes     | Csomag érkezett, a memória méretét.        |
+|– Küldött bájtok| Küldött bájtok csomag mérete.|
+|timeTaken| (Ezredmásodpercben), hogy mennyi ideig tart a feldolgozandó kérelmet, és a válasz küldésének. Ezt az időközt, amikor megkapja az Application Gateway a HTTP-kérés, hogy az idő, amikor a válasz küldése a művelet végeztével az első bájtig eltelt idő szerint számítjuk ki. Fontos megjegyezni, hogy a Time-Taken mező általában tartalmazza az idő, amely a kérések és válaszok csomagok utazás a hálózaton keresztül. |
+|sslEnabled| A háttérkészlet-kommunikációt használja-e SSL. Érvényes értékek: kapcsolja ki.|
 ```json
 {
     "resourceId": "/SUBSCRIPTIONS/{subscriptionId}/RESOURCEGROUPS/PEERINGTEST/PROVIDERS/MICROSOFT.NETWORK/APPLICATIONGATEWAYS/{applicationGatewayName}",
@@ -208,18 +208,18 @@ A hozzáférési napló jön létre, csak akkor, ha engedélyezte az összes App
 
 ### <a name="performance-log"></a>Teljesítmény-napló
 
-A teljesítmény napló jön létre, csak akkor, ha engedélyezte az összes Application Gateway-példányt, ahogy az az előző lépésben. A tárfiók, ha engedélyezte a naplózást a megadott tárolja az adatokat. A Teljesítménynapló-adatok 1 perces időközönként jön létre. A rendszer a következő adatokat naplózza:
+A teljesítmény napló jön létre, csak akkor, ha engedélyezte, az összes Application Gateway-példányt, az előző lépésekben leírtaknak megfelelően. Az adatok a storage-fiók, ha engedélyezte a naplózást a megadott tárolódik. A Teljesítménynapló-adatok 1 perces időközönként jön létre. A következő adatokat naplózza:
 
 
 |Érték  |Leírás  |
 |---------|---------|
-|instanceId     |  Átjáró alkalmazáspéldányt amelyek esetében az adatok létrehozása. Az egy több-példány Alkalmazásátjáró soronként egy példány van.        |
-|healthyHostCount     | A háttér-készletben található megfelelő gazdagép száma.        |
+|instanceId     |  Application Gateway példány amelyek esetében az adatok létrehozása. A többpéldányos application Gateway egy példány egy sor van.        |
+|healthyHostCount     | A háttér-készlet kifogástalan állapotú gazdagépek száma.        |
 |unHealthyHostCount     | A háttér-készlet nem megfelelő állapotú gazdagépek száma.        |
-|RequestCount     | Kiszolgált kérelmek száma.        |
-|késés | A háttérben, a kérelmek látja, hogy a példány érkező kéréseket késése (ezredmásodpercben). |
+|RequestCount     | Kiszolgált kérések száma.        |
+|késés | A példány érkező kéréseket a háttér, amely kiszolgálja a kérések késése (ezredmásodpercben). |
 |failedRequestCount| Sikertelen kérelmek száma.|
-|Átviteli sebesség| Átlagos átviteli sebessége a legutóbbi naplóban másodpercenként bájtban mért óta.|
+|Átviteli sebesség| Átlagos átviteli bájt / másodpercben mért utolsó naplóban óta.|
 
 ```json
 {
@@ -241,30 +241,30 @@ A teljesítmény napló jön létre, csak akkor, ha engedélyezte az összes App
 ```
 
 > [!NOTE]
-> Késleltetés a időpontban, amikor a HTTP-kérelem első bájtját a HTTP-válasz utolsó bájtját rendszer mikor küldjön idő kiszámítása. Az Alkalmazásátjáró feldolgozási időt és a háttérben, valamint az, hogy a háttér feldolgozni a kérelmet mennyi idő a hálózati költsége összege.
+> Késés az idő az első bájtig eltelt HTTP-kérés fogadásakor, amikor az utolsó bájtig eltelt HTTP-válasz küldésének idejét kiszámítása. Az Application Gateway feldolgozási idő plusz a háttérben, valamint a háttér a kérelem feldolgozásához szükséges idő a hálózati költség összege.
 
-### <a name="firewall-log"></a>Tűzfal-napló
+### <a name="firewall-log"></a>Tűzfal naplója
 
-A tűzfal napló jön létre, csak akkor, ha engedélyezte az egyes Alkalmazásátjáró, ahogy az az előző lépésben. Ez a napló is szükséges, hogy a webalkalmazási tűzfal van-e konfigurálva az Alkalmazásátjáró. A tárfiók, ha engedélyezte a naplózást a megadott tárolja az adatokat. A rendszer a következő adatokat naplózza:
+A tűzfal napló jön létre, csak akkor, ha engedélyezte az összes application gateway az előző lépésekben leírtaknak megfelelően. Ez a napló azt is megköveteli, hogy a webalkalmazási tűzfallal egy alkalmazásátjárón van konfigurálva. Az adatok a storage-fiók, ha engedélyezte a naplózást a megadott tárolódik. A következő adatokat naplózza:
 
 
 |Érték  |Leírás  |
 |---------|---------|
-|instanceId     | Átjáró alkalmazáspéldányt mely tűzfal adatok létrehozása folyamatban van. Az egy több-példány Alkalmazásátjáró soronként egy példány van.         |
-|clientIp     |   A kérelem származási IP.      |
-|clientPort     |  A kérelem származási port.       |
-|requestUri     | A kérelem érkezett URL-CÍMÉT.       |
-|ruleSetType     | A szabály típusának beállítása. A rendelkezésre álló értéke OWASP.        |
-|ruleSetVersion     | A szabálykészlet használt verzió. Lehetséges értékek a következők: program 2.2.9-es és 3.0-s.     |
-|ruleId     | A kiváltó eseményt Szabályazonosító.        |
-|message     | A kiváltó eseményt felhasználóbarát üzenetet. További részletek a részletes adatait tartalmazó részben szerepelnek.        |
-|művelet     |  A kérésre végrehajtott műveletet. Lehetséges értékek a következők: letiltott és engedélyezett.      |
-|hely     | A hely, amelynek a napló jött létre. Jelenleg csak globális mert szabályok globális szerepel.|
-|részletek     | Az eseményindító esemény részleteit.        |
-|details.Message     | A szabály leírása.        |
-|details.data     | A szabály kérelemhez található meghatározott adatok.         |
+|instanceId     | Alkalmazásátjárókhoz melyik tűzfal adatokat generált. A többpéldányos application Gateway egy példány egy sor van.         |
+|clientIp     |   A kérés eredeti IP-cím.      |
+|clientPort     |  A kérés eredeti port.       |
+|requestUri     | A fogadott kérelem URL-címe.       |
+|ruleSetType     | A szabály típusának beállítása. Elérhető érték OWASP.        |
+|Szabálykészlet     | A szabálykészlet használt verziója. Elérhető értékek a következők: 2.2.9-es és 3.0 verziót.     |
+|ruleId     | A riasztást kiváltó esemény szabály azonosítója.        |
+|message     | A riasztást kiváltó esemény felhasználóbarát üzenet. További részletek találhatók a Részletek területen.        |
+|művelet     |  A kérésre végrehajtott műveletet. Elérhető értékek a következők: letiltott és engedélyezett.      |
+|hely     | A hely, amelyhez a napló jött létre. Jelenleg csak globális szabályokat mivel globális szerepel.|
+|részletek     | A riasztást kiváltó esemény részletei.        |
+|details.Message     | A szabály leírását.        |
+|details.data     | Adott adatok találhatók. kérés, amely megfelel a szabálynak.         |
 |details.file     | A szabályt tartalmazó konfigurációs fájlt.        |
-|details.line     | A konfigurációs fájlban, az eseményt kiváltó sorszámot.       |
+|details.line     | A sor száma, amely kiváltotta az eseményt a konfigurációs fájlban.       |
 
 ```json
 {
@@ -294,90 +294,94 @@ A tűzfal napló jön létre, csak akkor, ha engedélyezte az egyes Alkalmazás�
 
 ```
 
-### <a name="view-and-analyze-the-activity-log"></a>Megtekintése és elemzése a műveletnapló
+### <a name="view-and-analyze-the-activity-log"></a>A tevékenységnapló megtekintése és elemzése
 
-Megtekintheti és tevékenység napló adatok elemzése az alábbi módszerek egyikével sem:
+A tevékenységnaplók adatainak megtekintéséhez és elemzéséhez használja az alábbi módszerek bármelyikét:
 
-* **Azure-eszközök**: adatok lekérését a műveletnapló Azure PowerShell, az Azure parancssori felület, az Azure REST API vagy az Azure-portálon keresztül. Részletes útmutatás az egyes módszerek részletes leírást talál az [tevékenység műveletek a Resource Manager](../azure-resource-manager/resource-group-audit.md) cikk.
-* **A Power BI**: Ha még nem rendelkezik egy [Power BI](https://powerbi.microsoft.com/pricing) fiók, próbálkozzon az ingyenes. Használatával a [tevékenységi naplóit Azure-csomag a Power BI tartalmat](https://powerbi.microsoft.com/en-us/documentation/powerbi-content-pack-azure-audit-logs/), elemezheti az adatokat, előre konfigurált irányítópult közül választhat, vagy testre szabhatja.
+* **Azure-eszközök**: Információkat kérhet le a tevékenységnaplóból az Azure PowerShell-lel, az Azure CLI-vel, az Azure REST API-val vagy az Azure Portallal. Az egyes módszerek részletes útmutatóit a [Resource Managerrel végzett tevékenységművelet](../azure-resource-manager/resource-group-audit.md) című cikkben találja.
+* **Power BI**: Ha még nem rendelkezik [Power BI](https://powerbi.microsoft.com/pricing)-fiókkal, ingyenesen kipróbálhatja. A [Power BI-hoz készült Azure Activity Logs-tartalomcsomaggal](https://powerbi.microsoft.com/en-us/documentation/powerbi-content-pack-azure-audit-logs/) olyan előre konfigurált irányítópultokkal elemezheti az adatokat, amelyeket eredeti formájukban vagy testre szabva is használhat.
 
-### <a name="view-and-analyze-the-access-performance-and-firewall-logs"></a>Megtekintése és elemzése a hozzáférést, a teljesítmény és a tűzfalon naplók
+### <a name="view-and-analyze-the-access-performance-and-firewall-logs"></a>Megtekintheti és elemezheti a hozzáférést, a teljesítmény és a tűzfalnaplók
 
-Azure [Naplóelemzési](../log-analytics/log-analytics-azure-networking-analytics.md) a számláló és az Eseménynapló fájlokat is gyűjthet a Blob storage-fiók. Ez magában foglalja a képi megjelenítések és hatékony keresési lehetőségeket a naplók elemzése.
+Azure [Log Analytics](../log-analytics/log-analytics-azure-networking-analytics.md) a számláló és Eseménynapló fájlokat képes gyűjteni a Blob storage-fiók. A Log Analytics vizualizációkat és hatékony keresési lehetőségeket is tartalmaz a naplók elemzéséhez.
 
-Is csatlakozni a tárfiókhoz és a JSON naplóbejegyzéseket a hozzáférés és a teljesítmény-naplók beolvasása. Miután letöltötte a JSON-fájlokat, CSV alakíthatja át őket, és megtekinthetők az Excel-, Power bi-ban, vagy bármely más adatábrázolási eszközt.
+A Storage-fiókjához is csatlakozhat, és lekérheti a hozzáférés- és teljesítménynaplók JSON-naplóbejegyzéseit. A letöltött JSON-fájlokat átalakíthatja CSV-fájlokká, és ezeket megtekintheti az Excelben, Power BI-ban vagy bármely más adatvizualizációs eszközben.
 
 > [!TIP]
-> Ha ismeri a Visual Studio és állandók és a C# változók értékeinek módosítása alapvető fogalmait, használhatja a [konverter eszközök jelentkezzen](https://github.com/Azure-Samples/networking-dotnet-log-converter) elérhető a Githubon.
+> Ha ismeri a Visual Studiót, illetve C#-állandók és -változók módosításának alapfogalmait, használja a GitHubról elérhető [naplókonvertáló eszközöket](https://github.com/Azure-Samples/networking-dotnet-log-converter).
 > 
 > 
+
+#### <a name="analyzing-access-logs-through-goaccess"></a>GoAccess – hozzáférési naplók elemzése
+
+Microsoft közzétette a Resource Manager-sablonnal, amely telepíti és futtatja a népszerű [GoAccess](https://goaccess.io/) analyzer keresse meg a Application Gateway-hozzáférési naplók. GoAccess értékes olyan HTTP-forgalom statisztikáit, például egyedi látogatóinak, a kért fájlokat, a gazdagépek, a operációs rendszerek, a böngészők, HTTP-állapotkódok és egyéb biztosít. További részletekért tekintse meg a [a Resource Manager-sablon mappája a Githubon található információs fájlt](https://aka.ms/appgwgoaccessreadme).
 
 ## <a name="metrics"></a>Mérőszámok
 
-Metrikák egyik újdonsága az egyes Azure-erőforrások ahol teljesítményszámlálók megtekintheti a portálon. Az Alkalmazásátjáró a következő mérőszámokat érhetők el:
+Metrikák egyik újdonsága az egyes Azure-erőforrásokhoz, ahol megtekintheti teljesítményszámlálók a portálon. Az Application Gateway a következő metrikák érhetők el:
 
 - **Jelenlegi kapcsolatok száma**
 - **Sikertelen kérelmek**
-- **Kifogástalan állapotú gazdagép száma**
+- **Kifogástalan állapotú gazdagépek száma**
 
-   Végezhet egy háttér címkészletet alapján egy adott háttérkészlet megfelelő vagy nem megfelelő gazdagépek megjelenítendő száma.
+   Már szűrhet erre a háttérrendszer készlet alapon történik egy adott háttérkészlet megfelelő vagy nem megfelelő gazdagépek megjelenítése.
 
 
-- **Válaszállapot**
+- **Válasz állapota**
 
-   A válasz állapot kód terjesztési 2xx, 3xx, 4xx és 5xx kategóriák válaszok megjelenítendő további csoportosíthatók.
+   Az állapot válaszkódok eloszlása további csoportosíthatók válaszok 2xx, 3xx, 4xx és 5xx kategóriák megjelenítéséhez.
 
 - **Átviteli sebesség**
 - **Kérelmek teljes száma**
-- **A nem megfelelő gazdagép száma**
+- **Nem kifogástalan állapotú gazdagépek száma**
 
-   Végezhet egy háttér címkészletet alapján egy adott háttérkészlet megfelelő vagy nem megfelelő gazdagépek megjelenítendő száma.
+   Már szűrhet erre a háttérrendszer készlet alapon történik egy adott háttérkészlet megfelelő vagy nem megfelelő gazdagépek megjelenítése.
 
-Az Alkalmazásátjáró, tallózással **figyelés** kattintson **metrikák**. Válassza ki, ha az elérhető értékek a **METRIKA** legördülő listából.
+Keresse meg az application gateway alatt **figyelés** kattintson **metrikák**. Az elérhető értékek megtekintéséhez jelölje ki a **METRIKA** legördülő listából.
 
-Az alábbi ábrán egy példa a három metrikák jelennek meg az elmúlt 30 perc lásd:
+Az alábbi képen egy példa három metrikákkal jelenik meg az elmúlt 30 percben lásd:
 
 [![](media/application-gateway-diagnostics/figure5.png "Metrika megtekintése")](media/application-gateway-diagnostics/figure5-lb.png#lightbox)
 
-Metrikák aktuális listájának megtekintéséhez lásd: [támogatott Azure-figyelő metrikák](../monitoring-and-diagnostics/monitoring-supported-metrics.md).
+Metrikák aktuális listáját, olvassa el [az Azure monitorban támogatott mérőszámok](../monitoring-and-diagnostics/monitoring-supported-metrics.md).
 
 ### <a name="alert-rules"></a>Riasztási szabályok
 
-Megkezdheti a riasztási szabályok alapján egy erőforrás metrikáit. Például egy riasztás hívható meg olyan webhook vagy a rendszergazda e-mail, ha az alkalmazás-átjáró átviteli fent, alatt vagy küszöbértékkel van a megadott idő.
+Riasztási szabályok alapján egy erőforrás metrikáit is elindítható. Egy riasztás például webhook meghívása vagy e-mail rendszergazda, ha az application Gateway átviteli fent, alatt vagy küszöbértékkel van a megadott időszakra.
 
-A következő példa bemutatja, hogyan létrehozása, amely egy e-mailt küld a rendszergazda után átviteli megszegése küszöbérték a riasztási szabályt:
+Az alábbi példa végigvezeti egy riasztási szabályt, amely e-mailt küld egy rendszergazda után átviteli szabályok megsértése esetén alkalmazandók egy küszöbérték létrehozása:
 
-1. Kattintson a **metrika riasztás hozzáadása** megnyitásához a **Hozzáadás szabály** panelen. Ezen a panelen a metrikák paneljéről is elérhető.
+1. Kattintson a **metrikariasztás hozzáadása** megnyitásához a **szabály felvétele** panelen. Ezen a panelen, a metrikák paneljén is elérheti.
 
-   !["Metrika riasztás felvétele" gombra][6]
+   !["Metrikariasztás hozzáadása" gomb][6]
 
-2. Az a **Hozzáadás szabály** panelen, töltse ki a nevét, a feltételt, és értesíti a szakaszok, majd kattintson **OK**.
+2. Az a **szabály felvétele** panelen töltse ki a nevét, a feltétel, és a szakaszok értesítése, és kattintson **OK**.
 
-   * Az a **feltétel** választó, válasszon ki egy négy eleme: **nagyobb, mint**, **nagyobb vagy egyenlő**, **kisebb, mint**, vagy **Kisebb vagy egyenlő, mint**.
+   * Az a **feltétel** választó, válasszon egyet a négy értéket az: **nagyobb**, **nagyobb vagy egyenlő**, **kisebb, mint**, vagy **Kisebb vagy egyenlő**.
 
-   * Az a **időszak** választó, jelöljön ki egy időszakot öt perc hat órán keresztül.
+   * Az a **időszak** választó, jelöljön ki egy időszakot öt perc alatt hat óra.
 
-   * Ha **E-mail-tulajdonosok, közreműködőknek és olvasóknak**, az e-mailt dinamikus lehet az erőforráshoz hozzáféréssel rendelkező felhasználók alapján. Ellenkező esetben a felhasználók vesszővel elválasztott listája biztosíthat a **további rendszergazda email(s)** mezőbe.
+   * Ha **E-mail-tulajdonosoknak, közreműködőknek és olvasóknak**, az e-mailben dinamikus lehet az adott erőforráshoz hozzáféréssel rendelkező felhasználók száma alapján. Ellenkező esetben megadhatja a felhasználók vesszővel elválasztott listája a **további rendszergazdai email(s)** mezőbe.
 
-   ![A szabály panel hozzáadása][7]
+   ![Adja hozzá a szabály panel][7]
 
-Ha a küszöb áldozata ilyen illetéktelen behatolásnak, egy e-mailt, az alábbi képen egy hasonló érkezik:
+Ha a küszöbértékének érkezik egy e-mailt, amely egy, az alábbi képen hasonló:
 
-![E-mailt a megszegéshez tartozó küszöbérték][8]
+![E-mailben szegve küszöbérték][8]
 
-A riasztások listája egy metrika riasztás létrehozása után jelenik meg. A riasztási szabályok áttekintést biztosít.
+Metrikariasztás létrehozása után megjelenik a riasztások listája. A riasztási szabályok áttekintést biztosít.
 
 ![Riasztások és a szabályok listája][9]
 
-Riasztási értesítések kapcsolatos további információkért lásd: [riasztási értesítéseket](../monitoring-and-diagnostics/insights-receive-alert-notifications.md).
+Riasztási értesítések kapcsolatos további információkért lásd: [riasztási értesítések fogadása](../monitoring-and-diagnostics/insights-receive-alert-notifications.md).
 
-További információ a webhookok, és hogyan használhatók a riasztások ismertetése, látogasson el a [olyan webhook konfigurálása Azure metrika riasztást](../monitoring-and-diagnostics/insights-webhooks-alerts.md).
+Ismerje meg jobban webhookok, és hogyan használhatja azokat a riasztásokat, a Microsoft [webhook konfigurálása az Azure metrikariasztás](../monitoring-and-diagnostics/insights-webhooks-alerts.md).
 
 ## <a name="next-steps"></a>További lépések
 
-* A számláló és az eseménynaplók színtartományok használatával [Naplóelemzési](../log-analytics/log-analytics-azure-networking-analytics.md).
-* [Megjelenítheti a Power bi Azure tevékenységnapló](http://blogs.msdn.com/b/powerbi/archive/2015/09/30/monitor-azure-audit-logs-with-power-bi.aspx) blogbejegyzést.
-* [Megtekintése és elemzése a Power bi-ban és több Azure tevékenységi naplóit](https://azure.microsoft.com/blog/analyze-azure-audit-logs-in-powerbi-more/) blogbejegyzést.
+* Számláló és eseménynaplóinak megjelenítése használatával [Log Analytics](../log-analytics/log-analytics-azure-networking-analytics.md).
+* [A Power bi-ban az Azure tevékenységnapló megjelenítése](http://blogs.msdn.com/b/powerbi/archive/2015/09/30/monitor-azure-audit-logs-with-power-bi.aspx) blogbejegyzést.
+* [Megtekintheti és elemezheti a Power BI és egyéb Azure-Tevékenységnaplók](https://azure.microsoft.com/blog/analyze-azure-audit-logs-in-powerbi-more/) blogbejegyzést.
 
 [1]: ./media/application-gateway-diagnostics/figure1.png
 [2]: ./media/application-gateway-diagnostics/figure2.png

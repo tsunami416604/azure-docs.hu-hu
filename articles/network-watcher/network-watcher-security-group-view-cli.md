@@ -1,6 +1,6 @@
 ---
-title: Hálózati biztonság Azure Network Watcher biztonsági csoport nézet - Azure CLI 2.0 elemzése |} A Microsoft Docs
-description: Ez a cikk azt ismerteti, hogyan elemezheti a biztonsági csoport nézet a virtuális gépek biztonsági az Azure CLI 2.0 használatával.
+title: Hálózati biztonság Azure Network Watcher biztonsági csoport nézet - Azure CLI-vel elemzése |} A Microsoft Docs
+description: Ez a cikk azt ismerteti, hogyan elemezheti a biztonsági csoport nézet a virtuális gépek biztonsági az Azure CLI használatával.
 services: network-watcher
 documentationcenter: na
 author: jimdial
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.openlocfilehash: 82cd0d97a64819ae8528850ba9a44800bf960afc
-ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
+ms.openlocfilehash: 2b96c82f92ea49fa5bcb35d180240eb939d29d04
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39090558"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46962895"
 ---
-# <a name="analyze-your-virtual-machine-security-with-security-group-view-using-azure-cli-20"></a>Azure CLI 2.0 használatával a biztonsági csoport nézet a virtuális gép biztonsági elemzése
+# <a name="analyze-your-virtual-machine-security-with-security-group-view-using-azure-cli"></a>Azure CLI-vel a biztonsági csoport nézet a virtuális gép biztonsági elemzése
 
 > [!div class="op_single_selector"]
 > - [PowerShell](network-watcher-security-group-view-powershell.md)
@@ -30,10 +30,7 @@ ms.locfileid: "39090558"
 
 Biztonsági csoport nézet konfigurált és érvényben lévő hálózati biztonsági szabályok a virtuális gépek alkalmazott adja vissza. Ez a funkció akkor hasznos, naplózás, és diagnosztizálhatja hálózati biztonsági csoportok és annak érdekében, hogy folyamatban van a forgalom egy virtuális gépen konfigurált szabályok megfelelően engedélyezi vagy megtagadja. Ebben a cikkben bemutatjuk, hogyan kérheti le a konfigurált és érvényben lévő biztonsági szabályokat a virtuális gépek Azure CLI használatával
 
-
-Ez a cikk használja felületek következő generációját képviseli CLI a resource management üzemi modellhez, az Azure CLI 2.0 használatával, amely Windows, Mac és Linux rendszereken érhető el.
-
-Ebben a cikkben szereplő lépések végrehajtásához kell [telepítse az Azure parancssori felület Mac, Linux és Windows (Azure CLI)](https://docs.microsoft.com/cli/azure/install-az-cli2).
+Ebben a cikkben szereplő lépések végrehajtásához kell [telepítse az Azure parancssori felület Mac, Linux és Windows (CLI)](/cli/azure/install-azure-cli).
 
 ## <a name="before-you-begin"></a>Előkészületek
 

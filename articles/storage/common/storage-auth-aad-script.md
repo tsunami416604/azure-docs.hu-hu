@@ -5,15 +5,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 09/14/2018
+ms.date: 09/20/2018
 ms.author: tamram
 ms.component: common
-ms.openlocfilehash: e9e47214ffed94f45a1a44a19234484f13ba452e
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.openlocfilehash: 984185febf770ae10a021d129b0ef6c43da4d0f1
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45632194"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47032767"
 ---
 # <a name="use-an-azure-ad-identity-to-access-azure-storage-with-cli-or-powershell-preview"></a>Az Azure AD identity használata a parancssori felület vagy a PowerShell (előzetes verzió) az Azure Storage eléréséhez
 
@@ -56,35 +56,45 @@ A társított környezeti változót a `--auth-mode` paraméter `AZURE_STORAGE_A
 
 ## <a name="call-powershell-commands-with-an-azure-ad-identity"></a>Hívja a PowerShell-parancsok az Azure AD-identitás használata
 
+Az Azure PowerShell támogatja az Azure AD identitás csak a következő előzetes verziójú modulok egyikével jelentkezik: 
+
+- 4.4.0-Preview 
+- 4.4.1-Preview 
+
 Azure PowerShell használatával jelentkezzen be az Azure AD identitás:
 
-1. Győződjön meg arról, hogy telepítve van a PowerShellGet legújabb verzióját. Futtassa a következő parancsot a legújabb verziójának telepítéséhez:
+1. Távolítsa el az összes az Azure PowerShell előző telepítés:
+
+    - Távolítsa el az összes korábbi telepítés az Azure PowerShell használatával Windows a **alkalmazások és szolgáltatások** menüpont **beállítások**.
+    - Távolítsa el az összes **Azure*** a modulok `%Program Files%\WindowsPowerShell\Modules`.
+
+1. Győződjön meg arról, hogy telepítve van a PowerShellGet legújabb verzióját. Nyisson meg egy Windows PowerShell-ablakot, és a legújabb verzió telepítéséhez a következő parancsot:
  
     ```powershell
     Install-Module PowerShellGet –Repository PSGallery –Force
     ```
+1. Zárja be, majd nyissa meg a PowerShell-ablakban a PowerShellGet telepítése után. 
 
-2. Távolítsa el az összes az Azure PowerShell korábbi telepítés.
-3. Telepítse az AzureRM:
+1. Telepítse az AzureRM:
 
     ```powershell
     Install-Module AzureRM –Repository PSGallery –AllowClobber
     ```
 
-4. Az előzetes verzió modul telepítése:
+1. Telepítse az előzetes verziójú modulok egyike:
 
     ```powershell
-    Install-Module -Name Azure.Storage -AllowPrerelease –AllowClobber -RequiredVersion "4.4.1-preview" 
+    Install-Module Azure.Storage –Repository PSGallery -RequiredVersion 4.4.1-preview  –AllowPrerelease –AllowClobber –Force 
     ```
+1. Zárja be és nyissa meg ismét a PowerShell-ablakban.
+1. Hívja a [New-azurestoragecontext parancsmaggal kapcsolatos](https://docs.microsoft.com/powershell/module/azure.storage/new-azurestoragecontext) parancsmag segítségével hozzon létre egy környezetet, és tartalmazza a `-UseConnectedAccount` paraméter. 
+1. Meghívnak egy parancsmagot, az Azure AD-identitásnak, hogy az újonnan létrehozott környezet átadása a parancsmaghoz.
 
-5. Hívja a [New-azurestoragecontext parancsmaggal kapcsolatos](https://docs.microsoft.com/powershell/module/azure.storage/new-azurestoragecontext) parancsmag segítségével hozzon létre egy környezetet, és tartalmazza a `-UseConnectedAccount` paraméter. 
-6. Meghívnak egy parancsmagot, az Azure AD-identitásnak, hogy a környezet átadható a parancsmagnak.
-
-Az alábbi példa bemutatja az Azure PowerShell-lel a tárolóban lévő blobok listázása az Azure AD-identitás használatával: 
+Az alábbi példa bemutatja, hogyan az Azure PowerShell tárolóban lévő blobok listázásához az Azure AD-identitás használatával. Ügyeljen arra, hogy cserélje le a helyőrző fiók és a tároló nevét a saját értékeire: 
 
 ```powershell
-$ctx = New-AzureStorageContext -StorageAccountName $storageAccountName -UseConnectedAccount 
-Get-AzureStorageBlob -Container $sample-container -Context $ctx 
+$ctx = New-AzureStorageContext -StorageAccountName storagesamples -UseConnectedAccount 
+Get-AzureStorageBlob -Container sample-container -Context $ctx 
 ```
 
 ## <a name="next-steps"></a>További lépések

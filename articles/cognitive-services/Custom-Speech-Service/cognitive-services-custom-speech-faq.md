@@ -1,6 +1,6 @@
 ---
-title: Gyakran ismételt kérdések a egyéni beszéd szolgáltatás az Azure-on |} Microsoft Docs
-description: Az alábbiakban a kérdésekre adott válaszok a legnépszerűbb az egyéni beszéd szolgáltatásról.
+title: Kapcsolatos gyakori kérdések a Custom Speech Service az Azure-ban |} A Microsoft Docs
+description: Az alábbiakban a Custom Speech Service legnépszerűbb kérdésekre adott válaszok.
 services: cognitive-services
 author: PanosPeriorellis
 manager: onano
@@ -9,141 +9,142 @@ ms.component: custom-speech
 ms.topic: article
 ms.date: 11/21/2016
 ms.author: panosper
-ms.openlocfilehash: a929869b36387b3257b672308ceca36c84ff8cae
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ROBOTS: NOINDEX
+ms.openlocfilehash: 5ab4adefbfbfa1a295f980fd31bffaeaa957ce0c
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35347190"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46955282"
 ---
-# <a name="custom-speech-service-frequently-asked-questions"></a>Egyéni beszéd szolgáltatás gyakran ismételt kérdések
+# <a name="custom-speech-service-frequently-asked-questions"></a>Custom Speech Service – gyakori kérdések
 
-Ha ez a GYIK a kérdésekre adott válaszok nem található, próbálja meg az egyéni beszéd Service Közösség kérése a [StackOverflow](https://stackoverflow.com/questions/tagged/project-oxford+or+microsoft-cognitive) és [UserVoice](https://cognitive.uservoice.com/)
+Ha nem találja a kérdésekre adott válaszok a gyakori kérdések, próbálja meg a Custom Speech Service Közösség kéri a [StackOverflow](https://stackoverflow.com/questions/tagged/project-oxford+or+microsoft-cognitive) és [uservoice-on](https://cognitive.uservoice.com/)
 
 ## <a name="general"></a>Általános kérdések
 
-**Kérdés**: hogyan fogja tudni, ha az adatok vagy a modell feldolgozása befejeződött?
+**Kérdés**: Honnan tudom, ha az adatkészlet vagy a modell feldolgozása befejeződött?
 
-**Válasz**: a modell vagy a tábla adatkészlet állapota jelenleg tudja csak szeretne.
-Amikor a feldolgozás befejeződik, az állapota lesz "Kész".
-Továbbfejlesztett feldolgozás állapota, például az e-mailben értesítést kommunikációs módszerek jelenleg is dolgozunk.
+**Válasz**: a modell vagy a tábla adatkészlet állapota jelenleg az egyetlen szeretné tudni, hogy.
+A feldolgozás befejeződése után a állapota "Kész" lesz.
+Továbbfejlesztett állapotának, például az e-mail-értesítés feldolgozása kommunikációs módszerek is dolgozunk.
 
-**Kérdés**: hozható létre egynél több modell egyszerre?
+**Kérdés**: hozhatok létre egynél több modell egyszerre?
 
-**Válasz**: nincs korlátozva, hogy hány modellek a gyűjteményben, de minden oldalon egyszerre csak egy hozhatók létre.
-Például egy nyelvi modell létrehozási folyamat nem indítható, ha jelenleg a nyelvi modell folyamat szakaszában.
-Is, azonban rendelkezik egy akusztikus modell és a nyelvi modell feldolgozása egy időben. 
+**Válasz**: nem korlátozott, hogy hány modellek a gyűjteményben lévő, de minden oldalon egyszerre csak egy lehet létrehozni.
+A nyelvi modell-létrehozási folyamata például, ha jelenleg a nyelvi modell a folyamat állapotban nem lehet elindítani.
+Az akusztikai modell és a egy nyelvi modell feldolgozása egyszerre azonban is rendelkezik. 
 
-**Kérdés**: I is tudjuk, hogy végzett a hibát. Hogyan szakítsa meg az adatok importálását, illetve a modell létrehozása folyamatban? 
+**Kérdés**: vettem hiba. Hogyan megszakítja a saját adatok importálása vagy folyamatban lévő létrehozását modellkezelési? 
 
-**Válasz**: jelenleg nem állítható vissza egy akusztikus vagy nyelvi kiigazítása folyamat.
-Az importálás után törölheti importált adatok
+**Válasz**: jelenleg nem vonható vissza egy akusztikai és nyelvi betanítás folyamat.
+Importált adatok az importálás befejezése után lehet törölni
 
-**Kérdés**: a keresési & Diktálás modellek és a Conversational modellek közötti különbségek?
+**Kérdés**: Mi a különbség a Keresés & Diktálás modelleket és a természetes nyelvi modellek között?
 
-**Válasz**: nincsenek két talál akusztikus & nyelvi modellek az egyéni beszéd szolgáltatásban választhat.
-keresési lekérdezések, vagy Diktálás # témakör. A Microsoft Conversational AM megfelelő conversational Style szóbeli beszéd ismer fel.
-Az ilyen típusú beszéd általában irányul másik személynek, többek között a telefonos ügyfélszolgálatok vagy értekezletek.
+**Válasz**: nincsenek két alap akusztikai és nyelvi modelleket a Custom Speech Service közül választhat.
+keresési lekérdezések vagy Diktálás. A Microsoft Conversational AM akkor megfelelő, a beszéd beszélt természetes nyelvi stílus felismerve.
+Az ilyen típusú speech általában irányul másik személynek, például a telefonos ügyfélszolgálatok vagy értekezletek.
 
-**Kérdés**: frissíthetők a meglévő model (modell halmozott)?
+**Kérdés**: is frissíthetők a saját meglévő model (modell rétegezést)?
 
-**Válasz**: jelenleg nem lehetővé teszik a meglévő modell frissítéséhez az új adatokat.
-Ha egy új adatkészlet rendelkezik, és szeretné testre szabni a meglévő modell kell újra alakítani az új adatok és a használt régi adatkészlettel.
-A régi és új adatkészletek kapcsolóval együtt kell használni a egyetlen .zip (ha akusztikus adatok) vagy egy .txt fájlt, ha egyszer kiigazítása nyelvi adatok történik, az új frissített modell rendelkeznie kell deszerializálni telepített új végpont beszerzése
+**Válasz**: nem biztosítunk lehetővé teszi egy meglévő modell új adatokkal frissülnek.
+Ha egy új adatkészletet és egy meglévő modell testreszabásához kell újra alakítani az új adatokat és a régi adatkészletet is használt.
+A régi és új adatkészletek kell kombinálhatók egyetlen .zip (ha akusztikai adathoz) vagy egy .txt fájl nyelvi adatok egyszer betanítás esetén történik az új frissített modell kell lennie a megszüntetéséhez telepített új végpont beszerzése
 
-**Kérdés**: Mi történik, ha az alapértelmezett értéknél nagyobb feldolgozási van szükség. 
+**Kérdés**: Mi történik, ha van szükségem az alapértelmezett értéknél magasabb szintű egyidejűség érdekében. 
 
-**Válasz**: legfeljebb 5 egyidejű kérelmek méretezési egységek telepítésnek lépésekben a modell. Minden egyes méretezési egység biztosítja, hogy az, hogy a modell lehet egyidejűleg feldolgozni 5 hangadatfolyam. 100 méretezési egységeket (vagy 500 egyidejű kérelmek) vásárolhatja meg.
+**Válasz**: a modell 5 egyidejű kérés, amelyet a skálázási egység nevezzük egységnyi növekményekben vertikálisan felskálázhatja. Minden egyes méretezési egység garantálja, hogy a modell képes egyszerre feldolgozni 5 audio-adatfolyam. 100 skálázási egységeket (vagy 500 egyidejű kérelmek) vásárolhatók meg.
 
-Lépjen kapcsolatba velünk Ha magasabb, mint az, hogy van szüksége.
+Lépjen kapcsolatba velünk, ha magasabb, mint az, hogy van szüksége.
 
-**Kérdés**: is szeretnék a modell letöltése és Futtatás helyben?
+**Kérdés**: I letöltheti futtassam és helyileg futtatja az alkalmazást?
 
-**Válasz**: nem engedélyezzük letölti és helyben végrehajtott modellek.
+**Válasz**: nem engedélyezzük a modellek kell tölteni és helyben végrehajtott.
 
-**Kérdés**: a rendszer naplózza a kérelem?
+**Kérdés**: saját naplózott kérések?
 
-**Válasz**: megválaszthatja, hogy kikapcsolja a nyomkövetés, amikor nincsenek hang központi telepítés létrehozásakor vagy transcriptions bekerülnek a naplóba. Ellenkező esetben kérelmek általában jelentkezett be az Azure-ban biztonságos tárolására. Ha további adatvédelmi megfontolások, amelyek nem engedik a szolgáltatással az egyéni beszéd adja, lépjen velünk kapcsolatba.
+**Válasz**: választhat, hogy a nyomkövetés, onnantól nem hang kikapcsolhatják a központi telepítés létrehozása során, vagy beszédátírás lesz naplózva. Ellenkező esetben kérelmek általában jelentkezett be az Azure-ban biztonságos tárolására. Ha további adatvédelmi megfontolások, amelyek nem engedik a Custom Speech Service segítségével lépjen kapcsolatba velünk.
 
 ## <a name="importing-data"></a>Adatok importálása
 
-**Kérdés**: Mi az, hogy az adatkészlet méretének korlátot? Hogy miért? 
+**Kérdés**: Mi az az adatkészlet méretének korlátját? Hogy miért? 
 
-**Válasz**: az aktuális adatkészlet határa 2 GB-ot, HTTP feltöltésének fájl mérete a korlátozás miatt. 
+**Válasz**: az adatkészlet jelenleg legfeljebb 2 GB HTTP feltöltendő fájl mérete a korlátozás miatt nem lehetséges. 
 
-**Kérdés**: is szeretnék a zip-saját szövegfájlok ahhoz, hogy nagyobb szöveges fájl feltöltése? 
+**Kérdés**: is szeretnék zip saját szöveges fájlok annak érdekében, hogy töltsön fel egy nagyobb szöveges fájlt? 
 
-**Válasz**: nem, jelenleg csak a tömörítetlen szövegfájlok használata engedélyezett.
+**Válasz**: nem, jelenleg csak a tömörítetlen szöveges fájlok engedélyezettek.
 
-**Kérdés**: A jelentés szerint a utterances sikertelen volt. Az ezt a problémát?
+**Kérdés**: az adatok a jelentés szerint a utterances sikertelen volt. Az ezt a problémát?
 
-**Válasz**: Ha csak néhány utterances nem sikerült importálása sikertelen volt, de ez nem probléma.
-Ha az adatok akusztikus vagy nyelvi utterances többsége (pl. > 95 %-os) sikeresen importálva, az adatkészlet is használható. Ajánlott azonban, hogy megpróbálja megállapítani, hogy a utterances miért bukott, és hárítsa el a problémákat.
-Leggyakoribb problémák, például formázási hibákat, amelyek könnyen javítsa ki. 
+**Válasz**: Ha csak néhány utterances sikertelen importálása sikeresen megtörtént, de ez nem probléma.
+Ha egy akusztikai és nyelvi adatok megcímkézzen túlnyomó többsége (pl. > 95 %-os) sikeresen importálva, az adatkészlet is használható. Ajánlott azonban, hogy próbálja megérteni, hogy megcímkézzen miért volt sikertelen, és hárítsa el a problémákat.
+Leggyakoribb problémák, például a formázási hibákat, olyan könnyű megoldást kínál. 
 
 ## <a name="creating-am"></a>DE létrehozása
 
-**Kérdés**: akusztikus adatok van szükségem?
+**Kérdés**: mennyi akusztikai adatot van szükségem?
 
-**Válasz**: javasoljuk akusztikus adatok egy óra 30 perc
+**Válasz**: javasoljuk, hogy az egy órás akusztikai adathoz 30 perc alatt
 
 **Kérdés**: az adatok milyen rendezési kell gyűjteni?
 
-**Válasz**: adatokat gyűjthet, amelyek a forgatókönyvet közel van és a lehető és nagybetűhasználattal kell.
-Ez azt jelenti, hogy az adatgyűjtés meg kell egyeznie a cél alkalmazás és a felhasználók eszközt vagy eszközöket, környezetek és hangszórók típusú. Általában akkor kell amikből adatgyűjtést legszélesebb hangszórók lehető széles. 
+**Válasz**: kell a forgatókönyvet legközelebb adatok gyűjtésére és kis-és nagybetűhasználattal lehető.
+Ez azt jelenti, hogy az adatgyűjtés meg kell egyeznie a cél alkalmazás és a felhasználók eszköz vagy eszközök, a környezetek és előadói típusú tekintetében. Általában érdemes összegyűjtötte az adatokat a legszélesebb beszélők minél számos. 
 
-**Kérdés**: hogyan kell gyűjteni az? 
+**Kérdés**: hogyan kell gyűjteni azt? 
 
-**Válasz**: hozzon létre egy önálló adatok gyűjtemény alkalmazást, vagy bizonyos ki a forgalomban hangrögzítés programot.
-Az alkalmazás, amely a hangadatok naplózza, és használja, amely egy verziója is létrehozhat. 
+**Válasz**: adatok gyűjtése önálló alkalmazás létrehozása, vagy használhatja a ki a kereskedelmi rendszerhang rögzítésének szoftvert.
+Az alkalmazás, amely az audio adatokat naplózza, és használja, amely egy verziója is létrehozhat. 
 
-**Kérdés**: kell átírni kiigazítása adatok magam megírni? 
+**Kérdés**: kell átvezeti betanítás magam? 
 
-**Válasz**: az adatok kért kell lennie. Saját kezűleg átvezeti, vagy használjon szakmai írjanak elő szolgáltatást. Közösségi ezek használatát szakmai transcribers, míg mások egyes használja. Azt is javasoljuk, hogy kérésre írjanak elő szolgáltatás.
+**Válasz**: az adatok megjelenített érzéseket kell lennie. Lefényképezze saját maga, vagy szakmai beszédátírási szolgáltatást használ. Közösségi használja ezeket használja szakmai transcribers és mások. Azt is javasoljuk, hogy egy beszédátírási szolgáltatás kérésre.
 
-**Kérdés**: mennyi időt vesz igénybe, létrehozhat egy egyéni akusztikus modellt?
+**Kérdés**: mennyi időt vesz igénybe egy egyéni akusztikai modell létrehozásához?
 
-**Válasz**: A feldolgozási ideje létrehozni egy egyéni akusztikus modell tárgya ugyanaz, mint a akusztikus adatkészlet hosszát.
-Igen, öt órát adatkészlet alapján létrehozott testreszabott akusztikus modell órát fog igénybe venni körülbelül öt folyamathoz. 
+**Válasz**: arra készül, ugyanaz, mint a akusztikai adatkészlet hossza, a feldolgozási idő egy importálni akusztikai modell létrehozásához.
+Így a testreszabott akusztikai modell öt órát adatkészletből egy órát fog igénybe venni nagyjából öt folyamatot. 
 
 ## <a name="offline-testing"></a>Offline tesztelés
 
-**Kérdés**: végezheti meg, hogy egy egyéni nyelvi modell használatával saját egyéni akusztikus modell offline vizsgálat?
+**Kérdés**: végrehajtható meg, hogy saját egyéni nyelvi modell segítségével importálni akusztikai modell offline tesztelés?
 
-**Válasz**: Igen, csak az egyéni nyelvi modellek válassza ki a legördülő lista az offline vizsgálat beállításakor
+**Válasz**: Igen, csak adja meg a testreszabott nyelvi modell, miután beállította az offline vizsgálat legördülő
 
-**Kérdés**: végezheti meg, hogy saját egyéni akusztikus modell segítségével egyéni nyelvi modell offline vizsgálat?
+**Kérdés**: végrehajtható meg, hogy saját egyéni nyelvi modell, egy egyéni akusztikai modell használatával offline tesztelés?
 
-**Válasz**: Igen, egyszerűen jelölje ki a egyéni akusztikus modellt a legördülő menü az offline vizsgálat beállítása során.
+**Válasz**: Igen, a importálni akusztikai modell csak válassza a legördülő menüben az offline vizsgálat beállításakor.
 
-**Kérdés**: Mi Word Hibaarány, és hogyan azt számított?
+**Kérdés**: Mi az a Word Hibaarány, és hogyan, számított?
 
-**Válasz**: Word hibaarány a beszédfelismerés értékelési metrikát. A hibák összesített számát, beleértve a beszúrások, törléseket és helyettesítések hivatkozás írjanak elő szavak száma osztva számítanak.
+**Válasz**: Word Hibaarány az értékelés metrika beszédfelismerési. A hibák teljes száma, amely tartalmazza a beszúrások, törléseket és helyettesítések továbbá, a hivatkozás beszédátírási szavak száma osztva számítani.
 
-**Kérdés**: I most már tudja saját egyéni modell a vizsgálati eredmények, a ez helyes, vagy hibás számnak?
+**Kérdés**: I most már ismeri a vizsgálati eredmények, saját egyéni modell, jó, vagy hibás számnak szó?
 
-**Válasz**: az eredmények megjelenítése a modell, és a testreszabott összehasonlítása.
-Meg kell célja, hogy a modell létrehozásához a testreszabási megfelelőbb járulhatnak
+**Válasz**: az eredmények megjelenítése a modell és a egy testreszabott összehasonlítását.
+Meg kell célja, hogy a modell, hogy a testreszabási adnak a munkánknak beat
 
-**Kérdés**: hogyan tegye I mérje fel, a WER alap modell, ezért láthatom, ha hiba történt a fokozása? 
+**Kérdés**: hogyan do I döntse el, a WER alap modell, így látható, hogy történt-e fokozása? 
 
-**Válasz**: A kapcsolat nélküli vizsgálati eredmények megjelenítése az egyéni és javítása alapterv pontosságát pontosságát alapterv keresztül
+**Válasz**: az offline vizsgálat eredményeit mutatja a egyéni modell és a javítása alapkonfiguráció pontosságát pontosságát alapkonfiguráció
 
 ## <a name="creating-lm"></a>Az LM létrehozása
 
-**Kérdés**: mennyi szöveges adatot kell feltölteni?
+**Kérdés**: szöveges adatok mennyiségét kell feltölteni?
 
-**Válasz**: Ez a pontos választ adhat nehéz kérdést, attól függ, hogy különböző szóhasználatának és az alkalmazásban használt kifejezések során a rendszer a kiindulási nyelvi modelleket. Minden új szó akkor célszerű listázzák használata a lehető legtöbb példákat. A közös az alkalmazásban használt kifejezések a nyelvi adatok lévőket is beleértve olyan esetekben is hasznos, azt jelzi, hogy a rendszer ezeket a feltételeket, valamint a figyelésére.
-Gyakori, hogy legalább száz és általában több száz utterances a nyelvi adatkészlet vagy több olyan is.
-Emellett ha bizonyos * a lekérdezések kellene lennie, mint a többi gyakori, a következő adatkészletben közös lekérdezések több példányát is beszúrhat.
+**Válasz**: Ez egy bonyolult kérdést a pontos választ adni, attól függ, hogy különböző, a szöveg szóhasználati, és az alkalmazásban használt kifejezések a kiindulási nyelvi modellek vannak. Minden új szavak célszerű azokat a szavakat használatát a lehető legtöbb példákat biztosítanak. Az alkalmazásában használt gyakori kifejezések beleértve azokat a nyelvi adatok akkor is hasznos, ahogy azt jelzi, hogy a rendszer figyelni ezeket a feltételeket, valamint a.
+Gyakori, hogy legalább száz és általában több száz utterances nyelvi adatkészlet vagy több olyan fontos.
+Is ha bizonyos típusú * a lekérdezések várhatóan gyakoribb a többinél, az adatkészlet több másolatot a gyakori lekérdezések beszúrásához.
 
-**Kérdés**: I csak feltöltheti szavak listáját?
+**Kérdés**: csak feltölthetek olyan szólistát?
 
-**Válasz**: szavakat feltöltése fogja lekérni a Szójegyzék a szavakat azonban tanítja meg a rendszer a szavakat általában használata.
-Teljes vagy részleges utterances (mondat vagy felhasználók várhatóan mondja ki a műveleteket kifejezések) biztosításával a nyelvi modell megtudhatja, az új szavak és azok használata. Az egyéni nyelvi modell helyes, nem csak az első, a rendszer új szavakat, hanem az alkalmazás ismert szavak valószínűségét hangolását. Ismerje meg, ez a rendszer teljes utterances biztosító segítségével. 
+**Válasz**: feltöltése szavak listáját beszédstílusok, a szavakat lekérése azonban tartalmazza a rendszer a szavakat általában használata.
+Teljes vagy részleges utterances (mondatokból vagy kifejezésekből vagy a felhasználók valószínűleg övezi hálózata) biztosításával a nyelvi modell tudhat meg az új szavakat és a használatuk. Az egyéni nyelvi modell jó, nem csak az első, a rendszer új szavak, hanem az alkalmazás ismert szavak valószínűségét hangolását. Teljes kimondott szöveg így segít a rendszer megtanulja ezeket. 
 
 -----
 
  * [Áttekintés](cognitive-services-custom-speech-home.md)
- * [Megkezdődött](cognitive-services-custom-speech-get-started.md)
+ * [Elindítva](cognitive-services-custom-speech-get-started.md)
  * [Szószedet](cognitive-services-custom-speech-glossary.md)

@@ -1,22 +1,22 @@
 ---
-title: Az Azure HDInsight-tartományhoz csatlakoztatott fürtök Apache Hadoop Oozie-munkafolyamatok
-description: Használat Hadoop Oozie egy Linux-alapú HDInsight a tartományhoz csatlakoztatott vállalati biztonsági csomag. Megtudhatja, hogyan Oozie munkafolyamatokat, és az Oozie-feladatok elküldéséhez.
+title: Az Apache Hadoop Oozie munkafolyamatokat az Azure HDInsight-fürt a vállalati biztonsági csomag
+description: Hadoop az Oozie használata a Linux-alapú HDInsight vállalati biztonsági csomag. Megtudhatja, hogyan Oozie munkafolyamatokat, és az Oozie-feladatok elküldéséhez.
 services: hdinsight
 ms.service: hdinsight
 author: omidm1
 ms.author: omidm
-ms.reviewer: jasonh
+ms.reviewer: mamccrea
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 06/26/2018
-ms.openlocfilehash: 69bf885ad5d6244997c7ce9cf61bdee9e05c1826
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.date: 09/24/2018
+ms.openlocfilehash: 563a4c14d78b7edd228c998817f44c6b3f14efe7
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43048974"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46947497"
 ---
-# <a name="run-apache-oozie-in-domain-joined-hdinsight-hadoop-clusters"></a>Az Apache Oozie futtathat a tartományhoz csatlakoztatott HDInsight Hadoop-fürtöket
+# <a name="run-apache-oozie-in-hdinsight-hadoop-clusters-with-enterprise-security-package"></a>Futtathat Apache Oozie a HDInsight Hadoop-fürtöket a vállalati biztonsági csomaggal
 Az Oozie egy rendszer munkafolyamat és összehangoláshoz, amely a Hadoop-feladatokat kezeli. Az Oozie integrálva van a Hadoop-veremmel, és támogatja a következő feladatokat:
 - Az Apache MapReduce
 - Az Apache Pig
@@ -26,12 +26,12 @@ Az Oozie egy rendszer munkafolyamat és összehangoláshoz, amely a Hadoop-felad
 Az Oozie használatával a rendszer, például Java programok vagy héjparancsfájlok ütemezésére adott feladatok ütemezéséhez.
 
 ## <a name="prerequisite"></a>Előfeltétel
-- Tartományhoz csatlakoztatott Azure HDInsight Hadoop-fürt. Lásd: [konfigurálása a tartományhoz csatlakoztatott HDInsight-fürtök](./apache-domain-joined-configure-using-azure-adds.md).
+- Az Azure HDInsight Hadoop-fürtön vállalati biztonsági csomag (ESP). Lásd: [konfigurálása HDInsight-fürtök ESP](./apache-domain-joined-configure-using-azure-adds.md).
 
     > [!NOTE]
-    > Az Oozie használata a útválasztással tartományhoz csatlakoztatott fürtök részletes utasításokért lásd: [Linux-alapú Azure HDInsight a Hadoop az Oozie használata a munkafolyamatok](../hdinsight-use-oozie-linux-mac.md).
+    > Az Oozie használata az ESP fürtökön részletes utasításokért lásd: [Linux-alapú Azure HDInsight a Hadoop az Oozie használata a munkafolyamatok](../hdinsight-use-oozie-linux-mac.md).
 
-## <a name="connect-to-a-domain-joined-cluster"></a>Egy tartományhoz csatlakozó fürthöz való kapcsolódáshoz
+## <a name="connect-to-an-esp-cluster"></a>ESP-fürthöz kapcsolódás
 
 A Secure Shell (SSH) további információért lásd: [HDInsight (Hadoop) SSH-val csatlakozhat](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
@@ -166,7 +166,7 @@ nano workflow.xml
  ```
 4. Cserélje le `clustername` a fürt nevére. 
 
-5. Mentse a fájlt, jelölje be a Ctrl + X. Adja meg `Y`. Válassza ki **Enter**.
+5. Mentse a fájlt, jelölje be a Ctrl + X. Írja be a `Y` (igen) kifejezést. Válassza ki **Enter**.
 
     A munkafolyamat két részre oszlik:
     *   **Hitelesítő adatok szakaszban.** Ebben a szakaszban a hitelesítő adatait, az Oozie-művelet hitelesítéséhez használt fogadja:
@@ -262,7 +262,7 @@ Hive server 1 és a Hive server 2, ahogyan az alábbi szakaszok a két Hive-para
     ```
 
 ## <a name="submit-oozie-jobs"></a>Az Oozie-feladatok elküldése
-A tartományhoz csatlakoztatott fürtök Oozie-feladatok elküldése útválasztással tartományhoz csatlakoztatott fürtök Oozie-feladatok elküldése hasonlít.
+ESP fürtök Oozie-feladatok elküldése olyan, mint az ESP fürtök Oozie-feladatok elküldése.
 
 További információkért lásd: [megadásához és a munkafolyamat futtatása a Linux-alapú Azure HDInsight Hadoop-keretrendszerrel használható Oozie](../hdinsight-use-oozie-linux-mac.md).
 
@@ -311,7 +311,7 @@ További információkért lásd: [Oozie-telepítés és konfigurálás](https:/
 Az összetevők, például a Hive server 1, ahol a Ranger beépülő modul nem érhető el vagy nem támogatott csak a HDFS coarse-grained engedélyezési lehetőség. Minden részletre kiterjedő engedélyezési csak a Ranger modulok keresztül érhető el.
 
 ## <a name="get-the-oozie-web-ui"></a>Az Oozie webes felület beolvasása
-Az Oozie webes felület lehetővé teszi a webes az Oozie-feladat állapotát a fürtön. Lekérése a webes felhasználói felületen, a tartományhoz csatlakoztatott fürtök hajtsa végre az alábbi lépéseket:
+Az Oozie webes felület lehetővé teszi a webes az Oozie-feladat állapotát a fürtön. A webes felhasználói felületen lekéréséhez tegye a következőket ESP fürtök:
 
 1. Adjon hozzá egy [élcsomópont](../hdinsight-apps-use-edge-node.md) , és engedélyezze [SSH Kerberos-hitelesítés](../hdinsight-hadoop-linux-use-ssh-unix.md).
 

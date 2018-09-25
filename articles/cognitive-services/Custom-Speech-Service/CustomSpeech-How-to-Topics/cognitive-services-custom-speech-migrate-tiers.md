@@ -1,6 +1,6 @@
 ---
-title: Telepítse át az Azure-végpontok egyéni beszéd szolgáltatásból tarifacsomagok |} Microsoft Docs
-description: Tudnivalók a központi telepítések áttelepíthetők rétegek S0 és S1 S2 az egyéni beszéd Szolgáltatásvégpontok kognitív szolgáltatásban.
+title: Áttelepítése tarifacsomagok végpontok a Custom Speech Service az Azure-ban |} A Microsoft Docs
+description: Megtudhatja, hogyan központi telepítések áttelepíthetők S0 és S1 szint a Cognitive Services S2 a Custom Speech Service-végpont.
 services: cognitive-services
 author: PanosPeriorellis
 manager: onano
@@ -9,65 +9,66 @@ ms.component: custom-speech
 ms.topic: article
 ms.date: 07/05/2017
 ms.author: panosper
-ms.openlocfilehash: 6d92459deb3464cd97c215cbf9a8320628b6da80
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ROBOTS: NOINDEX
+ms.openlocfilehash: 44411e0c92f4e24e274761821dd99efbe60c5f5d
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35347570"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46964973"
 ---
-# <a name="migrate-deployments-to-the-new-pricing-model"></a>Telepítse át az új árképzési modellt központi telepítések
-Től július 2017 egyéni beszéd szolgáltatás nyújt egy [új árképzési modellt](https://azure.microsoft.com/pricing/details/cognitive-services/custom-speech-service/). Az új modell *könnyebben érthetőek legyenek*, *egyszerűbb költségek kiszámításához*, és *rugalmasabb* skálázás tekintetében. A méretezés, a Microsoft a méretezési egység fogalma vezetett be. Minden egyes méretezési egység öt egyidejű kérelmek képes kezelni. A régi modell egyidejű kérelmek méretezésének: 5 egyidejű kérelmek szinthez S0 lett beállítva, és lett állítva, akkor a szinthez S1 12 egyidejű kérelmek. Ezek a korlátozások, nagyobb rugalmasság a használati eset követelményeinek, és biztosítani megnyitott azt.
+# <a name="migrate-deployments-to-the-new-pricing-model"></a>Az új díjszabási modellre központi telepítései áttelepítésének
+2017. július Custom Speech Service kínál egy [új díjszabási modell](https://azure.microsoft.com/pricing/details/cognitive-services/custom-speech-service/). Az új modell *megérteni*, *egyszerűbb költségek kiszámítása,*, és *rugalmasabb* méretezése szempontjából. A méretezés, a Microsoft a méretezési egység fogalma vezetett be. Minden egyes méretezési egység öt kérés párhuzamos képes kezelni. 5 egyidejű kérelmek S0 szint, az egyidejű kérelmek a régi konstrukcióban skálázást lett beállítva, és azt lett beállítva, az S1 szint 12 egyidejű kérelmek. Ezeket a korlátokat kínáló, nagyobb rugalmasságot biztosít a használatieset-követelményeinek megnyitotta azt.
 
-Ha régi S0 vagy S1 réteg futtatja, azt javasoljuk, hogy telepítse át a meglévő telepítések az új S2 réteget. Az új S2 réteg S0 mind az S1 rétegek ismerteti. Az elérhető lehetőségek az alábbi ábrán látható:
+Ha régi S0 vagy az S1 szintet futtatja, javasoljuk, hogy a meglévő telepítések telepíti át az új S2 szintű. Az új S2 szintű az S0 és a S1 szint kiterjed. Az elérhető lehetőségek az alábbi ábrán látható:
 
-![A "Válasszon tarifacsomagot" lap](../../../media/cognitive-services/custom-speech-service/custom-speech-pricing-tier.png)
+![A "Tarifacsomag kiválasztása" lap](../../../media/cognitive-services/custom-speech-service/custom-speech-pricing-tier.png)
 
-A Microsoft az áttelepítés félig automatizált módon kezeli. Első lépésként indít el az áttelepítést az új árképzési szint kiválasztásával. Ezután azt telepítse át a telepítés automatikusan.
+A Microsoft kezeli az áttelepítés félig automatikus módon. Először indít el az áttelepítést az új tarifacsomag kiválasztásával. Majd hogy telepítse át a központi telepítés automatikusan.
 
-A méretezési egységek régi rétegek-leképezés a következő táblázatban látható:
+A régi szintek egységig leképezése az alábbi táblázatban látható:
 
-| Szint | Egyidejű kérelmek (régi modell) | Migrálás | Egyidejű kérelmek |
+| Szint | Egyidejű kérelmek (a régi konstrukcióban) | Migrálás | Egyidejű kérelmek |
 |----- | ----- | ---- | ---- |
-| S0 |  5   |   => **S2** 1 skálázási egység |   5 |
-| S1 |  12  |   => **S2** 3 méretezési egységek |  15 |
+| S0 |  5   |   => **S2** az 1 skálázási egység |   5 |
+| S1 |  12  |   => **S2** 3 skálázási egységekkel |  15 |
 
-Telepítse át az új réteghez, tegye a következőket:
+Az új csomag át, tegye a következőket:
 
-## <a name="step-1-check-your-existing-deployment"></a>1. lépés: A jelenlegi telepítés ellenőrzése
-Lépjen a [egyéni beszéd portálon](http://cris.ai), és ellenőrizze a meglévő telepítések. A jelen példában két üzemelő példány van. Egy központi telepítési fut egy S0 réteget, és a más központi telepítés futtatása egy S1 rétegen. A központi telepítések megjelennek-e a **központi telepítési beállítások** a következő táblázat:
+## <a name="step-1-check-your-existing-deployment"></a>1. lépés: A meglévő telepítés ellenőrzése
+Nyissa meg a [Custom Speech Service portal](http://cris.ai), és a meglévő telepítések ellenőrzése. Ebben a példában a rendszer két üzembe helyezés. Egy központi telepítési az S0 csomag fut, és a központi telepítés egy S1 szintű futtat. Jelennek meg a központi telepítések a **központi telepítési beállítások** oszlop a következő tábla:
 
 ![A központi telepítések lap](../../../media/cognitive-services/custom-speech-service/custom-speech-deployments.png)
 
-## <a name="step-2-select-your-new-pricing-tier-in-the-azure-portal"></a>2. lépés: Új tarifacsomag kiválasztása az Azure-portálon
-1. Nyisson meg egy új böngészőlapon, és jelentkezzen be a [Azure-portálon](http://ms.portal.azure.com/). 
+## <a name="step-2-select-your-new-pricing-tier-in-the-azure-portal"></a>2. lépés: Új tarifacsomag kiválasztása az Azure Portalon
+1. Nyisson meg egy új böngészőlapot, és jelentkezzen be a [az Azure portal](http://ms.portal.azure.com/). 
 
-2. Az a **kognitív szolgáltatások** ablaktáblán, a a **előfizetések** listára, válassza ki az egyéni beszéd előfizetés. 
+2. Az a **Cognitive Services** ablaktáblán, a a **előfizetések** listájához, válassza ki az egyéni beszédfelismerési előfizetés. 
 
-3. Az előfizetéshez tartozó ablaktáblában jelölje ki **tarifacsomag**.
+3. Az előfizetéshez tartozó panelén válassza **tarifacsomag**.
 
     ![A "Tarifacsomag" hivatkozásra](../../../media/cognitive-services/custom-speech-service/custom-speech-update-tier.png)
 
-4. Az a **válasszon tarifacsomagot** lapon jelölje be **S2 szabványos**. Ez a tarifacsomag az új, egyszerűbb és rugalmasabb árképzési szint.
+4. Az a **válassza ki a tarifacsomagot** lapon jelölje be **S2 Standard**. Ez a tarifacsomag az új, egyszerűbb és rugalmasabb tarifacsomagot.
 
-5. Válassza ki a **válasszon** gombra.
+5. Válassza ki a **kiválasztása** gombra.
 
-    ![A "Válasszon tarifacsomagot" lap](../../../media/cognitive-services/custom-speech-service/custom-speech-update-pricing.png)
+    ![A "Tarifacsomag kiválasztása" lap](../../../media/cognitive-services/custom-speech-service/custom-speech-update-pricing.png)
 
-## <a name="step-3-check-the-migration-status-in-the-custom-speech-service-portal"></a>3. lépés: Az áttelepítési állapotának ellenőrzése az az egyéni beszéd portál
-Az egyéni beszéd portál adja vissza, és a központi telepítések ellenőrzése. (Ha a böngészőablakot folyamatban, frissítse azt.) 
+## <a name="step-3-check-the-migration-status-in-the-custom-speech-service-portal"></a>3. lépés: Ellenőrizze a Custom Speech Service portálon a migrálás állapota
+A Custom Speech Service portálhoz adja vissza, és ellenőrizze az üzemelő példányok. (Ha a böngészőablak folyamatban, frissítse azt.) 
 
-A kapcsolódó központi telepítés állapotát kell váltott át *feldolgozása*. Az áttelepítés úgy is ellenőrizheti a **központi telepítési beállítások** oszlop. Nincs információ a méretezési egységek és naplózási most található. A méretezési egységek tükröznie kell azt az előző tarifacsomagot. A naplózás is be kell kapcsolni, a táblázatban látható módon:
+A kapcsolódó központi telepítés állapotát kell vált *feldolgozása*. Az áttelepítés úgy is ellenőrizheti a **központi telepítési beállítások** oszlop. Most már megtalálhatja van skálázási egységek és a naplózási információkat. A skálázási egység tükröznie kell azt az előző tarifacsomagot. A naplózás is be kell kapcsolni, a táblázatban látható módon:
 
 ![A központi telepítési beállítások oszlop](../../../media/cognitive-services/custom-speech-service/custom-speech-deployments-new.png)
 
 
 > [!NOTE]
-> Ha problémákat még az áttelepítés során, lépjen kapcsolatba velünk.
+> Ha problémába ütközik az áttelepítés során, lépjen kapcsolatba velünk.
 >
 
 ## <a name="next-steps"></a>További lépések
-További oktatóanyagokat tekintse meg:
-* [Egyéni akusztikus modell létrehozása](cognitive-services-custom-speech-create-acoustic-model.md)
-* [Egyéni nyelvi modell létrehozása](cognitive-services-custom-speech-create-language-model.md)
-* [Egyéni beszéd-szöveg-végpont létrehozása](cognitive-services-custom-speech-create-endpoint.md)
+További oktatóanyagokban talál:
+* [Egyéni akusztikai modell létrehozása](cognitive-services-custom-speech-create-acoustic-model.md)
+* [Testreszabott nyelvi modell létrehozása](cognitive-services-custom-speech-create-language-model.md)
+* [Hozzon létre egy egyéni hang-szöveg transzformációs végpontot](cognitive-services-custom-speech-create-endpoint.md)

@@ -11,14 +11,19 @@ ms.component: core
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/06/2017
-ms.openlocfilehash: 4a49ccff68003cf7b81a7d945176992a2893d1ac
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ROBOTS: NOINDEX
+ms.openlocfilehash: c01198a78a32c460bd147e1e160358271b80eef5
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38972634"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46950628"
 ---
 # <a name="consuming-web-services"></a>Webszolgáltatások felhasználása
+
+[!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)] 
+
+
 Miután telepített egy modellt, valós idejű webszolgáltatásként, küldje el az adatokat, és kaphatnak előjelzéseket számos különböző eszközplatformról és alkalmazások. A valós idejű webszolgáltatás REST API-t az első előrejelzéseket tesz elérhetővé. A web Service, egyszerre egy vagy több előrejelzés beolvasása egyetlen vagy több sor formátumban küldhet adatokat.
 
 Az a [Azure Machine Learning Web service](model-management-service-deploy.md), egy külső alkalmazás szinkron módon kommunikál a prediktív modellek azáltal, hogy a HTTP POST híváson a szolgáltatás URL-CÍMÉT. Ahhoz, hogy a webszolgáltatás felé irányuló hívások, az ügyfélalkalmazás kell adja meg az API-kulcsot, amely egy előrejelzési telepíti, és a kérelem adatai elhelyezi a POST-kérés törzse jön létre.

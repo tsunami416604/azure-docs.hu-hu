@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 09/14/2018
 ms.author: srbozovi
 ms.reviewer: bonova, carlrab
-ms.openlocfilehash: 5e4d96df7d6a43418aad92fdf6509a5ca7ec623a
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: 4eaf615de712715d35021aa2ba9eba4141d41e51
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45734659"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46952494"
 ---
 # <a name="connect-your-application-to-azure-sql-database-managed-instance"></a>Csatlakoztassa az alkalmazását az Azure SQL Database felügyelt példányához
 
@@ -22,7 +22,7 @@ A mai több lehetőség közül választhat annak eldöntése, hogyan és hol ü
  
 Választhatja a felhőben alkalmazás üzemeltetése az Azure App Service vagy az Azure virtuális hálózat (VNet) integrált lehetőség hasonlóan az Azure App Service-környezet, a virtuális gép, virtuálisgép-méretezési némelyike használva. Sikerült a hibrid felhőalapú megközelítést, és tartsa a helyszíni alkalmazásokhoz. 
  
-Bármilyen tetszőleges végzett, csatlakozhat, a felügyelt példány (előzetes verzió).  
+Bármilyen tetszőleges végzett, csatlakozhat, a felügyelt példány.  
 
 ![magas rendelkezésre állás](./media/sql-database-managed-instance/application-deployment-topologies.png)  
 ## <a name="connect-an-application-inside-the-same-vnet"></a>Az azonos virtuális hálózaton belüli alkalmazások csatlakoztatása 
@@ -136,7 +136,7 @@ Az alábbi minimális verziók az eszközökkel és illesztőprogramokkal haszn�
 |JDBC-illesztőprogram    | 6.4.0 |
 |NODE.js-illesztőprogram | 2.1.1 |
 |OLEDB illesztőprogram   | 18.0.2.0 |
-|SSMS   | 17.8.1 vagy [magasabb](https://docs.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-2017) |
+|SSMS   | 17.8.1 vagy [magasabb](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-2017) |
 
 ## <a name="next-steps"></a>További lépések
 

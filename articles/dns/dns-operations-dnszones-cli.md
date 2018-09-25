@@ -1,6 +1,6 @@
 ---
-title: Az Azure DNS – Azure CLI 2.0 DNS-zónák kezelése |} A Microsoft Docs
-description: DNS-zónák az Azure CLI 2.0-val kezelheti. Ez a cikk bemutatja, hogyan frissítése, törlése és az Azure DNS DNS-zónák létrehozását.
+title: Az Azure DNS – Azure CLI-vel DNS-zónák kezelése |} A Microsoft Docs
+description: DNS-zónák az Azure CLI használatával kezelheti. Ez a cikk bemutatja, hogyan frissítése, törlése és az Azure DNS DNS-zónák létrehozását.
 services: dns
 documentationcenter: na
 author: vhorne
@@ -13,30 +13,30 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/27/2017
 ms.author: victorh
-ms.openlocfilehash: c81d8add7ae37e03a98da0ad86deaa1d9d7ec8e0
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.openlocfilehash: 7f132c513354a87b4f1bd37db4c6c6ed8e0fd041
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39172619"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46949961"
 ---
-# <a name="how-to-manage-dns-zones-in-azure-dns-using-the-azure-cli-20"></a>Hogyan kezelheti a DNS-zónák az Azure DNS az Azure CLI 2.0 használatával
+# <a name="how-to-manage-dns-zones-in-azure-dns-using-the-azure-cli"></a>Hogyan kezelheti a DNS-zónák az Azure DNS az Azure CLI használatával
 
 > [!div class="op_single_selector"]
 > * [Portál](dns-operations-dnszones-portal.md)
 > * [PowerShell](dns-operations-dnszones.md)
-> * [Azure CLI 2.0](dns-operations-dnszones-cli.md)
+> * [Azure CLI](dns-operations-dnszones-cli.md)
 
 
 Ez az útmutató bemutatja, hogyan kezelheti a DNS-zónák használatával a platformfüggetlen Azure parancssori felület, amely Windows, Mac és Linux rendszereken érhető el. Emellett a DNS-zónák használata kezelheti [Azure PowerShell-lel](dns-operations-dnszones.md) vagy az Azure Portalon.
 
-Ez az útmutató kifejezetten a nyilvános DNS-zónák foglalkozik. Kezelheti az Azure DNS saját zónák az Azure parancssori felület használatával kapcsolatos információkért lásd: [Ismerkedés az Azure CLI 2.0 használatával az Azure DNS Private Zones](private-dns-getstarted-cli.md).
+Ez az útmutató kifejezetten a nyilvános DNS-zónák foglalkozik. Kezelheti az Azure DNS saját zónák az Azure parancssori felület használatával kapcsolatos információkért lásd: [Ismerkedés az Azure CLI-vel az Azure DNS Private Zones](private-dns-getstarted-cli.md).
 
 ## <a name="introduction"></a>Bevezetés
 
 [!INCLUDE [dns-create-zone-about](../../includes/dns-create-zone-about-include.md)]
 
-## <a name="set-up-azure-cli-20-for-azure-dns"></a>Az Azure CLI 2.0 beállítása az Azure DNS-hez
+## <a name="set-up-azure-cli-for-azure-dns"></a>Az Azure parancssori felület (CLI) beállítása az Azure DNS-hez
 
 ### <a name="before-you-begin"></a>Előkészületek
 
@@ -44,7 +44,7 @@ A konfigurálás megkezdése előtt győződjön meg arról, hogy rendelkezik a 
 
 * Azure-előfizetés. Ha még nincs Azure-előfizetése, aktiválhatja [MSDN-előfizetői előnyeit](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/), vagy regisztrálhat egy [ingyenes fiókot](https://azure.microsoft.com/pricing/free-trial/).
 
-* Telepítse a legújabb verzióját, az Azure CLI 2.0, elérhető Windows, Linux és Mac rendszerre. További információt az [Azure CLI 2.0 telepítése](https://docs.microsoft.com/cli/azure/install-az-cli2) című cikkben olvashat.
+* Telepítse az Azure parancssori felület (CLI) legújabb verzióját, amely Windows, Linux és Mac platformon is elérhető. További információt az [Azure parancssori felület (CLI) telepítése](https://docs.microsoft.com/cli/azure/install-az-cli2) című cikkben olvashat.
 
 ### <a name="sign-in-to-your-azure-account"></a>Jelentkezzen be az Azure-fiókjába
 
@@ -86,7 +86,7 @@ az group create --name myresourcegroup --location "West US"
 
 ## <a name="getting-help"></a>Segítség kérése
 
-Az összes CLI 2.0-parancsok az Azure DNS-vonatkozó kezdje `az network dns`. Súgó érhető el minden parancs használatával a `--help` lehetőséget (krátká forma `-h`).  Példa:
+Az összes Azure CLI-parancsok az Azure DNS-vonatkozó kezdődnie `az network dns`. Súgó érhető el minden parancs használatával a `--help` lehetőséget (krátká forma `-h`).  Példa:
 
 ```azurecli
 az network dns --help

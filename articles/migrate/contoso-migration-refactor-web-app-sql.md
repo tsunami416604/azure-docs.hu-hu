@@ -5,14 +5,14 @@ services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 09/03/2018
+ms.date: 09/20/2018
 ms.author: raynew
-ms.openlocfilehash: d42839bb744d3ed09feb482d09946ccee2f691e7
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 39444b20dfefd947abb2f2bc00a9945398996dd0
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44297400"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47040533"
 ---
 # <a name="contoso-migration-refactor-an-on-premises-app-to-an-azure-web-app-and-azure-sql-database"></a>Contoso áttelepítési: Újrabontás a helyszíni alkalmazások Azure Web App és az Azure SQL Database-adatbázishoz
 
@@ -57,7 +57,7 @@ A Contoso felhőalapú csapat az áttelepítés célok le van rögzítve. Ezen c
 **Alkalmazás** | Az alkalmazás az Azure-ban marad, kritikus fontosságú, mivel még ma.<br/><br/> Teljesítmény ugyanazokat a lehetőségeket azonban jelenleg nem VMWare kell rendelkeznie.<br/><br/> A csapat az alkalmazás be nem szeretné. Most a rendszergazdák egyszerűen áthelyezi az alkalmazás biztonságosan a felhőben.<br/><br/> A csapat szeretné a Windows Server 2008 R2, amelyen az alkalmazás jelenleg fut környezetei már nem.<br/><br/> A csapat emellett szeretné egy modern PaaS-adatbázis platformon, ami minimalizálja a felügyeleti kell esniük az SQL Server 2008 R2.<br/><br/> Contoso szeretné kihasználni a lévő SQL Server-licenc és frissítési garanciával rendelkező, ahol csak lehetséges.<br/><br/> Emellett a Contoso biztosítani szeretné a hibaérzékeny pont a webes szint csökkentése érdekében.
 **Korlátozások** | Az alkalmazás egy ASP.NET-alkalmazás és a egy ugyanazon a virtuális Gépen futó WCF szolgáltatás áll. Szeretné ez elosztja a két webalkalmazást az Azure App Service használatával. 
 **Azure** | Contoso szeretne áthelyezni az alkalmazás az Azure-ba, de nem szeretné futtatni, a virtuális gépeken. A Contoso biztosítani szeretné kihasználni az Azure PaaS-szolgáltatások a webes és az adatokat. 
-**Fejlesztés és üzemeltetés** | A Contoso biztosítani szeretné egy fejlesztési és üzemeltetési modell, a Visual Studio Team Services (VSTS) használata a buildelési és kiadási folyamatok.
+**Fejlesztés és üzemeltetés** | A Contoso biztosítani szeretné egy fejlesztési és üzemeltetési modell, Azure DevOps használatával a buildelési és kiadási folyamatok.
 
 ## <a name="solution-design"></a>Megoldásterv
 
@@ -80,7 +80,7 @@ Után rögzíthet célokat és követelményeket állapította meg, a Contoso te
     - Frissítési garanciával működő a Contoso kedvezményes díjszabást kínál a egy SQL Database, az Azure Hybrid Benefit használatával az SQL Server meglévő licenceinek tudjon cserélni. Ez akár 30 %-os megtakarítás nyújtani.
     - Az SQL Database számos olyan biztonsági funkciók, például mindig titkosított, dinamikus adatmaszkolást és a sorszintű biztonság/fenyegetések észlelése.
 - Az alkalmazás webes réteg a Contoso az Azure App Service határozott meg. A PaaS-szolgáltatás lehetővé teszi, hogy telepítse az alkalmazást néhány konfigurációs módosítás. Contoso módosítsa a Visual Studio használatával, és két webes alkalmazások üzembe helyezése. Egy a webhelyhez, és egy, a WCF-szolgáltatás.
-- Fejlesztési és üzemeltetési folyamatok követelményeinek, Contoso VSTS használata ki van választva. Ezek fogja központilag telepíteni VSTS Source Code Management (SCM) a Git-adattárral. Automatizált buildekig és a kiadás a kód felépítéséhez használt, és üzembe helyezése az Azure Web Apps.
+- Fejlesztési és üzemeltetési folyamatok követelményeinek, Contoso használata az Azure DevOps Source Code Management (SCM) Git-tárházak ki van választva. Automatizált buildekig és a kiadás a kód felépítéséhez használt, és üzembe helyezése az Azure Web Apps.
   
 ### <a name="solution-review"></a>Megoldás áttekintése
 Contoso kiértékeli a javasolt tervezési által bármik lehetnek, és hátrányai listáját.
@@ -109,6 +109,7 @@ Contoso kiértékeli a javasolt tervezési által bármik lehetnek, és hátrán
 [Data Migration Assistant (DMA)](https://docs.microsoft.com/sql/dma/dma-overview?view=ssdt-18vs2017) | Contoso DMA segítségével mérheti fel, és észleli a kompatibilitási problémákat, amelyek hatással lehetnek a funkció az Azure-ban. A DMA értékeli a funkcióparitás SQL források és célok között, és a teljesítmény- és megbízhatóságbeli fejlesztéseket javasol. | Ez egy ingyenesen letölthető eszköz.
 [Azure SQL Database](https://azure.microsoft.com/services/sql-database/) | Egy intelligens, teljes körűen felügyelt felhőalapú relációsadatbázis-szolgáltatás. | Költség funkciók, az átviteli sebesség és a mérete alapján. [További információk](https://azure.microsoft.com/pricing/details/sql-database/managed/).
 [Az Azure App Services - webalkalmazások](https://docs.microsoft.com/azure/app-service/app-service-web-overview) | Hozzon létre sokoldalú felhőalapú alkalmazásokat egy teljes körűen felügyelt platform használatával | Költség méretét, helyét és használat alapján. [További információk](https://azure.microsoft.com/pricing/details/app-service/windows/).
+[Az Azure DevOps](https://docs.microsoft.com/azure/azure-portal/tutorial-azureportal-devops) | Folyamatos integráció és készregyártás (CI/CD) folyamatot biztosít az alkalmazások fejlesztéséhez. A folyamat egy Git-tárház kódját, egy kibocsátáskezelési rendszert, csomagok és más build-összetevőket és egy rendszert üzembe helyezéséhez a változások fejlesztési, tesztelési és éles környezetek kezelése kezdődik. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -128,9 +129,9 @@ Itt látható, hogyan Contoso fog futni az áttelepítési:
 > * **1. lépés: Az Azure-ban egy SQL Database-példány üzembe helyezése**: Contoso kiosztja az SQL-példány, az Azure-ban. Miután az alkalmazás webhelye migrálása az Azure-ba, a WCF-szolgáltatás webes alkalmazás ezt a példányt fog mutatni.
 > * **2. lépés: A DMA-adatbázis áttelepítése**: Contoso áttelepíti a Database Migration Assistant alkalmazás adatbázis.
 > * **3. lépés: Kiépítése Web Apps**: Contoso kiosztja a két webes alkalmazásokat.
-> * **4. lépés: Beállítása a VSTS**: Contoso létrehoz egy új projektet, vsts-ben, és importálja a Git-tárház.
+> * **4. lépés: Állítsa be az Azure DevOps**: Contoso létrehoz egy új Azure DevOps-projektet, és importálja a Git-tárház.
 > * **5. lépés: Kapcsolati karakterláncok konfigurálása**: Contoso konfigurálja a kapcsolati karakterláncokat a webes szint web app, a WCF service web app és az SQL-példány közötti kommunikációhoz.
-> * **6. lépés: Állítsa be a build és a vsts-ben folyamatok felszabadítása**: utolsó lépésként, a Contoso állítja be a build és a kiadási folyamatok létrehozásához az alkalmazás, és telepíti őket a két különálló Azure Web Apps.
+> * **6. lépés: Állítsa be a build és a folyamatok felszabadítása**: utolsó lépésként, a Contoso állítja be a build és a kiadási folyamatok létrehozásához az alkalmazás, és telepíti őket a két különálló Azure Web Apps.
 
 
 ## <a name="step-1-provision-an-azure-sql-database"></a>1. lépés: Az Azure SQL-adatbázis üzembe helyezése
@@ -236,26 +237,26 @@ Adatbázis-kezelő telepíti át, Contoso-rendszergazdák mostantól építhető
 4. Miután végzett, az alkalmazásokat, ellenőrizze, hogy sikeres létrehozása címére megkeresését.
 
 
-## <a name="step-4-set-up-vsts"></a>4. lépés: Állítsa be a vsts-ben
+## <a name="step-4-set-up-azure-devops"></a>4. lépés: Az Azure DevOps beállítása
 
 
-Contoso cégnek szüksége van, fejlesztési és üzemeltetési infrastruktúra és az alkalmazás folyamatokat hozhat létre.  Ehhez Contoso rendszergazdák hozzon létre egy új VSTS-projektet, importálja a kódot, majd állítsa be a build és folyamatok felszabadítása.
+Contoso cégnek szüksége van, fejlesztési és üzemeltetési infrastruktúra és az alkalmazás folyamatokat hozhat létre.  Ehhez Contoso rendszergazdák új DevOps-projekt létrehozása, importálása a kódot, majd állítsa be a build és folyamatok felszabadítása.
 
-1.   A Contoso VSTS-fiókban lévő új projekt létrehozása (**ContosoSmartHotelRefactor**), és válassza ki **Git** verziókezeléshez.
+1.   A Contoso Azure DevOps-fiókban lévő új projekt létrehozása (**ContosoSmartHotelRefactor**), és válassza ki **Git** verziókezeléshez.
 
     ![Új projekt](./media/contoso-migration-refactor-web-app-sql/vsts1.png)
-
 2. A Git-adattár, amely jelenleg rendelkezik az alkalmazás kódját importálja azokat. Van egy [nyilvános adattár](https://github.com/Microsoft/SmartHotel360-internal-booking-apps) és töltheti le.
 
     ![Alkalmazáskód letöltése](./media/contoso-migration-refactor-web-app-sql/vsts2.png)
-
+    
 3. A kód az importálása után, a Visual Studio csatlakozni az adattárhoz, és klónozza a kód Team Explorer használatával.
 
-    ![Az adattár csatlakoztatása](./media/contoso-migration-refactor-web-app-sql/vsts3.png)
+    ![Csatlakozás a projekthez](./media/contoso-migration-refactor-web-app-sql/devops1.png)
 
 4. A-adattárat a fejlesztői gépen való klónozták, miután az alkalmazás a megoldás fájl megnyitásakor. A web app és a wcf service rendelkező külön projekt a fájlon belül.
 
     ![Megoldásfájl](./media/contoso-migration-refactor-web-app-sql/vsts4.png)
+    
 
 ## <a name="step-5-configure-connection-strings"></a>5. lépés: Kapcsolati karakterláncok konfigurálása
 
@@ -277,15 +278,15 @@ Contoso rendszergazdák kell, hogy a web apps és az adatbázis összes kommunik
 5. A módosítások vannak a kódot, miután a rendszergazdáknak kell gombra a módosítások véglegesítéséhez. A Visual Studio Team Explorer használatával azok commmit és szinkronizálása.
 
 
-## <a name="step-6-set-up-build-and-release-pipelines-in-vsts"></a>6. lépés: Állítsa be a build és a vsts-ben folyamatok felszabadítása
+## <a name="step-6-set-up-build-and-release-pipelines-in-azure-devops"></a>6. lépés: Állítsa be a build és az Azure fejlesztési és üzemeltetési folyamatok felszabadítása
 
-Contoso-rendszergazdák mostantól beállíthatja a VSTS hajtsa végre a build és kiadás művelet folyamata a fejlesztési és üzemeltetési eljárások.
+Contoso-rendszergazdák mostantól konfigurálhatja az Azure DevOps-hajtsa végre a build és kiadás folyamat.
 
-1. A vsts-ben, kattintson **készítése és kiadása** > **új adatcsatorna**.
+1. Az Azure DevOps, kattintson **készítése és kiadása** > **új adatcsatorna**.
 
     ![Új adatcsatorna](./media/contoso-migration-refactor-web-app-sql/pipeline1.png)
 
-2. Kiválasztják **VSTS Git** és a megfelelő tárházban.
+2. Kiválasztják **Azure Git-Adattárakkal** és a megfelelő tárházban.
 
     ![A Git és a tárház](./media/contoso-migration-refactor-web-app-sql/pipeline2.png)
 
@@ -293,15 +294,15 @@ Contoso-rendszergazdák mostantól beállíthatja a VSTS hajtsa végre a build �
 
      ![ASP.NET-sablonnal](./media/contoso-migration-refactor-web-app-sql/pipeline3.png)
     
-4. Adja meg a build ContosoSmartHotelRefactor – ASP.NET-CI nevét, és kattintson a **várólistára & mentése**.
+4. A név **ContosoSmartHotelRefactor – ASP.NET-CI** build szolgál. Kattintanak **várólistára & mentése**.
 
      ![Mentés és üzenetsorba](./media/contoso-migration-refactor-web-app-sql/pipeline4.png)
 
-5. Ez elindít első közelednek. A buildszám, és tekintse meg a folyamat a kattintanak. A befejezése után megjelenik a folyamat visszajelzést.
+5. Ez az első build címmel. A buildszám, és tekintse meg a folyamat a kattintanak. A befejezése után megtekinthetik a folyamat visszajelzést, és kattintson a **összetevők** az összeállítási eredmények áttekintéséhez.
 
-    ![Visszajelzés](./media/contoso-migration-refactor-web-app-sql/pipeline5.png)
+    ![Áttekintés](./media/contoso-migration-refactor-web-app-sql/pipeline5.png)
 
-6. Miután egy sikeres hozhat létre, majd nyissa meg a build, és kattintson a gombra **összetevők**. Ebben a mappában találhatók a build eredmények
+6. A mappa **Drop** a build eredményeit tartalmazza.
 
     - A két zip-fájlokat a csomagokat, amelyek tartalmazzák az alkalmazások.
     - Ezek a fájlok használhatók a kibocsátási folyamat üzembe helyezés az Azure Web Appshez
@@ -316,11 +317,11 @@ Contoso-rendszergazdák mostantól beállíthatja a VSTS hajtsa végre a build �
 
     ![Azure App Service-sablon](./media/contoso-migration-refactor-web-app-sql/pipeline8.png)
 
-9. Ezek a kibocsátási folyamat neve **ContosoSmartHotelRefactor**, és adja meg a környezet nevét a WCF-webalkalmazás (SHWCF-EUS2) nevét.
+9. Ezek a kibocsátási folyamat neve **ContosoSmartHotel360Refactor**, és a WCF-webalkalmazás (SHWCF-EUS2) nevét adja meg a **fázis** nevét.
 
     ![Környezet](./media/contoso-migration-refactor-web-app-sql/pipeline9.png)
 
-10. A környezet alapján kattintson **1. fázis, 1. feladat** a WCF-szolgáltatás központi telepítésnek a konfigurálásához.
+10. A szakasz alatt kattintson **1 feladat, 1. feladat** a WCF-szolgáltatás központi telepítésnek a konfigurálásához.
 
     ![A WCF üzembe helyezése](./media/contoso-migration-refactor-web-app-sql/pipeline10.png)
 
@@ -328,7 +329,7 @@ Contoso-rendszergazdák mostantól beállíthatja a VSTS hajtsa végre a build �
 
      ![Válassza ki az app Service-ben](./media/contoso-migration-refactor-web-app-sql/pipeline11.png)
 
-12. A **összetevők**, kiválasztják **és a egy összetevő hozzáadása**, és hozhat létre, és válassza ki a **ContosoSmarthotelRefactor – ASP.NET-CI** folyamat.
+12. A folyamat a > **összetevők**, kiválasztják **és a egy összetevő hozzáadása**, és hozhat létre, és válassza ki a **ContosoSmarthotel360Refactor** folyamat.
 
      ![Felépítés](./media/contoso-migration-refactor-web-app-sql/pipeline12.png)
 
@@ -336,11 +337,11 @@ Contoso-rendszergazdák mostantól beállíthatja a VSTS hajtsa végre a build �
 
      ![Villám](./media/contoso-migration-refactor-web-app-sql/pipeline13.png)
 
-16. Ezenkívül vegye figyelembe, hogy a folyamatos készregyártás eseményindítója értékre kell állítani **engedélyezve**.
+16. A folyamatos készregyártás eseményindítója értékre kell állítani **engedélyezve**.
 
    ![Engedélyezve van a folyamatos üzembe helyezés](./media/contoso-migration-refactor-web-app-sql/pipeline14.png) 
 
-17. Most, kattintson a **üzembe helyezése az Azure App Service**.
+17. Most, lépjen vissza az 1. fázis feladat e feladatok, és kattintson **üzembe helyezése az Azure App Service**.
 
     ![App service üzembe helyezése](./media/contoso-migration-refactor-web-app-sql/pipeline15.png)
 
@@ -348,7 +349,7 @@ Contoso-rendszergazdák mostantól beállíthatja a VSTS hajtsa végre a build �
 
     ![A WCF mentése](./media/contoso-migration-refactor-web-app-sql/pipeline16.png)
 
-19. Kattintanak **folyamat** >**+ Hozzáadás**, környezetet hozzáadandó **SHWEB-EUS2**, egy másik Azure App Service-környezet kiválasztása.
+19. Kattintanak **folyamat** > **szakaszok** **+ Hozzáadás**, környezetet hozzáadandó **SHWEB-EUS2**. Akkor válassza ki egy másik Azure App Service-környezet.
 
     ![Adja hozzá a környezet](./media/contoso-migration-refactor-web-app-sql/pipeline17.png)
 
@@ -368,7 +369,7 @@ Contoso-rendszergazdák mostantól beállíthatja a VSTS hajtsa végre a build �
 
     ![Folyamat mentése](./media/contoso-migration-refactor-web-app-sql/pipeline21.png)
 
-24. Contoso rendszergazdái is hajtsa végre a build és kiadás folyamatról a VSTS-ből. A létrehozás befejezése után a kiadási indul el.
+24. Contoso rendszergazdái is hajtsa végre a build és kiadás az Azure DevOps folyamatról. A létrehozás befejezése után a kiadási indul el.
 
     ![Hozhat létre, és az alkalmazás kiadása](./media/contoso-migration-refactor-web-app-sql/pipeline22.png)
 

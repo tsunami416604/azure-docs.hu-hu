@@ -9,12 +9,12 @@ ms.author: xshi
 ms.date: 09/04/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 7fec050f43ed6facef548ea19d1d67030458fbb1
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: b4e1e01d54f6e0043709e0dadef41d7ea513a9b6
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44380250"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46963287"
 ---
 # <a name="use-visual-studio-code-to-develop-and-debug-c-modules-for-azure-iot-edge"></a>Fejlesztés és az Azure IoT Edge-hez a C# modul hibakeresése Visual Studio Code használatával
 
@@ -48,7 +48,7 @@ Ha tesztelni szeretné a modul egy eszközön, aktív IoT hub létrehozott legal
 
 ## <a name="create-a-new-solution-with-c-module"></a>Új megoldás létrehozása a C# modul
 
-Hozzon létre egy IoT Edge-modul a Visual Studio Code és az Azure IoT Edge-bővítmény használata a .NET Core 2.0 alapján ezeket a lépéseket. Először hozzon létre egy megoldást, és ezután az első modul létrehozása ebben a megoldásban. Egyes megoldások tartalmazhatnak egynél több modul. 
+Hozzon létre egy IoT Edge-modul a Visual Studio Code és az Azure IoT Edge-bővítmény használata a .NET Core 2.1-es alapú ezeket a lépéseket. Először hozzon létre egy megoldást, és ezután az első modul létrehozása ebben a megoldásban. Egyes megoldások tartalmazhatnak egynél több modul. 
 
 1. Válassza ki a Visual Studio Code- **nézet** > **integrált terminálon**.
 3. Válassza ki **nézet** > **paletta parancs**. 

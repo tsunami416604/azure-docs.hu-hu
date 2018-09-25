@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 09/13/2018
 ms.author: tamram
 ms.component: common
-ms.openlocfilehash: 395080409b06ef868b28550a21dc177e9dd28a05
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: 20db515e99f3e7535ba7b60bbd84f050e33b7acb
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45580531"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47033923"
 ---
 # <a name="what-to-do-if-an-azure-storage-outage-occurs"></a>Mi a teendő az Azure Storage leállása esetén?
 A Microsoft dolgozunk, hogy a szolgáltatásaink mindig elérhetők. Egyes esetekben kényszeríti a vezérlő hatás túli velünk a kapcsolatot, hogy a szolgáltatás nem tervezett leállások miatt egy vagy több régióban. Könnyebben kezelni ezeket ritkán fordul elő, az Azure Storage szolgáltatás a következő magas szintű útmutatást biztosítunk.
@@ -43,18 +43,16 @@ Ha úgy döntött [írásvédett georedundáns tárolás (RA-GRS)](storage-redun
 ## <a name="what-to-expect-if-a-storage-failover-occurs"></a>Mire számítson, ha a tárolási feladatátvétel történik
 Ha úgy döntött [georedundáns tárolás (GRS)](storage-redundancy-grs.md) vagy [írásvédett georedundáns tárolás (RA-GRS)](storage-redundancy-grs.md#read-access-geo-redundant-storage) (ajánlott), az Azure Storage fogja megőrizni az adatok tartós két régióban (elsődleges és másodlagos). Mindkét régióban az Azure Storage folyamatosan megőrzi az adatok több replika.
 
-Ha regionális katasztrófa hatással van az elsődleges régióban, először megpróbáljuk a szolgáltatás az adott régióban, amely a lehető legjobb kombinációját RTO és RPO visszaállításához. A vészhelyreállítási és annak hatással, egyes ritka esetekben jellegétől függ azt nem lehet visszaállítani az elsődleges régióba. Ezen a ponton fogunk földrajzi feladatátvételt végrehajtani. Régiók közötti adatreplikáció egy aszinkron folyamat, amely magában foglalja a késés, így lehetséges, hogy módosításokat, amelyek még nem replikálódott a másodlagos régióba elveszhetnek. Lekérdezheti a ["Legutóbbi szinkronizálás időpontja" a tárfiók](https://blogs.msdn.microsoft.com/windowsazurestorage/2013/12/11/windows-azure-storage-redundancy-options-and-read-access-geo-redundant-storage/) úgy szerezheti be a replikációs állapot részletei.
+Ha regionális katasztrófa hatással van az elsődleges régióban, először megpróbáljuk a szolgáltatás az adott régióban, amely a lehető legjobb kombinációját RTO és RPO visszaállításához. A vészhelyreállítási és annak hatással, egyes ritka esetekben jellegétől függ azt nem lehet visszaállítani az elsődleges régióba. Ezen a ponton fogunk földrajzi feladatátvételt végrehajtani. Régiók közötti adatreplikáció egy aszinkron folyamat, amely magában foglalja a késés, így lehetséges, hogy módosításokat, amelyek még nem replikálódott a másodlagos régióba elveszhetnek.
 
 A tároló földrajzi feladatátvételt tapasztalatokra vonatkozó pontok néhány:
 
 * Az Azure Storage csapata akkor csak tárolási földrajzi feladatátvételt aktiválódik – nem tartoznak felhasználói műveletek szükséges. A feladatátvételi akkor aktiválódik, ha az Azure Storage csapata már kimerítette ugyanabban a régióban, így a lehető legjobb kombinációját RTO és RPO adatok visszaállításának összes beállítás.
 * A meglévő tárolási Szolgáltatásvégpontok blobok, táblák, üzenetsorok és fájlok esetében ugyanaz marad a feladatátvétel; után a Microsoft által biztosított DNS-bejegyzést kell frissíteni, hogy az elsődleges régióból történő váltson a másodlagos régióba. Ez a frissítés automatikusan a földrajzi feladatátvételt folyamat részeként a Microsoft végrehajtja.
 * Előtt, és a földrajzi feladatátvétel során a tárfiók a hatását a katasztrófa miatt nem kell írási hozzáférést, de továbbra is olvashat a másodlagos helyről, ha a tárfiók van konfigurálva, RA-GRS.
-* Ha a földrajzi feladatátvétel befejezése és a DNS-módosítások propagálása, olvasási és írási hozzáférést a tárfiókhoz fog folytatható; Mi a alkalmazni kell a másodlagos végpontra mutat ez. 
-* Vegye figyelembe, hogy írási hozzáférést kap, ha a GRS vagy RA-GRS a tárfiók számára beállított. 
-* Lekérdezheti ["Földrajzi feladatátvétel utoljára" a tárfiók](https://msdn.microsoft.com/library/azure/ee460802.aspx) további információért.
+* Ha a földrajzi feladatátvétel befejezése és a DNS-módosítások propagálása, olvasási és írási hozzáférést a tárfiókhoz visszaállnak Ha GRS vagy RA-GRS. A végpont, amelyet korábban a másodlagos végpontra lesz az elsődleges végpontot. 
+* Az elsődleges hely és a lekérdezés állapotát ellenőrizheti a tárfiók földrajzi feladatátvételt utoljára. További információkért lásd: [Tárfiókok - tulajdonságok beolvasása](https://docs.microsoft.com/rest/api/storagerp/storageaccounts/getproperties).
 * A feladatátvétel után a tárfiók teljes körűen működik, de "csökkentett teljesítményű" állapotban, ahogy üzemeltetett nincs georeplikáció útján lehet egy önálló régióban. A kockázat csökkentése érdekében, hogy visszaállítja az eredeti elsődleges régió és tegye a geo-feladat-visszavétel az eredeti állapot. Ha az eredeti elsődleges régióban nem állítható helyre, hogy foglal le egy másik másodlagos régióba.
-  Az Azure Storage georeplikációs infrastruktúrára további részletekért tekintse meg a Storage csapat blogja foglalkozó cikkel kapcsolatos [Redundanciabeállításokkal és RA-GRS](https://blogs.msdn.microsoft.com/windowsazurestorage/2013/12/11/windows-azure-storage-redundancy-options-and-read-access-geo-redundant-storage/).
 
 ## <a name="best-practices-for-protecting-your-data"></a>Ajánlott eljárások az adatok védelmére
 Van néhány ajánlott megközelítéseket, az adatok biztonsági másolatát a storage rendszeres időközönként.

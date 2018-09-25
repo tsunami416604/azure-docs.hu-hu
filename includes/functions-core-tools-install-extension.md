@@ -5,23 +5,29 @@ services: functions
 author: ggailey777
 ms.service: functions
 ms.topic: include
-ms.date: 04/06/2018
+ms.date: 09/21/2018
 ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: d166a77a0636efea3b63660fde2187e3f2ec15c0
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: f1b53c53b1e5fb089eb9b8a9b816b11a1eea126d
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38943947"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47044509"
 ---
-A függvények helyi fejlesztésekor a bővítmények segítségével az Azure Functions Core Tools, a terminálról, vagy a parancssorból is telepítheti. 
+A függvények helyi fejlesztésekor a bővítmények segítségével az Azure Functions Core Tools, a terminálról, vagy a parancssorból is telepítheti.
 
-Miután frissítette a *function.json* -fájl a kötéseket, hogy a függvény van szüksége, futtassa a `func extensions install` parancsot a projektmappában. A parancs beolvassa a *function.json* fájlra kattintva látható, mely csomagokat kell, és telepíti őket.
+Miután frissítette a *function.json* -fájl, amely a függvénynek szüksége van, futtassa a következő parancsot a projektmappában összes kötését.
+
+```bash
+func extensions install
+```
+
+A parancs beolvassa a *function.json* fájlra kattintva látható, mely csomagokat kell, telepíti őket, és ismét létrehozza a bővítmények projekt. Az új kötések felveszi a jelenlegi verzió, hanem nem frissíti a meglévő kötéseit. Használja a `--force` lehetőséget, ha meglévő kötések a legújabb verzióra újakat telepítésekor.
 
 Ha egy adott verzióját a csomag telepítéséhez, vagy szerkesztése előtt csomagokat telepíteni szeretné a *function.json* fájlt, használja a `func extensions install` parancsot a csomag nevével, az alábbi példában látható módon:
 
-```
+```bash
 func extensions install --package Microsoft.Azure.WebJobs.ServiceBus --version <target_version>
 ```
 

@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/11/2018
-ms.openlocfilehash: f18e667e86c310e4d2950ba195911307aec5426d
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 6c9e980e4f448f705743b2e6dce268c671ffe9b6
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43047025"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46950714"
 ---
 # <a name="troubleshoot-a-slow-or-failing-hdinsight-cluster"></a>Lassú vagy meghibásodott HDInsight-fürt hibaelhárítása
 
@@ -57,12 +57,13 @@ Az Azure Portalon ezeket az információkat biztosítja:
 
 ![HDInsight az Azure Portalon információkat](./media/hdinsight-troubleshoot-failed-cluster/portal.png)
 
-Az Azure CLI-vel is használható:
+Az Azure klasszikus parancssori felület is használható:
 
 ```
     azure hdinsight cluster list
     azure hdinsight cluster show <ClusterName>
 ```
+[!INCLUDE [classic-cli-warning](../../includes/requires-classic-cli.md)]
 
 Egy másik lehetőség van a PowerShell használatával. További információkért lásd: [kezelése Hadoop-fürtök a HDInsight az Azure PowerShell-lel](hdinsight-administer-use-powershell.md).
 
@@ -100,7 +101,7 @@ Hasonlítsa össze a legfrissebb verzióját a HDInsight-fürt verziója. Minden
 
 #### <a name="restart-your-cluster-services"></a>Indítsa újra a fürt szolgáltatások
 
-Ha a lassulásokat tapasztal a fürtben, fontolja meg, az Ambari felhasználói felületén vagy az Azure parancssori felület használatával a szolgáltatások újraindítása. Előfordulhat, hogy a fürt tapasztalt átmeneti hibák, és újraindítás a leggyorsabb mód a stabilizálódhatnak a környezetben, és esetleg javíthatja a teljesítményt.
+Ha a lassulásokat tapasztal a fürtben, fontolja meg, az Ambari felhasználói felületén vagy a klasszikus Azure CLI segítségével a szolgáltatások újraindítása. Előfordulhat, hogy a fürt tapasztalt átmeneti hibák, és újraindítás a leggyorsabb mód a stabilizálódhatnak a környezetben, és esetleg javíthatja a teljesítményt.
 
 ## <a name="step-3-view-your-clusters-health"></a>3. lépés: A fürt állapotának megtekintéséhez.
 

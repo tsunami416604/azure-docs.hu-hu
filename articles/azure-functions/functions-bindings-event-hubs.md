@@ -12,12 +12,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 11/08/2017
 ms.author: glenga
-ms.openlocfilehash: ef7eae503eaf8194b287b9f080d8f635d9b3a485
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: 2c78e1d39227153dd65f145512fab4769b09e5c0
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44094782"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46966568"
 ---
 # <a name="azure-event-hubs-bindings-for-azure-functions"></a>Az Azure Event Hubs-kötések az Azure Functions szolgáltatáshoz
 
@@ -129,14 +129,15 @@ public static void Run([EventHubTrigger("samples-workitems", Connection = "Event
 
 Az alábbi példa bemutatja egy eseményközpont-eseményindító a kötés egy *function.json* fájl és a egy [C#-szkriptfüggvény](functions-reference-csharp.md) , amely a kötés használja. A függvény naplózza az eseményközpont-eseményindító üzenet törzse.
 
-Az alábbi példák bemutatják az Event Hubs-kötés adatok a *function.json* fájlt. Az első példa 1.x működik, és a másikat az funkciók 2.x. 
+Az alábbi példák bemutatják az Event Hubs-kötés adatok a *function.json* fájlt. Az első példa 2.x működik, és a másikat az funkciók 1.x. 
+
 
 ```json
 {
   "type": "eventHubTrigger",
   "name": "myEventHubMessage",
   "direction": "in",
-  "path": "MyEventHub",
+  "eventHubName": "MyEventHub",
   "connection": "myEventHubReadConnectionAppSetting"
 }
 ```
@@ -145,7 +146,7 @@ Az alábbi példák bemutatják az Event Hubs-kötés adatok a *function.json* f
   "type": "eventHubTrigger",
   "name": "myEventHubMessage",
   "direction": "in",
-  "eventHubName": "MyEventHub",
+  "path": "MyEventHub",
   "connection": "myEventHubReadConnectionAppSetting"
 }
 ```
@@ -203,14 +204,15 @@ public static void Run(string[] eventHubMessages, TraceWriter log)
 
 Az alábbi példa bemutatja egy eseményközpont-eseményindító a kötés egy *function.json* fájl és a egy [F #-függvény](functions-reference-fsharp.md) , amely a kötés használja. A függvény naplózza az eseményközpont-eseményindító üzenet törzse.
 
-Az alábbi példák bemutatják az Event Hubs-kötés adatok a *function.json* fájlt. Az első példa 1.x működik, és a másikat az funkciók 2.x. 
+Az alábbi példák bemutatják az Event Hubs-kötés adatok a *function.json* fájlt. Az első példa 2.x működik, és a másikat az funkciók 1.x. 
+
 
 ```json
 {
   "type": "eventHubTrigger",
   "name": "myEventHubMessage",
   "direction": "in",
-  "path": "MyEventHub",
+  "eventHubName": "MyEventHub",
   "connection": "myEventHubReadConnectionAppSetting"
 }
 ```
@@ -219,7 +221,7 @@ Az alábbi példák bemutatják az Event Hubs-kötés adatok a *function.json* f
   "type": "eventHubTrigger",
   "name": "myEventHubMessage",
   "direction": "in",
-  "eventHubName": "MyEventHub",
+  "path": "MyEventHub",
   "connection": "myEventHubReadConnectionAppSetting"
 }
 ```
@@ -235,14 +237,15 @@ let Run(myEventHubMessage: string, log: TraceWriter) =
 
 Az alábbi példa bemutatja egy eseményközpont-eseményindító a kötés egy *function.json* fájl és a egy [JavaScript-függvény](functions-reference-node.md) , amely a kötés használja. A függvény beolvassa [esemény-metaadatok](#trigger---event-metadata) és naplózza az üzenetet.
 
-Az alábbi példák bemutatják az Event Hubs-kötés adatok a *function.json* fájlt. Az első példa 1.x működik, és a másikat az funkciók 2.x. 
+Az alábbi példák bemutatják az Event Hubs-kötés adatok a *function.json* fájlt. Az első példa 2.x működik, és a másikat az funkciók 1.x. 
+
 
 ```json
 {
   "type": "eventHubTrigger",
   "name": "myEventHubMessage",
   "direction": "in",
-  "path": "MyEventHub",
+  "eventHubName": "MyEventHub",
   "connection": "myEventHubReadConnectionAppSetting"
 }
 ```
@@ -251,7 +254,7 @@ Az alábbi példák bemutatják az Event Hubs-kötés adatok a *function.json* f
   "type": "eventHubTrigger",
   "name": "myEventHubMessage",
   "direction": "in",
-  "eventHubName": "MyEventHub",
+  "path": "MyEventHub",
   "connection": "myEventHubReadConnectionAppSetting"
 }
 ```
@@ -269,14 +272,14 @@ module.exports = function (context, eventHubMessage) {
 };
 ```
 
-Egy kötegben események fogadásához állítsa `cardinality` való `many` a a *function.json* fájljához a következő példákban látható módon. Az első példa 1.x működik, és a másikat az funkciók 2.x. 
+Egy kötegben események fogadásához állítsa `cardinality` való `many` a a *function.json* fájljához a következő példákban látható módon. Az első példa 2.x működik, és a másikat az funkciók 1.x. 
 
 ```json
 {
   "type": "eventHubTrigger",
   "name": "eventHubMessages",
   "direction": "in",
-  "path": "MyEventHub",
+  "eventHubName": "MyEventHub",
   "cardinality": "many",
   "connection": "myEventHubReadConnectionAppSetting"
 }
@@ -286,7 +289,7 @@ Egy kötegben események fogadásához állítsa `cardinality` való `many` a a 
   "type": "eventHubTrigger",
   "name": "eventHubMessages",
   "direction": "in",
-  "eventHubName": "MyEventHub",
+  "path": "MyEventHub",
   "cardinality": "many",
   "connection": "myEventHubReadConnectionAppSetting"
 }
@@ -426,13 +429,13 @@ public static string Run([TimerTrigger("0 */5 * * * *")] TimerInfo myTimer, Trac
 
 Az alábbi példa bemutatja egy eseményközpont-eseményindító a kötés egy *function.json* fájl és a egy [C#-szkriptfüggvény](functions-reference-csharp.md) , amely a kötés használja. A függvény üzenetet ír egy eseményközpontba.
 
-Az alábbi példák bemutatják az Event Hubs-kötés adatok a *function.json* fájlt. Az első példa 1.x működik, és a másikat az funkciók 2.x. 
+Az alábbi példák bemutatják az Event Hubs-kötés adatok a *function.json* fájlt. Az első példa 2.x működik, és a másikat az funkciók 1.x. 
 
 ```json
 {
     "type": "eventHub",
     "name": "outputEventHubMessage",
-    "path": "myeventhub",
+    "eventHubName": "myeventhub",
     "connection": "MyEventHubSendAppSetting",
     "direction": "out"
 }
@@ -441,7 +444,7 @@ Az alábbi példák bemutatják az Event Hubs-kötés adatok a *function.json* f
 {
     "type": "eventHub",
     "name": "outputEventHubMessage",
-    "eventHubName": "myeventhub",
+    "path": "myeventhub",
     "connection": "MyEventHubSendAppSetting",
     "direction": "out"
 }
@@ -476,13 +479,13 @@ public static void Run(TimerInfo myTimer, ICollector<string> outputEventHubMessa
 
 Az alábbi példa bemutatja egy eseményközpont-eseményindító a kötés egy *function.json* fájl és a egy [F #-függvény](functions-reference-fsharp.md) , amely a kötés használja. A függvény üzenetet ír egy eseményközpontba.
 
-Az alábbi példák bemutatják az Event Hubs-kötés adatok a *function.json* fájlt. Az első példa 1.x működik, és a másikat az funkciók 2.x. 
+Az alábbi példák bemutatják az Event Hubs-kötés adatok a *function.json* fájlt. Az első példa 2.x működik, és a másikat az funkciók 1.x. 
 
 ```json
 {
     "type": "eventHub",
     "name": "outputEventHubMessage",
-    "path": "myeventhub",
+    "eventHubName": "myeventhub",
     "connection": "MyEventHubSendAppSetting",
     "direction": "out"
 }
@@ -491,7 +494,7 @@ Az alábbi példák bemutatják az Event Hubs-kötés adatok a *function.json* f
 {
     "type": "eventHub",
     "name": "outputEventHubMessage",
-    "eventHubName": "myeventhub",
+    "path": "myeventhub",
     "connection": "MyEventHubSendAppSetting",
     "direction": "out"
 }
@@ -510,13 +513,13 @@ let Run(myTimer: TimerInfo, outputEventHubMessage: byref<string>, log: TraceWrit
 
 Az alábbi példa bemutatja egy eseményközpont-eseményindító a kötés egy *function.json* fájl és a egy [JavaScript-függvény](functions-reference-node.md) , amely a kötés használja. A függvény üzenetet ír egy eseményközpontba.
 
-Az alábbi példák bemutatják az Event Hubs-kötés adatok a *function.json* fájlt. Az első példa 1.x működik, és a másikat az funkciók 2.x. 
+Az alábbi példák bemutatják az Event Hubs-kötés adatok a *function.json* fájlt. Az első példa 2.x működik, és a másikat az funkciók 1.x. 
 
 ```json
 {
     "type": "eventHub",
     "name": "outputEventHubMessage",
-    "path": "myeventhub",
+    "eventHubName": "myeventhub",
     "connection": "MyEventHubSendAppSetting",
     "direction": "out"
 }
@@ -525,7 +528,7 @@ Az alábbi példák bemutatják az Event Hubs-kötés adatok a *function.json* f
 {
     "type": "eventHub",
     "name": "outputEventHubMessage",
-    "eventHubName": "myeventhub",
+    "path": "myeventhub",
     "connection": "MyEventHubSendAppSetting",
     "direction": "out"
 }

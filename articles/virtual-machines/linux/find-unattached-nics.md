@@ -1,6 +1,6 @@
 ---
 title: Keresse meg és törölje a nem csatolt Azure hálózati adapterek |} A Microsoft Docs
-description: Keresse meg, és nem csatlakoztatott virtuális gépeket az Azure CLI 2.0 használatával az Azure-hálózati adapter törlése
+description: Keresse meg, és nem csatlakoztatott virtuális gépeket az Azure CLI-vel az Azure-hálózati adapter törlése
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: cynthn
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/10/2018
 ms.author: cynthn
-ms.openlocfilehash: 54315b2b66b9fb11ae904593c285eb7623cccdbb
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.openlocfilehash: 9d8345aacb603a6411fdc693ac9f808778d27333
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37930511"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46954330"
 ---
 # <a name="how-to-find-and-delete-unattached-network-interface-cards-nics-for-azure-vms"></a>Keresse meg és nem csatolt hálózati adapter törlése kártyák (NIC) az Azure virtuális gépek
 Ha töröl egy virtuális gépet (VM) az Azure-ban, a hálózati adapterek (NIC) nem törlődnek alapértelmezés szerint. Hozzon létre, és több virtuális gép törlése, ha a használaton kívüli hálózati adapterek továbbra is használja a belső IP-címbérleteket. Ahogy a többi virtuális gép hálózati adaptereket hoz létre, nem olvasható be egy IP-címbérletet, az az alhálózat címtartománya a lehet. Ez a cikk bemutatja, hogyan keresse meg és nem csatolt hálózati adapter törlése.

@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 07/15/2018
 ms.author: msjuergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ca089672cf645af58952205dada66aa96ba0b65d
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: e8bd5ddab4553807f59b7afdf32fbfc1703e3d75
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45578243"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46949533"
 ---
 # <a name="sap-business-one-on-azure-virtual-machines"></a>SAP Business egy on Azure Virtual machines szolgáltatásban
 Ez a dokumentum nyújt útmutatást, üzembe helyezéséhez SAP Business One az Azure Virtual machines szolgáltatásban. A dokumentáció nem helyettesíti a üzleti SAP-dokumentáció áll. A dokumentáció az Azure-infrastruktúra egy üzleti alkalmazások futtatásához az alapvető tervezési és telepítési irányelveket kell kiterjednie.
@@ -39,7 +39,7 @@ Ez az útmutató használatához az alábbi Azure-összetevők alapszintű ismer
 - [Az Azure virtual machines a Linux rendszeren](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-manage-vm)
 - [Azure hálózati és virtuális hálózatok kezelése a PowerShell segítségével](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-virtual-network)
 - [Az Azure-hálózatok és virtuális hálózatok a CLI használatával ](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-virtual-network)
-- [Az Azure CLI 2.0 az Azure-lemezek kezelése](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-manage-disks)
+- [Az Azure CLI használatával Azure-lemezek kezelése](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-manage-disks)
 
 Akkor is, ha az egyik üzleti érdekli, csak a dokumentumok [Azure Virtual Machines tervezési és megvalósítási az SAP NetWeaver számára](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/planning-guide) egy kiváló forrásként is lehet.
 
