@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 01/29/2018
 ms.author: dobett
-ms.openlocfilehash: 1a5df1081edeb8b8e7520064a71534f70a9a9d33
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: 575326ee3bd2cb64b2cb65168f23f7fe97dad029
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39344300"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46954398"
 ---
 # <a name="glossary-of-iot-hub-terms"></a>Az IoT Hub kifejezések jegyzéke
 Ez a cikk felsorolja az egyes az IoT Hub-cikkekben használt gyakori kifejezések.
@@ -21,17 +21,17 @@ Ez a cikk felsorolja az egyes az IoT Hub-cikkekben használt gyakori kifejezése
 ## <a name="advanced-message-queueing-protocol"></a>Advanced Message Queueing Protocol
 [Advanced Message Queueing Protocol (AMQP)](https://www.amqp.org/) van, amelyek közül az üzenetküldés van protokollokon [az IoT Hub](#iot-hub) támogatja a eszközökkel való kommunikációhoz. Az üzenetküldési protokollokat, amely az IoT Hub által támogatott kapcsolatos további információkért lásd: [küldhet és fogadhat üzeneteket az IoT Hub](iot-hub-devguide-messaging.md).
 
-## <a name="automatic-device-management"></a>Az automatikus kezelés
+## <a name="automatic-device-management"></a>Automatikus eszközkezelés
 Az Azure IoT Hub automatikus kezelés automatizálja az ismétlődő és összetett feladatok nagy eszköz flották kezelésének azok életciklusának teljes keresztül. Automatikus felügyeleti (MDM) cél az eszközök a hozzájuk tartozó tulajdonságok alapján, a kívánt konfiguráció definiálása és frissítheti az eszközeit, amikor hatókör lépnek az IoT Hub segítségével.  Áll [automatikus eszközkonfigurációk](iot-hub-auto-device-config.md) és [automatikus IoT Edge-telepítések](../iot-edge/how-to-deploy-monitor.md).
 
 ## <a name="automatic-device-configuration"></a>Eszközök automatikus konfigurálása
 A megoldás háttérrendszere [automatikus eszközkonfigurációk](iot-hub-auto-device-config.md) körét a kívánt tulajdonságok hozzárendelése [ikereszközök](#device-twin) és állapot jelentése rendszermérőszámot és egyéni metrikák használatával. 
 
-## <a name="azure-cli"></a>Azure CLI
-A [Azure CLI-vel](../cli-install-nodejs.md) egy platformfüggetlen, nyílt forráskódú, felületalapú, a parancs eszköz létrehozása és kezelése a Microsoft Azure erőforrásait. A CLI ezen verziójának Node.js használatával lett megvalósítva.
+## <a name="azure-classic-cli"></a>Az Azure klasszikus parancssori felület
+A [Azure klasszikus parancssori felület](../cli-install-nodejs.md) egy platformfüggetlen, nyílt forráskódú, felületalapú, a parancs eszköz létrehozása és kezelése a Microsoft Azure erőforrásait. A CLI ezen verziójának kell csak a klasszikus üzemi modellben használható.
 
-## <a name="azure-cli-20"></a>Azure CLI 2.0
-A [Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-az-cli2) egy platformfüggetlen, nyílt forráskódú, felületalapú, a parancs eszköz létrehozása és kezelése a Microsoft Azure erőforrásait. Ez a CLI előzetes verzióját a Python használatával lett megvalósítva.
+## <a name="azure-cli"></a>Azure CLI
+A [Azure CLI-vel](https://docs.microsoft.com/cli/azure/install-az-cli2) egy platformfüggetlen, nyílt forráskódú, felületalapú, a parancs eszköz létrehozása és kezelése a Microsoft Azure erőforrásait.
 
 
 ## <a name="azure-iot-device-sdks"></a>Az Azure IoT eszközoldali SDK-k
@@ -185,8 +185,8 @@ Használhatja a [IoT Hub erőforrás REST API](https://docs.microsoft.com/rest/a
 ## <a name="iot-solution-accelerators"></a>IoT-megoldásgyorsítók
 Az Azure IoT-megoldásgyorsítók csomagot több Azure-szolgáltatások megoldásokban. Ezek a megoldások gyors használatbavétele az általános IoT-forgatókönyveket teljes körű megvalósítását teszi lehetővé. További információkért lásd: [Mik az Azure IoT-megoldásgyorsítók?](../iot-accelerators/about-iot-accelerators.md)
 
-## <a name="the-iot-extension-for-azure-cli-20"></a>Az IoT-bővítmény, az Azure CLI 2.0 használatával
-[Az IoT-bővítmény, az Azure CLI 2.0](https://github.com/Azure/azure-iot-cli-extension) többplatformos, a parancssori eszköz. Az eszköz lehetővé teszi az eszközök kezelését a [eszközidentitás-jegyzék](#identity-registry), küldéséhez és üzenetek és fájlok fogadjon az eszközökről és az IoT hub-műveletek monitorozása.
+## <a name="the-iot-extension-for-azure-cli"></a>Az IoT-bővítmény, az Azure CLI-vel 
+[Az Azure CLI-vel az IoT-bővítmény](https://github.com/Azure/azure-iot-cli-extension) többplatformos, a parancssori eszköz. Az eszköz lehetővé teszi az eszközök kezelését a [eszközidentitás-jegyzék](#identity-registry), küldéséhez és üzenetek és fájlok fogadjon az eszközökről és az IoT hub-műveletek monitorozása.
 
 ## <a name="job"></a>Feladat
 A megoldás háttérrendszere [feladatok](iot-hub-devguide-jobs.md) ütemezéséhez és az eszközök regisztrálása az IoT hubbal a tevékenységek nyomon követésére. Tevékenységek közé tartozik az eszköz frissítését [kívánt tulajdonságok](#desired-properties), frissítési ikereszköz [címkék](#tags), és a program invoking [közvetlen metódusok](#direct-method). [Az IoT Hub](#iot-hub) is használ az [való importálása és exportálása](iot-hub-devguide-identity-registry.md#import-and-export-device-identities) származó a [eszközidentitás-jegyzék](#identity-registry).

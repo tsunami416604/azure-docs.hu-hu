@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/16/2018
 ms.author: sedusch
-ms.openlocfilehash: dfcb5c7c0b487b8379d89a9b285bae1ca1a9c774
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.openlocfilehash: e2e76e3cd058e5798b0159923118b050f38d077e
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45634523"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47034637"
 ---
 # <a name="high-availability-of-sap-hana-on-azure-vms-on-suse-linux-enterprise-server"></a>A SUSE Linux Enterprise Server Azure virtuális gépeken SAP Hana magas rendelkezésre állás
 
@@ -68,6 +68,7 @@ Először olvassa el az alábbi SAP-megjegyzések és tanulmányok:
 * SAP-Jegyzetnek [1984787] SUSE Linux Enterprise Server 12 vonatkozó általános információkat tartalmaz.
 * SAP-Jegyzetnek [1999351] további információkat talál az Azure Enhanced Monitoring bővítményt az SAP rendelkezik.
 * [Az SAP közösségi WIKI](https://wiki.scn.sap.com/wiki/display/HOME/SAPonLinuxNotes) rendelkezik az összes szükséges az SAP-megjegyzések Linux rendszeren.
+* [Az SAP HANA Certified IaaS-platformon](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure)
 * [Az Azure virtuális gépek tervezése és megvalósítása a linuxon futó SAP] [ planning-guide] útmutató.
 * [Az Azure virtuális gépek üzembe helyezése Linuxon futó SAP-] [ deployment-guide] (Ez a cikk).
 * [Az Azure Virtual Machines DBMS üzembe helyezése Linuxon futó SAP-] [ dbms-guide] útmutató.
@@ -114,6 +115,10 @@ A sablon üzembe helyezéséhez kövesse az alábbi lépéseket:
 
 ### <a name="manual-deployment"></a>Manuális telepítés
 
+> [!IMPORTANT]
+> Győződjön meg róla, hogy az operációs rendszer választja SAP-minősítéssel rendelkező SAP Hana, az adott virtuális gépek típusai, használja a. Az SAP HANA listája tanúsított Virtuálisgép-típusok és az operációs rendszer kiadások az azokat kereshetők [SAP HANA Certified IaaS platformok](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure). Ellenőrizze, hogy a virtuális gép típusú felsorolt lekérni az SAP HANA teljes listáját a részletek megtekintéséhez kattintson az adott virtuális gép típusa támogatott operációsrendszer-kiadások
+>  
+
 1. Hozzon létre egy erőforráscsoportot.
 1. Hozzon létre egy virtuális hálózatot.
 1. Hozzon létre egy rendelkezésre állási csoportot.
@@ -121,12 +126,10 @@ A sablon üzembe helyezéséhez kövesse az alábbi lépéseket:
 1. Load balancer létrehozása (belső).
    - Válassza ki a 2. lépésben létrehozott virtuális hálózatot.
 1. 1 virtuális gép létrehozása.
-   - Legalább SLES4SAP 12 SP1. Ebben a példában a SLES4SAP 12 SP2 kép https://ms.portal.azure.com/#create/SUSE.SUSELinuxEnterpriseServerforSAPApplications12SP2PremiumImage-ARM.
-   - Használja a SLES for SAP 12 SP2 (prémium szintű).
+   - SLES4SAP rendszerkép használata az Azure-katalógus, amely az SAP Hana-hoz, a kiválasztott VM-típus támogatott.
    - Válassza ki a 3. lépésében létrehozott rendelkezésre állási csoport.
 1. 2 virtuális gép létrehozása.
-   - Legalább SLES4SAP 12 SP1. Ebben a példában a SLES4SAP 12 SP1 saját rendszerképet használ https://ms.portal.azure.com/#create/SUSE.SUSELinuxEnterpriseServerforSAPApplications12SP2PremiumImage-ARM.
-   - Használja a SLES for SAP 12 SP2 (prémium szintű).
+   - SLES4SAP rendszerkép használata az Azure-katalógus, amely az SAP Hana-hoz, a kiválasztott VM-típus támogatott.
    - Válassza ki a 3. lépésében létrehozott rendelkezésre állási csoport. 
 1. Adatlemezek hozzáadása.
 1. A load balancer konfigurálása. Először hozzon létre egy előtérbeli IP-címkészlet:
@@ -676,6 +679,9 @@ crm resource cleanup msl_SAPHana_<b>HN1</b>_HDB<b>03</b> <b>hn1-db-0</b>
 </code></pre>
 
 ### <a name="suse-tests"></a>SUSE-tesztek
+
+> [!IMPORTANT]
+> Győződjön meg róla, hogy az operációs rendszer választja SAP-minősítéssel rendelkező SAP Hana, az adott virtuális gépek típusai, használja a. Az SAP HANA listája tanúsított Virtuálisgép-típusok és az operációs rendszer kiadások az azokat kereshetők [SAP HANA Certified IaaS platformok](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure). Ellenőrizze, hogy a virtuális gép típusú felsorolt lekérni az SAP HANA teljes listáját a részletek megtekintéséhez kattintson az adott virtuális gép típusa támogatott operációsrendszer-kiadások
 
 Az SAP HANA SR teljesítmény optimalizált forgatókönyv vagy SAP HANA SR költség optimalizált forgatókönyv útmutatóban, attól függően, a használati eset felsorolt összes esetek futtatása. A útmutatókat találhat a [SLES for SAP ajánlott eljárások lap][sles-for-sap-bp].
 
