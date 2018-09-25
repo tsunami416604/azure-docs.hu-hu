@@ -13,12 +13,12 @@ ms.devlang: PHP
 ms.topic: article
 ms.date: 04/11/2018
 ms.author: msangapu
-ms.openlocfilehash: 028a8f35b6ffc4b429725e91045e70112f2bdabd
-ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
+ms.openlocfilehash: 39c40482017ae0c0dedcfb1b65ff3767c4e45169
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/15/2018
-ms.locfileid: "42055302"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46999188"
 ---
 # <a name="configure-php-in-azure-app-service-web-apps"></a>Az Azure App Service Web Apps szolgáltatásban PHP konfigurálása
 
@@ -58,9 +58,9 @@ PHP 7.0 és a PHP 7.2-verziók is rendelkezésre állnak rendelkezésre, de alap
 
         PS C:\> Get-AzureWebsite -Name {app-name} | findstr PhpVersion
 
-### <a name="azure-cli-20-linux-mac-windows"></a>Az Azure CLI 2.0 (Linux, Mac, Windows)
+### <a name="azure-cli"></a>Azure CLI 
 
-Az Azure parancssori felület használatához be kell [Azure CLI 2.0 telepítése](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) a számítógépen.
+Az Azure parancssori felület használatához be kell [az Azure CLI telepítése](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) a számítógépen.
 
 1. Nyissa meg terminált, és jelentkezzen be a fiókjába.
 

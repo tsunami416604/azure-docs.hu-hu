@@ -8,30 +8,30 @@ ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: f20e102ee1d100ea02da53fe460b56f8f8390418
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: f5f8ed885791a648f30790434be56d966bbf2e47
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39426693"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46989294"
 ---
 # <a name="webhook-actions-for-log-alert-rules"></a>Webhook-műveletek a riasztási szabály
-Ha egy [riasztást hoz létre az Azure-ban ](monitor-alerts-unified-usage.md), lehetősége van a [konfigurálása a Műveletcsoportok használatával](monitoring-action-groups.md) egy vagy több művelet végrehajtásához.  Ez a cikk ismerteti a rendelkezésre álló különböző webhook-műveletek és a részletek az egyéni JSON-alapú webhook konfigurálásáról.
+Ha egy [riasztás jön létre az Azure-ban](alert-log.md), lehetősége van a [konfigurálása a Műveletcsoportok használatával](monitoring-action-groups.md) egy vagy több művelet végrehajtásához.  Ez a cikk ismerteti a rendelkezésre álló különböző webhook-műveletek és a részletek az egyéni JSON-alapú webhook konfigurálásáról.
 
 
 ## <a name="webhook-actions"></a>Webhook-műveletek
 
-Webhook-műveletek lehetővé teszik a külső folyamatok egyetlen HTTP POST-kérés.  A hívott szolgáltatást kell webhookok támogatása, és határozza meg, hogyan használja a bármely hasznos kap.   Például egy webhook használatával egy riasztásra adott válaszként küldenek egy üzenetet [Slack](http://slack.com) az incidens létrehozása vagy [PagerDuty](http://pagerduty.com/).  
+Webhook-műveletek lehetővé teszik a külső folyamatok egyetlen HTTP POST-kérés.  A hívott szolgáltatást kell webhookok támogatása, és határozza meg, hogyan használja a bármely hasznos kap.    
 
 Webhook-műveletek az alábbi táblázatban szereplő tulajdonságok szükségesek:
 
 | Tulajdonság | Leírás |
 |:--- |:--- |
 | Webhook URL-címe |A webhook URL-címe |
-| Egyéni JSON-adattartalmat |Egyéni tartalom használatával küldhet a webhookot, ha ezt a lehetőséget választja a riasztás létrehozásakor. A részletek [Azure Alerts használatával riasztások kezelése ](monitor-alerts-unified-usage.md) |
+| Egyéni JSON-adattartalmat |Egyéni tartalom használatával küldhet a webhookot, ha ezt a lehetőséget választja a riasztás létrehozásakor. A részletek [riasztások kezelése](alert-log.md) |
 
 > [!NOTE]
-> Tesztelje a Webhook gomb problémamentesen *Belefoglalás egyéni JSON-adattartalom-webhook* beállításhoz tartozó értesítési napló, aktiválják a helyőrző hívás teszteléséhez a webhook URL-CÍMÉT. Tényleges adatok és riasztások használt JSON-sémájában képviselője nem tartalmaz. 
+> Nézet Webhook gomb problémamentesen *Belefoglalás egyéni JSON-adattartalom-webhook* beállításhoz tartozó értesítési napló, megjeleníti a megadott testreszabása a webhook hasznosadat-minta. Tényleges adatok és riasztások használt JSON-sémájában képviselője nem tartalmaz. 
 
 Webhookok tartalmaznak egy URL-CÍMÉT és a egy hasznos, amely a külső szolgáltatásnak küldött adatok JSON-formátumú.  Alapértelmezés szerint a tartalom magában foglalja az értékeket az alábbi táblázatban: dönthet úgy, hogy ezek a hasznos adatok cserélje le a saját egyéni egy.  Ebben az esetben használhatja a változók a táblázatban az egyes paraméterek értékük szerepeljenek az egyéni adattartalom.
 
@@ -54,7 +54,7 @@ Webhookok tartalmaznak egy URL-CÍMÉT és a egy hasznos, amely a külső szolg�
 | Előfizetés azonosítója |#subscriptionid |Az Application insights szolgáltatással használt Azure-előfizetésében azonosítója. 
 
 > [!NOTE]
-> LinkToSearchResults átadja SearchQuery, keresési intervallum StartTime & keresési intervallum befejezési idő például paramétereket az URL-címben Analytics szakaszban megtekintése az Azure Portalon. Az Azure portal hozzávetőleges 2000 karakternél hosszabb URI mérete, és megnyílik, ha paraméterek értékét túllépi az említett határt. Felhasználók manuálisan bevinni részleteit az eredmények megtekintése az Analytics-portálon, vagy használja a [Application Insights Analytics REST API](https://dev.applicationinsights.io/documentation/Using-the-API) vagy [Log Analytics REST API](https://dev.loganalytics.io/reference) eredmények programozott módon lekéréséhez 
+> LinkToSearchResults átadja SearchQuery, keresési intervallum StartTime & keresési intervallum befejezési idő például paramétereket az URL-címben Analytics szakaszban megtekintése az Azure Portalon. Az Azure portal méretezés hozzávetőleges 2000 karakterből áll, és automatikusan URI tartozik *nem* riasztásokat, ha paraméterek értékét az említett korlátját meghaladja a megadott hivatkozás megnyitása. Felhasználók manuálisan bevinni részleteit az eredmények megtekintése az Analytics-portálon, vagy használja a [Application Insights Analytics REST API](https://dev.applicationinsights.io/documentation/Using-the-API) vagy [Log Analytics REST API](https://dev.loganalytics.io/reference) eredmények programozott módon lekéréséhez 
 
 Például megadhatja a következő nevű egyetlen paramétert tartalmazó egyéni adattartalom *szöveg*.  A szolgáltatás, amely meghívja ezt a webhookot szeretné ezt a paramétert várt lehet.
 
@@ -198,6 +198,7 @@ Következő egy hasznosadat-minta bármely riasztás egyéni webhook művelet.
 
 ## <a name="next-steps"></a>További lépések
 - Ismerje meg [Naplóriasztások az Azure-riasztások ](monitor-alerts-unified-log.md)
+- Megismerheti [managaing naplóriasztások az Azure-ban](alert-log.md)
 - Létrehozásához és kezeléséhez [Műveletcsoportok az Azure-ban](monitoring-action-groups.md)
 - Tudjon meg többet [Application Insights](../application-insights/app-insights-analytics.md)
 - Tudjon meg többet [Log Analytics](../log-analytics/log-analytics-overview.md). 

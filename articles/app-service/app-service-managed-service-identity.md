@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 06/25/2018
 ms.author: mahender
-ms.openlocfilehash: 5d058059f523d3567817cad8ac11e837fb4a0a49
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: fb9b50ecb16bd37d005403a14ea11c6d89f50dfe
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44714248"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46983647"
 ---
 # <a name="how-to-use-managed-identities-for-app-service-and-azure-functions"></a>Felügyelt identitások használata az App Service-ben és az Azure Functions
 
@@ -52,7 +52,7 @@ Az Azure CLI használatával felügyelt identitás beállításához kell haszn�
 
 - Használat [Azure Cloud Shell](../cloud-shell/overview.md) az Azure Portalról.
 - Használja a beágyazott Azure Cloud Shell-t a "próbálja" gombra, az alábbi kódmintában jobb felső sarkában található.
-- [Telepítse a CLI 2.0 legújabb verzióját](https://docs.microsoft.com/cli/azure/install-azure-cli) (2.0.31-es vagy újabb) Ha inkább a helyi CLI-konzol használatával. 
+- [Azure CLI legújabb verziójának telepítése](https://docs.microsoft.com/cli/azure/install-azure-cli) (2.0.31-es vagy újabb) Ha inkább a helyi CLI-konzol használatával. 
 
 Az alábbi lépéseket végigvezeti egy webalkalmazás létrehozása és hozzárendelése az identitás a CLI használatával:
 
@@ -157,7 +157,7 @@ Nincs a beszerzésével egy lexikális elem szerepel az App Service-ben és az A
 
 ### <a name="asal"></a>A Microsoft.Azure.Services.AppAuthentication kódtár használatával a .NET-hez
 
-A .NET-alkalmazások és funkciók az a legegyszerűbb módja egy felügyelt identitás használata a Microsoft.Azure.Services.AppAuthentication csomag keresztül történik. Ebben a könyvtárban is lehetővé teszi, hogy a kód a fejlesztői gépen, a felhasználói fiókkal a Visual Studióban a helyi tesztelése az [Azure CLI 2.0](https://docs.microsoft.com/cli/azure?view=azure-cli-latest), vagy az Active Directory beépített hitelesítést. További információ a helyi fejlesztési lehetőségek az ebben a könyvtárban, tekintse meg a [Microsoft.Azure.Services.AppAuthentication reference]. Ez a szakasz bemutatja, hogyan első lépések a kódtárat a programkódba.
+A .NET-alkalmazások és funkciók az a legegyszerűbb módja egy felügyelt identitás használata a Microsoft.Azure.Services.AppAuthentication csomag keresztül történik. Ebben a könyvtárban is lehetővé teszi, hogy a kód a fejlesztői gépen, a felhasználói fiókkal a Visual Studióban a helyi tesztelése az [Azure CLI-vel](/cli/azure), vagy az Active Directory beépített hitelesítést. További információ a helyi fejlesztési lehetőségek az ebben a könyvtárban, tekintse meg a [Microsoft.Azure.Services.AppAuthentication reference]. Ez a szakasz bemutatja, hogyan első lépések a kódtárat a programkódba.
 
 1. Adja hozzá hivatkozásokat az [Microsoft.Azure.Services.AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication) és [Microsoft.Azure.KeyVault](https://www.nuget.org/packages/Microsoft.Azure.KeyVault) NuGet-csomagok az alkalmazáshoz.
 
@@ -184,7 +184,7 @@ Az alkalmazás felügyelt identitással rendelkezik definiált két környezeti 
 A **MSI_ENDPOINT** egy helyi URL-cím, amelyről az alkalmazás jogkivonatokat kérhetnek. Erőforrás egy token beszerzéséhez hajtsa végre egy HTTP GET kérés ehhez a végponthoz, többek között a következő paraméterekkel:
 
 > [!div class="mx-tdBreakAll"]
-> |Paraméter neve|Eleme ennek|Leírás|
+> |Paraméter neve|A|Leírás|
 > |-----|-----|-----|
 > |erőforrás|Lekérdezés|Az AAD erőforrás URI-t az erőforrás számára, ami egy token beszerzése.|
 > |API-verzió|Lekérdezés|A használt jogkivonat API-verzió. "2017-09-01" jelenleg az egyetlen támogatott verzió.|
