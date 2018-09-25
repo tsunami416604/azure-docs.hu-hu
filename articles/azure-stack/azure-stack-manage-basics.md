@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 06/08/2018
 ms.author: mabrigg
 ms.openlocfilehash: 39dc48b1357b07932efbccaf002f54ca58edae24
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35923388"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47093296"
 ---
 # <a name="azure-stack-administration-basics"></a>Az Azure Stack az Adminisztráció alapjai
 Több szempontot, ha most ismerkedik az Azure Stack felügyeleti ismernie kell. Ez az útmutató az Azure Stack operátorait szerint a szerepkör áttekintése és kell, hogy a felhasználók a számukra a gyors elindulásban biztosít.

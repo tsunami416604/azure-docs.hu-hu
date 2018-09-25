@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 59274dd042c136770d0f4bab5ab69854dbfb3896
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: f4f0c3e21f755dbf431be72ebf7568155ab1bc89
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43663767"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46949434"
 documentType: LandingData
 title: Stream Analytics-dokumentáció
 metadata:
@@ -58,6 +58,8 @@ sections:
     - html: <a href="stream-analytics-manage-job">Stream Analytics-feladat létrehozása telefonhívás-adatok elemzésére és az eredmények Power BI-irányítópulton való vizualizációjára</a>
     - html: <a href="stream-analytics-with-azure-functions">Az Azure Functions futtatása Azure Stream Analytics-feladatokból</a>
     - html: <a href="stream-analytics-javascript-user-defined-functions">Felhasználói JavaScript-függvények futtatása az Azure Stream Analytics-feladatokban</a>
+    - html: <a href="stream-analytics-tools-visual-studio-cicd-vsts">Azure Stream Analytics-feladat üzembe helyezése CI/CD-vel az Azure Pipelines használatával</a>
+    - html: <a href="stream-analytics-edge-csharp-udf">Felhasználói C# függvény írása Azure Stream Analytics Edge-feladathoz (előzetes verzió)</a>
 - title: Referencia
   items:
   - type: list

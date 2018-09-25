@@ -1,0 +1,954 @@
+items:
+- name: Az Azure Monitor dokumentációja
+  href: index.yml
+- name: Áttekintés
+  items:
+  - name: Mi az Azure Monitor?
+    href: overview.md
+  - name: Védjegyzést érintő változások
+    href: azure-monitor-rebrand.md
+- name: Gyors útmutatók
+  items:
+  - name: Alkalmazások
+    items:
+    - name: .NET-alkalmazás
+      href: ../application-insights/quick-monitor-portal.md?toc=/azure/azure-monitor/toc.json
+    - name: .NET Core-alkalmazás
+      href: ../application-insights/app-insights-dotnetcore-quick-start.md?toc=/azure/azure-monitor/toc.json
+    - name: Node.js-alkalmazás
+      href: ../application-insights/app-insights-nodejs-quick-start.md?toc=/azure/azure-monitor/toc.json
+    - name: Java-alkalmazás
+      href: ../application-insights/app-insights-java-quick-start.md?toc=/azure/azure-monitor/toc.json
+    - name: Mobilalkalmazás
+      href: ../application-insights/app-insights-mobile-center-quickstart.md?toc=/azure/azure-monitor/toc.json
+  - name: Riasztások
+    items:
+    - name: Riasztás (klasszikus) metrikai feltétel teljesülésekor
+      href: ../monitoring-and-diagnostics/monitor-quick-resource-metric-alert-portal.md?toc=/azure/azure-monitor/toc.json
+    - name: Riasztás előfizetési tevékenység esetén
+      href: ../monitoring-and-diagnostics/monitor-quick-audit-notify-action-in-subscription.md?toc=/azure/azure-monitor/toc.json
+  - name: Virtual machines (Virtuális gépek)
+    items:
+    - name: Gyűjtés – Azure-beli virtuális gépek
+      href: ../log-analytics/log-analytics-quick-collect-azurevm.md?toc=/azure/azure-monitor/toc.json
+    - name: Gyűjtés – Linux rendszerű számítógép
+      href: ../log-analytics/log-analytics-quick-collect-linux-computer.md?toc=/azure/azure-monitor/toc.json
+    - name: Gyűjtés – Windows rendszerű számítógép
+      href: ../log-analytics/log-analytics-quick-collect-windows-computer.md?toc=/azure/azure-monitor/toc.json
+  expanded: true
+- name: Oktatóanyagok
+  items:
+  - name: 1 – Adatok elemzése
+    href: ../log-analytics/log-analytics-tutorial-viewdata.md?toc=/azure/azure-monitor/toc.json
+  - name: 2 – Adatok vizualizációja
+    href: ../log-analytics/log-analytics-tutorial-dashboards.md?toc=/azure/azure-monitor/toc.json
+  - name: 3 – Adatok archiválása
+    href: ../monitoring-and-diagnostics/monitor-tutorial-archive-monitoring-data.md?toc=/azure/azure-monitor/toc.json
+  - name: 4 – Riasztás naplóadatok alapján
+    href: ../log-analytics/log-analytics-tutorial-response.md?toc=/azure/azure-monitor/toc.json
+  - name: 5 – Automatikus méretezés teljesítmény és ütemezés alapján
+    href: ../monitoring-and-diagnostics/monitor-tutorial-autoscale-performance-schedule.md?toc=/azure/azure-monitor/toc.json
+  - name: 6 – Futásidejű kivételek keresése
+    href: ../application-insights/app-insights-tutorial-runtime-exceptions.md?toc=/azure/azure-monitor/toc.json
+  - name: 7 – Teljesítményproblémák keresése
+    href: ../application-insights/app-insights-tutorial-performance.md?toc=/azure/azure-monitor/toc.json
+  - name: 8 – Riasztás alkalmazásállapot alapján
+    href: ../application-insights/app-insights-tutorial-alert.md?toc=/azure/azure-monitor/toc.json
+  - name: 9 – A felhasználók megismerése
+    href: ../application-insights/app-insights-tutorial-users.md?toc=/azure/azure-monitor/toc.json
+  - name: 10 – Egyéni irányítópultok létrehozása
+    href: ../application-insights/app-insights-tutorial-dashboards.md?toc=/azure/azure-monitor/toc.json
+- name: Példák
+  items:
+  - name: Azure PowerShell
+    href: ../log-analytics/powershell-samples.md?toc=/azure/azure-monitor/toc.json
+- name: Alapelvek
+  items:
+  - name: Azure-felügyelet
+    href: ../monitoring/index.md?toc=/azure/azure-monitor/toc.json
+  - name: Adatok monitorozása
+    items:
+    - name: Metrikák és naplók
+      href: ../monitoring/monitoring-data-collection.md?toc=/azure/azure-monitor/toc.json
+    - name: Adatforrások
+      href: ../monitoring/monitoring-data-sources.md?toc=/azure/azure-monitor/toc.json
+    - name: Azure-beli adatforrások
+      href: ../monitoring-and-diagnostics/monitoring-data-sources.md?toc=/azure/azure-monitor/toc.json
+    - name: Tevékenységnapló
+      href: ../monitoring-and-diagnostics/monitoring-overview-activity-logs.md?toc=/azure/azure-monitor/toc.json
+    - name: Diagnosztikai naplók
+      href: ../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md?toc=/azure/azure-monitor/toc.json
+    - name: Naplóadatok feldolgozási ideje
+      href: ../log-analytics/log-analytics-data-ingestion-time.md?toc=/azure/azure-monitor/toc.json
+    - name: Egyéni metrikák a metrikatárba
+      href: ../monitoring-and-diagnostics/metrics-custom-overview.md?toc=/azure/azure-monitor/toc.json
+    - name: Adatbiztonság
+      items:
+      - name: Naplóadatok
+        href: ../log-analytics/log-analytics-data-security.md?toc=/azure/azure-monitor/toc.json
+      - name: Személyes naplóadatok kezelése
+        href: ../log-analytics/log-analytics-personal-data-mgmt.md?toc=/azure/azure-monitor/toc.json
+      - name: Alkalmazásadatok gyűjtése, megőrzése és tárolása
+        href: ../application-insights/app-insights-data-retention-privacy.md?toc=/azure/azure-monitor/toc.json
+  - name: Insights
+    items:
+    - name: Application Insights
+      items:
+      - name: Áttekintés
+        href: ../application-insights/app-insights-overview.md?toc=/azure/azure-monitor/toc.json
+      - name: DevOps
+        href: ../application-insights/app-insights-detect-triage-diagnose.md?toc=/azure/azure-monitor/toc.json
+      - name: Elosztott nyomkövetés
+        href: ../application-insights/distributed-tracing.md?toc=/azure/azure-monitor/toc.json
+      - name: Naplóalapú és előre összesített metrikák
+        href: ../application-insights/pre-aggregated-metrics-log-metrics.md?toc=/azure/azure-monitor/toc.json
+    - name: Containers
+      href: https://aka.ms/AzureMonitorContainers
+    - name: Virtuális gépek
+      href: https://aka.ms/AzureMonitorVirtualMachines
+    - name: Monitorozási megoldások
+      href: ../monitoring/monitoring-solutions-inventory.md?toc=/azure/azure-monitor/toc.json
+  - name: Adatok elemzése
+    items:
+    - name: Log Analytics
+      href: ../log-analytics/log-analytics-queries.md?toc=/azure/azure-monitor/toc.json
+    - name: Naplólekérdezési portálok
+      href: ../log-analytics/log-analytics-log-search-portals.md?toc=/azure/azure-monitor/toc.json
+    - name: OMS-portálváltás
+      items:
+      - name: Áttekintés
+        href: ../log-analytics/log-analytics-oms-portal-transition.md?toc=/azure/azure-monitor/toc.json
+      - name: Gyakori kérdések
+        href: ../log-analytics/log-analytics-oms-portal-faq.md?toc=/azure/azure-monitor/toc.json
+  - name: Reagálás incidensekre
+    href: ../monitoring-and-diagnostics/monitoring-overview-unified-alerts.md?toc=/azure/azure-monitor/toc.json
+    items:
+    - name: Riasztások
+      href: ../monitoring-and-diagnostics/monitoring-overview-alerts.md?toc=/azure/azure-monitor/toc.json
+    - name: Klasszikus riasztások
+      href: ../monitoring-and-diagnostics/monitoring-overview-alerts-classic.md?toc=/azure/azure-monitor/toc.json
+    - name: Intelligens csoportok
+      href: ../monitoring-and-diagnostics/monitoring-overview-alerts-smartgroups.md?toc=/azure/azure-monitor/toc.json
+    - name: Automatikus méretezés
+      href: ../monitoring-and-diagnostics/monitoring-overview-autoscale.md?toc=/azure/azure-monitor/toc.json
+    - name: Metrikákhoz kapcsolódó riasztások
+      href: ../monitoring-and-diagnostics/alert-metric-overview.md?toc=/azure/azure-monitor/toc.json
+    - name: Naplóriasztások
+      href: ../monitoring-and-diagnostics/monitor-alerts-unified-log.md?toc=/azure/azure-monitor/toc.json
+    - name: Tevékenységnapló-riasztások
+      href: ../monitoring-and-diagnostics/monitoring-activity-log-alerts.md?toc=/azure/azure-monitor/toc.json
+    - name: Riasztások kiterjesztése a Log Analyticsből az Azure-ba
+      href: ../monitoring-and-diagnostics/monitoring-alerts-extend.md?toc=/azure/azure-monitor/toc.json
+  - name: Adatok vizualizációja
+    href: visualizations.md?toc=/azure/azure-monitor/toc.json
+  - name: Partnerintegrációk
+    href: ../monitoring-and-diagnostics/monitoring-partners.md?toc=/azure/azure-monitor/toc.json
+  - name: GYIK
+    items:
+    - name: Log Analytics
+      href: ../log-analytics/log-analytics-faq.md?toc=/azure/azure-monitor/toc.json
+    - name: Application Insights
+      href: ../application-insights/app-insights-troubleshoot-faq.md?toc=/azure/azure-monitor/toc.json
+- name: Útmutatók
+  items:
+  - name: Tervezés és előkészítés
+    items:
+    - name: Hozzáférés kezelése
+      items:
+      - name: Szerepköri engedélyek és biztonság
+        href: ../monitoring-and-diagnostics/monitoring-roles-permissions-security.md?toc=/azure/azure-monitor/toc.json
+      - name: Munkaterületek
+        href: ../log-analytics/log-analytics-manage-access.md?toc=/azure/azure-monitor/toc.json
+      - name: Alkalmazások
+        href: ../application-insights/app-insights-resources-roles-access-control.md?toc=/azure/azure-monitor/toc.json
+      - name: IP-címek
+        href: ../application-insights/app-insights-ip-addresses.md?toc=/azure/azure-monitor/toc.json
+    - name: Alkalmazások figyelése
+      items:
+      - name: Webalkalmazások és szolgáltatások részletes diagnosztikája
+        href: ../application-insights/app-insights-devops.md?toc=/azure/azure-monitor/toc.json
+      - name: Webalkalmazások teljesítményének monitorozása
+        href: ../application-insights/app-insights-web-monitor-performance.md?toc=/azure/azure-monitor/toc.json
+      - name: A fejlesztési, tesztelési és éles környezetek elkülönítése
+        href: ../application-insights/app-insights-separate-resources.md?toc=/azure/azure-monitor/toc.json
+      - name: Alkalmazások figyelése több összetevővel
+        href: ../application-insights/app-insights-monitor-multi-role-apps.md?toc=/azure/azure-monitor/toc.json
+      - name: Hogyan tegyem... az Application Insights szolgáltatásban?
+        href: ../application-insights/app-insights-how-do-i.md?toc=/azure/azure-monitor/toc.json
+    - name: Munkaterületek kezelése
+      items:
+      - name: Munkaterület létrehozása
+        items:
+        - name: Az Azure Portal használata
+          href: ../log-analytics/log-analytics-quick-create-workspace.md?toc=/azure/azure-monitor/toc.json
+        - name: Az Azure parancssori felület használatával
+          href: ../log-analytics/log-analytics-quick-create-workspace-cli.md?toc=/azure/azure-monitor/toc.json
+        - name: Azure PowerShell használatával
+          href: ../log-analytics/log-analytics-quick-create-workspace-posh.md?toc=/azure/azure-monitor/toc.json
+      - name: Munkaterület törlése
+        href: ../log-analytics/log-analytics-manage-del-workspace.md?toc=/azure/azure-monitor/toc.json
+      - name: A szolgáltatókat szem előtt tartó tervezés
+        href: ../log-analytics/log-analytics-service-providers.md?toc=/azure/azure-monitor/toc.json
+    - name: Ügynökök telepítése és konfigurálása
+      items:
+      - name: Ügynökök összehasonlítása
+        href: ../monitoring/monitoring-overview-azure-agents.md?toc=/azure/azure-monitor/toc.json
+      - name: Windows-ügynökök
+        href: ../log-analytics/log-analytics-agent-windows.md?toc=/azure/azure-monitor/toc.json
+      - name: Virtuálisgép-bővítmény Windowshoz
+        href: ../virtual-machines/windows/extensions-oms.md?toc=/azure/azure-monitor/toc.json
+      - name: Virtuálisgép-bővítmény Linuxhoz
+        href: ../virtual-machines/linux/extensions-oms.md?toc=/azure/azure-monitor/toc.json
+      - name: Hibrid környezek figyelése
+        href: ../log-analytics/log-analytics-concept-hybrid.md?toc=/azure/azure-monitor/toc.json
+      - name: Operations Manager
+        href: ../log-analytics/log-analytics-om-agents.md?toc=/azure/azure-monitor/toc.json
+      - name: OMS-átjáró
+        href: ../log-analytics/log-analytics-oms-gateway.md?toc=/azure/azure-monitor/toc.json
+      - name: Ügynökkezelés
+        href: ../log-analytics/log-analytics-agent-manage.md?toc=/azure/azure-monitor/toc.json
+      - name: Azure Diagnostics bővítmény
+        href: ../monitoring-and-diagnostics/azure-diagnostics.md?toc=/azure/azure-monitor/toc.json
+        items:
+        - name: Küldés az Azure Storage-be
+          href: ../monitoring-and-diagnostics/azure-diagnostics-storage.md?toc=/azure/azure-monitor/toc.json
+        - name: Küldés az Application Insightsba
+          href: ../monitoring-and-diagnostics/azure-diagnostics-configure-application-insights.md?toc=/azure/azure-monitor/toc.json
+        - name: Küldés az Event Hubsba
+          href: ../monitoring-and-diagnostics/azure-diagnostics-streaming-event-hubs.md?toc=/azure/azure-monitor/toc.json
+        - name: Hibaelhárítás
+          href: ../monitoring-and-diagnostics/azure-diagnostics-troubleshooting.md?toc=/azure/azure-monitor/toc.json
+        - name: Diagnosztikai beállítások engedélyezése Resource Manager-sablonokkal
+          href: ../monitoring-and-diagnostics/monitoring-enable-diagnostic-logs-using-template.md?toc=/azure/azure-monitor/toc.json
+        - name: A JSON-sorok diagnosztikainapló-formátum használatára való felkészülés
+          href: ../monitoring-and-diagnostics/monitor-diagnostic-logs-append-blobs.md?toc=/azure/azure-monitor/toc.json
+        - name: Egyéni metrikák küldése a metrikatárba – REST API
+          href: ../monitoring-and-diagnostics/metrics-store-custom-rest-api.md?toc=/azure/azure-monitor/toc.json
+        - name: GuestOS küldése a metrikatárba – Linux rendszerű virtuális gép (Telegraf)
+          href: ../monitoring-and-diagnostics/metrics-store-custom-linux-telegraf.md?toc=/azure/azure-monitor/toc.json
+        - name: GuestOS küldése a metrikatárba – virtuális gép
+          href: ../monitoring-and-diagnostics/metrics-store-custom-guestos-resource-manager-vm.md?toc=/azure/azure-monitor/toc.json
+        - name: GuestOS küldése a metrikatárba – virtuálisgép-méretezési csoport
+          href: ../monitoring-and-diagnostics/metrics-store-custom-guestos-resource-manager-vmss.md?toc=/azure/azure-monitor/toc.json
+        - name: GuestOS küldése a metrikatárba – klasszikus virtuális gép
+          href: ../monitoring-and-diagnostics/metrics-store-custom-guestos-classic-vm.md?toc=/azure/azure-monitor/toc.json
+        - name: GuestOS küldése a metrikatárba – felhőszolgáltatás
+          href: ../monitoring-and-diagnostics/metrics-store-custom-guestos-classic-cloud-service.md?toc=/azure/azure-monitor/toc.json
+      - name: Hibaelhárítás
+        items:
+        - name: Naplók hibaelhárítása – virtuálisgép-bővítmény
+          href: ../log-analytics/log-analytics-azure-vmext-troubleshoot.md?toc=/azure/azure-monitor/toc.json
+        - name: Naplók hibaelhárítása – Linux-ügynök
+          href: ../log-analytics/log-analytics-agent-linux-support.md?toc=/azure/azure-monitor/toc.json
+  - name: Adatok gyűjtése
+    items:
+    - name: Alkalmazások konfigurálása
+      items:
+      - name: Azure-alkalmazások
+        items:
+        - name: Azure-webalkalmazások
+          href: ../application-insights/app-insights-azure-web-apps.md?toc=/azure/azure-monitor/toc.json
+        - name: Azure Cloud Services
+          href: ../application-insights/app-insights-cloudservices.md?toc=/azure/azure-monitor/toc.json
+        - name: Folyamatos megfigyelés hozzáadása
+          href: ../application-insights/app-insights-vsts-continuous-monitoring.md?toc=/azure/azure-monitor/toc.json
+        - name: Profilkészítő
+          href: ../application-insights/app-insights-profiler.md?toc=/azure/azure-monitor/toc.json
+        - name: Profilkészítő engedélyezése
+          href: ../application-insights/enable-profiler-compute.md?toc=/azure/azure-monitor/toc.json
+        - name: Diagnosztika
+          href: ../application-insights/app-insights-azure-diagnostics.md?toc=/azure/azure-monitor/toc.json
+        - name: Előnézetek
+          href: ../application-insights/app-insights-previews.md?toc=/azure/azure-monitor/toc.json
+      - name: ASP.NET-alkalmazások
+        items:
+        - name: Webalkalmazások
+          href: ../application-insights/app-insights-asp-net.md?toc=/azure/azure-monitor/toc.json
+        - name: Állapotmonitor
+          href: ../application-insights/app-insights-monitor-performance-live-website-now.md?toc=/azure/azure-monitor/toc.json
+        - name: Windows-szolgáltatások
+          href: ../application-insights/app-insights-windows-services.md?toc=/azure/azure-monitor/toc.json
+        - name: Asztali Windows
+          href: ../application-insights/app-insights-windows-desktop.md?toc=/azure/azure-monitor/toc.json
+        - name: ASP.NET-mag
+          href: ../application-insights/app-insights-asp-net-core.md?toc=/azure/azure-monitor/toc.json
+          items:
+          - name: Profilkészítő a Linux App Serviceshez
+            href: ../application-insights/app-insights-profiler-aspnetcore-linux.md?toc=/azure/azure-monitor/toc.json
+        - name: Konzol
+          href: ../application-insights/application-insights-console.md?toc=/azure/azure-monitor/toc.json
+        - name: Alkalmazás irányítópultja
+          href: ../application-insights/app-insights-overview-dashboard.md?toc=/azure/azure-monitor/toc.json
+        - name: További telemetriai funkciók
+          href: ../application-insights/app-insights-asp-net-more.md?toc=/azure/azure-monitor/toc.json
+        - name: Kivételek
+          href: ../application-insights/app-insights-asp-net-exceptions.md?toc=/azure/azure-monitor/toc.json
+        - name: Nyomkövetési naplók
+          href: ../application-insights/app-insights-asp-net-trace-logs.md?toc=/azure/azure-monitor/toc.json
+        - name: Teljesítményszámlálók
+          href: ../application-insights/app-insights-performance-counters.md?toc=/azure/azure-monitor/toc.json
+        - name: Függőségek
+          href: ../application-insights/app-insights-asp-net-dependencies.md?toc=/azure/azure-monitor/toc.json
+        - name: Kiadási jegyzetek
+          href: ../application-insights/app-insights-annotations.md?toc=/azure/azure-monitor/toc.json
+        - name: ApplicationInsights.config
+          href: ../application-insights/app-insights-configuration-with-applicationinsights-config.md?toc=/azure/azure-monitor/toc.json
+        - name: Pillanatkép-hibakereső
+          href: ../application-insights/app-insights-snapshot-debugger.md?toc=/azure/azure-monitor/toc.json
+      - name: Java-alkalmazások
+        items:
+        - name: Webalkalmazások
+          href: ../application-insights/app-insights-java-get-started.md?toc=/azure/azure-monitor/toc.json
+        - name: Webalkalmazások – futtatókörnyezet
+          href: ../application-insights/app-insights-java-live.md?toc=/azure/azure-monitor/toc.json
+        - name: Docker-alkalmazások
+          href: ../application-insights/app-insights-docker.md?toc=/azure/azure-monitor/toc.json
+        - name: Nyomkövetési naplók
+          href: ../application-insights/app-insights-java-trace-logs.md?toc=/azure/azure-monitor/toc.json
+        - name: Unix-metrikák
+          href: ../application-insights/app-insights-java-collectd.md?toc=/azure/azure-monitor/toc.json
+        - name: Függőségek
+          href: ../application-insights/app-insights-java-agent.md?toc=/azure/azure-monitor/toc.json
+        - name: Szűrőtelemetria
+          href: ../application-insights/app-insights-java-filter-telemetry.md?toc=/azure/azure-monitor/toc.json
+      - name: Node.js-alkalmazások
+        items:
+        - name: Node.js
+          href: ../application-insights/app-insights-nodejs.md?toc=/azure/azure-monitor/toc.json
+      - name: Weblapok
+        items:
+        - name: JavaScript
+          href: ../application-insights/app-insights-javascript.md?toc=/azure/azure-monitor/toc.json
+      - name: Az Azure Functions monitorozása
+        href: ../azure-functions/functions-monitoring.md?toc=/azure/application-insights/toc.json
+      - name: Elosztott nyomkövetés
+        items:
+        - name: Helyi továbbító
+          href: ../application-insights/opencensus-local-forwarder.md?toc=/azure/azure-monitor/toc.json
+        - name: Python
+          href: ../application-insights/opencensus-python.md?toc=/azure/azure-monitor/toc.json
+        - name: Indítás
+          href: ../application-insights/opencensus-go.md?toc=/azure/azure-monitor/toc.json
+      - name: Más platformok
+        items:
+        - name: SharePoint-webhelyek
+          href: ../application-insights/app-insights-sharepoint.md?toc=/azure/azure-monitor/toc.json
+        - name: Dynamics CRM
+          href: ../application-insights/app-insights-sample-mscrm.md?toc=/azure/azure-monitor/toc.json
+        - name: További platformok
+          href: ../application-insights/app-insights-platforms.md?toc=/azure/azure-monitor/toc.json
+      - name: Intelligens észlelés
+        href: ../application-insights/app-insights-proactive-diagnostics.md?toc=/azure/azure-monitor/toc.json
+        items:
+        - name: Hibaanomáliák
+          href: ../application-insights/app-insights-proactive-failure-diagnostics.md?toc=/azure/azure-monitor/toc.json
+        - name: Teljesítményanomáliák
+          href: ../application-insights/app-insights-proactive-performance-diagnostics.md?toc=/azure/azure-monitor/toc.json
+        - name: Nyomkövetés teljesítménycsökkenése
+          href: ../application-insights/app-insights-proactive-trace-severity.md?toc=/azure/azure-monitor/toc.json
+        - name: Kivételkötet
+          href: ../application-insights/app-insights-proactive-exception-volume.md?toc=/azure/azure-monitor/toc.json
+        - name: Memóriavesztés
+          href: ../application-insights/app-insights-proactive-potential-memory-leak.md?toc=/azure/azure-monitor/toc.json
+        - name: Erőforrás-használat
+          href: ../application-insights/app-insights-proactive-low-utilization-cloud-resources.md?toc=/azure/azure-monitor/toc.json
+        - name: Biztonsági észlelés
+          href: ../application-insights/app-insights-proactive-application-security-detection-pack.md?toc=/azure/azure-monitor/toc.json
+        - name: Azure Cloud Services
+          href: ../application-insights/app-insights-proactive-cloud-services.md?toc=/azure/azure-monitor/toc.json
+        - name: Intelligens észlelési szabályok kezelése
+          href: ../application-insights/app-insights-proactive-arm-config.md?toc=/azure/azure-monitor/toc.json
+      - name: Erőforrás létrehozása
+        href: ../application-insights/app-insights-create-new-resource.md?toc=/azure/azure-monitor/toc.json
+      - name: Hibaelhárítás
+        items:
+        - name: Nincs adat a .NET-hez
+          href: ../application-insights/app-insights-asp-net-troubleshoot-no-data.md?toc=/azure/azure-monitor/toc.json
+        - name: Pillanatkép-hibakereső
+          href: ../application-insights/app-insights-troubleshoot-snapshot-debugger.md?toc=/azure/azure-monitor/toc.json
+        - name: Elemzés
+          href: ../application-insights/app-insights-analytics-troubleshooting.md?toc=/azure/azure-monitor/toc.json
+        - name: Java
+          href: ../application-insights/app-insights-java-troubleshoot.md?toc=/azure/azure-monitor/toc.json
+        - name: Használatelemzés
+          href: ../application-insights/app-insights-usage-troubleshoot.md?toc=/azure/azure-monitor/toc.json
+    - name: Ügynökök adatforrásai
+      href: ../log-analytics/log-analytics-data-sources.md?toc=/azure/azure-monitor/toc.json
+      items:
+      - name: Windows-események
+        href: ../log-analytics/log-analytics-data-sources-windows-events.md?toc=/azure/azure-monitor/toc.json
+      - name: Egyéni JSON-adatok
+        href: ../log-analytics/log-analytics-data-sources-json.md?toc=/azure/azure-monitor/toc.json
+      - name: A CollectD teljesítményadatai
+        href: ../log-analytics/log-analytics-data-sources-collectd.md?toc=/azure/azure-monitor/toc.json
+      - name: Nagios- és Zabbix-riasztások
+        href: ../log-analytics/log-analytics-data-sources-alerts-nagios-zabbix.md?toc=/azure/azure-monitor/toc.json
+      - name: Rendszernapló
+        href: ../log-analytics/log-analytics-data-sources-syslog.md?toc=/azure/azure-monitor/toc.json
+      - name: Teljesítményszámlálók
+        href: ../log-analytics/log-analytics-data-sources-performance-counters.md?toc=/azure/azure-monitor/toc.json
+      - name: Linux-alkalmazások teljesítménye
+        href: ../log-analytics/log-analytics-data-sources-linux-applications.md?toc=/azure/azure-monitor/toc.json
+      - name: IIS-naplók
+        href: ../log-analytics/log-analytics-data-sources-iis-logs.md?toc=/azure/azure-monitor/toc.json
+      - name: Egyéni naplók
+        href: ../log-analytics/log-analytics-data-sources-custom-logs.md?toc=/azure/azure-monitor/toc.json
+      - name: Egyéni mezők
+        href: ../log-analytics/log-analytics-custom-fields.md?toc=/azure/azure-monitor/toc.json
+    - name: Azure-erőforrások
+      items:
+      - name: Azure-tevékenységnaplók
+        items:
+        - name: Elemzés
+          href: ../log-analytics/log-analytics-activity.md?toc=/azure/azure-monitor/toc.json
+        - name: Gyűjtés több előfizetésben
+          href: ../log-analytics/log-analytics-activity-logs-subscriptions.md?toc=/azure/azure-monitor/toc.json
+      - name: Szolgáltatásnaplók és -metrikák
+        href: ../log-analytics/log-analytics-azure-storage.md?toc=/azure/azure-monitor/toc.json
+      - name: Diagnosztikai vagy naplóadatok az Azure Storage-ból
+        href: ../log-analytics/log-analytics-azure-storage-iis-table.md?toc=/azure/azure-monitor/toc.json
+      - name: Azure PaaS-erőforrások
+        href: ../log-analytics/log-analytics-collect-azurepass-posh.md?toc=/azure/azure-monitor/toc.json
+      - name: Egyéni adatforrások egyeztetése
+        href: ../application-insights/app-insights-custom-data-correlation.md?toc=/azure/azure-monitor/toc.json
+    - name: Egyéni adatok gyűjtése a Log Analyticsben
+      items:
+      - name: Data collector API
+        href: ../log-analytics/log-analytics-data-collector-api.md?toc=/azure/azure-monitor/toc.json
+      - name: Példa Data Collector API-folyamatra
+        href: ../log-analytics/log-analytics-create-pipeline-datacollector-api.md?toc=/azure/azure-monitor/toc.json
+      - name: Alkalmazásadatok
+        href: ../application-insights/app-insights-analytics-import.md?toc=/azure/azure-monitor/toc.json
+    - name: System Center
+      items:
+      - name: Configuration Manager
+        href: ../log-analytics/log-analytics-sccm.md?toc=/azure/azure-monitor/toc.json
+      - name: Alkalmazásteljesítmény-monitorozás az SCOM használatával
+        href: ../application-insights/app-insights-scom.md?toc=/azure/azure-monitor/toc.json
+    - name: Adatok útválasztása
+      items:
+      - name: Tevékenységnapló archiválása
+        href: ../monitoring-and-diagnostics/monitoring-archive-activity-log.md?toc=/azure/azure-monitor/toc.json
+      - name: Diagnosztikai naplók archiválása
+        href: ../monitoring-and-diagnostics/monitoring-archive-diagnostic-logs.md?toc=/azure/azure-monitor/toc.json
+      - name: Diagnosztikai naplók tárolása
+        href: ../monitoring-and-diagnostics/monitor-stream-diagnostic-logs-log-analytics.md?toc=/azure/azure-monitor/toc.json
+      - name: Tevékenységnapló streamelése az Event Hubs szolgáltatásba
+        href: ../monitoring-and-diagnostics/monitoring-stream-activity-logs-event-hubs.md?toc=/azure/azure-monitor/toc.json
+      - name: Naplók és metrikák küldése az Event Hubsba
+        href: ../monitoring-and-diagnostics/monitor-stream-monitoring-data-event-hubs.md?toc=/azure/azure-monitor/toc.json
+      - name: Diagnosztikai naplók küldése az Event Hubsba
+        href: ../monitoring-and-diagnostics/monitoring-stream-diagnostic-logs-to-event-hubs.md?toc=/azure/azure-monitor/toc.json
+      - name: Alkalmazásadatok küldése a Log Analyticsbe
+        href: ../log-analytics/log-analytics-app-insights-connector.md?toc=/azure/azure-monitor/toc.json
+      - name: Alkalmazásadatok exportálása
+        items:
+        - name: Folyamatos exportálás
+          href: ../application-insights/app-insights-export-telemetry.md?toc=/azure/azure-monitor/toc.json
+          items:
+          - name: Kódminták
+            items:
+            - name: SQL-exportálás a Stream Analytics használatával
+              href: ../application-insights/app-insights-code-sample-export-sql-stream-analytics.md?toc=/azure/azure-monitor/toc.json
+            - name: Stream Analytics-exportálás
+              href: ../application-insights/app-insights-export-stream-analytics.md?toc=/azure/azure-monitor/toc.json
+        - name: Adatmodell exportálása
+          href: ../application-insights/app-insights-export-data-model.md?toc=/azure/azure-monitor/toc.json
+  - name: Következtetések levonása
+    items:
+    - name: Alkalmazások figyelése
+      items:
+      - name: Az Application Insights portál
+        items:
+        - name: Keresés
+          href: ../application-insights/app-insights-diagnostic-search.md?toc=/azure/azure-monitor/toc.json
+        - name: Mérőszámok
+          href: ../application-insights/app-insights-metrics-explorer.md?toc=/azure/azure-monitor/toc.json
+        - name: Élő stream
+          href: ../application-insights/app-insights-live-stream.md?toc=/azure/azure-monitor/toc.json
+        - name: Alkalmazástérkép
+          href: ../application-insights/app-insights-app-map.md?toc=/azure/azure-monitor/toc.json
+        - name: Tranzakció diagnosztikája
+          href: ../application-insights/app-insights-transaction-diagnostics.md?toc=/azure/azure-monitor/toc.json
+        - name: HockeyApp-adatok
+          href: ../application-insights/app-insights-hockeyapp-bridge-app.md?toc=/azure/azure-monitor/toc.json
+      - name: Visual Studio
+        items:
+        - name: F5-információk
+          href: ../application-insights/app-insights-visual-studio.md?toc=/azure/azure-monitor/toc.json
+        - name: Trendek
+          href: ../application-insights/app-insights-visual-studio-trends.md?toc=/azure/azure-monitor/toc.json
+        - name: CodeLens
+          href: ../application-insights/app-insights-visual-studio-codelens.md?toc=/azure/azure-monitor/toc.json
+      - name: Használat
+        items:
+        - name: Áttekintés
+          href: ../application-insights/app-insights-usage-overview.md?toc=/azure/azure-monitor/toc.json
+        - name: Felhasználói környezet küldése
+          href: ../application-insights/app-insights-usage-send-user-context.md?toc=/azure/azure-monitor/toc.json
+        - name: Felhasználók, munkamenetek, események
+          href: ../application-insights/app-insights-usage-segmentation.md?toc=/azure/azure-monitor/toc.json
+        - name: Tölcsérek
+          href: ../application-insights/usage-funnels.md?toc=/azure/azure-monitor/toc.json
+        - name: Kohorszok
+          href: ../application-insights/app-insights-usage-cohorts.md?toc=/azure/azure-monitor/toc.json
+        - name: Hatás
+          href: ../application-insights/app-insights-usage-impact.md?toc=/azure/azure-monitor/toc.json
+        - name: Megőrzés
+          href: ../application-insights/app-insights-usage-retention.md?toc=/azure/azure-monitor/toc.json
+        - name: Felhasználói folyamatok
+          href: ../application-insights/app-insights-usage-flows.md?toc=/azure/azure-monitor/toc.json
+        - name: Munkafüzetek
+          href: ../application-insights/app-insights-usage-workbooks.md?toc=/azure/azure-monitor/toc.json
+      - name: Web App Analytics-megoldás
+        href: ../log-analytics/log-analytics-azure-web-apps-analytics.md?toc=/azure/azure-monitor/toc.json
+    - name: Tárolók figyelése
+      items:
+      - name: Tárolók monitorozásának áttekintése
+        href: ../monitoring/monitoring-container-overview.md?toc=/azure/azure-monitor/toc.json
+      - name: AKS-tároló állapota
+        href: ../monitoring/monitoring-container-health.md?toc=/azure/azure-monitor/toc.json
+      - name: Docker- és Windows-tárolók monitorozása
+        href: ../log-analytics/log-analytics-containers.md?toc=/azure/azure-monitor/toc.json
+      - name: Docker-alkalmazások monitorozása
+        href: ../application-insights/app-insights-docker.md?toc=/azure/azure-monitor/toc.json
+    - name: Erőforráscsoportok monitorozása
+      href: ../monitoring-and-diagnostics/resource-group-insights.md?toc=/azure/azure-monitor/toc.json
+    - name: Adatbázisok monitorozása
+      items:
+      - name: Azure SQL
+        href: ../log-analytics/log-analytics-azure-sql.md?toc=/azure/monitoring/toc.json
+      - name: SQL Server
+        href: ../log-analytics/log-analytics-sql-assessment.md?toc=/azure/monitoring/toc.json
+    - name: Hálózatok monitorozása
+      items:
+      - name: Hálózatelemzés
+        href: ../log-analytics/log-analytics-azure-networking-analytics.md?toc=/azure/azure-monitor/toc.json
+      - name: Hálózati teljesítményfigyelő
+        items:
+        - name: Megoldás áttekintése
+          href: ../log-analytics/log-analytics-network-performance-monitor.md?toc=/azure/azure-monitor/toc.json
+        - name: Teljesítménymonitorozás
+          href: ../log-analytics/log-analytics-network-performance-monitor-performance-monitor.md?toc=/azure/azure-monitor/toc.json
+        - name: Szolgáltatásvégpont
+          href: ../log-analytics/log-analytics-network-performance-monitor-service-endpoint.md?toc=/azure/azure-monitor/toc.json
+        - name: ExpressRoute
+          href: ../log-analytics/log-analytics-network-performance-monitor-expressroute.md?toc=/azure/azure-monitor/toc.json
+        - name: Díjszabás
+          href: ../log-analytics/log-analytics-network-performance-monitor-pricing-faq.md?toc=/azure/azure-monitor/toc.json
+    - name: Virtuális gépek figyelése
+      items:
+      - name: Az ügynök állapota
+        href: ../monitoring/monitoring-solution-agenthealth.md?toc=/azure/azure-monitor/toc.json
+      - name: Kapacitás és teljesítmény
+        href: ../log-analytics/log-analytics-capacity.md?toc=/azure/azure-monitor/toc.json
+      - name: VMWare-elemzés
+        href: ../log-analytics/log-analytics-vmware.md?toc=/azure/azure-monitor/toc.json
+      - name: Átviteli adatok
+        href: ../log-analytics/log-analytics-wire-data.md?toc=/azure/azure-monitor/toc.json
+      - name: Szolgáltatástérkép
+        items:
+        - name: Használat
+          href: ../monitoring/monitoring-service-map.md?toc=/azure/azure-monitor/toc.json
+        - name: Konfigurálás
+          href: ../monitoring/monitoring-service-map-configure.md?toc=/azure/azure-monitor/toc.json
+        - name: Integrálás az Operations Managerrel
+          href: ../monitoring/monitoring-service-map-scom.md?toc=/azure/azure-monitor/toc.json
+    - name: Azure-erőforrások monitorozása
+      items:
+      - name: Key Vault-elemzés
+        href: ../log-analytics/log-analytics-azure-key-vault.md?toc=/azure/azure-monitor/toc.json
+      - name: Service Fabric-elemzés
+        href: ../service-fabric/service-fabric-diagnostics-oms-agent.md?toc=/azure/azure-monitor/toc.json
+    - name: Egyéb erőforrások monitorozása
+      items:
+      - name: Az AD Health felmérése
+        href: ../log-analytics/log-analytics-ad-assessment.md?toc=/azure/azure-monitor/toc.json
+      - name: AD Replication Status
+        href: ../log-analytics/log-analytics-ad-replication-status.md?toc=/azure/azure-monitor/toc.json
+      - name: DNS
+        href: ../log-analytics/log-analytics-dns.md?toc=/azure/azure-monitor/toc.json
+      - name: Office 365
+        href: ../monitoring/monitoring-solution-office-365.md?toc=/azure/azure-monitor/toc.json
+      - name: Az Operations Manager felmérése
+        href: ../log-analytics/log-analytics-scom-assessment.md?toc=/azure/azure-monitor/toc.json
+      - name: Surface Hub
+        href: ../log-analytics/log-analytics-surface-hubs.md?toc=/azure/azure-monitor/toc.json
+    - name: Monitorozási megoldások használata
+      items:
+      - name: Áttekintés
+        href: ../monitoring/monitoring-solutions.md?toc=/azure/azure-monitor/toc.json
+      - name: Célmegoldások
+        href: ../monitoring/monitoring-solution-targeting.md?toc=/azure/azure-monitor/toc.json
+  - name: Adatok vizualizációja
+    items:
+    - name: Nézetek
+      href: ../log-analytics/log-analytics-view-designer.md?toc=/azure/azure-monitor/toc.json
+      items:
+      - name: Csempe referenciája
+        href: ../log-analytics/log-analytics-view-designer-tiles.md?toc=/azure/azure-monitor/toc.json
+      - name: Vizualizációs rész referenciája
+        href: ../log-analytics/log-analytics-view-designer-parts.md?toc=/azure/azure-monitor/toc.json
+      - name: Szűrők
+        href: ../log-analytics/log-analytics-view-designer-filters.md?toc=/azure/azure-monitor/toc.json
+    - name: Irányítópultok
+      items:
+      - name: Logs
+        href: ../log-analytics/log-analytics-dashboards.md?toc=/azure/azure-monitor/toc.json
+      - name: Alkalmazások
+        href: ../application-insights/app-insights-dashboards.md?toc=/azure/azure-monitor/toc.json
+    - name: Power BI
+      href: ../monitoring-and-diagnostics/monitor-send-to-grafana.md?toc=/azure/azure-monitor/toc.json
+      items:
+      - name: Naplóadatok exportálása
+        href: ../log-analytics/log-analytics-powerbi.md?toc=/azure/azure-monitor/toc.json
+      - name: Alkalmazásadatok exportálása
+        href: ../application-insights/app-insights-export-power-bi.md?toc=/azure/azure-monitor/toc.json
+      - name: Mérőszámok küldése a Grafana számára
+  - name: Adatok elemzése
+    items:
+    - name: Metrikadiagramok létrehozása a Metrikaböngészőben
+      href: ../monitoring-and-diagnostics/monitoring-metric-charts.md?toc=/azure/azure-monitor/toc.json
+    - name: Események megtekintése a tevékenységnaplóban
+      href: ../azure-resource-manager/resource-group-audit.md?toc=/azure/azure-monitor/toc.json
+    - name: Szolgáltatási értesítések megtekintése
+      href: ../monitoring-and-diagnostics/monitoring-service-notifications.md?toc=/azure/azure-monitor/toc.json
+    - name: Naplóadatok lekérdezése
+      items:
+      - name: Nyelvi referencia
+        href: https://docs.loganalytics.io
+      - name: Bevezetés
+        items:
+        - name: Ismerkedés az Analytics-portál használatával
+          href: ../log-analytics/query-language/get-started-analytics-portal.md?toc=/azure/azure-monitor/toc.json
+        - name: Ismerkedés a lekérdezések használatával
+          href: ../log-analytics/query-language/get-started-queries.md?toc=/azure/azure-monitor/toc.json
+        - name: Keresési lekérdezések
+          href: ../log-analytics/query-language/search-queries.md?toc=/azure/azure-monitor/toc.json
+        - name: Hasznos operátorok
+          href: ../log-analytics/query-language/useful-operators.md?toc=/azure/azure-monitor/toc.json
+      - name: Leckék
+        items:
+        - name: Sztringműveletek
+          href: ../log-analytics/query-language/string-operations.md?toc=/azure/azure-monitor/toc.json
+        - name: Dátum és idő típusú adatokkal végzett műveletek
+          href: ../log-analytics/query-language/datetime-operations.md?toc=/azure/azure-monitor/toc.json
+        - name: Aggregátumfüggvények
+          href: ../log-analytics/query-language/aggregations.md?toc=/azure/azure-monitor/toc.json
+        - name: Speciális aggregátumok
+          href: ../log-analytics/query-language/advanced-aggregations.md?toc=/azure/azure-monitor/toc.json
+        - name: Illesztések
+          href: ../log-analytics/query-language/joins.md?toc=/azure/azure-monitor/toc.json
+        - name: JSON és adatstruktúrák
+          href: ../log-analytics/query-language/json-data-structures.md?toc=/azure/azure-monitor/toc.json
+        - name: Továbbfejlesztett lekérdezésírás
+          href: ../log-analytics/query-language/advanced-query-writing.md?toc=/azure/azure-monitor/toc.json
+        - name: Diagramok
+          href: ../log-analytics/query-language/charts.md?toc=/azure/azure-monitor/toc.json
+      - name: Hasznos tanácsok
+        items:
+        - name: SQL
+          href: ../log-analytics/query-language/sql-cheatsheet.md?toc=/azure/azure-monitor/toc.json
+        - name: Splunk
+          href: ../log-analytics/query-language/splunk-cheatsheet.md?toc=/azure/azure-monitor/toc.json
+      - name: Alkalmazásadatok
+        href: ../application-insights/app-insights-analytics.md?toc=/azure/azure-monitor/toc.json
+      - name: Keresés több erőforrásban
+        href: ../log-analytics/log-analytics-cross-workspace-search.md?toc=/azure/azure-monitor/toc.json
+      - name: Műveletek végrehajtása a keresési eredményekből
+        href: ../log-analytics/log-analytics-log-search-takeaction.md?toc=/azure/azure-monitor/toc.json
+      - name: Számítógépcsoportok használata
+        href: ../log-analytics/log-analytics-computer-groups.md?toc=/azure/azure-monitor/toc.json
+      - name: Folyamat-összekötő
+        href: ../log-analytics/log-analytics-flow-tutorial.md?toc=/azure/azure-monitor/toc.json
+      - name: Log Search API
+        href: https://dev.loganalytics.io/
+  - name: Reagálás incidensekre
+    items:
+    - name: Riasztások
+      items:
+      - name: Riasztási szabályok létrehozása
+        items:
+        - name: Új metrika- vagy naplóriasztások beállítása az Azure Portalon
+          href: ../monitoring-and-diagnostics/monitor-alerts-unified-usage.md?toc=/azure/azure-monitor/toc.json
+        - name: Klasszikus riasztások beállítása az Azure Portalon
+          href: ../monitoring-and-diagnostics/insights-alerts-portal.md?toc=/azure/azure-monitor/toc.json
+        - name: Klasszikus riasztások beállítása a parancssori felületen
+          href: ../monitoring-and-diagnostics/insights-alerts-command-line-interface.md?toc=/azure/azure-monitor/toc.json
+        - name: Klasszikus riasztások beállítása az Azure PowerShell-lel
+          href: ../monitoring-and-diagnostics/insights-alerts-powershell.md?toc=/azure/azure-monitor/toc.json
+        - name: Riasztások másolása az OMS-portálról az Azure Portalba
+          href: ../monitoring-and-diagnostics/monitoring-alerts-extend-tool.md?toc=/azure/azure-monitor/toc.json
+      - name: Metrikariasztások használata
+        items:
+        - name: Metrikariasztások létrehozása, megtekintése és kezelése az Azure Monitorban
+          href: ../monitoring-and-diagnostics/alert-metric.md?toc=/azure/azure-monitor/toc.json
+        - name: Klasszikus metrikariasztások létrehozása, megtekintése és kezelése az Azure Monitorban
+          href: ../monitoring-and-diagnostics/alert-metric-classic.md?toc=/azure/azure-monitor/toc.json
+        - name: Riasztások dinamikus küszöbértékekkel
+          href: ../monitoring-and-diagnostics/monitoring-alerts-dynamic-thresholds.md?toc=/azure/azure-monitor/toc.json
+        - name: Metrikariasztások konfigurálása naplókhoz
+          href: ../monitoring-and-diagnostics/monitoring-metric-alerts-logs.md?toc=/azure/azure-monitor/toc.json
+        - name: Új metrikariasztás létrehozása Resource Manager-sablonnal
+          href: ../monitoring-and-diagnostics/monitoring-create-metric-alerts-with-templates.md?toc=/azure/azure-monitor/toc.json
+        - name: Klasszikus metrikariasztás létrehozása Resource Manager-sablonnal
+          href: ../monitoring-and-diagnostics/monitoring-enable-alerts-using-template.md?toc=/azure/azure-monitor/toc.json
+        - name: Webhook meghívatása klasszikus metrikariasztással
+          href: ../monitoring-and-diagnostics/insights-webhooks-alerts.md?toc=/azure/azure-monitor/toc.json
+      - name: Naplóriasztások használata
+        items:
+        - name: Riasztások konfigurálása elemzési lekérdezésekhez
+          href: ../monitoring-and-diagnostics/alert-log.md?toc=/azure/azure-monitor/toc.json
+        - name: Naplóriasztásokra vonatkozó webhook-műveletek
+          href: ../monitoring-and-diagnostics/monitor-alerts-unified-log-webhook.md?toc=/azure/azure-monitor/toc.json
+        - name: Naplóriasztás létrehozása Resource Manager-sablonnal
+          href: ../monitoring-and-diagnostics/monitor-alerts-unified-log-template.md?toc=/azure/azure-monitor/toc.json
+      - name: Tevékenységnapló-riasztások használata
+        items:
+        - name: Riasztások beállítása egy tevékenységnapló eseményéhez
+          href: ../monitoring-and-diagnostics/alert-activity-log.md?toc=/azure/azure-monitor/toc.json
+        - name: Tevékenységnapló-riasztások létrehozása a Resource Managerrel
+          href: ../monitoring-and-diagnostics/monitoring-create-activity-log-alerts-with-resource-manager-template.md?toc=/azure/azure-monitor/toc.json
+        - name: Migrálás a tevékenységnapló-riasztásokra
+          href: ../monitoring-and-diagnostics/monitoring-migrate-management-alerts.md?toc=/azure/azure-monitor/toc.json
+        - name: Riasztások beállítása szolgáltatási értesítésekhez
+          href: ../monitoring-and-diagnostics/monitoring-activity-log-alerts-on-service-notifications.md?toc=/azure/azure-monitor/toc.json
+      - name: Alkalmazásriasztások használata
+        items:
+        - name: Rendelkezésre állás
+          href: ../application-insights/app-insights-monitor-web-app-availability.md?toc=/azure/azure-monitor/toc.json
+        - name: Metrikákhoz kapcsolódó riasztások
+          href: ../application-insights/app-insights-alerts.md?toc=/azure/azure-monitor/toc.json
+      - name: Műveletcsoportok használata riasztásokkal
+        items:
+        - name: Műveletcsoportok létrehozása
+          href: ../monitoring-and-diagnostics/monitoring-action-groups.md?toc=/azure/azure-monitor/toc.json
+        - name: Információ a webhook sémáról
+          href: ../monitoring-and-diagnostics/monitoring-activity-log-alerts-webhook.md?toc=/azure/azure-monitor/toc.json
+        - name: Az SMS-riasztás viselkedése
+          href: ../monitoring-and-diagnostics/monitoring-sms-alert-behavior.md?toc=/azure/azure-monitor/toc.json
+        - name: A riasztási arány korlátozása
+          href: ../monitoring-and-diagnostics/monitoring-alerts-rate-limiting.md?toc=/azure/azure-monitor/toc.json
+        - name: Műveletcsoportok létrehozása a Resource Managerrel
+          href: ../monitoring-and-diagnostics/monitoring-create-action-group-with-resource-manager-template.md?toc=/azure/azure-monitor/toc.json
+        - name: Logikai alkalmazási művelet megvalósítása
+          href: ../monitoring-and-diagnostics/monitoring-action-groups-logic-app.md?toc=/azure/azure-monitor/toc.json
+      - name: Az Operations Manager riasztásai
+        href: ../log-analytics/log-analytics-solution-alert-management.md?toc=/azure/azure-monitor/toc.json
+      - name: Riasztások kezelése
+        items:
+        - name: Riasztáspéldányok kezelése
+          href: ../monitoring-and-diagnostics/monitoring-alerts-managing-alert-instances.md?toc=/azure/azure-monitor/toc.json
+        - name: Intelligens csoportok kezelése
+          href: ../monitoring-and-diagnostics/monitoring-alerts-managing-smart-groups.md?toc=/azure/azure-monitor/toc.json
+        - name: Riasztási és intelligenscsoport-állapotok kezelése
+          href: ../monitoring-and-diagnostics/monitoring-alerts-managing-alert-states.md?toc=/azure/azure-monitor/toc.json
+        - name: Egyéb monitorozási szolgáltatások riasztásainak kezelése
+          href: ../monitoring-and-diagnostics/monitoring-alerts-managing-nagios-zabbix-scom.md?toc=/azure/azure-monitor/toc.json
+    - name: Automatikus méretezés
+      items:
+      - name: Az automatikus méretezés bemutatása
+        href: ../monitoring-and-diagnostics/monitoring-autoscale-get-started.md?toc=/azure/azure-monitor/toc.json
+      - name: Ismerkedés az automatikus méretezési beállításokkal
+        href: ../monitoring-and-diagnostics/monitoring-understanding-autoscale-settings.md?toc=/azure/azure-monitor/toc.json
+      - name: Ajánlott eljárások
+        href: ../monitoring-and-diagnostics/insights-autoscale-best-practices.md?toc=/azure/azure-monitor/toc.json
+      - name: Gyakori metrikák
+        href: ../monitoring-and-diagnostics/insights-autoscale-common-metrics.md?toc=/azure/azure-monitor/toc.json
+      - name: Gyakori minták
+        href: ../monitoring-and-diagnostics/monitoring-autoscale-common-scale-patterns.md?toc=/azure/azure-monitor/toc.json
+      - name: Automatikus méretezés egyéni metrikával
+        href: ../monitoring-and-diagnostics/monitoring-autoscale-scale-by-custom-metric.md?toc=/azure/azure-monitor/toc.json
+      - name: Virtuálisgép-méretezési csoportok automatikus méretezése Resource Manager-sablonok használatával
+        href: ../monitoring-and-diagnostics/insights-advanced-autoscale-virtual-machine-scale-sets.md?toc=/azure/azure-monitor/toc.json
+      - name: Virtuálisgép-méretezési csoport gépeinek automatikus méretezése
+        href: ../virtual-machine-scale-sets/virtual-machine-scale-sets-windows-autoscale.md?toc=/azure/azure-monitor/toc.json?toc=/azure/azure-monitor/toc.json
+      - name: Webhookok és e-mailes értesítések beállítása az automatikus méretezésben
+        href: ../monitoring-and-diagnostics/insights-autoscale-to-webhook-email.md?toc=/azure/azure-monitor/toc.json
+    - name: Szolgáltatási értesítések
+      items:
+      - name: Szolgáltatási értesítések megtekintése
+        href: ../monitoring-and-diagnostics/monitoring-service-notifications.md?toc=/azure/azure-monitor/toc.json
+      - name: Riasztások beállítása szolgáltatási értesítésekhez
+        href: ../monitoring-and-diagnostics/monitoring-activity-log-alerts-on-service-notifications.md?toc=/azure/azure-monitor/toc.json
+    - name: Informatikai szolgáltatásfelügyelet
+      items:
+      - name: Informatikai szolgáltatásfelügyeleti összekötő
+        href: ../log-analytics/log-analytics-itsmc-overview.md?toc=/azure/azure-monitor/toc.json
+      - name: Informatikai szolgáltatásfelügyeleti kapcsolatok
+        href: ../log-analytics/log-analytics-itsmc-connections.md?toc=/azure/azure-monitor/toc.json
+      - name: Service Manager-webalkalmazás létrehozása
+        href: ../log-analytics/log-analytics-itsmc-service-manager-script.md?toc=/azure/azure-monitor/toc.json
+  - name: Használat és költségek kezelése
+    items:
+    - name: Használat és becsült költségek
+      href: ../monitoring-and-diagnostics/monitoring-usage-and-estimated-costs.md?toc=/azure/azure-monitor/toc.json
+    - name: Alkalmazásadatok mennyisége és megőrzése
+      href: ../application-insights/app-insights-pricing.md?toc=/azure/azure-monitor/toc.json
+    - name: Nagyvállalati alkalmazáscsomag részletei
+      href: ../application-insights/app-insights-pricing-enterprise-details.md?toc=/azure/azure-monitor/toc.json
+    - name: Naplóadatok mennyisége és megőrzése
+      href: ../log-analytics/log-analytics-manage-cost-storage.md?toc=/azure/azure-monitor/toc.json
+    - name: Naplóadat-monitorozás használata
+      href: ../log-analytics/log-analytics-usage.md?toc=/azure/azure-monitor/toc.json
+  - name: Automatizálás
+    items:
+    - name: PowerShell
+      items:
+      - name: Azure PowerShell-minták
+        href: ../monitoring-and-diagnostics/insights-powershell-samples.md?toc=/azure/azure-monitor/toc.json
+      - name: PowerShell-parancsmagok
+        href: ../log-analytics/log-analytics-powershell-workspace-configuration.md?toc=/azure%monitoring-and-diagnostics/toc.json
+      - name: Alkalmazások
+        items:
+        - name: Application Insights-erőforrások létrehozása
+          href: ../application-insights/app-insights-powershell.md?toc=/azure/azure-monitor/toc.json
+        - name: Erőforrások létrehozása
+          href: ../application-insights/app-insights-powershell-script-create-resource.md?toc=/azure/azure-monitor/toc.json
+        - name: Riasztások beállítása
+          href: ../application-insights/app-insights-powershell-alerts.md?toc=/azure/azure-monitor/toc.json
+        - name: Az Azure Diagnostics beszerzése
+          href: ../application-insights/app-insights-powershell-azure-diagnostics.md?toc=/azure/azure-monitor/toc.json
+    - name: Azure CLI-minták
+      href: ../monitoring-and-diagnostics/insights-cli-samples.md?toc=/azure/azure-monitor/toc.json
+    - name: Resource Manager-sablonok
+      href: ../log-analytics/log-analytics-template-workspace-configuration.md?toc=/azure%monitoring-and-diagnostics/toc.json
+    - name: API
+      items:
+      - name: A REST API használatának bemutatója
+        href: ../monitoring-and-diagnostics/monitoring-rest-api-walkthrough.md?toc=/azure/azure-monitor/toc.json
+      - name: Alert API
+        href: ../log-analytics/log-analytics-api-alerts.md?toc=/azure%monitoring-and-diagnostics/toc.json
+    - name: Alkalmazások
+      items:
+      - name: Automatizálás a Microsoft Flow-val
+        href: ../application-insights/app-insights-automate-with-flow.md?toc=/azure/azure-monitor/toc.json
+      - name: Automatizálás Azure Logic App használatával
+        href: ../application-insights/automate-with-logic-apps.md?toc=/azure/azure-monitor/toc.json
+      - name: Egyéni e-mail-jelentések
+        href: ../application-insights/automate-custom-reports.md?toc=/azure/azure-monitor/toc.json
+  - name: Kiterjesztés
+    items:
+    - name: Alkalmazások
+      items:
+      - name: API egyéni eseményekhez és a mérőszámokhoz
+        href: ../application-insights/app-insights-api-custom-events-metrics.md?toc=/azure/azure-monitor/toc.json
+      - name: Egyéni műveletek követése a .NET SDK-ban
+        href: ../application-insights/application-insights-custom-operations-tracking.md?toc=/azure/azure-monitor/toc.json
+      - name: Telemetria szűrése és előfeldolgozása
+        href: ../application-insights/app-insights-api-filtering-sampling.md?toc=/azure/azure-monitor/toc.json
+      - name: Mintavételezés
+        href: ../application-insights/app-insights-sampling.md?toc=/azure/azure-monitor/toc.json
+    - name: Monitorozási megoldások
+      items:
+      - name: Tervezés és felépítés
+        href: ../monitoring/monitoring-solutions-creating.md?toc=/azure/azure-monitor/toc.json
+      - name: Megoldásfájl
+        href: ../monitoring/monitoring-solutions-solution-file.md?toc=/azure/azure-monitor/toc.json
+      - name: Automation-erőforrások
+        href: ../monitoring/monitoring-solutions-resources-automation.md?toc=/azure/azure-monitor/toc.json
+      - name: Naplókeresések és riasztások
+        href: ../monitoring/monitoring-solutions-resources-searches-alerts.md?toc=/azure/azure-monitor/toc.json
+      - name: Nézetek
+        href: ../monitoring/monitoring-solutions-resources-views.md?toc=/azure/azure-monitor/toc.json
+      - name: Ajánlott eljárások
+        href: ../monitoring/monitoring-solutions-best-practices.md?toc=/azure/azure-monitor/toc.json
+      - name: Monitorozási adatok gyűjtése runbookból
+        href: ../monitoring/monitoring-runbook-datacollect.md?toc=/azure/azure-monitor/toc.json
+- name: Referencia
+  items:
+  - name: Application Insights
+    items:
+    - name: Függőségek automatikus összegyűjtése
+      href: ../application-insights/auto-collect-dependencies.md?toc=/azure/azure-monitor/toc.json
+    - name: Telemetriai korreláció
+      href: ../application-insights/application-insights-correlation.md?toc=/azure/azure-monitor/toc.json
+  - name: Application Insights-adatmodell
+    items:
+    - name: Áttekintés
+      href: ../application-insights/application-insights-data-model.md?toc=/azure/azure-monitor/toc.json
+    - name: Kérés
+      href: ../application-insights/application-insights-data-model-request-telemetry.md?toc=/azure/azure-monitor/toc.json
+    - name: Függőség
+      href: ../application-insights/application-insights-data-model-dependency-telemetry.md?toc=/azure/azure-monitor/toc.json
+    - name: Kivétel
+      href: ../application-insights/application-insights-data-model-exception-telemetry.md?toc=/azure/azure-monitor/toc.json
+    - name: Nyomkövetés
+      href: ../application-insights/application-insights-data-model-trace-telemetry.md?toc=/azure/azure-monitor/toc.json
+    - name: Esemény
+      href: ../application-insights/application-insights-data-model-event-telemetry.md?toc=/azure/azure-monitor/toc.json
+    - name: Metrika
+      href: ../application-insights/application-insights-data-model-metric-telemetry.md?toc=/azure/azure-monitor/toc.json
+    - name: Környezet
+      href: ../application-insights/application-insights-data-model-context.md?toc=/azure/azure-monitor/toc.json
+  - name: Azure CLI
+    href: /cli/azure/monitor?view=azure-cli-latest
+  - name: Azure PowerShell
+    items:
+    - name: Figyelés
+      href: /powershell/module/azurerm.insights
+    - name: Logs
+      href: /powershell/module/azurerm.operationalinsights
+  - name: REST API
+    items:
+    - name: Figyelés
+      href: /rest/api/monitor/
+    - name: Logs
+      href: /rest/api/loganalytics
+  - name: Mérőszámok
+    items:
+    - name: Támogatott metrikák
+      href: ../monitoring-and-diagnostics/monitoring-supported-metrics.md?toc=/azure/azure-monitor/toc.json
+    - name: Újabb riasztások támogatott metrikái
+      href: ../monitoring-and-diagnostics/monitoring-near-real-time-metric-alerts.md?toc=/azure/azure-monitor/toc.json
+  - name: Sémák
+    items:
+    - name: Diagnosztikai naplókkal kapcsolatos szolgáltatások, kategóriák és sémák
+      href: ../monitoring-and-diagnostics/monitoring-diagnostic-logs-schema.md?toc=/azure/azure-monitor/toc.json
+    - name: Tevékenységnapló eseménysémája
+      href: ../monitoring-and-diagnostics/monitoring-activity-log-schema.md?toc=/azure/azure-monitor/toc.json
+    - name: Azure Diagnostics-bővítményséma
+      href: ../monitoring-and-diagnostics/azure-diagnostics-schema.md?toc=/azure/azure-monitor/toc.json
+      items:
+      - name: 1.3-as és újabb verziók
+        href: ../monitoring-and-diagnostics/azure-diagnostics-schema-1dot3-and-later.md?toc=/azure/azure-monitor/toc.json
+      - name: "1.2"
+        href: ../monitoring-and-diagnostics/azure-diagnostics-schema-1dot2.md?toc=/azure/azure-monitor/toc.json
+      - name: "1"
+        href: ../monitoring-and-diagnostics/azure-diagnostics-schema-1dot0.md?toc=/azure/azure-monitor/toc.json
+- name: További források
+  items:
+  - name: Azure-ütemterv
+    href: https://azure.microsoft.com/roadmap/
+  - name: Díjszabás
+    href: https://azure.microsoft.com/pricing/details/log-analytics/
+  - name: Díjkalkulátor
+    href: https://azure.microsoft.com/pricing/calculator/
+  - name: Hírek
+    items:
+    - name: Az Application Insights szolgáltatási hírei
+      href: https://azure.microsoft.com/updates/?product=application-insights
+    - name: A Log Analytics szolgáltatási hírei
+      href: https://azure.microsoft.com/updates/?product=log-analytics
+    - name: SDK kibocsátási megjegyzései
+      href: ../application-insights/app-insights-release-notes.md
+    - name: Developer Analytics Tools kibocsátási megjegyzései
+      href: ../application-insights/app-insights-release-notes-vsix.md
+  - name: Windows Analytics
+    href: https://www.microsoft.com/en-us/WindowsForBusiness/windows-analytics
+  - name: Régiónkénti rendelkezésre állás
+    href: https://azure.microsoft.com/regions/services/
+  - name: Videók
+    href: https://azure.microsoft.com/resources/videos/index/?services=monitor
+  - name: Gyorsindítási sablonok
+    href: https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Insights
+  - name: Stack Overflow
+    href: https://stackoverflow.com/search?q=monitoring
+  - name: Kódminták
+    href: https://azure.microsoft.com/resources/samples/?service=monitor
+ms.openlocfilehash: c5f69264c293cb5e10c016fc79bc86dd091da533
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46981814"

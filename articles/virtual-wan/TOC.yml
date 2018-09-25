@@ -1,34 +1,53 @@
+items:
 - name: A Virtual WAN dokumentációja
   href: index.yml
 - name: Áttekintés
   items:
-    - name: A Virtual WAN bemutatása
-      href: virtual-wan-about.md
+  - name: A Virtual WAN bemutatása
+    href: virtual-wan-about.md
 - name: Oktatóanyagok
   items:
-    - name: Helyek közötti kapcsolat létrehozása
-      href: virtual-wan-site-to-site-portal.md
+  - name: Helyek közötti kapcsolat létrehozása
+    href: virtual-wan-site-to-site-portal.md
+  - name: ExpressRoute-kapcsolat létrehozása
+    href: virtual-wan-expressroute-portal.md
+  - name: Pont–hely kapcsolat létrehozása
+    href: virtual-wan-point-to-site-portal.md
+- name: Alapelvek
+  items:
+  - name: Helyek és partnerek
+    href: virtual-wan-locations-partners.md
+  - name: Office 365-vezérlősík a Virtual WAN-ban
+    href: virtual-wan-office365-overview.md
 - name: Útmutatók
   items:
-    - name: Automatizálás konfigurálása – WAN-partnerek
-      href: virtual-wan-configure-automation-providers.md
+  - name: Virtual WAN-partnerek – automatizálás
+    href: virtual-wan-configure-automation-providers.md
+  - name: Forgalom irányítása virtuális központról NVA-ra
+    href: virtual-wan-route-table.md
 - name: Referencia
   items:
-    - name: REST
-      href: /rest/api/azure
+  - name: REST
+    href: /rest/api/azure
 - name: További források
   items:
-    - name: GYIK
-      href: virtual-wan-faq.md
-    - name: Azure-ütemterv
-      href: 'https://azure.microsoft.com/roadmap/?category=networking'
-    - name: Blog
-      href: 'https://azure.microsoft.com/blog/topics/networking'
-    - name: Előfizetés- és szolgáltatáskorlátok
-      href: ../azure-subscription-service-limits.md?toc=%2fazure%2fvpn-gateway%2ftoc.json
-    - name: Díjszabás
-      href: 'https://azure.microsoft.com/pricing/details/vpn-gateway'
-    - name: Díjkalkulátor
-      href: 'https://azure.microsoft.com/pricing/calculator/'
-    - name: SLA
-      href: 'https://azure.microsoft.com/support/legal/sla'
+  - name: GYIK
+    href: virtual-wan-faq.md
+  - name: Azure-ütemterv
+    href: https://azure.microsoft.com/roadmap/?category=networking
+  - name: Blog
+    href: https://azure.microsoft.com/blog/topics/networking
+  - name: Előfizetés- és szolgáltatáskorlátok
+    href: ../azure-subscription-service-limits.md?toc=%2fazure%2fvpn-gateway%2ftoc.json
+  - name: Díjszabás
+    href: https://azure.microsoft.com/pricing/details/vpn-gateway
+  - name: Díjkalkulátor
+    href: https://azure.microsoft.com/pricing/calculator/
+  - name: SLA
+    href: https://azure.microsoft.com/support/legal/sla
+ms.openlocfilehash: a8b9bf44a68e389547e08055e5036562457f6175
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46957380"

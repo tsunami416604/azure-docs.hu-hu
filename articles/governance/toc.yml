@@ -1,0 +1,83 @@
+items:
+- name: Az Azure Governance dokumentációja
+  href: index.yml
+- name: Áttekintés
+  items:
+  - name: Azure-felügyelet
+    href: azure-management.md
+  expanded: true
+- name: Összetevők és szolgáltatások
+  items:
+  - name: Felügyeleti csoportok
+    href: management-groups/overview.md
+    items:
+    - name: Létrehozás
+      href: management-groups/create.md
+    - name: Kezelés
+      href: management-groups/manage.md
+  - name: Erőforrás-diagram
+    href: resource-graph/overview.md
+  - name: Szabályzat
+    href: policy/overview.md
+  - name: Tervek
+    href: blueprints/overview.md
+  expanded: true
+- name: Megvalósítások
+  items:
+  - name: A nagyvállalati felhőmegoldások bevezetése
+    items:
+    - name: Mi az a felhőerőforrás-szabályozás?
+      href: /azure/architecture/cloud-adoption/getting-started/what-is-governance?toc=/azure/governance/toc.json
+    - name: Az Azure erőforrás-hozzáférési szabályozása
+      href: /azure/architecture/cloud-adoption/getting-started/azure-resource-access?toc=/azure/governance/toc.json
+    - name: Szabályozási terv egyetlen csapathoz
+      href: /azure/architecture/cloud-adoption/governance/governance-single-team?toc=/azure/governance/toc.json
+    - name: Szabályozási terv több csapathoz
+      href: /azure/architecture/cloud-adoption/governance/governance-multiple-teams?toc=/azure/governance/toc.json
+  - name: Azure Enterprise-szerkezet
+    items:
+    - name: Előíró előfizetés-szabályozás
+      href: /azure/architecture/cloud-adoption/appendix/azure-scaffold?toc=/azure/governance/toc.json
+    - name: Azure Enterprise-szerkezet implementálása
+      href: /azure/architecture/cloud-adoption/appendix/azure-scaffold-examples?toc=/azure/governance/toc.json
+  expanded: true
+- name: Referencia
+  items:
+  - name: Tervek
+    items:
+    - name: REST API
+      href: /rest/api
+    - name: Azure CLI
+      href: /cli/azure
+  - name: Szabályzat
+    items:
+    - name: REST API
+      href: /rest/api
+    - name: Azure CLI
+      href: /cli/azure
+    - name: Azure PowerShell
+      href: /powershell/azure
+  - name: Erőforrás-diagram
+    items:
+    - name: Azure CLI
+      href: /cli/azure
+    - name: Azure PowerShell
+      href: /powershell/azure
+- name: További források
+  items:
+  - name: Videó hivatkozása
+    href: /
+  - name: GitHub
+    href: /
+  - name: Azure-ütemterv
+    href: /
+  - name: Díjkalkulátor
+    href: /
+  - name: Blogcikk
+    href: /
+ms.openlocfilehash: 4006c484adcdb0cf46646ebace847ba4d45efe26
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46982246"

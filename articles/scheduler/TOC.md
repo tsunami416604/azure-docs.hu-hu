@@ -1,37 +1,38 @@
 # [A Scheduler dokumentációja](index.md)
 
 # Áttekintés
-## [A Scheduler ismertetése](scheduler-intro.md)
+## [Mi az Azure Scheduler?](scheduler-intro.md)
 
 # Bevezetés
-## [Feladatok létrehozása és kezelése](scheduler-get-started-portal.md)
-## [Alapfogalmak és szakkifejezések](scheduler-concepts-terms.md)
+## [Feladatok létrehozása és kezelése – portál](scheduler-get-started-portal.md)
+## [Migrálás a Schedulerből a Logic Appsba](migrate-from-scheduler-to-logic-apps.md)
 
-# Útmutató
+# Alapelvek
+## [Alapfogalmak, terminológia és entitások](scheduler-concepts-terms.md)
+
+# Útmutatók
 ## Tervezés és kialakítás
 ### [Csomagok és számlázás](scheduler-plans-billing.md)
-### [Kvóták és korlátozások](scheduler-limits-defaults-errors.md)
+### [Korlátok, kvóták és alapértelmezett értékek](scheduler-limits-defaults-errors.md)
 ### [Magas rendelkezésre állás és megbízhatóság](scheduler-high-availability-reliability.md)
 
 ## Fejlesztés
-### [Komplex ütemezések a REST API használatával](scheduler-advanced-complexity.md)
-
+### [Komplex ütemezések és speciális ismétlődések létrehozása](scheduler-advanced-complexity.md)
+### [Ütemezések létrehozása és felügyelete – Azure PowerShell](scheduler-powershell-reference.md)
 
 ## Biztonságos
-### [Kimenő hitelesítés](scheduler-outbound-authentication.md)
+### [Kimenő hívások hitelesítése](scheduler-outbound-authentication.md)
 
 # Referencia
 ## [Azure PowerShell](/powershell/module/azurerm.scheduler)
-## [REST](/rest/api/scheduler)
+## [REST API](/rest/api/scheduler)
 
 # További források
-## [Azure-ütemterv](https://azure.microsoft.com/roadmap/?category=monitoring-management)
+## [Az Azure Scheduler fejlesztési terve](https://azure.microsoft.com/updates/?product=scheduler)
+## [Azure-ütemterv](https://azure.microsoft.com/updates/)
 ## [MSDN-fórum](https://social.msdn.microsoft.com/Forums/home?forum=azurescheduler)
+## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-scheduler)
 ## [Díjszabás](https://azure.microsoft.com/pricing/details/scheduler/)
 ## [Díjkalkulátor](https://azure.microsoft.com/pricing/calculator/)
 ## [Szolgáltatási hírek](https://azure.microsoft.com/updates/?product=scheduler)
-## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-scheduler)
 ## [Videók](https://azure.microsoft.com/documentation/videos/index/?services=scheduler)
-
-
-

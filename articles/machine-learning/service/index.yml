@@ -1,51 +1,65 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 15863679b42962d414493804f234c9fde46172ea
-ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
+ms.openlocfilehash: c3120d4fb8fb9377d43cdd2df780810bb4634e52
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43781158"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46985029"
 documentType: LandingData
-title: Azure Machine Learning-szolgáltatások (előzetes verzió) dokumentációja
+title: Az Azure Machine Learning szolgáltatás (előzetes verzió) dokumentációja
 metadata:
-  title: Azure Machine Learning-szolgáltatások (előzetes verzió) dokumentációja
-  meta.description: Learn how to use Azure Machine Learning services (preview).
+  title: Az Azure Machine Learning dokumentációja (előzetes verzió) – Oktatóanyagok és API-referencia | Microsoft Docs
+  meta.description: Learn how to build intelligent algorithms into apps and websites. Use Scikit-learn, Tensorflow, Pytorch or any other Python-based framework to build your machine learning model and train it locally or in the cloud. Tutorials, quickstarts, API references, and examples show you how.
   services: machine-learning
-  author: garyericson
+  author: j-martens
   manager: jhubbard
   ms.service: machine-learning
   ms.component: core
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
-  ms.date: 01/18/2018
-  ms.author: garye
+  ms.date: 09/24/2018
+  ms.author: jmartens
 abstract:
-  description: Az Azure Machine Learning-szolgáltatások (előzetes verzió) használatával gépi tanulási és AI-modelleket hozhat létre, helyezhet üzembe és kezelhet bármilyen Python-eszközzel és -kódtárral használatával. Számos különféle adat- és számítási szolgáltatást használhat az Azure-ban adatai tárolására és feldolgozására.
+  description: Megtudhatja, hogyan építhet be intelligens algoritmusokat alkalmazásokba és webhelyekre. Scikit-learn, TensorFlow, Pytorch és egyéb Python-alapú keretrendszerek használata egy gépi tanulási modell létrehozásához és helyileg vagy a felhőben történő betanításához. Oktatóanyagokból, rövid útmutatókból, API-referenciákból és példákból ismerheti meg mindezt.
 sections:
+- items:
+  - type: list
+    style: cards
+    className: cardsB
+    columns: 1
+    items:
+    - html: <p>ML-modellek betanítása és üzembe helyezése egy Azure-felhőszolgáltatásban. <a href="overview-what-is-azure-ml.md">További információ a szolgáltatásról...</a></p>
+      image:
+        src: /azure/machine-learning/media/index/i_machine-learning.svg
+      title: Azure Machine Learning szolgáltatás
 - title: 5 perces gyors útmutatók
   items:
   - type: paragraph
-    text: Az első Machine Learning projekt létrehozása
+    text: Erőforrások beállítása az Azure Machine Learning szolgáltatáshoz.
   - type: list
     style: unordered
     items:
-    - html: <a href="quickstart-installation.md">Telepítés és létrehozás</a>
+    - html: <a href="quickstart-get-started.md">Első lépések az Azure Portalon </a>
 - title: Részletes útmutatók
   items:
   - type: paragraph
-    text: Megtudhatja, hogyan készítse elő adatait és kísérleteit, illetve hogyan működtesse modelljeit
+    text: Megtudhatja, hogyan állítson be egy kísérletet, illetve hogyan működtesse modelljeit.
   - type: list
-    style: ordered
+    style: unordered
     items:
-    - html: <a href="../desktop-workbench/tutorial-classifying-iris-part-1">A Machine Learning-szolgáltatások (előzetes verzió) alapjainak ismertetése</a>
-    - html: <a href="../desktop-workbench/tutorial-classifying-iris-part-2">A Machine Learning Workbench használata modell létrehozásához az Iris flower adatkészlettel</a>
-    - html: <a href="../desktop-workbench/tutorial-classifying-iris-part-3">Ismerje meg a Machine Learning modellek üzembe helyezésének módját</a>
-    - html: <a href="../desktop-workbench/tutorial-bikeshare-dataprep">Az Azure Machine Learning Workbench használata haladó adatelőkészítéshez</a>
-- title: További Azure Machine Learning-technológiák
+    - html: <a href="tutorial-train-models-with-aml">Saját gépi tanulási modell betanítása</a>
+    - html: <a href="tutorial-auto-train-models">A modell automatikus létrehozása és beállítása</a>
+    - html: <a href="tutorial-deploy-models-with-aml">Modell üzembe helyezése webszolgáltatásként</a>
+- title: Referencia
   items:
-  - type: paragraph
-    text: 'Az Azure Machine Learningben elérhető további technológiák:'
+  - type: list
+    style: unordered
+    items:
+    - html: <a href="http://aka.ms/aml-sdk">Pythonhoz készült Azure Machine Learning SDK (fő SDK)</a>
+    - html: <a href="https://docs.microsoft.com/python/api/overview/azure/dataprep?view=azure-dataprep-py">Azure Machine Learning adat-előkészítési SDK</a>
+- title: Egyéb Azure Machine Learning-technológiák
+  items:
   - type: list
     style: cards
     className: cardsFTitle
@@ -60,15 +74,3 @@ sections:
       image:
         src: media/index/virtual-machines.svg
         href: /azure/machine-learning/data-science-virtual-machine/
-- title: Referencia
-  items:
-  - type: list
-    style: cards
-    className: cardsD
-    items:
-    - title: Csomagok
-      html: <p><a href="reference-python-package-overview#amlpcv">Számítógépes látástechnológia</a></p><p><a href="reference-python-package-overview#amlpf">Előrejelzések</a></p><p><a href="reference-python-package-overview#amlrealtimeai">FPGA-gyorsítás</a></p><p><a href="reference-python-package-overview#amlpta">Szövegelemzés</a></p>
-    - title: Nyelvek
-      html: <p><a href="https://azure.microsoft.com/develop/python/">Python</a></p>
-    - title: REST
-      html: <p><a href="https://docs.microsoft.com/rest/api/machinelearning/">REST-felügyeleti API-k</a></p>

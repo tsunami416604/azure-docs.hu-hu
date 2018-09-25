@@ -1,115 +1,124 @@
+items:
 - name: Tárolópéldányok
   href: index.yml
 - name: Áttekintés
   items:
-    - name: Az Azure Container Instances bemutatása
-      href: container-instances-overview.md
+  - name: Az Azure Container Instances bemutatása
+    href: container-instances-overview.md
 - name: Gyors útmutatók
-  expanded: true
   items:
-    - name: Tároló létrehozása – Parancssori felület
-      href: container-instances-quickstart.md
-    - name: Tároló létrehozása – Portál
-      href: container-instances-quickstart-portal.md
-    - name: Tároló létrehozása – PowerShell
-      href: container-instances-quickstart-powershell.md
+  - name: Tároló létrehozása – Parancssori felület
+    href: container-instances-quickstart.md
+  - name: Tároló létrehozása – Portál
+    href: container-instances-quickstart-portal.md
+  - name: Tároló létrehozása – PowerShell
+    href: container-instances-quickstart-powershell.md
+  expanded: true
 - name: Oktatóanyagok
   items:
-    - name: 1 – Tárolórendszerkép létrehozása
-      href: container-instances-tutorial-prepare-app.md
-    - name: 2 – Tárolóregisztrációs adatbázis létrehozása
-      href: container-instances-tutorial-prepare-acr.md
-    - name: 3 – Alkalmazás üzembe helyezése
-      href: container-instances-tutorial-deploy-app.md
+  - name: 1 – Tárolórendszerkép létrehozása
+    href: container-instances-tutorial-prepare-app.md
+  - name: 2 – Tárolóregisztrációs adatbázis létrehozása
+    href: container-instances-tutorial-prepare-acr.md
+  - name: 3 – Alkalmazás üzembe helyezése
+    href: container-instances-tutorial-deploy-app.md
 - name: Példák
   items:
-    - name: Kódminták
-      href: 'https://azure.microsoft.com/resources/samples/?sort=0&term=aci'
-    - name: Resource Manager-sablonok
-      href: container-instances-samples-rm.md
+  - name: Kódminták
+    href: https://azure.microsoft.com/resources/samples/?sort=0&term=aci
+  - name: Resource Manager-sablonok
+    href: container-instances-samples-rm.md
 - name: Alapelvek
   items:
-    - name: Kvóták és regionális korlátok
-      href: container-instances-quotas.md
-    - name: Vezénylőkkel fennálló kapcsolat
-      href: container-instances-orchestrator-relationship.md
-    - name: Tárolócsoportok
-      href: container-instances-container-groups.md
+  - name: Kvóták és regionális korlátok
+    href: container-instances-quotas.md
+  - name: Vezénylőkkel fennálló kapcsolat
+    href: container-instances-orchestrator-relationship.md
+  - name: Tárolócsoportok
+    href: container-instances-container-groups.md
 - name: Útmutatók
   items:
-    - name: Üzembe helyezés
-      items:
-        - name: Többtárolós csoport – YAML
-          href: container-instances-multi-container-yaml.md
-        - name: Többtárolós csoport – Resource Manager
-          href: container-instances-multi-container-group.md
-        - name: Üzembe helyezés az Azure Container Registryből
-          href: container-instances-using-azure-container-registry.md
-        - name: Környezeti változók beállítása (env)
-          href: container-instances-environment-variables.md
-        - name: Üzemelési tesztek konfigurálása
-          href: container-instances-liveness-probe.md
-    - name: Kezelés
-      items:
-        - name: Futó tárolók frissítése
-          href: container-instances-update.md
-        - name: Parancs végrehajtása (exec)
-          href: container-instances-exec.md
-        - name: Processzor- és memóriahasználat monitorozása
-          href: container-instances-monitor.md
-        - name: Naplózás az Azure Log Analytics használatával
-          href: container-instances-log-analytics.md
-    - name: Számítási feladatok futtatása
-      items:
-        - name: Feladatok futtatása újraindítási szabályzatokkal
-          href: container-instances-restart-policy.md
-        - name: Jenkins-buildügynökök az ACI-ban
-          href: container-instances-jenkins.md
-    - name: Adatkötetek konfigurálása
-      items:
-        - name: Azure Files
-          href: container-instances-volume-azure-files.md
-        - name: emptyDir
-          href: container-instances-volume-emptydir.md
-        - name: gitRepo
-          href: container-instances-volume-gitrepo.md
-        - name: titkos kód
-          href: container-instances-volume-secret.md
-    - name: Hibaelhárítás
-      items:
-        - name: Tároló naplóinak és eseményeinek lekérése
-          href: container-instances-get-logs.md
-        - name: Gyakori problémák megoldása
-          href: container-instances-troubleshooting.md
+  - name: Üzembe helyezés
+    items:
+    - name: Többtárolós csoport – YAML
+      href: container-instances-multi-container-yaml.md
+    - name: Többtárolós csoport – Resource Manager
+      href: container-instances-multi-container-group.md
+    - name: Üzembe helyezés az Azure Container Registryből
+      href: container-instances-using-azure-container-registry.md
+    - name: Környezeti változók beállítása (env)
+      href: container-instances-environment-variables.md
+    - name: Üzemelési tesztek konfigurálása
+      href: container-instances-liveness-probe.md
+  - name: Kezelés
+    items:
+    - name: Futó tárolók frissítése
+      href: container-instances-update.md
+    - name: Parancs végrehajtása (exec)
+      href: container-instances-exec.md
+    - name: Processzor- és memóriahasználat monitorozása
+      href: container-instances-monitor.md
+    - name: Naplózás az Azure Log Analytics használatával
+      href: container-instances-log-analytics.md
+  - name: Számítási feladatok futtatása
+    items:
+    - name: Feladatok futtatása újraindítási szabályzatokkal
+      href: container-instances-restart-policy.md
+    - name: Jenkins-buildügynökök az ACI-ban
+      href: container-instances-jenkins.md
+  - name: Adatkötetek konfigurálása
+    items:
+    - name: Azure Files
+      href: container-instances-volume-azure-files.md
+    - name: emptyDir
+      href: container-instances-volume-emptydir.md
+    - name: gitRepo
+      href: container-instances-volume-gitrepo.md
+    - name: titkos kód
+      href: container-instances-volume-secret.md
+  - name: Hibaelhárítás
+    items:
+    - name: Tároló naplóinak és eseményeinek lekérése
+      href: container-instances-get-logs.md
+    - name: Gyakori problémák megoldása
+      href: container-instances-troubleshooting.md
 - name: Referencia
   items:
-    - name: Azure CLI
-      href: /cli/azure/container
-    - name: REST
-      href: /rest/api/container-instances
-    - name: PowerShell
-      href: '/powershell/module/azurerm.containerinstance#container_instances'
-    - name: .NET
-      href: /dotnet/api/overview/azure/containerinstance
-    - name: Python
-      href: /python/api/overview/azure/containerinstance
-    - name: Java
-      href: /java/api/overview/azure/containerinstance
-    - name: Node.js
-      href: /javascript/api/overview/azure/containerinstances
-    - name: Resource Manager-sablon
-      href: /azure/templates/microsoft.containerinstance/containergroups
+  - name: Azure CLI
+    href: /cli/azure/container
+  - name: REST
+    href: /rest/api/container-instances
+  - name: PowerShell
+    href: /powershell/module/azurerm.containerinstance#container_instances
+  - name: .NET
+    href: /dotnet/api/overview/azure/containerinstance
+  - name: Python
+    href: /python/api/overview/azure/containerinstance
+  - name: Java
+    href: /java/api/overview/azure/containerinstance
+  - name: Node.js
+    href: /javascript/api/overview/azure/containerinstances
+  - name: Resource Manager-sablon
+    href: /azure/templates/microsoft.containerinstance/containergroups
 - name: További források
   items:
-    - name: Régiónkénti elérhetőség
-      href: 'https://azure.microsoft.com/regions/services/'
-    - name: Díjszabás
-      href: 'https://azure.microsoft.com/pricing/details/container-instances/'
-    - name: Ütemterv
-      href: 'https://azure.microsoft.com/roadmap/'
-    - name: Termékkel kapcsolatos visszajelzés küldése
-      href: 'https://feedback.azure.com/forums/602224-azure-container-instances'
-    - name: Stack Overflow
-      href: 'http://stackoverflow.com/questions/tagged/azure-container-instances'
-    - name: Videók
-      href: 'https://azure.microsoft.com/resources/videos/index/?services=container-instances&sort=newest'
+  - name: Fejlessze a készségeit a Microsoft Learnnel
+    href: /learn/browse/?products=azure-container-instances
+  - name: Régiónkénti elérhetőség
+    href: https://azure.microsoft.com/regions/services/
+  - name: Díjszabás
+    href: https://azure.microsoft.com/pricing/details/container-instances/
+  - name: Ütemterv
+    href: https://azure.microsoft.com/roadmap/
+  - name: Termékkel kapcsolatos visszajelzés küldése
+    href: https://feedback.azure.com/forums/602224-azure-container-instances
+  - name: Stack Overflow
+    href: http://stackoverflow.com/questions/tagged/azure-container-instances
+  - name: Videók
+    href: https://azure.microsoft.com/resources/videos/index/?services=container-instances&sort=newest
+ms.openlocfilehash: 25214a5bc5ec99b6569ee833f23a167d8e301d29
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46996587"
