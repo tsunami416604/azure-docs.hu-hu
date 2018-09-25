@@ -1,0 +1,37 @@
+### YamlMime:YamlDocument
+ms.openlocfilehash: 739d46e900b51e93c0d232e57a54a9b05cfe49ce
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46965075"
+documentType: LandingData
+title: Az Azure Resource Graph dokumentációja
+metadata:
+  title: Az Azure Resource Graph dokumentációja – oktatóanyagok és API-referencia
+  description: Az Azure Resource Graph egy olyan Azure-szolgáltatás, amely lehetővé teszi az erőforrások nagy mennyiségben való komplex lekérdezését.
+  services: resource-graph
+  author: DCtheGeek
+  manager: carmonm
+  ms.service: resource-graph
+  ms.topic: landing-page
+  ms.date: 09/18/2018
+  ms.author: dacoulte
+abstract:
+  description: Az Azure Resource Graph dokumentációja segít konfigurálni és megismerni a lekérdezési nyelvet, amely lehetővé teszi az erőforrások mennyiségi felderítését és feltárását.
+sections:
+- title: 5 perces gyors útmutatók
+  items:
+  - type: paragraph
+    text: A Resource Graph konfigurálása és az első lekérdezés futtatása.
+  - type: list
+    style: icon48
+    items:
+    - image:
+        src: ./media/cli.svg
+      text: Azure CLI
+      href: first-query-azurecli.md
+    - image:
+        src: ./media/powershell.svg
+      text: Azure PowerShell
+      href: first-query-powershell.md
