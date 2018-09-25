@@ -1,4 +1,10 @@
 ### YamlMime:YamlDocument
+ms.openlocfilehash: aab2881462eafdc00bb0f3329f68789f07225773
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46955827"
 documentType: LandingData
 title: A MySQL-hez készült Azure Database dokumentációja
 metadata:
@@ -14,19 +20,13 @@ metadata:
   ms.topic: landing-page
   ms.date: 04/13/2017
   ms.author: carolz
-  ms.openlocfilehash: 817fc211b6296490af0a873a88eb76215b44c2dd
-  ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-  ms.translationtype: HT
-  ms.contentlocale: hu-HU
-  ms.lasthandoff: 10/11/2017
-  ms.locfileid: "23070803"
 abstract:
-  description: A MySQL-hez készült Azure Database egy relációsadatbázis-szolgáltatás, amely a nyílt forráskódú MySQL Server motoron alapszik.  A teljes körűen felügyelt, szolgáltatásként nyújtott adatbázis kiszámítható teljesítménnyel és dinamikus skálázhatósággal kezeli a létfontosságú számítási feladatokat. A MySQL-hez készült Azure Database-ben végzett alkalmazásfejlesztéssel kihasználhatja a nyílt forráskódú eszközöket, Ön választhatja ki a kívánt platformot. Gyors útmutatóink, oktatóanyagaink és példáink segítségével megismerheti a MySQL-hez készült Azure Database használatát.
+  description: A MySQL-hez készült Azure Database egy relációsadatbázis-szolgáltatás, amely a nyílt forráskódú MySQL Server motoron alapszik.  A teljes körűen felügyelt adatbázis-szolgáltatás kiszámítható teljesítménnyel és dinamikus skálázhatósággal kezeli a létfontosságú számítási feladatokat. A MySQL-hez készült Azure Database-ben végzett alkalmazásfejlesztéssel kihasználhatja a nyílt forráskódú eszközöket, Ön választhatja ki a kívánt platformot. Gyors útmutatóink, oktatóanyagaink és példáink segítségével megismerheti a MySQL-hez készült Azure Database használatát.
 sections:
 - title: 5 perces gyors útmutatók
   items:
   - type: paragraph
-    text: 'További információ az Azure-beli MySQL-adatbázis a következőkkel való létrehozásáról:'
+    text: 'További információ a MySQL Database on Azure a következőkkel való létrehozásáról:'
   - type: list
     style: icon48
     items:

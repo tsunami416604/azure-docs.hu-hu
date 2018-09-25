@@ -2,23 +2,27 @@
 title: Visual Studio Tools for Machine Learning az Azure-ban – rövid útmutató | Microsoft Docs
 description: Ez a cikk ismerteti a Visual Studio Tools for Machine Learning használatának első lépéseit, egy kísérlet létrehozásától egy modell tanításán át egy webszolgáltatás üzembe helyezéséig.
 services: machine-learning
-ms.workload: data-services
 author: chris-lauren
-ms.author: chris.lauren
+ms.author: clauren
 ms.service: machine-learning
 ms.component: core
+ms.workload: data-services
 ms.custom: mvc, vs-azure
 ms.topic: quickstart
 ms.date: 11/15/2017
-ms.openlocfilehash: 94bca4d7670b1ec6fba5057b8295f7a3caac2968
-ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
+ROBOTS: NOINDEX
+ms.openlocfilehash: a32739623f9b4809db6623f0d4d1b9737b0fff51
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42024368"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46984093"
 ---
 # <a name="visual-studio-tools-for-ai"></a>Visual Studio Tools for AI
-A Visual Studio Tools for AI egy fejlesztési bővítmény, amely mélytanulási és AI-megoldások összeállítását, tesztelését és üzembe helyezését teszi lehetővé. Zökkenőmentes integrációt biztosít az Azure Machine Learninggel, többek között egy futtatásielőzmények-nézetet, amely a korábbi betanítások és egyéni mérőszámok teljesítményét részletezi. Mintatallózó nézetet is kínál, amely lehetővé teszi az új projektek tallózását és elindítását a [Microsoft Cognitive Toolkittel (korábban CNTK)](http://www.microsoft.com/en-us/cognitive-toolkit), [Google TensorFlow-val](https://www.tensorflow.org) és más mélytanulási keretrendszerekkel. Végül egy tallózót biztosít a számítási célokhoz, amely lehetővé teszi modellek távoli környezetben (például Azure-beli virtuális gépeken vagy GPU-val rendelkező Linux-kiszolgálókon) való betanítási feladatainak elküldését. Emellett könnyített hozzáférést biztosít az [Azure Batch AI előzetes verziójához](https://docs.microsoft.com/azure/batch-ai/).
+
+[!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)] 
+
+A Visual Studio Tools for AI egy fejlesztési bővítmény, amely mélytanulási és AI-megoldások összeállítását, tesztelését és üzembe helyezését teszi lehetővé. Zökkenőmentes integrációt biztosít az Azure Machine Learninggel, többek között egy futtatásielőzmények-nézetet, amely a korábbi betanítások és egyéni mérőszámok teljesítményét részletezi. Mintatallózó nézetet is kínál, amely lehetővé teszi az új projektek tallózását és elindítását a [Microsoft Cognitive Toolkittel (korábban CNTK)](http://www.microsoft.com/cognitive-toolkit), [Google TensorFlow-val](https://www.tensorflow.org) és más mélytanulási keretrendszerekkel. Végül egy tallózót biztosít a számítási célokhoz, amely lehetővé teszi modellek távoli környezetben (például Azure-beli virtuális gépeken vagy GPU-val rendelkező Linux-kiszolgálókon) való betanítási feladatainak elküldését. Emellett könnyített hozzáférést biztosít az [Azure Batch AI előzetes verziójához](https://docs.microsoft.com/azure/batch-ai/).
  
 ## <a name="getting-started"></a>Első lépések 
 Első lépésként le kell tölteni és telepíteni kell a [Visual Studiót](https://www.visualstudio.com/downloads/). A Visual Studio megnyitása után hajtsa végre a következő lépéseket:
@@ -28,7 +32,7 @@ Első lépésként le kell tölteni és telepíteni kell a [Visual Studiót](htt
 3. Kattintson a **Download** (Letöltés) gombra. 
 4. A telepítés után indítsa újra a Visual Studiót. 
 
-A Visual Studio újbóli betöltése után a bővítmény engedélyezve lesz. [További tudnivalók a bővítmények kereséséről](hhttps://docs.microsoft.com/visualstudio/ide/finding-and-using-visual-studio-extensions).
+A Visual Studio újbóli betöltése után a bővítmény engedélyezve lesz. [További tudnivalók a bővítmények kereséséről](h https://docs.microsoft.com/visualstudio/ide/finding-and-using-visual-studio-extensions).
 
 > [!NOTE]
 > A Visual Studio Tools for AI használatához a Visual Studio 2015 vagy 2017 Professional vagy Enterprise verziója szükséges. Az Apple OSX verziói nem támogatottak. 

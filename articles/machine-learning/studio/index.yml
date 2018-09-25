@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: bd9988925b3c9a253d8c7e4632fea303a070fe38
-ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
+ms.openlocfilehash: d7c8e534095da9144cb72c11a162af93699eb013
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43782863"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46957931"
 documentType: LandingData
 title: Az Azure Machine Learning Studio dokumentációja
 metadata:
@@ -18,11 +18,21 @@ metadata:
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
-  ms.date: 01/18/2018
+  ms.date: 09/24/2018
   ms.author: jmartens
 abstract:
   description: Az Azure Machine Learning Studio olyan, az együttműködést támogató, egérrel kezelhető eszköz, amellyel az adataihoz prediktív elemzési megoldások hozhatók létre, tesztelhetők és helyezhetők üzembe. Az oktatóanyagok, videók és példamodellek bemutatják a Machine Learning-modellek felépítését és üzembe helyezését a Studio használatával.
 sections:
+- items:
+  - type: list
+    style: cards
+    className: cardsB
+    columns: 1
+    items:
+    - html: <p>Megkezdheti modellek összeállítását és üzembe helyezését a Studio húzással kezelhető felületén.</p>
+      image:
+        src: /azure/machine-learning/media/index/machine-learning-studio.svg
+      title: Azure Machine Learning Studio
 - title: 5 perces gyors útmutatók
   items:
   - type: paragraph
@@ -51,7 +61,7 @@ sections:
     style: cards
     className: cardsFTitle
     items:
-    - title: Azure Machine Learning-szolgáltatások (előzetes verzió)
+    - title: Azure Machine Learning szolgáltatás (előzetes verzió)
       href: /azure/machine-learning/service/
       image:
         src: media/index/i_machine-learning.svg

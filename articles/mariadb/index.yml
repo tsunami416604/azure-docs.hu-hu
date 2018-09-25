@@ -1,0 +1,54 @@
+### YamlMime:YamlDocument
+ms.openlocfilehash: 54de8d6aa1ee06c1d9500490eb93a5ea37ecb6a4
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46961195"
+documentType: LandingData
+title: Az Azure Database for MariaDB dokumentációja
+metadata:
+  title: Az Azure MariaDB dokumentációja – oktatóanyagok és API-referencia | Microsoft Docs
+  description: Az Azure Database for MariaDB egy fejlesztőknek készült relációsadatbázis-szolgáltatás a Microsoft-felhőben, amely a nyílt forráskódú MariaDB adatbázismotoron alapszik.
+  author: czeumault
+  manager: carolz
+  ms.service: mariadb
+  ms.tgt_pltfrm: na
+  ms.devlang: na
+  ms.topic: landing-page
+  ms.date: 04/13/2017
+  ms.author: carolz
+abstract:
+  description: Az Azure Database for MariaDB egy relációsadatbázis-szolgáltatás, amely a nyílt forráskódú MariaDB Server motoron alapszik.  A teljes körűen felügyelt adatbázis-szolgáltatás kiszámítható teljesítménnyel és dinamikus skálázhatósággal kezeli a létfontosságú számítási feladatokat. Az Azure Database for MariaDB-ben történő alkalmazásfejlesztéssel kiaknázhatja az Ön által választott nyílt forráskódú eszközök és platform előnyeit. Rövid útmutatóink, oktatóanyagaink és példáink segítségével megismerheti az Azure Database for MariaDB használatát.
+sections:
+- title: 5 perces gyors útmutatók
+  items:
+  - type: paragraph
+    text: 'További információ az Azure-beli MariaDB-adatbázis létrehozásáról a következők használatával:'
+  - type: list
+    style: icon48
+    items:
+    - image:
+        src: /azure/virtual-machines/linux/media/index/portal.svg
+      text: Azure Portal
+      href: /azure/mariadb/quickstart-create-mariadb-server-database-using-azure-portal
+    - image:
+        src: /azure/virtual-machines/linux/media/index/cli.svg
+      text: Azure CLI
+      href: /azure/mariadb/quickstart-create-mariadb-server-database-using-azure-cli
+- title: Részletes útmutatók
+  items:
+  - type: paragraph
+    text: 'További információ az adatbázisok tervezéséről és az alkalmazások fejlesztéséről:'
+  - type: list
+    style: ordered
+    items:
+    - html: 'Adatbázis tervezése: <a href="/azure/mariadb/tutorial-design-database-using-portal">Azure Portal</a>'
+- title: Referencia
+  items:
+  - type: list
+    style: cards
+    className: cardsD
+    items:
+    - title: Parancssor
+      html: <p><a href="/cli/azure/mariadb">Azure CLI</a></p>

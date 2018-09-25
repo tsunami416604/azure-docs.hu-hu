@@ -1,0 +1,122 @@
+items:
+- name: Azure Database for MariaDB-dokumentumok
+  href: index.yml
+- name: Áttekintés
+  items:
+  - name: Azure Database for MariaDB
+    href: overview.md
+- name: Gyors útmutatók
+  items:
+  - name: DB létrehozása – portál
+    href: quickstart-create-mariadb-server-database-using-azure-portal.md
+  - name: DB létrehozása – Azure CLI
+    href: quickstart-create-mariadb-server-database-using-azure-cli.md
+  - name: Csatlakozás és lekérdezés
+    items:
+    - name: MySQL Workbench
+      href: connect-workbench.md
+  expanded: true
+- name: Oktatóanyagok
+  items:
+  - name: 1 – Adatbázis-tervezés
+    items:
+    - name: Azure Portal
+      href: tutorial-design-database-using-portal.md
+- name: Alapelvek
+  items:
+  - name: Adatbázis és kiszolgálók
+    items:
+    - name: Kiszolgálók
+      href: concepts-servers.md
+    - name: Támogatott verziók
+      href: concepts-supported-versions.md
+    - name: Kiszolgálói naplók
+      href: concepts-server-logs.md
+    - name: Magas rendelkezésre állás
+      href: concepts-high-availability.md
+  - name: További források
+    items:
+    - name: Árképzési szintek
+      href: concepts-pricing-tiers.md
+    - name: Korlátok
+      href: concepts-limits.md
+  - name: Adathozzáférés és -biztonság
+    items:
+    - name: Tűzfalszabályok
+      href: concepts-firewall-rules.md
+    - name: Az SSL konfigurálása
+      href: concepts-ssl-connection-security.md
+  - name: Az üzletmenet folytonossága
+    items:
+    - name: Áttekintés
+      href: concepts-business-continuity.md
+    - name: Biztonsági mentés és visszaállítás
+      href: concepts-backup.md
+  - name: Replikáció
+    items:
+    - name: Beérkező adatokra épülő replikáció
+      href: concepts-data-in-replication.md
+- name: Útmutatók
+  items:
+  - name: Tűzfalszabályok
+    items:
+    - name: Azure Portal
+      href: howto-manage-firewall-portal.md
+  - name: Kiszolgáló visszaállítása
+    items:
+    - name: Azure Portal
+      href: howto-restore-server-portal.md
+  - name: Adatbázisok migrálása
+    items:
+    - name: Memóriakép és visszaállítás
+      href: howto-migrate-dump-restore.md
+  - name: Alkalmazások csatlakoztatása
+    items:
+    - name: Felhasználók létrehozása
+      href: howto-create-users.md
+    - name: Kapcsolati sztringek
+      href: howto-connection-string.md
+    - name: Az SSL konfigurálása
+      href: howto-configure-ssl.md
+  - name: Kiszolgáló paramétereinek konfigurálása
+    items:
+    - name: Azure Portal
+      href: howto-server-parameters.md
+  - name: Hozzáférés a kiszolgálói naplókhoz
+    items:
+    - name: Azure Portal
+      href: howto-configure-server-logs-portal.md
+  - name: Replikáció
+    items:
+    - name: Beérkező adatokra épülő replikáció konfigurálása
+      href: howto-data-in-replication.md
+- name: Referencia
+  items:
+  - name: REST API
+    href: /rest/api/mariadb
+  - name: Beérkező adatokra épülő replikáció tárolt eljárásai
+    href: reference-data-in-stored-procedures.md
+- name: További források
+  items:
+  - name: Üzembehelyezési sablonok
+    href: https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Dbformariadb
+  - name: Azure-ütemterv
+    href: https://azure.microsoft.com/roadmap/?category=databases
+  - name: Díjszabás
+    href: https://azure.microsoft.com/pricing/details/mariadb/
+  - name: MSDN-fórum
+    href: https://social.msdn.microsoft.com/forums/en-US/home?forum=AzureDatabaseforMariaDB
+  - name: Stack Overflow
+    href: http://stackoverflow.com/questions/tagged/azure-database-mariadb
+  - name: Szolgáltatás igénylése
+    href: https://feedback.azure.com/forums/597982-azure-database-for-mysql
+  - name: Régiónkénti elérhetőség
+    href: https://azure.microsoft.com/regions/services/
+  - name: Támogatási lehetőségek
+    href: https://azure.microsoft.com/support/options/
+ms.openlocfilehash: a1b24ca3800866f00a97647d59e1f7353a0bdcc9
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46958492"

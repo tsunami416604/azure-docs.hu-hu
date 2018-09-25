@@ -11,16 +11,16 @@ ms.custom: DBs & servers
 ms.topic: conceptual
 ms.date: 09/14/2018
 ms.author: bonova
-ms.openlocfilehash: 113f171f5ad4bcc8ee9abc2935a9741f7c23c3b0
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: 711a076409ed1d90c197bbf97a6e15144c0a4d38
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45734218"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46956625"
 ---
-# <a name="what-is-a-managed-instance-preview"></a>Mi a felügyelt példány (előzetes verzió)?
+# <a name="what-is-a-managed-instance"></a>Mi a felügyelt példány?
 
-Az Azure SQL Database felügyelt példány (előzetes verzió) az új üzembe helyezési modellt az Azure SQL Database, így a legújabb SQL Server-közel 100 %-os kompatibilitást a helyszíni adatbázis-kezelő (Enterprise Edition), a natív [virtuális hálózat () Virtuális hálózat)](../virtual-network/virtual-networks-overview.md) végrehajtását, amelyek közös biztonsági kérdéseket, és a egy [üzleti modell](https://azure.microsoft.com/pricing/details/sql-database/) kedvező a helyszíni SQL Server-ügyfelek számára. Felügyelt példány lehetővé teszi meglévő SQL Server a felhőre való minimális alkalmazás- és adatbázis módosításait azok a helyszíni alkalmazások átemelése. Felügyelt példány egyszerre, megőrzi az összes PaaS-képességet (automatikus javítás és a verzió frissítési [automatizált biztonsági mentések](sql-database-automated-backups.md), [magas rendelkezésre állású](sql-database-high-availability.md) ), amely jelentősen csökkenti felügyeleti költségeket és a teljes bekerülési Költséget.
+Az Azure SQL Database felügyelt példánya egy új központi telepítési modellt az Azure SQL Database, így a legújabb SQL Server-közel 100 %-os kompatibilitást a helyszíni adatbázis-kezelő (Enterprise Edition), a natív [virtuális hálózat (VNet)](../virtual-network/virtual-networks-overview.md) végrehajtását, amelyek közös biztonsági kérdéseket, és a egy [üzleti modell](https://azure.microsoft.com/pricing/details/sql-database/) kedvező a helyszíni SQL Server-ügyfelek számára. Felügyelt példány lehetővé teszi meglévő SQL Server a felhőre való minimális alkalmazás- és adatbázis módosításait azok a helyszíni alkalmazások átemelése. Felügyelt példány egyszerre, megőrzi az összes PaaS-képességet (automatikus javítás és a verzió frissítési [automatizált biztonsági mentések](sql-database-automated-backups.md), [magas rendelkezésre állású](sql-database-high-availability.md) ), amely jelentősen csökkenti felügyeleti költségeket és a teljes bekerülési Költséget.
 
 > [!IMPORTANT]
 > Azon régiók listájáért, amelyekben a felügyelt példány jelenleg elérhető, lásd a cikket, amely [az adatbázisok migrálásával foglalkozik egy teljes mértékben felügyelt szolgáltatásba az Azure SQL Database felügyelt példányával](https://azure.microsoft.com/blog/migrate-your-databases-to-a-fully-managed-service-with-azure-sql-database-managed-instance/).
@@ -69,7 +69,7 @@ Az alábbi táblázat segítségével megismerheti, hogyan lehet kiválasztani a
 
 Felügyelt példány szolgáltatáscsomagban érhető el:
 - **Általános célú**: tipikus teljesítmény- és i/o-késési követelményekkel rendelkező alkalmazások tervezve.
-- **Üzletileg kritikus**: alacsony i/o-késésre vonatkozó követelmény és az alapul szolgáló karbantartási műveleteket a számítási feladatok minimális hatása az alkalmazások számára készült.
+- **Üzletileg kritikus (előzetes verzió)**: alacsony i/o-késésre vonatkozó követelmény és az alapul szolgáló karbantartási műveleteket a számítási feladatok minimális hatása az alkalmazások számára készült.
 
 Mindkét szolgáltatásszintek 99,99 %-os rendelkezésre állásának biztosítása, és egymástól függetlenül válassza ki a tároló mérete és a számítási kapacitást. Az Azure SQL Database a magas rendelkezésre állású architektúrával további információkért lásd: [magas rendelkezésre állást és az Azure SQL Database](sql-database-high-availability.md).
 
@@ -109,7 +109,7 @@ Az alábbi lista ismerteti azokat az általános célú szolgáltatásszint főb
 
 További információ: [Standard/általános célú rendelkezésre állási és architektúra](sql-database-high-availability.md#standardgeneral-purpose-availability) Azure SQL Database-ben.
 
-### <a name="business-critical-service-tier"></a>Üzleti kritikus fontosságú szolgáltatási szint
+### <a name="business-critical-service-tier-preview"></a>Üzleti kritikus fontosságú szolgáltatási szint (előzetes verzió)
 
 Üzleti kritikus szolgáltatási szinten a nagy i/o-követelményekkel rendelkező alkalmazások épül. Több elkülönített Always On replika használatával legmagasabb hibatűrést biztosít. 
 
@@ -141,6 +141,9 @@ Az alábbi lista ismerteti azokat az üzletileg kritikus szolgáltatási rétegb
 
 További információ: [prémium és üzletileg kritikus fontosságú rendelkezésre állási és architektúra](sql-database-high-availability.md#premiumbusiness-critical-availability) Azure SQL Database-ben.
 
+> [!IMPORTANT]
+> A **üzletileg kritikus fontosságú** szolgáltatási szint jelenleg előzetes verzióban.
+
 ## <a name="advanced-security-and-compliance"></a>Magas szintű biztonság és megfelelőség 
 
 Az Azure SQL Database felügyelt példányain egyesíti az Azure-felhőben és az SQL Server adatbázismotor által biztosított fejlett biztonsági funkciókat. 
@@ -171,7 +174,7 @@ Az Azure SQL Database biztosít, amelyek segítségével az adatok védelme a sp
 - [Veszélyforrások Detektálása](sql-database-managed-instance-threat-detection.md) egészíti ki a [felügyelt példány naplózás](sql-database-managed-instance-auditing.md) azáltal, hogy egy további biztonsági réteget a szolgáltatás által észlelt szokatlan és vélhetően kárt okozó beépített intelligencia próbál elérni vagy kiaknázni adatbázisok. Gyanús tevékenységek, a lehetséges biztonsági résekről, figyelmeztetést, és az SQL-injektálási támadások, valamint a rendellenes adatbázis-hozzáférési mintákról. Fenyegetésészlelési riasztások tekinthetők [az Azure Security Center](https://azure.microsoft.com/services/security-center/) , és adja meg a gyanús tevékenység részleteit, és tegyen javaslatot a műveletre vizsgálata, valamint a fenyegetés.  
 - [Dinamikus adatmaszkolás](/sql/relational-databases/security/dynamic-data-masking) korlátozza a bizalmas adatok közzétételét, hogy a replikaadatok felhasználók maszkolja a. Dinamikus adatmaszkolás segít a bizalmas adatokhoz való illetéktelen hozzáférés megakadályozása által meghatározhatóvá a bizalmas adatok felfedéséhez az alkalmazásrétegre gyakorolt minimális hatás mellett. Ez a szabályzatalapú biztonsági funkció elrejti a bizalmas adatokat egy kijelölt adatbázismezőkön végrehajtott lekérdezés eredményhalmazában, miközben az adatbázis adatait nem módosítja. 
 - [Sorszintű biztonság](/sql/relational-databases/security/row-level-security) lehetővé teszi, hogy a vezérlőelem egy adatbázistábla soraihoz való eléréséhez a lekérdezést végrehajtó felhasználó jellemzői alapján (például csoporttagság vagy végrehajtási környezet szerint). A sorszintű biztonság (RLS) egyszerűsíti az alkalmazás védelmének megtervezését és kódolását. Az RLS használatával korlátozásokat érvényesíthet az adatsorokhoz való hozzáférésre. Például annak érdekében, hogy a dolgozók férhessenek hozzá csak azok a szervezeti egységükre vonatkozó az adatsorokat, vagy egy adat-hozzáférés korlátozása csak a releváns adatokat. 
-- [Transzparens adattitkosítás (TDE)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql) titkosítja az Azure SQL felügyelt példánya adatfájlok, más néven az inaktív adatok titkosítása. TDE valós idejű i/o-titkosításához és visszafejtéséhez az adathoz és naplófájlhoz hajt végre. A titkosítást használ egy adatbázis-titkosítási kulcs (adattitkosítási kulcsot), a helyreállítás során a rendelkezésre állási adatbázis rendszerindító rekordját tárolt. Összes adatbázis a felügyelt példány transzparens adattitkosítással védheti meg. A TDE az SQL kipróbált inaktív-adattitkosítási technológiája, amelyet számos megfelelőségi szabvány előír az adattárolók eltulajdonítása esetén hatékony védelemként. A nyilvános előzetes verzióban az Automatikus kulcskezelés modell támogatott (a PaaS-platform által végrehajtott). 
+- [Transzparens adattitkosítás (TDE)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql) titkosítja az Azure SQL Database felügyelt példányába adatfájlok, más néven az inaktív adatok titkosítása. TDE valós idejű i/o-titkosításához és visszafejtéséhez az adathoz és naplófájlhoz hajt végre. A titkosítást használ egy adatbázis-titkosítási kulcs (adattitkosítási kulcsot), a helyreállítás során a rendelkezésre állási adatbázis rendszerindító rekordját tárolt. Összes adatbázis a felügyelt példány transzparens adattitkosítással védheti meg. A TDE az SQL kipróbált inaktív-adattitkosítási technológiája, amelyet számos megfelelőségi szabvány előír az adattárolók eltulajdonítása esetén hatékony védelemként. A nyilvános előzetes verzióban az Automatikus kulcskezelés modell támogatott (a PaaS-platform által végrehajtott). 
 
 Egy titkosított, az SQL Database áttelepítése támogatott, az Azure Database Migration Service (DMS) vagy a natív visszaállítási keresztül. Ha titkosított adatbázis natív visszaállítással való áttelepítését tervezi, a migrálás a helyszíni SQL Server vagy SQL Server rendszerű virtuális gép a felügyelt példánynak meglévő TDE tanúsítvány, lépésre szükség. Áttelepítési beállítások kapcsolatos további információkért lásd: [SQL Server-példány migrálása az Azure SQL Database felügyelt példányába történő](sql-database-managed-instance-migrate.md).
 
@@ -226,7 +229,7 @@ Felügyelt példány előnyei nem mindig felfelé-elejétől számított a felh�
 - Felügyelt példány nem engedélyezi a teljes fizikai elérési út megadásával, így az összes megfelelő forgatókönyv kell másképp támogatja: adatbázis-VISSZAÁLLÍTÁS nem támogatja a WITH MOVE, DB létrehozása nem teszi lehetővé a fizikai elérési útját, TÖMEGES Beszúrás működik az Azure Blobszolgáltatása révén, csak stb. 
 - Felügyelt példány által támogatott [Azure AD-hitelesítés](sql-database-aad-authentication.md) felhőalapú alternatív Windows-hitelesítés. 
 - Felügyelt példány automatikusan kezeli a XTP fájlcsoport és fájlok In-Memory OLTP objektumokat tartalmazó adatbázisok
-- Felügyelt példány támogatja-e az SQL Server Integration Services (SSIS) és a gazdagép SSIS-katalógus (SSISDB), amely tárolja az SSIS-csomagokat is, de ezeket a rendszer végrehajtja a egy felügyelt Azure-SSIS integrációs modul (IR) az Azure Data Factory (ADF), lásd: [létrehozása Az Azure-SSIS integrációs modul az ADF-ben](https://docs.microsoft.com/en-us/azure/data-factory/create-azure-ssis-integration-runtime). Hasonlítsa össze az SSIS-funkciók az SQL Database felügyelt példány, lásd: [hasonlítsa össze az SQL Database és a felügyelt példány (előzetes verzió)](../data-factory/create-azure-ssis-integration-runtime.md#compare-sql-database-and-managed-instance-preview).
+- Felügyelt példány támogatja-e az SQL Server Integration Services (SSIS) és a gazdagép SSIS-katalógus (SSISDB), amely tárolja az SSIS-csomagokat is, de ezeket a rendszer végrehajtja a egy felügyelt Azure-SSIS integrációs modul (IR) az Azure Data Factory (ADF), lásd: [létrehozása Az Azure-SSIS integrációs modul az ADF-ben](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime). Hasonlítsa össze az SSIS-funkciók az SQL Database felügyelt példány, lásd: [hasonlítsa össze az SQL Database logikai kiszolgáló és a felügyelt példány](../data-factory/create-azure-ssis-integration-runtime.md#compare-sql-database-logical-server-and-sql-database-managed-instance).
 
 ### <a name="managed-instance-administration-features"></a>Felügyelt példány felügyeleti funkciók  
 
@@ -244,7 +247,7 @@ Az alábbi táblázat Transact SQL-n keresztül elérhető számos tulajdonság,
 |`@@VERSION`|A Microsoft SQL Azure (RTM) – 12.0.2000.8 2018-03-07 Copyright (C) 2018 Microsoft Corporation.|Ez ugyanaz, mint az SQL Database értéke.|
 |`SERVERPROPERTY ('Edition')`|SQL Azure|Ez ugyanaz, mint az SQL Database értéke.|
 |`SERVERPROPERTY('EngineEdition')`|8|Ez az érték a felügyelt példány egyedileg azonosítja.|
-|`@@SERVERNAME`, `SERVERPROPERTY ('ServerName')`|Példány teljes DNS-név a következő formátumban:<instanceName>.<dnsPrefix>. Database.Windows.NET, ahol <instanceName> az ügyfél által megadott név közben <dnsPrefix> a neve, ami garantálja az globális DNS neve egyedi-e automatikusan létrehozott része ("wcus17662feb9ce98", például)|Példa: saját-managed-instance.wcus17662feb9ce98.database.windows.net|
+|`@@SERVERNAME`, `SERVERPROPERTY ('ServerName')`|Példány teljes DNS-név a következő formátumban:<instanceName>.<dnsPrefix>.Database.Windows.NET, ahol <instanceName> az ügyfél által megadott név közben <dnsPrefix> a neve, ami garantálja az globális DNS neve egyedi-e automatikusan létrehozott része ("wcus17662feb9ce98", például)|Példa: saját-managed-instance.wcus17662feb9ce98.database.windows.net|
 
 ## <a name="next-steps"></a>További lépések
 

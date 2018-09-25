@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: e7347b521bf490f1148fb1c7ca7e94d502be9019
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: 3425a7b65ce81ca3d45a0ccdfe613ffdfef4f90f
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39281731"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46953616"
 documentType: LandingData
 title: Az Azure Service Fabric Mesh dokumentációja
 metadata:
@@ -40,11 +40,11 @@ sections:
 - title: Részletes útmutatók
   items:
   - type: paragraph
-    text: Megtudhatja, hogyan hozhat létre és helyezhet üzembe egy többszolgáltatású Azure Service Fabric Mesh-alkalmazást, és hogyan végezhet benne hibakeresést.
+    text: További információk Mesh-alkalmazások a Visual Studióval való összeállításáról és üzembe helyezéséről.
   - type: list
     style: unordered
     items:
-    - html: <a href="/azure/service-fabric-mesh/service-fabric-mesh-tutorial-create-dotnetcore">Többszolgáltatású webalkalmazás létrehozása, hibaelhárítása és üzembe helyezése a Service Fabric Mesh-ben</a>
+    - html: <a href="/azure/service-fabric-mesh/service-fabric-mesh-tutorial-create-dotnetcore">Többszolgáltatású webalkalmazás létrehozása, hibaelhárítása, üzembe helyezése és frissítése a Service Fabric Meshben</a>
 - title: Referencia
   items:
   - type: list
