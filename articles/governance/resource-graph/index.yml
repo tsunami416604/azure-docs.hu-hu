@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 739d46e900b51e93c0d232e57a54a9b05cfe49ce
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: c0a12a4f5f3004eb304116a7c8dc4056b5386fc1
+ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
 ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 09/24/2018
-ms.locfileid: "46965075"
+ms.locfileid: "47055458"
 documentType: LandingData
 title: Az Azure Resource Graph dokumentációja
 metadata:
@@ -35,3 +35,7 @@ sections:
         src: ./media/powershell.svg
       text: Azure PowerShell
       href: first-query-powershell.md
+- title: Visszajelzés
+  items:
+  - type: paragraph
+    text: Ha visszajelzést küldene a funkcióval kapcsolatban, vagy segítségre van szüksége a lekérdezésekkel, az Azure Portal <b>Azure Policy</b> részéből lépjen a <b>Resource Graph (előzetes verzió)</b> oldalára, és kattintson a visszajelzési lehetőségre. Megoszthatja velünk javaslatait a <a href="https://feedback.azure.com/forums/915958-azure-governance">UserVoice-on</a>.

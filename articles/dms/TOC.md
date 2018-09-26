@@ -19,7 +19,7 @@
 # További források
 ## [Ismert problémák – Online migrálás az Azure SQL DB-be](known-issues-azure-sql-online.md)
 ## [Ismert problémák – Online migrálás a MySQL-hez készült Azure DB-be](known-issues-azure-mysql-online.md)
-## [Ismert problémák – Online migrálás a PosgreSQL-hez készült Azure DB-be](known-issues-azure-postgresql-online.md)
+## [Ismert problémák – Online migrálás a PostgreSQL-hez készült Azure DB-be](known-issues-azure-postgresql-online.md)
 ## [Felhasználói visszajelzések](https://feedback.azure.com/forums/906100-azure-database-migration-service)
 ## [Azure-ütemterv](https://azure.microsoft.com/roadmap/)
 ## [Adatbázis-migrálási útmutató](https://aka.ms/datamigration)

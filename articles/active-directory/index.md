@@ -11,14 +11,14 @@ ms.service: active-directory
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: landing-page
-ms.date: 09/14/2018
+ms.date: 09/20/2018
 ms.author: mtillman
-ms.openlocfilehash: 2d7288356834f4c57465c0043835edc3da86311f
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 8b28ca8d0aef745600539ab2785e67e3d67e95f9
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46962453"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47063812"
 ---
 <div id="main" class="v2">
     <div class="container">
@@ -63,7 +63,6 @@ ms.locfileid: "46962453"
                                                     </div>
                                                 </a>
                                             </li>
-<!--This is the learning section 
                                             <li>
                                                 <a href="">
                                                     <div class="cardSize">
@@ -71,14 +70,14 @@ ms.locfileid: "46962453"
                                                             <div class="card">
                                                                 <div class="cardImageOuter">
                                                                     <div class="cardImage">
-                                                                        <img alt="" src="https://docs.microsoft.com/media/common/i_learn-about.svg" data-linktype="external">
+                                                                        <img alt="" src="/learn/achievements/secure-azure-resources-with-conditional-access.svg" data-linktype="external">
                                                                     </div>
                                                                 </div>
                                                                 <div class="cardText" style="padding-left: 0px">
-                                                                    <h3><a href="">Build your skills with Microsoft Learn</a></h3> 
+                                                                    <h3><a href="">Fejlessze a készségeit a Microsoft Learnnel</a></h3> 
                                                                     <p>
-                                                                        <a href="https://docs.microsoft.com/learn/modules/secure-azure-resources-with-conditional-access">Secure your Azure resources with conditional access</a><br>
-                                                                        <a href="">More interactive learning ...</a><br>
+                                                                        <a href="/learn/modules/secure-azure-resources-with-conditional-access/">Azure-erőforrások védelme feltételes hozzáféréssel</a><br>
+                                                                        <a href="/learn/browse/?products=azure-active-directory">További interaktív oktatóanyagok...</a><br>
                                                                     </p>
                                                                 </div>
                                                             </div>
@@ -86,7 +85,6 @@ ms.locfileid: "46962453"
                                                     </div>
                                                 </a>
                                             </li>
- End of the learning section -->
                                         </ul>
                                     </li>
                                     <li>
@@ -101,7 +99,7 @@ ms.locfileid: "46962453"
                                                             <a href="manage-apps/application-proxy.md">Alkalmazásproxy helyszíni alkalmazásokhoz</a><br>
                                                         </p>
                                                         <br><br>
-                                                        <h3><a href="authentication/index.yml">Hitelesítési módszerek</a></h3>
+                                                        <h3><a href="authentication/index.yml">Hitelesítés</a></h3>
                                                         <p>
                                                             <a href="authentication/tutorial-mfa-applications.md">Az MFA engedélyezése az Azure Portalhoz</a><br>
                                                             <a href="authentication/quickstart-sspr.md">Önkiszolgáló jelszóátállítás engedélyezése</a><br>
@@ -122,11 +120,11 @@ ms.locfileid: "46962453"
                                                             <a href="/azure/active-directory-b2c/active-directory-b2c-tutorials-web-api">Hozzáférés biztosítása ASP.NET webes API-hoz</a>
                                                         </p>
                                                         <br><br>
-                                                        <h3><a href="governance/access-reviews-overview.md">Hozzáférési felülvizsgálatok</a></h3>
+                                                        <h3><a href="conditional-access/index.yml">Feltételes hozzáférés</a></h3>
                                                         <p>
-                                                            <a href="governance/create-access-review.md">Hozzáférési felülvizsgálat létrehozása</a><br>
-                                                            <a href="governance/perform-access-review.md">Hozzáférési felülvizsgálat végrehajtása</a><br>
-                                                            <a href="governance/active-directory-tou.md">Használati feltételek</a>
+                                                            <a href="conditional-access/app-based-mfa.md">MFA megkövetelése adott alkalmazásokhoz</a><br>
+                                                            <a href="conditional-access/require-tou.md">A használati feltételek elfogadásának kötelezővé tétele</a><br>
+                                                            <a href="conditional-access/app-sign-in-risk.md">Hozzáférés letiltása munkameneti kockázat észlelésekor</a>
                                                         </p>
                                                     </div>
                                                 </div>
@@ -138,18 +136,11 @@ ms.locfileid: "46962453"
                                             <div class="cardPadding">
                                                 <div class="card">
                                                     <div class="cardText">
-                                                        <h3><a href="conditional-access/index.yml">Feltételes hozzáférés</a></h3>
-                                                        <p>
-                                                            <a href="conditional-access/app-based-mfa.md">MFA megkövetelése adott alkalmazásokhoz</a><br>
-                                                            <a href="conditional-access/require-tou.md">A használati feltételek elfogadásának kötelezővé tétele</a><br>
-                                                            <a href="conditional-access/app-sign-in-risk.md">Hozzáférés letiltása munkameneti kockázat észlelésekor</a>
-                                                        </p>
-                                                        <br><br>
                                                         <h3><a href="develop/index.yml">Fejlesztők</a></h3>
                                                         <p>
                                                             <a href="develop/about-microsoft-identity-platform.md">A Microsoft identitásplatformja</a><br>
-                                                            <a href="develop/azure-ad-developers-guide.md">1.0-s verzió</a><br>
-                                                            <a href="develop/v2-overview.md">2.0-s verzió</a>
+                                                            <a href="develop/azure-ad-developers-guide.md">1.0-s verziójú platform</a><br>
+                                                            <a href="develop/v2-overview.md">2.0-s verziójú platform</a>
                                                         </p>
                                                         <br><br>
                                                         <h3><a href="devices/index.yml">Eszközkezelés</a></h3>
@@ -161,9 +152,9 @@ ms.locfileid: "46962453"
                                                         <br><br>
                                                         <h3><a href="/azure/active-directory-domain-services/index">Tartományi szolgáltatások</a></h3>
                                                         <p>
-                                                            <a href="/azure/active-directory-domain-services/active-directory-ds-getting-started.md">Az Azure AD Domain Services engedélyezése</a><br>
-                                                            <a href="/azure/active-directory-domain-services/active-directory-ds-admin-guide-join-windows-vm-portal.md">Windows Server rendszerű virtuális gép csatlakoztatása felügyelt tartományhoz</a><br>
-                                                            <a href="/active-directory-domain-services/active-directory-ds-admin-guide-configure-secure-ldap.md">Biztonságos LDAP konfigurálása</a>
+                                                            <a href="/azure/active-directory-domain-services/active-directory-ds-getting-started">Az Azure AD Domain Services engedélyezése</a><br>
+                                                            <a href="/azure/active-directory-domain-services/active-directory-ds-admin-guide-join-windows-vm-portal">Windows Server rendszerű virtuális gép csatlakoztatása felügyelt tartományhoz</a><br>
+                                                            <a href="/active-directory-domain-services/active-directory-ds-admin-guide-configure-secure-ldap">Biztonságos LDAP konfigurálása</a>
                                                         </p>
                                                         <br><br>
                                                         <h3><a href="users-groups-roles/index.yml">Vállalati felhasználók</a></h3>
@@ -171,6 +162,13 @@ ms.locfileid: "46962453"
                                                             <a href="users-groups-roles/directory-assign-admin-roles.md">Rendszergazdai szerepkörök hozzárendelése</a><br>
                                                             <a href="users-groups-roles/licensing-groups-assign.md">Licencek hozzárendelése csoportokhoz</a><br>
                                                             <a href="users-groups-roles/groups-create-rule.md">Dinamikus csoport létrehozása</a>
+                                                        </p>
+                                                        <br><br>
+                                                        <h3><a href="hybrid/index.yml">Hibrid identitás</a></h3>
+                                                        <p>
+                                                            <a href="hybrid/how-to-connect-install-roadmap.md">Az Azure AD Connect telepítése</a><br>
+                                                            <a href="hybrid/how-to-connect-sso.md">Egyszeri bejelentkezés az Azure AD Connecttel</a><br>
+                                                            <a href="hybrid/how-to-connect-fed-whatis.md">Azure AD Connect és összevonás</a>
                                                         </p>
                                                     </div>
                                                 </div>
@@ -182,11 +180,11 @@ ms.locfileid: "46962453"
                                             <div class="cardPadding">
                                                 <div class="card">
                                                     <div class="cardText">
-                                                        <h3><a href="hybrid/index.yml">Hibrid identitás</a></h3>
+                                                        <h3><a href="governance/access-reviews-overview.md">Hozzáférési felülvizsgálatok</a></h3>
                                                         <p>
-                                                            <a href="hybrid/tutorial-password-hash-sync.md">Azure AD Connect</a><br>
-                                                            <a href="hybrid/tutorial-passthrough-authentication.md">AD-erdő integrálása a felhőbe</a><br>
-                                                            <a href="hybrid/tutorial-federation.md">AD-erdő összevonása a felhővel</a>
+                                                            <a href="governance/create-access-review.md">Hozzáférési felülvizsgálat létrehozása</a><br>
+                                                            <a href="governance/perform-access-review.md">Hozzáférési felülvizsgálat végrehajtása</a><br>
+                                                            <a href="governance/active-directory-tou.md">Használati feltételek</a><br>
                                                         </p>
                                                         <br><br>
                                                         <h3><a href="identity-protection/index.yml">Identitásvédelem</a></h3>
@@ -203,14 +201,14 @@ ms.locfileid: "46962453"
                                                             <a href="managed-identities-azure-resources/services-support-msi.md">A felügyelt identitást támogató szolgáltatások</a>
                                                         </p>
                                                         <br><br>
-                                                        <h3><a href="privileged-identity-management/index.yml">PIM</a></h3>
+                                                        <h3><a href="privileged-identity-management/index.yml">Privileged Identity Management (PIM)</a></h3>
                                                         <p>
                                                             <a href="privileged-identity-management/pim-getting-started.md">Ismerkedés a PIM-mel</a><br>
                                                             <a href="privileged-identity-management/pim-how-to-activate-role.md">Címtárbeli szerepkörök aktiválása</a><br>
                                                             <a href="privileged-identity-management/pim-how-to-add-role-to-user.md">Címtárbeli szerepkörök hozzárendelése</a>
                                                         </p>
                                                         <br><br>
-                                                        <h3><a href="reports-monitoring/index.yml">Jelentés és monitorozás</a></h3>
+                                                        <h3><a href="reports-monitoring/index.yml">Jelentések és monitorozás</a></h3>
                                                         <p>
                                                             <a href="reports-monitoring/howto-find-activity-reports.md">Tevékenységjelentések keresése</a><br>
                                                             <a href="reports-monitoring/concept-activity-logs-in-azure-monitor.md">Azure AD-naplók használata az Azure Monitorban</a><br>

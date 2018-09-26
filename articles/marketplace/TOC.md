@@ -7,6 +7,7 @@
 #### [Regisztrálás a fejlesztői központban](./register-dev-center.md) 
 #### [Számlázási lehetőségek az Azure Marketplace-en](./billing-options-azure-marketplace.md)  
 #### [Az Azure-partnererőforrások ügyfelek általi használatának nyomon követése](./azure-partner-customer-usage-attribution.md)
+#### [Érdeklődők kezelése a felhőbeli piactérhez](./lead-management-for-cloud-marketplace.md)
 
 ### [Áruházak](./comparing-appsource-azure-marketplace.md)  
 
