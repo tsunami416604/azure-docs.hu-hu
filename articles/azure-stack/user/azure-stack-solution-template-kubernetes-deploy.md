@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 09/25/2018
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.openlocfilehash: a6e1acf3b9e69f32a8c175310134c534dbf8c561
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 89c72e21733b01a3e42c0e58d65cb7877e47d374
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46977536"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47163494"
 ---
 # <a name="deploy-kubernetes-to-azure-stack"></a>Az Azure Stack üzembe helyezése Kubernetes
 
@@ -28,7 +28,7 @@ ms.locfileid: "46977536"
 > [!Note]  
 > Az Azure Stacken Kubernetes szolgáltatás előzetes verzióban. Az Azure Stack-operátorokról kell kérnie a Kubernetes-fürt Piactéri elem ebben a cikkben az utasítások végrehajtásához szükséges hozzáférést.
 
-A következő cikkben megvizsgál egy megoldás Azure Resource Manager-sablon használatával történő üzembe helyezése és a Kubernetes-erőforrások kiépítése egyetlen, koordinált műveletben. Fogja kell az Azure Stack-telepítés, a szükséges információkat gyűjthet, létrehozni a sablont, és ezután üzembe helyezése a felhőben. Megjegyzés: a sablon nem azonos a felügyelt AKS globális Azure, de az ACS szolgáltatást közelebb érhető el.
+A következő cikkben megvizsgál egy megoldás Azure Resource Manager-sablon használatával történő üzembe helyezése és a Kubernetes-erőforrások kiépítése egyetlen, koordinált műveletben. Fogja kell az Azure Stack-telepítés, a szükséges információkat gyűjthet, létrehozni a sablont, és ezután üzembe helyezése a felhőben. Megjegyzés: a sablon nem felügyelt AKS szolgáltatásának ugyanazt a globális Azure-ban érhető el.
 
 ## <a name="kubernetes-and-containers"></a>Kubernetes és a tárolók
 
@@ -54,7 +54,7 @@ Első lépésként ellenőrizze, hogy a megfelelő engedélyekkel rendelkezik, �
 
 1. Ellenőrizze, hogy az Azure Stack-bérlői portálon érvényes előfizetéssel rendelkezik, és, hogy rendelkezik-e elegendő nyilvános IP-címek adhatók hozzá az új alkalmazások.
 
-    A fürt nem telepíthető az Azure Stackkel **rendszergazda** előfizetés. Egy felhasználó ** előfizetést kell használnia. 
+    A fürt nem telepíthető az Azure Stackkel **rendszergazda** előfizetés. Szüksége lesz egy **felhasználói** előfizetés. 
 
 ## <a name="create-a-service-principal-in-azure-ad"></a>Egyszerű szolgáltatás létrehozása az Azure ad-ben
 
@@ -113,9 +113,23 @@ A szolgáltatás egyszerű hozzáférést biztosít az előfizetéshez, hogy a r
 
     ![Megoldássablon telepítése](media/azure-stack-solution-template-kubernetes-deploy/01_kub_market_item.png)
 
-1. Válassza ki **alapjai** a a Kubernetes létrehozása.
+### <a name="1-basics"></a>1. Alapvető beállítások
+
+1. Válassza ki **alapjai** a Kubernetes-fürt létrehozása.
 
     ![Megoldássablon telepítése](media/azure-stack-solution-template-kubernetes-deploy/02_kub_config_basic.png)
+
+1. Válassza ki a **előfizetés** azonosítóját.
+
+1. Adja meg egy új erőforráscsoport nevét, vagy válasszon ki egy meglévő erőforráscsoportot. Az erőforrás nevét kell lennie a alfanumerikus- és nagybetűket.
+
+1. Válassza ki a **hely** az erőforráscsoport. Ez az a régió úgy dönt, az Azure Stack-telepítés.
+
+### <a name="2-kubernetes-cluster-settings"></a>2. Kubernetes-fürt beállításai
+
+1. Válassza ki **Kubernetes-fürt beállítások** a Kubernetes-fürt létrehozása.
+
+    ![Megoldássablon telepítése](media/azure-stack-solution-template-kubernetes-deploy/03_kub_config_settings.png)
 
 1. Adja meg a **Linux rendszerű virtuális gép rendszergazdai felhasználónevét**. A Linux rendszerű virtuális gépek, a Kubernetes-fürt részét képező és a DVM felhasználóneve.
 
@@ -126,28 +140,29 @@ A szolgáltatás egyszerű hozzáférést biztosít az előfizetéshez, hogy a r
     > [!Note]  
     > Ha mindegyik fürthöz egy új és egyedi fő profil DNS-előtagot használja.
 
-1. Adja meg a **készlet profil ügynökeinek**. A száma a fürtben található ügynökök számát tartalmazza. Lehet 1-4.
+1. Válassza ki a **Kubernetes fő készlet profil darabszám**. A szám a fő készletben lévő csomópontok számát tartalmazza. Nem lehet 1-től 7. Ez az érték páratlan számúaknak kell lennie.
 
-1. Adja meg a **szolgáltatásnév ClientId** ezt használja a Kubernetes Azure felhőszolgáltató.
+1. Válassza ki **a fő Kubernetes-virtuálisgép az VMSize**.
 
-1. Adja meg a **egyszerű szolgáltatás titkos Ügyfélkód** szolgáltatás egyszerű alkalmazás létrehozásakor létrehozott.
+1. Válassza ki a **Kubernetes csomópontok készlet profil száma**. A száma a fürtben található ügynökök számát tartalmazza. 
+
+1. Válassza ki a **Tárolóprofil**. Választhat **Blob lemez** vagy **Managed Disk**. Azt határozza meg a virtuális gép méretét a Kubernetes csomópont azon virtuális gépeit. 
+
+1. Adja meg a **szolgáltatásnév ClientId** ezt használja a Kubernetes Azure felhőszolgáltató. Az ügyfél-azonosító azonosította az eseményt az Alkalmazásazonosítót Ha az egyszerű szolgáltatás létrehozása.
+
+1. Adja meg a **egyszerű szolgáltatás titkos Ügyfélkód** , hogy létrehozta az egyszerű szolgáltatás létrehozásakor.
 
 1. Adja meg a **Kubernetes az Azure Cloud szolgáltató verziója**. Ez az a verzió a Kubernetes Azure-szolgáltatóhoz. Az Azure Stack kiad egy egyéni Kubernetes-build minden egyes Azure Stack-verzió.
 
-1. Válassza ki a **előfizetés** azonosítóját.
+### <a name="3-summary"></a>3. Összegzés
 
-1. Adja meg egy új erőforráscsoport nevét, vagy válasszon ki egy meglévő erőforráscsoportot. Az erőforrás nevét kell lennie a alfanumerikus- és nagybetűket.
+1. Válassza ki a összegzése. A panel a Kubernetes-fürt konfigurációk beállítások érvényesítése üzenetet jelenít meg.
 
-1. Válassza ki a **hely** az erőforráscsoport. Ez az a régió úgy dönt, az Azure Stack-telepítés.
+    ![Megoldássablon telepítése](media/azure-stack-solution-template-kubernetes-deploy/04_preview.png)
 
-### <a name="specify-the-azure-stack-settings"></a>Az Azure Stack-beállításainak megadása
+2. Tekintse át a beállításokat.
 
-1. Válassza ki a **blokk beállításait az Azure Stack**.
-
-    ![Megoldássablon telepítése](media/azure-stack-solution-template-kubernetes-deploy/03_kub_config_settings.png)
-
-1. Adja meg a **bérlői Arm-végpont**. Ez az az Azure Resource Manager-végpont hozza létre az erőforráscsoportot, a Kubernetes-fürthöz való kapcsolódáshoz. A végpont kérhet le az Azure Stack-operátorokról integrált rendszer kell. Az az Azure Stack Development Kit (ASDK), használhatja `https://management.local.azurestack.external`.
-
+3. Válassza ki **OK** a fürt üzembe helyezéséhez.
 
 ## <a name="connect-to-your-cluster"></a>Csatlakozás a fürthöz
 

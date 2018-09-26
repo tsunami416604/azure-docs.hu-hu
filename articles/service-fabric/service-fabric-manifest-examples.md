@@ -15,11 +15,11 @@ ms.workload: multiple
 ms.date: 06/11/2018
 ms.author: ryanwi
 ms.openlocfilehash: 8336f0a63f74aa0db176adbb3baf462c903ba2ec
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35645871"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47095579"
 ---
 # <a name="service-fabric-application-and-service-manifest-examples"></a>Service Fabric-alkalmazás és a service manifest példák
 Ez a szakasz példákat alkalmazás és jegyzékek tartalmazza. Ezek a példák nem jelentenek megjelenítéséhez fontos forgatókönyvet lehetővé tesz, de az elérhető különböző beállításokat és azok használatát. 

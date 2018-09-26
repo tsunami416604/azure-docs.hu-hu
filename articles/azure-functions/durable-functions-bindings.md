@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 09/29/2017
 ms.author: azfuncdf
-ms.openlocfilehash: 6a9ecbcc5161f47a192d5bf3a893a42b3ee9ce2f
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: 10e6c440fe669f4bc8a18eb0a7a0f833675ab923
+ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44379502"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47182208"
 ---
 # <a name="bindings-for-durable-functions-azure-functions"></a>Durable Functions (az Azure Functions) kötései
 
@@ -143,7 +143,7 @@ A trigger kötés belsőleg az alapértelmezett tárfiókot a függvényalkalmaz
 Íme néhány a tevékenység eseményindító kapcsolatos megjegyzések:
 
 * **Threading** – ellentétben az orchestration eseményindító tevékenység eseményindítók nem rendelkezik körül threading korlátozások vagy i/o. Normál funkciók például kezelhető.
-* **Poising üzenetkezelés** -tevékenység eseményindítók nem ártalmas üzenetek támogatottak.
+* **Poison üzenetkezelés** -tevékenység eseményindítók nem ártalmas üzenetek támogatottak.
 * **Üzenet látható-e** -tevékenység eseményindító üzenetek el távolítva a sorból, és egy konfigurálható időtartamának láthatatlan marad. Ezek az üzenetek látható-e automatikusan megújul, mindaddig, amíg a függvényalkalmazás fut, és kifogástalan állapotban.
 * **Visszatérési értékek** -értékek JSON-szerializált, és megőrzi a az Azure Table storage a vezénylési előzménytábla adja vissza.
 

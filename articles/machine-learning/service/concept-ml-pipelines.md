@@ -9,12 +9,12 @@ ms.reviewer: jmartens
 ms.author: sanpil
 author: sanpil
 ms.date: 09/24/2018
-ms.openlocfilehash: d9f34345275efbb8aec422e5fa14234c7d6a61a5
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: e1181d07ed51b1edf5da68d759d871703bd1540f
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46997845"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47162780"
 ---
 # <a name="pipelines-and-azure-machine-learning"></a>Folyamatok és az Azure Machine Learning
 
@@ -34,7 +34,7 @@ Az alábbi ábrán látható egy példa folyamatot:
 
 ## <a name="why-build-pipelines-with-azure-machine-learning"></a>Miért érdemes létrehozni az Azure Machine Learning folyamatok?
 
-Az Azure Machine Learning SDK Pythonhoz készült nyújt, és nyomon követése az egyes folyamatok, valamint a gépi Tanulási folyamatok létrehozására használható.
+A [Azure Machine Learning SDK Pythonhoz készült](#the-python-sdk-for-pipelines) nyújt, és nyomon követése az egyes folyamatok, valamint a gépi Tanulási folyamatok létrehozására használható.
 
 A folyamatok optimalizálhatja a munkafolyamatot az egyszerűség, gyorsabb, hordozhatósága és újból. Az Azure Machine Learning folyamatok készítésekor összpontosíthat tapasztalatai legjobb &mdash; gépi tanulás &mdash; infrastruktúra helyett.
 
@@ -63,7 +63,7 @@ Deklaratív adatok-függőségek használatával, optimalizálhatja a feladatoka
 
 Folyamatok menthető, sablonok, és a egy REST-végponthoz is telepíthető, így a kötegelt pontozás vagy megőrzési feladatokat ütemezhet.
 
-Tekintse meg a [folyamatok Python SDK referenciadokumentumai](http://aka.ms/aml-sdk).
+Tekintse meg a [folyamatok Python SDK referenciadokumentumai](http://aka.ms/aml-sdk) és a következő szakaszban megtudhatja, hogyan hozhat létre saját a notebookot.
 
 ## <a name="example-notebooks"></a>Példa notebookok
  

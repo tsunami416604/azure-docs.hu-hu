@@ -10,26 +10,26 @@ ms.component: core
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 80a227b57c8df157890337f0e207519c71ae5bd6
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 2ec0dea7e50747f8af337874c8f12463cecb8df7
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47034620"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47163477"
 ---
 # <a name="train-models-with-automated-machine-learning-in-the-cloud"></a>A felhőalapú automatikus machine learning-modellek
 
-Az Azure Machine Learning betaníthatja a modell a különböző típusú számítási erőforrásokat, amelyeket Ön kezel. A számítási célnak lehet helyi számítógépen vagy egy számítógép, a felhőben. 
+Az Azure Machine Learning betaníthatja a modell a különböző típusú számítási erőforrásokat, amelyeket Ön kezel. A számítási célnak lehet helyi számítógépen vagy egy számítógép, a felhőben.
 
 Egyszerűen vertikális vagy horizontális felskálázás a machine learning-kísérlet további számítási célnak, például az Ubuntu-alapú adatok adatelemzési virtuális gépet (DSVM) vagy az Azure Batch AI hozzáadásával. A dsvm-hez egy testre szabott Virtuálisgép-lemezkép a Microsoft Azure-felhőben, amelyet kifejezetten adatelemzésre. Számos népszerű adatelemzési és egyéb eszközök, előre telepítve és konfigurálva van.  
 
-Ebből a cikkből megismerheti, hogyan hozhat létre automatizált gépi tanulás használatával a dsvm-hez a modell.  
+Ebből a cikkből megismerheti, hogyan hozhat létre a DSVM használata automatizált gépi Tanulási modell. Példák az Azure Batch AI segítségével annak [ezek mintafüzetek github](https://aka.ms/aml-notebooks).  
 
 ## <a name="how-does-remote-differ-from-local"></a>Miben helyi távoli?
 
-Az oktatóanyag "[ML automatikus osztályozási modell betanításához](tutorial-auto-train-models.md)" bemutatja, hogyan használja a helyi számítógép automatikus gépi Tanulási modell.  A munkafolyamat betanításakor helyileg is, valamint a távoli tárolókra vonatkozik. A távoli számítási automatikus gépi Tanulási kísérlet ismétléseinek végrehajtása aszinkron módon történik. Ez lehetővé teszi, hogy megszakítja a műveletet egy adott iterációhoz, tekintse meg a végrehajtási állapotát, folytatja a munkát a többi cella Jupyter notebookot. Távolról betanításához, először hozzon létre egy távoli számítási célnak, például egy Azure-DSVM, konfigurálja és küldje el a kódot.
+Az oktatóanyag "[egy automatizált gépi tanulással osztályozási modell betanításához](tutorial-auto-train-models.md)" bemutatja, hogyan használja a helyi számítógép automatikus gépi Tanulási modell.  A munkafolyamat betanításakor helyileg is, valamint a távoli tárolókra vonatkozik. Azonban a távoli számítási automatizált gépi Tanulási kísérlet ismétléseinek végrehajtása aszinkron módon történik. Ez lehetővé teszi, hogy egy adott iterációhoz visszavonja, tekintse meg a végrehajtási állapotát, vagy folytatja a munkát a többi cella Jupyter notebookot. Távolról betanítást, először hozzon létre egy távoli számítási célnak, például egy Azure dsvm-hez.  Ezután konfigurálja a távoli erőforrás, és küldje el a kódot.
 
-Ez a cikk bemutatja, hogy a távoli DSVM kísérletezhet a gépi tanulás automatikus futtatásához szükséges további lépéseket.  A munkaterület objektum `ws`, az oktatóanyag használja Itt a kód egészében.
+Ez a cikk bemutatja az automatizált gépi Tanulási kísérletet futtat egy távoli dsvm-hez szükséges további lépéseket.  A munkaterület objektum `ws`, az oktatóanyag használja Itt a kód egészében.
 
 ```python
 ws = Workspace.from_config()
@@ -50,6 +50,7 @@ try:
     print('found existing dsvm.')
 except:
     print('creating new dsvm.')
+    # Below is using a VM of SKU Standard_D2_v2 which is 2 core machine. You can check Azure virtual machines documentation for additional SKUs of VMs.
     dsvm_config = DsvmCompute.provisioning_configuration(vm_size = "Standard_D2_v2")
     dsvm_compute = DsvmCompute.create(ws, name = dsvm_name, provisioning_configuration = dsvm_config)
     dsvm_compute.wait_for_completion(show_output = True)
@@ -69,10 +70,12 @@ A DSVM alapján való korlátozások a következők:
 >    1. Kilépés nélkül valójában a virtuális gép létrehozása
 >    1. Futtassa újra a létrehozási kódot
 
+Ez a kód nem hozzon létre egy felhasználói nevet és jelszót, amely ki van építve a dsvm-hez. Ha közvetlenül csatlakozhat a virtuális Gépet szeretne, ugorjon a [az Azure portal](https://portal.azure.com) kiépítése hitelesítő adatait.  
 
-## <a name="access-data-using-get-data-file"></a>Adatok lekérése fájl használatával érheti el adatait
 
-Adja meg a betanítási adatok eléréséhez a távoli erőforrás. Az automatikus Machine Learning kísérleteket távoli számítási fut, az adatok használatával kéri le kell-e egy `get_data()` függvény.  
+## <a name="access-data-using-getdata-file"></a>Get_data fájl használatával érheti el adatait
+
+Adja meg a betanítási adatok eléréséhez a távoli erőforrás. Automatizált machine learning-kísérletek távoli számítási fut, az adatok helyobjektum használatával kell egy `get_data()` függvény.  
 
 A hozzáférés biztosításához tegye a következőket:
 + Hozzon létre tartalmazó get_data.py fájlt egy `get_data()` függvény 
@@ -81,7 +84,7 @@ A hozzáférés biztosításához tegye a következőket:
 Adatok beolvasása a blob storage vagy a helyi lemezre a get_data.py fájlban kódot is magába foglalja. Az alábbi kódmintában az adatokat az sklearn csomag származik.
 
 >[!Warning]
->Ha távoli számítási használ, akkor kell használni `get_data()` az adatok csatlakoztatva átalakításokat hajthattak végre.
+>Ha távoli számítási használ, akkor kell használni `get_data()` ahol az adatátalakítások történik. Az adatátalakítások további kódtárak telepítése get_data() részeként van szüksége, van-e további lépéseket kell követni. Tekintse meg a [automatikus – Machine Learning-adatelőkészítés minta notebook](https://aka.ms/aml-auto-ml-data-prep ) részleteiről.
 
 
 ```python
@@ -105,7 +108,7 @@ def get_data():
     return { "X" : X_digits, "y" : y_digits }
 ```
 
-## <a name="configure-automated-machine-learning-experiment"></a>Automatizált machine learning-kísérlet konfigurálása
+## <a name="configure-experiment"></a>Kísérlet konfigurálása
 
 Adja meg a beállításokat a `AutoMLConfig`.  (Lásd a [paraméterek teljes listája]() és azok lehetséges értékei.)
 
@@ -136,7 +139,7 @@ automl_config = AutoMLConfig(task='classification',
                             )
 ```
 
-## <a name="submit-automated-machine-learning-training-experiment"></a>Automatizált a machine learning betanítási kísérlet elküldése
+## <a name="submit-training-experiment"></a>Betanítási kísérlet elküldése
 
 Most küldje el a konfiguráció ki automatikusan a algoritmus, a hyper-paraméterek, és a modell betanításához. (További [beállításaival kapcsolatos további információk]() számára a `submit` metódus.)
 

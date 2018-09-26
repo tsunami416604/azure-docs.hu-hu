@@ -10,14 +10,14 @@ ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/07/2018
+ms.date: 09/25/2018
 ms.author: tomfitz
-ms.openlocfilehash: e79419c764229e7dc52a32389b8b1116668dddfc
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 0970f5d4e61a40df7454cc850e59d86708d4aa1c
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47039735"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47159099"
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>Erőforrások áthelyezése új erőforráscsoportba vagy előfizetésbe
 
@@ -220,14 +220,14 @@ Az alábbi lista egy új erőforráscsoportot és egy előfizetést is áthelyez
 * Service Bus
 * Service Fabric
 * Service Fabric háló
-* SignalR Service
+* SignalR szolgáltatás
 * Storage - tárfiókok különböző régiókban lévő műveletben nem lehet áthelyezni. Ehelyett használjon minden régióhoz külön műveletnek.
 * Tekintse meg a tároló (klasszikus) – [klasszikus üzembe helyezési korlátozásoknak](#classic-deployment-limitations)
 * Stream Analytics - feladatok nem lehet áthelyezni, ha a futó Stream Analytics állapot.
 * Az SQL Database server - adatbázis és a kiszolgáló ugyanabban az erőforráscsoportban kell lennie. Ha áthelyezi SQL-kiszolgáló, az összes hozzá tartozó adatbázisok is kerülnek. Ez a viselkedés az Azure SQL Database és az Azure SQL Data Warehouse-adatbázisok vonatkozik.
 * Time Series Insights
 * Traffic Manager
-* Virtuális gépek – a felügyelt lemezekkel rendelkező virtuális gépeket nem lehet áthelyezni. Lásd: [virtuális gépek korlátozások](#virtual-machines-limitations)
+* Virtuális gépek – a virtuális gépek felügyelt lemezek, lásd: [virtuális gépek korlátozások](#virtual-machines-limitations)
 * Tekintse meg a virtuális gépek (klasszikus) – [klasszikus üzembe helyezési korlátozásoknak](#classic-deployment-limitations)
 * Tekintse meg a Virtual Machine Scale Sets – [virtuális gépek korlátozások](#virtual-machines-limitations)
 * Tekintse meg a virtuális hálózatok - [virtuális hálózatok korlátozások](#virtual-networks-limitations)
@@ -267,27 +267,29 @@ Az alábbi lista nem lehet áthelyezni egy új erőforráscsoportot és egy elő
 
 ## <a name="virtual-machines-limitations"></a>Virtuális gépek korlátozások
 
-2018. szeptember 24-én áthelyezése a felügyelt lemezek támogatottak. Ez a funkció engedélyezéséhez regisztrálni kell
+2018. szeptember 24 áthelyezése a felügyelt lemezek támogatottak. Ez a funkció engedélyezéséhez regisztrálni kell.
 
-#### <a name="powershell"></a>PowerShell
-`Register-AzureRmProviderFeature -FeatureName ManagedResourcesMove -ProviderNamespace Microsoft.Compute`
-#### <a name="cli"></a>parancssori felület
-`az feature register Microsoft.Compute ManagedResourcesMove`
+```azurepowershell-interactive
+Register-AzureRmProviderFeature -FeatureName ManagedResourcesMove -ProviderNamespace Microsoft.Compute
+```
 
+```azurecli-interactive
+az feature register Microsoft.Compute ManagedResourcesMove
+```
 
-Ez azt jelenti, hogy is áthelyezheti:
+Ez a támogatás azt jelenti, hogy is áthelyezheti:
 
 * A felügyelt lemezekkel rendelkező virtuális gépek
 * Felügyelt képek
 * Felügyelt pillanatképek
 * A felügyelt lemezekkel rendelkező virtuális gépek rendelkezésre állási csoportok
 
-Az alábbiakban a korlátozásokat, amelyek még nem támogatottak
+Az alábbiakban a korlátozásokat, amelyek még nem támogatottak:
 
 * Egy új erőforráscsoport ugyanabban az előfizetésben, de az előfizetések között nem helyezheti át virtuális gépeket a Key Vault-tanúsítvánnyal.
 * Az Azure Backup szolgáltatással konfigurált virtuális gépek. Használja az alábbi megkerülő megoldás e virtuális gépek áthelyezése
   * Keresse meg a virtuális gép helyét.
-  * Keresse meg a következő elnevezési mintának egy erőforráscsoportot: "AzureBackupRG_<location of your VM>_1" például AzureBackupRG_westus2_1
+  * Keresse meg a következő elnevezési mintának egy erőforráscsoportot: `AzureBackupRG_<location of your VM>_1` például AzureBackupRG_westus2_1
   * Ha az Azure Portalon, majd ellenőrizze "rejtett típusok megjelenítése"
   * Ha a PowerShellben használja a `Get-AzureRmResource -ResourceGroupName AzureBackupRG_<location of your VM>_1` parancsmag
   * Ha a CLI-t, használja a `az resource list -g AzureBackupRG_<location of your VM>_1`

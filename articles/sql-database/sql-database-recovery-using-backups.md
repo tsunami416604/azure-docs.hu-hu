@@ -2,20 +2,22 @@
 title: Azure SQL-adatbázis visszaállítása biztonsági másolatból |} A Microsoft Docs
 description: Ismerje meg, amely lehetővé teszi, hogy állítsa vissza az Azure SQL Database egy korábbi időpontra az időt (legfeljebb 35 napra) időponthoz visszaállítás.
 services: sql-database
-author: anosov1960
-manager: craigg
 ms.service: sql-database
-ms.custom: business continuity
+ms.subservice: operations
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 09/14/2018
+author: anosov1960
 ms.author: sashan
 ms.reviewer: carlrab
-ms.openlocfilehash: bcb533fbaa788498734776147c9bd053d35bef60
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+manager: craigg
+ms.date: 09/14/2018
+ms.openlocfilehash: 4c9edd60ffa1cd9ed5d95b37592fa49f44117818
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45733579"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47161335"
 ---
 # <a name="recover-an-azure-sql-database-using-automated-database-backups"></a>Automatikus biztonsági adatbázismentés használatával Azure SQL-adatbázis helyreállítása
 Az SQL Database adatbázis helyreállítási használja ezeket a lehetőségeket biztosít [adatbázisok biztonsági mentése automatikus](sql-database-automated-backups.md) és [biztonsági másolatok hosszú távú megőrzés alatt](sql-database-long-term-retention.md). Visszaállíthatja az adatbázis biztonsági másolatát:

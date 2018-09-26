@@ -15,11 +15,11 @@ ms.date: 06/12/2018
 ms.author: v-deasim
 ms.custom: mvc
 ms.openlocfilehash: 16a939c69d9ed9be597306765f316ffe32db6665
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35645792"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47094036"
 ---
 # <a name="create-an-azure-cdn-endpoint"></a>Hozzon létre egy Azure CDN-végponthoz
 Ez a cikk bemutatja az összes beállítás létrehozásához egy [Azure Content Delivery Network (CDN)](cdn-overview.md) végpontot egy meglévő CDN-profilt. Miután létrehozott egy profilt és egy végpontot, elindíthatja a tartalomszolgáltatást az ügyfelek. A profil és -végpont létrehozása egy rövid útmutatóban talál [a rövid útmutató: Azure CDN-profil és -végpont létrehozása](cdn-create-new-endpoint.md).

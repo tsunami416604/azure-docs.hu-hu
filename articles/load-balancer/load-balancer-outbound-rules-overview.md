@@ -11,18 +11,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/21/2018
+ms.date: 09/24/2018
 ms.author: kumud
-ms.openlocfilehash: 0732fe06db77ab96c909c5f84f69825036fedf4e
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 63c193b4757c28f809a33b917058df36467d4db4
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47031594"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47163018"
 ---
 # <a name="load-balancer-outbound-rules"></a>A terheléselosztó kimenő szabályok
 
-Az Azure Load Balancer bejövő mellett a virtuális hálózatról kimenő kapcsolatot biztosít.  Kimenő szabályok révén egyszerűen konfigurálása nyilvános [Standard Load Balancer](load-balancer-standard-overview.md)a kimenő hálózati címfordítás (NAT).  Kimenő kapcsolat skálázása és finomhangolása a képességgel, amellyel igény szerinti teljes deklaratív felett van.
+Az Azure Load Balancer bejövő mellett a virtuális hálózatról kimenő kapcsolatot biztosít.  Kimenő szabályok révén egyszerűen konfigurálása nyilvános [Standard Load Balancer](load-balancer-standard-overview.md)a kimenő hálózati címfordítást.  Kimenő kapcsolat skálázása és finomhangolása a képességgel, amellyel igény szerinti teljes deklaratív felett van.
 
 ![A terheléselosztó kimenő szabályok](media/load-balancer-outbound-rules-overview/load-balancer-outbound-rules.png)
 
@@ -213,4 +213,5 @@ Egy belső Standard Load Balancer használatakor a kimenő NAT nem áll rendelke
 
 - A megismerése [terheléselosztó kimenő kapcsolatok](load-balancer-outbound-connections.md).
 - Ismerje meg [a Standard Load Balancer](load-balancer-standard-overview.md).
-- Ismerje meg [kétirányú alaphelyzetbe állítása a TCP üresjárati időtúllépés miatt](https://aka.ms/lbtcpreset).
+- Ismerje meg [kétirányú alaphelyzetbe állítása a TCP üresjárati időtúllépés miatt](load-balancer-tcp-reset.md).
+- [Kimenő szabályok konfigurálása az Azure CLI 2.0](configure-load-balancer-outbound-cli.md).

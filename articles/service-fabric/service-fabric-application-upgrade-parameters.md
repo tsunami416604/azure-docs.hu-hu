@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 9/17/2018
 ms.author: subramar
-ms.openlocfilehash: f3f381fddee9c1830202854f02556f73b5aeed23
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.openlocfilehash: 3f321775ba112471760e627e6b43ed17ff8c5b6b
+ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47055577"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47182875"
 ---
 # <a name="application-upgrade-parameters"></a>Alkalmazásfrissítési paraméterek
 Ez a cikk ismerteti a különböző paraméterek, amelyek érvényesek az Azure Service Fabric-alkalmazás frissítése során. Alkalmazásfrissítési paraméterek szabályozhatja az időtúllépéseket és állapot-ellenőrzést, a frissítés során alkalmazott, és azok adja meg a szabályzatokban, amelyek a alkalmazni kell, amikor a sikertelen frissítés.
@@ -42,7 +42,7 @@ A Visual Studio a Service Fabric alkalmazásfrissítési paraméterek vannak be�
 | --- | --- | --- |
 Alkalmazásnév |PS| Neve az alkalmazás, amely frissítés alatt áll. Példák: fabric: / VisualObjects, a fabric: / ClusterMonitor. |
 ApplicationTypeVersion|PS|Az alkalmazás verziója írja be, amely a frissítési célokat. |
-FailureAction |PS VS|Engedélyezett értékek a következők **érvénytelen**, **visszaállítási**, és **manuális**. Ha a frissítés sikertelen lesz, a Service Fabric által végrehajtott műveletet. Az alkalmazás lehetséges, hogy állítható vissza a frissítés előtti verziót (visszaállítás), vagy a frissítés, a jelenlegi frissítési tartománya lehet, hogy le kell állítani. Az utóbbi esetben az is módosította a frissítési mód **manuális**.|
+FailureAction |PS VS|Engedélyezett értékek a következők **visszaállítási**, **manuális**, és **érvénytelen**. A művelet végrehajtásához, amikor egy *figyelt* frissítési szabályzat vagy egészségügyi szabálymegsértéseknek figyelési ütközik. <br>**Visszaállítás** Megadja, hogy a frissítés automatikusan állítja vissza a frissítés előtti verziót. <br>**Manuális** azt jelzi, hogy a frissítés átvált a *UnmonitoredManual* frissítési módban. <br>**Érvénytelen** azt jelzi, hogy a sikertelen művelet érvénytelen.|
 Figyelés alatt |PS|Azt jelzi, hogy a frissítési mód figyel. Miután a parancsmag befejezi a frissítési tartomány, frissítése, ha a frissítési tartomány és a fürt állapotának felel meg az Ön által meghatározott házirendek, a Service Fabric frissíti a következő frissítési tartományra. Ha a frissítési tartomány vagy a fürt nem teljesíti az állapotházirendeket, a frissítés sikertelen lesz, és a Service Fabric visszaállítja a frissítés a frissítési tartomány, illetve a megadott házirend szerint kézi módra vált át. Ez az alkalmazásfrissítések éles környezetben az ajánlott módja. |
 Upgrademode tulajdonság | VS | Engedélyezett értékek a következők **figyelt** (alapértelmezett), **UnmonitoredAuto**, vagy **UnmonitoredManual**. Tekintse meg a részleteket ebben a cikkben minden üzemmódban a PowerShell-paramétereket. |
 UnmonitoredAuto | PS | Azt jelzi, hogy a frissítési mód nem figyelt automatikus. Miután a Service Fabric egy frissítési tartományt frissít, a Service Fabric frissíti attól függetlenül, az alkalmazás állapota a következő frissítési tartományra. Ebben a módban nem javasolt éles környezetben, és csak hasznos az alkalmazások fejlesztése során. |

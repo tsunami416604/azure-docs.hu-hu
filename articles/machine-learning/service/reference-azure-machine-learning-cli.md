@@ -9,12 +9,12 @@ ms.reviewer: jmartens
 ms.author: jordane
 author: jpe316
 ms.date: 09/24/2018
-ms.openlocfilehash: 7e430d1b590413f497c851b687abcaa98e04d0e4
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.openlocfilehash: f8dae6de835173181430a98c19c7dd1fb3ebaa9f
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47053861"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47158903"
 ---
 # <a name="what-is-the-azure-machine-learning-cli"></a>Mi az az Azure Machine Learning parancssori?
 
@@ -56,6 +56,8 @@ Példák erre vonatkozóan:
 Az adatszakértők számára ajánlott, hogy az Azure Machine Learning SDK-val.
 
 ## <a name="common-machine-learning-cli-commands"></a>Gyakori a machine learning CLI-parancsok
+> [!NOTE]
+> Minta fájlok sikeres végrehajtásához használhatja az alábbi parancsokkal tekintheti meg [itt.](https://github.com/Azure/MachineLearningNotebooks/tree/cli/cli)
 
 Használjon széles skáláját `az ml` parancsokat használhatja a szolgáltatást minden olyan parancssori környezetben, beleértve a portál Azure cloud shellben.
 
@@ -73,7 +75,7 @@ Használjon széles skáláját `az ml` parancsokat használhatja a szolgáltat�
    az configure --defaults aml_workspace=myworkspace group=myresourcegroup
    ```
 
-+ A dsvm-hez (adatelemző virtuális gép) képzési modellek létrehozása. Elosztott képzéshez BatchAI fürtök is létrehozhat.
++ Hozzon létre egy adatelemző virtuális GÉPET (adatelemző virtuális gép). BatchAI fürtök elosztott képzéshez vagy üzembe helyezés az AKS-fürtök is létrehozhat.
   ```AzureCLI
   az ml computetarget setup dsvm -n mydsvm
   ```
@@ -84,7 +86,7 @@ Használjon széles skáláját `az ml` parancsokat használhatja a szolgáltat�
   az ml project attach --experiment-name myhistory
   ```
 
-+ Az Azure Machine Learning szolgáltatás a számítási cél tetszőleges ellen egy kísérlet elküldésére. Ebben a példában a helyi számítási környezetben hajtjuk végre. Példa train.py parancsfájl annak [Itt](https://github.com/Azure/MachineLearningNotebooks/blob/master/01.getting-started/02.train-on-local/train.py).
++ Az Azure Machine Learning szolgáltatás a számítási cél tetszőleges ellen egy kísérlet elküldésére. Ebben a példában a rendszer a helyi számítási környezetben hajtja végre. Ellenőrizze, hogy a conda-környezet fájlt a python-függőségekhez rögzíti.
 
   ```AzureCLI
   az ml run submit -c local train.py
@@ -99,17 +101,17 @@ az ml history list
 
 + Regisztrálja a modellt az Azure Machine Learning.
   ```AzureCLI
-  az ml model register -n mymodel -m mymodel.pkl  -w myworkspace -g myresourcegroup
+  az ml model register -n mymodel -m sklearn_regression_model.pkl
   ```
 
 + Készítsen olyan rendszerképet, a gépi tanulási modell és függőségeket tartalmaznak. 
   ```AzureCLI
-  az ml image create -n myimage -r python -m mymodel.pkl -f score.py -c myenv.yml
+  az ml image create container -n myimage -r python -m mymodel:1 -f score.py -c myenv.yml
   ```
 
 + A csomagolt modell célnak, beleértve az ACI és az AKS üzembe helyezése.
   ```AzureCLI
-  az ml service create aci -n myaciservice -i myimage:1
+  az ml service create aci -n myaciservice --image-id myimage:1
   ```
     
 ## <a name="full-command-list"></a>A parancs teljes lista

@@ -9,12 +9,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 9aa61e95eb808c38646fa9b8cefd4004f5477ee6
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 2b6dfe7c8f8ac8d7207659b848abecd04f56c232
+ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46974663"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47181442"
 ---
 # <a name="develop-net-standard-user-defined-functions-for-azure-stream-analytics-edge-jobs-preview"></a>Fejlesztés a .NET Standard, felhasználó által definiált függvények az Azure Stream Analytics Edge-feladatok (előzetes verzió)
 
@@ -31,7 +31,7 @@ Háromféleképpen UDF-EK végrehajtásához:
 
 ## <a name="package-path"></a>Alkalmazáscsomag elérési útja
 
-Minden olyan UDF-csomag formátuma rendelkezik az elérési út `/UserCustomCode/CLR/*`. A dinamikus csatolású Kódtárai (dll) és az erőforrások kerülnek a `/UserCustomCode/CLR/*` mappát, amely segít elkülöníteni a rendszer felhasználói DLL-eket és az Azure Stream Analytics DLL-ek.
+Minden olyan UDF-csomag formátuma rendelkezik az elérési út `/UserCustomCode/CLR/*`. A dinamikus csatolású Kódtárai (dll) és az erőforrások kerülnek a `/UserCustomCode/CLR/*` mappát, amely segít elkülöníteni a rendszer felhasználói DLL-eket és az Azure Stream Analytics DLL-ek. A csomag elérési utat használjuk a függvények a alkalmazni őket a használt módszertől függetlenül.
 
 ## <a name="supported-types-and-mapping"></a>Támogatott típusok és -leképezés
 
@@ -59,10 +59,10 @@ Egy helyi projekt kíván hivatkozni:
 
 1. Hozzon létre egy új osztálytár megoldását.
 2. A kód írása az osztályban található. Ne feledje, hogy az osztályok megadott értékének *nyilvános* és objektumok megadott értékének *statikus nyilvános*. 
-3. A projekt buildjének elkészítéséhez.
+3. A projekt buildjének elkészítéséhez. Az eszközök lesznek a bin mappát egy zip-fájlba az összetevők csomag és a zip-fájl feltöltése a storage-fiókba. Külső hivatkozások postrádáte odkaz nA sestavení helyett a NuGet-csomagot használja.
 4. Hivatkozás az új osztályt az Azure Stream Analytics-projektben.
 5. Adjon hozzá egy új funkció az Azure Stream Analytics-projektben.
-6. Szerelvény elérési útjának konfigurálása a feladat konfigurációs fájlban `EdgeJobConfig.json`.
+6. Szerelvény elérési útjának konfigurálása a feladat konfigurációs fájlban `JobConfig.json`. A szerelvény elérési útja beállítása **helyi projekt hivatkozás vagy háttérkódban**.
 7. A Functions-projektet, mind az Azure Stream Analytics-projekt újraépítése.  
 
 ### <a name="example"></a>Példa
@@ -109,19 +109,19 @@ Hozhat létre a .NET Standard UDF-EK bármilyen tetszőleges IDE-ben, és meghí
 
 Szerelvény tömörített csomagok fel lett töltve az Azure storage-fiókot, ha az funkciók is használhatja az Azure Stream Analytics-lekérdezések. Ehhez szüksége a Stream Analytics Edge-feladat konfigurálása a a storage-adatokat tartalmazó. A függvény helyi ezt a beállítást nem lehet tesztelni, mert Visual Studio-eszközök nem tölti le a csomag. Az alkalmazáscsomag elérési útja közvetlenül a szolgáltatást a rendszer elemzi. 
 
-A feladat konfigurációs fájlban, a "EdgeJobConfig.json" szerelvény elérési útjának megadása:
+Szerelvény elérési útjának megadása a feladat konfigurációs fájlban `JobConfig.json`:
 
 Bontsa ki a **felhasználó által megadott kódot konfigurációs** szakaszt, és töltse ki a konfigurációt az alábbi javasolt értékeket:
 
  |**Beállítás**  |**Ajánlott érték**  |
  |---------|---------|
- |Szerelvény forrás  |  A projekt helyi hivatkozás vagy háttérkódban   |
+ |Szerelvény forrás  | Meglévő szerelvény csomagokat a felhőből    |
  |Erőforrás  |  Válassza ki az adatok az aktuális fiók   |
  |Előfizetés  |  Válassza ki az előfizetését.   |
  |Tárfiók  |  Válassza ki a tárfiókját.   |
  |Tároló  |  Válassza ki a storage-fiókban létrehozott tárolóba.   |
 
-    ![Azure Stream Analytics Edge job configuration in Visual Studio](./media/stream-analytics-edge-csharp-udf-methods/stream-analytics-edge-job-config.png)
+![Az Azure Stream Analytics peremhálózati feladat konfigurálása a Visual Studióban](./media/stream-analytics-edge-csharp-udf-methods/stream-analytics-edge-job-config.png)
 
 ## <a name="limitations"></a>Korlátozások
 Az UDF-előzetes verzió jelenleg a következő korlátozások vonatkoznak:

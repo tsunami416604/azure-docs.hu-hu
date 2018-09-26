@@ -11,11 +11,11 @@ ms.topic: article
 ms.date: 06/06/2017
 ms.author: routlaw
 ms.openlocfilehash: bbbaa4c44a7c0d6da189f0c49d73adfa6142cdee
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35646404"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47095791"
 ---
 # <a name="get-resource-health-using-the-rest-api"></a>A REST API használatával a Resource Health beolvasása 
 
@@ -53,7 +53,7 @@ A következő fejléceket szükség:
 
 Ez a művelet nem a kérelem törzsében van szükség.
 
-## <a name="handle-the-response"></a>A válasz kezeléséhez
+## <a name="handle-the-response"></a>A válasz kezelése
 
 A megfelelő a szűrő paramétert, az egészségügyi esemény értékekből álló listát ad vissza 200-as állapotkód egy `nextlink` URI-t az eredmények a következő lap beolvasásához.
 

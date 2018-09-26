@@ -1,6 +1,6 @@
 ---
-title: Elemzés - a hatékony keresési és a lekérdezés eszközt az Azure Application Insights |} Microsoft Docs
-description: 'Elemzés, a hatékony diagnosztikai eszköz az Application Insights áttekintése. '
+title: Analytics - a hatékony keresési és a lekérdezési eszköz, az Azure Application Insights |} A Microsoft Docs
+description: 'A hatékony diagnosztikai keresés eszköz az Application Insights Analytics áttekintése. '
 services: application-insights
 documentationcenter: ''
 author: mrbullwinkle
@@ -13,26 +13,26 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/08/2018
 ms.author: mbullwin
-ms.openlocfilehash: 170cd76c72e8aeb5de48c711ae4637a0244742fb
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 6db98332fc7d896613a3318421e9a96bbb50cd15
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35294200"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47159142"
 ---
-# <a name="analytics-in-application-insights"></a>Az Application Insightsban elemzés
-Elemzés a hatékony keresési és lekérdezés eszköz [Application Insights](app-insights-overview.md). Analytics egy webes eszköz, így nem szükséges. Ha már konfigurálta az Application Insights egy, az alkalmazások, akkor az alkalmazás adatainak elemezheti a alkalmazás Analytics megnyitásával [áttekintése panel](app-insights-dashboards.md).
+# <a name="analytics-in-application-insights"></a>Az Application Insights Analytics
+Analytics olyan hatékony keresést és lekérdezéseket eszközben [Application Insights](app-insights-overview.md). Analytics egy olyan webes eszköz, ezért semmilyen beállítást nem szükséges. Ha már konfigurálta az Application Insights egy, az alkalmazások, akkor az alkalmazás adatait elemezheti az alkalmazásából származó Analytics megnyitásával [áttekintő paneljén](app-insights-dashboards.md).
 
-![Nyissa meg portal.azure.com, nyissa meg az Application Insights-erőforrást, majd kattintson a elemzés.](./media/app-insights-analytics/001.png)
+![Portal.Azure.com címen nyissa meg, nyissa meg az Application Insights-erőforrást, és kattintson az Analytics.](./media/app-insights-analytics/001.png)
 
-Használhatja a [Analytics playground](https://go.microsoft.com/fwlink/?linkid=859557) Ez nagy mennyiségű adatot tartalmazó egy szabad bemutató környezetben.
+Is használhatja a [Analytics playground](https://go.microsoft.com/fwlink/?linkid=859557) amely mintaadatokat rengeteg ingyenes bemutató környezetben.
 <br>
 <br>
 > [!VIDEO https://channel9.msdn.com/events/Connect/2016/123/player] 
 
-## <a name="query-data-in-analytics"></a>Az Analytics lekérdezési adatok
-Egy tipikus lekérdezés kezdődik-e egy tábla nevét, majd több *operátorok* elválasztott `|`.
-Például keressük meg hogy hány kérésnek a különböző országokból az utolsó 3 óra során kapott alkalmazást:
+## <a name="query-data-in-analytics"></a>Elemzési adatok lekérdezése
+Egy tipikus lekérdezést egy táblázat neve, és a egy sorozatát kezdődik *operátorok* elválasztva `|`.
+Például keressük meg, hogy hány kérésnek a különböző országokban kapott az elmúlt 3 órában alkalmazást:
 ```AIQL
 requests
 | where timestamp > ago(3h)
@@ -40,25 +40,25 @@ requests
 | render piechart
 ```
 
-A táblanév először *kérelmek* , és adja hozzá a védőeszközön elemek szükség szerint.  Először igazolnia idő kapcsolódó szűrő megadásához. csak az utolsó 3 órát rekordok áttekintéséhez.
-Azt, majd száma az egyes országok rekordok száma (, hogy az oszlopban található adat *client_CountryOrRegion*). Végül azt jeleníti meg a tortadiagram.
+A tábla nevével kezdődik *kérelmek* , és szükség szerint adja hozzá a védőeszközön elemeket.  Először meghatározzuk, tekintse át az elmúlt 3 órában rekordjai csak egy Időszűrő.
+Azt, majd száma országonként rekordok száma (, hogy az oszlopban található adat *client_CountryOrRegion*). Végül azt jelennek meg az eredményeket a kördiagram.
 <br>
 
 ![Lekérdezés eredményei](./media/app-insights-analytics/030.png)
 
-A nyelv számos vonzó lehetőséggel rendelkezik:
+A nyelv számos vonzó funkciókkal rendelkezik:
 
-* [Szűrő](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/where-operator) által a mezőket, beleértve az egyéni tulajdonságok és a metrikák a nyers app telemetriai adatokat.
-* [Csatlakozás](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/join-operator) több táblázatot – korrelálja Lapmegtekintések, függőségi hívások esetében, kivételeket és naplókivonatokat kéri.
-* Hatékony statisztikai [összesítések](https://docs.loganalytics.io/docs/Language-Reference/Aggregation-functions).
-* Közvetlen és erőteljes képi megjelenítések.
-* [REST API](https://dev.applicationinsights.io/) használható lekérdezések futtatása programozott módon, például a Powershellből.
+* [Szűrő](/azure/kusto/query/whereoperator) a nyers alkalmazás telemetriai adatainak mezőket, beleértve az egyéni tulajdonságok és metrikák alapján.
+* [Csatlakozás](/azure/kusto/query/joinoperator) több táblát – correlate kéréseket a lapmegtekintéseket, a függőségi hívások, a kivételek és a nyomkövetési naplók.
+* Hatékony statisztikai [összesítések](/azure/kusto/query/summarizeoperator).
+* Azonnali és sokoldalú vizualizációkat.
+* [REST API-val](https://dev.applicationinsights.io/) használható lekérdezések futtatása programozott módon, például a Powershellből.
 
-A [teljes nyelvi referencia](https://go.microsoft.com/fwlink/?linkid=856079) minden támogatott parancs adatokat, és rendszeresen frissíti.
+A [nyelvi referencia teljes](https://go.microsoft.com/fwlink/?linkid=856079) minden parancs támogatott részleteit, és rendszeresen frissíti.
 
 ## <a name="next-steps"></a>További lépések
-* Az első lépései a [Analytics portál](https://go.microsoft.com/fwlink/?linkid=856587)
-* Első lépések [lekérdezések írásáról](https://go.microsoft.com/fwlink/?linkid=856078)
-* Tekintse át a [SQL-felhasználók lap cheat](https://aka.ms/sql-analytics) a leggyakrabban használt idioms kifejezés fordítását.
-* Kipróbálása Analytics a a [playground](https://analytics.applicationinsights.io/demo) Ha az alkalmazás nem adatok küldése az Application Insights még.
-* Tekintse meg a [bevezető videó](https://applicationanalytics-media.azureedge.net/home_page_video.mp4).
+* Ismerkedés a [Analytics-portál](https://go.microsoft.com/fwlink/?linkid=856587)
+* Első lépések [lekérdezések írása](https://go.microsoft.com/fwlink/?linkid=856078)
+* Tekintse át a [SQL-felhasználók – adatlap](https://aka.ms/sql-analytics) a leggyakrabban használt nyelv szintaxisát a fordítások.
+* Próbálja ki a Analytics a a [playground](https://analytics.applicationinsights.io/demo) az alkalmazás nem adatot küldenek, az Application Insightsba még.
+* Tekintse meg a [bevezető videót](https://applicationanalytics-media.azureedge.net/home_page_video.mp4).

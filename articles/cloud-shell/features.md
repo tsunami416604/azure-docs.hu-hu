@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2018
 ms.author: juluk
-ms.openlocfilehash: 5087b8a1d675fb6fb2bbfb2b46a09c215bf5e9ae
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 2184d006bb99d57f50e71c0096d68b7a0b69a219
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46998763"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47162287"
 ---
 # <a name="features--tools-for-azure-cloud-shell"></a>Funkciók és eszközök az Azure Cloud Shell
 
@@ -44,7 +44,7 @@ Fájlok kívül `$Home` és a gép állapota nem megmaradnak a munkamenetek köz
 
 ### <a name="azure-drive-azure"></a>Azure-meghajtó (Azure:)
 
-A Cloud Shellben (előzetes verzió) PowerShell elindul az Azure-meghajtó (`Azure:`).
+A Cloud Shellbeli PowerShell elindul az Azure-meghajtó (`Azure:`).
 Az Azure-meghajtó lehetővé teszi, hogy könnyen felderítés és az Azure erőforrások, például számítási, hálózati, tárolási stb. fájlrendszer navigációs hasonló navigációs.
 Továbbra is a megszokott [Azure PowerShell-parancsmagok](https://docs.microsoft.com/powershell/azure) a meghajtó a függetlenül kezelhetők.
 Az Azure-erőforrásokat, vagy közvetlenül az Azure Portalon vagy Azure PowerShell-parancsmagok használatával végrehajtott módosítások megjelennek az Azure-meghajtó.  Futtathat `dir -Force` az erőforrások frissítése.
@@ -81,6 +81,6 @@ A cloud Shell nyílt forráskódú eszközök, például a Terraform, az Ansible
 
 ## <a name="next-steps"></a>További lépések
 [A bash Cloud Shell rövid](quickstart.md) <br>
-[A PowerShell Cloud Shell (előzetes verzió) a rövid útmutatóban](quickstart-powershell.md) <br>
-[További tudnivalók az Azure CLI](https://docs.microsoft.com/cli/azure/) <br>
+[A PowerShell Cloud Shell rövid](quickstart-powershell.md) <br>
+[További tudnivalók az Azure CLI 2.0 használatával](https://docs.microsoft.com/cli/azure/) <br>
 [További tudnivalók az Azure PowerShell](https://docs.microsoft.com/powershell/azure/) <br>

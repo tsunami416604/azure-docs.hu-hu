@@ -10,12 +10,12 @@ ms.reviewer: estfan, LADocs
 ms.assetid: f8f528f5-51c5-4006-b571-54ef74532f32
 ms.topic: article
 ms.date: 09/24/2018
-ms.openlocfilehash: b75fba2ba0e9fa922b1252378e0bab326cada7d2
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 5f9147035c07bbe4fb3f38b74025015e70dd87b3
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46974306"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47159562"
 ---
 # <a name="pricing-model-for-azure-logic-apps"></a>Az Azure Logic Apps díjszabási modell
 
@@ -54,7 +54,7 @@ Eseményindító-végrehajtások a logikai alkalmazás áttekintése panelen a T
 
 ## <a name="actions"></a>Műveletek
 
-Beépített műveletek, például a műveleteket, amelyeket hívja fel a HTTP, az Azure Functions vagy az API Management, és azt is szabályozzák, a folyamat lépései natív műveleteket, amelyek rendelkeznek a megfelelő típusú mérjük. Műveletek, [összekötők](https://docs.microsoft.com/connectors) az "ApiConnection" típusa lehet. Ezeket az összekötőket besorolt standard vagy enterprise összekötők, amelyek mérjük, valamint saját alapján [díjszabás][pricing]. 
+Beépített műveletek, például a műveleteket, amelyeket hívja fel a HTTP, az Azure Functions vagy az API Management, és azt is szabályozzák, a folyamat lépései natív műveleteket, amelyek rendelkeznek a megfelelő típusú mérjük. Műveletek, [összekötők](https://docs.microsoft.com/connectors) az "ApiConnection" típusa lehet. Ezeket az összekötőket besorolt standard vagy enterprise összekötők, amelyek mérjük, valamint saját alapján [díjszabás][pricing]. Vállalati összekötők *előzetes* standard összekötők díjkötelesek.
 
 Az összes sikeres és sikertelen feldolgozásokat is beleértve futtatási műveletek számoljuk és forgalmi díjas, műveletvégrehajtások. Műveleteket, amelyeket a rendszer kihagyja, miatt teljesítetlen feltételeket vagy műveleteket, amelyeket nem futnak, mert a logikai alkalmazás befejezését, mielőtt befejeződött, műveletvégrehajtások nem számít. Letiltva a logic apps nem hozható létre új példányokat, így azokat nem kell fizetnie, amikor le van tiltva.
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/19/2017
 ms.author: daveba
-ms.openlocfilehash: 77953884253002c6da7b0151151d97bb65a6c659
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: b73a79676be559ad491bd7bb16691369dd8fa271
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44377088"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47158631"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-a-vm-using-the-azure-portal"></a>Az Azure-erőforrások felügyelt identitások konfigurálása a virtuális gép az Azure portal használatával
 
@@ -46,10 +46,15 @@ Ebben a szakaszban megismerheti, hogyan engedélyezheti és tilthatja le a rends
 
 ### <a name="enable-system-assigned-managed-identity-during-creation-of-a-vm"></a>Rendszer által hozzárendelt felügyelt identitás engedélyezése a virtuális gépek létrehozása során
 
-Jelenleg az Azure portal nem támogatja egy virtuális gép létrehozása során a rendszer által hozzárendelt identitás engedélyezése. Ehelyett a következő virtuális gép létrehozása a rövid útmutató cikkek, először hozzon létre egy virtuális Géphez történő, és folytathatja a következő szakaszban a virtuális Gépet a rendszer által hozzárendelt identitás engedélyezése részleteiért:
+Rendszer által hozzárendelt felügyelt identitás alatt engedélyezése egy virtuális gép létrehozása során a **felügyeleti** lapján a **identitás** szakaszban, váltson **felügyeltszolgáltatás-identitás** , **A**.  
 
-- [Windows virtuális gép létrehozása az Azure portal használatával](../../virtual-machines/windows/quick-create-portal.md#create-virtual-machine)
-- [Linux rendszerű virtuális gép létrehozása az Azure portal használatával](../../virtual-machines/linux/quick-create-portal.md#create-virtual-machine)  
+![Rendszer által hozzárendelt identitás engedélyezése a virtuális gépek létrehozása során](./media/msi-qs-configure-portal-windows-vm/enable-system-assigned-identity-vm-creation.png)
+
+Tekintse meg a virtuális gép létrehozása az alábbi rövid útmutatókat: 
+
+- [Windows virtuális gép létrehozása az Azure portal használatával](../../virtual-machines/windows/quick-create-portal.md#create-virtual-machine) 
+- [Linux rendszerű virtuális gép létrehozása az Azure portal használatával](../../virtual-machines/linux/quick-create-portal.md#create-virtual-machine)
+
 
 ### <a name="enable-system-assigned-managed-identity-on-an-existing-vm"></a>A meglévő virtuális gép felügyelt identitás alapértelmezett engedélyezése
 

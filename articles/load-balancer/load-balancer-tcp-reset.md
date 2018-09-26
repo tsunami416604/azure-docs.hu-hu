@@ -1,5 +1,5 @@
 ---
-title: Üresjárati időkorlát terheléselosztó TCP alaphelyzetbe terhelésének |} A Microsoft Docs
+title: Terheléselosztó TCP alaphelyzetbe állítása a tétlen betöltése |} A Microsoft Docs
 description: A terheléselosztó kétirányú TCP ÜZE csomagokkal az üresjárat időkorlátja
 services: load-balancer
 documentationcenter: na
@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/21/2018
+ms.date: 09/24/2018
 ms.author: kumud
-ms.openlocfilehash: b33c701bde082404ea86c9882dcb7bf50d1f1df9
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 212212d4650fe25b4ced591d4d4f1ee184e3fc44
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47036175"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47163324"
 ---
-# <a name="load-balancer-with-tcp-reset-on-idle-timeout-public-preview"></a>Load Balancer visszaállítással TCP üresjárati időtúllépés miatt (nyilvános előzetes verzió)
+# <a name="load-balancer-with-tcp-reset-on-idle-public-preview"></a>Load Balancer a TCP üresjárati (nyilvános előzetes verzió) alaphelyzetbe állítása
 
 Használhat [Standard Load Balancer](load-balancer-standard-overview.md) hozhat létre egy kiszámíthatóbb alkalmazások viselkedése a kétirányú TCP (TCP ÜZE csomagot) alaphelyzetbe állítja a használati eseteihez minden állítható be üresjárati időkorlát.  Load Balancer alapértelmezett viselkedését, hogy csendes dobja el a flow, ha eléri a folyamat az üresjárati időkorlátot.
 
@@ -75,6 +75,7 @@ Ezt a paramétert a következő régiók jelenleg hatékony.  A régióban nem s
 
 | Régió |
 |---|
+| Délkelet-Ázsia |
 | USA 2. keleti régiója |
 | USA északi régiója |
 | USA nyugati régiója |
@@ -89,4 +90,4 @@ Ez a táblázat frissíti, az Előnézet ki van bontva, régióiban.
 ## <a name="next-steps"></a>További lépések
 
 - Ismerje meg [a Standard Load Balancer](load-balancer-standard-overview.md).
-- Ismerje meg [kimenő szabályok](https://aka.ms/lboutboundrules).
+- Ismerje meg [kimenő szabályok](load-balancer-outbound-rules-overview.md).

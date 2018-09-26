@@ -11,11 +11,11 @@ ms.topic: article
 ms.date: 06/06/2017
 ms.author: KumudD
 ms.openlocfilehash: 1fac461c3af4ea0a2e1f2257256969c47bc3d134
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35646172"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47094465"
 ---
 # <a name="get-load-balancer-utilization-metrics-using-the-rest-api"></a>Load Balancer-kihasználtsági mérőszámokat a REST API-val beolvasása
 
@@ -56,7 +56,7 @@ A következő fejléceket szükség:
 
 Ez a művelet nem a kérelem törzsében van szükség.
 
-## <a name="handle-the-response"></a>A válasz kezeléséhez
+## <a name="handle-the-response"></a>A válasz kezelése
 
 200-as állapotkód adja vissza, ha sikeresen metrika értékek listáját adja vissza. Hibakódok teljes listája megtalálható a [referenciadokumentációt](/rest/api/monitor/metrics/list#errorresponse).
 

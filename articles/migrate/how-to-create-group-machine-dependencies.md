@@ -4,14 +4,14 @@ description: Ismerteti, hogyan hozhat létre értékeléseket függőségeivel a
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: article
-ms.date: 09/17/2018
+ms.date: 09/21/2018
 ms.author: raynew
-ms.openlocfilehash: 31cbec8eab499fac116eac6fa2addac4ec2a340b
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: ac1cf5a30dee29f2737a05133aed774e86f78932
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45737097"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47163426"
 ---
 # <a name="group-machines-using-machine-dependency-mapping"></a>Gépek csoportosítása a gépek függőségi leképezés használatával
 
@@ -55,6 +55,7 @@ Az ügynök telepítése a Windows-gépen:
 4. A **ügynök telepítésének beállításai**válassza **Azure Log Analytics** > **tovább**.
 5. Kattintson a **Hozzáadás** hozzáadása egy új Log Analytics-munkaterületet. Illessze be a munkaterület Azonosítóját és kulcsát, a portálról kimásolt. Kattintson a **Tovább** gombra.
 
+[További](https://docs.microsoft.com/azure/log-analytics/log-analytics-concept-hybrid#supported-windows-operating-systems) kapcsolatban a Windows operációs rendszerek támogatása az MMA által listáját.
 
 Az ügynök telepítése Linux rendszerű gépen:
 
@@ -63,6 +64,7 @@ Az ügynök telepítése Linux rendszerű gépen:
 
     ```sudo sh ./omsagent-<version>.universal.x64.sh --install -w <workspace id> -s <workspace key>```
 
+[További](https://docs.microsoft.com/azure/log-analytics/log-analytics-concept-hybrid#supported-linux-operating-systems) kapcsolatos Linux operációs rendszerek támogatása az MMA által listája.
 
 ### <a name="install-the-dependency-agent"></a>A függőségi ügynök telepítése
 1. A függőségi ügynök telepítése a Windows-gépen, kattintson duplán a telepítőfájlra, és kövesse a varázsló utasításait.
@@ -102,5 +104,6 @@ A csoport létrehozása után ajánlott ügynökök telepítése a csoport össz
 
 ## <a name="next-steps"></a>További lépések
 
-- [Ismerje meg, hogyan](how-to-create-group-dependencies.md) , a csoport pontosítása csoportos függőségek vizualizációjával
+- [További](https://docs.microsoft.com/azure/migrate/resources-faq#dependency-visualization) kapcsolatban a gyakori kérdések a függőségek képi megjelenítéséről.
+- [Ismerje meg, hogyan](how-to-create-group-dependencies.md) , a csoport pontosítása csoportos függőségek vizualizációjával.
 - [További információk](concepts-assessment-calculation.md) az értékelések számításával kapcsolatban.

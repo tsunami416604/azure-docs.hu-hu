@@ -19,7 +19,7 @@ Ebben a szakaszban egy .NET-konzolalkalmazást fog létrehozni, amely egy eszkö
     using Microsoft.Azure.Devices.Common.Exceptions;
     ```
 
-1. Adja hozzá a **Program** osztályhoz a következő mezőket: A helyőrző értékét cserélje le az előző szakaszban létrehozott IoT Hub kapcsolati karakterláncra.
+1. Adja hozzá a **Program** osztályhoz a következő mezőket: A helyőrző értékét cserélje le az előző szakaszban létrehozott IoT Hub kapcsolati sztringre.
 
     ```csharp
     static RegistryManager registryManager;

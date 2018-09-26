@@ -7,18 +7,18 @@ author: spelluru
 manager: timlt
 ms.service: service-bus-messaging
 ms.topic: article
-ms.date: 05/31/2018
+ms.date: 09/24/2018
 ms.author: spelluru
-ms.openlocfilehash: d141ac284b1ed8e128588e1a49a0594e0c61707f
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 293cde00e53171e848263df8564ec85f273c1a40
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46974051"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47166333"
 ---
 # <a name="azure-service-bus-metrics-in-azure-monitor-preview"></a>Az Azure Service Bus-metrikák az Azure Monitor (előzetes verzió)
 
-Service Bus-metrikák biztosít az Azure-előfizetésében erőforrások állapotát. Metrikai adatok széles skáláját felmérheti a Service Bus-erőforrások, nem csak a névterek szintjén, hanem az entitások szintjén általános állapotát. A statisztikai lehet fontos, mert ezek segítségével figyelheti a Service Bus állapotát. Metrikák is segít kiváltó problémák elhárítása anélkül, hogy forduljon az Azure ügyfélszolgálatához.
+Service Bus-metrikák teszik lehetővé az Azure-előfizetésében erőforrások állapotát. Metrikai adatok széles skáláját felmérheti a Service Bus-erőforrások, nem csak a névterek szintjén, hanem az entitások szintjén általános állapotát. A statisztikai lehet fontos, mert ezek segítségével figyelheti a Service Bus állapotát. Metrikák is segít kiváltó problémák elhárítása anélkül, hogy forduljon az Azure ügyfélszolgálatához.
 
 Az Azure Monitor egységes felhasználói felületet biztosít a különböző Azure-szolgáltatások figyelésére. További információkért lásd: [a Microsoft Azure figyelés](../monitoring-and-diagnostics/monitoring-overview.md) és a [lekérése az Azure Monitor-metrikák .NET-tel](https://github.com/Azure-Samples/monitor-dotnet-metrics-api) mintát a Githubon.
 
@@ -37,7 +37,7 @@ Az idő függvényében segítségével figyelheti a mérőszámokat a [az Azure
 
 ![][1]
 
-Metrikák a névtér keresztül közvetlenül is elérheti. Ehhez válassza ki a névteret, és kattintson a **metrikák (Peview)**. Az entitás hatókörének szűrt metrikák megjelenítéséhez válassza ki az entitást, és kattintson a **metrikák (előnézet)**.
+Metrikák a névtér keresztül közvetlenül is elérheti. Ehhez válassza ki a névteret, és kattintson a **metrikák (előnézet)**. Az entitás hatókörének szűrt metrikák megjelenítéséhez válassza ki az entitást, és kattintson a **metrikák (előnézet)**.
 
 ![][2]
 
@@ -70,7 +70,7 @@ Számít az adatok és a felügyeleti műveletek kérések száma.
 
 A következő két típusú hibák besorolt felhasználói hibáinak száma:
 
-1. Ügyfél kiszolgálóoldali hibák (a HTTP 400 hibákat adott).
+1. Ügyféloldali hibák (a HTTP 400 hibákat adott).
 2. Például üzenetek feldolgozása közben jelentkező hibákról [MessageLockLostException](/dotnet/api/microsoft.azure.servicebus.messagelocklostexception).
 
 
@@ -90,6 +90,9 @@ A következő két típusú hibák besorolt felhasználói hibáinak száma:
 |Kapcsolat lezárva (előzetes verzió)|Lezárt kapcsolatok száma.<br/><br/> Egység: száma <br/> Összesítés típusa: összes <br/> Dimenzió: EntityName |
 
 ## <a name="resource-usage-metrics"></a>Erőforrás-használati metrikák
+
+> [!NOTE] 
+> A következő metrikák érhetők el, csak a **prémium** szint. 
 
 | Metrika neve | Leírás |
 | ------------------- | ----------------- |

@@ -9,12 +9,12 @@ ms.reviewer: larryfr
 manager: cgronlun
 ms.topic: conceptual
 ms.date: 8/6/2018
-ms.openlocfilehash: 7796accffb7041e567c5e18857d09e105b5268ce
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 87b3bc4128d800e4f76d71dc5f9d081dffa0e3a7
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46961569"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47163443"
 ---
 # <a name="how-to-configure-a-development-environment-for-the-azure-machine-learning-service"></a>Az Azure Machine Learning szolgáltatás a fejlesztési környezet konfigurálása
 
@@ -39,17 +39,31 @@ Az ajánlott módszer az, hogy használjon egészében Anaconda [conda virtuáli
 
 A munkaterület konfigurációs fájlt az Azure Machine Learning szolgáltatás munkaterület kommunikálni az SDK-t használják.  Ez a fájl első kétféleképpen történhet:
 
-* Befejezésekor a [rövid](quickstart-get-started.md), a fájl `config.json` Azure notebookok jön létre az Ön számára.  Ez a fájl munkaterületét a konfigurációs információkat tartalmaz.  Töltse le az ugyanabban a könyvtárban, a parancsfájlok vagy a jegyzetfüzet, amely erre hivatkozik.
+* Végezze el a [rövid](quickstart-get-started.md) , hozzon létre egy munkaterületet, és a konfigurációs fájlt. A fájl `config.json` Azure notebookok jön létre az Ön számára.  Ez a fájl munkaterületét a konfigurációs információkat tartalmaz.  Töltse le, vagy másolja be a parancsfájlok vagy a jegyzetfüzet, amely erre hivatkozik ugyanabban a könyvtárban.
+
 
 * A konfigurációs fájl létrehozása saját maga a következő lépésekben:
 
     1. Nyissa meg a munkaterület a [az Azure portal](https://portal.azure.com). Másolás a __munkaterületnév__, __erőforráscsoport__, és __előfizetés-azonosító__. Ezeket az értékeket a konfigurációs fájl létrehozásához használt.
 
-       Munkaterület irányítópultján a portálon csak Edge, Chrome és a Firefox böngésző esetében támogatott.
-    
         ![Azure Portal](./media/how-to-configure-environment/configure.png) 
     
-    3. Egy szövegszerkesztőben hozzon létre egy fájlt, nevű **config.json**.  Adja hozzá a következő tartalmat a fájlhoz, szúr be az értéket a portálról:
+    1. Hozzon létre a fájlt a Python-kód. A parancsfájlok vagy a munkaterület hivatkozó notebookok ugyanabban a könyvtárban futtassa a kódot:
+        ```
+        from azureml.core import Workspace
+
+        subscription_id ='<subscription-id>'
+        resource_group ='<resource-group>'
+        workspace_name = '<workspace-name>'
+        
+        try:
+           ws = Workspace(subscription_id = subscription_id, resource_group = resource_group, workspace_name = workspace_name)
+           ws.write_config()
+           print('Library configuration succeeded')
+        except:
+           print('Workspace not found')
+        ```
+        Ez a következő ír `aml_config/config.json` fájlt: 
     
         ```json
         {
@@ -58,12 +72,11 @@ A munkaterület konfigurációs fájlt az Azure Machine Learning szolgáltatás 
         "workspace_name": "<workspace-name>"
         }
         ```
-    
-        >[!NOTE] 
-        >Később a kódjában olvassa el a fájlt:  `ws = Workspace.from_config()`
-    
-    4. Ne felejtse el menteni **config.json** be ugyanabban a könyvtárban, a parancsfájlok vagy a jegyzetfüzet, amely erre hivatkozik.
-    
+        Másolhatja a `aml_config` könyvtár vagy csak `config.json` fájlt bármilyen más címtár, amely hivatkozik a munkaterület-bA.
+
+>[!NOTE] 
+>Egyéb parancsfájlokat vagy ugyanabban a könyvtárban vagy alatt notebookok tölti be a munkaterület `ws=Workspace.from_config()`
+
 ## <a name="azure-notebooks-and-data-science-virtual-machine"></a>Az Azure jegyzetfüzet és az adatelemző virtuális gép
 
 Az Azure notebookok és az Azure adatelemzési virtuális gépek (DSVM) előre konfigurálva az Azure Machine Learning szolgáltatással. Szükséges összetevők, például az Azure Machine Learning SDK előtelepített ezekben a környezetekben.
@@ -98,7 +111,7 @@ Példa Azure notebookok használatával az Azure Machine Learning szolgáltatás
 3. Notebook kiegészítő funkciók az Azure Machine Learning SDK telepítése esetén használja a következő parancsot:
 
      ```shell
-    pip install --upgrade azureml-sdk[notebooks,automl,contrib]
+    pip install --upgrade azureml-sdk[notebooks,automl]
     ```
 
     Az SDK telepítése több percet is igénybe vehet.
@@ -155,7 +168,7 @@ Példa Azure notebookok használatával az Azure Machine Learning szolgáltatás
 2. Az Azure Machine Learning SDK telepítéséhez használja a következő parancsot:
  
     ```shell
-    pip install --upgrade azureml-sdk[automl,contrib]
+    pip install --upgrade azureml-sdk[automl]
     ```
 
 4. A Visual Studio code Tools for AI telepítéséhez tekintse meg a Visual Studio Marketplace-en [Tools for AI](https://marketplace.visualstudio.com/items?itemName=ms-toolsai.vscode-ai). 

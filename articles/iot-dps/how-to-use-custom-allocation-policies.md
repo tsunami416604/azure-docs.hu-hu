@@ -8,17 +8,17 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
-ms.openlocfilehash: 503a8026fe11d1cdb3d0fc0c2680d8d545a1c992
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 89cb44366d4752052d990a1506482c9108cde103
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46955245"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47161706"
 ---
 # <a name="how-to-use-custom-allocation-policies"></a>Egyéni foglalási szabályzatok használata
 
 
-Egy egyéni foglalási szabályzat jobban szabályozhatja, hogyan eszközök vannak rendelve egy IoT-központ biztosítja. Ez az egyéni kód használatával történik egy [Azure-függvény](../azure-functions/functions-overview.md) hozzárendelni az eszközöket egy IoT hubra. A device provisioning szolgáltatás meghívja az Azure-függvény kódjának biztosít az IoT hub-csoport. A függvénykódot az eszköz kiépítése IoT hub adatait adja vissza.
+Egy egyéni foglalási szabályzat jobban szabályozhatja, hogyan eszközök vannak rendelve egy IoT-központ biztosítja. Ez az egyéni kód használatával történik egy [Azure-függvény](../azure-functions/functions-overview.md) hozzárendelni az eszközöket egy IoT hubra. A device provisioning szolgáltatás meghívja az Azure-függvény kódjának minden szükséges információt az eszköz és a regisztráció. A függvénykód hajtja végre, és az IoT hub információk segítségével a device provisioning adja vissza.
 
 Egyéni foglalási szabályzatok segítségével meghatározhatja a saját foglalási szabályzatok Ha a házirendek a Device Provisioning Service által biztosított nem felelnek meg a forgatókönyv követelményeinek.
 
@@ -107,7 +107,9 @@ Ebben a szakaszban létrehozhat egy új regisztrációs csoportot, amely az egy�
     ![Egyéni hozzárendelés regisztrációs csoportot szimmetrikus kulcsát a kulcsigazoláshoz hozzáadása](./media/how-to-use-custom-allocation-policies/create-custom-allocation-enrollment.png)
 
 
-4. A **regisztrációs csoport hozzáadásához**, kattintson a **egy új IoT hub csatolása** mutató hivatkozást is az új részlegszintű IoT-központokat.
+4. A **regisztrációs csoport hozzáadásához**, kattintson a **egy új IoT hub csatolása** mutató hivatkozást is az új részlegszintű IoT-központokat. 
+
+    Ezt a lépést mindkét a részlegszintű IoT-központok esetében végre kell hajtani.
 
     **Előfizetés**: Ha több előfizetéssel rendelkezik, válassza ki az előfizetést, ahol létrehozta a részlegszintű IoT-központok.
 
@@ -278,9 +280,9 @@ Ebben a szakaszban létrehozhat egy új regisztrációs csoportot, amely az egy�
 
 Ebben a szakaszban két eszköz egyedi kulcsot hoz létre. Egy kulcsot a toaster szimulált eszköz használható. A másik hívóbetűt egy szimulált megadott hőtérképrészlet szivattyú eszköz használható.
 
-Az eszköz kulcs létrehozásához használja a **elsődleges kulcs** számítási korábban feljegyzett a [HMAC-SHA256 algoritmust](https://wikipedia.org/wiki/HMAC) , az eszköz regisztrációs azonosító minden eszközhöz, és az eredmény Base64 formátumra alakítható.
+Az eszköz kulcs létrehozásához használhatja a **elsődleges kulcs** számítási korábban feljegyzett a [HMAC-SHA256 algoritmust](https://wikipedia.org/wiki/HMAC) , az eszköz regisztrációs azonosító minden eszközhöz, és az eredmény Base64 formátumra alakítható. Származtatott eszközkulcsok való regisztrációs csoportok létrehozását további információkért lásd: a csoport regisztrációk szakaszában [szimmetrikus kulcsát a kulcsigazoláshoz](concepts-symmetric-key-attestation.md).
 
-Használja a következő két eszköz regisztrációs azonosítóval, és a számítási mindkét eszköz eszköz kulcsát. Mindkét regisztrációs azonosítók egy érvényes utótagot működéséhez példakód az egyéni elosztási házirend van:
+Ez a cikk például használja a következő két eszköz regisztrációs azonosítóval, és számítási mindkét eszköz eszköz kulcsát. Mindkét regisztrációs azonosítók egy érvényes utótagot működéséhez példakód az egyéni elosztási házirend van:
 
 - **breakroom499-contoso-tstrsd-007**
 - **mainbuilding167-contoso-hpsd-088**
@@ -289,53 +291,53 @@ Használja a következő két eszköz regisztrációs azonosítóval, és a szá
 
 Egy Linux munkaállomáson használja, ha openssl használatával hozzon létre a származtatott eszköz kulcsokat, a következő példában látható módon.
 
-Értékét cserélje **kulcs** együtt a **elsődleges kulcs** korábban feljegyzett.
+1. Értékét cserélje **kulcs** együtt a **elsődleges kulcs** korábban feljegyzett.
 
-```bash
-KEY=oiK77Oy7rBw8YB6IS6ukRChAw+Yq6GC61RMrPLSTiOOtdI+XDu0LmLuNm11p+qv2I+adqGUdZHm46zXAQdZoOA==
+    ```bash
+    KEY=oiK77Oy7rBw8YB6IS6ukRChAw+Yq6GC61RMrPLSTiOOtdI+XDu0LmLuNm11p+qv2I+adqGUdZHm46zXAQdZoOA==
 
-REG_ID1=breakroom499-contoso-tstrsd-007
-REG_ID2=mainbuilding167-contoso-hpsd-088
+    REG_ID1=breakroom499-contoso-tstrsd-007
+    REG_ID2=mainbuilding167-contoso-hpsd-088
 
-keybytes=$(echo $KEY | base64 --decode | xxd -p -u -c 1000)
-devkey1=$(echo -n $REG_ID1 | openssl sha256 -mac HMAC -macopt hexkey:$keybytes -binary | base64)
-devkey2=$(echo -n $REG_ID2 | openssl sha256 -mac HMAC -macopt hexkey:$keybytes -binary | base64)
+    keybytes=$(echo $KEY | base64 --decode | xxd -p -u -c 1000)
+    devkey1=$(echo -n $REG_ID1 | openssl sha256 -mac HMAC -macopt hexkey:$keybytes -binary | base64)
+    devkey2=$(echo -n $REG_ID2 | openssl sha256 -mac HMAC -macopt hexkey:$keybytes -binary | base64)
 
-echo -e $"\n\n$REG_ID1 : $devkey1\n$REG_ID2 : $devkey2\n\n"
-```
+    echo -e $"\n\n$REG_ID1 : $devkey1\n$REG_ID2 : $devkey2\n\n"
+    ```
 
-```bash
-breakroom499-contoso-tstrsd-007 : JC8F96eayuQwwz+PkE7IzjH2lIAjCUnAa61tDigBnSs=
-mainbuilding167-contoso-hpsd-088 : 6uejA9PfkQgmYylj8Zerp3kcbeVrGZ172YLa7VSnJzg=
-```
+    ```bash
+    breakroom499-contoso-tstrsd-007 : JC8F96eayuQwwz+PkE7IzjH2lIAjCUnAa61tDigBnSs=
+    mainbuilding167-contoso-hpsd-088 : 6uejA9PfkQgmYylj8Zerp3kcbeVrGZ172YLa7VSnJzg=
+    ```
 
 
 #### <a name="windows-based-workstations"></a>Windows-alapú munkaállomások
 
 Ha egy Windows-alapú munkaállomást használ, a PowerShell használatával hozhatja létre a származtatott eszköz kulcsot a következő példában látható módon.
 
-Értékét cserélje **kulcs** együtt a **elsődleges kulcs** korábban feljegyzett.
+1. Értékét cserélje **kulcs** együtt a **elsődleges kulcs** korábban feljegyzett.
 
-```PowerShell
-$KEY='oiK77Oy7rBw8YB6IS6ukRChAw+Yq6GC61RMrPLSTiOOtdI+XDu0LmLuNm11p+qv2I+adqGUdZHm46zXAQdZoOA=='
+    ```PowerShell
+    $KEY='oiK77Oy7rBw8YB6IS6ukRChAw+Yq6GC61RMrPLSTiOOtdI+XDu0LmLuNm11p+qv2I+adqGUdZHm46zXAQdZoOA=='
 
-$REG_ID1='breakroom499-contoso-tstrsd-007'
-$REG_ID2='mainbuilding167-contoso-hpsd-088'
+    $REG_ID1='breakroom499-contoso-tstrsd-007'
+    $REG_ID2='mainbuilding167-contoso-hpsd-088'
 
-$hmacsha256 = New-Object System.Security.Cryptography.HMACSHA256
-$hmacsha256.key = [Convert]::FromBase64String($key)
-$sig1 = $hmacsha256.ComputeHash([Text.Encoding]::ASCII.GetBytes($REG_ID1))
-$sig2 = $hmacsha256.ComputeHash([Text.Encoding]::ASCII.GetBytes($REG_ID2))
-$derivedkey1 = [Convert]::ToBase64String($sig1)
-$derivedkey2 = [Convert]::ToBase64String($sig2)
+    $hmacsha256 = New-Object System.Security.Cryptography.HMACSHA256
+    $hmacsha256.key = [Convert]::FromBase64String($key)
+    $sig1 = $hmacsha256.ComputeHash([Text.Encoding]::ASCII.GetBytes($REG_ID1))
+    $sig2 = $hmacsha256.ComputeHash([Text.Encoding]::ASCII.GetBytes($REG_ID2))
+    $derivedkey1 = [Convert]::ToBase64String($sig1)
+    $derivedkey2 = [Convert]::ToBase64String($sig2)
 
-echo "`n`n$REG_ID1 : $derivedkey1`n$REG_ID2 : $derivedkey2`n`n"
-```
+    echo "`n`n$REG_ID1 : $derivedkey1`n$REG_ID2 : $derivedkey2`n`n"
+    ```
 
-```PowerShell
-breakroom499-contoso-tstrsd-007 : JC8F96eayuQwwz+PkE7IzjH2lIAjCUnAa61tDigBnSs=
-mainbuilding167-contoso-hpsd-088 : 6uejA9PfkQgmYylj8Zerp3kcbeVrGZ172YLa7VSnJzg=
-```
+    ```PowerShell
+    breakroom499-contoso-tstrsd-007 : JC8F96eayuQwwz+PkE7IzjH2lIAjCUnAa61tDigBnSs=
+    mainbuilding167-contoso-hpsd-088 : 6uejA9PfkQgmYylj8Zerp3kcbeVrGZ172YLa7VSnJzg=
+    ```
 
 
 A szimulált eszközök fogja használni a származtatott eszköz kulcsok minden egyes regisztrációs azonosító szimmetrikus kulcsát a kulcsigazoláshoz végrehajtásához.

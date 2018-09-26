@@ -2,20 +2,22 @@
 title: Hozzon létre, illetve kezelheti az Azure SQL-kiszolgáló és az önálló adatbázisok |} A Microsoft Docs
 description: Ismerje meg a logikai kiszolgálók és az önálló adatbázisok létrehozására és kezelésére.
 services: sql-database
-author: CarlRabeler
-manager: craigg
 ms.service: sql-database
 ms.subservice: single-database
-ms.custom: DBs & servers
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 09/20/2018
+author: CarlRabeler
 ms.author: carlrab
-ms.openlocfilehash: 3d909e8aa7785fddd6d40e94ac1fbf2c8ab2b8d0
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.reviewer: ''
+manager: craigg
+ms.date: 09/20/2018
+ms.openlocfilehash: c2855a9cdbb2abc01b3d3b55b12b979a2dbbf8bb
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47040880"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47165357"
 ---
 # <a name="create-and-manage-logical-servers-and-single-databases-in-azure-sql-database"></a>Logikai kiszolgáló és az Azure SQL Database önálló adatbázisok létrehozása és kezelése 
 

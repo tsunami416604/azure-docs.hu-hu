@@ -2,20 +2,22 @@
 title: Az Azure SQL Database felügyelt példány naplózása |} A Microsoft Docs
 description: Ismerje meg, hogyan kezdheti el az Azure SQL Database felügyelt példány naplózási T-SQL használatával
 services: sql-database
-author: giladm
-manager: craigg
-ms.reviewer: vanto
 ms.service: sql-database
-ms.custom: security
+ms.subservice: security
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 09/20/2018
+author: giladm
 ms.author: giladm
-ms.openlocfilehash: 3971d6966088ccb19a35ab938408a1c9dc835d3b
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.reviewer: vanto
+manager: craigg
+ms.date: 09/20/2018
+ms.openlocfilehash: 38dee577ff57e6ba440fb4062315b57e4eb7957b
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47031815"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47162253"
 ---
 # <a name="get-started-with-azure-sql-database-managed-instance-auditing"></a>Ismerkedés az Azure SQL Database felügyelt példány naplózási szolgáltatásával
 

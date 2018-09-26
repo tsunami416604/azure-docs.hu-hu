@@ -3,8 +3,7 @@ title: Komplex veszélyforrások elleni védelem – Azure SQL Database |} A Mic
 description: Ismerje meg a felderítése és besorolása a bizalmas adatokat, az adatbázis biztonsági rések kezelése és a rendellenes tevékenységek jelezheti az Azure SQL Database fenyegetések észlelése funkciót.
 services: sql-database
 ms.service: sql-database
-ms.subservice: threat-protection
-ms.custom: security
+ms.subservice: security
 ms.devlang: ''
 ms.topic: conceptual
 author: ronitr
@@ -12,12 +11,12 @@ ms.author: ronitr
 ms.reviewer: vanto
 manager: craigg
 ms.date: 05/17/2018
-ms.openlocfilehash: 90d0784a33b3b80a5b2c78bf4b22dac5654b1450
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: cb3d8629d5d72644e647da14e7c3b31a4914814d
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 09/25/2018
-ms.locfileid: "47063914"
+ms.locfileid: "47159558"
 ---
 # <a name="advanced-threat-protection-for-azure-sql-database"></a>Az Azure SQL Database-adatbázis komplex veszélyforrások elleni védelem
 

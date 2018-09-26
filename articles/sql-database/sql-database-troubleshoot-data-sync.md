@@ -2,19 +2,22 @@
 title: Az Azure SQL Data Synch hibaelhárítása |} A Microsoft Docs
 description: Ismerje meg az Azure SQL Data Sync szolgáltatással kapcsolatos gyakori problémák elhárítása.
 services: sql-database
-ms.date: 07/16/2018
-ms.topic: conceptual
 ms.service: sql-database
+ms.subservice: data-movement
+ms.custom: data sync
+ms.devlang: ''
+ms.topic: conceptual
 author: allenwux
 ms.author: xiwu
+ms.reviewer: douglasl
 manager: craigg
-ms.custom: data-sync
-ms.openlocfilehash: 8ba4b32f45dd978439b08650e498c3030c618aab
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.date: 07/16/2018
+ms.openlocfilehash: 0f836a857d6f9748416fda1526a1957af4fc51e4
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39618709"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47163596"
 ---
 # <a name="troubleshoot-issues-with-sql-data-sync"></a>Az SQL Data Sync szolgáltatással kapcsolatos problémák elhárítása
 
@@ -245,7 +248,7 @@ Ha a helyi végpont (azaz egy adatbázis), amely regisztrálva van egy SQL Data 
     b. A keresési eredmények között kattintson duplán a **szolgáltatások**.  
   1. Állítsa le a **SQL Data Sync** szolgáltatás.
   1. Indítsa újra a **SQL Data Sync** szolgáltatás.  
-  1. Nyissa meg újra az alkalmazást.
+  1. újra meg kell nyitniuk az alkalmazást;
 
 ## <a name="setup-and-maintenance-issues"></a>Telepítési és karbantartási kapcsolatos problémák
 

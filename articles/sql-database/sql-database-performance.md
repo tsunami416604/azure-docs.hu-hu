@@ -1,21 +1,22 @@
 ---
 title: Figyelheti és javíthatja a teljesítményt – Azure SQL Database |} A Microsoft Docs
 description: Az Azure SQL Database teljesítményét eszközöket biztosít, amely javítja a jelenlegi lekérdezési teljesítményt területeknek az azonosítására szolgál.
-services: sql-database
-author: danimir
-manager: craigg
 ms.service: sql-database
-ms.custom: monitor & tune
+ms.subservice: performance
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 04/01/2018
+author: danimir
 ms.author: v-daljep
 ms.reviewer: carlrab
-ms.openlocfilehash: 5d739787d5b268ddfcf5bb9e6494c3cba6b3cdc2
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+manager: craigg
+ms.date: 04/01/2018
+ms.openlocfilehash: 35af3a926ab3c3a3046eab921e86b6610edc309c
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44718780"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47162956"
 ---
 # <a name="monitor-and-improve-performance"></a>Figyelheti és javíthatja a teljesítményt
 Az Azure SQL Database azonosítja a lehetséges problémákat az adatbázisban, és teendőket javasol, amely növelheti a számítási feladat teljesítményét azáltal, hogy intelligens hangolási műveletek és javaslatok.

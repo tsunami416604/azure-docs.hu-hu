@@ -2,19 +2,22 @@
 title: A méretezési csoport egyetlen adatbázis-erőforrás – Azure SQL Database |} A Microsoft Docs
 description: Ez a cikk ismerteti a számítási és tárolási erőforrások, elérhető egy önálló adatbázis méretezése az Azure SQL Database-ben.
 services: sql-database
-author: CarlRabeler
-manager: craigg
 ms.service: sql-database
-ms.custom: DBs & servers
+ms.subservice: performance
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 09/20/2018
+author: CarlRabeler
 ms.author: carlrab
-ms.openlocfilehash: 5bc03b8fe8ea64d85154198b8009592f45805a7e
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.reviewer: ''
+manager: craigg
+ms.date: 09/20/2018
+ms.openlocfilehash: 5cde4dcbbaaeb56a539faec9b2888ac22f6dbaea
+ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47031849"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47182314"
 ---
 # <a name="scale-single-database-resources-in-azure-sql-database"></a>Önálló adatbázis-erőforrások skálázása az Azure SQL Database-ben
 
@@ -23,7 +26,7 @@ Ez a cikk ismerteti a számítási és tárolási erőforrások, elérhető egy 
 ## <a name="vcore-based-purchasing-model-change-storage-size"></a>Virtuálismag-alapú vásárlási modell: tároló méretének módosítása
 
 - Tárolók kiépítésével legfeljebb 1 GB-onként növelhető tárhelyet használ a maximális méretkorlátot. A minimális konfigurálható adattárolási az 5GB 
-- Önálló adatbázis tárolási növelésével vagy csökkentésével, a maximális méret használatával helyezhetők a [az Azure portal](https://portal.azure.com), [Transact-SQL](/sql/t-sql/statements/alter-database-transact-sql?r#examples), [PowerShell](/powershell/module/azurerm.sql/set-azurermsqldatabase), a [Az azure CLI](/cli/azure/sql/db#az-sql-db-update), vagy a [REST API-val](/rest/api/sql/databases/update).
+- Önálló adatbázis tárolási növelésével vagy csökkentésével, a maximális méret használatával helyezhetők a [az Azure portal](https://portal.azure.com), [Transact-SQL](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current#examples-1), [PowerShell](/powershell/module/azurerm.sql/set-azurermsqldatabase), a [Az azure CLI](/cli/azure/sql/db#az-sql-db-update), vagy a [REST API-val](/rest/api/sql/databases/update).
 - Az SQL Database automatikusan foglalja le a 30 %-a további tárhely a naplófájlok és 32GB / virtuális mag a TempDB, de nem haladhatja meg a 384GB. A TempDB található minden szolgáltatásszinten csatlakoztatott SSD-t.
 - A szolgáltatás összege adatok tárolási és a naplófájlok tárolási megszorozza a szolgáltatási rétegben tárolási egységára egy önálló adatbázis tárolási díja. A TempDB adatbázis költségét a virtuális mag díja tartalmazza. Az extra tárterület ára a részletekért lásd: [SQL Database – díjszabás](https://azure.microsoft.com/pricing/details/sql-database/).
 
@@ -32,7 +35,7 @@ Ez a cikk ismerteti a számítási és tárolási erőforrások, elérhető egy 
 
 ## <a name="vcore-based-purchasing-model-change-compute-resources"></a>Virtuálismag-alapú vásárlási modell: módosítsa a számítási erőforrásokat
 
-Miután kiválasztotta a virtuális magok száma, méretezhetők egy önálló adatbázis felfelé vagy lefelé dinamikusan használatával a tényleges tapasztalatok alapján a [az Azure portal](sql-database-single-databases-manage.md#manage-an-existing-sql-server), [Transact-SQL](/sql/t-sql/statements/alter-database-azure-sql-database#examples), [PowerShell](/powershell/module/azurerm.sql/set-azurermsqldatabase), a [az Azure CLI](/cli/azure/sql/db#az-sql-db-update), vagy a [REST API-val](/rest/api/sql/databases/update). 
+Miután kiválasztotta a virtuális magok száma, méretezhetők egy önálló adatbázis felfelé vagy lefelé dinamikusan használatával a tényleges tapasztalatok alapján a [az Azure portal](sql-database-single-databases-manage.md#manage-an-existing-sql-server), [a Transact-SQL] ((https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current#examples-1), [PowerShell](/powershell/module/azurerm.sql/set-azurermsqldatabase), a [az Azure CLI](/cli/azure/sql/db#az-sql-db-update), vagy a [REST API-val](/rest/api/sql/databases/update). 
 
 A szolgáltatás rétegbeli és/vagy számítási egy adatbázist hoz létre az eredeti adatbázis replikája új számítási méret és majd átáll a replikára. A folyamat során nem történik adatvesztés, de a replikára való átálláskor egy pillanatra az adatbázis felé irányuló kapcsolatok le lesznek tiltva, így lehet, hogy néhány folyamatban lévő tranzakció vissza lesz állítva. A hosszát a kapcsoló-több mint változik, de általában 4 másodpercnél kevesebb mint 30 másodperc 99 %-ában. Ha nagy számú tranzakció van folyamatban a kapcsolatok pillanatában le vannak tiltva, akkor a hosszát a kapcsoló-több mint hosszabb lehet. 
 
@@ -50,7 +53,7 @@ A teljes felskálázási folyamat időtartama az adatbázis a módosítás előt
 ## <a name="dtu-based-purchasing-model-change-storage-size"></a>DTU-alapú vásárlási modell: tároló méretének módosítása
 
 - Önálló adatbázis dtu-k díjszabása tartalmaz egy bizonyos mennyiségű tárolási további költségek nélkül. A csomagban foglalt adatmennyiségen felüli extra tárterület legfeljebb 250 GB-os fel 1 TB-os egységekben, majd, 256 GB 1 TB-os léptékben maximális méretkorlátot díjfizetés mellett bővítheti. Belefoglalt tárterület összegek és a maximális méret korlátok [egyetlen adatbázishoz: tárterületet és számítási méretek](sql-database-dtu-resource-limits-single-databases.md#single-database-storage-sizes-and-compute-sizes).
-- Extra tárterülettel önálló adatbázis kiépítése az Azure Portalon, a maximális méretének növelésével [Transact-SQL](/sql/t-sql/statements/alter-database-azure-sql-database#examples), [PowerShell](/powershell/module/azurerm.sql/set-azurermsqldatabase), a [Azure CLI-vel](/cli/azure/sql/db#az-sql-db-update), vagy a [ REST API-val](/rest/api/sql/databases/update).
+- Extra tárterülettel önálló adatbázis kiépítése az Azure Portalon, a maximális méretének növelésével [Transact-SQL] ((https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current#examples-1), [PowerShell](/powershell/module/azurerm.sql/set-azurermsqldatabase), a [Azure CLI-vel](/cli/azure/sql/db#az-sql-db-update), vagy a [REST API](/rest/api/sql/databases/update).
 - Az extra tárterülettel önálló adatbázis szolgáltatás díja az extra tárterület egységára a szolgáltatási rétegben megszorozza extra tárterület keletkezett. Az extra tárterület ára a részletekért lásd: [SQL Database – díjszabás](https://azure.microsoft.com/pricing/details/sql-database/).
 
 > [!IMPORTANT]
@@ -58,7 +61,7 @@ A teljes felskálázási folyamat időtartama az adatbázis a módosítás előt
 
 ## <a name="dtu-based-purchasing-model-change-compute-resources-dtus"></a>DTU-alapú vásárlási modell: módosítsa a számítási erőforrásokat (Dtu)
 
-Miután kiválasztotta a egy szolgáltatási rétegben, számítási mérete és mennyisége, akkor is egy önálló adatbázis kisebbre vagy nagyobbra méretezhetők az Azure portal használatával, a tényleges tapasztalatok alapján dinamikusan [Transact-SQL](/sql/t-sql/statements/alter-database-azure-sql-database#examples), [PowerShell](/powershell/module/azurerm.sql/set-azurermsqldatabase), a [az Azure CLI](/cli/azure/sql/db#az-sql-db-update), vagy a [REST API-val](/rest/api/sql/databases/update). 
+Miután kiválasztotta a egy szolgáltatási rétegben, számítási mérete és mennyisége, akkor is egy önálló adatbázis kisebbre vagy nagyobbra méretezhetők az Azure portal használatával, a tényleges tapasztalatok alapján dinamikusan [Transact-SQL] ((https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current#examples-1), [PowerShell](/powershell/module/azurerm.sql/set-azurermsqldatabase), a [Az azure CLI](/cli/azure/sql/db#az-sql-db-update), vagy a [REST API-val](/rest/api/sql/databases/update). 
 
 Dinamikusan módosítása a szolgáltatás a következő videó bemutatja a csomagot, és számítási méret növelése elérhető dtu-k egy önálló adatbázis.
 

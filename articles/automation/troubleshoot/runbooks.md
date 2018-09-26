@@ -8,12 +8,12 @@ ms.date: 07/13/2018
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 1954393c9fe544c33919c8f9fb8ee04e430e7639
-ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
+ms.openlocfilehash: b02f1b04756f1e3f01426e58c5f8c625cb746f05
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45542565"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47163902"
 ---
 # <a name="troubleshoot-errors-with-runbooks"></a>Runbookokkal kapcsolatos hibák elhárítása
 
@@ -93,11 +93,18 @@ Ez a hiba akkor fordul elő, ha az előfizetés neve nem érvényes, vagy ha az 
 
 Ha megfelelően hitelesített Azure-ba, és rendelkezik hozzáféréssel az előfizetéshez, válasszon kívánt meghatározásához tegye a következőket:  
 
-1. Győződjön meg arról, hogy futtassa a **Add-AzureAccount** futtatása előtt a **Select-AzureSubscription** parancsmagot.  
-2. Ha továbbra is látja ezt a hibaüzenetet, módosítsa a kódot adja hozzá a **Get-AzureSubscription** parancsmag következő a **Add-AzureAccount** parancsmag majd futtassa a kódot. Most ellenőrizheti, ha a Get-AzureSubscription kimenete tartalmazza az előfizetés adatait.  
+1. Győződjön meg arról, hogy futtassa a **Add-AzureAccount** parancsmag futtatása előtt a **Select-AzureSubscription** parancsmagot.  
+2. Ha továbbra is látja ezt a hibaüzenetet, módosítsa a kódot adja hozzá a **- AzureRmContext** paraméter következő a **Add-AzureAccount** parancsmag majd futtassa a kódot.
 
-   * Ha nem látja a kimeneti bármely előfizetés adatait, akkor ez azt jelenti, hogy az előfizetés még nincs inicializálva.  
-   * Ha az előfizetés részleteinek a kimenetben látható, erősítse meg, hogy használja a megfelelő előfizetés neve vagy azonosítója a **Select-AzureSubscription** parancsmagot.
+   ```powershell
+   $Conn = Get-AutomationConnection -Name AzureRunAsConnection
+   Connect-AzureRmAccount -ServicePrincipal -Tenant $Conn.TenantID `
+-ApplicationID $Conn.ApplicationID -CertificateThumbprint $Conn.CertificateThumbprint
+
+   $context = Get-AzureRmContext
+
+   Get-AzureRmVM -ResourceGroupName myResourceGroup -AzureRmContext $context
+   ```
 
 ### <a name="auth-failed-mfa"></a>Forgatókönyv: Hitelesítés nem sikerült, mert engedélyezve van a multi-factor authentication szolgáltatás Azure-bA
 
@@ -151,7 +158,7 @@ A gyermekrunbook nem használja a megfelelő környezet futtatásakor.
 
 #### <a name="resolution"></a>Megoldás:
 
-Ha több előfizetés használata az előfizetési környezet elveszhetnek gyermek runbookok meghívásakor. Győződjön meg arról, hogy a runbookok átadott az előfizetési környezetet, adja hozzá a `DefaultProfile` a parancsmagot, és azt a környezetet pass paramétert.
+Ha több előfizetés használata az előfizetési környezet elveszhetnek gyermek runbookok meghívásakor. Győződjön meg arról, hogy a runbookok átadott az előfizetési környezetet, adja hozzá a `AzureRmContext` a parancsmagot, és azt a környezetet pass paramétert.
 
 ```azurepowershell-interactive
 # Connect to Azure with RunAs account
@@ -171,7 +178,7 @@ Start-AzureRmAutomationRunbook `
     –AutomationAccountName 'MyAutomationAccount' `
     –Name 'Test-ChildRunbook' `
     -ResourceGroupName 'LabRG' `
-    -DefaultProfile $AzureContext `
+    -AzureRmContext $AzureContext `
     –Parameters $params –wait
 ```
 

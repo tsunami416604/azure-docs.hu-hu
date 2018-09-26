@@ -2,19 +2,22 @@
 title: Az Azure SQL Database - lekérdezések a replikák olvasása |} A Microsoft Docs
 description: Az Azure SQL Database lehetővé teszi betöltése terheléselosztása csak olvasható-alapú számítási feladatokat a csak olvasható replika - olvasási kibővített nevű kapacitását.
 services: sql-database
-author: anosov1960
-manager: craigg
 ms.service: sql-database
-ms.custom: monitor & tune
+ms.subservice: scale-out
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 09/18/2018
+author: anosov1960
 ms.author: sashan
-ms.openlocfilehash: d29886b5c8693e4465053c8816fc38376a51fafc
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.reviewer: carlrab
+manager: craigg
+ms.date: 09/18/2018
+ms.openlocfilehash: d82f4e03176911804702db2ea18a5bc9a95583a3
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46363600"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47158702"
 ---
 # <a name="use-read-only-replicas-to-load-balance-read-only-query-workloads-preview"></a>Csak olvasható replikákat használ a betöltése terheléselosztása csak olvasható lekérdezési számítási feladatok (előzetes verzió)
 

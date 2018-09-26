@@ -10,14 +10,14 @@ ms.technology: language-understanding
 ms.topic: article
 ms.date: 09/09/2018
 ms.author: diberry
-ms.openlocfilehash: 07fc753f7f60b51fc6b27e43ffb8c181c570bb5a
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 2c3705d28d6496c3d20999231de98572bc26e3be
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47032512"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47160247"
 ---
-# <a name="tutorial-4-extract-contextually-related-patterns"></a>Oktatóanyag: 4. Szövegkörnyezet szerint kapcsolódó minták kinyerése
+# <a name="tutorial-4-extract-contextually-related-patterns"></a>4. oktatóanyag: Bontsa ki a kontextusban kapcsolódó minták
 
 Ebben az oktatóanyagban a minta használatával adatok kinyerése egy megfelelően formázott sablon utterance (kifejezés). A sablon utterance (kifejezés) használja a szerepkörök és a egy egyszerű entitás például a feladás helyét és a célhely kapcsolódó adatokat szeretne kinyerni.  Minták használata esetén kevesebb példa utterances célja van szükség.
 

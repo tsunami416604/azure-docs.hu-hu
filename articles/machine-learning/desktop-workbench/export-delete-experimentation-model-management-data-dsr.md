@@ -11,16 +11,18 @@ ms.component: core
 ms.topic: conceptual
 ms.date: 05/22/2018
 ROBOTS: NOINDEX
-ms.openlocfilehash: 7daa3bdf9fb51fee6b0e190625f07e0d14c3d1f4
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 8c5b20bf837491e8b15f7bc8baa018ead584616b
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46995142"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47159176"
 ---
 # <a name="export-or-delete-your-experimentation-or-model-management-data-in-machine-learning"></a>Exportálhatók és nem a Kísérletezési és a gépi tanulási modell felügyeleti adatok törlése
 
-[!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)]
+>[!Note]
+>**Ez a cikk elavult.** Ez a szolgáltatás korábbi verzióinak támogatása a növekményes megszűnik. [A támogatási idősor megtekintése](../service/overview-what-happened-to-workbench.md#timeline). Olvassa el a [legújabb cikk](../service/how-to-export-delete-data.md) az ebben a témakörben.
+
 
 Az Azure Machine Learning exportál, vagy törölje a Kísérletezési vagy a modell felügyeleti hitelesített REST API-val kapcsolatos fiókja adatait. Ez a cikk bemutatja, hogyan.
 

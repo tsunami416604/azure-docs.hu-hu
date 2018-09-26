@@ -7,34 +7,59 @@ manager: cgronlun
 tags: azure-portal
 ms.service: search
 ms.topic: conceptual
-ms.date: 06/19/2018
+ms.date: 09/25/2018
 ms.author: heidist
-ms.openlocfilehash: 140daf4903c64d734182545cd4dc58db60274852
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: d86fc1930f1d7b29dc3ce57e9b4d28e053bb44a0
+ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45576120"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47181889"
 ---
 # <a name="choose-a-pricing-tier-for-azure-search"></a>Válasszon egy tarifacsomagot az Azure Search
 
-Az Azure Search szolgáltatásban egy [szolgáltatást annak üzembe helyezése](search-create-service-portal.md) egy adott tarifacsomag vagy SKU. Lehetőségek a következők **ingyenes**, **alapszintű**, vagy **Standard**, ahol **Standard** érhető el a konfigurációkat és a kapacitást. 
+Az Azure Search szolgáltatásban egy [szolgáltatást annak üzembe helyezése](search-create-service-portal.md) rögzített tarifacsomag vagy SKU: **ingyenes**, **alapszintű**, vagy **Standard**, ahol  **Standard szintű** érhető el a konfigurációkat és a kapacitást. A legtöbb ügyfél kezdje a **ingyenes** tesztelési csomagot, és ezután végezni a **Standard** fejlesztéséhez. Az elvégezhető összes útmutatóink és oktatóanyagaink segítségével a **ingyenes** szint, beleértve a nagy erőforrásigényű cognitive search. 
 
-Ez a cikk célja segítségével válassza ki a szintet. Kiegészíti a [díjszabását ismertető lapon](https://azure.microsoft.com/pricing/details/search/) és [Szolgáltatáskorlátok](search-limits-quotas-capacity.md) számlázási fogalmakat és a különböző szinteken társított felhasználási mintákkal hírösszefoglalójának tartalmazó oldalt. Azt is javasolja, iteratív megközelítés megértésében, melyik szint a legmegfelelőbb az igényeinek. 
+Rétegek határozza meg a kapacitást nem a funkciókat, szerint:
 
-Rétegek kapacitás-funkciók nem határozza meg. Ha egy réteg kapacitása elemről kiderül, hogy túl alacsony, szüksége lesz egy új szolgáltatás kiszámlázza a magasabb kiépítéséhez, majd [töltse be újra az indexek](search-howto-reindex.md). Nincs nem ugyanazt a szolgáltatást a Termékváltozat a a másikra a helyszíni frissítését.
++ Indexeket hozhat létre száma
++ Méretétől és sebességétől partíciók (fizikai tároló)
 
-A szolgáltatás rendelkezésre állási nem elsődleges szint veszi figyelembe. Minden szinten, beleértve a **ingyenes** csomag, ajánlat funkcióparitás S3HD vonatkozó kivételével. Azonban az indexelés és a resource korlátozások hatékonyan korlátozhatja a szolgáltatás használatának mértékét. Ha például [cognitive search](cognitive-search-concept-intro.md) indexelő rendelkezik hosszú ideig futó képességeit, hogy időtúllépés egy ingyenes szolgáltatás, ha az adatkészlet történik, nagyon kicsi.
+Bár minden szint esetében, beleértve a **ingyenes** réteg, általában kínálnak funkcióparitás, nagyobb méretű számítási feladatokat is szabályozzák a magasabb szintű követelményei. Ha például [cognitive search](cognitive-search-concept-intro.md) indexelő rendelkezik hosszú ideig futó képességeit, hogy időtúllépés egy ingyenes szolgáltatás, ha az adatkészlet történik, nagyon kicsi.
 
-> [!TIP]
-> A legtöbb ügyfél kezdje a **ingyenes** tesztelési csomagot, és ezután végezni a **Standard** fejlesztéséhez. Egy szint kiválasztása után, és [egy keresési szolgáltatás kiépítése](search-create-service-portal.md), is [növelheti a replika és a partíció számát](search-capacity-planning.md) a teljesítmény finomhangolásának. Mikor és miért módosíthatja lenne a kapacitás kapcsolatos további információkért lásd: [teljesítmény és optimalizálás szempontok](search-performance-optimization.md).
+> [!NOTE] 
+> A csomag létezik funkcióparitás [indexelők](search-indexer-overview.md), amely nem érhető el a S3HD.
 >
 
-## <a name="billing-concepts"></a>Számlázással kapcsolatos fogalmak
+A szinten belül is [módosíthatja a replika és a partíció erőforrások](search-capacity-planning.md) a teljesítmény finomhangolásának. Mivel előfordulhat, hogy először a kettő vagy három az egyes, akkor ideiglenesen megnövelheti az erőforrásszintek simítása nehéz indexelési számítási. Lehetővé teszi a szinten belüli erőforrásszintek hangolása növeli a rugalmasságot, de is némileg megnehezíti az elemzést. Előfordulhat, hogy talál-e egy alacsonyabb szintre magasabb erőforrások/replikákkal rendelkező kínál a nagyobb érték és a teljesítmény, mint az alacsonyabb szabályozásával magasabb szintre kísérletezést. Mikor és miért módosíthatja lenne a kapacitás kapcsolatos további információkért lásd: [teljesítmény és optimalizálás szempontok](search-performance-optimization.md).
 
-Fogalmak a kiválasztott csomag ismernie kell például a kapacitás definíciók, szolgáltatási korlátai és szolgáltatási egységek. 
+> [!Important] 
+> Bár a jövőbeli igényeit, az indexeket és a storage becslése esetlegességét is gondolja, érdemes ezzel. Ha egy réteg kapacitása elemről kiderül, hogy túl alacsony, szüksége lesz egy új szolgáltatás kiszámlázza a magasabb kiépítéséhez, majd [töltse be újra az indexek](search-howto-reindex.md). Nincs nem ugyanazt a szolgáltatást a Termékváltozat a a másikra a helyszíni frissítését.
+>
 
-### <a name="capacity"></a>Kapacitás
+<!---
+The purpose of this article is to help you choose a tier. It supplements the [pricing page](https://azure.microsoft.com/pricing/details/search/) and [Service Limits](search-limits-quotas-capacity.md) page with a digest of billing concepts and consumption patterns associated with various tiers. It also recommends an iterative approach for understanding which tier best meets your needs. 
+--->
+
+## <a name="how-billing-works"></a>A számlázás működése
+
+Az Azure Search szolgáltatásban a legfontosabb számlázási megértéséhez koncepciójuk egy *keresési egység* (SU). Azure Search a replikák és partíciók függvényt is függ, mivel csak az egyik vagy másik számlázási nincs értelme. Ehelyett mindkét összetett számlázási alapul. 
+
+Formulaically, egy SU-e, a termék *replika* és *partíciók* a szolgáltatás által használt: **`(R X P = SU)`**
+
+Legalább 1 SU (egy másodpéldány egy partíciót megszorozza) kezdődik minden szolgáltatás, de nagyobb méretű számítási feladatokhoz, realisztikusabb modell előfordulhat, hogy egy 3 és a replikakiszolgáló, a 3-partition service 9 SUS-t számít. 
+
+A számlázási sebessége **óránkénti száma SU**, minden egyes kellene fokozatosan magasabb szinten. A magasabb szintű nagyobb és gyorsabb partíciókat, hozzájárul a magasabb, a teljes óránkénti elszámolása kapható. Értékeli az egyes szintek találhatók [díjszabása](https://azure.microsoft.com/pricing/details/search/). 
+
+Az egyes csomagok fokozatosan nagyobb kapacitást biztosít, bár közzétehet egy *részét* teljes kapacitás online, a többi tulajdonában foglalás. A számlázás tekintetében, a partíciókat és -replikákat, hogy tenné online, számított képlettel a SU, amely meghatározza a ténylegesen kell fizetnie a száma.
+
+### <a name="tips-for-lowering-the-bill"></a>A számla lowering kapcsolatos tippek
+
+Nem lehet leállítani a szolgáltatást, hogy csökkentse a számla. A partíciókat és -replikákat dedikált erőforrások működési 24-7, a tartalék a kizárólagos használatára, a szolgáltatás teljes élettartama tárolt. Az egyetlen módja számla csökkentheti az csökkentheti a replikákat és partíciókat a legalacsonyabb, amely továbbra is elfogadható teljesítményt biztosít. 
+
+Egy másik szintje alacsonyabb óránkénti egy szintre megválasztása. S1 óradíjak alacsonyabbak, mint az S2 vagy S3 óradíjakat vesszük alapul. Sikerült üzembe helyezhetik a szolgáltatás a leképezések alacsonyabb végén, és hozza létre az Ön elszaporodó, ha egy második nagyobb rétegzett szolgáltatást, a második szolgáltatás az indexek újraépítése, és törölje az elsőt.
+
+### <a name="capacity-drill-down"></a>Kapacitás kibontása
 
 Kapacitás van strukturálva, *replikák* és *partíciók*. 
 
@@ -45,15 +70,7 @@ Kapacitás van strukturálva, *replikák* és *partíciók*.
 > [!NOTE]
 > Az összes **Standard** támogatási szintekkel [rugalmas kombinációk replika és a partíciók](search-capacity-planning.md#chart) segítségével [sebessége vagy a tárolás a rendszer-súlyozási](search-performance-optimization.md) az egyenleg módosításával. **Alapszintű** kínál fel három replika készül, magas rendelkezésre állású azonban csak egy partíciót tartalmaz. **Ingyenes** szinten nem kínál dedikált erőforrásokat: számítástechnika több ingyenes szolgáltatások által megosztott erőforrások.
 
-### <a name="search-units"></a>Keresési egységek
-
-A legfontosabb számlázási fogalom megértéséhez egy *keresési egység* (SU), azaz a számlázási egység az Azure search. Azure Search a replikák és partíciók függvényt is függ, mivel egy vagy egyéb számlázási nem bírnak. Ehelyett mindkét összetett számlázási alapul. Formulaically, egy a SU, amely a replika és a egy szolgáltatás által használt partíciók: (az R-X P = SU). Legalább 1 SU (egy másodpéldány egy partíciót megszorozza) kezdődik minden szolgáltatás, de realisztikusabb modell lehet, hogy egy 3 és a replikakiszolgáló, a 3-partition service 9 SUS-t számít. 
-
-Bár az egyes szintek fokozatosan nagyobb kapacitást biztosít, közzétehet egy online, a teljes kapacitás része a többi tulajdonában foglalás. A számlázás tekintetében, a partíciókat és -replikákat, hogy tenné online, számított képlettel a SU, amely meghatározza a ténylegesen kell fizetnie a száma.
-
-Számlázási ez óránként / SU, az egyes szintek különböző arány kellene. Értékeli az egyes szintek találhatók [díjszabása](https://azure.microsoft.com/pricing/details/search/).
-
-### <a name="limits"></a>Korlátok
+### <a name="more-about-service-limits"></a>További információ a szolgáltatásokra vonatkozó korlátozások
 
 -Szolgáltatások állomás erőforrások, például indexek, indexelők és így tovább. Az egyes csomagok közzétételével [szolgáltatási korlátozásaival](search-limits-quotas-capacity.md) hozhat létre erőforrások mennyisége. Egy korlát indexek (és más objektumok) száma mint ilyen, a második megkülönböztető funkció az szolgáltatásszinten. Az Áttekintés a portálon az egyes lehetőségek, vegye figyelembe a korlátlan számú indexet. További erőforrások, például az indexelők, adatforrásokat és szakértelmével, vannak rögzítve, és index korlátok.
 

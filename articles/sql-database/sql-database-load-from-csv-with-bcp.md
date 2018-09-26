@@ -1,27 +1,30 @@
 ---
-title: Adatok betöltése az CSV-fájl az Azure SQL Database (bcp) |} Microsoft Docs
+title: Adatok betöltése CSV-fájlból az Azure SQL Database (bcp) |} A Microsoft Docs
 description: Kisebb adatméret esetén a bcp segítségével importálhatja az adatokat az Azure SQL Database-be.
 services: sql-database
-author: CarlRabeler
-manager: craigg
 ms.service: sql-database
-ms.custom: load & move data
+ms.subservice: data-movement
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 04/01/2018
+author: CarlRabeler
 ms.author: carlrab
-ms.openlocfilehash: de25b3318a91a5dbf99a5a9c26af209224177f0f
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.reviewer: ''
+manager: craigg
+ms.date: 04/01/2018
+ms.openlocfilehash: b5039fc7cb6b9751bea9a88400c8a64308d447d6
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34649849"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47162899"
 ---
 # <a name="load-data-from-csv-into-azure-sql-database-flat-files"></a>Adatok betöltése CSV-fájlból az Azure SQL Database-be (egybesimított fájlok)
 A bcp parancssori segédprogram használatával adatokat importálhat egy CSV-fájlból az Azure SQL Database-be.
 
 ## <a name="before-you-begin"></a>Előkészületek
 ### <a name="prerequisites"></a>Előfeltételek
-Ebben a cikkben szereplő lépések elvégzéséhez szüksége:
+A jelen cikkben ismertetett lépések végrehajtásához szüksége:
 
 * Egy Azure SQL Database logikai kiszolgáló és adatbázis
 * Telepített bcp parancssori segédprogram
