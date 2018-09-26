@@ -16,11 +16,11 @@ ms.topic: conceptual
 ms.date: 06/15/2018
 ms.author: adpick
 ms.openlocfilehash: 094bfe041ae04e52b6d998ccfd1d964abf192d6a
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35931467"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47095099"
 ---
 # <a name="set-up-billing-or-credit-alerts-for-your-microsoft-azure-subscriptions"></a>A Microsoft Azure-előfizetések számlázási vagy -kreditemet riasztásainak beállítása
 Ha Ön a Fiókadminisztrátor az Azure-előfizetéssel, használja az Azure számlázási értesítési szolgáltatás elkészíthető testre szabott számlázási értesítőkkel figyelése és kezelése az Azure-fiókokhoz kapcsolódó számlázási tevékenység.

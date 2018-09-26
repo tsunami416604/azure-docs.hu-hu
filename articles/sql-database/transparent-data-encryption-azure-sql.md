@@ -2,23 +2,22 @@
 title: Transzparens adattitkosítás az Azure SQL Database és a Data Warehouse |} A Microsoft Docs
 description: Transzparens adattitkosítás az SQL Database és a Data Warehouse áttekintése. A dokumentum áttekint annak előnyeit és a konfigurációt, amely tartalmazza a szolgáltatás által kezelt transzparens adattitkosítás és Bring Your Own Key lehetőségeket.
 services: sql-database
-author: becczhang
-manager: craigg
-ms.prod: ''
-ms.reviewer: vanto
-ms.prod_service: sql-database, sql-data-warehouse
 ms.service: sql-database
-ms.tgt_pltfrm: ''
+ms.subservice: security
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 07/09/2018
+author: becczhang
 ms.author: aliceku
-monikerRange: = azuresqldb-current || = azure-sqldw-latest || = sqlallproducts-allversions
-ms.openlocfilehash: 8c1db822c1c0e7b91843687fdc1e6f6808cf60c1
-ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
+ms.reviewer: vanto
+manager: craigg
+ms.date: 07/09/2018
+ms.openlocfilehash: 50b433c65dec1f667f32aaf60148a6e393c67320
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45544162"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47165926"
 ---
 # <a name="transparent-data-encryption-for-sql-database-and-data-warehouse"></a>Transzparens adattitkosítás az SQL Database és a Data warehouse-bA
 

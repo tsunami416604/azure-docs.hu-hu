@@ -1,6 +1,6 @@
 ---
-title: Azure-beli árakról felhő rendszerhéj |} Microsoft Docs
-description: Azure Cloud rendszerhéj árképzési áttekintése
+title: Az Azure Cloud Shell díjszabása |} A Microsoft Docs
+description: Áttekintés az Azure Cloud Shell díjszabása
 services: ''
 documentationcenter: ''
 author: jluk
@@ -14,20 +14,20 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2017
 ms.author: juluk
-ms.openlocfilehash: 8c418a3681fa9d8ac70974ac2c0bcf1c826209aa
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 16f7327659a0f5fe542375a4b7e3232ee14bb17c
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2017
-ms.locfileid: "24809866"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47158650"
 ---
 # <a name="pricing"></a>Díjszabás
-A felhő rendszerhéj bash és PowerShell használatával a felhő rendszerhéj (előzetes verzió) alá az alábbi részleteket.
+A Cloud Shell bash és a Cloud Shellbeli PowerShell a rendszer az alábbi információkat.
 
-## <a name="compute-cost"></a>Számítási költség
-Azure Cloud rendszerhéj szabad Azure által biztosított gépen fut, de az Azure fájlmegosztások használata szükséges. 
+## <a name="compute-cost"></a>Számítási költségeit tartalmazza
+Az Azure Cloud Shell egy ingyenes, Azure által biztosított gépén futó, de egy Azure-fájlmegosztás használata szükséges. 
 
 ## <a name="storage-cost"></a>Tárolási költségek
-Felhő rendszerhéj szükséges egy új vagy meglévő Azure fájlok megosztási csatlakoztatni kell megőrizni a fájlok a munkamenetek között. Tárolási azt eredményezi, azok háromszorosa normál költségeket.
+A cloud Shell egy új vagy meglévő Azure-fájlmegosztási csatlakoztatnia kell a fájlok munkamenetek közötti megtartása a szükséges. Tárolási költségek rendszeres tekintetében.
 
-Ellenőrizze [itt talál részletes információt Azure fájlok költségek](https://azure.microsoft.com/pricing/details/storage/files/). 
+Ellenőrizze [itt az Azure Files költségek részleteiért](https://azure.microsoft.com/pricing/details/storage/files/). 

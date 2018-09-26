@@ -9,12 +9,12 @@ ms.technology: speech
 ms.topic: article
 ms.date: 04/28/2018
 ms.author: v-jerkin
-ms.openlocfilehash: e1a74828213b595e6955a750904de7a3c2a5a865
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 7ba62ce0cc2d391c96c31795aabaac9c8796f6d5
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44719086"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47165534"
 ---
 # <a name="create-a-custom-wake-word-by-using-the-speech-service"></a>Hozzon létre egy egyéni ébresztési szót a Speech szolgáltatással
 
@@ -57,7 +57,8 @@ Egy egyéni ébresztési szót az eszköz használata előtt létre kell hoznia 
 
     ![sikeresen jelentkezett be](media/speech-devices-sdk/wake-word-3.png)
  
-4. A **egyéni ébresztési Word** lap nem érhető el nyilvánosan, így nem áll fenn, amely végigvezeti van kapcsolat. Válassza ki, vagy inkább illessze be ezt a hivatkozást a: https://cris.ai/customkws.
+4. A **egyéni ébresztési Word** lap nem érhető el nyilvánosan, így nem áll fenn, amely vesz igénybe, hogy közvetlen kapcsolat. A Custom Speech funkcióhoz egy Azure-előfizetések, de nem az egyéni ébresztési Word funkció. Ha kapott a **nem találhatók előfizetések.** hibalap, csak cserélje le a **"előfizetések? errorMessage nincs % 20Subscriptions % 20found ="** az "**customkws**" a URL-cím és a találatok adjon meg. Az URL-cím ezek egyike lehet: https://westus.cris.ai/customkws, https://eastasia.cris.ai/customkws vagy https://northeurope.cris.ai/customkws, attól függően, ahol a régióban van.   
+
 
     ![Az egyéni ébresztési Word oldal rejtett](media/speech-devices-sdk/wake-word-4.png)
  

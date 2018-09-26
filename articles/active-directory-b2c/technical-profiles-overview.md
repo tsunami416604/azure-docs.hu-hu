@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: aad6aa788e9d7c7ca2c438bdeb63e77e91e4791a
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 496f411224a8d7424f85fed6e5eb105369863791
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44714476"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47161250"
 ---
 # <a name="about-technical-profiles-in-azure-active-directory-b2c-custom-policies"></a>Az Azure Active Directory B2C-vel egyéni szabályzatok műszaki profilokról
 
@@ -55,12 +55,10 @@ Az összes típusú technikai profil ossza meg ugyanazt a fogalmat fedi. A bemen
     - REST API hívása paraméterek küldjük InputClaims és OutputClaims; az adatok lekérdezése közben.
     - Hozzon létre vagy módosítsa a felhasználói fiókot.
     - Küld, és ellenőrzi az MFA üzenetre.
-4. **ValidationTechnicalProfiles** – egy [önálló kiszolgáló által megerősített technikai profil](self-asserted-technical-profile.md), meghívhatja egy bemeneti [ellenőrzési technikai profil](validation-technical-profile.md). Az ellenőrzési technikai profil érvényesíti a felhasználó által megadott adatok, és adja vissza egy hibaüzenet vagy az OK gombra, vagy a kimeneti jogcímek nélkül. Például az Azure AD B2C-vel hoz létre egy új fiókot, mielőtt azt ellenőrzi, hogy a felhasználó már szerepel a directory services. Segítségével meghívhatja a REST API-val technikai profil hozzáadása a saját üzleti logikája.
-5. **OutputClaims** -jogcímek a jogcímek tulajdonságcsomag vissza a rendszer retuned. A következő lépésben vezénylési használhatja azokat a jogcímeket, vagy a kimeneti jogcím-átalakítást.
-6. **OutputClaimsTransformations** – a bemeneti jogcímek minden kimenő jogcímek átalakítását, a jogcímek tulajdonságcsomag mértékének. A kimeneti jogcímek a technikai profil az előző lépésben, valamint a kimeneti jogcímek, az első lépésben a bemeneti jogcímek átalakítása egy kimeneti jogcímek átalakítását a bemeneti jogcímek között lehet. Végrehajtás után a kimeneti jogcímek kerüljenek vissza a jogcímek csomagban. A kimeneti jogcímek egy kimeneti jogcímek átalakítását a bemeneti jogcímek között, egy későbbi kimeneti jogcímek átalakítását is lehet.
-7. **ValidationTechnicalProfiles** – egy [technikai profil önellenőrzött](self-asserted-technical-profile.md), meghívhatja egy bemeneti [ellenőrzési technikai profil](validation-technical-profile.md). Az ellenőrzési technikai profil ellenőrzi a profilkészítés során létrehozott, a felhasználó által, és a egy hibaüzenet vagy az OK gombra, vagy a kimeneti jogcímek nélkül adja vissza. Például az Azure AD B2C-vel hoz létre egy új fiókot, mielőtt azt ellenőrzi, hogy a felhasználó már szerepel a directory services. Segítségével meghívhatja a REST API-val technikai profil hozzáadása a saját üzleti logikája.
-8. **OutputClaims** -jogcímek a jogcímek tulajdonságcsomag vissza a rendszer retuned. Ezeket a következő vezénylések lépéssel, vagy a kimeneti jogcímek átalakítása jogcímeket is használhatja.
-9. **OutputClaimsTransformations** – adjon meg minden kimeneti jogcímek [jogcím-átalakítás](claimstransformations.md) származó jogcímek zsák mértékének. A kimeneti jogcímek az előző lépésekben a technikai profil lehet egy kimeneti jogcímek átalakítását a bemeneti jogcímek között. Végrehajtás után a kimeneti jogcímek kerüljenek vissza a jogcímek csomagban. A kimeneti jogcímek egy kimeneti jogcímek átalakítását a bemeneti jogcímek között, egy későbbi kimeneti jogcímek átalakítását is lehet.
+4. **ValidationTechnicalProfiles** – egy [technikai profil önellenőrzött](self-asserted-technical-profile.md), meghívhatja egy bemeneti [ellenőrzési technikai profil](validation-technical-profile.md). Az ellenőrzési technikai profil ellenőrzi a profilkészítés során létrehozott, a felhasználó által, és a egy hibaüzenet vagy az OK gombra, vagy a kimeneti jogcímek nélkül adja vissza. Például az Azure AD B2C-vel hoz létre egy új fiókot, mielőtt azt ellenőrzi, hogy a felhasználó már szerepel a directory services. Segítségével meghívhatja a REST API-val technikai profil hozzáadása a saját üzleti logikája.<p>Az a technikai profil, amely meghívja az érvényesítési technikai profilban és egyéb ellenőrzési technikai profilok azonos technikai profil alatt a kimeneti jogcímek egy érvényesítési technikai profil hatókörének korlátozódik. Ha azt szeretné, a kimeneti jogcímek használata a következő lépésben vezénylési, hozzá kell a kimeneti jogcímek a műszaki profilba, amely meghívja az érvényesítési technikai profilban.
+5. **OutputClaims** -jogcímek a jogcímek tulajdonságcsomag vissza a rendszer retuned. Ezeket a következő vezénylések lépéssel, vagy a kimeneti jogcímek átalakítása jogcímeket is használhatja.
+6. **OutputClaimsTransformations** – adjon meg minden kimeneti jogcímek [jogcím-átalakítás](claimstransformations.md) származó jogcímek zsák mértékének. A kimeneti jogcímek az előző lépésekben a technikai profil lehet egy kimeneti jogcímek átalakítását a bemeneti jogcímek között. Végrehajtás után a kimeneti jogcímek kerüljenek vissza a jogcímek csomagban. A kimeneti jogcímek egy kimeneti jogcímek átalakítását a bemeneti jogcímek között, egy későbbi kimeneti jogcímek átalakítását is lehet.
+7. **Egyszeri bejelentkezés (SSO) munkamenet-kezelés** - [egyszeri bejelentkezés munkamenet-kezelés](active-directory-b2c-reference-sso-custom.md) szabályozza a felhasználó-szal, a felhasználó már rendelkezik hitelesítése után. Ha például a rendszergazda szabályozhatja jelenik-e a választott Identitásszolgáltatók meg, vagy hogy helyi fiók adatainak kell újra megadni.
 
 Egy technikai profil egy másik technikai profil beállításainak módosítása vagy hozzáadása az új funkciókat is örökli.  A **IncludeTechnicalProfile** elem egy hivatkozást az alap technikai profilban, amelyből technikai profil származik.  
 

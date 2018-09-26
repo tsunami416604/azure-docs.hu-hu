@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 09/25/2018
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.openlocfilehash: 69bf788ef30a18bbe70e251fdd6a814d0f528f55
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: e0a96d947bce579d2c1d7d31de83c7ef53eabd3a
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46994564"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47165806"
 ---
 # <a name="add-kubernetes-to-the-azure-stack-marketplace"></a>Adja hozzá a Kubernetes az Azure Stack piactéren
 
@@ -127,14 +127,20 @@ A Kubernetes elem frissítésekor távolítsa el a cikket, amely a Marketplace-e
 
 A Kubernetes-elem eltávolítása:
 
-1. Vegye figyelembe például az aktuális elem neve `Microsoft.AzureStackKubernetesCluster.0.2.0`
+1. Csatlakozhat az Azure Stack PowerShell-kezelőként. További útmutatást lásd: [csatlakozhat az Azure Stack a PowerShell-lel kezelőként](https://docs.microsoft.com/azure/azure-stack/azure-stack-powershell-configure-admin).
 
-1. Csatlakozás az Azure Stack PowerShell használatával.
-
-1. A következő PowerShell-parancsmag segítségével eltávolítja az elemet:
+2. Keresse meg az aktuális Kubernetes-fürt elemet a katalógusban.
 
     ```PowerShell  
-    $Itemname="Microsoft.AzureStackKubernetesCluster.0.2.0"
+    Get-AzsGalleryItem | Select Name
+    ```
+    
+3. Vegye figyelembe például az aktuális elem neve `Microsoft.AzureStackKubernetesCluster.0.2.0`
+
+4. A következő PowerShell-parancsmag segítségével eltávolítja az elemet:
+
+    ```PowerShell  
+    $Itemname="Microsoft.AzureStackKubernetesCluster.0.3.0"
 
     Remove-AzsGalleryItem -Name $Itemname
     ```

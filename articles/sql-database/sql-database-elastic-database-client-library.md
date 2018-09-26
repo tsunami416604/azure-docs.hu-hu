@@ -1,68 +1,71 @@
 ---
-title: A méretezhető felhőbeli adatbázisok létrehozása |} Microsoft Docs
-description: A rugalmas adatbázis ügyféloldali kódtár méretezhető .NET adatbázis alkalmazások létrehozása
+title: Skálázható felhőalapú adatbázisok készítése |} A Microsoft Docs
+description: Az elastic database-ügyfélkódtár méretezhető .NET adatbázis alkalmazások fejlesztése
 services: sql-database
-manager: craigg
-author: stevestein
 ms.service: sql-database
-ms.custom: scale out apps
+ms.subservice: scale-out
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 04/01/2018
+author: stevestein
 ms.author: sstein
-ms.openlocfilehash: 4a29af7d92dbf83672907af42d2222d9c7b1ef39
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.reviewer: ''
+manager: craigg
+ms.date: 04/01/2018
+ms.openlocfilehash: 15a16201f83cc9e7244eb0be9d4e185d5e1e3922
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34645038"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47165159"
 ---
 # <a name="building-scalable-cloud-databases"></a>Skálázható felhőalapú adatbázisok készítése
-Adatbázisok kiterjesztése könnyen elvégezhető méretezhető eszköz és funkció használata az Azure SQL Database. Különösen, használhatja a **Elastic Database ügyféloldali kódtárának** létrehozásához és kezeléséhez kiterjesztett adatbázisok. Ez a funkció lehetővé teszi, hogy könnyen fejleszthet a több száz használó szilánkos alkalmazások – vagy akár több ezer – az Azure SQL-adatbázisok. [Rugalmas feladat](sql-database-elastic-jobs-powershell.md) ezután felhasználhatók ezeknek az adatbázisoknak könnyű kezelés érdekében.
+Horizontális felskálázás adatbázisok egyszerűen elvégezhető méretezhető eszközök és funkciók használata az Azure SQL Database. Különösen is használhatja a **Elastic Database-ügyfélkódtár** , horizontálisan felskálázott adatbázisok létrehozása és kezelése. Ez a funkció lehetővé teszi, hogy Ön könnyen hozhat létre több száz használatával horizontálisan particionált alkalmazásokat – vagy akár több ezer – Azure SQL Database-adatbázisok. [Rugalmas feladatok](sql-database-elastic-jobs-powershell.md) ezután felhasználhatók ezeknek az adatbázisoknak a könnyű kezelés érdekében.
 
 Letöltése:
-* a Java verzióját a könyvtárban, lásd: [Maven központi tárházban](https://search.maven.org/#search%7Cga%7C1%7Celastic-db-tools).
-* a könyvtár a .NET változata: [NuGet](https://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Client/).
+* A Java-verzió a könyvtár, lásd: [Maven központi tárházból](https://search.maven.org/#search%7Cga%7C1%7Celastic-db-tools).
+* A könyvtár a .NET verzióját, lásd: [NuGet](https://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Client/).
 
 ## <a name="documentation"></a>Dokumentáció
 1. [Ismerkedés az Elastic Database-eszközökkel](sql-database-elastic-scale-get-started.md)
-2. [A rugalmas adatbázis-szolgáltatások](sql-database-elastic-scale-introduction.md)
+2. [Rugalmas adatbázis-szolgáltatások](sql-database-elastic-scale-introduction.md)
 3. [A szilánkleképezés kezelése](sql-database-elastic-scale-shard-map-management.md)
-4. [Telepítse át a meglévő adatbázisok kívánt réteget](sql-database-elastic-convert-to-use-elastic-tools.md)
+4. [Horizontális felskálázás meglévő adatbázisok migrálása](sql-database-elastic-convert-to-use-elastic-tools.md)
 5. [Adatfüggő útválasztás](sql-database-elastic-scale-data-dependent-routing.md)
-6. [Több shard lekérdezések](sql-database-elastic-scale-multishard-querying.md)
-7. [A rugalmas adatbázis-eszközökkel szilánkcímtárban hozzáadása](sql-database-elastic-scale-add-a-shard.md)
-8. [Több-bérlős alkalmazásokhoz a rugalmas adatbáziseszközöket és sorszintű biztonsággal](sql-database-elastic-tools-multi-tenant-row-level-security.md)
-9. [Szalagtár ügyfélalkalmazások frissítése](sql-database-elastic-scale-upgrade-client-library.md) 
-10. [Rugalmas lekérdezések – áttekintés](sql-database-elastic-query-overview.md)
+6. [Több horizontális partíciós lekérdezések](sql-database-elastic-scale-multishard-querying.md)
+7. [Rugalmas Adatbáziseszközök használatáról szilánk hozzáadása](sql-database-elastic-scale-add-a-shard.md)
+8. [Az elastic database-eszközökkel és a sorszintű biztonság több-bérlős alkalmazások](sql-database-elastic-tools-multi-tenant-row-level-security.md)
+9. [Ügyfélalkalmazások könyvtár frissítése](sql-database-elastic-scale-upgrade-client-library.md) 
+10. [Rugalmas lekérdezések áttekintése](sql-database-elastic-query-overview.md)
 11. [Rugalmas adatbáziseszközökkel kapcsolatos kifejezések](sql-database-elastic-scale-glossary.md)
-12. [Az Entity Framework rugalmas adatbázis ügyféloldali kódtár](sql-database-elastic-scale-use-entity-framework-applications-visual-studio.md)
-13. [A rugalmas adatbázis ügyféloldali kódtára a Dapper](sql-database-elastic-scale-working-with-dapper.md)
-14. [Vegyes egyesítéses eszköz](sql-database-elastic-scale-overview-split-and-merge.md)
+12. [Rugalmas adatbázis-ügyfélkódtárnak az Entity Framework](sql-database-elastic-scale-use-entity-framework-applications-visual-studio.md)
+13. [Elastic database ügyfélkódtár dapperrel](sql-database-elastic-scale-working-with-dapper.md)
+14. [Felosztási-egyesítési eszközének](sql-database-elastic-scale-overview-split-and-merge.md)
 15. [Teljesítményszámlálók a szilánkleképezés-kezelőhöz](sql-database-elastic-database-client-library.md) 
-16. [Gyakran ismételt kérdések a rugalmas adatbázis-eszközök](sql-database-elastic-scale-faq.md)
+16. [Elastic database-eszközökkel kapcsolatos gyakori kérdések](sql-database-elastic-scale-faq.md)
 
-## <a name="client-capabilities"></a>Ügyfél-képességek
-Használó alkalmazások kiterjesztése *horizontális* mind a fejlesztői, valamint a rendszergazda kihívást jelent. Az ügyféloldali kódtár mindkét fejlesztők számára lehetővé tevő eszközök biztosításával egyszerűsíti a a felügyeleti feladatokat, és kiterjesztett adatbázisok a rendszergazdák kezelik. Például nincsenek számos más adatbázis, "szilánkok," néven kezeléséhez. Az ügyfelek ugyanazon ugyanarra az adatbázisra, és egy adatbázisa ügyfél (single-bérlő séma) lehet. Az ügyféloldali kódtár ezeket a funkciókat tartalmazza:
+## <a name="client-capabilities"></a>Képességei
+Horizontális felskálázás használó alkalmazások *horizontális skálázási* mind a fejlesztő csakúgy, mint a rendszergazda kihívást jelent. Az ügyféloldali kódtár leegyszerűsíti a felügyeleti feladatokat biztosít eszközöket, amelyek lehetővé teszik mind a fejlesztők és rendszergazdák kezelése horizontálisan felskálázott adatbázisok. Egy tipikus példában nincsenek számos adatbázis kezelése "szegmensek" néven ismert. Ügyfelek ugyanabban az adatbázisban vannak elhelyezve, és (egy egybérlős rendszer) ügyfelenként egy adatbázis. Az ügyféloldali kódtár ezeket a funkciókat tartalmazza:
 
-- **A shard térkép felügyeleti**: a shard térkép "manager" különleges adatbázisban jön létre. A shard térkép felügyeleti azt a képességet a szilánkok metaadatainak kezelheti az alkalmazáshoz. Fejlesztők használhatják ezt a funkciót szilánkok adatbázisok regisztrálható, egyes horizontális kulcsok vagy kulcstartományokkal ezeket az adatbázisokat a leképezéseket leíró, és a metaadatok számának karbantartása, és az adatbázisok összeállítás fejlődésének kapacitás módosításokkal. A rugalmas adatbázis ügyféloldali kódtár nélkül kellene egy sok időt programozás a felügyeleti horizontális végrehajtása során. További információkért lásd: [Shard térkép felügyeleti](sql-database-elastic-scale-shard-map-management.md).
+- **Szilánkleképezés-kezelés**: a "szilánkleképezés-kezelő" nevű speciális adatbázis jön létre. Szilánkleképezés-kezelés arra, hogy az alkalmazás kezelheti a szegmenseket metaadatait. Fejlesztők használhatják ezt a funkciót szegmensek adatbázisok regisztrálásához, ismertetik a horizontális skálázás egyedi kulcsok vagy kulcstartományokkal ezeket az adatbázisokat a leképezések és karbantartása a számot a metaadatok és az adatbázisok összeállítás haladásával kapacitás változásainak. Az elastic database-ügyfélkódtár nélkül kellene fordítania rengeteg időt a felügyeleti kódírás, amikor a horizontális skálázás megvalósításáról. További információkért lásd: [Szilánkleképezés-kezelés](sql-database-elastic-scale-shard-map-management.md).
 
-- **Adatok függő útválasztási**: képzelhető el, az alkalmazás beérkező kérelem. A kérelem horizontális kulcs értéke alapján, az alkalmazás meg kell állapítania a megfelelő adatbázishoz, a kulcs értéke alapján. Majd nyílik meg a kapcsolat az adatbázissal feldolgozni a kérelmet. Adatok függő útválasztási lehetővé teszi a kapcsolatok megnyitni az alkalmazás a shard térkép egyetlen könnyen hívás. Adatok függő útválasztási lett egy másik olyan területen infrastruktúra kód, amely a rugalmas adatbázis ügyféloldali kódtár funkcióit mostantól mutatja. További információkért lásd: [adatok függő útválasztási](sql-database-elastic-scale-data-dependent-routing.md).
-- **Több shard lekérdezéseket (MSQ)**: több shard lekérdezése működik, amikor egy kérelem több (vagy az összes) szilánkok magában foglalja. Több shard lekérdezés ugyanazt a T-SQL-kódot minden szilánkok vagy egy a szilánkok hajtja végre. A programban részt vevő szilánkok eredményeinek egyesülnek egy átfogó eredménykészlet UNION ALL szemantika használatával. A funkciót, az ügyféloldali kódtár keresztül közzétett kezeli számos feladat, többek között: kapcsolat kezelése, a szál felügyeleti, a tartalék kezelése és a köztes eredmények feldolgozásakor. A szilánkok akár több száz MSQ kérdezheti le. További információkért lásd: [több shard lekérdezése](sql-database-elastic-scale-multishard-querying.md).
+- **Adatfüggő útválasztás**: Tegyük fel, az alkalmazás érkező kérelmet. A horizontális skálázási kulcs értékét a kérelem alapján, az alkalmazásnak kell meghatározni a megfelelő adatbázist, a kulcs értéke alapján. Majd megnyitja a kapcsolatot az adatbázis feldolgozni a kérelmet. Adatfüggő útválasztás lehetővé teszi az alkalmazás horizontális skálázási térképet be egyetlen egyszerű hívásával nyissa meg a kapcsolatok. Adatfüggő útválasztás volt az infrastruktúra kód, amelyet az elastic database-ügyfélkódtár funkcióit mostantól jelez egy másik területéhez. További információkért lásd: [Adatfüggő útválasztás](sql-database-elastic-scale-data-dependent-routing.md).
+- **Több horizontális partíciós lekérdezések (MSQ)**: több szegmensre vonatkozó lekérdezésekkel működik, ha a kérés magában foglalja a szegmensek több (vagy az összes). Többszegmenses lekérdezés végrehajtja ugyanazt a T-SQL-kódot minden szegmensre vagy készletekbe. Az eredményeket a programban részt vevő szegmensből egyesítve az összesített eredmény UNION ALL szemantika használatával. A funkciókat, mint az ügyféloldali kódtár keresztül közzétett kezeli számos feladat, többek között: kapcsolat kezelése, a szál felügyeleti, a hibák kezelése és a köztes eredményeket feldolgozása. MSQ lekérdezheti a szegmensek akár több száz. További információkért lásd: [több szegmensre vonatkozó lekérdezésekkel](sql-database-elastic-scale-multishard-querying.md).
 
-Általában rugalmas adatbázis-eszközt használó ügyfelek is alkalmasak funkcióját T-SQL helyi shard műveletek szemben, amelyek a saját szemantikája kereszt-shard műveletek elküldésekor.
+Általánosságban véve a rugalmas Adatbáziseszközök használatáról vezetjük teljes T-SQL-funkciók megszerezni a szilánkleképezés-helyi operations helyett a saját szemantikával rendelkező szegmensek közötti műveletek elküldésekor.
 
 
 
 ## <a name="next-steps"></a>További lépések
 
-- A rugalmas adatbázis ügyféloldali kódtár ([Java](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-elasticdb-tools%22), [.NET](http://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Client/)) – hogy **letöltése** a könyvtárban.
+- Elastic Database-Ügyfélkódtár ([Java](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-elasticdb-tools%22), [.NET](http://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Client/)) – annak **letöltése** a könyvtárban.
 
-- [Ismerkedés a rugalmas adatbáziseszközöket](sql-database-elastic-scale-get-started.md) – próbálja meg a **mintaalkalmazás** ügyfél funkciók azt mutatja be.
+- [Ismerkedés az elastic database-eszközök](sql-database-elastic-scale-get-started.md) – próbálja ki a **mintaalkalmazás** , amely bemutatja az ügyfél-funkciók.
 
-- GitHub ([Java](https://github.com/Microsoft/elastic-db-tools-for-java/blob/master/README.md), [.NET](https://github.com/Azure/elastic-db-tools)) – a kód hozzájárulások végrehajtásához.
-- [Az Azure SQL Database rugalmas lekérdezési áttekintése](sql-database-elastic-query-overview.md) - rugalmas lekérdezések használata.
+- GitHub ([Java](https://github.com/Microsoft/elastic-db-tools-for-java/blob/master/README.md), [.NET](https://github.com/Azure/elastic-db-tools)) – javaslatokhoz a kódot.
+- [Az Azure SQL Database rugalmas lekérdezésének áttekintése](sql-database-elastic-query-overview.md) – rugalmas lekérdezések használatához.
 
-- [Adatok áthelyezése másik kiterjesztett felhő adatbázisok](sql-database-elastic-scale-overview-split-and-merge.md) - használatával a **vegyes egyesítéses eszköz**.
+- [Adatok mozgatása kiterjesztett felhőalapú adatbázisok között](sql-database-elastic-scale-overview-split-and-merge.md) – útmutató használatához a **felosztási-egyesítési eszközének**.
 
 
 

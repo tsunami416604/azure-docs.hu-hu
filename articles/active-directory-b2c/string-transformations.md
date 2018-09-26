@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 54812ed8b53143d8fa156149bfb2c7adff7da98d
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: b731b280b3e97076014f609571766a07a3dde1ea
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44381551"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47159890"
 ---
 # <a name="string-claims-transformations"></a>Karakterlánc jogcím-átalakítás
 
@@ -150,7 +150,7 @@ A jogcím-átalakítás való használatát egy karakterlánc takar érték beá
 
 ## <a name="compareclaims"></a>CompareClaims
 
-Megállapításához, hogy egy karakterlánc jogcím egy másik egyenlő. Az eredmény egy új logikai takar logikai értékkel `true` vagy `false`.
+Megállapításához, hogy egy karakterlánc jogcím egy másik egyenlő. Az eredmény egy új logikai takar értékkel `true` vagy `false`.
 
 | Elem | TransformationClaimType | Adattípus | Megjegyzések |
 | ---- | ----------------------- | --------- | ----- |

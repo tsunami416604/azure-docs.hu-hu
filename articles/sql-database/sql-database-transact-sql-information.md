@@ -2,19 +2,22 @@
 title: T-SQL különbségek-áttelepítés – Azure SQL Database feloldása |} A Microsoft Docs
 description: Nem teljes mértékben támogatott Transact-SQL-utasítások az Azure SQL Database-ben
 services: sql-database
-author: CarlRabeler
-manager: craigg
 ms.service: sql-database
-ms.custom: migrate
+ms.subservice: ''
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 09/14/2018
+author: CarlRabeler
 ms.author: carlrab
-ms.openlocfilehash: 440605806915d515d2a60556a9c298b29e0fca8c
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.reviewer: ''
+manager: craigg
+ms.date: 09/14/2018
+ms.openlocfilehash: dfff51d7541ffdc2d279b238a6d993d5e29515f0
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45735428"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47160707"
 ---
 # <a name="resolving-transact-sql-differences-during-migration-to-sql-database"></a>Transact-SQL különbségek feloldása az SQL Database-migráció során   
 Amikor [az adatbázis migrálása](sql-database-cloud-migrate.md) SQL Serverről Azure SQL-kiszolgálón, azt tapasztalhatja, hogy az adatbázis futtatásához szükséges néhány újratervezéséhez előtt az SQL Server telepíthetők át. Ez a cikk segítséget nyújt a végrehajtása a újratervezéséhez és miért szükséges a újratervezéséhez az alapul szolgáló okok megértéséhez is útmutatást nyújt. Kompatibilitási problémák észleléséhez használja a [Data Migration Assistant (DMA)](https://www.microsoft.com/download/details.aspx?id=53595).

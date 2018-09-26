@@ -11,14 +11,14 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.custom: ''
 ms.workload: infrastructure-services
-ms.date: 09/24/2018
+ms.date: 09/26/2018
 ms.author: victorh
-ms.openlocfilehash: 5d051ed049964af708056e2963f04cb478c15906
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: ab1c9405042de02183b8742fa940a3a5a482923a
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46951508"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47165229"
 ---
 # <a name="autoscaling-and-zone-redundant-application-gateway-public-preview"></a>Automatikus skálázás és zónaredundáns az Application Gateway (nyilvános előzetes verzió)
 
@@ -54,6 +54,7 @@ Az előzetes időszakban nem jár költségekkel. Díjköteles az erőforrások 
 |Web application firewall automatikus skálázás|WAF nem támogatja az automatikus skálázási mód. Rögzített kapacitás módban támogatott.|
 
 ## <a name="next-steps"></a>További lépések
+- [Az automatikus skálázás, a zóna redundáns az application gateway létrehozása foglalt virtuális IP-címmel rendelkező Azure PowerShell-lel](tutorial-autoscale-ps.md)
 - Tudjon meg többet [Application Gateway](overview.md).
 - Tudjon meg többet [Azure tűzfal](../firewall/overview.md). 
 

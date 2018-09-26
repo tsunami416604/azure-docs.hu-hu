@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 09/17/2018
 ms.author: sethm
 ms.reviewer: sijuman
-ms.openlocfilehash: 8bebec23d7a0199d8efbc55b3cde50c628306f01
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 1b63a75a2505ecbd82896932018ef4f0936b9b37
+ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47034368"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47182892"
 ---
 # <a name="manage-api-version-profiles-in-azure-stack"></a>Az Azure Stackben API-verzióprofilok kezelése
 
@@ -77,6 +77,7 @@ A fejlesztők összpontosíthat a megoldás írása. Ahelyett, hogy melyik api-v
 
 Megtalálhatja a segítséget nyújtanak a választott nyelven az Azure Stack-profilok használatával a megoldás integrálása Kódminták. Jelenleg található útmutatás és példák a következő nyelveken:
 
+- **.NET** a .NET API-profil segítségével egy erőforrás-szolgáltatói csomag az egyes erőforrástípusok legújabb és legnagyobb stabil verziójának beszerzéséhez. További információkért lásd: [a .NET-tel az Azure Stack használata API-verzióprofilok](azure-stack-version-profiles-net.md).
 - **PowerShell**  
 Használhatja a **AzureRM.Bootstrapper** modul elérhető a PowerShell-galériából, a PowerShell-parancsmagok használata API-verzióprofilok kell lekérni. További információ: [használata API-verzióprofilok PowerShell](azure-stack-version-profiles-powershell.md).
 - **Azure CLI**  

@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 04/10/2018
 ms.reviewer: daviste
 ms.author: mbullwin
-ms.openlocfilehash: 2157af8d6c3b8eea372c060a70c78559d8ffe6ad
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ms.openlocfilehash: 30ef00fa1bfd2933df5e5c966cb8266d7c598a47
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35645003"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47162168"
 ---
 # <a name="application-insights-cohorts"></a>Application Insights kohorszok
 
@@ -110,7 +110,7 @@ Az előző két kohorszok legördülő listák használatával lettek definiálv
 
     * Lekérdezés szakaszban, ahol megadhatja a kohorsz analytics-lekérdezések használatával.
 
-    A lekérdezés szakaszban Ön [analytics-lekérdezések írása](https://docs.loganalytics.io/index). A lekérdezés kijelöli az egyes sorok, amelyek ismertetik a kohorsz szeretne meghatározni. A Kohorszok eszközzel implicit módon hozzáad egy "|} a lekérdezés összegzés szempontja a USER_ID paraméter értékét"záradékot. Ezek az adatok megtekintésekor alatt a lekérdezés egy táblázatban, így biztos lehet benne, a lekérdezési eredményeket adja vissza.
+    A lekérdezés szakaszban Ön [analytics-lekérdezések írása](/azure/kusto/query). A lekérdezés kijelöli az egyes sorok, amelyek ismertetik a kohorsz szeretne meghatározni. A Kohorszok eszközzel implicit módon hozzáad egy "|} a lekérdezés összegzés szempontja a USER_ID paraméter értékét"záradékot. Ezek az adatok megtekintésekor alatt a lekérdezés egy táblázatban, így biztos lehet benne, a lekérdezési eredményeket adja vissza.
 
     > [!NOTE]
     > Ha nem látja a lekérdezést, és próbálja ki a szakaszt, hogy magasabb, és a lekérdezés felfedheti átméretezése. Az animált .gif, ez a szakasz elején átméretezési működését mutatja be.

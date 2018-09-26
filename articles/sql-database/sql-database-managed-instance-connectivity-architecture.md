@@ -1,23 +1,23 @@
 ---
 title: Az Azure SQL Database felügyelt példány kapcsolati architektúra |} A Microsoft Docs
 description: Ez a cikk az Azure SQL Database felügyelt példányába kommunikációs áttekintését, és kapcsolati architektúra, valamint ismerteti, hogy hogyan a különböző összetevők működéséhez a felügyelt példánynak forgalom.
-keywords: ''
 services: sql-database
-author: srdan-bozovic-msft
-manager: craigg
 ms.service: sql-database
-ms.subservice: managed instance
+ms.subservice: managed-instance
 ms.custom: ''
-ms.date: 08/16/2018
+ms.devlang: ''
+ms.topic: conceptual
+author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: bonova, carlrab
-ms.topic: conceptual
-ms.openlocfilehash: 56a1e7038515a64f1dfe3fda639213bcfcde63d6
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+manager: craigg
+ms.date: 08/16/2018
+ms.openlocfilehash: 312425d3ea02d15a992b9a694f09cb2be73b6221
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44053431"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47161590"
 ---
 # <a name="azure-sql-database-managed-instance-connectivity-architecture"></a>Az Azure SQL Database felügyelt példány kapcsolati architektúra 
 

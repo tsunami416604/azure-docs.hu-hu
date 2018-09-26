@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/15/2018
 ms.author: abnarain
-ms.openlocfilehash: 7cd5fc965a57052323d4b916f0f2b7dbc0feb7b3
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: e22d26850114162c6dbd38797071120d388ac6b0
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44715414"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47162270"
 ---
 # <a name="how-to-create-and-configure-self-hosted-integration-runtime"></a>Hogyan hozhat létre, és a helyi integrációs modul konfigurálása
 Az Integration Runtime (IR) a különböző hálózati környezetekben adatintegrációs képességeket biztosít az Azure Data Factory által használt számítási infrastruktúra áll. Integrációs modul kapcsolatos részletekért lásd: [Integration Runtime áttekintése](concepts-integration-runtime.md).
@@ -187,18 +187,20 @@ Az adat-Előállítóban, amelyhez az engedélyeket megadta,
 
 1. Alapértelmezett száma társított integrációs modul egy saját üzemeltetésű integrációs modul alatt létrehozható **20**. Ha szüksége van több majd forduljon az ügyfélszolgálathoz. 
 
-2. Az adat-előállítót, társított integrációs modul van, amelyben a létrehozandó rendelkeznie kell egy olyan MSI Csomaghoz ([felügyeltszolgáltatás-identitás](https://docs.microsoft.com/azure/active-directory/managed-service-identity/overview)). Alapértelmezés szerint az adat-előállítók Ibiza portálon létrehozott, vagy a PowerShell-parancsmagokat kell MSI implicit módon létrehozva. Azonban bizonyos esetekben létrehozásakor a data factory használatával az Azure Resorce Manager-sablon vagy az SDK-t a "**identitás**" **tulajdonságot be kell állítani** explicit módon az Azure Resorce Manager létrehoz egy adat-előállító biztosítása egy olyan MSI Csomaghoz tartalmazó. 
+2. Az adat-előállítót, társított integrációs modul van, amelyben a létrehozandó rendelkeznie kell egy olyan MSI Csomaghoz ([felügyeltszolgáltatás-identitás](https://docs.microsoft.com/azure/active-directory/managed-service-identity/overview)). Alapértelmezés szerint a data factoryt az Azure Portalon létrehozott, vagy PowerShell-parancsmagokat kell MSI implicit módon létrehozva. Azonban bizonyos esetekben létrehozásakor a data factory használatával az Azure Resorce Manager-sablon vagy az SDK-t a "**identitás**" **tulajdonságot be kell állítani** explicit módon az Azure Resorce Manager létrehoz egy adat-előállító biztosítása egy olyan MSI Csomaghoz tartalmazó. 
 
 3. A saját üzemeltetésű integrációs modul verzióját egyenlő vagy nagyobb, mint 3.8.xxxx.xx kell lennie. Adjon [a legújabb verzió letöltéséhez](https://www.microsoft.com/download/details.aspx?id=39717) saját üzemeltetésű integrációs modul
 
-4. Az adat-előállítót, társított integrációs modul van, amelyben a létrehozandó rendelkeznie kell egy olyan MSI Csomaghoz ([felügyeltszolgáltatás-identitás](https://docs.microsoft.com/azure/active-directory/managed-service-identity/overview)). Alapértelmezés szerint az Ibiza portal vagy a PowerShell-parancsmagokkal létrehozott adat-előállítók MSI lesz ([felügyeltszolgáltatás-identitás](https://docs.microsoft.com/azure/active-directory/managed-service-identity/overview)).
-létrehozott implicit módon, azonban az Azure Resource Manager (ARM) sablon vagy az SDK használatával létrehozott adat-előállítók kell állítani annak érdekében, hogy egy MSI-csomag létrehozása "Identity" tulajdonság.
+4. Az adat-előállítót, társított integrációs modul van, amelyben a létrehozandó rendelkeznie kell egy olyan MSI Csomaghoz ([felügyeltszolgáltatás-identitás](https://docs.microsoft.com/azure/active-directory/managed-service-identity/overview)). Alapértelmezés szerint az Azure Portalon vagy a PowerShell-parancsmagokkal létrehozott adat-előállítók MSI lesz ([felügyeltszolgáltatás-identitás](https://docs.microsoft.com/azure/active-directory/managed-service-identity/overview)).
+  implicit módon létrehozva, azonban az Azure Resource Manager-sablon vagy az SDK használatával létrehozott adat-előállítók szükséges "**identitás**" tulajdonságot kell beállítani ahhoz, hogy egy MSI-csomag létrehozása.
 
 5. Az ADF .net SDK, amely támogatja ezt a funkciót az verziója > = 1.1.0-s
 
 6. Az Azure PowerShell, amely támogatja ezt a funkciót az verziója > = 6.6.0 (AzureRM.DataFactoryV2 > = 0.5.7)
 
-7. Engedélyt adni a felhasználó "Owner" vagy az adat-előállítót, ahol a megosztott integrációs modul létezik-e a "Tulajdonos" örökölt szerepkör szükséges. 
+7. Engedélyt adni a felhasználónak kell "**tulajdonosa**" szerepkör vagy az örökölt "**tulajdonosa**" szerepkör a Data factoryban, ahol a megosztott integrációs modul létezik. 
+
+8. Az Active Directory  **[vendégfelhasználók](https://docs.microsoft.com/azure/active-directory/governance/manage-guest-access-with-access-reviews)** a keresési funkciókat (keresési kulcsszó használatával minden adat-előállítók listázása), a felhasználói felületen [nem működik](https://msdn.microsoft.com/library/azure/ad/graph/howto/azure-ad-graph-api-permission-scopes#SearchLimits). Mindaddig, amíg a meghívott felhasználónak van, de a "**tulajdonosa**"a Data Factory meg is oszthatják az integrációs modul nélkül a keresési funkciókat közvetlenül írja be a felügyelt Felügyeltszolgáltatás-identitás, amellyel az integrációs modul kell oszthatók meg az adat-előállító"**Hozzárendelése Pemission**"szövegmezőbe, majd válasszon"**Hozzáadás**"az ADF felhasználói felületén. 
 
   > [!NOTE]
   > Ez a funkció csak érhető el az Azure Data Factory 2-es verzió 

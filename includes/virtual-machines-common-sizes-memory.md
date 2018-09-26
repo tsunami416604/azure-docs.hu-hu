@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/06/2018
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
-ms.openlocfilehash: c2ef24692f9166fdca7eb19f648aee9ed3b0514f
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.openlocfilehash: c3b9422ebdb0a5d93f92644d9fea5d9c5ba9fa29
+ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40026213"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47186093"
 ---
 Az optimalizált Virtuálisgép-méretek ajánlat egy magas memória – Processzor aránya, amelyek ideális választás relációs adatbázis-kiszolgálókhoz, közepes és nagy gyorsítótárakhoz és memóriabeli elemzésekhez. Ez a cikk ismerteti a vcpu-k, az adatlemezeket és a hálózati adapterek, valamint tárolási átviteli sebesség és a hálózati sávszélességet az ennél a csoportosításnál méreteire vonatkoztatva számát. 
 
@@ -26,7 +26,7 @@ Az optimalizált Virtuálisgép-méretek ajánlat egy magas memória – Process
 
 * Az Ev3-sorozat funkciók E5-2673 v4 (Broadwell) 2,3 GHz processzor egy hyper-threaded konfigurációban, így a legtöbb általános célú számítási feladatok esetében jobb értékajánlat, és az Ev3 üzembe igazítását az általános célú virtuális gépek a legtöbb más felhőkben.  Memória (a 7, 8 GiB/vCPU GiB/vCPU) ki lett terjesztve, amíg a lemez és a hálózati korlátok hozzá lett igazítva, helyezze át a Hyper-Threading technológia igazodva magonként alapon.  Az Ev3 a követés, akár a D/Dv2 családok magas memóriahasználat Virtuálisgép-méretek.
 
-* Azure-beli számítási kínál a virtuális gép mérete, amely egy adott hardverekhez típusát, és egyetlen ügyfél számára fenntartott elkülönített vannak.  Ezek a virtuálisgép-méretek legalkalmasabbak elemeket, például a megfelelőségi és szabályozási követelmények járó számítási feladatok elkülönítése más felhasználóktól magas fokú megkövetelő számítási feladatokhoz.  Ügyfelek is kiválaszthatják a ezek elkülönített virtuálisgép-erőforrások vertikálisan tovább particionálhatja a [beágyazott virtuális gépek Azure-támogatás](https://azure.microsoft.com/en-us/blog/nested-virtualization-in-azure/).  Tekintse át a táblákat, az elkülönített Virtuálisgép-beállítások az alábbi virtuálisgép-családot.
+* Az Azure Compute olyan virtuálisgép-méreteket kínál, amelyek egy meghatározott hardvertípusban vannak elkülönítve, és egyetlen ügyfél számára vannak fenntartva.  Ezek a virtuálisgép-méretek olyan számítási feladatokhoz megfelelőek, amelyeket magas szintű izolációval szükséges elkülöníteni más ügyfelek számítási feladataitól, beleértve olyan elemeket is mint a megfelelőség vagy a jogszabályi előírások betartása.  Ügyfelek is kiválaszthatják a ezek elkülönített virtuálisgép-erőforrások vertikálisan tovább particionálhatja a [beágyazott virtuális gépek Azure-támogatás](https://azure.microsoft.com/en-us/blog/nested-virtualization-in-azure/).  Tekintse át a táblákat, az elkülönített Virtuálisgép-beállítások az alábbi virtuálisgép-családot.
 
 ## <a name="esv3-series"></a>Az Esv3-adatsorok 
 
@@ -45,6 +45,7 @@ Az ESv3-sorozat példányai a 2,3 GHz-es Intel XEON ® E5-2673 v4 (Broadwell) pr
 | Standard_E4s_v3&nbsp;<sup>2</sup> | 4      | 32          | 64             | 8              | 8,000 / 64 (100)                                                      | 6,400 / 96                                | 2 / 2,000                                   |
 | Standard_E8s_v3&nbsp;<sup>2</sup> | 8      | 64          | 128            | 16             | 16,000 / 128 (200)                                                    | 12,800 / 192                              | 4 / 4,000                                       |
 | Standard_E16s_v3&nbsp;<sup>2</sup> | 16     | 128         | 256            | 32             | 32,000 / 256 (400)                                                    | 25,600 / 384                              | 8 / 8,000                                       |
+| Standard_E20s_v3&nbsp;<sup>2</sup> | 20     | 160         | 320            | 32             | 40 000 / 320 (400)                                                    | 32 000 / 480                              | 8 / 10 000                                       |
 | Standard_E32s_v3&nbsp;<sup>2</sup> | 32     | 256         | 512            | 32             | 64,000 / 512 (800)                                                    | 51,200 / 768                              | 8 / 16,000                             |
 | Standard_E64s_v3&nbsp;<sup>2</sup> | 64     | 432         | 864            | 32             | 128,000/1024 (1600)                                                   | 80,000 / 1200                             | 8 / 30,000                             |
 | Standard_E64is_v3&nbsp;<sup>3</sup> | 64     | 432         | 864            | 32             | 128,000/1024 (1600)                                                   | 80,000 / 1200                             | 8 / 30,000                             |
@@ -76,6 +77,7 @@ Az adatlemezes tárolást a virtuális gépektől függetlenül számlázzuk. Pr
 | Standard_E4_v3  | 4         | 32          | 100            | 8              | 6000/93/46                                               | 2 / 2,000                 |
 | Standard_E8_v3  | 8         | 64          | 200            | 16             | 12000/187/93                                             | 4 / 4,000                     |
 | Standard_E16_v3 | 16        | 128         | 400            | 32             | 24000/375/187                                            | 8 / 8,000                     |
+| Standard_E20_v3 | 20        | 160         | 500            | 32             | 30000/469/234                                            | 8 / 10 000                     |
 | Standard_E32_v3 | 32        | 256         | 800            | 32             | 48000/750/375                                            | 8 / 16,000                 |
 | Standard_E64_v3 | 64        | 432         | 1600           | 32             | 96000/1000/500                                           | 8 / 30,000           |
 | Standard e64i v3&nbsp;<sup>2,&nbsp;3</sup> | 64        | 432         | 1600           | 32             | 96000/1000/500                                           | 8 / 30,000           |

@@ -1,5 +1,5 @@
 ---
-title: Adjon hozzá egy több-bérlős Azure ad-ben identitásszolgáltatótól az egyéni szabályzatok használatával az Azure Active Directory B2C |} A Microsoft Docs
+title: Jelentkezzen be az Azure Active Directory B2C-vel egyéni szabályzatok használatával egy több-bérlős Azure AD-identitásszolgáltató beállítása |} A Microsoft Docs
 description: Adjon hozzá egy több-bérlős Azure ad-ben identitásszolgáltatótól az egyéni szabályzatok – Azure Active Directory B2C használatával.
 services: active-directory-b2c
 author: davidmu1
@@ -7,230 +7,189 @@ manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 04/14/2018
+ms.date: 09/20/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 68eab85c7f67ad3af18c6066c29e1250e1be3d23
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: 009baf154aa0df51df168bccb92c3d9fe9859686
+ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43344406"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47182603"
 ---
-# <a name="azure-active-directory-b2c-allow-users-to-sign-in-to-a-multi-tenant-azure-ad-identity-provider-using-custom-policies"></a>Az Azure Active Directory B2C: Engedélyezése a felhasználók számára, hogy jelentkezzen be egy több-bérlős Azure ad-ben identitásszolgáltatótól az egyéni szabályzatok használatával
+# <a name="set-up-sign-in-for-multi-tenant-azure-active-directory-using-custom-policies-in-azure-active-directory-b2c"></a>Állítsa be a bejelentkezési több-bérlős Azure Active Directory az Azure Active Directory B2C-vel egyéni szabályzatok használatával
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Ez a cikk bemutatja, hogyan bejelentkezés engedélyezése a felhasználók számára a több-bérlős végpont használata az Azure Active Directory (Azure AD) használatával [egyéni szabályzatok](active-directory-b2c-overview-custom.md). Így a felhasználók több Azure AD-bérlő minden bérlő műszaki szolgáltató konfigurálása nélkül bejelentkezni az Azure AD B2C-vel. Azonban a tagjai bármely ezeket a bérlők vendég **nem lesz** tud bejelentkezni. Ehhez el [külön-külön konfigurálása mindegyik bérlő](active-directory-b2c-setup-aad-custom.md).
+Ez a cikk bemutatja, hogyan bejelentkezés engedélyezése a felhasználók számára a több-bérlős végpont használata az Azure Active Directory (Azure AD) használatával [egyéni szabályzatok](active-directory-b2c-overview-custom.md) Azure AD B2c-ben. Így a felhasználók több Azure AD-bérlő minden bérlő műszaki szolgáltató konfigurálása nélkül bejelentkezni az Azure AD B2C-vel. Azonban a tagjai bármely ezeket a bérlők vendég **nem lesz** tud bejelentkezni. Ehhez meg kell [külön-külön konfigurálása mindegyik bérlő](active-directory-b2c-setup-aad-custom.md).
 
 >[!NOTE]
-> A szervezeti használjuk a "contoso.com" Azure AD-bérlő és a "fabrikamb2c.onmicrosoft.com" a következő utasítások az Azure AD B2C-bérlő.
+>`Contoso.com` a szervezeti használt Azure AD-bérlő és `fabrikamb2c.onmicrosoft.com` használja a következő utasítások az Azure AD B2C-bérlő.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A lépések elvégzéséhez a [Ismerkedés az egyéni szabályzatok](active-directory-b2c-get-started-custom.md) cikk.
+Hajtsa végre a [az Azure Active Directory B2C-vel egyéni szabályzatok – első lépések](active-directory-b2c-get-started-custom.md).
 
-Ezeket a lépéseket tartalmazza:
-     
-1. Az Azure Active Directory B2C létrehozása (Azure AD B2C) bérlő.
-1. Az Azure AD B2C-alkalmazás létrehozása.    
-1. Két csoportházirend-motor alkalmazás regisztrálásakor.  
-1. Kulcsok beállításához. 
-1. Az alapszintű csomag beállítása.
+## <a name="register-an-application"></a>Egy alkalmazás regisztrálása
 
-## <a name="step-1-create-a-multi-tenant-azure-ad-app"></a>1. lépés Egy több-bérlős Azure AD-alkalmazás létrehozása
-
-Bejelentkezés engedélyezése a felhasználók számára a több-bérlős Azure AD-végpont használatával, meg kell egy regisztrált az Azure AD-bérlőt egy több-bérlős alkalmazást. Ebben a cikkben bemutatjuk, hogyan lehet egy több-bérlős Azure AD-alkalmazás létrehozása az Azure AD B2C-bérlőben. Ezután bejelentkezés engedélyezése a felhasználók számára, hogy több-bérlős Azure AD-alkalmazás használatával.
+Ahhoz, hogy jelentkezzen be egy meghatározott felhasználók számára az Azure AD a szervezeten belül, kell regisztrálni egy alkalmazást a szervezeti Azure AD-bérlővel.
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-1. Az a felső menüsávon válassza a fiókját. Az a **Directory** menüben válassza ki az Azure AD B2C-bérlő regisztrálásához az Azure AD-alkalmazás (fabrikamb2c.onmicrosoft.com).
-1. Válassza ki **további szolgáltatások** a bal oldali panelen, és keresse meg az "Alkalmazásregisztrációk".
-1. Válassza az **Új alkalmazás regisztrálása** elemet.
-1. Adja meg az alkalmazás nevét (például `Azure AD B2C App`).
-1. Válassza a **Webalkalmazás/API** lehetőséget az alkalmazás típusaként.
-1. A **bejelentkezési URL-**, adja meg a következő URL-címet, ahol `yourtenant` váltotta fel az Azure AD B2C-bérlő neve (`fabrikamb2c.onmicrosoft.com`):
-
-    >[!NOTE]
-    >"Yourtenant" értéke csak kisbetűket a a **bejelentkezési URL-**.
+2. Győződjön meg arról, hogy használja a könyvtárat, amely tartalmazza a szervezeti Azure AD-bérlő (contoso.com) kattintva a **címtár és előfizetés-szűrő** a felső menüben, és a könyvtár, amely tartalmazza a bérlő kiválasztása.
+3. Válasszon **minden szolgáltatás** az Azure Portalon, és majd keresse meg és válassza a bal felső sarkában lévő **alkalmazásregisztrációk**.
+4. Válassza az **Új alkalmazás regisztrálása** elemet.
+5. Adjon meg egy nevet az alkalmazásnak. Például: `Azure AD B2C App`.
+6. Az a **alkalmazástípus**válassza `Web app / API`.
+7. A a **bejelentkezési URL-**, adja meg a következő URL-cím csupa kisbetűvel, ahol `your-tenant` váltja fel az Azure AD B2C-bérlő (fabrikamb2c.onmicrosoft.com) nevére:
 
     ```
-    https://yourtenant.b2clogin.com/te/yourtenant.onmicrosoft.com/oauth2/authresp
+    https://yourtenant.b2clogin.com/your-tenant.onmicrosoft.com/oauth2/authresp
     ```
+    
+8. Kattintson a **Create** (Létrehozás) gombra. Másolás a **Alkalmazásazonosító** későbbi felhasználás céljából.
+9. Válassza ki az alkalmazást, és válassza **beállítások**.
+10. Válassza ki **kulcsok**, adja meg a kulcs leírása, és válassza ki az időtartamot, majd kattintson a **mentése**. Másolja későbbi felhasználás jelenik meg a kulcs értékét.
+11. Alatt **beállítások**válassza **tulajdonságok**állítsa be **több-bérlős** a `Yes`, és kattintson a **mentése**
 
-1. Mentse az alkalmazás azonosítója.
-1. Válassza ki az újonnan létrehozott alkalmazást.
-1. Alatt a **beállítások** panelen válassza ki **tulajdonságok**.
-1. Állítsa be **több-bérlős** való **Igen**.
-1. Alatt a **beállítások** panelen válassza ki **kulcsok**.
-1. Hozzon létre egy új kulcsot, és mentse azt. A következő szakasz lépései alkalmaznak.
+## <a name="create-a-policy-key"></a>Hozzon létre egy házirendjének kulcsa
 
-## <a name="step-2-add-the-azure-ad-key-to-azure-ad-b2c"></a>2. lépés Adja meg az Azure AD-kulcsot az Azure AD B2C-vel
+Kell tárolni, amelyet az Azure AD B2C-bérlő az alkalmazáskulcsot.
 
-Az Azure AD B2C beállításaiban az alkalmazáskulcsot regisztrálnia kell. Ehhez tegye a következőket:
+1. Győződjön meg arról, hogy használja az Azure AD B2C-bérlő kattintva tartalmazó könyvtárba a **címtár és előfizetés-szűrő** a felső menüben, és a könyvtár, amely tartalmazza a bérlő kiválasztása.
+2. Válasszon **minden szolgáltatás** az Azure Portalon, és majd keresse meg és válassza a bal felső sarkában lévő **Azure AD B2C-vel**.
+3. Az Áttekintés oldalon válassza ki a **identitás-kezelőfelületi keretrendszer – előzetes verzió**.
+4. Válassza ki **Szabályzatbejegyzések** majd **Hozzáadás**.
+5. A **beállítások**, válassza a `Manual`.
+6. Adjon meg egy **neve** a házirend-kulcs. Például: `ContosoAppSecret`.  Az előtag `B2C_1A_` automatikusan hozzáadódik a kulcs neve.
+7. A **titkos**, adja meg a korábban feljegyzett alkalmazáskulcsot.
+8. A **kulcshasználat**válassza `Signature`.
+9. Kattintson a **Create** (Létrehozás) gombra.
 
-1. Az Azure AD B2C nyissa meg a beállítások menü
-1. Kattintson a **identitás-kezelőfelületi keretrendszer** > **Szabályzatbejegyzések**.
-1. Válassza ki **+ Hozzáadás**.
-1. Válassza ki vagy adja meg ezeket a beállításokat:
-   * Válassza ki **manuális**.
-   * A **neve**, válasszon egy nevet, amely megfelel az Azure AD-bérlő neve (például `AADAppSecret`).  Az előtag `B2C_1A_` automatikusan hozzáadódik a kulcs neve.
-   * Illessze be az alkalmazáskulcsot az a **titkos** mezőbe.
-   * Válassza ki **aláírás**.
-1. Kattintson a **Létrehozás** gombra.
-1. Győződjön meg arról, hogy a kulcs létrehozott `B2C_1A_AADAppSecret`.
+## <a name="add-a-claims-provider"></a>A jogcímeket szolgáltató hozzáadása
 
-## <a name="step-3-add-a-claims-provider-in-your-base-policy"></a>3. lépés A kiinduló szabályzatban egy jogcímszolgáltatótól hozzáadása
+Ha azt szeretné, hogy a felhasználók számára, hogy jelentkezzen be az Azure AD használatával, definiálhatja egy jogcímszolgáltatótól, amely az Azure AD B2C-végponton keresztül képes kommunikálni az Azure AD szeretne. A végpont ellenőrzése, hogy egy adott felhasználó rendelkezik hitelesítése Azure AD B2C által használt jogcímeket biztosít. 
 
-Ha azt szeretné, hogy a felhasználók számára, hogy jelentkezzen be az Azure AD használatával, definiálhatja az Azure AD egy jogcímszolgáltatótól szeretne. Más szóval meg kell adnia egy végpontot, amely az Azure AD B2C-vel kommunikál. A végpont, győződjön meg arról, hogy egy adott felhasználó rendelkezik hitelesítése Azure AD B2C által használt jogcímeket biztosít. 
+Meghatározhatja az Azure AD egy jogcímszolgáltatótól, az Azure AD-hozzáadásával a **ClaimsProvider** elem a bővítmény fájlban a szabályzat.
 
-Meghatározhatja az Azure AD egy jogcímszolgáltatótól, az Azure AD-hozzáadásával a `<ClaimsProvider>` csomópont a szabályzat a bővítmény fájlban:
+1. Nyissa meg a *TrustFrameworkExtensions.xml*.
+2. Keresse meg a **ClaimsProviders** elemet. Ha nem létezik, adja hozzá a legfelső szintű elem alatt.
+3. Vegyen fel egy új **ClaimsProvider** módon:
 
-1. A bővítményfájl (TrustFrameworkExtensions.xml) nyissa meg a munkakönyvtár.
-1. Keresse meg a `<ClaimsProviders>` szakaszban. Ha nem létezik, adja hozzá a legfelső szintű csomópontja alatt.
-1. Vegyen fel egy új `<ClaimsProvider>` csomópont az alábbiak szerint:
-
-```XML
-<ClaimsProvider>
-  <Domain>commonaad</Domain>
-  <DisplayName>Common AAD</DisplayName>
-  <TechnicalProfiles>
-    <TechnicalProfile Id="Common-AAD">
-      <DisplayName>Multi-Tenant AAD</DisplayName>
-      <Protocol Name="OpenIdConnect" />
-      <Metadata>
-        <!-- Update the Client ID below to the Application ID -->
-        <Item Key="client_id">00000000-0000-0000-0000-000000000000</Item>
-        <Item Key="UsePolicyInRedirectUri">0</Item>
-        <Item Key="METADATA">https://login.microsoftonline.com/common/.well-known/openid-configuration</Item>
-        <Item Key="response_types">code</Item>
-        <Item Key="scope">openid</Item>
-        <Item Key="response_mode">form_post</Item>
-        <Item Key="HttpBinding">POST</Item>
-        <Item Key="DiscoverMetadataByTokenIssuer">true</Item>
+    ```XML
+    <ClaimsProvider>
+      <Domain>commonaad</Domain>
+      <DisplayName>Common AAD</DisplayName>
+      <TechnicalProfiles>
+        <TechnicalProfile Id="Common-AAD">
+          <DisplayName>Multi-Tenant AAD</DisplayName>
+          <Protocol Name="OpenIdConnect" />
+          <Metadata>
+            <!-- Update the Client ID below to the Application ID -->
+            <Item Key="client_id">00000000-0000-0000-0000-000000000000</Item>
+            <Item Key="UsePolicyInRedirectUri">0</Item>
+            <Item Key="METADATA">https://login.microsoftonline.com/common/.well-known/openid-configuration</Item>
+            <Item Key="response_types">code</Item>
+            <Item Key="scope">openid</Item>
+            <Item Key="response_mode">form_post</Item>
+            <Item Key="HttpBinding">POST</Item>
+            <Item Key="DiscoverMetadataByTokenIssuer">true</Item>
         
-        <!-- The key below allows you to specify each of the Azure AD tenants that can be used to sign in. Update the GUIDs below for each tenant. -->
-        <Item Key="ValidTokenIssuerPrefixes">https://sts.windows.net/00000000-0000-0000-0000-000000000000,https://sts.windows.net/11111111-1111-1111-1111-111111111111</Item>
+            <!-- The key below allows you to specify each of the Azure AD tenants that can be used to sign in. Update the GUIDs below for each tenant. -->
+            <Item Key="ValidTokenIssuerPrefixes">https://sts.windows.net/00000000-0000-0000-0000-000000000000,https://sts.windows.net/11111111-1111-1111-1111-111111111111</Item>
 
-        <!-- The commented key below specifies that users from any tenant can sign-in. Uncomment if you would like anyone with an Azure AD account to be able to sign in. -->
-        <!-- <Item Key="ValidTokenIssuerPrefixes">https://sts.windows.net/</Item> -->
+            <!-- The commented key below specifies that users from any tenant can sign-in. Uncomment if you would like anyone with an Azure AD account to be able to sign in. -->
+            <!-- <Item Key="ValidTokenIssuerPrefixes">https://sts.windows.net/</Item> -->
+          </Metadata>
+          <CryptographicKeys>
+            <!-- Make sure to update the reference ID of the client secret below you just created (B2C_1A_AADAppSecret) -->
+            <Key Id="client_secret" StorageReferenceId="B2C_1A_AADAppSecret" />
+          </CryptographicKeys>
+          <OutputClaims>
+            <OutputClaim ClaimTypeReferenceId="authenticationSource" DefaultValue="socialIdpAuthentication" />
+            <OutputClaim ClaimTypeReferenceId="identityProvider" PartnerClaimType="iss" />
+            <OutputClaim ClaimTypeReferenceId="socialIdpUserId" PartnerClaimType="sub" />
+            <OutputClaim ClaimTypeReferenceId="displayName" PartnerClaimType="name" />
+            <OutputClaim ClaimTypeReferenceId="givenName" PartnerClaimType="given_name" />
+            <OutputClaim ClaimTypeReferenceId="surName" PartnerClaimType="family_name" />
+            <OutputClaim ClaimTypeReferenceId="email" />
+          </OutputClaims>
+          <OutputClaimsTransformations>
+            <OutputClaimsTransformation ReferenceId="CreateRandomUPNUserName" />
+            <OutputClaimsTransformation ReferenceId="CreateUserPrincipalName" />
+            <OutputClaimsTransformation ReferenceId="CreateAlternativeSecurityId" />
+            <OutputClaimsTransformation ReferenceId="CreateSubjectClaimFromAlternativeSecurityId" />
+          </OutputClaimsTransformations>
+          <UseTechnicalProfileForSessionManagement ReferenceId="SM-SocialLogin" />
+        </TechnicalProfile>
+      </TechnicalProfiles>
+    </ClaimsProvider>
+    ```
 
-      </Metadata>
-      <CryptographicKeys>
-      <!-- Make sure to update the reference ID of the client secret below you just created (B2C_1A_AADAppSecret) -->
-        <Key Id="client_secret" StorageReferenceId="B2C_1A_AADAppSecret" />
-      </CryptographicKeys>
-      <OutputClaims>
-        <OutputClaim ClaimTypeReferenceId="authenticationSource" DefaultValue="socialIdpAuthentication" />
-        <OutputClaim ClaimTypeReferenceId="identityProvider" PartnerClaimType="iss" />
-        <OutputClaim ClaimTypeReferenceId="socialIdpUserId" PartnerClaimType="sub" />
-        <OutputClaim ClaimTypeReferenceId="displayName" PartnerClaimType="name" />
-        <OutputClaim ClaimTypeReferenceId="givenName" PartnerClaimType="given_name" />
-        <OutputClaim ClaimTypeReferenceId="surName" PartnerClaimType="family_name" />
-        <OutputClaim ClaimTypeReferenceId="email" />
-      </OutputClaims>
-      <OutputClaimsTransformations>
-        <OutputClaimsTransformation ReferenceId="CreateRandomUPNUserName" />
-        <OutputClaimsTransformation ReferenceId="CreateUserPrincipalName" />
-        <OutputClaimsTransformation ReferenceId="CreateAlternativeSecurityId" />
-        <OutputClaimsTransformation ReferenceId="CreateSubjectClaimFromAlternativeSecurityId" />
-      </OutputClaimsTransformations>
-      <UseTechnicalProfileForSessionManagement ReferenceId="SM-SocialLogin" />
-    </TechnicalProfile>
-  </TechnicalProfiles>
-</ClaimsProvider>
-```
+4. Alatt a **ClaimsProvider** elem, frissítse az értéket a **tartomány** egyedi értéket, hogy megkülönböztesse a más identitásszolgáltatókkal is használható.
+5. Alatt a **TechnicalProfile** elem, frissítse az értéket a **DisplayName**. Ez az érték a bejelentkezés gombot a bejelentkezési képernyőn jelenik meg.
+6. Állítsa be **client_id** , az Azure ad-ben mulity-tenant alkalmazásregisztráció Alkalmazásazonosítója.
 
-1. Alatt a `<ClaimsProvider>` csomópont, frissítse az értéket a `<Domain>` egyedi értéket, hogy megkülönböztesse a más identitásszolgáltatókkal is használható.
-1. Alatt a `<TechnicalProfile>` csomópont, frissítse az értéket a `<DisplayName>`. Ez az érték a Bejelentkezés gombra a bejelentkezési képernyőn jelennek meg.
-1. Frissítse az értéket a `<Description>`.
-1. Állítsa be `<Item Key="client_id">` , az Azure ad-ben mulity-tenant alkalmazásregisztráció Alkalmazásazonosítója.
-
-### <a name="step-31-restrict-access-to-a-specific-list-of-azure-ad-tenants"></a>Az Azure AD-bérlőt egy adott lista hozzáférés korlátozása 3.1. lépés
+### <a name="restrict-access"></a>Hozzáférés korlátozása
 
 > [!NOTE]
-> Használatával `https://sts.windows.net` értékeként **ValidTokenIssuerPrefixes** lehetővé teszi az összes Azure AD-felhasználók bejelentkeznie az alkalmazásba.
+> Használatával `https://sts.windows.net` értékeként **ValidTokenIssuerPrefixes** lehetővé teszi, hogy az összes Azure AD-felhasználók jelentkezzen be az alkalmazást.
 
-Token az érvényes kiállítók listáját, és korlátozza a hozzáférést adott listájához is bejelentkeznek az Azure AD-bérlőt kell. Szerezze be az értékeket, szüksége lesz a metaadatokat az egyes az adott meg, hogy szeretné, hogy a felhasználók Azure AD-bérlőt jelentkezhessen be. Az adatok formátumának a következőhöz hasonló: `https://login.windows.net/yourAzureADtenant/.well-known/openid-configuration`, ahol `yourAzureADtenant` az Azure AD-bérlő neve (contoso.com vagy bármely más Azure AD-bérlővel) van.
-1. Nyissa meg a böngészőt, és nyissa meg a metaadatok URL-címe.
-1. A böngészőben keresse meg a "kiállító" objektumot, és másolja az értéket. A következőhöz hasonlóan kell kinéznie: `https://sts.windows.net/{tenantId}/`.
-1. Illessze be az értéket a `ValidTokenIssuerPrefixes` kulcsot. Több, vesszővel elválasztva adhat hozzá. Erre példa a minta XML fenti van ellátva.
+Token az érvényes kiállítók listáját, és korlátozza a hozzáférést egy adott listához bejelentkezhet az Azure AD bérlő felhasználók kell. Az értékek beszerzéséhez nézze meg a metaadatok mindegyike az adott kell bejelentkezni, hogy szeretné, hogy a felhasználók Azure AD-bérlőt. Az adatok formátumának a következőhöz hasonló: `https://login.windows.net/your-tenant/.well-known/openid-configuration`, ahol `your-tenant` az Azure AD-bérlő neve (contoso.com vagy bármely más Azure AD-bérlővel) van.
 
-## <a name="step-4-register-the-azure-ad-account-claims-provider"></a>4. lépés Az Azure ad-ben fiók jogcím-szolgáltató regisztrálása
+1. Nyissa meg a böngészőt, és nyissa meg a **METAADATOK** URL-címet, és keresse meg a **kibocsátó** objektumot, és másolja az értéket. A következőhöz hasonlóan kell kinéznie: `https://sts.windows.net/tenant-id/`.
+2. Másolja és illessze be az értéket a **ValidTokenIssuerPrefixes** kulcsot. Több, vesszővel elválasztva adhat hozzá. Erre példa a minta XML fenti van ellátva.
 
-### <a name="step-41-make-a-copy-of-the-user-journey"></a>4.1. lépés a felhasználói út másolatot készíteni.
+### <a name="upload-the-extension-file-for-verification"></a>Az ellenőrzéshez a bővítmény-fájl feltöltése
 
-Most szüksége az Azure ad-ben identitásszolgáltató hozzáadása a felhasználói utak egyike. Ezen a ponton az identitásszolgáltató be lett állítva, de nem érhető el az összes regisztrálási-regisztrálási vagy bejelentkezési képernyőt.
+Már konfigurálta a szabályzatot, hogy az Azure AD B2C-vel képes kommunikálni az Azure AD-címtárhoz. A szabályzat csak, győződjön meg arról, hogy minden problémát, amennyiben nem rendelkezik a bővítmény fájlt töltsön fel.
 
-Elérhető legyen, rendszer létrehoz egy meglévő sablon felhasználói interakciósorozat másolatát, és ezután módosítsa, hogy az Azure ad-ben identitásszolgáltató is rendelkezik:
+1. Az a **egyéni szabályzatok** az Azure AD B2C-bérlő, válassza a lap **szabályzat feltöltése**.
+2. Engedélyezése **szabályzat felülírása, ha létezik**, és keresse meg és válassza ki a *TrustFrameworkExtensions.xml* fájlt.
+3. Kattintson a **Feltöltés** gombra.
 
-1. Nyissa meg a szabályzat (például TrustFrameworkBase.xml) alapszintű fájlt.
-1. Keresse meg a `<UserJourneys>` elem és a teljes másolási `<UserJourney>` tartalmazó csomópont `Id="SignUpOrSignIn"`.
-1. Nyissa meg a kiterjesztésű fájlt (például TrustFrameworkExtensions.xml), és keresse meg a `<UserJourneys>` elemet. Ha az elem nem létezik, adjon hozzá egyet.
-1. Illessze be a teljes `<UserJourney>` csomópont gyermekeként kimásolt a `<UserJourneys>` elemet.
-1. Nevezze át az új felhasználói interakciósorozat azonosítója (mint például nevezze át `SignUpOrSignUsingAzureAD`). 
+## <a name="register-the-claims-provider"></a>A jogcím-szolgáltató regisztrálása
 
-### <a name="step-42-display-the-button"></a>A "gombot" lépés 4.2 megjelenítése
+Ezen a ponton az identitásszolgáltató be lett állítva, de nem érhető el az összes regisztrálási-regisztrálási vagy bejelentkezési képernyőt. Elérhető legyen, hozzon létre egy meglévő sablon felhasználói interakciósorozat másolatát, és ezután módosítsa, hogy az Azure ad-ben identitásszolgáltató is rendelkezik.
 
-A `<ClaimsProviderSelection>` elem ehhez hasonló regisztrálási-regisztrálási vagy bejelentkezési képernyőn egy identitás szolgáltató a gombhoz. Ha hozzáad egy `<ClaimsProviderSelection>` elem az Azure ad-ben, egy új gomb megjelenik-e, amikor egy felhasználó hajtanak végre az oldalon. Ez az elem hozzáadása:
+1. Nyissa meg a *TrustFrameworkBase.xml* az alapszintű csomag fájlt.
+2. Keresse meg és másolja ki a teljes tartalmát a **UserJourney** , amely tartalmazza az elem `Id="SignUpOrSignIn"`.
+3. Nyissa meg a *TrustFrameworkExtensions.xml* , és keresse meg a **UserJourneys** elemet. Ha az elem nem létezik, adjon hozzá egyet.
+4. Illessze be a teljes tartalmát a **UserJourney** gyermekeként kimásolt elem a **UserJourneys** elemet.
+5. Nevezze át a felhasználói út azonosítója. Például: `SignUpSignInContoso`.
 
-1. Keresse meg a `<OrchestrationStep>` tartalmazó csomópont `Order="1"` az Ön által létrehozott felhasználói interakciósorozat.
-1. Adja hozzá a következőket:
+### <a name="display-the-button"></a>A gomb megjelenítése
+
+A **hiányzik a ClaimsProviderSelection** elem ehhez hasonló regisztrálási-regisztrálási vagy bejelentkezési képernyőn egy identitás szolgáltató a gombhoz. Ha hozzáad egy **hiányzik a ClaimsProviderSelection** elem az Azure ad-ben, egy új gomb megjelenik-e, amikor egy felhasználó hajtanak végre az oldalon.
+
+1. Keresse meg a **OrchestrationStep** , amely tartalmazza az elem `Order="1"` az Ön által létrehozott felhasználói interakciósorozat.
+2. A **ClaimsProviderSelects**, adja hozzá a következő elemet. Állítsa az értékét **TargetClaimsExchangeId** egy megfelelő értéket, például a `AzureADExchange`:
 
     ```XML
     <ClaimsProviderSelection TargetClaimsExchangeId="AzureADExchange" />
     ```
 
-1. Állítsa be `TargetClaimsExchangeId` egy megfelelő értékre. Javasoljuk, hogy kövesse a, a többi felületéével azonos konvenciókat követnek:  *\[ClaimProviderName\]Exchange*.
+### <a name="link-the-button-to-an-action"></a>A gomb összekapcsolása egy műveletet
 
-### <a name="step-43-link-the-button-to-an-action"></a>A gombra kattintva művelet 4.3. lépés-hivatkozás
+Most, hogy egyetlen helyen, amelyekkel hozzákapcsolhatja egy műveletet kell. A művelet, ebben az esetben pedig az Azure AD B2C-vel való kommunikációhoz, az Azure ad-vel fogadhatnak jogkivonatot. A gomb csatolása egy műveletet az Azure ad-ben jogcím-szolgáltatói összekapcsolásának a technikai profil.
 
-Most, hogy egyetlen helyen, amelyekkel hozzákapcsolhatja egy műveletet kell. A művelet, ebben az esetben pedig az Azure AD B2C-vel való kommunikációhoz, az Azure ad-vel fogadhatnak jogkivonatot. A gomb összekapcsolása egy műveletet az Azure ad-ben jogcím-szolgáltatói összekapcsolásának a technikai profil:
-
-1. Keresse meg a `<OrchestrationStep>` tartalmazó `Order="2"` a a `<UserJourney>` csomópont.
-1. Adja hozzá a következőket:
+1. Keresse meg a **OrchestrationStep** tartalmazó `Order="2"` a felhasználói interakciósorozatban szereplő.
+2. Adja hozzá a következő **ClaimsExchange** gondoskodik róla, hogy ugyanazt az értéket használt elem **azonosító** során használt **TargetClaimsExchangeId**:
 
     ```XML
     <ClaimsExchange Id="AzureADExchange" TechnicalProfileReferenceId="Common-AAD" />
     ```
+    
+    Frissítse az értéket a **TechnicalProfileReferenceId** , a **azonosító** a korábban létrehozott technikai profil. Például: `Common-AAD`.
 
-1. Frissítés `Id` ugyanarra az értékre, mint a `TargetClaimsExchangeId` az előző szakaszban.
-1. Frissítés `TechnicalProfileReferenceId` a technikai profil azonosítója létrehozott korábbi (közös – AAD).
+3. Mentse a *TrustFrameworkExtensions.xml* fájlt, és töltse fel újra az ellenőrzéshez.
 
-## <a name="step-5-create-a-new-rp-policy"></a>5. lépés: Új RP-házirend létrehozása
 
-Akkor most frissítenie kell a függő entitásonkénti (RP) fájl, megkezdődik az imént létrehozott felhasználói interakciósorozatban:
- 
-1. A munkakönyvtárban SignUpOrSignIn.xml másolatot készíteni, és nevezze át (például nevezze át a SignUpOrSignInWithAAD.xml).  
-1. Nyissa meg az új fájlt, és frissítse a `PolicyId` az attribútum `<TrustFrameworkPolicy>` egyedi értékkel (például SignUpOrSignInWithAAD). Ez lesz a házirend nevét (például a B2C\_1A\_SignUpOrSignInWithAAD). 
-1. Módosítsa a `ReferenceId` attribútum `<DefaultUserJourney>` megfelelően (SignUpOrSignUsingAzureAD) létrehozott új felhasználói interakciósorozat azonosítója. 
-1. Mentse a módosításokat, és töltse fel a fájlt. 
+## <a name="update-and-test-the-relying-party-file"></a>Frissítse és a függő entitás fájl tesztelése
 
-## <a name="step-6-upload-the-policy-to-your-tenant"></a>6. lépés: A szabályzat feltöltése a bérlőhöz
+Frissítse a függő entitásonkénti (RP) fájl, amely az Ön által létrehozott felhasználói interakciósorozat kezdeményezi.
 
-1. Az a [az Azure portal](https://portal.azure.com), váltson át a [az Azure AD B2C-bérlője kontextusában](active-directory-b2c-navigate-to-b2c-context.md), majd válassza ki **Azure AD B2C-vel**.
-1. Válassza ki **identitás-kezelőfelületi keretrendszer**.
-1. Válassza ki **összes szabályzat**.
-1. Válassza ki **szabályzat feltöltése**.
-1. Válassza ki a **szabályzat felülírása, ha létezik** jelölőnégyzetet.
-1. Töltse fel a `TrustFrameworkExtensions.xml` és az RP-fájlt (pl. `SignUpOrSignInWithAAD.xml`) és ellenőrizze, hogy azok megfelelnek az ellenőrzés.
-
-## <a name="step-7-test-the-custom-policy-by-using-run-now"></a>7. lépés: Az egyéni házirend tesztelése a Futtatás most
-
-1. Válassza ki **Azure AD B2C-beállítások**, majd válassza ki **identitás-kezelőfelületi keretrendszer**.
-    > [!NOTE]
-    > Futtatás most kell előzetesen regisztrálva, a bérlő legalább egy alkalmazás szükséges. Megtudhatja, hogyan regisztrálja az alkalmazást, tekintse meg az Azure AD B2C [Ismerkedés](active-directory-b2c-get-started.md) cikk vagy a [alkalmazásregisztráció](active-directory-b2c-app-registration.md) cikk.
-
-1. Nyissa meg a függő entitásonkénti (RP) egyéni házirend-feltöltött (*B2C\_1A\_SignUpOrSignInWithAAD*), majd válassza ki **Futtatás most**.
-1. Most kell tudni az Azure AD-fiók használatával jelentkezzen be.
-
-## <a name="optional-step-8-register-the-azure-ad-account-claims-provider-to-the-profile-edit-user-journey"></a>(Nem kötelező) 8. lépés: Regisztráljon az Azure ad-ben fiók jogcímszolgáltató Profilmódosítás felhasználói interakciósorozat
-
-Emellett érdemes az Azure ad-ben fiók identitásszolgáltató hozzáadása a `ProfileEdit` felhasználói interakciósorozat. A felhasználói út elérhetővé, ismételje meg az 4 – 6. Ezúttal válassza a `<UserJourney>` tartalmazó csomópont `Id="ProfileEdit"`. Mentse, töltse fel, és tesztelje a házirendet.
-
-## <a name="troubleshooting"></a>Hibaelhárítás
-
-Diagnosztizálhatja a problémákat, olvassa el [hibaelhárítási](active-directory-b2c-troubleshoot-custom.md).
-
-## <a name="next-steps"></a>További lépések
-
-Visszajelzést küldhet [ AADB2CPreview@microsoft.com ](mailto:AADB2CPreview@microsoft.com).
+1. Készítsen másolatot *SignUpOrSignIn.xml* a munkakönyvtárban, és nevezze át. Például nevezze át, hogy *SignUpSignContoso.xml*.
+2. Nyissa meg az új fájlt, és frissítse az értéket, a **PolicyId** az attribútum **TrustFrameworkPolicy** egyedi értékkel. Például: `SignUpSignInContoso`.
+3. Frissítse az értéket a **PublicPolicyUri** URI-a szabályzat. Ha például`http://contoso.com/B2C_1A_signup_signin_contoso`
+4. Frissítse az értéket, a **hivatkozásazonosító** attribútum **DefaultUserJourney** megfelelően (SignUpSignContoso) létrehozott új felhasználói interakciósorozat azonosítója.
+5. Mentse a módosításokat, a fájl feltöltéséhez, tesztelje azt megnyitásával, és kattintson a **Futtatás most**.

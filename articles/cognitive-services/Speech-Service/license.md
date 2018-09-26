@@ -9,18 +9,18 @@ ms.topic: article
 ms.component: speech-service
 ms.date: 09/24/2018
 ms.author: wolfma
-ms.openlocfilehash: 6e5f3128a6a62ef27bdc0d24ddda0afc54d78b03
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 9a56b50e8bd01c8eab9e8935b0d250f1b0da59bc
+ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46994751"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47181844"
 ---
 # <a name="microsoft-software-license-termsbrmicrosoft-cognitive-services-speech-sdk"></a>MICROSOFT SZOFTVERLICENC-SZERZŐDÉS<br>A MICROSOFT COGNITIVE SERVICES BESZÉDFELISMERŐ SDK
 
 **HA ÉL (VAGY A FŐ ÜZLETI HELYÉT EGY ÜZLETI) AZ EGYESÜLT ÁLLAMOKBAN, KÉRJÜK, OLVASSA EL AZ ALÁBBI "KÖTÉS VÁLASZTOTTBÍRÓSÁGI ELJÁRÁS ZÁRADÉKA ÉS PERINDÍTÁSRÓL LEMONDÁS" SZAKASZT. BEFOLYÁSOLJA A VITÁS ÜGYEK MEGOLDÁSÁRÓL.**
 
-Ezeket a licencfeltételeket, és a Microsoft Corporation között (vagy annak egyik társvállalata). Ezek a feltételek a fent megnevezett előzetes verziójú szoftver és bármely Microsoft szoftverfrissítésre vonatkoznak (kivéve a mértékben ezen szolgáltatások vagy frissítések egészül ki új vagy további feltételekkel, ebben az esetben új jövőre a alkalmazni használati feltételek nem módosítja a a vagy A Microsoft jogait az előre frissített szoftverekkel vagy). HA EZEKET A LICENCFELTÉTELEKET AHHOZ, HOGY AZ ALÁBBIAKBAN ISMERTETETT JOGOKAT. A SZOFTVER HASZNÁLATÁVAL ÖN ELFOGADJA EZEKET A FELTÉTELEKET.
+Ezeket a licencfeltételeket, és a Microsoft Corporation között (vagy annak egyik társvállalata). A fent megnevezett szoftverre, és bármely Microsoft szoftverfrissítésre vonatkoznak (kivéve a mértékben ezen szolgáltatások vagy frissítések egészül ki új vagy további feltételekkel, ebben az esetben új jövőre a alkalmazni használati feltételek nem módosítja a a vagy A Microsoft jogait az előre frissített szoftverekkel vagy). HA EZEKET A LICENCFELTÉTELEKET AHHOZ, HOGY AZ ALÁBBIAKBAN ISMERTETETT JOGOKAT.  A SZOFTVER HASZNÁLATÁVAL ÖN ELFOGADJA EZEKET A FELTÉTELEKET.
 
 ## <a name="1-installation-and-use-rights"></a>1. TELEPÍTÉSI ÉS HASZNÁLATI JOGOK.
 

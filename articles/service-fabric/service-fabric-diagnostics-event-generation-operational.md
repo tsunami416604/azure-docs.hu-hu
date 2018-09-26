@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/25/2018
 ms.author: dekapur
-ms.openlocfilehash: 3e12acb670d1f23c8ccfc6f4ea1b6e8aff5abee7
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: da4a779bca806fe6aa392db96eafc6c20f8ddcf6
+ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46365587"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47182161"
 ---
 # <a name="list-of-service-fabric-events"></a>A Service Fabric-események listája 
 
@@ -88,7 +88,7 @@ Itt érhető el az összes esemény listáját a platformon, az entitást, amely
 
 | EventId | Name (Név) | Leírás |Forrás (feladat) | Szint | Verzió |
 | --- | --- | ---| --- | --- | --- |
-| 18602 | ServiceCreated | Egy új szolgáltatás létrehozása | AZ FM | Tájékoztató | 1 |
+| 18657 | ServiceCreated | Egy új szolgáltatás létrehozása | AZ FM | Tájékoztató | 1 |
 | 18658 | ServiceDeleted | Egy meglévő szolgáltatás törlése | AZ FM | Tájékoztató | 1 |
 
 ## <a name="partition-events"></a>Partíció események

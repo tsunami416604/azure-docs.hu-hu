@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 9/20/2018
 ms.author: anandh
-ms.openlocfilehash: 587540430dc4089973186c2862f402ccde73df65
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: f79be44d33a327f3ead8d950885cb5d47ce3a015
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47047642"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47163805"
 ---
 # <a name="performance-diagnostics-for-azure-virtual-machines"></a>Azure-beli virtuális gépek a teljesítménybeli problémák diagnosztizálása
 
@@ -35,15 +35,15 @@ Windows 10, Windows 8, Windows 8 Enterprise, Windows 8 Pro, Windows 8.1, Windows
 
 ## <a name="install-and-run-performance-diagnostics-on-your-vm"></a>Telepítse és futtassa a teljesítménybeli problémák diagnosztizálása a virtuális Gépen
 Teljesítménybeli problémák diagnosztizálása telepíti a VM-bővítmény, amely egy diagnosztikai eszköz nevű [PerfInsights](https://aka.ms/perfinsights). Telepítse és futtassa a teljesítménybeli problémák diagnosztizálása, kövesse az alábbi lépéseket:
-1)  Válassza a bal oldali oszlopban, a parancsok, **virtuális gépek**.
-2)  Egy virtuális gép neve a listából válassza ki a diagnosztika futtatása kívánt virtuális Gépet.
-3)  Válassza ki a jobb oldali oszlopban, a parancsok, **teljesítménybeli problémák diagnosztizálása**.
+1.  Válassza a bal oldali oszlopban, a parancsok, **virtuális gépek**.
+1.  Egy virtuális gép neve a listából válassza ki a diagnosztika futtatása kívánt virtuális Gépet.
+1.  Válassza ki a jobb oldali oszlopban, a parancsok, **teljesítménybeli problémák diagnosztizálása**.
 
     ![Képernyőkép az Azure portal, a telepítés teljesítmény diagnosztikai gomb kiemelésével](media/performance-diagnostics/performance-diagnostics-install.png)
 
     > [!NOTE]
     > A képernyőfelvételen a virtuális gép neve panel el van rejtve.
-4) Válassza ki a storage-fiók (nem kötelező)
+1. Válassza ki a storage-fiók (nem kötelező)
 
     Ha azt szeretné, egyetlen tárfiókban használata a teljesítmény diagnosztikai eredmények tárolására több virtuális gép, tárfiók kattintva kiválaszthatja a **beállítások** gomb az eszköztáron. Kattintson a **OK** gombra, miután a storage-fiókot.
 
@@ -53,8 +53,8 @@ Teljesítménybeli problémák diagnosztizálása telepíti a VM-bővítmény, a
 
     ![Tárolási fiók kiválasztása a teljesítmény diagnosztikai beállítások panel képernyőképe](media/performance-diagnostics/select-storage-account.png)
 
-5) Válassza ki a **teljesítménybeli problémák diagnosztizálása telepítése** gombra.
-6) Válassza ki a **diagnosztika futtatása** jelölőnégyzetet, ha szeretné futtatni a diagnosztikát, a telepítés befejezése után. A kijelölést, ha tudják, a teljesítmény elemzése a forgatókönyv és a kapcsolódó beállítások kiválasztásához.
+1. Válassza ki a **teljesítménybeli problémák diagnosztizálása telepítése** gombra.
+1. Válassza ki a **diagnosztika futtatása** jelölőnégyzetet, ha szeretné futtatni a diagnosztikát, a telepítés befejezése után. A kijelölést, ha tudják, a teljesítmény elemzése a forgatókönyv és a kapcsolódó beállítások kiválasztásához.
 
     ![Képernyőkép a teljesítménybeli problémák diagnosztizálása telepítése gomb](media/performance-diagnostics/install-diagnostics-button.png)
 
@@ -148,13 +148,13 @@ Egy támogatási jegyet a Microsofttal, ha fontos a teljesítmény diagnosztikai
 
 **2. lehetőség:** számára a diagnosztikai jelentést a tömörített fájlt, hozzon létre egy közös hozzáférésű jogosultságkód igénylése  
 A jelentések tömörített fájlra mutató hivatkozást megoszthatja a közös hozzáférési aláírások használatával. Ehhez kövesse az alábbi lépéseket: 
-1)  Az Azure Portalon keresse meg a tárfiók, amelyben a diagnosztikai adatokat tárolja.
-2)  Válassza ki **Blobok** alatt a **Blob service** szakaszban. 
-3)  Válassza ki a **azdiagextnresults** tároló.
-4)  Válassza ki a teljesítmény diagnosztikai kimenet tömörített fájlt szeretné megosztani.
-5)  Az a **SAS létrehozása** lapra, válassza ki a feltételeket, megosztására. 
-6)  Kattintson a **készítése a blob SAS-jogkivonat és URL-cím**.
-7)  Másolás a **a Blob SAS URL-cím**, és megoszthatja a támogatási szakértőhöz. 
+1.  Az Azure Portalon keresse meg a tárfiók, amelyben a diagnosztikai adatokat tárolja.
+1.  Válassza ki **Blobok** alatt a **Blob service** szakaszban. 
+1.  Válassza ki a **azdiagextnresults** tároló.
+1.  Válassza ki a teljesítmény diagnosztikai kimenet tömörített fájlt szeretné megosztani.
+1.  Az a **SAS létrehozása** lapra, válassza ki a feltételeket, megosztására. 
+1.  Kattintson a **készítése a blob SAS-jogkivonat és URL-cím**.
+1.  Másolás a **a Blob SAS URL-cím**, és megoszthatja a támogatási szakértőhöz. 
 
 **3. lehetőség:** a jelentés letöltése a storage-fiókból
 
@@ -162,8 +162,8 @@ A jelentések tömörített fájlra mutató hivatkozást megoszthatja a közös 
 
 ### <a name="how-do-i-capture-the-diagnostics-data-at-the-correct-time"></a>Hogyan rögzítése a diagnosztikai adatok a megfelelő időpontban?
 Minden egyes Futtatás Teljesítménydiagnosztika rendelkezik két szakaszból áll: 
-1)  Telepítse, vagy a teljesítmény diagnosztikai Virtuálisgép-bővítmény frissítése.
-2)  A diagnosztika futtatása a megadott időtartamnál.
+1.  Telepítse, vagy a teljesítmény diagnosztikai Virtuálisgép-bővítmény frissítése.
+1.  A diagnosztika futtatása a megadott időtartamnál.
 
 Jelenleg nincs egyszerű mód, pontosan akkor, ha a VM-bővítmény telepítése befejeződött. Általában másodpercet vesz igénybe körülbelül 45 – 1 percet vesz igénybe a Virtuálisgép-bővítmény telepítése. A Virtuálisgép-bővítmény telepítése után futtathatja a reprodukálás lépéseit, a teljesítménybeli problémák diagnosztizálása az helyes-e az adatkészlethez tartozó hibaelhárítási rögzítése rendelkeznie. 
 

@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 6dcc1abdf06df2de951bb851c8b1abe93b71a69e
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: 301ae251413cc174f115479e9ebef2310aa83ba7
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44381306"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47162442"
 ---
 # <a name="define-a-saml-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Egyéni Azure Active Directory B2C-házirendek egy SAML-alapú technikai profilban meghatározása
 
@@ -106,7 +106,6 @@ A **neve** a protokoll elem attribútuma kell beállítani `SAML2`.
 | Attribútum | Szükséges | Leírás |
 | --------- | -------- | ----------- |
 | PartnerEntity | Igen | Az identitásszolgáltató SAML-metaadatok URL-címe. Az identity provider metaadatok másolja, majd adja hozzá a CDATA elemen belül `<![CDATA[Your IDP metadata]]>` |
-| IssuerUri | Nem | Azt szabályozza, értékét **entityID** , a **EntityDescriptor** elem az Azure AD B2C-vel technikai profil metaadataiban. A **entityID** attribútum értéke a service provider, ebben az esetben az Azure AD B2C-vel technikai profil egyedi azonosítója. Az alapértelmezett érték a **entityID** van `https://login.microsoftonline.com/te/your-tenant.onmicrosoft.com/your-base-policy-name` |
 | WantsSignedRequests | Nem | Azt jelzi, hogy szükséges-e összes kimenő hitelesítési kérelmet kell aláírni a technikai profil. A lehetséges értékek: `true` vagy `false`. Az alapértelmezett érték `true`. Ha az értéke `true`, a **SamlMessageSigning** kriptográfiai kulcsot meg kell határozni, illetve az összes kimenő hitelesítési kérelmet jelentkezett. Ha az értéke `false`, a **SigAlg** és **aláírás** paraméterek (lekérdezés-karakterlánc, vagy ossza meg a paraméter) hiányoznak a kérésből. A metaadatok is szabályozza a metaadatok **AuthnRequestsSigned** attribútuma, amely egy kimenet az Azure AD B2C az identitásszolgáltatónál történő megosztott technikai profil metaadataiban. |
 | XmlSignatureAlgorithm | Nem | A módszer, amely az SAML-kérelmet aláírásához használt Azure AD B2C-t. A metaadat értéke szabályozza a **SigAlg** paraméter (lekérdezés-karakterlánc, vagy ossza meg a paraméter) a SAML-kérelem. A lehetséges értékek: `Sha256`, `Sha384`, `Sha512`, vagy `Sha1`. Ellenőrizze, hogy az aláírási algoritmus konfigurálása mindkét oldalán, az ugyanazt az értéket. Csak az algoritmus, amely támogatja a tanúsítványt használja. | 
 | WantsSignedAssertions | Nem | Azt jelzi, hogy szükséges-e a technikai profil minden bejövő helyességi feltételek aláírva. A lehetséges értékek: `true` vagy `false`. Az alapértelmezett érték `true`. Ha az értéke `true`, minden helyességi feltételek szakasz `saml:Assertion` küldött által az identitás az Azure AD B2C-szolgáltatót kell aláírni. Ha az értéke `false`, az identitásszolgáltató nem jelentkezzen a helyességi feltételek, de még akkor is, ha igen, az Azure AD B2C-vel nem érvényesíteni az aláírást. A metaadatok is szabályozza a metaadatok jelző **WantsAssertionsSigned**, azaz a kimenet az Azure AD B2C az identitásszolgáltatónál történő megosztott technikai profil metaadataiban. Ha letiltja a helyességi feltételek érvényesítése, előfordulhat, hogy szeretné is, a válasz aláírás ellenőrzésének letiltása (további információkért lásd: **ResponsesSigned**). |

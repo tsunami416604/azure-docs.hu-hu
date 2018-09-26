@@ -15,11 +15,11 @@ ms.workload: multiple
 ms.date: 06/08/2018
 ms.author: ryanwi
 ms.openlocfilehash: 6f538fa821e546d12c5a2bdb9585cc85871241fa
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35646351"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47094152"
 ---
 # <a name="multi-container-application-and-service-manifest-examples"></a>Példák többtárolós alkalmazások és szolgáltatások jegyzékeire
 A következő példák az alkalmazás és szolgáltatás jegyzékfájljainak többtárolós Service Fabric-alkalmazás. Ezekben a példákban az a célja, hogy milyen beállítások érhetők el, és azok használatát. Ezen alkalmazás és jegyzékek alapulnak a [Windows Server 2016 tároló minta](https://github.com/Azure-Samples/service-fabric-containers/tree/master/Windows) jegyzékfájlok.

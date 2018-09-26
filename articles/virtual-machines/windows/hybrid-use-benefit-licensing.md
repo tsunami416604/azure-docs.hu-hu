@@ -15,11 +15,11 @@ ms.workload: infrastructure-services
 ms.date: 4/22/2018
 ms.author: xujing-ms
 ms.openlocfilehash: 1b893518ec67d6c11c2bcee3acc52c01cd573f86
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35646387"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47091566"
 ---
 # <a name="azure-hybrid-benefit-for-windows-server"></a>Azure Hybrid Benefit Windows Serverhez
 A frissítési garanciával rendelkező ügyfelek az Azure Hybrid Benefit a Windows Server lehetővé teszi a helyszíni Windows Server-licenceivel és a Windows virtuális gépek futtatásához az Azure-ban költséghatékony. Az Azure Hybrid Benefit a Windows Server használatával a Windows operációs rendszer új virtuális gépek üzembe helyezése. Ez a cikk halad keresztül lépéseket, hogyan helyezhet üzembe új virtuális gépeket az Azure Hybrid Benefit a Windows Server, és hogy miként frissítheti meglévő a futó virtuális gépek. További információ az Azure Hybrid Benefit a Windows Server licencelési és költséghatékonyan takaríthat meg, tekintse meg a [Azure Hybrid Benefit a Windows Server licencelési oldal](https://azure.microsoft.com/pricing/hybrid-use-benefit/).

@@ -9,12 +9,12 @@ ms.component: speech-service
 ms.topic: article
 ms.date: 09/24/2018
 ms.author: v-jerkin
-ms.openlocfilehash: 601588e0c7257fc939f884b2e9b2774ab12ea872
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 1615e3a492cd91fb998680094f131db454945303
+ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46950837"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47182569"
 ---
 # <a name="try-the-speech-service-for-free"></a>Próbálja ki ingyenesen a Beszédszolgáltatást
 
@@ -111,7 +111,7 @@ Váltson egy előfizetésből egy másikba, például amikor az ingyenes próbav
 > [!NOTE]
 > Ingyenes próbaverziós kulcsok jönnek létre az USA nyugati RÉGIÓJA (`westus`) régióban. Az Azure-irányítópulton keresztül létrehozott előfizetés lehet néhány más régióban található, amennyiben így dönt.
 
-* Ha az alkalmazás egy [beszéd SDK](speech-sdk.md), mint például adja meg a régiókód `westus`hárítható el, `RecognizerFactory`. 
+* Ha az alkalmazás egy [beszéd SDK](speech-sdk.md), például adja meg a régiókód `westus`, a beszéd-konfiguráció létrehozása során.
 * Ha az alkalmazás használja a beszédfelismerési szolgáltatás egyik [REST API-k](rest-apis.md), a régiót a végpont URI-kérelem indítására használ részét képezi.
 
 Régió létrehozott kulcsok csak az adott régióban érvényesek. Próbál használni őket a más régiókban hitelesítési hibákat eredményez.

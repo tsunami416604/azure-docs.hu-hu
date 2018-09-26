@@ -2,20 +2,22 @@
 title: Az Azure SQL Database felügyelt példányok Vnetjének konfigurálásával |} A Microsoft Docs
 description: Ez a témakör ismerteti a virtuális hálózat (VNet) egy Azure SQL Database felügyelt példánya a konfigurációs beállításokat.
 services: sql-database
-author: srdan-bozovic-msft
-manager: craigg
 ms.service: sql-database
-ms.custom: managed instance
+ms.subservice: managed-instance
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 09/20/2018
+author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: bonova, carlrab
-ms.openlocfilehash: dfcd61abd9f995a9bb848c23143adb99b0620956
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+manager: craigg
+ms.date: 09/20/2018
+ms.openlocfilehash: 9d3f867dad40017e8e97ec4f5e370533b018263c
+ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47042159"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47181172"
 ---
 # <a name="configure-a-vnet-for-azure-sql-database-managed-instance"></a>Virtuális hálózat konfigurálása az Azure SQL Database felügyelt példány
 
@@ -42,7 +44,7 @@ Felügyelt példány létrehozásához (a felügyelt példány alhálózatára) 
 - **Alhálózat dedikált**: A felügyelt példány alhálózatára nem tartalmazhat bármilyen hozzá társított más felhőalapú szolgáltatás, és nem lehet egy átjáró-alhálózatot. Nem lesz képes a felügyelt példány létrehozása egy felügyelt példányra naplóátvitelen kívüli egyéb erőforrásokra tartalmazó alhálózathoz, és nem adhatja később hozzá más erőforrásokhoz az alhálózat.
 - **Kompatibilis hálózati biztonsági csoport (NSG)**: egy NSG-t a felügyelt példány alhálózatára társított tartalmaznia kell a szabályok az alábbi táblázatban (kötelező bejövő biztonsági szabályokat és kötelező kimenő biztonsági szabályok) található egyéb szabályok előtt látható. Hálózati biztonsági csoportok segítségével teljes mértékben ki férhet hozzá a felügyelt példány adatok végpont 1433-as porton a kimenő forgalmának szűrésével. 
 - **Kompatibilis a felhasználó által definiált útvonaltábla (UDR)**: A felügyelt példány alhálózatára rendelkeznie kell egy felhasználó útválasztási táblázatot az **0.0.0.0/0 Internet következő ugrási típusú** , a hozzárendelt kötelező udr-t. Emellett egy udr-t, hogy irányítja a forgalmat, amely rendelkezik a cél virtuális hálózati átjáró vagy virtuális hálózati berendezésre (NVA) keresztül a helyszíni privát IP-címtartományok is hozzáadhat. 
-- **Nem kötelező egyéni DNS**: Ha egy egyéni DNS a virtuális netword van megadva, az Azure rekurzív feloldó IP-címet (például a 168.63.129.16) hozzá kell adni a listához. További információkért lásd: [egyéni DNS konfigurálása](sql-database-managed-instance-custom-dns.md). Az egyéni DNS-kiszolgáló a következő tartományok és az altartományokra feloldásához képesnek kell lennie: *microsoft.com*, *windows.net*, *windows.com*, *msocsp.com*, *digicert.com*, *live.com*, *microsoftonline.com*, és *microsoftonline-p.com*. 
+- **Nem kötelező egyéni DNS**: Ha egy egyéni DNS a virtuális hálózaton van megadva, az Azure rekurzív feloldó IP-címet (például a 168.63.129.16) hozzá kell adni a listához. További információkért lásd: [egyéni DNS konfigurálása](sql-database-managed-instance-custom-dns.md). Az egyéni DNS-kiszolgáló a következő tartományok és az altartományokra feloldásához képesnek kell lennie: *microsoft.com*, *windows.net*, *windows.com*, *msocsp.com*, *digicert.com*, *live.com*, *microsoftonline.com*, és *microsoftonline-p.com*. 
 - **Nincsenek Szolgáltatásvégpontok**: A felügyelt példány alhálózatára nem rendelkeznie kell egy hozzá társított végpontot. Győződjön meg arról, hogy szolgáltatás végpontok lehetőség le van tiltva a virtuális hálózat létrehozásakor.
 - **Elegendő IP-címek**: A felügyelt példány alhálózatára rendelkeznie kell a legalább 16 IP-címek (javasolt a minimális érték 32 IP-címek). További információkért lásd: [alhálózat méretét határozza meg a felügyelt példány](#determine-the-size-of-subnet-for-managed-instances)
 

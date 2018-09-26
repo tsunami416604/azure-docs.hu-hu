@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/08/2018
+ms.date: 09/24/2018
 ms.author: kumud
-ms.openlocfilehash: dad76ab9f2a1a621fb513a4d411792fe2f88a557
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.openlocfilehash: 17b4bc68b2dc996134626b1822cfd17f0a9a7572
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40005875"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47161641"
 ---
 # <a name="azure-load-balancer-standard-overview"></a>Az Azure Load Balancer Standard áttekintése
 
@@ -232,6 +232,8 @@ Standard Load Balancer, amely a díjazás a terheléselosztási szabályok konfi
 - Ismerje meg [Standard Load Balancer diagnosztikai](load-balancer-standard-diagnostics.md).
 - Ismerje meg [többdimenziós metrikák támogatott](../monitoring-and-diagnostics/monitoring-supported-metrics.md#microsoftnetworkloadbalancers) a diagnosztikai [Azure Monitor](../monitoring-and-diagnostics/monitoring-overview.md).
 - A megismerése [terheléselosztó kimenő kapcsolatok](load-balancer-outbound-connections.md).
+- Ismerje meg [kimenő szabályok](load-balancer-outbound-rules-overview.md).
+- Ismerje meg [TCP üresjárati a alaphelyzetbe](load-balancer-tcp-reset.md).
 - Ismerje meg [magas rendelkezésre ÁLLÁSÚ portok terheléselosztási szabályok a Standard Load Balancer](load-balancer-ha-ports-overview.md).
 - A megismerése [több Előtérrendszer rendelkező terheléselosztó](load-balancer-multivip-overview.md).
 - Ismerje meg [virtuális hálózatok](../virtual-network/virtual-networks-overview.md).
