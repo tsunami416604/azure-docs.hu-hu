@@ -1,10 +1,16 @@
 ### YamlMime:YamlDocument
+ms.openlocfilehash: e10dbc5ef0899134a1d629a058412b1eb36df335
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47163409"
 documentType: LandingData
 title: Az Azure Stack felhasználói dokumentációja
 metadata:
   document_id: cbf798da-6f1a-7d4d-7707-5d5e02589e22
   title: Az Azure Stack dokumentációja – oktatóanyagok és API-referencia
-  description: 'Útmutató: Azure verem szolgáltatásokat használja, és olyan alkalmazások fordítása Azure verem.'
+  description: Ismerje meg, hogyan használható az Azure Stack-szolgáltatások és alkalmazások készítése az Azure Stackhez.
   services: azure-stack
   author: jeffgilb
   manager: femila
@@ -12,16 +18,10 @@ metadata:
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
-  ms.date: 04/13/2018
+  ms.date: 09/25/2018
   ms.author: jeffgilb
-  ms.openlocfilehash: 4b258290b197ff4fdee9490012a36519b041622c
-  ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
-  ms.translationtype: MT
-  ms.contentlocale: hu-HU
-  ms.lasthandoff: 05/04/2018
-  ms.locfileid: "33205431"
 abstract:
-  description: A Microsoft Azure Stack egy hibrid felhőplatform, amellyel Azure-szolgáltatásokat használhat a szervezete vagy a szolgáltatója adatközpontjából. Fejlesztőként létrehozhat alkalmazásokat az Azure Stackben. Ezeket üzembe helyezheti magában az Azure Stackben vagy az Azure-ban is, vagy létrehozhat valódi hibrid alkalmazásokat is, amelyek az Azure Stack felhő és az Azure közötti kapcsolatot használják ki. Rövid útmutatóink és oktatóanyagaink segítségével megtudhatja, hogyan hozhat létre erőforrásokat és helyezhet üzembe alkalmazásokat.<br/><br/>Ha Ön kezeli az infrastruktúra és szolgáltatásokat biztosít az Azure-verem kezelők, tekintse meg a <a href="/azure/azure-stack/">operátor dokumentáció</a>.<br/><br/>Ha érdekelt a a Azure verem Development Kit (ASDK), töltse le és használja az ingyenes Azure-verem egycsomópontos telepítése Azure verem kezelőként tekintse meg a <a href="/azure/azure-stack/asdk">ASDK dokumentáció</a>.
+  description: A Microsoft Azure Stack egy hibrid felhőplatform, amellyel Azure-szolgáltatásokat használhat a szervezete vagy a szolgáltatója adatközpontjából. Fejlesztőként létrehozhat alkalmazásokat az Azure Stackben. Ezeket üzembe helyezheti magában az Azure Stackben vagy az Azure-ban is, vagy létrehozhat valódi hibrid alkalmazásokat is, amelyek az Azure Stack felhő és az Azure közötti kapcsolatot használják ki. Rövid útmutatóink és oktatóanyagaink segítségével megtudhatja, hogyan hozhat létre erőforrásokat és helyezhet üzembe alkalmazásokat.<br/><br/>Ha Ön az Azure Stack operátorait, akik az infrastruktúrát felügyeli, és szolgáltatásokat kínál, tekintse meg a <a href="/azure/azure-stack/">operátori dokumentációja</a>.<br/><br/>Ha érdeklik az az Azure Stack Development Kit (ASDK), egy egy csomópontos üzembe helyezhető Azure Stacket ingyenesen, és töltse le az Azure Stack operátorait tekintse meg a <a href="/azure/azure-stack/asdk">ASDK dokumentáció</a>.
 sections:
 - title: 5 perces gyors útmutatók
   items:
@@ -62,13 +62,19 @@ sections:
 - title: Részletes útmutatók
   items:
   - type: paragraph
-    text: Alkalmazások központi telepítése az Azure és az Azure-verem között.
+    text: Alkalmazások üzembe helyezése az Azure és az Azure Stackben.
   - type: list
     style: ordered
     items:
     - html: <a href="/azure/azure-stack/user/azure-stack-solution-pipeline">Alkalmazások üzembe helyezése az Azure Stacken és az Azure-ban</a>
-    - html: <a href="/azure/azure-stack/user/azure-stack-solution-hybrid-identity">Hibrid felhőalapú identitás konfigurálása az Azure és az Azure-verem alkalmazásokkal</a>
-    - html: <a href="/azure/azure-stack/user/azure-stack-solution-hybrid-connectivity">Hibrid felhő kapcsolat konfigurálása az Azure és az Azure-verem</a>
+    - html: <a href="/azure/azure-stack/user/azure-stack-solution-hybrid-identity">A hibrid felhőbeli identitás konfigurálása az Azure és az Azure Stack-alkalmazásokkal</a>
+    - html: <a href="/azure/azure-stack/user/azure-stack-solution-hybrid-connectivity">Hibrid felhő-kapcsolat konfigurálása az Azure és az Azure Stack</a>
+    - html: <a href="/azure/azure-stack/user/azure-stack-solution-machine-learning">Hozzon létre egy gépi tanulási megoldásokat az Azure és az Azure Stack megoldás</a>
+    - html: <a href="/azure/azure-stack/user/azure-stack-solution-staged-data-analytics">Hozzon létre egy előkészített adatelemzési megoldással az Azure és az Azure Stackben </a>
+    - html: <a href="/azure/azure-stack/user/azure-stack-solution-cloud-burst">A felhőbe irányuló méretezési megoldások létrehozása az Azure-ral</a>
+    - html: <a href="/azure/azure-stack/user/azure-stack-solution-geo-distributed">Földrajzilag elosztott alkalmazás megoldás létrehozása az Azure és az Azure Stackben</a>
+    - html: <a href="/azure/azure-stack/user/azure-stack-tutorial-sql">Magas rendelkezésre állású SQL-adatbázisok létrehozása</a>
+    - html: <a href="/azure/azure-stack/user/azure-stack-tutorial-mysql">Magas rendelkezésre állású MySQL-adatbázisok létrehozása</a>
 - title: Leírások
   items:
   - type: list
@@ -76,4 +82,4 @@ sections:
     className: cardsD
     items:
     - title: Parancssor
-      html: <p><a href="/powershell/azure/azure-stack/overview?view=azurestackps-1.2.10">Azure Stack PowerShell</a></p><p><a href="/cli/azure/reference-index?view=azure-cli-2017-03-09-profile">Az Azure verem parancssori felület</a></p>
+      html: <p><a href="/powershell/azure/azure-stack/overview?view=azurestackps-1.2.10">Azure Stack PowerShell</a></p><p><a href="/cli/azure/reference-index?view=azure-cli-2017-03-09-profile">Az Azure Stack parancssori felület</a></p>

@@ -1,76 +1,88 @@
+items:
 - name: Szerepköralapú hozzáférés-vezérlés dokumentációja
   href: index.yml
-  items: null
 - name: Áttekintés
   items:
-    - name: Mi az RBAC?
-      href: overview.md
-    - name: A különböző szerepkörök ismertetése
-      href: rbac-and-directory-admin-roles.md
+  - name: Mi az RBAC?
+    href: overview.md
+  - name: A különböző szerepkörök ismertetése
+    href: rbac-and-directory-admin-roles.md
 - name: Gyors útmutatók
   items:
-    - name: Hozzáférés biztosítása felhasználó számára
-      href: quickstart-assign-role-user-portal.md
+  - name: Hozzáférés biztosítása felhasználó számára
+    href: quickstart-assign-role-user-portal.md
 - name: Oktatóanyagok
   items:
-    - name: Hozzáférés biztosítása felhasználó számára – PowerShell
-      href: tutorial-role-assignments-user-powershell.md
-    - name: Hozzáférés biztosítása csoport számára – PowerShell
-      href: tutorial-role-assignments-group-powershell.md
-    - name: Egyéni szerepkör létrehozása – PowerShell
-      href: tutorial-custom-role-powershell.md
-    - name: Egyéni szerepkör létrehozása – parancssori felület
-      href: tutorial-custom-role-cli.md
+  - name: Hozzáférés biztosítása felhasználó számára – PowerShell
+    href: tutorial-role-assignments-user-powershell.md
+  - name: Hozzáférés biztosítása csoport számára – PowerShell
+    href: tutorial-role-assignments-group-powershell.md
+  - name: Egyéni szerepkör létrehozása – PowerShell
+    href: tutorial-custom-role-powershell.md
+  - name: Egyéni szerepkör létrehozása – parancssori felület
+    href: tutorial-custom-role-cli.md
 - name: Alapelvek
   items:
-    - name: A szerepkör-definíciók ismertetése
-      href: role-definitions.md
-    - name: Privileged Identity Management (PIM) RBAC-hez
-      href: pim-azure-resource.md
-    - name: Feltételes hozzáférés az Azure felügyeleti szolgáltatásaihoz
-      href: conditional-access-azure-management.md
+  - name: A szerepkör-definíciók ismertetése
+    href: role-definitions.md
+  - name: A megtagadási hozzárendelések ismertetése
+    href: deny-assignments.md
+  - name: Privileged Identity Management (PIM) RBAC-hez
+    href: pim-azure-resource.md
+  - name: Feltételes hozzáférés az Azure felügyeleti szolgáltatásaihoz
+    href: conditional-access-azure-management.md
 - name: Útmutatók
   items:
-    - name: Hozzáférés kezelése
-      items:
-        - name: Portál
-          href: role-assignments-portal.md
-        - name: PowerShell
-          href: role-assignments-powershell.md
-        - name: Azure CLI
-          href: role-assignments-cli.md
-        - name: REST API
-          href: role-assignments-rest.md
-        - name: Sablon
-          href: role-assignments-template.md
-    - name: Egyéni szerepkörök
-      href: custom-roles.md
-      items:
-        - name: PowerShell
-          href: custom-roles-powershell.md
-        - name: Azure CLI
-          href: custom-roles-cli.md
-        - name: REST API
-          href: custom-roles-rest.md
-    - name: Tevékenységnaplók megtekintése
-      href: change-history-report.md
-    - name: Globális rendszergazda hozzáférési szintjének emelése
-      href: elevate-access-global-admin.md
-    - name: Külső felhasználók hozzáférésének kezelése
-      href: role-assignments-external-users.md
-    - name: Hibaelhárítás
-      href: troubleshooting.md
+  - name: Hozzáférés kezelése
+    items:
+    - name: Portál
+      href: role-assignments-portal.md
+    - name: PowerShell
+      href: role-assignments-powershell.md
+    - name: Azure CLI
+      href: role-assignments-cli.md
+    - name: REST API
+      href: role-assignments-rest.md
+    - name: Sablon
+      href: role-assignments-template.md
+  - name: Hozzáférés megtagadása
+    items:
+    - name: REST API
+      href: deny-assignments-rest.md
+  - name: Egyéni szerepkörök
+    href: custom-roles.md
+    items:
+    - name: PowerShell
+      href: custom-roles-powershell.md
+    - name: Azure CLI
+      href: custom-roles-cli.md
+    - name: REST API
+      href: custom-roles-rest.md
+  - name: Tevékenységnaplók megtekintése
+    href: change-history-report.md
+  - name: Globális rendszergazda hozzáférési szintjének emelése
+    href: elevate-access-global-admin.md
+  - name: Külső felhasználók hozzáférésének kezelése
+    href: role-assignments-external-users.md
+  - name: Hibaelhárítás
+    href: troubleshooting.md
 - name: Referencia
   items:
-    - name: Beépített szerepkörök
-      href: built-in-roles.md
-    - name: Erőforrás-szolgáltatói műveletek
-      href: resource-provider-operations.md
-    - name: RBAC-korlátozások
-      href: '../azure-subscription-service-limits.md#role-based-access-control-limits'
-    - name: Azure PowerShell
-      href: /powershell/module/azurerm.resources
-    - name: Azure CLI
-      href: /cli/azure/role?view=azure-cli-latest
-    - name: REST API
-      href: /rest/api/authorization/
+  - name: Beépített szerepkörök
+    href: built-in-roles.md
+  - name: Erőforrás-szolgáltatói műveletek
+    href: resource-provider-operations.md
+  - name: RBAC-korlátozások
+    href: ../azure-subscription-service-limits.md#role-based-access-control-limits
+  - name: Azure PowerShell
+    href: /powershell/module/azurerm.resources
+  - name: Azure CLI
+    href: /cli/azure/role?view=azure-cli-latest
+  - name: REST API
+    href: /rest/api/authorization/
+ms.openlocfilehash: 8a113e60cd9af0e7f9c0f192bc20ca674c56c0f8
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46982783"

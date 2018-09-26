@@ -1,11 +1,17 @@
 ### YamlMime:YamlDocument
+ms.openlocfilehash: 19bb8a72e6455010477805a78bc15de554a2eb83
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46987475"
 documentType: LandingData
-title: Text Analytics API-dokumentáció
+title: A Text Analytics API dokumentációja
 metadata:
   title: A Text Analytics API dokumentációja – oktatóanyagok és API-referencia – Azure Cognitive Services | Microsoft Docs
   description: Arra vonatkozó útmutató, hogyan használható a Text Analytics API továbbfejlesztett természetes nyelvi feldolgozási folyamatokhoz különböző szövegeken. Az oktatóanyagok ismertetik, hogyan írhat olyan kódokat, amelyek kihasználják a szövegelemzési szolgáltatás előnyeit.
   services: cognitive-services
-  author: HeidiSteen
+  author: nitinme
   manager: cgronlun
   layout: LandingPage
   ms.service: cognitive-services
@@ -13,21 +19,36 @@ metadata:
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
-  ms.date: 03/07/2018
-  ms.author: heidist
-  ms.openlocfilehash: aee5b1c47d3db4f630c528707f03d175e52c2c4f
-  ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
-  ms.translationtype: HT
-  ms.contentlocale: hu-HU
-  ms.lasthandoff: 07/11/2018
-  ms.locfileid: "38398632"
+  ms.date: 09/24/2018
+  ms.author: nitinme
 abstract:
   description: 'A Text Analytics API egy felhőalapú eszköz, amely nyers szövegek fejlett természetes nyelvfeldogozását biztosítja, és három fő funkciója van: a hangulatelemzés, a kulcsszókeresés és a nyelvfelismerés. Rövid útmutatóink, oktatóanyagaink és példáink segítségével megismerkedhet a tartalomelemzés különböző módjaival.'
 sections:
+- items:
+  - type: list
+    style: cards
+    className: cardsM
+    columns: 3
+    items:
+    - href: /azure/cognitive-services/text-analytics/overview
+      html: <p>Megismerkedhet a Text Analytics API-val.</p>
+      image:
+        src: ../media/index/i_overview.svg
+      title: Mi a Text Analytics?
+    - href: /azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-signup
+      html: <p>Ismerje meg a Text Analytics API-regisztráció folyamatát.</p>
+      image:
+        src: ../media/index/i_get-started.svg
+      title: Regisztráció a Text Analytics API-ra
+    - href: /azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-access-key
+      html: <p>Ismerje meg a Text Analytics API hozzáférési kulcsainak és végpontjainak beszerzési folyamatát.</p>
+      image:
+        src: ../media/index/i_tasks.svg
+      title: Hozzáférési kulcsok a Text Analytics API-hoz
 - title: 5 perces gyors útmutatók
   items:
   - type: paragraph
-    text: 'A Text Analytics API használatának első lépései a nyelvfelismeréshez, a hangulatelemzéshez és a kulcsszókereséshez:'
+    text: 'A Text Analytics API használatának első lépései a nyelvfelismeréshez, a hangulatelemzéshez és a kulcsszókiemeléshez:'
   - type: list
     style: icon48
     items:
@@ -58,8 +79,8 @@ sections:
   - type: list
     style: unordered
     items:
-    - html: <a href="tutorials/tutorial-power-bi-key-phrases.md">Szövegelemzés a Power BI-jal</a>
-    - html: <a href="https://powerapps.microsoft.com/tutorials/cognitive-services-api/">Szövegelemzés a PowerAppsben</a>
+    - html: <a href="tutorials/tutorial-power-bi-key-phrases.md">Text Analytics a Power BI-jal</a>
+    - html: <a href="https://powerapps.microsoft.com/tutorials/cognitive-services-api/">Text Analytics a PowerAppsben</a>
 - title: Referencia
   items:
   - type: list
@@ -68,3 +89,7 @@ sections:
     items:
     - title: REST
       html: <p><a href="https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c7">API-referencia</a></p>
+    - title: PowerShell
+      html: <p><a href=https://docs.microsoft.com/powershell/module/azurerm.cognitiveservices/?view=azurermps-4.4.1#cognitive_services">Azure PowerShell</a></p>
+    - title: parancssori felület
+      html: <p><a href="https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest#az_cognitiveservices_list">Azure CLI</a></p>

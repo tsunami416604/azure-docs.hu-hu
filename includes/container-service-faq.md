@@ -32,13 +32,13 @@ További részleteket a [tárolókra vonatkozó támogatási szabályzatban](htt
 
 A fürt Linux rendszerű virtuális gépei felé történő hitelesítéshez szükséges nyilvános és titkos SSH RSA-kulcspár létrehozásához az operációs rendszer megszokott eszközeit használhatja. A lépéseket az [OS X és Linux](../articles/virtual-machines/linux/mac-create-ssh-keys.md) vagy a [Windows](../articles/virtual-machines/linux/ssh-from-windows.md) rendszerhez készült útmutatóban tekintheti meg. 
 
-Ha az [Azure CLI 2.0 parancsait](../articles/container-service/dcos-swarm/container-service-create-acs-cluster-cli.md) használja egy Container Service-fürt központi telepítéséhez, az SSH-kulcsok automatikusan létrehozhatóak a fürt számára.
+Ha az [Azure CLI-parancsokat](../articles/container-service/dcos-swarm/container-service-create-acs-cluster-cli.md) használja egy Container Service-fürt központi telepítéséhez, az SSH-kulcsok automatikusan létrehozhatóak a fürt számára.
 
 ### <a name="how-do-i-create-a-service-principal-for-my-kubernetes-cluster"></a>Hogyan hozhatok létre egyszerű szolgáltatást a Kubernetes-fürtöm számára?
 
 Ha az Azure Container Service-ben szeretne Kubernetes-fürtöt létrehozni, szüksége lesz egy egyszerű Azure Active Directory-szolgáltatás azonosítójára és jelszavára. További információ: [Tudnivalók az Kubernetes-fürthöz tartozó egyszerű szolgáltatásról](../articles/container-service/kubernetes/container-service-kubernetes-service-principal.md).
 
-Ha az [Azure CLI 2.0 parancsait](../articles/container-service/dcos-swarm/container-service-create-acs-cluster-cli.md) használja egy Kubernetes-fürt központi telepítéséhez, az egyszerű szolgáltatás hitelesítő adatai automatikusan létrehozhatók a fürt számára.
+Ha az [Azure CLI-parancsokat](../articles/container-service/dcos-swarm/container-service-create-acs-cluster-cli.md) használja egy Kubernetes-fürt üzembe helyezéséhez, a szolgáltatásnév hitelesítő adatai automatikusan létrehozhatók a fürt számára.
 
 ### <a name="how-large-a-cluster-can-i-create"></a>Legfeljebb mekkora fürtöket hozhatok létre?
 1, 3 vagy 5 fő csomóponttal rendelkező fürtöket hozhat létre. Legfeljebb 100 ügynökcsomópontot használhat.
@@ -105,4 +105,4 @@ Van néhány olyan ismert DNS-probléma a Windowsban, amelyek aktív kivezetése
 ## <a name="next-steps"></a>További lépések
 
 * [További információ](../articles/container-service/kubernetes/container-service-intro-kubernetes.md) az Azure Container Service-ről.
-* Container Service-fürt központi telepítése a [portál](../articles/container-service/dcos-swarm/container-service-deployment.md) vagy az [Azure CLI 2.0](../articles/container-service/dcos-swarm/container-service-create-acs-cluster-cli.md) segítségével.
+* Container Service-fürt üzembe helyezése a [portálon](../articles/container-service/dcos-swarm/container-service-deployment.md) vagy az [Azure CLI-vel](../articles/container-service/dcos-swarm/container-service-create-acs-cluster-cli.md).

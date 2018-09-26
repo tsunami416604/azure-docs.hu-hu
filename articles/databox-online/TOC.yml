@@ -1,0 +1,54 @@
+items:
+- name: Dokumentáció – Az Azure Data Box használata offline adatátvitelhez
+  href: /azure/databox-online/
+  expanded: true
+- name: Data Box Gateway
+  items:
+  - name: Áttekintés
+    items:
+    - name: Mi a Data Box Gateway?
+      href: data-box-gateway-overview.md
+  - name: Oktatóanyagok
+    items:
+    - name: 1 – Előkészítés
+      href: data-box-gateway-deploy-prep.md
+    - name: 2A – Kiépítés Hyper-V-ben
+      href: data-box-gateway-deploy-provision-hyperv.md
+    - name: 2B – Kiépítés VMware-ben
+      href: data-box-gateway-deploy-provision-vmware.md
+    - name: 3 – Csatlakoztatás, konfigurálás és aktiválás
+      href: data-box-gateway-deploy-connect-setup-activate.md
+    - name: 4 – Hozzáadás, csatlakozás a megosztáshoz
+      href: data-box-gateway-deploy-add-shares.md
+  - name: Alapelvek
+    items:
+    - name: Követelmények áttekintése
+      href: data-box-gateway-system-requirements.md
+    - name: A korlátozások ismertetése
+      href: data-box-gateway-limits.md
+  - name: Kibocsátási megjegyzések
+    items:
+    - name: Előzetes verzió
+      href: data-box-gateway-release-notes.md
+- name: Data Box Edge
+  items:
+  - name: Áttekintés
+    items:
+    - name: Mi az Azure Data Box Edge?
+      href: data-box-edge-overview.md
+- name: További források
+  items:
+  - name: Azure-ütemterv
+    href: https://azure.microsoft.com/roadmap/?category=storage
+  - name: Azure Data Box-marketing
+    href: https://azure.microsoft.com/services/storage/databox-online
+  - name: Díjszabás
+    href: https://azure.microsoft.com/pricing/
+  - name: Szolgáltatási hírek
+    href: https://azure.microsoft.com/updates/?product=databox
+ms.openlocfilehash: e4371e6c6d8432dd579116a6b775af482b0e5794
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46985758"

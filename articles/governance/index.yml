@@ -1,0 +1,70 @@
+### YamlMime:YamlDocument
+ms.openlocfilehash: 1c25ae1acb112221047876ea6dd360c6d3bb2817
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46946238"
+documentType: LandingData
+title: Az Azure felügyelete – Irányítás
+metadata:
+  title: Az Azure felügyelete – Irányítás
+  description: Ismerje meg azokat a fogalmakat és Azure-szolgáltatásokat, amelyekkel a környezetét egységesen, egyértelmű kialakítással és szabályokkal irányíthatja, valamint megfelelőségi naplózást végezhet.
+  services: governance
+  author: DCtheGeek
+  manager: carmonm
+  ms.service: governance
+  ms.topic: landing-page
+  ms.date: 09/18/2018
+  ms.author: dacoulte
+abstract:
+  description: Az Azure Governance olyan fogalmak és szolgáltatások gyűjteménye, amelyekkel nagy léptékben is felügyelheti a különböző Azure-erőforrásait. Ezekkel a szolgáltatásokkal logikusan szervezheti és strukturálhatja előfizetéseit, létrehozhatja és üzembe helyezheti a natív Azure-erőforráscsomagokat, meghatározhatja, naplózhatja és szervizelheti az erőforrásait, valamint további funkciókat is használhat. Ezen az oldalon további információkat talál ezekről a fogalmakról és szolgáltatásokról és arról, hogy hogyan engedélyezheti és helyezheti üzembe azokat még ma a saját környezetében.
+sections:
+- title: Összetevők és szolgáltatások
+- items:
+  - type: list
+    style: cards
+    className: cardsD
+    columns: 2
+    items:
+    - href: ./management-groups/overview
+      html: <p>Megismerheti az előfizetések logikai hierarchiába csoportosításának és szervezésének lehetőségeit, amellyel az egyéb irányítási szolgáltatások üzembe helyezését strukturált módon támogathatja.<br /></p>
+      image:
+        src: ./media/management-groups-illustration.svg
+      title: Felügyeleti csoportok
+    - href: ./resource-graph/
+      html: <p>Egy hatékony parancssori felületen (amely az Azure CLI és az Azure PowerShell felületet egyaránt támogatja) gyorsan lekérdezheti az Azure-erőforrásai összetett információit. Megkeresheti és megjelenítheti az olyan információkat, amelyekhez korábban összetett és többször futtatandó szkriptek kellettek, így nagy környezetekben is felderítheti az erőforrásokat.</p>
+      image:
+        src: ./media/resource-graph-illustration.svg
+      title: Erőforrás-diagram
+    - href: ./policy/
+      html: <p>Standardokat határozhat meg és alkalmazhat az erőforrásokra a környezeten belül. Megakadályozhatja a nemkívánatos erőforrások létrehozását, új elemekkel gazdagíthatja az új erőforrásokat, valamint naplózhatja és szervizelheti a környezetben már működő erőforrásokat.</p>
+      image:
+        src: ./media/policy-illustration.svg
+      title: Szabályzat
+    - href: ./blueprints/
+      html: <p>Natív Azure-csomagokat hozhat létre az <i>összetevőkből</i> (többek között erőforráscsoportokból, szabályzatokból, szerepkör-hozzárendelésekből, Resource Manager-sablonokból), amelyek dinamikusan üzembe helyezhetők az előfizetésekbe az egységes és megismételhető környezetek kialakításához.</p>
+      image:
+        src: ./media/blueprints-illustration.svg
+      title: Tervek
+- title: Megvalósítások
+- items:
+  - type: list
+    style: cards
+    className: cardsZ
+    columns: 3
+    items:
+    - href: /azure/architecture/cloud-adoption/governance/what-is-governance?toc=/azure/governance/toc.json
+      html: <p>A múltban a tulajdonjog és a felelősség teljes egészében a vállalatokra hárult a technológia minden szintjén, az infrastruktúrától a szoftverekig. A felhővel most új lehetőségek nyílnak meg a vállalatok számára a technológia kiaknázása terén az erőforrások igény szerinti kiépítésének és felhasználásának köszönhetően.</p>
+      title: A nagyvállalati felhőmegoldások bevezetése
+    - href: /azure/architecture/cloud-adoption/appendix/azure-scaffold?toc=/azure/governance/toc.json
+      html: <p>Lehetővé teszi a rendszergazdáknak, hogy biztosítsák a számítási feladatok minimális szervezeti irányítási követelményeinek teljesítését, azonban nem akadályozza az üzleti csoportokat és fejlesztőket a saját céljaik gyors elérésében.<br /><br /></p>
+      title: Nagyvállalati szerkezet
+- title: Referencia
+  items:
+  - type: list
+    style: cards
+    className: cardsD
+    items:
+    - title: Szabályzat
+      html: <p>Parancssor<ul><li><a href="/cli/azure/policy">Azure CLI</a></li></ul></p><p>PowerShell<ul><li><a href="/powershell/module/azurerm.resources/#policies">Azure PowerShell</a></li></ul></p><p>REST API<ul><li><a href="/rest/api/policy-insights/policyevents">Események</a></li><li><a href="/rest/api/policy-insights/policystates">Állapotok</a></li><li><a href="/rest/api/resources/policyassignments">Hozzárendelések</a></li><li><a href="/rest/api/resources/policydefinitions">Szabályzatdefiníciók</a></li><li><a href="/rest/api/resources/policysetdefinitions">Kezdeményezési definíciók</a></li></ul></p>

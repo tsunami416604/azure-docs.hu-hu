@@ -1,0 +1,223 @@
+items:
+- name: Az Azure Policy dokumentációja
+  href: index.yml
+- name: Áttekintés
+  items:
+  - name: Az Azure szabályzatának áttekintése
+    href: overview.md
+- name: Gyors útmutatók
+  items:
+  - name: Szabályzat hozzárendelése – Portál
+    href: assign-policy-portal.md
+  - name: Szabályzat hozzárendelése – PowerShell
+    href: assign-policy-powershell.md
+  - name: Szabályzat hozzárendelése – Azure CLI
+    href: assign-policy-azurecli.md
+  expanded: true
+- name: Oktatóanyagok
+  items:
+  - name: Azure-szabályzat létrehozása és kezelése
+    href: ./tutorials/create-and-manage.md
+- name: Példák
+  href: ./samples/index.md
+  items:
+  - name: Általános kérdések
+    items:
+    - name: Elnevezés
+      items:
+      - name: Több névminta egyikének megkövetelése
+        href: samples/allow-multiple-name-patterns.md
+      - name: Hasonló minta szükséges
+        href: samples/enforce-like-pattern.md
+      - name: Egyező minta szükséges
+        href: samples/enforce-match-pattern.md
+      - name: A címke és a minta egyezése szükséges
+        href: samples/enforce-tag-match-pattern.md
+    - name: Címkék
+      items:
+      - name: Címke és alapértelmezett címkeérték alkalmazása
+        href: samples/apply-tag-def-val.md
+      - name: Számlázási címkék szabályzatának kezdeményezése
+        href: samples/billing-tags-policy-init.md
+      - name: Címke és a hozzá tartozó érték kényszerítése
+        href: samples/enforce-tag-val.md
+      - name: Címke és címkeérték kényszerített használata erőforráscsoportokra
+        href: samples/enforce-tag-rg.md
+    - name: Helyek
+      items:
+      - name: Engedélyezett helyek
+        href: samples/allowed-locs.md
+    - name: Erőforrástípusok
+      items:
+      - name: Engedélyezett erőforrástípusok
+        href: samples/allowed-res-types.md
+      - name: Nem engedélyezett erőforrástípusok
+        href: samples/not-allowed-res-type.md
+  - name: Compute
+    items:
+    - name: Virtual machines (Virtuális gépek)
+      items:
+      - name: Egyéni VM-lemezképek engedélyezése egy adott erőforráscsoportból
+        href: samples/allow-custom-vm-image.md
+      - name: Tárfiókok és virtuális gépek engedélyezett termékváltozatai
+        href: samples/allowed-skus-storage.md
+      - name: Jóváhagyott VM-lemezképek
+        href: samples/allowed-custom-images.md
+      - name: Naplózás hiányzó bővítmény esetén
+        href: samples/audit-ext-not-exist.md
+      - name: Tiltott virtuálisgép-bővítmények
+        href: samples/not-allowed-vm-ext.md
+    - name: Virtuálisgép-méretezési csoportok
+      items:
+      - name: Felügyelt lemezeket nem használó virtuális gépek naplózása
+        href: samples/create-vm-managed-disk.md
+      - name: Virtuális gép létrehozása felügyelt lemezzel
+        href: samples/use-managed-disk-vm.md
+      - name: Hybrid Use Benefit tiltása
+        href: samples/deny-hybrid-use.md
+      - name: Csak bizonyos platformú VM-lemezkép használatának engedélyezése
+        href: samples/allow-certain-vm-image.md
+  - name: Data Lake
+    items:
+    - name: Data Lake Store-titkosítás megkövetelése
+      href: samples/enforce-datalakestore-encryption.md
+  - name: Figyelés
+    items:
+    - name: Diagnosztikai beállítás naplózása
+      href: samples/audit-diag-setting.md
+  - name: Network (Hálózat)
+    items:
+    - name: Hálózati illesztők
+      items:
+      - name: NSG X minden hálózati adapteren
+        href: samples/nsg-on-nic.md
+      - name: Jóváhagyott alhálózat megkövetelése a virtuális gépek hálózati adapterén
+        href: samples/use-approved-subnet-vm-nics.md
+      - name: Jóváhagyott virtuális hálózat megkövetelése a virtuális gépek hálózati adapterén
+        href: samples/use-approved-vnet-vm-nics.md
+    - name: Virtuális hálózatok
+      items:
+      - name: Engedélyezett termékváltozatok alkalmazásátjárókhoz
+        href: samples/allowed-app-gate-sku.md
+      - name: Hálózati társviszony tiltása egy erőforráscsoportban lévő hálózatban
+        href: samples/no-peering-er-net.md
+      - name: Ne legyen felhasználó által megadott útválasztási táblázat
+        href: samples/no-user-def-route-table.md
+      - name: NSG X minden alhálózaton
+        href: samples/nsg-on-subnet.md
+      - name: Jóváhagyott alhálózat megkövetelése a virtuális gépek hálózati adapterén
+        href: samples/use-approved-subnet-vm-nics.md
+      - name: Jóváhagyott virtuális hálózat megkövetelése a virtuális gépek hálózati adapterén
+        href: samples/use-approved-vnet-vm-nics.md
+    - name: Network security groups (Hálózati biztonsági csoportok)
+      items:
+      - name: NSG X minden hálózati adapteren
+        href: samples/nsg-on-nic.md
+      - name: NSG X minden alhálózaton
+        href: samples/nsg-on-subnet.md
+    - name: ExpressRoute-útvonalak
+      items:
+      - name: Express Route-sávszélesség megkövetelése
+        href: samples/allowed-er-band.md
+      - name: Engedélyezett termékváltozatok Express Route-útvonalakhoz
+        href: samples/allowed-er-skus.md
+      - name: Engedélyezett társviszony-létesítési helyek Express Route-útvonalakhoz
+        href: samples/allowed-peering-er.md
+    - name: Network Watchers
+      items:
+      - name: Naplózás, ha a Network Watcherek nincsenek engedélyezve a régióban
+        href: samples/net-watch-not-enabled.md
+    - name: Alkalmazásátjárók
+      items:
+      - name: Engedélyezett termékváltozatok alkalmazásátjárókhoz
+        href: samples/allowed-app-gate-sku.md
+  - name: SQL
+    items:
+    - name: SQL Server-kiszolgálók
+      items:
+      - name: Azure Active Directory-rendszergazda hiányának naplózása
+        href: samples/audit-no-aad-admin.md
+      - name: Kiszolgálószintű fenyegetésészlelési beállítás naplózása
+        href: samples/audit-sql-ser-threat-det-setting.md
+      - name: SQL-kiszolgáló naplózási beállításainak naplózása
+        href: samples/sql-server-audit.md
+      - name: SQL-kiszolgálói szintű naplózási beállítások naplózása
+        href: samples/audit-sql-ser-leve-audit-setting.md
+      - name: Az SQL Server 12.0-ás verziójának megkövetelése
+        href: samples/req-sql-12.md
+    - name: SQL Database-adatbázisok
+      items:
+      - name: Engedélyezett termékváltozatok SQL-adatbázisokhoz
+        href: samples/allowed-sql-db-skus.md
+      - name: SQL-adatbázisszintű fenyegetésészlelési beállítás naplózása
+        href: samples/audit-db-threat-det-setting.md
+      - name: SQL-adatbázis titkosításának naplózása
+        href: samples/sql-database-encryption-audit.md
+      - name: SQL-adatbázisszintű naplózási beállítás naplózása
+        href: samples/audit-sql-db-audit-setting.md
+      - name: Transzparens adattitkosítás állapotának naplózása
+        href: samples/audit-trans-data-enc-status.md
+  - name: Storage
+    items:
+    - name: Tárfiókok és virtuális gépek engedélyezett termékváltozatai
+      href: samples/allowed-skus-storage.md
+    - name: Engedélyezett tárfiók-termékváltozatok
+      href: samples/allowed-stor-acct-skus.md
+    - name: Ritka elérésű hozzáférési szint használatának tiltása a tárfiókoknak
+      href: samples/deny-cool-access-tiering.md
+    - name: HTTPS-adatforgalom kényszerítése a tárfiókok számára
+      href: samples/ensure-https-stor-acct.md
+    - name: Fájltitkosítás megkövetelése a tárfiókokban
+      href: samples/ensure-store-file-enc.md
+    - name: Tárfiók-titkosítás megkövetelése
+      href: samples/req-store-acct-enc.md
+- name: Alapelvek
+  items:
+  - name: Azure szabályzatdefiníciók struktúrája
+    href: ./concepts/definition-structure.md
+  - name: A szabályzat hatásainak megismerése
+    href: ./concepts/effects.md
+- name: Útmutatók
+  items:
+  - name: Szabályzatok létrehozása programozott módon
+    href: ./how-to/programmatically-create.md
+  - name: A megfelelőségi adatok beszerzése
+    href: ./how-to/getting-compliance-data.md
+  - name: Nem megfelelő erőforrások szervizelése
+    href: ./how-to/remediate-resources.md
+- name: Referencia
+  items:
+  - name: Azure CLI
+    href: /cli/azure/policy
+  - name: Azure PowerShell
+    href: /powershell/module/azurerm.resources/#policies
+  - name: REST API
+    items:
+    - name: Események
+      href: /rest/api/policy-insights/policyevents
+    - name: Állapotok
+      href: /rest/api/policy-insights/policystates
+    - name: Hozzárendelések
+      href: /rest/api/resources/policyassignments
+    - name: Szabályzatdefiníciók
+      href: /rest/api/resources/policydefinitions
+    - name: Kezdeményezésdefiníciók
+      href: /rest/api/resources/policysetdefinitions
+- name: További források
+  items:
+  - name: GitHub – Azure Policy-minták
+    href: https://github.com/Azure/azure-policy
+  - name: Videó – Build 2018
+    href: https://channel9.msdn.com/events/Build/2018/THR2030
+  - name: Videó – Ignite 2017
+    href: https://myignite.microsoft.com/videos/54781
+  - name: Azure-ütemterv
+    href: https://azure.microsoft.com/roadmap/
+  - name: Díjkalkulátor
+    href: https://azure.microsoft.com/pricing/calculator/
+ms.openlocfilehash: e433ad5418f2c97890332548ae8d05196117bbd4
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46962691"

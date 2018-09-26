@@ -1,211 +1,222 @@
+items:
 - name: MySQL-hez készült Azure DB – Dokumentáció
   href: index.yml
 - name: Áttekintés
   items:
-    - name: MySQL-hez készült Azure DB
-      href: overview.md
+  - name: MySQL-hez készült Azure DB
+    href: overview.md
 - name: Gyors útmutatók
-  expanded: true
   items:
-    - name: DB létrehozása – portál
-      href: quickstart-create-mysql-server-database-using-azure-portal.md
-    - name: DB létrehozása – Azure CLI
-      href: quickstart-create-mysql-server-database-using-azure-cli.md
-    - name: Csatlakozás és lekérdezés
-      items:
-        - name: PHP
-          href: connect-php.md
-        - name: Java
-          href: connect-java.md
-        - name: .Net
-          href: connect-csharp.md
-        - name: Python
-          href: connect-python.md
-        - name: Node.js
-          href: connect-nodejs.md
-        - name: Ruby
-          href: connect-ruby.md
-        - name: C++
-          href: connect-cpp.md
-        - name: Indítás
-          href: connect-go.md
-        - name: MySQL Workbench
-          href: connect-workbench.md
+  - name: DB létrehozása – portál
+    href: quickstart-create-mysql-server-database-using-azure-portal.md
+  - name: DB létrehozása – Azure CLI
+    href: quickstart-create-mysql-server-database-using-azure-cli.md
+  - name: Csatlakozás és lekérdezés
+    items:
+    - name: PHP
+      href: connect-php.md
+    - name: Java
+      href: connect-java.md
+    - name: .Net
+      href: connect-csharp.md
+    - name: Python
+      href: connect-python.md
+    - name: Node.js
+      href: connect-nodejs.md
+    - name: Ruby
+      href: connect-ruby.md
+    - name: C++
+      href: connect-cpp.md
+    - name: Indítás
+      href: connect-go.md
+    - name: MySQL Workbench
+      href: connect-workbench.md
+  expanded: true
 - name: Oktatóanyagok
   items:
-    - name: 1 – Adatbázis-tervezés
-      items:
-        - name: Azure Portal
-          href: tutorial-design-database-using-portal.md
-        - name: Azure CLI
-          href: tutorial-design-database-using-cli.md
-    - name: 2. – Webapp létrehozása
-      items:
-        - name: Wordpress – Portál
-          href: 'https://portal.azure.com/#create/WordPress.WordPress'
-        - name: PHP és MySQL
-          href: ../app-service/app-service-web-tutorial-php-mysql.md?toc=%2fazure%2fmysql%2ftoc.json
-        - name: Java és MySQL
-          href: ../app-service/app-service-web-tutorial-java-mysql.md?toc=%2fazure%2fmysql%2ftoc.json
+  - name: 1 – Adatbázis-tervezés
+    items:
+    - name: Azure Portal
+      href: tutorial-design-database-using-portal.md
+    - name: Azure CLI
+      href: tutorial-design-database-using-cli.md
+  - name: 2. – Webapp létrehozása
+    items:
+    - name: Wordpress – Portál
+      href: https://portal.azure.com/#create/WordPress.WordPress
+    - name: PHP és MySQL
+      href: ../app-service/app-service-web-tutorial-php-mysql.md?toc=%2fazure%2fmysql%2ftoc.json
+    - name: Java és MySQL
+      href: ../app-service/app-service-web-tutorial-java-mysql.md?toc=%2fazure%2fmysql%2ftoc.json
 - name: Példák
   items:
-    - name: Azure CLI
-      href: sample-scripts-azure-cli.md
+  - name: Azure CLI
+    href: sample-scripts-azure-cli.md
 - name: Alapelvek
   items:
-    - name: Adatbázis és kiszolgálók
-      items:
-        - name: Kiszolgálók
-          href: concepts-servers.md
-        - name: Támogatott verziók
-          href: concepts-supported-versions.md
-        - name: Kiszolgálói naplók
-          href: concepts-server-logs.md
-        - name: Magas rendelkezésre állás
-          href: concepts-high-availability.md
-    - name: További források
-      items:
-        - name: Árképzési szintek
-          href: concepts-pricing-tiers.md
-        - name: Korlátok
-          href: concepts-limits.md
-    - name: Adathozzáférés és -biztonság
-      items:
-        - name: Tűzfalszabályok
-          href: concepts-firewall-rules.md
-        - name: Az SSL konfigurálása
-          href: concepts-ssl-connection-security.md
-        - name: VNet
-          href: concepts-data-access-and-security-vnet.md
-    - name: Az üzletmenet folytonossága
-      items:
-        - name: Áttekintés
-          href: concepts-business-continuity.md
-        - name: Biztonsági mentés és visszaállítás
-          href: concepts-backup.md
-    - name: Figyelés
-      href: concepts-monitoring.md
-    - name: Fejlesztés
-      items:
-        - name: Az illesztőprogramok és eszközök kompatibilitása
-          href: concepts-compatibility.md
-        - name: Alkalmazásfejlesztés
-          href: concepts-database-application-development.md
-    - name: Replikáció
-      items:
-        - name: Beérkező adatokra épülő replikáció
-          href: concepts-data-in-replication.md
+  - name: Adatbázis és kiszolgálók
+    items:
+    - name: Kiszolgálók
+      href: concepts-servers.md
+    - name: Támogatott verziók
+      href: concepts-supported-versions.md
+    - name: Kiszolgálói naplók
+      href: concepts-server-logs.md
+    - name: Magas rendelkezésre állás
+      href: concepts-high-availability.md
+  - name: További források
+    items:
+    - name: Árképzési szintek
+      href: concepts-pricing-tiers.md
+    - name: Korlátok
+      href: concepts-limits.md
+  - name: Adathozzáférés és -biztonság
+    items:
+    - name: Tűzfalszabályok
+      href: concepts-firewall-rules.md
+    - name: Az SSL konfigurálása
+      href: concepts-ssl-connection-security.md
+    - name: VNet
+      href: concepts-data-access-and-security-vnet.md
+  - name: Az üzletmenet folytonossága
+    items:
+    - name: Áttekintés
+      href: concepts-business-continuity.md
+    - name: Biztonsági mentés és visszaállítás
+      href: concepts-backup.md
+  - name: Figyelés
+    href: concepts-monitoring.md
+  - name: Fejlesztés
+    items:
+    - name: Az illesztőprogramok és eszközök kompatibilitása
+      href: concepts-compatibility.md
+    - name: Alkalmazásfejlesztés
+      href: concepts-database-application-development.md
+  - name: Replikáció
+    items:
+    - name: Beérkező adatokra épülő replikáció
+      href: concepts-data-in-replication.md
+    - name: Olvasási replikák
+      href: concepts-read-replicas.md
 - name: Útmutatók
   items:
-    - name: Kiszolgáló kezelése
-      items:
-        - name: Azure Portal
-          href: howto-create-manage-server-portal.md
-    - name: Tűzfalszabályok
-      items:
-        - name: Azure Portal
-          href: howto-manage-firewall-using-portal.md
-        - name: Azure CLI
-          href: howto-manage-firewall-using-cli.md
-    - name: Kiszolgáló visszaállítása
-      items:
-        - name: Azure Portal
-          href: howto-restore-server-portal.md
-        - name: Azure CLI
-          href: howto-restore-server-cli.md
-    - name: Adatbázisok migrálása
-      items:
-        - name: Memóriakép és visszaállítás
-          href: concepts-migrate-dump-restore.md
-        - name: Importálás és exportálás
-          href: concepts-migrate-import-export.md
-        - name: Migrálás minimális állásidővel
-          href: howto-migrate-online.md
-    - name: Alkalmazások csatlakoztatása
-      items:
-        - name: Felhasználók létrehozása
-          href: howto-create-users.md
-        - name: Kapcsolati sztringek
-          href: howto-connection-string.md
-        - name: Az SSL konfigurálása
-          href: howto-configure-ssl.md
-        - name: Webalkalmazások
-          href: howto-connect-webapp.md
-    - name: Kiszolgáló paramétereinek konfigurálása
-      items:
-        - name: Azure Portal
-          href: howto-server-parameters.md
-        - name: Azure CLI
-          href: howto-configure-server-parameters-using-cli.md
-    - name: Hozzáférés a kiszolgálói naplókhoz
-      items:
-        - name: Azure Portal
-          href: howto-configure-server-logs-in-portal.md
-        - name: Azure CLI
-          href: howto-configure-server-logs-in-cli.md
-    - name: Figyelés
-      items:
-        - name: Riasztások létrehozása metrikákhoz
-          href: howto-alert-on-metric.md
-    - name: Replikáció
-      items:
-        - name: Beérkező adatokra épülő replikáció konfigurálása
-          href: howto-data-in-replication.md
-    - name: Hibaelhárítás
-      items:
-        - name: Lekérdezési teljesítmény hibaelhárítása
-          href: howto-troubleshoot-query-performance.md
-        - name: Nézetek használata a rendszersémában
-          href: howto-troubleshoot-sys-schema.md
-    - name: Virtual Network
-      items:
-        - name: Azure Portal
-          href: howto-manage-vnet-using-portal.md
-        - name: Azure CLI
-          href: howto-manage-vnet-using-cli.md
+  - name: Kiszolgáló kezelése
+    items:
+    - name: Azure Portal
+      href: howto-create-manage-server-portal.md
+  - name: Tűzfalszabályok
+    items:
+    - name: Azure Portal
+      href: howto-manage-firewall-using-portal.md
+    - name: Azure CLI
+      href: howto-manage-firewall-using-cli.md
+  - name: Kiszolgáló visszaállítása
+    items:
+    - name: Azure Portal
+      href: howto-restore-server-portal.md
+    - name: Azure CLI
+      href: howto-restore-server-cli.md
+  - name: Adatbázisok migrálása
+    items:
+    - name: Memóriakép és visszaállítás
+      href: concepts-migrate-dump-restore.md
+    - name: Importálás és exportálás
+      href: concepts-migrate-import-export.md
+    - name: Migrálás minimális állásidővel
+      href: howto-migrate-online.md
+  - name: Alkalmazások csatlakoztatása
+    items:
+    - name: Felhasználók létrehozása
+      href: howto-create-users.md
+    - name: Kapcsolati sztringek
+      href: howto-connection-string.md
+    - name: Az SSL konfigurálása
+      href: howto-configure-ssl.md
+    - name: Webalkalmazások
+      href: howto-connect-webapp.md
+  - name: Kiszolgáló paramétereinek konfigurálása
+    items:
+    - name: Azure Portal
+      href: howto-server-parameters.md
+    - name: Azure CLI
+      href: howto-configure-server-parameters-using-cli.md
+  - name: Hozzáférés a kiszolgálói naplókhoz
+    items:
+    - name: Azure Portal
+      href: howto-configure-server-logs-in-portal.md
+    - name: Azure CLI
+      href: howto-configure-server-logs-in-cli.md
+  - name: Figyelés
+    items:
+    - name: Riasztások létrehozása metrikákhoz
+      href: howto-alert-on-metric.md
+  - name: Replikáció
+    items:
+    - name: Beérkező adatokra épülő replikáció konfigurálása
+      href: howto-data-in-replication.md
+    - name: Olvasási replikák létrehozása az Azure Portalon
+      href: howto-read-replicas-portal.md
+  - name: Hibaelhárítás
+    items:
+    - name: Lekérdezési teljesítmény hibaelhárítása
+      href: howto-troubleshoot-query-performance.md
+    - name: Nézetek használata a rendszersémában
+      href: howto-troubleshoot-sys-schema.md
+  - name: Virtual Network
+    items:
+    - name: Azure Portal
+      href: howto-manage-vnet-using-portal.md
+    - name: Azure CLI
+      href: howto-manage-vnet-using-cli.md
 - name: Referencia
   items:
-    - name: Azure CLI
-      href: /cli/azure/mysql
-    - name: REST API
-      href: /rest/api/mysql
-    - name: Beérkező adatokra épülő replikáció tárolt eljárásai
-      href: reference-data-in-stored-procedures.md
+  - name: Azure CLI
+    href: /cli/azure/mysql
+  - name: REST API
+    href: /rest/api/mysql
+  - name: Beérkező adatokra épülő replikáció tárolt eljárásai
+    href: reference-data-in-stored-procedures.md
 - name: További források
   items:
-    - name: Üzembehelyezési sablonok
-      href: 'https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Dbformysql'
-    - name: Azure-ütemterv
-      href: 'https://azure.microsoft.com/roadmap/?category=databases'
-    - name: Díjszabás
-      href: 'https://azure.microsoft.com/pricing/details/mysql/'
-    - name: MSDN-fórum
-      href: 'https://social.msdn.microsoft.com/forums/security/en-US/home?forum=AzureDatabaseforMySQL'
-    - name: Stack Overflow
-      href: 'http://stackoverflow.com/questions/tagged/azure-database-mysql'
-    - name: Videók
+  - name: Üzembehelyezési sablonok
+    href: https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Dbformysql
+  - name: Azure-ütemterv
+    href: https://azure.microsoft.com/roadmap/?category=databases
+  - name: Díjszabás
+    href: https://azure.microsoft.com/pricing/details/mysql/
+  - name: MSDN-fórum
+    href: https://social.msdn.microsoft.com/forums/security/en-US/home?forum=AzureDatabaseforMySQL
+  - name: Stack Overflow
+    href: http://stackoverflow.com/questions/tagged/azure-database-mysql
+  - name: Videók
+    items:
+    - name: Termékvideók
+      href: videos.md
+    - name: Útmutató videósorozat
       items:
-        - name: Termékvideók
-          href: videos.md
-        - name: Útmutató videósorozat
-          items:
-            - name: Ismerje meg a termékek jellemzőit és előnyeit
-              href: 'https://aka.ms/mysql-intro-vid'
-            - name: MySQL-alkalmazások migrálása az Azure-ba
-              href: 'https://aka.ms/mysql-migrate-vid'
-            - name: Web Apps létrehozása és üzembe helyezése
-              href: 'https://aka.ms/mysql-webapps-vid'
-            - name: Tárolók csatlakoztatása az OSBA használatával
-              href: 'https://aka.ms/mysql-osba-vid'
-    - name: Szolgáltatás igénylése
-      href: 'https://feedback.azure.com/forums/597982-azure-database-for-mysql'
-    - name: Régiónkénti elérhetőség
-      href: 'https://azure.microsoft.com/regions/services/'
-    - name: Támogatási lehetőségek
-      href: 'https://azure.microsoft.com/support/options/'
-    - name: Ügyfelek történetei
-      href: 'https://customers.microsoft.com/en-us/search?sq="Azure%20Database%20for%20MySQL%20"'
-    - name: Partnerek
-      href: partners-migration-mysql.md
-    - name: Adatbázis-migrálási útmutató
-      href: 'https://datamigration.microsoft.com/'
+      - name: Ismerje meg a termékek jellemzőit és előnyeit
+        href: https://aka.ms/mysql-intro-vid
+      - name: MySQL-alkalmazások migrálása az Azure-ba
+        href: https://aka.ms/mysql-migrate-vid
+      - name: Web Apps létrehozása és üzembe helyezése
+        href: https://aka.ms/mysql-webapps-vid
+      - name: Tárolók csatlakoztatása az OSBA használatával
+        href: https://aka.ms/mysql-osba-vid
+  - name: Szolgáltatás igénylése
+    href: https://feedback.azure.com/forums/597982-azure-database-for-mysql
+  - name: Régiónkénti elérhetőség
+    href: https://azure.microsoft.com/regions/services/
+  - name: Támogatási lehetőségek
+    href: https://azure.microsoft.com/support/options/
+  - name: Ügyfelek történetei
+    href: https://customers.microsoft.com/en-us/search?sq="Azure%20Database%20for%20MySQL%20"
+  - name: Partnerek
+    href: partners-migration-mysql.md
+  - name: Adatbázis-migrálási útmutató
+    href: https://datamigration.microsoft.com/
+ms.openlocfilehash: 7c2ba8eecdf39d1e00abe91d9918fdaf2f1cec88
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46980797"

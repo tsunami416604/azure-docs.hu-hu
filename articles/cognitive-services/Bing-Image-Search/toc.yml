@@ -1,10 +1,11 @@
 items:
-- name: A Bing Image Search dokumentációja
+- name: A Bing Image Search API dokumentációja
   href: index.yml
 - name: Áttekintés
   items:
   - name: Mi a Bing Image Search?
     href: overview.md
+  expanded: true
 - name: Gyors útmutatók
   items:
   - name: Keresési lekérdezések küldése a REST API használatával
@@ -21,7 +22,6 @@ items:
       href: quickstarts/python.md
     - name: A Ruby használata
       href: quickstarts/ruby.md
-    expanded: true
   - name: Képek keresése az SDK használatával
     items:
     - name: A C# használata
@@ -68,9 +68,9 @@ items:
     href: https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference
   - name: Bing Image Search API 5-ös verzió
     href: https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v5-reference
-  - name: Azure Cognitive Services – PowerShell-referencia
+  - name: Azure PowerShell-referencia
     href: https://aka.ms/azure-powershell-cognitiveservices
-  - name: Azure Cognitive Services – CLI-referencia
+  - name: Azure CLI-referencia
     href: https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest#az_cognitiveservices_list
 - name: További források
   items:
@@ -100,9 +100,9 @@ items:
     href: UseAndDisplayRequirements.md
   - name: Bing Image Search API – elemzés
     href: bing-image-stats.md
-ms.openlocfilehash: 74cc9f56aa4d559c7e2644fc6866ae3d97f158f6
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 2b7b4bc8fb79687d032de52e3ac2ecbe4e944a8c
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46296294"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46967353"

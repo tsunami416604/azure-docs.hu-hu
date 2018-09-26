@@ -23,6 +23,8 @@ items:
     href: stream-analytics-javascript-user-defined-functions.md
   - name: 4 – Üzembe helyezés CI/CD-vel az Azure Pipelinesban
     href: stream-analytics-tools-visual-studio-cicd-vsts.md
+  - name: 5 – C# UDF futtatása az Edge-ben
+    href: stream-analytics-edge-csharp-udf.md
 - name: Példák
   items:
   - name: Kódminták
@@ -122,14 +124,18 @@ items:
     items:
     - name: Eszközök telepítése
       href: stream-analytics-tools-for-visual-studio-install.md
-    - name: Feladat helyi tesztelése
+    - name: Tesztelés mintaadatokkal
       href: stream-analytics-vs-tools-local-run.md
+    - name: Tesztelés élő adatokkal
+      href: stream-analytics-live-data-local-testing.md
     - name: Feladatok megtekintése a Visual Studióban
       href: stream-analytics-vs-tools.md
     - name: Edge-feladatok fejlesztése
       href: stream-analytics-tools-for-visual-studio-edge-jobs.md
     - name: CI-/CD-folyamat beállítása
       href: stream-analytics-tools-for-visual-studio-cicd.md
+    - name: .NET UDF írása az Edge-hez
+      href: stream-analytics-edge-csharp-udf-methods.md
   - name: Hibaelhárítás
     items:
     - name: Hibaelhárítási lépések
@@ -186,9 +192,9 @@ items:
     href: https://azure.microsoft.com/case-studies/?service=stream-analytics
   - name: Tanulmány – Valós idejű eseményfeldolgozás
     href: stream-analytics-real-time-event-processing-reference-architecture.md
-ms.openlocfilehash: b74d5aafe289ede8478d3e9ddb74e244030d948d
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 98167171446822773b6905e8f1dd19d0b2002b9f
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44296040"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46990042"

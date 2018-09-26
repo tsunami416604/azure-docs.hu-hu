@@ -6,12 +6,12 @@ description: Ismerje meg, hogyan készíthet és felügyelhet hatékony alkalmaz
 ms.topic: hub-page
 featureFlags:
 - clicktale
-ms.openlocfilehash: 9b9bbb9f584cf5fb071e75ea731c2325e334d10d
-ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
+ms.openlocfilehash: cf8564ed36402a3d42516c6aedb1eded566a7971
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45605963"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46977723"
 ---
 <div id="main" class="v2">
     <div class="container">
@@ -96,6 +96,7 @@ ms.locfileid: "45605963"
                                                 <ul class="noBullet">
                                                     <li><a class="barLink" href="/azure/virtual-machines/linux/">Linux rendszerű virtuális gépek</a></li>
                                                     <li><a class="barLink" href="/azure/virtual-machines/windows/">Windows rendszerű virtuális gépek</a></li>
+                                                    <li><a class="barLink" href="/azure/governance/blueprints/">Azure Blueprints</a></li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -114,7 +115,7 @@ ms.locfileid: "45605963"
                                                     <li><a class="barLink" href="/azure/backup/">Azure Backup</a></li>
                                                     <li><a class="barLink" href="/azure/site-recovery/">Azure Site Recovery</a></li>
                                                     <li><a class="barLink" href="/azure/migrate/">Azure Migrate</a></li>
-                                                    <li><a class="barLink" href="/azure/azure-policy/">Azure Policy</a></li>
+                                                    <li><a class="barLink" href="/azure/governance/policy/">Azure Policy</a></li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -287,6 +288,47 @@ Azure DevOps Project </a>
                                     </div>
                                 </div>
                             </li>
+                            <li>
+                                <div class="cardSize">
+                                    <div class="cardPadding">
+                                        <div class="card">
+                                            <div class="cardText">
+                                                <h3>Fejlessze a készségeit a Microsoft Learnnel</h3>
+                                                <ul class="noBullet">
+                                                    <li>
+                                                        <a class="barLink" href="/learn/modules/tour-azure-services-and-features/">
+                                                            <img src="/learn/achievements/tour-azure-services-and-features.svg" alt="">
+Az Azure szolgáltatásainak és funkcióinak bemutatása </a>
+                                                    </li>
+                                                    <li>
+                                                        <a class="barLink" href="/learn/modules/principles-cloud-computing/">
+                                                            <img src="/learn/achievements/principles-cloud-computing.svg" alt="">
+A felhőalapú számítástechnikai alapelvei </a>
+                                                    </li>
+                                                    <li>
+                                                        <a class="barLink" href="/learn/modules/build-a-serverless-web-app/">
+                                                            <img src="/learn/achievements/build-a-serverless-web-app.svg" alt="">
+Kiszolgáló nélküli webalkalmazás összeállítása </a>
+                                                    </li>
+                                                    <li>
+                                                        <a class="barLink" href="/learn/modules/control-azure-services-with-cli/">
+                                                            <img src="/learn/achievements/control-azure-services-with-cli.svg" alt="">
+Azure-szolgáltatások irányítása a parancssori felülettel jelvény </a>
+                                                    </li>
+                                                    <li>
+                                                        <a class="barLink" href="/learn/modules/automate-azure-tasks-with-powershell/">
+                                                            <img src="/learn/achievements/automate-azure-tasks-with-powershell.svg" alt="">
+Azure-feladatok automatizálása szkriptek használatával a PowerShell-lel </a>
+                                                    </li>
+                                                    <li>
+                                                        <a class="barLink" href="/learn/browse/?products=azure">További interaktív oktatóanyagok...</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
                             <li></li>
                             <li></li>
                             <li></li>
@@ -448,6 +490,12 @@ Azure DevOps Project </a>
                                             <a href="/azure/mysql/">
                                                 <img src="media/index/MySQL.svg" alt="" />
                                                 <p>Azure Database for MySQL</p>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="/azure/mariadb/">
+                                                <img src="media/index/MariaDB.svg" alt="" />
+                                                <p>Azure Database for MariaDB</p>
                                             </a>
                                         </li>
                                         <li>
@@ -697,6 +745,12 @@ Azure DevOps Project </a>
                                                 <p>Azure Firewall</p>
                                             </a>
                                         </li>
+                                        <li>
+                                            <a href="/azure/frontdoor/">
+                                                <img src="media/index/frontdoor.svg" alt="" />
+                                                <p>Azure Front Door Service</p>
+                                            </a>
+                                        </li>
                                     </ul>
                                     <h3>AI + Machine Learning</h3>
                                     <ul>
@@ -757,13 +811,13 @@ Azure DevOps Project </a>
                                         <li>
                                             <a href="/azure/cognitive-services/content-moderator/overview">
                                                 <img src="media/index/API_Content_Moderator.svg" alt="" />
-                                                <p>Tartalommoderátor</p>
+                                                <p>Content Moderator</p>
                                             </a>
                                         </li>
                                         <li>
                                             <a href="/azure/cognitive-services/Custom-Vision-Service/home">
                                                 <img src="media/index/API_Custom_Vision.svg" alt="" />
-                                                <p>Egyéni vizuális szolgáltatás</p>
+                                                <p>Custom Vision Service</p>
                                             </a>
                                         </li>
                                         <li>
@@ -787,7 +841,7 @@ Azure DevOps Project </a>
                                         <li>
                                             <a href="/azure/cognitive-services/speech-service/overview">
                                                 <img src="media/index/API_Speech_Service.svg" alt="" />
-                                                <p>Beszédszolgáltatás</p>
+                                                <p>Speech Service</p>
                                             </a>
                                         </li>
                                         <li>
@@ -805,7 +859,7 @@ Azure DevOps Project </a>
                                         <li>
                                             <a href="/azure/cognitive-services/speaker-recognition/home">
                                                 <img src="media/index/API_Speaker_Recognition.svg" alt="" />
-                                                <p>Beszélőfelismerés API</p>
+                                                <p>Speaker Recognition API</p>
                                             </a>
                                         </li>
                                         <li>
@@ -835,7 +889,7 @@ Azure DevOps Project </a>
                                         <li>
                                             <a href="/azure/cognitive-services/text-analytics/">
                                                 <img src="media/index/API_TextAnalytics.svg" alt="" />
-                                                <p>Szövegelemzések API</p>
+                                                <p>Text Analytics API</p>
                                             </a>
                                         </li>
                                         <li>
@@ -1095,6 +1149,12 @@ Azure DevOps Project </a>
                                             <a href="/azure/data-factory/">
                                                 <img src="media/index/DataFactory.svg" alt="" />
                                                 <p>Data Factory</p>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="/azure/data-explorer/">
+                                                <img src="https://docs.microsoft.com/media/logos/logo_azure.svg" alt="" />
+                                                <p>Azure Data Explorer</p>
                                             </a>
                                         </li>
                                         <li>
@@ -1658,9 +1718,21 @@ Azure DevOps Project </a>
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="/azure/azure-policy/">
+                                            <a href="/azure/governance/policy/">
                                                 <img src="media/index/governance.svg" alt="" />
                                                 <p>Azure Policy</p>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="/azure/governance/blueprints/">
+                                                <img src="media/index/blueprints.svg" alt="" />
+                                                <p>Azure Blueprints</p>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="/azure/governance/resource-graph/">
+                                                <img src="media/index/resource-graph.svg" alt="" />
+                                                <p>Azure Resource Graph</p>
                                             </a>
                                         </li>
                                         <li>
@@ -2188,6 +2260,25 @@ Azure DevOps Project </a>
                                                 <div class="cardText">
                                                     <h3>Virtuális WAN</h3>
                                                     <p>Biztonságos, globális méretű ágkapcsolatok kiépítése</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/azure/frontdoor/">
+                                    <div class="cardSize">
+                                        <div class="cardPadding">
+                                            <div class="card">
+                                                <div class="cardImageOuter">
+                                                    <div class="cardImage">
+                                                        <img src="media/index/frontdoor.svg" alt="" />
+                                                    </div>
+                                                </div>
+                                                <div class="cardText">
+                                                    <h3>Azure Front Door Service</h3>
+                                                    <p>Skálázható, biztonságos belépési pont a globális webalkalmazások gyors biztosításához</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -3056,6 +3147,25 @@ Azure DevOps Project </a>
                                 </a>
                             </li>
                             <li>
+                                <a href="/azure/mariadb/">
+                                    <div class="cardSize">
+                                        <div class="cardPadding">
+                                            <div class="card">
+                                                <div class="cardImageOuter">
+                                                    <div class="cardImage">
+                                                        <img src="media/index/MariaDB.svg" alt="" />
+                                                    </div>
+                                                </div>
+                                                <div class="cardText">
+                                                    <h3>Azure Database for MariaDB</h3>
+                                                    <p>Felügyelt MariaDB-adatbázisszolgáltatás alkalmazásfejlesztőknek</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
                                 <a href="/azure/dms/dms-overview">
                                     <div class="cardSize">
                                         <div class="cardPadding">
@@ -3149,6 +3259,25 @@ Azure DevOps Project </a>
                                                 <div class="cardText">
                                                     <h3>Data Factory</h3>
                                                     <p>Adatátalakítás és -mozgatás irányítása és felügyelete</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/azure/data-explorer/">
+                                    <div class="cardSize">
+                                        <div class="cardPadding">
+                                            <div class="card">
+                                                <div class="cardImageOuter">
+                                                    <div class="cardImage">
+                                                        <img src="https://docs.microsoft.com/en-us/media/logos/logo_azure.svg" alt="" />
+                                                    </div>
+                                                </div>
+                                                <div class="cardText">
+                                                    <h3>Azure Data Explorer</h3>
+                                                    <p>Gyors és kitűnően méretezhető adatkezelési szolgáltatás napló- és telemetriai adatokhoz</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -5122,7 +5251,7 @@ Azure DevOps Project </a>
                                 </a>
                             </li>
                             <li>
-                                <a href="/azure/azure-policy/">
+                                <a href="/azure/governance/policy/">
                                     <div class="cardSize">
                                         <div class="cardPadding">
                                             <div class="card">
@@ -5134,6 +5263,44 @@ Azure DevOps Project </a>
                                                 <div class="cardText">
                                                     <h3>Azure Policy</h3>
                                                     <p>Vállalati irányítás és szabványok nagyobb léptékű megvalósítása az Azure-erőforrásokhoz</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/azure/governance/blueprints/">
+                                    <div class="cardSize">
+                                        <div class="cardPadding">
+                                            <div class="card">
+                                                <div class="cardImageOuter">
+                                                    <div class="cardImage">
+                                                        <img src="media/index/blueprints.svg" alt="" />
+                                                    </div>
+                                                </div>
+                                                <div class="cardText">
+                                                    <h3>Azure Blueprints</h3>
+                                                    <p>Felhőkörnyezetek megismételhető üzembe helyezése és frissítése összeállítható összetevők használatával</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/azure/governance/resource-graph/">
+                                    <div class="cardSize">
+                                        <div class="cardPadding">
+                                            <div class="card">
+                                                <div class="cardImageOuter">
+                                                    <div class="cardImage">
+                                                        <img src="media/index/resource-graph.svg" alt="" />
+                                                    </div>
+                                                </div>
+                                                <div class="cardText">
+                                                    <h3>Azure Resource Graph</h3>
+                                                    <p>Erőforrások nagy léptékű felderítése egy részletes lekérdező nyelv segítségével</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -5953,7 +6120,7 @@ Service Fabric SDK és -eszközök </h3>
                                                 <h3>
 SQL-eszközök </h3>
                                                 <p>
-                                                    <a href="/sql/sql-operations-studio/download">SQL Operations Studio <sup>ELŐZETES VERZIÓ</sup></a>
+                                                    <a href="/sql/azure-data-studio/download">Azure Data Studio <sup>ELŐZETES VERZIÓ</sup></a>
                                                 </p>
                                                 <p>
                                                     <a href="/sql/ssms/download-sql-server-management-studio-ssms">SQL Server Management Studio (SSMS)</a>

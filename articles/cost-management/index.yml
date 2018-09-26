@@ -1,47 +1,57 @@
 ### YamlMime:YamlDocument
+ms.openlocfilehash: cad92cb36f3e5e038186e9b97f30bed9525e2fea
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46978743"
 documentType: LandingData
 title: Az Azure Cost Management dokumentációja
 metadata:
   title: A Cost Management dokumentációja – oktatóanyagok és API-referencia | Microsoft Docs
-  description: Az Azure Cost Management egy többfelhős költségkezelő megoldás, amely segítséget nyújt az Azure és egyéb felhőerőforrások használatához. Rövid útmutatóink és oktatóanyagaink segítségével megismerheti, hogyan tekinthető át a használat és a költségek, hogyan kezelhetők aktívan és optimalizálhatók a költségek, illetve hogyan jelezhetők előre a kiadások.
+  description: Az Azure Cost Management egy költségkezelő megoldás, amely segítséget nyújt az Azure-költségek monitorozásához és szabályozásához, valamint optimalizálja az erőforrások használatát. Rövid útmutatóink és oktatóanyagaink segítségével megtudhatja, hogyan kezelheti a költségvetéseket, hogyan exportálhatja az adatokat, és hogyan tekintheti át és hajthatja végre a javaslatokat.
   services: cost-management
   author: bandersmsft
-  manager: carmonm
+  manager: dougeby
   ms.service: cost-management
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
-  ms.date: 02/27/2018
+  ms.date: 09/14/2019
   ms.author: banders
-  ms.openlocfilehash: d6fa2486944fdecab67996bd7a8c7f656ffb2e72
-  ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
-  ms.translationtype: HT
-  ms.contentlocale: hu-HU
-  ms.lasthandoff: 03/16/2018
-  ms.locfileid: "29935332"
 abstract:
-  description: A Microsoft egyik leányvállalata, a Cloudyn által licencelt Azure Cost Management egy többfelhős költségkezelő megoldás, amely segítséget nyújt az Azure és egyéb felhőalapú erőforrások lehető leghatékonyabb használatához és kezeléséhez. Rövid útmutatóink és oktatóanyagaink segítségével megismerheti, hogyan tekinthető át a használat és a költségek, hogyan kezelhetők aktívan és optimalizálhatók a költségek, illetve hogyan jelezhetők előre a kiadások.
+  description: Az Azure Cost Management egy költségkezelő megoldás, amely segítséget nyújt az Azure-költségek monitorozásához és szabályozásához, valamint optimalizálja az erőforrások használatát. Rövid útmutatóink és oktatóanyagaink segítségével megtudhatja, hogyan kezelheti a költségvetéseket, hogyan exportálhatja az adatokat, és hogyan tekintheti át és hajthatja végre a javaslatokat.
 sections:
 - title: 5 perces gyors útmutatók
   items:
   - type: paragraph
-    text: Ismerje meg, hogyan regisztrálhatja Azure-szerződési vagy -előfizetési információit a Cost Managementtel a költségadatok megtekintéséhez.
+    text: Megismerheti az Azure Cost Management szervezeti költségek elemzésére való használatának első lépéseit.
   - type: list
     style: icon48
     items:
     - image:
         src: https://docs.microsoft.com/media/common/i_portal.svg
-      text: Költségadatok megtekintése
-      href: quick-register-azure-sub
+      text: Költségelemzés
+      href: quick-acm-cost-analysis
 - title: Részletes útmutatók
   items:
   - type: paragraph
-    text: Megismerheti, hogyan tekinthető át a használat és a költségek, hogyan kezelhetők aktívan és optimalizálhatók a költségek, illetve hogyan jelezhetők előre a kiadások a Cost Management használatával.
+    text: Ismerje meg, hogyan készíthet költségvetéseket, hogyan exportálhatja az adatokat, valamint hogyan tekintheti át és hajthatja végre a javaslatokat a Cost Management használatával.
   - type: list
     style: ordered
     items:
-    - html: <a href="tutorial-review-usage">A használat és a költségek áttekintése az anomáliák és hatékonyságok észleléséhez</a>
-    - html: <a href="tutorial-forecast-spending">Jövőbeli kiadások előrejelzése</a>
-    - html: <a href="tutorial-manage-costs">Költségek kezelése költséglefoglalási, költséghelyi visszacsatolási és költséghelyi elszámolási jelentésekkel</a>
-    - html: <a href="tutorial-optimize-reserved-instances">Fenntartott példányok optimalizálása</a>
-    - html: <a href="tutorial-user-access">A Cost Management adataihoz való hozzáférés hozzárendelése</a>
+    - html: <a href="tutorial-acm-create-budgets">Költségvetések létrehozása és kezelése</a>
+    - html: <a href="tutorial-export-acm-data">Adatok exportálása</a>
+    - html: <a href="tutorial-acm-opt-recommendations">Optimalizálási javaslatok áttekintése és végrehajtása</a>
+- title: Fejlessze a készségeit a Microsoft Learnnel
+  items:
+  - type: list
+    style: cards
+    className: cardsFTitle
+    items:
+    - title: A költségek előrejelzése és optimalizálása az Azure környezethez
+      href: /learn/modules/predict-costs-and-optimize-spending/
+      image:
+        src: /learn/achievements/predict-costs-and-optimize-spending.svg
+  - type: paragraph
+    text: <a href="/learn/browse/?products=azure-cost-management">További interaktív oktatóanyagok...</a>
