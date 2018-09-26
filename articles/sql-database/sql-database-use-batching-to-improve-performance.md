@@ -2,19 +2,22 @@
 title: Kötegelés használata Azure SQL Database-alkalmazások teljesítményének javítása érdekében
 description: A témakör igazolja, hogy kötegelés adatbázis-műveletek sebessége nagy mértékben imroves és az Azure SQL Database az alkalmazások méretezhetősége. Bár a kötegelés technikák ugyanúgy alkalmazhatók bármely SQL Server-adatbázis, a cikk célja az Azure-ban.
 services: sql-database
-author: stevestein
-manager: craigg
 ms.service: sql-database
-ms.custom: develop apps
+ms.subservice: development
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 09/20/2018
+author: stevestein
 ms.author: sstein
-ms.openlocfilehash: 92640eeb068b8e9a95dbe1209b2c8834e5f29da8
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.reviewer: genemi
+manager: craigg
+ms.date: 09/20/2018
+ms.openlocfilehash: 21dc28658f7f6f31bc7536df739a70238a3bcb8f
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47036099"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47160808"
 ---
 # <a name="how-to-use-batching-to-improve-sql-database-application-performance"></a>Kötegelés használata SQL Database-alkalmazások teljesítményének javítása érdekében
 Műveletek az Azure SQL Database kötegelés jelentősen növeli a teljesítményét és méretezhetőségét, az alkalmazások. Annak érdekében, hogy tájékozódjon, ez a cikk első részében vonatkozik néhány minta vizsgálati eredmények, amelyek egymást követő és kötegelt kérések egy SQL Database összehasonlítása. A cikk többi része a technikák, forgatókönyvek és annak érdekében, hogy az Azure-alkalmazások sikeresen kötegelés használata szempontok jeleníti meg.
@@ -293,10 +296,10 @@ Attól függően, az architektúra kötegelés is magában foglalhat egy teljes�
 
 Miatt a kompromisszummal jár értékelje ki operations típusát, akkor a batch. Batch-agresszívabb (nagyobb kötegek és hosszabb idő-windows) kevésbé fontos adatokkal.
 
-### <a name="batch-size"></a>Köteg mérete
+### <a name="batch-size"></a>Kötegméret
 A tesztek a van nem általában nincs előnye az, hogy használhatatlanná tévő nagy kötegeket szeletekre. Sőt gyakran ez felosztása lassabban, mint egy egyetlen nagy kötegelt eredményezett. Például vegyünk egy forgatókönyvet, ahol szeretné 1000 sor beszúrásához. Az alábbi táblázat bemutatja, hogy mennyi ideig tart amikor kisebb kötegekben osztható 1000 sor beszúrása a tábla értékű paraméter segítségével.
 
-| Köteg mérete | Az ismétlések | Tábla értékű paraméter (ms) |
+| Kötegméret | Az ismétlések | Tábla értékű paraméter (ms) |
 | --- | --- | --- |
 | 1000 |1 |347 |
 | 500 |2 |355 |

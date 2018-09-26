@@ -10,12 +10,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 01/09/2018
 ms.author: kakampf
-ms.openlocfilehash: 2f6ced6603c6736200f4474fbb1dc9b0ef1535d9
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.openlocfilehash: dc1f076a6450a7b6fa33a959e79b0fd5a68a99d4
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47056804"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47162391"
 ---
 # <a name="what-are-the-hadoop-components-and-versions-available-with-hdinsight"></a>Mik azok a Hadoop-összetevők és a HDInsight-verziók?
 
@@ -31,7 +31,7 @@ A HDInsight-fürt verziók-összetevő verzió az alábbi táblázatban láthat�
 > [!NOTE]
 > A HDInsight szolgáltatás az alapértelmezett verziójának előzetes értesítés nélkül változhatnak. Ha egy függőségi, adja meg a HDInsight-verzió a .NET SDK használatával az Azure PowerShell és a klasszikus Azure CLI-fürtök létrehozásakor.
 
-| Összetevő | HDInsight 4.0 | HDInsight 3.6-os (alapértelmezett) | HDInsight 3.5-ös verzióját. | HDInsight 3.4 | HDInsight 3.3. | HDInsight 3.2-es verzióját | HDInsight 3.1. | HDInsight 3.0-s |
+| Összetevő | HDInsight 4.0-s (előzetes verzió) | A HDInsight 3.6-os (alapértelmezett) | HDInsight 3.5-ös verzióját. | HDInsight 3.4 | HDInsight 3.3. | HDInsight 3.2-es verzióját | HDInsight 3.1. | HDInsight 3.0-s |
 | --- | --- | --- | --- | --- | --- | --- | --- |--- |
 | Hortonworks Data Platform |3.0 |2.6 |2.5 |2.4 |2.3 |2.2 |2.1.7 |2.0 |
 | Az Apache Hadoop és YARN |2.9.1-es |2.7.3 |2.7.3 |2.7.1 |2.7.1 |2.6.0 |2.4.0 |2.2.0 |
@@ -78,7 +78,7 @@ Az alábbi táblázat az Azure Portalon, valamint egyéb telepítési módszerek
 
 | HDInsight-verzió | HDP verzió | VM OS | Kiadási dátum | Támogatás lejárati dátuma | Visszavonás dátuma | Magas rendelkezésre állás |  Rendelkezésre állás az Azure Portalon | 
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| HDInsight 4.0 |HDP 3.0 |Ubuntu 16.0.4 LTS |2018. szeptember 24. | | |Igen |Igen |
+| HDInsight 4.0 <br> (Előzetes verzió) |HDP 3.0 |Ubuntu 16.0.4 LTS |2018. szeptember 24. | | |Igen |Igen |
 | HDInsight 3.6-os |2.6 HDP |Ubuntu 16.0.4 LTS |2017. április 4. | | |Igen |Igen |
 
 > [!NOTE]

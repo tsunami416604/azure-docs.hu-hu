@@ -1,2 +1,2 @@
-Ez a szolgáltatás és az új Azure egyéb funkcióit szeretné használni, Regisztráljon a [ingyenes kiadásra](https://account.windowsazure.com/PreviewFeatures).
+Ez a szolgáltatás és az Azure egyéb új funkcióit szeretné használni, Regisztráljon a [ingyenes előzetes verzió](https://account.windowsazure.com/PreviewFeatures).
 

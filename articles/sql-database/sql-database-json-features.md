@@ -1,39 +1,42 @@
 ---
-title: Azure SQL adatbázis JSON-funkció |} Microsoft Docs
-description: Az Azure SQL Database segítségével elemzési, lekérdezés, és adatok formázása a JavaScript Object Notation (JSON) jelöléssel.
+title: Az Azure SQL Database JSON-funkcióit |} A Microsoft Docs
+description: Az Azure SQL Database lehetővé teszi elemzési, lekérdezéssel és JavaScript Object Notation (JSON) formátumban adatok formázása.
 services: sql-database
-author: jovanpop-msft
-manager: craigg
 ms.service: sql-database
-ms.custom: develop databases
-ms.date: 04/01/2018
-ms.author: jovanpop
+ms.subservice: development
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.openlocfilehash: 687986d108a15973c19ff06f5ca98a468439f30d
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+author: jovanpop-msft
+ms.author: jovanpop
+ms.reviewer: ''
+manager: craigg
+ms.date: 04/01/2018
+ms.openlocfilehash: dfbefd2ff4c2e99268c1e7e84154e93d58f542bb
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34648999"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47163630"
 ---
-# <a name="getting-started-with-json-features-in-azure-sql-database"></a>Ismerkedés az Azure SQL Database JSON szolgáltatásai
-Az Azure SQL Database lehetővé teszi elemezni, és JavaScript Object Notation ábrázolt adatok lekérdezése [(JSON)](http://www.json.org/) formázása, és a relációs adatok exportálása JSON-szövegként.
+# <a name="getting-started-with-json-features-in-azure-sql-database"></a>Ismerkedés az Azure SQL Database-ben JSON-funkciókkal
+Az Azure SQL Database lehetővé teszi a elemzése és kérdezhet le adatokat a JavaScript Object Notation jelölt [(JSON)](http://www.json.org/) formázhatja és exportálni a relációs adatok JSON-szövegben.
 
-JSON-ja adatcsere modern webes és mobilalkalmazások használt népszerű adatformátum. JSON is félig strukturált adatok tárolásához, naplófájlokban vagy hasonló NoSQL-adatbázisok használt [Azure Cosmos DB](https://azure.microsoft.com/services/documentdb/). Sok REST webszolgáltatások ad találatot formázott JSON-szövegként, vagy fogadja el az adatok JSON formátumú. A legtöbb Azure szolgáltatásokkal – például [Azure Search](https://azure.microsoft.com/services/search/), [Azure Storage](https://azure.microsoft.com/services/storage/), és [Azure Cosmos DB](https://azure.microsoft.com/services/documentdb/) REST-végpont vissza vagy JSON felhasználását.
+JSON-ja egy modern webes és mobilalkalmazások az adatcsere használt népszerű adatok formátuma. JSON félig strukturált adatok tárolására, naplófájlokban vagy hasonló NoSQL-adatbázisok esetében is alkalmazható [Azure Cosmos DB](https://azure.microsoft.com/services/documentdb/). Számos REST webes szolgáltatás visszaadott eredmények formázott JSON-szöveget, vagy fogadja el az adatok JSON formátumú. A legtöbb Azure-szolgáltatások például [Azure Search](https://azure.microsoft.com/services/search/), [Azure Storage](https://azure.microsoft.com/services/storage/), és [Azure Cosmos DB](https://azure.microsoft.com/services/documentdb/) adja vissza, vagy JSON felhasználása REST-végpontokat.
 
-Azure SQL Database lehetővé teszi a JSON-adatok egyszerűen dolgozhat, és az adatbázis olyan modern-szolgáltatásokkal integrálja.
+Az Azure SQL Database lehetővé teszi a JSON-adatok egyszerűen dolgozhat, és az adatbázis integrálása a modern szolgáltatások.
 
 ## <a name="overview"></a>Áttekintés
-Az Azure SQL-adatbázis a következő funkciókat biztosít a JSON-adatokkal végzett munka:
+Az Azure SQL Database a JSON-adatok használata a következő funkciókat biztosítja:
 
-![JSON-funkciók](./media/sql-database-json-features/image_1.png)
+![JSON-függvények](./media/sql-database-json-features/image_1.png)
 
-Ha JSON-szöveg, JSON kinyeri az adatokat, vagy győződjön meg arról, hogy a beépített funkciókkal megfelelően formázott JSON [JSON_VALUE](https://msdn.microsoft.com/library/dn921898.aspx), [JSON_QUERY](https://msdn.microsoft.com/library/dn921884.aspx), és [ISJSON](https://msdn.microsoft.com/library/dn921896.aspx). A [JSON_MODIFY](https://msdn.microsoft.com/library/dn921892.aspx) funkció lehetővé teszi, hogy frissítse JSON-szövegben lévő értéket. További speciális lekérdezés és elemzés céljából, [OPENJSON](https://msdn.microsoft.com/library/dn921885.aspx) függvény a sorokra alakíthatja át a JSON-objektumok tömbjét. SQL-lekérdezést a visszaadott eredményhalmaz hajtható végre. Végül pedig a [FOR JSON](https://msdn.microsoft.com/library/dn921882.aspx) záradékot, amely lehetővé teszi, hogy formázni a JSON-szövegként a relációs táblákban tárolt adatokat.
+Ha JSON-szöveg, JSON-ból adatokat nyerhet ki, vagy győződjön meg arról, hogy a beépített funkciókkal megfelelően formázott JSON [JSON_VALUE](https://msdn.microsoft.com/library/dn921898.aspx), [JSON_QUERY](https://msdn.microsoft.com/library/dn921884.aspx), és [ISJSON](https://msdn.microsoft.com/library/dn921896.aspx). A [JSON_MODIFY](https://msdn.microsoft.com/library/dn921892.aspx) funkció lehetővé teszi, hogy frissítse a JSON-szövegben lévő értéket. További speciális lekérdezés és elemzés céljából, [OPENJSON](https://msdn.microsoft.com/library/dn921885.aspx) függvény JSON-objektumok tömbje ismeretekké a sorkészletet. Bármely SQL-lekérdezés a visszaadott eredménykészlet hajtható végre. Végül pedig egy [FOR JSON](https://msdn.microsoft.com/library/dn921882.aspx) záradék, amely lehetővé teszi a JSON-szövegként a relációs táblákban tárolt adatok formázása.
 
-## <a name="formatting-relational-data-in-json-format"></a>Formázási relációs adatok JSON formátumban
-Ha egy webszolgáltatás-bővítmény vesz az adatbázis adatait réteg és biztosít egy válasz JSON formátumú, vagy JSON-ként formázott ügyféloldali JavaScript-keretrendszerek vagy szalagtár szerepel, amely adatokat fogad, közvetlenül az SQL-lekérdezést az adatbázis-tartalom formázhatók JSON-ként. Már nem írása, amely az Azure SQL Database JSON-ként eredményeinek formázza alkalmazáskód használ, vagy bizonyos alakítsa át a táblázatos lekérdezési eredményeket, majd a JSON formátumban objektumokat szerializálni a JSON-szerializálási objektumtára tartalmazza. A FOR JSON záradék használatával ehelyett SQL lekérdezési eredmények formázza a JSON-t az Azure SQL Database, és közvetlenül az alkalmazás használatát.
+## <a name="formatting-relational-data-in-json-format"></a>Relációs adatok JSON formátumban formázása
+Ha egy webszolgáltatás, hogy beolvassa az adatokat az adatbázisból. réteg és a JSON-választ biztosít formázhatja, vagy JSON-ként formázott ügyféloldali JavaScript-keretrendszert vagy -kódtárak együttese fogadja el az adatokat, egy SQL-lekérdezést közvetlenül a az adatbázis-tartalom formázhatók JSON-fájlként. Már van, amely formázza az eredményeket JSON-ként az Azure SQL Database-ből alkalmazáskódot írni, vagy néhány JSON szerializációs kódtárban átalakítása táblázatos lekérdezési eredményeket, és majd a JSON-formátumban való objektumok szerializálásának tartalmazza. Ehelyett használhatja a FOR JSON záradék SQL lekérdezési eredmények formázása az Azure SQL Database JSON-fájlként, és azt használni a saját alkalmazásában.
 
-A következő példában a Sales.Customer tábla azon sorait-ként formázott JSON a FOR JSON záradék használatával:
+A következő példában a Sales.Customer tábla azon sorait formázott JSON-fájlként a FOR JSON záradék használatával:
 
 ```
 select CustomerName, PhoneNumber, FaxNumber
@@ -41,7 +44,7 @@ from Sales.Customers
 FOR JSON PATH
 ```
 
-A FOR JSON Path UTASÍTÁST záradék a lekérdezés eredményeinek JSON-szövegként formázza. Oszlopnevek használatosak kulcsok, amíg az értékek JSON értékként jönnek létre:
+A FOR JSON PATH záradék a lekérdezés eredményeit, JSON-szövegként formázza. Oszlopnevek használják kulcsok, miközben az értékek JSON értékekként jönnek létre:
 
 ```
 [
@@ -51,9 +54,9 @@ A FOR JSON Path UTASÍTÁST záradék a lekérdezés eredményeinek JSON-szöveg
 ]
 ```
 
-A JSON-tömb, ahol mindegyik sor külön JSON-objektumként van formázva az eredményhalmaz formátuma.
+Az eredményhalmaz vannak formázva, egy JSON-tömb, ahol minden sor egy külön JSON-objektumként van formázva.
 
-Elérési út azt jelenti, hogy testre szabhatja a kimeneti formátum a JSON eredményének oszlopaliasnévként pontjelöléssel. A következő lekérdezés módosítja a kimeneti JSON formátumban a "CustomerName" kulcs nevét, és a telefon-és faxszáma helyezi az "Ügyfél" altípusa objektum:
+Elérési út azt jelzi, hogy testre szabható a JSON-eredményt kimeneti formátumba oszlopaliasnévként pontjelöléssel. A következő lekérdezés változik a kimenet JSON formátumban a "CustomerName" kulcs nevét, és a telefon-és faxszáma helyezi az "Ügyfél" alobjektumban:
 
 ```
 select CustomerName as Name, PhoneNumber as [Contact.Phone], FaxNumber as [Contact.Fax]
@@ -62,7 +65,7 @@ where CustomerID = 931
 FOR JSON PATH, WITHOUT_ARRAY_WRAPPER
 ```
 
-Ez a lekérdezés eredményének így néz ki:
+Ez a lekérdezés kimenete a következőhöz hasonló:
 
 ```
 {
@@ -74,9 +77,9 @@ Ez a lekérdezés eredményének így néz ki:
 }
 ```
 
-Ebben a példában azt egy adott JSON-objektum helyett egy tömb által visszaadott megadása a [WITHOUT_ARRAY_WRAPPER](https://msdn.microsoft.com/library/mt631354.aspx) lehetőséget. Ezt a beállítást is használhatja, ha tudja, hogy a lekérdezés egyetlen objektumot ad vissza.
+Ebben a példában azt helyett egy tömb egy egyetlen JSON-objektum által visszaadott megadása a [WITHOUT_ARRAY_WRAPPER](https://msdn.microsoft.com/library/mt631354.aspx) lehetőséget. Használhatja ezt a beállítást, ha tudja, hogy vannak-e visszatérő eredményeképpen query egyetlen objektumot.
 
-A fő a FOR JSON záradék értéke, mellyel vissza összetett hierarchikus adatokat az adatbázisból, beágyazott JSON-objektumok vagy tömbök formázott. A következő példa bemutatja, hogyan tartalmazza, amelyek az ügyfél rendelések beágyazott tömb rendeléseket:
+A fő a FOR JSON záradék értéke, hogy lehetővé teszi, hogy összetett hierarchikus adatokat az adatbázisból, beágyazott JSON-objektum vagy tömb formájában adja vissza. Az alábbi példa bemutatja, hogyan foglalhat bele az ügyfél rendeléseinek beágyazott tömbként tartozó rendelések:
 
 ```
 select CustomerName as Name, PhoneNumber as Phone, FaxNumber as Fax,
@@ -89,7 +92,7 @@ FOR JSON AUTO, WITHOUT_ARRAY_WRAPPER
 
 ```
 
-Helyett külön felhasználói adatok lekérdezését, és majd beolvasni a kapcsolódó rendelések, kaphat egyetlen lekérdezést, az összes szükséges adatot küld a következő minta kimenet látható módon:
+Ahogy az az alábbi kimeneti példa külön lekérdezéseket vásárlói adatokat, és majd beolvasni a kapcsolódó rendelések listáját, megtekintheti a szükséges adatok egyetlen lekérdezéssel, helyett:
 
 ```
 {
@@ -105,9 +108,9 @@ Helyett külön felhasználói adatok lekérdezését, és majd beolvasni a kapc
 ```
 
 ## <a name="working-with-json-data"></a>JSON-adatok használata
-Ha nincs szigorúan strukturált adatok, ha olyan alárendelt összetett objektumok, tömbök vagy hierarchikus adatokhoz, vagy a adatstruktúrák verzióinformációk, a JSON formátum segítségével bármely összetett adatszerkezet képviseli.
+Ha nem rendelkezik szigorúan strukturált adatok, ha olyan alárendelt összetett objektumok, tömbök vagy hierarchikus adatokkal dolgozik, vagy ha időbeli alakulásával az adattárakon, a JSON-formátumban segítségével bármilyen összetett adatstruktúra jelölésére.
 
-JSON-ja a szöveges formátum, mint minden más karakterlánc az Azure SQL Database használható. Küldjön, vagy JSON-adatok tárolót, mint egy normál NVARCHAR:
+A szöveges formátum, mint minden más karakterláncot az Azure SQL Database-ben használható JSON-ja. Küldjön, vagy JSON-adatok tárolására, a standard szintű NVARCHAR:
 
 ```
 CREATE TABLE Products (
@@ -123,18 +126,18 @@ AS BEGIN
 END
 ```
 
-A JSON-adatokat ebben a példában használt jelképezi a NVARCHAR(MAX) típus használatával. JSON szúrhatók be ezt a táblázatot, vagy a tárolt eljárás szabványos Transact-SQL-szintaxis használatával az alábbi példában látható módon argumentumaként megadott:
+Ebben a példában használt JSON-adatokat az NVARCHAR(MAX) típust jelöli. JSON lehet beszúrni a táblába vagy megadva argumentumként, a tárolt eljárás standard Transact-SQL-szintaxis használatával az alábbi példában látható módon:
 
 ```
 EXEC InsertProduct 'Toy car', '{"Price":50,"Color":"White","tags":["toy","children","games"]}'
 ```
 
-Bármely ügyféloldali nyelvi vagy a könyvtárban, amely az Azure SQL-adatbázis karakterlánc-adatokkal is működik a JSON-adatokat. JSON tárolhatja bármilyen, amely támogatja a NVARCHAR típus, például egy memóriaoptimalizált vagy tábla rendszerverzióval ellátott tábla. JSON nem vezet be bármely megkötés vagy az ügyféloldali kódot, vagy az adatbázis-rétegben.
+Bármely ügyféloldali nyelvi vagy tárat, a karakterlánc az Azure SQL Database működik is működik a JSON-adatok. JSON tárolható minden olyan tábla, amely támogatja az NVARCHAR típusú, például egy memóriaoptimalizált tábla vagy a rendszerverzióval ellátott tábla. JSON nem használ semmilyen megkötés vagy az ügyféloldali kódot, vagy az adatbázis-rétegben.
 
 ## <a name="querying-json-data"></a>JSON-adatok lekérdezése
-Ha az Azure SQL-táblák tárolt JSON-ként formázott adatok, JSON funkciók lehetővé teszik, hogy ezeket az adatokat az SQL-lekérdezésben használni.
+Ha rendelkezik Azure SQL-táblákban tárolt JSON-ként formázott adatok, JSON-funkciók lehetővé teszik használja fel az adatokat bármely SQL-lekérdezésben.
 
-JSON-funkciók Azure SQL adatbázis lehetővé teszik a rendelkezésre álló úgy kezelje, mint bármely más SQL adattípus JSON formátumú adatok. Könnyen értékek kinyerése a JSON-szöveg, és JSON-adatokat a lekérdezésben használni:
+Azure SQL database lehetővé teszik a JSON-függvények, mint bármely más SQL-adattípus JSON formátumú adatok kezelnie. Értékek kinyerése a JSON-szöveget, és JSON-adatokat használja a lekérdezés egyszerű:
 
 ```
 select Id, Title, JSON_VALUE(Data, '$.Color'), JSON_QUERY(Data, '$.tags')
@@ -146,13 +149,13 @@ set Data = JSON_MODIFY(Data, '$.Price', 60)
 where Id = 1
 ```
 
-A JSON_VALUE függvény értéket kiolvassa a az adatok oszlopban tárolt JSON-szöveg. Ez a funkció a JavaScript-szerű elérési út egy JSON-szövegben kibontásához értékre hivatkoznak. A kiolvasott értékkel használható SQL-lekérdezésben bármely részén.
+A JSON_VALUE függvény kigyűjti a oszlop tárolt JSON-szöveg értéket. Ez a függvény JavaScript-hez hasonló elérési utat használ való hivatkozáshoz egy JSON-szövegben kinyerni kívánt értéket. A kiolvasott értékkel bármely SQL-lekérdezés részeként is használható.
 
-A JSON_QUERY függvény JSON_VALUE hasonlít. Eltérően JSON_VALUE Ez a függvény ki összetett alárendelt objektumot, például a tömb, vagy a JSON-szövegben kerülnek objektumokat.
+A JSON_QUERY függvény JSON_VALUE hasonlít. JSON_VALUE, ellentétben ez a függvény kinyeri a összetett alobjektumban például tömbök vagy objektumok kerülnek, JSON-szövegben.
 
-A JSON_MODIFY funkció lehetővé teszi a JSON-szöveg, amelyet frissíteni kell, valamint egy értéket, amely a régit, azzal felülírja a érték elérési útjának megadása. Ily módon egyszerűen frissítheti JSON-szöveg struktúra reparsing nélkül.
+A JSON_MODIFY funkció lehetővé teszi adja meg az elérési utat az érték a JSON-szöveget, hogy frissíteni kell, valamint egy új értéket, amely felülírja a régit. Ezzel a módszerrel JSON-szövegben anélkül, hogy a teljes struktúra reparsing egyszerűen frissíthetők.
 
-Mivel a JSON egyszerű szövegként tárolódnak, nincsenek nem garantálja, hogy a szöveges oszlop tárolt értékek megfelelően formázott. Ellenőrizheti, hogy a szöveg JSON oszlopban tárolt megfelelően van-e formázva szabványos Azure SQL Database ellenőrzési korlátozásokban, és a ISJSON függvény használatával:
+Mivel a JSON-szövegként tárolt, garanciát nem jelentenek, hogy a szöveg oszlopaiban tárolt értékek megfelelően formázott. Ellenőrizheti, hogy tárolt JSON-oszlopban szereplő szöveg megfelelően van formázva standard szintű Azure SQL Database-ellenőrzési korlátozásokban, és a ISJSON függvény használatával:
 
 ```
 ALTER TABLE Products
@@ -160,18 +163,18 @@ ALTER TABLE Products
         CHECK (ISJSON(Data) > 0)
 ```
 
-Ha a bemeneti szöveg megfelelően formázott JSON-ban, a ISJSON függvény adja vissza az 1. Minden Beszúrás vagy frissítés JSON oszlop ennél a határértéknél fog ellenőrizze, hogy új szöveges érték nem nem megfelelően formázott JSON-NÁ.
+Ha a bemeneti szöveg megfelelően formázott JSON-t, a ISJSON függvény 1 értéket adja vissza. Minden insert vagy update JSON oszlop ennél a határértéknél ellenőrzi, hogy új szöveg értéke nem JSON formátumú.
 
-## <a name="transforming-json-into-tabular-format"></a>A táblázatos formátumra JSON átalakítása
-Az Azure SQL Database emellett lehetővé teszi a JSON-gyűjtemények adatokká táblázatos formátumban és a load vagy a lekérdezés JSON átalakító.
+## <a name="transforming-json-into-tabular-format"></a>JSON átalakítása táblázatos formátumra
+Az Azure SQL Database emellett lehetővé teszi átalakítása JSON-gyűjtemények táblázatos formátumban, és terhelés vagy lekérdezés JSON-adatokat nyerhet ki.
 
-OPENJSON JSON-szöveg elemez, megkeresi a JSON-objektumok tömbje, a tömb elemei telepítéseket és több olyan sort adja vissza a kimeneti eredmények a tömb egyes elemei a táblázat értékű függvényből.
+OPENJSON a táblázat értékű függvény, amely JSON-szöveget elemez, megkeresi a JSON-objektumok tömbje, a tömb elemei végighalad és egy sort adja vissza a kimeneti eredmények a tömb egyes elemei a rendszer.
 
-![A táblázatos JSON](./media/sql-database-json-features/image_2.png)
+![Táblázatos JSON](./media/sql-database-json-features/image_2.png)
 
-A fenti példában hol található a JSON-tömb, amely (az a $ meg kell nyitni adható meg. Rendelések elérési út), az eredmény, hol található a JSON-értékek cellákat visszaadott kell adható vissza oszlopokat.
+A fenti példában adható meg helyének kijelölése a JSON-tömb, amely megnyitva kell lennie (a a $. Rendelések elérési út), mely oszlopok vissza kell adni az eredmény, valamint, hogy hol található cellákat visszaadott JSON-értékeit.
 
-Egy JSON-tömb, az azt alakíthatja át a @orders sorokra, a változó eredménykészlet elemzése, vagy sorok beillesztéséhez egy szabványos táblázatot:
+Hogy alakíthatja át a JSON-tömböt a @orders változó nagy mennyiségű sort és a egy csoportba az eredményhalmaz elemzése, vagy egy szabványos táblába beszúrandó sor:
 
 ```
 CREATE PROCEDURE InsertOrders(@orders nvarchar(max))
@@ -189,14 +192,14 @@ AS BEGIN
 
 END
 ```
-A gyűjtemény rendelések formázott JSON-tömb, és a tárolt eljárás paramétere elemzése, és a rendeléseket táblába beszúrt egyikéhez.
+A Rendelések gyűjteményét formázott JSON-tömböt, és a tárolt eljárás paramétere elemzi, és a rendelések táblába beszúrt megadott.
 
 ## <a name="next-steps"></a>További lépések
-Megtudhatja, hogyan integrálható a JSON az alkalmazásba, jelölje ki ezeket az erőforrásokat:
+Ismerje meg, hogyan JSON beágyazása az alkalmazásba, tekintse meg ezeket az erőforrásokat:
 
 * [TechNet Blog](https://blogs.technet.microsoft.com/dataplatforminsider/2016/01/05/json-in-sql-server-2016-part-1-of-4/)
-* [Az MSDN dokumentációját](https://msdn.microsoft.com/library/dn921897.aspx)
-* [A Channel 9 videót](https://channel9.msdn.com/Shows/Data-Exposed/SQL-Server-2016-and-JSON-Support)
+* [MSDN-dokumentáció](https://msdn.microsoft.com/library/dn921897.aspx)
+* [Channel 9-videóban](https://channel9.msdn.com/Shows/Data-Exposed/SQL-Server-2016-and-JSON-Support)
 
-A JSON integrálása az alkalmazás különböző forgatókönyvekkel kapcsolatos további tudnivalókért lásd: ezen bemutatók [Channel 9 videót](https://channel9.msdn.com/Events/DataDriven/SQLServer2016/JSON-as-a-bridge-betwen-NoSQL-and-relational-worlds) vagy olyan forgatókönyvekben, amelyek a használati eset a megfelelő található [JSON blogbejegyzéseket](http://blogs.msdn.com/b/sqlserverstorageengine/archive/tags/json/).
+A JSON integrálása az alkalmazásba különféle forgatókönyvekkel kapcsolatos tudnivalókért lásd: Ez a bemutatókat [Channel 9-videók](https://channel9.msdn.com/Events/DataDriven/SQLServer2016/JSON-as-a-bridge-betwen-NoSQL-and-relational-worlds) vagy nem található egy forgatókönyvet, amely megfelel a használati eset az [JSON-blogbejegyzések](http://blogs.msdn.com/b/sqlserverstorageengine/archive/tags/json/).
 

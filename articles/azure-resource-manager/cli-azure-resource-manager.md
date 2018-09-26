@@ -14,17 +14,17 @@ ms.topic: conceptual
 ms.date: 10/06/2017
 ms.author: tomfitz
 ms.openlocfilehash: dd111c33cbd348a05ed0f0c04f7325347612e54d
-ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39259889"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47106844"
 ---
 # <a name="use-the-azure-cli-to-manage-azure-resources-and-resource-groups"></a>Azure-erőforrások és -erőforráscsoportok kezelése az Azure CLI használatával
 
 Ebből a cikkből megismerheti, hogyan kezelheti a megoldások az Azure CLI és az Azure Resource Manager. Ha nem ismeri a Resource Managerrel, tekintse meg a [Resource Manager áttekintése](resource-group-overview.md). Ez a cikk a felügyeleti feladatok összpontosít. Az alábbiakat fogja elvégezni:
 
-1. Erőforráscsoport létrehozása
+1. Hozzon létre egy erőforráscsoportot
 2. Adjon hozzá egy erőforrást az erőforráscsoport
 3. Az erőforrás egy címke hozzáadása
 4. A neve vagy a címke értéke alapján-erőforrások lekérdezése
@@ -78,7 +78,7 @@ Az aktuális előfizetési környezetet, megjelenítéséhez használja **az fi�
 az account show
 ```
 
-## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
+## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
 Üzembe erőforrásokat az előfizetéshez, mielőtt létre kell hoznia egy erőforráscsoportot, mely tartalmazni fogja az erőforrásokat.
 

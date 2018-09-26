@@ -9,31 +9,31 @@ ms.service: machine-learning
 ms.component: core
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: f4a8ff272e498871f4a31ce76487509673f48328
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: cbd475ae4ce944db3ebf57b415b60e7abdd52677
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47034246"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47163851"
 ---
 # <a name="configure-your-automated-machine-learning-experiment"></a>Az automatikus machine learning-kísérlet konfigurálása
 
-Automatizált gépi tanulási algoritmus választja ki az Ön számára, és készen áll a központi telepítési modell generál. A modell további testre is letölthető. Többféle módon automatizált machine learning-példakísérleteket konfigurálásához használhatja. Ebben az útmutatóban, megtudhatja, hogyan különböző konfigurációs beállításainak megadásához.
+Automatizált a machine learning (automatikus ML) olyan algoritmusai és hiperparaméterek kiválasztja az Ön számára, és készen áll a központi telepítési modell generál. A modell további testre is letölthető. Többféle módon automatikus gépi Tanulási kísérletek konfigurálásához használhatja. Ebben az útmutatóban, megtudhatja, hogyan különböző konfigurációs beállításainak megadásához.
 
-Egy automatizált machine Learning Példák megtekintése: [oktatóanyag: automatikusan a besorolási modell betanításához](tutorial-auto-train-models.md) vagy [modellek a felhőben automatikusan](how-to-auto-train-remote.md).
+Egy automatizált Machine Learning Példák megtekintése: [oktatóanyag: egy automatizált gépi tanulással osztályozási modell betanításához](tutorial-auto-train-models.md) vagy [és a felhőben automatizált machine learning-modellek betanításához](how-to-auto-train-remote.md).
 
 Az automatikus machine learningben elérhető konfigurációs lehetőségek:
 
 * Válassza ki a kísérlet típusát, például a besorolás, a regresszió 
 * Az adatforrás, formátumokat és adatok újbóli lekérésére
 * Válassza ki a számítási célnak (helyi vagy távoli)
-* `AutoML` kísérlet beállításai
-* Futtatás `AutoML` kísérletezéshez
+* Automatikus gépi Tanulási kísérlet beállításai
+* Automatizált gépi Tanulási kísérlet futtatása
 * Modell metrikák böngészése
 * Regisztráljon és a modell üzembe helyezése
 
 ## <a name="select-your-experiment-type"></a>A kísérlet típusának kiválasztása
-Mielőtt elkezdené a kísérlethez, meg kell határoznia a megoldandó, machine learning probléma típusú. Automatizált machine learning két kategóriába felügyelt tanítás támogatja: besorolási és regressziós. Automatizált machine learning az automatizálás és a hangolási folyamat során a következő algoritmusokat támogatja. Felhasználójaként van, nem szükséges, hogy adja meg az algoritmus.
+Mielőtt elkezdené a kísérlethez, meg kell határoznia a megoldandó, machine learning probléma típusú. Automatizált ML támogatja a felügyelt tanítás két kategóriába: besorolási és regressziós. Gépi tanulás támogatja a következő algoritmusokat automatizált az automation és a beállítási folyamat során. Felhasználójaként van, nem szükséges, hogy adja meg az algoritmus.
 Besorolás | Regresszió
 --|--
 sklearn.linear_model. LogisticRegression | sklearn.linear_model. ElasticNet
@@ -51,8 +51,8 @@ sklearn.ensemble.GradientBoostingClassifier |
 lightgbm. LGBMClassifier |
 
 
-## <a name="data-source-and-format-for-automl-experiment"></a>Adatforrás és formátumának `AutoML` kísérletezéshez
-`AutoML` támogatja a helyi számítógépére vagy a felhőben lévő adatok Azure Blob Storage. Az adatok olvashatók be a scikit-ismerje meg a támogatott formátumok. A (szolgáltatások) X (1) Numpy tömbök adatok és az y (célváltozó vagy más néven címke) vagy (2) Pandas dataframe olvashat. 
+## <a name="data-source-and-format"></a>Adatforrás és a formátum
+Automatizált ML található adatok támogatja a helyi asztali számítógépeken, vagy a felhőben Azure Blob Storage-ban. Az adatok olvashatók be a scikit-ismerje meg a támogatott formátumok. A (szolgáltatások) X (1) Numpy tömbök adatok és az y (célváltozó vagy más néven címke) vagy (2) Pandas dataframe olvashat. 
 
 Példák:
 
@@ -79,9 +79,9 @@ Példák:
 
 ## <a name="fetch-data-for-running-experiment-on-remote-compute"></a>Kísérlet futtatása távoli számítási adatlehívást
 
-Ha egy távoli számítási az AutoML kísérlet futtatása használ, az adatok betöltése közben kell csomagolni, külön python-szkriptet a `GetData()`. Ez a szkript távoli számítási van futtassa, ahol a AutoML kísérlet futtatása. `GetData` szükségtelenné teszi az adatok lehívása törzsének a hálózaton keresztül. Nélkül `GetData`, a kísérlet sikertelen lesz, amikor távoli számítási futtatja.
+Ha egy távoli számítási használatával futtathatja a kísérletet, az adatok betöltése közben kell csomagolni, külön python-szkriptet a `get_data()`. Ez a szkript távoli számítási van futtassa, ahol az automatizált gépi Tanulási kísérlet futtatása. `get_data` szükségtelenné teszi az adatok lehívása törzsének a hálózaton keresztül. Nélkül `get_data`, a kísérlet sikertelen lesz, amikor távoli számítási futtatja.
 
-Íme egy példa `GetData`:
+Íme egy példa `get_data`:
 
 ```python
 %%writefile $project_folder/get_data.py 
@@ -100,13 +100,13 @@ def get_data(): # Burning man 2016 data
     return { "X" : df, "y" : y }
 ```
 
-Az a `AutoMLConfig` objektumot, akkor adja meg a `data_script` paraméter, és adja meg az elérési útját a `GetData` hasonló, az alábbi parancsfájlt:
+Az a `AutoMLConfig` objektumot, akkor adja meg a `data_script` paraméter, és adja meg az elérési útját a `get_data` hasonló, az alábbi parancsfájlt:
 
 ```python
-automl_config = AutoMLConfig(****, data_script=project_folder + "./get_data.py", **** )
+automl_config = AutoMLConfig(****, data_script=project_folder + "/get_data.py", **** )
 ```
 
-`GetData` parancsfájl lépjen vissza a következő:
+`get_data` parancsfájl lépjen vissza a következő:
 Kulcs | Típus |    Kölcsönösen kizárják egymást az | Leírás
 ---|---|---|---
 X | Pandas Dataframe vagy Numpy tömbje | data_train, a címkét, az oszlopok |  Megkezdheti az összes funkció
@@ -140,17 +140,17 @@ Egyéni ellenőrzési adatkészletet használja, ha véletlenszerű split nem fo
 
 ## <a name="compute-to-run-experiment"></a>Számítási kísérlet futtatása
 
-Ezután határozza meg, hol kell betanítani a modellt. Egy automatizált machine learning betanítási kísérlet futtat számítási célt tulajdonosa, és kezelheti. 
+Ezután határozza meg, hol kell betanítani a modellt. Egy automatizált Machine Learning betanítási kísérlet futtat számítási célt tulajdonosa, és kezelheti. 
 
 Támogatott számítási lehetőségek közül választhat:
 1.  A helyi gépen, például a helyi számítógépen vagy laptopon – általában amikor rendelkezik kisméretű adatkészlet, és továbbra is a feltárás fázisban.
 2.  Egy távoli gépen a felhőben – [Azure adatelemzési virtuális gép](https://azure.microsoft.com/services/virtual-machines/data-science-virtual-machines/) Linux – operációs rendszert futtató rendelkezik egy nagy méretű adathalmazt, és a egy nagy méretű géphez, amely elérhető az Azure Cloud vertikálisan. 
-3.  Az Azure Batch AI-fürt – A felügyelt fürt, amely lejárt, és futtathatók a AutoML ismétlések skálázható párhuzamos beállíthat. 
+3.  Az Azure Batch AI-fürt – A felügyelt fürt, amely beállíthat horizontális felskálázása és gépi Tanulási automatikus ismétlések párhuzamosan is futtatni. 
 
 
 ## <a name="configure-your-experiment-settings"></a>A kísérlet beállításainak konfigurálása
 
-Nincsenek több belül, amelyek segítségével konfigurálhatja a AutoML kísérlet során. Ezeket a paramétereket állítja be hárítható el egy `AutoMLConfig` objektum.
+Vannak, amelyek segítségével konfigurálhatja az automatikus gépi Tanulási kísérlet több belül. Ezeket a paramétereket állítja be hárítható el egy `AutoMLConfig` objektum.
 
 Néhány példa:
 
@@ -183,7 +183,7 @@ Ez a táblázat felsorolja a paraméterek beállításai is futtathatja a kísé
 
 Tulajdonság |  Leírás | Alapértelmezett érték
 --|--|--
-`task`  |Adja meg a machine learning probléma típusát. Megengedett értékek: <li>Besorolás</li><li>Regresszió</li>    | None |
+`task`  |Adja meg a machine learning probléma típusát. Megengedett értékek: <li>osztályozás</li><li>Regresszió</li>    | None |
 `primary_metric` |Ez a metrika szeretné optimalizálni a modell épületben. Például a primary_metric pontossága ad meg, ha automatikus ML keres egy modell található a legnagyobb pontosságú. Csak egy primary_metric kísérletenként adható meg. Megengedett értékek: <br/>**Besorolási**:<br/><li> pontosság  </li><li> AUC_weighted</li><li> precision_score_weighted </li><li> balanced_accuracy </li><li> average_precision_score_weighted </li><br/>**Regresszió**: <br/><li> normalized_mean_absolute_error </li><li> spearman_correlation </li><li> normalized_root_mean_squared_error </li><li> normalized_root_mean_squared_log_error</li><li> R2_score    </li> | Besorolási: pontossága <br/>A regresszió: spearman_correlation <br/> |
 `exit_score` |  A primary_metric célérték adhatja meg. Miután egy modell található, amely megfelel a primary_metric cél, gépi tanulás automatikus le fog állni, léptetés, és az a kísérlet befejeződik. Ha ez az érték nincs beállítva (alapértelmezett), automatikus gépi Tanulási kísérlet ismétléseinek megadott tevékenységsort futtatásához továbbra is. Egy dupla értéket vesz fel. Ha soha nem eléri a cél, majd automatikus Machine Learning továbbra is addig ismétlések megadott ismétlések száma.|   None
 `iterations` |Az ismétlések maximális számát. Minden egyes ismétléskor megegyezik a betanítási feladat, amely egy folyamat eredményez. Folyamat az adatok előfeldolgozása és a modell. Egy jó minőségű modellt használja 250 vagy több | 100
@@ -205,7 +205,7 @@ Tulajdonság |  Leírás | Alapértelmezett érték
 `data_script`  |    A get_data metódus tartalmazó fájl elérési útja.  Távoli Futtatás szükséges.   |None
 
 
-## <a name="run-automl-experiment"></a>Futtatás `AutoML` kísérletezéshez
+## <a name="run-experiment"></a>Kísérlet futtatása
 
 Ezután azt is kezdeményezhető a kísérlet futtatásához és a egy modell létrehozása a számunkra. Adja át a `AutoMLConfig` , a `submit` metódus a modell generálásához.
 
@@ -219,7 +219,7 @@ run = experiment.submit(automl_config, show_output=True)
 
 
 ## <a name="explore-model-metrics"></a>Modell metrikák böngészése
-Megtekintheti az eredményeket a widget vagy beágyazott, ha Ön történő használatát. A részletek "Nyomon követésére és modellek kiértékelése". (Győződjön meg arról, AML tartalom AutoML releváns információkat tartalmaz)
+Megtekintheti az eredményeket a widget vagy beágyazott, ha Ön történő használatát. A részletek "Nyomon követésére és modellek kiértékelése". (Győződjön meg arról, AML-tartalmak automatizált gépi Tanulási releváns információkat tartalmaz)
 
 A következő metrikák minden egyes ismétléskor lesznek mentve.
 * AUC_macro
@@ -247,3 +247,5 @@ A következő metrikák minden egyes ismétléskor lesznek mentve.
 ## <a name="next-steps"></a>További lépések
 
 Tudjon meg többet [hogyan és hol érdemes a modell üzembe helyezése](how-to-deploy-and-where.md).
+
+Tudjon meg többet [ML automatikus osztályozási modell betanításához hogyan](tutorial-auto-train-models.md) vagy [betanításához egy távoli erőforrás automatikus gépi tanulás használatával hogyan](how-to-auto-train-remote.md). 

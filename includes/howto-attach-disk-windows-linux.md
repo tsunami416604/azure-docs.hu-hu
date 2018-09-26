@@ -2,58 +2,58 @@
 
 
 ## <a name="attach-an-empty-disk"></a>Üres lemez csatlakoztatása
-Üres lemez csatolása módja a egyszerű hozzá adatlemezt, mert az Azure létrehozza a .vhd fájlt, és azt a tárfiók tárolja.
+Üres lemez csatolása módja egy egyszerű, adatlemez hozzáadása, mert az Azure az Ön hozza létre a .vhd fájlt, és a tárfiókban tárolja azokat.
 
-1. Kattintson a **virtuális gépek (klasszikus)**, majd válassza ki a megfelelő virtuális gép.
+1. Kattintson a **virtuális gépek (klasszikus)**, majd válassza ki a megfelelő virtuális Gépet.
 
 2. A beállítások menüben kattintson a **lemezek**.
 
-   ![Egy új üres lemez csatolása](./media/howto-attach-disk-windows-linux/menudisksattachnew.png)
+   ![Új üres lemez csatolása](./media/howto-attach-disk-windows-linux/menudisksattachnew.png)
 
-3. A parancssávon kattintson **új Attach**.  
+3. Kattintson a parancssáv **új Attach**.  
     A **új lemez csatolása** párbeszédpanel jelenik meg.
 
     ![Új lemez csatolása](./media/howto-attach-disk-windows-linux/newdiskdetail.png)
 
-    Írja be a következő adatokat:
-    - A **Fájlnév**, fogadja el az alapértelmezett nevet, vagy írja be a .vhd fájl egy másikat. Az adatok lemez egy automatikusan létrehozott nevet használ, akkor is, ha beírja a .vhd fájlt egy másik nevet.
-    - Válassza ki a **típus** az adatok lemez. Az összes virtuális gép támogatja a normál lemezeket. Több virtuális gép is támogatja a premium lemezek.
-    - Válassza ki a **méret (GB)** az adatok lemez.
-    - A **állomás-gyorsítótárazása**, válasszon none, vagy csak olvasható.
+    Töltse ki a következő információkat:
+    - A **Fájlnév**, fogadja el az alapértelmezett nevet, vagy írjon be egy másikat a .vhd fájlt. Az adatlemez egy automatikusan létrehozott nevet használ, akkor is, ha beírja a .vhd fájlt egy másik nevet.
+    - Válassza ki a **típus** az adatokat lemezen. Összes virtuális gépet a standard szintű lemezek támogatásához. Több virtuális gép is támogatja a prémium szintű lemezeket.
+    - Válassza ki a **mérete (GB)** az adatokat lemezen.
+    - A **gazdagép gyorsítótárazási**, válasszon none, vagy csak olvasható.
     - Kattintson az OK gombra a befejezéshez.
 
-4. Miután a adatlemez létrehozták, és a kapcsolódó, a virtuális lemezek szakaszában szerepel.
+4. A data-lemezek létrehozása és csatlakoztatása után a virtuális lemezek szakaszában szerepel.
 
    ![Sikeresen csatolta az új és üres adatlemez](./media/howto-attach-disk-windows-linux/newdiskemptysuccessful.png)
 
 > [!NOTE]
-> Adatlemez hozzáadása után kell jelentkezzen be a virtuális Gépet, és végezze el a lemez inicializálását, hogy használható.
+> Miután hozzáadott egy adatlemezt, jelentkezzen be a virtuális gép és inicializálja a lemezt, hogy a használat szüksége.
 
-## <a name="how-to-attach-an-existing-disk"></a>Hogyan: meglévő lemez csatolása
-Meglévő lemez csatlakoztatása esetén rendelkeznie kell egy tárfiókban elérhető .vhd-vel. Használja a [Add-AzureVhd](https://msdn.microsoft.com/library/azure/dn495173.aspx) parancsmagot, hogy a .vhd fájl feltöltése a tárfiókba. Létrehozott, és a .vhd fájl feltöltése után hozzácsatolhat egy virtuális géphez.
+## <a name="how-to-attach-an-existing-disk"></a>Hogyan: meglévő lemez csatlakoztatása
+Meglévő lemez csatlakoztatása esetén rendelkeznie kell egy tárfiókban elérhető .vhd-vel. Használja a [Add-AzureVhd](https://msdn.microsoft.com/library/azure/dn495173.aspx) parancsmaggal töltse fel a .vhd fájlt a storage-fiókba. Miután létrehozott és feltöltött a .vhd fájlt, egy virtuális géphez is csatlakoztatható.
 
-1. Kattintson a **virtuális gépek (klasszikus)**, majd válassza ki a megfelelő virtuális gép.
+1. Kattintson a **virtuális gépek (klasszikus)**, majd válassza ki a megfelelő virtuális gépet.
 
 2. A beállítások menüben kattintson a **lemezek**.
 
-3. A parancssávon kattintson **Csatolás meglévő**.
+3. Kattintson a parancssáv **csatolása meglévő**.
 
     ![Adatlemez csatolása](./media/howto-attach-disk-windows-linux/menudisksattachexisting.png)
 
-4. Kattintson a **hely**. A rendelkezésre álló tár fiókokat jeleníti meg. Ezután válassza ki a megfelelő tárolási fiók felsorolt.
+4. Kattintson a **hely**. A rendelkezésre álló tárfiókok jelennek meg. Ezután válassza ki a megfelelő storage-fiók fel van sorolva a.
 
-    ![Adja meg a storage-fiók](./media/howto-attach-disk-windows-linux/existdiskstorageaccounts.png)
+    ![Adja meg a lemez tárfiókot](./media/howto-attach-disk-windows-linux/existdiskstorageaccounts.png)
 
-5. A **tárfiók** rendelkezik egy vagy több olyan tárolók, amelyek tartalmazzák a meghajtók (VHD-k). Válassza ki a megfelelő tárolót felsorolt.
+5. A **tárfiók** egy vagy több olyan tárolók, amelyek tartalmazzák a meghajtók (VHD-k) tárolja. Jelöljön ki a megfelelő tárolót fel van sorolva.
 
-    ![Adja meg a virtuális gépek windows tároló](./media/howto-attach-disk-windows-linux/existdiskcontainers.png)
+    ![Adja meg a virtuális gépek windows-tároló](./media/howto-attach-disk-windows-linux/existdiskcontainers.png)
 
-6. A **VHD-k** panel a tárolóban tárolt a merevlemez-meghajtók listája. Kattintson egy lemezt, majd válassza ki.
+6. A **VHD-k** panel felsorolja a merevlemez-meghajtók, a tárolóban tárolt. Kattintson az egyik lemezt, és majd a Kiválasztás gombra.
 
-    ![Adja meg a lemezképet a virtuális gépek windows](./media/howto-attach-disk-windows-linux/existdiskvhds.png)
+    ![Adja meg a lemezkép virtuális gépek – Windows](./media/howto-attach-disk-windows-linux/existdiskvhds.png)
 
-7. A **meglévő lemez csatolása** panel megjeleníti újra, a helyen lévő tartalmazó a tárfiókot, a tároló és a kijelölt merevlemez (vhd) a virtuális géphez való hozzáadásához.
+7. A **meglévő lemez csatolása** panel megjeleníti újra, a storage-fiók, tároló és kijelölt merevlemez (vhd) a virtuális gép hozzáadása tartalmazó helyét.
 
-  Állítsa be **állomás-gyorsítótárazása** None vagy olvasási csak, majd kattintson az OK gombra.
+  Állítsa be **gazdagép gyorsítótárazási** None vagy olvasási csak, majd kattintson az OK gombra.
 
     ![Sikeresen csatolta adatlemez](./media/howto-attach-disk-windows-linux/exisitingdisksuccessful.png)

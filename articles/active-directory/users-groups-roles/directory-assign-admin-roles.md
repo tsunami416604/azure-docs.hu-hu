@@ -1,5 +1,5 @@
 ---
-title: Rendszergazdai szerepkörök hivatkozik az Azure Active Directoryban |} A Microsoft Docs
+title: Az Azure Active Directory rendszergazdája szerepkör engedélyei |} A Microsoft Docs
 description: Rendszergazda szerepkörrel is adja hozzá a felhasználók, rendszergazdai szerepkörök hozzárendelése, felhasználók új jelszavainak létrehozására, a felhasználói licencek kezelése vagy tartományok kezelése.
 services: active-directory
 documentationcenter: ''
@@ -10,28 +10,26 @@ ms.service: active-directory
 ms.workload: identity
 ms.component: users-groups-roles
 ms.topic: article
-ms.date: 09/19/2018
+ms.date: 09/25/2018
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
-ms.openlocfilehash: 04deb1168c8c5c0977d0f20c9307ce10d2d12d35
-ms.sourcegitcommit: 06724c499837ba342c81f4d349ec0ce4f2dfd6d6
+ms.openlocfilehash: 293d8376d83d729588aab0aeaa1040d9b3e5e0b5
+ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46466115"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47182280"
 ---
-# <a name="assigning-administrator-roles-in-azure-active-directory"></a>Rendszergazdai jogosultságok kiosztása az Azure Active Directoryban
+# <a name="administrator-role-permissions-in-azure-active-directory"></a>Az Azure Active Directory rendszergazdája szerepkör engedélyei
 
 Az Azure Active Directory (Azure AD), a különböző funkciók kiszolgálása érdekében külön rendszergazdák is kijelölhet. A rendszergazdák a feladatok végrehajtását, mint hozzáadása vagy módosítása a felhasználók, rendszergazdai szerepkörök hozzárendelése, felhasználói jelszó alaphelyzetbe állítása, a felhasználói licencek kezelése és tartománynevek kezelése az Azure AD portálon lehet kiválasztani.
 
-## <a name="details-about-the-global-administrator-role"></a>A globális rendszergazdai szerepkör részleteit
-
-A globális rendszergazda az összes rendszergazdai funkciójához hozzáfér. Alapértelmezés szerint az Azure-előfizetésre feliratkozó személy van rendelve a címtár globális rendszergazdai szerepkörrel. Csak a globális rendszergazdák más rendszergazdai szerepköröket rendelhet hozzá.
+A globális rendszergazda az összes rendszergazdai funkciójához hozzáfér. Alapértelmezés szerint az Azure-előfizetésre feliratkozó személy van rendelve a címtár globális rendszergazdai szerepkörrel. Csak a globális rendszergazdák is engedélyezheti – delegálja rendszergazdai szerepköröket.
 
 ## <a name="assign-or-remove-administrator-roles"></a>Vagy vonja meg a rendszergazdai szerepkörökről
 
-Rendszergazdai szerepkörök hozzárendelése az Azure Active Directory felhasználó kapcsolatban lásd: [felhasználó hozzárendelése az Azure Active Directory rendszergazdai szerepkörök](../fundamentals/active-directory-users-assign-role-azure-portal.md).
+Rendszergazdai szerepkörök hozzárendelése az Azure Active Directory felhasználó kapcsolatban lásd: [nézet és rendelhet hozzá rendszergazdai szerepköröket az Azure Active Directoryban](directory-manage-roles-portal.md).
 
 ## <a name="available-roles"></a>Elérhető szerepkörök
 
@@ -119,7 +117,7 @@ A következő rendszergazdai szerepkörök érhetők el:
 
 * **[A SharePoint szolgáltatás-rendszergazda](#sharepoint-service-administrator)**: az ehhez a szerepkörhöz tartozó felhasználók globális engedélyekkel rendelkeznek a Microsoft SharePoint online-ban, a szolgáltatás megléte esetén, ezenkívül kezelhetik a támogatási jegyeket, és a szolgáltatások állapotának figyelése. További információ: [Office 365 rendszergazdai szerepköreinek](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d).
 
-* **[Skype vállalati verzió / Lync-szolgáltatások rendszergazdája](#lync-service-administrator)**: Ezzel a szerepkörrel rendelkező felhasználók a Microsoft Skype vállalati verzió, globális engedélyekkel rendelkeznek a szolgáltatás megléte esetén, valamint kezelheti a Skype-specifikus felhasználói attribútumok az Azure Active A könyvtár. Ezenkívül a szerepkörök a kezelhetik a támogatási jegyeket, és a szolgáltatások állapotának figyelése, valamint a Teams és a Skype for Business felügyeleti központ eléréséhez. A fiók is licenccel kell rendelkezniük a csapatok vagy csoportokkal PowerShell-parancsmagok nem lesz futtatható. További információ: [kapcsolatos a Skype for Business rendszergazdai szerepkör](https://support.office.com/article/about-the-skype-for-business-admin-role-aeb35bda-93fc-49b1-ac2c-c74fbeb737b5) és a licencelési adatokat csapat [Skype for Business és a Microsoft Teams kiegészítő licencelési](https://docs.microsoft.com/skypeforbusiness/skype-for-business-and-microsoft-teams-add-on-licensing/skype-for-business-and-microsoft-teams-add-on-licensing)
+* **[Skype vállalati verzió / Lync-szolgáltatások rendszergazdája](#skype-for-business-administrator)**: Ezzel a szerepkörrel rendelkező felhasználók a Microsoft Skype vállalati verzió, globális engedélyekkel rendelkeznek a szolgáltatás megléte esetén, valamint kezelheti a Skype-specifikus felhasználói attribútumok az Azure Active A könyvtár. Ezenkívül a szerepkörök a kezelhetik a támogatási jegyeket, és a szolgáltatások állapotának figyelése, valamint a Teams és a Skype for Business felügyeleti központ eléréséhez. A fiók is licenccel kell rendelkezniük a csapatok vagy csoportokkal PowerShell-parancsmagok nem lesz futtatható. További információ: [kapcsolatos a Skype for Business rendszergazdai szerepkör](https://support.office.com/article/about-the-skype-for-business-admin-role-aeb35bda-93fc-49b1-ac2c-c74fbeb737b5) és a licencelési adatokat csapat [Skype for Business és a Microsoft Teams kiegészítő licencelési](https://docs.microsoft.com/skypeforbusiness/skype-for-business-and-microsoft-teams-add-on-licensing/skype-for-business-and-microsoft-teams-add-on-licensing)
 
   > [!NOTE]
   > A Microsoft Graph API, Azure AD Graph API és az Azure AD PowerShell a szerepkör azonosítja "Lync-Szolgáltatásadminisztrátor". Az "Skype for Business szolgáltatás-rendszergazda" a [az Azure portal](https://portal.azure.com/).
@@ -140,23 +138,9 @@ A következő rendszergazdai szerepkörök érhetők el:
 | --- | --- |
 | <p>Vállalati és felhasználói adatok megtekintése</p><p>Office-támogatási jegyek kezelése</p><p>A felhasználóknak, az ügyfélszolgálat adminisztrátorai és más felhasználói fiókadminisztrátorok csak-jelszavaikat</p><p>Létre és kezelhet felhasználói nézetek</p><p>Létrehozása, szerkesztése, és törli a felhasználók és csoportok és felhasználói licencek korlátozásokkal kezelése. Ő nem törölhet globális rendszergazdát vagy hozhat létre más rendszergazdákat.</p> |<p>Office-termékek számlázási és beszerzési műveletek végrehajtása</p><p>Tartományok kezelése</p><p>Vállalati adatok kezelése</p><p>Rendszergazdai szerepkörök delegálása</p><p>Címtár-szinkronizálás</p><p>Engedélyezheti vagy tilthatja le a többtényezős hitelesítés</p><p>Auditnaplók megtekintése</p> |
 
-## <a name="deprecated-roles"></a>Elavult szerepkörök
+Az alábbi táblázatok ismertetik az Azure Active Directory minden egyes szerepkörhöz megadott engedélyeket. Egyes szerepkörök előfordulhat, hogy további engedélyekkel rendelkeznek a Microsoft services outide az Azure Active Directory.
 
-A következő szerepkörök nem használható. Ezek már elavult, és a jövőben az Azure AD-ből törlődni fog.
-
-* Speciális licencek adminisztrátora
-* Eszköz-csatlakoztatás
-* Eszközkezelők
-* Eszközök felhasználói számára
-* Ellenőrzött e-mail című felhasználó-létrehozó
-* Postaláda-adminisztrátor
-* Munkahelyi eszköz-csatlakoztatás
-
-## <a name="detailed-azure-active-directory-permissions"></a>Az Azure Active Directory-engedélyek részletes
-Az alábbi táblázatok ismertetik az Azure Active Directory minden egyes szerepkörhöz megadott engedélyeket. Néhány szerepkört, például a globális rendszergazda, előfordulhat, hogy további engedélyekkel rendelkeznek a Microsoft services outide az Azure Active Directory.
-
-
-### <a name="adhoc-license-administrator"></a>Speciális licencek adminisztrátora
+## <a name="adhoc-license-administrator"></a>Speciális licencek adminisztrátora
 Az alkalmazásregisztrációkkal és a vállalati alkalmazásokkal kapcsolatos összes létrehozási és felügyeleti jogosultsággal rendelkezik.
 
   > [!NOTE]
@@ -190,7 +174,7 @@ Az alkalmazásregisztrációkkal és a vállalati alkalmazásokkal kapcsolatos �
 | microsoft.aad.directory/users/ownedObjects/read | A users.ownedObjects tulajdonság olvasása az Azure Active Directoryban. |
 | microsoft.aad.directory/users/registeredDevices/read | A users.registeredDevices tulajdonság olvasása az Azure Active Directoryban. |
 
-### <a name="application-administrator"></a>Alkalmazás-rendszergazda
+## <a name="application-administrator"></a>Alkalmazás-rendszergazda
 Az alkalmazásregisztrációkkal és a vállalati alkalmazásokkal kapcsolatos összes létrehozási és felügyeleti jogosultsággal rendelkezik.
 
   > [!NOTE]
@@ -234,7 +218,7 @@ Az alkalmazásregisztrációkkal és a vállalati alkalmazásokkal kapcsolatos �
 | Microsoft.office365.serviceHealth/allEntities/allTasks | Office 365-szolgáltatás-állapot olvasása és konfigurálása. |
 | Microsoft.office365.supportTickets/allEntities/allTasks | Office 365-támogatási jegyek létrehozása és kezelése. |
 
-### <a name="application-developer"></a>Alkalmazásfejlesztő
+## <a name="application-developer"></a>Alkalmazásfejlesztő
 Független a felhasználók regisztrálhatnak alkalmazásokat, beállítás alkalmazásregisztrációkat hozhat létre.
 
   > [!NOTE]
@@ -249,7 +233,7 @@ Független a felhasználók regisztrálhatnak alkalmazásokat, beállítás alka
 | microsoft.aad.directory/oAuth2PermissionGrants/createAsOwner | Az oauth2-engedélyezések létrehozása az Azure Active Directoryban. Létrehozót első tulajdonosként kerül, és a létrehozott objektum beleszámít a létrehozó 250 létrehozott objektumos kvótáját. |
 | microsoft.aad.directory/servicePrincipals/createAsOwner | Szolgáltatásnevek létrehozása az Azure Active Directoryban. Létrehozót első tulajdonosként kerül, és a létrehozott objektum beleszámít a létrehozó 250 létrehozott objektumos kvótáját. |
 
-### <a name="billing-administrator"></a>Számlázási adminisztrátor
+## <a name="billing-administrator"></a>Számlázási adminisztrátor
 Számlázással kapcsolatos általános feladatokat hajthat végre, például frissítheti a fizetési adatokat.
 
   > [!NOTE]
@@ -258,7 +242,7 @@ Számlázással kapcsolatos általános feladatokat hajthat végre, például fr
   >
 
   > [!NOTE]
-  > Ez a szerepkör jogosult addditonal Azure Active Directory-en kívül. Szerepkör leírása fent további információt talál.
+  > Ez a szerepkör az Azure Active Directoryn kívül további engedélyekkel rendelkezik. Szerepkör leírása fent további információt talál.
   >
   >
 
@@ -273,7 +257,7 @@ Számlázással kapcsolatos általános feladatokat hajthat végre, például fr
 | Microsoft.office365.serviceHealth/allEntities/allTasks | Office 365-szolgáltatás-állapot olvasása és konfigurálása. |
 | Microsoft.office365.supportTickets/allEntities/allTasks | Office 365-támogatási jegyek létrehozása és kezelése. |
 
-### <a name="cloud-application-administrator"></a>Felhőalkalmazás-rendszergazda
+## <a name="cloud-application-administrator"></a>Felhőalkalmazás-rendszergazda
 Az Application Proxy kivételével az alkalmazásregisztrációkkal és a vállalati alkalmazásokkal kapcsolatos összes létrehozási és felügyeleti jogosultsággal rendelkezik.
 
   > [!NOTE]
@@ -316,7 +300,7 @@ Az Application Proxy kivételével az alkalmazásregisztrációkkal és a válla
 | Microsoft.office365.serviceHealth/allEntities/allTasks | Office 365-szolgáltatás-állapot olvasása és konfigurálása. |
 | Microsoft.office365.supportTickets/allEntities/allTasks | Office 365-támogatási jegyek létrehozása és kezelése. |
 
-### <a name="cloud-device-administrator"></a>Felhőbeli Eszközrendszergazda
+## <a name="cloud-device-administrator"></a>Felhőbeli Eszközrendszergazda
 Teljes körű jogosultság az eszközök Azure AD-beli kezelésére.
 
   > [!NOTE]
@@ -333,7 +317,7 @@ Teljes körű jogosultság az eszközök Azure AD-beli kezelésére.
 | microsoft.azure.serviceHealth/allEntities/allTasks | Olvassa el, és konfigurálja az Azure Service Health. |
 | Microsoft.office365.serviceHealth/allEntities/allTasks | Office 365-szolgáltatás-állapot olvasása és konfigurálása. |
 
-### <a name="company-administrator"></a>Céges rendszergazda
+## <a name="company-administrator"></a>Céges rendszergazda
 Az Azure AD-identitásokat használó Azure AD- és Microsoft-szolgáltatásokkal kapcsolatos összes felügyeleti jogosultsággal rendelkezik.
 
   > [!NOTE]
@@ -342,7 +326,7 @@ Az Azure AD-identitásokat használó Azure AD- és Microsoft-szolgáltatásokka
   >
 
   > [!NOTE]
-  > Ez a szerepkör jogosult addditonal Azure Active Directory-en kívül. Szerepkör leírása fent további információt talál.
+  > Ez a szerepkör az Azure Active Directoryn kívül további engedélyekkel rendelkezik. Szerepkör leírása fent további információt talál.
   >
   >
 
@@ -395,7 +379,7 @@ Az Azure AD-identitásokat használó Azure AD- és Microsoft-szolgáltatásokka
 | Microsoft.office365.supportTickets/allEntities/allTasks | Office 365-támogatási jegyek létrehozása és kezelése. |
 | microsoft.powerApps.dynamics365/allEntities/allTasks | Jogosultság a Dynamics 365 számlázásának teljes körű felügyeletére. |
 
-### <a name="compliance-administrator"></a>Szabályozási ügyintéző
+## <a name="compliance-administrator"></a>Szabályozási ügyintéző
 Megtekintheti és kezelheti a megfelelőségi konfigurációt és jelentéseket az Azure AD-ban és az Office 365-ben.
 
   > [!NOTE]
@@ -404,7 +388,7 @@ Megtekintheti és kezelheti a megfelelőségi konfigurációt és jelentéseket 
   >
 
   > [!NOTE]
-  > Ez a szerepkör jogosult addditonal Azure Active Directory-en kívül. Szerepkör leírása fent további információt talál.
+  > Ez a szerepkör az Azure Active Directoryn kívül további engedélyekkel rendelkezik. Szerepkör leírása fent további információt talál.
   >
   >
 
@@ -420,7 +404,7 @@ Megtekintheti és kezelheti a megfelelőségi konfigurációt és jelentéseket 
 | Microsoft.office365.skypeForBusiness/allEntities/allTasks | Összes felügyeleti jogosultsággal a Skype vállalati online verziójához. |
 | Microsoft.office365.supportTickets/allEntities/allTasks | Office 365-támogatási jegyek létrehozása és kezelése. |
 
-### <a name="conditional-access-administrator"></a>Feltételes hozzáférésű rendszergazda
+## <a name="conditional-access-administrator"></a>Feltételes hozzáférésű rendszergazda
 A feltételes hozzáférési lehetőségekkel kapcsolatos összes felügyeleti jogosultsággal rendelkezik.
 
   > [!NOTE]
@@ -438,29 +422,7 @@ A feltételes hozzáférési lehetőségekkel kapcsolatos összes felügyeleti j
 | microsoft.aad.directory/policies/conditionalAccess/owners/update | Frissítés az Azure Active Directoryban policies.conditionalAccess tulajdonság. |
 | microsoft.aad.directory/policies/conditionalAccess/policiesAppliedTo/read | Policies.conditionalAccess tulajdonság olvasása az Azure Active Directoryban. |
 
-### <a name="crm-service-administrator"></a>CRM-szolgáltatásadminisztrátor
-A Dynamics 365 termékkel kapcsolatos összes felügyeleti jogosultsággal rendelkezik.
-
-  > [!NOTE]
-  > Ez a szerepkör további engedélyek örökli a címtár olvasói szerepköréhez.
-  >
-  >
-
-  > [!NOTE]
-  > Ez a szerepkör jogosult addditonal Azure Active Directory-en kívül. Szerepkör leírása fent további információt talál.
-  >
-  >
-
-| **Műveletek** | **Leírás** |
-| --- | --- |
-| microsoft.azure.accessService/allEntities/allTasks | Az Azure szolgáltatás minden szempontjának kezeléséhez. |
-| microsoft.azure.serviceHealth/allEntities/allTasks | Olvassa el, és konfigurálja az Azure Service Health. |
-| microsoft.azure.supportTickets/allEntities/allTasks | Létrehozhat és kezelhet az Azure támogatási jegyeket. |
-| microsoft.powerApps.dynamics365/allEntities/allTasks | Jogosultság a Dynamics 365 számlázásának teljes körű felügyeletére. |
-| Microsoft.office365.serviceHealth/allEntities/allTasks | Office 365-szolgáltatás-állapot olvasása és konfigurálása. |
-| Microsoft.office365.supportTickets/allEntities/allTasks | Office 365-támogatási jegyek létrehozása és kezelése. |
-
-### <a name="customer-lockbox-access-approver"></a>Ügyfélszéf hozzáférés-jóváhagyója
+## <a name="customer-lockbox-access-approver"></a>Ügyfélszéf hozzáférés-jóváhagyója
 Jóváhagyhatja a szervezeti ügyféladatok elérésére vonatkozó Microsoft-támogatási kérelmeket.
 
   > [!NOTE]
@@ -469,7 +431,7 @@ Jóváhagyhatja a szervezeti ügyféladatok elérésére vonatkozó Microsoft-t�
   >
 
   > [!NOTE]
-  > Ez a szerepkör jogosult addditonal Azure Active Directory-en kívül. Szerepkör leírása fent további információt talál.
+  > Ez a szerepkör az Azure Active Directoryn kívül további engedélyekkel rendelkezik. Szerepkör leírása fent további információt talál.
   >
   >
 
@@ -478,7 +440,7 @@ Jóváhagyhatja a szervezeti ügyféladatok elérésére vonatkozó Microsoft-t�
 | microsoft.azure.accessService/allEntities/allTasks | Az Azure szolgáltatás minden szempontjának kezeléséhez. |
 | Microsoft.office365.lockbox/allEntities/allTasks | Office 365-ügyfél kulcstároló minden szempontjának kezeléséhez |
 
-### <a name="device-administrators"></a>Eszközadminisztrátorok
+## <a name="device-administrators"></a>Eszközadminisztrátorok
 Ezen szerepkör tagjai a helyi Rendszergazdák csoport, az Azure AD-hez csatlakoztatott eszközök kerülnek.
 
   > [!NOTE]
@@ -491,7 +453,7 @@ Ezen szerepkör tagjai a helyi Rendszergazdák csoport, az Azure AD-hez csatlako
 | microsoft.aad.directory/groupSettings/default/read | Az Azure Active Directoryban groupSettings a alapvető tulajdonságainak olvasása. |
 | microsoft.aad.directory/groupSettingTemplates/default/read | Az Azure Active Directoryban groupSettingTemplates a alapvető tulajdonságainak olvasása. |
 
-### <a name="device-managers"></a>Eszközkezelők
+## <a name="device-managers"></a>Eszközkezelők
 Jóváhagyhatja a szervezeti ügyféladatok elérésére vonatkozó Microsoft-támogatási kérelmeket.
 
   > [!NOTE]
@@ -500,7 +462,7 @@ Jóváhagyhatja a szervezeti ügyféladatok elérésére vonatkozó Microsoft-t�
   >
 
   > [!NOTE]
-  > Ez a szerepkör jogosult addditonal Azure Active Directory-en kívül. Szerepkör leírása fent további információt talál.
+  > Ez a szerepkör az Azure Active Directoryn kívül további engedélyekkel rendelkezik. Szerepkör leírása fent további információt talál.
   >
   >
 
@@ -514,7 +476,7 @@ Jóváhagyhatja a szervezeti ügyféladatok elérésére vonatkozó Microsoft-t�
 | microsoft.aad.directory/devices/registeredUsers/read | Devices.registeredUsers tulajdonság olvasása az Azure Active Directoryban. |
 | microsoft.aad.directory/devices/registeredUsers/update | Frissítés az Azure Active Directoryban devices.registeredUsers tulajdonság. |
 
-### <a name="directory-readers"></a>Directory-olvasók
+## <a name="directory-readers"></a>Directory-olvasók
 Alapszintű directory információkat olvashatja. Az alkalmazásokhoz való hozzáférés biztosítása
 
   > [!NOTE]
@@ -572,7 +534,7 @@ Azure Active Directory. |
 | microsoft.aad.directory/users/ownedObjects/read | A users.ownedObjects tulajdonság olvasása az Azure Active Directoryban. |
 | microsoft.aad.directory/users/registeredDevices/read | A users.registeredDevices tulajdonság olvasása az Azure Active Directoryban. |
 
-### <a name="directory-synchronization-accounts"></a>Címtár-szinkronizálási fiókok
+## <a name="directory-synchronization-accounts"></a>Címtár-szinkronizálási fiókok
 Csak Azure AD Connect szolgáltatást használják.
 
   > [!NOTE]
@@ -606,7 +568,7 @@ Csak Azure AD Connect szolgáltatást használják.
 | microsoft.aad.directory/servicePrincipals/policies/update | Frissítés az Azure Active Directoryban servicePrincipals.policies tulajdonság. |
 | microsoft.aad.directorySync/allEntities/allTasks | Az összes művelet végrehajtása az Azure AD Connectben. |
 
-### <a name="directory-writers"></a>Directory-írók
+## <a name="directory-writers"></a>Directory-írók
 Olvasás, és alapszintű directory adatokat írnak a. Az alkalmazásokhoz való hozzáférés biztosítása
 
   > [!NOTE]
@@ -633,7 +595,29 @@ Olvasás, és alapszintű directory adatokat írnak a. Az alkalmazásokhoz való
 | Microsoft.aad.Directory/Users/Manager/Update | A users.manager tulajdonság frissítése az Azure Active Directory frissítéséhez. |
 | microsoft.aad.directory/users/userPrincipalName/update | Frissítés az Azure Active Directoryban users.userPrincipalName tulajdonság. |
 
-### <a name="exchange-service-administrator"></a>Exchange-szolgáltatások rendszergazdája
+## <a name="dynamics-365-administrator"></a>Dynamics 365-rendszergazda
+A Dynamics 365 termékkel kapcsolatos összes felügyeleti jogosultsággal rendelkezik. Korábbi nevén CRM-Szolgáltatásadminisztrátor.
+
+  > [!NOTE]
+  > Ez a szerepkör további engedélyek örökli a címtár olvasói szerepköréhez.
+  >
+  >
+
+  > [!NOTE]
+  > Ez a szerepkör az Azure Active Directoryn kívül további engedélyekkel rendelkezik. Szerepkör leírása fent további információt talál.
+  >
+  >
+
+| **Műveletek** | **Leírás** |
+| --- | --- |
+| microsoft.azure.accessService/allEntities/allTasks | Az Azure szolgáltatás minden szempontjának kezeléséhez. |
+| microsoft.azure.serviceHealth/allEntities/allTasks | Olvassa el, és konfigurálja az Azure Service Health. |
+| microsoft.azure.supportTickets/allEntities/allTasks | Létrehozhat és kezelhet az Azure támogatási jegyeket. |
+| microsoft.powerApps.dynamics365/allEntities/allTasks | Jogosultság a Dynamics 365 számlázásának teljes körű felügyeletére. |
+| Microsoft.office365.serviceHealth/allEntities/allTasks | Office 365-szolgáltatás-állapot olvasása és konfigurálása. |
+| Microsoft.office365.supportTickets/allEntities/allTasks | Office 365-támogatási jegyek létrehozása és kezelése. |
+
+## <a name="exchange-service-administrator"></a>Exchange-szolgáltatások rendszergazdája
 Az Exchange termékkel kapcsolatos összes felügyeleti jogosultsággal rendelkezik.
 
   > [!NOTE]
@@ -642,7 +626,7 @@ Az Exchange termékkel kapcsolatos összes felügyeleti jogosultsággal rendelke
   >
 
   > [!NOTE]
-  > Ez a szerepkör jogosult addditonal Azure Active Directory-en kívül. Szerepkör leírása fent további információt talál.
+  > Ez a szerepkör az Azure Active Directoryn kívül további engedélyekkel rendelkezik. Szerepkör leírása fent további információt talál.
   >
   >
 
@@ -655,11 +639,11 @@ Az Exchange termékkel kapcsolatos összes felügyeleti jogosultsággal rendelke
 | Microsoft.office365.serviceHealth/allEntities/allTasks | Office 365-szolgáltatás-állapot olvasása és konfigurálása. |
 | Microsoft.office365.supportTickets/allEntities/allTasks | Office 365-támogatási jegyek létrehozása és kezelése. |
 
-### <a name="guest"></a>Vendég
+## <a name="guest"></a>Vendég
 Alapértelmezett szerepkör a vendégfelhasználók számára. Korlátozott számú directory-információk olvashatók.
 
   > [!NOTE]
-  > Ez a szerepkör további engedélyek örökli a szerepkört.
+  > Ez a szerepkör további engedélyek örökli a felhasználói szerepkör.
   >
   >
 
@@ -701,11 +685,11 @@ Alapértelmezett szerepkör a vendégfelhasználók számára. Korlátozott szá
 | microsoft.aad.directory/users/registeredDevices/read | A users.registeredDevices tulajdonság olvasása az Azure Active Directoryban. |
 | microsoft.aad.directory/users/scopedAdministratorOf/read | Users.scopedAdministratorOf tulajdonság olvasása az Azure Active Directoryban. |
 
-### <a name="guest-inviter"></a>Vendég meghívója
-Meghívás vendégfelhasználókat független a tagok is meghívhatja a vendégek beállítást.
+## <a name="guest-inviter"></a>Vendég meghívója
+Meghívhat vendégfelhasználókat független a "tagok küldhetnek meghívót vendégek tagok küldhetnek meghívót vendégek beállítást.
 
   > [!NOTE]
-  > Ez a szerepkör további engedélyek örökli a szerepkört.
+  > Ez a szerepkör további engedélyek örökli a felhasználói szerepkör.
   >
   >
 
@@ -724,7 +708,7 @@ Meghívás vendégfelhasználókat független a tagok is meghívhatja a vendége
 | microsoft.aad.directory/users/ownedObjects/read | A users.ownedObjects tulajdonság olvasása az Azure Active Directoryban. |
 | microsoft.aad.directory/users/registeredDevices/read | A users.registeredDevices tulajdonság olvasása az Azure Active Directoryban. |
 
-### <a name="helpdesk-administrator"></a>Ügyfélszolgálati adminisztrátor
+## <a name="helpdesk-administrator"></a>Ügyfélszolgálati adminisztrátor
 Alaphelyzetbe állíthatja a nem rendszergazdák és a segélyszolgálat rendszergazdák jelszavát.
 
   > [!NOTE]
@@ -742,7 +726,7 @@ Alaphelyzetbe állíthatja a nem rendszergazdák és a segélyszolgálat rendsze
 | Microsoft.office365.serviceHealth/allEntities/allTasks | Office 365-szolgáltatás-állapot olvasása és konfigurálása. |
 | Microsoft.office365.supportTickets/allEntities/allTasks | Office 365-támogatási jegyek létrehozása és kezelése. |
 
-### <a name="information-protection-administrator"></a>Information Protection-rendszergazda
+## <a name="information-protection-administrator"></a>Information Protection-rendszergazda
 Az Azure Information Protection termékkel kapcsolatos összes felügyeleti jogosultsággal rendelkezik.
 
   > [!NOTE]
@@ -751,7 +735,7 @@ Az Azure Information Protection termékkel kapcsolatos összes felügyeleti jogo
   >
 
   > [!NOTE]
-  > Ez a szerepkör jogosult addditonal Azure Active Directory-en kívül. Szerepkör leírása fent további információt talál.
+  > Ez a szerepkör az Azure Active Directoryn kívül további engedélyekkel rendelkezik. Szerepkör leírása fent további információt talál.
   >
   >
 
@@ -763,7 +747,7 @@ Az Azure Information Protection termékkel kapcsolatos összes felügyeleti jogo
 | Microsoft.office365.serviceHealth/allEntities/allTasks | Office 365-szolgáltatás-állapot olvasása és konfigurálása. |
 | Microsoft.office365.supportTickets/allEntities/allTasks | Office 365-támogatási jegyek létrehozása és kezelése. |
 
-### <a name="intune-service-administrator"></a>Intune-szolgáltatásadminisztrátor
+## <a name="intune-service-administrator"></a>Intune-szolgáltatásadminisztrátor
 Az Intune termékkel kapcsolatos összes felügyeleti jogosultsággal rendelkezik.
 
   > [!NOTE]
@@ -772,7 +756,7 @@ Az Intune termékkel kapcsolatos összes felügyeleti jogosultsággal rendelkezi
   >
 
   > [!NOTE]
-  > Ez a szerepkör jogosult addditonal Azure Active Directory-en kívül. Szerepkör leírása fent további információt talál.
+  > Ez a szerepkör az Azure Active Directoryn kívül további engedélyekkel rendelkezik. Szerepkör leírása fent további információt talál.
   >
   >
 
@@ -803,7 +787,7 @@ Az Intune termékkel kapcsolatos összes felügyeleti jogosultsággal rendelkezi
 | microsoft.intune/allEntities/allTasks | Az Intune teljes körű felügyelete. |
 | Microsoft.office365.supportTickets/allEntities/allTasks | Office 365-támogatási jegyek létrehozása és kezelése. |
 
-### <a name="license-administrator"></a>Speciális licencadminisztrátor
+## <a name="license-administrator"></a>Speciális licencadminisztrátor
 A felhasználók és csoportok terméklicencek kezelheti.
 
   > [!NOTE]
@@ -819,29 +803,7 @@ A felhasználók és csoportok terméklicencek kezelheti.
 | microsoft.azure.serviceHealth/allEntities/allTasks | Olvassa el, és konfigurálja az Azure Service Health. |
 | Microsoft.office365.serviceHealth/allEntities/allTasks | Office 365-szolgáltatás-állapot olvasása és konfigurálása. |
 
-### <a name="lync-service-administrator"></a>Lync-szolgáltatások rendszergazdája
-A Skype Vállalati verzió termékkel kapcsolatos összes felügyeleti jogosultsággal rendelkezik.
-
-  > [!NOTE]
-  > Ez a szerepkör további engedélyek örökli a címtár olvasói szerepköréhez.
-  >
-  >
-
-  > [!NOTE]
-  > Ez a szerepkör jogosult addditonal Azure Active Directory-en kívül. Szerepkör leírása fent további információt talál.
-  >
-  >
-
-| **Műveletek** | **Leírás** |
-| --- | --- |
-| microsoft.azure.accessService/allEntities/allTasks | Az Azure szolgáltatás minden szempontjának kezeléséhez. |
-| microsoft.azure.serviceHealth/allEntities/allTasks | Olvassa el, és konfigurálja az Azure Service Health. |
-| microsoft.azure.supportTickets/allEntities/allTasks | Létrehozhat és kezelhet az Azure támogatási jegyeket. |
-| Microsoft.office365.serviceHealth/allEntities/allTasks | Office 365-szolgáltatás-állapot olvasása és konfigurálása. |
-| Microsoft.office365.skypeForBusiness/allEntities/allTasks | Összes felügyeleti jogosultsággal a Skype vállalati online verziójához. |
-| Microsoft.office365.supportTickets/allEntities/allTasks | Office 365-támogatási jegyek létrehozása és kezelése. |
-
-### <a name="message-center-reader"></a>Üzenetközpont-olvasó
+## <a name="message-center-reader"></a>Üzenetközpont-olvasó
 Csak a szervezet Office 365 Üzenetközpontbeli üzeneteit és frissítéseit olvashatja. 
 
   > [!NOTE]
@@ -850,7 +812,7 @@ Csak a szervezet Office 365 Üzenetközpontbeli üzeneteit és frissítéseit ol
   >
 
   > [!NOTE]
-  > Ez a szerepkör jogosult addditonal Azure Active Directory-en kívül. Szerepkör leírása fent további információt talál.
+  > Ez a szerepkör az Azure Active Directoryn kívül további engedélyekkel rendelkezik. Szerepkör leírása fent további információt talál.
   >
   >
 
@@ -859,7 +821,7 @@ Csak a szervezet Office 365 Üzenetközpontbeli üzeneteit és frissítéseit ol
 | microsoft.aad.accessmessagecenter/allEntities/allTasks | Az összes erőforrás létrehozása és törlése, valamint az általános tulajdonságok olvasása és frissítése az Üzenetközpontban. |
 | microsoft.azure.accessService/allEntities/allTasks | Az Azure szolgáltatás minden szempontjának kezeléséhez. |
 
-### <a name="partner-tier1-support"></a>1. szintű partnertámogatás
+## <a name="partner-tier1-support"></a>1. szintű partnertámogatás
 Ne használjon – általános használatra nem alkalmas.
 
   > [!NOTE]
@@ -868,7 +830,7 @@ Ne használjon – általános használatra nem alkalmas.
   >
 
   > [!NOTE]
-  > Ez a szerepkör jogosult addditonal Azure Active Directory-en kívül. Szerepkör leírása fent további információt talál.
+  > Ez a szerepkör az Azure Active Directoryn kívül további engedélyekkel rendelkezik. Szerepkör leírása fent további információt talál.
   >
   >
 
@@ -896,7 +858,7 @@ Ne használjon – általános használatra nem alkalmas.
 | Microsoft.office365.serviceHealth/allEntities/allTasks | Office 365-szolgáltatás-állapot olvasása és konfigurálása. |
 | Microsoft.office365.supportTickets/allEntities/allTasks | Office 365-támogatási jegyek létrehozása és kezelése. |
 
-### <a name="partner-tier2-support"></a>2. szintű partnertámogatás
+## <a name="partner-tier2-support"></a>2. szintű partnertámogatás
 Ne használjon – általános használatra nem alkalmas.
 
   > [!NOTE]
@@ -905,7 +867,7 @@ Ne használjon – általános használatra nem alkalmas.
   >
 
   > [!NOTE]
-  > Ez a szerepkör jogosult addditonal Azure Active Directory-en kívül. Szerepkör leírása fent további információt talál.
+  > Ez a szerepkör az Azure Active Directoryn kívül további engedélyekkel rendelkezik. Szerepkör leírása fent további információt talál.
   >
   >
 
@@ -936,7 +898,7 @@ Ne használjon – általános használatra nem alkalmas.
 | Microsoft.office365.serviceHealth/allEntities/allTasks | Office 365-szolgáltatás-állapot olvasása és konfigurálása. |
 | Microsoft.office365.supportTickets/allEntities/allTasks | Office 365-támogatási jegyek létrehozása és kezelése. |
 
-### <a name="power-bi-service-administrator"></a>Power BI-szolgáltatásadminisztrátor
+## <a name="power-bi-service-administrator"></a>Power BI-szolgáltatásadminisztrátor
 A Power BI termékkel kapcsolatos összes felügyeleti jogosultsággal rendelkezik.
 
   > [!NOTE]
@@ -945,7 +907,7 @@ A Power BI termékkel kapcsolatos összes felügyeleti jogosultsággal rendelkez
   >
 
   > [!NOTE]
-  > Ez a szerepkör jogosult addditonal Azure Active Directory-en kívül. Szerepkör leírása fent további információt talál.
+  > Ez a szerepkör az Azure Active Directoryn kívül további engedélyekkel rendelkezik. Szerepkör leírása fent további információt talál.
   >
   >
 
@@ -958,7 +920,7 @@ A Power BI termékkel kapcsolatos összes felügyeleti jogosultsággal rendelkez
 | Microsoft.office365.serviceHealth/allEntities/allTasks | Office 365-szolgáltatás-állapot olvasása és konfigurálása. |
 | Microsoft.office365.supportTickets/allEntities/allTasks | Office 365-támogatási jegyek létrehozása és kezelése. |
 
-### <a name="privileged-role-administrator"></a>Kiemelt szerepkörű rendszergazda
+## <a name="privileged-role-administrator"></a>Kiemelt szerepkörű rendszergazda
 Szerepkör-hozzárendelésekkel kezelheti az Azure ad-ben
 
   > [!NOTE]
@@ -967,7 +929,7 @@ Szerepkör-hozzárendelésekkel kezelheti az Azure ad-ben
   >
 
   > [!NOTE]
-  > Ez a szerepkör jogosult addditonal Azure Active Directory-en kívül. Szerepkör leírása fent további információt talál.
+  > Ez a szerepkör az Azure Active Directoryn kívül további engedélyekkel rendelkezik. Szerepkör leírása fent további információt talál.
   >
   >
 
@@ -976,7 +938,7 @@ Szerepkör-hozzárendelésekkel kezelheti az Azure ad-ben
 | microsoft.aad.directory/directoryRoles/update | Az Azure Active Directoryban directoryRoles frissítése. |
 | microsoft.aad.privilegedIdentityManagement/allEntities/allTasks | Hozzon létre és az összes erőforrás törlése, és olvassa el és microsoft.aad.privilegedIdentityManagement az alapvető tulajdonságainak frissítése. |
 
-### <a name="reports-reader"></a>Jelentésolvasó
+## <a name="reports-reader"></a>Jelentésolvasó
 Megtekintheti a bejelentkezési és a naplózási jelentéseket.
 
   > [!NOTE]
@@ -985,7 +947,7 @@ Megtekintheti a bejelentkezési és a naplózási jelentéseket.
   >
 
   > [!NOTE]
-  > Ez a szerepkör jogosult addditonal Azure Active Directory-en kívül. Szerepkör leírása fent további információt talál.
+  > Ez a szerepkör az Azure Active Directoryn kívül további engedélyekkel rendelkezik. Szerepkör leírása fent további információt talál.
   >
   >
 
@@ -996,7 +958,7 @@ Megtekintheti a bejelentkezési és a naplózási jelentéseket.
 | Microsoft.office365.serviceHealth/allEntities/allTasks | Office 365-szolgáltatás-állapot olvasása és konfigurálása. |
 | Microsoft.office365.usageReports/allEntities/Read | Az Office 365-beli használati jelentések olvasása. |
 
-### <a name="security-administrator"></a>Biztonsági rendszergazda
+## <a name="security-administrator"></a>Biztonsági rendszergazda
 Olvashatja a biztonsági információk és jelentések
 
   > [!NOTE]
@@ -1005,7 +967,7 @@ Olvashatja a biztonsági információk és jelentések
   >
 
   > [!NOTE]
-  > Ez a szerepkör jogosult addditonal Azure Active Directory-en kívül. Szerepkör leírása fent további információt talál.
+  > Ez a szerepkör az Azure Active Directoryn kívül további engedélyekkel rendelkezik. Szerepkör leírása fent további információt talál.
   >
   >
 
@@ -1026,7 +988,7 @@ Olvashatja a biztonsági információk és jelentések
 | Microsoft.office365.protectionCenter/allEntities/Update | Frissítés microsoft.office365.protectionCenter található összes erőforrást. |
 | Microsoft.office365.serviceHealth/allEntities/allTasks | Office 365-szolgáltatás-állapot olvasása és konfigurálása. |
 
-### <a name="security-reader"></a>Biztonsági olvasó
+## <a name="security-reader"></a>Biztonsági olvasó
 Megtekintheti a biztonsági információkat és jelentéseket az Azure AD-ban és az Office 365-ben.
 
   > [!NOTE]
@@ -1035,7 +997,7 @@ Megtekintheti a biztonsági információkat és jelentéseket az Azure AD-ban é
   >
 
   > [!NOTE]
-  > Ez a szerepkör jogosult addditonal Azure Active Directory-en kívül. Szerepkör leírása fent további információt talál.
+  > Ez a szerepkör az Azure Active Directoryn kívül további engedélyekkel rendelkezik. Szerepkör leírása fent további információt talál.
   >
   >
 
@@ -1048,7 +1010,7 @@ Megtekintheti a biztonsági információkat és jelentéseket az Azure AD-ban é
 | Microsoft.office365.protectionCenter/allEntities/Read | Az Office 365 Védelmi központ minden aspektusának olvasása. |
 | Microsoft.office365.serviceHealth/allEntities/allTasks | Office 365-szolgáltatás-állapot olvasása és konfigurálása. |
 
-### <a name="service-support-administrator"></a>Szolgáltatástámogatási rendszergazda
+## <a name="service-support-administrator"></a>Szolgáltatástámogatási rendszergazda
 Megtekintheti a szolgáltatásállapot-adatokat, és kezelheti a támogatási jegyeket.
 
   > [!NOTE]
@@ -1057,7 +1019,7 @@ Megtekintheti a szolgáltatásállapot-adatokat, és kezelheti a támogatási je
   >
 
   > [!NOTE]
-  > Ez a szerepkör jogosult addditonal Azure Active Directory-en kívül. Szerepkör leírása fent további információt talál.
+  > Ez a szerepkör az Azure Active Directoryn kívül további engedélyekkel rendelkezik. Szerepkör leírása fent további információt talál.
   >
   >
 
@@ -1069,7 +1031,7 @@ Megtekintheti a szolgáltatásállapot-adatokat, és kezelheti a támogatási je
 | Microsoft.office365.serviceHealth/allEntities/allTasks | Office 365-szolgáltatás-állapot olvasása és konfigurálása. |
 | Microsoft.office365.supportTickets/allEntities/allTasks | Office 365-támogatási jegyek létrehozása és kezelése. |
 
-### <a name="sharepoint-service-administrator"></a>SharePoint szolgáltatás-rendszergazda
+## <a name="sharepoint-service-administrator"></a>SharePoint szolgáltatás-rendszergazda
 A SharePoint-szolgáltatásokkal kapcsolatos összes felügyeleti jogosultsággal rendelkezik.
 
   > [!NOTE]
@@ -1078,7 +1040,7 @@ A SharePoint-szolgáltatásokkal kapcsolatos összes felügyeleti jogosultságga
   >
 
   > [!NOTE]
-  > Ez a szerepkör jogosult addditonal Azure Active Directory-en kívül. Szerepkör leírása fent további információt talál.
+  > Ez a szerepkör az Azure Active Directoryn kívül további engedélyekkel rendelkezik. Szerepkör leírása fent további információt talál.
   >
   >
 
@@ -1091,7 +1053,29 @@ A SharePoint-szolgáltatásokkal kapcsolatos összes felügyeleti jogosultságga
 | Microsoft.office365.SharePoint/allEntities/allTasks | Hozzon létre és az összes erőforrás törlése, és olvassa el és microsoft.office365.sharepoint az alapvető tulajdonságainak frissítése. |
 | Microsoft.office365.supportTickets/allEntities/allTasks | Office 365-támogatási jegyek létrehozása és kezelése. |
 
-### <a name="teams-communications-administrator"></a>Csapatok kommunikáció rendszergazda
+## <a name="skype-for-business-administrator"></a>Skype Vállalati verzió-rendszergazda
+A Skype Vállalati verzió termékkel kapcsolatos összes felügyeleti jogosultsággal rendelkezik. Korábbi nevén Lync-szolgáltatások rendszergazdája.
+
+  > [!NOTE]
+  > Ez a szerepkör további engedélyek örökli a címtár olvasói szerepköréhez.
+  >
+  >
+
+  > [!NOTE]
+  > Ez a szerepkör az Azure Active Directoryn kívül további engedélyekkel rendelkezik. Szerepkör leírása fent további információt talál.
+  >
+  >
+
+| **Műveletek** | **Leírás** |
+| --- | --- |
+| microsoft.azure.accessService/allEntities/allTasks | Az Azure szolgáltatás minden szempontjának kezeléséhez. |
+| microsoft.azure.serviceHealth/allEntities/allTasks | Olvassa el, és konfigurálja az Azure Service Health. |
+| microsoft.azure.supportTickets/allEntities/allTasks | Létrehozhat és kezelhet az Azure támogatási jegyeket. |
+| Microsoft.office365.serviceHealth/allEntities/allTasks | Office 365-szolgáltatás-állapot olvasása és konfigurálása. |
+| Microsoft.office365.skypeForBusiness/allEntities/allTasks | Összes felügyeleti jogosultsággal a Skype vállalati online verziójához. |
+| Microsoft.office365.supportTickets/allEntities/allTasks | Office 365-támogatási jegyek létrehozása és kezelése. |
+
+## <a name="teams-communications-administrator"></a>Csapatok kommunikáció rendszergazda
 Kezelheti a hívási és értekezletek funkciók a Microsoft Teams szolgáltatásban.
 
   > [!NOTE]
@@ -1100,7 +1084,7 @@ Kezelheti a hívási és értekezletek funkciók a Microsoft Teams szolgáltatá
   >
 
   > [!NOTE]
-  > Ez a szerepkör jogosult addditonal Azure Active Directory-en kívül. Szerepkör leírása fent további információt talál.
+  > Ez a szerepkör az Azure Active Directoryn kívül további engedélyekkel rendelkezik. Szerepkör leírása fent további információt talál.
   >
   >
 
@@ -1114,7 +1098,7 @@ Kezelheti a hívási és értekezletek funkciók a Microsoft Teams szolgáltatá
 | Microsoft.office365.supportTickets/allEntities/allTasks | Office 365-támogatási jegyek létrehozása és kezelése. |
 | Microsoft.office365.usageReports/allEntities/Read | Az Office 365-beli használati jelentések olvasása. |
 
-### <a name="teams-communications-support-engineer"></a>Csapatok kommunikáció támogatási szakértő
+## <a name="teams-communications-support-engineer"></a>Csapatok kommunikáció támogatási szakértő
 Kommunikációs csapatok fejlett eszközökkel kapcsolatos problémák elhárításához.
 
   > [!NOTE]
@@ -1123,7 +1107,7 @@ Kommunikációs csapatok fejlett eszközökkel kapcsolatos problémák elhárít
   >
 
   > [!NOTE]
-  > Ez a szerepkör jogosult addditonal Azure Active Directory-en kívül. Szerepkör leírása fent további információt talál.
+  > Ez a szerepkör az Azure Active Directoryn kívül további engedélyekkel rendelkezik. Szerepkör leírása fent további információt talál.
   >
   >
 
@@ -1134,7 +1118,7 @@ Kommunikációs csapatok fejlett eszközökkel kapcsolatos problémák elhárít
 | microsoft.azure.serviceHealth/allEntities/allTasks | Olvassa el, és konfigurálja az Azure Service Health. |
 | Microsoft.office365.serviceHealth/allEntities/allTasks | Office 365-szolgáltatás-állapot olvasása és konfigurálása. |
 
-### <a name="teams-communications-support-specialist"></a>Csapatok kommunikáció támogatási szakértő
+## <a name="teams-communications-support-specialist"></a>Csapatok kommunikáció támogatási szakértő
 Kommunikációs csapatok alapvető eszközökkel kapcsolatos problémák elhárításához.
 
   > [!NOTE]
@@ -1143,7 +1127,7 @@ Kommunikációs csapatok alapvető eszközökkel kapcsolatos problémák elhár�
   >
 
   > [!NOTE]
-  > Ez a szerepkör jogosult addditonal Azure Active Directory-en kívül. Szerepkör leírása fent további információt talál.
+  > Ez a szerepkör az Azure Active Directoryn kívül további engedélyekkel rendelkezik. Szerepkör leírása fent további információt talál.
   >
   >
 
@@ -1154,7 +1138,7 @@ Kommunikációs csapatok alapvető eszközökkel kapcsolatos problémák elhár�
 | microsoft.azure.serviceHealth/allEntities/allTasks | Olvassa el, és konfigurálja az Azure Service Health. |
 | Microsoft.office365.serviceHealth/allEntities/allTasks | Office 365-szolgáltatás-állapot olvasása és konfigurálása. |
 
-### <a name="teams-service-administrator"></a>Csapatok szolgáltatás-rendszergazda
+## <a name="teams-service-administrator"></a>Csapatok szolgáltatás-rendszergazda
 Kezelheti a Microsoft Teams szolgáltatás.
 
   > [!NOTE]
@@ -1163,7 +1147,7 @@ Kezelheti a Microsoft Teams szolgáltatás.
   >
 
   > [!NOTE]
-  > Ez a szerepkör jogosult addditonal Azure Active Directory-en kívül. Szerepkör leírása fent további információt talál.
+  > Ez a szerepkör az Azure Active Directoryn kívül további engedélyekkel rendelkezik. Szerepkör leírása fent további információt talál.
   >
   >
 
@@ -1178,7 +1162,7 @@ Kezelheti a Microsoft Teams szolgáltatás.
 | Microsoft.office365.supportTickets/allEntities/allTasks | Office 365-támogatási jegyek létrehozása és kezelése. |
 | Microsoft.office365.usageReports/allEntities/Read | Az Office 365-beli használati jelentések olvasása. |
 
-### <a name="user-account-administrator"></a>Felhasználóifiók-adminisztrátor
+## <a name="user-account-administrator"></a>Felhasználóifiók-adminisztrátor
 Felhasználók és csoportok minden aspektusát felügyelheti
 
   > [!NOTE]
@@ -1220,7 +1204,7 @@ Felhasználók és csoportok minden aspektusát felügyelheti
 | Microsoft.office365.serviceHealth/allEntities/allTasks | Office 365-szolgáltatás-állapot olvasása és konfigurálása. |
 | Microsoft.office365.supportTickets/allEntities/allTasks | Office 365-támogatási jegyek létrehozása és kezelése. |
 
-### <a name="user"></a>Felhasználó
+## <a name="user"></a>Felhasználó
 Alapértelmezett szerepkör tagja számára. Az összes olvashat és írhat a korlátozott számú directory adatait.
 
   > [!NOTE]
@@ -1269,6 +1253,17 @@ Alapértelmezett szerepkör tagja számára. Az összes olvashat és írhat a ko
 | Microsoft.aad.Directory/Users/Mobile/Update | Frissítés az Azure Active Directoryban users.mobile tulajdonság. |
 | microsoft.aad.directory/users/searchableDeviceKey/update | Frissítés az Azure Active Directoryban users.searchableDeviceKey tulajdonság. |
 
+## <a name="deprecated-roles"></a>Elavult szerepkörök
+
+A következő szerepkörök nem használható. Ezek már elavult, és a jövőben az Azure AD-ből törlődni fog.
+
+* Speciális licencek adminisztrátora
+* Eszköz-csatlakoztatás
+* Eszközkezelők
+* Eszközök felhasználói számára
+* Ellenőrzött e-mail című felhasználó-létrehozó
+* Postaláda-adminisztrátor
+* Munkahelyi eszköz-csatlakoztatás
 
 ## <a name="next-steps"></a>További lépések
 

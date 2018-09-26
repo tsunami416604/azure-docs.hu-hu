@@ -4,14 +4,14 @@ description: Értékelési számítások az Azure Migrate szolgáltatás átteki
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 09/10/2018
+ms.date: 09/25/2018
 ms.author: raynew
-ms.openlocfilehash: 9f1986e2ebf406762916869d9dc1cb3d73174f93
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: f7f06636e025eda604caa65ca82d4dd7eb909d3f
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45574878"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47165687"
 ---
 # <a name="assessment-calculations"></a>Értékelési számítások
 
@@ -39,7 +39,7 @@ Az Azure Migrate áttekinti a következő tulajdonságok azonosítani, hogy egy 
 **Tulajdonság** | **Részletek** | **Azure-kompatibilitás állapota**
 --- | --- | ---
 **Rendszerindítás típusa** | Az Azure virtuális gépek a BIOS-ban, és nem UEFI típusú rendszerindítást támogatja. | Feltételesen készen áll arra, ha UEFI típusú rendszerindítást.
-**Processzormagok** | A gépek a Processzormagok száma kisebb, mint a magok maximális számának (32) egy Azure virtuális gép esetében támogatott, vagy azzal egyenlőnek kell lennie.<br/><br/> Teljesítményelőzmények érhető el, ha az Azure Migrate figyelembe veszi a túl magas kihasználtsággal rendelkező magok, az összehasonlítást. Ha egy kompatibilitási faktor értékelés beállításaiban van megadva, a rendszer megszorozza a túl magas kihasználtsággal rendelkező magok számát a kompatibilitási faktor.<br/><br/> Ha nincsenek teljesítményelőzményei, a kompatibilitási faktor alkalmazása nélkül az Azure Migrate használja a lefoglalt magok száma. | Készen áll, ha kevesebb mint vagy egyenlő korlátok.
+**Processzormagok** | A magok számát a a gépek mag (128 mag), egy Azure virtuális gép támogatott maximális számának kisebbnek vagy azzal egyenlőnek kell lennie.<br/><br/> Teljesítményelőzmények érhető el, ha az Azure Migrate figyelembe veszi a túl magas kihasználtsággal rendelkező magok, az összehasonlítást. Ha egy kompatibilitási faktor értékelés beállításaiban van megadva, a rendszer megszorozza a túl magas kihasználtsággal rendelkező magok számát a kompatibilitási faktor.<br/><br/> Ha nincsenek teljesítményelőzményei, a kompatibilitási faktor alkalmazása nélkül az Azure Migrate használja a lefoglalt magok száma. | Készen áll, ha kevesebb mint vagy egyenlő korlátok.
 **Memória** | A memória mérete kisebb, mint a maximális memóriát, vagy azzal egyenlőnek kell lennie. (az Azure M sorozatú Standard_M128m 3892 GB&nbsp;<sup>2</sup>) egy Azure virtuális gép engedélyezett. [További információk](https://docs.microsoft.com/azure/virtual-machines/windows/sizes).<br/><br/> Teljesítményelőzmények érhető el, ha az Azure Migrate figyelembe veszi a magas kihasználtságú memóriát, az összehasonlítást. Ha egy kompatibilitási faktor van megadva, a rendszer megszorozza a magas kihasználtságú memória a kompatibilitási faktor.<br/><br/> Ha nincsenek előzményei a lefoglalt memória használata esetén a kompatibilitási faktor alkalmazása nélkül.<br/><br/> | Készen áll a korlátokon belül.
 **Tárolólemez** | A lemez lefoglalt mérete 4 TB-ig (4096 GB) kell lennie, vagy kisebb.<br/><br/> A géphez csatolt lemezek száma 65 vagy annál kisebb, többek között az operációsrendszer-lemez kell lennie. | Készen áll a korlátokon belül.
 **Hálózat** | Egy gép 32 kell rendelkeznie, vagy kevesebb hálózati adapter csatlakozik. | Készen áll a korlátokon belül.
@@ -61,7 +61,8 @@ A Windows Server 2008 R2 minden szervizcsomagok | Az Azure teljes körű támoga
 A Windows Server 2008 (32 bites és 64 bites) | Az Azure teljes körű támogatást biztosít. | Készen áll az Azure-beli használatra
 A Windows Server 2003, Server 2003 R2 | Ezek az operációs rendszerek megfeleltek támogatása, és meg kell azok végén egy [egyéni támogatási megállapodás (CSA)](https://aka.ms/WSosstatement) támogatás az Azure-ban. | Feltételesen készen áll az Azure-hoz, fontolja meg az operációs rendszer frissítését az Azure-ba való migrálás előtt.
 Windows 2000, 98, 95, NT, 3.1, MS-DOS | Az említett operációs rendszerektől azok befejezési támogatása estek át, a gép elindulhat az Azure-ban, de nem az operációs rendszer biztosít támogatást az Azure-ban. | Feltételesen készen az Azure-hoz, javasolt az Azure-ba való migrálás előtt az operációs rendszer verziófrissítéséhez.
-Windows-ügyfél 7, 8 és 10 | Az Azure támogatja a csak a Visual Studio-előfizetéssel. | Feltételesen készen áll az Azure-beli használatra
+Windows-ügyfél 7, 8 és 10 | Az Azure-támogatást kínál [csak a Visual Studio-előfizetéssel.](https://docs.microsoft.com/azure/virtual-machines/windows/client-images) | Feltételesen készen áll az Azure-beli használatra
+Windows 10 Pro asztali | Az Azure-támogatást kínál [több-Bérlős üzemeltetési jogosultságok.](https://docs.microsoft.com/azure/virtual-machines/windows/windows-desktop-multitenant-hosting-deployment) | Feltételesen készen áll az Azure-beli használatra
 Windows Vista, XP Professional | Az említett operációs rendszerektől azok befejezési támogatása estek át, a gép elindulhat az Azure-ban, de nem az operációs rendszer biztosít támogatást az Azure-ban. | Feltételesen készen az Azure-hoz, javasolt az Azure-ba való migrálás előtt az operációs rendszer verziófrissítéséhez.
 Linux | Azure vannak jóváhagyva, ezek [Linux operációs rendszerek](../virtual-machines/linux/endorsed-distros.md). Más Linux operációs rendszerek elindulhat az Azure-ban, de javasoljuk, hogy az operációs rendszer frissítése egy támogatott verzióra az Azure-ba való migrálás előtt. | Készen áll az Azure-hoz, ha a verzió támogatja.<br/><br/>Feltételesen készen áll arra, ha a verzió nem támogatja.
 Más operációs rendszerek<br/><br/> Példa: Oracle Solaris, az Apple Mac OS stb., a FreeBSD stb. | Az Azure nem támogat nyíltan az említett operációs rendszerektől. A gép elindulhat az Azure-ban, de nem az operációs rendszer biztosít támogatást az Azure-ban. | Feltételesen készen az Azure-hoz, javasoljuk, hogy egy támogatott operációs rendszer telepítése az Azure-ba való migrálás előtt.  

@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 06/11/2018
 ms.author: spelluru
 ms.openlocfilehash: 9b9a1839bf4b028aec13b764b4de66385de4189e
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35646364"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47090751"
 ---
 # <a name="resize-a-vm-in-a-lab-in-azure-devtest-labs"></a>Az Azure DevTest Labs szolgáltatásban létrehozott tesztkörnyezet virtuális gép átméretezése
 Azure-beli virtuális gépek fontos jellemzőit egyik célja, hogy lehetővé teszi a virtuális gép (VM) a CPU-, hálózati vagy lemez teljesítménye az igények alapján méretének módosítása. Az Azure DevTest Labs támogatja ezt a szolgáltatást a virtuális gépek tesztkörnyezetben most. Az átméretezési funkció engedélyezett Virtuálisgép-méretek a lab-ben a labor házirend csatlakozik. Azt jelenti módosíthatja a virtuális gép méretét csak engedélyezett méretek a tesztkörnyezetben. 

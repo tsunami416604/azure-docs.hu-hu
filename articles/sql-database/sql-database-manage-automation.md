@@ -1,20 +1,23 @@
 ---
 title: Azure Automation használatával Azure SQL-adatbázisok kezelése |} A Microsoft Docs
 description: Ismerje meg hogyan az Azure Automation szolgáltatás nagy mennyiségű Azure SQL Database-adatbázisok kezeléséhez használható.
-services: sql-database, automation
-author: CarlRabeler
-manager: craigg
+services: sql-database
 ms.service: sql-database
-ms.custom: monitor & tune
+ms.subservice: operations
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 04/01/2018
+author: CarlRabeler
 ms.author: carlrab
-ms.openlocfilehash: 0636a4daf06e4d476935773e65cd388f94d99986
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.reviewer: ''
+manager: craigg
+ms.date: 04/01/2018
+ms.openlocfilehash: 3360482c77dd262a81bebb885c95f72616c7764a
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45578260"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47159533"
 ---
 # <a name="managing-azure-sql-databases-using-azure-automation"></a>Azure Automation használatával Azure SQL Database adatbázisok felügyelete
 Ez az útmutató vezet be, az Azure Automation szolgáltatást, és hogyan használható az Azure SQL-adatbázisok kezelésének egyszerűsítéséhez.

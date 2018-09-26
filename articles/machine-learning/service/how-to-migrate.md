@@ -9,12 +9,12 @@ ms.reviewer: jmartens
 ms.author: haining
 author: haining
 ms.date: 09/24/2018
-ms.openlocfilehash: 2182a39836f02596d22168722e6ece7a2872dccc
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 0c5cfcee65b176147125dd2edbff2497b1eee70b
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46969483"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47158564"
 ---
 # <a name="migrate-to-the-latest-version-of-azure-machine-learning-service"></a>Az Azure Machine Learning szolgáltatás legújabb verziójára való áttérést 
 
@@ -29,7 +29,7 @@ A következő táblázat és a cikk elmagyarázza, mit tehet a meglévő eszköz
 |-----------------|:-------------:|-------------|
 |Gépi tanulási modelleket (a helyi fájlok)|Igen|Nincs. Ahogy korábban is működik.|
 |A modellekre függőségek & sémák (a helyi fájlok)|Igen|Nincs. Ahogy korábban is működik.|
-|projektek|Igen|[Új munkaterület a helyi mappát csatolni](#projects).|
+|Projektek|Igen|[Új munkaterület a helyi mappát csatolni](#projects).|
 |Futtatási előzmények|Nem|[Letölthető](#history) egy ideig.|
 |Adat-előkészítési fájlok|Nem|[Bármilyen méretű adatkészlet előkészítése](#dataprep) a modellezési az új Azure Machine Learning Data Prep SDK használatával, vagy használhatja az Azure Databricks.|
 |Számítási céljainak|Nem|Regisztrálja őket az új munkaterületet.|
@@ -54,13 +54,13 @@ Erőforrások, például a kísérletezés-fiókokat, a modellkezelési fiókok 
 
 Hozzon létre egy Azure Machine Learning-munkaterület az első lépések a legújabb verzióra a [az Azure portal](quickstart-get-started.md). Munkaterület irányítópultján a portálon csak Edge, Chrome és a Firefox böngésző esetében támogatott.
 
-Ehhez az új munkaterülethez a legfelső szintű szolgáltatás-erőforrás, és lehetővé teszi, hogy az összes az Azure Machine Learning szolgáltatás legújabb funkcióit használja. [További információ a munkaterület és architektúra](concept-azure-machine-learning-architecture.md).
+Ehhez az új munkaterülethez a legfelső szintű szolgáltatás-erőforrás, és lehetővé teszi, hogy az összes az Azure Machine Learning szolgáltatás legújabb funkcióit használja. További tudnivalók ezzel [munkaterületet és architektúra](concept-azure-machine-learning-architecture.md).
 
 <a name="projects"></a>
 
-## <a name="projects"></a>projektek
+## <a name="projects"></a>Projektek
 
-A projektek nem a felhőben munkaterülete, projektek immár könyvtárak legújabb kiadásának a helyi gépen. [Tekintse meg a legújabb architektúra diagramját](concept-azure-machine-learning-architecture.md). 
+A projektek nem a felhőben munkaterülete, projektek immár könyvtárak legújabb kiadásának a helyi gépen. Tekintse meg a diagram a [legújabb architektúra](concept-azure-machine-learning-architecture.md). 
 
 A helyi könyvtárban, amely tartalmazza a fájlok és parancsfájlok használatával. a folytatáshoz adja meg a könyvtár neve a a ["experiment.submit"](http://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment.experiment?view=azure-ml-py) Python-parancsot, vagy a parancssori felület az ml-projekt csatlakoztatása parancsot.
 

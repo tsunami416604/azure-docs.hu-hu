@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/24/2018
 ms.author: kumud
-ms.openlocfilehash: dd549005776656bb755b78fc0ca73d24edcc77bd
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: a6d442452fe5ffc61648b3c004c03f1756f8f57e
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46973745"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47160655"
 ---
 # <a name="configure-load-balancing-and-outbound-rules-in-standard-load-balancer-using-azure-cli"></a>Terheléselosztás és a kimenő szabályok konfigurálása az Azure CLI-vel Standard Load Balancer
 
@@ -155,6 +155,9 @@ az network lb outbound-rule create \
  --outbound-ports 10000 \
  --address-pool bepool
 ```
+
+Ezen a ponton, és folytassa a virtuális gép hozzáadása a háttérkészlethez *bepool* álló megfelelő hálózati adapter IP-konfiguráció frissítésével.
+
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha már nincs rá szükség, az [az group delete](/cli/azure/group#az-group-delete) paranccsal eltávolítható az erőforráscsoport, a terheléselosztó és az összes kapcsolódó erőforrás.

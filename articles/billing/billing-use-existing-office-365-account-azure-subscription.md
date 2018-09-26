@@ -16,11 +16,11 @@ ms.topic: conceptual
 ms.date: 06/15/2018
 ms.author: cjiang
 ms.openlocfilehash: dd7b9609495cacd324ef5509f57db0384775e0a7
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35926024"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47093378"
 ---
 # <a name="sign-up-for-an-azure-subscription-with-your-office-365-account"></a>Egy Azure-előfizetést, az Office 365-fiókjával regisztráljon
 Ha rendelkezik Office 365-előfizetéssel, az Office 365-fiók használatával Azure-előfizetés létrehozása. Jelentkezzen be a [az Azure portal](https://portal.azure.com/) használatával, az Office 365-felhasználónevét és jelszavát. Ha azt szeretné, állítsa be a virtuális gépek vagy más Azure-szolgáltatások használatára, jelentkezzen Azure-előfizetésre. Az Azure-előfizetés másokkal is megoszthat és [az Azure-előfizetés és erőforrásokhoz való hozzáférés kezelése szerepköralapú hozzáférés-vezérlés használatával](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)

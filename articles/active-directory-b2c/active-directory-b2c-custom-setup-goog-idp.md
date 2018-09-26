@@ -1,259 +1,168 @@
 ---
-title: Adja hozzá a Google + identitás-szolgáltatóként OAuth2 egyéni szabályzatok használatával az Azure Active Directory B2C |} A Microsoft Docs
-description: A minta használata a Google + OAuth2 protokollt használó identitás-szolgáltatóként.
+title: Jelentkezzen be egy Google-fiókot az Azure Active Directory B2C-vel egyéni szabályzatok használatával beállítása |} A Microsoft Docs
+description: Állítson be egy Google-fiókkal az Azure Active Directory B2C-vel egyéni szabályzatok használatával.
 services: active-directory-b2c
 author: davidmu1
 manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 08/04/2017
+ms.date: 09/20/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: f076a906ba38e6c8e8c9530baba1607553b41ea6
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: f7886850c2015e7976ebb29bd2416797a9958fb7
+ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43338328"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47182637"
 ---
-# <a name="azure-active-directory-b2c-add-google-as-an-oauth2-identity-provider-using-custom-policies"></a>Az Azure Active Directory B2C: Adja hozzá a Google + identitás-szolgáltatóként OAuth2 egyéni szabályzatok használatával
+# <a name="set-up-sign-in-with-a-google-account-using-custom-policies-in-azure-active-directory-b2c"></a>Állítsa be a bejelentkezést egy Google-fiókot az Azure Active Directory B2C-vel egyéni szabályzatok használatával
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Ez az útmutató bemutatja, hogyan bejelentkezés engedélyezése a felhasználók számára a Google +-fiókból használatával [egyéni szabályzatok](active-directory-b2c-overview-custom.md).
+Ez a cikk bemutatja, hogyan bejelentkezés engedélyezése a felhasználók számára a Google-fiók használatával [egyéni szabályzatok](active-directory-b2c-overview-custom.md) Azure Active Directory (Azure AD) B2C-ben.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A lépések elvégzéséhez a [Ismerkedés az egyéni szabályzatok](active-directory-b2c-get-started-custom.md) cikk.
+- A lépések elvégzéséhez a [az Active Directory B2C-vel egyéni szabályzatok – első lépések](active-directory-b2c-get-started-custom.md).
+- Ha még nem rendelkezik egy Google-fiókkal, hozzon létre egyet, [létrehozása a Google-fiók](https://accounts.google.com/SignUp).
 
-Ezeket a lépéseket tartalmazza:
+## <a name="register-the-application"></a>Az alkalmazás regisztrálása
 
-1.  A Google + fiók alkalmazások létrehozásához.
-2.  A Google + fiók kérelem kulcs hozzáadása az Azure AD B2C-vel
-3.  Egy házirend hozzáadása jogcím-szolgáltatói
-4.  A Google + fiók jogcímszolgáltató felhasználói út regisztrálása
-5.  A szabályzat feltöltése egy Azure AD B2C-bérlőben és a tesztelés közben
+Jelentkezzen be a felhasználók számára a Google-fiók engedélyezéséhez szeretne létrehozni egy Google-projekt. 
 
-## <a name="create-a-google-account-application"></a>A Google + fiók-alkalmazás létrehozása
-A Google +-t használja Identitásszolgáltatóként az Azure Active Directory (Azure AD) B2C, kell a Google +-alkalmazás létrehozása, és adja meg azt a megfelelő paraméterekkel. A Google + alkalmazás itt regisztrálhat: [https://accounts.google.com/SignUp](https://accounts.google.com/SignUp)
+1. Jelentkezzen be a [Google fejlesztői konzolon](https://console.developers.google.com/) fiókja hitelesítő adataival.
+2. Adjon meg egy **projektnév**, kattintson a **létrehozás**, majd győződjön meg arról, hogy az új projekt használ, és.
+3. Válassza ki **hitelesítő adatok** a bal oldali menüben, és válassza ki a **hitelesítő adatok létrehozása > Oauth-Ügyfélazonosító**.
+4. Válassza ki **konfigurálása beleegyezést kérő oldalon**.
+5. Válasszon vagy adjon meg egy érvényes **E-mail-cím**, adjon meg egy **Terméknév** jelenik meg, adja meg `b2clogin.com` a **tartományok jogosult**, és kattintson a  **Mentés**.
+6. A **alkalmazástípus**válassza **webes alkalmazás**.
+7. Adjon meg egy **neve** az alkalmazáshoz.
+8. A **JavaScript engedélyezett eredetek**, adja meg `https://your-tenant-name.b2clogin.com` és a **jogosult átirányítási URI-k**, adja meg `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp`. Cserélje le a saját bérlő neve a bérlő nevével. Kisbetűk használhatók, ha akkor is, ha a bérlő Azure AD B2C-ben nagybetűk van definiálva, írja be a bérlő nevét kell.
+8. Kattintson a **Create** (Létrehozás) gombra.
+9. Másolja le az értékeket a **ügyfél-azonosító** és **titkos Ügyfélkód**. Szüksége lesz mindkettő Google konfigurálása identitás-szolgáltatóként a bérlőben. Titkos Ügyfélkód egy fontos biztonsági hitelesítő adat.
 
-1.  Nyissa meg a [Google fejlesztői konzolon](https://console.developers.google.com/) , és jelentkezzen be a Google + fiók hitelesítő adatait.
-2.  Kattintson a **Create project**, adjon meg egy **projektnév**, és kattintson a **létrehozása**.
+## <a name="create-a-policy-key"></a>Hozzon létre egy házirendjének kulcsa
 
-3.  Kattintson a **projektek menü**.
+Az ügyfél titkos kulcsát, az Azure AD B2C-bérlő korábban rögzített tárolni kívánt.
 
-    ![A Google +-fiók – válassza ki a projekthez](media/active-directory-b2c-custom-setup-goog-idp/goog-add-new-app1.png)
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
+2. Győződjön meg arról, hogy használja az Azure AD B2C-bérlő kattintva tartalmazó könyvtárba a **címtár és előfizetés-szűrő** a felső menüben, és a könyvtár, amely tartalmazza a bérlő kiválasztása.
+3. Válasszon **minden szolgáltatás** az Azure Portalon, és majd keresse meg és válassza a bal felső sarkában lévő **Azure AD B2C-vel**.
+4. Az Áttekintés oldalon válassza ki a **identitás-kezelőfelületi keretrendszer – előzetes verzió**.
+5. Válassza ki **Szabályzatbejegyzések** majd **Hozzáadás**.
+6. A **beállítások**, válassza a `Manual`.
+7. Adjon meg egy **neve** a házirend-kulcs. Például: `GoogleSecret`. Az előtag `B2C_1A_` automatikusan hozzáadódik a kulcs neve.
+8. A **titkos**, adja meg a korábban feljegyzett ügyfélkulcsot.
+9. A **kulcshasználat**válassza `Signature`.
+10. Kattintson a **Create** (Létrehozás) gombra.
 
-4.  Kattintson a **+** gombra.
+## <a name="add-a-claims-provider"></a>A jogcímeket szolgáltató hozzáadása
 
-    ![A Google +-fiók – új projekt létrehozása](media/active-directory-b2c-custom-setup-goog-idp//goog-add-new-app2.png)
+Ha azt szeretné, hogy a felhasználók számára, hogy jelentkezzen be Google-fiók használatával, definiálhatja a fiók, amely az Azure AD B2C-végponton keresztül kommunikálhat egy jogcímszolgáltatótól szeretne. A végpont ellenőrzése, hogy egy adott felhasználó rendelkezik hitelesítése Azure AD B2C által használt jogcímeket biztosít. 
 
-5.  Adjon meg egy **projektnév**, és kattintson a **létrehozás**.
+Definiálhat egy Google-fiókot, egy jogcímszolgáltatótól hozzáadásával, hogy a **ClaimsProviders** elem a bővítmény fájlban a szabályzat.
 
-    ![A Google +-fiók – új projekt](media/active-directory-b2c-custom-setup-goog-idp//goog-app-name.png)
+1. Nyissa meg a *TrustFrameworkExtensions.xml*.
+2. Keresse meg a **ClaimsProviders** elemet. Ha nem létezik, adja hozzá a legfelső szintű elem alatt.
+3. Vegyen fel egy új **ClaimsProvider** módon:
 
-6.  Várjon, amíg készen áll a projektet, és kattintson a a **projektek menü**.
+    ```xml
+    <ClaimsProvider>
+      <Domain>google.com</Domain>
+      <DisplayName>Google</DisplayName>
+      <TechnicalProfiles>
+        <TechnicalProfile Id="Google-OAUTH">
+          <DisplayName>Google</DisplayName>
+          <Protocol Name="OAuth2" />
+          <Metadata>
+            <Item Key="ProviderName">google</Item>
+            <Item Key="authorization_endpoint">https://accounts.google.com/o/oauth2/auth</Item>
+            <Item Key="AccessTokenEndpoint">https://accounts.google.com/o/oauth2/token</Item>
+            <Item Key="ClaimsEndpoint">https://www.googleapis.com/oauth2/v1/userinfo</Item>
+            <Item Key="scope">email</Item>
+            <Item Key="HttpBinding">POST</Item>
+            <Item Key="UsePolicyInRedirectUri">0</Item>
+            <Item Key="client_id">Your Google application ID</Item>
+          </Metadata>
+          <CryptographicKeys>
+            <Key Id="client_secret" StorageReferenceId="B2C_1A_GoogleSecret" />
+          </CryptographicKeys>
+          <OutputClaims>
+            <OutputClaim ClaimTypeReferenceId="socialIdpUserId" PartnerClaimType="id" />
+            <OutputClaim ClaimTypeReferenceId="email" PartnerClaimType="email" />
+            <OutputClaim ClaimTypeReferenceId="givenName" PartnerClaimType="given_name" />
+            <OutputClaim ClaimTypeReferenceId="surname" PartnerClaimType="family_name" />
+            <OutputClaim ClaimTypeReferenceId="displayName" PartnerClaimType="name" />
+            <OutputClaim ClaimTypeReferenceId="identityProvider" DefaultValue="google.com" />
+            <OutputClaim ClaimTypeReferenceId="authenticationSource" DefaultValue="socialIdpAuthentication" />
+          </OutputClaims>
+          <OutputClaimsTransformations>
+            <OutputClaimsTransformation ReferenceId="CreateRandomUPNUserName" />
+            <OutputClaimsTransformation ReferenceId="CreateUserPrincipalName" />
+            <OutputClaimsTransformation ReferenceId="CreateAlternativeSecurityId" />
+            <OutputClaimsTransformation ReferenceId="CreateSubjectClaimFromAlternativeSecurityId" />
+          </OutputClaimsTransformations>
+          <UseTechnicalProfileForSessionManagement ReferenceId="SM-SocialLogin" />
+        </TechnicalProfile>
+      </TechnicalProfiles>
+    </ClaimsProvider>
+    ```
 
-    ![A Google +-fiók – Várjon, amíg az új projekt használatra készen áll](media/active-directory-b2c-custom-setup-goog-idp//goog-select-app1.png)
+4. Állítsa be **client_id** való az alkalmazás regisztrációja Alkalmazásazonosítója.
+5. Mentse a fájlt.
 
-7.  Kattintson a projekt nevére.
+### <a name="upload-the-extension-file-for-verification"></a>Az ellenőrzéshez a bővítmény-fájl feltöltése
 
-    ![A Google +-fiók – válassza ki az új projekt](media/active-directory-b2c-custom-setup-goog-idp//goog-select-app2.png)
+Már konfigurálta a szabályzatot, hogy az Azure AD B2C-vel képes kommunikálni az Azure AD-címtárhoz. A szabályzat csak, győződjön meg arról, hogy minden problémát, amennyiben nem rendelkezik a bővítmény fájlt töltsön fel.
 
-8.  Kattintson a **API Manager** majd **hitelesítő adatok** a bal oldali navigációs.
-9.  Kattintson a **OAuth-hozzájárulási képernyő** a felső fülön.
+1. Az a **egyéni szabályzatok** az Azure AD B2C-bérlő, válassza a lap **szabályzat feltöltése**.
+2. Engedélyezése **szabályzat felülírása, ha létezik**, és keresse meg és válassza ki a *TrustFrameworkExtensions.xml* fájlt.
+3. Kattintson a **Feltöltés** gombra.
 
-    ![A Google +-fiók – OAuth beállítása beleegyezést kérő oldalon](media/active-directory-b2c-custom-setup-goog-idp/goog-add-cred.png)
+## <a name="register-the-claims-provider"></a>A jogcím-szolgáltató regisztrálása
 
-10.  Válasszon vagy adjon meg egy érvényes **E-mail-cím**, adjon meg egy **Terméknév**, és kattintson a **mentése**.
+Ezen a ponton az identitásszolgáltató be lett állítva, de nem érhető el az összes regisztrálási-regisztrálási vagy bejelentkezési képernyőt. Elérhető legyen, hozzon létre egy meglévő sablon felhasználói interakciósorozat másolatát, és ezután módosítsa, hogy az Azure ad-ben identitásszolgáltató is rendelkezik.
 
-    ![A Google + - alkalmazás hitelesítő adatok](media/active-directory-b2c-custom-setup-goog-idp/goog-consent-screen.png)
-
-11.  Kattintson a **új hitelesítő adatok** majd **OAuth-Ügyfélazonosító**.
-
-    ![A Google + - új alkalmazások hitelesítő adatok létrehozása](media/active-directory-b2c-custom-setup-goog-idp/goog-add-oauth2-client-id.png)
-
-12.  A **alkalmazástípus**válassza **webes alkalmazás**.
-
-    ![A Google + - alkalmazástípus kiválasztása](media/active-directory-b2c-custom-setup-goog-idp/goog-web-app.png)
-
-13.  Adjon meg egy **neve** adja meg az alkalmazás `https://{tenant}.b2clogin.com` a a **JavaScript engedélyezett eredetek** mező, és `https://{tenant}.b2clogin.com/te/{tenant}.onmicrosoft.com/oauth2/authresp` a a **jogosult átirányítási URI-k** a mező. Cserélje le **{tenant}** a bérlő nevét (például: contosob2c). A **{tenant}** értéke a kis-és nagybetűket. Kattintson a **Create** (Létrehozás) gombra.
-
-    ![A Google + - adja meg a JavaScript engedélyezett származási helyek és az átirányítási URI-k](media/active-directory-b2c-custom-setup-goog-idp/goog-create-client-id.png)
-
-14.  Másolja le az értékeket a **ügyfél-azonosító** és **titkos Ügyfélkód**. Mindkettő konfigurálásához a Google + identitás-szolgáltatóként a bérlő van szüksége. **Titkos Ügyfélkód** egy fontos biztonsági hitelesítő adat.
-
-    ![A Google + - ügyfél-azonosítót és a titkos kód az értékek másolásához](media/active-directory-b2c-custom-setup-goog-idp/goog-client-secret.png)
-
-## <a name="add-the-google-account-application-key-to-azure-ad-b2c"></a>Adja hozzá a Google + alkalmazás fiókkulcs Azure AD B2C-vel
-Összevonás a Google + fiókok nevében az alkalmazás Azure AD B2C-vel megbízhatósági fiók Google + ügyfélkódot igényel. Az Azure AD B2C-bérlőben a Google + Alkalmazáskulcs tárolására van szüksége:  
-
-1.  Nyissa meg az Azure AD B2C-bérlő, és válassza ki **B2C-beállítások** > **identitás-kezelőfelületi keretrendszer**
-2.  Válassza ki **Szabályzatbejegyzések** elérhető a bérlői kulcsok megtekintéséhez.
-3.  Kattintson a **+ Hozzáadás**.
-4.  A **beállítások**, használjon **manuális**.
-5.  A **neve**, használjon `GoogleSecret`.  
-    Az előtag `B2C_1A_` automatikusan hozzáadhatók.
-6.  Az a **titkos kulcs** adja meg a Google-alkalmazás titkos származó a [Google fejlesztői konzolon](https://console.developers.google.com/) fent kimásolt.
-7.  A **kulcshasználat**, használjon **aláírás**.
-8.  Kattintson a **Create** (Létrehozás) gombra
-9.  Győződjön meg arról, hogy a kulcs létrehozott `B2C_1A_GoogleSecret`.
-
-## <a name="add-a-claims-provider-in-your-extension-policy"></a>A bővítmény a házirend a jogcímeket szolgáltató hozzáadása
-
-Ha azt szeretné, hogy a felhasználók számára, hogy jelentkezzen be Google +-fiók használatával, definiálhatja a Google +-fiók egy jogcímszolgáltatótól szeretne. Más szóval meg kell adnia egy végpontot, amely az Azure AD B2C-vel kommunikál. A végpont ellenőrzése, hogy egy adott felhasználó rendelkezik hitelesítése Azure AD B2C által használt jogcímeket biztosít.
-
-A Google + fiók meghatározni egy jogcímszolgáltatótól, hozzáadásával `<ClaimsProvider>` csomópont a bővítmény a házirend fájlban:
-
-1.  Nyissa meg a bővítmény a házirend fájlt (TrustFrameworkExtensions.xml) a munkakönyvtár. Ha egy XML-szerkesztőt kell [próbálja meg a Visual Studio Code](https://code.visualstudio.com/download), egy könnyen használható, többplatformos szerkesztő.
-2.  Keresse meg a `<ClaimsProviders>` szakasz
-3.  Adja hozzá a következő XML-részletet a `ClaimsProviders` elemet, és cserélje le `client_id` érték és a Google + fiók alkalmazás ügyfél-azonosító a fájl mentése előtt.  
-
-```xml
-<ClaimsProvider>
-    <Domain>google.com</Domain>
-    <DisplayName>Google</DisplayName>
-    <TechnicalProfiles>
-    <TechnicalProfile Id="Google-OAUTH">
-        <DisplayName>Google</DisplayName>
-        <Protocol Name="OAuth2" />
-        <Metadata>
-        <Item Key="ProviderName">google</Item>
-        <Item Key="authorization_endpoint">https://accounts.google.com/o/oauth2/auth</Item>
-        <Item Key="AccessTokenEndpoint">https://accounts.google.com/o/oauth2/token</Item>
-        <Item Key="ClaimsEndpoint">https://www.googleapis.com/oauth2/v1/userinfo</Item>
-        <Item Key="scope">email</Item>
-        <Item Key="HttpBinding">POST</Item>
-        <Item Key="UsePolicyInRedirectUri">0</Item>
-        <Item Key="client_id">Your Google+ application ID</Item>
-        </Metadata>
-        <CryptographicKeys>
-        <Key Id="client_secret" StorageReferenceId="B2C_1A_GoogleSecret" />
-        </CryptographicKeys>
-        <OutputClaims>
-        <OutputClaim ClaimTypeReferenceId="socialIdpUserId" PartnerClaimType="id" />
-        <OutputClaim ClaimTypeReferenceId="email" PartnerClaimType="email" />
-        <OutputClaim ClaimTypeReferenceId="givenName" PartnerClaimType="given_name" />
-        <OutputClaim ClaimTypeReferenceId="surname" PartnerClaimType="family_name" />
-        <OutputClaim ClaimTypeReferenceId="displayName" PartnerClaimType="name" />
-        <OutputClaim ClaimTypeReferenceId="identityProvider" DefaultValue="google.com" />
-        <OutputClaim ClaimTypeReferenceId="authenticationSource" DefaultValue="socialIdpAuthentication" />
-        </OutputClaims>
-        <OutputClaimsTransformations>
-        <OutputClaimsTransformation ReferenceId="CreateRandomUPNUserName" />
-        <OutputClaimsTransformation ReferenceId="CreateUserPrincipalName" />
-        <OutputClaimsTransformation ReferenceId="CreateAlternativeSecurityId" />
-        <OutputClaimsTransformation ReferenceId="CreateSubjectClaimFromAlternativeSecurityId" />
-        </OutputClaimsTransformations>
-        <UseTechnicalProfileForSessionManagement ReferenceId="SM-SocialLogin" />
-        <ErrorHandlers>
-        <ErrorHandler>
-            <ErrorResponseFormat>json</ErrorResponseFormat>
-            <ResponseMatch>$[?(@@.error == 'invalid_grant')]</ResponseMatch>
-            <Action>Reauthenticate</Action>
-            <!--In case of authorization code used error, we don't want the user to select his account again.-->
-            <!--AdditionalRequestParameters Key="prompt">select_account</AdditionalRequestParameters-->
-        </ErrorHandler>
-        </ErrorHandlers>
-    </TechnicalProfile>
-    </TechnicalProfiles>
-</ClaimsProvider>
-```
-
-## <a name="register-the-google-account-claims-provider-to-sign-up-or-sign-in-user-journey"></a>A Google + fiók jogcím-szolgáltató regisztrálásához való regisztráció vagy bejelentkezés a felhasználói interakciósorozat
-
-Az identitásszolgáltató be lett állítva.  Azonban ez nem érhető összes regisztrálási-regisztrálási vagy bejelentkezési képernyőt. A Google + fiók identitásszolgáltató hozzáadása a felhasználói `SignUpOrSignIn` felhasználói interakciósorozat. Elérhető legyen, létrehozunk egy meglévő sablon felhasználói interakciósorozat másolatát.  Majd hozzáadjuk a Google + fiók identitásszolgáltató:
-
->[!NOTE]
->
->Ha másolja a `<UserJourneys>` elem a bővítmény fájlt (TrustFrameworkExtensions.xml) a szabályzat alapszintű fájlból, továbbléphet az ebben a szakaszban.
-
-1.  Nyissa meg a szabályzat (például TrustFrameworkBase.xml) alapszintű fájlt.
-2.  Keresse meg a `<UserJourneys>` elemet, és másolja a teljes tartalmát `<UserJourneys>` csomópont.
-3.  Nyissa meg a kiterjesztésű fájlt (például TrustFrameworkExtensions.xml), és keresse meg a `<UserJourneys>` elemet. Ha az elem nem létezik, adjon hozzá egyet.
-4.  Illessze be a teljes tartalmát `<UserJourney>` csomópont gyermekeként kimásolt a `<UserJourneys>` elemet.
+1. Nyissa meg a *TrustFrameworkBase.xml* az alapszintű csomag fájlt.
+2. Keresse meg és másolja ki a teljes tartalmát a **UserJourney** , amely tartalmazza az elem `Id="SignUpOrSignIn"`.
+3. Nyissa meg a *TrustFrameworkExtensions.xml* , és keresse meg a **UserJourneys** elemet. Ha az elem nem létezik, adjon hozzá egyet.
+4. Illessze be a teljes tartalmát a **UserJourney** gyermekeként kimásolt elem a **UserJourneys** elemet.
+5. Nevezze át a felhasználói út azonosítója. Például: `SignUpSignInGoogle`.
 
 ### <a name="display-the-button"></a>A gomb megjelenítése
-A `<ClaimsProviderSelections>` elem definiálja a jogcímeket szolgáltató tanúsítványválasztási beállítások és a sorrendjük listáját.  `<ClaimsProviderSelection>` a elem egy identity provider gombjára egy regisztrálási-regisztrálási vagy bejelentkezési oldal hasonló. Ha hozzáad egy `<ClaimsProviderSelection>` elemet a Google +-fiókhoz tartozó, egy új gomb megjelenik-e, amikor egy felhasználó hajtanak végre az oldalon. Ez az elem hozzáadása:
 
-1.  Keresse meg a `<UserJourney>` tartalmazó csomópont `Id="SignUpOrSignIn"` a másolt felhasználói interakciósorozat.
-2.  Keresse meg a `<OrchestrationStep>` tartalmazó csomópont `Order="1"`
-3.  Adja hozzá az alábbi kódrészletet XML `<ClaimsProviderSelections>` csomópont:
+A **hiányzik a ClaimsProviderSelection** elem ehhez hasonló regisztrálási-regisztrálási vagy bejelentkezési képernyőn egy identitás szolgáltató a gombhoz. Ha hozzáad egy **hiányzik a ClaimsProviderSelection** elemet a Google-fiók, egy új gomb megjelenik-e, amikor egy felhasználó hajtanak végre az oldalon.
 
-```xml
-<ClaimsProviderSelection TargetClaimsExchangeId="GoogleExchange" />
-```
+1. Keresse meg a **OrchestrationStep** , amely tartalmazza az elem `Order="1"` az Ön által létrehozott felhasználói interakciósorozat.
+2. A **ClaimsProviderSelects**, adja hozzá a következő elemet. Állítsa az értékét **TargetClaimsExchangeId** egy megfelelő értéket, például a `GoogleExchange`:
 
-### <a name="link-the-button-to-an-action"></a>A gomb összekapcsolása egy műveletet
-Most, hogy egyetlen helyen, amelyekkel hozzákapcsolhatja egy műveletet kell. A művelet, ebben az esetben pedig az Azure AD B2C kommunikálni a Google + fiók kaphat jogkivonatot.
-
-1.  Keresse meg a `<OrchestrationStep>` tartalmazó `Order="2"` a a `<UserJourney>` csomópont.
-2.  Adja hozzá az alábbi kódrészletet XML `<ClaimsExchanges>` csomópont:
-
-```xml
-<ClaimsExchange Id="GoogleExchange" TechnicalProfileReferenceId="Google-OAUTH" />
-```
-
->[!NOTE]
->
-> * Győződjön meg, hogy a `Id` , ugyanazzal az értékkel rendelkezik `TargetClaimsExchangeId` az előző szakaszban
-> * Győződjön meg, hogy `TechnicalProfileReferenceId` azonosító értéke a technikai profil létrehozott korábbi (Google-OAUTH).
-
-## <a name="upload-the-policy-to-your-tenant"></a>A szabályzat feltöltése a bérlőhöz
-1.  Az a [az Azure portal](https://portal.azure.com), váltson át a [az Azure AD B2C-bérlője kontextusában](active-directory-b2c-navigate-to-b2c-context.md), és nyissa meg a **Azure AD B2C-vel** panelen.
-2.  Válassza ki **identitás-kezelőfelületi keretrendszer**.
-3.  Nyissa meg a **összes szabályzat** panelen.
-4.  Válassza ki **szabályzat feltöltése**.
-5.  Ellenőrizze **szabályzat felülírása, ha létezik** mezőbe.
-6.  **Töltse fel** TrustFrameworkExtensions.xml, és győződjön meg arról, hogy azt érvényesítése nem hiúsul meg a
-
-## <a name="test-the-custom-policy-by-using-run-now"></a>Az egyéni házirend tesztelése a Futtatás most
-1.  Nyissa meg **Azure AD B2C-beállítások** , majd **identitás-kezelőfelületi keretrendszer**.
-
-    >[!NOTE]
-    >
-    >    **Futtatás most** kell előzetesen regisztrálva, a bérlő legalább egy alkalmazás szükséges. 
-    >    Megtudhatja, hogyan regisztrálja az alkalmazást, tekintse meg az Azure AD B2C [Ismerkedés](active-directory-b2c-get-started.md) cikk vagy a [alkalmazásregisztráció](active-directory-b2c-app-registration.md) cikk.
-
-
-2.  Nyissa meg **B2C_1A_signup_signin**, a függő entitásonkénti (RP) egyéni-szabályzattal, a feltöltött. Válassza ki **Futtatás most**.
-3.  Bejelentkezhet a Google +-fiókkal kell lennie.
-
-## <a name="optional-register-the-google-account-claims-provider-to-profile-edit-user-journey"></a>[Opcionális] A Google + fiók jogcímszolgáltató Profilmódosítás felhasználói interakciósorozat regisztrálása
-A Google + fiók identitásszolgáltató hozzáadása a felhasználói is érdemes `ProfileEdit` felhasználói interakciósorozat. Elérhető legyen, hogy az utolsó két lépést ismételje meg:
-
-### <a name="display-the-button"></a>A gomb megjelenítése
-1.  Nyissa meg a szabályzat (például TrustFrameworkExtensions.xml) a kiterjesztésű fájlt.
-2.  Keresse meg a `<UserJourney>` tartalmazó csomópont `Id="ProfileEdit"` a másolt felhasználói interakciósorozat.
-3.  Keresse meg a `<OrchestrationStep>` tartalmazó csomópont `Order="1"`
-4.  Adja hozzá az alábbi kódrészletet XML `<ClaimsProviderSelections>` csomópont:
-
-```xml
-<ClaimsProviderSelection TargetClaimsExchangeId="GoogleExchange" />
-```
+    ```XML
+    <ClaimsProviderSelection TargetClaimsExchangeId="GoogleExchange" />
+    ```
 
 ### <a name="link-the-button-to-an-action"></a>A gomb összekapcsolása egy műveletet
-1.  Keresse meg a `<OrchestrationStep>` tartalmazó `Order="2"` a a `<UserJourney>` csomópont.
-2.  Adja hozzá az alábbi kódrészletet XML `<ClaimsExchanges>` csomópont:
 
-```xml
-<ClaimsExchange Id="GoogleExchange" TechnicalProfileReferenceId="Google-OAUTH" />
-```
+Most, hogy egyetlen helyen, amelyekkel hozzákapcsolhatja egy műveletet kell. A művelet, ebben az esetben pedig az Azure AD B2C fogadhatnak jogkivonatot egy Google-fiókkal folytatott kommunikációhoz.
 
-### <a name="upload-the-policy-to-your-tenant"></a>A szabályzat feltöltése a bérlőhöz
-1.  Az a [az Azure portal](https://portal.azure.com), váltson át a [az Azure AD B2C-bérlője kontextusában](active-directory-b2c-navigate-to-b2c-context.md), és nyissa meg a **Azure AD B2C-vel** panelen.
-2.  Válassza ki **identitás-kezelőfelületi keretrendszer**.
-3.  Nyissa meg a **összes szabályzat** panelen.
-4.  Válassza ki **szabályzat feltöltése**.
-5.  Ellenőrizze a **szabályzat felülírása, ha létezik** mezőbe.
-6.  **Töltse fel** TrustFrameworkExtensions.xml, és győződjön meg arról, hogy azt a az érvényesítése nem hiúsul.
+1. Keresse meg a **OrchestrationStep** tartalmazó `Order="2"` a felhasználói interakciósorozatban szereplő.
+2. Adja hozzá a következő **ClaimsExchange** gondoskodik róla, hogy ugyanazt az értéket használt elem **azonosító** során használt **TargetClaimsExchangeId**:
 
-### <a name="test-the-custom-profile-edit-policy-by-using-run-now"></a>Az egyéni Profilmódosítás házirend tesztelése a Futtatás most
+    ```XML
+    <ClaimsExchange Id="GoogleExchange" TechnicalProfileReferenceId="Google-OAuth" />
+    ```
+    
+    Frissítse az értéket a **TechnicalProfileReferenceId** , a **azonosító** a korábban létrehozott technikai profil. Például: `Google-OAuth`.
 
-1.  Nyissa meg **Azure AD B2C-beállítások** , majd **identitás-kezelőfelületi keretrendszer**.
-2.  Nyissa meg **B2C_1A_ProfileEdit**, a függő entitásonkénti (RP) egyéni-szabályzattal, a feltöltött. Válassza ki **Futtatás most**.
-3.  Bejelentkezhet a Google +-fiókkal kell lennie.
+3. Mentse a *TrustFrameworkExtensions.xml* fájlt, és töltse fel újra az ellenőrzéshez.
 
-## <a name="download-the-complete-policy-files"></a>A teljes-fájlok letöltése
-Választható lehetőség: Javasoljuk, hogy a forgatókönyv a minta-fájlok használata helyett a saját egyéni házirend végig az Ismerkedés az egyéni szabályzatok befejezése után fájlok használatával fejleszt.  [A házirend mintafájlok referencia](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/aadb2c-ief-setup-goog-app)
+## <a name="update-and-test-the-relying-party-file"></a>Frissítse és a függő entitás fájl tesztelése
+
+Frissítse a függő entitásonkénti (RP) fájl, amely az Ön által létrehozott felhasználói interakciósorozat kezdeményezi.
+
+1. Készítsen másolatot *SignUpOrSignIn.xml* a munkakönyvtárban, és nevezze át. Például nevezze át, hogy *SignUpSignInGoogle.xml*.
+2. Nyissa meg az új fájlt, és frissítse az értéket, a **PolicyId** az attribútum **TrustFrameworkPolicy** egyedi értékkel. Például: `SignUpSignInGoogle`.
+3. Frissítse az értéket a **PublicPolicyUri** URI-a szabályzat. Ha például`http://contoso.com/B2C_1A_signup_signin_google`
+4. Frissítse az értéket, a **hivatkozásazonosító** attribútum **DefaultUserJourney** megfelelően (SignUpSignGoogle) létrehozott új felhasználói interakciósorozat azonosítója.
+5. Mentse a módosításokat, a fájl feltöltéséhez, tesztelje azt megnyitásával, és kattintson a **Futtatás most**.
