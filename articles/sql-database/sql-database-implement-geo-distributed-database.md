@@ -2,19 +2,22 @@
 title: Földrajzilag elosztott Azure SQL Database-megoldás implementálása | Microsoft Docs
 description: Megismerheti, hogyan konfigurálhatja az Azure SQL Database-adatbázisa és -alkalmazása feladatátvételét egy replikált adatbázisra, és tesztelheti a feladatátvételt.
 services: sql-database
-author: CarlRabeler
-manager: craigg
 ms.service: sql-database
-ms.custom: mvc,business continuity
-ms.topic: tutorial
-ms.date: 04/01/2018
-ms.author: carlrab
-ms.openlocfilehash: fbd239c3c8c11b1907a6d28eb95d2c0ad26cfe61
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
-ms.translationtype: HT
+ms.subservice: operations
+ms.custom: ''
+ms.devlang: ''
+ms.topic: conceptual
+author: anosov1960
+ms.author: sashan
+ms.reviewer: carlrab
+manager: craigg
+ms.date: 09/07/2018
+ms.openlocfilehash: 65cf954f5d91176715181620671f620264069bdc
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31416619"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47166262"
 ---
 # <a name="implement-a-geo-distributed-database"></a>Földrajzilag elosztott adatbázis implementálása
 
@@ -38,8 +41,8 @@ Az oktatóanyag teljesítéséhez meg kell felelnie az alábbi előfeltételekne
 - Telepítve van egy Azure SQL-adatbázis. Ez az oktatóanyag a **mySampleDatabase** nevű AdventureWorksLT mintaadatbázist használja, amely az alábbi rövid útmutatók egyikében lett létrehozva:
 
    - [DB létrehozása – portál](sql-database-get-started-portal.md)
-   - [DB létrehozása – CLI](sql-database-get-started-cli.md)
-   - [DB létrehozása – PowerShell](sql-database-get-started-powershell.md)
+   - [DB létrehozása – CLI](sql-database-cli-samples.md)
+   - [DB létrehozása – PowerShell](sql-database-powershell-samples.md)
 
 - Azonosítani kell egy metódust, amely végrehajtja az SQL-szkripteket az adatbázison. Ezután a következő lekérdezési eszközök használhatók:
    - Az [Azure Portal](https://portal.azure.com) lekérdezésszerkesztője. További információ az Azure Portal lekérdezésszerkesztőjének használatával kapcsolatban: [Csatlakozás és lekérdezés a lekérdezésszerkesztővel](sql-database-get-started-portal.md#query-the-sql-database).
@@ -54,7 +57,7 @@ Csatlakozzon az adatbázishoz és hozzon létre felhasználói fiókokat a köve
 - SQL Server Management Studio
 - Visual Studio Code
 
-Ezeket a fiókokat a rendszer automatikusan replikálja a másodlagos kiszolgálóra (és szinkronban tartja őket). Az SQL Server Management Studio vagy a Visual Studio Code használatához szükség lehet egy tűzfalszabály konfigurálására, ha a csatlakozást egy olyan ügyfélről végzi, amelynek az IP-címéhez még nincs konfigurálva tűzfal. Részletes lépésekért lásd: [Kiszolgálószintű tűzfalszabály létrehozása](sql-database-get-started-portal.md#create-a-server-level-firewall-rule).
+Ezeket a fiókokat a rendszer automatikusan replikálja a másodlagos kiszolgálóra (és szinkronban tartja őket). Az SQL Server Management Studio vagy a Visual Studio Code használatához szükség lehet egy tűzfalszabály konfigurálására, ha a csatlakozást egy olyan ügyfélről végzi, amelynek az IP-címéhez még nincs konfigurálva tűzfal. Részletes lépésekért lásd: [Kiszolgálószintű tűzfalszabály létrehozása](sql-database-get-started-portal-firewall.md).
 
 - Egy lekérdezési ablakban hozzon létre két felhasználói fiókot az adatbázisban a következő lekérdezés futtatásával: Ez a szkript **db_owner** engedélyeket ad az **app_admin** fióknak, valamint **SELECT** és **UPDATE** engedélyeket az **app_user** fióknak. 
 
@@ -70,7 +73,7 @@ Ezeket a fiókokat a rendszer automatikusan replikálja a másodlagos kiszolgál
 
 ## <a name="create-database-level-firewall"></a>Adatbázisszintű tűzfal létrehozása
 
-Hozzon létre egy [adatbázisszintű tűzfalszabályt](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-set-database-firewall-rule-azure-sql-database) az SQL-adatbázisához. Ez az adatbázisszintű tűzfalszabály automatikusan replikál az oktatóanyagban létrehozott másodlagos kiszolgálóra. Az egyszerűség érdekében (ebben az oktatóanyagban) használja azon számítógép nyilvános IP-címét, amelyen ezt az oktatóanyagot elvégzi. A jelenlegi számítógép kiszolgálószintű tűzfalszabályához használt IP-cím megállapításához lásd: [Kiszolgálószintű tűzfalszabály](sql-database-get-started-portal.md#create-a-server-level-firewall-rule) létrehozása.  
+Hozzon létre egy [adatbázisszintű tűzfalszabályt](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-set-database-firewall-rule-azure-sql-database) az SQL-adatbázisához. Ez az adatbázisszintű tűzfalszabály automatikusan replikál az oktatóanyagban létrehozott másodlagos kiszolgálóra. Az egyszerűség érdekében (ebben az oktatóanyagban) használja azon számítógép nyilvános IP-címét, amelyen ezt az oktatóanyagot elvégzi. A jelenlegi számítógép kiszolgálószintű tűzfalszabályához használt IP-cím megállapításához lásd: [Kiszolgálószintű tűzfalszabály](sql-database-get-started-portal-firewall.md) létrehozása.  
 
 - A megnyitott lekérdezési ablakban cserélje le az előző lekérdezést a következő lekérdezésre, és cserélje le az IP-címeket a saját környezetének megfelelő IP-címekre.  
 
@@ -390,8 +393,8 @@ Ebben az oktatóanyagban megtanulta, hogyan konfigurálhatja egy Azure SQL Datab
 > * Egy Java-alkalmazás létrehozása az Azure SQL-adatbázis lekérdezéséhez
 > * Vészhelyreállítási próba végrehajtása
 
-Ha meg szeretné tudni, hogyan hozhat létre felügyelt példányt, lépjen a következő oktatóanyagra.
+Folytassa a következő oktatóanyaggal, SQL Server migrálása az Azure SQL Database felügyelt példány DMS használatával.
 
 > [!div class="nextstepaction"]
->[Felügyelt példány létrehozása](sql-database-managed-instance-create-tutorial-portal.md)
+>[SQL Server migrálása felügyelt Azure SQL Database-példányra a DMS használatával](../dms/tutorial-sql-server-to-managed-instance.md)
 

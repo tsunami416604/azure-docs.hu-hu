@@ -2,19 +2,22 @@
 title: SQL Server-adatbázis migrálása az Azure SQL Database-be a DMA használatával | Microsoft Docs
 description: Ismerje meg, hogyan migrálhatja SQL Server-adatbázisát az Azure SQL Database-be a DMA használatával.
 services: sql-database
-author: sachinpMSFT
-manager: craigg
 ms.service: sql-database
-ms.custom: mvc,migrate
-ms.topic: tutorial
-ms.date: 07/02/2018
-ms.author: carlrab
-ms.openlocfilehash: 1d8ec772293354c059f21aaae8006f5c40540058
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
-ms.translationtype: HT
+ms.subservice: data-movement
+ms.custom: ''
+ms.devlang: ''
+ms.topic: conceptual
+author: sachinpMSFT
+ms.author: sachinp
+ms.reviewer: carlrab
+manager: craigg
+ms.date: 09/14/2018
+ms.openlocfilehash: 58016636dad24b9b7d5278ce89643e6cd8d5be9e
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44050204"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47162861"
 ---
 # <a name="migrate-your-sql-server-database-to-azure-sql-database-using-dma"></a>SQL Server-adatbázis migrálása az Azure SQL Database-be a DMA használatával
 
@@ -246,11 +249,11 @@ Az [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/sql-server
 
 ## <a name="change-database-properties"></a>Adatbázis tulajdonságainak módosítása
 
-Az SQL Server Management Studio használatával módosíthatja a szolgáltatási szintet, a teljesítményszintet és a kompatibilitási szintet. Azt javasoljuk, hogy az importálási fázisban a legjobb teljesítmény érdekében importáljon magasabb teljesítményszintű adatbázisba, de az importálás befejeztével váltson alacsonyabbra, hogy pénzt takarítson meg, amíg készen nem áll az importált adatbázis aktív használatára. A kompatibilitási szint módosítása jobb teljesítményt eredményezhet, és hozzáférést nyújthat az Azure SQL Database szolgáltatás legújabb képességeihez. Egy régebbi adatbázis migrálásakor az adatbázis kompatibilitási szintje az a legalacsonyabb támogatott szint, amely kompatibilis a migrált adatbázissal. További információkért lásd: [Továbbfejlesztett lekérdezési teljesítmény 130-as kompatibilitási szinttel az Azure SQL Database-ben](sql-database-compatibility-level-query-performance-130.md).
+Most módosíthatja a szolgáltatásszintet, a számítási méret és a kompatibilitási szint az SQL Server Management Studióval. Az importálási fázisban azt javasoljuk, hogy egy magasabb szolgáltatási szintre való importálásához, vagy számítási méret a legjobb teljesítmény érdekében, de alacsonyabbra az importálás befejeztével pénzt takaríthat meg, amíg készen áll az importált adatbázis aktív használatára. A kompatibilitási szint módosítása jobb teljesítményt eredményezhet, és hozzáférést nyújthat az Azure SQL Database szolgáltatás legújabb képességeihez. Egy régebbi adatbázis migrálásakor az adatbázis kompatibilitási szintje az a legalacsonyabb támogatott szint, amely kompatibilis a migrált adatbázissal. További információkért lásd: [Továbbfejlesztett lekérdezési teljesítmény 130-as kompatibilitási szinttel az Azure SQL Database-ben](sql-database-compatibility-level-query-performance-130.md).
 
 1. Az Object Explorerben kattintson a jobb gombbal a **mySampleDatabase** adatbázisra, majd kattintson az **Új lekérdezés** elemre. Megnyílik egy, az adatbázishoz csatlakoztatott lekérdezési ablak.
 
-2. Hajtsa végre az alábbi parancsot a **Standard** szolgáltatásszint és az **S1** teljesítményszint beállításához.
+2. Hajtsa végre a következő parancsot, ha szeretné a szolgáltatási rétegben **Standard** és a számítási méret **S1**.
 
     ```sql
     ALTER DATABASE mySampleDatabase 
