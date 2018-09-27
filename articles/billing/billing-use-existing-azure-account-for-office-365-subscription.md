@@ -14,13 +14,13 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/15/2018
-ms.author: cjiang
-ms.openlocfilehash: 8368055ed017d8a9e9af92ae6461086abf1d0cff
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.author: cwatson
+ms.openlocfilehash: d48b55af705eddb42853fb236e5eb6a214d1a0ff
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37450240"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47394052"
 ---
 # <a name="sign-up-for-an-office-365-subscription-with-your-azure-account"></a>Office 365-előfizetéssel, az Azure-fiókkal regisztrálhat
 Ha Ön Azure-előfizető, használhatja az Azure-fiókjába az Office 365-előfizetéssel regisztrálhat. Ha Ön Azure-előfizetéssel rendelkező egy szervezet része, a felhasználók számára az Office 365-előfizetés a meglévő Azure Active Directoryban (Azure AD) is létrehozhat. Iratkozzon fel az Office 365-fiókkal, amely az Azure Active Directory-bérlő globális rendszergazdai vagy számlázási rendszergazdájának-engedélyekkel rendelkezik. További információkért lásd: [ellenőrizze a saját fiók engedélyeit az Azure ad-ben](#RoleInAzureAD) és [rendszergazdai szerepkörök hozzárendelése az Azure Active Directory](../active-directory/users-groups-roles/directory-assign-admin-roles.md).

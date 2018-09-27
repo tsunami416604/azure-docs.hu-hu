@@ -1,21 +1,22 @@
 ---
-title: Előfizetői azonosítók beszerzése a Custom Speech Service az Azure-ban |} A Microsoft Docs
-description: Ismerje meg, a Cognitive Services Custom Speech Service-hívások előfizetési kulcsainak beszerzése.
+title: Előfizetői azonosítók – Custom Speech Service beolvasása
+titlesuffix: Azure Cognitive Services
+description: Ismerje meg a Custom Speech Service-hívások előfizetési kulcsainak beszerzése.
 services: cognitive-services
 author: PanosPeriorellis
-manager: onano
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: custom-speech
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/08/2017
 ms.author: panosper
 ROBOTS: NOINDEX
-ms.openlocfilehash: e5cac34a9aead209bec90cfd5f89e94a005a1995
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: e4694928baf98bdb0d6aacead8dffec6bb73d6f7
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46980355"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47224769"
 ---
 # <a name="obtain-subscription-keys"></a>Előfizetői azonosítók beszerzése
 Első lépésként az Azure Custom Speech Service segítségével, először kapcsolódnia kell a felhasználói fiók Azure-előfizetés. Ingyenes és fizetős csomagokra előfizetések érhetők el. A rétegek kapcsolatos információkért tekintse meg a [díjszabását ismertető lapon](https://www.microsoft.com/cognitive-services/en-us/pricing).

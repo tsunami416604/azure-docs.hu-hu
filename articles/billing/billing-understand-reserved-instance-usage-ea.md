@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/08/2018
-ms.author: manshuk
-ms.openlocfilehash: 334271139b791ab60f2bc89ae695ba9bf06b7d12
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.author: cwatson
+ms.openlocfilehash: 4b418db3c4d9876a739ce94539a6f48402332a86
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43301020"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47394896"
 ---
 # <a name="understand-azure-reservation-usage-for-your-enterprise-enrollment"></a>A nagyvállalati beléptetés Azure foglalás használati adatai
 
@@ -86,7 +86,7 @@ Azure-foglalások kapcsolatos további információkért tekintse meg a követke
 - [Mik az Azure-foglalásokat?](billing-save-compute-costs-reservations.md)
 - [Fizessen elő az Azure fenntartott VM-példányok a virtuális gépekkel](../virtual-machines/windows/prepay-reserved-vm-instances.md)
 - [Fizessen elő az SQL-adatbázis számítási erőforrásokat, hogy az Azure SQL Database szolgáltatás számára fenntartott kapacitás](../sql-database/sql-database-reserved-capacity.md) 
-- [Az Azure-fenntartások kezelése](billing-manage-reserved-vm-instance.md)
+- [Az Azure Reservations kezelése](billing-manage-reserved-vm-instance.md)
 - [Megismerheti, hogyan kell alkalmazni a foglalási kedvezményt](billing-understand-vm-reservation-charges.md)
 - [A használatalapú fizetéses előfizetést foglalás használati adatai](billing-understand-reserved-instance-usage.md)
 - [Windows szoftverek díjait nem tartalmazza a foglalások](billing-reserved-instance-windows-software-costs.md)

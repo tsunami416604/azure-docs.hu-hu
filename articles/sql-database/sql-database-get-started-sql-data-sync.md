@@ -2,20 +2,22 @@
 title: Az Azure SQL Data Sync beállítása |} A Microsoft Docs
 description: Az oktatóanyag bemutatja, hogyan lehet az Azure SQL Data Sync beállítása
 services: sql-database
-author: allenwux
-manager: craigg
 ms.service: sql-database
-ms.custom: load & move data
+ms.subservice: data-movement
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 04/10/2018
+author: allenwux
 ms.author: xiwu
 ms.reviewer: douglasl
-ms.openlocfilehash: ccdffaf0c224cc4579f24ca5f3ca60a6c53f3bd6
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+manager: craigg
+ms.date: 04/10/2018
+ms.openlocfilehash: f1d439d043feb36fba0cc6c9c9d1b5569a4d8182
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44160403"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47166775"
 ---
 # <a name="set-up-sql-data-sync"></a>Az SQL Data Sync beállítása
 Ebben az oktatóanyagban elsajátíthatja, hogyan hozzon létre egy hibrid szinkronizálási csoport, amely tartalmazza az Azure SQL Database és az SQL Server-példányok Azure SQL Data Sync beállítása. Az új szinkronizálási csoport teljes van konfigurálva, és a beállított ütemezés szerint szinkronizálja.

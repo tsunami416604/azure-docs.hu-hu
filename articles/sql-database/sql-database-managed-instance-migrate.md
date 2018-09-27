@@ -1,22 +1,23 @@
 ---
 title: SQL Server-példány migrálása az Azure SQL Database felügyelt példányába történő |} A Microsoft Docs
 description: Ismerje meg, hogyan telepíthet át egy SQL Server-példányt az Azure SQL Database felügyelt példányába történő.
-keywords: adatbázis-áttelepítés,sql server-adatbázis áttelepítése,adatbázis-áttelepítési eszközök,adatbázis áttelepítése,sql database áttelepítése
 services: sql-database
+ms.service: sql-database
+ms.subservice: data-movement
+ms.custom: ''
+ms.devlang: ''
+ms.topic: conceptual
 author: bonova
+ms.author: bonova
 ms.reviewer: carlrab
 manager: craigg
-ms.service: sql-database
-ms.custom: managed instance
-ms.topic: conceptual
-ms.date: 09/20/2018
-ms.author: bonova
-ms.openlocfilehash: 5aad6060691c796906232d9625ff00b748616a77
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.date: 09/26/2018
+ms.openlocfilehash: 7653ce7b0823b4e91685e77701a307370261f7e6
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47038992"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47394061"
 ---
 # <a name="sql-server-instance-migration-to-azure-sql-database-managed-instance"></a>Az SQL Server-példány migrálása az Azure SQL Database felügyelt példánya
 
@@ -107,6 +108,8 @@ Az alábbi táblázatban bővebb információt a forrás SQL Server verzióját�
 > - Rendszer-adatbázisok visszaállítása nem támogatott. Példány szolgáltatásszint-objektumokhoz (master vagy msdb-adatbázisokban tárolt) áttelepítéséhez, javasoljuk, hogy parancsfájl, és T-SQL-szkriptek a cél-példányon futnak.
 
 A rövid útmutató, amely egy adatbázis biztonsági másolatának visszaállítása egy felügyelt példányra, SAS-hitelesítő adatok használatával, lásd: [visszaállítása biztonsági másolatból egy felügyelt példányra](sql-database-managed-instance-get-started-restore.md).
+
+> [!VIDEO https://www.youtube.com/embed/RxWYojo_Y3Q]
 
 ## <a name="monitor-applications"></a>Alkalmazások figyelése
 

@@ -12,13 +12,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/28/2018
-ms.author: yashar
-ms.openlocfilehash: 20fae715923da93799b2d0ac8adc2083d726a95a
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.author: cwatson
+ms.openlocfilehash: 62f75be44ed92528b48fc0f093f5966284662312
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43307744"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47393689"
 ---
 # <a name="understand-how-the-suse-linux-enterprise-software-plan-discount-is-applied"></a>Megismerheti, hogyan kell alkalmazni a SUSE Linux Enterprise szoftverfrissítési csomag kedvezmény
 
@@ -129,7 +129,7 @@ Foglalások kapcsolatos további információkért tekintse meg a következő ci
 - [Mik az Azure-foglalásokat?](billing-save-compute-costs-reservations.md)
 - [Fizessen elő az az Azure-foglalások SUSE szoftvercsomagok – alap](../virtual-machines/linux/prepay-suse-software-charges.md)
 - [Fizessen elő az Azure fenntartott VM-példányok a virtuális gépekkel](../virtual-machines/windows/prepay-reserved-vm-instances.md)
-- [Az Azure-fenntartások kezelése](billing-manage-reserved-vm-instance.md)
+- [Az Azure Reservations kezelése](billing-manage-reserved-vm-instance.md)
 - [A használatalapú fizetéses előfizetést foglalás használati adatai](billing-understand-reserved-instance-usage.md)
 - [A nagyvállalati beléptetés foglalás használati adatai](billing-understand-reserved-instance-usage-ea.md)
 

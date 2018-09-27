@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/19/2018
+ms.date: 09/26/2018
 ms.author: sethm
 ms.reviewer: justini
-ms.openlocfilehash: 686d911c7a59fa33508d130382a3fda4af28e665
-ms.sourcegitcommit: 06724c499837ba342c81f4d349ec0ce4f2dfd6d6
+ms.openlocfilehash: f1541a0523ce0178ad3616a956d5188ef7df0ded
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46466064"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47395712"
 ---
 # <a name="azure-stack-1808-update"></a>Azure Stack 1808 frissítése
 
@@ -146,6 +146,8 @@ Az alábbiakban a telepítés utáni ismert hibáit a build-verziószáma.
 
 ### <a name="portal"></a>Portál
 
+- Az Azure Stack technikai dokumentáció a legfrissebb kiadás összpontosít. Portál változások között, mert megjelenő használata az Azure Stack portálok kissé eltérhetnek a dokumentációban talál. 
+
 - <!-- TBD - IS ASDK --> Előfordulhat, hogy megjelenik egy üres irányítópult, a portálon. Az irányítópult helyreállítani, kattintson **irányítópult szerkesztése**, majd kattintson a jobb gombbal, és válassza ki **visszaállítja az alapértelmezett állapotba**.
 
 - <!-- 2930718 - IS ASDK --> A felügyeleti portálon, minden felhasználói előfizetés részleteinek elérésekor után bezárja a panelt, és kattintson a **legutóbbi**, a felhasználói előfizetés neve nem jelenik meg.
@@ -217,6 +219,8 @@ Az alábbiakban a telepítés utáni ismert hibáit a build-verziószáma.
 - <!-- 2724873 - IS --> A PowerShell-parancsmagok használata esetén **Start-AzsScaleUnitNode** vagy **Stop-AzsScaleunitNode** skálázási egységek kezelése, indítása vagy leállítása a skálázási egység az első kísérlet sikertelen lehet. A parancsmag futtatása sikertelen, az első, futtassa a parancsmagot egy második alkalommal. A második Futtatás sikeres legyen, a művelet végrehajtásához. 
 
 - <!-- TBD - IS ASDK --> Az Azure Stack felhasználói portál virtuális gépek létrehozásakor a portál megjeleníti, hogy a DS sorozatú virtuális gép csatlakoztathat adatlemezek száma helytelen. DS sorozatú virtuális gépek, az Azure-konfiguráció lehetővé teszi tetszőleges számú adatlemezeket.
+
+- <!-- TBD - IS ASDK --> Ha egy több-bérlős környezetben használja, egy nem alapértelmezett bérlőhöz tartozó előfizetésben található felügyelt lemezes virtuális gép kiépítése meghiúsul a következő hiba miatt: *az erőforrás-művelet befejező üzembe helyezési állapota "Sikertelen".*
 
 - <!-- TBD - IS ASDK --> Ha egy virtuális gép üzembe helyezése a bővítmény kiépítési túl hosszú időt vesz igénybe, felhasználók hagyja, hogy a kiépítési időtúllépési helyett a folyamat fel vagy töröljön a virtuális gép leállítása.  
 

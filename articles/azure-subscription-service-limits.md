@@ -10,12 +10,12 @@ ms.service: billing
 ms.topic: article
 ms.date: 09/11/2018
 ms.author: byvinyal
-ms.openlocfilehash: c67cc5cb13e2c1112c4752660c82c3ab18360b00
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.openlocfilehash: efaca1b9506ada02c52ad0833139d3b4e441d456
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47056624"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47393613"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Az Azure-előfizetésekre és -szolgáltatásokra vonatkozó korlátozások, kvóták és megkötések
 Ez a dokumentum felsorolja az egyes a leggyakrabban használt Microsoft Azure korlátok, kvóták néven is ismert. Ez a dokumentum jelenleg nem vonatkozik Azure-szolgáltatásokhoz. Az idő múlásával a lista fog kibontható vagy frissítve, hogy biztosítsák a platform további.
@@ -89,7 +89,7 @@ Az alábbi korlátok egy új táblát bővült, hogy minden korlátokat különb
 * [Scheduler](#scheduler-limits)
 * [Search](#search-limits)
 * [Service Bus](#service-bus-limits)
-* [SignalR Service](#signalr-service-limits)
+* [SignalR szolgáltatás](#signalr-service-limits)
 * [Site Recovery](#site-recovery-limits)
 * [SQL Database](#sql-database-limits)
 * [SQL Data Warehouse](#sql-data-warehouse-limits)
@@ -165,8 +165,6 @@ Az alábbi táblázat ismerteti a funkciókat és korlátokat az alapszintű, St
 ### <a name="storage-limits"></a>Tárolási korlátok
 <!--like # storage accts -->
 [!INCLUDE [azure-storage-limits](../includes/azure-storage-limits.md)]
-
-[!INCLUDE [storage-limits-increase-include](../includes/storage-limits-increase-include.md)]
 
 A tárfiókok korlátai további részletekért lásd: [Azure Storage méretezhetőségi és Teljesítménycéljai](storage/common/storage-scalability-targets.md).
 

@@ -1,27 +1,27 @@
 ---
-title: Hogyan oldalon keresztül a rendelkezésre álló videók |} Microsoft Docs
-description: Bemutatja, hogyan összes a Bing visszaadó videók lapon.
+title: Oldalakra keresztül a rendelkezésre álló videók – Bing Videókeresés
+titlesuffix: Azure Cognitive Services
+description: Bemutatja, hogyan lapon végig az összes a videókat a Bing adhatnak vissza.
 services: cognitive-services
 author: swhite-msft
-manager: ehansen
-ms.assetid: 910A485F-BCF3-42B9-958D-DD48BDEDA965
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-video-search
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/15/2017
 ms.author: scottwhi
-ms.openlocfilehash: 00476825eb3fc1008c3f2172b591d8b7a2f35884
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 9b030312c562d1c0a6cbacfc7f424289dee2e8de
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35346906"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47225565"
 ---
 # <a name="paging-videos"></a>Lapozófájl-videók
 
-A videó keresési API-t hívja, a Bing eredmények listáját adja vissza. A lista része a száma, amelyek kapcsolódnak a lekérdezés eredményeit. Ahhoz, hogy a rendelkezésre álló eredmények becsült száma, a válasz-objektum eléréséhez [totalEstimatedMatches](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference#videos-totalestimatedmatches) mező.  
+A Videókeresési API hívásakor a Bing eredmények listáját adja vissza. A lista a lekérdezéshez kapcsolódó összes találat egy részét tartalmazza. Az első rendelkezésre álló válaszokat becsült teljes száma, a válasz-objektum eléréséhez [totalEstimatedMatches](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference#videos-totalestimatedmatches) mező.  
   
-Az alábbi példa azt mutatja meg a `totalEstimatedMatches` egy videó választ tartalmazó mezőt.  
+A következő példa bemutatja a `totalEstimatedMatches` mező, amely egy videó válasz tartalmazza.  
   
 ```  
 {
@@ -32,15 +32,15 @@ Az alábbi példa azt mutatja meg a `totalEstimatedMatches` egy videó választ 
 }  
 ```  
   
-Lapon keresztül a rendelkezésre álló videók, használja a [száma](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference#count) és [eltolás](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference#offset) lekérdezési paramétert.  
+Oldalon keresztül a rendelkezésre álló videók, használja a [száma](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference#count) és [eltolás](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference#offset) lekérdezési paramétereket.  
   
-A `count` paraméter határozza meg a válaszban szereplő vissza eredmények száma. Az eredmények, amelyek a válaszban szereplő vonatkozó kérések maximális száma: 105. Az alapértelmezett 35 érték. A tényleges szám kézbesíteni lehet kisebb, mint a kért.
+A `count` paraméter adja meg a válaszban visszaadott eredmények száma. Az eredmények, amelyek a válaszban vonatkozó kérések maximális számát 105. Az alapértelmezett érték 35. A tényleges szám i lehet kisebb, mint a kért.
 
-A `offset` paraméter határozza meg a kihagyandó eredmények számát. A `offset` Column, és kisebb, mint (`totalEstimatedMatches` - `count`).  
+A `offset` paraméter adja meg a kihagyandó eredmények száma. A `offset` nulláról induló, és lehet kisebb, mint (`totalEstimatedMatches` - `count`).  
   
-Ha 20 videók laponként megjelenítendő állíthat `count` 20 és `offset` 0 érték megadásával az első oldal az eredmények. Az összes azt követő lapon, akkor növelnie `offset` 20 (például 20, 40).  
+Ha meg szeretné jeleníteni a oldalanként 20 videókat, így állíthatja `count` 20-ra és `offset` 0 beolvasni az eredmények első oldala. Minden ezt követő laphoz, akkor növelni `offset` 20 (például 20, 40).  
 
-A következő 20, 40 eltolástól kezdve videók kérő példáját mutatja be.  
+Az alábbiakban látható egy példa, amely 20, 40 eltolástól kezdve videók kér.  
   
 ```  
 GET https://api.cognitive.microsoft.com/bing/v7.0/videos/search?q=sailing+dinghies&count=20&offset=40&mkt=en-us HTTP/1.1  
@@ -48,7 +48,7 @@ Ocp-Apim-Subscription-Key: 123456789ABCDE
 Host: api.cognitive.microsoft.com  
 ```  
 
-Ha az alapértelmezett `count` érték működik, a megvalósítás, csak meg kell adnia a `offset` lekérdezési paraméter.  
+Ha az alapértelmezett `count` érték a megvalósítás esetében működik, csak meg kell adnia a `offset` lekérdezési paraméter.  
   
 ```  
 GET https://api.cognitive.microsoft.com/bing/v7.0/videos/search?q=sailing+dinghies&offset=40&mkt=en-us HTTP/1.1  
@@ -56,12 +56,12 @@ Ocp-Apim-Subscription-Key: 123456789ABCDE
 Host: api.cognitive.microsoft.com  
 ```  
 
-Általában, ha egyszerre 35 videók, lapon, akkor kell állítania a `offset` lekérdezésparaméter 0-ra, az első kérésre, és ezután növelése `offset` minden későbbi kérés 35 által. Előfordulhat azonban, az eredményekről pedig a következő válasz némelyike az előző válaszban azonosak. Például a válaszban szereplő első két videók lehet ugyanaz, mint az előző válaszban az utolsó két videók.
+Általában, ha egyszerre 35 videók lap, így állíthatja be a `offset` lekérdezési paraméter az első kérés a 0-ra, és ezután növelje `offset` minden későbbi kérés a 35 szerint. Azonban néhány, az eredmények a következő válasz többször is előfordulhatnak az előző válasz. Például az első két videók, a válasz lehet ugyanaz, mint az előző válaszban kapott utolsó két videóit.
 
-Ismétlődő eredmények elkerülése érdekében, használja a [nextOffset](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference#videos-nextoffset) mezőjét a `Videos` objektum.
+Az ismétlődések számára, használja a [nextOffset](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference#videos-nextoffset) mezőjében a `Videos` objektum.
 
-Például ha egyszerre 30 videók lapon, akkor állítania `count` 30 és `offset` 0-ra, az első kérelem. A következő kérés állíthat a `offset` lekérdezési paramétert a `nextOffset` érték.
+Például, ha szeretné 30 videók lapon egyszerre, így állíthatja be `count` 30 és `offset` az első kérés a 0. A következő kérés, így állíthatja be a `offset` lekérdezési paraméter, a `nextOffset` értéket.
 
 
 > [!NOTE]
-> Lapozófájl csak videók search (Keresés/videók /), nem pedig videó insights (részletek/videók /) vagy (/ videók/trendek) trendekkel videók vonatkozik.
+> Lapozófájl csak videók search (Keresés/videók /), és nem feltárását (/ videók/részletei) vagy a felkapott videók (/ videókat és népszerű) vonatkozik.

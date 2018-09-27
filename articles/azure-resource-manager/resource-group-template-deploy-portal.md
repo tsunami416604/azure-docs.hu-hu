@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/03/2018
 ms.author: tomfitz
-ms.openlocfilehash: c16d584f17aa2c209c9c0ec94d35f6fe78ba1907
-ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
+ms.openlocfilehash: b8a6d58ad79b591548542d69e69b71ec61af79af
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39494083"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47220125"
 ---
 # <a name="deploy-resources-with-resource-manager-templates-and-azure-portal"></a>Erőforrások üzembe helyezése Resource Manager-sablonokkal és az Azure Portallal
 
@@ -137,4 +137,4 @@ A portál lehetővé teszi, hogy a sablon mentése az Azure-fiókjába, és tele
 * Auditnaplók megtekintése: [auditálási műveletek a Resource Manager](resource-group-audit.md).
 * Telepítési hibák elhárításához tekintse meg a [üzembehelyezési műveletek megtekintése](resource-manager-deployment-operations.md).
 * Üzembe helyezési vagy erőforráscsoport sablonjának lekéréséhez, lásd: [Azure Resource Manager sablon exportálása létező erőforrásokból](resource-manager-export-template.md).
-* Nagyvállalatoknak az [Azure enterprise scaffold - prescriptive subscription governance](/azure/architecture/cloud-adoption-guide/subscription-governance) (Azure nagyvállalati struktúra - előíró előfizetés-irányítás) című cikk nyújt útmutatást az előfizetéseknek a Resource Managerrel való hatékony kezeléséről.
+* A szolgáltatás több régióban, tekintse meg biztonságosan bevezetési [Azure Deployment Manager](deployment-manager-overview.md).

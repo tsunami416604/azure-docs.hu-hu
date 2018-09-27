@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/29/2017
 ms.author: alkohli
-ms.openlocfilehash: 36058ad69ea670998b50cf9038741c294a5b79ab
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: afaa4c090508ee5a2306c2be1515076e6bd4f100
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38688728"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47225725"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-manage-your-storage-account-credentials"></a>A StorSimple-Eszközkezelő szolgáltatás segítségével a tárfiók hitelesítő adatainak kezelése
 
@@ -143,7 +143,7 @@ Amikor létrehoz egy tárfiókot, a Microsoft Azure két 512 bites tárelérési
 
 Általában alkalmazások használata csak az egyik a kulcsokat az adatok eléréséhez. Egy bizonyos idő után az alkalmazásokat, váltson a második kulcsot is használhat. Miután az alkalmazások a másodlagos kulcsot vált, vonja ki az első kulcsot, és majd hozzon létre egy új kulcsot. A két kulcs ezzel a módszerrel lehetővé teszi az alkalmazások az adatokhoz való hozzáférés állásidő nélkül.
 
-A tárfiók kulcsaihoz mindig a szolgáltatás titkosított formában vannak tárolva. Azonban ezeket is lehet alaphelyzetbe állítani a StorSimple-Eszközkezelő szolgáltatáson keresztül. A szolgáltatás kérheti le az elsődleges és másodlagos kulcsot a storage-fiókok ugyanahhoz az előfizetéshez, beleértve a Storage szolgáltatásban létrehozott fiókokat, valamint a jönnek létre, ha a StorSimple-Eszközkezelő szolgáltatás szolgáltatás nem alapértelmezett storage-fiókok először létre. A StorSimple-Eszközkezelő szolgáltatás minden esetben ezek a kulcsok lekérése a klasszikus Azure portálon, és biztonságosan tárolja a titkosított módon.
+A tárfiók kulcsaihoz mindig a szolgáltatás titkosított formában vannak tárolva. Azonban ezeket is lehet alaphelyzetbe állítani a StorSimple-Eszközkezelő szolgáltatáson keresztül. A szolgáltatás kérheti le az elsődleges és másodlagos kulcsot a storage-fiókok ugyanahhoz az előfizetéshez, beleértve a Storage szolgáltatásban létrehozott fiókokat, valamint a jönnek létre, ha a StorSimple-Eszközkezelő szolgáltatás első nem alapértelmezett storage-fiókok létrehozott. A StorSimple-Eszközkezelő szolgáltatás minden esetben ezek a kulcsok lekérése a klasszikus Azure portálon, és biztonságosan tárolja a titkosított módon.
 
 ## <a name="rotation-workflow"></a>Elforgatás munkafolyamat
 

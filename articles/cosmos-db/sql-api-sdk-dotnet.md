@@ -12,12 +12,12 @@ ms.topic: reference
 ms.date: 03/09/2018
 ms.author: rnagpal
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 26de3545c5d79c711703fa97cb796cd6c504f663
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 8ba241ccfdaed8694d3dfb9513e56975e39cdb1c
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44346475"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47395780"
 ---
 # <a name="azure-cosmos-db-net-sdk-for-sql-api-download-and-release-notes"></a>Az Azure Cosmos DB .NET SDK, az SQL API-hoz: Töltse le és kibocsátási megjegyzések
 > [!div class="op_single_selector"]
@@ -50,6 +50,11 @@ ms.locfileid: "44346475"
 </table></br>
 
 ## <a name="release-notes"></a>Kibocsátási megjegyzések
+### <a name="a-name210210"></a><a name="2.1.0"/>2.1.0
+
+* A hozzáadott többrégiós támogatási írni.
+* Adatbázisközi partíció lekérdezési teljesítménnyel kapcsolatos fejlesztések a TOP és MaxBufferedItemCount.
+
 ### <a name="a-name200200"></a><a name="2.0.0"/>2.0.0
 
 * Új kérelem visszavonás támogatása.
@@ -318,6 +323,7 @@ Az Azure Cosmos DB egy kivont SDK használatával bármilyen kérelmeket a szolg
 
 | Verzió | Kiadás dátuma | Visszavonás dátuma |
 | --- | --- | --- |
+| [2.1.0](#2.1.0) |2018. szeptember 21. |--- |
 | [2.0.0](#2.0.0) |2018. szeptember 07. |--- |
 | [1.22.0](#1.22.0) |2018. április 19. |--- |
 | [1.21.1](#1.20.1) |2018. március 09. |--- |

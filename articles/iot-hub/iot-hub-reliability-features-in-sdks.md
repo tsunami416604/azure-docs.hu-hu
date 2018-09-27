@@ -12,12 +12,12 @@ documentationcenter: ''
 manager: timlt
 ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: f6cfb7bb988b080189da444cb77e0c258417b1ac
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: 9a07fa2010eef22c4d1477641d07dee70ab5a9cb
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45574708"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47227445"
 ---
 # <a name="how-to-manage-connectivity-and-reliable-messaging-using-azure-iot-hub-device-sdks"></a>Csatlakozási és megbízható üzenetküldést használatával az Azure IoT Hub eszközoldali SDK-k kezelése
 
@@ -54,7 +54,7 @@ Csatlakozási hibák sok szint fordulhat elő:
 - HTTP, AMQP és MQTT protokoll szintű hibáinak átviteli például hivatkozások leválasztott vagy a munkamenet lejárt
 - Alkalmazásszintű hibák, amelyek például érvénytelen hitelesítő adatokat vagy helyi hibák eredményeképpen vagy szolgáltatás például kvóta túllépése vagy szabályozási viselkedés
 
-Az eszközoldali SDK-k minden három szinten észleli a hibákat.  Operációs rendszer kapcsolatos hibákat és a hardveres hibák nem észleli és kezeli az eszköz SDK-k.  A terv alapján [az átmeneti hibák kezelése útmutatást](https://docs.microsoft.com/azure/architecture/best-practices/transient-faults#general-guidelines) az Azure Architecture Centert.
+Az eszközoldali SDK-k minden három szinten észleli a hibákat.  Operációs rendszer kapcsolatos hibákat és a hardveres hibák nem észleli és kezeli az eszköz SDK-k.  A terv alapján [az átmeneti hibák kezelése útmutatást](/azure/architecture/best-practices/transient-faults#general-guidelines) az Azure Architecture Centert.
 
 ### <a name="retry-patterns"></a>Ismételje meg a minták
 

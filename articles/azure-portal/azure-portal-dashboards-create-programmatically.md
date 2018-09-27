@@ -12,13 +12,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 09/01/2017
-ms.author: adamab
-ms.openlocfilehash: 8ac3bb2c95420eb4a608f003f3d937e3a47c272b
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.author: cwatson
+ms.openlocfilehash: a9ca57ce916dc3f9bc8d451063596519d1d6649c
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39448230"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47391342"
 ---
 # <a name="programmatically-create-azure-dashboards"></a>Azure-irányítópultok szoftveres létrehozása
 
@@ -45,7 +45,7 @@ Hozzon létre egy új irányítópultot, a paranccsal az új irányítópult a p
 A csempe katalógus majd használatával kereshet és adhat hozzá a csempéket. Csempék adhatók húzásával. Egyes csempék támogatja a átméretezése húzza leírót, míg más modelljei támogatási javítások által látható a saját helyi menü segítségével.
 
 ### <a name="drag-handle"></a>A csomóponthúzási leíró
-![fogópont húzásával](./media/azure-portal-dashboards-create-programmatically/drag-handle.png)
+![A csomóponthúzási leíró](./media/azure-portal-dashboards-create-programmatically/drag-handle.png)
 
 ### <a name="fixed-sizes-via-context-menu"></a>Rögzített méretű helyi menüjében
 ![méretek helyi menü](./media/azure-portal-dashboards-create-programmatically/sizes-context-menu.png)

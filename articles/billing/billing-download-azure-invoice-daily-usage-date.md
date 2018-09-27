@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/11/2018
-ms.author: genli
-ms.openlocfilehash: e2985882b2e72b6e2f23945aa54c7a282137ce4e
-ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
+ms.author: cwatson
+ms.openlocfilehash: f0cdfef50c07674a08766933f2f7edfc946462a4
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42918982"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47395015"
 ---
 # <a name="download-or-view-your-azure-billing-invoice-and-daily-usage-data"></a>Töltse le, vagy az Azure számlázási számlázási és napi használati adatok megtekintése
 Letöltheti a számlát a [az Azure portal](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) vagy e-mailben küldött nincs. A napi használati adatok letöltése, lépjen a [Azure Account Center](https://account.azure.com/Subscriptions). Csak egyes szerepkörök hitelkártyás és használati adatokat, például a fiók rendszergazdája engedélye. További információ a számlázási információhoz való hozzáférésről: [Az Azure-beli számlázáshoz való hozzáférés kezelése szerepkörök használatával](billing-manage-access.md).
@@ -30,7 +30,7 @@ Ez a cikk nem vonatkozik az ügyfelek a nagyvállalati szerződés (EA) számár
 [!INCLUDE [GDPR-related guidance](../../includes/gdpr-intro-sentence.md)]
 
 > [!div class="nextstepaction"]
-> [Segítheti az Azure számlázási docs](https://go.microsoft.com/fwlink/p/?linkid=2010091)
+> [Segítsen az Azure számlázási dokumentumok fejlesztésében](https://go.microsoft.com/fwlink/p/?linkid=2010091)
 
 ## <a name="get-your-invoice-in-email-pdf"></a>A számla kapni e-mailben (.pdf)
 Is engedélyezve van a hibajelentések, valamint fogadni az Azure további címzettek egy e-mailben számla. Ez a funkció nem lehet például a támogatási ajánlatok, a nagyvállalati szerződés keretében vagy az Azure in Open licencprogram bizonyos előfizetésekhez érhető el.

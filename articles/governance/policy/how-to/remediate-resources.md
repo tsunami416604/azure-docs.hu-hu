@@ -4,16 +4,16 @@ description: Ez az útmutató végigvezeti a szervizelés, amely nem felel meg a
 services: azure-policy
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 09/18/2018
+ms.date: 09/25/2018
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: 747650bc47644cdca07f705f42d063c995ebe9bf
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: adba2322bce5f0884cba51078e65feeaeaf193d9
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46980253"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47392693"
 ---
 # <a name="remediate-non-compliant-resources-with-azure-policy"></a>Az Azure Policy segítségével a nem megfelelő erőforrások szervizelése
 
@@ -27,7 +27,7 @@ Szabályzat létrehoz egy felügyelt identitás számára, hogy minden hozzáren
 ![Felügyelt identitás – hiányzó szerepkör](../media/remediate-resources/missing-role.png)
 
 > [!IMPORTANT]
-> Ha egy erőforrás módosította **deployIfNotExists** hozzáférést kap a szabályzat-hozzárendelés, felügyelt identitás a hozzárendelés hatókörét programozott módon kell lennie azon kívül, vagy a szervizelési központi telepítés sikertelen lesz.
+> Ha egy erőforrás módosította **deployIfNotExists** terjed ki a szabályzat-hozzárendelést vagy a sablon tulajdonságainak hozzáfér a szabályzat-hozzárendelés hatókörén kívüli erőforrások, a hozzárendelés-felügyelt identitásnak kell lennie [manuálisan hozzáférést](#manually-configure-the-managed-identity) vagy a szervizelési központi telepítés sikertelen lesz.
 
 ## <a name="configure-policy-definition"></a>Szabályzat-definíció konfigurálása
 
@@ -53,6 +53,79 @@ az role definition list --name 'Contributor'
 ```azurepowershell-interactive
 Get-AzureRmRoleDefinition -Name 'Contributor'
 ```
+
+## <a name="manually-configure-the-managed-identity"></a>Manuálisan konfigurálnia a felügyelt identitás
+
+A portál használatával hozzárendelés létrehozásakor házirend állít elő, a felügyelt identitás és is biztosít, a definiált szerepkörök **roleDefinitionIds**. A következő feltételek esetében alkalmazhatja manuálisan kell létrehozni a felügyelt identitást, és engedélyek hozzárendelése elvégezni:
+
+- Miközben az SDK-t (például az Azure PowerShell)
+- A sablon által a hozzárendelési hatókör kívül erőforrás módosításának
+- Ha a sablon által kívül a hozzárendelési hatókör erőforrás olvasható
+
+> [!NOTE]
+> Az Azure PowerShell és a .NET az egyetlen SDK-k, amelyek jelenleg támogatják ezt a funkciót.
+
+### <a name="create-managed-identity-with-powershell"></a>Felügyelt identitás létrehozása a PowerShell használatával
+
+Hozzon létre egy felügyelt identitás során a a szabályzat-hozzárendelés **hely** meg kell határozni és **AssignIdentity** használt. Az alábbi példa lekéri a beépített szabályzat definíciója **üzembe helyezése az SQL-Adatbázisok transzparens adattitkosításának**, és beállítja a célként megadott erőforráscsoportja, majd létrehozza a hozzárendelést.
+
+```azurepowershell-interactive
+# Login first with Connect-AzureRmAccount if not using Cloud Shell
+
+# Get the built-in "Deploy SQL DB transparent data encryption" policy definition
+$policyDef = Get-AzureRmPolicyDefinition -Id '/providers/Microsoft.Authorization/policyDefinitions/86a912f6-9a06-4e26-b447-11b16ba8659f'
+
+# Get the reference to the resource group
+$resourceGroup = Get-AzureRmResourceGroup -Name 'MyResourceGroup'
+
+# Create the assignment using the -Location and -AssignIdentity properties
+$assignment = New-AzureRmPolicyAssignment -Name 'sqlDbTDE' -DisplayName 'Deploy SQL DB transparent data encryption' -Scope $resourceGroup.ResourceId -PolicyDefinition $policyDef -Location 'westus' -AssignIdentity
+```
+
+A `$assignment` változó már tartalmazza a felügyelt identitás és a standard szintű értékeket adja vissza, ha egy szabályzat-hozzárendelés létrehozása a résztvevő-azonosító. Keresztül elérhető `$assignment.Identity.PrincipalId`.
+
+### <a name="grant-defined-roles-with-powershell"></a>Engedélyezés definiált szerepkörök a PowerShell-lel
+
+Az új felügyelt identitás kell végeznie az Azure Active Directory replikációs, mielőtt azt is biztosítani a szükséges szerepkörök. Replikáció befejeződése után az alábbi példa ismétlődik-e a szabályzat-definíció `$policyDef` számára a **roleDefinitionIds** , és használja [New-AzureRmRoleAssignment](/powershell/module/azurerm.resources/new-azurermroleassignment) adni az új felügyelt identitás a szerepköröket.
+
+```azurepowershell-interactive
+# Use the $policyDef to get to the roleDefinitionIds array
+$roleDefinitionIds = $policyDef.Properties.policyRule.then.details.roleDefinitionIds
+
+if ($roleDefinitionIds.Count -gt 0)
+{
+    $roleDefinitionIds | ForEach-Object {
+        $roleDefId = $_.Split("/") | Select-Object -Last 1
+        New-AzureRmRoleAssignment -Scope $resourceGroup.ResourceId -ObjectId $assignment.Identity.PrincipalId -RoleDefinitionId $roleDefId
+    }
+}
+```
+
+### <a name="grant-defined-roles-through-portal"></a>Engedélyezés definiált szerepkörök portálon keresztül
+
+A definiált szerepkörök használatával a portál használatával adja meg a hozzárendelés felügyelt identitás kétféleképpen **hozzáférés-vezérlés (IAM)** vagy a szabályzatot vagy kezdeményezést hozzárendelés szerkesztése, majd **mentése**.
+
+A hozzárendelés felügyelt identitás ad hozzá egy szerepkörhöz, kövesse az alábbi lépéseket:
+
+1. Indítsa el az Azure Policy szolgáltatást az Azure Portalon. Ehhez kattintson a **Minden szolgáltatás** elemre, majd keresse meg és válassza ki a **Szabályzat** elemet.
+
+1. Válassza ki a **Hozzárendelések** elemet az Azure Policy oldal bal oldalán.
+
+1. Keresse meg a hozzárendelés, amely rendelkezik egy felügyelt identitás, és kattintson a nevére.
+
+1. Keresse meg a **hozzárendelés azonosítója** tulajdonságot az edit oldalon. A hozzárendelés azonosítója lesz hasonló:
+
+   ```
+   /subscriptions/{subscriptionId}/resourceGroups/PolicyTarget/providers/Microsoft.Authorization/policyAssignments/2802056bfc094dfb95d4d7a5
+   ```
+
+   A felügyelt identitás neve nem az utolsó része a hozzárendelés erőforrás azonosítója, amely `2802056bfc094dfb95d4d7a5` ebben a példában. Másolja, ez a része a hozzárendelés erőforrás-azonosítója.
+
+1. Keresse meg az erőforrás vagy az erőforrások szülőtároló (erőforráscsoport, előfizetés, a felügyeleti csoport), manuálisan kell hozzáadni a szerepkör-definíció igénylő.
+
+1. Kattintson a **hozzáférés-vezérlés (IAM)** az erőforrás lapon hivatkozásra, és kattintson a **+ Hozzáadás** felső részén a hozzáférés-vezérlő lapját.
+
+1. Válassza ki a megfelelő szerepkör, amely megfelel egy **roleDefinitionIds** a szabályzat-definíció. Hagyja **rendelhet hozzáféréseket** "Azure AD felhasználói, csoport vagy alkalmazás" az alapértelmezett értékre. Az a **kiválasztása** mezőbe illessze be, vagy írja be a korábban található hozzárendelés erőforrás-azonosító részét. Ha a keresés befejeződött, kattintson az objektumra, ugyanazzal a névvel, válassza ki az azonosítója, és kattintson a **mentése**.
 
 ## <a name="create-a-remediation-task"></a>A javítási feladat létrehozása
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 00/19/2018
 ms.author: genli
-ms.openlocfilehash: 6525067ec7a7a3154d1439f15736a1038ab0408c
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 4a029e331129d40b0380fc142d858aa299b7751b
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47167972"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47225446"
 ---
 # <a name="windows-shows-blue-screen-error-when-booting-an-azure-vm"></a>Windows kék képernyő hibát jeleníti meg, ha egy Azure virtuális gép elindítása
 Ez a cikk ismerteti, amely felmerülhet, amikor elindítja a Windows virtuális gép (VM) a Microsoft Azure-ban kék képernyő hibákat. Ismerteti egy támogatási jegyet az adatgyűjtéshez nyújt segítséget. 
@@ -43,7 +43,7 @@ Miért leállási hiba számíthat, több oka lehet. A leggyakoribb okok a köve
 - A rendszer sérült fájl vagy a memória
 - Egy alkalmazás eléri egy tiltott szektort a memória
 
-## <a name="solution"></a>Megoldás
+## <a name="collect-memory-dump-file"></a>Memóriakép gyűjtése
 
 A probléma megoldásához, gyűjtse össze az összeomlási memóriakép fájlt, és forduljon az ügyfélszolgálathoz a memóriakép-fájl első kell lennie. A memóriakép-fájl összegyűjtése, kövesse az alábbi lépéseket:
 
@@ -53,7 +53,7 @@ A probléma megoldásához, gyűjtse össze az összeomlási memóriakép fájlt
 2. [Csatlakoztassa az operációsrendszer-lemezt egy helyreállítási virtuális Géphez](troubleshoot-recovery-disks-portal.md). 
 3. Távoli asztal, a helyreállítási virtuális Gépet.
 
-### <a name="collect-dump-file-and-submit-a-support-ticket"></a>Memóriakép-fájl begyűjtése és a egy támogatási jegyet is küldhet
+### <a name="locate-dump-file-and-submit-a-support-ticket"></a>Keresse meg a memóriakép-fájl, és a egy támogatási jegyet is küldhet
 
 1. A helyreállítási virtuális Gépet lépjen a csatlakoztatott operációsrendszer-lemez a windows-mappában. Ha van rendelve a csatlakoztatott operációsrendszer-lemez meghajtóbetűjelét F, kell F:\Windows Ugrás.
 2. Th memory.dmp fájlt, keresse meg, majd [támogatási jegyet is küldhet](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) memóriakép-fájllal. 

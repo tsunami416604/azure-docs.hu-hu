@@ -6,20 +6,20 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 09/24/2018
-ms.openlocfilehash: 4e133458476a61538c2bddaaeb2f6d56d4ea5a26
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.date: 09/26/2018
+ms.openlocfilehash: c449aaff9741250cfcfaaa4ee490aafc857c4369
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46954908"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47395304"
 ---
 # <a name="best-practices-for-query-store"></a>Ajánlott eljárások a Query Store
 
 **A következőkre vonatkozik:** Azure Database for PostgreSQL 9.6 és 10
 
 > [!IMPORTANT]
-> A Query Store szolgáltatás jelenleg nyilvános előzetes verzióban.
+> A Query Store szolgáltatás jelenleg nyilvános előzetes verzióban csak korlátozott számú régióban.
 
 
 Ez a cikk ismerteti az ajánlott eljárások a Query Store az Azure Database for postgresql-hez.

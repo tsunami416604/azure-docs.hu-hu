@@ -11,23 +11,23 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/19/2018
+ms.date: 09/26/2018
 ms.author: shlo
-ms.openlocfilehash: 5bb1099dee919de50d2c2fc110f3a204e580b66c
-ms.sourcegitcommit: 06724c499837ba342c81f4d349ec0ce4f2dfd6d6
+ms.openlocfilehash: 8132f89423883422d70981edd3ddaf86147830e2
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46465979"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47394424"
 ---
 # <a name="visual-authoring-in-azure-data-factory"></a>Az Azure Data Factoryban vizuális szerzői
 Az Azure Data Factory felhasználói felületen felület (UX) lehetővé teszi, hogy vizuálisan hozhat létre és helyezheti üzembe az erőforrásokat a data Factory kód írása nélkül. Húzza a tevékenységeket a folyamatvásznon, végre, iteratív hibakeresést és üzembe helyezése és a folyamat futásának monitorozása. Kétféleképpen felhasználói a vizuális szerzői műveletek végrehajtásához:
 
 - Szerző közvetlenül a Data Factory szolgáltatással.
-- Felügyeleti csomagok készítése a Git-integráció az Azure-Adattárakkal együttműködés, verziókövetési vagy versioning.
+- Az Azure Git-Adattárakkal integráció az együttműködéshez, verziókövetési és verziókezelés Szerző.
 
 ## <a name="author-directly-with-the-data-factory-service"></a>Szerző közvetlenül a Data Factory szolgáltatással
-A Data Factory szolgáltatásban történő vizuális tartalomkészítésről eltér a vizuális szerzői és az Azure DevOps Services két módon:
+A Data Factory szolgáltatásban történő vizuális tartalomkészítésről eltér a kétféle módon Git-integrációval történő vizuális tartalomkészítésről:
 
 - A Data Factory szolgáltatás nem tartalmaz egy helyen a JSON-entitások a módosítások tárolásához.
 - A Data Factory szolgáltatás együttműködési vagy a verziókezeléshez nincs optimalizálva.
@@ -38,8 +38,8 @@ A felhasználói felület használata esetén **szerzői vászon** ahhoz, hogy a
 
 ![Közzétételi mód](media/author-visually/data-factory-publish.png)
 
-## <a name="author-with-git-integration-with-azure-repos"></a>Felügyeleti csomagok készítése a Git-integrációval rendelkező Azure-Adattárakkal
-Az Azure-Adattárakkal Git-integrációval történő vizuális tartalomkészítésről támogatja a forráskezelés és az együttműködést az adat-előállító folyamatok munka. Adat-előállító társíthatja az Azure Git-Adattárakkal szervezeti adattárba a verziókövetés, együttműködési, verziószámozása és így tovább. Egyetlen Azure Git-Adattárakkal szervezet több tárházak rendelkezhet, de egy Azure-Adattárakkal Git-tárház társítható csak egy adat-előállító. Ha nem rendelkezik egy Azure-Adattárakkal szervezet vagy a tárház, hajtsa végre a [ezek az utasítások](https://docs.microsoft.com/azure/devops/organizations/accounts/create-organization-msa-or-work-student) az erőforrások létrehozásához.
+## <a name="author-with-azure-repos-git-integration"></a>Az Azure Git-Adattárakkal integráció Szerző
+Azure-Adattárakkal Git-integrációval történő vizuális tartalomkészítésről támogatja a forráskezelés és az együttműködés az adat-előállító folyamatok végzett munka. Adat-előállító társíthatja az Azure Git-Adattárakkal szervezeti adattárba a verziókövetés, együttműködési, verziószámozása és így tovább. Egyetlen Azure Git-Adattárakkal szervezet több tárházak rendelkezhet, de egy Azure-Adattárakkal Git-tárház társítható csak egy adat-előállító. Ha nem rendelkezik egy Azure-Adattárakkal szervezet vagy a tárház, hajtsa végre a [ezek az utasítások](https://docs.microsoft.com/azure/devops/organizations/accounts/create-organization-msa-or-work-student) az erőforrások létrehozásához.
 
 > [!NOTE]
 > Egy Azure-Adattárakkal Git-tárház feladatparancsfájl és adatfájlok tárolhatja. Azonban hogy a fájlok manuális feltöltése az Azure Storage. Data Factory-folyamatok nem automatikusan tölti fel az Azure Storage Azure Git-Adattárakkal tárházban tárolt parancsfájl- vagy adatfájlok.
@@ -61,7 +61,7 @@ A panelen látható a következő Azure-Adattárakkal kód adattár beállítás
 
 | Beállítás | Leírás | Érték |
 |:--- |:--- |:--- |
-| **Adattár típusa** | Az Azure-Adattárakkal kódtár típusa.<br/>**Megjegyzés:**: GitHub jelenleg nem támogatott. | Az Azure fejlesztési Ops Git |
+| **Adattár típusa** | Az Azure-Adattárakkal kódtár típusa.<br/>**Megjegyzés:**: GitHub jelenleg nem támogatott. | Az Azure-Adattárakkal Git |
 | **Azure Active Directory** | Az Azure AD-bérlő neve. | <your tenant name> |
 | **Az Azure-Adattárakkal szervezet** | Az Azure-Adattárakkal szervezet neve. : Az Azure-Adattárakkal szervezet nevének megkereséséhez `https://{organization name}.visualstudio.com`. Is [jelentkezzen be a szervezet Azure-Adattárakkal](https://www.visualstudio.com/team-services/git/) érhető el a Visual Studio-profil, és az adattárak és a projekteket. | <your organization name> |
 | **ProjectName** | Az Azure-Adattárakkal projekt nevét. Megkeresheti az Azure-Adattárakkal projekt nevét `https://{organization name}.visualstudio.com/{project name}`. | <your Azure Repos project name> |
@@ -70,7 +70,7 @@ A panelen látható a következő Azure-Adattárakkal kód adattár beállítás
 | **Gyökérmappa** | A legfelső szintű mappát a saját Azure-Adattárakkal együttműködés ágban. | <your root folder name> |
 | **Meglévő Data Factory-erőforrások importálása az adattárba** | Megadja, hogy a meglévő data factory-erőforrások importálása a UX **szerzői vászon** egy Azure-Adattárakkal Git-tárházba. Jelölje be a data factory-erőforrások importálása a társított Git-tárház JSON formátumban. Ez a művelet exportálja az egyes erőforrások külön-külön (azaz a társított szolgáltatásokat és adatkészleteket exportálása külön JSONs be). Ha a jelölőnégyzet nincs bejelölve, a meglévő erőforrások nem importálja. | Kiválasztott (alapértelmezett) |
 
-#### <a name="configuration-method-2--azure-repos-git-repo-ux-authoring-canvas"></a>2 (Azure-Adattárakkal Git-tárház) a konfigurálási módszerhez: UX szerzői vászon
+#### <a name="configuration-method-2-azure-repos-git-repo-ux-authoring-canvas"></a>2 (Azure-Adattárakkal Git-tárház) a konfigurálási módszerhez: UX szerzői vászon
 Az Azure Data Factory felhasználói **szerzői vászon**, keresse meg az adat-előállítóhoz. Válassza ki a **adat-előállító** legördülő menüből, és válassza ki **kódtár konfigurálása**.
 
 A konfiguráció panelen jelenik meg. A konfigurációs beállításaival kapcsolatos információkért lásd: található leírások <a href="#method1">konfigurációs módszer 1</a>.

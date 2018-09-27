@@ -11,12 +11,12 @@ ms.topic: article
 description: Gyors Kubernetes-fejlesztés tárolókkal és mikroszolgáltatásokkal az Azure-ban
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, tárolók
 manager: douge
-ms.openlocfilehash: c6ca3003c1338f3e057c76d9e04d8b0cbd2210c7
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 91bec065b2c83eac6b646ae6a55bc1ae0aae01db
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44721194"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47226891"
 ---
 # <a name="troubleshooting-guide"></a>Hibaelhárítási útmutató
 
@@ -28,11 +28,11 @@ Annak érdekében, hogy a problémák hatékonyabb elhárításához, segíthet,
 
 A Visual Studio-bővítmény beállítása a `MS_VS_AZUREDEVSPACES_TOOLS_LOGGING_ENABLED` környezeti változót az 1. Ügyeljen arra, hogy a Visual Studio for a környezeti változó érvénybe léptetéséhez indítsa újra. Az engedélyezés után a részletes naplók lesz írva a `%TEMP%\Microsoft.VisualStudio.Azure.DevSpaces.Tools` könyvtár.
 
-A parancssori felületen, a további információk a parancs végrehajtása során küldhetnek kimenetet a `--verbose` váltani.
+A parancssori felületen, a további információk a parancs végrehajtása során küldhetnek kimenetet a `--verbose` váltani. A részletes naplókat is megkeresheti `%TEMP%\Azure Dev Spaces`. Egy Mac gépen a TEMP könyvtárában található futtatásával `echo $TMPDIR` egy terminálablakból. Egy Linux-számítógépek esetében a TEMP könyvtárában nem általában `/tmp`.
 
 ## <a name="debugging-services-with-multiple-instances"></a>Több példányával szolgáltatások hibakeresésekor
 
-Jelenleg az Azure fejlesztési tárolóhelyek támogatja a csak egy példányban (pod) a hibakeresés. A azds.yaml fájl tartalmaz egy beállítást, replicaCount, amely azt jelzi, amely a szolgáltatás-példányok száma. Ha megváltoztatja az adott szolgáltatás több példányának futtatása, az alkalmazás konfigurálása replicaCount, a hibakereső viselkedését nem várt módon.
+Jelenleg az Azure fejlesztési tárolóhelyek működik optimálisan, ha egyetlen példányát (pod) hibakeresés. A azds.yaml fájl egy beállítás replicaCount, amely azt jelzi, amely a szolgáltatás podjainak számát tartalmazza. Ha megváltoztatja az alkalmazás futtatásához az adott szolgáltatás több podok konfigurálása a replicaCount, a hibakereső csatolása az első pod (ha ábécérendbe) lesz. A pod bármilyen okból újraindul, a hibakereső fog csatol egy másik pod valószínűleg nem várt viselkedést eredményez.
 
 ## <a name="error-failed-to-create-azure-dev-spaces-controller"></a>"Nem sikerült létrehozni az Azure fejlesztési tárolóhelyek vezérlő" hiba
 

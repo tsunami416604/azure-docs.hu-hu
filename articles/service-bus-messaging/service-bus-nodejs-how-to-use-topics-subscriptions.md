@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: article
-ms.date: 08/10/2017
+ms.date: 08/10/2018
 ms.author: spelluru
-ms.openlocfilehash: daabf711e923e1c4ff3132c5e4765bdbff206948
-ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
+ms.openlocfilehash: f13e46b310f4f9048b38ab50ce0241d1b2b3161b
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43782911"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47395695"
 ---
 # <a name="how-to-use-service-bus-topics-and-subscriptions-with-nodejs"></a>Hogyan használható a Service Bus-üzenettémák és előfizetések a node.js használatával
 
@@ -38,7 +38,7 @@ Ez az útmutató azt ismerteti, hogyan használható a Service Bus-üzenettémá
 [!INCLUDE [howto-service-bus-topics](../../includes/howto-service-bus-topics.md)]
 
 ## <a name="create-a-nodejs-application"></a>Node.js alkalmazás létrehozása
-Hozzon létre egy üres Node.js-alkalmazás. Node.js-alkalmazás létrehozásával kapcsolatos útmutatóért lásd: [Hozzon létre és telepíthet egy Node.js-alkalmazást az Azure-webhelyekre], [Node.js Felhőszolgáltatás] [ Node.js Cloud Service] Windows használatával A PowerShell vagy WebMatrix-webhely.
+Hozzon létre egy üres Node.js-alkalmazás. Node.js-alkalmazás létrehozásával kapcsolatos útmutatóért lásd: [létrehozása és a Node.js-alkalmazás üzembe helyezése az Azure-webhelyek], [Node.js Felhőszolgáltatás] [ Node.js Cloud Service] Windows használatával A PowerShell vagy WebMatrix-webhely.
 
 ## <a name="configure-your-application-to-use-service-bus"></a>A Service Bus-alkalmazás konfigurálása
 Service Bus használata a Node.js az Azure-csomag letöltése. Ez a csomag tartalmaz-kódtárak, amely a Service Bus REST-szolgáltatásokkal kommunikálni.
@@ -338,6 +338,6 @@ Most, hogy megismerte a Service Bus-üzenettémakörök alapjait, kövesse az al
 [Queues, topics, and subscriptions]: service-bus-queues-topics-subscriptions.md
 [SqlFilter]: /dotnet/api/microsoft.servicebus.messaging.sqlfilter
 [Node.js Cloud Service]: ../cloud-services/cloud-services-nodejs-develop-deploy-app.md
-[Hozzon létre és telepíthet egy Node.js-alkalmazást az Azure-webhelyekre]: ./app-service/app-service-web-get-started-nodejs.md
+[létrehozása és a Node.js-alkalmazás üzembe helyezése az Azure-webhelyek]: ../app-service/app-service-web-get-started-nodejs.md
 [Node.js Cloud Service with Storage]: ../cloud-services/cloud-services-nodejs-develop-deploy-app.md
 

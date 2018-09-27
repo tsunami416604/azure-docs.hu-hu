@@ -1,35 +1,37 @@
 ---
-title: A személy csevegést - Azure kognitív szolgáltatások – gyakori kérdések |} Microsoft Docs
-description: A személy csevegést – gyakori kérdések
+title: Gyakori kérdések – személyes Csevegés
+titlesuffix: Azure Cognitive Services
+description: A személyes Csevegés – gyakori kérdések
 services: cognitive-services
 author: noellelacharite
-manager: nolachar
+manager: cgronlun
 ms.service: cognitive-services
+ms.component: personality-chat
 ms.topic: faq
 ms.date: 05/07/2018
 ms.author: nolachar
 comment: As a bot developer, I want my bot to be able to handle small talk in a consistent tone so that my bot appears more complete and conversational.
-ms.openlocfilehash: 5304b25672f9951e004876dfd19af75ea7d86502
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 274b232f321b3ad739d18a8580b4a178dbde633e
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35349702"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47219821"
 ---
 # <a name="frequently-asked-questions"></a>Gyakori kérdések
 
-## <a name="why-doesnt-this-answer-every-question-i-ask-it-like-other-chat-bots"></a>Miért nem ez megválaszolnia minden kérdést kéri, például más Csevegés botok?
+## <a name="why-doesnt-this-answer-every-question-i-ask-it-like-other-chat-bots"></a>Miért nem ez megválaszolnia minden kérdést, tehetek fel, mint más Csevegés robotokat?
 
-Projekt személy Csevegés növeli a közös kis előadás személy bővíthető, majd létrehoz egy jóval összetettebb felhasználói felület bot. Nem célja az, hogy a hosszú beszélgetéseit kapcsolatos témakörök, amelyek a kevésbé fontos a botot elsődleges függvény végrehajtása. Az összes beszélgetések válaszolhat, amíg azt korlátozta – bétaverziójában – közös kis tartott tartományokhoz.
+Projekt személyes Csevegés benyomásokkal egy közös kis az előadás bemutatja a személyiségelemző, és létrehoz egy teljesebb felhasználói élményt biztosít a robot. Nem feladata, hogy végezze a hosszú beszélgetések, amelyek nem elsődleges funkciója a robot a témákról. Beszélgetések válaszolhat, amíg azt van korlátozva, a bétaverzió, közös kisméretű, beszélgethet a tartományok.
 
-## <a name="how-can-i-customize-the-personality-to-suit-my-brand"></a>Hogyan szabható testre a márka megfelelően személy?
+## <a name="how-can-i-customize-the-personality-to-suit-my-brand"></a>Hogyan szabhatja testre a személyiségelemző saját márkáját megfelelően?
 
-Válassza ki a legközelebbi személy elérhető alapértelmezett személyeket alapul. Napjainkban igénybe vehet a Szerkesztői könyvtárban, és jobban megfeleljenek a márka a válaszokat. A jövőben utterances minta készlete feltöltődnek a kiválasztott személy, és a legközelebbi személy azonosító verziója található. Működik, és testre szabhatja a modell módja is van.
+Válassza ki a legközelebbi személy az elérhető alapértelmezett személyeknek. Még ma a Szerkesztői könyvtár igénybe, és a válaszokat, hogy jobban illeszkedjen a márka. A jövőben utterances minta csoportja át a kiválasztott személy feltöltött, és a legközelebbi személy azonosítója verzió azonosításához. Többféleképpen is újratanítása, és testre szabhatja a modellt.
 
-## <a name="is-this-service-powering-existing-intelligent-agents-such-as-zo"></a>Ez a szolgáltatás működtetéséhez van például Zo meglévő intelligens ügynökök?
+## <a name="is-this-service-powering-existing-intelligent-agents-such-as-zo"></a>Ez a szolgáltatás működtetésére van például Zo meglévő intelligens ügynökök?
 
-A szolgáltatások működtetéséhez Zo Cortana és projekt személy csevegés néhány hasonló technikák megosztani, de különböző verem. Az rendelkezik beépített learnings Zo és Cortana felületéről.
+A szolgáltatások működtetésére Zo, a Cortana és a projekt személyes csevegés néhány hasonló technikák megosztani, de különböző implementációt. Ez rendelkezik beépített tapasztalatainkat Zo és a Cortana a felületéről.
 
-## <a name="can-this-service-lead-to-bad-customer-experiences"></a>Ez a szolgáltatás vezethet rossz ügyfélélményt?
+## <a name="can-this-service-lead-to-bad-customer-experiences"></a>Ez a szolgáltatás vezethet elégedettségét?
 
-Hogy egy gazdagabb környezetet biztosítson, személy Csevegés hozhat létre a válaszok Szerkesztői adatkészlet is, és megkísérli az összes felhasználói bevitel értelmezhetők. Igen akkor lehet válasz nem tűnik megfelelő környezetben. Számos olyan rendszabály rendelkezik lett üzembe helyezéséhez kedvezőtlen válaszokat, például Zo intelligens ügynököktől Tudásbázis kialakításának megelőzése érdekében. Alapértelmezés szerint a projekt személy Csevegés kizárólag válaszolni felismert felhasználó leképezések van beállítva. Érdemes lehet, és ellenőrizze, hogy a projekt személy Csevegés alkalmas a körülmények között. Visszajelzése Üdvözöljük, ha minden további képzési kell. Ha használja ezt a szolgáltatást az ügyfelek a jövőben, javasoljuk, érdemes anonimizált naplózási élő felhasználói kommunikációt a problémák azonosításához.
+Sokoldalúbb felhasználói élményben megadásához személyes Csevegés hozhat létre a Szerkesztői adatkészlet túlmutató válaszokat, és megkísérli annak minden felhasználói bevitel értelmezése. Így lehetőség a válasz nem úgy tűnik, megfelelő környezetben. Számos olyan vezérlőt rendelkezik lett üzembe helyezéséhez kedvezőtlen válaszok kialakításához a Tudásbázis Zo például intelligens ügynököktől származó megelőzése érdekében. Alapértelmezés szerint a projekt személyes Csevegés kizárólag válaszolni felismert felhasználó leképezések van beállítva. Érdemes annak megállapítására, hogy a projekt személyes Csevegés ideális a körülmények között. Visszajelzése Üdvözli Önt, ha bármi, akit továbbképzés jelenik meg. Ha ezt a szolgáltatást a jövőben az ügyfelekkel használ, javasoljuk, anonimizált naplózás segít azonosítani a problémákat az élő felhasználói interakció érdekében érdemes.

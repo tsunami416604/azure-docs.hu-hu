@@ -1,6 +1,6 @@
 ---
-title: Hozzon létre ingyenes Azure-fiókot az ingyenes szolgáltatásokhoz |} Microsoft Docs
-description: Útmutató az Azure ingyenes fiók szolgáltatásait létrehozásához.
+title: Ingyenes szolgáltatások ingyenes Azure-fiók létrehozása |} A Microsoft Docs
+description: Ismerje meg, hogyan hozhat létre az ingyenes Azure-fiók szolgáltatásokat.
 documentationcenter: ''
 author: amberbhargava
 manager: amberb
@@ -11,29 +11,29 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/25/2017
-ms.author: amberb
-ms.openlocfilehash: 84b73d3f1481c0c1a551da50b9f6292cd835d567
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.author: cwatson
+ms.openlocfilehash: ab0b48f8c8579af8a3314bad14dafbe79f9a9781
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/03/2018
-ms.locfileid: "32771410"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47393740"
 ---
-# <a name="create-services-included-with-azure-free-account"></a>Az ingyenes Azure-fiókot szolgáltatásait létrehozása
+# <a name="create-services-included-with-azure-free-account"></a>Ingyenes Azure-fiók tartozó szolgáltatások létrehozása
 
-Ingyenes Azure-fiókot az ingyenes szolgáltatásokhoz 12 hónapig korlátozott mennyiségű tartalmazza. További információkért lásd: [Mi az Azure ingyenes fiók](https://azure.microsoft.com/free/free-account-faq/). Azure nyomon követi, hogy az egyes szolgáltatások használatát, és nem díjat számítanak fel kivéve, ha az túllépi a határértékeket. Ezeken a határokon ingyenes Azure-fiókot rugalmasságot nyújt, a szolgáltatás különböző konfigurációkban használatára az igényeinek. 
+Ingyenes Azure-fiók ingyenes szolgáltatások 12 hónapig korlátozott mennyiségű tartalmazza. További információkért lásd: [Mi az ingyenes Azure-fiók](https://azure.microsoft.com/free/free-account-faq/). Az Azure nyomon követi az egyes szolgáltatások használatát, és nem számít fel díjat, kivéve, ha túllépi a korlátokat. E korlátok ingyenes Azure-fiókkal, a rugalmasságot biztosít különböző szolgáltatáskonfiguráció segítségével az igényeinek. 
 
-## <a name="create-free-services-in-the-azure-portal"></a>Az ingyenes szolgáltatásokhoz létrehozása az Azure portálon
-Ajánlott a [szabad oldalát](https://go.microsoft.com/fwlink/?linkid=859151) új szolgáltatások létrehozására. Vagy jelentkezhet be a [Azure-portálon](http://portal.azure.com), jelölje be **minden szolgáltatás** , és a keresési **szolgáltatások szabad**. 
+## <a name="create-free-services-in-the-azure-portal"></a>Ingyenes szolgáltatások létrehozása az Azure Portalon
+Javasoljuk, használjon a [ingyenes szolgáltatásoldal](https://go.microsoft.com/fwlink/?linkid=859151) új szolgáltatások létrehozását. Vagy bejelentkezhet a a [az Azure portal](http://portal.azure.com)válassza **minden szolgáltatás** a bal oldalon, majd a keresési **ingyenes szolgáltatások**. 
 
-## <a name="services-can-be-created-in-any-region"></a>Szolgáltatások hozhatók létre bármely régióban
-Mindaddig, amíg határértékeken belül van, akkor létrehozhat olyan szolgáltatásokat szabad bármely régióban, ahol a szolgáltatások elérhetők. Például kap 750 óra szabad B1S Windows virtuális gép minden hónapban ingyenes Azure-fiókot az. A virtuális gépet hozhat létre bármely régióban, ahol a B sorozatú virtuális gépek elérhetők. Azure nem díjat számítanak fel kivéve, ha az túllépi 750 óra. Az Amerikai Egyesült Államokban ügyfél például rendszerű B1S Windows virtuális gép Nyugat-Európában, és a szabad használni 750 órán keresztül. 
+## <a name="services-can-be-created-in-any-region"></a>Szolgáltatások hozható létre bármelyik régióban
+Mindaddig, amíg a határértékeken belül van, létrehozhat services ingyenes bármelyik régióban, ahol a szolgáltatások elérhetők. Például kap 750 órányi B1S Windows virtuális gépek ingyenes minden hónapban ingyenes Azure-fiókkal. A virtuális gép bármelyik régióban, ahol érhetők el B sorozatú virtuális gépek hozhat létre. Az Azure nem számít fel díjat, kivéve, ha elfogynak 750 óra. Például egy ügyfél az Egyesült Államokban Nyugat-Európában B1S Windows virtuális gép kiépítése és ingyenesen használhatja 750 óra. 
 
-Azure-szolgáltatások rendelkezésre állásának régiónként kapcsolatos további tudnivalókért lásd: [régiónként rendelkezésre álló termékek](https://azure.microsoft.com/regions/services/).
+Az Azure szolgáltatásainak elérhetősége régió szerint kapcsolatos további információkért lásd: [elérhető termékek régiók szerint](https://azure.microsoft.com/regions/services/).
 
-## <a name="multiple-instances-of-services-can-be-created-within-allowed-limits"></a>Szolgáltatások több példánya is létrehozható engedélyezett határértékeken belül
-Mindaddig, amíg használati összege használati határon belüli szabad hozhat létre a szolgáltatások több példánya. Például kap 750 óra szabad B1S Windows virtuális gép minden hónap és az ingyenes Azure-fiókot. 750 óra kívánt bármilyen kombinációban használhatja. Például 5 B1S Windows virtuális gépek létrehozása és 150 óra használhatja őket. 
+## <a name="multiple-instances-of-services-can-be-created-within-allowed-limits"></a>Szolgáltatások több példányát engedélyezett határértékeken belül hozható létre
+Mindaddig, amíg a használati összege a használati korlátot belül ingyenesen hozhat létre a szolgáltatások több példányát. Például kap 750 órányi ingyenes B1S Windows virtuális gép minden hónapban ingyenes Azure-fiókkal. 750 órányi kívánt bármilyen kombinációban használhatja. Például 5 B1S Windows virtuális gépek létrehozása és 150 óra használni őket. 
 
 ## <a name="need-help-contact-support"></a>Segítség Kapcsolatfelvétel a támogatási szolgáltatással
 
-Ha segítségre van szüksége, [forduljon a támogatási szolgálathoz](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) a probléma elhárítva gyors eléréséhez.
+Ha segítségre van szüksége, kell [forduljon az ügyfélszolgálathoz](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) a probléma gyors megoldása érdekében.

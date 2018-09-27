@@ -9,12 +9,12 @@ ms.technology: Speech
 ms.topic: article
 ms.date: 09/24/2018
 ms.author: chlandsi
-ms.openlocfilehash: e21348ccd694baf6b7eccf2787ec0a9f21a73b11
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: e343c24a5ef223e1fd6dc618f41d4acf89fc2f5d
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46985645"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47226024"
 ---
 # <a name="quickstart-recognize-speech-in-objective-c-on-ios-using-the-cognitive-services-speech-sdk"></a>Gyors útmutató: Beszédfelismerést Objective-C nyelven a Cognitive Services beszédfelismerő SDK használatával iOS rendszeren
 
@@ -46,7 +46,7 @@ A párbeszédpanelek útmutatásait a, hogy hajtsa végre, a következő beáll�
 
 1. Projekt beállításai párbeszédpanel
     1. Adja meg egy nevet a gyorsindítási alkalmazást például `helloworld`.
-    1. Adja meg a szervezet neve például `TestOrg`, és a egy szervezeti azonosítóval, mint például `testorg`.
+    1. Adjon meg egy megfelelő nevet és a szervezeti azonosító, ha már rendelkezik egy Apple developer-fiókot. Tesztelési célokra, egyszerűen válassza ki a bármilyen nevet, például `testorg`. Annak érdekében, hogy az alkalmazás aláírásához szükség a megfelelő kiépítési profil túl. Tekintse meg a [Apple fejlesztői webhely](https://developer.apple.com/) részleteiről.
     1. Ellenőrizze, hogy a projekt a nyelvet választja Objective-C.
     1. Tiltsa le a jelölőnégyzetek tesztek és alapvető adatokat.
     ![Projektbeállítások](media/sdk/qs-objectivec-project-settings.png)
@@ -54,13 +54,11 @@ A párbeszédpanelek útmutatásait a, hogy hajtsa végre, a következő beáll�
     1. Válassza ki a kezdőkönyvtár a helyezi a projektet. Ezzel létrehoz egy `helloworld` a kezdőkönyvtárban, az Xcode projekt a fájlokat tartalmazó könyvtárat.
     1. Tiltsa le a példában projekt Git-adattár létrehozása.
     1. Állítsa be a elérési utakat az SDK-t a *Projektbeállítások*.
-        1. Az a **általános** lapjára az **csatolt keretrendszerek és könyvtárak** fejléc, adja hozzá az SDK-könyvtár keretet másként: **Add framework** > **hozzáadása más...**  > Nyissa meg a verzió kezdőkönyvtárához navigál, és válassza ki a fájlt `MicrosoftCognitiveServicesSpeech.framework`.
+        1. A a **általános** területen a **beágyazott bináris fájlok** fejléc, adja hozzá az SDK-könyvtár keretet másként: **Hozzáadás beágyazott bináris fájlok** > **más hozzáadása ...**  > Nyissa meg a verzió kezdőkönyvtárához navigál, és válassza ki a fájlt `MicrosoftCognitiveServicesSpeech.framework`. Ez a fejléc is automatikusan hozzáadja az SDK-könyvtár **társított keretrendszer és a szalagtárak**.
         ![A hozzáadott keretrendszer](media/sdk/qs-objectivec-framework.png)
         1. Nyissa meg a **Build Settings** lapra, és aktiválja **összes** beállításait.
         1. A könyvtár hozzáadása `$(SRCROOT)/..` , a *keretrendszer cesty Pro Hledání* alatt a **cesty Pro Hledání** fejléc.
         ![Keretrendszer keresési útvonalat beállítás](media/sdk/qs-objectivec-framework-search-paths.png)
-        1. A könyvtár hozzáadása `$(SRCROOT)/..` , a *Runpath cesty Pro Hledání* alatt a **Linking** fejléc.
-        ![Runpath keresési útvonalat beállítás](media/sdk/qs-objectivec-runpaths.png)
 
 
 ## <a name="set-up-the-ui"></a>Állítsa be a felhasználói felületen
@@ -79,16 +77,21 @@ Kattintson a **Befejezés** a következő párbeszédpanelen, a beállítások m
 1. Cserélje le az automatikusan létrehozott nevet tartalmát `ViewController.m` által fájlt:
 
    [!code-objectivec[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/objectivec-ios/helloworld/helloworld/ViewController.m#code)]
-1. Cserélje le a karakterláncot `YourSubscriptionKey` az előfizetési kulccsal végzett.
+1. Adja hozzá a mikrofon-hozzáférés kérése. Kattintson a jobb gombbal a projekt fa az info.plist bejegyzést, és válassza ki **Megnyitás másként...**   >  **Forráskódját**. Adja hozzá a következő sorokat, a `<dict>` szakaszt, és mentse a fájlt.
+    ```xml
+    <key>NSMicrophoneUsageDescription</key>
 
+    <string>Need microphone access for speech recognition from microphone.</string>
+    ```
+1. Cserélje le a karakterláncot `YourSubscriptionKey` az előfizetési kulccsal végzett.
 1. Cserélje le a karakterláncot `YourServiceRegion` együtt a [régió](regions.md) az előfizetéséhez tartozó (például `westus` az ingyenes próba-előfizetésre).
 
 
 ## <a name="building-and-running-the-sample"></a>Épület és a minta futtatása
 
 1. A hibakeresési kimeneti láthatóvá (**nézet** > **Debug terület** > **konzol aktiválása**).
-1. Hozhat létre és futtassa a példakód az iOS-szimulátorban történő kiválasztásával **termék** -> **futtatása** a menüből, vagy kattintson a **lejátszása** gombra.
-1. Miután rákattintott a "Recognize!" gombra az alkalmazás megtekintheti a hanganyag tartalmát a fájl "Mi az az időjárás, például a?" a szimulált a képernyő alsó részén.
+1. Hozhat létre és futtassa a példakód az iOS-szimulátorban történő kiválasztásával **termék** -> **futtatása** a menüből, vagy kattintson a **lejátszása** gombra. Az iOS-eszközön fut, csatlakoztassa az eszközt a fejlesztői gépére, és válassza ki az eszközön futó célként. A beszédfelismerés SDK jelenleg csak 64 bites iOS platform támogatja.
+1. Miután rákattintott a "Recognize!" gombra az alkalmazás megtekintheti a hanganyag tartalmát a fájl "Mi az az időjárás, például a?" az a képernyő alsó részén.
 
  ![Szimulált iOS-alkalmazás](media/sdk/qs-objectivec-simulated-app.png)
 

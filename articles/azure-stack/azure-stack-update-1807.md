@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/18/2018
+ms.date: 09/26/2018
 ms.author: sethm
 ms.reviewer: justini
-ms.openlocfilehash: 53f01ad6e8a801c69ea93c54e805807cb8eed34d
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 951c012dd22cf83741211b9601a5e7502de33be6
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46127822"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47393026"
 ---
 # <a name="azure-stack-1807-update"></a>Azure Stack 1807 frissítése
 
@@ -168,6 +168,8 @@ Ez a frissítés telepítése után bármely alkalmazandó gyorsjavítások tele
 Az alábbiakban a telepítés utáni ismert hibáit a build-verziószáma.
 
 ### <a name="portal"></a>Portál
+
+- Az Azure Stack technikai dokumentáció a legfrissebb kiadás összpontosít. Portál változások között, mert megjelenő használata az Azure Stack portálok kissé eltérhetnek a dokumentációban talál. 
 
 - Lehetővé teszi [nyisson egy új támogatási kérelmet a legördülő listából](azure-stack-manage-portals.md#quick-access-to-help-and-support) belül a felügyeleti portálon nem érhető el. Az Azure Stack integrált rendszerek, használja a következő hivatkozásra: [ https://aka.ms/newsupportrequest ](https://aka.ms/newsupportrequest).
 

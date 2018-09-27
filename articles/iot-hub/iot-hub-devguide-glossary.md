@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 01/29/2018
 ms.author: dobett
-ms.openlocfilehash: 575326ee3bd2cb64b2cb65168f23f7fe97dad029
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 52aabcfd908afeea3bb9bf36eefad706b74d8ba9
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46954398"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47227146"
 ---
 # <a name="glossary-of-iot-hub-terms"></a>Az IoT Hub kifejezések jegyzéke
 Ez a cikk felsorolja az egyes az IoT Hub-cikkekben használt gyakori kifejezések.
@@ -27,7 +27,7 @@ Az Azure IoT Hub automatikus kezelés automatizálja az ismétlődő és összet
 ## <a name="automatic-device-configuration"></a>Eszközök automatikus konfigurálása
 A megoldás háttérrendszere [automatikus eszközkonfigurációk](iot-hub-auto-device-config.md) körét a kívánt tulajdonságok hozzárendelése [ikereszközök](#device-twin) és állapot jelentése rendszermérőszámot és egyéni metrikák használatával. 
 
-## <a name="azure-classic-cli"></a>Az Azure klasszikus parancssori felület
+## <a name="azure-classic-cli"></a>Azure klasszikus parancssori felület
 A [Azure klasszikus parancssori felület](../cli-install-nodejs.md) egy platformfüggetlen, nyílt forráskódú, felületalapú, a parancs eszköz létrehozása és kezelése a Microsoft Azure erőforrásait. A CLI ezen verziójának kell csak a klasszikus üzemi modellben használható.
 
 ## <a name="azure-cli"></a>Azure CLI
@@ -136,7 +136,7 @@ A [ikereszköz](iot-hub-devguide-device-twins.md) JSON-dokumentum, amely tárolj
 Ikereszköz hasonlóan egy ikermodul is JSON-dokumentumot, például a metaadatokat, konfigurációkat és állapotokat modul állapot adatait tárolja. Az IoT Hub továbbra is fennáll, egy ikermodul alatt egy új eszközidentitást az IoT hubban kiosztott minden egyes modul-identitás. Ikermodulokkal lehetővé szinkronizálják a modul feltételeket és a konfigurációk a modul és a megoldás háttérrendszere között. Keresse meg a modulokról, és a hosszú ideig futó műveletek állapotának lekérdezése ikermodulokkal lekérdezheti.
 
 ## <a name="twin-queries"></a>Ikereszköz-lekérdezések
-[Eszköz- és modul ikereszköz-lekérdezések](iot-hub-devguide-query-language.md) használja az SQL-szerű IoT Hub lekérdezési nyelv az ikereszközökhöz vagy ikermodulokkal lévő információk lekéréséhez. Az ugyanazon az IoT Hub lekérdezési nyelv használatával kapcsolatos információk lekéréséhez [ ](#job) futtatása az IoT hubban.
+[Eszköz- és modul ikereszköz-lekérdezések](iot-hub-devguide-query-language.md) használja az SQL-szerű IoT Hub lekérdezési nyelv az ikereszközökhöz vagy ikermodulokkal lévő információk lekéréséhez. Az ugyanazon az IoT Hub lekérdezési nyelv használatával kapcsolatos információk lekéréséhez [](#job) futtatása az IoT hubban.
 
 ## <a name="twin-synchronization"></a>Ikereszköz-szinkronizálás
 Ikereszköz szinkronizálást használ a [kívánt tulajdonságok](#desired-properties) az ikereszközök vagy ikermodulokkal az eszközök vagy a modulok beállítása és lekérése [jelentett tulajdonságokként](#reported-properties) ezekből az ikereszköz tárolja.
@@ -177,7 +177,7 @@ Az IoT Hub egy teljes körűen felügyelt Azure-szolgáltatás, amely megbízhat
 [Az IoT Hub-metrikák](iot-hub-metrics.md) az IoT hubra állapotával kapcsolatos adatokat biztosítanak a [Azure-előfizetés](#subscription). Az IoT Hub-metrikák lehetővé teszi felmérheti a szolgáltatás és a hozzá csatlakozó eszközök általános állapotát. Az IoT Hub mérőszámok segítségével tekintse meg, mi történik az IoT hubbal és a kiváltó problémák kivizsgálásában anélkül, hogy forduljon az Azure ügyfélszolgálatához.
 
 ## <a name="iot-hub-query-language"></a>IoT Hub lekérdezési nyelv
-A [IoT Hub lekérdezési nyelv](iot-hub-devguide-query-language.md) egy SQL-szerű nyelv, amely lehetővé teszi, hogy lekérdezést a [ ](#job) és ikereszközök.
+A [IoT Hub lekérdezési nyelv](iot-hub-devguide-query-language.md) egy SQL-szerű nyelv, amely lehetővé teszi, hogy lekérdezést a [](#job) és ikereszközök.
 
 ## <a name="iot-hub-resource-rest-api"></a>Az IoT Hub erőforrás REST API-val
 Használhatja a [IoT Hub erőforrás REST API](https://docs.microsoft.com/rest/api/iothub/iothubresource) kezelheti az IoT hubra a [Azure-előfizetés](#subscription) például létrehozása, frissítése és törlése hubs műveleteket végez.
@@ -219,7 +219,7 @@ Kontextusában egy [ikereszköz](iot-hub-devguide-device-twins.md), jelentett tu
 [Az Azure Resource Manager](#azure-resource-manager) erőforráscsoportokat használ a kapcsolódó erőforrások csoportosítása. Egy erőforráscsoport műveletek végrehajtása az összes erőforrást a csoportban egyszerre használhatja.
 
 ## <a name="retry-policy"></a>Újrapróbálkozási szabályzat
-Ez az újrapróbálkozási szabályzat kezeléséhez használja [átmeneti hibák](https://msdn.microsoft.com/library/hh680901(v=pandp.50).aspx) felhőalapú szolgáltatásként való kapcsolódáskor.
+Ez az újrapróbálkozási szabályzat kezeléséhez használja [átmeneti hibák](/azure/architecture/best-practices/transient-faults) felhőalapú szolgáltatásként való kapcsolódáskor.
 
 ## <a name="routing-rules"></a>Útválasztási szabályok
 Konfigurálja [útválasztási szabályok](iot-hub-devguide-messages-read-custom.md) irányíthatja az eszköz a felhőbe irányuló üzeneteket az IoT hub egy [beépített végpont](#built-in-endpoints) vagy [egyéni végpontok](#custom-endpoints) a megoldás háttérrendszerén általi feldolgozáshoz .

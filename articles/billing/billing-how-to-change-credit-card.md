@@ -1,6 +1,6 @@
 ---
-title: A hitelkártya módosítása az Azure-bA |} Microsoft Docs
-description: Ismerteti, hogyan kell fizetni az Azure-előfizetés a használt hitelkártya módosítása
+title: A megadott bankkártyára módosítása az Azure-hoz |} A Microsoft Docs
+description: Ismerteti, hogyan lehet hogyan lehet Azure-előfizetés díjfizetéséhez használt bankkártya módosítása
 services: ''
 documentationcenter: ''
 author: genlin
@@ -14,94 +14,94 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/11/2018
-ms.author: genli
-ms.openlocfilehash: 6b0db12da7c187ce80f1d55ce8b9900601033068
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.author: cwatson
+ms.openlocfilehash: 68f987daff5bc0ef81c248f6f5e75aaf1318b025
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "34068313"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47395491"
 ---
-# <a name="add-update-or-remove-a-credit-or-debit-card-for-azure"></a>Hozzáadása, frissítése vagy az Azure-bA vagy követel kártya eltávolítása
+# <a name="add-update-or-remove-a-credit-or-debit-card-for-azure"></a>Hozzáadása, frissítése vagy hitelkártya vagy bankkártya eltávolítása az Azure-hoz
 
-Az Account Center hozzáadása egy új hitelkártya, egy meglévő hitelkártya módosítása vagy törlése a hitelkártya, amelyek nem használják. Kell [Fiókadminisztrátort](billing-subscription-transfer.md#whoisaa) módosítások végrehajtásához.
+Az Account Center webhelyen új hitelkártya hozzáadásához, frissítse a meglévő bankkártyák, vagy törölje a nem használt hitelkártya. Kell [felhasználóifiók-adminisztrátor](billing-subscription-transfer.md#whoisaa) módosítások végrehajtásához.
 
-**Kíván a számla fizet váltani?** Lásd: [Azure-előfizetések a számla kibocsátása után kell fizetnie](billing-how-to-pay-by-invoice.md).
+**Váltson át a számla ellenében szeretné?** Lásd: [Azure előfizetések fizetése számla](billing-how-to-pay-by-invoice.md).
  
 <a id="addcard"></a>
 
-## <a name="add-a-new-credit-or-debit-card"></a>Adja hozzá egy új vagy követel kártya
+## <a name="add-a-new-credit-or-debit-card"></a>Új hitelkártya vagy bankkártya kártya hozzáadása
 
-1. Jelentkezzen be a [Account Center](https://account.windowsazure.com/Subscriptions) fiók rendszergazdaként.
+1. Jelentkezzen be a [Fiókközpontban](https://account.windowsazure.com/Subscriptions) fiók rendszergazdaként.
 1. Válasszon egy előfizetést.
 1. Az oldal jobb oldalán válassza a **Fizetési módok kezelése** lehetőséget.
 
-    ![Képernyőkép a kezelés fizetési módszerek jelölőnégyzetet.](./media/billing-how-to-change-credit-card/changesub_new.png)
-1. Jelölje ki "+" hozzáadása a kártya.
+    ![Képernyőkép a kezelés fizetési módszereket lehetőség van kijelölve.](./media/billing-how-to-change-credit-card/changesub_new.png)
+1. Jelölje be "+", adjon hozzá egy kártyát.
 
-    ![Képernyőkép a Szerkesztés beállítás mellett a fizetési módot.](./media/billing-how-to-change-credit-card/editcard_new.png)
-1. Követel meg, vagy a tartozik vonatkozó információkat.
+    ![Képernyőkép a Szerkesztés lehetőség mellett a fizetési módot.](./media/billing-how-to-change-credit-card/editcard_new.png)
+1. Adja meg a jóváírás vagy a kártyaadatokon tartozik.
 1. Kattintson a **Mentés** gombra. 
 
-Ha hibaüzenetet kap, miután hozzáadta a hitelkártya, lásd: [hitelkártya elutasítva: Azure-előfizetési](billing-credit-card-fails-during-azure-sign-up.md).
+Miután hozzáadta a hitelkártya hibaüzenetet kap, ha [Azure-előfizetés elutasított bankkártya](billing-credit-card-fails-during-azure-sign-up.md).
 
 ## <a name="update-existing-credit-or-debit-card"></a>Meglévő jóváírás vagy bankkártyával frissítése
 
-Ha hitelkártyával lekérdezi megújítani, és a szám változatlan marad, frissítse a meglévő hitelkártya adatait, például a lejárati dátum. Ha a hitelkártya száma módosításokat, mert a kártya egy elveszett, ellopott, vagy lejárt, kövesse a a [adja hozzá a hitelkártya fizetési módszerként](#addcard) szakasz. Nem kell frissíteni a CVV.
+Ha hitelkártyáját megújítani lekérdezi, és hány változatlan marad, frissítse a meglévő hitelkártya adatait, például a lejárati dátum. Ha a hitelkártya száma módosításokat, mert a kártya elveszik, ellopják, vagy lejárt, kövesse a a [hitelkártya hozzáadásához a fizetési módként alkalmazott](#addcard) szakaszban. Nem kell frissíteni a CVV.
 
 1. Jelentkezzen be a [Azure Account Center](https://account.windowsazure.com/Subscriptions) fiók rendszergazdaként.
-1. Válassza ki az előfizetést, amely csatolva van a kártya.
+1. Válassza ki az előfizetést, amely kapcsolódik a kártya.
 1. Válassza ki **fizetési módok kezelése**.
 1. Válassza ki **szerkesztése** mellett a frissíteni kívánt kártya.
-1. A vagy követel kártya adatainak frissítéséhez.
+1. Frissítse a hitelkártya vagy bankkártya vonatkozó információkat.
 1. Kattintson a **Mentés** gombra.
 
-## <a name="use-a-different-credit-card-for-the-azure-subscription"></a>Az Azure-előfizetés egy másik hitelkártya használatára
+## <a name="use-a-different-credit-card-for-the-azure-subscription"></a>Más hitelkártya használata az Azure-előfizetés
 
 1. Jelentkezzen be a [Azure Account Center](https://account.windowsazure.com/Subscriptions) fiók rendszergazdaként.
-1. Válassza ki az előfizetést, amely csatolva van a kártya.
+1. Válassza ki az előfizetést, amely kapcsolódik a kártya.
 1. Az oldal jobb oldalán válassza a **Fizetési módok kezelése** lehetőséget.
-1. Kattintson a **használja helyette** a kártya, amely a használni kívánt mellett. Ez is frissíti, ez a kártya jelenleg társított más előfizetéseket. 
+1. Kattintson a **használja ehelyett** mellett a kártya, amelyet használni szeretne. Ez frissíti a jelenleg társított Ez a kártya egyéb előfizetéseket is. 
 
-## <a name="remove-a-credit-or-debit-card-from-the-account"></a>Távolítsa el a fiókot vagy követel kártya
+## <a name="remove-a-credit-or-debit-card-from-the-account"></a>Hitelkártya vagy bankkártya eltávolítása a fiókból
 
-1. Jelentkezzen be a [Azure Account Center](https://account.windowsazure.com/Subscriptions) a fiókadminisztrátora.
-1. Válassza ki az előfizetést, amely csatolva van a kártya.
+1. Jelentkezzen be a [Azure Account Center](https://account.windowsazure.com/Subscriptions) rendszergazdaként.
+1. Válassza ki az előfizetést, amely kapcsolódik a kártya.
 3. Az oldal jobb oldalán válassza a **Fizetési módok kezelése** lehetőséget.
-4. Kattintson a **törlése** a hitelkártya, hogy törölni szeretné.
+4. Kattintson a **törlése** a hitelkártya, amelyet törölni szeretne.
 
-Ha hitelkártyával más aktív Microsoft előfizetések tartozik, nem távolítható el az Azure-fiókjába. Távolítsa el a hitelkártya összes aktív előfizetést, amely rendelkezik a Microsofttal, és próbálkozzon újra.
+Ha a megadott bankkártyára más aktív Microsoft-előfizetések társítva, nem távolítható el az Azure-fiókjával. Távolítsa el a hitelkártyát az összes aktív előfizetést, amely rendelkezik a Microsofttal, és próbálkozzon újra.
 
 ## <a name="frequently-asked-questions"></a>Gyakori kérdések
 
-### <a name="my-subscription-is-disabled-why-cant-i-remove-my-credit-card-now"></a>Az előfizetésem le van tiltva. Miért nem távolítható el a hitelkártyámmal most?
+### <a name="my-subscription-is-disabled-why-cant-i-remove-my-credit-card-now"></a>Az előfizetés le van tiltva. Miért nem távolítható el fognak pénzt levonni most?
 
-Az előfizetés le van tiltva, vagy visszavont után 90 nappal korábbinak véglegesen törli az előfizetését várunk. Azt tartsa a fizetési módot, a fájl a megőrzési időszak alatt abban az esetben, ha azt szeretné, az előfizetés újraaktiválásához. Ezt követően az előfizetés teljesen törölve.
+Után az előfizetés le van tiltva, vagy meg lett szakítva, hogy Várjon, amíg 90 nappal korábbinak végleges törlése az előfizetésében. Mindent megteszünk a fizetési módot, a fájl a megőrzési időszak alatt szeretne az előfizetés újraaktiválásához. Ezt követően az előfizetés teljes egészében törlődik.
 
-Ha el kell távolítania vagy követel kártyáját, mielőtt a 90 napos megőrzési időszak végén, [az előfizetés újraaktiválásához](billing-subscription-become-disable.md). Nem lehet aktiválni, ha [kérje az Azure támogatási](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
+Ha el kell távolítania a bankkártya vagy egy hitelkártya, mielőtt a 90 napos megőrzési időszak végén, [az előfizetés újraaktiválásához](billing-subscription-become-disable.md). Nem lehet aktiválni, ha [lépjen kapcsolatba az Azure-támogatás](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
 
-### <a name="why-do-i-keep-getting-your-login-session-has-expired-please-click-here-to-log-back-in"></a>Miért kapok folyton "bejelentkezése lejárt. Kattintson ide a bejelentkezéshez vissza"?
+### <a name="why-do-i-keep-getting-your-login-session-has-expired-please-click-here-to-log-back-in"></a>Miért kapok folyton "a bejelentkezési munkamenet lejárt. Ide kattintva jelentkezzen be újra"?
 
-Ha ez a hibaüzenet akkor is, ha már bejelentkezve folyton, és vissza a, próbálja meg újra egy titkos munkamenet.
+Ha ez a hibaüzenet továbbra is megkapja, még akkor is, ha már bejelentkezett és vissza a, próbálja meg újra a privát böngészési munkamenetet.
 
-### <a name="how-do-i-use-a-different-card-for-each-subscription-i-have"></a>Miként használható az egy másik kártyát az egyes előfizetésekhez van?
+### <a name="how-do-i-use-a-different-card-for-each-subscription-i-have"></a>Hogyan használhatom egy másik kártyát minden egyes előfizetés van?
 
-Sajnos az előfizetések már használja a kártyának, esetén nem lehetséges különböző kártyák használhatják. Amikor regisztrál egy új előfizetést, akkor kiválaszthatja, egy új fizetési mód használata az adott előfizetéshez tartozó.
+Sajnos Ha az előfizetések ugyanahhoz a kártyához már használ, azt, nem külön azokat különböző kártyák használatára. Azonban amikor regisztrál egy új előfizetést, választhat új fizetési mód használatára az adott előfizetéshez tartozó.
 
-### <a name="how-do-i-make-payments"></a>Hogyan tehetem kifizetések?
+### <a name="how-do-i-make-payments"></a>Hogyan ellenőrizhetem, kifizetések?
 
-Ha beállított hitelkártyával vagy bankkártyával egy a fizetési módot, azt automatikusan díjat számítanak kártyáját minden számlázási időszak után. Nem kell tennie semmit.
+Ha beállította hitelkártyával vagy bankkártyával kártya a fizetési módként alkalmazott, automatikusan díját számoljuk fel a kártya minden elszámolási időszak után. Nem kell semmit.
 
-Ha Ön [szerinti fizetésre](billing-how-to-pay-by-invoice.md), a helyre a befizetést a számla alján felsorolt küldése.
+Ha Ön [szerinti fizetésre](billing-how-to-pay-by-invoice.md), a fizetési a helyet, a számla alján felsorolt küldése.
 
-### <a name="how-do-i-make-a-one-time-payment"></a>Hogyan tehetem egy egyszeri fizetési?
+### <a name="how-do-i-make-a-one-time-payment"></a>Hogyan ellenőrizhetem, egyszeri fizetéssel?
 
-Sajnos Azure jelenleg nem támogatja a egyszeri kifizetések vagy követel kártyákhoz. 
+Sajnos az Azure jelenleg nem támogatja az egyszeri kifizetések bankkártyával, illetve a kártyák. 
 
-### <a name="how-do-i-change-the-tax-id"></a>Az Adószám módosítása?
+### <a name="how-do-i-change-the-tax-id"></a>Hogyan változtatható az Adóazonosító?
 
-Adja hozzá, vagy az Adószám módosítása, látogasson el a [ **profil** az Azure Account Center](https://account.azure.com/Profile), majd jelölje be **rekord adó**. Az Adószám adó kivétel számítások használja, és a számlán megjelenik.
+Hozzáadásához, vagy frissítési adó azonosítója, látogasson el a [ **profil** Azure Account Center webhelyen](https://account.azure.com/Profile), majd **rekord adó**. Az adóazonosító az adómentesség kiszámításához szükséges, és megjelenik a számlán.
 
 ## <a name="need-help-contact-support"></a>Segítség Kapcsolatfelvétel a támogatási szolgáltatással
 
-Ha további segítségre van, [forduljon a támogatási szolgálathoz](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) a probléma elhárítva gyors eléréséhez.
+Ha továbbra is segítségre van szüksége, [forduljon az ügyfélszolgálathoz](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) a probléma gyors megoldása érdekében.

@@ -9,12 +9,12 @@ ms.component: speech-service
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: v-jerkin
-ms.openlocfilehash: efdded28fa4554bf58399d997bf663781a08755e
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 9e180e15801a7100349c7334a2452adfeab95500
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44714701"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47394481"
 ---
 # <a name="about-the-speech-to-text-api"></a>Tudnivalók a Speech to Text API
 
@@ -26,7 +26,7 @@ A **Speech to Text** API a következő szolgáltatásokat nyújtja:
 
 - Valós idejű folyamatos felismerése. **Beszédfelismerés** lehetővé teszi a felhasználóknak lefényképezze hangot szöveggé valós időben. Ezenkívül támogatja fogadása eddig felismerhető szavak köztes eredményeket. A szolgáltatás automatikusan észleli a speech végén. Felhasználók is beállíthatja a további formázási beállításokat, beleértve a kis-és nagybetűk és írásjelek, vulgáris maszkolás és más néven Inverz szöveg normalizálási.
 
-- Optimalizált **Speech to Text** interaktív, beszélgetést, eredményeit és a Diktálás forgatókönyvek. 
+- Optimalizált **Speech to Text** interaktív, beszélgetést, eredményeit és a Diktálás forgatókönyvek. A felismert eredménye Lexical és a megjelenített képernyőn (lexikai eredményt, lásd: DetailedSpeechRecognitionResult példák vagy API-t).
 
 - Számos használja a beszélt nyelv és Dialektusok támogatása. Minden egyes felismerés módban támogatott nyelvek teljes listáját lásd: [támogatott nyelvek](supported-languages.md#speech-to-text).
 

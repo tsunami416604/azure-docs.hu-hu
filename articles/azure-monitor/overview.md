@@ -10,19 +10,19 @@ ms.service: azure-monitor
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 09/14/2018
+ms.topic: conceptual
+ms.date: 09/26/2018
 ms.author: bwren
-ms.openlocfilehash: 97cc6d6e922ab0bedd729eddca754ae016f041bf
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 0413357b6e17bf66b0ae9b504bc23b9702d03c91
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46958016"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47220975"
 ---
 # <a name="azure-monitor-overview"></a>Az Azure Monitor áttekintése
 
-Az Azure Monitor a lehető legnagyobbra növeli a az alkalmazások teljesítményét és rendelkezésre állását azáltal, hogy egy átfogó megoldás gyűjtéséhez, elemzéséhez és a telemetriai adatokat a felhőben működő és helyszíni környezeteket. Ez segít megérteni, hogyan az alkalmazások hajt végre, és őket, és az erőforrások függenek érintő problémák proaktív módon azonosítja.
+Az Azure Monitor a lehető legnagyobbra növeli a az alkalmazások teljesítményét és rendelkezésre állását azáltal, hogy egy átfogó megoldás gyűjtéséhez, elemzéséhez és a telemetriai adatokat a felhőben működő és helyszíni környezeteket. Ez a szolgáltatás segít megérteni azt, hogy az alkalmazásai hogyan teljesítenek, valamint proaktív módon azonosítja a működésüket befolyásoló problémákat és azokat az erőforrásokat, amelyektől függenek.
 
 > [!VIDEO https://www.youtube.com/embed/_hGff5bVtkM]
 
@@ -47,7 +47,7 @@ A Log Analytics lekérdezési nyelv egyszerű naplólekérdezések alkalmas, de 
 ![Logs](media/overview/logs.png)
 
 ## <a name="what-data-does-azure-monitor-collect"></a>Milyen adatokat gyűjt az Azure Monitor?
-A log Analytics különböző forrásokból tud adatokat gyűjteni. Az alkalmazások és az alkalmazás, minden operációs és szolgáltatást, így működése attól függ, a platform saját maga le a csomagban az figyelési felfoghatók. Az Azure Monitor gyűjti az adatokat az alábbi szinteken mindegyike:
+Az Azure Monitor tud adatokat gyűjteni a különböző forrásokból. Az alkalmazások és az alkalmazás, minden operációs és szolgáltatást, így működése attól függ, a platform saját maga le a csomagban az figyelési felfoghatók. Az Azure Monitor gyűjti az adatokat az alábbi szinteken mindegyike:
 
 - **Alkalmazásfigyelési adatok**: adatok teljesítményéről és a kód funkciójának írt, a platformtól függetlenül.
 - **Vendég operációs rendszerek monitorozási adatai**: az operációs rendszer, amelyen fut az alkalmazás adatait. Ez az Azure, egy másik felhőalapú vagy helyszíni fut. 
@@ -74,21 +74,21 @@ Monitorozási adatok csak akkor hasznos, ha, növelheti a betekintést a számí
 
 ![App Insights](media/overview/app-insights.png)
 
-### <a name="azure-monitor-for-containers"></a>Az Azure Monitor for containers szolgáltatásban
+### <a name="azure-monitor-for-containers"></a>Azure Monitor tárolókhoz
 Az Azure Monitor for containers szolgáltatásban üzembe helyezett Azure Kubernetes Service (AKS) az üzemeltetett Kubernetes-fürtök felügyelt tárolókhoz kapcsolódó számítási feladatok teljesítményének figyelésére tervezett funkciója. Biztosít gyűjtését memória és a mérőszámok a processzor teljesítménye látható-e a tartományvezérlők, a csomópontok és a Kubernetes, a metrikák API-n keresztül a rendelkezésre álló tárolók. A rendszer a tárolónaplókat is gyűjti.  Miután engedélyezte a Kubernetes-fürtök figyelése, ezek a metrikák és naplók automatikusan egy tárolóalapú a Linuxhoz készült Log Analytics-ügynök verziója az Ön számára gyűjtött és tárolja a Log Analyticsben.
 
 ![Tároló állapota](media/overview/container-insights.png)
 
-### <a name="azure-monitor-for-vms"></a>Az Azure Monitor-beli virtuális gépek
+### <a name="azure-monitor-for-vms"></a>Azure Monitor virtuális gépekhez
 Az Azure Monitor VM insights az Azure-beli virtuális gépek (VM) ipari méretekben elemzésével, a teljesítmény és a Windows és Linux rendszerű virtuális gépekhez, beleértve azok eltérő folyamatokat és egyéb erőforrások és a külső folyamatok összekapcsolt függőségek állapotát figyeli. A megoldás tartalmaz a teljesítmény figyelése támogatása, és a virtuális gépek alkalmazásfüggőségek üzemeltetett a helyszínen vagy egy másik felhőszolgáltatóval.  
 
 
 ![VM Insights](media/overview/vm-insights.png)
 
-### <a name="monitoring-solutions"></a>Figyelési megoldások
+### <a name="monitoring-solutions"></a>Monitorozási megoldások
 [Figyelési megoldások](../monitoring/monitoring-solutions.md) az Azure monitorban, amelyeket a csomagolt logika, amelyek elemzéseket nyújtanak egy adott alkalmazás vagy szolgáltatás esetében. Gyűjtenek adatokat a Log Analytics-be más figyelési adatokat, valamint [lekérdezések](../log-analytics/log-analytics-queries.md) elemzéshez és [nézetek](../log-analytics/log-analytics-view-designer.md) a vizualizációt. Figyelési megoldások [a Microsoft](../monitoring/monitoring-solutions-inventory.md) és partnerek számára a különböző Azure-szolgáltatások és más alkalmazások figyelésére.
 
-![Figyelési megoldások](../monitoring/media/monitoring-solutions/overview.png)
+![Monitorozási megoldások](../monitoring/media/monitoring-solutions/overview.png)
 
 ## <a name="responding-to-critical-situations"></a>Válaszadás a kritikus fontosságú helyzetek
 Mellett lehetővé teszi, hogy a monitorozási adatok interaktív elemzéséhez, egy hatékony monitorozási megoldást proaktív módon reagál a gyűjtött adatok között azonosított kritikus feltételek képesnek kell lennie. Ez sikerült kell küldése a szöveg- vagy e-mail rendszergazda egy probléma kivizsgálásának felelős. Vagy, elindíthat egy automatizált folyamattal, amely megpróbálja hibaállapot kijavítása érdekében.
@@ -145,9 +145,6 @@ Több API-t írási és olvasási metrikákat és naplókat, és az Azure Monito
 ## <a name="next-steps"></a>További lépések
 További információk:
 
-* [Azure Monitor](https://azure.microsoft.com/services/monitor/), ha az alapvető monitorozási metrikákkal és riasztásokkal szeretne megismerkedni.
-* [Application Insights](https://azure.microsoft.com/documentation/services/application-insights/), ha az App Service-webalkalmazásokkal kapcsolatos problémákat szeretné diagnosztizálni.
-* [Log Analytics](https://azure.microsoft.com/documentation/services/log-analytics/), ha a gyűjtött monitorozási adatokat és naplókat szeretné elemezni.
-
-
-
+* [Metrikák és naplók](../monitoring/monitoring-data-collection.md) az Azure Monitor által összegyűjtött adatokat.
+* [Adatforrások](../monitoring/monitoring-data-sources.md) számára az alkalmazás összetevői hogyan telemetriai adatokat küldhet.
+* [Log Analytics](../log-analytics/log-analytics-queries.md) összegyűjtött adatok elemzéséhez.

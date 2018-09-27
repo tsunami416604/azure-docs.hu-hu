@@ -2,20 +2,22 @@
 title: Az Azure SQL Database felügyelt példány a T-SQL eltérései |} A Microsoft Docs
 description: Ez a cikk ismerteti a T-SQL különbségek az Azure SQL Database felügyelt példánya és az SQL Server között.
 services: sql-database
-author: jovanpop-msft
-ms.reviewer: carlrab, bonova
 ms.service: sql-database
-ms.custom: managed instance
+ms.subservice: managed-instance
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 08/13/2018
+author: jovanpop-msft
 ms.author: jovanpop
+ms.reviewer: carlrab, bonova
 manager: craigg
-ms.openlocfilehash: c23fbf0af7d1a15b0efee8af123150feb42c708e
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.date: 08/13/2018
+ms.openlocfilehash: 2f512c666555ca8bee58305b76573459f6e631e2
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46966897"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47166503"
 ---
 # <a name="azure-sql-database-managed-instance-t-sql-differences-from-sql-server"></a>Az SQL Serverről Azure SQL Database felügyelt példány T-SQL különbségek 
 
@@ -89,7 +91,7 @@ Felügyelt példány nem fér hozzá, fájlmegosztásokat és a Windows-mappák,
  
 ### <a name="certificates"></a>Tanúsítványok 
 
-Felügyelt példány nem férnek hozzá, fájlmegosztások és Windows-mappák, így a következő korlátozások vonatkoznak: 
+A felügyelt példány nem fér hozzá a fájlmegosztásokhoz és a Windows-mappákhoz, ezért a következő korlátozások érvényesülnek: 
 - `CREATE FROM`/`BACKUP TO` fájl nem támogatott a tanúsítványok
 - `CREATE`/`BACKUP` a tanúsítvány `FILE` / `ASSEMBLY` nem támogatott. Titkos kulcs fájljai nem használható.  
  
@@ -106,7 +108,7 @@ WITH PRIVATE KEY ( <private_key_options> )
  
 ### <a name="clr"></a>CLR-BELI 
 
-Felügyelt példány nem férnek hozzá, fájlmegosztások és Windows-mappák, így a következő korlátozások vonatkoznak: 
+A felügyelt példány nem fér hozzá a fájlmegosztásokhoz és a Windows-mappákhoz, ezért a következő korlátozások érvényesülnek: 
 - Csak `CREATE ASSEMBLY FROM BINARY` használata támogatott. Lásd: [CREATE ASSEMBLY BINÁRISRÓL](https://docs.microsoft.com/sql/t-sql/statements/create-assembly-transact-sql).  
 - `CREATE ASSEMBLY FROM FILE` nem támogatott. Lásd: [CREATE ASSEMBLY FÁJLBÓL](https://docs.microsoft.com/sql/t-sql/statements/create-assembly-transact-sql).
 - `ALTER ASSEMBLY` nem lehet hivatkozni a fájlokat. Lásd: [ALTER ASSEMBLY](https://docs.microsoft.com/sql/t-sql/statements/alter-assembly-transact-sql).

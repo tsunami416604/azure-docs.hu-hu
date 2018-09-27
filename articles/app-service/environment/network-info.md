@@ -1,5 +1,5 @@
 ---
-title: Hálózati megfontolások az Azure App Service environmenttel
+title: Az Azure App Service Environment hálózati megfontolások
 description: Ismerteti az ASE-hálózati forgalom és NSG-ket és az ASE az udr-EK beállítása
 services: app-service
 documentationcenter: na
@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/29/2018
+ms.date: 08/29/2018
 ms.author: ccompy
-ms.openlocfilehash: ef2288e2f756db6529f1ec5f7b3a49067b2998aa
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ms.openlocfilehash: b9897fd0030c2b6efed0fefc47dd6720a61978cd
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35645566"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47165142"
 ---
 # <a name="networking-considerations-for-an-app-service-environment"></a>App Service Environment hálózati szempontjai #
 
@@ -67,6 +67,8 @@ Kisebbre vagy nagyobbra méretezhetők, ha hozzáadja az új szerepköröket a m
 
 ## <a name="ase-dependencies"></a>ASE függőségek ##
 
+### <a name="ase-inbound-dependencies"></a>ASE bejövő függőségek ###
+
 Az ASE bejövő hozzáférést függőségei vannak:
 
 | Használat | Ettől: | Művelet |
@@ -84,26 +86,23 @@ Az Azure load balancer és az ASE-alhálózatra közötti kommunikációhoz a mi
 
 Ha az alkalmazások az ASE-alhálózathoz rendelt IP-címekről érkező forgalom engedélyezésére kell IP-címek alkalmazás használ.
 
-A kimenő hozzáféréshez az ASE több külső rendszerek függ. Ezeket a rendszer függőségeket DNS-nevük van definiálva, és nem leképezése az IP-címek készletét. Így az ASE portok többféle minden külső IP-címet az ASE alhálózatról kimenő hozzáférésre van szüksége. Egy ASE Környezethez a következő kimenő függőségekkel rendelkezik:
+A TCP-forgalom, amely porton 454 és a 455 kell lépjen vissza az azonos virtuális IP-cím a, vagy az aszimmetrikus útválasztás problémát kell. 
 
-| Használat | Ettől: | Művelet |
-|-----|------|----|
-| Azure Storage | ASE-alhálózattal | TABLE.Core.Windows.NET, blob.core.windows.net, queue.core.windows.net, file.core.windows.net: 80-as, 443, 445-ös (445-ös csak szükség van az ASEv1.) |
-| Azure SQL Database | ASE-alhálózattal | Database.Windows.NET: 1433-as |
-| Az Azure felügyeleti | ASE-alhálózattal | Management.Core.Windows.NET, management.azure.com, admin.core.windows.net: 443 |
-| SSL-tanúsítvány-ellenőrzés |  ASE-alhálózattal            |  ocsp.msocsp.com, mscrl.microsoft.com, crl.microsoft.com: 443 |
-| Azure Active Directory        | ASE-alhálózattal            |  login.Windows.NET: 443 |
-| App Service-kezelése        | ASE-alhálózattal            |  GR – éles -<regionspecific>. cloudapp.net, az-prod.metrics.nsatc .net: 443 |
-| Azure DNS                     | ASE-alhálózattal            |  Internet: 53 |
-| Belső ASE-kommunikáció    | ASE-alhálózattal: minden port |  ASE-alhálózattal: minden port |
+### <a name="ase-outbound-dependencies"></a>Kimenő ASE-függőségek ###
 
-Ha az ASE elveszíti ezeket a függőségeket a hozzáférést, a rendszer nem működik. Ebben az esetben elég hosszú az ASE fel van függesztve.
+A kimenő hozzáféréshez az ASE több külső rendszerek függ. Ezeket a rendszer függőségeket számos DNS-nevük van definiálva, és nem leképezése az IP-címek készletét. Így az ASE portok többféle minden külső IP-címet az ASE alhálózatról kimenő hozzáférésre van szüksége. 
+
+Kimenő függőségek teljes listáját, amely leírja a dokumentumban felsorolt [App Service Environment-környezet kimenő forgalom meghatározott sémákra kelljen](./firewall-integration.md). Ha az ASE elveszítette a hozzáférését annak függőségeit, a rendszer nem működik. Ebben az esetben elég hosszú az ASE fel van függesztve. 
 
 ### <a name="customer-dns"></a>Ügyfél DNS ###
 
 Ha egy felhasználó által meghatározott DNS-kiszolgáló a virtuális hálózaton van beállítva, a bérlők munkaterheléseihez használhatja. Az ASE-t továbbra is az Azure DNS használata felügyeleti célokra közötti kommunikációhoz szükséges. 
 
 Ha a virtuális hálózat úgy van konfigurálva, a DNS, a másik oldalon egy VPN-ügyfél, a DNS-kiszolgáló az ASE Környezetet tartalmazó alhálózat elérhetőnek kell lennie.
+
+A webalkalmazás megoldás teszteléséhez használhatja a konzol parancs *nameresolver*. Az scm-webhelyen, az alkalmazás hibakeresési ablakában nyissa meg vagy nyissa meg az alkalmazás a portálon, és válassza a konzolon. A rendszerhéj parancssorában adja ki a parancsot *nameresolver* a cím megtekinteni kívánt együtt. Újból eredménye ugyanaz, mint amit az alkalmazás kap az azonos keresés közben. Ha az nslookup fogja végrehajtani a keresést, az Azure DNS használata esetén inkább használja.
+
+Ha módosítja a DNS-beállításainak a virtuális hálózat, amely az ASE-t, szüksége lesz az ASE újraindítás. Az ASE azzal elkerülheti, azt javasoljuk, hogy az ASE létrehozása előtt a virtuális hálózat DNS-beállításainak konfigurálása.  
 
 <a name="portaldep"></a>
 
@@ -205,9 +204,6 @@ Az azonos útvonalakat manuális létrehozásához kövesse az alábbi lépések
 ## <a name="service-endpoints"></a>Service Endpoints – szolgáltatásvégpont ##
 
 A szolgáltatásvégpontokkal Azure-beli virtuális hálózatok és alhálózatok készletére korlátozhatja a több-bérlős szolgáltatásokhoz való hozzáférést. A szolgáltatásvégpontokról bővebben a [virtuális hálózatok szolgáltatásvégpontjaival][serviceendpoints] kapcsolatos dokumentációban olvashat. 
-
-   > [!NOTE]
-   > Az SQL-t használó szolgáltatásvégpontok nem működnek az US Government régiókban. Ez az információ csak érvényes a nyilvános Azure-régióban.
 
 Amikor engedélyezi a szolgáltatásvégpontokat egy erőforráson, az összes többi útvonalhoz képest nagyobb prioritású útvonalak jönnek létre. Ha kényszerítetten bújtatott ASE-vel használ szolgáltatásvégpontokat, az Azure SQL és az Azure Storage felügyeleti forgalma nem kényszerítetten bújtatott. 
 

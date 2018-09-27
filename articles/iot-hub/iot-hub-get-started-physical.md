@@ -1,43 +1,35 @@
 ---
-title: Ismerkedés az Azure IoT-központ fizikai eszközök csatlakozás |} Microsoft Docs
-description: 'Útmutató: Azure IoT-központ fizikai eszközöket és a modulok csatlakozni. Az eszközök küldhet az IoT-központ és az IoT-központ telemetriai figyelheti és az eszközök kezeléséhez.'
-author: dominicbetts
+title: Első lépések a fizikai eszközök csatlakoztatása Azure IoT Hub |} A Microsoft Docs
+description: Ismerje meg, hogyan csatlakozhat az Azure IoT Hub fizikai eszközöket és a táblákhoz. Az eszközök küldhet telemetriát az IoT Hub és az IoT Hub monitorozni és kezelni az eszközöket.
+author: wesmc7777
 manager: timlt
-keywords: az Azure iot hub oktatóanyag
+keywords: az Azure iot hub-oktatóanyag
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 08/22/2017
-ms.author: dobett
-ms.openlocfilehash: e7911c190ded59f758eff868add6440f5add6579
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.author: wesmc
+ms.openlocfilehash: 5dcd588d525fe296348bd01252846bc498261018
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34633995"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47394743"
 ---
-# <a name="azure-iot-hub-get-started-with-physical-devices-tutorials"></a>Az Azure IoT-központ fizikai eszközök oktatóanyagok az első lépései
+# <a name="azure-iot-hub-get-started-with-physical-devices-tutorials"></a>Az Azure IoT Hub – első lépések a fizikai eszközökön oktatóanyagok
 
-Ezek az oktatóanyagok bemutatják a Azure IoT-központ és az eszköz SDK-k. Az oktatóanyagok általános IoT-forgatókönyvek esetén az IoT-központ funkcióinak bemutatása foglalkozik. Az oktatóanyagok bemutatják, hogyan kombinálhatók az IoT-központ más Azure-szolgáltatások és eszközök nagyobb teljesítményű az IoT-megoldások létrehozásához is. A következő táblázatban található az oktatóanyagok bemutatják a fizikai az IoT-eszközök létrehozásához.
+Ezekben az oktatóanyagokban ismerkedjenek meg az Azure IoT Hub és az eszköz SDK-k. Az oktatóanyagok terjed ki a gyakori IoT-forgatókönyvek használatával az IoT Hub képességeit mutatja be. Az oktatóanyagok is bemutatják, hogyan kombinálhatók az IoT Hub más Azure-szolgáltatások és eszközök nagyobb teljesítményű IoT-megoldások létrehozásához. Az alábbi táblázatban szereplő oktatóanyagok bemutatják, hogyan hozhat létre IoT-eszközök.
 
-| IoT-eszközök                       | Programozási nyelv |
+| IoT-eszköz                       | Programozási nyelv |
 |---------------------------------|----------------------|
-| Raspberry Pi                    | [Python][Pi_Py], [Node.js][Pi_Nd], [C][Pi_C]  |
-| Az IoT-DevKit                      | [A VSCode Arduino][DevKit]     |
-| Intel Edison                    | [NODE.js][Ed_Nd], [C][Ed_C]           |
-| Adafruit lágyított HUZZAH ESP8266 | [Arduino][Hu_Ard]              |
-| Sparkfun ESP8266 dolog fejlesztői      | [Arduino][Th_Ard]              |
-| Adafruit lágyított M0             | [Arduino][M0_Ard]              |
+| Raspberry Pi                    | [NODE.js][Pi_Nd], [C][Pi_C]  |
+| IoT fejlesztői készlet                      | [Arduino a vscode-ban][DevKit]     |
+| Adafruit Feather HUZZAH ESP8266 | [Arduino][Hu_Ard]              |
 
 [!INCLUDE [iot-hub-get-started-extended](../../includes/iot-hub-get-started-extended.md)]
 
 
 [Pi_Nd]: iot-hub-raspberry-pi-kit-node-get-started.md
 [Pi_C]: iot-hub-raspberry-pi-kit-c-get-started.md
-[Pi_Py]: iot-hub-raspberry-pi-kit-python-get-started.md
 [DevKit]: iot-hub-arduino-iot-devkit-az3166-get-started.md
-[Ed_Nd]: iot-hub-intel-edison-kit-node-get-started.md
-[Ed_C]: iot-hub-intel-edison-kit-c-get-started.md
 [Hu_Ard]: iot-hub-arduino-huzzah-esp8266-get-started.md
-[Th_Ard]: iot-hub-sparkfun-esp8266-thing-dev-get-started.md
-[M0_Ard]: iot-hub-adafruit-feather-m0-wifi-kit-arduino-get-started.md
