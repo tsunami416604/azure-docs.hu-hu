@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/17/2018
+ms.date: 09/25/2018
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: d82fda2928ea8c1e3e60006d3fbe8d53f3d12a9c
-ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
+ms.openlocfilehash: d1ad629ff5c6909256baa94573d045a8c2c09fb5
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 09/26/2018
-ms.locfileid: "47182331"
+ms.locfileid: "47223831"
 ---
 # <a name="common-questions-for-transition-from-oms-portal-to-azure-portal-for-log-analytics-users"></a>OMS-portálon való váltás az Azure portálon a Log Analytics felhasználók kapcsolatos gyakori kérdések
 A log Analytics kezdetben a saját Portalt használta az OMS-portál nevű felügyelje a konfigurációt, és elemezheti az összegyűjtött adatokat.  Ezen a portálon az összes funkció át lett helyezve az Azure Portalra, továbbra is ki kell alakítani.
@@ -83,7 +83,7 @@ A legtöbb csatlakoztatott adatforrás-beállítások kezelése a a a **speciál
 | Azure Storage     | **Speciális beállítások** a munkaterület menüje. |
 | System Center     | **Speciális beállítások** a munkaterület menüje. |
 | Office 365        | Tekintse meg a [Office 365-kezelési megoldásra vonatkozó dokumentáció](../operations-management-suite/oms-solution-office-365.md) konfigurációját. |
-| Windows-telemetria | Még nem érhető el az Azure Portalon. |
+| Windows-telemetria | A megoldás a beállítások menüben. Lásd: [Windows Analytics az Azure Portalon](/windows/deployment/update/windows-analytics-azure-portal) konfigurációját. |
 | ITSM-összekötő    | Lásd: [csatlakozás ITSM termékekkel/szolgáltatásokkal rendelkező informatikai szolgáltatásfelügyeleti összekötő](../log-analytics/log-analytics-itsmc-connections.md) vonatkozó utasításokat az ITSM-szolgáltatás csatlakoztatása a Log Analytics használatával. |
 
 ### <a name="data"></a>Adatok

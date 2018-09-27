@@ -9,19 +9,19 @@ ms.component: acoustics
 ms.topic: article
 ms.date: 08/17/2018
 ms.author: kegodin
-ms.openlocfilehash: b738cc2fc7db6987b8f4ad54a2c53cc9e69989b3
-ms.sourcegitcommit: 1aedb52f221fb2a6e7ad0b0930b4c74db354a569
+ms.openlocfilehash: e0c28645de8c45aaf89afb6b5116aa9a3cb04768
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "40181536"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47227503"
 ---
 # <a name="unity-sample-walkthrough"></a>Unity mintaútmutató
 Ez a bemutató a projekt Akusztika minta. További információ a milyen projekt Akusztika van, tekintse meg a [projekt Akusztika bemutatása](what-is-acoustics.md). A projekt Akusztika csomagot ad hozzá egy már meglévő Unity-projektet a segítségre van szüksége, használja a [a kezdeti lépések útmutatóban](getting-started.md).
 
 ## <a name="requirements-for-running-the-sample-project"></a>A mintaprojekt futtatásának követelményei
 * Unity 2018.2 +, .NET 4.x scripting futásidejű verzió használatával
-* Windows 64 bites Unity-szerkesztő
+* Windows 64-bit Unity szerkesztő
 * A minta támogatja a Windows asztali, UWP- és Android teljesítménycéljait, beleértve a fő csatlakoztatott jeleníti meg (HMDS-t)
 * Az Azure Batch-előfizetés szükséges bake folyamat
 
@@ -43,7 +43,7 @@ A minta futtatásához a Windows asztali, UWP, a Windows vegyes valóság, Andro
 ![VR engedélyezése](media/VRSupport.png)  
 
 VR mikrofonos kapcsolódni a Számítógéphez. Lépjen a **fájl > Build Settings**, és kattintson a **létrehozásához és futtatásához** , a minta üzembe helyezése a VR mikrofonos. Haladjon végig a mozgásban lévő adatoknak egyaránt vezérlő használata a mikrofonos jelenet, vagy használjon W, A, S, D-t a billentyűzettel.    
-Android- és Oculus Go célozza meg, válassza ki az Android a **Build Settings** menü. Kattintson a **cél váltson**, majd **létrehozásához és futtatásához**. Ez a minta jelenet telepíti a csatlakoztatott Androidos eszközön. Az Android-, Unity fejlesztési kapcsolatos információkat lásd: [Unity-dokumentáció](https://docs.unity3d.com/Manual/android-GettingStarted.html).
+Android- és Oculus Go célozza meg, válassza ki az Android a **Build Settings** menü. Kattintson a **cél váltson**, majd **létrehozásához és futtatásához**. Ez a minta jelenet telepíti a csatlakoztatott Androidos eszközön. További információ a Unity fejlesztési Android: [Unity-dokumentáció](https://docs.unity3d.com/Manual/android-GettingStarted.html).
 
 ![Cél Android](media/TargetAndroid.png)  
 

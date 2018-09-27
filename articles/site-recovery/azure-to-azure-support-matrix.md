@@ -9,12 +9,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/10/2018
 ms.author: sujayt
-ms.openlocfilehash: 1db54cfd32a0d598d0079ddaec9aab5d6b2f84c1
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 5cf795b85e295488a04e95dbabcee46134361495
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47039292"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47222472"
 ---
 # <a name="support-matrix-for-replicating-from-one-azure-region-to-another"></a>Egy Azure-régióból a másikba történő replikálásához támogatási mátrix
 
@@ -125,7 +125,7 @@ Replikálja, és a virtuális gépek helyreállítása ugyanazon a földrajzi f�
 Az Amerikai | Kelet-Kanada, Kanada középső, déli középső RÉGIÓJA, USA nyugati középső RÉGIÓJA, USA keleti RÉGIÓJA, USA keleti RÉGIÓJA 2, USA nyugati RÉGIÓJA, USA nyugati RÉGIÓJA 2, USA középső RÉGIÓJA, USA északi középső RÉGIÓJA
 Európa | Egyesült Királyság nyugati régiója, Egyesült Királyság déli régiója, Észak-Európa, Nyugat-Európa, Franciaország közép-India, Dél-Franciaország
 Ázsia | Dél-India, közép-India, Délkelet-Ázsia, Kelet-Ázsia, kelet-japán, Nyugat-japán, Korea középső régiója, Korea déli régiója
-Ausztrália   | Kelet-Ausztrália, Délkelet-Ausztrália
+Ausztrália   | Kelet-Ausztrália, Délkelet-Ausztrália, Ausztrália középső régiója, Ausztrália 2. középső régiója
 Azure Government    | USA-beli Államigazgatás – Virginia, USA-beli Államigazgatás – Iowa, USA-beli államigazgatás – Arizona, USA-beli államigazgatás – Texas, US DOD keleti régiója, USA védelmi Minisztériuma – középső régiója
 Németország | Közép-India, Németország északkelet-Németország
 Kína | Kelet-Kína, Észak-Kína

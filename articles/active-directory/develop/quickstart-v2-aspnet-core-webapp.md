@@ -16,12 +16,12 @@ ms.workload: identity
 ms.date: 09/25/2018
 ms.author: andret
 ms.custom: aaddev
-ms.openlocfilehash: f57dc1707a9e25e4ea308142e804cdbc80d4308a
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: ba67acec778a48c084897095aa457e5637240a57
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46984942"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47227431"
 ---
 # <a name="add-sign-in-with-microsoft-to-an-aspnet-core-web-app"></a>Bejelentkezés Microsoft-hozzáadása az ASP.NET Core-webalkalmazás
 
@@ -62,7 +62,7 @@ Ez a rövid útmutató tartalmazza a kódminta azt mutatja be, hogyan ASP.NET Co
 
 1. Bontsa ki a zip-fájlt egy helyi mappába (például **C:\Azure-Samples**)
 1. Ha a Visual Studio 2017-et használ, nyissa meg a projektet a Visual Studióban (nem kötelező)
-1. Szerkesztés **appsettings.json** , és cserélje le az értéket `ClientId` -a az imént regisztrált alkalmazás alkalmazásazonosítója:
+1. Szerkesztés **appsettings.json** , és cserélje le az értéket `ClientId` együtt az imént regisztrált alkalmazás alkalmazásazonosító:
 
     ```json
     "ClientId": "Enter_the_Application_Id_here"

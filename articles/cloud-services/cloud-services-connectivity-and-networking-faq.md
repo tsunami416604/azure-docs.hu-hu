@@ -1,6 +1,6 @@
 ---
-title: Az ügyfélkapcsolódási és hálózati problémák a Microsoft Azure Cloud Services – gyakori kérdések |} Microsoft Docs
-description: Ez a cikk felsorolja a kapcsolat és hálózati kapcsolatok a Microsoft Azure Felhőszolgáltatások kapcsolatos gyakori kérdésekre.
+title: Kapcsolatokkal és hálózatkezeléssel kapcsolatos problémák a Microsoft Azure Cloud Services – gyakori kérdések |} A Microsoft Docs
+description: Ez a cikk a kapcsolatokkal és hálózatkezeléssel, a Microsoft Azure Cloud Services – gyakori kérdések listája.
 services: cloud-services
 documentationcenter: ''
 author: genlin
@@ -13,66 +13,66 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/11/2018
+ms.date: 08/23/2018
 ms.author: genli
-ms.openlocfilehash: ab0fa22e9ba776db3d4af301499545f6e0822478
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: 034d59c39628a08c389c5ceb67c5872bbea10d59
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "34070171"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47223168"
 ---
-# <a name="connectivity-and-networking-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Az ügyfélkapcsolódási és hálózati problémák Azure-szolgáltatásokhoz: gyakran ismételt kérdések (GYIK)
+# <a name="connectivity-and-networking-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Az Azure Cloud Services kapcsolatokkal és hálózatkezeléssel kapcsolatos problémák: gyakran ismételt kérdések (GYIK)
 
-Ez a cikk tartalmazza a kapcsolat és a hálózati hibákkal kapcsolatos gyakran ismételt kérdések [Azure Felhőszolgáltatások](https://azure.microsoft.com/services/cloud-services). Méret információkért lásd: a [lap a felhőalapú szolgáltatások virtuális gép méretét](cloud-services-sizes-specs.md).
+Ez a cikk tartalmazza a kapcsolatokkal és hálózatkezeléssel kapcsolatos gyakori kérdésekre [Azure Cloud Services](https://azure.microsoft.com/services/cloud-services). Méret információkért lásd: a [Cloud Services Virtuálisgép-méret lap](cloud-services-sizes-specs.md).
 
 [!INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
 
-## <a name="i-cant-reserve-an-ip-in-a-multi-vip-cloud-service"></a>Nem foglalható le több virtuális IP-CÍMES felhőszolgáltatásban olyan IP-címet.
-Először is győződjön meg arról, hogy a virtuálisgép-példányt, amely az IP-Címek lefoglalása próbál be van-e kapcsolva. Második győződjön meg arról, hogy az átmeneti és éles központi telepítések használjon fenntartott IP-címek. *Ne* módosíthatja a beállításokat, amíg a telepítés frissítését végzi.
+## <a name="i-cant-reserve-an-ip-in-a-multi-vip-cloud-service"></a>Nem foglalható le egy IP-cím több virtuális IP-felhőszolgáltatásban.
+Győződjön meg róla, hogy be van kapcsolva a virtuálisgép-példányt, amely megpróbálja lefoglalni az IP-címeként. A második győződjön meg arról, hogy az átmeneti és éles környezetet egyaránt használjon fenntartott IP-címek. *Ne* módosítsa a beállításokat, amíg az üzemelő példány frissítése folyamatban van.
 
-## <a name="how-do-i-use-remote-desktop-when-i-have-an-nsg"></a>Hogyan használjam távoli asztal, ha egy NSG-t?
-Szabályok hozzáadása az NSG-t, amelyek lehetővé teszik a forgalom a portokon **3389-es** és **20000**. A távoli asztal-portot használja **3389-es**. Felhőalapú szolgáltatás példányainak kerül, így nem közvetlenül szabályozhatja, hogy melyik példányt való csatlakozáshoz. A *RemoteForwarder* és *RemoteAccess* ügynökök Remote Desktop Protocol (RDP) forgalom kezelésére, és az ügyfél küldése az RDP cookie, és adjon meg egy egyedi példány való csatlakozáshoz. A *RemoteForwarder* és *RemoteAccess* ügynökök szükséges port **20000** nyitva kell lennie, amely blokkolhatja Ha egy NSG.
+## <a name="how-do-i-use-remote-desktop-when-i-have-an-nsg"></a>Hogyan használhatom a távoli asztal, ha van egy NSG-t?
+Adjon hozzá szabályokat az NSG-hez, amelyek lehetővé teszik a forgalom a portokon **3389-es** és **20000**. A távoli asztal-portot használja **3389-es**. Felhőalapú szolgáltatás példányai terhelésű, így közvetlenül nem szabályozhatja, mely példányhoz való csatlakozáshoz. A *RemoteForwarder* és *RemoteAccess* ügynökök kezelése a távoli asztal protokoll (RDP) forgalmat, és az ügyfél egy RDP-cookie küldhet, és adjon meg egy egyéni példány való csatlakozáshoz. A *RemoteForwarder* és *RemoteAccess* ügynökök szükséges port **20000** ahhoz, hogy nyitott-e, amely blokkol, ha van egy NSG-t.
 
-## <a name="can-i-ping-a-cloud-service"></a>Megpingelheti a cloud Service szolgáltatásra?
+## <a name="can-i-ping-a-cloud-service"></a>Megpingelheti a cloud service?
 
-Nem, nem a normál "ping" használatával / ICMP protokollt. Az ICMP protokoll nem engedélyezett az Azure load balancer keresztül.
+Nem, nem a normál "ping" használatával vagy az ICMP protokollt. Az Azure load balanceren keresztül nem engedélyezett az ICMP protokollt.
 
-Kapcsolat tesztelése, azt javasoljuk, hogy egy port ping végezzen. Amíg Ping.exe az ICMP, más eszközök, például a PSPing Nmap vagy telnet, segítségével egy adott TCP-portot kapcsolat teszteléséhez.
+Kapcsolat tesztelése, azt javasoljuk, hogy végrehajtja-e a port pingelésre. Ping.exe az ICMP, míg más eszközökkel, például a PSPing Nmap és telnet, használhatja egy adott TCP-portot a kapcsolat teszteléséhez.
 
-További információkért lásd: [port ping-üzenetek használata helyett ICMP Azure Virtuálisgép-kapcsolat tesztelése](https://blogs.msdn.microsoft.com/mast/2014/06/22/use-port-pings-instead-of-icmp-to-test-azure-vm-connectivity/).
+További információkért lásd: [port pingelésre használata ICMP helyett az Azure-beli Virtuálisgép-kapcsolat tesztelése](https://blogs.msdn.microsoft.com/mast/2014/06/22/use-port-pings-instead-of-icmp-to-test-azure-vm-connectivity/).
 
-## <a name="how-do-i-prevent-receiving-thousands-of-hits-from-unknown-ip-addresses-that-might-indicate-a-malicious-attack-to-the-cloud-service"></a>Hogyan akadályozható meg fogadását, amelyek jelezhetik a felhőszolgáltatásba rosszindulatú támadások ismeretlen IP-címekről találatok ezer?
-Azure bevezet egy többrétegű hálózati biztonság, a platform szolgáltatásaiból elosztott-szolgáltatásmegtagadásos (DDoS-) támadások elleni védelméhez. Az Azure DDoS védelmi rendszer Azure folyamatos figyelési folyamat része, amely folyamatosan keresztül tesztelés behatolást vagy a biztonság növelése. A DDoS védelmi rendszer célja, hogy nem csak a kívülről, hanem más Azure bérlő támadások ellen. További információkért lásd: [Azure hálózati biztonság](http://download.microsoft.com/download/C/A/3/CA3FC5C0-ECE0-4F87-BF4B-D74064A00846/AzureNetworkSecurity_v3_Feb2015.pdf).
+## <a name="how-do-i-prevent-receiving-thousands-of-hits-from-unknown-ip-addresses-that-might-indicate-a-malicious-attack-to-the-cloud-service"></a>Hogyan akadályozható meg forgalmat fogadó ismeretlen IP-címek, amelyek esetleg jelzik a rosszindulatú támadások, a felhőszolgáltatás-találatok ezer?
+Az Azure platform szolgáltatásaiból elosztott-szolgáltatásmegtagadásos (DDoS) támadások elleni védelme érdekében többrétegű hálózati biztonsági valósítja meg. Az Azure DDoS elleni védelmi rendszert az Azure folyamatos figyelési folyamat, amely folyamatosan fejlesztjük és keresztül behatolásvizsgálat részét képezi. A DDoS elleni védelmi rendszert úgy tervezték, hogy nem csak a kívülről, hanem a többi Azure bérlőtől támadások ellen. További információkért lásd: [Azure hálózati biztonság](http://download.microsoft.com/download/C/A/3/CA3FC5C0-ECE0-4F87-BF4B-D74064A00846/AzureNetworkSecurity_v3_Feb2015.pdf).
 
-Egy indítási feladat szelektív letiltása az egyes IP-címek is hozhat létre. További információkért lásd: [blokkolja egy adott IP-cím](cloud-services-startup-tasks-common.md#block-a-specific-ip-address).
+Emellett létrehozhat egy indítási feladat néhány konkrét IP-cím szelektív letiltása. További információkért lásd: [letilthatja egy adott IP-cím](cloud-services-startup-tasks-common.md#block-a-specific-ip-address).
 
-## <a name="when-i-try-to-rdp-to-my-cloud-service-instance-i-get-the-message-the-user-account-has-expired"></a>A cloud service-példány a távoli asztali meg, üzenet jelenik meg "a felhasználói fiók lejárt."
-Előfordulhat, hogy le a hibaüzenetet, "ez a felhasználói fiók lejárt", ha a lejárati dátum az RDP-beállítások között megadott megkerülése. Módosíthatja a lejárati dátumot a portálról az alábbiak szerint:
+## <a name="when-i-try-to-rdp-to-my-cloud-service-instance-i-get-the-message-the-user-account-has-expired"></a>Ha a saját felhőszolgáltatás-példányok meg az RDP-hez, az üzenet jelenik meg "a felhasználói fiók lejárt."
+Az "Ez a felhasználói fiók lejárt" hibaüzenet fordulhatnak elő, ha a lejárati dátum, az RDP-beállítások között megadott megkerülése. A lejárati dátumot a következő lépésekkel módosíthatja a portálról:
 
-1. Jelentkezzen be a [Azure-portálon](https://portal.azure.com)nyissa meg a felhőalapú szolgáltatás, és válassza ki a **távoli asztal** fülre.
+1. Jelentkezzen be a [az Azure portal](https://portal.azure.com)nyissa meg a felhőalapú szolgáltatás, és válassza ki a **a távoli asztal** fülre.
 
 2. Válassza ki a **éles** vagy **átmeneti** üzembe helyezési pont.
 
 3. Módosítsa a **lejárati dátuma** dátum, és mentse a konfigurációt.
 
-Most kell tudni az RDP a számítógépen.
+Most tudnia kell az RDP-hez a gépre.
 
-## <a name="why-is-azure-load-balancer-not-balancing-traffic-equally"></a>Miért érdemes az Azure Load Balancer nem terheléselosztási forgalom egyaránt?
-A belső terheléselosztók működésével kapcsolatos információért lásd: [Azure terheléselosztó új terjesztési mód](https://azure.microsoft.com/blog/azure-load-balancer-new-distribution-mode/).
+## <a name="why-is-azure-load-balancer-not-balancing-traffic-equally"></a>Miért érdemes az Azure Load Balancer nem osztja el forgalom egyaránt?
+Belső terheléselosztó működésével kapcsolatos további információkért lásd: [Azure Load Balancer új terjesztési mód](https://azure.microsoft.com/blog/azure-load-balancer-new-distribution-mode/).
 
-A használt algoritmus egy 5 rekordos (forrás IP-címe, forrásport, cél IP-címe, célport és protokoll típusát) kivonatoló forgalom hozzárendelése elérhető kiszolgálón. Csak egy átviteli munkamenet belül tölcsérútvonalak biztosít. Csomagok ugyanabban a TCP vagy UDP-munkamenetben a datacenter IP-címet (DIP) példányt az elosztott terhelésű végpont mögött van irányítva. Amikor az ügyfél bezárja és újra megnyitja a kapcsolatot, vagy új munkamenet indítása a azonos forrás IP-címről, a forrásport módosításai, és egy másik DIP végpont gomba a forgalmat.
+A használt terjesztési algoritmus egy 5 rekordos (forrás IP-címe, forrásport, cél IP-cím, céloldali port és protokoll típusát) forgalmat leképezése a rendelkezésre álló kiszolgálók kivonat. Csak egy átviteli munkamenet belül biztosít a tartós használat. Ugyanabban a TCP vagy UDP-munkamenetben csomagok mögött az elosztott terhelésű végpont ugyanazon adatközpontban IP (DIP) példányon irányítja. Amikor az ügyfél bezárja és újra megnyitja a kapcsolatot, vagy egy új munkamenet indul az azonos forrás IP-címe, Forrásport módosítja, és hatására a forgalom egy másik DIP-végpont ugorhat.
 
-## <a name="how-can-i-redirect-incoming-traffic-to-the-default-url-of-my-cloud-service-to-a-custom-url"></a>Hogyan lehet bejövő forgalom átirányítása egy egyéni URL-címre a felhőalapú szolgáltatás alapértelmezett URL-címét? 
+## <a name="how-can-i-redirect-incoming-traffic-to-the-default-url-of-my-cloud-service-to-a-custom-url"></a>Hogyan lehet a bejövő forgalom átirányítása alapértelmezett URL-címét a felhőszolgáltatás, amely egy egyéni URL-cím? 
 
-Az URL-újraíró modult az IIS, az alapértelmezett URL-címet a felhőszolgáltatás előre forgalom átirányítására használható (például \*. cloudapp.net) néhány egyéni neve vagy URL-címre. Mivel az URL-újraíró modult a webes szerepkörök alapértelmezés szerint engedélyezve van, és a szabályok úgy vannak konfigurálva, az alkalmazás Web.config fájlban, érhető el mindig újraindítások/reimages függetlenül a virtuális gépen. További információkért lásd:
+Az IIS URL-újraíró modult átirányítja a forgalmat, amely az alapértelmezett URL-címet a felhőszolgáltatás számára is használható (például \*. cloudapp.net) néhány egyéni nevet/URL-címre. Az URL-újraíró modult a webes szerepkörök alapértelmezés szerint engedélyezve van, és a szabályok úgy vannak konfigurálva, az alkalmazás Web.config, mert, mindig elérhető, a virtuális gép újraindítása vagy különbséglemezt függetlenül. További információkért lásd:
 
-- [Az URL-újraíró modult átdolgozás szabályok létrehozása](https://docs.microsoft.com/iis/extensions/url-rewrite-module/creating-rewrite-rules-for-the-url-rewrite-module)
+- [Az URL-újraíró modult újraírási szabályok létrehozása](https://docs.microsoft.com/iis/extensions/url-rewrite-module/creating-rewrite-rules-for-the-url-rewrite-module)
 - [Alapértelmezett hivatkozás eltávolítása](https://stackoverflow.com/questions/32286487/azure-website-how-to-remove-default-link?answertab=votes#tab-top)
 
-## <a name="how-can-i-blockdisable-incoming-traffic-to-the-default-url-of-my-cloud-service"></a>Hogyan lehet I blokk vagy letiltását a felhőalapú szolgáltatás alapértelmezett URL-címét a bejövő forgalom? 
+## <a name="how-can-i-blockdisable-incoming-traffic-to-the-default-url-of-my-cloud-service"></a>Hogyan lehet I letiltása vagy letiltását bejövő forgalom alapértelmezett URL-címét a felhőszolgáltatásban? 
 
-Az alapértelmezett URL-címe vagy neve a felhőalapú szolgáltatás képes megakadályozni a bejövő forgalom (például \*. cloudapp.net). Állítsa be az állomásfejlécnek egy egyéni DNS-nevét (például www.MyCloudService.com) webhely kötésének konfigurációja a felhő szolgáltatásdefiníciós fájlban (*.csdef), jelöli: 
+Az alapértelmezett URL-címe vagy neve a felhőszolgáltatás képes megakadályozni a bejövő forgalom (például \*. cloudapp.net). Állítsa be az állomásfejléc egyedi DNS-nevet (például www.MyCloudService.com), a hely kötésének konfigurációja a felhőalapú szolgáltatás definíciós (*.csdef) fájlban jelzett módon: 
  
 
     <?xml version="1.0" encoding="utf-8"?> 
@@ -94,19 +94,35 @@ Az alapértelmezett URL-címe vagy neve a felhőalapú szolgáltatás képes meg
       </WebRole> 
     </ServiceDefinition> 
  
-A host fejléc kötést a csdef fájlon keresztül, mert a szolgáltatás nem csak az egyéni neve "www.MyCloudService.com." szolgáltatáson keresztül érhető el Beérkező összes kérelmet a "*. cloudapp.net" tartomány mindig sikertelen lesz. Egy egyéni SLB mintavételt vagy belső terheléselosztót a szolgáltatás használja, ha blokkolja az alapértelmezett URL-cím vagy a társított szolgáltatás neve előfordulhat, hogy zavarja a vizsgálathoz használt viselkedését. 
+A gazdagép fejléc kötés csdef fájl ki, mert a szolgáltatás nem csak elérhetők az egyéni név "www.MyCloudService.com." Az összes beérkező kérések a "*. cloudapp.net" tartomány mindig sikertelen. Egyéni mintavétel SLB vagy a belső terheléselosztó a szolgáltatást használja, ha blokkolja az alapértelmezett szolgáltatás URL-címe vagy neve zavarhatják ellenőrzési viselkedését. 
 
-## <a name="how-can-i-make-sure-the-public-facing-ip-address-of-a-cloud-service-never-changes"></a>Hogyan biztosítható a nyilvánosan elérhető IP-cím egy felhőalapú szolgáltatás soha nem változik?
+## <a name="how-can-i-make-sure-the-public-facing-ip-address-of-a-cloud-service-never-changes"></a>Hogyan biztosítható egy felhőalapú szolgáltatás nyilvános IP-címét soha nem változik?
 
-Győződjön meg arról, hogy a felhőszolgáltatás (más néven VIP) a nyilvánosan elérhető IP-cím soha nem változik, hogy azok a szokásos szerepel az engedélyezési listán néhány adott az ügyfelek által, azt javasoljuk, hogy rendelkezik-e a foglalt IP-címhez társítva. Ellenkező esetben az Azure által biztosított virtuális IP-cím felszabadítása az előfizetésből Ha törli a központi telepítést. A sikeres VIP csereművelet egyes fenntartott IP-címek üzemi és átmeneti üzembe helyezési ponti kell. Nélkül, a cserélő művelet sikertelen lesz. Foglaljon le egy IP-címet, és rendelje hozzá azt a felhőalapú szolgáltatással, tekintse meg az alábbi cikkek:
+Győződjön meg arról, hogy a felhőszolgáltatás (más néven VIP) nyilvános IP-címét soha nem változik, hogy azok a szokásos néhány konkrét ügyfelek szerepel az engedélyezési listán, azt javasoljuk, hogy rendelkezik-e a foglalt IP-címhez társítva. Ellenkező esetben a virtuális IP-cím az Azure által biztosított fel van szabadítva az előfizetésből a központi telepítés törlése. A sikeres virtuális IP-címeket cserélő művelet szüksége lesz a termelési és az előkészítési pont az egyes fenntartott IP-címek. Anélkül, hogy azok a címeket cserélő művelet sikertelen lesz. Fenntartott IP-címet, és társíthatja azt a cloud service, tanulmányozza a következő cikkeket:
  
-- [Foglaljon le egy meglévő felhőszolgáltatáshoz IP-címe](../virtual-network/virtual-networks-reserved-public-ip.md#reserve-the-ip-address-of-an-existing-cloud-service)
-- [A foglalt IP-cím egy felhőszolgáltatásra történő társíthatók a szolgáltatás konfigurációs fájl használatával](../virtual-network/virtual-networks-reserved-public-ip.md#associate-a-reserved-ip-to-a-cloud-service-by-using-a-service-configuration-file) 
+- [Egy létező felhőszolgáltatás IP-címének fenntartása](../virtual-network/virtual-networks-reserved-public-ip.md#reserve-the-ip-address-of-an-existing-cloud-service)
+- [Felhőszolgáltatás fenntartott IP társítása a szolgáltatás konfigurációs fájl segítségével](../virtual-network/virtual-networks-reserved-public-ip.md#associate-a-reserved-ip-to-a-cloud-service-by-using-a-service-configuration-file) 
 
-Ha egynél több példánya van a szerepkörök, és a felhőszolgáltatás közötti társítás RIP nem szabad miatt leállási. Másik lehetőségként is engedélyezett az az Azure Datacenter IP-címtartományt. Minden Azure IP-címtartományok, megtalálhatja a [Microsoft Download Center](https://www.microsoft.com/en-us/download/details.aspx?id=41653). 
+Ha egynél több példánnyal rendelkezik a szerepkörök, RIP társítása a felhőszolgáltatás nem ajánlott bármilyen üzemkimaradást eredményezhet. Azt is megteheti akkor az az IP-címtartományt, az Azure-adatközpont engedélyezett. Az összes Azure IP-címtartományok, annak a [Microsoft Download Center](https://www.microsoft.com/en-us/download/details.aspx?id=41653). 
 
-Ez a fájl tartalmazza a használt IP-címtartományok (beleértve a tárolási, számítási és SQL tartományok) az Azure adatközpontjaiban. A frissített fáljra visszaküldi heti, amely tükrözi a jelenleg üzemelő tartományok és az IP-címtartományok jövőbeli módosításait. Új tartományok, amelyek szerepelnek a fájlban legalább egy hétig nem szerepel az adatközpontokban. Töltse le az új .xml fájl minden héten, és végezze el a helyet az Azure-ban futó szolgáltatások helyesen azonosítani a szükséges módosításokat. Az Azure ExpressRoute-felhasználók előfordulhat, hogy vegye figyelembe, hogy ezt a fájlt a BGP-hirdetményt Azure terület minden hónap első hetében frissítéséhez használja. 
+Ez a fájl tartalmazza az IP-címtartományokat (beleértve compute, SQL és storage tartományokat) használt Azure-adatközpontokban. A frissített, amely tükrözi a jelenleg üzembe helyezett tartományokat és minden jövőbeni változtatásokról, az IP tartományokat heti tesznek közzé. A fájlban megjelenő új tartományokat legalább egy hétig nem használják az adatközpontokban. Töltse le az új .xml-fájlt minden héten, és hajtsa végre a szükséges változtatásokat oldalán, hogy helyesen azonosítsa az Azure-ban futó szolgáltatásokat. Az Azure ExpressRoute-felhasználók előfordulhat, hogy vegye figyelembe, hogy ezt a fájlt használja, minden hónap első hetében Azure címterületek BGP hirdetésből frissíteni. 
 
-## <a name="how-can-i-use-azure-resource-manager-virtual-networks-with-cloud-services"></a>Hogyan használható Azure Resource Manager virtuális hálózatok a felhőszolgáltatásokkal? 
+## <a name="how-can-i-use-azure-resource-manager-virtual-networks-with-cloud-services"></a>Hogyan használhatom az Azure Resource Managerbeli virtuális hálózat a cloud services? 
 
-Cloud services Azure Resource Manager virtuális hálózatok nem helyezhető el. Erőforrás-kezelő virtuális hálózatok és a klasszikus üzembe helyezési virtuális hálózatok társviszony-létesítés keresztül csatlakozhatnak. További információkért lásd: [virtuális hálózati társviszony-létesítés](../virtual-network/virtual-network-peering-overview.md).
+A cloud services az Azure Resource Managerbeli virtuális hálózat nem helyezhető el. Virtuális hálózatok Resource Manager és klasszikus üzembe helyezés virtuális hálózatok társviszony-létesítésen keresztül csatlakozhatnak. További információkért lásd: [virtuális hálózatok közötti társviszony](../virtual-network/virtual-network-peering-overview.md).
+
+
+## <a name="how-can-i-get-the-list-of-public-ips-used-by-my-cloud-services"></a>Hogyan kaphatok a Cloud Services által használt nyilvános IP-címek listáját?
+
+PS-parancsprogram a következő használatával a Cloud Services nyilvános IP-címek listájának lekérése az előfizetéséhez
+
+    $services = Get-AzureService  | Group-Object -Property ServiceName
+
+    foreach ($service in $services) 
+    {
+        "Cloud Service '$($service.Name)'"
+
+        $deployment = Get-AzureDeployment -ServiceName $service.Name 
+        "VIP - " +  $deployment.VirtualIPs[0].Address
+        "================================="
+    }

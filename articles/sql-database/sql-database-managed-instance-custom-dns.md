@@ -2,20 +2,22 @@
 title: Az Azure SQL Database felügyelt példány egyéni DNS |} A Microsoft Docs
 description: Ez a témakör ismerteti egy egyéni DNS-ben az Azure SQL Database felügyelt példánya a konfigurációs beállításait.
 services: sql-database
-author: srdan-bozovic-msft
-manager: craigg
 ms.service: sql-database
-ms.custom: managed instance
+ms.subservice: managed-instance
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 09/23/2018
+author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: bonova, carlrab
-ms.openlocfilehash: 2d1bb7e8522da32dd33933261ea41b578f8afac1
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+manager: craigg
+ms.date: 09/23/2018
+ms.openlocfilehash: f26ea763d48d03fe7e981b7abbbe64e573ec0b3a
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46949485"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47224273"
 ---
 # <a name="configuring-a-custom-dns-for-azure-sql-database-managed-instance"></a>Egy egyéni DNS konfigurálása az Azure SQL Database felügyelt példánya
 
@@ -36,7 +38,7 @@ Olyan egyéni DNS-konfigurációs van kompatibilis a felügyelt példány, meg k
    ![egyéni DNS-beállítás](./media/sql-database-managed-instance-custom-dns/custom-dns-server-ip-address.png) 
 
    > [!IMPORTANT]
-   > Nem beállítása az Azure rekurzív feloldó DNS-ben okoz a felügyelt példány hibás állapotba. Utáni helyreállítás állapot megkövetelhetik, hogy hozzon létre új példányt a megfelelő hálózati szabályzatok rendelkező virtuális hálózaton, példány szintű adatok létrehozásához, és az adatbázisok visszaállítása. Lásd: [VNet-konfiguráció](sql-database-managed-instance-vnet-configuration.md).
+   > A DNS-listája nem beállítása az Azure rekurzív feloldó okozhat a felügyelt példány hibás állapotba lép, ha valamilyen okból a egyéni DNS-kiszolgáló nem érhető el. Utáni helyreállítás állapot megkövetelhetik, hogy hozzon létre új példányt a megfelelő hálózati szabályzatok rendelkező virtuális hálózaton, példány szintű adatok létrehozásához, és az adatbázisok visszaállítása. Az Azure rekurzív feloldó beállítást, mivel biztosítja, hogy a legutóbbi bejegyzést a DNS-listában, akkor is, ha az összes egyéni DNS-kiszolgáló meghibásodik, nyilvános nevek továbbra is feloldható. Lásd: [VNet-konfiguráció](sql-database-managed-instance-vnet-configuration.md).
 
 ## <a name="next-steps"></a>További lépések
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 10/10/2017
 ms.author: harijayms
-ms.openlocfilehash: f2b6ba4b7faaeb7092c24d964d32c69946264906
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: 229f3dd11a90c4f6d65c9cae2a5dd3447eedf83e
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44023293"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47225259"
 ---
 # <a name="azure-instance-metadata-service"></a>Az Azure Instance Metadata szolgáltatás
 
@@ -382,7 +382,7 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute?api-vers
 
 ### <a name="getting-azure-environment-where-the-vm-is-running"></a>Bevezetés az Azure-környezetben, ahol a virtuális gép fut. 
 
-Az Azure rendelkezik a különböző soverign felhők például [Azure Government](https://azure.microsoft.com/overview/clouds/government/) , néha kell az Azure környezetbe néhány futásidejű döntéseket. Következő minta bemutatja, hogyan lehet ezt elérni
+Az Azure rendelkezik a különböző szuverén felhők például [Azure Government](https://azure.microsoft.com/overview/clouds/government/). Néha szüksége a Azure-környezet néhány futásidejű döntéseket hozhat. A következő minta bemutatja, hogyan lehet ezt elérni.
 
 **Kérés**
 
@@ -445,7 +445,7 @@ Puppet | https://github.com/keirans/azuremetadata
    * Igen Metadata szolgáltatás érhető el a méretezési csoport beállítása példányokhoz. 
 8. Hogyan kérhet támogatást a szolgáltatás?
    * Segítségre van szüksége a szolgáltatáshoz, hozzon létre egy támogatási probléma az Azure Portalon a virtuális gép, ahol Ön nem sikerült beolvasni a metaadatok válasz hosszú újrapróbálkozás után 
-9. A hívás túllépte az időkorlátot kérelem jelenik meg: az a szolgáltatás?
+9. Kérelem túllépte az időkorlátot a szolgáltatás a hívások kapok?
    * Metaadatok hívások kell tenni a hálózati kártyát a virtuális gép hozzárendelt elsődleges IP-címről, emellett abban az esetben, ha módosította az ott kell lenniük egy útvonalat a hálózati kártya ki 169.254.0.0/16 cím.
 10. A virtuális gép méretezési csoportban lévő címkék frissítése, de azok nem jelennek meg a virtuális gépek ellentétben a példányok?
    * Jelenleg a ScaleSets címkék csak akkor látható, a virtuális Gépet egy újraindítás vagy rendszerképét alaphelyzetbe állítani/egy lemezt, vagy módosítsa a példány a. 

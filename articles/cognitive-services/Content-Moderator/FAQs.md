@@ -1,46 +1,47 @@
 ---
-title: Gyakori kérdések az Azure Content moderátor |} Microsoft Docs
-description: Tartalom moderátor gyakran feltett kérdésekre adott válaszok.
+title: Gyakori kérdések – a Content Moderator
+titlesuffix: Azure Cognitive Services
+description: A Content Moderator kapcsolatos gyakori kérdésekre adott válaszok.
 services: cognitive-services
 author: sanjeev3
-manager: mikemcca
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: content-moderator
-ms.topic: article
+ms.topic: faq
 ms.date: 11/21/2016
 ms.author: sajagtap
-ms.openlocfilehash: 7bf6c67bd0a83d9455d14253f4f4b2becafd29ba
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: ce61a89069caf90695a2cb6c54f61de8fa8cb112
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35347014"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47226933"
 ---
 # <a name="frequently-asked-questions-faq"></a>Gyakori kérdések (GYIK)
 
-#### <a name="what-does-my-content-moderator-subscription-include"></a>Az előfizetés tartalmazza a tartalom moderátor funkciója?
-A tartalom moderátor előfizetése a felülvizsgálati eszköz és az API-k elérésére. Eldöntheti, hogy szeretné-e egy vagy egyéb, vagy mindkettőt, attól függően, hogy az üzleti igényeknek megfelelően.
+#### <a name="what-does-my-content-moderator-subscription-include"></a>Saját előfizetés tartalmazza a Content Moderator funkciója?
+A Content Moderator előfizetés biztosít hozzáférést a felülvizsgálati eszköz és az API-kat. Eldöntheti, hogy szeretné-e legalább egy másik, vagy mindkettőt, üzleti igényeitől függően használhatja.
 
 #### <a name="what-are-the-limitsrestrictions-of-the-content-that-can-be-moderated-by-using-the-api"></a>Milyen korlátozások/megkötések vonatkoznak az API által moderálható tartalmakra?
-Az API-val, képek kell 128 képpontos minimális és a 4 MB maximális fájlméretet. A szöveg, legfeljebb 1024 karakter hosszú lehet. A videó időtartamával korlátozva van.
+Az API használatához, lemezképek kell rendelkeznie legalább 128 pixel, és a egy 4 MB-os maximális fájlméret. Szöveg, legfeljebb 1024 karakter hosszú lehet. Nincs megszabva, hogy a videó időtartama.
 
 #### <a name="what-happens-if-the-content-passed-to-the-text-api-or-the-image-api-exceeds-the-size-limits"></a>Mi történik, ha a szöveges vagy a kép API-nak elküldött szöveg vagy kép meghaladja a méretbeli korlátokat?
-A szöveg API hibakódot, amelyben arról tájékoztatja, hogy a szöveg hosszabb a megengedettnél. A kép API is hibakódot, amelyben arról tájékoztatja, hogy a kép nem felel meg a kötetméretek követelményeit.
+A szöveges API hibakódot, amelyben arról tájékoztatja, hogy a szöveg hosszabb a megengedettnél. A képfájl API is hibakódot, amely tájékoztatja, hogy a kép nem felel meg a méretbeli korlátozásoknak.
 
-#### <a name="do-you-keep-the-images-text-or-videos-that-are-submitted-for-moderation"></a>Tegye megtartja a képek, text vagy tartalmazó moderálás a videók?
-A tartalmat a saját, és előfordulhat, hogy nem őrzi meg a Microsoft Ön hozzájárulása nélkül. Microsoft iparágvezető biztonsági intézkedéseket használ a tartalom védelme érdekében.
+#### <a name="do-you-keep-the-images-text-or-videos-that-are-submitted-for-moderation"></a>Akkor tartsa a képek, szöveg vagy videók moderálás elküldött?
+A tartalmat a saját és az beleegyezése nélkül a Microsoft nem tarthatók. A Microsoft iparágvezető biztonsági intézkedések használ a tartalom védelme érdekében.
 
-#### <a name="can-i-use-content-moderator-to-screen-for-illegal-child-exploitation-images"></a>Használhatok tartalom moderátor képernyőre szabálytalan gyermek kihasználásának lemezképek?
-Nem. Azonban a minősített szervezetek használhatnak a [PhotoDNA felhőalapú szolgáltatás](https://www.microsoft.com/photodna "Microsoft PhotoDNA Felhőszolgáltatás") képernyő, az adott tartalmat.
+#### <a name="can-i-use-content-moderator-to-screen-for-illegal-child-exploitation-images"></a>Használható a Content Moderator képernyőre szabálytalan gyermek kiaknázása lemezképek?
+Nem. Azonban a minősített szervezetek használhatják a [PhotoDNA Felhőszolgáltatás](https://www.microsoft.com/photodna "Microsoft PhotoDNA Felhőszolgáltatás") képernyőre a tartalomtípushoz.
 
-#### <a name="up-to-how-many-review-teams-can-a-user-join-can-the-user-switch-between-teams"></a>Legfeljebb hány tekintse át csapatok lehetővé teszi a felhasználó csatlakoztatását? A felhasználói csoportok között válthat?
-A felhasználók kapcsolódhatnak egy csoportot egyszerre.
+#### <a name="up-to-how-many-review-teams-can-a-user-join-can-the-user-switch-between-teams"></a>Legfeljebb hány tekintse át csapatok csatlakozhat el egy felhasználót? A csapatok között válthat a felhasználó?
+Egy felhasználó csatlakozhat egy csapat egyszerre.
 
-#### <a name="what-kind-of-team-member-roles-are-supported-by-the-review-tool-how-are-they-different"></a>Milyen szerepkörök a felülvizsgálati eszköz által támogatott csapattag számára? Mi a különbség közöttük?
-A Studio jelenleg lehetővé teszi a rendszergazda és a felülvizsgáló szerepkörök hozzárendelése. A rendszergazdák meghívott más felhasználóknak és felülvizsgálók csak moderálás eredmények és címke vagy untag tartalom hozzáférése a konfigurációs beállításokat.
+#### <a name="what-kind-of-team-member-roles-are-supported-by-the-review-tool-how-are-they-different"></a>Milyen típusú csapat egyik tagja a felülvizsgálati eszköz által támogatott szerepkörök? Mi a különbség közöttük?
+A Studio jelenleg lehetővé teszi a rendszergazda és a felülvizsgáló szerepkörök hozzárendelése. A rendszergazdák mások meghívása és a konfigurációs beállítások hozzáférése, amíg a felülvizsgálók csak tekintse át a moderálás eredményeket és egy címkét vagy untag tartalmat.
 
-#### <a name="what-is-a-tag-does-the-review-tool-support-custom-tags"></a>Mi az, hogy egy címkét? A felülvizsgálati eszköz támogatja egyéni címkék?
-Egy címkét, adott vagy kétbetűs rövid kód, amely azt jelzi, a moderálás jelzőt, például az "a" felnőtt, "r" ellopható és így tovább. Rendszergazdák meghatározhatnak új címkék az üzleti igény szerint.
+#### <a name="what-is-a-tag-does-the-review-tool-support-custom-tags"></a>Mit jelent a címkét? A felülvizsgálati eszköz támogatja az egyéni címkéket?
+Egy címke, adott vagy kétbetűs rövid kód, amely azt jelzi, hogy a moderálás jelzőt, például az "a" a felnőtt, "r" pikáns és így tovább. Rendszergazdák meghatározhatnak új címkéket üzleti igény szerint.
 
-#### <a name="how-many-team-members-can-i-have-in-my-review-team"></a>Hány csoport tagjai is rendelkezik a felülvizsgálati csoport?
+#### <a name="how-many-team-members-can-i-have-in-my-review-team"></a>Hány tagja is kell a csapatomnak?
 A rendszergazdával együtt legfeljebb öt tagja lehet a csapatnak.

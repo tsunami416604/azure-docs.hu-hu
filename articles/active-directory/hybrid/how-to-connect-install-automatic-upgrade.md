@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 06/16/2018
+ms.date: 09/26/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: e98012a012c8569a40fe454a777e5f108bfe0e2e
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 72503c9f073a046b81001322cdbb4fb8a1af76cf
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46311044"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47224120"
 ---
 # <a name="azure-ad-connect-automatic-upgrade"></a>Azure AD Connect: automatikus frissítés
 Ez a funkció jelent meg a build [(kiadás dátuma: 2016. február) 1.1.105.0](reference-connect-version-history.md#111050).  Ez a szolgáltatás frissítve lett a [1.1.561 összeállítása](reference-connect-version-history.md#115610) és mostantól támogatja a további forgatókönyvek, amelyek korábban nem támogatottak.
@@ -39,7 +39,7 @@ Automatikus frissítés aktuális állapotának tekinthet meg a PowerShell-paran
 | Állapot | Megjegyzés |
 | --- | --- |
 | Engedélyezve |Automatikus frissítés engedélyezve van. |
-| Felfüggesztve |A rendszer csak állítja be. A rendszer már nem jogosult az automatikus frissítéseket. |
+| Felfüggesztve |A rendszer csak állítja be. A rendszer **jelenleg nem** fogadni az automatikus frissítéseket. |
 | Letiltva |Automatikus frissítés le van tiltva. |
 
 Között módosíthatja **engedélyezve** és **letiltott** a `Set-ADSyncAutoUpgrade`. A rendszer kell beállítania az állapot csak **felfüggesztett**.

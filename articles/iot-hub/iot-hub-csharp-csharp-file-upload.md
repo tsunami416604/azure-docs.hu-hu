@@ -8,12 +8,12 @@ ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 07/04/2017
 ms.author: elioda
-ms.openlocfilehash: ef84985d7ca0473bdfd387b2fcfb3be344338eb7
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: c881ead472d07200bdf4284f30bcf097f0efcba4
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43092119"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47223798"
 ---
 # <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub-using-net"></a>Töltse fel a fájlokat az eszközről a felhőbe az IoT hubhoz .NET használatával
 
@@ -94,7 +94,7 @@ Ebben a szakaszban módosítsa az eszköz alkalmazás létrehozott [küldése a 
     ```
 
 > [!NOTE]
-> Az egyszerűség kedvéért a rizspálinkát Ez az oktatóanyag nem valósít meg semmilyen újrapróbálkozási házirendet. Az éles kódban újrapróbálkozási házirendeket (például egy exponenciális leállítást), az MSDN-cikkben leírtak implementálandó [átmeneti hibák kezelésével](https://msdn.microsoft.com/library/hh680901.aspx).
+> Az egyszerűség kedvéért a rizspálinkát Ez az oktatóanyag nem valósít meg semmilyen újrapróbálkozási házirendet. Az éles kódban újrapróbálkozási házirendeket (például egy exponenciális leállítást), a cikkben leírtak implementálandó [átmeneti hibák kezelésével](/azure/architecture/best-practices/transient-faults).
 
 ## <a name="receive-a-file-upload-notification"></a>Fájlfeltöltési üzenetet fogadni
 
