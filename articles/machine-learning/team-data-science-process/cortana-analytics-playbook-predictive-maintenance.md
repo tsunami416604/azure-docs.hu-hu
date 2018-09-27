@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/11/2018
 ms.author: fboylu
-ms.openlocfilehash: 816ba560ccb9b06414dff8ffaea054e88d216b10
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: 7802aa8ea9798b18d5424c2342ba63c01406b25a
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38972383"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47221706"
 ---
 # <a name="azure-ai-guide-for-predictive-maintenance-solutions"></a>A prediktív karbantartási megoldásokat az Azure AI útmutatója
 
@@ -426,19 +426,19 @@ Ez az útmutató az utolsó szakaszában PdM megoldássablonokkal, oktatóanyago
 
 ## <a name="training-resources-for-predictive-maintenance"></a>A prediktív karbantartáshoz tanfolyamok forrásai
 
-A [Azure AI-képzési terv a prediktív karbantartási](https://github.com/Azure/AI-PredictiveMaintenance/blob/master/docs/azure-ai-learning-path-for-predictive-maintenance.md) a képzési anyagokat a fogalmakat és matematikai algoritmusok és technikákat, amelyekkel a PdM-problémák mögött jobban megértheti a biztosít. 
-
-A Microsoft Azure ingyenes tartalom és képzési AI általános fogalmak és eljárások kínál.
+A Microsoft Azure képzési tervek az alapfogalmakat ismertet, PdM technikák, tartalmat és a mesterséges Intelligencia fogalmak és eljárások általános képzést mellett mögött biztosít.
 
 | Képzési erőforrást  | Rendelkezésre állás |
 |:-------------------|--------------|
+| [Képzési terv a PdM-fák és véletlenszerű erdő használata](https://aischool.microsoft.com/learning-paths/1H5vH5wAYcAy88CoQWQcA8) | Nyilvános | 
+| [Képzési terv a PdM Deep Learning használatával](https://aischool.microsoft.com/learning-paths/FSIXxYkOGcauo0eUO8qAS) | Nyilvános |
 | [AI-fejlesztés az Azure-ban](http://azure.microsoft.com/training/learning-paths/azure-ai-developer) | Nyilvános |
 | [A Microsoft AI iskolai](http://aischool.microsoft.com/learning-paths) | Nyilvános |
 | [Az Azure AI-tanulás a Githubról](https://github.com/Azure/connectthedots/blob/master/readme.md) | Nyilvános |
 | [LinkedIn Learning](http://www.linkedin.com/learning) | Nyilvános |
 | [A Microsoft AI Youtube-Webináriumok](https://www.youtube.com/watch?v=NvrH7_KKzoM&t=4s) | Nyilvános |
 | [A Microsoft AI Show](http://channel9.msdn.com/Shows/AI-Show) | Nyilvános |
-| [LearnAI@MS](http://learnanalytics.microsoft.com) | A Microsoft-partnerek számára |
-| [A Microsoft Partner Network](http://learningportal.microsoft.com) | A Microsoft-partnerek számára |
+| [LearnAI@MS](http://learnanalytics.microsoft.com) | Partnerek |
+| [A Microsoft Partner Network](http://learningportal.microsoft.com) | Partnerek |
 
 Emellett a mesterséges Intelligencia ingyenes MOOC (tömeges nyílt online kurzusok) olyan oktatási intézmények például Stanford és MIT online kínált és más oktatási cégek.

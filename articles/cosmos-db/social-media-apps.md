@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: maquaran
-ms.openlocfilehash: a67d0a6387201362199c0f96fba3f338d906bbda
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: 5c916f847bf5098145c3ed14fad87c7669d916c8
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44052093"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47222692"
 ---
 # <a name="going-social-with-azure-cosmos-db"></a>Közösségi tartalom az Azure Cosmos DB használatával
 Egy nagy mértékben összekapcsolt társadalom élő azt jelenti, hogy életre valamely pontján, részévé válik a **közösségi hálózati**. Használhat közösségi hálózatokkal, hogy barátai, munkatársai, termékcsalád vagy más néven közös érdeklődési rendelkező személyek a szenvedélyét megosztani.
@@ -39,7 +39,7 @@ Miért nem SQL ebben a forgatókönyvben a legjobb választás? Vegyünk egy egy
 Sikerült, természetesen hatalmas mennyiségű SQL-példányt használ az elegendő power megoldásához ezer lekérdezést ezeket az illesztések kiszolgálására a tartalmat, de valóban, miért érdemes lenne, ha létezik egy egyszerűbb megoldást?
 
 ## <a name="the-nosql-road"></a>A nosql-alapú közúti
-Ez a cikk végigvezeti az Azure NoSQL-adatbázis a közösségi platform adatok modellezését, [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) a költséghatékony más az Azure Cosmos DB költséghatékonyhatékonyságából kínál, mint például a [Gremlin Gremlin API ](../cosmos-db/graph-introduction.md). Használatával egy [nosql-alapú](https://en.wikipedia.org/wiki/NoSQL) megközelítés, adattárolás, a JSON-formátumban, és alkalmazása [denormalizáció](https://en.wikipedia.org/wiki/Denormalization), a korábban bonyolult bejegyzés egy átalakíthatók [dokumentum](https://en.wikipedia.org/wiki/Document-oriented_database):
+Ez a cikk végigvezeti az Azure NoSQL-adatbázis a közösségi platform adatok modellezését, [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) a költséghatékony más az Azure Cosmos DB költséghatékonyhatékonyságából kínál, mint például a [Gremlin API](../cosmos-db/graph-introduction.md). Használatával egy [nosql-alapú](https://en.wikipedia.org/wiki/NoSQL) megközelítés, adattárolás, a JSON-formátumban, és alkalmazása [denormalizáció](https://en.wikipedia.org/wiki/Denormalization), a korábban bonyolult bejegyzés egy átalakíthatók [dokumentum](https://en.wikipedia.org/wiki/Document-oriented_database):
 
 
     {

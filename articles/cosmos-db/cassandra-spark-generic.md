@@ -10,12 +10,12 @@ ms.devlang: spark-scala
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: ankhanol
-ms.openlocfilehash: b7a6d449e7b8d0f3980a38767147e6b3a37f8e0f
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: f2f5aebf32cf5860ca8fc32ab741177c6df15c60
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46996000"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47227197"
 ---
 # <a name="connect-to-azure-cosmos-db-cassandra-api-from-spark"></a>Csatlakozás a Spark az Azure Cosmos DB Cassandra API-hoz
 
@@ -27,9 +27,9 @@ Ez a cikk az egyik, többek között Spark az Azure Cosmos DB Cassandra API-inte
 * A választott, a Spark környezet kiépítése [[Azure Databricks](https://docs.microsoft.com/azure/azure-databricks/quickstart-create-databricks-workspace-portal) | [Azure HDInsight-Spark](https://docs.microsoft.com/azure/hdinsight/spark/apache-spark-jupyter-spark-sql) |} Mások].
 
 ## <a name="dependencies-for-connectivity"></a>A hálózati kapcsolatot függőségek
-* **Cassandra Datastax Spark-összekötő:** Datastax Spark-összekötő segítségével Azure Cosmos DB Cassandra API-hoz csatlakozhat.  Azonosítsa és verzióját használja, az összekötő található [Maven központi]( https://mvnrepository.com/artifact/com.datastax.spark/spark-cassandra-connector) Ez az a Spark környezet és a Scala Spark verzióival kompatibilis.
+* **Spark-összekötő a Cassandra:** Spark-összekötő segítségével Azure Cosmos DB Cassandra API-hoz csatlakozhat.  Azonosítsa és verzióját használja, az összekötő található [Maven központi]( https://mvnrepository.com/artifact/com.datastax.spark/spark-cassandra-connector) Ez az a Spark környezet és a Scala Spark verzióival kompatibilis.
 
-* **Az Azure Cosmos DB Cassandra API segédkódtárba helyezni:** a Datastax összekötő mellett egy másik szalagtárhoz nevű kell [azure-cosmos-cassandra-spark-segítő]( https://search.maven.org/artifact/com.microsoft.azure.cosmosdb/azure-cosmos-cassandra-spark-helper/1.0.0/jar) Azure Cosmos DB-ből. Ebben a könyvtárban egy kapcsolat factory és a egy egyéni újrapróbálkozási szabályzat osztályokat tartalmazza.
+* **Az Azure Cosmos DB Cassandra API segédkódtárba helyezni:** a Spark-összekötő mellett egy másik szalagtárhoz nevű kell [azure-cosmos-cassandra-spark-segítő]( https://search.maven.org/artifact/com.microsoft.azure.cosmosdb/azure-cosmos-cassandra-spark-helper/1.0.0/jar) Azure Cosmos DB-ből. Ebben a könyvtárban egy kapcsolat factory és a egy egyéni újrapróbálkozási szabályzat osztályokat tartalmazza.
 
   Az Azure Cosmos DB újrapróbálkozási szabályzat HTTP állapot kód 429 ("kérés sebessége nagy") kivételek van konfigurálva. Az Azure Cosmos DB Cassandra API a rendszer lefordítja a Cassandra natív protokoll túlterhelt hibákká ezeket a kivételeket, és újra a biztonsági kompromisszumot. Mivel az Azure Cosmos DB a kiosztott átviteli sebesség modellt használ, kérelem korlátozó kivételeket fordulhat elő, ha a bejövő/kimenő forgalom sebesség növekedését. Az újrapróbálkozási szabályzat védelmet biztosít a spark-feladatok ellen, amelyek rövid ideig túllépik a gyűjteményhez kiosztott átviteli adatok adatforgalmi csúcsokhoz.
 
@@ -40,7 +40,7 @@ Ez a cikk az egyik, többek között Spark az Azure Cosmos DB Cassandra API-inte
     
 ## <a name="spark-connector-throughput-configuration-parameters"></a>A Spark összekötő átviteli konfigurációs paraméterei
 
-A következő táblázat felsorolja az Azure Cosmos DB Cassandra API-specifikus átviteli konfigurációs paramétereket az összekötő által biztosított. Az összes konfigurációs paramétereket részletes listáját lásd: [hivatkozás](https://github.com/datastax/spark-cassandra-connector/blob/master/doc/reference.md) a DataStax Spark Cassandra összekötő GitHub-adattár oldalát.
+A következő táblázat felsorolja az Azure Cosmos DB Cassandra API-specifikus átviteli konfigurációs paramétereket az összekötő által biztosított. Az összes konfigurációs paramétereket részletes listáját lásd: [hivatkozás](https://github.com/datastax/spark-cassandra-connector/blob/master/doc/reference.md) a Spark Cassandra összekötő GitHub-adattár oldalát.
 
 | **Tulajdonság neve** | **Alapértelmezett érték** | **Leírás** |
 |---------|---------|---------|
@@ -80,14 +80,14 @@ A fenti szakaszban meghatározott, Azure Spark-alapú PaaS-szolgáltatások is, 
 
 #### <a name="connector-dependencies"></a>Összekötő függőségei:
 
-1. Adja hozzá a maven-koordinátái a [Datastax Cassandráig Spark-összekötő](cassandra-spark-generic.md#dependencies-for-connectivity)
+1. Adja hozzá a maven-koordináták beolvasni a [Cassandra Spark-összekötő](cassandra-spark-generic.md#dependencies-for-connectivity)
 2. Adja hozzá a maven-koordinátái a [segédkódtárba helyezni az Azure Cosmos DB](cassandra-spark-generic.md#dependencies-for-connectivity) Cassandra API-hoz
 
 #### <a name="imports"></a>Importálásokat:
 
 ```scala
 import org.apache.spark.sql.cassandra._
-//datastax Spark connector
+//Spark connector
 import com.datastax.spark.connector._
 import com.datastax.spark.connector.cql.CassandraConnector
 

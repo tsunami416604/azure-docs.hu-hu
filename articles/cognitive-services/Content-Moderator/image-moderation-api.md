@@ -1,28 +1,29 @@
 ---
-title: Az Azure Content moderátor - lemezkép moderálás |} Microsoft Docs
-description: Nem megfelelő képek mérsékelt kép moderálás használata
+title: Lemezkép - moderálás a Content Moderator
+titlesuffix: Azure Cognitive Services
+description: Közepes kívánatos képek képmoderálás használata
 services: cognitive-services
 author: sanjeev3
-manager: mikemcca
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: content-moderator
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/20/2018
 ms.author: sajagtap
-ms.openlocfilehash: c7cbc343c6e9113642d0ac79f4a4d60a404e8171
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 6c5fed78c67f974a2af11efd133e9a79ec52124b
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35349335"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47219651"
 ---
 # <a name="image-moderation"></a>Képmoderálás
 
-Használja a tartalom moderátor gép támogatású kép moderálás és [emberi felülvizsgálati eszköz](Review-Tool-User-Guide/human-in-the-loop.md) képek ellopható és felnőtt tartalom mérsékelt. Szöveges tartalom képek vizsgálata, hogy a szöveg és felületei észleléséhez. Felel meg a lemezképek egyéni listájával, és további műveleteket végrehajtania.
+Használja a Content Moderator a gépi támogatású képmoderálás és [emberi vizsgálóeszköz](Review-Tool-User-Guide/human-in-the-loop.md) képek a felnőtt és szexuális tartalom mérsékelt. Szöveges tartalom kiszűrhető a szöveg kinyerése és arcok észlelése. Megfelelő lemezképek egyéni listájával, és további műveleteket végrehajtania.
 
-## <a name="evaluating-for-adult-and-racy-content"></a>Felnőtt és ellopható tartalom értékelése
+## <a name="evaluating-for-adult-and-racy-content"></a>A felnőtt és szexuális tartalom kiértékelése
 
-A **Evaluate** művelet 0 és 1 közötti megbízhatósági pontszámot adja vissza. Azt is vissza logikai adatok igaz vagy hamis. Ezekkel az értékekkel előre jelezni, hogy a rendszerkép tartalmazza-e a potenciális felnőtt vagy ellopható tartalmat. Az API-t hívja a lemezképpel (a fájl vagy URL-cím), a visszaadott válasz tartalmazza a következő információkat:
+A **Evaluate** művelet 0 és 1 közötti konfidencia-pontszám adja vissza. Emellett adja vissza, logikai adatok egyenlő true vagy FALSE (hamis). Ezek az értékek előre jelezni, hogy a rendszerkép tartalmazza-e a potenciális felnőtt vagy pikáns tartalmak. Az API hívásakor a lemezképpel (a fájl vagy URL-cím) a visszaadott válasz tartalmazza a következő információkat:
 
     "ImageModeration": {
       .............
@@ -35,19 +36,19 @@ A **Evaluate** művelet 0 és 1 közötti megbízhatósági pontszámot adja vis
 
 > [!NOTE]
 
-> - `isImageAdultClassified` olyan lemezképkészlet, amellyel ivarilag explicit vagy bizonyos esetekben felnőtt tekinthetők lehetséges meglétének jelöli.
-> - `isImageRacyClassified` olyan lemezképkészlet, amellyel ivarilag kétértelmű vagy bizonyos esetekben érett tekinthetők lehetséges meglétének jelöli.
-> - A pontszámok 0 és 1 között. Minél nagyobb a pontszám, annál magasabb a modell becslése, hogy a kategória alkalmazhatók. Ez az előnézet manuálisan kódolt eredményekkel helyett statisztikai modell támaszkodik. Azt javasoljuk, hogy a saját tartalom határozza meg, hogyan legyen a különböző kategóriájú az igényeinek megfelelően tesztelték.
-> - A logikai értékek a következők: IGAZ vagy hamis függően a belső pontszám küszöbértékeket. Az ügyfelek fel kell mérnie hogy ezt az értéket, vagy adja meg a tartalom házirendek alapján egyéni küszöbértékeket.
+> - `isImageAdultClassified` a rendszerkép található, előfordulhat, hogy figyelembe kell venni, nyíltan explicit vagy bizonyos esetekben felnőtt lehetséges jelenléte jelöli.
+> - `isImageRacyClassified` a rendszerkép található, előfordulhat, hogy figyelembe kell venni, nyíltan kétértelmű vagy bizonyos esetekben érett lehetséges jelenléte jelöli.
+> - A pontszámok 0 és 1 között. Minél nagyobb a pontszám, annál nagyobb a modell becslése, hogy a kategóriához lehet alkalmazni. Ebben az előzetes verzióban manuálisan kódolt kimenetek helyett egy statisztikai modellt használ. Azt javasoljuk, hogy a saját határozza meg, hogyan az egyes kategóriák az igényeinek megfelelően igazítja a tartalmat a teszteléshez.
+> - A logikai értékek a következők: IGAZ vagy hamis attól függően, a belső pontszám küszöbértékeket. Ügyfelek fel kell mérnie, hogy e használja ezt az értéket, vagy hozza meg, a tartalom házirendek alapján egyedi küszöbértékeket.
 >
 
-## <a name="detecting-text-with-optical-character-recognition-ocr"></a>Szöveg rendelkező optikai (OCR) észlelése
+## <a name="detecting-text-with-optical-character-recognition-ocr"></a>Az optikai karakterfelismerés (OCR) szöveg észlelése
 
-A **optikai (OCR)** művelet előrejelzi a szöveges tartalom a kép jelenlétét, és kibontja az a szöveg moderálás, egyebek mellett. Megadhatja a nyelvet. Ha nem adja meg a nyelvet, az észlelési alapértelmezés szerint angol.
+A **optikai karakterfelismerés (OCR)** művelet előrejelzi a képet a szöveges tartalom jelenlétét, és kinyeri a szöveg moderálása, egyebek mellett a. A nyelv is megadhat. Ha nem adja meg a nyelvet, az észlelés alapértelmezés szerint angol.
 
-A válasz a következő információkat tartalmazza:
+A válasz tartalmazza a következő információkat:
 - Az eredeti szöveg.
-- Az észlelt szövegelemek az vetett bizalmat eredményeiket.
+- Az észlelt szöveges elemek a megbízhatósági eredményeiket.
 
 Példa kivonat:
 
@@ -64,14 +65,14 @@ Példa kivonat:
     },
 
 
-## <a name="detecting-faces"></a>Lapok észlelése
+## <a name="detecting-faces"></a>Arcfelismerés
 
-Lapok észlelése segítségével azonosíthatók a lapok például személyes azonosításra alkalmas adatokat (PII) a lemezképeket. Észlelés lehetséges oldalak és a potenciális lapok száma minden kép.
+Arcok észlelése segít észlelni a személyes azonosításra alkalmas adatokat (PII) például az arcok a képeken. Az egyes rendszerképek észlelése lehetséges arcokat és a lehetséges arcok számát.
 
 A válasz ezeket az információkat tartalmazza:
 
-- Lapok száma
-- Az észlelt lapok helyek listája
+- Arcok száma
+- Felismert arc-helyek listája
 
 Példa kivonat:
 
@@ -99,27 +100,27 @@ Példa kivonat:
       ]
     }
 
-## <a name="creating-and-managing-custom-lists"></a>Egyéni listák elkészítése és kezelése
+## <a name="creating-and-managing-custom-lists"></a>Létrehozásába és kezelésébe az egyedi listákkal
 
-Számos online Közösség Miután a felhasználók képeket vagy egyéb típusú tartalmak feltöltéséhez sértő elemek előfordulhat, hogy beolvasása többször keresztül megosztott a következő nap, hét és hónap. Ismételten vizsgálatát, és a megegyező vagy a kép több helyen akár csak kis mértékben módosított verziói kiszűrése járó költségek lehet költséges és hibákhoz vezethet.
+Számos online Közösség Miután a felhasználók képeket vagy egyéb típusú tartalmak feltöltése sértő elemek előfordulhat, hogy első többször keresztül megosztott a következő napokon, hetek vagy hónapok. Ismételt vizsgálata és kiszűri a ugyanazt a lemezképet, vagy több helyen a lemezképet még kis mértékben módosított verzióját, a költségek költséges és sok hibalehetőséget rejtő lehet.
 
-Helyett moderálás ugyanazt a képet többször, akkor vegye fel a sértő képek a egyéni letiltott tartalom. Ily módon a tartalom moderálás rendszer összehasonlítja a egyéni listájával bejövő lemezképeket, és leállítja a további feldolgozás.
+Ahelyett, hogy ugyanazt a lemezképet többször moderálása, hozzáadja a sértő képek a listán szereplő letiltott tartalom. Ezzel a módszerrel a tartalom-jóváhagyás rendszer összeveti az egyedi listákkal bejövő lemezképek hasonlítja össze, és leállítja a további feldolgozás.
 
 > [!NOTE]
-> Nincs a jelenlegi maximális műveletszámot **5 kép listák** minden listájával, hogy **legfeljebb 10 000 képek**.
+> A maximális korlát **5 kép listák** az egyes lista **nem haladhatja meg a 10 000 lemezképek**.
 >
 
-A tartalom moderátor biztosít teljes [kép lista felügyeleti API](try-image-list-api.md) műveletek listájának egyéni lemezképek kezeléséhez. Indítsa el a [kép listája API konzol](try-image-list-api.md) és a REST API-Kódminták használja. Emellett olvassa el a [kép lista .NET gyors üzembe helyezés](image-lists-quickstart-dotnet.md) Ha ismeri a Visual Studio és a C#.
+A Content Moderator biztosít teljes [Image List felügyeleti API](try-image-list-api.md) műveletekkel egyéni rendszerképek listájának kezeléséhez. Kezdje a [kép sorolja fel API-konzol](try-image-list-api.md) , és a REST API-Kódminták. Emellett olvassa el a [kép lista .NET – rövid útmutató](image-lists-quickstart-dotnet.md) Ha ismeri a Visual Studio és C#.
 
-## <a name="matching-against-your-custom-lists"></a>Az egyéni listájával megfelelő
+## <a name="matching-against-your-custom-lists"></a>Egyező összeveti az egyedi listákkal
 
-Az egyeztetés művelet lehetővé teszi, hogy az egyéni listák, létrehozása és kezelése, a lista műveletekkel ellen bejövő képek intelligens megfelelő.
+A Match művelet lehetővé teszi, hogy az egyedi listákkal, létrehozni és felügyelni a listázási műveletek használatával bármely bejövő képek intelligens megfelelő.
 
-Ha a program egyezést talál, a művelet azonosítója és a megfelelő kép moderálás címkék adja vissza. A válasz ezeket az információkat tartalmazza:
+Ha van egyezés, a művelet az azonosító és a moderálás címkék a megfelelést kiváltó kép adja vissza. A válasz ezeket az információkat tartalmazza:
 
-- Egyezés pontszám (0 és 1) között
-- Egyező kép
-- Kép címkék (előző moderálás hozzárendelt)
+- Egyeztetés pontszámát (0 és 1) között
+- Egyeztetett kép
+- Címkéket (előző moderálás során hozzárendelt)
 - Kép címkék
 
 Példa kivonat:
@@ -141,10 +142,10 @@ Példa kivonat:
 
 ## <a name="human-review-tool"></a>Emberi vizsgálóeszköz
 
-További nuanced esetben használja a tartalom moderátor [tekintse át az eszköz](Review-Tool-User-Guide/human-in-the-loop.md) és annak API illesztésének moderálás eredményeit és az emberi moderátorok áttekintését a tartalmat. Tekintse át a számítógéphez hozzárendelt címkék azokat, és erősítse meg a végső döntések.
+További precízebb, használja a Content Moderator [vizsgálóeszköz](Review-Tool-User-Guide/human-in-the-loop.md) és annak API-t a az emberi moderátorok vonatkozó felülvizsgálat tartalmának és a moderálás eredmények surface. Tekintse át a számítógéphez hozzárendelt címkék ezeket, és erősítse meg a végső döntéshozatal.
 
 ![Az emberi moderátorok kép áttekintése](images/moderation-reviews-quickstart-dotnet.PNG)
 
 ## <a name="next-steps"></a>További lépések
 
-Tesztelése a [kép moderálás API konzol](try-image-api.md) és a REST API-Kódminták használja. Emellett olvassa el a [kép moderálás .NET gyors üzembe helyezés](image-moderation-quickstart-dotnet.md) Ha ismeri a Visual Studio és a C#.
+Próbálja ki a [kép moderálási API-konzol](try-image-api.md) , és a REST API-Kódminták. Emellett olvassa el a [kép moderálás .NET – rövid útmutató](image-moderation-quickstart-dotnet.md) Ha ismeri a Visual Studio és C#.

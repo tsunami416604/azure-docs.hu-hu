@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/04/2018
 ms.author: juluk
-ms.openlocfilehash: 67624e7ad21e6c3526b3ca47ff4b8e2df3b6ae54
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: ea7393584e77b51073ca8938ec03e9d6f6ad6fc0
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46962264"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47166673"
 ---
 # <a name="overview-of-azure-cloud-shell"></a>Az Azure Cloud Shell áttekintése
 Az Azure Cloud Shell egy interaktív, a böngésző által elérhető shell Azure-erőforrások kezeléséhez.
@@ -41,11 +41,11 @@ A cloud Shell lehetővé teszi a hozzáférést egy beépített szem előtt az A
 Használja ki a Cloud Shell működik a helyi gépről untethered oly módon csak a felhőben is biztosítanak.
 
 ### <a name="choice-of-preferred-shell-experience"></a>Kedvenc rendszerhéj-felületét kiválasztása
-Linux-felhasználók használhatja a Cloud Shellben, a Bash közben Windows felhasználók használhatják a PowerShell Cloud shellben (előzetes verzió) a rendszerhéj legördülő listából.
+Felhasználók választhatnak, hogy a Bash vagy a PowerShell a rendszerhéj legördülő listából.
 
 ![A Cloud Shell bash](media/overview/overview-bash-pic.png)
 
-![A PowerShell Cloud shellben (előzetes verzió)](media/overview/overview-ps-pic.png)
+![PowerShell a Cloud Shellben](media/overview/overview-ps-pic.png)
 
 ### <a name="authenticated-and-configured-azure-workstation"></a>Hitelesített és konfigurált Azure munkaállomás
 A cloud Shell Microsoft által kezelt, népszerű parancssori eszközökkel és a nyelvi támogatás származik. A cloud Shell is biztonságosan hitelesíti automatikusan azonnali hozzáférés az erőforrásokhoz az Azure CLI-vel vagy az Azure PowerShell parancsmagokon keresztül.
@@ -68,7 +68,7 @@ A cloud Shell rugalmas eszköz használható a következő:
 ### <a name="connect-your-microsoft-azure-files-storage"></a>A Microsoft Azure Files storage csatlakoztatása
 Cloud Shell gépek ideiglenes, és egy új vagy meglévő Azure-fájlmegosztási fürtkötetként való igényel `clouddrive` fájlmegtartás érdekében.
 
-A Cloud Shell utasításait követve hozzon létre egy erőforrást első indításkor csoport, a storage-fiók és az Azure Files ossza meg az Ön nevében. Ez egy egyszeri lépés és lesz automatikusan hozzárendelve az összes munkamenet során. Egyetlen fájlmegosztást is le lehet képezni, és a Bash és a PowerShell használatával a Cloud Shell-(előzetes verzió) használják.
+A Cloud Shell utasításait követve hozzon létre egy erőforrást első indításkor csoport, a storage-fiók és az Azure Files ossza meg az Ön nevében. Ez egy egyszeri lépés és lesz automatikusan hozzárendelve az összes munkamenet során. Egyetlen fájlmegosztást is le lehet képezni, és a Bash és a Cloud Shellbeli PowerShell is használható.
 
 További információ a megtudhatja, hogyan csatlakoztathat egy [új vagy meglévő storage-fiók](persisting-shell-storage.md).
 
@@ -81,11 +81,11 @@ További információ a megtudhatja, hogyan csatlakoztathat egy [új vagy meglé
 * A cloud Shell továbbra is fennáll, a fájlmegosztáson tárolt 5 GB-os-lemezkép használatával $Home
 * A Bash Linux felhasználói engedélyek beállítása
 
-További tudnivalók a szolgáltatások a [a Cloud Shell Bash](features.md) és [PowerShell Cloud shellben (előzetes verzió)](features-powershell.md).
+További tudnivalók a szolgáltatások a [a Cloud Shell Bash](features.md) és [a Cloud Shellbeli PowerShell](features-powershell.md).
 
 ## <a name="pricing"></a>Díjszabás
 A Cloud Shell üzemeltető gép olyan előfeltételt, egy csatlakoztatott Azure-fájlmegosztással együtt ingyenes. Rendszeres tárolási költségek a alkalmazni.
 
 ## <a name="next-steps"></a>További lépések
 [A rövid útmutatóban a Cloud Shell bash](quickstart.md) <br>
-[A PowerShell Cloud Shell-(előzetes verzió) a rövid útmutatóban](quickstart-powershell.md)
+[A PowerShell Cloud Shell a rövid útmutatóban](quickstart-powershell.md)

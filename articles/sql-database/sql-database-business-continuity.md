@@ -13,12 +13,12 @@ ms.author: sashan
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 09/19/2018
-ms.openlocfilehash: 320489f27a3c00cf4d13f7db37c6eb9fda39f5f1
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: e18b637ee583757e040ef6fd5c2d52cff14cb4fc
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47064130"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47221147"
 ---
 # <a name="overview-of-business-continuity-with-azure-sql-database"></a>Az Azure SQL Database üzletmenet-folytonossági funkcióinak áttekintése
 
@@ -123,7 +123,7 @@ Ha tárreplikációval helyreállítási mechanizmusként aktív georeplikáció
 > 
 
 ### <a name="perform-a-geo-restore"></a>Georedundáns visszaállítás végrehajtása
-Ha az automatikus biztonsági másolatokat használ georedundáns tárolás (alapértelmezés szerint engedélyezve van), akkor helyreállíthatja az adatbázist a használatával [geo-visszaállítás](sql-database-disaster-recovery.md#recover-using-geo-restore). Helyreállítási általában 12 óra alatt – akár egy óráig határozza meg, ha a legutóbbi óránkénti különbségi biztonsági mentés pedig sor kerül a replikált adatok elvesztése akkor kerül sor. A helyreállítás befejezéséig az adatbázis nem tudja rögzíteni a tranzakciókat, illetve nem tud válaszolni a lekérdezésekre. Vegye figyelembe, hogy a geo-visszaállítás csak visszaállítja az adatbázist a legutóbbi elérhető pont időben.
+Ha az automatikus biztonsági másolatokat használ georedundáns tárolás (alapértelmezés szerint engedélyezve van), akkor helyreállíthatja az adatbázist a használatával [geo-visszaállítás](sql-database-disaster-recovery.md#recover-using-geo-restore). Helyreállítási általában 12 óra alatt – akár egy óráig határozza meg, amikor a legutóbbi naplók biztonsági mentése volt hozott, és a replikált adatok elvesztése akkor kerül sor. A helyreállítás befejezéséig az adatbázis nem tudja rögzíteni a tranzakciókat, illetve nem tud válaszolni a lekérdezésekre. Vegye figyelembe, hogy a geo-visszaállítás csak visszaállítja az adatbázist a legutóbbi elérhető pont időben.
 
 > [!NOTE]
 > Az Adatközpont ismét online elérhető, mielőtt az alkalmazás a helyreállított adatbázisra, megszakíthatja a helyreállítást.  

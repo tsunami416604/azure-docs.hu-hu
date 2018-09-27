@@ -1,128 +1,130 @@
 ---
-title: Vegyes egyesítéses biztonsági beállításai |} Microsoft Docs
-description: Állítson be x409 tanúsítványok titkosítási a vegyes/egyesítés szolgáltatással a rugalmas méretezést.
-metakeywords: Elastic Database certificates security
+title: Biztonság szétválasztás és egyesítés konfigurációs |} A Microsoft Docs
+description: Állítsa be a x409 titkosítási tanúsítványok a felosztás/egyesítés szolgáltatás rugalmas skálázásra tervezve.
 services: sql-database
-manager: craigg
-author: stevestein
 ms.service: sql-database
-ms.custom: scale out apps
+ms.subservice: elastic-scale
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 04/01/2018
+author: stevestein
 ms.author: sstein
-ms.openlocfilehash: bb2090aba61f32e79fe3a9fd950e6e3688193d7d
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.reviewer: ''
+manager: craigg
+ms.date: 04/01/2018
+ms.openlocfilehash: ca93d97c3e0ddab0377ef437a04e7e3e31197b97
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34647085"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47166370"
 ---
-# <a name="split-merge-security-configuration"></a>Vegyes egyesítéses biztonsági konfiguráció
-A felosztott/egyesítés szolgáltatással biztonsági megfelelően be kell állítania. A szolgáltatás a Microsoft Azure SQL Database a rugalmas bővítést szolgáltatás részét képezi. További információkért lásd: [rugalmas méretezési felosztása és egyesítése szolgáltatás oktatóanyag](sql-database-elastic-scale-configure-deploy-split-and-merge.md).
+# <a name="split-merge-security-configuration"></a>Biztonság szétválasztás és egyesítés konfiguráció
+A felosztás/egyesítés szolgáltatás használatához a megfelelő biztonsági kell konfigurálnia. A szolgáltatás része a Microsoft Azure SQL Database rugalmas méretezési funkció. További információkért lásd: [rugalmas méretezési felosztása és egyesítése Service-oktatóanyag](sql-database-elastic-scale-configure-deploy-split-and-merge.md).
 
-## <a name="configuring-certificates"></a>Tanúsítványok konfigurálása
-Két módon a tanúsítványok konfigurálva legyenek. 
+## <a name="configuring-certificates"></a>Tanúsítványok beállítása
+Tanúsítványokat kétféleképpen lehet konfigurálni. 
 
 1. [Az SSL-tanúsítvány konfigurálása](#to-configure-the-ssl-certificate)
 2. [Ügyfél-tanúsítványok konfigurálása](#to-configure-client-certificates) 
 
 ## <a name="to-obtain-certificates"></a>Tanúsítványok beszerzése
-Tanúsítványok vagy a nyilvános hitelesítésszolgáltatótól (CA) szerezhetők a [Windows tanúsítványszolgáltatást](http://msdn.microsoft.com/library/windows/desktop/aa376539.aspx). Ezek a tanúsítványok megszerzését előnyben részesített módszert.
+Tanúsítványokat nyilvános hitelesítésszolgáltatótól (CA), vagy a szerezhető a [Windows tanúsítványszolgáltatást](http://msdn.microsoft.com/library/windows/desktop/aa376539.aspx). Ezek azok az előnyben részesített módszert szerezzenek be tanúsítványokat.
 
-Ha ezek a lehetőségek nem állnak rendelkezésre, létrehozhat **önaláírt tanúsítványokat**.
+Ha ezek a lehetőségek nem érhetők el, létrehozhat **önaláírt tanúsítványokat**.
 
-## <a name="tools-to-generate-certificates"></a>Eszközök tanúsítványainak létrehozásához
+## <a name="tools-to-generate-certificates"></a>Eszközök tanúsítványainak létrehozásához szükséges
 * [makecert.exe](http://msdn.microsoft.com/library/bfsktky3.aspx)
 * [pvk2pfx.exe](http://msdn.microsoft.com/library/windows/hardware/ff550672.aspx)
 
 ### <a name="to-run-the-tools"></a>Az eszközök futtatása
-* Az a fejlesztő parancssorból Visual Studios, lásd: [Visual Studio parancssorból](http://msdn.microsoft.com/library/ms229859.aspx) 
+* Az a fejlesztői parancssort. Ehhez a vizuális Studios lásd [Visual Studio parancssorból](http://msdn.microsoft.com/library/ms229859.aspx) 
   
-    Ha telepítette, Ugrás:
+    Ha telepítve van, folytassa a:
   
         %ProgramFiles(x86)%\Windows Kits\x.y\bin\x86 
-* A WDK az beszerzése [Windows 8.1: Töltse le a készletek és eszközök](http://msdn.microsoft.com/windows/hardware/gg454513#drivers)
+* A WDK az első [Windows 8.1: készletek és eszközök letöltése](http://msdn.microsoft.com/windows/hardware/gg454513#drivers)
 
 ## <a name="to-configure-the-ssl-certificate"></a>Az SSL-tanúsítvány konfigurálása
-Titkosítja a kommunikációt, és a kiszolgáló hitelesítésére az SSL-tanúsítvány szükséges. Válassza ki a legmegfelelőbb az alábbi három forgatókönyv, és hajtsa végre az összes lépését:
+Egy SSL-tanúsítvány szükséges a kommunikáció titkosításához, és a kiszolgáló hitelesítésére. Válassza ki a legmegfelelőbb az alábbi három forgatókönyv, és hajtsa végre az összes lépését:
 
 ### <a name="create-a-new-self-signed-certificate"></a>Hozzon létre egy új önaláírt tanúsítványt
 1. [Önaláírt tanúsítvány létrehozása](#create-a-self-signed-certificate)
 2. [Az önaláírt SSL-tanúsítvány PFX-fájl létrehozása](#create-pfx-file-for-self-signed-ssl-certificate)
-3. [A felhőalapú szolgáltatás SSL-tanúsítvány feltöltése](#upload-ssl-certificate-to-cloud-service)
-4. [A szolgáltatás konfigurációs fájljában SSL-tanúsítvány frissítése](#update-ssl-certificate-in-service-configuration-file)
+3. [Felhőszolgáltatás SSL-tanúsítvány feltöltése](#upload-ssl-certificate-to-cloud-service)
+4. [A szolgáltatás konfigurációs fájlja SSL-tanúsítvány frissítése](#update-ssl-certificate-in-service-configuration-file)
 5. [SSL-hitelesítésszolgáltató importálása](#import-ssl-certification-authority)
 
 ### <a name="to-use-an-existing-certificate-from-the-certificate-store"></a>Létező tanúsítvány használatára a tanúsítványtárolóból
-1. [SSL-tanúsítvány exportálása a tanúsítványt a tanúsítványtárolóból](#export-ssl-certificate-from-certificate-store)
-2. [A felhőalapú szolgáltatás SSL-tanúsítvány feltöltése](#upload-ssl-certificate-to-cloud-service)
-3. [A szolgáltatás konfigurációs fájljában SSL-tanúsítvány frissítése](#update-ssl-certificate-in-service-configuration-file)
+1. [Tanúsítvány Store SSL-tanúsítvány exportálása](#export-ssl-certificate-from-certificate-store)
+2. [Felhőszolgáltatás SSL-tanúsítvány feltöltése](#upload-ssl-certificate-to-cloud-service)
+3. [A szolgáltatás konfigurációs fájlja SSL-tanúsítvány frissítése](#update-ssl-certificate-in-service-configuration-file)
 
 ### <a name="to-use-an-existing-certificate-in-a-pfx-file"></a>Létező tanúsítvány használatára a PFX-fájl
-1. [A felhőalapú szolgáltatás SSL-tanúsítvány feltöltése](#upload-ssl-certificate-to-cloud-service)
-2. [A szolgáltatás konfigurációs fájljában SSL-tanúsítvány frissítése](#update-ssl-certificate-in-service-configuration-file)
+1. [Felhőszolgáltatás SSL-tanúsítvány feltöltése](#upload-ssl-certificate-to-cloud-service)
+2. [A szolgáltatás konfigurációs fájlja SSL-tanúsítvány frissítése](#update-ssl-certificate-in-service-configuration-file)
 
 ## <a name="to-configure-client-certificates"></a>Ügyfél-tanúsítványok konfigurálása
-Ügyféltanúsítványok szükségesek a szolgáltatás-kérelmek hitelesítéséhez szükséges. Válassza ki a legmegfelelőbb az alábbi három forgatókönyv, és hajtsa végre az összes lépését:
+Ügyféltanúsítványok szükségesek ahhoz, hogy a szolgáltatás-kérelmek hitelesítéséhez. Válassza ki a legmegfelelőbb az alábbi három forgatókönyv, és hajtsa végre az összes lépését:
 
-### <a name="turn-off-client-certificates"></a>Ügyféltanúsítványok kikapcsolása
-1. [Ügyféltanúsítvány-alapú hitelesítés kikapcsolása](#turn-off-client-certificate-based-authentication)
+### <a name="turn-off-client-certificates"></a>Kapcsolja ki az ügyfél-tanúsítványok
+1. [Ügyfél-alapú hitelesítés kikapcsolása](#turn-off-client-certificate-based-authentication)
 
 ### <a name="issue-new-self-signed-client-certificates"></a>Új ügyfél önaláírt tanúsítványokat
 1. [Hozzon létre egy önaláírt hitelesítésszolgáltató](#create-a-self-signed-certification-authority)
-2. [A felhőalapú szolgáltatás CA-tanúsítvány feltöltése](#upload-ca-certificate-to-cloud-service)
-3. [A szolgáltatás konfigurációs fájljában Hitelesítésszolgáltatói tanúsítvány frissítése](#update-ca-certificate-in-service-configuration-file)
+2. [A szolgáltatás felhőalapú hitelesítésszolgáltató-tanúsítvány feltöltése](#upload-ca-certificate-to-cloud-service)
+3. [A szolgáltatás konfigurációs fájlja a Hitelesítésszolgáltatói tanúsítvány frissítése](#update-ca-certificate-in-service-configuration-file)
 4. [Ügyfél-tanúsítványok kiállításához](#issue-client-certificates)
 5. [Az ügyféltanúsítványok PFX-fájlok létrehozása](#create-pfx-files-for-client-certificates)
 6. [Ügyfél-tanúsítvány importálása](#Import-Client-Certificate)
-7. [Másolja a tanúsítvány-ujjlenyomatok Client](#copy-client-certificate-thumbprints)
-8. [A szolgáltatás konfigurációs fájljában engedélyezett ügyfelek konfigurálása](#configure-allowed-clients-in-the-service-configuration-file)
+7. [Másolja a tanúsítvány-ujjlenyomatok ügyfél](#copy-client-certificate-thumbprints)
+8. [A konfigurációs fájlban engedélyezett ügyfelek konfigurálása](#configure-allowed-clients-in-the-service-configuration-file)
 
 ### <a name="use-existing-client-certificates"></a>Meglévő ügyfél-tanúsítványok használata
-1. [Nyilvános hitelesítésszolgáltató-kulcs megkeresése](#find-ca-public-key)
-2. [A felhőalapú szolgáltatás CA-tanúsítvány feltöltése](#Upload-CA-certificate-to-cloud-service)
-3. [A szolgáltatás konfigurációs fájljában Hitelesítésszolgáltatói tanúsítvány frissítése](#Update-CA-Certificate-in-Service-Configuration-File)
-4. [Másolja a tanúsítvány-ujjlenyomatok Client](#Copy-Client-Certificate-Thumbprints)
-5. [A szolgáltatás konfigurációs fájljában engedélyezett ügyfelek konfigurálása](#configure-allowed-clients-in-the-service-configuration-file)
-6. [Konfigurálja az ügyfél visszavonási állapotának ellenőrzése](#Configure-Client-Certificate-Revocation-Check)
+1. [Keresse meg a hitelesítésszolgáltató nyilvános kulcsa](#find-ca-public-key)
+2. [A szolgáltatás felhőalapú hitelesítésszolgáltató-tanúsítvány feltöltése](#Upload-CA-certificate-to-cloud-service)
+3. [A szolgáltatás konfigurációs fájlja a Hitelesítésszolgáltatói tanúsítvány frissítése](#Update-CA-Certificate-in-Service-Configuration-File)
+4. [Másolja a tanúsítvány-ujjlenyomatok ügyfél](#Copy-Client-Certificate-Thumbprints)
+5. [A konfigurációs fájlban engedélyezett ügyfelek konfigurálása](#configure-allowed-clients-in-the-service-configuration-file)
+6. [Konfigurálja az ügyfél tanúsítvány visszavonási ellenőrzése](#Configure-Client-Certificate-Revocation-Check)
 
 ## <a name="allowed-ip-addresses"></a>Engedélyezett IP-címek
-A végpontok való hozzáférés korlátozható adott IP-címek tartományát.
+A Szolgáltatásvégpontok való hozzáférés korlátozható az IP-címek meghatározott tartományát.
 
-## <a name="to-configure-encryption-for-the-store"></a>A tároló titkosítás konfigurálása
-A metaadat-tárolóban tárolt hitelesítő adatok titkosításához tanúsítvány szükséges. Válassza ki a legmegfelelőbb az alábbi három forgatókönyv, és hajtsa végre az összes lépését:
+## <a name="to-configure-encryption-for-the-store"></a>A store titkosításának beállítása
+A tanúsítvány a metaadat-tároló tárolt hitelesítő adatok titkosításához szükséges. Válassza ki a legmegfelelőbb az alábbi három forgatókönyv, és hajtsa végre az összes lépését:
 
-### <a name="use-a-new-self-signed-certificate"></a>Egy új önaláírt tanúsítvány használatára
+### <a name="use-a-new-self-signed-certificate"></a>Egy új önaláírt tanúsítvány használata
 1. [Önaláírt tanúsítvány létrehozása](#create-a-self-signed-certificate)
-2. [Hozzon létre önaláírt titkosítási tanúsítvány PFX-fájlból](#create-pfx-file-for-self-signed-ssl-certificate)
+2. [Önaláírt titkosítási tanúsítvány PFX-fájl létrehozása](#create-pfx-file-for-self-signed-ssl-certificate)
 3. [A felhőalapú szolgáltatás titkosítási tanúsítvány feltöltése](#upload-encryption-certificate-to-cloud-service)
-4. [A szolgáltatás konfigurációs fájljában titkosítási tanúsítvány frissítése](#update-encryption-certificate-in-service-configuration-file)
+4. [Titkosítási tanúsítvány frissítése a szolgáltatáskonfigurációs fájlban](#update-encryption-certificate-in-service-configuration-file)
 
 ### <a name="use-an-existing-certificate-from-the-certificate-store"></a>Használhat egy meglévő tanúsítványt a tanúsítványtárolóból
-1. [Titkosítási tanúsítvány exportálása a tanúsítványt a tanúsítványtárolóból](#export-encryption-certificate-from-certificate-store)
+1. [Tanúsítvány Store a titkosítási tanúsítvány exportálása](#export-encryption-certificate-from-certificate-store)
 2. [A felhőalapú szolgáltatás titkosítási tanúsítvány feltöltése](#upload-encryption-certificate-to-cloud-service)
-3. [A szolgáltatás konfigurációs fájljában titkosítási tanúsítvány frissítése](#update-encryption-certificate-in-service-configuration-file)
+3. [Titkosítási tanúsítvány frissítése a szolgáltatáskonfigurációs fájlban](#update-encryption-certificate-in-service-configuration-file)
 
 ### <a name="use-an-existing-certificate-in-a-pfx-file"></a>Létező tanúsítvány használatára a PFX-fájl
 1. [A felhőalapú szolgáltatás titkosítási tanúsítvány feltöltése](#upload-encryption-certificate-to-cloud-service)
-2. [A szolgáltatás konfigurációs fájljában titkosítási tanúsítvány frissítése](#update-encryption-certificate-in-service-configuration-file)
+2. [Titkosítási tanúsítvány frissítése a szolgáltatáskonfigurációs fájlban](#update-encryption-certificate-in-service-configuration-file)
 
 ## <a name="the-default-configuration"></a>Az alapértelmezett konfiguráció
-Az alapértelmezett konfiguráció összes megtagadja végpontjához. Ez az ajánlott beállítása, mivel a fenti végpontokkal való kérelmek bizalmas információkat, például adatbázis-hitelesítő adatok is elvégezheti.
-Az alapértelmezett konfiguráció lehetővé teszi, hogy a HTTPS-végpont az elérésére. Ezzel a beállítással korlátozható tovább.
+Az alapértelmezett konfiguráció összes megtagadja végpontjához. Ez az az ajánlott beállítás, mivel a kéréseket a végpontokkal is elvégezheti a bizalmas információkat, például adatbázis-hitelesítő adatok.
+Az alapértelmezett konfiguráció lehetővé teszi, hogy a HTTPS-végpont az elérésére. Ez a beállítás további korlátozott lehet.
 
 ### <a name="changing-the-configuration"></a>A konfiguráció módosítása
-A csoport vonatkozó hozzáférés-vezérlési szabályok és a végpont vannak konfigurálva a **<EndpointAcls>** szakasz a **szolgáltatás konfigurációs fájlja**.
+A alkalmazni a hozzáférés-vezérlési szabályok és a végpont csoport konfigurált a **<EndpointAcls>** című rész a **szolgáltatás konfigurációs fájlja**.
 
     <EndpointAcls>
       <EndpointAcl role="SplitMergeWeb" endPoint="HttpIn" accessControl="DenyAll" />
       <EndpointAcl role="SplitMergeWeb" endPoint="HttpsIn" accessControl="AllowAll" />
     </EndpointAcls>
 
-A szabályok hozzáférés-vezérlési csoportban vannak konfigurálva a egy <AccessControl name=""> a szolgáltatás konfigurációs fájl részét. 
+A hozzáférés-vezérlési csoportban szabályok úgy vannak konfigurálva, az egy <AccessControl name=""> szakaszában a szolgáltatás konfigurációs fájlja. 
 
-A formátum esetén, tekintse meg a hálózati hozzáférés-vezérlési listái dokumentációjában.
-Például ahhoz, hogy csak IP-cím a tartomány 100.100.0.0 való 100.100.255.255 a HTTPS-végpont elérésére, a szabályok fognak kinézni:
+A formátum ismertetését a hálózati hozzáférés-vezérlési listák dokumentációját.
+Például ahhoz, hogy csak IP-címek 100.100.0.0 való 100.100.255.255 a HTTPS-végpontot a tartományban, a szabályok kellene kinéznie:
 
     <AccessControl name="Retricted">
       <Rule action="permit" description="Some" order="1" remoteSubnet="100.100.0.0/16"/>
@@ -131,46 +133,46 @@ Például ahhoz, hogy csak IP-cím a tartomány 100.100.0.0 való 100.100.255.25
     <EndpointAcls>
     <EndpointAcl role="SplitMergeWeb" endPoint="HttpsIn" accessControl="Restricted" />
 
-## <a name="denial-of-service-prevention"></a>Letiltja a szolgáltatás megelőzése
-Két különböző mechanizmus észleli, és szolgáltatásmegtagadási támadások megelőzése érdekében támogatott van:
+## <a name="denial-of-service-prevention"></a>Szolgáltatás megelőzési szolgáltatásmegtagadás
+Van két különböző mechanizmus támogatott észlelése és a szolgáltatásmegtagadásos támadások megelőzése érdekében:
 
-* Korlátozhatja a távoli állomásonként egyidejű kérelmek száma (alapértelmezés szerint kikapcsolva)
-* Távoli állomásonként hozzáférési sebesség korlátozása (az alapértelmezés)
+* Korlátozhatja a távoli gazdagépenként egyidejű kérelmek száma (alapértelmezés szerint kikapcsolva)
+* Távoli gazdagépenként hozzáférési sebesség korlátozása (az alapértelmezés szerint)
 
-Ezek a funkciók további részletes ismertetését lásd: az IIS-ben a dinamikus IP-biztonság alapul. Ha ez a konfiguráció módosítása ügyeljen arra a következő tényezőket:
+Ezek a funkciók további részletes ismertetését lásd: az IIS-ben a dinamikus IP-biztonság alapul. Ha ez a konfiguráció módosítása ügyeljen arra, hogy a következő tényezőket:
 
-* Proxyk és a hálózati címfordítás eszközök a távoli állomás információ fölé működését
-* A webes szerepkörben lévő erőforrásokhoz kéréseknek tekinthető (pl. betöltése parancsfájlok, képek, stb)
+* Proxyk és a távoli állomás információkat a hálózati címfordítás eszközök működését.
+* Minden kérelmet a webes szerepkör az összes erőforrást számít (például betöltése parancsfájlok, képeket stb)
 
-## <a name="restricting-number-of-concurrent-accesses"></a>Korlátozza az egyidejű hozzáférések száma
-Ez a viselkedés konfigurált a beállítások a következők:
+## <a name="restricting-number-of-concurrent-accesses"></a>Egyidejű hozzáférések számának korlátozása
+Az ezt a viselkedést konfiguráló beállítások a következők:
 
     <Setting name="DynamicIpRestrictionDenyByConcurrentRequests" value="false" />
     <Setting name="DynamicIpRestrictionMaxConcurrentRequests" value="20" />
 
-Ez a védelem engedélyezéséhez a true DynamicIpRestrictionDenyByConcurrentRequests módosítható.
+Ez a védelem engedélyezéséhez a true DynamicIpRestrictionDenyByConcurrentRequests módosítsa.
 
-## <a name="restricting-rate-of-access"></a>Gyakorisága a hozzáférés korlátozása
-Ez a viselkedés konfigurált a beállítások a következők:
+## <a name="restricting-rate-of-access"></a>Hozzáférési sebesség korlátozása
+Az ezt a viselkedést konfiguráló beállítások a következők:
 
     <Setting name="DynamicIpRestrictionDenyByRequestRate" value="true" />
     <Setting name="DynamicIpRestrictionMaxRequests" value="100" />
     <Setting name="DynamicIpRestrictionRequestIntervalInMilliseconds" value="2000" />
 
-## <a name="configuring-the-response-to-a-denied-request"></a>A visszautasított kérelemre válaszolva konfigurálása
-A következő beállítással a egy letiltott irányuló kérelemre adott válasz:
+## <a name="configuring-the-response-to-a-denied-request"></a>A letiltott irányuló kérelemre adott válasz konfigurálása
+A következő beállítást konfigurálja a megtagadott irányuló kérelemre adott válasz:
 
     <Setting name="DynamicIpRestrictionDenyAction" value="AbortRequest" />
-Tekintse meg a dinamikus IP-biztonság az IIS-ben más támogatott értékek dokumentációját.
+Tekintse meg a dokumentációt más támogatott értékei a dinamikus IP-biztonság az IIS-ben.
 
-## <a name="operations-for-configuring-service-certificates"></a>Műveletek a szolgáltatás tanúsítványok konfigurálásáról
-Ez a témakör csak a hivatkozás van. Hajtsa végre a leírt konfigurációs lépéseket:
+## <a name="operations-for-configuring-service-certificates"></a>Operations for service-tanúsítványok konfigurálása
+Ez a témakör csak referenciaként van. Kövesse a leírt konfigurációs lépéseket:
 
 * Az SSL-tanúsítvány konfigurálása
-* Állítson be ügyféltanúsítványokat
+* Ügyfél-tanúsítványok konfigurálása
 
 ## <a name="create-a-self-signed-certificate"></a>Önaláírt tanúsítvány létrehozása
-Hajtható végre:
+Hajtsa végre:
 
     makecert ^
       -n "CN=myservice.cloudapp.net" ^
@@ -181,57 +183,57 @@ Hajtható végre:
 
 Testreszabása:
 
-* -n a szolgáltatási URL-cím. Helyettesítő karakterek ("CN = * .cloudapp .net") és az alternatív neveket ("CN=myservice1.cloudapp.net, CN=myservice2.cloudapp.net") támogatottak.
+* -n a szolgáltatás URL-címet. A helyettesítő karakterek ("CN = * .cloudapp .net") és az alternatív neveket ("CN=myservice1.cloudapp.net, CN=myservice2.cloudapp.net") támogatottak.
 * -e a tanúsítvány lejárati dátummal hozzon létre egy erős jelszót, és adja meg, amikor a rendszer kéri.
 
-## <a name="create-pfx-file-for-self-signed-ssl-certificate"></a>Hozzon létre önaláírt SSL-tanúsítvány PFX-fájlt
-Hajtható végre:
+## <a name="create-pfx-file-for-self-signed-ssl-certificate"></a>Az önaláírt SSL-tanúsítvány PFX-fájl létrehozása
+Hajtsa végre:
 
         pvk2pfx -pvk MySSL.pvk -spc MySSL.cer
 
-Adja meg a jelszót, és exportálhatja a tanúsítványt, amelynek ezeket a beállításokat:
+Adja meg a jelszót, és ezután exportálja a tanúsítványt ezekkel a beállításokkal:
 
-* Igen, a titkos kulcs exportálását választom
+* Igen, a titkos kulcs exportálása
 * Minden további tulajdonság exportálása
 
-## <a name="export-ssl-certificate-from-certificate-store"></a>SSL-tanúsítvány exportálása a tanúsítványt a tanúsítványtárolóból
-* Tanúsítvány található
+## <a name="export-ssl-certificate-from-certificate-store"></a>SSL-tanúsítvány exportálása a tanúsítványtárolóból
+* Keresse meg a tanúsítvány
 * Kattintson a műveletek összes -> feladatok -> Exportálás...
-* Exportálja a tanúsítványt egy. Ezek a beállítások a PFX-fájlt:
-  * Igen, a titkos kulcs exportálását választom
+* Exportálja a tanúsítványt egy. PFX-fájl ezekkel a beállításokkal:
+  * Igen, a titkos kulcs exportálása
   * Minden tanúsítvány belefoglalása a tanúsítványláncba, ha lehetséges * minden további tulajdonság exportálása
 
-## <a name="upload-ssl-certificate-to-cloud-service"></a>A felhőalapú szolgáltatás SSL-tanúsítvány feltöltése
-Feltöltés a a meglévő tanúsítványt, vagy jön létre. Az SSL-kulcsból álló kulcspárt a PFX-fájlt:
+## <a name="upload-ssl-certificate-to-cloud-service"></a>Felhőszolgáltatás SSL-tanúsítvány feltöltése
+Feltöltés a a meglévő tanúsítványt, vagy jön létre. Az SSL-kulcspárt a PFX-fájlt:
 
-* Adja meg a jelszót a titkos kulcs adatainak védelme
+* Adja meg a jelszót a titkos kulcs adataival védelme
 
-## <a name="update-ssl-certificate-in-service-configuration-file"></a>A szolgáltatás konfigurációs fájljában SSL-tanúsítvány frissítése
-Frissítse a szolgáltatás konfigurációs fájljában a következő beállítást ujjlenyomat értékének tölteni a felhőalapú szolgáltatáshoz a tanúsítvány-ujjlenyomata:
+## <a name="update-ssl-certificate-in-service-configuration-file"></a>A szolgáltatás konfigurációs fájlja SSL-tanúsítvány frissítése
+Frissítse a konfigurációs fájlban a következő beállítást ujjlenyomat értékét az a felhőszolgáltatásba a tanúsítvány ujjlenyomata:
 
     <Certificate name="SSL" thumbprint="" thumbprintAlgorithm="sha1" />
 
 ## <a name="import-ssl-certification-authority"></a>SSL-hitelesítésszolgáltató importálása
-Kövesse az alábbi lépéseket az összes fiók/gépben fog kommunikálni a szolgáltatás:
+Minden fiók/gép, amely fog kommunikálni a szolgáltatás az alábbi lépéseket követve:
 
-* Kattintson duplán a. A Windows Intézőben CER-fájljával
+* Kattintson duplán a. CER-fájlt a Windows Intézőben
 * A tanúsítvány párbeszédpanelen kattintson a tanúsítvány telepítése...
 * Importálja a tanúsítványt a megbízható legfelső szintű hitelesítésszolgáltatók tárolójába.
 
-## <a name="turn-off-client-certificate-based-authentication"></a>Ügyféltanúsítvány-alapú hitelesítés kikapcsolása
-Csak az ügyféltanúsítvány-alapú hitelesítés támogatott, és letiltja azt lehetővé szolgáltatásvégpontokra, nyilvánosan elérhető kivéve, ha más mechanizmusok helyen (pl. Microsoft Azure virtuális hálózat).
+## <a name="turn-off-client-certificate-based-authentication"></a>Ügyfél-alapú hitelesítés kikapcsolása
+Csak az ügyfél tanúsítványalapú hitelesítést is támogatja, és letiltásával lehetővé teszi a nyilvános hozzáférés szolgáltatásvégpontokra, kivéve, ha más mechanizmusok nem helyben (például a Microsoft Azure virtuális hálózat esetén).
 
-Módosítsa a beállításokat a szolgáltatás konfigurációs fájljában a szolgáltatás kikapcsolásához hamis:
+Ezek a beállítások módosítása a konfigurációs fájlban a funkció kikapcsolásához hamis értékre:
 
     <Setting name="SetupWebAppForClientCertificates" value="false" />
     <Setting name="SetupWebserverForClientCertificates" value="false" />
 
-Ezután másolja a Hitelesítésszolgáltatói tanúsítvány beállítás SSL-tanúsítványt ugyanazzal az ujjlenyomattal:
+Majd másolja a Hitelesítésszolgáltatói tanúsítvány beállítás SSL-tanúsítványt ugyanazzal az ujjlenyomattal:
 
     <Certificate name="CA" thumbprint="" thumbprintAlgorithm="sha1" />
 
 ## <a name="create-a-self-signed-certification-authority"></a>Hozzon létre egy önaláírt hitelesítésszolgáltató
-Hajtsa végre a következő lépésekkel hozza létre a hitelesítésszolgáltató meghatalmazottjaként járhatnak el egy önaláírt tanúsítványt:
+Hajtsa végre az alábbi lépéseket egy hitelesítésszolgáltató segítségével önaláírt tanúsítvány létrehozása:
 
     makecert ^
     -n "CN=MyCA" ^
@@ -241,46 +243,46 @@ Hajtsa végre a következő lépésekkel hozza létre a hitelesítésszolgáltat
       -sr localmachine -ss my ^
       MyCA.cer
 
-Testreszabása
+A Testreszabás
 
 * -e a tanúsítvány lejárati dátuma
 
-## <a name="find-ca-public-key"></a>Nyilvános hitelesítésszolgáltató-kulcs megkeresése
-Minden ügyfél kell kiadott tanúsítványok a szolgáltatás megbízható hitelesítésszolgáltató által. A nyilvános kulcsát a az ügyfelet, hogy hitelesítésre használt töltse fel a felhőszolgáltatás a tanúsítványokat kiállító hitelesítésszolgáltató található.
+## <a name="find-ca-public-key"></a>Keresse meg a hitelesítésszolgáltató nyilvános kulcsa
+Minden tanúsítványt kell lettek kibocsátva a szolgáltatás által megbízhatónak minősített hitelesítésszolgáltató által. Keresse meg a nyilvános kulcsot a az ügyfél, amelyek annak érdekében, hogy töltse fel a felhőszolgáltatáshoz való hitelesítéshez használt tanúsítványokat kiállító hitelesítésszolgáltatóhoz.
 
 Ha nem érhető el a fájlt a nyilvános kulccsal, exportálja a tanúsítványtárolóból:
 
-* Tanúsítvány található
-  * Keresse meg az azonos hitelesítésszolgáltató által kiállított ügyféltanúsítványt
+* Keresse meg a tanúsítvány
+  * Keresse meg ugyanazt a hitelesítésszolgáltató által kiadott ügyféltanúsítvány
 * Kattintson duplán a tanúsítványra.
-* A tanúsítvány párbeszédpanelen jelölje ki az Általános lapon.
+* A tanúsítvány párbeszédpanelen válassza ki a Tanúsítványlánc lap.
 * Kattintson duplán a hitelesítésszolgáltató az elérési út.
-* A tanúsítvány tulajdonságainak jegyzeteket.
+* Jegyzeteket a tanúsítvány tulajdonságai.
 * Zárja be a **tanúsítvány** párbeszédpanel.
-* Tanúsítvány található
-  * Keresse meg a fent leírt hitelesítésszolgáltató.
+* Keresse meg a tanúsítvány
+  * Keresse meg a fentebb feltüntetett hitelesítésszolgáltató.
 * Kattintson a műveletek összes -> feladatok -> Exportálás...
-* Exportálja a tanúsítványt egy. CER beállítások segítségével:
+* Exportálja a tanúsítványt egy. CER ezekkel a beállításokkal:
   * **Nem, nem akarom exportálni a titkos kulcs**
   * Minden tanúsítvány belefoglalása a tanúsítványláncba, ha lehetséges.
   * Minden további tulajdonság exportálása.
 
-## <a name="upload-ca-certificate-to-cloud-service"></a>CA-tanúsítvány feltöltése a felhőalapú szolgáltatás
-Feltöltés a a meglévő tanúsítványt, vagy jön létre. A hitelesítésszolgáltató nyilvános kulccsal CER-fájljával.
+## <a name="upload-ca-certificate-to-cloud-service"></a>Felhőszolgáltatáshoz CA-tanúsítvány feltöltése
+Feltöltés a a meglévő tanúsítványt, vagy jön létre. CER-fájlt a hitelesítésszolgáltató nyilvános kulccsal.
 
-## <a name="update-ca-certificate-in-service-configuration-file"></a>A szolgáltatás konfigurációs fájljában frissítés Hitelesítésszolgáltatói tanúsítvány
-Frissítse a szolgáltatás konfigurációs fájljában a következő beállítást ujjlenyomat értékének tölteni a felhőalapú szolgáltatáshoz a tanúsítvány-ujjlenyomata:
+## <a name="update-ca-certificate-in-service-configuration-file"></a>Frissítés Hitelesítésszolgáltatói tanúsítvány szolgáltatáskonfigurációs fájlban
+Frissítse a konfigurációs fájlban a következő beállítást ujjlenyomat értékét az a felhőszolgáltatásba a tanúsítvány ujjlenyomata:
 
     <Certificate name="CA" thumbprint="" thumbprintAlgorithm="sha1" />
 
-A következő beállítás értékének módosítása ugyanazzal az ujjlenyomattal:
+Frissítse az alábbi beállítás értéke az azonos ujjlenyomattal rendelkező:
 
     <Setting name="AdditionalTrustedRootCertificationAuthorities" value="" />
 
-## <a name="issue-client-certificates"></a>Ügyfél tanúsítványokat
-Minden egyes, a szolgáltatás elérésére jogosult ügyféltanúsítvánnyal a his/hers kizárólagos használatára kell lennie, és erős jelszót a titkos kulcs védelme saját his/hers kell kiválasztani. 
+## <a name="issue-client-certificates"></a>Ügyfél-tanúsítványok kiállítása
+Rendelkeznie kell egy ügyféltanúsítvánnyal a his/hers kizárólagos használata minden egyes jogosult hozzáférni a szolgáltatáshoz, és his/hers saját, a titkos kulcs védelme érdekében erős jelszót kell választania. 
 
-Az azonos gépen, ahol az önaláírt hitelesítésszolgáltató-tanúsítvány jön létre és tárolja a következő lépéseket kell végrehajtani:
+Ahol a önaláírt hitelesítésszolgáltató tanúsítványát előállított és tárolt ugyanarra a gépre a következő lépéseket kell végrehajtani:
 
     makecert ^
       -n "CN=My ID" ^
@@ -292,14 +294,14 @@ Az azonos gépen, ahol az önaláírt hitelesítésszolgáltató-tanúsítvány 
 
 Testreszabása:
 
-* az ügyfélnek, amely a tanúsítvány hitelesítése a azonosítójú -n
+* -n-azonosítót az ügyfélnek, amely a tanúsítvány hitelesít
 * -e a tanúsítvány lejárati dátuma
-* MyID.pvk és MyID.cer, a egyedi fájlneveket az ügyféltanúsítványt
+* MyID.pvk és az ezt a tanúsítványt az egyedi fájlnevek MyID.cer
 
-Ez a parancs felszólítja hozható létre, és többször használt jelszó. Használjon erős jelszót.
+Ezzel a paranccsal létrehozott és többször használt jelszó megadását fogja kérni. Használjon erős jelszót.
 
 ## <a name="create-pfx-files-for-client-certificates"></a>Az ügyfél PFX-fájlok tanúsítványok létrehozása
-Minden létrehozott ügyféltanúsítványt hajtható végre:
+Minden egyes létrehozott ügyféltanúsítványt hajtsa végre:
 
     pvk2pfx -pvk MyID.pvk -spc MyID.cer
 
@@ -307,42 +309,42 @@ Testreszabása:
 
     MyID.pvk and MyID.cer with the filename for the client certificate
 
-Adja meg a jelszót, és exportálhatja a tanúsítványt, amelynek ezeket a beállításokat:
+Adja meg a jelszót, és ezután exportálja a tanúsítványt ezekkel a beállításokkal:
 
-* Igen, a titkos kulcs exportálását választom
+* Igen, a titkos kulcs exportálása
 * Minden további tulajdonság exportálása
-* Az egyes, akinek a tanúsítvány kiállítva kell kiválasztani az exportálási jelszó
+* A személy, akinek a tanúsítvány kiállítását az exportálási jelszót kell választania
 
 ## <a name="import-client-certificate"></a>Ügyfél-tanúsítvány importálása
-Minden egyes személy, amely ügyféltanúsítványt adtak ki a gépeket többé a szolgáltatással való kommunikációra használja a kulcspár kell importálni:
+Minden egyes személy, akinek ügyféltanúsítvány adtak ki kell importálni a kulcspár a gépek hallgatója fogja használni a szolgáltatással való kommunikációra:
 
 * Kattintson duplán a. PFX-fájlt a Windows Intézőben
-* Importálás azokat a személyes tanúsítványtároló a legalább ezt a beállítást:
-  * Minden további tulajdonság be van jelölve szerepeltetése
+* Importálás be személyes tanúsítványtároló a legalább ezt a beállítást:
+  * Tartalmazza az összes kiterjesztett tulajdonság be van jelölve
 
-## <a name="copy-client-certificate-thumbprints"></a>Másolja a tanúsítvány-ujjlenyomatok client
-Minden egyes személy, amely ügyféltanúsítványt adtak ki kövesse az alábbi lépéseket ahhoz, hogy az beszerzése ujjlenyomatát his/hers tanúsítvány, amelyek nem kerülnek be a szolgáltatás konfigurációs fájlja:
+## <a name="copy-client-certificate-thumbprints"></a>Másolja a tanúsítvány-ujjlenyomatok ügyfél
+Minden egyes személy, akinek ügyféltanúsítvány nyújtására his/hers ujjlenyomatának beszerzéséhez kövesse az alábbi lépéseket tanúsítvány, amely megjelenik a szolgáltatás konfigurációs fájlja:
 
 * Run certmgr.exe
 * Válassza ki a személyes lap
 * Kattintson duplán a hitelesítéshez használandó ügyféltanúsítványt
-* A tanúsítvány megnyíló párbeszédpanelen válassza ki a részleteket tartalmazó lapot
-* Győződjön meg arról, hogy megjeleníti az összes megjelenítése
+* A tanúsítvány a megnyíló párbeszédpanelen válassza a részleteket tartalmazó lapot
+* Ellenőrizze, hogy megjelenítése az összes megjelenítése
 * Válassza ki a listában ujjlenyomat nevű mező
-* Másolja az ujjlenyomat értékének ** törlése előtt az első számjegy láthatatlan Unicode-karaktereket ** csak szóközökből törlése
+* Másolja az értéket az ujjlenyomat ** törlése előtt az első számot nem látható Unicode-karaktereket ** minden szóközt törlése
 
-## <a name="configure-allowed-clients-in-the-service-configuration-file"></a>A szolgáltatás konfigurációs fájljában engedélyezett ügyfelek konfigurálása
-Frissítse az értéket, a szolgáltatás konfigurációs fájljában a következő beállítási hozzáférhetnek a szolgáltatás ügyfél-tanúsítványok ujjlenyomatai vesszővel tagolt listáját:
+## <a name="configure-allowed-clients-in-the-service-configuration-file"></a>A konfigurációs fájlban engedélyezett ügyfelek konfigurálása
+Frissítse a konfigurációs fájlban a következő beállítás értékét az hozzáférhessen-e a szolgáltatás ügyfél-tanúsítványok ujjlenyomatai vesszővel tagolt listája:
 
     <Setting name="AllowedClientCertificateThumbprints" value="" />
 
-## <a name="configure-client-certificate-revocation-check"></a>Konfigurálja az ügyfél visszavonási állapotának ellenőrzése
-Az alapértelmezett beállítás nem ellenőrzi a hitelesítésszolgáltatóhoz, az ügyfél tanúsítvány-visszavonási állapotát. Az ellenőrzések bekapcsolása, ha az ügyfél-tanúsítványokat kiállító hitelesítésszolgáltató támogatja az ilyen ellenőrzések, a következő beállítás módosításával a X509RevocationMode számbavétel megadott értékek egyike:
+## <a name="configure-client-certificate-revocation-check"></a>Konfigurálja az ügyfél tanúsítvány visszavonási ellenőrzése
+Az alapértelmezett beállítás nem ellenőrzi az ügyfél tanúsítvány visszavonási állapotának a hitelesítésszolgáltatóhoz. Az ellenőrzések bekapcsolása, ha a hitelesítésszolgáltató által kibocsátott tanúsítványok az ügyfél, amely támogatja ezeket az ellenőrzéseket, módosítsa a következő beállítást egy, a X509RevocationMode enumerálása a megadott:
 
     <Setting name="ClientCertificateRevocationCheck" value="NoCheck" />
 
-## <a name="create-pfx-file-for-self-signed-encryption-certificates"></a>Hozzon létre önaláírt titkosítási tanúsítványok PFX-fájlt
-Titkosítási tanúsítványt az alábbi hajtható végre:
+## <a name="create-pfx-file-for-self-signed-encryption-certificates"></a>PFX-fájlt a titkosítási önaláírt tanúsítványok létrehozása
+A titkosítási tanúsítványt hajtsa végre:
 
     pvk2pfx -pvk MyID.pvk -spc MyID.cer
 
@@ -350,61 +352,61 @@ Testreszabása:
 
     MyID.pvk and MyID.cer with the filename for the encryption certificate
 
-Adja meg a jelszót, és exportálhatja a tanúsítványt, amelynek ezeket a beállításokat:
+Adja meg a jelszót, és ezután exportálja a tanúsítványt ezekkel a beállításokkal:
 
-* Igen, a titkos kulcs exportálását választom
+* Igen, a titkos kulcs exportálása
 * Minden további tulajdonság exportálása
-* A jelszó kell a tanúsítvány feltöltésekor a rendszer a felhőszolgáltatásba.
+* A jelszó kell a tanúsítványt a felhőszolgáltatáshoz való feltöltésekor.
 
-## <a name="export-encryption-certificate-from-certificate-store"></a>Titkosítási tanúsítvány exportálása a tanúsítványt a tanúsítványtárolóból
-* Tanúsítvány található
+## <a name="export-encryption-certificate-from-certificate-store"></a>Titkosítási tanúsítvány exportálása a tanúsítványtárolóból
+* Keresse meg a tanúsítvány
 * Kattintson a műveletek összes -> feladatok -> Exportálás...
-* Exportálja a tanúsítványt egy. Ezek a beállítások a PFX-fájlt: 
-  * Igen, a titkos kulcs exportálását választom
+* Exportálja a tanúsítványt egy. PFX-fájl ezekkel a beállításokkal: 
+  * Igen, a titkos kulcs exportálása
   * Minden tanúsítvány belefoglalása a tanúsítványláncba, ha lehetséges 
 * Minden további tulajdonság exportálása
 
 ## <a name="upload-encryption-certificate-to-cloud-service"></a>A felhőalapú szolgáltatás titkosítási tanúsítvány feltöltése
-Feltöltés a a meglévő tanúsítványt, vagy jön létre. A titkosítási kulcsból álló kulcspárt a PFX-fájlt:
+Feltöltés a a meglévő tanúsítványt, vagy jön létre. A titkosítási kulcspárt a PFX-fájlt:
 
-* Adja meg a jelszót a titkos kulcs adatainak védelme
+* Adja meg a jelszót a titkos kulcs adataival védelme
 
-## <a name="update-encryption-certificate-in-service-configuration-file"></a>A szolgáltatás konfigurációs fájljában titkosítási tanúsítvány frissítése
-Az ujjlenyomat értékét az alábbi beállítások a konfigurációs fájlban frissítse a tölteni a felhőalapú szolgáltatáshoz a tanúsítvány ujjlenyomata:
+## <a name="update-encryption-certificate-in-service-configuration-file"></a>Titkosítási tanúsítvány frissítése a szolgáltatáskonfigurációs fájlban
+Az ujjlenyomat értékét az alábbi beállítások a konfigurációs fájlban frissítse a felhőszolgáltatásba a tanúsítvány ujjlenyomata:
 
     <Certificate name="DataEncryptionPrimary" thumbprint="" thumbprintAlgorithm="sha1" />
 
-## <a name="common-certificate-operations"></a>Gyakori műveletekhez
+## <a name="common-certificate-operations"></a>Tanúsítvány-műveletek
 * Az SSL-tanúsítvány konfigurálása
-* Állítson be ügyféltanúsítványokat
+* Ügyfél-tanúsítványok konfigurálása
 
-## <a name="find-certificate"></a>Tanúsítvány található
+## <a name="find-certificate"></a>Keresse meg a tanúsítvány
 Kövesse az alábbi lépéseket:
 
-1. Futtassa a mmc.exe.
+1. Mmc.exe futtassa.
 2. File -> Add/Remove Snap-in…
 3. Válassza ki **tanúsítványok**.
 4. Kattintson a **Hozzáadás** parancsra.
-5. Válassza ki a tanúsítványt tároló helyét.
+5. Válassza ki a tanúsítványtár helye.
 6. Kattintson a **Befejezés** gombra.
 7. Kattintson az **OK** gombra.
 8. Bontsa ki a **tanúsítványok**.
 9. Bontsa ki a tanúsítványt tároló csomópontot.
-10. Bontsa ki a tanúsítvány gyermekcsomópontja.
-11. Válassza ki a tanúsítványt a listán.
+10. Bontsa ki a tanúsítványa gyermek csomópont.
+11. Válasszon ki egy tanúsítványt a listában.
 
 ## <a name="export-certificate"></a>Tanúsítvány exportálása
 Az a **tanúsítvány exportálása varázslóban**:
 
 1. Kattintson a **Tovább** gombra.
-2. Válassza ki **Igen**, majd **a titkos kulcs exportálását választom**.
+2. Válassza ki **Igen**, majd **a titkos kulcs exportálásának**.
 3. Kattintson a **Tovább** gombra.
 4. Válassza ki a kívánt kimeneti fájl formátumát.
 5. Ellenőrizze a kívánt beállításokat.
 6. Ellenőrizze **jelszó**.
 7. Adjon meg egy erős jelszót, és erősítse meg.
 8. Kattintson a **Tovább** gombra.
-9. Írja be vagy tallózással keresse meg az egy fájlnevet, hol tárolja a tanúsítványt (használja a. PFX-kiterjesztéssel).
+9. Írja be vagy tallózással keresse meg a FileName paramétert a tanúsítvány tárolására (használja a. PFX-kiterjesztéssel).
 10. Kattintson a **Tovább** gombra.
 11. Kattintson a **Befejezés** gombra.
 12. Kattintson az **OK** gombra.
@@ -412,40 +414,40 @@ Az a **tanúsítvány exportálása varázslóban**:
 ## <a name="import-certificate"></a>Tanúsítvány importálása
 A Tanúsítványimportáló varázslóban:
 
-1. Adja meg a tárolási helyét.
+1. Válassza ki a tároló helyét.
    
-   * Válassza ki **aktuális felhasználó** Ha csak az aktuális felhasználó futó folyamatok érik el a szolgáltatást
-   * Válassza ki **helyi számítógép** Ha a számítógép egyéb folyamatok érik el a szolgáltatást
+   * Válassza ki **aktuális felhasználó** Ha csak az aktuális felhasználóhoz tartozó futó folyamatok a szolgáltatás elérésére
+   * Válassza ki **helyi gép** , ha a számítógép más folyamatok a szolgáltatás elérésére
 2. Kattintson a **Tovább** gombra.
 3. Ha importál egy fájlból, erősítse meg a fájl elérési útját.
-4. Ha importálni egy. PFX-fájlt:
+4. Ha egy. PFX-fájlt:
    1. Adja meg a jelszót a titkos kulcsok védelme
-   2. Importálási beállítások megadása
+   2. Importálási beállítások
 5. Válassza ki a "Hely" tanúsítványok ebben a tárolóban
 6. Kattintson a **Browse** (Tallózás) gombra.
-7. Jelölje ki a kívánt tárolót.
+7. Válassza ki a kívánt tárolót.
 8. Kattintson a **Befejezés** gombra.
    
-   * A megbízható legfelső szintű hitelesítésszolgáltató-tároló választása esetén kattintson **Igen**.
-9. Kattintson a **OK** összes párbeszédpanel windows rendszeren.
+   * Ha a megbízható legfelső szintű hitelesítésszolgáltatóinak választotta, kattintson a **Igen**.
+9. Kattintson a **OK** párbeszédpanelen az összes windows rendszeren.
 
 ## <a name="upload-certificate"></a>Tanúsítvány feltöltése
 Az [Azure Portalon](https://portal.azure.com/)
 
-1. Válassza ki **a felhőalapú szolgáltatások**.
+1. Válassza ki **Cloud Services**.
 2. Válassza ki a felhőszolgáltatást.
-3. Kattintson a felső menüben **tanúsítványok**.
-4. Kattintson az alsó sáv **feltöltése**.
-5. Válassza ki azt a tanúsítványfájlt.
-6. Ha a rendszer egy. PFX fájlt, írja be a jelszót a titkos kulcshoz.
-7. Ezt követően másolja a tanúsítvány ujjlenyomata az új bejegyzést a listában.
+3. A felső menüben kattintson a **tanúsítványok**.
+4. Kattintson az alsó sávján **feltöltése**.
+5. Válassza ki a tanúsítványfájl.
+6. Ha egy. PFX adja meg a jelszót a titkos kulcs.
+7. Ha kész, másolja a tanúsítvány ujjlenyomatát az új bejegyzést a listában.
 
-## <a name="other-security-considerations"></a>Egyéb biztonsági szempontok
-A jelen dokumentumban ismertetett SSL-beállítások a szolgáltatás és az ügyfelek közötti kommunikáció titkosításához, ha a HTTPS-végpont használatával történik. Ez azért fontos, mert adatbázis-hozzáférési hitelesítő adatok, és más potenciálisan bizalmas információk találhatók a kommunikáció során. Ne feledje azonban, hogy a szolgáltatás továbbra is fennáll belső állapotát, a hitelesítő adatokat, beleértve annak a Microsoft Azure SQL-adatbázis a Microsoft Azure-előfizetéshez tartozó metaadat-tároló megadott belső táblájában. A szolgáltatás konfigurációs fájljában a következő beállítás részeként definiált, hogy az adatbázis (. CSCFG-fájl): 
+## <a name="other-security-considerations"></a>Más biztonsági szempontok
+A jelen dokumentumban ismertetett SSL-beállítások a szolgáltatás és az ügyfelek közötti kommunikáció titkosításához, ha a HTTPS-végpontokat használják. Ez azért fontos óta adatbázis-hozzáférési hitelesítő adatokat, és lehetséges, hogy más bizalmas információ található a kommunikációt. Ne feledje, hogy a szolgáltatás továbbra is fennáll belső állapot, a belső táblát is a Microsoft Azure SQL Database a Microsoft Azure-előfizetésében a metaadat-tároló megadott hitelesítő adatokat, beleértve. Az adatbázishoz a szolgáltatáskonfigurációs fájlban a következő beállítás részeként lett definiálva (. CSCFG-fájl): 
 
     <Setting name="ElasticScaleMetadata" value="Server=…" />
 
-Ebben az adatbázisban tárolt hitelesítő adatok titkosítása. Azonban célszerű, győződjön meg arról, hogy a szolgáltatás központi telepítések egyaránt webes és feldolgozói szerepkörök vannak mindig naprakészek legyenek, és biztonságos, mint azok egyaránt rendelkezik hozzáféréssel a metaadatokat tároló adatbázis és az tárolt hitelesítő adatok titkosításához és visszafejtéséhez használt tanúsítványt. 
+Ebben az adatbázisban tárolt hitelesítő adatok titkosítása. Azonban ajánlott eljárásként, győződjön meg arról, hogy a webes és feldolgozói szerepkörök a szolgáltatástelepítések a rendszer mindig naprakész és biztonságos, mint azok is rendelkezik hozzáféréssel a metaadatokat tároló adatbázis és az tárolt hitelesítő adatok titkosításához és visszafejtéséhez használt tanúsítvány. 
 
 [!INCLUDE [elastic-scale-include](../../includes/elastic-scale-include.md)]
 

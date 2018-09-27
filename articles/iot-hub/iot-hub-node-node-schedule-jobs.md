@@ -9,12 +9,12 @@ ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 10/06/2017
 ms.author: juanpere
-ms.openlocfilehash: 2161cd12f8bdb6aa3018d81a7864816a97ed122a
-ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
+ms.openlocfilehash: 69469d6b302f951301c92c0ee7984df95911624e
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39187750"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47221298"
 ---
 # <a name="schedule-and-broadcast-jobs-node"></a>Feladatok ütemezése és kiküldése (Node)
 
@@ -115,7 +115,7 @@ Ebben a szakaszban egy Node.js-konzolalkalmazást, amely a felhő, amely elindí
 8. Mentse és zárja be a **simDevice.js** fájlt.
 
 > [!NOTE]
-> Az egyszerűség kedvéért ez az oktatóanyag nem valósít meg semmilyen újrapróbálkozási házirendet. Az éles kódban újrapróbálkozási házirendeket is meg kell valósítania (például egy exponenciális leállítást) a [tranziens hibakezelést][lnk-transient-faults] ismertető MSDN-cikkben leírtak szerint.
+> Az egyszerűség kedvéért ez az oktatóanyag nem valósít meg semmilyen újrapróbálkozási házirendet. Az éles kódban újrapróbálkozási házirendeket (például egy exponenciális leállítást), a cikkben leírtak implementálandó [átmeneti hibák kezelésével](/azure/architecture/best-practices/transient-faults).
 > 
 > 
 
@@ -268,4 +268,3 @@ Ismerkedés az IoT Hub a folytatáshoz tekintse meg a [– első lépések az Az
 [lnk-iot-edge]: ../iot-edge/tutorial-simulate-device-linux.md
 [lnk-dev-setup]: https://github.com/Azure/azure-iot-sdk-node/tree/master/doc/node-devbox-setup.md
 [lnk-free-trial]: http://azure.microsoft.com/pricing/free-trial/
-[lnk-transient-faults]: https://msdn.microsoft.com/library/hh680901(v=pandp.50).aspx

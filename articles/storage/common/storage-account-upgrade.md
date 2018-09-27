@@ -7,12 +7,12 @@ ms.service: storage
 ms.topic: article
 ms.date: 09/11/2018
 ms.author: tamram
-ms.openlocfilehash: 8a0b823a12178df56417b05de28c2125ec155829
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: 6e77c4836531a7efd0b52b9a411ac40ff6a613fa
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45740816"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47224494"
 ---
 # <a name="upgrade-to-a-general-purpose-v2-storage-account"></a>Egy általános célú v2-tárfiók frissítése
 
@@ -77,7 +77,7 @@ Az igényeinek megfelelően a legjobb hozzáférési szint használata mellett d
 
 A tárfiók a migrálás előtt a használati adatok gyűjtéséhez, nyomon követheti a tárfiók tárfiókkulcsait [Azure Monitor](../../monitoring-and-diagnostics/monitoring-overview-azure-monitor.md). Az Azure Monitor naplózhatja és mérőszámadatokat biztosít az Azure-szolgáltatásokhoz, mint az Azure Storage. 
 
-A tárfiókban található blobok felhasználási adatok monitorozásához engedélyezése az Azure monitorban a kapacitási mérőszámot. A kapacitás metrikák a fiókjában található blobokat használ, naponta mennyi tárhelyre vonatkozó adatokat rögzíti. Kapacitás mérőszámok segítségével megbecsülheti költségeit az adatok tárolása a storage-fiók. Hogyan Blob storage kapacitási díjszabása az egyes fiók típusú kapcsolatban lásd: [Block blob díjszabás](https://azure.microsoft.com/pricing/details/storage/blobs/).
+A tárfiókban található blobok felhasználási adatok monitorozásához engedélyezése az Azure monitorban a kapacitási mérőszámot. A kapacitás metrikák a fiókjában található blobokat használ, naponta mennyi tárhelyre vonatkozó adatokat rögzíti. Kapacitás mérőszámok segítségével megbecsülheti költségeit az adatok tárolása a storage-fiók. Hogyan Blob storage kapacitási díjszabása az egyes fiókkal kapcsolatban lásd: [Block blob díjszabás](https://azure.microsoft.com/pricing/details/storage/blobs/).
 
 A Blob Storage adathozzáférési mintáinak figyeléséhez, engedélyezze az Azure monitorban tranzakció-mérőszámot. A megbecsülni, hogy milyen gyakran nevezik minden más Azure Storage műveleteket végezhet. Megtudhatja, hogyan különböző típusú tranzakciók díjszabása vonatkozóan, és a hozzáfűző blobok minden fióktípushoz tartozó, lásd: [Block blob díjszabás](https://azure.microsoft.com/pricing/details/storage/blobs/).  
 

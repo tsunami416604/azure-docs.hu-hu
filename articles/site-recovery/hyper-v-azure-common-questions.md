@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.date: 09/12/2018
 ms.topic: conceptual
 ms.author: raynew
-ms.openlocfilehash: 16c4ab4601dbe57e014bfcb06ff9b35d02c60cfa
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 7600fc81d0d3e3607f2185ad2c793255a0c68634
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44721908"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47227299"
 ---
 # <a name="common-questions---hyper-v-to-azure-replication"></a>Gyakori kérdések – a Hyper-V Azure-bA
 
@@ -104,7 +104,7 @@ Bármilyen alkalmazás vagy munkaterhelés fut a Hyper-V virtuális gép, amely 
 
 ### <a name="whats-the-replication-process"></a>Mi az a replikálási folyamat?
 
-1. Kezdeti replikáció akkor aktiválódik, ha egy Hyper-V virtuális gép pillanatkép pillanatkép készítésének időpontjában.
+1. Kezdeti replikáció akkor aktiválódik, amikor a rendszer egy Hyper-V virtuális gép pillanatképet készít.
 2. Virtuális merevlemezek a virtuális gép replikált egy olyan, amíg átmásolja ezeket az Azure-bA. Előfordulhat, hogy ez eltarthat egy ideig a virtuális gép méretétől függően és a hálózati sávszélesség. Hálózati sávszélesség növelésével kapcsolatos további információkért.
 3. Ha lemezt, miközben a kezdeti replikáció folyamatban van, a Hyper-V Replica Replication Tracker eszköz Hyper-V replikálási naplók (.hrl) formájában nyomon követi a módosításokat. Ezek a naplófájlok a lemezek ugyanabban a mappában találhatók. Minden lemezhez tartozik egy .hrl fájl, amelyet elküld a másodlagos tárhelyen. A pillanatkép- és a naplófájlok a kezdeti replikáció végrehajtása közben is lemezerőforrásokat használnak.
 4. A kezdeti replikáció befejeztével a rendszer törli a virtuális gép pillanatképét.

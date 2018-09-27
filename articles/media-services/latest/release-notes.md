@@ -1,51 +1,49 @@
 ---
-title: Az Azure Media Services v3 kibocsátási megjegyzései |} Microsoft Docs
-description: Maradjon naprakész, és a legújabb fejlemények, ez a cikk nyújt az Azure Media Services v3 a legújabb frissítéseket.
+title: Az Azure Media Services v3 kibocsátási megjegyzései |} A Microsoft Docs
+description: A legújabb fejlemények az naprakész információkat, ez a cikk az Azure Media Services v3 legújabb frissítéseit.
 services: media-services
 documentationcenter: ''
 author: Juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 03/19/2018
+ms.date: 09/25/2018
 ms.author: juliako
-ms.openlocfilehash: fc6c5ba6cd97c261dd44eade33bf21e8d1b74bf0
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: ed2550c1df4645933fb968c54ee536995c810136
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33788115"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47219329"
 ---
 # <a name="azure-media-services-v3-preview-release-notes"></a>Az Azure Media Services v3 (előzetes verzió) kibocsátási megjegyzései 
 
-Maradjon naprakész, és a legújabb fejlemények, ez a cikk azt ismerteti kapcsolatban:
+Naprakész a legújabb fejlemények, ez a cikk azt ismerteti kapcsolatban:
 
-* A legfrissebb verziókban
+* A legújabb kiadásaihoz.
 * Ismert problémák
 * Hibajavítások
 * Elavult funkciók
 * Módosítások tervek
 
-## <a name="may-07-2018"></a>2018. Előfordulhat, hogy 07.
+## <a name="may-07-2018"></a>2018. május 07.
 
 ### <a name="net-sdk"></a>.NET SDK
 
-A következő funkciók válnak elérhetővé a .net SDK:
+A .net SDK-t a következő funkciók találhatók:
 
-1. **Átalakítja az** és **feladatok** kódolására, vagy a médiatartalom elemzéséhez. Tekintse meg a [adatfolyam-fájlok](stream-files-tutorial-with-api.md) és [elemzés](analyze-videos-tutorial-with-api.md).
-2. **StreamingLocators** közzétételéhez és adatfolyam-tartalom végfelhasználói eszközökhöz
-3. **StreamingPolicies** és **ContentKeyPolicies** tartalomtovábbítás kulcs kézbesítési és tartalomvédelmi (DRM) konfigurálása.
-4. **LiveEvents** és **LiveOutputs** a feldolgozást és élő adatfolyam-tartalmak archiválása konfigurálásához.
-5. **Eszközök** tárolására és médiatartalmak közzététele az Azure Storage. 
-6. **Streamvégpontok** konfigurálásához és a dinamikus Becsomagolás, a titkosítás és a működés közbeni és igény szerinti médiatartalom streaming méretezni.
+1. **Átalakítások** és **feladatok** kódolásához, vagy a médiatartalmak elemzése. Példák: [fájlok Stream](stream-files-tutorial-with-api.md) és [elemzés](analyze-videos-tutorial-with-api.md).
+2. **StreamingLocators** közzétételéhez és a végfelhasználói eszközökön tartalmak online lejátszásához
+3. **StreamingPolicies** és **ContentKeyPolicies** konfigurálása kulcskézbesítési és a tartalomvédelmi (DRM), amikor tartalmat továbbít.
+4. **LiveEvents** és **LiveOutputs** betöltésre és élő adatfolyamok tartalmát archiválása konfigurálása.
+5. **Eszközök** tárolására és médiatartalmak közzététele az Azure Storage-ban. 
+6. **Streamvégpontok** konfigurálásához és a dinamikus csomagolás, titkosítási és folyamatos élő és igény szerinti médiatartalom méretezéséhez.
 
 ### <a name="known-issues"></a>Ismert problémák
 
-Ismert hiba:
-
-Amikor elküld egy feladatot HTTPS URL-címet (JobInputHttp) a forrástartalom mutat, győződjön meg arról, hogy a HTTP-kiszolgáló támogatja-e a "HEAD" kérelem-e. Ellenkező esetben a feladat elutasításra.
+* Küldjön el egy feladatot, megadhatja, hogy a forrásvideókat, HTTPS URL-címek, SAS URL-címek vagy elérési utak használata az Azure Blob storage-ban található fájlokat. Az AMS v3 jelenleg nem támogatja a darabolásos átvitel kódolási HTTPS URL-címek keresztül.
 
 ## <a name="next-steps"></a>További lépések
 

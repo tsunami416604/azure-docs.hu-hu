@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 11/21/2017
 ms.author: glenga
-ms.openlocfilehash: d39c27614fd4d534db36df1af61b2d419493c4d3
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 0ea2a58e61d781e6ebfb72b860a3b7aed6ce0c7d
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46953478"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47394478"
 ---
 # <a name="azure-cosmos-db-bindings-for-azure-functions-2x"></a>Az Azure Functions az Azure Cosmos DB-kötéseket 2.x
 
@@ -1694,11 +1694,10 @@ Alapértelmezés szerint ha a függvényben a kimeneti paraméter írni egy doku
 
 ## <a name="next-steps"></a>További lépések
 
-> [!div class="nextstepaction"]
-> [Nyissa meg a gyors útmutatót, amely egy Cosmos DB-eseményindító](functions-create-cosmos-db-triggered-function.md)
+* [További tudnivalók a Cosmos DB-vel számítástechnika, kiszolgáló nélküli adatbázis](..\cosmos-db\serverless-computing-database.md)
+* [Tudjon meg többet az Azure functions eseményindítók és kötések](functions-triggers-bindings.md)
 
+<!---
 > [!div class="nextstepaction"]
-> [További tudnivalók a Cosmos DB-vel számítástechnika, kiszolgáló nélküli adatbázis](..\cosmos-db\serverless-computing-database.md)
-
-> [!div class="nextstepaction"]
-> [Tudjon meg többet az Azure functions eseményindítók és kötések](functions-triggers-bindings.md)
+> [Go to a quickstart that uses a Cosmos DB trigger](functions-create-cosmos-db-triggered-function.md)
+--->

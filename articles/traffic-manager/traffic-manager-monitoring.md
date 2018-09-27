@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/22/2017
 ms.author: kumud
-ms.openlocfilehash: c28b0ccfb565cb6bd4809a321d5e57f04475dceb
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 64f3595206c580d0d177622d23aa49753100d3c0
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46123895"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47221094"
 ---
 # <a name="traffic-manager-endpoint-monitoring"></a>Traffic Manager végpont figyelése
 
@@ -32,7 +32,7 @@ Konfigurálja a végpontot, figyelés, a következő beállításokat kell megad
 * **Protokoll**. Válassza ki a HTTP, HTTPS vagy a TCP protokoll, amelyet a Traffic Manager használ a végpont-tesztelés során ellenőrizze annak állapotát. HTTPS-figyelés nem ellenőrzi a beállítása, hogy az SSL-tanúsítvány érvényes--, csak ellenőrzi, hogy a tanúsítvány jelen-e.
 * **Port**. Válassza ki a kérelem által használt port.
 * **Elérési út**. A konfigurációs beállítás értéke csak érvényes a HTTP és HTTPS protokollok, mely az elérési út megadását az beállítás megadása kötelező. Ezt a beállítást, a TCP protokoll hibát eredményez figyelési biztosítása. HTTP és HTTPS-protokoll esetében adja meg a következő relatív elérési és a képernyőn látható weblapon vagy a fájlt, amely hozzáfér a figyelési nevét. Perjellel (/) egy relatív elérési út érvényes bejegyzés. Ez az érték azt jelenti, hogy a fájl a gyökérmappában lévő (alapértelmezett).
-* **Egyéni fejlécbeállítások** e konfigurációs beállítás segítségével adhat hozzá az adott HTTP-fejléceket, a állapotába ellenőrzi, hogy a Traffic Manager elküldi egy profilhoz végpontok hozzáadása. Az egyéni fejlécek egy profil szintjén is alkalmazható a profilt minden végponthoz and / or egy végpont csak az adott végpontra alkalmazandó szintjén adható meg. Egyéni fejlécek is használhatja, hogy az állapot-ellenőrzések egy több-bérlős környezetben végpontokra átirányíthatók megfelelően a rendeltetési állomásfejléc megadásával. Egyedi fejlécek, amelyek segítségével azonosíthatja a Traffic Manager adja meg a HTTP (S) kérések hozzáadásával is használhatja ezt a beállítást, és eltérően feldolgozza azokat.
+* **Egyéni fejlécbeállítások** a konfigurációs beállítás segítségével adhat meghatározott HTTP-fejlécek állapotát ellenőrzi, hogy a Traffic Manager elküldi végpontokat a profilhoz. Az egyéni fejlécek egy profil szintjén is alkalmazható a profilt minden végponthoz and / or egy végpont csak az adott végpontra alkalmazandó szintjén adható meg. Egyéni fejlécek is használhatja, hogy az állapot-ellenőrzések egy több-bérlős környezetben végpontokra átirányíthatók megfelelően a rendeltetési állomásfejléc megadásával. Egyedi fejlécek, amelyek segítségével azonosíthatja a Traffic Manager adja meg a HTTP (S) kérések hozzáadásával is használhatja ezt a beállítást, és eltérően feldolgozza azokat.
 * **A várt állapotkód-tartományok állapot** Ez a beállítás lehetővé teszi, hogy több sikeres tartományok 200-299, a 301-301 formátumban adja meg. Ha ezek állapotkódok vannak érkezett válasz a végpont állapot-ellenőrzése elindításakor, a Traffic Manager ezekre a végpontokra kifogástalan állapotúként jelöli meg. Legfeljebb 8 kód tartományt is megadhat. Ez a beállítás akkor alkalmazható, csak a HTTP és HTTPS protokoll és az összes végpontra. Ezzel a beállítással a Traffic Manager-profil szintjén, és alapértelmezés szerint a 200-as értéket számít, ha a sikeres állapot kódja.
 * **Mintavételi időköz**. Ez az érték határozza meg, milyen gyakran a rendszer ellenőrzi a végpont a Traffic Manager ellenőrzési ügynököket az állapotát. Megadhatja, hogy itt a két érték: 30 másodperc (normál tesztelés) és 10 másodperc (gyors tesztelés). Ha nincs érték van megadva, a profil egy alapértelmezett érték 30 másodperc állítja be. Látogasson el a [Traffic Manager díjszabási](https://azure.microsoft.com/pricing/details/traffic-manager) gyors ellenőrzési díjszabással kapcsolatos további tudnivalókért lapra.
 * **Hibák száma megengedhető**. Ezt az értéket megadja egy ellenőrzési Traffic Manager-ügynököt, hogy a végpont nem kifogástalanként való megjelölése előtt eltűr hány sikertelen. Az érték 0 és 9 közötti tartományba. Egy érték 0, egy egyetlen figyelési hiba okozhatja, hogy a végpont állapotúként lesz megjelölve. Ha nem ad meg értéket, használja az alapértelmezett érték a 3-ból.

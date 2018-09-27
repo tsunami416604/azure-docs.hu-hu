@@ -15,12 +15,12 @@ ms.topic: conceptal
 ms.date: 08/23/2018
 ms.author: magoedte
 ms.component: na
-ms.openlocfilehash: bdf1d1a62bd8e2e1d0a0a8ad30f2d4c4833be0e4
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: a52654ab620908b9c8c07edf3fcdfbf70068528d
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43125093"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47220790"
 ---
 # <a name="create-a-log-analytics-workspace-in-the-azure-portal"></a>Log Analytics-munkaterület létrehozása az Azure Portalon
 Az Azure Portalon beállíthatja a Log Analytics-munkaterületet akkor egy egy saját adattárházzal, adatforrások és megoldások rendelkező egyedülálló Log Analytics-környezetre.  Ebben a cikkben leírt lépések szükségesek, ha azt tervezi, a következő forrásokból származó adatok gyűjtése a:
@@ -28,7 +28,7 @@ Az Azure Portalon beállíthatja a Log Analytics-munkaterületet akkor egy egy s
 * Az előfizetés Azure-erőforrások
 * A helyszíni System Center Operations Manager által felügyelt számítógépek
 * A System Center Configuration Manager eszközgyűjtemények 
-* Diagnosztikai vagy naplóadatok az Azure Storage-ból
+* Diagnosztikai vagy a napló adatokat az Azure storage-ból
 
 Más forrásokból, például az Azure virtuális gépek és a Windows vagy Linux rendszerű virtuális gépek a környezetben a következő témakörökben talál:
 
@@ -48,7 +48,7 @@ Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.az
   
 2. Kattintson a **Létrehozás** parancsra, majd válassza ki a következő elemek beállításait:
 
-  * Adja meg az új **OMS-munkaterület** nevét, például: *DefaultLAWorkspace*. 
+  * Adjon meg egy nevet az új **Log Analytics-munkaterület**, mint például *DefaultLAWorkspace*. 
   * A legördülő listából válassza ki azt az **előfizetést**, amelyikhez kapcsolódni szeretne, ha az alapértelmezett kiválasztás nem megfelelő.
   * A **erőforráscsoport**, használhat egy meglévő erőforrás már telepítő csoporthoz, vagy hozzon létre egy újat.  
   * Válasszon egy elérhető **hely**.  További információkért tekintse meg [Log Analytics az elérhető régiók](https://azure.microsoft.com/regions/services/).
@@ -56,7 +56,7 @@ Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.az
 
         ![Create Log Analytics resource blade](media/log-analytics-quick-collect-azurevm/create-loganalytics-workspace-02.png)  
 
-3. Miután az **OMS-munkaterület** panelen megadta a szükséges adatokat, kattintson az **OK** gombra.  
+3. Miután megadta a szükséges adatokat a **Log Analytics-munkaterület** ablaktáblán kattintson a **OK**.  
 
 Az **Értesítések** menüpontot kiválasztva nyomon követheti, hogyan ellenőrzi a rendszer az adatokat, és hogyan hozza létre a munkaterületet. 
 
@@ -66,4 +66,4 @@ Most, hogy a munkaterület érhető el, figyelési telemetriai adatok gyűjtés�
 * Ahhoz, hogy az adatok gyűjtését az Azure-erőforrásokat az Azure Diagnostics vagy az Azure storage, lásd: [gyűjtése az Azure naplói és a Log Analytics használati metrikái](log-analytics-azure-storage.md).  
 * [Adja hozzá a System Center Operations Manager alkalmazást adatforrásként](log-analytics-om-agents.md) adatokat gyűjteni az Operations Manager felügyeleti csoportnak jelentő ügynökök és a Log Analytics-munkaterületen tárolja. 
 * Csatlakozás [Configuration Manager](log-analytics-sccm.md) számítógépek, amelyek tagjai a hierarchiában lévő gyűjtemények importálása.  
-* Tekintse át a [felügyeleti megoldások](log-analytics-add-solutions.md) érhető el, és hogyan lehet hozzáadni vagy megoldás eltávolítása a munkaterületről.
+* Tekintse át a [felügyeleti megoldások](https://docs.microsoft.com/azure/monitoring/monitoring-solutions-inventory?toc=%2fazure%2flog-analytics%2ftoc.json) érhető el, és hogyan lehet hozzáadni vagy megoldás eltávolítása a munkaterületről.

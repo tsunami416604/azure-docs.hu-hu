@@ -1,7 +1,7 @@
 ---
-title: Kódminták és az adatok tudományos virtuálisgép - Azure forgatókönyvek |} Microsoft Docs
-description: Kódminták és forgatókönyvek esetében az adatok tudományos virtuális gép.
-keywords: adatok tudományos eszközök, adatok tudományos virtuális gép, adattudomány, linux adattudomány eszközei
+title: Minták és útmutatók a az adatelemző virtuális gép – Azure |} A Microsoft Docs
+description: Minták és útmutatók a Data Science virtuális gép esetében.
+keywords: adatelemzési eszközök, adatelemző virtuális gép, eszközök adatelemzéshez, linux adatelemzés
 services: machine-learning
 documentationcenter: ''
 author: gopitk
@@ -13,82 +13,76 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/11/2017
+ms.date: 09/24/2018
 ms.author: gokuma
-ms.openlocfilehash: 3e3ee232b6342601e44d728148d32e70e6f3f00b
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: a1f15b805d2f27152d9ba85608ce0dc1d1aac21e
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31419976"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47392568"
 ---
-# <a name="samples-on-the-data-science-virtual-machines-dsvm"></a>Az adatok tudományos virtuális gépeken (DSVM) minták
+# <a name="samples-on-the-data-science-virtual-machines-dsvm"></a>Példák a az adatelemző virtuális gépek (DSVM)
 
-A DSVMs belefoglalt teljesen működőképes kibővített minták Jupyter Notebookokból és az egyes nem a Jupyter alapuló formájában kapja. Jupyter kattintva végezheti el a `Jupyter` ikonjára az asztal vagy alkalmazás menü.  
+A Dsvm mintakód mindkét átfogó készletét tartalmazza a Jupyter notebookok csakúgy, mint például a Python és az r nyelvű parancsprogramok a képernyő    
 > [!NOTE]
-> Tekintse meg [hozzáférés Jupyter](#access-jupyter) szakaszt, hogy a DSVM a Jupyter notebookok.
+> Tekintse meg [hozzáférés Jupyter](#access-jupyter) szakaszban olvashat a Jupyter notebookok futó a dsvm-hez.
 
-## <a name="quick-reference-of-samples"></a>Gyors referenciaként a minták
-| Kategória – minták | Leírás | Helyek |
+## <a name="quick-reference-of-samples"></a>A minták rövid összefoglalása
+| A minták kategória | Leírás | Helyek |
 | ------------- | ------------- | ------------- |
-| **R** nyelv  | A minták **R** foglalja össze a helyzetekben, például az Azure-felhőbe adatok összekapcsolása tárolja, nyissa meg forrás R összehasonlításával és Microsoft R & végrehajtott modellek Microsoft R Server vagy SQL Server. <br/> [Képernyőfelvétel](#r-language) | <br/>`~notebooks` <br/> <br/> `~samples/MicrosoftR` <br/> <br/> `~samples/RSqlDemo` <br/> <br/> `~samples/SQLRServices`<br/> <br/>|
-| **Python** nyelv  | A minták **Python** foglalja össze a helyzetekben, például az Azure felhőalapú adattároló összekapcsolása és az azokkal **Azure Machine Learning**.  <br/> [Képernyőfelvétel](#python-language) | <br/>`~notebooks` <br/><br/>|
-| **Ágnes** nyelv  | A minta **Ágnes** , amely részletesen Plotting a Ágnes, mély Ágnes tanulás, C és Python előhívásának Ágnes stb. <br/> [Képernyőfelvétel](#julia-language) |<br/> **Windows**:<br/> `~notebooks/Julia_notebooks`<br/><br/>`~notebooks`<br/><br/> **Linux**:<br/> `~notebooks/julia`<br/><br/> |
-| **CNTK** <br/> (A Microsoft kognitív eszközkészlet)  | A Microsoft kognitív eszközkészlet csapata által közzétett minták tanulási mély.  <br/> [Képernyőfelvétel](#cntk) | <br/>**Windows**:<br/> `~notebooks/CNTK/Tutorials`<br/><br/>`~/samples/CNTK-Samples-2-0/Examples`<br/><br/> **Linux**:<br/> `~notebooks/CNTK`<br/> <br/>|
-| **MXNet** notebookok  | Részletes tanulási okhoz minták **MXNet** alapú Neurális hálózatokat. Nincsenek speciális forgatókönyvek kezdő kezdve notebookok különböző.  <br/> [Képernyőfelvétel](#mxnet) | <br/>`~notebooks/mxnet`<br/> <br/>|
-| **Az Azure gépi tanulás** AzureML  | Interakció **Azure Machine Learning** Studio és a webszolgáltatás végpontok helyileg betanított modellek pontozási munkafolyamatokat felhőalapú történő létrehozását. <br/> [Képernyőfelvétel](#azureml) | <br/>`~notebooks/azureml`<br/> <br/>|
-| **Caffe2** | Részletes tanulási okhoz minták **caffe2** alapú Neurális hálózatokat. Például a lemezkép előzetes feldolgozás adatkészlet létrehozását, regresszióját, és segítségével előre modellek betanítása, beleértve a példákat úgy tervezték, hogy a felhasználók ismerkedjen caffe2 és hatékonyan, használatával több jegyzetfüzetet van. <br/> [Képernyőfelvétel](#caffe2) | <br/>`~notebooks/caffe2`<br/><br/> |
-| **H2O**   | Python-alapú minták okhoz **H2O** számos valós forgatókönyvvel problémák. <br/> [Képernyőfelvétel](#h2o) | <br/>`~notebooks/h2o`<br/><br/> |
-| **SparkML** nyelv  | A Spark az funkcióira és képességeire okhoz minta **MLlib** keresztül eszközkészlet **pySpark 2.0** a **Apache Spark 2.0**.  <br/> [Képernyőfelvétel](#sparkml) | <br/>`~notebooks/SparkML/pySpark`<br/><br/> |
-| **MMLSpark** nyelv  | Okhoz minták számos **MMLSpark - Microsoft Machine Learning az Apache Spark**, amely, amely számos mély tanulási és adatok tudományos eszközök a keretet **Apache Spark**. <br/> [Képernyőfelvétel](#sparkml) | <br/>`~notebooks/MMLSpark`<br/><br/> |
-| **TensorFlow**  | Több különböző Neurális hálózat mintákat és technikák használatával megvalósított a **TensorFlow** keretrendszer. <br/> [Képernyőfelvétel](#tensorflow) | <br/>`~notebooks/tensorflow`<br/><br/> |
-| **XGBoost** | Standard Machine Learning mintákkal **XGBoost** forgatókönyvek például a besorolás, regressziós stb. <br/> [Képernyőfelvétel](#xgboost) | <br/>`~samples/xgboost/demo`<br/><br/> |
+| **R** nyelv  | A minták **R** helyzetek, például az Azure-felhőbeli adatokhoz való csatlakoztatásának elmagyarázza tárolja, nyílt forráskódú R összehasonlítása és a Microsoft R & modellek modellezést, a Microsoft R Server vagy SQL Server. <br/> [Képernyőfelvétel](#r-language) | <br/>`~notebooks` <br/> <br/> `~samples/MicrosoftR` <br/> <br/> `~samples/RSqlDemo` <br/> <br/> `~samples/SQLRServices`<br/> <br/>|
+| **Python** nyelv  | A minták **Python** helyzetek, például az Azure felhőalapú adattárak csatlakoztatása és használatának elmagyarázza **Azure Machine Learning**.  <br/> [Képernyőfelvétel](#python-language) | <br/>`~notebooks` <br/><br/>|
+| **Julia** nyelv  | A minta **Julia** , amely részletesen Plotting a Julia, a mély tanulási Julia, C és Python megismernie Julia stb. <br/> [Képernyőfelvétel](#julia-language) |<br/> **Windows**:<br/> `~notebooks/Julia_notebooks`<br/><br/> **Linux**:<br/> `~notebooks/julia`<br/><br/> |
+| **Az Azure Machine Learning** AzureML  | Gépi Tanulási és deep learning-modellek létrehozása **az Azure Machine Learning** szolgáltatás, és bárhol üzembe modelleket. Használja ki szolgáltatásokat, például a gépi tanulás automatikus finomhangolási, modellkezelés, intelligens hyper paraméter képzési terjesztése. <br/> [Képernyőfelvétel](#azureml) | <br/>`~notebooks/AzureML`<br/> <br/>|
+| **PyTorch** notebookok  | Deep Learning felhasználásával minták **PyTorch** Neurális hálózatok alapján. Nincsenek speciális forgatókönyvek és a kezdő notebookok különböző.  <br/> [Képernyőfelvétel](#pytorch) | <br/>`~notebooks/Deep_learning_frameworks/pytorch`<br/> <br/>|
+| **TensorFlow**  | Több különböző Neurális hálózat-minták és eljárások használatával implementált a **TensorFlow** keretrendszer. <br/> [Képernyőfelvétel](#tensorflow) | <br/>`~notebooks/Deep_learning_frameworks/tensorflow`<br/><br/> |
+| **CNTK** <br/> (A Microsoft Cognitive Toolkit)  | A deep learning-mintákat a Microsoft Cognitive Toolkit csapata által közzétett.  <br/> [Képernyőfelvétel](#cntk) | <br/> `~notebooks/DeepLearningTools/CNTK/Tutorials`<br/><br/> **Linux**:<br/> `~notebooks/CNTK`<br/> <br/>|
+| **Caffe2** | Deep Learning felhasználásával minták **caffe2** Neurális hálózatok alapján. Nincsenek, a lemezkép előzetes feldolgozás adatkészlet létrehozását, regressziós, és használatával előre betanított modelleket, beleértve a példákat és ismerje meg a felhasználók caffe2 és hogyan használható hatékonyan, tervezett több notebookok. <br/> [Képernyőfelvétel](#caffe2) | <br/>`~notebooks/Deep_learning_frameworks/caffe2`<br/><br/> |
+| **H2O**   | Python-alapú minták használatával **H2O** a való életből vett forgatókönyv számos olyan problémákat. <br/> [Képernyőfelvétel](#h2o) | <br/>`~notebooks/h2o`<br/><br/> |
+| **Könnyen használható** nyelv  | Kész üzletifolyamat-funkciók és a Spark képességeire minta **MLlib** keresztül eszközkészlet **pySpark** és **MMLSpark – Microsoft Machine Learning, az Apache Spark** a **Apache Spark-2.x**.  <br/> [Képernyőfelvétel](#sparkml) | <br/>`~notebooks/SparkML/pySpark`<br/>`~notebooks/MMLSpark`<br/><br/>  |
+| **XGBoost** | Standard szintű Machine Learning-minták az **XGBoost** például a besorolás, regressziós stb. <br/> [Képernyőfelvétel](#xgboost) | <br/>**Windows**:<br/>`\dsvm\samples\xgboost\demo`<br/><br/> |
 
 <br/>
 
-## <a name="access-jupyter"></a>Hozzáférés Jupyter 
+## <a name="access-jupyter"></a>Hozzáférés a Jupyter 
 
-Látogasson el Jupyter kezdőlapja a **`https://localhost:9999`** Windows vagy **`https://localhost:8000`** az Ubuntu.
+Jupyter kattintva elérheti a `Jupyter` ikonjára az asztal vagy alkalmazás menü. Is elérhető Jupyter távolról egy webböngészőből a DSVM Linux kiadásában funkcionáló **`https://<Full Domain Name or IP Address of the DSVM>:8000`** Ubuntu rendszeren.
+
+Tekintse meg a kivétel hozzáadása és Jupyter-hozzáférés engedélyezése a böngészőben képernyőképet.
 
 
-### <a name="enabling-jupyter-access-from-browser"></a>A böngésző Jupyter hozzáférés engedélyezése
+![A Jupyter kivétel engedélyezése](./media/ubuntu-jupyter-exception.png)
 
-**Windows DSVM**
 
-Futtatás **`Jupyter SetPassword`** az asztali parancsikonjára, és kövesse a jelenít meg a jelszó beállítása/reset a Jupyter, és indítsa el a Jupyter feldolgozni. 
-<br/>![Jupyter kivétel engedélyezése](./media/jupyter-setpassword.png)<br/>
-Van-e hozzáférési Jupyter kezdőlap után a Jupyter folyamat sikeresen elindult a virtuális gépen látogasson el **`https://localhost:9999`** a böngésző. Lásd: a kivétel hozzáadása és Jupyter hozzáférés engedélyezése a böngészőben képernyőképe
-<br/>![Jupyter kivétel engedélyezése](./media/windows-jupyter-exception.png)<br/>
-Jelentkezzen be az imént beállított új jelszót.
-<br/>
-**Linux DSVM**
-
-Látogasson el a virtuális Gépet a Jupyter otthoni végezheti el **`https://localhost:8000`** a böngésző. Tekintse meg a kivétel hozzáadása és Jupyter hozzáférés engedélyezése a böngészőben képernyőképet.
-<br/>![Jupyter kivétel engedélyezése](./media/ubuntu-jupyter-exception.png)<br/>
-Jelentkezzen be ugyanazt a jelszót, mint a bejelentkezési adatait a DSVM számára.
+Jelentkezzen be a bejelentkezési jelszót a dsvm-hez.
 <br/>
 
-**Jupyter kezdőlapja**
-<br/>![Jupyter kezdőlapja](./media/jupyter-home.png)<br/>
+**Jupyter-kezdőlap**
+<br/>![Jupyter-kezdőlap](./media/jupyter-home.png)<br/>
 
-## <a name="r-language"></a>R nyelv 
+## <a name="r-language"></a>Az R nyelv 
 <br/>![R-minták](./media/r-language-samples.png)<br/>
 
 ## <a name="python-language"></a>Python nyelven
-<br/>![Python-minták](./media/python-language-samples.png)<br/>
+<br/>![Példák Python programnyelvhez](./media/python-language-samples.png)<br/>
 
-## <a name="julia-language"></a>Ágnes nyelv 
-<br/>![Ágnes minták](./media/julia-samples.png)<br/>
-
-## <a name="cntk"></a>CNTK 
-<br/>![CNTK minták](./media/cntk-samples2.png)<br/>
-<br/>![CNTK minták](./media/cntk-samples.png)<br/>
-
-## <a name="mxnet"></a>MXNet
-<br/>![MXnet minták](./media/mxnet-samples.png)<br/>
+## <a name="julia-language"></a>Julia nyelvhez 
+<br/>![Julia minták](./media/julia-samples.png)<br/>
 
 ## <a name="azureml"></a>AzureML 
 <br/>![AzurekML minták](./media/azureml-samples.png)<br/>
+
+## <a name="pytorch"></a>PyTorch
+<br/>![PyTorch minták](./media/pytorch-samples.png)<br/>
+
+## <a name="tensorflow"></a>TensorFlow 
+<br/>![TensorFlow-minták](./media/tensorflow-samples.png)<br/>
+
+
+## <a name="cntk"></a>CNTK 
+<br/>![CNTK-minták](./media/cntk-samples.png)<br/>
+
 
 ## <a name="caffe2"></a>Caffe2 
 <br/>![caffe2 minták](./media/caffe2-samples.png)<br/>
@@ -96,11 +90,8 @@ Jelentkezzen be ugyanazt a jelszót, mint a bejelentkezési adatait a DSVM szám
 ## <a name="h2o"></a>H2O 
 <br/>![H2O minták](./media/h2o-samples.png)<br/>
 
-## <a name="sparkml"></a>SparkML 
-<br/>![SparkML minták](./media/sparkml-samples.png)<br/>
-
-## <a name="tensorflow"></a>TensorFlow 
-<br/>![TensorFlow minták](./media/tensorflow-samples.png)<br/>
+## <a name="sparkml"></a>Könnyen használható 
+<br/>![Könnyen használható minták](./media/sparkml-samples.png)<br/>
 
 ## <a name="xgboost"></a>XGBoost 
 <br/>![XGBoost minták](./media/xgboost-samples.png)<br/>

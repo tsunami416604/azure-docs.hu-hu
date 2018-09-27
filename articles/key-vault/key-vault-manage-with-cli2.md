@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/28/2018
 ms.author: barclayn
-ms.openlocfilehash: 00d79462fcaad785820e3879079414c88c958a89
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: ba39ba2d4206fa86ed32bddf0538a2e997a79339
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46961484"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47220567"
 ---
 # <a name="manage-key-vault-using-the-azure-cli"></a>Az Azure CLI használatával a Key Vault felügyelete 
 
-Ez a cikk bemutatja, hogyan kezdeni a munkát az Azure Key Vault használatával a az Azure parancssori felület.  Az információkat tekintheti meg:
+Ez a cikk bemutatja, hogyan kezdeni a munkát az Azure Key Vault az Azure CLI használatával.  Az információkat tekintheti meg:
 
 - Hogyan hozhat létre, amellyel megerősített tárolókat (kulcstartókat) az Azure-ban
 - Egy kulcs, a titkos kulcsot vagy a tanúsítvány hozzáadása a key vaulthoz

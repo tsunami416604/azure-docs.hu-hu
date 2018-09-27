@@ -9,41 +9,38 @@ ms.reviewer: jmartens
 author: hjerez
 ms.author: hjerez
 ms.date: 09/24/2018
-ms.openlocfilehash: 634f33b6d4ed6e272dfb3d1443b0afc63f822d43
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.openlocfilehash: d3e0b63d42ad8c6d4765f5120c26c5dfdf5ad6fb
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47055883"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47166537"
 ---
 # <a name="manage-deploy-and-monitor-models-with-azure-machine-learning"></a>Kezelheti, telepítheti és figyelheti a modellek Azure Machine Learning segítségével
 
 Ebben a cikkben megismerheti az Azure Machine Learning segítségével telepíthet, kezelheti és figyelheti a modellek révén folyamatosan fejleszthető. A helyi gépen, vagy egyéb forrásokból az az Azure Machine Learning betanított modellek is telepítheti. 
 
-[!["Az azure Machine Learning folyamatos integráció/folyamatos készregyártás (CI/CD) ciklus:](media/concept-model-management-and-deployment/model-ci-cd.png)](media/concept-model-management-and-deployment/model-ci-cd.png#lightbox)
+A következő ábra szemlélteti a teljes telepítési munkafolyamat: [ ![üzembe helyezést megvalósító munkafolyamat az Azure Machine Learning](media/concept-model-management-and-deployment/deployment-pipeline.png) ](media/concept-model-management-and-deployment/deployment-pipeline.png#lightbox)
 
-## <a name="deployment-workflow"></a>Telepítési munkafolyamat
-
-A telepítési munkafolyamat tevődik össze: 
+Az üzembe helyezést megvalósító munkafolyamat a következő lépésekből áll:
 1. **Regisztrálja a modellt** üzemeltetett az Azure Machine Learning-munkaterületet a beállításjegyzékben
 1. **Lemezkép regisztrálása** , amely egy pontozó szkriptre és a egy hordozható tároló függőségeit modell párokat. 
 1. **Üzembe helyezése** a kép webszolgáltatásként, amely a felhőben vagy a peremeszközökre
-1. **Figyelés és az adatok gyűjtése**
+1. **Adatainak figyelésére és gyűjtésére**
 
-Az egyes lépések egymástól függetlenül, vagy egy egyetlen központi telepítési parancs részeként teheti meg. 
+Az egyes lépések egymástól függetlenül, vagy egy egyetlen központi telepítési parancs részeként hajtható végre. Ezenkívül integrálható üzembe helyezését egy **CI/CD a munkafolyamat** alábbi képen szemléltetett módon.
 
-A következő ábra szemlélteti a teljes üzembe helyezési folyamat:
+[ !["Az azure Machine Learning folyamatos integráció/folyamatos készregyártás (CI/CD) ciklus:](media/concept-model-management-and-deployment/model-ci-cd.png) ](media/concept-model-management-and-deployment/model-ci-cd.png#lightbox)
 
-[![Üzembe helyezési folyamat](media/concept-model-management-and-deployment/deployment-pipeline.png)](media/concept-model-management-and-deployment/deployment-pipeline.png#lightbox)
 
-## <a name="step-1-model-registration"></a>1. lépés: A modell regisztrálását
+## <a name="step-1-register-model"></a>1. lépés: Regisztráljon modell
 
 A modell beállításjegyzék nyomon követi az összes a modellek az Azure Machine Learning-munkaterületet.
 Modellek nevét és verzióját azonosítja. Minden alkalommal, amikor egy modell regisztrálni a neve megegyezik egy meglévő, a beállításjegyzék növeli a verziót. Használható kereséskor a modellek regisztrálása során is megadható további metaadat-címkéket.
 
 Lemezkép által használt modellek nem törölhető.
 
-## <a name="step-2-image-registration"></a>. 2. lépés: Lemezkép-regisztrációs
+## <a name="step-2-register-image"></a>2. lépés: Regisztráljon kép
 
 Rendszerképek lehetővé teszik a megbízható modell-üzembehelyezés, a modell használatához szükséges összes összetevő együtt. Kép a következő elemeket tartalmazza:
 
@@ -59,24 +56,24 @@ Az Azure Machine Learning a népszerű keretrendszereket támogat, de általába
 A munkaterület létrehozása után úgy más számos egyéb Azure-erőforrások használta a munkaterülethez.
 A lemezkép létrehozására használt összes objektum munkaterületét az Azure storage-fiókban vannak tárolva. A rendszerkép létrehozása és az Azure Container Registry tárolja. A kép, amely is tárolódnak a regisztrációs adatbázisba, és kérdezhetők le, keresse meg a lemezkép létrehozásakor megadhat további metaadat-címkéket.
 
-## <a name="step-3-deployment"></a>3. lépés: központi telepítés
+## <a name="step-3-deploy-image"></a>3. lépés: A rendszerkép üzembe helyezése
 
 Regisztrált lemezképeket telepíthet a felhőben vagy a peremhálózati eszközökre. Az üzembehelyezési folyamat létrehoz figyeléséhez szükséges erőforrásokat, terheléselosztás és automatikus méretezés a modellt. A telepített szolgáltatásokhoz való hozzáférés az üzembe helyezés során a biztonsági eszközök biztosításával leköthetőek tanúsítványalapú hitelesítéssel. Újabb-rendszerkép használata egy meglévő telepítéshez frissíteni is lehet.
 
 Webszolgáltatások üzembe helyezéséhez is kereshetők. Kereshet például egy adott modell- vagy képfájl, központi telepítések.
 
-Az alábbi célokhoz, a felhőben is üzembe helyezhetik a rendszerképeket:
+[ ![Következtetési célok](media/concept-model-management-and-deployment/inferencing-targets.png) ](media/concept-model-management-and-deployment/inferencing-targets.png#lightbox)
+
+A következő is üzembe helyezhetik a rendszerképeket [telepítési céljainak](how-to-deploy-and-where.md) a felhőben:
 
 * Azure Container Instance
 * Azure Kubernetes Service
 * Azure-beli FPGA-gépek
 * Az Azure IoT Edge-eszközök
 
-[További információ, ahol telepítheti](how-to-deploy-and-where.md).
+A szolgáltatás üzemel, a következtetési kérelme, mert automatikusan kiegyenlített terhelésű és a fürt méretezése igény szerint bármely ugrásszerűen kielégítéséhez. [A szolgáltatással kapcsolatos telemetriai adatok](https://docs.microsoft.com/python/api/azureml-telemetry/azureml.telemetry?view=azure-ml-py) az Azure Application Insights szolgáltatásba a munkaterülethez társított rögzíthetők.
 
-A szolgáltatás üzemel, a következtetési kérelme, mert automatikusan kiegyenlített terhelésű és a fürt méretezése igény szerint bármely ugrásszerűen kielégítéséhez. A szolgáltatással kapcsolatos telemetriai adatokat az Azure Application Insights szolgáltatásba a munkaterülethez társított van rögzítve.
-
-## <a name="step-4-monitoring-models-and-data-collection"></a>4. lépés: Figyelési modellek és az adatgyűjtés
+## <a name="step-4-monitor-models-and-collect-data"></a>4. lépés: Modellek adatainak figyelésére és gyűjtésére
 
 Egy SDK-t a modell naplózása és az adatok rögzítése kísérheti bemeneti, kimeneti és más vonatkozó adatokat a modellben szereplő érhető el. Az adatok a munkaterület az Azure Storage-fiókban található blob van tárolva.
 

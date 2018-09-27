@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/05/2017
 ms.author: apimpm
-ms.openlocfilehash: 18b9e4eac6b183cd02ad2bb93463b4cc043f303a
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 1a02fd604d08e87c84a73657b7204ecb42b3498b
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47040335"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47393179"
 ---
 # <a name="how-to-use-azure-api-management-with-virtual-networks"></a>A virtuális hálózatok az Azure API Management használata
 Az Azure virtuális hálózatok (Vnetek) helyezni, az Azure-erőforrások bármelyikét elérését Ön szabályozza a nem internet routeable hálózat teszi lehetővé. Ezek a hálózatok csatlakozhat a helyszíni hálózatokhoz való kapcsolódásának VPN különböző technológiákat. További információ az Azure-beli virtuális hálózatok Kezdje itt az adatokat további: [Azure Virtual Network áttekintése](../virtual-network/virtual-networks-overview.md).
@@ -110,10 +110,11 @@ Az API Management-szolgáltatáspéldány egy virtuális hálózaton jöhet szó
 | --- | --- | --- | --- | --- | --- |
 | * / 80, 443 |Bejövő |TCP |AZ INTERNET / VIRTUAL_NETWORK|Ügyfél-kommunikációt és az API Management|Külső |
 | * / 3443 |Bejövő |TCP |AZ APIMANAGEMENT / VIRTUAL_NETWORK|Az Azure portal, Powershell felügyeleti végponthoz |Külső és belső |
-| * / 80, 443 |Kimenő |TCP |VIRTUAL_NETWORK / INTERNET|**Az Azure Storage függőségi**, Azure Service Bus és az Azure Active Directory (ha vannak ilyenek).|Külső és belső |
+| * / 80, 443 |Kimenő |TCP |VIRTUAL_NETWORK / Storage|**Az Azure Storage függőség**|Külső és belső |
+| * / 80, 443 |Kimenő |TCP |VIRTUAL_NETWORK / INTERNET| Az Azure Active Directory (ha vannak ilyenek)|Külső és belső |
 | * / 1433 |Kimenő |TCP |VIRTUAL_NETWORK / SQL|**Hozzáférés az Azure SQL-végpontokra** |Külső és belső |
-| * / 5672 |Kimenő |TCP |VIRTUAL_NETWORK / INTERNET|Eseményközpont-szabályzat és a monitorozási ügynök a napló függőséget |Külső és belső |
-| * / 445 |Kimenő |TCP |VIRTUAL_NETWORK / INTERNET|A git Azure-fájlmegosztás függőség |Külső és belső |
+| * / 5672 |Kimenő |TCP |VIRTUAL_NETWORK / EventHub |Eseményközpont-szabályzat és a monitorozási ügynök a napló függőséget |Külső és belső |
+| * / 445 |Kimenő |TCP |VIRTUAL_NETWORK / Storage |A git Azure-fájlmegosztás függőség |Külső és belső |
 | * / 1886 |Kimenő |TCP |VIRTUAL_NETWORK / INTERNET|A Resource Health állapot közzététele szükséges |Külső és belső |
 | * / 25028 |Kimenő |TCP |VIRTUAL_NETWORK / INTERNET|E-mailek küldéséhez SMTP-továbbítás használata csatlakozáshoz |Külső és belső |
 | * / 6381 - 6383 |A bejövő és kimenő |TCP |VIRTUAL_NETWORK / VIRTUAL_NETWORK|Hozzáférés a Redis Cache-példányokban RoleInstances között |Külső és belső |
@@ -130,9 +131,11 @@ Az API Management-szolgáltatáspéldány egy virtuális hálózaton jöhet szó
 
     | Azure-környezet | Végpontok |
     | --- | --- |
-    | Azure Public | <ul><li>prod.warmpath.msftcloudes.com</li><li>shoebox2.Metrics.nsatc.NET</li><li>prod3.Metrics.nsatc.NET</li><li>prod3-black.prod3.metrics.nsatc.net</li><li>prod3-red.prod3.metrics.nsatc.net</li></ul> |
+    | Azure Public | <ul><li>prod.warmpath.msftcloudes.com</li><li>shoebox2.Metrics.nsatc.NET</li><li>prod3.Metrics.nsatc.NET</li><li>prod3-black.prod3.metrics.nsatc.net</li><li>prod3-red.prod3.metrics.nsatc.net</li><li>prod.warm.ingestion.msftcloudes.com</li><li>`azure region`. warm.ingestion.msftcloudes.com ahol `East US 2` eastus2.warm.ingestion.msftcloudes.com van</li></ul> |
     | Azure Government | <ul><li>fairfax.warmpath.usgovcloudapi.NET</li><li>shoebox2.Metrics.nsatc.NET</li><li>prod3.Metrics.nsatc.NET</li></ul> |
     | Azure China | <ul><li>mooncake.warmpath.chinacloudapi.CN</li><li>shoebox2.Metrics.nsatc.NET</li><li>prod3.Metrics.nsatc.NET</li></ul> |
+
+* **Az Azure portal diagnosztikai**: a folyamatot az Azure Portalról a diagnosztikai naplók engedélyezése, ha a virtuális hálózatokban, kimenő hozzáférést az API Management-bővítmény használata `dc.services.visualstudio.com` 443-as porton szükség. Ez segít bővítmény használatakor előfordulhat, hogy között kapcsolatos hibák elhárítása.
 
 * **Express Route-telepítő**: egy közös ügyfél-konfigurációs a saját alapértelmezett útvonalat (0.0.0.0/0), amely arra kényszeríti a kimenő internetes forgalmat inkább a helyi meghatározásához. A forgalom áramlását tüntetnek működésképtelenné válik a kapcsolatot az Azure API Management szolgáltatással, mert a kimenő forgalmat a letiltott helyi vagy NAT-címek, amelyek többé nem működnek együtt a különböző Azure-beli felismerhetetlen készletéhez lenne. A megoldás az, hogy egy (vagy több) felhasználó által megadott útvonalak megadása ([udr-EK][UDRs]), amely tartalmazza az Azure API Management az alhálózaton. Egy UDR határozza meg az alhálózat-specifikus útvonalakat, amely az alapértelmezett útvonal helyett lesznek érvényesek.
   Ha lehetséges javasoljuk, hogy az alábbi konfigurációt használja:
@@ -184,6 +187,7 @@ Az alhálózat, amelyben az API Management is üzembe helyezhetők a minimális 
 * [Különböző üzemi modellekből származó virtuális hálózat csatlakoztatása](../vpn-gateway/vpn-gateway-connect-different-deployment-models-powershell.md)
 * [Az Azure API Management meghívja az API Inspectorral nyomkövetési használata](api-management-howto-api-inspector.md)
 * [Virtuális hálózat – gyakori kérdések](../virtual-network/virtual-networks-faq.md)
+* [Szolgáltatáscímkék](../virtual-network/security-overview.md#service-tags)
 
 [api-management-using-vnet-menu]: ./media/api-management-using-with-vnet/api-management-menu-vnet.png
 [api-management-setup-vpn-select]: ./media/api-management-using-with-vnet/api-management-using-vnet-type.png

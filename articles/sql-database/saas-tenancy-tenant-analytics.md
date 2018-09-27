@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: anjangsh,billgib,genemi
 manager: craigg
 ms.date: 09/19/2018
-ms.openlocfilehash: dc912ded6f879d14689a267c7ee63245c11c0bd0
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.openlocfilehash: bd766dfb712921a57dd23c4fdecc25dd623eb833
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47054948"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47393264"
 ---
 # <a name="cross-tenant-analytics-using-extracted-data---single-tenant-app"></a>A kinyert adatoknak - egybérlős alkalmazást több-bérlős analytics használatával
  
@@ -212,7 +212,7 @@ Minták jegyárusító betekintést az üzleti modell optimalizálása érdekéb
 Ugyanakkor az egyes Wingtip Tickets ügyfeleink panaszok, hogy azok kihívást jelent, hogy adja meg a szolgáltatás költsége elegendő jegyek értékesítésére. Például ilyen elemzést van lehetőség az alulteljesítő helyszínek jegyeladásokkal növelése érdekében. Magasabb értékesítési lenne növelje mintavételezéskor a szolgáltatás. Kattintson a jobb gombbal a fact_Tickets, és válassza ki **új mérték**. Adja meg az új mérték neve a következő kifejezést **AverageTicketsSold**:
 
 ```
-AverageTicketsSold = DIVIDE(DIVIDE(COUNTROWS(fact_Tickets),DISTINCT(dim_Venues[VenueCapacity]))*100, COUNTROWS(dim_Events))
+AverageTicketsSold = AVERAGEX( SUMMARIZE( TableName, TableName[Venue Name] ), CALCULATE( SUM(TableName[Tickets Sold] ) ) )
 ```
 
 Válassza ki az alábbi Vizualizáció lehetőségek a relatív sikerük meghatározásához minden egyes helyszín által értékesített százalékos jegyek ábrázolásához.

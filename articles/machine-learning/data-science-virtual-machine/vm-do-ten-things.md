@@ -13,14 +13,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/04/2017
+ms.date: 09/24/2018
 ms.author: gokuma
-ms.openlocfilehash: ce73d1ef5425ee2fe66655571a6d6bbbff372af5
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: faabdb4c2d2e434863a6bed0b2cd85a05c94eab1
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39502811"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47395729"
 ---
 # <a name="ten-things-you-can-do-on-the-windows-data-science-virtual-machine"></a>Tíz dolog, amire alkalmas a Windows Data Science virtuális gépen
 
@@ -47,7 +47,7 @@ Ebben a cikkben megtudhatja hogyan használható a dsvm-hez különböző adattu
 **Előfeltételek**
 
 * Azure-előfizetés szükséges. Iratkozzon fel az ingyenes próbaverzióra [Itt](https://azure.microsoft.com/free/).
-* Utasítások üzembe helyezés egy adatelemző virtuális gép az Azure Portal webhelyen érhetők el [hoz létre virtuális gépet](https://portal.azure.com/#create/microsoft-ads.standard-data-science-vmstandard-data-science-vm).
+* Utasítások üzembe helyezés egy adatelemző virtuális gép az Azure Portal webhelyen érhetők el [hoz létre virtuális gépet](https://portal.azure.com/#create/microsoft-dsvm.dsvm-windowsserver-2016).
 
 ## <a name="1-explore-data-and-develop-models-using-microsoft-ml-server-or-python"></a>1. Adatok feltárása és fejlesztése a Microsoft ML Server vagy a Python használatával
 Például az R és Python nyelvek használatával az adatok elemzését közvetlenül a dsvm-hez.
@@ -56,7 +56,7 @@ Az R például az RStudio, amely megtalálható a start menüből vagy az asztal
 
 A Python például a Visual Studio Community Edition, amely rendelkezik a Python Tools for Visual Studio (PTVS) bővítmény előre telepítve van egy IDE is használhatja. Csak a Python 3.6, alapértelmezés szerint a legfelső szintű conda-környezet projektek készítése PTVS van konfigurálva. Anaconda Python 2.7-es engedélyezéséhez kövesse az alábbi lépéseket kell:
 
-* Az egyéni környezet minden verzió létrehozása **eszközök** -> **Python Tools** -> **Python-környezetek** és kattintás a " **+ Egyéni**"a Visual Studio 2015 Community Edition
+* Az egyéni környezet minden verzió létrehozása **eszközök** -> **Python Tools** -> **Python-környezetek** és kattintás a " **+ Egyéni**"az a Visual Studio Community Edition
 * Adjon meg egy leírást, és állítsa be a környezet előtag elérési, mert *c:\anaconda\envs\python2* Anaconda Python 2.7
 * Kattintson a **automatikus észlelése** , majd **alkalmaz** mentéséhez a környezetben.
 
@@ -66,7 +66,7 @@ Itt látható, hogy az egyéni környezet beállítása néz ki a Visual Studió
 
 Tekintse meg a [PVTS dokumentációban](http://aka.ms/ptvsdocs) további részleteket a Python-környezetek létrehozása.
 
-Most hozzon létre egy új Python-projektet állíthatók be. Navigáljon a **fájl** -> **új** -> **projekt** -> **Python** és típusának kiválasztása Python-alkalmazást hoz létre. A kívánt verziót (2.7-es és 3.6-os Anaconda) az aktuális projekt Python-környezetet a jobb gombbal kattintva állíthatja a **Python-környezetet**lehetőségre kattint **hozzáadása/eltávolítása Python-környezetek**, majd kiválasztotta a kívánt környezetre. A termék-projektek készítése PTVS használatáról további információkat talál [dokumentáció](http://aka.ms/ptvsdocs).
+Most hozzon létre egy új Python-projektet állíthatók be. Navigáljon a **fájl** -> **új** -> **projekt** -> **Python** és típusának kiválasztása Python-alkalmazást hoz létre. A kívánt verziót (Python 2.7-es és 3.6) az aktuális projekt Python-környezetet a jobb gombbal kattintva állíthatja a **Python-környezetek**lehetőségre kattint **hozzáadása/eltávolítása Python-környezetek**, majd kiválasztotta a kívánt környezetre. A termék-projektek készítése PTVS használatáról további információkat talál [dokumentáció](http://aka.ms/ptvsdocs).
 
 ## <a name="2-using-a-jupyter-notebook-to-explore-and-model-your-data-with-python-or-r"></a>2. Ismerje meg, és modellezheti az adatokat, a Python vagy R Jupyter Notebook használata
 A Jupyter Notebook egy hatékony környezetet biztosít, a böngésző alapú "IDE" adatáttekintés és modellezés a rendszer. A Jupyter Notebook Python 2, a Python 3 vagy az R (nyílt forráskódú és a Microsoft R Server) használhatja.

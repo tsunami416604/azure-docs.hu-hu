@@ -1,17 +1,17 @@
 ---
-title: A Batch renderelési képességeket
+title: A Batch Rendering szolgáltatás képességei
 description: Az Azure Batch szolgáltatásban meghatározott renderelési képességeket
 services: batch
 author: mscurrell
 ms.author: markscu
 ms.date: 08/02/2018
 ms.topic: conceptual
-ms.openlocfilehash: 3f2fa055af63ab3920fec79ad93c25b8ea7e5ed9
-ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
+ms.openlocfilehash: 6d79cdf279022320f654fbbeadb870f82db88cab
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2018
-ms.locfileid: "42055295"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47392785"
 ---
 # <a name="azure-batch-rendering-capabilities"></a>Az Azure Batch renderelési képességeket
 
@@ -50,9 +50,12 @@ Az alkalmazásokat fogja használni, és a egy díját kell megadni a készlet k
 * Adja meg a `applicationLicenses` tulajdonság amikor [készletet hoz létre egy](https://docs.microsoft.com/rest/api/batchservice/pool/add#request-body).  A következő értékeket a tömb karakterláncok – "v-Ray", "arnold", "3dsmax", "maya" adható meg.
 * Ha megad egy vagy több alkalmazást, majd a költség, ezeknek az alkalmazásoknak hozzáadódik a virtuális gépek díját.  Alkalmazás árak szerepel a [Azure Batch díjszabását ismertető lapon](https://azure.microsoft.com/pricing/details/batch/#graphic-rendering).
 
+> [!NOTE]
+> Ha inkább a renderelési alkalmazások használatát a licenckiszolgáló csatlakozik, nem adja meg a `applicationLicenses` tulajdonság.
+
 Az Azure portal vagy a Batch Explorer segítségével válassza ki az alkalmazások és az alkalmazás-díjszabás megjelenítése.
 
-Ha egy alkalmazás használatát tett kísérlet, de az alkalmazás még nem lett megadva a a `applicationLicenses` tulajdonság a tárolókészlet konfigurációját, majd az alkalmazás végrehajtása meghiúsul, és a egy licencelési hiba és nullától eltérő kilépési kódot.
+Ha egy alkalmazás használatát tett kísérlet, de az alkalmazás még nem lett megadva a a `applicationLicenses` tulajdonság a tárolókészlet konfigurációját, vagy nem a licenckiszolgáló, majd az alkalmazás végrehajtása meghiúsul, és a egy licencelési hiba és nullától eltérő kilépési kódot elérhetőséget biztosítja.
 
 ### <a name="environment-variables-for-pre-installed-applications"></a>Környezeti változók előre telepített alkalmazások
 

@@ -4,7 +4,7 @@ description: 'Ez a témakör ismerteti, hogyan állítható be egy csatornát, a
 services: media-services
 documentationcenter: ''
 author: anilmur
-manager: cfowler
+manager: femila
 editor: ''
 ms.assetid: 30ce6556-b0ff-46d8-a15d-5f10e4c360e2
 ms.service: media-services
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/20/2018
 ms.author: juliako;anilmur
-ms.openlocfilehash: 008fac84eedfd58cbcfe563504a50bc19d519382
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: ada5f55cf356ca79efb7cb45c76a4812804400c5
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "42059178"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47222063"
 ---
 # <a name="live-streaming-using-azure-media-services-to-create-multi-bitrate-streams"></a>Többszörös átviteli sebességű streamek létrehozása az Azure Media Services élő streamelési funkciójával
 
@@ -166,7 +166,7 @@ Egy csatorna bemeneti végpontot biztosít (betöltési URL-címe), hogy Ön adj
 
 Csatorna létrehozása után a betöltés URL-címek kérheti le. Ezen URL-címeket, a csatorna nem rendelkezik kell lennie a **futó** állapota. Ha adatokat küld a csatornának készen áll, legyen az a **futó** állapota. Miután a csatorna elindul, adatok, megtekintheti az előnézeti URL-címet a fájlfolyamot.
 
-Lehetősége van feldolgozására töredékes MP4 (Smooth Streaming) élő streamet SSL-kapcsolaton keresztül. Hogy SSL-en keresztül, ügyeljen arra, hogy a bemeneti URL-címet frissíteni a HTTPS-re. Vegye figyelembe, hogy jelenleg AMS nem támogatja az SSL egyéni tartománnyal rendelkező.  
+Lehetősége van feldolgozására töredékes MP4 (Smooth Streaming) élő streamet SSL-kapcsolaton keresztül. Hogy SSL-en keresztül, ügyeljen arra, hogy a bemeneti URL-címet frissíteni a HTTPS-re. Jelenleg az AMS nem támogatja az SSL egyéni tartománnyal rendelkező.  
 
 ### <a name="allowed-ip-addresses"></a>Engedélyezett IP-címek
 Megadhatja, hogy az IP-címek, amelyek jogosultak videókat közzétenni ezt a csatornát. Engedélyezett IP-cím adható meg egyetlen IP-címként (például "10.0.0.1"),-egy IP-címtartományt, IP-címmel és egy CIDR alhálózati maszk (például "10.0.0.1/22"), vagy egy IP-címtartomány IP-cím és a egy pontozott decimális alhálózati maszk segítségével (például , "10.0.0.1(255.255.252.0)').

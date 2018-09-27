@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/25/2018
 ms.author: tomfitz
-ms.openlocfilehash: 0970f5d4e61a40df7454cc850e59d86708d4aa1c
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: cf7d3df6d2e419a700b0be74da3fe2edc5ac24e1
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47159099"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47393281"
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>Erőforrások áthelyezése új erőforráscsoportba vagy előfizetésbe
 
@@ -274,7 +274,29 @@ Register-AzureRmProviderFeature -FeatureName ManagedResourcesMove -ProviderNames
 ```
 
 ```azurecli-interactive
-az feature register Microsoft.Compute ManagedResourcesMove
+az feature register --namespace Microsoft.Compute --name ManagedResourcesMove
+```
+
+A regisztrációs kérés kezdetben adja vissza egy állapotát `Registering`. Ellenőrizheti, hogy a jelenlegi állapot:
+
+```azurepowershell-interactive
+Get-AzureRmProviderFeature -FeatureName ManagedResourcesMove -ProviderNamespace Microsoft.Compute
+```
+
+```azurecli-interactive
+az feature show --namespace Microsoft.Compute --name ManagedResourcesMove
+```
+
+Várjon néhány percet, módosítsa az állapot `Registered`.
+
+A funkció regisztrálása után regisztrálja a `Microsoft.Compute` erőforrás-szolgáltató. Hajtsa végre ezt a lépést, akkor is, ha az erőforrás-szolgáltató korábban regisztrált.
+
+```azurepowershell-interactive
+Register-AzureRmResourceProvider -ProviderNamespace Microsoft.Compute
+```
+
+```azurecli-interactive
+az provider register --namespace Microsoft.Compute
 ```
 
 Ez a támogatás azt jelenti, hogy is áthelyezheti:

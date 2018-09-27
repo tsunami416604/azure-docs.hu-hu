@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/21/2018
+ms.date: 09/24/2018
 ms.author: sethm
 ms.reviewer: jeffgo
-ms.openlocfilehash: 8e0a73f800a2b56577b5684762e125d0a67b188d
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: bb4a34e7036c532ca1800c70347a4f2c55a33da2
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47032291"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47221723"
 ---
 # <a name="azure-marketplace-items-available-for-azure-stack"></a>Elérhető az Azure Stackhez az Azure piactéren elemek
 
@@ -230,6 +230,8 @@ A Microsoft Azure Stackhez az Azure piactér következő virtuális gépek és a
 | ![Barracuda alkalmazás biztonsági vezérlőközpont](media/azure-stack-marketplace-azure-items/barracuda.png) | [Barracuda alkalmazás biztonsági vezérlőközpont](https://azuremarketplace.microsoft.com/marketplace/apps/barracudanetworks.barracuda-app-sec-control-center) | Központilag kezelhető több Barracuda webalkalmazási tűzfal (WAF). | Barracuda Networks, Inc. |
 | ![Barracuda E-mail biztonsági átjáró](media/azure-stack-marketplace-azure-items/barracuda.png) | [Barracuda E-mail biztonsági átjáró](https://azuremarketplace.microsoft.com/marketplace/apps/barracudanetworks.barracuda-email-security-gateway) | E-mailek biztonsági átjáró bejövő e-mailek viselt fenyegetésekkel szemben. | Barracuda Networks, Inc. |
 | ![Barracuda Web Application Firewall (WAF)](media/azure-stack-marketplace-azure-items/barracuda.png) | [Barracuda Web Application Firewall (WAF)](https://azuremarketplace.microsoft.com/marketplace/apps/barracudanetworks.waf) | Biztonság és a DDoS Protection automatikus és a célzott támadások ellen. | Barracuda Networks, Inc. |
+| ![Barracuda CloudGen tűzfal vezérlőközpont](media/azure-stack-marketplace-azure-items/barracuda.png) | [Barracuda CloudGen tűzfal vezérlőközpont](https://azuremarketplace.microsoft.com/marketplace/apps/barracudanetworks.barracuda-ng-cc) | Központilag kezelheti a több száz Barracuda CloudGen tűzfalak, függetlenül attól, helyének és méretet. | Barracuda Networks, Inc. |
+| ![Barracuda CloudGen tűzfal az Azure-hoz](media/azure-stack-marketplace-azure-items/barracuda.png) | [Barracuda CloudGen tűzfal az Azure-hoz](https://azuremarketplace.microsoft.com/marketplace/apps/barracudanetworks.barracuda-ng-firewall) | Az alkalmazás és adat-ket, ahelyett, hogy kizárólag amennyiben a kapcsolat leállítja tűzfal védelmet biztosít. | Barracuda Networks, Inc. |
 | ![A Check Point vSEC biztonsági kezelése](media/azure-stack-marketplace-azure-items/checkpoint.png) | [A Check Point vSEC biztonsági kezelése](https://azuremarketplace.microsoft.com/marketplace/apps/checkpoint.vsec) | A Check Point vSEC tesz lehetővé a fejlett, többrétegű fenyegetések megelőzése vevő eszközök az Azure-ban védelme a kártevők és kifinomult fenyegetések. **Mindkét ellenőrzési pont a vSEC Piactéri termékek letöltése.** | Ellenőrzőpont |
 | ![Chef Automate](media/azure-stack-marketplace-azure-items/chefautomate.png) | [Chef Automate](https://azuremarketplace.microsoft.com/marketplace/apps/chef-software.chef-automate) | Elkészítheti, telepítheti, és kezelés a Chef Automate, a folyamatos automatizálási platformmal. **Mindkét Chef Piactéri termékek letöltése** | Chef szoftver, Inc |
 | ![CloudLink SecureVM](media/azure-stack-marketplace-azure-items/cloudlink.png) | [CloudLink SecureVM](https://azuremarketplace.microsoft.com/marketplace/apps/cloudlink.cloudlink-securevm)  | Szabályozhatja, figyelését és virtuális gépek titkosítása egyszerű és megbízható. **Töltse le az összes CloudLink SecureVM-elemek.** | Dell EMC |

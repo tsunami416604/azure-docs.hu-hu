@@ -1,6 +1,6 @@
 ---
-title: Folyamatos integráció és üzembe helyezés az Azure Data Factoryban |} A Microsoft Docs
-description: Ismerje meg, hogyan folyamatos integráció és készregyártás használatával helyezze át a Data Factory-folyamatok (fejlesztési, tesztelési és éles környezetben) egyik környezetből a másikba.
+title: A folyamatos integrációt és teljesítést az Azure Data Factoryban |} A Microsoft Docs
+description: Ismerje meg, hogyan lehet folyamatos integrációt és teljesítést segítségével helyezze át a Data Factory-folyamatok (fejlesztési, tesztelési és éles környezetben) egyik környezetből a másikba.
 services: data-factory
 documentationcenter: ''
 author: douglaslMS
@@ -10,20 +10,20 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/18/2018
+ms.date: 09/26/2018
 ms.author: douglasl
-ms.openlocfilehash: 94c4a3fbd1c854401c42af5787c22db0e5dd6083
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: 587c4c0804de809431bf9e731e7533f0d75770d9
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46364982"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47392618"
 ---
-# <a name="continuous-integration-and-deployment-in-azure-data-factory"></a>Folyamatos integráció és üzembe helyezés az Azure Data Factoryban
+# <a name="continuous-integration-and-delivery-cicd-in-azure-data-factory"></a>Folyamatos integráció és teljesítés (CI/CD) az Azure Data Factoryban
 
-Folyamatos integráció az eljárás a tesztelési minden módosítás történik az automatikusan és a lehető leghamarabb kódbázis. Folyamatos üzembe helyezés követi a tesztelés, amely történik a folyamatos integráció során, majd leküldi a módosítások egy átmeneti és éles rendszerbe.
+Folyamatos integráció az eljárás a tesztelési minden módosítás történik az automatikusan és a lehető leghamarabb kódbázis. Folyamatos Készregyártás követi a tesztelés, amely történik a folyamatos integráció során, majd leküldi a módosítások egy átmeneti és éles rendszerbe.
 
-Az Azure Data Factoryhoz folyamatos integráció és üzembe helyezés azt jelenti, hogy a másikra történő áthelyezésének Data Factory-folyamatok az egyik környezetből (fejlesztési, tesztelési és éles környezetben). Ehhez a folyamatos integráció és üzembe helyezés, Azure Resource Manager-sablonok a Data Factory felhasználói felülete integrációs használhatja. A Data Factory felhasználói felülete egy Resource Manager-sablont hozhat létre, kiválasztásakor a **ARM-sablon** beállítások. Ha bejelöli **exportálása ARM-sablon**, a portál létrehozza a Resource Manager-sablon a data factory és a egy konfigurációs fájl, amely tartalmazza az összes kapcsolat-karakterlánc és más paramétereket. Akkor rendelkezik az egyes környezetekhez (fejlesztési, tesztelési és éles környezetben) egy konfigurációs fájl létrehozása céljából. A fő Resource Manager-sablonfájl minden környezet esetében ugyanaz marad.
+Az Azure Data Factoryhoz folyamatos integráció és teljesítés azt jelenti, hogy a másikra történő áthelyezésének Data Factory-folyamatok az egyik környezetből (fejlesztési, tesztelési és éles környezetben). Ehhez a folyamatos integráció és teljesítés, Data Factory felhasználói felülete integrációs használhatja az Azure Resource Manager-sablonok. A Data Factory felhasználói felülete egy Resource Manager-sablont hozhat létre, kiválasztásakor a **ARM-sablon** beállítások. Ha bejelöli **exportálása ARM-sablon**, a portál létrehozza a Resource Manager-sablon a data factory és a egy konfigurációs fájl, amely tartalmazza az összes kapcsolat-karakterlánc és más paramétereket. Akkor rendelkezik az egyes környezetekhez (fejlesztési, tesztelési és éles környezetben) egy konfigurációs fájl létrehozása céljából. A fő Resource Manager-sablonfájl minden környezet esetében ugyanaz marad.
 
 A 9 perces bevezető és a funkció bemutatójáért tekintse meg a következő videót:
 
@@ -53,9 +53,9 @@ Válassza ki **fájl betöltése** válassza ki az exportált Resource Manager-s
 ![Nyissa meg a kapcsolati karakterlánc kód megtekintéséhez](media/continuous-integration-deployment/continuous-integration-codeview.png)
 
 ## <a name="continuous-integration-lifecycle"></a>Folyamatos integráció életciklusa
-Itt van a folyamatos integráció és üzembe helyezés, amelyekkel a teljes életciklusát a Data Factory felhasználói felületén Azure fejlesztési és üzemeltetési szolgáltatás GIT-integráció engedélyezése után:
+Itt látható a teljes életciklusát a folyamatos integráció és teljesítés használható a Data Factory felhasználói felületén Azure Adattárakkal Git-integráció engedélyezése után:
 
-1.  Állítsa be egy fejlesztési data factoryt az Azure DevOps-szolgáltatásokkal, amelyben minden fejlesztő hozhat létre Data Factory-erőforrások, például folyamatokat, adatkészletek és így tovább.
+1.  Állítsa be egy fejlesztési data factoryt az Azure-Adattárakkal, amelyben minden fejlesztő hozhat létre Data Factory-erőforrások, például folyamatokat, adatkészletek és így tovább.
 
 1.  A fejlesztők ezután módosíthatja az erőforrások, például folyamatokat. Mivel ezek a módosításokat, és kiválaszthatja **Debug** hogyan a folyamatfuttatások a legutóbbi módosítások megtekintéséhez.
 
@@ -67,23 +67,23 @@ Itt van a folyamatos integráció és üzembe helyezés, amelyekkel a teljes él
 
 1.  Az exportált Resource Manager-sablon különböző paraméterfájlokkal a teszt factory és az éles előállító is telepíthető.
 
-## <a name="automate-continuous-integration-with-azure-devops-services-releases"></a>Folyamatos integráció Azure fejlesztési és üzemeltetési szolgáltatások kiadásokban a automatizálása
+## <a name="automate-continuous-integration-with-azure-pipelines-releases"></a>Folyamatos integráció Azure folyamatok kiadásokban a automatizálása
 
-Az alábbiakban a lépéseket egy Azure-fejlesztési és üzemeltetési szolgáltatások verzió beállításához, adat-előállító több környezethez való telepítésének automatizálásához.
+Az alábbiakban a lépéseket egy Azure-folyamatok verzió beállításához, adat-előállító több környezethez való telepítésének automatizálásához.
 
-![Folyamatos integráció Azure DevOps-szolgáltatásokkal ábrája](media/continuous-integration-deployment/continuous-integration-image12.png)
+![Folyamatos integráció Azure folyamatok ábrája](media/continuous-integration-deployment/continuous-integration-image12.png)
 
 ### <a name="requirements"></a>Követelmények
 
--   A Team Foundation Server vagy az Azure DevOps-szolgáltatásokkal a kapcsolódó Azure-előfizetés a [ *Azure Resource Manager-szolgáltatásvégpont*](https://docs.microsoft.com/azure/devops/pipelines/library/service-endpoints#sep-azure-rm).
+-   A Team Foundation Server vagy az Azure-kódtárak a kapcsolódó Azure-előfizetés a [ *Azure Resource Manager-szolgáltatásvégpont*](https://docs.microsoft.com/azure/devops/pipelines/library/service-endpoints#sep-azure-rm).
 
--   Az Azure fejlesztési és üzemeltetési szolgáltatás Git konfigurált rendelkező Data Factoryt.
+-   Konfigurált Azure-Adattárakkal Git-integrációval rendelkező Data Factoryt.
 
 -   Egy [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) tartalmazó a titkos kulcsok.
 
-### <a name="set-up-an-azure-devops-services-release"></a>Egy Azure-fejlesztési és üzemeltetési szolgáltatások verzió beállítása
+### <a name="set-up-an-azure-pipelines-release"></a>Egy Azure-folyamatok-verzió beállítása
 
-1.  Nyissa meg az Azure DevOps-szolgáltatásokkal oldalát, a Data factoryval konfigurált ugyanabban a projektben.
+1.  Nyissa meg az Azure-Adattárakkal oldalát, a Data factoryval konfigurált ugyanabban a projektben.
 
 1.  Kattintson a felső menüben **Azure folyamatok** &gt; **kiadásokban** &gt; **kiadási definíció létrehozása**.
 
@@ -121,7 +121,7 @@ Az alábbiakban a lépéseket egy Azure-fejlesztési és üzemeltetési szolgál
 
 ### <a name="optional---get-the-secrets-from-azure-key-vault"></a>Nem kötelező – a titkos kulcsok lekérése az Azure Key vault
 
-Ha rendelkezik egy Azure Resource Manager-sablonban adja át a titkos kulcsok, az Azure DevOps-szolgáltatásokkal kiadással az Azure Key Vault használatát javasoljuk.
+Ha rendelkezik egy Azure Resource Manager-sablonban adja át a titkos kulcsok, az Azure-folyamatok kiadással az Azure Key Vault használatát javasoljuk.
 
 A titkos kulcsok kezeléséhez két módja van:
 
@@ -156,13 +156,13 @@ A titkos kulcsok kezeléséhez két módja van:
 
     ![](media/continuous-integration-deployment/continuous-integration-image8.png)
 
-### <a name="grant-permissions-to-the-azure-devops-services-agent"></a>Engedélyek megadása az Azure DevOps-Services-ügynök
-Az Azure Key Vault-tevékenység az első alkalommal a hozzáférés megtagadva hiba miatt sikertelen lehet. A kiadás a naplók letöltéséhez, és keresse meg a `.ps1` fájlt adjon jogosultságot az Azure DevOps-Services-ügynök a parancsot. Futtathatja a parancsot közvetlenül, vagy a résztvevő-azonosító átmásolhatja a fájlt, és manuálisan adja hozzá a hozzáférési szabályzat az Azure Portalon. (*Első* és *lista* rendszer szükséges minimális engedélyeket).
+### <a name="grant-permissions-to-the-azure-pipelines-agent"></a>Engedélyek megadása az Azure-folyamatok ügynök
+Az Azure Key Vault-tevékenység az első alkalommal a hozzáférés megtagadva hiba miatt sikertelen lehet. A kiadás a naplók letöltéséhez, és keresse meg a `.ps1` fájlt a paranccsal az Azure-folyamatok ügynök engedélyt. Futtathatja a parancsot közvetlenül, vagy a résztvevő-azonosító átmásolhatja a fájlt, és manuálisan adja hozzá a hozzáférési szabályzat az Azure Portalon. (*Első* és *lista* rendszer szükséges minimális engedélyeket).
 
 ### <a name="update-active-triggers"></a>Aktív eseményindítók frissítése
 Központi telepítés is sikertelen, ha aktív eseményindítók frissíti. Aktív eseményindítók frissítéséhez szüksége manuális állítják őket, és indítsa el őket az üzembe helyezés után. Erre a célra az Azure PowerShell-lel feladat adhat hozzá az alábbi példában látható módon:
 
-1.  Az Azure fejlesztési és üzemeltetési szolgáltatások üzembehelyezési feladatok lapon keressen **Azure PowerShell-lel** , és adja hozzá.
+1.  A kiadás a feladatok lapon keresse meg **Azure PowerShell-lel** , és adja hozzá.
 
 1.  Válasszon **Azure Resource Manager** kapcsolatként írja be, és válassza ki az előfizetését.
 
@@ -180,7 +180,7 @@ Hasonló lépésekkel és a hasonló kóddal (az a `Start-AzureRmDataFactoryV2Tr
 
 ## <a name="sample-deployment-template"></a>A mintasablon üzembe helyezés
 
-Íme egy minta központi telepítési sablont, amelyet importálhat az Azure DevOps-szolgáltatásokkal.
+Íme egy minta központi telepítési sablont, amelyet importálhat az Azure-folyamatokban.
 
 ```json
 {

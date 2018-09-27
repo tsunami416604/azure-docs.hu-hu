@@ -10,12 +10,12 @@ ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 09/12/2018
 ms.author: glenga
-ms.openlocfilehash: 63213e38dab5ef2edd5150fe0adb620fecb2041c
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 63a2d5a62cf2cdfa2a1a08c56ef5a87aaaa13529
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44714445"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47395543"
 ---
 # <a name="develop-azure-functions-using-visual-studio"></a>Fejlesztés az Azure Functions Visual Studio használatával  
 
@@ -72,7 +72,7 @@ Hozzon létre és helyezhet üzembe functions, akkor is szüksége lesz:
 
 4. A frissítés befejezése után válassza ki a **Bezárás** , és indítsa újra a Visual Studióban.
 
-## <a name="create-an-azure-functions-project"></a>Az Azure Functions-projekt létrehozása
+## <a name="create-an-azure-functions-project"></a>Azure Functions-projekt létrehozása
 
 [!INCLUDE [Create a project using the Azure Functions](../../includes/functions-vstools-create.md)]
 
@@ -171,7 +171,9 @@ A függvény teszteléséhez nyomja le az F5 billentyűt. Ha a rendszer kéri, f
 
 A projekt futtatása tesztelheti a kódot, tesztelni kellene üzembe helyezett függvényt. További információkért lásd: [stratégiát a kódot tesztelés az Azure Functions](functions-test-a-function.md). Hibakeresési módban futtatja, töréspontok az elvárt módon vannak találati a Visual Studióban. 
 
-Egy üzenetsor által aktivált függvény tesztelése egy példa: a [üzenetsor által aktivált függvény a rövid útmutató](functions-create-storage-queue-triggered-function.md#test-the-function).  
+<!---
+For an example of how to test a queue triggered function, see the [queue triggered function quickstart tutorial](functions-create-storage-queue-triggered-function.md#test-the-function).  
+-->
 
 Az Azure Functions Core Tools használatával kapcsolatos további tudnivalókért lásd: [kódot és az Azure functions helyi tesztelése](functions-run-local.md).
 
@@ -179,7 +181,7 @@ Az Azure Functions Core Tools használatával kapcsolatos további tudnivalóké
 
 [!INCLUDE [Publish the project to Azure](../../includes/functions-vstools-publish.md)]
 
-## <a name="function-app-settings"></a>Függvényalkalmazás beállításai
+## <a name="function-app-settings"></a>A függvényalkalmazás beállításai
 
 A local.settings.json a hozzáadott minden beállítást is meg kell adni a függvényalkalmazáshoz az Azure-ban. Ezek a beállítások nem lesznek feltöltve automatikusan, a projekt közzétételekor.
 

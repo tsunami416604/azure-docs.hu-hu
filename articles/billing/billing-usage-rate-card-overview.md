@@ -14,19 +14,19 @@ ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: billing
 ms.date: 5/10/2018
-ms.author: mobandyo
-ms.openlocfilehash: 650fac6208adf8f904384454b2e66e26e45893f1
-ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
+ms.author: erikre
+ms.openlocfilehash: 79cc543e2a106fa8cbff31bdd0e6bb35afe68e4b
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42918852"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47392040"
 ---
 # <a name="use-azure-billing-apis-to-programmatically-get-insight-into-your-azure-usage"></a>Azure Billing API-k használatával programozott módon juthat az Azure-használat
-Használat és a resource adatok be az előnyben részesített adatelemző eszközökkel Azure Billing API-k használatával. Az Azure erőforrás-használat és RateCard API-k segítségével pontos előrejelzésére és kezelésére a költségeket. Az API-k vannak megvalósítva egy erőforrás-szolgáltató és a termékcsalád az az Azure Resource Manager által elérhetővé tett API-k egy részét.  
+Használat és a resource adatok be az előnyben részesített adatelemző eszközökkel Azure Billing API-k használatával. Az Azure erőforrás-használati és RateCard API-k segítségével pontosan előrejelezheti és felügyelheti a költségeket. Az API-k vannak megvalósítva egy erőforrás-szolgáltató és a termékcsalád az az Azure Resource Manager által elérhetővé tett API-k egy részét.  
 
 > [!div class="nextstepaction"]
-> [Segítheti az Azure számlázási docs](https://go.microsoft.com/fwlink/p/?linkid=2010091)
+> [Segítsen az Azure számlázási dokumentumok fejlesztésében](https://go.microsoft.com/fwlink/p/?linkid=2010091)
 
 ## <a name="azure-invoice-download-api-preview"></a>Az Azure Számlaletöltési API (előzetes verzió)
 Egyszer a [jóváhagyás már befejeződött](billing-manage-access.md#opt-in), letölthető számlák előzetes verzióját [számla API](/rest/api/billing). A szolgáltatások a következők:
@@ -65,7 +65,7 @@ Néhány lehetséges a használat és a RateCard API-k együttes használatával
   * Azt is meghatározhatja, hogy ha egy másik Azure-ajánlat típus jobb sebesség nyújt egy Azure-erőforrás.
   
 ## <a name="partner-solutions"></a>Partneri megoldások
-[Cloud Cruiser és a Microsoft Azure Billing API-integráció](billing-usage-rate-card-partner-solution-cloudcruiser.md) ismerteti, hogyan [Cloud Cruiser Express for Azure Pack](http://www.cloudcruiser.com/partners/microsoft/) közvetlenül a Windows Azure Pack (WAP)-portálról működik. A Microsoft Azure saját vagy üzemeltetett nyilvános felhőbe funkcióival és költségtakarékosságával aspektusát egyetlen felhasználói felületről zökkenőmentesen kezelheti.   
+A [Cloud Cruiser és a Microsoft Azure számlázási API integrációját](billing-usage-rate-card-partner-solution-cloudcruiser.md) leíró szakasz azt ismerteti, hogyan működik közvetlenül a [Cloud Cruiser Express for Azure Pack](http://www.cloudcruiser.com/partners/microsoft/) a Windows Azure Pack (WAP) portálról. A Microsoft Azure privát vagy üzemeltetett nyilvános felhő működtetési és pénzügyi aspektusait is zökkenőmentesen kezelheti egyetlen felhasználói felületről.   
 
 ## <a name="next-steps"></a>További lépések
 * Tekintse meg a Kódminták a Githubon:

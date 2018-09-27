@@ -1,21 +1,9 @@
+<!-- Linguist question: Please confirm that the following are API names and should be left as is: "Person Management, LargePersonGroup/PersonGroup Management, LargeFaceList/FaceList Management, and Face Algorithms" -->
 ---
-title: API-referencia – Face API
-titleSuffix: Azure Cognitive Services
-description: API-referencia a személy felügyeleti, LargePersonGroup/is lehet PersonGroup felügyeleti, LargeFaceList vagy FaceList felügyeleti és Arcfelismerési algoritmusok API-k ismerteti.
-services: cognitive-services
-author: SteveMSFT
-manager: cgronlun
-ms.service: cognitive-services
-ms.component: face-api
-ms.topic: reference
-ms.date: 03/01/2018
-ms.author: sbowles
-ms.openlocfilehash: 54217e9f007a85242f38168d464e4242f1fe2504
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
-ms.translationtype: MT
-ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46124244"
+title: API-referencia – Face API titleSuffix: az Azure Cognitive Services leírása: API-referencia arról nyújt tájékoztatást, a személy felügyeleti, LargePersonGroup/is lehet PersonGroup felügyeleti, LargeFaceList vagy FaceList felügyeleti és Arcfelismerési algoritmusok API-k.
+szolgáltatásokhoz: cognitive services author: SteveMSFT manager: cgronlun
+
+MS.Service: cognitive services ms.component: face-api ms.topic: hivatkozhat ms.date: 2018-03-01 ms.author: sbowles
 ---
 # <a name="api-reference"></a>API-hivatkozás
 

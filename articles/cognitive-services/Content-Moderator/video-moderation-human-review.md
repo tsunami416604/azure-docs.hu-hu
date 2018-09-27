@@ -1,22 +1,23 @@
 ---
-title: Az Azure Content Moderator – videó moderálás |} A Microsoft Docs
+title: Az emberi ellenőrző - Content Moderator videomoderálás
+titlesuffix: Azure Cognitive Services
 description: Nem megfelelő tartalom mérsékelt videomoderálás gépi támogatású és emberi vizsgálóeszközöket használata
 services: cognitive-services
 author: sanjeev3
-manager: mikemcca
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: content-moderator
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/20/2018
 ms.author: sajagtap
-ms.openlocfilehash: d9c01d4c2590535a4106e8e4ee79a12bdc60d956
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 33956e1986265b36f6df9a2d19909cb974bd3197
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44714496"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47222080"
 ---
-# <a name="video-moderation"></a>Videomoderálás
+# <a name="video-moderation-with-human-review"></a>Az emberi ellenőrző videomoderálás
 
 Használja a Content Moderator gépi támogatású [videomoderálás](video-moderation-api.md) és [emberi vizsgálóeszköz](Review-Tool-User-Guide/human-in-the-loop.md) és szövegekben vonatkozó (kifejezett) felnőtt tartalom mérsékelt videók, és a legjobb eredményt (kétértelmű) pikáns tartalom az üzleti.
 

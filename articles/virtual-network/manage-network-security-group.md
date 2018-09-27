@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/05/2018
 ms.author: jdial
-ms.openlocfilehash: bd05f1c5c2c8f4c4469a702b73341fd506c54815
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 3ac7ab0aac190ab53075a6a4ee24fca3ee7eeb84
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46958781"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47227520"
 ---
 # <a name="create-change-or-delete-a-network-security-group"></a>Létrehozása, módosítása vagy egy hálózati biztonsági csoport törlése
 
@@ -68,7 +68,7 @@ Hány hálózati biztonsági csoportokat is létrehozhat egy Azure-helyen és az
 1. Írja be a keresőmezőbe, a portál tetején, *hálózati biztonsági csoportok*. Amikor **hálózati biztonsági csoportok** jelennek meg a keresési eredmények közül válassza ki azt.
 2. Válassza ki a hálózati biztonsági csoportot a listában a részleteinek megtekintéséhez. A **beállítások** megtekintheti a **bejövő biztonsági szabályok** és **kimenő biztonsági szabályok**, a **hálózati adapterek** és  **Alhálózatok** a hálózati biztonsági csoport társítva. Emellett engedélyezheti vagy letilthatja **diagnosztikai naplók** és nézet **érvényben lévő biztonsági szabályokat**. További tudnivalókért lásd: [diagnosztikai naplók](virtual-network-nsg-manage-log.md) és [érvényes biztonsági szabályok megtekintése](diagnose-network-traffic-filter-problem.md).
 3. A felsorolt gyakori Azure beállításaival kapcsolatos további tudnivalókért tekintse meg a következő cikkeket:
-    *   [Tevékenységnapló](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#activity-logs)
+    *   [Tevékenységnapló](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md)
     *   [Hozzáférés-vezérlés (IAM)](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#access-control)
     *   [Címkék](../azure-resource-manager/resource-group-using-tags.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
     *   [Zárolások](../azure-resource-manager/resource-group-lock-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json)

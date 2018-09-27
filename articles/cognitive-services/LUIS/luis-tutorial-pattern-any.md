@@ -10,14 +10,14 @@ ms.technology: language-understanding
 ms.topic: article
 ms.date: 09/09/2018
 ms.author: diberry
-ms.openlocfilehash: a5b964877f1c089015812abdf365b22c57267bb0
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 4ff4a7085a8caeedebe2a734014afb1cb46d9fbf
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47031370"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47164395"
 ---
-# <a name="tutorial-5-extract-free-form-data"></a>Oktatóanyag: 5. Szabad formátumú adatok kinyerése
+# <a name="tutorial-5-extract-free-form-data"></a>5. oktatóanyag: Szabad formátumú adatokat nyerhet ki az
 
 Ebben az oktatóanyagban a pattern.any entitás használatával adatok kinyerése kimondott szöveg, amelyben megcímkézzen helyes formátumú, és ahol az adatok végéig lehet, hogy könnyen keverendő össze a az utterance (kifejezés), a fennmaradó szavakat. 
 

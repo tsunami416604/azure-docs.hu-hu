@@ -1,21 +1,21 @@
 ---
-title: Insights-jogkivonat használatával a Bing Visual Search API |} A Microsoft Docs
-titleSuffix: Bing Web Search APIs - Cognitive Services
-description: Token Visual Search API kaphat elemzési információkat kép bemutatja, hogyan insight-rendszerképet használja.
+title: Insights-jogkivonat – a Bing Visual Search használatával
+titleSuffix: Azure Cognitive Services
+description: Token, a Bing Visual Search API kaphat elemzési információkat kép bemutatja, hogyan insight-rendszerképet használja.
 services: cognitive-services
 author: swhite-msft
-manager: rosh
+manager: cgronlun
 ms.service: cognitive-services
 ms.technology: bing-visual-search
-ms.topic: article
+ms.topic: conceptual
 ms.date: 5/16/2018
 ms.author: scottwhi
-ms.openlocfilehash: 569ae89a712d14fb36989e756f99725dce398c0a
-ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
+ms.openlocfilehash: e853545e07709d82fa1e3b1143392e6d6012f6f6
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39126558"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47227588"
 ---
 # <a name="using-an-insights-token-to-get-insights-about-an-image"></a>Az insights-jogkivonat használatával kaphat elemzési információkat kép
 
@@ -68,7 +68,7 @@ Az insights jogkivonatot használó példákért lásd [C#](#using-csharp) | [Ja
 
 ### <a name="prerequisites"></a>Előfeltételek
 
-Szüksége lesz [Visual Studio 2017](https://www.visualstudio.com/downloads/) lekérni ezt a kódot, a Windows rendszerű. (Az ingyenes közösségi kiadása fog működni.)
+Szüksége lesz [Visual Studio 2017](https://www.visualstudio.com/downloads/) lekérni ezt a kódot, a Windows rendszerű. (Az ingyenes Community Edition is elegendő.)
 
 Használhatja az ebben a rövid útmutatóban egy [az ingyenes próbaidőszak](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) előfizetési kulcs vagy egy fizetős kulcsot.
 
@@ -240,11 +240,11 @@ namespace VisualSearchInsightsToken
 
 <a name="using-java" />
 
-## <a name="using-java"></a>Java használatával
+## <a name="using-java"></a>A Java használata
 
 ### <a name="prerequisites"></a>Előfeltételek
 
-Szüksége lesz [JDK 7 vagy 8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) fordítsa le és futtassa ezt a kódot. Ha kedvencként, de egy szövegszerkesztőben elegendő használhatja a Java ide Környezethez.
+A kód lefordításához és futtatásához a [JDK 7 vagy 8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) telepítése szükséges. Ha kedvencként, de egy szövegszerkesztőben elegendő használhatja a Java ide Környezethez.
 
 Használhatja az ebben a rövid útmutatóban egy [az ingyenes próbaidőszak](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) előfizetési kulcs vagy egy fizetős kulcsot.
 
@@ -425,7 +425,7 @@ function requestCallback(err, res, body) {
 
 <a name="using-python" />
 
-## <a name="using-python"></a>Python használatával
+## <a name="using-python"></a>A Python használata
 
 
 ### <a name="prerequisites"></a>Előfeltételek

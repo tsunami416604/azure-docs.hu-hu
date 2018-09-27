@@ -12,12 +12,12 @@ ms.topic: reference
 ms.date: 09/03/2018
 ms.author: glenga
 ms.custom: cc996988-fb4f-47
-ms.openlocfilehash: 217e36b7814bb7fe092ca915afd09bfc76b6ffa3
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: 68352db238b92d39119b420ed0d573e88a95bc78
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44094671"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47394454"
 ---
 # <a name="azure-queue-storage-bindings-for-azure-functions"></a>Az Azure storage üzenetsorkötések az Azure Functions szolgáltatáshoz
 
@@ -535,14 +535,15 @@ A JavaScript-függvények használata `context.bindings.<name>` eléréséhez az
 
 ## <a name="next-steps"></a>További lépések
 
+* [Tudjon meg többet az Azure functions eseményindítók és kötések](functions-triggers-bindings.md)
+
+<!--
 > [!div class="nextstepaction"]
-> [Nyissa meg a Queue storage eseményindítója használó gyors üzembe helyezés](functions-create-storage-queue-triggered-function.md)
+> [Go to a quickstart that uses a Queue storage trigger](functions-create-storage-queue-triggered-function.md)
+-->
 
 > [!div class="nextstepaction"]
 > [Ugrás a Queue storage szolgáltatást alkalmazó oktatóanyagot a kimeneti kötése](functions-integrate-storage-queue-output-binding.md)
-
-> [!div class="nextstepaction"]
-> [Tudjon meg többet az Azure functions eseményindítók és kötések](functions-triggers-bindings.md)
 
 <!-- LINKS -->
 

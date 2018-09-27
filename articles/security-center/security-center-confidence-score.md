@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/23/2018
 ms.author: rkarlin
-ms.openlocfilehash: 03c4a36330ca17eea4233e928d6b728e94e15292
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 18b7b1b3d2a74b6e3aeb671154de48bd7b7f1e00
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44299192"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47218054"
 ---
 # <a name="alert-confidence-score"></a>Riasztás megbízhatósági pontszáma 
 
@@ -29,7 +29,7 @@ A megbízhatósági pontszám a Security Center segítséget nyújtanak a csapat
 
 ## <a name="how-the-confidence-score-is-triggered"></a>Hogyan akkor aktiválódik, a megbízhatósági pontszám
 
-Gyanús folyamat észlelése esetén a virtuális gépeken futó riasztások jönnek létre. A Security Center ellenőrzi, és elemzi ezeket a riasztásokat az Azure-ban futó Windows virtuális gépekre. Hajt végre automatikus ellenőrzés és a speciális algoritmusok használatával több entitást és az adatforrásokat a szervezetben, és az Azure-erőforrások közötti összefüggéseket, és a egy megbízhatósági pontszám, amely azt méri, hogy abban a Security Center jeleníti az, hogy a riasztás valódi, és meg kell vizsgálni.
+Gyanús folyamat észlelése esetén a virtuális gépeken futó riasztások jönnek létre. A Security Center ellenőrzi, és elemzi ezeket a riasztásokat az Azure-ban futó Windows virtuális gépekre. Automatikus ellenőrzés és a speciális algoritmusok használatával több entitást és az adatforrásokat a szervezetben, és az Azure-erőforrások közötti összefüggéseket hajt végre, és be az egy megbízhatósági pontszám, amely azt méri, hogy abban a Security Center: hogy a riasztás valódi, és meg kell vizsgálni.
 
 ## <a name="understanding-the-confidence-score"></a>A megbízhatósági pontszám ismertetése
 

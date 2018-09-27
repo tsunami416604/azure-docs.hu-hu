@@ -10,14 +10,14 @@ ms.technology: language-understanding
 ms.topic: article
 ms.date: 09/09/2018
 ms.author: diberry
-ms.openlocfilehash: ec006d8941d8832d139a09b1e8af13000ff5a43e
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: f4b267dda3c05d490d91fe02fbcfde4e49674603
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47040703"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47166401"
 ---
-# <a name="tutorial-3-add-common-utterance-formats"></a>Oktatóanyag: 3. Gyakori kimondottszöveg-formátumok hozzáadása
+# <a name="tutorial-3-add-common-utterance-formats"></a>3. oktatóanyag: Általános utterance (kifejezés) formátumok hozzáadása
 
 Ebben az oktatóanyagban minták használatával növelheti a leképezés és egyéb entitások előrejelzési művelet során gondoskodik a kevesebb példa kimondott szöveg. A minta példaképpen egy sablon utterance (kifejezés), beleértve a szintaxist, entitások és figyelmen kívül hagyható, szöveg van megadva. A minta akkor kifejezések egyeztetésének és a gépi tanulás.  Az utterance (kifejezés) példasablonban szándék megcímkézzen, valamint egy jobb megértéséhez, hogy milyen kimondott szöveg igazítása a célt adjon meg a LUIS. 
 

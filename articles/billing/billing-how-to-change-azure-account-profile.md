@@ -1,6 +1,6 @@
 ---
-title: Azure-fiók profiladatait módosítása |} Microsoft Docs
-description: Ismerteti, hogyan lehet megváltozik az az Azure-fiókjával, és miért nem módosítható az Azure Account Center olyan országban például gyakori kérdésekre
+title: Az Azure-fiók profilinformációinak módosítása |} A Microsoft Docs
+description: Ismerteti, hogyan lehet módosítani a profilt, az Azure-fiókjával, és miért nem módosítható az Azure Account Center webhelyen ország például gyakori kérdésekre
 services: ''
 documentationcenter: ''
 author: genlin
@@ -14,53 +14,53 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/11/2018
-ms.author: genli
+ms.author: cwatson
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: bce9e7de13ff95024685ccf916541357f5362727
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: 4f17a65befc1abbe2a2405e8470f61068ac34f8b
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "34070651"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47394811"
 ---
-# <a name="change-your-azure-account-profile-information-such-as-contact-email-address-and-phone-number"></a>A Azure-fiók profiladatait, például kapcsolattartási e-mail címet vagy telefonszámot módosítása
+# <a name="change-your-azure-account-profile-information-such-as-contact-email-address-and-phone-number"></a>A Azure-fiók profiladatait, például a kapcsolattartási e-mail cím és telefonszám megváltoztatása
 
-Az e-mail címet a Fiókadminisztrátor profil értesítjük a számlázással kapcsolatos fontos frissítések, az előfizetéssel kapcsolatos Microsoft használják. Azt javasoljuk, hogy rendszeresen ellenőrizni a kapcsolattartási e-mail címet adjon meg.
+A profil a Fiókadminisztrátor e-mail-címét arra az esetre, a számlázással kapcsolatos fontos frissítésekről, az előfizetéssel kapcsolatos Microsoft használják. Azt javasoljuk, hogy megad egy kapcsolattartási e-mail cím, amely a rendszeresen ellenőrizheti.
 
 ## <a name="how-to-change-your-profile-information"></a>A profiladatok módosítása
 
-1. Jelentkezzen be a [Azure Account Center](https://account.azure.com/Profile).
-1. Válassza ki a **részletes adatainak szerkesztéséhez** gombra, és frissítse a **profil** információkat.
+1. Jelentkezzen be az [Azure Fiókközpontba](https://account.azure.com/Profile).
+1. Válassza a **Részletek szerkesztése** gombot, majd frissítse a **Profil** információit.
 
    ![profil](./media/billing-how-to-change-azure-account-profile/profile.png)
 
 ## <a name="frequently-asked-questions"></a>Gyakori kérdések
 
-### <a name="can-notifications-be-sent-to-a-different-email-address-other-than-the-account-administrator-email-address-associated-with-my-account"></a>Értesítések küldhetők egy másik e-mail címet a Fiókadminisztrátor e-mail címet a fiókhoz tartozó más?
+### <a name="can-notifications-be-sent-to-a-different-email-address-other-than-the-account-administrator-email-address-associated-with-my-account"></a>Értesítések lehet küldeni egy másik e-mail címet a fiókhoz tartozó Fiókadminisztrátor e-mail-címet, mint más?
 
-Igen. Az e-mail cím, a fiók lekérdezi az előfizetéseket a fiókkal kapcsolatos fontos értesítések. Ezért azt javasoljuk, hogy megadja a kapcsolattartási e-mail címhez, amely rendszeresen ellenőrzi a fiók rendszergazdájához.
+Igen. A fiók e-mail címmel lekéri a fiók összes előfizetésekkel kapcsolatos fontos értesítésekhez. Ezért azt javasoljuk, hogy megad egy kapcsolattartási e-mail címet, amely rendszeresen ellenőrzi a fiók rendszergazdája.
 
-### <a name="can-i-change-the-account-administrator-email-address-in-my-profile"></a>Módosítható a saját profil a Fiókadminisztrátor e-mail címet?
+### <a name="can-i-change-the-account-administrator-email-address-in-my-profile"></a>Módosíthatom a Fiókadminisztrátor e-mail-címet a profilomban?
 
-Igen. A Fiókadminisztrátor az a személy, aki az Azure-fiók beállítása és az előfizetéseket a fiókkal kapcsolatos fontos e-mail értesítéseket fogad a ki. Azt javasoljuk, hogy megadja a kapcsolattartási e-mail címhez, amely rendszeresen ellenőrzi a fiók rendszergazdájához.
+Igen. A fiók rendszergazdája az a személy, aki az Azure-fiók beállítása, és ki a fiókhoz tartozó összes előfizetést fontos e-mailes értesítést kap. Azt javasoljuk, hogy megad egy kapcsolattartási e-mail címet, amely rendszeresen ellenőrzi a fiók rendszergazdája.
 
-### <a name="does-updating-my-profile-email-also-update-my-login-email-address"></a>Nem is frissíti a profil e-mailek frissítése a bejelentkezési e-mail címet?
+### <a name="does-updating-my-profile-email-also-update-my-login-email-address"></a>Nem is frissítheti a másodlagos e-mail profil frissítése a bejelentkezési e-mail-címét?
 
-Nem. A profil e-mail címének frissítése nem frissíti a bejelentkezési e-mail címét. Ha módosítani szeretné a bejelentkezési e-mail címét, akkor tulajdonjogának átruházása a fiók.
+Nem. A profil e-mail-címének frissítése nem frissíti a bejelentkezési e-mail-címét. Ha módosítani szeretné a bejelentkezéshez e-mail-címét, akkor a fiók tulajdonjogának átruházását.
 
-### <a name="does-updating-my-profile-address-also-update-my-credit-card-billing-address"></a>Nem is frissíti a profil címének frissítése a hitelkártya számlázási címét?
+### <a name="does-updating-my-profile-address-also-update-my-credit-card-billing-address"></a>Nem is a saját profil cím frissítése frissíti a saját hitelkártya számlázási cím?
 
-A számlázási adatokat frissítésével kapcsolatban [használt Azure-előfizetések fizetési hitelkártya módosítása](billing-how-to-change-credit-card.md).
+A számlázási információk frissítésével kapcsolatban lásd: [Azure-előfizetés díjfizetéséhez használt bankkártya módosítása](billing-how-to-change-credit-card.md).
 
 ### <a name="why-cant-i-update-the-country"></a>Miért nem tudja frissíteni az ország?
 
-A meglévő fiók ország technikai korlátok miatt nem lehet módosítani. Azonban a kívánt ország, hozzon létre egy fiókot, és majd kérje az Azure támogatási áttelepítése a szolgáltatások ezekhez a fiókokhoz.
+Technikai korlátok miatt nem lehet módosítani egy meglévő fiókon az országot. Azonban a kívánt országban-fiók létrehozása és, forduljon a fiók át a szolgáltatásokat az Azure ügyfélszolgálatától.
 
-### <a name="what-email-address-does-the-azure-billing-alerts-preview-feature-use"></a>Milyen e-mail címet az Azure számlázási riasztások does tekintse meg a szolgáltatás használata?
+### <a name="what-email-address-does-the-azure-billing-alerts-preview-feature-use"></a>Milyen e-mail címet az Azure számlázási riasztásokat does előzetes verziójú funkció használata?
 
-Amikor regisztrál a riasztások hozzáadása az e-mail címen riasztási értesítéseket kapni. Az e-mail cím, a riasztások használt elkülönül a Fiókadminisztrátor e-mail címet. További információkért lásd: [beállítása a Microsoft Azure-előfizetések riasztások számlázási](billing-set-up-alerts.md).
+Hozzáadhat, ha regisztrál a riasztások e-mail-címen riasztási értesítéseket kap. A riasztások használt e-mail cím elkülönül a Fiókadminisztrátor e-mail-címet. További információkért lásd: [elszámolási értesítések a Microsoft Azure-előfizetések beállítása](billing-set-up-alerts.md).
 
-## <a name="need-help-contact-support"></a>Segítség Forduljon a támogatási szolgálathoz.
+## <a name="need-help-contact-support"></a>Segítség Forduljon az ügyfélszolgálathoz.
 
-Ha további segítségre van, [forduljon a támogatási szolgálathoz](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) a probléma elhárítva gyors eléréséhez. 
+Ha továbbra is segítségre van szüksége, [forduljon az ügyfélszolgálathoz](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) a probléma gyors megoldása érdekében. 
 

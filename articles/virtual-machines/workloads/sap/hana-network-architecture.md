@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 09/04/2018
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c2ab917f701ebcb78ae01a4ed97915858e5b95db
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: 1262ed841fe8f6f9c2d5339d79abf06c1ab15a25
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44028388"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47392873"
 ---
 # <a name="sap-hana-large-instances-network-architecture"></a>SAP HANA (nagyméretű példányok) hálózati architektúra
 
@@ -79,7 +79,7 @@ Az Azure-beli SAP-környezetekhez különbségek a következők:
 - A SAP alkalmazás architektúra olyan bizalmas adatokat kezelő a hálózati késés, mint a jellemző forgatókönyvek, ahol adatcsere a helyszíni és az Azure között.
 - A virtuális hálózati átjárót már legalább két ExpressRoute-kapcsolatok. Mindkét kapcsolat osztozik a virtuális hálózati átjáró a bejövő adatok maximális sávszélessége.
 
-A hálózati késések tapasztalhatók virtuális gépek és a nagyméretű HANA-példány között egységre is lehet magasabb, mint a szokásos virtuális gép virtuális gép hálózati körbejárási késés. Az Azure-régió függ mért értékek lépheti túl a besorolását, az átlagosnál rosszabb a 0,7-ms körbejárási késés [SAP Megjegyzés #1100926 – gyakori kérdések: hálózati teljesítményt](https://launchpad.support.sap.com/#/notes/1100926/E). Mindazonáltal az ügyfelek üzembe sikeresen SAP HANA nagyméretű példányok az SAP HANA-alapú üzemi SAP-alkalmazások. Az ügyfelek, akik jelentések nagyszerű fejlesztései telepítették az SAP-alkalmazások futtatásával SAP HANA nagyméretű HANA-példány egységek használatával. Ellenőrizze, hogy alaposan tesztelni az üzleti folyamatok az Azure nagyméretű HANA-példányt.
+A hálózati késések tapasztalhatók virtuális gépek és a nagyméretű HANA-példány között egységre is lehet magasabb, mint a szokásos virtuális gép virtuális gép hálózati körbejárási késés. Az Azure-régió függ mért értékek lépheti túl a besorolását, az átlagosnál rosszabb a 0,7-ms körbejárási késés [SAP Megjegyzés #1100926 – gyakori kérdések: hálózati teljesítményt](https://launchpad.support.sap.com/#/notes/1100926/E). Azure-régió és az eszköz hálózati egy Azure virtuális gép és a nagyméretű HANA-példány egység közötti körbejárási késés mérésére függ, a mért késést és lehet, legfeljebb 2 ezredmásodperc körül. Mindazonáltal az ügyfelek üzembe sikeresen SAP HANA nagyméretű példányok az SAP HANA-alapú üzemi SAP-alkalmazások. Ellenőrizze, hogy alaposan tesztelni az üzleti folyamatok az Azure nagyméretű HANA-példányt.
  
 Ahhoz, hogy a virtuális gépek és a nagyméretű HANA-példány a determinisztikus hálózati késés, a virtuális hálózati átjáró Termékváltozata, amely alapvető fontosságú. Ellentétben a helyszíni és a virtuális gépek közötti forgalmat a virtuális gépek és a nagyméretű HANA-példány közötti forgalom minta kis, de nagy adatlöketekkel továbbítani a kéréseket és az adatokat kötetek is fejleszthet. Az ilyen adatlöketekkel jól kezelése érdekében az UltraPerformance átjáró-Termékváltozatot használata erősen ajánlott. A HANA nagyméretű példány termékváltozatok II. típusú osztályát az UltraPerformance átjáró-Termékváltozat használatát a virtuális hálózati átjáró megadása kötelező.
 

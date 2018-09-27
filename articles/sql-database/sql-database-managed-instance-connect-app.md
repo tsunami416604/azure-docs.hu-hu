@@ -12,12 +12,12 @@ ms.author: srbozovi
 ms.reviewer: bonova, carlrab
 manager: craigg
 ms.date: 09/14/2018
-ms.openlocfilehash: 2228f4664acc8fd63c781897ef77ccd0197c0d7d
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: f57d582aacad568811314494c0ed614839ccabba
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47161458"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47221740"
 ---
 # <a name="connect-your-application-to-azure-sql-database-managed-instance"></a>Csatlakoztassa az alkalmazását az Azure SQL Database felügyelt példányához
 
@@ -60,7 +60,7 @@ Sikeresen létrehozta az Azure-kapcsolat helyszíni, és nem létesít kapcsolat
 A felügyelt példánynak keresztül érhetők el csak magánhálózati IP-cím így a fejlesztői boxból eléréséhez, először létre kell a fejlesztői box és a felügyelt példány virtuális hálózatok közötti kapcsolat létrehozása. Ehhez a virtuális hálózathoz az Azure natív tanúsítványalapú hitelesítésének használatával pont – hely kapcsolat konfigurálása. További információkért lásd: [csatlakozni egy Azure SQL Database felügyelt példánya a helyi számítógépről egy pont – hely kapcsolat konfigurálása](sql-database-managed-instance-configure-p2s.md).
 
 ## <a name="connect-from-on-premises-with-vnet-peering"></a>Csatlakozás a másodlagos adatbázisoké pedig a virtuális hálózatok közötti társviszony
-Ügyfelek által megvalósított egy másik helyzet lehet, ahol a VPN-átjáró telepítve van a különálló virtuális hálózat és a egy üzemeltetési felügyelt példányhoz az előfizetés. A két virtuális etworks majd társviszonyban állnak. Az alábbi minta architektúra ábrán látható ez lehet hogyan kell végrehajtani.
+Ügyfelek által megvalósított egy másik helyzet lehet, ahol a VPN-átjáró telepítve van a különálló virtuális hálózat és a egy üzemeltetési felügyelt példányhoz az előfizetés. A két virtuális etworks majd társviszonyban állnak. A mintául szolgáló alábbi Architektúradiagram bemutatja, hogyan ez alkalmazásokon és szolgáltatásokon futtatható.
 
 ![Társviszony létesítése virtuális hálózatok között](./media/sql-database-managed-instance-connect-app/vnet-peering.png)
 

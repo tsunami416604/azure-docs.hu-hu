@@ -12,12 +12,12 @@ ms.author: giladm
 ms.reviewer: vanto
 manager: craigg
 ms.date: 09/10/2018
-ms.openlocfilehash: dd1672c0cdae243bf6ff19efa22df66239611b44
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: 8ba07b22d247cb9263890a747bd166d63af27e3b
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47064174"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47395747"
 ---
 # <a name="get-started-with-sql-database-auditing"></a>Ismerkedés az SQL-adatbázis naplózási szolgáltatásával
 Az Azure SQL database naplózási nyomon követi az adatbázisok eseményeit és felvezeti ezeket egy naplófájlba, az Azure storage-fiókban. A naplózás is:
@@ -109,7 +109,7 @@ Ha úgy döntött, hogy auditnaplók írni a Log Analytics:
 
     ![Nyissa meg az OMS-ben](./media/sql-database-auditing-get-started/auditing_open_in_oms.png)
 
-- Azt is megteheti is elérheti a naplófájlok a Log Analytics panelen. Nyissa meg a Log Analytics-munkaterület és a **általános** területén kattintson **naplók**. Megkezdése egy egyszerű lekérdezéssel, például: keresési *"SQLSecurityAuditEvents"* naplózza a naplózási megtekintéséhez.
+- Azt is megteheti is elérheti a naplófájlok a Log Analytics panelen. Nyissa meg a Log Analytics-munkaterület és a **általános** területén kattintson **naplók**. Megkezdése egy egyszerű lekérdezéssel, például: *"SQLSecurityAuditEvents" Keresés* naplózza a naplózási megtekintéséhez.
     Itt is használhatja [Operations Management Suite (OMS) Log Analytics](../log-analytics/log-analytics-log-search.md) futtatni speciális keresést a naplózási adatokat. A log Analytics azonnal elemezze a rekordok millióit, a számítási feladatok és kiszolgálók integrált keresést és egyéni irányítópultok segítségével valós idejű az operational insights biztosítja. OMS Log Analytics keresési nyelv és a parancsokkal kapcsolatos további hasznos információk: [Log Analytics keresési referenciáját bemutató](../log-analytics/log-analytics-log-search.md).
 
 Ha úgy döntött, hogy auditnaplók írni az Event Hubs:

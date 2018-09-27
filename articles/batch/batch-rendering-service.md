@@ -6,14 +6,14 @@ author: mscurrell
 ms.author: markscu
 ms.date: 08/02/2018
 ms.topic: conceptual
-ms.openlocfilehash: 4101f6819dff81376dcab47adb57e4b8ef35e094
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: fc26e1d32332bb0ed9624b7442e38ea79b7bfb1d
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "40034758"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47393553"
 ---
-# <a name="rendering-using-azure"></a>Az Azure-leképezés
+# <a name="rendering-using-azure"></a>Renderelés az Azure használatával
 
 Renderelési véve a 3D-modellek és átalakítás őket, 2D lemezképek. 3D jelenet fájlok készült alkalmazások például az Autodesk 3ds Max, az Autodesk Maya és a Blender.  Renderelési alkalmazások, például az Autodesk Maya, az Autodesk Arnold, a Chaos Group V-Ray és a Blender ciklusok 2D lemezképek előállításához.  Néha egyetlen lemezképek alapján a jelenetfájlok hoztak létre. Azonban szokás modellezheti és jelennek meg több lemezképet, és majd ötvözze őket egy animációt.
 
@@ -69,7 +69,7 @@ Az Azure Batch számos számítási feladatokhoz használatos, de az alábbi ké
   * Az Azure piactér Virtuálisgép-rendszerképek érhetők el, amely a népszerű grafikus és megjelenítési alkalmazások, az alkalmazások telepítése a saját maga, vagy hozzon létre saját egyéni rendszerképeit telepített alkalmazásokat nem kell tartalmaznia. 
 * Használatalapú fizetés renderelési alkalmazások licencelése:
   * Ha szeretné, az alkalmazások percalapú, a compute-beli virtuális gépek elkerülhető gyorsítótárpéldányok kellene licencek vásárlása és potenciálisan konfigurálása az alkalmazásra vonatkozó licenckiszolgáló fizetési kötelezettség.  És használja is azt jelenti, hogy a különböző és váratlan terheléselosztást méretformátumok figyelembe vétele, nem rögzített számú licenccel nem lehetséges.
-  * Akkor is, az előre telepített alkalmazásokkal a saját licenccel rendelkező és a használatalapú fizetés licencelés használják.
+  * Akkor is, az előre telepített alkalmazásokkal a saját licenccel rendelkező és a használatalapú fizetés licencelés használják. Ehhez általában egy helyszíni vagy telepítése Azure-alapú kiszolgálói licenc és használja az Azure-beli virtuális hálózathoz való csatlakozáshoz a renderelési készlet a licenckiszolgáló.
 * Beépülő modulok az ügyfél tervezési és modellező alkalmazásokban:
   * Beépülő modulok engedélyezése vehető igénybe az Azure Batch ügyfélalkalmazás közvetlenül a végfelhasználók számára, például Autodesk Maya, így hozhat létre készletek, feladatok elküldéséhez, és győződjön meg arról, felhasználásának további számítási kapacitás gyorsabb rendereket végrehajtásához.
 * A leképezés manager integrációs:

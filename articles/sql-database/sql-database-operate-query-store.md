@@ -2,19 +2,22 @@
 title: Az Azure SQL Database Query Store működtetése
 description: Ismerje meg, hogyan működnek a Query Store az Azure SQL Database-ben
 services: sql-database
-author: bonova
-manager: craigg
 ms.service: sql-database
-ms.custom: monitor & tune
+ms.subservice: performance
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 04/01/2018
+author: bonova
 ms.author: bonova
-ms.openlocfilehash: 37cb77b6738ba1354034dcf77d22a19b96c4ef23
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.reviewer: carlrab
+manager: craigg
+ms.date: 04/01/2018
+ms.openlocfilehash: 8795930c6b676e7e710f112e8d9eedd6ab9084b5
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37903098"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47164565"
 ---
 # <a name="operating-the-query-store-in-azure-sql-database"></a>Az Azure SQL Database-ben a Query Store működtetése
 Query Store az Azure-ban olyan teljes körűen felügyelt adatbázis-szolgáltatás, amely folyamatosan gyűjti, és az összes lekérdezés részletes történelmi adatait jeleníti meg. Egy repülőgép adatok eseményrögzítő, amely jelentősen leegyszerűsíti a lekérdezési teljesítmény hibaelhárítása, mind a felhőbeli és helyszíni ügyfelek hasonlíthatók Query Store is gondolja. Ez a cikk ismerteti az Azure-ban a Query Store működtetése adott aspektusait. Ez előtti gyűjtött adatait használja, gyorsan diagnosztizálhatja és teljesítménybeli problémák megoldásához és így több időt üzleti kellene összpontosítani. 
@@ -54,6 +57,6 @@ További információkért tekintse meg a következő cikkeket:
 
 * [Az adatbázishoz tartozó adatok eseményrögzítő](https://azure.microsoft.com/blog/query-store-a-flight-data-recorder-for-your-database) 
 * [Teljesítmény figyelése a Query Store használatával](https://msdn.microsoft.com/library/dn817826.aspx)
-* [Query Store használati forgatókönyvek](https://msdn.microsoft.com/library/mt614796.aspx)
+* [Lekérdezéstár – Használati forgatókönyvek](https://msdn.microsoft.com/library/mt614796.aspx)
  
 

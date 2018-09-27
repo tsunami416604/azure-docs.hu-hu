@@ -1,27 +1,27 @@
 ---
-title: Frissítse a Bing Video API v5 7-es verziója a |} A Microsoft Docs
+title: Frissítse a Bing Video Search API v5 a 7-es verziója
+titlesuffix: Azure Cognitive Services
 description: Azonosítja, hogy 7-es verzió használatához frissítenie kell az alkalmazás részei.
 services: cognitive-services
 author: swhite-msft
-manager: ehansen
-ms.assetid: FA7DDF07-97AC-4EBE-8C50-A9737D43B38E
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-video-search
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/15/2017
 ms.author: scottwhi
-ms.openlocfilehash: db1bc07c06f3d073b6cc0f206620e50a5f048e2a
-ms.sourcegitcommit: 7b845d3b9a5a4487d5df89906cc5d5bbdb0507c8
+ms.openlocfilehash: 967355d213f226711914e298a2fbf5676ebefe4f
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2018
-ms.locfileid: "41988139"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47224460"
 ---
 # <a name="video-search-api-upgrade-guide"></a>Video Search API frissítési útmutató
 
 A frissítési útmutató 5-ös verzió és a Bing Video Search API 7-es verziója közötti különbségek azonosítja. Ez az útmutató segítségével azonosíthatja, hogy 7-es verzió használatához frissítenie kell az alkalmazás részei.
 
-## <a name="breaking-changes"></a>Meghibásodást okozó változások
+## <a name="breaking-changes"></a>Kompatibilitástörő változások
 
 ### <a name="endpoints"></a>Végpontok
 

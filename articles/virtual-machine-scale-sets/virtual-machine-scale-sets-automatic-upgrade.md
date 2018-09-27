@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2018
 ms.author: rajraj
-ms.openlocfilehash: 4d3af3b7c7084c3c410bc936356d9caff643b805
-ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
+ms.openlocfilehash: 1ca0ec7185707d9b9f9712c2ace8dacb361f7b5b
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47182127"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47394369"
 ---
 # <a name="azure-virtual-machine-scale-set-automatic-os-image-upgrades"></a>Az Azure virtuálisgép-méretezési csoport automatikus operációs rendszer lemezkép frissítéseinek beállítása
 
@@ -38,17 +38,15 @@ Operációs rendszer automatikus verziófrissítése a következő jellemzőkkel
 
 ## <a name="how-does-automatic-os-image-upgrade-work"></a>Hogyan történik az operációs rendszer frissítési munka kép?
 
-Frissítés működik, és cserélje le a virtuális gépek az operációsrendszer-lemez egy új létrehozott rendszerkép legújabb verzióját használja. Bármely bővítmények konfigurált, és egyéni parancsfájlok, közben megőrződnek lemezen tárolt adatokat. Az alkalmazás állásidő minimalizálása érdekében a verziófrissítések kerül sor kötegek gépek, a méretezési csoport frissítése a tetszőleges időpontban nem több mint 20 %-át. Lehetősége is van egy Azure Load Balancer állapotadat-mintavétel integrálásához. Az erősen ajánlott egy alkalmazás szívverés építhet be, és a frissítési folyamat során az egyes kötegek frissítés sikerült érvényesíteni.
+Frissítés működik, és cserélje le a virtuális gépek az operációsrendszer-lemez egy új létrehozott rendszerkép legújabb verzióját használja. Bármely bővítmények konfigurált, és egyéni parancsfájlok, közben megőrződnek lemezen tárolt adatokat. Az alkalmazás állásidő minimalizálása érdekében a verziófrissítések kerül sor kötegek gépek, a méretezési csoport frissítése a tetszőleges időpontban nem több mint 20 %-át. Lehetősége is van egy Azure Load Balancer állapotadat-mintavétel integrálásához. Erősen ajánlott egy alkalmazás szívverés építhet be, és a frissítési folyamat során az egyes kötegek frissítés sikerült érvényesíteni. A végrehajtási lépések a következők: 
 
-A végrehajtási lépések a következők: 
-
-1. A verziófrissítés megkezdése előtt győződjön meg arról, hogy legfeljebb 20 %-a-példányok nem megfelelő állapotú. 
+1. A verziófrissítés megkezdése előtt az orchestrator biztosítja, hogy a példányok nem több mint 20 %-át sérült állapotban. 
 2. A kötegelt frissítés egy kötegben legfeljebb 20 %-a teljes példányszám kellene Virtuálisgép-példányok azonosítása.
 3. A Virtuálisgép-példányok a Batch operációsrendszer-lemezkép frissítése.
-4. Ha az ügyfél állapotadat-mintavételek alkalmazás konfigurálva van, a frissítés vár, akár 5 percig mintavételek állapotúak lesznek, majd azonnal folytatódik a következő köteg be. 
+4. Ha az ügyfél állapotadat-mintavételek alkalmazás konfigurálva van, a frissítés vár, legfeljebb 5 percig mintavételek lesz kifogástalan, mielőtt a következő köteg frissítése. 
 5. Ha vannak hátralévő példányok frissítése, goto 1. lépés) a következő köteg; Ellenkező esetben a frissítés akkor fejeződött be.
 
-A méretezési csoport minden egyes köteg a frissítés előtt az operációs rendszer frissítése motor Virtuálisgép-példány általános állapotát ellenőrzi. A batch a frissítés során is előfordulhatnak más egyidejű tervezett vagy nem tervezett karbantartás történik, amely hatással lehet a virtuális gépek rendelkezésre állásának az Azure-adatközpontokban. Ezért lehetőség, hogy ideiglenesen több mint 20 %-példányok le lehet-e. Ezekben az esetekben az aktuális köteg végén a méretezési csoport frissítési leáll.
+A méretezési csoport minden egyes köteg a frissítés előtt Virtuálisgép-példány általános állapotát az operációs rendszer frissítési orchestrator ellenőrzése. A batch a frissítés során is előfordulhatnak más egyidejű tervezett vagy nem tervezett karbantartás történik, amely hatással lehet a virtuális gépek rendelkezésre állásának az Azure-adatközpontokban. Ezért lehetőség, hogy ideiglenesen több mint 20 %-példányok le lehet-e. Ezekben az esetekben az aktuális köteg végén a méretezési csoport frissítési leáll.
 
 ## <a name="supported-os-images"></a>Támogatott operációsrendszer-lemezképek
 Jelenleg csak bizonyos operációs rendszer platform lemezképek támogatottak. Jelenleg nem használható, hogy rendelkezik létrehozott saját egyéni rendszerképeit. 
@@ -72,7 +70,8 @@ Jelenleg a következő termékváltozatok támogatottak (több hozzáadódik a j
 
 - A *verzió* értékre kell állítani a platformlemezkép tulajdonsága *legújabb*.
 - Alkalmazás állapotadat-mintavételek használata nem Service Fabric méretezési csoportokhoz.
-- Ellenőrizze, hogy az erőforrások a méretezési csoport modelljéből hivatkozó érhető el, és mindig naprakész. A VM-bővítmény tulajdonságai, storage-fiókban lévő hasznos adattartalom rendszerindítása Exa.SAS URI-t a modellben található titkos kódokhoz való hivatkozhat. 
+- Ellenőrizze, hogy az erőforrások a méretezési csoport modelljéből hivatkozó érhető el, és mindig naprakész marad. 
+  A VM-bővítmény tulajdonságai, storage-fiókban lévő hasznos adattartalom rendszerindítása Exa.SAS URI-t a modellben található titkos kódokhoz való hivatkozhat. 
 
 ## <a name="configure-automatic-os-image-upgrade"></a>Automatikus operációsrendszer-lemezkép frissítés konfigurálása
 Automatikus operációsrendszer-lemezkép frissítés konfigurálásához ellenőrizze, hogy a *automaticOSUpgradePolicy.enableAutomaticOSUpgrade* tulajdonsága *igaz* a méretezésicsoport-modell definícióját. 
@@ -117,7 +116,7 @@ A load balancer mintavételi lehet hivatkozni a *networkProfile* a méretezési 
   ...
 ```
 > [!NOTE]
-> Ez a szakasz csak a méretezési csoportok anélkül, hogy a Service Fabric vonatkozik. A Service Fabric rendelkezik a saját alkalmazásállapot fogalma. Operációs rendszer automatikus frissítéseinek használata a Service Fabric, az új operációsrendszer-képet bevezetési frissítési tartományt frissítési tartományonként a Service Fabric-ban futó szolgáltatások magas rendelkezésre állás fenntartása érdekében. A Service Fabric-fürtök tartóssági jellemzői további információkért tekintse meg [ebben a dokumentációban](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity#the-durability-characteristics-of-the-cluster).
+> Operációs rendszer automatikus frissítéseinek használata a Service Fabric, az új operációsrendszer-képet bevezetési frissítési tartományt frissítési tartományonként a Service Fabric-ban futó szolgáltatások magas rendelkezésre állás fenntartása érdekében. A Service Fabric-fürtök tartóssági jellemzői további információkért tekintse meg [ebben a dokumentációban](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity#the-durability-characteristics-of-the-cluster).
 
 ### <a name="keep-credentials-up-to-date"></a>Tartsa naprakészen a hitelesítő adatok
 Ha a méretezési a hitelesítő adatokat használ a külső erőforrások eléréséhez, például ha egy Virtuálisgép-bővítményt van konfigurálva egy SAS-jogkivonatot használó tárfiók, szüksége lesz, hogy a hitelesítő adatok naprakészek maradnak. Ha a hitelesítő adatokat, többek között a tanúsítványok és a jogkivonatok érvényessége lejárt, a frissítés sikertelen lesz, és sikertelen állapotban marad az első kötegbe tartozó virtuális gépek.
@@ -130,7 +129,7 @@ Virtuális gépek helyreállítása, majd újra engedélyeznie az operációs re
 * Helyezze üzembe a frissített méretezési csoportot, amely frissíti az összes Virtuálisgép-példány sikertelen azokat is beleértve. 
 
 ## <a name="get-the-history-of-automatic-os-image-upgrades"></a>Az operációs rendszer lemezkép automatikus frissítéseinek előzményeit beolvasása 
-Ellenőrizheti a legújabb operációs rendszer frissítése a méretezési csoportban Azure PowerShell-lel, az Azure CLI 2.0-s vagy a REST API-k végrehajtott előzményeit. Az utolsó 5 operációs rendszer frissítési kísérletek az elmúlt 2 hónap belül előzmények kaphat.
+Ellenőrizheti a legújabb operációs rendszer frissítése a méretezési csoportban Azure PowerShell-lel, az Azure CLI 2.0-s vagy a REST API-k végrehajtott előzményeit. Az utolsó öt operációs rendszer frissítési kísérletek az elmúlt két hónapon belül előzmények kérheti le.
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 Az alábbi példa az Azure Powershellt használja a állapotának a méretezési csoport nevű *myVMSS* az erőforráscsoport neve *myResourceGroup*:

@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: e9472f0fb6ca7c9924df57bb61a3f234bc7d4b13
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: 262c4e622d7ef915e59f29c8f4272e488acaeccf
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44381262"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47166911"
 ---
 # <a name="define-a-self-asserted-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Az önellenőrzött technikai profil meghatározása egy Azure Active Directory B2C egyéni házirendek
 
@@ -135,6 +135,7 @@ Technikai profil REST API-t hívja meg az üzleti logikát, felülírja a bemene
 | ContentDefinitionReferenceId | Igen | Azonosítóját a [definíciós tartalom](contentdefinitions.md) a műszaki profilhoz társított. |
 | EnforceEmailVerification | Nem | A regisztrációs profil szerkesztése, érvénybe lépteti az e-mailes ellenőrzés vagy. A lehetséges értékek: `true` (alapértelmezett), vagy `false`. | 
 | setting.showSignupLink | Nem | Megjeleníti a regisztráció gombra. A lehetséges értékek: `true` (alapértelmezett), vagy `false` |
+| setting.retryLimit | Nem | Azt szabályozza, hogy hányszor próbálkozzon egy felhasználó adja meg az adatokat, amely egy érvényesítési technikai profil összehasonlítva. Ha például egy felhasználó megpróbál regisztrációs egy olyan fiókkal, amely már létezik, és tartja a kísérlet, amíg eléri a korlátot.
 | SignUpTarget | Nem | A regisztráció cél exchange azonosítója. Amikor a felhasználó a regisztráció gombra kattint, az Azure AD B2C-vel végrehajtja a megadott exchange-azonosító. |
 
 ## <a name="cryptographic-keys"></a>Titkosítási kulcsok

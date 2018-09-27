@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 09/03/2018
 ms.author: glenga
-ms.openlocfilehash: aaa18e5bc4a95ed0c7334232417f68064fd26ca7
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: 40ed6105dca5ea14c64fb2b103c5623cd56333af
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45734907"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47393366"
 ---
 # <a name="azure-blob-storage-bindings-for-azure-functions"></a>Az Azure Blob storage-kötések az Azure Functions szolgáltatáshoz
 
@@ -878,8 +878,9 @@ A JavaScript, a blob adatait az eléréséhez `context.bindings.<name from funct
 
 ## <a name="next-steps"></a>További lépések
 
-> [!div class="nextstepaction"]
-> [Nyissa meg a gyors útmutatót, amely egy Blob storage-eseményindító](functions-create-storage-blob-triggered-function.md)
+* [Tudjon meg többet az Azure functions eseményindítók és kötések](functions-triggers-bindings.md)
 
+<!---
 > [!div class="nextstepaction"]
-> [Tudjon meg többet az Azure functions eseményindítók és kötések](functions-triggers-bindings.md)
+> [Go to a quickstart that uses a Blob storage trigger](functions-create-storage-blob-triggered-function.md)
+--->

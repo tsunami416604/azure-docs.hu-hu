@@ -1,6 +1,6 @@
 ---
-title: Az Azure Resource Manager sablonfüggvényei - logikai |} Microsoft Docs
-description: Az Azure Resource Manager-sablonok segítségével határozza meg a logikai értékek funkcióit ismerteti.
+title: Az Azure Resource Manager-sablonfüggvények – logikai |} A Microsoft Docs
+description: A functions az Azure Resource Manager-sablon használatával határozza meg a logikai értékeket ismerteti.
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
@@ -12,20 +12,20 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/05/2017
+ms.date: 09/24/2018
 ms.author: tomfitz
-ms.openlocfilehash: d8a7ae412fc80dff7bd91c1cdc5d4fcd985e07f4
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 8745519f1a0fdda7a5feb6ffb3f61e5250bb260a
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34359067"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47164787"
 ---
-# <a name="logical-functions-for-azure-resource-manager-templates"></a>Az Azure Resource Manager sablonokhoz logikai funkciók
+# <a name="logical-functions-for-azure-resource-manager-templates"></a>Az Azure Resource Manager-sablonok logikai függvények
 
-Erőforrás-kezelő számos funkciókat nyújt a sablonokban összehasonlításához.
+Resource Manager összehasonlítások végzett a sablonok számos funkciót biztosít.
 
-* [És](#and)
+* [és](#and)
 * [bool](#bool)
 * [if](#if)
 * [not](#not)
@@ -34,22 +34,22 @@ Erőforrás-kezelő számos funkciókat nyújt a sablonokban összehasonlítás�
 ## <a name="and"></a>és
 `and(arg1, arg2)`
 
-Ellenőrzi, hogy mindkét paraméter érték igaz.
+Ellenőrzi, hogy mindkét paraméter értéket Igaz.
 
 ### <a name="parameters"></a>Paraméterek
 
 | Paraméter | Szükséges | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| arg1 |Igen |logikai |Ellenőrizze, hogy az első érték e értéke true. |
-| Arg2 |Igen |logikai |A második érték ellenőrizze, hogy igaz. |
+| arg1 |Igen |logikai |Ellenőrizze, hogy az első értéket e igaz. |
+| Arg2 |Igen |logikai |A második érték, ellenőrizze, hogy igaz. |
 
-### <a name="return-value"></a>Visszatérési érték
+### <a name="return-value"></a>Vrácená hodnota
 
-Beolvasása **igaz** Ha mindkét érték igaz, ha sikertelen, **hamis**.
+Értéket ad vissza **igaz** Ha mindkét érték igaz; ellenkező esetben **hamis**.
 
 ### <a name="examples"></a>Példák
 
-A következő [példa sablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/andornot.json) logikai funkciók használatát ismerteti.
+A következő [példasablonja](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/andornot.json) logikai függvények használatát ismerteti.
 
 ```json
 {
@@ -73,43 +73,43 @@ A következő [példa sablon](https://github.com/Azure/azure-docs-json-samples/b
 }
 ```
 
-Az előző példában a kimenete a következő:
+Az előző példából kimenete:
 
 | Name (Név) | Típus | Érték |
 | ---- | ---- | ----- |
-| andExampleOutput | logikai érték | False (Hamis) |
-| orExampleOutput | logikai érték | True (Igaz) |
-| notExampleOutput | logikai érték | False (Hamis) |
+| andExampleOutput | Logikai | False (Hamis) |
+| orExampleOutput | Logikai | True (Igaz) |
+| notExampleOutput | Logikai | False (Hamis) |
 
-A példa sablon Azure parancssori felülettel történő üzembe helyezéséhez használja:
+Az Azure CLI-vel ebben a példában sablon üzembe helyezéséhez használja:
 
 ```azurecli-interactive
 az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/andornot.json
 ```
 
-A példa sablon PowerShell használatával történő üzembe helyezéséhez használja:
+Ez a PowerShell használatával például a sablon üzembe helyezéséhez használja:
 
 ```powershell
 New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/andornot.json
 ```
 
-## <a name="bool"></a>logikai érték
+## <a name="bool"></a>Logikai
 `bool(arg1)`
 
-A paraméter konvertálása logikai érték.
+A paraméter alakítja át egy logikai érték.
 
 ### <a name="parameters"></a>Paraméterek
 
 | Paraméter | Szükséges | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| arg1 |Igen |karakterlánc- vagy int |Az érték logikai érték konvertálása. |
+| arg1 |Igen |karakterlánc- vagy int |Az érték egy logikai típusra konvertál. |
 
-### <a name="return-value"></a>Visszatérési érték
+### <a name="return-value"></a>Vrácená hodnota
 Az átalakított érték logikai érték.
 
 ### <a name="examples"></a>Példák
 
-A következő [példa sablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/bool.json) egész szám vagy karakterlánc bool használatát ismerteti.
+A következő [példasablonja](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/bool.json) bool használata egy string vagy integer jeleníti meg.
 
 ```json
 {
@@ -137,22 +137,22 @@ A következő [példa sablon](https://github.com/Azure/azure-docs-json-samples/b
 }
 ```
 
-Az alapértelmezett értékeit az előző példából kimenete:
+Az alapértelmezett értékeket az előző példa kimenete a következő:
 
 | Name (Név) | Típus | Érték |
 | ---- | ---- | ----- |
-| trueString | logikai érték | True (Igaz) |
-| falseString | logikai érték | False (Hamis) |
-| trueInt | logikai érték | True (Igaz) |
-| falseInt | logikai érték | False (Hamis) |
+| trueString | Logikai | True (Igaz) |
+| falseString | Logikai | False (Hamis) |
+| trueInt | Logikai | True (Igaz) |
+| falseInt | Logikai | False (Hamis) |
 
-A példa sablon Azure parancssori felülettel történő üzembe helyezéséhez használja:
+Az Azure CLI-vel ebben a példában sablon üzembe helyezéséhez használja:
 
 ```azurecli-interactive
 az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/bool.json
 ```
 
-A példa sablon PowerShell használatával történő üzembe helyezéséhez használja:
+Ez a PowerShell használatával például a sablon üzembe helyezéséhez használja:
 
 ```powershell
 New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/bool.json
@@ -161,23 +161,23 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 ## <a name="if"></a>Ha
 `if(condition, trueValue, falseValue)`
 
-E alapján értéket adja vissza egy feltétele igaz vagy hamis.
+Hogy értéket adja vissza egy feltétele igaz vagy hamis.
 
 ### <a name="parameters"></a>Paraméterek
 
 | Paraméter | Szükséges | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| feltétel |Igen |logikai |Annak ellenőrzéséhez, hogy az IGAZ értéket. |
-| trueValue |Igen | karakterlánc, int, objektum vagy tömb |Visszatérési érték, ha a feltétel teljesül. |
-| falseValue |Igen | karakterlánc, int, objektum vagy tömb |Visszatérési érték, ha a feltétel hamis. |
+| feltétel |Igen |logikai |Ellenőrizze, hogy ez igaz a érték. |
+| trueValue |Igen | karakterlánc, int, objektumot vagy tömböt |A visszatérési érték, amikor a feltétel teljesül. |
+| falseValue |Igen | karakterlánc, int, objektumot vagy tömböt |A visszatérési érték, amikor a feltétel nem teljesül. |
 
-### <a name="return-value"></a>Visszatérési érték
+### <a name="return-value"></a>Vrácená hodnota
 
-A második paraméter adja vissza, ha az első paraméter **igaz**; ellenkező esetben adja vissza a harmadik paraméter.
+Második paraméterként adja vissza, amikor az első paraméter **igaz**; ellenkező esetben, harmadik paraméterként adja vissza.
 
 ### <a name="remarks"></a>Megjegyzések
 
-Ez a funkció segítségével feltételesen beállítva az erőforrás-tulajdonságot. A következő példa egy nem egy teljes sablonunk, de azt mutatja, hogy a megfelelő bizonyos részei a rendelkezésre állási feltételesen beállítását.
+Ez a funkció segítségével feltételesen beállítása az erőforrás-tulajdonság. A következő példában nem egy teljes sablonunk, de feltételesen állítja a rendelkezésre állási csoporthoz tartozó fontos részeket jeleníti meg.
 
 ```json
 {
@@ -223,7 +223,7 @@ Ez a funkció segítségével feltételesen beállítva az erőforrás-tulajdons
 
 ### <a name="examples"></a>Példák
 
-A következő [példa sablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/if.json) használatát mutatja a `if` függvény.
+A következő [példasablonja](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/if.json) bemutatja, hogyan használható a `if` függvény.
 
 ```json
 {
@@ -239,25 +239,30 @@ A következő [példa sablon](https://github.com/Azure/azure-docs-json-samples/b
         "noOutput": {
             "type": "string",
             "value": "[if(equals('a', 'b'), 'yes', 'no')]"
+        },
+        "objectOutput": {
+            "type": "object",
+            "value": "[if(equals('a', 'a'), json('{\"test\": \"value1\"}'), json('null'))]"
         }
     }
 }
 ```
 
-Az előző példában a kimenete a következő:
+Az előző példából kimenete:
 
 | Name (Név) | Típus | Érték |
 | ---- | ---- | ----- |
-| yesOutput | Karakterlánc | igen |
-| noOutput | Karakterlánc | nem |
+| yesOutput | Sztring | igen |
+| noOutput | Sztring | nem |
+| objectOutput | Objektum | {"teszt": "érték1"} |
 
-A példa sablon Azure parancssori felülettel történő üzembe helyezéséhez használja:
+Az Azure CLI-vel ebben a példában sablon üzembe helyezéséhez használja:
 
 ```azurecli-interactive
 az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/if.json
 ```
 
-A példa sablon PowerShell használatával történő üzembe helyezéséhez használja:
+Ez a PowerShell használatával például a sablon üzembe helyezéséhez használja:
 
 ```powershell
 New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/if.json
@@ -266,21 +271,21 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 ## <a name="not"></a>nem
 `not(arg1)`
 
-Az ellenkező értékre alakítja át a logikai érték.
+Logikai érték a ellentétes értékké alakítja.
 
 ### <a name="parameters"></a>Paraméterek
 
 | Paraméter | Szükséges | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| arg1 |Igen |logikai |Alakítsa át a érték. |
+| arg1 |Igen |logikai |Az átalakítandó érték. |
 
-### <a name="return-value"></a>Visszatérési érték
+### <a name="return-value"></a>Vrácená hodnota
 
-Beolvasása **igaz** paraméter esetén **hamis**. Beolvasása **hamis** paraméter esetén **igaz**.
+Értéket ad vissza **igaz** paraméter esetén **hamis**. Értéket ad vissza **hamis** paraméter esetén **igaz**.
 
 ### <a name="examples"></a>Példák
 
-A következő [példa sablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/andornot.json) logikai funkciók használatát ismerteti.
+A következő [példasablonja](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/andornot.json) logikai függvények használatát ismerteti.
 
 ```json
 {
@@ -304,27 +309,27 @@ A következő [példa sablon](https://github.com/Azure/azure-docs-json-samples/b
 }
 ```
 
-Az előző példában a kimenete a következő:
+Az előző példából kimenete:
 
 | Name (Név) | Típus | Érték |
 | ---- | ---- | ----- |
-| andExampleOutput | logikai érték | False (Hamis) |
-| orExampleOutput | logikai érték | True (Igaz) |
-| notExampleOutput | logikai érték | False (Hamis) |
+| andExampleOutput | Logikai | False (Hamis) |
+| orExampleOutput | Logikai | True (Igaz) |
+| notExampleOutput | Logikai | False (Hamis) |
 
-A példa sablon Azure parancssori felülettel történő üzembe helyezéséhez használja:
+Az Azure CLI-vel ebben a példában sablon üzembe helyezéséhez használja:
 
 ```azurecli-interactive
 az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/andornot.json
 ```
 
-A példa sablon PowerShell használatával történő üzembe helyezéséhez használja:
+Ez a PowerShell használatával például a sablon üzembe helyezéséhez használja:
 
 ```powershell
 New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/andornot.json
 ```
 
-A következő [példa sablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/not-equals.json) használ **nem** rendelkező [egyenlő](resource-group-template-functions-comparison.md#equals).
+A következő [példasablonja](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/not-equals.json) használ **nem** a [egyenlő](resource-group-template-functions-comparison.md#equals).
 
 ```json
 {
@@ -340,19 +345,19 @@ A következő [példa sablon](https://github.com/Azure/azure-docs-json-samples/b
     }
 ```
 
-Az előző példában a kimenete a következő:
+Az előző példából kimenete:
 
 | Name (Név) | Típus | Érték |
 | ---- | ---- | ----- |
-| checkNotEquals | logikai érték | True (Igaz) |
+| checkNotEquals | Logikai | True (Igaz) |
 
-A példa sablon Azure parancssori felülettel történő üzembe helyezéséhez használja:
+Az Azure CLI-vel ebben a példában sablon üzembe helyezéséhez használja:
 
 ```azurecli-interactive
 az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/not-equals.json
 ```
 
-A példa sablon PowerShell használatával történő üzembe helyezéséhez használja:
+Ez a PowerShell használatával például a sablon üzembe helyezéséhez használja:
 
 ```powershell
 New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/not-equals.json
@@ -367,16 +372,16 @@ Ellenőrzi, hogy mindkét paraméter értéke igaz.
 
 | Paraméter | Szükséges | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| arg1 |Igen |logikai |Ellenőrizze, hogy az első érték e értéke true. |
-| Arg2 |Igen |logikai |A második érték ellenőrizze, hogy igaz. |
+| arg1 |Igen |logikai |Ellenőrizze, hogy az első értéket e igaz. |
+| Arg2 |Igen |logikai |A második érték, ellenőrizze, hogy igaz. |
 
-### <a name="return-value"></a>Visszatérési érték
+### <a name="return-value"></a>Vrácená hodnota
 
-Beolvasása **igaz** értéke igaz, ha sikertelen, ha **hamis**.
+Értéket ad vissza **igaz** Ha bármelyik érték igaz; ellenkező esetben **hamis**.
 
 ### <a name="examples"></a>Példák
 
-A következő [példa sablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/andornot.json) logikai funkciók használatát ismerteti.
+A következő [példasablonja](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/andornot.json) logikai függvények használatát ismerteti.
 
 ```json
 {
@@ -400,21 +405,21 @@ A következő [példa sablon](https://github.com/Azure/azure-docs-json-samples/b
 }
 ```
 
-Az előző példában a kimenete a következő:
+Az előző példából kimenete:
 
 | Name (Név) | Típus | Érték |
 | ---- | ---- | ----- |
-| andExampleOutput | logikai érték | False (Hamis) |
-| orExampleOutput | logikai érték | True (Igaz) |
-| notExampleOutput | logikai érték | False (Hamis) |
+| andExampleOutput | Logikai | False (Hamis) |
+| orExampleOutput | Logikai | True (Igaz) |
+| notExampleOutput | Logikai | False (Hamis) |
 
-A példa sablon Azure parancssori felülettel történő üzembe helyezéséhez használja:
+Az Azure CLI-vel ebben a példában sablon üzembe helyezéséhez használja:
 
 ```azurecli-interactive
 az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/andornot.json
 ```
 
-A példa sablon PowerShell használatával történő üzembe helyezéséhez használja:
+Ez a PowerShell használatával például a sablon üzembe helyezéséhez használja:
 
 ```powershell
 New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/andornot.json
@@ -423,6 +428,6 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 ## <a name="next-steps"></a>További lépések
 * A szakaszok az Azure Resource Manager-sablon ismertetését lásd: [Azure Resource Manager-sablonok készítése](resource-group-authoring-templates.md).
 * Több sablon egyesíteni, lásd: [kapcsolt sablonok használata az Azure Resource Manager](resource-group-linked-templates.md).
-* Megadott számú alkalommal felépítésének egy adott típusú erőforrás létrehozása esetén lásd: [erőforrások több példánya létrehozása az Azure Resource Manager](resource-group-create-multiple.md).
-* A sablon létrehozott központi telepítéséről, olvassa el [Azure Resource Manager-sablon az alkalmazás központi telepítését](resource-group-template-deploy.md).
+* A megadott számú alkalommal újrafuttathatja egy adott típusú erőforrás létrehozásakor, lásd: [több erőforráspéldány létrehozása az Azure Resource Manager](resource-group-create-multiple.md).
+* Ellenőrizze, hogyan helyezheti üzembe a létrehozott sablont, tekintse meg a [alkalmazás üzembe helyezése Azure Resource Manager-sablonnal](resource-group-template-deploy.md).
 

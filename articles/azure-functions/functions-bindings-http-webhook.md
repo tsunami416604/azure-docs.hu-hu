@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 11/21/2017
 ms.author: glenga
-ms.openlocfilehash: a1b34484978ad95f0945e93411ac2e2a74fff238
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: e989152ece19168138597a96d1246ec64498ce69
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46980974"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47227554"
 ---
 # <a name="azure-functions-http-triggers-and-bindings"></a>Az Azure Functions – HTTP-eseményindítók és kötések
 
@@ -483,7 +483,7 @@ Teljes körűen biztonságossá tételéhez a függvény végpontok éles körny
 
 * Kapcsolja be az App Service-hitelesítés / engedélyezés a függvényalkalmazás számára. Az App Service platform lehetővé teszi az Azure Active Directory (AAD) és több külső identitásszolgáltató használatával ügyfelek hitelesítéséhez. Ezzel a Functions egyéni engedélyezési szabályok megvalósításához, és használhatja a felhasználói adatokat a függvénykódban. További tudnivalókért lásd: [hitelesítése és engedélyezése Azure App Service-ben](../app-service/app-service-authentication-overview.md).
 
-* Az Azure API Management (APIM) használatával-kérések hitelesítéséhez. APIM API biztonsági beállítások a bejövő kéréseket széles skáláját kínálja. További tudnivalókért lásd: [az API Management a hitelesítési házirendek](../api-management/api-management-authentication-policies.md). Az APIM-helyen konfigurálhatja a függvényalkalmazás csak a PI címet az APIM-példány érkező kéréseket fogadják. További tudnivalókért lásd: [IP-címkorlátozások](ip-addresses.md#ip-address-restrictions).
+* Az Azure API Management (APIM) használatával-kérések hitelesítéséhez. APIM API biztonsági beállítások a bejövő kéréseket széles skáláját kínálja. További tudnivalókért lásd: [az API Management a hitelesítési házirendek](../api-management/api-management-authentication-policies.md). Az APIM-helyen konfigurálhatja a függvényalkalmazás csak az IP-címet az APIM-példány érkező kéréseket fogadják. További tudnivalókért lásd: [IP-címkorlátozások](ip-addresses.md#ip-address-restrictions).
 
 * A függvényalkalmazás, egy Azure App Service Environment (ASE) üzembe helyezése. ASE a függvények futtatására dedikált üzemeltetési környezetet biztosít. ASE lehetővé teszi, hogy az összes bejövő kérések hitelesítéséhez használhatja egyetlen előtér-átjáró konfigurálását. További információkért lásd: [egy webalkalmazási tűzfal (WAF) konfigurálása App Service Environment-környezet](../app-service/environment/app-service-app-service-environment-web-application-firewall.md).
 

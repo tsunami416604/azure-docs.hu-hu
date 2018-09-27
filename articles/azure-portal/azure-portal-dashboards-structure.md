@@ -1,6 +1,6 @@
 ---
-title: Azure-irányítópultok felépítését |} Microsoft Docs
-description: Ez a cikk ismerteti az Azure irányítópult JSON szerkezete
+title: Azure-irányítópultok struktúrája |} A Microsoft Docs
+description: Ez a cikk ismerteti az Azure irányítópultján JSON szerkezete
 services: azure-portal
 documentationcenter: ''
 author: adamabmsft
@@ -12,20 +12,20 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 09/01/2017
-ms.author: adamab
-ms.openlocfilehash: 2eb9289957968db04b78087413fb9df8ed1b085b
-ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
+ms.author: cwatson
+ms.openlocfilehash: 405e0d5184880a00c07de55bd968210fa28e45fc
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36301672"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47393077"
 ---
-# <a name="the-structure-of-azure-dashboards"></a>Azure-irányítópultok szerkezete
+# <a name="the-structure-of-azure-dashboards"></a>Azure-irányítópultok struktúrája
 Ez a dokumentum végigvezeti egy Azure-irányítópultot, az alábbi példa irányítópulttal szerkezete:
 
 ![a minta-irányítópult](./media/azure-portal-dashboards-structure/sample-dashboard.png)
 
-Mivel a megosztott [Azure az irányítópultok olyan erőforrások](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview), ez az irányítópult ábrázolhatók JSON-ként.  A következő JSON az irányítópulton fent ábrázolt jelöli.
+Mivel a megosztott [Azure-irányítópultok forrásanyag](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview), ezen az irányítópulton is megjeleníthető JSON-fájlként.  A következő JSON az irányítópulton fent ábrázolt jelöli.
 
 ```json
 
@@ -289,62 +289,62 @@ Mivel a megosztott [Azure az irányítópultok olyan erőforrások](https://docs
 
 ```
 
-## <a name="common-resource-properties"></a>Erőforrás-tulajdonságok
+## <a name="common-resource-properties"></a>Gyakori erőforrás-tulajdonságok
 
-A JSON vonatkozó szakaszaihoz most lebontva.  A legfelső szintű tulajdonságok __azonosító__, __neve__, __típus__, __hely__, és __címkék__ tulajdonság megosztott összes Azure-erőforrás típusa. Ez azt jelenti, hogy nagy ehhez az irányítópult tartalmú nem rendelkeznek.
+A JSON vonatkozó szakaszaihoz vezetnek hozzunk felosztania.  A legfelső szintű tulajdonságok __azonosító__, __neve__, __típusa__, __hely__, és __címkék__ a tulajdonságok akkor vannak közösen használja az összes Azure-erőforrástípusra jellemzők. Azt jelenti nem kell annyit, hogy az irányítópult tartalmát.
 
 ### <a name="the-id-property"></a>Az id tulajdonság
 
-Az Azure erőforrás-azonosító, hogy a [elnevezési konvenciói az Azure-erőforrások](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions). Amikor a portál létrehoz egy irányítópultot, általában úgy dönt, az azonosító egy guid formájában, de szabadon bármilyen érvényes nevet használja, a létrehozott programozott módon. 
+Az Azure-erőforrás azonosítója, szabályoz a [elnevezési konvenciók Azure-erőforrások](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions). Amikor a portál létrehoz egy irányítópultot, általában úgy dönt, az azonosító egy guid formájában, de szabadon bármely érvényes név létrehozásakor használja azokat programozott módon. 
 
 ### <a name="the-name-property"></a>A name tulajdonság
-A név nem az erőforrás-azonosító, amely nem tartalmazza az előfizetés, a erőforrás típusa vagy a csoport erőforrásadatok szegmense. Alapvetően akkor az erőforrás-azonosító utolsó részének.
+A név a szegmens az erőforrás-azonosító, amely tartalmazza az előfizetés, erőforrástípust vagy erőforrás-csoport adatai. Alapvetően az erőforrás-azonosító utolsó szegmense.
 
 ### <a name="the-type-property"></a>A type tulajdonság
-Minden az irányítópultok olyan típusú __Microsoft.Portal/dashboards__.
+Összes irányítópult típusúak __Microsoft.Portal/dashboards__.
 
 ### <a name="the-location-property"></a>A location tulajdonság
-Más erőforrásokat, eltérően irányítópultok egy futásidejű összetevő nem rendelkezik.  Irányítópultok a hely Megadja, hogy az elsődleges földrajzi hely, amely az irányítópult JSON-megjelenítés tárolja. Az érték egyike lehet: a helykódok, amelyek segítségével lehet lekérni a [az előfizetések erőforrás API helyeihez](https://docs.microsoft.com/rest/api/resources/subscriptions).
+Ellentétben más erőforrások az irányítópultok egy futásidejű összetevő nem rendelkezik.  Az irányítópultok a helyet, amely tárolja az irányítópult JSON-reprezentációval elsődleges földrajzi helyét adja meg. Az értéknek kell lennie a hely kódok, amelyek használatával lehet beolvasni a [helyek API az előfizetések erőforráson](https://docs.microsoft.com/rest/api/resources/subscriptions).
 
 ### <a name="the-tags-property"></a>A címkék tulajdonság
-Címke az Azure-erőforrások, amelyek lehetővé teszik az erőforrás által tetszőleges név-érték párok rendszerezésére gyakran elérhető szolgáltatás található. Az irányítópultokat, van egy különleges címke nevű __rejtett cím__. Ha az irányítópult fel ezt a tulajdonságot, majd szolgál, a portál az irányítópulton megjelenített neve. Az Azure erőforrás-azonosítók nem nevezhető át, de címkék is. Ezt a címkét akadályozható meg szeretné, hogy az irányítópult renamable megjelenítendő nevét.
+A címkék olyan gyakran elérhető szolgáltatás Azure-erőforrások, amelyek lehetővé teszik az erőforrás tetszőleges név-érték párok szerint rendszerezheti. Az irányítópultok esetében van ilyen nevű speciális címkék __rejtett cím__. Ha az irányítópult kitölti ezt a tulajdonságot, majd használatos a portálon az irányítópulton megjelenített nevet. Az Azure erőforrás-azonosítók nem nevezhető át, de a címkék is. Ez a címke az irányítópulton renamable megjelenített neve, hogy lehetőséget nyújt.
 
 `"tags": { "hidden-title": "Created via API" }`
 
-### <a name="the-properties-object"></a>A Tulajdonságok objektum
-A tulajdonságok az objektum tartalmaz két tulajdonságok __fókuszainak__ és __metaadatok__. A __fókuszainak__ tulajdonság (más néven a csempék információkat tartalmaz részből) az irányítópulton.  A __metaadatok__ tulajdonság lehetséges jövőbeli szolgáltatások van.
+### <a name="the-properties-object"></a>A Tulajdonságok objektumában
+A Tulajdonságok objektumában tartalmaz két tulajdonság __átvilágított felülettel__ és __metaadatok__. A __átvilágított felülettel__ tulajdonság tartalmazza a csempék információ (más néven) részeit) az irányítópulton.  A __metaadatok__ tulajdonság van-e az esetleges későbbi funkciókkal.
 
-### <a name="the-lenses-property"></a>A fókuszok tulajdonság
-A __fókuszainak__ tulajdonsága tartalmazza az irányítópulton. Vegye figyelembe, hogy a kívánt objektumot ebben a példában a "0" nevű egyetlen tulajdonságot tartalmaz. Fókuszainak jelenleg nincs megvalósítva az irányítópultokon csoportosítási elvét. Most a egyetlen tulajdonság a "0" nevű objektumon a fókuszt, ebben az esetben az irányítópultok mindegyik rendelkezik.
+### <a name="the-lenses-property"></a>Az átvilágított felülettel tulajdonság
+A __átvilágított felülettel__ tulajdonság tartalmazza az irányítópulton. Vegye figyelembe, hogy az átvilágított felülettel objektum ebben a példában a "0" nevű egyetlen tulajdonságot tartalmaz. Átvilágított felülettel is egy csoportosítás fogalom, amely az irányítópultok még nem implementáltuk. Egyelőre Ez egyetlen tulajdonságát az "0" nevű a fókuszt objektum ismét összes irányítópultját rendelkezik.
 
-### <a name="the-lens-object"></a>A fókuszt objektum
-Alsó a "0" objektum tartalmazza a két tulajdonság __rendelés__ és __részek__.  Irányítópultok, a jelenlegi verzióban __rendelés__ van mindig 0. A __részek__ tulajdonság, amely meghatározza a egyes részeire (más néven objektumot tartalmaz tartalmazó csempék éppen) az irányítópulton.
+### <a name="the-lens-object"></a>A fókusz objektum
+Alsó a "0" objektum tartalmazza a két tulajdonság __rendelés__ és __részek__.  Az irányítópultok, a jelenlegi verzióban __rendelés__ van mindig 0. A __részek__ tulajdonság, amely meghatározza a egyes részeire (más néven objektumot tartalmaz. csempék) az irányítópulton.
 
-A __részek__ objektum mindkét része, ahol a tulajdonság nevét, az a szám tulajdonságot tartalmaz. Ez a szám nincs jelentős eltérés. 
+A __részek__ objektum az egyes részek, ahol a tulajdonság neve-e a számos tulajdonságot tartalmaz. Ez a szám nincs jelentős eltérés. 
 
 ### <a name="the-part-object"></a>A rész objektum
-Minden egyes részben objektumnak egy __pozíció__, és __metaadatok__.
+Minden egyes része objektum rendelkezik egy __pozíció__, és __metaadatok__.
 
-### <a name="the-position-object"></a>A pozíció objektum
-A __pozíció__ tulajdonság a méret és elhelyezkedés információkat tartalmaz, az a része kifejezett __x__, __y__, __rowSpan__, és __colSpan__. Az értékek a következők rács egységek tekintetében. A rács egységek láthatók, ha az irányítópultot a Testreszabás módban van, ahogy az itt látható. Ha egy csempére szélessége a két rács egységek rendelkezik, egy rács egység magasságú, és egy helyre a felső bal oldali az irányítópult sarkában, majd a pozíció obejct néz ki:
+### <a name="the-position-object"></a>Az objektum
+A __pozíció__ tulajdonság a méret és elhelyezkedés információkat tartalmaz, a kifejezett rész __x__, __y__, __rowSpan__, és __colSpan__. Az értékek a következők rács egységekben. A rács egységek láthatók, ha az irányítópult a Testreszabás módban van, ahogy az itt látható. Ha azt szeretné, hogy a csempét egy széles két rács egység van, egy egység egy rács magassága és a egy hely felső bal oldali sarokban, majd a pozíció obejct néz ki:
 
 `location: { x: 0, y: 0, rowSpan: 2, colSpan: 1 }`
 
 ![rács-egységek](./media/azure-portal-dashboards-structure/grid-units.png)
 
 ### <a name="the-metadata-object"></a>A metaadat-objektum
-Minden egyes részben olyan metadata tulajdonsággal rendelkezik, az objektum neve csak egy szükséges tulajdonság rendelkezik __típus__. Ez a karakterlánc közli a portálon milyen csempére. A példa irányítópult csempék ilyen típusú használja:
+Egyes részek metaadat-tulajdonságot, akkor egy objektumnak csak egy szükséges tulajdonság nevű __típus__. Ez a karakterlánc arra utasítja a portálon milyen csempe megjelenítéséhez. A példa irányítópult csempéi az ilyen típusú használja:
 
 
 1. `Extension/Microsoft_Azure_Monitoring/PartType/MetricsChartPart` – Megjelenítésére használ a metrikák figyelése
-1. `Extension[azure]/HubsExtension/PartType/MarkdownPart` – Megjelenítésére használ a text vagy képeket egyszerű formázás listák, hivatkozások, stb.
-1. `Extension[azure]/HubsExtension/PartType/VideoPart` – Megjelenítésére használ a videók YouTube Channel9 és semmilyen más típusú, amely a videó html-címke videó.
-1. `Extension/Microsoft_Azure_Compute/PartType/VirtualMachinePart` – Használja a név és az Azure virtuális gép állapotának megjelenítése.
+1. `Extension[azure]/HubsExtension/PartType/MarkdownPart` – Használt szöveg és alapszintű formázásával, listák és hivatkozások, a kép megjelenítéséhez stb.
+1. `Extension[azure]/HubsExtension/PartType/VideoPart` – A YouTube-on, a channel9-on és bármilyen más típusú, amely egyaránt használható egy videó html-címke a videó videók megjelenítésére szolgál.
+1. `Extension/Microsoft_Azure_Compute/PartType/VirtualMachinePart` – Használja a neve és a egy Azure virtuális gép állapotának megjelenítése.
 
-Minden részének saját konfigurációs rendelkezik. A konfigurációs tulajdonságok nevezzük __bemenetek__, __beállítások__, és __eszköz__. 
+Különböző típusú részét a saját konfigurációs van. A lehetséges konfigurációs tulajdonságok nevezzük __bemenetek__, __beállítások__, és __eszköz__. 
 
 ### <a name="the-inputs-object"></a>A bemeneti objektum
-A bemeneti objektum általában egy erőforrás-példányhoz kötve van egy csempe adatokat tartalmaz.  A minta-irányítópult a virtuális gép részt egy egyetlen bemeneti, amely az Azure erőforrás-azonosító használja a kötési kifejezése tartalmazza.  Az összes Azure-erőforrások az erőforrás-azonosító formátuma nem egységes.
+A bemeneti objektum általában egy csempe van kötve egy erőforrás-példány információt tartalmazza.  A minta-irányítópult a virtuális gép része egy egyetlen bemenetet, amely az Azure erőforrás-azonosítója használatával a kötés express tartalmazza.  Az erőforrás-azonosító formátuma az összes Azure-erőforrások esetén egységes.
 
 ```json
 "inputs":
@@ -356,7 +356,7 @@ A bemeneti objektum általában egy erőforrás-példányhoz kötve van egy csem
 ]
 
 ```
-A metrikák diagram része egy egyetlen bemeneti, amely kifejezi lehet kötést létrehozni, és a megjelenített metric(s) vonatkozó információkat az erőforrás tartozik. Ez a csempe, amely azt a hálózati és hálózati metrikák bemenete.
+A metrikák diagram része egy egyetlen bemenetet, amely kifejezi az erőforrás kötést létrehozni, valamint az éppen megjelenített metric(s) kapcsolatos információkat tartalmaz. Íme a bemeneti jelenik-e meg a bejövő és kimenő hálózati forgalom metrikák csempe.
 
 ```json
 “inputs”:
@@ -391,7 +391,7 @@ A metrikák diagram része egy egyetlen bemeneti, amely kifejezi lehet kötést 
 ```
 
 ### <a name="the-settings-object"></a>A beállítási objektumot
-A beállítási objektum egy részének a konfigurálható elemeket tartalmazza.  A minta-irányítópult a Markdown rész beállításai a tartalom, valamint a konfigurálható cím és a felirat egyéni markdown tárolásához.
+A beállítási objektum egy részének a konfigurálható elemeket tartalmazza.  A minta irányítópultján a Markdown-rész beállításai a egyéni markdown-szöveg és a egy konfigurálható cím és alcím tartalom tárolásához.
 
 ```json
 "settings": 
@@ -409,7 +409,7 @@ A beállítási objektum egy részének a konfigurálható elemeket tartalmazza.
 
 ```
 
-Hasonlóképpen a videó csempe rendelkezik, a saját beállításai, amelyek tartalmazzák a videó lejátszása mutató, az automatikus beállítás, és választható szoftvercímre vonatkozó információkon.
+Ehhez hasonlóan a videó csempét a saját beállítások, amelyek tartalmazzák a videó lejátszásához mutató, egy automatikus lejátszás a beállítás és a választható szoftvercímre vonatkozó információkon rendelkezik.
 
 ```json
 "settings": 
@@ -428,7 +428,7 @@ Hasonlóképpen a videó csempe rendelkezik, a saját beállításai, amelyek ta
 
 ```
 
-### <a name="the-asset-object"></a>Az eszköz objektum
-Csempék (más néven eszközök) első kezelhető portál objektumok kötött Ez az eszköz objektum keresztül kifejezett kapcsolatban áll.  A példa irányítópult a virtuális gép csempe a eszköz leírása tartalmazza.  A __idInputName__ tulajdonság tájékoztatja a portálon, hogy az azonosítót bemeneti az adategységhez, ebben az esetben az erőforrás-azonosító egyedi azonosítót tartalmaz. Az Azure erőforrás-típusok a portálon meghatározott eszközök rendelkeznek.
+### <a name="the-asset-object"></a>Az eszközintelligencia-objektum
+Csempék elsőrangú felügyelhető portál objektumot (úgynevezett eszközök) kötött a kifejezett keresztül az eszköz objektum kapcsolattal rendelkeznek.  A virtuális gép csempe példa irányítópulton, az eszköz leírása tartalmazza.  A __idInputName__ tulajdonság arra utasítja a portálon, hogy az azonosító adjon meg egyedi azonosítója az adategységhez, ebben az esetben az erőforrás-azonosítója. A legtöbb Azure-erőforrástípus a portálon meghatározott eszközök rendelkeznek.
 
 `"asset": {    "idInputName": "id",    "type": "VirtualMachine"    }`

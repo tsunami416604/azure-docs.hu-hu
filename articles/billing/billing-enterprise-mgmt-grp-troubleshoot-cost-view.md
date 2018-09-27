@@ -1,6 +1,6 @@
 ---
-title: Azure vállalati költség nézetek hibaelhárítása |} Microsoft Docs
-description: Megtudhatja, hogyan lehetséges, hogy az Azure-portálon belül szervezeti költség nézetekkel kapcsolatos problémák megoldásához.
+title: Azure vállalati költségek nézet hibaelhárítása |} A Microsoft Docs
+description: Megtudhatja, hogyan lehetséges, hogy az Azure Portalon szervezeti költség nézetekkel kapcsolatos problémák megoldásához.
 author: rthorn17
 manager: rithorn
 editor: ''
@@ -11,38 +11,38 @@ ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/22/2017
-ms.author: rithorn
-ms.openlocfilehash: 2a9639103b494e3af54a6a21ed769cf4f7bd6259
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.author: cwatson
+ms.openlocfilehash: 853307f24574e6cea5841bcace815fea2bbcf2c8
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37063192"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47390664"
 ---
-# <a name="troubleshoot-enterprise-cost-views"></a>Nézetek költség vállalati hibaelhárítása 
+# <a name="troubleshoot-enterprise-cost-views"></a>Vállalati költségek nézet hibaelhárítása 
 
-Vállalati regisztrációkat belül beállításokat a rendszer több, amely a felhasználót a regisztráció belül nem tudják megjeleníteni a költségeket.  Ezek a beállítások kezelik a beléptetési rendszergazdája, vagy a partner által a tagság nem vásárolt közvetlenül a Microsofttal.  Ez a cikk segít megérteni a Mik azok a beállítások, és milyen hatással lesznek a regisztrációt. Ezek a beállítások függetlenek a [Azure RBAC-szerepkörök](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal). 
+Vállalati belépéseket, belül több beállítást, amely a felhasználót a regisztrációs belül nem fogja tudni megtekinteni a költségek tartoznak.  Ezek a beállítások kezelik a beléptetés adminisztrátora, vagy a partner által, ha a regisztráció nem vásárolta meg közvetlenül a Microsofttól.  Ezen cikk segítségével megtudhatja, Mik azok a beállítások, és hogy azok hatással a regisztráció. Ezek a beállítások függetlenek a [Azure RBAC-szerepkörök](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal). 
 
 
 ## <a name="enabling-access-to-costs"></a>Költségek való hozzáférés engedélyezése
 
-Ön jelent meg, egy üzenet nem engedélyezett, vagy *"költség nézetek le vannak tiltva a regisztrációs."* Amikor költség információkat keres? ![nem engedélyezett](media/billing-enterprise-mgmt-groups/unauthorized.png)
+Nem engedélyezett, üzenetet látja, vagy *"költség nézetek le vannak tiltva a regisztrációs."* Ha a költségadatok keres? ![nem engedélyezett](media/billing-enterprise-mgmt-groups/unauthorized.png)
 
-Lehet, hogy a következő okok egyikéből adódóan:
+Az alábbi okok egyike miatt lehet:
 
-1. Azure egy vállalati partner keresztül vásárolt, és a partner nem kiadásakor még árképzési. Árképzési feloldásához forduljon a partneréhez belül beállítás frissítése a [vállalati portál](https://ea.azure.com).
-2. Másik lehetőségként Ha az ügyfél egy EA közvetlen, többféle lehetőségeket:
-    * A fiók tulajdonosa és a beléptetési rendszergazda letiltotta a "AO költségek megtekintése" beállítást.  
-    * Szervezeti egység rendszergazdája, és a beléptetési rendszergazda letiltotta a "DA költségek megtekintése" beállítást.
-    * A beléptetési rendszergazdától is elérheti. A beléptetési Admin is keresheti a [vállalati portál](https://ea.azure.com/manage/enrollment) , és frissítse a beállítást, ahogy az képen látható:
+1. Vásárolt Azure enterprise-partneren keresztül, és a partner nem kiadott, még díjszabása. Díjszabás feloldásához forduljon a partneréhez frissíteni a beállítást belül a [az Enterprise portal](https://ea.azure.com).
+2. Azt is megteheti Ha már a közvetlen nagyvállalati szerződéssel rendelkező ügyfelek, van néhány lehetőségeket:
+    * Fiók tulajdonosa, és a beléptetés adminisztrátora letiltotta a "AO költségek megtekintése" beállítást.  
+    * Részleg rendszergazdaként, és a beléptetés adminisztrátora letiltotta a "DA költségek megtekintése" beállítást.
+    * Lépjen kapcsolatba a regisztrációs rendszergazdától kérhet hozzáférést. A regisztrációs adminisztrátoránál keresse fel a [az Enterprise portal](https://ea.azure.com/manage/enrollment) és frissíteni a beállítást, ahogy az képen látható:
 
-![Vállalati portál beállításai](media/billing-enterprise-mgmt-groups/ea-portal-settings.png)
+![A vállalati portál beállításai](media/billing-enterprise-mgmt-groups/ea-portal-settings.png)
 
 
-## <a name="asset-is-unavailable"></a>Nem érhető el az eszköz? 
-Ha azért kapta, egy hibaüzenet "Ez az eszköz nem érhető el" Amikor megpróbál hozzáférni egy előfizetés vagy egy felügyeleti csoportot, majd nincs a megfelelő szerepkör ezen elem megtekintéséhez.  
+## <a name="asset-is-unavailable"></a>Eszköz nem érhető el? 
+Ha kap hibaüzenetet "az eszköz nem érhető el" Amikor megpróbál hozzáférni egy előfizetést vagy felügyeleti csoportot, akkor nem rendelkezik a megfelelő szerepkört ezen elem megtekintéséhez.  
 
-![eszköz nem található](media/billing-enterprise-mgmt-groups/asset-not-found.png)
+![az eszközintelligencia nem található](media/billing-enterprise-mgmt-groups/asset-not-found.png)
 
-Kérje a rendszergazda az előfizetés vagy felügyeleti csoportok hozzáférést.  
-* Előfizetések hivatkozhat [átruházásához hozzáférés-vezérlés (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal) dokumentum segítséget, amelyen a szerepkör szükséges.
+Kérje a rendszergazda hozzáférést az előfizetés vagy a felügyeleti csoportok.  
+* Az előfizetések, hivatkozhat [Azure szerepköralapú hozzáférés-vezérlés (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal) a dokumentum segítséget, amelyen a szerepkör szükséges.

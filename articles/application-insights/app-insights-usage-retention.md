@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 05/03/2017
 ms.author: mbullwin
 ms.openlocfilehash: 6e042034d52551d58e290b54ca3547dedbc89c47
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35645248"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47096938"
 ---
 # <a name="user-retention-analysis-for-web-applications-with-application-insights"></a>Adatmegőrzési felhasználóelemzés webes alkalmazásokhoz az Application insights segítségével
 

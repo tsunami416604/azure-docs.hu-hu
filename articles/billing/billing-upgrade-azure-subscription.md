@@ -15,20 +15,20 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/30/2017
-ms.author: jlian
+ms.author: cwatson
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 089bb6f3fd187a56495dfd353ee89086e6bea120
-ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
+ms.openlocfilehash: 7cb9d8e0f03dc5cb81d68d51be018e79074a32c2
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39124983"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47391299"
 ---
 # <a name="upgrade-your-free-trial-or-microsoft-imagine-azure-subscription-to-pay-as-you-go"></a>Az ingyenes próbaverzióval vagy a Microsoft Imagine Azure-előfizetés frissítése használatalapú fizetésre
 
 Frissítse a [ingyenes próbaverzió](https://azure.microsoft.com/free/) vagy [Microsoft Imagine](https://azure.microsoft.com/offers/ms-azr-0144p/) előfizetés [utólagos elszámolású](https://azure.microsoft.com/offers/ms-azr-0003p/) az Azure Account Center webhelyen.
 
-1. Jelentkezzen be a [Azure Account Center](https://account.windowsazure.com/subscriptions).
+1. Jelentkezzen be az [Azure Fiókközpontba](https://account.windowsazure.com/subscriptions).
 2. Az előfizetés állapota területen válassza ki a **Frissítsen most** szalagcím.
    
     ![Kattintson az ingyenes próbaverzió frissítése használatalapú fizetésre helyét bemutató képernyőkép](./media/billing-upgrade-azure-subscription/billpage.png)

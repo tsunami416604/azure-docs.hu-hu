@@ -7,12 +7,12 @@ ms.service: cognitive-services
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: nolach
-ms.openlocfilehash: 042216d03749273c590ce5ba812f7a6d609f8e83
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 4219878673bbb3560ca13f09eb0fde940b2b17e3
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46987906"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47222760"
 ---
 # <a name="creating-custom-voice-fonts"></a>Egyéni hangtípust létrehozása
 
@@ -25,9 +25,7 @@ Az egy kisebb mennyiségű adatot egy megvalósíthatósági megkezdheti. De min
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A **szöveg-beszéd átalakítás** hangalapú testreszabási funkció jelenleg privát előzetes verzióban érhető el. [Az alkalmazás űrlap kitöltésekor](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR0N8Vcdi8MZBllkZb70o6KdURjRaUzhBVkhUNklCUEMxU0tQMEFPMjVHVi4u) hozzáférés figyelembe kell venni.
-
-Az Azure-fiók és a egy előfizetést a beszédfelismerési szolgáltatás is szükséges. [Hozzon létre egyet](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started) Ha még nem tette. A következő csatlakozzon az előfizetés az egyéni beszédfelismerési portálon.
+Szüksége lesz egy Azure-fiók és a Speech service-előfizetés. [Hozzon létre egyet](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started) Ha még nem tette. A következő csatlakozzon az előfizetés az egyéni beszédfelismerési portálon.
 
 1. Jelentkezzen be a [egyéni beszédfelismerési portál](https://customvoice.ai) hozzáférést alkalmazásához használt ugyanazon Microsoft-fiók használatával.
 
@@ -35,16 +33,13 @@ Az Azure-fiók és a egy előfizetést a beszédfelismerési szolgáltatás is s
 
     ![Előfizetések](media/custom-voice/subscriptions.png)
 
-3. Az "Előfizetések" oldalán válassza a "Csatlakozás meglévő előfizetés".
+3. Az "Előfizetések" oldalán válassza a "Csatlakozás meglévő előfizetés". Vegye figyelembe, hogy beszédszolgáltatások támogatja-e a különböző régiókban. Ellenőrizze a régió, ahol az előfizetési kulcs létrejött, és kapcsolódjon a kulcsot a megfelelő alárendelt portálra.  
 
 4. Az előfizetési kulcs illessze be a táblázat alább látható módon. Minden előfizetési csomaghoz tartozik két kulcsot, és bármelyiket használhatja.
 
      ![Előfizetés hozzáadása](media/custom-voice/add-subscription.png)
 
 Készen áll a go!
-
-> [!IMPORTANT]
-> A privát előzetes szakaszban előfizetések szerepel az engedélyezési listán az egyéni beszédfelismerési szolgáltatás kell lennie. Kövesse az oldalon beolvasni az előfizetés szerepel az engedélyezési listán.
 
 ## <a name="prepare-recordings-and-transcripts"></a>És előkészítése
 
@@ -232,4 +227,4 @@ Hangalapú testreszabási amerikai angol (en-US), a kontinens kínai (zh-CN) és
 ## <a name="next-steps"></a>További lépések
 
 - [Próbaverziós Speech-előfizetés beszerzése](https://azure.microsoft.com/try/cognitive-services/)
-- [A beszédfelismerést a C#-ban](quickstart-csharp-dotnet-windows.md)
+- [Rögzítése a voice-minták](record-custom-voice-samples.md)

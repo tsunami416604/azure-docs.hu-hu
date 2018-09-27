@@ -2,22 +2,22 @@
 title: Monitorozás és teljesítményhangolás – Azure SQL Database |} A Microsoft Docs
 description: Tippek a teljesítmény-finomhangolási az Azure SQL Database révén értékelése és javítása.
 services: sql-database
-author: danimir
-manager: craigg
-editor: ''
-keywords: teljesítmény-finomhangolási, adatbázis teljesítmény-finomhangolási, sql teljesítmény-finomhangolási tippek SQL az sql database teljesítményének hangolása
 ms.service: sql-database
-ms.custom: monitor & tune
+ms.subservice: performance
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 07/16/2018
+author: danimir
 ms.author: v-daljep
 ms.reviewer: carlrab
-ms.openlocfilehash: 0fbb9039eef403f751c03ca183a1485f3a26ae27
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+manager: craigg
+ms.date: 07/16/2018
+ms.openlocfilehash: c79285247950510791ede915fcf0e5373792044f
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45986237"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47165041"
 ---
 # <a name="monitoring-and-performance-tuning"></a>Figyelés és a teljesítmény hangolása
 

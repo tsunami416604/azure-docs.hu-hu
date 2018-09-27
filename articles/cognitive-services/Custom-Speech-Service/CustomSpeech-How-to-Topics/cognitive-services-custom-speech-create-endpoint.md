@@ -1,21 +1,22 @@
 ---
-title: Hozzon létre egy egyéni beszédfelismerési végpontot a Custom Speech Service az Azure-ban |} A Microsoft Docs
-description: Ismerje meg, hogyan hozhat létre egy egyéni hang-szöveg transzformációs végpontot a Cognitive Services Custom Speech Service.
+title: Hozzon létre egy egyéni beszédfelismerési végpont – Custom Speech Service
+titlesuffix: Azure Cognitive Services
+description: Ismerje meg, hogyan hozhat létre egy egyéni hang-szöveg transzformációs végpontot a Custom Speech Service.
 services: cognitive-services
 author: PanosPeriorellis
-manager: onano
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: custom-speech
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/08/2017
 ms.author: panosper
 ROBOTS: NOINDEX
-ms.openlocfilehash: ed93afa8e10fdfbb0d45f4500b4a648716e25e00
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 958e97f708e7c6920bcb0d65d91656fcf00cd71a
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46952222"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47219023"
 ---
 # <a name="create-a-custom-speech-to-text-endpoint"></a>Egyéni beszédfelismerési végpont létrehozása
 Miután létrehozta a testreszabott akusztikai modell vagy nyelvi modell, egy egyéni hang-szöveg transzformációs végpontját telepíthetné őket. 

@@ -1,25 +1,25 @@
 ---
-title: Keresés a weben trendekkel videók |} Microsoft Docs
-description: Bemutatja, hogyan kereshet a weben trendekkel videók a videó Bing keresési API segítségével.
+title: Felkapott videók – a Bing Video Search keresése a weben
+titlesuffix: Azure Cognitive Services
+description: Bemutatja, hogyan felkapott videók keresése a weben a Bing Videókeresési API használatával.
 services: cognitive-services
 author: swhite-msft
-manager: ehansen
-ms.assetid: 897A28A3-0980-484E-814F-FFE1D5C885E6
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-video-search
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/15/2017
 ms.author: scottwhi
-ms.openlocfilehash: 8db7fcf77042631260b4b165bd3d44053827f3ce
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 8a6ccc9ea8cf9468d7638360c9db8131bc6dc5be
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35346895"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47222046"
 ---
-# <a name="get-trending-videos"></a>Trendekkel videók beolvasása  
+# <a name="get-trending-videos"></a>Népszerű videók lekérése  
 
-Ahhoz, hogy az aktuális trendekkel videók, a következő GET kérés küldése:  
+A mai felkapott videók lekéréséhez a következő GET kérelmet küldeni:  
   
 ```
 GET https://api.cognitive.microsoft.com/bing/v7.0/videos/trending?mkt=en-us HTTP/1.1
@@ -31,24 +31,24 @@ X-MSEdge-ClientID: <blobFromPriorResponseGoesHere>
 Host: api.cognitive.microsoft.com  
 ```
 
-A következő piacok trendekkel videók támogatja.  
+A következő piacok felkapott videók támogatja.  
  
--   en-AU (angol nyelvű, Ausztrália)  
--   en-hitelesítésszolgáltató (angol nyelvű, Kanada)  
--   en-GB (angol nyelvű, hazai)  
--   en-azonosító (angol nyelvű, indonéziai)  
--   en-IE (angol nyelvű, Írországban)  
--   en-IN (angol nyelvű, India)  
--   en-NZ (angol nyelvű, Új-Zéland)  
--   en-PH (angol nyelvű, Fülöp-szigeteki)  
--   en-SG (angol nyelvű, szingapúri)  
--   en-US (angol nyelvű, az Amerikai Egyesült Államok)  
--   en-hh (angol, Worldwide oldalon találhatóak összesített kód)  
--   en-ZA (angol nyelvű, Dél-afrikai)  
+-   en-Ausztrália (angol nyelven, Ausztrália)  
+-   en-hitelesítésszolgáltató (angol nyelven, Kanada)  
+-   en-GB (angol nyelven, Nagy-Britannia)  
+-   en-azonosító (angol nyelven, Indonézia)  
+-   en – IE (angol nyelven, Írország)  
+-   en-IN (angol nyelven, India)  
+-   en-NZ (angol nyelven, Új-Zéland)  
+-   en-PH (angol nyelven, Fülöp-szigetek)  
+-   en-SG (angol nyelven, Szingapúr)  
+-   en-US (angol nyelven, Egyesült Államok)  
+-   en-WW (angol nyelven, Worldwide oldalon találhatóak összesített kód)  
+-   en-ZA (angol nyelven, Dél-Afrika)  
 -   zh-CN (kínai, Kína)
 
   
-A következő példa bemutatja egy választ, amely trendekkel videók tartalmazza.  
+Az alábbi példa bemutatja egy választ, amely tartalmazza a felkapott videók.  
 
 ```  
 {  
@@ -113,7 +113,7 @@ A következő példa bemutatja egy választ, amely trendekkel videók tartalmazz
 }  
   
 ```  
-A válasz kategória és alkategória videók listáját tartalmazza. Például ha kategóriák listája tartalmazott zene videók kategóriát, és egy alkategóriáját felső volt, létrehozhat egy felső zene videók kategóriát a felhasználói élményt nyújt. Ezután használhatja a `thumbnailUrl`, `displayText`, és `webSearchUrl` mezők egy kattintható csempe kategóriákban (például felső zene videók) létrehozásához. Amikor a felhasználó a csempére kattint, azok még fordítani Bing a videó böngésző ahol a videó lejátszása.
+A válasz tartalmazza a videók kategória és alkategória szerint. Például ha a kategóriák listájában szereplő zene videók kategóriát, és egyik alkategóriája felső volt, létrehozhat egy felső zene videók kategóriát a felhasználói élmény. Ezután használhatja a `thumbnailUrl`, `displayText`, és `webSearchUrl` mezők minden kategóriában (például felső zene videók) kattintható tartalmazó csempe létrehozása. Amikor a felhasználó a csempére kattint, akkor átkerül Bing video böngésző, a videó lejátszás.
 
-A válasz a szalagcím videók, amelyek a legnépszerűbb trendekkel videók is tartalmaz. A szalagcím videókhoz, amelyeket a kategóriák közül legalább egyet származhatnak.  
+A válasz a szalagcím videók, amelyek a legnépszerűbb felkapott videókat is tartalmaz. A szalagcím videók származhatnak a kategóriák közül legalább egyet.  
   

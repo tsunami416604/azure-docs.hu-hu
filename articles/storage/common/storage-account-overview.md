@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 09/13/2018
 ms.author: tamram
 ms.component: common
-ms.openlocfilehash: b942b85c954bb765833426f3f9a010a66f016a90
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 7b2d51f356538724d567654c0de3decbf19c838c
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46972317"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47222097"
 ---
 # <a name="azure-storage-account-overview"></a>Az Azure storage-fiókok áttekintése
 
@@ -57,7 +57,7 @@ A következő táblázat a tárfiókok típusait és azok képességeinek:
 
 A Microsoft azt javasolja, általános célú v2-tárfiókok használata a legtöbb forgatókönyvhöz. Könnyedén frissíthet egy általános célú v1- vagy Blob storage-fiók egy általános célú v2 fiók nincs állásidő és alkalmazás újraírások, és nincs szükség az adatok másolásához. Általános célú v2 fiókra frissítésével kapcsolatos további információkért lásd: [frissítsen egy általános célú v2-tárfiók](storage-account-upgrade.md). 
 
-Általános célú v2-tárfiókok ajánlat több elérési szint a használati minták alapján adatainak tárolásához. További információkért lásd: [elérési szint a Blobadatok](#access-tiers-for-blob-data).
+Általános célú v2-tárfiókok ajánlat több elérési szint a használati minták alapján adatainak tárolásához. További információkért lásd: [elérési szint a block blob adatok](#access-tiers-for-block-blob-data).
 
 ### <a name="general-purpose-v1-accounts"></a>Általános célú v1-fiókok
 
@@ -81,7 +81,7 @@ Míg az általános célú v2-fiókok a legtöbb esetben ajánlott, általános 
 
 Blob storage-fiók egy specializált tárfiók blokkblobok formájában strukturálatlan adatok tárolására. BLOB storage-fiókok azonos tartósságot, rendelkezésre állási, méretezhetőségi és teljesítménnyel kapcsolatos szolgáltatások, az általános célú v2-tárfiókok tartalmazó adja meg. BLOB storage-fiókok tárolását blokkblobokat támogatja, és a hozzáfűző blobokat, de a lapblobokat nem.
 
-BLOB storage-fiókok ajánlat több elérési szint a használati minták alapján adatainak tárolásához. További információkért lásd: [elérési szint a Blobadatok](#access-tiers-for-blob-data).
+BLOB storage-fiókok ajánlat több elérési szint a használati minták alapján adatainak tárolásához. További információkért lásd: [elérési szint a block blob adatok](#access-tiers-for-block-blob-data).
 
 ## <a name="naming-storage-accounts"></a>Tárfiókok elnevezési
 

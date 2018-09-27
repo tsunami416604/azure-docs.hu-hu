@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/05/2017
+ms.date: 09/24/2018
 ms.author: tomfitz
-ms.openlocfilehash: cdc8222675a9f0099edccb24310bcea03bf963f4
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.openlocfilehash: e0269e17a419c6b611d72a7d00668fe9c9519894
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37929677"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47166183"
 ---
 # <a name="array-and-object-functions-for-azure-resource-manager-templates"></a>Az Azure Resource Manager-sablonok tömb- és objektumfüggvények 
 
@@ -35,7 +35,7 @@ A Resource Manager-tömbök és objektumok használata a számos funkciót bizto
 * [Metszet](#intersection)
 * [json](#json)
 * [utolsó](#last)
-* [hossza](#length)
+* [Hossza](#length)
 * [max](#max)
 * [Min](#min)
 * [range](#range)
@@ -738,6 +738,10 @@ Egy JSON-objektumot ad vissza.
 
 A megadott karakterlánc a JSON-objektum, vagy egy üres objektum amikor **null** van megadva.
 
+### <a name="remarks"></a>Megjegyzések
+
+Ha egy paraméter értéke vagy a változó tartalmazza a JSON-objektumban van szüksége, használja a [concat](resource-group-template-functions-string.md#concat) függvény létrehozása a karakterlánc, amely a függvénynek adja át.
+
 ### <a name="example"></a>Példa
 
 A következő [példasablonja](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/json.json) mutatja be a json-függvény használata a tömbök vagy objektumok:
@@ -746,6 +750,12 @@ A következő [példasablonja](https://github.com/Azure/azure-docs-json-samples/
 {
     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
+    "parameters": {
+        "testValue": {
+            "type": "string",
+            "defaultValue": "demo value"
+        }
+    },
     "resources": [
     ],
     "outputs": {
@@ -756,6 +766,10 @@ A következő [példasablonja](https://github.com/Azure/azure-docs-json-samples/
         "nullOutput": {
             "type": "bool",
             "value": "[empty(json('null'))]"
+        },
+        "paramOutput": {
+            "type": "object",
+            "value": "[json(concat('{\"a\": \"', parameters('testValue'), '\"}'))]"
         }
     }
 }
@@ -767,6 +781,7 @@ Az alapértelmezett értékeket az előző példa kimenete a következő:
 | ---- | ---- | ----- |
 | jsonOutput | Objektum | {"a": "b"} |
 | nullOutput | Logikai | True (Igaz) |
+| paramOutput | Objektum | {"a": "értékét bemutató"}
 
 Az Azure CLI-vel ebben a példában sablon üzembe helyezéséhez használja:
 
@@ -847,7 +862,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 <a id="length" />
 
-## <a name="length"></a>hossza
+## <a name="length"></a>Hossza
 `length(arg1)`
 
 Egy tömb vagy karakterlánc karaktereinek az elemek számát adja vissza.
@@ -1058,7 +1073,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 <a id="range" />
 
-## <a name="range"></a>címtartomány
+## <a name="range"></a>Címtartomány
 `range(startingInteger, numberOfElements)`
 
 Egy egész indítása és számos elemet tartalmazó egész számok tömbje hoz létre.
@@ -1122,7 +1137,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 <a id="skip" />
 
-## <a name="skip"></a>Kihagyás
+## <a name="skip"></a>kihagyás
 `skip(originalValue, numberToSkip)`
 
 A tömb a megadott szám után elemeket tömböt ad vissza, vagy az összes karakter karakterláncot ad vissza. a karakterlánc a megadott szám után.

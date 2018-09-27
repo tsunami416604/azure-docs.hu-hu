@@ -2,21 +2,22 @@
 title: Az Azure SQL Database felügyelt példány – áttekintés |} A Microsoft Docs
 description: Ez a témakör ismerteti az Azure SQL Database felügyelt példányába, és azt ismerteti, hogyan működik, és hogyan eltér az Azure SQL Database egy adatbázis.
 services: sql-database
-author: bonova
-ms.reviewer: carlrab
-manager: craigg
 ms.service: sql-database
 ms.subservice: managed-instance
-ms.custom: DBs & servers
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 09/14/2018
+author: bonova
 ms.author: bonova
-ms.openlocfilehash: 711a076409ed1d90c197bbf97a6e15144c0a4d38
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.reviewer: carlrab
+manager: craigg
+ms.date: 09/26/2018
+ms.openlocfilehash: 626dd362248027831c78d1505662ca12d2ff334d
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46956625"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47392822"
 ---
 # <a name="what-is-a-managed-instance"></a>Mi a felügyelt példány?
 
@@ -205,7 +206,10 @@ A felügyelt példány céljainak felhasználói esetek tömeges adatbázis átt
 A migrálási megközelítés használ az SQL biztonsági másolatokat az Azure blob storage. Az Azure storage-blobban tárolt biztonsági másolatok közvetlenül állíthatók be a felügyelt példány használatával az [T-SQL RESTORE parancsot](https://docs.microsoft.com/sql/t-sql/statements/restore-statements-transact-sql?view=azuresqldb-mi-current). 
   - A rövid útmutató, amely visszaállítása a Wide World Importers – Standard adatbázis biztonsági másolatát, lásd: [visszaállítása biztonsági másolatból egy felügyelt példányon](sql-database-managed-instance-get-started-restore.md). A rövid útmutató bemutatja, hogy a biztonsági mentési fájl feltöltése az Azure-blog storage és a biztonságos, egy közös hozzáférési jogosultságkód (SAS) kulccsal rendelkezik.
   - URL-címről visszaállítási kapcsolatos információkért lásd: [natív VISSZAÁLLÍTÁSA URL-címről](sql-database-managed-instance-migrate.md#native-restore-from-url).
-  
+
+> [!IMPORTANT]
+> Felügyelt példány biztonsági mentések csak állítható vissza egy másik, a felügyelt példányhoz. Ezek nem állítható vissza egy helyszíni SQL Server vagy egy Azure SQL Database logikai kiszolgálón egyetlen vagy készletezett adatbázis.
+
 ### <a name="data-migration-service"></a>Data Migration Service
 
 Az Azure Database Migration Service egy teljes körűen felügyelt szolgáltatás, amely lehetővé teszi a zökkenőmentes migrálást a több adatbázis-forrásokhoz, az Azure-adatplatformokra minimális állásidővel. Ez a szolgáltatás leegyszerűsíti a meglévő harmadik féltől származó és az SQL Server-adatbázisok áthelyezése az Azure-bA szükséges feladatok. Üzembe helyezési lehetőségek az Azure SQL Database felügyelt példány és az SQL Server Azure-beli virtuális gépen a nyilvános előzetes verzióban. Lásd: [a helyszíni adatbázis Migrálása a felügyelt példány DMS használatával](https://aka.ms/migratetoMIusingDMS).
@@ -233,7 +237,7 @@ Felügyelt példány előnyei nem mindig felfelé-elejétől számított a felh�
 
 ### <a name="managed-instance-administration-features"></a>Felügyelt példány felügyeleti funkciók  
 
-A felügyelt példány engedélyezése rendszergazdák számára, hogy vállalati a legfontosabb dolgokra koncentrálni. Sok rendszergazda/DBA rendszertevékenységek nem szükségesek, vagy egyszerű. Ha például az operációs rendszer / relációsadatbázis-kezelő rendszer telepítési és javítása, a dinamikus példány, átméretezése és a konfiguráció, a biztonsági mentés, a adatbázis-replikáció (rendszeradatbázisok), a magas rendelkezésre állású konfiguráció vagy a konfigurációs állapotának és teljesítményének a figyelése adatokat, Streamek. 
+A felügyelt példány engedélyezése rendszergazdák számára, hogy vállalati a legfontosabb dolgokra koncentrálni. Sok rendszergazda/DBA rendszertevékenységek nem szükségesek, vagy egyszerű. Ha például az operációs rendszer / relációsadatbázis-kezelő rendszer telepítési és javítása, a dinamikus példány, átméretezése és a konfiguráció, a biztonsági mentések [adatbázis-replikáció](replication-with-sql-database-managed-instance.md) (beleértve a rendszeradatbázisok), magas rendelkezésre állású, és rendszerállapot-konfigurációt és alkalmazásteljesítmény-figyelés adatfolyamokat. 
 
 > [!IMPORTANT]
 > Támogatott, részlegesen támogatott és nem támogatott funkciók listáját lásd: [SQL Database funkciói](sql-database-features.md). Felügyelt példány az SQL Server és a T-SQL különbségek listája: [felügyelt példány T-SQL eltérései az SQL Serverről](sql-database-managed-instance-transact-sql-information.md)

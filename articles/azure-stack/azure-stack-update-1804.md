@@ -3,7 +3,7 @@ title: Az Azure Stack 1804 frissítés |} A Microsoft Docs
 description: 'További tudnivalók: Mi az az Azure Stack 1804 frissítés integrált rendszerek, az ismert problémák és hová töltse le a frissítést.'
 services: azure-stack
 documentationcenter: ''
-author: brenduns
+author: sethmanheim
 manager: femila
 editor: ''
 ms.assetid: ''
@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/01/2018
-ms.author: brenduns
+ms.date: 09/26/2018
+ms.author: sethm
 ms.reviewer: justini
-ms.openlocfilehash: 0190298cbf6352feeb71e365f5815e174c9e30cc
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: 16f12d8119a14e668a7502d99fa2d9c976d23833
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39413516"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47393519"
 ---
 # <a name="azure-stack-1804-update"></a>Azure Stack 1804 frissítése
 
@@ -56,7 +56,7 @@ Ez a frissítés az Azure Stack a következő fejlesztéseket tartalmazza.
 
 
 
-## <a name="fixed-issues"></a>Rögzített kapcsolatos problémák
+## <a name="fixed-issues"></a>Hibák kijavítva:
 
 - <!-- IS, ASDK -->  A felügyeleti portálon már nem rendelkezik a frissítés csempe frissítése előtt adatait jeleníti meg.
  
@@ -102,6 +102,9 @@ A következő érhető el, azonban nem igénylik az Azure Stack frissítés 1804
 Az alábbiakban a telepítés utáni ismert problémái build **20180513.1**.
 
 #### <a name="portal"></a>Portál
+
+- Az Azure Stack technikai dokumentáció a legfrissebb kiadás összpontosít. Portál változások között, mert megjelenő használata az Azure Stack portálok kissé eltérhetnek a dokumentációban talál. 
+
 - <!-- TBD - IS ASDK --> Illesztőprogram-frissítések nem alkalmazhat egy OEM-kiterjesztési csomag segítségével az Azure Stack jelen verziójában.  Nem áll megkerülő megoldás a probléma.
 
 - <!-- 1272111 - IS --> Az Azure Stack erre a verzióra frissítése vagy telepítése után nem feltétlenül tudja megtekinteni az Azure Stack skálázási egységek a felügyeleti portálon.  

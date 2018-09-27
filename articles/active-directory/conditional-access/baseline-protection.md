@@ -17,12 +17,12 @@ ms.workload: identity
 ms.date: 08/08/2018
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: 57fef112186834ead76f6223e32cb358e4d6d053
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: ef2b5dd393974ddf700235991b60ec66031e34c2
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44024073"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47222267"
 ---
 # <a name="what-is-baseline-protection-preview"></a>Mi az alapvető védelmet (előzetes verzió)?  
 
@@ -56,7 +56,7 @@ Ez a alapvető házirend biztosít arra, hogy felhasználók és csoportok kizá
 
 ## <a name="enable-a-baseline-policy"></a>Egy alapkonfiguráció házirend engedélyezése 
 
-Alapkonfiguráció szabályzatok vannak előzetes verzióban érhető el, amíg nincs aktiválva alapértelmezés szerint vannak. A szabályzatot manuálisan engedélyezze, ha szeretné aktiválni kell. Amint ez a szolgáltatás elérte a általánosan elérhető, házirend-beállítások aktiválva alapértelmezés szerint. A tervezett viselkedést változás, miért van továbbá, hogy aktiválják vagy inaktiválják egy harmadik lehetőség egy szabályzat állapotának beállításához az OK: **szabályzat automatikus engedélyezés a jövőben**. A beállítás bejelölésével engedélyezi a Microsoft dönt egy házirendet aktiválja.      
+Alapkonfiguráció szabályzatok vannak előzetes verzióban érhető el, amíg nincs aktiválva alapértelmezés szerint vannak. A szabályzatot manuálisan engedélyezze, ha szeretné aktiválni kell. Ha explicit módon engedélyezi a referenciakonfiguráció-házirendeket az előnézeti szakaszban, azok aktív marad, ha ez a funkció eléri elérhetőség. A tervezett viselkedést módosítás okát miért, továbbá hogy aktiválják vagy inaktiválják, van egy harmadik lehetőség egy szabályzat állapotának beállításához: **szabályzat automatikus engedélyezés a jövőben**. Ez a beállítás kiválasztásával hagyja meg a házirend le van tiltva az előzetes verzióban, de van a Microsoft automatikusan engedélyezheti őket, amikor ez a funkció eléri elérhetőség. Ha nem kifejezetten engedélyezi a referenciakonfiguráció házirendek most, és ne jelölje be a **szabályzat automatikus engedélyezés a jövőben** lehetőségnél a házirendek letiltott állapotban maradnak amikor ez a funkció eléri elérhetőség.
 
 
 **Egy alapkonfiguráció-házirend engedélyezése:**  

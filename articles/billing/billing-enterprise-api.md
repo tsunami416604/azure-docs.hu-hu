@@ -14,19 +14,19 @@ ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: billing
 ms.date: 04/25/2017
-ms.author: aedwin
-ms.openlocfilehash: b67e6202c470be46b3100c06e503c05415371c6e
-ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
+ms.author: erikre
+ms.openlocfilehash: 7cc5b0cb12e806b0946ce421e7ee6daa4de76afa
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42920476"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47390596"
 ---
 # <a name="overview-of-reporting-apis-for-enterprise-customers"></a>A vállalati ügyfelek a Reporting API-k áttekintése
 A Reporting API-k engedélyezése a nagyvállalati Azure-ügyfelek használati és számlázási adatok programozott módon lekérni az előnyben részesített adatok elemzésére szolgáló eszközöket. A vállalati felhasználók regisztráltak- [nagyvállalati szerződés (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/) az Azure-ral az egyeztetett pénzügyi kötelezettségvállalások és egyéni díjszabás az Azure-erőforrásokhoz való hozzáférést.
 
 > [!div class="nextstepaction"]
-> [Segítheti az Azure számlázási docs](https://go.microsoft.com/fwlink/p/?linkid=2010091)
+> [Segítsen az Azure számlázási dokumentumok fejlesztésében](https://go.microsoft.com/fwlink/p/?linkid=2010091)
 
 ## <a name="enabling-data-access-to-the-api"></a>Adatelérési API engedélyezése
 * **Hozza létre, vagy kérje le az API-kulcsot** -jelentkezzen be a vállalati portált, és keresse meg a jelentéseket > használati adatok letöltése > API hozzáférési kulcsa létrehozni vagy beolvasni az API-kulcsot.

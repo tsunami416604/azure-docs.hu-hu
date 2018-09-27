@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/24/2017
 ms.author: jdial
-ms.openlocfilehash: 78578197c5f764c8e197d3426506cb1eb13b838f
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 110b97cdb4de6e866ac8ce17a1f05d0231ff5071
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46956796"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47221599"
 ---
 # <a name="create-change-or-delete-a-network-interface"></a>Létrehozása, módosítása vagy egy hálózati adapter törlése
 
@@ -88,7 +88,7 @@ Megtekintheti és módosíthatja egy hálózati adapter beállításait a legtö
     - **Tulajdonságok:** jeleníti meg a hálózati adaptert, beleértve a MAC-cím (Ha egy virtuális géphez csatlakoztatott hálózati adapter nem üres), és az előfizetés meglévő kapcsolatos beállítások kulcs.
     - **Érvényes biztonsági szabályok:** biztonsági szabályok láthatók, ha egy futó virtuális géphez csatlakoztatott hálózati adapter van, és a egy NSG-t hozzárendelik a hálózati adaptert, az alhálózathoz van hozzárendelve, vagy mindkét. Mi jelenjen meg kapcsolatos további információkért lásd: [érvényes biztonsági szabályok megtekintése](#view-effective-security-rules). NSG-kkel kapcsolatos további információkért lásd: [hálózati biztonsági csoportok](security-overview.md).
     - **Érvényes útvonalak:** útvonalak láthatók, ha egy futó virtuális géphez csatlakoztatott hálózati adapter van. Az útvonalak az Azure alapértelmezett útvonalakat, minden olyan felhasználó által megadott útvonalak és minden BGP-útvonalak, előfordulhat, hogy a hálózati adapter van rendelve az alhálózat létezik kombinációját is. Mi jelenjen meg kapcsolatos további információkért lásd: [érvényes útvonalak megtekintése](#view-effective-routes). Az Azure alapértelmezett útvonalakat és a felhasználó által megadott útvonalakkal kapcsolatos további tudnivalókért lásd: [Útválasztás áttekintése](virtual-networks-udr-overview.md).
-    - **Közös Azure Resource Manager-beállítások:** gyakori Azure Resource Manager-beállításokkal kapcsolatos további tudnivalókért lásd: [tevékenységnapló](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#activity-logs), [hozzáférés-vezérlés (IAM)](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#access-control), [címkék](../azure-resource-manager/resource-group-using-tags.md?toc=%2fazure%2fvirtual-network%2ftoc.json), [Zárolja](../azure-resource-manager/resource-group-lock-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json), és [Automation-szkript](../azure-resource-manager/resource-manager-export-template.md?toc=%2fazure%2fvirtual-network%2ftoc.json#export-the-template-from-resource-group).
+    - **Közös Azure Resource Manager-beállítások:** gyakori Azure Resource Manager-beállításokkal kapcsolatos további tudnivalókért lásd: [tevékenységnapló](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md), [hozzáférés-vezérlés (IAM)](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#access-control), [címkék](../azure-resource-manager/resource-group-using-tags.md?toc=%2fazure%2fvirtual-network%2ftoc.json), [Zárolja](../azure-resource-manager/resource-group-lock-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json), és [Automation-szkript](../azure-resource-manager/resource-manager-export-template.md?toc=%2fazure%2fvirtual-network%2ftoc.json#export-the-template-from-resource-group).
 
 <a name="view-settings-commands"></a>**Parancsok**
 

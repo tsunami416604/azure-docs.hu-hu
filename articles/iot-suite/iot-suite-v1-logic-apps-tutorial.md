@@ -1,12 +1,12 @@
 ---
-title: "Az Azure IoT Suite és a Logic Apps |} Microsoft Docs"
-description: "Egy útmutatót a Logic Apps alkalmazásokat Azure IoT Suite bekötése üzleti folyamat a."
-services: 
+title: Az Azure IoT Suite és Logic Apps |} A Microsoft Docs
+description: Hogyan kell kapcsolni a Logic Apps az Azure IoT Suite, az üzleti folyamatok oktatóanyagot.
+services: ''
 suite: iot-suite
-documentationcenter: 
+documentationcenter: ''
 author: dominicbetts
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 4629a7af-56ca-4b21-a769-5fa18bc3ab07
 ms.service: iot-suite
 ms.devlang: na
@@ -16,41 +16,42 @@ ms.workload: na
 ms.date: 11/02/2017
 ms.author: corywink
 ms.openlocfilehash: 4a1db86f4b715533dfea545365eaf66de0574c5e
-ms.sourcegitcommit: f67f0bda9a7bb0b67e9706c0eb78c71ed745ed1d
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2017
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47106852"
 ---
-# <a name="tutorial-connect-logic-app-to-your-azure-iot-suite-remote-monitoring-preconfigured-solution"></a>Oktatóanyag: Logikai alkalmazás csatlakoztatása az Azure IoT Suite távoli megfigyelési előre konfigurált megoldás
-A [Microsoft Azure IoT Suite] [ lnk-internetofthings] távoli felügyeleti előkonfigurált megoldás használatának gyors megkezdése egy végpont készlet, amely egy IoT-megoldás exemplifies remek módja van. Ez az oktatóanyag bemutatja, hogyan logikai alkalmazás felvétele a Microsoft Azure IoT Suite távoli felügyeleti előkonfigurált megoldás. A lépések bemutatják, hogyan készíthet az IoT-megoldásból még tovább csatlakozva üzleti folyamatokat.
+# <a name="tutorial-connect-logic-app-to-your-azure-iot-suite-remote-monitoring-preconfigured-solution"></a>Oktatóanyag: Logikai alkalmazás csatlakoztatása az Azure IoT Suite távoli figyelési előre konfigurált megoldás
+A [Microsoft Azure IoT Suite] [ lnk-internetofthings] távoli figyelési előre konfigurált megoldás van egy nagyszerű mód arra, hogy egy teljes körű funkciókészletet, amely exemplifies IoT-megoldás használatának gyors megkezdése. Ez az oktatóanyag végigvezeti a logikai alkalmazás hozzáadása a Microsoft Azure IoT Suite távoli figyelési előre konfigurált megoldás. Ezeket a lépéseket mutatják be, hogyan elvégezhető az IoT-megoldás is egy üzleti folyamat csatlakozással.
 
-*Ha egy távoli megfigyelési előre konfigurált megoldás kiépítését általános bemutató keres, tekintse meg [oktatóanyag: Megismerkedés a előre konfigurált IoT-megoldások][lnk-getstarted].*
+*Ha a távoli figyelési előre konfigurált megoldás üzembe helyezni egy általános bemutató keres, tekintse meg [oktatóanyag: Ismerkedés az IoT előre konfigurált megoldások][lnk-getstarted].*
 
-Ez az oktatóanyag megkezdése előtt a következőket:
+Ebben az oktatóanyagban a Kezdés előtt a következőket kell tennie:
 
-* A távoli Azure-előfizetése figyelési előre konfigurált megoldás kiépítéséhez.
-* Ahhoz, hogy küldjön egy e-mailt, amely az üzleti folyamat elindítja a SendGrid-fiók létrehozása. Regisztrálhat egy ingyenes próbafiók, a [SendGrid](https://sendgrid.com/) kattintva **próbálja szabad**. A próbafiókot regisztrálása után kell létrehoznia egy [API-kulcs](https://sendgrid.com/docs/User_Guide/Settings/api_keys.html) a SendGrid, amely engedélyt ad az e-mailek küldését. Az oktatóanyag későbbi részében szüksége az API-kulcs.
+* Az Azure-előfizetésben a távoli figyelési előre konfigurált megoldás üzembe helyezése.
+* Ahhoz, hogy az üzleti folyamat aktiválása e-mail küldése a SendGrid-fiók létrehozása. Regisztrálhat egy ingyenes próbafiókot, [SendGrid](https://sendgrid.com/) kattintva **próbálja ki ingyenesen**. Az ingyenes próbaverziós fiókját a regisztrálása után kell létrehoznia egy [API-kulcs](https://sendgrid.com/docs/User_Guide/Settings/api_keys.html) a SendGrid, amely engedélyt e-mailek küldésére. Az oktatóanyag későbbi részében szüksége az API-kulcs.
 
-Az oktatóanyag teljesítéséhez szüksége van a Visual Studio 2015-öt vagy a Visual Studio 2017 az előkonfigurált megoldás háttérbeli műveletek módosítását.
+Az oktatóanyag elvégzéséhez szüksége van Visual Studio 2015 vagy Visual Studio 2017 az előre konfigurált megoldás háttérrendszere a műveletek módosítását.
 
-Feltéve, hogy már megtörtént a távoli figyelésének előre konfigurált megoldást, keresse meg az adott megoldáshoz tartozó erőforráscsoport a [Azure-portálon][lnk-azureportal]. Az erőforráscsoport neve megegyezik a megoldás neve rendelkezik úgy döntött, hogy amikor a távoli felügyeleti megoldás létesített. Az erőforráscsoportot megjelenik a megoldás összes kiépített Azure-erőforrásokat. Az alábbi képernyőfelvételen szereplő példán látható **erőforráscsoport** egy távoli figyelés panel előre konfigurált megoldást:
+Feltételezve, hogy már kiépített távoli figyelési előre konfigurált megoldást, keresse meg az erőforráscsoportot, a megoldás a [az Azure portal][lnk-azureportal]. Az erőforráscsoport neve megegyezik a megoldás nevét azt választotta, amikor a távoli figyelési megoldásban üzembe helyezett. Az erőforráscsoport a megoldáshoz, láthatja az összes kiépített Azure-erőforrásokat. Az alábbi képernyőfelvételen szereplő példán látható **erőforráscsoport** paneljén a távoli figyelési előre konfigurált megoldás:
 
 ![](media/iot-suite-v1-logic-apps-tutorial/resourcegroup.png)
 
-Első lépésként állítsa be a logikai alkalmazást az előkonfigurált megoldás használandó.
+Első lépésként állítsa be a logikai alkalmazás az előre konfigurált megoldás használata.
 
 ## <a name="set-up-the-logic-app"></a>A logikai alkalmazás beállítása
-1. Kattintson a **Hozzáadás** tetején található az erőforráscsoport panel az Azure portálon.
-2. Keresse meg **logikai alkalmazás**, válassza ki azt, és kattintson a **létrehozása**.
-3. Töltse ki a **neve** és ugyanazon **előfizetés** és **erőforráscsoport** használja, ha a távoli felügyeleti megoldás létesített. Kattintson a **Create** (Létrehozás) gombra.
+1. Kattintson a **Hozzáadás** tetején található az erőforráscsoport paneljét az Azure Portalon.
+2. Keresse meg **logikai alkalmazás**, válassza ki, majd kattintson **létrehozás**.
+3. Töltse ki a **neve** és ugyanaz, mint **előfizetés** és **erőforráscsoport** , a távoli figyelési megoldás üzembe helyezésekor használt. Kattintson a **Create** (Létrehozás) gombra.
    
     ![](media/iot-suite-v1-logic-apps-tutorial/createlogicapp.png)
-4. A telepítés befejeződése után megtekintheti a logikai alkalmazás szerepel az erőforráscsoportban erőforrásként.
-5. Kattintson a lehetőségre, és navigáljon a Logic App panelen válassza ki a logikai alkalmazást a **üres logikai alkalmazás** sablon megnyitásához az **Logic Apps Designer**.
+4. A telepítés befejezését követően megjelenik a logikai alkalmazás szerepel a listán az erőforráscsoportban erőforrásként.
+5. Kattintson a logikai alkalmazást, nyissa meg a logikai alkalmazás panelen válassza ki a **üres logikai alkalmazás** sablon megnyitásához a **Logic Apps Designerben**.
    
     ![](media/iot-suite-v1-logic-apps-tutorial/logicappsdesigner.png)
-6. Válassza ki **kérelem**. Ez a művelet határozza meg, hogy egy adott JSON azonosítójú bejövő HTTP-kérelem hasznos tevékenységéért formázva eseményindítót.
-7. A kérelem törzsében JSON-séma illessze be a következő kódot:
+6. Válassza ki **kérelem**. Ez a művelet meghatározza, hogy egy bejövő HTTP-kérelem egy adott JSON formátumú-e eseményindítóként hasznos működik.
+7. Illessze be a kérelem törzsében JSON-sémája a következő kódot:
    
     ```json
     {
@@ -80,40 +81,40 @@ Első lépésként állítsa be a logikai alkalmazást az előkonfigurált megol
     ```
    
    > [!NOTE]
-   > Másolhatja az URL-cím a HTTP POST után a logikai alkalmazás menti, de először fel kell venni egy műveletet.
+   > A HTTP post URL-Címének után a logikai alkalmazás mentette, de először fel kell venni egy műveletet is másolhatja.
    > 
    > 
-8. Kattintson a **+ új lépés** a kézi indítási alatt. Kattintson a **művelet hozzáadása**.
+8. Kattintson a **+ új lépés** a manuális eseményindító. Kattintson a **művelet hozzáadása**.
    
     ![](media/iot-suite-v1-logic-apps-tutorial/logicappcode.png)
-9. Keresse meg **SendGrid - e-mail küldése** , és kattintson rá.
+9. Keresse meg **– e-mail küldése a SendGrid** , és kattintson rá.
    
     ![](media/iot-suite-v1-logic-apps-tutorial/logicappaction.png)
-10. Írjon be egy nevet a kapcsolathoz, például **SendGridConnection**, adja meg a **SendGrid API-kulcs** alapteljesítményhez képest, a SendGrid fiók beállítását, majd kattintson az **létrehozása**.
+10. Adjon meg egy nevet a kapcsolathoz, például **SendGridConnection**, adja meg a **SendGrid API-kulcs** SendGrid-fiók, és kattintson a létrehozott **létrehozás**.
     
     ![](media/iot-suite-v1-logic-apps-tutorial/sendgridconnection.png)
-11. Saját mindkettőnek e-mail címek hozzáadása a **a** és **való** mezőket. Adja hozzá **távoli figyelési figyelmeztetés [DeviceId]** számára a **tulajdonos** mező. Az a **E-mail törzsének** mezőbe hozzáadása **[DeviceId] jelzett [measurementName] [measuredValue] értékű.** Hozzáadhat **[DeviceId]**, **[measurementName]**, és **[measuredValue]** elemre kattintva a **adatok beszúrásához előző lépéseiből** szakasz.
+11. A saját, mindkét e-mail-címek hozzáadása a **a** és **való** mezőket. Adjon hozzá **távoli figyelési riasztás [DeviceId]** , a **tulajdonos** mező. Az a **E-mail törzse** adja hozzá **eszköz [DeviceId] [measurementName] jelentett [measuredValue] értékkel.** Hozzáadhat **[DeviceId]**, **[measurementName]**, és **[measuredValue]** parancsra kattintva a **szúr be adatokat az előző lépésekből** a szakasz.
     
     ![](media/iot-suite-v1-logic-apps-tutorial/sendgridaction.png)
 12. Kattintson a **mentése** a felső menüben.
-13. Kattintson a **kérelem** eseményindító, és másolja a **az URL-címet a Http Post** érték. Az oktatóanyag későbbi részében szüksége az URL-cím.
+13. Kattintson a **kérelem** eseményindító, és másolja a **Http Post ezen URL-címen** értéket. Az URL-címet az oktatóanyag későbbi részében szüksége.
 
 > [!NOTE]
-> A Logic Apps lehetővé teszik a futtatásához [művelet számos különböző típusú] [ lnk-logic-apps-actions] műveletek beleértve az Office 365-ben. 
+> A logikai alkalmazások futtatását teszik [művelet számos különböző típusú] [ lnk-logic-apps-actions] műveletek például az Office 365-ben. 
 > 
 > 
 
-## <a name="set-up-the-eventprocessor-web-job"></a>A EventProcessor webes feladat beállítása
-Ebben a szakaszban az előkonfigurált megoldás a létrehozott logikai alkalmazás csatlakozzon. A feladat végrehajtásához hozzá indul el, a művelet, amely akkor következik be, ha egy eszköz érzékelő érték meghaladja a küszöbértéket a logikai alkalmazás URL-CÍMÉT.
+## <a name="set-up-the-eventprocessor-web-job"></a>Állítsa be az EventProcessor Webjobs-feladat
+Ebben a szakaszban csatlakozik az előre konfigurált megoldás a létrehozott logikai alkalmazásra. Ez a feladat végrehajtásához adja hozzá az URL-cím, a művelet akkor aktiválódik, ha egy eszköz érzékelő értéke meghaladja a küszöbértéket, a logikai alkalmazás indítására.
 
-1. A git-ügyfél segítségével klónozza a legújabb verzióját a [azure iot-távoli-ellenőrző github-tárházban][lnk-rmgithub]. Példa:
+1. A git-kliens használatával klónozza a legújabb verzióját a [azure-iot-remote-monitoring github-adattár][lnk-rmgithub]. Példa:
    
     ```cmd
     git clone https://github.com/Azure/azure-iot-remote-monitoring.git
     ```
-2. A Visual Studióban nyissa meg a **RemoteMonitoring.sln** a tárházat a helyi másolatát.
+2. A Visual Studióban nyissa meg a **RemoteMonitoring.sln** a tárház helyi másolatából.
 3. Nyissa meg a **ActionRepository.cs** fájlt a **infrastruktúra\\tárház** mappát.
-4. Frissítés a **actionIds** szótár a **Http Post az URL-címet** , itt megjegyezni a Logic Apps alkalmazást az alábbiak szerint:
+4. Frissítés a **actionIds** szótár a **Http Post ezen URL-címen** feljegyzett a logikai alkalmazás a következőképpen:
    
     ```csharp
     private Dictionary<string,string> actionIds = new Dictionary<string, string>()
@@ -122,43 +123,43 @@ Ebben a szakaszban az előkonfigurált megoldás a létrehozott logikai alkalmaz
         { "Raise Alarm", "<Http Post to this URL>" }
     };
     ```
-5. A módosítások mentése a megoldásban, és zárja be a Visual Studio.
+5. Mentse a módosításokat a megoldásban, és kilép a Visual Studióból.
 
 ## <a name="deploy-from-the-command-line"></a>Központi telepítése a parancssorból
-Ebben a szakaszban központi telepítése a frissített verzióját a távoli figyelési megoldást cserélje le az Azure-ban jelenleg futó verziója.
+Ebben a szakaszban üzembe helyezi a frissített verziója a távoli figyelési megoldásban cserélje le az Azure-ban jelenleg futó verzió.
 
-1. A következő a [fejlesztői beállításról] [ lnk-devsetup] állítsa be a környezetet a telepítési utasításokat.
-2. Helyileg telepítéséhez kövesse a [helyi telepítés] [ lnk-localdeploy] utasításokat.
-3. Telepíti a felhőbe, és a meglévő felhőalapú üzemelő példány frissítése, kövesse a [felhőalapú üzemelő példány] [ lnk-clouddeploy] utasításokat. Használja a nevét, az eredeti telepítés a központi telepítés nevét. Például ha az eredeti telepítési hívták **demologicapp**, használja a következő parancsot:
+1. A következő a [fejlesztési beállítás] [ lnk-devsetup] állítsa be a környezetet a telepítési utasításokat.
+2. Helyi üzembe helyezéséhez kövesse a [helyi üzemelő példányának] [ lnk-localdeploy] utasításokat.
+3. A felhőben üzembe helyezni, és frissítse a meglévő felhőbeli üzemelő példány, kövesse a [felhőbeli telepítés] [ lnk-clouddeploy] utasításokat. Használja a nevét, az eredeti üzembe helyezés az üzemelő példány neve. Például ha az eredeti üzembe helyezés byla volána **demologicapp**, használja a következő parancsot:
    
    ```cmd
    build.cmd cloud release demologicapp
    ```
    
-   Ha fut a build parancsfájl, ügyeljen arra, hogy a azonos Azure-fiók, előfizetés, régió, valamint a megoldás létesített használt Active Directory-példányban.
+   Amikor futtatja a felépítési szkriptet, ügyeljen arra, használja az ugyanazon Azure-fiók, előfizetési, régió és Active Directory-példányból, a megoldás üzembe helyezésekor használt.
 
-## <a name="see-your-logic-app-in-action"></a>Tekintse meg a Logic Apps alkalmazást működés közben
-A távoli felügyeleti előkonfigurált megoldás beállítása alapértelmezés szerint, ha a megoldás két szabályt tartalmaz. Szabályokat is szerepelnek a **SampleDevice001** eszköz:
+## <a name="see-your-logic-app-in-action"></a>Tekintse meg a logikai alkalmazás működés közben
+A távoli figyelési előre konfigurált megoldás beállítása alapértelmezés szerint, amikor a megoldás kiépítéséhez két szabályokkal rendelkezik. A rendszer szabályokat is a **SampleDevice001** eszköz:
 
 * Hőmérséklet > 38.00
 * Páratartalom > 48.00
 
-A hőmérséklet szabály eseményindítók a **előléptetése riasztás** szabályok eseményindítók művelet és a páratartalom a **SendMessage** művelet. Feltéve, hogy mindkét művelet azonos URL-CÍMÉT használja a **ActionRepository** osztály, vagy a szabály a logic app eseményindítók. Szabályokat is SendGrid segítségével e-mail küldése a **való** cím a riasztás részleteit.
+A hőmérséklet szabály aktiválásakor a **előléptetése riasztás** művelet és a páratartalom szabály eseményindítók a **SendMessage** művelet. Feltéve, hogy mindkét művelet során használt megegyezik a **ActionRepository** osztályhoz, vagy a szabály a logikai alkalmazások eseményindítói. Szabályokat is egy e-mailek küldése a SendGrid használatával a **való** a riasztás részleteit tartalmazó cím.
 
 > [!NOTE]
-> A logikai alkalmazás továbbra is fennáll, minden alkalommal, amikor a küszöbérték elérése indításához. Felesleges e-mailek elkerülése érdekében tiltsa le a szabályok a megoldás portálon, vagy tiltsa le a logikai alkalmazást a a [Azure-portálon][lnk-azureportal].
+> A logikai alkalmazás továbbra is a trigger minden alkalommal, amikor a küszöbértéket. Felesleges e-mailek elkerülése érdekében a megoldásportál szabályok letiltása, vagy a logikai alkalmazás letiltása a [az Azure portal][lnk-azureportal].
 > 
 > 
 
-Mellett fogadásakor, a logikai alkalmazás futtatásakor a portálon is megtekintheti:
+E-mailek, valamint a logikai alkalmazás futtatásakor a portálon is láthatja:
 
 ![](media/iot-suite-v1-logic-apps-tutorial/logicapprun.png)
 
-## <a name="next-steps"></a>Következő lépések
-Most, hogy a logikai alkalmazás már használta az előkonfigurált megoldás csatlakozni az üzleti folyamatokat, hogy többet is megtudhat az előkonfigurált megoldásokat testreszabására szolgáló beállítások:
+## <a name="next-steps"></a>További lépések
+Most, hogy az előre konfigurált megoldás csatlakozni egy üzleti folyamat korábban már használta egy logikai alkalmazást, hogy többet is megtudhat a beállításokat az előre konfigurált megoldások testreszabásához:
 
-* [Dinamikus telemetriai adatokat a távoli felügyeleti előkonfigurált megoldás][lnk-dynamic]
-* [Eszköz információk metaadatait a távoli felügyeleti előkonfigurált megoldás][lnk-devinfo]
+* [Dinamikus telemetria használata a távoli figyelési előre konfigurált megoldás][lnk-dynamic]
+* [A távoli figyelési előre konfigurált megoldásban az eszköz információk metaadatait][lnk-devinfo]
 
 [lnk-dynamic]: iot-suite-v1-dynamic-telemetry.md
 [lnk-devinfo]: iot-suite-v1-remote-monitoring-device-info.md

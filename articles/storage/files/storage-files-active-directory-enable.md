@@ -7,12 +7,12 @@ ms.service: storage
 ms.topic: article
 ms.date: 09/19/2018
 ms.author: tamram
-ms.openlocfilehash: 31bfcd99e23cc7fe0575a293e3dc22507dbd9e13
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: ec8ad5a509b4fd4b6fd59212ac0df17f98f417fd
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46973269"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47222437"
 ---
 # <a name="enable-azure-active-directory-authentication-over-smb-for-azure-files-preview"></a>Az Azure Active Directory-hitelesítés engedélyezése az SMB-n keresztül az Azure Files (előzetes verzió)
 
@@ -103,8 +103,6 @@ Set-AzureRmStorageAccount -ResourceGroupName "<resource-group-name>" `
 ```
 
 **Parancssori felület**
-
-"Kell először adja hozzá a storage-preview jelű verziót bővítményt, majd hajtsa végre a példa helye. Ne felejtse el lecserélni a helyőrző értékeket a saját értékeire. Tekintse meg ebben a cikkben talál további információt az Azure CLI bővítményeivel."
 
 Az Azure AD-hitelesítés engedélyezése az Azure CLI 2.0-s SMB-n keresztül, először telepítse a *storage – előzetes verzió* bővítményt:
 
@@ -274,7 +272,7 @@ Ezután az alábbi parancs segítségével az Azure-fájlmegosztás csatlakoztat
 net use <desired-drive-letter>: \\<storage-account-name>.file.core.windows.net\<share-name>
 ```
 
-Most már sikeresen engedélyezve van az Azure AD-hitelesítés SMB-n keresztül, és egy egyéni szerepkört, amely egy Azure AD identity fájlmegosztás hozzáférést biztosít. A fájlmegosztás hozzáférést további felhasználók számára, kövesse az utasításokat, a 2. lépésben megadott.
+Most már sikeresen engedélyezve van az Azure AD-hitelesítés SMB-n keresztül, és egy egyéni szerepkört, amely egy Azure AD identity fájlmegosztás hozzáférést biztosít. A fájlmegosztás hozzáférést további felhasználók számára, kövesse az utasításokat, 2. és 3. lépésében megadott.
 
 ## <a name="next-steps"></a>További lépések
 

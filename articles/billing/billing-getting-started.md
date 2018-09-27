@@ -14,13 +14,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/24/2018
-ms.author: tonguyen
-ms.openlocfilehash: 9396e954305ecc9ff6cbdd664c6cb71846bd5bfa
-ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
+ms.author: cwatson
+ms.openlocfilehash: d17215fe05a4795bd539759d98695ec2f6b0df3d
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42919126"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47393499"
 ---
 # <a name="prevent-unexpected-charges-with-azure-billing-and-cost-management"></a>Az Azure-elszámolással és költségkezeléssel váratlan költségek megelőzése
 
@@ -33,7 +33,7 @@ Feliratkozás az Azure-hoz, több dolgot is van az Ön által megvilágításáh
 - Ha a regisztrált [ingyenes Azure-fiók](https://azure.microsoft.com/free/), [néhány, a legnépszerűbb Azure-szolgáltatások 12 hónapig ingyenesen használható](billing-create-free-services-included-free-account.md). Lásd az alábbi javaslatokat, valamint [elkerülése az ingyenes fiók számolják](billing-avoid-charges-free-account.md).
 
 > [!div class="nextstepaction"]
-> [Segítheti az Azure számlázási docs](https://go.microsoft.com/fwlink/p/?linkid=2010091) 
+> [Segítsen az Azure számlázási dokumentumok fejlesztésében](https://go.microsoft.com/fwlink/p/?linkid=2010091) 
 
 ## <a name="get-estimated-costs-before-adding-azure-services"></a>Becsült költségek lekérése az Azure-szolgáltatás hozzáadása előtt
 

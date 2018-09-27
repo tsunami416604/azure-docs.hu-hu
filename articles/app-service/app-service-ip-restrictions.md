@@ -14,12 +14,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 7/30/2018
 ms.author: ccompy
-ms.openlocfilehash: fb26d91ae772c4da1055da80366d6e8c6b80a6ac
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: 9ffeb01a46b62202292f6e1ea91f47cd87954387
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39364308"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47219128"
 ---
 # <a name="azure-app-service-static-ip-restrictions"></a>Statikus IP-korlátozások az Azure App Service-ben #
 
@@ -29,7 +29,7 @@ Az IP-korlátozások funkció működik az összes App Service-ben üzemeltetett
 
 Az alkalmazás egy kérelmet történik, amikor az az IP-címet az IP-korlátozások listája képest értékeli ki. Ha a cím nem engedélyezett a hozzáférés a listájának szabályai alapján, a szolgáltatás válaszol-e az egy [HTTP 403](https://en.wikipedia.org/wiki/HTTP_403) állapotkódot.
 
-Az IP-korlátozások képesség a App Service-ben előtér-szerepkörök, amelyek a feldolgozó gazdagépeket, ahol a kódja fut, a felsőbb rétegbeli van megvalósítva. Az IP-korlátozások lényegében ezekhez hálózati hozzáférés-vezérlési listák.  
+Az IP-korlátozások képesség a App Service-ben előtér-szerepkörök, amelyek a feldolgozó gazdagépeket, ahol a kódja fut, a felsőbb rétegbeli van megvalósítva. Ezért az IP-korlátozások lényegében hálózati hozzáférés-vezérlési listák.  
 
 ![IP-korlátozások folyamat](media/app-service-ip-restrictions/ip-restrictions-flow.png)
 

@@ -1,59 +1,60 @@
 ---
-title: Az Azure Content moderátor - moderálás munkafolyamatok |} Microsoft Docs
-description: Munkafolyamatok használata tartalom moderálás.
+title: Jóváhagyás-munkafolyamatok – a Content Moderator
+titlesuffix: Azure Cognitive Services
+description: Munkafolyamatok használata a tartalom-jóváhagyás.
 services: cognitive-services
 author: sanjeev3
-manager: mikemcca
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: content-moderator
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/04/2018
 ms.author: sajagtap
-ms.openlocfilehash: 079fcd119f1536f9e76ca57fccc76538b3c3ed78
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 3de45c62eb208671cc2d1d4de5309d2f9d75adc9
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35347194"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47226874"
 ---
-# <a name="moderation-workflows"></a>Moderálás munkafolyamatok
+# <a name="moderation-workflows"></a>A munkafolyamatok moderálása
 
-Tartalom moderátor magában foglalja, eszközök és API-k munkafolyamatok kezelése. A munkafolyamatok használhatja a [tekintse át API feladat operations](review-api.md) automatizálhatja a HR-részleg hurok felülvizsgálati létrehozását a tartalom házirendek és a küszöbértékek alapján.
+A Content Moderator magában foglalja, eszközök és API-munkafolyamatok kezelése. Munkafolyamatok használata a [tekintse át API-feladat műveletei](review-api.md) automatizálhatja az emberi hurok felülvizsgálat létrehozása a tartalomszabályzat és küszöbértékek alapján.
 
-A felülvizsgálati API emberi felügyeletet szerepeljenek a tartalom moderálás folyamat a következő lehetőséget kínál:
+A felülvizsgálati API emberi felvenni a tartalom-jóváhagyás folyamat az alábbi lehetőségeket kínálja:
 
-1. A **feladat** műveletek olyan gép támogatású moderálás és emberi, tekintse át egy lépésben létrehozása.
-1. A **tekintse át** emberi műveletek létrehozása a moderálás lépés kívül tekintse át.
-1. A **munkafolyamat** műveletek automatizálása a küszöbértékek vizsgálatát munkafolyamatok kezelése, tekintse át létrehozását.
+1. A **feladat** kezdő gépi támogatású képmoderálás és emberi műveletei létrehozása egy lépéssel, tekintse át.
+1. A **tekintse át** emberi műveletei létrehozását, a moderálás lépés kívül tekintse át.
+1. A **munkafolyamat** műveletek vizsgálata a küszöbértékek automatizáló munkafolyamatok kezelése, tekintse át létrehozása.
 
-Ez a cikk ismerteti a **munkafolyamat** műveletek. Olvassa el a [feladatokat, és ellenőrzi, hogy](review-api.md) feladatokat, és ellenőrzi, hogy további információt a tartalom moderálás áttekintése.
+Ez a cikk ismerteti a **munkafolyamat** műveleteket. Olvassa el a [feladatokat, és áttekinti](review-api.md) további információ a tartalom-jóváhagyás – áttekintés feladatokat, és ellenőrzi.
 
-Kikérése a **alapértelmezett** munkafolyamat az a legjobb módszer a kezdéshez a tartalom moderátor ismertetése munkafolyamatok.
+Kivétel a **alapértelmezett** munkafolyamat az a legjobb módszer használatának első lépései a Tartalommoderátor ismertetése munkafolyamatokat.
 
 ## <a name="your-first-workflow"></a>Az első munkafolyamat
 
-Az első munkafolyamat részeként elérhető együtt csomagolt a [tekintse át az eszköz team](https://contentmoderator.cognitive.microsoft.com/). Regisztráljon, ha még nem meg már.
+Az első munkafolyamat származik az a [tekintse át az eszköz csapat](https://contentmoderator.cognitive.microsoft.com/). Iratkozzon fel, ha még nem meg már.
 
-Keresse meg a [tekintse át az eszköz munkafolyamatok](Review-Tool-User-Guide/Workflows.md) képernyőn a beállítások lapon. Megjelenik egy **alapértelmezett** munkafolyamat a következő ábrán látható módon:
+Keresse meg a [tekintse át az eszköz által munkafolyamatok](Review-Tool-User-Guide/Workflows.md) képernyő a beállítások lapon. Megjelenik egy **alapértelmezett** munkafolyamat a következő képen látható módon:
 
-![Tartalom moderátor munkafolyamatok](Review-Tool-User-Guide/images/2-workflows-1.png)
+![Content Moderator munkafolyamatok](Review-Tool-User-Guide/images/2-workflows-1.png)
 
 ### <a name="open-the-default-workflow"></a>Nyissa meg az alapértelmezett munkafolyamat
 
-Használja a **szerkesztése** elemmel nyithatja meg a munkafolyamat lap szerkesztésével, a következő ábrán látható módon: ![tartalom moderátor alapértelmezett munkafolyamat](images/default-workflow-listed.PNG)
+Használja a **szerkesztése** a munkafolyamat szerkesztése oldal a következő képen látható módon nyithat: ![a Content Moderator alapértelmezett munkafolyamat](images/default-workflow-listed.PNG)
 
 ### <a name="the-designer-view"></a>A Tervező nézetben
 
-Megjelenik a **Designer** a munkafolyamat-lapon. A Tervező nézetben látható a következő lépéseket:
+Megjelenik a **Designer** fülre a munkafolyamathoz. A Tervező nézetben látható a következő lépéseket:
 
-1. A **feltétel** a munkafolyamat el lesz kiértékelve. Ebben az esetben a munkafolyamat hívások a tartalom moderátor tartozó kép API, és ellenőrzi, hogy a `isAdult` egyenlő kimeneti `true`.
-1. A **művelet** végrehajtását, ha a feltétel teljesül. Ebben az esetben a munkafolyamat hoz létre egy tekintse át a felülvizsgálati eszköz Ha a `isAdult` kimenete `true`.
+1. A **feltétel** ki kell értékelni a munkafolyamathoz. Ebben az esetben a munkafolyamat-hívások a Content Moderator a kép API és az ellenőrzések e a `isAdult` egyenlő kimeneti `true`.
+1. A **művelet** kell elvégezni, ha a feltétel teljesül. Ebben az esetben a munkafolyamatot hoz létre egy tekintse át a vizsgálóeszközt Ha a `isAdult` kimenet `true`.
 
-![Tartalom moderátor alapértelmezett munkafolyamat - Tervező](images/default-workflow-designer.png)
+![Content Moderator alapértelmezett munkafolyamat - Tervező](images/default-workflow-designer.png)
 
 ### <a name="the-json-view"></a>A JSON-nézet
 
-Válassza ki a **JSON** fülre, és tekintse meg a munkafolyamat JSON-definícióból.
+Válassza ki a **JSON** lapján megtekintheti a munkafolyamat a JSON-definícióját.
 
     {
         "Type": "Logic",
@@ -78,25 +79,25 @@ Válassza ki a **JSON** fülre, és tekintse meg a munkafolyamat JSON-definíci�
 
 ### <a name="key-learning"></a>Kulcs tanulás
 
-A tartalom moderátor munkafolyamatok könnyen konfigurálható és rugalmas. Ha a beépített designer nem felel meg a követelményeknek, írni a munkafolyamat-definíciót a **JSON** formátumban. A JSON-definíció használja a [munkafolyamat API](https://westus.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/5813b46b3f9b0711b43c4c59) létrehozásához és kezeléséhez a munkafolyamat az alkalmazásból.
+A Content Moderator a munkafolyamatok, könnyen konfigurálható és rugalmas. Ha a beépített tervező nem felel meg a követelményeknek, megírhatja a munkafolyamat-definíció a **JSON** formátumban. Majd használja a JSON-definíciót a [munkafolyamat API](https://westus.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/5813b46b3f9b0711b43c4c59) hozhat létre és kezelhet a munkafolyamatot az alkalmazásból.
 
-## <a name="define-a-custom-workflow"></a>Adja meg egy egyéni munkafolyamat
+## <a name="define-a-custom-workflow"></a>Egy egyéni munkafolyamatokat
 
-Tartalom moderátor munkafolyamat tehát lehetővé teszi a meghatározását, és olyan egyéni munkafolyamatokat. Használja a [tekintse át az eszköz munkafolyamatok – útmutató](Review-Tool-User-Guide/Workflows.md) cikk egy egyéni munkafolyamat meghatározásához. Ez a munkafolyamat tartalom moderátor OCR funkció használatával szöveg kinyerése a minta-lemezkép. A felülvizsgálati eszköz majd létre áttekintése.
+A Content Moderator munkafolyamat-funkciók lehetővé teszik a meghatározása, és egyéni munkafolyamatok használatával. Használja a [tekintse át az eszköz munkafolyamatok útmutató](Review-Tool-User-Guide/Workflows.md) cikket, egy egyéni munkafolyamatokat. Ez a munkafolyamat a Content Moderator optikai Karakterfelismerés képesség segítségével szöveg kinyerése egy képet. Majd létrehoz egy felülvizsgálatot a felülvizsgálati eszközben.
 
-### <a name="the-sample-image"></a>A minta kép
+### <a name="the-sample-image"></a>A képet
 
-Mentse a [minta kép](https://moderatorsampleimages.blob.core.windows.net/samples/sample5.png) helyi meghajtójára. A gyakorlatban ez a rendszerkép van szükség.
+Mentse a [képet](https://moderatorsampleimages.blob.core.windows.net/samples/sample5.png) helyi meghajtójára. A gyakorlatban ez a rendszerkép van szükség.
 
 ### <a name="the-designer-view"></a>A Tervező nézetben
 
-Válassza ki a **Designer** lapon és a [munkafolyamat létrehozása oktatóanyag](Review-Tool-User-Guide/Workflows.md) egyéni munkafolyamat meghatározásához. A következő kép bemutatja a tervező **feltétel** nézet. Tekintse meg az oktatóanyag a további lépéseket.
+Válassza ki a **Designer** fülre, és a [munkafolyamat létrehozása oktatóanyag](Review-Tool-User-Guide/Workflows.md) , egy egyéni munkafolyamatokat. Az alábbi képen látható a tervező **feltétel** megtekintése. Tekintse meg a következő oktatóanyagban a lépéseket további részeinek megtekintéséhez.
 
-![Tartalom moderátor - munkafolyamat-feltétel](Review-Tool-User-Guide/images/ocr-workflow-step-2-condition.PNG)
+![A Content Moderator - munkafolyamat-feltétel](Review-Tool-User-Guide/images/ocr-workflow-step-2-condition.PNG)
 
 ### <a name="the-json-view"></a>A JSON-nézet
 
-Válassza ki a **JSON** lapon a következő JSON-definícióból egyéni munkafolyamatba való megjelenítéséhez. Értesítés az **Ha-akkor** JSON-definícióból lévő utasítások felel meg a Tervező nézetben megadott lépéseket.
+Válassza ki a **JSON** lapján megtekintheti az egyéni munkafolyamat a következő JSON-definícióját. Figyelje meg a **If-majd** utasítások a JSON-definíciójában felelnek meg az Útmutató lépéseit, a Tervező nézettel.
 
     {
         "Type": "Logic",
@@ -130,31 +131,31 @@ Válassza ki a **JSON** lapon a következő JSON-definícióból egyéni munkafo
         }
     }
 
-### <a name="workflow-result"></a>Munkafolyamat eredménye
+### <a name="workflow-result"></a>Munkafolyamat-eredmény
 
-A munkafolyamatok képernyőről munkafolyamat tesztelése után a következő felülvizsgálati jön létre. Keresse meg a **kép** lap **tekintse át** felülvizsgálandó megjelenítéséhez.
-A munkafolyamat létrehozása a felülvizsgálati mivel az elsődleges feltétel tesztel pozitív szöveg jelenlétét. A kijelölt is tekintse át a **`a`** címke a kép felülvizsgálat alatt.
+A munkafolyamat a munkafolyamatok képernyőről, tesztelését követően a következő felülvizsgálat jön létre. Keresse meg a **kép** lapjára **tekintse át** áttekintésre megtekintéséhez.
+A munkafolyamat létrehozása a felülvizsgálatot, mert az elsődleges feltétel tesztelése pozitív szöveg meglétének. A felülvizsgálat is ki van emelve a **`a`** címke a rendszerkép felülvizsgálat alatt.
 
-![Tartalom moderátor - egyszerű munkafolyamat kimeneti](images/ocr-sample-image-workflow1.PNG)
+![A Content Moderator – egyszerű munkafolyamat kimenete](images/ocr-sample-image-workflow1.PNG)
 
 
-## <a name="advanced-workflow-with-combination"></a>Speciális munkafolyamati értékkombinációit
+## <a name="advanced-workflow-with-combination"></a>Speciális munkafolyamati szolgáltatással
 
-### <a name="the-sample-image"></a>A minta kép
+### <a name="the-sample-image"></a>A képet
 
-Ugyanazon [minta kép](https://moderatorsampleimages.blob.core.windows.net/samples/sample5.png) az előző szakaszban leírt használt.
+Ugyanaz, mint [képet](https://moderatorsampleimages.blob.core.windows.net/samples/sample5.png) az előző szakaszban használt.
 
-Azonban módosíthatja a időre körülbelül két ellenőrzés kombinációjává a elsődleges feltételt. Mellett szöveg keresése, ellenőrizze, hogy a szöveg bármely Profanitás van-e. A munkafolyamat áttekintése hoz létre, ha úgy találja, szöveges **és** Profanitás észleli.
+Azonban módosíthatja ezen idő körülbelül két ellenőrzés kombinált az elsődleges feltételt. Szöveg keresése, kívül ellenőrizze, hogy a szöveg rendelkezik-e bármilyen közönséges kifejezést. A munkafolyamat felülvizsgálat hoz létre, ha úgy találja, szöveges **és** cenzúrázása észleli.
 
 ### <a name="the-designer-view"></a>A Tervező nézetben
 
-Módosíthatja a **feltétel** való egy **kombinációja**, a munkafolyamat módosítása. Az alábbi ábrán láthatja az új nézet a tervezőben.
+Módosíthatja a **feltétel** , egy **kombináció**, módosítsa a munkafolyamat. Az alábbi képen láthatja az új nézet a tervezőben látható.
 
-![Tartalom moderátor - módosítási munkafolyamat-feltétel](images/ocr-workflow-2-designer.PNG)
+![A Content Moderator – módosított munkafolyamat-feltétel](images/ocr-workflow-2-designer.PNG)
 
 ### <a name="the-json-view"></a>A JSON-nézet
 
-Válassza ki a **JSON** lapon a következő JSON-definícióból módosított egyéni munkafolyamatba való megjelenítéséhez. Értesítés az **Ha-akkor** JSON-definícióból lévő utasítások felel meg a munkafolyamat hozzáadott új lépéseit.
+Válassza ki a **JSON** lapján megtekintheti a módosított egyéni munkafolyamat a következő JSON-definícióját. Figyelje meg a **If-majd** utasítások a JSON-definíciójában felel meg a munkafolyamat hozzáadott új lépéseit.
 
     {
         "Type": "Logic",
@@ -201,45 +202,45 @@ Válassza ki a **JSON** lapon a következő JSON-definícióból módosított eg
     }
 
     
-### <a name="workflow-result"></a>Munkafolyamat eredménye
+### <a name="workflow-result"></a>Munkafolyamat-eredmény
 
-Után ismét ellenőrizze a munkafolyamatot, meg, hogy nincs felülvizsgálati jön létre. Erősítse meg a felülvizsgálati hiányában, lépjen a **kép** lap **tekintse át**.
-A munkafolyamat nem hozta létre a tekintse át, mert nem sikerült Profanitás észlelheti a kibontott szöveg.
+Után újra a munkafolyamat tesztelése, meg, hogy létrejött-e nem áttekintése. Felülvizsgálat hiányában erősítse meg, lépjen a **kép** lapjára **tekintse át**.
+A munkafolyamat nem hozott létre a felülvizsgálatot, mert nem sikerült a kinyert szöveg vulgáris.
 
-![Tartalom moderátor - módosítási munkafolyamat kimeneti](images/ocr-workflow-2-result.PNG)
+![A Content Moderator – módosított munkafolyamat kimenete](images/ocr-workflow-2-result.PNG)
 
 
 ## <a name="the-workflow-api"></a>A munkafolyamat API
 
-A [a munkafolyamat műveletei](https://westus.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/5813b46b3f9b0711b43c4c59) az alkalmazásprogramozási felület a munkafolyamat-funkciókat biztosítanak. Munkafolyamatok létrehozása, a munkafolyamat részletes és a munkafolyamat API-jával munkafolyamat-definíciók frissítése.
+A [munkafolyamat-műveletek](https://westus.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/5813b46b3f9b0711b43c4c59) a alkalmazásprogramozási felülete a munkafolyamat funkciókat biztosítanak. Munkafolyamatokat hozhat létre, a munkafolyamat adatainak beolvasása és a munkafolyamat API-val a munkafolyamat-definíciók frissítéséhez.
 
 ### <a name="get-all-workflow-details"></a>[All] Get munkafolyamat részletei
 
-A **munkafolyamat-Get** művelet elfogadja az alábbi adatokat:
+A **munkafolyamat-Get** műveletet az alábbi ráfordítások fogad el:
 
-- **Team**: A csoport azonosítója, amelyet beállításakor hozott létre a [tekintse át az eszköz fiók](https://contentmoderator.cognitive.microsoft.com/). 
-- **workflowname**: a munkafolyamat nevét. Használjon `default` kezd.
-- **Az OCP-Apim-előfizetés-kulcs**: található a **beállítások** fülre. További információkért lásd: [áttekintése](overview.md).
+- **csapat**: A csoport azonosítója, üzembe helyezésekor hozott létre a [tekintse át az eszköz fiók](https://contentmoderator.cognitive.microsoft.com/). 
+- **workflowname**: a munkafolyamat nevét. Használat `default` először.
+- **OCP-Apim-Subscription-Key**: található a **beállítások** fülre. További információkért lásd: [áttekintése](overview.md).
 
-Ha a művelet sikeres, a **válaszállapot** van `200 OK` és a **válasz tartalom** jelenít meg a munkafolyamat-definíciót a JSON formátumban.
-További tudnivalókért olvassa el a [munkafolyamat API konzol gyors üzembe helyezés](try-review-api-job.md).
+Ha a művelet sikeres, a **válasz állapota** van `200 OK` és a **válasz tartalma** be a munkafolyamat-definíció a JSON formátumban jeleníti meg.
+További tudnivalókért olvassa el a [munkafolyamat API a konzolhoz rövid](try-review-api-job.md).
 
-### <a name="create-or-update-workflow"></a>Létrehozásának vagy frissítésének munkafolyamata
+### <a name="create-or-update-workflow"></a>Létrehozni vagy frissíteni a munkafolyamat
 
-A létrehozási és frissítési művelet lehetővé teszi, hogy az API-munkafolyamat létrehozásakor.
+A létrehozási és frissítési művelet lehetővé teszi, hogy a munkafolyamat létrehozása az API-ból.
 
-A **munkafolyamat létrehozása vagy frissítése** művelet elfogadja az alábbi adatokat:
+A **munkafolyamat létrehozása vagy frissítése** műveletet az alábbi ráfordítások fogad el:
 
-- **Team**: A csoport azonosítója, amelyet beállításakor hozott létre a [tekintse át az eszköz fiók](https://contentmoderator.cognitive.microsoft.com/). 
-- **workflowname**: a munkafolyamat nevét. Használjon `default` kezd.
-- **Az OCP-Apim-előfizetés-kulcs**: található a **beállítások** fülre. További információkért lásd: [áttekintése](overview.md).
+- **csapat**: A csoport azonosítója, üzembe helyezésekor hozott létre a [tekintse át az eszköz fiók](https://contentmoderator.cognitive.microsoft.com/). 
+- **workflowname**: a munkafolyamat nevét. Használat `default` először.
+- **OCP-Apim-Subscription-Key**: található a **beállítások** fülre. További információkért lásd: [áttekintése](overview.md).
 
-Ha a művelet sikeres, a **válaszállapot** van `200 OK` és a **válasz tartalom** mezőben az `true`. További, [tesztelése a `Create` művelet](try-review-api-job.md).
+Ha a művelet sikeres, a **válasz állapota** van `200 OK` és a **válasz tartalma** mezőben az `true`. További információért [kipróbálása a `Create` művelet](try-review-api-job.md).
 
 ## <a name="next-steps"></a>További lépések
 
-Megtudhatja, hogyan hozzon létre egyéni munkafolyamatokat, tekintse meg a [tekintse át az eszköz munkafolyamat oktatóanyag](Review-Tool-User-Guide/Workflows.md). 
+Ismerje meg, hogyan hozhat létre egyéni munkafolyamatokat, tekintse át a [eszköz munkafolyamat-oktatóanyag áttekintésével](Review-Tool-User-Guide/Workflows.md). 
 
-Tesztelése a [munkafolyamat API konzol](try-review-api-job.md) és a REST API-Kódminták használja. 
+Próbálja ki a [munkafolyamat API-konzol](try-review-api-job.md) , és a REST API-Kódminták. 
 
-Végül, használja az egyéni munkafolyamatok a **feladat** műveleteket, mint a shon [feladat API konzol](try-review-api-job.md) és a [feladatok .NET gyors üzembe helyezés](moderation-jobs-quickstart-dotnet.md).
+Végül a az egyéni munkafolyamatok a **feladat** műveleteket, mint a shon [feladat API-konzol](try-review-api-job.md) és a [feladatok .NET – rövid útmutató](moderation-jobs-quickstart-dotnet.md).

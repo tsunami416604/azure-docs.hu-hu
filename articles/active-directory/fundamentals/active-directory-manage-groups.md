@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 08/28/2017
 ms.author: lizross
 ms.reviewer: piotrci
-ms.openlocfilehash: 3ec8472285ecc7512e2eedc8b9ac850ef8e9cf87
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 69be2cb8b57b34502d5a5688ac163d7451abe48e
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46298020"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47223972"
 ---
 # <a name="learn-about-access-management-using-azure-active-directory-groups"></a>Erőforráshozzáférés-kezelés az Azure Active Directory-csoportok ismertetése
 Az Azure Active Directory (Azure AD) segítségével felügyelheti felhőalapú alkalmazásait, a helyszíni alkalmazások és használatával a szervezet erőforrásaihoz. Az erőforrások a címtár, például való kezelése a szerepkörök a címtárnak, vagy a könyvtárba, külső objektumok, például a szoftverek (SaaS) Szolgáltatottszoftver-alkalmazásokat, az Azure-szolgáltatásokat, SharePoint-webhelyekre és a helyszíni erőforrások része lehet.
@@ -34,7 +34,7 @@ Erőforrás-hozzáférési jogosultsága ahhoz, hogy a felhasználók hozzárend
 
 - **Közvetlen hozzárendelés.** Az erőforrás tulajdonosa közvetlenül az erőforráshoz rendeli hozzá a felhasználó.
 
-- **Csoport-hozzárendelés.** Az erőforrás tulajdonosa az erőforráshoz, ami automatikusan biztosít az összes a csoport tagjainak hozzáférést az erőforráshoz rendeli hozzá az Azure AD-csoportok. Csoporttagság mindkettő kezeli a csoport tulajdonosa, és az erőforrás tulajdonosa, ami lehetővé teszi a tagok hozzáadása vagy eltávolítása a csoportból vagy tulajdonos. Hozzáadásával vagy eltávolításával csoporttagság kapcsolatos további információkért lásd: [hogyan: hozzáadása vagy eltávolítása egy csoport egy másik csoport használatával az Azure Active Directory portálon](active-directory-groups-membership-azure-portal.md). 
+- **Csoport-hozzárendelés.** Az erőforrás tulajdonosa az erőforráshoz, ami automatikusan biztosít az összes a csoport tagjainak hozzáférést az erőforráshoz rendeli hozzá az Azure AD-csoportok. Csoporttagság kezeli a csoport tulajdonosa, mind az erőforrás tulajdonosa, ami lehetővé teszi a tagok hozzáadása vagy eltávolítása a csoportból vagy tulajdonos. Hozzáadásával vagy eltávolításával csoporttagság kapcsolatos további információkért lásd: [hogyan: hozzáadása vagy eltávolítása egy csoport egy másik csoport használatával az Azure Active Directory portálon](active-directory-groups-membership-azure-portal.md). 
 
 - **A szabály-alapú hozzárendelést.** Az erőforrás tulajdonosa létrehoz egy csoportot, és a egy szabályt használ a meghatározására, hogy melyik felhasználók vannak hozzárendelve egy adott erőforrás. A szabály az attribútumokat, amelyek az egyes felhasználókhoz rendelt alapul. Az erőforrás tulajdonosa kezeli a szabályt, amely meghatározza, hogy melyik attribútumai és értékei szükség, hogy engedélyezze a hozzáférést az erőforráshoz. További információkért lásd: [dinamikus csoport létrehozása és állapotának](../users-groups-roles/groups-create-rule.md).
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/14/2017
 ms.author: daveba
-ms.openlocfilehash: b8e36480269259f38453593973d1f362c136e6be
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: bb62f892ec3d171958764d10f4b069bbd536d2ea
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44349058"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47223439"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-an-azure-vm-using-a-templates"></a>Felügyelt identitások az Azure-erőforrások konfigurálása egy Azure-beli Virtuálisgép-sablonok használatával
 
@@ -34,8 +34,10 @@ Ez a cikk az Azure Resource Manager üzembe helyezési sablon használatával me
 - Ha még nem ismeri az Azure Resource Manager üzembe helyezési sablon használatával, tekintse meg a [áttekintés szakaszban](overview.md). **Ne feledje el áttekinteni a [különbség a rendszer által hozzárendelt, és a felhasználó által hozzárendelt felügyelt identitás](overview.md#how-does-it-work)**.
 - Ha még nincs Azure-fiókja, a folytatás előtt [regisztráljon egy ingyenes fiókra](https://azure.microsoft.com/free/).
 - Ez a cikk a felügyeleti műveleteket hajt végre, a fiók az alábbi Azure szerepkör-alapú access control-hozzárendelések van szüksége:
+
     > [!NOTE]
     > Nincsenek további Azure AD directory szerepkör-hozzárendelések megadása kötelező.
+
     - [Virtuális gépek Közreműködője](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) virtuális gép létrehozása és engedélyezése, és távolítsa el a rendszer és/vagy felhasználó által hozzárendelt felügyelt identitás Azure virtuális gépből.
     - [Felügyelt identitások Közreműködője](/azure/role-based-access-control/built-in-roles#managed-identity-contributor) hozhat létre felhasználó által hozzárendelt szerepkör felügyelt identitás.
     - [Felügyelt identitások üzemeltetője](/azure/role-based-access-control/built-in-roles#managed-identity-operator) szerepkör hozzárendelése és eltávolítása, felhasználó által hozzárendelt felügyelt identitás, a kezdő és a egy virtuális Gépet.
@@ -358,7 +360,7 @@ Ha egy virtuális gép, egy felhasználó által hozzárendelt felügyelt identi
 
 1. Jelentkezzen be az Azure-bA helyileg vagy az Azure Portalon az Azure-előfizetéshez társított olyan fiókot használjon, amely tartalmazza a virtuális Gépet.
 
-2. Betölteni a sablont, egy [szerkesztő](#azure-resource-manager-templates) , és keresse meg a `Microsoft.Compute/virtualMachines` házirendsablonokkal erőforrás a `resources` szakaszban. Ha egy virtuális Gépet, amely csak a felhasználó által hozzárendelt felügyelt identitás rendelkezik, letilthatja, módosítsa úgy az identitás típus `None`.
+2. Betölteni a sablont, egy [szerkesztő](#azure-resource-manager-templates) , és keresse meg a `Microsoft.Compute/virtualMachines` házirendsablonokkal erőforrás a `resources` szakaszban. Ha egy virtuális Gépet, amely csak a felhasználó által hozzárendelt felügyelt identitás rendelkezik, letilthatja az identitás típusúra `None`.
  
    Az alábbi példa bemutatja, hogyan eltávolítja az összes felhasználó által hozzárendelt felügyelt identitások egy virtuális Gépet a nem felügyelt rendszer által hozzárendelt identitások:
    
@@ -381,7 +383,7 @@ Ha egy virtuális gép, egy felhasználó által hozzárendelt felügyelt identi
  
    **Microsoft.Compute/virtualMachines API 2017-12-01-es verzió**
 
-   Eltávolítja egy egyetlen felhasználó által hozzárendelt felügyelt identitás egy virtuális gépről, távolítsa el a `identityIds` tömb.
+   Egy virtuális Gépet egy egyetlen felhasználó által hozzárendelt felügyelt identitás eltávolításához távolítsa el a `identityIds` tömb.
 
    Ha egy rendszer által hozzárendelt felügyelt identitás, tárolja a a a `type` értékét a `identity` értéket.
    

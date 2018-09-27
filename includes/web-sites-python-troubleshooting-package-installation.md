@@ -5,16 +5,16 @@ Ebben a szakaszban megnézzük, hogyan kezelhető ez a probléma.
 ### <a name="request-wheels"></a>Kerekek kérése
 Ha a csomag telepítéséhez fordító szükséges, akkor próbálja meg felvenni a kapcsolatot a csomag tulajdonosával, és kérje meg, hogy tegyen elérhetővé kerekeket a csomaghoz.
 
-A nemrégiben elérhetővé vált a [Microsoft Visual C++ Compiler for Python 2.7][Microsoft Visual C++ Compiler for Python 2.7], megkönnyíti a Python 2.7 natív kóddal rendelkező csomagok építését.
+A legutóbbi rendelkezésre állásának [Microsoft Visual C++ Compiler for Python 2.7-es][Microsoft Visual C++ Compiler for Python 2.7], mostantól egyszerűbb legyen a Python 2.7 natív kóddal rendelkező csomagok építését.
 
 ### <a name="build-wheels-requires-windows"></a>Kerekek építése (Windows rendszert igényel)
 Megjegyzés: Ha ezt a lehetőséget választja, ne felejtse el lefordítani a csomagot az Azure App Services-szolgáltatásban a webalkalmazásban használt platformmal/architektúrával/verzióval (Windows/32 bites/2.7 vagy 3.4) megegyező Python-környezetben.
 
 Ha a csomag telepítése sikertelen, mert fordító szükséges hozzá, akkor telepítse a fordítót a helyi gépén, és építsen egy kereket a csomaghoz, amelyet majd belefoglalhat a tárházba.
 
-Mac/Linux-felhasználók: Ha nincs Windows-számítógép eléréséhez, lásd: [hozzon létre egy virtuális gép futó Windows] [ Create a Virtual Machine Running Windows] a virtuális gép létrehozása az Azure ismertetik.  Ezzel létrehozhatja a kerekeket, hozzáadhatja őket a tárházhoz, a virtuális gépet pedig igény szerint elvetheti. 
+Mac/Linux-felhasználók: Ha nincs hozzáférése egy Windows-gépet, tekintse meg [hozzon létre egy virtuális gépen futó Windows] [ Create a Virtual Machine Running Windows] a virtuális gép létrehozása az Azure-ban.  Ezzel létrehozhatja a kerekeket, hozzáadhatja őket a tárházhoz, a virtuális gépet pedig igény szerint elvetheti. 
 
-Python 2.7 esetén telepítheti [Microsoft Visual C++ Compiler for Python 2.7][Microsoft Visual C++ Compiler for Python 2.7].
+Python 2.7 esetén telepítheti [Microsoft Visual C++ Compiler for Python 2.7-es][Microsoft Visual C++ Compiler for Python 2.7].
 
 Python 3.4 esetén telepítheti [Microsoft Visual C++ 2010 Express][Microsoft Visual C++ 2010 Express].
 

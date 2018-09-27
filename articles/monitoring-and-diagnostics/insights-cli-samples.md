@@ -8,19 +8,19 @@ ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: robb
 ms.component: ''
-ms.openlocfilehash: 1728511402d48904fa968790f790314fdf57767c
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: f7545afbe135cddccc706a5818ab2a74e6849650
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46961518"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47224094"
 ---
 # <a name="azure-monitor-cli-quick-start-samples"></a>Az Azure Monitor parancssori felület gyors üzembe helyezési minták
 Ez a cikk bemutatja, mintaadatokat parancssori felület (CLI) parancsai segítséget nyújtanak az Azure Monitor funkcióhoz férhet hozzá. Az Azure Monitor lehetővé teszi az automatikus méretezés a Cloud Services, a virtuális gépek és a Web Apps, és a riasztási értesítéseket küldeni, vagy hívja a webes URL-címek, a konfigurált telemetriai adat értékek alapján.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ha még nem telepítette az Azure CLI, kövesse az utasításokat [az Azure CLI telepítése](/cli/azure/install-azure-cli). Is [Azure Cloud Shell](/azure/cloud-shell) futtassa a parancssori Felületet, mint egy interaktív élmény a böngészőben. Tekintse meg az összes rendelkezésre álló elérhető parancsok a teljes hivatkozást a [Azure Monitor CLI-referenciáját](https://docs.microsoft.com/cli/azure/monitor?view=azure-cli-latest). 
+Ha még nem telepítette az Azure CLI, kövesse az utasításokat [az Azure CLI telepítése](/cli/azure/install-azure-cli). Is [Azure Cloud Shell](/azure/cloud-shell) futtassa a parancssori Felületet, mint egy interaktív élmény a böngészőben. Tekintse meg az összes elérhető parancsok a teljes hivatkozást a [Azure Monitor CLI-referenciáját](https://docs.microsoft.com/cli/azure/monitor?view=azure-cli-latest). 
 
 ## <a name="log-in-to-azure"></a>Jelentkezzen be az Azure-ba
 Az első lépés az, hogy jelentkezzen be az Azure-fiókjába.

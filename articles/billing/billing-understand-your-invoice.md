@@ -1,5 +1,5 @@
 ---
-title: Az Azure számla ismertetése |} Microsoft Docs
+title: Az Azure-számlák ismertetése |} A Microsoft Docs
 description: Az Azure-előfizetés használatának és számlájának értelmezése
 services: ''
 documentationcenter: ''
@@ -13,106 +13,106 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/31/2017
-ms.author: tonguyen
-ms.openlocfilehash: 6601ade7db52043de8150a3fca671591b9b469fd
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.author: cwatson
+ms.openlocfilehash: 4bfaaa51e39a7db297626a8009306eef9e3efa80
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37063459"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47393781"
 ---
-# <a name="understand-terms-on-your-microsoft-azure-invoice"></a>A Microsoft Azure számlán feltételek megismerése
+# <a name="understand-terms-on-your-microsoft-azure-invoice"></a>A Microsoft Azure-számla feltételeinek értelmezése
 
-A számla összefoglalja a költségek, és fizetésre vonatkozó utasításokat tartalmazza. A Portable Document Format (.pdf) a letölthető érhető el a [Azure-portálon](https://portal.azure.com/) vagy e-mailben küldhetők el. További információkért lásd: [beszerzéséről a számla és a napi használati adatok számlázási Azure](billing-download-azure-invoice-daily-usage-date.md).
+A számla összefoglalja a díjakról, és fizetési vonatkozó utasításokat tartalmazza. Elérhető a Portable Document Format (.pdf) a letölthető a [az Azure portal](https://portal.azure.com/) vagy elküldhetők e-mailen keresztül. További információkért lásd: [beszerzése az Azure számlázási és napi használati adatok](billing-download-azure-invoice-daily-usage-date.md).
 
-Néhány dolgot figyelembe venni:
+Vegye figyelembe, hogy néhány dolgot:
 
--   Ha ingyenes próba-előfizetést használ, a részletes használati adatokat kaphat az Azure-portálon, de nincs számla.
+-   Ha egy ingyenes próba-előfizetést használ, a részletes információt kaphat az Azure Portalról, de nincs számlát.
 
--   Akár 24 órányi használati az előző számlázott időszak végén az aktuális számla előfordulhat, hogy megjelennek.
+-   Akár 24 óra az előző számlázási időszak végén a előfordulhat, hogy az aktuális számlán jelennek meg.
 
--   A nemzetközi ügyfelek számlázási utasítás szerepel költségek olyan jelleggel becslése. Előfordulhat, hogy a bankokkal átváltási különböző költségeit.
+-   A nemzetközi ügyfelek számlázási kimutatások a felsorolt díjak csak költségbecslési célokat is. A bankok különböző költségeket a pénznemváltás is.
 
 >[!VIDEO https://www.youtube.com/embed/jWG1lyJe3Mg]
 
-## <a name="detailed-terms-and-descriptions-of-your-invoice"></a>Részletes feltételeket és a számla leírása
-Az alábbi szakaszok tartalmazzák a fontos fogalmakat tartalmazza, megtekintheti a számla és leírások minden kifejezéshez.
+## <a name="detailed-terms-and-descriptions-of-your-invoice"></a>Részletes használati és a számla leírása
+Az alábbi szakaszok tartalmazzák a fontos fogalmakat, amely akkor jelenik meg a számlán és a leírások minden kifejezéshez meg.
 
 ### <a name="account-information"></a>Fiók adatai
 
-A fiók információk szakasza a számla az első lap tetején, és a profil és az előfizetés információkat jeleníti meg.
+A számla a fiókadatok szakasza az első lap tetején, és a profil és az előfizetés adatait jeleníti meg.
 
-![Fiók információk szakasza számla](./media/billing-understand-your-invoice/1.png)
+![Fiókadatok szakasza számla](./media/billing-understand-your-invoice/1.png)
 
 | Időtartam | Leírás |
 | --- | --- |
-| Ügyfél PO nem. |Egy nem kötelező megrendelőlap számát, nyomon követési Ön által hozzárendelt |
-| Invoice No. (Számlaszám) |Egy egyedi, létrehozott Microsoft követési célból használt számla száma |
+| Vevői beszerzési rendelés száma |Egy nem kötelező beszerzési rendelésszámukra, nyomon követése az Ön által hozzárendelt |
+| Invoice No. (Számlaszám) |Követési célból használt egyedi, Microsoft generált számla szám |
 | Billing Cycle (Számlázási ciklus) |Dátumtartomány, amely lefedi a számla |
-| Invoice Date (Számla dátuma) |A számla jött létre, általában a számlázási ciklus vége után naponta dátuma |
+| Invoice Date (Számla dátuma) |A számlán, általában egy nap vége a számlázási ciklus után létrehozott dátuma |
 | Payment Method (Fizetési mód) |A fiókban használt fizetési típus (számla vagy hitelkártya) |
-| Bill to (Számlázási cím) |Számlázási címét, amely a fiók szerepel |
-| Előfizetés kínálnak ("használatalapú fizetés") |Előfizetés ajánlat vásárolt (használatalapú fizetés, BizSpark plusz, Azure fázisban, stb.) típusú. További információkért lásd: [Azure típusú](https://azure.microsoft.com/support/legal/offer-details/). |
-| Account Owner Email (Fióktulajdonos e-mail-címe) | Az e-mail cím, amellyel a Microsoft Azure-fiókot regisztrálták. <br /><br />Az e-mail cím módosításához lásd [profiladatait, például kapcsolattartási e-mail címet vagy telefonszámot Azure-fiókja módosítása](billing-how-to-change-azure-account-profile.md). |
+| Bill to (Számlázási cím) |Számlázási cím, amely szerepel a listán a fiók |
+| Előfizetési ajánlat ("használatalapú fizetés") |(Használatalapú fizetés, BizSpark Plus, Azure Pass stb.) vásárolt előfizetési csomag típusa. További információkért lásd: [Azure ajánlattípusokról](https://azure.microsoft.com/support/legal/offer-details/). |
+| Account Owner Email (Fióktulajdonos e-mail-címe) | Az e-mail cím, amellyel a Microsoft Azure-fiókot regisztrálták. <br /><br />Ha módosítani szeretné az e-mail-cím, lásd: [profil adatait az Azure-fiók például a kapcsolattartási e-mail cím és telefonszám módosítása](billing-how-to-change-azure-account-profile.md). |
 
 ### <a name="understand-the-invoice-summary"></a>A számla összesítésének magyarázata
-A **számla összegzés** a számla a szakasz a teljes tranzakció összegek az utolsó számlázási időszakban, és a jelenlegi használati díjak óta.
+A **számla Invoice Summary** számla szakasz felsorolja a tranzakció teljes mennyiségeket óta az utolsó elszámolási időszakban érvényes, és a jelenlegi használati terheléseit.
 
-![Számla összefoglaló szakasz](./media/billing-understand-your-invoice/2.png)
+![Számla összefoglalás szakasza](./media/billing-understand-your-invoice/2.png)
 
-Az előfizetés neve ("éles tároló") az előfizetés a számla esetén.
+Az előfizetés neve ("éles tároló") az a név az előfizetés az adott számlához.
 
 #### <a name="understand-the-previous-charges"></a>Az előző költségek ismertetése
-Az előző egyenleg kifizetések és függőben lévő egyenleg a szakasz a számla tranzakciók foglalja a legutóbbi számlázási időszak óta.
+Az előző egyenleget, befizetéseket és a fennmaradó egyenleget a számla szakasza összefoglalja az előző elszámolási időszakban érvényes óta történt tranzakciókat.
 
 | Időtartam | Leírás |
 | --- | --- |
-| Previous balance (Előző egyenleg) |A teljes összeg miatt az utolsó számlázási időszakba eső |
-| Payments (Befizetések) |Teljes kifizetések és az utolsó számlázási időszakban alkalmazott kreditek |
-| Outstanding balance (from previous billing cycle) (Fennálló egyenleg (az előző számlázási ciklusból)) |Bármely kreditek vagy fiókjában óta az utolsó számlázási időszakban fennmaradó egyenleg |
+| Previous balance (Előző egyenleg) |A fizetendő összeg, az utolsó elszámolási időszakban érvényes |
+| Payments (Befizetések) |Teljes kifizetések és az utolsó elszámolási időszakban érvényes alkalmazott kreditek |
+| Outstanding balance (from previous billing cycle) (Fennálló egyenleg (az előző számlázási ciklusból)) |Bármely kreditjei és a fennmaradó egyenleget, a fiókban, az utolsó elszámolási időszakban érvényes óta |
 
 #### <a name="understand-the-current-charges"></a>Az esedékes díjak magyarázata
-A jelenlegi díjak szakasz a számla a havi költségeket részleteit jeleníti meg, az aktuális elszámolási időszak.
+A számla Current Charges szakasza az elszámolási időszakban felszámított díjakat kapcsolatos részleteket az aktuális elszámolási időszakban jeleníti meg.
 
 | Időtartam | Leírás |
 | --- | --- |
-| Használati díjak |Használati díjak meg az aktuális elszámolási időszak előfizetés teljes havi díjak|
-| Discounts (Engedmények) |Az aktuális elszámolási időszak alkalmazott szolgáltatás kedvezményeket|
-| Adjustments (Módosító tételek) |Vegyes kreditek (szabad használati, kreditek stb.) vagy az aktuális elszámolási időszak alkalmazott díjhátralékot.<br/><br/>Például ha MSDN-ajánlat a Visual Studio Enterprise, megjelenik egy havi keretet. Ha megszünteti az előfizetést, tekintse meg a havi használati díjakat, amelyek mérete meghaladja a havi keretet, az előfizetés ajánlat kapott. A díjak csak az előfizetés törlési dátumot a aktuális elszámolási időszak kezdetekor fel Önnek. |
+| Használati díjak |A használati díjak a teljes havi díjak egy adott előfizetés az aktuális elszámolási időszakban felszámított|
+| Discounts (Engedmények) |Az aktuális elszámolási időszakban érvényes szolgáltatási engedmények|
+| Adjustments (Módosító tételek) |Egyéb jóváírások (ingyenes használatát, kreditek stb.) és az aktuális elszámolási időszakban érvényes adjustments.<br/><br/>Például ha a Visual Studio Enterprise with MSDN-ajánlat, látni havi kredittel. Ha az előfizetés megszüntetése esetén a havi használati díjakat, amelyek túllépik a havi kredit, az előfizetési ajánlatok között a jelenik meg. A díjakat számítunk fel az előfizetés megszűnésének-ig a jelenlegi számlázási időszak elején. |
 
-#### <a name="sold-to-and-payment-instructions"></a>Eladott és fizetési utasítások
+#### <a name="sold-to-and-payment-instructions"></a>Eladott és a fizetési útmutató
 
-A következő táblázat ismerteti a eladott a és a fizetési utasítások a számla második oldalán látható.
+A következő táblázat ismerteti az értékesített és a fizetési útmutató a számla a második oldalán látható.
 
 | Időtartam |Leírás |
 | --- | --- |
-| Sold to (Vevő) |A fiók profil címet. <br/><br/>Ha a cím módosításához szüksége, tekintse meg [profiladatait, például kapcsolattartási e-mail címet vagy telefonszámot Azure-fiókja módosítása](billing-how-to-change-azure-account-profile.md).|
-| Payment Instructions (Fizetési útmutató) |Útmutatást után kell fizetnie, attól függően, hogy a fizetési módot (például által jóváírás kártyák vagy számlán). |
+| Sold to (Vevő) |Profil címével, amely a fiókhoz. <br/><br/>Ha a cím van szüksége, tekintse meg [profil adatait az Azure-fiók például a kapcsolattartási e-mail cím és telefonszám módosítása](billing-how-to-change-azure-account-profile.md).|
+| Payment Instructions (Fizetési útmutató) |Útmutatást függően fizetési módot kell fizetnie (például által jóváírás kártyák vagy számla ellenében). |
 
 #### <a name="usage-charges"></a>A használati díjakat részletező Usage Charges szakasz magyarázata
 
-A használati díjak szakasz a számla mérő szintre vonatkozó információ a költségek jeleníti meg.
+A használati díjak szakasz a számla szint mérési adatok a költségek jeleníti meg.
 
 ![Használati díjak szakasz](./media/billing-understand-your-invoice/3.png)
 
-A következő táblázat ismerteti a használati díjak oszlopfejlécek a számla látható.
+A következő táblázat ismerteti a használati díjak oszlopfejlécek jelenik meg a számlán.
 
 | Időtartam |Leírás |
 | --- | --- |
-| Name (Név) |A legfelső szintű szolgáltatást a használati azonosító |
-| Típus |Az Azure szolgáltatás típusa, amelyek hatással lehetnek a sebesség meghatározása |
-| Erőforrás |A mérő feldolgozottként mértékegysége azonosítja. |
-| Régió |Az egyes szolgáltatások árú datacenter helye alapján adatközpont helye |
-| Consumed (Felhasznált mennyiség) |A számlázott időszak során használt mérő mennyisége |
-| Tartalmazza |A mérő az aktuális elszámolási időszak díjmentesen részét képező mennyisége |
-| Billable (Számlázandó) |A felhasznált és a szereplő mennyiséggel közötti különbséget szemlélteti. Díjon számlázzuk, az ezt a mennyiséget. Használatalapú fizetés ajánlatokhoz, nem tartalmazza az ajánlat keretében az összesített megegyezik a felhasznált mennyiség |
-| Rate (Egységár) |Most számítjuk fel számlázható egységenként száma másodpercenként |
-| Érték |A Túlhasználati mennyiség oszlop arány oszlop eredménye látható. Ha a felhasznált mennyiség nem haladhatja meg a szereplő mennyiséget, akkor nem kell fizetni ebben az oszlopban. |
-| Rész összesen |Minden a díjak előtti adót a számlázott időszak összege |
-| Végösszeg |Az adót a számlázott időszak után a díjak összege |
+| Name (Név) |A felső szintű szolgáltatásnak a használati azonosítja. |
+| Típus |Azure-szolgáltatás, amely a díjszámítást is érintheti típusát határozza meg. |
+| Erőforrás |A rendszer, elérheti az érték mértékegységét azonosítja. |
+| Régió |Az adatközpontok elhelyezkedésétől is adatközpont elhelyezkedése alapján igénybe vett |
+| Consumed (Felhasznált mennyiség) |Az elszámolási időszakban használt mérőszám mennyisége |
+| Tartalmazza |A mérőszám, amely tartalmazza az aktuális elszámolási időszakban érvényes díjmentesen mennyisége |
+| Billable (Számlázandó) |A felhasznált mennyiség és a foglalt mennyiség közötti különbséget mutatja. Ez a mennyiség díjköteles. A használatalapú fizetés, amelyek nem tartalmaz az ajánlat keretében elérhető ez a mennyiség megegyezik a felhasznált mennyiség |
+| Rate (Egységár) |A sebesség díját a számlázható egység |
+| Érték |A Rate oszlop Kerettúllépés mennyiség oszlop szorzása eredménye látható. A felhasznált mennyiség nem haladja meg a foglalt mennyiséget, ha ott nem költségekkel ebben az oszlopban. |
+| Rész összesen |Minden a költségek előtti adózási a számlázási időszak összege |
+| Teljes összeg százalékában |Adózás a számlázási időszak után a díjak összege |
 
-## <a name="how-do-i-make-sure-that-the-charges-in-my-invoice-are-correct"></a>Hogyan tehetem meg arról, hogy helyesen-e a költségeket a számla?
-Ha a számlán, hogy milyen további részleteket a járnak, [a Microsoft Azure a számlázási ismertetése.](billing-understand-your-bill.md)
+## <a name="how-do-i-make-sure-that-the-charges-in-my-invoice-are-correct"></a>Hogyan ellenőrizhetem, hogy, hogy helyesek-e a költségek, a számlán?
+Ha a számlán, adja meg további részleteket a díj, lásd: [Microsoft Azure-hoz kapcsolódó számlák magyarázata.](billing-understand-your-bill.md)
 
-## <a name="need-help-contact-support"></a>Segítség Forduljon a támogatási szolgálathoz.
-Ha további segítségre van, [forduljon a támogatási szolgálathoz](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) a probléma elhárítva gyors eléréséhez.
+## <a name="need-help-contact-support"></a>Segítség Forduljon az ügyfélszolgálathoz.
+Ha továbbra is segítségre van szüksége, [forduljon az ügyfélszolgálathoz](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) a probléma gyors megoldása érdekében.

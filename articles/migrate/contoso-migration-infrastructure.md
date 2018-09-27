@@ -5,14 +5,14 @@ services: azure-migrate
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 09/05/2018
+ms.date: 09/26/2018
 ms.author: raynew
-ms.openlocfilehash: 533b12f5a2a70834d9f0dc7ecabebf7864fb3a1e
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: bf2562f4772d20f099faec94794e0e908e6636d5
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44299012"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47227537"
 ---
 # <a name="contoso---deploy-a-migration-infrastructure"></a>Contoso - áttelepítési infrastruktúra üzembe helyezése
 
@@ -58,7 +58,7 @@ Mielőtt Contoso áttelepíthetők az Azure-ba, rendkívül fontos egy Azure-inf
 
 Mielőtt elkezdjük áttekinteni az infrastruktúra, érdemes olvassa el ebben a cikkben bemutatjuk az Azure-képességek néhány háttér-információkat:
 
-- Nincsenek elérhető az Azure a hozzáférés, beleértve a használatalapú fizetés, a nagyvállalati szerződés (EA) megvásárlása számos lehetőséget, vagy a Felhőszolgáltatók (CSP) néven ismert Microsoft-viszonteladók, vagy a Microsoft Partners Open licencprogram. Ismerje meg [vásárlási lehetőségek](https://azure.microsoft.com/pricing/purchase-options/), és megtudhatja, hogyan lehet [Azure-előfizetések vannak rendszerezve](https://azure.microsoft.com/blog/organizing-subscriptions-and-resource-groups-within-the-enterprise/).
+- Nincsenek vásárlási Azure eléréséhez, beleértve a használatalapú fizetés, a nagyvállalati szerződés (EA), az Open licencprogramokon Microsoft-viszonteladók, vagy a Felhőszolgáltatók (CSP) néven ismert Microsoft Partners számos lehetőséget. Ismerje meg [vásárlási lehetőségek](https://azure.microsoft.com/pricing/purchase-options/), és megtudhatja, hogyan lehet [Azure-előfizetések vannak rendszerezve](https://azure.microsoft.com/blog/organizing-subscriptions-and-resource-groups-within-the-enterprise/).
 - Az Azure áttekintése [identitás és hozzáférés-kezelés](https://www.microsoft.com/trustcenter/security/identity). Különösen ismertetése [Azure ad-ben, és kiterjeszti a helyszíni AD a felhőbe](https://docs.microsoft.com/azure/active-directory/identity-fundamentals). Nincs információ hasznos letölthető e-könyv [identitás és hozzáférés-kezelés (IAM) hibrid környezetben](https://azure.microsoft.com/resources/hybrid-cloud-identity/).
 - Az Azure robusztus hálózati infrastruktúrát hibrid kapcsolódási lehetőségeket biztosít. Áttekintheti a [hálózatkezelés és a hálózati hozzáférés-vezérlés](https://docs.microsoft.com/azure/security/security-network-overview).
 - Ismerkedjen meg [Azure biztonsági](https://docs.microsoft.com/azure/security/azure-security), és olvassa el a terv létrehozása [cégirányítási](https://docs.microsoft.com/azure/security/governance-in-azure).
@@ -96,7 +96,7 @@ A Contoso történik egy [nagyvállalati szerződés (EA)](https://azure.microso
 
 Után kell fizetnie, az Azure-hoz, Contoso kell, hogyan lehet Azure-előfizetések kezelése. Contoso nagyvállalati szerződéssel rendelkezik, és így az Azure-előfizetések száma nincs korlátozva, állíthatja be.
 
-- Az Azure nagyvállalati beléptetés határozza meg, hogyan vállalati alakzat és Azure-szolgáltatásokat használ, és egy alapvető cégirányítási struktúrát határozza meg.
+- Az Azure nagyvállalati beléptetés határozza meg, hogyan egy vállalati alakzatokat és az Azure-szolgáltatásokat használ, és határozza meg a core irányítási szerkezete.
 - Első lépésként Contoso megállapítása szerint a struktúra (más néven egy enterprise scaffold a nagyvállalati beléptetés. A Contoso használt [Ez a cikk](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-subscription-governance) ismertetése, és a egy scaffold kialakítása érdekében.
 - Most a Contoso egy funkcionális módszer használatához az előfizetések kezeléséhez határozott meg.
     - A vállalaton belüli fogja használni, amely az Azure-költségvetési szabályozza egy informatikai részleghez. Ez az előfizetés csak csoport lesz.
@@ -112,7 +112,7 @@ Előfizetések konfigurálva, a Contoso tekintse meg a Microsoft. A licencelési
 
 #### <a name="azure-hybrid-benefit"></a>Azure Hybrid Benefit
 
-Az Azure-beli virtuális gépek üzembe helyezésekor, a standard szintű lemezképek tartalmaznak egy licenc, amely a Contoso számára a szoftverrel használt percalapú díja. Contoso azonban már egy hosszú távú a Microsoft ügyfél és EAs maradt, és nyissa meg a licenceket frissítési garancia (SA). 
+Az Azure-beli virtuális gépek üzembe helyezésekor, a standard szintű lemezképek tartalmaznak egy licenc, amely a Contoso számára a szoftverrel használt percalapú díja. Azonban a Contoso lett egy hosszú távú Microsoft-ügyfél, és EAs és a nyílt licenceket frissítési garanciával (SA) rendelkező rendelkezik tárolja. 
 
 Az Azure Hybrid Benefit a Contoso az áttelepítés költséghatékony módszer lehetővé teszi azáltal, hogy ez az Azure virtuális gépek és az SQL Server számítási feladatok átalakításával vagy frissítési garanciával rendelkező Windows Server Datacenter és Standard edition-licencek újrafelhasználásával kezelt. Ez lehetővé teszi a számítási díjat fizeti egy alacsonyabb alapú virtuális gépek és az SQL Server Contoso. [További információk](https://azure.microsoft.com/pricing/hybrid-benefit/).
 
@@ -137,8 +137,8 @@ Használatával a fenntartott példányok adott virtuális gép üzemelő péld�
 - Contoso úgy dönt, hogy a helyszíni Active Directory kiterjesztheti a felhőbe, nem pedig egy új különálló rendszert az Azure-ban.
 - Létrehoz egy Azure-alapú Active Directory ehhez.
 - Kell kiépíteni az új Azure AD contoso Office 365-höz nem működik a.
-- Az Office 365 az Azure AD felhasználói felügyelethez. Contoso volt Office 365 szolgáltatással, ha azt szeretné már rendelkezik egy Azure ad-ben kulcsfontosságú alapelve, és használja, mint az elsődleges AD.
-- [További](https://support.office.com/article/understanding-office-365-identity-and-azure-active-directory-06a189e7-5ec6-4af2-94bf-a22ea225a7a9) az Office 365, Azure AD-ről, és ismerje meg [egy előfizetés hozzáadása](https://docs.microsoft.com/azure/active-directory/active-directory-how-subscriptions-associated-directory) egy meglévő Azure ad-hez.
+- Az Office 365 az Azure AD felhasználói felügyelethez. Ha a Contoso Office 365 használta, Azure AD-bérlő már rendelkeznie, és használhatja azt, mint az elsődleges AD.
+- [További](https://support.office.com/article/understanding-office-365-identity-and-azure-active-directory-06a189e7-5ec6-4af2-94bf-a22ea225a7a9) az Office 365, Azure AD-ről, és ismerje meg [egy előfizetés hozzáadása](https://docs.microsoft.com/azure/active-directory/active-directory-how-subscriptions-associated-directory) egy meglévő Azure AD-bérlőhöz.
 
 ### <a name="create-an-azure-ad"></a>Hozzon létre egy Azure ad-ben
 
@@ -154,16 +154,16 @@ Contoso az Azure AD ingyenes kiadásának mobilalkalmazásoknak része egy Azure
 
 ### <a name="add-the-domain-name"></a>A tartománynév hozzáadása
 
-A standard szintű tartománynevét használja, a Contoso rendszergazdáknak kell hozzáadása egy egyéni nevet az Azure AD. Ez a beállítás lehetővé teszi számukra ismerős felhasználónevek hozzárendelése. Például egy felhasználó e-mail-címmel bejelentkezhet billg@contoso.com, ahelyett, hogy kellene billg@contosomigration.microsoft.com. 
+A szokásos tartománynév használatára, a Contoso rendszergazdáknak kell, egy egyéni tartománynév hozzáadása az Azure AD. Ez a beállítás lehetővé teszi számukra ismerős felhasználónevek hozzárendelése. Ha például egy felhasználó bejelentkezhet az e-mail-cím billg@contoso.com, ahelyett, hogy kellene billg@contosomigration.microsoft.com. 
 
-Beállításához hozzáadása a címtárhoz, egy egyéni nevet adjon hozzá egy DNS-bejegyzést, és ezután ellenőrizze a nevet az Azure ad-ben.
+Egyéni tartománynév beállítása, azt hozzá a címtárhoz, egy DNS-bejegyzés hozzáadása, és ellenőrizze a neve az Azure ad-ben.
 
 1. A **egyéni tartománynevek** > **egyéni tartomány hozzáadása**, akkor hozzáadhatja a tartományt.
 2. DNS-bejegyzés használhatja az Azure, regisztrálnia kell azt a tartományregisztrálónál. 
 
     - Az a **egyéni tartománynevek** listán, vegye figyelembe a DNS-információkat a neve. MX bejegyzés használ.
     - Ezek a névkiszolgáló ehhez hozzá kell férniük. Jelentkezzen be a Contoso.com tartományhoz, és hozzon létre egy új MX-rekordot az Azure AD-ben feljegyzett adatokkal által biztosított DNS-bejegyzést.  
-1. Miután a DNS-rekordok propagálása a tartományhoz, a részletek nevében kattintanak **győződjön meg arról** a egyéni név ellenőrzése.
+1. Miután a DNS-rekordok propagálása a tartományhoz, a részletek nevében kattintanak **győződjön meg arról** az egyéni tartománynév ellenőrzése.
 
      ![Az Azure AD-DNS](./media/contoso-migration-infrastructure/azure-ad-dns.png) 
 
@@ -176,7 +176,7 @@ Most, hogy az Azure ad-ben működő, a Contoso rendszergazdák alkalmazottak ho
 Azure-erőforráscsoportok összegyűjtésére Azure-erőforrások. Műveletek végrehajtása a csoporton belül az erőforrásokat az Azure-erőforráscsoport azonosítója használata lehetővé teszi.
 
 - Azure-előfizetések több erőforráscsoporthoz is rendelkezhet, de egy erőforráscsoportot csak akkor létezhet egyetlen előfizetésben jön létre.
-- Emellett egyetlen rendelkezhet több olyan erőforrást, de egy erőforrás csak egyetlen csoporthoz is tartozhatnak.
+- Emellett egyetlen rendelkezhet több olyan erőforrást, de egy erőforrás csak egyetlen erőforráscsoportot is tartozhatnak.
 
 Contoso rendszergazdák beállítása Azure-erőforráscsoportot, az alábbi táblázat foglalja össze.
 
@@ -224,7 +224,7 @@ Integrációs elősegítése érdekében a Contoso használja a [Azure AD Connec
 
     ![AD Connect letöltése](./media/contoso-migration-infrastructure/download-ad-connect.png) 
 
-2. Elindítja a **AzureADConnect.msi** telepítés használatával **gyorsbeállítások használata**. Ez a leggyakoribb telepítési, és a egy egyerdős topológiával, a Jelszókivonat-szinkronizálást a hitelesítéshez használható.
+2. Elindítja a **AzureADConnect.msi** telepítés, a **gyorsbeállítások használata**. Ez a leggyakoribb telepítési, és a egy egyerdős topológiával, a Jelszókivonat-szinkronizálást a hitelesítéshez használható.
 
     ![Az AD Connect varázsló](./media/contoso-migration-infrastructure/ad-connect-wiz1.png) 
 
@@ -244,7 +244,7 @@ Vegye figyelembe:
 
     ![A helyszíni AD az Azure-ban](./media/contoso-migration-infrastructure/on-prem-ad-groups.png) 
 
-- Contoso IT-részlegének jelenik meg az egyes csoportok, a szerepkör alapján.
+- A Contoso informatikai csapat jelenik meg az egyes csoportok, a szerepkör alapján.
 
     ![A helyszíni AD-tagok az Azure-ban](./media/contoso-migration-infrastructure/on-prem-ad-group-members.png) 
 
@@ -255,7 +255,7 @@ Azure [szerepköralapú hozzáférés-vezérlés (RBAC)](https://docs.microsoft.
 Contoso-rendszergazdák mostantól rendel az AD-csoportokat, akkor szinkronizálja a helyszíni szerepkörök.
 
 1. Az a **ControlCobRG** erőforráscsoportot, kattintson **hozzáférés-vezérlés (IAM)** > **Hozzáadás**.
-2. A **engedélyek hozzáadása** > **szerepkör**, kiválasztják **közreműködői**, és válassza ki a **ContosoCobRG** AD-csoportot a listából. A csoport megjelenik majd **kiválasztott tagok** listája. 
+2. A **engedélyek hozzáadása** > **szerepkör**, > **közreműködői**, akkor válassza ki a **ContosoCobRG** AD-csoportot a listából. A csoport megjelenik majd a **kiválasztott tagok** listája. 
 3. Ezek ismételje meg ezt az egyéb erőforráscsoportok ugyanazokkal az engedélyekkel (kivéve a **ContosoAzureAdmins**), a közreműködői engedélyekkel ad hozzá az AD-fiókot, amely megegyezik az erőforráscsoport.
 4. Az a **ContosoAzureAdmins** AD-csoporthoz hozzárendelni a **tulajdonosa** szerepkör.
 
@@ -274,7 +274,7 @@ Azure-erőforrások régiók belül vannak telepítve.
 - Olvassa el [Azure-régiók](https://azure.microsoft.com/global-infrastructure/regions/), és tudomásul [hogyan régióban van párosítva](https://docs.microsoft.com/azure/best-practices-availability-paired-regions).
 
 
-Contoso úgy döntött, hogy nyissa meg a másodlagos régió, USA középső RÉGIÓJA és USA keleti RÉGIÓJA 2 (Virginia található), az elsődleges régióba. Van néhány, ennek oka:
+Contoso döntött, hogy nyissa meg az USA keleti RÉGIÓJA 2 (Virginia található), az elsődleges régió, USA középső RÉGIÓJA (Iowa található), a másodlagos régióba. Van néhány, ennek oka:
 
 - A Contoso-datacenter New Yorkban található, és a Contoso tekinthető késés a legközelebbi adatközpontba.
 - Az USA keleti régiója 2 rendelkezik, a szolgáltatás és a termékek, amely a Contoso kell használnia. Nem minden Azure régiója nem ugyanaz a termékek és szolgáltatások rendelkezésre álló tekintetében. Áttekintheti [az Azure-termékek régiók szerint](https://azure.microsoft.com/global-infrastructure/services/).
@@ -282,7 +282,7 @@ Contoso úgy döntött, hogy nyissa meg a másodlagos régió, USA középső R�
 
 A hibrid környezetről fenyegetésként észlel, mivel a Contoso cégnek szüksége van, érdemes figyelembe venni a rugalmasság és a egy vész-helyreállítási stratégiát beépítése a régió tervezési meg. Széles körben egyetlen régióban üzembe helyezés, a tartalék tartományok és regionális rugalmasság, a párosítás keresztül, egy teljes aktív-aktív minta a cloud services és a database szolgáltatása, telepített és karbantartási az Azure platform stratégiák közötti a felhasználók a két régióban.
 
-Contoso úgy döntött, hogy a középső úton igénybe. Alkalmazások és erőforrások egy elsődleges régióban üzembe lesz, és ne a teljes infrastruktúra a másodlagos régióba, hogy az elkészült alkalmazás vészhelyreállítási vagy régió hiba esetén egy teljes biztonsági mentés szerepét készen áll.
+Contoso úgy döntött, hogy a középső úton igénybe. Alkalmazások és erőforrások egy elsődleges régióban üzembe lesz, és adatpéldányok teljes infrastruktúra a másodlagos régióban, hogy működjön, egy teljes biztonsági mentés esetén a teljes alkalmazás katasztrófa, vagy a regionális meghibásodással készen áll.
 
 ### <a name="set-up-availability-zones"></a>Állítsa be a rendelkezésre állási zónák
 
@@ -300,9 +300,9 @@ Contoso fog üzembe helyezni a rendelkezésre állási zónák alkalmazásként 
 
 A regionális tervezési helyen, a Contoso egy hálózati stratégiát érdemes készen áll. Úgy gondolja, hogy hogyan a helyszíni adatközpont és az Azure csatlakoztatása és kommunikálnak egymással, és az Azure-ban a hálózati infrastruktúra tervezése kell. Kifejezetten a Contoso kell:
 
-**Hibrid hálózati kapcsolatok tervezése**: döntse el, hogyan fogja a helyszíni és az Azure hálózatok összekapcsolásához.
-**Az Azure-beli hálózati infrastruktúra tervezése**: döntse el, hogyan elvégzi az üzembe helyezést hálózatokon keresztül régióban. Hogyan fog kommunikálni a hálózatok ugyanazon a régión belül és régiók között?
-**Megtervezése és beállítása az Azure-hálózatok**: állítsa be az Azure-hálózatok és alhálózatok, és döntse el, mi helyezkednek el rajtuk.
+- **Hibrid hálózati kapcsolatok tervezése**: döntse el, hogyan fogja a helyszíni és az Azure hálózatok összekapcsolásához.
+- **Az Azure-beli hálózati infrastruktúra tervezése**: döntse el, hogyan elvégzi az üzembe helyezést hálózatokon keresztül régióban. Hogyan fog kommunikálni a hálózatok ugyanazon a régión belül és régiók között?
+- **Megtervezése és beállítása az Azure-hálózatok**: állítsa be az Azure-hálózatok és alhálózatok, és döntse el, mi helyezkednek el rajtuk.
 
 ### <a name="plan-hybrid-network-connectivity"></a>Hibrid hálózati kapcsolatok tervezése
 
@@ -333,7 +333,7 @@ Itt látható, hogyan Contoso úgy döntött, hogy a hibrid kapcsolatot:
 
 ### <a name="design-the-azure-network-infrastructure"></a>Az Azure hálózati infrastruktúra tervezése
 
-Rendkívül fontos, hogy Contoso hálózatokat hozzon létre, amely lehetővé teszi a megfelelő hibrid üzembe helyezést, biztonságos és méretezhető módon. Ehhez a Contoso egy hosszú távú megközelítés tart, és tervez, virtuális hálózatok (Vnetek) rugalmasság és a vállalati használatra. [További](https://docs.microsoft.com/azure/virtual-network/virtual-network-vnet-plan-design-arm) virtuális hálózatok tervezésével kapcsolatban.
+Rendkívül fontos, hogy Contoso hálózatokat hozzon létre, amely lehetővé teszi a megfelelő hibrid üzembe helyezést, biztonságos és méretezhető módon. Ehhez a Contoso a hosszú távú megközelítés tart, és tervez, virtuális hálózatok (Vnetek) rugalmas és vállalati használatra. [További](https://docs.microsoft.com/azure/virtual-network/virtual-network-vnet-plan-design-arm) virtuális hálózatok tervezésével kapcsolatban.
 
 Csatlakozhat a két régióban, a Contoso egy eseményközpont-hub hálózati modell megvalósításához határozott meg:
 
@@ -378,7 +378,7 @@ A küllős modell, amely a Contoso úgy döntött, belül kell végiggondolni, h
 - A Contoso adatközpontból:
     - VPN-helyek (vagy ExpressRoute) bejövő forgalom eléri az Azure VPN-átjáró nyilvános IP-címét.
     - Adatforgalmat a tűzfalon keresztül, és a tűzfal-szabályok érvényesek.
-    - Szabályok alkalmazása után forgalmat egy belső terheléselosztót (standard szintű Termékváltozat) a belső megbízható zóna alhálózaton lesznek továbbítva.
+    - Alkalmazta, hogy a tűzfalszabályok, forgalmat egy belső terheléselosztót (standard szintű Termékváltozat) a belső megbízható zóna alhálózaton lesznek továbbítva.
     - A VPN-kapcsolaton keresztül a helyszíni adatközpontba a megbízható alhálózatról kimenő forgalmat a tűzfal és a szabályok a alkalmazni, mielőtt továbblépne a site-to-site VPN-kapcsolaton keresztül továbbít.
 
 
@@ -399,12 +399,12 @@ USA keleti RÉGIÓJA 2 az elsődleges régióban, amely a Contoso-erőforrások 
 
 - **Hub**: az agyi virtuális hálózat, az USA 2. keleti régiója az elsődleges kapcsolat a helyszíni adatközpontba központi helye.
 - **Virtuális hálózatok**: Kelet-USA 2. küllő virtuális hálózatok segítségével számítási feladatok elkülönítésére, ha szükséges. Az agyi virtuális hálózat mellett a Contoso két küllő virtuális hálózatok, az USA keleti RÉGIÓJA 2 fog rendelkezni:
-    - **VNET-DEV-EUS2**. A virtuális hálózat biztosít a fejlesztési és tesztelési csapata egy teljes körűen használható hálózati fejlesztési projektek lesz. Próbaüzem üzem területként fog működni, és a termelési infrastruktúrával függvényt fogja alkalmazni.
+    - **VNET-DEV-EUS2**. A virtuális hálózat biztosítanak a fejlesztési, és a egy teljesen működőképes hálózattal fejlesztési projektek csapat tesztelése. Próbaüzem üzem területként fog működni, és a termelési infrastruktúrával függvényt fogja alkalmazni.
     - **VNET-ÉLES-EUS2**: az Azure IaaS éles összetevőket ezen a hálózaton található. 
     -  Minden egyes virtuális hálózat lesz a saját egyedi címtér nélkül. Contoso kíván konfigurálja az útválasztást, anélkül, hogy helyezkedik el.
 - **Alhálózatok**:
     - Egy alhálózatot az kell minden hálózat minden egyes alkalmazás-szint
-    - A termelési hálózat minden alhálózata egy egyező alhálózatot kell fejlesztési a virtuális hálózaton.
+    - A termelési hálózat minden alhálózata egy egyező alhálózatot kell fejlesztés a virtuális hálózaton.
     - Emellett az éles hálózati környezetben van tartományvezérlők alhálózatát.
 
 USA 2. keleti régiójában található virtuális hálózatok az alábbi táblázat foglalja össze.
@@ -535,7 +535,7 @@ A tartományvezérlők a VNET-ÉLES-EUS2 hálózatban a Contoso biztosítani sze
 
     ![Társviszony-létesítés](./media/contoso-migration-infrastructure/peering2.png)
 
-3. A helyszíni értékre állítjuk be egy statikus útvonalat, amely a helyi forgalom irányítása a virtuális hálózathoz a VPN-alagúton keresztül irányítja. A konfigurációs szeretné befejezni az átjáró, amely a VPN-alagút biztosít a Contoso Azure-bA. Ehhez a Windows útválasztási és távelérési használnak.
+3. A helyszíni értékre állítjuk be egy statikus útvonalat, amely a helyi forgalom irányítása a virtuális hálózathoz a VPN-alagúton keresztül irányítja. A konfigurációs szeretné befejezni az átjáró, amely a VPN-alagút biztosít a Contoso Azure-bA. Ennek az RRAS használata.
 
     ![Társviszony-létesítés](./media/contoso-migration-infrastructure/peering3.png)
 
@@ -555,7 +555,7 @@ Contoso a rendszergazdák úgy döntött, hogy az Azure DNS szolgáltatásban ne
 
 - Mivel ez egy hibrid hálózat összes a virtuális gépek a helyszínen és az Azure-ban képeseknek kell lenniük feloldani a megfelelő működéséhez. Ez azt jelenti, hogy a virtuális hálózatok egyéni DNS-beállításokat kell alkalmazni.
 - Contoso jelenleg rendelkezik a Contoso az adatközpontban és a fiókirodák telepített tartományvezérlő. Az elsődleges DNS-kiszolgálók CONTOSODC1(172.16.0.10) és CONTOSODC2(172.16.0.1)
-- Ha a virtuális hálózatok vannak telepítve, a helyszíni tartományvezérlők a hálózatokat a DNS-kiszolgálóként használandó lesz beállítva. 
+- Ha a virtuális hálózatok vannak telepítve, a helyi tartományvezérlő a hálózat DNS-kiszolgálóként használandó lesz beállítva. 
 - Ennek konfigurálásához, ha egyéni DNS használata a virtuális hálózat az Azure rekurzív feloldók IP-címet (például a 168.63.129.16) a DNS-listához hozzá kell adni.  Ehhez a Contoso DNS-kiszolgáló beállításainak konfigurálja az egyes virtuális hálózatok. Például a VNET-HUB-EUS2 hálózati egyéni DNS-beállításainak a következő lesz:
     
     ![Egyéni DNS](./media/contoso-migration-infrastructure/custom-dns.png)
@@ -607,7 +607,7 @@ Miután frissítette a hálózati beállítások, Contoso rendszergazdák épít
 
     ![DNS-továbbító](./media/contoso-migration-infrastructure/dns-forwarder.png)
 
-10. Most majd frissítse az egyéni DNS-beállítások az egyes virtuális hálózatok a megfelelő tartományvezérlő számára, a virtuális hálózathoz. A helyszíni tartományvezérlők tartalmazzák a listában.
+10. Most, frissítse az egyéni DNS-beállítások az egyes virtuális hálózatok a megfelelő tartományvezérlő számára, a virtuális hálózathoz. A helyszíni tartományvezérlők tartalmazzák a listában.
 
 ### <a name="set-up-active-directory"></a>Active Directory beállítása
 
@@ -642,11 +642,11 @@ Konfigurálása identitás és hozzáférés-vezérlés, a Contoso már megkezd�
 
 ### <a name="set-up-policies"></a>Házirendek beállítása
 
-Az Azure Policy szolgáltatást kiértékeli az erőforrásokat, és azokat, amelyek nem felelnek meg a már működik a szabályzatdefiníciók vizsgálatát. Például előfordulhat, hogy rendelkezik egy szabályzatot, amely csak lehetővé teszi, hogy bizonyos típusú virtuális gépek, illetve egy adott címkével rendelkeznie erőforrásokra van szükség. 
+Az Azure Policy szolgáltatást kiértékeli az erőforrásokat, és azokat, amelyek nem felelnek meg a már működik a szabályzatdefiníciók vizsgálatát. Előfordulhat például, hogy egy szabályzatot, amely csak lehetővé teszi, hogy bizonyos típusú virtuális gépek, illetve egy adott címkével rendelkeznie erőforrásokra van szükség. 
 
-Azure házirendek határozzák meg a szabályzat-definíció, és a szabályzat-hozzárendelés megadása a hatókör, amelyben egy szabályzatot kell alkalmazni. A hatókör között lehet a felügyeleti csoport egy erőforráscsoporthoz. [Ismerje meg,](https://docs.microsoft.com/azure/azure-policy/create-manage-policy) vonatkozó szabályzatok létrehozása és kezelése.
+Azure házirendek határozzák meg a szabályzat-definíció, és a egy szabályzat-hozzárendelés megadja a hatókör, amelyben egy szabályzatot kell alkalmazni. A hatókör között lehet a felügyeleti csoport egy erőforráscsoporthoz. [Ismerje meg,](https://docs.microsoft.com/azure/azure-policy/create-manage-policy) vonatkozó szabályzatok létrehozása és kezelése.
 
-Contoso szeretne néhány szabályzatok – első lépések:
+A Contoso biztosítani szeretné néhány szabályzatok – első lépések:
 
 - Győződjön meg arról, hogy erőforrások kizárólag a EUS2 és CUS régióban telepíthető a szabályzatot szeretné.
 - Szeretné korlátozni a virtuális gépek Termékváltozatait csak a jóváhagyott termékváltozatokra. A szándéka, hogy győződjön meg arról, hogy költséges VM Termékváltozatokban nem használja.
@@ -701,7 +701,7 @@ Erőforrások nyomon követésére, mivel a rendszer hozzáadja, csak Contoso er
 
 Amellett, hogy az erőforrások és a tulajdonosok kapcsolatos információkat, a címkék lehetővé teszi Contoso összesítő és csoport-erőforrásokat, és az adatokat a jóváírási célból.
 
-Contoso cégnek szüksége van, úgy, hogy megfelel az üzleti az Azure-objektumok megjelenítéséhez. Például, de a szerepkör vagy a részleg. Vegye figyelembe, hogy erőforrások találhatók ugyanabban az erőforráscsoportban egy címke megosztása nem szükséges. Ehhez Contoso hoz létre egy egyszerű címkerendszert, így mindenki ugyanazt a címkét használja.
+Contoso cégnek szüksége van, úgy, hogy megfelel az üzleti az Azure-objektumok megjelenítéséhez. Például a szerepkör vagy a részleg. Vegye figyelembe, hogy erőforrások találhatók ugyanabban az erőforráscsoportban egy címke megosztása nem szükséges. Contoso hoz létre egy egyszerű címkerendszert, így mindenki ugyanazt a címkét használja.
 
 **Címke neve** | **Érték**
 --- | ---
@@ -724,7 +724,7 @@ Miután létrehozta a címke, Contoso visszaléphet, és hozzon létre új Azure
 
 Biztonsági elengedhetetlen a felhőben, és az Azure széles választékának biztonsági eszközöket és képességeket nyújt. Ezek segítségével könnyebben hozhat létre, olyan biztonságos megoldásokat a biztonságos Azure-platformon. Olvasási [bizalom a megbízható felhőben](https://azure.microsoft.com/overview/trusted-cloud/) tudhat meg többet az Azure security.
 
-Van néhány fő szempontokat kell figyelembe venni a Contoso esetében:
+Néhány szempontot kell figyelembe venni a Contoso esetében:
 
 - **Az Azure Security Center**: az Azure Security Center egységes biztonsági felügyeletet és fejlett fenyegetésvédelmet biztosít a hibrid felhőalapú számítási feladatokhoz. A Security Centerrel biztonsági szabályzatokat alkalmazhat a számítási feladatokra, korlátozhatja a fenyegetéseknek való kitettséget, valamint észlelheti és elháríthatja a támadásokat.  [További információk](https://docs.microsoft.com/azure/security-center/security-center-intro).
 - **Hálózati biztonsági csoportok (NSG-k)**: egy NSG-t egy szűrőt (tűzfal), amely felsorolja azokat a biztonsági szabályok, amelyek alkalmazásakor, vagy az Azure vnetekhez csatlakoztatni erőforrásokra irányuló hálózati forgalom megtagadásához. [További információk](https://docs.microsoft.com/azure/virtual-network/security-overview).
@@ -761,11 +761,12 @@ Contoso korlátozhatja a hálózati biztonsági csoportok használata a virtuál
 - A hálózati biztonsági csoport egy biztonsági szabályokból álló listát tartalmaz, amelyek engedélyezik vagy megtagadják a bejövő vagy kimenő hálózati forgalmat a forrás vagy a cél IP-címe, illetve portok vagy protokollok alapján.
 - Ha egy alhálózathoz, szabályok érvényesek az alhálózaton található összes erőforrást. Hálózati adapterek mellett ez tartalmazza a példányok az Azure-szolgáltatások üzembe helyezheti az alhálózaton.
 - Az alkalmazásbiztonsági csoportok (asg-k) lehetővé teszi egy alkalmazás struktúra, amely lehetővé teszi a virtuális gépek természetes bővítményeként konfigurálhatja a hálózati biztonságot, és ezen csoportok alapján a hálózati biztonsági szabályzatok meghatározása.
-    - Alkalmazás biztonsági csoportok jelenti azt, hogy a biztonsági szabályokat nagy léptékben, konkrét IP-címek manuális karbantartása nélkül is újrahasznosíthatja. A platform képes kezelni a konkrét IP-címek és a szabálykészletek jelentette összetettséget, így Ön az üzleti logikára összpontosíthat.
-    - Az alkalmazásbiztonsági csoportokat megadhatja forrásként és célként is a biztonsági szabályokban. A biztonsági szabály meghatározása után létrehozhat virtuális gépeket, és a virtuális gép hálózati adaptereket hozzárendelése egy csoporthoz. 
+    - Az alkalmazásbiztonsági csoportok jelenti azt, hogy a Contoso felhasználhatja a biztonsági szabályokat nagy léptékben, konkrét IP-címek manuális karbantartása nélkül. A platform képes kezelni a konkrét IP-címek és a szabálykészletek jelentette összetettséget, így Ön az üzleti logikára összpontosíthat.
+    - Contoso megadható egy alkalmazásbiztonsági csoportot a forrás- és a biztonsági szabályban. A biztonsági szabály meghatározása után a Contoso is virtuális gépek létrehozása és a virtuális gép hálózati adaptereket hozzárendelése egy csoporthoz. 
 
 
-Contoso fogja végrehajtani az NSG-k és alkalmazásbiztonsági csoporttal. Contoso NSG-kezelésről van szó. Azt a is aggódik a túlzott az NSG-k és üzemeltetési csapat számára a hozzáadott összetettség.
+Contoso fogja végrehajtani az NSG-k és alkalmazásbiztonsági csoporttal. NSG-kezelésről feladata a contoso. Azt a is aggódik a túlzott az NSG-k és üzemeltetési csapat számára a hozzáadott összetettség. Íme, mi Contoso tegye:
+
 - Minden forgalmat, és kimenő (észak – dél), minden alhálózat egy NSG-szabályt, kivéve a Hub hálózatokban a GatewaySubnets érvényesek lesznek.
 - Minden olyan tűzfallal vagy a tartományvezérlő által alhálózati NSG-k és a hálózati adapter NSG-ket is védi.
 - Az összes éles üzemi alkalmazások alkalmazásbiztonsági csoporttal a alkalmazni kell.

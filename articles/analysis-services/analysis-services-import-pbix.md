@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 08/16/2018
+ms.date: 09/26/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: a2855ca5dbb76d3fcc30c4b1007c20bb48c91c9b
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.openlocfilehash: a4bb5f59e7aa99a676145ba7a6dbd1883cb860cf
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "42055321"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47394319"
 ---
 # <a name="import-a-power-bi-desktop-file"></a>A Power BI Desktop-fájl importálása
 
@@ -22,11 +22,13 @@ Azure Analysis Services adatmodellt a Power BI Desktop-fájl (pbix) importálhat
 **Korlátozások**   
 
 - A portálon, amely a webes Tervező funkcióval egy pbix-fájlból használ **előzetes**. A funkció korlátozódik. Speciális modell fejlesztési és tesztelési célszerű a Visual Studio (SSDT) és az SQL Server Management Studio (SSMS) használja.
+- Ha importálása során a következő hibaüzenetet kapja, a pbix-fájl rendelkezik előzetes verziójú funkciók engedélyezve van, amely még nem támogatottak az Azure Analysis Servicesben.
+
+    ![Kompatibilitási szintre vonatkozó figyelmeztetés](./media/analysis-services-import-pbix/aas-import-pbix-cl-warning.png)
 - Kiszolgáló-rendszergazdai engedélyek egy pbix-fájlból importálni kell rendelkeznie.
 - A pbix-modell csatlakozhat **Azure SQL Database** és **Azure SQL Data Warehouse** csak adatforrásokhoz.
 - A pbix-modell nem lehet élő vagy DirectQuery-kapcsolatok. 
 - Ha a pbix-adatmodellt tartalmaz, az Analysis Services nem támogatja a metaadatok meghiúsulhat.
-
 
 ## <a name="to-import-from-pbix"></a>Pbix-fájlt importálása
 

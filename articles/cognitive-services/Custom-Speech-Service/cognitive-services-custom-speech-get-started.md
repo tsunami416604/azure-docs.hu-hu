@@ -1,21 +1,22 @@
 ---
-title: A Custom Speech Service az Azure-ban – első lépések |} A Microsoft Docs
+title: A Custom Speech Service használatának első lépései
+titlesuffix: Azure Cognitive Services
 description: Fizessen elő a Custom Speech service és a szolgáltatás tevékenységek összekapcsolása a modell betanítását és üzembe helyezést az Azure-előfizetés.
 services: cognitive-services
 author: PanosPeriorellis
-manager: onano
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: custom-speech
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/08/2017
 ms.author: panosper
 ROBOTS: NOINDEX
-ms.openlocfilehash: bf674261a58aab4fee37920d12ce6a2ac54b58b8
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: ae72edd626bd91dea7cd2812a3ef821b905f59a4
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46975783"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47225242"
 ---
 # <a name="get-started-with-custom-speech-service"></a>Ismerkedés a Custom Speech Service
 
@@ -51,7 +52,7 @@ Testreszabott akusztikai modell és/vagy nyelvi modellek létrehozása után, ak
 Egy egyéni hang-szöveg transzformációs végpont létrehozása a részletes leírást talál [Itt](CustomSpeech-How-to-Topics/cognitive-services-custom-speech-create-endpoint.md).
 
 ## <a name="using-a-custom-speech-endpoint"></a>Egy egyéni beszéd-végpont használatával
-Kérelmek lehet küldeni a CRIS hang-szöveg transzformációs végpont nagyon hasonló módon az alapértelmezett Microsoft Cognitive Services beszédfelismerési végpontként. Vegye figyelembe, hogy ezeket a végpontokat az alapértelmezett végpontok a beszédfelismerő API funkcionálisan azonos. Így az ügyféloldali kódtár vagy a beszédfelismerő API REST API-val keresztül elérhető ugyanazokat a funkciókat is a érhető el az egyéni végpont.
+Kérelmek lehet küldeni a CRIS hang-szöveg transzformációs végpont nagyon hasonló módon az alapértelmezett Azure Cognitive Services beszédfelismerési végpontként. Vegye figyelembe, hogy ezeket a végpontokat az alapértelmezett végpontok a beszédfelismerő API funkcionálisan azonos. Így az ügyféloldali kódtár vagy a beszédfelismerő API REST API-val keresztül elérhető ugyanazokat a funkciókat is a érhető el az egyéni végpont.
 
 Részletes leírást talál a hang-szöveg transzformációs egyéni végpont használatát [Itt](CustomSpeech-How-to-Topics/cognitive-services-custom-speech-use-endpoint.md).
 

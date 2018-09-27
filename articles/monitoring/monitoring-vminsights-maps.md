@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/17/2018
 ms.author: magoedte
-ms.openlocfilehash: 30f9a874853f4cb492d7a562d0d2439b73cf62dc
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: e75409e791c00dc0a5bec591aecfbaa019df8f81
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46989974"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47225162"
 ---
 # <a name="using-azure-monitor-for-vms-map-to-understand-application-components"></a>Alkalmazás-összetevők ismertetése a virtuális gépeket a térképen a Azure Monitor használatával
-A detektált alkalmazás-összetevők megtekintése a Windows és Linux rendszerű virtuális gépek Azure-ban Ön a környezet figyelhető kétféle módon az Azure Monitor szolgáltatással a virtuális gépek esetében közvetlenül egy virtuális gépről vagy virtuális gépek az Azure Monitor csoportokhoz. 
+Megjelenítő a felderített alkalmazás figyelhető meg az Azure-környezetben futó Windows és Linux rendszerű virtuális gépekre components kétféle módon az Azure Monitor szolgáltatással a virtuális gépek esetében közvetlenül egy virtuális gépről vagy virtuális gépek az Azure Monitor csoportokhoz. 
 
 Ez a cikk segít megérteni a felhasználói élményt a két perspektíva adatai és a térkép funkció használata között. A virtuális gépek az Azure Monitor konfigurálásával kapcsolatos további információkért lásd: [engedélyezése az Azure Monitor-beli virtuális gépek](monitoring-vminsights-onboard.md).
 

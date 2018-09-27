@@ -9,12 +9,12 @@ ms.devlang: spark-scala
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: ankhanol
-ms.openlocfilehash: f71f5fa71d685af103bd82b3ccd2a910ab81d90f
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 34293ffc70ebbc2a8639913aefe3b62ed8e618d4
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46962913"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47222777"
 ---
 # <a name="access-azure-cosmos-db-cassandra-api-from-spark-on-yarn-with-hdinsight"></a>Hozzáférés az Azure Cosmos DB Cassandra API a Spark a YARN-HDInsight
 
@@ -32,7 +32,7 @@ Ez a cikk bemutatja, hogyan a Spark on HDInsight-Spark a YARN a spark-shell az A
 
 * [Cqlsh ellenőrzés céljából használja, így igény szerint](cassandra-spark-generic.md##connecting-to-azure-cosmos-db-cassandra-api-from-spark)
 
-* **Cassandra API-konfigurációt a Spark2** -Cassandra-összekötő a Datastax megköveteli, hogy a Cassandra-kapcsolatot a részletek a Spark környezet részeként inicializálni. Ha elindítja egy Jupyter notebookot, a spark-munkamenetet, és a környezet már inicializálva vannak, és nem tanácsos leállítása és a Spark környezet újrainicializálása, kivéve, ha ez kész, de minden beállítani, a HDInsight alapértelmezett Jupyter notebook indítási konfiguráció. Egy lehetséges megoldást, hogy a Cassandra példány részleteit hozzá Ambari, közvetlenül a Spark2 szolgáltatás konfigurációja. Ez a Spark2 szolgáltatás újraindítását igénylő fürtönként egy egyszeri tevékenységet.
+* **Cassandra API-konfigurációt a Spark2** -Cassandra a Spark-összekötő szükséges, hogy a Cassandra-kapcsolatot a részletek a Spark környezet részeként inicializálni. Ha elindítja egy Jupyter notebookot, a spark-munkamenetet, és a környezet már inicializálva vannak, és nem tanácsos leállítása és a Spark környezet újrainicializálása, kivéve, ha ez kész, de minden beállítani, a HDInsight alapértelmezett Jupyter notebook indítási konfiguráció. Egy lehetséges megoldást, hogy a Cassandra példány részleteit hozzá Ambari, közvetlenül a Spark2 szolgáltatás konfigurációja. Ez a Spark2 szolgáltatás újraindítását igénylő fürtönként egy egyszeri tevékenységet.
  
   1. Nyissa meg az Ambari, Spark2 szolgáltatást, majd kattintson a konfigurációk
 
@@ -68,7 +68,7 @@ Spark-shell tesztelés/feltárás célokat szolgál.
   import org.apache.spark.sql.types.{StructType, StructField, StringType, IntegerType,LongType,FloatType,DoubleType, TimestampType}
   import org.apache.spark.sql.cassandra._
 
-  //datastax Spark connector
+  //Spark connector
   import com.datastax.spark.connector._
   import com.datastax.spark.connector.cql.CassandraConnector
 

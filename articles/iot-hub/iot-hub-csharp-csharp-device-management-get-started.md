@@ -9,12 +9,12 @@ ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 09/15/2017
 ms.author: dobett
-ms.openlocfilehash: ed591007e6ad83dfbafe13db0bd3d8b53fc216f3
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: bca25f5e7a6fd7685d20236033a5a225c5183a2d
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43106369"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47225344"
 ---
 # <a name="get-started-with-device-management-netnet"></a>Ismerkedés az eszközfelügyelettel (.NET/.NET)
 
@@ -213,7 +213,7 @@ Ebben a szakaszban a következőkre van:
 8. A Visual Studio Megoldáskezelőben kattintson a jobb gombbal a megoldásra, majd kattintson a **Kezdőprojektek beállítása** parancsra. Válassza ki **egyetlen kezdőprojekt**, majd válassza ki a **SimulateManagedDevice** projekt a legördülő menüből. Hozza létre a megoldást.       
 
 > [!NOTE]
-> Az egyszerűség kedvéért ez az oktatóanyag nem valósít meg semmilyen újrapróbálkozási házirendet. Az éles kódban újrapróbálkozási házirendeket (például egy exponenciális leállítást), az MSDN-cikkben leírtak implementálandó [átmeneti hibák kezelésével](https://msdn.microsoft.com/library/hh680901.aspx).
+> Az egyszerűség kedvéért ez az oktatóanyag nem valósít meg semmilyen újrapróbálkozási házirendet. Az éles kódban újrapróbálkozási házirendeket (például egy exponenciális leállítást), a cikkben leírtak implementálandó [átmeneti hibák kezelésével](/azure/architecture/best-practices/transient-faults).
 
 ## <a name="run-the-apps"></a>Az alkalmazások futtatása
 

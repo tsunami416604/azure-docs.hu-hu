@@ -6,20 +6,20 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 09/24/2018
-ms.openlocfilehash: 149840157c5e9bb47be70f669b2078585fe4b56c
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.date: 09/26/2018
+ms.openlocfilehash: 03f22a7975e8f331efa9dcc30fd088f32bee1649
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46953027"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47393491"
 ---
 # <a name="monitor-performance-with-the-query-store"></a>A Query Store teljesítmény figyelése
 
 **A következőkre vonatkozik:** Azure Database for PostgreSQL 9.6 és 10
 
 > [!IMPORTANT]
-> A Query Store szolgáltatás jelenleg nyilvános előzetes verzióban.
+> A Query Store szolgáltatás jelenleg nyilvános előzetes verzióban csak korlátozott számú régióban.
 
 
 Az Azure Database for postgresql-hez a Query Store szolgáltatás lehetővé teszi nyomon követheti a lekérdezési teljesítmény az idő függvényében. Query Store egyszerűbbé teszi a teljesítménnyel kapcsolatos hibaelhárítás segít gyorsan található leghosszabban futó és a leginkább erőforrás-igényes lekérdezéseket. Query Store automatikusan rögzíti a lekérdezések és a futásidejű statisztikája előzményeit, és megőrzi őket a felülvizsgálatra. Elválasztja a idő Windows adatokat, így láthatja, hogy az adatbázis használati mintái. Az összes felhasználó, adatbázisok és lekérdezések nevű adatbázis tárolva van **azure_sys** az Azure Database for PostgreSQL-példány található.
@@ -117,9 +117,9 @@ Ez a nézet az összes adat Query Store adja vissza. Az egyes különálló adat
 |query_id   |bigint  || A belső kivonatkód, az utasítás elemzési fa erősségével|
 |query_sql_text |Varchar(10000)  || Egy tipikus utasítás szövege. Ugyanazzal a struktúrával különböző lekérdezéseket fürtözöttek együtt; Ez a szöveg az a szöveg az első a lekérdezések a fürt számára.|
 |plan_id    |bigint |   |Ez a lekérdezés nem érhető el megfelelő még a csomag azonosítója|
-|start_time |időbélyeg  ||  Összesítjük lekérdezések idő gyűjtők által - kérelemegységeket időtartamának de konfigurálható alapértelmezés szerint 15 percenként. Ez az a kezdő időpont a idő gyűjtőhöz a bejegyzéshez tartozó megfelelő.|
+|start_time |időbélyeg  ||  Összesítjük lekérdezések idő gyűjtők által - kérelemegységeket időtartamának alapértelmezés szerint 15 percenként. Ez az a kezdő időpont a idő gyűjtőhöz a bejegyzéshez tartozó megfelelő.|
 |end_time   |időbélyeg  ||  A time gyűjtőhöz a bejegyzéshez tartozó megfelelő befejezési időpontja.|
-|hívások  |bigint  || A lekérdezés végrehajtása hányszor|
+|hívás  |bigint  || A lekérdezés végrehajtása hányszor|
 |total_time |a kétszeres pontosság   ||  A lekérdezés teljes végrehajtási idő, ezredmásodpercben|
 |min_time   |a kétszeres pontosság   ||  Minimális lekérdezés-végrehajtási idő (MS)|
 |max_time   |a kétszeres pontosság   ||  Lekérdezés maximális végrehajtási idő (MS)|
@@ -157,7 +157,7 @@ Ez a nézet értéket ad vissza a Query Store eseményadatai várjon. Az egyes k
 |query_id   |bigint     ||A belső kivonatkód, az utasítás elemzési fa erősségével|
 |event_type |szöveg       ||Az esemény, amelynek a háttérrendszer arra vár, hogy típusát|
 |esemény  |szöveg       ||A várakozási esemény neve, ha a háttérrendszer jelenleg vár|
-|hívások  |Egész szám        ||Az ugyanahhoz az eseményhez rögzített száma|
+|hívás  |Egész szám        ||Az ugyanahhoz az eseményhez rögzített száma|
 
 
 ### <a name="functions"></a>Functions
@@ -168,6 +168,10 @@ Query_store.qs_reset() void adja vissza
 Query_store.staging_data_reset() void adja vissza
 
 `staging_data_reset` a memória a Query Store (azaz az adatokat a memóriában, amely nem kiürítése megtörtént, de az adatbázishoz) által gyűjtött összes statisztikai elveti. Ez a funkció csak a kiszolgálói rendszergazdai szerepkör által hajtható végre.
+
+## <a name="limitations-and-known-issues"></a>Korlátozások és ismert problémák
+- Ha egy PostgreSQL-kiszolgáló rendelkezik a paraméter default_transaction_read_only, Query Store az adatok rögzítése nem tudja.
+- Query Store funkciókat is lehet megszakítani, ha találkozik hosszú Unicode-lekérdezések (> = 6000 bájt).
 
 
 ## <a name="next-steps"></a>További lépések

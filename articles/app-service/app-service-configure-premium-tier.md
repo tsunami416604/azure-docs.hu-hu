@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/25/2018
 ms.author: cephalin
-ms.openlocfilehash: 04996e772c2989be89ce551bfa45c57154de7b2d
-ms.sourcegitcommit: cfff72e240193b5a802532de12651162c31778b6
+ms.openlocfilehash: 59e5825554843ef7265cbccdd9a63db0426891fa
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39307789"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47226309"
 ---
 # <a name="configure-premiumv2-tier-for-azure-app-service"></a>PremiumV2 szintű csomag konfigurálása az Azure App Service-ben
 
@@ -55,7 +55,7 @@ Válassza ki **éles**, majd **P1V2**, **P2V2**, vagy **P3V2**, majd kattintson 
 ![](media/app-service-configure-premium-tier/scale-up-tier-select.png)
 
 > [!IMPORTANT] 
-> Ha nem lát **P1V2**, **P2V2**, és **P3V2** közül, vagy ha szürkén jelennek meg a beállítások ki, majd **PremiumV2** valószínűleg nem érhető el az alapul szolgáló App Service-környezet, amely tartalmazza az App Service-csomag. Lásd: lásd: [egy nem támogatott erőforrás csoport és a régió kombinációja a vertikális felskálázás](#unsupported) további részletekért.
+> Ha nem lát **P1V2**, **P2V2**, és **P3V2** közül, vagy ha szürkén jelennek meg a beállítások ki, majd **PremiumV2** valószínűleg nem érhető el az alapul szolgáló App Service-környezet, amely tartalmazza az App Service-csomag. Lásd: [egy nem támogatott erőforrás csoport és a régió kombinációja a vertikális felskálázás](#unsupported) további részletekért.
 
 ## <a name="scale-up-an-existing-app-to-premiumv2-tier"></a>PremiumV2 szintű csomag a meglévő alkalmazás vertikális felskálázása
 

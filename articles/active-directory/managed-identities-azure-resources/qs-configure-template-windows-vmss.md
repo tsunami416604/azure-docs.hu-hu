@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/20/2018
 ms.author: daveba
-ms.openlocfilehash: 259e22607887d4aae43c46a410edb6efa8a5e497
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.openlocfilehash: 4bfaed3d908574eff3521cedcef4b117d45e1ca2
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45637659"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47220919"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-a-azure-virtual-machine-scale-using-a-template"></a>Az Azure-erőforrások felügyelt identitások konfigurálása a sablon használatával az Azure virtuálisgép-méretezési csoportot
 
@@ -326,7 +326,7 @@ Ha egy virtuális gép méretezési csoportot, amely a felhasználó által hozz
 
 1. Bejelentkezik az Azure-bA helyileg vagy az Azure Portalon, hogy az Azure-előfizetést, amely tartalmazza a virtuálisgép-méretezési csoportba tartozó fiókot kell használnia.
 
-2. Betölteni a sablont, egy [szerkesztő](#azure-resource-manager-templates) , és keresse meg a `Microsoft.Compute/virtualMachineScaleSets` házirendsablonokkal erőforrás a `resources` szakaszban. Ha egy virtuális gép méretezési csoportot, amely csak a felhasználó által hozzárendelt felügyelt identitás rendelkezik, letilthatja, módosítsa úgy az identitás típus `None`.
+2. Betölteni a sablont, egy [szerkesztő](#azure-resource-manager-templates) , és keresse meg a `Microsoft.Compute/virtualMachineScaleSets` házirendsablonokkal erőforrás a `resources` szakaszban. Ha egy virtuális gép méretezési csoportot, amely csak a felhasználó által hozzárendelt felügyelt identitás rendelkezik, letilthatja az identitás típusúra `None`.
 
    Az alábbi példa bemutatja, hogyan eltávolítja az összes felhasználó által hozzárendelt felügyelt identitások egy virtuális Gépet a nem felügyelt rendszer által hozzárendelt identitások:
 
@@ -343,7 +343,7 @@ Ha egy virtuális gép méretezési csoportot, amely a felhasználó által hozz
    
    **API-verzió a 2018-06-01 Microsoft.Compute/virtualMachineScaleSets**
     
-   Eltávolítja egy egyetlen felhasználó által hozzárendelt felügyelt identitás a virtuális gép méretezési, távolítsa el a `userAssignedIdentities` szótárban.
+   Egy virtuálisgép-méretezési csoportot egy egyetlen felhasználó által hozzárendelt felügyelt identitás eltávolításához távolítsa el a `userAssignedIdentities` szótárban.
 
    Ha egy rendszer által hozzárendelt identitással, tárolja a a a `type` értékét a `identity` értéket.
 

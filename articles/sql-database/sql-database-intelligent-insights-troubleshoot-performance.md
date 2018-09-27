@@ -12,12 +12,12 @@ ms.author: v-daljep
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 09/20/2018
-ms.openlocfilehash: 311d1e1fc048e65182fbcbc8ca4b6f8c338da0de
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 49d5e307c51a6527ade63bac0276fa141ecb5c24
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47163868"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47222454"
 ---
 # <a name="troubleshoot-azure-sql-database-performance-issues-with-intelligent-insights"></a>Intelligent Insights az Azure SQL Database teljesítménnyel kapcsolatos problémáinak elhárítása
 
@@ -41,7 +41,7 @@ Intelligent Insights automatikusan észleli a teljesítményproblémákat lekér
 | [Pagelatch versengés](sql-database-intelligent-insights-troubleshoot-performance.md#pagelatch-contention) | Több szálon egyszerre próbál hozzáférni az ugyanazon a memóriában puffer lapok megnövekedett várakozási időt eredményez, és pagelatch versengés okozza. Ez befolyásolja az SQL database teljesítményét. | Több szálon egyszerre próbál hozzáférni az ugyanazon a memóriában puffer lapok megnövekedett várakozási időt eredményez, és pagelatch versengés okozza. Ez befolyásolja az adatbázis teljesítményét. |
 | [Hiányzó Index](sql-database-intelligent-insights-troubleshoot-performance.md#missing-index) | Hiányzó index észlelt, amely hatással van az SQL database szolgáltatás teljesítményének. | Hiányzó indexet az adatbázis teljesítményét befolyásoló volt észlelhető. |
 | [Új lekérdezés](sql-database-intelligent-insights-troubleshoot-performance.md#new-query) | Új lekérdezés észlelhető, ez hatással lenne az SQL Database teljesítménye. | Új lekérdezés észlelhető, az általános adatbázis teljesítményét befolyásoló. |
-| [Szokatlan várakozási statisztika](sql-database-intelligent-insights-troubleshoot-performance.md#unusual-wait-statistic) | Szokatlan adatbázis várakozási időt észlelt, amely hatással van az SQL database szolgáltatás teljesítményének. | Szokatlan adatbázis várakozási időt észlelt az adatbázis teljesítményét. |
+| [Megnövelt várakozási statisztika](sql-database-intelligent-insights-troubleshoot-performance.md#increased-wait-statistic) | Nagyobb mértékű adatbázis várakozási időt észlelt, amely hatással van az SQL database szolgáltatás teljesítményének. | Nagyobb mértékű adatbázis várakozási időt észlelt az adatbázis teljesítményét. |
 | [A TempDB versengés](sql-database-intelligent-insights-troubleshoot-performance.md#tempdb-contention) | Több szálon elérni kívánt szűk keresztmetszetet okoz a TempDB erőforrást. Ez befolyásolja az SQL Database teljesítményét. | Több szálon elérni kívánt szűk keresztmetszetet okoz a TempDB erőforrást. Ez befolyásolja az adatbázis teljesítményét. |
 | [Rugalmas készlet dtu-k hiánya](sql-database-intelligent-insights-troubleshoot-performance.md#elastic-pool-dtu-shortage) | Kevés a rendelkezésre álló Edtu a rugalmas készlet SQL Database teljesítményét befolyásolja. | Nem érhető el a felügyelt példányt, mert használ Virtuálismag-modell. |
 | [Regresszió megtervezése](sql-database-intelligent-insights-troubleshoot-performance.md#plan-regression) | Új csomagot, vagy egy meglévő csomagot, a számítási feladat változását észlelte. Ez befolyásolja az SQL Database teljesítményét. | Új csomagot, vagy egy meglévő csomagot, a számítási feladat változását észlelte. Ez befolyásolja az adatbázis teljesítményét. |
@@ -203,17 +203,17 @@ A diagnosztikai naplóadatokat kimenetek legfeljebb két új legtöbb CPU-igény
 
 Fontolja meg [Azure SQL Database lekérdezési Terheléselemző](sql-database-query-performance.md).
 
-## <a name="unusual-wait-statistic"></a>Szokatlan várakozási statisztika
+## <a name="increased-wait-statistic"></a>Megnövelt várakozási statisztika
 
 ### <a name="what-is-happening"></a>mi történik
 
 A cserélhető eszközként észlelhetőnek teljesítmény minta azt jelzi, hogy a számítási feladatok teljesítménycsökkenés, amelyben a gyenge teljesítményű lekérdezések azonosítják az elmúlt 7 napig terhelés alaptervhez képest.
 
-Ebben az esetben a rendszer a gyenge hajt végre lekérdezéseket a többi cserélhető eszközként észlelhetőnek szabványos teljesítmény-kategóriák nem lehet besorolni, de azt észlelte, hogy a várakozási statisztika a regressziós felelős. Ezért úgy ítéli meg őket, a lekérdezések *szokatlan várakozási statisztika*, ahol a regressziós felelős a szokatlan várakozási statisztika is elérhetővé teszi. 
+Ebben az esetben a rendszer a gyenge hajt végre lekérdezéseket a többi cserélhető eszközként észlelhetőnek szabványos teljesítmény-kategóriák nem lehet besorolni, de azt észlelte, hogy a várakozási statisztika a regressziós felelős. Ezért úgy ítéli meg őket, a lekérdezések *várakozási statisztika nőtt*, ahol a felelős a regressziós várakozási statisztika is elérhetővé teszi. 
 
 ### <a name="troubleshooting"></a>Hibaelhárítás
 
-A diagnosztikai napló jelenít meg a szokatlan várakozási idő – részletek információk, a lekérdezés a kivonatok az érintett lekérdezések és a várakozási időt.
+A diagnosztikai naplóadatokat kimenetek megnövekedett várakozási idő – részletek és a lekérdezés a kivonatok az érintett lekérdezések.
 
 Mivel a rendszer sikeresen nem sikerült azonosítani a gyenge teljesítményű lekérdezések fő okát, a diagnosztikai adatokat, manuális hibaelhárítási jó kiindulási pont. Optimalizálhatja a lekérdezések teljesítményét. Bevált gyakorlat, hogy csak adatokat kell használni, és leegyszerűsítése és az összetett lekérdezések kisebb felosztania beolvasni. 
 

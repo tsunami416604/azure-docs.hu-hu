@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 9/11/2018
 ms.author: srrengar
-ms.openlocfilehash: 5fa7b7ebfb1495a737a6d037566101df632764aa
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: a73a288852eea713623b65324853761e10fad282
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44377751"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47220466"
 ---
 # <a name="set-up-log-analytics-for-a-cluster"></a>Fürt Log Analytics beállítása
 
@@ -80,7 +80,7 @@ Használ, és módosítsa [ezt a mintasablont](https://github.com/Azure-Samples/
 
 * Létrehoz egy 5 csomópontos Service Fabric-fürt
 * Létrehoz egy Log Analytics-munkaterület és egy Service Fabric-megoldás
-* Konfigurálja az OMS-ügynök összegyűjti és elküldi a munkaterület 2 minta kérelemteljesítmény-számlálókat
+* Konfigurálja az OMS-ügynök összegyűjti és elküldi a munkaterület 2 minta-teljesítményszámlálók
 * A Service Fabric összegyűjtése a WAD konfigurálja, és elküldi őket az Azure storage-táblák (WADServiceFabric * címke)
 * Konfigurálja a Log Analytics-munkaterületet, olvassa az eseményeket, ezek a táblák
 

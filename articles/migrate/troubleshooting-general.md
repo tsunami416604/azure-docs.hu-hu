@@ -4,14 +4,14 @@ description: Ismert problémák az Azure Migrate szolgáltatás és a hibaelhár
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 08/25/2018
+ms.date: 09/24/2018
 ms.author: raynew
-ms.openlocfilehash: ca34f27e1d22c6235ec0d6b965d49ec5266f17f6
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: ca0931810fd78ce4cc684ad307efeb866cee3353
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43126364"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47165297"
 ---
 # <a name="troubleshoot-azure-migrate"></a>Az Azure Migrate hibaelhárítása
 
@@ -34,6 +34,12 @@ Ahhoz, hogy a lemez- és teljesítményadatok gyűjtése, módosítsa a statiszt
 ### <a name="i-installed-agents-and-used-the-dependency-visualization-to-create-groups-now-post-failover-the-machines-show-install-agent-action-instead-of-view-dependencies"></a>E telepített ügynökök és a függőségek képi megjelenítéséről csoportok létrehozásához használt. Most már feladatátvétel után, a gépek művelet "Ügynök telepítése" helyett "Nézet függőségei" megjelenítése
 * POST tervezett vagy nem tervezett feladatátvétel esetén a helyszíni gépek ki vannak kapcsolva, és egyenértékű gépeket hoz létre az Azure-ban. Ezek a gépek egy másik MAC-címet szerezni. Előfordulhat, hogy vásárolnak, egy másik IP-cím alapján, hogy a felhasználó úgy döntött, a helyi IP-cím megőrzése, vagy nem. MAC- és IP-címek különböznek, ha az Azure Migrate a helyszíni gépek nem rendel hozzá a Service Map függőségi adatokat, és kéri a felhasználót, hogy telepítse a helyett függőségek megtekintéséhez ügynököket.
 * Feladatátvételi teszt közzététele a helyszíni gépek elvárt bekapcsolva maradjon. Egyenértékű gépeket hoz létre az Azure-ban másik MAC-címet beszerezni, és előfordulhat, hogy másik IP-cím beszerzéséhez. Kivéve, ha a felhasználó blokkolja a kimenő forgalmát a Log Analytics ezeken a gépeken, az Azure Migrate a helyszíni gépek nem rendel hozzá a Service Map függőségi adatokat, és kéri a felhasználót, hogy telepítse a helyett függőségek megtekintéséhez ügynököket.
+
+### <a name="i-specified-an-azure-geography-while-creating-a-migration-project-how-do-i-find-out-the-exact-azure-region-where-the-discovered-metadata-would-be-stored"></a>Migrálási projekt, hogyan állapítható meg a felderített metaadatokat lenne tárolásához pontos Azure-régió létrehozása során egy Azure földrajzi meg?
+
+Megnyithatja a **Essentials** című rész a **áttekintése** a projekt a pontos helyét a metaadatokat tároló azonosításához. A hely egyben véletlenszerűen földrajzi helyen belül az Azure Migrate, és nem módosítható. Ha csak egy adott régióban hozzon létre egy projektet, a migrálási projekt létrehozása a REST API-k segítségével, adja át a kívánt régiót.
+
+   ![Projekt helye](./media/troubleshooting-general/geography-location.png)
 
 ## <a name="collector-errors"></a>Naplógyűjtők hibái
 
@@ -102,6 +108,37 @@ Ha a probléma továbbra is történik a legújabb verzió, annak oka az lehet, 
 2. Ha az 1. lépés meghiúsul, próbáljon meg az IP-címen keresztül csatlakozni a vCenter-kiszolgálóhoz.
 3. Adja meg a megfelelő portszámot a vCenterhez történő csatlakozáshoz.
 4. Végezetül pedig ellenőrizze, hogy a vCenter-kiszolgáló fut-e.
+
+## <a name="troubleshoot-dependency-visualization-issues"></a>Függőségek képi megjelenítés hibáinak elhárítása
+
+### <a name="i-installed-the-microsoft-monitoring-agent-mma-and-the-dependency-agent-on-my-on-premises-vms-but-the-dependencies-are-now-showing-up-in-the-azure-migrate-portal"></a>A Microsoft Monitoring Agent (MMA) és a függőségi ügynök telepítése a helyszíni virtuális gépek, de a függőségek most jelennek meg az Azure Migrate portálon.
+
+Miután telepítette az ügynököket, az Azure Migrate általában tart 15 – 30 perc, a függőségek megjelenítéséhez a portálon. Ha Ön 30 percnél hosszabb ideig várakoztak, győződjön meg arról, hogy az MMA-ügynök létrejöhet a kommunikáció az OMS-munkaterülethez, a következő az alábbi lépéseket:
+
+A Windows virtuális gépek:
+1. Lépjen a **Vezérlőpult** , majd indítsa el **Microsoft Monitoring Agent**
+2. Nyissa meg a **Azure Log Analytics (OMS)** előugró MMA tulajdonságai lap
+3. Ügyeljen arra, hogy a **állapot** a munkaterület zöld érték.
+4. Ha az állapot nem zöld, próbálja meg a munkaterület eltávolítása és újbóli hozzáadásával az MMA.
+        ![Az MMA állapota](./media/troubleshooting-general/mma-status.png)
+
+Linux rendszerű virtuális gép győződjön meg arról, hogy sikeres volt-e az MMA és a függőségi ügynök telepítési parancsokat.
+
+### <a name="what-are-the-operating-systems-supported-by-mma"></a>Mik azok az MMA által támogatott operációs rendszerek?
+
+Az MMA által támogatott Windows operációs rendszerek listája [Itt](https://docs.microsoft.com/azure/log-analytics/log-analytics-concept-hybrid#supported-windows-operating-systems).
+Az MMA által támogatott Linux operációs rendszerek listája [Itt](https://docs.microsoft.com/azure/log-analytics/log-analytics-concept-hybrid#supported-linux-operating-systems).
+
+### <a name="what-are-the-operating-systems-supported-by-dependency-agent"></a>Mik azok a függőségi ügynök által támogatott operációs rendszerek?
+
+Függőségi ügynök által támogatott Windows operációs rendszerek listája [Itt](https://docs.microsoft.com/azure/monitoring/monitoring-service-map-configure#supported-windows-operating-systems).
+Függőségi ügynök által támogatott Linux operációs rendszerek listája [Itt](https://docs.microsoft.com/azure/monitoring/monitoring-service-map-configure#supported-linux-operating-systems).
+
+### <a name="i-am-unable-to-visualize-dependencies-in-azure-migrate-for-more-than-one-hour-duration"></a>Nem sikerül az Azure Migrate függőségeinek megjelenítése több mint egy óra időtartama?
+Az Azure Migrate függőségeinek megjelenítése akár egy órás időtartamának teszi lehetővé. Bár az Azure Migrate lehetővé teszi, hogy térjen vissza az az előzmények között az utolsó egy hónap legfeljebb egy adott dátumot, a maximális időtartamot, amelynek jelenítheti meg a függőségeket a legfeljebb 1 óra. Például hogy használhatja tegnap függőségek megtekintése a függőségi térkép az idő időtartamát funkciót, de csak megtekintheti azt számára egy egy órás időszak.
+
+### <a name="i-am-unable-to-visualize-dependencies-for-groups-with-more-than-10-vms"></a>Nem lehet több mint 10 virtuális géppel csoportok függőségek vizualizálása vagyok?
+Is [csoportokra vonatkozó függőségek vizualizálása](https://docs.microsoft.com/azure/migrate/how-to-create-group-dependencies) , hogy rendelkezik mentése 10 virtuális gépekhez, ha egy csoport több mint 10 virtuális géppel, azt javasoljuk, hogy felosztása kisebb csoportok a csoport, és a Függőségek megjelenítése.
 
 ## <a name="troubleshoot-readiness-issues"></a>Készültségi problémák elhárítása
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/16/2018
 ms.author: daveba
-ms.openlocfilehash: 180d4092a2570b719e77d98319ab9b329f2e48c5
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.openlocfilehash: bdbe15a85ad4d2ef6918b7ab7e16942edde5096e
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45637428"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47220332"
 ---
 # <a name="create-list-delete-or-assign-a-role-to-a-user-assigned-managed-identity-using-the-azure-portal"></a>Lista létrehozása, törlése vagy szerepkör hozzárendelése a felügyelt felhasználó által hozzárendelt identitás az Azure portal használatával
 
@@ -27,7 +27,7 @@ ms.locfileid: "45637428"
 
 Felügyelt identitások az Azure-erőforrások egy felügyelt identitás, az Azure Active Directory Azure-szolgáltatásokat biztosít. Ez az identitás használatával, amelyek támogatják az Azure AD-hitelesítés, anélkül, hogy hitelesítő adatok a kód a szolgáltatásokhoz való hitelesítéséhez. 
 
-Ebből a cikkből megismerheti, hogyan hozhat létre, listázása, törlése vagy a szerepkör hozzárendelése egy felhasználó által hozzárendelt felügyelt identitás, az Azure Portal használatával.
+Ebből a cikkből megismerheti, hogyan hozhat létre, listázása, törölje vagy szerepkör hozzárendelése a felügyelt felhasználó által hozzárendelt identitás az Azure Portal használatával.
 
 ## <a name="prerequisites"></a>Előfeltételek
 

@@ -8,12 +8,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 08/14/2018
 ms.author: iainfou
-ms.openlocfilehash: 6ff28443dda65e91fa69fececaff95aa8e872603
-ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
+ms.openlocfilehash: f613fb9bd3e9cf6d070b34403bab617e23261c56
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45604249"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47226446"
 ---
 # <a name="use-virtual-kubelet-with-azure-kubernetes-service-aks"></a>Virtual Kubelet használata az Azure Kubernetes Service (AKS)
 
@@ -36,7 +36,7 @@ A Virtual Kubelet telepítéséhez [Helm](https://docs.helm.sh/using_helm/#insta
 
 ### <a name="for-rbac-enabled-clusters"></a>A fürtök RBAC-kompatibilis
 
-Ha az AKS-fürt RBAC-kompatibilis, létre kell hoznia a szolgáltatásfiók és a szerepkör-kötést használja az a tiller valóban. További információkért lásd: [Helm szerepköralapú hozzáférés-vezérlés][helm-rbac]. A szolgáltatásfiók és a szerepkör kötést, hozzon létre egy fájlt *rbac-virtualkubelet.yaml* , és illessze be a következő-definíciót:
+Ha az AKS-fürt RBAC-kompatibilis, létre kell hoznia a szolgáltatásfiók és a szerepkör-kötést használja az a tiller valóban. További információkért lásd: [Helm szerepköralapú hozzáférés-vezérlés][helm-rbac]. A szolgáltatásfiók és a szerepkör kötést, hozzon létre egy fájlt *rbac virtuális kubelet.yaml* , és illessze be a következő-definíciót:
 
 ```yaml
 apiVersion: v1
@@ -59,7 +59,7 @@ subjects:
     namespace: kube-system
 ```
 
-A alkalmazni a szolgáltatásfiók és a kötési [a kubectl a alkalmazni] [ kubectl-apply] , és adja meg a *rbac-virtualkubelet.yaml* fájljához a következő példában látható módon:
+A alkalmazni a szolgáltatásfiók és a kötési [a kubectl a alkalmazni] [ kubectl-apply] , és adja meg a *rbac virtuális kubelet.yaml* fájljához a következő példában látható módon:
 
 ```
 $ kubectl apply -f rbac-virtual-kubelet.yaml
@@ -158,7 +158,7 @@ NAME                                READY     STATUS    RESTARTS   AGE       IP 
 aci-helloworld-2559879000-8vmjw     1/1       Running   0          39s       52.179.3.180   virtual-kubelet-virtual-kubelet-linux
 ```
 
-## <a name="run-windows-container"></a>Futtassa a Windows-tároló
+## <a name="run-windows-container"></a>Windows-tárolók futtatása
 
 Hozzon létre egy fájlt `virtual-kubelet-windows.yaml` másolja be a következő yaml-kódot. Cserélje le a `kubernetes.io/hostname` érték és a Windows Virtual Kubelet csomópont nevét. Jegyezze fel, amely egy [nodeSelector] [ node-selector] és [toleration] [ toleration] ütemezni a csomóponton a tárolót használ.
 
@@ -182,7 +182,9 @@ spec:
       nodeSelector:
         kubernetes.io/hostname: virtual-kubelet-virtual-kubelet-win
       tolerations:
-      - key: azure.com/aci
+      - key: virtual-kubelet.io/provider
+        operator: Equal
+        value: azure
         effect: NoSchedule
 ```
 

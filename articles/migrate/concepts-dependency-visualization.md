@@ -4,14 +4,14 @@ description: Értékelési számítások az Azure Migrate szolgáltatás átteki
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 09/17/2018
+ms.date: 09/25/2018
 ms.author: raynew
-ms.openlocfilehash: 84ce20186b882bf07177305291a6f7512ed9ac62
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: 923a2a137bb4510e9490ce4077f744a43619a2c6
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45732023"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47165024"
 ---
 # <a name="dependency-visualization"></a>Függőségek vizualizációja
 
@@ -32,7 +32,7 @@ Azure Migrate az a [Service Map](../operations-management-suite/operations-manag
     ![Log Analytics-munkaterület társítása](./media/concepts-dependency-visualization/associate-workspace.png)
 
 - Amikor létrehoz egy új munkaterületet, adja meg a munkaterület nevét kell. A munkaterületen létrejön ugyanabban a régióban [Azure földrajzi](https://azure.microsoft.com/global-infrastructure/geographies/) a migrálási projektet.
-- A kapcsolódó munkaterület a kulccsal van megjelölve **Migrálási projekt**, és értéket ** projekt nevét, amely segítségével az Azure Portalon keresse.
+- A kapcsolódó munkaterület a kulccsal van megjelölve **Migrálási projekt**, és érték **projektnév**, amelyek segítségével az Azure Portalon keresse.
 - Nyissa meg a munkaterületet a projekthez kapcsolódó, nyissa meg a **Essentials** projekt **áttekintése** lapon és a munkaterület eléréséhez
 
     ![Keresse meg a Log Analytics-munkaterület](./media/concepts-dependency-visualization/oms-workspace.png)
@@ -62,5 +62,5 @@ A Log Analytics-munkaterületet az Azure Migrate kívül is használhatja. Ha t�
 Ne törölje az Azure Migrate, által létrehozott munkaterület, hacsak nem törli a migrálási projektet. Ha így tesz, a függőségek képi megjelenítésének funkcióival nem működnek megfelelően.
 
 ## <a name="next-steps"></a>További lépések
-
-[A gépek függőségeivel csoportosítása](how-to-create-group-machine-dependencies.md)
+- [A gépek függőségeivel csoportosítása](how-to-create-group-machine-dependencies.md)
+- [További](https://docs.microsoft.com/azure/migrate/resources-faq#dependency-visualization) kapcsolatban a gyakori kérdések a függőségek képi megjelenítéséről.
