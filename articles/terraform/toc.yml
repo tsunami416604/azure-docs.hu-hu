@@ -40,6 +40,12 @@ items:
     items:
     - name: A Visual Studio Code Terraform bővítményének telepítése
       href: terraform-vscode-extension.md
+    - name: Alapszintű Terraform-sablon létrehozása a Yeoman használatával
+      href: terraform-vscode-module-generator.md
+- name: Alapelvek
+  items:
+  - name: Azure Cloud Shell-integráció
+    href: terraform-cloud-shell.md
 - name: Példák
   items:
   - name: Konfigurációs sablonok
@@ -64,9 +70,9 @@ items:
     href: https://azure.microsoft.com/solutions/devops/terraform/
   - name: Azure-ütemterv
     href: https://azure.microsoft.com/roadmap/
-ms.openlocfilehash: 6378b8e647afa95666e0a996b546c8d4147e038e
-ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
+ms.openlocfilehash: 996f032cce0b0d45c559a584ce364c3561675470
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45604026"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47395321"

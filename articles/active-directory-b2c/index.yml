@@ -1,4 +1,10 @@
 ### YamlMime:YamlDocument
+ms.openlocfilehash: 9fd163db5b727c5284756e2d24a35c6c6e57a794
+ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47181381"
 documentType: LandingData
 title: Az Azure Active Directory B2C dokumentációja
 metadata:
@@ -12,24 +18,39 @@ metadata:
   ms.topic: landing-page
   ms.date: 03/29/2018
   ms.author: davidmu
-  ms.openlocfilehash: a70e3fe60291a0ee50dbaa4bd3caa460ff12ffef
-  ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
-  ms.translationtype: HT
-  ms.contentlocale: hu-HU
-  ms.lasthandoff: 06/20/2018
-  ms.locfileid: "36284265"
 abstract:
   description: Az Azure Active Directory (Azure AD) B2C egy identitáskezelő szolgáltatás, amely lehetővé teszi az ügyfelek regisztrációjának és bejelentkezésének testreszabását és felügyeletét, valamint a profiljuk kezelését az alkalmazások használatakor. Ez az iOS, Android, .NET és más rendszerekre fejlesztett alkalmazásokra is vonatkozik. Az Azure AD B2C az ügyfelei identitásainak védelme mellett teszi lehetővé e műveletek végrehajtását. Gyors útmutatóink, oktatóanyagaink és a felhozott példák segítségével megismerkedhet az Azure AD B2C használatával.
   aside:
     image:
       alt: 
       height: 110
-      src: https://docs.microsoft.com/azure/active-directory-b2c/media/index/active-directory-b2c-video.PNG
+      src: ./media/index/active-directory-b2c-video.PNG
       width: 250
-    title: B2C identitáskezelés az Azure Active Directory B2C-vel (12:56)
-    href: https://azure.microsoft.com/resources/videos/build-2016-business-to-consumer-identity-management-with-azure-active-directory-b2c/
+    title: Ügyfélidentitás kezelése az Azure AD B2C-vel (20:56)
+    href: https://channel9.msdn.com/Shows/On-NET/Customer-Identity-Management-with-Azure-AD-B2C
     width: 250
 sections:
+- items:
+  - type: list
+    style: cards
+    className: cardsM
+    columns: 3
+    items:
+    - href: /azure/active-directory-b2c/active-directory-b2c-overview
+      html: <p>További tudnivalók az Azure AD B2C-ről, illetve annak szolgáltatásairól és funkcióiról.</p>
+      image:
+        src: ./media/index/i_get-started.svg
+      title: Tudnivalók az Azure AD B2C-ről
+    - href: /azure/active-directory-b2c/solution-articles
+      html: <p>A megoldások és betanítási lehetőségek vizsgálata az Azure AD B2C használatával.</p>
+      image:
+        src: ./media/index/i_advanced.svg
+      title: Megoldások és betanítás
+    - href: /azure/active-directory-b2c/trustframeworkpolicy
+      html: <p>Speciális regisztrációs és bejelentkezési forgatókönyvek létrehozása egyéni szabályzatokkal az Azure AD B2C-ben.</p>
+      image:
+        src: ./media/index/i_investigate.svg
+      title: Identity Experience Framework
 - title: 5 perces gyors útmutatók
   items:
   - type: paragraph
@@ -58,11 +79,11 @@ sections:
     className: cardsD
     items:
     - title: ASP.NET
-      html: <p>1. <a href="/azure/active-directory-b2c/tutorial-register-applications">Alkalmazás regisztrálása</a></p><p>2. <a href="/azure/active-directory-b2c/active-directory-b2c-tutorials-web-app">Felhasználók hitelesítése</a></p><p>3. <a href="/azure/active-directory-b2c/active-directory-b2c-tutorials-web-api">API-hozzáférés biztosítása</a></p>
+      html: <p>1. <a href="/azure/active-directory-b2c/tutorial-create-tenant">Bérlő létrehozása</a></p><p>2. <a href="/azure/active-directory-b2c/active-directory-b2c-tutorials-web-app">Felhasználók hitelesítése</a></p><p>3. <a href="/azure/active-directory-b2c/active-directory-b2c-tutorials-web-api">API-hozzáférés biztosítása</a></p>
     - title: Asztal
-      html: <p>1. <a href="/azure/active-directory-b2c/tutorial-register-applications">Alkalmazás regisztrálása</a></p><p>2. <a href="/azure/active-directory-b2c/active-directory-b2c-tutorials-desktop-app">Felhasználók hitelesítése</a></p><p>3. <a href="/azure/active-directory-b2c/active-directory-b2c-tutorials-desktop-app-webapi">API-hozzáférés biztosítása</a></p>
+      html: <p>1. <a href="/azure/active-directory-b2c/tutorial-create-tenant">Bérlő létrehozása</a></p><p>2. <a href="/azure/active-directory-b2c/active-directory-b2c-tutorials-desktop-app">Felhasználók hitelesítése</a></p><p>3. <a href="/azure/active-directory-b2c/active-directory-b2c-tutorials-desktop-app-webapi">API-hozzáférés biztosítása</a></p>
     - title: Egyoldalas
-      html: <p>1. <a href="/azure/active-directory-b2c/tutorial-register-applications">Alkalmazás regisztrálása</a></p><p>2. <a href="/azure/active-directory-b2c/active-directory-b2c-tutorials-spa">Felhasználók hitelesítése</a></p><p>3. <a href="/azure/active-directory-b2c/active-directory-b2c-tutorials-spa-webapi">API-hozzáférés biztosítása</a></p>
+      html: <p>1. <a href="/azure/active-directory-b2c/tutorial-create-tenant">Bérlő létrehozása</a></p><p>2. <a href="/azure/active-directory-b2c/active-directory-b2c-tutorials-spa">Felhasználók hitelesítése</a></p><p>3. <a href="/azure/active-directory-b2c/active-directory-b2c-tutorials-spa-webapi">API-hozzáférés biztosítása</a></p>
 - title: Példák
   items:
   - type: paragraph

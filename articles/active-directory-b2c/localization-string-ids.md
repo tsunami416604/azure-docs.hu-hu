@@ -1,6 +1,6 @@
 ---
 title: A honosítás karakterlánc-azonosítók – Azure Active Directory B2C |} A Microsoft Docs
-description: Adja meg a azonosítóval és a egy egyéni házirendek az Azure Active Directory B2C api.signuporsignin tartalomdefiníció azonosítóját.
+description: Adja meg a tartalomdefiníció azonosítóját az Azure Active Directory B2C egy egyéni házirendek api.signuporsignin azonosítóval.
 services: active-directory-b2c
 author: davidmu1
 manager: mtillman
@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: bb2c53d6ee7d605d4393846f684b973f91570ea5
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: 7619ebf038e164c9e586118c70e34955ca7c4767
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44381326"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47222669"
 ---
 # <a name="localization-string-ids"></a>A honosítás karakterlánc azonosítók
 

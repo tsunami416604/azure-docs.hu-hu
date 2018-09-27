@@ -6,12 +6,12 @@ description: Ismerje meg, hogyan készíthet és felügyelhet hatékony alkalmaz
 ms.topic: hub-page
 featureFlags:
 - clicktale
-ms.openlocfilehash: cf8564ed36402a3d42516c6aedb1eded566a7971
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: ace2178ac4e1d76d561800d94b07780c3579f1f4
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46977723"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47166979"
 ---
 <div id="main" class="v2">
     <div class="container">
@@ -248,6 +248,16 @@ Azure PowerShell </a>
                                                 <h3>DevOps</h3>
                                                 <ul class="noBullet">
                                                     <li>
+                                                        <a class="barLink" href="https://docs.microsoft.com/azure/devops">
+                                                            <img src="https://docs.microsoft.com/media/logos/logo_vs-team-services.svg" alt="">
+Azure DevOps </a>
+                                                    </li>
+                                                    <li>
+                                                        <a class="barLink" href="https://docs.microsoft.com/azure/devops/pipelines/index">
+                                                            <img src="https://docs.microsoft.com/azure/devops/_img/index/devopsiconpipelines96.svg" alt="">
+Azure Pipelines </a>
+                                                    </li>
+                                                    <li>
                                                         <a class="barLink" href="/azure/ansible/">
                                                             <img src="media/index/ansible.svg" alt="">
 Ansible </a>
@@ -266,16 +276,6 @@ Jenkins </a>
                                                         <a class="barLink" href="/azure/terraform">
                                                             <img src="https://docs.microsoft.com/media/logos/logo_terraform.svg" alt="">
 Terraform </a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="barLink" href="https://docs.microsoft.com/azure/devops/">
-                                                            <img src="https://docs.microsoft.com/media/logos/logo_vs-team-services.svg" alt="">
-Azure DevOps </a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="barLink" href="https://docs.microsoft.com/azure/devops">
-                                                            <img src="https://docs.microsoft.com/media/logos/logo_vs-team-services.svg" alt="">
-Tudnivalók a fejlesztésről és az üzemeltetésről az Azure-ral </a>
                                                     </li>
                                                     <li>
                                                         <a class="barLink" href="/azure/devops-project/">
@@ -427,6 +427,12 @@ Azure-feladatok automatizálása szkriptek használatával a PowerShell-lel </a>
                                             <a href="/azure/virtual-machines/workloads/sap/hana-overview-architecture">
                                                 <img src="media/index/VirtualMachine.svg" alt="" />
                                                 <p>SAP HANA on Azure Large Instances</p>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="/azure/cyclecloud/">
+                                                <img src="media/index/logo_cyclecloud.svg" alt="" />
+                                                <p>CycleCloud</p>
                                             </a>
                                         </li>
                                     </ul>
@@ -811,13 +817,13 @@ Azure-feladatok automatizálása szkriptek használatával a PowerShell-lel </a>
                                         <li>
                                             <a href="/azure/cognitive-services/content-moderator/overview">
                                                 <img src="media/index/API_Content_Moderator.svg" alt="" />
-                                                <p>Content Moderator</p>
+                                                <p>Tartalommoderátor</p>
                                             </a>
                                         </li>
                                         <li>
                                             <a href="/azure/cognitive-services/Custom-Vision-Service/home">
                                                 <img src="media/index/API_Custom_Vision.svg" alt="" />
-                                                <p>Custom Vision Service</p>
+                                                <p>Egyéni vizuális szolgáltatás</p>
                                             </a>
                                         </li>
                                         <li>
@@ -841,7 +847,7 @@ Azure-feladatok automatizálása szkriptek használatával a PowerShell-lel </a>
                                         <li>
                                             <a href="/azure/cognitive-services/speech-service/overview">
                                                 <img src="media/index/API_Speech_Service.svg" alt="" />
-                                                <p>Speech Service</p>
+                                                <p>Beszédszolgáltatás</p>
                                             </a>
                                         </li>
                                         <li>
@@ -859,7 +865,7 @@ Azure-feladatok automatizálása szkriptek használatával a PowerShell-lel </a>
                                         <li>
                                             <a href="/azure/cognitive-services/speaker-recognition/home">
                                                 <img src="media/index/API_Speaker_Recognition.svg" alt="" />
-                                                <p>Speaker Recognition API</p>
+                                                <p>Beszélőfelismerés API</p>
                                             </a>
                                         </li>
                                         <li>
@@ -889,7 +895,7 @@ Azure-feladatok automatizálása szkriptek használatával a PowerShell-lel </a>
                                         <li>
                                             <a href="/azure/cognitive-services/text-analytics/">
                                                 <img src="media/index/API_TextAnalytics.svg" alt="" />
-                                                <p>Text Analytics API</p>
+                                                <p>Szövegelemzések API</p>
                                             </a>
                                         </li>
                                         <li>
@@ -1101,7 +1107,7 @@ Azure-feladatok automatizálása szkriptek használatával a PowerShell-lel </a>
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="/azure/databox/">
+                                            <a href="/azure/databox-family/">
                                                 <img src="media/index/Service-icon.png" alt="" />
                                                 <p>Data Box</p>
                                             </a>
@@ -2014,6 +2020,25 @@ Azure-feladatok automatizálása szkriptek használatával a PowerShell-lel </a>
                                     </div>
                                 </a>
                             </li>
+                            <li>
+                                <a href="/azure/cyclecloud/">
+                                    <div class="cardSize">
+                                        <div class="cardPadding">
+                                            <div class="card">
+                                                <div class="cardImageOuter">
+                                                    <div class="cardImage">
+                                                        <img src="media/index/logo_cyclecloud.svg" alt="" />
+                                                    </div>
+                                                </div>
+                                                <div class="cardText">
+                                                    <h3>CycleCloud</h3>
+                                                    <p>Tetszőleges méretű HPC és nagy számítási igényű fürtök létrehozása, kezelése, üzemeltetése és optimalizálása</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
                         </ul>
                     </li>
                     <li>
@@ -2462,7 +2487,7 @@ Azure-feladatok automatizálása szkriptek használatával a PowerShell-lel </a>
                                 </a>
                             </li>
                             <li>
-                                <a href="/en-us/azure/databox/" data-linktype="absolute-path">
+                                <a href="/en-us/azure/databox-family/" data-linktype="absolute-path">
                                     <div class="cardSize">
                                         <div class="cardPadding">
                                             <div class="card">
@@ -2472,8 +2497,8 @@ Azure-feladatok automatizálása szkriptek használatával a PowerShell-lel </a>
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Data Box</h3>
-                                                    <p>Nagy mennyiségű adat alacsony költségű és biztonságos átvitelét biztosítja, ha a hálózat rendelkezésre állása korlátozott</p>
+                                                    <h3>Data Box termékcsalád</h3>
+                                                    <p>Tárolóeszköz-család, amely lehetővé teszi az offline és a hálózatalapú adatátvitelt</p>
                                                 </div>
                                             </div>
                                         </div>

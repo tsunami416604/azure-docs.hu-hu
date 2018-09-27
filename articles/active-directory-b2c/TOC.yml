@@ -43,203 +43,103 @@ items:
     href: active-directory-b2c-apps.md
   - name: Hitelesítési protokollok
     href: active-directory-b2c-reference-protocols.md
+  - name: Beépített szabályzatok
+    href: active-directory-b2c-reference-policies.md
+  - name: Identity Experience Framework
+    items:
+    - name: Egyéni szabályzatok
+      href: active-directory-b2c-overview-custom.md
+    - name: Felhasználói hozzáférés
+      href: manage-user-access.md
+    - name: Felhasználói adatok
+      href: manage-user-data.md
   - name: OAuth 2.0
     href: active-directory-b2c-reference-oauth-code.md
   - name: OpenId Connect
     href: active-directory-b2c-reference-oidc.md
+  - name: Egylapos bejelentkezés
+    href: active-directory-b2c-reference-spa.md
   - name: Tokenek
     href: active-directory-b2c-reference-tokens.md
   - name: Felhasználói fiókok
     href: user-overview.md
 - name: Útmutatók
   items:
-  - name: Alkalmazás regisztrálása
-    href: active-directory-b2c-app-registration.md
-  - name: Beépített szabályzatok
-    href: active-directory-b2c-reference-policies.md
-  - name: Mobil- és asztali appok
+  - name: Hozzáférés az auditnaplókhoz
+    href: active-directory-b2c-reference-audit-logs.md
+  - name: Naplók gyűjtése az Application Insights használatával
+    href: active-directory-b2c-troubleshoot-custom.md
+  - name: Jogkivonatok konfigurálása
+    href: active-directory-b2c-token-session-sso.md
+  - name: Jelszó testreszabása
+    href: active-directory-b2c-reference-password-complexity.md
+  - name: Felhasználói felület testreszabása
+    href: active-directory-b2c-reference-ui-customization.md
     items:
-    - name: iOS
-      items:
-      - name: iOS Swift az MSAL használatával
-        href: https://github.com/Azure-Samples/active-directory-b2c-ios-swift-native-msal
-      - name: iOS ObjC az AppAuth használatával
-        href: active-directory-b2c-devquickstarts-ios.md
-    - name: Android
-      items:
-      - name: Android az MSAL használatával
-        href: https://github.com/Azure-Samples/active-directory-b2c-android-native-msal
-      - name: Android az AppAuth használatával
-        href: active-directory-b2c-devquickstarts-android.md
-    - name: .NET
-      href: https://github.com/Azure-Samples/active-directory-b2c-dotnet-desktop
-    - name: Xamarin
-      href: https://github.com/Azure-Samples/active-directory-b2c-xamarin-native
-    - name: Erőforrás tulajdonosának jelszava
-      href: configure-ropc.md
-  - name: Webalkalmazások
-    items:
-    - name: ASP.NET
-      href: active-directory-b2c-devquickstarts-web-dotnet-susi.md
-    - name: ASP.NET-mag
-      href: https://github.com/Azure-Samples/active-directory-b2c-dotnetcore-webapp
-  - name: Egylapos appok
-    items:
-    - name: Áttekintés
-      href: active-directory-b2c-reference-spa.md
-    - name: JavaScript az MSAL használatával
-      href: https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp
-    - name: JavaScript a Hello használatával
-      href: https://github.com/Azure-Samples/active-directory-b2c-javascript-singlepageapp-dotnet-webapi
-  - name: Webes API-k
-    items:
-    - name: ASP.NET
-      href: active-directory-b2c-devquickstarts-api-dotnet.md
-    - name: ASP.NET-mag
-      href: https://github.com/Azure-Samples/active-directory-b2c-dotnetcore-webapi
-    - name: Node.js
-      href: https://github.com/Azure-Samples/active-directory-b2c-javascript-nodejs-webapi
-    - name: .NET-alapú webes API hívása
-      href: active-directory-b2c-devquickstarts-web-api-dotnet.md
-  - name: Útmutatók
-    items:
-    - name: Identitásszolgáltatók konfigurálása
-      items:
-      - name: Microsoft-fiók
-        href: active-directory-b2c-setup-msa-app.md
-      - name: Facebook
-        href: active-directory-b2c-setup-fb-app.md
-      - name: Google
-        href: active-directory-b2c-setup-goog-app.md
-      - name: Amazon
-        href: active-directory-b2c-setup-amzn-app.md
-      - name: LinkedIn
-        href: active-directory-b2c-setup-li-app.md
-      - name: Twitter
-        href: active-directory-b2c-setup-twitter-app.md
-      - name: GitHub
-        href: active-directory-b2c-setup-github-app.md
-      - name: Weibo
-        href: active-directory-b2c-setup-weibo-app.md
-      - name: QQ
-        href: active-directory-b2c-setup-qq-app.md
-      - name: WeChat
-        href: active-directory-b2c-setup-wechat-app.md
-      - name: Azure AD (egybérlős)
-        href: active-directory-b2c-setup-oidc-azure-active-directory.md
-      - name: Egyéni OpenID Connect
-        href: active-directory-b2c-setup-oidc-idp.md
-    - name: Önkiszolgáló jelszó-visszaállítás beállítása
-      href: active-directory-b2c-reference-sspr.md
-    - name: A felhasználói felület testreszabása
-      href: active-directory-b2c-reference-ui-customization.md
-      items:
-      - name: Segédeszköz a testreszabáshoz
-        href: active-directory-b2c-reference-ui-customization-helper-tool.md
-    - name: Az Azure AD Graph API használata
-      href: active-directory-b2c-devquickstarts-graph-dotnet.md
-    - name: Hozzáférési jogkivonatok beszerzése
-      href: active-directory-b2c-access-tokens.md
-    - name: E-mailes ellenőrzés letiltása
-      href: active-directory-b2c-reference-disable-ev.md
-    - name: Jogkivonatok konfigurálása
-      href: active-directory-b2c-token-session-sso.md
-    - name: MFA engedélyezése
-      href: active-directory-b2c-reference-mfa.md
-    - name: Egyéni attribútumok használata
-      href: active-directory-b2c-reference-custom-attr.md
-    - name: Jelszó testreszabása
-      href: active-directory-b2c-reference-password-complexity.md
-    - name: Nyelvi testreszabás
-      href: active-directory-b2c-reference-language-customization.md
-    - name: A jelentéskészítő API használata
-      href: active-directory-b2c-reference-usage-reporting-api.md
-    - name: Hozzáférés az auditnaplókhoz
-      href: active-directory-b2c-reference-audit-logs.md
-    - name: Felhasználói adatok kezelése
-      href: manage-user-data.md
-    - name: Felhasználók migrálása
-      href: active-directory-b2c-user-migration.md
-    - name: Felhasználók migrálása közösségi identitásokkal
-      href: active-directory-b2c-social-migration.md
-    - name: A b2clogin.com használata
-      href: b2clogin.md
-    - name: Koralapú korlátozás használata
-      href: basic-age-gating.md
-    - name: Közvetlen bejelentkezés
-      href: direct-signin.md
+    - name: Segédeszköz a testreszabáshoz
+      href: active-directory-b2c-reference-ui-customization-helper-tool.md
+  - name: Egyéni attribútumok meghatározása
+    href: active-directory-b2c-reference-custom-attr.md
+  - name: E-mailes ellenőrzés letiltása
+    href: active-directory-b2c-reference-disable-ev.md
+  - name: MFA engedélyezése
+    href: active-directory-b2c-reference-mfa.md
   - name: Identity Experience Framework
     items:
-    - name: Egyéni szabályzatok
-      href: active-directory-b2c-overview-custom.md
-    - name: Útmutatók
+    - name: Egyéni szabályzat létrehozása
+      href: active-directory-b2c-get-started-custom.md
+    - name: RESTful API-k integrálása
       items:
-      - name: Bevezetés
-        href: active-directory-b2c-get-started-custom.md
-      - name: OIDC/OAUTH-szolgáltatók konfigurálása
-        items:
-        - name: Azure AD (egybérlős)
-          href: active-directory-b2c-setup-aad-custom.md
-        - name: Azure AD (több-bérlős)
-          href: active-directory-b2c-setup-commonaad-custom.md
-        - name: Microsoft-fiók
-          href: active-directory-b2c-custom-setup-msa-idp.md
-        - name: Google +
-          href: active-directory-b2c-custom-setup-goog-idp.md
-        - name: LinkedIn
-          href: active-directory-b2c-custom-setup-li-idp.md
-        - name: Twitter
-          href: active-directory-b2c-custom-setup-twitter-idp.md
-      - name: SAML-szolgáltatók konfigurálása
-        items:
-        - name: ADFS
-          href: active-directory-b2c-custom-setup-adfs2016-idp.md
-        - name: Salesforce
-          href: active-directory-b2c-setup-sf-app-custom.md
-      - name: RESTful API-k integrálása
-        items:
-        - name: Felhasználó által megadott adatok érvényesítése
-          href: active-directory-b2c-rest-api-validation-custom.md
-        - name: További jogcímek beszerzése
-          href: active-directory-b2c-rest-api-step-custom.md
-        - name: Saját RESTful API hozzáadása
-          href: active-directory-b2c-custom-rest-api-netfw.md
-        - name: Biztonságos RESTful API-k egyszerű hitelesítéssel
-          href: active-directory-b2c-custom-rest-api-netfw-secure-basic.md
-        - name: Biztonságos RESTful API-k tanúsítványhitelesítéssel
-          href: active-directory-b2c-custom-rest-api-netfw-secure-cert.md
-      - name: Felhasználói folyamatok
-        items:
-        - name: Felhasználó által megadott adatok konfigurálása
-          href: active-directory-b2c-configure-signup-self-asserted-custom.md
-        - name: Egyéni attribútumok
-          href: active-directory-b2c-create-custom-attributes-profile-edit-custom.md
-        - name: A felhasználói felület testreszabása
-          href: active-directory-b2c-ui-customization-custom.md
-        - name: A felhasználói felület dinamikus testreszabása
-          href: active-directory-b2c-ui-customization-custom-dynamic.md
-        - name: Jogkivonatok testreszabása
-          href: active-directory-b2c-reference-manage-sso-and-token-configuration.md
-        - name: Jelszó bonyolultsága
-          href: active-directory-b2c-reference-password-complexity-custom.md
-        - name: Jelszó módosítása
-          href: active-directory-b2c-reference-password-change-custom.md
-        - name: A bejelentkezve maradás engedélyezése
-          href: active-directory-b2c-reference-kmsi-custom.md
-      - name: Felhasználói hozzáférés kezelése.
-        href: manage-user-access.md
-      - name: Hibaelhárítás
-        items:
-        - name: Naplók gyűjtése az Application Insights használatával
-          href: active-directory-b2c-troubleshoot-custom.md
-        - name: A felhasználók viselkedésének nyomon követése
-          href: active-directory-b2c-custom-guide-eventlogger-appins.md
+      - name: Felhasználó által megadott adatok érvényesítése
+        href: active-directory-b2c-rest-api-validation-custom.md
+      - name: További jogcímek beszerzése
+        href: active-directory-b2c-rest-api-step-custom.md
+      - name: Saját RESTful API hozzáadása
+        href: active-directory-b2c-custom-rest-api-netfw.md
+      - name: Biztonságos RESTful API-k egyszerű hitelesítéssel
+        href: active-directory-b2c-custom-rest-api-netfw-secure-basic.md
+      - name: Biztonságos RESTful API-k tanúsítványhitelesítéssel
+        href: active-directory-b2c-custom-rest-api-netfw-secure-cert.md
+    - name: OIDC/OAUTH-szolgáltatók
+      items:
+      - name: Azure AD (egybérlős)
+        href: active-directory-b2c-setup-aad-custom.md
+      - name: Azure AD (több-bérlős)
+        href: active-directory-b2c-setup-commonaad-custom.md
+      - name: Google
+        href: active-directory-b2c-custom-setup-goog-idp.md
+      - name: LinkedIn
+        href: active-directory-b2c-custom-setup-li-idp.md
+      - name: Microsoft-fiók
+        href: active-directory-b2c-custom-setup-msa-idp.md
+      - name: Twitter
+        href: active-directory-b2c-custom-setup-twitter-idp.md
+    - name: SAML-szolgáltatók
+      items:
+      - name: ADFS
+        href: active-directory-b2c-custom-setup-adfs2016-idp.md
+      - name: Salesforce
+        href: active-directory-b2c-setup-sf-app-custom.md
+    - name: Felhasználói folyamatok
+      items:
+      - name: Felhasználó által megadott adatok konfigurálása
+        href: active-directory-b2c-configure-signup-self-asserted-custom.md
+      - name: Egyéni attribútumok
+        href: active-directory-b2c-create-custom-attributes-profile-edit-custom.md
+      - name: A felhasználói felület testreszabása
+        href: active-directory-b2c-ui-customization-custom.md
+      - name: A felhasználói felület dinamikus testreszabása
+        href: active-directory-b2c-ui-customization-custom-dynamic.md
+      - name: Jogkivonatok testreszabása
+        href: active-directory-b2c-reference-manage-sso-and-token-configuration.md
+      - name: Jelszó bonyolultsága
+        href: active-directory-b2c-reference-password-complexity-custom.md
+      - name: Jelszó módosítása
+        href: active-directory-b2c-reference-password-change-custom.md
+      - name: A bejelentkezve maradás engedélyezése
+        href: active-directory-b2c-reference-kmsi-custom.md
     - name: Referencia
       items:
-      - name: Kibocsátási megjegyzések
-        href: active-directory-b2c-developer-notes-custom.md
-      - name: A bizalmi keretrendszer meghatározása
-        href: active-directory-b2c-reference-trustframeworks-defined-ief-custom.md
       - name: Identity Experience Framework-séma
         items:
         - name: TrustFrameworkPolicy
@@ -311,6 +211,76 @@ items:
           href: userjourneys.md
         - name: RelyingParty
           href: relyingparty.md
+      - name: Kibocsátási megjegyzések
+        href: active-directory-b2c-developer-notes-custom.md
+      - name: A bizalmi keretrendszer meghatározása
+        href: active-directory-b2c-reference-trustframeworks-defined-ief-custom.md
+  - name: Identitásszolgáltatók
+    items:
+    - name: Amazon
+      href: active-directory-b2c-setup-amzn-app.md
+    - name: Azure AD (egybérlős)
+      href: active-directory-b2c-setup-oidc-azure-active-directory.md
+    - name: Microsoft-fiók
+      href: active-directory-b2c-setup-msa-app.md
+    - name: Facebook
+      href: active-directory-b2c-setup-fb-app.md
+    - name: GitHub
+      href: active-directory-b2c-setup-github-app.md
+    - name: Google
+      href: active-directory-b2c-setup-goog-app.md
+    - name: LinkedIn
+      href: active-directory-b2c-setup-li-app.md
+    - name: OpenID Connect
+      href: active-directory-b2c-setup-oidc-idp.md
+    - name: QQ
+      href: active-directory-b2c-setup-qq-app.md
+    - name: Twitter
+      href: active-directory-b2c-setup-twitter-app.md
+    - name: WeChat
+      href: active-directory-b2c-setup-wechat-app.md
+    - name: Weibo
+      href: active-directory-b2c-setup-weibo-app.md
+  - name: Felhasználók migrálása
+    href: active-directory-b2c-user-migration.md
+  - name: Felhasználók migrálása közösségi identitásokkal
+    href: active-directory-b2c-social-migration.md
+  - name: Mobil- és asztali appok
+    items:
+    - name: iOS ObjC az AppAuth használatával
+      href: active-directory-b2c-devquickstarts-ios.md
+    - name: Android az AppAuth használatával
+      href: active-directory-b2c-devquickstarts-android.md
+  - name: Hozzáférési jogkivonatok beszerzése
+    href: active-directory-b2c-access-tokens.md
+  - name: Alkalmazás regisztrálása
+    href: active-directory-b2c-app-registration.md
+  - name: Használat jelentése
+    href: active-directory-b2c-reference-usage-reporting-api.md
+  - name: Erőforrás tulajdonosának jelszava
+    href: configure-ropc.md
+  - name: Korhatáralapú hozzáférés-korlátozás beállítása
+    href: basic-age-gating.md
+  - name: Közvetlen bejelentkezés beállítása
+    href: direct-signin.md
+  - name: Önkiszolgáló jelszó-visszaállítás beállítása
+    href: active-directory-b2c-reference-sspr.md
+  - name: A b2clogin.com használata
+    href: b2clogin.md
+  - name: Az Azure AD Graph API használata
+    href: active-directory-b2c-devquickstarts-graph-dotnet.md
+  - name: A felhasználók viselkedésének nyomon követése
+    href: active-directory-b2c-custom-guide-eventlogger-appins.md
+  - name: Webalkalmazások
+    items:
+    - name: ASP.NET
+      href: active-directory-b2c-devquickstarts-web-dotnet-susi.md
+  - name: Webes API-k
+    items:
+    - name: ASP.NET
+      href: active-directory-b2c-devquickstarts-api-dotnet.md
+    - name: .NET-alapú webes API hívása
+      href: active-directory-b2c-devquickstarts-web-api-dotnet.md
   - name: Referencia
     items:
     - name: Kódminták
@@ -347,9 +317,9 @@ items:
     href: active-directory-b2c-support.md
   - name: Videók
     href: https://azure.microsoft.com/documentation/videos/index/?services=active-directory-b2c
-ms.openlocfilehash: 322272a48d228e102981b4e7f194704f39443953
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: 73f1ba6e153d5024014793bb06e78f64708959eb
+ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44378686"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47181345"

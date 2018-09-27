@@ -514,8 +514,6 @@ items:
           href: ../monitoring/monitoring-container-insights-optout.md?toc=%2fazure%2fmonitoring%2ftoc.json
         - name: Hibaelhárítás
           href: ../monitoring/monitoring-container-insights-troubleshoot.md
-      - name: AKS-tároló állapota
-        href: ../monitoring/monitoring-container-health.md?toc=/azure/azure-monitor/toc.json
       - name: Docker- és Windows-tárolók monitorozása
         href: ../log-analytics/log-analytics-containers.md?toc=/azure/azure-monitor/toc.json
       - name: Docker-alkalmazások monitorozása
@@ -639,8 +637,6 @@ items:
       href: ../monitoring-and-diagnostics/monitoring-service-notifications.md?toc=/azure/azure-monitor/toc.json
     - name: Naplóadatok lekérdezése
       items:
-      - name: Nyelvi referencia
-        href: https://docs.loganalytics.io
       - name: Bevezetés
         items:
         - name: Ismerkedés az Analytics-portál használatával
@@ -678,7 +674,9 @@ items:
       - name: Nyelvi referencia
         items:
         - name: Nyelvi referencia
-          href: https://aka.ms/LogAnalyticsLanguageReference
+          href: /azure/kusto/query
+        - name: Eltérések a Kustóhoz képest
+          href: ../log-analytics/query-language/kusto.md
         - name: alkalmazáskifejezés
           href: ../log-analytics/query-language/app-expression.md?toc=/azure/azure-monitor/toc.json
         - name: munkaterület-kifejezés
@@ -980,9 +978,9 @@ items:
     href: https://stackoverflow.com/search?q=monitoring
   - name: Kódminták
     href: https://azure.microsoft.com/resources/samples/?service=monitor
-ms.openlocfilehash: c0706842080ab163e74e0eb085c8e80bd01800e7
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.openlocfilehash: ef2057d55903d3fdc4d2fc7f914f29e84cffc638
+ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47056726"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47181965"

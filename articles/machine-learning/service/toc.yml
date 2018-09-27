@@ -7,32 +7,30 @@ items:
     href: overview-what-is-azure-ml.md
   - name: Mi történt a Workbenchcsel?
     href: overview-what-happened-to-workbench.md
-  - name: Migrálási eljárás
-    href: how-to-migrate.md
   - name: A Microsoft gépi tanulási termékeinek összehasonlítása
     href: overview-more-machine-learning.md
   expanded: true
 - name: Gyors útmutatók
   items:
-  - name: Az első lépések – Portal
+  - name: Bevezetés
     href: quickstart-get-started.md
 - name: Oktatóanyagok
   items:
-  - name: 1. Modellek betanítása
+  - name: 'Modellek betanítása: 1. rész'
     href: tutorial-train-models-with-aml.md
-  - name: 2. Modellek üzembe helyezése
+  - name: 'Modellek üzembe helyezése: 2. rész'
     href: tutorial-deploy-models-with-aml.md
   - name: Automatizált gépi tanulási modellek betanítása
     href: tutorial-auto-train-models.md
 - name: Alapelvek
   items:
-  - name: Architektúra és kifejezések
+  - name: A szolgáltatás működése
     href: concept-azure-machine-learning-architecture.md
   - name: Modellkezelés
     href: concept-model-management-and-deployment.md
-  - name: FPGA-gyorsítások
+  - name: Gyorsítás FPGA-kkal
     href: concept-accelerate-with-fpgas.md
-  - name: Gépi tanulási folyamatok
+  - name: Machine Learning-folyamatok
     href: concept-ml-pipelines.md
 - name: Útmutatók
   items:
@@ -106,6 +104,8 @@ items:
     href: reference-azure-machine-learning-cli.md
 - name: További források
   items:
+  - name: R fejlesztői útmutató
+    href: ../r-developers-guide.md
   - name: Azure-ütemterv
     href: https://azure.microsoft.com/roadmap/
   - name: Díjszabás
@@ -120,6 +120,8 @@ items:
     href: support-for-aml-services.md
   - name: Elavult dokumentumok
     items:
+    - name: Migrálási eljárás
+      href: how-to-migrate.md
     - name: Első lépések a Workbenchcsel
       href: ../desktop-workbench/quickstart-installation.md
     - name: '1. oktatóanyag: Adatok előkészítése'
@@ -320,9 +322,9 @@ items:
       href: ../desktop-workbench/known-issues-and-troubleshooting-guide.md
     - name: Támogatás
       href: support-for-aml-services.md
-ms.openlocfilehash: c5b69eaab82c2649eb1cb30438899999449c92a2
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 0e069ce7bb04a4aef2e631488ec807a1539c32e5
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46992830"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47162151"

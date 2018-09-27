@@ -19,12 +19,14 @@
 #### [Azure-alkalmazások: Felügyelt alkalmazások](./marketplace-managed-apps.md)
 #### [SaaS-alkalmazások](./marketplace-saas-applications-technical-publishing-guide.md) 
 #### [Containers](./marketplace-containers.md)
+#### [IoT Edge-modulok](./iot-edge-module.md) 
 #### [Tanácsadói szolgáltatás](./consulting-services.md)  
 #### [Office 365, Dynamics 365 és Power BI közzétételi útmutató](./appsource-offer-publishing-guide.md)
 #### [Microsoft AppSource- és Azure Marketplace-termékoldal engedélyezése az Azure Active Directory használatával](./enable-appsource-marketplace-using-azure-ad.md)
 
 ### [Vállalatfejlesztés a piactéren](./grow-your-business-with-azure-marketplace.md)  
 #### [Előnyben részesített megoldások](./preferred-solutions.md) 
+#### [Marketplace-tartalmak érvényesítése](./marketplace-criteria-content-validation.md)
 
 ### [Azure Marketplace- és AppSource-támogatás](./support-azure-marketplace.md)  
 

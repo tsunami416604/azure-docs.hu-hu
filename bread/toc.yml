@@ -13,7 +13,7 @@ items:
     - name: Alapok
       tocHref: /azure/active-directory/fundamentals/
       topicHref: /azure/active-directory/fundamentals/
-    - name: Identity Protection
+    - name: Identitásvédelem
       tocHref: /azure/active-directory/identity-protection/
       topicHref: /azure/active-directory/identity-protection/
     - name: Eszközök
@@ -37,6 +37,9 @@ items:
     - name: Felhasználói súgó
       tocHref: /azure/active-directory/user-help/
       topicHref: /azure/active-directory/user-help/
+    - name: B2B
+      tocHref: /azure/active-directory/b2b/
+      topicHref: /azure/active-directory/b2b/
     - name: B2C
       tocHref: /azure/active-directory-b2c/
       topicHref: /azure/active-directory-b2c/
@@ -46,10 +49,10 @@ items:
     - name: Felhasználók, csoportok és szerepkörök
       tocHref: /azure/active-directory/users-groups-roles/
       topicHref: /azure/active-directory/users-groups-roles/
-    - name: Hozzáférési felülvizsgálatok
+    - name: Identitáskezelés
       tocHref: /azure/active-directory/governance/
       topicHref: /azure/active-directory/governance/
-    - name: Alkalmazások kezelése
+    - name: Alkalmazáskezelés
       tocHref: /azure/active-directory/manage-apps/
       topicHref: /azure/active-directory/manage-apps/
     - name: Jelentések és monitorozás
@@ -214,7 +217,7 @@ items:
     - name: Számítógépes látástechnológia
       tocHref: /azure/cognitive-services/computer-vision/
       topicHref: /azure/cognitive-services/computer-vision/
-    - name: Content Moderator
+    - name: Tartalommoderátor
       tocHref: /azure/cognitive-services/content-moderator/
       topicHref: /azure/cognitive-services/content-moderator/overview
     - name: Egyéni döntési szolgáltatás
@@ -223,13 +226,13 @@ items:
     - name: Custom Speech Service
       tocHref: /azure/cognitive-services/custom-speech-service/
       topicHref: /azure/cognitive-services/custom-speech-service/cognitive-services-custom-speech-home
-    - name: Speaker Recognition
+    - name: Beszélőfelismerés
       tocHref: /azure/cognitive-services/speaker-recognition/
       topicHref: /azure/cognitive-services/speaker-recognition/home
-    - name: Custom Vision Service
+    - name: Egyéni vizuális szolgáltatás
       tocHref: /azure/cognitive-services/custom-vision-service/
       topicHref: /azure/cognitive-services/custom-vision-service/
-    - name: Emotion
+    - name: Érzelemfelismerés
       tocHref: /azure/cognitive-services/emotion/
       topicHref: /azure/cognitive-services/emotion/home
     - name: Entitáskapcsolás
@@ -265,10 +268,10 @@ items:
     - name: Speech API
       tocHref: /azure/cognitive-services/Speech/
       topicHref: /azure/cognitive-services/Speech/home
-    - name: Speech Service
+    - name: Beszédszolgáltatás
       tocHref: /azure/cognitive-services/Speech-Service/
       topicHref: /azure/cognitive-services/Speech-Service/
-    - name: Text Analytics
+    - name: Szövegelemzés
       tocHref: /azure/cognitive-services/text-analytics/
       topicHref: /azure/cognitive-services/text-analytics/
     - name: Fordítói szöveg
@@ -619,9 +622,9 @@ items:
   - name: VPN Gateway
     tocHref: /azure/vpn-gateway/
     topicHref: /azure/vpn-gateway/
-ms.openlocfilehash: 1236a6109ad48c0321d3ce3b21f91e939282958b
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: c2588f63135e0c52657b469945b005c13e863418
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46991555"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47163528"

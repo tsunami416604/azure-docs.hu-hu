@@ -45,8 +45,9 @@
 ### [Azure rendelkezésre állási csoportokon futó SAP HANA – Áttekintés](sap-hana-availability-overview.md)
 ### [Egy Azure-régión belüli Azure rendelkezésre állási csoportokon futó SAP HANA](sap-hana-availability-one-region.md)
 ### [Több Azure-régión belüli Azure rendelkezésre állási csoportokon futó SAP HANA](sap-hana-availability-across-regions.md)
-## [Az SAP HANA SLES-en végzett rendszerreplikálásának beállítása](sap-hana-high-availability.md)
-## [Az SAP HANA RHEL-en végzett rendszerreplikálásának beállítása](sap-hana-high-availability-rhel.md)
+### [Az SAP HANA SLES-en végzett rendszerreplikálásának beállítása](sap-hana-high-availability.md)
+### [Az SAP HANA RHEL-en végzett rendszerreplikálásának beállítása](sap-hana-high-availability-rhel.md)
+### [Az SAP HANA-felskálázás és a Pacemaker on SLES hibaelhárítása](hana-vm-troubleshoot-scale-out-ha-on-sles.md)
 ## [SAP HANA biztonsági mentés áttekintése](sap-hana-backup-guide.md)
 ## [SAP HANA fájlszintű biztonsági mentés](sap-hana-backup-file-level.md)
 ## [SAP HANA-tárhely pillanatképes biztonsági mentései](sap-hana-backup-storage-snapshots.md)
@@ -107,3 +108,4 @@
 ## [Az Azure Data Factory SAP HANA- és Business Warehouse-adatok integrációját nyújtja](https://azure.microsoft.com/blog/azure-data-factory-offer-sap-hana-and-business-warehouse-data-integration)
 # További források
 ## [Azure-ütemterv](https://azure.microsoft.com/roadmap/)
+

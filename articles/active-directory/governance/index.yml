@@ -1,0 +1,45 @@
+### YamlMime:YamlDocument
+ms.openlocfilehash: 8246ad22fa343cebc276a1cb6d73d5e86421e792
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47167496"
+documentType: LandingData
+title: Az Azure AD Identity Governance dokumentációja
+metadata:
+  document_id: 
+  title: Az Azure AD Identity Governance dokumentációja | Microsoft Docs
+  description: Tudnivalók az identitás-életciklus kezeléséről, a hozzáférési életciklus kezeléséről, valamint az alkalmazottak és partnerek biztonságos felügyeletéről.
+  services: active-directory
+  author: rolyon
+  manager: mtillman
+  ms.service: active-directory
+  ms.tgt_pltfrm: na
+  ms.devlang: na
+  ms.topic: landing-page
+  ms.date: 08/16/2018
+  ms.author: rolyon
+abstract:
+  description: Az Azure Active Directory (Azure AD) Identity Governance lehetővé teszi a szervezetek számára az identitás-életciklus és a hozzáférési életciklus kezelését, valamint az alkalmazottak és partnerek biztonságos felügyeletét.
+sections:
+- title: Identitáskezelés
+  items:
+  - type: list
+    style: unordered
+    items:
+    - html: <a href="/azure/active-directory/governance/identity-governance-overview">Mi az identitáskezelés?</a>
+- title: Hozzáférési felülvizsgálatok
+  items:
+  - type: list
+    style: unordered
+    items:
+    - html: <a href="/azure/active-directory/governance/access-reviews-overview">Mi az a hozzáférési felülvizsgálat?</a>
+    - html: <a href="/azure/active-directory/governance/manage-user-access-with-access-reviews">Felhasználói hozzáférés kezelése hozzáférési felülvizsgálatokkal</a>
+    - html: <a href="/azure/active-directory/governance/manage-guest-access-with-access-reviews">Vendéghozzáférés kezelése hozzáférési felülvizsgálatokkal</a>
+- title: Használati feltételek
+  items:
+  - type: list
+    style: unordered
+    items:
+    - html: <a href="/azure/active-directory/governance/active-directory-tou">Mire használhatom a Használati feltételek funkciót?</a>
