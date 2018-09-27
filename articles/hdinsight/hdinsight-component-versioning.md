@@ -10,12 +10,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 01/09/2018
 ms.author: kakampf
-ms.openlocfilehash: dc1f076a6450a7b6fa33a959e79b0fd5a68a99d4
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 5be239fd3c77872a59b37efc6de5fc42aca9bb0c
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47162391"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47395814"
 ---
 # <a name="what-are-the-hadoop-components-and-versions-available-with-hdinsight"></a>Mik azok a Hadoop-összetevők és a HDInsight-verziók?
 
@@ -80,6 +80,9 @@ Az alábbi táblázat az Azure Portalon, valamint egyéb telepítési módszerek
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | HDInsight 4.0 <br> (Előzetes verzió) |HDP 3.0 |Ubuntu 16.0.4 LTS |2018. szeptember 24. | | |Igen |Igen |
 | HDInsight 3.6-os |2.6 HDP |Ubuntu 16.0.4 LTS |2017. április 4. | | |Igen |Igen |
+| HDInsight 3.5-ös verzióját. <br> (Spark) * |2.6 HDP |Ubuntu 16.0.4 LTS |2016. szeptember 30. |2019. márciusi 13. |2019. márciusi 13. |Igen |Igen |
+
+*HDInsight 3.5-ös támogatási ki lett terjesztve, csak a Spark-fürt típusa*
 
 > [!NOTE]
 > Támogatási után a lejárt verziót, nem lehet elérhető a Microsoft Azure-portálon keresztül. Azonban fürtverziók továbbra is elérhetők az a `Version` paramétert a Windows PowerShellben [New-AzureRmHDInsightCluster](https://docs.microsoft.com/powershell/module/azurerm.hdinsight/new-azurermhdinsightcluster) parancs, és a .NET SDK, amíg a verzió kivezetési dátuma.
@@ -91,7 +94,7 @@ A következő táblázat felsorolja a verziókat HDInsight **nem** elérhető az
 
 | HDInsight-verzió | HDP verzió | VM OS | Kiadási dátum | Támogatás lejárati dátuma | Visszavonás dátuma | Magas rendelkezésre állás |  Rendelkezésre állás az Azure Portalon | 
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| HDInsight 3.5-ös verzióját. |HDP 2,5 |Ubuntu 16.0.4 LTS |2016. szeptember 30. |2017. szeptember 5. |2018. június 28. |Igen |Nem |
+| HDInsight 3.5-ös verzióját. <br> (Nem Spark) |HDP 2,5 |Ubuntu 16.0.4 LTS |2016. szeptember 30. |2017. szeptember 5. |2018. június 28. |Igen |Nem |
 | HDInsight 3.4 |HDP 2.4 |Ubuntu 14.0.4 LTS |2016. március 29-én |2016. december 29-én |2018. január 9. |Igen |Nem |
 | HDInsight 3.3. |HDP 2.3 |Windows Server 2012 R2 |2015. december 2. |2016. június 27. |2018. július 31. |Igen |Nem |
 | HDInsight 3.3. |HDP 2.3 |Ubuntu 14.0.4 LTS |2015. december 2. |2016. június 27. |2017. július 31-ig. |Igen |Nem |

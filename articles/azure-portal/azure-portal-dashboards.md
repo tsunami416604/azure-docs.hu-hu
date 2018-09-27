@@ -1,6 +1,6 @@
 ---
-title: Hozzon létre és osszon meg az Azure portál irányítópultok |} Microsoft Docs
-description: Ez a cikk ismerteti, hogyan hozhat létre és szerkeszthet irányítópultok az Azure portálon.
+title: Az Azure portal irányítópultok létrehozása és megosztása |} A Microsoft Docs
+description: Ez a cikk ismerteti, hogyan hozhat létre és szerkeszthet irányítópultokat az Azure Portalon.
 services: azure-portal
 documentationcenter: ''
 author: sewatson
@@ -13,86 +13,86 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 09/06/2016
-ms.author: sewatson
-ms.openlocfilehash: 3bdeb3255c8dc97d2867eca0b9cdec8223d31b21
-ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
+ms.author: cwatson
+ms.openlocfilehash: 6062e54f0fb584dec4c2db540565c5860ae92a2d
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34165349"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47394964"
 ---
-# <a name="create-and-share-dashboards-in-the-azure-portal"></a>Hozzon létre és osszon irányítópultok az Azure-portálon
-Több irányítópultot létrehozni, és megoszthatja őket másokkal, akik hozzáférhetnek a Azure-előfizetését.  Ez a cikk végighalad létrehozására, szerkesztésére, közzétételének és irányítópultokhoz való hozzáférés kezelése a alapjait.
+# <a name="create-and-share-dashboards-in-the-azure-portal"></a>Az Azure Portalon irányítópultok létrehozása és megosztása
+Több irányítópultokat hozhat létre, és megoszthatja másokkal, akik hozzáférhetnek az Azure-előfizetést a.  Ez a cikk létrehozása, szerkesztése, közzététel és irányítópultokhoz való hozzáférés kezelésére való használatának alapvető kerül.
 
 ## <a name="create-a-dashboard"></a>Irányítópult létrehozása
 Egy irányítópult létrehozásához kattintson az **Új irányítópult** gombra a jelenlegi irányítópult neve mellett.  
 
 ![irányítópult létrehozása](./media/azure-portal-dashboards/new-dashboard.png)
 
-Ez a művelet létrehoz egy új, üres, privát irányítópultot, amely rögtön testreszabási módba lép, ahol elnevezheti az irányítópultot, valamint hozzáadhat csempéket vagy átrendezheti azokat.  Ha ebben a módban a összecsukható csempe gyűjtemény átveszi a bal oldali navigációs menü.  A csempe gyűjtemény lehetővé teszi, hogy az Azure-erőforrások különböző módokon csempék találhatók: által tallózással [erőforráscsoport](../azure-resource-manager/resource-group-overview.md#resource-groups), az erőforrás írja be, ha [címke](../azure-resource-manager/resource-group-using-tags.md), vagy az erőforrás neve alapján keres.  
+Ez a művelet létrehoz egy új, üres, privát irányítópultot, amely rögtön testreszabási módba lép, ahol elnevezheti az irányítópultot, valamint hozzáadhat csempéket vagy átrendezheti azokat.  Ebben a módban az összecsukható csempetárral átveszi a bal oldali navigációs menüben.  A csempe-katalógus lehetővé teszi, az Azure-erőforrások különböző módokon csempék keresése: szerint tallózhat [erőforráscsoport](../azure-resource-manager/resource-group-overview.md#resource-groups), erőforrás típusa, a [címke](../azure-resource-manager/resource-group-using-tags.md), vagy az erőforrás keresése név alapján.  
 
 ![testre szabhatja az irányítópultot](./media/azure-portal-dashboards/customize-dashboard.png)
 
-Vegyen fel csempéket húzással őket irányítópult felületre bárhová be.
+Csempék hozzáadása húzással őket irányítópult felületre akarja.
 
-Van egy új kategóriába **általános** csempék, amelyek nincsenek társítva van egy adott erőforráshoz.  Ebben a példában a Markdown csempe azt rögzíti.  Ez a csempe használatával ad hozzá az egyéni tartalom az irányítópulton való rögzítéséhez.  A csempe támogatja az egyszerű szöveges [Markdown-szintaxis](https://daringfireball.net/projects/markdown/syntax), és a HTML egy korlátozott körét.  (A biztonsági, mint szúrjon nem hajtható végre `<script>` címkéket, vagy bizonyos stílusbeállításokat elemmel, amely a portál CSS.) 
+Van egy új kategóriába **általános** csempék, amelyek nem tartoznak az adott erőforrás esetében.  Ebben a példában azt Markdown csempe rögzítése.  Ez a csempe használatával egyéni tartalom hozzáadása az irányítópulthoz.  A csempe támogatja az egyszerű szöveges, [Markdown-szintaxisa](https://daringfireball.net/projects/markdown/syntax), és a egy korlátozott számú HTML.  (A biztonsági, például az beszúrása nem hajtható végre `<script>` címkék, vagy bizonyos stílusának elemmel, CSS, amely a portálon.) 
 
-![markdown hozzáadása](./media/azure-portal-dashboards/add-markdown.png)
+![Adja hozzá a markdown](./media/azure-portal-dashboards/add-markdown.png)
 
 ## <a name="edit-a-dashboard"></a>Irányítópult szerkesztése
-Miután létrehozta az irányítópulton, PIN-kód csempét a csempe vagy a paneleken csempe ábrázolását. Most PIN-kód az erőforráscsoport ábrázolását. A cikk böngészésekor, vagy az erőforráscsoport panel vagy PIN-kódot is. Az erőforráscsoport csempe ábrázolását rögzítési mindkét megközelítés eredményez.
+Miután létrehozta az irányítópultot, a csempe katalógus vagy panelek csempe reprezentációja csempéit rögzítheti. Most rögzítése leképezése az létrehoztuk az erőforráscsoportot. Az elem böngészésekor, vagy az erőforráscsoport panelen vagy PIN-kódot is. Az erőforráscsoport csempe reprezentációja rögzítés mindkét módszerénél eredményez.
 
 ![Rögzítés az irányítópulton](./media/azure-portal-dashboards/pin-to-dashboard.png)
 
-Miután a cikk, megjelenik az irányítópulton.
+Az elemet rögzíthet, után megjelenik az irányítópulton.
 
-![Irányítópult nézet](./media/azure-portal-dashboards/view-dashboard.png)
+![Irányítópult megtekintése](./media/azure-portal-dashboards/view-dashboard.png)
 
-Most, hogy egy Markdown csempe van, és egy erőforráscsoport rögzítve az irányítópulton, azt átméretezése, és átrendezheti a csempéket megfelelő elrendezésekben.
+Most, hogy egy Markdown-csempe van, és a egy erőforráscsoportot az irányítópulton rögzített, lehet átméretezheti és átrendezheti a csempéket be egy megfelelő elrendezés.
 
-Rámutató és válassza a "...", vagy kattintson a jobb gombbal a mozaikokra tekintheti meg a környezetfüggő parancsok az adott csempe. Alapértelmezés szerint nincsenek két elemek:
+Viszi, és válassza a "...", vagy kattintson a jobb gombbal a csempére láthatja a környezetfüggő parancsokat az adott csempéhez. Alapértelmezés szerint a rendszer két elemet:
 
-1. **Az irányítópult rögzítését** – a csempe eltávolítása az irányítópulton
-2. **Testre szabhatja** – kerül üzemmód testreszabása
+1. **Rögzítés feloldása az irányítópulton** – eltávolítja a csempét az irányítópulton
+2. **Testre szabhatja** – kerül testreszabási módban
 
-![Mozaik elrendezés testreszabása](./media/azure-portal-dashboards/customize-tile.png)
+![csempe testreszabása](./media/azure-portal-dashboards/customize-tile.png)
 
-Kiválasztásával testreszabása, méretezze át, és újra sorrendbe állítja a csempéket. Egy csempe átméretezéséhez adja meg új a helyi menüben a következő ábrán látható módon.
+Kiválasztásával testreszabása, átméretezheti és átrendezheti a csempéket. Egy csempe átméretezéséhez jelölje be az új méret a helyi menüben, az alábbi képen látható módon.
 
-![Automatikus oszlopszélesség csempe](./media/azure-portal-dashboards/resize-tile.png)
+![csempe átméretezése](./media/azure-portal-dashboards/resize-tile.png)
 
-Vagy, ha a csempe támogatja bármilyen méretű, áthúzhatja a kívánt méretet a jobb alsó sarokban.
+Vagy, ha a csempe támogatja a tetszőleges méretű, áthúzhatja a kívánt méretet a jobb alsó sarokban.
 
-![Automatikus oszlopszélesség csempe](./media/azure-portal-dashboards/resize-corner.png)
+![csempe átméretezése](./media/azure-portal-dashboards/resize-corner.png)
 
-Csempék átméretezése, miután az irányítópult megtekintéséhez.
+Csempék átméretezése, miután az irányítópult megtekintésére.
 
-![csempéje](./media/azure-portal-dashboards/view-tile.png)
+![nézet csempe](./media/azure-portal-dashboards/view-tile.png)
 
-Miután befejezte a testreszabása egy irányítópultot, egyszerűen jelölje ki a **végzett Testreszabás** való kilépéshez testreszabási módban, vagy kattintson a jobb gombbal, és válassza ki **végzett Testreszabás** a helyi menüből.
+Amikor elkészült, egy irányítópult testre szabása, egyszerűen válassza ki a **testreszabás kész** való kilépéshez testreszabási módban, vagy kattintson a jobb gombbal, és válassza ki **testreszabás kész** a helyi menüből.
 
-## <a name="publish-a-dashboard-and-manage-access-control"></a>Irányítópult közzétételét és kezelését a hozzáférés-vezérlés
+## <a name="publish-a-dashboard-and-manage-access-control"></a>Egy irányítópult közzététele és hozzáférés-vezérlés kezelése
 Amikor létrehoz egy irányítópultot, az alapértelmezetten privát lesz, vagyis csak Ön láthatja.  Ahhoz, hogy mások számára is láthatóvá tegye, használja az egyéb irányítópult-parancsok mellett megjelenő **Megosztás** gombot.
 
 ![Irányítópult megosztása](./media/azure-portal-dashboards/share-dashboard.png)
 
-A rendszer felkéri, hogy válasszon ki egy előfizetést és egy erőforráscsoportot, ahová az irányítópultot közzé kívánja tenni. Irányítópultok zökkenőmentesen integrálja az ökoszisztéma, azt korábban megosztott irányítópultok, megvalósítva Azure-erőforrások (tehát nem lehet megosztani, írja be az e-mail címet).  A csempék a portál által megjelenített információk elérését az irányadó [Azure szerepköralapú hozzáférés-vezérlés](../role-based-access-control/role-assignments-portal.md). Access control szempontból megosztott irányítópultok ugyanazok a virtuális gép vagy egy tárfiókot.  
+A rendszer felkéri, hogy válasszon ki egy előfizetést és egy erőforráscsoportot, ahová az irányítópultot közzé kívánja tenni. Az irányítópultok zökkenőmentesen integrálható az ökoszisztéma, az általunk megvalósított megosztott irányítópultok mint Azure-erőforrások (tehát nem oszthat meg egy e-mail-cím beírásával).  A portálon a csempék többsége által megjelenített információk biztonságos elérését vonatkoznak rájuk [Azure szerepköralapú hozzáférés-vezérlés](../role-based-access-control/role-assignments-portal.md). Access control szempontból a megosztott irányítópultok nem egy virtuális gép vagy a storage-fiók nem azonosak.  
 
-Tegyük fel, Azure-előfizetéssel rendelkezik, és a csoport tagjai hozzárendelt szerepkörök adott biztonsági **tulajdonos**, **közreműködő**, vagy **olvasó** az előfizetés.  Felhasználók, akik a tulajdonos vagy közreműködő szerepkörrel rendelkező személyek képesek listában, megtekintése, létrehozása, módosítása vagy törlése irányítópultok adott előfizetésen belül.  Olvasók felhasználók lehet lista, és tekintse meg az irányítópultok, de nem módosítsa vagy törölje őket.  Olvasási joggal rendelkező felhasználók lehet a helyi módosíthatja is egy megosztott irányítópult, de a rendszer nem tudja közzétenni az ezeket a módosításokat a kiszolgálóra.  Azonban akkor az irányítópult saját használatra titkos másolatát.  Egyes csempéit az irányítópultra, mindig a saját alapján megfelelnek az erőforrások hozzáférés-vezérlési szabályok kényszerítése.  
+Tegyük fel, az Azure-előfizetéssel rendelkezik, és a csapat tagjai vannak hozzárendelve a szerepköröket **tulajdonosa**, **közreműködői**, vagy **olvasó** az előfizetés.  Tulajdonos vagy közreműködő felhasználók listában, megtekintése, létrehozása, módosítása vagy törlése az adott előfizetésen belül irányítópultok képesek.  Felhasználók, akik olvasó lehet listázása és megtekintése az irányítópultok, de nem módosíthatja vagy törölheti őket.  Olvasó hozzáféréssel rendelkező felhasználók helyi módosításokat hajthat végre egy megosztott irányítópulthoz, de nem jelennek meg ezek a módosítások közzététele a kiszolgálóra.  Azonban elvégezhessék a saját használatra az irányítópult egy privát másolatot.  Mint mindig az irányítópulton lévő egyes csempék kényszerítése a saját hozzáférés-vezérlési szabályok megfelelnek erőforrások alapján.  
 
 A kényelmesebb használat érdekében a portál közzétételi folyamata egy olyan mintához vezet, amellyel az irányítópultokat egy **irányítópultok** elnevezésű erőforráscsoportba helyezi.  
 
 ![Irányítópult közzététele](./media/azure-portal-dashboards/publish-dashboard.png)
 
-Választhatja azt is, egy irányítópultot közzétételére egy adott erőforráscsoportban található.  A hozzáférés-vezérlés az irányítópult a hozzáférés-vezérlés az erőforráscsoport megegyezik.  Kezelheti az erőforrásokat, amelyeket a felhasználók az irányítópultok hozzáféréssel is rendelkeznek.
+Azt is beállíthatja egy irányítópult közzététele egy adott erőforráscsoporthoz.  A hozzáférés-vezérlést az irányítópult a hozzáférés-vezérlést, az erőforráscsoport megegyezik.  Az erőforráscsoport az erőforrások is kezelhetők a felhasználók is irányítópultokhoz való hozzáférést.
 
-![Irányítópult erőforráscsoportba történő közzététele](./media/azure-portal-dashboards/publish-to-resource-group.png)
+![erőforrás-csoportba irányítópult közzététele](./media/azure-portal-dashboards/publish-to-resource-group.png)
 
-Az irányítópult közzététele után a **megosztás + hozzáférés** Vezérlőpulton frissítse, és azt a közzétett irányítópulton, többek között a felügyelheti a felhasználók hozzáférését az irányítópultra mutató hivatkozás információkat jelenít meg.  Ez a hivatkozás a szabványos szerepköralapú hozzáférés-vezérlés panel az Azure-erőforrásokkal hozzáférés kezelésére szolgáló indít.  Mindig kaphat vissza erre a nézetre kiválasztásával **megosztás**.
+Az irányítópult közzététele után a **megosztás + hozzáférés** vezérlőpanelen frissítse, és azt a közzétett irányítópultot, és a telepítőre mutató az irányítópulton való felhasználói hozzáférés kezelését adatait.  Ez a hivatkozás elindítja a standard segítségével bármely Azure-erőforrás-hozzáférés kezelése szerepköralapú hozzáférés-vezérlés panel.  Mindig visszatérhet erre a nézetre kiválasztásával **megosztás**.
 
 ![hozzáférés-vezérlés kezelése](./media/azure-portal-dashboards/manage-access.png)
 
 ## <a name="next-steps"></a>További lépések
-* Erőforrások kezeléséhez, tekintse meg a [kezelése Azure-erőforrások portálon keresztül](../azure-resource-manager/resource-group-portal.md).
-* Erőforrások telepítéséhez lásd: [erőforrások a Resource Manager-sablonok és az Azure-portál telepítése](../azure-resource-manager/resource-group-template-deploy-portal.md).
+* Erőforrások kezelése, tekintse meg [Azure-erőforrások a portál](../azure-resource-manager/resource-group-portal.md).
+* Erőforrások üzembe helyezéséhez lásd: [erőforrások üzembe helyezése Resource Manager-sablonokkal és az Azure portal](../azure-resource-manager/resource-group-template-deploy-portal.md).
 

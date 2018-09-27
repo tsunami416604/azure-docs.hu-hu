@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/05/2018
 ms.author: spelluru
-ms.openlocfilehash: e53e3e551041ed5bb04ae8e692a3fe3baf2521f8
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 4dc61258df2311c4e7ccd4c05ebe077b3e2343eb
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44302239"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47222284"
 ---
 # <a name="create-multi-vm-environments-and-paas-resources-with-azure-resource-manager-templates"></a>Több virtuális gépes környezet és PaaS-erőforrások létrehozása Azure Resource Manager-sablonokkal
 
@@ -30,7 +30,6 @@ A [az Azure portal](http://go.microsoft.com/fwlink/p/?LinkID=525040) lehetővé 
 - Azure PaaS-erőforrások kiépítése egy Azure Resource Manager-sablon IaaS virtuális gépek mellett a környezetben.
 - A környezetek költségei a labor létrehozása mellett egyéb típusú bázisok által létrehozott egyedi virtuális gépek követhető nyomon.
 - PaaS-erőforrásokhoz jönnek létre, és megjelenik követését; virtuális gép automatikus leállítása azonban nem vonatkozik a PaaS-erőforrásokhoz.
-- Felhasználók rendelkeznek az azonos virtuális gép a házirend-szabályozás környezetek single-labor-beli virtuális gépek rendelkeznek.
 
 További információ a több [Resource Manager-sablonok használatának előnyei](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#the-benefits-of-using-resource-manager) telepíteni, frissíteni vagy törölni az összes egyetlen művelettel labor erőforrás.
 

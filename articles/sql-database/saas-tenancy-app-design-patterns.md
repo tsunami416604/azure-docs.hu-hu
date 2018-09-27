@@ -12,12 +12,12 @@ ms.author: genemi
 ms.reviewer: billgib, sstein
 manager: craigg
 ms.date: 09/14/2018
-ms.openlocfilehash: b9009452ada6ebfb7626532b1fac406563704ef3
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.openlocfilehash: eff6859dda771bfc2ca2e709578983b6113c6057
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47056681"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47227486"
 ---
 # <a name="multi-tenant-saas-database-tenancy-patterns"></a>Több-bérlős SaaS-adatbázis bérlős minták
 
@@ -138,7 +138,7 @@ Mi a következő, a horizontálisan skálázott több-bérlős modell folyamatba
 
 ## <a name="f-multi-tenant-app-with-a-single-multi-tenant-database"></a>F. Több-bérlős alkalmazás és a egy több-bérlős adatbázis
 
-A több-bérlős adatbázis legegyszerűbb minta összes bérlőre vonatkozó adatok egyetlen egyetlen adatbázist használ.  További bérlők hozzáadásakor, az adatbázis vertikális felskálázása további tárolási és számítási erőforrások.  A vertikális felskálázási lehet szükséges, az összes, bár minden esetben van egy ultimate korlát.  Azonban ahhoz, hogy korlátot az adatbázis hosszú kezelése nehézkessé válik.
+A több-bérlős adatbázis legegyszerűbb minta összes bérlőre vonatkozó adatok egyetlen adatbázist használ.  További bérlők hozzáadásakor, az adatbázis vertikális felskálázása további tárolási és számítási erőforrások.  A vertikális felskálázási lehet szükséges, az összes, bár minden esetben van egy ultimate korlát.  Azonban ahhoz, hogy korlátot az adatbázis hosszú kezelése nehézkessé válik.
 
 Felügyeleti műveletek, amelyek az egyes bérlők összpontosítanak összetettebbek, egy több-bérlős adatbázisban megvalósításához.  És ipari méretekben ezeket a műveleteket elfogadhatatlanul válhat.  Ez egy egyetlen bérlő számára az adatok időponthoz visszaállítást.
 

@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 06/05/2018
+ms.date: 09/05/2018
 ms.author: spelluru
-ms.openlocfilehash: 49694780f4fe32f8068c1d7c4cc87cfb88f77fe5
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: f48e9a5600dca1e13d6ee94a675d5bc824915118
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43700980"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47393961"
 ---
 # <a name="storage-queues-and-service-bus-queues---compared-and-contrasted"></a>Tároló-üzenetsorok és Service Bus-üzenetsorok összehasonlítása
 Ez a cikk elemzi a közötti különbségeket és hasonlóságokat a Microsoft Azure jelenleg elérhető két típusú: tároló-üzenetsorok és Service Bus-üzenetsorok. Ezekre az információkra alapozva összehasonlíthatók az egyes technológiák, és megfontoltabb döntéseket lehet hozni arról, hogy melyik megoldás felel meg leginkább az igényeknek.
@@ -65,7 +65,7 @@ A következő szakaszok táblázatai adja meg az üzenetsor-szolgáltatások log
 ## <a name="foundational-capabilities"></a>Alapvető képességek
 Ez a szakasz az alapvető üzenetsor-kezelési funkciói biztosítják a tároló-üzenetsorok és Service Bus-üzenetsorok hasonlítja össze.
 
-| Összehasonlítási feltétel | Tárolási üzenetsorok | Service Bus üzenetsorok |
+| Összehasonlítási feltétel | Tárolási üzenetsorok | Service Bus-üzenetsorok |
 | --- | --- | --- |
 | Garantált rendezése |**Nem** <br/><br>További információkért tekintse meg az első a "További információ" részben.</br> |**Igen – első-First Out (FIFO)**<br/><br>(ügyféladatoknak munkamenetek üzenetküldése) |
 | Kézbesítési garanciával |**A legalább egyszeri** |**A legalább egyszeri**<br/><br/>**A legtöbb – egyszeri** |
@@ -97,7 +97,7 @@ Ez a szakasz az alapvető üzenetsor-kezelési funkciói biztosítják a tárol�
 ## <a name="advanced-capabilities"></a>Speciális képességek
 Ez a szakasz a tároló-üzenetsorok és Service Bus-üzenetsorok által biztosított speciális képességek hasonlítja össze.
 
-| Összehasonlítási feltétel | Tárolási üzenetsorok | Service Bus üzenetsorok |
+| Összehasonlítási feltétel | Tárolási üzenetsorok | Service Bus-üzenetsorok |
 | --- | --- | --- |
 | Ütemezett kézbesítés |**Igen** |**Igen** |
 | Automatikus kézbesíthetetlen levelek közé helyezésének |**Nem** |**Igen** |
@@ -128,7 +128,7 @@ Ez a szakasz a tároló-üzenetsorok és Service Bus-üzenetsorok által biztos�
 ## <a name="capacity-and-quotas"></a>Kapacitás és a kvóták
 Ez a szakasz hasonlítja össze a Storage-üzenetsorok és Service Bus-üzenetsorok szempontjából [kapacitás és a kvóták](service-bus-quotas.md) , előfordulhat, hogy a alkalmazni.
 
-| Összehasonlítási feltétel | Tárolási üzenetsorok | Service Bus üzenetsorok |
+| Összehasonlítási feltétel | Tárolási üzenetsorok | Service Bus-üzenetsorok |
 | --- | --- | --- |
 | Várólista maximális mérete |**500 TB**<br/><br/>(legfeljebb egy [egyetlen a tárfiókok kapacitásával](../storage/common/storage-introduction.md#queue-storage)) |**1 GB – 80 GB**<br/><br/>(az üzenetsorok létrehozásakor meghatározott, és [particionálás engedélyezése](service-bus-partitioning.md) – a "További információk" című szakaszában talál) |
 | Maximális üzenetméret |**64 KB-OS**<br/><br/>(48 KB-os használatakor **Base64** kódolás)<br/><br/>Az Azure támogatja a nagy méretű üzenetek üzenetsorok és blobok – ekkor is sorba kombinálásával egyetlen cikkre legfeljebb 200 GB. |**256 KB-os** vagy **1 MB**<br/><br/>(beleértve mind a fejléc szövegét, a fejléc maximális mérete: 64 KB-os).<br/><br/>Attól függ, a [szolgáltatásszint](service-bus-premium-messaging.md). |
@@ -147,7 +147,7 @@ Ez a szakasz hasonlítja össze a Storage-üzenetsorok és Service Bus-üzenetso
 ## <a name="management-and-operations"></a>Felügyeleti és műveletek
 Ez a szakasz a tároló-üzenetsorok és Service Bus-üzenetsorok által biztosított felügyeleti szolgáltatásait hasonlítja össze.
 
-| Összehasonlítási feltétel | Tárolási üzenetsorok | Service Bus üzenetsorok |
+| Összehasonlítási feltétel | Tárolási üzenetsorok | Service Bus-üzenetsorok |
 | --- | --- | --- |
 | Felügyeleti protokoll |**REST-HTTP/HTTPS-kapcsolaton keresztül** |**REST-HTTPS-kapcsolaton keresztül** |
 | Futásidejű protokoll |**REST-HTTP/HTTPS-kapcsolaton keresztül** |**REST-HTTPS-kapcsolaton keresztül**<br/><br/>**Az AMQP 1.0-s standard szintű (TCP-TLS)** |
@@ -171,7 +171,7 @@ Ez a szakasz a tároló-üzenetsorok és Service Bus-üzenetsorok által biztos�
 ## <a name="authentication-and-authorization"></a>Hitelesítés és engedélyezés
 Ez a szakasz bemutatja a tároló-üzenetsorok és Service Bus-üzenetsorok által támogatott hitelesítési és engedélyezési funkciókat.
 
-| Összehasonlítási feltétel | Tárolási üzenetsorok | Service Bus üzenetsorok |
+| Összehasonlítási feltétel | Tárolási üzenetsorok | Service Bus-üzenetsorok |
 | --- | --- | --- |
 | Hitelesítés |**Szimmetrikus kulcs** |**Szimmetrikus kulcs** |
 | Biztonsági modell |Delegált hozzáférés SAS-jogkivonatok használatával. |SAS |
