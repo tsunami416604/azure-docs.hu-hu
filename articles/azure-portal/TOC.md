@@ -5,7 +5,7 @@
 # Alapelvek
 ## [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md)
 ## [Billentyűparancsok](azure-portal-keyboard-shortcuts.md)
-## [Támogatott böngészők és eszközök](../azure-preview-portal-supported-browsers-devices.md)
+## [Támogatott böngészők és eszközök](azure-portal-supported-browsers-devices.md)
 ## [Az Azure-irányítópultok struktúrája](azure-portal-dashboards-structure.md)
 # Útmutatók
 ## Üzembe helyezés
