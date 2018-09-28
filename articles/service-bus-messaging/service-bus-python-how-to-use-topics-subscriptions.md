@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: python
 ms.topic: article
-ms.date: 04/20/2018
+ms.date: 09/20/2018
 ms.author: spelluru
-ms.openlocfilehash: 66d0e10765976503ae7222eeb024890916e42af1
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: ba95eb7742af611cc3365fdb07b75c785ba42681
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43698298"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47406889"
 ---
 # <a name="how-to-use-service-bus-topics-and-subscriptions-with-python"></a>Service Bus-üzenettémák és előfizetések használata pythonnal
 
@@ -76,7 +76,7 @@ Témakörök, előfizetések is jönnek létre az a **ServiceBusService** objekt
 
 ### <a name="create-a-subscription-with-the-default-matchall-filter"></a>Előfizetés létrehozása az alapértelmezett (MatchAll) szűrővel
 
-A **MatchAll** szűrő az alapértelmezett szűrő, amely akkor használatos, ha nincs meghatározva szűrő egy új előfizetés létrehozásakor. Ha a **MatchAll** szűrőt használ, a témakörbe közzétett összes üzenetet az előfizetés virtuális üzenetsorának vannak elhelyezve. Az alábbi példa egy nevű előfizetést hoz létre `AllMessages` , és használja az alapértelmezett **MatchAll** szűrőt.
+Ha nincs meghatározva szűrő egy új előfizetés létrehozásakor, a **MatchAll** szűrő (alapértelmezett) használatos. Ha a **MatchAll** szűrőt használ, a témakörbe közzétett összes üzenetet az előfizetés virtuális üzenetsorának vannak elhelyezve. Az alábbi példa egy nevű előfizetést hoz létre `AllMessages` , és használja az alapértelmezett **MatchAll** szűrőt.
 
 ```python
 bus_service.create_subscription('mytopic', 'AllMessages')
@@ -148,7 +148,7 @@ print(msg.body)
 
 Üzenetek törlése az előfizetésből, amikor olvasott a paraméter `peek_lock` értékre van állítva **hamis**. Olvashat (betekintési) és az üzenet zárolása törlése az üzenetsorból paraméterének beállításával nélkül `peek_lock` való **igaz**.
 
-Olvasása és törlése a fogadás művelet részeként viselkedését a legegyszerűbb modell, és a leginkább forgatókönyvek, amelyben az alkalmazás működését nem dolgoz fel üzenetet, ha hiba történik. Ez a viselkedés megismeréséhez, fontolja meg egy forgatókönyvet, amelyben a fogyasztó a fogadási kérést, és majd összeomlik a feldolgozása előtt. Mivel a Service Bus az üzenetet, jelölte, majd az alkalmazás újraindításakor és megkezdésekor üzeneteket, ki fogja hagyni az összeomlás előtt feldolgozott üzenetet.
+Olvasása és törlése a fogadás művelet részeként viselkedését a legegyszerűbb modell, és a leginkább forgatókönyvek, amelyben az alkalmazás működését nem dolgoz fel üzenetet, ha hiba történik. Ez a viselkedés megismeréséhez, fontolja meg egy forgatókönyvet, amelyben a fogyasztó a fogadási kérést, és majd összeomlik a feldolgozása előtt. Mivel a Service Bus az üzenetet, van megjelölve, majd az alkalmazás újraindításakor és megkezdésekor üzeneteket, kimaradt az összeomlás előtt feldolgozott üzenetet.
 
 Ha a `peek_lock` paraméter értéke **igaz**, a receive két szakaszból álló művelet lesz, ami lehetővé teszi az olyan alkalmazások támogatását, amelyek működését zavarják a hiányzó üzenetek. Amikor a Service Bus fogad egy kérést, megkeresi és zárolja a következő feldolgozandó üzenetet, hogy más fogyasztók ne tudják fogadni, majd visszaadja az alkalmazásnak. A fogadási folyamat második fázisa meghívásával befejezése után az alkalmazás befejezi az üzenet feldolgozását (vagy megbízható módon tárolja a jövőbeli feldolgozáshoz), `delete` metódust a **üzenet** objektum. A `delete` módszer jelöli meg az üzenetet, és eltávolítja azt az előfizetést.
 
@@ -165,7 +165,7 @@ A Service Bus olyan funkciókat biztosít, amelyekkel zökkenőmentesen helyreá
 
 Emellett van egy előfizetésen belül zárolva üzenethez társított időtúllépés, és az alkalmazás nem tudja feldolgozni az üzenetet a zárolási előtt időkorlát lejárta (például, ha az alkalmazás összeomlik), akkor a Service Bus automatikusan feloldja az üzenet és lehetővé teszi az újbóli fogadását.
 
-Abban az esetben, ha az alkalmazás összeomlik, mielőtt azonban az üzenet feldolgozása után a `delete` módszert hívja meg, akkor az üzenet újból kézbesítve lesz az alkalmazás amikor újraindul. Ez a jelenség gyakran nevezik *legalább egyszeri feldolgozásnak*; azt jelenti, minden üzenetet legalább egyszer a program feldolgozza, de bizonyos esetekben a az ugyanazon üzenet újbóli kézbesítése is lehet. Ha a forgatókönyvben nem lehetségesek a duplikált üzenetek, akkor az alkalmazásfejlesztőnek további logikát kell az alkalmazásba építenie az üzenetek ismételt kézbesítésének kezeléséhez. Ehhez használhatja a **üzenetazonosító** tulajdonság az üzenet, amely állandó marad a kézbesítési kísérletek során.
+Abban az esetben, ha az alkalmazás összeomlik, mielőtt azonban az üzenet feldolgozása után a `delete` módszert hívja meg, akkor az üzenet újból kézbesítve lesz az alkalmazás amikor újraindul. Ez a jelenség gyakran nevezik. Legalább egyszer feldolgozási *; Ez azt jelenti, hogy minden üzenetet legalább egyszer dolgozza fel, de bizonyos helyzetekben előfordulhat ugyanazon üzenet előfordulhat, hogy újbóli kézbesítése. Ha a forgatókönyvben nem lehetségesek a duplikált üzenetek, akkor az alkalmazásfejlesztőnek további logikát kell az alkalmazásba építenie az üzenetek ismételt kézbesítésének kezeléséhez. Ehhez használhatja a **üzenetazonosító** tulajdonság az üzenet, amely állandó marad a kézbesítési kísérletek során.
 
 ## <a name="delete-topics-and-subscriptions"></a>Témakörök és előfizetések törlése
 

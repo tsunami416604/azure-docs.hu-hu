@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: ruby
 ms.topic: article
-ms.date: 08/10/2017
+ms.date: 08/10/2018
 ms.author: spelluru
-ms.openlocfilehash: 7370de72c0015314fb083b6705d5275f0acc4fc4
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 2bde0661f57acc9507b1f26f6ceb442cefee7947
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43698199"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47406481"
 ---
 # <a name="how-to-use-service-bus-topics-and-subscriptions-with-ruby"></a>Service Bus-üzenettémák és előfizetések használata a Ruby használatával
  
@@ -34,7 +34,7 @@ Ez a cikk ismerteti, hogyan használható a Service Bus-üzenettémák és előf
 [!INCLUDE [service-bus-ruby-setup](../../includes/service-bus-ruby-setup.md)]
 
 ## <a name="create-a-topic"></a>Üzenettémakör létrehozása
-A **Azure::ServiceBusService** objektum lehetővé teszi, hogy a témakörök. Az alábbi kód létrehoz egy **Azure::ServiceBusService** objektum. A témakör létrehozásához használja a `create_topic()` metódust. Az alábbi példa létrehoz egy üzenettémakört, és kiírja a hibákat, ha vannak ilyenek.
+A **Azure::ServiceBusService** objektum lehetővé teszi, hogy a témakörök. Az alábbi kód létrehoz egy **Azure::ServiceBusService** objektum. A témakör létrehozásához használja a `create_topic()` metódust. Az alábbi példa létrehoz egy üzenettémakört vagy kiírja az esetleges hibákat.
 
 ```ruby
 azure_service_bus_service = Azure::ServiceBus::ServiceBusService.new(sb_host, { signer: signer})
@@ -58,10 +58,10 @@ topic = azure_service_bus_service.create_topic(topic)
 ## <a name="create-subscriptions"></a>Előfizetések létrehozása
 Üzenettémakör-előfizetéseket is jönnek létre az a **Azure::ServiceBusService** objektum. Előfizetés neve, és rendelkezhetnek olyan szűrőkkel, amelyek az előfizetés virtuális üzenetsorának üzenetet korlátoz.
 
-Előfizetések állandó és továbbra is létezik, vagy csak, vagy a témakör társítva, a rendszer törli. Ha az alkalmazás-előfizetés létrehozása logikát tartalmaz, azt kell először ellenőrizze, hogy az előfizetés már a getSubscription módszer használatával.
+Előfizetések állandóak. A futtatásuk továbbra is létezik, vagy csak, vagy a témakör társítva, a rendszer törli. Ha az alkalmazás-előfizetés létrehozása logikát tartalmaz, azt kell először ellenőrizze, hogy az előfizetés már a getSubscription módszer használatával.
 
 ### <a name="create-a-subscription-with-the-default-matchall-filter"></a>Előfizetés létrehozása az alapértelmezett (MatchAll) szűrővel
-A **MatchAll** szűrő az alapértelmezett szűrő, amely akkor használatos, ha nincs meghatározva szűrő egy új előfizetés létrehozásakor. Ha a **MatchAll** szűrőt használ, a témakörbe közzétett összes üzenetet az előfizetés virtuális üzenetsorának vannak elhelyezve. Az alábbi példa egy "minden-üzenetek" nevű előfizetést hoz létre, és használja az alapértelmezett **MatchAll** szűrőt.
+Ha nincs meghatározva szűrő egy új előfizetés létrehozásakor, a **MatchAll** szűrő (alapértelmezett) használatos. Ha a **MatchAll** szűrőt használ, a témakörbe közzétett összes üzenetet az előfizetés virtuális üzenetsorának vannak elhelyezve. Az alábbi példa egy "minden-üzenetek" nevű előfizetést hoz létre, és használja az alapértelmezett **MatchAll** szűrőt.
 
 ```ruby
 subscription = azure_service_bus_service.create_subscription("test-topic", "all-messages")
@@ -107,9 +107,9 @@ rule = azure_service_bus_service.create_rule(rule)
 Ha egy már üzenettel `test-topic`, akkor mindig lehet kézbesíti az üzenetet az előfizetett a `all-messages` témakör-előfizetés, és szelektív módon kézbesíti a `high-messages` és `low-messages` üzenettémakör-előfizető (attól függően esetén a tartalmukat).
 
 ## <a name="send-messages-to-a-topic"></a>Üzenetek küldése egy üzenettémakörbe
-Egy üzenetet küld egy Service Bus-témakörbe, az alkalmazás használatához a `send_topic_message()` metódust a **Azure::ServiceBusService** objektum. Service Bus-témakörökbe küldött üzenetek olyan példányai a **Azure::ServiceBus::BrokeredMessage** objektumokat. **Azure::ServiceBus::BrokeredMessage** objektumok rendelkeznek egy szabványos tulajdonságkészlettel (például `label` és `time_to_live`), egyéni alkalmazásspecifikus tulajdonságokat használt, valamint egy karakterláncadatokat törzse. Az alkalmazás beállíthatja az üzenet törzsét egy karakterláncértéket történő átadásával az `send_topic_message()` módszerrel és bármilyen szükséges alapvető tulajdonságainak alapértelmezett értékek alapján lesz kitöltve.
+Egy üzenetet küld egy Service Bus-témakörbe, az alkalmazás használatához a `send_topic_message()` metódust a **Azure::ServiceBusService** objektum. Service Bus-témakörökbe küldött üzenetek olyan példányai a **Azure::ServiceBus::BrokeredMessage** objektumokat. **Azure::ServiceBus::BrokeredMessage** objektumok rendelkeznek egy szabványos tulajdonságkészlettel (például `label` és `time_to_live`), egyéni alkalmazásspecifikus tulajdonságokat használt, valamint egy karakterláncadatokat törzse. Az alkalmazás beállíthatja az üzenet törzsét egy karakterláncértéket történő átadásával az `send_topic_message()` módszerrel és bármilyen szükséges alapvető tulajdonságainak alapértelmezett értékek szerint fel van töltve.
 
-Az alábbi példa bemutatja, hogyan küldhető öt tesztüzenet az `test-topic`. Vegye figyelembe, hogy a `message_number` egyes üzenetek egyéni tulajdonság értéke a ciklus ismétléseinek a változik (Ez határozza meg, hogy melyik előfizetéssel kap,):
+Az alábbi példa bemutatja, hogyan küldhető öt tesztüzenet az `test-topic`. A `message_number` egyéni tulajdonság értékének egyes üzenetek függ attól, a ciklus ismétléseinek (azt határozza meg, hogy melyik előfizetéssel kap,):
 
 ```ruby
 5.times do |i|
@@ -124,9 +124,9 @@ A Service Bus-üzenettémakörök a [Standard csomagban](service-bus-premium-mes
 ## <a name="receive-messages-from-a-subscription"></a>Üzenetek fogadása egy előfizetésből
 Üzenetek kapott egy előfizetés az a `receive_subscription_message()` metódust a **Azure::ServiceBusService** objektum. Alapértelmezés szerint az üzenetek read(peak) és anélkül, hogy törölné az előfizetés zárolva van. Olvassa el, és törli az üzenetet az előfizetésből beállításával a `peek_lock` beállítást **hamis**.
 
-Az alapértelmezett viselkedés lehetővé teszi az olvasási és a egy kétszakaszos művelet, amely is lehetővé teszi alkalmazások, amelyek működését zavarják a hiányzó üzenetek támogatása törlése. Amikor a Service Bus fogad egy kérést, megkeresi és zárolja a következő feldolgozandó üzenetet, hogy más fogyasztók ne tudják fogadni, majd visszaadja az alkalmazásnak. A fogadási folyamat második fázisa meghívásával befejezése után az alkalmazás befejezi az üzenet feldolgozását (vagy megbízható módon tárolja a jövőbeli feldolgozáshoz), `delete_subscription_message()` metódust, és a paramétert a törlendő üzenet megadása. A `delete_subscription_message()` módszert fog jelölje meg az üzenetet, és távolítsa el az előfizetésből.
+Az alapértelmezett viselkedés lehetővé teszi az olvasási és a egy kétszakaszos művelet, amely is lehetővé teszi alkalmazások, amelyek működését zavarják a hiányzó üzenetek támogatása törlése. Amikor a Service Bus fogad egy kérést, megkeresi és zárolja a következő feldolgozandó üzenetet, hogy más fogyasztók ne tudják fogadni, majd visszaadja az alkalmazásnak. A fogadási folyamat második fázisa meghívásával befejezése után az alkalmazás befejezi az üzenet feldolgozását (vagy megbízható módon tárolja a jövőbeli feldolgozáshoz), `delete_subscription_message()` metódust, és a paramétert a törlendő üzenet megadása. A `delete_subscription_message()` módszer jelöli meg az üzenetet, és távolítsa el az előfizetésből.
 
-Ha a `:peek_lock` paraméter értéke **hamis**, Olvasás, és az üzenet törlése válik, a legegyszerűbb modell, és leginkább forgatókönyvek, amelyben az alkalmazás működését nem dolgoz fel üzenetet egy hiba esetén. Ennek megértéséhez képzeljen el egy forgatókönyvet, amelyben a fogyasztó kiad egy fogadási kérést, majd összeomlik a feldolgozása előtt. Mivel a Service Bus az üzenetet, jelölte, majd az alkalmazás újraindításakor és megkezdésekor üzeneteket, ki fogja hagyni az összeomlás előtt feldolgozott üzenetet.
+Ha a `:peek_lock` paraméter értéke **hamis**olvasása és törlése az üzenet válik, a legegyszerűbb modell, és leginkább forgatókönyvek, amelyben az alkalmazás működését nem dolgoz fel üzenetet, ha hiba történik. Képzeljen el egy forgatókönyvet, amelyben a fogyasztó a fogadási kérést, és majd összeomlik a feldolgozása előtt. Mivel a Service Bus az üzenetet, van megjelölve, majd az alkalmazás újraindításakor és megkezdésekor üzeneteket, kimaradt az összeomlás előtt feldolgozott üzenetet.
 
 A következő példa bemutatja, hogyan lehet üzeneteket fogadni, és a feldolgozott használatával `receive_subscription_message()`. A példában először kap, és törli az üzenetet a `low-messages` előfizetés használatával `:peek_lock` beállítása **hamis**, és a egy másik üzenetet kap a `high-messages` majd törli az üzenetet használatával`delete_subscription_message()`:
 
@@ -139,14 +139,14 @@ azure_service_bus_service.delete_subscription_message(message)
 ```
 
 ## <a name="how-to-handle-application-crashes-and-unreadable-messages"></a>Az alkalmazás-összeomlások és nem olvasható üzenetek kezelése
-A Service Bus olyan funkciókat biztosít, amelyekkel zökkenőmentesen helyreállíthatja az alkalmazás hibáit vagy az üzenetek feldolgozásának nehézségeit. Ha egy fogadó alkalmazás valamilyen okból az üzenet feldolgozása nem sikerült, akkor meghívhatja az `unlock_subscription_message()` metódust a **Azure::ServiceBusService** objektum. Ennek hatására a Service Bus feloldja az üzenet zárolását az előfizetésen belül, és lehetővé teszi az ugyanazon vagy egy másik fogyasztó alkalmazás általi ismételt fogadását.
+A Service Bus olyan funkciókat biztosít, amelyekkel zökkenőmentesen helyreállíthatja az alkalmazás hibáit vagy az üzenetek feldolgozásának nehézségeit. Ha egy fogadó alkalmazás valamilyen okból az üzenet feldolgozása nem sikerült, akkor meghívhatja az `unlock_subscription_message()` metódust a **Azure::ServiceBusService** objektum. Hatására a Service Bus feloldja az üzenet az előfizetésen belüli zárolását, és tegye elérhetővé számára az azonos fogyasztó alkalmazás általi vagy egy másik fogyasztó alkalmazás általi ismételt fogadását.
 
-Emellett van egy előfizetésen belül zárolva üzenethez társított időtúllépés, és ha az alkalmazás nem tudja feldolgozni az üzenetet, mielőtt a zárolás időkorlát lejárta (például, ha az alkalmazás összeomlik), akkor a Service Bus automatikusan feloldja az üzenet és lehetővé teszi az újbóli fogadását.
+Emellett van egy előfizetésen belül zárolva üzenethez társított időtúllépés, és az alkalmazás nem tudja feldolgozni az üzenetet a zárolási előtt időkorlát lejárta (például, ha az alkalmazás összeomlik), akkor a Service Bus automatikusan feloldja az üzenet és tegye elérhetővé számára az újbóli fogadását.
 
-Abban az esetben, ha az alkalmazás összeomlik, mielőtt azonban az üzenet feldolgozása után a `delete_subscription_message()` módszert hívja meg, akkor az üzenet újbóli kézbesítése az alkalmazáshoz, amikor újraindul. Ezt gyakran nevezik *legalább egyszeri feldolgozásnak*, ez azt jelenti, hogy minden üzenet legalább egyszer dolgoz fel, de bizonyos helyzetekben előfordulhat ugyanazon üzenet előfordulhat, hogy újbóli kézbesítése. Ha a forgatókönyvben nem lehetségesek a duplikált üzenetek, akkor az alkalmazásfejlesztőnek további logikát kell az alkalmazásba építenie az üzenetek ismételt kézbesítésének kezeléséhez. A logikai gyakran érhető el, használja a `message_id` tulajdonság az üzenet, amely állandó marad a kézbesítési kísérletek során.
+Abban az esetben, ha az alkalmazás összeomlik, mielőtt azonban az üzenet feldolgozása után a `delete_subscription_message()` módszert hívja meg, akkor az üzenet újbóli kézbesítése az alkalmazáshoz, amikor újraindul. Ezt gyakran nevezik *feldolgozása során legalább egyszer*; azaz minden üzenetet legalább egyszer dolgozza fel, de bizonyos helyzetekben előfordulhat ugyanazon üzenet előfordulhat, hogy újbóli kézbesítése. Ha a forgatókönyvben nem lehetségesek a duplikált üzenetek, akkor az alkalmazásfejlesztőnek további logikát kell az alkalmazásba építenie az üzenetek ismételt kézbesítésének kezeléséhez. A logikai gyakran érhető el, használja a `message_id` tulajdonság az üzenet, amely állandó marad a kézbesítési kísérletek során.
 
 ## <a name="delete-topics-and-subscriptions"></a>Témakörök és előfizetések törlése
-Üzenettémák és előfizetések állandóak, és explicit módon kell-e törölve keresztül a [az Azure portal] [ Azure portal] vagy programozott módon. Az alábbi példa bemutatja, hogyan lehet törölni a témakör nevű `test-topic`.
+Üzenettémák és előfizetések állandóak, és explicit módon kell-e törölve keresztül a [az Azure portal] [ Azure portal] vagy programozott módon. A következő példa bemutatja, hogyan lehet törölni a témakör nevű `test-topic`.
 
 ```ruby
 azure_service_bus_service.delete_topic("test-topic")
