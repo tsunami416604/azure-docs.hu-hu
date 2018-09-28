@@ -77,22 +77,38 @@ items:
   items:
   - name: Eseményközpont létrehozása
     href: event-hubs-create.md
-  - name: Események küldése a .NET-keretrendszer használatával
-    href: event-hubs-dotnet-framework-getstarted-send.md
-  - name: Események fogadása a .NET-keretrendszer használatával
-    href: event-hubs-dotnet-framework-getstarted-receive-eph.md
-  - name: Események küldése a Go használatával
-    href: event-hubs-go-get-started-send.md
-  - name: Események fogadása a Go használatával
-    href: event-hubs-go-get-started-receive-eph.md
-  - name: Események küldése a Python használatával
-    href: event-hubs-python-get-started-send.md
-  - name: Események fogadása a Python használatával
-    href: event-hubs-python-get-started-receive.md
-  - name: Események küldése a Node.js használatával
-    href: event-hubs-node-get-started-send.md
-  - name: Események fogadása a Node.js használatával
-    href: event-hubs-node-get-started-receive.md
+  - name: Események küldése
+    items:
+    - name: .NET-keretrendszer
+      href: event-hubs-dotnet-framework-getstarted-send.md
+    - name: .NET Standard
+      href: event-hubs-dotnet-standard-getstarted-send.md
+    - name: Java
+      href: event-hubs-java-get-started-send.md
+    - name: C#
+      href: event-hubs-c-getstarted-send.md
+    - name: Indítás
+      href: event-hubs-go-get-started-send.md
+    - name: Python
+      href: event-hubs-python-get-started-send.md
+    - name: Node.js
+      href: event-hubs-node-get-started-send.md
+  - name: Események fogadása
+    items:
+    - name: .NET-keretrendszer
+      href: event-hubs-dotnet-framework-getstarted-receive-eph.md
+    - name: .NET Standard
+      href: event-hubs-dotnet-standard-getstarted-receive-eph.md
+    - name: Java
+      href: event-hubs-java-get-started-receive-eph.md
+    - name: Indítás
+      href: event-hubs-go-get-started-receive-eph.md
+    - name: Python
+      href: event-hubs-python-get-started-receive.md
+    - name: Node.js
+      href: event-hubs-node-get-started-receive.md
+    - name: Apache Storm
+      href: event-hubs-storm-getstarted-receive.md
   - name: Az Apache Kafkához készült Event Hubs
     items:
     - name: Kafka-kompatibilis eseményközpontok létrehozása
@@ -106,22 +122,6 @@ items:
       href: event-hubs-dotnet-standard-api-overview.md
     - name: .NET-keretrendszer
       href: event-hubs-dotnet-framework-api-overview.md
-  - name: Események küldése
-    items:
-    - name: .NET Standard
-      href: event-hubs-dotnet-standard-getstarted-send.md
-    - name: Java
-      href: event-hubs-java-get-started-send.md
-    - name: C#
-      href: event-hubs-c-getstarted-send.md
-  - name: Események fogadása
-    items:
-    - name: .NET Standard
-      href: event-hubs-dotnet-standard-getstarted-receive-eph.md
-    - name: Java
-      href: event-hubs-java-get-started-receive-eph.md
-    - name: Apache Storm
-      href: event-hubs-storm-getstarted-receive.md
   - name: Események rögzítése
     items:
     - name: Az Event Hubs Capture engedélyezése az Azure Portalon
@@ -186,9 +186,9 @@ items:
     href: http://stackoverflow.com/questions/tagged/azure-eventhub
   - name: Videók
     href: https://azure.microsoft.com/documentation/videos/index/?services=event-hubs
-ms.openlocfilehash: 64a8fb01a8857d58de32c17b97c68104db4f453a
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: d2ceee656e4194bcf61b5e12a3992140dc02df66
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46995686"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47405954"

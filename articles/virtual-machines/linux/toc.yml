@@ -125,6 +125,8 @@ items:
     href: infrastructure-automation.md
   - name: Biztonság és szabályzatok
     href: security-policy.md
+  - name: Állapotok és életciklus
+    href: states-lifecycle.md
   - name: Figyelés
     href: monitor.md
   - name: Biztonsági másolat és helyreállítás
@@ -498,55 +500,7 @@ items:
       - name: GYIK
         href: migration-classic-resource-manager-faq.md
   - name: Hibaelhárítás
-    items:
-    - name: SSH-kapcsolatok
-      href: troubleshoot-ssh-connection.md
-      items:
-      - name: Részletes hibaelhárítási útmutató
-        href: detailed-troubleshoot-ssh-connection.md
-    - name: Jelszó visszaállítása Linux rendszerű virtuális gépen
-      href: reset-password.md
-    - name: A rendszer-újraindítás ismertetése
-      href: understand-vm-reboot.md
-    - name: Rendszerindítási diagnosztika
-      href: boot-diagnostics.md
-    - name: Soros konzol
-      href: serial-console.md
-      items:
-      - name: Soros konzolos GRUB/egyfelhasználós mód
-        href: serial-console-grub-single-user-mode.md
-      - name: Soros konzolos NMI/SysRq
-        href: serial-console-nmi-sysrq.md
-    - name: Hozzáférés az alkalmazásokhoz
-      href: troubleshoot-app-connection.md
-    - name: Foglalási hibák
-      href: allocation-failure.md
-    - name: Foglalási hibák – klasszikus virtuális gép
-      href: allocation-failure-classic.md
-    - name: Üzembe helyezési problémák
-      href: troubleshoot-deploy-vm.md
-    - name: Virtuális gép létrehozása
-      href: troubleshoot-deployment-new-vm.md
-    - name: Az eszköznevek módosultak
-      href: troubleshoot-device-names-problems.md
-    - name: Virtuális üzembe helyezése egy új Azure csomópontra
-      href: redeploy-to-new-node.md
-    - name: Gyakori hibaüzenetek
-      href: error-messages.md
-    - name: Virtuálisgép-helyreállítási hozzáférés
-      items:
-      - name: Azure CLI
-        href: troubleshoot-recovery-disks.md
-      - name: Azure Portal
-        href: troubleshoot-recovery-disks-portal.md
-    - name: Csatlakoztatott VHD-k
-      items:
-      - name: Tárolási erőforrások törlési hibái
-        href: storage-resource-deletion-errors.md
-      - name: Virtuális merevlemezekkel rendelkező virtuális gépek váratlan újraindulása
-        href: unexpected-reboots-attached-vhds.md
-    - name: Szabályozási hibák
-      href: troubleshooting-throttling-errors.md
+    href: ../troubleshooting/index.md
 - name: Referencia
   items:
   - name: Azure CLI
@@ -583,9 +537,9 @@ items:
     href: https://azure.microsoft.com/documentation/videos/index/?services=virtual-machines
   - name: GYIK
     href: faq.md
-ms.openlocfilehash: 5ac900d783b72689759bdfe5d2ba47c11aa2157c
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 9887abf2965b7122c6d0fda1954cc249d67f3380
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47035590"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47408999"
