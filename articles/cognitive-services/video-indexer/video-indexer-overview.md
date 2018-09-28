@@ -1,44 +1,57 @@
 ---
-title: Az Azure Video Indexer áttekintése | Microsoft Docs
+title: Mi az a Video Indexer?
+titlesuffix: Azure Cognitive Services
 description: Ez a témakör áttekintést nyújt a Video Indexer szolgáltatásról.
 services: cognitive services
-documentationcenter: ''
 author: juliako
-manager: erikre
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: video-indexer
 ms.topic: overview
-ms.date: 07/25/2018
+ms.date: 09/15/2018
 ms.author: nolachar
-ms.openlocfilehash: f52c4af29d0c7de8b5edbe869640ffc5dddb5c5e
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.openlocfilehash: fd92e91989bd1a37626227b327d644c9d704ab6c
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39397891"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45983014"
 ---
-# <a name="what-is-video-indexer-preview"></a>Mi az a Video Indexer? (előzetes verzió)
+# <a name="what-is-video-indexer"></a>Mi az a Video Indexer?
 
-A Video Indexer egy felhőalapú alkalmazás, amelynek alapjait az Azure Media Analytics, a Cognitive Services (például a Face API, a Microsoft Translator, a Computer Vision API és a Custom Speech Service), valamint az Azure Search adják. A következő elemzéseket nyerheti ki videóiból a mesterséges intelligencián alapuló technológiákkal:
-
-- **Automatikus nyelvmeghatározás**: A Video Indexer képes automatikusan felismerni a videó nyelvét. Az automatikus nyelvfelismerés jelenleg az angol, spanyol, francia, német, olasz, kínai (egyszerűsített), japán és orosz nyelvet támogatja. Ha a nyelv nem ismerhető fel, a Video Indexer angol nyelvűként kezeli a videót.
-- **Hanganyag átirata**: A Video Indexer beszédfelismerő funkciója lehetővé teszi a kimondott beszéd írott szöveggé alakítását. A támogatott nyelvek közé tartoznak a következők: angol, spanyol, francia, német, olasz, kínai (egyszerűsített), portugál (brazíliai), japán és orosz (a lista a későbbiekben jelentős mértékben bővülni fog). 
-- **Arcok követése és azonosítása**: Az arcfelismerési technológiák lehetővé teszik az arcok felismerését egy videóban. Az észlelt arcokat a rendszer összeveti a hírességek adatbázisával, és kiértékeli, hogy mely hírességek szerepelnek a videóban. Az ügyfelek maguk is megjelölhetik azokat az arcokat, amelyek nem egyeznek meg egy híresség arcával. A Video Indexer a jelölések alapján létrehoz egy arcmodellt, és a későbbiekben képes lesz felismerni a lemodellezett arcokat a videókban.
-- **Beszélők indexelése**: A Video Indexer képes felismerni és beazonosítani, hogy mely szavakat mely beszélő mondta, és mikor.
-- **Vizuális szövegfelismerés**: E technológiával a Video Indexer szolgáltatás képes kinyerni a videókban megjelenő szövegeket.  
-- **Beszédhangok észlelése**: A Video Indexer képes különválasztani a háttérzajt a beszédhangtól. 
-- **Jelenetészlelés**: A Video Indexer egy vizuális elemzés alapján képes megállapítani, hogy egy videóban mikor történik jelenetváltás.
-- **Kulcsképkockák kinyerése**: A Video Indexer automatikusan észleli a videók kulcsképkockáit. 
-- **Hangulatelemzés**: A Video Indexer hangulatelemzést hajt végre a beszédfelismeréssel és az optikai karakterfelismeréssel kinyert szövegeken, és megállapítja, hogy az adott szöveg pozitív, negatív vagy semleges hangulatú, az időkódokkal együtt.
-- **Fordítás**: A Video Indexer képes a hanganyag alapján készült átiratot lefordítani az egyik nyelvről a másikra. A támogatott nyelvek a következők: angol, spanyol, francia, német, olasz, kínai (egyszerűsített), portugál (brazíliai), japán és orosz. A fordítást követően a felhasználó a videólejátszóban elérhetővé teheti a feliratot a rendelkezésre álló nyelveken.
-- **Vizuális tartalom moderálása**: Ez a technológia lehetővé teszi a felnőtt és/vagy kényes tartalmak észlelését a videóban, és használható a tartalmak szűréséhez. 
-- **Kulcsszavak kinyerése**: A Video Indexer a beszédfelismerővel és a vizuális szövegfelismerővel készített átiratok alapján kinyeri a kulcsszavakat.
-- **Címkék**: A Video Indexer címkéket biztosít a vizuális objektumokhoz (pl.: kutya, macska, asztal, autó) és tevékenységekhez (pl.: áll, fut, repül).
-- **Márkák**: A Video Indexer a beszédfelismerővel és a vizuális szövegfelismerővel készített átiratok alapján kinyeri a kereskedelmi márkajelzéseket.
+Az Azure Video Indexer egy felhőalapú alkalmazás, amelynek alapjait az Azure Media Analytics, az Azure Search, valamint a Cognitive Services (például a Face API, a Microsoft Translator, a Computer Vision API és a Custom Speech Service) adják. Lehetővé teszi, hogy elemzéseket nyerjen ki a videóiból az alább ismertetett Video Indexer-modellekkel:
+ 
+- **Automatikus nyelvmeghatározás**: Automatikusan meghatározza a domináns beszélt nyelvet. A támogatott nyelvek közé tartoznak a következők: angol, spanyol, francia, német, olasz, kínai (egyszerűsített), japán, orosz és portugál (brazíliai). Ha a nyelv nem ismerhető fel, a Video Indexer angol nyelvűként kezeli a videót.
+- **Hanganyag átirata**: Szöveggé alakítja a beszédet 10 nyelven, és engedélyezi a bővítményeket. A támogatott nyelvek közé tartoznak a következők: angol, spanyol, francia, német, olasz, kínai (egyszerűsített), japán, arab, orosz és portugál (brazíliai).
+- **Hangfeliratok**: Hangfeliratokat hoz létre három formátumban: VTT, TTML, SRT.
+- **Kétcsatornás feldolgozás**: Automatikusan észleli a külön átiratokat, és egyetlen idővonalba egyesíti őket.
+- **Zajcsökkentés**: Feljavítja a telefonos hangfájlokat és a zajos felvételeket (Skype-szűrők alapján).
+- **Átiratok testreszabása (CRIS)**: Kiterjesztett egyéni beszédfelismerési modellek betanításával és végrehajtásával iparág-specifikus átiratokat hoz létre.
+- **Beszélők számbavétele**: Felismeri és beazonosítja, hogy mely szavakat mely beszélő mondta, és mikor.
+- **Beszélőstatisztikák**: Statisztikai adatokat szolgáltat a beszélők beszédarányáról.
+- **Vizuális szövegfelismerés (OCR)**: Kinyeri a videóban vizuálisan megjelenő szövegeket.
+- **Kulcsképkockák kinyerése**: Felismeri a videók stabil kulcsképkockáit.
+- **Hangulatelemzés**: Azonosítja a pozitív, negatív vagy semleges érzelmeket a beszédben és a vizuális szövegekben.
+- **Vizuális tartalom moderálása**: Felismeri a felnőtt és/vagy kényes látványelemeket.
+- **Kulcsszavak kinyerése**: Kinyeri a kulcsszavakat a beszédből és a vizuális szövegből.
+- **Címkeazonosítás**: Azonosítja a megjelenített vizuális objektumokat és műveleteket.
+- **Márkakinyerés**: Kinyeri a márkákat a beszédből és a vizuális szövegből.
+- **Arcfelismerés**: Felismeri és csoportosítja a videóban megjelenő arcokat.
+- **Miniatűrkinyerés az arcokhoz („legjobb arc”)**: Automatikusan meghatározza a legjobb rögzített arcot minden arccsoportban (minőség, méret és frontális helyzet alapján), és kinyeri őket képobjektumként.
+- **Hírességek azonosítása**: Felismeri a videóban megjelenő hírességeket egy egymillió hírességet tartalmazó adatbázis alapján. A forrást az IMDB, a Wikipédia és a legnépszerűbb Linkedin-véleményvezérek szolgáltatják.
+- **Egyéni arcazonosítás**: Felismeri a videóban megjelenő arcokat egy egyéni modell alapján, amelyet az adott fiókhoz tanítottak be.
+- **Szöveges tartalom moderálása**: Felismeri az explicit szövegeket a hanganyag alapján készült átiratban.
+- **Felvételészlelés**: Megállapítja, hogy mikor történik jelenetváltás a videóban.
+- **Fekete keret észlelése**: Azonosítja a videóban megjelenő fekete kereteket.
+- **Hangeffektusok**: Azonosítja a hangeffektusokat, például a tapsolást, a beszédet és a csendet.
+- **Témakör-következtetés**: Kikövetkezteti a fő témaköröket az átiratokból. Tartalmazza az 1. szintű [IPTC](https://iptc.org/standards/media-topics/) taxonómiát.
+- **Érzelemfelismerés**: Azonosítja az érzelmeket beszéd- és audiojelek alapján. Az érzelmek a következők lehetnek: öröm, szomorúság, harag vagy félelem.
+- **Összetevők**: Rendkívül részletes összetevők széles választékát nyeri ki modellhez.
+- **Fordítás**: Fordítást készít a hanganyag alapján készült átiratról 54 különböző nyelven.
 
 Ha a Video Indexer végzett a feldolgozással és az elemzéssel, utána áttekintheti, összeválogathatja, keresheti és közzéteheti a videós elemzéseket.
 
-A Video Indexer szolgáltatás a tartalomkezelők és a fejlesztők igényeit egyaránt figyelembe veszi. A tartalomkezelők a Video Indexer szolgáltatást a webes portálon keresztül anélkül használhatják, hogy egyetlen sornyi kódot is írniuk kellene. További információért lásd [a Video Indexer portál használatának első lépéseit](video-indexer-get-started.md). A fejlesztőknek az API-kkal lehetőségük nyílik a skálázott tartalomfeldolgozásra. További információért lásd [a Video Indexer REST API használatának](video-indexer-use-apis.md) ismertetését. A szolgáltatás emellett lehetővé teszi a felhasználóknak, hogy widgetekkel tegyenek közzé videós streameket és kinyert elemzéseket a saját alkalmazásaikban. További információért lásd a [vizuális widgetek egy alkalmazásba történő beágyazásának](video-indexer-embed-widgets.md) ismertetését.
+A Video Indexer szolgáltatás a tartalomkezelők és a fejlesztők igényeit egyaránt figyelembe veszi. A tartalomkezelők anélkül használhatják a Video Indexer szolgáltatást a webes portálon keresztül, hogy egyetlen sornyi kódot is írniuk kellene. További információért lásd [a Video Indexer webhely használatának első lépéseit](video-indexer-get-started.md) ismertető cikket. A fejlesztőknek az API-kkal lehetőségük nyílik a skálázott tartalomfeldolgozásra. További információért lásd [a Video Indexer REST API használatának](video-indexer-use-apis.md) ismertetését. A szolgáltatás emellett lehetővé teszi a felhasználóknak, hogy widgetekkel tegyenek közzé videós streameket és kinyert elemzéseket a saját alkalmazásaikban. További információért lásd a [vizuális widgetek egy alkalmazásba történő beágyazásának](video-indexer-embed-widgets.md) ismertetését.
 
 A szolgáltatásra meglévő AAD-, LinkedIn-, Facebook-, Google- vagy MSA-fiókkal lehet regisztrálni. További részletekért lásd [az első lépéseket](video-indexer-get-started.md).
 
@@ -58,6 +71,6 @@ További információt [ebben a blogban](http://aka.ms/videoindexerblog) talál.
 
 Készen áll a Video Indexer használatának megkezdésére. További információkért tekintse át a következő cikkeket:
 
-- [A Video Indexer portál használatának első lépései](video-indexer-get-started.md)
+- [A Video Indexer webhely használatának első lépései](video-indexer-get-started.md)
 - [Tartalomfeldolgozás a Video Indexer REST API-val](video-indexer-use-apis.md)
 - [Vizuális widgetek beágyazása egy saját alkalmazásba](video-indexer-embed-widgets.md)

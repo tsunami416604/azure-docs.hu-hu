@@ -1,111 +1,112 @@
 ---
-title: Az Azure Video Indexer API használata |} A Microsoft Docs
-description: Ez a cikk bemutatja, hogyan kezdheti el a Video Indexer API használatával.
+title: 'Oktatóanyag: A Video Indexer API használata'
+titlesuffix: Azure Cognitive Services
+description: Ez a cikk bemutatja a Video Indexer API használatának első lépéseit.
 services: cognitive services
-documentationcenter: ''
 author: juliako
-manager: erikre
+manager: cgronlun
 ms.service: cognitive-services
-ms.topic: article
+ms.component: video-indexer
+ms.topic: tutorial
 ms.date: 09/09/2018
 ms.author: juliako
-ms.openlocfilehash: bd0f9e01257bec2d39ef0c8e13b68c4a7a13637d
-ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
-ms.translationtype: MT
+ms.openlocfilehash: 7bd7ed1b2d2f437ef57598c42ca12ce8bfb174a1
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45542926"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45985565"
 ---
-# <a name="use-azure-video-indexer-api"></a>Az Azure Video Indexer API használata
+# <a name="tutorial-use-the-video-indexer-api"></a>Oktatóanyag: A Video Indexer API használata
 
 > [!Note]
-> A Video Indexer V1 API 2018. augusztus 1-től. a rendszer elavult. Most már a Video Indexer v2 API-t kell használnia. <br/>A Video Indexer v2 API-k fejlesztéséhez, tekintse meg a útmutatását [Itt](https://api-portal.videoindexer.ai/). 
+> A Video Indexer API 1-es verziója 2018. augusztus 1-jével elavult. Használja a Video Indexer API 2-es verzióját. <br/>A Video Indexer API-k 2-es verziójával való fejlesztéshez tekintse át az [itt](https://api-portal.videoindexer.ai/) található útmutatót. 
 
-Video Indexer – összesíti egy integrált szolgáltatás, a Microsoft által kínált különböző audio- és mesterséges intelligencia (AI) technológiákat, így egyszerűbb fejlesztés. Az API-k engedélyezése összpontosítani, nem kell bajlódnunk méretezhető, globális Media AI technológiákat használó fejlesztők számára érhető el, a rendelkezésre állás és a felhőalapú platform megbízhatóságát lett tervezve. Az API használatával a fájlok feltöltése, a videó részletes elemzések lekérése, annak érdekében, hogy a beágyazása az alkalmazás és más feladatok insight és a játékosok widgetek URL-címek lekérése.
+A Video Indexer számos, a Microsoft által kínált audió- és videótartalmakkal kapcsolatos mesterséges intelligenciai (MI) technológiát egyesít egy integrált szolgáltatásban, megkönnyítve ezzel a fejlesztést. Az API-k úgy lettek kialakítva, hogy a fejlesztők a médiával kapcsolatos MI-technológiák felhasználására összpontosíthassanak, és ne kelljen a felhőplatform skálázása, globális elérhetősége, rendelkezésre állása és megbízhatósága miatt aggódniuk. Az API segítségével feltöltheti a fájljait, részletes videóelemzéseket kérhet, megkaphatja az elemzés és a lejátszóvezérlők URL-címét, hogy beágyazhassa őket az alkalmazásba, valamint egyéb feladatokat is végezhet.
 
-A Video Indexer-fiók létrehozásakor kiválaszthatja a (, ahol megkapja ingyenes indexelési perc bizonyos számú) egy ingyenes próbafiókot vagy egy fizetős lehetőség (Ha nem korlátozza a kvóta). Az ingyenes próbaverziót a Video Indexer legfeljebb 600 perc ingyenes indexeli a webhely számára biztosít, és akár 2400 percnyi ingyenes indexelő API számára. A fizetős lehetőség a Video Indexer-fiókot, amely létrehozhat [csatlakozik az Azure-előfizetés és az Azure Media Services-fiók](connect-to-azure.md). Perc, valamint az Azure Media Services-fiók kapcsolódó költségek indexelve kell fizetnie. 
+A Video Indexer-fiók létrehozásakor választhat egy ingyenes próbafiókot (ahol egy bizonyos számú ingyenes indexelési percet kap) vagy egy fizetős lehetőséget (ahol nincs kvótakorlát). Az ingyenes próbaverzióval a Video Indexer akár 600 perc ingyenes indexelést biztosít a webhely felhasználói számára, és akár 2400 perc ingyenes indexelést biztosít az API-felhasználóknak. A fizetős lehetőséggel Ön létrehoz egy Video Indexer-fiókot, amely [össze van kapcsolva az Azure-előfizetésével és egy Azure Media Services-fiókkal](connect-to-azure.md). Ön az indexelt perceket és az Azure Media Services-fiókkal kapcsolatos díjakat fizeti ki. 
 
-Ez a cikk bemutatja, hogy a fejlesztők kihasználhatják a [Video Indexer API](https://api-portal.videoindexer.ai/).
+Ez a cikk azt mutatja be, hogyan használhatják ki a fejlesztők a [Video Indexer API](https://api-portal.videoindexer.ai/) előnyeit.
 
-## <a name="subscribe-to-the-api"></a>Fizessen elő az API-hoz
+## <a name="subscribe-to-the-api"></a>Feliratkozás az API-ra
 
-1. Jelentkezzen be a [Video Indexer – fejlesztői portál](https://api-portal.videoindexer.ai/).
+1. Jelentkezzen be a [Video Indexer fejlesztői portálra](https://api-portal.videoindexer.ai/).
     
     ![Bejelentkezés](./media/video-indexer-use-apis/video-indexer-api01.png)
 
     > [!Important]
-    > * A Video Indexer felhasználóihoz való regisztráció során használt ugyanazt a szolgáltatót kell használnia.
-    > * Személyes Google és a Microsoft (outlook vagy élő) fiókok csak a próbafiókokon használható. Fiókok kapcsolódik az Azure az Azure AD szükséges.
-    > * E-mailenként csak egy aktív fiók is lehet. Ha egy felhasználó megpróbál jelentkezzen be user@gmail.com linkedinre és után, hogy a user@gmail.com a Google később a hibalap fogja megjeleníteni, arról tájékoztatja a felhasználó már létezik.
+    > * Használja ugyanazt a szolgáltatót, amelyet a Video Indexerre való regisztráláskor használt.
+    > * A személyes Google-fiókok és Microsoft- (outlook-/live-) fiókok csak a próbafiókokhoz használhatók. Az Azure-hoz kapcsolódó fiókokhoz Azure AD-ra van szükség.
+    > * Egy e-mail-címhez csak egy aktív fiók tartozhat. Ha egy felhasználó megpróbál bejelentkezni a LinkedIn-re a user@gmail.com címmel, majd később a Google-re ugyanazzal a user@gmail.com címmel, akkor az utóbbi megjelenít egy hibaüzenetet, amely szerint a felhasználó már létezik.
 
-2. Az előfizetés.
+2. Iratkozzon fel.
 
-    Válassza ki a [termékek](https://api-portal.videoindexer.ai/products) fülre. Ezután válassza ki az engedélyezési és az előfizetés. 
+    Válassza a [Products](https://api-portal.videoindexer.ai/products) (Termékek) lapot. Ezután válassza az Authorization (Engedélyezés), majd a Subscribe (Feliratkozás) lehetőséget. 
     
     ![Regisztráció](./media/video-indexer-use-apis/video-indexer-api02.png)
 
     > [!NOTE]
-    > Új felhasználókat automatikusan előfizetnek az engedélyezési.
+    > Az új felhasználók automatikusan feliratkoznak az Engedélyezési API-ra.
     
-    Miután előfizetett, lesz az előfizetés és az elsődleges és másodlagos kulcsot. A kulcsok meg kell védeni. A kulcsok csak a kiszolgálói kód által használható. Ezek nem lehet elérhető az ügyféloldalon (.js, .html, stb.).
+    Ha feliratkozott, megtekintheti a feliratkozását, valamint az elsődleges és másodlagos kulcsokat. A kulcsok védelmet igényelnek. Csak a kiszolgálókód használhatja a kulcsokat. Az ügyféloldalon (.js, .html stb.) nem lehetnek elérhetők.
 
     ![Regisztráció](./media/video-indexer-use-apis/video-indexer-api03.png)
 
-## <a name="obtain-access-token-using-the-authorization-api"></a>Az engedélyezési API-val hozzáférési jogkivonat beszerzése
+## <a name="obtain-access-token-using-the-authorization-api"></a>Hozzáférési jogkivonat beszerzése az Engedélyezési API-val
 
-Az engedélyezési API-ra előfizetett, ha tudják, hozzáférési tokenek beszerzése érdekében. Ezek a hozzáférési jogkivonatok segítségével a műveleti API-t hitelesítésre. 
+Ha feliratkozott az Engedélyezési API-ra, lekérhet hozzáférési jogkivonatokat. Ezen hozzáférési jogkivonatok segítségével történik a hitelesítés a Műveleti API-n. 
 
-A műveleti API minden meghívásához egy hozzáférési jogkivonatot, a hívás engedélyezési hatókörének megfelelő társítva kell lennie.
+A Műveleti API-ba irányuló összes hívást társítani kell egy hozzáférési jogkivonathoz, amely megfelel a hívás engedélyezési hatókörének.
 
-- Felhasználói szinten - felhasználói hozzáférési tokenek lehetővé teszik műveleteket végezhet a **felhasználói** szintjét. Például a hozzárendelt fiókok beolvasása.
-- Fiók szintjén – fiók hozzáférési tokenek lehetővé teszik műveleteket végezhet a **fiók** szint vagy a **videó** szintet. Például videó feltöltése, listázása az összes videó, első feltárását, és így tovább.
-- Videószintű – videó az Objektumszintű hozzáférési tokenek lehetővé teszik az adott műveletek elvégzését **videó**. Például első feltárását, feliratok letöltése, első vezérlőkhöz, stb. 
+- Felhasználói szint – felhasználói szintű hozzáférési jogkivonatok segítségével **felhasználói** szinten végezhet műveleteket. Lekérhet például társított fiókokat.
+- Fiókszint – fiókszintű hozzáférési jogkivonatok segítségével **fiók-** vagy **videószinten** végezhet műveleteket. Feltölthet például videókat, listázhatja az összes videót, lekérhet videoelemzéseket stb.
+- Videószint – videószintű hozzáférési jogkivonatok segítségével egy meghatározott **videón** végezhet műveleteket. Lekérhet például videóelemzéseket, letölthet feliratokat, kérhet vezérlőket stb. 
 
-Szabályozhatja, hogy ezek a jogkivonatok readonly vagy megadásával szerkesztését teszik **szerkeszthető = igaz/hamis**.
+Az **allowEdit=true/false** megadásával szabályozhatja, hogy ezek a jogkivonatok írásvédettek legyenek, vagy lehessen szerkeszteni őket.
 
-A kiszolgálók közötti kapcsolatos legtöbb esetben valószínűleg használhat azonos **fiók** token, mert egyaránt vonatkozik **fiók** operations és **videó** műveletek. Azonban ha azt tervezi, hogy az ügyféloldali hívások (például a javascript-) Video Indexer, szeretne használni egy **videó** hozzáférési jogkivonatot, hogy megakadályozza a hozzáférést a teljes fiókra. Ez is az oka, hogy amikor VideoIndexer Ügyfélkód beágyazása az ügyfél (használata esetén például **Get Insights Widget** vagy **első Player Widget**) meg kell adnia egy **videó**hozzáférési jogkivonatot.
+A legtöbb kiszolgálók közötti forgatókönyvben valószínűleg ugyanazt a **fiókszintű** jogkivonatot fogja használni, mert azzal a **fiókokkal** és a **videókkal** kapcsolatos műveletek is végezhetők. Ha azonban ügyféloldali hívásokat indítana a Video Indexerre (például JavaScriptből), **videószintű** hozzáférési jogkivonatot érdemes használnia, hogy az ügyfelek ne férjenek hozzá a teljes fiókhoz. Ez az oka annak is, hogy amikor Video Indexer-ügyfélkódot ágyaz be az ügyfélbe (például az **Elemzések lekérése vezérlő** vagy a **Lejátszó lekérése vezérlő**), **videószintű** hozzáférési jogkivonatot kell biztosítania.
 
-Egyszerűbbé tételéhez, használhatja a **engedélyezési** API > **GetAccounts** beolvasni a fiókok a felhasználó beszerzése nélkül jogkivonatot először. Is feltehet a fiókok érvényes jogkivonatokkal, lehetővé téve a fiók jogkivonatot kapjon egy további hívás kihagyása.
+A művelet leegyszerűsítése érdekében használhatja az **Engedélyezési** API **GetAccounts** parancsát, ha a fiókjait a felhasználói jogkivonat beszerzése előtt szeretné lekérni. Lekérheti az érvényes jogkivonattal rendelkező fiókokat is, így nem kell még egy hívással fiókjogkivonatot lekérnie.
 
-Hozzáférési jogkivonatok 1 óra után lejárnak. Ellenőrizze, hogy a hozzáférési jogkivonat érvénytelen a műveleti API használata előtt. Ha a lejár, az engedélyezési API-t egy új hozzáférési jogkivonat beszerzése az újra.
+A hozzáférési jogkivonatok 1 óráig érvényesek. A Műveleti API használata előtt ellenőrizze, hogy érvényes-e a hozzáférési jogkivonata. Ha lejárt, hívja meg az Engedélyezési API-t ismét egy új hozzáférési jogkivonat kéréséhez.
  
-Készen áll az API-val integrálásának megkezdéséhez. Keresés [minden Video Indexer – REST API részletes leírását](http://api-portal.videoindexer.ai/).
+Készen áll az API integrálásának megkezdésére. Itt megtalálhatja [az egyes Video Indexer REST API-k részletes leírását](http://api-portal.videoindexer.ai/).
 
 ## <a name="location"></a>Hely
 
-Az összes művelet API-k egy helyen paramétert, amely azt jelzi, hogy a hívás meg kell átirányítani és a fiók létrejött a régióban van szükség.
+Minden Műveleti API-hoz szükség van egy Hely paraméterre, amely jelzi, melyik régióba kell irányítani a hívást, és melyikben jött létre a fiók.
 
-Az értékek a következő táblázat ismerteti a alkalmazni. A **Param érték** az API-t használja az értéket, ha adja át.
+Az alábbi táblázatban szereplő értékek érvényesek. A **Paraméter értéke** az API használatakor megadott érték.
 
-|**Name (Név)**|**Param érték**|**Leírás**|
+|**Name (Név)**|**Paraméter értéke**|**Leírás**|
 |---|---|---|
-|Próbaverzió|Próbaverzió|Próbafiókokon használható.|
-|USA nyugati régiója|westus2|Használja az Azure West US 2 régióban.|
-|Észak-Európa |northeurope|Az Azure észak-európai régión használatos.|
-|Kelet-Ázsia|eastasia|Használja a Kelet-Ázsia Azure-régióban.|
+|Próbaverzió|trial|Próbafiókokhoz használható.|
+|USA nyugati régiója|westus2|Az Azure USA 2. nyugati régiójában használható.|
+|Észak-Európa |northeurope|Az Azure Észak-Európa régiójában használható.|
+|Kelet-Ázsia|eastasia|Az Azure Kelet-Ázsia régiójában használható.|
 
 ## <a name="account-id"></a>Fiókazonosító 
 
-Az összes műveleti API-hívások a Fiókazonosító paraméter megadása kötelező. Fiókazonosító egy GUID Azonosítót, amely szerezhető be a következő módszerek valamelyikével:
+A Fiókazonosító paraméterre minden műveleti API-híváshoz szükség van. A fiókazonosító egy GUID, és az alábbi módokon szerezhető be:
 
-* Használja a **Video Indexer webhely** beolvasni a Fiókazonosító:
+* A fiókazonosító lekérése a **Video Indexer webhelyen**:
 
-    1. Keresse meg a [Video Indexer](https://www.videoindexer.ai/) webhelyet, és jelentkezzen be.
-    2. Keresse meg a **beállítások** lapot.
-    3. Másolja az azonosítót.
+    1. Nyissa meg a [Video Indexer](https://www.videoindexer.ai/) webhelyét, és jelentkezzen be.
+    2. Lépjen a **Settings** (Beállítások) lapra.
+    3. Másolja a fiókazonosítót.
 
         ![Fiókazonosító](./media/video-indexer-use-apis/account-id.png)
 
-* Használat **Video Indexer fejlesztői portál** programozott módon beolvasni a fiók azonosítóját.
+* A fiókazonosító lekérése szoftveresen a **Video Indexer fejlesztői portálon**.
 
-    Használja a [fiókok](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Accounts?) API-t.
+    Használja a [Fiókok lekérése](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Accounts?) API-t.
     
     > [!TIP]
-    > A fiókok vonatkozó hozzáférési jogkivonatainak definiálásával is létrehozhat `generateAccessTokens=true`.
+    > A `generateAccessTokens=true` meghatározásával létrehozhat hozzáférési jogkivonatokat a fiókokhoz.
     
-* A Fiókazonosító lekérheti a fiókjában player oldal URL-CÍMÉT.
+* Kérje le a fiókazonosítót a fiókja valamely lejátszóoldalának URL-címéből.
 
-    Ha egy videó azonosítója után jelenik meg a `accounts` szakasz és előtt a `videos` szakaszban.
+    Amikor megtekint egy videót, az azonosító megjelenik az `accounts` szakasz után, de még a `videos` szakasz előtt.
 
     ```
     https://www.videoindexer.ai/accounts/00000000-f324-4385-b142-f77dacb0a368/videos/d45bf160b5/
@@ -113,17 +114,17 @@ Az összes műveleti API-hívások a Fiókazonosító paraméter megadása köte
 
 ## <a name="recommendations"></a>Javaslatok
 
-Ez a szakasz felsorolja az egyes javaslatok Video Indexer API használatakor.
+Ebben a részben a Video Indexer API használatára vonatkozó javaslatokat talál.
 
-- Ha azt tervezi, a videó feltöltése, ajánlott egy nyilvános hálózati helyre (például a OneDrive) helyezze a fájlt. A videó hivatkozásának beszerzése, és adja meg az URL-címet, a feltöltési fájl param. 
+- Ha videót szeretne feltölteni, javasoljuk, hogy a fájlt egy nyilvános hálózati helyen (például a OneDrive-ban) helyezze el. Kérje le a videóra mutatkozó hivatkozást, és adja meg az URL-címet a feltöltendő fájl paramétereként. 
 
-    A Video Indexer a megadott URL-cím médiafájl (hang- vagy) kell mutatnia. A onedrive vállalati verzió által generált hivatkozások vannak egy HTML-oldalt, amely tartalmazza a fájl számára. Egy egyszerű ellenőrzési esetében az URL-címet másolja be egy böngészőbe –, ha a fájl letöltése lenne, akkor valószínű helyes URL-címet. Ha a böngésző megjeleníti néhány vizualizációt, akkor valószínűleg sem egy fájlt, de egy HTML-oldalra mutató hivatkozást.
+    A Video Indexer számára megadott URL-címnek egy médiafájlra (audió- vagy videófájlra) kell mutatnia. A OneDrive által létrehozott hivatkozások egy része a fájlt tartalmazó HTML-lapra mutat. Az URL-cím könnyen ellenőrizhető, ha beilleszti egy böngészőbe: ha elindul a fájl letöltése, az URL-cím minden bizonnyal működik. Ha a böngésző valamilyen vizuális elemet jelenít meg, a hivatkozás valószínűleg egy HTML-lapra mutat.
     
-- Amikor hívja az API-t, amely lekéri a megadott videó feltárását, a részletes JSON-kimenet kap, a válasz tartalma. [Ebben a témakörben a visszaküldött JSON részleteinek megtekintéséhez](video-indexer-output-json.md).
+- Amikor meghívja az adott videóhoz tartozó videóelemzéseket lekérő API-t, részletes JSON-kimenetet kap a válasz tartalmaként. [A visszaadott JSON-ról ebben a témakörben találhat részleteket](video-indexer-output-json.md).
 
 ## <a name="code-sample"></a>Kódminta
 
-Az alábbi C# kódrészlet együtt a minden a Video Indexer API-k használatát mutatja be.
+Az alábbi C#-kódrészlet a Video Indexer API-k együttes használatát mutatja be.
 
 ```csharp
 var apiUrl = "https://api.videoindexer.ai";
@@ -221,6 +222,6 @@ Debug.WriteLine(playerWidgetLink);
 
 ## <a name="next-steps"></a>További lépések
 
-[Vizsgálja meg a részleteket a kimenet JSON](video-indexer-output-json.md).
+[A kimeneti JSON adatainak vizsgálata](video-indexer-output-json.md).
 
-[Video Indexer – áttekintés](video-indexer-overview.md)
+[A Video Indexer áttekintése](video-indexer-overview.md)

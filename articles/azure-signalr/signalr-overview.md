@@ -10,60 +10,39 @@ ms.service: signalr
 ms.devlang: na
 ms.topic: overview
 ms.workload: tbd
-ms.date: 04/17/2018
+ms.date: 09/13/2018
 ms.author: zhshang
-ms.openlocfilehash: c574a3dd26b36b656cc931a0801cbf0ef23cf362
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: a159833936ec4762213f063e235fa4f9237af95b
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43668241"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46951100"
 ---
 # <a name="what-is-azure-signalr-service"></a>Mi az az Azure SignalR szolgáltatás?
 
-A Microsoft Azure SignalR szolgáltatás jelenleg [Nyilvános előzetes verzióban](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) van.
+Az Azure SignalR szolgáltatás leegyszerűsíti a valós idejű webes funkciók hozzáadását az alkalmazásokhoz HTTP-n keresztül. A valós idejű funkció lehetővé teszi, hogy a szolgáltatás tartalomfrissítéseket küldjön le a csatlakoztatott ügyfeleknek, például az egyoldalas web- vagy mobilalkalmazásoknak. Így az ügyfelek a kiszolgáló lekérdezése nélkül frissülnek vagy küldenek frissítésekre vonatkozó új HTTP-kéréseket.
 
-Az Azure SignalR szolgáltatás egy [ASP.NET Core SignalR](https://docs.microsoft.com/aspnet/core/signalr/introduction)-alapú Azure-szolgáltatás. Az ASP.NET Core SignalR egy [nyílt forráskódú kódtár](https://github.com/aspnet/signalr), amely leegyszerűsíti valós idejű webes funkciók hozzáadását az alkalmazásokhoz HTTP-n keresztül. A valós idejű funkció lehetővé teszi, hogy a webkiszolgáló tartalomfrissítéseket küldjön le a csatlakoztatott ügyfeleknek. Így az ügyfelek a kiszolgáló lekérdezése nélkül frissülnek vagy küldenek frissítésekre vonatkozó új HTTP-kéréseket.
+A cikk áttekintést nyújt az Azure SignalR szolgáltatásról.
 
-A cikk áttekintést nyújt az Azure SignalR szolgáltatásról. Ha meg szeretne ismerkedni a szolgáltatással, kezdje az [ASP.NET Core rövid útmutatójával](signalr-quickstart-dotnet-core.md).
+## <a name="what-is-azure-signalr-service-used-for"></a>Mire használják az Azure SignalR szolgáltatást? 
 
-## <a name="what-is-signalr-service-used-for"></a>Mire használható a SignalR szolgáltatás? 
+Számos alkalmazástípushoz szükségesek valós idejű tartalomfrissítések. A következő példák megfelelőek lehetnek az Azure SignalR szolgáltatás használatához:
 
-Számos alkalmazástípushoz szükségesek valós idejű tartalomfrissítések. A következő példaalkalmazás-típusok megfelelőek lehetnek az Azure SignalR szolgáltatás használatához:
-
-* Alkalmazások, amelyek gyakori frissítéseket igényelnek a kiszolgálóról. Ilyenek többek között a játékok, a közösségi hálózati alkalmazások, valamint a szavazó-, aukciós, térkép- és GPS-alkalmazások.
-* Irányítópultok és monitorozási alkalmazások. Ide tartoznak például a vállalati irányítópultok, az azonnali értékesítési frissítések vagy az utazási figyelmeztetések.
+* Alkalmazások, amelyek gyakori frissítéseket igényelnek a kiszolgálóról. Ilyenek többek között a játékok és a szavazó-, aukciós, térkép- és GPS-alkalmazások.
+* Irányítópultok és monitorozási alkalmazások. Ide tartoznak például a vállalati irányítópultok és az azonnali értékesítési frissítések.
 * Együttműködésen alapuló alkalmazások. Rajtábla-alkalmazások és csapatértekezleti szoftverek tartoznak az együttműködésen alapuló alkalmazások közé.
 * Értesítéseket használó alkalmazások. A közösségi hálózatbeli, levelezési, csevegő-, játék-, utazási figyelmeztetési és számos egyéb alkalmazás használ értesítéseket.
 
 A SignalR számos, valós idejű webalkalmazások létrehozására használt technológia absztrakciója. A [WebSocket](https://wikipedia.org/wiki/WebSocket) az ideális átviteli technológia, de más technológiákat (például [kiszolgáló által küldött eseményeket (SSE)](https://wikipedia.org/wiki/Server-sent_events) és hosszú lekérdezést) is használ a rendszer, ha egyéb lehetőségek nem érhetők el. A SignalR automatikusan észleli és inicializálja a megfelelő átvitelt, a kiszolgáló és az ügyfél által támogatott szolgáltatások alapján.
 
-## <a name="developing-signalr-apps"></a>SignalR-alkalmazások fejlesztése
+A SignalR emellett programozási modellt biztosít a valós idejű alkalmazások számára, amely lehetővé teszi, hogy a kiszolgáló üzeneteket küldjön az összes kapcsolatnak, vagy a kapcsolatok egy adott felhasználóhoz tartozó, vagy tetszőleges csoportba helyezett részének.
 
-Jelenleg a SignalR két verziója használható a webalkalmazásokhoz: SignalR for ASP.NET, és ASP.NET Core SignalR, amely egyben az újabb verzió is. Az Azure SignalR szolgáltatás az ASP.NET Core SignalR-re épülő, az Azure által kezelt szolgáltatás. 
+## <a name="how-to-use-azure-signalr-service"></a>Az Azure SignalR szolgáltatás használata
 
-Az ASP.NET Core SignalR az előző verzió átdolgozása. Ezért az ASP.NET Core SignalR visszamenőlegesen nem kompatibilis a SignalR korábbi verzióival. Az API-k és a szolgáltatás működése eltérő. Az ASP.NET Core SignalR SDK .NET Standard, ezért továbbra is használható a .NET-keretrendszerrel. Azonban az új API-kat kell használnia a régiek helyett. Ha a SignalRt használja és szeretne ASP.NET Core SignalRre vagy Azure SignalR szolgáltatásra váltani, úgy kell módosítania a kódot, hogy kezelje az API-k közötti különbségeket.
+Jelenleg háromféleképpen lehet használni az Azure SignalR szolgáltatást:
 
-Az Azure SignalR szolgáltatás használata esetén az ASP.NET Core SignalR kiszolgálóoldali összetevőjének üzemeltetése az Azure-ban történik. Mivel azonban a technológia az ASP.NET Core-ra épül, lehetőség van arra, hogy a tényleges webalkalmazást több különféle platformon (Windows, Linux és MacOS) futtassa, és az üzemeltetést az [Azure App Service](../app-service/app-service-web-overview.md), [IIS](https://docs.microsoft.com/aspnet/core/host-and-deploy/iis/index), [Nginx](https://docs.microsoft.com/aspnet/core/host-and-deploy/linux-nginx), [Apache](https://docs.microsoft.com/aspnet/core/host-and-deploy/linux-apache) vagy a [Docker](https://docs.microsoft.com/aspnet/core/host-and-deploy/docker/index) szolgáltatással végezze. Saját folyamatok esetében saját üzemeltetést is használhat.
-
-Ha azt szeretné, hogy az alkalmazás támogassa a legújabb funkciókat a webes ügyfelek valós idejű tartalmakkal való frissítéséhez, futtatható legyen a több platformon (Azure, Windows, Linux és MacOS), és üzemeltethető legyen különféle környezetekben, az Azure SignalR az ideális választás.
-
-
-## <a name="why-not-deploy-signalr-myself"></a>Miért ne telepítsem saját kezűleg a SignalRt?
-
-Továbbra is lehetséges üzembe helyezni egy ASP.NET Core SignalRt támogató Azure-webalkalmazást háttérösszetevőként a teljes alkalmazáshoz.
-
-Az Azure SignalR egyik legnagyobb előnye az egyszerű használata. Az Azure SignalR szolgáltatás révén nem kell a teljesítménnyel, a méretezéssel és a rendelkezésre állással kapcsolatos problémákkal foglalkoznia. Ezeket a problémákat a rendszer kezeli Ön helyett a 99,9%-os szolgáltatásiszint-szerződésben foglaltak szerint.
-
-A valós idejű tartalomfrissítésekhez az előnyben részesített technológia általában a WebSocket. Azonban a nagy számú állandó WebSocket-kapcsolatok terheléselosztása egyre nagyobb problémát jelent, ahogy a rendszer mérete nő. Gyakori megoldás a DNS-terheléselosztás, a hardveres terheléselosztás és a szoftveres terheléselosztás. Az Azure SignalR szolgáltatás megoldja ezt a problémát Ön helyett.
-
-A másik ok, hogy nem kell ténylegesen üzemeltetnie egy webalkalmazást. Előfordulhat, hogy a webalkalmazás logikája [kiszolgáló nélküli számítást](https://azure.microsoft.com/overview/serverless-computing/) használ. Például előfordulhat, hogy a kód csak igény szerint lesz üzemeltetve és végrehajtva az [Azure Functions](https://docs.microsoft.com/azure/azure-functions/) eseményindítói segítségével. Ez a forgatókönyv bonyolult lehet, mivel a kód csak igény szerint fut és nem tart fenn hosszú kapcsolatot az ügyfelekkel. Az Azure SignalR szolgáltatás képes kezelni ezt a helyzetet, mivel a szolgáltatás már kezeli a kapcsolatokat.
-
-## <a name="how-does-it-scale"></a>Hogyan skálázható?
-
-A SignalR skálázásához gyakran az SQL Servert, az Azure Service Bust vagy a Redis Cache-t használják. Az Azure SignalR szolgáltatás kezeli a skálázási módszert Ön helyett. A teljesítmény és a költségek a módszertől függően változnak, és Önnek nem kell ezekkel a további szolgáltatásokkal foglalkoznia. Mindössze frissítenie kell a szolgáltatás egységeinek számát. Minden szolgáltatási egység legfeljebb 1000 ügyfélkapcsolatot támogat.
-
-## <a name="next-steps"></a>További lépések
-* [Rövid útmutató: Csevegőszoba létrehozása az Azure SignalRrel](signalr-quickstart-dotnet-core.md)  
-  
+- **[ASP.NET Core SignalR-alkalmazás skálázása](signalr-overview-scale-aspnet-core.md)** – Az Azure SignalR szolgáltatás integrálása egy ASP.NET Core SignalR-alkalmazással több százezer kapcsolatra való horizontális felskálázáshoz.
+- **[Kiszolgáló nélküli, valós idejű alkalmazások létrehozása](signalr-overview-azure-functions.md)** – Az Azure SignalR szolgáltatással integrált Azure Functions használata kiszolgáló nélküli, valós idejű alkalmazások létrehozására, többek között JavaScript, C# és Java nyelven.
+- **[Üzenetek küldése a kiszolgálóról az ügyfeleknek REST API-n keresztül](https://github.com/Azure/azure-signalr/blob/dev/docs/rest-api.md)** – Az Azure SignalR szolgáltatás biztosít egy REST API-t, amely lehetővé teszi, hogy az alkalmazások bármilyen REST-kompatibilis programnyelven üzeneteket küldjenek a SignalR szolgáltatáshoz csatlakoztatott ügyfeleknek.
 

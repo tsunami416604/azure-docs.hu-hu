@@ -1,6 +1,6 @@
 ---
-title: Ismerkedés az Azure AD Android |} A Microsoft Docs
-description: Hogyan hozhat létre Android-alkalmazás, amely integrálható az Azure AD-be- és a hívások Azure AD által védett API-t OAuth2.0.
+title: Felhasználók bejelentkeztetése és a Microsoft Graph API meghívása egy Android-alkalmazásból | Microsoft Docs
+description: Ismerje meg, hogyan jelentkeztethet be felhasználókat és hívhatja meg a Microsoft Graph API-t saját Android-alkalmazásából.
 services: active-directory
 documentationcenter: android
 author: CelesteDG
@@ -12,41 +12,46 @@ ms.component: develop
 ms.workload: identity
 ms.tgt_pltfrm: mobile-android
 ms.devlang: java
-ms.topic: article
-ms.date: 04/30/2018
+ms.topic: quickstart
+ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: dadobali
 ms.custom: aaddev
-ms.openlocfilehash: c548f9287ce1326de3322950f297176b67ae61c6
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
-ms.translationtype: MT
+ms.openlocfilehash: c3ab241e42c431ae4e95e8154343a949bb9e596e
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39600244"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46970173"
 ---
-# <a name="azure-ad-android-getting-started"></a>Ismerkedés az Azure AD Android
-[!INCLUDE [active-directory-devquickstarts-switcher](../../../includes/active-directory-devquickstarts-switcher.md)]
+# <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-android-app"></a>Rövid útmutató: Felhasználók bejelentkeztetése és a Microsoft Graph API meghívása Android-alkalmazásokból
 
-Ha egy Android-alkalmazást fejleszt, a Microsoft teszi egyszerű és átlátható a felhasználók Azure Active Directory (Azure AD). Az Azure AD lehetővé teszi, hogy az alkalmazás felhasználói adatok elérését a Microsoft Graph vagy a saját védett webes API-t. 
+[!INCLUDE [active-directory-develop-applies-v1-adal](../../../includes/active-directory-develop-applies-v1-adal.md)]
 
-Az Azure AD Authentication Library (ADAL) Androidos függvénytár lehetővé teszi az alkalmazás használatának megkezdéséhez a [Microsoft Azure Felhőszolgáltatásbeli](https://cloud.microsoft.com) & [Microsoft Graph API](https://graph.microsoft.io) támogatásával [ A Microsoft Azure Active Directory-fiókok](https://azure.microsoft.com/services/active-directory/) használatával az iparági szabványos OAuth2 és OpenID Connect. Ez a minta azt mutatja be, a normál életciklusa az alkalmazás működést, többek között:
+Ha Android-alkalmazást fejleszt, a Microsoft egyszerűvé és egyértelművé teszi a felhasználók bejelentkeztetését az Azure Active Directory (Azure AD) szolgáltatásba. Az Azure AD lehetővé teszi, hogy alkalmazása hozzáférjen a felhasználók adataihoz a Microsoft Graph vagy az Ön saját védett webes API-ja használatával.
 
-* A Microsoft Graph egy token beszerzése
+Az Azure AD Authentication Library (ADAL) Android-kódtár lehetővé teszi alkalmazása számára a [Microsoft Azure Cloud](https://cloud.microsoft.com) & [Microsoft Graph API](https://graph.microsoft.io) használatának elkezdését olyan módon, hogy az OAuth 2.0 és az OpenID Connect iparági szabvánnyal támogatja a [Microsoft Azure Active Directory-fiókok](https://azure.microsoft.com/services/active-directory/) használatát.
+
+Ennek a rövid útmutatónak a segítségével megtanulhatja a következőket:
+
+* Jogkivonat lekérése a Microsoft Graph-hoz
 * Jogkivonat frissítése
-* A Microsoft Graph hívása
-* A felhasználó kijelentkeztetése
+* A Microsoft Graph meghívása
+* Felhasználó kijelentkeztetése
 
-Első lépésként kell, amelyen létre felhasználókat és regisztrálni egy alkalmazást az Azure AD-bérlővel. Ha még nem rendelkezik egy bérlő [megtudhatja, hogyan tehet szert egy](quickstart-create-new-tenant.md).
+## <a name="prerequisites"></a>Előfeltételek
 
-## <a name="scenario-sign-in-users-and-call-the-microsoft-graph"></a>Forgatókönyv: Felhasználók Bejelentkeztetéséhez, és hívja a Microsoft Graph
+Első lépésként szüksége lesz egy Azure AD-bérlőre, ahol felhasználókat hozhat létre és regisztrálhat egy alkalmazást. Ha még nem rendelkezik bérlővel, [itt megtudhatja, hogyan tehet szert egyre](quickstart-create-new-tenant.md).
+
+## <a name="scenario-sign-in-users-and-call-the-microsoft-graph"></a>Forgatókönyv: Felhasználók bejelentkeztetése és a Microsoft Graph meghívása
 
 ![Topológia](./media/quickstart-v1-android/active-directory-android-topology.png)
 
-Ez az alkalmazás összes az Azure AD-fiókok esetében használható. (Lépést tárgyalt) is egy vagy több szervezeti forgatókönyveket támogatja. Ebben bemutatjuk, hogyan lehet létrehozni egy fejlesztői vállalati felhasználókat érhet és elérése az Azure és az Office 365-alkalmazások a Microsoft Graph-n keresztül adatokat. A hitelesítési folyamat során a végfelhasználók kell bejelentkezni, és hozzájárul az engedélyeket, az alkalmazás, és bizonyos esetekben szükség lehet a rendszergazdai jóváhagyást az alkalmazáshoz. Ebben a példában a logikai többsége bemutatja, hogyan hitelesítés a felhasználó, és lehetővé teheti egy alapszintű hívja a Microsoft Graph.
+Az alkalmazást minden Azure AD-fiókhoz használhatja. Az egybérlős és a több-bérlős forgatókönyveket is támogatja (az egyes lépésekben részletezzük). A cikk bemutatja, hogyan hozhat létre egy olyan alkalmazást, amely csatlakoztatja a vállalati felhasználókat, és hozzáfér az Azure- és O365-adataikhoz a Microsoft Graph-on keresztül. A hitelesítési folyamat során a végfelhasználónak be kell majd jelentkeznie, és hozzájárulását kell adnia az alkalmazás engedélyeihez, néhány esetben pedig szükség lehet egy rendszergazdára is a hozzájárulás megadásához. A minta logikájának nagy része megmutatja, hogyan hitelesíthet egy végfelhasználót, illetve hogyan kezdeményezhet egy alapszintű hívást a Microsoft Graph-ba.
 
-## <a name="example-code"></a>Példakód
+## <a name="sample-code"></a>Mintakód
 
-A minta teljes kódját megtalálja [a Githubon](https://github.com/Azure-Samples/active-directory-android). 
+A teljes mintakódot a [GitHub](https://github.com/Azure-Samples/active-directory-android) webhelyén érheti el.
 
 ```Java
 // Initialize your app with MSAL
@@ -71,66 +76,65 @@ mAuthContext.acquireToken(
 mAuthResult.getAccessToken()
 ```
 
-## <a name="steps-to-run"></a>Lépések végrehajtásához
+## <a name="step-1-register-and-configure-your-app"></a>1. lépés: Az alkalmazás regisztrálása és konfigurálása
 
-### <a name="register-and-configure-your-app"></a>Regisztráljon, és az alkalmazás konfigurálása 
-Regisztrálva a Microsoft használatával natív ügyfélalkalmazás rendelkeznie kell a [az Azure portal](https://portal.azure.com). 
+Szüksége lesz egy natív ügyfélalkalmazásra, amely az [Azure Portalon](https://portal.azure.com) keresztül regisztrálva lett a Microsoftnál.
 
-1. Az alkalmazásregisztráció beolvasása
-    - Lépjen az [Azure Portalra](https://aad.portal.azure.com). 
-    - Válassza ki ***az Azure Active Directory*** > ***Alkalmazásregisztrációk***. 
+1. Az alkalmazásregisztráció elkezdése
+    - Lépjen az [Azure Portalra](https://aad.portal.azure.com).
+    - Válassza az ***Azure Active Directory*** > ***Appok regisztrálása*** elemet.
 
 2. Az alkalmazás létrehozása
-    - Válassza az **Új alkalmazás regisztrálása** elemet. 
-    - Adja meg az alkalmazás nevét, az a **neve** mező. 
-    - A **alkalmazástípus** kiválasztása **natív**. 
-    - A **átirányítási URI-t**, adja meg `http://localhost`. 
+    - Válassza az **Új alkalmazás regisztrálása** elemet.
+    - A **Név** mezőbe írja be az alkalmazás nevét.
+    - Az **Alkalmazás típusa** elemnél válassza a **Natív** lehetőséget.
+    - Az **Átirányítási URI** elemnél írja be a következőt: `http://localhost`.
 
 3. A Microsoft Graph konfigurálása
-    - Válassza ki **beállítások > szükséges engedélyek**.
-    - Válassza ki **Hozzáadás**, belső **API kiválasztása** kiválasztása ***Microsoft Graph***. 
-    - Válassza ki az engedély **jelentkezzen be és felhasználói profil olvasása**, kattintson a gombra **kiválasztása** mentéséhez. 
-        - Ezt az engedélyt leképezi a `User.Read` hatókör. 
-    - Választható lehetőség: Belső **szükséges engedélyek > Windows Azure Active Directory**, távolítsa el a kiválasztott engedélyt **jelentkezzen be a felhasználói profil olvasása és**. Így elkerülhető, a felhasználói hozzájárulást kérő lap kétszer az engedély listázása. 
+    - Válassza a **Beállítások > Szükséges engedélyek** elemet.
+    - Válassza a **Hozzáadás** elemet, majd az **API kiválasztása** elemen belül válassza a ***Microsoft Graph*** lehetőséget.
+    - Válassza ki a **Beléptetés és felhasználói profil olvasása** elemet, majd kattintson a **Kiválasztás** gombra a mentéshez.
+        - Ez az engedély a következő hatókörre lesz leképezve: `User.Read`.
+    - Opcionális: A **Szükséges engedélyek > Windows Azure Active Directory** elemen belül távolítsa el a **Beléptetés és felhasználói profil olvasása** engedélyt. Így elkerülhető, hogy a felhasználói hozzájárulások oldala kétszer listázza az engedélyt.
 
-4. Gratulálunk! Az alkalmazás konfigurálása sikeresen megtörtént. A következő szakaszban lesz szüksége:
+4. Gratulálunk! Az alkalmazás konfigurálása kész. A következő szakaszban a következőre lesz szüksége:
     - `Application ID`
     - `Redirect URI`
 
-### <a name="get-the-sample-code"></a>A mintakód letöltése
+## <a name="step-2-get-the-sample-code"></a>2. lépés: A mintakód beszerzése
 
 1. Klónozza a kódot.
     ```
     git clone https://github.com/Azure-Samples/active-directory-android
     ```
-2. Az Android Studióban nyissa meg a mintát.
-    - Válassza ki **Android Studio projekt megnyitása**.
+2. Nyissa meg a mintát az Android Studióban.
+    - Válassza az **Open an existing Android Studio project** (Létező Android Studio-projekt megnyitása) lehetőséget.
 
-### <a name="configure-your-code"></a>A kód konfigurálása
+## <a name="step-3-configure-your-code"></a>3. lépés: A kód konfigurálása
 
-Ez a kódminta, az összes konfigurációját annak a ***src/main/java/com/azuresamples/azuresampleapp/MainActivity.java*** fájlt. 
+A mintakódhoz tartozó összes konfigurációt megtalálja az ***src/main/java/com/azuresamples/azuresampleapp/MainActivity.java*** fájlban.
 
-1. Cserélje le a konstans `CLIENT_ID` együtt a `ApplicationID`.
-2. Cserélje le a konstans `REDIRECT URI` együtt a `Redirect URI` korábban beállított (`http://localhost`). 
+1. Cserélje le a `CLIENT_ID` állandót az `ApplicationID` értékére.
+2. Cserélje le a `REDIRECT URI` állandót az előbb konfigurált `Redirect URI`-értékre (`http://localhost`).
 
-### <a name="run-the-sample"></a>Minta futtatása
+## <a name="step-4-run-the-sample"></a>4. lépés: A minta futtatása
 
-1. Válassza ki **összeállítása > Projekt tiszta**. 
-2. Válassza ki **Futtatás > alkalmazás futtatása**. 
-3. Az alkalmazás kell hozhat létre, és néhány alapvető UX megjelenítése Amikor rákattint a `Call Graph API` gomb, azt fogja kérni a bejelentkezésre és csendes hívja a Microsoft Graph API az új jogkivonat. 
+1. Válassza a **Build > Clean Project** (Létrehozás > Új projekt) lehetőséget.
+2. Válassza a **Run > Run app** (Futtatás > Alkalmazás futtatása) lehetőséget.
+3. Az alkalmazásnak létre kell jönnie, és egy alapszintű felhasználói felületet kell megjelenítenie. A `Call Graph API` gomb megnyomása után egy bejelentkezést fog kérni Öntől, majd csendben meghívja a Microsoft Graph API-t az új jogkivonattal.
 
-## <a name="important-info"></a>Fontos információ
+## <a name="next-steps"></a>További lépések
 
-1. Kivétel a [ADAL Android Wiki](https://github.com/AzureAD/azure-activedirectory-library-for-android/wiki) kapcsolatos további információért a szalagtár mechanics és új forgatókönyvek és funkciók konfigurálása. 
-2. A natív esetben az alkalmazás egy beágyazott WebView-t fogja használni, és nem hagyja az alkalmazás. A `Redirect URI` tetszőleges is lehet. 
-3. Keresse meg a problémákat, vagy kérelmek rendelkezik? Probléma létrehozása vagy a közzététel a StackOverflow-n a címkével ellátott `azure-active-directory`. 
+1. Látogasson el az [ADAL Android Wiki](https://github.com/AzureAD/azure-activedirectory-library-for-android/wiki) webhelyre a kódtárak működésével, illetve az új forgatókönyvek és képességek konfigurálásával kapcsolatos további információkért.
+2. Natív forgatókönyvekben az alkalmazás egy beágyazott webes nézetet fog használni, és nem lép ki az alkalmazásból. A `Redirect URI` tetszőlegesen állítható be.
+3. Problémába ütközött, vagy kérése lenne? A Stackoverflow-n létrehozhat egy problémát vagy egy bejegyzést a következő címkével: `azure-active-directory`.
 
 ### <a name="cross-app-sso"></a>Alkalmazások közötti SSO
-Ismerje meg, [az Android alkalmazások közötti SSO engedélyezése ADAL használatával hogyan](howto-v1-enable-sso-android.md). 
+
+Ismerje meg, [hogyan engedélyezheti Androidon az alkalmazások közötti SSO-t az ADAL segítségével](howto-v1-enable-sso-android.md).
 
 ### <a name="auth-telemetry"></a>Hitelesítési telemetria
-az ADAL könyvtár auth telemetriai adatok segítségével az alkalmazásfejlesztők megismerheti, hogyan alkalmazásaikat vezérelhesse és jobb felhasználói környezetek készíthetők tesz elérhetővé. Ez lehetővé teszi, hogy a bejelentkezés sikeres, az aktív felhasználók és számos más érdekes rögzítése. Hitelesítési telemetriai adatok segítségével az alkalmazásfejlesztők egy telemetriai szolgáltatásnak, összesítéséhez és eseményeket létrehozásához igényel.
 
-További információ a hitelesítési telemetriát, kivétele [ADAL Android hitelesítési telemetriai](https://github.com/AzureAD/azure-activedirectory-library-for-android/wiki/Telemetry). 
+Az ADAL-kódtár elérhetővé teszi a hitelesítési telemetriát annak érdekében, hogy segítsen az alkalmazásfejlesztőknek alkalmazásuk működésének megértésében és jobb felhasználói élmények létrehozásában. Ez lehetővé teszi a sikeres bejelentkezések, aktív felhasználók és számos más érdekes elemzés rögzítését. A hitelesítési telemetria használatához az alkalmazásfejlesztőknek létre kell hozniuk egy telemetriaszolgáltatást, amely összesíti és tárolja az eseményeket.
 
-[!INCLUDE [active-directory-devquickstarts-additional-resources](../../../includes/active-directory-devquickstarts-additional-resources.md)]
+A hitelesítési telemetriához kapcsolódó további információkért keresse fel az [ADAL Android hitelesítési telemetria](https://github.com/AzureAD/azure-activedirectory-library-for-android/wiki/Telemetry) oldalát.

@@ -10,30 +10,37 @@ ms.assetid: 72f4e464-1352-4a49-a18f-c37f58e7d5c4
 ms.service: active-directory
 ms.component: develop
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/27/2017
+ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: arielgo
 ms.custom: aaddev, signin_art
-ms.openlocfilehash: 92990a71a0b138f08c515450ecd71692fa57f297
-ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
+ms.openlocfilehash: 6edcd5b3df7c3c58c6568434f82fbc52cb9e28df
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "43185420"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46958866"
 ---
 # <a name="branding-guidelines-for-applications"></a>Védjegyzési útmutató az alkalmazásokhoz
 
-Ez a cikk az Azure Active Directory (Azure AD) alkalmazások fejlesztésekor alkalmazandó védjegyzési irányelveket tárgyalja. Ezek az irányelvek segítenek az ügyfeleknek eligazodni, ha az Azure AD-ban kezelt munkahelyi vagy iskolai fiókjukkal, illetve személyes fiókjukkal szeretnének regisztrálni vagy bejelentkezni az Ön által fejlesztett alkalmazásba.
+Ha az Azure Active Directoryval (Azure AD) fejleszt alkalmazásokat, segítenie kell az ügyfeleknek eligazodni, ha a munkahelyi vagy iskolai fiókjukkal (amelyek felügyelete az Azure AD-ben történik), illetve személyes fiókjukkal szeretnének regisztrálni vagy bejelentkezni az Ön által fejlesztett alkalmazásba.
+
+Ebben a cikkben:
+
+- Megismerheti a Microsoft által felügyelt felhasználói fiók két fajtáját, illetve hogy miként hivatkozhat az Azure AD-fiókokra az alkalmazásában.
+- Megtudhatja, hogy mit kell tennie a Microsoft embléma az alkalmazásban való használatához történő hozzáadásához.
+- Letölti a hivatalos **Bejelentkezés** és **Bejelentkezés Microsoft-fiókkal** képet az alkalmazásban való használathoz.
+- Megismerheti a védjegyzéssel és navigálással kapcsolatban ajánlott és kerülendő műveleteket.
 
 ## <a name="personal-accounts-vs-work-or-school-accounts-from-microsoft"></a>Személyes fiókok és munkahelyi vagy iskolai Microsoft-fiókok összehasonlítása
 
 A Microsoft kétféle felhasználói fiókot kezel:
 
-* **Személyes fiókok** (korábban Windows Live ID). Ezek az *egyes* felhasználók és a Microsoft közötti kapcsolatot képviselik, és a Microsoft fogyasztói eszközökhöz és szolgáltatásokhoz való hozzáférését biztosítják. Ezek a fiókok személyes használatra vannak szánva.
-* **Munkahelyi vagy iskolai fiókok.** A fiókokat a Microsoft felügyeli az Azure Active Directory-t használó vállalatok nevében. A fiókok az Office 365-be és a Microsoft egyéb üzleti szolgáltatásaiba való bejelentkezésre szolgálnak.
+- **Személyes fiókok** (korábban Windows Live ID). Ezek az *egyes* felhasználók és a Microsoft közötti kapcsolatot képviselik, és a Microsoft fogyasztói eszközökhöz és szolgáltatásokhoz való hozzáférését biztosítják. Ezek a fiókok személyes használatra vannak szánva.
+- **Munkahelyi vagy iskolai fiókok.** A fiókokat a Microsoft felügyeli az Azure Active Directory-t használó vállalatok nevében. A fiókok az Office 365-be és a Microsoft egyéb üzleti szolgáltatásaiba való bejelentkezésre szolgálnak.
 
 A Microsoft munkahelyi vagy iskolai fiókokat a szervezetek (vállalatok, iskolák, kormányhivatalok) jellemzően a végfelhasználókhoz (alkalmazottak, diákok, köztisztviselők) rendelik. Ezeket a fiókokat közvetlenül a felhőben (az Azure AD platformon) vagy Azure AD-val szinkronizálva kezelik egy helyszíni címtárból, például a Windows Server Active Directoryból. A Microsoft a munkahelyi vagy iskolai fiókok *felügyelője*, de azok a szervezetek tulajdonában állnak, és a szervezetek felügyelik őket.
 
@@ -41,8 +48,8 @@ A Microsoft munkahelyi vagy iskolai fiókokat a szervezetek (vállalatok, iskol�
 
 A Microsoft nem jeleníti meg a végfelhasználóknak az Azure vagy az Active Directory márkaneveket, és Ön se tegye.
 
-* Bejelentkezett felhasználó esetén, ha csak teheti, használja a szervezet nevét és emblémáját. Ez jobb megoldás, mint az általános, „az Ön szervezete” jellegű kifejezések.
-* Ha a felhasználó nincs bejelentkezve, hivatkozzon a fiókra „Munkahelyi vagy iskolai fiók” néven, és használja a Microsoft emblémáját annak jelzésére, hogy a fiókokat a Microsoft kezeli. Ne használja a „vállalati fiók”, „üzleti fiók”, „céges fiók” vagy az ehhez hasonló kifejezéseket, mert ezek összezavarhatják a felhasználót.
+- Bejelentkezett felhasználó esetén, ha csak teheti, használja a szervezet nevét és emblémáját. Ez jobb megoldás, mint az általános, „az Ön szervezete” jellegű kifejezések.
+- Ha a felhasználó nincs bejelentkezve, hivatkozzon a fiókra „Munkahelyi vagy iskolai fiók” néven, és használja a Microsoft emblémáját annak jelzésére, hogy a fiókokat a Microsoft kezeli. Ne használja a „vállalati fiók”, „üzleti fiók”, „céges fiók” vagy az ehhez hasonló kifejezéseket, mert ezek összezavarhatják a felhasználót.
 
 ## <a name="user-account-pictogram"></a>A felhasználói fiók piktogramja
 
@@ -94,7 +101,6 @@ Ha hivatalos képeket szeretne letölteni az alkalmazáshoz, kattintson a jobb g
 | Bejelentkezés Microsofttal (világos téma) | ![Bejelentkezés gomb (világos téma, PNG)](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_signin_light.png) | ![Bejelentkezés Microsofttal gomb (világos téma, SVG)](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_signin_light.svg) |
 | Bejelentkezés (sötét téma)                 | ![Rövid Bejelentkezés gomb (sötét téma, PNG)](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_signin_dark_short.png) | ![Rövid Bejelentkezés gomb (sötét téma, SVG)](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_signin_dark_short.svg) |
 | Bejelentkezés (világos téma)                | ![Rövid Bejelentkezés gomb (világos téma, PNG)](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_signin_light_short.png) | ![Rövid Bejelentkezés gomb (világos téma, SVG)](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_signin_light_short.svg) |
-
 
 ## <a name="branding-dos-and-donts"></a>Ajánlott és kerülendő műveletek a védjegyzéssel kapcsolatban
 

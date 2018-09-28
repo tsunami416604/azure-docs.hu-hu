@@ -1,25 +1,18 @@
 ---
 title: 'Az ExpressRoute áttekintése: A helyszíni hálózat kiterjesztése az Azure-ra privát kapcsolaton keresztül | Microsoft Docs'
 description: Az ExpressRoute technikai áttekintése ismerteti, hogyan terjeszthető ki a helyszíni hálózatát az Azure-ra egy ExpressRoute-kapcsolattal egy privát kapcsolaton keresztül.
-documentationcenter: na
 services: expressroute
 author: cherylmc
-manager: timlt
-editor: ''
-ms.assetid: fd95dcd5-df1d-41d6-85dd-e91d0091af05
 ms.service: expressroute
-ms.devlang: na
-ms.topic: get-started-article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 03/12/2018
+ms.topic: overview
+ms.date: 09/19/2018
 ms.author: cherylmc
-ms.openlocfilehash: 75d69669945d31fbc9876d0c1e709b37f96aee6d
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: f1bc447f73912ccf04f0c0cf7d6460d472bace4c
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/16/2018
-ms.locfileid: "29940162"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46961909"
 ---
 # <a name="expressroute-overview"></a>ExpressRoute – áttekintés
 A Microsoft Azure ExpressRoute használatával kiterjesztheti helyszíni hálózatait a Microsoft-felhőbe egy privát kapcsolaton keresztül, amelyet egy kapcsolatszolgáltató biztosít. Az ExpressRoute használatával kapcsolatokat létesíthet olyan Microsoft-felhőszolgáltatásokkal, mint például a Microsoft Azure, az Office 365 és a Dynamics 365.
@@ -70,11 +63,29 @@ Ha például Amszterdamban csatlakozik a Microsofthoz az ExpressRoute-on kereszt
 ### <a name="global-connectivity-with-expressroute-premium-add-on"></a>Globális kapcsolódás az ExpressRoute prémium bővítmény használatával
 Az ExpressRoute prémium bővítménnyel kiterjesztheti a kapcsolódási lehetőségeket a geopolitikai határokon túl. Ha például Amsterdamban csatlakozik a Microsofthoz az ExpressRoute-on keresztül, a világszerte az összes régióban (az országos felhők kivételével) üzemeltetett összes Microsoft-felhőszolgáltatáshoz hozzáféréssel fog rendelkezni. A Dél-Amerikában vagy Ausztráliában üzemeltetett szolgáltatásokat ugyanúgy eléri majd, mint az észak- vagy nyugat-európai régióban lévőket.
 
+### <a name="across-on-premises-connectivity-with-expressroute-global-reach"></a>Helyszínek közötti csatlakozási lehetőségek az ExpressRoute Global Reach segítségével
+
+Az ExpressRoute Global Reach használatával adatokat cserélhet a távoli helyek között több ExpressRoute-kapcsolatcsoport csatlakoztatása révén. Ha például van egy privát adatközpontja Kaliforniában, amellyel a Szilícium-völgyben lévő ExpressRoute-hoz csatlakozik, és egy másik Texasban, amellyel a Dallasban lévő ExpressRoute-hoz, akkor az ExpressRoute Global Reach használatával csatlakoztathatja ezeket a privát adatközpontokat két ExpressRoute-kapcsolatcsoporton keresztül. Az adatközpontok közötti forgalom a Microsoft hálózatán fog áthaladni.
+
+További információ: [ExpressRoute Global Reach](expressroute-global-reach.md).
+
 ### <a name="rich-connectivity-partner-ecosystem"></a>A kapcsolati partnerek gazdag ökoszisztémája
 Az ExpressRoute kapcsolati és SI-partnerek egyre bővülő ökoszisztémájával rendelkezik. A legfrissebb információkért lásd az [ExpressRoute-szolgáltatókat és -helyeket](expressroute-locations.md) ismertető cikket.
 
 ### <a name="connectivity-to-national-clouds"></a>Kapcsolódás országos felhőkhöz
 A Microsoft elkülönített felhőkörnyezeteket tart fenn speciális geopolitikai régiók és ügyfélszegmensek számára. Az országos felhők és szolgáltatók listájáért lásd az [ExpressRoute-szolgáltatókat és -helyeket](expressroute-locations.md) ismertető lapot.
+
+### <a name="expressroute-direct"></a>ExpressRoute Direct
+
+Az ExpressRoute Direct közvetlen csatlakozást tesz lehetővé az ügyfelek számára a Microsoft globális hálózatához a világszerte stratégiai pontokon elhelyezett társviszony-létesítési helyszíneken át. Az ExpressRoute Direct kettős, 100 Gbps sávszélességű kapcsolatot biztosít, amely támogatja a nagy léptékű aktív/aktív kapcsolatokat. 
+
+Az ExpressRoute Direct fő előnyei a teljesség igénye nélkül a következők:
+
+* Nagy mennyiségű adat betöltése az olyan szolgáltatásokba, mint például a Storage és az Cosmos DB 
+* Fizikai elkülönítés a szabályozott, valamint dedikált és elszigetelt kapcsolódást igénylő iparágak, például a banki, kormányzati és kiskereskedelmi ágazatok számára. 
+* A kapcsolatcsoportok elosztásának üzleti egységen alapuló, részletes szabályzása
+
+További információ: [Az ExpressRoute Direct ismertetése](https://go.microsoft.com/fwlink/?linkid=2022973).
 
 ### <a name="bandwidth-options"></a>Sávszélesség-lehetőségek
 A sávszélességek széles választékához vásárolhat ExpressRoute-kapcsolatcsoportokat. A támogatott sávszélességeket az alábbi lista tartalmazza. Mindenképp egyeztessen kapcsolatszolgáltatójával a támogatott sávszélességekről.

@@ -1,6 +1,6 @@
 ---
-title: Ismerkedés az Azure AD AngularJS |} A Microsoft Docs
-description: Hogyan hozhat létre egy AngularJS egyoldalas alkalmazás, amely integrálható az Azure AD-be, és meghívja az Azure AD-védelemmel ellátott API-k OAuth használatával.
+title: Egyoldalas AngularJS-alkalmazás létrehozása az Azure Active Directoryval történő bejelentkezéshez és kijelentkezéshez | Microsoft Docs
+description: Útmutató a bejelentkezés céljából az Azure AD-vel integrálható, és az Azure AD által védett API-kat OAuth használatával meghívó egyoldalas AngularJS-alkalmazás létrehozásához.
 services: active-directory
 documentationcenter: ''
 author: CelesteDG
@@ -12,65 +12,80 @@ ms.component: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: javascript
-ms.topic: article
-ms.date: 11/30/2017
+ms.topic: quickstart
+ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 0c7f6a0e447e3b48cdd1df684dc105ece1e98f66
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
-ms.translationtype: MT
+ms.openlocfilehash: 23912f9d004d051c422f93e8b10f1aa6cb8b2626
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39581597"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46959495"
 ---
-# <a name="azure-ad-angularjs-getting-started"></a>Ismerkedés az Azure AD AngularJS
+# <a name="quickstart-build-an-angularjs-single-page-app-for-sign-in-and-sign-out-with-azure-active-directory"></a>Rövid útmutató: Egyoldalas AngularJS-alkalmazás létrehozása az Azure Active Directoryval történő bejelentkezéshez és kijelentkezéshez
 
-[!INCLUDE [active-directory-devguide](../../../includes/active-directory-devguide.md)]
+[!INCLUDE [active-directory-develop-applies-v1-adal](../../../includes/active-directory-develop-applies-v1-adal.md)]
 
-Az Azure Active Directory (Azure AD) révén egyszerű és könnyen érthető megjegyzésblokkok írására is hozzáadhat a bejelentkezési, kijelentkezési és biztonságos OAuth API meghívja az egyoldalas alkalmazásokat. Lehetővé teszi az alkalmazások számára a Windows Server Active Directory-fiókkal rendelkező felhasználók hitelesítése, és minden olyan webes API, amely az Azure AD megvédi, például az Office 365 API-k vagy az Azure API felhasználását.
+Az Azure Active Directory (Azure AD) révén egyszerűen és magától értetődő módon adhat hozzá bejelentkezési és kijelentkezési funkciót, továbbá biztonságos OAuth API-hívásokat az egyoldalas alkalmazásokhoz. A szolgáltatás lehetővé teszi az alkalmazások számára a felhasználók hitelesítését a felhasználók Windows Server Active Directory-fiókjával, valamint az olyan webes API-k használatát, amelyek védelméhez az Azure AD nyújt segítséget. Ilyenek például az Office 365 API-k vagy az Azure API.
 
-A böngészőben futó JavaScript-alkalmazások Azure ad-ben az Active Directory Authentication Library (ADAL) vagy adal.js biztosít. Adal.js kizárólagos célja az, hogy megkönnyítik az alkalmazás hozzáférési. Használatával mutatja be, milyen egyszerűen, itt létrehozunk egy AngularJS teendőlista-alkalmazás, amely:
+A böngészőben futó JavaScript-alkalmazások esetén az Azure AD az Active Directory Authentication Libraryt (ADAL) vagy adal.js-t biztosítja. Az adal.js egyetlen célja a hozzáférési jogkivonat lekérésének a megkönnyítése az alkalmazások számára.
 
-* Bejelentkezik a felhasználó az alkalmazás által az Azure AD Identitásszolgáltatóként.
+Ebben a rövid útmutatóban megtanulhatja, hogy miként hozhat létre egy olyan teendőlistás AngularJS-alkalmazást, amely:
 
-* Néhány felhasználó információit jeleníti meg.
-* Biztonságosan meghívja az alkalmazást, tegye lista API-t az Azure ad-ből tulajdonosi jogkivonatok segítségével.
-* A felhasználó ki az alkalmazásból jelentkezik.
+* Bejelentkezteti a felhasználót az alkalmazásba az Azure AD-t használva identitásszolgáltatóként.
+* Információkat jelenít meg a felhasználóval kapcsolatban.
+* Biztonságos módon meghívja az alkalmazás teendőlista API-ját az Azure AD-ből származó tulajdonosi jogkivonatok használatával.
+* Kijelentkezteti a felhasználót az alkalmazásból.
 
-A teljes, működő alkalmazást készíthet, kell tennie:
+Egy teljes körű, működő alkalmazás létrehozásához az alábbiakat kell tennie:
 
-1. Az alkalmazás regisztrálása az Azure ad-ben.
-2. Adal-t telepítse és konfigurálja az egyoldalas alkalmazást.
-3. Adal-t használó egyoldalas alkalmazás biztonságos lapok segítségével.
+1. Az alkalmazás regisztrálása az Azure AD-ben.
+2. Az ADAL telepítése, és az egyoldalas alkalmazás konfigurálása.
+3. Az ADAL használata az egyoldalas alkalmazás oldalainak védelemmel való ellátásához.
 
-Első lépésként [töltse le az alkalmazás skeleton](https://github.com/AzureADQuickStarts/SinglePageApp-AngularJS-DotNet/archive/skeleton.zip) vagy [töltse le az elkészült mintát](https://github.com/AzureADQuickStarts/SinglePageApp-AngularJS-DotNet/archive/complete.zip). Emellett ahol felhasználók létrehozása és regisztrálni egy alkalmazást az Azure AD-bérlővel. Ha még nem rendelkezik egy bérlő [megtudhatja, hogyan tehet szert egy](quickstart-create-new-tenant.md).
+## <a name="prerequisites"></a>Előfeltételek
+
+Első lépésként végre kell hajtania az alábbi lépéseket:
+
+* [Töltse le az alkalmazás vázát](https://github.com/AzureADQuickStarts/SinglePageApp-AngularJS-DotNet/archive/skeleton.zip) vagy [a kész mintát](https://github.com/AzureADQuickStarts/SinglePageApp-AngularJS-DotNet/archive/complete.zip).
+* Rendelkeznie kell egy Azure AD-bérlővel, amelyben felhasználókat hozhat létre, és regisztrálhat egy alkalmazást. Ha még nem rendelkezik bérlővel, [itt megtudhatja, hogyan tehet szert egyre](quickstart-create-new-tenant.md).
 
 ## <a name="step-1-register-the-directorysearcher-application"></a>1. lépés: A DirectorySearcher alkalmazás regisztrálása
-Ahhoz, hogy a felhasználók hitelesítéséhez és a jogkivonatok lekérésére, az alkalmazást, akkor először az Azure AD-bérlő regisztrálásához:
+
+Ha lehetővé szeretné tenni az alkalmazás számára a felhasználók hitelesítését és a jogkivonatok lekérését, először regisztrálnia kell az alkalmazást az Azure AD-bérlőben:
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-2. Ha több címtár jelentkezett be, szükség lehet annak érdekében, hogy a megfelelő címtár jelenik meg. Ehhez a felső sávon található, kattintson a fiók. Alatt a **Directory** menüben válassza ki az Azure AD-bérlőt, ahová az alkalmazás regisztrálásához.
-3. Kattintson a **minden szolgáltatás** a bal oldali panelen, és válassza ki a **Azure Active Directory**.
-4. Kattintson a **alkalmazásregisztrációk**, majd válassza ki **Hozzáadás**.
-5. Kövesse az utasításokat, és hozzon létre egy új webalkalmazás és/vagy webes API-hoz:
-  * **Név** ismerteti az alkalmazást a felhasználók számára.
-  * **Bejelentkezés URL-cím** az a hely, amelyhez Azure ad-ben jogkivonatokat ad vissza. Az alapértelmezett helye ehhez a mintához `https://localhost:44326/`.
-6. Regisztráció után az Azure AD az alkalmazáshoz rendeli hozzá egy egyedi Alkalmazásazonosítója. Ez az érték kell a következő szakaszokban, ezért másolja ki az alkalmazások lapon.
-7. Adal.js az implicit OAuth-folyamat használatával kommunikálni az Azure ad-ben. Az alkalmazás engedélyeznie kell az implicit folyamatot:
-  1. Kattintson az alkalmazást, és válassza ki **Manifest** , nyissa meg a beágyazott alkalmazásjegyzék-szerkesztőben.
-  2. Keresse meg a `oauth2AllowImplicitFlow` tulajdonság. Az értékét állítsa `true`.
-  3. Kattintson a **mentése** a jegyzékfájl mentése.
-8. Engedélyek megadása az alkalmazás a bérlőn belüli. Lépjen a **beállítások** > **szükséges engedélyek**, majd kattintson a **engedélyek megadása** gombot a felső sávon található. Kattintson a **Yes** (Igen) gombra a megerősítéshez.
+1. Ha több címtárba jelentkezett be, lehetséges, hogy ellenőriznie kell, hogy a megfelelő címtárat látja-e. Ehhez kattintson a fiókjára a felső sávon. A **Címtár** listában válassza ki azt az Azure AD-bérlőt, amelyben az alkalmazást regisztrálni kívánja.
+1. Kattintson a **Minden szolgáltatás** lehetőségre a bal oldali panelen, majd válassza az **Azure Active Directory** elemet.
+1. Kattintson az **Alkalmazásregisztrációk** elemre, majd válassza a **Hozzáadás** parancsot.
+1. Kövesse az utasításokat, és hozzon létre egy új webalkalmazást és/vagy webes API-t:
 
-## <a name="step-2-install-adal-and-configure-the-single-page-app"></a>2. lépés: Telepítés adal-t és az egyoldalas alkalmazás konfigurálása
-Most, hogy egy alkalmazás az Azure ad-ben, adal.js telepítse, és az identitással kapcsolatos kód írása.
+    * A **név** az alkalmazást ismerteti a felhasználók számára.
+    * **Bejelentkezési URL** – az a hely, ahová az Azure AD visszaadja a jogkivonatokat. Ebben a példában az alapértelmezett hely a `https://localhost:44326/`.
+
+1. A regisztráció befejezését követően az Azure AD egy egyedi alkalmazásazonosítót rendel az alkalmazáshoz. Erre az értékre szüksége lesz a következő szakaszokban, ezért másolja ki az alkalmazás lapjáról.
+1. Az Adal.js az OAuth implicit folyamatát használja az Azure AD-vel folytatott kommunikációhoz. Engedélyeznie kell az implicit folyamatot az alkalmazás számára:
+
+    1. Kattintson az alkalmazásra, és válassza a **Jegyzékfájl** elemet a beépített jegyzékszerkesztő megnyitásához.
+    1. Keresse meg az `oauth2AllowImplicitFlow` tulajdonságot. Állítsa az értékét `true` értékűre.
+    1. Kattintson a **Mentés** gombra a jegyzék mentéséhez.
+
+1. Biztosítson engedélyeket a bérlőben az alkalmazás számára. Lépjen a **Beállítások > Szükséges engedélyek** részre, és kattintson a felső sáv **Engedélyek megadása** gombjára.
+1. Válassza az **Igen** lehetőséget a megerősítéshez.
+
+## <a name="step-2-install-adal-and-configure-the-single-page-app"></a>2. lépés: Az ADAL telepítése, és az egyoldalas alkalmazás konfigurálása
+
+Mivel már rendelkezik egy alkalmazással az Azure AD-ben, telepítheti az adal.js-t, és megírhatja az identitáshoz kapcsolódó kódot.
 
 ### <a name="configure-the-javascript-client"></a>A JavaScript-ügyfél konfigurálása
-Első lépésként adja hozzá adal.js a TodoSPA projekthez a Package Manager konzol használatával:
-  1. Töltse le [adal.js](https://raw.githubusercontent.com/AzureAD/azure-activedirectory-library-for-js/master/lib/adal.js) , és adja azt hozzá a `App/Scripts/` projekt könyvtárában.
-  2. Töltse le [adal angular.js](https://raw.githubusercontent.com/AzureAD/azure-activedirectory-library-for-js/master/lib/adal-angular.js) , és adja azt hozzá a `App/Scripts/` projekt könyvtárában.
-  3. Minden parancsprogram vége előtt betölteni a `</body>` a `index.html`:
+
+Kezdje az adal.js a TodoSPA projekthez történő hozzáadásával, a csomagkezelő konzolt használva:
+
+1. Töltse le az [adal.js](https://raw.githubusercontent.com/AzureAD/azure-activedirectory-library-for-js/master/lib/adal.js) szkriptet, és adja hozzá az `App/Scripts/` projektkönyvtárhoz.
+2. Töltse le az [adal-angular.js](https://raw.githubusercontent.com/AzureAD/azure-activedirectory-library-for-js/master/lib/adal-angular.js) szkriptet, és adja hozzá az `App/Scripts/` projektkönyvtárhoz.
+3. Az egyes szkripteket az `index.html` `</body>` elemének a vége előtt töltse be:
 
     ```js
     ...
@@ -79,15 +94,18 @@ Első lépésként adja hozzá adal.js a TodoSPA projekthez a Package Manager ko
     ...
     ```
 
-### <a name="configure-the-back-end-server"></a>A háttér-kiszolgáló konfigurálása
-Az egyoldalas alkalmazás háttér-, tegye lista API-t fogadni a böngészőből a háttér konfigurációs adatait az alkalmazás regisztrációját kell rendelkeznie. A TodoSPA projektben nyissa meg a `web.config`. Cserélje le az értékeket az elemek a `<appSettings>` szakaszban, hogy az értékeket, amelyeket Ön az Azure Portalon. A kód ezeket az értékeket hivatkozik, amikor az adal-t használ.
-  * `ida:Tenant` az a tartomány az Azure AD-bérlő – például contoso.onmicrosoft.com.
-  * `ida:Audience` a portálról kimásolt az alkalmazás ügyfél-azonosító van.
+### <a name="configure-the-back-end-server"></a>A háttérkiszolgáló konfigurálása
 
-## <a name="step-3-use-adal-to-help-secure-pages-in-the-single-page-app"></a>3. lépés: Használja az egyoldalas alkalmazás biztonságos oldalainak segítségével adal-t
-Adal.js integrálható az AngularJS útvonal és a HTTP-szolgáltatók, így az egyoldalas alkalmazás biztonságos egyes nézetek segíthet.
+Ahhoz, hogy az egyoldalas alkalmazás teendőlistás háttér-API-ja elfogadhasson jogkivonatokat a böngészőtől, a háttérrendszernek szüksége van az alkalmazásregisztrációval kapcsolatos konfigurációs adatokra. A TodoSPA projektben nyissa meg a `web.config` fájlt. Cserélje le az `<appSettings>` szakaszban található elemek értékét az Azure Portalon használt értékekre. A kód ezekre az értékekre fog hivatkozni az ADAL használatakor.
 
-1. A `App/Scripts/app.js`, a adal.js modul használata:
+   * `ida:Tenant` – az Azure AD-bérlő tartománya, például: contoso.onmicrosoft.com.
+   * A `ida:Audience` az alkalmazás portálról kimásolt ügyfél-azonosítója.
+
+## <a name="step-3-use-adal-to-help-secure-pages-in-the-single-page-app"></a>3. lépés: Az ADAL használata az egyoldalas alkalmazás oldalainak védelemmel való ellátásához
+
+Az adal.js AngularJS-útvonallal és HTTP-szolgáltatókkal integrálható, így könnyebben láthatja el védelemmel az egyoldalas alkalmazás egyes nézeteit.
+
+1. Az `App/Scripts/app.js` fájlban hívja meg az adal.js modult:
 
     ```js
     angular.module('todoApp', ['ngRoute','AdalAngular'])
@@ -95,7 +113,7 @@ Adal.js integrálható az AngularJS útvonal és a HTTP-szolgáltatók, így az 
      function ($routeProvider, $httpProvider, adalProvider) {
     ...
     ```
-2. Inicializálása `adalProvider` használatával, az alkalmazás regisztrációja a konfigurációs értékeket is `App/Scripts/app.js`:
+2. Inicializálja az `adalProvider` szolgáltatót az alkalmazásregisztráció, valamint az `App/Scripts/app.js` konfigurációs értékeit használva:
 
     ```js
     adalProvider.init(
@@ -109,7 +127,7 @@ Adal.js integrálható az AngularJS útvonal és a HTTP-szolgáltatók, így az 
       $httpProvider
     );
     ```
-3. Biztonságossá tétele a `TodoList` megtekintése az alkalmazásban csak egyetlen sor kód használatával: `requireADLogin`.
+3. A `TodoList` nézet védelemmel való ellátását elősegítendő csak egy sor kódot használjon: `requireADLogin`.
 
     ```js
     ...
@@ -121,11 +139,12 @@ Adal.js integrálható az AngularJS útvonal és a HTTP-szolgáltatók, így az 
     ```
 
 ## <a name="summary"></a>Összegzés
-Most már rendelkezik egy biztonságos egyoldalas alkalmazás, amely a felhasználók és a háttérrendszeri API tulajdonosi jogkivonat-védelemmel ellátott küldött kérések kiadására. Amikor a felhasználó rákattint a **TodoList** hivatkozás, adal.js automatikusan átirányítja az Azure AD-hez bejelentkezési szükség esetén. Emellett adal.js lesz automatikusan csatolja egy hozzáférési jogkivonatot bármely Ajax-kérelmeket az alkalmazás háttérrendszere küldött. 
 
-A fenti lépéseket a csupasz minimális szükséges hozhat létre egy egyoldalas alkalmazást adal.js használatával. Azonban bizonyos funkciók egyoldalas alkalmazás hasznos:
+Rendelkezik egy biztonságos egyoldalas alkalmazással, amely képes a felhasználók bejelentkeztetésére, valamint tulajdonosi jogkivonatokkal védett kérések kezdeményezésére a háttér-API-ja felé. Amikor egy felhasználó a **TodoList** hivatkozásra kattint, az adal.js automatikusan az Azure AD-be irányítja át a bejelentkezéshez, ha szükséges. Az adal.js emellett automatikusan csatolni fog egy hozzáférési jogkivonatot az alkalmazás háttérrendszerének küldött Ajax-kérések mindegyikéhez.
 
-* Az explicit módon a bejelentkezési és kijelentkezési kérések kiállítása, meghatározhatja a tartományvezérlők, amelyek aktiválják az adal.js funkciók. A `App/Scripts/homeCtrl.js`:
+Az előző lépések pusztán a minimálisan szükséges lépések ahhoz, hogy egy egyoldalas alkalmazást az adal.js használatával létrehozhasson. Néhány további szolgáltatás azonban szintén hasznos lehet az egyoldalas alkalmazásban:
+
+* A bejelentkezési és kijelentkezési kérések explicit kiadásához függvényeket definiálhat a vezérlőkben az adal.js meghívásához. Az `App/Scripts/homeCtrl.js` szkriptben:
 
     ```js
     ...
@@ -137,7 +156,7 @@ A fenti lépéseket a csupasz minimális szükséges hozhat létre egy egyoldala
     };
     ...
     ```
-* Érdemes a felhasználói adatok szerepelnek az alkalmazás felhasználói felületén. Az ADAL szolgáltatás már korábban a `userDataCtrl` vezérlő, hogy hozzáférhessen a `userInfo` objektum a társított nézetben `App/Views/UserData.html`:
+* Érdemes megjeleníteni a felhasználóval kapcsolatos információkat az alkalmazás felhasználói felületén. Az ADAL szolgáltatás hozzáadása a `userDataCtrl` vezérlőhöz már megtörtént, így a `userInfo` objektumot a társított `App/Views/UserData.html` nézetben érheti el:
 
     ```js
     <p>{{userInfo.userName}}</p>
@@ -146,20 +165,22 @@ A fenti lépéseket a csupasz minimális szükséges hozhat létre egy egyoldala
     ...
     ```
 
-* Nincsenek számos forgatókönyv, amelyben meg szeretné tudni, hogy a felhasználó jelentkezett be, vagy nem. Is használhatja a `userInfo` objektum az információk gyűjtésére. Például a `index.html`, vagy megjelenítheti a **bejelentkezési** vagy **kijelentkezési** gomb a hitelesítési állapot alapján:
+* Számos olyan forgatókönyv van, amikor célszerű tudnia, hogy a felhasználó bejelentkezett-e vagy sem. A `userInfo` objektumot ezen információk gyűjtéséhez is használhatja. Az `index.html` fájl segítségével például megjelenítheti a **Bejelentkezés** vagy a **Kijelentkezés** gombot a hitelesítési állapot alapján:
 
     ```js
     <li><a class="btn btn-link" ng-show="userInfo.isAuthenticated" ng-click="logout()">Logout</a></li>
     <li><a class="btn btn-link" ng-hide=" userInfo.isAuthenticated" ng-click="login()">Login</a></li>
     ```
 
-Az Azure Active Directoryba integrált egyoldalas alkalmazás is hitelesítheti a felhasználókat, biztonságos hívása a háttérrendszerének OAuth 2.0 használatával, és alapvető információkat szeretne a felhasználó első. Ha még nem tette, most már az az idő, az egyes felhasználók a bérlő feltölti. A teendőlista egyoldalas alkalmazás futtatása, és jelentkezzen be egy ezen felhasználók. Tevékenységek hozzáadása a felhasználók feladatlistáit, jelentkezzen ki, és jelentkezzen be újra.
+Az Azure AD-be integrált egyoldalas alkalmazás hitelesítheti a felhasználókat, biztonságos módon meghívhatja a háttérrendszerét az OAuth 2.0 használatával, és alapvető információkat kérhet le a felhasználóval kapcsolatban. Ha eddig még nem tette meg, itt az ideje a bérlő néhány felhasználóval történő feltöltésének. Futtassa az egyoldalas teendőlista alkalmazást, és jelentkezzen be ezen felhasználók valamelyikével. Adjon hozzá feladatokat a felhasználó teendőlistájához, jelentkezzen ki, majd jelentkezzen be újra.
 
-Adal.js egyszerűen építhet közös identitás-funkciók az alkalmazásba. Ez gondoskodik dirty munka az Ön számára: gyorsítótár kezeléséhez, OAuth protokolltámogatás bemutatása a felhasználó egy bejelentkezési felhasználói felületén, lejárt, és további frissítésekor.
+Az adal.js segítségével egyszerűen építheti be az alkalmazásba ezeket az általános identitáskezelési szolgáltatásokat. Elvégzi az összes piszkos munkát, többek között a gyorsítótár kezelését, az OAuth protokoll támogatását, a bejelentkezésre szolgáló felhasználói felületet biztosít a felhasználónak, és frissíti a lejárt jogkivonatokat.
 
-Referenciaként az elkészült mintát (a konfigurációs értékek) nélkül érhető el a [GitHub](https://github.com/AzureADQuickStarts/SinglePageApp-AngularJS-DotNet/archive/complete.zip).
+A referenciaként használható kész minta (a konfigurációs értékek nélkül) a [GitHubon](https://github.com/AzureADQuickStarts/SinglePageApp-AngularJS-DotNet/archive/complete.zip) érhető el.
 
 ## <a name="next-steps"></a>További lépések
-Most már továbbléphet további forgatókönyvek. Előfordulhat, hogy szeretné próbálni: [CORS webes API-hívás egy egyoldalas alkalmazásból](https://github.com/AzureAdSamples/SinglePageApp-WebAPI-AngularJS-DotNet).
 
-[!INCLUDE [active-directory-devquickstarts-additional-resources](../../../includes/active-directory-devquickstarts-additional-resources.md)]
+Most már továbbléphet a további forgatókönyvekre.
+
+> [!div class="nextstepaction"]
+> [CORS webes API meghívása egyoldalas alkalmazásból](https://github.com/AzureAdSamples/SinglePageApp-WebAPI-AngularJS-DotNet).

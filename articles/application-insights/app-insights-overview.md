@@ -12,19 +12,17 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: overview
 ms.custom: mvc
-ms.date: 05/14/2017
+ms.date: 09/06/2018
 ms.author: mbullwin
-ms.openlocfilehash: fe6be773988d1889336cdddb54f7886aeb8d4f5f
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: aa9c02e069700ab236c4b9fc78482450b5911e93
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37051824"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46983872"
 ---
 # <a name="what-is-application-insights"></a>Mi az Application Insights?
-Az Application Insights egy bővíthető és több platformon működő alkalmazásteljesítmény-felügyeleti (APM) szolgáltatás webfejlesztőknek. Az élő webalkalmazásának figyelésére használhatja. Automatikusan felismeri a teljesítményanomáliákat. Hatékony elemzőeszközöket tartalmaz, amelyek segítenek a problémák felismerésében, és annak a megértésében, hogy a felhasználók mire használják ténylegesen az alkalmazást.  Úgy tervezték, hogy használatával folyamatosan javíthassa a teljesítményt és a használhatóságot. Sokféle platform alkalmazásaival együttműködik, ilyen többek között a .NET, a Node.js és a J2EE platform helyszíni vagy felhőbeli tárolás esetén is. Emellett a DevOps folyamattal is integrálható, és eszközök széles köréhez rendelkezik kapcsolódási ponttal. Képes megfigyelni és elemezni a mobilalkalmazások telemetriáját a Visual Studio App Center és a HockeyApp integrálásával.
-
-![Felhasználói tevékenységek statisztikáit ábrázolhatja diagramon, vagy konkrét eseményeket elemezhet.](./media/app-insights-overview/00-sample.png)
+Az Application Insights egy bővíthető és több platformon működő alkalmazásteljesítmény-felügyeleti (APM) szolgáltatás webfejlesztőknek. Az élő webalkalmazásának figyelésére használhatja. Automatikusan felismeri a teljesítményanomáliákat. Hatékony elemzőeszközöket tartalmaz, amelyek segítenek a problémák felismerésében, és annak a megértésében, hogy a felhasználók mire használják ténylegesen az alkalmazást.  Úgy tervezték, hogy használatával folyamatosan javíthassa a teljesítményt és a használhatóságot. Sokféle platform alkalmazásaival együttműködik, ilyen többek között a .NET, a Node.js és a J2EE platform helyszíni vagy felhőbeli tárolás esetén is. Emellett a DevOps folyamattal is integrálható, és eszközök széles köréhez rendelkezik kapcsolódási ponttal. Képes monitorozni és elemezni a mobilalkalmazások telemetriáját a Visual Studio App Center integrálásával.
 
 [Tekintse meg a bevezető animációt](https://www.youtube.com/watch?v=fX2NtGrh-Y0).
 
@@ -34,7 +32,6 @@ Az Application Insights egy bővíthető és több platformon működő alkalmaz
 Ráadásul nem csak webszolgáltatási alkalmazásokat vizsgálhat, hanem háttérösszetevőket és weboldalak JavaScript-kódjait is. 
 
 ![Az alkalmazásban telepített Application Insights-csomag telemetriai adatokat küld az Application Insights-erőforrásnak.](./media/app-insights-overview/01-scheme.png)
-
 
 Emellett telemetriai adatok olvashatók be a gazdakörnyezetekből, például teljesítményszámlálók, Azure-beli diagnosztikai adatok vagy Docker-naplók. Olyan webes teszteket is beállíthat, amelyek rendszeres időközönként szintetikus kéréseket küldenek a webszolgáltatásnak.
 
@@ -114,7 +111,7 @@ Az első lépések megtételének számos módja van. Kezdje azzal, amelyik Önn
   * [**J2EE**](app-insights-java-live.md)
 * **Fejlesztéskor: az Application Insights hozzáadása a kódhoz.** Egyéni telemetriai adatok használatát, valamint háttérbeli szolgáltatások és asztali alkalmazások vizsgálatát teszi lehetővé.
   * [Visual Studio](app-insights-asp-net.md) 2013 2. frissítés vagy újabb.
-  * Java és [Eclipse](app-insights-java-eclipse.md) vagy [más eszközök](app-insights-java-get-started.md)
+  * [Java](app-insights-java-get-started.md)
   * [Node.js](app-insights-nodejs.md)
   * [Más platformok](app-insights-platforms.md)
 * **[Vizsgálhatja a weblapokat](app-insights-javascript.md)** lapmegtekintés, AJAX-használat és egyéb ügyféloldali telemetria tekintetében.

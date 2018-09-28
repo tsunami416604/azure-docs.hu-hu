@@ -1,6 +1,6 @@
 ---
-title: Alkalmazás regisztrálása az az Azure AD v2.0-végpont a portál használatával |} A Microsoft Docs
-description: Alkalmazás regisztrálása a Microsoft bejelentkezési és a v2.0-végpont használatával a Microsoft-szolgáltatásokhoz
+title: Alkalmazás regisztrálása az Azure AD 2.0-s verziójú végpontján | Microsoft Docs
+description: Megtudhatja, hogyan regisztrálhat alkalmazásokat a Microsoftnál a bejelentkezés és a Microsoft-szolgáltatások elérésének az Azure AD 2.0-s verziójú végpontján keresztüli engedélyezéséhez.
 services: active-directory
 documentationcenter: ''
 author: CelesteDG
@@ -12,47 +12,50 @@ ms.component: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 04/18/2018
+ms.topic: quickstart
+ms.date: 09/24/2018
 ms.author: celested
+ms.reviewer: lenalepa
 ms.custom: aaddev
-ms.openlocfilehash: 8ab4e6b5b2813a216b6dd6f0fc108a09239ca9a6
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
-ms.translationtype: MT
+ms.openlocfilehash: b2dea11b6573be8f574bd18fa69ee76658d6d698
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39506548"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46975810"
 ---
-# <a name="how-to-register-an-app-with-the-v20-endpoint"></a>Alkalmazás regisztrálása a v2.0-végponttal
-Létrehozhat egy alkalmazást, amely egyaránt személyes Microsoft-fiókkal (MSA) & munkahelyi vagy iskolai fiókkal (Azure AD) jelentkezzen be, először szüksége az alkalmazás regisztrálása a Microsoft. Jelenleg nem kell minden meglévő alkalmazást, előfordulhat, hogy az Azure ad-vel használni, vagy az MSA - kell egy új létrehozásához.
+# <a name="quickstart-register-an-app-with-the-azure-active-directory-v20-endpoint"></a>Rövid útmutató: Alkalmazás regisztrálása az Azure Active Directory 2.0-s verziójú végpontján
+
+[!INCLUDE [active-directory-develop-applies-v2](../../../includes/active-directory-develop-applies-v2.md)]
+
+Olyan alkalmazás létrehozásához, amelybe személyes Microsoft-fiókkal (MSA), valamint munkahelyi vagy iskolai fiókkal (Azure AD) is be lehet jelentkezni, az alkalmazást az Azure Active Directory (Azure AD) 2.0-s verziójú végpontján kell regisztrálni. Jelenleg a meglévő alkalmazásokat nem lehet az MSA-val vagy az Azure AD-vel használni – ehhez teljesen új alkalmazást kell létrehozni.
 
 > [!NOTE]
-> Nem minden Azure Active Directory-forgatókönyvet és funkciót támogatja a v2.0-végpontra. Annak megállapításához, ha a v2.0-végpont használja, olvassa el a [v2.0 korlátozások](active-directory-v2-limitations.md).
+> A 2.0-s verziójú végpont nem minden Azure AD-forgatókönyvet és -funkciót támogat. Ha nem biztos benne, hogy érdemes-e a 2.0-s verziójú végpontot használnia, olvassa el a [2.0-s verzió korlátozásait](active-directory-v2-limitations.md).
 
+## <a name="step-1-sign-in-to-the-microsoft-application-registration-portal"></a>1. lépés: Bejelentkezés a Microsoft alkalmazásregisztrációs portálra
 
-## <a name="visit-the-microsoft-app-registration-portal"></a>Látogasson el a Microsoft app-regisztrációs portál
-A Microsoft app-regisztrálási portál, először lépjen [ https://apps.dev.microsoft.com/ ](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList). 
+1. Lépjen a Microsoft alkalmazásregisztrációs portáljára a következő helyen: [https://apps.dev.microsoft.com/](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList).
+1. Jelentkezzen be a személyes vagy a munkahelyi, illetve iskolai Microsoft-fiókjával. Ha egyikkel sem rendelkezik, regisztráljon egy új személyes fiókot.
+1. Bejelentkezett? Most a Microsoft-alkalmazások listájának kell megjelennie a képernyőn – a lista valószínűleg üres. Ezt fogjuk most módosítani.
 
-Jelentkezzen be vagy személyes vagy munkahelyi vagy iskolai Microsoft-fiókjával. Ha nem rendelkezik, vagy regisztrálhat egy új személyes fiókot.
+## <a name="step-2-register-an-app"></a>2. lépés: Alkalmazás regisztrálása
 
-Kész? Meg kell most megtekintik a Microsoft-alkalmazások listája Ez valószínűleg üres. Módosítsuk, amely.
-
-Kattintson a **alkalmazás hozzáadása**, és adjon meg egy nevet. A portál rendeli az alkalmazást a globálisan egyedi Azonosítót, amely a kód későbbi részében fogja használni. Ha az alkalmazás olyan kiszolgálóoldali összetevőt tartalmaz, amely kell-e hozzáférési jogkivonatok az API-k (úgy gondolja, hogy: Office, Azure, vagy saját webes API-t), érdemes létrehozni egy **Application Secret** itt is.
-
-Ezután adja hozzá a **platformok** , amely az alkalmazás fogja használni.
-
-* A webes alkalmazások esetén adja meg egy **átirányítási URI-t** ahol bejelentkezési üzenetek elküldhetők.
-* A mobile apps másolja le az alapértelmezett átirányítási URI-t automatikusan létrejön.
-* A webes API-k a webes API eléréséhez alapértelmezett hatókör automatikusan létrejön az Ön számára. Dönthet úgy, hogy használatával további hatókört is felvehet a **hatókör hozzáadása** gombra. Olyan alkalmazásokat, amelyek jogosultak előre használatára, a webes API használatával is hozzáadhat a **az előre engedélyezett alkalmazások** űrlap. 
-
-Igény szerint testre szabhatja a megjelenését és működését a bejelentkezési oldalon a a **profil** szakaszban. Győződjön meg arról, hogy kattintson **mentése** lépés előtt.
+1. Válassza az **Alkalmazás hozzáadása** lehetőséget, és adjon meg egy nevet.
+    A portál egy globálisan egyedi alkalmazásazonosítót oszt ki az alkalmazásnak, amelyet később a kódban fog használni. Ha az alkalmazás olyan kiszolgálóoldali összetevőt tartalmaz, amelynek hozzáférési jogkivonatokra van szüksége az API-k meghívásához (például az Office, az Azure vagy a saját webes API-ja), érdemes itt létrehoznia egy **Alkalmazáskulcsot** is.
+1. Ezután adja hozzá a **Platformokat**, amelyeket az alkalmazás használni fog.
+    * A webalapú alkalmazások esetében adja meg az **Átirányítási URI**-azonosítót, ahová az üzenetek küldve lesznek.
+    * Mobilalkalmazások esetében másolja le az automatikusan létrehozott, alapértelmezett átirányítási URI-t.
+    * A webes API-k esetében a rendszer automatikusan létrehoz egy alapértelmezett hatókört a webes API eléréséhez.
+        További hatóköröket a **Hatókör hozzáadása** gombbal adhat hozzá. Az **Előre engedélyezett alkalmazások** űrlapon hozzáadhat olyan alkalmazásokat, amelyek számára előre engedélyezi a webes API használatát.
+1. Ha szeretné, a **Profil** szakaszban testre szabhatja a bejelentkezési oldal megjelenését. 
+1. **Mentse** a módosításokat, mielőtt továbblépne.
 
 > [!NOTE]
-> Ha létrehozott egy alkalmazást a [ https://apps.dev.microsoft.com/ ](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList), az alkalmazás regisztrálva lesz az otthoni bérlőben való a portálra való bejelentkezéshez használt fiók. Ez azt jelenti, hogy is nem regisztrálhat egy alkalmazást az Azure AD-bérlő személyes Microsoft-fiókkal. Ha explicit módon szeretne regisztrálni egy alkalmazást egy adott bérlő, jelentkezzen be az adott bérlőn belüli eredetileg létrehozott fiók.
+> Ha a [https://apps.dev.microsoft.com/](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList) használatával regisztrál egy alkalmazást, az alkalmazás a portálra való bejelentkezéshez használt fiók otthoni bérlőjén lesz regisztrálva. Ez azt jelenti, hogy az Azure AD-bérlőn nem regisztrálhat alkalmazásokat a személyes Microsoft-fiókja használatával. Ha egy alkalmazást kifejezetten egy adott bérlőn szeretne regisztrálni, jelentkezzen be egy eredetileg az adott bérlőn létrehozott fiókkal.
 
+## <a name="next-steps"></a>További lépések
 
-## <a name="build-a-quickstart-app"></a>A rövid útmutató alkalmazás készítése
-Most, hogy egy Microsoft-alkalmazást, a 2.0-s verziójú gyorsútmutatók egyik elvégezhető. Az alábbiakban néhány javaslatot olvashat:
+Most, hogy már rendelkezik Microsoft-alkalmazással, elvégezheti valamelyik 2.0-s verziójú rövid útmutatót. Az alábbiakban néhány javaslatot olvashat:
 
 [!INCLUDE [active-directory-v2-quickstart-table](../../../includes/active-directory-v2-quickstart-table.md)]
-

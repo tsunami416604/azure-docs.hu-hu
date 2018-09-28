@@ -7,16 +7,16 @@ ms.component: change-inventory-management
 keywords: változás, követés, automatizálás
 author: jennyhunter-msft
 ms.author: jehunte
-ms.date: 08/27/2018
+ms.date: 09/12/2018
 ms.topic: tutorial
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: fd94fd234067f63eab424c7f757d4adf842e7b46
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 16d5a025f0c0ff571298e0f528fb9119e37950f3
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43120585"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46995258"
 ---
 # <a name="troubleshoot-changes-in-your-environment"></a>A környezet változásainak hibaelhárítása
 
@@ -32,6 +32,7 @@ Ezen oktatóanyag segítségével megtanulhatja a következőket:
 > * Tevékenységnapló csatlakozásának engedélyezése
 > * Események aktiválása
 > * Változások megtekintése
+> * Riasztások konfigurálása
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -41,9 +42,9 @@ Az oktatóanyag elvégzéséhez a következőkre lesz szüksége:
 * [Automation-fiók](automation-offering-get-started.md) a megfigyelő és műveleti runbookok, valamint a figyelőfeladat tárolásához.
 * A szolgáltatásba felvenni kívánt [virtuális gép](../virtual-machines/windows/quick-create-portal.md).
 
-## <a name="log-in-to-azure"></a>Jelentkezzen be az Azure-ba
+## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
-Jelentkezzen be az Azure Portalra a http://portal.azure.com címen.
+Jelentkezzen be az Azure Portalra a http://portal.azure.com webhelyen.
 
 ## <a name="enable-change-tracking-and-inventory"></a>A Change Tracking és az Inventory engedélyezése
 
@@ -66,20 +67,22 @@ Az adatok legalább 30 perc és legfeljebb 6 óra múlva állnak készen az elem
 
 ## <a name="using-change-tracking-in-log-analytics"></a>A Change Tracking megoldás használata a Log Analyticsben
 
-A Change Tracking által létrehozott naplóadatok a Log Analyticsbe lesznek továbbítva. Ha lekérdezések futtatásával szeretne keresni a naplókban, kattintson a **Log Analytics** elemre a **Change Tracking** ablak felső részén.
-A rendszer a változáskövetési adatokat a **ConfigurationChange** típus alatt tárolja. A következő Log Analytics-mintalekérdezés az összes leállított Windows-szolgáltatást adja vissza.
+A Change Tracking által létrehozott naplóadatok a Log Analyticsbe lesznek továbbítva.
+Ha lekérdezések futtatásával szeretne keresni a naplókban, kattintson a **Log Analytics** elemre a **Change Tracking** ablak felső részén.
+A rendszer a változáskövetési adatokat a **ConfigurationChange** típus alatt tárolja.
+A következő Log Analytics-mintalekérdezés az összes leállított Windows-szolgáltatást adja vissza.
 
 ```
 ConfigurationChange
 | where ConfigChangeType == "WindowsServices" and SvcState == "Stopped"
 ```
 
-A naplófájlok a Log Analytics szolgáltatásban való futtatásával és keresésével kapcsolatos további információkért tekintse meg az [Azure Log Analyticsszel](https://docs.loganalytics.io/index) kapcsolatos cikket.
+A naplófájlok a Log Analytics szolgáltatásban való futtatásával és keresésével kapcsolatos további információkért tekintse meg az [Azure Log Analyticsszel](../log-analytics/log-analytics-queries.md) kapcsolatos cikket.
 
 ## <a name="configure-change-tracking"></a>A Change Tracking konfigurálása
 
 A Change Tracking segítségével nyomon követheti a virtuális gép konfigurációjának változásait. Az alábbi lépések bemutatják, hogyan konfigurálhatja a beállításkulcsok és a fájlok követését.
- 
+
 A gyűjteni és követni kívánt fájlok és beállításkulcsok kiválasztásához kattintson a **Beállítások szerkesztése** gombra a **Change Tracking** lap tetején.
 
 > [!NOTE]
@@ -92,7 +95,7 @@ A **Munkaterület konfigurálása** ablakban adja hozzá a követni kívánt Win
 1. A **Windows-beállításjegyzék** lapon kattintson a **Hozzáadás** gombra.
     Megnyílik a **Windows-beállításjegyzék felvétele a Change Tracking megoldásba** ablak.
 
-3. **A Windows beállításjegyzékének hozzáadása a változáskövetéshez** ablakban írja be a követni kívánt kulcs adatait, és kattintson a **Mentés** gombra.
+1. **A Windows beállításjegyzékének hozzáadása a változáskövetéshez** ablakban írja be a követni kívánt kulcs adatait, és kattintson a **Mentés** gombra.
 
 |Tulajdonság  |Leírás  |
 |---------|---------|
@@ -168,6 +171,49 @@ Ha kijelöli valamelyik **WindowsServices** változást, megnyílik a **Változ�
 
 ![Változások részleteinek megtekintése a portálon](./media/automation-tutorial-troubleshoot-changes/change-details.png)
 
+## <a name="configure-alerts"></a>Riasztások konfigurálása
+
+Hasznos, ha követni tudja a végrehajtott módosításokat az Azure Portalon, de még hasznosabbnak bizonyulhat, ha a módosítások (például egy szolgáltatás leállítása) esetén riasztást is küld a rendszer.
+
+Ha riasztást szeretne hozzáadni egy szolgáltatás leállításához, az Azure Portalon lépjen a **Figyelés** felületre. Ezt követően a **Megosztott szolgáltatások** területen válassza a **Riasztások** elemet, majd kattintson az **+ Új riasztási szabály** elemre.
+
+Az **1. Riasztási feltétel megadása** szakaszban kattintson a **+ Cél kiválasztása** gombra. A **Szűrés erőforrástípus alapján** mezőben válassza a **Log Analytics** elemet. Válassza ki a Log Analytics-munkaterületet, és kattintson a **Kész** gombra.
+
+![Erőforrás kiválasztása](./media/automation-tutorial-troubleshoot-changes/select-a-resource.png)
+
+Kattintson a **+ Feltétel hozzáadása** elemre.
+A **Jellogika konfigurálása** területen válassza ki az **Egyéni naplókeresés** elemet a táblázatban. Adja meg az alábbi lekérdezést a Keresési lekérdezés szövegmezőben:
+
+```loganalytics
+ConfigurationChange | where ConfigChangeType == "WindowsServices" and SvcName == "W3SVC" and SvcState == "Stopped" | summarize by Computer
+```
+
+A lekérdezés azon számítógépek nevét adja vissza, amelyeken a W3SVC szolgáltatás le lett állítva a megadott időszakban.
+
+A **Riasztási logika** területen a **Küszöbérték** legyen **0**. Ha elkészült, válassza a **Kész** lehetőséget.
+
+![Jellogika konfigurálása](./media/automation-tutorial-troubleshoot-changes/configure-signal-logic.png)
+
+A **2. Riasztás részleteinek megadása** résznél adja meg a riasztás nevét és leírását. A **Súlyosság** paraméter értéke legyen **Tájékoztató (Sev 2)**, **Figyelmeztető (Sev 1)** vagy **Kritikus (Sev 0)**.
+
+![Riasztás részleteinek megadása](./media/automation-tutorial-troubleshoot-changes/define-alert-details.png)
+
+A **3. Műveleti csoport megadása** szakaszban kattintson az **Új műveletcsoport** gombra. A műveletcsoport műveletek csoportja, amelyeket több riasztáson is alkalmazhat. Ezek a műveletek a teljesség igénye nélkül a következők lehetnek: e-mail-értesítések, runbookok, webhookok stb. A műveletcsoportokkal kapcsolatban további információt a [műveletcsoportok létrehozásáról és kezeléséről](../monitoring-and-diagnostics/monitoring-action-groups.md) szóló cikkben talál.
+
+A **Műveletcsoport neve** mezőben adja meg a riasztás nevét és egy rövid nevet. A rendszer a rövid nevet használja a műveletcsoport teljes neve helyett, amikor értesítéseket küld a csoport használatával.
+
+A **Műveletek** szakaszban adja meg a művelet nevét, például **E-mail küldése a rendszergazdáknak**. A **MŰVELETTÍPUS** területen válassza az **E-mail/SMS/Küldés/Hang** lehetőséget. A **RÉSZLETEK** területen válassza a **Részletek szerkesztése** lehetőséget.
+
+![Műveletcsoport hozzáadása](./media/automation-tutorial-troubleshoot-changes/add-action-group.png)
+
+Az **E-mail/SMS/Küldés/Hang** ablaktáblán adjon meg egy nevet. Jelölje be az **E-mail** jelölőnégyzetet, és adjon meg egy érvényes e-mail-címet. Kattintson az **OK** gombra az **E-mail/SMS/Küldés/Hang**, majd az **OK** gombra a **Műveletcsoport hozzáadása** oldalon.
+
+A riasztási e-mail tárgyának testreszabásához kattintson az **E-mail tárgya** gombra a **Szabály létrehozása** lap **Műveletek testreszabása** területén. Ha végzett, kattintson a **Riasztási szabály létrehozása** gombra. A riasztás figyelmezteti, ha egy frissítés telepítése sikeresen befejeződött, és tájékoztat róla, hogy mely számítógépeket érintett az adott frissítéstelepítés.
+
+Az alábbi képen egy, a W3SVC szolgáltatás leállítása esetén kapott e-mailre látható példa.
+
+![e-mail](./media/automation-tutorial-troubleshoot-changes/email.png)
+
 ## <a name="next-steps"></a>További lépések
 
 Ennek az oktatóanyagnak a segítségével megtanulta a következőket:
@@ -179,6 +225,7 @@ Ennek az oktatóanyagnak a segítségével megtanulta a következőket:
 > * Tevékenységnapló csatlakozásának engedélyezése
 > * Események aktiválása
 > * Változások megtekintése
+> * Riasztások konfigurálása
 
 Ha többet szeretne megtudni a Change Tracking és az Inventory megoldásról, folytassa az áttekintéssel.
 

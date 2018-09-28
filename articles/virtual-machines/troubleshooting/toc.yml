@@ -1,0 +1,120 @@
+items:
+- name: Azure-beli virtuális gépek hibaelhárítása
+  href: index.md
+- name: Foglalási hibák
+  items:
+  - name: Foglalási hibák
+    href: allocation-failure.md
+  - name: Klasszikus üzemi modellek foglalási hibái
+    href: allocation-failure-classic.md
+- name: Rendszerindítási diagnosztika
+  href: boot-diagnostics.md
+- name: RDP
+  items:
+  - name: RDP alaphelyzetbe állítása
+    href: reset-rdp.md
+  - name: RDP hibaelhárítása
+    href: troubleshoot-rdp-connection.md
+  - name: RDP részletes hibaelhárítása
+    href: detailed-troubleshoot-rdp.md
+  - name: Konkrét hibák elhárítása
+    href: troubleshoot-specific-rdp-errors.md
+- name: SSH
+  items:
+  - name: SSH hibaelhárítása
+    href: troubleshoot-ssh-connection.md
+  - name: SSH részletes hibaelhárítása
+    href: detailed-troubleshoot-ssh-connection.md
+- name: Gyakori hibaüzenetek
+  href: error-messages.md
+- name: Windows rendszerű virtuális gépek teljesítményproblémái
+  href: performance-diagnostics.md
+  items:
+  - name: A PerfInsights használata
+    href: how-to-use-perfInsights.md
+  - name: Teljesítménydiagnosztikai bővítmény
+    href: performance-diagnostics-vm-extension.md
+- name: A Windows rendszerű virtuálisgép-ügynök offline telepítése
+  href: install-vm-agent-offline.md
+- name: Virtuális gép ismételt üzembe helyezése
+  items:
+  - name: Linux
+    href: redeploy-to-new-node-linux.md
+  - name: Windows
+    href: redeploy-to-new-node-windows.md
+- name: Virtuális gép jelszavának alaphelyzetbe állítása
+  items:
+  - name: Windows
+    href: reset-local-password-without-agent.md
+  - name: Linux
+    href: reset-password.md
+- name: Hálózati adapter alaphelyzetbe állítása
+  href: reset-network-interface.md
+- name: Virtuális gép újraindítása vagy átméretezése
+  href: restart-resize-error-troubleshooting.md
+- name: A soros konzol használata
+  items:
+  - name: Linux rendszerű virtuális gép
+    href: serial-console-linux.md
+    items:
+    - name: Soros konzolos GRUB/egyfelhasználós mód
+      href: serial-console-grub-single-user-mode.md
+    - name: Soros konzolos NMI/SysRq
+      href: serial-console-nmi-sysrq.md
+  - name: Windows rendszerű virtuális gép
+    href: serial-console-windows.md
+    items:
+    - name: A CMD és a Powershell parancsai
+      href: serial-console-cmd-ps-commands.md
+- name: Tárerőforrások törlésekor jelentkező hibák
+  href: storage-resource-deletion-errors.md
+- name: Virtuális merevlemezekkel rendelkező virtuális gépek váratlan újraindulása
+  href: unexpected-reboots-attached-vhds.md
+- name: A Windows aktiválásával kapcsolatos problémák
+  href: troubleshoot-activation-problems.md
+- name: Alkalmazás-hozzáféréssel kapcsolatos problémák
+  href: troubleshoot-app-connection.md
+- name: Új virtuális gépek üzembe helyezése
+  items:
+  - name: Linux
+    href: troubleshoot-deployment-new-vm-linux.md
+  - name: Windows
+    href: troubleshoot-deployment-new-vm-windows.md
+- name: Üzemelő példányok hibaelhárítása
+  items:
+  - name: Linux
+    href: troubleshoot-deploy-vm-linux.md
+  - name: Windows
+    href: troubleshoot-deploy-vm-windows.md
+- name: Az eszköznevek módosultak
+  href: troubleshoot-device-names-problems.md
+- name: Virtuálisgép-helyreállítási hozzáférés
+  items:
+  - name: Windows
+    items:
+    - name: PowerShell
+      href: troubleshoot-recovery-disks-windows.md
+    - name: Azure Portal
+      href: troubleshoot-recovery-disks-portal-windows.md
+  - name: Linux
+    items:
+    - name: parancssori felület
+      href: troubleshoot-recovery-disks-linux.md
+    - name: Azure Portal
+      href: troubleshoot-recovery-disks-portal-linux.md
+- name: BitLocker-hibák
+  href: troubleshoot-bitlocker-boot-error.md
+- name: Fájlrendszer hibáinak keresése
+  href: troubleshoot-check-disk-boot-error.md
+- name: Szabályozási hibák
+  href: troubleshooting-throttling-errors.md
+- name: Beágyazott virtualizálás használata
+  href: troubleshoot-vm-by-use-nested-virtualization.md
+- name: Rendszer-újraindítás ismertetése
+  href: understand-vm-reboot.md
+ms.openlocfilehash: b00e785c3ae31171ce3189edd9cffe094bc71024
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47410739"

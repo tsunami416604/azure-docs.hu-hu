@@ -8,18 +8,14 @@ ms.devlang: powershell
 ms.topic: sample
 ms.date: 8/13/2018
 ms.author: victorh
-ms.openlocfilehash: b65a5dec63bdc625dda64e101620f56cd6dd7308
-ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
+ms.openlocfilehash: 23f10280cd34927e2e74cb7c5001850bedc6dd35
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2018
-ms.locfileid: "41921025"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46967540"
 ---
 # <a name="create-an-azure-firewall-test-environment"></a>Azure Firewall-tesztkörnyezet létrehozása
-
-[!INCLUDE [firewall-preview-notice](../../../includes/firewall-preview-notice.md)]
-
-Az Azure Firewallról szóló cikkek példái azt feltételezik, hogy már engedélyezve van az Azure Firewall nyilvános előzetes verziója. További információ: [Az Azure Firewall nyilvános előzetes verziójának engedélyezése](../public-preview.md).
 
 Ez a példaszkript létrehoz egy tűzfalat és egy hálózati tesztkörnyezetet. A hálózat egy virtuális hálózattal és három alhálózattal rendelkezik: *AzureFirewallSubnet*, *ServersSubnet*, és *JumpboxSubnet*. A ServersSubnet és a JumpboxSubnet tartalmaz egy-egy 2 magos Windows Servert.
 
@@ -29,7 +25,7 @@ A felhasználó által létrehozott útvonal a ServersSubnet alhálózatról ér
 
 A szkriptet az Azure [Cloud Shellben](https://shell.azure.com/powershell) vagy egy helyi PowerShell-telepítésből futtathatja. 
 
-Ha helyileg futtatja a PowerShellt, ehhez a szkripthez az AzureRM PowerShell-modul 6.4.0-s vagy újabb verziójára lesz szükség. A telepített verzió azonosításához futtassa a következőt: `Get-Module -ListAvailable AzureRM`. 
+Ha helyileg futtatja a PowerShellt, ehhez a szkripthez az AzureRM PowerShell-modul legújabb verziójára lesz szükség. A telepített verzió azonosításához futtassa a következőt: `Get-Module -ListAvailable AzureRM`. 
 
 Ha frissítenie kell, használja a `PowerShellGet` megoldást, amely a Windows 10 és a Windows Server 2016 rendszer részét képezi.
 
@@ -39,12 +35,6 @@ Ha frissítenie kell, használja a `PowerShellGet` megoldást, amely a Windows 1
 További információ: [Az Azure PowerShell telepítése Windows rendszeren a PowerShellGet használatával](https://docs.microsoft.com/en-us/powershell/azure/install-azurerm-ps?view=azurermps-6.4.0)
 
 A webplatformos telepítővel telepített bármely meglévő Azure PowerShell ütközni fog a PowerShellGet-telepítéssel, ezért el kell távolítania.
-
-Továbbá telepítenie kell az AzureRM.Network előzetes verzióját (6.4.0-s verzió). Ha régebbi modullal rendelkezik, futtassa a következőt az eltávolításához: `Uninstall-Module AzureRM.Network -Force`. Majd futtassa ezt:
-
- `Install-Module -Name AzureRM.Network -Repository PSGallery -RequiredVersion 6.4.0-preview -AllowPrerelease -Force`
-
-a 6.4.0-s verzió telepítéséhez
 
 Ne feledje, ha helyileg futtatja a PowerShellt, akkor a `Connect-AzureRmAccount` parancsot is futtatnia kell az Azure-kapcsolat létrehozásához.
 

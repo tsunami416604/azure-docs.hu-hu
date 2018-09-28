@@ -1,6 +1,6 @@
 ---
-title: Ismerkedés az Azure AD iOS |} A Microsoft Docs
-description: Hogyan hozhat létre egy iOS-alkalmazás, amely integrálható az Azure AD-be- és a hívások Azure AD OAuth használatával védett API-k.
+title: A bejelentkezéshez az Azure AD-vel integrálható, valamint védett API-kat meghívó iOS-alkalmazás létrehozása az OAuth 2.0 segítségével | Microsoft Docs
+description: Ismerje meg, hogyan jelentkeztetheti be a felhasználókat és hívhatja meg a Microsoft Graph API-t saját iOS-alkalmazásából.
 services: active-directory
 documentationcenter: ios
 author: CelesteDG
@@ -12,77 +12,86 @@ ms.component: develop
 ms.workload: identity
 ms.tgt_pltfrm: mobile-ios
 ms.devlang: objective-c
-ms.topic: article
-ms.date: 04/30/2018
+ms.topic: quickstart
+ms.date: 09/24/2018
 ms.author: celested
 ms.custom: aaddev
-ms.reviewer: jmprieur
-ms.openlocfilehash: c370a90cf050a88e66ea0417f018429f7815b7c9
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
-ms.translationtype: MT
+ms.reviewer: brandwe
+ms.openlocfilehash: 89f2a4058006687fbe64ec64d98659e38f93f618
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39592237"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46980576"
 ---
-# <a name="azure-ad-ios-getting-started"></a>Ismerkedés az Azure AD iOS
-[!INCLUDE [active-directory-devquickstarts-switcher](../../../includes/active-directory-devquickstarts-switcher.md)]
+# <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-ios-app"></a>Rövid útmutató: Felhasználók bejelentkeztetése és a Microsoft Graph API meghívása iOS-alkalmazásból
 
-Az Azure Active Directory (Azure AD) az Active Directory Authentication Library vagy adal-KÓDTÁRRAL biztosít a védett erőforrásokhoz kell hozzáférniük iOS-ügyfelek esetében. Adal-t leegyszerűsíti a folyamatot, az alkalmazás által használt hozzáférési tokenek beszerzése érdekében. Bemutatása, mennyire egyszerű is, ebben a cikkben azt egy Objective-C feladatlista-alkalmazás létrehozása, amely:
+[!INCLUDE [active-directory-develop-applies-v1-adal](../../../includes/active-directory-develop-applies-v1-adal.md)]
 
-* Lekérdezi hozzáférési jogkivonatokat használatával az Azure AD Graph API hívásakor a [OAuth 2.0 hitelesítési protokoll](https://msdn.microsoft.com/library/azure/dn645545.aspx).
-* A felhasználók számára egy adott aliasú könyvtár keres.
+Az Azure Active Directory (Azure AD) az Active Directory-hitelesítési tár (ADAL) segítségével teszi lehetővé az iOS-ügyfelek számára a védett erőforrásokhoz való hozzáférést. Az ADAL leegyszerűsíti azt a folyamatot, amelyet az alkalmazás a hozzáférési jogkivonatok beszerzéséhez használ. 
 
-A teljes, működő alkalmazást készíthet, kell tennie:
+Ez a rövid útmutató egy olyan Objective C nyelven írt feladatlista-alkalmazás létrehozását mutatja be, amely a következőket végzi el:
 
-1. Regisztrálja az alkalmazást az Azure ad-ben.
-2. Telepítse és konfigurálja az adal-t.
-3. Adal-t használó tokenekhez Azure AD-ből való.
+* Hozzáférési jogkivonatokat kér le az Azure AD Graph API meghívásához az OAuth 2.0 hitelesítési protokoll használatával
+* Megkeres egy adott aliasszal rendelkező felhasználót egy címtárban
 
-Első lépésként [töltse le az alkalmazás skeleton](https://github.com/AzureADQuickStarts/NativeClient-iOS/archive/skeleton.zip) vagy [töltse le az elkészült mintát](https://github.com/AzureADQuickStarts/NativeClient-iOS/archive/complete.zip). Emellett ahol felhasználók létrehozása és regisztrálni egy alkalmazást az Azure AD-bérlővel. Ha még nem rendelkezik egy bérlő [megtudhatja, hogyan tehet szert egy](quickstart-create-new-tenant.md).
+Egy teljes körű, működő alkalmazás létrehozásához az alábbiakat kell tennie:
 
+1. Az alkalmazás regisztrálása az Azure AD-ben.
+1. Az ADAL telepítése és konfigurálása
+1. Jogkivonatok lekérése az Azure AD-ből az ADAL használatával.
+
+## <a name="prerequisites"></a>Előfeltételek
+
+Első lépésként végre kell hajtania az alábbi lépéseket:
+
+* [Töltse le az alkalmazás vázát](https://github.com/AzureADQuickStarts/NativeClient-iOS/archive/skeleton.zip) vagy [a kész mintát](https://github.com/AzureADQuickStarts/NativeClient-iOS/archive/complete.zip).
+* Rendelkeznie kell egy Azure AD-bérlővel, amelyben felhasználókat hozhat létre, és regisztrálhat egy alkalmazást. Ha még nem rendelkezik bérlővel, [itt megtudhatja, hogyan tehet szert egyre](quickstart-create-new-tenant.md).
 
 > [!TIP]
-> Próbálja ki az előzetes verziója az új [fejlesztői portál](https://identity.microsoft.com/Docs/iOS) , amely segít helyezheti üzembe csupán pár perc alatt az Azure AD-val. A fejlesztői portál végigvezeti Önt regisztrálja az alkalmazást, és Azure AD integrálása a kódot. Amikor elkészült, rendelkezni fog egy egyszerű alkalmazás, amely hitelesítheti a felhasználókat a bérlőben, és a egy háttérrendszer, amely fogadni, és -ellenőrzéshez. 
-> 
-> 
+> Próbálja ki a [fejlesztői portált](https://identity.microsoft.com/Docs/iOS), amellyel pár perc alatt üzembe helyezheti az Azure AD-t. A fejlesztői portál végigvezeti az alkalmazás regisztrációjának és az Azure AD a kódba való integrálásának folyamatán. Amikor elkészült, rendelkezni fog egy egyszerű alkalmazással, amely el tudja végezni a felhasználók hitelesítését a bérlőn, valamint egy olyan háttérrendszerrel, amely képes a hozzáférési jogkivonatok fogadására és érvényesítésére.
 
-## <a name="1-determine-what-your-redirect-uri-is-for-ios"></a>1. Határozza meg, mely az átirányítási URI-ja iOS-hez
-Az alkalmazások biztonságos kezdőkönyvtára bizonyos egyszeri bejelentkezési forgatókönyvek, létre kell hoznia egy *átirányítási URI* adott formátumban. Átirányítási URI-t segítségével győződjön meg arról, hogy a jogkivonatok térjen vissza a megfelelő alkalmazáshoz, amely kéri őket.
+## <a name="step-1-determine-what-your-redirect-uri-is-for-ios"></a>1. lépés: Az iOS-hez használt átirányítási URI meghatározása
 
+Ahhoz, hogy alkalmazása bizonyos egyszeri bejelentkezéses forgatókönyvek esetében biztonságosan induljon, létre kell hoznia egy megadott formátumú *átirányítási URI-t*. Az átirányítási URI használatával biztosítható, hogy a jogkivonatokat pontosan az az alkalmazás kapja meg, amely kérte őket.
 
-Az IOS-es átirányítási URI formátuma:
+Az iOS a következő formátumot használja az átirányítási URI-khoz:
 
 ```
 <app-scheme>://<bundle-id>
 ```
 
-* **alkalmazás-séma** – ez regisztrálva van az XCode-projektben. Fontos, hogy más alkalmazások hívhatják meg. Ez alatt az info.plist fájl -> található URL-cím-típusok-azonosító URL-címe >. Ha még nem rendelkezik egy vagy több konfigurálva kell létrehoznia egyet.
-* **Csomagazonosító** – Ez az a csomagazonosítót az XCode projekt beállításaiban "azonosító" alatt található.
+* **app-scheme** (alkalmazásséma) – Az XCode-projektben van regisztrálva, és ezzel intézhetnek hívást Ön felé más alkalmazások. Az alkalmazásséma az **Info.plist > URL-típusok > URL-azonosító** területen található meg. Ha még nem rendelkezik egy vagy több konfigurált alkalmazássémával, hozzon létre egyet.
+* **bundle-id** (csomagazonosító) – Ez az XCode-projekt beállításainak **Identitás** területén található Csomagazonosító.
 
-Ez a rövid útmutató a kód példa: ***msquickstart://com.microsoft.azureactivedirectory.samples.graph.QuickStart***
+A rövid útmutatóban szereplő kódhoz kapcsolódó példa:
 
-## <a name="2-register-the-directorysearcher-application"></a>2. A DirectorySearcher alkalmazás regisztrálása
-Az alkalmazás beállítása a jogkivonatok lekérésére, akkor először kell az Azure AD-bérlő regisztrálásához, és engedélyezi azt az Azure AD Graph API eléréséhez:
+***msquickstart://com.microsoft.azureactivedirectory.samples.graph.QuickStart***
+
+## <a name="step-2-register-the-directorysearcher-application"></a>2. lépés: A DirectorySearcher alkalmazás regisztrálása
+
+Ahhoz, hogy az alkalmazás jogkivonatokat kérhessen le, regisztrálnia kell az Azure AD-bérlőjében, valamint engedélyt kell biztosítani neki az Azure AD Graph API eléréséhez.
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-2. A felső eszköztáron kattintson a fiók. Alatt a **Directory** menüben válassza ki az Active Directory-bérlő kívánja az alkalmazás regisztrálásához.
-3. Kattintson a **minden szolgáltatás** a bal oldali navigációs panelen, és válassza ki a **Azure Active Directory**.
-4. Kattintson a **alkalmazásregisztrációk**, majd válassza ki **Hozzáadás**.
-5. Kövesse az utasításokat követve hozzon létre egy új **natív ügyfélalkalmazás**.
-  * A **neve** az alkalmazás ismerteti a az alkalmazást a végfelhasználók számára.
-  * A **átirányítási URI-t** sémát és karakterlánc kombinációja, amely az Azure AD a jogkivonatválaszok visszaadására használ. Adjon meg egy értéket, amely az alkalmazás és a korábbi átirányítási URI-t adatai alapján.
-6. A regisztráció elvégzése után az Azure AD rendeli hozzá az alkalmazás egy egyedi azonosítót. Ez az érték kell a következő szakaszokban, ezért másolja ki az alkalmazások lapon.
-7. Az a **beállítások** lapon jelölje be **szükséges engedélyek** , majd **Hozzáadás**. Válassza ki **Microsoft Graph** , az API-t, majd adja hozzá a **címtáradatok olvasása** engedélyt a **delegált engedélyek**. Az alkalmazás a felhasználók számára az Azure AD Graph API lekérdezéséhez állít be.
+2. Válassza ki fiókját a felső sávban. A **Címtár** lista alatt válassza ki azt az Active Directory-bérlőt, amelyben az alkalmazást regisztrálni kívánja.
+3. A bal szélső navigációs panelen válassza a **Minden szolgáltatás**, majd az **Azure Active Directory** elemet.
+4. Válassza az **Alkalmazásregisztrációk**, majd a **Hozzáadás** elemet.
+5. Az utasításokat követve hozzon létre egy új**Natív** ügyfélalkalmazást.
+    * A **név** az alkalmazás neve, amely a végfelhasználók számára ad leírást az alkalmazásról.
+    * Az **Átirányítási URI** egy sémából és sztringből álló kombináció, amelyet az Azure AD jogkivonatválaszok visszaadására használ. Adjon meg egy alkalmazás-specifikus és az előző átirányítási URI-n alapuló értéket.
+6. A regisztráció befejeztével az Azure AD egy egyedi alkalmazásazonosítót rendel hozzá az alkalmazáshoz. Erre az értékre szüksége lesz a következő szakaszokban, ezért másolja ki az alkalmazás lapjáról.
+7. A**Beállítások** lapon válassza a **Szükséges engedélyek > Hozzáadás > Microsoft Graph** lehetőséget, majd a **Delegált engedélyek** területen adja hozzá a **Címtáradatok olvasása** engedélyt. Ez az engedély lehetővé teszi az alkalmazás számára a felhasználók lekérdezését az Azure AD Graph API-n keresztül.
 
-## <a name="3-install-and-configure-adal"></a>3. Telepítse és konfigurálja az adal-t
-Most, hogy egy alkalmazás az Azure ad-ben, telepítheti az adal-t és az identitással kapcsolatos kód írása. Az ADAL-kommunikálni az Azure ad-ben meg kell adnia azt az alkalmazás regisztrációs bizonyos információkat.
+## <a name="step-3-install-and-configure-adal"></a>3. lépés: Az ADAL telepítése és konfigurálása
 
-1. Első lépésként adja hozzá adal-t a DirectorySearcher projekthez a CocoaPods segítségével.
+Most, hogy már van egy alkalmazása az Azure AD-ben, telepítheti az ADAL-t, és megírhatja az identitással kapcsolatos kódját. Ahhoz, hogy az ADAL kommunikálhasson az Azure AD-vel, meg kell adnia bizonyos információkat az alkalmazásregisztrációról.
+
+1. Először is adja hozzá az ADAL-t a DirectorySearcher projekthez a CocoaPods segítségével.
 
     ```
     $ vi Podfile
     ```
-2. Adja hozzá a következőt a pod-fájlhoz:
+1. Adja hozzá a következőt a pod-fájlhoz:
 
     ```
     source 'https://github.com/CocoaPods/Specs.git'
@@ -92,7 +101,7 @@ Most, hogy egy alkalmazás az Azure ad-ben, telepítheti az adal-t és az identi
     pod 'ADALiOS'
     ```
 
-3. Most már betöltheti a podfile CocoaPods segítségével. Ez a lépés létrehoz egy új XCode-munkaterületet, amely betölti.
+1. Töltse be a pod-fájlt a CocoaPods segítségével. Ez a lépés létrehoz egy új XCode-munkaterületet, amelyet betölthet.
 
     ```
     $ pod install
@@ -100,15 +109,19 @@ Most, hogy egy alkalmazás az Azure ad-ben, telepítheti az adal-t és az identi
     $ open QuickStart.xcworkspace
     ```
 
-4. A gyorsindítási projekt, nyissa meg a plist-fájlt `settings.plist`. Cserélje le az értékeket az elemek a szakaszban az Azure Portalon megadott értékeknek megfelelően. A kód hivatkozik az ezeket az értékeket, amikor az adal-t használ.
-  * A `tenant` a tartomány az Azure AD-bérlő, például contoso.onmicrosoft.com.
-  * A `clientId` a portálról kimásolt az alkalmazás ügyfél-azonosítója.
-  * A `redirectUri` a portál regisztrált átirányítási URL-címe.
+1. A QuickStart projektben nyissa meg a következő plist fájlt: `settings.plist`.
+1. A szakaszban található elemek értékeit állítsa be úgy, hogy megegyezzenek az Azure Portalon megadott értékekkel. A kód ezekre az értékekre fog hivatkozni az ADAL használatakor.
+    * A `tenant` az Azure AD-bérlő tartománya, pl. contoso.onmicrosoft.com.
+    * A `clientId` az alkalmazás portálról kimásolt ügyfél-azonosítója.
+    * A `redirectUri` a portálon regisztrált átirányítási URI.
 
-## <a name="4-use-adal-to-get-tokens-from-azure-ad"></a>4. Adal-t használó tokenekhez Azure AD-ből való
-Az alapelv ADAL mögött, hogy minden alkalommal, amikor az alkalmazás kell egy hozzáférési jogkivonatot, egyszerűen meghívja a completionBlock `+(void) getToken : `, ADAL végzi. 
+## <a name="step-4-use-adal-to-get-tokens-from-azure-ad"></a>4. lépés: Jogkivonatok lekérése az Azure AD-ből az ADAL használatával
 
-1. Az a `QuickStart` projektben nyissa meg `GraphAPICaller.m` , és keresse meg a `// TODO: getToken for generic Web API flows. Returns a token with no additional parameters provided.` tetejénél található megjegyzést. Ez az, ahol adja át az adal-t a koordináták a CompletionBlock kommunikálni az Azure ad-ben, és mondja el, hogyan jogkivonatok gyorsítótárazása révén.
+Az ADAL mögött álló alapelv az, hogy valahányszor az alkalmazásnak szüksége van egy hozzáférési jogkivonatra, egyszerűen meghívja a `+(void) getToken : ` completionBlockot, a többit pedig az ADAL végzi el.
+
+1. A `QuickStart` projektben a `GraphAPICaller.m` fájl megnyitását követően keresse meg a `// TODO: getToken for generic Web API flows. Returns a token with no additional parameters provided.` megjegyzést a fájl elején.
+
+    Itt adhatja át a CompletionBlock segítségével az ADAL-nak a koordinátákat az Azure AD-vel való kommunikációhoz és a jogkivonatok gyorsítótárazási módjának megadásához.
 
     ```ObjC
     +(void) getToken : (BOOL) clearCache
@@ -149,7 +162,9 @@ Az alapelv ADAL mögött, hogy minden alkalommal, amikor az alkalmazás kell egy
 
     ```
 
-2. Most meg kell használni ezt a jogkivonatot a gráf felhasználók kereséséhez. Keresse meg a `// TODO: implement SearchUsersList` megjegyzést. Ez a módszer egy GET kéréssel teszi az Azure AD Graph API lekérdezéséhez, a felhasználók számára, akiknek UPN kezdődik-e a megadott keresési kifejezés. Az Azure AD Graph API lekérdezéséhez, meg kell adni a-access_token a `Authorization` a kérelem fejlécében. Ez az, ahol ADAL érhető el.
+2. Erre a jogkivonatra lesz szüksége ahhoz, hogy felhasználókat kereshessen a gráfban. Keresse meg a `// TODO: implement SearchUsersList` megjegyzést. Ez a metódus egy GET kérést indít az Azure AD Graph API felé, amellyel lekérdezi azokat a felhasználókat, akiknek az egyszerű felhasználóneve az adott keresési kifejezéssel kezdődik. 
+
+    Az Azure AD Graph API lekérdezéséhez a kérés `Authorization` fejlécében meg kell adni egy access_token (hozzáférési jogkivonat) elemet. Itt jön a képbe az ADAL.
 
     ```ObjC
     +(void) searchUserList:(NSString*)searchString
@@ -220,26 +235,28 @@ Az alapelv ADAL mögött, hogy minden alkalommal, amikor az alkalmazás kell egy
 
     ```
 
+3. Ha az alkalmazás a `getToken(...)` meghívásával jogkivonatot kér, az ADAL megpróbál visszaadni egyet anélkül, hogy a felhasználótól hitelesítő adatokat kérne. Ha az ADAL megállapítása szerint a felhasználónak be kell jelentkeznie ahhoz, hogy jogkivonatot kapjon, akkor megjelenít egy bejelentkezési párbeszédpanelt, begyűjti a felhasználó hitelesítő adatait, majd a sikeres azonosítás után visszaadja a jogkivonatot. Ha az ADAL bármilyen okból nem képes jogkivonatot visszaadni, egy `AdalException` kivételt jelez.
 
-3. Ha az alkalmazás tokent kér meghívásával `getToken(...)`, ADAL próbál egy token vissza a felhasználói hitelesítő adatok kérése nélkül. Ha adal-t, hogy a felhasználónak kell-e jogkivonat beszerzéséhez jelentkezzen be, azt fog megjelenik egy párbeszédpanel a bejelentkezéshez, a felhasználó hitelesítő adatainak gyűjtése, illetve visszalép jogkivonat sikeres hitelesítés után. Ha adal-t nem adott vissza egy token bármilyen okból, jelez egy `AdalException`.
+> [!NOTE]
+> Az `AuthenticationResult` objektum tartalmaz egy `tokenCacheStoreItem` objektumot, amellyel összegyűjtheti az alkalmazás számára szükséges adatokat. A QuickStart alkalmazásban a `tokenCacheStoreItem` objektum határozza meg, hogy a hitelesítés már megtörtént-e.
 
-> [!Note] 
-> A `AuthenticationResult` az objektum tartalmaz egy `tokenCacheStoreItem` objektum, amely a-alkalmazásoknak szükségük lehet, hogy az adatok összegyűjtése használható. A rövid útmutatóban `tokenCacheStoreItem` határozza meg, ha a hitelesítés már megtörtént.
->
->
+## <a name="step-5-build-and-run-the-application"></a>5. lépés: Az alkalmazás fordítása és futtatása
 
-## <a name="5-build-and-run-the-application"></a>5. Az alkalmazás fordítása és futtatása
-Gratulálunk! Most már rendelkezik egy működő iOS-alkalmazást, hitelesítheti a felhasználókat, biztonságos webes API-k hívása az OAuth 2.0 használatával, és alapvető információkat szeretne a felhasználó beolvasása. Ha még nem tette, most már az az idő, az egyes felhasználók a bérlő feltölti. Indítsa el a rövid útmutató alkalmazást, és jelentkezzen be egy ezen felhasználók. Keresse meg a más felhasználók, az egyszerű felhasználónév alapján. Zárja be az alkalmazást, majd indítsa el újra. Figyelje meg, hogy a felhasználói munkamenet továbbra is változatlan marad.
+Gratulálunk! Ezen a ponton rendelkezik egy működő iOS-alkalmazással, amely képes a felhasználók hitelesítésére és biztonságos webes API-k meghívására OAuth 2.0 segítségével, továbbá le tudja kérdezni a felhasználó alapvető információit is.
 
-Adal-t megkönnyíti az alkalmazásba beépíteni az összes alábbi általános identitás-szolgáltatások. Ez gondoskodik dirty munka, például a gyorsítótár kezeléséhez, OAuth protokoll támogatása, a felhasználói felületen keresztül bejelentkezni, a felhasználó jelentő és frissítése lejárt jogkivonatok. Feltétlenül szükséges tudnia, csak egyetlen API hívással `getToken`.
+Ha eddig még nem tette meg, itt az ideje a bérlő néhány felhasználóval történő feltöltésének.
 
-Referenciaként az elkészült mintát (a konfigurációs értékek) nélkül a megadott [GitHub](https://github.com/AzureADQuickStarts/NativeClient-iOS/archive/complete.zip). 
+1. Indítsa el a QuickStart alkalmazást, majd lépjen be az egyik felhasználóval.
+1. Keressen más felhasználókat az egyszerű felhasználónevük alapján.
+1. Zárja be az alkalmazást, majd indítsa el újra. Megfigyelheti, hogy a felhasználói munkamenet nem változott meg.
+
+Az ADAL segítségével ezek az alapvető identitáskezelési funkciók egyszerűen integrálhatók az alkalmazásba. Elvégzi Ön helyett az összes piszkos munkát: a gyorsítótár kezelését, az OAuth protokoll támogatását, a lejárt jogkivonatok frissítését és egy felhasználói felület biztosítását a felhasználói bejelentkezéshez. Valójában egyetlen API-hívás, a `getToken` ismeretére van csak szüksége.
+
+Az elkészült mintát (a konfigurációs értékek nélkül) referenciaként .zip-fájlban is letöltheti a [GitHub](https://github.com/AzureADQuickStarts/NativeClient-iOS/archive/complete.zip)-ról.
 
 ## <a name="next-steps"></a>További lépések
-Most már továbbléphet további forgatókönyvek. Előfordulhat, hogy szeretné próbálni:
 
-* [Biztonságos Node.JS webes API-k az Azure ad-vel](quickstart-v1-nodejs-webapi.md)
-* Ismerje meg, [IOS-es adal-t használó alkalmazások közötti SSO engedélyezése](howto-v1-enable-sso-ios.md)  
+Most már továbbléphet a további forgatókönyvekre. Javasoljuk, hogy a következőkkel folytassa:
 
-[!INCLUDE [active-directory-devquickstarts-additional-resources](../../../includes/active-directory-devquickstarts-additional-resources.md)]
-
+* [Node.Js-alapú webes API biztonságossá tétele az Azure AD-vel](quickstart-v1-nodejs-webapi.md)
+* Megtudhatja, [hogyan engedélyezheti az alkalmazások közötti egyszeri bejelentkezést az ADAL segítségével az iOS rendszeren](howto-v1-enable-sso-ios.md)  

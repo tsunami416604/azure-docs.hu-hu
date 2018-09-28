@@ -1,51 +1,52 @@
 ---
-title: Regisztráljon az Azure Video Indexer, és az első videó feltöltése |} A Microsoft Docs
-description: Ez a témakör bemutatja, hogyan regisztrálhat, és töltse fel az első videó a Video Indexer webhelyen.
+title: 'Oktatóanyag: Regisztrálás a Video Indexerre és az első videó feltöltése'
+titlesuffix: Azure Cognitive Services
+description: Ismerje meg, hogyan regisztrálhat és töltheti fel az első videóját a Video Indexer portállal.
 services: cognitive services
-documentationcenter: ''
 author: juliako
-manager: erikre
+manager: cgronlun
 ms.service: cognitive-services
-ms.topic: article
-ms.date: 09/09/2018
+ms.component: video-indexer
+ms.topic: tutorial
+ms.date: 09/15/2018
 ms.author: juliako
-ms.openlocfilehash: 2bb1e88b4c06a8c6a91485a9a190b26ec2863a45
-ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
-ms.translationtype: MT
+ms.openlocfilehash: f7c86985d12d52ac2dc8b4d2952f048969d3c339
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45540854"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45984474"
 ---
-# <a name="sign-up-and-upload-your-first-video"></a>Regisztráljon, és az első videó feltöltése
+# <a name="tutorial-how-to-sign-up-and-upload-your-first-video"></a>Oktatóanyag: Regisztrálás és az első videó feltöltése
 
-Az első lépéseket megkönnyítő oktatóanyagunkat bemutatja, hogyan jelentkezhet be a Video Indexer webhelyre, és hogyan tölthetők fel az első videó.
+Ez az első lépéseket ismertető oktatóanyag bemutatja, hogyan jelentkezhet be a Video Indexer webhelyre, és hogyan töltheti fel az első videóját.
 
-A Video Indexer-fiók létrehozásakor kiválaszthatja a (, ahol megkapja ingyenes indexelési perc bizonyos számú) egy ingyenes próbafiókot vagy egy fizetős lehetőség (Ha nem korlátozza a kvóta). Az ingyenes próbaverziót a Video Indexer legfeljebb 600 perc ingyenes indexeli a webhely számára biztosít, és akár 2400 percnyi ingyenes indexelő API számára. A fizetős lehetőség a Video Indexer-fiókot, amely létrehozhat [csatlakozik az Azure-előfizetés és az Azure Media Services-fiók](connect-to-azure.md). Perc, valamint az Azure Media Services-fiók kapcsolódó költségek indexelve kell fizetnie. 
+A Video Indexer-fiók létrehozásakor választhat egy ingyenes próbafiókot (ahol egy bizonyos számú ingyenes indexelési percet kap) vagy egy fizetős lehetőséget (ahol nincs kvótakorlát). Az ingyenes próbaverzióval a Video Indexer akár 600 perc ingyenes indexelést biztosít a webhely felhasználói számára, és akár 2400 perc ingyenes indexelést biztosít az API-felhasználóknak. A fizetős lehetőséggel Ön létrehoz egy Video Indexer-fiókot, amely [össze van kapcsolva az Azure-előfizetésével és egy Azure Media Services-fiókkal](connect-to-azure.md). Ön az indexelt perceket és az Azure Media Services-fiókkal kapcsolatos díjakat fizeti ki. 
 
-## <a name="sign-up-for-video-indexer"></a>Iratkozzon fel a Video Indexer
+## <a name="sign-up-for-video-indexer"></a>Regisztrálás a Video Indexerre
 
-Fejlesztés a Video Indexer először keresse meg a a [Video Indexer](https://www.videoindexer.com) webhelyet, és jelentkezzen be.
+A Video Indexerrel való fejlesztés megkezdéséhez nyissa meg a [Video Indexer](https://www.videoindexer.com) webhelyet, és regisztráljon.
 
-## <a name="upload-a-video-using-the-video-indexer-website"></a>A Video Indexer webhelyen videó feltöltése
+## <a name="upload-a-video-using-the-video-indexer-website"></a>Videó feltöltése a Video Indexer webhellyel
 
-1. Jelentkezzen be a [Video Indexer](https://www.videoindexer.ai/) webhelyén.
-2. Feltölt egy videót, nyomja le az **feltöltése** gombként vagy hivatkozásként.
+1. Jelentkezzen be a [Video Indexer](https://www.videoindexer.ai/) webhelyre.
+2. A videó feltöltéséhez kattintson a **Feltöltés** gombra vagy hivatkozásra.
 
     ![Feltöltés](./media/video-indexer-get-started/video-indexer-upload.png)
 
-    A videó feltöltése után a Video Indexer elindítja az indexelés és a videó elemzése.
+    A videó feltöltése után a Video Indexer elkezdi indexelni és elemezni a videót.
 
     ![Feltöltve](./media/video-indexer-get-started/video-indexer-uploaded.png) 
 
-    Video Indexer befejezése után az adatelemzés, a videóra mutató hivatkozást tartalmazó értesítést fog kapni, és rövid leírást a Mi található a videót. Például: azok, akik, témakörök, felismerése.
+    Ha a Video Indexer befejezte az elemzést, kapni fog egy értesítést, benne a videóra mutató hivatkozással és a videóban talált tartalom rövid leírásával. Például: személyek, témák, OCR-ek.
 
 ## <a name="next-steps"></a>További lépések
 
-Most már használhatja a [Video Indexer](video-indexer-view-edit.md) webiste vagy [Video Indexer fejlesztői portál](video-indexer-use-apis.md) az elemzéseket a videó megtekintéséhez. 
+Most már használhatja a [Video Indexer](video-indexer-view-edit.md) webhelyet vagy a [Video Indexer fejlesztői portált](video-indexer-use-apis.md) a videó elemzéseinek megtekintésére. 
 
 ## <a name="see-also"></a>Lásd még
 
-[Video Indexer – áttekintés](video-indexer-overview.md)
+[A Video Indexer áttekintése](video-indexer-overview.md)
 
-[API-k használatának megkezdéséhez](video-indexer-use-apis.md).
+[Ismerkedés az API-kkal](video-indexer-use-apis.md).
 

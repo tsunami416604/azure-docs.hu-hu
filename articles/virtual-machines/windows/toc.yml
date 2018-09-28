@@ -402,80 +402,8 @@ items:
         href: migration-classic-resource-manager-community-tools.md
       - name: GYIK
         href: migration-classic-resource-manager-faq.md
-  - name: Hibaelhárítás
-    items:
-    - name: Távoli asztali kapcsolatok
-      href: troubleshoot-rdp-connection.md
-      items:
-      - name: Részletes lépések
-        href: detailed-troubleshoot-rdp.md
-      - name: Hibaüzenetek
-        href: troubleshoot-specific-rdp-errors.md
-    - name: RDP-jelszó visszaállítása
-      href: reset-rdp.md
-    - name: Helyi jelszó visszaállítása az Azure-ügynök nélkül
-      href: reset-local-password-without-agent.md
-    - name: Rendszer-újraindítás ismertetése
-      href: understand-vm-reboot.md
-    - name: Hálózati adapter alaphelyzetbe állítása
-      href: reset-network-interface.md
-    - name: Rendszerindítási diagnosztika
-      href: boot-diagnostics.md
-    - name: Soros konzol
-      href: serial-console.md
-      items:
-      - name: A CMD és a Powershell parancsai
-        href: serial-console-cmd-ps-commands.md
-    - name: Virtuális gép létrehozása
-      href: troubleshoot-deployment-new-vm.md
-    - name: Üzembe helyezési problémák
-      href: troubleshoot-deploy-vm.md
-    - name: Virtuális gép újraindítása vagy átméretezése
-      href: restart-resize-error-troubleshooting.md
-    - name: Alkalmazás-hozzáférés
-      href: troubleshoot-app-connection.md
-    - name: Aktiválási problémák
-      href: troubleshoot-activation-problems.md
-    - name: Foglalási hibák
-      href: allocation-failure.md
-    - name: Foglalási hibák – klasszikus virtuális gép
-      href: allocation-failure-classic.md
-    - name: Virtuális gép ismételt üzembe helyezése
-      href: redeploy-to-new-node.md
-    - name: Gyakori hibaüzenetek
-      href: error-messages.md
-    - name: Virtuálisgép-helyreállítási hozzáférés
-      items:
-      - name: Azure PowerShell
-        href: troubleshoot-recovery-disks.md
-      - name: Azure Portal
-        href: troubleshoot-recovery-disks-portal.md
-    - name: A PerfInsights használata
-      href: how-to-use-perfInsights.md
-    - name: Teljesítménydiagnosztikai virtuálisgép-bővítmény
-      href: performance-diagnostics-vm-extension.md
-    - name: Azure-beli virtuális gépek teljesítménydiagnosztikája
-      href: performance-diagnostics.md
-    - name: Beágyazott virtualizálás használata
-      href: troubleshoot-vm-by-use-nested-virtualization.md
-    - name: A virtuálisgép-ügynök telepítése kapcsolat nélküli módban
-      href: install-vm-agent-offline.md
-    - name: Csatlakoztatott virtuális merevlemezek hibaelhárítása
-      items:
-      - name: Tárolási erőforrások törlési hibái
-        href: storage-resource-deletion-errors.md
-      - name: Virtuális merevlemezekkel rendelkező virtuális gépek váratlan újraindulása
-        href: unexpected-reboots-attached-vhds.md
-    - name: Szabályozási hibák
-      href: troubleshooting-throttling-errors.md
-    - name: Rendszerindítási hibák elhárítása
-      items:
-      - name: BitLocker-hibák
-        href: troubleshoot-bitlocker-boot-error.md
-      - name: Fájlrendszer hibáinak keresése
-        href: troubleshoot-check-disk-boot-error.md
-      - name: Gyakori kék képernyős hibák
-        href: troubleshoot-common-blue-screen-error.md
+- name: Hibaelhárítás
+  href: ../troubleshooting/index.md
 - name: Referencia
   items:
   - name: Azure CLI
@@ -514,9 +442,9 @@ items:
     href: https://azure.microsoft.com/documentation/videos/index/?services=virtual-machines
   - name: GYIK
     href: faq.md
-ms.openlocfilehash: aca65942e3d0349c817e0f1132ec823f739f0377
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: a991b7edc35256823a45b8ad65f9aa99eb7477c9
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47161508"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47408470"

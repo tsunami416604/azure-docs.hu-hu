@@ -1,27 +1,22 @@
 ---
-title: Oktatóanyag – Az Azure Firewall naplóinak monitorozása
-description: Eben az oktatóanyagban megismerheti az Azure Firewall naplóinak engedélyezését és kezelését.
+title: Oktatóanyag – Az Azure Firewall naplóinak és metrikáinak monitorozása
+description: Eben az oktatóanyagban megismerheti az Azure Firewall naplóinak és metrikáinak engedélyezését és kezelését.
 services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: tutorial
-ms.workload: infrastructure-services
-ms.date: 7/11/2018
+ms.date: 9/24/2018
 ms.author: victorh
-ms.openlocfilehash: a4922fda80b957138a9929090f9d3c349348185d
-ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
+ms.openlocfilehash: 1940fb210481dc75fe48d110776185e90cb3e42f
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38991905"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46991045"
 ---
-# <a name="tutorial-monitor-azure-firewall-logs"></a>Oktatóanyag: Az Azure Firewall naplóinak monitorozása
+# <a name="tutorial-monitor-azure-firewall-logs-and-metrics"></a>Oktatóanyag: Az Azure Firewall naplóinak és metrikáinak monitorozása
 
-[!INCLUDE [firewall-preview-notice](../../includes/firewall-preview-notice.md)]
-
-Az Azure Firewallról szóló cikkek példái azt feltételezik, hogy már engedélyezve van az Azure Firewall nyilvános előzetes verziója. További információ: [Az Azure Firewall nyilvános előzetes verziójának engedélyezése](public-preview.md).
-
-Az Azure Firewall tűzfalnaplókkal monitorozható. Az Azure Firewall-erőforrásokon végzett műveletek tevékenységnaplókkal is naplózhatók.
+Az Azure Firewall tűzfalnaplókkal monitorozható. Az Azure Firewall-erőforrásokon végzett műveletek tevékenységnaplókkal is naplózhatók. A metrikákkal teljesítményszámlálókat tekinthet meg a portálon. 
 
 Ezen naplók egy része a portálról érhető el. A naplók elküldhetők a [Log Analytics](../log-analytics/log-analytics-azure-networking-analytics.md), Storage és Event Hubs szolgáltatásokba, és elemezhetők a Log Analyticsben vagy más eszközökben, például az Excelben vagy a Power BI-ban.
 
@@ -32,69 +27,12 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > * Naplózás engedélyezése a PowerShell-lel
 > * A tevékenységnapló megtekintése és elemzése
 > * A hálózati szabályok és alkalmazásszabályok naplóinak megtekintése és elemzése
+> * Metrikák megtekintése
 
-## <a name="diagnostic-logs"></a>Diagnosztikai naplók
+## <a name="prerequisites"></a>Előfeltételek
 
- Az Azure Firewallhoz az alábbi diagnosztikai naplók érhetők el:
+Az oktatóanyag elkezdése előtt olvassa el az [Azure Firewall naplói és metrikáit](logs-and-metrics.md) ismertető cikket az Azure Firewallhoz elérhető diagnosztikai naplók és metrikák áttekintéséhez.
 
-* **Alkalmazásszabályok naplója**
-
-   Az alkalmazásszabályok naplóját a rendszer egy tárfiókba menti, az Event Hubsba streameli és/vagy a Log Analyticsbe küldi, ha ezt minden Azure Firewall-tűzfal esetében engedélyezte. Minden új kapcsolat, amely megegyezik egy konfigurált alkalmazásszabállyal, az elfogadott/letiltott kapcsolatra vonatkozó naplóbejegyzést eredményez. Az adatokat a rendszer JSON formátumban naplózza, az alábbi példához látható módon:
-
-   ```
-   Category: access logs are either application or network rule logs.
-   Time: log timestamp.
-   Properties: currently contains the full message. 
-   note: this field will be parsed to specific fields in the future, while maintaining backward compatibility with the existing properties field.
-   ```
-
-   ```json
-   {
-    "category": "AzureFirewallApplicationRule",
-    "time": "2018-04-16T23:45:04.8295030Z",
-    "resourceId": "/SUBSCRIPTIONS/{subscriptionId}/RESOURCEGROUPS/{resourceGroupName}/PROVIDERS/MICROSOFT.NETWORK/AZUREFIREWALLS/{resourceName}",
-    "operationName": "AzureFirewallApplicationRuleLog",
-    "properties": {
-        "msg": "HTTPS request from 10.1.0.5:55640 to mydestination.com:443. Action: Allow. Rule Collection: collection1000. Rule: rule1002"
-    }
-   }
-   ```
-
-* **Hálózati szabályok naplója**
-
-   A hálózati szabályok naplóját a rendszer egy tárfiókba menti, az Event Hubsba streameli és/vagy a Log Analyticsbe küldi, ha ezt minden Azure Firewall-tűzfal esetében engedélyezte. Minden új kapcsolat, amely megegyezik egy konfigurált hálózati szabállyal, az elfogadott/letiltott kapcsolatra vonatkozó naplót eredményez. Az adatokat a rendszer JSON formátumban naplózza, az alábbi példához látható módon:
-
-   ```
-   Category: access logs are either application or network rule logs.
-   Time: log timestamp.
-   Properties: currently contains the full message. 
-   note: this field will be parsed to specific fields in the future, while maintaining backward compatibility with the existing properties field.
-   ```
-
-   ```json
-  {
-    "category": "AzureFirewallNetworkRule",
-    "time": "2018-06-14T23:44:11.0590400Z",
-    "resourceId": "/SUBSCRIPTIONS/{subscriptionId}/RESOURCEGROUPS/{resourceGroupName}/PROVIDERS/MICROSOFT.NETWORK/AZUREFIREWALLS/{resourceName}",
-    "operationName": "AzureFirewallNetworkRuleLog",
-    "properties": {
-        "msg": "TCP request from 111.35.136.173:12518 to 13.78.143.217:2323. Action: Deny"
-    }
-   }
-
-   ```
-
-A naplók tárolásához három lehetőség közül választhat:
-
-* **Storage-fiók**: A Storage-fiókok akkor a legmegfelelőbbek a naplók tárolására, ha a naplókat hosszabb ideig tárolják, és szükség esetén áttekintik őket.
-* **Event Hubs-eseményközpont**: Az eseményközpontok ideális megoldások egyéb biztonsági információkkal és eseménykezelési (SEIM) eszközökkel való integrációhoz, amelyekkel az erőforrásokra vonatkozó riasztásokat kaphat.
-* **Log Analytics**: A Log Analytics a legmegfelelőbb az alkalmazás általános valós idejű monitorozásához vagy trendek megtekintéséhez.
-
-## <a name="activity-logs"></a>Tevékenységnaplók
-
-   A tevékenységnaplók bejegyzéseit alapértelmezés szerint gyűjti a rendszer, ezeket az Azure Portalon tekintheti meg.
-
-   Az [Azure-tevékenységnaplók](../azure-resource-manager/resource-group-audit.md) (korábban műveleti naplók és auditnaplók) használatával megtekintheti az Azure-előfizetésére elküldött összes műveletet.
 
 ## <a name="enable-diagnostic-logging-through-the-azure-portal"></a>Diagnosztikai naplózás engedélyezése az Azure Portalon
 
@@ -105,8 +43,8 @@ A diagnosztikai naplózás bekapcsolása után eltarthat néhány percig, amíg 
 
    Az Azure Firewallhoz két szolgáltatásspecifikus napló érhető el:
 
-   * Alkalmazásszabályok naplója
-   * Hálózati szabályok naplója
+   * AzureFirewallApplicationRule
+   * AzureFirewallNetworkRule
 
 3. Az adatok gyűjtésének elkezdéséhez kattintson a **Diagnosztika bekapcsolása** elemre.
 4. A **Diagnosztikai beállítások** lap megadja a diagnosztikai naplók beállításait. 
@@ -163,6 +101,8 @@ A Storage-fiókjához is csatlakozhat, és lekérheti a hozzáférés- és telje
 > [!TIP]
 > Ha ismeri a Visual Studiót, illetve C#-állandók és -változók módosításának alapfogalmait, használja a GitHubról elérhető [naplókonvertáló eszközöket](https://github.com/Azure-Samples/networking-dotnet-log-converter).
 
+## <a name="view-metrics"></a>Metrikák megtekintése
+Nyisson meg egy Azure Firewallt, és a **Monitorozás** területen kattintson a **Metrikák** elemre. Az elérhető értékeket a **METRIKÁK** legördülő listában találja.
 
 ## <a name="next-steps"></a>További lépések
 

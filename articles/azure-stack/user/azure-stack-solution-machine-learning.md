@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 09/24/2018
+ms.date: 09/26/2018
 ms.author: mabrigg
 ms.reviewer: Anjay.Ajodha
-ms.openlocfilehash: 30dbdff584f1bea955072e96a5e0f03cfe4c92c1
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: c195f2ee24b61a57c098d5214a37f65e80845074
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46963730"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47410204"
 ---
 # <a name="tutorial-create-an-edge-machine-learning-solution-with-azure-and-azure-stack"></a>Oktatóanyag: Hozzon létre egy gépi tanulási megoldásokat az Azure és az Azure Stack megoldás
 
@@ -71,7 +71,7 @@ Az Azure és az Azure Stack előzetes ismeretek megadása kötelező. További a
 
  -  [Az Azure Stack főbb fogalmak](https://docs.microsoft.com/azure/azure-stack/azure-stack-key-features)
 
- -  [Az Azure Stack hibrid CI/CD a megoldási útmutató](/azure-stack-solution-pipeline.md)
+ -  [Az Azure Stack hibrid CI/CD a megoldási útmutató](/azure/azure-stack/user/azure-stack-solution-pipeline)
 
 **Azure**
 
