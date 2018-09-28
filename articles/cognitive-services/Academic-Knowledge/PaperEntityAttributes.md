@@ -25,7 +25,7 @@ Name (Név)    |Leírás                                        |Típus       | 
 ------- | ------------------------------------------------- | --------- | ----------------------------
 Azonosító      |Entitásazonosító                                          |Int64      |Egyenlő
 Ti      |A tanulmány címe                                        |Sztring     |Egyenlő,<br/>StartsWith
-L       |A tanulmány nyelvi kód kötőjellel elválasztva "\@@@"            |Sztring     |Egyenlő
+L       |A tanulmány nyelvi kód kötőjellel elválasztva "\@@@\"            |Sztring     |Egyenlő
 I       |A tanulmány év                                         |Int32      |Egyenlő,<br/>IsBetween
 D       |A tanulmány dátuma                                         |Dátum       |Egyenlő,<br/>IsBetween
 Másolat      |Idézetet száma                                     |Int32      |nincs  
