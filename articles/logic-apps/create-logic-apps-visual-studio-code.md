@@ -9,19 +9,19 @@ ms.author: estfan
 ms.topic: article
 ms.reviewer: klam, deli, LADocs
 ms.suite: integration
-ms.date: 09/24/2018
-ms.openlocfilehash: fd92b093b70dba2df3ec645b3ecb77233d3ebd5c
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.date: 09/26/2018
+ms.openlocfilehash: 36e8161eb8be16b75d843a2b7a65fc3dd70d9c02
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46958356"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47405288"
 ---
 # <a name="create-and-manage-automated-logic-app-workflows---visual-studio-code"></a>Létrehozása és kezelése, automatikus logic app-munkafolyamatok – Visual Studio Code
 
 A [Azure Logic Apps](../logic-apps/logic-apps-overview.md) és a Visual Studio Code-ban hozhat létre és kezelheti a logic apps, amelyek segítségével automatizálhatja a feladatokat, a munkafolyamatok és folyamatok, alkalmazások, adatok, rendszerek és szolgáltatások integrálásához a különböző szervezetek és vállalatok számára. Ez a cikk bemutatja, hogyan hozhat létre, és szerkessze a logikai alkalmazás munkafolyamat-definíciókhoz használatához a kódalapú élmény. Emellett használhatja a már üzembe helyezte a logic apps <a href="https://docs.microsoft.com/azure/guides/developer/azure-developer-guide" target="_blank">Azure</a> a felhőben. 
 
-Bár az ugyanezen feladatokat is végezhet a <a href="https://portal.azure.com" target="_blank">az Azure portal</a> és a Visual Studióban, megkönnyítse az első lépéseket a Visual Studio Code Ha szeretne közvetlenül a kódot. Például akkor is is letiltása, engedélyezése, törlése és a frissítés már létrehozott logic apps.
+Bár az ugyanezen feladatokat is végezhet a <a href="https://portal.azure.com" target="_blank">az Azure portal</a> és a Visual Studióban, megkönnyítse az első lépéseket a Visual Studio Code Ha szeretne közvetlenül a kódot. Például akkor is is letiltása, engedélyezése, törlése és a frissítés már létrehozott logic apps. Ezenkívül használhatja a logic apps és az integrációs fiókok bármely fejlesztői platform, amelyen futtatja a Visual Studio Code, például a Linux, Windows és Mac rendszerre.
 
 Ebben a cikkben az ugyanolyan logikai alkalmazást hozhat létre a [gyors útmutató: a logikai alkalmazás létrehozása az Azure Portalon](../logic-apps/quickstart-create-first-logic-app-workflow.md), amely több összpontosít az alapvető fogalmait. A logikai alkalmazás a Visual Studio Code-példához hasonlóan néz ki:
 
@@ -43,7 +43,7 @@ Mielőtt elkezdené, győződjön meg arról, hogy rendelkezik a következőkkel
 
   * Azure Logic Apps Visual Studio Code-bővítmény
 
-    Telepítheti a bővítményt a Visual Studio Code belül. 
+    Telepítheti a bővítményt a a [Visual Studio-piactér](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-logicapps) vagy közvetlenül a Visual Studio Code belül. 
     Ellenőrizze, hogy a Visual Studio Code telepítése után újra. 
 
     ![Keresse meg a "Visual Studio Code-bővítmény az Azure Logic Apps"](./media/create-logic-apps-visual-studio-code/find-install-logic-apps-extension.png)
@@ -52,7 +52,7 @@ Mielőtt elkezdené, győződjön meg arról, hogy rendelkezik a következőkkel
 
     ![Kiterjesztés telepítése](./media/create-logic-apps-visual-studio-code/installed-extension.png)
 
-    További információkért lásd: <a href="https://code.visualstudio.com/docs/editor/extension-gallery" target="_blank">bővítmény Marketplace</a>. 
+    További információkért lásd: <a href="https://code.visualstudio.com/docs/editor/extension-gallery" target="_blank">bővítmény Marketplace</a>. Is megtekintheti, és küldje el ezt a bővítményt nyílt forráskódú verzió hozzájárulások meglátogatják a [Azure Logic Apps-bővítmény a Visual Studio Code a Githubon](https://github.com/Microsoft/vscode-azurelogicapps). 
 
 <a name="sign-in-azure"></a>
 

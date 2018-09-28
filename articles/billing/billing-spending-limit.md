@@ -14,18 +14,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/15/2018
 ms.author: cwatson
-ms.openlocfilehash: 20b664e8a194c394f90b1d060dbd081fc1507528
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: 614102d65407485d31963afa9185400938a7d95b
+ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47395610"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47423085"
 ---
 # <a name="understand-azure-spending-limit-and-how-to-remove-it"></a>Tudnivalók az Azure-költségkeretről és annak eltávolításáról
 
 A kreditösszeg erejéig kiadásait elkerülése érdekében létezik költségkeret az Azure-ban. A próbaverzióra vagy a több hónapon átívelő krediteket tartalmazó ajánlatok regisztráló új ügyfelek a költségkeretet, alapértelmezés szerint engedélyezve van. A költségkeret 0 USD. Nem lehet módosítani. A költségkeret nem érhető el az olyan előfizetéstípusokhoz, mint a használatalapú fizetés és a kötelezettségvállalásos csomagok. Tekintse meg a [teljes listája megtalálható az Azure és a költségkeret elérhetősége](https://azure.microsoft.com/support/legal/offer-details/).
-
-**Elszámolási értesítések keres?** Lásd: [Azure-előfizetések számlázási vagy -kreditemet riasztásokat állíthat be](billing-set-up-alerts.md).
 
 ## <a name="what-happens-when-i-reach-the-spending-limit"></a>Mi történik a költségkeret elérése esetén?
 
@@ -78,7 +76,7 @@ Ez a funkció csak a költségkeret határozatlan időre el lett távolítva ese
 
 ### <a name="how-do-i-set-a-custom-spending-limit"></a>Hogyan állíthatok be egyéni költségkeret?
 
-Nem kell, hogy egyéni korlátok költségek még ma. Azonban, hogy honlapunkon iratkozhat [vezérlő számlázási figyelmeztetéseket használja a költségek](billing-set-up-alerts.md).
+Egyéni költségkeretek nem érhetők el.
 
 ### <a name="does-the-spending-limit-prevent-all-charges-from-azure"></a>Akadályozza meg a költségkeretet minden költséget az Azure-ból?
 

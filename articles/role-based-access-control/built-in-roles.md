@@ -11,16 +11,16 @@ ms.devlang: ''
 ms.topic: reference
 ms.tgt_pltfrm: ''
 ms.workload: identity
-ms.date: 09/15/2018
+ms.date: 09/27/2018
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro
-ms.openlocfilehash: 0b7933df1e9f250430800b5b7deba06239cb6fd1
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: 6fe9a106975a03fabc9d674ede694e683dc3cd94
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45736676"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47410272"
 ---
 # <a name="built-in-roles-for-azure-resources"></a>Az Azure-erőforrások beépített szerepkörök
 [Szerepköralapú hozzáférés-vezérlés (RBAC)](overview.md) rendelkezik, amelyeket hozzárendelhet a felhasználók, csoportok és az egyszerű szolgáltatások számos beépített szerepkör-definíciók. Szerepkör-hozzárendelések módon az Azure-erőforrások elérését Ön szabályozza. Ha a beépített szerepkörök nem felelnek meg a cég vagy intézmény igényeinek, saját [egyéni szerepköröket](custom-roles.md) is létrehozhat.
@@ -63,8 +63,11 @@ A következő táblázat a beépített szerepkörök rövid leírása. A szerepk
 | [Hagyományos Tárfiók-közreműködő](#classic-storage-account-contributor) | Lehetővé teszi a hagyományos tárfiókok kezelését, de ezekhez nem biztosít hozzáférést. |
 | [Hagyományos tároló fiók fő operátora – szolgáltatási szerepkör](#classic-storage-account-key-operator-service-role) | A hagyományos tárfiók kulcsának operátorai jogosultak a hagyományos tárfiókokhoz tartozó kulcsok listázására és újragenerálására |
 | [Virtuális gépek hagyományos Közreműködője](#classic-virtual-machine-contributor) | Lehetővé teszi a hagyományos virtuális gépek kezelését, de ezekhez nem biztosít hozzáférést, és nem teszi lehetővé a virtuális gépekhez hozzárendelt virtuális hálózatok és tárfiókok elérését sem. |
+| [A cognitive Services-közreműködő](#cognitive-services-contributor) | Lehetővé teszi, hogy létrehozása, olvasása, frissítése, törlése és a Cognitive Services, kulcsok kezelése. |
 | [A cognitive Services-felhasználó](#cognitive-services-user) | Lehetővé teszi, hogy Ön elolvassa és a Cognitive Services, kulcsok listázását. |
 | [A cosmos DB-fiók olvasói szerepköre](#cosmos-db-account-reader-role) | Olvashatja az Azure Cosmos DB-fiókja adatait. Lásd: [DocumentDB-Fiókközreműködő](#documentdb-account-contributor) kezeléséhez az Azure Cosmos DB-fiókokhoz. |
+| [A Cost Management Közreműködője](#cost-management-contributor) | Költségek megtekintheti és kezelheti a költség-konfiguráció (pl. költségvetéseket, export) |
+| [A Cost Management olvasó](#cost-management-reader) | Költségadatok és a konfiguráció (pl. költségvetéseket, export) |
 | [Data Box Közreműködője](#data-box-contributor) | Kezelheti a Data Box szolgáltatás található minden elemet kivételével másoknak való hozzáférés megadását teszi lehetővé. |
 | [Data Box-olvasó](#data-box-reader) | Kezelheti a Data Box szolgáltatás kivéve a rendelés létrehozása vagy szerkesztése a rendelés részleteit, és a másoknak való hozzáférés megadását teszi lehetővé. |
 | [Data Factory Közreműködője](#data-factory-contributor) | Lehetővé teszi az adat-előállítók kezelését, az azokhoz való hozzáférés nélkül. |
@@ -73,6 +76,7 @@ A következő táblázat a beépített szerepkörök rövid leírása. A szerepk
 | [DevTest Labs-felhasználó](#devtest-labs-user) | Lehetővé teszi az Azure DevTest Labs virtuális gépeinek csatlakoztatását, indítását, újraindítását és leállítását. |
 | [DNS-zóna Közreműködője](#dns-zone-contributor) | Lehetővé teszi az Azure DNS-beli DNS-zónák és rekordkészletek kezelését, de nem teszi lehetővé az azokhoz hozzáférő felhasználók felügyeletét. |
 | [DocumentDB-Fiókközreműködő](#documentdb-account-contributor) | Kezelheti az Azure Cosmos DB-fiókokhoz. Az Azure Cosmos DB DocumentDB nevén. |
+| [HDInsight Domain Services-közreműködő](#hdinsight-domain-services-contributor) | Olvashatja, létrehozása, módosítása és törlése a tartományi szolgáltatások kapcsolódó műveletek HDInsight vállalati biztonsági csomag szükséges |
 | [Intelligens rendszerek Fiókközreműködője](#intelligent-systems-account-contributor) | Lehetővé teszi az intelligens rendszerek fiókjainak kezelését, az azokhoz való hozzáférés nélkül. |
 | [Key Vault-közreműködő](#key-vault-contributor) | Lehetővé teszi a kulcstartók kezelését, de ezekhez nem biztosít hozzáférést. |
 | [Lab Creator](#lab-creator) | Felügyelt tesztkörnyezetek az Azure Lab-fiókokban való létrehozását, kezelését és törlését teszi lehetővé. |
@@ -91,6 +95,7 @@ A következő táblázat a beépített szerepkörök rövid leírása. A szerepk
 | [Olvasó figyelése](#monitoring-reader) | Olvashatja az összes figyelési adatot (metrikákat, naplókat, stb.). Lásd még: [szerepkörök, engedélyek és biztonság az Azure Monitor használatának első lépései](../monitoring-and-diagnostics/monitoring-roles-permissions-security.md#built-in-monitoring-roles). |
 | [Hálózati közreműködő](#network-contributor) | Lehetővé teszi a hálózatok kezelését, az azokhoz való hozzáférés nélkül. |
 | [Új Relic APM-Fiókközreműködő](#new-relic-apm-account-contributor) | Lehetővé teszi a New Relic Application Performance Management-fiókok és -alkalmazások kezelését, az azokhoz való hozzáférés nélkül. |
+| [PowerApps-rendszergazdája teszt](#powerapps-administrator-test) | Lehetővé teszi az Azure DNS-beli DNS-zónák és rekordkészletek kezelését, de nem teszi lehetővé az azokhoz hozzáférő felhasználók felügyeletét. |
 | [Olvasó és adatelérés](#reader-and-data-access) | Lehetővé teszi minden megtekintését, de nem teszi lehetővé, törölheti, vagy hozzon létre egy storage-fiók vagy az abban található erőforrást. Olvasási/írási hozzáférést a tárfiókok kulcsainak elérésével storage-fiókban tárolt adatokat is engedélyezi. |
 | [Redis gyorsítótárak Közreműködője](#redis-cache-contributor) | Lehetővé teszi a Redis-gyorsítótárak kezelését, az azokhoz való hozzáférés nélkül. |
 | [Erőforrás-szabályzati közreműködő (előzetes verzió)](#resource-policy-contributor-preview) | (Előnézet) Erőforrás-szabályzat létrehozására/módosítására, támogatási jegy létrehozására, valamint erőforrások/hierarchia beolvasására jogosultsággal rendelkező, EA-beli visszatöltött felhasználók. |
@@ -373,6 +378,7 @@ A következő táblázat a beépített szerepkörök rövid leírása. A szerepk
 > | **Műveletek** |  |
 > | Microsoft.Authorization/*/read | Olvasási szerepköröket és szerepkör-hozzárendelések |
 > | Microsoft.Network/virtualNetworks/read | A virtuális hálózati definíció beolvasása |
+> | Microsoft.RecoveryServices/locations/* |  |
 > | Microsoft.RecoveryServices/locations/allocatedStamp/read | A Lefoglalt bélyegző beolvasása egy belső művelet, melyet a szolgáltatás használ |
 > | Microsoft.RecoveryServices/Vaults/backupconfig/vaultconfig/* |  |
 > | Microsoft.RecoveryServices/Vaults/backupFabrics/operationResults/* | A biztonságimásolat-kezelési művelet eredmények kezelése |
@@ -393,14 +399,13 @@ A következő táblázat a beépített szerepkörök rövid leírása. A szerepk
 > | Microsoft.RecoveryServices/Vaults/monitoringAlerts/read | Lekéri a riasztások a Recovery services-tárolót. |
 > | Microsoft.RecoveryServices/Vaults/monitoringConfigurations/* |  |
 > | Microsoft.RecoveryServices/Vaults/read | A tároló Get művelet lekérdezi egy Azure-erőforrásokra "tároló" típusú objektum |
-> | Microsoft.RecoveryServices/Vaults/refreshContainers/* | Az újonnan létrehozott tárolók beolvasása közben a felderítési műveletet kezelése |
+> | Microsoft.RecoveryServices/Vaults/backupFabrics/refreshContainers/action | A tárolólista |
 > | Microsoft.RecoveryServices/Vaults/registeredIdentities/* | Hozzon létre és a regisztrált felhasználók kezelése |
 > | Microsoft.RecoveryServices/Vaults/storageConfig/* |  |
 > | Microsoft.RecoveryServices/Vaults/usages/* | Hozzon létre, és a Recovery Services-tároló használata kezelheti |
 > | Microsoft.Resources/deployments/* | Erőforráscsoportok üzemelő példányainak elindíthatók |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Beolvassa vagy listázza az erőforráscsoportokat. |
 > | Microsoft.Storage/storageAccounts/read | A tárfiókok listájának vagy a megadott tárfiók tulajdonságainak lekérése. |
-> | Microsoft.RecoveryServices/locations/* |  |
 > | Microsoft.Support/* | Hozzon létre, és a támogatási jegyek kezelése |
 
 ## <a name="backup-operator"></a>Biztonsági mentési operátor
@@ -506,9 +511,10 @@ A következő táblázat a beépített szerepkörök rövid leírása. A szerepk
 > | **Műveletek** |  |
 > | Microsoft.Authorization/*/read | Olvasási szerepköröket és szerepkör-hozzárendelések |
 > | Microsoft.Billing/*/read | Olvassa el a számlázási adatokat |
-> | Microsoft.Consumption/*/read |  |
 > | Microsoft.Commerce/*/read |  |
+> | Microsoft.Consumption/*/read |  |
 > | Microsoft.Management/managementGroups/read | A hitelesített felhasználó felügyeleti csoportok listája. |
+> | Microsoft.CostManagement/*/read |  |
 > | Microsoft.Support/* | Hozzon létre, és a támogatási jegyek kezelése |
 
 ## <a name="biztalk-contributor"></a>BizTalk közreműködője
@@ -655,6 +661,31 @@ A következő táblázat a beépített szerepkörök rövid leírása. A szerepk
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Beolvassa vagy listázza az erőforráscsoportokat. |
 > | Microsoft.Support/* | Hozzon létre, és a támogatási jegyek kezelése |
 
+## <a name="cognitive-services-contributor"></a>A cognitive Services-közreműködő
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **Leírás** | Lehetővé teszi, hogy létrehozása, olvasása, frissítése, törlése és a Cognitive Services, kulcsok kezelése. |
+> | **Azonosító** | 25fbc0a9-bd7c-42a3-aa1a-3b75d497ee68 |
+> | **Műveletek** |  |
+> | Microsoft.Authorization/*/read | Olvasási szerepköröket és szerepkör-hozzárendelések |
+> | Microsoft.CognitiveServices/* |  |
+> | Microsoft.Features/features/read | Beolvassa az előfizetéshez tartozó szolgáltatásokat. |
+> | Microsoft.Features/providers/features/read | Beolvassa az előfizetés szolgáltatásait az adott erőforrás-szolgáltatón. |
+> | Microsoft.Insights/alertRules/* | Hozzon létre és Insights – riasztási szabályok kezelése |
+> | Microsoft.Insights/diagnosticSettings/* | Hoz létre, a frissítések vagy az Analysis Server diagnosztikai beállításának beolvasása |
+> | Microsoft.Insights/logDefinitions/read | A naplódefiníciók olvasása |
+> | Microsoft.Insights/metricdefinitions/read | A metrikadefiníciók olvasása |
+> | Microsoft.Insights/metrics/read | Metrikák olvasása |
+> | Microsoft.ResourceHealth/availabilityStatuses/read | Beolvassa a megadott hatókörben lévő összes erőforrás rendelkezésre állási állapotát |
+> | Microsoft.Resources/deployments/* | Erőforráscsoportok üzemelő példányainak elindíthatók |
+> | Microsoft.Resources/deployments/operations/read | Beolvassa vagy listázza az üzembe helyezési műveleteket. |
+> | Microsoft.Resources/subscriptions/operationresults/read | Az előfizetési művelet eredményeinek lekérése. |
+> | Microsoft.Resources/subscriptions/read | Beolvassa az előfizetések listáját. |
+> | Microsoft.Resources/subscriptions/resourcegroups/deployments/* |  |
+> | Microsoft.Resources/subscriptions/resourceGroups/read | Beolvassa vagy listázza az erőforráscsoportokat. |
+> | Microsoft.Support/* | Hozzon létre, és a támogatási jegyek kezelése |
+
 ## <a name="cognitive-services-user"></a>A cognitive Services-felhasználó
 > [!div class="mx-tableFixed"]
 > | | |
@@ -691,6 +722,34 @@ A következő táblázat a beépített szerepkörök rövid leírása. A szerepk
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Beolvassa vagy listázza az erőforráscsoportokat. |
 > | Microsoft.Support/* | Hozzon létre, és a támogatási jegyek kezelése |
 
+## <a name="cost-management-contributor"></a>A Cost Management Közreműködője
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **Leírás** | Költségek megtekintheti és kezelheti a költség-konfiguráció (pl. költségvetéseket, export) |
+> | **Azonosító** | 434105ed-43f6-45C7-a02f-909b2ba83430 |
+> | **Műveletek** |  |
+> | Microsoft.Consumption/* |  |
+> | Microsoft.CostManagement/* |  |
+> | Microsoft.Billing/billingPeriods/read | Felsorolja a rendelkezésre álló elszámolási időszakok |
+> | Microsoft.Resources/subscriptions/read | Beolvassa az előfizetések listáját. |
+> | Microsoft.Resources/subscriptions/resourceGroups/read | Beolvassa vagy listázza az erőforráscsoportokat. |
+> | Microsoft.Support/* | Hozzon létre, és a támogatási jegyek kezelése |
+
+## <a name="cost-management-reader"></a>A Cost Management olvasó
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **Leírás** | Költségadatok és a konfiguráció (pl. költségvetéseket, export) |
+> | **Azonosító** | 72fafb9e-0641-4937-9268-a91bfd8191a3 |
+> | **Műveletek** |  |
+> | Microsoft.Consumption/*/read |  |
+> | Microsoft.CostManagement/*/read |  |
+> | Microsoft.Billing/billingPeriods/read | Felsorolja a rendelkezésre álló elszámolási időszakok |
+> | Microsoft.Resources/subscriptions/read | Beolvassa az előfizetések listáját. |
+> | Microsoft.Resources/subscriptions/resourceGroups/read | Beolvassa vagy listázza az erőforráscsoportokat. |
+> | Microsoft.Support/* | Hozzon létre, és a támogatási jegyek kezelése |
+
 ## <a name="data-box-contributor"></a>Data Box Közreműködője
 > [!div class="mx-tableFixed"]
 > | | |
@@ -714,7 +773,8 @@ A következő táblázat a beépített szerepkörök rövid leírása. A szerepk
 > | **Műveletek** |  |
 > | Microsoft.Authorization/*/read | Olvasási szerepköröket és szerepkör-hozzárendelések |
 > | Microsoft.Databox/*/read |  |
-> | Microsoft.Databox/jobs/listsecrets/action | A megrendeléssel kapcsolatos titkosítatlan titkos kulcsok listázása. |
+> | Microsoft.Databox/jobs/listsecrets/action |  |
+> | Microsoft.Databox/jobs/listcredentials/action | A megrendeléssel kapcsolatos titkosítatlan hitelesítő adatok listája. |
 > | Microsoft.Databox/locations/availableSkus/action | Ez a metódus a rendelkezésre álló termékváltozatok listáját adja vissza. |
 > | Microsoft.ResourceHealth/availabilityStatuses/read | Beolvassa a megadott hatókörben lévő összes erőforrás rendelkezésre állási állapotát |
 > | Microsoft.Support/* | Hozzon létre, és a támogatási jegyek kezelése |
@@ -846,6 +906,17 @@ A következő táblázat a beépített szerepkörök rövid leírása. A szerepk
 > | Microsoft.Resources/deployments/* | Erőforráscsoportok üzemelő példányainak elindíthatók |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Beolvassa vagy listázza az erőforráscsoportokat. |
 > | Microsoft.Support/* | Hozzon létre, és a támogatási jegyek kezelése |
+
+## <a name="hdinsight-domain-services-contributor"></a>HDInsight Domain Services-közreműködő
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **Leírás** | Olvashatja, létrehozása, módosítása és törlése a tartományi szolgáltatások kapcsolódó műveletek HDInsight vállalati biztonsági csomag szükséges |
+> | **Azonosító** | 8d8d5a11-05d3-4bda-a417-a08778121c7c |
+> | **Műveletek** |  |
+> | Microsoft.AAD/*/read |  |
+> | Microsoft.AAD/domainServices/*/read |  |
+> | Microsoft.AAD/domainServices/oucontainer/* |  |
 
 ## <a name="intelligent-systems-account-contributor"></a>Intelligens rendszerek fiókközreműködője
 > [!div class="mx-tableFixed"]
@@ -1140,6 +1211,21 @@ A következő táblázat a beépített szerepkörök rövid leírása. A szerepk
 > | Microsoft.Support/* | Hozzon létre, és a támogatási jegyek kezelése |
 > | NewRelic.APM/accounts/* |  |
 
+## <a name="powerapps-administrator-test"></a>PowerApps-rendszergazdája teszt
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **Leírás** | Lehetővé teszi az Azure DNS-beli DNS-zónák és rekordkészletek kezelését, de nem teszi lehetővé az azokhoz hozzáférő felhasználók felügyeletét. |
+> | **Azonosító** | befefa01-2a29-4897-83a8-272ff33ce314 |
+> | **Műveletek** |  |
+> | Microsoft.Authorization/*/read | Olvasási szerepköröket és szerepkör-hozzárendelések |
+> | Microsoft.Insights/alertRules/* | Hozzon létre és Insights – riasztási szabályok kezelése |
+> | Microsoft.Network/dnsZones/* |  |
+> | Microsoft.ResourceHealth/availabilityStatuses/read | Beolvassa a megadott hatókörben lévő összes erőforrás rendelkezésre állási állapotát |
+> | Microsoft.Resources/deployments/* | Erőforráscsoportok üzemelő példányainak elindíthatók |
+> | Microsoft.Resources/subscriptions/resourceGroups/read | Beolvassa vagy listázza az erőforráscsoportokat. |
+> | Microsoft.Support/* | Hozzon létre, és a támogatási jegyek kezelése |
+
 ## <a name="reader-and-data-access"></a>Olvasó és adatelérés
 > [!div class="mx-tableFixed"]
 > | | |
@@ -1425,6 +1511,7 @@ A következő táblázat a beépített szerepkörök rövid leírása. A szerepk
 > | Microsoft.Sql/servers/read | A kiszolgálók vagy lekérdezi a megadott kiszolgáló tulajdonságainak listáját adja vissza. |
 > | Microsoft.Support/* | Hozzon létre, és a támogatási jegyek kezelése |
 > | **notActions** |  |
+> | Microsoft.Sql/managedInstances/databases/vulnerabilityAssessments/* |  |
 > | Microsoft.Sql/servers/databases/auditingPolicies/* | Naplózási házirend nem szerkeszthető. |
 > | Microsoft.Sql/servers/databases/auditingSettings/* | Naplózási beállítások nem szerkeszthetők. |
 > | Microsoft.Sql/servers/databases/auditRecords/read | A blob naplózási rekordok beolvasása |
@@ -1452,6 +1539,7 @@ A következő táblázat a beépített szerepkörök rövid leírása. A szerepk
 > | Microsoft.ResourceHealth/availabilityStatuses/read | Beolvassa a megadott hatókörben lévő összes erőforrás rendelkezésre állási állapotát |
 > | Microsoft.Resources/deployments/* | Erőforráscsoportok üzemelő példányainak elindíthatók |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Beolvassa vagy listázza az erőforráscsoportokat. |
+> | Microsoft.Sql/managedInstances/databases/vulnerabilityAssessments/* |  |
 > | Microsoft.Sql/servers/auditingPolicies/* | Az SQL server naplózási szabályzatok létrehozása és kezelése |
 > | Microsoft.Sql/servers/auditingSettings/* | Hozzon létre, és az SQL-kiszolgáló naplózási beállításainak kezelése |
 > | Microsoft.Sql/servers/databases/auditingPolicies/* | SQL server adatbázis naplózási szabályzatok létrehozása és kezelése |
@@ -1491,6 +1579,7 @@ A következő táblázat a beépített szerepkörök rövid leírása. A szerepk
 > | Microsoft.Sql/servers/* | Hozzon létre és SQL-kiszolgálók kezelése |
 > | Microsoft.Support/* | Hozzon létre, és a támogatási jegyek kezelése |
 > | **notActions** |  |
+> | Microsoft.Sql/managedInstances/databases/vulnerabilityAssessments/* |  |
 > | Microsoft.Sql/servers/auditingPolicies/* | Az SQL server naplózási házirendek nem szerkeszthető. |
 > | Microsoft.Sql/servers/auditingSettings/* | SQL-kiszolgáló naplózási beállításait nem szerkeszthető. |
 > | Microsoft.Sql/servers/databases/auditingPolicies/* | Az SQL server-adatbázis naplózási házirendek nem szerkeszthető. |

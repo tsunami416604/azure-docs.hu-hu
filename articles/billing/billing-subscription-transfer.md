@@ -17,12 +17,12 @@ ms.topic: conceptual
 ms.date: 06/15/2018
 ms.author: cwatson
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 20da1eb7b71c625dc83c52b30020f38992819e95
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: 7e9b5d1a84417cf6e6264211ea6e542ab712f9fe
+ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47395355"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47422600"
 ---
 # <a name="transfer-ownership-of-an-azure-subscription-to-another-account"></a>Azure-előfizetés tulajdonjogának átruházása másik fiókra
 
@@ -82,7 +82,6 @@ A vállalati rendszergazda előfizetések regisztrációs belül is tulajdonjog�
    1. Felügyeleti tanúsítvány, amely a felhasználó-előfizetések erőforrásaihoz való rendszergazdai engedélyeket kap. További információkért lásd: [létrehozása és feltöltése, egy felügyeleti tanúsítvány az Azure-hoz](../cloud-services/cloud-services-certs-create.md)
    1. Hozzáférési kulcsok szolgáltatásokhoz, például tárolási. További információkért lásd: [tudnivalók az Azure storage-fiókok](../storage/common/storage-create-storage-account.md)
    1. Távoli hozzáférési hitelesítő adatok, szolgáltatások, például az Azure Virtual Machines. 
-1. [Ez az előfizetés számlázási figyelmeztetéseket frissítése](billing-set-up-alerts.md) , a [Azure Account Center](https://account.windowsazure.com/Subscriptions). 
 1. Ha dolgozik egy partnerrel, fontolja meg a Partnerazonosítót. Ebben az előfizetésben frissítése. A partnerazonosító Társítását a frissítheti a [az Azure portal](https://portal.azure.com).
 
 <a id="supported"></a>

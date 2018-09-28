@@ -9,12 +9,12 @@ ms.service: machine-learning
 ms.component: core
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 205a4d454be02d64058e3d0fcffda35df5b831a5
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: b6370fd9125c5b14df781b27e028c139175b7589
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46971673"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47405801"
 ---
 # <a name="tune-hyperparameters-for-your-model"></a>Hiperparaméterek a modell finomhangolása
 
@@ -240,7 +240,7 @@ max_concurrent_runs=4
 Ez konfigurálja a hiperparaméter finomhangolása a kísérletben legfeljebb 4 konfigurációk fut egyszerre 20 teljes futtatások használandó.
 
 ## <a name="configure-your-hyperparameter-tuning-experiment"></a>Konfigurálja a hiperparaméter finomhangolása kísérlet
-Konfigurálhatja a hiperparaméter finomhangolása a meghatározott hyperpameter keresési terület, a korai lemondási házirend, az elsődleges metrikákkal és az erőforrás-elosztás alapján a fenti szakaszban kísérlet. Emellett meg kell adnia egy `estimator` , amely a mintavételezett hiperparaméterek hívja. A `estimator` ismerteti a tanítási szkriptet futtatja, az erőforrások száma (egyszeres vagy többszörös-gpu), a feladat és a számítási célnak használatára. Egyidejűségi óta esetében a hiperparaméter finomhangolása kísérlet a rendelkezésre álló erőforrásokon engedi át kell győződjön meg arról, hogy a számítási célnak megadott a `estimator` elegendő erőforrással rendelkezik a kívánt egyidejűségi. (Lásd: [hivatkozás](/how-to-train-ml-models.md) estimators bővebben).
+Konfigurálhatja a hiperparaméter finomhangolása a meghatározott hyperpameter keresési terület, a korai lemondási házirend, az elsődleges metrikákkal és az erőforrás-elosztás alapján a fenti szakaszban kísérlet. Emellett meg kell adnia egy `estimator` , amely a mintavételezett hiperparaméterek hívja. A `estimator` ismerteti a tanítási szkriptet futtatja, az erőforrások száma (egyszeres vagy többszörös-gpu), a feladat és a számítási célnak használatára. Egyidejűségi óta esetében a hiperparaméter finomhangolása kísérlet a rendelkezésre álló erőforrásokon engedi át kell győződjön meg arról, hogy a számítási célnak megadott a `estimator` elegendő erőforrással rendelkezik a kívánt egyidejűségi. (Lásd: [modelleket taníthat be hogyan](how-to-train-ml-models.md) estimators bővebben).
 
 Íme egy példa, hogy hogyan konfigurálhat a hiperparaméter hangolási kísérlet –
 
@@ -314,5 +314,5 @@ Ez a jegyzetfüzet lekérése:
 [!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-for-examples.md)]
 
 ## <a name="next-steps"></a>További lépések
-* [Egy kísérlet nyomon követése](/how-to-track-experiments.md)
-* [A betanított modell üzembe helyezése](/how-to-deploy-and-where.md)
+* [Egy kísérlet nyomon követése](how-to-track-experiments.md)
+* [A betanított modell üzembe helyezése](how-to-deploy-and-where.md)

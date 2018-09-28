@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 09/26/2018
 ms.topic: conceptual
-ms.openlocfilehash: 477ef11a02f67e511396c3efc8f2b331c976c801
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 7007b1406dbcfab3af4700418ac2ce07b9e521c0
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47219974"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47407433"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-locally"></a>A távoli figyelési megoldásgyorsító helyileg üzembe helyezése
 
@@ -42,17 +42,13 @@ A távoli figyelési GitHub forráskódraktárban kell letölteni, konfigurálá
 Töltse le a legújabb verzióját a Java-mikroszolgáltatások megvalósításokhoz, futtassa:
 
 ```cmd/sh
-git clone --recurse-submodules https://github.com/Azure/azure-iot-pcs-remote-monitoring-java.git
-cd azure-iot-pcs-remote-monitoring-java
-git submodule foreach git pull origin master
+git clone https://github.com/Azure/remote-monitoring-services-java.git
 ```
 
 Töltse le a legújabb verzióját a .NET mikroszolgáltatás-megvalósítások, futtassa:
 
 ```cmd\sh
-git clone --recurse-submodules https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet.git
-cd azure-iot-pcs-remote-monitoring-dotnet
-git submodule foreach git pull origin master
+git clone https://github.com/Azure/remote-monitoring-services-dotnet.git
 ```
 
 > [!NOTE]
@@ -66,7 +62,7 @@ Bár ez a cikk bemutatja, hogyan helyileg történő futtatása a mikroszolgált
 
 Ha még nem hozott a szükséges Azure-erőforrásokat, kövesse az alábbi lépéseket:
 
-1. A parancssori környezetben, keresse meg a **azure-iot-pcs-remote-monitoring-dotnet\services\scripts\local\launch** mappájához klónozott másolatának a tárházban.
+1. A parancssori környezetben, keresse meg a **remote-monitoring-services-dotnet\scripts\local\launch** mappájához klónozott másolatának a tárházban.
 
 2. Futtassa a **start.cmd** szkriptet, és kövesse az utasításokat. A parancsfájl kérni fogja, hogy jelentkezzen be az Azure-fiókjával, és indítsa újra a parancsfájlt. A parancsprogram kéri a következő információkat:
     * A megoldás nevét.
@@ -75,11 +71,11 @@ Ha még nem hozott a szükséges Azure-erőforrásokat, kövesse az alábbi lép
 
     A parancsfájl hoz létre, a megoldás nevű erőforráscsoportot az Azure-ban. Ez az erőforráscsoport tartalmazza az Azure-erőforrások a megoldásgyorsító használja.
 
-3. Miután a parancsfájl futása befejeződött, a környezeti változók listáját jeleníti meg. Kövesse a kimenetben menteni ezeket a változókat, hogy a parancs a **azure-iot-pcs-remote-monitoring-dotnet\\szolgáltatások\\parancsfájlok\\helyi\\.env** fájlt.
+3. Miután a parancsfájl futása befejeződött, a környezeti változók listáját jeleníti meg. Kövesse a kimenetben menteni ezeket a változókat, hogy a parancs a **remote-monitoring-services-dotnet\\parancsfájlok\\helyi\\.env** fájlt.
 
 ### <a name="use-existing-azure-resources"></a>A meglévő Azure-erőforrások
 
-Ha már létrehozta a szükséges Azure-erőforrások szerkesztése a környezeti változó definíciókat a **azure-iot-pcs-remote-monitoring-dotnet\\szolgáltatások\\parancsfájlok\\helyi\\.env**  fájlt a kívánt értékekkel. A **.env** fájl tartalmaz részletes információkat, hogy hol található a szükséges értékeket.
+Ha már létrehozta a szükséges Azure-erőforrások szerkesztése a környezeti változó definíciókat a **remote-monitoring-services-dotnet\\parancsfájlok\\helyi\\.env** -fájlt a szükséges értékeket. A **.env** fájl tartalmaz részletes információkat, hogy hol található a szükséges értékeket.
 
 ## <a name="run-the-microservices-in-docker"></a>Futtassa a mikroszolgáltatások a Dockerben
 
@@ -89,7 +85,7 @@ A helyi Docker-tárolókban futó mikroszolgáltatásokat kell az Azure-ban fut�
 docker run --rm -ti library/alpine ping google.com
 ```
 
-A megoldásgyorsító futtatja, lépjen a **azure-iot-pcs-remote-monitoring-dotnet\services\scripts\local** mappát a parancssori környezetben, és futtassa az alábbi parancsot:
+A megoldásgyorsító futtatja, lépjen a **remote-monitoring-services-dotnet\\parancsfájlok\\helyi** mappát a parancssori környezetben, és futtassa az alábbi parancsot:
 
 ```cmd\sh
 docker-compose up

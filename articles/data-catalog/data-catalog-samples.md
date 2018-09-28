@@ -2,18 +2,18 @@
 title: Az Azure Data Catalog fejlesztői minták
 description: Ez a cikk az elérhető fejlesztői minták áttekintést nyújt a Data Catalog REST API-hoz.
 services: data-catalog
-author: spelluru
-ms.author: spelluru
+author: markingmyname
+ms.author: maghan
 ms.assetid: 0dc23edd-04d8-49fc-841e-d132fb109ce7
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 01/18/2018
-ms.openlocfilehash: 98d17e5fc8b2348887d6a9e361a455474d666db4
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: a4f88b63fa91dcec52b86be568ef4c98ee82c277
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43053720"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47404325"
 ---
 # <a name="data-catalog-developer-samples"></a>Data Catalog fejlesztői minták
 Ismerkedés a Data Catalog REST API használatával a Data Catalog-alkalmazások fejlesztéséhez. A Data Catalog REST API egy REST-alapú API, amely a Data Catalog-erőforrásokhoz való regisztrálása, bővítése és kereshetők programozott módon programozás alapú hozzáférést biztosít az.

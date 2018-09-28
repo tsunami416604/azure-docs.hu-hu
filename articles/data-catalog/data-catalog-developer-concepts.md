@@ -2,18 +2,18 @@
 title: Az Azure Data Catalog fejlesztői fogalmak
 description: A fogalmi modellben az Azure Data Catalog, mint a katalógus REST API-n keresztül elérhetővé tett kapcsolatos főbb fogalmakat bemutatása.
 services: data-catalog
-author: spelluru
-ms.author: spelluru
+author: markingmyname
+ms.author: maghan
 ms.assetid: 89de9137-a0a4-40d1-9f8d-625acad31619
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 01/18/2018
-ms.openlocfilehash: 753b4660c8ca47f12aace87a254b93a88db8aaa7
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 97dafe01db4779332a530dc8981b3d6ada8c9df9
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43053476"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47406515"
 ---
 # <a name="azure-data-catalog-developer-concepts"></a>Az Azure Data Catalog fejlesztői fogalmak
 A Microsoft **Azure Data Catalog** egy teljes körűen felügyelt felhőszolgáltatás, amely lehetőségeket kínál az adatforrások felderítését és a közösségi adatforrás-metaadatokat. A fejlesztők a a szolgáltatás a REST API-kon keresztül. A fejlesztők számára, hogy sikeresen integrálása a service-ben megvalósított fogalmak értelmezéséhez fontos **Azure Data Catalog**.
@@ -138,7 +138,7 @@ Jegyzet típusú metaadatokat, amelyek a többi átveheti a katalógusban rendel
 <tr><td></td><td>szakértő</td><td>SecurityPrincipal</td><td></td></tr>
 
 <tr><td>Előzetes verzió ("előzetes verziók")</td><td></td><td></td><td>Az előzetes verzió tartalmazza az adatok az eszköz az első 20 sorok pillanatképet. Előzetes verzió csak bizonyos típusú eszközök (logikus táblában, de nem a mérték) jelentéssel bírnak.</td></tr>
-<tr><td></td><td>előzetes verzióban</td><td>[objektum]</td><td>Egy oszlopot jelölő objektumok tömbje.  Minden objektum rendelkezik egy tulajdonság megfeleltetése a sorhoz adott oszlop értékét tartalmazó oszlop.</td></tr>
+<tr><td></td><td>előzetes verzió</td><td>[objektum]</td><td>Egy oszlopot jelölő objektumok tömbje.  Minden objektum rendelkezik egy tulajdonság megfeleltetése a sorhoz adott oszlop értékét tartalmazó oszlop.</td></tr>
 
 <tr><td>AccessInstruction ("accessInstructions")</td><td></td><td></td><td></td></tr>
 <tr><td></td><td>mimeType</td><td>sztring</td><td>A tartalom mime-típusát.</td></tr>

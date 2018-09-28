@@ -14,14 +14,14 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 11/08/2016
+ms.date: 09/26/2018
 ms.author: sedusch
-ms.openlocfilehash: c6d7b4515546ea51264b094316c5da52dbb321c2
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 9208f2cb207daff2b122550fede48a8dda11d1db
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46957023"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47407926"
 ---
 # <a name="azure-virtual-machines-deployment-for-sap-netweaver"></a>Az SAP NetWeaver számára az Azure virtuális gépek üzembe helyezése
 [767598]:https://launchpad.support.sap.com/#/notes/767598
@@ -1000,6 +1000,10 @@ Ez az ellenőrzés gondoskodik arról, hogy a metrikák jelennek meg az SAP alka
 
 Ha nincs telepítve az Azure Enhanced Monitoring bővítményt, vagy a AzureEnhancedMonitoring szolgáltatás nem fut, a bővítmény konfigurációja nem megfelelő. A bővítmény telepítésével kapcsolatos részletes információkért lásd: [az SAP az Azure figyelési infrastruktúra hibaelhárítási][deployment-guide-5.3].
 
+> [!NOTE]
+> A Azperflib.exe egy összetevő, amely saját célokra nem használhatók. A program egy összetevő, amelyek Azure monitorozási adatok, az SAP gazdagép-ügynök a virtuális géphez kapcsolódó.
+> 
+
 ##### <a name="check-the-output-of-azperflibexe"></a>Ellenőrizze a azperflib.exe kimenete
 Azperflib.exe megjelenítheti az összes Azure teljesítményszámlálók feltöltve az SAP. Gyűjtött teljesítményszámlálók listája alján összegzéseket és az egészségügyi mutató megjelenítése az Azure figyelési állapotát.
 
@@ -1093,6 +1097,10 @@ Ha egyes figyelési adatokat nem kézbesíti a rendszer a teszt leírt aszinkron
 
 Győződjön meg arról, hogy minden állapot-ellenőrzés eredménye **OK**. Ha nem jelennek meg néhány ellenőrzést **OK**, a frissítés parancsmag futtatása leírtak szerint [konfigurálása az Azure Enhanced Monitoring bővítményt az SAP][deployment-guide-4.5]. Várjon 15 percig, majd ismételje meg a leírt ellenőrzések [készültség-ellenőrzés az Azure SAP Enhanced Monitoring] [ deployment-guide-5.1] és [Azure figyelési infrastruktúra konfiguráció-állapotellenőrzés] [deployment-guide-5.2]. Ha az ellenőrzések még néhány vagy minden számláló problémára utalhat, [az SAP az Azure figyelési infrastruktúra hibaelhárítási][deployment-guide-5.3].
 
+> [!Note]
+> Bizonyos esetekben, ahol a standard szintű Azure Managed Disks szolgáltatást figyelmeztetések tapasztalhatnak. Figyelmeztetések helyett a tesztek visszaadó "OK" jelenik meg. Ez a normál és a tervezett esetén a lemez típusát. Lásd még: lásd: [az SAP az Azure figyelési infrastruktúra hibaelhárítása][deployment-guide-5.3]
+> 
+
 ### <a name="fe25a7da-4e4e-4388-8907-8abc2d33cfd8"></a>Az SAP az Azure figyelési infrastruktúra hibaelhárítása
 
 #### <a name="windowslogowindows-azure-performance-counters-do-not-show-up-at-all"></a>![Windows][Logo_Windows] Az Azure teljesítményszámlálók nem minden jelennek meg
@@ -1144,6 +1152,23 @@ A könyvtár \\var\\lib\\waagent\\ nem rendelkezik az Azure Enhanced Monitoring 
 
 ###### <a name="solution"></a>Megoldás
 A bővítmény nincs telepítve. Határozza meg, hogy ez-e a proxyval kapcsolatos probléma (a korábban ismertetett). Indítsa újra a gépet, és futtassa újra a szüksége lehet a `Set-AzureRmVMAEMExtension` konfigurációs parancsfájlt.
+
+##### <a name="the-execution-of-set-azurermvmaemextension-and-test-azurermvmaemextension-show-warning-messages-stating-that-standard-managed-disks-are-not-supported"></a>A Set-AzureRmVMAEMExtension és Test-AzureRmVMAEMExtension végrehajtásának arról, hogy az standard szintű felügyelt lemezek használata nem támogatott figyelmeztető üzenetek megjelenítése
+
+###### <a name="issue"></a>Probléma
+Ha az alábbiakhoz hasonló végrehajtó Set-AzureRmVMAEMExtension és Test-AzureRmVMAEMExtension üzenetek jelennek meg:
+
+<pre><code>
+WARNING: [WARN] Standard Managed Disks are not supported. Extension will be installed but no disk metrics will be available.
+WARNING: [WARN] Standard Managed Disks are not supported. Extension will be installed but no disk metrics will be available.
+WARNING: [WARN] Standard Managed Disks are not supported. Extension will be installed but no disk metrics will be available.
+</code></pre>
+
+Azperfli.exe végrehajtása a fentebb leírt módon kérheti le, amely jelzi a nem kifogástalan állapot eredményt. 
+
+###### <a name="solution"></a>Megoldás
+Az üzenetek a tény, hogy standard szintű Managed Disks nem kézbesítéséhez a monitorozási bővítményt használják, a standard szintű Azure-Tárfiókok statistics ellenőrizheti az API-k által okozott. Ez a nem aggodalmat. Bemutatkozik a Standard Disk Storage-fiókok figyelési okát gyakran előforduló i/o volt szabályozás. A felügyelt lemezek ilyen szabályozás korlátozza a tárfiókban lévő lemezek számát a rendszer működésében. Nem rendelkezik az adott típusú figyelési adatok ezért nem kritikus fontosságú.
+
 
 #### <a name="linuxlogolinux-some-azure-performance-counters-are-missing"></a>![Linux][Logo_Linux] Hiányoznak egyes Azure-teljesítményszámlálók
 Adatok beolvasása számos forrásból származó démon által gyűjtött teljesítmény-mérőszámok az Azure-ban. Helyileg összegyűjtött konfigurációs adatokat, és néhány teljesítmény-mérőszámok az Azure Diagnostics olvasható. Storage-számlálók a naplókat tároló előfizetését származnak.

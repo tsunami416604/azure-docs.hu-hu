@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/24/2018
+ms.date: 09/27/2018
 ms.author: sethm
-ms.reviewer: jeffgo
-ms.openlocfilehash: bb4a34e7036c532ca1800c70347a4f2c55a33da2
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.reviewer: ''
+ms.openlocfilehash: 8e9d40451cd0d9c3a6505ee24ca02852d9d4c527
+ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47221723"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47423476"
 ---
 # <a name="azure-marketplace-items-available-for-azure-stack"></a>Elérhető az Azure Stackhez az Azure piactéren elemek
 
@@ -143,6 +143,7 @@ A Microsoft Azure Stackhez az Azure piactér következő virtuális gépek és a
 | ![Kafka](media/azure-stack-marketplace-azure-items/kafka.png) | [Kafka](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.kafka) | Hatékony elosztott közzétételi-feliratkozási üzenetkezelési rendszerrel. | Bitnami |
 | ![Kafka-fürt](media/azure-stack-marketplace-azure-items/kafka.png) | [Kafka-fürt](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.kafka-cluster) | Az Apache Kafka van közzétételi-feliratkozási üzenetkezelési, egy elosztott véglegesítési log rethought. Ez a megoldás több Kafka-közvetítőkhöz és Zookeeper-példányok üzembe helyezése növeli a Kafka-fürt megbízhatóságát. **Ez a megoldássablon Debian 8 és egyéni parancsfájl is Linux 2.0-s verziója igényel.** | Bitnami |
 | ![Kaspersky](media/azure-stack-marketplace-azure-items/kaspersky.png) | [Biztonság a Kaspersky hibrid felhőben](https://azuremarketplace.microsoft.com/marketplace/apps/kaspersky_lab.kaspersky_hybrid_cloud_security?tab=Overview) | A Kaspersky Hybrid Cloud Security egy zökkenőmentesen előkészített és adaptív kiberbiztonsági ökoszisztéma lehetővé teszi. | Kaspersky tesztkörnyezet |
+| ![Kubernetes](media/azure-stack-marketplace-azure-items/kubernetes.png) | [Kubernetes](azure-stack-solution-template-kubernetes-cluster-add.md) | Ez a megoldás helyez üzembe egy Kubernetes-fürtöt futtató önálló fürt, az ACS-Engine használatával létrehozott sablonok.<br>**Ez a megoldássablon szükséges Linux 2.0 Ubuntu Server 16.04 LTS és egyéni parancsfájl is.**| Microsoft |
 | ![LAMP](media/azure-stack-marketplace-azure-items/lamp.png) | [LAMP](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.lampstack) | Teljes körűen integrált és futtathatja a fejlesztési környezet. | Bitnami |
 | ![LAPP](media/azure-stack-marketplace-azure-items/lapp.png) | [LAPP](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.lappstack) | Fejezze be a PHP, a PostgreSQL és az Apache fejlesztési környezet. | Bitnami |
 | ![Beszélgessünk!](media/azure-stack-marketplace-azure-items/letschat.png) | [Beszélgessünk!](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.letschat) | Nyílt forráskódú perzisztens üzenetkezelő alkalmazás. | Bitnami |
@@ -207,6 +208,7 @@ A Microsoft Azure Stackhez az Azure piactér következő virtuális gépek és a
 | ![ResourceSpace](media/azure-stack-marketplace-azure-items/resourcespace.png) | [ResourceSpace](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.resourcespace) | Rendszer digitális a továbbfejlesztett együttműködéssel kapcsolatban. | Bitnami |
 | ![Roundcube](media/azure-stack-marketplace-azure-items/roundcube.png) | [Roundcube](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.roundcube) | Böngészőalapú IMAP ügyfél funkciókkal, például a MIME-támogatás. | Bitnami |
 | ![Ruby](media/azure-stack-marketplace-azure-items/ruby.png) | [Ruby](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.rubystack) | A Ruby on Rails egyszerűen használható fejlesztési környezetet. | Bitnami |
+| ![Service Fabric-fürt](media/azure-stack-marketplace-azure-items/servicefrabric.png) | [Service Fabric-fürt](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.ServiceFabricCluster?tab=Overview) | Ez a megoldás egy virtuálisgép-méretezési csoportban, egy önálló fürtön futó Service Fabric üzembe helyezi. <br>**Ez a megoldássablon emellett letöltése szükséges a Windows Server 2016 Datacenter**| Microsoft |
 | ![Keresőmotor-Optimalizálást Panel](media/azure-stack-marketplace-azure-items/seopanel.png) | [Keresőmotor-Optimalizálást Panel](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.seopanel) | Nyílt forráskódú keresőmotor-Optimalizálást felügyeleti alkalmazás több webhelyet is nyomon követéséhez. | Bitnami |
 | ![Shopware](media/azure-stack-marketplace-azure-items/shopware.png) | [Shopware](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.shopware) | Nyílt forráskódú e-kereskedelmi Platform. | Bitnami |
 | ![Egyszerű gépek fórum](media/azure-stack-marketplace-azure-items/simplemachinesforum.png) | [Egyszerű gépek fórum](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.simplemachinesforum) | Egyszerű fórum szoftverek használatával hozhatja létre a saját online Közösség. | Bitnami |
@@ -241,6 +243,7 @@ A Microsoft Azure Stackhez az Azure piactér következő virtuális gépek és a
 | ![KEMP LoadMaster Load Balancer ADC tartalom kapcsoló](media/azure-stack-marketplace-azure-items/kemp.png) | [KEMP LoadMaster Load Balancer ADC tartalom kapcsoló](https://azuremarketplace.microsoft.com/marketplace/apps/kemptech.vlm-azure) | 4 – 7. rétegbeli alkalmazás kézbesítési Vezérlőszolgáltatást (ADC) terheléselosztót, Content kapcsolóval, és a Traffic Manager. | KEMP Technologies Inc. |
 | ![NRI mPLAT Suite - Többfelhős Conductor](media/azure-stack-marketplace-azure-items/nri.png) | [mPLAT Suite - Többfelhős Conductor](https://azuremarketplace.microsoft.com/marketplace/apps/nri.mplatmc2018-vm) | Szeretne figyelni, a vészhelyzeti egyetlen panelen konfigurálása, üzembe helyezése, automatizálhatja és szabályozása bármilyen számítási feladat vagy a felhőben. | NRI |
 | ![NooBaa hibrid az AWS S3 kompatibilis – Community Edition](media/azure-stack-marketplace-azure-items/noobaa.png) | [NooBaa hibrid az AWS S3 compatibe – Community Edition](https://azuremarketplace.microsoft.com/marketplace/apps/noobaa.noobaa-hybrid-s3-archive-05) | S3-kompatibilis tárolási szolgáltatás, amely átnyúlik a nyilvános és helyi kapacitás erőforrásokhoz. | NooBaa |
+| ![A Multipoint, nulla NetFoundry átjáró megbízható az Azure Stack-kapcsolatok](media/azure-stack-marketplace-azure-items/netfoundry.png) | [A Multipoint, nulla NetFoundry átjáró megbízható az Azure Stack-kapcsolatok](https://azuremarketplace.microsoft.com/marketplace/apps/tata_communications.netfoundry_cloud_gateway) | Kizárólag szoftveralapú, több pont kapcsolat Azure Stackhez és bárhol, bármely hálózati kapcsolaton keresztül, az iparág vezető nulla megbízható biztonsági, 5 x átviteli sebességének VPN- és korlátlan számú párhuzamos felhasználó között. | NetFoundry |
 | ![Rendszert futtató Palo Alto Virtuálisgép-sorozat új generációs tűzfal](media/azure-stack-marketplace-azure-items/paloalto.png) | [Rendszert futtató Palo Alto Virtuálisgép-sorozat új generációs tűzfal](https://azuremarketplace.microsoft.com/marketplace/apps/paloaltonetworks.vmseries-ngfw) | A Virtuálisgép-sorozat új generációs tűzfal lehetővé teszi biztonságos áttelepítése az Azure Stack, az alkalmazások és az adatokat védi azokat az ismert és ismeretlen fenyegetések alkalmazások engedélyezési és fenyegetés-megelőzési szabályzataival. **A lemezkép telepítése; sablon igényel Ez [cikk](https://www.paloaltonetworks.com/documentation/81/virtualization/virtualization/set-up-the-vm-series-firewall-on-azure/deploy-the-vm-series-firewalls-on-azure-stack) fontos információkat.**| Rendszert futtató Palo Alto Networks, Inc. |
 | ![A PT Application Firewall](media/azure-stack-marketplace-azure-items/pt.png) | [A PT Application Firewall](https://azuremarketplace.microsoft.com/marketplace/apps/ptsecurity.ptaf) | A PT Application Firewall észleli az ismert és ismeretlen biztonsági réseket, és megakadályozza a támadásokat a webalkalmazások. **Mindkét PT Piactéri termékek letöltése.** | Pozitív technológiák |
 | ![Puppet Enterprise](media/azure-stack-marketplace-azure-items/puppet.png) | [Puppet Enterprise](https://azuremarketplace.microsoft.com/marketplace/apps/puppet.puppet-enterprise-2017-2) | Puppet vállalati segítségével automatizálhatja az Azure Stack-infrastruktúra teljes életciklusát. **Mindkét Puppet Piactéri termékek letöltése.** | Puppet |

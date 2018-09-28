@@ -7,18 +7,18 @@ ms.topic: conceptual
 ms.date: 09/18/2018
 ms.author: snmuvva
 ms.component: alerts
-ms.openlocfilehash: e325335d43ef31c44ac812aca66309132f5372a3
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: e0c9cc342bb4b06053f53abc891ee1c415327998
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46951610"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47410000"
 ---
-# <a name="create-view-and-manage-metric-alerts-using-azure-monitor"></a>Létrehozása, megtekintése és használata az Azure Monitor metrika-riasztások kezelése
+# <a name="create-view-and-manage-classic-metric-alerts-using-azure-monitor"></a>Létrehozása, megtekintése és kezelése a klasszikus metrikariasztásokat az Azure Monitor használatával
 
 Az Azure monitorban klasszikus metrikariasztásokat hardvermódosításainak értesítést kaphat, amikor egy, a mérőszámok átlépnek egy küszöbértéket. Klasszikus metrikariasztásokat egy régebbi funkció, amely lehetővé teszi, hogy csak a nem többdimenziós metrikák riasztás. Egy meglévő újabb szolgáltatásra nevű metrikákhoz kapcsolódó riasztások továbbfejlesztett funkcióval rendelkezik a klasszikus metrikariasztásokat felett van. Az új funkcióiról metrikákhoz kapcsolódó riasztások többet is megtudhat [metrika riasztások – áttekintés](alert-metric-overview.md). Ebben a cikkben azt azt ismerteti, hogyan hozhat létre, megtekintése és kezelése a klasszikus metrikaalapú riasztási szabályok az Azure Portalon az Azure CLI és PowerShell használatával.
 
-## <a name="create-a-classic-metric-alert-rule-using-azure-portal"></a>Az Azure Portalon klasszikus a metrikaalapú riasztási szabály létrehozása
+## <a name="with-azure-portal"></a>Az Azure Portalon
 
 1. Az a [portál](https://portal.azure.com/), keresse meg a figyelni kívánt a erőforrást, és válassza ki azt.
 
@@ -46,15 +46,13 @@ Az Azure monitorban klasszikus metrikariasztásokat hardvermódosításainak ér
 
 Néhány percen belül a riasztás aktív, és elindítja a fent leírtaknak megfelelően.
 
-## <a name="manage-your-classic-metric-alert-rules-using-azure-portal"></a>Az Azure Portalon klasszikus metrikaalapú riasztási szabályok kezelése
-
 Miután létrehozta a riasztást, válassza ki, és hajtsa végre a következő feladatok közül:
 
 * Tekintse meg a metrika küszöbértéke és a tényleges értékek az előző nap megjelenítő grafikon.
 * Szerkesztheti, és törölje azt.
 * **Tiltsa le** vagy **engedélyezése** , ha azt szeretné, ideiglenesen leállíthatja, vagy folytathatja a riasztás-mailjeire.
 
-## <a name="creating-and-managing-classic-metric-alert-rule-using-azure-cli"></a>Létrehozásába és kezelésébe az Azure CLI-vel klasszikus a metrikaalapú riasztási szabály
+## <a name="with-azure-cli"></a>Az Azure CLI-vel
 
 A fentebbi szakaszokban leírt létrehozása, megtekintése és kezelése a metrikaalapú riasztási szabályok az Azure portal használatával. Ez a szakasz azt ismerteti, hogyan végezze el ugyanezt a platformok közötti átjárhatóságról használatával való [Azure CLI-vel](https://docs.microsoft.com/en-us/cli/azure/get-started-with-azure-cli?view=azure-cli-latest). Leggyorsabb módja, hogy megkezdhesse az Azure CLI-vel van keresztül [Azure Cloud Shell](https://docs.microsoft.com/en-us/azure/cloud-shell/overview?view=azure-cli-latest).
 
@@ -86,7 +84,7 @@ az monitor alert create --name <alert name> --resource-group <group name> \
 az monitor alert delete --name <alert name> --resource-group <group name>
 ```
 
-### <a name="create-view-and-manage-classic-metric-alerts-using-powershell"></a>Létrehozása, megtekintése és kezelése a klasszikus metrikariasztásokat PowerShell-lel
+## <a name="with-powershell"></a>A PowerShell-lel
 
 Ez a szakasz azt mutatja be, hogyan használható a PowerShell-parancsok létrehozása, megtekintése és kezelése a klasszikus metrikariasztásokat. A cikkben szereplő példák bemutatják, hogyan használhatja az Azure Monitor-parancsmagok a klasszikus metrikariasztásokat.
 

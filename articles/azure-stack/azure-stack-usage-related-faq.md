@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/10/2018
+ms.date: 09/27/2018
 ms.author: mabrigg
 ms.reviewer: alfredop
-ms.openlocfilehash: ffe3dbf975984eb8df341728075e628d14080ada
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: e4bb17bd068076a9ffa9bcab5826f0efa84a19d7
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44380233"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47406005"
 ---
 # <a name="frequently-asked-questions-in-azure-stack-usage-api"></a>Gyakori kérdések az Azure Stack-használati API
 
@@ -321,10 +321,10 @@ A következő erőforrás-szolgáltatók a jelentett használat:
 **Megjegyzések**: adott válasz bájtjai + kimenő kérelmek teljes bájt + a teljes bejövő FTP kérelem adott válasz bájtjai + teljes bejövő webes üzembe helyezése a kérelemre adott válasz bájtjai bejövő kérelmek száma összesen.  
   
 
-## <a name="how-do-the-azure-stack-usage-apis-compare-to-the-azure-usage-apihttpsmsdnmicrosoftcomlibraryazure1ea5b323-54bb-423d-916f-190de96c6a3c-currently-in-public-preview"></a>Az API-k hasonlítsa össze az Azure Stack használati módja a [Azure-használati API](https://msdn.microsoft.com/library/azure/1ea5b323-54bb-423d-916f-190de96c6a3c) (jelenleg nyilvános előzetes verzióban)?
+## <a name="how-do-the-azure-stack-usage-apis-compare-to-the-azure-usage-apihttpsdocsmicrosoftcomazurebillingbilling-usage-rate-card-overviewazure-resource-usage-api-preview-currently-in-public-preview"></a>Az API-k hasonlítsa össze az Azure Stack használati módja a [Azure-használati API](https://docs.microsoft.com/azure/billing/billing-usage-rate-card-overview#azure-resource-usage-api-preview) (jelenleg nyilvános előzetes verzióban)?
 * A bérlői használati API-t az Azure API, egy kivétellel összhangban: a *showDetails* jelző jelenleg nem támogatott az Azure Stackben.
 * A szolgáltatói használati API-t csak azokra az Azure Stack.
-* Jelenleg a [RateCard API](https://msdn.microsoft.com/library/azure/mt219004.aspx) , amely elérhető az Azure-ban nem érhető el az Azure Stackben.
+* Jelenleg a [RateCard API](https://docs.microsoft.com/azure/billing/billing-usage-rate-card-overview#azure-resource-ratecard-api-preview) , amely elérhető az Azure-ban nem érhető el az Azure Stackben.
 
 ## <a name="what-is-the-difference-between-usage-time-and-reported-time"></a>Mi a különbség a használati és jelentett idő között?
 Használati jelentések két fő időértékek rendelkezik:

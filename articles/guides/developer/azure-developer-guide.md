@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/18/2017
 ms.author: glenga
-ms.openlocfilehash: f8aa37dbc2d3fb5f560d899626a84a2ab86ff223
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: d298cfe22328db68cfbb6b4c7fc82b2de0c186b1
+ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46294577"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47423595"
 ---
 # <a name="get-started-guide-for-azure-developers"></a>Első lépésekhez készült útmutató Azure-fejlesztőknek
 
@@ -310,9 +310,3 @@ Az Azure számlázási REST API-erőforrás-használat és az Azure-előfizetés
 Alapján előre kihívást jelent, bár az Azure rendelkezik olyan [díjkalkulátor](https://azure.microsoft.com/pricing/calculator/) amikor költségeket megbecsülheti használható üzembe az erőforrásokat. A számlázás panel a portálon és a számlázási REST API-k segítségével is megbecsülheti a jövőbeli költségeit, aktuális használat alapján.
 
 >**Első lépések**: lásd: [Azure számlázási használat és RateCard API-k áttekintése](../../billing-usage-rate-card-overview.md).
-
-#### <a name="set-up-billing-alerts"></a>Számlázási értesítések beállítása
-
-Miután telepítette az alkalmazáshoz vagy megoldáshoz az Azure-ban, riasztásokat küld, e-mail küldése, ha a riasztásban szereplő definiált a költségkeretek módszerrel érdemes hozhat létre.
-
->**Első lépések**: további információkért lásd: [elszámolási értesítések a Microsoft Azure-előfizetések beállítása](../../billing-set-up-alerts.md).

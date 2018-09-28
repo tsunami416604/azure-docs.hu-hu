@@ -9,12 +9,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: mjbrown
-ms.openlocfilehash: fef4d14e6f5a9dcba1f7e111f9a54c3e1a9fbfa9
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 227c243d82665dc533e3bfa6a1fe3e9bb775a262
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46959853"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47408895"
 ---
 # <a name="global-data-distribution-with-azure-cosmos-db"></a>Az Azure Cosmos DB globális terjesztési
 
@@ -24,7 +24,7 @@ Az [Azure Cosmos DB](../cosmos-db/introduction.md) a Microsoft globálisan elosz
 
 ## <a name="global-distribution-with-multi-master"></a>Több főkiszolgálós globális terjesztés
 
-Egy natív módon született a cloud service-ben, mint az Azure Cosmos DB gondosan kategóriában egészen az alapoktól fel a több-bérlős, globális elosztással és több főkiszolgálós a dokumentum, kulcs-érték, gráf és oszlopcsalád-adatmodelleket.
+Felhőalapú szolgáltatásként az Azure Cosmos DB gondosan kategóriában a több-bérlős, a globális terjesztés és a több főkiszolgálós a dokumentum, kulcs-érték, gráf és oszlopcsalád-adatmodelleket.
 
 ![Az Azure Cosmos DB-tárolók particionált, és az elosztott három régióban](./media/distribute-data-globally/global-apps.png)
 

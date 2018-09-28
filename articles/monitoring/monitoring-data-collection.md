@@ -7,17 +7,17 @@ manager: carmonm
 editor: tysonn
 ms.service: monitoring
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/11/2018
+ms.date: 09/27/2018
 ms.author: bwren
-ms.openlocfilehash: d71dc77eac89fef3ae7f8aeb69a05197456ac865
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 19a611ca88310f06503bea2b8606699fe3e1c709
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46962930"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47406040"
 ---
 # <a name="monitoring-data-collected-by-azure-monitor"></a>Az Azure Monitor által gyűjtött adatok figyelése
 [Az Azure Monitor](../azure-monitor/overview.md) egy szolgáltatás, amellyel figyelheti az alkalmazások és az erőforrások támaszkodnak. Figyelt erőforrások központi az alábbi függvényre van telemetriai és egyéb adatok tárolására. A cikk ismerteti, hogyan az adatok tárolásának és az Azure Monitor által használt teljes leírását.
@@ -155,7 +155,7 @@ A log Analytics adatokat gyűjthet, különböző forrásokból is Azure-ban és
 A naplók segítségével elvégezhető feladatok a következők:
 
 - Használja a [Log Analytics lapot](../log-analytics/query-language/get-started-analytics-portal.md) Teljesítménynapló-adatok elemzése lekérdezéseket írhat az Azure Portalon.  Eredmény jelenik meg a táblázatokat vagy diagramokat való rögzítése egy [Azure irányítópultján](../azure-portal/azure-portal-dashboards.md).
-- Konfigurálja egy [riasztási szabály](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md) , amely elküld egy értesítést vagy veszi [művelet automatikus](../monitoring-and-diagnostics/monitoring-action-groups.md) mikor a a lekérdezés eredménye megfelel-e egy adott eredményt.
+- Konfigurálja egy [riasztási szabály](../monitoring-and-diagnostics/alert-log.md) , amely elküld egy értesítést vagy veszi [művelet automatikus](../monitoring-and-diagnostics/monitoring-action-groups.md) mikor a a lekérdezés eredménye megfelel-e egy adott eredményt.
 - A munkafolyamat az a Log Analytics-adatok alapján hozhat létre [Logic Apps]().
 - A lekérdezés eredményeinek exportálására [Power BI](../log-analytics/log-analytics-powerbi.md) különböző Vizualizációk használata és megosztása Azure-on kívüli felhasználókkal.
 - Egy parancssorból vagy egy egyéni alkalmazást a metrikaértékek eléréséhez [PowerShell-parancsmagok](https://docs.microsoft.com/powershell/module/azurerm.operationalinsights/?view=azurermps-6.8.1) vagy [REST API-val](https://dev.loganalytics.io/).
@@ -175,7 +175,7 @@ Metrikák másolhatja a Log Analyticsben, hogy más típusú adatokat tartalmaz�
 ### <a name="logs-to-metrics"></a>Naplók, metrikák
 A fentiekben ismertetettek szerint metrikák, gyorsabb, mint a naplókat, így kisebb késéssel és a egy alacsonyabb költségek létrehozhat riasztásokat. A log Analytics jelentős mennyiségű, metrikák alkalmas lenne, de nem az Azure-metrikagyűjtéshez tárolójában tárolt numerikus adatokat gyűjt.  Ilyenek például az ügynökök és felügyeleti megoldásokat összegyűjtött teljesítményadatok. Ezek az értékek némelyike átmásolható a metrikák tárolóba, ahol elérhetők a riasztás és a metrikaböngésző elemzéshez.
 
-A magyarázat, ez a funkció elérhető legyen [naplók jelenleg korlátozott nyilvános előzetes verzióban gyorsabban metrika riasztások](https://azure.microsoft.com/blog/faster-metric-alerts-for-logs-now-in-limited-public-preview/). Az értékek támogatási listája érhető el: [új metrikákhoz kapcsolódó riasztások a metrikák és létrehozási módszerek támogatott](../monitoring-and-diagnostics/monitoring-near-real-time-metric-alerts.md).
+A magyarázat, ez a funkció elérhető legyen [metrika riasztások létrehozása az Azure Monitor-naplók](../monitoring-and-diagnostics/monitoring-metric-alerts-logs.md). Az értékek támogatási listája érhető el: [az Azure monitorban támogatott mérőszámok](../monitoring-and-diagnostics/monitoring-supported-metrics.md#microsoftoperationalinsightsworkspaces).
 
 ## <a name="stream-data-to-external-systems"></a>Stream data a külső rendszerekkel
 Mellett az Azure-ban az eszközök használatával elemezheti a monitorozási adatok, szükség lehet a követelmény, hogy egy külső eszköz, például a biztonsági információk és az esemény (SIEM) termékben továbbítja. Közvetlenül a figyelt erőforrások keresztül általában történik a továbbító [Azure Event Hubs](https://docs.microsoft.com/azure/event-hubs/). 

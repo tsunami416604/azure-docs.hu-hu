@@ -12,20 +12,20 @@ ms.devlang: tbd
 ms.topic: article
 ms.tgt_pltfrm: dotnet
 ms.workload: na
-ms.date: 04/11/2018
+ms.date: 09/11/2018
 ms.author: spelluru
-ms.openlocfilehash: b5512186913eb59be2b89ce8b8bb9fb881f59cd8
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 08b4ef6ea59123524500188428eb0bc03d85138b
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43699821"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47409983"
 ---
 # <a name="create-a-service-bus-namespace-with-topic-and-subscription-using-an-azure-resource-manager-template"></a>Service Bus-névtér létrehozása témakörrel és előfizetéssel egy Azure Resource Manager-sablon használatával
 
 Ez a cikk bemutatja, hogyan használható az Azure Resource Manager-sablon, amely létrehozza a Service Bus-névtér és a egy üzenettémát és egy előfizetést adott névtéren belül. A cikk azt ismerteti, hogyan adja meg, hogy mely erőforrások vannak telepítve, és hogyan adhat meg a paramétereket, amelyek a megadott az üzembe helyezés végrehajtása esetén. Ezt a sablont saját üzembe helyezési műveleteihez is használhatja, vagy akár igényeinek megfelelően testre is szabhatja
 
-Sablonok létrehozásával kapcsolatos további információkért tekintse meg [Azure Resource Manager-sablonok készítése][Authoring Azure Resource Manager templates].
+A sablonok létrehozásáról további információkat az [Authoring Azure Resource Manager templates][Authoring Azure Resource Manager templates] (Azure Resource Manager-sablonok készítése) című témakörben talál.
 
 A teljes sablont, tekintse meg a [Service Bus-névtér témakörrel és előfizetéssel] [ Service Bus namespace with topic and subscription] sablont.
 
@@ -41,7 +41,7 @@ A teljes sablont, tekintse meg a [Service Bus-névtér témakörrel és előfize
 > 
 > 
 
-## <a name="what-will-you-deploy"></a>Mit fog üzembe helyezni?
+## <a name="what-do-you-deploy"></a>Milyen tegye üzembe helyezni?
 
 A sablon üzembe helyezése egy Service Bus-névtér témakörrel és előfizetéssel.
 
@@ -53,9 +53,9 @@ Az automatikus üzembe helyezéshez kattintson az alábbi gombra:
 
 ## <a name="parameters"></a>Paraméterek
 
-Az Azure Resource Managerrel meghatározhatja a sablon üzembe helyezésekor megadandó értékek paramétereit. A sablon tartalmaz nevű szakaszban `Parameters` , amely tartalmazza az összes paraméter értékét. Azokhoz az értékekhez adjon meg paramétert, amelyek az üzembe helyezendő projekt vagy az üzembe helyezési környezet alapján változhatnak. Ne adjon meg olyan paramétereket olyan értékhez, amelyek nem változnak. A sablonban minden egyes paraméterérték az üzembe helyezendő erőforrások megadásához lesz felhasználva.
+Az Azure Resource Managerrel meghatározhatja a sablon üzembe helyezésekor megadandó értékek paramétereit. A sablon tartalmaz nevű szakaszban `Parameters` , amely tartalmazza az összes paraméter értékét. Adjon meg ezeket az értékeket, amelyek paramétert, projekt helyezi üzembe vagy telepít, a környezet alapján. Ne adjon meg olyan paramétereket olyan értékhez, amelyek nem változnak. A sablonban minden egyes paraméterérték az üzembe helyezendő erőforrások megadásához lesz felhasználva.
 
-A sablon a következő paramétereket adja meg.
+A sablon meghatározza a következő:
 
 ### <a name="servicebusnamespacename"></a>serviceBusNamespaceName
 A Service Bus-névtér létrehozása neve.
@@ -149,7 +149,7 @@ azure group deployment create \<my-resource-group\> \<my-deployment-name\> --tem
 ## <a name="next-steps"></a>További lépések
 Most, hogy létrehozta és erőforrások Azure Resource Managerrel üzembe helyezett, megtudhatja, hogyan kezelhetők ezek a cikkek alapján:
 
-* [Service Bus kezelése a PowerShell](service-bus-manage-with-ps.md)
+* [A Service Bus kezelése a PowerShell használatával](service-bus-manage-with-ps.md)
 * [A Service Bus-erőforrások kezelése a Service Bus Explorerrel](https://github.com/paolosalvatori/ServiceBusExplorer/releases)
 
 [Authoring Azure Resource Manager templates]: ../azure-resource-manager/resource-group-authoring-templates.md

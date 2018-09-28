@@ -5,19 +5,19 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.topic: article
-ms.date: 08/28/2018
+ms.date: 09/27/2018
 ms.author: alkohli;
 ms.component: ''
-ms.openlocfilehash: afb7de78a30367b0cc12e621019f1e8be975e63f
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.openlocfilehash: 9bab8a55301a5eb40b38bec984205fff2a52559e
+ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43191651"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47422813"
 ---
 # <a name="open-a-support-ticket-for-azure-data-box"></a>Nyisson egy támogatási jegyet az Azure Data Box 
 
-Ha problémát tapasztal az Azure Data Box szolgáltatás, létrehozhat egy szolgáltatási kérelmet, ha technikai támogatást. Ez a cikk végigvezeti:
+Ez a cikk az Azure Data Box és az Azure Data Box-lemezek, mindkettő az Azure Data Box szolgáltatás által kezelt vonatkozik. Ha problémát tapasztal az Azure Data Box szolgáltatás, létrehozhat egy szolgáltatási kérelmet, ha technikai támogatást. Ez a cikk végigvezeti:
 
 * Hogyan hozzon létre egy támogatási kérést.
 * Hogyan lehet egy támogatási kérést az életciklusnak a kezelésében a portálon belül.

@@ -6,19 +6,19 @@ keywords: ''
 author: shizn
 manager: timlt
 ms.author: xshi
-ms.date: 09/04/2018
+ms.date: 09/21/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 6e3bbe996a2f0c37905aa990b39d324fd540952b
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: a5e86b7c93344a6c61fecaa41b98bc1daa20f36f
+ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44057087"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47423221"
 ---
 # <a name="use-visual-studio-code-to-develop-and-debug-java-modules-for-azure-iot-edge"></a>Fejlesztés és hibakeresés Java-modulok az Azure IoT Edge-hez a Visual Studio Code használatával
 
-Elküldheti az üzleti logikát a peremhálózaton csempefolyamot modulokat az Azure IoT Edge megfelelően működjenek. Ez a cikk részletesen ismerteti a Visual Studio Code (a VS Code), a fő fejlesztőeszközt, a Java-modulok fejlesztését.
+Elküldheti az üzleti logikát a peremhálózaton csempefolyamot modulokat az Azure IoT Edge megfelelően működjenek. Ez a cikk részletesen ismerteti a Visual Studio Code (a VS Code), a fő fejlesztőeszközt, a fejlesztés és hibakeresés Java-modulok.
 
 ## <a name="prerequisites"></a>Előfeltételek
 Ez a cikk feltételezi, hogy egy számítógép vagy a Windows, macOS vagy Linux rendszerű, a fejlesztői gépén futó virtuális gép használja. Az IoT Edge-eszközt egy másik fizikai eszköz lehet.
@@ -33,7 +33,7 @@ Mivel ez a cikk a fő fejlesztőeszközt, Visual Studio Code-ot használ, a VS C
 * [Docker-bővítmény](https://marketplace.visualstudio.com/items?itemName=PeterJausovec.vscode-docker)
 
 Hozzon létre egy modult, szüksége van a Java és a maven használatával való létrehozásához és futtatásához a modul kód, Docker, a modul rendszerképének és tároló-beállításjegyzék létrehozása a modul lemezkép tárolására:
-* [Java használata Development Kit 10](http://www.oracle.com/technetwork/java/javase/downloads/index.html), és [állítsa be a `JAVA_HOME` környezeti változó](https://docs.oracle.com/cd/E19182-01/820-7851/inst_cli_jdk_javahome_t/) , hogy a JDK telepítési mutasson.
+* A [Java SE Development Kit 10](http://www.oracle.com/technetwork/java/javase/downloads/index.html), valamint úgy [állítsa be a `JAVA_HOME` környezeti változót](https://docs.oracle.com/cd/E19182-01/820-7851/inst_cli_jdk_javahome_t/), hogy a JDK-telepítésre mutasson.
 * [Maven 3](https://maven.apache.org/)
 * [Docker](https://docs.docker.com/engine/installation/)
 * [Az Azure Container Registry](https://docs.microsoft.com/azure/container-registry/) vagy [Docker Hub](https://docs.docker.com/docker-hub/repos/#viewing-repository-tags)
@@ -63,7 +63,7 @@ A következő lépések bemutatják, hogyan hozhat létre egy IoT Edge-modult a 
 6. Adja meg a megoldás nevét. 
 7. Válasszon **Java modul** a megoldás első modul sablonként.
 8. Adja meg a modul nevét. Válassza ki, amely a tárolóregisztrációs adatbázis egyedi nevét. 
-8. Adjon meg egy értéket a groupId, vagy fogadja el az alapértelmezett **com.edgemodule**.
+8. Adja meg a groupId értékét, vagy fogadja el az alapértelmezett **com.edgemodule** értéket.
 9. A modul adja meg a lemezképtárból. A VS Code autopopulates a modul neve, így csak kell cserélni **localhost:5000** a saját beállításjegyzék-információkat. Ha tesztelése helyi Docker-tárolójegyzék használja, localhost nem okoz gondot. Ha használja az Azure Container Registry, használja a bejelentkezési kiszolgáló, a beállításjegyzék-beállításai közül. A bejelentkezési kiszolgáló néz  **\<beállításjegyzék neve\>. azurecr.io**. Csak a sztring localhost részét cserélje le, ne törölje a modul nevét.
 
    ![Docker-rendszerkép adattárának megadása](./media/how-to-develop-node-module/repository.png)

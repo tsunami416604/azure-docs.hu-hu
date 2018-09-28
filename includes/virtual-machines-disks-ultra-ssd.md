@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/24/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 41e7f1aacfaf228b271aee0547d5f26a5967dafe
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: bb9a2a884439b00f52adfa9b7c1010a4610a77f7
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47011309"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47401530"
 ---
 # <a name="ultra-ssd-preview-managed-disks-for-azure-virtual-machine-workloads"></a>Az Azure virtuális gépek számítási feladataihoz ultranagy SSD (előzetes verzió) felügyelt lemezek
 
@@ -64,7 +64,7 @@ Ultranagy SSD-k használatakor az alábbi számlázási szempontok érvényesek:
 
 ### <a name="managed-disk-size"></a>Felügyelt lemez mérete
 
-Felügyelt lemezeket az üzembe helyezett méretek számítjuk fel. Azure maps-(kerekítve) a legközelebbi lemez mérete ajánlat kiosztott méretét. A lemezméretek érhető el a részletekért lásd: a tábla, méretezhetőségi és Teljesítménycéljai a fenti szakaszban. Mindegyik lemez képez le egy támogatott kiosztott lemez méretét, és ennek megfelelően díját óránként. Ha üzembe helyezett egy 200 GiB Ultranagy SSD-lemez, és 20 óra múlva törli azt, például azt a lemez mérete vonatkozó ajánlatot 256 GIB-ra lesz leképezve, és kell fizetnie a 256 GIB-ra vonatkozó 20 óra. Ez a, függetlenül a lemezre írt adatok tényleges mennyiségét.
+Felügyelt lemezeket az üzembe helyezett méretek számítjuk fel. Az Azure a kiépített méretet a legközelebbi lemezméret-ajánlathoz (kerekítve) rendeli hozzá. A lemezméretek érhető el a részletekért lásd: a tábla, méretezhetőségi és Teljesítménycéljai a fenti szakaszban. Mindegyik lemez képez le egy támogatott kiosztott lemez méretét, és ennek megfelelően díját óránként. Ha üzembe helyezett egy 200 GiB Ultranagy SSD-lemez, és 20 óra múlva törli azt, például azt a lemez mérete vonatkozó ajánlatot 256 GIB-ra lesz leképezve, és kell fizetnie a 256 GIB-ra vonatkozó 20 óra. Ez a, függetlenül a lemezre írt adatok tényleges mennyiségét.
 
 ### <a name="managed-disk-provisioned-iops"></a>Felügyelt lemez kiosztott iops-érték
 

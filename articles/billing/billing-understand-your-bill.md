@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/14/2018
 ms.author: cwatson
-ms.openlocfilehash: f7ec113a7fa51fc6d3684c2e7ee9379bd1534e30
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: be2e774bc4220d5d93f555263fa9f342f449f8b2
+ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47392414"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47423442"
 ---
 # <a name="understand-your-bill-for-microsoft-azure"></a>A Microsoft Azure-hoz kapcsolódó számlák magyarázata
 Az Azure-elszámolások ismertetése, hasonlítsa össze a számla a részletes napi használatot részletező fájl és a költségkezelési jelentések az Azure Portalon.
@@ -141,7 +141,6 @@ Azure 1. fél díjakat az erőforrások, amelyek közvetlenül fejlesztett és A
 
 ## <a name="tips-for-cost-management"></a>Tippek a cost management
 - Költségbecslést használatával a [díjkalkulátor](https://azure.microsoft.com/pricing/calculator/) és [összköltsége tulajdonjog Számológép](https://aka.ms/azure-tco-calculator), és a [részletes díjszabási információkat az egyes szolgáltatások](https://azure.microsoft.com/pricing/).
-- [Elszámolási értesítések beállítása](billing-set-up-alerts.md).
 - [Tekintse át a használat és költségek az Azure Portalon rendszeresen](billing-getting-started.md#costs).
 
 ## <a name="need-help-contact-support"></a>Segítség Forduljon az ügyfélszolgálathoz.

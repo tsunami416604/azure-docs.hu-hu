@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 9/10/2018
 ms.author: markgal
-ms.openlocfilehash: 80987408e65785afba1df2d2f6b6fc9981fd2dbf
-ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
+ms.openlocfilehash: 00432e1b5a181c57e4901b684d0a86c1cc843037
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45542820"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47408980"
 ---
 # <a name="prepare-your-environment-to-back-up-resource-manager-deployed-virtual-machines"></a>A környezet előkészítése a Resource Managerrel üzembe helyezett virtuális gépek biztonsági mentéséhez
 
@@ -47,7 +47,7 @@ Ha ezek a feltételek a környezetében már létezik, ugorjon a [a virtuális g
 Mielőtt a környezet előkészítése, ügyeljen arra, hogy ezek a korlátozások ismertetése:
 
 * Standard SSD-virtuális gépek biztonsági mentésének jelenleg nem támogatott.
-* Több mint 16 adatlemezekkel rendelkező virtuális gépek biztonsági mentése nem támogatott.
+* Több mint 32 adatlemezekkel rendelkező virtuális gépek biztonsági mentése nem támogatott.
 * A fenntartott IP-cím és a nem meghatározott végpontot a virtuális gépek biztonsági mentése nem támogatott.
 * Linux egyesített kulcs beállítása (LUKS) titkosítással titkosított Linux rendszerű virtuális gépek biztonsági mentésének nem támogatott.
 * Nem ajánlott a fürt megosztott kötetei (CSV) vagy a Scale-Out File Server tartalmazó virtuális gépek biztonsági mentésének. Ha elkészült, a fürt megosztott kötetei szolgáltatás írók hiba várható. A fürt konfigurációját, a pillanatkép-feladat során szereplő összes virtuális gépet is érintő igényelnek. Az Azure Backup nem támogatja a több virtuális gépre kiterjedő konzisztencia. 

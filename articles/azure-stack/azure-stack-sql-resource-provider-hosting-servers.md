@@ -11,19 +11,22 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/05/2018
+ms.date: 09/27/2018
 ms.author: jeffgilb
-ms.reviewer: jeffgo
-ms.openlocfilehash: c33d1fe1385619420215ec0f0fa3b0a2f90dddc0
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.reviewer: quying
+ms.openlocfilehash: 8fc24e58af51a249e3305dbe1496c499387be6b1
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44299457"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47407909"
 ---
 # <a name="add-hosting-servers-for-the-sql-resource-provider"></a>Az erőforrás-szolgáltató SQL üzemeltetési kiszolgáló hozzáadása
 
 Az egy virtuális gépet (VM) egy SQL-példányt is üzemeltethet [Azure Stack](azure-stack-poc.md), vagy egy virtuális Gépen az Azure Stack környezettel, amennyiben az erőforrás-szolgáltató SQL csatlakozhat a példány kívül.
+
+> [!NOTE]
+> SQL-adatbázisok kell lehet létrehozni a erőforrás-szolgáltató SQL server. Az erőforrás-szolgáltató SQL SQL üzemeltetési kiszolgáló számlázható, felhasználói előfizetés hozza létre az alapértelmezett szolgáltatója előfizetésben kell létrehozni. Az erőforrás-szolgáltató kiszolgáló nem használandó felhasználói adatbázisok üzemeltetéséhez.
 
 ## <a name="overview"></a>Áttekintés
 

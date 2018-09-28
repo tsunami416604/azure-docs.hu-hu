@@ -7,16 +7,16 @@ ms.date: 9/18/2018
 ms.topic: conceptual
 ms.service: azure-monitor
 ms.component: alerts
-ms.openlocfilehash: 1ec47ddf5769dd8ed624277a86db57f449581b90
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 586ced5b239b77dd9ae596a754613a66cee371a9
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46948689"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47405920"
 ---
 # <a name="understand-how-metric-alerts-work-in-azure-monitor"></a>Megismerheti, hogyan riasztást küld a metrika a munkát az Azure monitorban
 
-Az Azure monitorban metrikákhoz kapcsolódó riasztások felett többdimenziós metrikák működik. Ezek a metrikák platform mérőszámokat, egyéni metrikák (előzetes verzió), népszerű naplók, metrikák, a standard mérőszámok az Application Insights alakítani a Log Analytics lehet. Metrikákhoz kapcsolódó riasztások kiértékelése annak ellenőrzéséhez, hogy rendszeres időközönként feltételek egy vagy metrika idősorozat-igaz, és értesíti, amint az értékelések teljesülnek-e. Metrikákhoz kapcsolódó riasztások állapotalapúak, csak küldenek értesítéseket állapot.
+Az Azure monitorban metrikákhoz kapcsolódó riasztások felett többdimenziós metrikák működik. Ezek a metrikák lehet platform mérőszámokat, [egyéni metrikákat](metrics-custom-overview.md), [metrikák alakítani a Log Analytics népszerű naplók](monitoring-metric-alerts-logs.md), standard mérőszámok az Application Insights. Metrikákhoz kapcsolódó riasztások kiértékelése annak ellenőrzéséhez, hogy rendszeres időközönként egy vagy több metrikát idősorozat-igaz, és értesíti, amint az értékelések teljesülnek a feltételek. Metrikákhoz kapcsolódó riasztások állapotalapúak, azaz csak küldenek értesítéseket állapot.
 
 ## <a name="how-do-metric-alerts-work"></a>Hogyan működik a metrikákhoz kapcsolódó riasztások
 
@@ -75,11 +75,17 @@ Tegyük fel, a webes alkalmazás kapja a masszív igény szerint, és további p
 
 Ez a szabály automatikusan figyelni fogja a példány azaz minden értékét a példányok figyelheti, anélkül, hogy újra módosítani a metrikaalapú riasztási szabály származnak.
 
-### <a name="monitoring-multiple-resource-using-metric-alerts"></a>Több erőforrást metrikákhoz kapcsolódó riasztások figyelése
+### <a name="monitoring-multiple-resources-using-metric-alerts"></a>Metrikákhoz kapcsolódó riasztások használatával több erőforrások figyelése
 
-Ahogy az előző szakaszban láthatta, az lehetséges, hogy egyetlen a metrikaalapú riasztási szabály, amely minden egyes dimenzió kombináció (vagyis) metrika az idősor lépésközi). Azonban Ön egyszerre csak egy erőforrás ezt korlátozva. Metrikákhoz kapcsolódó riasztások mostantól is támogatják az előzetes verzióban érhető el egyetlen szabállyal több erőforrások figyeléséhez. Ha virtuális gépek 100s az előfizetésében, ez az új funkció segítségével, gyorsan beállította a figyelést a számukra. 
+Ahogy az előző szakaszban láthatta, az lehetséges, hogy egyetlen a metrikaalapú riasztási szabály, amely minden egyes dimenzió kombináció (vagyis) metrika az idősor lépésközi). Azonban korábban, továbbra is korlátozva lett egyszerre csak egy erőforrás ezt. Az Azure Monitor is támogatja az egy a metrikaalapú riasztási szabály több erőforrások monitorozását. Ez a funkció jelenleg előzetes verzió, és csak a virtuális gépeket. Ezenkívül egyetlen metrikariasztás figyelheti az erőforrások egy Azure-régióban.
 
-Ez a szolgáltatás jelenleg előzetes kiadásban elérhető. Metrikaalapú riasztási szabályok több erőforrást figyelő létrehozása jelenleg nem támogatott az Azure Portalon keresztül. Ezek a szabályok az Azure Resource Manager-sablonok segítségével hozhat létre.
+Megadhat egyetlen metrikariasztás három módszerrel a figyelés hatóköre:
+
+- egy előfizetésen belül egy Azure-régióban lévő virtuális gépek listájának
+- egy vagy több erőforráscsoport az előfizetéshez (egy Azure-régióban) található összes virtuális gép
+- egy adott előfizetéshez (egy Azure-régióban) található összes virtuális gép
+
+Metrikaalapú riasztási szabályok több erőforrást figyelő létrehozása jelenleg nem támogatott az Azure Portalon keresztül. Ezek a szabályok segítségével hozhat létre [Azure Resource Manager-sablonok](monitoring-create-metric-alerts-with-templates.md#resource-manager-template-for-metric-alert-that-monitors-multiple-resources). Az egyes virtuális gépekhez egyedi értesítéseket fog kapni. 
 
 ## <a name="typical-latency"></a>Átlagos késés
 

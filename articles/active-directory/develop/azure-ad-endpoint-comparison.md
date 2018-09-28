@@ -1,9 +1,9 @@
 ---
-title: Az Azure AD v2.0-végpont az 1.0-s verziójú végpont összehasonlítása |} A Microsoft Docs
+title: Az Azure AD v2.0-végpont az 1.0-s verziójú végponttal összehasonlítása |} A Microsoft Docs
 description: Ismeri az Azure AD v2.0-végpont és az 1.0-s verziójú végpont közötti különbségek
 services: active-directory
 documentationcenter: ''
-author: andretms
+author: CelesteDG
 manager: mtillman
 editor: ''
 ms.assetid: 5060da46-b091-4e25-9fa8-af4ae4359b6c
@@ -13,23 +13,23 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/21/2018
+ms.date: 09/27/2018
 ms.author: andret
-ms.reviewer: hirsin, celested
+ms.reviewer: hirsin, andret
 ms.custom: aaddev
-ms.openlocfilehash: 02c7edc84d2ac3a91c33d8f266d022db5cd5cb40
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: b75b31ddfc77be5ed651e7b8484e41a4ae73d8d8
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46948957"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47406532"
 ---
-# <a name="comparing-the-azure-ad-v20-endpoint-with-v10-endpoint"></a>Az Azure AD v2.0-végpont az 1.0-s verziójú végpont összehasonlítása
+# <a name="comparing-the-azure-ad-v20-endpoint-with-the-v10-endpoint"></a>Az Azure AD v2.0-végpont az 1.0-s verziójú végponttal összehasonlítása
 
 Új alkalmazás fejlesztése esetén fontos tudni, hogy az 1.0-s és 2.0-s verziójú végpontok közötti különbségeket. Az alábbiakban a fő különbségeket, valamint néhány meglévő korlátozást a v2.0-végpont.
 
 > [!NOTE]
-> Nem minden Azure AD-forgatókönyvek és funkciók támogatottak a v2.0-végpontra. Annak megállapításához, ha a v2.0-végpont használja, olvassa el [v2.0 korlátozások](#limitations).
+> Nem minden Azure Active Directory (Azure AD-) forgatókönyveket és funkciókat támogatja a v2.0-végpontra. Annak megállapításához, ha a v2.0-végpont használja, olvassa el [v2.0 korlátozások](#limitations).
 
 ## <a name="who-can-sign-in"></a>Ki jelentkezhet be
 
@@ -37,7 +37,7 @@ ms.locfileid: "46948957"
 
 * Az 1.0-s verziójú végpont lehetővé teszi, hogy csak munkahelyi és iskolai fiókjába való bejelentkezéshez az alkalmazást (Azure AD)
 
-* A v2.0-végpont lehetővé teszi a munkahelyi és iskolai fiókokhoz az Azure Active Directory és személyes fiókok (MSA) (hotmail.com, outlook.com, msn.com) való bejelentkezéshez.
+* A v2.0-végpont lehetővé teszi a munkahelyi és iskolai fiókok Azure AD-ből és személyes fiókok (MSA) (hotmail.com, outlook.com, msn.com) való bejelentkezéshez.
 
 * 1.0-s verziója és a v2.0-végpontokra is fogadja el a bejelentkezések *[vendégfelhasználók](https://docs.microsoft.com/azure/active-directory/b2b/what-is-b2b)* egy konfigurált alkalmazások az Azure AD-címtár *[egybérlős](single-and-multi-tenant-apps.md)* vagy *több-bérlős* bérlőspecifikus végpontjára mutató konfigurált alkalmazások (`https://login.microsoftonline.com/{TenantId_or_Name}`).
 
@@ -119,7 +119,7 @@ A `email` hatókör lehetővé teszi, hogy a felhasználó elsődleges e-mail c�
 
 Ez lehetővé teszi, hogy az alkalmazás minimális nyilvánosságra módon code – a felhasználó csak a fontos, hogy az alkalmazás ehhez szükséges információkat kérhet. Ezeken a hatókörökön további információkért lásd: [a 2.0-s verziójú hatókör-hivatkozást](v2-permissions-and-consent.md).
 
-## <a name="token-claims"></a>Jogkivonatok jogcímei
+## <a name="token-claims"></a>Jogkivonat
 
 A v2.0-végpont által kiállított jogkivonatokban lévő jogcímek nem lehet az általánosan elérhető által kiállított jogkivonatokban azonos az Azure AD-végpontok. Alkalmazások migrálása az új szolgáltatást nem azt feltételezik, egy adott jogcím id_tokens vagy access_tokens jelen. További részleteket a v2.0-végpont használt tokenek különböző típusú a [hozzáférési jogkivonat](access-tokens.md) referencia és [ `id_token` referencia](id-tokens.md)
 
@@ -214,15 +214,13 @@ Klienskódtár-támogatásával a v2.0-végpont jelenleg korlátozott. Ha azt sz
 
 A v2.0-végpont nem támogatja a SAML vagy WS-Federation; csak a támogatott Open ID Connect és az OAuth 2.0. Nem minden funkciók és képességek OAuth protokollok bekerültek a v2.0-végpontra.
 
-A következő protokoll funkciók és képességek jelenleg *nem érhető el* a v2.0-végpont:
+A következő protokoll funkciók és képességek jelenleg *nem érhető el* vagy *nem támogatott* a v2.0-végpont:
 
-* Jelenleg a `email` csak jogcímet ad vissza, ha egy nem kötelező jogcím van konfigurálva, és hatókör hatókör = e-mail lett megadva a kérelemben. Azonban ez a viselkedés változik, amint a v2.0-végpont további szabványoknak való megfelelés az Open ID Connect és OAuth2.0 frissül.
+* A `email` csak jogcímet ad vissza, ha egy nem kötelező jogcím van konfigurálva, és hatókör hatókör = e-mail lett megadva a kérelemben. Azonban várhatóan további szabványoknak való megfelelés az Open ID Connect és OAuth2.0 frissítésekor a v2.0-végpont módosíthatja ezt a viselkedést.
 
 * A v2.0-végpont nem támogatja kiállító szerepkör vagy csoport jogcímek azonosító-jogkivonatokat.
 
-* A [OAuth 2.0 erőforrás tulajdonosának jelszava hitelesítő adatok engedélyezés](https://tools.ietf.org/html/rfc6749#section-4.3) a v2.0-végpont nem támogatott.
-
-Emellett a v2.0-végpont nem támogatja az SAML- vagy WS-Federation protokollt semmilyen formáját.
+* A v2.0-végpont nem támogatja a [OAuth 2.0 erőforrás tulajdonosának jelszava hitelesítő adatok engedélyezés](https://tools.ietf.org/html/rfc6749#section-4.3).
 
 Jobb megértése érdekében a v2.0-végpont támogatott protokoll funkciók körét, olvassa el a [OpenID Connectet és az OAuth 2.0 protokoll referenciája](active-directory-v2-protocols.md).
 

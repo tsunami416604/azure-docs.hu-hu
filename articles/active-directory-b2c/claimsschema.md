@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 76fdf532a35cbe16543bc49b5c02fad5d86690d5
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 364600d4c1c53f4e5fe726d443287bf1a5f2d4ec
+ms.sourcegitcommit: 3150596c9d4a53d3650cc9254c107871ae0aab88
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44718990"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47419168"
 ---
 # <a name="claimsschema"></a>ClaimsSchema
 
@@ -268,7 +268,7 @@ A **jelszó** felhasználói adatbevitel típusa segítségével rögzíti a fel
 
 ### <a name="datetimedropdown"></a>DateTimeDropdown
 
-A **DateTimeDropdown** felhasználói adatbevitel típusa legördülő listákból válassza ki a nap, hónap és év körét szolgál.
+A **DateTimeDropdown** felhasználói adatbevitel típusa legördülő listákból válassza ki a nap, hónap és év körét szolgál. Predikátumok és PredicateValidations elemek segítségével szabályozhatja a dátum minimális és maximális értékeket. További információkért lásd: a **konfigurálása egy adott időtartományban** szakaszában [predikátumok és PredicateValidations](predicates.md).
 
 ![A datetimedropdown jogcímtípusú használatával](./media/claimsschema/datetimedropdown.png)
 

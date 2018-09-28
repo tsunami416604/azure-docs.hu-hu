@@ -7,12 +7,12 @@ author: bryanla
 ms.author: bryanla
 manager: mbaldwin
 ms.date: 09/25/2017
-ms.openlocfilehash: 776d5957ee2c11354c350523cbc8fde12fbcafaf
-ms.sourcegitcommit: 8b694bf803806b2f237494cd3b69f13751de9926
+ms.openlocfilehash: ac34f03c896e9e2180b653c41faa7f7525a40e33
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/20/2018
-ms.locfileid: "46498181"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47407875"
 ---
 # <a name="azure-key-vault-soft-delete-overview"></a>Az Azure Key Vault helyreállítható törlés áttekintése
 
@@ -41,12 +41,22 @@ Ezzel a funkcióval a törlési műveletet a key vault-objektum vagy a key vault
 
 Helyreállítható törlés egy nem kötelező a Key Vault-viselkedés, és **alapértelmezés szerint nincs engedélyezve** ebben a kiadásban. 
 
-### <a name="do-not-purge-flag"></a>Nem végleges törlés jelző
-A tároló vagy a tár objektum törlésének kényszerítése kívánó felhasználó megteheti. Ha egy tároló vagy a tároló objektumok törlése jogosultsággal rendelkező felhasználó kényszerítheti végleges törlése, még akkor is, ha a vault helyreállítható törlés be van kapcsolva ez. De ha a felhasználó szeretné megakadályozni a kényszerített törlése a tárolóban, vagy a tár objektum állíthatják--a védelem végleges törlés engedélyezése jelzője igaz értékű lesz. A tároló létrehozásakor engedélyezheti a jelzőt, ezzel a módszerrel. A végleges törlés elleni védelem bekapcsolása előfeltétele, rendelkeznie kell-e kapcsolva a helyreállítható törlés. A parancs az ehhez az Azure CLI 2
+### <a name="purge-protection--flag"></a>Védelem jelző törlése
+Végleges törlése a védelem (**--purge-védelem engedélyezése** az Azure CLI) jelző alapértelmezés szerint ki van kapcsolva. Ha ez a jelző be van kapcsolva, a tároló vagy törölt állapotban objektum nem törölhető, amíg a 90 napos megőrzési időszak lejárt. Az ilyen tár vagy az objektum még mindig lehet helyreállítani. Ez a jelző biztosítja, hogy egy tároló vagy egy objektumot is soha nem véglegesen törlődik mindaddig, amíg a megőrzési időszak letelte hozzáadott arra, hogy az ügyfelek. A végleges törlés védelmi jelző bekapcsolhatja, csak akkor, ha a helyreállítható törlés jelző be van kapcsolva, vagy a tároló létrehozásakor bekapcsolása mindkét helyreállítható törlés és a végleges törlése a védelem.
+
+[!NOTE] A végleges törlés elleni védelem bekapcsolása előfeltétele, rendelkeznie kell-e kapcsolva a helyreállítható törlés. A parancs az ehhez az Azure CLI 2
 
 ```
 az keyvault create --name "VaultName" --resource-group "ResourceGroupName" --location westus --enable-soft-delete true --enable-purge-protection true
 ```
+
+### <a name="permitted-purge"></a>Engedélyezett végleges törlése
+
+Végleges törlés, a végleges törlése, a key vault POST műveletnek a proxy erőforráson keresztül lehetséges, és speciális jogosultságra van szükség. Általában csak az előfizetés tulajdonosa fogja tudni kulcstartó végleges törlése. A POST műveletet aktivál, hogy a tároló azonnali és helyreállíthatatlan törlését. 
+
+Ez egy kivételek
+- az eset, amikor az Azure-előfizetés van megjelölve *undeletable*. Csak a szolgáltatás ebben az esetben előfordulhat, hogy végezze el a tényleges törlés, és úgy valósítja meg az ütemezett folyamatként. 
+- – Amikor a védelem végleges törlés engedélyezése jelző engedélyezve van a vault. Ebben az esetben a Key Vault várakozik 90 nap során az eredeti titkos objektum lett megjelölve törlésre véglegesen törli az objektumot.
 
 ### <a name="key-vault-recovery"></a>A Key vault helyreállítási
 
@@ -70,12 +80,6 @@ Helyreállíthatóan törölt erőforrások megadott idő, 90 napig maradnak meg
 - Csak a kifejezetten a kiemelt jogosultságú felhasználó előfordulhat, hogy kényszerített a key vault vagy a key vault objektum törlése egy törlési parancsot a megfelelő proxy erőforráson.
 
 Egy kulcstartó vagy egy objektumot a key vault helyreállítható, hacsak a a szolgáltatás a megőrzési időtartam végén a helyreállíthatóan törölt kulcstartó vagy a key vault-objektum és a tartalom végleges törlésére hajtja végre. Előfordulhat, hogy nem ütemezhető törölni az erőforrást.
-
-### <a name="permitted-purge"></a>Engedélyezett végleges törlése
-
-Végleges törlés, a végleges törlése, a key vault POST műveletnek a proxy erőforráson keresztül lehetséges, és speciális jogosultságra van szükség. Általában csak az előfizetés tulajdonosa fogja tudni kulcstartó végleges törlése. A POST műveletet aktivál, hogy a tároló azonnali és helyreállíthatatlan törlését. 
-
-Kivétel ez a helyzet, ha az Azure-előfizetés van megjelölve *undeletable*. Csak a szolgáltatás ebben az esetben előfordulhat, hogy végezze el a tényleges törlés, és úgy valósítja meg az ütemezett folyamatként. 
 
 ### <a name="billing-implications"></a>Számlázás – következmények
 

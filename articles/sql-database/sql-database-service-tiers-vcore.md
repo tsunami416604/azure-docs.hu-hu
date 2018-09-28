@@ -11,13 +11,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: sashan, moslake
 manager: craigg
-ms.date: 09/14/2018
-ms.openlocfilehash: 8947a34f43f09281712c0e211c3dc6b8db9da6b3
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.date: 09/26/2018
+ms.openlocfilehash: 3fb1357b7a70579fa527a896d5bd359749b10ad6
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47160672"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47407655"
 ---
 # <a name="choosing-a-vcore-service-tier-compute-memory-storage-and-io-resources"></a>Virtuális mag szolgáltatásszint kiválasztása, számítási, memória, tárolási és i/o-erőforrások
 
@@ -89,7 +89,7 @@ Az adatbázis biztonsági másolatait lefoglalta a pont támogatja az idő-vissz
 
 ### <a name="hyperscale-service-tier-preview"></a>Nagy kapacitású szolgáltatási szint (előzetes verzió)
 
-pillanatkép-alapú biztonsági mentés az Azure távoli tároló és a helyreállításokat ezeket a pillanatképeket használni a gyors helyreállítás. A biztonsági mentéseket azonnali, és nincs hatással a számítási i/o-teljesítményét. Visszaállítások rendkívül gyors, és nem az üzemeltetés mérete (percben nem óra/nap).
+A nagy kapacitású szolgáltatási rétegben a biztonsági mentések a pillanatkép-alapú és a távoli Azure storage-ban tárolt. Visszaállítás a pillanatképek használata gyors helyreállítás. A biztonsági mentéseket azonnali, és nincs hatással a számítási i/o-teljesítményét. Visszaállítások rendkívül gyors, és nem az üzemeltetés mérete (percben nem óra/nap).
 
 ## <a name="azure-hybrid-use-benefit"></a>Azure Hybrid Use Benefit
 

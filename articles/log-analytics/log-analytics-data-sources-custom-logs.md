@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/27/2018
+ms.date: 09/27/2018
 ms.author: bwren
-ms.component: na
-ms.openlocfilehash: 831b52a27a1ccfc349b9b54f8c3d874e41ddc322
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.component: ''
+ms.openlocfilehash: 5eab8e4bf6b1aa90a9eef3e26dfc3020e3e3179b
+ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39363143"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47423510"
 ---
 # <a name="custom-logs-in-log-analytics"></a>A Log Analytics egyéni naplók
 Az egyéni naplókat adatforrás a Log Analytics lehetővé teszi az események gyűjtésére a Windows és a Linux rendszerű számítógépek szöveges fájlok. Számos alkalmazás adatokat szöveges fájlok nem szabványos naplózási szolgáltatásokkal, például a Windows Eseménynapló vagy a Syslog naplófájlba.  Után minden egyes mezőket a bejelentkezés rekordja értelmezni tudja a [egyéni mezők](log-analytics-custom-fields.md) Log Analytics szolgáltatást.
@@ -40,6 +40,10 @@ A naplófájlok gyűjtendő egyeznie kell a következő feltételeknek.
 >Ha ismétlődő bejegyzéseket a naplófájlban, a Log Analytics gyűjti azokat.  Azonban a keresési eredmények lesz inkonzisztens ahol a az eredmények szűréséhez, mint a eredményszámot további események megjelenítése.  Fontos, hogy ellenőrizze, hogy a napló megállapításához, hogy az alkalmazás, amely létrehozza okozza ezt a viselkedést, és oldja meg az egyéni napló gyűjtése definíció létrehozása előtt, ha lehetséges lesz.  
 >
   
+>[!NOTE]
+> Ha az alkalmazás egy új naplófájlt hoz létre, minden nap, vagy ha egy bizonyos méretet elér, a Linuxhoz készült Log Analytics-ügynök nem deríti fel őket, amíg újra nem indítják. Ez azért, mert az ügynök csak enumerálása, és megkezdődik a figyelés indítása után a megadott naplók mintákat, és ezért meg kell terveznie, körülötte az az ügynök újraindítása automatizálásával.  Ez a korlátozás nem létezik a Windows a Log Analytics-ügynököt.  
+>
+
 ## <a name="defining-a-custom-log"></a>Egyéni napló meghatározása
 A következő eljárás használatával adja meg egy egyéni naplófájlt.  Ez a cikk az egyéni napló felvétele mintát bemutató végén görgessen.
 
@@ -66,9 +70,13 @@ Egy időbélyeg elválasztó használata, majd a TimeGenerated tulajdonság, az 
 5. Kattintson a **Tovább** gombra.
 
 ### <a name="step-3-add-log-collection-paths"></a>3. lépés Naplógyűjtemények elérési útjának felvétele
-Az ügynökön, ahol keresse meg az egyéni napló definiálni kell egy vagy több elérési útvonalat.  Vagy megadhat egy adott elérési útja és a naplófájl neve, vagy a név helyettesítő karakter segítségével adható meg egy elérési utat.  Ez támogatja az alkalmazásokat, amelyek minden nap, vagy ha egy fájl bizonyos méretet elér, hozzon létre egy új fájlt.  Az egyetlen naplófájl több elérési úttal is megadhatja.
+Az ügynökön, ahol keresse meg az egyéni napló definiálni kell egy vagy több elérési útvonalat.  Vagy megadhat egy adott elérési útja és a naplófájl neve, vagy a név helyettesítő karakter segítségével adható meg egy elérési utat. Ez támogatja az alkalmazásokat, amelyek minden nap, vagy ha egy fájl bizonyos méretet elér, hozzon létre egy új fájlt. Az egyetlen naplófájl több elérési úttal is megadhatja.
 
 Egy alkalmazás előfordulhat, hogy hozzon létre például egy naplófájlt minden nap log20100316.txt hasonlóan a neve tartalmazza a dátuma. Lehet, hogy az ilyen naplók mintát *log\*.txt* amely bármely naplófájl, az alkalmazás a következő lenne érvényes a séma elnevezése.
+
+>[!NOTE]
+> Ha az alkalmazás egy új naplófájlt hoz létre, minden nap, vagy ha egy bizonyos méretet elér, a Linuxhoz készült Log Analytics-ügynök nem deríti fel őket, amíg újra nem indítják. Ez azért, mert az ügynök csak enumerálása, és megkezdődik a figyelés indítása után a megadott naplók mintákat, és ezért meg kell terveznie, körülötte az az ügynök újraindítása automatizálásával.  Ez a korlátozás nem létezik a Windows a Log Analytics-ügynököt.  
+>
 
 Az alábbi táblázat példákat érvényes minták adja meg a különböző naplófájlokat.
 

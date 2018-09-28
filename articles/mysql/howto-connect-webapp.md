@@ -1,6 +1,6 @@
 ---
-title: Meglévő Azure App Service csatlakozzon az Azure-adatbázis az MySQL
-description: Utasításokat megfelelően kapcsolódás MySQL az Azure-adatbázishoz egy meglévő Azure App Service
+title: Csatlakozás a meglévő Azure App Service az Azure Database for MySQL-hez
+description: Utasítások megfelelően csatlakoztatása egy meglévő Azure App Service az Azure Database for MySQL
 services: mysql
 author: ajlam
 ms.author: andrela
@@ -8,58 +8,49 @@ editor: jasonwhowell
 manager: kfile
 ms.service: mysql
 ms.topic: article
-ms.date: 02/28/2018
-ms.openlocfilehash: ff4a28e2f9a0149016d0e47c24e4665ab2e0500d
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.date: 09/26/2018
+ms.openlocfilehash: 4aecc4941f2181216ea537c0019152ce822ac4b0
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35265503"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47408935"
 ---
-# <a name="connect-an-existing-azure-app-service-to-azure-database-for-mysql-server"></a>Egy meglévő Azure App Service csatlakozzon az Azure Database MySQL-kiszolgáló
-Ez a témakör azt ismerteti, hogyan adatbázishoz való csatlakozáshoz egy meglévő Azure App Service szolgáltatásban az Azure MySQL-kiszolgáló.
+# <a name="connect-an-existing-azure-app-service-to-azure-database-for-mysql-server"></a>Csatlakozás a meglévő Azure App Service az Azure Database for MySQL-kiszolgáló
+Ez a témakör azt ismerteti, hogyan csatlakozhat az Azure Database for MySQL-kiszolgáló egy meglévő Azure App Service.
 
 ## <a name="before-you-begin"></a>Előkészületek
-Jelentkezzen be az [Azure portálra](https://portal.azure.com). MySQL-kiszolgáló Azure-adatbázis létrehozása. További információkért tekintse meg [Azure-adatbázis létrehozása a portálról MySQL kiszolgáló](quickstart-create-mysql-server-database-using-azure-portal.md) vagy [Azure-adatbázis létrehozása a parancssori felület használatával MySQL-kiszolgáló](quickstart-create-mysql-server-database-using-azure-cli.md).
+Jelentkezzen be az [Azure Portalra](https://portal.azure.com). Hozzon létre egy Azure Database for MySQL-kiszolgálóhoz. Részletekért tekintse meg a [hogyan hozhat létre az Azure Database for MySQL-kiszolgáló portálról](quickstart-create-mysql-server-database-using-azure-portal.md) vagy [hogyan hozhat létre az Azure Database for MySQL-kiszolgáló CLI-vel](quickstart-create-mysql-server-database-using-azure-cli.md).
 
-Jelenleg nincsenek Azure-adatbázishoz egy Azure App Service szolgáltatásban való hozzáférésének engedélyezésére vonatkozó MySQL két megoldások. A két megoldás tartalmaz, amely kiszolgálószintű tűzfal-szabályok beállítása.
+Jelenleg nincsenek két megoldás MySQL-hez készült Azure-adatbázis az Azure App Service elérésének engedélyezéséhez. A két megoldás magában foglalja a kiszolgálószintű tűzfalszabályok beállítása.
 
-## <a name="solution-1---create-a-firewall-rule-to-allow-all-ips"></a>1 - megoldás hozzon létre egy tűzfalszabályt, hogy az összes IP-címek
-Azure MySQL-adatbázis származó tűzfalat használ az adatok védelme érdekében biztonsági biztosít. Az Azure App Service az adatbázishoz való kapcsolódáskor Azure MySQL-kiszolgáló, ne feledje, hogy a kimenő IP-címek az App Service dinamikus jellegű. 
+## <a name="solution-1---allow-azure-services"></a>1 - megoldás az Azure-szolgáltatások engedélyezése
+Azure Database for MySQL tűzfalat használ az adatok védelme érdekében hozzáférés-biztonságot nyújt. Történő csatlakozás egy Azure App Service az Azure Database for MySQL-kiszolgáló, vegye figyelembe, hogy az App Service kimenő IP-címek dinamikusak jellegűek. Az "Azure-szolgáltatásokhoz való hozzáférés engedélyezése" beállítás lehetővé teszi az app service, a MySQL-kiszolgálóhoz való csatlakozáshoz.
 
-Az Azure App Service rendelkezésre állásának biztosítása érdekében javasoljuk, ezzel a megoldással minden IP-címek engedélyezése.
+1. Az MySQL server a beállítások panelen kattintson a fejléc **kapcsolatbiztonság** a kapcsolatbiztonság panel megnyitásához az Azure Database for MySQL-hez.
 
-> [!NOTE]
-> Microsoft dolgozik a hosszú távú megoldás elkerülése érdekében, amely lehetővé teszi az összes IP-címek az Azure szolgáltatások MySQL Azure adatbázishoz való kapcsolódáshoz.
+   ![Az Azure portal – kapcsolatbiztonság kattintson](./media/howto-connect-webapp/1-connection-security.png)
 
-1. A MySQL kiszolgálót a beállítások panelen elemcsoportban kattintson **kapcsolatbiztonsági** kapcsolatbiztonsági panel megnyitásához az Azure-adatbázis a MySQL.
+2. Válassza ki **ON** a **Azure-szolgáltatásokhoz való hozzáférés engedélyezése**, majd **mentése**.
+   ![Az Azure portal – engedélyezi az Azure-hozzáférés](./media/howto-connect-webapp/allow-azure.png)
 
-   ![Azure portál – kattintson a kapcsolat biztonságát](./media/howto-manage-firewall-using-portal/1-connection-security.png)
+## <a name="solution-2---create-a-firewall-rule-to-explicitly-allow-outbound-ips"></a>2. megoldás, hozzon létre egy tűzfalszabályt, hogy kifejezetten engedélyezzék a kimenő IP-címek
+Minden a kimenő IP-címet az Azure App Service explicit módon adhat hozzá.
 
-2. Adja meg **SZABÁLYNÉV**, **KEZDŐ IP-**, és **záró IP-Címnél**, és kattintson a **mentése**.
-   - A szabálynév: engedélyezése – minden-IP-címek
-   - IP elindítása: 0.0.0.0
-   - Záró IP: 255.255.255.255
+1. App Service-tulajdonságok paneljén megtekintheti a **kimenő IP-cím**.
 
-   ![Azure portál – az összes IP-címek hozzáadása](./media/howto-connect-webapp/1_2-add-all-ips.png)
+   ![Az Azure portal - nézet kimenő IP-címek](./media/howto-connect-webapp/2_1-outbound-ip-address.png)
 
-## <a name="solution-2---create-a-firewall-rule-to-explicitly-allow-outbound-ips"></a>2 - megoldás hozzon létre egy tűzfalszabályt, explicit módon engedélyezi a kimenő IP-címek
-A kimenő IP az Azure App Service explicit módon adhat hozzá.
+2. A MySQL-kapcsolat biztonsági panelen adja hozzá a kimenő IP-címek egyesével.
 
-1. Az App Service tulajdonságai panelen megtekintheti a **kimenő IP-cím**.
+   ![Az Azure portal - explicit IP-címek hozzáadása](./media/howto-connect-webapp/2_2-add-explicit-ips.png)
 
-   ![Azure portál – nézet kimenő IP-címek](./media/howto-connect-webapp/2_1-outbound-ip-address.png)
+3. Ne felejtse el **mentése** a tűzfalszabályokat.
 
-2. A MySQL-kapcsolat biztonsági panelen vegye fel a kimenő IP-címet egyenként.
+Bár az Azure App Service-ben, hogy állandó IP-címek idővel megpróbálja, nincsenek esetekben, ahol az IP-címek változhat. Például ez akkor fordulhat elő, amikor az alkalmazás újrahasznosítást vagy egy skálázási művelet történik, vagy amikor új számítógépek kerülnek az Azure regionális adatközpontokat növeli a kapacitást. Az IP-címek módosítása, ha az alkalmazás sikerült szoftverkarbantartás abban az esetben, ha már nem képes csatlakozni a MySQL-kiszolgálóhoz. A fenti megoldások kiválasztásakor vegye figyelembe a figyelmet.
 
-   ![Azure portál – explicit IP-címek hozzáadása](./media/howto-connect-webapp/2_2-add-explicit-ips.png)
-
-3. Ne felejtse el **mentése** a tűzfalszabályok között.
-
-Bár az Azure App service megpróbálja adott idő alatt tartani az IP-címek állandó, vannak esetek, ahol az IP-címek megváltozhatnak. Például ez akkor fordulhat elő, amikor az alkalmazás újrahasznosítja azt vagy a méretezési művelet történik, vagy amikor új számítógépek hozzáadása a következő Azure regionális adatok adatközpontok növelhető a kapacitása. Ha az IP-címek módosítása, az alkalmazás sikerült leállásra abban az esetben, ha már nem tud kapcsolódni az a MySQL-kiszolgálóhoz. Az előző megoldásoknak a valamelyikét kiválasztásakor tartsa szem előtt a figyelmet.
-
-## <a name="ssl-configuration"></a>SSL-beállítása
-Azure MySQL-adatbázis SSL alapértelmezés szerint engedélyezve van. Ha az alkalmazás nem használ SSL az adatbázishoz való kapcsolódáshoz, majd szeretné az SSL letiltásához a MySQL-kiszolgálón. További SSL konfigurálásával kapcsolatos további információkért lásd: [SSL használatával MySQL az Azure-adatbázissal](howto-configure-ssl.md).
+## <a name="ssl-configuration"></a>SSL-konfigurációja
+Azure Database for MySQL-hez SSL alapértelmezés szerint engedélyezve van. Ha az alkalmazás nem használ SSL az adatbázishoz való csatlakozáshoz, majd szeretné tiltani az SSL a MySQL-kiszolgálón. További részletek az SSL konfigurálása: [SSL használatával az Azure Database for MySQL](howto-configure-ssl.md).
 
 ## <a name="next-steps"></a>További lépések
 Kapcsolati karakterláncokkel kapcsolatos további információkért tekintse meg [kapcsolati karakterláncok](howto-connection-string.md).

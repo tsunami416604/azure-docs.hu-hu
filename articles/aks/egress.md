@@ -1,97 +1,119 @@
 ---
-title: Engedélyezett kimenő Forgalomért Azure Kubernetes Service (AKS)-fürtből
-description: Engedélyezett kimenő forgalomért Azure Kubernetes Service (AKS) fürtök
+title: Statikus IP-címet a kimenő forgalmat az Azure Kubernetes Service (AKS)
+description: Ismerje meg, hogyan hozhat létre és használhat egy statikus nyilvános IP-címet a kimenő forgalmat az Azure Kubernetes Service (AKS)-fürt
 services: container-service
 author: iainfoulds
-manager: jeconnoc
 ms.service: container-service
 ms.topic: article
-ms.date: 05/23/2018
+ms.date: 09/26/2018
 ms.author: iainfou
-ms.openlocfilehash: e2793a72fcbc20b79bdd564e331426fedf1ae34b
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 175fa625a94626cde4d782abd1e9629530cab8b4
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44347800"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47408522"
 ---
-# <a name="azure-kubernetes-service-aks-egress"></a>Az Azure Kubernetes Service (AKS)-kimenő
+# <a name="use-a-static-public-ip-address-for-egress-traffic-in-azure-kubernetes-service-aks"></a>A kimenő forgalmat az Azure Kubernetes Service (AKS) egy statikus nyilvános IP-cím használata
 
-Alapértelmezés szerint a kimenő forgalom címének Azure Kubernetes Service (AKS) fürtök véletlenszerűen rendeli. Ez a konfiguráció esetén nem ideális megoldás azonosíthatja a külső szolgáltatásokhoz hozzáférő IP-címet kellene. Ez a dokumentum részletesen bemutatja egy statikusan hozzárendelt kimenő IP-címet az AKS-fürt létrehozásához és kezeléséhez.
+Alapértelmezés szerint a kimenő IP-cím az Azure Kubernetes Service (AKS) fürtök véletlenszerűen rendeli. Ez a konfiguráció esetén nem ideális külső szolgáltatásokhoz való hozzáférés IP-cím például azonosítania kell. Ehelyett szükség lehet egy statikus IP-címet, amely szerepel az engedélyezési listán a szolgáltatás-hozzáférés hozzárendelése.
 
-## <a name="egress-overview"></a>Kimenő forgalom áttekintése
+Ez a cikk bemutatja, hogyan hozhat létre és használhat egy statikus nyilvános IP-címet a kimenő forgalmat az AKS-fürtben való használatra.
 
-Kimenő forgalmát egy AKS-fürtöt a következő vannak dokumentálva az Azure Load Balancer konvenciókat [Itt][outbound-connections]. Mielőtt az első Kubernetes-szolgáltatás típusú `LoadBalancer` létrejött, az ügynök csomópontok nem részei egyetlen Azure Load Balancer-készlet. Ebben a konfigurációban a csomópontok használata nélkül egy példányszintű nyilvános IP-címet. Az Azure a kimenő folyamat egy nyilvános IP-forráscím, amely nem konfigurálható vagy determinisztikus fordítja le.
+## <a name="before-you-begin"></a>Előkészületek
 
-Egyszer típusú Kubernetes szolgáltatás `LoadBalancer` létrejött, az ügynök csomópontokat ad hozzá egy Azure Load Balancer-készletet. A kimenő flow Azure fordítja le azt első nyilvános IP-címet a terheléselosztó a következőn:.
+Ez a cikk azt feltételezi, hogy egy meglévő AKS-fürtöt. Ha egy AKS-fürtre van szüksége, tekintse meg az AKS gyors [az Azure CLI-vel] [ aks-quickstart-cli] vagy [az Azure portal használatával][aks-quickstart-portal].
+
+Emellett az Azure CLI 2.0.46 verziójára van szükség, vagy később telepített és konfigurált. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése][install-azure-cli].
+
+## <a name="egress-traffic-overview"></a>Kimenő adatforgalom áttekintése
+
+Kimenő forgalmát egy AKS-fürtöt a következő [Azure Load Balancer konvenciók][outbound-connections]. Az első Kubernetes-szolgáltatás típusú előtt `LoadBalancer` létrejött, az ügynök egy AKS-fürtöt a csomópontok nem részei egyetlen Azure Load Balancer-készlet. Ebben a konfigurációban a csomópontok nincsenek példányszintű nyilvános IP-cím van. Az Azure a kimenő folyamat egy nyilvános IP-forráscím, amely nem konfigurálható vagy determinisztikus fordítja le.
+
+Egyszer típusú Kubernetes szolgáltatás `LoadBalancer` létrejött, az ügynök csomópontokat ad hozzá egy Azure Load Balancer-készletet. A kimenő flow Azure fordítja le azt első nyilvános IP-címet a terheléselosztó a következőn:. A nyilvános IP-cím csak a gyűjteményszintű az erőforrás érvényes lesz. Ha törli a terheléselosztó Kubernetes szolgáltatás, a kapcsolódó terheléselosztót és IP-cím is törlődik. Ha szeretné hozzárendelni a megadott IP-címet vagy az újratelepített Kubernetes-szolgáltatás egy IP-cím megőrzése, hozzon létre, és statikus nyilvános IP-cím.
 
 ## <a name="create-a-static-public-ip"></a>Statikus nyilvános IP-cím létrehozása
 
-Megakadályozni véletlenszerű IP-címeket használja, hozzon létre statikus IP-címet, és győződjön meg arról, a terheléselosztó használja ezt a címet. Az IP-címet kell hozhatók létre az AKS **csomópont** erőforráscsoportot.
+Amikor az aks-sel használható statikus nyilvános IP-címet hoz létre, az IP-cím erőforrás kell létrehozni a **csomópont** erőforráscsoportot. Az erőforráscsoport nevét az első a [az aks show] [ az-aks-show] parancsot, majd adja hozzá a `--query nodeResourceGroup` lekérdezési paraméter. Az alábbi példa lekéri az AKS-fürt nevét a csomópont erőforráscsoport *myAKSCluster* az erőforráscsoport nevét a *myResourceGroup*:
 
-Az erőforráscsoport nevét az első a [az resource show] [ az-resource-show] parancsot. Az erőforráscsoport-nevet és a fürt nevét, hogy megfeleljenek a környezet frissítése.
-
-```
-$ az resource show --resource-group myResourceGroup --name myAKSCluster --resource-type Microsoft.ContainerService/managedClusters --query properties.nodeResourceGroup -o tsv
+```azurecli
+$ az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeResourceGroup -o tsv
 
 MC_myResourceGroup_myAKSCluster_eastus
 ```
 
-Ezután a [az network public-ip létrehozása] [ public-ip-create] paranccsal hozzon létre egy statikus nyilvános IP-címet. Az erőforráscsoport nevét az utolsó lépésnél a név gatherred megfelelően frissítse.
+Most hozzon létre egy statikus nyilvános IP-címet a [az hálózati nyilvános IP-cím létrehozása] [ az-network-public-ip-create] parancsot. Adja meg az előző paranccsal beszerzett a csomópont erőforráscsoport-név, és ezután a egy nevet az IP-cím erőforrás, például *myAKSPublicIP*:
 
-```console
-$ az network public-ip create --resource-group MC_myResourceGroup_myAKSCluster_eastus --name myAKSPublicIP --allocation-method static --query publicIp.ipAddress -o table
+```azurecli
+az network public-ip create \
+    --resource-group MC_myResourceGroup_myAKSCluster_eastus \
+    --name myAKSPublicIP \
+    --allocation-method static
+```
 
-Result
--------------
-23.101.128.81
+Az IP-cím jelenik meg, ahogyan az a következő sűrített példához kimenet:
+
+```json
+{
+  "publicIp": {
+    "dnsSettings": null,
+    "etag": "W/\"6b6fb15c-5281-4f64-b332-8f68f46e1358\"",
+    "id": "/subscriptions/<SubscriptionID>/resourceGroups/MC_myResourceGroup_myAKSCluster_eastus/providers/Microsoft.Network/publicIPAddresses/myAKSPublicIP",
+    "idleTimeoutInMinutes": 4,
+    "ipAddress": "40.121.183.52",
+    [..]
+  }
+````
+
+Később a nyilvános IP cím használatával lekérheti a [az network public-ip list] [ az-network-public-ip-list] parancsot. Adja meg a csomópont erőforráscsoport nevét, és ezután lekérdezi a *IP-cím* az alábbi példában látható módon:
+
+```azurecli
+$ az network public-ip list --resource-group MC_myResourceGroup_myAKSCluster_eastus --query [0].ipAddress --output tsv
+
+40.121.183.52
 ```
 
 ## <a name="create-a-service-with-the-static-ip"></a>Szolgáltatás létrehozása a statikus IP-címmel
 
-Most, hogy egy IP-címet, egy Kubernetes-szolgáltatás létrehozása a típus `LoadBalancer` és az IP-cím hozzárendelése a szolgáltatást.
-
-Hozzon létre egy fájlt `egress-service.yaml` másolja be a következő yaml-kódot. Frissítse az IP-címet a környezetéhez.
+Szolgáltatás létrehozása a statikus nyilvános IP-címmel, adja hozzá a `loadBalancerIP` a YAML jegyzékfájlhoz-tulajdonság és a statikus nyilvános IP-cím értékét. Hozzon létre egy fájlt `egress-service.yaml` másolja be a következő yaml-kódot. Adja meg saját nyilvános IP-címet az előző lépésben létrehozott.
 
 ```yaml
 apiVersion: v1
 kind: Service
 metadata:
-  name: aks-egress
+  name: azure-egress
 spec:
-  loadBalancerIP: 23.101.128.81
+  loadBalancerIP: 40.121.183.52
   type: LoadBalancer
   ports:
-  - port: 8080
+  - port: 80
 ```
 
 Hozzon létre, majd az üzembe helyezés a `kubectl apply` parancsot.
 
 ```console
-$ kubectl apply -f egress-service.yaml
-
-service "aks-egress" created
+kubectl apply -f egress-service.yaml
 ```
 
-Ez a szolgáltatás létrehozása az Azure Load Balancer egy új előtérbeli IP-Címmel konfigurálja. Ha nem rendelkezik más IP-címek konfigurálva, majd **összes** irányuló kimenő adatforgalmat most ezt a címet kell használnia. Az Azure Load Balancer több címekkel van konfigurálva, kimenő forgalom használja az első IP-cím a terheléselosztón.
+Ez a szolgáltatás az Azure Load Balancer konfigurálása egy új előtérbeli IP-címet. Ha nem rendelkezik más IP-címek konfigurálva, majd **összes** irányuló kimenő adatforgalmat most ezt a címet kell használnia. Az Azure Load Balancer több címekkel van konfigurálva, kimenő forgalom használja az első IP-cím a terheléselosztón.
 
 ## <a name="verify-egress-address"></a>Kimenő forgalom címének ellenőrzése
 
-Győződjön meg arról, hogy a nyilvános IP-címet használja, használjon egy szolgáltatás például `checkip.dyndns.org`.
+Ellenőrizze, hogy a statikus nyilvános IP-címet használja, a DNS-keresési szolgáltatás használhatja például `checkip.dyndns.org`.
 
-Indítsa el, majd rendelje hozzá egy pod:
-
-```console
-$ kubectl run -it --rm aks-ip --image=debian
-```
-
-Ha szükséges, telepítse a curl a tárolóban:
+Indítsa el, és a egy alapszintű csatolja *Debian* pod:
 
 ```console
-$ apt-get update && apt-get install curl -y
+kubectl run -it --rm aks-ip --image=debian
 ```
 
-Curl `checkip.dyndns.org`, a kimenő IP-címet adja vissza, amely:
+A tároló a webhely elérésére, `apt-get` telepítéséhez `curl` a tárolóba.
+
+```console
+apt-get update && apt-get install curl -y
+```
+
+Most már a curl használatával eléréséhez a *checkip.dyndns.org* hely. A kimenő IP-cím jelenik meg, ahogy az alábbi példa kimenetében megjelennek. Az IP-cím megegyezik a statikus nyilvános IP-cím létrehozása és a terheléselosztó szolgáltatás meghatározása:
 
 ```console
 $ curl -s checkip.dyndns.org
@@ -99,30 +121,18 @@ $ curl -s checkip.dyndns.org
 <html><head><title>Current IP Check</title></head><body>Current IP Address: 23.101.128.81</body></html>
 ```
 
-Megtekintheti, hogy az IP-cím megegyezik-e a statikus IP-címet az Azure load balancer csatlakozik.
-
-## <a name="ingress-controller"></a>Bejövőforgalom-vezérlőt
-
-Az Azure Load Balancer több nyilvános IP-címek fenntartására elkerüléséhez érdemes bejövőforgalom-vezérlőt. Bejövő-vezérlők adja meg, további előnyöket, például a terheléselosztás, a TLS/SSL-lezárást, URI újraírások, és a felsőbb rétegbeli SSL/TLS-titkosítás támogatása. Bejövő forgalom-tartományvezérlőket az aks-ben kapcsolatos további információkért lásd: a [NGINX konfigurálása az AKS-fürt bejövőforgalom-vezérlőjéhez] [ ingress-aks-cluster] útmutató.
-
 ## <a name="next-steps"></a>További lépések
 
-További információ az ebben a dokumentumban bemutatott szoftver.
-
-- [Helm CLI][helm-cli-install]
-- [Az NGINX bejövőforgalom-vezérlőt][nginx-ingress]
-- [Az Azure Load Balancer kimenő kapcsolatok][outbound-connections]
+Az Azure Load Balancer több nyilvános IP-címek fenntartására elkerüléséhez bejövőforgalom-vezérlőjéhez helyette használhatja. Bejövő forgalom tartományvezérlők további előnyökkel, például a TLS/SSL-lezárást, támogatási URI újraírások, és a felsőbb rétegbeli SSL/TLS-titkosítás adja meg. További információkért lásd: [az aks-ben hozzon létre egy alapszintű bejövőforgalom-vezérlőjéhez][ingress-aks-cluster].
 
 <!-- LINKS - internal -->
-[az-resource-show]: /cli/azure/resource#az-resource-show
+[az-network-public-ip-create]: /cli/azure/network/public-ip#az-network-public-ip-create
+[az-network-public-ip-list]: /cli/azure/network/public-ip#az-network-public-ip-list
+[az-aks-show]: /cli/azure/aks#az-aks-show
 [azure-cli-install]: /cli/azure/install-azure-cli
-[azure-cloud-shell]: ../cloud-shell/overview.md
-[aks-faq-resource-group]: faq.md#why-are-two-resource-groups-created-with-aks
-[create-aks-cluster]: ./kubernetes-walkthrough.md
-[helm-cli-install]: ./kubernetes-helm.md#install-helm-cli
 [ingress-aks-cluster]: ./ingress-basic.md
 [outbound-connections]: ../load-balancer/load-balancer-outbound-connections.md#scenarios
 [public-ip-create]: /cli/azure/network/public-ip#az-network-public-ip-create
-
-<!-- LINKS - external -->
-[nginx-ingress]: https://github.com/kubernetes/ingress-nginx
+[aks-quickstart-cli]: kubernetes-walkthrough.md
+[aks-quickstart-portal]: kubernetes-walkthrough-portal.md
+[install-azure-cli]: /cli/azure/install-azure-cli

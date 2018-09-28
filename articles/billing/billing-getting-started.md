@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/24/2018
 ms.author: cwatson
-ms.openlocfilehash: d17215fe05a4795bd539759d98695ec2f6b0df3d
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: 6b497fd9f4280c36adcbeb4d94e469525c9dad6e
+ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47393499"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47423000"
 ---
 # <a name="prevent-unexpected-charges-with-azure-billing-and-cost-management"></a>Az Azure-elszámolással és költségkezeléssel váratlan költségek megelőzése
 
@@ -54,17 +54,6 @@ Díjszabási információkért tekintse meg ezt [– gyakori kérdések](https:/
 Általában amikor hozzáad egy szolgáltatás az Azure Portalon, nincs olyan nézet, amely bemutatja, egy hasonló havi becsült költség. Például ha úgy dönt, hogy a Windows virtuális gép méretét, láthatja a becsült havi költség a számítási órák:
 
 ![Példa: egy a1-es Windows virtuális gép becsült cost 66.96 USD / hó](./media/billing-getting-started/vm-size-cost.PNG)
-
-### <a name="set-up-billing-alerts"></a>Számlázási értesítések beállítása
-
-Állítsa be a számlázási figyelmeztető e-mailek küldése az adathasználati költségek meghaladja az Ön által megadott. Ha rendelkezik a havi kreditek, beállítása használatakor be egy megadott mennyiséget. További információkért lásd: [elszámolási értesítések a Microsoft Azure-előfizetések beállítása](billing-set-up-alerts.md).
-
-![A számlázási riasztási e-mail képernyőképe](./media/billing-getting-started/billing-alert.png)
-
-> [!NOTE]
-> Ez a funkció egyelőre előzetes verzióként érhető így rendszeresen ellenőrizze a használatot.
-
-Előfordulhat, hogy szeretné használni a díjkalkulátor, a Költségbecslés irányelvként az első riasztás.
 
 ### <a name="spending-limit"></a> Ellenőrizze, hogy a költségkeret maximumát
 
@@ -166,7 +155,7 @@ Vállalati költségek nézet jelenleg nyilvános előzetes verzióban érhető 
     - Részleg rendszergazdaként, és a beléptetés adminisztrátora letiltotta a "DA költségek megtekintése" beállítást.  Hozzáfér a regisztráció rendszergazdájához forduljon. 
     - Azure csatorna-partneren keresztül vásárolta meg, és a partner nem jelent meg a díjszabási információkat.  
 - Költség hozzáféréssel kapcsolatos beállítások frissítése esetén a vállalati portálon, van néhány percet, mielőtt a módosítások megjelennek az Azure Portalon késés.
-- A költségkeretet, számlázási figyelmeztetéseket, valamint a számla nem vonatkoznak EA-előfizetések.
+- A költségkeret, és a számla útmutatást EA-előfizetések nem vonatkoznak.
 
 ### <a name="check-your-subscription-and-access"></a>Az előfizetés és a hozzáférés ellenőrzése
 

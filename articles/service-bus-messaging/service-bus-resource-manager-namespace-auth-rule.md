@@ -12,14 +12,14 @@ ms.devlang: tbd
 ms.topic: article
 ms.tgt_pltfrm: dotnet
 ms.workload: na
-ms.date: 04/11/2018
+ms.date: 09/11/2018
 ms.author: spelluru
-ms.openlocfilehash: ac57c27cf973a2ba236ad1812129e29284deb211
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 1250851386b9423b66bdbfd03292de56fd38850d
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43696122"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47410102"
 ---
 # <a name="create-a-service-bus-authorization-rule-for-namespace-and-queue-using-an-azure-resource-manager-template"></a>Hozzon létre egy Service Bus-engedélyezési szabály névtérhez és üzenetsorhoz, egy Azure Resource Manager-sablon használatával
 
@@ -167,7 +167,7 @@ azure group deployment create \<my-resource-group\> \<my-deployment-name\> --tem
 ## <a name="next-steps"></a>További lépések
 Most, hogy létrehozta és erőforrások Azure Resource Managerrel üzembe helyezett, megtudhatja, hogyan kezelhetők ezek a cikkek alapján:
 
-* [Service Bus kezelése a PowerShell](service-bus-powershell-how-to-provision.md)
+* [A Service Bus kezelése a PowerShell használatával](service-bus-powershell-how-to-provision.md)
 * [A Service Bus-erőforrások kezelése a Service Bus Explorerrel](https://github.com/paolosalvatori/ServiceBusExplorer/releases)
 * [A Service Bus-hitelesítés és engedélyezés](service-bus-authentication-and-authorization.md)
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 08/24/2018
 ms.author: mibender
-ms.openlocfilehash: 28eeae8906480a5a160bfe11386da96b646f7427
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: c10e071100410f6d5d995d88657bdd85c08a9715
+ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44296856"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47423493"
 ---
 # <a name="get-started-for-azure-it-operators"></a>Ismerkedés az Azure-operátorok
 
@@ -228,10 +228,6 @@ További információkért lásd: [betekintést nyerhet a Microsoft Azure erőfo
 ### <a name="forecast-cost-with-the-pricing-calculator"></a>A díjkalkulátor az előre jelzett költség
 
 Az Azure-ban minden egyes szolgáltatás díjszabása eltér. Sok Azure-szolgáltatás alapszintű, Standard és Premium szintet biztosítanak. Általában minden szint tartalmaz ára és teljesítménye szintekre. Használatával a [online díjkalkulátor](http://azure.microsoft.com/pricing/calculator), díjszabási becslések hozhat létre. A díjkalkulátorban feltüntetett tartalmaz egy erőforrás vagy erőforráscsoport költségek becsléséhez rugalmasságot.
-
-### <a name="set-up-billing-alerts"></a>Számlázási értesítések beállítása
-
-Miután telepítette az alkalmazáshoz vagy megoldáshoz az Azure-ban, hozhat létre riasztásokat, amelyek az Ön e-mailt, ha a riasztásban szereplő definiálva megközelítést, a költségkorlátozási küldenie. További információkért lásd: [elszámolási értesítések a Microsoft Azure-előfizetések beállítása](../../billing/billing-set-up-alerts.md).
 
 ## <a name="azure-resource-manager"></a>Azure Resource Manager
 

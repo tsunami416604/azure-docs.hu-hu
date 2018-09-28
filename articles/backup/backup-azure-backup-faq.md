@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 8/2/2018
 ms.author: markgal
-ms.openlocfilehash: aa26106460f305568fcb2dd1b84fbc54370e5f39
-ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
+ms.openlocfilehash: efe08eddaceb5a764dbd5393e79644eac1e2e106
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45543577"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47406158"
 ---
 # <a name="questions-about-the-azure-backup-service"></a>Kérdések az Azure Backup szolgáltatással kapcsolatban
 Ez a cikk az Azure Backup-összetevővel kapcsolatos gyakori kérdésekre ad választ. Egyes válaszokban részletes információkat tartalmazó cikkekre mutató hivatkozások találhatók. Ha kérdést szeretne feltenni az Azure Backup szolgáltatással kapcsolatban, kattintson a jobb oldalon található **Megjegyzések** gombra. A megjegyzések a cikk alján jelennek meg. Megjegyzések írásához Livefyre-fiók szükséges. Emellett egy fórumbejegyzésben is feltehet kérdéseket az Azure Backup szolgáltatással kapcsolatban a [vitafórumon](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup).
@@ -148,7 +148,7 @@ Az alábbi táblázat megmagyarázza, hogy az egyes adatforrásméretek hogyan l
 | Microsoft Exchange |Egy biztonsági mentés alatt álló Exchange-kiszolgáló összes Exchange-adatbázisa |
 | BMR/Rendszerállapot |A biztonsági mentés alatt álló gép BMR-ének vagy rendszerállapotának minden egyes másolata |
 
-Az Azure IaaS virtuális gépek biztonsági mentését minden virtuális Géphez legfeljebb 16 adatlemezzel rendelkezhet, és az egyes adatlemezek legfeljebb 4095 GB is lehet.
+Az Azure IaaS virtuális gépek biztonsági mentését minden virtuális gép legfeljebb 32 adatlemezt is rendelkezik, és az egyes adatlemezek legfeljebb 4095 GB is lehet.
 
 ### <a name="is-there-a-limit-on-the-amount-of-data-held-in-a-recovery-services-vault"></a>A Recovery Services-tárolóban tárolt adatok mennyisége korlátozva van?
 Nincs, képes biztonsági mentést egy Recovery Services-tároló adatok mennyisége nincs korlátozva.

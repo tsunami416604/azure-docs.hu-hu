@@ -11,19 +11,22 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/05/2018
+ms.date: 09/27/2018
 ms.author: jeffgilb
-ms.reviewer: jeffgo
-ms.openlocfilehash: aacf99afef344564d028e78892091c6618c7d495
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.reviewer: quying
+ms.openlocfilehash: b11ce8bbbf4b270f7a3b9689f95b0cbfca3b14c9
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44026689"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47408878"
 ---
 # <a name="add-hosting-servers-for-the-mysql-resource-provider"></a>Üzemeltetési kiszolgáló hozzáadása a MySQL erőforrás-szolgáltató
 
 A virtuális gépen (VM) egy MySQL-példányt is üzemeltethet [Azure Stack](azure-stack-poc.md), vagy egy virtuális Gépen az Azure Stack környezettel, amennyiben a MySQL erőforrás-szolgáltató csatlakozhat a példány kívül.
+
+> [!NOTE]
+> MySQL-adatbázisok kell lehet létrehozni a MySQL erőforrás-szolgáltató kiszolgálón. A MySQL erőforrás-szolgáltató MySQL üzemeltetési kiszolgáló számlázható, felhasználói előfizetés hozza létre az alapértelmezett szolgáltatója előfizetésben kell létrehozni. Az erőforrás-szolgáltató kiszolgáló nem használandó felhasználói adatbázisok üzemeltetéséhez.
 
 Az üzemeltetési kiszolgáló 5.6-os, 5.7-es és 8.0 MySQL verziók használhatók. A MySQL-RP nepodporuje caching_sha2_password hitelesítés; amely a következő kiadásban fog bővülni. MySQL 8.0 kiszolgálók mysql_native_password használatára kell konfigurálni. A MariaDB használata is támogatott.
 

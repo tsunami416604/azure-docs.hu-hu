@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/26/2018
+ms.date: 09/26/2018
 ms.author: spelluru
-ms.openlocfilehash: f9dbd663ce3b15e6a825f0ef73f3dd5d1f5df76b
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: bdbec11cfbb467d45321d18931a2601a95d01bed
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43697543"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47409099"
 ---
 # <a name="message-deferral"></a>Üzenetek halasztása
 
@@ -26,19 +26,19 @@ Ha egy üzenetsor vagy előfizetés ügyfél kap egy üzenet, hogy nem hajlandó
 
 Késleltetési kifejezetten létrehozott munkafolyamat-forgatókönyvek feldolgozás funkciója. A munkafolyamat-keretrendszerek szükség lehet a meghatározott sorrendben feldolgozandó bizonyos műveletek, és előfordulhat, hogy van néhány fogadott üzenetek feldolgozásához elhalasztani, amíg befejeződik, előírt előzetes munka, amely a többi üzenet arról tájékoztatja.
 
-Ez egy egyszerű szemléltető példa egy feladatütemezési, amelyben fizetési megjelenik egy értesítés egy külső fizetési szolgáltatói rendszerekben mielőtt végbement volna a megfelelő beszerzési rendelés lett az áruházban a teljesítése rendszer Rendelésfeldolgozó. Ebben az esetben a teljesítése rendszer a fizetési értesítés feldolgozása, csak egy megrendelés társítandó, akkor előfordulhat, hogy késleltetése. Szinkronizálási forgatókönyvekben, ahol különböző forrásokból származó üzenetek meghajtó, a munkafolyamat előre, a valós idejű végrehajtásának sorrendje valóban megfelelő lehet, de az üzeneteket az eredményekkel tükröző sorrendben előfordulhat, hogy érkeznek.
+Egy egyszerű szemléltető példa egy feladatütemezési, amelyben fizetési megjelenik egy értesítés egy külső fizetési szolgáltatói rendszerekben mielőtt végbement volna a megfelelő beszerzési rendelés lett az áruházban a teljesítése rendszer Rendelésfeldolgozó. Ebben az esetben a teljesítése rendszer a fizetési értesítés feldolgozása, csak egy megrendelés társítandó, akkor előfordulhat, hogy késleltetése. Szinkronizálási forgatókönyvekben, ahol különböző forrásokból származó üzenetek meghajtó, a munkafolyamat előre, a valós idejű végrehajtásának sorrendje valóban megfelelő lehet, de az üzeneteket az eredményekkel tükröző sorrendben előfordulhat, hogy érkeznek.
 
-Végső soron a késleltetési a átrendezése érkezési sorrendben érkező üzeneteket, amelyben azok feldolgozható, eközben üzeneteket biztonságosan el kell halasztani feldolgozási melyet üzenet áruházzal rendeléshez célszerű.
+Végső soron a késleltetési az üzenetek érkezési sorrendben átrendezése, amelyben azok feldolgozható, eközben üzeneteket biztonságosan el kell halasztani feldolgozási melyet üzenet áruházzal rendeléshez célszerű.
 
 ## <a name="message-deferral-apis"></a>Üzenetek halasztása API-k
 
 Az API [BrokeredMessage.Defer](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.defer?view=azureservicebus-4.1.1#Microsoft_ServiceBus_Messaging_BrokeredMessage_Defer) vagy [BrokeredMessage.DeferAsync](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.deferasync?view=azureservicebus-4.1.1#Microsoft_ServiceBus_Messaging_BrokeredMessage_DeferAsync) a .NET-keretrendszer ügyfél [MessageReceiver.DeferAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.deferasync) a .NET Standard ügyfél és a **mesageReceiver.defer** vagy **messageReceiver.deferSync** a Java-ügyfél. 
 
-Késleltetett üzenet az összes aktív üzenetek (ellentétben a kézbesítetlen levelek alárendelt várólista élő) együtt a fő üzenetsor maradnak, de azok már nem fogadhatók a rendszeres Receive/ReceiveAsync funkciókkal. Késleltetett üzenet keresztül könnyen megtalálhatók legyenek [az üzenetek közötti böngészés](message-browsing.md) Ha egy alkalmazás elveszti őket nyomon.
+Késleltetett üzenet az összes aktív üzenetek (ellentétben a kézbesítetlen levelek alüzenetsor az élő) együtt a fő üzenetsor maradnak, de azok már nem fogadhatók a rendszeres Receive/ReceiveAsync funkciókkal. Késleltetett üzenet keresztül könnyen megtalálhatók legyenek [az üzenetek közötti böngészés](message-browsing.md) Ha egy alkalmazás elveszti őket nyomon.
 
 Egy késleltetett üzenetet lekéréséhez tulajdonosától feladata megjegyzésénél a [SequenceNumber](/dotnet/api/microsoft.azure.servicebus.message.systempropertiescollection.sequencenumber#Microsoft_Azure_ServiceBus_Message_SystemPropertiesCollection_SequenceNumber) , azt késleltet azt. Bármely, hogy ismeri a sorszáma egy késleltetett üzenetet fogadó is később az üzenet explicit módon a `Receive(sequenceNumber)`.
 
-Ha nem lehet feldolgozni egy üzenetet, mert az üzenet egy adott erőforrás átmenetileg nem érhető el, de üzenet feldolgozása nem summarily felfüggesztésére vonatkozó, egy üzenetet elhelyezése az ügyféloldali néhány percet módja ne felejtse el a  **SequenceNumber** a egy [ütemezett üzenet](message-sequencing.md) bizonylatok néhány perc múlva, és újra a késleltetett üzenet beolvasása, az ütemezett üzenet érkezésekor. Vegye figyelembe, hogy ha üzenetkezelőként függ, hogy a művelet egy adatbázis, és átmenetileg nem érhető el, hogy az adatbázis, azt kell nem késleltetési, hanem inkább az üzenetek fogadása felfüggesztése funkciót azonban teljesen, amíg az adatbázis újból elérhető lesz.
+Ha nem lehet feldolgozni egy üzenetet, mert az üzenet egy adott erőforrás átmenetileg nem érhető el, de üzenet feldolgozása nem summarily felfüggesztésére vonatkozó, egy üzenetet elhelyezése az ügyféloldali néhány percet módja ne felejtse el a  **SequenceNumber** a egy [ütemezett üzenet](message-sequencing.md) bizonylatok néhány perc múlva, és újra a késleltetett üzenet beolvasása, az ütemezett üzenet érkezésekor. Ha üzenetkezelőként függ, hogy a művelet egy adatbázis, és átmenetileg nem érhető el, hogy az adatbázis, azt kell nem késleltetési, hanem inkább az üzenetek fogadása felfüggesztése funkciót azonban teljesen, amíg az adatbázis újból elérhető lesz.
 
 Üzenetek késleltetésének nincs hatással az üzenetek lejáratkor, azaz a késleltetett üzenet továbbra is a kezdetben ütemezett időpontban lejár és majd át a kézbesítetlen levelek várólistájára vonatkozik, ha így vannak konfigurálva.
 

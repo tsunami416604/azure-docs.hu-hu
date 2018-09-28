@@ -7,20 +7,20 @@ ms.topic: conceptual
 ms.date: 09/18/2018
 ms.author: snmuvva
 ms.component: alerts
-ms.openlocfilehash: 479fd902ef68bf24306bcd699da0be08415592a0
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 6ac31818a68aa2b4624410b423b7559b84275777
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46956989"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47409371"
 ---
-# <a name="create-view-and-manage-metric-alerts-using-azure-monitor"></a>Létrehozása, megtekintése és használata az Azure Monitor metrika-riasztások kezelése
+# <a name="create-view-and-manage-metric-alerts-using-azure-monitor"></a>Létrehozása, megtekintése és kezelése az Azure Monitor használatával metrikákhoz kapcsolódó riasztások
 
 Az Azure monitorban metrikákhoz kapcsolódó riasztások hardvermódosításainak értesítést kaphat, amikor egy, a mérőszámok átlépnek egy küszöbértéket. Metrikákhoz kapcsolódó riasztások platform többdimenziós metrikák, egyéni metrikákat, az Application Insights standard és egyéni mérőszámok széles működik. Ebben a cikkben azt azt ismerteti, hogyan hozhat létre, megtekintése és kezelése a metrikaalapú riasztási szabályok az Azure portal és az Azure CLI használatával. Metrikaalapú riasztási szabályok ismertetett Azure Resource Manager-sablonok használatával is létrehozhat [egy külön cikk](monitoring-enable-alerts-using-template.md).
 
 Több hogyan metrika kapcsolatos riasztások dolgozhassanak további [metrika riasztások – áttekintés](alert-metric-overview.md).
 
-## <a name="create-a-metric-alert-rule-using-azure-portal"></a>Az Azure portal használatával a metrikaalapú riasztási szabály létrehozása
+## <a name="create-with-azure-portal"></a>Hozzon létre az Azure Portalon
 
 Az alábbi eljárás ismerteti, hogyan lehet a metrikaalapú riasztási szabály létrehozása az Azure Portalon:
 
@@ -58,7 +58,7 @@ Az alábbi eljárás ismerteti, hogyan lehet a metrikaalapú riasztási szabály
 > [!NOTE]
 > Metrikariasztás portálon keresztül létrehozott szabályok jönnek létre a célként megadott erőforrás azonos erőforráscsoportban.
 
-## <a name="view-and-manage-metric-alert-rules-using-azure-portal"></a>Megtekintheti és kezelheti a metrikaalapú riasztási szabályok az Azure portal használatával
+## <a name="view-and-manage-with-azure-portal"></a>Megtekintése és kezelése az Azure Portalon
 
 Megtekintheti és kezelheti a riasztásokat szabályok kezelése panel használatával metrikariasztási szabályokra. Az alábbi eljárás bemutatja, hogyan a metrikaalapú riasztási szabályok megtekintése és szerkesztése, az egyiket.
 
@@ -80,7 +80,7 @@ Megtekintheti és kezelheti a riasztásokat szabályok kezelése panel használa
 
 6. Kattintson a **kész** a módosítások mentéséhez.
 
-## <a name="create-view-and-manage-metric-alert-rules-using-azure-cli"></a>Létrehozása, megtekintése és kezelése az Azure CLI-vel metrikaalapú riasztási szabályok
+## <a name="with-azure-cli"></a>Az Azure CLI-vel
 
 A fentebbi szakaszokban leírt létrehozása, megtekintése és kezelése a metrikaalapú riasztási szabályok az Azure portal használatával. Ez a szakasz azt ismerteti, hogyan végezze el ugyanezt a platformok közötti átjárhatóságról használatával való [Azure CLI-vel](https://docs.microsoft.com/en-us/cli/azure/get-started-with-azure-cli?view=azure-cli-latest). Leggyorsabb módja, hogy megkezdhesse az Azure CLI-vel van keresztül [Azure Cloud Shell](https://docs.microsoft.com/en-us/azure/cloud-shell/overview?view=azure-cli-latest). Ebben a cikkben a Cloud shell használjuk.
 

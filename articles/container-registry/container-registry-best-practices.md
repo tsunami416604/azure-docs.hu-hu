@@ -5,15 +5,15 @@ services: container-registry
 author: mmacy
 manager: jeconnoc
 ms.service: container-registry
-ms.topic: quickstart
-ms.date: 04/10/2018
+ms.topic: article
+ms.date: 09/27/2018
 ms.author: marsma
-ms.openlocfilehash: a3932ff621782b8ab97f27ef052aeee8e1d2a3ac
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
-ms.translationtype: HT
+ms.openlocfilehash: 9bb1f7682338f1d9e591ed1350e1940d85462bd1
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39423504"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47409337"
 ---
 # <a name="best-practices-for-azure-container-registry"></a>Az Azure Container Registry ajánlott eljárásai
 
@@ -66,31 +66,25 @@ Az Azure Container Registry-vel kapcsolatos részletes információk: [Hitelesí
 
 A [tárolóregisztrációs adatbázis egyes termékváltozatainak][container-registry-skus] tárolási korlátai szándékaink szerint a tipikus forgatókönyvekhez igazodnak: **Alapszintű** az induláshoz, **Standard** az üzemi alkalmazások többségéhez és **Prémium** a nagy kapacitású teljesítményhez és a [georeplikációhoz][container-registry-geo-replication]. A regisztrációs adatbázis élettartama során érdemes felügyelnie annak méretét a nem használt tartalmak törlésével.
 
-A tárolóregisztrációs adatbázis aktuális használati adatait az adatbázis **Áttekintés** lapján találja az Azure Portalon:
+Használja az Azure CLI-paranccsal [az acr show-usage] [ az-acr-show-usage] a regisztrációs adatbázis aktuális méretét megjelenítéséhez:
+
+```console
+$ az acr show-usage --resource-group myResourceGroup --name myregistry --output table
+NAME      LIMIT         CURRENT VALUE    UNIT
+--------  ------------  ---------------  ------
+Size      536870912000  185444288        Bytes
+Webhooks  100                            Count
+```
+
+Használja az aktuális storage is megtalálhatja a **áttekintése** a tárolójegyzék az Azure Portalon:
 
 ![Adattár használati adatainak megtekintése az Azure Portalon][registry-overview-quotas]
 
-A regisztrációs adatbázis méretét az [Azure CLI][azure-cli] vagy az [Azure Portal][azure-portal] segítségével kezelheti. Csak a felügyelt termékváltozatok (Alapszintű, Standard, Prémium) támogatják az adattárak és rendszerképek törlését – a klasszikus beállításjegyzékben lévő adattárak, rendszerképek és címkék nem törölhetők.
+### <a name="delete-image-data"></a>Rendszerkép-adatok törlése
 
-### <a name="delete-in-azure-cli"></a>Törlés az Azure CLI felületen
+Az Azure Container Registry a rendszerképet a tárolóregisztrációs adatbázis adatainak törléséről több módszert is támogatja. A képek törlése a címke szerinti vagy kivonatoló manifest, vagy teljes adattár törlése.
 
-Az [az acr repository delete][az-acr-repository-delete] paranccsal törölheti az adattárakat vagy azok tartalmait.
-
-Az adattárak törléséhez, beleértve az azokban lévő összes címkét és rendszerképréteg-adatot is, csak az adattár nevét kell megadnia az [az acr repository delete][az-acr-repository-delete] parancs végrehajtásakor. A következő példában töröljük a *myapplication* adattárat, valamint annak minden címkéjét és rendszerképréteg-adatát:
-
-```azurecli
-az acr repository delete --name myregistry --repository myapplication
-```
-
-Az adattárak rendszerképadatainak törléséhez használhatja a `--tag` és a `--manifest` argumentumokat is. Az argumentumokkal kapcsolatos információkért lásd az [az acr repository delete parancs dokumentációját][az-acr-repository-delete].
-
-### <a name="delete-in-azure-portal"></a>Törlés az Azure Portalon
-
-Az Azure Portalon egy adattár a jegyzékből való törléséhez először is lépjen a tárolóregisztrációs adatbázisra. Ezután a **SZOLGÁLTATÁSOK** felületen válassza az **Adattárak** lehetőséget, és kattintson jobb gombbal a törölni kívánt adattárra. A **Törlés** gombra kattintva törölheti az adattárat és a benne lévő Docker-rendszerképeket.
-
-![Adattár törlése az Azure Portalon][delete-repository-portal]
-
-Hasonlóképpen törölheti a címkéket is az adattárból. Lépjen az adattárra, kattintson a jobb gombbal a törölni kívánt címkére a **CÍMKÉK** területen, majd kattintson a **Törlés** gombra.
+További részleteket a rendszerkép-adatok törlése a beállításjegyzékből, beleértve a címkézetlen (más néven "értékhiányos" vagy "árva") lemezképek, lásd: [törlése az Azure Container Registry a tárolólemezképek](container-registry-delete.md).
 
 ## <a name="next-steps"></a>További lépések
 
@@ -102,6 +96,7 @@ Az Azure Container Registry több szinten, azaz termékváltozatban érhető el,
 
 <!-- LINKS - Internal -->
 [az-acr-repository-delete]: /cli/azure/acr/repository#az-acr-repository-delete
+[az-acr-show-usage]: /cli/azure/acr#az-acr-show-usage
 [azure-cli]: /cli/azure
 [azure-portal]: https://portal.azure.com
 [container-registry-geo-replication]: container-registry-geo-replication.md

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 09/06/2018
 ms.author: jeffpatt
 ms.component: files
-ms.openlocfilehash: 88c73b3c9fd3ffc0c323b9971e245e6f6d9695a0
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: cbfe3022c4ffd03e4ab93682eb14a5a588aa0013
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44095538"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47409473"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Azure-fájlok szinkronizálásának hibaelhárítása
 Az Azure File Sync használatával fájlmegosztásainak a szervezet az Azure Files között, miközben gondoskodik a rugalmasságát, teljesítményét és kompatibilitását a helyszíni fájlkiszolgálók. Az Azure File Sync Windows Server az Azure-fájlmegosztás gyors gyorsítótáraivá alakítja át. Helyileg, az adatok eléréséhez a Windows Serveren elérhető bármely protokollt használhatja, beleértve az SMB, NFS és FTPS. Tetszőleges számú gyorsítótárak világszerte igény szerint is rendelkezhet.
@@ -233,17 +233,16 @@ Ezek a hibák megtekintéséhez futtassa a **FileSyncErrorsReport.ps1** (az Azur
 | 0x80c80018 | -2134376424 | ECS_E_SYNC_FILE_IN_USE | A fájl nem szinkronizálható, mert az használatban van. Ha már nincs használatban a fájl lesznek szinkronizálva. | Nincs szükség felhasználói műveletre. Az Azure File Sync naponta egyszer létrehoz egy ideiglenes VSS-pillanatkép megnyitott kezelőkkel rendelkező fájlok szinkronizálása a kiszolgálón. |
 | 0x20 | 32 | ÚJRA | A fájl nem szinkronizálható, mert az használatban van. Ha már nincs használatban a fájl lesznek szinkronizálva. | Nincs szükség felhasználói műveletre. |
 | 0x80c80207 | -2134375929 | ECS_E_SYNC_CONSTRAINT_CONFLICT | Egy fájl vagy címtár módosítása nem szinkronizálható még, mert egy függő mappa szinkronizálása még nem történt. Ez az elem után a rendszer szinkronizálja a függő módosításokat szinkronizálja. | Nincs szükség felhasználói műveletre. |
-| 0x80c80017 | -2134376425 | ECS_E_SYNC_OPLOCK_BROKEN | A fájl módosításának szinkronizálás során a szinkronizálható, újra kell. | Nincs szükség felhasználói műveletre. |
+| 0x80c80017 | -2134376425 | ECS_E_SYNC_OPLOCK_BROKEN | Egy fájl módosult a szinkronizálás közben, ezért a fájlt újra kell szinkronizálni. | Nincs szükség felhasználói műveletre. |
 
 #### <a name="handling-unsupported-characters"></a>Kezelése nem támogatott karaktereket
-Ha a **FileSyncErrorsReport.ps1** PowerShell-parancsfájl bemutatja a hiba oka nem támogatott karaktereket (hibakódjai 0x7b és 0x8007007b), érdemes távolítsa el vagy nevezze át a megfelelő fájlok hibás karaktereket. PowerShell valószínűleg nyomtatja ki ezeket a karaktereket a kérdőjelek vagy üres téglalapok, mivel ezek a karakterek a legtöbb nem szabványos kódolással.
+Ha a **FileSyncErrorsReport.ps1** PowerShell-parancsfájl bemutatja a hiba oka nem támogatott karaktereket (hibakódjai 0x7b és 0x8007007b), érdemes távolítsa el vagy nevezze át a megfelelő fájlok hibás karaktereket. PowerShell valószínűleg nyomtatja ki ezeket a karaktereket a kérdőjelek vagy üres téglalapok, mivel ezek a karakterek a legtöbb nem szabványos kódolással. A [Evalation eszköz](storage-sync-files-planning.md#evaluation-tool) segítségével azonosíthatja a nem támogatott karaktereket.
 
 Az alábbi táblázat tartalmazza az összes Azure File Sync jelenleg nem támogatja a unicode-karaktereket.
 
 | Karakterkészlet | Karakterszám |
 |---------------|-----------------|
 | <ul><li>0x0000009D (osc operációs rendszer parancs)</li><li>0x00000090 (dcs eszköz vezérlő karakterlánc)</li><li>0x0000008F (ss3 egyetlen shift három)</li><li>0x00000081 (magas oktett készlet)</li><li>0x0000007F (del törlése)</li><li>0x0000008D (fenntartott példány fordított soremelés)</li></ul> | 6 |
-| <ul><li>0x0000200F (jobbról balra jelölés)</li><li>0x0000200E (balról jobbra be van jelölve)</li><li>0x0000202E (jobbról balra író felülbírálás)</li><li>0x0000202D (balról jobbra felülbírálás)</li><li>0x0000202C (pop irányt formázás)</li><li>0x0000202B (jobbról balra író beágyazás)</li><li>0x0000202A (beágyazás balról jobbra)</li></ul> | 7 |
 | 0x0000FDD0 - 0x0000FDEF (Arab bemutató forms-a) | 32 |
 | 0x0000FFF0 - 0x0000FFFF (speciális) | 16 |
 | <ul><li>0x0001FFFE - 0x0001FFFF = 2 (noncharacter)</li><li>0x0002FFFE - 0x0002FFFF = 2 (noncharacter)</li><li>0x0003FFFE - 0x0003FFFF = 2 (noncharacter)</li><li>0x0004FFFE - 0x0004FFFF = 2 (noncharacter)</li><li>0x0005FFFE - 0x0005FFFF = 2 (noncharacter)</li><li>0x0006FFFE - 0x0006FFFF = 2 (noncharacter)</li><li>0x0007FFFE - 0x0007FFFF = 2 (noncharacter)</li><li>0x0008FFFE - 0x0008FFFF = 2 (noncharacter)</li><li>0x0009FFFE - 0x0009FFFF = 2 (noncharacter)</li><li>0x000AFFFE - 0x000AFFFF = 2 (noncharacter)</li><li>0x000BFFFE - 0x000BFFFF = 2 (noncharacter)</li><li>0x000CFFFE - 0x000CFFFF = 2 (noncharacter)</li><li>0x000DFFFE - 0x000DFFFF = 2 (noncharacter)</li><li>0x000EFFFE - 0x000EFFFF = 2 (nem meghatározott)</li><li>0x000FFFFE - 0x000FFFFF = 2 (kiegészítő magánjellegű használatra terület)</li></ul> | 30 |
@@ -423,7 +422,7 @@ Ez a hiba akkor fordulhat elő, ha a szervezet az SSL-megszakító proxy, vagy h
     Restart-Service -Name FileSyncSvc -Force
     ```
 
-Ez a beállításazonosító beállításával az Azure File Sync ügynök fogad el minden olyan helyi megbízható SSL-tanúsítványt a kiszolgáló és a felhőszolgáltatás közötti adatátvitel során.
+Ha beállítja ezt a beállításazonosítót, az Azure File Sync-ügynök minden helyileg megbízhatónak minősülő SSL-tanúsítványt elfogad a kiszolgáló és a felhőszolgáltatás közötti adatátvitel során.
 
 <a id="-2147012894"></a>**Nem sikerült létrehozni a kapcsolatot a szolgáltatással.**  
 | | |
@@ -516,7 +515,7 @@ Azokban az esetekben vannak sok fájl a szinkronizálási hibák száma, ahol sz
 | **Hibakarakterlánc** | ECS_E_SYNC_INVALID_PATH |
 | **Szervizelés szükséges** | Igen |
 
-Győződjön meg arról, az elérési út létezik, a helyi NTFS-köteten, és nem egy újraelemzési pontot vagy a meglévő kiszolgálói végpontot.
+Győződjön meg arról, hogy az elérési út létezik, helyi NTFS-köteten található, és nem újraelemzési pont vagy meglévő kiszolgálói végpont.
 
 <a id="-2134376373"></a>**A szolgáltatás jelenleg nem érhető el.**  
 | | |

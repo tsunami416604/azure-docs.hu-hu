@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 09/26/2018
 ms.author: iainfou
-ms.openlocfilehash: a7e592e9911c596f2cf74724e73c469ed616e5f0
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: 8aab091ed992a946cd78ecf4f0c8fdfff4185a08
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 09/27/2018
-ms.locfileid: "47391341"
+ms.locfileid: "47407552"
 ---
 # <a name="use-a-static-public-ip-address-with-the-azure-kubernetes-service-aks-load-balancer"></a>Az Azure Kubernetes Service (AKS) terheléselosztót statikus nyilvános IP-cím használata
 
@@ -24,7 +24,7 @@ Ez a cikk bemutatja, hogyan hozhat létre egy statikus nyilvános IP-címet, és
 
 Ez a cikk azt feltételezi, hogy egy meglévő AKS-fürtöt. Ha egy AKS-fürtre van szüksége, tekintse meg az AKS gyors [az Azure CLI-vel] [ aks-quickstart-cli] vagy [az Azure portal használatával][aks-quickstart-portal].
 
-Emellett az Azure CLI 2.0.46 verziójára van szükség, vagy később telepített és konfigurált. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni kell, tekintse meg az [Azure CLI telepítése] [telepítése – azure-cli].
+Emellett az Azure CLI 2.0.46 verziójára van szükség, vagy később telepített és konfigurált. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése][install-azure-cli].
 
 ## <a name="create-a-static-ip-address"></a>Hozzon létre statikus IP-cím
 
@@ -69,20 +69,26 @@ $ az network public-ip list --resource-group MC_myResourceGroup_myAKSCluster_eas
 
 ## <a name="create-a-service-using-the-static-ip-address"></a>A statikus IP-címet használó szolgáltatás létrehozása
 
-Szolgáltatás létrehozása a statikus IP-címmel, adja hozzá a `loadBalancerIP` tulajdonság és a statikus IP-cím értékét a cím, a YAML-jegyzékfájlt, az alábbi példában látható módon:
+Szolgáltatás létrehozása a statikus nyilvános IP-címmel, adja hozzá a `loadBalancerIP` a YAML jegyzékfájlhoz-tulajdonság és a statikus nyilvános IP-cím értékét. Hozzon létre egy fájlt `load-balancer-service.yaml` másolja be a következő yaml-kódot. Adja meg saját nyilvános IP-címet az előző lépésben létrehozott.
 
 ```yaml
 apiVersion: v1
 kind: Service
 metadata:
-  name: azure-vote-front
+  name: azure-load-balancer
 spec:
   loadBalancerIP: 40.121.183.52
   type: LoadBalancer
   ports:
   - port: 80
   selector:
-    app: azure-vote-front
+    app: azure-load-balancer
+```
+
+Hozzon létre, majd az üzembe helyezés a `kubectl apply` parancsot.
+
+```console
+kubectl apply -f load-balancer-service.yaml
 ```
 
 ## <a name="troubleshoot"></a>Hibaelhárítás
@@ -90,17 +96,17 @@ spec:
 Ha a statikus IP-címet megadva a *loadBalancerIP* Kubernetes Szolgáltatásjegyzék tulajdonság nem létezik, vagy a csomópont erőforráscsoportban nem lett létrehozva, a load balancer szolgáltatás létrehozása sikertelen lesz. A hibaelhárításhoz tekintse át a szolgáltatás-létrehozási események és a [írja le a kubectl] [ kubectl-describe] parancsot. Adja meg a szolgáltatás a YAML-jegyzékfájlban megadott nevét, az alábbi példában látható módon:
 
 ```console
-kubectl describe service azure-vote-front
+kubectl describe service azure-load-balancer
 ```
 
 A Kubernetes szolgáltatás erőforrásra vonatkozó információk jelennek meg. A *események* az alábbi példa kimenetében végén jelzi, hogy a *megadott IP-cím nem található felhasználó*. Ezekben az esetekben a létrehozott statikus nyilvános IP-cím csomópont az erőforráscsoportban és, hogy helyesen szerepel-e a Kubernetes szolgáltatásjegyzékben megadott IP-ellenőrzése.
 
 ```
-Name:                     azure-vote-front
+Name:                     azure-load-balancer
 Namespace:                default
 Labels:                   <none>
 Annotations:              <none>
-Selector:                 app=azure-vote-front
+Selector:                 app=azure-load-balancer
 Type:                     LoadBalancer
 IP:                       10.0.18.125
 IP:                       40.121.183.52
@@ -114,7 +120,7 @@ Events:
   Type     Reason                      Age               From                Message
   ----     ------                      ----              ----                -------
   Normal   CreatingLoadBalancer        7s (x2 over 22s)  service-controller  Creating load balancer
-  Warning  CreatingLoadBalancerFailed  6s (x2 over 12s)  service-controller  Error creating load balancer (will retry): Failed to create load balancer for service default/azure-vote-front: user supplied IP Address 40.121.183.52 was not found
+  Warning  CreatingLoadBalancerFailed  6s (x2 over 12s)  service-controller  Error creating load balancer (will retry): Failed to create load balancer for service default/azure-load-balancer: user supplied IP Address 40.121.183.52 was not found
 ```
 
 ## <a name="next-steps"></a>További lépések
@@ -133,3 +139,4 @@ A hálózati forgalom az alkalmazások további szabályozásához érdemes ink�
 [aks-static-ingress]: ingress-static-ip.md
 [aks-quickstart-cli]: kubernetes-walkthrough.md
 [aks-quickstart-portal]: kubernetes-walkthrough-portal.md
+[install-azure-cli]: /cli/azure/install-azure-cli

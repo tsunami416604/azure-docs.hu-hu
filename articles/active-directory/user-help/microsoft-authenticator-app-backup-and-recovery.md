@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/28/2018
 ms.author: lizross
 ms.reviewer: olhaun
-ms.openlocfilehash: 39ec7c979294860967deb3307f5d87112b762257
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: b019523227bcd45e502ec84055cfb09025918331
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47106970"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47406124"
 ---
 # <a name="backup-and-recover-account-credentials-with-the-microsoft-authenticator-app"></a>Biztonsági mentés és helyreállítás fiók hitelesítő adatait a Microsoft Authenticator alkalmazással
 
@@ -78,12 +78,12 @@ Személyes Microsoft-fiókok igazolja az identitását a jelszót és a egy más
 
     ![A Microsoft Authenticator alkalmazás képe, amelyen azok társított lefelé mutató nyíllal elérhető fiókok](./media/microsoft-authenticator-app-backup-and-recovery/backup-and-recovery-additonal-accts.png)
 
-2.  Válassza ki **vizsgálata QR-kód helyreállítása**, majd vizsgálja meg a QR-kódot a rendszergazda által megadott
+2.  Válassza ki **vizsgálata QR-kód helyreállítása**, majd vizsgálja meg a QR-kódot.
 
     ![A Microsoft Authenticator alkalmazás, amely lehetővé teszi a QR-kód](./media/microsoft-authenticator-app-backup-and-recovery/backup-and-recovery-scan-qr-code.png)
 
     >[!NOTE]
-    >QR-kód beolvasásával kapcsolatos további információkért lásd: a [hozzáadása fiókok Get szakasz lépései a Microsoft Authenticator alkalmazás](https://docs.microsoft.com/azure/active-directory/user-help/microsoft-authenticator-app-how-to#add-accounts-to-the-app) cikk.
+    >QR-kód beolvasásával kapcsolatos további információkért lásd: [Ismerkedés a Microsoft Authenticator alkalmazás](https://docs.microsoft.com/azure/active-directory/user-help/microsoft-authenticator-app-how-to#add-accounts-to-the-app) vagy [állítsa be a biztonsági adatok egy hitelesítő alkalmazást használandó](https://docs.microsoft.com/azure/active-directory/user-help/security-info-setup-auth-app#to-use-the-microsoft-authenticator-app), hogy a rendszergazda bekapcsolta biztonsági adatai alapján.
 
 ## <a name="troubleshooting-backup-and-recovery-problems"></a>Biztonsági mentési és helyreállítási problémák hibaelhárítása
 Néhány oka miért a biztonsági mentés nem feltétlenül érhető el:

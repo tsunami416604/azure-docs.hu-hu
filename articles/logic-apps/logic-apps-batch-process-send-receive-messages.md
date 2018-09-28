@@ -9,12 +9,12 @@ ms.author: divswa
 ms.reviewer: estfan, jonfan, LADocs
 ms.topic: article
 ms.date: 08/19/2018
-ms.openlocfilehash: ee1df77dc18350a64082cb62c297a53700cad223
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: bd31de8f60fff5630141f708714083fe76220d11
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43128745"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47410153"
 ---
 # <a name="send-receive-and-batch-process-messages-in-azure-logic-apps"></a>Küldés, fogadhatja és kötegelt feldolgozási üzenetek az Azure Logic Appsben
 
@@ -60,7 +60,7 @@ Kövesse az ebben a példában, ezek az elemek szükségesek:
    |----------|-------------|
    | **Kötegelt mód** | - **Beágyazott**: az a batch eseményindítón belül kiadási feltételek meghatározása <br>- **Integrációs fiók**: használatával több kiadási feltételek konfiguráció meghatározása egy [integrációs fiók](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md). Az integrációs fiókot akkor is fenntartható egy helyen, nem pedig külön logic appsben ezeket a konfigurációkat. | 
    | **Kötegnév** | A neve, amely "TestBatch" Ebben a példában, és csak a batch **beágyazott** kötegelt mód |  
-   | **Kiadási feltételek** | Csak **beágyazott** kötegelt módban, és adja meg a feltételek megfelelnek az egyes kötegek feldolgozása előtt: <p>- **Message count alapú**: 10 üzenetet a kötegben, például gyűjthet üzenetek száma <br>- **Méretalapú**: A Köteg maximális mérete bájtban, például 100 MB <br>- **Ütemezésalapú**: időközét és gyakoriságát között a batch-kiadások, például 10 perc. Megadhat egy kezdési dátumot és időpontot is. <br>- **Válassza ki az összes**: a megadott feltétel alapján. | 
+   | **Kiadási feltételek** | Csak **beágyazott** kötegelt módban, és kijelöli a feltételeket minden egyes köteg feldolgozása előtt kielégítése érdekében: <p>- **Message count alapú**: 10 üzenetet a kötegben, például gyűjthet üzenetek száma <br>- **Méretalapú**: A Köteg maximális mérete bájtban, például 100 MB <br>- **Ütemezésalapú**: időközét és gyakoriságát között a batch-kiadások, például 10 perc. A minimális ismétlődési 60 másodperc vagy 1 percre. Percenkénti kitalálva hatékonyan 1 percre van kerekítve. Adja meg a kezdő dátum és idő, válassza a **speciális beállítások megjelenítése**. <br>- **Válassza ki az összes**: a megadott feltétel alapján. | 
    ||| 
    
    Ebben a példában az összes feltétel kiválasztása:
@@ -107,9 +107,7 @@ Kövesse az ebben a példában, ezek az elemek szükségesek:
 
    * Az a **törzs** be, amikor a dinamikus tartalmak listája jelenik meg, válassza ki a **üzenetazonosító** mező. 
 
-     A Logic Apps Designerben automatikusan hozzáad egy "mindegyikre" hurkot körül e-mail-küldési művelet, mert a művelet fogad egy tömb bemeneteként. 
-     Ez a ciklus minden üzenetet egy e-mailt küld a a batch szolgáltatásban. 
-     Így, ha a batch-trigger értéke 10 üzenetet, 10 e-mailek minden egyes alkalommal akkor aktiválódik.
+     A Logic Apps Designerben automatikusan hozzáad egy "mindegyikre" hurkot körül e-mail-küldési művelet, mert a művelet a kimeneti kezeli egy kötegelt helyett egy gyűjteményt az előző művelet a. 
 
      ![A "Törzs" válassza a "Üzenet azonosítója"](./media/logic-apps-batch-process-send-receive-messages/send-email-action-details-for-each.png)
 
@@ -216,6 +214,7 @@ A batch küldő logikai alkalmazás minden percben futni fog, egy és 5 között
 
 ## <a name="next-steps"></a>További lépések
 
+* [EDI-üzenetek kötegelése és küldése](../logic-apps/logic-apps-scenario-edi-send-batch-messages.md)
 * [Logikaialkalmazás-definíciók alapján JSON használatával hozhat létre](../logic-apps/logic-apps-author-definitions.md)
 * [A Visual Studióban, az Azure Logic Apps és Functions kiszolgáló nélküli alkalmazás készítése](../logic-apps/logic-apps-serverless-get-started-vs.md)
 * [Kivételkezelés és a hibanaplózás logikai alkalmazásokhoz](../logic-apps/logic-apps-scenario-error-and-exception-handling.md)

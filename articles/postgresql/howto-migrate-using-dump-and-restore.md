@@ -9,12 +9,12 @@ editor: jasonwhowell
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/22/2018
-ms.openlocfilehash: b8d5208992e8f12fae3c010748b2c494e0d50ee8
-ms.sourcegitcommit: 06724c499837ba342c81f4d349ec0ce4f2dfd6d6
+ms.openlocfilehash: b6e6e8eeea7ee442ccdbb0524cafb2f51ff30268
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46465657"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47409609"
 ---
 # <a name="migrate-your-postgresql-database-using-dump-and-restore"></a>Memóriakép és visszaállítás használatával a PostgreSQL-adatbázis migrálása
 Használhatja [pg_dump](https://www.postgresql.org/docs/9.3/static/app-pgdump.html) be memóriakép-fájl egy PostgreSQL-adatbázis kibontásához és [pg_restore](https://www.postgresql.org/docs/9.3/static/app-pgrestore.html) pg_dump által létrehozott archív fájl visszaállítása a PostgreSQL-adatbázishoz.
@@ -36,9 +36,6 @@ Ha például van egy helyi kiszolgálón és a egy nevű adatbázist **testdb** 
 pg_dump -Fc -v --host=localhost --username=masterlogin --dbname=testdb > testdb.dump
 ```
 
-> [!IMPORTANT]
-> Másolja a biztonságimásolat-fájlokat egy Azure blob/tároló és a visszaállítás végrehajtása itt, ami sokkal gyorsabb, mint a visszaállítás végrehajtása az interneten keresztül kell lennie.
-> 
 
 ## <a name="restore-the-data-into-the-target-azure-database-for-postrgesql-using-pgrestore"></a>Állítsa vissza az adatokat a cél Azure Database-be a PostrgeSQL pg_restore használatával
 Miután létrehozta a céladatbázis, a pg_restore parancsot és a -d,--dbname paraméter használatával állítsa vissza az adatokat a memóriakép-fájl a cél-adatbázisba.
@@ -74,7 +71,7 @@ A meglévő PostgreSQL-adatbázis migrálása az Azure Database for PostgreSQL s
     ```
 
 ### <a name="for-the-restore"></a>A visszaállításhoz
-- Másolja a biztonságimásolat-fájlt az Azure blob/tárolóban, és hajtsa végre a visszaállítást onnan. Gyorsabb, mint a visszaállítás végrehajtása az interneten keresztül kell lennie. 
+- Javasoljuk, hogy a biztonságimásolat-fájl áthelyezése egy Azure virtuális Gépen az Azure Database for PostgreSQL-kiszolgáló végzi az áttelepítést, és hajtsa végre a pg_restore a hálózati késés csökkentése érdekében a virtuális Gépeket ugyanabban a régióban. Azt javasoljuk, hogy a virtuális gép létrejött-e a [gyorsított hálózatkezelést](..\virtual-network\create-vm-accelerated-networking-powershell.md) engedélyezve van.
 - Alapértelmezés szerint már végezhető, de a memóriakép-fájl, és ellenőrizze, hogy a create index utasításokat az adatok a Beszúrás után nyissa meg. Ha nem, akkor a helyzet, a create index utasításokat áthelyezése után az adatok.
 - Állítsa vissza a kapcsolók a -Fc és -j *#* való párhuzamosíthatja a visszaállítást. *#* van a célkiszolgálón magok számát. Az is megpróbálhatja *#* kétszer a célkiszolgáló magok számát értékre van állítva,-azonosítókra gyakorolt hatást. Példa:
 

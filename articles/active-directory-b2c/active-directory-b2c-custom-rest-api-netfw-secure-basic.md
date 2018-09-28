@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/25/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: f157602ce3a9c5b6f15a03ad816d8aece4e22805
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: e6cff4e2daf86b63bc0db0d4f2d537322d2841df
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43339167"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47409303"
 ---
 # <a name="secure-your-restful-services-by-using-http-basic-authentication"></a>Biztonságos RESTful-szolgáltatásokat egyszerű HTTP-hitelesítés használatával
 
@@ -237,7 +237,7 @@ Miután az ügyfél-azonosító (felhasználónév) és a titkos kulcs védelme 
 
 6. Az a **titkos** mezőbe írja be a korábban megadott Alkalmazásazonosító.
 
-7. A **kulcshasználat**válassza **titkos**.
+7. A **kulcshasználat**válassza **aláírás**.
 
 8. Kattintson a **Létrehozás** gombra.
 
@@ -257,7 +257,7 @@ Miután az ügyfél-azonosító (felhasználónév) és a titkos kulcs védelme 
 
 6. Az a **titkos** mezőbe írja be a korábban megadott alkalmazás titkos kulcsát.
 
-7. A **kulcshasználat**válassza **titkos**.
+7. A **kulcshasználat**válassza **aláírás**.
 
 8. Kattintson a **Létrehozás** gombra.
 

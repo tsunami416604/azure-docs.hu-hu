@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 09/26/2018
 ms.author: iainfou
-ms.openlocfilehash: 68a7883e7f8b3fb62265375208f66b761d43d82e
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: 20c7d20399392e653668953029bcb81886863ce4
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 09/27/2018
-ms.locfileid: "47391209"
+ms.locfileid: "47404619"
 ---
 # <a name="manually-create-and-use-kubernetes-volume-with-azure-disks-in-azure-kubernetes-service-aks"></a>Manuálisan hozzon létre, és a Kubernetes-kötet használata Azure-lemezek az Azure Kubernetes Service (AKS)
 
@@ -24,7 +24,7 @@ A Kubernetes-köteteken további információkért lásd: [Kubernetes kötetek][
 
 Ez a cikk azt feltételezi, hogy egy meglévő AKS-fürtöt. Ha egy AKS-fürtre van szüksége, tekintse meg az AKS gyors [az Azure CLI-vel] [ aks-quickstart-cli] vagy [az Azure portal használatával][aks-quickstart-portal].
 
-Emellett az Azure CLI 2.0.46 verziójára van szükség, vagy később telepített és konfigurált. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni kell, tekintse meg az [Azure CLI telepítése] [telepítése – azure-cli].
+Emellett az Azure CLI 2.0.46 verziójára van szükség, vagy később telepített és konfigurált. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése][install-azure-cli].
 
 ## <a name="create-an-azure-disk"></a>Hozzon létre egy Azure-lemez
 
@@ -91,7 +91,7 @@ Egy Azure-lemez csatlakoztatásának helye a most már rendelkezik egy futó pod
 
 ## <a name="next-steps"></a>További lépések
 
-További információ az AKS fürtök kezelése az Azure-lemezek, lásd: a [Kubernetes beépülő modul Azure-lemezek][kubernetes-disks]
+További információ az AKS fürtök kezelése az Azure-lemezek, lásd: a [Kubernetes beépülő modul az Azure Disks][kubernetes-disks].
 
 <!-- LINKS - external -->
 [kubernetes-disks]: https://github.com/kubernetes/examples/blob/master/staging/volumes/azure_disk/README.md
@@ -106,3 +106,4 @@ További információ az AKS fürtök kezelése az Azure-lemezek, lásd: a [Kube
 [aks-quickstart-cli]: kubernetes-walkthrough.md
 [aks-quickstart-portal]: kubernetes-walkthrough-portal.md
 [az-aks-show]: /cli/azure/aks#az-aks-show
+[install-azure-cli]: /cli/azure/install-azure-cli

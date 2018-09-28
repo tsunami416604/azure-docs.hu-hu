@@ -8,12 +8,12 @@ ms.date: 09/18/2018
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: 7a1b7b7f970aff620ce01e340c5e56326f4a4a35
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.openlocfilehash: 329bba11c95056b038fdab5041637cbb6a0feb6a
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47055084"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47407263"
 ---
 # <a name="azure-policy-definition-structure"></a>Azure szabályzatdefiníciók struktúrája
 
@@ -81,6 +81,10 @@ Azt javasoljuk, hogy állítsa **mód** való `all` a legtöbb esetben. A portá
 
 Paraméterek segítségével leegyszerűsítik a szabályzatok kezelését szabályzatdefiníciók számának csökkentésével. Gondoljon a mezőket az űrlap – például a paraméterek `name`, `address`, `city`, `state`. Ezek a paraméterek változnak, azonban azok értékeit módosíthatja az űrlap egyes kitöltése alapján.
 Paraméterek ugyanúgy működnek, szabályzatok készítése során. Paraméterekkel együtt egy szabályzat-definícióban, újból felhasználhatja az adott házirendnek a különböző helyzetekhez különböző értékek alapján.
+
+> [!NOTE]
+> A paraméterek definícióját egy házirend vagy a kezdeményezési definíciót csak konfigurálható a szabályzatot vagy kezdeményezést kezdeti létrehozása során. A paraméterek definícióját később már nem módosítható.
+> Ez megakadályozza, hogy meglévő hozzárendelését a szabályzatot vagy kezdeményezést közvetve érvénytelen kerül sor.
 
 Ha például meghatározhat egy házirendet az erőforrás-tulajdonság korlátozni a helyeken, ahol erőforrásokat is üzembe helyezhetők. Ebben az esetben a következő paramétereket szeretne deklarálja a házirend létrehozásakor:
 

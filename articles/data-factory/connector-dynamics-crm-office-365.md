@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/26/2018
 ms.author: jingwang
-ms.openlocfilehash: d1a34a4c341a48f594f37da9fb34420adab390ac
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: ce3c494dc0b8c962c8dae0af38d3cb5476cdf48b
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47227316"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47406175"
 ---
 # <a name="copy-data-from-and-to-dynamics-365-common-data-service-or-dynamics-crm-by-using-azure-data-factory"></a>Adatok másolása (Common Data Service) Dynamics 365 vagy Dynamics CRM-hez és az Azure Data Factory használatával
 
@@ -158,8 +158,8 @@ Adatok másolása a kezdő és a Dynamics, állítsa be a type tulajdonság, az 
 | EntityName | Az entitást lekérdezni a logikai neve. | Nincs forrás (Ha a tevékenység forrása az "query" van megadva), a fogadó Igen |
 
 > [!IMPORTANT]
->- Ha az adatok másolása a Dynamics, a "struktúra" szakaszban Dynamics adatkészlet azért szükséges, hogy determinisztikus másolási eredményt. Azt határozza meg a Dynamics-adatok, másolja át kívánt oszlop nevét és adattípusát. További tudnivalókért lásd: [adatkészlet-szerkezetekben](concepts-datasets-linked-services.md#dataset-structure) és [adattípus-leképezés Dynamics](#data-type-mapping-for-dynamics).
->- Szerzői felhasználói felületén, során ADF a legelső sorok, a Dynamics-lekérdezés eredményének inicializálása a struktúra konstrukció, amelyben nincs érték megkülönbözteti a kis oszlopok kimarad a teljesítményoptimalizálás miatt Dynamics-szolgáltatás által a mintavételezéssel kikövetkeztetni a a séma is. Tekintse át, és adjon hozzá több oszlopot, a Dynamics séma/adatkészletszerkezet szükséges, amely másolása során lesz figyelembe. 
+>- Adatok másolása a Dynamics, a "struktúra" szakaszban esetén nem kötelező, de recommanded Dynamics adatkészlet determinisztikus másolási eredmény biztosítása érdekében. Azt határozza meg a Dynamics-adatok, másolja át kívánt oszlop nevét és adattípusát. További tudnivalókért lásd: [adatkészlet-szerkezetekben](concepts-datasets-linked-services.md#dataset-structure) és [adattípus-leképezés Dynamics](#data-type-mapping-for-dynamics).
+>- A szerzői műveletek a felhasználói felület séma importálásakor ADF kikövetkeztetni a séma szerint, a Dynamics-lekérdezés eredménye, amelyben nincs érték megkülönbözteti a kis oszlopok kimarad a struktúra építésével inicializálása a legelső sorok mintavételi. Tekintse át, és adjon hozzá több oszlopot, a Dynamics séma/adatkészletszerkezet szükséges, amely másolása során lesz figyelembe.
 >- Adatok másolása a Dynamics, a "struktúra" szakaszban esetén nem kötelező, a Dynamics-adatkészletben. Mely oszlopokat másolja be a forrás sémát határozza meg. Ha a forrás, fejléc nélküli CSV-fájl a bemeneti adatkészletben, adja meg a "struktúra" az az oszlop nevét és adattípusát. Ezek a CSV-fájl egyenként ahhoz szereplő mezők leképezése.
 
 **Példa**

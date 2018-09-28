@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 2582284f56da1dd1c49c4183ba07a4f60d4f6061
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: 85fbbc4e489c7b48f7dc95de1738636b7383de16
+ms.sourcegitcommit: 3150596c9d4a53d3650cc9254c107871ae0aab88
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44381264"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47419406"
 ---
 # <a name="buildingblocks"></a>BuildingBlocks
 
@@ -37,15 +37,15 @@ A **BuildingBlocks** elem belül bekerül a [TrustFrameworkPolicy](trustframewor
     <ClaimsSchema>
       ...
     </ClaimsSchema>
-    <ClaimsTransformations>
-      ...
-    </ClaimsTransformations>
     <Predicates>
     ...
     </Predicates>
     <PredicateValidations>
     ...
     </PredicateValidations>
+    <ClaimsTransformations>
+      ...
+    </ClaimsTransformations>
     <ContentDefinitions>
       ...
     </ContentDefinitions>
@@ -55,9 +55,11 @@ A **BuildingBlocks** elem belül bekerül a [TrustFrameworkPolicy](trustframewor
  </BuildingBlocks>
 ```
 
-A **BuildingBlocks** elem a következő elemeket tartalmazza:
+A **BuildingBlocks** elem a meghatározott sorrendben kell adni a következő elemeket tartalmazza:
 
 - [ClaimsSchema](claimsschema.md) – határozza meg, amely lehet hivatkozni a jogcímtípusok, amelyeket a szabályzat részeként. A jogcímek séma az a hely, ahol a jogcímtípusok deklarálhatja. Számos programozási nyelvet egy változót egy jogcímtípust hasonlít. A jogcímtípus segítségével adatokat gyűjteni az alkalmazás a felhasználó, jogcímeket fogad a közösségi identitásszolgáltatókat, adatokat küldeni és fogadni egy egyéni REST API-ból, vagy az egyéni házirend által használt belső adatokat tárolja. 
+
+- [Predikátumok és PredicateValidationsInput](predicates.md) – lehetővé teszi, hogy egy érvényesítési folyamat győződjön meg arról, hogy csak a megfelelően formázott adatok írja be a rendszer egy jogcímet.
  
 - [ClaimsTransformations](claimstransformations.md) -jogcímek átalakítása a szabályzatban használt listáját tartalmazza.  A jogcímek átalakításáról alakít át egy jogcím egy másik. A jogcímek átalakítását, adja meg egy átalakítási módszer, például: 
     - A kis-és a megadott karakterlánc jogcím módosítása. Például egy karakterlánc történő módosítása kisbetűket nagybetűvé.
@@ -70,4 +72,4 @@ A **BuildingBlocks** elem a következő elemeket tartalmazza:
 
 - [A honosítás](localization.md) – lehetővé teszi, hogy több nyelv támogatása. A szabályzatok a honosítási támogatás lehetővé teszi, hogy beállít egy házirendet a támogatott nyelvek listáját, és válasszon egy alapértelmezett nyelvet. Nyelvspecifikus karakterláncok és a gyűjtemények is támogatottak.
 
-- [Predikátumok és PredicateValidationsInput](predicates.md) – lehetővé teszi, hogy egy érvényesítési folyamat győződjön meg arról, hogy csak a megfelelően formázott adatok írja be a rendszer egy jogcímet.
+

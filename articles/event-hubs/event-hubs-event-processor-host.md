@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/16/2018
 ms.author: shvija
-ms.openlocfilehash: 672e31109b71a8a4238a05851a58a7c83e275b19
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: 14db9ec9e4cd90d0c2d224bd944e2bc5b591a53b
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45576313"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47405903"
 ---
 # <a name="azure-event-hubs-event-processor-host-overview"></a>Az Azure Event Hubs Event Processor Host – áttekintés
 
@@ -88,7 +88,8 @@ Következő lépésként hozza létre az [EventProcessorHost](/dotnet/api/micros
 - **eventHubConnectionString:** a kapcsolati karakterláncot az eseményközpontba, amely az Azure Portalról kérhető. Ezt a kapcsolati karakterláncot kell **figyelésére** engedélyeket az eseményközpontban.
 - **storageConnectionString:** a belső erőforrás-kezelés használt tárfiók.
 
-Végül a feldolgozók regisztrálása a [EventProcessorHost](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost) példány az Event Hubs szolgáltatással. Regisztrálás arra utasítja az Event Hubs szolgáltatás várható, hogy a fogyasztó alkalmazás használ-e a partíciókat némelyike eseményeit, és a meghívni a [IEventProcessor](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor) implementációs kódot, amikor leküldi az események felhasználásához.
+Végül a feldolgozók regisztrálása a [EventProcessorHost](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost) példány az Event Hubs szolgáltatással. Események feldolgozása processzor eseményosztály Regisztrálás az EventProcessorHost példányát elindul. Regisztrálás arra utasítja az Event Hubs szolgáltatás várható, hogy a fogyasztó alkalmazás használ-e a partíciókat némelyike eseményeit, és a meghívni a [IEventProcessor](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor) implementációs kódot, amikor leküldi az események felhasználásához. 
+
 
 ### <a name="example"></a>Példa
 
@@ -123,7 +124,7 @@ Itt minden állomás egy bizonyos időtartamon (a címbérlet élettartama) szer
 
 Egyes hívások [ProcessEventsAsync](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor.processeventsasync) kézbesíti az eseményeket gyűjteménye. A feladata ezeket az eseményeket kezelésére. Javasoljuk, hogy végrehajtja-e a dolgok viszonylag gyorsan; azt jelenti tegye a csekély a feldolgozás, amennyire csak lehetséges. Ehelyett használja a fogyasztói csoportok. Kiírhatja olyan tárhelyekre és néhány útválasztás van szüksége, ha akkor célszerűbb általában két fogyasztói csoportot használnak, és két [IEventProcessor](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor) megvalósításokhoz, amely külön-külön futtassa.
 
-A feldolgozás során egy ponton érdemes nyomon követheti, mi elolvasta és befejeződött. Így nyomon követheti, kritikus fontosságú, ha újra kell indítania az olvasó, így nem tér a stream elején. [EventProcessorHost](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost) egyszerűbbé teszi a nyomon követési használatával *ellenőrzőpontok*. Egy ellenőrzőpont egy helyet, vagy az eltolás egy adott partíció egy adott felhasználói csoportban, mely pont, a rendszer meggyőződik arról, hogy az üzenetek feldolgozta. Az ellenőrzőpont jelölés **EventProcessorHost** meghívásával történik a [CheckpointAsync](/dotnet/api/microsoft.azure.eventhubs.processor.partitioncontext.checkpointasync) metódust a [PartitionContext](/dotnet/api/microsoft.azure.eventhubs.processor.partitioncontext) objektum. Ez a művelet általában történik belül a [ProcessEventsAsync](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor.processeventsasync) metódus is megtehető, de [CloseAsync](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.closeasync).
+A feldolgozás során egy ponton érdemes nyomon követheti, mi elolvasta és befejeződött. Így nyomon követheti, kritikus fontosságú, ha újra kell indítania az olvasó, így nem tér a stream elején. [EventProcessorHost](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost) egyszerűbbé teszi a nyomon követési használatával *ellenőrzőpontok*. Egy ellenőrzőpont egy helyet, vagy az eltolás egy adott partíció egy adott felhasználói csoportban, mely pont, a rendszer meggyőződik arról, hogy az üzenetek feldolgozta. Az ellenőrzőpont jelölés **EventProcessorHost** meghívásával történik a [CheckpointAsync](/dotnet/api/microsoft.azure.eventhubs.processor.partitioncontext.checkpointasync) metódust a [PartitionContext](/dotnet/api/microsoft.azure.eventhubs.processor.partitioncontext) objektum. Ez a művelet belül történik a [ProcessEventsAsync](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor.processeventsasync) metódus is megtehető, de [CloseAsync](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.closeasync).
 
 ## <a name="checkpointing"></a>Ellenőrzőpontok használata
 
@@ -140,8 +141,9 @@ Alapértelmezés szerint [EventProcessorHost](/dotnet/api/microsoft.azure.eventh
 Végül [EventProcessorHost.UnregisterEventProcessorAsync](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost.unregistereventprocessorasync) lehetővé teszi, hogy az összes partíció olvasók kerüljön tiszta Leállítás utáni, és mindig kell meghívni, ha leáll egy példányát [EventProcessorHost](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost). Ezt is késésekhez vezethet, ha a többi példány indítása **EventProcessorHost** címbérlet lejárati és alapidőpont ütközések miatt. Alapidőpont felügyeleti tárgyalja részletesen a jelen [blogbejegyzés](https://blogs.msdn.microsoft.com/gyan/2014/09/02/event-hubs-receiver-epoch/)
 
 ## <a name="lease-management"></a>Partícióbérlés-kezeléssel
+Események feldolgozása processzor eseményosztály Regisztrálás az EventProcessorHost példányát elindul. A gazdagép-példány szerzi be az egyes partíciók az Event Hubs-bérletek valószínűleg lekérhetem néhány más gazdagép-példányokról, úgy, hogy a partíciók az egyenletes eloszlás szerveződik át az összes gazdagép-példányok között. Minden bérelt partíció esetében a gazdagép-példány hoz létre a megadott event processor osztály egy példányát, majd fogadja az eseményeket az adott partíció és azokat az esemény processzor-példányba továbbítja. További példányok hozzáadja, és további bérleteket is olvassa be a program, az EventProcessorHost végül elosztja a terhelést minden felhasználó között.
 
-Korábban leírtak a nyomkövetési táblát jelentősen leegyszerűsíti az automatikus skálázás jellege [EventProcessorHost.UnregisterEventProcessorAsync](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost.unregistereventprocessorasync). Példányaként **EventProcessorHost** elindul, annyi bérleteket beszerzi a lehető, és megkezdi az események olvasását. A bérletek lejáró, mint **EventProcessorHost** próbál megújítani őket úgy, hogy a foglalást. Ha a bérlet megújítási érhető el, a processzor folytatja, de nem érhető el, ha az Adatolvasó be van-e zárva és [CloseAsync](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.closeasync) nevezzük. **CloseAsync** egy jó ideje után megmaradó fölösleges utolsó az adott partícióhoz.
+Korábban leírtak a nyomkövetési táblát jelentősen leegyszerűsíti az automatikus skálázási jellege [EventProcessorHost.UnregisterEventProcessorAsync](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost.unregistereventprocessorasync). Példányaként **EventProcessorHost** elindul, annyi bérleteket beszerzi a lehető, és megkezdi az események olvasását. A bérletek lejáró, mint **EventProcessorHost** próbál megújítani őket úgy, hogy a foglalást. Ha a bérlet megújítási érhető el, a processzor folytatja, de nem érhető el, ha az Adatolvasó be van-e zárva és [CloseAsync](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.closeasync) nevezzük. **CloseAsync** egy jó ideje után megmaradó fölösleges utolsó az adott partícióhoz.
 
 **EventProcessorHost** tartalmaz egy [PartitionManagerOptions](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost.partitionmanageroptions) tulajdonság. Ez a tulajdonság lehetővé teszi, hogy a partícióbérlés-kezeléssel felett. Ezekkel a beállításokkal regisztrálása előtt a [IEventProcessor](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor) végrehajtására.
 

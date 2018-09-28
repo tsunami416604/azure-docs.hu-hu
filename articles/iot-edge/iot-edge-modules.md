@@ -4,16 +4,16 @@ description: 'További tudnivalók az Azure IoT Edge-modulok és azok miként va
 author: kgremban
 manager: timlt
 ms.author: kgremban
-ms.date: 02/15/2018
+ms.date: 09/21/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 76b0bab0f2eb34d7283d38eb0442f4f2f2083db3
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 5d80b6438569e74ee254d27e0061443a87efc6ce
+ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46995377"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47423391"
 ---
 # <a name="understand-azure-iot-edge-modules"></a>Az Azure IoT Edge-modulok megismerése
 
@@ -65,7 +65,7 @@ await client.OpenAsync();
 Twin twin = await client.GetTwinAsync(); 
 ```
 
-## <a name="offline-capabilities"></a>Offline képességeiről
+## <a name="offline-capabilities"></a>Offline képességek
 
 Az Azure IoT Edge az IoT Edge-eszközök offline műveleteket támogatja. Most ezeket a képességeket korlátozva. 
 
@@ -79,6 +79,7 @@ IoT Edge-modulok mindaddig, amíg az alábbi követelmények teljesülnek-e hoss
 További offline funkciók is elérhetők a nyilvános előzetes verzióban érhető el. További információkért lásd: [ismertetése az IoT Edge kiterjesztett offline képességeiről, eszközök, a modulok és a gyermek eszközök](offline-capabilities.md).
 
 ## <a name="next-steps"></a>További lépések
+ - [A követelmények és az eszközök IoT Edge-modulok megismerése][lnk-mod-dev]
  - [Az Azure IoT Edge-futtatókörnyezet és architektúrájának ismertetése][lnk-runtime]
 
 <!-- Images -->
@@ -89,3 +90,4 @@ További offline funkciók is elérhetők a nyilvános előzetes verzióban érh
 [lnk-device-identity]: ../iot-hub/iot-hub-devguide-identity-registry.md
 [lnk-device-twin]: ../iot-hub/iot-hub-devguide-device-twins.md
 [lnk-runtime]: iot-edge-runtime.md
+[lnk-mod-dev]: module-development.md

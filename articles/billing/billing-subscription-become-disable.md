@@ -16,12 +16,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/11/2018
 ms.author: cwatson
-ms.openlocfilehash: 81f4830691f423e51d6c1f0b71a8fc62160ea92e
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: 3fc7e316289201f5a800b56a7dc63f559c1f90a2
+ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47393009"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47422660"
 ---
 # <a name="why-is-my-azure-subscription-disabled-and-how-do-i-reactivate-it"></a>Miért van az Azure-előfizetésem le van tiltva, és hogyan aktiválja újra azt?
 
@@ -38,7 +38,7 @@ Azure-kreditet kap, például az ingyenes próbaverzió és a Visual Studio Ente
 > [!NOTE] 
 > Ha ingyenes próba-előfizetéssel rendelkezik, és eltávolítja a költségkeretet, az előfizetés az ingyenes próbaidőszak végén utólagos elszámolású alakítja. Miután létrehozta a előfizetéshez teljes 30 napig megtarthatja felhasználható kreditjeit. Ingyenes szolgáltatások 12 hónapig is rendelkezik.
 
-Figyelése és kezelése az Azure számlázási tevékenység: [az Azure-elszámolással és költségkezeléssel váratlan költségek megelőzése](billing-getting-started.md) és [elszámolási értesítések a Microsoft Azure-előfizetések beállítása](billing-set-up-alerts.md).
+Figyelése és kezelése az Azure számlázási tevékenység: [az Azure-elszámolással és költségkezeléssel váratlan költségek megelőzése](billing-getting-started.md).
 
 
 ## <a name="your-bill-is-past-due"></a>A számla esedékessége

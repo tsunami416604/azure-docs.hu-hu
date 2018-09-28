@@ -7,15 +7,15 @@ manager: femila
 cloud: azure-stack
 ms.service: azure-stack
 ms.topic: article
-ms.date: 08/22/2018
+ms.date: 09/27/2018
 ms.author: jeffgilb
 ms.reviewer: adshar
-ms.openlocfilehash: a36609ae63351070bb28469d9ccf1f3deb7bc6ff
-ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
+ms.openlocfilehash: 5a9621ef9a8d6c545617e5bf3ef6f4197b70be88
+ms.sourcegitcommit: 3150596c9d4a53d3650cc9254c107871ae0aab88
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42616949"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47419607"
 ---
 # <a name="azure-stack-diagnostics-tools"></a>Azure Stack-diagnosztikai eszközök
 
@@ -124,7 +124,7 @@ if($s)
  |ACSFabric|DatacenterIntegration|KeyVaultControlPlane|SeedRingServices|
  |ACSFrontEnd|DeploymentMachine|KeyVaultDataPlane|SLB|
  |ACSMetrics|DiskRP|KeyVaultInternalControlPlane|SlbVips|
- |ACSMigrationService|Tartomány|KeyVaultInternalDataPlane|SQL|
+ |ACSMigrationService|Domain|KeyVaultInternalDataPlane|SQL|
  |ACSMonitoringService|ECE|KeyVaultNamingService|SRP|
  |ACSSettingsService|EventAdminRP|MDM|Storage|
  |ACSTableMaster|EventRP|MetricsAdminRP|Tárfiókok|
@@ -143,14 +143,6 @@ if($s)
  |Felhő|Identitásszolgáltató|OnboardRP|     |   
  |Fürt|IDN formátumú tartománynevek|A PXE|     |
  |   |   |   |    |
-
-
-### <a name="bkmk_gui"></a>Naplók gyűjtése az grafikus felhasználói felület használatával
-Ahelyett, hogy megadta a szükséges paraméterek a Get-AzureStackLog parancsmaggal kérheti le a naplókat az Azure Stack, hogy kihasználhatja az elérhető, nyílt forráskódú Azure Stack eszközök a fő Azure Stack eszközök GitHub eszközök tárházban címen található http://aka.ms/AzureStackTools.
-
-A **ERCS_AzureStackLogs.ps1** PowerShell-szkript az eszközök GitHub-adattár tárolja, és rendszeresen frissül. Győződjön meg arról, hogy az elérhető legújabb verzióval rendelkezik, le kell töltenie közvetlenül a http://aka.ms/ERCS. Lépések egy felügyeleti PowerShell-munkamenetből, a parancsfájl a kiemelt végponthoz csatlakozik, és futtatja a Get-AzureStackLog megadott paraméterekkel. Ha nincsenek paraméterek vannak megadva, a parancsfájl alapértelmezés szerint a paraméterek a grafikus felhasználói felületen kéri.
-
-További információk a ERCS_AzureStackLogs.ps1 PowerShell-parancsfájl megtekintése [rövid videó](https://www.youtube.com/watch?v=Utt7pLsXEBc) vagy a parancsfájl megtekintése [információs fájl](https://github.com/Azure/AzureStack-Tools/blob/master/Support/ERCS_Logs/ReadMe.md) az Azure Stack eszközök GitHub-adattárában található. 
 
 ### <a name="additional-considerations"></a>Néhány fontos megjegyzés
 

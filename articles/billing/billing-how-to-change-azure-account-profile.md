@@ -16,12 +16,12 @@ ms.topic: conceptual
 ms.date: 05/11/2018
 ms.author: cwatson
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4f17a65befc1abbe2a2405e8470f61068ac34f8b
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: 622a8777f5ed329636c7023bb52790756f8d7206
+ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47394811"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47422626"
 ---
 # <a name="change-your-azure-account-profile-information-such-as-contact-email-address-and-phone-number"></a>A Azure-fiók profiladatait, például a kapcsolattartási e-mail cím és telefonszám megváltoztatása
 
@@ -55,10 +55,6 @@ A számlázási információk frissítésével kapcsolatban lásd: [Azure-előfi
 ### <a name="why-cant-i-update-the-country"></a>Miért nem tudja frissíteni az ország?
 
 Technikai korlátok miatt nem lehet módosítani egy meglévő fiókon az országot. Azonban a kívánt országban-fiók létrehozása és, forduljon a fiók át a szolgáltatásokat az Azure ügyfélszolgálatától.
-
-### <a name="what-email-address-does-the-azure-billing-alerts-preview-feature-use"></a>Milyen e-mail címet az Azure számlázási riasztásokat does előzetes verziójú funkció használata?
-
-Hozzáadhat, ha regisztrál a riasztások e-mail-címen riasztási értesítéseket kap. A riasztások használt e-mail cím elkülönül a Fiókadminisztrátor e-mail-címet. További információkért lásd: [elszámolási értesítések a Microsoft Azure-előfizetések beállítása](billing-set-up-alerts.md).
 
 ## <a name="need-help-contact-support"></a>Segítség Forduljon az ügyfélszolgálathoz.
 

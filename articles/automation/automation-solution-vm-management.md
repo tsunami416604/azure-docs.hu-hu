@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 08/1/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 99329dd812ad47cf98845ba794bc108d26d85352
-ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
+ms.openlocfilehash: 2f990f22d762c5f95d3274b740caf30691ded90e
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45543700"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47409844"
 ---
 # <a name="startstop-vms-during-off-hours-solution-in-azure-automation"></a>Virtuális gépek indítása/leállítása munkaidőn kívül megoldás az Azure Automationben
 
@@ -31,6 +31,9 @@ Az aktuális megoldáshoz a korlátozások a következők:
 - Ez a megoldás kezeli a virtuális gépek minden olyan régióban, de csak akkor használható, az Azure Automation-fiók ugyanabban az előfizetésben.
 - Ez a megoldás érhető el az Azure-ban és AzureGov minden olyan régióban, amely támogatja a Log Analytics-munkaterülettel, egy Azure Automation-fiókot és riasztások. AzureGov régiók jelenleg nem támogatja e-mail funkció.
 
+> [!NOTE]
+> Ha a megoldás a klasszikus virtuális gépeket használ, majd a virtuális gépek kerül feldolgozásra, egymás után felhőalapú szolgáltatás esetében. Párhuzamos feladat feldolgozása továbbra is támogatott különböző felhőszolgáltatások között.
+
 ## <a name="prerequisites"></a>Előfeltételek
 
 Az ebben a megoldásban-forgatókönyvek egy [Azure-beli futtató fiók](automation-create-runas-account.md). A futtatófiók az előnyben részesített hitelesítési módszer azért tanúsítványalapú hitelesítést használ, előfordulhat, hogy lejárhat vagy gyakran változhat jelszó helyett.
@@ -45,28 +48,28 @@ Virtuális gépek indítása/leállítása munkaidőn kívül megoldás az Autom
 
    > [!NOTE]
    > Bárhol is létrehozhat az Azure Portalon kattintva **erőforrás létrehozása**. A piactér oldalon írjon be egy kulcsszót például **Start** vagy **indítása és leállítása**. Ahogy elkezd gépelni, a lista a beírtak alapján szűri a lehetőségeket. Azt is megteheti írja be a teljes neve, a megoldás egy vagy több kulcsszót, és nyomja le az ENTER billentyűt. Válassza ki **virtuális gépek indítása/leállítása munkaidőn kívül** a keresési eredmények közül.
-1. Az a **virtuális gépek indítása/leállítása munkaidőn kívül** lapon a kiválasztott megoldáshoz tartozó, olvassa el az összegzési adatokat, majd kattintson **létrehozás**.
+2. Az a **virtuális gépek indítása/leállítása munkaidőn kívül** lapon a kiválasztott megoldáshoz tartozó, olvassa el az összegzési adatokat, majd kattintson **létrehozás**.
 
    ![Azure Portal](media/automation-solution-vm-management/azure-portal-01.png)
 
-1. A **megoldás hozzáadása** lap jelenik meg. Az Automation-előfizetésbe történő importálása előtt a megoldás konfigurálására kéri.
+3. A **megoldás hozzáadása** lap jelenik meg. Az Automation-előfizetésbe történő importálása előtt a megoldás konfigurálására kéri.
 
    ![Virtuális gép felügyelet – megoldás hozzáadása lap](media/automation-solution-vm-management/azure-portal-add-solution-01.png)
 
-1. Az a **megoldás hozzáadása** lapon jelölje be **munkaterület**. Válassza ki a Log Analytics-munkaterület, amely kapcsolódik az Azure-előfizetéshez, amely az Automation-fiókot. Ha nem rendelkezik egy munkaterületet, válassza ki a **új munkaterület létrehozása**. Az a **Log Analytics-munkaterület** lapon, a következő lépésekkel:
+4. Az a **megoldás hozzáadása** lapon jelölje be **munkaterület**. Válassza ki a Log Analytics-munkaterület, amely kapcsolódik az Azure-előfizetéshez, amely az Automation-fiókot. Ha nem rendelkezik egy munkaterületet, válassza ki a **új munkaterület létrehozása**. Az a **Log Analytics-munkaterület** lapon, a következő lépésekkel:
    - Adjon meg egy nevet az új **Log Analytics-munkaterület**.
    - Válassza ki a **előfizetés** összekapcsolása a legördülő listában válassza ki, ha az alapértelmezett kiválasztás nem megfelelő.
    - A **erőforráscsoport**, hozzon létre egy új erőforráscsoportot, vagy válasszon ki egy meglévőt.
    - Válasszon ki egy **helyet**. Csak a következő helyek elérhető jelenleg **Délkelet-Ausztrália**, **közép-Kanada**, **közép-India**, **USA keleti Régiójában**, **Kelet-japán**, **Délkelet-Ázsia**, **Egyesült Királyság déli régiója**, és **Nyugat-Európa**.
    - Válasszon egy tarifacsomagot a **Tarifacsomag** területen. Válassza ki a **Gigabájtonkénti (különálló)** lehetőséget. A log Analytics frissített [díjszabás](https://azure.microsoft.com/pricing/details/log-analytics/) , és a GB szinten az egyetlen lehetőség.
 
-1. Miután megadta a szükséges adatokat a **Log Analytics-munkaterület** kattintson **létrehozás**. Nyomon követheti a folyamat állapotát **értesítések** a menüben, amely adja vissza, hogy a **megoldás hozzáadása** lapon, ha ezzel elkészült.
-1. Az a **megoldás hozzáadása** lapon jelölje be **Automation-fiók**. Ha egy új Log Analytics-munkaterületet hoz létre, hozzon létre egy új Automation-fiókot társítja, vagy válasszon egy meglévő Automation-fiók nem a napló az elemzés munkaterülethez már kapcsolódó. Válassza ki a meglévő Automation-fiókot, vagy kattintson a **Automation-fiók létrehozása**, majd a a **Automation-fiók hozzáadása** lap, adja meg a következő információkat:
+5. Miután megadta a szükséges adatokat a **Log Analytics-munkaterület** kattintson **létrehozás**. Nyomon követheti a folyamat állapotát **értesítések** a menüben, amely adja vissza, hogy a **megoldás hozzáadása** lapon, ha ezzel elkészült.
+6. Az a **megoldás hozzáadása** lapon jelölje be **Automation-fiók**. Ha egy új Log Analytics-munkaterületet hoz létre, hozzon létre egy új Automation-fiókot társítja, vagy válasszon egy meglévő Automation-fiók nem a napló az elemzés munkaterülethez már kapcsolódó. Válassza ki a meglévő Automation-fiókot, vagy kattintson a **Automation-fiók létrehozása**, majd a a **Automation-fiók hozzáadása** lap, adja meg a következő információkat:
    - A **Név** mezőbe írja be az Automation-fiók nevét.
 
     Minden egyéb lehetőségeket vannak alapján automatikusan kitölti a kiválasztott Log Analytics-munkaterület. Ezek a beállítások nem módosíthatók. A megoldásban szereplő runbookok alapértelmezett hitelesítési módszere egy Azure-futtatófiók. Miután rákattintott **OK**, a rendszer érvényesíti a konfigurációs beállításokat, és az Automation-fiók létrehozása. Az **Értesítések** menüpont alatt nyomon követheti a folyamat előrehaladását.
 
-1. Végül a a **megoldás hozzáadása** lapon jelölje be **konfigurációs**. A **paraméterek** lap jelenik meg.
+7. Végül a a **megoldás hozzáadása** lapon jelölje be **konfigurációs**. A **paraméterek** lap jelenik meg.
 
    ![Paraméterek lap megoldás](media/automation-solution-vm-management/azure-portal-add-solution-02.png)
 
@@ -83,7 +86,7 @@ Virtuális gépek indítása/leállítása munkaidőn kívül megoldás az Autom
      > [!IMPORTANT]
      > Az alapértelmezett érték a **cél erőforráscsoport nevét** van egy **&ast;**. Ez egy adott előfizetés összes virtuális gép célozza meg. Ha nem szeretné, hogy a megoldás az előfizetésében lévő összes virtuális gép cél ezt az értéket kell frissíteni, hogy az ütemezések engedélyezése előtt az erőforráscsoportok nevei listáját.
 
-1. A megoldás kezdeti beállításainak konfigurálását követően kattintson **OK** gombra kattintva zárja be a **paraméterek** lapon, és válassza **létrehozás**. Miután a rendszer érvényesíti az összes beállítást, a megoldást már telepítették az előfizetéshez. A folyamat eltarthat néhány másodpercig befejeződik, és nyomon követheti a folyamat állapotát **értesítések** a menüből.
+8. A megoldás kezdeti beállításainak konfigurálását követően kattintson **OK** gombra kattintva zárja be a **paraméterek** lapon, és válassza **létrehozás**. Miután a rendszer érvényesíti az összes beállítást, a megoldást már telepítették az előfizetéshez. A folyamat eltarthat néhány másodpercig befejeződik, és nyomon követheti a folyamat állapotát **értesítések** a menüből.
 
 ## <a name="scenarios"></a>Forgatókönyvek
 

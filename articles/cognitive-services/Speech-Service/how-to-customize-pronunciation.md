@@ -1,6 +1,6 @@
 ---
-title: Az Azure Cognitive Services beszédszolgáltatás
-description: Ismerje meg, hogyan szabhatja testre a beszédfelismerési szolgáltatás Cognitive Services szolgáltatással írásmódja.
+title: Az Azure Cognitive Services beszédszolgáltatások írásmódja testreszabása
+description: Ismerje meg, hogyan szabhatja testre a az Azure Cognitive Services beszédszolgáltatások írásmódja.
 services: cognitive-services
 author: PanosPeriorellis
 ms.service: cognitive-services
@@ -8,12 +8,12 @@ ms.component: custom-speech
 ms.topic: article
 ms.date: 07/02/2018
 ms.author: panosper
-ms.openlocfilehash: 93fec1ea78263798588a43b2314ffdea736cdbbc
-ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
+ms.openlocfilehash: a608d1e48112fbb2adb56191eeb7f168de507e77
+ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/23/2018
-ms.locfileid: "42745351"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47423204"
 ---
 # <a name="enable-custom-pronunciation"></a>Engedélyezze az egyéni kiejtése
 Egyéni írásmódja használatával meghatározhatja a fonetikus formában és megjelenített egy szó vagy kifejezés. Ez hasznos testre szabott feltételek, például termékneveket vagy betűszavakat kezelése. Szüksége egy írásmódja fájlt (egy egyszerű .txt fájlt).
@@ -33,7 +33,7 @@ Az alábbi táblázatban néhány példa látható:
 | CNTK | Lásd: n tea k|
 
 ## <a name="requirements-for-the-spoken-form"></a>A beszédből kinyert képernyő követelményei
-A beszédből kinyert képernyő kisbetűnek kell lennie, amely kényszerítheti, hogy az importálás során. Emellett meg kell adnia az adatok programu Pro import ellenőrzései. Nincs lapján vagy a kimondott képernyő, vagy a megjelenítési űrlap számára engedélyezett. Azonban van Előfordulhat, hogy lehet több tiltott karaktereket a megjelenítési űrlap (például ~ és ^).
+A beszédből kinyert képernyő kisbetűnek kell lennie, amely kényszerítheti, hogy az importálás során. Meg kell adnia az adatok programu Pro import ellenőrzéseket is. Nincs lapján vagy a kimondott képernyő, vagy a megjelenítési űrlap számára engedélyezett. Azonban van Előfordulhat, hogy lehet több tiltott karaktereket a megjelenítési űrlap (például ~ és ^).
 
 Minden egyes .txt fájl rendelkezhet több bejegyzés a következő képen látható módon:
 
@@ -47,7 +47,7 @@ Egyéni írásmódja jelenleg támogatott (en-US) angol és német (de-de). A ka
 | Nyelv | Karakterek |
 |---------- |----------|
 | Angol (en-US) | a, b, c, d, e, f, g, h i, j, ezer, l, o, p, válaszok, r, s, t, u, v, w, x, y, z |
-| Német (de-de) | ä lumen, ü, ẞ, a, b, c, d, e, f, g, h i, j, ezer, l, o, p, válaszok, r, s, t, u, v, w, x, y, z |
+| Német (de-de) | ä lumen, ü,?, a, b, c, d, e, f, g, h i, j, ezer, l, o, p, válaszok, r, s, t, u, v, w, x, y, z |
 
 > [!NOTE]
 > Egy kifejezés megjelenítési űrlap (fájlban írásmódja) nyelven kell megírni ugyanúgy nyelvi betanítás adatkészlet.
@@ -59,7 +59,7 @@ Megjelenítési űrlap csak egy egyéni szó, kifejezés, egy betűszó vagy ös
 >Ezzel a funkcióval újraszövegezése gyakori szavakat vagy a kimondott képernyő módosítása nem ajánlott. Célszerűbb a dekóder megtekintéséhez, hogy egyes ritka szavakat (például rövidítéseket, műszaki szakkifejezéseket vagy külső szavak) helytelenül dekódovat futtassa. Ha igen, adja hozzá azokat az egyéni kiejtés fájlhoz. A nyelvi modell csak és mindig használjon a megjelenítési űrlap szó. 
 
 ## <a name="requirements-for-the-file-size"></a>A fájl mérete követelményei
-A .txt fájlt, amely tartalmazza a írásmódja bejegyzések mérete legfeljebb 1 megabájt (MB). Általában nem szükséges a nagy mennyiségű adat feltöltése keresztül ezt a fájlt. A legtöbb egyéni írásmódja fájlok mérete valószínűleg csak néhány kilobájtban (KB). Az összes területi beállításhoz tartozó .txt fájl kódolása az UTF-8 AJ kell lennie. Az angol területi beállítás, az ANSI is fogadható el.
+A .txt fájlt, amely tartalmazza a írásmódja bejegyzések mérete legfeljebb 1 megabájt (MB). Általában nem szükséges nagy mennyiségű adat feltöltése keresztül ezt a fájlt. A legtöbb egyéni írásmódja fájlok mérete valószínűleg csak néhány kilobájtban (KB). Az összes területi beállításhoz tartozó .txt fájl kódolása az UTF-8 AJ kell lennie. Az angol területi beállítás, az ANSI is fogadható el.
 
 ## <a name="next-steps"></a>További lépések
 * Pontosságának javítása hozzon létre egy [importálni akusztikai modell](how-to-customize-acoustic-models.md).

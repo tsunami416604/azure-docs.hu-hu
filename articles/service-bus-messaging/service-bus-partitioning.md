@@ -8,12 +8,12 @@ ms.service: service-bus-messaging
 ms.topic: article
 ms.date: 09/06/2018
 ms.author: spelluru
-ms.openlocfilehash: ccdd17bf5a6b3ff00fd3fdada8f4ae02a071274c
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: 2ca2063158634dfa42da094b77c70a2730e82176
+ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47392449"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47423170"
 ---
 # <a name="partitioned-queues-and-topics"></a>Particionált üzenetsorok és témakörök
 
@@ -140,7 +140,7 @@ A Service Bus továbbítási származó, a vagy particionált entitások közöt
 
 Jelenleg a Service Bus ír elő a következő korlátozások vonatkoznak a particionált üzenetsorok és témakörök:
 
-* Particionált üzenetsorok és témakörök nem támogatottak a prémium szintű üzenetkezelési csomag.
+* Particionált üzenetsorok és témakörök nem támogatottak a prémium szintű üzenetkezelési csomag. Munkamenetek támogatottak a premier szintű munkamenet-azonosító használatával. 
 * Particionált üzenetsorok és témakörök nem támogatják az üzenetek küldése egy tranzakción belül különböző munkamenetek tartoznak.
 * A Service Bus névterenként jelenleg 100 particionált üzenetsort vagy témakört képes kezelni. Minden egyes particionált üzenetsor vagy témakör felé számolnak (nem vonatkozik a prémium szintű) névterenként 10 000 entitások kvótáját.
 

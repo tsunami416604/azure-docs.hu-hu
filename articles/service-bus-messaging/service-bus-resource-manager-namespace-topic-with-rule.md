@@ -12,14 +12,14 @@ ms.devlang: tbd
 ms.topic: article
 ms.tgt_pltfrm: dotnet
 ms.workload: na
-ms.date: 04/11/2018
+ms.date: 09/11/2018
 ms.author: spelluru
-ms.openlocfilehash: dd0ef94c7efb27641d5f0bf50d87bf852bcd1e9a
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 7774d67d02b2b0f0080cbff2ffc3606b99450f26
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43696336"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47404961"
 ---
 # <a name="create-a-service-bus-namespace-with-topic-subscription-and-rule-using-an-azure-resource-manager-template"></a>Service Bus-névtér létrehozása a témakör, előfizetés és a szabály egy Azure Resource Manager-sablon használatával
 
@@ -43,7 +43,7 @@ A teljes sablont, tekintse meg a [témakör, előfizetés és a szabály a Servi
 > 
 > 
 
-## <a name="what-will-you-deploy"></a>Mit fog üzembe helyezni?
+## <a name="what-do-you-deploy"></a>Milyen tegye üzembe helyezni?
 
 A sablon üzembe helyezése egy Service Bus-névtér témakörrel, előfizetéssel és szabály (szűrő).
 
@@ -51,7 +51,7 @@ A sablon üzembe helyezése egy Service Bus-névtér témakörrel, előfizetéss
 
 ## <a name="what-are-rules-filters"></a>Mik azok a szabályok (szűrőkkel)?
 
-Sok esetben üzeneteket, amelyek meghatározott jellemzőkkel rendelkeznek, különböző módon kell feldolgozni. Ahhoz, hogy az egyéni feldolgozási, konfigurálhatja az előfizetések található üzeneteket, amelyek az adott tulajdonságokkal rendelkezik, és hajtsa végre a módosításokat, azokat a tulajdonságokat. Service Bus-előfizetések a témakörbe küldött összes üzenet látható, bár csak másolhatja azokat az üzeneteket egy részét az virtuális előfizetés üzenetsorába. Mindez az előfizetésszűrők használata. Szabályok (szűrőkkel) kapcsolatos további információkért lásd: [szabályok és műveletek](service-bus-queues-topics-subscriptions.md#rules-and-actions).
+Sok esetben üzeneteket, amelyek meghatározott jellemzőkkel rendelkeznek, különböző módon kell feldolgozni. Ahhoz, hogy az egyéni feldolgozási, konfigurálhatja az előfizetések található üzeneteket, amelyek az adott tulajdonságokkal rendelkezik, és hajtsa végre a módosításokat, azokat a tulajdonságokat. Service Bus-előfizetések a témakörbe küldött összes üzenet látható, bár csak másolhatja azokat az üzeneteket egy részét az virtuális előfizetés üzenetsorába. Előfizetés-szűrők használatával történik. Szabályok (szűrőkkel) kapcsolatos további információkért lásd: [szabályok és műveletek](service-bus-queues-topics-subscriptions.md#rules-and-actions).
 
 Az automatikus üzembe helyezéshez kattintson az alábbi gombra:
 
@@ -59,7 +59,7 @@ Az automatikus üzembe helyezéshez kattintson az alábbi gombra:
 
 ## <a name="parameters"></a>Paraméterek
 
-Az Azure Resource Managerrel, meg kell határozni paramétereket olyan értékhez meg szeretné határozni a sablon üzembe helyezésekor. A sablonban található egy `Parameters` nevű rész, amely magába foglalja az összes paraméterértéket. Azokhoz az értékekhez adjon meg paramétert, amelyek az üzembe helyezendő projekt vagy az üzembe helyezési környezet alapján változhatnak. Ne adjon meg olyan paramétereket olyan értékhez, amelyek nem változnak. A sablonban minden egyes paraméterérték az üzembe helyezendő erőforrások megadásához lesz felhasználva.
+Az Azure Resource Manager adja meg a sablon üzembe helyezésekor kívánt értékeket a paraméterek meghatározása. A sablonban található egy `Parameters` nevű rész, amely magába foglalja az összes paraméterértéket. Adjon meg ezeket az értékeket, amelyek paramétert, a projekt telepítésekor vagy telepíti, akkor a környezet alapján. Ne adjon meg olyan paramétereket olyan értékhez, amelyek nem változnak. A sablonban minden egyes paraméterérték az üzembe helyezendő erőforrások megadásához lesz felhasználva.
 
 A sablon meghatározza a következő:
 
@@ -180,7 +180,7 @@ azure group deployment create \<my-resource-group\> \<my-deployment-name\> --tem
 Most, hogy létrehozta és erőforrások Azure Resource Managerrel üzembe helyezett, megtudhatja, hogyan kezelhetők ezek a cikkek alapján:
 
 * [Az Azure Service Bus kezelése](service-bus-management-libraries.md)
-* [Service Bus kezelése a PowerShell](service-bus-manage-with-ps.md)
+* [A Service Bus kezelése a PowerShell használatával](service-bus-manage-with-ps.md)
 * [A Service Bus-erőforrások kezelése a Service Bus Explorerrel](https://github.com/paolosalvatori/ServiceBusExplorer/releases)
 
 [Authoring Azure Resource Manager templates]: ../azure-resource-manager/resource-group-authoring-templates.md
