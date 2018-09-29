@@ -9,26 +9,26 @@ ms.component: acoustics
 ms.topic: article
 ms.date: 08/17/2018
 ms.author: kegodin
-ms.openlocfilehash: 7e27b5117f5f0ea98916ecfefcbb0dac9323e1d9
-ms.sourcegitcommit: 1aedb52f221fb2a6e7ad0b0930b4c74db354a569
+ms.openlocfilehash: a71e867bd23cf64b2ac7fc8cd1c54c55d92ce924
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "40181652"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47431788"
 ---
 # <a name="frequently-asked-questions"></a>Gyakori kérdések
 
-## <a name="what-is-project-acoustics"></a>Mit jelent a projekt Akusztika?
+## <a name="what-is-project-acoustics"></a>Mi az a Project Acoustics?
 
-A projekt Akusztika Unity beépülő modul egy Akusztika rendszer, amely kiszámítja a hangot wave viselkedés-futtatókörnyezet, mintha statikus világítás előtt. A felhő alacsony modul CPU költség tehát hajtja végre a tervezés során, wave fizika feladatát.  
+A projekt Akusztika Unity beépülő modul egy Akusztika rendszer, amely kiszámítja a hangot wave viselkedés-futtatókörnyezet, mintha statikus világítás előtt. A felhő hajtja végre a wave feladatát fizika számításokat, így CPU-környezet futásidejű költségeit alacsony.  
 
 ## <a name="where-can-i-download-the-plugin"></a>Honnan tölthetem le a beépülő modult?
 
-Ha érdekli a Akusztika beépülő modul kiértékelése, regisztrálja [Itt](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRwMoAEhDCLJNqtVIPwQN6rpUOFRZREJRR0NIQllDOTQ1U0JMNVc4OFNFSy4u) a Tervező előzetes verzióra.
+Ha szeretné kiértékelni az akusztikai beépülő modult, regisztráljon [itt](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRwMoAEhDCLJNqtVIPwQN6rpUOFRZREJRR0NIQllDOTQ1U0JMNVc4OFNFSy4u) az előzetes tervezői verzióra.
 
 ## <a name="is-azure-used-at-runtime"></a>Azure futásidőben használatos?
 
-Felhőintegráció nem, csak a tervezés során precompute fázis során használatos.
+Nem, felhőintegrációs szolgál a precompute szakasz során csak a jelenet beállítása.
  
 ## <a name="what-is-simulation-input"></a>Mit jelent a szimuláció bemeneti? 
 

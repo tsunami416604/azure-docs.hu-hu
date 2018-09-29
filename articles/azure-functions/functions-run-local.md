@@ -9,14 +9,14 @@ ms.assetid: 242736be-ec66-4114-924b-31795fd18884
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: conceptual
-ms.date: 08/14/2018
+ms.date: 09/24/2018
 ms.author: glenga
-ms.openlocfilehash: f950d8d5b52685e45acf4093adac451c8f22aecd
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: a987ea8fbfc3d6360a604d0d9f3dbab1b5559444
+ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47226211"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47452428"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Az Azure Functions Core Tools használata
 
@@ -177,7 +177,7 @@ A verzió 2.x verzióját az Azure Functions futtatókörnyezettel, explicit mó
 
 További információkért lásd: [Azure Functions eseményindítók és kötések fogalmak](functions-triggers-bindings.md#register-binding-extensions).
 
-## <a name="local-settings-file"></a>Helyi fájl
+## <a name="local-settings-file"></a>Local settings file (Helyi beállításfájl)
 
 A fájl local.settings.json Alkalmazásbeállítások, a kapcsolati karakterláncok és a beállítások az Azure Functions Core Tools tárolja. Az alábbi struktúrával rendelkezik:
 

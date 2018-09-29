@@ -14,19 +14,19 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/16/2018
 ms.author: shvija
-ms.openlocfilehash: 4cd2fdb2bd8b6a15bc8dc3e4594971a61e1889e7
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.openlocfilehash: 6f95d8dc291911ac7506e33b80c2d71c8f50dfdc
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "41919144"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47405631"
 ---
 # <a name="get-started-sending-messages-to-azure-event-hubs-in-net-standard"></a>Üzenetek küldése az Azure Event Hubsba a .NET Standardban – első lépések
 
 > [!NOTE]
 > Ez a minta elérhető a [GitHubon](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/SampleSender).
 
-Ez az oktatóanyag bemutatja, hogyan írhat olyan .NET Core-konzolalkalmazást, amely egy üzenetkészletet küld el egy eseményközpontba. A [GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/SampleSender)-megoldást futtathatja a jelenlegi állapotában, ha lecseréli az `EhConnectionString` és `EhEntityPath` sztringet az eseményközpontja értékeire. Vagy létrehozhatja a saját megoldását is az oktatóanyag lépései alapján.
+Ez az oktatóanyag bemutatja, hogyan írhat olyan .NET Core-konzolalkalmazást, amely egy üzenetkészletet küld el egy eseményközpontba. A [GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/SampleSender)-megoldást futtathatja a jelenlegi állapotában, ha lecseréli az `EventHubConnectionString` és `EventHubName` sztringet az eseményközpontja értékeire. Vagy létrehozhatja a saját megoldását is az oktatóanyag lépései alapján.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -68,8 +68,8 @@ A következő lépésekkel adja hozzá a [`Microsoft.Azure.EventHubs`](https://w
 
     ```csharp
     private static EventHubClient eventHubClient;
-    private const string EhConnectionString = "{Event Hubs connection string}";
-    private const string EhEntityPath = "{Event Hub path/name}";
+    private const string EventHubConnectionString = "{Event Hubs connection string}";
+    private const string EventHubName = "{Event Hub path/name}";
     ```
 
 3. Adjon hozzá egy új, `MainAsync` nevű metódust a `Program` osztályhoz az alábbiak szerint.
@@ -80,9 +80,9 @@ A következő lépésekkel adja hozzá a [`Microsoft.Azure.EventHubs`](https://w
         // Creates an EventHubsConnectionStringBuilder object from the connection string, and sets the EntityPath.
         // Typically, the connection string should have the entity path in it, but this simple scenario
         // uses the connection string from the namespace.
-        var connectionStringBuilder = new EventHubsConnectionStringBuilder(EhConnectionString)
+        var connectionStringBuilder = new EventHubsConnectionStringBuilder(EventHubConnectionString)
         {
-            EntityPath = EhEntityPath
+            EntityPath = EventHubName
         };
 
         eventHubClient = EventHubClient.CreateFromConnectionString(connectionStringBuilder.ToString());

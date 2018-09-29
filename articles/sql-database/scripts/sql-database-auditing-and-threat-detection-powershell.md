@@ -2,27 +2,22 @@
 title: PowerShell példaszkript a naplózás és fenyegetésészlelés az Azure SQL Database-ben való konfigurálásához  | Microsoft Docs
 description: Azure PowerShell-példaszkript a naplózás és a fenyegetésészlelés konfigurálásához egy Azure SQL Database-adatbázisban
 services: sql-database
-documentationcenter: sql-database
-author: giladmit
-manager: craigg
-editor: carlrab
-tags: azure-service-management
-ms.assetid: ''
 ms.service: sql-database
-ms.custom: mvc,security
+ms.subservice: threat-detection
+ms.custom: security
 ms.devlang: PowerShell
 ms.topic: sample
-ms.tgt_pltfrm: sql-database
-ms.workload: database
-ms.date: 09/07/2018
+author: giladmit
 ms.author: giladm
 ms.reviewer: carlrab
-ms.openlocfilehash: bea62b9d7b884aca1d64db27cd09a115ebf0bdba
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+manager: craigg
+ms.date: 09/07/2018
+ms.openlocfilehash: 6942577c2bf6d031ded9ba6af93a2ab592fe9976
+ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45633299"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47053809"
 ---
 # <a name="use-powershell-to-configure-sql-database-auditing-and-threat-detection"></a>Naplózás és fenyegetésészlelés konfigurálása egy SQL Database-adatbázisban a PowerShell használatával
 

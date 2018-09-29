@@ -1,7 +1,5 @@
 # Áttekintés
 ## [Tudnivalók az Azure Portalról](../azure-portal-overview.md)
-# Oktatóanyagok
-## [A DevOps és az Azure Portal](tutorial-azureportal-devops.md)
 # Alapelvek
 ## [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md)
 ## [Billentyűparancsok](azure-portal-keyboard-shortcuts.md)

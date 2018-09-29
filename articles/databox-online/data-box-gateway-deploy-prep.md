@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 09/24/2018
 ms.author: alkohli
 ms.custom: ''
-ms.openlocfilehash: f4c3cf5329c10cda3691370e946b8397662a8d66
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 4c21245e05625f65b6b5dcf5f7081f5f5d1abb52
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 09/24/2018
-ms.locfileid: "46953412"
+ms.locfileid: "47030605"
 ---
 # <a name="tutorial-prepare-to-deploy-azure-data-box-gateway-preview"></a>Oktatóanyag: Az Azure Data Box Gateway üzembe helyezésének előkészítése (előzetes verzió)
 
@@ -89,7 +89,7 @@ Mielőtt hozzákezd, győződjön meg az alábbiakról:
 
 ## <a name="create-a-new-resource"></a>Új erőforrás létrehozása
 
-A Data Box Gateway-erőforrás egyetlen példánya több virtuális Data Box Gateway-eszközt kezelhet. Az alábbi lépések végrehajtásával hozhat létre új Data Box Gateway-erőforrást. 
+Az alábbi lépések végrehajtásával hozhat létre új Data Box Gateway-erőforrást. 
 
 Ha rendelkezik meglévő Data Box Gateway-erőforrással a virtuális eszközök kezeléséhez, hagyja ki ezt a lépést, és ugorjon [Az aktiválási kulcs lekérése](#get-the-activation-key) lépésre.
 

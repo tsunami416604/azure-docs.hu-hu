@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/16/2018
 ms.author: clemensv
 ms.custom: include file
-ms.openlocfilehash: e07d82b8a3aea4f0db0f5a071d78ea360cd611ab
-ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
+ms.openlocfilehash: 8d73a22473ffff358c7424249c7581f6af740718
+ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "40177253"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47452824"
 ---
 ### <a name="create-a-console-application"></a>Konzolalkalmazás létrehozása
 
@@ -24,8 +24,10 @@ Hozzon létre egy új **Konzolalkalmazás- (.NET-keretrendszer-)** projektet a V
 ### <a name="add-the-relay-nuget-package"></a>A Relay NuGet-csomag hozzáadása
 
 1. Kattintson a jobb gombbal az újonnan létrehozott projektre, majd válassza a **NuGet-csomagok kezelése** lehetőséget.
-2. Válassza a **Tallózás** elemet, majd keressen rá a **Microsoft.Azure.Relay** kifejezésre. Válassza ki a **Microsoft Azure Relay** elemet a keresési eredmények közül. 
-3. Kattintson a **Telepítés** gombra a telepítés befejezéséhez. Zárja be a párbeszédpanelt.
+2. Válassza az **Előzetes verzió belefoglalása** lehetőséget. 
+3. Válassza a **Tallózás** elemet, majd keressen rá a **Microsoft.Azure.Relay** kifejezésre. Válassza ki a **Microsoft Azure Relay** elemet a keresési eredmények közül.
+4. Válassza a **2.0.0-preview1-20180523** lehetőséget a verzió megadásakor. 
+5. Kattintson a **Telepítés** gombra a telepítés befejezéséhez. Zárja be a párbeszédpanelt.
 
 ### <a name="write-code-to-send-requests"></a>Kód írása kérelmek küldéséhez
 

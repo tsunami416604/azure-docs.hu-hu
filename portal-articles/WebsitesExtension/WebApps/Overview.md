@@ -8,12 +8,12 @@ ms.service: app-service
 ms.topic: article
 ms.date: 04/27/2017
 ms.author: sewatson
-ms.openlocfilehash: 0d4121bd68611c1f3c6a8c89a0d60251401d670a
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 50e6b714bc28ce383f06580d0e35b0b0e4066835
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44301293"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47432223"
 ---
 # <a name="app-service-documentation"></a>App Service – dokumentáció
 Az Azure App Service segítségével egy tetszőleges programozási nyelven hozhat létre és üzemeltethet webalkalmazásokat az infrastruktúra, a nyelv vagy a webes keretrendszer futtatókörnyezetének kezelése nélkül. Automatikus méretezést és magas rendelkezésre állást kínál, támogatja a Windows és a Linux rendszert is, valamint lehetővé teszi az automatikus üzembe helyezéseket a GitHub, az Azure DevOps Services vagy bármely egyéb Git-adattár használatával. Gyors útmutatóink, oktatóanyagaink és a felhozott példák segítségével megismerkedhet az Azure App Service használatával.
@@ -40,7 +40,7 @@ Megtudhatja, hogyan telepíthet, kezelhet és monitorozhat biztonságos webalkal
   - [.NET és Azure SQL DB](/azure/app-service/app-service-web-tutorial-dotnet-sqldatabase)
   - [Node.js és MongoDB](/azure/app-service/app-service-web-tutorial-nodejs-mongodb-app)
   - [Java és MySQL](/app-service/app-service-web-tutorial-java-mysql)
-  - [Python és PostgreSQL](/app-service/containers/tutorial-docker-python-postgresql-app)
+  - [Python és PostgreSQL](/app-service/containers/tutorial-python-postgresql-app)
 - [Meglévő egyéni tartomány kapcsolása az alkalmazáshoz](/azure/app-service/app-service-web-tutorial-custom-domain)
 - [Meglévő SSL-tanúsítvány kötése az alkalmazáshoz](/azure/app-service/app-service-web-tutorial-custom-SSL)
 

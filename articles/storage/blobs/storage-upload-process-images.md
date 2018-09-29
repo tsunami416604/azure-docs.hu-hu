@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.date: 02/20/2018
 ms.author: tamram
 ms.custom: mvc
-ms.openlocfilehash: aefc9ae15918a1269614fed41d76d75396684e64
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 237599a5dbd39147b02e9a85cbe34502d0d91923
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46987288"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47227044"
 ---
 # <a name="upload-image-data-in-the-cloud-with-azure-storage"></a>Képadatok feltöltése a felhőbe az Azure Storage segítségével
 
@@ -46,75 +46,75 @@ Ha a parancssori felület helyi telepítését és használatát választja, akk
 ## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot 
 
 Hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group#az_group_create) paranccsal. Az Azure-erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat.
- 
+
 A következő példában létrehozunk egy `myResourceGroup` nevű erőforráscsoportot.
- 
-```azurecli-interactive 
+
+```azurecli-interactive
 az group create --name myResourceGroup --location westcentralus 
-``` 
+```
 
 ## <a name="create-a-storage-account"></a>Tárfiók létrehozása
- 
-A minta képeket tölt fel egy Azure Storage-fiókban lévő blobtárolóba. A tárfiók egy egyedi névteret biztosít az Azure Storage-adatobjektumok tárolásához és hozzáféréséhez. Az [az storage account create](/cli/azure/storage/account#az_storage_account_create) paranccsal hozzon létre egy tárfiókot a létrehozott erőforráscsoportban. 
 
-> [!IMPORTANT] 
-> Az oktatóanyag második része a blobtárolókhoz tartozó esemény-előfizetések használatát mutatja be. Esemény-előfizetések csak az alábbi régiókban található Blob Storage-fiókokhoz támogatottak: Délkelet-Ázsia, Kelet-Ázsia, Kelet-Ausztrália, Délkelet-Ausztrália, USA középső régiója, USA keleti régiója, USA 2. keleti régiója, Nyugat-Európa, Észak-Európa, Kelet-Japán, Nyugat-Japán, USA nyugati középső régiója, USA nyugati régiója, USA 2. nyugati régiója. A korlátozás miatt a képek és miniatűrök tárolásához egy, a mintaalkalmazás által használt Blob Storage-fiókot kell létrehoznia.   
+A minta képeket tölt fel egy Azure Storage-fiókban lévő blobtárolóba. A tárfiók egy egyedi névteret biztosít az Azure Storage-adatobjektumok tárolásához és hozzáféréséhez. Az [az storage account create](/cli/azure/storage/account#az_storage_account_create) paranccsal hozzon létre egy tárfiókot a létrehozott erőforráscsoportban.
+
+> [!IMPORTANT]
+> Az oktatóanyag második része a blobtárolókhoz tartozó esemény-előfizetések használatát mutatja be. Esemény-előfizetések csak az alábbi régiókban található Blob Storage-fiókokhoz támogatottak: Délkelet-Ázsia, Kelet-Ázsia, Kelet-Ausztrália, Délkelet-Ausztrália, USA középső régiója, USA keleti régiója, USA 2. keleti régiója, Nyugat-Európa, Észak-Európa, Kelet-Japán, Nyugat-Japán, USA nyugati középső régiója, USA nyugati régiója, USA 2. nyugati régiója. A korlátozás miatt a képek és miniatűrök tárolásához egy, a mintaalkalmazás által használt Blob Storage-fiókot kell létrehoznia.
 
 A következő parancsban a `<blob_storage_account>` helyőrző helyett írja be a saját globálisan egyedi Blob Storage-fióknevét.  
 
-```azurecli-interactive 
+```azurecli-interactive
 az storage account create --name <blob_storage_account> \
 --location westcentralus --resource-group myResourceGroup \
 --sku Standard_LRS --kind blobstorage --access-tier hot 
-``` 
- 
+```
+
 ## <a name="create-blob-storage-containers"></a>Blob Storage-tárolók létrehozása
 
-Az alkalmazás két tárolót használ a Blob Storage-fiókban. A tárolók hasonlók a mappákhoz, és a blobok tárolására szolgálnak. A _képek_ tároló az a hely, ahová az alkalmazás feltölti a teljes felbontású képeket. A sorozat egy későbbi részében egy Azure-függvényalkalmazás tölt fel átméretezett képminiatűröket a _thumbnails_ tárolóba. 
+Az alkalmazás két tárolót használ a Blob Storage-fiókban. A tárolók hasonlók a mappákhoz, és a blobok tárolására szolgálnak. A _képek_ tároló az a hely, ahová az alkalmazás feltölti a teljes felbontású képeket. A sorozat egy későbbi részében egy Azure-függvényalkalmazás tölt fel átméretezett képminiatűröket a _thumbnails_ tárolóba.
 
 Szerezze be a tárfiókkulcsot az [az storage account keys list](/cli/azure/storage/account/keys#az_storage_account_keys_list) parancs segítségével. Ezután a kulcs használatával két tárolót hozhat létre az [az storage container create](/cli/azure/storage/container#az_storage_container_create) paranccsal.  
- 
+
 Ebben az esetben `<blob_storage_account>` a létrehozott Blob Storage-fiók neve. Az _images_ tároló nyilvános hozzáférése `off` értékű, a _thumbnails_ tároló nyilvános hozzáférése pedig `container` értékű. A `container` nyilvános hozzáférési beállítás lehetővé teszi, hogy a miniatűrök megtekinthetők legyenek a webhely látogatói számára.
- 
-```azurecli-interactive 
+
+```azurecli-interactive
 blobStorageAccount=<blob_storage_account>
 
 blobStorageAccountKey=$(az storage account keys list -g myResourceGroup \
--n $blobStorageAccount --query [0].value --output tsv) 
+-n $blobStorageAccount --query [0].value --output tsv)
 
 az storage container create -n images --account-name $blobStorageAccount \
---account-key $blobStorageAccountKey --public-access off 
+--account-key $blobStorageAccountKey --public-access off
 
 az storage container create -n thumbnails --account-name $blobStorageAccount \
 --account-key $blobStorageAccountKey --public-access container
 
-echo "Make a note of your blob storage account key..." 
-echo $blobStorageAccountKey 
-``` 
+echo "Make a note of your blob storage account key..."
+echo $blobStorageAccountKey
+```
 
 Jegyezze fel a Blob Storage-fiók nevét és kulcsát. A mintaalkalmazás ezekkel a beállításokkal csatlakozik a tárfiókhoz a képek feltöltéséhez. 
 
-## <a name="create-an-app-service-plan"></a>App Service-csomag létrehozása 
+## <a name="create-an-app-service-plan"></a>App Service-csomag létrehozása
 
-Az alkalmazást tároló webkiszolgálófarm helyét, méretét és funkcióit egy [App Service-csomag](../../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md) határozza meg. 
+Az alkalmazást tároló webkiszolgálófarm helyét, méretét és funkcióit egy [App Service-csomag](../../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md) határozza meg.
 
-Hozzon létre egy App Service-csomagot az [az appservice plan create](/cli/azure/appservice/plan#az_appservice_plan_create) paranccsal. 
+Hozzon létre egy App Service-csomagot az [az appservice plan create](/cli/azure/appservice/plan#az_appservice_plan_create) paranccsal.
 
-Az alábbi példa egy `myAppServicePlan` nevű App Service-csomag létrehozását mutatja be az **INGYENES** tarifacsomagban: 
+Az alábbi példa egy `myAppServicePlan` nevű App Service-csomag létrehozását mutatja be az **INGYENES** tarifacsomagban:
 
-```azurecli-interactive 
-az appservice plan create --name myAppServicePlan --resource-group myResourceGroup --sku FREE 
-``` 
+```azurecli-interactive
+az appservice plan create --name myAppServicePlan --resource-group myResourceGroup --sku FREE
+```
 
-## <a name="create-a-web-app"></a>Webalkalmazás létrehozása 
+## <a name="create-a-web-app"></a>Webalkalmazás létrehozása
 
 A webalkalmazás üzemeltetési tárterületet biztosít a mintaalkalmazás GitHub-mintaadattárból települő kódjához. Az [ az webapp create](/cli/azure/webapp#az_webapp_create) paranccsal hozzon létre egy [webalkalmazást](../../app-service/app-service-web-overview.md) a `myAppServicePlan` App Service-csomagban.  
- 
+
 Az alábbi parancsban cserélje ki az `<web_app>` elemet egy egyedi névre (érvényes karakterek: `a-z`, `0-9` és `-`). Ha az `<web_app>` nem egyedi, a következő hibaüzenet jelenik meg: _A megadott `<web_app>` névvel már létezik webhely._ A webalkalmazás alapértelmezett URL-címe `https://<web_app>.azurewebsites.net`.  
 
-```azurecli-interactive 
-az webapp create --name <web_app> --resource-group myResourceGroup --plan myAppServicePlan 
-``` 
+```azurecli-interactive
+az webapp create --name <web_app> --resource-group myResourceGroup --plan myAppServicePlan
+```
 
 ## <a name="deploy-the-sample-app-from-the-github-repository"></a>Mintaalkalmazás üzembe helyezése a GitHub-adattárból
 
@@ -122,44 +122,45 @@ az webapp create --name <web_app> --resource-group myResourceGroup --plan myAppS
 
 Az App Service több módszert is támogat tartalmak webalkalmazásba való üzembe helyezésére. Ebben az oktatóanyagban a webalkalmazást egy [nyilvános GitHub-mintaadattárból](https://github.com/Azure-Samples/storage-blob-upload-from-webapp) telepítheti. Konfigurálja a GitHubról való telepítést a webalkalmazásba az [az webapp deployment source config](/cli/azure/webapp/deployment/source#az_webapp_deployment_source_config) parancs segítségével. Cserélje le a `<web_app>` elemet az előző lépésben létrehozott webalkalmazás nevére.
 
-A mintaprojekt tartalmaz egy [ASP.NET MVC](https://www.asp.net/mvc) alkalmazást, amely képeket fogad, ment a tárfiókba, illetve jelenít meg a miniatűrtárolóból. A webalkalmazás a [Microsoft.WindowsAzure.Storage](/dotnet/api/microsoft.windowsazure.storage?view=azure-dotnet), [Microsoft.WindowsAzure.Storage.Blob](/dotnet/api/microsoft.windowsazure.storage.blob?view=azure-dotnet) és a [Microsoft.WindowsAzure.Storage.Auth](/dotnet/api/microsoft.windowsazure.storage.auth?view=azure-dotnet) névtereket használja az Azure Storage ügyféloldali kódtárból az Azure Storage-tárterülettel való kommunikációhoz. 
+A mintaprojekt tartalmaz egy [ASP.NET MVC](https://www.asp.net/mvc) alkalmazást, amely képeket fogad, ment a tárfiókba, illetve jelenít meg a miniatűrtárolóból. A webalkalmazás a [Microsoft.WindowsAzure.Storage](/dotnet/api/microsoft.windowsazure.storage?view=azure-dotnet), [Microsoft.WindowsAzure.Storage.Blob](/dotnet/api/microsoft.windowsazure.storage.blob?view=azure-dotnet) és a [Microsoft.WindowsAzure.Storage.Auth](/dotnet/api/microsoft.windowsazure.storage.auth?view=azure-dotnet) névtereket használja az Azure Storage ügyféloldali kódtárból az Azure Storage-tárterülettel való kommunikációhoz.
 
 # <a name="nodejstabnodejs"></a>[Node.js](#tab/nodejs)
 Az App Service több módszert is támogat tartalmak webalkalmazásba való üzembe helyezésére. Ebben az oktatóanyagban a webalkalmazást egy [nyilvános GitHub-mintaadattárból](https://github.com/Azure-Samples/storage-blob-upload-from-webapp-node) telepítheti. Konfigurálja a GitHubról való telepítést a webalkalmazásba az [az webapp deployment source config](/cli/azure/webapp/deployment/source#az_webapp_deployment_source_config) parancs segítségével. Cserélje le a `<web_app>` elemet az előző lépésben létrehozott webalkalmazás nevére.
 
 ---
 
-```azurecli-interactive 
+```azurecli-interactive
 az webapp deployment source config --name <web_app> \
 --resource-group myResourceGroup --branch master --manual-integration \
 --repo-url https://github.com/Azure-Samples/storage-blob-upload-from-webapp
-``` 
+```
 
-## <a name="configure-web-app-settings"></a>A webalkalmazás beállításainak konfigurálása 
+## <a name="configure-web-app-settings"></a>A webalkalmazás beállításainak konfigurálása
 
-A minta-webalkalmazás az [Azure Storage ügyféloldali kódtár](/dotnet/api/overview/azure/storage?view=azure-dotnet) segítségével kér a képfeltöltéshez használt hozzáférési jogkivonatokat. A Storage SDK által használt tárfiókhitelesítő-adatok a webalkalmazás alkalmazásbeállításaiban állíthatók be. Adjon hozzá alkalmazásbeállításokat az üzembe helyezett alkalmazáshoz az [az webapp config appsettings set](/cli/azure/webapp/config/appsettings#az_webapp_config_appsettings_set) parancs segítségével. 
+A minta-webalkalmazás az [Azure Storage ügyféloldali kódtár](/dotnet/api/overview/azure/storage?view=azure-dotnet) segítségével kér a képfeltöltéshez használt hozzáférési jogkivonatokat. A Storage SDK által használt tárfiókhitelesítő-adatok a webalkalmazás alkalmazásbeállításaiban állíthatók be. Adjon hozzá alkalmazásbeállításokat az üzembe helyezett alkalmazáshoz az [az webapp config appsettings set](/cli/azure/webapp/config/appsettings#az_webapp_config_appsettings_set) parancs segítségével.
 
-Az alábbi parancsban a Blob Storage-fiók neve `<blob_storage_account>`, a hozzá tartozó kulcs pedig `<blob_storage_key>`. Cserélje le a `<web_app>` elemet az előző lépésben létrehozott webalkalmazás nevére.     
+Az alábbi parancsban a Blob Storage-fiók neve `<blob_storage_account>`, a hozzá tartozó kulcs pedig `<blob_storage_key>`. Cserélje le a `<web_app>` elemet az előző lépésben létrehozott webalkalmazás nevére.
 
-```azurecli-interactive 
+```azurecli-interactive
 az webapp config appsettings set --name <web_app> --resource-group myResourceGroup \
 --settings AzureStorageConfig__AccountName=<blob_storage_account> \
 AzureStorageConfig__ImageContainer=images  \
 AzureStorageConfig__ThumbnailContainer=thumbnails \
 AzureStorageConfig__AccountKey=<blob_storage_key>  
-``` 
+```
 
-A webalkalmazás üzembe helyezése és konfigurálása után tesztelheti a képek feltöltésének működését az alkalmazásban.   
+A webalkalmazás üzembe helyezése és konfigurálása után tesztelheti a képek feltöltésének működését az alkalmazásban.
 
-## <a name="upload-an-image"></a>Rendszerkép feltöltése 
+## <a name="upload-an-image"></a>Rendszerkép feltöltése
 
-A webalkalmazás teszteléséhez nyissa meg a közzétett alkalmazás URL-címét. A webalkalmazás alapértelmezett URL-címe `https://<web_app>.azurewebsites.net`. Válassza a **Fényképek feltöltése** területet egy fájl kiválasztásához és feltöltéséhez, vagy húzza a fájlt a régióra. Sikeres feltöltés esetén a kép eltűnik.
+A webalkalmazás teszteléséhez nyissa meg a közzétett alkalmazás URL-címét. A webalkalmazás alapértelmezett URL-címe `https://<web_app>.azurewebsites.net`.
+Válassza a **Fényképek feltöltése** területet egy fájl kiválasztásához és feltöltéséhez, vagy húzza a fájlt a régióra. Sikeres feltöltés esetén a kép eltűnik.
 
 # <a name="nettabnet"></a>[\.NET](#tab/net)
 
 ![ImageResizer alkalmazás](media/storage-upload-process-images/figure1.png)
 
-A mintakódban a képek felöltése a tárfiókban lévő `images` tárolóba a `Storagehelper.cs` fájlban található `UploadFiletoStorage` művelettel, az [UploadFromStreamAsync](/dotnet/api/microsoft.windowsazure.storage.blob.cloudblockblob.uploadfromstreamasync?view=azure-dotnet) módszer segítségével történik. A következő mintakód tartalmazza a `UploadFiletoStorage` műveletet. 
+A mintakódban a képek felöltése a tárfiókban lévő `images` tárolóba a `Storagehelper.cs` fájlban található `UploadFiletoStorage` művelettel, az [UploadFromStreamAsync](/dotnet/api/microsoft.windowsazure.storage.blob.cloudblockblob.uploadfromstreamasync?view=azure-dotnet) módszer segítségével történik. A következő mintakód tartalmazza a `UploadFiletoStorage` műveletet.
 
 ```csharp
 public static async Task<bool> UploadFileToStorage(Stream fileStream, string fileName, AzureStorageConfig _storageConfig)
