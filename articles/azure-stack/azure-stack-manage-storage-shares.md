@@ -6,23 +6,22 @@ documentationcenter: ''
 author: mattbriggs
 manager: femila
 editor: ''
-ms.assetid: b0e694e4-3575-424c-afda-7d48c2025a62
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: PowerShell
 ms.topic: get-started-article
-ms.date: 05/10/2018
+ms.date: 09/28/2018
 ms.author: mabrigg
 ms.reviewer: xiaofmao
-ms.openlocfilehash: cdfdaf9195f14e3cbe3db2a4507bd91a3133a26e
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: d979692ba32c596058d28c88f32e7e5872ab7ef9
+ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39071385"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47452326"
 ---
-# <a name="manage-storage-capacity-for-azure-stack"></a>Az Azure stack-beli tárolási kapacitás kezelése
+# <a name="manage-storage-capacity-for-azure-stack"></a>Az Azure stack-beli tárolási kapacitás kezelése 
 
 *A következőkre vonatkozik: Azure Stackkel integrált rendszerek és az Azure Stack fejlesztői készlete*
 
@@ -86,10 +85,15 @@ Felhő-felelősként, figyelemmel kísérheti a tárolási kapacitás, a PowerSh
 - **Használt kapacitás** , amennyit a a fájlokat, a bérlői adatok és kapcsolódó metaadatok összes egységek által használt adatok (bájt).
 
 ### <a name="use-the-administrator-portal"></a>A felügyeleti portál
-Felhő-felelősként minden megosztás tárkapacitása megtekintéséhez használhatja a felügyeleti portálon. **Lépjen a Storage** > **fájlmegosztások** , ahol megtekintheti a használati adatok fájl megosztási listájának megnyitásához.
-![Példa: Tárolófájl-megosztások](media/azure-stack-manage-storage-shares/storage-file-shares.png)
-- **TELJES** a teljes területe, amely elérhető a megosztáson (bájt). Ez a terület az adat- és a tárolási szolgáltatások által kezelt metaadat szolgál.
-- **HASZNÁLT** , amennyit a a fájlokat, a bérlői adatok és kapcsolódó metaadatok összes egységek által használt adatok (bájt).
+Felhő-felelősként minden megosztás tárkapacitása megtekintéséhez használhatja a felügyeleti portálon.
+
+1. Jelentkezzen be a [felügyeleti portál](https://adminportal.local.azurestack.external).
+2. Válassza ki **minden szolgáltatás** > **tárolási** , ahol megtekintheti a használati adatok fájl megosztási listájának megnyitásához. 
+
+  ![Példa: Tárolófájl-megosztások](media/azure-stack-manage-storage-shares/storage-file-shares.png)
+
+  - **TELJES** a teljes területe, amely elérhető a megosztáson (bájt). Ez a terület az adat- és a tárolási szolgáltatások által kezelt metaadat szolgál.
+  - **HASZNÁLT** , amennyit a a fájlokat, a bérlői adatok és kapcsolódó metaadatok összes egységek által használt adatok (bájt).
 
 ### <a name="storage-space-alerts"></a>Tárolási hely riasztások
 Ha a felügyeleti portál, megosztások, amelyek kevés a lemezterület kapcsolatos riasztásokat kap.

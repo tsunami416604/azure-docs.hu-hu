@@ -1,6 +1,6 @@
 ---
-title: Fizikai memória kapacitásának Azure verem kezelése |} Microsoft Docs
-description: Megfigyelését és felügyeletét a rendelkezésre álló szabad hely Azure verem.
+title: Az Azure Stack fizikai memória-kapacitás kezelése |} A Microsoft Docs
+description: Figyelheti és kezelheti a rendelkezésre álló tárhely az Azure Stackhez.
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -12,44 +12,43 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 05/08/2018
+ms.date: 09/28/2018
 ms.author: mabrigg
 ms.reviewer: Thomas.Roettinger
-ms.openlocfilehash: dc572353c2e27ddfbae2398f1aece56586955e26
-ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
+ms.openlocfilehash: a914d20f61b5b632e792ca29f6c201964db4a203
+ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2018
-ms.locfileid: "34074857"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47452139"
 ---
-<!---Loc Comment: Please, check the comment in coversation section---> 
-# <a name="manage-physical-memory-capacity-for-azure-stack"></a>Fizikai memória kapacitásának Azure verem kezelése
+# <a name="manage-physical-memory-capacity-for-azure-stack"></a>Az Azure Stack fizikai memória-kapacitás kezelése
 
-*A következőkre vonatkozik: Azure verem integrált rendszerek*
+*A következőkre vonatkozik: Azure Stackkel integrált rendszerek*
 
-A teljes rendelkezésre álló memória kapacitásbővítés Azure verem, több memóriát is hozzáadhat. Azure-készletben a fizikai kiszolgáló is hivatkozunk egy *skálázási egység csomópont*. Összes méretezési egység tagcsomópontja egyetlen skálázási egységére azonos memóriamennyiség kell rendelkeznie.
+A teljes rendelkezésre álló memória-kapacitás az Azure Stack növelése érdekében hozzáadhat további memória. Az Azure Stack a fizikai kiszolgálót is nevezik egy *skálázási egység csomópont*. Minden skálázási egység tagcsomópontja egyetlen skálázási egység azonos mennyiségű memóriával kell rendelkeznie.
 
 > [!note]  
-> A folytatás előtt tekintse át a gyártó dokumentációját annak ellenőrzéséhez, hogy egy a gyártó támogatja a fizikai memória frissítése. Az OEM hardver gyártójával támogatási szerződése szükség lehet, hogy a szállító hajtsa végre a fizikai kiszolgáló állvány elhelyezése és az eszköz belső vezérlőprogram frissítése.
+> A folytatás előtt tekintse meg a gyártó dokumentációját annak ellenőrzéséhez, hogy egy a gyártó támogatja a fizikai memória frissítése. Az OEM hardver szállítójával támogatási szerződés megkövetelheti, hogy a szállító hajtsa végre a fizikai kiszolgáló rack elhelyezése és az eszköz belső vezérlőprogramjának frissítése.
 
-A következő folyamatábra bemutatja, az általános folyamat egyes skálázási egység csomópont memóriáját.
+Az alábbi folyamatábrája bemutatja a memória hozzá minden egyes méretezési egység csomópont általános folyamata.
 
-![Vegyen fel minden skálázási egység csomópont memória](media\azure-stack-manage-storage-physical-capacity\process-to-add-memory-to-scale-unit.png)
+![Adja hozzá a memória minden egyes méretezési egység csomópont](media\azure-stack-manage-storage-physical-capacity\process-to-add-memory-to-scale-unit.png)
 
 ## <a name="add-memory-to-an-existing-node"></a>Memória hozzáadása egy meglévő csomópont
-Az alábbi lépéseket a Hozzáadás folyamatát magas szintű áttekintését adja meg. 
+Az alábbi lépéseket a hozzáadási memória folyamat magas szintű áttekintését adja meg. 
 
 > [!Warning]  
-Az OEM által biztosított dokumentációt utaló nélkül nem kövesse az alábbi lépéseket.
+Ne kövesse ezeket a lépéseket az OEM által biztosított dokumentációt hivatkozó nélkül.
 
 > [!Warning]  
-A teljes skálázási egység nem támogatja a működés közbeni memória frissítés le kell állítani.
+A skálázási egység le kell állítani a működés közbeni memória frissítés nem támogatott.
 
-1. Állítsa le az Azure-verem leírt lépések alapján a [kezdési és befejezési Azure verem](azure-stack-start-and-stop.md) cikk.
-2. A memória, a hardver gyártójával dokumentációnak fizikai számítógépekre frissítése.
-3. Azure Stack a lépéseket követve indítsa el a [kezdési és befejezési Azure verem](azure-stack-start-and-stop.md) cikk.
+1. Állítsa le az Azure Stack használatával leírt lépéseket a [indítás és leállítás Azure Stack](azure-stack-start-and-stop.md) cikk.
+2. Frissítse a memória minden egyes fizikai számítógépen a hardver gyártójával dokumentációnk segítségével.
+3. Indítsa el az Azure Stack használatával a lépések a [indítás és leállítás Azure Stack](azure-stack-start-and-stop.md) cikk.
 
 ## <a name="next-steps"></a>További lépések
 
- - Azure-készletben található, helyreállítására és az üzleti igények alapján tárolási kapacitás visszaigényléséhez storage-fiókok kezelése című témakörben talál [verem Azure storage-fiókok kezelése](azure-stack-manage-storage-accounts.md).
- - Az Azure-verem felhő üzemeltetője figyeli, és kezeli a saját Azure Alkalmazásveremben üzembe tárolókapacitását további tudnivalókért lásd: [kezelése az Azure-verem a tárolókapacitás](azure-stack-manage-storage-shares.md). 
+ - Ismerje meg, hogyan kezelheti a tárfiókok az Azure Stack keresése, helyreállítás és üzleti igényeinek megfelelően tárolási kapacitás visszaigényléséhez, lásd: [kezelése az Azure Stack tárfiókok](azure-stack-manage-storage-accounts.md).
+ - Az Azure Stack-felhő üzemeltetője figyeli, és kezeli az Azure Stack üzemelő példányához tárkapacitása kapcsolatban lásd: [kezelése az Azure Stack a tárolókapacitás](azure-stack-manage-storage-shares.md). 

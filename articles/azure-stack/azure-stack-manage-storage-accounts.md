@@ -6,21 +6,20 @@ documentationcenter: ''
 author: mattbriggs
 manager: femila
 editor: ''
-ms.assetid: 627d355b-4812-45cb-bc1e-ce62476dab34
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: PowerShell
 ms.topic: get-started-article
-ms.date: 05/10/2018
+ms.date: 09/28/2018
 ms.author: mabrigg
 ms.reviewer: xiaofmao
-ms.openlocfilehash: 8914391a586bb508192200beaba7f591649a1e99
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: 35c15613192ac12a7d4c64cbe28f62200724d311
+ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "42139469"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47452275"
 ---
 # <a name="manage-storage-accounts-in-azure-stack"></a>Az Azure Stack tárfiókok kezelése
 Ismerje meg, hogyan kezelheti a tárfiókok az Azure Stack keresése, helyreállítás és üzleti igényeinek megfelelően tárolási kapacitás visszaigényléséhez.
@@ -28,19 +27,19 @@ Ismerje meg, hogyan kezelheti a tárfiókok az Azure Stack keresése, helyreáll
 ## <a name="find"></a>Tárfiók keresése
 A tárfiókok listája, a régióban az Azure Stackben által tekinthet meg:
 
-1. Egy böngészőből lépjen https://adminportal.local.azurestack.external.
-2. Jelentkezzen be az Azure Stack felügyeleti portálján a felhőalapú felelősnek (üzembe helyezés során megadott hitelesítő adatok használatával)
-3. Az alapértelmezett irányítópult – keresse meg a **régiók kezelése** listában, és válassza ki a régiót, ismerje meg, például szeretné **(helyi**).
+1. Jelentkezzen be a [felügyeleti portál](https://adminportal.local.azurestack.external).
+
+2. Válassza ki **minden szolgáltatás** > **régiók kezelése** alatt **felügyeleti**.
+
+3. Válassza ki **tárolási** származó a **erőforrás-szolgáltatók** listája.
    
-   ![](media/azure-stack-manage-storage-accounts/image1.png)
-4. Válassza ki **tárolási** származó a **erőforrás-szolgáltatók** listája.
+   ![Tárolásierőforrás-szolgáltató](media/azure-stack-manage-storage-accounts/image1.png)
+
+5. Válassza ki **tárfiókok** a **tárolási**.
    
    ![](media/azure-stack-manage-storage-accounts/image2.png)
-5. Most, a storage erőforrás-szolgáltató rendszergazda panelen – görgessen le a **tárfiókok** lapra, és jelölje ki.
    
-   ![](media/azure-stack-manage-storage-accounts/image3.png)
-   
-   Az eredményül kapott lap a tárfiókok listája, az adott régióban.
+   A panel az adott régióban a storage-fiókok listáját jeleníti meg.
    
    ![](media/azure-stack-manage-storage-accounts/image4.png)
 
@@ -76,12 +75,12 @@ Olyan helyzetekben, ahol meg kell helyreállítani egy törölt fiók is.
 
 Az Azure Stack egy egyszerű módja van:
 
-1. Keresse meg a storage-fiókok listáján. Lásd: [keresse meg a tárfiókot](#find) című témakörben talál további információt.
+1. Keresse meg a storage-fiókok listáján. Lásd: [keresse meg a tárfiókot](#find) ebben a cikkben további információt.
 2. Keresse meg az adott fiók a listában. Szükség lehet szűrni.
 3. Ellenőrizze a *állapot* fiók. Üzenetnek kell megjelennie **törölt**.
 4. Válassza ki a fiókot, amely a fiók részletei ablaktábla megnyitása.
 5. Felett ezen az ablaktáblán keresse meg a **helyreállítása** gombra, és válassza ki azt.
-6. Válassza ki **Igen** megerősítéséhez.
+6. Válassza az **Igen** lehetőséget a megerősítéshez.
    
    ![](media/azure-stack-manage-storage-accounts/image8.png)
 7. A helyreállítási már az *feldolgozása... kis türelmet* az azt jelzi, hogy sikeres volt-e azt.
@@ -97,19 +96,18 @@ Az Azure Stack egy egyszerű módja van:
   Adatmegőrzési azt jelenti, hogy ki, hogy a törölt fiók túllépte az adatmegőrzési időszak, és nem használható helyreállításhoz.
 * A törölt fiók nem szerepelnek a fiókok listájában.
   
-  Ha a törölt fiók már megtörtént a szemétgyűjtő fiók nem jelenik a fióklista. Ebben az esetben nem állíthatók vissza. Lásd: [kapacitás visszaigényléséhez](#reclaim) ebben a témakörben.
+  Ha a törölt fiók már megtörtént a szemétgyűjtő fiók nem jelenik a fióklista. Ebben az esetben nem állíthatók vissza. Lásd: [kapacitás visszaigényléséhez](#reclaim) ebben a cikkben.
 
 ## <a name="set-the-retention-period"></a>A megőrzési időtartam
 A megőrzési időszak beállítása lehetővé teszi, hogy a felhő üzemeltetője megadásához egy adott időszakban (0 és 9999 nap) közötti nap során, ami minden törölt fiók potenciálisan állíthatók helyre. Az alapértelmezett megőrzési időszak 0 nap van beállítva. Az érték "0" azt jelenti, hogy minden törölt fiók megőrzési azonnal esik, és rendszeres szemétgyűjtési megjelölve.
 
 **A megőrzési idő módosítása:**
 
-1. Egy böngészőből lépjen https://adminportal.local.azurestack.external.
-2. Jelentkezzen be az Azure Stack felügyeleti portálján a felhőalapú felelősnek (üzembe helyezés során megadott hitelesítő adatok használatával)
-3. Az alapértelmezett irányítópult – keresse meg a **régiók kezelése** listában, és válassza ki a régiót szeretné – például **(helyi**).
-4. Válassza ki **tárolási** származó a **erőforrás-szolgáltatók** listája.
-5. Válassza ki **beállítások** megnyílik a beállítás panel tetején.
-6. Válassza ki **konfigurációs** majd szerkessze a megőrzési időtartam értéket.
+1. Jelentkezzen be a [felügyeleti portál](https://adminportal.local.azurestack.external).
+2. Válassza ki **minden szolgáltatás** > **régiók kezelése** alatt **felügyeleti**.
+3. Válassza ki **tárolási** származó a **erőforrás-szolgáltatók** listája.
+4. Válassza ki **beállítások** megnyílik a beállítás panel tetején.
+5. Válassza ki **konfigurációs** majd szerkessze a megőrzési időtartam értéket.
 
    A napok számának megadása, és mentse azt.
    
@@ -142,7 +140,7 @@ Explicit módon a megőrzési időszak felülbírálására PowerShell is haszn�
    Azure Resource Manager-parancsmagokkal kapcsolatos további információkért lásd: [az Azure PowerShell az Azure Resource Managerrel](http://go.microsoft.com/fwlink/?LinkId=394767)
 2. A következő parancsmagok futtatásához:
 
-> [!NOTE]
+> [!NOTE]  
 > Ha ezen parancsmagok futtatásához véglegesen törli a fiókot, és annak tartalmát. Esetén nem állítható helyre. Ez körültekintően szabad használni.
 
 ```PowerShell  
