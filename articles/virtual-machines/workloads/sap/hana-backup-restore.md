@@ -11,15 +11,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 09/17/2018
+ms.date: 09/28/2018
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: cca9a12b0512ca502d143f4a88c959e1bfc4f90e
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: 2a72fade57b070ac2ac1aea28cbec92700c3797f
+ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45985881"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47452547"
 ---
 # <a name="backup-and-restore"></a>Biztonsági mentés és visszaállítás
 
@@ -68,7 +68,7 @@ Kötetek három osztály célzó tárolási pillanatképekkel végezheti el:
 - Egy külön pillanatkép/hana/logbackups keresztül.
 - Az operációs rendszer partíciójánál.
 
-A legújabb pillanatkép parancsfájlok és dokumentáció [GitHub](https://github.com/Azure/hana-large-instances-self-service-scripts). 
+A legújabb pillanatkép parancsfájlok és dokumentáció [GitHub](https://github.com/Azure/hana-large-instances-self-service-scripts). Ha tölt le, a pillanatkép parancsfájl csomagot a [GitHub](https://github.com/Azure/hana-large-instances-self-service-scripts), érhet el a parancsfájl-csomag részeként a parancsfájlok PDF dokumentációját. Minden parancsprogram-csomagnak a saját PDF-dokumentáció.
 
 ## <a name="storage-snapshot-considerations"></a>Storage-pillanatkép szempontok
 
@@ -114,7 +114,7 @@ Storage-pillanatképeket HANA nagyméretű példányok beállításához, köves
 1. Másolja a parancsfájlok és a konfigurációs fájl [GitHub](https://github.com/Azure/hana-large-instances-self-service-scripts) helyére **hdbsql** az SAP HANA telepítése.
 1. Módosítsa a *HANABackupDetails.txt* fájlt a megfelelő ügyfél-specifikációk szükség szerint.
 
-A legújabb pillanatkép parancsfájlok és dokumentáció [GitHub](https://github.com/Azure/hana-large-instances-self-service-scripts). 
+A legújabb pillanatkép parancsfájlok és dokumentáció [GitHub](https://github.com/Azure/hana-large-instances-self-service-scripts). Ha tölt le, a pillanatkép parancsfájl csomagot a [GitHub](https://github.com/Azure/hana-large-instances-self-service-scripts), érhet el a parancsfájl-csomag részeként a parancsfájlok PDF dokumentációját. Minden parancsprogram-csomagnak a saját PDF-dokumentáció.
 
 ### <a name="consideration-for-mcod-scenarios"></a>MCOD forgatókönyvekhez szempontok
 Ha egy [MCOD forgatókönyv](https://launchpad.support.sap.com/#/notes/1681092) egy nagyméretű HANA-példány egység több SAP HANA példányok, az üzembe helyezett minden egyes, az SAP HANA-példányok külön tárolókötet rendelkezik. Az önkiszolgáló pillanatkép-automatizálás jelenlegi verzióban minden HANA-példány rendszer azonosítója (SID) külön pillanatképek nem kezdeményezhető. A funkciókat biztosít a konfigurációs fájlban (lásd a cikk későbbi részében) a kiszolgáló regisztrált SAP HANA-példányok keresése, és végrehajtja a köteteket a egységen regisztrált összes példány egyidejű pillanatkép.

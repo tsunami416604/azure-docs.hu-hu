@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 09/13/2018
 ms.author: tamram
 ms.component: common
-ms.openlocfilehash: 7b2d51f356538724d567654c0de3decbf19c838c
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 0b2bf8cdb1af85e5ddbd3b18dd6dfa47bcb835b4
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47222097"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47432885"
 ---
 # <a name="azure-storage-account-overview"></a>Az Azure storage-fiókok áttekintése
 
@@ -39,7 +39,7 @@ A következő táblázat a tárfiókok típusait és azok képességeinek:
 
 <sup>1</sup>ajánlott az Azure Resource Manager üzemi modell használatával. Storage-fiókok a klasszikus üzemi modell használatával továbbra is hozhatja létre az egyes helyeken, és a létező klasszikus fiók továbbra is támogatottak. További információkért lásd: [Azure Resource Manager és klasszikus üzembe helyezési: üzembe helyezési modellek és az erőforrások állapotának ismertetése](../../azure-resource-manager/resource-manager-deployment-model.md).
 
-<sup>2</sup>összes storage-fiókok az inaktív adatok használata a Storage Service Encryption (SSE) titkosítást. További információkért lásd: [Azure Storage Service Encryption az inaktív adatok](storage-service-encryption.md).
+<sup>2</sup>összes storage-fiók használatával történő Storage Service Encryption (SSE) inaktív adatok titkosítását. További információkért lásd: [Azure Storage Service Encryption az inaktív adatok](storage-service-encryption.md).
 
 <sup>3</sup>az archív szinten érhető el, csak egy egyedi BLOB szintjén nem a storage-fiók szintjén. Csak blokkblobok és hozzáfűző blobok archiválhatók. További információkért lásd: [Azure Blob storage: gyakori, ritka és archív tárolási szintek](../blobs/storage-blob-storage-tiers.md).
 

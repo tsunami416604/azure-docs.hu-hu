@@ -1,79 +1,83 @@
 ---
-title: Az Azure IoT Hub-eszközök korlátozott fejlesztése |} A Microsoft Docs
+title: Az Azure IoT Hub fejlesztése korlátozott eszközök IoT Hub C SDK-val |} A Microsoft Docs
 description: Fejlesztői útmutató – hogyan fejleszthet az Azure IoT SDK-k segítségével korlátozott eszközök.
-services: iot-hub
-documentationcenter: c
 author: yzhong94
-manager: timlt
-editor: ''
-ms.assetid: 979136db-c92d-4288-870c-f305e8777bdd
 ms.service: iot-hub
-ms.devlang: multiple
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+services: iot-hub
+ms.topic: conceptual
 ms.date: 05/24/2018
 ms.author: yizhon
-ms.openlocfilehash: 15fc5794c71428b5fb1036060af3e9c4a6890f4f
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: 683f3ca88c349fef31f9647566dbed8a840f94dd
+ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38969061"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47451731"
 ---
-# <a name="develop-for-constrained-devices-using-azure-iot-sdks"></a>Fejlesztés az Azure IoT SDK-k használatával korlátozott eszközök
+# <a name="develop-for-constrained-devices-using-azure-iot-c-sdk"></a>Fejlesztés az Azure IoT C SDK-val korlátozott eszközök
 
-## <a name="develop-using-azure-iot-hub-c-sdk"></a>Fejlesztés az Azure IoT Hub C SDK használatával
-Az Azure IoT Hub C SDK ANSI C (C99), ami lehetővé teszi az kiválóan működjön, többféle platformon a kis méretű lemez- és erőforrás-igényű nyelven van megírva.  A javasolt RAM-MAL legalább 64 KB-nál, de a pontos memóriaigényét attól függ, a használt protokoll, a megnyitott kapcsolatok számát, valamint a megcélzott platform.
+Az Azure IoT Hub C SDK ANSI C (C99), ami lehetővé teszi az kiválóan működjön, többféle platformon a kis méretű lemez- és erőforrás-igényű nyelven van megírva. A javasolt RAM-MAL legalább 64 KB-nál, de a pontos memóriaigényét attól függ, a használt protokoll, a megnyitott kapcsolatok számát, valamint a megcélzott platform.
 
-C SDK-t az apt-get paranccsal végzi, NuGet és MBED csomag formájában érhető el.  Célozhat korlátozott, érdemes az helyben a célként megadott platformjához tartozó SDK felépítése. Ez a dokumentáció bemutatja, hogyan csökkentheti az C SDK-t használó kapacitásigényéhez bizonyos szolgáltatások eltávolítása [cmake][lnk-cmake].  Emellett ez a dokumentáció ismerteti az ajánlott eljárás programozási modellek használata korlátozott eszközök.
+C SDK-t az apt-get paranccsal végzi, NuGet és MBED csomag formájában érhető el. Célozhat korlátozott, érdemes az helyben a célként megadott platformjához tartozó SDK felépítése. Ez a dokumentáció bemutatja, hogyan csökkentheti az C SDK-t használó kapacitásigényéhez bizonyos szolgáltatások eltávolítása [cmake](https://cmake.org/). Emellett ez a dokumentáció ismerteti az ajánlott eljárás programozási modellek használata korlátozott eszközök.
 
-### <a name="building-the-c-sdk-for-constrained-devices"></a>Az eszközök korlátozott C SDK felépítéséhez
-#### <a name="prerequisites"></a>Előfeltételek
-Kövesse ezt [beállítási útmutató] [ lnk-devbox-setup] előkészítése a fejlesztési környezetet az C SDK felépítéséhez.  A lépés esetében használhatja a cmake kap, mielőtt hívhatja meg a cmake jelzőket a fel nem használt szolgáltatások eltávolítása.
+## <a name="building-the-c-sdk-for-constrained-devices"></a>Az eszközök korlátozott C SDK felépítéséhez
 
-#### <a name="remove-additional-protocol-libraries"></a>Távolítsa el a további protokoll kódtárakat
-C SDK-t még ma öt protokollt támogat: mqtt-ről, a WebSocket, AMQPs, AMQP WebSocket, valamint a HTTPS keresztüli MQTT.    A legtöbb forgatókönyvek igényelnek, az ügyfélen futó egy vagy két protokollt, ezért távolíthatja el a protokoll-könyvtár nem használja az SDK-t.  További információ a megfelelő kommunikációs protokoll kiválasztása ebben a forgatókönyvben találja [dokumentum][lnk-choosing-protocol].  Például MQTT egy egyszerűsített protokoll, amely gyakran jobban megfelelő a korlátozott eszközök.
+Korlátozott eszközök C SDK-t hozhat létre.
 
-Az alábbi cmake paranccsal amqp-t és HTTP-kódtárak távolíthatja el:
+### <a name="prerequisites"></a>Előfeltételek
+
+Kövesse ezt [C SDK-beállítási útmutató](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md) előkészítése a fejlesztési környezetet az C SDK felépítéséhez. A lépés esetében használhatja a cmake kap, mielőtt hívhatja meg a cmake jelzőket a fel nem használt szolgáltatások eltávolítása.
+
+### <a name="remove-additional-protocol-libraries"></a>Távolítsa el a további protokoll kódtárakat
+
+C SDK-t még ma öt protokollt támogat: mqtt-ről, a WebSocket, AMQPs, AMQP WebSocket, valamint a HTTPS keresztüli MQTT. A legtöbb forgatókönyvek igényelnek, az ügyfélen futó egy vagy két protokollt, ezért távolíthatja el a protokoll-könyvtár nem használja az SDK-t. További információ a megfelelő kommunikációs protokollt választja, a forgatókönyv találja a [válassza ki az IoT Hub-kommunikációs protokoll](iot-hub-devguide-protocols.md). Például MQTT egy egyszerűsített protokoll, amely gyakran jobban megfelelő a korlátozott eszközök.
+
+Az amqp-t és HTTP kódtárakat, az alábbi cmake paranccsal távolíthatja el:
+
 ```
 cmake -Duse_amqp=OFF -Duse_http=OFF <Path_to_cmake>
 ```
 
-#### <a name="remove-sdk-logging-capability"></a>Távolítsa el az SDK naplózási képesség
+### <a name="remove-sdk-logging-capability"></a>Távolítsa el az SDK naplózási képesség
+
 Az C SDK-t biztosít széles körű naplózás során a hibakeresés érdekében. A naplózási képesség éles eszközökhöz az alábbi cmake paranccsal távolíthatja el:
+
 ```
 cmake -Dno_logging=OFF <Path_to_cmake>
 ```
 
-#### <a name="remove-upload-to-blob-capability"></a>Távolítsa el a képesség BLOB feltöltése
-Az Azure Storage SDK-ban a beépített funkció használatával nagy méretű fájlokat tölthet fel.  Az Azure IoT Hub egy társított Azure Storage-fiókba dispatcher funkcionál.  Ez a funkció segítségével médiafájlok, nagy telemetriai kötegek és a naplók küldése.  Ismerje meg, további információt ebben az IoT Hub fájlok feltöltése [dokumentum][lnk-hub-file-upload].  Ha az alkalmazás nem követeli meg ezt a funkciót, ez a funkció az alábbi cmake paranccsal távolíthatja el:
+### <a name="remove-upload-to-blob-capability"></a>Távolítsa el a képesség BLOB feltöltése
+
+Az Azure Storage SDK-ban a beépített funkció használatával nagy méretű fájlokat tölthet fel. Az Azure IoT Hub egy társított Azure Storage-fiókba dispatcher funkcionál. Ez a funkció segítségével médiafájlok, nagy telemetriai kötegek és a naplók küldése. További információkat szerezhet [az IoT Hub fájlok feltöltése](iot-hub-devguide-file-upload.md). Ha az alkalmazás nem követeli meg ezt a funkciót, ez a funkció az alábbi cmake paranccsal távolíthatja el:
+
 ```
 cmake -Ddont_use_uploadtoblob=ON <Path_to_cmake>
 ```
-#### <a name="running-strip-on-linux-environment"></a>A Linux környezet futó sáv
-Ha a bináris fájlok Linux rendszeren futtatja, használhatja a [parancs sáv] [ lnk-strip] összeállítása után az utolsó alkalmazás méretének csökkentése érdekében.
+
+### <a name="running-strip-on-linux-environment"></a>A Linux környezet futó sáv
+
+Ha a bináris fájlok Linux rendszeren futtatja, használhatja a [parancs sáv](https://en.wikipedia.org/wiki/Strip_(Unix)) összeállítása után az utolsó alkalmazás méretének csökkentése érdekében.
+
 ```
 strip -s <Path_to_executable>
 ```
 
-### <a name="programming-models-for-constrained-devices"></a>Programozási modellek, korlátozott eszközökhöz
-#### <a name="avoid-using-the-serializer"></a>Kerülje a szerializáló
-Az C SDK-val rendelkezik egy nem kötelező [szerializáló][lnk-serializer], amely lehetővé teszi, hogy deklaratív hozzárendelési táblák és eszköz-ikertulajdonságok határozhatja meg.  A szerializáló úgy tervezték, hogy leegyszerűsítheti a fejlesztést, de azt többletterheléssel, která není optimális korlátozott eszközökhöz.  Ebben az esetben fontolja meg az egyszerű ügyfél API-k és a egy egyszerűsített elemző használatával json elemzése [parson][lnk-parson].
+## <a name="programming-models-for-constrained-devices"></a>Programozási modellek, korlátozott eszközökhöz
 
-#### <a name="use-the-lower-layer-ll"></a>Használja az alsóbb rétegek (_LL_)
-Az C SDK két programozási modellen támogatja.  Egy készletnek az API-k egy _LL_ vpony, amely az alsóbb rétegek rövidítése.  Az API-k készlete világosabb súly, és nem helyezhet üzembe munkaszálak, ami azt jelenti, hogy a felhasználó manuálisan kell ellenőrzés ütemezése.  Például, ha az ügyfél a _LL_ ebben található API-k [fejlécfájlt](https://github.com/Azure/azure-iot-sdk-c/blob/master/iothub_client/inc/iothub_device_client_ll.h).  API-k nélkül egy másik készletét a _LL_ index nevezzük a kényelem réteg, ha egy munkavégző szál automatikusan hoz.  Például a kényelem réteg API-k az eszközügyfél ebben található [fejlécfájlt](https://github.com/Azure/azure-iot-sdk-c/blob/master/iothub_client/inc/iothub_device_client.h).  A korlátozott eszközök, ahol minden egyes extra szálat is igénybe vehet az erőforrásokat, jelentős százalékos érdemes _LL_ API-k.
+Ezután tekintse meg programozási modellek, korlátozott eszközökhöz.
+
+### <a name="avoid-using-the-serializer"></a>Kerülje a szerializáló
+
+Az C SDK-val rendelkezik egy nem kötelező [C SDK-szerializáló](https://github.com/Azure/azure-iot-sdk-c/tree/master/serializer), amely lehetővé teszi, hogy deklaratív hozzárendelési táblák és eszköz-ikertulajdonságok határozhatja meg. A szerializáló úgy tervezték, hogy leegyszerűsítheti a fejlesztést, de azt többletterheléssel, která není optimális korlátozott eszközökhöz. Ebben az esetben fontolja meg az egyszerű ügyfél API-k és a egy egyszerűsített elemző használatával JSON elemzése [parson](https://github.com/kgabis/parson).
+
+### <a name="use-the-lower-layer-ll"></a>Használja az alsóbb rétegek (_LL_)
+
+Az C SDK két programozási modellen támogatja. Egy készletnek az API-k egy _LL_ vpony, amely az alsóbb rétegek rövidítése. Ez olyan API-k, feladatorientált felhasználók által használt súlyozási, és nem helyezhet üzembe munkaszálak, ami azt jelenti, hogy a felhasználó manuálisan kell ellenőrzés ütemezése. Például, ha az ügyfél a _LL_ ebben található API-k [fejlécfájlt](https://github.com/Azure/azure-iot-sdk-c/blob/master/iothub_client/inc/iothub_device_client_ll.h). 
+
+API-k nélkül egy másik készletét a _LL_ index nevezzük a kényelem réteg, ha egy munkavégző szál automatikusan hoz. Például a kényelem réteg API-k az eszközügyfél ebben található [IoT Device Client fejlécfájlt](https://github.com/Azure/azure-iot-sdk-c/blob/master/iothub_client/inc/iothub_device_client.h). A korlátozott eszközök, ahol minden egyes extra szálat is igénybe vehet az erőforrásokat, jelentős százalékos érdemes _LL_ API-k.
 
 ## <a name="next-steps"></a>További lépések
+
 További információ az Azure IoT C SDK-architektúra:
 -   [Az Azure IoT C SDK forráskódját](https://github.com/Azure/azure-iot-sdk-c/)
--   [Az Azure IoT eszközoldali SDK-t a C bemutatása](https://docs.microsoft.com/azure/iot-hub/iot-hub-device-sdk-c-intro)
-
-------
-[lnk-cmake]: https://cmake.org/
-[lnk-devbox-setup]:  https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md
-[lnk-choosing-protocol]: https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-protocols
-[lnk-hub-file-upload]: https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-file-upload
-[lnk-strip]: https://en.wikipedia.org/wiki/Strip_(Unix)
-[lnk-serializer]: https://github.com/Azure/azure-iot-sdk-c/tree/master/serializer
-[lnk-parson]: https://github.com/kgabis/parson
+-   [Az Azure IoT eszközoldali SDK-t a C bemutatása](iot-hub-device-sdk-c-intro.md)

@@ -11,12 +11,12 @@ ms.devlang: devops
 ms.topic: landing-page
 ms.date: 06/19/2017
 ms.author: carolz
-ms.openlocfilehash: 9ae73659ee8fbf9099e7e8fab65e020a170126e3
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 76afc558048f1890e5e2440fd002361172acbea2
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44304169"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47433835"
 ---
 <div class="content">
    <h1>Docker az Azure rendszeren</h1>   
@@ -32,7 +32,7 @@ A Docker egy népszerű tárolókezelő és képalkotó platform, amely lehetőv
 <h2>Részletes útmutatók</h2>
 <p>Ismerje meg, hogyan használható a Docker az alkalmazásában, valamint a CI/CD-folyamatának részeként:</p>
 <ol>
-  <li><a href="/azure/app-service-web/app-service-web-tutorial-docker-python-postgresql-app">Python és a PostgreSQL létrehozása Docker használatával</a></li>
+  <li><a href="/azure/app-service/containers/tutorial-python-postgresql-app">Python és a PostgreSQL létrehozása Docker használatával</a></li>
   <li><a href="/azure/container-service/container-service-docker-swarm-mode-setup-ci-cd-acs-engine">CI/CD a Docker Swarm és az Azure DevOps Services használatával</a></li>
   <li><a href="/azure/virtual-machines/linux/tutorial-jenkins-github-docker-cicd">A Docker, a Jenkins és a Linux rendszerű virtuális gépek integrálása</a></li>
 </ol>

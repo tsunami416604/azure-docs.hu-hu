@@ -12,15 +12,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/19/2018
+ms.date: 09/28/2018
 ms.author: jeffgilb
 ms.reviewer: brbartle
-ms.openlocfilehash: 6a929c0226734a95e088e78307f2bbcc0571adef
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: 09f5dbdb173e1613ed942391da7baaeb045654e4
+ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46364601"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47452530"
 ---
 # <a name="register-azure-stack-with-azure"></a>Regisztráljon az Azure Stack az Azure-ral
 
@@ -94,6 +94,19 @@ Lehet, hogy az Azure Stack üzemelő példányához *csatlakoztatott* vagy *lev�
  - **Leválasztva**  
  A leválasztott az Azure üzembe helyezési lehetőséget, üzembe helyezése és használata az Azure Stack az internethez való csatlakozás nélkül. Azonban egy kapcsolat nélküli telepítés pedig csak az AD FS ügyfélidentitás-tárolóval, és a kapacitás-alapú számlázási modell.
     - [A leválasztott Azure Stack használatával regisztrálja a **kapacitás** számlázási modell ](#register-disconnected-with-capacity-billing)
+
+### <a name="determine-a-unique-registration-name-to-use"></a>Határozza meg egy egyedi regisztrációs neve 
+Ha az Azure Stack regisztrálja az Azure-ral, meg kell adnia egy egyedi regisztrációs nevét. Az Azure Stack-előfizetés társítása egy Azure-regisztráció egyszerűen az, hogy az Azure Stack használata **Felhőazonosító**. 
+
+> [!NOTE]
+> A kapacitás-alapú számlázási modell segítségével az Azure Stack-regisztrációk kell módosítani az egyedi nevet, ha újra regisztrálja ezeket éves előfizetés lejárta után.
+
+Annak megállapításához, a felhő-azonosító az Azure Stack üzembe helyezéshez, nyissa meg a Powershellt, a rendszergazda a számítógépen, mint a Rendszerjogosultságú végpont érhető el a következő parancsokat, és jegyezze fel a **CloudID** érték: 
+
+```powershell
+Run: Enter-PSSession -ComputerName <privileged endpoint computer name> -ConfigurationName PrivilegedEndpoint
+Run: get-azurestackstampinformation 
+```
 
 ## <a name="register-connected-with-pay-as-you-go-billing"></a>Regisztráció a használatalapú számlázás csatlakoztatva
 
@@ -257,7 +270,7 @@ Ezt követően kell az aktiválási kulcs lekérése a Register-AzsEnvironment s
 Az aktiválási kulcs lekéréséhez futtassa a következő PowerShell-parancsmagokat:  
 
   ```Powershell
-  $RegistrationResourceName = "AzureStack-<Cloud Id for the Environment to register>"
+  $RegistrationResourceName = "AzureStack-<unique-registration-name>"
   $KeyOutputFilePath = "$env:SystemDrive\ActivationKey.txt"
   $ActivationKey = Get-AzsActivationKey -RegistrationName $RegistrationResourceName -KeyOutputFilePath $KeyOutputFilePath
   ```
@@ -351,7 +364,7 @@ A regisztrációs jogkivonatot, használja az erőforrás létrehozásához is h
 Vagy használhatja a regisztrációs név:
 
   ```Powershell
-  $registrationName = "AzureStack-<Cloud ID of Azure Stack Environment>"
+  $registrationName = "AzureStack-<unique-registration-name>"
   Unregister-AzsEnvironment -RegistrationName $registrationName
   ```
 

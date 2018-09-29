@@ -16,7 +16,8 @@ A következő táblázat felsorolja a korlátokat, amely a alkalmazni az IoT Hub
 
 A Device Provisioning Service szabályozza a kéréseket, amikor az alábbi kvóták átlépése:
 
-| Szabályozás | Szolgáltatás érték |
+| Szabályozás | Egységenkénti érték |
 | --- | --- |
-| Műveletek | 100/perc |
-| Eszközregisztrációk | 100/perc |
+| Műveletek | 200-as/perc/szolgáltatás |
+| Eszközregisztrációk | 200-as/perc/szolgáltatás |
+| Eszköz lekérdezési művelet | 5/10 másodperc/eszköz |

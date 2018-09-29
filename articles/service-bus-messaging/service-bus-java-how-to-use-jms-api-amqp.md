@@ -14,12 +14,12 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 08/10/2018
 ms.author: spelluru
-ms.openlocfilehash: a3274053e772cbdf120be15a385c84d5ae37d610
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: b369f169fca903575ea4ae3f2ae04f6cd770e488
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47392652"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47433650"
 ---
 # <a name="how-to-use-the-java-message-service-jms-api-with-service-bus-and-amqp-10"></a>A Service Bus és az AMQP 1.0-t a Java Message Service (JMS) API használata
 A speciális Message Queuing AMQP protokoll 1.0-s egy hatékony, megbízható, alkalmazásszintű üzenetkezelő protokoll, amely nagy teherbírású, többplatformos üzenetkezelési alkalmazások létrehozásához használható.
@@ -45,6 +45,8 @@ Hozzá kell adnia a következő négy JAR-fájlok az Apache Qpid JMS AMQP 1.0-s 
 * qpid-amqp-1-0-Client-[Version].JAR
 * qpid-amqp-1-0-Client-jms-[Version].JAR
 * qpid-amqp-1-0-Common-[Version].JAR
+
+> ! [MEGJEGYZÉS] JMS JAR neve és verziója megváltozott. További információkért lásd: [Qpid JMS - AMQP 1.0](https://qpid.apache.org/maven.html#qpid-jms-amqp-10).
 
 ## <a name="coding-java-applications"></a>Kódolási Java-alkalmazások
 ### <a name="java-naming-and-directory-interface-jndi"></a>Java-kiosztási és a Directory Interface (JNDI)
@@ -121,14 +123,17 @@ Nincsenek speciális API-k vagy a Service Bus JMS használatakor szükséges be�
 A JNDI környezet konfigurálva van egy kivonattáblát a konfigurációs adatokat a javax.naming.InitialContext osztály konstruktorának való átadásával. A két szükséges elemeket a kivonattábla kulcsa az osztály nevét a kezdeti környezet Factory és a szolgáltató URL-címe. A következő kód bemutatja, hogyan használja a Tulajdonságok fájlalapú JNDI szolgáltató tulajdonságai nevű fájlt a Qpid a JNDI környezet beállításait **servicebus.properties**.
 
 ```java
-Hashtable<String, String> env = new Hashtable<String, String>(); 
-env.put(Context.INITIAL_CONTEXT_FACTORY, "org.apache.qpid.amqp_1_0.jms.jndi.PropertiesFileInitialContextFactory"); 
-env.put(Context.PROVIDER_URL, "servicebus.properties"); 
-InitialContext context = new InitialContext(env);
+Hashtable<String, String> env = new Hashtable<>();
+env.put("connectionfactory.SBCF", "amqps://[namespace].servicebus.windows.net?amqp.idleTimeout=120000");
+env.put("queue.QUEUE", "queue");
+
+env.put(Context.INITIAL_CONTEXT_FACTORY, "org.apache.qpid.jms.jndi.JmsInitialContextFactory");
+Context context = new InitialContext(env);
 ``` 
 
 ### <a name="a-simple-jms-application-using-a-service-bus-queue"></a>Egy egyszerű JMS alkalmazást, az Service Bus-üzenetsorba
 A következő példa program JMS TextMessages küld egy Service Bus-üzenetsorba VÁRÓLISTA JNDI logikai nevét, és fogadja az üzeneteket vissza.
+
 
 ```java
 // SimpleSenderReceiver.java
@@ -152,10 +157,12 @@ public class SimpleSenderReceiver implements MessageListener {
 
     public SimpleSenderReceiver() throws Exception {
         // Configure JNDI environment
-        Hashtable<String, String> env = new Hashtable<String, String>();
-        env.put(Context.INITIAL_CONTEXT_FACTORY, 
-                   "org.apache.qpid.amqp_1_0.jms.jndi.PropertiesFileInitialContextFactory");
-        env.put(Context.PROVIDER_URL, "servicebus.properties");
+        Hashtable<String, String> env = new Hashtable<>();
+        // Specify the name of your namespace. Idle timeout value is set as Service Bus enforces timeout.         
+        env.put("connectionfactory.SBCF", "amqps://[namespace].servicebus.windows.net?amqp.idleTimeout=120000");
+        env.put("queue.QUEUE", "queue");
+
+        env.put(Context.INITIAL_CONTEXT_FACTORY, "org.apache.qpid.jms.jndi.JmsInitialContextFactory");
         Context context = new InitialContext(env);
 
         // Look up ConnectionFactory and Queue
@@ -243,6 +250,17 @@ Received message with JMSMessageID = ID:7578408152750301483
 Sent message with JMSMessageID = ID:956102171969368961
 Received message with JMSMessageID = ID:956102171969368961
 exit
+```
+
+## <a name="amqp-disposition-and-service-bus-operation-mapping"></a>AMQP törlése és a Service Bus-műveletet leképezés
+Itt látható, hogyan egy AMQP törlése a rendszer lefordítja arra a Service Bus-műveletet:
+
+```
+ACCEPTED = 1; -> Complete()
+REJECTED = 2; -> DeadLetter()
+RELEASED = 3; (just unlock the message in service bus, will then get redelivered)
+MODIFIED_FAILED = 4; -> Abandon() which increases delivery count
+MODIFIED_FAILED_UNDELIVERABLE = 5; -> Defer()
 ```
 
 ## <a name="cross-platform-messaging-between-jms-and-net"></a>Többplatformos üzenetkezelés közötti JMS és .NET

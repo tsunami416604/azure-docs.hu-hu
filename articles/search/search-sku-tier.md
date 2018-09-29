@@ -9,12 +9,12 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 09/25/2018
 ms.author: heidist
-ms.openlocfilehash: ddb60631f54e1b635ae5ec036b7d35d47ca0a519
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: d28b9177684cf7b9a3ddc83107806aaa6afde477
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47221758"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47434030"
 ---
 # <a name="choose-a-pricing-tier-for-azure-search"></a>Válasszon egy tarifacsomagot az Azure Search
 
@@ -64,7 +64,7 @@ Az Azure Search szolgáltatásban kapacitás van strukturálva, *replikák* és 
 + A partíciók indexek tárolja, és automatikusan a kereshető adatok felosztása: két partíció harmadának ossza fel az indexet a felét, három partíció, és így tovább. Kapacitás tekintetében *mérete particionálása* funkciója az elsődleges megkülönböztető szolgáltatásszinten.
 
 > [!NOTE]
-> Az összes **Standard** támogatási szintekkel [rugalmas kombinációk replika és a partíciók](search-capacity-planning.md#chart) segítségével [sebessége vagy a tárolás a rendszer-súlyozási](search-performance-optimization.md) az egyenleg módosításával. **Alapszintű** kínál fel három replika készül, magas rendelkezésre állású azonban csak egy partíciót tartalmaz. **Ingyenes** szinten nem kínál dedikált erőforrásokat: számítástechnika több ingyenes szolgáltatások által megosztott erőforrások.
+> Az összes **Standard** támogatási szintekkel [rugalmas kombinációk replika és a partíciók](search-capacity-planning.md#chart) segítségével [sebessége vagy a tárolás a rendszer-súlyozási](search-performance-optimization.md) az egyenleg módosításával. **Alapszintű** kínál fel három replika készül, magas rendelkezésre állású azonban csak egy partíciót tartalmaz. **Ingyenes** szinten nem kínál dedikált erőforrásokat: számítástechnika több előfizető által megosztott erőforrások.
 
 ### <a name="more-about-service-limits"></a>További információ a szolgáltatásokra vonatkozó korlátozások
 

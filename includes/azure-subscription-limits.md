@@ -8,18 +8,18 @@ ms.topic: include
 ms.date: 05/18/2018
 ms.author: jroth
 ms.custom: include file
-ms.openlocfilehash: c6ef868d80e628f9120acc0775179e89ccd03674
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: fdb05f48478d22eea90c3a2c0264e9c4c8640eb0
+ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45979050"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47454396"
 ---
 | Erőforrás | Alapértelmezett korlát | Felső korlát |
 | --- | --- | --- |
 | / vcpu-k [előfizetés](../articles/billing-buy-sign-up-azure-subscription.md) <sup>1</sup> |20 |10,000 |
 | [Társadminisztrátorok](../articles/billing-add-change-azure-subscription-administrator.md) előfizetésenként |200 |200 |
-| [Storage-fiókok](../articles/storage/common/storage-quickstart-create-account.md) régiónként és előfizetésenként<sup>2</sup> |200 |250 |
+| [Storage-fiókok](../articles/storage/common/storage-create-storage-account.md) előfizetésenként <sup>2</sup> |100 |100 |
 | [Felhőszolgáltatások](../articles/cloud-services/cloud-services-choose-me.md) előfizetésenként |20 |200 |
 | [Helyi hálózatok](http://msdn.microsoft.com/library/jj157100.aspx) előfizetésenként |10 |500 |
 | SQL Database-kiszolgálók száma előfizetésenként |6 |200 |
@@ -31,5 +31,5 @@ ms.locfileid: "45979050"
 
 <sup>1</sup>extra Small-példányok száma felé a vCPU-korlátot annak ellenére, hogy egy részleges CPU-magot használ egy vCPU-t.
 
-<sup>2</sup>a storage-fiók korlátot tartalmaz a Standard és prémium szintű storage-fiókok. Ha egy adott régióban több mint 200 tárfiókra van szüksége, győződjön meg a kérést [Azure-támogatási](https://azure.microsoft.com/support/faq/). Az Azure Storage csapata áttekinti az üzleti esetekhez, és jóváhagyhat legfeljebb 250 tárfiókot az adott régió. 
+<sup>2</sup>a storage-fiók korlátot tartalmaz a Standard és prémium szintű storage-fiókok. 
 

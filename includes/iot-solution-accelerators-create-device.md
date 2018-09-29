@@ -5,15 +5,15 @@ services: iot-accelerators
 author: dominicbetts
 ms.service: iot-accelerators
 ms.topic: include
-ms.date: 08/16/2018
+ms.date: 09/28/2018
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: 9196648d7e3d2ea717b1a61cbca959805649ed2f
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 5eb3c08792b760bf66e443f79762d91210706c92
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44754456"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47435112"
 ---
 Az első esetben hozzáadhat egy új telemetriatípus contoso meglévő **hűtő** típusú eszközt.
 
@@ -73,7 +73,7 @@ Ez az útmutató követéséhez lesz szüksége:
 
 * Visual Studio Code. Is [Visual Studio Code letöltése Windows, Mac és Linux](https://code.visualstudio.com/download).
 * A .NET core. Letöltheti a [.NET Core for Mac, Linux és Windows](https://www.microsoft.com/net/download).
-* [A Visual Studio Code-C#](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp)
+* [C# a Visual Studio Code-hoz](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp)
 * Postman. Letöltheti a [Mac, Windows vagy Linux rendszerű Postman](https://www.getpostman.com/apps).
 * Egy [üzembe helyezve az Azure-előfizetéshez az IoT hub](../articles/iot-hub/iot-hub-create-through-portal.md). A jelen útmutató lépéseit az IoT hub kapcsolati karakterláncra van szüksége. A kapcsolati karakterlánc kaphat az Azure Portalról.
 * Cosmos DB-adatbázis, amely az SQL API-t használ, és megfelelően van konfigurálva a [erős konzisztencia](../articles/cosmos-db/manage-account.md). A jelen útmutató lépéseit a Cosmos DB-adatbázis kapcsolati karakterláncra van szüksége. A kapcsolati karakterlánc kaphat az Azure Portalról.
@@ -90,7 +90,9 @@ A jelen cikkben lévő utasítások feltételezik, hogy Windows használata eset
 
 ### <a name="download-the-microservices"></a>Töltse le a mikroszolgáltatások
 
-Töltse le és csomagolja ki a [távoli mikroszolgáltatás-alapú figyelési](https://github.com/Azure/remote-monitoring-services-dotnet/archive/master.zip) egy megfelelő helyre a helyi gépen a githubról.
+Töltse le és csomagolja ki a [távoli mikroszolgáltatás-alapú figyelési](https://github.com/Azure/remote-monitoring-services-dotnet/archive/master.zip) egy megfelelő helyre a helyi gépen a githubról. A cikk feltételezi, hogy ez a mappa nevére **remote-monitoring-services-dotnet-master**.
+
+Töltse le és csomagolja ki a [eszköz szimulálása mikroszolgáltatás](https://github.com/Azure/device-simulation-dotnet/archive/master.zip) egy megfelelő helyre a helyi gépen a githubról. A cikk feltételezi, hogy ez a mappa nevére **eszköz-szimuláció-dotnet-master**.
 
 ### <a name="run-the-storage-adapter-microservice"></a>A tárolási adapter mikroszolgáltatás futtatása
 
@@ -116,20 +118,14 @@ Ebben a szakaszban, vegyen fel egy új **belső hőmérséklet** telemetriai ada
 
     | Forrás | Cél |
     | ------ | ----------- |
-    | Services\Data\devicemodels\chiller-01.JSON | C:\temp\devicemodels\chiller-01.JSON |
-    | Services\Data\devicemodels\scripts\chiller-01-State.js | C:\temp\devicemodels\scripts\chiller-01-State.js |
-    | Services\Data\devicemodels\scripts\Reboot-Method.js | C:\temp\devicemodels\scripts\Reboot-Method.js |
-    | Services\Data\devicemodels\scripts\FirmwareUpdate-Method.js | C:\temp\devicemodels\scripts\FirmwareUpdate-Method.js |
-    | Services\Data\devicemodels\scripts\EmergencyValveRelease-Method.js | C:\temp\devicemodels\scripts\EmergencyValveRelease-Method.js |
-    | Services\Data\devicemodels\scripts\IncreasePressure-Method.js | C:\temp\devicemodels\scripts\IncreasePressure-Method.js |
+    | Services\data\devicemodels\chiller-01.JSON | C:\temp\devicemodels\chiller-01.JSON |
+    | Services\data\devicemodels\scripts\chiller-01-State.js | C:\temp\devicemodels\scripts\chiller-01-State.js |
+    | Services\data\devicemodels\scripts\Reboot-Method.js | C:\temp\devicemodels\scripts\Reboot-Method.js |
+    | Services\data\devicemodels\scripts\FirmwareUpdate-Method.js | C:\temp\devicemodels\scripts\FirmwareUpdate-Method.js |
+    | Services\data\devicemodels\scripts\EmergencyValveRelease-Method.js | C:\temp\devicemodels\scripts\EmergencyValveRelease-Method.js |
+    | Services\data\devicemodels\scripts\IncreasePressure-Method.js | C:\temp\devicemodels\scripts\IncreasePressure-Method.js |
 
 1. Nyissa meg a **C:\temp\devicemodels\chiller-01.json** fájlt.
-
-1. Frissítés a **sémaverzióval** értékét az alábbiak szerint:
-
-    ```json
-    "SchemaVersion": "1.0.0",
-    ```
 
 1. Az a **InitialState** területen adja hozzá a következő két definíciókat:
 
@@ -419,9 +415,9 @@ Ebben a szakaszban tesztelni az eszköztípusok helyileg a korábbi szakaszokban
 
 ### <a name="run-the-device-simulation-microservice"></a>Az eszköz szimulálása mikroszolgáltatás futtatása
 
-Nyissa meg a **remote-monitoring-services-dotnet-master\device-simulation** mappát a Visual Studio Code egy új példányát a Githubról letöltötte. Kattintson bármelyik **visszaállítása** kijavításához gombok feloldatlan függőségek.
+Nyissa meg a **eszköz-szimuláció-dotnet-master** mappát a Visual Studio Code egy új példányát a Githubról letöltötte. Kattintson bármelyik **visszaállítása** kijavításához gombok feloldatlan függőségek.
 
-Nyissa meg a **.vscode/launch.json** fájlt, és rendelje hozzá az IoT Hub kapcsolati karakterláncot a **PCS_IOTHUB_CONNSTRING** környezeti változót.
+Nyissa meg a **.vscode/launch.json** fájlt, és rendelje hozzá az IoT Hub kapcsolati karakterláncot a **PCS_IOTHUB_CONNSTRING** környezeti változót. Ugyanebben a fájlban adja hozzá a **PCS_STORAGEADAPTER_DOCUMENTDB_CONNSTRING** környezeti változót, majd rendelje a Cosmos DB-adatbázis kapcsolati karakterláncát.
 
 Nyissa meg a **WebService/Properties/launchSettings.json** fájlt, és rendelje hozzá az IoT Hub kapcsolati karakterláncot a **PCS_IOTHUB_CONNSTRING** környezeti változót.
 
@@ -465,7 +461,7 @@ A Postman beállítása:
 
 1. Kattintson a **fájl > Importálás**. Kattintson a **fájlok kiválasztása**.
 
-1. Keresse meg a **eszköz-szimuláció-dotnet/docs/postman** mappát. Válassza ki **Azure IoT-eszköz szimulálása megoldás accelerator.postman_collection** és **Azure IoT-eszköz szimulálása megoldás accelerator.postman_environment** kattintson **megnyitása**.
+1. Keresse meg a **eszköz-szimuláció-dotnet-master/docs/postman** mappát. Válassza ki **Azure IoT-eszköz szimulálása megoldás accelerator.postman_collection** és **Azure IoT-eszköz szimulálása megoldás accelerator.postman_environment** kattintson **megnyitása**.
 
 1. Bontsa ki a **Azure IoT-eszköz szimulálása megoldásgyorsító** elküldheti a kérelmekre.
 

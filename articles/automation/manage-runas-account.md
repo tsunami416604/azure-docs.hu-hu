@@ -9,18 +9,18 @@ ms.author: gwallace
 ms.date: 09/12/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 32a7b7026df1522abe2ca3dc7b212b06e08ff905
-ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
+ms.openlocfilehash: a8821b2e1be10cddafba04109041e76ef65f6a6a
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45544277"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47433701"
 ---
 # <a name="manage-azure-automation-run-as-accounts"></a>Azure Automation futtató fiókok kezelése
 
 Futtató fiókok az Azure Automationben a hitelesítés az Azure-parancsmagjaival az Azure-erőforrások kezeléséhez használhatók.
 
-Amikor létrehoz egy futtató fiókot, az Azure Active Directoryban hoz létre egy új egyszerű szolgáltatási felhasználó, és hozzárendeli a közreműködő szerepkört az előfizetés szintjén a felhasználót.
+Amikor létrehoz egy futtató fiókot, az Azure Active Directoryban hoz létre egy új egyszerű szolgáltatási felhasználó, és hozzárendeli a közreműködő szerepkört az előfizetés szintjén a felhasználót. A hibrid Runbook-feldolgozók használata Azure virtuális gépeken futó runbookokat, használhatja [felügyelt identitások az Azure-erőforrások](automation-hrw-run-runbooks.md#managed-identities-for-azure-resources) helyett a futtató fiókok az Azure-erőforrások hitelesítéséhez.
 
 Futtató fiókok két típusa van:
 

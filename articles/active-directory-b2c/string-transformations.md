@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: b731b280b3e97076014f609571766a07a3dde1ea
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: ce2ad3e699b930f801ad47083d6cfcf6a7937a5c
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47159890"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47433446"
 ---
 # <a name="string-claims-transformations"></a>Karakterlánc jogcím-átalakítás
 
@@ -156,7 +156,7 @@ Megállapításához, hogy egy karakterlánc jogcím egy másik egyenlő. Az ere
 | ---- | ----------------------- | --------- | ----- |
 | Bemeneti jogcím | inputClaim1 | sztring | Először jogcím típusa, amelyet össze kell hasonlítani. |
 | Bemeneti jogcím | inputClaim2 | sztring | A második jogcím típusa, amelyet össze kell hasonlítani. |
-| InputParameter | Operátor | sztring | A lehetséges értékek: `Equal` vagy `Not Equal`. |
+| InputParameter | Operátor | sztring | A lehetséges értékek: `EQUAL` vagy `NOT EQUAL`. |
 | InputParameter | ignoreCase | logikai | Itt adhatja meg, hogy ez az összehasonlítás figyelmen kívül hagyja a kis-és a két összehasonlított karakterlánc. |
 | kimeneti jogcím | kimeneti jogcím | logikai | Az a jogcím-átalakítás után előállított takar meghívása. |
 
@@ -196,7 +196,7 @@ Meghatározza, hogy a jogcím értéke megegyezik a bemeneti paraméter értéke
 | Elem | TransformationClaimType | Adattípus | Megjegyzések |
 | ---- | ----------------------- | --------- | ----- |
 | Bemeneti jogcím | inputClaim1 | sztring | A jogcím típusa, amelyet össze kell hasonlítani. |
-| InputParameter | Operátor | sztring | A lehetséges értékek: `Equal` vagy `Not Equal`. |
+| InputParameter | Operátor | sztring | A lehetséges értékek: `EQUAL` vagy `NOT EQUAL`. |
 | InputParameter | compareto metódus végrehajtása | sztring | karakterlánc-összehasonlítási, az értékek egyike: sorszámát, OrdinalIgnoreCase. |
 | InputParameter | ignoreCase | logikai | Itt adhatja meg, hogy ez az összehasonlítás figyelmen kívül hagyja a kis-és a két összehasonlított karakterlánc. |
 | kimeneti jogcím | kimeneti jogcím | logikai | Az a jogcím-átalakítás után előállított takar meghívása. |
@@ -235,11 +235,11 @@ Létrehoz egy véletlenszerű karakterlánc a véletlenszám-generátor használ
 
 | Elem | TransformationClaimType | Adattípus | Megjegyzések |
 | ---- | ----------------------- | --------- | ----- |
-| InputParameter | randomGeneratorType | sztring | Adja meg a generált, véletlenszerű értéket `GUID` (globálisan egyedi azonosító) vagy `integer` (szám). |
+| InputParameter | randomGeneratorType | sztring | Adja meg a generált, véletlenszerű értéket `GUID` (globálisan egyedi azonosító) vagy `INTEGER` (szám). |
 | InputParameter | stringFormat | sztring | [Opcionális] A véletlenszerű értéket formátumban. |
 | InputParameter | Base64 | logikai | [Opcionális] A véletlenszerű értéket átalakítása base64. Ha karakterláncként van érvényben, az érték karakterlánc-formátum után kódolása base64. |
-| InputParameter | maximumNumber | int | [Opcionális] A `Integer` randomGeneratorType csak. Adja meg az maximute. |
-| InputParameter | Kezdőérték  | int | [Opcionális] A `Integer` randomGeneratorType csak. Adja meg a kezdőérték véletlenszerű értéket. Megjegyzés: az azonos kezdőérték poskytne véletlenszerű számból álló ugyanabban a sorrendben. |
+| InputParameter | maximumNumber | int | [Opcionális] A `INTEGER` randomGeneratorType csak. Adja meg az maximute. |
+| InputParameter | Kezdőérték  | int | [Opcionális] A `INTEGER` randomGeneratorType csak. Adja meg a kezdőérték véletlenszerű értéket. Megjegyzés: az azonos kezdőérték poskytne véletlenszerű számból álló ugyanabban a sorrendben. |
 | kimeneti jogcím | kimeneti jogcím | sztring | Az a jogcím-átalakítás után előállított ClaimTypes meghívása. A véletlenszerű értéket. |
 
 A következő példa létrehoz egy globális egyedi. A jogcím-átalakítást a véletlenszerű UPN (egyszerű felhasználónév) létrehozására használatos.
@@ -266,7 +266,7 @@ Alábbi példa egy egész számot 0 és 1000 közötti véletlenszerű értéket
 ```XML
 <ClaimsTransformation Id="SetRandomNumber" TransformationMethod="CreateRandomString">
   <InputParameters>
-    <InputParameter Id="randomGeneratorType" DataType="string" Value="integer" />
+    <InputParameter Id="randomGeneratorType" DataType="string" Value="INTEGER" />
     <InputParameter Id="maximumNumber" DataType="int" Value="1000" />
     <InputParameter Id="stringFormat" DataType="string" Value="OTP_{0}" />
     <InputParameter Id="base64" DataType="boolean" Value="false" />

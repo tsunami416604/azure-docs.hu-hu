@@ -12,12 +12,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 11/08/2017
 ms.author: glenga
-ms.openlocfilehash: def921a5378e85caadfaebdd06fc61dba2661756
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: c99ad77bba60a4573faae1c857b3e6dc0203c4ab
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47223087"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47434687"
 ---
 # <a name="azure-event-hubs-bindings-for-azure-functions"></a>Az Azure Event Hubs-kötések az Azure Functions szolgáltatáshoz
 
@@ -342,7 +342,7 @@ public void eventHubProcessor(
 
 ## <a name="trigger---attributes"></a>Eseményindító - attribútumok
 
-A [C#-osztálykódtárakat](functions-dotnet-class-library.md), használja a [EventHubTriggerAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.ServiceBus/EventHubs/EventHubTriggerAttribute.cs) attribútum.
+A [C#-osztálykódtárakat](functions-dotnet-class-library.md), használja a [EventHubTriggerAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.Extensions.EventHubs/EventHubTriggerAttribute.cs) attribútum.
 
 Az attribútum konstruktorának paramétereként meg az eseményközpont nevével, a fogyasztói csoport neve és a kapcsolati karakterláncot tartalmazó alkalmazásbeállítás neve. Ezekkel a beállításokkal kapcsolatos további információkért lásd: a [konfigurációs szakasz aktiválása](#trigger---configuration). Íme egy `EventHubTriggerAttribute` attribútum példa:
 

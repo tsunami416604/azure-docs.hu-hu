@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 08/02/2018
 ms.author: markgal;anuragm
 ms.custom: ''
-ms.openlocfilehash: c3321fb64c423b1b3c80f48fb97a70cc7dbc83f9
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: aab0ac2dfba47741eaf5a75ef46d9ca5f8873d50
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39433565"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47434245"
 ---
 # <a name="back-up-sql-server-databases-to-azure"></a>Biztonsági másolatot az SQL Server-adatbázisok
 
@@ -823,6 +823,10 @@ Indítson egy teljes biztonsági mentést. Naplóalapú biztonsági mentések a 
 ### <a name="can-i-protect-sql-always-on-availability-groups-where-the-primary-replica-is-on-premises"></a>SQL Always On rendelkezésre állási csoportok az elsődleges másodpéldány esetén a helyszínen is védeni
 
 Nem. Az Azure Backup védi az Azure-ban futó SQL-kiszolgálók. Ha egy rendelkezésre állási csoport (rendelkezésre állási csoport) az Azure-ban és a helyszíni gépek között megoszlik, a rendelkezésre állási csoport védelme csak akkor, ha az elsődleges replika az Azure-ban fut-e. Emellett az Azure Backup csak az ugyanabban a régióban az Azure és a Recovery Services-tárolónak futtató csomópontok védi.
+
+### <a name="can-i-protect-sql-always-on-availability-groups-which-are-spread-across-azure-regions"></a>SQL Always On rendelkezésre állási csoportok az Azure-régiók között, amelyek védhetők
+Az Azure Backup helyreállítási tár a is észleli, és és a Recovery Services-tárolónak ugyanabban a régióban lévő összes csomópont védelmét. Ha több Azure-régióra kiterjedő SQL mindig a rendelkezésre állási csoport, konfigurálja a régióból, amely rendelkezik az elsődleges csomópont biztonsági mentést szeretne. Az Azure Backup tudják észleli, és a rendelkezésre állási csoport biztonsági mentési preferenciáját állapotokban található összes adatbázis védelmét. Ha a biztonsági mentési preferenciáját nem teljesül, biztonsági mentések sikertelenek lesznek, és kap a hibája című riasztás.
+
 
 ## <a name="next-steps"></a>További lépések
 

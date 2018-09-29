@@ -1,33 +1,41 @@
 ---
 title: Csatlakozás az Azure blob storage – Azure Logic Apps |} A Microsoft Docs
 description: Hozzon létre és kezelheti a blobokat az Azure Logic Apps az Azure storage-ban
-author: ecfan
-manager: jeconnoc
-ms.author: estfan
-ms.date: 05/21/2018
-ms.topic: article
-ms.service: logic-apps
 services: logic-apps
-ms.reviewer: klam, LADocs
+ms.service: logic-apps
 ms.suite: integration
+author: ecfan
+ms.author: estfan
+ms.reviewer: klam, LADocs
+ms.topic: article
+ms.date: 05/21/2018
 tags: connectors
-ms.openlocfilehash: 49d08135dee4568d1a9d65ec2d22d17ee3bda2ea
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: d8658740772ed4a11fdfd70a0c925ac1b597dd69
+ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "35294679"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47452020"
 ---
 # <a name="create-and-manage-blobs-in-azure-blob-storage-with-azure-logic-apps"></a>Hozzon létre és kezelheti a blobokat az Azure Logic Apps az Azure blob storage-ban
 
 Ez a cikk bemutatja, hogyan elérheti és kezelheti, mint belül egy logikai alkalmazást az Azure Blob Storage-összekötővel a az Azure storage-fiókban tárolt fájlok. Ezzel a módszerrel, amely a feladatok és a fájljainak kezelésére szolgáló munkafolyamatok automatizálása a logic apps is létrehozhat. Ha például hozhat létre logikai alkalmazásokat, amelyek létrehozása, beolvasása, frissítése és törlése a fájlokat a storage-fiókban.
 
-Tegyük fel, hogy egy eszköz, amely frissül, és az Azure-webhelyen. amely a logikai alkalmazás eseményindítóját funkcionál. Ha ez az esemény történik, akkor is a logikai alkalmazás frissítése néhány fájlt a blob storage-tároló, amely egy műveletet a logikai alkalmazásban. 
+Tegyük fel, hogy egy eszköz, amely frissül, és a egy Azure-webhelyen. amely a logikai alkalmazás eseményindítóját funkcionál. Ha ez az esemény történik, akkor is a logikai alkalmazás frissítése néhány fájlt a blob storage-tároló, amely egy műveletet a logikai alkalmazásban. 
 
-Ha nem rendelkezik Azure-előfizetéssel, <a href="https://azure.microsoft.com/free/" target="_blank">regisztráljon egy ingyenes Azure-fiókra</a>. Ha most ismerkedik a logic apps, tekintse át [Mi az Azure Logic Apps](../logic-apps/logic-apps-overview.md) és [a rövid útmutató: az első logikai alkalmazás létrehozása](../logic-apps/quickstart-create-first-logic-app-workflow.md).
+> [!NOTE]
+> A Logic Apps nem támogatja az Azure storage-fiókok tűzfalon keresztül közvetlenül csatlakozik. Ezek a tárfiókok eléréséhez mindkét módszerhez itt: 
+>
+> * Hozzon létre egy [integrációs szolgáltatás környezet](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md), amelyhez csatlakozhat egy Azure virtuális hálózatban lévő erőforrásokra. 
+> 
+> * Ha már használja az API Management, használhatja a szolgáltatást az ebben a forgatókönyvben. További információ: [egyszerű vállalati integrációs architektúra](http://aka.ms/aisarch).
+
+Ha most ismerkedik a logic apps, tekintse át [Mi az Azure Logic Apps](../logic-apps/logic-apps-overview.md) és [a rövid útmutató: az első logikai alkalmazás létrehozása](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 Összekötő-specifikus technikai tudnivalókért tekintse meg a <a href="https://docs.microsoft.com/connectors/azureblobconnector/" target="blank">összekötő-referencia az Azure Blob Storage</a>.
 
 ## <a name="prerequisites"></a>Előfeltételek
+
+* Ha nem rendelkezik Azure-előfizetéssel, <a href="https://azure.microsoft.com/free/" target="_blank">regisztráljon egy ingyenes Azure-fiókra</a>. 
 
 * Egy [Azure storage-fiók és a storage-tároló](../storage/blobs/storage-quickstart-blobs-portal.md)
 
@@ -94,7 +102,7 @@ Az Azure Logic Apps- [művelet](../logic-apps/logic-apps-overview.md#logic-app-c
   
       ![Mappa kiválasztása](./media/connectors-create-api-azureblobstorage/action-select-folder.png)
 
-   2. Keresse meg és válassza ki a fájlt a blob alapján szeretne **azonosító** számát. Ez annak **azonosító** a blob metaadatai, az előzőekben ismertetett blob storage-eseményindító által visszaadott száma.
+   2. Keresse meg és válassza ki a fájlt a blob alapján szeretne **azonosító** számát. Ez annak **azonosító** a blob metaadatai, a korábban ismertetett blob storage-eseményindító által visszaadott száma.
 
 5. Ha elkészült, a Tervező eszköztárán válassza a **mentése**.
 A logikai alkalmazás teszteléséhez győződjön meg róla, hogy a kijelölt mappa tartalmaz egy blobot.

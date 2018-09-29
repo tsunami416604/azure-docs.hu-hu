@@ -15,20 +15,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/16/2016
 ms.author: victorh
-ms.openlocfilehash: 1f7991ff1b0c5a29b002818bc4dc5d9106ba5bfa
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: e24aa8d0fb72147b0ac30e7c495b598d6e9ea96f
+ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46974765"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47451392"
 ---
 # <a name="manage-dns-records-and-record-sets-by-using-the-azure-portal"></a>DNS-rekordok kezelése és a rekordhalmazok az Azure portal használatával
-
-> [!div class="op_single_selector"]
-> * [Azure Portal](dns-operations-recordsets-portal.md)
-> * [Az Azure klasszikus parancssori felület](dns-operations-recordsets-cli-nodejs.md)
-> * [Azure CLI](dns-operations-recordsets-cli.md)
-> * [PowerShell](dns-operations-recordsets.md)
 
 Ez a cikk bemutatja, hogyan rekordhalmazok és rekordok a DNS-zóna kezelése az Azure portal használatával.
 
@@ -95,7 +89,7 @@ Az Azure portal segítségével egy rekordhalmaz rekordok eltávolítása. Vegye
 
 1. Az a **rekordhalmaz tulajdonságok** a rekordhalmaz paneljén kattintson **törlése**.
 
-    ![A rekordhalmaz törlése](./media/dns-operations-recordsets-portal/deleterecordset500.png)
+    ![A rekordhalmaz törlése](./media/dns-operations-recordsets-portal/deleterecordset500.PNG)
 
 2. Egy üzenet jelenik meg azzal a kérdéssel, ha azt szeretné, a rekordhalmaz törlése.
 3. Győződjön meg arról, hogy a neve egyezik-e a rekordhalmaz törlése, és kattintson a kívánt **Igen**.

@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 07/17/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 8f21457a63470b88e93ead97454f996cea38073a
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: a0b5188605874a04f0341cde1a68487c8a50df84
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43103768"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47431814"
 ---
 # <a name="running-runbooks-on-a-hybrid-runbook-worker"></a>Runbookok futtatása hibrid Runbook-feldolgozón
 
@@ -39,7 +39,8 @@ Start-AzureRmAutomationRunbook –AutomationAccountName "MyAutomationAccount" �
 
 ## <a name="runbook-permissions"></a>Runbook-engedélyek
 
-Runbookok futtatása hibrid Runbook-feldolgozón nem használhatja ugyanazt a módszert, általában használt runbookok hitelesítése Azure-erőforrásokhoz, mivel az Azure-on kívüli erőforrások érnek el. A runbook tud biztosítani a helyi erőforrásokhoz a saját hitelesítéshez, vagy megadhat egy futtató fiókot, felhasználói környezetet biztosít az összes runbook számára.
+Runbookok futtatása hibrid Runbook-feldolgozón nem használhatja ugyanazt a módszert, általában használt runbookok hitelesítése Azure-erőforrásokhoz, mivel az Azure-on kívüli erőforrások érnek el. A runbook tud biztosítani a helyi erőforrásokhoz a saját hitelesítéshez, vagy konfigurálhatja a hitelesítés [felügyelt identitások az Azure-erőforrások](../active-directory/managed-identities-azure-resources/tutorial-windows-vm-access-arm.md#grant-your-vm-access-to-a-resource-group-in-resource-manager
+), vagy megadhat egy futtató fiókot, felhasználói környezetet biztosít az összes runbook számára.
 
 ### <a name="runbook-authentication"></a>Runbook-hitelesítés
 
@@ -74,6 +75,32 @@ Az alábbi eljárás segítségével megadhat egy futtató fiókot egy hibrid fe
 4. Válassza ki **minden beállítás** , majd **hibrid feldolgozócsoport beállításai**.
 5. Változás **futtató** a **alapértelmezett** való **egyéni**.
 6. Válassza ki a hitelesítő adatokat, és kattintson a **mentése**.
+
+### <a name="managed-identities-for-azure-resources"></a>Felügyelt identitások az Azure-erőforrásokhoz
+
+Hibrid Runbook-feldolgozók Azure-beli virtuális gépeken futó Azure-erőforrások felügyelt identitások használatával az Azure erőforrásokban való hitelesítéshez. Nincsenek felügyelt identitások használatával az Azure-erőforrásokhoz a futtató fiókok keresztül, számos előnnyel jár.
+
+* Nincs szükség a Futtatás mint tanúsítvány exportálása, és importálhatja a hibrid Runbook-feldolgozó
+* Nincs szükség a használja a futtató fiók tanúsítványának megújítása
+* Nem kell kezelni a futtató kapcsolat objektumot a runbook-kódban
+
+Egy felügyelt identitás használata az Azure-erőforrások egy hibrid Runbook-feldolgozón szeretné a következő lépéseket:
+
+1. Az Azure virtuális gép létrehozása
+2. [Az Azure-erőforrások felügyelt identitások konfigurálása a virtuális Gépen](../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md#enable-system-assigned-managed-identity-on-an-existing-vm)
+3. [A virtuális gép hozzáférést biztosítani az erőforráscsoport a Resource Managerben](../active-directory/managed-identities-azure-resources/tutorial-windows-vm-access-arm.md#grant-your-vm-access-to-a-resource-group-in-resource-manager)
+4. [A virtuális gép felügyelt identitással rendszer által hozzárendelt hozzáférési jogkivonatot kapjon] (.. / active-directory/managed-identities-azure-resources/tutorial-windows-vm-access-arm.md#get-an-access-token-using-the-vms-system-assigned-managed-identity-and-use-it-to-call-azure-resource-manager)
+5. [A Windows a hibrid Runbook Worker telepítése](automation-windows-hrw-install.md#installing-the-windows-hybrid-runbook-worker) a virtuális gépen.
+
+Miután végzett a fenti lépéseket, `Connect-AzureRmAccount -Identity` a a runbookot, hogy az Azure erőforrásokban való hitelesítéshez. Ez csökkenti a futtató fiók használatát, és kezelheti a futtató fiók tanúsítványa szükséges.
+
+```powershell
+# Connect to Azure using the Managed identities for Azure resources identity configured on the Azure VM that is hosting the hybrid runbook worker
+Connect-AzureRmAccount -Identity
+
+# Get all VM names from the subscription
+Get-AzureRmVm | Select Name
+```
 
 ### <a name="automation-run-as-account"></a>Automation futtató fiók
 

@@ -9,12 +9,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 07/06/2018
 ms.author: bsiva
-ms.openlocfilehash: dbc092a9a6984a74cb59f287f12b06892c68fe4a
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 1bf2fe84f9695993dacb6d197d75c18e5db86c4e
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46296889"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47433429"
 ---
 # <a name="set-up-disaster-recovery-for-azure-virtual-machines-using-azure-powershell"></a>Azure PowerShell-lel az Azure virtuális gépek vészhelyreállításának beállítása
 
@@ -34,7 +34,6 @@ Az alábbiak végrehajtásának módját ismerheti meg:
 
 > [!NOTE]
 > Előfordulhat, hogy nem minden eset képességek a portálon keresztül elérhető Azure Powershellen keresztül érhető el. Az Azure Powershellen keresztül jelenleg nem támogatott forgatókönyv funkciói a következők:
-> - Azure-felügyelt lemezeket használó virtuális gépek replikálása lehetővé teszi.
 > - Adja meg, hogy az összes lemez a virtuális gépen replikálni kell a virtuális gép minden lemezét explicit módon megadása nélkül lehetővé teszi.  
 
 ## <a name="prerequisites"></a>Előfeltételek

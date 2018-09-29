@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.component: core
 ms.topic: article
 ms.date: 09/24/2018
-ms.openlocfilehash: 4af2e570b498e496e80b6aeee2b8aeae23c582cc
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: e5b44ed2435986ffd500cade1f7c8ff8047d353d
+ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46952409"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47452303"
 ---
 # <a name="select-and-use-a-compute-target-to-train-your-model"></a>Válassza ki, és a egy számítási célnak használja a modell betanításához
 
@@ -23,7 +23,7 @@ Az Azure Machine Learning szolgáltatással akkor is számos különböző körn
 
 Egy számítási célnak, hogy az erőforrás a tanítási szkriptet vagy futtató gazdagépek a modell telepítése webszolgáltatásként. Ezeket a hozhatók létre és kezeli az Azure Machine Learning SDK vagy parancssori felület használatával. Ha rendelkezik (például az Azure Portalon vagy az Azure CLI) egy másik folyamat által létrehozott számítási célnak, használhatja őket az Azure Machine Learning szolgáltatás munkaterületén csatolásával.
 
-A helyi Futtatás a gépre, és ezután más környezetekben, például a távoli Data Science virtuális gépek a GPU-n és az Azure Batch AI méretezés és megkezdése. 
+Indítsa el a helyi fut a gépen, és ezután más környezetekben, például a távoli Data Science virtuális gépek a GPU-n és az Azure Batch AI vertikális felskálázás és kibővítés. 
 
 ## <a name="supported-compute-targets"></a>Támogatott számítási célnak
 
@@ -90,6 +90,8 @@ run_config_user_managed.environment.python.user_managed_dependencies = True
 # You can choose a specific Python environment by pointing to a Python path 
 #run_config.environment.python.interpreter_path = '/home/ninghai/miniconda3/envs/sdk2/bin/python'
 ```
+
+Jupyter Notebook azt mutatja be, a felhasználó által felügyelt környezetben képzés, lásd: [ https://github.com/Azure/MachineLearningNotebooks/blob/master/01.getting-started/02.train-on-local/02.train-on-local.ipynb ](https://github.com/Azure/MachineLearningNotebooks/blob/master/01.getting-started/02.train-on-local/02.train-on-local.ipynb).
   
 ### <a name="system-managed-environment"></a>A rendszer által felügyelt környezetben
 
@@ -110,6 +112,9 @@ run_config_system_managed.prepare_environment = True
 
 run_config_system_managed.environment.python.conda_dependencies = CondaDependencies.create(conda_packages=['scikit-learn'])
 ```
+
+Jupyter Notebook azt mutatja be, a rendszer által felügyelt környezetben képzés, lásd: [ https://github.com/Azure/MachineLearningNotebooks/blob/master/01.getting-started/02.train-on-local/02.train-on-local.ipynb ](https://github.com/Azure/MachineLearningNotebooks/blob/master/01.getting-started/02.train-on-local/02.train-on-local.ipynb).
+
 ## <a id="dsvm"></a>Adatelemző virtuális gép
 
 A helyi gépen a számítási vagy a modell betanításához szükséges GPU-erőforrások nem rendelkeznek. Ebben a helyzetben vertikálisan felskálázhatja vagy horizontális felskálázás a betanítási folyamat hozzáadásával további számítási céljainak egy adatelemzési virtuális gépek (DSVM) például.
@@ -190,6 +195,8 @@ Az alábbi lépéseket az SDK segítségével betanítási célként egy adatele
     dsvm_compute.delete()
     ```
 
+Jupyter Notebook azt mutatja be, egy Data Science virtuális gépen képzési, lásd: [ https://github.com/Azure/MachineLearningNotebooks/blob/master/01.getting-started/04.train-on-remote-vm/04.train-on-remote-vm.ipynb ](https://github.com/Azure/MachineLearningNotebooks/blob/master/01.getting-started/04.train-on-remote-vm/04.train-on-remote-vm.ipynb).
+
 ## <a id="batch"></a>Az Azure Batch AI
 
 A modell betanításához egy hosszú időt vesz igénybe, ha az Azure Batch AI segítségével a képzés szét a számítási erőforrások a felhőben egy fürt. A Batch AI GPU az erőforrás is konfigurálható.
@@ -232,14 +239,14 @@ if not found:
     print(compute_target.status.serialize())
 ```
 
-Csatlakoztassa a számítási célként egy meglévő Batch AI-fürtöt, meg kell adnia az Azure-erőforrás azonosítója. Az Azure Portalról az erőforrás-azonosító lekéréséhez, kell:
+Csatlakoztassa a számítási célként egy meglévő Batch AI-fürtöt, meg kell adnia az Azure-erőforrás azonosítója. Az Azure Portalról az erőforrás-azonosító lekéréséhez használja az alábbi lépéseket:
 1. Keresse meg `Batch AI` lehetőséget **minden szolgáltatás**
 1. A munkaterület nevére, amelyben a fürt tartozik
 1. Válassza ki a fürt
 1. Kattintson a **tulajdonságai**
 1. Másolás a **azonosítója**
 
-Az alábbi példa egy fürt csatlakoztatása a munkaterület az SDK-t használja. Cserélje le a példában `<name>` bármilyen számítási nevére. Ez nem kell egyeznie a fürt nevével. Cserélje le `<resource-id>` lásd fent az Azure erőforrás-azonosító:
+Az alábbi példa egy fürt csatlakoztatása a munkaterület az SDK-t használja. Cserélje le a példában `<name>` bármilyen számítási nevére. A név nem kell egyeznie a fürt nevével. Cserélje le `<resource-id>` az Azure-erőforrás-azonosító lásd fent:
 
 ```python
 from azureml.core.compute import BatchAiCompute
@@ -253,7 +260,9 @@ A Batch AI fürt és a feladat állapotát az alábbi Azure CLI-parancsok haszn�
 - A fürt állapotának ellenőrzése. Láthatja, hány csomópontok futnak a `az batchai cluster list`.
 - Ellenőrizze a feladat állapotát. Láthatja, hány feladatok futnak az `az batchai job list`.
 
-Körülbelül 5 percet vesz igénybe a Batch AI-fürt létrehozása
+A Batch AI-fürt létrehozása körülbelül 5 percig tart.
+
+Jupyter Notebook azt mutatja be, egy Batch AI-fürtöt a képzés, lásd: [ https://github.com/Azure/MachineLearningNotebooks/blob/master/training/03.train-hyperparameter-tune-deploy-with-tensorflow/03.train-hyperparameter-tune-deploy-with-tensorflow.ipynb ](https://github.com/Azure/MachineLearningNotebooks/blob/master/training/03.train-hyperparameter-tune-deploy-with-tensorflow/03.train-hyperparameter-tune-deploy-with-tensorflow.ipynb).
 
 ## <a name='aci'></a>Az Azure Container instance-példány (aci Szolgáltatásban)
 
@@ -296,6 +305,8 @@ run_config.environment.python.conda_dependencies = CondaDependencies.create(cond
 ```
 
 Is igénybe vehet néhány másodperc, néhány perc alatt létrehozni egy ACI számítási célnak.
+
+Jupyter Notebook azt mutatja be, az Azure-Tárolópéldányon képzés, lásd: [ https://github.com/Azure/MachineLearningNotebooks/blob/master/01.getting-started/03.train-on-aci/03.train-on-aci.ipynb ](https://github.com/Azure/MachineLearningNotebooks/blob/master/01.getting-started/03.train-on-aci/03.train-on-aci.ipynb).
 
 ## <a id="hdinsight"></a>Egy HDInsight-fürt csatolása 
 
@@ -352,6 +363,8 @@ run = exp.submit(src)
 run.wait_for_completion(show_output = True)
 ```
 
+Jupyter Notebook azt mutatja be, a Spark on HDInsight-képzés, lásd: [ https://github.com/Azure/MachineLearningNotebooks/blob/master/01.getting-started/05.train-in-spark/05.train-in-spark.ipynb ](https://github.com/Azure/MachineLearningNotebooks/blob/master/01.getting-started/05.train-in-spark/05.train-in-spark.ipynb).
+
 ## <a name="view-and-set-up-compute-using-the-azure-portal"></a>Megtekintheti, és állítsa be a compute az Azure portal használatával
 
 Milyen számítási célok tartoznak a munkaterület az Azure Portalon tekintheti meg. A listához lekéréséhez használja az alábbi lépéseket:
@@ -403,6 +416,7 @@ A fenti lépésekkel számítási célnak listájának megtekintéséhez, majd k
 A következő notebookok a jelen cikk fogalmait bemutatása:
 * `01.getting-started/02.train-on-local/02.train-on-local.ipynb`
 * `01.getting-started/04.train-on-remote-vm/04.train-on-remote-vm.ipynb`
+* `01.getting-started/03.train-on-aci/03.train-on-aci.ipynb`
 * `01.getting-started/05.train-in-spark/05.train-in-spark.ipynb`
 * `01.getting-started/07.hyperdrive-with-sklearn/07.hyperdrive-with-sklearn.ipynb`
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: cache-redis
 ms.workload: tbd
 ms.date: 02/14/2017
 ms.author: wesmc
-ms.openlocfilehash: 3cf906830965959709a8c7e8dc7d2acc3f3a6f32
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: a6c3314a981b46aa6f1cbca1f34392d1e1ae6c9a
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47096972"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47431644"
 ---
 # <a name="aspnet-output-cache-provider-for-azure-redis-cache"></a>A Redis Cache ASP.NET kimenetigyorsítótár-szolgáltatója az Azure-hoz
 A redis Cache kimeneti gyorsítótár-szolgáltatóját egy folyamaton tárolási mechanizmus kimeneti gyorsítótár adatainak. Ezeket az adatokat a kifejezetten a teljes HTTP-válaszok (kimeneti gyorsítótár oldalon). A szolgáltató rendkívüli az új kimeneti gyorsítótár szolgáltató indításkiterjesztési pont az ASP.NET 4 verzióban jelent meg.
@@ -46,7 +46,7 @@ A NuGet-csomag letölti és hozzáadja a szükséges szerelvényhivatkozásokat,
 
 ```xml
 <caching>
-  <outputCachedefault Provider="MyRedisOutputCache">
+  <outputCache defaultProvider="MyRedisOutputCache">
     <providers>
       <!-- For more details check https://github.com/Azure/aspnet-redis-providers/wiki -->
       <!-- Either use 'connectionString' OR 'settingsClassName' and 'settingsMethodName' OR use 'host','port','accessKey','ssl','connectionTimeoutInMilliseconds' and 'operationTimeoutInMilliseconds'. -->
@@ -73,6 +73,7 @@ A NuGet-csomag letölti és hozzáadja a szükséges szerelvényhivatkozásokat,
            host=""
            accessKey=""
            ssl="true" />
+    </providers>
   </outputCache>
 </caching>
 ```

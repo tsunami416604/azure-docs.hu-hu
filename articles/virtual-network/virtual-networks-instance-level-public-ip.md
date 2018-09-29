@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/03/2018
 ms.author: genli
-ms.openlocfilehash: cb8ba5169a6ebfbb11ba0acfa9b9f463b7cdf6a1
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 7d8325ce04a9fa7853fb622062022a6938375f96
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39520804"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47430981"
 ---
 # <a name="instance-level-public-ip-classic-overview"></a>Példány szintű nyilvános IP-Címek (klasszikus) áttekintése
 Egy példány szintű nyilvános IP (ILPIP) egy nyilvános IP-cím, amelyeket hozzárendelhet, közvetlenül a virtuális gépek vagy Cloud Services szerepkör-példány helyett a felhőszolgáltatáshoz, amely a virtuális gép vagy szerepkörpéldány példány található. Egy ILPIP nem kerül a sor, a virtuális IP-(VIP), amely a felhőszolgáltatás van rendelve. Inkább egy további IP-címet, amellyel közvetlenül csatlakozhat a virtuális gép vagy szerepkörpéldány példány.
@@ -31,10 +31,13 @@ Egy példány szintű nyilvános IP (ILPIP) egy nyilvános IP-cím, amelyeket ho
 
 1. ábrán látható, a felhőszolgáltatás érhető el egy virtuális IP-cím, amíg az egyes virtuális gépeket általában elért virtuális IP-cím használatával:&lt;portszám&gt;. Egy ILPIP rendel egy adott virtuális Gépre, a virtuális gép érhetők el közvetlenül az adott IP-cím használatával.
 
-Egy felhőalapú szolgáltatás az Azure-ban való létrehozásakor megfelelő DNS-beli A rekordokat automatikusan létrehozza a férhessenek hozzá a szolgáltatás segítségével egy teljesen minősített tartománynevét (FQDN), a tényleges virtuális IP-CÍMEK használata helyett. Ugyanez a folyamat esetében egy ILPIP engedélyezi a hozzáférést a virtuális gép vagy szerepkörpéldány példányhoz a ILPIP helyett a teljes tartománynév alapján történik. Például ha nevű felhőszolgáltatás létrehozása *contosoadservice*, és konfigurál egy webes szerepkörben nevű *contosoweb* két olyan példányt, az Azure a következő regisztrálja A-rekordokat a példányok:
+Egy felhőalapú szolgáltatás az Azure-ban való létrehozásakor megfelelő DNS-beli A rekordokat automatikusan létrehozza a férhessenek hozzá a szolgáltatás segítségével egy teljesen minősített tartománynevét (FQDN), a tényleges virtuális IP-CÍMEK használata helyett. Ugyanez a folyamat esetében egy ILPIP engedélyezi a hozzáférést a virtuális gép vagy szerepkörpéldány példányhoz a ILPIP helyett a teljes tartománynév alapján történik. Például ha létrehoz egy felhőalapú szolgáltatás nevű *contosoadservice*, és konfigurál egy webes szerepkörben nevű *contosoweb* két példánnyal, és a .cscfg fájlban `domainNameLabel` értékre van állítva  *WebPublicIP*, az Azure regisztrál, az alábbi A rögzíti a példányok:
 
-* contosoweb\_IN_0.contosoadservice.cloudapp.net
-* contosoweb\_IN_1.contosoadservice.cloudapp.net 
+
+* WebPublicIP.0.contosoadservice.cloudapp.net
+* WebPublicIP.1.contosoadservice.cloudapp.net
+* ...
+
 
 > [!NOTE]
 > Virtuális gép vagy szerepkörpéldány példányonként csak egy ILPIP rendelhet hozzá. Előfizetésenként legfeljebb 5 ILPIPs is használhatja. ILPIPs több hálózati adapterrel rendelkező virtuális gépek nem támogatottak.
@@ -152,7 +155,7 @@ A Cloud Services szerepkörpéldányt ad hozzá egy ILPIP, hajtsa végre az alá
         <AddressAssignments>
           <InstanceAddress roleName="WebRole1">
         <PublicIPs>
-          <PublicIP name="MyPublicIP" domainNameLabel="MyPublicIP" />
+          <PublicIP name="MyPublicIP" domainNameLabel="WebPublicIP" />
             </PublicIPs>
           </InstanceAddress>
         </AddressAssignments>
@@ -162,14 +165,22 @@ A Cloud Services szerepkörpéldányt ad hozzá egy ILPIP, hajtsa végre az alá
 3. Töltse fel a .cscfg fájlban, a felhőalapú szolgáltatás által ismertetett lépéseket követve a [konfigurálása a Cloud Services hogyan](../cloud-services/cloud-services-how-to-configure-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json#reconfigure-your-cscfg) cikk.
 
 ### <a name="how-to-retrieve-ilpip-information-for-a-cloud-service"></a>Hogyan kérheti le a felhőszolgáltatások ILPIP-információk
-A szerepkörpéldány ILPIP információk megtekintéséhez futtassa a következő PowerShell-parancsot, és tekintse meg a tartozó értékeket *PublicIPAddress* és *PublicIPName*:
+A szerepkörpéldány ILPIP információk megtekintéséhez futtassa a következő PowerShell-parancsot, és tekintse meg a tartozó értékeket *PublicIPAddress*, *PublicIPName*, *PublicIPDomainNameLabel* és *PublicIPFqdns*:
 
 ```powershell
-$roles = Get-AzureRole -ServiceName PaaSFTPService -Slot Production -RoleName WorkerRole1 -InstanceDetails
+Add-AzureAccount
+
+$roles = Get-AzureRole -ServiceName <Cloud Service Name> -Slot Production -RoleName WebRole1 -InstanceDetails
 
 $roles[0].PublicIPAddress
 $roles[1].PublicIPAddress
 ```
+
+Is használhatja `nslookup` az altartomány lekérdezni a rekordot:
+
+```batch
+nslookup WebPublicIP.0.<Cloud Service Name>.cloudapp.net
+``` 
 
 ## <a name="next-steps"></a>További lépések
 * Megismerheti hogyan [IP-címkezelés](virtual-network-ip-addresses-overview-classic.md) működik a klasszikus üzemi modellben.

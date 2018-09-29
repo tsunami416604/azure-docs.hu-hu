@@ -8,12 +8,12 @@ ms.topic: howto
 ms.date: 09/24/2018
 ms.author: ancav
 ms.component: metrics
-ms.openlocfilehash: d896cb01c7dc2cd4ed028db418f838809c7ce25c
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: b9808233e08e545c31e171afe104173dccc6abed
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46986999"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47434925"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-using-a-resource-manager-template-for-a-windows-virtual-machine-scale-set"></a>Küldés a vendég operációs rendszer mérőszámok az Azure Monitor metrika tárolásához, egy Windows virtuálisgép-méretezési csoportot a Resource Manager-sablon használatával
 
@@ -83,7 +83,7 @@ A virtuálisgép-méretezési csoportot erőforrás, keresse meg a **virtualMach
 
 Az a **extensionProfile**, új-bővítmény hozzáadása a sablonhoz, ahogy azt a **VMSS-WAD-kiterjesztésben**.  Ez a szakasz a Felügyeltszolgáltatás-identitás (MSI) bővítmény, amely biztosítja, hogy a metrikák alatt kibocsátott fogadja el az Azure Monitor. A **neve** mező tartalmazhat bármilyen nevet. 
 
-Az alábbi kódot az MSI-bővítmény alatt is hozzáadja a diagnosztikai bővítmény és a konfiguráció-bővítmény erőforrásként a virtuálisgép-méretezési készlet erőforrás. Nyugodtan igény szerint teljesítményszámlálók hozzáadása/eltávolítása. 
+Az alábbi kódot az MSI-bővítményében is hozzáadja a diagnosztikai bővítmény és a konfiguráció-bővítmény erőforrásként a virtuálisgép-méretezési készlet erőforrás. Nyugodtan igény szerint teljesítményszámlálók hozzáadása/eltávolítása. 
 
 ```json
           "extensionProfile": { 

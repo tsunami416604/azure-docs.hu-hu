@@ -1,6 +1,6 @@
 ---
-title: Az Azure Monitor Log Analytics és a Kusto nyelvi különbségek |} A Microsoft Docs
-description: A Log Analytics-lekérdezések és az alapvető Kusto nyelvi közötti különbségeket ismerteti.
+title: Az Azure Monitor Log-Analytics nyelvi dokumentáció |} A Microsoft Docs
+description: Részletes információ a Log Analytics Kusto nyelvét. Log Analytics-további elemeket és elemeket nem támogatja a Log Analytics-lekérdezéseket tartalmaz.
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -15,25 +15,27 @@ ms.topic: article
 ms.date: 09/25/2018
 ms.author: bwren
 ms.component: na
-ms.openlocfilehash: 109ffa6abb34dad6a00210a5c2c726bdfdde094f
-ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
+ms.openlocfilehash: 5173790436a29fa9947346d711da1a2ddb32bf62
+ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47184837"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47451068"
 ---
-# <a name="log-analytics-and-kusto-language-differences"></a>A log Analytics és a Kusto nyelvi különbségek
-[Log Analytics-lekérdezések](../log-analytics-queries.md) az írt a [Kusto nyelvi](/azure/kusto/query). Néhány különbségek vannak a standard szintű nyelvet és a Log Analytics végrehajtása, ha ebben a cikkben leírtak szerint.
+# <a name="log-analytics-query-language-reference"></a>Log Analytics lekérdezési nyelv leírása
+[Log Analytics-lekérdezések](../log-analytics-queries.md) az azonos lekérdezési nyelvet és a motor által használt [Azure adatkezelő](/azure/data-explorer/). Is elérheti a nyelvi referencia és egyéb nyelv részleteit a következő helyről: [Kusto nyelvi referencia](/azure/kusto/query)
 
 
-## <a name="statements-not-supported-in-log-analytics"></a>Nem támogatott a Log Analytics utasítások
-Az alábbi utasítások nem támogatottak a Log Analyticsben.
+
+## <a name="kusto-elements-not-support-in-log-analytics"></a>A Log Analytics nem támogatja a Kusto-elemek
+A Log Analytics-lekérdezések használata Kusto megvalósítását, amíg vannak bizonyos Kusto-elemek nem támogatja a következő szakaszokban leírtak szerint.
+
+### <a name="statements-not-supported-in-log-analytics"></a>Nem támogatott a Log Analytics utasítások
 
 * [Alias](/kusto/query/aliasstatement)
 * [Lekérdezési paraméterek](/azure/kusto/query/queryparametersstatement)
 
-## <a name="functions-not-supported-in-log-analytics"></a>A Log Analytics nem támogatott funkciók
-A következő funkciók nem támogatottak a Log Analyticsben.
+### <a name="functions-not-supported-in-log-analytics"></a>A Log Analytics nem támogatott funkciók
 
 * [cluster()](/azure/kusto/query/clusterfunction)
 * [cursor_after()](/azure/kusto/query/cursorafterfunction)
@@ -44,18 +46,19 @@ A következő funkciók nem támogatottak a Log Analyticsben.
 * [extent_id()](/azure/kusto/query/extentidfunction)
 * [extent_tags()](/azure/kusto/query/extenttagsfunction)
 
-## <a name="operators-not-supported-in-log-analytics"></a>A Log Analytics nejsou podporovány operátory
-Az alábbi operátorok nem támogatottak a Log Analyticsben.
+### <a name="operators-not-supported-in-log-analytics"></a>A Log Analytics nejsou podporovány operátory
 
 * [Kereszt-fürthöz való csatlakozás](/azure/kusto/query/joincrosscluster)
 * [externaldata operátor](/azure/kusto/query/externaldata-operator)
 
-## <a name="plugins-not-supported-in-log-analytics"></a>Beépülő modulok nem támogatott a Log Analyticsben
-A következő beépülő modulok nem támogatottak a Log Analyticsben.
+### <a name="plugins-not-supported-in-log-analytics"></a>Beépülő modulok nem támogatott a Log Analyticsben
+
 * [sql_request beépülő modul](/azure/kusto/query/sqlrequestplugin)
 
 
-## <a name="log-analytics-specific-operators"></a>Log Analytics adott operátorok
+## <a name="additional-operators-in-log-analytics"></a>Kiegészítő operátorok a Log Analyticsben
+Annak érdekében, hogy támogatják a Log Analytics, a következő további Kusto-operátorok vannak, feltéve, hogy nem állnak rendelkezésre a Log Analyticsen kívül. 
+
 * [App()](app-expression.md)
 * [Workspace()](workspace-expression.md)
 

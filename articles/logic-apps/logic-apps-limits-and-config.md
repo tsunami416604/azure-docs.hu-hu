@@ -3,19 +3,18 @@ title: Korlátozások és konfiguráció – Azure Logic Apps |} A Microsoft Doc
 description: A szolgáltatás korlátozásai és konfigurációs értékei az Azure Logic Apps
 services: logic-apps
 ms.service: logic-apps
+ms.suite: integration
 author: ecfan
 ms.author: estfan
-manager: jeconnoc
-ms.topic: article
-ms.date: 08/10/2018
 ms.reviewer: klam, LADocs
-ms.suite: integration
-ms.openlocfilehash: 49b8efe6b5d56c3edaf8b311ff3c6667a8952536
-ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
+ms.topic: article
+ms.date: 09/26/2018
+ms.openlocfilehash: c557c3e34fc4588b8bf13d69159a144d059b039e
+ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42054901"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47452452"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Korlátozások és konfigurációs adatokat az Azure Logic Apps
 
@@ -76,7 +75,7 @@ Ha módosítani szeretné az alapértelmezett korlát a 7 nap, és 90 nap közö
 
 Ha letilt egy logikai alkalmazást, nincsenek új futtatások példányosítása. Az összes folyamatban lévő és a függőben lévő futtatásának továbbra is csak akkor fejeződik be, amely időt is igénybe vehet.
 
-Ha töröl egy logikai alkalmazást, nincsenek új futtatások példányosítása. Az összes folyamatban lévő és a függőben lévő futtatásának törölve lesznek. Ha több ezer futtatások, megszakítás jelentős időt vehet igénybe.
+Amikor törli a logikai alkalmazást, a rendszer nem kezdeményez új futtatásokat. A rendszer minden folyamatban lévő és függő futtatást megszakít. Ha több ezer futtatása van, a megszakítás jelentős ideig eltarthat.
 
 <a name="looping-debatching-limits"></a>
 
@@ -305,8 +304,13 @@ Minden logikai alkalmazás egy régióban használja ugyanazokat a tartományoka
 A hívások támogatására, amely [összekötők](../connectors/apis-list.md) márka, állítsa be a tűzfalbeállításokat, így ezen kimenő IP-címek tartoznak a régiók, ahol a logic apps létezik alapján.
 
 > [!IMPORTANT]
->
 > Ha rendelkezik meglévő konfigurációk, frissítse őket **2018. szeptember 1. előtt a lehető leghamarabb** , ezek közé tartozik, és a régiók, ahol a logic apps létezik-e a listában szereplő IP-címekkel egyező. 
+> 
+> A Logic Apps nem támogatja az Azure storage-fiókok tűzfalon keresztül közvetlenül csatlakozik. Ezek a tárfiókok eléréséhez mindkét módszerhez itt: 
+>
+> * Hozzon létre egy [integrációs szolgáltatás környezet](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md), amelyhez csatlakozhat egy Azure virtuális hálózatban lévő erőforrásokra. 
+> 
+> * Ha már használja az API Management, használhatja a szolgáltatást az ebben a forgatókönyvben. További információ: [egyszerű vállalati integrációs architektúra](http://aka.ms/aisarch).
 
 | Logic Apps-régió | Kimenő IP | 
 |-------------------|-------------|  

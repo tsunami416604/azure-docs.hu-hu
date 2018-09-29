@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/24/2018
+ms.date: 09/28/2018
 ms.author: tomfitz
-ms.openlocfilehash: e0269e17a419c6b611d72a7d00668fe9c9519894
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 81638136589fc474d5183341d2fe0f9f896d6b41
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47166183"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47434466"
 ---
 # <a name="array-and-object-functions-for-azure-resource-manager-templates"></a>Az Azure Resource Manager-sablonok tömb- és objektumfüggvények 
 
@@ -330,7 +330,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 ## <a name="contains"></a>tartalmazza a következőt:
 `contains(container, itemToFind)`
 
-Ellenőrzi, hogy egy tömb értéket tartalmaz, objektum kulcsot tartalmaz, vagy egy karakterlánc részkarakterláncot tartalmaz.
+Ellenőrzi, hogy egy tömb értéket tartalmaz, objektum kulcsot tartalmaz, vagy egy karakterlánc részkarakterláncot tartalmaz. Az adatkarakterlánc-összehasonlítás a kis-és nagybetűket. Azonban történő tesztelésekor, ha az objektum tartalmaz egy kulcsot, az összehasonlítást, kis-és nagybetűket.
 
 ### <a name="parameters"></a>Paraméterek
 

@@ -4,14 +4,14 @@ description: Ismert problémák az Azure Migrate szolgáltatás és a hibaelhár
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 09/24/2018
+ms.date: 09/28/2018
 ms.author: raynew
-ms.openlocfilehash: ca0931810fd78ce4cc684ad307efeb866cee3353
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 906c6e56b670dfc26b5905a453fd43a3c72086c3
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47165297"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47433497"
 ---
 # <a name="troubleshoot-azure-migrate"></a>Az Azure Migrate hibaelhárítása
 
@@ -92,9 +92,11 @@ Az Azure Migrate collector PowerCLI letölti és telepíti azt a készüléket. 
 
 ### <a name="error-unhandledexception-internal-error-occured-systemiofilenotfoundexception"></a>Unhandledexception hiba történt: System.IO.FileNotFoundException
 
-Ez a hiba a gyűjtő 1.0.9.5-ösnél korábbi verzióiban jelentkezik. Ha a gyűjtő 1.0.9.2-es vagy a GA előtti, például az 1.0.8.59-es verzióját használja, ez a probléma elő fog fordulni. [Részletes válaszokért lásd a fórumokra mutató hivatkozást](https://social.msdn.microsoft.com/Forums/azure/en-US/c1f59456-7ba1-45e7-9d96-bae18112fb52/azure-migrate-connect-to-vcenter-server-error?forum=AzureMigrate).
+A probléma akkor fordulhat elő a VMware PowerCLI telepítése való probléma miatt. Kövesse az alábbi lépéseket a probléma megoldásához:
 
-[A probléma felszámolásához frissítse a gyűjtőt](https://aka.ms/migrate/col/checkforupdates).
+1. Ha nem a legújabb verziót a gyűjtő berendezés [a gyűjtő frissítése a legújabb verzióra a](https://aka.ms/migrate/col/checkforupdates) , és ellenőrizze, hogy megoldódott-e a problémát.
+2. Ha már rendelkezik a gyűjtő legújabb, manuálisan telepítse [VMware PowerCLI 6.5.2](https://www.powershellgallery.com/packages/VMware.PowerCLI/6.5.2.6268016) , és ellenőrizze, hogy megoldódott-e a problémát.
+3. Ha a fenti nem oldja meg a problémát, keresse meg a C:\Program Files\ProfilerService mappát és eltávolítása a VMware.dll és VimService65.dll fájlokat a mappában találhatók, és indítsa újra az "Az Azure Migrate Collector" a Windows-szolgáltatások kezelése (Nyissa meg a(z) Futtatás "és a"services.msc"típusú Windows-kezelő megnyitásához).
 
 ### <a name="error-unabletoconnecttoserver"></a>UnableToConnectToServer hiba
 

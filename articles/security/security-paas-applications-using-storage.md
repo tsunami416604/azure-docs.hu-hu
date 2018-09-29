@@ -1,6 +1,6 @@
 ---
-title: Azure Storage használatával PaaS alkalmazások védelme |} Microsoft Docs
-description: " Tudnivalók Azure Storage biztonsági gyakorlati tanácsok a PaaS webes és mobilalkalmazásokhoz biztonságossá tételéhez. "
+title: Az Azure Storage használata PaaS-alkalmazások védelme |} A Microsoft Docs
+description: Ismerje meg az Azure Storage biztonsági ajánlott eljárások a PaaS webes és mobilalkalmazások védelme.
 services: security
 documentationcenter: na
 author: TomShinder
@@ -12,96 +12,75 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/20/2018
+ms.date: 09/28/2018
 ms.author: TomShinder
-ms.openlocfilehash: ffc04973a003c65f52f3387292f11fede65edce3
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ms.openlocfilehash: ac01aaca8c147b1f474b59ac57424f5cdc5f8a8d
+ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36295295"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47451867"
 ---
-# <a name="securing-paas-web-and-mobile-applications-using-azure-storage"></a>PaaS webes és mobilalkalmazások Azure Storage használatával biztonságossá tétele
+# <a name="best-practices-for-securing-paas-web-and-mobile-applications-using-azure-storage"></a>PaaS web- és mobilalkalmazások az Azure Storage használatával biztonságossá tételének ajánlott eljárásait
+Ebben a cikkben bemutatjuk az Azure Storage biztonsági védelmének bevált gyakorlata a platform--szolgáltatásként (PaaS) webes és mobilalkalmazások védelme gyűjteménye. Ajánlott eljárások az funkciót az Azure-ral és a az ügyfelek, például a saját maga származik.
 
-Ez a cikk arról lesz szó Azure Storage ajánlott biztonsági eljárások az PaaS webes és mobilalkalmazások védelme gyűjteménye. Az alábbi gyakorlati tanácsok az Azure-ral tapasztalatunk és az ügyfelek, például a saját kezűleg feladatait származik.
+Az Azure lehetővé teszi a tároló üzembe helyezése és módon könnyen elérhető helyi. Az Azure storage magas szintű méretezhetőség és rendelkezésre állása és viszonylag kis munkamennyiség érheti el. Nem csak az Azure Storage az alapítvány Windows és Linux Azure Virtual Machines esetén is alkalmas nagy méretű elosztott alkalmazások.
 
-A [Azure Storage biztonsági útmutató](../storage/common/storage-security-guide.md) részletes információt az Azure Storage és a biztonsági nagyszerű forrás.  Ez a cikk foglalkozik magas szinten azokat a fogalmakat, a biztonsági útmutató és a biztonsági útmutatója tartalmazza, valamint a más forrásokból, további információt mutató hivatkozások találhatók.
+Az Azure Storage a következő négy szolgáltatást biztosítja: Blob storage, Table storage, Queue storage és File storage. További tudnivalókért lásd: [a Microsoft Azure Storage bemutatása](../storage/storage-introduction.md).
 
-## <a name="azure-storage"></a>Azure Storage
-
-Azure lehetővé teszi a üzembe helyezéséről és használatáról a tárolási módon könnyen elérhető helyi. Az Azure storage méretezhetőségi és viszonylag kevés munkát rendelkezésre állási magas szintű érheti el. Nem csak az Azure storage alapját a Windows és Linux Azure Virtual Machines, azt is képes támogatni nagy elosztott alkalmazások.
-
-Az Azure Storage a következő négy szolgáltatást biztosítja: Blob Storage, Table Storage, Queue Storage és File storage. További tudnivalókért lásd: [Microsoft Azure Storage bemutatása](../storage/storage-introduction.md).
-
-## <a name="best-practices"></a>Ajánlott eljárások
+A [Azure Storage biztonsági útmutatóját](../storage/common/storage-security-guide.md) remek módja az Azure Storage és a biztonság részletes információkat. Ez – gyakorlati tanácsok cikk címek magas szinten azokat a fogalmakat találhatók a biztonsági útmutató és a biztonsági útmutató, valamint a más forrásokból, további információt mutató hivatkozásokat.
 
 Ez a cikk foglalkozik az alábbi gyakorlati tanácsokat:
 
-- Hozzáférés-védelem:
-   - Közös hozzáférésű jogosultságkódok (SAS)
-   - Szerepköralapú hozzáférés-vezérlés (RBAC)
+- Közös hozzáférésű jogosultságkódok (SAS)
+- Szerepköralapú hozzáférés-vezérlés (RBAC)
+- Értékes adatok ügyféloldali titkosítása
+- Storage Service Encryption
 
-- Tárolás titkosítása:
-   - Ügyféloldali titkosítása az értékes adatok
-   - Storage Service Encryption
 
-## <a name="access-protection"></a>Hozzáférés-védelem
+## <a name="use-a-shared-access-signature-instead-of-a-storage-account-key"></a>Tárfiókkulcs helyett közös hozzáférésű jogosultságkódok használata
+Hozzáférés-vezérlés, kritikus fontosságú. Segítséget hozzáférés vezérlése az Azure Storage, Azure két 512 bites tárelérési fiók-kulcsokat hoz létre (SAKs) storage-fiók létrehozásakor. Kulcs redundancia szintjét is lehetővé teszi, hogy rutinszerű kulcsrotálás során szolgáltatáskiesések elkerülése. 
 
-### <a name="use-shared-access-signature-instead-of-a-storage-account-key"></a>Közös hozzáférésű Jogosultságkód használata helyett a tárfiók kulcsa
+Tárelérési kulcsok magas prioritású titkos kódok, és csak akkor érhető el a storage-hozzáférés-vezérlés felelős. Ha illetéktelenek kap hozzáférést a kulcsokhoz, azok lesz teljes körű tárolási és sikerült cserélje le, törlése vagy fájlok hozzáadása a tárolóhoz. Ez magában foglalja a kártevők és más típusú tartalom, amely potenciálisan kedvezőtlenül befolyásolhatja a szervezet vagy az ügyfelek számára.
 
-Infrastruktúra-szolgáltatási megoldásban, általában a Windows Server vagy Linux rendszerű virtuális gépek futó fájlokat védi a közzététel és hozzáférés-vezérlő mechanizmusok használatával ügyfelén fenyegetések. Használja a Windows [hozzáférés-vezérlési listák (ACL)](../virtual-network/virtual-networks-acl.md) és valószínűleg használna Linux [chmod](https://en.wikipedia.org/wiki/Chmod). Alapvetően Ez az pontosan mit kellene tennie, ha a kiszolgálón a saját adatközpont napjainkban volt védelmét.
+Továbbra is szükségük van egy módszerre a tárolási objektum hozzáférést biztosítanak. A részletes hozzáférést biztosítania a közös hozzáférésű jogosultságkód (SAS) előnyeit is igénybe vehet. A SAS megoszthatja a storage-ban meghatározott objektumokat egy előre meghatározott időtartam alatt, és meghatározott engedélyekkel lehetővé teszi. Közös hozzáférésű jogosultságkód definiálását teszi lehetővé:
 
-A PaaS nem egyezik. A leggyakrabban használt módszereket fájlokat tárolnak a Microsoft Azure egyik használandó [Azure Blob Storage tárolóban](../storage/storage-dotnet-how-to-use-blobs.md). A Blob storage és az egyéb a file storage eltérése a fájl i/o, de a fájl i/o járó védelmi módszert.
+- Az időköz keresztül, amely a SAS az érvényes, beleértve a kezdő és a lejárati időpont.
+- A SAS által biztosított engedélyeket. Például a blob SAS előfordulhat, hogy adjon egy felhasználó olvasási és írási engedélyekkel, hogy a blob, de nem törli az engedélyeket.
+- Nem kötelező IP-cím vagy IP-címek tartománya, amelyből az Azure Storage fogad az SAS. Például előfordulhat, hogy adja meg egy IP-címtartományt a szervezethez tartozó. Ez biztosítja, hogy egy új mértéket, az SAS a biztonságot.
+- A protokoll, amelyben Azure Storage fogadja el az SAS. Ez nem kötelező paraméter használatával korlátozza a hozzáférést az ügyfelek HTTPS-en keresztül.
 
-Hozzáférés-vezérlés fontos. Segítséget hozzáférés az Azure storage, a rendszer létrehoz két 512 bites tárfiókkulcsok (SAKs) amikor Ön [hozzon létre egy tárfiókot](../storage/common/storage-create-storage-account.md). A kulcs redundanciájának szintjét elkerülhetők a szolgáltatás megszakítás során rutin kulcs Elforgatás lehetővé teszi.
+SAS oszthat meg tartalmakat anélkül azonnal a tárfiókkulcsokat megosztja azokat a kívánt módon teszi lehetővé. Mindig SAS-sel az alkalmazásban a biztonságos módon a tárolási erőforrások megosztását a storage-fiókkulcsok veszélyeztetése nélkül.
 
-Tárelérési kulcsok magas prioritású titkok és csak akkor érhető el a tároló hozzáférés-vezérlés felelős. A megfelelő személyek férhetnek hozzá a ezeket a kulcsokat, ha azok rendelkezik teljes körű vezérlést biztosítanak a tárolási és sikerült cserélje le, törlése vagy lesz fájlok hozzáadni a tárhelyhez. Ez magában foglalja a kártevő szoftverek és más potenciálisan csökkenthetik munkahelye vagy az ügyfelek tartalmat.
+Közös hozzáférésű jogosultságkód kapcsolatos további információkért lásd: [a közös hozzáférésű jogosultságkódot](../storage/common/storage-dotnet-shared-access-signature-part-1.md). 
 
-Továbbra is szükségük van egy módszerre, hozzáférést biztosít a tároló objektumok. Részletesebb hozzáférést kihasználhatja az [közös hozzáférésű Jogosultságkód](../storage/common/storage-dotnet-shared-access-signature-part-1.md) (SAS). A SAS lehetővé teszi, hogy egy előre meghatározott időtartam és a különleges engedélyekkel rendelkező megosztott a tároló az adott objektumaiban. Egy közös hozzáférésű Jogosultságkód adhatók meg:
+## <a name="use-role-based-access-control"></a>Szerepköralapú hozzáférés-vezérlés alkalmazása
+Hozzáférés kezelése egy másik módja [szerepköralapú hozzáférés-vezérlés](../role-based-access-control/overview.md) (RBAC). Az RBAC, kifejezetten szükségük van, a pontos engedélyeket ad az alkalmazottak az alapján kell tudnia és a legalacsonyabb jogosultsági biztonsági alapelveket. Túl sok engedély egy fiókot a támadók tehetők közzé. Túl kevés engedélyeket, az azt jelenti, hogy az alkalmazottak nem munkavégzéséhez hatékony. Az RBAC lehetővé teszi, hogy oldja meg a problémát azzal részletes hozzáférés-vezérlést az Azure-hoz. Ez elengedhetetlen, szervezetek által adatok elérésére vonatkozó biztonsági szabályzatok kikényszerítéséhez.
 
-- A keresztül, amely a SAS érvényességi időtartama, beleértve a kezdési idő és a lejárati időpont.
-- A biztonsági Társítások engedélyekre. Például a blob SAS előfordulhat, hogy adjon egy felhasználó olvasási és írási engedéllyel, hogy a blob, de nem törli az engedélyeket.
-- Nem kötelező IP-cím vagy az IP-címek tartománya, amelyből Azure Storage a SAS fogad el. Például megadhatja egy adott IP-címek a szervezethez tartozó. Ez lehetővé teszi a biztonsági Társítások biztonsági egy másik mérték.
-- A protokoll, amelyben Azure Storage a SAS fogad el. Ez nem kötelező paraméter használatával korlátozza a hozzáférést az ügyfelek HTTPS-kapcsolaton keresztül.
+Az Azure beépített RBAC-szerepkörök használatával jogosultságok hozzárendelése a felhasználók számára. A felhő üzemeltetői, amely a storage-fiókok és a klasszikus tárfiókok kezelését klasszikus Tárfiók-közreműködő szerepkörrel kell például használja a Tárfiók-közreműködő. A felhő üzemeltetői igénylő kezelése virtuális gépek, de nem a virtuális hálózat vagy a storage-fiókot, amelyhez csatlakoznak a virtuális gépek Közreműködője szerepkörhöz felveheti őket.
 
-SAS lehetővé teszi, hogy azt nem átruházása a Tárfiók kulcsait a kívánt tartalmak megosztása. Mindig az alkalmazásban használt SAS módja a biztonságos a tárolási erőforrások megosztása a tárfiók kulcsait veszélyeztetése nélkül.
+Szervezetek számára, amelyek nem tesszük kötelezővé a hozzáférés-vezérlés a képességek, például az RBAC használatával is lehet jogosultságot ad a felhasználók számára a szükségesnél több jogosultsággal. Ez vezethet a biztonsági adatokat azáltal, hogy egyes felhasználók nem rendelkeznek az elsőként adatokhoz való hozzáférést.
 
-További tudnivalókért lásd: [megosztott hozzáférési aláírásokkal használatával](../storage/common/storage-dotnet-shared-access-signature-part-1.md) (SAS). Az esetleges kockázatokat és javaslatok a kockázatok csökkentése érdekében kapcsolatos további információkért lásd: [ajánlott eljárásokat, amikor a SAS használatával](../storage/common/storage-dotnet-shared-access-signature-part-1.md).
+További információ az RBAC lásd:
 
-### <a name="use-role-based-access-control"></a>Szerepköralapú hozzáférés-vezérlés használata
+- [Hozzáférés kezelése az RBAC és az Azure Portal használatával](../role-based-access-control/role-assignments-portal.md)
+- [Az Azure-erőforrások beépített szerepkörök](../role-based-access-control/built-in-roles.md)
+- [Biztonsági útmutató az Azure Storage-hoz](../storage/common/storage-security-guide.md) 
 
-Korábban tárgyalt közös hozzáférésű Jogosultságkód (SAS) használatával a tárfiókban lévő objektumokhoz korlátozott hozzáférés biztosítása más ügyfelek számára anélkül, hogy a fiók tárfiók kulcsára. Egyes esetekben a tárfiók egy adott művelethez kapcsolódó kockázatokat járó SAS előnyeit. Egyes esetekben is egyszerűbb, egyéb módon kezelésére.
+## <a name="use-client-side-encryption-for-high-value-data"></a>Ügyféloldali titkosítás értékes adatok használata
+Ügyféloldali titkosítás lehetővé teszi, hogy programozott módon titkosíthatóak, mielőtt feltöltené az Azure Storage az átvitt adatokat, és programozott módon a beolvasása, az adatok visszafejtéséhez. Ez az átvitt adatok titkosítását biztosítja, de az inaktív adatok titkosítását is biztosít. Ügyféloldali titkosítás a legbiztonságosabb módszer az adatok titkosításához, de ehhez szükség szoftveres módosítja az alkalmazást, és kulcskezelés folyamatok vezetnek be.
 
-Egy másik módja való hozzáférés kezelése [átruházásához hozzáférés-vezérlés](../role-based-access-control/overview.md) (RBAC). Az RBAC, van szükségük, a pontos engedélyeket ad az alkalmazottak a fókusz alapján a szükséges mértékű ismeretek és a legalacsonyabb jogosultsági biztonsági alapelveket. Túl sok engedélyeket is elérhetővé teheti a támadásokkal fiókkal. Túl kevés engedélyek, az azt jelenti, hogy az alkalmazottak nem munkavégzéséhez hatékony. Az RBAC segít a részletes hozzáféréskezelést az Azure felajánlásával oldja meg a problémát. Ez elengedhetetlen a szervezeteknek, amelyek az adatok biztonsági házirendek kikényszerítéséhez.
+Ügyféloldali titkosítás lehetővé teszi egyetlen szabályozhatják a titkosítási kulcsokat. Ön hozza létre, és a saját titkosítási kulcsok kezeléséhez. Ahol az Azure storage ügyféloldali kódtárának kulcsot generál egy tartalomtitkosító (CEK), amely ezt követően (titkosítva) használatával a kulcstitkosítási kulcs-(KEK)-boríték módszer azt használja. A KEK kulcsazonosítójával azonosíthatók és aszimmetrikus kulcspárt alkotnak, vagy egy szimmetrikus kulcsot és is kezelhetők helyileg vagy tárolt [Azure Key Vault](../key-vault/key-vault-whatis.md).
 
-Kihasználhatja a beépített RBAC-szerepkörök felhasználók jogosultságok hozzárendelése az Azure-ban. Fontolja meg a felhő üzemeltetői az, hogy a storage-fiókok és kezelheti a klasszikus tárfiókokba klasszikus tárolási fiók közreműködői szerepkört kell tárolási fiók közreműködői használatát. A felhő üzemeltetői számára, amelyeknek szükségük van az kezelheti a virtuális gépek, de nem a virtuális hálózati vagy tárolási fiókot, amelyhez csatlakoznak, fontolja meg azokat a virtuális gép közreműködő szerepkört.
+Ügyféloldali titkosítás a Java és a storage .NET-ügyfélkönyvtárak be van építve. Lásd: [ügyféloldali titkosítás és a Microsoft Azure Storage for Azure Key Vault](../storage/storage-client-side-encryption.md) ügyfélalkalmazások belüli titkosítását és generálása és a saját titkosítási kulcsok kezelése kapcsolatos információkat.
 
-A szervezeteknek, amelyek kényszeríti ki a hozzáférés-vezérlés képességeinek például RBAC által előfordulhat, hogy kell jogosultságot ad mint azok a felhasználók számára szükséges további engedélyekkel. Ez azzal, hogy a felhasználók adatokat először nem rendelkeznek hozzáféréssel lehetővé adatok biztonsági sérülés vezethet.
-
-További információt az RBAC lásd:
-
-- [Azure szerepköralapú hozzáférés-vezérlés](../role-based-access-control/role-assignments-portal.md)
-- [Az Azure szerepköralapú hozzáférés-vezérlés beépített szerepkörök](../role-based-access-control/built-in-roles.md)
-- [Az Azure Storage biztonsági útmutató](../storage/common/storage-security-guide.md) biztonságossá tétele az RBAC a tárfiók a részletek
-
-## <a name="storage-encryption"></a>Storage-titkosítás
-
-### <a name="use-client-side-encryption-for-high-value-data"></a>Ügyféloldali titkosítás használata értékes adatok
-
-Ügyféloldali titkosítás segítségével szoftveresen fejteni az adatokat, amikor fogadása a tárolási és programozott módon titkosítja az adatokat átvitel közben Azure Storage feltöltés előtt.  Ez az átvitel során adatok titkosítását biztosítja, de emellett biztosítja az inaktív adatok titkosítását.  Ügyféloldali titkosítás a legbiztonságosabb módszer titkosítja az adatokat, de azt kell programozott módosítja az alkalmazás és kulcskezelés folyamatok vezetnek be.
-
-Ügyféloldali titkosítás is lehetővé teszi a titkosítási kulcsok kizárólagos hozzáféréssel rendelkeznek.  Ön hozza létre, és a saját titkosítási kulcsok kezeléséhez.  Ügyféloldali titkosítás használ egy boríték technika állít elő, ha az Azure storage ügyféloldali kódtár a tartalom titkosítási kulcsot (CEK), ezt követően (titkosított) (KEK-) kulcs titkosítási kulcs használatával. A KEK kulcsazonosítójával azonosíthatók és aszimmetrikus kulcspár, vagy egy szimmetrikus kulcsot és is kezelhetők helyileg vagy tárolt [Azure Key Vault](../key-vault/key-vault-whatis.md).
-
-Ügyféloldali titkosítás a Java és a .NET-storage ügyfélkódtáraival van beépítve.  Lásd: [ügyféloldali titkosítás és a Microsoft Azure tárolás az Azure Key Vault](../storage/storage-client-side-encryption.md) lévő adatok ügyfélalkalmazásokon belüli titkosítását és létrehozása és kezelése a saját titkosítási kulccsal.
-
-### <a name="storage-service-encryption"></a>Storage Service Encryption
-
-Ha [Storage szolgáltatás titkosítási](../storage/storage-service-encryption.md) a File storage használata engedélyezett, az adatok titkosítása automatikusan az AES-256 titkosítás használatával. A Microsoft kezeli a titkosítási, visszafejtési és kulcskezelést. Ez a szolgáltatás LRS, GRS és redundancia típus esetében érhető el.
+## <a name="enable-storage-service-encryption-for-data-at-rest"></a>Inaktív adatok a Storage szolgáltatás titkosításának engedélyezése
+Amikor [a Storage Service Encryption](../storage/storage-service-encryption.md) esetében engedélyezve van a File storage, az adatok titkosítása automatikusan az AES-256 titkosítás segítségével. A Microsoft kezeli az összes titkosítási, visszafejtési és kulcskezelési. Ez a funkció az LRS és a GRS redundanciatípus érhető el.
 
 ## <a name="next-steps"></a>További lépések
 
-Ez a cikk bevezetett Azure Storage ajánlott biztonsági eljárások az PaaS webes és mobilalkalmazások védelme gyűjteménye. A PaaS üzemelő példányok biztosításával kapcsolatos további tudnivalókért lásd:
+Ez a cikk mutatta be Azure Storage ajánlott biztonsági eljárások a PaaS webes és mobilalkalmazások védelme gyűjteménye. A PaaS üzemelő példányok védelmével kapcsolatos további tudnivalókért lásd:
 
 - [PaaS-környezetek védelme](security-paas-deployments.md)
-- [A PaaS webes és mobilalkalmazásokhoz, az Azure App Services biztonságossá tétele](security-paas-applications-using-app-services.md)
-- [Az Azure-ban PaaS-adatbázisok védelme](security-paas-applications-using-sql.md)
+- [PaaS web- és mobilalkalmazások az Azure App Services használatával biztonságossá tétele](security-paas-applications-using-app-services.md)
+- [Az Azure PaaS-adatbázisok védelme](security-paas-applications-using-sql.md)

@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: cfc190d862c161783c2dd5fc7f03b7bb1ae6bed9
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: 924da8c92bad1c5345d5d1833723a0c4e8ad7d29
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44381249"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47432664"
 ---
 # <a name="stringcollection-claims-transformations"></a>Publishedresources jogcím-átalakítás
 
@@ -54,7 +54,7 @@ A következő jogcímek átalakítását hozzáadja a **e-mail** takar a **other
 - A bemeneti jogcímek:
     - **gyűjtemény**: ["someone@outlook.com"]
     - **elem**: "admin@contoso.com"
-- Kimeneti jogcímek: admin@contoso.com
+- Kimeneti jogcímek: 
     - **gyűjtemény**: ["someone@outlook.com","admin@contoso.com"]
 
 ## <a name="addparametertostringcollection"></a>AddParameterToStringCollection
@@ -89,7 +89,7 @@ Használja a jogcím-átalakítás karakterlánc-érték hozzáadása egy új va
     - **gyűjtemény**: ["someone@outlook.com"]
 - Bemeneti paraméterek 
     - **elem**: "admin@contoso.com"
-- Kimeneti jogcímek: admin@contoso.com
+- Kimeneti jogcímek:
     - **gyűjtemény**: ["someone@outlook.com","admin@contoso.com"]
 
 ## <a name="getsingleitemfromstringcollection"></a>GetSingleItemFromStringCollection

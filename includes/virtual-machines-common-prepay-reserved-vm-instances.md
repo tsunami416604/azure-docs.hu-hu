@@ -4,12 +4,12 @@ ms.author: yashar
 ms.service: virtual-machines-windows
 ms.topic: include
 ms.date: 09-05-2018
-ms.openlocfilehash: 75e493f6b2e47bf3323df9e52ad3a933a6efbead
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: 065ac0855fc47b23b434287f9f4406bd641f01ae
+ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44058407"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47454552"
 ---
 # <a name="prepay-for-virtual-machines-with-azure-reserved-vm-instances"></a>Fizessen elő az Azure fenntartott VM-példányok a virtuális gépekkel
 
@@ -19,21 +19,22 @@ Megvásárolhatja a fenntartott VM-példány a [az Azure portal](https://portal.
 
 - Meg kell egy tulajdonosi szerepkör legalább egy vállalati vagy használatalapú fizetéses előfizetésre.
 - Vállalati előfizetés esetén foglalás vásárlások engedélyezve kell lennie a [a nagyvállalati szerződések portáljának](https://ea.azure.com).
-- Cloud Solution Provider (CSP) program csak a felügyeleti ügynökök vagy értékesítési ügynökök vásárolhatnak a foglalást.
+- A Cloud Solution Provider (CSP) program csak a felügyeleti ügynökök vagy értékesítési ügynökök is vásárolhatnak foglalást.
 
-## <a name="determine-the-right-vm-size-before-purchase"></a>Határozza meg a megfelelő Virtuálisgép-méret vásárlás előtt
+## <a name="determine-the-right-vm-size-before-you-buy"></a>Határozza meg a megfelelő Virtuálisgép-méret, vásárlás előtt
 
-A mérőszám alkategóriája és a termék mezők a használati adatok nem tesz különbséget a prémium szintű storage, amelyek nem használják a prémium szintű tárolás Virtuálisgép-méretek használata Virtuálisgép-méretek közötti, ezen mező segítségével határozza meg a virtuális gép méretét a foglalásvásárlást vezethet, helytelen Foglalás megvásárlása, és nem ruházzák fel Önt foglalás kedvezményeket. Az alábbi módszerek egyikével határozza meg a megfelelő Virtuálisgép-méret a foglalásvásárlást.
+A mérőszám alkategóriája és a termék mezők a használati adatok nincs megkülönböztetni a premium storage virtuális gépek, amelyek nem használó Virtuálisgép-méretek. Ezek a mezők segítségével állapítja meg, a virtuális gép méretét a Foglalás használandó, ha lehetséges, hogy a megfelelő méretű vásárolni, és nem jelenik meg a foglalási kedvezményt a várt. Az alábbi módszerek egyikével határozható meg, hogy a megfelelő Virtuálisgép-méret a foglalást vásárolhat:
 
-- Tekintse meg a további információ a mező a használati fájlban vagy használati API meghatározni a megfelelő Virtuálisgép-méretet a foglalásvásárlást. Ne használja az értékek mérőszám alkategóriája vagy termék mezők, mivel ezek a mezők nem tesznek különbséget a virtuális gép S, és nem-S verziói között.
-- Pontos, Powershell-lel, Azure Resource Manager virtuális gép mérete információ jelenik meg, vagy a virtuális gép részletei az Azure Portalon.
+- Tekintse meg a további információ a mező a használati fájlban vagy a usage API-t a megfelelő virtuális gép méretének meghatározásához. Az értékeket ne használjon mérőszám alkategóriája vagy termék mezők. Ezek a mezők nincs megkülönböztetni a virtuális gép S és nem-S verziója.
+- Virtuális gép mérete pontos információk Powershell, az Azure Resource Manager használatával, vagy a virtuális gépről részleteinek az Azure Portalon.
 
 Fenntartott VM-példányok néhány kivétellel a legtöbb Virtuálisgép-méretek érhetők el:
 
-- Klasszikus virtuális gépek és Cloud services nem kap a foglalási kedvezményt.
-- Letiltott magos virtuális gépek foglalási kedvezmények nem kap.
-- Következő Virtuálisgép-sorozatok nem kap a Foglalás kedvezmények: A-sorozatú, az Av2 sorozat vagy G-sorozat.
-- Virtuális gépek előzetes verzióban érhető el: bármely Virtuálisgép-sorozat vagy méretet előzetes verzióban érhető el, nem érhetők el a foglalásvásárlást.
+- Foglalási kedvezményt a következő virtuális gépekre nem vonatkozik:
+  - Klasszikus virtuális gépeket és a Cloud services
+  - Korlátozott vCPU-méretek
+  - Virtuálisgép-sorozat: Az a sorozat, az Av2 sorozatú vagy G-sorozat
+  - Virtuális gépek előzetes verzióban érhető el: bármely Virtuálisgép-sorozat vagy -méretet, előzetes verzióként érhető el
 - Felhők: Foglalások nem érhetők el az Azure US Government, Germany és China régióban vásárolható.
 - A kvóta nem elegendő: egy foglalást, ami egy előfizetéshez rendelkeznie kell az új fenntartott példány esetében az előfizetés vCPU-kvóta. Például ha a célként megadott előfizetés kvótája 10 vcpu-k számára a D-sorozat, majd, nem vásárolhat egy foglalást, 11 Standard_D1-példányok. A kvóta ellenőrzése lefoglalási a már üzembe helyezte az előfizetésben található virtuális gépeket tartalmaz. Például ha az előfizetés 10 vcpu-k kvótával rendelkezik a D-sorozat esetében, és üzembe helyezett két standard_D1 példánnyal rendelkezik, majd vásárolhat egy foglalást, ebben az előfizetésben 10 standard_D1-példányokhoz. 
 - Kapacitás korlátozások: ritka esetekben az Azure Virtuálisgép-méretek, egy régióban alacsony kapacitás miatt részhalmazát új lefoglalását, a vásárlás korlátozza.

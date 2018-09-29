@@ -6,14 +6,14 @@ author: sujayt
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 09/14/2018
+ms.date: 09/28/2018
 ms.author: sutalasi
-ms.openlocfilehash: 828e75a61b7f5d6d747b13069d25503b43b65222
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: d276098c951cb26a97906e6ac7e23c0ab2e4d137
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46311933"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47432579"
 ---
 # <a name="replicate-azure-disk-encryption-ade-enabled-virtual-machines-to-another-azure-region"></a>Az Azure disk encryption (ADE) engedélyezve van a virtuális gépek replikálása másik Azure-régióba
 
@@ -122,6 +122,15 @@ A Site Recovery által használt alapértelmezett célbeállítások módosítha
 >Kezdeti replikálás során a állapota eltarthat egy ideig, frissítése, anélkül, hogy folyamatban van. Kattintson a **frissítése** gombra, a legújabb állapotának beolvasása.
 >
 
-# <a name="next-steps"></a>További lépések
+## <a name="update-target-vm-encryption-settings"></a>Cél virtuális gép titkosítási beállításainak frissítése
+Az az alábbi forgatókönyvek esetén meg kell adni a cél virtuális gép titkosítási beállításainak frissítése.
+  - Site recovery-replikációja a virtuális gépen engedélyezve van, és engedélyezve van az Azure Disk Encryption (ADE) a forrásoldali virtuális gép egy későbbi időpontban
+  - Engedélyezve van a virtuális gép Site recovery-replikációja, és a egy későbbi időpontban a lemezének titkosítási kulcsa és/vagy a kulcsalapú titkosítás kulcsa a forrásoldali virtuális gép megváltozott
+
+Használható [a parancsfájl](#copy-ade-keys-to-dr-region-using-powerShell-script) célrégió másolja a titkosítási kulcsokat, és frissítse az titkosítási beállításainak **a Recovery services-tár -> replikált elem -> Tulajdonságok -> Számítás és hálózat.**
+
+![frissítés-ade-beállítások](./media/azure-to-azure-how-to-enable-replication-ade-vms/update-ade-settings.png)
+
+## <a name="next-steps"></a>További lépések
 
 [További](site-recovery-test-failover-to-azure.md) feladatátvételi teszt futtatásáról.

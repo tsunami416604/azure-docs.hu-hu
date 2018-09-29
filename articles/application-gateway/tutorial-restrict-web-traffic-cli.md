@@ -10,12 +10,12 @@ ms.workload: infrastructure-services
 ms.date: 7/14/2018
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 0654ea09fb67eeebed457be26133b80574dd383d
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 92e4f93f3bf384ef8ec75a6f65d49a7b81e0925b
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46952358"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47432324"
 ---
 # <a name="tutorial-enable-web-application-firewall-using-the-azure-cli"></a>Oktatóanyag – Webalkalmazási tűzfal engedélyezése az Azure CLI használatával
 
@@ -73,7 +73,7 @@ az network public-ip create \
 
 ## <a name="create-an-application-gateway-with-a-waf"></a>Alkalmazásátjáró létrehozása webalkalmazási tűzfallal
 
-Az [az network application-gateway create](/cli/azure/network/application-gateway#az-application-gateway-create) paranccsal létrehozhatja a *myAppGateway* nevű alkalmazásátjárót. Amikor létrehoz egy alkalmazásátjárót az Azure CLI használatával, olyan konfigurációs információkat kell megadnia, mint a kapacitás, a termékváltozat és a HTTP-beállítások. Az alkalmazásátjáró a korábban létrehozott *myAGSubnet* alhálózathoz és *myPublicIPSddress* IP-címhez lesz rendelve.
+Az [az network application-gateway create](/cli/azure/network/application-gateway#az-application-gateway-create) paranccsal létrehozhatja a *myAppGateway* nevű alkalmazásátjárót. Amikor létrehoz egy alkalmazásátjárót az Azure CLI használatával, olyan konfigurációs információkat kell megadnia, mint a kapacitás, a termékváltozat és a HTTP-beállítások. Az alkalmazásátjáró a korábban létrehozott *myAGSubnet* alhálózathoz és *myAGPublicIPAddress* IP-címhez lesz rendelve.
 
 ```azurecli-interactive
 az network application-gateway create \

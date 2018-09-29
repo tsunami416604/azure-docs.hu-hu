@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: 8ec0947d041dc0d4f5423a48a443ab2dd86949e2
-ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
+ms.openlocfilehash: ee30ee4fa89ce47e8441845b088919b26ce32b31
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43782535"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47434276"
 ---
 # <a name="password-policies-and-restrictions-in-azure-active-directory"></a>Jelszóházirendek és -korlátozások az Azure Active Directoryban
 
@@ -90,7 +90,7 @@ A következő táblázat ismerteti a rendelkezésre álló jelszó szabályzatbe
 
 | Tulajdonság | Követelmények |
 | --- | --- |
-| Karakterek használhatók |<ul><li>A – Z</li><li>a – z</li><li>0 – 9</li> <li>@ # $ % ^ & * - _ ! + = [ ] { } &#124; \ : ‘ , . ? / ` ~ “ ( ) ;</li></ul> |
+| Karakterek használhatók |<ul><li>A – Z</li><li>a – z</li><li>0 – 9</li> <li>@ # $ % ^ & * - _ ! + = [ ] { } &#124; \ : ‘ , . ? / ` ~ " ( ) ;</li></ul> |
 | Karakterek nem használhatók |<ul><li>Unicode-karaktereket.</li><li>Tárolóhelyek.</li><li> Csak az erős jelszavak</li></ul> |
 | Jelszó-korlátozások |<ul><li>Legalább 8 karakter és legfeljebb 16 karakter.</li><li>Csak az erős jelszavak: a következő három közül négy igényel:<ul><li>Kisbetűs karaktert.</li><li>Nagybetűs karaktereket.</li><li>Számok (0 – 9).</li><li>A szimbólumok (lásd az előző Jelszó korlátozásai).</li></ul></li></ul> |
 | Jelszó lejárati időtartama |<ul><li>Alapértelmezett érték: **90** nap.</li><li>Az érték konfigurálható használatával a `Set-MsolPasswordPolicy` az Azure Active Directory modul a Windows PowerShell parancsmagot.</li></ul> |

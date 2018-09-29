@@ -9,12 +9,12 @@ ms.component: speech-service
 ms.topic: article
 ms.date: 04/28/2018
 ms.author: v-jerkin
-ms.openlocfilehash: 3559a25f3073f88e99379e98bc4562209b0c0825
-ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
+ms.openlocfilehash: f80c0f3cdc114b53c002266820e8d9b8773acc5d
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42108444"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47432189"
 ---
 # <a name="about-the-speech-translation-api"></a>Tudnivalók a beszédalapú fordítási API
 
@@ -30,9 +30,9 @@ A Speech Translation API, melyek különböző Microsoft-termékek és szolgált
 
 ## <a name="about-the-technology"></a>A technológiával kapcsolatos
 
-Az alapul szolgáló Microsoft fordítási motor két többféle módon is: statisztikai gépi fordítási (SMT) és a Neurális gépi fordítás (NMT). Az utóbbi, mesterséges intelligenciát használó megközelítést alkalmazó Neurális hálózatok, a gépi fordítás korszerűbb módja. NMT jobb fordítások biztosítja – nem csupán pontosabb, de is több fluent és természetes. A kulcs a rugalmasság oka, hogy használja-e NMT mondatok teljes kontextusában szó lefordítandó.
+Az alapul szolgáló Microsoft fordítási motor két többféle módon is: statisztikai gépi fordítási (SMT) és a Neurális gépi fordítás (NMT). Az utóbbi, mesterséges intelligenciát használó megközelítést alkalmazó Neurális hálózatok, a gépi fordítás korszerűbb módja. NMT jobb fordítások biztosítja – nem csupán pontosabb, de is több fluent és természetes. Ez a gördülékenység elsősorban annak köszönhető, hogy az NMT a mondat teljes kontextusát használja a szavak lefordításához.
 
-Jelenleg Microsoft lett migrálva, NMT a legnépszerűbb nyelvek SMT alkalmazó csak a kevésbé használt nyelvet. Az összes [speech tolmácsolás elérhető nyelvek](supported-languages.md#speech-translation) NMT működteti. Hang-szöveg transzformációs fordítási attól függően, a nyelv pár SMT vagy NMT használhatja. A Célnyelv NMT által támogatott, ha a teljes fordítás, NMT-alapú. A Célnyelv NMT által nem támogatott, ha a fordítás egy hibrid NMT és SMT, mint "kimutatást" angol között a két nyelv használatával.
+Jelenleg Microsoft lett migrálva, NMT a legnépszerűbb nyelvek SMT alkalmazó csak a kevésbé használt nyelvet. Az összes [speech tolmácsolás elérhető nyelvek](language-support.md#speech-translation) NMT működteti. Hang-szöveg transzformációs fordítási attól függően, a nyelv pár SMT vagy NMT használhatja. A Célnyelv NMT által támogatott, ha a teljes fordítás, NMT-alapú. A Célnyelv NMT által nem támogatott, ha a fordítás egy hibrid NMT és SMT, mint "kimutatást" angol között a két nyelv használatával.
 
 A fordítási motor modell közti különbségekkel csomópontokba. A végfelhasználók csak a továbbfejlesztett fordítási minőség, különösen a kínai, japán és arab figyelje meg.
 

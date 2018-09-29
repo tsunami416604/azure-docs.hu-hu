@@ -8,18 +8,18 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 6945e31825af46628c0945cdf579382b20bdcd68
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: da29c6bd8ddc1e2f62a78fb683df5e1784141722
+ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47414014"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47452564"
 ---
 # <a name="custom-datetime-path-patterns-for-azure-stream-analytics-blob-storage-output-preview"></a>Egyéni dátum/idő elérésiút-minták az Azure Stream Analytics a blob storage-kimenet (előzetes verzió)
 
 Az Azure Stream Analytics támogatja a blob storage kimeneti fájlelérési útja egyéni dátum és idő formátumú specifikátory. Egyéni dátum/idő elérésiút-minták lehetővé teszik adjon meg egy kimeneti formátum, amely igazodik a Hive-adatfolyam-egyezmények jogosultságot ad az Azure Stream Analytics képes adatokat küldeni az Azure HDInsight és az Azure Databricks a feldolgozás aktiválásához. Egyéni dátum/idő elérésiút-minták egyszerűen valósíthatók meg használatával a `datetime` kulcsszó kimenet, a formátummegadó együtt a blob elérési út előtagja mezőjében. Például: `{datetime:yyyy}`.
 
-Használja ezt a hivatkozást [az Azure Portal](https://ms.portal.azure.com/?Microsoft_Azure_StreamAnalytics_bloboutputcustomdatetimeformats=true) válthat a szolgáltatás azt a jelzőt, amely lehetővé teszi az egyéni dátum/idő elérésiút-minták blob storage-kimenet előzetes verziójára. Ez a funkció a fő portálon hamarosan engedélyezve lesz.
+Használja ezt a hivatkozást [az Azure Portal](https://portal.azure.com/?Microsoft_Azure_StreamAnalytics_bloboutputcustomdatetimeformats=true) válthat a szolgáltatás azt a jelzőt, amely lehetővé teszi az egyéni dátum/idő elérésiút-minták blob storage-kimenet előzetes verziójára. Ez a funkció a fő portálon hamarosan engedélyezve lesz.
 
 ## <a name="supported-tokens"></a>A következő tokenek támogatottak
 

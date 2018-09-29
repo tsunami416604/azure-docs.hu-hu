@@ -10,15 +10,15 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 07/09/2018
 ms.author: diberry
-ms.openlocfilehash: 4141c5aea93b308a7149b91001fbf1c88d629d79
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 4133b7c7c3fabbe92a3208c567d7b4c6c2c27283
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47037983"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47434398"
 ---
 # <a name="keyphrase-entity"></a>keyPhrase entitás
-keyPhrase kulcskifejezéseket különböző kigyűjti az utterance (kifejezés). Nem kell az alkalmazás keyPhrase tartalmazó példa beszédmódok hozzáadása. támogatott keyPhrase entitás [számos országban](luis-supported-languages.md#languages-supported) részeként a [szövegelemzés](../text-analytics/overview.md) funkciókat. 
+keyPhrase kulcskifejezéseket különböző kigyűjti az utterance (kifejezés). Nem kell az alkalmazás keyPhrase tartalmazó példa beszédmódok hozzáadása. támogatott keyPhrase entitás [számos országban](luis-language-support.md#languages-supported) részeként a [szövegelemzés](../text-analytics/overview.md) funkciókat. 
 
 ## <a name="resolution-for-prebuilt-keyphrase-entity"></a>Előre összeállított keyPhrase entitás feloldása
 Az alábbi példa bemutatja a feloldása a **builtin.keyPhrase** entitás.
@@ -49,4 +49,4 @@ Az alábbi példa bemutatja a feloldása a **builtin.keyPhrase** entitás.
 
 ## <a name="next-steps"></a>További lépések
 
-További információ a [százalékos](luis-reference-prebuilt-percentage.md), [szám](luis-reference-prebuilt-number.md), és [kora](luis-reference-prebuilt-age.md) entitásokat. 
+További információ a [százalékos](luis-reference-prebuilt-percentage.md), [szám](luis-reference-prebuilt-number.md), és [kora](luis-reference-prebuilt-age.md) entitásokat.

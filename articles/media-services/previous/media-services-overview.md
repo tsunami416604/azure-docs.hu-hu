@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 10/24/2017
+ms.date: 09/24/2018
 ms.author: juliako;anilmur
-ms.openlocfilehash: d79a8937c0190246218153e42ead74ada619b121
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 65f38ca477cf1a861c1285e6195598be705005d7
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33940863"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47163749"
 ---
 # <a name="azure-media-services-overview"></a>Az Azure Media Services áttekintése 
 
@@ -29,15 +29,7 @@ ms.locfileid: "33940863"
 
 Microsoft Azure Media Services (AMS) egy bővíthető, felhőalapú platform, amely lehetővé teszi a fejlesztők számára méretezhető médiafelügyeleti és -továbbítási alkalmazások létrehozását. A Media Services alapjai a REST API-k, amelyek lehetővé teszik különböző videó- és audiotartalmak feltöltését, tárolását, kódolását és becsomagolását, majd igény szerinti és élő adatfolyamként történő továbbítását különböző ügyfelek részére (például tévékészülékekre, számítógépekre és mobileszközökre).
 
-A Media Services használatával teljes, átfogó munkafolyamatokat hozhat létre. A munkafolyamatok bizonyos részeihez harmadik féltől származó összetevőket is szabadon felhasználhat. Például egy harmadik féltől származó kódolóval végezhet kódolást. Ezután a Media Services használatával intézheti a feltöltést, a védelmet, a csomagolást és a továbbítást.
-
-A tartalmakat továbbíthatja streamként, illetve az ügyfelek igénye szerint is. Emellett a témakör hivatkozásokat is tartalmaz egyéb, kapcsolódó témakörökre.
-
-## <a name="media-services-learning-paths"></a>Media Services képzési tervek
-Az AMS képzési terveket itt tekintheti meg:
-
-* [AMS élő adatfolyam-továbbítási munkafolyamat](https://azure.microsoft.com/documentation/learning-paths/media-services-streaming-live/)
-* [AMS igényalapú streaming-munkafolyamat](https://azure.microsoft.com/documentation/learning-paths/media-services-streaming-on-demand/)
+A Media Services használatával teljes, átfogó munkafolyamatokat hozhat létre. A munkafolyamatok bizonyos részeihez harmadik féltől származó összetevőket is szabadon felhasználhat. Például egy harmadik féltől származó kódolóval végezhet kódolást. Ezután a Media Services használatával intézheti a feltöltést, a védelmet, a csomagolást és a továbbítást. A tartalmakat továbbíthatja streamként, illetve az ügyfelek igénye szerint is. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 

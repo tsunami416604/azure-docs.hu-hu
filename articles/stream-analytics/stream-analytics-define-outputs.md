@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/14/2018
-ms.openlocfilehash: d75a91ea0925ef0860b8e6dee310156bef21a1ba
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.openlocfilehash: e9c09d31af1b6ea214ae2d0fc6fd7399c07fd8c0
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47056821"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47434544"
 ---
 # <a name="understand-outputs-from-azure-stream-analytics"></a>Kimenő adatait az Azure Stream Analytics ismertetése
 Ez a cikk bemutatja a kimenetek elérhető az Azure Stream Analytics-feladat különböző típusú. Kimenetek segítségével tárolhatja, és a Stream Analytics-feladat eredményének mentése. A kimeneti adatokat használja, végezhet további üzleti elemzés és az adattárház az adatokat. 
@@ -71,7 +71,7 @@ Engedély megújítása **leállítása** a feladat > Nyissa meg a Data Lake Sto
 | Adatbázis | Ahol a kimeneti küld az adatbázis neve. |
 | Kiszolgálónév | Az SQL Database-kiszolgáló neve. |
 | Felhasználónév | A felhasználónév, amely hozzáfér a írni az adatbázisba. |
-| Jelszó | A jelszót a databas.e csatlakozni |
+| Jelszó | A jelszó az adatbázishoz való csatlakozáshoz |
 | Tábla | A tábla neve, ahol a kimeneti íródik. A tábla neve a kis-és nagybetűket, és ez a tábla sémája pontosan a kívánt mezőket és azok típusát, a feladat kimenetének által generált egyeznie kell. |
 
 > [!NOTE]
@@ -317,7 +317,7 @@ Az alábbi táblázat ismerteti azokat a kötegelés kimeneti szempontok:
 | Azure Data Lake Store | Lásd: [korlátozza a Data Lake Storage](../azure-subscription-service-limits.md#data-lake-store-limits) | Legfeljebb 4 MB / írási művelet |
 | Azure SQL Database | Max. 10 000 sorosak egyetlen tömeges beszúrás</br>Egyetlen tömeges beszúrás sorosak 100 perc </br>Lásd még: [Azure SQL-korlátozások](../sql-database/sql-database-resource-limits.md) |  Minden batch először tömeges maximális kötegméret együtt, és előfordulhat, hogy ossza fel a batch felét (csak minimális köteg mérete) – Újrapróbálkozást lehetővé tevő hiba esetén az SQL-alapú. |
 | Azure Blob Storage | Lásd: [korlátozza az Azure Storage](../azure-subscription-service-limits.md#storage-limits) | Maximális Blob blokkblob mérete 4 MB</br>Blobok bock maximális száma 50000 |
-| Azure Event Hub   | Egy üzenet 256 KB </br>Lásd még: [korlátozza az Event Hubs](../event-hubs/event-hubs-quotas.md) |    Bemeneti kimeneti particionálás nem igazodnak, ha minden egyes esemény egy EventData külön-külön csomagolni és kötegelt akár a maximális üzenetméret (prémium szintű termékváltozat 1 MB) küldi el. </br></br>  Bemeneti-kimeneti particionálás van igazítva, ha több esemény maximális mérete legfeljebb egy egyetlen EventData elhelyezve, és küldött.    |
+| Azure-eseményközpont   | Egy üzenet 256 KB </br>Lásd még: [korlátozza az Event Hubs](../event-hubs/event-hubs-quotas.md) |    Bemeneti kimeneti particionálás nem igazodnak, ha minden egyes esemény egy EventData külön-külön csomagolni és kötegelt akár a maximális üzenetméret (prémium szintű termékváltozat 1 MB) küldi el. </br></br>  Bemeneti-kimeneti particionálás van igazítva, ha több esemény maximális mérete legfeljebb egy egyetlen EventData elhelyezve, és küldött.    |
 | Power BI | Lásd: [Power BI Rest API-korlátok](https://msdn.microsoft.com/library/dn950053.aspx) |
 | Azure Table Storage | Lásd: [korlátozza az Azure Storage](../azure-subscription-service-limits.md#storage-limits) | Alapértelmezett egyszeri tranzakciónként 100 entitást, és egy kisebb értékre, igény szerint konfigurálható. |
 | Az Azure Service Bus-üzenetsorba   | Egy üzenet 256 KB</br> Lásd még: [korlátozza a Service Bus](../service-bus-messaging/service-bus-quotas.md) | Egy üzenet egyszeri esemény |

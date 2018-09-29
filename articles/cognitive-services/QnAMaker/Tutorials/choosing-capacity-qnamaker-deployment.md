@@ -10,12 +10,12 @@ ms.component: qna-maker
 ms.topic: article
 ms.date: 09/12/2018
 ms.author: tulasim
-ms.openlocfilehash: 3acf7ccd9d8a4091dba8ff0ff8ef53369ea9402d
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 01548cf2de8db8f4dc9984598a5e5544bf97fd49
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47041972"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47432649"
 ---
 # <a name="choosing-capacity-for-your-qna-maker-deployment"></a>A QnA Maker telepítés kapacitás kiválasztása
 
@@ -38,7 +38,7 @@ Az alábbi táblázat néhány általános útmutatást biztosít.
 |                        | A QnA Maker kezelése | App Service | Azure Search | Korlátozások                      |
 | ---------------------- | -------------------- | ----------- | ------------ | -------------------------------- |
 | Kísérletezés        | Ingyenes Termékváltozat             | Ingyenes szint   | Ingyenes szint    | Legfeljebb 2 Tudásbázis, 50 MB-os méret közzététele  |
-| Fejlesztési-tesztelési környezet   | Standard termékváltozat         | Közös      | Alapszintű        | Tudásbázis akár 4, 2 GB méretű közzététele    |
+| Fejlesztési-tesztelési környezet   | Standard termékváltozat         | Közös      | Alapszintű        | Akár 14 Tudásbázis, 2 GB méretű közzététele    |
 | Éles környezetben | Standard termékváltozat         | Alapszintű       | Standard     | Akár 49 Tudásbázis, 25 GB méretű közzététele |
 
 A QnA Maker stack frissítése, lásd: [frissítse a QnA Maker szolgáltatást](../How-To/upgrade-qnamaker-service.md).

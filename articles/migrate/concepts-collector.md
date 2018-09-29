@@ -4,15 +4,15 @@ description: A gyűjtőberendezés az Azure Migrate ismerteti.
 author: snehaamicrosoft
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 09/25/2018
+ms.date: 09/28/2018
 ms.author: snehaa
 services: azure-migrate
-ms.openlocfilehash: 88bc0bdc29d1f578bd0d314c5c7425026dfd2d22
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: b79045e54b9c2ee4846f2216704a419e0ff85501
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47160878"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47434432"
 ---
 # <a name="about-the-collector-appliance"></a>A gyűjtőberendezés kapcsolatban
 
@@ -28,13 +28,13 @@ A gyűjtőberendezés egy OVF-sablon használatával telepít:
 - Az OVF-sablon letöltése az Azure Migrate-projektet az Azure Portalon. A letöltött fájl importálása a vCenter Serverhez, a virtuális gép gyűjtőberendezés beállításához.
 - Az OVF, a VMware 4 mag, 8 GB RAM és a egy lemezt 80 GB-os virtuális gép beállítása. Az operációs rendszer Windows Server 2012 R2 (64 bites).
 - Futtassa a gyűjtő, amikor egy előfeltétel-ellenőrzések száma futtatásával győződjön meg arról, hogy a gyűjtő csatlakozhat az Azure Migrate.
- 
-- [További](tutorial-assessment-vmware.md#create-the-collector-vm) a gyűjtő létrehozásáról. 
+
+- [További](tutorial-assessment-vmware.md#create-the-collector-vm) a gyűjtő létrehozásáról.
 
 
 ## <a name="collector-prerequisites"></a>Gyűjtő Előfeltételek
 
-A gyűjtő át kell adnia néhány előfeltétel-ellenőrzéseket győződjön meg arról, hogy kapcsolódni az Azure Migrate szolgáltatás az interneten keresztül, és a feltöltés felderített adatokat. 
+A gyűjtő át kell adnia néhány előfeltétel-ellenőrzéseket győződjön meg arról, hogy kapcsolódni az Azure Migrate szolgáltatás az interneten keresztül, és a feltöltés felderített adatokat.
 
 - **Ellenőrizze az internetkapcsolatot**: A gyűjtő csatlakozhat közvetlenül az internethez, vagy egy proxyn keresztül.
     - Az előfeltétel-ellenőrzés ellenőrzi a kapcsolatot a [szükséges és választható URL-címek](#connect-to-urls).
@@ -71,12 +71,12 @@ A gyűjtő át kell adnia néhány előfeltétel-ellenőrzéseket győződjön m
     ![Tanúsítványtár helye](./media/concepts-intercepting-proxy/certificate-store-location.png)
 
     6. Válassza ki **minden tanúsítvány tárolása ebben a tárolóban** > **Tallózás** > **megbízható közzétevők**. Kattintson a **Befejezés** importálhatja a tanúsítványt.
-    
+
     ![Tanúsítványok tárolójában](./media/concepts-intercepting-proxy/certificate-store.png)
 
     7. Ellenőrizze, hogy a tanúsítvány importálása várt módon, és ellenőrizze, hogy az internetes kapcsolat az előfeltétel-ellenőrzés működik, a várt.
 
-    
+
 
 
 ### <a name="connect-to-urls"></a>Csatlakozhat az URL-címek
@@ -87,7 +87,7 @@ A kapcsolat ellenőrzése az URL-listák való csatlakozással érvényességét
 --- | --- | ---
 *.portal.azure.com | Az Azure-szolgáltatás, és időszinkronizálás kapcsolatát ellenőrzi. | Hozzáférés az URL-cím megadása kötelező.<br/><br/> Előfeltételek ellenőrzése sikertelen, ha nincs kapcsolat.
 *.oneget.org:443<br/><br/> *.windows.net:443<br/><br/> *.windowsazure.com:443<br/><br/> *. powershellgallery.com:443<br/><br/> *.msecnd.net:443<br/><br/> *.visualstudio.com:443| Töltse le a vCenter PowerCLI PowerShell modult használja. | Nem kötelező URL-címek elérését.<br/><br/> Előfeltételek ellenőrzése nem sikerül.<br/><br/> A gyűjtő virtuális gép automatikus modul telepítése sikertelen lesz. A modul telepítése manuálisan kell.
- 
+
 
 ### <a name="install-vmware-powercli-module-manually"></a>Telepítse manuálisan a VMware PowerCLI-modul
 
@@ -104,7 +104,7 @@ A gyűjtő a vCenter-kiszolgálóhoz csatlakozik, és lekérdezi a virtuális g�
 - Alapértelmezés szerint csatlakozik a vCenter Server-kiszolgáló teljes Tartománynevét vagy IP-címmel. Ha a vCenter-kiszolgáló egy másik porton figyel, kapcsolódik hozzá a képernyőn *IPAddress:Port_Number* vagy *FQDN:Port_Number*.
 - A tárolási és hálózatkezelési teljesítményadatok gyűjtése, vCenter statisztikai beállításait kiszolgáló kell beállítani a három szintre.
 - Ha szintje alacsonyabb, mint három, felderítésének működése, de a teljesítményadatok nem gyűjthetők. Néhány számlálót gyűjthető, de más nulla értékre lesz beállítva.
-- Nem gyűjti a teljesítményadatokat tárolási és hálózatkezelési, felmérési javaslatok a méretekkel kapcsolatban-e a CPU és memória és a lemez és a hálózati adapterek konfigurációs adatai alapján ügynökteljesítmény-adatokat. 
+- Nem gyűjti a teljesítményadatokat tárolási és hálózatkezelési, felmérési javaslatok a méretekkel kapcsolatban-e a CPU és memória és a lemez és a hálózati adapterek konfigurációs adatai alapján ügynökteljesítmény-adatokat.
 - A gyűjtő rendelkeznie kell egy hálózati üzemel a vCenter-kiszolgálóhoz.
 
 #### <a name="account-permissions"></a>Fiók engedélyei
@@ -125,13 +125,10 @@ A gyűjtő kommunikál a következő ábra és táblázat foglalja össze.
 --- | --- | ---
 Azure Migrate szolgáltatás | 443-as TCP | Gyűjtő SSL 443-as porton keresztül kommunikál az Azure Migrate szolgáltatással.
 vCenter Server | 443-as TCP | A gyűjtő képes kommunikálni a vCenter-kiszolgálóhoz kell lennie.<br/><br/> Alapértelmezés szerint csatlakozik a vCenter a 443-as porton.<br/><br/> Ha a vCenter-kiszolgáló egy másik porton figyel, erre a portra érhető el, a gyűjtő kimenő portként kell lennie.
-RDP | 3389-ES TCP | 
-
-
+RDP | 3389-ES TCP |
 
 
 ## <a name="securing-the-collector-appliance"></a>A gyűjtőberendezés biztonságossá tétele
-
 
 A gyűjtőberendezés biztonságos a következő lépéseket javasoljuk:
 
@@ -141,19 +138,23 @@ A gyűjtőberendezés biztonságos a következő lépéseket javasoljuk:
 - Áttelepítés befejezése után törölje a berendezés-példány.
 - Emellett az áttelepítés után is törölheti a lemezes biztonsági másolat fájljai (vmdk-inak), a lemezeket lehet vCenter hitelesítő adatokat, azokat a gyorsítótárba.
 
-## <a name="updating-the-collector-vm"></a>A gyűjtő virtuális gép frissítése
+## <a name="os-license-in-the-collector-vm"></a>A gyűjtő virtuális gép operációsrendszer-licencek
 
-Azt javasoljuk, hogy fut a gyűjtőberendezés folyamatos Windows-frissítéseket.
+A gyűjtő tartalmaz egy Windows Server 2012 R2 kiértékelési licenc, amely 180 napig érvényes. Ha a gyűjtő virtuális Gépnek a próbaverziós időszak lejár, ajánlott egy új OVA letöltéséhez, és hozzon létre egy új készüléket.
+
+## <a name="updating-the-os-of-the-collector-vm"></a>A gyűjtő virtuális gép operációs rendszerének frissítése
+
+Habár a gyűjtőberendezés egy próbalicencre 180 napig, a készülék automatikus – leállítás elkerüléséhez le a készülék az operációs rendszer folyamatosan frissíteni szeretné.
 
 - Ha a gyűjtő 60 napig nem frissül, elindítja a gép automatikus leállítása.
 - Ha fut a felderítést, a gép nem kapcsolható ki, akkor is, ha a 60 nap. A számítógép ki lesz kapcsolva a felderítés befejeződése után.
-- Ha korábban már használta a gyűjtő legalább 45 napig, javasoljuk, a gép frissítés: minden alkalommal futó Windows Update gondoskodik.
+- Ha korábban már használta a gyűjtő több mint 60 napig, javasoljuk, a gép frissítés: minden alkalommal futó Windows Update gondoskodik.
 
 ## <a name="upgrading-the-collector-appliance-version"></a>A gyűjtő berendezés verziójának frissítése
 
 Az OVA újra letöltése nélkül frissítheti a gyűjtő a legújabb verzióra.
 
-1. Töltse le a [legújabb frissítési csomagot felsorolt](concepts-collector-upgrade.md) 
+1. Töltse le a [legújabb frissítési csomagot felsorolt](concepts-collector-upgrade.md)
 2. Győződjön meg arról, hogy a letöltött gyorsjavítás biztonságos, nyissa meg a rendszergazdai parancsablakot, és futtassa a következő parancsot a ZIP-fájl kivonatának. A létrehozott kivonatnak egyeznie kell az említett verzió elleni kivonat:
 
     ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
@@ -179,8 +180,6 @@ A gyűjtő a vCenter Server kérdezze le a virtuális gépek metaadatait egyszer
 - Biztonsági szint három, miután vesz igénybe naponta létrehozni a teljesítményszámlálók. Ezért javasoljuk, hogy a felderítés futtatásakor egy nap.
 - Teljesítményadatok összegyűjtése egy virtuális géphez, a berendezést a vCenter Serverben tárolt korábbi teljesítményadatok támaszkodik. Teljesítményelőzmények összegyűjti az elmúlt hónapban.
 - Az Azure Migrate minden metrika az átlagos számláló (helyett csúcs számláló) gyűjti.
-     
-
 
 ### <a name="continuous-discovery"></a>Folyamatos felderítése
 
@@ -191,12 +190,12 @@ A gyűjtőberendezés folyamatosan csatlakozik az Azure Migrate-projekt.
 - A berendezés összesíti a 20 másodperces mintákat, és létrehoz egy adatpont 15 percenként.
 - Az adatok létrehozásához a készülék pont csúcsértéke kiválasztja a 20 másodperces mintákat, és elküldi azt az Azure-bA.
 - Folyamatos profilkészítés címen bármikor a gyűjtő is leállíthatja.
-     
+
 > [!NOTE]
 > Folyamatos felderítési funkciója előzetes verzióban érhető el. Ha a vCenter Server statisztikai beállításait a 3. szintre nem, azt javasoljuk, hogy ezt a módszert használja.
 
 
-## <a name="discovery-process"></a>Felderítési folyamat 
+## <a name="discovery-process"></a>Felderítési folyamat
 
 Miután a készülék be van állítva, futtassa a felderítést. Itt látható, hogyan is működik:
 
@@ -208,7 +207,6 @@ Miután a készülék be van állítva, futtassa a felderítést. Itt látható,
 - Virtuális gépeket a felderítésüket, és a metaadatok és a teljesítmény adataikat az Azure-bA küldi el. Ezek a műveletek egy feladat részét képezik.
     - A gyűjtőberendezés kap egy adott Gyűjtőazonosító, amely egy adott gép állandó felderítések között.
     - Egy futó feladat kap egy adott munkamenet-azonosítót. Az azonosító gyűjtemény feladatonként módosítja, és a hibaelhárításhoz használható.
-
 
 ### <a name="collected-metadata"></a>Összegyűjtött metaadatok
 
@@ -223,13 +221,10 @@ A gyűjtőberendezés a következő statikus metaadat-beli virtuális gépek der
 - Memória mérete, a lemezméretek
 - Teljesítményszámlálók a virtuális gép, a lemez és a hálózat.
 
-
-
 #### <a name="performance-counters"></a>Teljesítményszámlálók
 
+- **Felderítés egyszeri felderítés**: amikor a rendszer a felderítés egyszeri felderítés számlálókat gyűjti, vegye figyelembe a következőket:
 
-- **Felderítés egyszeri felderítés**: amikor a rendszer a felderítés egyszeri felderítés számlálókat gyűjti, vegye figyelembe a következőket: 
-        
     - Összegyűjti és elküldi a projekt konfigurációs metaadatok akár 15 percet is igénybe vehet.
     - Konfigurációs adatok begyűjtését követően is igénybe vehet egy órát a portálon érhetők el teljesítményadatok.
     - Miután a metaadatok a portálon, megjelenik a virtuális gépek listája, és elkezdheti a csoportok értékelés létrehozása.
@@ -237,10 +232,8 @@ A gyűjtőberendezés a következő statikus metaadat-beli virtuális gépek der
     - A virtuális gép konfigurációs adatok érhető el egy órán felderítés indítása
     - Teljesítményadatok indítja el, 2 óra után rendelkezésre álló váljon.
     - Után elindítja a felderítést, várjon legalább egy napot a berendezéshez, hogy a profil a környezet értékelés létrehozása előtt.
-    
-   
 
-**A számláló** | **Szint** | **Az eszközszintű szint** | **Értékelés gyakorolt hatás** 
+**A számláló** | **Szint** | **Az eszközszintű szint** | **Értékelés gyakorolt hatás**
 --- | --- | --- | ---
 CPU.Usage.average | 1 | NA | Javasolt Virtuálisgép-méretet és költség  
 mem.usage.average | 1 | NA | Javasolt Virtuálisgép-méretet és költség  
@@ -250,9 +243,6 @@ virtualDisk.numberReadAveraged.average | 1 | 3 |  Kiszámítja a lemez mérete, 
 virtualDisk.numberWriteAveraged.average | 1 | 3 |   Kiszámítja a lemez mérete, a tárolási költségeket, a virtuális gép mérete
 NET.Received.average | 2 | 3 |  Kiszámítja a virtuális gép mérete és a hálózati költség                        |
 NET.transmitted.average | 2 | 3 | Kiszámítja a virtuális gép mérete és a hálózati költség    
-
-
-
 
 ## <a name="next-steps"></a>További lépések
 

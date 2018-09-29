@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: a13cb0360a33c301129f2975ce67580204602d9a
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: 8ff418c24e9171d452bca873c4b8f66ada2adb7c
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44381298"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47431326"
 ---
 # <a name="general-claims-transformations"></a>Általános jogcímek átalakítása
 
@@ -61,7 +61,7 @@ A megadott egyszerű szöveges a védőérték és a titkos kulcs kivonata.
 | Bemeneti jogcím | egyszerű szöveg | sztring | A bemeneti jogcímek titkosítását |
 | Bemeneti jogcím | Salt érték | sztring | A védőérték paramétert. Létrehozhat egy véletlenszerű értéket használ `CreateRandomString` jogcím-átalakítás. |
 | InputParameter | randomizerSecret | sztring | Egy meglévő Azure AD B2C mutat **Szabályzatbejegyzések**. Hozzon létre egy újat: válassza ki az Azure AD B2C-Bérlőben **B2C-beállítások > identitás-kezelőfelületi keretrendszer**. Válassza ki **Szabályzatbejegyzések** a elérhető a bérlői kulcsok megtekintéséhez. Válassza a **Hozzáadás** lehetőséget. A **beállítások**válassza **manuális**. Adjon meg egy nevet (a B2C_1A_ automatikusan hozzáadhatók előtag.). Titkos kód mezőben adja meg minden olyan titkos kulcsot szeretné használni, például a 1234567890. A kulcshasználat, válassza ki a **titkos**. Kattintson a **Létrehozás** gombra. |
-| kimeneti jogcím | kimeneti jogcím | logikai | Az a jogcím-átalakítás után előállított takar meghívása. A konfigurált jogcímszabályok a `plaintext` bemeneti jogcím. |
+| kimeneti jogcím | Ujjlenyomat | sztring | Az a jogcím-átalakítás után előállított takar meghívása. A konfigurált jogcímszabályok a `plaintext` bemeneti jogcím. |
 
 ```XML
 <ClaimsTransformation Id="HashPasswordWithEmail" TransformationMethod="Hash">

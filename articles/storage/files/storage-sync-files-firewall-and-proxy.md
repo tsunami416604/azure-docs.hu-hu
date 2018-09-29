@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 08/08/2018
 ms.author: fauhse
 ms.component: files
-ms.openlocfilehash: b32f388974f03ece206ae4eaece39f1a242d31e2
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 25bec4bdbae5b206d23fa300f139f55f86b8167e
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47408540"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47434381"
 ---
 # <a name="azure-file-sync-proxy-and-firewall-settings"></a>Az Azure File Sync proxy- és tűzfalbeállításai
 Az Azure File Sync kapcsolódik a helyszíni kiszolgálók az Azure Files többhelyes szinkronizálás és a felhőbeli rétegezés szolgáltatások engedélyezése. Ezért egy helyszíni kiszolgálón kapcsolódnia kell az internethez. Egy rendszergazdának kell döntenie, hogy a legjobb útvonalat a közvetítőn keresztül az Azure cloud services-kiszolgáló.
@@ -100,7 +100,7 @@ A következő táblázat ismerteti a szükséges tartományok kommunikációhoz:
 | **Azure Active Directory** | https://graph.windows.net/ | Az Azure File Sync üzembe helyezésének részeként egy egyszerű szolgáltatást az előfizetéshez tartozó Azure Active Directoryban jön létre. Az URL-címet, amely használható. Ez egyszerű delegálása az Azure File Sync szolgáltatás jogokat minimális számú szolgál. A felhasználó az Azure File Sync kezdeti telepítés végrehajtása egy hitelesített felhasználó az előfizetés-tulajdonosi jogosultságokkal kell lennie. |
 | **Azure Storage** | &ast;.core.windows.net | Amikor a rendszer letölti a fájlt, majd a kiszolgáló hajt végre adott adatáthelyezés hatékonyabban Ha közvetlenül az Azure-fájlmegosztást a Storage-fiókban folytatott kommunikációra. A kiszolgáló rendelkezik egy SAS-kulcs, amely csak lehetővé teszi a célzott fájl megosztás eléréséhez. |
 | **Azure File Sync** | &ast;.one.microsoft.com | Kezdeti kiszolgálót a regisztrációt követően a kiszolgáló egy regionális az Azure File Sync szolgáltatás példány URL-címet kap az adott régióban. A kiszolgáló URL-címe segítségével hatékonyan és közvetlenül kommunikálni a példány, ahogy szinkronizál kezelése. |
-| **A Microsoft nyilvános kulcsokra épülő infrastruktúra** | http://www.microsoft.com/pki/mscorp  http://ocsp.msocsp.com | Az Azure File Sync ügynök telepítése után a nyilvános kulcsokra épülő infrastruktúra URL-cím segítségével töltse le az Azure File Sync szolgáltatással folytatott kommunikációhoz szükséges köztes tanúsítványok. Az OCSP URL-cím segítségével a tanúsítvány állapotának ellenőrzéséhez. |
+| **A Microsoft nyilvános kulcsokra épülő infrastruktúra** | http://www.microsoft.com/pki/mscorp  http://ocsp.msocsp.com | Az Azure File Sync ügynök telepítése után a nyilvános kulcsokra épülő infrastruktúra URL-cím segítségével kommunikálni az Azure File Sync szolgáltatás és az Azure-fájlmegosztás szükséges köztes tanúsítványok letöltése. Az OCSP URL-cím segítségével a tanúsítvány állapotának ellenőrzéséhez. |
 
 > [!Important]
 > Ha engedélyezi a forgalmat &ast;. one.microsoft.com, nem csak a szinkronizálási szolgáltatás forgalmát lehetőség a kiszolgálóról. Nincsenek altartományok alatt elérhető számos további Microsoft-szolgáltatások.

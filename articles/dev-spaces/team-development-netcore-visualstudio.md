@@ -13,12 +13,12 @@ ms.topic: tutorial
 description: Gyors Kubernetes-fejlesztés tárolókkal és mikroszolgáltatásokkal az Azure-ban
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, tárolók
 manager: douge
-ms.openlocfilehash: 97b052833946b373e2333491c4b516b3a088130b
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: 2a04b80e728ecf0af39cb46041a005a86ea1abec
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44158466"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47406107"
 ---
 # <a name="team-development-with-azure-dev-spaces"></a>Csoportos fejlesztés az Azure Dev Spaces használatával
 
@@ -163,6 +163,23 @@ A `mywebapi` új verzióját a `webfrontend`-del együtt úgy tudja tesztelni, h
 
 Most adja hozzá a „scott.s” kifejezést az URL-címhez. amelynek így kell kinéznie: http://scott.s.webfrontend.123456abcdef.eastus.aksapp.io. Majd frissítse a böngészőoldalt. A `mywebapi` projektben beállított töréspontnak aktiválódnia kell. Nyomja le az F5-öt a folytatáshoz. A böngészőben megjelenik az új üzenet: „Hello from webfrontend and mywebapi now says something new.” Ennek az az oka, hogy a `mywebapi` frissített kódjának elérési útvonala a `default/scott` téren van futtatva.
 
-[!INCLUDE [](includes/well-done.md)]
+### <a name="well-done"></a>Remek!
+Elvégezte az első lépéseket ismertető útmutatót! Megismerte, hogyan végezheti el az alábbi műveleteket:
 
-[!INCLUDE [](includes/clean-up.md)]
+> [!div class="checklist"]
+> * Az Azure Dev Spaces beállítása Managed Kubernetes-fürttel az Azure-ban.
+> * Iteratív kódfejlesztés a tárolókban.
+> * Két külön szolgáltatás egymástól függetlenül történő fejlesztése, és a használt Kubernetes DNS-szolgáltatás észlelésével hívásindítás egy másik szolgáltatásba.
+> * A kód hatékony fejlesztése és tesztelése, csapatkörnyezetben.
+
+Most, hogy megismerte az Azure Dev Spacest, [megoszthatja a létrehozott Dev Spaces-teret egy csapattaggal](how-to/share-dev-spaces.md), és megmutathatja neki, milyen egyszerű az együttműködés.
+
+## <a name="clean-up"></a>A fölöslegessé vált elemek eltávolítása
+Ha egy fürt egy Azure Dev Spaces-példányát teljesen, az összes Dev Spaces-térrel és benne futó szolgáltatással együtt törölni szeretné, használja az `az aks remove-dev-spaces` parancsot. Tartsa észben, hogy ez a művelet nem vonható vissza. Újra hozzáadhat Azure Dev Spaces-támogatást a fürtön, de azt a rendszer úgy kezeli, mintha elölről kezdené a folyamatot. A régi szolgáltatások és a tárolóhelyek nem állíthatók vissza.
+
+Az alábbi példa listázza az aktív előfizetése Azure Dev Spaces-vezérlőit, majd törli a myaks-rg erőforráscsoportban lévő myaks AKS-fürthöz társított Azure Dev Spaces-vezérlőt.
+
+```cmd
+    azds controller list
+    az aks remove-dev-spaces --name myaks --resource-group myaks-rg
+```

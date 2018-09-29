@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/25/2018
 ms.author: tomfitz
-ms.openlocfilehash: cf7d3df6d2e419a700b0be74da3fe2edc5ac24e1
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: 33d5560f2bfef04678cf7a2236fd920385d68aac
+ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47393281"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47452156"
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>Erőforrások áthelyezése új erőforráscsoportba vagy előfizetésbe
 
@@ -196,6 +196,7 @@ Az alábbi lista egy új erőforráscsoportot és egy előfizetést is áthelyez
 * DNS
 * Event Grid
 * Event Hubs
+* Bejárati ajtajának
 * Tekintse meg a HDInsight-fürtök – [HDInsight korlátozások](#hdinsight-limitations)
 * Iot Central
 * IoT Hubok
@@ -207,7 +208,6 @@ Az alábbi lista egy új erőforráscsoportot és egy előfizetést is áthelyez
 * Tekintse meg a Managed Disks - [megkötések virtuális gépek korlátozásai](#virtual-machines-limitations)
 * Felügyelt identitás - felhasználó által hozzárendelt
 * Media Services
-* Mobile Engagement
 * Notification Hubs
 * Operational Insights
 * Operations Management
@@ -267,37 +267,39 @@ Az alábbi lista nem lehet áthelyezni egy új erőforráscsoportot és egy elő
 
 ## <a name="virtual-machines-limitations"></a>Virtuális gépek korlátozások
 
-2018. szeptember 24 áthelyezése a felügyelt lemezek támogatottak. Ez a funkció engedélyezéséhez regisztrálni kell.
+2018. szeptember 24 áthelyezése a felügyelt lemezek támogatottak. 
 
-```azurepowershell-interactive
-Register-AzureRmProviderFeature -FeatureName ManagedResourcesMove -ProviderNamespace Microsoft.Compute
-```
+1. Ez a funkció engedélyezéséhez regisztrálni kell.
 
-```azurecli-interactive
-az feature register --namespace Microsoft.Compute --name ManagedResourcesMove
-```
+  ```azurepowershell-interactive
+  Register-AzureRmProviderFeature -FeatureName ManagedResourcesMove -ProviderNamespace Microsoft.Compute
+  ```
 
-A regisztrációs kérés kezdetben adja vissza egy állapotát `Registering`. Ellenőrizheti, hogy a jelenlegi állapot:
+  ```azurecli-interactive
+  az feature register --namespace Microsoft.Compute --name ManagedResourcesMove
+  ```
 
-```azurepowershell-interactive
-Get-AzureRmProviderFeature -FeatureName ManagedResourcesMove -ProviderNamespace Microsoft.Compute
-```
+1. A regisztrációs kérés kezdetben adja vissza egy állapotát `Registering`. Ellenőrizheti, hogy a jelenlegi állapot:
 
-```azurecli-interactive
-az feature show --namespace Microsoft.Compute --name ManagedResourcesMove
-```
+  ```azurepowershell-interactive
+  Get-AzureRmProviderFeature -FeatureName ManagedResourcesMove -ProviderNamespace Microsoft.Compute
+  ```
 
-Várjon néhány percet, módosítsa az állapot `Registered`.
+  ```azurecli-interactive
+  az feature show --namespace Microsoft.Compute --name ManagedResourcesMove
+  ```
 
-A funkció regisztrálása után regisztrálja a `Microsoft.Compute` erőforrás-szolgáltató. Hajtsa végre ezt a lépést, akkor is, ha az erőforrás-szolgáltató korábban regisztrált.
+1. Várjon néhány percet, módosítsa az állapot `Registered`.
 
-```azurepowershell-interactive
-Register-AzureRmResourceProvider -ProviderNamespace Microsoft.Compute
-```
+1. A funkció regisztrálása után regisztrálja a `Microsoft.Compute` erőforrás-szolgáltató. Hajtsa végre ezt a lépést, akkor is, ha az erőforrás-szolgáltató korábban regisztrált.
 
-```azurecli-interactive
-az provider register --namespace Microsoft.Compute
-```
+  ```azurepowershell-interactive
+  Register-AzureRmResourceProvider -ProviderNamespace Microsoft.Compute
+  ```
+
+  ```azurecli-interactive
+  az provider register --namespace Microsoft.Compute
+  ```
 
 Ez a támogatás azt jelenti, hogy is áthelyezheti:
 

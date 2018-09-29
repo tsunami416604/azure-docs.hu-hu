@@ -1,6 +1,6 @@
 ---
-title: Az Azure Resource Manager sablonfüggvényei - karakterlánc |} Microsoft Docs
-description: Az Azure Resource Manager-sablonok segítségével karakterláncok használata funkcióit ismerteti.
+title: Az Azure Resource Manager-sablonfüggvények - karakterlánc |} A Microsoft Docs
+description: A functions az Azure Resource Manager-sablon használatával munka karakterláncokkal ismerteti.
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
@@ -12,28 +12,28 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/05/2017
+ms.date: 09/28/2018
 ms.author: tomfitz
-ms.openlocfilehash: 33a49a9fb66240382b0bb4e0bedbb07b8d78a763
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 7e0578572de53fefddb88e163520d2bf5f580012
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34360359"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47434313"
 ---
-# <a name="string-functions-for-azure-resource-manager-templates"></a>Az Azure Resource Manager sablonokhoz karakterlánc
+# <a name="string-functions-for-azure-resource-manager-templates"></a>Karakterlánc-függvények az Azure Resource Manager-sablonok
 
-Erőforrás-kezelő a következő funkciókat nyújt karakterláncok használata.
+A Resource Manager az alábbi funkciókat biztosít a karakterláncokkal való munka:
 
 * [base64](#base64)
 * [base64ToJson](#base64tojson)
 * [base64ToString](#base64tostring)
 * [concat](#concat)
-* [tartalmazza](#contains)
+* [tartalmaz](#contains)
 * [dataUri](#datauri)
 * [dataUriToString](#datauritostring)
 * [üres](#empty)
-* [megadott módon végződő](#endswith)
+* [endsWith](#endswith)
 * [első](#first)
 * [guid](#guid)
 * [indexOf](#indexof)
@@ -44,7 +44,7 @@ Erőforrás-kezelő a következő funkciókat nyújt karakterláncok használata
 * [replace](#replace)
 * [skip](#skip)
 * [felosztás](#split)
-* [startswith elemnek](resource-group-template-functions-string.md#startswith)
+* [startsWith](resource-group-template-functions-string.md#startswith)
 * [string](#string)
 * [substring](#substring)
 * [hajtsa végre a megfelelő](#take)
@@ -58,24 +58,24 @@ Erőforrás-kezelő a következő funkciókat nyújt karakterláncok használata
 
 <a id="base64" />
 
-## <a name="base64"></a>a Base64
+## <a name="base64"></a>Base64
 `base64(inputString)`
 
-A bemeneti karakterlánc a base64 alakot adja vissza.
+A bemeneti karakterláncot a base64 kódolású karakterláncként adja vissza.
 
 ### <a name="parameters"></a>Paraméterek
 
 | Paraméter | Szükséges | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| inputString |Igen |karakterlánc |A visszatérési érték, mint a Base64 kódolású megjelenítése. |
+| inputString |Igen |sztring |A visszaadandó értéket, mint a base64-ábrázolásból. |
 
-### <a name="return-value"></a>Visszatérési érték
+### <a name="return-value"></a>Vrácená hodnota
 
-A base64 tartalmazó karakterlánc.
+A base64-ábrázolásból tartalmazó karakterlánc.
 
 ### <a name="examples"></a>Példák
 
-A következő [példa sablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/base64.json) a base64 funkció használatát ismerteti.
+A következő [példasablonja](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/base64.json) a Base64 kódolású függvény használatát ismerteti.
 
 ```json
 {
@@ -114,21 +114,21 @@ A következő [példa sablon](https://github.com/Azure/azure-docs-json-samples/b
 }
 ```
 
-Az alapértelmezett értékeit az előző példából kimenete:
+Az alapértelmezett értékeket az előző példa kimenete a következő:
 
 | Name (Név) | Típus | Érték |
 | ---- | ---- | ----- |
-| base64Output | Karakterlánc | b25lLCB0d28sIHRocmVl |
-| toStringOutput | Karakterlánc | egy két há' |
+| base64Output | Sztring | b25lLCB0d28sIHRocmVl |
+| toStringOutput | Sztring | egy két há' |
 | toJsonOutput | Objektum | {"egy": "a", "2": "b"} |
 
-A példa sablon Azure parancssori felülettel történő üzembe helyezéséhez használja:
+Az Azure CLI-vel ebben a példában sablon üzembe helyezéséhez használja:
 
 ```azurecli-interactive
 az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/base64.json
 ```
 
-A példa sablon PowerShell használatával történő üzembe helyezéséhez használja:
+Ez a PowerShell használatával például a sablon üzembe helyezéséhez használja:
 
 ```powershell
 New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/base64.json
@@ -139,21 +139,21 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 ## <a name="base64tojson"></a>base64ToJson
 `base64tojson`
 
-A Base64 kódolású megjelenítése konvertál egy JSON-objektum.
+A base64-ábrázolásból konvertálja JSON-objektum.
 
 ### <a name="parameters"></a>Paraméterek
 
 | Paraméter | Szükséges | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| base64Value |Igen |karakterlánc |A base64 ábrázolását, egy JSON-objektum konvertálása. |
+| base64value tulajdonsága |Igen |sztring |A base64-ábrázolásból átalakítása JSON-objektum. |
 
-### <a name="return-value"></a>Visszatérési érték
+### <a name="return-value"></a>Vrácená hodnota
 
-A JSON-objektumból.
+JSON-objektum.
 
 ### <a name="examples"></a>Példák
 
-A következő [példa sablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/base64.json) konvertálni az base64 értéket a base64ToJson függvényt használja:
+A következő [példasablonja](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/base64.json) base64 érték konvertálása a base64ToJson függvényt használja:
 
 ```json
 {
@@ -192,21 +192,21 @@ A következő [példa sablon](https://github.com/Azure/azure-docs-json-samples/b
 }
 ```
 
-Az alapértelmezett értékeit az előző példából kimenete:
+Az alapértelmezett értékeket az előző példa kimenete a következő:
 
 | Name (Név) | Típus | Érték |
 | ---- | ---- | ----- |
-| base64Output | Karakterlánc | b25lLCB0d28sIHRocmVl |
-| toStringOutput | Karakterlánc | egy két há' |
+| base64Output | Sztring | b25lLCB0d28sIHRocmVl |
+| toStringOutput | Sztring | egy két há' |
 | toJsonOutput | Objektum | {"egy": "a", "2": "b"} |
 
-A példa sablon Azure parancssori felülettel történő üzembe helyezéséhez használja:
+Az Azure CLI-vel ebben a példában sablon üzembe helyezéséhez használja:
 
 ```azurecli-interactive
 az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/base64.json
 ```
 
-A példa sablon PowerShell használatával történő üzembe helyezéséhez használja:
+Ez a PowerShell használatával például a sablon üzembe helyezéséhez használja:
 
 ```powershell
 New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/base64.json
@@ -217,21 +217,21 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 ## <a name="base64tostring"></a>base64ToString
 `base64ToString(base64Value)`
 
-A Base64 kódolású megjelenítése karakterlánccá alakítja át.
+Egy karakterláncot egy base64-ábrázolásból alakítja át.
 
 ### <a name="parameters"></a>Paraméterek
 
 | Paraméter | Szükséges | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| base64Value |Igen |karakterlánc |A base64 ábrázolását karakterlánccá konvertálni. |
+| base64value tulajdonsága |Igen |sztring |A base64-ábrázolásból alakítandó karakterlánc. |
 
-### <a name="return-value"></a>Visszatérési érték
+### <a name="return-value"></a>Vrácená hodnota
 
-A konvertált base64 érték karakterlánc.
+Az átalakított base64 érték karakterlánc.
 
 ### <a name="examples"></a>Példák
 
-A következő [példa sablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/base64.json) konvertálni az base64 értéket a base64ToString függvényt használja:
+A következő [példasablonja](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/base64.json) base64 érték konvertálása a base64ToString függvényt használja:
 
 ```json
 {
@@ -270,21 +270,21 @@ A következő [példa sablon](https://github.com/Azure/azure-docs-json-samples/b
 }
 ```
 
-Az alapértelmezett értékeit az előző példából kimenete:
+Az alapértelmezett értékeket az előző példa kimenete a következő:
 
 | Name (Név) | Típus | Érték |
 | ---- | ---- | ----- |
-| base64Output | Karakterlánc | b25lLCB0d28sIHRocmVl |
-| toStringOutput | Karakterlánc | egy két há' |
+| base64Output | Sztring | b25lLCB0d28sIHRocmVl |
+| toStringOutput | Sztring | egy két há' |
 | toJsonOutput | Objektum | {"egy": "a", "2": "b"} |
 
-A példa sablon Azure parancssori felülettel történő üzembe helyezéséhez használja:
+Az Azure CLI-vel ebben a példában sablon üzembe helyezéséhez használja:
 
 ```azurecli-interactive
 az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/base64.json
 ```
 
-A példa sablon PowerShell használatával történő üzembe helyezéséhez használja:
+Ez a PowerShell használatával például a sablon üzembe helyezéséhez használja:
 
 ```powershell
 New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/base64.json
@@ -301,15 +301,15 @@ Több karakterlánc-értékek egyesíti, és a összefűzött karakterláncot ad
 
 | Paraméter | Szükséges | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| arg1 |Igen |karakterlánc vagy tömb |A kapott első értéke. |
-| További argumentumok |Nem |karakterlánc |További értéket kapott a sorrendben. |
+| arg1 |Igen |karakterlánc- vagy tömb |Összefűzés első értéke. |
+| További argumentumok |Nem |sztring |További értékek összefűzésével sorrendben. |
 
-### <a name="return-value"></a>Visszatérési érték
-A karakterlánc vagy tömb összefűzött.
+### <a name="return-value"></a>Vrácená hodnota
+Egy karakterlánc- vagy összefűzött értékek tömbje.
 
 ### <a name="examples"></a>Példák
 
-A következő [példa sablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/concat-string.json) bemutatja, hogyan kombinálhatja a két karakterlánc-értékeket, és olyan összefűzött karakterláncot adja vissza.
+A következő [példasablonja](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/concat-string.json) bemutatja, hogyan kombinálja két karakterlánc-értékeket és a egy összefűzött karakterláncot ad vissza.
 
 ```json
 {
@@ -331,25 +331,25 @@ A következő [példa sablon](https://github.com/Azure/azure-docs-json-samples/b
 }
 ```
 
-Az alapértelmezett értékeit az előző példából kimenete:
+Az alapértelmezett értékeket az előző példa kimenete a következő:
 
 | Name (Név) | Típus | Érték |
 | ---- | ---- | ----- |
-| concatOutput | Karakterlánc | előtag-5yj4yjf5mbg72 |
+| concatOutput | Sztring | előtag-5yj4yjf5mbg72 |
 
-A példa sablon Azure parancssori felülettel történő üzembe helyezéséhez használja:
+Az Azure CLI-vel ebben a példában sablon üzembe helyezéséhez használja:
 
 ```azurecli-interactive
 az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/concat-string.json
 ```
 
-A példa sablon PowerShell használatával történő üzembe helyezéséhez használja:
+Ez a PowerShell használatával például a sablon üzembe helyezéséhez használja:
 
 ```powershell
 New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/concat-string.json
 ```
 
-A következő [példa sablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/concat-array.json) bemutatja, hogyan kombinálhatja a két tömbnek.
+A következő [példasablonja](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/concat-array.json) bemutatja, hogyan kombinálja két tömb.
 
 ```json
 {
@@ -384,19 +384,19 @@ A következő [példa sablon](https://github.com/Azure/azure-docs-json-samples/b
 }
 ```
 
-Az alapértelmezett értékeit az előző példából kimenete:
+Az alapértelmezett értékeket az előző példa kimenete a következő:
 
 | Name (Név) | Típus | Érték |
 | ---- | ---- | ----- |
-| térjen vissza | Tömb | ["1-1", "1-2", "1-3", "2-1", "2-2", "2-3"] |
+| a visszaadandó | Tömb | ["1-1", "1-2", "1-3", "2-1", "2-2", "2-3"] |
 
-A példa sablon Azure parancssori felülettel történő üzembe helyezéséhez használja:
+Az Azure CLI-vel ebben a példában sablon üzembe helyezéséhez használja:
 
 ```azurecli-interactive
 az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/concat-array.json
 ```
 
-A példa sablon PowerShell használatával történő üzembe helyezéséhez használja:
+Ez a PowerShell használatával például a sablon üzembe helyezéséhez használja:
 
 ```powershell
 New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/concat-array.json
@@ -407,22 +407,22 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 ## <a name="contains"></a>tartalmazza a következőt:
 `contains (container, itemToFind)`
 
-Ellenőrzi, hogy egy tömb értéket tartalmaz, objektum kulcsot tartalmaz, vagy egy karakterláncot egy substring tartalmazza.
+Ellenőrzi, hogy egy tömb értéket tartalmaz, objektum kulcsot tartalmaz, vagy egy karakterlánc részkarakterláncot tartalmaz. Az adatkarakterlánc-összehasonlítás a kis-és nagybetűket. Azonban történő tesztelésekor, ha az objektum tartalmaz egy kulcsot, az összehasonlítást, kis-és nagybetűket.
 
 ### <a name="parameters"></a>Paraméterek
 
 | Paraméter | Szükséges | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| tároló |Igen |a tömb, objektum vagy karakterlánc |Az érték, amely tartalmazza a keresendő érték. |
-| itemToFind |Igen |karakterlánc- vagy int |Az érték kereséséhez. |
+| tároló |Igen |tömb, objektumot vagy karakterlánc |Az érték, amely tartalmazza a keresendő érték. |
+| itemToFind |Igen |karakterlánc- vagy int |Keresendő érték. |
 
-### <a name="return-value"></a>Visszatérési érték
+### <a name="return-value"></a>Vrácená hodnota
 
-**Igaz** Ha az elem található; ellenkező esetben **hamis**.
+**Igaz** , ha az elem nem található; ellenkező esetben **hamis**.
 
 ### <a name="examples"></a>Példák
 
-A következő [példa sablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/contains.json) használata tartalmazza a különböző típusú azt mutatja be:
+A következő [példasablonja](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/contains.json) használata tartalmazza a különböző típusú mutat be:
 
 ```json
 {
@@ -473,24 +473,24 @@ A következő [példa sablon](https://github.com/Azure/azure-docs-json-samples/b
 }
 ```
 
-Az alapértelmezett értékeit az előző példából kimenete:
+Az alapértelmezett értékeket az előző példa kimenete a következő:
 
 | Name (Név) | Típus | Érték |
 | ---- | ---- | ----- |
-| stringTrue | logikai érték | True (Igaz) |
-| stringFalse | logikai érték | False (Hamis) |
-| objectTrue | logikai érték | True (Igaz) |
-| objectFalse | logikai érték | False (Hamis) |
-| arrayTrue | logikai érték | True (Igaz) |
-| arrayFalse | logikai érték | False (Hamis) |
+| stringTrue | Logikai | True (Igaz) |
+| stringFalse | Logikai | False (Hamis) |
+| objectTrue | Logikai | True (Igaz) |
+| objectFalse | Logikai | False (Hamis) |
+| arrayTrue | Logikai | True (Igaz) |
+| arrayFalse | Logikai | False (Hamis) |
 
-A példa sablon Azure parancssori felülettel történő üzembe helyezéséhez használja:
+Az Azure CLI-vel ebben a példában sablon üzembe helyezéséhez használja:
 
 ```azurecli-interactive
 az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/contains.json
 ```
 
-A példa sablon PowerShell használatával történő üzembe helyezéséhez használja:
+Ez a PowerShell használatával például a sablon üzembe helyezéséhez használja:
 
 ```powershell
 New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/contains.json
@@ -501,21 +501,21 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 ## <a name="datauri"></a>dataUri
 `dataUri(stringToConvert)`
 
-Egy adat-URI azonosító alakít egy értéket.
+Adat-URI alakít egy értéket.
 
 ### <a name="parameters"></a>Paraméterek
 
 | Paraméter | Szükséges | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| stringToConvert |Igen |karakterlánc |Az érték átalakítása egy adat-URI azonosító. |
+| stringToConvert |Igen |sztring |Az adat-URI átalakítandó érték. |
 
-### <a name="return-value"></a>Visszatérési érték
+### <a name="return-value"></a>Vrácená hodnota
 
-Egy karakterláncot formázni egy adat-URI azonosító.
+Egy karakterláncot egy adat-URI-ként formázott.
 
 ### <a name="examples"></a>Példák
 
-A következő [példa sablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/datauri.json) egy adat-URI azonosító alakít egy értéket, és egy adat-URI azonosító alakít át karakterlánccá:
+A következő [példasablonja](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/datauri.json) alakít egy értéket egy adat-URI, és a egy adat-URI alakítja át egy karakterlánc:
 
 ```json
 {
@@ -545,20 +545,20 @@ A következő [példa sablon](https://github.com/Azure/azure-docs-json-samples/b
 }
 ```
 
-Az alapértelmezett értékeit az előző példából kimenete:
+Az alapértelmezett értékeket az előző példa kimenete a következő:
 
 | Name (Név) | Típus | Érték |
 | ---- | ---- | ----- |
-| dataUriOutput | Karakterlánc | adatok: text / egyszerű; charset = utf8; base64, SGVsbG8 = |
-| toStringOutput | Karakterlánc | helló világ! |
+| dataUriOutput | Sztring | adatok: szöveg / egyszerű; charset = utf8; base64, SGVsbG8 = |
+| toStringOutput | Sztring | helló világ! |
 
-A példa sablon Azure parancssori felülettel történő üzembe helyezéséhez használja:
+Az Azure CLI-vel ebben a példában sablon üzembe helyezéséhez használja:
 
 ```azurecli-interactive
 az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/datauri.json
 ```
 
-A példa sablon PowerShell használatával történő üzembe helyezéséhez használja:
+Ez a PowerShell használatával például a sablon üzembe helyezéséhez használja:
 
 ```powershell
 New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/datauri.json
@@ -569,21 +569,21 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 ## <a name="datauritostring"></a>dataUriToString
 `dataUriToString(dataUriToConvert)`
 
-Egy adat-URI azonosító formátuma értékét karakterlánccá.
+Egy adat-URI érték karakterlánc formátumú.
 
 ### <a name="parameters"></a>Paraméterek
 
 | Paraméter | Szükséges | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| dataUriToConvert |Igen |karakterlánc |Az adatok URI értéket átalakítani. |
+| dataUriToConvert |Igen |sztring |Az adatok átalakítása URI értéket. |
 
-### <a name="return-value"></a>Visszatérési érték
+### <a name="return-value"></a>Vrácená hodnota
 
-A konvertált értéket tartalmazó karakterlánc.
+Az átalakított érték tartalmazó karakterlánc.
 
 ### <a name="examples"></a>Példák
 
-A következő [példa sablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/datauri.json) egy adat-URI azonosító alakít egy értéket, és egy adat-URI azonosító alakít át karakterlánccá:
+A következő [példasablonja](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/datauri.json) alakít egy értéket egy adat-URI, és a egy adat-URI alakítja át egy karakterlánc:
 
 ```json
 {
@@ -613,20 +613,20 @@ A következő [példa sablon](https://github.com/Azure/azure-docs-json-samples/b
 }
 ```
 
-Az alapértelmezett értékeit az előző példából kimenete:
+Az alapértelmezett értékeket az előző példa kimenete a következő:
 
 | Name (Név) | Típus | Érték |
 | ---- | ---- | ----- |
-| dataUriOutput | Karakterlánc | adatok: text / egyszerű; charset = utf8; base64, SGVsbG8 = |
-| toStringOutput | Karakterlánc | helló világ! |
+| dataUriOutput | Sztring | adatok: szöveg / egyszerű; charset = utf8; base64, SGVsbG8 = |
+| toStringOutput | Sztring | helló világ! |
 
-A példa sablon Azure parancssori felülettel történő üzembe helyezéséhez használja:
+Az Azure CLI-vel ebben a példában sablon üzembe helyezéséhez használja:
 
 ```azurecli-interactive
 az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/datauri.json
 ```
 
-A példa sablon PowerShell használatával történő üzembe helyezéséhez használja:
+Ez a PowerShell használatával például a sablon üzembe helyezéséhez használja:
 
 ```powershell
 New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/datauri.json
@@ -637,21 +637,21 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 ## <a name="empty"></a>üres
 `empty(itemToTest)`
 
-Meghatározza, hogy egy tömb, az objektum, vagy a karakterlánc üres.
+Meghatározza, hogy egy tömb, objektumot vagy karakterlánc üres.
 
 ### <a name="parameters"></a>Paraméterek
 
 | Paraméter | Szükséges | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| itemToTest |Igen |a tömb, objektum vagy karakterlánc |Ellenőrizze a esetén üres érték. |
+| itemToTest |Igen |tömb, objektumot vagy karakterlánc |Ellenőrizze, hogy üres érték. |
 
-### <a name="return-value"></a>Visszatérési érték
+### <a name="return-value"></a>Vrácená hodnota
 
-Beolvasása **igaz** értéke üres, ha sikertelen, ha **hamis**.
+Értéket ad vissza **igaz** Ha az érték üres; ellenkező esetben **hamis**.
 
 ### <a name="examples"></a>Példák
 
-A következő [példa sablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/empty.json) ellenőrzi, hogy egy tömb, az objektumot, és a karakterlánc üres.
+A következő [példasablonja](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/empty.json) ellenőrzi, hogy egy tömb, az objektum és a karakterlánc üres.
 
 ```json
 {
@@ -690,21 +690,21 @@ A következő [példa sablon](https://github.com/Azure/azure-docs-json-samples/b
 }
 ```
 
-Az alapértelmezett értékeit az előző példából kimenete:
+Az alapértelmezett értékeket az előző példa kimenete a következő:
 
 | Name (Név) | Típus | Érték |
 | ---- | ---- | ----- |
-| arrayEmpty | logikai érték | True (Igaz) |
-| objectEmpty | logikai érték | True (Igaz) |
-| stringEmpty | logikai érték | True (Igaz) |
+| arrayEmpty | Logikai | True (Igaz) |
+| objectEmpty | Logikai | True (Igaz) |
+| stringEmpty | Logikai | True (Igaz) |
 
-A példa sablon Azure parancssori felülettel történő üzembe helyezéséhez használja:
+Az Azure CLI-vel ebben a példában sablon üzembe helyezéséhez használja:
 
 ```azurecli-interactive
 az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/empty.json
 ```
 
-A példa sablon PowerShell használatával történő üzembe helyezéséhez használja:
+Ez a PowerShell használatával például a sablon üzembe helyezéséhez használja:
 
 ```powershell
 New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/empty.json
@@ -712,25 +712,25 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 <a id="endswith" />
 
-## <a name="endswith"></a>megadott módon végződő
+## <a name="endswith"></a>endsWith
 `endsWith(stringToSearch, stringToFind)`
 
-Meghatározza, hogy egy karakterláncot végződik-e értéket. Eredményű összehasonlítás esetén azonban nem.
+Azt határozza meg, hogy egy karakterláncot egy adott értékre végződik-e. Az összehasonlítás eredménye kis-és nagybetűket.
 
 ### <a name="parameters"></a>Paraméterek
 
 | Paraméter | Szükséges | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| stringToSearch |Igen |karakterlánc |Az érték, amely tartalmazza az elem található. |
-| stringToFind |Igen |karakterlánc |Az érték kereséséhez. |
+| stringToSearch |Igen |sztring |Az érték, amely tartalmazza az elem található. |
+| stringToFind |Igen |sztring |Keresendő érték. |
 
-### <a name="return-value"></a>Visszatérési érték
+### <a name="return-value"></a>Vrácená hodnota
 
-**Igaz** Ha az utolsó karaktereit a karakterlánc megfelel a érték; ellenkező esetben **hamis**.
+**Igaz** Ha az utolsó karakter vagy karaktert a karakterlánc megfelel a értéket; ellenkező esetben **hamis**.
 
 ### <a name="examples"></a>Példák
 
-A következő [példa sablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/startsendswith.json) a megadott módon kezdődő és megadott módon végződő funkciók használatát ismerteti:
+A következő [példasablonja](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/startsendswith.json) bemutatja, hogyan használja a startsWith és endsWith függvényt:
 
 ```json
 {
@@ -766,24 +766,24 @@ A következő [példa sablon](https://github.com/Azure/azure-docs-json-samples/b
 }
 ```
 
-Az alapértelmezett értékeit az előző példából kimenete:
+Az alapértelmezett értékeket az előző példa kimenete a következő:
 
 | Name (Név) | Típus | Érték |
 | ---- | ---- | ----- |
-| startsTrue | logikai érték | True (Igaz) |
-| startsCapTrue | logikai érték | True (Igaz) |
-| startsFalse | logikai érték | False (Hamis) |
-| endsTrue | logikai érték | True (Igaz) |
-| endsCapTrue | logikai érték | True (Igaz) |
-| endsFalse | logikai érték | False (Hamis) |
+| startsTrue | Logikai | True (Igaz) |
+| startsCapTrue | Logikai | True (Igaz) |
+| startsFalse | Logikai | False (Hamis) |
+| endsTrue | Logikai | True (Igaz) |
+| endsCapTrue | Logikai | True (Igaz) |
+| endsFalse | Logikai | False (Hamis) |
 
-A példa sablon Azure parancssori felülettel történő üzembe helyezéséhez használja:
+Az Azure CLI-vel ebben a példában sablon üzembe helyezéséhez használja:
 
 ```azurecli-interactive
 az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/startsendswith.json
 ```
 
-A példa sablon PowerShell használatával történő üzembe helyezéséhez használja:
+Ez a PowerShell használatával például a sablon üzembe helyezéséhez használja:
 
 ```powershell
 New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/startsendswith.json
@@ -800,15 +800,15 @@ A karakterlánc, vagy a tömb első eleme első karaktert adja vissza.
 
 | Paraméter | Szükséges | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| arg1 |Igen |a tömb vagy karakterlánc |Az érték első karakter vagy elem lekéréséhez. |
+| arg1 |Igen |tömb vagy karakterlánc |Az érték első karakter vagy elem lekéréséhez. |
 
-### <a name="return-value"></a>Visszatérési érték
+### <a name="return-value"></a>Vrácená hodnota
 
-Egy karakterlánc az első karakter, vagy a tömb első elem típusa (karakterlánc, int, tömb vagy objektum).
+Egy karakterlánc első karaktere, vagy a típusa (karakterlánc, int, tömb vagy objektum) az első elem a tömbben.
 
 ### <a name="examples"></a>Példák
 
-A következő [példa sablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/first.json) bemutatja, hogyan használható az első függvényét egy tömb és a karakterlánc.
+A következő [példasablonja](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/first.json) bemutatja, hogyan használható az első függvény egy tömböt és egy karakterlánc.
 
 ```json
 {
@@ -835,45 +835,45 @@ A következő [példa sablon](https://github.com/Azure/azure-docs-json-samples/b
 }
 ```
 
-Az alapértelmezett értékeit az előző példából kimenete:
+Az alapértelmezett értékeket az előző példa kimenete a következő:
 
 | Name (Név) | Típus | Érték |
 | ---- | ---- | ----- |
-| arrayOutput | Karakterlánc | egy |
-| stringOutput | Karakterlánc | O |
+| arrayOutput | Sztring | egy |
+| stringOutput | Sztring | O |
 
-A példa sablon Azure parancssori felülettel történő üzembe helyezéséhez használja:
+Az Azure CLI-vel ebben a példában sablon üzembe helyezéséhez használja:
 
 ```azurecli-interactive
 az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/first.json
 ```
 
-A példa sablon PowerShell használatával történő üzembe helyezéséhez használja:
+Ez a PowerShell használatával például a sablon üzembe helyezéséhez használja:
 
 ```powershell
 New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/first.json
 ```
 
-## <a name="guid"></a>GUID
+## <a name="guid"></a>GUID azonosítója
 
 `guid (baseString, ...)`
 
-Létrehoz egy értéket a paraméterként megadott értékek alapján a globálisan egyedi azonosító formátuma.
+Létrehoz egy értéket a paraméterként megadott értékek alapján globálisan egyedi azonosító formátuma.
 
 ### <a name="parameters"></a>Paraméterek
 
 | Paraméter | Szükséges | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| baseString |Igen |karakterlánc |Az értéknek a kivonatoló függvényt a GUID létrehozásához. |
-| szükség szerint további paraméterek |Nem |karakterlánc |Az érték, amely meghatározza a egyediségi szintű létrehozásához szükséges annyi karakterláncok adhat hozzá. |
+| baseString |Igen |sztring |A GUID létrehozásához a kivonatolási függvény a használt érték. |
+| További paraméterek szükséges |Nem |sztring |Tetszőleges számú karakterláncok létrehozása, amely az egyediség szintjét határozza meg az érték szükség szerint adhat hozzá. |
 
 ### <a name="remarks"></a>Megjegyzések
 
-Ez a funkció akkor hasznos, ha egy értéket a globálisan egyedi azonosítót kell létrehozásához szükséges. Az eredmény egyediségének hatókörét korlátozó paraméter értékeket ad meg. Megadhatja, hogy egyedi előfizetés, a csoport vagy a központi telepítési le-e a neve.
+Ez a funkció akkor hasznos, ha szeretne létrehozni egy értéket a globálisan egyedi azonosító formátuma. Azt adja meg a paraméterértékeket, hogy az eredmény az egyediség hatókörének korlátozása. Megadhatja, hogy a név egyediségét lefelé az előfizetés, erőforráscsoport vagy üzembe helyezés.
 
-A visszaadott érték nem véletlenszerű karakterlánc, hanem inkább a kivonatoló függvényt eredményét. A visszaadott érték 36 karakter. Nincs globálisan egyedi.
+A visszaadott érték nem egy véletlenszerű karakterlánc, hanem inkább a kivonatolási függvény eredménye. A visszaadott érték a 36 karakterből áll. Nem globálisan egyedi.
 
-A következő példák szemléltetik a GUID azonosító használatával hozzon létre egy egyedi értéket a gyakran használt szintek.
+Az alábbi példák bemutatják, hogyan hozzon létre egy egyedi értéket a gyakran használt szintek guid használatával.
 
 Egyedi előfizetés hatóköre
 
@@ -887,19 +887,19 @@ Egyedi erőforráscsoport hatóköre
 "[guid(resourceGroup().id)]"
 ```
 
-Egyedi telepítési erőforrás csoport hatóköre
+Egyedi erőforráscsoport üzembe helyezési hatóköre
 
 ```json
 "[guid(resourceGroup().id, deployment().name)]"
 ```
 
-### <a name="return-value"></a>Visszatérési érték
+### <a name="return-value"></a>Vrácená hodnota
 
-A globálisan egyedi azonosítót kell 36 karakter tartalmazó karakterlánc.
+A globálisan egyedi azonosító formátuma 36 karaktert tartalmazó karakterlánc.
 
 ### <a name="examples"></a>Példák
 
-A következő [példa sablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/guid.json) eredményeket ad vissza guid:
+A következő [példasablonja](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/guid.json) eredményeket ad vissza a GUID azonosítót:
 
 ```json
 {
@@ -925,13 +925,13 @@ A következő [példa sablon](https://github.com/Azure/azure-docs-json-samples/b
 }
 ```
 
-A példa sablon Azure parancssori felülettel történő üzembe helyezéséhez használja:
+Az Azure CLI-vel ebben a példában sablon üzembe helyezéséhez használja:
 
 ```azurecli-interactive
 az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/guid.json
 ```
 
-A példa sablon PowerShell használatával történő üzembe helyezéséhez használja:
+Ez a PowerShell használatával például a sablon üzembe helyezéséhez használja:
 
 ```powershell
 New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/guid.json
@@ -942,22 +942,22 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 ## <a name="indexof"></a>indexOf
 `indexOf(stringToSearch, stringToFind)`
 
-Egy értékének a karakterláncon belüli első helyét adja vissza. Eredményű összehasonlítás esetén azonban nem.
+Egy sztringbeli érték első pozícióját adja vissza. Az összehasonlítás eredménye kis-és nagybetűket.
 
 ### <a name="parameters"></a>Paraméterek
 
 | Paraméter | Szükséges | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| stringToSearch |Igen |karakterlánc |Az érték, amely tartalmazza az elem található. |
-| stringToFind |Igen |karakterlánc |Az érték kereséséhez. |
+| stringToSearch |Igen |sztring |Az érték, amely tartalmazza az elem található. |
+| stringToFind |Igen |sztring |Keresendő érték. |
 
-### <a name="return-value"></a>Visszatérési érték
+### <a name="return-value"></a>Vrácená hodnota
 
-Az elem található a pozíció jelölő egész. Az érték nulla alapú. Ha az elem nem található,-1 értéket ad vissza.
+Az elem található a pozíció jelölő egész szám. Az érték nulla alapú. Ha az elem nem található,-1 értéket ad vissza.
 
 ### <a name="examples"></a>Példák
 
-A következő [példa sablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/indexof.json) a indexOf és lastIndexOf funkciók használatát ismerteti:
+A következő [példasablonja](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/indexof.json) bemutatja, hogyan használja a indexOf és lastIndexOf függvényt:
 
 ```json
 {
@@ -989,7 +989,7 @@ A következő [példa sablon](https://github.com/Azure/azure-docs-json-samples/b
 }
 ```
 
-Az alapértelmezett értékeit az előző példából kimenete:
+Az alapértelmezett értékeket az előző példa kimenete a következő:
 
 | Name (Név) | Típus | Érték |
 | ---- | ---- | ----- |
@@ -997,15 +997,15 @@ Az alapértelmezett értékeit az előző példából kimenete:
 | lastT | Int | 3 |
 | firstString | Int | 2 |
 | lastString | Int | 0 |
-| notFound | Int | -1 |
+| NotFound | Int | -1 |
 
-A példa sablon Azure parancssori felülettel történő üzembe helyezéséhez használja:
+Az Azure CLI-vel ebben a példában sablon üzembe helyezéséhez használja:
 
 ```azurecli-interactive
 az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/indexof.json
 ```
 
-A példa sablon PowerShell használatával történő üzembe helyezéséhez használja:
+Ez a PowerShell használatával például a sablon üzembe helyezéséhez használja:
 
 ```powershell
 New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/indexof.json
@@ -1016,21 +1016,21 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 ## <a name="last"></a>utolsó
 `last (arg1)`
 
-Az utolsó karakter a karakterlánc vagy tömb utolsó eleme adja vissza.
+Az utolsó karaktert a karakterlánc, vagy az utolsó elem a tömb értéket ad vissza.
 
 ### <a name="parameters"></a>Paraméterek
 
 | Paraméter | Szükséges | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| arg1 |Igen |a tömb vagy karakterlánc |Az érték utolsó karakter vagy elem lekéréséhez. |
+| arg1 |Igen |tömb vagy karakterlánc |Az érték utolsó karakter vagy elem lekéréséhez. |
 
-### <a name="return-value"></a>Visszatérési érték
+### <a name="return-value"></a>Vrácená hodnota
 
-Az utolsó karakter, vagy a tömb utolsó eleme típusa (karakterlánc, int, tömb vagy objektum) formátumú karakterlánc.
+Az utolsó karakter, vagy a típusát (karakterlánc, int, tömb vagy objektum) az utolsó elem a tömbben, karakterlánc.
 
 ### <a name="examples"></a>Példák
 
-A következő [példa sablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/last.json) bemutatja, hogyan használható az utolsó függvény egy tömb és a karakterlánc.
+A következő [példasablonja](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/last.json) bemutatja, hogyan használható az utolsó függvény egy tömböt és egy karakterlánc.
 
 ```json
 {
@@ -1057,20 +1057,20 @@ A következő [példa sablon](https://github.com/Azure/azure-docs-json-samples/b
 }
 ```
 
-Az alapértelmezett értékeit az előző példából kimenete:
+Az alapértelmezett értékeket az előző példa kimenete a következő:
 
 | Name (Név) | Típus | Érték |
 | ---- | ---- | ----- |
-| arrayOutput | Karakterlánc | három |
-| stringOutput | Karakterlánc | E |
+| arrayOutput | Sztring | három |
+| stringOutput | Sztring | e |
 
-A példa sablon Azure parancssori felülettel történő üzembe helyezéséhez használja:
+Az Azure CLI-vel ebben a példában sablon üzembe helyezéséhez használja:
 
 ```azurecli-interactive
 az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/last.json
 ```
 
-A példa sablon PowerShell használatával történő üzembe helyezéséhez használja:
+Ez a PowerShell használatával például a sablon üzembe helyezéséhez használja:
 
 ```powershell
 New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/last.json
@@ -1081,22 +1081,22 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 ## <a name="lastindexof"></a>lastIndexOf
 `lastIndexOf(stringToSearch, stringToFind)`
 
-Egy értékének a karakterláncon belüli utolsó helyét adja vissza. Eredményű összehasonlítás esetén azonban nem.
+Egy sztringbeli érték utolsó pozícióját adja vissza. Az összehasonlítás eredménye kis-és nagybetűket.
 
 ### <a name="parameters"></a>Paraméterek
 
 | Paraméter | Szükséges | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| stringToSearch |Igen |karakterlánc |Az érték, amely tartalmazza az elem található. |
-| stringToFind |Igen |karakterlánc |Az érték kereséséhez. |
+| stringToSearch |Igen |sztring |Az érték, amely tartalmazza az elem található. |
+| stringToFind |Igen |sztring |Keresendő érték. |
 
-### <a name="return-value"></a>Visszatérési érték
+### <a name="return-value"></a>Vrácená hodnota
 
-Az elem található utolsó pozícióját jelölő egész. Az érték nulla alapú. Ha az elem nem található,-1 értéket ad vissza.
+Egész szám, amely az utolsó pozíciója az elem található jelöli. Az érték nulla alapú. Ha az elem nem található,-1 értéket ad vissza.
 
 ### <a name="examples"></a>Példák
 
-A következő [példa sablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/indexof.json) a indexOf és lastIndexOf funkciók használatát ismerteti:
+A következő [példasablonja](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/indexof.json) bemutatja, hogyan használja a indexOf és lastIndexOf függvényt:
 
 ```json
 {
@@ -1128,7 +1128,7 @@ A következő [példa sablon](https://github.com/Azure/azure-docs-json-samples/b
 }
 ```
 
-Az alapértelmezett értékeit az előző példából kimenete:
+Az alapértelmezett értékeket az előző példa kimenete a következő:
 
 | Name (Név) | Típus | Érték |
 | ---- | ---- | ----- |
@@ -1136,15 +1136,15 @@ Az alapértelmezett értékeit az előző példából kimenete:
 | lastT | Int | 3 |
 | firstString | Int | 2 |
 | lastString | Int | 0 |
-| notFound | Int | -1 |
+| NotFound | Int | -1 |
 
-A példa sablon Azure parancssori felülettel történő üzembe helyezéséhez használja:
+Az Azure CLI-vel ebben a példában sablon üzembe helyezéséhez használja:
 
 ```azurecli-interactive
 az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/indexof.json
 ```
 
-A példa sablon PowerShell használatával történő üzembe helyezéséhez használja:
+Ez a PowerShell használatával például a sablon üzembe helyezéséhez használja:
 
 ```powershell
 New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/indexof.json
@@ -1155,21 +1155,21 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 ## <a name="length"></a>Hossza
 `length(string)`
 
-A karakterlánc vagy tömb elemeinek a számú karaktert adja vissza.
+Egy karakterlánc vagy egy tömb elemei a karakterek számát adja vissza.
 
 ### <a name="parameters"></a>Paraméterek
 
 | Paraméter | Szükséges | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| arg1 |Igen |a tömb vagy karakterlánc |A tömb használni az első elemek, vagy a karakterlánc első karakterek használata. |
+| arg1 |Igen |tömb vagy karakterlánc |A tömb első karakterek használata az elemeket, vagy a karakterlánc első használatával. |
 
-### <a name="return-value"></a>Visszatérési érték
+### <a name="return-value"></a>Vrácená hodnota
 
-Egy egész szám. 
+Egy: egész szám. 
 
 ### <a name="examples"></a>Példák
 
-A következő [példa sablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/length.json) egy tömb és a karakterlánc hossza használatát ismerteti:
+A következő [példasablonja](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/length.json) bemutatja, hogyan használható egy tömböt és egy karakterlánc hossza:
 
 ```json
 {
@@ -1203,20 +1203,20 @@ A következő [példa sablon](https://github.com/Azure/azure-docs-json-samples/b
 }
 ```
 
-Az alapértelmezett értékeit az előző példából kimenete:
+Az alapértelmezett értékeket az előző példa kimenete a következő:
 
 | Name (Név) | Típus | Érték |
 | ---- | ---- | ----- |
 | arrayLength | Int | 3 |
 | stringLength | Int | 13 |
 
-A példa sablon Azure parancssori felülettel történő üzembe helyezéséhez használja:
+Az Azure CLI-vel ebben a példában sablon üzembe helyezéséhez használja:
 
 ```azurecli-interactive
 az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/length.json
 ```
 
-A példa sablon PowerShell használatával történő üzembe helyezéséhez használja:
+Ez a PowerShell használatával például a sablon üzembe helyezéséhez használja:
 
 ```powershell
 New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/length.json
@@ -1224,10 +1224,10 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 <a id="padleft" />
 
-## <a name="padleft"></a>PadLeft
+## <a name="padleft"></a>padLeft
 `padLeft(valueToPad, totalLength, paddingCharacter)`
 
-Karakterek hozzáadásával a bal oldali az összes megadott hosszúságú eléréséig jobbra igazított karakterláncot ad vissza.
+Karakterek hozzáadásával a bal oldali amíg végállapotba megadott teljes hossza nem egy jobbra igazított karakterláncot ad vissza.
 
 ### <a name="parameters"></a>Paraméterek
 
@@ -1235,17 +1235,17 @@ Karakterek hozzáadásával a bal oldali az összes megadott hosszúságú elér
 |:--- |:--- |:--- |:--- |
 | valueToPad |Igen |karakterlánc- vagy int |A jobbra igazított érték. |
 | totalLength |Igen |int |A visszaadott karakterláncban szereplő karakterek száma. |
-| paddingCharacter |Nem |egyetlen karakter |Bal-kitöltési, amíg a teljes hossza nem csökken használandó karakter. Az alapértelmezett érték: szóközzel. |
+| paddingCharacter |Nem |egyetlen karakter |Bal-kitöltés, amíg a teljes hossza nem csökken használandó elválasztó karakter. Az alapértelmezett értéke egy szóközt. |
 
-Ha az eredeti karakterláncot elválasztásához karakterek áll, akkor egyetlen karakter kerülnek.
+Ha az eredeti karakterláncot szegélynél karakterből áll, akkor egyetlen karakter kerülnek.
 
-### <a name="return-value"></a>Visszatérési érték
+### <a name="return-value"></a>Vrácená hodnota
 
 A karakterlánc a legalább a megadott karakterek száma.
 
 ### <a name="examples"></a>Példák
 
-A következő [példa sablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/padleft.json) bemutatja, hogyan kitölti a felhasználó által megadott paraméter értéke nulla karakter hozzáadásával, amíg eléri a karakterek száma. 
+A következő [példasablonja](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/padleft.json) bemutatja, hogyan kitölti a felhasználó által megadott paraméter értéke nulla karakter hozzáadásával, addig a teljes karakterszámot. 
 
 ```json
 {
@@ -1267,19 +1267,19 @@ A következő [példa sablon](https://github.com/Azure/azure-docs-json-samples/b
 }
 ```
 
-Az alapértelmezett értékeit az előző példából kimenete:
+Az alapértelmezett értékeket az előző példa kimenete a következő:
 
 | Name (Név) | Típus | Érték |
 | ---- | ---- | ----- |
-| stringOutput | Karakterlánc | 0000000123 |
+| stringOutput | Sztring | 0000000123 |
 
-A példa sablon Azure parancssori felülettel történő üzembe helyezéséhez használja:
+Az Azure CLI-vel ebben a példában sablon üzembe helyezéséhez használja:
 
 ```azurecli-interactive
 az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/padleft.json
 ```
 
-A példa sablon PowerShell használatával történő üzembe helyezéséhez használja:
+Ez a PowerShell használatával például a sablon üzembe helyezéséhez használja:
 
 ```powershell
 New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/padleft.json
@@ -1290,23 +1290,23 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 ## <a name="replace"></a>cserélje le
 `replace(originalString, oldString, newString)`
 
-Egy másik karakterlánc szerepét egy karakterlánc összes előfordulásának új karakterláncot ad vissza.
+Egy karakterlánc egy másik karakterláncot lecserélve az összes példányát új karakterláncot ad vissza.
 
 ### <a name="parameters"></a>Paraméterek
 
 | Paraméter | Szükséges | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| originalString |Igen |karakterlánc |Az érték, amelynek egy karakterlánc másik karakterlánc szerepét összes példányát. |
-| oldString |Igen |karakterlánc |Az eredeti karakterláncot eltávolítja a karakterláncot. |
-| newString |Igen |karakterlánc |A karakterlánc helyett, az eltávolított karakterlánc hozzáadásához. |
+| originalString |Igen |sztring |Az érték, amelynek egy karakterlánc egy másik karakterláncot lecserélve az összes példányát. |
+| Régikarakterlánc |Igen |sztring |A karakterlánc távolítható el az eredeti karakterláncot. |
+| Újkarakterlánc |Igen |sztring |A karakterlánc hozzáadása az eltávolított karakterlánc helyett. |
 
-### <a name="return-value"></a>Visszatérési érték
+### <a name="return-value"></a>Vrácená hodnota
 
-A kicserélt karaktert tartalmazó karakterlánc.
+Lecserélt karaktert tartalmazó karakterlánc.
 
 ### <a name="examples"></a>Példák
 
-A következő [példa sablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/replace.json) jeleníti meg az összes kötőjelek eltávolítása a felhasználó által megadott karakterláncot, és a karakterlánc egy részét lecseréli egy másik karakterláncot.
+A következő [példasablonja](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/replace.json) jeleníti meg az összes kötőjeleket eltávolítása a felhasználó által megadott karakterláncot, és hogyan a karakterlánc egy részét lecseréli egy másik karakterláncot.
 
 ```json
 {
@@ -1332,20 +1332,20 @@ A következő [példa sablon](https://github.com/Azure/azure-docs-json-samples/b
 }
 ```
 
-Az alapértelmezett értékeit az előző példából kimenete:
+Az alapértelmezett értékeket az előző példa kimenete a következő:
 
 | Name (Név) | Típus | Érték |
 | ---- | ---- | ----- |
-| firstOutput | Karakterlánc | 1231231234 |
-| secodeOutput | Karakterlánc | 123-123-xxxx |
+| firstOutput | Sztring | 1231231234 |
+| secodeOutput | Sztring | 123-123-xxxx |
 
-A példa sablon Azure parancssori felülettel történő üzembe helyezéséhez használja:
+Az Azure CLI-vel ebben a példában sablon üzembe helyezéséhez használja:
 
 ```azurecli-interactive
 az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/replace.json
 ```
 
-A példa sablon PowerShell használatával történő üzembe helyezéséhez használja:
+Ez a PowerShell használatával például a sablon üzembe helyezéséhez használja:
 
 ```powershell
 New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/replace.json
@@ -1353,25 +1353,25 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 <a id="skip" />
 
-## <a name="skip"></a>Kihagyása
+## <a name="skip"></a>kihagyás
 `skip(originalValue, numberToSkip)`
 
-Egy karakterláncot ad vissza az összes karakter után a megadott számú karaktert, vagy az összes elem tömb után a megadott számú elemet.
+Egy karakterláncot ad vissza az összes karakter után a megadott számú karakter vagy elemeket egy tömb a megadott számú elem után.
 
 ### <a name="parameters"></a>Paraméterek
 
 | Paraméter | Szükséges | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| originalValue |Igen |a tömb vagy karakterlánc |A tömb vagy karakterlánc kihagyása használandó. |
-| numberToSkip |Igen |int |Elemek vagy kihagyását karakterek száma. Ha ez az érték 0 vagy kisebb, a elemek vagy az karaktere adott vissza. Ha a tömb vagy karakterlánc hossza nagyobb, üres tömb vagy karakterlánc adja vissza. |
+| originalValue |Igen |tömb vagy karakterlánc |A tömböt vagy karakterláncot, használja a rendszer kihagyja. |
+| numberToSkip |Igen |int |Elemek vagy hagyja ki a karakterek száma. Ha ez az érték 0 vagy kisebb, a elemek vagy az érték karaktereinek adott vissza. Ha a tömb vagy karakterlánc hossza nagyobb, egy üres tömb vagy karakterlánc adja vissza. |
 
-### <a name="return-value"></a>Visszatérési érték
+### <a name="return-value"></a>Vrácená hodnota
 
-Tömb vagy karakterlánc.
+Egy tömb vagy karakterlánc.
 
 ### <a name="examples"></a>Példák
 
-A következő [példa sablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/skip.json) kihagyja a megadott számú elemet a tömbben, és a megadott számú karaktert egy karakterláncon belül.
+A következő [példasablonja](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/skip.json) kihagyja a megadott számú elem a tömbben, és a megadott számú karakter a karakterláncban.
 
 ```json
 {
@@ -1413,20 +1413,20 @@ A következő [példa sablon](https://github.com/Azure/azure-docs-json-samples/b
 }
 ```
 
-Az alapértelmezett értékeit az előző példából kimenete:
+Az alapértelmezett értékeket az előző példa kimenete a következő:
 
 | Name (Név) | Típus | Érték |
 | ---- | ---- | ----- |
 | arrayOutput | Tömb | ["három"] |
-| stringOutput | Karakterlánc | két három |
+| stringOutput | Sztring | két három |
 
-A példa sablon Azure parancssori felülettel történő üzembe helyezéséhez használja:
+Az Azure CLI-vel ebben a példában sablon üzembe helyezéséhez használja:
 
 ```azurecli-interactive
 az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/skip.json
 ```
 
-A példa sablon PowerShell használatával történő üzembe helyezéséhez használja:
+Ez a PowerShell használatával például a sablon üzembe helyezéséhez használja:
 
 ```powershell
 New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/skip.json
@@ -1437,22 +1437,22 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 ## <a name="split"></a>felosztás
 `split(inputString, delimiter)`
 
-Tartalmazza a karakterláncrészletet tartalmazza a bemeneti karakterlánc, amely a megadott elválasztók határolja karakterláncok tömbjét adja vissza.
+Karakterláncok tömbje, amely tartalmazza a oszt fel a bemeneti karakterláncot, amely a megadott elválasztók vannak elválasztva adja vissza.
 
 ### <a name="parameters"></a>Paraméterek
 
 | Paraméter | Szükséges | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| inputString |Igen |karakterlánc |Ossza fel a karakterláncot. |
-| Elválasztó |Igen |karakterláncot vagy karakterláncok |A karakterlánc a felosztás használandó elválasztó. |
+| inputString |Igen |sztring |A felosztandó karakterlánc. |
+| elválasztó karakter |Igen |karakterláncot vagy karakterláncok tömbje |A sztring felosztásához használt elválasztó karaktert. |
 
-### <a name="return-value"></a>Visszatérési érték
+### <a name="return-value"></a>Vrácená hodnota
 
-Karakterláncokból álló tömb.
+Karakterláncok tömbje.
 
 ### <a name="examples"></a>Példák
 
-A következő [példa sablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/split.json) felosztja a bemeneti karakterlánc egy vesszővel válassza el egymástól, és vesszővel vagy pontosvesszővel kell elválasztani őket.
+A következő [példasablonja](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/split.json) bontja a bemeneti karakterláncot vesszővel válasszon el, és a egy vesszővel vagy pontosvesszővel.
 
 ```json
 {
@@ -1485,20 +1485,20 @@ A következő [példa sablon](https://github.com/Azure/azure-docs-json-samples/b
 }
 ```
 
-Az alapértelmezett értékeit az előző példából kimenete:
+Az alapértelmezett értékeket az előző példa kimenete a következő:
 
 | Name (Név) | Típus | Érték |
 | ---- | ---- | ----- |
 | firstOutput | Tömb | ["egy", "két", "három"] |
 | secondOutput | Tömb | ["egy", "két", "három"] |
 
-A példa sablon Azure parancssori felülettel történő üzembe helyezéséhez használja:
+Az Azure CLI-vel ebben a példában sablon üzembe helyezéséhez használja:
 
 ```azurecli-interactive
 az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/split.json
 ```
 
-A példa sablon PowerShell használatával történő üzembe helyezéséhez használja:
+Ez a PowerShell használatával például a sablon üzembe helyezéséhez használja:
 
 ```powershell
 New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/split.json
@@ -1506,25 +1506,25 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 <a id="startswith" />
 
-## <a name="startswith"></a>startswith elemnek
+## <a name="startswith"></a>startsWith
 `startsWith(stringToSearch, stringToFind)`
 
-Meghatározza, hogy egy karakterlánc értékkel kezdődik-e. Eredményű összehasonlítás esetén azonban nem.
+Azt határozza meg, hogy egy karakterláncot egy adott értékkel kezdődik-e. Az összehasonlítás eredménye kis-és nagybetűket.
 
 ### <a name="parameters"></a>Paraméterek
 
 | Paraméter | Szükséges | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| stringToSearch |Igen |karakterlánc |Az érték, amely tartalmazza az elem található. |
-| stringToFind |Igen |karakterlánc |Az érték kereséséhez. |
+| stringToSearch |Igen |sztring |Az érték, amely tartalmazza az elem található. |
+| stringToFind |Igen |sztring |Keresendő érték. |
 
-### <a name="return-value"></a>Visszatérési érték
+### <a name="return-value"></a>Vrácená hodnota
 
-**Igaz** Ha az első karaktereit a karakterlánc megfelel a érték; ellenkező esetben **hamis**.
+**Igaz** Ha az első karaktert vagy karaktereket a karakterlánc megfelel a értéket; ellenkező esetben **hamis**.
 
 ### <a name="examples"></a>Példák
 
-A következő [példa sablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/startsendswith.json) a megadott módon kezdődő és megadott módon végződő funkciók használatát ismerteti:
+A következő [példasablonja](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/startsendswith.json) bemutatja, hogyan használja a startsWith és endsWith függvényt:
 
 ```json
 {
@@ -1560,24 +1560,24 @@ A következő [példa sablon](https://github.com/Azure/azure-docs-json-samples/b
 }
 ```
 
-Az alapértelmezett értékeit az előző példából kimenete:
+Az alapértelmezett értékeket az előző példa kimenete a következő:
 
 | Name (Név) | Típus | Érték |
 | ---- | ---- | ----- |
-| startsTrue | logikai érték | True (Igaz) |
-| startsCapTrue | logikai érték | True (Igaz) |
-| startsFalse | logikai érték | False (Hamis) |
-| endsTrue | logikai érték | True (Igaz) |
-| endsCapTrue | logikai érték | True (Igaz) |
-| endsFalse | logikai érték | False (Hamis) |
+| startsTrue | Logikai | True (Igaz) |
+| startsCapTrue | Logikai | True (Igaz) |
+| startsFalse | Logikai | False (Hamis) |
+| endsTrue | Logikai | True (Igaz) |
+| endsCapTrue | Logikai | True (Igaz) |
+| endsFalse | Logikai | False (Hamis) |
 
-A példa sablon Azure parancssori felülettel történő üzembe helyezéséhez használja:
+Az Azure CLI-vel ebben a példában sablon üzembe helyezéséhez használja:
 
 ```azurecli-interactive
 az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/startsendswith.json
 ```
 
-A példa sablon PowerShell használatával történő üzembe helyezéséhez használja:
+Ez a PowerShell használatával például a sablon üzembe helyezéséhez használja:
 
 ```powershell
 New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/startsendswith.json
@@ -1585,7 +1585,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 <a id="string" />
 
-## <a name="string"></a>karakterlánc
+## <a name="string"></a>sztring
 `string(valueToConvert)`
 
 A megadott érték konvertálása egy karakterláncot.
@@ -1594,15 +1594,15 @@ A megadott érték konvertálása egy karakterláncot.
 
 | Paraméter | Szükséges | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| valueToConvert |Igen | Bármelyik |Az érték karakterlánccá konvertálni. Bármely típusú érték lehet konvertálni, többek között az objektumok és tömböket. |
+| valueToConvert |Igen | Bármelyik |Karakterlánc alakítandó érték. Bármilyen típusú érték lehet konvertálni, többek között az objektumok és tömböket. |
 
-### <a name="return-value"></a>Visszatérési érték
+### <a name="return-value"></a>Vrácená hodnota
 
 Az átalakított érték karakterlánc.
 
 ### <a name="examples"></a>Példák
 
-A következő [példa sablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/string.json) különböző típusú értékeket átalakítani karakterláncok szemlélteti:
+A következő [példasablonja](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/string.json) különböző típusú értékek konvertálása karakterláncokat jeleníti meg:
 
 ```json
 {
@@ -1647,21 +1647,21 @@ A következő [példa sablon](https://github.com/Azure/azure-docs-json-samples/b
 }
 ```
 
-Az alapértelmezett értékeit az előző példából kimenete:
+Az alapértelmezett értékeket az előző példa kimenete a következő:
 
 | Name (Név) | Típus | Érték |
 | ---- | ---- | ----- |
-| objectOutput | Karakterlánc | {"valueA": 10, "valueB": "Példaszöveg"} |
-| arrayOutput | Karakterlánc | ["a", "b", "c"] |
-| intOutput | Karakterlánc | 5 |
+| objectOutput | Sztring | {"érték1": 10, "érték2": "Példaszöveg"} |
+| arrayOutput | Sztring | ["a", "b", "c"] |
+| intOutput | Sztring | 5 |
 
-A példa sablon Azure parancssori felülettel történő üzembe helyezéséhez használja:
+Az Azure CLI-vel ebben a példában sablon üzembe helyezéséhez használja:
 
 ```azurecli-interactive
 az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/string.json
 ```
 
-A példa sablon PowerShell használatával történő üzembe helyezéséhez használja:
+Ez a PowerShell használatával például a sablon üzembe helyezéséhez használja:
 
 ```powershell
 New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/string.json
@@ -1669,7 +1669,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 <a id="substring" />
 
-## <a name="substring"></a>Substring
+## <a name="substring"></a>karakterláncrészlet
 `substring(stringToParse, startIndex, length)`
 
 Egy részét, amely a megadott Karakterpozíció kezdődik, és tartalmazza a megadott számú karaktert adja vissza.
@@ -1678,17 +1678,17 @@ Egy részét, amely a megadott Karakterpozíció kezdődik, és tartalmazza a me
 
 | Paraméter | Szükséges | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| stringToParse |Igen |karakterlánc |Az eredeti karakterláncot, amely a karakterláncrészletet ki kell olvasni. |
-| startIndex |Nem |int |A nulla alapú karakter kezdőpozíciója a karakterláncrészletet. |
-| Hossza |Nem |int |A substring karakterek száma. A karakterláncon belüli helyet kell képviselnie. |
+| stringToParse |Igen |sztring |Az eredeti karakterláncot, amely az a karakterláncrészletet ki kell olvasni. |
+| startIndex |Nem |int |A nulla alapú kezdő karakter pozíciójának a karakterláncrészletet. |
+| Hossza |Nem |int |A substring karakterek száma. A karakterláncon belüli helyre kell hivatkoznia. |
 
-### <a name="return-value"></a>Visszatérési érték
+### <a name="return-value"></a>Vrácená hodnota
 
 A karakterláncrészletet.
 
 ### <a name="remarks"></a>Megjegyzések
 
-A parancs nem működik, amikor a substring túlnyúlik a karakterlánc végén. Hibával meghiúsul a következő példa "az index és length paraméterek a karakterláncon belüli helyet kell képviselnie. Az index paraméter: "0", a length paraméter: "11", a karakterlánc-paraméter hossza: "10". ".
+A függvény sikertelen lesz, ha a karakterlánc végén túlnyúlik a karakterláncrészletet. A következő hibával meghiúsul a következő példa "az index és a hossz paraméternek a karakterláncon belüli helyre kell hivatkoznia. Az index paraméter: "0", a length paraméter: "11", a karakterlánc-paraméter hossza: "10". ".
 
 ```json
 "parameters": {
@@ -1701,7 +1701,7 @@ A parancs nem működik, amikor a substring túlnyúlik a karakterlánc végén.
 
 ### <a name="examples"></a>Példák
 
-A következő [példa sablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/substring.json) karakterláncrész kiolvassa a paramétert.
+A következő [példasablonja](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/substring.json) részkarakterláncot kigyűjti a paramétert.
 
 ```json
 {
@@ -1723,19 +1723,19 @@ A következő [példa sablon](https://github.com/Azure/azure-docs-json-samples/b
 }
 ```
 
-Az alapértelmezett értékeit az előző példából kimenete:
+Az alapértelmezett értékeket az előző példa kimenete a következő:
 
 | Name (Név) | Típus | Érték |
 | ---- | ---- | ----- |
-| substringOutput | Karakterlánc | kettő |
+| substringOutput | Sztring | kettő |
 
-A példa sablon Azure parancssori felülettel történő üzembe helyezéséhez használja:
+Az Azure CLI-vel ebben a példában sablon üzembe helyezéséhez használja:
 
 ```azurecli-interactive
 az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/substring.json
 ```
 
-A példa sablon PowerShell használatával történő üzembe helyezéséhez használja:
+Ez a PowerShell használatával például a sablon üzembe helyezéséhez használja:
 
 ```powershell
 New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/substring.json
@@ -1746,22 +1746,22 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 ## <a name="take"></a>hajtsa végre a megfelelő
 `take(originalValue, numberToTake)`
 
-A karakterlánc vagy tömb a megadott számú elemet a tömb kezdetétől a kezdetétől a megadott számú karaktert karakterláncot ad vissza.
+A megadott számú karaktert karakterláncot ad vissza. a karakterlánc vagy egy tömb a megadott számú elem a tömb a kezdetektől az elejéről.
 
 ### <a name="parameters"></a>Paraméterek
 
 | Paraméter | Szükséges | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| originalValue |Igen |a tömb vagy karakterlánc |A tömb vagy karakterlánc az elemek érvénybe. |
-| numberToTake |Igen |int |Elemek és érvénybe karakterek száma. Ha ez az érték 0 vagy kisebb, üres tömb vagy karakterlánc adja vissza. Ha a megadott tömb vagy karakterlánc hossza nagyobb, a tömb vagy karakterlánc összes elemet visszaadja a. |
+| originalValue |Igen |tömb vagy karakterlánc |A tömböt vagy karakterláncot, hogy az elemek. |
+| numberToTake |Igen |int |Elemek vagy elvégzendő karakterek száma. Ha ez az érték 0 vagy kisebb, egy üres tömb vagy karakterlánc adja vissza. Ha nagyobb, mint a megadott tömb vagy karakterlánc hossza, a rendszer tömb vagy karakterlánc összes elemét adja vissza. |
 
-### <a name="return-value"></a>Visszatérési érték
+### <a name="return-value"></a>Vrácená hodnota
 
-Tömb vagy karakterlánc.
+Egy tömb vagy karakterlánc.
 
 ### <a name="examples"></a>Példák
 
-A következő [példa sablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/take.json) a megadott számú elemet az egy olyan tömbből, valamint a karakterlánc karaktereit.
+A következő [példasablonja](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/take.json) vesz igénybe a megadott számú elem a tömbből, és a egy karakterláncból karakterből.
 
 ```json
 {
@@ -1803,20 +1803,20 @@ A következő [példa sablon](https://github.com/Azure/azure-docs-json-samples/b
 }
 ```
 
-Az alapértelmezett értékeit az előző példából kimenete:
+Az alapértelmezett értékeket az előző példa kimenete a következő:
 
 | Name (Név) | Típus | Érték |
 | ---- | ---- | ----- |
 | arrayOutput | Tömb | ["egy", "két"] |
-| stringOutput | Karakterlánc | be |
+| stringOutput | Sztring | be |
 
-A példa sablon Azure parancssori felülettel történő üzembe helyezéséhez használja:
+Az Azure CLI-vel ebben a példában sablon üzembe helyezéséhez használja:
 
 ```azurecli-interactive
 az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/take.json
 ```
 
-A példa sablon PowerShell használatával történő üzembe helyezéséhez használja:
+Ez a PowerShell használatával például a sablon üzembe helyezéséhez használja:
 
 ```powershell
 New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/take.json
@@ -1833,15 +1833,15 @@ Kisbetűsre alakítja át a megadott karakterlánc.
 
 | Paraméter | Szükséges | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| stringToChange |Igen |karakterlánc |Az érték kisbetűsre konvertálja. |
+| stringToChange |Igen |sztring |Kisbetű alakítandó érték. |
 
-### <a name="return-value"></a>Visszatérési érték
+### <a name="return-value"></a>Vrácená hodnota
 
-A karakterlánc kisbetűsre alakítja.
+A karakterlánc kisbetűsre konvertálja.
 
 ### <a name="examples"></a>Példák
 
-A következő [példa sablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/tolower.json) alakítja át a paraméter értékét, kisbetű és nagybetű.
+A következő [példasablonja](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/tolower.json) kisbetű, nagybetű és a egy paraméter értéke alakítja át.
 
 ```json
 {
@@ -1867,20 +1867,20 @@ A következő [példa sablon](https://github.com/Azure/azure-docs-json-samples/b
 }
 ```
 
-Az alapértelmezett értékeit az előző példából kimenete:
+Az alapértelmezett értékeket az előző példa kimenete a következő:
 
 | Name (Név) | Típus | Érték |
 | ---- | ---- | ----- |
-| toLowerOutput | Karakterlánc | egy két há' |
-| toUpperOutput | Karakterlánc | EGY KÉT HÁ' |
+| toLowerOutput | Sztring | egy két há' |
+| toUpperOutput | Sztring | EGY KÉT HÁ' |
 
-A példa sablon Azure parancssori felülettel történő üzembe helyezéséhez használja:
+Az Azure CLI-vel ebben a példában sablon üzembe helyezéséhez használja:
 
 ```azurecli-interactive
 az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/tolower.json
 ```
 
-A példa sablon PowerShell használatával történő üzembe helyezéséhez használja:
+Ez a PowerShell használatával például a sablon üzembe helyezéséhez használja:
 
 ```powershell
 New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/tolower.json
@@ -1891,21 +1891,21 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 ## <a name="toupper"></a>toUpper
 `toUpper(stringToChange)`
 
-A megadott karakterlánc nagybetűvel alakítja.
+A megadott karakterlánc nagybetűs konvertálja.
 
 ### <a name="parameters"></a>Paraméterek
 
 | Paraméter | Szükséges | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| stringToChange |Igen |karakterlánc |A nagybetűvel átalakítása érték. |
+| stringToChange |Igen |sztring |A nagybetűs alakítandó érték. |
 
-### <a name="return-value"></a>Visszatérési érték
+### <a name="return-value"></a>Vrácená hodnota
 
-A karakterlánc nagybetűsre alakítja.
+A karakterlánc nagybetűs dátumformátumra alakítja át.
 
 ### <a name="examples"></a>Példák
 
-A következő [példa sablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/tolower.json) alakítja át a paraméter értékét, kisbetű és nagybetű.
+A következő [példasablonja](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/tolower.json) kisbetű, nagybetű és a egy paraméter értéke alakítja át.
 
 ```json
 {
@@ -1931,20 +1931,20 @@ A következő [példa sablon](https://github.com/Azure/azure-docs-json-samples/b
 }
 ```
 
-Az alapértelmezett értékeit az előző példából kimenete:
+Az alapértelmezett értékeket az előző példa kimenete a következő:
 
 | Name (Név) | Típus | Érték |
 | ---- | ---- | ----- |
-| toLowerOutput | Karakterlánc | egy két há' |
-| toUpperOutput | Karakterlánc | EGY KÉT HÁ' |
+| toLowerOutput | Sztring | egy két há' |
+| toUpperOutput | Sztring | EGY KÉT HÁ' |
 
-A példa sablon Azure parancssori felülettel történő üzembe helyezéséhez használja:
+Az Azure CLI-vel ebben a példában sablon üzembe helyezéséhez használja:
 
 ```azurecli-interactive
 az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/tolower.json
 ```
 
-A példa sablon PowerShell használatával történő üzembe helyezéséhez használja:
+Ez a PowerShell használatával például a sablon üzembe helyezéséhez használja:
 
 ```powershell
 New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/tolower.json
@@ -1955,21 +1955,21 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 ## <a name="trim"></a>Trim
 `trim (stringToTrim)`
 
-Eltávolítja az összes kezdő és záró üres karaktereket a megadott karakterlánc.
+A megadott karakterlánc eltávolítja az összes kezdő és záró elválasztó karaktert.
 
 ### <a name="parameters"></a>Paraméterek
 
 | Paraméter | Szükséges | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| stringToTrim |Igen |karakterlánc |A vágásokról érték. |
+| stringToTrim |Igen |sztring |Az érték, amelyből törölni kell. |
 
-### <a name="return-value"></a>Visszatérési érték
+### <a name="return-value"></a>Vrácená hodnota
 
-A karakterlánc nélkül kezdő és záró üres karaktereket.
+A karakterlánc nélkül kezdő és záró elválasztó karaktert.
 
 ### <a name="examples"></a>Példák
 
-A következő [példa sablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/trim.json) levágja a üres karaktereket és a paraméter.
+A következő [példasablonja](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/trim.json) az üres karaktereket a paraméterből származó levágja.
 
 ```json
 {
@@ -1991,19 +1991,19 @@ A következő [példa sablon](https://github.com/Azure/azure-docs-json-samples/b
 }
 ```
 
-Az alapértelmezett értékeit az előző példából kimenete:
+Az alapértelmezett értékeket az előző példa kimenete a következő:
 
 | Name (Név) | Típus | Érték |
 | ---- | ---- | ----- |
-| térjen vissza | Karakterlánc | egy két há' |
+| a visszaadandó | Sztring | egy két há' |
 
-A példa sablon Azure parancssori felülettel történő üzembe helyezéséhez használja:
+Az Azure CLI-vel ebben a példában sablon üzembe helyezéséhez használja:
 
 ```azurecli-interactive
 az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/trim.json
 ```
 
-A példa sablon PowerShell használatával történő üzembe helyezéséhez használja:
+Ez a PowerShell használatával például a sablon üzembe helyezéséhez használja:
 
 ```powershell
 New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/trim.json
@@ -2020,18 +2020,18 @@ A paraméterként megadott értékek alapján determinisztikus kivonat karakterl
 
 | Paraméter | Szükséges | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| baseString |Igen |karakterlánc |Az értéknek a kivonatoló függvényt egy egyedi karakterlánc létrehozásához. |
-| szükség szerint további paraméterek |Nem |karakterlánc |Az érték, amely meghatározza a egyediségi szintű létrehozásához szükséges annyi karakterláncok adhat hozzá. |
+| baseString |Igen |sztring |Hozzon létre egy egyedi karakterlánccá, a kivonatoló függvényt a használt érték. |
+| További paraméterek szükséges |Nem |sztring |Tetszőleges számú karakterláncok létrehozása, amely az egyediség szintjét határozza meg az érték szükség szerint adhat hozzá. |
 
 ### <a name="remarks"></a>Megjegyzések
 
-Ez a funkció akkor hasznos, ha kell létrehoznia egy erőforrást egy egyedi nevet. Az eredmény egyediségének hatókörét korlátozó paraméter értékeket ad meg. Megadhatja, hogy egyedi előfizetés, a csoport vagy a központi telepítési le-e a neve. 
+Ez a funkció akkor hasznos, ha szeretne létrehozni egy egyedi nevet. Azt adja meg a paraméterértékeket, hogy az eredmény az egyediség hatókörének korlátozása. Megadhatja, hogy a név egyediségét lefelé az előfizetés, erőforráscsoport vagy üzembe helyezés. 
 
-A visszaadott érték nem véletlenszerű karakterlánc, hanem inkább a kivonatoló függvényt eredményét. A visszaadott érték 13 karakterig. Nincs globálisan egyedi. Érdemes lehet az érték kombinálhatja az elnevezési, kifejező nevet létrehozni a előtaggal kezdődik. A következő példa bemutatja a visszaadott érték formátuma. A tényleges érték függ a megadott paraméterek.
+A visszaadott érték nem egy véletlenszerű karakterlánc, hanem inkább a kivonatolási függvény eredménye. A visszaadott érték 13 karakterig terjedhet. Nem globálisan egyedi. Érdemes úgy, hogy az érték az elnevezési konvenciókhoz, és hozzon létre egy beszédes nevet a előtaggal. Az alábbi példa bemutatja a visszaadott érték formátuma. A tényleges érték a megadott paraméter alapján változik.
 
     tcvhiyu5h2o5o
 
-A következő példák szemléltetik a uniqueString segítségével hozzon létre egy egyedi értéket a gyakran használt szintek.
+Az alábbi példák bemutatják, hogyan hozzon létre egy egyedi értéket a gyakran használt szintek uniqueString használatával.
 
 Egyedi előfizetés hatóköre
 
@@ -2045,13 +2045,13 @@ Egyedi erőforráscsoport hatóköre
 "[uniqueString(resourceGroup().id)]"
 ```
 
-Egyedi telepítési erőforrás csoport hatóköre
+Egyedi erőforráscsoport üzembe helyezési hatóköre
 
 ```json
 "[uniqueString(resourceGroup().id, deployment().name)]"
 ```
 
-A következő példa bemutatja, hogyan hozzon létre egy tárfiókot, az erőforráscsoport alapján egyedi nevét. Az erőforráscsoport belül a név nincs egyedi, ha a megszokott módon.
+Az alábbi példa bemutatja, hogyan hozhat létre egy storage-fiókot az erőforráscsoportban alapján egyedi nevét. Az erőforráscsoportban a név nem egyedi, ha azonos módon.
 
 ```json
 "resources": [{ 
@@ -2060,13 +2060,13 @@ A következő példa bemutatja, hogyan hozzon létre egy tárfiókot, az erőfor
     ...
 ```
 
-### <a name="return-value"></a>Visszatérési érték
+### <a name="return-value"></a>Vrácená hodnota
 
-13 karaktereket tartalmazó karakterláncot.
+13 karaktert tartalmazó karakterlánc.
 
 ### <a name="examples"></a>Példák
 
-A következő [példa sablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/uniquestring.json) uniquestring eredményeket ad vissza:
+A következő [példasablonja](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/uniquestring.json) uniquestring eredményeket adja vissza:
 
 ```json
 {
@@ -2086,13 +2086,13 @@ A következő [példa sablon](https://github.com/Azure/azure-docs-json-samples/b
 }
 ```
 
-A példa sablon Azure parancssori felülettel történő üzembe helyezéséhez használja:
+Az Azure CLI-vel ebben a példában sablon üzembe helyezéséhez használja:
 
 ```azurecli-interactive
 az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/uniquestring.json
 ```
 
-A példa sablon PowerShell használatával történő üzembe helyezéséhez használja:
+Ez a PowerShell használatával például a sablon üzembe helyezéséhez használja:
 
 ```powershell
 New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/uniquestring.json
@@ -2103,30 +2103,30 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 ## <a name="uri"></a>uri azonosító
 `uri (baseUri, relativeUri)`
 
-A baseUri és a relativeUri karakterlánc kombinálásával hoz létre egy abszolút URI.
+Egyesíti a baseUri és a relativeUri karakterláncot hoz létre absolutní identifikátor URI.
 
 ### <a name="parameters"></a>Paraméterek
 
 | Paraméter | Szükséges | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| a baseUri |Igen |karakterlánc |Az alap URI-azonosító karakterláncot. |
-| relativeUri |Igen |karakterlánc |A relatív uri karakterlánc hozzáadása az alap URI-azonosító karakterláncot. |
+| baseUri |Igen |sztring |Az alap uri karakterlánc. |
+| relativeUri |Igen |sztring |A relatív uri karakterlánc hozzáadása az alap uri-karakterláncot. |
 
-Az érték a **baseUri** a paraméter egy adott fájlt tartalmazhat, de csak az alap elérési utat használja az URI konstrukciója során. Például, hogy `http://contoso.com/resources/azuredeploy.json` alap URI-azonosítója a baseUri paraméter kiemelve `http://contoso.com/resources/`.
+Az érték a **baseUri** paraméter egy adott fájlt is tartalmazhat, de csak az alapútvonal létrehozásakor az URI-t használja. Például passing `http://contoso.com/resources/azuredeploy.json` egy alap URI-ját baseUri paraméter eredményként `http://contoso.com/resources/`.
 
-### <a name="return-value"></a>Visszatérési érték
+### <a name="return-value"></a>Vrácená hodnota
 
-Egy karakterlánc, amely az alapszintű és a relatív értékek abszolút URI.
+Az abszolút URI Azonosítónak a kiinduló és relatív értékeket képviselő karakterláncot.
 
 ### <a name="examples"></a>Példák
 
-A következő példa bemutatja, hogyan egy hivatkozást a beágyazott sablonok alapján a szülő-sablon létrehozásához.
+Az alábbi példa bemutatja, hogyan hozhat létre az érték a fölérendelt sablon alapján egy beágyazott sablont mutató hivatkozást.
 
 ```json
 "templateLink": "[uri(deployment().properties.templateLink.uri, 'nested/azuredeploy.json')]"
 ```
 
-A következő [példa sablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/uri.json) uri, uriComponent és uriComponentToString használatát ismerteti:
+A következő [példasablonja](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/uri.json) uri uriComponent és uriComponentToString használatát ismerteti:
 
 ```json
 {
@@ -2155,21 +2155,21 @@ A következő [példa sablon](https://github.com/Azure/azure-docs-json-samples/b
 }
 ```
 
-Az alapértelmezett értékeit az előző példából kimenete:
+Az alapértelmezett értékeket az előző példa kimenete a következő:
 
 | Name (Név) | Típus | Érték |
 | ---- | ---- | ----- |
-| uriOutput | Karakterlánc | http://contoso.com/resources/nested/azuredeploy.json |
-| componentOutput | Karakterlánc | HTTP%3a%2f%2Fcontoso.com%2Fresources%2Fnested%2Fazuredeploy.JSON |
-| toStringOutput | Karakterlánc | http://contoso.com/resources/nested/azuredeploy.json |
+| uriOutput | Sztring | http://contoso.com/resources/nested/azuredeploy.json |
+| componentOutput | Sztring | HTTP%3a%2f%2Fcontoso.com%2Fresources%2Fnested%2Fazuredeploy.JSON |
+| toStringOutput | Sztring | http://contoso.com/resources/nested/azuredeploy.json |
 
-A példa sablon Azure parancssori felülettel történő üzembe helyezéséhez használja:
+Az Azure CLI-vel ebben a példában sablon üzembe helyezéséhez használja:
 
 ```azurecli-interactive
 az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/uri.json
 ```
 
-A példa sablon PowerShell használatával történő üzembe helyezéséhez használja:
+Ez a PowerShell használatával például a sablon üzembe helyezéséhez használja:
 
 ```powershell
 New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/uri.json
@@ -2180,21 +2180,21 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 ## <a name="uricomponent"></a>uriComponent
 `uricomponent(stringToEncode)`
 
-Kódolja URI.
+Kódol egy URI-t.
 
 ### <a name="parameters"></a>Paraméterek
 
 | Paraméter | Szükséges | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| stringToEncode |Igen |karakterlánc |Az érték kódolására. |
+| stringToEncode |Igen |sztring |A kódolni kívánt érték. |
 
-### <a name="return-value"></a>Visszatérési érték
+### <a name="return-value"></a>Vrácená hodnota
 
-A URI karakterlánc kódolt érték.
+Az URI karakterláncként kódolt érték.
 
 ### <a name="examples"></a>Példák
 
-A következő [példa sablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/uri.json) uri, uriComponent és uriComponentToString használatát ismerteti:
+A következő [példasablonja](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/uri.json) uri uriComponent és uriComponentToString használatát ismerteti:
 
 ```json
 {
@@ -2223,21 +2223,21 @@ A következő [példa sablon](https://github.com/Azure/azure-docs-json-samples/b
 }
 ```
 
-Az alapértelmezett értékeit az előző példából kimenete:
+Az alapértelmezett értékeket az előző példa kimenete a következő:
 
 | Name (Név) | Típus | Érték |
 | ---- | ---- | ----- |
-| uriOutput | Karakterlánc | http://contoso.com/resources/nested/azuredeploy.json |
-| componentOutput | Karakterlánc | HTTP%3a%2f%2Fcontoso.com%2Fresources%2Fnested%2Fazuredeploy.JSON |
-| toStringOutput | Karakterlánc | http://contoso.com/resources/nested/azuredeploy.json |
+| uriOutput | Sztring | http://contoso.com/resources/nested/azuredeploy.json |
+| componentOutput | Sztring | HTTP%3a%2f%2Fcontoso.com%2Fresources%2Fnested%2Fazuredeploy.JSON |
+| toStringOutput | Sztring | http://contoso.com/resources/nested/azuredeploy.json |
 
-A példa sablon Azure parancssori felülettel történő üzembe helyezéséhez használja:
+Az Azure CLI-vel ebben a példában sablon üzembe helyezéséhez használja:
 
 ```azurecli-interactive
 az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/uri.json
 ```
 
-A példa sablon PowerShell használatával történő üzembe helyezéséhez használja:
+Ez a PowerShell használatával például a sablon üzembe helyezéséhez használja:
 
 ```powershell
 New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/uri.json
@@ -2248,21 +2248,21 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 ## <a name="uricomponenttostring"></a>uriComponentToString
 `uriComponentToString(uriEncodedString)`
 
-Adja vissza a URI karakterlánc kódolású érték.
+Visszaadása egy URI karakterláncként kódolt érték.
 
 ### <a name="parameters"></a>Paraméterek
 
 | Paraméter | Szükséges | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| uriEncodedString |Igen |karakterlánc |Az URI kódolású értékét karakterlánccá konvertálni. |
+| uriEncodedString |Igen |sztring |Az URI-ként kódolt karakterlánc alakítandó érték. |
 
-### <a name="return-value"></a>Visszatérési érték
+### <a name="return-value"></a>Vrácená hodnota
 
-A dekódolt karakterlánc URI-kódolt érték.
+A dekódolt karakterlánc URI érték kódolva.
 
 ### <a name="examples"></a>Példák
 
-A következő [példa sablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/uri.json) uri, uriComponent és uriComponentToString használatát ismerteti:
+A következő [példasablonja](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/uri.json) uri uriComponent és uriComponentToString használatát ismerteti:
 
 ```json
 {
@@ -2291,21 +2291,21 @@ A következő [példa sablon](https://github.com/Azure/azure-docs-json-samples/b
 }
 ```
 
-Az alapértelmezett értékeit az előző példából kimenete:
+Az alapértelmezett értékeket az előző példa kimenete a következő:
 
 | Name (Név) | Típus | Érték |
 | ---- | ---- | ----- |
-| uriOutput | Karakterlánc | http://contoso.com/resources/nested/azuredeploy.json |
-| componentOutput | Karakterlánc | HTTP%3a%2f%2Fcontoso.com%2Fresources%2Fnested%2Fazuredeploy.JSON |
-| toStringOutput | Karakterlánc | http://contoso.com/resources/nested/azuredeploy.json |
+| uriOutput | Sztring | http://contoso.com/resources/nested/azuredeploy.json |
+| componentOutput | Sztring | HTTP%3a%2f%2Fcontoso.com%2Fresources%2Fnested%2Fazuredeploy.JSON |
+| toStringOutput | Sztring | http://contoso.com/resources/nested/azuredeploy.json |
 
-A példa sablon Azure parancssori felülettel történő üzembe helyezéséhez használja:
+Az Azure CLI-vel ebben a példában sablon üzembe helyezéséhez használja:
 
 ```azurecli-interactive
 az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/uri.json
 ```
 
-A példa sablon PowerShell használatával történő üzembe helyezéséhez használja:
+Ez a PowerShell használatával például a sablon üzembe helyezéséhez használja:
 
 ```powershell
 New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/uri.json
@@ -2314,6 +2314,6 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 ## <a name="next-steps"></a>További lépések
 * A szakaszok az Azure Resource Manager-sablon ismertetését lásd: [Azure Resource Manager-sablonok készítése](resource-group-authoring-templates.md).
 * Több sablon egyesíteni, lásd: [kapcsolt sablonok használata az Azure Resource Manager](resource-group-linked-templates.md).
-* Megadott számú alkalommal felépítésének egy adott típusú erőforrás létrehozása esetén lásd: [erőforrások több példánya létrehozása az Azure Resource Manager](resource-group-create-multiple.md).
-* A sablon létrehozott központi telepítéséről, olvassa el [Azure Resource Manager-sablon az alkalmazás központi telepítését](resource-group-template-deploy.md).
+* A megadott számú alkalommal újrafuttathatja egy adott típusú erőforrás létrehozásakor, lásd: [több erőforráspéldány létrehozása az Azure Resource Manager](resource-group-create-multiple.md).
+* Ellenőrizze, hogyan helyezheti üzembe a létrehozott sablont, tekintse meg a [alkalmazás üzembe helyezése Azure Resource Manager-sablonnal](resource-group-template-deploy.md).
 

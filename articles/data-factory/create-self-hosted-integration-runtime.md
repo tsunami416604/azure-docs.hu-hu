@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/15/2018
 ms.author: abnarain
-ms.openlocfilehash: e22d26850114162c6dbd38797071120d388ac6b0
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 379dd0efb0c40cbab6e356f011938d3e6116117e
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47162270"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47434194"
 ---
 # <a name="how-to-create-and-configure-self-hosted-integration-runtime"></a>Hogyan hozhat létre, és a helyi integrációs modul konfigurálása
 Az Integration Runtime (IR) a különböző hálózati környezetekben adatintegrációs képességeket biztosít az Azure Data Factory által használt számítási infrastruktúra áll. Integrációs modul kapcsolatos részletekért lásd: [Integration Runtime áttekintése](concepts-integration-runtime.md).
@@ -32,7 +32,7 @@ Ez a dokumentum bemutatja, hogyan hozzon létre és konfigurálhatja a helyi IR.
     ```powershell
     Set-AzureRmDataFactoryV2IntegrationRuntime -ResourceGroupName $resourceGroupName -DataFactoryName $dataFactoryName -Name $selfHostedIntegrationRuntimeName -Type SelfHosted -Description "selfhosted IR description"
     ```
-2. Töltse le és telepítse a saját üzemeltetésű integration runtime (helyi gépen).
+2. [Töltse le](https://www.microsoft.com/download/details.aspx?id=39717) , és telepítse a saját üzemeltetésű integration runtime (helyi gépen).
 3. Kérje le a hitelesítési kulcsot, és saját üzemeltetésű integrációs modult regisztrálhassa a a kulcsot. Itt látható egy PowerShell-példa:
 
     ```powershell
@@ -95,7 +95,7 @@ Saját üzemeltetésű integrációs modult telepítheti az MSI-telepítő csoma
 9. Az Azure PowerShell-lel hitelesítési kulcs beszerzése. PowerShell-példa hitelesítési kulcs beolvasása céljából:
 
     ```powershell
-    Get-AzureRmDataFactoryV2IntegrationRuntimeKey -ResourceGroupName $resouceGroupName -DataFactoryName $dataFactoryName -Name $selfHostedIntegrationRuntime
+    Get-AzureRmDataFactoryV2IntegrationRuntimeKey -ResourceGroupName $resourceGroupName -DataFactoryName $dataFactoryName -Name $selfHostedIntegrationRuntime
     ```
 11. Az a **integrációs modul regisztrálása (saját üzemeltetésű)** oldal a Microsoft Integration Runtime konfigurációkezelőjének a gépen futó, tegye a következőket:
     1. Illessze be a **hitelesítési kulcs** szöveg területén.

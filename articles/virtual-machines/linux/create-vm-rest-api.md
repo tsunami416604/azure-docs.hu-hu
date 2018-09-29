@@ -15,16 +15,32 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 06/05/2018
 ms.author: cynthn
-ms.openlocfilehash: 11d9f5efb452d46e5ca30169861582f6f2bbbd1b
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 3eeaee9bc6320231f10aa85227e2f43756181806
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46969393"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47433480"
 ---
 # <a name="create-a-linux-virtual-machine-that-uses-ssh-authentication-with-the-rest-api"></a>Hozzon létre egy Linux virtuális gép SSH-hitelesítést használó REST API-val
 
-Egy virtuális gépet (VM) az Azure-ban különböző paraméterek, például hely, hardver mérete, operációs rendszer lemezképét és bejelentkezési hitelesítő adatokat határozza meg. Ez a cikk bemutatja, hogyan hozhat létre Linux rendszerű virtuális gép SSH-hitelesítést használó a REST API használatával.
+Egy Linux rendszerű virtuális gép (VM) az Azure-ban különböző erőforrásokhoz, például a lemezek áll, és a hálózati adapterek, és határozza meg a paramétereket, például a helyét, méretét és az operációs rendszer lemezkép és a hitelesítési beállításokat.
+
+Létrehozhat Linux virtuális gép az Azure Portalon, az Azure CLI 2.0, számos Azure SDK-k az Azure Resource Manager-sablonok és például az Ansible vagy Terraform számos külső eszközök. Ezek az eszközök végső soron a REST API használata a Linux rendszerű virtuális gép létrehozásához.
+
+Ez a cikk bemutatja, hogyan a felügyelt lemezek és SSH-hitelesítést Ubuntu 18.04-LTS rendszert futtató Linux rendszerű virtuális gép létrehozása a REST API használatával.
+
+## <a name="before-you-start"></a>Előkészületek
+
+Hozzon létre, és küldje el a kérelmet, mielőtt lesz szüksége:
+
+* A `{subscription-id}` az előfizetéshez
+  * Ha több előfizetéssel rendelkezik, tekintse meg [több előfizetés használata](/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest#working-with-multiple-subscriptions)
+* A `{resourceGroupName}` előre létrehozott
+* A [virtuális hálózati adapter](../../virtual-network/virtual-network-network-interface.md) ugyanabban az erőforráscsoportban
+* Ssh-kulcs (is [hozzon létre egy új](mac-create-ssh-keys.md) Ha nem rendelkezik ilyennel)
+
+## <a name="request-basics"></a>Kérelem alapjai
 
 Hozzon létre vagy frissíthető egy virtuális gép, használja a következő *PUT* műveletet:
 
@@ -32,9 +48,7 @@ Hozzon létre vagy frissíthető egy virtuális gép, használja a következő *
 PUT https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}?api-version=2017-12-01
 ```
 
-## <a name="create-a-request"></a>Kérés létrehozása
-
-Hozhat létre a *PUT* kérelem, a `{subscription-id}` paraméter megadása kötelező. Ha több előfizetéssel rendelkezik, tekintse meg [több előfizetés használata](/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest#working-with-multiple-subscriptions). Megadhat egy `{resourceGroupName}` és `{vmName}` az erőforrások és a `api-version` paraméter. Ez a cikk `api-version=2017-12-01`.
+Mellett a `{subscription-id}` és `{resourceGroupName}` paraméterek kell megadnia a `{vmName}` (`api-version` nem kötelező, azonban ez a cikk teszteltük `api-version=2017-12-01`)
 
 A következő fejléceket szükség:
 
@@ -43,7 +57,7 @@ A következő fejléceket szükség:
 | *A Content-Type:*  | Kötelező. Állítsa be `application/json`. |
 | *Hitelesítés:* | Kötelező. Egy érvényes értékre `Bearer` [hozzáférési jogkivonat](https://docs.microsoft.com/rest/api/azure/#authorization-code-grant-interactive-clients). |
 
-A kérés létrehozásával kapcsolatos további információkért lásd: [egy REST API-kérés/válasz összetevői](/rest/api/azure/#components-of-a-rest-api-requestresponse).
+REST API-kérelmek használatával kapcsolatos általános információkért lásd: [egy REST API-kérés/válasz összetevői](/rest/api/azure/#components-of-a-rest-api-requestresponse).
 
 ## <a name="create-the-request-body"></a>A kérelem törzsének létrehozása
 
@@ -58,15 +72,12 @@ A következő gyakori definíciókat hozhat létre a kéréstörzs használható
 | properties.osProfile       |          | [OSProfile](/rest/api/compute/virtualmachines/createorupdate#osprofile)             | Meghatározza a virtuális gép operációs rendszer beállításait. |
 | properties.networkProfile  |          | [NetworkProfile](/rest/api/compute/virtualmachines/createorupdate#networkprofile)   | Adja meg a hálózati adaptereket a virtuális gép. |
 
-A rendelkezésre álló definíciók a kérelem törzsében szereplő teljes listáját lásd: [virtuális gépek létrehozása vagy frissítése a kérelem törzsében defintions](/rest/api/compute/virtualmachines/createorupdate#definitions).
-
-### <a name="example-request-body"></a>Példa kérelem törzse
-
-A következő példa kérelem törzse meghatározza egy Ubuntu 18.04-LTS-rendszerképhez, amely prémium szintű felügyelt lemezeket használ. SSH nyilvános kulcsos hitelesítés szolgál, és a virtuális gép használ egy meglévő virtuális hálózati kártya (NIC), amely rendelkezik [korábban létrehozott](../../virtual-network/virtual-network-network-interface.md). Adja meg a nyilvános SSH-kulcsot a a *osProfile.linuxConfiguration.ssh.publicKeys.keyData* mező. Ha szükséges, [SSH-kulcspár létrehozása](mac-create-ssh-keys.md).
+Egy példa kérelem törzse nem éri el. Győződjön meg arról, megadhatja a virtuális gép nevét, a `{computerName}` és `{name}` paraméterek, a csoportban létrehozott hálózati adapter neve `networkInterfaces`, a felhasználónevére `adminUsername` és `path`, és a *nyilvános*az SSH-kulcspár része (található, például `~/.ssh/id_rsa.pub`) a `keyData`. Más paraméterek módosítása érdemes `location` és `vmSize`.  
 
 ```json
 {
   "location": "eastus",
+  "name": "{vmName}",
   "properties": {
     "hardwareProfile": {
       "vmSize": "Standard_DS1_v2"
@@ -89,7 +100,7 @@ A következő példa kérelem törzse meghatározza egy Ubuntu 18.04-LTS-rendsze
     },
     "osProfile": {
       "adminUsername": "{your-username}",
-      "computerName": "myVM",
+      "computerName": "{vmName}",
       "linuxConfiguration": {
         "ssh": {
           "publicKeys": [
@@ -105,19 +116,24 @@ A következő példa kérelem törzse meghatározza egy Ubuntu 18.04-LTS-rendsze
     "networkProfile": {
       "networkInterfaces": [
         {
-          "id": "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkInterfaces/{existing-nic-name}",
+          "id": "/subscriptions/{subscription-id}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkInterfaces/{existing-nic-name}",
           "properties": {
             "primary": true
           }
         }
       ]
     }
-  },
-  "name": "myVM"
+  }
 }
 ```
 
-## <a name="responses"></a>Válaszok
+A rendelkezésre álló definíciók a kérelem törzsében szereplő teljes listáját lásd: [virtuális gépek létrehozása vagy frissítése a kérelem törzsében defintions](/rest/api/compute/virtualmachines/createorupdate#definitions).
+
+## <a name="sending-the-request"></a>A kérés küldése
+
+Az ügyfél, a beállításokat a HTTP-kérelem küldéséhez használhatja. Is használhatja egy [böngészőben eszköz](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate) kattintva a **kipróbálás** gombra.
+
+### <a name="responses"></a>Válaszok
 
 Nincsenek a művelethez létrehozni vagy frissíteni a virtuális gép két sikeres válaszok:
 
@@ -125,10 +141,6 @@ Nincsenek a művelethez létrehozni vagy frissíteni a virtuális gép két sike
 |-------------|-----------------------------------------------------------------------------------|-------------|
 | 200 OK      | [VirtualMachine](/rest/api/compute/virtualmachines/createorupdate#virtualmachine) | OK          |
 | 201 Created | [VirtualMachine](/rest/api/compute/virtualmachines/createorupdate#virtualmachine) | Létrehozva     |
-
-További információ a REST API-válaszok: [feldolgozni a válaszüzenet](/rest/api/azure/#process-the-response-message).
-
-### <a name="example-response"></a>Példaválasz
 
 Egy tömörített *201 Created* az előző példában kérelem törzse, amely létrehoz egy virtuális Gépet válasza egy *vmId* hozzá lett rendelve, és a *provisioningState* *Létrehozása*:
 
@@ -138,6 +150,8 @@ Egy tömörített *201 Created* az előző példában kérelem törzse, amely l�
     "provisioningState": "Creating"
 }
 ```
+
+További információ a REST API-válaszok: [feldolgozni a válaszüzenet](/rest/api/azure/#process-the-response-message).
 
 ## <a name="next-steps"></a>További lépések
 

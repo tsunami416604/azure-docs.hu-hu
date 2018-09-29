@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/25/2017
 ms.author: maxluk
-ms.openlocfilehash: ed0118584d51f08d64a88dc1e7e6e2ba5f95cb0a
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 07c2b506007daccd53a8b06a43064e6e274ac43b
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43042591"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47433358"
 ---
 # <a name="use-azure-toolkit-for-intellij-to-create-spark-applications-for-an-hdinsight-cluster"></a>IntelliJ-hez készült Azure eszközkészlet használata Spark-alkalmazások egy HDInsight-fürt létrehozása
 
@@ -181,8 +181,12 @@ Kapcsolat egy normál HDInsight-fürt Ambari felügyelt felhasználónév haszn�
 
         ![A Main osztály kiválasztása párbeszédpanel](./media/apache-spark-intellij-tool-plugin/hdi-submit-spark-app-3.png)
 
-      * Mivel ebben a példában az alkalmazás kódja nem igényel parancssori argumentumot vagy hivatkozás JAR-fájlok kivételével, vagy a fájlokat, akkor a többi mező üresen hagyhatja. Miután megadta az összes információt, a párbeszédpanelen az alábbi képen hasonlóan kell kinéznie.
+      * Megadhatja a kívánt adatokat. Tudnivalók a **feladat-konfigurációk**, az alapértelmezett érték van. Olvassa el és [Apache Livy REST API-val](http://livy.incubator.apache.org./docs/latest/rest-api.html) a kulcsokkal kapcsolatos további információt. A **parancssori argumentumok**, **hivatkozott JARs** és **hivatkozott fájlok** hasonlóan kell kinéznie a kép alatt. Olvassa el [Spark konfigurációs](https://spark.apache.org/docs/latest/configuration.html#runtime-environment) bővebben **hivatkozott JARs** és **hivatkozott fájlok**. Győződjön meg arról, hogy **hivatkozott JARs** és **hivatkozott fájlok** megfelelően működjön, és a fürthöz, először küld be kell töltse fel az erőforrásokat. Tekintse meg [hogyan tölthetők fel az erőforrások a fürt](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-storage-explorer). A Küldés párbeszédpanelen a következő képen kell hasonlítania.
         
+        ![A Spark küldésének párbeszédpanel box-konfigurációs jelentése](./media/apache-spark-intellij-tool-plugin/submit-job-configurations.png)
+
+        ![A Spark küldésének párbeszédpanelen be jar-fájlok jelentése](./media/apache-spark-intellij-tool-plugin/jar-files-meaning.png)
+
         ![A Spark küldésének párbeszédpanel](./media/apache-spark-intellij-tool-plugin/hdi-submit-spark-app-2.png)
 
    c. A **Spark küldésének** fülre az ablak alján el kell indulnia, megjelenítés, a folyamat állapotát. Az alkalmazás a piros gomb kiválasztásával is leállíthatja a **Spark küldésének** ablak.

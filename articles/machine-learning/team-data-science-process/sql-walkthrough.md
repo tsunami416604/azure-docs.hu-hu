@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/29/2017
 ms.author: deguhath
-ms.openlocfilehash: 6e58429567e447002b1c9191bb8e50a4351649a9
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: 6e9813d989a54dbb1609a58dd502a7493d973faa
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "42057276"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47433718"
 ---
 # <a name="the-team-data-science-process-in-action-using-sql-server"></a>A csoportos adatelemzési folyamat működés közben: az SQL Server használata
 Ebben az oktatóanyagban vezeti végig a folyamat létrehozásának és üzembe helyezésének egy gépi tanulási modellt az SQL Server és a egy nyilvánosan elérhető adatkészlet használatával – a [NYC Taxi lelassítja](http://www.andresmh.com/nyctaxitrips/) adatkészlet. Az eljárást követi a szokásos adatelemzési munkafolyamathoz: fogadni, és Fedezze fel az adatokat, Funkciók tervezése, tanulás egyszerűbbé tételével majd hozhat létre és helyezhet üzembe modelleket.
@@ -582,7 +582,7 @@ Ebben a gyakorlatban tudjuk már megvizsgálta és fejthetők vissza az adatokat
 2. Válassza ki **Azure SQL Database** , a **adatforrás** a a **tulajdonságok** panel.
 3. Az adatbázis DNS-nevét adja meg a **adatbázis-kiszolgáló neve** mező. Formátum: `tcp:<your_virtual_machine_DNS_name>,1433`
 4. Adja meg a **adatbázisnév** a megfelelő mezőben.
-5. Adja meg a **SQL felhasználónév** a a ** kiszolgálói aqccount felhasználónevet és a jelszót a **kiszolgáló felhasználói fiók jelszava**.
+5. Adja meg a **SQL felhasználónév** a a **kiszolgáló felhasználói fiók nevét**, és a **jelszó** a a **kiszolgáló felhasználói fiók jelszava**.
 7. Az a **adatbázis-lekérdezés** szövegterület szerkesztése, illessze be a lekérdezést, amely a szükséges adatbázis-mezők (beleértve a címkéket például számított mezőket), és le az adatokat a kívánt mintanagyság minták.
 
 Az alábbi ábra egy példát egy bináris osztályozási kísérletet, közvetlenül az SQL Server adatbázisából az adatok olvasása van. Hasonló kísérletek többosztályos osztályozási és regressziós probléma lehet létrehozni.

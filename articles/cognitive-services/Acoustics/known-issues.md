@@ -9,12 +9,12 @@ ms.component: acoustics
 ms.topic: article
 ms.date: 08/17/2018
 ms.author: kylestorck
-ms.openlocfilehash: b0dd5e0c365c65fc7b29752f7885acb71bdb3df8
-ms.sourcegitcommit: 1aedb52f221fb2a6e7ad0b0930b4c74db354a569
+ms.openlocfilehash: c19b19cab33ae868f11ded0b7ce87dac99269596
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "40181695"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47431988"
 ---
 # <a name="known-issues"></a>Ismert problémák
 A következő ismert problémák léphetnek fel a projekt Akusztika a Tervező előzetes verzió használata esetén.
@@ -27,7 +27,7 @@ Ha átnevez egy jelenetet, a akusztikai paramétereket, hogy a jelenet tartozó 
 
 Ez kell alapértelmezett könnyebb megosztásához projektek között közreműködők relatív elérési utat. Áthidaló megoldásként viszonyított projektkönyvtár kell elérési útvonalának módosításához.
 
-## <a name="runtime-voxels-are-a-different-size-than-design-time-voxels"></a>Futásidejű voxels, mint a tervezési idejű voxels más méretre
+## <a name="runtime-voxels-are-a-different-size-than-scene-preview-voxels"></a>Futásidejű voxels mérete jelenet előzetes voxels eltér
 
 Ha mégis egy **Calculate** a a **mintavételek** lapon és a nézet a voxels hajtsa végre egy bake és nézet voxels azonos jelenet a futásidőben, a voxels különböző méretekre. Az üzem előtti bake látható voxels a voxels szimuláció használatban. A futási időben látható voxels mintavételi pontok közötti interpolációs szolgálnak. Emiatt előfordulhat, hogy inkonzisztencia, ahol portálok nyissa meg a futásidőben, amelyek ténylegesen nyílt nem fog megjelenni.
 
@@ -51,5 +51,5 @@ Győződjön meg arról, a lejátszó beállítások Scripting futtatókörnyeze
 Ellenőrizze a megfelelő hitelesítő adatokat az Azure-fiókjával, hogy a fiók támogatja-e a bake a kért csomópont típusa, és hogy a rendszeróra pontos használt.
 
 ## <a name="next-steps"></a>További lépések
-* Első lépések [a Unity-projektben Akusztika integrálása](getting-started.md)
+* Első lépések: [az akusztika integrálása a Unity-projektbe](getting-started.md)
 

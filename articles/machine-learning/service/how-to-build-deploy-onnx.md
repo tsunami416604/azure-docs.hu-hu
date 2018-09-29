@@ -9,12 +9,12 @@ ms.reviewer: jmartens
 ms.author: prasantp
 author: prasanthpul
 ms.date: 09/24/2018
-ms.openlocfilehash: acd5c1e1ae4aefa94ca4d1f6ef510ab1b028c3dd
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: d4ce2dc67b0d9229ac2605ab317594ea345c19b2
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47164896"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47434075"
 ---
 # <a name="onnx-and-azure-machine-learning-create-and-deploy-interoperable-ai-models"></a>ONNX és az Azure Machine Learning: hozzon létre és együttműködésre AI-modellek üzembe helyezése
 
@@ -68,7 +68,7 @@ Az Azure Machine Learning szolgáltatás üzembe helyezése, kezelése és figye
 
 ### <a name="install-and-configure-the-onnx-runtime"></a>Telepítse és konfigurálja az ONNX-futtatókörnyezet
 
-Az ONNX-modul az egy nagy teljesítményű következtetésekhez motor az ONNX-modellekkel. Tartalmaz egy Python API-t és a hardveres gyorsítás Ez a Processzor és GPU is. Jelenleg támogatja az 1.2-es ONNX-modellek és Ubuntu 16.04 linuxon futtatja.
+Az ONNX-modul az egy nagy teljesítményű következtetésekhez motor az ONNX-modellekkel. Tartalmaz egy Python API-t és a hardveres gyorsítás Ez a Processzor és GPU is. Jelenleg támogatja az 1.2-es ONNX-modellek és Ubuntu 16.04 linuxon futtatja. Mindkét [CPU](https://pypi.org/project/onnxruntime) és [GPU](https://pypi.org/project/onnxruntime-gpu) csomagok elérhetők az [PyPi.org](https://pypi.org).
 
 Az ONNX-modul telepítéséhez használja:
 ```python
@@ -173,13 +173,14 @@ A teljes körű API-referencia, lásd: a [ONNX-futtatókörnyezet referenciadoku
    A fájl `myenv.yml` a lemezkép szükséges függőségeit ismerteti. Ez [oktatóanyag](tutorial-deploy-models-with-aml.md#create-environment-file) hozzon létre egy környezetben fájlt például ezt a mintafájlt útmutatást:
 
    ```
-   name: myenv
-   channels:
-     - defaults
-   dependencies:
-     - pip:
-       - onnxruntime
-       - azureml-core
+   from azureml.core.conda_dependencies import CondaDependencies 
+
+   myenv = CondaDependencies()
+   myenv.add_pip_package("azureml-core")
+   myenv.add_pip_package("onnxruntime")
+
+   with open("myenv.yml","w") as f:
+    f.write(myenv.serialize_to_string())
    ```
 
 4. Az Azure Machine Learning, a ONNX modell üzembe helyezése:

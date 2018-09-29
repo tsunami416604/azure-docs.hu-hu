@@ -9,18 +9,18 @@ ms.component: speech-service
 ms.topic: article
 ms.date: 09/08/2018
 ms.author: v-jerkin
-ms.openlocfilehash: 776b8496ea3f46287e2eeec7c150b8d60ca3e553
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 5822c313cf0fb5848726cf85c46cda2a3a408264
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46964104"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47434619"
 ---
 # <a name="use-text-to-speech-in-speech-service"></a>Használja a "Szöveg-beszéd átalakítás" Speech service-ben
 
 A beszédfelismerési szolgáltatás szöveg-beszéd átalakítás funkciókat egy egyszerű HTTP-kérés biztosít. Ön `POST` a szöveget, a megfelelő végpontra és a szolgáltatás egy hangfájlt adja vissza (`.wav`) tartalmazó beszédszintetizátorral. Az alkalmazás használhatja ezt a hang, akkor kedveli.
 
-Szöveg-beszéd átalakítás lehet egyszerű szöveges (ASCII vagy UTF8), vagy egy kérelmet, a bejegyzés törzse [SSML](speech-synthesis-markup.md) dokumentumot. Egyszerű szöveges kérelmek egy alapértelmezett hangjával vannak szóbeli. A legtöbb esetben érdemes egy SSML szerv használja. A HTTP-kérelem tartalmaznia kell egy [engedélyezési](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis#authentication) token. 
+Szöveg-beszéd átalakítás lehet egyszerű szöveges (ASCII vagy UTF8), vagy egy kérelmet, a bejegyzés törzse [SSML](speech-synthesis-markup.md) dokumentumot. Egyszerű szöveges kérelmek egy alapértelmezett hangjával vannak szóbeli. A legtöbb esetben érdemes egy SSML szerv használja. A HTTP-kérelem tartalmaznia kell egy [engedélyezési](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis#authentication) token.
 
 A regionális szöveg-beszéd átalakítás végpontok Itt jelennek meg. Használja az egyik szükséges az előfizetéshez.
 
@@ -38,11 +38,11 @@ A hang megadásához használja a `<voice>` [SSML](speech-synthesis-markup.md) c
 </speak>
 ```
 
-Lásd: [szöveg-beszéd átalakítás beszédhangot](supported-languages.md#text-to-speech) listáját az elérhető hangok és nevét.
+Lásd: [szöveg-beszéd átalakítás beszédhangot](language-support.md#text-to-speech) listáját az elérhető hangok és nevét.
 
 ## <a name="make-a-request"></a>Kérés indítása
 
-Egy szöveg-beszéd átalakítás HTTP kérés érkezik POST módban a szöveget kell beszélt a kérelem törzsében. A HTTP-kérés törzse hossza legfeljebb 1024 karakter. A kérés a következő fejléceket kell lennie: 
+Egy szöveg-beszéd átalakítás HTTP kérés érkezik POST módban a szöveget kell beszélt a kérelem törzsében. A HTTP-kérés törzse hossza legfeljebb 1024 karakter. A kérés a következő fejléceket kell lennie:
 
 Fejléc|Értékek|Megjegyzések
 -|-|-

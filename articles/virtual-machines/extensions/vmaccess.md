@@ -3,7 +3,7 @@ title: Az Azure Linux rendszerű virtuális Gépekhez való hozzáférés alaphe
 description: Rendszergazda felhasználók kezelése és a Linux rendszerű virtuális gépek a VMAccess bővítmény, az Azure CLI használatával hozzáférés alaphelyzetbe állítása
 services: virtual-machines-linux
 documentationcenter: ''
-author: zroiy
+author: roiyz-msft
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -15,18 +15,21 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 05/10/2018
 ms.author: roiyz
-ms.openlocfilehash: e878f5c9f923b55a1eb94cefb1ecf021c81e884e
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 638ca5d1b1b68896ff5dcad70fedf27261ae96cb
+ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46998627"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47452054"
 ---
 # <a name="manage-administrative-users-ssh-and-check-or-repair-disks-on-linux-vms-using-the-vmaccess-extension-with-the-azure-cli"></a>Kezelheti a rendszergazda felhasználókat, az SSH és az ellenőrzés, vagy javítsa ki a VMAccess bővítmény használata az Azure CLI-vel Linux rendszerű virtuális gépek lemezeinek
 ## <a name="overview"></a>Áttekintés
 A Linuxos virtuális gép lemezét hibák láthatók. Valahogy a legfelső szintű jelszó alaphelyzetbe állítása, a Linux rendszerű virtuális gép vagy véletlenül törölt a titkos SSH-kulcs. Amely történt, az adatközpontok napban vissza, ha a meghajtó van, és nyissa meg a kiszolgálói konzolnál beolvasni a KVM kell. Úgy az Azure VMAccess bővítmény, mint a KVM kapcsoló, amely lehetővé teszi a hozzáférés visszaállítása, Linux vagy a lemez szintű karbantartásával konzol eléréséhez.
 
 Ez a cikk bemutatja, hogyan használhatja az Azure VMAccess bővítmény ellenőrzése vagy javítása, a lemez, felhasználói hozzáférés alaphelyzetbe állítása, rendszergazdai felhasználói fiókok kezelése vagy Linux rendszeren az SSH-konfigurációját frissíteni, ha Azure Resource Manager virtuális gépeken futnak. Ha klasszikus virtuális gépek – kezelésére van szüksége, kövesse az megtalálható a [klasszikus virtuális gép dokumentációja](../linux/classic/reset-access-classic.md). 
+ 
+> [!NOTE]
+> Ha a VMAccess bővítmény használatával a bejelentkezési AAD-bővítmény telepítése után a virtuális gép jelszavának alaphelyzetbe állítása az AAD bejelentkezési bővítmény ismételt engedélyezése az AAD-bejelentkezéséhez gépen futtatnia kell.
 
 ## <a name="prerequisites"></a>Előfeltételek
 ### <a name="operating-system"></a>Operációs rendszer

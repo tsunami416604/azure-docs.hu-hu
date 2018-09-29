@@ -12,15 +12,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/25/2018
+ms.date: 09/28/2018
 ms.author: sethm
 ms.reviewer: sijuman
-ms.openlocfilehash: b5a876ea8b5cc70ee0ca0dcac8628c12dc2b009b
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: ffd22f3612d55258737cb9c004b2b0f4e9326f07
+ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47413990"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47452513"
 ---
 # <a name="use-api-version-profiles-with-java-in-azure-stack"></a>API-verzióprofilok használata az Azure Stackben Javával
 
@@ -63,7 +63,7 @@ Az alábbi lépések segítségével a Java SDK telepítése:
 
 1.  Kövesse a Git telepítése a hivatalos utasításokat. Útmutatásért lásd: [első lépések – Git telepítése](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git).
 
-2.  Hivatalos utasításokat követve telepítse a [Java SDK](http://zulu.org/download/)) és [Maven](https://maven.apache.org/). A megfelelő verzió legyen az Java Developer Kit 8 verzióját. A megfelelő Apache Maven a 3.0-s verzió vagy újabb. A JAVA_HOME környezeti változót a rövid útmutató a Java Development Kitet telepítési helyére kell beállítani. További információkért lásd: [az első függvény létrehozása a Java és Maven](../../azure-functions/functions-create-first-java-maven.md).
+2.  Hivatalos utasításokat követve telepítse a [Java SDK](http://zulu.org/download/) és [Maven](https://maven.apache.org/). A megfelelő verzió legyen az Java Developer Kit 8 verzióját. A megfelelő Apache Maven a 3.0-s verzió vagy újabb. A JAVA_HOME környezeti változót a rövid útmutató a Java Development Kitet telepítési helyére kell beállítani. További információkért lásd: [az első függvény létrehozása a Java és Maven](../../azure-functions/functions-create-first-java-maven.md).
 
 3.  A megfelelő függőségi csomagokat telepíteni, nyissa meg a Pom.xml fájlt a Java-alkalmazás. Adja hozzá a függőség, az alábbi kódban látható módon:
 
@@ -89,7 +89,7 @@ Az alábbi lépések segítségével a Java SDK telepítése:
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Azure .NET SDK használata az Azure Stack használatával, adja meg a következő értékeket, és adja meg az értékeket a környezeti változókat. A környezeti változók beállítása, tekintse meg az alábbi táblázat az operációs rendszerének utasításokat.
+Az Azure Java SDK használata az Azure Stack használatával, adja meg a következő értékeket, és adja meg az értékeket a környezeti változókat. A környezeti változók beállítása, tekintse meg az alábbi táblázat az operációs rendszerének utasításokat.
 
 | Érték                     | Környezeti változók | Leírás                                                                                                                                                                                                          |
 | ------------------------- | --------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -102,7 +102,7 @@ Azure .NET SDK használata az Azure Stack használatával, adja meg a következ�
 
 Az Azure stack a bérlő Azonosítójának megkereséséhez kövesse az utasításokat található [Itt](../azure-stack-csp-ref-operations.md). A környezeti változók beállítása, tegye a következőket:
 
-### <a name="microsoft-windows"></a>A Microsoft Windows
+### <a name="microsoft-windows"></a>Microsoft Windows
 
 A környezeti változók beállítása egy Windows parancssorban, használja a következő formátumot:
 
@@ -128,7 +128,9 @@ Vegye figyelembe az alábbiakat:
 
 - A **ResourceManagerUrl** van az Azure Stack Development Kit (ASDK): https://management.local.azurestack.external/
 
-- A **ResourceManagerUrl** integrált rendszerek van: `https://management.<location>.ext-<machine-name>.masd.stbtest.microsoft.com/` a szükséges metaadatok lekérése céljából: `<ResourceManagerUrl>/metadata/endpoints?api-version=1.0`
+- A **ResourceManagerUrl** integrált rendszerek van: `https://management.<location>.ext-<machine-name>.masd.stbtest.microsoft.com/`
+
+A szükséges metaadatok lekérése céljából: `<ResourceManagerUrl>/metadata/endpoints?api-version=1.0`.
 
 JSON-mintafájlt:
 
@@ -149,9 +151,7 @@ JSON-mintafájlt:
 
 1.  **com.microsoft.Azure.profile\_2018\_03\_01\_hibrid**: az Azure Stackhez készült legújabb profil. Ez a profil Services kompatibilis az Azure Stack mindaddig, amíg a 1808 blokk vagy a további használhatják.
 
-2.  **com.microsoft.Azure.profile\_2017\_03\_09\_profil**: Ha egy alacsonyabb, mint a 1808 build stamp, használja ezt a profilt.
-
-3.  **következőt: com.microsoft.Azure**: az összes szolgáltatást a legújabb verziókat álló profilt. Az összes szolgáltatást a legújabb verziókat használhatja.
+2.  **következőt: com.microsoft.Azure**: az összes szolgáltatást a legújabb verziókat álló profilt. Az összes szolgáltatást a legújabb verziókat használhatja.
 
 Az Azure Stacket és API-profilokkal kapcsolatos további információkért lásd: a [összegzése az API-profilok](../user/azure-stack-version-profiles.md#summary-of-api-profiles).
 
@@ -231,14 +231,14 @@ Az alábbi GitHub-minták hivatkozásként használható megoldások létrehozá
 
 2.  Azure-beli szolgáltatásnév létrehozása, és rendelje hozzá egy szerepkörhöz az előfizetés eléréséhez. Egyszerű szolgáltatás létrehozásával kapcsolatos útmutatóért lásd: [tanúsítvánnyal egyszerű szolgáltatás létrehozása az Azure PowerShell használatával](../azure-stack-create-service-principals.md).
 
-3.  A következő szükséges értékek beolvasása:
+3.  Kérje le a következő kötelező környezeti változó értéke:
     
-   1.  Bérlőazonosító
-   2.  Ügyfél-azonosító
-   3.  Titkos ügyfélkulcs
-   4.  Előfizetés azonosítója
-   5.  Resource Manager-végpont
-   6.  Erőforrás helye
+   1.  TENANT_ID
+   2.  CLIENT_ID
+   3.  TITKOS ÜGYFÉLKÓDOT
+   4.  SUBSCRIPTION_ID
+   5.  ARM_ENDPOINT
+   6.  RESOURCE_LOCATION
 
 4.  Állítsa be az alábbi környezeti változókat a Szolgáltatásnévből létrehozott a parancssor használatával lekért információk segítségével:
     
@@ -273,10 +273,8 @@ Az alábbi GitHub-minták hivatkozásként használható megoldások létrehozá
    HttpResponse response = httpClient.execute(getRequest);
    ```
 
-7.  Adja hozzá a 2018-03-01-hibrid profil használata az Azure Stack a következő függőséget a pom.xml fájlt. Ezt a függőséget telepíti a modulokat a profilhoz tartozó számítási, hálózatkezelési, tárolási, KeyVault és App Services erőforrás-szolgáltatókat.
-    
-   Vegye figyelembe, hogy a cél Azure legfrissebb profilt is használhatja:
-        
+6.  Adja hozzá a 2018-03-01-hibrid profil használata az Azure Stack a következő függőséget a pom.xml fájlt. Ezt a függőséget telepíti a modulokat a profilhoz tartozó számítási, hálózatkezelési, tárolási, KeyVault és App Services erőforrás-szolgáltatókat.
+      
    ```xml
    <dependency>
    <groupId>com.microsoft.azure.profile_2018_03_01_hybrid</groupId>

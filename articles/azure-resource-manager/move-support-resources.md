@@ -9,14 +9,14 @@ ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/18/2018
+ms.date: 09/28/2018
 ms.author: tomfitz
-ms.openlocfilehash: 4ec09f5ed57dca89934efa750eed05e1ebcb1216
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 5bb820d816115dccf470b6c32d080862495e8310
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46298285"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47434976"
 ---
 # <a name="move-operation-support-for-resources"></a>Művelet támogatási erőforrások áthelyezése
 
@@ -190,6 +190,7 @@ Miután megtalálta az erőforrás-szolgáltató és az erőforrás típusa, ebb
 | beállításjegyzékek | Igen | Igen |
 | beállításjegyzékek/buildtasks | Igen | Igen |
 | beállításjegyzékek/replikációk | Nem | Nem |
+| beállításjegyzékek/feladatok | Igen | Igen |
 | beállításjegyzékek és webhookok | Igen | Igen |
 
 ## <a name="microsoftcontainerservice"></a>Microsoft.ContainerService
@@ -197,6 +198,7 @@ Miután megtalálta az erőforrás-szolgáltató és az erőforrás típusa, ebb
 | ------------- | -------------- | ------------ |
 | containerservices | Nem | Nem |
 | managedclusters | Nem | Nem |
+| openshiftmanagedclusters | Nem | Nem |
 
 ## <a name="microsoftcontentmoderator"></a>Microsoft.ContentModerator
 | Erőforrás típusa | Erőforráscsoport | Előfizetés |
@@ -276,6 +278,15 @@ Miután megtalálta az erőforrás-szolgáltató és az erőforrás típusa, ebb
 | ------------- | -------------- | ------------ |
 | servergroups | Nem | Nem |
 | kiszolgáló | Igen | Igen |
+
+## <a name="microsoftdeploymentmanager"></a>Microsoft.DeploymentManager
+| Erőforrás típusa | Erőforráscsoport | Előfizetés |
+| ------------- | -------------- | ------------ |
+| artifactsources | Nem | Nem |
+| Kibocsátások | Nem | Nem |
+| servicetopologies | Nem | Nem |
+| servicetopologies/szolgáltatások | Nem | Nem |
+| servicetopologies/services/serviceunits | Nem | Nem |
 
 ## <a name="microsoftdevices"></a>Microsoft.Devices
 | Erőforrás típusa | Erőforráscsoport | Előfizetés |
@@ -417,6 +428,11 @@ Miután megtalálta az erőforrás-szolgáltató és az erőforrás típusa, ebb
 | ------------- | -------------- | ------------ |
 | fiókok | Igen | Igen |
 
+## <a name="microsoftmachinelearningservices"></a>Microsoft.MachineLearningServices
+| Erőforrás típusa | Erőforráscsoport | Előfizetés |
+| ------------- | -------------- | ------------ |
+| munkaterületek | Igen | Igen |
+
 ## <a name="microsoftmanagedidentity"></a>Microsoft.ManagedIdentity
 | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 | ------------- | -------------- | ------------ |
@@ -449,15 +465,22 @@ Miután megtalálta az erőforrás-szolgáltató és az erőforrás típusa, ebb
 | ------------- | -------------- | ------------ |
 | applicationgateways | Nem | Nem |
 | applicationsecuritygroups | Igen | Igen |
+| azurefirewalls | Igen | Igen |
 | kapcsolatok | Igen | Igen |
 | ddosprotectionplans | Nem | Nem |
 | dnszones | Igen | Igen |
 | expressroutecircuits | Nem | Nem |
+| expressroutecrossconnections | Nem | Nem |
+| expressroutegateways | Nem | Nem |
 | expressrouteports | Nem | Nem |
+| frontdoors | Igen | Igen |
+| frontdoorwebapplicationfirewallpolicies | Igen | Igen |
+| interfaceendpoints | Nem | Nem |
 | használatát | Igen | Igen |
 | localnetworkgateways | Igen | Igen |
 | networkintentpolicies | Igen | Igen |
 | hálózati | Igen | Igen |
+| networkprofiles | Nem | Nem |
 | networksecuritygroups | Igen | Igen |
 | networkwatchers | Igen | Igen |
 | networkwatchers/connectionmonitors | Igen | Igen |
@@ -467,9 +490,16 @@ Miután megtalálta az erőforrás-szolgáltató és az erőforrás típusa, ebb
 | publicipprefixes | Igen | Igen |
 | routefilters | Nem | Nem |
 | routetables | Igen | Igen |
+| serviceendpointpolicies | Igen | Igen |
 | trafficmanagerprofiles | Igen | Igen |
+| virtualhubs | Igen | Igen |
 | virtualnetworkgateways-hez | Igen | Igen |
 | virtualnetworks | Igen | Igen |
+| virtualnetworktaps | Nem | Nem |
+| virtualwans | Igen | Igen |
+| vpngateways | Igen | Igen |
+| vpnsites | Igen | Igen |
+| webapplicationfirewallpolicies | Igen | Igen |
 
 ## <a name="microsoftnotificationhubs"></a>Microsoft.NotificationHubs
 | Erőforrás típusa | Erőforráscsoport | Előfizetés |
@@ -568,6 +598,8 @@ Miután megtalálta az erőforrás-szolgáltató és az erőforrás típusa, ebb
 ## <a name="microsoftsql"></a>Microsoft.Sql
 | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 | ------------- | -------------- | ------------ |
+| managedinstances | Igen | Igen |
+| managedinstances/adatbázis | Igen | Igen |
 | kiszolgáló | Igen | Igen |
 | kiszolgálók és adatbázisok | Igen | Igen |
 | servers/elasticpools | Igen | Igen |

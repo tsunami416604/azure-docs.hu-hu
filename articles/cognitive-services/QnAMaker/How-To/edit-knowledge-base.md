@@ -10,12 +10,12 @@ ms.component: qna-maker
 ms.topic: article
 ms.date: 09/12/2018
 ms.author: tulasim
-ms.openlocfilehash: ca35e13c502efadad07ef78077271923951ae4b1
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: f927e5b7ff65b82aef9d4224d22296e0fa48ad59
+ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47038221"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47451884"
 ---
 # <a name="edit-a-knowledge-base"></a>Tudásbázis szerkesztése
 
@@ -30,8 +30,24 @@ A QnA Maker lehetővé teszi a Tudásbázis tartalmát kezelését azáltal, hog
     ![Saját tudásbázisok](../media/qnamaker-how-to-edit-kb/my-kbs.png)
 
 2. Válassza ki az adott Tudásbázis szerkesztenie azt.
+ 
+3. Kattintson a **Settings** (Beállítások) lehetőségre.
 
-3. Ha elkészült a Tudásbázis módosítását, kattintson a **mentéséhez és a vonat** annak érdekében, hogy a változtatások megőrzéséhez az oldal jobb felső sarkában található.    
+   Itt szerkesztheti a szolgáltatás neve kötelező mező.
+  
+   Új GYIK-tartalom hozzáadása a tudásbázissal kattintva új URL-címeket adhat hozzá **cikkének kezelés -> "+ URL-cím hozzáadása"** hivatkozásra.
+   
+   Kattintva törölheti a meglévő URL-címei **Törlés ikon**.
+   
+   Ha azt szeretné, hogy a legfrissebb tartalmát, a meglévő URL-címei feltérképezése cikkének, a jelölőnégyzet-name osztásjelek **"Frissítés"**, ez a rendszer ekkor frissíti a tudásbázissal legfrissebb URL tartalmát.
+   
+Támogatott fájl dokumentum cikkének, részének kell kattintva adhat hozzá **cikkének kezelés -> "+ -fájl hozzáadása"**
+
+Minden olyan meglévő cikkének kattintva is importálhat **Ímport cikkének** gombra. 
+   
+Frissítése az cikkének függ **felügyeleti tarifacsomag** QnA Maker szolgáltatást a knowledgbase társított létrehozása során használt. Ha szükséges, a felügyeleti csomag az Azure Portalról is frissítheti.
+
+4. Ha elkészült a Tudásbázis módosítását, kattintson a **mentéséhez és a vonat** annak érdekében, hogy a változtatások megőrzéséhez az oldal jobb felső sarkában található.    
 
     ![Mentse és tanítása](../media/qnamaker-how-to-edit-kb/save-and-train.png)
 

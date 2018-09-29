@@ -10,12 +10,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 08/17/2018
 ms.author: rnagpal
-ms.openlocfilehash: d0bd7dba5d50445cb681c16d9575b1bd69167e2f
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: 1f2fae7bf500a469bc789fc2296fac5b653d1538
+ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42056397"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47451782"
 ---
 # <a name="azure-cosmos-db-table-net-api-download-and-release-notes"></a>Az Azure Cosmos DB Table API-t .NET: Töltse le és kibocsátási megjegyzések
 > [!div class="op_single_selector"]
@@ -37,6 +37,10 @@ ms.locfileid: "42056397"
 >
 
 ## <a name="release-notes"></a>Kibocsátási megjegyzések
+
+### <a name="a-name200200"></a><a name="2.0.0"/>2.0.0
+* A hozzáadott többrégiós írási támogatása
+* Rögzített Microsoft.Azure.DocumentDB, Microsoft.OData.Core, Microsoft.OData.Edm, Microsoft.Spatial NuGet-csomagfüggőségeket
 
 ### <a name="a-name113113"></a><a name="1.1.3"/>1.1.3
 * Rögzített NuGet-csomagfüggőségeket Microsoft.Azure.Storage.Common és Microsoft.Azure.DocumentDB.

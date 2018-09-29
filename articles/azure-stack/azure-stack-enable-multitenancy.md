@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/11/2018
 ms.author: patricka
-ms.openlocfilehash: 0a10662e359379356ecc8d82af1b7d6331c41a65
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 0c49a895a3cd214bb6f9c88b5365cf980c60bf0a
+ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44720055"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47451771"
 ---
 # <a name="multi-tenancy-in-azure-stack"></a>Több-bérlős az Azure Stackben
 
@@ -101,7 +101,8 @@ Register-AzSWithMyDirectoryTenant `
 > Ha az Azure Stack rendszergazdai a jövőben telepít új szolgáltatások vagy frissítések, szükség lehet futtassa ismét ezt a szkriptet.
 >
 > Ez a szkript futtatása újra bármikor ellenőrizheti az állapotot az Azure Stack-alkalmazások a címtárban.
-
+> 
+> Ha új virtuális gépek létrehozása a Managed Disks (a 1808 frissítés jelent meg), a problémák megfigyelte **lemez erőforrás-szolgáltató** lett hozzáadva, igénylő futtassa újra ezt a szkriptet.
 
 ### <a name="activate-the-administrator-and-tenant-portals"></a>A rendszergazda és bérlői portálok aktiválása
 Után az Azure AD telepítéseknek aktiválnia kell a mindkét az Azure Stack rendszergazdai és bérlői portált. Az aktiválás járul hozzá engedélyeket ad az Azure Stack portálon és az Azure Resource Manager a megfelelő (a jóváhagyás lapon felsorolt) az összes felhasználó számára a címtár.

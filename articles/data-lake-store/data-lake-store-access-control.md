@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: nitinme
-ms.openlocfilehash: 335c3fe4e27ce6025ad889cc7958a32223dc85f8
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.openlocfilehash: fce96cf5be9e70863fd75e5d4b3045bc49f638cf
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45629931"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47432623"
 ---
 # <a name="access-control-in-azure-data-lake-storage-gen1"></a>Hozzáférés-vezérlés az Azure Data Lake Storage Gen1
 
@@ -109,11 +109,6 @@ A felügyelő rendelkezik a felhasználók a legtöbb joggal a Data Lake Storage
 * Bármely fájl vagy mappa tulajdonosát vagy tulajdonoscsoportját megváltoztathatja.
 
 Minden felhasználó részét képező a **tulajdonosok** szerepkört egy Data Lake Storage Gen1 a fiókhoz a program automatikusan a felügyelők sem.
-
-Ha létre szeretne hozni egy egyéni, szerepköralapú hozzáférés-vezérlési (RBAC) szerepkört, amely felügyelői engedélyekkel rendelkezik, akkor annak a következő engedélyekkel kell rendelkeznie:
-- Microsoft.DataLakeStore/accounts/Superuser/action
-- Microsoft.Authorization/roleAssignments/write
-
 
 ### <a name="the-owning-user"></a>A tulajdonos felhasználó
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/11/2018
 ms.author: genli
-ms.openlocfilehash: cd89c41b43be1da339ca7dcc64110e7145a93903
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: 72cf094dc6206fcb156a3e4dae6e89662e2085d8
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37857330"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47434857"
 ---
 # <a name="troubleshooting-azure-point-to-site-connection-problems"></a>Hibaelhárítása: Az Azure pont – hely kapcsolati problémák
 
@@ -51,7 +51,7 @@ A probléma megoldásához kövesse az alábbi lépéseket:
     | Azuregateway-*GUID*.cloudapp.net  | Aktuális User\Trusted legfelső szintű hitelesítésszolgáltatók|
     | AzureGateway -*GUID*. cloudapp.net, AzureRoot.cer    | Helyi számítógép\Megbízható legfelső szintű hitelesítésszolgáltatók|
 
-3. Nyissa meg a felhasználók számára\<UserName > \AppData\Roaming\Microsoft\Network\Connections\Cm\<GUID >, manuálisan telepítse a tanúsítványt (*.cer fájlt) a felhasználó és számítógép tárolójában.
+3. Lépjen a C:\Users\<UserName > \AppData\Roaming\Microsoft\Network\Connections\Cm\<GUID >, manuálisan telepítse a tanúsítványt (*.cer fájlt) a felhasználó és számítógép tárolójában.
 
 Az ügyféltanúsítvány telepítésével kapcsolatos további információkért lásd: [létrehozása és exportálása pont – hely típusú kapcsolatok tanúsítványainak](vpn-gateway-certificates-point-to-site.md).
 
@@ -276,7 +276,7 @@ Távolítsa el a pont – hely VPN-kapcsolatot, és telepítse újra a VPN-ügyf
 
 ### <a name="solution"></a>Megoldás
 
-A probléma megoldásához, törölje a régi VPN-ügyfél konfigurációs fájljainak a **C:\users\username\AppData\Microsoft\Network\Connections\<VirtualNetworkId >**, majd futtassa újra a VPN-ügyfél telepítőjét.
+A probléma megoldásához, törölje a régi VPN-ügyfél konfigurációs fájljainak a **C:\Users\UserName\AppData\Roaming\Microsoft\Network\Connections\<VirtualNetworkId >**, majd futtassa újra a VPN-ügyfél telepítő .
 
 ## <a name="point-to-site-vpn-client-cannot-resolve-the-fqdn-of-the-resources-in-the-local-domain"></a>Pont – hely VPN-ügyfél nem tudja feloldani az erőforrásokat a helyi tartomány teljes Tartományneve
 
@@ -361,7 +361,7 @@ Ezt a problémát okozhatja a korábbi VPN-ügyfél telepítését.
 
 ### <a name="solution"></a>Megoldás
 
-Törölje a régi VPN-ügyfél konfigurációs fájljainak a **C:\users\username\AppData\Microsoft\Network\Connections\<VirtualNetworkId >** , és futtassa újra a VPN-ügyfél telepítőjét. 
+Törölje a régi VPN-ügyfél konfigurációs fájljainak a **C:\Users\UserName\AppData\Roaming\Microsoft\Network\Connections\<VirtualNetworkId >** , és futtassa újra a VPN-ügyfél telepítőjét. 
 
 ## <a name="the-vpn-client-hibernates-or-sleep-after-some-time"></a>A VPN-ügyfelet szeretné vagy alvó egy kis idő múlva
 

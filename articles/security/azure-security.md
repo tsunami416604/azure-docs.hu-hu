@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: a1cd2ecc738434fc8d5de03ef538be3ea896fa2b
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: 81eb23a0955bbc6a5f9dcd95c6874f0c5a8c286c
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38971006"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47434035"
 ---
 # <a name="introduction-to-azure-security"></a>Bevezetés az Azure Security
 ## <a name="overview"></a>Áttekintés
@@ -100,7 +100,7 @@ Ha összeomlik, sikertelen vagy teljesítménnyel kapcsolatos problémák, a tel
 A log Analytics lehet az eszköz lehetővé teszi nagy mennyiségű, biztonsággal kapcsolatos bejegyzéseket a rugalmas lekérdezés megközelítéssel gyorsan kereshet egy hasznos eszköz a törvényszéki és egyéb biztonsági elemzés. Emellett a helyszíni [tűzfalakról és proxykról naplók exportálhatók az Azure-bA és elemzése a Log Analytics használatával elérhetővé.](https://docs.microsoft.com/azure/log-analytics/log-analytics-proxy-firewall)
 
 ### <a name="azure-advisor"></a>Azure Advisor
-[Az Azure Advisor](https://docs.microsoft.com/azure/advisor/) van egy személyre szabott felhőalapú tanácsadó, amely segítséget nyújt az Azure-környezetek optimalizálására. A program elemzi az erőforrás-konfigurációs és -használati telemetriákat, Elősegítő megoldásokat javasol a [teljesítmény](https://docs.microsoft.com/azure/advisor/advisor-performance-recommendations), [biztonsági](https://docs.microsoft.com/azure/advisor/advisor-security-recommendations), és [magas rendelkezésre állású](https://docs.microsoft.com/azure/advisor/advisor-high-availability-recommendations) az erőforrások keresése közben lehetőségeket a [csökkentheti a teljes Azure költségek](https://docs.microsoft.com/azure/advisor/advisor-cost-recommendations). Az Azure Advisor biztosít a biztonsági javaslatok, mely jelentős is javíthatja végzi az üzembe helyezést az Azure-megoldások átfogó biztonsági helyzetét. Ezekkel az ajánlásokkal állítják a által végzett biztonsági elemzés [az Azure Security Center.](https://docs.microsoft.com/azure/security-center/security-center-intro)
+[Az Azure Advisor](https://docs.microsoft.com/azure/advisor/) van egy személyre szabott felhőalapú tanácsadó, amely segítséget nyújt az Azure-környezetek optimalizálására. A program elemzi az erőforrás-konfigurációs és -használati telemetriákat, Elősegítő megoldásokat javasol a [teljesítmény](https://docs.microsoft.com/azure/advisor/advisor-performance-recommendations), [biztonsági](https://docs.microsoft.com/azure/advisor/advisor-security-recommendations), és [magas rendelkezésre állású](https://docs.microsoft.com/azure/advisor/advisor-high-availability-recommendations) az erőforrások keresése közben lehetőségeket a [csökkentheti a teljes Azure költségek](https://docs.microsoft.com/azure/advisor/advisor-cost-recommendations). Az Azure Advisor biztosít a biztonsági javaslatok, ami jelentősen javíthatja a végzi az üzembe helyezést az Azure-megoldások az általános biztonsági állapotát. Ezekkel az ajánlásokkal állítják a által végzett biztonsági elemzés [az Azure Security Center.](https://docs.microsoft.com/azure/security-center/security-center-intro)
 
 ### <a name="azure-security-center"></a>Azure Security Center
 [Az Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro) az Azure-erőforrások biztonsági felügyeletének átláthatóbbá és szabályozhatóbbá tételével megkönnyíti a fenyegetések megelőzését, észlelését és elhárítását. Az ügyfél összes előfizetésére kiterjedő, integrált biztonsági monitorozást és szabályzatkezelést biztosít, megkönnyíti a nehezen észlelhető fenyegetések azonosítását, és számos biztonsági megoldással együttműködik.
@@ -272,7 +272,7 @@ A webes támadásokkal szembeni védelmet nyújtó központi webalkalmazási tű
 ### <a name="traffic-manager"></a>Traffic Manager
 A Microsoft [Azure Traffic Manager](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-overview) szabályozhatja a különböző adatközpontokban szolgáltatásvégpontokra érkező felhasználói forgalom elosztása. A Traffic Manager által támogatott szolgáltatóvégpontok közé tartozik az Azure virtuális gépek, a Web Apps és a Cloud services. A Traffic Manager külső, nem Azure-végpontokkal együtt is használható. A TRAFFIC Manager a tartománynévrendszer (DNS) használatával a leginkább megfelelő végpontra alapján az ügyfélkéréseket a [forgalom-útválasztási módszer](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-routing-methods) és a végpontok állapotát.
 
-A TRAFFIC Manager egy sor különböző alkalmazás igényeinek megfelelően, a végpontonkénti állapotot forgalom-útválasztási módszert biztosít [figyelési](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-monitoring), és automatikus feladatátvételt. A TRAFFIC Manager képes legyen ellenállni a hiba, beleértve a teljes Azure-régióhoz a hibát.
+A TRAFFIC Manager egy sor különböző alkalmazás igényeinek megfelelően, a végpontonkénti állapotot forgalom-útválasztási módszert biztosít [figyelési](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-monitoring), és automatikus feladatátvételt. A Traffic Manager ellenáll a meghibásodásoknak, beleértve akár egy egész Azure-régió meghibásodását is.
 ### <a name="azure-load-balancer"></a>Azure Load Balancer
 Az [Azure Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview) magas rendelkezésre állást és hálózati teljesítményt biztosít alkalmazásai számára. 4. réteg (TCP, UDP) terheléselosztó bejövő forgalmat egy elosztott terhelésű készlet definiált szolgáltatások kifogástalan példányai között osztja el. Az Azure Load Balancer konfigurálható:
 
@@ -364,7 +364,7 @@ A Microsoft termékei és szolgáltatásai között több ajánlott biztonsági 
 -   [Identitáskezelés (hibrid identitás) integrált](https://azure.microsoft.com/documentation/articles/active-directory-hybrid-identity-design-considerations-overview/) lehetővé teszi a felhasználói hozzáférés feletti belső adatközpontokra és felhőalapú platformon, hitelesítés és engedélyezés az összes erőforráshoz egyetlen felhasználói identitást létrehozása.
 
 ### <a name="secure-apps-and-data"></a>Biztonságos alkalmazások és adatok
-[Az Azure Active Directory](https://azure.microsoft.com/services/active-directory/), egy átfogó identitás- és hozzáférés kezelési felhőalapú megoldás, biztonságosabbá teszi a hozzáférést a helyszíni alkalmazások és a felhőbeli adatok, és egyszerűbbé teszi a felhasználók és csoportok kezelését. Ez a egyesíti az alapvető címtárszolgáltatásokat, identitáskezelést, biztonsági és alkalmazáshozzáférés-felügyeletet, speciális, és megkönnyíti a fejlesztők számára a házirend-alapú Identitáskezelés alkalmazásokba. Az Azure Active Directory javítása érdekében az alapszintű Azure Active Directory Premium P1 és prémium P2 kiadás használatát, a fizetős funkciókat is hozzáadhat.
+[Az Azure Active Directory](https://azure.microsoft.com/services/active-directory/), egy átfogó identitás- és hozzáférés kezelési felhőalapú megoldás, biztonságosabbá teszi a hozzáférést a helyszíni alkalmazások és a felhőbeli adatok, és egyszerűbbé teszi a felhasználók és csoportok kezelését. Ez a egyesíti az alapvető címtárszolgáltatásokat, identitáskezelést, biztonsági és alkalmazáshozzáférés-felügyeletet, speciális, és megkönnyíti a fejlesztők számára a házirend-alapú Identitáskezelés alkalmazásokba. Az Azure Active Directoryt kiegészítheti fizetős képességekkel is, az Azure Active Directory Alapszintű, Prémium P1 és Prémium P2 kiadásával.
 
 | Ingyenes / közös funkciók     | Alapszintű funkciók    |Prémium P1 szintű szolgáltatások |Prémium P2 szintű szolgáltatások | Az Azure Active Directory Join – Windows 10-es csak kapcsolódó szolgáltatások|
 | :------------- | :------------- |:------------- |:------------- |:------------- |

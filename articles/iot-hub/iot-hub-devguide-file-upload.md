@@ -1,6 +1,6 @@
 ---
-title: Azure IoT Hub-fájl feltöltése megértése |} Microsoft Docs
-description: Fejlesztői útmutató - eszköz fájljainak a fájlfeltöltési szolgáltatása az IoT-központ kezeléséhez feltöltése az Azure blob tároló használja.
+title: Megismerheti az Azure IoT Hub-fájl feltöltése |} A Microsoft Docs
+description: Fejlesztői útmutató – eszközök fájljainak a fájlfeltöltési funkcióról az IoT Hub kezelése feltöltése egy Azure storage blob-tároló használata.
 author: dominicbetts
 manager: timlt
 ms.service: iot-hub
@@ -8,39 +8,39 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/08/2017
 ms.author: dobett
-ms.openlocfilehash: e16d32bdba1374540c03d1034a94192a54e6a109
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 8fee8dd727623e81140656a070e6855547693154
+ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34634896"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47451154"
 ---
-# <a name="upload-files-with-iot-hub"></a>Az IoT hubbal fájlok feltöltése
+# <a name="upload-files-with-iot-hub"></a>Fájlok feltöltése az IoT Hub
 
-A részletes a [IoT-központok végpontjai] [ lnk-endpoints] a cikkben egy eszköz is kezdeményezhető a fájlfeltöltés úgy, hogy egy eszköz felé néző végpont keresztül értesítést küld (**/devices/ {deviceId} / fájlok**). Amikor egy eszköz értesíti, hogy befejeződött-e a feltöltés IoT Hub, az IoT-központ keresztül fájl feltöltése értesítő üzenetet küld a **/messages/servicebound/filenotifications** szolgáltatás felé néző végpont.
+A részletes a [IoT Hub-végpontok](iot-hub-devguide-endpoints.md) a cikkben egy eszköz kezdeményezhet feltöltés küld értesítést egy eszközre irányuló végponton keresztül (**/devices/ {deviceId} / fájlok**). Amikor egy eszköz értesíti, hogy a feltöltés befejeződése az IoT Hub, IoT Hub keresztül fájl feltöltése értesítő üzenetet küld a **/messages/servicebound/filenotifications** szolgáltatás felé néző végpont.
 
-Helyett kereskedelmi üzeneteket maga az IoT-központ keresztül az IoT-központ helyette úgy működik, mint egy kézbesítő társított Azure Storage-fiók számára. Egy eszköz tárolási jogkivonat kéri le, amely csak az eszköz kíván feltölteni a fájlt az IoT-központ. Az eszköz feltölteni a fájlt az tárolási a SAS URI-t használ, és a feltöltés befejeződése az eszköz az IoT hubhoz befejezéséről értesítést küld. Az IoT-központ ellenőrzi a fájl feltöltése befejeződött, és hozzáadja a fájl feltöltése értesítési üzenetet a szolgáltatás felé néző fájl értesítési végpont.
+Helyett kereskedelmi üzeneteket keresztül magát az IoT Hub IoT Hub inkább funkcionál egy dispatcher társított Azure Storage-fiókba. Egy eszközt az IoT Hub, az eszköz felhasználja a feltöltendő fájl adott tárolási tokent kér. Az eszköz az SAS URI-t használja a fájl feltöltése a tárolóba, és a feltöltés befejeztével az eszköz befejezéséről értesítést küld az IoT hubnak. Az IoT Hub ellenőrzi a fájl feltöltése befejeződött, és a szolgáltatás által használt értesítési végpont feltöltési fájlértesítési üzenetek hozzáadja.
 
-Mielőtt IoT-központot egy fájlt feltölteni egy eszközről, konfigurálnia kell a a központ által [társítása egy Azure Storage] [ lnk-associate-storage] azt a fiókot.
+Mielőtt egy eszközről az IoT hub feltölt egy fájlt, konfigurálnia kell a hub által [társítása egy Azure Storage](iot-hub-devguide-file-upload.md#associate-an-azure-storage-account-with-iot-hub) azt a fiókot.
 
-Az eszköz lehet majd [feltöltés inicializálása] [ lnk-initialize] , majd [értesíteni az IoT-központ] [ lnk-notify] a feltöltés befejezését. Ha szükséges, amikor egy eszköz értesíti az IoT-központ, hogy helyesek-e a feltöltés, a szolgáltatás hozhat létre egy [értesítési üzenet][lnk-service-notification].
+Az eszköz lehet majd [inicializálása egy feltöltési](iot-hub-devguide-file-upload.md#initialize-a-file-upload) , majd [értesítése az IoT hub](iot-hub-devguide-file-upload.md#notify-iot-hub-of-a-completed-file-upload) a feltöltés befejezését. Ha szükséges, amikor egy eszköz értesítést küld az IoT Hub a feltöltés befejeződése, a szolgáltatás hozhat létre egy [értesítési üzenet](iot-hub-devguide-file-upload.md#file-upload-notifications).
 
 ### <a name="when-to-use"></a>A következő esetekben használja
 
-A fájl feltöltése is elküldhetik a médiafájlokat és nagy telemetriai kötegek időnként csatlakoztatott eszközök által feltöltött, illetve sávszélességet tömörítve.
+Fájl feltöltése használatával médiafájlokhoz, és csak időszakosan kapcsolódó eszközök által feltöltött vagy menteni a sávszélesség tömörített nagy telemetriai kötegek küldése.
 
-Tekintse meg [eszközről a felhőbe kommunikációs útmutatást] [ lnk-d2c-guidance] Ha bizonytalan jelentett tulajdonságok, az eszköz a felhőbe küldött üzeneteket vagy a fájl feltöltése használata között.
+Tekintse meg [eszközről a felhőbe való kommunikáció útmutatást](iot-hub-devguide-d2c-guidance.md) Ha bizonytalan, jelentett tulajdonságok, az eszköz – felhő üzeneteket és a fájl feltöltése használata között.
 
-## <a name="associate-an-azure-storage-account-with-iot-hub"></a>Egy Azure Storage-fiók társítása az IoT-központ
+## <a name="associate-an-azure-storage-account-with-iot-hub"></a>Egy Azure Storage-fiókot társítja az IoT hubbal
 
-A fájl feltöltése funkciók használatához először egy Azure Storage-fiókot hozzá kell rendelnie az IoT-központ. Ez a feladat keresztül hajthatja végre a [Azure-portálon][lnk-management-portal], vagy programozott módon a [IoT-központ erőforrás-szolgáltató REST API-k][lnk-resource-provider-apis]. Egy Azure Storage-fiókot az IoT Hub vannak társítva, ha a szolgáltatás SAS URI eszköz ad vissza, ha az eszköz kezdeményezi a fájl feltöltési kérést.
+A fájlfeltöltési funkciókhoz használatához először az IoT hub kell kapcsolni egy Azure Storage-fiókot. Befejezheti a feladatot keresztül a [az Azure portal](https://portal.azure.com), vagy programozott módon a [az IoT Hub erőforrás-szolgáltató REST API-k](/rest/api/iothub/iothubresource). Azure Storage-fiókhoz társítva van az IoT hubhoz, ha a a szolgáltatás a Ha az eszköz egy fájl feltöltése irányuló kérelmet kezdeményez a SAS URI-t egy eszközhöz adja vissza.
 
 > [!NOTE]
-> A [Azure IoT SDK-k] [ lnk-sdks] automatikusan kezeli a SAS URI-JÁNAK beolvasása, feltölteni a fájlt, és a feltöltött az IoT-központ, amely értesíti.
+> A [Azure IoT SDK-k](iot-hub-devguide-sdks.md) automatikusan kezelik az SAS URI lekérdezése, a fájl feltöltése és a egy befejezett feltöltésről az IoT Hub értesítése.
 
 
 ## <a name="initialize-a-file-upload"></a>A fájlfeltöltés inicializálása
-Az IoT-központ végpont kifejezetten eszközök feltölteni a fájlt a tároló SAS URI tartozik. A fájl feltöltési folyamat elindításához az eszköz egy POST kérést küld `{iot hub}.azure-devices.net/devices/{deviceId}/files` , a következő JSON-törzsére:
+Az IoT Hub a kifejezetten a kérelem a fájl feltöltése Storage SAS URI-eszközök egy végponttal rendelkezik. A feltöltési folyamat elindításához az eszköz egy POST kérést küld `{iot hub}.azure-devices.net/devices/{deviceId}/files` az alábbi JSON-törzse:
 
 ```json
 {
@@ -48,7 +48,7 @@ Az IoT-központ végpont kifejezetten eszközök feltölteni a fájlt a tároló
 }
 ```
 
-Az IoT-központ adja vissza a következő adatait, amely az eszköz lehet feltölteni a fájlt használja:
+Az IoT Hub adja vissza az eszköz a fájl feltöltéséhez használja az alábbi adatokat:
 
 ```json
 {
@@ -60,19 +60,20 @@ Az IoT-központ adja vissza a következő adatait, amely az eszköz lehet feltö
 }
 ```
 
-### <a name="deprecated-initialize-a-file-upload-with-a-get"></a>Elavult: a GET fájlfeltöltés inicializálása
+### <a name="deprecated-initialize-a-file-upload-with-a-get"></a>Elavult: inicializálása egy a GET-fájl feltöltése
 
 > [!NOTE]
-> Ez a szakasz ismerteti a SAS URI fogadása az IoT-központ elavult funkció. A POST metódussal a fentiekben ismertetett használja.
+> Ez a szakasz ismerteti az elavult funkciók a SAS URI fogadása az IoT hubról. Használja a korábban leírt POST metódust.
 
-Az IoT-központ rendelkezik két REST-végpontok fájlfeltöltés, tárolási és egyéb értesíteni az IoT-központ, a feltöltött SAS URI segítségével egy támogatásához. Az eszköz a feltöltési folyamat indít el egy GET küld az IoT hub, `{iot hub}.azure-devices.net/devices/{deviceId}/files/{filename}`. Az IoT hub adja vissza:
+Az IoT Hub két REST-végpontokat támogatja a feltöltés, egy get értesíteni az IoT hub egy befejezett feltöltésről, tárolás és a másik a SAS URI-rendelkezik. Az eszköz a feltöltési folyamat kezdeményez, ha egy GET küld az IoT hub, `{iot hub}.azure-devices.net/devices/{deviceId}/files/{filename}`. Az IoT hub adja vissza:
 
-* SAS URI jellemző a fájlt fel kell tölteni.
-* Ha befejeződött a feltöltés használandó Korrelációazonosító.
+* A SAS URI-t adott-e a fájl fel kell tölteni.
 
-## <a name="notify-iot-hub-of-a-completed-file-upload"></a>Az IoT-központ a befejezett fájlfeltöltés értesítése
+* A korrelációs Azonosítót kell használni, a feltöltés befejeződése után.
 
-Az eszköz feltölteni a fájlt az Azure Storage SDK-k segítségével történő felelős. A feltöltés befejeződése után az eszköz egy POST kérést küld `{iot hub}.azure-devices.net/devices/{deviceId}/files/notifications` , a következő JSON-törzsére:
+## <a name="notify-iot-hub-of-a-completed-file-upload"></a>Az IoT Hub a befejezett fájlfeltöltés értesítése
+
+Az eszköz felelős a fájl feltöltése a storage, az Azure Storage SDK-k használatával. A feltöltés befejeződése után az eszköz egy POST kérést küld `{iot hub}.azure-devices.net/devices/{deviceId}/files/notifications` az alábbi JSON-törzse:
 
 ```json
 {
@@ -83,28 +84,28 @@ Az eszköz feltölteni a fájlt az Azure Storage SDK-k segítségével történ�
 }
 ```
 
-Értékének `isSuccess` van egy logikai jelző, hogy a fájl feltöltése sikeresen befejeződött. Állapotkódja `statusCode` tárhelyre, a fájl feltöltése a állapota és a `statusDescription` megfelel-e a `statusCode`.
+Az érték `isSuccess` van egy logikai jelző, a fájl feltöltése sikeresen befejeződött-e. Állapotkódja `statusCode` a Storage, a fájl feltöltésének állapota és a `statusDescription` felel meg a `statusCode`.
 
 ## <a name="reference-topics"></a>Referencia-témaköreit:
 
-A következő témaköröket nyújtanak további információt az eszközről fájlok feltöltése.
+A következő referencia-témakörök nyújtanak további információt az eszközről fájlok feltöltése.
 
 ## <a name="file-upload-notifications"></a>Fájl feltöltése értesítések
 
-Ha szükséges amikor egy eszköz értesíti az IoT-központ, hogy befejeződött-e a feltöltés, IoT-központ állít elő, egy értesítési üzenetet, amely tartalmazza a fájl nevét és a tárolási helyét.
+Igény szerint amikor egy eszköz értesíti, hogy a feltöltés befejeződése az IoT Hub, IoT Hub állít elő, egy értesítési üzenetet, amely tartalmazza a fájl nevét és a tárolási helyét.
 
-A [végpontok][lnk-endpoints], IoT-központ biztosítja a fájl feltöltése értesítések keresztül a szolgáltatás felé néző végpont (**/messages/servicebound/fileuploadnotifications**) üzeneteihez. A fájl feltöltése értesítések receive szemantikája ugyanúgy felhő-eszközre küldött üzenetek, és az [üzenet életciklus][lnk-lifecycle]. Minden egyes a fájl feltöltése értesítési végpont lekért üzenet egy JSON-rekord a következő tulajdonságokkal:
+A [végpontok](iot-hub-devguide-endpoints.md), az IoT Hub kínál a fájl feltöltése értesítést a szolgáltatás felé néző végpont (**/messages/servicebound/fileuploadnotifications**) üzenetekként. A fájl feltöltése értesítések fogadása szemantikát megegyeznek a felhőből az eszközre irányuló üzenetek, és azonos [üzenet életciklus](iot-hub-devguide-messages-c2d.md#the-cloud-to-device-message-lifecycle). Minden a fájl feltöltése értesítési végpont lekért üzenet egy JSON-rekord a következő tulajdonságokkal:
 
 | Tulajdonság | Leírás |
 | --- | --- |
-| EnqueuedTimeUtc |Az értesítés létrehozásának jelző időbélyegző. |
+| EnqueuedTimeUtc |Az értesítés létrehozásának jelző időbélyeg. |
 | Eszközazonosító |**DeviceId** az eszköz, amely a fájl feltöltése. |
-| BlobUri |A feltöltött fájl URI Azonosítóját. |
-| Blobnév |A feltöltött fájl neve. |
-| LastUpdatedTime |Timestamp típusú, amely azt jelzi, ha a fájl utolsó módosításának. |
-| BlobSizeInBytes |A feltöltött fájl méretét. |
+| BlobUri |URI-ját a feltöltött fájl. |
+| BlobName |A feltöltött fájl neve. |
+| LastUpdatedTime |Jelzi, ha a fájl utolsó frissítés időbélyege. |
+| BlobSizeInBytes |A feltöltött fájl mérete. |
 
-**Példa**. Ez a példa bemutatja, hogy a szervezet egy fájl feltöltése értesítési üzenetet.
+**Példa**. Ez a példa bemutatja, hogy a szervezet egy fájl feltöltése értesítő üzenetet.
 
 ```json
 {
@@ -119,56 +120,43 @@ A [végpontok][lnk-endpoints], IoT-központ biztosítja a fájl feltöltése ér
 
 ## <a name="file-upload-notification-configuration-options"></a>Fájl feltöltése értesítési konfigurációs beállítások
 
-Minden egyes IoT-központ mutatja meg az alábbi konfigurációs lehetőségeket a fájl feltöltése értesítések:
+Minden IoT-központ fájl feltöltése az értesítésekhez az alábbi konfigurációs lehetőségeket tesz elérhetővé:
 
-| Tulajdonság | Leírás | Tartomány- és alapértelmezett |
+| Tulajdonság | Leírás | Tartomány és az alapértelmezett |
 | --- | --- | --- |
-| **enableFileUploadNotifications** |Meghatározza, hogy fájl feltöltése értesítések írja a rendszer a fájl értesítések végpont. |Logikai érték. Alapértelmezett: igaz. |
-| **fileNotifications.ttlAsIso8601** |Alapértelmezett élettartam-fájl feltöltése értesítéseket. |ISO_8601 időköz legfeljebb 48 H (legalább 1 perc). Alapértelmezett: 1 óra. |
-| **fileNotifications.lockDuration** |A fájl feltöltése értesítések várólista zárolási időtartama. |5 és 300 másodperc (legalább 5 másodperces). Alapértelmezett: 60 másodperc. |
-| **fileNotifications.maxDeliveryCount** |A fájlok maximális száma töltse fel az értesítési várólista. |1 és 100 közötti. Alapértelmezett: 100. |
+| **enableFileUploadNotifications** |Azt szabályozza, hogy e fájl feltöltése értesítések kerüljenek-e az értesítések végpont. |Logikai. Alapértelmezett: igaz. |
+| **fileNotifications.ttlAsIso8601** |Alapértelmezett TTL-fájl feltöltése az értesítésekhez. |ISO_8601 időköz legfeljebb 48 óra (legalább 1 perc). Alapértelmezett érték: 1 óra. |
+| **fileNotifications.lockDuration** |A fájl feltöltése értesítések várólista Zárolás időtartama. |5 és 300 másodperc (legalább 5 másodperces). Alapértelmezett: 60 másodperc. |
+| **fileNotifications.maxDeliveryCount** |Kézbesítések maximális száma a fájl feltöltése az értesítési várólista. |1 és 100 között. Alapértelmezett: 100. |
 
-## <a name="additional-reference-material"></a>További referenciaanyag
+## <a name="additional-reference-material"></a>További – referenciaanyag
 
-Az IoT Hub fejlesztői útmutató más hivatkozás témaköröket tartalmazza:
+Az IoT Hub fejlesztői útmutató más referencia témakörei a következők:
 
-* [IoT-központok végpontjai] [ lnk-endpoints] ismerteti a különböző végpontok, amelyek minden egyes IoT-központ elérhetővé teszi a futásidejű és felügyeleti műveletek.
-* [Sávszélesség-szabályozási és kvóták] [ lnk-quotas] ismerteti a kvóták és a szabályozás viselkedéseket, amelyek az IoT-központ szolgáltatás vonatkozik.
-* [Az Azure IoT eszköz és a szolgáltatás SDK-k] [ lnk-sdks] felsorolja a különböző nyelvi használhatja az eszköz és a szolgáltatás alkalmazások gondoskodnak az IoT hubbal fejlesztésekor SDK-k.
-* [Az IoT-központ lekérdezési nyelv] [ lnk-query] a lekérdezési nyelv segítségével adatok lekérését az IoT-központ az eszköz twins és feladatokat ismerteti.
-* [Az IoT Hub MQTT támogatási] [ lnk-devguide-mqtt] IoT-központ támogatásával kapcsolatos további információkat biztosít a MQTT protokoll.
+* [IoT Hub-végpontok](iot-hub-devguide-endpoints.md) ismerteti a különféle végpontok, amely minden IoT-központ közzéteszi a futásidejű és felügyeleti műveletekhez.
+
+* [Sávszélesség-szabályozási és kvóták](iot-hub-devguide-quotas-throttling.md) ismerteti a kvóták és szabályozás viselkedéseket, amelyek érvényesek az IoT Hub szolgáltatást.
+
+* [Az Azure IoT eszköz- és szolgáltatásspecifikus SDK-k](iot-hub-devguide-sdks.md) felsorolja a különböző nyelvű SDK-ban is használhatja az IoT Hub szolgáltatással kommunikáló eszközt és szolgáltatást is alkalmazások fejlesztése során.
+
+* [IoT Hub lekérdezési nyelv](iot-hub-devguide-query-language.md) ismerteti a lekérdezési nyelv az ikereszközökhöz és feladatokhoz kapcsolatos adatok lekérését az IoT Hub segítségével.
+
+* [IoT Hub MQTT-támogatás](iot-hub-mqtt-support.md) további információ az IoT Hub-támogatásról nyújt az MQTT protokoll.
 
 ## <a name="next-steps"></a>További lépések
 
-Most már rendelkezik megtudta, hogyan eszközök IoT-központ a fájlok feltöltéséhez, esetleg a következő IoT Hub fejlesztői útmutató témakörei iránt érdeklődik:
+Most megtanulhatta, hogyan kell a fájlok feltöltése eszközökről, az IoT Hub használatával, érdekelheti, az alábbi az IoT Hub fejlesztői útmutató témakörök:
 
-* [Az IoT Hub eszköz identitásainak kezelése][lnk-devguide-identities]
-* [Elérés az IoT hubhoz][lnk-devguide-security]
-* [Eszköz twins segítségével szinkronizálja az állapotot és konfigurációk][lnk-devguide-device-twins]
-* [Az eszközön közvetlen metódus][lnk-devguide-directmethods]
-* [Több eszközön feladatok ütemezése][lnk-devguide-jobs]
+* [Az IoT Hub eszközidentitások kezelése](iot-hub-devguide-identity-registry.md)
 
-Próbálja ki azokat a jelen cikkben ismertetett fogalmakat, olvassa el a következő IoT Hub-oktatóanyag:
+* [IoT Hub-hozzáférés szabályozása](iot-hub-devguide-security.md)
 
-* [A felhőhöz, az IoT-központ eszközökről fájlok feltöltéséről][lnk-fileupload-tutorial]
+* [Ikereszközök használata az állapot és a konfiguráció szinkronizálása](iot-hub-devguide-device-twins.md)
 
-[lnk-resource-provider-apis]: https://docs.microsoft.com/rest/api/iothub/iothubresource
-[lnk-endpoints]: iot-hub-devguide-endpoints.md
-[lnk-quotas]: iot-hub-devguide-quotas-throttling.md
-[lnk-sdks]: iot-hub-devguide-sdks.md
-[lnk-query]: iot-hub-devguide-query-language.md
-[lnk-devguide-mqtt]: iot-hub-mqtt-support.md
-[lnk-management-portal]: https://portal.azure.com
-[lnk-fileupload-tutorial]: iot-hub-csharp-csharp-file-upload.md
-[lnk-associate-storage]: iot-hub-devguide-file-upload.md#associate-an-azure-storage-account-with-iot-hub
-[lnk-initialize]: iot-hub-devguide-file-upload.md#initialize-a-file-upload
-[lnk-notify]: iot-hub-devguide-file-upload.md#notify-iot-hub-of-a-completed-file-upload
-[lnk-service-notification]: iot-hub-devguide-file-upload.md#file-upload-notifications
-[lnk-lifecycle]: iot-hub-devguide-messages-c2d.md#the-cloud-to-device-message-lifecycle
-[lnk-d2c-guidance]: iot-hub-devguide-d2c-guidance.md
+* [Az eszközön közvetlen metódus meghívása](iot-hub-devguide-direct-methods.md)
 
-[lnk-devguide-identities]: iot-hub-devguide-identity-registry.md
-[lnk-devguide-security]: iot-hub-devguide-security.md
-[lnk-devguide-device-twins]: iot-hub-devguide-device-twins.md
-[lnk-devguide-directmethods]: iot-hub-devguide-direct-methods.md
-[lnk-devguide-jobs]: iot-hub-devguide-jobs.md
+* [Feladatok ütemezése több eszközön](iot-hub-devguide-jobs.md)
+
+Próbálja ki a jelen cikkben ismertetett fogalmakat, tekintse meg a következő IoT Hub-oktatóanyag:
+
+* [Fájlok feltöltése eszközökről a felhőbe, az IoT Hub hogyan](iot-hub-csharp-csharp-file-upload.md)

@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/17/2018
 ms.author: sngun
-ms.openlocfilehash: 63ea7e384f9bc5713a41f6c5537ec5548810e5d9
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: b5b3a96991a2150e553af01e3fda73e04116d7fb
+ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42054708"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47452411"
 ---
 # <a name="power-bi-tutorial-for-azure-cosmos-db-visualize-data-using-the-power-bi-connector"></a>Az Azure Cosmos DB-hez készült Power BI oktatóanyag: adatok megjelenítése Power BI-összekötő használatával
 [PowerBI.com](https://powerbi.microsoft.com/) egy online szolgáltatás, ahol létrehozhat és irányítópultok és jelentések megosztása, és a szervezet számára fontos adatokkal.  A Power BI Desktop egy olyan dedikált jelentés, amely lehetővé teszi, hogy a különféle adatforrásokból származó adatok lekéréséhez, egyesítése és átalakíthatja az adatokat, hatékony jelentések és Vizualizációk létrehozása és a jelentések közzététele a Power bi-bA a szerkesztőeszköz.  A Power BI Desktop legújabb verzióját mostantól csatlakozhat az Azure Cosmos DB-fiókot az Azure Cosmos DB-összekötő használatával a Power bi-hoz.   
@@ -34,7 +34,7 @@ Miután befejezte az oktatóanyag a Power bi-ban, is elérheti az alábbi kérd�
 > Az Azure Cosmos DB-hez készült Power BI-összekötő kinyerésére és az adatok átalakítása a Power BI Desktop csatlakozik. A Power BI Desktopban létrehozott jelentések közzétehetők a powerbi.com webhelyre. Közvetlen kinyerésére és az Azure Cosmos DB-adatok átalakítása nem hajtható végre a powerbi.com webhelyen. 
 
 > [!NOTE]
-> A Power BI-összekötő az Azure Cosmos DB csatlakoztatása Azure Cosmos DB SQL- és MongoDB API-fiókok csak a jelenleg támogatott. Az Azure Cosmos DB csatlakoztatása a Power bi-bA a MongoDB API használatával, meg kell használnia a [Simba MongoDB ODBC-illesztő](http://www.simba.com/drivers/mongodb-odbc-jdbc/).
+> A Power BI-összekötő az Azure Cosmos DB csatlakoztatása az Azure Cosmos DB SQL API és a Gremlin API-fiókok csak a jelenleg támogatott.
 
 ## <a name="prerequisites"></a>Előfeltételek
 Power BI-oktatóanyagban szereplő utasítások követése, előtt, hogy a következő erőforrásokhoz való hozzáférés biztosítása:

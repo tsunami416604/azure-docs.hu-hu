@@ -17,12 +17,12 @@ ms.date: 07/28/2018
 ms.author: billmath
 author: billmath
 ms.custom: ''
-ms.openlocfilehash: 4eeb716e4eeae8dc560f9588c6c3ce252daf741e
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 5ac69c53a6b6c1e4695b88e5806f8e883cd52c66
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46314663"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47432053"
 ---
 # <a name="manage-ad-fs-trust-with-azure-ad-using-azure-ad-connect"></a>AD FS-megbízhatóság kezelése az Azure AD Connect használatával az Azure AD-vel
 
@@ -41,7 +41,7 @@ Kezeli az Azure AD Connect **csak** Azure AD-megbízhatóság kapcsolatos beáll
 | Beállítás | Leírás |
 | :--- | :--- |
 | Jogkivonat-aláíró tanúsítvány | Az Azure AD Connect alaphelyzetbe állítása, és hozza létre újból a bizalmi kapcsolat az Azure ad-vel is használható. Az Azure AD Connect egy jogkivonat-aláíró tanúsítványok közvetlen egyszeri kapcsolódó kulcsváltást nem az AD FS-hez, és frissíti az Azure AD-tartomány összevonási beállításokat.|
-| Jogkivonat-aláíró algoritmus | A Microsoft javasolja, hogy a jogkivonat-aláíró algoritmus SHA-256 algoritmust használ. Az Azure AD Connect képes észlelni, ha a jogkivonat-aláíró algoritmus értékre van állítva egy kevésbé biztonságos, mint az SHA-256 algoritmust. A következő lehetséges konfigurációs művelet frissíti a beállítás az SHA-256. |
+| Jogkivonat-aláíró algoritmus | A Microsoft javasolja, hogy a jogkivonat-aláíró algoritmus SHA-256 algoritmust használ. Az Azure AD Connect képes észlelni, ha a jogkivonat-aláíró algoritmus értékre van állítva egy kevésbé biztonságos, mint az SHA-256 algoritmust. A következő lehetséges konfigurációs művelet frissíti a beállítás az SHA-256. Más függő entitás megbízhatóságához frissíteni kell, hogy az új jogkivonat-aláíró tanúsítványt használja. |
 | Az Azure AD megbízhatóságának azonosítója | Az Azure AD Connect beállítja az Azure AD-megbízhatóság megfelelő azonosító értékét. Az AD FS egyedileg azonosítja az Azure AD-megbízhatóság azonosító értékének használatával. |
 | Azure AD-végpontok | Az Azure AD Connect gondoskodik arról, hogy a végpont konfigurálva az Azure AD-megbízhatóság mindig a legújabb ajánlott értékeit a rugalmasság és teljesítmény alapján. |
 | Kiadás átalakítási szabályai | Nincsenek számok jogcímszabályok, amelyek szükségesek az optimális teljesítmény érdekében az Azure AD-t egy összevont beállítás funkcióit. Az Azure AD Connect gondoskodik arról, hogy az Azure AD-megbízhatóság mindig van-e konfigurálva a megfelelő ajánlott jogcímszabályok együtt. |

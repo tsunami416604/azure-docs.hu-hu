@@ -11,12 +11,12 @@ ms.topic: tutorial
 description: Gyors Kubernetes-fejlesztés tárolókkal és mikroszolgáltatásokkal az Azure-ban
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, tárolók
 manager: douge
-ms.openlocfilehash: 602e2a691dfa150c2e8332cb6dca070dbdd57901
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: 1448acf9a9e45b23b714a3a314526c5e6bb7752b
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44162087"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47404585"
 ---
 # <a name="team-development-with-azure-dev-spaces"></a>Csoportos fejlesztés az Azure Dev Spaces használatával
 
@@ -82,7 +82,7 @@ Remek! Most már rendelkezik egy többtárolós alkalmazással, ahol az egyes t�
 
 ## <a name="learn-about-team-development"></a>A csapatban végzett fejlesztés bemutatása
 
-[!INCLUDE [](includes/team-development-1.md)]
+[!INCLUDE [](../../includes/team-development-1.md)]
 
 Lássuk működés közben. Váltson a `mywebapi` VS Code-ablakára, és szerkessze a `string Get(int id)` metódus kódját, például:
 
@@ -95,8 +95,25 @@ public string Get(int id)
 ```
 
 
-[!INCLUDE [](includes/team-development-2.md)]
+[!INCLUDE [](../../includes/team-development-2.md)]
 
-[!INCLUDE [](includes/well-done.md)]
+### <a name="well-done"></a>Remek!
+Elvégezte az első lépéseket ismertető útmutatót! Megismerte, hogyan végezheti el az alábbi műveleteket:
 
-[!INCLUDE [](includes/clean-up.md)]
+> [!div class="checklist"]
+> * Az Azure Dev Spaces beállítása Managed Kubernetes-fürttel az Azure-ban.
+> * Iteratív kódfejlesztés a tárolókban.
+> * Két külön szolgáltatás egymástól függetlenül történő fejlesztése, és a használt Kubernetes DNS-szolgáltatás észlelésével hívásindítás egy másik szolgáltatásba.
+> * A kód hatékony fejlesztése és tesztelése, csapatkörnyezetben.
+
+Most, hogy megismerte az Azure Dev Spacest, [megoszthatja a létrehozott Dev Spaces-teret egy csapattaggal](how-to/share-dev-spaces.md), és megmutathatja neki, milyen egyszerű az együttműködés.
+
+## <a name="clean-up"></a>A fölöslegessé vált elemek eltávolítása
+Ha egy fürt egy Azure Dev Spaces-példányát teljesen, az összes Dev Spaces-térrel és benne futó szolgáltatással együtt törölni szeretné, használja az `az aks remove-dev-spaces` parancsot. Tartsa észben, hogy ez a művelet nem vonható vissza. Újra hozzáadhat Azure Dev Spaces-támogatást a fürtön, de azt a rendszer úgy kezeli, mintha elölről kezdené a folyamatot. A régi szolgáltatások és a tárolóhelyek nem állíthatók vissza.
+
+Az alábbi példa listázza az aktív előfizetése Azure Dev Spaces-vezérlőit, majd törli a myaks-rg erőforráscsoportban lévő myaks AKS-fürthöz társított Azure Dev Spaces-vezérlőt.
+
+```cmd
+    azds controller list
+    az aks remove-dev-spaces --name myaks --resource-group myaks-rg
+```

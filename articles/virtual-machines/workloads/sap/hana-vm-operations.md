@@ -13,15 +13,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 09/06/2018
+ms.date: 09/27/2018
 ms.author: msjuergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0a6c9d4ad27eb6dc6b0aba24f32a4a0dfde3c784
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: db2d7fbe395a6d7e332d79183a331b45f7767f51
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44163314"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47434060"
 ---
 # <a name="sap-hana-infrastructure-configurations-and-operations-on-azure"></a>SAP HANA-infrastruktúra konfigurációi és a műveletek az Azure-ban
 Ez a dokumentum útmutatást nyújt az Azure-infrastruktúra konfigurálása és SAP HANA rendszereit az Azure-beli natív virtuális gépek (VM) üzembe helyezett működő. A dokumentum az SAP HANA kibővített M128s VM-termékváltozat konfigurációs információkat is tartalmaz. Ez a dokumentum nem célja, hogy cserélje le a standard szintű SAP dokumentációját, amely magában foglalja az alábbi tartalommal:
@@ -168,6 +168,8 @@ A lemezek esetében a 3 x P20 oversize típusokat a kisebb méretű virtuális g
 Ellenőrizze, hogy a különböző javasolt kötetek a tárterületek átviteli sebességének felel meg a futtatni kívánt számítási feladatokra. Ha a munkaterhelés igényel nagyobb kötetek **/hana/adatok** és **/hana/log**, növelje az Azure Premium Storage virtuális merevlemezeket kell. Olyan kötetet, további virtuális merevlemezeket, mint a felsorolt méretezési fog növeléséhez IOPS és az i/o az Azure virtuális gép típusát keretein belül. 
 
 
+
+
 #### <a name="storage-solution-with-azure-write-accelerator-for-azure-m-series-virtual-machines"></a>Az Azure M sorozatú virtuális gépek Azure Write Accelerator tárolási megoldás
 Az Azure Írásgyorsító egy funkció, amely a kezdeti bevezetési az M-sorozat virtuális gépei kizárólag. Az államok neve, ahogy az a funkciók célja, hogy javítása az Azure Premium Storage írására i/o-késését. Az SAP Hana, Write Accelerator használható kellene a **/hana/log** csak kötetre. Ezért a konfiguráció látható, amennyiben módosítani kell. A legfontosabb változás, a darabolása között a **/hana/data** és **/hana/log** Azure Write Accelerator elleni használatához a **/hana/log** csak a kötetre. 
 
@@ -203,7 +205,9 @@ A cikkben található részletes útmutatást nyújt az Azure Írásgyorsító e
 
 Részletek és az Azure Írásgyorsító korlátozásai a azonos dokumentációjában található.
 
-
+> [!NOTE]
+> A lemez konfigurációjára vonatkozó javaslatok conditions stated above céloz meg SAP fejezi ki, az infrastruktúra-szolgáltatók felé minimális követelményeknek. A valódi ügyfelek központi telepítések és a munkaterhelés-forgatókönyvek esetében helyzetekben talált, ezekkel az ajánlásokkal még nem adott meg elegendő képességeket. Ezek a sikerült helyzetek, amikor egy ügyfél szükséges HANA újraindítás után egy gyorsabb töltse be újra az adatok, vagy ha biztonsági mentési konfiguráció szükséges nagyobb sávszélességet, a Storage. Egyéb esetben foglalt **/hana/log** ahol 5000 iops-érték nem volt elegendő adott számítási feladatra. Így hajtsa végre a megfelelő ezeket a javaslatokat a kiindulási pont, és alkalmazkodik a számítási feladatok követelményei alapján.
+>  
 
 ### <a name="set-up-azure-virtual-networks"></a>Az Azure virtuális hálózatok beállítása
 Ha helyek közötti kapcsolat az Azure-ba, VPN vagy ExpressRoute-n keresztül, rendelkeznie kell legalább egy Azure virtuális hálózat, amely a VPN- vagy ExpressRoute-kapcsolatcsoporthoz virtuális átjárón keresztül csatlakozik. Egyszerű üzembe a virtuális átjáró is telepíthető, az Azure virtuális hálózat (VNet), valamint az SAP HANA-példányok üzemeltető alhálózatán. Az SAP HANA telepítése, hozzon létre az Azure virtuális hálózatban két további alhálózatokat. Egy alhálózatot a virtuális gépek futtatásához az SAP HANA-példányok üzemelteti. A többi alhálózat Jumpbox vagy a felügyeleti virtuális gépek üzemeltetéséhez, SAP, HANA Studio, a más felügyeleti szoftverek vagy az alkalmazás szoftver fut.
@@ -359,7 +363,7 @@ A telepítő rutin a következő futtatásához használja a nem megosztott leme
 
 ## <a name="sap-hana-dynamic-tiering-20-for-azure-virtual-machines"></a>Az SAP HANA dinamikus Rétegezést 2.0-beli virtuális gépek
 
-Mellett az M-sorozatú Azure virtuális gépeken SAP HANA-tanúsítvánnyal, az SAP HANA dinamikus Rétegezést 2.0 is támogatott, a Microsoft Azure (SAP HANA dinamikus Rétegezést dokumentáció linsk lásd lejjebb). Nincs különbség a termék telepítése vagy működő azt ugyan, például SAP HANA vezérlőpultja egy Azure virtuális gépen belüli keresztül nincsenek néhány fontos elem, amely megadása kötelező a hivatalos támogatást az Azure-ban. Alábbi alapvető szempontokat az alábbiakban tekintheti át. A cikk teljes dinamikus Rétegezést 2.0 teljes neve helyett a rövidítést "DT 2.0" fogja használni.
+Az M-sorozatú Azure virtuális gépeken SAP HANA-tanúsítvánnyal, mellett a Microsoft Azure-on is támogatott az SAP HANA dinamikus Rétegezést 2.0 (lásd az SAP HANA dinamikus Rétegezést dokumentációs hivatkozások lejjebb). Nincs különbség a termék telepítése vagy működő azt ugyan, például SAP HANA vezérlőpultja egy Azure virtuális gépen belüli keresztül nincsenek néhány fontos elem, amely megadása kötelező a hivatalos támogatást az Azure-ban. Alábbi alapvető szempontokat az alábbiakban tekintheti át. A cikk teljes dinamikus Rétegezést 2.0 teljes neve helyett a rövidítést "DT 2.0" fogja használni.
 
 Az SAP HANA dinamikus Rétegezést 2.0 SAP BW vagy S4HANA által nem támogatott. Főbb alkalmazási helyzetek most olyan natív HANA-alkalmazásokat.
 
@@ -490,4 +494,4 @@ Mindenképp SAProuter telepítsen egy külön virtuális gépre, és nem a Jumpb
 Állítsa be, és távoli támogatási kapcsolatok keresztül SAProuter felügyeletével kapcsolatban lásd: a [SAP dokumentációjában](https://support.sap.com/en/tools/connectivity-tools/remote-support.html).
 
 ### <a name="high-availability-with-sap-hana-on-azure-native-vms"></a>Magas rendelkezésre állás az SAP HANA az Azure natív virtuális gépein
-Ha a SUSE Linux 12 SP1-et futtatja, vagy később is létrehozhat egy támasztja fürt STONITH eszközökkel. Az eszközök segítségével egy SAP HANA-konfigurációt, amely a szinkron replikációt használ a HANA-Rendszerreplikálást és automatikus feladatátvételi beállítása. A telepítési eljárás kapcsolatos további információkért lásd: [SAP HANA magas rendelkezésre állású útmutató az Azure-beli virtuális gépek](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-availability-overview).
+SUSE Linux Enterprise Server SAP alkalmazások 12 SP1 vagy újabb rendszert használ, ha egy támasztja fürt STONITH eszközökkel is létrehozhat. Az eszközök segítségével egy SAP HANA-konfigurációt, amely a szinkron replikációt használ a HANA-Rendszerreplikálást és automatikus feladatátvételi beállítása. A telepítési eljárás kapcsolatos további információkért lásd: [SAP HANA magas rendelkezésre állású útmutató az Azure-beli virtuális gépek](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-availability-overview).

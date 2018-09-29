@@ -16,12 +16,12 @@ ms.date: 11/13/2017
 ms.component: hybrid
 ms.author: billmath
 ms.custom: seohack1
-ms.openlocfilehash: 7999dc15fbe1af9d23b47971db03cf6b197f110f
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: a3cbbf887c4b7df57f2df89dfb8649967d6d9b1b
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46312108"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47434755"
 ---
 # <a name="define-data-protection-strategy-for-your-hybrid-identity-solution"></a>Adja meg a hibrid identitáskezelési megoldás az adatvédelmi stratégiát?
 Ebben a feladatban az adatvédelmi stratégiát a hibrid identitáskezelési megoldás az üzleti szükségletek kielégítése céljából, amelyet a megadott fogja definiálni:
@@ -58,8 +58,6 @@ Attól függően, hogy hogyan válaszolt kérdéseit [az adatvédelmi követelm�
 
 ## <a name="define-content-management-options"></a>A Tartalomkezelés beállítások definiálása
 
-<a name="one-advantage-of-using-azure-ad-to-manage-a-hybrid-identity-infrastructure-is-that-the-process-is-fully-transparent-from-the-end-users-perspective-the-user-tries-to-access-a-shared-resource-the-resource-requires-authentication-the-user-has-to-send-an-authentication-request-to-azure-ad-in-order-to-obtain-the-token-and-access-the-resource-this-entire-process-happens-in-the-background-without-user-interaction"></a>Hibrid identitás-infrastruktúra kezelése az Azure AD használatának egyik előnye az, hogy teljes mértékben átlátható a felhasználó szemszögéből-e a folyamat. A felhasználó megpróbál hozzáférni egy megosztott erőforráson, az erőforrás-hitelesítés szükséges, a felhasználó rendelkezik a hitelesítési kérést küldhet az Azure ad-ben a jogkivonat beszerzése és az erőforrás eléréséhez. A teljes folyamatot a háttérben, felhasználói beavatkozás nélkül történik. 
-=======
 Hibrid identitás-infrastruktúra kezelése az Azure AD használatának egyik előnye az, hogy teljes mértékben átlátható a felhasználó szemszögéből-e a folyamat. A felhasználó megpróbál hozzáférni egy megosztott erőforráson, az erőforrás-hitelesítés szükséges, a felhasználó rendelkezik a hitelesítési kérést küldhet az Azure ad-ben a jogkivonat beszerzése és az erőforrás eléréséhez. A teljes folyamatot a háttérben, felhasználói beavatkozás nélkül történik. 
 
 Szervezetek számára, amelyek az adatok adatvédelmi aggályokat rendszerint adatbesorolás csatornáinknak szükséges. Ha a jelenlegi helyszíni infrastruktúrával már használja az adatbesorolás, Azure ad-ben használható a fő tárházban, a felhasználó identitását. Egy ismert eszköz, azaz használható a helyszínen az adatbesorolás neve [adatbesorolási eszközkészlet](https://msdn.microsoft.com/library/Hh204743.aspx) Windows Server 2012 R2. Ez az eszköz segítségével azonosításában, besorolásában és fájlkiszolgálók a privát felhőben tárolt adatok védelmét. Akkor is lehet használni a [automatikus Fájlbesorolás](https://technet.microsoft.com/library/hh831672.aspx) ennek a feladatnak a Windows Server 2012-ben.

@@ -16,12 +16,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/23/2018
 ms.author: markvi
-ms.openlocfilehash: aa14563966e028716d8e18c3228f026af983561f
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: 56df09f461458071093088159d3b468755b0e4ad
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44024109"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47434942"
 ---
 # <a name="enable-enterprise-state-roaming-in-azure-active-directory"></a>A vállalati állapothordozás engedélyezése az Azure Active Directoryban
 Enterprise State Roaming egy prémium szintű Azure AD vagy Enterprise Mobility + Security (EMS) licenccel rendelkező minden szervezet számára érhető el. Az Azure AD-előfizetés beszerzése További információkért lásd: a [Azure ad-ben termékoldalán](https://azure.microsoft.com/services/active-directory).
@@ -45,9 +45,9 @@ Enterprise State Roaming adatokat egy vagy több üzemeltetett [Azure-régiók](
 
 Ország/régió érték | a data-ban üzemeltetett rendelkezik
 ---------------------|-------------------------
-Egy EMEA-ország például "Franciaország" vagy "Zambia" | egy vagy Európán az Azure-régiók 
-Például az "Egyesült Államok" vagy "Kanada" észak-amerikai ország | egy vagy több Azure-régiót belül az Egyesült Államok
-Az APAC ország, például "Ausztrália" vagy "Új-zélandi" | egy vagy több Azure-régiót Ázsia belül
+Franciaország vagy Zambia például az EMEA ország | Egy vagy több Azure-régiót Európán 
+Észak-amerikai országot, például az Egyesült Államok és Kanada | egy vagy több Azure-régiót belül az Egyesült Államok
+Az APAC ország, például az ausztráliai vagy Új-Zéland | egy vagy több Azure-régiót Ázsia belül
 Dél-amerikai és Antarktisz régiók | egy vagy több Azure-régióban az Egyesült Államok belül
 
 Ország/régió értékét az Azure AD-címtár létrehozása folyamat részeként van beállítva, és ezt követően nem módosítható. Ha további részleteket az adatok tárolási helye, küldjön el egy jegyet az [az Azure-támogatás](https://azure.microsoft.com/support/options/).

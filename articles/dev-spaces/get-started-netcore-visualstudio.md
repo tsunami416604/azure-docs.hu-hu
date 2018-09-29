@@ -13,12 +13,12 @@ ms.topic: tutorial
 description: Gyors Kubernetes-fejlesztés tárolókkal és mikroszolgáltatásokkal az Azure-ban
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, tárolók
 manager: douge
-ms.openlocfilehash: ac1872cf3f5ee8b83da9fa4c489188504aa8ad22
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: 43cf75d875b2f5fbfea46fb2c8fbae809668057d
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44161543"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47405172"
 ---
 # <a name="get-started-on-azure-dev-spaces-with-net-core-and-visual-studio"></a>Bevezetés az Azure Dev Spaces .NET Core és Visual Studio segítségével történő használatába
 
@@ -29,9 +29,39 @@ Ebből az útmutatóból a következőket tudhatja meg:
 - Két külön szolgáltatás egymástól függetlenül történő fejlesztése, és a használt Kubernetes DNS-szolgáltatás észlelésével hívásindítás egy másik szolgáltatásba.
 - A kód hatékony fejlesztése és tesztelése, csapatkörnyezetben.
 
-[!INCLUDE [](includes/see-troubleshooting.md)]
+> [!Note]
+> **Ha bármikor elakad**, tekintse meg a [Hibaelhárítás](troubleshooting.md) szakaszt, vagy írjon egy hozzászólást erre a lapra.
 
-[!INCLUDE [](includes/portal-aks-cluster.md)]
+
+## <a name="create-a-kubernetes-cluster-enabled-for-azure-dev-spaces"></a>Azure Dev Spaceshez engedélyezett Kubernetes-fürt létrehozása
+
+1. Jelentkezzen be az Azure Portalra a http://portal.azure.com webhelyen.
+1. Válassza az **Erőforrás létrehozása** lehetőséget > keressen a **Kubernetes** kifejezésre > válassza a **Kubernetes Service** > **Létrehozás** elemet.
+
+   Tegye a következőket az AKS-fürt létrehozására szolgáló űrlap címsorai alatt.
+
+    - **PROJEKT ADATAI**: válasszon ki egy Azure-előfizetést és egy új vagy meglévő Azure-erőforráscsoportot.
+    - **FÜRT ADATAI**: adjon meg egy nevet, régiót (jelenleg kötelező az EastUS, Central US, WestEurope, WestUS2, CanadaCentral vagy CanadaEast régiót választani), verziót és DNS-névelőtagot az AKS-fürthöz.
+    - **MÉRET**: válassza ki a virtuálisgép-méretet az AKS-ügynökcsomópontok számára, és a csomópontok számát. Ha most kezdte el az Azure Dev Spaces használatát, egyetlen csomópont elegendő az összes funkció kipróbálásához. A csomópontok száma bármikor egyszerűen beállítható a fürt telepítése után. Vegye figyelembe, hogy a virtuálisgép-méret az AKS-fürt létrehozását követően nem módosítható. Az AKS-fürt telepítése után azonban egyszerűen létrehozhat egy új, nagyobb virtuális gépekkel rendelkező AKS-fürtöt, majd a Dev Spaces használatával újratelepíthet erre a nagyobb fürtre, ha felskálázásra van szükség.
+
+   Ügyeljen rá, hogy a Kubernetes 1.9.6-os vagy újabb verzióját válassza.
+
+   ![Kubernetes konfigurációs beállításai](media/common/Kubernetes-Create-Cluster-2.PNG)
+
+   Ha kész, válassza a **Következő: Hitelesítés** elemet.
+
+1. Válassza ki a Szerepköralapú hozzáférés-vezérlés (RBAC) kívánt beállítását. Az Azure Dev Spaces engedélyezett és letiltott RBAC esetén is támogatja a fürtöket.
+
+    ![RBAC-beállítás](media/common/k8s-RBAC.PNG)
+
+1. Győződjön meg róla, hogy a HTTP-alkalmazások útválasztása engedélyezve van.
+
+   ![HTTP-alkalmazások útválasztásának engedélyezése](media/common/Kubernetes-Create-Cluster-3.PNG)
+
+    > [!Note]
+    > A [Http Application Routing](/azure/aks/http-application-routing) engedélyezéséhez egy meglévő fürtön használja a következő parancsot: `az aks enable-addons --resource-group myResourceGroup --name myAKSCluster --addons http_application_routing`
+
+1. Amikor végzett, válassza az **Áttekintés + létrehozás**, majd a **Létrehozás** lehetőséget.
 
 ## <a name="get-the-visual-studio-tools"></a>A Visual Studio eszközeinek beszerzése
 1. A [Visual Studio 2017](https://www.visualstudio.com/vs/) legújabb verziójának telepítése
@@ -52,7 +82,6 @@ Hozzon létre egy új projektet a Visual Studio 2017-ben. Jelenleg a projektnek 
 Válassza ki a **Webalkalmazás (Model-View-Controller)** sablont, és ellenőrizze, hogy a párbeszédpanel tetején a két legördülő listában a **.NET Core** és az **ASP.NET Core 2.0** van-e kijelölve. A projekt létrehozásához kattintson az **OK** gombra.
 
 ![](media/get-started-netcore-visualstudio/NewProjectDialog2.png)
-
 
 ### <a name="enable-dev-spaces-for-an-aks-cluster"></a>A DevSpaces engedélyezése egy AKS-fürtön
 

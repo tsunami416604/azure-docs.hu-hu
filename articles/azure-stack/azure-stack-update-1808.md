@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/26/2018
+ms.date: 09/28/2018
 ms.author: sethm
 ms.reviewer: justini
-ms.openlocfilehash: f1541a0523ce0178ad3616a956d5188ef7df0ded
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: 7278f784316fdbd7170bb69b9414911b8f5b3823
+ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47395712"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47452683"
 ---
 # <a name="azure-stack-1808-update"></a>Azure Stack 1808 frissítése
 
@@ -204,6 +204,17 @@ Az alábbiakban a telepítés utáni ismert hibáit a build-verziószáma.
 
 
 ### <a name="compute"></a>Compute
+
+- <!-- 3090289 – IS, ASDK --> Frissítse a 1808 alkalmazása után, a következő problémák jelentkezhetnek, ha felügyelt lemezekkel rendelkező virtuális gépek üzembe helyezéséhez:
+
+   1. Ha az előfizetés korábban jött létre a 1808 frissítése, a felügyelt lemezekkel rendelkező virtuális gép üzembe helyezése egy belső hiba miatt sikertelen lehet. A hiba elhárításához kövesse ezeket a lépéseket minden egyes előfizetés esetén:
+      1. A bérlői portálon lépjen a **előfizetések** , és keresse meg az előfizetés. Kattintson a **erőforrás-szolgáltatók**, majd kattintson az **Microsoft.Compute**, és kattintson a **újraregisztrálni**.
+      2. Lépjen az azonos előfizetéshez tartozó **hozzáférés-vezérlés (IAM)**, és ellenőrizze, hogy **Azure Stack – felügyelt lemez** szerepel a listán.
+   2. Ha egy több-bérlős környezet van beállítva, egy belső hiba miatt meghiúsulhat egy előfizetésben, és a Vendég címtár tartozó virtuális gépek üzembe helyezéséhez. A hiba elhárításához kövesse az alábbi lépéseket:
+      1. Alkalmazza a [1808 Azure Stack gyorsjavítás](https://support.microsoft.com/help/4465859).
+      2. Kövesse a [Ez a cikk](azure-stack-enable-multitenancy.md#registering-azure-stack-with-the-guest-directory) újrakonfigurálása a Vendég címtárak mindegyike.
+
+
 - <!-- 2869209 – IS, ASDK --> Használatakor a [ **Add-AzsPlatformImage** parancsmag](https://docs.microsoft.com/powershell/module/azs.compute.admin/add-azsplatformimage?view=azurestackps-1.4.0), kell használnia a **- OsUri** paramétert, a tárfiók URI, ahol fel a rendszer a lemezen. Ha helyi elérési útját a lemezt használ, a parancsmag a következő hibával meghiúsul: *hosszú ideig futó művelet sikertelen volt, "Sikertelen" állapotú*. 
 
 - <!--  2966665 – IS, ASDK --> A prémium szintű méretre SSD adatlemezek csatolására felügyelt lemez (DS, DSv2, Fs, Fs_V2) virtuális gépek sikertelen lesz, és hiba: *nem sikerült frissíteni a lemezt a virtuális gép "vmname" hiba: a kért művelet nem hajtható végre, mert a tárfiók típusa " Virtuálisgép-méret esetében nem támogatott a Premium_LRS' "Fs_v2 Standard_DS/Ds_V2 és FS)*

@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 08/03/2018
 ms.author: lizross
-ms.openlocfilehash: 66e3e37d0f42516c67cfe37c42db3b3914cbb667
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: f5a148cba172b4e1e4490b52afb3b500da3a593c
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45730547"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47434160"
 ---
 # <a name="azure-active-directory-deployment-plans"></a>Azure Active Directory-üzembehelyezési tervek
 Átfogó útmutatót keres az Azure Active Directory (Azure AD) egyes képességeinek üzembe helyezéséhez? Az alábbi üzembehelyezési tervek végigvezetik az egyes gyakoribb Azure AD-képességek sikeres bevezetéséhez szükséges, az üzleti értékkel, a tervezési szempontokkal, a kialakítással és az üzemeltetéssel kapcsolatos eljárásokon. 
@@ -27,6 +27,7 @@ Kíváncsiak vagyunk a dokumentumokkal kapcsolatos visszajelzésére. Ennek a r�
 |Forgatókönyv |Leírás |
 |-|-|
 |[Egyszeri bejelentkezés](https://aka.ms/SSODPDownload)|Az egyszeri bejelentkezéssel mindössze egyetlen bejelentkezéssel és egyetlen felhasználói fiókkal elérheti az üzleti tevékenységeihez szükséges összes alkalmazást és erőforrást. Miután bejelentkezett, a Microsoft Office-ból anélkül léphet át a SalesForce-ba vagy a Boxba, hogy újfent el kellene végeznie a hitelesítést (például meg kellene adnia egy jelszót).|
+|[Bejövő felhasználók WORKDAY-központú átadása](https://aka.ms/WorkdayDeploymentPlan)|WORKDAY-központú bejövő Felhasználókiépítés az Active Directory hoz létre a folyamatban lévő identitáskezelést alapjait és üzleti folyamatok, a mérvadó identitási adatokat használó minőségét javítja. Ezzel a funkcióval, zökkenőmentesen kezelhető az alkalmazottak és a függő munkavállalók identitás-életciklus informatikai üzembe helyezési műveletek (például a létrehozás, engedélyezés, Joiner-Rekordáthelyezőnek – "kilépő" folyamatok (például új szabad, Leállítás, átvitel) leképezhető szabályok konfigurálása Tiltsa le, és törölje fiókok).|
 |[Hozzáférési panel](https://aka.ms/AccessPanelDPDownload)|A felhasználók egy egyszerű központ felderítése és érik el a alkalmazásokat kínál. Lehetővé teszi önkiszolgáló képességek kérhet hozzáférést az új alkalmazások és a csoportok, például a hatékonyabb legyen, vagy mások nevében ezekhez az erőforrásokhoz való hozzáférés kezelése.|
 |[Felhasználók regisztrálása](https://aka.ms/UserProvisioningDPDownload)|Az Azure AD-vel automatizálhatja a felhasználói identitások létrehozását, karbantartását és eltávolítását a felhőalapú (SaaS-) alkalmazásokban, például a Dropboxban, a Salesforce-ban vagy a ServiceNow-ban.|
 |[Multi-Factor Authentication](https://aka.ms/MFADPDownload)|Az Azure Multi-Factor Authentication (MFA) a Microsoft kétlépéses hitelesítési megoldása. A rendszergazda által engedélyezett hitelesítési módszerek használatával az Azure MFA segíti az adatok és alkalmazások védelmét az illetéktelen hozzáféréssel szemben, miközben lehetővé teszi az igényeknek megfelelő, egyszerű bejelentkezési folyamat használatát.|

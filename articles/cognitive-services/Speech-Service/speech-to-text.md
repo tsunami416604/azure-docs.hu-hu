@@ -9,12 +9,12 @@ ms.component: speech-service
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: v-jerkin
-ms.openlocfilehash: 9e180e15801a7100349c7334a2452adfeab95500
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: 7cb0257a7302221f80bb90c0a6c3446cde07290a
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47394481"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47434126"
 ---
 # <a name="about-the-speech-to-text-api"></a>Tudnivalók a Speech to Text API
 
@@ -28,7 +28,7 @@ A **Speech to Text** API a következő szolgáltatásokat nyújtja:
 
 - Optimalizált **Speech to Text** interaktív, beszélgetést, eredményeit és a Diktálás forgatókönyvek. A felismert eredménye Lexical és a megjelenített képernyőn (lexikai eredményt, lásd: DetailedSpeechRecognitionResult példák vagy API-t).
 
-- Számos használja a beszélt nyelv és Dialektusok támogatása. Minden egyes felismerés módban támogatott nyelvek teljes listáját lásd: [támogatott nyelvek](supported-languages.md#speech-to-text).
+- Számos használja a beszélt nyelv és Dialektusok támogatása. Minden egyes felismerés módban támogatott nyelvek teljes listáját lásd: [támogatott nyelvek](language-support.md#speech-to-text).
 
 - Testreszabott nyelvi és akusztikai modell, így testre szabhatja a felhasználók speciális tartomány szöveg szóhasználati, hogy az alkalmazás, és beszéljen környezetben és különféle módja.
 

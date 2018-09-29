@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/02/2018
 ms.author: clemensv
 ms.custom: include file
-ms.openlocfilehash: 2784102cdc778188f0874a15e3ff02e4cc2e3eb8
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 5c7c2fe101315959d07ce4912905bbf59a7ee664
+ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33905001"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47452809"
 ---
 ### <a name="create-a-console-application"></a>Konzolalkalmazás létrehozása
 
@@ -22,8 +22,10 @@ Hozzon létre egy új **Konzolalkalmazás- (.NET-keretrendszer-)** projektet a V
 ### <a name="add-the-relay-nuget-package"></a>A Relay NuGet-csomag hozzáadása
 
 1. Kattintson a jobb gombbal az újonnan létrehozott projektre, majd válassza a **NuGet-csomagok kezelése** lehetőséget.
-2. Válassza a **Tallózás** elemet, majd keressen rá a **Microsoft.Azure.Relay** kifejezésre. Válassza ki a **Microsoft Azure Relay** elemet a keresési eredmények közül. 
-3. Kattintson a **Telepítés** gombra a telepítés befejezéséhez. Zárja be a párbeszédpanelt.
+2. Válassza az **Előzetes verzió belefoglalása** lehetőséget. 
+3. Válassza a **Tallózás** elemet, majd keressen rá a **Microsoft.Azure.Relay** kifejezésre. Válassza ki a **Microsoft Azure Relay** elemet a keresési eredmények közül.
+4. Válassza a **2.0.0-preview1-20180523** lehetőséget a verzió megadásakor. 
+5. Kattintson a **Telepítés** gombra a telepítés befejezéséhez. Zárja be a párbeszédpanelt.
 
 ### <a name="write-code-to-receive-messages"></a>Kód írása az üzenetek fogadásához
 
@@ -35,13 +37,21 @@ Hozzon létre egy új **Konzolalkalmazás- (.NET-keretrendszer-)** projektet a V
     using System.Threading;
     using System.Threading.Tasks;
     using Microsoft.Azure.Relay;
+    using System.Net;
     ```
 2. Adjon állandókat a `Program` osztályhoz a hibrid kapcsolat részleteivel. Cserélje le a zárójelben lévő helyőrzőket a hibrid kapcsolat létrehozásakor beszerzett megfelelő értékekre. Ügyeljen arra, hogy a teljes névtérnevet használja.
    
     ```csharp
+    // replace {RelayNamespace} with the name of your namespace
     private const string RelayNamespace = "{RelayNamespace}.servicebus.windows.net";
+
+    // replace {HybridConnectionName} with the name of your hybrid connection
     private const string ConnectionName = "{HybridConnectionName}";
+
+    // replace {SAKKeyName} with the name of your Shared Access Policies key, which is RootManageSharedAccessKey by default
     private const string KeyName = "{SASKeyName}";
+
+    // replace {SASKey} with the primary key of the namespace you saved earlier
     private const string Key = "{SASKey}";
     ```
 

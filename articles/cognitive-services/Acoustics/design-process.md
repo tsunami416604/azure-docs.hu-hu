@@ -9,18 +9,18 @@ ms.component: acoustics
 ms.topic: article
 ms.date: 08/17/2018
 ms.author: kegodin
-ms.openlocfilehash: 3b35f78d66a6ae66b0a56818f5d4be455ce00de5
-ms.sourcegitcommit: 1aedb52f221fb2a6e7ad0b0930b4c74db354a569
+ms.openlocfilehash: 8f594be67c4677fae00cb01598d3899e30dae1e8
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "40181694"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47433224"
 ---
 # <a name="design-process-overview"></a>Tervezési folyamat áttekintése
-Az összes három szakaszban a projekt Akusztika munkafolyamat-Tervező tervez fejezhető: előre a Tervező, megbízható forrás elhelyezési és utáni bake tervezési os. A folyamat kevesebb jelölőnyelvi társított visszhang kötetek elhelyezése Tervező szabályozhatja, hogyan álló jelenet renderelése; hangok megőrzése szükséges.
+Az összes három szakaszban a projekt Akusztika munkafolyamat-Tervező tervez fejezhető: előre os jelenet telepítése, a megbízható forrás elhelyezési és utáni bake Tervező. A folyamat kevesebb jelölőnyelvi társított visszhang kötetek elhelyezése Tervező szabályozhatja, hogyan álló jelenet renderelése; hangok megőrzése szükséges.
 
 ## <a name="pre-bake-design"></a>Üzem előtti bake kialakítása
-Az üzem előtti bake tervezési folyamat hoz létre a helyszín és a metaadatokat, amelyek használhatók a hangot wave szimuláció, amely kiválasztásával jelenet elemek részt vesz a szimuláció occlusions, tükröződés és reverberation biztosít, amely tartalmazza. A helyszín metaadatai a kijelölés akusztikai anyagok minden jelenet elemhez. Az akusztikai anyagok ellenőrzés kerülnek vissza minden egyes felületből eredményes energia mennyiségét.
+Az üzem előtti bake jelenet telepítési folyamatot hoz létre a helyszín és a metaadatokat, amelyek használhatók a hangot wave szimuláció, amely kiválasztásával jelenet elemek részt vesz a szimuláció occlusions, tükröződés és reverberation biztosít, amely tartalmazza. A helyszín metaadatai a kijelölés akusztikai anyagok minden jelenet elemhez. Az akusztikai anyagok ellenőrzés kerülnek vissza minden egyes felületből eredményes energia mennyiségét.
 
 Az alapértelmezett elnyelő együttható az összes felület érték 0,04, amely magas reflektív. Esztétikai és játékélményt hatásait a jelenet során különböző anyagokat, amely azokat a tér át egy területről a helyszín, egy másik hallani esetén különösen kiemelkedő a figyelők elnyelő együtthatója beállításával érheti el. Például egy világos való átállás sötét reverberant szobában, javítja a nem reverberant öltözet jelenet az átállás hatását. A hatás eléréséhez finomhangolja az elnyelő együttható magasabb öltözet jelenet anyagokon.
 

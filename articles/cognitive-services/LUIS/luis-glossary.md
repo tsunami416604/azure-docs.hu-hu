@@ -10,23 +10,23 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: 4e14c666401d5e494d924889a8bba957be232c12
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: a741cb1c2643e48080018e5c9f4ada7038bce29e
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47036830"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47434806"
 ---
 # <a name="glossary"></a>Szószedet
 A Language Understanding (LUIS) szószedet ismerteti feltételeit, amelyek találkozhat végzett munka során az intelligens HANGFELISMERÉSI API-szolgáltatást.
 
 ## <a name="active-version"></a>Aktív verziója
 
-Az aktív LUIS-verzió verziója, amely megkapja a modell változásait. Az a [LUIS](luis-reference-regions.md) webhely, ha azt szeretné, hogy a módosítások egy olyanra, amely verziója nem aktív, be kell először azt a verziót aktívként. 
+Az aktív LUIS-verzió verziója, amely megkapja a modell változásait. Az a [LUIS](luis-reference-regions.md) webhely, ha azt szeretné, hogy a módosítások egy olyanra, amely verziója nem aktív, be kell először azt a verziót aktívként.
 
 ## <a name="authoring"></a>Szerzői műveletek
 
-Szerzői rendszer azon képessége, létrehozása, kezelése és üzembe helyezéséhez egy [LUIS-alkalmazásokon](#luis-app), vagy használja a [LUIS](luis-reference-regions.md) webhely vagy a [API-k készítése](https://aka.ms/luis-authoring-api). 
+Szerzői rendszer azon képessége, létrehozása, kezelése és üzembe helyezéséhez egy [LUIS-alkalmazásokon](#luis-app), vagy használja a [LUIS](luis-reference-regions.md) webhely vagy a [API-k készítése](https://aka.ms/luis-authoring-api).
 
 ## <a name="authoring-key"></a>Kulcs létrehozási
 
@@ -70,7 +70,7 @@ Ugyanaz, mint a [aktív verziója](#active-version)
 
 ## <a name="domain"></a>Tartomány
 
-A LUIS a környezetben egy **tartomány** olyan terület, az ismeretek. A tartomány csak a Tudásbázis alkalmazás területéhez. Ez lehet például az ügynök utazási alkalmazás általános területét. Egy ügynök utazási alkalmazás is lehet adott csak az adott földrajzi helyek, nyelvek és szolgáltatások például a vállalati adatokat területéhez. 
+A LUIS a környezetben egy **tartomány** olyan terület, az ismeretek. A tartomány csak a Tudásbázis alkalmazás területéhez. Ez lehet például az ügynök utazási alkalmazás általános területét. Egy ügynök utazási alkalmazás is lehet adott csak az adott földrajzi helyek, nyelvek és szolgáltatások például a vállalati adatokat területéhez.
 
 ## <a name="endpoint"></a>Végpont
 
@@ -90,7 +90,7 @@ A példában a végpont hasonlóan néz ki:
 
 ## <a name="entity"></a>Entitás
 
-[Entitások](luis-concept-entity-types.md) olyan fontos szavak a [beszédmódok](luis-concept-utterance.md) vonatkozó információkat a [szándékot](luis-concept-intent.md), és egyes esetekben ez a alapvető. Egy entitás lényegében egy adattípus, a LUIS. 
+[Entitások](luis-concept-entity-types.md) olyan fontos szavak a [beszédmódok](luis-concept-utterance.md) vonatkozó információkat a [szándékot](luis-concept-intent.md), és egyes esetekben ez a alapvető. Egy entitás lényegében egy adattípus, a LUIS.
 
 ## <a name="f-measure"></a>F-mérték
 
@@ -114,7 +114,7 @@ Egy [szándékot](luis-concept-intent.md) feladatot vagy műveletet a felhaszná
 
 ## <a name="labeling"></a>Címkézés
 
-Címkézés szó vagy kifejezés egy leképezés a társítása [utterance (kifejezés)](#utterance) együtt egy [entitás](#entity) (datatype). 
+Címkézés szó vagy kifejezés egy leképezés a társítása [utterance (kifejezés)](#utterance) együtt egy [entitás](#entity) (datatype).
 
 ## <a name="luis-app"></a>A LUIS-alkalmazás
 
@@ -125,26 +125,26 @@ LUIS-alkalmazásokon egy olyan betanított modell természetes nyelvi feldolgoz�
 Minden alkalmazás rendelkezik egy olyan tulajdonost, aki az alkalmazást létrehozó személy. A tulajdonos adhat hozzá [közreműködők](#collaborator).
 
 ## <a name="pattern"></a>Minták
-A korábbi minta funkció helyére [minták](luis-concept-patterns.md). Minták segítségével előrejelzési pontosság növeléséhez azáltal, hogy kevesebb példák. 
+A korábbi minta funkció helyére [minták](luis-concept-patterns.md). Minták segítségével előrejelzési pontosság növeléséhez azáltal, hogy kevesebb példák.
 
 ## <a name="phrase-list"></a>Kifejezéslista
 
-A [kifejezéslista](luis-concept-feature.md#what-is-a-phrase-list-feature) tartalmaz egy csoportot az értékek (szavak vagy kifejezések), amely ugyanahhoz az osztályhoz tartozik, és hasonló módon (például az városok vagy a termék nevét) kell kezelni. Egy cserélhető lista szinonimák számít. 
+A [kifejezéslista](luis-concept-feature.md#what-is-a-phrase-list-feature) tartalmaz egy csoportot az értékek (szavak vagy kifejezések), amely ugyanahhoz az osztályhoz tartozik, és hasonló módon (például az városok vagy a termék nevét) kell kezelni. Egy cserélhető lista szinonimák számít.
 
 ## <a name="prebuilt-domains"></a>Előre összeállított tartomány
 
-A [előre összeállított tartomány](luis-how-to-use-prebuilt-domains.md) LUIS-alkalmazások, például otthoni automation (HomeAutomation) vagy éttermi foglalások (RestaurantReservation) adott tartományhoz konfigurálva. A leképezések utterances és entitások ebben a tartományban van konfigurálva. 
+A [előre összeállított tartomány](luis-how-to-use-prebuilt-domains.md) LUIS-alkalmazások, például otthoni automation (HomeAutomation) vagy éttermi foglalások (RestaurantReservation) adott tartományhoz konfigurálva. A leképezések utterances és entitások ebben a tartományban van konfigurálva.
 
 ## <a name="prebuilt-entity"></a>Előre összeállított entitások
 
-A [előre összeállított entitások](luis-prebuilt-entities.md) olyan entitás, LUIS nyújt általános típusú adatok például a száma, URL-cím és e-mailt. Úgy dönt, hogy egy előre létrehozott entitás hozzáadása az alkalmazáshoz. 
+A [előre összeállított entitások](luis-prebuilt-entities.md) olyan entitás, LUIS nyújt általános típusú adatok például a száma, URL-cím és e-mailt. Úgy dönt, hogy egy előre létrehozott entitás hozzáadása az alkalmazáshoz.
 
 ## <a name="precision"></a>Pontosság
 A [batch tesztelés](luis-interactive-test.md#batch-testing), pontosság (más néven prediktív értéke pozitív) a százalékértékében mutatkozó megfelelő utterances lekért megcímkézzen között.
 
 ## <a name="programmatic-key"></a>Programozott kulcs
 
-Átnevezve [kulcs létrehozási](#authoring-key). 
+Átnevezve [kulcs létrehozási](#authoring-key).
 
 ## <a name="publish"></a>Közzététele
 
@@ -152,24 +152,24 @@ Azt jelenti, hogy így a LUIS közzétételi [aktív verzió](#active-version) �
 
 ## <a name="quota"></a>Kvóta
 
-A LUIS-kvóta korlátozásának a [Azure-előfizetés-szintű](https://aka.ms/luis-price-tier). A LUIS-kvóta mindkét kérelmek / másodperc (HTTP-állapot 429) és a egy hónapig (HTTP-állapot 403) teljes kéréseket is korlátozza. 
+A LUIS-kvóta korlátozásának a [Azure-előfizetés-szintű](https://aka.ms/luis-price-tier). A LUIS-kvóta mindkét kérelmek / másodperc (HTTP-állapot 429) és a egy hónapig (HTTP-állapot 403) teljes kéréseket is korlátozza.
 
 ## <a name="recall"></a>Idézze
-A [batch tesztelés](luis-interactive-test.md#batch-testing), visszahívása (más néven érzékenységi), a rendszer azon képessége, a LUIS általánosítására. 
+A [batch tesztelés](luis-interactive-test.md#batch-testing), visszahívása (más néven érzékenységi), a rendszer azon képessége, a LUIS általánosítására.
 
 ## <a name="semantic-dictionary"></a>Szemantikai szótár
 A szemantikai szótárba áll rendelkezésre az a entitás-lista oldalára, valamint a kifejezés-lista oldalára. A szemantikai szótár nyújt segítséget az aktuális hatókör alapján szó.
 
 ## <a name="sentiment-analysis"></a>Hangulatelemzés
-Hangulatelemzés biztosít által biztosított megcímkézzen pozitív vagy negatív értékét [Szövegelemzés](https://azure.microsoft.com/services/cognitive-services/text-analytics/). 
+Hangulatelemzés biztosít által biztosított megcímkézzen pozitív vagy negatív értékét [Szövegelemzés](https://azure.microsoft.com/services/cognitive-services/text-analytics/).
 
 ## <a name="speech-priming"></a>Beszéd betanítási művelet
 
-Beszéd betanítási művelet lehetővé teszi a beszédfelismerési szolgáltatás lehet felkészül a LUIS-modell. 
+Beszéd betanítási művelet lehetővé teszi a beszédfelismerési szolgáltatás lehet felkészül a LUIS-modell.
 
 ## <a name="spelling-correction"></a>Javításra
 
-Engedélyezze a Bing helyesírás-ellenőrzőjének használatát, az előrejelzési előtt megcímkézzen kijavítsa a hibásan leírt szavakat. 
+Engedélyezze a Bing helyesírás-ellenőrzőjének használatát, az előrejelzési előtt megcímkézzen kijavítsa a hibásan leírt szavakat.
 
 ## <a name="starter-key"></a>Alapszintű kulcs
 
@@ -177,7 +177,7 @@ Ugyanaz, mint a [programozott kulcs](#programmatic-key), átnevezett szerzői m�
 
 ## <a name="subscription-key"></a>Előfizetői azonosító
 
-Az előfizetési kulcs a **végpont** az intelligens HANGFELISMERÉSI szolgáltatás társított kulcs [Azure-ban létrehozott](luis-how-to-azure-subscription.md). Ezt a kulcsot nem kötelező a [kulcs létrehozási](#programmatic-key). Ha egy végpont kulccsal rendelkezik, azt az Authoring Tool kulcs helyett végpont kérelmeket használandó. Láthatja, hogy az aktuális végponti kulcs a végponti URL-cím végén található [ **kulcsokat és a végpontok** oldal](luis-how-to-manage-keys.md) a [LUIS](luis-reference-regions.md) webhelyén. Az értéke, **előfizetési-kulcsa** név-érték pár. 
+Az előfizetési kulcs a **végpont** az intelligens HANGFELISMERÉSI szolgáltatás társított kulcs [Azure-ban létrehozott](luis-how-to-azure-subscription.md). Ezt a kulcsot nem kötelező a [kulcs létrehozási](#programmatic-key). Ha egy végpont kulccsal rendelkezik, azt az Authoring Tool kulcs helyett végpont kérelmeket használandó. Láthatja, hogy az aktuális végponti kulcs a végponti URL-cím végén található [ **kulcsokat és a végpontok** oldal](luis-how-to-manage-keys.md) a [LUIS](luis-reference-regions.md) webhelyén. Az értéke, **előfizetési-kulcsa** név-érték pár.
 
 ## <a name="test"></a>Teszt
 
@@ -185,12 +185,12 @@ Az előfizetési kulcs a **végpont** az intelligens HANGFELISMERÉSI szolgálta
 
 ## <a name="timezoneoffset"></a>Időzóna-eltolás
 
-A végpont timezoneOffset tartalmaz. Ez az a percek alatt szeretné hozzáadni, vagy távolítsa el a datetimeV2 előre összeállított entitások. Például ha az utterance (kifejezés) "eldöntve található?", a visszaadott datetimeV2 az aktuális időpont az ügyfélkérelem. Ha az ügyfél kérelem érkezik egy robot vagy más alkalmazást, amely nem ugyanaz, mint a robot felhasználói, kell adja át az eltolás a robot és a felhasználó között. 
+A végpont timezoneOffset tartalmaz. Ez az a percek alatt szeretné hozzáadni, vagy távolítsa el a datetimeV2 előre összeállított entitások. Például ha az utterance (kifejezés) "eldöntve található?", a visszaadott datetimeV2 az aktuális időpont az ügyfélkérelem. Ha az ügyfél kérelem érkezik egy robot vagy más alkalmazást, amely nem ugyanaz, mint a robot felhasználói, kell adja át az eltolás a robot és a felhasználó között.
 
 Lásd: [időzóna módosítása előre összeállított datetimeV2 entitás](luis-concept-data-alteration.md?#change-time-zone-of-prebuilt-datetimev2-entity).
 
 ## <a name="token"></a>Token
-A jogkivonat a legkisebb egység is kell-e jelölve, az entitásokban, hogy. A jogkivonatok alapján az alkalmazás [kulturális környezet](luis-supported-languages.md#tokenization).
+A jogkivonat a legkisebb egység is kell-e jelölve, az entitásokban, hogy. A jogkivonatok alapján az alkalmazás [kulturális környezet](luis-language-support.md#tokenization).
 
 ## <a name="train"></a>Train
 
@@ -206,7 +206,7 @@ A [batch tesztelés](luis-interactive-test.md#batch-testing), az adatok pontok o
 
 ## <a name="utterance"></a>Utterance (kifejezés)
 
-Az utterance (kifejezés), például a "2 könyv jegyek következő" frissítő kedd "Seattle" természetes nyelvi kifejezést. Példa utterances kerülnek a célt. 
+Az utterance (kifejezés), például a "2 könyv jegyek következő" frissítő kedd "Seattle" természetes nyelvi kifejezést. Példa utterances kerülnek a célt.
 
 ## <a name="version"></a>Verzió
 

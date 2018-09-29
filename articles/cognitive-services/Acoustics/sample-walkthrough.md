@@ -9,12 +9,12 @@ ms.component: acoustics
 ms.topic: article
 ms.date: 08/17/2018
 ms.author: kegodin
-ms.openlocfilehash: e0c28645de8c45aaf89afb6b5116aa9a3cb04768
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: eaf7ff9f7f791fd6d04e6b76d256b4987c50cd13
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47227503"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47434092"
 ---
 # <a name="unity-sample-walkthrough"></a>Unity mintaútmutató
 Ez a bemutató a projekt Akusztika minta. További információ a milyen projekt Akusztika van, tekintse meg a [projekt Akusztika bemutatása](what-is-acoustics.md). A projekt Akusztika csomagot ad hozzá egy már meglévő Unity-projektet a segítségre van szüksége, használja a [a kezdeti lépések útmutatóban](getting-started.md).
@@ -29,13 +29,13 @@ Ez a bemutató a projekt Akusztika minta. További információ a milyen projekt
 Töltse le és importálja a **MicrosoftAcoustics.Sample.unitypackage**. Importálási, a beállításokat, beleértve a projekt **Spatializer** és **Verze modulu Runtime Scripting** frissülnek, hogy a beépülő modul követelményeinek. Ha ez befejeződött, megjelenik a Unity-konzolon, a hiba **AcousticsGeometry.cs** módosításával a parancsfájl-kezelési futtatókörnyezet verziójának **.NET 4.x egyenértékű**. Ezen beállítások módosítása a csomag importálása részeként történik, de a Unity érvénybe léptetéséhez újraindítás szükséges. Indítsa újra most Unity.
 
 ## <a name="running-the-sample"></a>A minta futtatása
-A minta tartalmaz egy bemutató jelenet **Assets/AcousticsDemo/ProjectAcousticsDemo.unity**. A helyszín van egy egyetlen spatialized hang lejátszása a lebegőpontos adatkocka (nevű **AudioHolder** a a **hierarchia**). Általános navigációs parancsfájl segítségével, a fő kamera CameraHolder objektum gyermek. 
+A minta tartalmaz egy bemutató jelenet **Assets/AcousticsDemo/ProjectAcousticsDemo.unity**. A helyszín rendelkezik három megbízható forrásból. Alapértelmezés szerint csak egy megbízható forrás lejátszása, és a másik kettőt fel vannak függesztve. Ezek alatt találhatók **hang források** a a **hierarchia**. Általános navigációs parancsfájl segítségével, a fő kamera CameraHolder objektum gyermek. 
 
 ![Hierarchia megtekintése](media/SampleHierarchyView.png)
 
 A jelenet már lett számlázásnak és a egy ACE-fájlt az társított a **MicrosoftAcoustics** a prefab a **hierarchia**. 
 
-Figyeljen, hogy a jelenet úgy érzi, a Unity-szerkesztőben a lejátszás gombra kattintva. Használat W, A, S, D és az egérrel való mozgáshoz. Hasonlítsa össze, hogy a jelenet úgy érzi, és anélkül Akusztika, kattintson a bal oldali vagy az elsődleges vezérlő gombra. Váltás a hang különböző forrásokból, kattintson a jobb gombbal, vagy a Vissza gombot a tartományvezérlőn.
+Figyeljen, hogy a jelenet úgy érzi, a Unity-szerkesztőben a lejátszás gombra kattintva. A számítógépen, használjon W, A, S, D és az egérrel való mozgáshoz. Hasonlítsa össze, hogy a jelenet úgy érzi, és anélkül Akusztika, nyomja le az **R** gombra mindaddig, amíg az átfedő szöveg változik, és a "Akusztika: letiltva." Több vezérlő használható billentyűparancsok megtekintéséhez nyomja meg az **F1**. Az összes vezérlő is gyakorlatot a jobb gombbal kattintva válassza ki a végrehajtandó műveletet, majd balra kattintson a művelet végrehajtásához.
 
 ## <a name="targeting-other-platforms"></a>Más platformok célzó
 A minta futtatásához a Windows asztali, UWP, a Windows vegyes valóság, Android és Oculus Go beállításait tartalmazza. Alapértelmezés szerint a projekt Windows asztal konfigurálva van. VR célplatform, nyissa meg a lejátszó beállításai (**szerkesztése > Projektbeállítások > Player**), keresse meg a **XR beállítások**, és ellenőrizze a **virtuális valóságban támogatott** jelölőnégyzetet.

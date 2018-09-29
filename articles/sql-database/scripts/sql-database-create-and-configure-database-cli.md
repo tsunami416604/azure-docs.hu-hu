@@ -2,24 +2,22 @@
 title: CLI-példa – Azure SQL-adatbázis létrehozása | Microsoft Docs
 description: Ezzel az Azure CLI-példaszkripttel létrehozhat egy SQL-adatbázist.
 services: sql-database
-documentationcenter: sql-database
-author: CarlRabeler
-manager: janeng
-editor: carlrab
 ms.service: sql-database
-ms.custom: DBs & servers, mvc
+ms.subservice: single-database
+ms.custom: ''
 ms.devlang: azurecli
 ms.topic: sample
-ms.tgt_pltfrm: sql-database
-ms.workload: database
+author: CarlRabeler
+manager: craigg
 ms.author: carlrab
-ms.date: 09/07/2018
-ms.openlocfilehash: a7537b59a73c00a5364bfa4a758a6584a9ef6003
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.reviewer: ''
+ms.date: 09/20/2018
+ms.openlocfilehash: d239236e9e6f7133aa57eb617c3cc9e8626fc178
+ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
 ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 09/24/2018
-ms.locfileid: "46964275"
+ms.locfileid: "47055475"
 ---
 # <a name="use-cli-to-create-a-single-azure-sql-database-and-configure-a-firewall-rule"></a>Egy Azure SQL-adatbázis létrehozása és egy tűzfalszabály konfigurálása a parancssori felület használatával
 
@@ -49,11 +47,11 @@ A szkript a következő parancsokat használja. A táblázatban lévő összes p
 
 | Parancs | Megjegyzések |
 |---|---|
-| [az group create](/cli/azure/group#az_group_create) | Létrehoz egy erőforráscsoportot, amely az összes erőforrást tárolja. |
-| [az sql server create](/cli/azure/sql/server#az_sql_server_create) | Létrehoz egy logikai kiszolgálót, amelyen az SQL Database szolgáltatás fut. |
-| [az sql server firewall create](/cli/azure/sql/server/firewall-rule#az_sql_server_firewall_rule_create) | Létrehoz egy tűzfalszabályt, amely engedélyezi a kiszolgálón lévő összes SQL Database-adatbázis elérését a megadott IP-címtartományból. |
-| [az sql db create](/cli/azure/sql/db#az_sql_db_create) | Létrehozza az SQL Database-adatbázist a logikai kiszolgálón. |
-| [az group delete](/cli/azure/resource#az_resource_delete) | Töröl egy erőforráscsoportot az összes beágyazott erőforrással együtt. |
+| [az group create](/cli/azure/group#az-group-create) | Létrehoz egy erőforráscsoportot, amely az összes erőforrást tárolja. |
+| [az sql server create](/cli/azure/sql/server#az-sql-server-create) | Létrehoz egy logikai kiszolgálót, amelyen az SQL Database szolgáltatás fut. |
+| [az sql server firewall create](/cli/azure/sql/server/firewall-rule#az-sql-server-firewall-rule-create) | Létrehoz egy tűzfalszabályt, amely engedélyezi a kiszolgálón lévő összes SQL Database-adatbázis elérését a megadott IP-címtartományból. |
+| [az sql db create](/cli/azure/sql/db#az-sql-db-create) | Létrehozza az SQL Database-adatbázist a logikai kiszolgálón. |
+| [az group delete](/cli/azure/resource#az-resource-delete) | Töröl egy erőforráscsoportot az összes beágyazott erőforrással együtt. |
 
 ## <a name="next-steps"></a>További lépések
 
