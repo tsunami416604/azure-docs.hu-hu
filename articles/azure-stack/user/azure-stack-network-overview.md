@@ -1,45 +1,45 @@
 ---
-title: Bevezetés az Azure-verem hálózatkezelés |} Microsoft Docs
-description: További tudnivalók az Azure verem hálózatkezelés
+title: Bevezetés az Azure Stack hálózati |} A Microsoft Docs
+description: További tudnivalók az Azure Stack-hálózatkezelés
 services: azure-stack
 author: mattbriggs
 manager: femila
 ms.service: azure-stack
 ms.topic: get-started-article
-ms.date: 05/21/2018
+ms.date: 09/28/2018
 ms.author: mabrigg
 ms.reviewer: scottnap
-ms.openlocfilehash: ee94fd8a9dac17e4db180b05208df66f3d33b901
-ms.sourcegitcommit: 680964b75f7fff2f0517b7a0d43e01a9ee3da445
+ms.openlocfilehash: ac842507cc52c9677e755d32b09758f787c5a1fb
+ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34604566"
+ms.lasthandoff: 10/01/2018
+ms.locfileid: "47584561"
 ---
 # <a name="introduction-to-azure-stack-networking"></a>Az Azure Stack-hálózat bemutatása
 
-*A következőkre vonatkozik: Azure verem integrált rendszerek és az Azure verem szoftverfejlesztői készlet*
+*A következőkre vonatkozik: Azure Stackkel integrált rendszerek és az Azure Stack fejlesztői készlete*
 
-Azure verem különböző használható együtt vagy külön-külön hálózati képességekkel biztosítja:
+Az Azure Stack használható együtt vagy külön-külön hálózati képességek széles skáláját kínálja:
 
-- **Azure verem erőforrások közötti kapcsolat**  
-    Csatlakozás Azure-erőforrások együtt a biztonságos, titkos virtuális hálózat a felhőben.
+- **Azure Stack-erőforrások közötti kapcsolat**  
+    Csatlakozás Azure-erőforrások együtt, a felhőben egy biztonságos, privát virtuális hálózatot.
 - **Internetkapcsolat**  
-    Azure verem erőforrások érkező vagy oda irányuló kommunikálnak az interneten keresztül.
+    Az Azure Stack-erőforrások az interneten keresztül kommunikálnak.
 - **Helyszíni kapcsolatok**  
-    Egy a helyszíni hálózathoz csatlakozzanak a virtuális magánhálózat (VPN) az interneten keresztül, vagy egy Azure verem dedikált kapcsolaton keresztül Azure verem erőforrásokhoz.
-- **Terheléselosztás és a forgalom iránya betöltése**  
-    Egyenleg ugyanazon a helyen kiszolgálókra és a közvetlen forgalom különböző helyeken lévő kiszolgálókra tölthető be.
+    A helyszíni hálózat csatlakoztatása az Azure Stack-erőforrások virtuális magánhálózat (VPN) az interneten keresztül, vagy egy dedikált kapcsolat Azure Stackhez.
+- **Terheléselosztás és az adatforgalom irányának betöltése**  
+    Bejövő forgalmának terheléselosztása kiszolgálók a ugyanarra a helyre és a forgalom különböző helyeken lévő kiszolgálókra.
 - **Biztonság**  
-    Alhálózatok vagy egyedi virtuális gépeket (VM) közötti hálózati forgalom szűrésére.
+    Hálózati alhálózatokhoz vagy az egyes virtuális gépek (VM) közötti hálózati forgalom szűrése.
 - **Útválasztás**  
-    Használja az alapértelmezett útválasztási vagy teljes irányítása a Azure verem és a helyszíni erőforrások között.
-- **Kezelhetőség**  
-    Figyelheti és kezelheti a hálózati erőforrások Azure verem.
-- **Üzembe helyezési és konfigurációs eszközök**  
-    Egy webes portál vagy a platformfüggetlen parancssori eszközök segítségével telepítheti és konfigurálhatja a hálózati erőforrásokhoz.
+    Használja az alapértelmezett útválasztását, vagy a teljes körűen szabályozhatja az Azure Stack és a helyszíni erőforrások között.
+- **Kezelhetőségi**  
+    Figyelheti, és az Azure Stack hálózati erőforrások kezelése.
+- **Telepítési és konfigurációs eszközök**  
+    Egy olyan webes portál vagy a többplatformos parancssori eszközök segítségével telepítheti és konfigurálhatja a hálózati erőforrásokhoz.
 
 
 ## <a name="next-steps"></a>További lépések
 
-* [Azure verem hálózati szempontjai](azure-stack-network-differences.md)
+* [Azure Stack hálózati szempontjai](azure-stack-network-differences.md)
