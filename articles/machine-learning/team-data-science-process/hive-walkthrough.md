@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/29/2017
 ms.author: deguhath
-ms.openlocfilehash: ff4daf350783e02141a6afea815165ccecfe0116
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: 09ca6fdc40aec84bcc7523bae0dee348d00f6d9f
+ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "42059182"
+ms.lasthandoff: 10/01/2018
+ms.locfileid: "47586121"
 ---
 # <a name="the-team-data-science-process-in-action-use-azure-hdinsight-hadoop-clusters"></a>A csoportos adatelemzési folyamat működés közben: használata Azure HDInsight Hadoop-fürtök
 Ez az útmutató használjuk a [csoportos adatelemzési folyamat (TDSP)](overview.md) egy teljes körű forgatókönyvben. Használjuk egy [Azure HDInsight Hadoop-fürt](https://azure.microsoft.com/services/hdinsight/) tárolását, ismerje meg, és a nyilvánosan elérhető a szolgáltatás-mérnök adatainak [NYC Taxi lelassítja](http://www.andresmh.com/nyctaxitrips/) adatkészlet, és való az adatokat. Bináris és többosztályos besorolási és regressziós prediktív feladatok kezelésére, hogy ki, hogy az adatok az Azure Machine Learning modellek. 
@@ -30,9 +30,9 @@ Ez az útmutató bemutatja, hogyan legyen kezelve a nagyobb adatkészletet, lás
 Az IPython notebook használatával a forgatókönyv, amely használja az 1 TB-os adatkészlet megjelenik a feladatok elvégzését. További információkért lásd: [Hive ODBC-kapcsolattal Criteo forgatókönyv](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/iPythonNotebooks/machine-Learning-data-science-process-hive-walkthrough-criteo.ipynb).
 
 ## <a name="dataset"></a>NYC Taxi lelassítja adatkészlet leírása
-A NYC Taxi útadatok körülbelül 20 GB tömörített vesszővel elválasztott értékeket (CSV) fájl (~ 48 GB tömörítetlen). 173 milliónál egyes lelassítja rendelkezik, és a fizetett egyes utazás a díjakat tartalmazza. Minden egyes út rekord tartalmazza a felvétel és Gyűjtőtár hely és idő, anonimizált feltörés (illesztőprogramok) licencszám és medallion number (egyedi azonosító a taxi). Az adatok terjed ki minden lelassítja az év 2013-hoz, és minden hónapban megtalálható a következő két adatkészletet:
+A NYC Taxi útadatok körülbelül 20 GB tömörített vesszővel elválasztott értékeket (CSV) fájl (~ 48 GB tömörítetlen). 173 milliónál egyes lelassítja rendelkezik, és a fizetett egyes utazás a díjakat tartalmazza. Minden egyes út rekord tartalmazza a felvétel és dropoff hely és idő, anonimizált feltörés (illesztőprogramok) licencszám és medallion number (egyedi azonosító a taxi). Az adatok terjed ki minden lelassítja az év 2013-hoz, és minden hónapban megtalálható a következő két adatkészletet:
 
-- A trip_data CSV-fájlok trip részleteket tartalmaz. Ez magában foglalja az utasok, felvétel és Gyűjtőtár pontok, út időtartama és út hossza száma. Az alábbiakban néhány példa rekordokat:
+- A trip_data CSV-fájlok trip részleteket tartalmaz. Ez magában foglalja az utasok, felvétel és dropoff pontok, út időtartama és út hossza száma. Az alábbiakban néhány példa rekordokat:
    
         medallion,hack_license,vendor_id,rate_code,store_and_fwd_flag,pickup_datetime,dropoff_datetime,passenger_count,trip_time_in_secs,trip_distance,pickup_longitude,pickup_latitude,dropoff_longitude,dropoff_latitude
         89D227B655E5C82AECF13C3F540D4CF4,BA96DE419E711691B9445D6A6307C170,CMT,1,N,2013-01-01 15:11:48,2013-01-01 15:18:10,4,382,1.00,-73.978165,40.757977,-73.989838,40.751171
@@ -587,7 +587,7 @@ A lekérdezés érvényes szabványos Hive funkciók közvetlenül az alábbi l�
 - év hete
 - hét napja (hétfő 1 összhangban és 7 összhangban vasárnap)
 
-A lekérdezés is hoz létre a közvetlen a felvétel és Gyűjtőtár helyek közötti távolság. Az ilyen függvények teljes listáját lásd: [LanguageManual UDF](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF).
+A lekérdezés is hoz létre a közvetlen a felvétel és dropoff helyek közötti távolság. Az ilyen függvények teljes listáját lásd: [LanguageManual UDF](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF).
 
 A lekérdezés majd lefelé-minták az adatokat, hogy a lekérdezés eredményeit az Azure Machine Learning studióba illeszkednek. Az eredeti adathalmazból csak körülbelül 1 százalékát a rendszer importálja a studióba.
 

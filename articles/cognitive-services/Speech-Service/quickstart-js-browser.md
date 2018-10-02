@@ -9,12 +9,12 @@ ms.technology: Speech
 ms.topic: article
 ms.date: 09/24/2018
 ms.author: fmegen
-ms.openlocfilehash: b925a382a32f320c5d6906bc3fa23f046d260cb0
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 9ac48bd77087a8dc050ccd1ee8fe63ec5c25a643
+ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46997437"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48018384"
 ---
 # <a name="quickstart-recognize-speech-in-javascript-in-a-browser-using-the-cognitive-services-speech-sdk"></a>Gyors útmutató: Recognize speech a JavaScript a Cognitive Services beszédfelismerő SDK használatával
 
@@ -36,6 +36,8 @@ Az alkalmazás a Microsoft Cognitive Services beszédfelismerő SDK alapul ([1.0
 Hozzon létre egy új, üres mappát. Abban az esetben, ha meg szeretné futtatni a mintát egy webkiszolgálón, győződjön meg arról, hogy a webkiszolgáló a mappa elérésére.
 
 ## <a name="unpack-the-speech-sdk-for-javascript-into-that-folder"></a>A beszédfelismerés SDK kicsomagolása JavaScript ebbe a mappába
+
+[!INCLUDE [License Notice](../../../includes/cognitive-services-speech-service-license-notice.md)]
 
 Töltse le, a beszéd SDK egy [.zip-csomagjából](https://aka.ms/csspeech/jsbrowserpackage) , és csomagolja ki az újonnan létrehozott mappába. Ennek eredménye mappastruktúrájának kicsomagolása zajlik, azaz a két fájlt `microsoft.cognitiveservices.speech.sdk.bundle.js` és `microsoft.cognitiveservices.speech.sdk.bundle.js.map`.
 Az utóbbi fájl nem kötelező, és a használt SDK kódjába hibakeresés érdekében, ha szükséges.

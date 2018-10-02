@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 09/18/2018
 ms.author: zhouwang
 ROBOTS: NOINDEX
-ms.openlocfilehash: e9d1bf1a6a2383a58a890ce9add816f9e9060273
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: a0fa11633efc610407755ebc109649f3fefdcb55
+ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46948145"
+ms.lasthandoff: 10/01/2018
+ms.locfileid: "47585815"
 ---
 # <a name="get-started-with-bing-speech-service-client-libraries"></a>Bing – beszédszolgáltatás klienskódtárak használatának első lépései
 
@@ -35,7 +35,7 @@ Jelenleg a következő Bing Speech-ügyfélkódtárak érhetők el:
 - [IOS-es Objective-C-függvénytár](Get-Started-ObjectiveC-iOS.md)
 
 > [!NOTE] 
-A 2018 május is megjelent az új [beszédszolgáltatás](../../speech-service/index.yml) nyilvános előzetes verzióban érhető el. Javasoljuk, hogy [ingyenes kipróbálása](../../speech-service/get-started.md). 
+2018 szeptember, az új óta [beszédszolgáltatás](../../speech-service/index.yml) általánosan elérhetővé vált. Javasoljuk, hogy [ingyenes kipróbálása](../../speech-service/get-started.md). 
 
 ## <a name="additional-resources"></a>További források
 

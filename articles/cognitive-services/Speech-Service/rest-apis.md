@@ -8,12 +8,12 @@ ms.technology: speech
 ms.topic: article
 ms.date: 05/09/2018
 ms.author: v-jerkin
-ms.openlocfilehash: 6758cd658daf75beeea93bf9c719508cd271c8be
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: cc73be09cec4ef963a496687d112f98e05d98802
+ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47032427"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48018519"
 ---
 # <a name="speech-service-rest-apis"></a>Beszédszolgáltatás REST API-k
 
@@ -32,11 +32,11 @@ Az API-t csak rövid beszédet támogat. Kérelmek legfeljebb 10 másodpercet, h
 
 ### <a name="query-parameters"></a>Lekérdezési paraméterek
 
-Az alábbi paramétereket a lekérdezési karakterláncban a REST-kérés része lehet.
+Az alábbi paramétereket a lekérdezési karakterláncban a REST-kérés szerepelhet.
 
 |Paraméter neve|Kötelező/választható|Jelentés|
 |-|-|-|
-|`language`|Szükséges|A nyelvet, hogy a azonosítóját. Lásd: [támogatott nyelvek](supported-languages.md#speech-to-text).|
+|`language`|Szükséges|A nyelvet, hogy a azonosítóját. Lásd: [támogatott nyelvek](language-support.md#speech-to-text).|
 |`format`|Optional<br>alapértelmezett érték: `simple`|Eredményformátum, `simple` vagy `detailed`. Egyszerű eredmények tartalmazzák a `RecognitionStatus`, `DisplayText`, `Offset`, és időtartama. Részletes eredmények tartalmazzák a több jelöltek megbízhatósági értékeket és a négy különböző értük felelősséget.|
 |`profanity`|Optional<br>alapértelmezett érték: `masked`|A felismerési eredményeket cenzúrázása kezelésének módját. Előfordulhat, hogy `masked` (cenzúrázása cseréli csillagok), `removed` (eltávolítja az összes cenzúrázása), vagy `raw` (tartalmazza a vulgáris).
 
@@ -195,9 +195,6 @@ Az alábbiakban a Speech service Text to Speech API a REST-végpontokat. A végp
 
 [!INCLUDE [](../../../includes/cognitive-services-speech-service-endpoints-text-to-speech.md)]
 
-> [!NOTE]
-> Ha egyéni hangtípust hozta létre, használja a hozzárendelt egyéni végpont.
-
 A beszédfelismerési szolgáltatás mellett a Bing Speech által támogatott 16-Khz kimenet 24-KHz hangkimeneti támogatja. Négy 24-KHz kimeneti formátumok érhetők el használatra a `X-Microsoft-OutputFormat` HTTP-fejléc, mivel két 24-KHz beszédhangot, `Jessa24kRUS` és `Guy24kRUS`.
 
 Területi beállítás | Nyelv   | Nem | A felhasználónév-leképezés
@@ -205,7 +202,7 @@ Területi beállítás | Nyelv   | Nem | A felhasználónév-leképezés
 hu-HU  | Amerikai angol | Nő | "A Microsoft Server beszéd szöveg Speech Voice (en-US, Jessa24kRUS)" 
 hu-HU  | Amerikai angol | Férfi   | "A Microsoft Server beszéd szöveg Speech Voice (en-US, Guy24kRUS)"
 
-Rendelkezésre álló beszédhangot teljes listája megtalálható [támogatott nyelvek](supported-languages.md#text-to-speech).
+Rendelkezésre álló beszédhangot teljes listája megtalálható [támogatott nyelvek](language-support.md#text-to-speech).
 
 ### <a name="request-headers"></a>Kérelemfejlécek
 
@@ -265,7 +262,8 @@ HTTP-kód|Jelentés|Lehetséges ok
 400 |Hibás kérelem |Egy kötelező paraméter hiányzik, üres vagy null értékű. Másik lehetőségként átadott vagy egy kötelező vagy választható paraméter értéke érvénytelen. Egy gyakori probléma egy fejlécet, amely túl hosszú.
 401|Nem engedélyezett |A kérelem nem engedélyezett. Ellenőrizze, hogy az előfizetési kulcs, vagy a jogkivonat érvényes, és a megfelelő régióban.
 413|Kérelem az entitás túl nagy|A SSML bemeneti adat 1024 karakternél hosszabb.
-|502|Hibás átjáró    | Hálózati vagy kiszolgálóoldali probléma. Érvénytelen fejlécek is jelezhet.
+429|Túl sok kérelem|Túllépte a kvótát, vagy engedélyezett az előfizetéséhez kérelmek száma.
+502|Hibás átjáró | Hálózati vagy kiszolgálóoldali probléma. Érvénytelen fejlécek is jelezhet.
 
 Ha a HTTP-állapot `200 OK`, a válasz törzse tartalmazza a kért formátumban hangfájl. Ez a fájl átvitele vagy puffer vagy újabb lejátszás vagy egyéb felhasználás fájlba mentése lejátszhatók.
 

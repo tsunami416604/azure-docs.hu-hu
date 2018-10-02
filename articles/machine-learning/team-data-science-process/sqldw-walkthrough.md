@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/24/2017
 ms.author: deguhath
-ms.openlocfilehash: 6178c4a55d24bb37aae787129c9a0d390a2e536b
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: 192af40df3a8bc0545c9c3a86792e7eb8cb31de9
+ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39226226"
+ms.lasthandoff: 10/01/2018
+ms.locfileid: "47586104"
 ---
 # <a name="the-team-data-science-process-in-action-using-sql-data-warehouse"></a>A csoportos adatelemzési folyamat működés közben: az SQL Data Warehouse használatával
 Ez az oktatóanyag azt mutatja be létrehozásának és üzembe helyezésének egy gépi tanulási modellt az SQL Data Warehouse (az SQL DW) egy nyilvánosan elérhető adatkészlethez – a [NYC Taxi lelassítja](http://www.andresmh.com/nyctaxitrips/) adatkészlet. A bináris osztályozási modell összeállított előrejelzi e tipp fizetős útnak és többosztályos osztályozási és regressziós modellek is taglalja, hogy a terjesztési előre fizetett összegek tipp.
@@ -28,7 +28,7 @@ Ez az oktatóanyag azt mutatja be létrehozásának és üzembe helyezésének e
 Az eljárást követi a [csoportos adatelemzési folyamat (TDSP)](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/) munkafolyamat. Bemutatjuk, hogyan állíthatja be az adatelemzési környezetet az adatok betöltése az SQL dw-vel, és hogyan használhatja az SQL DW, vagy egy IPython Notebook Fedezze fel az adatokat és a visszafejtés modell funkciói. Ezután bemutatjuk, hogyan készíthet és helyezhet üzembe az Azure Machine Learning-modell.
 
 ## <a name="dataset"></a>A NYC Taxi lelassítja adatkészlet
-A NYC Taxi útadatok körülbelül 20GB tömörített CSV-fájlok (~ 48GB tömörítetlen) áll, minden egyes út 173 milliónál egyes utak és a díjakat fizetni. Minden egyes út rekord tartalmazza a begyűjtés és Gyűjtőtár helyek és időpontok, anonimizált feltörés (illesztőprogramok) jogosítvány száma, és a medallion (taxi az egyedi azonosító) számát. Az adatok minden lelassítja ismerteti az év 2013-hoz, és minden hónapban megtalálható a következő két adatkészletet:
+A NYC Taxi útadatok körülbelül 20GB tömörített CSV-fájlok (~ 48GB tömörítetlen) áll, minden egyes út 173 milliónál egyes utak és a díjakat fizetni. Minden egyes út rekord tartalmazza a begyűjtés és dropoff helyek és időpontok, anonimizált feltörés (illesztőprogramok) jogosítvány száma, és a medallion (taxi az egyedi azonosító) számát. Az adatok minden lelassítja ismerteti az év 2013-hoz, és minden hónapban megtalálható a következő két adatkészletet:
 
 1. A **trip_data.csv** fájl trip részleteit, például utasok, begyűjtést és dropoff pontok, út időtartama és út hossza számát tartalmazza. Az alábbiakban néhány példa rekordokat:
    
@@ -442,7 +442,7 @@ Ebben a példában kiszámítja a terjesztési tipp címtartományok egy adott i
 | 4 |85765 |
 
 ### <a name="exploration-compute-and-compare-trip-distance"></a>Feltárás: Számítás, és hasonlítsa össze a trip távolság
-Ebben a példában a begyűjtés és Gyűjtőtár hosszúsági alakítja át, és SQL földrajzi szélesség mutat, kiszámítja az SQL a földrajzi pontokat különbség használatával trip távolság és egy véletlenszerűen vett minta az eredmények az összehasonlításhoz adja vissza. A példában az eredményeket, és csak a a minőségi értékelés lekérdezési korábban tartozó érvényes koordináták korlátozza.
+Ebben a példában a begyűjtés és dropoff hosszúsági alakítja át, és SQL földrajzi szélesség mutat, kiszámítja az SQL a földrajzi pontokat különbség használatával trip távolság és egy véletlenszerűen vett minta az eredmények az összehasonlításhoz adja vissza. A példában az eredményeket, és csak a a minőségi értékelés lekérdezési korábban tartozó érvényes koordináták korlátozza.
 
     /****** Object:  UserDefinedFunction [dbo].[fnCalculateDistance] ******/
     SET ANSI_NULLS ON

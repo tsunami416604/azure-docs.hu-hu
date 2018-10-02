@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 09/06/2018
 ms.author: jeffpatt
 ms.component: files
-ms.openlocfilehash: cbfe3022c4ffd03e4ab93682eb14a5a588aa0013
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: ef70d3d3dd2a806ea978be8e996b7d5ba0fbc96b
+ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47409473"
+ms.lasthandoff: 10/01/2018
+ms.locfileid: "47586359"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Azure-fájlok szinkronizálásának hibaelhárítása
 Az Azure File Sync használatával fájlmegosztásainak a szervezet az Azure Files között, miközben gondoskodik a rugalmasságát, teljesítményét és kompatibilitását a helyszíni fájlkiszolgálók. Az Azure File Sync Windows Server az Azure-fájlmegosztás gyors gyorsítótáraivá alakítja át. Helyileg, az adatok eléréséhez a Windows Serveren elérhető bármely protokollt használhatja, beleértve az SMB, NFS és FTPS. Tetszőleges számú gyorsítótárak világszerte igény szerint is rendelkezhet.
@@ -236,7 +236,7 @@ Ezek a hibák megtekintéséhez futtassa a **FileSyncErrorsReport.ps1** (az Azur
 | 0x80c80017 | -2134376425 | ECS_E_SYNC_OPLOCK_BROKEN | Egy fájl módosult a szinkronizálás közben, ezért a fájlt újra kell szinkronizálni. | Nincs szükség felhasználói műveletre. |
 
 #### <a name="handling-unsupported-characters"></a>Kezelése nem támogatott karaktereket
-Ha a **FileSyncErrorsReport.ps1** PowerShell-parancsfájl bemutatja a hiba oka nem támogatott karaktereket (hibakódjai 0x7b és 0x8007007b), érdemes távolítsa el vagy nevezze át a megfelelő fájlok hibás karaktereket. PowerShell valószínűleg nyomtatja ki ezeket a karaktereket a kérdőjelek vagy üres téglalapok, mivel ezek a karakterek a legtöbb nem szabványos kódolással. A [Evalation eszköz](storage-sync-files-planning.md#evaluation-tool) segítségével azonosíthatja a nem támogatott karaktereket.
+Ha a **FileSyncErrorsReport.ps1** PowerShell-parancsfájl bemutatja a hiba oka nem támogatott karaktereket (hibakódjai 0x7b és 0x8007007b), érdemes távolítsa el vagy nevezze át a megfelelő fájlnevek a hibás karaktereket. PowerShell valószínűleg nyomtatja ki ezeket a karaktereket a kérdőjelek vagy üres téglalapok, mivel ezek a karakterek a legtöbb nem szabványos kódolással. A [Megoldásértékelési eszköz](storage-sync-files-planning.md#evaluation-tool) segítségével azonosíthatja a nem támogatott karaktereket.
 
 Az alábbi táblázat tartalmazza az összes Azure File Sync jelenleg nem támogatja a unicode-karaktereket.
 

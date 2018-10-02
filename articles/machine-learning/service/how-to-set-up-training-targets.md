@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.component: core
 ms.topic: article
 ms.date: 09/24/2018
-ms.openlocfilehash: e5b44ed2435986ffd500cade1f7c8ff8047d353d
-ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
+ms.openlocfilehash: 65134d78fb011ae707c0629bef1ebb1a66bd8ec2
+ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47452303"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48018502"
 ---
 # <a name="select-and-use-a-compute-target-to-train-your-model"></a>Válassza ki, és a egy számítási célnak használja a modell betanításához
 
@@ -372,7 +372,7 @@ Milyen számítási célok tartoznak a munkaterület az Azure Portalon tekinthet
 1. Látogasson el a [az Azure portal](https://portal.azure.com) , és keresse meg a munkaterülethez.
 2. Kattintson a __számítási__ mellett kapcsolni a __alkalmazások__ szakaszban.
 
-    ![Nézet számítási lap](./media/how-to-set-up-training-targets/compute_tab.png)
+    ![Nézet számítási lap](./media/how-to-set-up-training-targets/azure-machine-learning-service-workspace.png)
 
 ### <a name="create-a-compute-target"></a>Hozzon létre egy számítási célnak
 
@@ -380,7 +380,7 @@ A fenti lépésekkel számítási célnak listájának megtekintéséhez, és a 
 
 1. Kattintson a __+__ bejelentkezés hozzáadása egy számítási célnak.
 
-    ![Számítás hozzáadása ](./media/how-to-set-up-training-targets/add_compute.png)
+    ![Számítás hozzáadása ](./media/how-to-set-up-training-targets/add-compute-target.png)
 
 1. Adjon meg egy nevet a számítási célnak.
 1. Válassza ki a számítási csatolni a __képzési__. 

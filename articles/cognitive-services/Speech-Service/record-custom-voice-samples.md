@@ -9,12 +9,12 @@ ms.component: speech-service
 ms.topic: article
 ms.date: 07/5/2018
 ms.author: v-jerkin
-ms.openlocfilehash: b1bab65b68c5f37165fbc8414ac4300c924e53b9
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: c30d531876ae7c69c164bc1d73103e493aaaa8fa
+ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47165176"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48018310"
 ---
 # <a name="record-voice-samples-to-create-a-custom-voice"></a>Hozzon létre egy egyéni beszédfelismerési rekord hangalapú minták
 
@@ -38,7 +38,7 @@ Felvétel a visszafejtés  |Hogyan felügyeli a felvétel technikai aspektusait 
 Igazgató            |A parancsfájl előkészíti, és a hangalapú szakembereket teljesítmény coaches.
 Szerkesztő              |Finalizes, a hangfájlokat, és felkészítheti őket a beállításhoz az egyéni beszédfelismerési portálon való feltöltéshez.
 
-Egyéni előfordulhat, hogy töltse ki a több szerepkört. Ez az útmutató feltételezi, hogy lesz kell elsősorban a igazgató szerepkör kitöltését és humánerőforrás-egy hang szakembereket és a egy felvételt mérnök. Ha azt szeretné, hogy a felvételt saját magának, ez a cikk tartalmaz némi információt a felvételt a visszafejtés szerepkör. A szerkesztő szerepkör a munkamenetet, így is elvégezheti a igazgató felvétel mérnök után nincs szükség.
+Egyéni előfordulhat, hogy töltse ki a több szerepkört. Ez az útmutató feltételezi, hogy lesz kell elsősorban a igazgató szerepkör kitöltését és humánerőforrás-egy hang szakembereket és a egy felvételt mérnök. Ha azt szeretné, hogy a felvételt saját magának, ez a cikk tartalmaz némi információt a felvételt a visszafejtés szerepkör. A szerkesztő szerepkör a munkamenetet, így az igazgató, vagy a rögzítés mérnök végezhető után nincs szükség.
 
 ## <a name="choose-your-voice-talent"></a>Válassza ki a hangalapú szakembereket
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/20/2018
 ms.author: daveba
-ms.openlocfilehash: 4bfaed3d908574eff3521cedcef4b117d45e1ca2
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: c6bc77e5ee1fa5e180b41dca50640dc01fee0691
+ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47220919"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48017516"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-a-azure-virtual-machine-scale-using-a-template"></a>Az Azure-erőforrások felügyelt identitások konfigurálása a sablon használatával az Azure virtuálisgép-méretezési csoportot
 
@@ -146,7 +146,7 @@ Ha egy virtuális gép méretezési csoportot, amely egy rendszer által hozzár
 
    Ha az API-verzió `2018-06-01` és a virtuális gép rendelkezik a rendszer mind a felügyelt identitásokból felhasználó által hozzárendelt, távolítsa el `SystemAssigned` identitástípus és tarthatja `UserAssigned` és a userAssignedIdentities szótár értékeket.
 
-   **Microsoft.Compute/virtualMachineScaleSets API-verzió a 2018-06-01-es vagy korábbi kiadásai**
+   **API-verzió a 2018-06-01 Microsoft.Compute/virtualMachineScaleSets**
 
    Ha az API-verzió `2017-12-01` és rendszer mind a felügyelt identitásokból felhasználó által hozzárendelt, távolítsa el a virtuálisgép-méretezési `SystemAssigned` identitástípus és tarthatja `UserAssigned` az a `identityIds` a felhasználó által hozzárendelt felügyelt tömbje identitások. 
    
@@ -279,7 +279,7 @@ Ebben a szakaszban egy virtuálisgép-méretezési csoport Azure Resource Manage
     ]
    ```
 
-   **Korábban Microsoft.Compute/virtualMachines API 2017-12-01-es verzió eand**
+   **Microsoft.Compute/virtualMachines API 2017-12-01-es verzió**
 
    ```json
    "resources": [

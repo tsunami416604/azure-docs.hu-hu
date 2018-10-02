@@ -8,23 +8,25 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 09/05/2018
 ms.author: dobett
-ms.openlocfilehash: 3989ff6e8ef600500f1c3dcc292d4385d6fb4a8b
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: 377f28f4798a1ffb6423c1f4d9f4e34b4fc60234
+ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44162563"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48018842"
 ---
 # <a name="reference---iot-hub-quotas-and-throttling"></a>Referencia az IoT Hub kvótái és szabályozása
 
 ## <a name="quotas-and-throttling"></a>Kvóták és szabályozás
+
 Minden Azure-előfizetés legfeljebb 50 IoT hubok és ingyenes hub legfeljebb 1 lehet.
 
-Minden IoT-központ ki van építve a bizonyos számú egység az adott szinten. A szint és az egységek száma határozza meg a maximális napi kvóta küldhet üzeneteket. Az üzenet mérete alapján számítja ki, a napi kvóta egy ingyenes szintű hubbal 0,5 KB és 4 KB-os minden szint esetében. További információkért lásd: [Azure IoT Hub díjszabás][lnk-pricing].
+Minden IoT-központ ki van építve a bizonyos számú egység az adott szinten. A szint és az egységek száma határozza meg a maximális napi kvóta küldhet üzeneteket. Az üzenet mérete alapján számítja ki, a napi kvóta egy ingyenes szintű hubbal 0,5 KB és 4 KB-os minden szint esetében. További információkért lásd: [Azure IoT Hub díjszabás](https://azure.microsoft.com/pricing/details/iot-hub/).
 
 A réteg a sávszélesség-szabályozási korlátok, amelyeket az IoT Hub kényszerít minden művelet azt is meghatározza.
 
 ## <a name="operation-throttles"></a>A művelet szabályozások
+
 A művelet szabályozások címtartományok perc után lesznek alkalmazva, és célja, hogy a visszaélések megelőzése arány korlátozások is. Az IoT Hub próbál elkerülése érdekében, amikor csak lehetséges hibát adna vissza, de elindítja a visszatérő `429 ThrottlingException` Ha túl sokáig a szabályozás sérül.
 
 Egy adott időpontban növelheti a kvóták vagy szabályozási korlátairól növelje az IoT hubban kiosztott egységek számát.
@@ -53,10 +55,10 @@ A *eszközkapcsolatok* késleltetési szabályozza a sebesség, amellyel új esz
 
 Például ha vásárol egy S1-egységet, kap egy késleltetési 100 kapcsolatok száma másodpercenként. Tehát 100 000 eszközt a csatlakozáshoz másodpercet vesz igénybe legalább 1000 (körülbelül 16 percig). Azonban akkor is, hogy regisztrált az eszközidentitás-jegyzékben lévő eszközök egyszerre kapcsolódó eszközről annyi.
 
-Az IoT Hub veszik górcső alá a szabályozás jellege, tekintse meg a következő blogbejegyzésben: [szabályozása az IoT Hub és][lnk-throttle-blog].
+Az IoT Hub veszik górcső alá a szabályozás jellege, tekintse meg a következő blogbejegyzésben: [szabályozása az IoT Hub és](https://azure.microsoft.com/blog/iot-hub-throttling-and-you/).
 
 > [!IMPORTANT]
-> Identitásjegyzék műveletei eszköz kezelés és üzembe helyezés forgatókönyvek futásidejű használatra készültek. Olvasása vagy eszközidentitások nagy számú frissítése keresztül támogatott [importálása és exportálása a feladatok][lnk-importexport].
+> Identitásjegyzék műveletei eszköz kezelés és üzembe helyezés forgatókönyvek futásidejű használatra készültek. Olvasása vagy eszközidentitások nagy számú frissítése keresztül támogatott [importálása és exportálása a feladatok](iot-hub-devguide-identity-registry.md#import-and-export-device-identities).
 > 
 > 
 
@@ -90,19 +92,11 @@ Az IoT Hub nagy hangsúlyt fektet a alacsony késést tudjon biztosítani a műv
 * Fontolja meg az Azure IoT Edge késleltetésre érzékeny műveleteket az eszközön, vagy egy átjárón közel az eszköz használatát.
 
 Több IoT Hub-egységek hatással a szabályozás az előzőekben leírtak szerint, de nem ad meg, minden további késéshez előnyöket vagy garanciákat.
+
 Ha váratlan növekedéseit. műveleti késés lát, forduljon a [Support](https://azure.microsoft.com/support/options/).
 
 ## <a name="next-steps"></a>További lépések
+
 Ez az IoT Hub fejlesztői útmutató más referencia témaköröket tartalmazza:
 
-* [IoT Hub-végpontok][lnk-devguide-endpoints]
-* [Az IoT Hub lekérdezési nyelv az ikereszközökhöz, feladatokkal és üzenet-útválasztása][lnk-devguide-query]
-* [IoT Hub MQTT-támogatás][lnk-devguide-mqtt]
-
-[lnk-pricing]: https://azure.microsoft.com/pricing/details/iot-hub
-[lnk-throttle-blog]: https://azure.microsoft.com/blog/iot-hub-throttling-and-you/
-[lnk-importexport]: iot-hub-devguide-identity-registry.md#import-and-export-device-identities
-
-[lnk-devguide-endpoints]: iot-hub-devguide-endpoints.md
-[lnk-devguide-query]: iot-hub-devguide-query-language.md
-[lnk-devguide-mqtt]: iot-hub-mqtt-support.md
+* [IoT Hub-végpontok](iot-hub-devguide-endpoints.md)

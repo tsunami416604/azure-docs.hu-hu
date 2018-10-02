@@ -11,15 +11,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/11/2018
+ms.date: 09/20/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: eacf8fc9335af2dacffa3e13da47ea39a2776f2b
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: c90e51d1aa1c3215c40baeae2c5494ef90b01132
+ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44714564"
+ms.lasthandoff: 10/01/2018
+ms.locfileid: "47584353"
 ---
 # <a name="azure-stack-registration"></a>Azure Stack-regisztráció
 Regisztrálhat az Azure Stack Development Kit (ASDK) telepítése az Azure marketplace-elemek letöltése az Azure-ból, és megkezdheti a Microsoft kereskedelmi adatok beállítása. Regisztráció teljes Azure Stack-funkciók, többek között a piactér tartalomtípus-gyűjtési támogatásához szükséges. Regisztrációs ajánlott, mivel lehetővé teszi, hogy tesztelje fontos Azure Stack-funkciók, például a Marketplace-en tartalomtípus-gyűjtési és használati jelentések készítése. Miután regisztrálta Azure Stack, az Azure kereskedelmi jelentett használati. Láthatja a regisztráció során használt előfizetés alatt. Azonban ASDK felhasználók nem számítunk fel díjat minden használati jelentést.
@@ -61,11 +61,14 @@ Kövesse az alábbi lépéseket a ASDK regisztrálni az Azure-ral.
     #Register Azure Stack
     $AzureContext = Get-AzureRmContext
     $CloudAdminCred = Get-Credential -UserName AZURESTACK\CloudAdmin -Message "Enter the credentials to access the privileged endpoint."
+    $RegistrationName = "<unique-registration-name>"
+    $UsageReporting = True # Set to False if you using a Capacity Billing Model
     Set-AzsRegistration `
-    -PrivilegedEndpointCredential $CloudAdminCred `
-    -PrivilegedEndpoint AzS-ERCS01 `
-    -BillingModel Development `
-    -RegistrationName "<Unique-name>"
+        -PrivilegedEndpointCredential $CloudAdminCred `
+        -PrivilegedEndpoint AzS-ERCS01 `
+        -BillingModel Development
+        -RegistrationName $RegistrationName
+        -EnableUsageReporting $UsageReporting
     ```
 3. Miután a parancsfájl futása befejeződött, megjelenik ez az üzenet: **környezete már regisztrálva van, és aktiválta a megadott paraméterekkel.**
 

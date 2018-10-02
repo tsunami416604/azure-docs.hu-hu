@@ -10,12 +10,12 @@ ms.component: speech-service
 ms.topic: article
 ms.date: 09/25/2018
 ms.author: v-jerkin
-ms.openlocfilehash: 60a6061d6ac0998064897462c0e82db811bdc187
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: e8d84d83636bc8bed287d1fa68d36ce1c2ea3d58
+ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47435484"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48018553"
 ---
 # <a name="language-and-region-support-for-speech-service-api"></a>Nyelvéhez és régiójához támogatása Beszédszolgáltatási API Használatába
 
@@ -161,8 +161,6 @@ Hangalapú testreszabási amerikai angol (en-US), kontinens kínai (zh-CN) és o
 ## <a name="speech-translation"></a>Beszédfordítás
 
 A **beszédalapú fordítási** API különböző nyelveket támogat a speech beszéd és hang-szöveg transzformációs fordítás. A Forrásnyelv mindig az alábbi táblázat a beszédfelismerő nyelvi kell lennie. A cél elérhető nyelvek attól függ,-e a fordítási cél a speech vagy szöveget.
-
-Nyelvek végpont a REST API-k használatával programozott módon szerezheti nyelvek listáját. A lista tartalmazza az egyes nyelvi kódját, valamint a nyelv nevének az angol, vagy bármilyen egyéb támogatott nyelven. Ebben a listában, amikor új nyelv elérhetővé válik a Microsoft Translator szolgáltatás frissül.
 
 ### <a name="speech-languages"></a>Beszédnyelvek lekérdezése
 

@@ -11,13 +11,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 09/14/2018
-ms.openlocfilehash: 283d27e330b7e1defb34196279693b5b5a7221df
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.date: 09/24/2018
+ms.openlocfilehash: 09238b75680658e9efef3a6a9aaa3c288d3d91a4
+ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47160587"
+ms.lasthandoff: 10/01/2018
+ms.locfileid: "47585849"
 ---
 # <a name="tuning-performance-in-azure-sql-database"></a>Az Azure SQL Database teljesítményének hangolása
 
@@ -30,29 +30,18 @@ Az Ön nincs vonatkozó javaslatok, és továbbra is problémákba ütközik a t
 
 Ezek a kézi módszert, mert az erőforrások megfelelnek a mennyisége, hogy az igényeinek. Ellenkező esetben kell írja újra az alkalmazást vagy az adatbázis-kódot, és üzembe helyezése a módosításokat.
 
-## <a name="increasing-servicce-tier-of-your-database"></a>Az adatbázis servicce szintjének növelése
+## <a name="increasing-service-tier-of-your-database"></a>Az adatbázis szolgáltatási szintjének növelése
 
-Az Azure SQL Database által nyújtott két beszerzési modell, egy [DTU-alapú vásárlási modell](sql-database-service-tiers-dtu.md) és a egy [Virtuálismag-alapú vásárlási modell](sql-database-service-tiers-vcore.md) , amelyek közül választhat. Minden szolgáltatási szint szigorúan közt megadott kezdőkönyvtárra korlátozása, hogy az SQL-adatbázis használhatja, és kiszámítható teljesítményt biztosítanak a szolgáltatási szinthez garantálja az erőforrásokat. Ez a cikk útmutatást, amely segítségével kiválaszthatja az alkalmazás a szolgáltatási rétegben biztosítunk. Is tárgyaljuk, hogy a legtöbbet az Azure SQL Database-ből az alkalmazás hangolhassa módon.
+Az Azure SQL Database által nyújtott [két beszerzési modell](sql-database-service-tiers.md), amely egy [DTU-alapú vásárlási modell](sql-database-service-tiers-dtu.md) és a egy [Virtuálismag-alapú vásárlási modell](sql-database-service-tiers-vcore.md) , amelyek közül választhat. Minden szolgáltatási szint szigorúan közt megadott kezdőkönyvtárra korlátozása, hogy az SQL-adatbázis használhatja, és kiszámítható teljesítményt biztosítanak a szolgáltatási szinthez garantálja az erőforrásokat. Ez a cikk útmutatást, amely segítségével kiválaszthatja az alkalmazás a szolgáltatási rétegben biztosítunk. Is tárgyaljuk, hogy a legtöbbet az Azure SQL Database-ből az alkalmazás hangolhassa módon. Minden szolgáltatási szint tartalmaz a saját [erőforráskorlátok](sql-database-resource-limits.md). További információkért lásd: [Virtuálismag-alapú erőforráskorlátok](sql-database-vcore-resource-limits-single-databases.md) és [DTU-alapú erőforráskorlátok](sql-database-dtu-resource-limits-single-databases.md).
 
 > [!NOTE]
 > Ez a cikk az Azure SQL Database önálló adatbázisok teljesítményének útmutatást összpontosít. Rugalmas készletek kapcsolatos teljesítmény útmutatóért lásd: [rugalmas készletek ára és teljesítménye szempontjai](sql-database-elastic-pool-guidance.md). Vegye figyelembe, ugyanakkor, hogy is a rugalmas készletben található adatbázisok ebben a cikkben a hangolási javaslatokat alkalmazhatja, és hasonló teljesítmény előnyök.
-> 
-
-* **Alapszintű**: az alap szolgáltatási szint ajánlatok jó teljesítmény kiszámíthatóságot nyújtanak az egyes adatbázisok, órában óra. Egy alapszintű adatbázisban elegendő erőforrással támogatja a több egyidejű kérelmek nem rendelkező kisméretű adatbázis a jó teljesítmény. Tipikus használati eseteket mutatunk be alapszintű szolgáltatásszint a következők:
-  * **Most csak ismerkedik az Azure SQL Database**. Az alkalmazásokat, amelyek gyakran fejlesztés alatt állnak nem kell nagy számításigényes méretek. Alapszintű adatbázisok ideális környezetet biztosít az adatbázis-fejlesztési vagy tesztelési, mindezt olyan alacsony díjszabással.
-  * **Egy adott felhasználóhoz társítva van egy adatbázis**. Az alkalmazásokat, amelyek általában egy felhasználó társítani egy adatbázis nem rendelkezik magas egyidejűség és a teljesítményre vonatkozó követelményeknek. Ezeket az alkalmazásokat az alapszintű szolgáltatásszinten a deduplikációra.
-* **Standard szintű**: A Standard szolgáltatási rétegben az adatbázisok, amelyek több egyidejű kérés, például a munkacsoport-és webalkalmazások jó teljesítményt nyújt, és jobb teljesítményt, kiszámíthatóságot kínál. Ha úgy dönt, hogy egy standard szintű service adatbázisba, az adatbázis-alkalmazás a kiszámítható teljesítmény, alapján méretét percnyi perc.
-  * **Az adatbázis még több egyidejű kérelmek**. Az alkalmazásokat, amelyek általában egyszerre több felhasználó szolgáltatás nagyobb számítási méretek kell. Ha például munkacsoportokhoz vagy webalkalmazásokhoz az alkalmazásokat, alacsony, közepes i/o adatforgalomra egyidejűleg több lekérdezést támogat esetén használható jól a Standard szolgáltatásszinten.
-* **Prémium szintű**: A prémium szolgáltatáscsomagban biztosítja kiszámítható teljesítmény, második keresztül másodpercenként, az egyes prémium és üzletileg kritikus fontosságú adatbázisokhoz. Ha úgy dönt, a prémium szintű szolgáltatási rétegben, az adatbázis-alkalmazás alapján a csúcsterhelés között az, hogy az adatbázis méretét. A terv eltávolítja az esetek teljesítményszámlálók eltérés okozhat kis lekérdezések a késésre érzékeny műveletek a vártnál több időt vesz igénybe. Ez a modell nagyban leegyszerűsítheti a fejlesztést és a termék érvényesítési ciklusokat, hogy az erős utasítások csúcs erőforrásigényeivel, a teljesítmény eltérés vagy a Lekérdezések késése igénylő alkalmazások esetében. A legtöbb prémium szintű szolgáltatási szint használati esetek egy vagy több, a következő jellemzőkkel rendelkeznek:
-  * **Magas csúcsterhelés**. Olyan alkalmazás, amely megköveteli a jelentős CPU, memória, vagy a bemeneti/kimeneti (I/O) a műveletek végrehajtásához szükséges egy dedikált, nagy-compute-méretet. Például egy adatbázis-művelet hosszabb ideig több processzormag felhasználásához ismert jelöltségét ellenőrző a prémium szolgáltatásszintet.
-  * **Sok egyidejű kéréssel**. Egyes adatbázis-alkalmazások iránti sok egyidejű kérés, például kiszolgáló a webhely, amely rendelkezik a nagy forgalmú kötet. Alapszintű és standard szintű szolgáltatáscsomagban adatbázisonként egyidejű kérelmek számának korlátozásához. Válasszon egy megfelelő foglalási méret kezeléséhez szükséges kérelmek maximális száma több kapcsolatot igénylő alkalmazások kell.
-  * **Kis késés**. Egyes alkalmazások biztosítania kell, hogy minimális időben választ az adatbázisból. Ha egy adott tárolt eljárás neve a egy szélesebb körű ügyfél művelet részeként, lehetséges, hogy olyan követelménnyel rendelkezik egy adott hívás visszatérési legfeljebb 20 ezredmásodpercben, az idő 99 százalékában. Ez az alkalmazástípus a prémium szolgáltatásszinten, győződjön meg arról, hogy a szükséges számítási teljesítmény érhető el, hogy előnyös.
 
 A szolgáltatási rétegben, amely szükséges az SQL database minden egyes erőforrás dimenzió csúcs terhelés követelményeitől függ. Egyes alkalmazások egyetlen erőforrás triviális mennyisége használható, de más erőforrások jelentős követelményekkel rendelkeznek.
 
 ### <a name="service-tier-capabilities-and-limits"></a>Szolgáltatás szolgáltatásszintek lehetőségei és korlátai
 
-Minden szolgáltatásszinten beállíthatja a számítási méret, így csak azért kell fizetnie a kapacitás szükséges rugalmasságot. Is [a kapacitás](sql-database-service-tiers-dtu.md), vagy leskálázásakor, mint a számítási feladat változását követő. Például ha a biztonsági school vásárlási időszak alatt az adatbázis-munkaterhelés nagy, növelheti a számítási méret az adatbázis beállított ideje, július szeptember keresztül. Amikor befejeződik a csúcsidőszak évszak csökkentheti. Minimalizálhatja az üzleti, a szezonalitás a felhőalapú környezet optimalizálásával fizet. Ez a modell is jól szoftver termék kiadási ciklusokhoz használható. Egy teszt csapat előfordulhat, hogy kapacitás foglalása, amíg azt futtatások tesztelése, és engedje, hogy a kapacitás vizsgálat befejezésekor. A kapacitás a kérelem modellben kell fizetnie kapacitás szükséges, és elkerülheti, előfordulhat, hogy a ritkán használt, dedikált erőforrások költségeit.
+Minden szolgáltatásszinten beállíthatja a számítási méret, így csak azért kell fizetnie a kapacitás szükséges rugalmasságot. Is [a kapacitás](sql-database-single-database-scale.md), vagy leskálázásakor, mint a számítási feladat változását követő. Például ha a biztonsági school vásárlási időszak alatt az adatbázis-munkaterhelés nagy, növelheti a számítási méret az adatbázis beállított ideje, július szeptember keresztül. Amikor befejeződik a csúcsidőszak évszak csökkentheti. Minimalizálhatja az üzleti, a szezonalitás a felhőalapú környezet optimalizálásával fizet. Ez a modell is jól szoftver termék kiadási ciklusokhoz használható. Egy teszt csapat előfordulhat, hogy kapacitás foglalása, amíg azt futtatások tesztelése, és engedje, hogy a kapacitás vizsgálat befejezésekor. A kapacitás a kérelem modellben kell fizetnie kapacitás szükséges, és elkerülheti, előfordulhat, hogy a ritkán használt, dedikált erőforrások költségeit.
 
 ### <a name="why-service-tiers"></a>Miért szolgáltatásszintek?
 Bár minden egyes adatbázis-munkaterhelés eltérőek lehetnek, a szolgáltatási célja, hogy adja meg a különböző számítási méretű teljesítmény kiszámíthatóságot. Nagyméretű adatbázis erőforrás-követelményekkel rendelkező ügyfelek több dedikált számítási környezetben dolgozhat.

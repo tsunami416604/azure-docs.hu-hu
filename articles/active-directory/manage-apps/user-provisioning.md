@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 07/30/2018
 ms.author: barbkess
 ms.reviewer: asmalser
-ms.openlocfilehash: 680cea983fb7435bf4492fc295e29f3a234a4323
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 1f7a38994cb127d2edb59e9d3befeece99a7feb1
+ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44357289"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48018689"
 ---
 # <a name="automate-user-provisioning-and-deprovisioning-to-saas-applications-with-azure-active-directory"></a>Kiépítés és megszüntetés SaaS-alkalmazásokhoz az Azure Active Directory felhasználói automatizálása
 ## <a name="what-is-automated-user-provisioning-for-saas-apps"></a>Mi az automatizált felhasználókiépítése SaaS-alkalmazások?
@@ -129,8 +129,8 @@ A kiépítési szolgáltatás elindult, az első szinkronizálás, minden eddigi
 1. Minden felhasználó és csoport a forrásrendszerből beolvasása a meghatározott attribútumok lekérdezése a [attribútum-leképezések](customize-application-attributes.md).
 2. Szűrheti a felhasználókat és csoportokat ad vissza, bármely konfigurált [hozzárendelések](assign-user-or-group-access-portal.md) vagy [Attribútumalapú hatókörének beállítása szűrőket](define-conditional-rules-for-provisioning-user-accounts.md).
 3. Amikor egy felhasználó található hozzá kell rendelni vagy a kiépítés hatókörébe, a szolgáltatás lekérdezi a célrendszeren egy egyező felhasználó használja a kijelölt [megfelelő attribútumok](customize-application-attributes.md#understanding-attribute-mapping-properties). Példa: Ha egyező attribútum a forrásrendszerben userPrincipal nevét, és leképezi a felhasználónevet a célrendszeren, majd a kiépítési szolgáltatás lekérdezi a célrendszer a felhasználónevek, amelyek megfelelnek a userPrincipal értékeket a forrásrendszerben.
-4. Ha egyező felhasználó nem található a célrendszeren, létrejön a a forrásrendszerben által visszaadott attribútumokat használ.
-5. Ha egyező felhasználó található, frissül a forrásrendszerben által biztosított attribútumok használatával.
+4. Ha egyező felhasználó nem található a célrendszeren, létrejön a a forrásrendszerben által visszaadott attribútumokat használ. A felhasználói fiók létrehozása után a kiépítési szolgáltatás észleli, és az új felhasználóval kapcsolatban, hogy a felhasználó az összes jövőbeli műveletek végrehajtásához használt azonosítója a célrendszer gyorsítótárazza.
+5. Ha egyező felhasználó található, frissül a forrásrendszerben által biztosított attribútumok használatával. Miután a fiókjuk egyezik, a kiépítési szolgáltatás észleli, és gyorsítótárazza az új felhasználót, hogy a felhasználó az összes jövőbeli műveletek végrehajtásához használja a célrendszer azonosítója.
 6. Ha az attribútumleképezések nem tartalmaz "hivatkozás" attribútumok, a szolgáltatás további frissítések a célrendszeren létrehozásához és csatolásához a hivatkozott objektumokat hajtja végre. Például egy felhasználó jogosult a "Manager" attribútum a célrendszeren, amely csatolva van a célrendszeren létrehozott egy másik felhasználó.
 7. A kezdeti szinkronizálás, amely a kiindulási pontot biztosít az ezt követő növekményes szinkronizálás végén vízjel maradnak.
 
@@ -142,8 +142,8 @@ A kezdeti szinkronizálást követően minden ezt követő szinkronizálások le
 1. A lekérdezés minden olyan felhasználók és csoportok, a frissített, mert az utolsó vízjel tárolt a forrásrendszerben.
 2. Szűrheti a felhasználókat és csoportokat ad vissza, bármely konfigurált [hozzárendelések](assign-user-or-group-access-portal.md) vagy [Attribútumalapú hatókörének beállítása szűrőket](define-conditional-rules-for-provisioning-user-accounts.md).
 3. Amikor egy felhasználó található hozzá kell rendelni vagy a kiépítés hatókörébe, a szolgáltatás lekérdezi a célrendszeren egy egyező felhasználó használja a kijelölt [megfelelő attribútumok](customize-application-attributes.md#understanding-attribute-mapping-properties).
-4. Ha egyező felhasználó nem található a célrendszeren, létrejön a a forrásrendszerben által visszaadott attribútumokat használ.
-5. Ha egyező felhasználó található, frissül a forrásrendszerben által biztosított attribútumok használatával.
+4. Ha egyező felhasználó nem található a célrendszeren, létrejön a a forrásrendszerben által visszaadott attribútumokat használ. A felhasználói fiók létrehozása után a kiépítési szolgáltatás észleli, és az új felhasználóval kapcsolatban, hogy a felhasználó az összes jövőbeli műveletek végrehajtásához használt azonosítója a célrendszer gyorsítótárazza.
+5. Ha egyező felhasználó található, frissül a forrásrendszerben által biztosított attribútumok használatával. Ha ez egy újonnan hozzárendelt fiókot, amely egyezik, a kiépítési szolgáltatás észleli, és az új felhasználóval kapcsolatban, hogy a felhasználó az összes jövőbeli műveletek végrehajtásához használt azonosítója a célrendszer gyorsítótárazza.
 6. Ha az attribútumleképezések nem tartalmaz "hivatkozás" attribútumok, a szolgáltatás további frissítések a célrendszeren létrehozásához és csatolásához a hivatkozott objektumokat hajtja végre. Például egy felhasználó jogosult a "Manager" attribútum a célrendszeren, amely csatolva van a célrendszeren létrehozott egy másik felhasználó.
 7. Ha a felhasználó korábban a kiépítés hatókörébe (beleértve az éppen nem hozzárendelt) hatókör eltávolítják, a szolgáltatás letiltása a felhasználó a célrendszeren egy update-en keresztül.
 8. Ha a felhasználó korábban a kiépítés hatókörébe le van tiltva, vagy a helyreállíthatóan törölt a forrásrendszerben, a szolgáltatás letiltása a felhasználó a célrendszeren egy update-en keresztül.
@@ -237,6 +237,31 @@ Forgatókönyv-alapú hogyan háríthatók el a felhasználók automatikus átad
 
 Egy példa részletes üzembe helyezés tervezése kimenő felhasználókiépítés egy alkalmazásba, lásd: a [identitás üzembe helyezési útmutató a felhasználók átadásának](https://aka.ms/userprovisioningdeploymentplan).
 
+##<a name="more-frequenty-asked-questions"></a>További frequenty gyakori kérdések
+
+###<a name="does-automatic-user-provisioning-to-saas-apps-work-with-b2b-users-in-azure-ad"></a>Nem a felhasználók automatikus átadása az SaaS-alkalmazásai működését a B2B-felhasználók Azure AD-ben?
+
+Igen, akkor lehet a szolgáltatás kiépítése B2B (vagy vendég) felhasználók kiépítése az Azure AD SaaS-alkalmazásokhoz az Azure AD-felhasználó használata.
+
+Azonban a B2B-felhasználók is jelentkezhetnek be az Azure AD SaaS-alkalmazáshoz, a SaaS-alkalmazás rendelkeznie kell azt a SAML-alapú egyszeri bejelentkezési képesség a meghatározott módon konfigurálva. B2B-felhasználók történő bejelentkezések támogatásához SaaS-alkalmazások konfigurálásáról további információkért lásd: [konfigurálása SaaS-alkalmazások B2B-együttműködés]( https://docs.microsoft.com/azure/active-directory/b2b/configure-saas-apps).
+
+###<a name="does-automatic-user-provisioning-to-saas-apps-work-with-dynamic-groups-in-azure-ad"></a>Nem a felhasználók automatikus átadása SaaS-alkalmazások munkahelyi dinamikus csoportok az Azure AD-ben?
+
+Igen. "Szinkronizálás csak a hozzárendelt felhasználók és csoportok" konfigurálva, amikor a kiszolgáló üzembe helyezése az Azure AD felhasználói környezetben is kioszt vagy megszüntet egy SaaS-alkalmazás-e a tagjai alapján a felhasználók egy [dinamikus csoport](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-create-rule]). Dinamikus csoportok együttműködnek a "minden felhasználó és csoport szinkronizálása" lehetőséget.
+
+Dinamikus csoportok használatáért azonban befolyásolhatja a SaaS-alkalmazásokhoz való üzembe helyezést, az Azure AD-ből teljes körű felhasználói általános teljesítményét. Dinamikus csoportok használata esetén tartsa az alábbi korlátozásokkal és javaslatok szem előtt:
+
+* Milyen gyorsan egy dinamikus csoport felhasználói kiépített vagy SaaS-alkalmazásokban – figyelmeztetés megszüntetésről függ, milyen gyors képes kiértékelni a dinamikus csoport tagsága módosul. A feldolgozás állapotának egy dinamikus csoport információkért lásd: [ellenőrizze a tagsági szabály feldolgozási állapotát](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-create-rule#check-processing-status-for-a-membership-rule).
+
+* Dinamikus csoportok használatakor a szabályok alaposan meg kell kiépítésének és megszüntetésének biztosítása szem előtt, felhasználóval, a tagsági adatvesztést eredményez a megszüntetési esemény.
+
+###<a name="does-automatic-user-provisioning-to-saas-apps-work-with-nested-groups-in-azure-ad"></a>Nem a felhasználók automatikus átadása SaaS-alkalmazások munkahelyi beágyazott csoportok az Azure AD-ben?
+
+Nem. "Szinkronizálás csak a hozzárendelt felhasználók és csoportok" konfigurálva, amikor a kiszolgáló üzembe helyezése az Azure AD felhasználói nem sikerül, olvasni, vagy a beágyazott csoportok lévő felhasználók kiépítése. A rendszer csak olvashatja, és konfigurálta a felhasználókat, amelyek az explicit módon hozzárendelt csoport közvetlen tagjai.
+
+Ez az egyik korlátozása "alkalmazások hozzárendelések. csoport-alapú", amely is vonatkozik, az egyszeri bejelentkezés, és ismertetett [csoport használatával SaaS-alkalmazásokhoz való hozzáférés kezelése](https://docs.microsoft.com/en-us/azure/active-directory/users-groups-roles/groups-saasapps ).
+
+Áthidaló megoldásként, érdemes explicit módon hozzárendelése (vagy más módon [hatókörét a](https://docs.microsoft.com/en-us/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)) a csoportokat, amelyek a felhasználókkal, akik szükség lesz.
 
 ## <a name="related-articles"></a>Kapcsolódó cikkek
 * [Az SaaS-alkalmazások integrálásával foglalkozó oktatóanyagok listája](../saas-apps/tutorial-list.md)

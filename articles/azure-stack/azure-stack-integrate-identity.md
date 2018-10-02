@@ -6,16 +6,16 @@ author: jeffgilb
 manager: femila
 ms.service: azure-stack
 ms.topic: article
-ms.date: 08/07/2018
+ms.date: 09/28/2018
 ms.author: jeffgilb
 ms.reviewer: wfayed
 keywords: ''
-ms.openlocfilehash: 9bbe55e08d7a005d38c5608df39f9285d79eb203
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: 5d002ae84334219d636448e8c78a791fa9c230e7
+ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "42057227"
+ms.lasthandoff: 10/01/2018
+ms.locfileid: "47586138"
 ---
 # <a name="azure-stack-datacenter-integration---identity"></a>Az Azure Stack adatközpont integrációja - identitás
 Az identitás-szolgáltatóktól, Azure Active Directory (Azure AD) vagy az Active Directory összevonási szolgáltatások (AD FS) használatával az Azure-verem üzembe helyezhető. Ellenőrizze a kiválasztott Azure Stack üzembe helyezése előtt. Az AD FS telepítési is nevezik üzembe helyezése az Azure Stack kapcsolat nélküli módban.
@@ -173,9 +173,9 @@ A következő eljárás olyan számítógépen, amelyen a hálózati kapcsolat �
 1. Nyisson meg egy rendszergazda jogú Windows PowerShell-munkamenetet, és futtassa a következő parancsot, és válasszon a környezetének megfelelő paraméterekkel:
 
    ```PowerShell  
-   [XML]$Metadata = Invoke-WebRequest -URI https://win-SQOOJN70SGL.contoso.com/federationmetadata/2007-06/federationmetadata.xml -UseBasicParsing
+    $metadata = (Invoke-WebRequest -URI " https://win-SQOOJN70SGL.contoso.com/federationmetadata/2007-06/federationmetadata.xml " -UseBasicParsing).Content
+    Set-Content -Path c:\metadata.xml -Encoding Unicode -Value $metadata 
 
-   $Metadata.outerxml|out-file c:\metadata.xml
    ```
 
 2. Másolja a metaadatait tartalmazó fájl egy számítógépre, amely képes kommunikálni a kiemelt végponthoz.
@@ -240,24 +240,27 @@ Ha úgy dönt, hogy manuálisan futtassa a parancsokat, kövesse az alábbi lép
    => issue(claim = c);
    ```
 
-2. Windows Forms-alapú hitelesítés engedélyezéséhez nyisson meg egy Windows PowerShell-munkamenetet emelt szintű felhasználóként, és futtassa a következő parancsot:
+2. Ellenőrizze, hogy a Windows Forms-alapú hitelesítés extranetes és intranetes engedélyezve van. Először ellenőrizheti, hogy az már engedélyezve van a következő parancsmagot:
 
    ```PowerShell  
-   Set-AdfsProperties -WIASupportedUserAgents @("MSAuthHost/1.0/In-Domain","MSIPC","Windows Rights Management Client","Kloud")
+   Get-AdfsAuthenticationProvider | where-object { $_.name -eq "FormsAuthentication" } | select Name, AllowedForPrimaryExtranet, AllowedForPrimaryIntranet
    ```
+
+    > [!Note]  
+    > A Windows integrált hitelesítést (WIA), az AD FS telepítése az elavult támogatott böngészőazonosító karakterláncok előfordulhat, hogy frissíteni kell a legújabb ügyfél támogatására lehet szükség. Tudjon meg a cikk további információt a WIA frissítése támogatott böngészőazonosító karakterláncok [intranetes űrlapalapú hitelesítés konfigurálása eszközökhöz, amelyek nem támogatják a WIA](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-intranet-forms-based-authentication-for-devices-that-do-not-support-wia).<br>A további lépések elvégzésével űrlapalapú hitelesítési házirendet a cikkben vannak dokumentálva [hitelesítési házirendek konfigurálása](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-authentication-policies).
 
 3. A függő entitás megbízhatóságának hozzáadása, futtassa a következő Windows PowerShell-parancsot az AD FS-példány vagy farm tagja. Ne feledje frissíteni az AD FS-végpont, és az 1. lépésben létrehozott fájlra mutat.
 
    **Az AD FS 2016**
 
    ```PowerShell  
-   Add-ADFSRelyingPartyTrust -Name AzureStack -MetadataUrl "https://YourAzureStackADFSEndpoint/FederationMetadata/2007-06/FederationMetadata.xml" -IssuanceTransformRulesFile "C:\ClaimIssuanceRules.txt" -AutoUpdateEnabled:$true -MonitoringEnabled:$true -enabled:$true -AccessControlPolicyName "Permit everyone"
+   Add-ADFSRelyingPartyTrust -Name AzureStack -MetadataUrl "https://YourAzureStackADFSEndpoint/FederationMetadata/2007-06/FederationMetadata.xml" -IssuanceTransformRulesFile "C:\ClaimIssuanceRules.txt" -AutoUpdateEnabled:$true -MonitoringEnabled:$true -enabled:$true -AccessControlPolicyName "Permit everyone" -TokenLifeTime 1440
    ```
 
    **Az AD FS 2012/2012 R2-ben**
 
    ```PowerShell  
-   Add-ADFSRelyingPartyTrust -Name AzureStack -MetadataUrl "https://YourAzureStackADFSEndpoint/FederationMetadata/2007-06/FederationMetadata.xml" -IssuanceTransformRulesFile "C:\ClaimIssuanceRules.txt" -AutoUpdateEnabled:$true -MonitoringEnabled:$true -enabled:$true
+   Add-ADFSRelyingPartyTrust -Name AzureStack -MetadataUrl "https://YourAzureStackADFSEndpoint/FederationMetadata/2007-06/FederationMetadata.xml" -IssuanceTransformRulesFile "C:\ClaimIssuanceRules.txt" -AutoUpdateEnabled:$true -MonitoringEnabled:$true -enabled:$true -TokenLifeTime 1440
    ```
 
    > [!IMPORTANT]
@@ -270,12 +273,6 @@ Ha úgy dönt, hogy manuálisan futtassa a parancsokat, kövesse az alábbi lép
 
    ```PowerShell  
    Set-AdfsProperties -IgnoreTokenBinding $true
-   ```
-
-5. Az Azure Stack-portálok és azokat az eszközöket (a Visual Studio) szükséges frissítési biztonsági jogkivonat. Ezeket a függő entitás kell konfigurálni. Nyisson meg egy rendszergazda jogú Windows PowerShell-munkamenetet, és futtassa a következő parancsot:
-
-   ```PowerShell  
-   Set-ADFSRelyingPartyTrust -TargetName AzureStack -TokenLifeTime 1440
    ```
 
 ## <a name="spn-creation"></a>Egyszerű szolgáltatásnév létrehozása

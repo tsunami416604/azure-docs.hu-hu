@@ -9,12 +9,12 @@ ms.reviewer: jmartens
 ms.author: prasantp
 author: prasanthpul
 ms.date: 09/24/2018
-ms.openlocfilehash: d4ce2dc67b0d9229ac2605ab317594ea345c19b2
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: 1350c543990963f8f860d9dd1da5670d3a1e990c
+ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47434075"
+ms.lasthandoff: 10/01/2018
+ms.locfileid: "47585560"
 ---
 # <a name="onnx-and-azure-machine-learning-create-and-deploy-interoperable-ai-models"></a>ONNX és az Azure Machine Learning: hozzon létre és együttműködésre AI-modellek üzembe helyezése
 
@@ -28,7 +28,7 @@ A Microsoft támogatja az ONNX között a termékek, köztük az Azure és a Win
 ## <a name="why-choose-onnx"></a>Miért érdemes az ONNX választani?
 Az ONNX-kap együttműködést nagyszerű ötleteket meríthet éles gyorsabban lehetővé teszi. Az ONNX az adatszakértők választhat az előnyben részesített keretrendszer, a feladat. Hasonlóképpen, a fejlesztők Felkészülés a modellek éles kevesebb időt, és üzembe helyezése a felhőben és a peremhálózati.  
 
-A számos keretrendszer, beleértve a PyTorch, Chainer, a Microsoft Cognitive Toolkit (CNTK), MXNet és ML.Net exportálhatja ONNX-modellekkel. Feldolgozók léteznek, TensorFlow, Keras, SciKit-ismerje meg, és más keretrendszerekhez.
+ONNX-modellekkel számos keretrendszereket PyTorch, Chainer, a Microsoft Cognitive Toolkit (CNTK), MXNet, ML.Net, TensorFlow, Keras, SciKit-ismerje meg, és további is létrehozhat.
 
 Jelenítenek meg, és felgyorsítja az ONNX-modellekkel eszközök ökoszisztémája is van. Előre betanított ONNX-modellekkel számos gyakori szituációhoz kínál is elérhetők.
 
@@ -36,18 +36,17 @@ Jelenítenek meg, és felgyorsítja az ONNX-modellekkel eszközök ökoszisztém
 
 [ ![Képzés, konverterek és telepítési folyamatábrája ONNX](media/concept-onnx/onnx.png) ] (. / media/concept-onnx/onnx.png#lightbox)
 
-## <a name="create-onnx-models-in-azure"></a>Az ONNX-modellek létrehozása az Azure-ban
+## <a name="get-onnx-models"></a>ONNX-modellekkel beolvasása
 
-ONNX-modellekkel többféle módon is létrehozhat:
-+ Az Azure Machine Learning szolgáltatás a modell betanítását, és konvertálja, vagy exportálhatja, és az ONNX (lásd: a példában ez a cikk alján)
+ONNX-modellekkel többféle módon szerezheti be:
++ Az ONNX előre betanított modell beolvasása a [ONNX modell állatkert](https://github.com/onnx/models) (lásd: a példában ez a cikk alján)
++ Hozzon létre egy testre szabott ONNX-modellt a [Azure Custom Vision service](https://docs.microsoft.com/azure/cognitive-services/Custom-Vision-Service/) 
++ Létező modell más formátumba való átalakítása ONNX (lásd: a példában ez a cikk alján) 
++ Az Azure Machine Learning szolgáltatásban egy új ONNX-modell betanításához (lásd: a példában ez a cikk alján)
 
-+ Az ONNX előre betanított modell beolvasása a [ONNX modell állatkert](https://github.com/onnx/models)
+## <a name="saveconvert-your-models-to-onnx"></a>Az ONNX-modellek Save/convert
 
-+ Hozzon létre egy testre szabott ONNX-modellt a [Azure Custom Vision service](https://docs.microsoft.com/azure/cognitive-services/Custom-Vision-Service/)
-
-## <a name="exportconvert-your-models-to-onnx"></a>Az ONNX-modellek exportálási/convert
-
-ONNX átválthat a meglévő modelleket is.
+Meglévő modellek átalakíthatók ONNX, vagy a tanítási végén ONNX mentheti őket.
 
 |Modell-keretrendszer|Átalakítás például vagy eszköz|
 |-----|-------|
@@ -172,10 +171,11 @@ A teljes körű API-referencia, lásd: a [ONNX-futtatókörnyezet referenciadoku
 
    A fájl `myenv.yml` a lemezkép szükséges függőségeit ismerteti. Ez [oktatóanyag](tutorial-deploy-models-with-aml.md#create-environment-file) hozzon létre egy környezetben fájlt például ezt a mintafájlt útmutatást:
 
-   ```
+   ```python
    from azureml.core.conda_dependencies import CondaDependencies 
 
    myenv = CondaDependencies()
+   myenv.add_pip_package("numpy")
    myenv.add_pip_package("azureml-core")
    myenv.add_pip_package("onnxruntime")
 
@@ -191,9 +191,13 @@ A teljes körű API-referencia, lásd: a [ONNX-futtatókörnyezet referenciadoku
 
 ## <a name="examples"></a>Példák
  
-A következő notebookok bemutatják, hogyan lehet az Azure Machine Learning ONNX-modellek üzembe helyezése: 
-+ `/onnx/onnx-inference-mnist.ipynb`
- 
+A következő notebookok ONNX-modellek létrehozása és üzembe helyezhetik azokat az Azure Machine Learning bemutatása: 
++ `/onnx/onnx-modelzoo-aml-deploy-resnet50.ipynb` 
++ `/onnx/onnx-convert-aml-deploy-tinyyolo.ipynb`
++ `/onnx/onnx-train-pytorch-aml-deploy-mnist.ipynb`
+
+A következő notebookok bemutatják, hogyan lehet az Azure Machine Learning meglévő ONNX-modellek üzembe helyezése: 
++ `/onnx/onnx-inference-mnist.ipynb` 
 + `/onnx/onnx-inference-emotion-recognition.ipynb`
  
 Ez a jegyzetfüzet lekérése:

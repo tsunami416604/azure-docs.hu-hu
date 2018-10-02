@@ -7,12 +7,12 @@ ms.service: cognitive-services
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: nolach
-ms.openlocfilehash: 5e99e7e376a020f845816fb38e31dd727d87a4cb
-ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
+ms.openlocfilehash: 843ff39f49141ff78219771a6d4af2e9e6e7644b
+ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47423425"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48017482"
 ---
 # <a name="creating-custom-voice-fonts"></a>Egyéni hangtípust létrehozása
 
@@ -92,7 +92,7 @@ Az egyéni beszédfelismerési rendszer átiratok normalizálja való visszavál
 
 ## <a name="upload-your-datasets"></a>Az adathalmazok feltöltése
 
-Ön prepre után a hangfájl archív és szövegekben, töltse fel őket keresztül a [egyéni beszédfelismerési portál](https://customvoice.ai).
+A hangfájl archív és szövegekben előkészítése után töltse fel őket keresztül a [egyéni beszédfelismerési portál](https://customvoice.ai).
 
 > [!NOTE]
 > Adatkészletek nem szerkeszthető, miután azok fel lett töltve. Ha elfelejti szövegekben az egyes zenei fájlok tartalmazzák, például vagy véletlenül válassza ki a megfelelő nemek, újra fel kell tölteni a teljes adatkészletet. Ellenőrizze az adatkészlet és a beállításokat alaposan feltöltésének megkezdése előtt.

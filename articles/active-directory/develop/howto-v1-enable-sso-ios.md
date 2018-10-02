@@ -15,12 +15,12 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: e9598cb464360e35a86b6fe35d8c965a5e7fb51d
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 0a2a9845f82f1a81f3e187edbbb2deaa2300b3be
+ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46963032"
+ms.lasthandoff: 10/01/2018
+ms.locfileid: "47585917"
 ---
 # <a name="how-to-enable-cross-app-sso-on-ios-using-adal"></a>Útmutató: az IOS-es adal-t használó alkalmazások közötti SSO engedélyezése
 
@@ -250,7 +250,7 @@ A követendő lépések a következők:
 1. Az MS SDK az alkalmazás kódjában hívásában broker mód engedélyezéséhez.
 2. Hozzon létre egy új átirányítási URI-t, és adja meg, hogy az alkalmazás és az alkalmazás regisztrációját is.
 3. Regisztrálás egy URL-sémát.
-4. iOS9 támogatási: engedélyt ad hozzá az info.plist fájlban.
+4. Az info.plist fájlban adja hozzá egy engedélyt.
 
 #### <a name="step-1-enable-broker-mode-in-your-application"></a>1. lépés: Az alkalmazás átvitelszervező-mód engedélyezése
 
@@ -307,12 +307,16 @@ Támogatás Tanúsítványalapú hitelesítés egy második "msauth" regisztrál
 
 például: *msauth://code/x-msauth-mytestiosapp%3A%2F%2Fcom.myapp.mytestapp*
 
-#### <a name="step-4-ios9-add-a-configuration-parameter-to-your-app"></a>4. lépés: iOS9: egy konfigurációs paraméter hozzáadása az alkalmazáshoz
+#### <a name="step-4-add-a-configuration-parameter-to-your-app"></a>4. lépés: Egy konfigurációs paraméter hozzáadása az alkalmazáshoz
 
-Adal-t használ – canOpenURL: Ellenőrizze, hogy ha az ügynök telepítve van-e az eszközön. IOS 9-es Apple zárolva mi kérdezhetők le egy rendszerek. Az Info.plist szakaszt az "msauth" hozzá kell adnia a `info.plist file`.
+Adal-t használ – canOpenURL: Ellenőrizze, hogy ha az ügynök telepítve van-e az eszközön. Az iOS 9-on az Apple zárolva mi kérdezhetők le egy rendszerek. Az Info.plist szakaszt az "msauth" hozzá kell adnia a `info.plist file`.
 
 ```
-<key>LSApplicationQueriesSchemes</key> <array><string>msauth</string></array>
+    <key>LSApplicationQueriesSchemes</key>
+    <array>
+        <string>msauth</string>
+    </array>
+
 ```
 
 ### <a name="youve-configured-sso"></a>Egyszeri bejelentkezés konfigurálása!

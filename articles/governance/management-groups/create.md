@@ -10,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/21/2018
 ms.author: rithorn
-ms.openlocfilehash: c2d4317bcbf70a0cebf6ab1915968eeb9ef8b4c6
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: b436336a3484ec27e4b90785d668ba905281f158
+ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46992626"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48018598"
 ---
 # <a name="create-management-groups-for-resource-organization-and-management"></a>Erőforrás-szervezet és felügyeleti felügyeleti csoportok létrehozása
 
@@ -48,7 +48,7 @@ A felügyeleti csoport a portálon, a PowerShell vagy az Azure CLI használatáv
 
 ### <a name="create-in-powershell"></a>A PowerShell létrehozása
 
-PowerShell-lel, belül a Add-AzureRmManagementGroups parancsmagok használata:
+Belül a PowerShell a New-AzureRmManagementGroups parancsmagok használata:
 
 ```azurepowershell-interactive
 New-AzureRmManagementGroup -GroupName 'Contoso'
@@ -77,7 +77,7 @@ az account management-group create --group-name 'Contoso'
 Felügyeleti csoportok kapcsolatos további információkért lásd:
 
 - [Az erőforrások rendszerezéséhez az Azure felügyeleti csoportok](overview.md)
-- [Módosítása, törlése és a felügyeleti csoportok kezelése](manage.md)
+- [Felügyeleti csoportok módosítása, törlése és kezelése](manage.md)
 - [Az Azure Powershell-modul telepítése](https://www.powershellgallery.com/packages/AzureRM.ManagementGroups)
-- [Tekintse át a REST API-specifikációja](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/managementgroups/resource-manager/Microsoft.Management/preview)
+- [A REST API-specifikáció áttekintése](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/managementgroups/resource-manager/Microsoft.Management/preview)
 - [Az Azure CLI-bővítmény telepítése](/cli/azure/extension?view=azure-cli-latest#az-extension-list-available)

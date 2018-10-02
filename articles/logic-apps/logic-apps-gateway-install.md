@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: yshoukry, LADocs
 ms.topic: article
 ms.date: 07/20/2018
-ms.openlocfilehash: d4fbbcb81433876e4c57763b8a90b3ff1168a699
-ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
+ms.openlocfilehash: daeb0c5436d851b6e234c1b97583df526192659e
+ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "43842447"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48018774"
 ---
 # <a name="install-on-premises-data-gateway-for-azure-logic-apps"></a>A helyszíni adatátjárót telepíthet az Azure Logic Apps
 
@@ -101,7 +101,7 @@ Az átjáró más szolgáltatásokkal való használatával kapcsolatos további
 
 ## <a name="install-data-gateway"></a>Adatátjáró telepítése
 
-1. [Töltse le, mentése és az átjáró telepítőjének futtatásához a helyi számítógép](http://go.microsoft.com/fwlink/?LinkID=820931&clcid=0x409).
+1. [Töltse le, mentése és az átjáró telepítőjének futtatásához a helyi számítógép](https://aka.ms/on-premises-data-gateway-installer).
 
 2. Fogadja el az alapértelmezett elérési útvonal, vagy adja meg a helyet a számítógépre, amelyre telepíteni az átjárót.
 
@@ -182,7 +182,7 @@ Ha kell módosítani az átjáró helyét, helyezze át az átjáró telepítés
 
 1. A számítógép **Vezérlőpult**, lépjen a **programok és szolgáltatások**. A programok listájában válassza ki a **a helyszíni adatátjáró**, és válassza a **Eltávolítás**.
 
-2. [Telepítse újra a helyszíni adatátjáró](http://go.microsoft.com/fwlink/?LinkID=820931&clcid=0x409).
+2. [Telepítse újra a helyszíni adatátjáró](https://aka.ms/on-premises-data-gateway-installer).
 
 3. Miután a telepítő nyílik meg, jelentkezzen be ugyanazzal a munkahelyi vagy iskolai fiókkal, amelyet korábban az átjáró telepítéséhez használt.
 

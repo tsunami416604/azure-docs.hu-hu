@@ -10,12 +10,12 @@ ms.component: translator-text
 ms.topic: reference
 ms.date: 03/29/2018
 ms.author: v-jansko
-ms.openlocfilehash: 4d156d3cfd0afa463cdc18b73ad05d09e4159dae
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 613cdd14ad196058458b090024cc6b9a4b8a80b6
+ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46129488"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48018621"
 ---
 # <a name="translator-text-api-30-transliterate"></a>Translator Text API 3.0: átírás
 
@@ -41,16 +41,16 @@ A kérelem lekérdezési karakterláncot az átadott paraméterek a következők
     <td>*Kötelező paraméter*.<br/>Az ügyfél által kért API-verzió. Az érték lehet `3.0`.</td>
   </tr>
   <tr>
-    <td>Nyelv</td>
+    <td>language</td>
     <td>*Kötelező paraméter*.<br/>Meghatározza a szöveg átalakítása egy parancsfájl egy másik nyelvét. Lehetséges nyelven szerepelnek a `transliteration` hatókör számára a szolgáltatás lekérdezésével kapott a [támogatott nyelvek](.\v3-0-languages.md).</td>
   </tr>
   <tr>
     <td>fromScript</td>
-    <td>*Kötelező paraméter*.<br/>Megadja a parancsprogramot, a bemeneti szöveg által használt. Keresési [támogatott nyelvek](.\v3-0-languages.md) használatával a `transliteration` hatókörét, a bemeneti érhető el parancsprogram található a kiválasztott nyelven.</td>
+    <td>*Kötelező paraméter*.<br/>Megadja a parancsprogramot, a bemeneti szöveg által használt. Kereshet [támogatott nyelvek](.\v3-0-languages.md) használatával a `transliteration` hatókörét, a bemeneti érhető el parancsprogram található a kiválasztott nyelven.</td>
   </tr>
   <tr>
     <td>toScript</td>
-    <td>*Kötelező paraméter*.<br/>Megadja a kimeneti parancsfájlt. Keresési [támogatott nyelvek](.\v3-0-languages.md) használatával a `transliteration` hatókörét, a kimeneti parancsfájlok érhető el a kiválasztott kombinációjának beviteli nyelv és a bemeneti parancsprogram található.</td>
+    <td>*Kötelező paraméter*.<br/>Megadja a kimeneti parancsfájlt. Kereshet [támogatott nyelvek](.\v3-0-languages.md) használatával a `transliteration` hatókörét, a kimeneti parancsfájlok érhető el a kiválasztott kombinációjának beviteli nyelv és a bemeneti parancsprogram található.</td>
   </tr>
 </table> 
 
@@ -171,7 +171,7 @@ A JSON-adattartalom-ebben a példában a kérelmet:
 [{"text":"こんにちは","script":"jpan"},{"text":"さようなら","script":"jpan"}]
 ```
 
-A cUrl egy parancssori ablakban, amely nem támogatja a Unicode-karaktereket használ, ha a következő JSON-adattartalom igénybe, és mentse fájlba `request.txt`. Ügyeljen arra, hogy mentse a fájlt a `UTF-8` kódolást.
+A cURL egy parancssori ablakban, amely nem támogatja a Unicode-karaktereket használ, ha a következő JSON-adattartalom igénybe, és mentse fájlba `request.txt`. Ügyeljen arra, hogy mentse a fájlt a `UTF-8` kódolást.
 
 ```
 curl -X POST "https://api.cognitive.microsofttranslator.com/transliterate?api-version=3.0&language=ja&fromScript=Jpan&toScript=Latn" -H "X-ClientTraceId: 875030C7-5380-40B8-8A03-63DACCF69C11" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d @request.txt

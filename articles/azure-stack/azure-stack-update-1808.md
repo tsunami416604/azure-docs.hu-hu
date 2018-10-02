@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/28/2018
+ms.date: 10/01/2018
 ms.author: sethm
 ms.reviewer: justini
-ms.openlocfilehash: 7278f784316fdbd7170bb69b9414911b8f5b3823
-ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
+ms.openlocfilehash: 94e18b6a4fc367a9697078f8e0c1a307ae15d4be
+ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47452683"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48017942"
 ---
 # <a name="azure-stack-1808-update"></a>Azure Stack 1808 frissítése
 
@@ -137,7 +137,7 @@ Emellett tartalmazza a kockázatcsökkentési spekulatív végrehajtás kockáza
 
 ### <a name="post-update-steps"></a>Frissítés utáni lépések
 Ez a frissítés telepítése után bármely alkalmazandó gyorsjavítások telepítéséről. További információt a következő cikkeket, megtekintése, valamint a [karbantartási szabályzat](azure-stack-servicing-policy.md). 
-- [KB 4464226 – az Azure Stack gyorsjavítás az Azure Stack gyorsjavítás 1.1808.1.99]( https://support.microsoft.com/help/4464226)
+- [KB 4465859 – az Azure Stack gyorsjavítás az Azure Stack gyorsjavítás 1.1808.2.104](https://support.microsoft.com/help/4465859/)
 
 
 ## <a name="known-issues-post-installation"></a>Ismert problémák (telepítés utáni)
@@ -230,8 +230,6 @@ Az alábbiakban a telepítés utáni ismert hibáit a build-verziószáma.
 - <!-- 2724873 - IS --> A PowerShell-parancsmagok használata esetén **Start-AzsScaleUnitNode** vagy **Stop-AzsScaleunitNode** skálázási egységek kezelése, indítása vagy leállítása a skálázási egység az első kísérlet sikertelen lehet. A parancsmag futtatása sikertelen, az első, futtassa a parancsmagot egy második alkalommal. A második Futtatás sikeres legyen, a művelet végrehajtásához. 
 
 - <!-- TBD - IS ASDK --> Az Azure Stack felhasználói portál virtuális gépek létrehozásakor a portál megjeleníti, hogy a DS sorozatú virtuális gép csatlakoztathat adatlemezek száma helytelen. DS sorozatú virtuális gépek, az Azure-konfiguráció lehetővé teszi tetszőleges számú adatlemezeket.
-
-- <!-- TBD - IS ASDK --> Ha egy több-bérlős környezetben használja, egy nem alapértelmezett bérlőhöz tartozó előfizetésben található felügyelt lemezes virtuális gép kiépítése meghiúsul a következő hiba miatt: *az erőforrás-művelet befejező üzembe helyezési állapota "Sikertelen".*
 
 - <!-- TBD - IS ASDK --> Ha egy virtuális gép üzembe helyezése a bővítmény kiépítési túl hosszú időt vesz igénybe, felhasználók hagyja, hogy a kiépítési időtúllépési helyett a folyamat fel vagy töröljön a virtuális gép leállítása.  
 

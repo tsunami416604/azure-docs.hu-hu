@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 09/10/2018
 ms.author: alkohli
 ms.component: common
-ms.openlocfilehash: 1be7dd9ce537d0999ace01eafa46318e42df9f20
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: adb3127e45166d4743c182cbd21944dd86810596
+ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45732447"
+ms.lasthandoff: 10/01/2018
+ms.locfileid: "47584166"
 ---
 # <a name="use-azure-importexport-service-to-import-data-to-azure-files"></a>Adatok importálása az Azure Files Azure Import/Export szolgáltatás használata
 
@@ -139,7 +139,7 @@ A következő lépésekkel importálási feladat létrehozása az Azure Portalon
     
     - A naplófájlok az előző során létrehozott feltöltése [1. lépés: készítse elő a meghajtók](#step-1-prepare-the-drives). 
     - Válassza ki a tárfiókot, amely az adatokat importálja a rendszer. 
-    - A gyűjtőhely automatikusan kitölti a rendszer a kiválasztott tárfiók a régióhoz igazodik.
+    - Dropoff helyét a rendszer automatikusan kitölti a kiválasztott tárfiók a régióhoz igazodik.
    
        ![Importálási feladat létrehozása – 2. lépés](./media/storage-import-export-data-to-blobs/import-to-blob4.png)
 

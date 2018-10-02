@@ -11,12 +11,12 @@ ms.component: user-help
 ms.topic: conceptual
 ms.date: 07/30/2018
 ms.author: lizross
-ms.openlocfilehash: 3f98b4e34c4c76efc33395530ef016b26e1ad523
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: f6a574f169310f2779fb20353fda748e6893a4bd
+ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44163039"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48016740"
 ---
 # <a name="set-up-security-info-to-use-email-preview"></a>Biztonsági adatok beállítása az e-mailben (előzetes verzió)
 
@@ -46,7 +46,7 @@ Szervezeti beállítások, attól függően előfordulhat, hogy kéri egy e-mail
 
 3. Az a **a fiókja biztonságának megőrzéséhez** lapon jelölje be **kész**.
 
-    A biztonsági adatok frissítése a személyazonosságát, ha a kétlépéses ellenőrzés használata esetén az e-mail-címét használja.
+    A biztonsági adatok frissítése igazolhatja a személyazonosságát, jelszó-visszaállítás használata esetén az e-mail-címét használja.
 
 ## <a name="additional-security-info-options"></a>További biztonsági információ beállításai
 

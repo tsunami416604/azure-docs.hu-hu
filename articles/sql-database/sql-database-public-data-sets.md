@@ -12,12 +12,12 @@ ms.author: douglasl
 ms.reviewer: ''
 manager: craigg
 ms.date: 04/01/2018
-ms.openlocfilehash: 6977995fb33d221b48a633076f61d3ee39d6ba40
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 225c8093816c5186cbc084f74bc6e0591107ec00
+ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47160417"
+ms.lasthandoff: 10/01/2018
+ms.locfileid: "47586257"
 ---
 # <a name="public-data-sets-for-testing-and-prototyping"></a>Nyilvános adatkészletek a teszteléshez és prototípus-készítés
 
@@ -40,7 +40,7 @@ Tallózással keresse meg az adatok esetén, amelyek segítségével készíthet
 
 | Adatforrás | Tudnivalók az adatokról | A fájlokkal kapcsolatos |
 |---|---|---|
-| [New York City-i taxik adatait](http://www.nyc.gov/html/tlc/html/about/trip_record_data.shtml) | "Taxi trip rekordok tartalmazzák a mezők rögzítése felvétel és Gyűjtőtár dátumok vagy időpontok, felvétel és Gyűjtőtár helyek trip távokat, tételes vitel, forgalmi típusok, fizetési típusait, és utasforgalmat illesztőprogram jelentett száma." | CSV-fájlok találhatók adatkészletek hónap szerint. |
+| [New York City-i taxik adatait](http://www.nyc.gov/html/tlc/html/about/trip_record_data.shtml) | "Taxi trip rekordok tartalmazzák a mezők rögzítése felvétel és dropoff dátumok vagy időpontok, felvétel és dropoff helyek trip távokat, tételes vitel, forgalmi típusok, fizetési típusait, és utasforgalmat illesztőprogram jelentett száma." | CSV-fájlok találhatók adatkészletek hónap szerint. |
 | [A Microsoft Research adatkészletek – "Data Science a kutatási"](https://www.microsoft.com/research/academic-program/data-science-microsoft-research/) | Több adatkészletek ember és számítógép-interakció, hang/kép, adatbányászati/információk adatlekérés, a földrajzi helye, természetes nyelvi feldolgozás és robotika/számítógépes látástechnológiai kiterjedő. | Adatkészletek letölthető zip többféle formátumban vannak. |
 | [Nyilvános genom adatok](http://www.completegenomics.com/public-data/) | "Adatok kezébe a különböző emberi teljes genomok díját is szabadon nyilvánosan elérhető bármely részfeladatának tanulmány javítása..." A szolgáltató, a teljes Genomics egy privát profitorientált corporation. | Adatkészletek, miután kinyerési, a program UNIX szöveges formátumban. Elemzési eszközök is érhetők el. |
 | [Nyissa meg tudományos adatok Felhőbeli adatok](https://www.opensciencedatacloud.org/) | "Nyílt tudományos adatok Felhőbeli biztosítja a tudományos Közösség, az erőforrások tárolásához, megosztása és terabájt, petabájtszintű és tudományos adatkészletek elemzése."| Adatkészletek többféle formátumban vannak. |

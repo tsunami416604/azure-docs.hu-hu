@@ -9,14 +9,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/25/2018
+ms.date: 10/01/2018
 ms.author: tomfitz
-ms.openlocfilehash: d8bc1165d131c593d5f4697b20166b72605ad488
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: f19708d232080b53446bedd9316fcf9d7772890d
+ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47228415"
+ms.lasthandoff: 10/01/2018
+ms.locfileid: "47585798"
 ---
 # <a name="enable-safe-deployment-practices-with-azure-deployment-manager-public-preview"></a>Biztonságos üzembe helyezési eljárások az Azure Deployment Manager (nyilvános előzetes verzió) engedélyezése
 
@@ -144,7 +144,7 @@ Az alábbi példa bemutatja a szolgáltatások erőforrás általános formátum
 
 További információkért lásd: [sablonreferenciája services](/azure/templates/Microsoft.DeploymentManager/serviceTopologies/services).
 
-### <a name="service-units"></a>Szolgáltatás-egységek
+### <a name="service-units"></a>Szolgáltatási egység
 
 Az alábbi példa bemutatja a szolgáltatás egységek erőforrás általános formátumát. Minden szolgáltatás egységben, adja meg az erőforráscsoportot, a [üzembe helyezési mód](deployment-modes.md) használata a központi telepítés és a sablonnal és paraméterfájlokkal fájl elérési útját. A sablon és paraméterek egy relatív elérési utat ad meg, ha a teljes elérési útja abból a gyökérmappából, az összetevők forrás jön létre. A sablon és paraméterek abszolút elérési utat is megadhat, de a verziók nem lesz lehetősége könnyen verzióra. A szolgáltatás egység szolgáltatástól függ.
 
@@ -220,7 +220,7 @@ További információkért lásd: [sablonreferenciája lépések](/azure/templat
 
 ### <a name="rollouts"></a>Kibocsátások
 
-Ahhoz, hogy az összetevő-forrás érhető el, a bevezetés függ tőle. A bevezetési csoportok lépéseket minden egyes üzembe helyezett szolgáltatás egység határozza meg. Megadhatja a telepítés előtt vagy után végrehajtandó műveleteket. Megadhatja például, hogy az üzembe helyezés várjon a szolgáltatás egység üzembe helyezése után. 
+Ahhoz, hogy az összetevő-forrás érhető el, a bevezetés függ tőle. A bevezetési csoportok lépéseket minden egyes üzembe helyezett szolgáltatás egység határozza meg. Megadhatja a telepítés előtt vagy után végrehajtandó műveleteket. Megadhatja például, hogy az üzembe helyezés várjon a szolgáltatás egység üzembe helyezése után. Megadhatja, hogy a lépés csoportok sorrendjét.
 
 Az identitás objektum adja meg a [felhasználó által hozzárendelt felügyelt identitás](#identity-and-access) , amely a központi telepítési műveleteket hajtja végre.
 
@@ -248,6 +248,7 @@ Az alábbi példa bemutatja a bevezetés általános formátumát.
         "stepGroups": [
             {
                 "name": "stepGroup1",
+                "dependsOnStepGroups": ["<step-group-name>"],
                 "preDeploymentSteps": ["<step-ID>"],
                 "deploymentTargetId":
                     "<service-unit-ID>",

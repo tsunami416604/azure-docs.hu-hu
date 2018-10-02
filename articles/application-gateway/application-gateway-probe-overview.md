@@ -8,12 +8,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 8/6/2018
 ms.author: victorh
-ms.openlocfilehash: b34e5317a35d694e8521e73b0846da973661d9df
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: f9bd0288d4009af536bdc8f45cbaed4b3f1eee18
+ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39531532"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48018709"
 ---
 # <a name="application-gateway-health-monitoring-overview"></a>Application Gateway állapotfigyelés – áttekintés
 
@@ -96,7 +96,7 @@ Az alábbi táblázat biztosít jelentésdefiníciókat egyéni állapotmintát 
 
 Alkalmazásátjáró-alhálózat egy hálózati biztonsági csoport (NSG) van, ha alkalmazásport-tartományok 65503 – 65534 kell megnyitni a bejövő forgalom az application gateway alhálózatának. Ezek a portok szükségesek a háttérkiszolgáló állapotadatainak API-t.
 
-Ezenkívül nem blokkolja a kimenő internetkapcsolat, és engedélyezni kell az AzureLoadBalancer címkét érkező forgalmat.
+Ezenkívül nem blokkolja a kimenő internetkapcsolat, és engedélyezni kell az AzureLoadBalancer címkét érkező bejövő forgalmat.
 
 ## <a name="next-steps"></a>További lépések
 Miután megismerkedett az Application Gateway-állapotfigyelés, konfigurálhat egy [egyéni állapotadat-mintavétel](application-gateway-create-probe-portal.md) az Azure Portalon, vagy egy [egyéni állapotadat-mintavétel](application-gateway-create-probe-ps.md) PowerShell és az Azure Resource Manager használatával üzembe helyezési modell.

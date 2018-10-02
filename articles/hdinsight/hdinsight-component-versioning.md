@@ -10,12 +10,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 01/09/2018
 ms.author: kakampf
-ms.openlocfilehash: 5be239fd3c77872a59b37efc6de5fc42aca9bb0c
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: 2047a9fbbe1bc7d867bb1c300f882e287ab8ad73
+ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47395814"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48018910"
 ---
 # <a name="what-are-the-hadoop-components-and-versions-available-with-hdinsight"></a>Mik azok a Hadoop-összetevők és a HDInsight-verziók?
 
@@ -82,7 +82,7 @@ Az alábbi táblázat az Azure Portalon, valamint egyéb telepítési módszerek
 | HDInsight 3.6-os |2.6 HDP |Ubuntu 16.0.4 LTS |2017. április 4. | | |Igen |Igen |
 | HDInsight 3.5-ös verzióját. <br> (Spark) * |2.6 HDP |Ubuntu 16.0.4 LTS |2016. szeptember 30. |2019. márciusi 13. |2019. márciusi 13. |Igen |Igen |
 
-*HDInsight 3.5-ös támogatási ki lett terjesztve, csak a Spark-fürt típusa*
+*&ast; HDInsight 3.5-ös támogatási ki lett terjesztve, csak a Spark-fürt típusa*
 
 > [!NOTE]
 > Támogatási után a lejárt verziót, nem lehet elérhető a Microsoft Azure-portálon keresztül. Azonban fürtverziók továbbra is elérhetők az a `Version` paramétert a Windows PowerShellben [New-AzureRmHDInsightCluster](https://docs.microsoft.com/powershell/module/azurerm.hdinsight/new-azurermhdinsightcluster) parancs, és a .NET SDK, amíg a verzió kivezetési dátuma.

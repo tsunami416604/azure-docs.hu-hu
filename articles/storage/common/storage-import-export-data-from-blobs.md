@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 07/17/2018
 ms.author: alkohli
 ms.component: common
-ms.openlocfilehash: a85fb6ce211e6089f67cb2e2f265fbda06a25b10
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: 9ae0892d7de8a431227218ffc6db03eca20fcbdd
+ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45735088"
+ms.lasthandoff: 10/01/2018
+ms.locfileid: "47585713"
 ---
 # <a name="use-the-azure-importexport-service-to-export-data-from-azure-blob-storage"></a>Adatok exportálása az Azure Blob storage-ból az Azure Import/Export szolgáltatás használata
 Ebben a cikkben részletes útmutatás az Azure Import/Export szolgáltatás használatával nagy mennyiségű adat biztonságosan exportálása az Azure Blob storage-ból. A szolgáltatás megköveteli, hogy az Azure-adatközpontba üres meghajtókon szállításra. A szolgáltatás adatokat exportál a tárfiók a meghajtók, és vissza a meghajtók majd tartalmaz.
@@ -60,7 +60,7 @@ A következő lépésekkel exportálási feladat létrehozása az Azure Portalon
 3. A **feladat részletei**:
 
     - Válassza ki a tárfiókot, ahol az adatok exportálásának találhatók. Közel elhelyezkedő egy storage-fiókot használni.
-    - A gyűjtőhely automatikusan kitölti a rendszer a kiválasztott tárfiók a régióhoz igazodik. 
+    - Dropoff helyét a rendszer automatikusan kitölti a kiválasztott tárfiók a régióhoz igazodik. 
     - Adja meg a kívánt exportálja az Ön tárfiókjából az üres meghajtó vagy meghajtókat Blobadatok. 
     - Válassza ki a **minden kiviteli** a tárfiókban lévő blobadatokat.
     

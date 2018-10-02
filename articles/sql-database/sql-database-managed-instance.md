@@ -11,13 +11,13 @@ author: bonova
 ms.author: bonova
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 09/26/2018
-ms.openlocfilehash: 626dd362248027831c78d1505662ca12d2ff334d
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.date: 10/01/2018
+ms.openlocfilehash: a09a19957c318416f3cb4de79305b181dbc3be81
+ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47392822"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48018284"
 ---
 # <a name="what-is-a-managed-instance"></a>Mi a felügyelt példány?
 
@@ -75,7 +75,7 @@ Felügyelt példány szolgáltatáscsomagban érhető el:
 Mindkét szolgáltatásszintek 99,99 %-os rendelkezésre állásának biztosítása, és egymástól függetlenül válassza ki a tároló mérete és a számítási kapacitást. Az Azure SQL Database a magas rendelkezésre állású architektúrával további információkért lásd: [magas rendelkezésre állást és az Azure SQL Database](sql-database-high-availability.md).
 
 > [!IMPORTANT]
-> Az általános célú üzletileg kritikus fontosságú vagy fordítva szolgáltatásszint módosítása nem támogatott nyilvános előzetes verzióban érhető el. Ha az adatbázisokat egy példány különböző szolgáltatási rétegben, új példány létrehozása, időponthoz kötött visszaállítás ponttal rendelkező adatbázisok visszaállítása az eredeti példányban, és majd eldobni az eredeti példányban nincs többé szükség esetén. 
+> Az általános célú üzletileg kritikus fontosságú vagy fordítva szolgáltatásszint módosítása nem támogatott nyilvános előzetes verzióban érhető el. Ha az adatbázisokat egy példány különböző szolgáltatási rétegben, új példány létrehozása, időponthoz kötött visszaállítás ponttal rendelkező adatbázisok visszaállítása az eredeti példányban, és majd eldobni az eredeti példányban nincs többé szükség esetén. Azonban a virtuális magok és a storage felfelé vagy lefelé üzemkimaradás nélkül szolgáltatási szinten belül számát skálázhatja.
 
 ### <a name="general-purpose-service-tier"></a>Általános célú szolgáltatásszint
 
@@ -108,7 +108,7 @@ Az alábbi lista ismerteti azokat az általános célú szolgáltatásszint főb
 
 \* Egy virtuális magot és generációk hardver lehetőség elérhető logikai CPU jelöli. Gen 4 logikai CPU k Intel E5-2673 v3 (Haswell) 2,4 GHz-es processzorral és a Gen 5 logikai CPU alapján Intel E5-2673 v4 (Broadwell) 2,3 GHz-es processzorral. 
 
-További információ: [Standard/általános célú rendelkezésre állási és architektúra](sql-database-high-availability.md#standardgeneral-purpose-availability) Azure SQL Database-ben.
+További információkért lásd: [Standard/általános célú rendelkezésre állási és architektúra](sql-database-high-availability.md#standardgeneral-purpose-availability) az Azure SQL Database és [tárolási teljesítmény ajánlott eljárások és az Azure SQL DB felügyelt példányainak (általános szempontok Célú)](https://blogs.msdn.microsoft.com/sqlcat/2018/07/20/storage-performance-best-practices-and-considerations-for-azure-sql-db-managed-instance-general-purpose/).
 
 ### <a name="business-critical-service-tier-preview"></a>Üzleti kritikus fontosságú szolgáltatási szint (előzetes verzió)
 

@@ -10,14 +10,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/26/2018
+ms.date: 10/01/2018
 ms.author: douglasl
-ms.openlocfilehash: ff112459ef23930329fc1959a633bd6f505893a1
-ms.sourcegitcommit: 3150596c9d4a53d3650cc9254c107871ae0aab88
+ms.openlocfilehash: aa8572ea0195891657baf3df1916ce0b4f36f788
+ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47419599"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48018808"
 ---
 # <a name="continuous-integration-and-delivery-cicd-in-azure-data-factory"></a>Folyamatos integráció és teljesítés (CI/CD) az Azure Data Factoryban
 
@@ -112,6 +112,11 @@ Az alábbiakban a lépéseket egy Azure-folyamatok verzió beállításához, ad
     f.  Válassza ki **...** mellett a **Sablonparaméterek felülbírálása** mezőben, majd töltse ki a cél a Data Factory az információkat. A hitelesítő adatokat, amelyeket a key vaultban, használja ugyanazt a nevet a titkos kulcsot a következő formátumban: Ha a titkos kód nevét `cred1`, adja meg `"$(cred1)"` (idézőjelek) között.
 
     ![](media/continuous-integration-deployment/continuous-integration-image9.png)
+
+    g. Válassza ki a **növekményes** üzembe helyezési mód.
+
+    > [!WARNING]
+    > Ha **Complete** üzembe helyezési mód, a meglévő erőforrások törlődhet, köztük a céloldali erőforráscsoport.
 
 1.  Mentse a kiadási folyamathoz.
 

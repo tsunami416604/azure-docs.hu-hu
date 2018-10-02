@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/14/2017
 ms.author: daveba
-ms.openlocfilehash: bb62f892ec3d171958764d10f4b069bbd536d2ea
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: f50714538cdfd1a0bd258a3b78d0885e3c7beed1
+ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47223439"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48018485"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-an-azure-vm-using-a-templates"></a>Felügyelt identitások az Azure-erőforrások konfigurálása egy Azure-beli Virtuálisgép-sablonok használatával
 
@@ -188,7 +188,7 @@ Ha egy virtuális Gépet, amely egy rendszer által hozzárendelt felügyelt ide
 
    Ha a virtuális gépen, rendszer és a felügyelt identitásokból felhasználó által hozzárendelt, távolítsa el a `SystemAssigned` identitástípus és tarthatja `UserAssigned` együtt a `userAssignedIdentities` szótár értékeket.
 
-   **Microsoft.Compute/virtualMachines API-verzió a 2018-06-01-es vagy korábbi kiadásai**
+   **API-verzió a 2018-06-01 Microsoft.Compute/virtualMachines**
    
    Ha a `apiVersion` van `2017-12-01` és a virtuális gép rendelkezik a rendszer mind a felügyelt identitásokból felhasználó által hozzárendelt, távolítsa el `SystemAssigned` identitástípus és tarthatja `UserAssigned` együtt a `identityIds` tömbje, a felhasználó által hozzárendelt identitások felügyelt.  
    
@@ -235,7 +235,7 @@ Ebben a szakaszban egy felhasználó által hozzárendelt felügyelt identitás 
    }
    ```
    
-   **Microsoft.Compute/virtualMachines API-verzió 2017-12-01-es vagy korábbi kiadásai**
+   **Microsoft.Compute/virtualMachines API 2017-12-01-es verzió**
     
    Ha a `apiVersion` van `2017-12-01`, a felügyelt felhasználó által hozzárendelt identitások vannak tárolva a `identityIds` tömb és a `<USERASSIGNEDIDENTITYNAME>` egy változóban meghatározott értéket kell tárolni a `variables` a sablon szakaszában.
     
@@ -316,7 +316,7 @@ Ebben a szakaszban egy felhasználó által hozzárendelt felügyelt identitás 
        }
     ]
    ```
-   **Microsoft.Compute/virtualMachines API-verzió 2017-12-01-es vagy korábbi kiadásai**
+   **Microsoft.Compute/virtualMachines API 2017-12-01-es verzió**
    
    ```JSON
    "resources": [
@@ -375,7 +375,7 @@ Ha egy virtuális gép, egy felhasználó által hozzárendelt felügyelt identi
     }
    ```
    
-   **Microsoft.Compute/virtualMachines API-verzió a 2018-06-01-es vagy korábbi kiadásai**
+   **API-verzió a 2018-06-01 Microsoft.Compute/virtualMachines**
     
    Egy virtuális Gépet egy egyetlen felhasználó által hozzárendelt felügyelt identitás eltávolításához távolítsa el a `useraAssignedIdentities` szótárban.
 

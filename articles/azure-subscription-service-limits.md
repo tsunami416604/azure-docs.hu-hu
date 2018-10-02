@@ -10,12 +10,12 @@ ms.service: billing
 ms.topic: article
 ms.date: 09/11/2018
 ms.author: byvinyal
-ms.openlocfilehash: efaca1b9506ada02c52ad0833139d3b4e441d456
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: 0b78c7c94f5dc6d7c427188ac4ffd807a06a867e
+ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47393613"
+ms.lasthandoff: 10/01/2018
+ms.locfileid: "47585492"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Az Azure-előfizetésekre és -szolgáltatásokra vonatkozó korlátozások, kvóták és megkötések
 Ez a dokumentum felsorolja az egyes a leggyakrabban használt Microsoft Azure korlátok, kvóták néven is ismert. Ez a dokumentum jelenleg nem vonatkozik Azure-szolgáltatásokhoz. Az idő múlásával a lista fog kibontható vagy frissítve, hogy biztosítsák a platform további.
@@ -102,7 +102,7 @@ Az alábbi korlátok egy új táblát bővült, hogy minden korlátokat különb
 * [Virtual Machine Scale Sets](#virtual-machine-scale-sets-limits)
 
 ### <a name="subscription-limits"></a>Előfizetés korlátai
-#### <a name="subscription-limits"></a>Előfizetés korlátai
+#### <a name="subscription-limits---azure-service-management-classic-resources"></a>Előfizetési korlátok – Azure szolgáltatásfelügyeleti (klasszikus erőforrások)
 [!INCLUDE [azure-subscription-limits](../includes/azure-subscription-limits.md)]
 
 #### <a name="subscription-limits---azure-resource-manager"></a>Előfizetési korlátok – Azure Resource Manager

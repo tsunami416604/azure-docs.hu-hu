@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 07/26/2018
-ms.openlocfilehash: 98c62f54e2413bd67600db182c452d0d5965f239
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 4cbbfe5c40dd8686cf25ac31aa5db53b2a6415f7
+ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46972181"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48018859"
 ---
 # <a name="extend-azure-hdinsight-using-an-azure-virtual-network"></a>Az Azure Virtual Network használata Azure HDInsight kiterjesztése
 
@@ -253,7 +253,7 @@ Kényszerített bújtatás egy felhasználó által meghatározott útválasztá
 >
 > Ha nem használja a hálózati biztonsági csoportok vagy felhasználó által megadott útvonalak forgalom szabályozása, figyelmen kívül hagyhatja ebben a szakaszban.
 
-Ha a hálózati biztonsági csoportok vagy a felhasználó által megadott útvonalakat, engedélyeznie kell a HDInsight eléréséhez Azure állapotát és a felügyeleti szolgáltatások érkező forgalmat. Az alábbi lépések segítségével engedélyezni kell az IP-címek keresése:
+Ha a hálózati biztonsági csoportok vagy a felhasználó által megadott útvonalakat, engedélyeznie kell a HDInsight eléréséhez Azure állapotát és a felügyeleti szolgáltatások érkező forgalmat. Az alhálózaton belüli virtuális gépek közötti forgalmat is engedélyeznie kell. Az alábbi lépések segítségével engedélyezni kell az IP-címek keresése:
 
 1. Mindig engedélyeznie kell a következő IP-címekről érkező forgalmat:
 

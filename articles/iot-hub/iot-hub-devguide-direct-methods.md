@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 07/17/2018
 ms.author: nberdy
-ms.openlocfilehash: f2e04c793f5c238716930bcbdcaa090e6a133588
-ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
+ms.openlocfilehash: f9476d42bbdb9d2a499c08d83eed6696fbbed469
+ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47452588"
+ms.lasthandoff: 10/01/2018
+ms.locfileid: "47586002"
 ---
 # <a name="understand-and-invoke-direct-methods-from-iot-hub"></a>Megismerheti, és az IoT hubról közvetlen metódusok meghívása
 
@@ -33,7 +33,7 @@ Tekintse meg [felhőből az eszközre irányuló kommunikáció útmutatást](io
 Közvetlen metódusok vannak megvalósítva, az eszközön, és szükség lehet nulla vagy több bemeneti adatokat az a módszer hasznos megfelelően elindítását. A szolgáltatás által használt URI-t keresztül közvetlen metódus meghívása (`{iot hub}/twins/{device id}/methods/`). Egy eszköz megkapja egy eszközspecifikus MQTT témakör keresztül közvetlen metódusok (`$iothub/methods/POST/{method name}/`) vagy az AMQP-kapcsolaton keresztül (a `IoThub-methodname` és `IoThub-status` alkalmazás tulajdonságai). 
 
 > [!NOTE]
-> Ön közvetlen metódus meghívása az eszköz, nevét és értékeit tartalmazhatnak US-ASCII nyomtatható alfanumerikus, kivéve a következő set: ``{'$', '(', ')', '<', '>', '@', ',', ';', ':', '\', '"', '/', '[', ']', '?', '=', '{', '}', SP, HT}``.
+> Ön közvetlen metódus meghívása az eszköz, nevét és értékeit tartalmazhatnak US-ASCII nyomtatható alfanumerikus, kivéve az alábbi: ``{'$', '(', ')', '<', '>', '@', ',', ';', ':', '\', '"', '/', '[', ']', '?', '=', '{', '}', SP, HT}``
 > 
 
 Közvetlen módszerek a következők szinkron, és akár sikeres, vagy az időkorlát után sikertelen (alapértelmezés: 30 másodperc, állítható be 3600 másodperc). Közvetlen metódusok interaktív forgatókönyvek, ahol azt szeretné, hogy egy eszköz való működésre, csak ha az eszköz nem online és a fogadó parancsok hasznosak. Például ne tudják bekapcsolni a telefonon egy világos. Ezekben az esetekben meg szeretné tekinteni egy azonnali sikeres vagy sikertelen, így a felhőszolgáltatás működhet-e az eredmény a lehető leghamarabb. Az eszköz bizonyos üzenettörzs eredményeként a metódus adhatnak vissza, de ez nem szükséges ehhez a metódushoz. Nincs a rendezés nem tudunk garanciát vagy bármely egyidejűségi szemantika metódust hívja meg.

@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/11/2018
+ms.date: 09/28/2018
 ms.author: patricka
-ms.openlocfilehash: 0c49a895a3cd214bb6f9c88b5365cf980c60bf0a
-ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
+ms.openlocfilehash: c9b9e569cf643b85b41698bf29429d0b7ceec37e
+ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47451771"
+ms.lasthandoff: 10/01/2018
+ms.locfileid: "47585101"
 ---
 # <a name="multi-tenancy-in-azure-stack"></a>Több-bérlős az Azure Stackben
 
@@ -103,17 +103,6 @@ Register-AzSWithMyDirectoryTenant `
 > Ez a szkript futtatása újra bármikor ellenőrizheti az állapotot az Azure Stack-alkalmazások a címtárban.
 > 
 > Ha új virtuális gépek létrehozása a Managed Disks (a 1808 frissítés jelent meg), a problémák megfigyelte **lemez erőforrás-szolgáltató** lett hozzáadva, igénylő futtassa újra ezt a szkriptet.
-
-### <a name="activate-the-administrator-and-tenant-portals"></a>A rendszergazda és bérlői portálok aktiválása
-Után az Azure AD telepítéseknek aktiválnia kell a mindkét az Azure Stack rendszergazdai és bérlői portált. Az aktiválás járul hozzá engedélyeket ad az Azure Stack portálon és az Azure Resource Manager a megfelelő (a jóváhagyás lapon felsorolt) az összes felhasználó számára a címtár.
-
-- A felügyeleti portálon nyissa meg az https://adminportal.local.azurestack.external/guest/signup, és az információk elolvasásához, majd az Elfogadás gombra. Követő, szolgáltatás-rendszergazdák, akik nem is directory bérlői rendszergazdákat is hozzáadhat.
-- A bérlői portálon nyissa meg az https://portal.local.azurestack.external/guest/signup, és az információk elolvasásához, majd az Elfogadás gombra. Követő, a felhasználók a címtárban a bérlői portálra jelentkezhetnek be. 
- 
-> [!NOTE] 
-> Ha nem aktiválják a portálok, a directory-rendszergazda bejelentkezhet, és a portálok használata. Egy másik felhasználó jelentkezik be, ha azok hibaüzenetet kap, amely közli velük, hogy a rendszergazda nem adott engedélyek más felhasználók számára. Ha a rendszergazda nem natív módon az Azure Stack regisztrálva van a címtár tartozik, az Azure Stack-könyvtár az Aktiválás URL-címet kell bővül. Például az Azure Stack fabrikam.onmicrosoft.com és a rendszergazdai felhasználó regisztrálva van-e admin@contoso.com, navigáljon a https://portal.local.azurestack.external/guest/signup/fabrikam.onmicrosoft.com aktiválása a portálon.
-
-
 
 ### <a name="direct-users-to-sign-in"></a>Jelentkezzen be a közvetlen felhasználók
 

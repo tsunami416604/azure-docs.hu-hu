@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/27/2018
 ms.author: aljo
-ms.openlocfilehash: cf8e9dff020e16efe4b37a2bfd66563211be3020
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: 69f29eac17ecdf5381a550bc182c547fa0c25278
+ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44055539"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48018978"
 ---
 # <a name="customize-service-fabric-cluster-settings"></a>Service Fabric-fürt beállítások testre szabása
 Ez a cikk ismerteti, hogyan szabhatja testre a különböző hálóbeállítások a Service Fabric-fürt számára. A fürtök az Azure-ban üzemeltetett, testre szabhatja a beállításokat a [az Azure portal](https://portal.azure.com) vagy Azure Resource Manager-sablon használatával. Az önálló fürtök esetén a beállítások a ClusterConfig.json fájl frissítése és a fürtön lévő konfigurációs frissítés végrehajtása testre. 
@@ -352,6 +352,7 @@ A következő fabric testreszabható, beállítások szakasz szerint vannak rend
 |ApplicationUpgradeTimeout| Időtartam, az alapértelmezett érték Common::TimeSpan::FromSeconds(360)|Dinamikus| Adja meg az időtartam másodpercben. Az alkalmazásfrissítés időkorlátja. Ha az időkorlát kisebb, mint a "ActivationTimeout" deployerhez sikertelen lesz. |
 |Üzemeltetés|sztring, alapértelmezett érték a "-H localhost:2375 -H npipe: / /"|Statikus|Service Fabric (SF) kezeli a docker-démon (kivéve a windows-ügyfélgépekről Win10 hasonlóan). Ez a konfiguráció lehetővé teszi a felhasználóknak meg kell adni a docker-démon indítása, ha egyéni argumentumok. Ha egyéni argumentumok vannak megadva, a Service Fabric nem továbbítja a Docker-motornak, kivéve a "--pidfile" argumentum. Ezért felhasználók nem szabad megadni a(z)--pidfile "argumentum az ügyfél argumentumok részeként. Emellett az egyéni argumentumok biztosítania kell, hogy a docker démon figyeli az alapértelmezett nevesített csövön a Windows (vagy Linux rendszerű Unix-tartománycsatorna) a Service Fabric kommunikálni tudnak.|
 |ContainerServiceLogFileMaxSizeInKb|int, alapértelmezett 32768|Statikus|A docker-tárolók által létrehozott naplófájl fájl maximális méretét.  Csak Windows.|
+|ContainerImagesToSkip|karakterlánc, a rendszerképnevek elválasztva a függőleges vonal karaktert, alapértelmezett érték a ""|Statikus|Nem szabad törölni egy vagy több tárolórendszerképek neve.  A PruneContainerImages paraméterrel együtt használható.|
 |ContainerServiceLogFileNamePrefix|sztring, alapértelmezett "sfcontainerlogs"|Statikus|A docker-tárolók által létrehozott naplófájlokat fájl nevének előtagját.  Csak Windows.|
 |ContainerServiceLogFileRetentionCount|Int, alapértelmezett érték 10|Statikus|Docker-tárolók előtt a naplófájlok által létrehozott naplófájlt a rendszer felülírja.  Csak Windows.|
 |CreateFabricRuntimeTimeout|Időtartam, az alapértelmezett érték Common::TimeSpan::FromSeconds(120)|Dinamikus| Adja meg az időtartam másodpercben. Az időkorlát értékét a szinkronizálási FabricCreateRuntime hívása |
@@ -375,6 +376,7 @@ A következő fabric testreszabható, beállítások szakasz szerint vannak rend
 |NTLMAuthenticationPasswordSecret|SecureString, az alapértelmezett érték Common::SecureString("")|Statikus|Egy titkosított rendelkezik, amely a jelszót az NTLM-felhasználók létrehozására szolgál. Rendelkezik NTLMAuthenticationEnabled teljesülése esetén kell beállítani. A telepítő érvényesítette. |
 |NTLMSecurityUsersByX509CommonNamesRefreshInterval|Időtartam, az alapértelmezett érték Common::TimeSpan::FromMinutes(3)|Dinamikus|Adja meg az időtartam másodpercben. Melyik üzemeltetési rendszeres időközönként megkeresi a FileStoreService NTLM-konfigurációhoz használandó új tanúsítványok környezet-specifikus beállításokat. |
 |NTLMSecurityUsersByX509CommonNamesRefreshTimeout|Időtartam, az alapértelmezett érték Common::TimeSpan::FromMinutes(4)|Dinamikus| Adja meg az időtartam másodpercben. A tanúsítvány köznapi nevek használatával NTLM-felhasználók konfigurálásával időkorlátja. Az NTLM-felhasználók FileStoreService megosztások van szükség. |
+|PruneContainerImages|bool, alapértelmezett érték a hamis|Dinamikus| Távolítsa el az alkalmazás nem használt tárolórendszerképek a csomópontok. Ha egy ApplicationType regisztrációját a Service Fabric-fürtöt, a jelen alkalmazás által használt tárolórendszerképeket a Service Fabric letöltési csomópontokon törlődni fog. A törlési óránként fut le, így a legfeljebb egy óra (és idő, ha a kép) lemezképek el kell távolítani a fürtből.<br>A Service Fabric soha ne töltse le, vagy távolítsa el az alkalmazás nem kapcsolódó rendszerképek.  Független lemezképeket manuálisan vagy más módon letöltött explicit módon el kell távolítani.<br>Rendszerképeket, amelyeket nem lehet törölni a ContainerImagesToSkip paraméterrel adható meg.| 
 |RegisterCodePackageHostTimeout|Időtartam, az alapértelmezett érték Common::TimeSpan::FromSeconds(120)|Dinamikus| Adja meg az időtartam másodpercben. Az időkorlát értékét a FabricRegisterCodePackageHost szinkronizálási hívás. Ez a tulajdonság csak többszörös kód csomag alkalmazás gazdagépek például FWP vonatkozik |
 |RequestTimeout|Időtartam, az alapértelmezett érték Common::TimeSpan::FromSeconds(30)|Dinamikus| Adja meg az időtartam másodpercben. Ez jelöli, hogy a felhasználó gazda és a háló folyamat különféle üzemeltetési kapcsolódó műveletek, például a gyári regisztrációs; közötti kommunikáció időtúllépés modul regisztrálása. |
 |RunAsPolicyEnabled| bool, alapértelmezett érték a hamis|Statikus| Lehetővé teszi a kód csomagok futtató helyi felhasználók eltérő a felhasználó mely háló fut-e folyamat. Ahhoz, hogy ez a szabályzat Fabric rendszerként vagy SeAssignPrimaryTokenPrivilege rendelkező felhasználóként kell futnia. |

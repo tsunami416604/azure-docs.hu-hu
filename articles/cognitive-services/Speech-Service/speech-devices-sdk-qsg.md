@@ -9,16 +9,16 @@ ms.technology: speech
 ms.topic: article
 ms.date: 05/18/2018
 ms.author: v-jerkin
-ms.openlocfilehash: 068f0a0d9202174faf5d54bebf5cf5f8fae86766
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: def8d8f9fc55aa6491799a134a554a8a7fe2884a
+ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44720999"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48017195"
 ---
 # <a name="get-started-with-the-speech-devices-sdk"></a>A beszédfelismerés eszközök SDK használatának első lépései
 
-Ez a cikk ismerteti, hogyan konfigurálhatja a fejlesztési számítógép és a Speech eszköz development Kitet, a beszéd eszköz SDK-val speech-kompatibilis eszközök fejlesztéséhez. Ezután hozhat létre, és üzembe helyezünk egy mintaalkalmazást az eszközön. 
+Ez a cikk ismerteti, hogyan konfigurálhatja a fejlesztési számítógép és a Speech eszköz development Kitet, a beszéd eszköz SDK-val speech-kompatibilis eszközök fejlesztéséhez. Ezután létrehozhatja és üzembe helyezünk egy mintaalkalmazást az eszközön. 
 
 A mintaalkalmazás forráskódja megtalálható a Speech Devices SDK-val. Is [elérhető a Githubon](https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK).
 
@@ -45,7 +45,7 @@ Fejlesztés a Speech Devices SDK-val a Kezdés előtt gyűjtse össze az adatoka
 
 ## <a name="set-up-the-development-kit"></a>A fejlesztői készlet beállítása
 
-1. A fejlesztői csomag kapcsolódás egy számítógéphez vagy kártya mini USB-kábel használatával a power. Ha csatlakoztatva van, a fejlesztői csomag, egy zöld power kijelző teljesítheti a felső tábla alatt.
+1. A csomag csatlakozni rendszerű, vagy adapter power mini USB-kábel használatával. Amikor a csomag csatlakoztatva van, egy zöld power mutató teljesítheti a felső tábla alatt.
 
 1. A csomag csatlakozhat egy számítógépet egy második mini USB-kábel használatával.
 
@@ -72,7 +72,7 @@ Fejlesztés a Speech Devices SDK-val a Kezdés előtt gyűjtse össze az adatoka
    ```
 
     > [!NOTE]
-    > Ezeket a parancsokat az Android hibakeresési híd adb.exe, amely az Android Studio telepítésének részeként. Ez az eszköz található C:\Users\[felhasználónév] \AppData\Local\Android\Sdk\platform-eszközöket. Ebben a címtárban is hozzáadhat az elérési úthoz, hogy kényelmesebbé meghívásához `adb`. Ellenkező esetben meg kell adnia a teljes elérési útja a telepített minden parancshoz, amely meghívja a adb.exe `adb`.
+    > Ezek a parancsok használata az Android-hibakeresési híd `adb.exe`, amely az Android Studio telepítést része. Ez az eszköz található C:\Users\[felhasználónév] \AppData\Local\Android\Sdk\platform-eszközöket. Ebben a címtárban is hozzáadhat az elérési úthoz, hogy kényelmesebbé meghívásához `adb`. Ellenkező esetben meg kell adnia a teljes elérési útja a telepített minden parancshoz, amely meghívja a adb.exe `adb`.
 
     > [!TIP]
     > A számítógép mikrofon és előadó, és ellenőrizze, hogy dolgozik a fejlesztői készlet mikrofonok vypnutí. Így nem fog véletlenül indít el az eszközt az audio a számítógépről.
@@ -110,7 +110,7 @@ A ROOBO tesztek futtatása, és az development kit konfigurációjának ellenőr
 
 1.  Indítsa el az Android Studio.
 
-1.  Válassza ki **Android Studio projekt megnyitása**.
+1.  Válassza az **Open an existing Android Studio project** (Létező Android Studio-projekt megnyitása) lehetőséget.
 
     ![Android Studio – egy meglévő projekt megnyitása](media/speech-devices-sdk/qsg-5.png)
  

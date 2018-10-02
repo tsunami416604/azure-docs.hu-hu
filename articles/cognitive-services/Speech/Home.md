@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 09/18/2018
 ms.author: zhouwang
 ROBOTS: NOINDEX
-ms.openlocfilehash: 3b4ab55f4bd8bbd66f2edc8c262524169c79d7f5
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: ca1045bcec889e1de47b44a44322579f8b60598f
+ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46975636"
+ms.lasthandoff: 10/01/2018
+ms.locfileid: "47586189"
 ---
 # <a name="what-is-bing-speech"></a>Mit jelent a Bing Speech?
 
@@ -26,7 +26,7 @@ A felhőalapú és a Microsoft Bing Speech API biztosít a fejlesztők könnyed�
 - **Szöveg-beszéd átalakítás** API audiostreamek lejátszásával, a felhasználónak az alkalmazás lejátszhatók szöveget alakítja át.
 
 > [!NOTE] 
-> A 2018 május elérhetővé tettük az új [beszédszolgáltatás](../speech-service/overview.md) nyilvános előzetes verzióban érhető el. Javasoljuk, hogy [ingyenes kipróbálása](../speech-service/get-started.md).
+> 2018 szeptember, az új óta [beszédszolgáltatás](../speech-service/index.yml) általánosan elérhetővé vált. Javasoljuk, hogy [ingyenes kipróbálása](../speech-service/get-started.md).
 
 ## <a name="speech-to-text-speech-recognition"></a>Diktálás (beszédfelismerés)
 

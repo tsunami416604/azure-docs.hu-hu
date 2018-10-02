@@ -15,19 +15,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/30/2017
 ms.author: diviso
-ms.openlocfilehash: 3a6fbc8410dbc5aec4522f0972a29c67527edb23
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: de89756a3f9ef1139e855da16c0343a9919b56cb
+ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "42060598"
+ms.lasthandoff: 10/01/2018
+ms.locfileid: "47585374"
 ---
 # <a name="automating-azure-virtual-machine-deployment-with-chef"></a>Azure-beli virtuális gépek üzembe helyezése a Cheffel
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
 
 Chef egy nagyszerű eszköz automation kidolgozását és a kívánt állapot konfigurációk.
 
-A legújabb felhőalapú api verzió, a Chef biztosít zökkenőmentes integráció az Azure-ral, így és üzembe helyezéséhez konfigurációs állapotnak egyetlen parancs használatával.
+A legújabb felhőalapú API-verzió Chef biztosít zökkenőmentes integráció az Azure-ral, így és üzembe helyezéséhez konfigurációs állapotnak egyetlen parancs használatával.
 
 Ebben a cikkben, állítsa be a Chef környezetet az Azure-beli virtuális gépek kiépítése, és haladjon végig egy házirend vagy az "Útmutató" létrehozása és üzembe kell helyezni a útmutató Azure virtuális gépeken.
 
@@ -42,7 +42,7 @@ A következő ábra szemlélteti a Chef architektúrájának áttekintése.
 
 Chef három fő architekturális összetevőre van: Chef-kiszolgálót, a Chef ügyfél (node) és a Chef munkaállomás.
 
-A Chef-kiszolgálót a felügyeleti pont és a Chef kiszolgáló két lehetőség van: üzemeltetett megoldás vagy egy helyszíni megoldás. Fogjuk használni egy üzemeltetett megoldás.
+A Chef-kiszolgálót a felügyeleti pont és a Chef kiszolgáló két lehetőség van: üzemeltetett megoldás vagy egy helyszíni megoldás. Fogjuk használni egy üzemeltetett megoldás ehhez az oktatóanyaghoz.
 
 A Chef ügyfél (node), akkor az ügynök, amely a kezelt kiszolgálókon.
 
@@ -75,7 +75,7 @@ A szervezet létrehozása után töltse le a starter kit.
 ![][4]
 
 > [!NOTE]
-> Ha megjelenik egy figyelmeztetés, hogy a kulcsokat a rendszer visszaállítja kérdés, rendben folytatható, mert a meglévő infrastruktúra nélkül még konfigurálva van.
+> Ha megjelenik egy figyelmeztetés, hogy a kulcsokat a rendszer visszaállítja kérdés, nem folytatható, mert nincs még konfigurálva meglévő infrastruktúrára van probléma.
 > 
 > 
 
@@ -94,7 +94,7 @@ Most már négy olyan fájlok, például az Azure közzétételi fájlját c:\ch
 
 A PEM-fájlok közben a knife.rb fájl tartalmazza a Kés konfigurációt a szervezet és a titkos kulcsok rendszergazdai kommunikációhoz tartalmaz. Szükségünk lesz a knife.rb fájl szerkesztéséhez.
 
-Nyissa meg a fájlt a kívánt szerkesztőprogrammal, és módosítsa a "cookbook_path" eltávolításával a /... / elérési útja, így látható a következő módon jelenik meg.
+Nyissa meg a fájlt a kívánt szerkesztőprogrammal, és módosítsa a "cookbook_path" eltávolításával a /... / elérési útja, így jelenik meg:
 
     cookbook_path  ["#{current_dir}/cookbooks"]
 
@@ -109,7 +109,7 @@ A knife.rb fájl most a következő példához hasonlóan kell kinéznie.
 Ezek a sorok biztosítja kés c:\chef\cookbooks kézikönyvek almappájába hivatkozik, és az Azure közzétételi beállítások fájlját is használja az Azure műveletek során.
 
 ## <a name="installing-the-chef-development-kit"></a>A Chef fejlesztőkészlet telepítése
-Tovább [töltse le és telepítse](http://downloads.getchef.com/chef-dk/windows) a ChefDK (Chef Development Kit) állíthatja be a Chef munkaállomáson.
+Ezután [töltse le és telepítse](http://downloads.getchef.com/chef-dk/windows) a ChefDK (Chef Development Kit) állíthatja be a Chef munkaállomáson.
 
 ![][7]
 
@@ -119,7 +119,9 @@ A PATH változóban bejegyzést tartalmaz a C:\opscode\chefdk\bin; megerősíté
 
 Ha nem létezik, mindenképpen adja hozzá az elérési utak!
 
-*MEGJEGYZÉS: AZ ELÉRÉSI UTAT A SORREND FONTOS SZEREPET JÁTSZANAK.* Ha a opscode elérési utak nem a megfelelő sorrendben kell problémákat.
+> [!NOTE]
+> Az elérési utat a sorrend fontos szerepet játszanak. Ha a opscode elérési utak nem a megfelelő sorrendben kell problémákat. 
+> 
 
 Indítsa újra a munkaállomáson, a folytatás előtt.
 

@@ -7,24 +7,22 @@ ms.subservice: operations
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: anosov1960
 ms.author: sashan
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 09/18/2018
-ms.openlocfilehash: 0a91139d92570a2ee2828f9295590d580902c501
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.date: 09/19/2018
+ms.openlocfilehash: 68746874ec01f44055421f0033acd0d485e1d230
+ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47164990"
+ms.lasthandoff: 10/01/2018
+ms.locfileid: "47586087"
 ---
 # <a name="manage-azure-sql-database-long-term-backup-retention"></a>Az Azure SQL-adatbázis hosszú távú megőrzésének kezelése
 
 Konfigurálhatja az Azure SQL database egy [hosszú távú adatmegőrzés](sql-database-long-term-retention.md) házirend (LTR) automatikusan az Azure blob storage-biztonsági mentések megőrzési idejét, akár 10 évig. Ezt követően helyreállíthatja a segítségével ezeket a biztonsági másolatokat az Azure portal vagy a PowerShell használatával.
 
 ## <a name="use-the-azure-portal-to-configure-long-term-retention-policies-and-restore-backups"></a>Az Azure portal használatával konfigurálhatja a hosszú távú adatmegőrzési házirendek, és biztonsági mentések visszaállítása
-
 A következő szakaszok bemutatják, hogyan a hosszú távú megőrzésének konfigurálása, biztonsági másolatok megtekintése hosszú távú megőrzés alatt, és a hosszú távú megőrzéséből biztonsági másolatának visszaállítása az Azure portal használatával.
 
 ### <a name="configure-long-term-retention-policies"></a>Hosszú távú adatmegőrzési szabályzatok konfigurálása
@@ -78,6 +76,24 @@ A következő szakaszok bemutatják, hogyan konfigurálhatja a hosszú távú ad
 - [Azurerm.SQL-hez – 4.5.0](https://www.powershellgallery.com/packages/AzureRM.Sql/4.5.0) vagy újabb
 - [AzureRM-6.1.0](https://www.powershellgallery.com/packages/AzureRM/6.1.0) vagy újabb
 > 
+
+### <a name="rbac-roles-to-manage-long-term-retention"></a>A hosszú távú megőrzésének kezelése RBAC-szerepkörök
+
+Az LTR biztonsági másolatainak kezelése, kell lennie 
+- Előfizetés tulajdonosa vagy
+- Az SQL Server közreműködői szerepköre **előfizetés** hatókör vagy
+- Az SQL Database közreműködői szerepkörrel **előfizetés** hatókör
+
+Ha részletesebb vezérléshez szükséges, egyéni RBAC-szerepkörök létrehozása, és hozzárendelheti azokat a **előfizetés** hatókör. 
+
+A **Get-AzureRmSqlDatabaseLongTermRetentionBackup** és **Restore-AzureRmSqlDatabase** a szerepkört kell rendelkeznie az alábbi engedélyek:
+
+Microsoft.Sql/locations/longTermRetentionBackups/read Microsoft.Sql/locations/longTermRetentionServers/longTermRetentionBackups/read Microsoft.Sql/locations/longTermRetentionServers/longTermRetentionDatabases/ longTermRetentionBackups olvasása
+ 
+A **Remove-AzureRmSqlDatabaseLongTermRetentionBackup** kell a szerepkör az alábbi engedélyeket:
+
+Microsoft.Sql/locations/longTermRetentionServers/longTermRetentionDatabases/longTermRetentionBackups/delete
+
 
 ### <a name="create-an-ltr-policy"></a>Az LTR-szabályzat létrehozása
 

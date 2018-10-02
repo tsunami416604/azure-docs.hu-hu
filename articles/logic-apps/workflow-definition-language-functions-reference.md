@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 08/15/2018
 ms.reviewer: klam, LADocs
 ms.suite: integration
-ms.openlocfilehash: 8a2e06d2e6cf3e470d4e0909e5559ac0411292fd
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: 0f2543ff10f19d6f1ccd656855dbb41cf42e6ae2
+ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43307113"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48018995"
 ---
 # <a name="functions-reference-for-workflow-definition-language-in-azure-logic-apps"></a>Az Azure Logic Apps munkafolyamat-definíciós nyelv-funkciók dokumentációja
 
@@ -82,7 +82,7 @@ Munka karakterláncokkal, használhatja a karakterlánc-függvények és még n�
 | [indexOf](../logic-apps/workflow-definition-language-functions-reference.md#indexof) | Kezdő pozíciójának egy karakterláncrészt adja vissza. | 
 | [lastIndexOf](../logic-apps/workflow-definition-language-functions-reference.md#lastindexof) | Az utolsó előfordulás a kezdő pozíciójának a substring visszaadása. | 
 | [replace](../logic-apps/workflow-definition-language-functions-reference.md#replace) | Cserélje le a megadott karakterlánc részkarakterláncot, és a frissített karakterláncot ad vissza. | 
-| [felosztás](../logic-apps/workflow-definition-language-functions-reference.md#split) | Visszaadja egy tömb, amely elválasztja az egyes karakterek megadásakor a meghatározott elválasztó karakterrel és a egy karakterláncból karaktereket tartalmaz. | 
+| [felosztás](../logic-apps/workflow-definition-language-functions-reference.md#split) | Egy tömb, amely tartalmazza a karakterláncrész, vesszővel elválasztva egy nagyobb karakterláncból alapján egy megadott elválasztó karakter az eredeti karakterláncot adja vissza. | 
 | [startsWith](../logic-apps/workflow-definition-language-functions-reference.md#startswith) | Annak ellenőrzése, hogy e karakterlánc kezdődik-e egy adott karakterláncrészletet. | 
 | [substring](../logic-apps/workflow-definition-language-functions-reference.md#substring) | Karaktert adja vissza egy karakterláncból, a megadott pozíciónál kezdve. | 
 | [toLower](../logic-apps/workflow-definition-language-functions-reference.md#toLower) | Kis formátumban adja vissza. | 
@@ -3016,32 +3016,32 @@ Ez a fennmaradó elemek tömböt ad vissza, és: `[1,2,3]`
 
 ### <a name="split"></a>felosztás
 
-A visszaadandó egy tömb, amely egy karakterlánc összes karakter pedig minden karakter választja el egy *elválasztó*.
+Egy tömb, amely tartalmazza a karakterláncrész, vesszővel elválasztva, a megadott elválasztó karakter található az eredeti karakterláncot alapján ad vissza. 
 
 ```
-split('<text>', '<separator>')
+split('<text>', '<delimiter>')
 ```
 
 | Paraméter | Szükséges | Típus | Leírás | 
 | --------- | -------- | ---- | ----------- | 
-| <*Szöveg*> | Igen | Sztring | A karakterlánc, amely rendelkezik felosztása a karakterek |  
-| <*elválasztó*> | Igen | Sztring | Az elválasztó, amely megjelenik az eredményül kapott tömbben található karakterek közé | 
+| <*Szöveg*> | Igen | Sztring | A karakterlánc szét az oszt fel a az eredeti karakterláncot a megadott elválasztó alapján |  
+| <*elválasztó karakter*> | Igen | Sztring | Az az eredeti karakterláncot használhatja a elválasztó karakter | 
 ||||| 
 
 | Vrácená hodnota | Típus | Leírás | 
 | ------------ | ---- | ----------- | 
-| [<*char1*><*elválasztó*><*char2*><*elválasztó*>...] | Tömb | Az eredményül kapott tömb a megadott karakterlánc megtalálható összes elemet alapján létrehozott |
+| [<*substring1*>, <*substring2*>,...] | Tömb | Egy tömb, amely az eredeti karakterláncot, vesszővel elválasztva a karakterláncrészletet tartalmazza |
 |||| 
 
 *Példa* 
 
-Ebben a példában egy tömb a megadott karakterlánc, és megadhat minden karakter, mint az elválasztó vessző hoz létre:
+Ez a példa létrehoz egy tömböt oszt fel a megadott karakterláncból, a megadott karakter, mint a elválasztó alapján: 
 
 ```
-split('abc', ',')
+split('a_b_c', '_')
 ```
 
-És ezt az eredményt adja vissza: `[a, b, c]`
+És ezt a tömböt az eredményt adja vissza: `["a","b","c"]`
 
 <a name="startOfDay"></a>
 

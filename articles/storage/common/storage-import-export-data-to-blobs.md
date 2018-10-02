@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 07/17/2018
 ms.author: alkohli
 ms.component: common
-ms.openlocfilehash: 39287e4d90e4f6f42dd1f79d5457853e253bd736
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: 8b91ae9a4f258e52b032dca1484be70469094c2e
+ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45737056"
+ms.lasthandoff: 10/01/2018
+ms.locfileid: "47585730"
 ---
 # <a name="use-the-azure-importexport-service-to-import-data-to-azure-blob-storage"></a>Az Azure Blob Storage-adatok importálása az Azure Import/Export szolgáltatás használata
 
@@ -107,7 +107,7 @@ A következő lépésekkel importálási feladat létrehozása az Azure Portalon
 
     - Töltse fel a meghajtó Adatbázisnapló-fájlok a meghajtó előkészítési lépés során beszerzett. Ha `waimportexport.exe version1` volt használja, töltse fel minden meghajtó előkészített egy fájlt. Ha a napló mérete meghaladja a 2 MB, akkor használhatja a `<Journal file name>_DriveInfo_<Drive serial ID>.xml` is létrejön, a naplófájl. 
     - Válassza ki a cél tárfiók adatait tároló. 
-    - A gyűjtőhely automatikusan kitölti a rendszer a kiválasztott tárfiók a régióhoz igazodik.
+    - Dropoff helyét a rendszer automatikusan kitölti a kiválasztott tárfiók a régióhoz igazodik.
    
    ![Importálási feladat létrehozása – 2. lépés](./media/storage-import-export-data-to-blobs/import-to-blob4.png)
 

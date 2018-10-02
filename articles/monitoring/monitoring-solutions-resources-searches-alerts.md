@@ -14,12 +14,12 @@ ms.workload: infrastructure-services
 ms.date: 06/18/2018
 ms.author: bwren, vinagara
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f03e124aab27292ee86fcd8c28ecebb0ba9cbdcf
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: fd8ba47e8fb0d591fab7717117329357b74f907a
+ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46999511"
+ms.lasthandoff: 10/01/2018
+ms.locfileid: "47585968"
 ---
 # <a name="adding-log-analytics-saved-searches-and-alerts-to-management-solution-preview"></a>Log Analytics hozzáadása mentett keresések és a riasztások felügyeleti megoldásra (előzetes verzió)
 
@@ -84,7 +84,7 @@ Mentett keresés minden egyes tulajdonsága a következő táblázatban leírt.
 | lekérdezés | A lekérdezés futtatásához. |
 
 > [!NOTE]
-> Szükség lehet escape-karaktereket használja a lekérdezésben, ha JSON-fájlként is értelmezhető karaktereket tartalmaz.  Például, ha a lekérdezés a(z) **típusa: AzureActivity OperationName:"Microsoft.Compute/virtualMachines/write"**, ez a megoldás fájlt kell megírni **típusa: AzureActivity OperationName:\" Microsoft.Compute/virtualMachines/write\"**.
+> Szükség lehet escape-karaktereket használja a lekérdezésben, ha JSON-fájlként is értelmezhető karaktereket tartalmaz.  Például, ha a lekérdezés a(z) **típusa: AzureActivity OperationName:"Microsoft.Compute/virtualMachines/write"**, ez a megoldás fájlt kell megírni **típusa: AzureActivity OperationName:\\" Microsoft.Compute/virtualMachines/write\\"**.
 
 ## <a name="alerts"></a>Riasztások
 [Az Azure naplóriasztások](../monitoring-and-diagnostics/monitor-alerts-unified-log.md) megadott naplózási lekérdezések futtatása rendszeres időközönként Azure riasztási szabályok alapján jönnek létre.  Ha a lekérdezés eredményeit a megadott feltételeknek, létrejön egy riasztásbejegyzés, és egy vagy több művelet futtatása használatával [Műveletcsoportok](../monitoring-and-diagnostics/monitoring-action-groups.md).  

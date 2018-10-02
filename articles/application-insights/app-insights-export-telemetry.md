@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/20/2018
 ms.author: mbullwin
-ms.openlocfilehash: a960ace141d5d71559c39c627f96746a25bf5207
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: 31d7f0fd70edf7bbf05a3a180baa6cc078e02ba1
+ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "42054732"
+ms.lasthandoff: 10/01/2018
+ms.locfileid: "47585475"
 ---
 # <a name="export-telemetry-from-application-insights"></a>Application insights telemetria exportálása
 Szeretné megtartani a telemetriát azokhoz szabványos megőrzési idejénél hosszabb? Vagy specializált módon dolgozza fel? A folyamatos exportálás ideális ehhez. Az eseményeket az Application Insights portálon látható a JSON-formátumban a Microsoft Azure storage exportálhatók. Innen letöltheti az adatokat és bármilyen kódot írni kell őket feldolgoznia.  
@@ -37,11 +37,9 @@ Miután az adatok folyamatos exportálása másolja át a Storage (amennyiben az
 ## <a name="setup"></a> Hozzon létre egy folyamatos exportálás
 1. Az Application Insights-erőforrást az alkalmazáshoz, nyissa meg a folyamatos exportálást, és válassza **Hozzáadás**:
 
-    ![Görgessen lefelé, és kattintson a folyamatos exportálás](./media/app-insights-export-telemetry/01-export.png)
-
 2. Válassza ki az exportálni kívánt adattípusok a telemetriát.
 
-3. Hozzon létre vagy válasszon egy [Azure storage-fiók](../storage/common/storage-introduction.md) hol szeretné tárolni az adatokat.
+3. Hozzon létre vagy válasszon egy [az Azure storage-fiók] (.. / storage/common/storage-introduction.md), az adatokat tárolni szeretné. További információk a storage díjszabása a [díjszabását ismertető lapon hivatalos](https://azure.microsoft.com/pricing/details/storage/).
 
     > [!Warning]
     > Alapértelmezés szerint a tárolási hely állítja be az Application Insights-erőforrás és ugyanabban a földrajzi régióban. Ha egy másik régióban tárolja, adatforgalmi díjat számítanak fel.

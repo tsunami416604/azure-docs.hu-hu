@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/08/2018
+ms.date: 09/28/2018
 ms.author: cwatson
-ms.openlocfilehash: 4b418db3c4d9876a739ce94539a6f48402332a86
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: a33a360d25930f1468f1c9240be2d0f306d682c7
+ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47394896"
+ms.lasthandoff: 10/01/2018
+ms.locfileid: "47585747"
 ---
 # <a name="understand-azure-reservation-usage-for-your-enterprise-enrollment"></a>A nagyvállalati beléptetés Azure foglalás használati adatai
 
@@ -51,9 +51,11 @@ Letöltheti a vállalati használati CSV-fájl a vállalati portálról. Szűré
 3. **Mérőszám azonosítója** 0 USD költséget a Foglalás mérőszám. A fenntartott VM-példány fizeti a futó virtuális gép költsége.
 4. Standard_D1 egy vCPU virtuális gép és a virtuális gép központi telepítése az Azure Hybrid Benefit nélkül. Tehát ez az érték magában foglalja a Windows-szoftverek külön díjfizetés nélkül. A mérőszám, a D sorozatú virtuális gép 1 mag, lásd: [Azure számára fenntartott VM-példányok Windows szoftverek díjait](billing-reserved-instance-windows-software-costs.md).  Ha az Azure Hybrid Benefit, ez külön díjfizetés nélkül nem alkalmazza.
 
-## <a name="usage-for-sql-database-reserved-capacity-reservations"></a>Használat az SQL Database szolgáltatás számára fenntartott kapacitás foglalások
+## <a name="usage-for-sql-database--cosmos-db-reserved-capacity-reservations"></a>Az SQL Database és a Cosmos DB használatát fenntartott kapacitás foglalások
 
-A következő szakaszokban feltételezzük, hogy futtatja a keleti régiójában és a foglalási adatokat úgy tűnik, az alábbi táblázat, egy SQL Database Gen 4:
+A következő szakaszok példaként az Azure SQL Database használatával a használati jelentés ismertetik. Ugyanezen lépések segítségével használatának megtekintése az Azure Cosmos DB is. 
+
+Tegyük fel, hogy futtatja a keleti régiójában és a foglalási adatokat úgy tűnik, az alábbi táblázat, egy SQL Database Gen 4:
 
 | Mező | Érték |
 |---| --- |
@@ -62,9 +64,9 @@ A következő szakaszokban feltételezzük, hogy futtatja a keleti régiójában
 |Product| Az SQL Database Gen 4 (2 mag)|
 |Régió | eastus |
 
-### <a name="usage-in-csv-file-for-sql-database-reserved-capacity"></a>Használat az SQL Database szolgáltatás számára fenntartott kapacitás CSV-példafájlja
+### <a name="usage-in-csv-file"></a>CSV-fájl használata 
 
-Szűrés **további adatok** , és írja be a **Foglalásazonosító**. Az alábbi képernyőfelvételen a Foglalás kapcsolódó mezőket.
+Szűrjön az **további információ** , és írja be a **Foglalásazonosító**, és válassza ki a szükséges **mérőszám kategóriája** – Azure SQL database vagy az Azure Cosmos DB. Az alábbi képernyőfelvételen a Foglalás kapcsolódó mezőket.
 
 ![Nagyvállalati Szerződés (EA) fürt megosztott kötetei szolgáltatás az SQL Database szolgáltatás számára fenntartott kapacitás](./media/billing-understand-reserved-instance-usage-ea/billing-ea-sql-db-reserved-capacity-csv.png)
 
@@ -94,3 +96,4 @@ Azure-foglalások kapcsolatos további információkért tekintse meg a követke
 ## <a name="need-help-contact-support"></a>Segítség Kapcsolatfelvétel a támogatási szolgáltatással
 
 Ha további kérdése van, [forduljon az ügyfélszolgálathoz](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) a probléma gyors megoldása érdekében.
+

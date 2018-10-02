@@ -8,12 +8,12 @@ ms.date: 09/21/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 5e358992661f7bcf06121a07c1bafca0850316b2
-ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
+ms.openlocfilehash: 259d61125828ee487b74daa525f3635cfa592ce7
+ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47423137"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48017704"
 ---
 # <a name="properties-of-the-edge-agent-and-edge-hub-module-twins"></a>Az Edge agentet és az Edge hub ikermodulokkal tulajdonságai
 
@@ -46,6 +46,7 @@ Az Edge Agent ikermodulja nevezzük `$edgeAgent` és koordinálja a kommunikáci
 | systemModules.edgeHub.configuration.id | Az üzemelő példány, amelyre ez a modul telepítve azonosítója. | Ez a tulajdonság értéke az IoT Hub alkalmazásakor a jegyzékfájlban egy üzemelő példány használatával. Nem része egy manifest nasazení. |
 | modules.{moduleId}.version | Egy felhasználó által megadott karakterlánc, amely a modul verzióját. | Igen |
 | modulok. {moduleId} .type | Kell lennie a "docker" | Igen |
+| modulok. {moduleId} .status | {"fut" \| "leállított"} | Igen |
 | modulok. {moduleId} .restartPolicy | {"soha" \| "a – nem sikerült" \| "a – nem megfelelő állapotú" \| "mindig"} | Igen |
 | modules.{moduleId}.settings.image | A modul kép URI Azonosítóját. | Igen |
 | modules.{moduleId}.settings.createOptions | A modul tároló létrehozását, a beállításokat tartalmazó sztringesített JSON. [Docker-létrehozási beállítások][lnk-docker-create-options] | Nem |

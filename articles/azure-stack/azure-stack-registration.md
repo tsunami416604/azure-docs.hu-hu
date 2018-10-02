@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 09/28/2018
 ms.author: jeffgilb
 ms.reviewer: brbartle
-ms.openlocfilehash: 09f5dbdb173e1613ed942391da7baaeb045654e4
-ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
+ms.openlocfilehash: d59de5beb01da3b23de0a7e177fd1cb1887694fc
+ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47452530"
+ms.lasthandoff: 10/01/2018
+ms.locfileid: "47586053"
 ---
 # <a name="register-azure-stack-with-azure"></a>Regisztráljon az Azure Stack az Azure-ral
 
@@ -99,7 +99,7 @@ Lehet, hogy az Azure Stack üzemelő példányához *csatlakoztatott* vagy *lev�
 Ha az Azure Stack regisztrálja az Azure-ral, meg kell adnia egy egyedi regisztrációs nevét. Az Azure Stack-előfizetés társítása egy Azure-regisztráció egyszerűen az, hogy az Azure Stack használata **Felhőazonosító**. 
 
 > [!NOTE]
-> A kapacitás-alapú számlázási modell segítségével az Azure Stack-regisztrációk kell módosítani az egyedi nevet, ha újra regisztrálja ezeket éves előfizetés lejárta után.
+> A kapacitás-alapú számlázási modell segítségével az Azure Stack-regisztrációk kell módosítani az egyedi nevet, ha a regisztrálása után e éves előfizetés lejár, kivéve, ha Ön [törli a lejárt regisztrációs](azure-stack-registration.md#change-the-subscription-you-use) , és regisztrálja újra Azure-t.
 
 Annak megállapításához, a felhő-azonosító az Azure Stack üzembe helyezéshez, nyissa meg a Powershellt, a rendszergazda a számítógépen, mint a Rendszerjogosultságú végpont érhető el a következő parancsokat, és jegyezze fel a **CloudID** érték: 
 
@@ -318,12 +318,12 @@ Frissítés vagy újítania regisztrációját a következő körülmények köz
 
 #### <a name="change-the-subscription-you-use"></a>Az előfizetést használ
 
-Ha szeretné az előfizetést használ, előbb futtatnia kell a **Remove-AzsRegistration** parancsmagot, majd győződjön meg arról, a megfelelő Azure PowerShell-környezet van bejelentkezve, és végül futtassa **Set-AzsRegistration**  bármelyik módosítani a Paraméterek:
+Ha szeretné az előfizetést használ, előbb futtatnia kell a **Remove-AzsRegistration** parancsmagot, majd győződjön meg arról, a megfelelő Azure PowerShell-környezet van bejelentkezve, és végül futtassa **Set-AzsRegistration**  minden módosított paraméterekkel, többek között \<számlázási modell\>:
 
   ```PowerShell  
   Remove-AzsRegistration -PrivilegedEndpointCredential $YourCloudAdminCredential -PrivilegedEndpoint $YourPrivilegedEndpoint
   Set-AzureRmContext -SubscriptionId $NewSubscriptionId
-  Set-AzsRegistration -PrivilegedEndpointCredential $YourCloudAdminCredential -PrivilegedEndpoint $YourPrivilegedEndpoint -BillingModel PayAsYouUse -RegistrationName $RegistrationName
+  Set-AzsRegistration -PrivilegedEndpointCredential $YourCloudAdminCredential -PrivilegedEndpoint $YourPrivilegedEndpoint -BillingModel <billing model> -RegistrationName $RegistrationName
   ```
 
 #### <a name="change-the-billing-model-or-how-to-offer-features"></a>Módosítsa a számlázási modellt vagy a szolgáltatásokkal
@@ -331,7 +331,7 @@ Ha szeretné az előfizetést használ, előbb futtatnia kell a **Remove-AzsRegi
 Ha szeretné módosítani a számlázási modellt vagy a megfelelő telepítési szolgáltatásokkal, meghívhatja a regisztrációs függvény, amely az új értékeinek megadására. Nem kell először távolítsa el a jelenlegi regisztrációs:
 
   ```PowerShell  
-  Set-AzsRegistration -PrivilegedEndpointCredential $YourCloudAdminCredential -PrivilegedEndpoint $YourPrivilegedEndpoint -BillingModel PayAsYouUse -RegistrationName $RegistrationName
+  Set-AzsRegistration -PrivilegedEndpointCredential $YourCloudAdminCredential -PrivilegedEndpoint $YourPrivilegedEndpoint -BillingModel <billing model> -RegistrationName $RegistrationName
   ```
 
 ### <a name="renew-or-change-registration-in-disconnected-environments"></a>Újítsa meg vagy módosítsa a kapcsolat nélküli környezetekben regisztrációs

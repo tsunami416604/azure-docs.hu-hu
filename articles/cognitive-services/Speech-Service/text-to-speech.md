@@ -9,12 +9,12 @@ ms.component: speech-service
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: v-jerkin
-ms.openlocfilehash: eebe41ea879ad34defadd08ce3095f7f6edca4d8
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 4dafab089e6ac4bbf4fb9441d995983ce5b58150
+ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44719800"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48016874"
 ---
 # <a name="about-the-text-to-speech-api"></a>Tudnivalók a Text to Speech API
 
@@ -34,13 +34,13 @@ Melyik beszéd összefoglaló kik forgatókönyvek a következők:
 
 ## <a name="voice-support"></a>Beszédfelismerési támogatása
 
-A Microsoft **szöveg-hang transzformációs** szolgáltatás kínál a több mint 75 beszédhangot legfeljebb 45 nyelvet és területi beállításokat. Ezek szabványos "hangtípust" használatához meg kell adja meg a hangalapú nevét néhány más paraméterekkel, amikor a szolgáltatás REST API-t hívja. A támogatott beszédhangot részletekért lásd: [támogatott nyelvek](https://docs.microsoft.com/azure/cognitive-services/speech-service/supported-languages#text-to-speech). 
+A Microsoft **szöveg-hang transzformációs** szolgáltatás kínál a több mint 75 beszédhangot legfeljebb 45 nyelvet és területi beállításokat. Ezek szabványos "hangtípust" használatához meg kell adja meg a hangalapú nevét néhány más paraméterekkel, amikor a szolgáltatás REST API-t hívja. A támogatott beszédhangot részletekért lásd: [támogatott nyelvek](language-support.md#text-to-speech). 
 
 Ha az alkalmazás egyéni szeretne, létrehozhat [egyéni hangtípust](how-to-customize-voice-font.md) saját speech mintákból.
 
 ## <a name="api-capabilities"></a>API-funkciók
 
-Nagy mennyiségű képességeit a **szöveg-beszéd átalakítás** API - különös tekintettel testreszabása – REST-en keresztül érhetők el. Az alábbi táblázat foglalja össze az egyes módszerek az API eléréséhez képességeit. A lehetőségeket és az API teljes listáját meg részletesen consult [Swagger](https://swagger/service/11ed9226-335e-4d08-a623-4547014ba2cc#/)
+Nagy mennyiségű képességeit a **szöveg-beszéd átalakítás** API – különös tekintettel a testreszabási – REST-en keresztül érhető el. Az alábbi táblázat foglalja össze az egyes módszerek az API eléréséhez képességeit. Képességek és API-részletek teljes listájáért tekintse meg [Swagger](https://swagger/service/11ed9226-335e-4d08-a623-4547014ba2cc#/),
 
 | Használati eset | REST | SDK-k |
 |-----|-----|-----|----|

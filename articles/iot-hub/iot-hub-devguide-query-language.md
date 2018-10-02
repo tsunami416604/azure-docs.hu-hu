@@ -2,22 +2,21 @@
 title: Az Azure IoT Hub lekérdezési nyelv ismertetése |} A Microsoft Docs
 description: Fejlesztői útmutató – a leírását az SQL-szerű IoT Hub lekérdezési nyelvet, az IoT hub eszköz/ikermodulokkal és feladatok kapcsolatos információk olvashatók be.
 author: fsautomata
-manager: ''
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 02/26/2018
 ms.author: elioda
-ms.openlocfilehash: 2e4b356fec642e06e3223700967eeacd19f1c49c
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 4aa4a3b1e617009d88c581966f791569322d967f
+ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46952477"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48018435"
 ---
-# <a name="iot-hub-query-language-for-device-and-module-twins-jobs-and-message-routing"></a>IoT Hub lekérdezési nyelv az eszköz és a modul twins, feladatok és üzenet-útválasztása
+# <a name="iot-hub-query-language-for-device-and-module-twins-jobs-and-message-routing"></a>IoT Hub lekérdezési nyelv az eszköz és a modul twins, feladatokkal és üzenet-útválasztása
 
-IoT Hub által biztosított információk lekéréséhez hatékony SQL-szerű nyelv kapcsolatos [ikereszközök] [ lnk-twins] és [feladatok][lnk-jobs], és [üzenet-útválasztása][lnk-devguide-messaging-routes]. Ez a cikk bemutatja:
+IoT Hub által biztosított információk lekéréséhez hatékony SQL-szerű nyelv kapcsolatos [ikereszközök](iot-hub-devguide-device-twins.md) és [feladatok](iot-hub-devguide-jobs.md), és [üzenet-útválasztása](iot-hub-devguide-messages-d2c.md). Ez a cikk bemutatja:
 
 * Az IoT Hub lekérdezési nyelv, a fő funkciókat bemutató és
 * A nyelv részletes leírása. További információ a lekérdezési nyelv az üzenet-útválasztása: [lekérdezések az üzenet-útválasztása](../iot-hub/iot-hub-devguide-routing-query-syntax.md).
@@ -25,7 +24,9 @@ IoT Hub által biztosított információk lekéréséhez hatékony SQL-szerű ny
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-partial.md)]
 
 ## <a name="device-and-module-twin-queries"></a>Eszköz- és modul ikereszköz-lekérdezések
-[Ikereszközök] [ lnk-twins] és ikermodulokkal tetszőleges JSON-objektumok címkék és tulajdonságok is tartalmazhat. Az IoT Hub lehetővé teszi lekérdezések ikereszközök és ikermodulokkal JSON-dokumentumként egyetlen összes ikereszköz-adatokat tartalmazó.
+
+[Ikereszközök](iot-hub-devguide-device-twins.md) és ikermodulokkal tetszőleges JSON-objektumok címkék és tulajdonságok is tartalmazhat. Az IoT Hub lehetővé teszi lekérdezések ikereszközök és ikermodulokkal JSON-dokumentumként egyetlen összes ikereszköz-adatokat tartalmazó.
+
 Tegyük fel például, hogy az IoT hub device twins az alábbi struktúrával rendelkeznek (ikermodul lenne ehhez hasonló csak, egy további moduleId):
 
 ```json
@@ -80,15 +81,14 @@ Tegyük fel például, hogy az IoT hub device twins az alábbi struktúrával re
 
 ### <a name="device-twin-queries"></a>Ikereszköz-lekérdezések
 
-Az IoT Hub az ikereszközök mutatja egy dokumentum egy dokumentumgyűjteményben nevű **eszközök**.
-Ezért az alábbi lekérdezés lekéri az ikereszközök teljes készletét:
+Az IoT Hub az ikereszközök mutatja egy dokumentum egy dokumentumgyűjteményben nevű **eszközök**. Ha például az alábbi lekérdezés lekéri az ikereszközök teljes készletét:
 
 ```sql
 SELECT * FROM devices
 ```
 
 > [!NOTE]
-> [Az Azure IoT SDK-k] [ lnk-hub-sdks] támogatja a nagy eredményben való lapozást.
+> [Az Azure IoT SDK-k](iot-hub-devguide-sdks.md) támogatja a nagy eredményben való lapozást.
 
 Az IoT Hub lehetővé teszi tetszőleges feltételekkel szűrés ikereszközök lekéréséhez. A például az eszköz fogadni párok helyét a **location.region** címke értéke **USA** használja a következő lekérdezést:
 
@@ -97,11 +97,11 @@ SELECT * FROM devices
 WHERE tags.location.region = 'US'
 ```
 
-Logikai operátorok és aritmetikai összehasonlítások is támogatott. Például lekérdezni az eszközt twins az Egyesült Államokban találhatók, és konfigurálta a telemetriai adatok küldése a kisebb, mint minden percben használja a következő lekérdezést:
+Logikai operátorok és aritmetikai összehasonlítások is támogatott. Ikereszközök az Egyesült Államokban találhatók, és konfigurálta a telemetriai adatok küldése a kisebb, mint minden percben lekéréséhez például használja a következő lekérdezést:
 
 ```sql
 SELECT * FROM devices
-WHERE tags.location.region = 'US'
+  WHERE tags.location.region = 'US'
     AND properties.reported.telemetryConfig.sendFrequencyInSecs >= 60
 ```
 
@@ -109,25 +109,25 @@ Könnyebb áttekinthetőség érdekében lehetőség arra is tömb állandókat 
 
 ```sql
 SELECT * FROM devices
-WHERE properties.reported.connectivity IN ['wired', 'wifi']
+  WHERE properties.reported.connectivity IN ['wired', 'wifi']
 ```
 
 Gyakran szükség egy adott tulajdonságot tartalmazó összes ikereszközök azonosításához. IoT Hub által támogatott, a függvény `is_defined()` erre a célra. Lekérése ikereszközök, amelyek meghatározzák, például a `connectivity` tulajdonságot használja a következő lekérdezést:
 
 ```SQL
 SELECT * FROM devices
-WHERE is_defined(properties.reported.connectivity)
+  WHERE is_defined(properties.reported.connectivity)
 ```
 
-Tekintse meg a [WHERE záradék] [ lnk-query-where] a szűrési képességek a teljes vonatkozó szakaszában.
+Tekintse meg a [WHERE záradék](iot-hub-devguide-query-language.md#where-clause) a szűrési képességek a teljes vonatkozó szakaszában.
 
-Csoportosítás és összesítés is támogatottak. Például eszközök számát is minden egyes telemetriai adatokat a konfigurációs állapot használja a következő lekérdezést:
+Csoportosítás és összesítés is támogatottak. Például minden telemetria konfigurációs állapot eszközök számát is megkereséséhez használja a következő lekérdezést:
 
 ```sql
 SELECT properties.reported.telemetryConfig.status AS status,
     COUNT() AS numberOfDevices
-FROM devices
-GROUP BY properties.reported.telemetryConfig.status
+  FROM devices
+  GROUP BY properties.reported.telemetryConfig.status
 ```
 
 Ez a csoportosítás a lekérdezés eredménye termékazonosítóhoz az alábbi példához hasonló:
@@ -159,7 +159,7 @@ SELECT LastActivityTime FROM devices WHERE status = 'enabled'
 
 ### <a name="module-twin-queries"></a>A modul ikereszköz-lekérdezések
 
-A lekérdezés: ikereszközök lekérdezése az ikermodulokkal hasonlít, de egy másik gyűjtemény/névteret, azaz "az eszközök" helyett használatával lekérdezheti, ha
+Az ikereszközök lekérdezések lekérdezése az ikermodulokkal hasonlít, de egy másik gyűjtemény/névteret, azaz "az eszközök" helyett használatával lekérdezheti device.modules:
 
 ```sql
 SELECT * FROM devices.modules
@@ -171,14 +171,18 @@ Hogy az eszközök és devices.modules gyűjtemények közötti illesztési nem 
 Select * from devices.modules where properties.reported.status = 'scanning'
 ```
 
-Ez a lekérdezés összes ikermodulokkal vizsgálati állapotú, de csak a megadott eszközök részhalmaza adja vissza.
+Ez a lekérdezés visszaadja az összes ikermodulokkal vizsgálati állapotú, de csak a megadott eszközök részhalmaza:
 
 ```sql
-Select * from devices.modules where properties.reported.status = 'scanning' and deviceId IN ('device1', 'device2')  
+Select * from devices.modules 
+  where properties.reported.status = 'scanning' 
+  and deviceId IN ('device1', 'device2')  
 ```
 
 ### <a name="c-example"></a>C#-példa
-A lekérdezési funkciókat tesz elérhetővé a [C# Szolgáltatásoldali SDK-val] [ lnk-hub-sdks] a a **RegistryManager** osztály.
+
+A lekérdezési funkciókat tesz elérhetővé a [C# Szolgáltatásoldali SDK-val](iot-hub-devguide-sdks.md) a a **RegistryManager** osztály.
+
 Íme egy példa egy egyszerű lekérdezést:
 
 ```csharp
@@ -198,7 +202,9 @@ A **lekérdezés** egy oldal méretét (legfeljebb 100) az objektum létrejön. 
 A lekérdezési objektummal mutatja meg több **tovább** értékek, a lekérdezés által igényelt deszerializálás függően. Például eszköz ikereszköz vagy a feladat objektumot, vagy egyszerű JSON leképezések használata esetén.
 
 ### <a name="nodejs-example"></a>NODE.js-példa
-A lekérdezési funkciókat tesz elérhetővé a [node.js-hez készült Azure IoT szolgáltatás SDK] [ lnk-hub-sdks] a a **beállításjegyzék** objektum.
+
+A lekérdezési funkciókat tesz elérhetővé a [node.js-hez készült Azure IoT szolgáltatás SDK](iot-hub-devguide-sdks.md) a a **beállításjegyzék** objektum.
+
 Íme egy példa egy egyszerű lekérdezést:
 
 ```nodejs
@@ -233,8 +239,7 @@ Jelenleg összehasonlítások támogatottak csak egyszerű típusok (nincs objek
 
 ## <a name="get-started-with-jobs-queries"></a>Feladatok lekérdezések használatának első lépései
 
-[Feladatok] [ lnk-jobs] teszik lehetővé az eszközök csoportokon műveletek végrehajtásához. Minden egyes ikereszköz tartalmazza, amely egy nevű gyűjtemény részét képezi a feladatok **feladatok**.
-Logikailag,
+[Feladatok](iot-hub-devguide-jobs.md) teszik lehetővé az eszközök csoportokon műveletek végrehajtásához. Minden egyes ikereszköz tartalmazza, amely egy nevű gyűjtemény részét képezi a feladatok **feladatok**.
 
 ```json
 {
@@ -276,16 +281,18 @@ Például minden feladat (elmúlt és ütemezett) egy adott eszköz érintő lek
 
 ```sql
 SELECT * FROM devices.jobs
-WHERE devices.jobs.deviceId = 'myDeviceId'
+  WHERE devices.jobs.deviceId = 'myDeviceId'
 ```
 
 Vegye figyelembe, hogyan nyújt ez a lekérdezés az eszközspecifikus állapota (és esetleg a közvetlen metódusra adott válasz) minden feladatot adott vissza.
+
 Az összes objektum tulajdonságai tetszőleges logikai feltételekkel szűrése lehetőség arra is a **devices.jobs** gyűjtemény.
+
 Az összes befejezett iker frissítése eszközfeladatok egy adott eszközhöz létrehozott követően, 2016. szeptember lekéréséhez például használja a következő lekérdezést:
 
 ```sql
 SELECT * FROM devices.jobs
-WHERE devices.jobs.deviceId = 'myDeviceId'
+  WHERE devices.jobs.deviceId = 'myDeviceId'
     AND devices.jobs.jobType = 'scheduleTwinUpdate'
     AND devices.jobs.status = 'completed'
     AND devices.jobs.createdTimeUtc > '2016-09-01'
@@ -295,10 +302,11 @@ Egy feladat eszközönkénti eredményeit is lekérhet.
 
 ```sql
 SELECT * FROM devices.jobs
-WHERE devices.jobs.jobId = 'myJobId'
+  WHERE devices.jobs.jobId = 'myJobId'
 ```
 
 ### <a name="limitations"></a>Korlátozások
+
 Jelenleg a lekérdezések **devices.jobs** nem támogatják:
 
 * Leképezések, ezért csak `SELECT *` lehetséges.
@@ -306,24 +314,28 @@ Jelenleg a lekérdezések **devices.jobs** nem támogatják:
 * Összesítések, például a száma, avg, csoportosítás hajt végre.
 
 ## <a name="basics-of-an-iot-hub-query"></a>Az IoT Hub lekérdezési alapjai
+
 Minden IoT Hub lekérdezési válassza ki és záradékok esetén nem kötelező hol és a GROUP BY záradékot tartalmaz. Minden lekérdezés fut, a JSON-dokumentumok, például az ikereszközök gyűjteménye. A FROM záradék azt jelzi, hogy a dokumentum egy dokumentumgyűjteményben, meg kell iterálni (**eszközök** vagy **devices.jobs**). Ezt követően a WHERE záradékban a szűrő alkalmazása. Az összesítéseket, az eredményeket az ebben a lépésben csoportosítva vannak benne a GROUP BY záradékban megadott. Minden csoport jön létre egy sort a SELECT záradékban megadott.
 
 ```sql
 SELECT <select_list>
-FROM <from_specification>
-[WHERE <filter_condition>]
-[GROUP BY <group_specification>]
+  FROM <from_specification>
+  [WHERE <filter_condition>]
+  [GROUP BY <group_specification>]
 ```
 
 ## <a name="from-clause"></a>FROM záradékban
+
 A **< from_specification > a** záradék feltételezheti, hogy csak két értéket: **ESZKÖZÖKRŐL** a lekérdezés ikereszközök, vagy **devices.jobs a** lekérdezés feladat eszközönkénti részletek.
+
 
 ## <a name="where-clause"></a>WHERE záradék
 A **ahol < filter_condition >** záradék használata nem kötelező. Azt is meghatározza, hogy a JSON-dokumentumok a KIINDULÓ gyűjtemény egy vagy több feltételt meg kell felelniük az eredmény része. Bármely JSON-dokumentumok a megadott feltételeknek, a "true", az eredmény szerepeltetni kell kiértékelni.
 
-Az engedélyezett feltételek a részben ismertetett [kifejezések és feltételekkel][lnk-query-expressions].
+Az engedélyezett feltételek a részben ismertetett [kifejezések és feltételekkel](iot-hub-devguide-query-language.md#expressions-and-conditions).
 
 ## <a name="select-clause"></a>SELECT záradék
+
 A **VÁLASSZA < select_list >** megadása kötelező, és adja meg, milyen értékeket a rendszer lekéri a lekérdezést. Azt adja meg az új JSON-objektumok létrehozásához használt JSON-értékeit.
 A szűrt (és igény szerint csoportosítva) részhalmazát alkotják, a KIINDULÓ gyűjtemény összes eleme a leképezés fázis egy új JSON-objektumot állít elő. Ez az objektum a SELECT záradékban megadott értékek úgy van felépítve.
 
@@ -349,7 +361,7 @@ SELECT [TOP <max number>] <projection list>
     | max(<projection_element>)
 ```
 
-**Attribute_name** a JSON-dokumentum a KIINDULÓ gyűjtemény tulajdonságra sem hivatkozik. Néhány példa a SELECT záradékban található a [ikereszköz-lekérdezések használatának első lépései] [ lnk-query-getstarted] szakaszban.
+**Attribute_name** a JSON-dokumentum a KIINDULÓ gyűjtemény tulajdonságra sem hivatkozik. Néhány példa a SELECT záradékban található a [ikereszköz-lekérdezések használatának első lépései](iot-hub-devguide-query-language.md#get-started-with-device-twin-queries) szakaszban.
 
 Jelenleg kijelölt záradékok eltérő **kiválasztása*** csak az ikereszközök összesített lekérdezéseket támogat.
 
@@ -483,18 +495,5 @@ Az útvonalak feltételek a következő karakterlánc-függvények támogatottak
 | CONTAINS(x,y) | Visszaadja egy logikai arról a második-e az első karakterlánc-kifejezést tartalmaz. |
 
 ## <a name="next-steps"></a>További lépések
-Ismerje meg, hogyan hajthat végre lekérdezéseket alkalmazásaiba [Azure IoT SDK-k][lnk-hub-sdks].
 
-[lnk-query-where]: iot-hub-devguide-query-language.md#where-clause
-[lnk-query-expressions]: iot-hub-devguide-query-language.md#expressions-and-conditions
-[lnk-query-getstarted]: iot-hub-devguide-query-language.md#get-started-with-device-twin-queries
-
-[lnk-twins]: iot-hub-devguide-device-twins.md
-[lnk-jobs]: iot-hub-devguide-jobs.md
-[lnk-devguide-endpoints]: iot-hub-devguide-endpoints.md
-[lnk-devguide-quotas]: iot-hub-devguide-quotas-throttling.md
-[lnk-devguide-mqtt]: iot-hub-mqtt-support.md
-[lnk-devguide-messaging-routes]: iot-hub-devguide-messages-d2c.md
-[lnk-devguide-messaging-format]: iot-hub-devguide-messages-construct.md
-
-[lnk-hub-sdks]: iot-hub-devguide-sdks.md
+Ismerje meg, hogyan hajthat végre lekérdezéseket alkalmazásaiba [Azure IoT SDK-k](iot-hub-devguide-sdks.md).
