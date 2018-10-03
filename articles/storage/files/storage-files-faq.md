@@ -7,12 +7,12 @@ ms.service: storage
 ms.date: 09/11/2018
 ms.author: renash
 ms.component: files
-ms.openlocfilehash: 43acff5c4d37c46245566fb2e1d74d3e14d527bb
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 1f7fc9916fc856d636b6ad850f831a3235b80632
+ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46949842"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48237755"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>Az Azure Files kapcsolatos gyakori kérdések (GYIK)
 [Az Azure Files](storage-files-introduction.md) teljes körűen felügyelt fájlmegosztást kínáló, amely az iparági szabványnak megfelelő keresztül érhető el a felhőben [Server Message Block (SMB) protokoll](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx). Azure-fájlmegosztások párhuzamosan csatlakoztathatja felhőbeli vagy helyszíni üzemelő példányok esetében a Windows, Linux és macOS. A Windows Server-gépek Azure-fájlmegosztások közel, ahol az adatok felhasználásának gyors hozzáférés az Azure File Sync használatával képes gyorsítótárazni.
@@ -108,60 +108,23 @@ Ez a cikk az Azure Files szolgáltatást és funkciót, beleértve az Azure File
 
 * <a id="sizeondisk-versus-size"></a>
 **Miért nem a *lemezterület* fájl egyezést tulajdonsága a *mérete* tulajdonság használata az Azure File Sync után?**  
-    Windows Fájlkezelőben tesz elérhetővé, amelyek egy fájl mérete két tulajdonság: **mérete** és **lemezterület**. Ezek a Tulajdonságok találhatókkal jelentése különböznek. **Méret** a fájl teljes méretét jelenti. **A lemez mérete** a fájlfolyamot, hogy a lemez méretét adja meg. Ezek a tulajdonságok értékeit számos okból, például a tömörítés esetében eltérőek, az Adatdeduplikáció használatát, vagy az Azure File Sync felhőrétegzési. Egy fájlt az Azure-fájlmegosztások többszintű, ha a lemez mérete nulla, mert a fájlfolyamot van tárolva, az Azure-fájlmegosztást, és nem a lemezen. Lehetőség arra is a fájlok részben rétegzett (vagy részlegesen visszahívott szoftvertermék) lehet. A részlegesen rétegezett fájl a fájl a lemezen van megvalósítva. Ez akkor fordulhat elő, amikor fájlt például a multimédia-lejátszó alkalmazások által részben olvasható vagy segédprogramok zip. 
+ Lásd: [ismertetése, Felhőbeli Rétegezés](storage-sync-cloud-tiering.md#sizeondisk-versus-size).
 
 * <a id="is-my-file-tiered"></a>
 **Hogyan állapítható meg, hogy egy fájl tartozik lett a rétegzett?**  
-    Ellenőrizze, hogy a fájl tartozik rétegzett az Azure-fájlmegosztás számos módja van:
-    
-   *  **Ellenőrizze a fájl a fájl attribútumait.**
-     Ehhez kattintson a jobb gombbal a fájlra, ugorjon a **részletek**, majd görgessen le a a **attribútumok** tulajdonság. Egy rétegzett fájlt állítsa be a következő attribútumokkal rendelkezik:     
-        
-        | Levél attribútum | Attribútum | Meghatározás |
-        |:----------------:|-----------|------------|
-        | A | Archívum | Azt jelzi, hogy a fájl másolatot kell készíteni a biztonsági mentési szoftverrel. Ez az attribútum értéke mindig, függetlenül attól, hogy a fájl rétegzett vagy teljes mértékben a lemezen tárolt. |
-        | P | Ritka fájl | Azt jelzi, hogy a fájl egy ritka fájlok. Ritka fájl a hatékony NTFS kínál a fájl egy speciális típusa esetén a fájl lemezre Stream nagyrészt üres. Az Azure File Sync ritka fájlokat használ, mert a fájl teljes rétegzett vagy részlegesen idézni. A fájlfolyamot egy teljes körűen rétegzett fájlt, a felhőben van tárolva. A részlegesen visszaírt fájl a fájl már a lemezen. Ha a fájl teljes idézni lemezre, az Azure File Sync átalakítja a ritka fájlok regulárním souborem. |
-        | L | Újraelemzési pontok | Azt jelzi, hogy a fájl egy újraelemzési pont. Újraelemzési pont egy speciális mutató egy fájlrendszerszűrő általi használatra. Az Azure File Sync újraelemzési pontokat használ, az Azure File Sync fájlrendszerszűrőnek (StorageSync.sys) a felhő a fájl tárolási helyének meghatározásához. Ez támogatja a közvetlen hozzáférést. Felhasználóknak nem kell tudnia, hogy az Azure File Sync használatban van-e, illetve a fájlt az Azure-fájlmegosztás eléréséhez. A fájl teljes ismeretes, az Azure File Sync a fájlt az újraelemzési pont eltávolítása. |
-        | O | Offline | Azt jelzi, hogy néhány vagy összes a fájl tartalma nem tárolja a lemezen. A fájl teljes ismeretes, az Azure File Sync eltávolítja ezt az attribútumot. |
-
-        ![A fájlhoz, a részletek lapon kiválasztott a tulajdonságai párbeszédpanel](media/storage-files-faq/azure-file-sync-file-attributes.png)
-        
-        Megjelenik egy mappában található összes fájl attribútumait hozzáadásával a **attribútumok** a tábla megjelenített a fájlkezelő mezőt. Ehhez kattintson a jobb gombbal egy meglévő oszlopára vonatkozóan (például **mérete**), jelölje be **további**, majd válassza ki **attribútumok** a legördülő listából.
-        
-   * **Használat `fsutil` egy fájlt az újraelemzési pontok kereséséhez.**
-       Az előző beállítás leírtak egy rétegzett fájlt mindig van egy újraelemzési pont beállítása. Egy újraelemzési mutató az Azure File Sync fájlrendszerszűrő (StorageSync.sys) a speciális mutató. Ellenőrizze, hogy rendelkezik-e a fájl egy újraelemzési pont egy emelt szintű parancssort vagy a PowerShell-ablakban, futtassa a `fsutil` segédprogrammal:
-    
-        ```PowerShell
-        fsutil reparsepoint query <your-file-name>
-        ```
-
-        Ha a fájl egy újraelemzési ponttal rendelkezik, tekintse meg a várható **címkeértékkel újraelemzési: 0x8000001e**. A hexadecimális érték az újraelemzési pont érték, amely az Azure File Sync tulajdonában van. A kimenet a fájlt a az Azure-fájlmegosztást az elérési utat jelölő újraelemzési adatokat is tartalmazza.
-
-        > [!WARNING]  
-        > A `fsutil reparsepoint` segédprogram parancsot is van lehetősége, újraelemzési pont törlése. Ez a parancs nem végrehajtani, kivéve, ha az Azure File Sync mérnöki csapata arra kéri, hogy. A parancs futtatása az adatvesztést eredményezhet. 
+ Lásd: [ismertetése, Felhőbeli Rétegezés](storage-sync-cloud-tiering.md#is-my-file-tiered).
 
 * <a id="afs-recall-file"></a>**A használni kívánt fájl tartozik lett rétegzett. Hogyan lehet visszahívása vele helyi lemezre a fájlt?**  
-    A fájl lemezre visszahívásának legegyszerűbb módja, hogy nyissa meg a fájlt. Az Azure File Sync fájlrendszerszűrő (StorageSync.sys) zökkenőmentesen fájlt tölt le a az Azure-fájlmegosztást az Ön részéről munka nélkül. Minden fájltípus esetében, amelyek részben olvasható, például multimédiás vagy .zip fájlokat, a fájl megnyitása nem sikerül letölteni a teljes fájlt.
+ Lásd: [ismertetése, Felhőbeli Rétegezés](storage-sync-cloud-tiering.md#afs-recall-file).
 
-    Is használhatja PowerShell kényszerítése egy fájlt. Ez a beállítás akkor hasznos, ha egyszerre, majd előkeresnie több fájl egy mappában található összes fájl például lehet. Nyissa meg a kiszolgáló-csomóponton, amelyen telepítve van-e az Azure File Sync egy PowerShell-munkamenetet, és futtassa a következő PowerShell-parancsokat:
-    
-    ```PowerShell
-    Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll"
-    Invoke-StorageSyncFileRecall -Path <file-or-directory-to-be-recalled>
-    ```
 
 * <a id="afs-force-tiering"></a>
 **Hogyan kényszeríthetem egy fájl vagy címtár helyezhető el?**  
-    Ha a felhő rétegezési szolgáltatás engedélyezve van, felhőbeli rétegezés automatikusan rétegek fájlok alapján az utolsó hozzáférés, és elérése érdekében a kötet szabad terület százalékos aránya a felhőbeli végpont a megadott idő módosítása. Egyes esetekben azonban érdemes manuálisan a Tier fájl kényszerített. Ez akkor lehet hasznos, ha menti a nagy méretű fájlt, amely nem szeretne hosszú ideig újra használni, és azt szeretné, a szabad lemezterület a köteten a más fájlok és mappák használata. Kényszerítheti, hogy a következő PowerShell-parancsok használatával rétegezést:
-
-    ```PowerShell
-    Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll"
-    Invoke-StorageSyncCloudTiering -Path <file-or-directory-to-be-tiered>
-    ```
+ Lásd: [ismertetése, Felhőbeli Rétegezés](storage-sync-cloud-tiering.md#afs-force-tiering).
 
 * <a id="afs-effective-vfs"></a>
 **Hogyan van *szabad terület a köteten* értelmezni, ha egy köteten van több kiszolgálói végpontot?**  
-    Ha egynél több kiszolgálói végpontot egy köteten, a kötet tényleges szabad terület küszöbértékei a legnagyobb szabad terület a köteten a köteten lévő összes kiszolgálói végpontot között megadott. Fájlok rétegezettek lesznek függetlenül attól, hogy mely kiszolgálói végpontot, amelyhez tartoznak azok használati mintáknak megfelelően. Például ha a két kiszolgáló végpontokat egy köteten, Endpoint1 és típusú Endpoint2, ahol Endpoint1 egy kötet szabad terület küszöbértékei 25 %-os és típusú Endpoint2 rendelkezik egy mennyiségi szabad terület küszöbértékei 50 %-os a kötet szabad terület küszöbértékei mindkét kiszolgáló végpont lesz 50 %-a.
+ Lásd: [ismertetése, Felhőbeli Rétegezés](storage-sync-cloud-tiering.md#afs-effective-vfs).
 
 * <a id="afs-files-excluded"></a>
 **Mely fájlok vagy mappák automatikusan kizáródnak az Azure File Sync?**  

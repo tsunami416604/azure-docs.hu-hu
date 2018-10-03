@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 09/28/2018
 ms.author: sutalasi
-ms.openlocfilehash: d276098c951cb26a97906e6ac7e23c0ab2e4d137
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: 5d1beb124bbb857d13aecad7bf0cef493d42dac5
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47432579"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48043277"
 ---
 # <a name="replicate-azure-disk-encryption-ade-enabled-virtual-machines-to-another-azure-region"></a>Az Azure disk encryption (ADE) engedélyezve van a virtuális gépek replikálása másik Azure-régióba
 
@@ -127,7 +127,7 @@ Az az alábbi forgatókönyvek esetén meg kell adni a cél virtuális gép titk
   - Site recovery-replikációja a virtuális gépen engedélyezve van, és engedélyezve van az Azure Disk Encryption (ADE) a forrásoldali virtuális gép egy későbbi időpontban
   - Engedélyezve van a virtuális gép Site recovery-replikációja, és a egy későbbi időpontban a lemezének titkosítási kulcsa és/vagy a kulcsalapú titkosítás kulcsa a forrásoldali virtuális gép megváltozott
 
-Használható [a parancsfájl](#copy-ade-keys-to-dr-region-using-powerShell-script) célrégió másolja a titkosítási kulcsokat, és frissítse az titkosítási beállításainak **a Recovery services-tár -> replikált elem -> Tulajdonságok -> Számítás és hálózat.**
+Használható [a parancsfájl](#copy-ade-keys-to-dr-region-using-powershell-script) célrégió másolja a titkosítási kulcsokat, és frissítse az titkosítási beállításainak **a Recovery services-tár -> replikált elem -> Tulajdonságok -> Számítás és hálózat.**
 
 ![frissítés-ade-beállítások](./media/azure-to-azure-how-to-enable-replication-ade-vms/update-ade-settings.png)
 

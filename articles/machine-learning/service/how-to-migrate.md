@@ -9,12 +9,12 @@ ms.reviewer: jmartens
 ms.author: haining
 author: haining
 ms.date: 09/24/2018
-ms.openlocfilehash: 0c5cfcee65b176147125dd2edbff2497b1eee70b
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 9778d348cf49d4066f034931dc350a1f4a608ad2
+ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47158564"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48236584"
 ---
 # <a name="migrate-to-the-latest-version-of-azure-machine-learning-service"></a>Az Azure Machine Learning szolgáltatás legújabb verziójára való áttérést 
 
@@ -52,7 +52,7 @@ Tudjon meg többet [mi változott, ebben a kiadásban](overview-what-happened-to
 
 Erőforrások, például a kísérletezés-fiókokat, a modellkezelési fiókok és a machine learning számítási környezetek nem át az Azure Machine Learning szolgáltatás legújabb verziójára. Tekintse meg a [ütemterv](overview-what-happened-to-workbench.md#timeline) a mennyi az eszközök továbbra is működni fog.
 
-Hozzon létre egy Azure Machine Learning-munkaterület az első lépések a legújabb verzióra a [az Azure portal](quickstart-get-started.md). Munkaterület irányítópultján a portálon csak Edge, Chrome és a Firefox böngésző esetében támogatott.
+Hozzon létre egy Azure Machine Learning szolgáltatás munkaterületén az első lépések a legújabb verzióra a [az Azure portal](quickstart-get-started.md). Munkaterület irányítópultján a portálon csak Edge, Chrome és a Firefox böngésző esetében támogatott.
 
 Ehhez az új munkaterülethez a legfelső szintű szolgáltatás-erőforrás, és lehetővé teszi, hogy az összes az Azure Machine Learning szolgáltatás legújabb funkcióit használja. További tudnivalók ezzel [munkaterületet és architektúra](concept-azure-machine-learning-architecture.md).
 

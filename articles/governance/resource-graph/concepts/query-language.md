@@ -8,12 +8,12 @@ ms.date: 09/18/2018
 ms.topic: conceptual
 ms.service: resource-graph
 manager: carmonm
-ms.openlocfilehash: ab759d731f8bac674435e48b0f7af67331ce03d2
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 6fcf3087feb7f208ea46d0e08824e965160a61d4
+ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47160451"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48236450"
 ---
 # <a name="understanding-the-azure-resource-graph-query-language"></a>Az Azure-erőforrás Graph lekérdezési nyelv ismertetése
 
@@ -35,7 +35,7 @@ A következő erőforrás Graph támogatott táblázatos szereplők listáját:
 - [Minta](/azure/kusto/query/sampleoperator)
 - [minta – különálló](/azure/kusto/query/sampledistinctoperator)
 - [Rendezés](/azure/kusto/query/sortoperator)
-- [Összegzés](/azure/kusto/query/summerizeoperator)
+- [Összegzés](/azure/kusto/query/summarizeoperator)
 - [hajtsa végre a megfelelő](/azure/kusto/query/takeoperator)
 - [felső](/azure/kusto/query/topoperator)
 - [felső – beágyazott](/azure/kusto/query/topnestedoperator)

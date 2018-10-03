@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: 5feefdb8fe6204bc8ef42a5e65bf1e30354e0cf9
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: 39fd393e78a2b66749c6aa34a758b185b38effdf
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47393927"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48041187"
 ---
 # <a name="multi-master-conflict-resolution-in-azure-cosmos-db"></a>Az Azure Cosmos DB több főkiszolgálós ütközésének feloldása 
 
@@ -157,7 +157,7 @@ Az eljárás négy paraméterekkel rendelkezik:
 
 * **conflictingDocuments:** az adatbázisban, amelyek ütköznek az azonosító oszlop vagy bármely egyéb egyedi index mezőire incomingDocument adja meg az összes dokumentum véglegesített verzióba gyűjteménye. Ezeket a dokumentumokat kell "relatív" eltérő érték a incomingDocument képest.
 
-A felhasználó által meghatározott eljárást a Cosmos DB partíciókulcs teljes hozzáféréssel rendelkezik, és az ütközések feloldása store műveleteket hajthat végre. Ha a felhasználó által meghatározott eljárást nem véglegesíteni az ütköző verzió, a rendszer eldobja az ütközést, és a existingDocument véglegesített marad. Ha a felhasználó által meghatározott eljárást meghibásodik, vagy nem létezik, Azure Cosmos DB lesz az összes adja hozzá az ütközést a csak olvasható ütközések hírcsatorna, ahol fel lehessen dolgozni aszinkron módon, ahogyan az a [aszinkron ütközés feloldása mód](). 
+A felhasználó által meghatározott eljárást a Cosmos DB partíciókulcs teljes hozzáféréssel rendelkezik, és az ütközések feloldása store műveleteket hajthat végre. Ha a felhasználó által meghatározott eljárást nem véglegesíteni az ütköző verzió, a rendszer eldobja az ütközést, és a existingDocument véglegesített marad. Ha a felhasználó által meghatározott eljárást meghibásodik, vagy nem létezik, Azure Cosmos DB lesz az összes adja hozzá az ütközést a csak olvasható ütközések hírcsatorna, ahol fel lehessen dolgozni aszinkron módon, ahogyan az a [aszinkron ütközés feloldása mód](#custom--asynchronous). 
 
 ### <a name="custom--asynchronous"></a>Egyéni – aszinkron  
 

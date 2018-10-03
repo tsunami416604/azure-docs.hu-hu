@@ -9,12 +9,12 @@ manager: cgronlund
 ms.custom: include file
 ms.topic: include
 ms.date: 09/24/2018
-ms.openlocfilehash: 6d6e6a2aea867c5b603d950a4bbaa33f14695f45
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 4b4f926009f94162b43dcbb8934e44c1924e91df
+ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47010970"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48239532"
 ---
 Jelentkezzen be az [Azure Portalra](https://portal.azure.com/) a használni kívánt Azure-előfizetés hitelesítő adataival. Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
@@ -26,15 +26,15 @@ A portál bal felső sarkában válassza az **Erőforrás létrehozása** (+) go
 
    ![Erőforrás létrehozása az Azure Portalon](./media/aml-create-in-portal/portal-create-a-resource.png)
 
-Írja be a **Machine Learning** kifejezést a keresősávba. Válassza ki a keresési eredmények nevű **Machine Learning-munkaterület**.
+Írja be a **Machine Learning** kifejezést a keresősávba. Válassza ki a keresési eredmények nevű **Machine Learning szolgáltatás munkaterület**.
 
    ![Keresse meg a munkaterület](./media/aml-create-in-portal/allservices-search.PNG)
 
-Az a **Machine Learning-munkaterület** panelen görgessen lefelé, és válassza **létrehozás** megkezdéséhez.
+Az a **Machine Learning szolgáltatás munkaterület** panelen görgessen lefelé, és válassza **létrehozás** megkezdéséhez.
 
    ![létrehozás](./media/aml-create-in-portal/portal-create-button.png)
 
-Az a **ML-munkaterület** panelen konfigurálja a munkaterülethez.
+Az a **gépi tanulás szolgáltatás munkaterület** panelen konfigurálja a munkaterület.
 
    Mező|Leírás
    ---|---

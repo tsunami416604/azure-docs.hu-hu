@@ -1,6 +1,6 @@
 ---
-title: Az Azure Naplóelemzés számítógépcsoportok jelentkezzen keresések |} Microsoft Docs
-description: A Naplóelemzési számítógépcsoportok lehetővé teszik hatókör napló kereséseket számítógépek egy adott készletét.  Ez a cikk ismerteti a különböző módszerek segítségével hozzon létre számítógépcsoportokat és a naplófájl-keresési használatával.
+title: Számítógép-csoportok az Azure Log Analytics naplóbeli kereséseivel |} A Microsoft Docs
+description: A Log Analytics számítógépcsoportjaival naplókeresések hatókör számára egy adott számítógép engedélyezése.  Ez a cikk ismerteti a különböző módszerek használatával hozzon létre számítógép- és a egy naplóbeli keresés használatával.
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -14,103 +14,103 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/03/2018
 ms.author: bwren
-ms.component: na
-ms.openlocfilehash: 23ac75b4afb07c3f8d5f0d90755a5cf2087087e1
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.component: ''
+ms.openlocfilehash: 7e4889148a752b552f8bd65702ea5dda450ded31
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37130675"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48044297"
 ---
-# <a name="computer-groups-in-log-analytics-log-searches"></a>A Naplóelemzési számítógépcsoportok jelentkezzen keresések
+# <a name="computer-groups-in-log-analytics-log-searches"></a>Számítógépcsoportok a Log Analytics naplóbeli kereséseivel
 
-A Naplóelemzési számítógépcsoportok lehetővé teszi a hatókör [keresések jelentkezzen](log-analytics-log-search-new.md) a számítógépek egy adott készletét.  Minden egyes csoport fel van töltve, vagy az Ön által meghatározott lekérdezés segítségével számítógépek vagy csoportok különböző forrásokból származó importálásával.  A csoport szerepel egy naplófájl-keresési, amikor a program csak a számítógép a megfelelő rekordok.
+A Log Analytics számítógépcsoportjaival lehetővé teszi a hatókör [naplókereséseket](log-analytics-log-search-new.md) a számítógépek egy adott készletét.  Minden csoport fel van töltve, vagy az Ön által meghatározott lekérdezés segítségével számítógépek vagy csoportok különböző forrásokból származó importálásával.  A csoport szerepel egy Naplókeresés, amikor az eredmények korlátozódnak, amelyek megfelelnek a számítógépek a csoportban lévő rekordok.
 
-## <a name="creating-a-computer-group"></a>Olyan számítógép-csoport létrehozása
-Log Analytics használata a módszereket az alábbi táblázatban is létrehozhat egy számítógép (csoport).  Az egyes módszerek részletei is szerepelnek, az alábbi szakaszokban. 
+## <a name="creating-a-computer-group"></a>Számítógépcsoport létrehozása
+Létrehozhat egy számítógépcsoportot a Log Analytics az alábbi táblázatban a módszerek bármelyikével.  Részletek az egyes módszerek az alábbi szakaszokban találhatók. 
 
 | Módszer | Leírás |
 |:--- |:--- |
-| Naplókeresés |Hozzon létre egy naplófájl-keresés, amely számítógépek listáját adja vissza. |
-| Log Search API |A naplófájl-keresési API segítségével szoftveresen hozzon létre egy számítógépcsoportot, a naplófájl-keresési eredmények alapján. |
-| Active Directory |Active Directory-tartomány tagja, és hozzon létre egy csoportot a Naplóelemzési minden egyes biztonsági csoport ügynök számítógépek csoport tagsága automatikusan vizsgálata. |
-| Configuration Manager | Gyűjteményeket importálhat a System Center Configuration Manager és az egyes hozzon létre egy csoportot Naplóelemzési. |
-| A Windows Server Update Services |Automatikusan keresése a WSUS-kiszolgálók és ügyfelek csoportok megcélzása, és hozzon létre egy csoportot a Naplóelemzési minden. |
+| Naplókeresés |Hozzon létre egy naplókeresést, amely a számítógépek listáját adja vissza. |
+| Log Search API |A Log Search API használatával programozott módon létrehozhat egy Naplókeresés eredménye alapján számítógép csoport. |
+| Active Directory |Automatikus vizsgálatokat végez a csoport tagságát, minden olyan ügynököt futtató számítógépek, amelyek az Active Directory-tartomány tagja, és hozzon létre egy csoportot a Log Analytics az egyes biztonsági csoportokhoz. |
+| Configuration Manager | Gyűjtemények importálása a System Center Configuration Managerben, és hozzon létre egy csoportot a Log Analytics az egyes. |
+| A Windows Server Update Services |Automatikus csoportok célzó WSUS-kiszolgálók vagy az ügyfelek keresése, és hozzon létre egy csoportot a Log Analytics az egyes. |
 
 ### <a name="log-search"></a>Naplókeresés
-Naplófájl-keresési létre számítógépcsoportok tartalmaz minden Ön által meghatározott egy lekérdezés által visszaadott számítógép.  Ez a lekérdezés futtatása minden alkalommal, amikor a számítógép (csoport) szolgál, hogy a csoport létrehozása óta módosításokat is megjelenik.  
+Naplókeresés létre számítógépcsoportokat tartalmaz minden Ön által meghatározott lekérdezés által visszaadott számítógépek.  Ez a lekérdezés futtatása minden alkalommal, amikor a számítógép (csoport) használja úgy, hogy a csoport létrehozása óta módosítások is megjelenik.  
 
-Minden számítógépcsoport használható, de egy meghatározott készletét számítógépek használatával kell vissza `distinct Computer`.  Az alábbiakban az számítógépcsoportként használhat például keresést.
+Minden lekérdezés egy számítógép (csoport) is használhat, de egy különálló számítógépek csoportja használatával kell visszaadnia `distinct Computer`.  Következő sikerült használhat olyan számítógépcsoportként jellemző példa keresés.
 
     Heartbeat | where Computer contains "srv" | distinct Computer
 
-A következő táblázat ismerteti a számítógépcsoport meghatározó tulajdonságok biztosítása.
+A következő táblázat ismerteti, amelyek meghatározzák egy számítógép (csoport) tulajdonságait.
 
 | Tulajdonság | Leírás |
 |:---|:---|
 | Megjelenítendő név   | A Keresés a portálon megjelenítendő neve. |
-| Kategória       | A portál a keres rendszerezésére kategóriát. |
+| Kategória       | A keresések a portálon rendszerezéséhez kategória. |
 | Lekérdezés          | A lekérdezés a számítógép (csoport). |
-| Függvényalias | Egy egyedi alias alapján határozza meg a számítógépcsoport a lekérdezésben. |
+| Függvényalias | A számítógépcsoport-lekérdezés azonosítására használt egyedi nevet. |
 
-A következő eljárással hozzon létre egy számítógépcsoportot napló keresési az Azure portálon.
+Az alábbi eljárás segítségével számítógépcsoport létrehozása egy Naplókeresés, az Azure Portalon.
 
-2. Nyissa meg **naplófájl-keresési** majd **mentett keresések** a képernyő tetején.
-3. Kattintson a **Hozzáadás** és adjon meg értékeket a számítógép csoport minden egyes tulajdonsága.
+2. Nyissa meg **naplóbeli keresés** majd **mentett keresések** a képernyő tetején.
+3. Kattintson a **Hozzáadás** , és adja meg a számítógép csoport minden egyes tulajdonság értékét.
 4. Válassza ki **lekérdezés mentése számítógépcsoportként** kattintson **OK**.
 
 
 
 ### <a name="active-directory"></a>Active Directory
-Konfigurálja az Active Directory-csoporttagságok importálása Naplóelemzési, megvizsgálja a csoporttagság bármely tartományhoz csatlakoztatott számítógép az OMS-ügynököt.  Egy számítógép (csoport) minden egyes biztonsági csoport az Active Directoryban létrejön a Naplóelemzési, és minden számítógép nincs felvéve a biztonsági csoportok tagjai megfelelő számítógépcsoportokra.  A csoporttagság folyamatosan frissítjük 4 óránként.  
+Log Analytics az Active Directory-csoporttagságok importálása konfigurálásakor elemzi az a csoport tagságát, és az OMS-ügynök minden olyan tartományhoz csatlakoztatott számítógépeket.  Számítógép csoport jön létre a Log Analytics minden egyes biztonsági csoport az Active Directoryban, és mindegyik számítógépet adnak a számítógépcsoportok, a biztonsági csoportok tagjai megfelelő.  A csoporttagság 4 óránként folyamatosan frissítjük.  
 
-Konfigurálja az Active Directory biztonsági csoportok importálása Naplóelemzési Naplóelemzési **speciális beállítások** az Azure portálon.  Válassza ki **számítógépcsoportok**, **Active Directory**, majd **csoporttagságok importálása az Active Directory számítógépek**.  Nincs szükség további konfigurációra.
+A Log Analytics az Active Directory biztonsági csoportok importálása a Log Analytics konfigurálása **speciális beállítások** az Azure Portalon.  Válassza ki **számítógépcsoportok**, **Active Directory**, majd **importálás az Active Directory-csoporttagságok számítógépekről**.  Nincs szükség további konfigurációra.
 
 ![A számítógépcsoportok Active Directoryból](media/log-analytics-computer-groups/configure-activedirectory.png)
 
-Ha csoportok importálta, a menü észlelt csoporttagsággal rendelkező számítógépek számát és a csoportok importálása számát sorolja fel.  Akár a hivatkozások való visszatéréshez kattintson a **ComputerGroup** ezeket az adatokat rögzíti.
+Ha csoportok lettek importálva, a menü mutatja az a csoport tagjai észlelt számítógépek számát és a csoport importálva számát.  Kattintson a visszaadandó alábbi hivatkozások egyikét a **ComputerGroup** ezeket az adatokat rögzíti.
 
 ### <a name="windows-server-update-service"></a>Windows Server Update Service
-Konfigurálja a WSUS-csoporttagságok importálása Naplóelemzési, megvizsgálja a célcsoport-kezelési csoportba tartozik az OMS-ügynökkel rendelkező számítógépek.  Használata ügyféloldali célcsoport-kezelési, Log Analyticshez csatlakozik, és a WSUS részét számítógépek csoportok megcélzása rendelkezik Naplóelemzési importált csoport tagságát. Használata Kiszolgálóoldali célcsoport-kezelési, a OMS ügynököt kell telepíteni ahhoz, hogy a csoporttagsági információkat Naplóelemzési importálásra WSUS-kiszolgálón.  A csoporttagság folyamatosan frissítjük 4 óránként. 
+Log Analyticsben, hogy a WSUS-csoporttagságok importálása konfigurálásakor elemzi az OMS-ügynökkel rendelkező számítógépek célcsoport-kezelési csoport tagsága.  Ügyféloldali használatakor célozza, minden olyan számítógép, amely a Log Analyticshez csatlakoztatva van, és minden olyan WSUS része csoportokat célzó rendelkezik csoporttagságát. a Log Analytics szolgáltatásba importált. Kiszolgálóoldali használatakor céloz meg, az OMS ügynököt kell telepíteni ahhoz, hogy a csoporttagsági információkat lehet importálni a Log Analytics WSUS-kiszolgálón.  A csoporttagság 4 óránként folyamatosan frissítjük. 
 
-Konfigurálhatja a WSUS-csoportok importálása Naplóelemzési Naplóelemzési **speciális beállítások** az Azure portálon.  Válassza ki **számítógépcsoportok**, **WSUS**, majd **importálási WSUS-csoporttagságok**.  Nincs szükség további konfigurációra.
+Konfigurálja a WSUS-csoportok importálása a Log Analytics a Log Analytics **speciális beállítások** az Azure Portalon.  Válassza ki **számítógépcsoportok**, **WSUS**, majd **importálási WSUS-csoporttagságok**.  Nincs szükség további konfigurációra.
 
-![A WSUS számítógépcsoportok](media/log-analytics-computer-groups/configure-wsus.png)
+![Számítógépcsoportokat a WSUS-nak](media/log-analytics-computer-groups/configure-wsus.png)
 
-Ha csoportok importálta, a menü észlelt csoporttagsággal rendelkező számítógépek számát és a csoportok importálása számát sorolja fel.  Akár a hivatkozások való visszatéréshez kattintson a **ComputerGroup** ezeket az adatokat rögzíti.
+Ha csoportok lettek importálva, a menü mutatja az a csoport tagjai észlelt számítógépek számát és a csoport importálva számát.  Kattintson a visszaadandó alábbi hivatkozások egyikét a **ComputerGroup** ezeket az adatokat rögzíti.
 
 ### <a name="system-center-configuration-manager"></a>System Center Configuration Manager
-Naplóelemzési importálása a Configuration Manager gyűjteménytagságok konfigurálásakor gyűjtemény számítógépcsoport hoz létre.  A gyűjtemény tagsági információk naprakészen tartása a számítógépcsoportok nélkül 3 óránként. 
+Amikor konfigurálja a Configuration Manager-gyűjteménytagságok importálása a Log Analytics, az egyes gyűjtemények számítógépcsoport hoz létre.  A gyűjtemény tagsági információ 3 óránként rendszer olvassa be a számítógépcsoportok naprakészen tartása. 
 
-A Configuration Manager a gyűjtemények importálásához előtt [csatlakoztatása a Configuration Manager szolgáltatáshoz](log-analytics-sccm.md).  Ezután úgy konfigurálhatja az importálás Naplóelemzési **speciális beállítások** az Azure portálon.  Válassza ki **számítógépcsoportok**, **SCCM**, majd **importálása a Configuration Manager gyűjteménytagságok**.  Nincs szükség további konfigurációra.
+A Configuration Manager-gyűjtemények importálása előtt kell [a Configuration Manager csatlakoztatása a Log Analytics](log-analytics-sccm.md).  Ezt követően konfigurálhatja a Log Analytics az importálás **speciális beállítások** az Azure Portalon.  Válassza ki **számítógépcsoportok**, **SCCM**, majd **importálása a Configuration Manager-gyűjteménytagságok**.  Nincs szükség további konfigurációra.
 
 ![Számítógépcsoportok az SCCM-ből](media/log-analytics-computer-groups/configure-sccm.png)
 
-Amikor gyűjtemények importálta, a menü észlelt csoporttagsággal rendelkező számítógépek számát és a csoportok importálása számát sorolja fel.  Akár a hivatkozások való visszatéréshez kattintson a **ComputerGroup** ezeket az adatokat rögzíti.
+Gyűjtemények lettek importálva, ha a menüben a csoport tagjai észlelt számítógépek számát és a csoport importálva számát sorolja fel.  Kattintson a visszaadandó alábbi hivatkozások egyikét a **ComputerGroup** ezeket az adatokat rögzíti.
 
 ## <a name="managing-computer-groups"></a>Számítógépcsoportok kezelése
-Megtekintheti a napló keresési vagy a napló keresési API-t a Naplóelemzési alapján létrehozott számítógépcsoportok **speciális beállítások** az Azure portálon.  Válassza ki **számítógépcsoportok** , majd **csoportok mentett**.  
+Megtekintheti a Naplókeresés vagy a Log Search API a Log Analytics alapján létrehozott számítógépcsoportok **speciális beállítások** az Azure Portalon.  Válassza ki **számítógépcsoportok** , majd **mentett csoportok**.  
 
-Kattintson a **x** a a **eltávolítása** oszlop a számítógép-csoport törléséhez.  Kattintson a **tagok megtekintéséhez** egy csoport, amely a tagot ad vissza a csoporthoz tartozó napló keresés futtatásához ikonjára.  Olyan számítógép-csoport nem módosítható, de ehelyett kell törölje és hozza létre újra a módosított beállításokkal.
+Kattintson a **x** a a **eltávolítása** törölni a számítógép (csoport) oszlopban.  Kattintson a **tagok megtekintése** ikon egy csoportra, amely visszaadja a tagok a csoport Naplókeresés futtatásához.  Egy számítógép (csoport) nem módosítható, de ehelyett kell törölje és hozza létre újra a módosított beállításokkal.
 
-![Mentett számítógépcsoportokat](media/log-analytics-computer-groups/configure-saved.png)
+![Mentett számítógépcsoportok](media/log-analytics-computer-groups/configure-saved.png)
 
 
-## <a name="using-a-computer-group-in-a-log-search"></a>Számítógépcsoport használata egy napló keresése
-Egy számítógépcsoport hozta létre a lekérdezésben napló keresési függvényében, amely általában a következő szintaxist a alias kezelésére használhatja:
+## <a name="using-a-computer-group-in-a-log-search"></a>Számítógépcsoport használata a Naplókeresés
+A lekérdezésben Naplókeresés való kezelésével svému aliasu függvényében, általában a következő szintaxist a létrehozott számítógépcsoport használata:
 
   `Table | where Computer in (ComputerGroup)`
 
-Például a következő segítségével adja vissza UpdateSummary rekordok csak számítógépek mycomputergroup nevű számítógép csoport.
+Ha például a következő segítségével mycomputergroup nevű számítógép csoport lévő updateSummary típusú rekordok csak számítógépek visszaadása.
  
   `UpdateSummary | where Computer in (mycomputergroup)`
 
 
-Importált számítógépcsoportokat és belefoglalt számítógépeik tárolódnak a **ComputerGroup** tábla.  Például a következő lekérdezés alakítanák vissza számítógépeknek a listáját, a tartományi számítógépek csoportban az Active Directoryból. 
+Az importált számítógép- és az érintett számítógépekre vannak tárolva a **ComputerGroup** tábla.  Például a következő lekérdezés termékazonosítóhoz azon számítógépek listáját a tartományi számítógépek csoport az Active Directoryból. 
 
   `ComputerGroup | where GroupSource == "ActiveDirectory" and Group == "Domain Computers" | distinct Computer`
 
-A következő lekérdezés csak a számítógépek UpdateSummary rekordok meghaladná a tartományi számítógépek.
+A következő lekérdezést a tartományi számítógépek adna vissza updateSummary típusú rekordok csak a számítógépek számára.
 
   ```
   let ADComputers = ComputerGroup | where GroupSource == "ActiveDirectory" and Group == "Domain Computers" | distinct Computer;
@@ -120,21 +120,21 @@ A következő lekérdezés csak a számítógépek UpdateSummary rekordok meghal
 
 
 
-## <a name="computer-group-records"></a>Számítógép rekordcsoportjának
-A Naplóelemzési munkaterület minden létrehozott Active Directory vagy a WSUS számítógépcsoport-tagság a rekord jön létre.  Ezeket a rekordokat típusa lehet **ComputerGroup** , és a tulajdonságok az alábbi táblázatban.  Rekordok nem jönnek létre a napló keresések alapján számítógépcsoportokhoz.
+## <a name="computer-group-records"></a>Számítógép biztonságicsoport-rekordok
+Egy rekord jön létre minden egyes létrehozott Active Directory vagy a WSUS számítógépcsoport-tagság a Log Analytics-munkaterületen.  Ezeket a rekordokat rendelkezik olyan típusú **ComputerGroup** , és a tulajdonságait az alábbi táblázatban.  Rekordok nem jön létre számítógépcsoportokat a naplókeresések alapján.
 
 | Tulajdonság | Leírás |
 |:--- |:--- |
 | Típus |*ComputerGroup* |
 | SourceSystem |*SourceSystem* |
-| Computer |A számítógép nevét. |
+| Computer |A számítógép neve. |
 | Csoport |A csoport nevét. |
-| GroupFullName |Teljes elérési útja a csoporthoz, beleértve a forrás és a forrás neve. |
-| GroupSource |Forrás-csoport a gyűjtése történt. <br><br>ActiveDirectory<br>WSUS<br>WSUSClientTargeting |
-| GroupSourceName |A forrás az összegyűjtött a csoport nevére.  Active Directory szolgáltatásban ez pedig a tartomány nevét. |
-| ManagementGroupName |A felügyeleti csoport neve SCOM-ügynökök esetén.  Más ügynökök, ez pedig AOI -\<munkaterület azonosítója\> |
-| TimeGenerated |Dátum és idő, a számítógép csoport létrehozásakor vagy frissítésekor. |
+| GroupFullName |Teljes elérési útja a csoporthoz, többek között a forrás- és adatforrás neve. |
+| GroupSource |Forrás-csoporthoz való gyűjtése történt. <br><br>ActiveDirectory<br>WSUS<br>WSUSClientTargeting |
+| GroupSourceName |A forrás, az összegyűjtött a csoport nevére.  Az Active Directory Ez a tartománynév. |
+| ManagementGroupName |A felügyeleti csoport neve SCOM-ügynökök esetén.  Más ügynökök esetén ez AOI -\<munkaterület azonosítója\> |
+| TimeGenerated |Dátum és időpont a számítógép (csoport) létrehozott vagy frissített. |
 
 ## <a name="next-steps"></a>További lépések
-* További tudnivalók [keresések jelentkezzen](log-analytics-log-searches.md) az adatforrások és a megoldások gyűjtött adatok elemzésére.  
+* Ismerje meg [naplókereséseket](log-analytics-log-searches.md) az adatforrások és megoldások gyűjtött adatok elemzéséhez.  
 

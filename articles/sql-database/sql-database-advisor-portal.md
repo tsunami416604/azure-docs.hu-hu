@@ -12,12 +12,12 @@ ms.author: v-daljep
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 04/01/2018
-ms.openlocfilehash: d06d29fb43ea8d8971c3f013c1e66406a30798d3
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: 738e78e608dbd819f24125799a1e8d48859f1aa0
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47064256"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48043667"
 ---
 # <a name="find-and-apply-performance-recommendations"></a>Keresse meg és teljesítménnyel kapcsolatos javaslatok alkalmazása
 
@@ -105,7 +105,7 @@ Az Azure SQL Database automatikusan ajánlások megvalósítása állíthatja be
     ![Ajánlott indexek](./media/sql-database-automatic-tuning-enable/server.png)
 
 > [!NOTE]
-> Vegye figyelembe, hogy **DROP_INDEX** lehetőség jelenleg nem kompatibilis alkalmazások használatával a partíció közötti váltás és index mutatókat, és ezekben az esetekben nem szabad engedélyezni.
+> Vegye figyelembe, hogy **DROP_INDEX** lehetőség jelenleg nem kompatibilis alkalmazások használatával a partíció közötti váltás és index mutatókat. 
 >
 
 Miután kiválasztotta a kívánt beállításait, kattintson az Alkalmaz gombra.

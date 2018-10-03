@@ -4,21 +4,21 @@ description: Hogyan konfigurálható az Azure Load Balancerhez forrás IP-affini
 services: load-balancer
 documentationcenter: na
 author: KumudD
-manager: jpconnock
+manager: timlt
 ms.assetid: 7df27a4d-67a8-47d6-b73e-32c0c6206e6e
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/01/2018
+ms.date: 09/25/2017
 ms.author: kumud
-ms.openlocfilehash: 776621f9ef95867c6e3c25dd11c656d451b6730e
-ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
+ms.openlocfilehash: cfca7361831734baaf150b3e19b14c7dc88def36
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/02/2018
-ms.locfileid: "48018128"
+ms.locfileid: "48043626"
 ---
 # <a name="configure-the-distribution-mode-for-azure-load-balancer"></a>Az Azure Load Balancer az elosztási módjának konfigurálása
 
@@ -48,13 +48,13 @@ Egy másik használatieset-forgatókönyvek feltöltés media. Az adatfeltölté
 
 ## <a name="configure-source-ip-affinity-settings"></a>Forrás IP-affinitás beállítások konfigurálása
 
-A Resource Managerrel üzembe helyezett virtuális gépekhez a PowerShell használatával a terheléselosztó elosztási beállításai meg a terheléselosztó a terheléselosztási szabály módosítása.  Ez frissíti a terjesztési mód egy meglévő terheléselosztó-szabályt:
+A Resource Managerrel üzembe helyezett virtuális gépekhez a PowerShell használatával egy meglévő terheléselosztási szabály load balancer terjesztési beállításainak módosításához. Ez frissíti a terjesztési mód: 
 
 ```powershell 
 $lb = Get-AzureRmLoadBalancer -Name MyLb -ResourceGroupName MyLbRg 
 $lb.LoadBalancingRules[0].LoadDistribution = 'sourceIp' 
 Set-AzureRmLoadBalancer -LoadBalancer $lb 
-``` 
+```
 
 Klasszikus virtuális gépek esetében az Azure PowerShell használatával módosíthatja a telepítési beállításokat. Egy Azure-végpont hozzáadása egy virtuális gépet, és a terheléselosztó elosztási módjának konfigurálása:
 

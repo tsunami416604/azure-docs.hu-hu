@@ -9,19 +9,23 @@ ms.component: linguistic-analysis
 ms.topic: conceptual
 ms.date: 09/27/2016
 ms.author: lesun
-ms.openlocfilehash: 636b8bc4ef41674d1e9ca12111aecee05870f381
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ROBOTS: NOINDEX
+ms.openlocfilehash: a01fcea4ae6c8950d578bacefc2f064586d7306b
+ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46124568"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48238520"
 ---
 # <a name="part-of-speech-tagging"></a>Rész-az-szövegrészeket
+
+> [!IMPORTANT]
+> A nyelvi elemzés előzetes verziója 2018. augusztus 9 volt leszerelése. Azt javasoljuk, [Azure Machine Learning szövegelemzési moduljait](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/text-analytics) szöveg feldolgozásra és elemzésre.
 
 ## <a name="background-and-motivation"></a>Háttér-információkért és motiváció
 
 A szöveg mondatokra és lexikális lett elválasztva, ha a következő lépés az elemzés az azonosítsa a kategória vagy rész-az-speech minden szó.
-Ezek közé tartozik például a kategóriák *főnév* (általában jelölő személyek, helyek, dolog, ötleteket, stb.) és *művelet* (általában jelölő műveletek, megváltozik, állam stb. Az egyes szavak a rész-az-speech egyértelmű legyen (például *quagmire* valójában csak egy főnevet), azonban számos más, a állapítható meg, hogy nehéz.
+Ezek közé tartozik például a kategóriák *főnév* (általában jelölő személyek, helyek, dolog, ötleteket, stb.) és *művelet* (általában jelölő műveletek, megváltozik, állam stb. Az egyes szavak a rész-az-speech egyértelmű legyen (például *quagmire* csak egy főnevet van), azonban számos más, a állapítható meg, hogy nehéz.
 *Tábla* sikerült a hely hol található (vagy a számokat 2-D elrendezését), de is "tábla egy hozzászólás" is.
 
 ## <a name="list-of-part-of-speech-tags"></a>Rész-, beszéd címkék listája
@@ -45,10 +49,10 @@ Ezek közé tartozik például a kategóriák *főnév* (általában jelölő sz
 | INDIA | preposition vagy megemlítése együttes használata| Ha, hogy a benne lévő |
 | JJ | melléknév vagy számok sorszámnál | kilencedik viszonylag execrable multimodális |
 | JJR | összehasonlító melléknév | gyorsabb, hatékonyabb olcsóbb |
-| JJS | melléknév superlative | ajánlott leggyorsabb legolcsóbb | 
+| JJS | melléknév superlative | ajánlott leggyorsabb legolcsóbb |
 | LS | lista-elem jelölőjének | (a) (b) 1 2 A B A. B. |
 | MD | modális – kiegészítő | is előfordulhat, hogy kell fog sikerült előfordulhat, hogy meg kell kerülnie |
-| NEURÁLIS HÁLÓZAT | főnév, gyakori, egyetlen vagy tömeges | Potato pénzt cipő |
+| NEURÁLIS HÁLÓZAT | főnév, közös, egyes számban vagy háttértár | Potato pénzt cipő |
 | NNP | főnév, megfelelő, egyes számban | Kennedy Roosevelt Chicago Weehauken |
 | NNPS | főnév, megfelelő, plural | Springfields cserjék |
 | NNS | főnév, közös, plural | kódrészletek mice mezők |

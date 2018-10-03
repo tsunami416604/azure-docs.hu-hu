@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/15/2017
 ms.author: govindk
-ms.openlocfilehash: a2c52844e09daf42418b4e548f7185e31dcf4ae9
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: 77f22201b897703f6e74a5a3626a2ccc04a814f4
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44053533"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48043226"
 ---
 # <a name="automatic-online-backup-and-restore-with-azure-cosmos-db"></a>Automatikus online biztonsági mentés és visszaállítás Azure Cosmos DB-vel
 Az Azure Cosmos DB az összes biztonsági mentések a rendszeres időközönként automatikusan vesz igénybe. Az automatikus biztonsági mentést készít a teljesítmény vagy az adatbázis-műveleteket rendelkezésre állásának befolyásolása nélkül. A biztonsági mentések külön-külön tárolja, egy másik storage szolgáltatásban, és ezeket a biztonsági mentéseket globálisan replikálva vannak a regionális katasztrófa szembeni ellenálló-képesség. Az automatikus biztonsági mentések készültek forgatókönyvek esetén, ha véletlenül törli a Cosmos DB-tárolóhoz, és később a adat-helyreállítás vagy egy vész-helyreállítási megoldást igényelnek.  
@@ -53,11 +53,15 @@ Az SQL API-hoz, ha meg szeretné tartani a saját pillanatképek használható J
 > Ha Ön "Kiépítése átviteli több adatbázis szintjén tárolók" – Ne feledje, a visszaállítás teljes adatbázis fiók szintjén történik. Ön Emellett ellenőrizze bizalommal a segélyszolgálatnak 8 órán belül, ha véletlenül törölte a tárolót. Adatok nem állítható vissza, ha 8 órán belül nem forduljon az ügyfélszolgálathoz. 
 
 
+
 ## <a name="restoring-a-database-from-an-online-backup"></a>Adatbázis visszaállítása az online biztonsági mentés
 
 Ha véletlenül törli az adatbázis vagy -tároló, [küldjön egy támogatási jegyet](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) vagy [hívja meg az Azure-támogatás](https://azure.microsoft.com/support/options/) az adatok biztonsági másolatból történő visszaállítását a legutóbbi automatikus. Az Azure-támogatás érhető el a kiválasztott csomagok, például csak a Standard, fejlesztői, a támogatás nem érhető el az alapszintű csomaggal. Különböző támogatási csomagok kapcsolatos további információkért lásd: [Azure-támogatási csomagok](https://azure.microsoft.com/support/plans/) lapot. 
 
 Ha az adatbázis visszaállításához (tartalmazza az esetekben, ahol a rendszer törli-e a tárolóban lévő dokumentumok) adatok sérülése probléma miatt, tekintse meg kell [adatsérülés kezelése](#handling-data-corruption) további lépéseket a sérült adatok elkerülése érdekében szükség szerint felülírják a meglévő biztonsági másolatok. Egy adott vissza kell állítani a biztonsági mentési pillanatkép a Cosmos DB van szükség, hogy az adatok a biztonsági mentési ciklust, hogy a pillanatkép idejére elérhető volt.
+
+> [!NOTE]
+> Gyűjtemények és adatbázisok csak egy kéréseinek visszaállítása után vissza tudja állítani. Az ügyfél responsbility arra, hogy a tároló vagy az adatbázis törlése az adatok visszaállítása után azonnal. Ha nem törli a visszaállított adatbázisokat vagy gyűjteményeket, azok áfatartalma a visszaállított gyűjtemény vagy az adatbázis költsége számítunk fel. Tehát nagyon fontos azonnal törli őket. 
 
 ## <a name="handling-data-corruption"></a>Adatsérülés kezelése
 

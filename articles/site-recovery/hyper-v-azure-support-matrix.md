@@ -5,15 +5,15 @@ services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
-ms.topic: article
-ms.date: 08/14/2018
+ms.topic: conceptual
+ms.date: 10/02/2018
 ms.author: raynew
-ms.openlocfilehash: e363885afb77a60bfc0229a872fdb4e519d5979d
-ms.sourcegitcommit: 7b845d3b9a5a4487d5df89906cc5d5bbdb0507c8
+ms.openlocfilehash: 8c943b9ec8114699a7fad487c7d669b58942c019
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2018
-ms.locfileid: "42055518"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48042529"
 ---
 # <a name="support-matrix-for-hyper-v-replication-to-azure"></a>Hyper-V-replikáció az Azure-támogatási mátrixa
 
@@ -59,16 +59,16 @@ Lemez hozzáadása a replikált Hyper-V virtuális Gépen | Nem támogatott. Til
 
 **Összetevő** | **A Hyper-V Virtual Machine Manager** | **A Hyper-V Virtual Machine Manager nélkül**
 --- | --- | ---
-Gazdagép-hálózat: NIC-összevonás | Igen
-Gazdagép hálózati: VLAN | Igen
-Gazdagép hálózati: IPv4 | Igen
-Gazdagép hálózati: IPv6 | Nem
-Vendég Virtuálisgép-hálózat: NIC-összevonás | Nem
-Vendég virtuális gép hálózati: IPv4 | Igen
-Vendég virtuális gép hálózati: IPv6 | Nem
-Vendég virtuális gép hálózati: statikus IP-cím (Windows) | Igen
-Vendég virtuális gép hálózati: statikus IP-cím (Linux) | Nem
-Vendég virtuális gép hálózati: több hálózati Adapterrel | Igen
+Gazdagép-hálózat: NIC-összevonás | Igen | Igen
+Gazdagép hálózati: VLAN | Igen | Igen
+Gazdagép hálózati: IPv4 | Igen | Igen
+Gazdagép hálózati: IPv6 | Nem | Nem
+Vendég Virtuálisgép-hálózat: NIC-összevonás | Nem | Nem
+Vendég virtuális gép hálózati: IPv4 | Igen | Igen
+Vendég virtuális gép hálózati: IPv6 | Nem | Igen
+Vendég virtuális gép hálózati: statikus IP-cím (Windows) | Igen | Igen
+Vendég virtuális gép hálózati: statikus IP-cím (Linux) | Nem | Nem
+Vendég virtuális gép hálózati: több hálózati Adapterrel | Igen | Igen
 
 
 

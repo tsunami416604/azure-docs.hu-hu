@@ -10,14 +10,18 @@ ms.component: linguistic-analysis
 ms.topic: conceptual
 ms.date: 03/23/2016
 ms.author: lesun
-ms.openlocfilehash: a998bdf32be948448131ea12db1b7d4204e6722d
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ROBOTS: NOINDEX
+ms.openlocfilehash: f8c7aba2b853f3916c2d01d94d49090a4b3e36a0
+ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46127465"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48237231"
 ---
 # <a name="analyzer-names"></a>Elemző nevek
+
+> [!IMPORTANT]
+> A nyelvi elemzés előzetes verziója 2018. augusztus 9 volt leszerelése. Azt javasoljuk, [Azure Machine Learning szövegelemzési moduljait](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/text-analytics) szöveg feldolgozásra és elemzésre.
 
 Egy némileg összetettebb elnevezési struktúráját elemzők, hogy mindkét elemzők és a pontosság ismertetése, mi a név azt jelenti, hogy a nagyobb rugalmasság érdekében használjuk.
 Elemző nevek négy részből áll: egy Azonosítót, egy objektumtípust, specifikáció és implementációja.

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/27/2017
 ms.author: apimpm
-ms.openlocfilehash: 8f3dddd72ab8858a1e60389417cc0c7630df302f
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ms.openlocfilehash: 29e918733cc72010aa6aa5c0f42d613331eec2a2
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35621653"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48044722"
 ---
 # <a name="api-management-transformation-policies"></a>Az API Management átalakítási szabályzatok
 Ez a témakör egy hivatkozást kínál a következő az API Management házirendek. Hozzáadása és házirendek konfigurálásával kapcsolatos tudnivalókat lásd: [az API Management házirendek](http://go.microsoft.com/fwlink/?LinkID=398186).
@@ -652,7 +652,7 @@ OriginalUrl.
 
 -   **A házirend-szakaszok:** bejövő
 
--   **A házirend-hatókörök:** termék, API-művelet
+-   **A házirend-hatókörök:** globális, termék, API-művelet
 
 ##  <a name="XSLTransform"></a> Az XSLT-vel XML-átalakítás
  A `Transform XML using an XSLT` házirend vonatkozik egy XSL átalakítása XML kérelem vagy válasz törzsében.

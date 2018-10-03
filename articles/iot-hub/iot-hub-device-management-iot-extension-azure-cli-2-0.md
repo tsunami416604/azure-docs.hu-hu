@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 01/16/2018
 ms.author: menchi
-ms.openlocfilehash: e36b8a680f0dc5bf6b438ab00620d4f2a5b9770c
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: c5d4299d2d391a25bfab579f5f78da3718afc24c
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46980593"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48043006"
 ---
 # <a name="use-the-iot-extension-for-azure-cli-for-azure-iot-hub-device-management"></a>Azure CLI az Azure IoT Hub-Eszközfelügyelet az IoT-bővítmény használata
 
@@ -27,8 +27,8 @@ ms.locfileid: "46980593"
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
-| Lehetőséget          | Tevékenység                                                                                                                            |
-|----------------------------|---------------------------------------------------------------------------------------------------------------------------------|
+| Lehetőséget          | Tevékenység  |
+|----------------------------|-----------|
 | Közvetlen metódusok             | Hogy egy eszköz, például indítása vagy leállítása üzeneteket küldjenek vagy az eszköz újraindítása jár el.                                        |
 | Ikereszköz kívánt tulajdonságait    | Egy eszköz egyes állapotok, például a LED zöld vagy a telemetriai adatok küldési időköz – 30 percet kell helyezni.         |
 | Ikereszköz jelentett tulajdonságait   | Az eszköz a jelentett állapot beolvasása. Például az eszköz jelenti a LED most villogó-e.                                    |
@@ -49,17 +49,19 @@ Azure CLI és az IoT-bővítmény futtatása Azure CLI-hez a különböző felü
 
 ## <a name="what-you-need"></a>Mi szükséges
 
-- Az oktatóanyag [beállítani eszközét](iot-hub-raspberry-pi-kit-node-get-started.md) fejeződött be, amely magában foglalja az alábbi követelményeknek:
+* Az oktatóanyag elvégzéséhez [beállítani eszközét](iot-hub-raspberry-pi-kit-node-get-started.md) mely kiterjed a következő követelményeknek:
+
   - Aktív Azure-előfizetés.
   - Az Azure IoT hub az előfizetéséhez.
   - Egy ügyfélalkalmazás, amely üzeneteket küld az Azure IoT hub.
 
-- Győződjön meg arról, hogy az eszköz fut az ügyfélalkalmazásban, ez az oktatóanyag során.
+* Győződjön meg arról, hogy az eszköz fut az ügyfélalkalmazásban, ez az oktatóanyag során.
 
-- [Python 2.7x vagy Python 3.x](https://www.python.org/downloads/)
-- Az Azure parancssori felület. Ha szeretné telepíteni, tekintse meg [az Azure CLI telepítése](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest). Legalább az Azure CLI 2.0.24-es verzióját kell vagy újabb. A verziószámot az `az –version` paranccsal ellenőrizheti. 
-- Az IoT-bővítmény telepítése. A legegyszerűbb módszer az `az extension add --name azure-cli-iot-ext` futtatása. [Az IoT-bővítmény fontos (readme) fájlja](https://github.com/Azure/azure-iot-cli-extension/blob/master/README.md) több módszert is ismertet a bővítmény telepítésére.
+* [Python 2.7x vagy Python 3.x](https://www.python.org/downloads/)
 
+* Az Azure parancssori felület. Ha szeretné telepíteni, tekintse meg [az Azure CLI telepítése](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest). Legalább az Azure CLI 2.0.24-es verzióját kell vagy újabb. A verziószámot az `az –version` paranccsal ellenőrizheti. 
+
+* Az IoT-bővítmény telepítése. A legegyszerűbb módszer az `az extension add --name azure-cli-iot-ext` futtatása. [Az IoT-bővítmény fontos (readme) fájlja](https://github.com/Azure/azure-iot-cli-extension/blob/master/README.md) több módszert is ismertet a bővítmény telepítésére.
 
 ## <a name="log-in-to-your-azure-account"></a>Jelentkezzen be az Azure-fiókjába.
 
@@ -72,7 +74,10 @@ az login
 ## <a name="direct-methods"></a>Közvetlen metódusok
 
 ```bash
-az iot hub invoke-device-method --device-id <your device id> --hub-name <your hub name> --method-name <the method name> --method-payload <the method payload>
+az iot hub invoke-device-method --device-id <your device id> \
+  --hub-name <your hub name> \
+  --method-name <the method name> \
+  --method-payload <the method payload>
 ```
 
 ## <a name="device-twin-desired-properties"></a>Ikereszköz kívánt tulajdonságait
@@ -80,7 +85,8 @@ az iot hub invoke-device-method --device-id <your device id> --hub-name <your hu
 Állítsa be a kívánt tulajdonság időköz = 3000 a következő parancs futtatásával:
 
 ```bash
-az iot hub device-twin update -n <your hub name> -d <your device id> --set properties.desired.interval = 3000
+az iot hub device-twin update -n <your hub name> \
+  -d <your device id> --set properties.desired.interval = 3000
 ```
 
 Ez a tulajdonság elolvashatja az eszközről.
@@ -106,7 +112,10 @@ az iot hub device-twin show --hub-name <your hub name> --device-id <your device 
 Adjon hozzá egy mezőt szerepkör = hőmérsékleti és páratartalom az eszközön a következő parancs futtatásával:
 
 ```bash
-az iot hub device-twin update --hub-name <your hub name> --device-id <your device id> --set tags = '{"role":"temperature&humidity"}}'
+az iot hub device-twin update \
+  --hub-name <your hub name> \
+  --device-id <your device id> \
+  --set tags = '{"role":"temperature&humidity"}}'
 ```
 
 ## <a name="device-twin-queries"></a>Ikereszköz-lekérdezések
@@ -114,13 +123,15 @@ az iot hub device-twin update --hub-name <your hub name> --device-id <your devic
 Eszközök a szerepkör címkével ellátott lekérdezése = 'hőmérsékleti és páratartalom' a következő parancs futtatásával:
 
 ```bash
-az iot hub query --hub-name <your hub name> --query-command "SELECT * FROM devices WHERE tags.role = 'temperature&humidity'"
+az iot hub query --hub-name <your hub name> \
+  --query-command "SELECT * FROM devices WHERE tags.role = 'temperature&humidity'"
 ```
 
 Minden eszköz, kivéve azokat, egy szerepkör lekérdezése = 'hőmérsékleti és páratartalom' a következő parancs futtatásával:
 
 ```bash
-az iot hub query --hub-name <your hub name> --query-command "SELECT * FROM devices WHERE tags.role != 'temperature&humidity'"
+az iot hub query --hub-name <your hub name> \
+  --query-command "SELECT * FROM devices WHERE tags.role != 'temperature&humidity'"
 ```
 
 ## <a name="next-steps"></a>További lépések

@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 07/30/2018
 ms.author: barbkess
 ms.reviewer: asmalser
-ms.openlocfilehash: 1f7a38994cb127d2edb59e9d3befeece99a7feb1
-ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
+ms.openlocfilehash: 8a84f2f13318dea5c2b99af0b880f2adb1343c8d
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/02/2018
-ms.locfileid: "48018689"
+ms.locfileid: "48042785"
 ---
 # <a name="automate-user-provisioning-and-deprovisioning-to-saas-applications-with-azure-active-directory"></a>Kiépítés és megszüntetés SaaS-alkalmazásokhoz az Azure Active Directory felhasználói automatizálása
 ## <a name="what-is-automated-user-provisioning-for-saas-apps"></a>Mi az automatizált felhasználókiépítése SaaS-alkalmazások?
@@ -237,29 +237,29 @@ Forgatókönyv-alapú hogyan háríthatók el a felhasználók automatikus átad
 
 Egy példa részletes üzembe helyezés tervezése kimenő felhasználókiépítés egy alkalmazásba, lásd: a [identitás üzembe helyezési útmutató a felhasználók átadásának](https://aka.ms/userprovisioningdeploymentplan).
 
-##<a name="more-frequenty-asked-questions"></a>További frequenty gyakori kérdések
+##<a name="more-frequently-asked-questions"></a>További gyakori kérdések
 
 ###<a name="does-automatic-user-provisioning-to-saas-apps-work-with-b2b-users-in-azure-ad"></a>Nem a felhasználók automatikus átadása az SaaS-alkalmazásai működését a B2B-felhasználók Azure AD-ben?
 
 Igen, akkor lehet a szolgáltatás kiépítése B2B (vagy vendég) felhasználók kiépítése az Azure AD SaaS-alkalmazásokhoz az Azure AD-felhasználó használata.
 
-Azonban a B2B-felhasználók is jelentkezhetnek be az Azure AD SaaS-alkalmazáshoz, a SaaS-alkalmazás rendelkeznie kell azt a SAML-alapú egyszeri bejelentkezési képesség a meghatározott módon konfigurálva. B2B-felhasználók történő bejelentkezések támogatásához SaaS-alkalmazások konfigurálásáról további információkért lásd: [konfigurálása SaaS-alkalmazások B2B-együttműködés]( https://docs.microsoft.com/azure/active-directory/b2b/configure-saas-apps).
+Azonban tudni bejelentkezni a SaaS-alkalmazás az Azure AD B2B-felhasználók, a SaaS-alkalmazás kell rendelkeznie a SAML-alapú egyszeri bejelentkezési képesség a meghatározott módon konfigurálva. B2B-felhasználók történő bejelentkezések támogatásához SaaS-alkalmazások konfigurálásáról további információkért lásd: [konfigurálása SaaS-alkalmazások B2B-együttműködés]( https://docs.microsoft.com/azure/active-directory/b2b/configure-saas-apps).
 
 ###<a name="does-automatic-user-provisioning-to-saas-apps-work-with-dynamic-groups-in-azure-ad"></a>Nem a felhasználók automatikus átadása SaaS-alkalmazások munkahelyi dinamikus csoportok az Azure AD-ben?
 
-Igen. "Szinkronizálás csak a hozzárendelt felhasználók és csoportok" konfigurálva, amikor a kiszolgáló üzembe helyezése az Azure AD felhasználói környezetben is kioszt vagy megszüntet egy SaaS-alkalmazás-e a tagjai alapján a felhasználók egy [dinamikus csoport](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-create-rule]). Dinamikus csoportok együttműködnek a "minden felhasználó és csoport szinkronizálása" lehetőséget.
+Igen. Ha "szinkronizálás csak a hozzárendelt felhasználók és csoportok" konfigurálva, a kiszolgáló üzembe helyezése az Azure AD felhasználói építhető vagy megszüntetni hozzárendeléseket felhasználók SaaS-alkalmazásban alapul-e a tagjai egy [dinamikus csoport](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-create-rule]). Dinamikus csoportok együttműködnek a "minden felhasználó és csoport szinkronizálása" lehetőséget.
 
 Dinamikus csoportok használatáért azonban befolyásolhatja a SaaS-alkalmazásokhoz való üzembe helyezést, az Azure AD-ből teljes körű felhasználói általános teljesítményét. Dinamikus csoportok használata esetén tartsa az alábbi korlátozásokkal és javaslatok szem előtt:
 
 * Milyen gyorsan egy dinamikus csoport felhasználói kiépített vagy SaaS-alkalmazásokban – figyelmeztetés megszüntetésről függ, milyen gyors képes kiértékelni a dinamikus csoport tagsága módosul. A feldolgozás állapotának egy dinamikus csoport információkért lásd: [ellenőrizze a tagsági szabály feldolgozási állapotát](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-create-rule#check-processing-status-for-a-membership-rule).
 
-* Dinamikus csoportok használatakor a szabályok alaposan meg kell kiépítésének és megszüntetésének biztosítása szem előtt, felhasználóval, a tagsági adatvesztést eredményez a megszüntetési esemény.
+* Dinamikus csoportok használatakor a szabályok alaposan meg kell az üzembe helyezést és megszüntetést szem előtt, felhasználó, a tagsági adatvesztést eredményez a megszüntetési esemény.
 
 ###<a name="does-automatic-user-provisioning-to-saas-apps-work-with-nested-groups-in-azure-ad"></a>Nem a felhasználók automatikus átadása SaaS-alkalmazások munkahelyi beágyazott csoportok az Azure AD-ben?
 
 Nem. "Szinkronizálás csak a hozzárendelt felhasználók és csoportok" konfigurálva, amikor a kiszolgáló üzembe helyezése az Azure AD felhasználói nem sikerül, olvasni, vagy a beágyazott csoportok lévő felhasználók kiépítése. A rendszer csak olvashatja, és konfigurálta a felhasználókat, amelyek az explicit módon hozzárendelt csoport közvetlen tagjai.
 
-Ez az egyik korlátozása "alkalmazások hozzárendelések. csoport-alapú", amely is vonatkozik, az egyszeri bejelentkezés, és ismertetett [csoport használatával SaaS-alkalmazásokhoz való hozzáférés kezelése](https://docs.microsoft.com/en-us/azure/active-directory/users-groups-roles/groups-saasapps ).
+Ez az egyik korlátozása "alkalmazások hozzárendelések. csoport-alapú", amely szintén hatással van az egyszeri bejelentkezés, és leírt [csoport használatával SaaS-alkalmazásokhoz való hozzáférés kezelése](https://docs.microsoft.com/en-us/azure/active-directory/users-groups-roles/groups-saasapps ).
 
 Áthidaló megoldásként, érdemes explicit módon hozzárendelése (vagy más módon [hatókörét a](https://docs.microsoft.com/en-us/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)) a csoportokat, amelyek a felhasználókkal, akik szükség lesz.
 

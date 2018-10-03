@@ -8,18 +8,27 @@ ms.reviewer: mldocs
 ms.service: machine-learning
 ms.component: core
 ms.topic: article
-ms.date: 09/24/2018
-ms.openlocfilehash: d84040dc440c373ae9bae6dbac7a95109a387ba7
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.date: 10/01/2018
+ms.openlocfilehash: d4910eb3dfacb46efe3f85aea3a441bdaaeb1392
+ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47162746"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48236412"
 ---
 # <a name="known-issues-and-troubleshooting-azure-machine-learning-service"></a>Ismert problémák és hibaelhárítás az Azure Machine Learning szolgáltatás
  
 Ez a cikk segít keresse meg és javítsa ki a hibákat vagy hibákat észlelt, amikor az Azure Machine Learning szolgáltatás használatával. 
 
+## <a name="image-building-failure"></a>Lemezkép létrehozása sikertelen
+
+Kép készítése hiba a webszolgáltatás üzembe helyezésekor. Megkerülő megoldás az, hogy hozzáadása "pynacl 1.2.1-es ==" Conda-fájlba a rendszerkép-konfiguráció pip függőségként.  
+
+## <a name="pipelines"></a>Folyamatok
+Fordul elő hiba történt a PythonScriptStep többször is feldolgozza a egy sort a szkript vagy a paraméterek módosítása nélkül. Megkerülő megoldás, hogy építse újra a PipelineData objektum.
+
+## <a name="fpgas"></a>FPGA-kban
+Nem lesz képes FPGA-kban a modellek üzembe helyezése, amíg nem kérte, és az FPGA kvóta jóvá lett hagyva. Hozzáférés kérése, töltse ki az űrlap kvóta: https://aka.ms/aml-real-time-ai
 
 ## <a name="databricks"></a>Databricks
 

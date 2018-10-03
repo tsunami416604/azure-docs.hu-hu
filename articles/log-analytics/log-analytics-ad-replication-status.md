@@ -1,6 +1,6 @@
 ---
-title: Az Active Directory replikációs állapotát az Azure Naplóelemzés figyelése |} Microsoft Docs
-description: Az Active Directory replikációs állapotát megoldáscsomag rendszeresen figyeli az Active Directory-környezet minden replikációs hibák.
+title: Az Azure Log Analytics az Active Directory replikációs állapot figyelése |} A Microsoft Docs
+description: Az Active Directory replikációs állapota megoldáscsomag rendszeresen figyeli az Active Directory-környezetet a replikációs hibákat.
 services: log-analytics
 documentationcenter: ''
 author: mgoedtel
@@ -14,41 +14,41 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/24/2018
 ms.author: magoedte
-ms.component: na
-ms.openlocfilehash: 0ccd457295584f871088bc20864ef103648f1654
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.component: ''
+ms.openlocfilehash: 7c850eee67224d09ea2715a58c3cd8eca4ab07af
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37128724"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48041900"
 ---
-# <a name="monitor-active-directory-replication-status-with-log-analytics"></a>A Naplóelemzési Active Directory replikációs állapot figyelése
+# <a name="monitor-active-directory-replication-status-with-log-analytics"></a>A Log Analytics használatával az Active Directory-replikációs állapotának figyelése
 
 ![AD-replikáció állapotát szimbólum](./media/log-analytics-ad-replication-status/ad-replication-status-symbol.png)
 
-Az Active Directory az informatikai környezetben vállalati nyilvános kulcsokra épülő. Magas rendelkezésre állás és a magas teljesítmény biztosítása érdekében minden egyes tartományvezérlő rendelkezik saját az Active Directory-adatbázis másolatát. Ahhoz, hogy a módosítások átvitele a vállalaton belül a tartományvezérlő replikálja egymás mellett. A replikálási folyamat-hibák hatására problémák számos a vállalaton belül.
+Active Directory a vállalati IT-környezet legfontosabb összetevője. Annak érdekében, magas rendelkezésre állású és nagy teljesítményű, minden egyes tartományvezérlő rendelkezik az Active Directory-adatbázis a saját példányát. Annak érdekében, hogy a módosítások propagálása a vállalaton belül a tartományvezérlő replikálja egymással. Hibák a replikációs folyamat különböző problémákat okozhat a vállalaton belül.
 
-Az AD-replikáció állapotát megoldáscsomag rendszeresen figyeli az Active Directory-környezet a replikációs hibákat.
+Az AD Replication Status megoldáscsomag rendszeresen figyeli az Active Directory-környezetet a replikációs hibákat.
 
-## <a name="installing-and-configuring-the-solution"></a>Telepítése és a megoldás konfigurálása
+## <a name="installing-and-configuring-the-solution"></a>A megoldás telepítése és konfigurálása
 A megoldás telepítésekor és konfigurálásakor vegye figyelembe az alábbi információkat.
 
-* Telepítenie kell ügynökök olyan tartományvezérlőn, amely a tartomány tagjaként kell kiértékelni. Vagy telepíthet ügynököket a kiszolgálókon és az ügynökök AD replikációs adatokat küldeni a Naplóelemzési konfigurálnia kell. Windows rendszerű számítógépek csatlakoztatása a Log Analyticshez ismertetése: [Log Analyticshez való csatlakozás Windows számítógépek](log-analytics-windows-agent.md). Ha a tartományvezérlő már tartozik egy meglévő System Center Operations Manager-környezet, amelyet szeretne csatlakozni a szolgáltatáshoz, lásd: [csatlakozás az Operations Manager szolgáltatáshoz](log-analytics-om-agents.md).
-* Az Active Directory replikációs állapotát megoldás hozzáadni a Naplóelemzési munkaterület ismertetett eljárással [hozzáadni a Naplóelemzési megoldások a megoldások gyűjteményből](log-analytics-add-solutions.md).  Nincs szükség további konfigurációra.
+* Ügynököket kell telepítenie a tartományvezérlőkön, amelyek ki kell értékelni a tartomány tagjai. Vagy tag kiszolgálón telepíti az ügynökök és az ügynökök AD replikációs adatokat küldeni a Log Analytics konfigurálnia kell. Windows-számítógépek csatlakoztatása a Log Analytics ismertetése: [a Log Analyticshez való csatlakozáshoz Windows számítógépek](log-analytics-windows-agent.md). Ha a tartományvezérlő már a Log Analyticshez való csatlakozáshoz, olvassa el a kívánt meglévő System Center Operations Manager környezet része [Operations Manager csatlakoztatása a Log Analytics](log-analytics-om-agents.md).
+* Az Active Directory replikációs állapota megoldás hozzáadása a Log Analytics-munkaterülethez ismertetett folyamatot [adja hozzá a Log Analytics solutions kövesse a megoldástárban](log-analytics-add-solutions.md).  Nincs szükség további konfigurációra.
 
 ## <a name="ad-replication-status-data-collection-details"></a>AD replikációs állapot adatok gyűjtemény részletei
-A következő táblázat adatgyűjtési módszerek és egyéb adatok gyűjtése hogyan AD replikációs állapot részleteit.
+Az alábbi táblázatban látható adatok gyűjtési módszerek és egyéb hogyan adatgyűjtés az AD Replication Status részleteit.
 
-| Platform | Közvetlen ügynök | SCOM-ügynököt | Azure Storage | SCOM szükséges? | Felügyeleti csoport keresztül küldött SCOM ügynök adatok | Gyűjtemény gyakorisága |
+| Platform | Közvetlen ügynök | SCOM-ügynök | Azure Storage | Az SCOM szükséges? | Az SCOM agent adatküldés felügyeleticsoport-n keresztül | Gyűjtés gyakorisága |
 | --- | --- | --- | --- | --- | --- | --- |
 | Windows |&#8226; |&#8226; |  |  |&#8226; |öt naponta |
 
-## <a name="optionally-enable-a-non-domain-controller-to-send-ad-data-to-log-analytics"></a>Másik lehetőségként a nem-tartományvezérlő AD adatokat küldeni a Naplóelemzési engedélyezése
-Ha nem szeretné, a tartományvezérlőket bármelyikét közvetlen elérésére Naplóelemzési, használhatja lévő többi számítógép abban a tartományban, Log Analyticshez kapcsolódik az AD-replikáció állapotát megoldáscsomag adatokat gyűjthessen és küldheti az adatokat.
+## <a name="optionally-enable-a-non-domain-controller-to-send-ad-data-to-log-analytics"></a>Szükség esetén engedélyezze egy nem tartományvezérlő AD adatokat küldeni a Log Analytics
+Ha nem szeretne minden tartományvezérlő közvetlen csatlakoztatása a Log Analytics segítségével többi számítógép a tartományban, a Log Analyticshez csatlakoztatva a az AD Replication Status megoldáscsomag adatokat gyűjthet, és hogy az adatok küldése.
 
-### <a name="to-enable-a-non-domain-controller-to-send-ad-data-to-log-analytics"></a>Egy nem tartományvezérlő AD adatokat küldeni a Naplóelemzési engedélyezése
-1. Győződjön meg arról, hogy a számítógép a figyelheti a replikációs állapot AD megoldást használni kívánt tartomány tagja.
-2. [A Windows számítógép csatlakoztatása a Log Analyticshez](log-analytics-windows-agent.md) vagy [csatlakoztassa a meglévő Operations Manager-környezetet a Naplóelemzési használatával](log-analytics-om-agents.md), ha az nincs csatlakoztatva.
+### <a name="to-enable-a-non-domain-controller-to-send-ad-data-to-log-analytics"></a>Egy nem tartományvezérlő AD adatokat küldeni a Log Analytics engedélyezése
+1. Ellenőrizze, hogy a számítógép a tartományhoz, akinél szeretné figyelni az AD Replication Status megoldás használatával.
+2. [A Windows-számítógép csatlakoztatása a Log Analytics](log-analytics-windows-agent.md) vagy [csatlakoztathatja azt a meglévő Operations Manager-környezetet a Log Analytics használatával](log-analytics-om-agents.md), ha nem kapcsolódik.
 3. Az adott számítógépen állítsa be a következő beállításkulcsot:
 
    * Kulcs: **HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\HealthService\Parameters\Management csoportok\<ManagementGroupName > \Solutions\ADReplication**
@@ -61,97 +61,97 @@ Ha nem szeretné, a tartományvezérlőket bármelyikét közvetlen elérésére
    >
 
 ## <a name="understanding-replication-errors"></a>Replikációs hibák ismertetése
-Miután szolgáltatáshoz küldött AD állapot adatokat, egy hasonló, a következő kép jelenleg hány replikálási hibákat jelző Naplóelemzési a csempe láthatja.  
+Miután AD replikációs állapota adatok Log Analytics felé küldött, a csempe a Log Analytics jelenleg hány replikációs hibákat jelző alábbi képen láthatóhoz hasonló jelenik meg.  
 ![AD-replikáció állapota csempe](./media/log-analytics-ad-replication-status/oms-ad-replication-tile.png)
 
-**Kritikus fontosságú replikációs hibák** , amelyek vagy annál újabb 75 %-a hibák a [szemétgyűjtési](https://technet.microsoft.com/library/cc784932%28v=ws.10%29.aspx) az Active Directory-erdőben.
+**Kritikus fontosságú replikációs hibák** hibák, amelyek legalább 75 %-a [szemétgyűjtési](https://technet.microsoft.com/library/cc784932%28v=ws.10%29.aspx) számára az Active Directory-erdőben.
 
-A csempére kattintva megtekintheti a hibákkal kapcsolatos további információkat.
-![AD-replikáció állapotát irányítópult](./media/log-analytics-ad-replication-status/oms-ad-replication-dash.png)
+Ha a csempére kattint, megtekintheti a hibákkal kapcsolatos további információk.
+![AD-replikáció állapota irányítópult](./media/log-analytics-ad-replication-status/oms-ad-replication-dash.png)
 
-### <a name="destination-server-status-and-source-server-status"></a>Cél kiszolgálójának állapotát és a forrás-kiszolgáló állapota
-Ezekben az oszlopokban a célkiszolgáló és adatforrás-kiszolgálók, amelyeken a replikációs hibák állapotának megjelenítése. Az a szám, miután minden tartományvezérlő neve jelzi az adott tartományvezérlőn replikációs hibák számát.
+### <a name="destination-server-status-and-source-server-status"></a>Célkiszolgáló állapota és a forráskiszolgáló állapota
+Ezek az oszlopok megjelenítése célkiszolgálókon és a replikációs hibákat tapasztaló adatforrás-kiszolgálók állapotát. Minden egyes tartományvezérlő neve után a szám azt jelzi, hogy a tartományvezérlő replikációs hibák száma.
 
-A célkiszolgáló és a forráskiszolgálókra hibák jelennek meg, mert hibák is megkönnyíti a célként megadott kiszolgáló szempontjából az a forrás kiszolgálón szempontjából, illetve más hibaelhárítását.
+A célkiszolgáló és a forrás kiszolgálók hibák jelennek meg, mert hibák is megkönnyíti a cél kiszolgáló szempontjából a kiszolgáló forrás szempontjából és mások hibaelhárítását.
 
-Ebben a példában láthatja, hogy sok célkiszolgálókon rendelkezik nagyjából hibák ugyanannyi, de egy forráskiszolgálóhoz (ADDC35), mint a többi sok további hiba van. Valószínű, hogy van-e probléma a ADDC35 okozza, hogy nem sikerült adatokat küldeni a replikációs partnerek számára. ADDC35 kijavította a problémák megoldására jelentős része, amely a célként megadott kiszolgáló területen megjelenik a hibákat.
+Ebben a példában láthatja, hogy számos célkiszolgálókon rendelkezik nagyjából azonos számú hibák, de van egy forráskiszolgálóhoz (ADDC35), mint minden más számos további hibákat tartalmaz. Valószínű, hogy van-e probléma a ADDC35 okozza, hogy nem küld adatokat a replikációs partnerek számára. A problémák megoldása a ADDC35 megoldhatja a hibákat, amely a cél kiszolgáló területen megjelenik számos.
 
-### <a name="replication-error-types"></a>Replikációs hiba típusa
-Ez a terület a hibák észlelhetők a vállalaton belüli típusú tájékoztatást nyújt. Minden egyes hibához rendelkezik egy numerikus kód és egy üzenet, amelyik segíthet a hiba okának meghatározásához.
+### <a name="replication-error-types"></a>Replikációs hibatípusok
+Ez a terület a típusú hibákat észlelt az egész vállalat adatait jeleníti meg. Minden egyes hibához egyedi numerikus kódot és a egy üzenet, amely segít meghatározni a hiba okának rendelkezik.
 
-A felső fánk lehetővé teszi egy ötletet, mely hibák jelennek meg több és ritkábban a környezetben.
+A fánkdiagram felső biztosít ötlet, mely hibák jelennek meg több és kevésbé gyakran a környezetben.
 
-Azt mutatja, ha több tartományvezérlő élmény ugyanaz a replikációs hiba. Ebben az esetben akkor előfordulhat, hogy képes azonosítani a megoldás egyik tartományvezérlőn kell, majd ismételje meg azt a többi tartományvezérlőn ugyanaz a hiba érinti.
+Bemutatja azt, ha a több tartományvezérlő élmény ugyanaz a replikációs hiba. Ebben az esetben, előfordulhat, hogy képesek felderíteni azonosíthatja a megoldás egy tartományvezérlőn, majd ismételje meg a többi tartományvezérlőn, ugyanaz a hiba érinti.
 
-### <a name="tombstone-lifetime"></a>Szemétgyűjtési
-A szemétgyűjtési határozza meg, mennyi ideig törölt objektum, a törlésre kijelölt nevezik, addig maradnak az Active Directory-adatbázisában. Ha egy törölt objektumot adja át a szemétgyűjtési, a szemétgyűjtő folyamatának automatikusan eltávolítja az Active Directory-adatbázis.
+### <a name="tombstone-lifetime"></a>Törlésjelző életciklusa
+A szemétgyűjtési határozza meg, mennyi ideig törölt objektum, a törlésre kijelölt néven, az Active Directory-adatbázis addig őrzi meg. Ha egy törölt objektumot adja át a szemétgyűjtési, egy szemétgyűjtési adatgyűjtési folyamat automatikusan eltávolítja az Active Directory-adatbázis.
 
-Az alapértelmezett szemétgyűjtési 180 nappal a Windows, a legújabb verzióját, de régebbi verzióin 60 nap volt, és egy Active Directory-rendszergazda explicit módon módosítható.
+Az alapértelmezett szemétgyűjtési legújabb verziója, Windows, 180 nap, de a régebbi verziók 60 napig volt, és explicit módon lehet módosítani egy Active Directory-rendszergazda.
 
-Fontos tudni, hogy ha tapasztal-e replikációs hibák vannak eléri vagy a szemétgyűjtési részhez. Ha két tartományvezérlő egy replikációs hiba, amely a szemétgyűjtési túli továbbra is fennáll, replikáció le van tiltva a két tartományvezérlők közötti akkor is, ha az alapul szolgáló replikációs hiba rögzített.
+Fontos tudni, hogy ha hamarosan eléri vagy elmúlt a szemétgyűjtési replikációs hibák merültek fel. Ha két tartományvezérlő replikációs ütköztek a szemétgyűjtési korábbi továbbra is fennáll, replikáció le van tiltva ezen két tartományvezérlők között akkor is, ha az alapul szolgáló replikációs hiba kijavítása.
 
-A szemétgyűjtési terület könnyebb legyen azonosítani annak a veszélye, azonban letiltott replikáció esetén helyek. A hibákat a **több mint 100 %-os TSL** kategória jelöl, amely nem replikálása a forrás és cél kiszolgáló közötti legalább a szemétgyűjtési az erdőhöz.
+A szemétgyűjtési terület segítségével azonosíthatja a helyek, annak a veszélye, azonban letiltott replikáció esetén. A hibát a **több mint 100 %-os TSL** kategória olyan partíció, amely legalább a szemétgyűjtési az erdő nem replikálta az a forrás- és kiszolgáló közötti jelöli.
 
-Ebben a helyzetben a replikációs hiba egyszerűen kijavítása nem lesz elég. Legalább manuálisan ellenőrizze, hogy azonosítása és a fennmaradó objektumok replikációs újraindításához először törölni kell. Akkor is szükség lehet egy tartományvezérlő leszerelése.
+Ebben a helyzetben egyszerűen javítása a replikációs hiba: nem elegendő. Minimális manuálisan ellenőrizze, hogy azonosítsa és a fennmaradó objektumok replikációs újraindításához először törölni kell. Még akkor is szükség lehet egy olyan tartományvezérlő leszerelése.
 
-Azonosító a múltbeli a szemétgyűjtési fennállásának replikációs hibákat, mellett szeretné nagy figyelmet fordítani az esetleges hibákat tartozó a **50-75 % TSL** vagy **75-100 %-os TSL** kategóriák.
+Azonosítása, amely rendelkezik a szemétgyűjtési korábbi megőrzött replikálási hibákat, mellett szeretné is nagy figyelmet fordítani az esetleges hibákat tartozó a **50 – 75 %-os TSL** vagy **75 – 100 %-os TSL** kategóriák.
 
-Ezek a hibák, amelyek egyértelműen fennmaradó, nem átmeneti, ezért valószínűleg kell feloldani a beavatkozást. Jó hírünk, hogy azok nem ért a szemétgyűjtési. Ha azonnal a problémák kijavításához és *előtt* érik a szemétgyűjtési, replikációs minimális kézi beavatkozás indíthatja újra.
+Ezek a hibák, amelyek egyértelműen fennmaradó, nem átmeneti, így valószínűleg a megoldásához beavatkozás szükséges. A jó hír az, hogy azok nem ért a szemétgyűjtési. Ha azonnal hárítsa el ezeket a problémákat és *előtt* elérnék a szemétgyűjtési, replikációs minimális manuális beavatkozás újraindíthatja.
 
-Amint korábban, az irányítópult-csempe a az AD-replikáció állapotát a megoldás bemutatja száma *kritikus* replikációs hibák, a környezetben, amelyet hibaként, amelyek több mint 75 %-a szemétgyűjtési (beleértve a hibák a rendszer több mint 100 %-a TSL). Ez a szám 0 megőrizni szükség.
+Feljegyzett korábban, az irányítópulton megjelenő csempén a az AD Replication Status megoldás számát jeleníti meg *kritikus* a környezetben, amelyet a hibákat, amelyek több mint 75 %-a szemétgyűjtési (beleértve a hibákat, a replikációs hibák amelyek több mint 100 %-a TSL). Arra törekszik, hogy ez a szám 0.
 
 > [!NOTE]
-> Minden a törlésre kijelölt élettartama százalékos számítás úgy, hogy ezeket a szolgáltatásajánlatokat pontosak, még akkor is, ha egy egyéni törlésre való kijelölés élettartamértékénél, állítsa be még megbízik az Active Directory erdő, a tényleges szemétgyűjtési alapulnak.
+> Minden a törlésre kijelölt élettartama százalékos számítások esetében az Active Directory-erdőben, a tényleges szemétgyűjtési alapulnak, így, hogy ezeket a százalékok pontosak, ha már rendelkezik egy egyéni élettartamértékénél beállítása.
 >
 >
 
-### <a name="ad-replication-status-details"></a>AD replikációs állapotának részletei
-Ha egyik listán valamely elemére kattint, megjelenik az naplófájl-keresési kapcsolatos további részletek. Az eredmények csak az, hogy az elem kapcsolatos hibák vannak szűrve. Például, ha rákattint az első tartományvezérlő alatt megjelenik **cél kiszolgáló állapota (ADDC02)**, a szűrt keresési eredmények között megjelenik a célkiszolgálónak felsorolt tartományvezérlő hibák megjelenítése:
+### <a name="ad-replication-status-details"></a>AD replikációs állapot részletei
+Ha egyik lista tetszőleges elemre kattint, láthatja naplóbeli keresés használatával további részleteit. Az eredmények csak az adott elem kapcsolódó hibák vannak szűrve. Például ha kattint az első tartományvezérlő alatt felsorolt **célkiszolgáló állapota (ADDC02)**, láthatja a szűrt találatokat show hibák az adott tartományvezérlő-listán a célkiszolgálón:
 
-![Replikációs állapothibákat AD a találatok között](./media/log-analytics-ad-replication-status/oms-ad-replication-search-details.png)
+![Replikációs állapothibák AD keresési eredmények](./media/log-analytics-ad-replication-status/oms-ad-replication-search-details.png)
 
-Itt további szűréséhez, módosítsa a keresési lekérdezést, és így tovább. A naplófájl-keresési kapcsolatos további információkért lásd: [keresések jelentkezzen](log-analytics-log-searches.md).
+Itt további szűréséhez, módosítsa a keresési lekérdezést, és így tovább. A naplóbeli keresés használatával kapcsolatos további információkért lásd: [Naplókereséseket](log-analytics-log-searches.md).
 
-A **HelpLink** mezőben látható, hogy adott hibával kapcsolatban további részletekkel a TechNet-oldal URL-CÍMÉT. Másolja, és ez a hivatkozás illessze be a böngészőablakot, hibaelhárítási és a hiba kijavítása kapcsolatos információk megjelenítéséhez.
+A **HelpLink** mezőben látható URL-címét a TechNet-oldal, további részletekkel a meghatározott hiba. Másolja, és ez a hivatkozás illessze be a böngészőablakot, hibaelhárítási és a hiba kijavítása információinak megtekintéséhez.
 
-Is **exportálása** az eredmények exportálása az Excelbe. Az adatok exportálása segítségével megjelenítheti a replikációs hiba adatok milyen módon.
+Is **exportálása** exportálhatja az eredményeket az Excelbe. Az adatok exportálása segítségével megjelenítheti a replikációs hiba adatok milyen módon.
 
-![exportált AD replikációs állapothibákat az Excel programban](./media/log-analytics-ad-replication-status/oms-ad-replication-export.png)
+![exportált AD replikációs állapota hibák az Excelben](./media/log-analytics-ad-replication-status/oms-ad-replication-export.png)
 
-## <a name="ad-replication-status-faq"></a>AD-replikáció állapotát – gyakori kérdések
-**K: milyen gyakran az AD replikációs állapot adatok frissítése?**
+## <a name="ad-replication-status-faq"></a>AD-replikáció állapota – gyakori kérdések
+**Kérdés: milyen gyakran van a replikációs adatokat AD frissíteni?**
 V: az adatokat öt naponta frissül.
 
 **K: van mód konfigurálása, hogy milyen gyakran frissül, ezeket az adatokat?**
-Jelenleg nem A:.
+V: jelenleg nem.
 
-**K: kell ahhoz, hogy a replikációs állapot a Naplóelemzési munkaterület hozzáadása összes a tartományvezérlő?**
-V: nem, csak egy tartományvezérlő hozzá kell adni. Ha több tartományvezérlő van a Naplóelemzési munkaterület, ezek az adatok Naplóelemzési érkezik.
+**K: van szükségem ahhoz, hogy a replikációs állapot hozzáadása összes saját tartományvezérlő a Log Analytics-munkaterület?**
+V: nem, csak egyetlen tartományvezérlő hozzá kell adni. Ha rendelkezik több tartományvezérlő a Log Analytics-munkaterülethez, azokat az adatokat küld a Log Analytics.
 
-**K: nem szeretnék minden olyan tartományvezérlőn hozzáadni a Naplóelemzési munkaterület. Továbbra is használható az AD-replikáció állapotát megoldás?**
-V: Igen. Engedélyezheti a beállításkulcs értékét állíthatja be. Lásd: [ahhoz, hogy egy nem tartományvezérlő AD adatokat küldeni a Naplóelemzési](#to-enable-a-non-domain-controller-to-send-ad-data-to-oms).
+**K: nem szeretnék a tartományvezérlők hozzáadni a Log Analytics-munkaterületet. Továbbra is használható az AD Replication Status megoldás?**
+V: Igen. Beállíthat egy beállításkulcs megadásával engedélyezze azt értékét. Lásd: [ahhoz, hogy egy nem tartományvezérlő AD adatokat küldeni a Log Analytics](#to-enable-a-non-domain-controller-to-send-ad-data-to-oms).
 
-**K: Mi az a folyamat, amelyet az adatgyűjtést a neve?**
+**K: Mi a neve, amely az adatok gyűjtése a folyamat?**
 A: AdvisorAssessment.exe
 
-**K: mennyi ideig tart a gyűjtött adatok?**
-V: gyűjtemény ideje az Active Directory-környezet méretétől függ, de általában a kisebb, mint 15 percet vesz igénybe.
+**K: mennyi ideig tart a gyűjtendő adatokat?**
+V: adatok gyűjtése idő az Active Directory-környezet méretétől függ, de általában kisebb, mint 15 perc alatt.
 
-**K: milyen típusú adatokat gyűjt a rendszer?**
-V: replikációs adatok összegyűjtése LDAP keresztül történik.
+**Kérdés: milyen típusú adatokat gyűjt?**
+V: replikációs gyűjtött LDAP-n keresztül.
 
 **K: van konfigurálni az adatgyűjtés mód?**
-Jelenleg nem A:.
+V: jelenleg nem.
 
-**K: milyen engedélyekkel kell adatok gyűjtéséért felelős ügyfélfeladatot?**
-A: az Active Directory normál felhasználói engedélyek megfelelőek.
+**Kérdés: milyen engedélyekkel van szükségem adatok gyűjtésére?**
+V: normál felhasználói engedélyek az Active Directory elegendőek.
 
 ## <a name="troubleshoot-data-collection-problems"></a>Adatok gyűjtése kapcsolatos problémák elhárítása
-Ahhoz, hogy az adatok gyűjtéséhez az AD-replikáció állapotát megoldáscsomag kell csatlakoztatni a Naplóelemzési munkaterület legalább egy tartományvezérlő van szükség. Csatlakozzon egy olyan tartományvezérlőre, amíg megjelenik egy üzenet azt jelzi, hogy **továbbra is gyűjtenek adatokat**.
+Annak érdekében, hogy az adatok gyűjtéséhez az AD Replication Status megoldáscsomag szükséges legalább egy tartományvezérlő, a Log Analytics-munkaterületre kell csatlakoztatni. Mindaddig, amíg a tartományvezérlő csatlakozott, megjelenik egy üzenet jelzi, hogy **adatok összegyűjtése még folyamatban van**.
 
-Csatlakozás egy tartományvezérlő segítségre van szüksége, ha címen tekintheti [Log Analyticshez való csatlakozás Windows számítógépek](log-analytics-windows-agent.md). Azt is megteheti, ha a tartományvezérlő már csatlakoztatva van egy meglévő System Center Operations Manager-környezetbe, megtekintheti címen [csatlakozás a System Center Operations Manager szolgáltatáshoz](log-analytics-om-agents.md).
+Csatlakozás a tartományvezérlők egyik segítségre van szüksége, ha megtekintheti a dokumentációban, [a Log Analyticshez való csatlakozáshoz Windows számítógépek](log-analytics-windows-agent.md). Azt is megteheti, ha a tartományvezérlő már csatlakoztatva van egy meglévő System Center Operations Manager-környezetbe, megtekintheti dokumentációját a [System Center Operations Manager csatlakoztatása a Log Analytics](log-analytics-om-agents.md).
 
-Ha nem szeretne összekapcsolni, a tartományvezérlőket bármelyikét közvetlenül Naplóelemzési vagy System Center Operations Manager, lásd: [ahhoz, hogy egy nem tartományvezérlő AD adatokat küldeni a Naplóelemzési](#to-enable-a-non-domain-controller-to-send-ad-data-to-oms).
+Ha nem szeretne csatlakozni a tartományvezérlők bármelyikét közvetlenül a Log Analytics vagy a System Center Operations Manager, [ahhoz, hogy egy nem tartományvezérlő AD adatokat küldeni a Log Analytics](#to-enable-a-non-domain-controller-to-send-ad-data-to-oms).
 
 ## <a name="next-steps"></a>További lépések
-* Használjon [Log Analytics-e jelentkezni a keresések](log-analytics-log-searches.md) Active Directory replikációs állapot részletes adatainak megtekintéséhez.
+* Használat [Log Analytics naplóbeli kereséseivel](log-analytics-log-searches.md) Active Directory-replikáció állapota részletes adatainak megtekintéséhez.

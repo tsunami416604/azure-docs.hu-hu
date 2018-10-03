@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 04/05/2018
 ms.author: laevenso
 ms.custom: mvc
-ms.openlocfilehash: 7fb60f3c440b4804ad8c5e6c013ecfa454358833
-ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
+ms.openlocfilehash: 231d7b875a7163aaa532be4a6477ca4e2eb67286
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39716117"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48043605"
 ---
 # <a name="using-gpus-on-aks"></a>GPU-k használata az AKS-en
 
@@ -63,7 +63,7 @@ aks-nodepool1-22139053-1   Ready     agent     10h       v1.9.6
 aks-nodepool1-22139053-2   Ready     agent     10h       v1.9.6
 ```
 
-Írja le a csomópontokat a GPU program ütemezhető egyikét. Ez alatt találhatók a `Capacity` szakaszban. Például: `alpha.kubernetes.io/nvidia-gpu:  1`.
+Írja le a csomópontokat a GPU program ütemezhető egyikét. Ez alatt találhatók a `Capacity` szakaszban. Például: `nvidia.com/gpu:  1`. Ha nem látja a GPU-k, tekintse meg a **hibaelhárítás** szakaszt.
 
 ```
 $ kubectl describe node aks-nodepool1-22139053-0
@@ -96,12 +96,12 @@ Addresses:
   InternalIP:  10.240.0.4
   Hostname:    aks-nodepool1-22139053-0
 Capacity:
- alpha.kubernetes.io/nvidia-gpu:  1
+ nvidia.com/gpu:                  1
  cpu:                             6
  memory:                          57691688Ki
  pods:                            110
 Allocatable:
- alpha.kubernetes.io/nvidia-gpu:  1
+ nvidia.com/gpu:                  1
  cpu:                             6
  memory:                          57589288Ki
  pods:                            110
@@ -135,7 +135,7 @@ Events:         <none>
 
 Annak érdekében, hogy bemutatja a GPU-k valóban működik, az ütemezés egy GPU számítási feladat a megfelelő erőforrás-kérelemmel engedélyezve van. Ebben a példában fog futni egy [Tensorflow](https://www.tensorflow.org/versions/r1.1/get_started/mnist/beginners) feladat ellen a [MNIST adatkészlet](http://yann.lecun.com/exdb/mnist/).
 
-A következő feladat jegyzékfájlt tartalmaz erőforrás legfeljebb `alpha.kubernetes.io/nvidia-gpu: 1`. A megfelelő CUDA-kódtárak és hibakeresési eszközök lesz elérhető, a csomóponton `/usr/local/nvidia` és csatlakoztatva kell lenniük, a pod a megfelelő kötetet specifikáció használatával, az alább látható módon.
+A következő feladat jegyzékfájlt tartalmaz erőforrás legfeljebb `nvidia.com/gpu: 1`. 
 
 Másolja a jegyzékfájlban és a Mentés másként **minták – tf-mnist-demo.yaml**.
 ```
@@ -158,15 +158,8 @@ spec:
         imagePullPolicy: IfNotPresent
         resources:
           limits:
-            alpha.kubernetes.io/nvidia-gpu: 1
-        volumeMounts:
-        - name: nvidia
-          mountPath: /usr/local/nvidia
+           nvidia.com/gpu: 1
       restartPolicy: OnFailure
-      volumes:
-        - name: nvidia
-          hostPath:
-            path: /usr/local/nvidia
 ```
 
 Használja a [a kubectl a alkalmazni] [ kubectl-apply] parancsot futtatja a feladatot. A parancs elemzi jegyzékfájlt, és létrehozza a meghatározott Kubernetes-objektumokat.

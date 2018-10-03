@@ -10,12 +10,12 @@ ms.component: speech-service
 ms.topic: article
 ms.date: 09/25/2018
 ms.author: v-jerkin
-ms.openlocfilehash: e8d84d83636bc8bed287d1fa68d36ce1c2ea3d58
-ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
+ms.openlocfilehash: 9a867289cffa17030e397ef170e9055451057410
+ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48018553"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48237738"
 ---
 # <a name="language-and-region-support-for-speech-service-api"></a>Nyelvéhez és régiójához támogatása Beszédszolgáltatási API Használatába
 
@@ -31,16 +31,16 @@ A Microsoft beszédfelismerési API-t a következő nyelveket támogatja. Az egy
  CA-ES | Katalán | Nem | Nem | Nem
  da-DK | dán (Dánia) | Nem | Nem | Nem
  de-DE | német (Németország) | Igen | Igen | Nem
- en-Ausztrália | angol (Ausztrália) | Igen | Igen | Igen
- en-hitelesítésszolgáltató | angol (Kanada) | Igen | Igen | Igen
- en-GB | angol (Egyesült Királyság) | Igen | Igen | Igen
- en-IN | Angol (India) | Nem | Igen | Igen
- en-NZ | angol (Új-Zéland) | Igen | Igen | Igen  
+ en-Ausztrália | angol (Ausztrália) | Nem | Igen | Igen
+ en-hitelesítésszolgáltató | angol (Kanada) | Nem | Igen | Igen
+ en-GB | angol (Egyesült Királyság) | Nem | Igen | Igen
+ en-IN | Angol (India) | Igen | Igen | Igen
+ en-NZ | angol (Új-Zéland) | Nem | Igen | Igen  
  hu-HU | angol (Egyesült Államok) | Igen | Igen | Igen
- es-ES | Spanyol (Spanyolország) | Igen | Igen | Nem
- es-MX | spanyol (Mexikó) | Igen | Igen | Nem
+ es-ES | Spanyol (Spanyolország) | Nem | Igen | Nem
+ es-MX | spanyol (Mexikó) | Nem | Igen | Nem
  fi-FI | finn (Finnország) | Nem | Nem | Nem
- FR-hitelesítésszolgáltató | francia (Kanada) | Igen | Igen | Nem
+ FR-hitelesítésszolgáltató | francia (Kanada) | Nem | Igen | Nem
  FR-FR | francia (Franciaország) | Igen | Igen | Nem
  Üdvözöljük – India | hindi (India) | Nem | Igen | Nem
  it-IT | olasz (Olaszország) | Igen | Igen | Nem
@@ -51,7 +51,7 @@ A Microsoft beszédfelismerési API-t a következő nyelveket támogatja. Az egy
  pl-PL | lengyel (Lengyelország) | Nem | Nem | Nem
  pt-BR | portugál (brazíliai) | Nem | Igen | Nem
  PT-PT | portugál (általános) | Nem | Igen | Nem
- ru-RU | orosz (Oroszország) | Nem | Igen | Nem
+ ru-RU | orosz (Oroszország) | Igen | Igen | Nem
  SV-SE | svéd (Svédország) | Nem | Nem | Nem
  zh-CN | Kínai (Mandarin, egyszerűsített) | Igen | Igen | Nem
  zh-HK | Kínai (Mandarin, hagyományos) | Nem | Igen | Nem

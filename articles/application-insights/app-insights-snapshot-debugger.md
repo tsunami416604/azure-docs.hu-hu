@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 05/08/2018
 ms.reviewer: pharring
 ms.author: mbullwin
-ms.openlocfilehash: d4c27c8297fb5a2ad13a245279a206d00fc4f8b1
-ms.sourcegitcommit: a1140e6b839ad79e454186ee95b01376233a1d1f
+ms.openlocfilehash: 887e3361f5cb472d7a105558684d156826f89eab
+ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43144125"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48237247"
 ---
 # <a name="debug-snapshots-on-exceptions-in-net-apps"></a>A .NET-alkalmazások kivételeinek hibakeresési pillanatképei
 
@@ -191,9 +191,12 @@ A következő környezetekben támogatottak:
 
 ## <a name="grant-permissions"></a>Engedélyek megadása
 
-Az Azure-előfizetés tulajdonosai pillanatképek vizsgálhatja meg. Más felhasználók által egy olyan tulajdonost engedéllyel kell rendelkezni.
+A pillanatképek hozzáférést szerepköralapú hozzáférés-vezérlés (RBAC) védi. Vizsgálhatja meg a pillanatképet, meg kell először adni a megfelelő szerepkör előfizetés tulajdonosa.
 
-Engedélyt adni, rendelje hozzá a `Application Insights Snapshot Debugger` szerepkör a felhasználók számára, akik pillanatképek vizsgálata. Ehhez a szerepkörhöz is hozzárendelhető az egyes felhasználók vagy csoportok szerint az előfizetés-tulajdonosokat a cél Application Insights-erőforrást, vagy a erőforráscsoportba vagy előfizetésbe.
+> [!NOTE]
+> Tulajdonosok és a közreműködőknek nem automatikusan rendelkezik ehhez a szerepkörhöz. Ha szeretne pillanatképek megtekintése, hozzá kell magukat a szerepkört.
+
+Előfizetés-tulajdonost kell rendelni a `Application Insights Snapshot Debugger` szerepkör a felhasználók számára, akik pillanatképek vizsgálata. Ehhez a szerepkörhöz is hozzárendelhető az egyes felhasználók vagy csoportok szerint az előfizetés-tulajdonosokat a cél Application Insights-erőforrást, vagy a erőforráscsoportba vagy előfizetésbe.
 
 1. Keresse meg az Application Insights-erőforrást az Azure Portalon.
 1. Kattintson a **hozzáférés-vezérlés (IAM)**.

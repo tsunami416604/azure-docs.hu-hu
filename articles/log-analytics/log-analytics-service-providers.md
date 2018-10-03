@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/11/2018
 ms.author: meirm
-ms.component: na
-ms.openlocfilehash: ec35cece8da8eaaa89b11a35b0fc1e55d0cdfee8
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.component: ''
+ms.openlocfilehash: ef3cc76c0188cb2a0d3236d462d0645e3e45040b
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45573491"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48044280"
 ---
 # <a name="log-analytics-for-service-providers"></a>A log Analytics, a szolgáltatók számára
 A log Analytics segítségével a felügyelt szolgáltatóknak (MSP), a nagyobb vállalatok, független szoftverszállítók (ISV-k) és üzemeltetési szolgáltatók az ügyfél helyszíni vagy felhőalapú infrastruktúrában lévő kiszolgálók kezelése és figyelése. 

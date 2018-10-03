@@ -2,21 +2,21 @@
 title: Az Azure Site Recovery - beállítása és tesztelése a vészhelyreállítás Azure virtuális gépek Azure PowerShell-lel |} A Microsoft Docs
 description: Ismerje meg, hogyan állítható be az Azure Site Recovery az Azure PowerShell használatával Azure-beli virtuális gépek vészhelyreállítása.
 services: site-recovery
-author: bsiva
-manager: abhemraj
-editor: raynew
+author: sujayt
+manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 07/06/2018
-ms.author: bsiva
-ms.openlocfilehash: 1bf2fe84f9695993dacb6d197d75c18e5db86c4e
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.date: 10/02/2018
+ms.author: sutalasi
+ms.openlocfilehash: 9b7200dab0351b6cd00aef05bf27c5c71a049d76
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47433429"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48044507"
 ---
 # <a name="set-up-disaster-recovery-for-azure-virtual-machines-using-azure-powershell"></a>Azure PowerShell-lel az Azure virtuális gépek vészhelyreállításának beállítása
+
 
 Ebben a cikkben bemutatjuk, hogyan tesztelheti, majd a vészhelyreállítás Azure virtuális gépek Azure PowerShell-lel.
 
@@ -159,12 +159,15 @@ Remove-Item -Path $Vaultsettingsfile.FilePath
 ```
 ## <a name="prepare-the-vault-to-start-replicating-azure-virtual-machines"></a>A tároló replikáljon az Azure-beli virtuális gépek előkészítése
 
-####<a name="1-create-a-site-recovery-fabric-object-to-represent-the-primarysource-region"></a>1. Hozzon létre egy Site Recovery fabric objektumot képviselő a primary(source) régió
+### <a name="create-a-site-recovery-fabric-object-to-represent-the-primary-source-region"></a>Hozzon létre egy Site Recovery fabric objektumot képviselő az elsődleges (forrás) régióban
 
-A fabric objektum a tároló egy Azure-régiót jelöli. Az elsődleges fabric objektum olyan képviselő tartozó virtuális gépek védelméről a tároló az Azure-régióban létrehozott fabric objektum. A példában ez a cikk a védett virtuális gép van, az USA keleti régiójában.
+A fabric objektum a tároló egy Azure-régiót jelöli. Az elsődleges fabric objektumot képviselő tartozó virtuális gépek védelméről a tároló az Azure-régióban jön létre. A példában ez a cikk a védett virtuális gép van, az USA keleti régiójában.
 
-> [!NOTE]
-> Az Azure Site Recovery-műveletek aszinkron végrehajtása. Egy művelet kezdeményezésekor az Azure Site Recovery-feladatok elküldésekor, és a egy feladat nyomon követése az objektumot ad vissza. Használja a nyomkövetési objektum feladat, legfrissebb állapotának beolvasása a feladat (Get-ASRJob), és a művelet állapotának figyelésére.
+- Régiónként csak egy hálóhoz objektum lehet létrehozni. 
+- Ha korábban engedélyezte az Azure Portal virtuális gép Site Recovery-replikációja, a Site Recovery automatikusan létrehoz egy fabric objektumot. A fabric objektum létezik, régió, ha nem hozható létre egy újat.
+
+
+A Kezdés előtt vegye figyelembe, hogy a Site Recovery-műveletek aszinkron módon vannak végrehajtva. Egy művelet kezdeményezésekor az Azure Site Recovery-feladatok elküldésekor, és a egy feladat nyomon követése az objektumot ad vissza. Használja a nyomkövetési objektum feladat, legfrissebb állapotának beolvasása a feladat (Get-ASRJob), és a művelet állapotának figyelésére.
 
 ```azurepowershell
 #Create Primary ASR fabric
@@ -184,7 +187,7 @@ $PrimaryFabric = Get-AsrFabric -Name "A2Ademo-EastUS"
 ```
 Ha vannak védett virtuális gépek több Azure-régióban ugyanazzal a tárral, egy háló objektumot hoz létre minden forrás az Azure-régióban.
 
-####<a name="2-create-a-site-recovery-fabric-object-to-represent-the-recovery-region"></a>2. Hozzon létre egy Site Recovery fabric objektumot képviselő helyreállítási régióban
+### <a name="create-a-site-recovery-fabric-object-to-represent-the-recovery-region"></a>Hozzon létre egy Site Recovery fabric objektumot képviselő helyreállítási régióban
 
 A helyreállítási fabric objektum képviseli a helyreállítás az Azure-helyen. A virtuális gépeket replikálja, és a helyreállítási háló által képviselt helyreállítási régióban (feladatátvétel) esetén helyre. A helyreállítás ebben a példában használt Azure-régió az USA 2. nyugati.
 
@@ -205,7 +208,7 @@ $RecoveryFabric = Get-AsrFabric -Name "A2Ademo-WestUS"
 
 ```
 
-####<a name="3-create-a-site-recovery-protection-container-in-the-primary-fabric"></a>3. A Site Recovery védelmi tároló létrehozása elsődleges-hálóban
+### <a name="create-a-site-recovery-protection-container-in-the-primary-fabric"></a>A Site Recovery védelmi tároló létrehozása elsődleges-hálóban
 
 A védelmi tároló egy olyan replikált elemek a háló belül csoportosítására használhatók, tároló.
 
@@ -223,7 +226,7 @@ Write-Output $TempASRJob.State
 
 $PrimaryProtContainer = Get-ASRProtectionContainer -Fabric $PrimaryFabric -Name "A2AEastUSProtectionContainer"
 ```
-####<a name="4-create-a-site-recovery-protection-container-in-the-recovery-fabric"></a>4. A helyreállítási hálóban a Site Recovery védelmi tároló létrehozása
+### <a name="create-a-site-recovery-protection-container-in-the-recovery-fabric"></a>A helyreállítási hálóban a Site Recovery védelmi tároló létrehozása
 
 ```azurepowershell
 #Create a Protection container in the recovery Azure region (within the Recovery fabric)
@@ -242,7 +245,7 @@ Write-Output $TempASRJob.State
 $RecoveryProtContainer = Get-ASRProtectionContainer -Fabric $RecoveryFabric -Name "A2AWestUSProtectionContainer"
 ```
 
-####<a name="5-create-a-replication-policy"></a>5. Replikációs házirend létrehozása
+### <a name="create-a-replication-policy"></a>Replikációs házirend létrehozása
 
 ```azurepowershell
 #Create replication policy
@@ -259,7 +262,7 @@ Write-Output $TempASRJob.State
 
 $ReplicationPolicy = Get-ASRPolicy -Name "A2APolicy"
 ```
-####<a name="6-create-a-protection-container-mapping-between-the-primary-and-recovery-protection-container"></a>6. Hozzon létre egy között az elsődleges és a helyreállítási védelmi tároló védelmitároló-leképezés
+### <a name="create-a-protection-container-mapping-between-the-primary-and-recovery-protection-container"></a>Hozzon létre egy között az elsődleges és a helyreállítási védelmi tároló védelmitároló-leképezés
 
 Egy védelmitároló-leképezés az elsődleges védelmi tároló egy helyreállítási védelmi tároló és a egy replikációs szabályzatot hozzárendeli. Hozzon létre minden egyes virtuális gépeket replikálhat a védelmi tároló két között fogjuk replikációs házirend egy hozzárendelését.
 
@@ -279,7 +282,7 @@ Write-Output $TempASRJob.State
 $EusToWusPCMapping = Get-ASRProtectionContainerMapping -ProtectionContainer $PrimaryProtContainer -Name "A2APrimaryToRecovery"
 ```
 
-####<a name="7-create-a-protection-container-mapping-for-failback-reverse-replication-after-a-failover"></a>7. Hozzon létre egy feladat-visszavételhez (egy feladatátvétel után a visszirányú replikálás) védelmitároló-leképezés
+### <a name="create-a-protection-container-mapping-for-failback-reverse-replication-after-a-failover"></a>Hozzon létre egy feladat-visszavételhez (egy feladatátvétel után a visszirányú replikálás) védelmitároló-leképezés
 
 Amikor elkészült, ahhoz, hogy a feladatátviteli virtuális géphez vissza az eredeti Azure-régió, feladat-visszavételt a feladatátvételt. Történő feladat-visszavételhez, a feladatátviteli virtuális géphez fordított replikálódnak az a régió az eredeti régióba keresztül. Visszirányú replikálás kapcsoló a szerepkörök az eredeti régióban és a helyreállítási régióban. Az eredeti régió mostantól az új helyreállítási régióban, és mi eredetileg volt a helyreállítási régióban most lesz az elsődleges régióba. A visszirányú replikálás védelmitároló-leképezés a kapcsolt szerepkörök eredeti és helyreállítási régiót jelöli.
 

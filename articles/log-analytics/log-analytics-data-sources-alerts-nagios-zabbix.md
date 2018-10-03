@@ -1,6 +1,6 @@
 ---
-title: Az OMS szolgáltatáshoz Nagios és Zabbix riasztások gyűjtése |} Microsoft Docs
-description: Nagios és Zabbix figyelési eszközök nyílt forráskódú. Begyűjtheti riasztások ezeket az eszközöket a Log Analyticshez való ahhoz, hogy a más forrásokból származó riasztások együtt elemezheti őket.  Ez a cikk ismerteti a riasztások gyűjteni ezek a rendszerek Linux OMS-ügynök konfigurálása.
+title: Az OMS Log Analytics a Nagios- és Zabbix-riasztások összegyűjtése |} A Microsoft Docs
+description: Nagios- és Zabbix olyan nyílt forráskódú eszközök figyelését. Meg tud gyűjteni riasztások ezekkel az eszközökkel a Log Analytics annak érdekében, hogy együtt más forrásból származó riasztások elemezheti őket.  Ez a cikk ismerteti, hogyan konfigurálhatja a riasztások gyűjtésére ezekben a rendszerekben Linuxhoz készült OMS-ügynök.
 services: log-analytics
 documentationcenter: ''
 author: mgoedtel
@@ -14,30 +14,30 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/13/2018
 ms.author: magoedte
-ms.component: na
-ms.openlocfilehash: 240e56e3e482b81d6336f7d6d2a1f5688953ecd8
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.component: ''
+ms.openlocfilehash: e668b2e989571d911c967d08d8012b11adaebd4d
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37131551"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48041033"
 ---
-# <a name="collect-alerts-from-nagios-and-zabbix-in-log-analytics-from-oms-agent-for-linux"></a>Nagios és az OMS-ügynököt a Naplóelemzési Zabbix riasztások gyűjtése Linux 
-[Nagios](https://www.nagios.org/) és [Zabbix](http://www.zabbix.com/) nyílt forráskódú figyelési eszközök. Begyűjtheti riasztások ezeket az eszközöket a Log Analyticshez való elemezheti őket, valamint hogy [más forrásokból származó riasztások](log-analytics-alerts.md).  Ez a cikk ismerteti a riasztások gyűjteni ezek a rendszerek Linux OMS-ügynök konfigurálása.
+# <a name="collect-alerts-from-nagios-and-zabbix-in-log-analytics-from-oms-agent-for-linux"></a>Riasztások gyűjtése Nagios- és Zabbix a Log Analytics az OMS-ügynök Linux rendszeren 
+[Nagios](https://www.nagios.org/) és [Zabbix](http://www.zabbix.com/) nyílt forrású eszközök figyelését. Meg tud gyűjteni riasztások ezekkel az eszközökkel a Log Analytics annak érdekében, hogy az elemzésük [más forrásból származó riasztások](log-analytics-alerts.md).  Ez a cikk ismerteti, hogyan konfigurálhatja a riasztások gyűjtésére ezekben a rendszerekben Linuxhoz készült OMS-ügynök.
  
 ## <a name="prerequisites"></a>Előfeltételek
-Az OMS-ügynököt Linux támogatja verzióra Nagios-gyűjtését riasztások 4.2.x és Zabbix verzióra 2.x.
+A Linuxhoz készült OMS-ügynök verzióra Nagios gyűjtését riasztásai támogatja 4.2.x és Zabbix verzióra 2.x.
 
 ## <a name="configure-alert-collection"></a>Riasztások gyűjtésének konfigurálása
 
-### <a name="configuring-nagios-alert-collection"></a>Nagios riasztások gyűjtésének konfigurálása
+### <a name="configuring-nagios-alert-collection"></a>Nagios-riasztások gyűjtésének konfigurálása
 Riasztások gyűjtése, hajtsa végre az alábbi lépéseket a Nagios-kiszolgálón.
 
-1. Adja meg a felhasználónak **omsagent** olvasási hozzáférés a Nagios naplófájl `/var/log/nagios/nagios.log`. A csoport tulajdonosa feltéve, hogy a nagios.log fájl `nagios`, a felhasználó hozzáadhat **omsagent** való a **nagios** csoport. 
+1. Adja meg a felhasználónak **omsagent** olvasási hozzáférés a Nagios naplófájl `/var/log/nagios/nagios.log`. A csoport tulajdonosa feltéve, hogy a nagios.log fájl `nagios`, a felhasználó hozzáadhat **omsagent** , a **nagios** csoport. 
 
-    sudo felhasználó módosítási - a -G nagios omsagent
+    sudo felhasználó módosítási - a – G nagios omsagent
 
-2.  Módosítsa a konfigurációs fájlban a következő `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.conf`. Győződjön meg arról, a következő tételek jelen, és nem megjegyzésként ki:  
+2.  Módosítsa a konfigurációs fájlban a következő `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.conf`. Ellenőrizze, hogy a következő bejegyzések jelen, és nem megjegyzésekkel ki:  
 
         <source>  
           type tail  
@@ -51,18 +51,18 @@ Riasztások gyűjtése, hajtsa végre az alábbi lépéseket a Nagios-kiszolgál
           type filter_nagios_log  
         </filter>  
 
-3. Indítsa újra a omsagent démon
+3. A omsagent démon újraindításához
 
     ```
     sudo sh /opt/microsoft/omsagent/bin/service_control restart
     ```
 
-### <a name="configuring-zabbix-alert-collection"></a>Zabbix riasztások gyűjtésének konfigurálása
-A riasztások gyűjtése Zabbix-kiszolgálótól, meg kell adnia egy felhasználói és a jelszó *törölje a szöveget*.  Közben nem támogatott, ideális, azt javasoljuk, hogy hozzon létre egy Zabbix felhasználó van szüksége a megfelelő riasztások olvasási engedélyekkel.
+### <a name="configuring-zabbix-alert-collection"></a>Zabbix-riasztások gyűjtésének konfigurálása
+A riasztások gyűjtésére Zabbix-kiszolgáló, meg kell adnia egy felhasználói és a jelszó *egyszerű szöveges*.  Amíg nem ideális megoldás, azt javasoljuk, hogy Zabbix felhasználó olvasásra vonatkozó riasztásokat csak olvasási engedélyekkel rendelkező hozzon létre.
 
 Riasztások gyűjtése a Nagios-kiszolgálón, hajtsa végre az alábbi lépéseket.
 
-1. Módosítsa a konfigurációs fájlban a következő `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.conf`. Győződjön meg arról, a következő tételek jelen, és nem megjegyzésként ki.  A felhasználónév és jelszó átállítása értékek környezetnek Zabbix.
+1. Módosítsa a konfigurációs fájlban a következő `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.conf`. Győződjön meg arról, a következő bejegyzések jelen, és nem megjegyzésekkel ki.  Módosítsa a felhasználónév és jelszó értékek Zabbix-környezete számára.
 
         <source>
          type zabbix_alerts
@@ -73,49 +73,49 @@ Riasztások gyűjtése a Nagios-kiszolgálón, hajtsa végre az alábbi lépése
          zabbix_password zabbix
         </source>
 
-2. Indítsa újra a omsagent démon
+2. A omsagent démon újraindításához
 
     `sudo sh /opt/microsoft/omsagent/bin/service_control restart`
 
 
 ## <a name="alert-records"></a>Riasztási rekordok
-Riasztási rekordok beolvasható Nagios és Zabbix használatával [keresések jelentkezzen](log-analytics-log-searches.md) a Naplóelemzési.
+Riasztási rekord lekérése Nagios- és Zabbix használatával [naplókereséseket](log-analytics-log-searches.md) a Log Analyticsben.
 
-### <a name="nagios-alert-records"></a>Nagios riasztás rekordok
+### <a name="nagios-alert-records"></a>Nagios-riasztás rekordok
 
-Riasztási Nagios által gyűjtött rekordok rendelkezik egy **típus** a **riasztási** és egy **SourceSystem** a **Nagios**.  A Tulajdonságok rendelkeznek, az alábbi táblázatban.
+Riasztás Nagios által összegyűjtött rekordokkal rendelkezik egy **típus** , **riasztási** és a egy **SourceSystem** , **Nagios**.  A tulajdonságait az alábbi táblázatban rendelkeznek.
 
 | Tulajdonság | Leírás |
 |:--- |:--- |
 | Típus |*Riasztás* |
 | SourceSystem |*Nagios* |
-| AlertName |A riasztás nevét. |
+| AlertName |A riasztás neve. |
 | AlertDescription | A riasztás leírása. |
-| AlertState | A szolgáltatás vagy a gazdagép állapota.<br><br>OK<br>FIGYELMEZTETÉS<br>MENTÉSE<br>LEFELÉ |
-| Állomásnév | A gazdagép által létrehozott, a riasztás nevét. |
+| AlertState | A szolgáltatás vagy a gazdagép állapotát.<br><br>OK<br>FIGYELMEZTETÉS<br>FELFELÉ<br>LEFELÉ |
+| Állomásnév | A gazdagép által létrehozott, a riasztás neve. |
 | PriorityNumber | A riasztás prioritását. |
-| StateType | A riasztás állapota típusa.<br><br>SOFT - hiba, amely nem ellenőrizni.<br>MEREVLEMEZ - probléma, amelyet újra ellenőrizni kell a megadott számú alkalommal.  |
-| TimeGenerated |A riasztás létrehozásának dátuma és időpontja. |
+| StateType | A riasztás állapotának típusa.<br><br>HELYREÁLLÍTHATÓ - hibát, amely nem elteltével.<br>MEREVLEMEZ - probléma, amely van újra ellenőrizni kell a megadott számú alkalommal.  |
+| TimeGenerated |Dátum és idő a riasztás létrejött. |
 
 
-### <a name="zabbix-alert-records"></a>Zabbix riasztási rekordok
-Riasztási Zabbix által gyűjtött rekordok rendelkezik egy **típus** a **riasztási** és egy **SourceSystem** a **Zabbix**.  A Tulajdonságok rendelkeznek, az alábbi táblázatban.
+### <a name="zabbix-alert-records"></a>Zabbix-riasztások rekordok
+Riasztás Zabbix által összegyűjtött rekordokkal rendelkezik egy **típus** , **riasztási** és a egy **SourceSystem** , **Zabbix**.  A tulajdonságait az alábbi táblázatban rendelkeznek.
 
 | Tulajdonság | Leírás |
 |:--- |:--- |
 | Típus |*Riasztás* |
 | SourceSystem |*Zabbix* |
-| AlertName | A riasztás nevét. |
-| AlertPriority | A riasztás súlyossága.<br><br>nem minősített<br>Információ<br>Figyelmeztetés<br>átlag<br>magas<br>vészhelyreállítás  |
-| AlertState | A riasztás állapota.<br><br>0 - állapotba kerüljön.<br>1 - állapota ismeretlen.  |
-| AlertTypeNumber | Meghatározza, hogy riasztást hozhat létre a probléma több esemény.<br><br>0 - állapotba kerüljön.<br>1 - állapota ismeretlen.    |
-| Megjegyzések | A riasztásra vonatkozóan további megjegyzéseket. |
-| Állomásnév | A gazdagép által létrehozott, a riasztás nevét. |
-| PriorityNumber | A riasztás súlyossága jelző érték.<br><br>0 – nem besorolt<br>1 - információk<br>2 – figyelmeztetés<br>3 – átlag<br>4 - magas<br>5 - vészhelyreállítás |
-| TimeGenerated |A riasztás létrehozásának dátuma és időpontja. |
-| TimeLastModified |Dátum és idő, a riasztás állapota módosította utoljára. |
+| AlertName | A riasztás neve. |
+| AlertPriority | A riasztás súlyosságát.<br><br>nem besorolt<br>Információ<br>figyelmeztetés<br>átlag<br>Magas<br>vészhelyreállítás  |
+| AlertState | A riasztás állapota.<br><br>0 – állapota naprakész.<br>1 – állapota ismeretlen.  |
+| AlertTypeNumber | Itt adhatja meg, e riasztás hozhat létre több problémát esemény.<br><br>0 – állapota naprakész.<br>1 – állapota ismeretlen.    |
+| Megjegyzések | A riasztás további megjegyzéseket. |
+| Állomásnév | A gazdagép által létrehozott, a riasztás neve. |
+| PriorityNumber | A riasztás súlyosságát jelző érték beolvasása.<br><br>0 – nem besorolt<br>1 – információ<br>2 – figyelmeztetés<br>3 – átlag<br>4 – magas<br>5 – vészhelyreállítás |
+| TimeGenerated |Dátum és idő a riasztás létrejött. |
+| TimeLastModified |Dátum és idő, a riasztás állapotának módosítása. |
 
 
 ## <a name="next-steps"></a>További lépések
-* További tudnivalók [riasztások](log-analytics-alerts.md) a Naplóelemzési.
-* További tudnivalók [keresések jelentkezzen](log-analytics-log-searches.md) az adatforrások és a megoldások gyűjtött adatok elemzésére. 
+* Ismerje meg [riasztások](log-analytics-alerts.md) a Log Analyticsben.
+* Ismerje meg [naplókereséseket](log-analytics-log-searches.md) az adatforrások és megoldások gyűjtött adatok elemzéséhez. 

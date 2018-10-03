@@ -6,14 +6,14 @@ author: tfitzmac
 manager: timlt
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 05/09/2018
+ms.date: 10/02/2018
 ms.author: tomfitz
-ms.openlocfilehash: 32f93f383ec4044afb0696fcef1705c9ed65d673
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: f79fa096484edc34294ea0a69584e12788dba647
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38578917"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48043397"
 ---
 # <a name="map-custom-fields-to-event-grid-schema"></a>Egyéni mezők leképezése sémára Event Grid
 
@@ -43,9 +43,9 @@ Egy egyéni témakör létrehozásakor adja meg, hogyan képezhet le a mezők az
 
 * A `--input-schema` paraméter meghatározza a sémát. Az elérhető lehetőségek *cloudeventv01schema*, *customeventschema*, és *eventgridschema*. Az alapértelmezett érték: eventgridschema. Egyéni leképezés a séma- és az event grid-séma közötti létrehozásakor customeventschema használja. Amikor események válnak a CloudEvents-séma, cloudeventv01schema használja.
 
-* A `--input-mapping-default-values` paraméter adja meg a mezők alapértelmezett értékeit, az Event Grid-sémában. Az alapértelmezett értékeket megadhatja a *tulajdonos*, *eventtype*, és *dataversion*. Jellemzően ezt a paramétert használni, amikor az egyéni séma nem tartalmaz egy olyan mező, ezek három mezőt valamelyikének felel meg. Például megadhatja, hogy dataversion értéke mindig **1.0**.
+* A `--input-mapping-default-values` paraméter adja meg a mezők alapértelmezett értékeit, az Event Grid-sémában. Az alapértelmezett értékeket megadhatja a `subject`, `eventtype`, és `dataversion`. Jellemzően ezt a paramétert használni, amikor az egyéni séma nem tartalmaz egy olyan mező, ezek három mezőt valamelyikének felel meg. Például megadhatja a verzió értéke mindig **1.0**.
 
-* A `--input-mapping-fields` paraméter leképezi a séma az event grid séma mezőket. Szóközzel elválasztott kulcs/érték párok értékeket határozhat meg. A kulcs nevét az event grid mező nevét használja. Az érték használja a mező nevét. Használhatja a kulcsnevek *azonosító*, *témakör*, *eventtime*, *tulajdonos*, *eventtype*, és *dataversion*.
+* A `--input-mapping-fields` paraméter leképezi a séma az event grid séma mezőket. Szóközzel elválasztott kulcs/érték párok értékeket határozhat meg. A kulcs nevét az event grid mező nevét használja. Az érték használja a mező nevét. Használhatja a kulcsnevek `id`, `topic`, `eventtime`, `subject`, `eventtype`, és `dataversion`.
 
 Az alábbi példa létrehoz egy egyéni témakör egyes leképezve, és alapértelmezett mezők:
 
@@ -58,7 +58,7 @@ az eventgrid topic create \
   -n demotopic \
   -l eastus2 \
   -g myResourceGroup \
-  --input-schema customeventschema
+  --input-schema customeventschema \
   --input-mapping-fields eventType=myEventTypeField \
   --input-mapping-default-values subject=DefaultSubject dataVersion=1.0
 ```
@@ -69,13 +69,14 @@ Amikor feliratkozik az egyéni témakörre, adja meg a séma, az események foga
 
 Ebben a szakaszban szereplő példák a Queue storage használata az eseménykezelő. További információkért lásd: [egyéni események átirányítása az Azure Queue storage](custom-event-to-queue-storage.md).
 
-Az alábbi példa feliratkozik egy event grid-témakört, és használja az alapértelmezett event grid séma:
+Az alábbi példa feliratkozik egy event grid-témakört, és használja az event grid-séma:
 
 ```azurecli-interactive
 az eventgrid event-subscription create \
   --topic-name demotopic \
   -g myResourceGroup \
   --name eventsub1 \
+  --event-delivery-schema eventgridschema \
   --endpoint-type storagequeue \
   --endpoint <storage-queue-url>
 ```
@@ -100,9 +101,9 @@ Most már készen áll, küldünk egy eseményt az egyéni témakör és az ered
 endpoint=$(az eventgrid topic show --name demotopic -g myResourceGroup --query "endpoint" --output tsv)
 key=$(az eventgrid topic key list --name demotopic -g myResourceGroup --query "key1" --output tsv)
 
-body=$(eval echo "'$(curl https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/event-grid/mapeventfields.json)'")
+event='[ { "myEventTypeField":"Created", "resource":"Users/example/Messages/1000", "resourceData":{"someDataField1":"SomeDataFieldValue"} } ]'
 
-curl -X POST -H "aeg-sas-key: $key" -d "$body" $endpoint
+curl -X POST -H "aeg-sas-key: $key" -d "$event" $endpoint
 ```
 
 Most tekintse meg a Queue storage. A két előfizetés különböző sémákkal leszállítani eseményeket.

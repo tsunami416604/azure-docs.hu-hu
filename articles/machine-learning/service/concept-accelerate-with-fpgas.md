@@ -1,6 +1,6 @@
 ---
-title: Mi az FPGA és Project Brainwave? – Az azure Machine Learning
-description: Ismerje meg, hogyan modellek és az FPGA-kban Neurális hálózatokkal felgyorsítása az Azure-ban. Ez a cikk mutatja be, hogy a mező-programmable gate arrays (FPGA) és hogyan Azure Machine Learning nyújt a valós idejű mesterséges intelligenciát (AI) Ha egy Azure FPGA helyezheti üzembe a modellt.
+title: Mi az FPGA és Project Brainwave? – Az azure Machine Learning szolgáltatás
+description: Ismerje meg, hogyan modellek és az FPGA-kban Neurális hálózatokkal felgyorsítása az Azure-ban. Ez a cikk mutatja be, hogy a mező-programmable gate arrays (FPGA) és hogyan Azure Machine Learning szolgáltatás nyújt a valós idejű mesterséges intelligenciát (AI) Ha egy Azure FPGA helyezheti üzembe a modellt.
 services: machine-learning
 ms.service: machine-learning
 ms.component: core
@@ -9,22 +9,22 @@ ms.author: tedway
 author: tedway
 ms.reviewer: jmartens
 ms.date: 9/24/2018
-ms.openlocfilehash: adcd812bc63f98e4cbde949946bf32a037c6d704
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 411beacd65915c30338ab415b095acc1a0c8cbe6
+ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47158687"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48238855"
 ---
 # <a name="what-is-fpga-and-project-brainwave"></a>Mi az FPGA- és Project Brainwave?
 
-Ez a cikk mutatja be, hogy a mező-programmable gate arrays (FPGA) és hogyan Azure Machine Learning nyújt a valós idejű mesterséges intelligenciát (AI) Ha egy Azure FPGA helyezheti üzembe a modellt.
+Ez a cikk bemutatja a mező-programmable gate arrays (FPGA), és hogyan Azure Machine Learning szolgáltatáshoz nyújt, valós idejű mesterséges intelligenciát (AI) Ha egy Azure FPGA helyezheti üzembe a modellt.
 
 FPGA-kban programozható logikai blokkok tömbjét tartalmazza, és amellyel újrakonfigurálható hierarchiájának. A kapcsolatok engedélyezi ezeket az adatblokkokat a különböző módokon utáni gyártásban kell konfigurálni. FPGA-kban programozhatóság és más lapkák-teljesítményt nyújtanak.
 
 ## <a name="fpgas-vs-cpu-gpu-and-asic"></a>FPGA-kban vs. A Processzor, grafikus Processzor és ASIC
 
-![Az Azure Machine Learning FPGA összehasonlítása](./media/concept-accelerate-with-fpgas/azure-machine-learning-fpga-comparison.png)
+![Az Azure Machine Learning szolgáltatás FPGA összehasonlítása](./media/concept-accelerate-with-fpgas/azure-machine-learning-fpga-comparison.png)
 
 |Processzor||Leírás|
 |---|:-------:|------|

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/02/2017
 ms.author: vturecek
-ms.openlocfilehash: d5bc6877aa353ae37ba3ada53ee620a0230357e9
-ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
+ms.openlocfilehash: aae0ec93f3de708096ff9546a3a4f4e090095a89
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/01/2018
-ms.locfileid: "47585169"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48041159"
 ---
 # <a name="reliable-actors-state-management"></a>Reliable actors – állapotkezelés
 Reliable Actors egyszálas objektumok, amelyek is magába foglalja, logikai és a állapotban. Szolgáltatásokat Reliable actors futtatni, mert ezek is-állapot karbantartásához megbízhatóan azonos adatmegőrzés és replikációs mechanizmusok vonatkoznak. Ezzel a módszerrel actors ne veszítse el állapotuk Újraaktiválási szemétgyűjtés után, vagy ha áthelyezett erőforrás terheléselosztási vagy a frissítések miatt a fürtben található csomópontok között, a hibák után.
@@ -121,7 +121,7 @@ Aktorok állapotának felügyelete példákért olvassa el a [hozzáférés, men
 Ez fontos a teljesítmény és az alkalmazás erőforrás-használatát. Bármely, a "nevű állapota" az aktor írási/frissítés történik, az egész érték a "nevesített állapot" megfelelő szerializált, és a másodlagos replikákat a hálózaton keresztül küldött.  A másodlagos példány hozható létre írja a helyi lemez és az elsődleges replika vissza választ. Az elsődleges nyugtázás a másodlagos replikák kvórum kap, amikor az állapot ír a helyi lemezre. Tegyük fel, hogy az érték egy osztály, amely 20 tagok és a méret 1 MB. Akkor is, ha valamely osztály, amely csak módosított méret 1 KB-os, teljes mentést a szerializálási és a hálózati és lemez írási költséget kellene fizetnie, a teljes 1 MB. Ehhez hasonlóan egy gyűjtemény (például egy lista, tömböt vagy szótár) érték esetén kell fizetnie a költségeket a teljes gyűjteményt még akkor is, ha módosítja annak tagjainak egyike. Az aktor osztálya StateManager adapterének van egy szótárhoz hasonlóan. Az adatok struktúrája aktorállapot felett tento slovník jelölő mindig meg kell modellezniük.
  
 ### <a name="correctly-manage-the-actors-life-cycle"></a>Az aktor életciklus-megfelelően kezelése
-Egyértelmű házirend állapota az egyes partíciók egy aktor szolgáltatás méretének kezelése kell rendelkeznie. Az aktorszolgáltatás kell actors rögzített számú rendelkezik, és használja fel őket a lehető jelentős. Ha folyamatosan új actors, törölnie kell azokat azok munkahelyi befejezése után. Az actors keretrendszerben minden egyes színész, hogy létezik néhány metaadatokat tárol. Az aktor az állam törlése nem távolítja el, hogy az aktor metaadatait. Törölnie kell az aktor (lásd: [aktorok és állapotuk törlése](service-fabric-reliable-actors-lifecycle.md#manually-deleting-actors-and-their-state)) eltávolítja az összes adatot készül azt tárolja a rendszer. Egy további ellenőrzést, mint az aktorszolgáltatás kell lekérdezése (lásd: [aktorok enumerálása](service-fabric-reliable-actors-enumerate.md)) egy while egyszer, hogy a szám actors a várt tartományon belül van.
+Egyértelmű házirend állapota az egyes partíciók egy aktor szolgáltatás méretének kezelése kell rendelkeznie. Az aktorszolgáltatás kell actors rögzített számú rendelkezik, és használja fel őket a lehető legnagyobb mértékben. Ha folyamatosan új actors, törölnie kell azokat azok munkahelyi befejezése után. Az actors keretrendszerben minden egyes színész, hogy létezik néhány metaadatokat tárol. Az aktor az állam törlése nem távolítja el, hogy az aktor metaadatait. Törölnie kell az aktor (lásd: [aktorok és állapotuk törlése](service-fabric-reliable-actors-lifecycle.md#manually-deleting-actors-and-their-state)) eltávolítja az összes adatot készül azt tárolja a rendszer. Egy további ellenőrzést, mint az aktorszolgáltatás kell lekérdezése (lásd: [aktorok enumerálása](service-fabric-reliable-actors-enumerate.md)) egy while egyszer, hogy a várt tartományon belül vannak actors száma.
  
 Ha valaha jelenik meg, hogy az Aktorszolgáltatás adatbázis mérete meghaladja a várt növekszik, győződjön meg arról, hogy az előző útmutatást követi. Ha követi ezeket az irányelveket, és továbbra is adatbázis fájl mérete probléma merül fel, akkor [hozzon létre egy támogatási jegyet](service-fabric-support.md) kaphat segítséget a termék csapatával.
 

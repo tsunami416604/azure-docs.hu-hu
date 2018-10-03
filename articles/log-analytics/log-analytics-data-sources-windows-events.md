@@ -1,6 +1,6 @@
 ---
-title: Összegyűjti és elemzi a Windows eseménynaplóiban keresse meg az Azure Naplóelemzés |} Microsoft Docs
-description: Windows-eseménynaplók a Naplóelemzési által használt leggyakrabban használt adatforrások közül.  Ez a cikk ismerteti a Windows-eseménynaplók gyűjteménye és a részletek a rekordok hoznak létre a Naplóelemzési munkaterület konfigurálása.
+title: Összegyűjtheti és elemezheti a Windows-eseménynaplók az Azure Log Analyticsben |} A Microsoft Docs
+description: Windows-eseménynaplók a Log Analytics által használt leggyakrabban használt adatforrások tartoznak.  Ez a cikk ismerteti a Windows-eseménynaplók gyűjteményét és a Log Analytics-munkaterületen hoznak létre a rekordok részleteit konfigurálása.
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -14,68 +14,68 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/11/2017
 ms.author: bwren
-ms.component: na
-ms.openlocfilehash: 8183258ddde335b09293c72368ad3bf58a69334a
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.component: ''
+ms.openlocfilehash: 4e21c011f54382466bf614dc01fb9d51b514d998
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37129353"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48044246"
 ---
-# <a name="windows-event-log-data-sources-in-log-analytics"></a>A Windows Eseménynapló adatforrások Naplóelemzési
-Windows-eseménynaplók olyan egyik leggyakoribb [adatforrások](log-analytics-data-sources.md) adatgyűjtéshez Windows ügynököt használ, mivel számos alkalmazás a Windows eseménynaplójába írhatja.  Események például a rendszer- és standard naplókból mellett adja meg a figyelni kívánt alkalmazások által létrehozott egyéni naplók összegyűjtésére.
+# <a name="windows-event-log-data-sources-in-log-analytics"></a>Windows Eseménynapló-adatforrások a Log Analyticsben
+Windows-eseménynaplók közé tartoznak a leggyakoribb [adatforrások](log-analytics-data-sources.md) Windows-ügynökök használata, mivel számos alkalmazásban a Windows eseménynaplójába írhatja az adatok gyűjtéséhez.  Események, például a rendszer- és standard szintű naplók is összegyűjtheti a bármely kell figyelnie alkalmazások által létrehozott egyéni naplók megadása mellett.
 
 ![Windows-események](media/log-analytics-data-sources-windows-events/overview.png)     
 
-## <a name="configuring-windows-event-logs"></a>Konfigurálása Windows-eseményt naplóz
-Windows-eseménynaplók az konfigurálása a [Naplóelemzés beállításai adatok menüben](log-analytics-data-sources.md#configuring-data-sources).
+## <a name="configuring-windows-event-logs"></a>Windows eseménynaplók konfigurálása
+A Windows eseménynaplók konfigurálása a [adatok Log Analytics-beállítások menüben](log-analytics-data-sources.md#configuring-data-sources).
 
-A Naplóelemzési csak a Windows Eseménynapló a beállításokban megadott eseményeket gyűjti.  Írja be a napló nevére, majd kattintson az Eseménynapló adhat hozzá **+**.  Az egyes naplókon csak a kijelölt súlyosságokkal események összegyűjtése.  Ellenőrizze a gyűjteni kívánt adott napló fokozatok.  Nem adhat meg semmilyen további feltételt az események szűrése.
+A log Analytics csak az a beállítások a megadott Windows-eseménynapló eseményeit gyűjti.  Írja be a napló nevét, majd kattintson az Eseménynapló is hozzáadhat **+**.  Az egyes naplókhoz csak a kiválasztott súlyossági szint esetén csak az események összegyűjtése.  Ellenőrizze a súlyossági szint esetén csak az adott napló, amely szeretne gyűjteni.  További feltételeket az események szűrése nem tud biztosítani.
 
-Az Eseménynapló nevét írja be, Log Analyticshez közös eseménynaplók neve vonatkozó javaslatokat biztosít. Ha hozzá szeretne adni a napló nem jelenik meg a listában, továbbra is hozzáadhatja, írja be a naplófájl teljes neve. A naplófájl teljes neve található az Eseménynapló használatával. Az eseménynaplóban, nyissa meg a *tulajdonságok* a napló lapjáról, és másolja a karakterláncot, a *teljes nevét* mező.
+Az Eseménynapló neve beírása a Log Analytics Eseménynapló köznapi nevek vonatkozó javaslatokat biztosít. Ha a hozzáadni kívánt napló nem jelenik meg a listában, továbbra is hozzáadhat, írja be a naplófájl teljes neve. Az Eseménynapló használatával is megtalálhatja a naplófájl teljes neve. Nyissa meg az eseménynaplóban a *tulajdonságok* a napló lapjáról, és másolja a karakterláncot, a *teljes fájlvisszaállítási név* mező.
 
 ![Windows-események konfigurálása](media/log-analytics-data-sources-windows-events/configure.png)
 
 ## <a name="data-collection"></a>Adatgyűjtés
-A Naplóelemzési gyűjt minden esemény, amely megfelel a kiválasztott súlyossága a figyelt eseménynaplóban, az esemény jön létre.  Az ügynök a helyére azt gyűjti össze az egyes eseménynapló rögzíti.  Ha az ügynököt az adott időszakban offline állapotba kerül, majd Naplóelemzési gyűjti össze események ahol utolsó abbamaradtak, még akkor is, ha olyan eseményeket hozta létre, miközben az ügynök offline állapotban volt.  Nincs a lehetséges, hogy ezek az események nem gyűjthetők össze, ha az eseménynaplóban becsomagolja elveszne események felül, amikor az ügynök offline állapotban.
+A log Analytics gyűjt minden eseményt az esemény létrehozása egy kiválasztott súlyossága a figyelt eseménynaplóban a megfelelő.  Az ügynök a helyére az összegyűjtő minden eseménynaplóban rögzíti.  Ha az ügynököt egy ideig offline állapotba kerül, majd a Log Analytics gyűjti össze események ahol utolsó abbamaradtak, akkor is, ha az események jöttek létre, miközben az ügynök offline állapotban volt.  Lehetőség van, nem lesznek összegyűjtve, ha az ügynök nélküli állapotában felülírásra elveszne eseményekkel rendelkező burkolja az Eseménynapló ezeket az eseményeket.
 
 >[!NOTE]
->A Naplóelemzési nem gyűjt forrás SQL-kiszolgáló által létrehozott események naplózása *MSSQLSERVER* azonosítójú esemény 18453 kulcsszavak - tartalmazó *klasszikus* vagy *naplózási sikeres* és kulcsszó *0xa0000000000000*.
+>A log Analytics nem gyűjt be a forrás SQL-kiszolgáló által létrehozott események naplózása *MSSQLSERVER* , amely tartalmazza a kulcsszavak - azonosítójú 18453 *klasszikus* vagy *naplózási sikeres* és kulcsszó *0xa0000000000000*.
 >
 
-## <a name="windows-event-records-properties"></a>A Windows esemény-rekordok tulajdonságai
-Windows eseményrekordok típusa lehet **esemény** és az alábbi táblázatban a jellemzőkkel rendelkezik:
+## <a name="windows-event-records-properties"></a>Windows-esemény rekordok tulajdonságai
+Windows eseményrekordok rendelkezik olyan típusú **esemény** , és a tulajdonságok a következő táblázatban:
 
 | Tulajdonság | Leírás |
 |:--- |:--- |
-| Computer |Az esemény összegyűjtött a számítógép nevét. |
-| EventCategory |Az esemény kategóriáját. |
-| EventData |Összes esemény adatai nyers formátumban. |
+| Computer |Az esemény gyűjtötte a program a számítógép nevét. |
+| EventCategory |Az esemény kategóriája. |
+| EventData |Összes esemény adatai fájlt nyers formátumban. |
 | Eseményazonosító |Az esemény számát. |
-| EventLevel |A numerikus formában esemény súlyossága. |
-| EventLevelName |A szöveges formában esemény súlyossága. |
-| Az eseménynaplóban talál |Az esemény az összegyűjtött Eseménynapló neve. |
+| eventLevel |A numerikus formában esemény súlyosságát. |
+| EventLevelName |A szöveges formátumú esemény súlyosságát. |
+| Eseménynapló |Az összegyűjtött az eseményt az Eseménynapló neve. |
 | ParameterXml |Esemény paraméterértékek XML formátumban. |
-| ManagementGroupName |A System Center Operations Manager-ügynököket a felügyeleti csoport neve.  Más ügynökök ezt az értéket a rendszer AOI-<workspace ID> |
-| RenderedDescription |Esemény – leírás paraméterértékekkel |
+| ManagementGroupName |A System Center Operations Manager-ügynököket a felügyeleti csoport neve.  Más ügynökök esetén ez az érték AOI-<workspace ID> |
+| RenderedDescription |A paraméterértékek esemény leírása |
 | Forrás |Az esemény forrását. |
-| SourceSystem |Az esemény gyűjtötte a program az ügynök típusa. <br> OpsManager – Windows-ügynök, vagy közvetlenül kapcsolódjon, vagy az Operations Manager által felügyelt <br> Linux – az összes Linux-ügynökök  <br> AzureStorage – az Azure Diagnostics |
-| TimeGenerated |Dátum és idő, az esemény Windows jött létre. |
-| Felhasználónév |Az esemény naplózójának a fiók felhasználónevét. |
+| SourceSystem |Az esemény gyűjtötte a program az ügynök típusa. <br> Csatlakozás OpsManager – Windows-ügynök, közvetlenül vagy Operations Manager által felügyelt <br> Linux – az összes Linux-ügynökök  <br> AzureStorage – az Azure Diagnostics |
+| TimeGenerated |Dátum és a Windows az esemény létrehozásának ideje. |
+| Felhasználónév |Az esemény naplózójának a fiók felhasználóneve. |
 
-## <a name="log-searches-with-windows-events"></a>Napló megkeresi a Windows-események
-Az alábbi táblázat példákat különböző Windows-esemény lehívása napló kereséseket.
+## <a name="log-searches-with-windows-events"></a>Windows-eseményeket tartalmazó naplókeresések
+Az alábbi táblázat példákat különböző naplókeresésekkel, amelyek lekérni a Windows-esemény.
 
 | Lekérdezés | Leírás |
 |:---|:---|
-| Esemény |Minden Windows-eseményeket. |
-| Esemény &#124; ahol EventLevelName == "error" |Minden Windows-hiba az eseményeket. |
-| Esemény &#124; forrás count() összefoglalója |Forrás száma a Windows-eseményeket. |
-| Esemény &#124; ahol EventLevelName == "error" &#124; forrás count() összefoglalója |Hiba események száma a Windows forrás. |
+| Esemény |Minden Windows-eseményt. |
+| Esemény &#124; ahol Error == "error" |Minden Windows események hiba súlyosságát. |
+| Esemény &#124; forrás count() összegzése |Események száma a Windows forrás. |
+| Esemény &#124; ahol Error == "error" &#124; forrás count() összegzése |Hiba történt események száma a Windows forrás. |
 
 
 ## <a name="next-steps"></a>További lépések
-* Naplóelemzési más gyűjtéséhez konfigurálja [adatforrások](log-analytics-data-sources.md) elemzés céljából.
-* További tudnivalók [keresések jelentkezzen](log-analytics-log-searches.md) az adatforrások és a megoldások gyűjtött adatok elemzésére.  
-* Használjon [egyéni mezők](log-analytics-custom-fields.md) elemzése a eseményrekordok egyes mezőkbe.
-* Konfigurálása [teljesítményszámlálók gyűjteményét](log-analytics-data-sources-performance-counters.md) a Windows-ügynökök.
+* Konfigurálja a gyűjtendő más Log Analytics [adatforrások](log-analytics-data-sources.md) elemzés céljából.
+* Ismerje meg [naplókereséseket](log-analytics-log-searches.md) az adatforrások és megoldások gyűjtött adatok elemzéséhez.  
+* Használat [egyéni mezők](log-analytics-custom-fields.md) az eseményrekordok elemezni az egyes mezőket.
+* Konfigurálása [teljesítményszámláló-gyűjtemény](log-analytics-data-sources-performance-counters.md) a Windows-ügynököktől.

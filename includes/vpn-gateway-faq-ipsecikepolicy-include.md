@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/21/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 738ebdcc612d944db3794525085d220b33533245
-ms.sourcegitcommit: baed5a8884cb998138787a6ecfff46de07b8473d
+ms.openlocfilehash: 87d5389abd72875c62ea3484fc3f9ca43c339447
+ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "30198230"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48240092"
 ---
 ### <a name="is-custom-ipsecike-policy-supported-on-all-azure-vpn-gateway-skus"></a>Minden Azure VPN-átjáróhoz tartozó termékváltozat támogatja az egyéni IPsec/IKE-házirendet?
 Az egyéni IPsec/IKE-házirendet az Azure **VpnGw1, VpnGw2, VpnGw3, Standard** és a **Nagy teljesítményű** VPN-átjárók támogatják. Az **alapszintű** SKU **nem** támogatott.
@@ -76,7 +76,7 @@ Az alábbi táblázat az IKE (DHGroup) és IPsec (PFSGroup) esetében támogatot
 | 2                         | DHGroup2                 | PFS2         | 1024 bites MODP  |
 | 14                        | DHGroup14<br>DHGroup2048 | PFS2048      | 2048 bites MODP  |
 | 19                        | ECP256                   | ECP256       | 256 bites ECP    |
-| 20                        | ECP384                   | ECP284       | 384 bites ECP    |
+| 20                        | ECP384                   | ECP384       | 384 bites ECP    |
 | 24                        | DHGroup24                | PFS24        | 2048 bites MODP  |
 |                           |                          |              |                |
 

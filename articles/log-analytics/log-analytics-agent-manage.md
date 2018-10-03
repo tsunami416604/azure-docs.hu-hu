@@ -1,6 +1,6 @@
 ---
-title: A Azure Log Analytics Agent kezelése |} Microsoft Docs
-description: Ez a cikk ismerteti a különböző felügyeleti feladatok, amelyek végrehajtják általában az a Microsoft Monitoring Agent (MMA) egy gépen központilag telepített életciklusa folyamán.
+title: Az Azure Log Analytics-ügynök felügyelete |} A Microsoft Docs
+description: Ez a cikk ismerteti a különböző felügyeleti feladatok, amelyek általában a, a Microsoft Monitoring Agent (MMA) gépen telepített életciklusa alatt fogja elvégezni.
 services: log-analytics
 documentationcenter: ''
 author: mgoedtel
@@ -14,19 +14,19 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/30/2018
 ms.author: magoedte
-ms.component: na
-ms.openlocfilehash: 908418dffaffc25be320bd0008edf03493aa4e55
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.component: ''
+ms.openlocfilehash: e00ccc4d55da805538801a0a8f3ee5502d871fab
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37128792"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48042308"
 ---
-# <a name="managing-and-maintaining-the-log-analytics-agent-for-windows-and-linux"></a>Kezelését és karbantartását a Log Analyticshez ügynök Windows és Linux rendszerekhez
+# <a name="managing-and-maintaining-the-log-analytics-agent-for-windows-and-linux"></a>Kezelésével és karbantartásával a Log Analytics-ügynököket Windows és Linux rendszerekhez
 
-A Windows vagy Linux-ügynök Naplóelemzési a kezdeti telepítés után szükség lehet konfigurálja újra az ügynököt, vagy ha elérte a használatból való kivonást szakasza életciklus eltávolítja azt a számítógépről.  A szokásos karbantartási feladatok manuálisan, illetve az automation, ami csökkenti a működési hiba és a is könnyedén kezelhető.
+A Windows vagy Linux-ügynök a Log Analytics kezdeti telepítés után szükség lehet konfigurálja újra az ügynököt, vagy ha elérte életciklusa szakasza a használatból való kivonást egyaránt eltávolítja azt a számítógépről.  Könnyedén felügyelheti a rendszeres karbantartási műveletek manuálisan, illetve az automation, ami csökkenti a működési hiba és a költségeket.
 
-## <a name="adding-or-removing-a-workspace"></a>Hozzáadásával vagy eltávolításával a munkaterület 
+## <a name="adding-or-removing-a-workspace"></a>Hozzáadása vagy eltávolítása a munkaterület 
 
 ### <a name="windows-agent"></a>Windows-ügynök
 
@@ -34,12 +34,12 @@ A Windows vagy Linux-ügynök Naplóelemzési a kezdeti telepítés után szüks
 
 1. Jelentkezzen be a számítógépre egy olyan fiókkal, amely rendszergazdai jogosultságokkal rendelkezik.
 2. Nyissa meg **Vezérlőpultot**.
-3. Válassza ki **Microsoft-Figyelőügynök** , majd a **Azure Naplóelemzés (OMS)** fülre.
-4. Ha a munkaterületet távolítani, válassza ki azt, és kattintson **eltávolítása**. Ismételje meg ezt a lépést minden egyéb munkaterülethez azt szeretné, hogy az ügynök a továbbiakban nem küld jelentéseket.
-5. Ha a munkaterületet hozzá, kattintson a **Hozzáadás** és az a **hozzáadni a Naplóelemzési munkaterület** párbeszédpanelen illessze be a munkaterület azonosítója és Munkaterületkulcsot (elsődleges kulcs). A számítógép egy Naplóelemzési munkaterületet Azure Government felhőben jelentse, ha az Azure-felhő legördülő listából válassza ki az Azure Amerikai Egyesült államokbeli kormányzati. 
+3. Válassza ki **Microsoft Monitoring Agent** és kattintson a **Azure Log Analytics (OMS)** fülre.
+4. Ha eltávolítja egy munkaterületet, jelölje ki azt, és kattintson a **eltávolítása**. Ismételje meg ezt a lépést bármely más azt szeretné, hogy az ügynök a továbbiakban a jelentéskészítés munkaterületen.
+5. Ha ad hozzá egy munkaterületet, kattintson a **Hozzáadás** és az a **adja hozzá a Log Analytics-munkaterület** párbeszédpanelen illessze be a munkaterület Azonosítóját és a Munkaterületkulcsot (elsődleges kulcs). Ha az Azure Government-felhőbeli Log Analytics-munkaterületet a kell jelentenie, válassza ki Azure US Government az Azure Cloud legördülő listából. 
 6. Kattintson az **OK** gombra a módosítások mentéséhez.
 
-#### <a name="remove-a-workspace-using-powershell"></a>Távolítsa el a PowerShell használatával munkaterület 
+#### <a name="remove-a-workspace-using-powershell"></a>Egy PowerShell-lel munkaterület eltávolítása 
 
 ```PowerShell
 $workspaceId = "<Your workspace Id>"
@@ -48,7 +48,7 @@ $mma.RemoveCloudWorkspace($workspaceId)
 $mma.ReloadConfiguration()
 ```
 
-#### <a name="add-a-workspace-in-azure-commercial-using-powershell"></a>A munkaterület hozzáadása az Azure kereskedelmi PowerShell használatával 
+#### <a name="add-a-workspace-in-azure-commercial-using-powershell"></a>Munkaterület hozzáadása az Azure-ban kereskedelmi PowerShell-lel 
 
 ```PowerShell
 $workspaceId = "<Your workspace Id>"
@@ -58,7 +58,7 @@ $mma.AddCloudWorkspace($workspaceId, $workspaceKey)
 $mma.ReloadConfiguration()
 ```
 
-#### <a name="add-a-workspace-in-azure-for-us-government-using-powershell"></a>A munkaterület hozzáadása az Azure-ban az Amerikai Egyesült államokbeli kormányzati PowerShell használatával 
+#### <a name="add-a-workspace-in-azure-for-us-government-using-powershell"></a>Munkaterület hozzáadása az Azure-ban az USA kormányzati szerveinek biztosított PowerShell-lel 
 
 ```PowerShell
 $workspaceId = "<Your workspace Id>"
@@ -69,52 +69,52 @@ $mma.ReloadConfiguration()
 ```
 
 >[!NOTE]
->Ha már használta a parancssorból vagy parancsfájlból korábban az ügynök telepítéséhez és konfigurálásához a `EnableAzureOperationalInsights` le lett cserélve `AddCloudWorkspace` és `RemoveCloudWorkspace`.
+>Ha már használta a parancssorból vagy parancsfájlból korábban telepíteni vagy konfigurálni az ügynököt `EnableAzureOperationalInsights` értéke le lett cserélve `AddCloudWorkspace` és `RemoveCloudWorkspace`.
 >
 
 ### <a name="linux-agent"></a>Linux-ügynök
-A következő lépések bemutatják, hogyan lehet konfigurálja újra a Linux-ügynök, ha úgy dönt, hogy regisztrálja őket egy másik munkaterület vagy egy munkaterület eltávolítja a konfigurációját.  
+A következő lépések bemutatják, hogyan konfigurálja újra a Linux-ügynök, ha úgy dönt, hogy regisztrálja az egy másik munkaterületet, vagy eltávolítja a munkaterület az a konfiguráció.  
 
-1.  A következő parancs futtatásával ellenőrizheti munkaterülethez regisztrálva van.
+1.  Annak ellenőrzéséhez, hogy regisztrálva van egy munkaterületet, futtassa a következő parancsot.
 
     `/opt/microsoft/omsagent/bin/omsadmin.sh -l` 
 
-    Ez a következőhöz hasonló - visszaküldje állapota 
+    Kell visszaadnia egy állapota a következőhöz hasonló- 
 
     `Primary Workspace: <workspaceId>   Status: Onboarded(OMSAgent Running)`
 
-    Fontos, hogy a is állapota az ügynök fut-e, ellenkező esetben az alábbi lépések végrehajtásával konfigurálja újra az ügynök nem lesz sikeres.  
+    Fontos, hogy a is állapota az ügynök fut, ellenkező esetben a következő lépések végrehajtásával konfigurálja újra az ügynök nem lesz sikeres.  
 
-2. Ha már regisztrálva van egy munkaterület, távolítsa el a regisztrált munkaterület a következő parancs futtatásával.  Ellenkező esetben ha nincs regisztrálva, folytassa a következő lépéssel.
+2. Ha már regisztrálva van egy munkaterülethez, távolítsa el a regisztrált munkaterület a következő parancs futtatásával.  Ellenkező esetben, ha nincs regisztrálva van, folytassa a következő lépéssel.
 
     `/opt/microsoft/omsagent/bin/omsadmin.sh -X`  
     
-3. Egy másik munkaterület regisztrálásához futtassa a parancsot `/opt/microsoft/omsagent/bin/omsadmin.sh -w <workspace id> -s <shared key> [-d <top level domain>]` 
-4. A módosítások ellenőrzéséhez tartott hatása, futtassa a parancsot.
+3. Egy másik munkaterülettel regisztrálásához futtassa a parancsot `/opt/microsoft/omsagent/bin/omsadmin.sh -w <workspace id> -s <shared key> [-d <top level domain>]` 
+4. A módosítások érinthetik tartott ellenőrzéséhez futtassa a parancsot.
 
     `/opt/microsoft/omsagent/bin/omsadmin.sh -l` 
 
-    Ez a következőhöz hasonló - visszaküldje állapota 
+    Kell visszaadnia egy állapota a következőhöz hasonló- 
 
     `Primary Workspace: <workspaceId>   Status: Onboarded(OMSAgent Running)`
 
-Az ügynök szolgáltatást nem kell ahhoz, hogy a módosítások életbe léptetéséhez újra kell indítani.
+Az ügynök szolgáltatást nem kell ahhoz, hogy a módosítások érvénybe léptetéséhez újra kell indítani.
 
-## <a name="update-proxy-settings"></a>Proxykiszolgáló-beállításainak frissítése 
-Az ügynököt, hogy a szolgáltatás egy proxyn keresztül történő kommunikációhoz konfigurálandó vagy [OMS átjáró](log-analytics-oms-gateway.md) telepítést követően a következő módszerek valamelyikével befejezheti a feladatot.
+## <a name="update-proxy-settings"></a>Proxy-beállítások frissítése 
+A szolgáltatás egy proxykiszolgálón keresztül kommunikáljon az ügynök konfigurálásához vagy [OMS-átjáró](log-analytics-oms-gateway.md) az üzembe helyezést követően használja a feladat végrehajtásához a következő módszerek egyikét.
 
 ### <a name="windows-agent"></a>Windows-ügynök
 
-#### <a name="update-settings-using-control-panel"></a>Használja a Vezérlőpult-beállítások frissítése
+#### <a name="update-settings-using-control-panel"></a>A Vezérlőpulton beállításainak frissítése
 
 1. Jelentkezzen be a számítógépre egy olyan fiókkal, amely rendszergazdai jogosultságokkal rendelkezik.
 2. Nyissa meg **Vezérlőpultot**.
-3. Válassza ki **Microsoft-Figyelőügynök** , majd a **proxybeállítások** fülre.
-4. Kattintson a **proxykiszolgálót használni** és URL-címét és portszámát a proxy- vagy az átjáró. Ha a proxykiszolgáló vagy az OMS-átjáró megköveteli a hitelesítést, írja be a felhasználónév és jelszó hitelesítéséhez, és kattintson a **OK**. 
+3. Válassza ki **Microsoft Monitoring Agent** és kattintson a **proxybeállítások** fülre.
+4. Kattintson a **proxykiszolgálóval** , és adja meg az URL-címét és portszámát a proxy-kiszolgáló vagy átjáró. Ha a proxy- vagy OMS-átjáró hitelesítést igényel, írja be a felhasználónevet és jelszót a hitelesítéshez, és kattintson a **OK**. 
 
 #### <a name="update-settings-using-powershell"></a>PowerShell-lel beállításainak frissítése 
 
-Másolja az alábbi PowerShell-példakód, frissítse a környezetre vonatkozó információkkal, és mentse a PS1 fájlnév-kiterjesztésűeket.  Futtassa a parancsfájlt, amely közvetlenül kapcsolódik a Naplóelemzés szolgáltatás minden számítógépen.
+Másolja az alábbi minta PowerShell-kódot, frissítse az adott környezetre jellemző információkat, és mentse PS1 fájlnévkiterjesztéssel.  Futtassa a szkriptet minden olyan számítógépen, amely közvetlenül csatlakozik a Log Analytics szolgáltatásnak.
 
 ```PowerShell
 param($ProxyDomainName="https://proxy.contoso.com:30443", $cred=(Get-Credential))
@@ -141,7 +141,7 @@ $healthServiceSettings.SetProxyInfo($ProxyDomainName, $ProxyUserName, $cred.GetN
 ```  
 
 ### <a name="linux-agent"></a>Linux-ügynök
-Hajtsa végre az alábbi lépéseket, ha a Linux rendszerű számítógépek kell kommunikációja áthaladjon a proxykiszolgáló vagy az OMS átjáró szolgáltatáshoz.  A proxykonfiguráció értékének szintaxisa a következő: `[protocol://][user:password@]proxyhost[:port]`.  A *proxyhost* tulajdonság a proxykiszolgáló teljes tartománynevét vagy IP-címét fogadja el.
+Hajtsa végre az alábbi lépéseket, ha a Linux rendszerű számítógépek keresztül kell kommunikálniuk a proxy- vagy OMS Log Analytics-átjárót.  A proxykonfiguráció értékének szintaxisa a következő: `[protocol://][user:password@]proxyhost[:port]`.  A *proxyhost* tulajdonság a proxykiszolgáló teljes tartománynevét vagy IP-címét fogadja el.
 
 1. Szerkessze az `/etc/opt/microsoft/omsagent/proxy.conf` fájlt a következő parancsok futtatásával, és módosítsa az értékeket a saját konkrét beállításaira.
 
@@ -158,53 +158,53 @@ Hajtsa végre az alábbi lépéseket, ha a Linux rendszerű számítógépek kel
     ``` 
 
 ## <a name="uninstall-agent"></a>Ügynök eltávolítása
-A Windows vagy Linux ügynök eltávolítása a parancssori vagy a telepítő varázsló segítségével használja a következő eljárások egyikét.
+A következő eljárások valamelyikével parancssori vagy a telepítő varázsló segítségével Windows vagy Linux-ügynök eltávolítása.
 
 ### <a name="windows-agent"></a>Windows-ügynök
 
 #### <a name="uninstall-from-control-panel"></a>Távolítsa el a Vezérlőpult
 1. Jelentkezzen be a számítógépre egy olyan fiókkal, amely rendszergazdai jogosultságokkal rendelkezik.  
 2. A **Vezérlőpult**, kattintson a **programok és szolgáltatások**.
-3. A **programok és szolgáltatások**, kattintson a **Microsoft-Figyelőügynök**, kattintson a **Eltávolítás**, és kattintson a **Igen**.
+3. A **programok és szolgáltatások**, kattintson a **Microsoft Monitoring Agent**, kattintson a **Eltávolítás**, és kattintson a **Igen**.
 
 >[!NOTE]
->Az ügynök telepítése varázsló is futtatható duplán kattintva **MMASetup -<platform>.exe**, elérhető letöltésre egy olyan munkaterületről, az Azure portálon.
+>Az ügynök telepítővarázslójával duplán kattintva is elindítható **MMASetup -<platform>.exe**, amely letölthető a munkaterület az Azure Portalon érhető el.
 
 #### <a name="uninstall-from-the-command-line"></a>Távolítsa el a parancssorból
-Az ügynök a letöltött fájl csomag egy önálló telepítő IExpress létre.  A telepítőprogram az ügynök és a fájlokat a csomagban található, és ahhoz, hogy megfelelően távolítsa el a parancssorból az alábbi példában látható módon kinyerni kell. 
+A letöltött fájlt az ügynök a csomag egy önálló telepítő IExpress hoztak létre.  A telepítőprogram az ügynök és a fájlokat a csomagban található, és szeretne kinyerni annak érdekében, hogy megfelelően eltávolítsa a parancssorból az alábbi példában látható. 
 
 1. Jelentkezzen be a számítógépre egy olyan fiókkal, amely rendszergazdai jogosultságokkal rendelkezik.  
-2. Egy rendszergazda jogú parancssorból futtassa a telepítési fájlokat, kibontani `extract MMASetup-<platform>.exe` és felszólítja a fájlokat az elérési úthoz.  Másik lehetőségként az elérési utat is megadhat úgy, hogy az argumentumok `extract MMASetup-<platform>.exe /c:<Path> /t:<Path>`.  Az IExpress által támogatott parancssori swtiches további információkért lásd: [parancssori kapcsolók a IExpress](https://support.microsoft.com/help/197147/command-line-switches-for-iexpress-software-update-packages) majd frissítse a példa az igényeinek.
-3. Írja be a parancssorba `%WinDir%\System32\msiexec.exe /x <Path>:\MOMAgent.msi /qb`.  
+2. Egy rendszergazda jogú parancssorból futtassa az ügynök telepítési fájljait, kibontásához `extract MMASetup-<platform>.exe` és a rendszer felkéri a elérési útján a fájlok kibontásához.  Másik lehetőségként megadhatja az elérési út az argumentumoknak `extract MMASetup-<platform>.exe /c:<Path> /t:<Path>`.  Az IExpress által támogatott parancssori swtiches további információkért lásd: [IExpress használható parancssori kapcsolók](https://support.microsoft.com/help/197147/command-line-switches-for-iexpress-software-update-packages) , majd frissítse a példát, hogy illeszkedjen az igényeihez.
+3. A parancssorba írja be a `%WinDir%\System32\msiexec.exe /x <Path>:\MOMAgent.msi /qb`.  
 
 ### <a name="linux-agent"></a>Linux-ügynök
 Az ügynök eltávolításához futtassa az alábbi parancsot a Linux rendszerű számítógépen.  A *--purge* argumentum teljesen eltávolítja az ügynököt és annak konfigurációját.
 
    `wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh && sh onboard_agent.sh --purge`
 
-## <a name="configure-agent-to-report-to-an-operations-manager-management-group"></a>Hogy az Operations Manager felügyeleti csoport konfigurálása
+## <a name="configure-agent-to-report-to-an-operations-manager-management-group"></a>Az ügynök számára, hogy az Operations Manager felügyeleti csoport konfigurálása
 
 ### <a name="windows-agent"></a>Windows-ügynök
-Hajtsa végre a következő lépésekkel állíthatja be az OMS ügynök a Windows számára, hogy egy System Center Operations Manager felügyeleti csoportban. 
+A következő lépésekkel konfigurálhatja az OMS ügynök a Windows számára, hogy a System Center Operations Manager felügyeleti csoportban. 
 
 1. Jelentkezzen be a számítógépre egy olyan fiókkal, amely rendszergazdai jogosultságokkal rendelkezik.
 2. Nyissa meg **Vezérlőpultot**. 
-3. Kattintson a **Microsoft-Figyelőügynök** , majd a **Operations Manager** fülre.
-4. Ha az Operations Manager-kiszolgáló Active Directory integrációja a, kattintson a **az AD DS-ből felügyeleti csoport-hozzárendelések automatikus frissítése**.
-5. Kattintson a **Hozzáadás** megnyitásához a **felügyeleti csoport hozzáadása** párbeszédpanel megnyitásához.
-6. A **felügyeleti csoport neve** mezőbe írja be a felügyeleti csoport nevét.
-7. Az a **elsődleges felügyeleti kiszolgáló** mezőbe írja be az elsődleges felügyeleti kiszolgáló számítógépneve.
-8. Az a **felügyeleti kiszolgáló portszáma** mezőbe írja be a TCP-portszámot.
-9. A **Ügynökműveleti fiók**, válassza a helyi rendszerfiókot vagy egy helyi tartományi fiók.
-10. Kattintson a **OK** bezárásához a **felügyeleti csoport hozzáadása** párbeszédpanel megnyitásához, majd kattintson **OK** bezárásához a **Microsoft Monitoring Agent tulajdonságai** a párbeszédpanel.
+3. Kattintson a **Microsoft Monitoring Agent** és kattintson a **az Operations Manager** fülre.
+4. Ha az Operations Manager-kiszolgáló Active Directory-integráció, kattintson a **AD DS-től származó felügyeleticsoport-hozzárendelések automatikus frissítése**.
+5. Kattintson a **Hozzáadás** megnyitásához a **adja hozzá a felügyeleti csoport** párbeszédpanel bezárásához.
+6. A **felügyeleti csoport neve** mezőbe írja be a felügyeleti csoport neve.
+7. Az a **elsődleges felügyeleti kiszolgáló** mezőbe írja be az elsődleges felügyeleti kiszolgáló számítógépnevét.
+8. Az a **felügyeleti kiszolgáló portja** mezőbe írja be a TCP-port száma.
+9. A **Ügynökműveleti fiók**, válassza a helyi rendszerfiókot vagy egy helyi tartományi fiókot.
+10. Kattintson a **OK** gombra kattintva zárja be a **adja hozzá a felügyeleti csoport** párbeszédpanelen, majd kattintson **OK** gombra kattintva zárja be a **Microsoft Monitoring Agent tulajdonságai** párbeszédpanel bezárásához.
 
 ### <a name="linux-agent"></a>Linux-ügynök
-Hajtsa végre a következő lépésekkel állíthatja be az OMS-ügynököt, hogy egy System Center Operations Manager felügyeleti csoport linuxos. 
+A következő lépésekkel konfigurálhatja az OMS-ügynök Linux rendszeren való jelentés érdekében a System Center Operations Manager felügyeleti csoportban. 
 
 1. A fájl szerkesztése `/etc/opt/omi/conf/omiserver.conf`
-2. Győződjön meg arról, hogy a kezdődő `httpsport=` határozza meg az 1270-es port. Például: `httpsport=1270`
-3. Indítsa újra az OMI-kiszolgálón: `sudo /opt/omi/bin/service_control restart`
+2. Ellenőrizze, hogy a sor elején `httpsport=` az 1270-es portot határozza meg. Például: `httpsport=1270`
+3. Indítsa újra az OMI-kiszolgáló: `sudo /opt/omi/bin/service_control restart`
 
 ## <a name="next-steps"></a>További lépések
 
-Felülvizsgálati [a Linux-ügynök hibaelhárítási](log-analytics-agent-linux-support.md) Ha hibát tapasztal telepítése vagy az ügynök kezelése során.  
+Felülvizsgálat [a Linux-ügynök hibaelhárítási](log-analytics-agent-linux-support.md) Ha problémák merülnek fel telepítése vagy az ügynök kezelése során.  

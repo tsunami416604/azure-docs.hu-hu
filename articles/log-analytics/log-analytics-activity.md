@@ -1,6 +1,6 @@
 ---
-title: Összegyűjti és elemzi az Azure tevékenységi naplóit a Log Analyticshez |} Microsoft Docs
-description: Az Azure tevékenységi naplóit megoldás segítségével elemezheti és az összes Azure-előfizetések az Azure tevékenységnapló keresést.
+title: Összegyűjtheti és elemezheti az Azure-Tevékenységnaplók Log Analytics |} A Microsoft Docs
+description: Az Azure-tevékenységnaplóinak megoldás segítségével elemezheti és az összes Azure-előfizetések az Azure-tevékenységnapló kereshet.
 services: log-analytics
 documentationcenter: ''
 author: mgoedtel
@@ -14,92 +14,92 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: magoedte
-ms.component: na
-ms.openlocfilehash: 0b05dc17fc7ba567bf633c25a080fbf56903935c
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.component: ''
+ms.openlocfilehash: dab2dd2b1d020a7619b18f330640b7f555a1f8c1
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37130326"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48044382"
 ---
-# <a name="collect-and-analyze-azure-activity-logs-in-log-analytics"></a>Összegyűjti és elemzi az Azure tevékenység Log Analytics-naplók
+# <a name="collect-and-analyze-azure-activity-logs-in-log-analytics"></a>Összegyűjtheti és elemezheti a Log Analytics az Azure-Tevékenységnaplók
 
-![Az Azure tevékenységi naplóit szimbólum](./media/log-analytics-activity/activity-log-analytics.png)
+![Azure Tevékenységnaplók szimbólum](./media/log-analytics-activity/activity-log-analytics.png)
 
-A tevékenység Naplóelemzési megoldás segítségével elemezheti és keressen a [Azure tevékenységnapló](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md) minden Azure-előfizetés között. Az Azure tevékenységnapló, amely az előfizetések erőforrásainak végrehajtott műveletek betekintést nyújt a naplót. A műveletnapló korábbi nevén *naplók* vagy *műveleti naplókat* mivel azt jelenti, hogy az előfizetések eseményeket.
+Az Activity Log Analytics megoldás segítségével elemezheti és keresse a [Azure tevékenységnapló](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md) az összes Azure-előfizetés. Az Azure-tevékenységnapló egy naplóban, amely az előfizetésekben erőforrásokon végrehajtott műveletekkel kapcsolatos információkat biztosít. A tevékenységnapló korábbi nevén *Auditnaplók* vagy *műveleti naplók* óta jelentést készít az előfizetés eseményeire.
 
-A tevékenység-naplót használó, meghatározhatja a *mi*, *ki*, és *amikor* az esetleges írási műveleteket (PUT, POST, Törlés) arról, hogy az erőforrást az előfizetésében. A műveletek és egyéb kapcsolódó tulajdonságainak állapotának értelmezni is lehet. A műveletnapló nem tartalmazza (GET) olvasási műveletek és az erőforrásokhoz a hagyományos telepítési modellt használó műveletek.
+A tevékenységnapló használatával megadhatja, hogy a *mi*, *akik*, és *amikor* írási műveletek (PUT, POST, DELETE) arról, hogy az erőforrást az előfizetésében. A műveletek és az egyéb releváns tulajdonságok állapotát is ismernie is. A tevékenységnapló nem tartalmaz olvasási (GET) műveleteket, illetve az erőforrások a klasszikus üzemi modellt használó műveleteket.
 
-Log Analyticshez való csatlakozáskor az Azure tevékenységi naplóit teheti:
+Az Azure-Tevékenységnaplók Log Analyticshez való kapcsolódáskor, a következőket teheti:
 
-- Az előre definiált nézetekkel tevékenység naplóinak elemzése
-- Elemzése és a Keresés és a tevékenység naplókat a több Azure-előfizetéssel
-- Több mint 90 nap tevékenységi naplóit tartsa<sup>1</sup>
-- Tevékenységi naplóit okozták az egyéb Azure platform-és alkalmazásadatok
-- Működési állapot összesítve tevékenységek
-- Az Azure-szolgáltatások minden egyes történik tevékenységek tendenciák megtekintése
-- Jelentés az összes Azure-erőforrások engedélyezési módosításai
-- Az erőforrások érintő vagy szolgáltatáskimaradás esetén egészségügyi problémák azonosításához
-- Napló kereséssel összefüggéseket felhasználói tevékenységet, automatikus méretezése műveletek, engedélyezési módosítások és a környezetéből más naplók vagy metrikák szolgáltatásának állapota
+- Az előre meghatározott nézeteket a vizsgálati naplók elemzése
+- Elemezheti és a Keresés és a tevékenység naplóinak több Azure-előfizetéssel
+- A Tevékenységnaplók 90 napnál hosszabb ideig megőrizni<sup>1</sup>
+- Tevékenységnaplók korrelációját, ha más Azure-platform-és alkalmazásadatok
+- Tekintse meg az állapot szerint összesített üzemeltetési tevékenységek
+- Tevékenységek történik az egyes Azure-szolgáltatások nézet trendek
+- Jelentés az engedélyezési módosításait az Azure-erőforrások
+- Azonosítsa, mely negatív hatással az erőforrások vagy szolgáltatáskimaradás esetén állapotbeli problémák
+- Naplóbeli keresés használatával vesse össze a felhasználói tevékenységek, automatikus skálázási műveletek, az engedélyezési módosításainak és a környezet más naplók és metrikák szolgáltatásának állapota
 
-<sup>1</sup>alapértelmezés szerint a Naplóelemzési tartja az Azure tevékenységi naplóit 90 napra vonatkozó akkor is, ha az ingyenes szint van. Vagy, ha egy munkaterület megőrzési beállítása legalább 90 nappal lehet. Ha a munkaterületet 90 napnál hosszabb megőrzési, a tevékenységi naplóit nyilvántartását alapján a megőrzési időtartam a munkaterületet.
+<sup>1</sup>alapértelmezés szerint a Log Analytics tartja az Azure-Tevékenységnaplók 90 napig, akkor is, ha azokat ingyenes szint. Vagy, ha 90 napnál kevesebb munkaterület adatmegőrzési beállítását. Ha a munkaterület 90 napnál hosszabb megőrzési rendelkezik, a tevékenységnaplókat őrzi meg a alapján a megőrzési idő a munkaterület a.
 
-Naplóelemzési tevékenységi naplóit ingyenesen gyűjt, és a naplók ingyenesen 90 napig tárolja. Ha a naplófájlok 90 napnál hosszabb ideig tárolja, az adatok 90 napnál hosszabb megőrzési díjai adatok gyakorisága.
+A log Analytics ingyenes Tevékenységnaplók gyűjt, és a naplókat tároló 90 napig ingyenesen. Ha 90 napnál hosszabb ideig naplókat tárolja, az adatok 90 napnál tovább tárolt adatok adatmegőrzési díjat számolunk.
 
-Ha a számítógép az ingyenes tarifacsomag, tevékenységi naplóit nem vonatkoznak a napi adatok felhasználásához.
+Ha Ön az ingyenes tarifacsomag, tevékenységeket tartalmazó naplók nem vonatkoznak a napi adatok használata során.
 
 ## <a name="connected-sources"></a>Összekapcsolt források
 
-A legtöbb más Naplóelemzési megoldásoktól eltérően nem adatgyűjtés tevékenységi naplóit ügynököket. A megoldás által használt összes adatok származnak, közvetlenül az Azure-ból.
+Ellentétben a legtöbb más Log Analytics-megoldások nem az adatgyűjtés a Tevékenységnaplók az ügynökök által. A megoldás által használt összes adat közvetlenül az Azure-ból származik.
 
 | Összekapcsolt forrás | Támogatott | Leírás |
 | --- | --- | --- |
-| [Windows-ügynökök](log-analytics-windows-agent.md) | Nem | A megoldás a Windows-ügynökök nem gyűjt adatokat. |
+| [Windows-ügynökök](log-analytics-windows-agent.md) | Nem | Windows-ügynököktől a megoldás nem gyűjt adatokat. |
 | [Linux-ügynökök](log-analytics-linux-agents.md) | Nem | A megoldás a Linux-ügynökök nem gyűjt adatokat. |
-| [SCOM felügyeleti csoport](log-analytics-om-agents.md) | Nem | A megoldás nem gyűjt adatokat az ügynökök a csatlakoztatott SCOM felügyeleti csoport. |
-| [Azure Storage-fiók](log-analytics-azure-storage.md) | Nem | A megoldás az Azure storage nem gyűjt adatokat. |
+| [Az SCOM felügyeleti csoport](log-analytics-om-agents.md) | Nem | A megoldás az ügynökök a csatlakoztatott SCOM felügyeleti csoport nem gyűjt adatokat. |
+| [Azure Storage-fiók](log-analytics-azure-storage.md) | Nem | A megoldás nem gyűjt adatokat az Azure storage-ból. |
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Azure műveletnapló adatai eléréséhez Azure-előfizetéssel kell rendelkeznie.
+- Szeretné elérni az Azure-Tevékenységnaplók adatait, Azure-előfizetéssel kell rendelkeznie.
 
 ## <a name="configuration"></a>Konfiguráció
 
-Hajtsa végre a következő lépésekkel állíthatja be a tevékenység Naplóelemzési megoldás a munkaterületek.
+A következő lépésekkel konfigurálja az Activity Log Analytics megoldást, a munkaterületek.
 
 1. Engedélyezze az Activity Log Analytics megoldást az [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AzureActivityOMS?tab=Overview) felületéről vagy a [Log Analytics-megoldások hozzáadása a megoldástárból](log-analytics-add-solutions.md) című témakörben leírt eljárást követve.
-2. Állítsa be ide a Naplóelemzési munkaterület tevékenységi naplóit.
-    1. Az Azure portálon, válassza ki a munkaterületet, és kattintson **Azure tevékenységnapló**.
+2. Tevékenységnaplók az Ugrás a Log Analytics-munkaterület konfigurálása.
+    1. Az Azure Portalon válassza ki a munkaterületet, és kattintson a **Azure tevékenységnapló**.
     2. Az egyes előfizetésekhez kattintson az előfizetés nevét.  
         ![Előfizetés hozzáadása](./media/log-analytics-activity/add-subscription.png)
     3. Az a *SubscriptionName* panelen kattintson a **Connect**.  
-        ![Csatlakozás az előfizetés](./media/log-analytics-activity/subscription-connect.png)
+        ![Előfizetés csatlakoztatása](./media/log-analytics-activity/subscription-connect.png)
 
-A megoldás az OMS-portálon való hozzáadásakor a következő csempe láthatja. Jelentkezzen be az Azure portál Azure-előfizetéssel kapcsolódni a munkaterületen.  
-![értékelés végrehajtása](./media/log-analytics-activity/tile-performing-assessment.png)
+Ha a megoldás az OMS-portálon, látni fogja a következő csempét. Az Azure Portalra való csatlakozáshoz jelentkezzen be egy Azure-előfizetést a munkaterületre.  
+![értékelés folyamatban](./media/log-analytics-activity/tile-performing-assessment.png)
 
 ## <a name="using-the-solution"></a>A megoldás használata
 
-A tevékenység Naplóelemzési megoldás a munkaterülethez való hozzáadásakor a **Azure tevékenységi naplóit** csempe hozzáadódik az áttekintő irányítópulthoz. Ez a csempe az Azure-előfizetések, amely hozzáfér a megoldás Azure tevékenység rekordjainak számát jeleníti meg.
+A munkaterülethez az Activity Log Analytics megoldás hozzáadásakor az **Azure-tevékenységnaplóinak** az áttekintő irányítópult, csempe jelenik meg. Ez a csempe az Azure-előfizetést, amely hozzáfér a megoldás az Azure-tevékenységi rekordok száma számát jeleníti meg.
 
-![Az Azure tevékenységi naplóit csempe](./media/log-analytics-activity/azure-activity-logs-tile.png)
+![Azure Tevékenységnaplók csempéje](./media/log-analytics-activity/azure-activity-logs-tile.png)
 
-### <a name="view-azure-activity-logs"></a>Naplózza az Azure-tevékenység megtekintése
+### <a name="view-azure-activity-logs"></a>Azure Tevékenységnaplók megtekintése
 
-Kattintson a **Azure tevékenységi naplóit** csempére kattintva nyissa meg a **Azure tevékenységi naplóit** irányítópult. Az irányítópulton az alábbi táblázatban felsorolt panelek találhatók. Minden panelen legfeljebb 10 olyan elem jelenik meg, amely megfelel a panel hatóköri és időtartományi kritériumainak. A panel alján található **Az összes megtekintése** elemre vagy a panel fejlécére kattintva az összes rekordot megjelenítő keresést végezhet a naplóban.
+Kattintson a **Azure-tevékenységnaplóinak** csempére kattintva nyissa meg a **Azure-tevékenységnaplóinak** irányítópultot. Az irányítópulton az alábbi táblázatban felsorolt panelek találhatók. Minden panelen legfeljebb 10 olyan elem jelenik meg, amely megfelel a panel hatóköri és időtartományi kritériumainak. A panel alján található **Az összes megtekintése** elemre vagy a panel fejlécére kattintva az összes rekordot megjelenítő keresést végezhet a naplóban.
 
-Tevékenység naplóadatokat csak akkor jelenik meg *után* a tevékenységi naplóit, hogy a megoldás lépjen, adatai nem tekinthetők meg addig konfigurálását.
+Tevékenységnapló adatainak csak akkor jelenik meg *után* konfigurálta a vizsgálati naplók nyissa meg a megoldást, így még a határidő előtt nem tekintheti meg adatokat.
 
 | Blade | Leírás |
 | --- | --- |
-| Az Azure tevékenység naplóbejegyzések | Azure tevékenység naplóbejegyzés felső sáv diagramot ábrázol, amely a kijelölt időtartományban rekord összegek és a felső 10 tevékenység hívók listáját jeleníti meg. Kattintson a napló keresése futtatásához a sávdiagram <code>AzureActivity</code>. Egy hívó elemet ad vissza, a cikk összes tevékenység naplóbejegyzések napló keresés futtatásához kattintson. |
-| Tevékenységi naplóit állapot szerint | A perecdiagram a kijelölt időtartományban Azure napló állapota látható. Is listáját jeleníti meg az első tíz állapot rekordok listáját. Kattintson a napló keresése futtatásához a diagram <code>AzureActivity &#124; summarize AggregatedValue = count() by ActivityStatus</code>. Kattintson egy állapot elemet ad vissza az összes tevékenység naplóbejegyzések állapot rekord napló keresés futtatásához. |
-| Erőforrás tevékenységi naplóit | Tevékenységi naplóit erőforrások teljes számát jeleníti meg, és az első tíz erőforrások rekord száma az egyes erőforrások sorolja fel. Kattintson a napló keresése futtatásához teljes területre <code>AzureActivity &#124; summarize AggregatedValue = count() by Resource</code>, amely jelzi, hogy az összes Azure-erőforrások elérhetővé a megoldás. Kattintson egy erőforrást egy adott erőforráshoz tartozó összes tevékenység rekordot ad vissza napló keresés futtatásához. |
-| Erőforrás-szolgáltató tevékenységi naplóit | Tevékenység létrehozott erőforrás-szolgáltató teljes számát naplózza, és felsorolja a tíz jeleníti meg. Kattintson a napló keresése futtatásához teljes területre <code>AzureActivity &#124; summarize AggregatedValue = count() by ResourceProvider</code>, amely jelzi, hogy az összes Azure-erőforrás-szolgáltatók. Kattintson a napló-keresés vissza az összes tevékenységet rögzíti a szolgáltató futtatásához egy erőforrás-szolgáltató. |
+| Az Azure tevékenységnapló-bejegyzései | Bemutatja az Azure-tevékenységi naplóbejegyzés felső sávdiagram a kijelölt dátumtartományban rekord összegek és a felső 10 tevékenység hívók listáját jeleníti meg. Kattintson a sávdiagram egy Naplókeresés futtatásához a <code>AzureActivity</code>. Egy hívó elemre egy Naplókeresés futtatásához az összes tevékenységnapló-bejegyzései elem visszaadása. |
+| Tevékenységnaplók állapot szerint | Az Azure-tevékenységi napló állapotát a kijelölt dátumtartományban perecdiagrammá mutatja. Az első tíz állapot rekordok listáját is megjeleníti a egy listát. Kattintson a diagramra a Naplókeresés futtatásához <code>AzureActivity &#124; summarize AggregatedValue = count() by ActivityStatus</code>. Kattintson egy állapot elemre egy Naplókeresés futtatásához az összes tevékenységnapló-bejegyzései állapot rekord visszaadása. |
+| Tevékenységnaplók erőforrás szerint | Tevékenységnaplók az erőforrások teljes számát jeleníti meg, és az első tíz erőforrások rekord száma az egyes erőforrások listázza. A teljes terület a Naplókeresés futtatásához kattintson <code>AzureActivity &#124; summarize AggregatedValue = count() by Resource</code>, amely jelzi, hogy az összes Azure-erőforrások rendelkezésre a megoldáshoz. Kattintson egy erőforrást egy Naplókeresés futtatásához az adott erőforrás az összes tevékenység rekordot ad vissza. |
+| Erőforrás-szolgáltató által tevékenységeket tartalmazó naplók | Teljes száma, amelyek a tevékenység erőforrás-szolgáltatók naplózza, és felsorolja a tíz jeleníti meg. A teljes terület a Naplókeresés futtatásához kattintson <code>AzureActivity &#124; summarize AggregatedValue = count() by ResourceProvider</code>, amely jelzi, hogy az összes Azure-erőforrás-szolgáltatók. Kattintson az erőforrás-szolgáltató, a szolgáltató minden tevékenységrekordok visszaadó Naplókeresés futtatásához. |
 
-![Az Azure tevékenységi naplóit irányítópult](./media/log-analytics-activity/activity-log-dash.png)
+![Azure Tevékenységnaplók irányítópultja](./media/log-analytics-activity/activity-log-dash.png)
 
 ## <a name="next-steps"></a>További lépések
 
-- Hozzon létre egy [riasztás](log-analytics-alerts-creating.md) Ha egy adott tevékenységre történik.
-- Használjon [naplófájl-keresési](log-analytics-log-searches.md) a tevékenységi naplóit a részletes információk megtekintéséhez.
+- Hozzon létre egy [riasztás](log-analytics-alerts-creating.md) mikor történik, egy adott tevékenységet.
+- Használat [naplóbeli keresés](log-analytics-log-searches.md) a tevékenységnaplókból részletes információk megtekintéséhez.

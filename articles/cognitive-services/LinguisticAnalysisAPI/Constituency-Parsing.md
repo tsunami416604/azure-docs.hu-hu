@@ -10,14 +10,18 @@ ms.component: linguistic-analysis
 ms.topic: conceptual
 ms.date: 03/21/2016
 ms.author: lesun
-ms.openlocfilehash: 83ea72e7c5c880ecab7d165e029f948144506271
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ROBOTS: NOINDEX
+ms.openlocfilehash: 89832f2d936a08df8b6f9e846c3dd4a5665c06a4
+ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46127696"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48238624"
 ---
 # <a name="constituency-parsing"></a>Vevőkör-elemzés
+
+> [!IMPORTANT]
+> A nyelvi elemzés előzetes verziója 2018. augusztus 9 volt leszerelése. Azt javasoljuk, [Azure Machine Learning szövegelemzési moduljait](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/text-analytics) szöveg feldolgozásra és elemzésre.
 
 Vevőkör-elemzés (más néven "kifejezés helyett szerepel struktúra elemzése") az a célja, hogy az kifejezések a szövegben azonosíthatja.
 Ez akkor hasznos, ha az adatok kivonása szövegből.

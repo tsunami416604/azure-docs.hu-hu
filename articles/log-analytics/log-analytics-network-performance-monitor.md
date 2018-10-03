@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/20/2018
 ms.author: abshamsft
-ms.component: na
-ms.openlocfilehash: 3640f5bb2c2e9457e269bd189cbec3b627ee7349
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.component: ''
+ms.openlocfilehash: e12c513f8812381897804412616be1ef7c743a3d
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39626872"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48044093"
 ---
 # <a name="network-performance-monitor-solution-in-azure"></a>Network Performance Monitor megoldás az Azure-ban
 
@@ -59,7 +59,7 @@ ExpressRoute-figyelő érhető el a támogatott régiók listáját a [dokument�
 
 ## <a name="set-up-and-configure"></a>Telepítése és konfigurálása
 
-### <a name="install-and-configure-agents"></a>Telepítse és konfigurálja az ügynökök 
+### <a name="install-and-configure-agents"></a>Ügynökök telepítése és konfigurálása 
 
 Az alapszintű folyamatok használatával, ügynökök telepítése [Azure Log Analyticshez való csatlakozáshoz Windows számítógépek](log-analytics-windows-agents.md) és [Operations Manager csatlakoztatása a Log Analytics](log-analytics-om-agents.md).
 

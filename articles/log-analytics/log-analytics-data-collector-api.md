@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/03/2018
 ms.author: bwren
-ms.component: na
-ms.openlocfilehash: 3c4c2d8f49fbddc4875d7a4abf5d7629bc8f942e
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.component: ''
+ms.openlocfilehash: a04ca0c405cb61079f496b637a8ebd348112e676
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42059476"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48042223"
 ---
 # <a name="send-data-to-log-analytics-with-the-http-data-collector-api-public-preview"></a>Adatokat küldeni a Log Analytics és a HTTP-adatgyűjtő API (nyilvános előzetes verzió)
 Ez a cikk bemutatja, hogyan adatokat küldeni a Log Analytics REST API-ügyfél-nak a HTTP-adatgyűjtő API használatával.  Ismerteti, hogyan formázza a parancsfájl vagy az alkalmazások által gyűjtött adatokat, foglalja bele egy kérelmet, és rendelkezik a Log Analytics által engedélyezett kérelmet.  A példák a PowerShell, a C# és Python.
@@ -144,7 +144,7 @@ A tulajdonság adattípusát azonosításához, a Log Analytics hozzáadja egy u
 | Logikai |_b |
 | Dupla |_d |
 | Dátum és idő |_t |
-| GUID AZONOSÍTÓJA |_g |
+| GUID |_g |
 
 Az adattípus, amely a Log Analytics alkalmaz minden egyes tulajdonság attól függ, hogy typ záznamu az új rekord már létezik.
 
@@ -194,7 +194,7 @@ Ez a táblázat felsorolja, amely a szolgáltatás előfordulhat, hogy vissza á
 | 403 |Tiltott |InvalidAuthorization |A szolgáltatás nem tudta hitelesíteni a kérelmet. A munkaterület Azonosítóját és a kapcsolat kulcsa érvényességének ellenőrzése. |
 | 404 |Nem található | | A megadott URL-cím helytelen, vagy a kérelem mérete túl nagy. |
 | 429 |Túl sok kérelem | | A szolgáltatás nagy mennyiségű adatait a fiókból, tapasztal. Próbálkozzon újra később a kérelmet. |
-| 500 |Belső kiszolgálóhiba |UnspecifiedError |A szolgáltatás belső hibába ütközött. Ismételje meg a kérelmet. |
+| 500 |Belső kiszolgálóhiba |UnspecifiedError |Belső szolgáltatáshiba történt. Ismételje meg a kérelmet. |
 | 503 |Elérhetetlen szolgáltatás |ServiceUnavailable |A szolgáltatás jelenleg nem érhető el a kérelmek fogadására. Ismételje meg a kérelmet. |
 
 ## <a name="query-data"></a>Adatok lekérdezése

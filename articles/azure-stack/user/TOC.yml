@@ -22,28 +22,32 @@ items:
   expanded: true
 - name: Oktatóanyagok
   items:
-  - name: Magas rendelkezésre állású SQL-adatbázisok létrehozása
-    href: azure-stack-tutorial-sql.md
-  - name: Magas rendelkezésre állású MySQL-adatbázisok létrehozása
-    href: azure-stack-tutorial-mysql.md
-  - name: Alkalmazások üzembe helyezése az Azure-ban és az Azure Stacken
-    href: azure-stack-solution-pipeline.md
-  - name: A hibrid felhőbeli identitás konfigurálása
-    href: azure-stack-solution-hybrid-identity.md
-  - name: Hibrid felhő-kapcsolat konfigurálása
-    href: azure-stack-solution-hybrid-connectivity.md
-  - name: Előfizetés egy ajánlatra
-    href: azure-stack-subscribe-services.md
-  - name: Virtuális gép létrehozása sablonból
-    href: azure-stack-create-vm-template.md
-  - name: Hozzon létre egy edge machine learning-megoldását
-    href: azure-stack-solution-machine-learning.md
-  - name: Hozzon létre egy előkészített adatelemzési megoldással
-    href: azure-stack-solution-staged-data-analytics.md
-  - name: A felhőbe irányuló méretezési megoldások létrehozása az Azure-ral
-    href: azure-stack-solution-cloud-burst.md
-  - name: Földrajzilag elosztott alkalmazás megoldás létrehozása
-    href: azure-stack-solution-geo-distributed.md
+  - name: Gyakori feladatok
+    items:
+    - name: Előfizetés egy ajánlatra
+      href: azure-stack-subscribe-services.md
+    - name: Virtuális gép létrehozása sablonból
+      href: azure-stack-create-vm-template.md
+    - name: Magas rendelkezésre állású SQL-adatbázisok létrehozása
+      href: azure-stack-tutorial-sql.md
+    - name: Magas rendelkezésre állású MySQL-adatbázisok létrehozása
+      href: azure-stack-tutorial-mysql.md
+  - name: Hibrid felhő minták
+    items:
+    - name: Alkalmazások üzembe helyezése az Azure-ban és az Azure Stacken
+      href: azure-stack-solution-pipeline.md
+    - name: A hibrid felhőbeli identitás konfigurálása
+      href: azure-stack-solution-hybrid-identity.md
+    - name: Hibrid felhő-kapcsolat konfigurálása
+      href: azure-stack-solution-hybrid-connectivity.md
+    - name: Hozzon létre egy edge machine learning-megoldását
+      href: azure-stack-solution-machine-learning.md
+    - name: Hozzon létre egy előkészített adatelemzési megoldással
+      href: azure-stack-solution-staged-data-analytics.md
+    - name: A felhőbe irányuló méretezési megoldások létrehozása az Azure-ral
+      href: azure-stack-solution-cloud-burst.md
+    - name: Földrajzilag elosztott alkalmazás megoldás létrehozása
+      href: azure-stack-solution-geo-distributed.md
 - name: Útmutatók
   items:
   - name: Az Azure Stack Portal használata
@@ -208,9 +212,9 @@ items:
     href: http://stackoverflow.com/questions/tagged/azure-stack
   - name: Képzés és tanúsítványok
     href: https://docs.microsoft.com/azure/azure-stack/azure-stack-train-and-cert
-ms.openlocfilehash: a67adb5f0b641f5f4eadfeb08c9802214d9f217b
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 52dbfaf7b7ea7b6f264dcb9ac3d75aec782c8bff
+ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47405410"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48239404"

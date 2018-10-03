@@ -9,16 +9,16 @@ ms.reviewer: larryfr
 manager: cgronlun
 ms.topic: conceptual
 ms.date: 8/6/2018
-ms.openlocfilehash: 675dae022376fc62292f3b079bd735939b9199c2
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: f68d5d7faf3555918b9f9a6add7754c8ae23d0a8
+ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47220295"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48239234"
 ---
 # <a name="configure-a-development-environment-for-the-azure-machine-learning-service"></a>Az Azure Machine Learning szolgáltatás a fejlesztési környezet konfigurálása
 
-Ismerje meg, hogyan konfigurálhatja a fejlesztési környezetet az Azure Machine Learning szolgáltatással. Megtudhatja, hogyan hozhat létre, amely összekapcsolja a környezet az Azure Machine Learning-munkaterület konfigurációs fájlban. Is megtudhatja, hogyan konfigurálhatja a következő fejlesztési környezetekben:
+Ismerje meg, hogyan konfigurálhatja a fejlesztési környezetet az Azure Machine Learning szolgáltatással. Megtudhatja, hogyan hozhat létre egy konfigurációs fájl, amely összekapcsolja a környezet egy Azure Machine Learning szolgáltatás munkaterületén. Is megtudhatja, hogyan konfigurálhatja a következő fejlesztési környezetekben:
 
 * A saját számítógépén Jupyter notebookok
 * Visual Studio Code
@@ -35,6 +35,9 @@ Az ajánlott módszer az, hogy használjon egészében Anaconda [conda virtuáli
 
  * A Visual Studio Code-környezethez a [Python bővítményét](https://code.visualstudio.com/docs/python/python-tutorial).
 
+> [!NOTE]
+> Ebben a dokumentumban használt rendszerhéjparancsokat tesztelik, Linux és MacOS rendszeren futó bash-környezet. A parancsok a Windows cmd.exe is kell vizsgálni.
+
 ## <a name="create-workspace-configuration-file"></a>Munkaterület konfigurációs fájl létrehozása
 
 A munkaterület konfigurációs fájlt az Azure Machine Learning szolgáltatás munkaterület kommunikálni az SDK-t használják.  Ez a fájl első kétféleképpen történhet:
@@ -49,7 +52,8 @@ A munkaterület konfigurációs fájlt az Azure Machine Learning szolgáltatás 
         ![Azure Portal](./media/how-to-configure-environment/configure.png) 
     
     1. Hozzon létre a fájlt a Python-kód. A parancsfájlok vagy a munkaterület hivatkozó notebookok ugyanabban a könyvtárban futtassa a kódot:
-        ```
+
+        ```python
         from azureml.core import Workspace
 
         subscription_id ='<subscription-id>'

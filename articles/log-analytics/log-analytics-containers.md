@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/26/2018
 ms.author: magoedte
-ms.component: na
-ms.openlocfilehash: 9e00e9c3f90d668458d692db88570dac7e8df5a3
-ms.sourcegitcommit: 99a6a439886568c7ff65b9f73245d96a80a26d68
+ms.component: ''
+ms.openlocfilehash: 80749fedde17a9567aa13e1e72677dfdd027ca36
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39359072"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48043260"
 ---
 # <a name="container-monitoring-solution-in-log-analytics"></a>Figyelés a Log Analytics megoldásra
 
@@ -595,7 +595,7 @@ Az irányítópult egyes területen, amely az összegyűjtött adatokat keresés
 
 Az a **tároló állapota** területen kattintson a felső területen, az alább látható módon.
 
-![tárolók állapota](./media/log-analytics-containers/containers-status.png)
+![Tárolók állapota](./media/log-analytics-containers/containers-status.png)
 
 Naplóbeli keresés jelenik meg, amelyen a tárolókat állapotával kapcsolatos információk.
 
@@ -609,7 +609,7 @@ A log Analytics jelöli meg a tárolóban, **sikertelen** Ha egy nem nulla ért�
 
 ### <a name="to-find-failed-containers"></a>Hibás tárolók keresése
 1. Kattintson a **tároló állapota** területen.  
-   ![tárolók állapota](./media/log-analytics-containers/containers-status.png)
+   ![Tárolók állapota](./media/log-analytics-containers/containers-status.png)
 2. Naplóbeli keresés megnyílik, és a tárolók, a következőhöz hasonló állapotát jeleníti meg.  
    ![tárolók állapota](./media/log-analytics-containers/containers-log-search.png)
 3. Ezután kattintson a további információk megjelenítéséhez hibás tárolók összesített értékét. Bontsa ki a **Továbbiak megjelenítése** megtekintéséhez a rendszerkép azonosítóját.  

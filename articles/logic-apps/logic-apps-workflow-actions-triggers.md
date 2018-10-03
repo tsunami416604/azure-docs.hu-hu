@@ -9,12 +9,12 @@ ms.reviewer: klam, LADocs
 ms.suite: integration
 ms.topic: reference
 ms.date: 06/22/2018
-ms.openlocfilehash: 8adfd0b3d6d87834441ab87af194de141b77af34
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 4b124b79eeacf0df5f1b9dff798ebeea20d82090
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43093618"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48044773"
 ---
 # <a name="trigger-and-action-types-reference-for-workflow-definition-language-in-azure-logic-apps"></a>Az Azure Logic Apps munkafolyamat-definíciós nyelv eseményindító és művelet típusok referenciája
 
@@ -62,7 +62,7 @@ Eseményindítók rendelkezik a legfelső elemeket, bár egyes nem kötelező:
 
 | Érték | Típus | Leírás | 
 |-------|------|-------------| 
-| <*tömb-az-feltételek*> | Tömb | Egy tömb, amely tartalmaz egy vagy több [feltételek](#trigger-conditions) , határozza meg, hogy a munkafolyamat futtatása | 
+| <*tömb-az-feltételek*> | Tömb | Egy tömb, amely tartalmaz egy vagy több [feltételek](#trigger-conditions) , határozza meg, hogy a munkafolyamat futtatásához. Csak a triggerek esetében érhető el. | 
 | <*futásidejű-config-beállítások*> | JSON-objektum | Módosíthatja a trigger működését beállításával `runtimeConfiguration` tulajdonságait. További információkért lásd: [modul konfigurációs beállítások](#runtime-config-options). | 
 | <*splitOn-kifejezés*> | Sztring | Eseményindítók, amely egy tömböt adnak vissza, adjon meg egy kifejezést, amely [bontja vagy *debatches* ](#split-on-debatch) tömb elemeinek be több munkafolyamat-példány a feldolgozáshoz. | 
 | <*művelet – beállítás*> | Sztring | Az alapértelmezett viselkedés módosításához állítsa a `operationOptions` tulajdonság. További információkért lásd: [műveleti beállítások](#operation-options). | 
@@ -657,7 +657,7 @@ Ez az eseményindító Megadja, hogy egy bejövő kérésnek kell használnia a 
 
 ## <a name="trigger-conditions"></a>Indítófeltételek
 
-Minden trigger egy tömb, amely tartalmaz egy vagy több feltételek, amelyek meghatározzák, hogy futtasson-e a munkafolyamat a kifejezéseket is megadhat. Hozzáadása a `conditions` tulajdonságát a logikai alkalmazást, nyissa meg a logikai alkalmazás megtekintése a Kódszerkesztő.
+Minden trigger és eseményindítók csak egy tömb, amely tartalmaz egy vagy több feltételek, amelyek meghatározzák, hogy futtasson-e a munkafolyamat a kifejezéseket is megadhat. Hozzáadása a `conditions` tulajdonság a-trigger a logikai alkalmazást, nyissa meg a logikai alkalmazás megtekintése a Kódszerkesztő.
 
 Például megadhatja, hogy egy eseményindítót csak amikor egy webhely adja vissza egy belső kiszolgálóhiba az eseményindító-állapotkódú lére a `conditions` tulajdonság:
 
@@ -1340,7 +1340,7 @@ Ez a művelet létrehoz egy tömböt alapján egy megadott feltétel, vagy a sz�
 | Érték | Típus | Leírás | 
 |-------|------|-------------| 
 | <*Pole*> | Tömb | A tömb vagy kifejezés, amely kiszámítja a forrás-elemeket. Ha megad egy kifejezés, tegye idézőjelek kifejezésből. |
-| <*az állapot vagy a szűrő*> | Sztring | A forrás tömbben szereplő elemek szűrési feltétel <p>**Megjegyzés:**: Ha nem teljesítik a feltételt, a művelet létrehoz egy üres tömb. |
+| <*az állapot vagy a szűrő*> | Sztring | A forrás tömbben szereplő elemek szűrési feltétel <p>**Megjegyzés:**: Ha nem teljesítik a feltételt, akkor a művelet létrehoz egy üres tömb. |
 |||| 
 
 *Példa*
@@ -2318,7 +2318,7 @@ Módosíthatja az eseményindítók és műveletek az alapértelmezett viselked�
 
 ### <a name="change-trigger-concurrency"></a>Az eseményindító egyidejűségi módosítása
 
-Alapértelmezés szerint a logic app-példányok futnak egyszerre, egy időben, vagy a párhuzamos akár a [alapértelmezett korlát](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Minden trigger példány tehát akkor aktiválódik, előtt a korábban aktív logikaialkalmazás-példányt a lejáratot követően újrainduljon. Ez a korlátozás segít határozzák meg, amelyek megkapják a háttérrendszerek kérelmek. 
+Alapértelmezés szerint a logic app-példányok futnak egyszerre, egy időben, vagy a párhuzamos akár a [alapértelmezett korlát](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Minden trigger példány tehát akkor aktiválódik, előtt a fenti logikaialkalmazás-példányt a lejáratot követően újrainduljon. Ez a korlátozás segít határozzák meg, amelyek megkapják a háttérrendszerek kérelmek. 
 
 Ha módosítani szeretné az alapértelmezett korlát, használhatja a Kódszerkesztő nézet vagy a Logic Apps Designer, mert a Tervező keresztül a feldolgozási beállítás módosítása hozzáadása vagy frissítése a `runtimeConfiguration.concurrency.runs` tulajdonságának az alapul szolgáló eseményindító definíciójában, és ez fordítva is igaz. Ez a tulajdonság azt szabályozza, párhuzamosan futó logic app-példányok maximális száma. 
 
@@ -2385,7 +2385,7 @@ Az alapul szolgáló "for each" definíciója, hozzáadása vagy frissítése a 
 
 #### <a name="edit-in-logic-apps-designer"></a>A Logic Apps Designerben szerkesztése
 
-1. Az a **minden** művelet jobb felső sarokban, válassza a három pontra (...) gombot, és válassza **beállítások**.
+1. Az a **minden** műveletet, a jobb felső sarokban, válassza a három pontra (...) gombot, és válassza **beállítások**.
 
 2. A **egyidejűség-vezérlés**állítsa be **alapértelmezett felülbírálás** való **a**. 
 
@@ -2399,7 +2399,7 @@ Alapértelmezés szerint a logic app-példányok futnak egyszerre, egy időben, 
 
 Is rendelkezik, amely várhat a futtatások száma egy [alapértelmezett korlát](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits), amelyet módosíthat. Miután a logikai alkalmazás eléri a korlátot, a várakozási fut, az a Logic Apps-motor már nem fogad új futtatások. Kérés- és webhook eseményindítók 429 hibákat ad vissza, és ismétlődő triggereket indítsa el a rendszer kihagyja a lekérdezési kísérletek.
 
-Ha módosítani szeretné az alapértelmezett korlát a várakozási fut, az alapul szolgáló eseményindító definícióját, adja hozzá, és állítsa be a `runtimeConfiguration.concurency.maximumWaitingRuns` közötti értékre tulajdonság `0` és `100`. 
+Ha módosítani szeretné az alapértelmezett korlát a várakozási fut, az alapul szolgáló eseményindító definícióját, és adja hozzá a `runtimeConfiguration.concurency.maximumWaitingRuns` vlastnost s közötti értéket `0` és `100`. 
 
 ```json
 "<trigger-name>": {

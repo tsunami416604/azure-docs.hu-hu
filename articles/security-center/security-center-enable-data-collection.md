@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/20/2018
+ms.date: 10/5/2018
 ms.author: rkarlin
-ms.openlocfilehash: 313697d73d1e269691f1af4f021545049a907d66
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: d0455e549745e743e7a8c0f65cb56a1e16dfb131
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46127091"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48044076"
 ---
 # <a name="data-collection-in-azure-security-center"></a>Az adatgyűjtést az Azure Security Centerben
 A Security Center adatokat gyűjt az Azure-beli virtuális gépek (VM) és a nem Azure-beli számítógépekről a biztonsági rések és fenyegetések monitorozásához. Az adatgyűjtés a Microsoft Monitoring Agent segítségével történik, amely a biztonsághoz kapcsolódó különböző konfigurációkat és eseménynaplókat olvas be a gépről, és elemzés céljából átmásolja az adatokat az Ön munkaterületére. Az ilyen adatok többek között: operációs rendszer típusa és verziója, az operációs rendszer naplói (Windows-eseménynaplók), a futó folyamatok, a gép nevét, az IP-címeket, és bejelentkezett felhasználó. A Microsoft Monitoring Agent az összeomlási memóriaképeket is átmásolja a munkaterülethez.
@@ -62,8 +62,8 @@ A Microsoft Monitoring Agent automatikus kiépítésének engedélyezése:
 > - Hogyan építheti ki egy már meglévő telepítési utasításokért lásd: [automatikus üzembe helyezés abban az esetben egy már létező ügynöktelepítés](#preexisting).
 > - A manuális kiépítési útmutatásért lásd: [manuális telepítése a Microsoft Monitoring Agent bővítményt](#manualagent).
 > - Útmutatás az Automatikus kiépítés kikapcsolása: [kapcsolja ki az Automatikus kiépítés](#offprovisioning).
+> - Hogyan felvétele a Security Center PowerShell-lel, tekintse meg útmutatást [automatizálása a PowerShell-lel az Azure Security Center bevezetése](security-center-powershell-onboarding.md).
 >
-
 
 ## <a name="workspace-configuration"></a>Munkaterület-konfiguráció
 A Security Center által gyűjtött adatokat Log Analytics-munkaterületen tárolja.  Kiválaszthatja, hogy az adatok tárolása a Security Center által létrehozott munkaterületeken vagy egy meglévő munkaterületet hozott létre az Azure virtuális gépekről gyűjtött. 
@@ -147,12 +147,17 @@ Amikor kiválaszt egy munkaterületet, amely tárolja az adatokat, az összes el
 
 
 ## <a name="data-collection-tier"></a>Gyűjtemény adatszint
-A Security Center csökkentheti események elegendő a vizsgálati, naplózási és fenyegetésészlelési események fenntartása mellett. Kiválaszthatja a jogot a házirend az előfizetések és munkaterületek négyféle események szűrése gyűjthetők az ügynök által.
+Egy adatrétegbeli gyűjtemény kiválasztása az Azure Security Centerben a biztonsági események Log Analytics-munkaterület az a tároló csak hatással lesz. A Microsoft Monitoring Agent továbbra is gyűjthet, és elemezheti a biztonsági események az Azure Security Center fenyegetések felderítése során, függetlenül attól, melyik szint a biztonsági események úgy dönt, hogy tárolja a Log Analytics-munkaterület (ha vannak) szükséges. A munkaterületen tárolja a biztonsági események kiválasztása lehetővé teszi vizsgálat, a Keresés és a munkaterület események naplózását. 
+> [!NOTE]
+> A Log Analytics adattárolási előfordulhat, hogy további díjak vonatkoznak az adattárolás, a díjszabási lapon talál további részleteket.
+>
+A jobb házirend az előfizetések és munkaterületek négyféle események szűrése a munkaterület-ben való tárolásának közül választhat: 
 
-- **Az összes esemény** – a vásárlóknak, akik szeretnék, hogy az összes esemény legyenek gyűjtve. Ez az alapértelmezett érték.
-- **Közös** – Ez olyan események, amely megfelel a legtöbb ügyfél számára, és lehetővé teszi, hogy teljes auditnaplót.
+- **Nincs** – tiltsa le a biztonsági események tárhelye. Ez az alapértelmezett beállítás.
 - **Minimális** – kisebb események egy meghatározott készletének a objem událostí minimalizálása érdekében használni.
-- **Nincs** – tiltsa le a biztonsági események gyűjtését a biztonsági és AppLocker-naplók. Azok a vásárlóknak, akik ezt a lehetőséget biztonsági irányítópultokkal csak a Windows tűzfal naplói és a proaktív értékelés például kártevőirtó alapkonfiguráció és frissítési rendelkezik.
+- **Közös** – Ez olyan események, amely megfelel a legtöbb ügyfél számára, és lehetővé teszi, hogy teljes auditnaplót.
+- **Az összes esemény** – a vásárlóknak, akik szeretnék, hogy az összes esemény tárolódnak.
+
 
 > [!NOTE]
 > Ezen biztonsági események készletek csak a Security Center Standard szinten érhetők el. A Security Center tarifacsomagjaival kapcsolatos további információért lásd a [díjszabást](security-center-pricing.md).
@@ -261,7 +266,7 @@ A Microsoft Monitoring Agent, manuálisan is telepítheti, így a Security Cente
   > [!NOTE]
   > A szakasz **esemény-és teljesítményadatok gyűjtése** nem kötelező.
   >
-6. A bővítmény telepítése a PowerShell használatával: a következő PowerShell-példa:
+6. A bővítmény telepítése a PowerShell használatával, használja a következő PowerShell-példa:
     1.  Lépjen a **Log Analytics** , majd kattintson a **speciális beállítások**.
     
         ![A log analytics beállítása][11]
@@ -289,8 +294,8 @@ A Microsoft Monitoring Agent, manuálisan is telepítheti, így a Security Cente
         
              Set-AzureRmVMExtension -ResourceGroupName $vm1.ResourceGroupName -VMName $vm1.Name -Name "OmsAgentForLinux" -Publisher "Microsoft.EnterpriseCloud.Monitoring" -ExtensionType "OmsAgentForLinux" -TypeHandlerVersion '1.0' -Location $vm.Location -Settingstring $PublicConf -ProtectedSettingString $PrivateConf -ForceRerun True`
 
-
-
+> [!NOTE]
+> Hogyan felvétele a Security Center PowerShell-lel, tekintse meg útmutatást [automatizálása a PowerShell-lel az Azure Security Center bevezetése](security-center-powershell-onboarding.md).
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 

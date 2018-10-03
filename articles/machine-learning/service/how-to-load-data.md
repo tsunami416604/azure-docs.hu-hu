@@ -10,20 +10,18 @@ author: cforbe
 manager: cgronlun
 ms.reviewer: jmartens
 ms.date: 09/24/2018
-ms.openlocfilehash: 436ff9d318dc311efe27352a8b2ac91cfb5be618
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 91db32b7056a0cf211e6293a891d58e0239ca499
+ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47221325"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48237585"
 ---
-#<a name="load-and-read-data-with-azure-machine-learning"></a>Betölteni, és az Azure Machine Learning adatokat olvasni.
+# <a name="load-and-read-data-with-azure-machine-learning"></a>Betölteni, és az Azure Machine Learning adatokat olvasni.
 
 Használja a [az Azure Machine Learning Data Prep SDK](https://docs.microsoft.com/python/api/overview/azure/dataprep?view=azure-dataprep-py) különböző típusú bemeneti adatok betöltéséhez. 
 
-Az adatok betöltésének két módszer van:
-+ Adja meg az adattípus fájl és a paraméterek
-+ Az SDK az intelligens olvasó funkciók használatához automatikus észlelése a fájl típusa
+Annak érdekében, hogy az adatok betöltése, adja meg az adattípus fájl és a paraméterek
 
 ## <a name="use-text-line-data"></a>Szöveg sor adatok használata 
 A legegyszerűbb módon betölteni az adatokat egyik szöveg sorokként elolvasni.
@@ -352,7 +350,3 @@ dataflow.to_pandas_dataframe().head()
 |2|1011878|100 mérföld piaci|http://www.pfcmarkets.com |507 Harrison St|Kalamazoo|Kalamazoo|
 |3|1009364|106 S. fő út gazdálkodók piaci|http://thetownofsixmile.wordpress.com/ |106 S. fő utca.|Hat lépést|||
 |4|1010691|a 10th Steet közösségi gazdálkodók piac|http://agrimissouri.com/mo-grown/grodetail.php... |10 utca és nyárfa|Lamar|Barton|
-
-## <a name="use-smart-reading"></a>Használja az "intelligens olvasási"
-
-Az SDK az intelligens olvasási funkció használatával automatikus észlelése a fájl típusa.

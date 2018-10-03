@@ -8,12 +8,12 @@ ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 46105ee92a5c98cb8180b2499d0ad295702aac43
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 85fea195b05bea8a1db70f8b5b81cabdfe7c6c72
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46953370"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48041509"
 ---
 # <a name="bring-your-own-key-for-apache-kafka-on-azure-hdinsight-preview"></a>A saját kulcs használata: az Apache Kafka az Azure HDInsight (előzetes verzió)
 
@@ -35,17 +35,37 @@ Az Azure Portalon vagy az Azure CLI segítségével biztonságosan elforgatása 
 
    ![Felhasználó által hozzárendelt felügyelt identitás létrehozása az Azure Portalon](./media/apache-kafka-byok/user-managed-identity-portal.png)
 
-2. Hozzon létre vagy importálása az Azure Key Vaultban.
+2. Egy meglévő kulcstárolóba importálja, vagy hozzon létre egy újat.
 
    HDInsight csak az Azure Key Vault támogatja. Ha rendelkezik saját key vault, a kulcsok importálhatja az Azure Key Vaultban. Ne feledje, hogy a kulcsok "A helyreállítható törlés" és "Tegye nem végleges törlése" engedélyezve kell-e. Az "A helyreállítható törlés" és "Nem kiürítése" funkciók érhetők el a REST, .NET-en keresztül / C#, a PowerShell és az Azure CLI-felületeihez.
 
    Hozzon létre egy új kulcstartót, hajtsa végre a [Azure Key Vault](../../key-vault/key-vault-get-started.md) rövid. Meglévő kulcsok importálása kapcsolatos további információkért látogasson el [kapcsolatos kulcsok, titkos kódok és tanúsítványok](../../key-vault/about-keys-secrets-and-certificates.md).
 
+   Hozzon létre egy új kulcsot, jelölje be **létrehozás/importálás** származó a **kulcsok** menüt **beállítások**.
+
+   ![Hozzon létre egy új kulcsot az Azure Key Vaultban](./media/apache-kafka-byok/kafka-create-new-key.png)
+
+   Állítsa be **beállítások** való **Generate** , és adja meg a kulcs nevét.
+
+   ![Hozzon létre egy új kulcsot az Azure Key Vaultban](./media/apache-kafka-byok/kafka-create-a-key.png)
+
+   Válassza ki a listából, kulcsok létrehozott kulcsot.
+
+   ![Az Azure Key Vault-kulcs listája](./media/apache-kafka-byok/kafka-key-vault-key-list.png)
+
+   Ha a Kafka-fürt titkosítási saját kulcsot használ, meg kell adnia a kulcs URI-t. Másolás a **azonosítója** és helyre mentse, amíg készen áll a fürt létrehozásához.
+
+   ![Másolja a kulcs azonosítója](./media/apache-kafka-byok/kafka-get-key-identifier.png)
+   
 3. Adja hozzá a key vault hozzáférési szabályzattal felügyelt identitás.
 
    Hozzon létre egy új Azure Key Vault hozzáférési szabályzattal.
 
    ![Új Azure Key Vault hozzáférési szabályzat létrehozása](./media/apache-kafka-byok/add-key-vault-access-policy.png)
+
+   A **rendszerbiztonsági tag kijelölése**, válassza ki a létrehozott felügyelt felhasználó által hozzárendelt identitások.
+
+   ![Az Azure Key Vault hozzáférési házirend beállítása rendszerbiztonsági tag kijelölése](./media/apache-kafka-byok/add-key-vault-access-policy-select-principal.png)
 
    Állítsa be **Kulcsengedélyek** való **első**, **kulcs kicsomagolása**, és **kulcs becsomagolása**.
 
@@ -55,17 +75,13 @@ Az Azure Portalon vagy az Azure CLI segítségével biztonságosan elforgatása 
 
    ![Az Azure Key Vault hozzáférési szabályzattal kulcs engedélyeinek beállítása](./media/apache-kafka-byok/add-key-vault-access-policy-secrets.png)
 
-   A **rendszerbiztonsági tag kijelölése**, válassza ki a létrehozott felügyelt felhasználó által hozzárendelt identitások.
-
-   ![Az Azure Key Vault hozzáférési házirend beállítása rendszerbiztonsági tag kijelölése](./media/apache-kafka-byok/add-key-vault-access-policy-select-principal.png)
-
 4. HDInsight-fürt létrehozása
 
    Most már készen áll egy új HDInsight-fürt létrehozásához. A BYOK csak akkor alkalmazható új fürtök fürt létrehozása során. Titkosítási BYOK fürtből nem távolítható el, és a BYOK nem adható hozzá meglévő fürtök.
 
    ![Lemeztitkosítás Kafka az Azure Portalon](./media/apache-kafka-byok/apache-kafka-byok-portal.png)
 
-   Fürt létrehozása során, adja meg az összes kulcs URL-CÍMÉT, a kulcs verzióját is beleértve. Például: `myakv.azure.com/KEK1/v1`. Is kell rendelni a felügyelt identitás a fürthöz, és adja meg a kulcs URI-t.
+   Fürt létrehozása során, adja meg az összes kulcs URL-CÍMÉT, a kulcs verzióját is beleértve. Például: `https://contoso-kv.vault.azure.net/keys/kafkaClusterKey/46ab702136bc4b229f8b10e8c2997fa4`. Is kell rendelni a felügyelt identitás a fürthöz, és adja meg a kulcs URI-t.
 
 ## <a name="faq-for-byok-to-kafka"></a>A BYOK kafka – gyakori kérdések
 

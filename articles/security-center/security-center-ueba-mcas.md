@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/12/2018
+ms.date: 09/21/2018
 ms.author: rkarlin
-ms.openlocfilehash: d6777e187c04ef9a2f03e4ae813476f5a1093156
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 2a747bdd8de41283b9cba1e40e2652aa826e9c60
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44724039"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48044450"
 ---
-# <a name="ueba-for-azure-resources-and-users"></a>Az Azure-erőforrások és a felhasználók UEBA 
+# <a name="ueba-for-azure-resources-and-users"></a>Azure-erőforrások és -felhasználók UEBA-elemzése 
 
 A Microsoft Cloud App Securityvel ahhoz, hogy az Ön felhasználói és elemzését (UEBA) az Azure-erőforrások és a felhasználók számára (az Azure-tevékenység) alapuló riasztások partnerek az Azure Security Center. Ezek a riasztások a felhasználók viselkedésének rendellenességek észlelése, és felhasználói és az entitások viselkedésének elemzése és a machine learning (gépi tanulás), így azonnal futtathatja a fejlett fenyegetésészlelés az előfizetések tevékenységek között. Automatikusan engedélyezettek, mert az új anomáliadetektálási észlelések azonnali eredményeket azáltal, hogy azonnali észlelések, a felhasználók és az előfizetéséhez tartozó erőforrások között számos tevékenységbeli anomáliákat célzó adja meg. Ezek a riasztások Ezenkívül használhatja a további adatokat, hogy már megtalálható a Microsoft Cloud App Security motorban segítségével felgyorsíthatja a vizsgálat során, és tartalmazhat elleni folyamatos fenyegetések. 
 
@@ -55,8 +55,9 @@ A Security Center támogatja a Cloud App Security rendellenességek észlelése 
 
 Ezek a riasztások alapértelmezés szerint engedélyezve vannak, de letilthatja azokat:
 
-1. Válassza ki a Security Center panel **Fenyegetésészlelés**.
-2. Alatt **fenyegetések észlelése – Integrációk engedélyezése**, törölje a jelet **engedélyezése a Microsoft Cloud App Security az adatok eléréséhez**, és kattintson a **mentése**.
+1. Válassza ki a Security Center panel **biztonsági házirend**. Az előfizetés használatára szeretne átállni, kattintson a **beállításainak szerkesztése**.
+2.  Kattintson a **Fenyegetésészlelés**.
+3. Alatt **Integrációk engedélyezése**, törölje a jelet **engedélyezése a Microsoft Cloud App Security az adatok eléréséhez**, és kattintson a **mentése**.
 
    ![Fenyegetés-észlelési riasztás](./media/security-center-ueba-mcas/security-center-mcas-optout.png)
 

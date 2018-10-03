@@ -11,17 +11,17 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 09/18/2018
-ms.openlocfilehash: d82f4e03176911804702db2ea18a5bc9a95583a3
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.date: 10/01/2018
+ms.openlocfilehash: 3242f683fd6190209e3395bd8410dd1b2cd36960
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47158702"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48043348"
 ---
 # <a name="use-read-only-replicas-to-load-balance-read-only-query-workloads-preview"></a>Csak olvasható replikákat használ a betöltése terheléselosztása csak olvasható lekérdezési számítási feladatok (előzetes verzió)
 
-**Horizontális Felskálázás olvasása** lehetővé teszi, hogy betöltése terheléselosztása az Azure SQL Database csak olvasható-alapú számítási feladatokat a csak olvasható replikák kapacitását. 
+**Horizontális Felskálázás olvasása** lehetővé teszi, hogy terheléselosztása az Azure SQL Database csak olvasható-alapú számítási feladatokat egy csak olvasható replika kapacitásának betölteni. 
 
 ## <a name="overview-of-read-scale-out"></a>Horizontális Felskálázás olvasása áttekintése
 

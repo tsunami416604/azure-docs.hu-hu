@@ -12,12 +12,12 @@ ms.author: v-daljep
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 09/20/2018
-ms.openlocfilehash: 49d5e307c51a6527ade63bac0276fa141ecb5c24
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: bbf94d53b24c4087e7212d56bd51131034e39212
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47222454"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48042983"
 ---
 # <a name="troubleshoot-azure-sql-database-performance-issues-with-intelligent-insights"></a>Intelligent Insights az Azure SQL Database teljesítménnyel kapcsolatos problémáinak elhárítása
 
@@ -73,7 +73,7 @@ A diagnosztikai napló jelenít meg, hogy a teljesítmény- és erőforrás-hasz
 
 Ha elérte a rendelkezésre álló munkamenet korlátai, optimalizálhatja az alkalmazások csökkentésével az adatbázison végrehajtott bejelentkezések száma. Ha nem sikerül csökkentése érdekében a bejelentkezések száma az adatbázishoz az alkalmazásokból, érdemes megfontolni a tarifacsomagot az adatbázis. Vagy felosztása, és az adatbázis helyezze át a több-több elosztott terhelésű számítási feladatok terjesztési adatbázist.
 
-További javaslatokért feloldásáról a munkamenet-korlátok, lásd: [a korlátokat, az SQL Database legnagyobb bejelentkezések kezelése](https://blogs.technet.microsoft.com/latam/2015/06/01/how-to-deal-with-the-limits-of-azure-sql-database-maximum-logins/). Az előfizetés szintjén elérhető erőforráskorlátok, lásd: [SQL Database erőforrás-korlátozások](https://docs.microsoft.com/azure/sql-database/sql-database-resource-limits).
+További javaslatokért feloldásáról a munkamenet-korlátok, lásd: [a korlátokat, az SQL Database legnagyobb bejelentkezések kezelése](https://blogs.technet.microsoft.com/latam/2015/06/01/how-to-deal-with-the-limits-of-azure-sql-database-maximum-logins/). Lásd: [erőforrás áttekintése korlátozza egy logikai kiszolgálón](sql-database-resource-limits-logical-server.md) kapcsolatos korlátozásokat a kiszolgálók és az előfizetés szintjén.
 
 ## <a name="workload-increase"></a>Számítási feladatok növekedése
 

@@ -11,26 +11,28 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 09/14/2018
-ms.openlocfilehash: 4c9edd60ffa1cd9ed5d95b37592fa49f44117818
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.date: 10/01/2018
+ms.openlocfilehash: 31a423714154537cfc8d801b972869035aa61035
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47161335"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48042206"
 ---
 # <a name="recover-an-azure-sql-database-using-automated-database-backups"></a>Automatikus biztonsági adatbázismentés használatával Azure SQL-adatbázis helyreállítása
-Az SQL Database adatbázis helyreállítási használja ezeket a lehetőségeket biztosít [adatbázisok biztonsági mentése automatikus](sql-database-automated-backups.md) és [biztonsági másolatok hosszú távú megőrzés alatt](sql-database-long-term-retention.md). Visszaállíthatja az adatbázis biztonsági másolatát:
+Alapértelmezés szerint az SQL Database biztonsági mentések blob georeplikált tárolás (RA-GRS) vannak tárolva. Az alábbi lehetőségek érhetők el az adatbázis helyreállítási használatával [adatbázisok biztonsági mentése automatikus](sql-database-automated-backups.md):
 
-* Új adatbázis adatmegőrzési időszakán belül egy adott időpontra vissza ugyanazon logikai kiszolgálón. 
-* Az egyazon logikai kiszolgálón, és a Törlés időpontja, törölt adatbázis helyreállítása az adatbázis.
-* Új adatbázis bármelyik logikai kiszolgálón helyreállítva, hogy a blob georeplikált tárolás (RA-GRS) a legújabb, napi biztonsági mentések bármelyik régióban.
+* Hozzon létre egy új adatbázist az adatmegőrzési időszakán belül egy adott időpontra vissza az egyazon logikai kiszolgálón. 
+* Az egyazon logikai kiszolgálón, és a Törlés időpontja, törölt adatbázis helyreállítása az adatbázis létrehozása.
+* Hozzon létre egy új adatbázist, hogy a legújabb biztonsági mentések a helyreállított bármelyik régióban egyetlen logikai kiszolgálón.
+
+Ha konfigurálta a [biztonsági mentés hosszú távú megőrzés](sql-database-long-term-retention.md) is létrehozhat egy új adatbázist bármely LTR backup bármelyik régióban egyetlen logikai kiszolgálón.  
 
 > [!IMPORTANT]
 > Létező adatbázis visszaállítás során nem írható felül.
 >
 
-A visszaállított adatbázis egy extra tárterület költséget, az alábbi feltételek áll: 
+Standard vagy prémium szintű szolgáltatási csomag használatakor a visszaállított adatbázis tekintetében az extra tárterület költsége a következő feltételek: 
 - Állítsa vissza a P11 – p15 szintű, S4-S12, P1 – P6, vagy ha az adatbázis maximális mérete 500 GB-nál nagyobb.
 - Állítsa vissza az S4-S12, P1 – P6 szintű, ha az adatbázis maximális mérete 250 GB-nál nagyobb.
 

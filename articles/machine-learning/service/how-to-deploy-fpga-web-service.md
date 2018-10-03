@@ -8,13 +8,13 @@ ms.topic: conceptual
 ms.reviewer: jmartens
 ms.author: tedway
 author: tedway
-ms.date: 09/24/2018
-ms.openlocfilehash: ee67585a523ab96b1442d9eee3e9dfd55a758d32
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.date: 10/01/2018
+ms.openlocfilehash: df6637f1a52b679ba9ad0a49fb37d4e4b72f35e4
+ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46971484"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48237823"
 ---
 # <a name="deploy-a-model-as-a-web-service-on-an-fpga-with-azure-machine-learning"></a>Modell üzembe helyezése az Azure Machine Learning-FPGA webszolgáltatásként
 
@@ -24,7 +24,9 @@ Telepíthet egy modellt webszolgáltatásként, amely a [programmable gate array
 
 - Azure-előfizetés. Ha még nincs előfizetése, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
 
-- Az Azure Machine Learning-munkaterület és az Azure Machine Learning SDK telepítve van a Pythonhoz készült. Ezekről az előfeltételekről használatával beszerzéséről a [a fejlesztési környezet konfigurálása](how-to-configure-environment.md) dokumentumot.
+- Kell igényelnie, és az FPGA-kvótát kell jóváhagyni. Hozzáférés kérése, töltse ki az űrlap kvóta: https://aka.ms/aml-real-time-ai
+
+- Az Azure Machine Learning szolgáltatás munkaterület és az Azure Machine Learning SDK telepítve van a Pythonhoz készült. Ezekről az előfeltételekről használatával beszerzéséről a [a fejlesztési környezet konfigurálása](how-to-configure-environment.md) dokumentumot.
  
   - A munkaterület kell lennie a *USA keleti RÉGIÓJA 2* régióban.
 
@@ -47,11 +49,7 @@ Kövesse az utasításokat:
 > [!IMPORTANT]
 > Optimalizálható a teljesítmény és a késés, az ügyfél és a végpontot Azure ugyanabban a régióban kell lennie.  Jelenleg az API-k jönnek létre az East US Azure-régióban.
 
-### <a name="get-the-notebook"></a>A notebook beszerzése
 
-Az Ön kényelme érdekében ebben az oktatóanyagban egy Jupyter notebookot, érhető el. Ezek a módszerek segítségével futtathatja a `project-brainwave/project-brainwave-quickstart.ipynb` notebook:
-
-[!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-in-azure-notebook.md)]
 
 ### <a name="preprocess-image"></a>Kép előfeldolgozása
 A folyamat első szakaszában, hogy a képek előfeldolgozása.
@@ -66,6 +64,7 @@ in_images = tf.placeholder(tf.string)
 image_tensors = utils.preprocess_array(in_images)
 print(image_tensors.shape)
 ```
+
 ### <a name="add-featurizer"></a>Featurizer hozzáadása
 A modell inicializálása, és töltse le a featurizer használandó ResNet50 kvantált verziójának TensorFlow ellenőrzőpont.
 
@@ -317,3 +316,11 @@ Mindkét módszerrel rendelkezik, a tanúsítványt használja, a legfelső szin
 
 > [!IMPORTANT]
 > gRPC nem fogadja el a nem megbízható tanúsítványok. A nem megbízható tanúsítvánnyal meghiúsul egy `Unavailable` állapotkódot. A hiba részleteit tartalmazza `Connection Failed`.
+
+## <a name="sample-notebook"></a>Minta notebook
+
+A jelen cikk fogalmait találja meg a a `project-brainwave/project-brainwave-quickstart.ipynb` notebookot.
+
+Ez a jegyzetfüzet lekérése:
+
+[!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-for-examples.md)]

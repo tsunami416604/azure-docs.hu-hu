@@ -11,12 +11,12 @@ ms.service: azure-stack
 ms.reviewer: seyadava
 ms.custom: mvc
 manager: femila
-ms.openlocfilehash: b21a9ca58fc29a3da62ea08e81e628368fe5385f
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: acfa94799f36728f4e0041f1a51403edf6ffe37e
+ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45580769"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48239472"
 ---
 # <a name="tutorial-use-the-azure-stack-ethereum-blockchain-solution-template"></a>Oktatóanyag: Az Azure Stack Ethereum blockchain megoldás sablon használata
 
@@ -39,7 +39,7 @@ Töltse le a legújabb elemeket [a Marketplace-ről](azure-stack-download-azure-
 * Egyéni parancsfájl 2.0 linuxhoz
 * A Windows egyéni szkriptek futtatására szolgáló bővítmény
 
-Blockchain-forgatókönyvekkel kapcsolatos további információkért lásd: [Ethereum proof of work consortium megoldássablon](../blockchain-workbench/ethereum-deployment-guide.md).
+Blockchain-forgatókönyvekkel kapcsolatos további információkért lásd: [Ethereum proof of work consortium megoldássablon](../blockchain/templates/ethereum-deployment.md).
 
 ## <a name="deployment-architecture"></a>Üzembe helyezési architektúrája
 

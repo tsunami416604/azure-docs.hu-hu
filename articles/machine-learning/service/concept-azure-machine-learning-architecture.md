@@ -9,18 +9,18 @@ ms.author: haining
 author: hning86
 ms.reviewer: larryfr
 ms.date: 09/24/2018
-ms.openlocfilehash: 3011fa85dbac2135f4d9113c6b76a8b667ee4013
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 64104fc70c7be1589c9332905f243a2e1e692eee
+ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46952129"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48237976"
 ---
 # <a name="architecture-and-concepts-how-does-azure-machine-learning-service-work"></a>Architektúra és a fogalmakkal: az Azure Machine Learning szolgáltatás működése? 
 
 Ez a dokumentum architektúra és az Azure Machine Learning szolgáltatás fogalmakat ismerteti. Az alábbi ábrán látható a szolgáltatás fő összetevőit, és általános folyamatát mutatja be, a szolgáltatás használata esetén: 
 
-[![Az Azure Machine Learning-architektúra és munkafolyamat](./media/concept-azure-machine-learning-architecture/workflow.png)](./media/concept-azure-machine-learning-architecture/workflow.png#lightbox)
+[![Az Azure Machine Learning szolgáltatás architektúrája és munkafolyamat](./media/concept-azure-machine-learning-architecture/workflow.png)](./media/concept-azure-machine-learning-architecture/workflow.png#lightbox)
 
 A munkafolyamat általában kövesse az alábbi lépéseket:
 
@@ -41,7 +41,7 @@ A munkafolyamat általában kövesse az alábbi lépéseket:
 
 ## <a name="workspace"></a>Munkaterület
 
-A munkaterület az Azure Machine Learning szolgáltatás a legfelső szintű erőforrás. Biztosít egy központi helyen hoz létre, amikor az Azure Machine Learning segítségével összetevők dolgozhat.
+A munkaterület az Azure Machine Learning szolgáltatás a legfelső szintű erőforrás. Biztosít egy központi helyen hoz létre az Azure Machine Learning szolgáltatás használatakor minden összetevő dolgozhat.
 
 A munkaterület biztosítja, hogy a modell betanításához felhasználható számítási célnak listáját. Azt is előzményeket a betanítási futtatás, beleértve a naplók, metrikák, kimeneti és a parancsfájlok pillanatképét. Ezek az információk segítségével határozza meg, melyik betanítási Futtatás a legjobb modellt hoz létre.
 
@@ -71,15 +71,15 @@ Az alábbi ábrán a besorolás, a munkaterület:
 
 A legegyszerűbb esetben egy modell olyan kódot, amely veszi a bemenetnek és kimenetet. Egy gépi tanulási modellek létrehozásával magában foglalja a algoritmusok kiválasztása, megadják a data és a hangolási hiperparaméterek. Képzési, amely a betanított modell, amely magában foglalja, mi a modell a betanítási folyamat során megtanult iteratív folyamat.
 
-Futtatás az Azure Machine Learning-modell elő. Egy kívül az Azure Machine Learning betanított modellt is használható. A modell Azure Machine Learning-munkaterület alapján lehet regisztrálni.
+Futtatás az Azure Machine Learning-modell elő. Egy kívül az Azure Machine Learning betanított modellt is használható. A modell a az Azure Machine Learning szolgáltatás munkaterülete lehet regisztrálni.
 
-Az Azure Machine Learning keretrendszer független. Egy modellt, például a scikit létrehozásakor használhatja bármely közkedvelt machine learning keretrendszer-xgboost, a PyTorch, a TensorFlow, a Chainer és a CNTK megismeréséhez.
+Az Azure Machine Learning szolgáltatás keretrendszer független. Egy modellt, például a scikit létrehozásakor használhatja bármely közkedvelt machine learning keretrendszer-xgboost, a PyTorch, a TensorFlow, a Chainer és a CNTK megismeréséhez.
 
-A modell tanítása példát talál a [a rövid útmutató: machine learning-munkaterület létrehozása](quickstart-get-started.md) dokumentumot.
+A modell tanítása példát talál a [a rövid útmutató: hozzon létre a machine learning-munkaterület szolgáltatási](quickstart-get-started.md) dokumentumot.
 
 ### <a name="model-registry"></a>Modell beállításjegyzék
 
-A modell beállításjegyzék nyomon követi az összes a modellek az Azure Machine Learning-munkaterületet. 
+A modell beállításjegyzék nyomon követi az összes a modellek az Azure Machine Learning szolgáltatás munkaterületen. 
 
 Modellek nevét és verzióját azonosítja. Minden alkalommal, amikor egy modell regisztrálni a neve megegyezik egy meglévő, a beállításjegyzék azt feltételezi, hogy-e egy új verziója. A verziószáma növekszik, és az új modell neve van regisztrálva.
 

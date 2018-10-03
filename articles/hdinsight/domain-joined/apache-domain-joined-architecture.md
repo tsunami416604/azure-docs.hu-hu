@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 975a4f7b15d1e1c13767cd7026e961e9d4227603
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 5ee03d8dc8dba08994715ace940875980c4f21bb
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46998925"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48041543"
 ---
 # <a name="use-enterprise-security-package-in-hdinsight"></a>A HDInsight vállalati biztonsági csomag használata
 
@@ -26,26 +26,20 @@ HDInsight a legnépszerűbb identitásszolgáltatóra, az Active Directory – a
 
 A virtuális gépek (VM) a HDInsight tartományhoz csatlakoztatva, a megadott tartományban. Tehát a HDInsight futó összes szolgáltatás (Ambari, Hive-kiszolgáló, Ranger, Spark thrift kiszolgáló és mások) zökkenőmentesen használható a hitelesített felhasználó. A rendszergazdák majd erős engedélyezési házirendek használatával létrehozhatja az Apache Ranger szerepköralapú hozzáférés-vezérlést biztosít a fürtben lévő erőforrásokat.
 
-
 ## <a name="integrate-hdinsight-with-active-directory"></a>A HDInsight és az Active Directory integrálása
 
 A Kerberos hitelesítési és biztonsági Hadoop nyílt forráskódú támaszkodik. HDInsight-fürtcsomópontok vállalati biztonsági csomag (ESP), ezért az Azure Active Directory tartományi szolgáltatások által felügyelt tartományhoz csatlakoznak. A Kerberos biztonsági konfigurálva van a Hadoop-összetevők a fürtön. 
 
-Az egyes Hadoop-összetevők egy szolgáltatásnév automatikusan létrejön. Az egyes gépek a tartományhoz csatlakozó is létrejön egy egyszerű megfelelő gépre. E szolgáltatás tárolására, és a gép rendszerbiztonsági tagok, meg kell adnia egy szervezeti egységhez (OU) belül a tartományvezérlő (Azure AD DS), ha ezen rendszerbiztonsági tagok kerülnek. 
+Automatikusan jönnek létre a következő műveleteket:
+- egy egyszerű szolgáltatást az egyes Hadoop-összetevők 
+- az egyes gépek a tartományhoz csatlakozó számítógép rendszerbiztonsági tag
+- egy szervezeti egység (OU) minden egyes fürt ezen szolgáltatás és a gépi rendszerbiztonsági tagok tárolásához 
 
 Összefoglalva, szüksége a környezet beállításához:
 
 - Active Directory-tartomány (az Azure Active Directory tartományi szolgáltatások által kezelt).
 - Biztonságos LDAP (LDAPS) engedélyezve van az Azure Active Directory tartományi szolgáltatásokban.
 - Megfelelő hálózati kapcsolat a HDInsight virtuális hálózat és az Azure Active Directory tartományi szolgáltatások virtuális hálózat, ha úgy dönt, különálló virtuális hálózatok az őket. A HDInsight virtuális hálózaton belüli virtuális gépek rendelkeznie kell egy virtuális hálózati társviszony-létesítésen keresztül az Azure Active Directory tartományi szolgáltatásokban üzemel. Ha a HDInsight és az Azure Active Directory tartományi szolgáltatások ugyanazon a virtuális hálózaton üzembe helyezett, a rendszer automatikusan létrehozza a kapcsolatot, és további semmit nem kell tennie.
-- A szervezeti egység [az Azure Active Directory tartományi Szolgáltatásokban létrehozott](../../active-directory-domain-services/active-directory-ds-admin-guide-create-ou.md).
-- A szolgáltatás fiók, amely jogosultsággal rendelkezik:
-    - A szervezeti Egységben lévő egyszerű szolgáltatások létrehozása.
-    - Gépek csatlakoztatása a tartományhoz, és a gép egyszerű létrehozása a szervezeti egységben.
-
-Az alábbi képernyőfelvételen egy szervezeti egység létrehozása a contoso.com. Azt is bemutatja, az egyszerű szolgáltatásnevekről és a gép rendszerbiztonsági tagok közül.
-
-![A HDInsight-fürtök ESP szervezeti egység](./media/apache-domain-joined-architecture/hdinsight-domain-joined-ou.png).
 
 ## <a name="set-up-different-domain-controllers"></a>Állítsa be a különféle tartományvezérlők
 HDInsight jelenleg csak az Azure AD DS támogatja a fő tartományvezérlő, a fürt által használt a Kerberos-kommunikációhoz. Azonban más összetett az Active Directory-beállításokat is lehetséges, mindaddig, amíg egy ilyen beállítás vezet, a HDInsight hozzáférést az Azure Active Directory tartományi szolgáltatások engedélyezése.

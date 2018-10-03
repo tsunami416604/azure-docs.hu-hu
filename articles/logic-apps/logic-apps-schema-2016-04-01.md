@@ -10,12 +10,12 @@ ms.reviewer: estfan, LADocs
 ms.assetid: 349d57e8-f62b-4ec6-a92f-a6e0242d6c0e
 ms.topic: article
 ms.date: 07/25/2016
-ms.openlocfilehash: 43fd52dd04e679b9756c07e8c6e260323469026a
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: c1ef71ea2ec551335c3681760c181624334c3229
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43126202"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48043201"
 ---
 # <a name="schema-updates-for-azure-logic-apps---june-1-2016"></a>A sémafrissítések Azure Logic Apps – 2016. június 1-én
 
@@ -33,23 +33,23 @@ A logic apps a 2015. augusztus 1-én előnézeti séma frissítése a 2016. jún
 
 Ebben a sémában a hatókörök, amelyek segítségével a beágyazott műveletek belül egymással, és együtt műveleteit tartalmazza. Ha például egy feltétel egy másik feltétel is tartalmazhat. Tudjon meg többet [szintaxis hatókör](../logic-apps/logic-apps-loops-and-scopes.md), vagy tekintse át az ebben a példában alapszintű hatókör:
 
-```
+```json
 {
-    "actions": {
-        "My_Scope": {
-            "type": "scope",
-            "actions": {                
-                "Http": {
-                    "inputs": {
-                        "method": "GET",
-                        "uri": "http://www.bing.com"
-                    },
-                    "runAfter": {},
-                    "type": "Http"
-                }
+   "actions": {
+      "Scope": {
+         "type": "Scope",
+         "actions": {                
+            "Http": {
+               "inputs": {
+                   "method": "GET",
+                   "uri": "http://www.bing.com"
+               },
+               "runAfter": {},
+               "type": "Http"
             }
-        }
-    }
+         }
+      }
+   }
 }
 ```
 
@@ -57,29 +57,29 @@ Ebben a sémában a hatókörök, amelyek segítségével a beágyazott művelet
 
 ## <a name="conditions-and-loops-changes"></a>Feltételek és ciklusok módosítások
 
-Előző séma verziója, a feltételek és a hurkok voltak kapcsolódó egyetlen művelettel. Ebben a sémában a korlátozás csoportosítását, így a feltételek és ciklusok jelennek meg a művelet típusa. Tudjon meg többet [ciklusok és hatóköröket](../logic-apps/logic-apps-loops-and-scopes.md), vagy tekintse át az ebben az egyszerű példában egy feltétel művelet:
+Előző séma verziója, a feltételek és a hurkok voltak kapcsolódó egyetlen művelettel. Ebben a sémában a korlátozás csoportosítását, így a feltételek és ciklusok most művelettípusok érhető el. Tudjon meg többet [ciklusok és hatóköröket](../logic-apps/logic-apps-loops-and-scopes.md), [feltételek](../logic-apps/logic-apps-control-flow-conditional-statement.md), vagy tekintse át az alapszintű példa bemutatja egy feltétel művelet:
 
-```
+```json
 {
-    "If_trigger_is_some-trigger": {
-        "type": "If",
-        "expression": "@equals(triggerBody(), 'some-trigger')",
-        "runAfter": { },
-        "actions": {
-            "Http_2": {
-                "inputs": {
-                    "method": "GET",
-                    "uri": "http://www.bing.com"
-                },
-                "runAfter": {},
-                "type": "Http"
-            }
-        },
-        "else": 
-        {
-            "if_trigger_is_another-trigger": "..."
-        }      
-    }
+   "Condition - If trigger is some trigger": {
+      "type": "If",
+      "expression": "@equals(triggerBody(), '<trigger-name>')",
+      "runAfter": {},
+      "actions": {
+         "Http_2": {
+            "inputs": {
+                "method": "GET",
+                "uri": "http://www.bing.com"
+            },
+            "runAfter": {},
+            "type": "Http"
+         }
+      },
+      "else": 
+      {
+         "Condition - If trigger is another trigger": {}
+      }  
+   }
 }
 ```
 
@@ -87,16 +87,14 @@ Előző séma verziója, a feltételek és a hurkok voltak kapcsolódó egyetlen
 
 ## <a name="runafter-property"></a>"runAfter" tulajdonsága
 
-A `runAfter` tulajdonság cserél `dependsOn`, a futtatási műveletek sorrendjét megadásakor pontossággal alapján az előző műveletek állapotának biztosítása.
+A `runAfter` tulajdonság cserél `dependsOn`, a futtatási műveletek sorrendjét megadásakor pontossággal alapján az előző műveletek állapotának biztosítása. A `dependsOn` tulajdonság jelzi-e "a művelet futott, és sikeres volt-e", alapján-e az előző művelet sikeres, sikertelen, vagy kihagyott - nem hányszor szeretné futtatni a műveletet. A `runAfter` tulajdonság biztosítja a rugalmasságot olyan objektum, amely meghatározza az összes műveletet-neveket az objektum futtatása után. Ez a tulajdonság azt is meghatározza, elfogadható eseményindítóként állapotait tömbjét. Például, ha szeretné a futtatását, miután A művelet sikeres lesz, és is utáni művelet B sikeres vagy sikertelen művelet, állítsa be ennek `runAfter` tulajdonság:
 
-A `dependsOn` tulajdonság azonos a "a művelet futtatott és sikeres volt-e", akkor nem számít, hogy hány alkalommal szeretett volna egy művelet alapján, a sikeres volt-e az előző művelet végrehajtása sikertelen volt, vagy kihagyása. A `runAfter` tulajdonság biztosítja a rugalmasságot, olyan objektum, amely után, amely az objektum futtatja az összes művelet neve. Ez a tulajdonság azt is meghatározza, elfogadható eseményindítóként állapotait tömbjét. Például ha futtatását, miután egy lépés sikeres lesz, és emellett után B lépésben sikeres vagy sikertelen, hozhat létre a `runAfter` tulajdonság:
-
-```
+```json
 {
-    "...",
-    "runAfter": {
-        "A": ["Succeeded"],
-        "B": ["Succeeded", "Failed"]
+   // Other parts in action definition
+   "runAfter": {
+      "A": ["Succeeded"],
+      "B": ["Succeeded", "Failed"]
     }
 }
 ```
@@ -109,10 +107,12 @@ Frissítés a [legutóbbi séma](https://schema.management.azure.com/schemas/201
 
 2. Lépjen a **áttekintése**. A logikai alkalmazás eszköztáron válassza **Update Schema**.
    
-    ![Válassza ki a séma frissítése][1]
+   ![Válassza ki a séma frissítése][1]
    
-    A frissített definíció adja vissza, amely, másolja és illessze be egy erőforrás-definíció szükség esetén. 
-    Azonban hogy **erősen ajánlott** választja **Mentés másként** , győződjön meg arról, hogy minden kapcsolatreferencia érvényesek-e a frissített logikai alkalmazást a.
+   A frissített definíció adja vissza, amely, másolja és illessze be egy erőforrás-definíció szükség esetén. 
+
+   > [!IMPORTANT]
+   > *Győződjön meg arról,* választja **Mentés másként** így minden kapcsolatreferencia továbbra is érvényesek a frissített logikai alkalmazásban.
 
 3. A frissítési panel eszköztárán válassza a **Mentés másként**.
 
@@ -125,17 +125,17 @@ Frissítés a [legutóbbi séma](https://schema.management.azure.com/schemas/201
 
 6. *Nem kötelező* írja felül a korábbi logikai alkalmazást az új sémaverzióra, az eszköztáron válassza a **Klónozás**mellett található **Update Schema**. Ebben a lépésben szükség, csak ha az erőforrás-Azonosítóját megőrizni, vagy kérje meg a logikai alkalmazás aktiváló URL-címe.
 
-### <a name="upgrade-tool-notes"></a>Eszköz megjegyzések frissítése
+## <a name="upgrade-tool-notes"></a>Eszköz megjegyzések frissítése
 
-#### <a name="mapping-conditions"></a>Leképezési feltételek
+### <a name="mapping-conditions"></a>Leképezési feltételek
 
-A frissített definíciójában az eszköz lehetővé teszi a true és false ág műveletek csoportosítása hatóköreként egy ajánlott beavatkozást. Pontosabban, a Tervező mintáját `@equals(actions('a').status, 'Skipped')` meg kell jelennie egy `else` művelet. Azonban az eszköz nem felismerhető minták észleli, ha az eszköz lehet, hogy hozzon létre külön feltételek az igaz értékre mind a False (hamis) ágat. A frissítés után is újramegfeleltetése műveletek, ha szükséges.
+A frissített definíciójában az eszköz lehetővé teszi a legjobb sikeresebbé: true és false ág műveletek csoportosítása hatóköreként. Pontosabban, a Tervező mintáját `@equals(actions('a').status, 'Skipped')` jelenik meg egy `else` művelet. Azonban az eszköz nem felismerhető minták észleli, ha az eszköz lehet, hogy hozzon létre külön feltételek az igaz értékre mind a False (hamis) ágat. A frissítés után is újramegfeleltetése műveletek, ha szükséges.
 
 #### <a name="foreach-loop-with-condition"></a>a feltétel "foreach" ciklus
 
-Az új sémában, használhatja a szűrési művelet minta replikálni egy `foreach` ciklus egy feltétellel, elemenként, de ez a változás automatikusan történjen, amikor frissít. A feltétel előtt a foreach ciklus visszaadó csak egy tömb, amely a feltételnek megfelelő elemek szűrőművelet válik, és a tömb átad a foreach művelet. Egy vonatkozó példáért lásd: [ciklusok és hatóköröket](../logic-apps/logic-apps-loops-and-scopes.md).
+Az új sémában, használhatja a szűrési művelet replikálni, amely a minta egy **minden** hurok elemenként egy feltétellel. Azonban a változás automatikusan megtörténik, amikor frissít. Szűrőművelet előtt megjelenő lesz a **minden** ciklus, csak a feltételnek megfelelő elemek tömbjét visszaadása, és átadja a tömböt az **minden** művelet. Egy vonatkozó példáért lásd: [ciklusok és hatóköröket](../logic-apps/logic-apps-loops-and-scopes.md).
 
-#### <a name="resource-tags"></a>Erőforráscímkék
+### <a name="resource-tags"></a>Erőforráscímkék
 
 A frissítés befejezése után az erőforráscímkék törlődnek, így a frissített munkafolyamat alaphelyzetbe kell azokat.
 
@@ -157,20 +157,20 @@ A `foreach` és `until` hurok egyetlen művelettel korlátozódnak.
 
 Műveletek is most már rendelkezik egy új tulajdonság nevű `trackedProperties`, testvére, azaz a `runAfter` és `type` tulajdonságait. Ez az objektum meghatározza bizonyos művelet bemenetei között meg vagy az Azure diagnosztikai telemetriát, munkafolyamat részeként kibocsátott szerepeltetni kívánt kimenetek. Példa:
 
-```
-{                
-    "Http": {
-        "inputs": {
-            "method": "GET",
-            "uri": "http://www.bing.com"
-        },
-        "runAfter": {},
-        "type": "Http",
-        "trackedProperties": {
-            "responseCode": "@action().outputs.statusCode",
-            "uri": "@action().inputs.uri"
-        }
-    }
+``` json
+{
+   "Http": {
+      "inputs": {
+         "method": "GET",
+         "uri": "http://www.bing.com"
+      },
+      "runAfter": {},
+      "type": "Http",
+      "trackedProperties": {
+         "responseCode": "@action().outputs.statusCode",
+         "uri": "@action().inputs.uri"
+      }
+   }
 }
 ```
 

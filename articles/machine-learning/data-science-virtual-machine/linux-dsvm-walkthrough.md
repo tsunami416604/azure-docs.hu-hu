@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/16/2018
 ms.author: gokuma
-ms.openlocfilehash: d9b89329e2a9bdb26c9aa1d12bc181c61518dcb8
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: c125f503166e3f63599dbd09acf42c69fab8d2ce
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39116163"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48044654"
 ---
 # <a name="data-science-with-a-linux-data-science-virtual-machine-on-azure"></a>Adatelemzés a egy Linux rendszerű adatelemző virtuális gép az Azure-ban
 Ez az útmutató bemutatja, hogyan hajthat végre számos gyakori adatelemzési feladatok a Linux rendszerű adatelemző virtuális gép. A Linux rendszerű adatelemzési virtuális gép (DSVM), amely előre telepített gyakran használt adatok elemzési és gépi tanulási eszközök gyűjteményét az Azure-ban elérhető virtuálisgép-lemezkép. A kulcs szoftverösszetevőket esethez vannak a [a Linux rendszerű adatelemző virtuális gép kiépítése](linux-dsvm-intro.md) témakör. A Virtuálisgép-lemezkép megkönnyíti az első lépések adatelemzésre percben, anélkül, hogy telepítse és konfigurálja az egyes eszközökről külön-külön kellene. Egyszerűen vertikális felskálázás a virtuális Gépet, ha szükséges, és állítsa le, amikor nincs használatban. Ehhez az erőforráshoz így rugalmas és költséghatékony is.
@@ -483,7 +483,7 @@ Első lépésként nyissa meg az alkalmazások menüben Squirrel SQL. Az illeszt
 * Kattintson a jobb gombbal a **PostgreSQL** válassza **módosítása illesztőprogram**.
 * Válassza ki **Extra osztály az elérési út**, majd **hozzáadása**.
 * Adja meg ***/usr/share/java/jdbcdrivers/postgresql-9.4.1208.jre6.jar*** számára a **Fájlnév** és
-* Válassza ki **nyílt**.
+* Válassza az **Open** (Megnyitás) elemet.
 * Válassza ki a lista illesztőprogramokat, majd válassza ki **org.postgresql.Driver** a **osztálynév**, és válassza ki **OK**.
 
 A kapcsolat a helyi kiszolgáló beállítása:
@@ -544,6 +544,6 @@ Adatok másolása a BCP használatával:
 Squirrel SQL-lel is lekérdezhet. Használatával a Microsoft MSSQL Server JDBC-illesztőprogram, amely megtalálható a PostgreSQL-hez hasonló lépésekkel ***/usr/share/java/jdbcdrivers/sqljdbc42.jar***.
 
 ## <a name="next-steps"></a>További lépések
-Témakörök, amelyek végigvezetik a feladatokat az Azure-ban az adatelemzési folyamat alkotó áttekintését lásd: [csoportos adatelemzési folyamat](http://aka.ms/datascienceprocess).
+Témakörök, amelyek végigvezetik a feladatokat az Azure-ban az adatelemzési folyamat alkotó áttekintését lásd: [csoportos adatelemzési folyamat](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/overview).
 
 Más végpontok közötti forgatókönyvek, amelyek bemutatják, bizonyos forgatókönyvek esetén a csoportos adatelemzési folyamat lépéseit ismertetését lásd: [csoportos adatelemzési folyamat forgatókönyvek](../team-data-science-process/walkthroughs.md). A forgatókönyvek bemutatják, hogyan kombinálhatja a felhőalapú és helyszíni eszközöket és szolgáltatásokat, munkafolyamat vagy folyamat, intelligens alkalmazások létrehozására is.

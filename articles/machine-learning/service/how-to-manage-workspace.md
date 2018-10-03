@@ -1,6 +1,6 @@
 ---
-title: Létrehozása és kezelése az Azure Machine Learning-munkaterületek
-description: Ismerje meg, hogyan hozhat létre, megtekintése és törlése az Azure Machine Learning-munkaterületek az Azure Portalon.
+title: Hozzon létre, és az Azure Machine Learning szolgáltatás munkaterületek kezelése
+description: Ismerje meg, hogyan létrehozása, megtekintése és törlése az Azure Machine Learning szolgáltatás a munkaterületeket, az Azure Portalon.
 services: machine-learning
 ms.service: machine-learning
 ms.component: core
@@ -9,16 +9,16 @@ ms.reviewer: jmartens
 ms.author: shipatel
 author: shivp950
 ms.date: 09/24/2018
-ms.openlocfilehash: 7d01a2e3ebd46315966c82a43a17ffc5b329b829
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: c0bb27dccdaf25da818d5d54a8634556a95da737
+ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46954347"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48238677"
 ---
-# <a name="create-and-manage-azure-machine-learning-workspaces"></a>Létrehozása és kezelése az Azure Machine Learning-munkaterületek
+# <a name="create-and-manage-azure-machine-learning-service-workspaces"></a>Hozzon létre, és az Azure Machine Learning szolgáltatás munkaterületek kezelése
 
-Ebben a cikkben azt fogjuk létrehozása, megtekintése és törlése [ **Azure Machine Learning-munkaterületek** ](concept-azure-machine-learning-architecture.md#workspace) számára az Azure Portalon [Azure Machine Learning szolgáltatás](overview-what-is-azure-ml.md).  Akkor is törölhetnek és hozhatnak létre munkaterületeket [a parancssori felületről](reference-azure-machine-learning-cli.md) vagy [a Python-kód](http://aka.ms/aml-sdk).
+Ebben a cikkben azt fogjuk létrehozása, megtekintése és törlése [ **Azure Machine Learning szolgáltatás munkaterületek** ](concept-azure-machine-learning-architecture.md#workspace) számára az Azure Portalon [Azure Machine Learning szolgáltatás](overview-what-is-azure-ml.md).  Akkor is törölhetnek és hozhatnak létre munkaterületeket [a parancssori felületről](reference-azure-machine-learning-cli.md) vagy [a Python-kód](http://aka.ms/aml-sdk).
 
 Munkaterület létrehozásához Azure-előfizetés szükséges. Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
@@ -30,17 +30,17 @@ Munkaterület létrehozásához Azure-előfizetés szükséges. Ha nem rendelkez
 
 1. A bal felső sarkában a portálon, válassza ki **minden szolgáltatás**. 
 
-1. Az a **minden szolgáltatás** írja be a Szűrő mezőbe **Machine Learning-munkaterület**.  
+1. Az a **minden szolgáltatás** írja be a Szűrő mezőbe **Machine Learning szolgáltatás munkaterület**.  
 
-   ![Keresse meg az Azure Machine Learning-munkaterületet](media/how-to-manage-workspace/allservices-search1.png)
+   ![Keresse meg az Azure Machine Learning szolgáltatás munkaterület](media/how-to-manage-workspace/allservices-search1.png)
 
-1. Az eredmények szűréséhez válassza **Machine Learning-munkaterület** egy a-munkaterületek listájának megjelenítéséhez. 
+1. Az eredmények szűréséhez válassza **Machine Learning szolgáltatás munkaterületén** egy a-munkaterületek listájának megjelenítéséhez. 
 
-   ![Keresse meg az Azure Machine Learning-munkaterületet](media/how-to-manage-workspace/allservices-search.PNG)
+   ![Keresse meg az Azure Machine Learning szolgáltatás munkaterület](media/how-to-manage-workspace/allservices-search.PNG)
 
 1. Nézze át a találhatók munkaterületek listáját. Szűrhet előfizetés alapján, erőforráscsoportok és helyek.  
 
-   ![Az Azure Machine Learning-munkaterület listája](media/how-to-manage-workspace/allservices_view_workspace.PNG)
+   ![Az Azure Machine Learning szolgáltatás munkaterület listája](media/how-to-manage-workspace/allservices_view_workspace.PNG)
 
 1. Válassza ki a munkaterületet, újonnan létrehozott a tulajdonságainak megjelenítéséhez.
 

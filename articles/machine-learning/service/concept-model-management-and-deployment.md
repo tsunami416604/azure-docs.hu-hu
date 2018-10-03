@@ -1,6 +1,6 @@
 ---
-title: Kezelheti, és az Azure Machine Learning modellek üzembe helyezése
-description: Ismerje meg, hogyan telepíthet, kezelheti és figyelheti a modellek révén folyamatosan fejleszthető Azure Machine Learning használatával. A helyi gépen, vagy egyéb forrásokból az az Azure Machine Learning betanított modellek is telepítheti.
+title: Kezelheti, és az Azure Machine Learning szolgáltatás a modellek üzembe helyezése
+description: Ismerje meg, hogyan telepíthet, kezelheti és figyelheti a modellek révén folyamatosan fejleszthető Azure Machine Learning szolgáltatás használatával. A helyi gépen, vagy egyéb forrásokból az Azure Machine Learning szolgáltatás a betanított modellek is telepítheti.
 services: machine-learning
 ms.service: machine-learning
 ms.component: core
@@ -9,21 +9,21 @@ ms.reviewer: jmartens
 author: hjerez
 ms.author: hjerez
 ms.date: 09/24/2018
-ms.openlocfilehash: d3e0b63d42ad8c6d4765f5120c26c5dfdf5ad6fb
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: afba483172bc34b9d54afc3af755f0967affc875
+ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47166537"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48239166"
 ---
-# <a name="manage-deploy-and-monitor-models-with-azure-machine-learning"></a>Kezelheti, telepítheti és figyelheti a modellek Azure Machine Learning segítségével
+# <a name="manage-deploy-and-monitor-models-with-azure-machine-learning-service"></a>Kezelheti, telepítheti és figyelheti a modellek az Azure Machine Learning szolgáltatás
 
-Ebben a cikkben megismerheti az Azure Machine Learning segítségével telepíthet, kezelheti és figyelheti a modellek révén folyamatosan fejleszthető. A helyi gépen, vagy egyéb forrásokból az az Azure Machine Learning betanított modellek is telepítheti. 
+Ebben a cikkben megismerheti az Azure Machine Learning szolgáltatás használatával telepíthet, kezelheti és figyelheti a modellek révén folyamatosan fejleszthető. A helyi gépen, vagy egyéb forrásokból az az Azure Machine Learning betanított modellek is telepítheti. 
 
 A következő ábra szemlélteti a teljes telepítési munkafolyamat: [ ![üzembe helyezést megvalósító munkafolyamat az Azure Machine Learning](media/concept-model-management-and-deployment/deployment-pipeline.png) ](media/concept-model-management-and-deployment/deployment-pipeline.png#lightbox)
 
 Az üzembe helyezést megvalósító munkafolyamat a következő lépésekből áll:
-1. **Regisztrálja a modellt** üzemeltetett az Azure Machine Learning-munkaterületet a beállításjegyzékben
+1. **Regisztrálja a modellt** az Azure Machine Learning szolgáltatás munkaterületen üzemeltetett beállításjegyzékben
 1. **Lemezkép regisztrálása** , amely egy pontozó szkriptre és a egy hordozható tároló függőségeit modell párokat. 
 1. **Üzembe helyezése** a kép webszolgáltatásként, amely a felhőben vagy a peremeszközökre
 1. **Adatainak figyelésére és gyűjtésére**
@@ -35,7 +35,7 @@ Az egyes lépések egymástól függetlenül, vagy egy egyetlen központi telep�
 
 ## <a name="step-1-register-model"></a>1. lépés: Regisztráljon modell
 
-A modell beállításjegyzék nyomon követi az összes a modellek az Azure Machine Learning-munkaterületet.
+A modell beállításjegyzék nyomon követi az összes a modellek az Azure Machine Learning szolgáltatás munkaterületen.
 Modellek nevét és verzióját azonosítja. Minden alkalommal, amikor egy modell regisztrálni a neve megegyezik egy meglévő, a beállításjegyzék növeli a verziót. Használható kereséskor a modellek regisztrálása során is megadható további metaadat-címkéket.
 
 Lemezkép által használt modellek nem törölhető.

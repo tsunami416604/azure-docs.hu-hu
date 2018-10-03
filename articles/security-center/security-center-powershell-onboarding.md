@@ -12,19 +12,19 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 9/20/2018
+ms.date: 10/2/2018
 ms.author: rkarlin
-ms.openlocfilehash: 4664a9f84a92b7a223409d764971fda81317bbf0
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 756aadfb015ada8ea642e9e4893664eed3f6c9b2
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47222250"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48042552"
 ---
 # <a name="automate-onboarding-of-azure-security-center-using-powershell"></a>Előkészítés a PowerShell-lel az Azure Security Center automatizálása
 
 Gondoskodhat az Azure-beli számítási programozott módon, az Azure Security Center PowerShell modullal.
-PowerShell-lel lehetővé teszi a feladatok automatizálását, és ez különösen hasznos a nagyméretű telepítésekkel több tucat, több száz és erőforrások – mindegyike védelméhez a több ezer előfizetések érintő manuális feladatok rejlő az emberi hibák elkerülése érdekében kezdete.
+PowerShell-lel lehetővé teszi, hogy a feladatok automatizálásához és a manuális feladatok járó az emberi hibák elkerülése érdekében. Ez különösen hasznos a nagyméretű telepítésekkel több tucat, több száz és több ezer erőforrások – amelyek mindegyike az elejétől kell védeni az előfizetést érintő.
 
 Bevezetési PowerShell-lel az Azure Security Center lehetővé teszi, hogy programozott módon regisztrációs és az Azure-erőforrások felügyeletének automatizálására, és adja hozzá a szükséges biztonsági ellenőrzések.
 
@@ -52,7 +52,6 @@ Ezeket a lépéseket kell elvégezni, a Security Center-parancsmagok futtatása 
         Install-Module -Name PowerShellGet -Force
         Set-ExecutionPolicy -ExecutionPolicy AllSigned
         Import-Module PowerShellGet
-        Install-Module -Name AzureRM.profile -RequiredVersion 5.5.0
 6.  Indítsa újra a PowerShell
 
 7. A PowerShellben futtassa a következő parancsokat:
@@ -63,12 +62,12 @@ Ezeket a lépéseket kell elvégezni, a Security Center-parancsmagok futtatása 
 
 1.  Az előfizetés a Security Center erőforrás-szolgáltató regisztrálása:
 
-        Set-AzureRmContext -Subscription "d07c0080-170c-4c24-861d-9c817742786c”
-        Register-AzureRmResourceProvider -ProviderNamespace ‘Microsoft.Security’ 
+        Set-AzureRmContext -Subscription "d07c0080-170c-4c24-861d-9c817742786c"
+        Register-AzureRmResourceProvider -ProviderNamespace 'Microsoft.Security' 
 
 2.  Választható lehetőség: Az előfizetések lefedettség szint (tarifacsomag) beállítása (Ha nincs megadva, a tarifacsomag értéke ingyenes):
 
-        Set-AzureRmContext -Subscription "d07c0080-170c-4c24-861d-9c817742786c”
+        Set-AzureRmContext -Subscription "d07c0080-170c-4c24-861d-9c817742786c"
         Set-AzureRmSecurityPricing -Name "default" -PricingTier "Standard"
 
 3.  Az ügynökök jelentést, amelyhez a Log Analytics-munkaterület konfigurálása. Log Analytics-munkaterület már létrehozott, hogy az előfizetéshez tartozó virtuális gépek jelenteni fognak az kell rendelkeznie. Megadhatja, hogy több előfizetést, hogy ugyanazon a munkaterületen. Ha nincs megadva, használja az alapértelmezett munkaterületre.
@@ -78,7 +77,7 @@ Ezeket a lépéseket kell elvégezni, a Security Center-parancsmagok futtatása 
 
 4.  A Microsoft Monitoring Agent szolgáltatást az Azure-beli virtuális gépek automatikus üzembe telepítését:
     
-        Set-AzureRmContext -Subscription "d07c0080-170c-4c24-861d-9c817742786c”
+        Set-AzureRmContext -Subscription "d07c0080-170c-4c24-861d-9c817742786c"
     
         Set-AzureRmSecurityAutoProvisioningSetting -Name "default" -EnableAutoProvision
 
@@ -94,7 +93,7 @@ Ezeket a lépéseket kell elvégezni, a Security Center-parancsmagok futtatása 
 
         Register-AzureRmResourceProvider -ProviderNamespace 'Microsoft.PolicyInsights'
         $Policy = Get-AzureRmPolicySetDefinition -Name ' [Preview]: Enable Monitoring in Azure Security Center'
-        New-AzureRmPolicyAssignment -Name 'ASC Default <d07c0080-170c-4c24-861d-9c817742786c>' -DisplayName 'Security Center Default <subscription ID>' -PolicySetDefinition $Policy -Scope ‘/subscriptions/d07c0080-170c-4c24-861d-9c817742786c’
+        New-AzureRmPolicyAssignment -Name 'ASC Default <d07c0080-170c-4c24-861d-9c817742786c>' -DisplayName 'Security Center Default <subscription ID>' -PolicySetDefinition $Policy -Scope '/subscriptions/d07c0080-170c-4c24-861d-9c817742786c'
 
 Akkor most sikerült előkészíteni az Azure Security Center a PowerShell használatával!
 
@@ -108,7 +107,7 @@ Mostantól használhatja a PowerShell-parancsmagok az automatizálási szkriptek
 ## <a name="see-also"></a>Lásd még
 Hogyan automatizálhatja a Security Center bevezetése használhatja PowerShell kapcsolatos további információkért tekintse meg a következő cikket:
 
-* [AzureRM.Security](https://www.powershellgallery.com/packages/AzureRM.Security/0.1.0-preview).
+* [AzureRM.Security](https://www.powershellgallery.com/packages/AzureRM.Security/0.2.0-preview).
 
 A Security Centerrel kapcsolatos további tudnivalókért tekintse meg a következő cikket:
 

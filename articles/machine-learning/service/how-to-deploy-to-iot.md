@@ -10,12 +10,12 @@ author: shivanipatel
 manager: cgronlun
 ms.reviewer: larryfr
 ms.date: 09/24/2018
-ms.openlocfilehash: 03d692ddfd6f41fd559e9b921f0214a9cd2ada22
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 20469e127c8e04f4c6418fe28c49b63fc3b363d8
+ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47225225"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48239200"
 ---
 # <a name="prepare-to-deploy-models-on-iot-edge"></a>Az IoT Edge-ben a modellek üzembe helyezés előkészítése
 
@@ -43,7 +43,7 @@ Lépéseit követve megtudhatja, hogyan regisztrálja az eszközt, és az IoT-mo
 
 ## <a name="register-the-model"></a>Regisztrálja a modellt
 
-Az Azure IoT Edge-modulok tárolórendszerképek alapulnak. IoT Edge-eszköz helyezheti üzembe a modellt, regisztrálja a modellt az Azure Machine Learning-munkaterület és a Docker-rendszerkép létrehozásához használja az alábbi lépéseket. 
+Az Azure IoT Edge-modulok tárolórendszerképek alapulnak. IoT Edge-eszköz helyezheti üzembe a modellt, regisztrálja a modellt az Azure Machine Learning szolgáltatás a munkaterületen, és a Docker-rendszerkép létrehozásához használja az alábbi lépéseket. 
 
 > [!IMPORTANT]
 > Ha használta az Azure Machine Learning, előfordulhat, hogy már regisztrálva van a munkaterület modellje betanításához, ebben az esetben ugorjon a 3. lépés.
@@ -122,7 +122,7 @@ Az Azure IoT a tárolóregisztrációs adatbázisra, amely az Azure Machine Lear
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/signin/index).
 
-1. Nyissa meg az Azure Machine Learning-munkaterületet, és válassza ki __áttekintése__. Nyissa meg a tároló beállításjegyzék-beállításokat, jelölje be a __beállításjegyzék__ hivatkozásra.
+1. Nyissa meg az Azure Machine Learning szolgáltatás munkaterületet, és válassza ki __áttekintése__. Nyissa meg a tároló beállításjegyzék-beállításokat, jelölje be a __beállításjegyzék__ hivatkozásra.
 
     ![A tároló beállításjegyzék-bejegyzés képe](./media/how-to-deploy-to-iot/findregisteredcontainer.png)
 
