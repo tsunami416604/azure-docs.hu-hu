@@ -9,14 +9,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 9/18/2018
+ms.date: 9/28/2018
 ms.author: rithorn
-ms.openlocfilehash: d031059f9811cedb703fec4920e00fd1b2e3f877
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 6b369c8209e62ff3c98b3fdf78378b403b0a0d2d
+ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47045349"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48017653"
 ---
 # <a name="organize-your-resources-with-azure-management-groups"></a>Erőforrások rendszerezése az Azure Management Groups segítségével
 
@@ -62,19 +62,30 @@ Ez a gyökérszintű felügyeleti csoport úgy épül be a hierarchiába, hogy m
   - Bárki, aki hozzáféréssel rendelkezik egy adott előfizetéshez, láthatja, hogy az hol helyezkedik el a hierarchiában.  
   - Senki nem kap alapértelmezés szerint hozzáférést a gyökérszintű felügyeleti csoporthoz. Kizárólag a globális címtárrendszergazdák emelhetik meg jogosultsági szintjüket, hogy hozzáférést kapjanak.  Ezt követően bármilyen RBAC-szerepkört hozzárendelhetnek a címtár felhasználóihoz.  
 
-> [!NOTE]
-> Ha Ön 2018. 06. 25. előtt kezdte meg címtárban a felügyeleti csoportok használatát, előfordulhat, hogy nem minden előfizetés lett beállítva a címtár hierarchiájában. Felügyeleti csoportokkal foglalkozó csapatunk 2018 júliusa és augusztusa között visszamenőlegesen frissíti azokat a címtárakat, amelyek a fenti időpontot megelőzően kezdtek felügyeleti csoportokat alkalmazni a nyilvános előzetes verzióban. Ennek keretében a címtárakban található összes előfizetés gyermekként lesz beállítva a korábbi gyökérszintű felügyeleti csoport alatt.
->
-> Ha kérdése van a visszamenőleges folyamatot illetően, lépjen kapcsolatba velünk a következő e-mail-címen: managementgroups@microsoft.com  
-  
-## <a name="initial-setup-of-management-groups"></a>A felügyeleti csoportok kezdeti beállítása
-
-A felügyeleti csoportok használatának megkezdésekor először egy beállítási folyamat történik. A folyamat első lépéseként létrejön a gyökérszintű felügyeleti csoport a címtárban. A csoport létrehozása után a címtárban található összes meglévő előfizetés a gyökérszintű felügyeleti csoport gyermekeként lesz beállítva. A folyamat célja, hogy egy adott címtáron belül csak egy felügyeleticsoport-hierarchia legyen. Az egyetlen hierarchia beállítása lehetővé teszi a rendszergazdai ügyfelek számára globális hozzáférések és szabályzatok alkalmazását, amelyeket a címtárat használó többi ügyfél nem tud megkerülni. Minden gyökérszintű hozzárendelés érvényes lesz az összes felügyeleti csoportra, előfizetésre, erőforráscsoportra és erőforrásra a címtárban az egyetlen hierarchiának köszönhetően.
-
 > [!IMPORTANT]
 > A gyökérszintű felügyeleti csoporton végrehajtott felhasználóihozzáférés- és szabályzat-hozzárendelések **a címtárban lévő valamennyi erőforrásra érvényesek lesznek**.
 > Ezért minden ügyfélnek fel kell mérnie, mire van szüksége ebben a hatókörben.
 > A felhasználói hozzáférések és a szabályzatok hozzárendelései csak ebben a hatókörben lehetnek kötelezőek.  
+
+## <a name="initial-setup-of-management-groups"></a>A felügyeleti csoportok kezdeti beállítása
+
+A felügyeleti csoportok használatának megkezdésekor először egy beállítási folyamat történik. A folyamat első lépéseként létrejön a gyökérszintű felügyeleti csoport a címtárban. A csoport létrehozása után a címtárban található összes meglévő előfizetés a gyökérszintű felügyeleti csoport gyermekeként lesz beállítva. A folyamat célja, hogy egy adott címtáron belül csak egy felügyeleticsoport-hierarchia legyen. Az egyetlen hierarchia beállítása lehetővé teszi a rendszergazdai ügyfelek számára globális hozzáférések és szabályzatok alkalmazását, amelyeket a címtárat használó többi ügyfél nem tud megkerülni. Minden gyökérszintű hozzárendelés érvényes lesz az összes felügyeleti csoportra, előfizetésre, erőforráscsoportra és erőforrásra a címtárban az egyetlen hierarchiának köszönhetően.
+
+## <a name="trouble-seeing-all-subscriptions"></a>Nem látható az összes előfizetés
+
+Néhány címtárban, amelyek az előzetes verzió korai szakaszában (2018. június 25. előtt) kezdtek felügyeleti csoportokat használni, egy probléma jelentkezhet, amelynek következtében a rendszer nem minden előfizetést érvényesít a hierarchiában.  Ennek az oka, hogy az előfizetéseket a hierarchiában érvényesítő eljárás azután lett megvalósítva, hogy egy szerepkör- vagy szabályzat-hozzárendelés végre lett hajtva a címtár gyökérszintű felügyeleti csoportján.
+
+### <a name="how-to-resolve-the-issue"></a>A probléma elhárítása
+
+A probléma megoldására két önkiszolgáló megoldás létezik.
+
+1. Az összes szerepkör- és szabályzat-hozzárendelés eltávolítása a gyökérszintű felügyeleti csoportról
+    1. Ha az összes szerepkör- és szabályzat-hozzárendelést eltávolítja a gyökérszintű felügyeleti csoportról, a szolgáltatás a következő éjszakai ciklus során visszatölti az összes előfizetést a hierarchiába.  Erre az ellenőrzésre annak biztosításához van szükség, hogy a hozzáférések vagy szabályzat-hozzárendelések kiosztása nehogy véletlenül érvényes legyen az összes bérlői előfizetésre.
+    1. A legjobb mód a folyamat a szolgáltatások működésének befolyásolása nélküli végrehajtására, ha a szerepkör- vagy szabályzat-hozzárendeléseket egy szinttel a gyökérszintű felügyeleti csoport alatt alkalmazza. Ezután eltávolíthatja az összes hozzárendelést a gyökérszintű hatókörből.
+1. A visszatöltési folyamat elindítása az API közvetlen meghívásával
+    1. A címtár bármelyik, megfelelő jogosultsággal rendelkező ügyfele meghívhatja a *TenantBackfillStatusRequest* vagy a *StartTenantBackfillRequest* API-t. A StartTenantBackfillRequest API a meghívásakor elindítja az összes előfizetés a hierarchiába való átvitelére vonatkozó kezdeti konfigurációs folyamatot. A folyamat azt az eljárást is elindítja, amely az összes új előfizetést a gyökérszintű felügyeleti csoport gyermekeként érvényesíti. Ennek az eljárásnak a végrehajtásakor nem szükséges a gyökérszinten módosítani a hozzárendeléseket, mivel ebben az esetben nem gond, hogy a gyökérszinten jelen lévő szabályzatok és hozzáférési hozzárendelések az összes előfizetésre alkalmazhatók.
+
+Ha kérdése van a visszatöltési folyamatot illetően, lépjen kapcsolatba velünk a következő e-mail-címen: managementgroups@microsoft.com.  
   
 ## <a name="management-group-access"></a>Hozzáférés a felügyeleti csoportokhoz
 

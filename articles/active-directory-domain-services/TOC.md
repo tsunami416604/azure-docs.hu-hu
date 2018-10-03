@@ -22,6 +22,8 @@
 ## [Felügyelt tartomány állapotának az ellenőrzése](active-directory-ds-check-health.md)
 ## [Az Azure AD Domain Services használata az Azure CSP-előfizetésekben](active-directory-ds-csp.md)
 ## [Az Azure AD Domain Services engedélyezése a PowerShell-lel](active-directory-ds-enable-using-powershell.md)
+## [Hatókörön belüli szinkronizálás konfigurálása az Azure AD-ből egy felügyelt tartományra](active-directory-ds-scoped-synchronization.md)
+## [Felügyelt tartomány védelme](active-directory-ds-secure-your-domain.md)
 ## Csatlakozás egy felügyelt tartományhoz
 ### [Windows Server rendszerű virtuális gép](active-directory-ds-admin-guide-join-windows-vm-portal.md)
 ### [Windows Server rendszerű virtuális gép sablonból](active-directory-ds-join-windows-vm-template.md)
@@ -44,7 +46,6 @@
 ### [Csoportosan felügyelt szolgáltatásfiók létrehozása felügyelt tartományon](active-directory-ds-create-gmsa.md)
 ### [Csoportházirend-kezelése felügyelt tartományon](active-directory-ds-admin-guide-administer-group-policy.md)
 ### [Jelszószabályzatok konfigurálása felügyelt tartományon](active-directory-ds-password-policy.md)
-### [Hatókörön belüli szinkronizálás konfigurálása az Azure AD-ből egy felügyelt tartományra](active-directory-ds-scoped-synchronization.md)
 ## [Virtuális hálózat kiválasztása](active-directory-ds-networking.md)
 ## Alkalmazások üzembe helyezése
 ### [Profilszinkronizálás támogatásának beállítása SharePoint-kiszolgálóhoz](active-directory-ds-enable-sharepoint-profile-sync.md)

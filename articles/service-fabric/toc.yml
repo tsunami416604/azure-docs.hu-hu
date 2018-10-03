@@ -195,12 +195,6 @@ items:
         href: service-fabric-dnsservice.md
       - name: Fordított proxy
         href: service-fabric-reverseproxy.md
-      - name: Fordított proxy telepítése és konfigurálása
-        href: service-fabric-reverseproxy-setup.md
-      - name: Fordított proxy konfigurálása biztonságos kommunikációhoz
-        href: service-fabric-reverseproxy-configure-secure-communication.md
-      - name: Fordítottproxy-diagnosztika
-        href: service-fabric-reverse-proxy-diagnostics.md
       - name: ASP.NET-mag
         href: service-fabric-reliable-services-communication-aspnetcore.md
     - name: Alkalmazás-életciklus
@@ -554,6 +548,12 @@ items:
         href: service-fabric-set-up-continuous-integration.md
       - name: Linuxos alkalmazások üzembe helyezése a Jenkins használatával
         href: service-fabric-cicd-your-linux-applications-with-jenkins.md
+  - name: Fordított proxy telepítése és konfigurálása
+    items:
+    - name: Fordított proxy telepítése és konfigurálása
+      href: service-fabric-reverseproxy-setup.md
+    - name: Fordított proxy konfigurálása biztonságos kommunikációhoz
+      href: service-fabric-reverseproxy-configure-secure-communication.md
   - name: Fürtök létrehozása és felügyelete
     items:
     - name: Fürtök az Azure-on
@@ -658,6 +658,8 @@ items:
         href: service-fabric-understand-and-troubleshoot-with-system-health-reports.md
       - name: Állapotjelentések megtekintése
         href: service-fabric-view-entities-aggregated-health.md
+    - name: Fordított proxy eseményeinek diagnosztizálása
+      href: service-fabric-reverse-proxy-diagnostics.md
     - name: A helyi fürt hibaelhárítása
       href: service-fabric-troubleshoot-local-cluster-setup.md
     - name: Gyakori forgatókönyvek diagnosztizálása
@@ -757,9 +759,9 @@ items:
     href: https://azure.microsoft.com/updates/?product=service-fabric
   - name: Videók
     href: https://azure.microsoft.com/documentation/videos/index/?services=service-fabric
-ms.openlocfilehash: 7bd6ee339aa1eafbf260e9df4925f50cba49bdf8
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: fc85458db829f66ad90d846aec7148fa58a3bbc0
+ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47406057"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48018876"

@@ -21,12 +21,6 @@ items:
       href: ../application-insights/app-insights-java-quick-start.md?toc=/azure/azure-monitor/toc.json
     - name: Mobilalkalmazás
       href: ../application-insights/app-insights-mobile-center-quickstart.md?toc=/azure/azure-monitor/toc.json
-  - name: Riasztások
-    items:
-    - name: Riasztás (klasszikus) metrikai feltétel teljesülésekor
-      href: ../monitoring-and-diagnostics/monitor-quick-resource-metric-alert-portal.md?toc=/azure/azure-monitor/toc.json
-    - name: Riasztás előfizetési tevékenység esetén
-      href: ../monitoring-and-diagnostics/monitor-quick-audit-notify-action-in-subscription.md?toc=/azure/azure-monitor/toc.json
   - name: Virtual machines (Virtuális gépek)
     items:
     - name: Gyűjtés – Azure-beli virtuális gépek
@@ -38,25 +32,25 @@ items:
   expanded: true
 - name: Oktatóanyagok
   items:
-  - name: 1 – Adatok elemzése
+  - name: Adatok elemzése a Log Analyticsben
     href: ../log-analytics/log-analytics-tutorial-viewdata.md?toc=/azure/azure-monitor/toc.json
-  - name: 2 – Adatok vizualizációja
+  - name: Adatok vizualizációja a Log Analyticsben
     href: ../log-analytics/log-analytics-tutorial-dashboards.md?toc=/azure/azure-monitor/toc.json
-  - name: 3 – Adatok archiválása
+  - name: Platformmetrikák és naplóadatok archiválása
     href: ../monitoring-and-diagnostics/monitor-tutorial-archive-monitoring-data.md?toc=/azure/azure-monitor/toc.json
-  - name: 4 – Riasztás naplóadatok alapján
+  - name: Riasztás naplóadatok alapján
     href: ../log-analytics/log-analytics-tutorial-response.md?toc=/azure/azure-monitor/toc.json
-  - name: 5 – Automatikus méretezés teljesítmény és ütemezés alapján
+  - name: Automatikus méretezés teljesítmény és ütemezés alapján
     href: ../monitoring-and-diagnostics/monitor-tutorial-autoscale-performance-schedule.md?toc=/azure/azure-monitor/toc.json
-  - name: 6 – Futásidejű kivételek keresése
+  - name: Alkalmazások futásidejű kivételeinek keresése
     href: ../application-insights/app-insights-tutorial-runtime-exceptions.md?toc=/azure/azure-monitor/toc.json
-  - name: 7 – Teljesítményproblémák keresése
+  - name: Alkalmazások teljesítményproblémáinak keresése
     href: ../application-insights/app-insights-tutorial-performance.md?toc=/azure/azure-monitor/toc.json
-  - name: 8 – Riasztás alkalmazásállapot alapján
+  - name: Alkalmazásállapot-riasztás
     href: ../application-insights/app-insights-tutorial-alert.md?toc=/azure/azure-monitor/toc.json
-  - name: 9 – A felhasználók megismerése
+  - name: Az alkalmazásfelhasználók megismerése
     href: ../application-insights/app-insights-tutorial-users.md?toc=/azure/azure-monitor/toc.json
-  - name: 10 – Egyéni irányítópultok létrehozása
+  - name: Egyéni irányítópultok létrehozása
     href: ../application-insights/app-insights-tutorial-dashboards.md?toc=/azure/azure-monitor/toc.json
 - name: Példák
   items:
@@ -189,27 +183,32 @@ items:
         href: ../log-analytics/log-analytics-manage-del-workspace.md?toc=/azure/azure-monitor/toc.json
       - name: A szolgáltatókat szem előtt tartó tervezés
         href: ../log-analytics/log-analytics-service-providers.md?toc=/azure/azure-monitor/toc.json
+  - name: Adatok gyűjtése
+    items:
     - name: Ügynökök telepítése és konfigurálása
       items:
       - name: Ügynökök összehasonlítása
         href: ../monitoring/monitoring-overview-azure-agents.md?toc=/azure/azure-monitor/toc.json
-      - name: Windows-ügynökök
-        href: ../log-analytics/log-analytics-agent-windows.md?toc=/azure/azure-monitor/toc.json
-      - name: Virtuálisgép-bővítmény Windowshoz
-        href: ../virtual-machines/windows/extensions-oms.md?toc=/azure/azure-monitor/toc.json
-      - name: Virtuálisgép-bővítmény Linuxhoz
-        href: ../virtual-machines/linux/extensions-oms.md?toc=/azure/azure-monitor/toc.json
-      - name: Hibrid környezek figyelése
-        href: ../log-analytics/log-analytics-concept-hybrid.md?toc=/azure/azure-monitor/toc.json
-      - name: Operations Manager
-        href: ../log-analytics/log-analytics-om-agents.md?toc=/azure/azure-monitor/toc.json
-      - name: OMS-átjáró
-        href: ../log-analytics/log-analytics-oms-gateway.md?toc=/azure/azure-monitor/toc.json
-      - name: Ügynökkezelés
-        href: ../log-analytics/log-analytics-agent-manage.md?toc=/azure/azure-monitor/toc.json
-      - name: Azure Diagnostics bővítmény
-        href: ../monitoring-and-diagnostics/azure-diagnostics.md?toc=/azure/azure-monitor/toc.json
+      - name: Naplótárolási ügynökök
         items:
+        - name: Windows-ügynökök
+          href: ../log-analytics/log-analytics-agent-windows.md?toc=/azure/azure-monitor/toc.json
+        - name: Virtuálisgép-bővítmény Windowshoz
+          href: ../virtual-machines/windows/extensions-oms.md?toc=/azure/azure-monitor/toc.json
+        - name: Virtuálisgép-bővítmény Linuxhoz
+          href: ../virtual-machines/linux/extensions-oms.md?toc=/azure/azure-monitor/toc.json
+        - name: Hibrid környezek figyelése
+          href: ../log-analytics/log-analytics-concept-hybrid.md?toc=/azure/azure-monitor/toc.json
+        - name: Operations Manager
+          href: ../log-analytics/log-analytics-om-agents.md?toc=/azure/azure-monitor/toc.json
+        - name: OMS-átjáró
+          href: ../log-analytics/log-analytics-oms-gateway.md?toc=/azure/azure-monitor/toc.json
+        - name: Ügynökkezelés
+          href: ../log-analytics/log-analytics-agent-manage.md?toc=/azure/azure-monitor/toc.json
+      - name: Azure Diagnostics bővítmény
+        items:
+        - name: Áttekintés
+          href: ../monitoring-and-diagnostics/azure-diagnostics.md?toc=/azure/azure-monitor/toc.json
         - name: Küldés az Azure Storage-be
           href: ../monitoring-and-diagnostics/azure-diagnostics-storage.md?toc=/azure/azure-monitor/toc.json
         - name: Küldés az Application Insightsba
@@ -222,17 +221,13 @@ items:
           href: ../monitoring-and-diagnostics/monitoring-enable-diagnostic-logs-using-template.md?toc=/azure/azure-monitor/toc.json
         - name: A JSON-sorok diagnosztikainapló-formátum használatára való felkészülés
           href: ../monitoring-and-diagnostics/monitor-diagnostic-logs-append-blobs.md?toc=/azure/azure-monitor/toc.json
-        - name: Egyéni metrikák küldése a metrikatárba – REST API
-          href: ../monitoring-and-diagnostics/metrics-store-custom-rest-api.md?toc=/azure/azure-monitor/toc.json
-        - name: GuestOS küldése a metrikatárba – Linux rendszerű virtuális gép (Telegraf)
-          href: ../monitoring-and-diagnostics/metrics-store-custom-linux-telegraf.md?toc=/azure/azure-monitor/toc.json
-        - name: GuestOS küldése a metrikatárba – virtuális gép
+        - name: Virtuálisgép-vendég küldése a metrikatárba
           href: ../monitoring-and-diagnostics/metrics-store-custom-guestos-resource-manager-vm.md?toc=/azure/azure-monitor/toc.json
-        - name: GuestOS küldése a metrikatárba – virtuálisgép-méretezési csoport
+        - name: Virtuálisgép-méretezési csoport vendégének küldése a metrikatárba
           href: ../monitoring-and-diagnostics/metrics-store-custom-guestos-resource-manager-vmss.md?toc=/azure/azure-monitor/toc.json
-        - name: GuestOS küldése a metrikatárba – klasszikus virtuális gép
+        - name: Klasszikus virtuálisgép-vendég küldése a metrikatárba
           href: ../monitoring-and-diagnostics/metrics-store-custom-guestos-classic-vm.md?toc=/azure/azure-monitor/toc.json
-        - name: GuestOS küldése a metrikatárba – felhőszolgáltatás
+        - name: Felhőszolgáltatás-vendég küldése a metrikatárba
           href: ../monitoring-and-diagnostics/metrics-store-custom-guestos-classic-cloud-service.md?toc=/azure/azure-monitor/toc.json
       - name: Hibaelhárítás
         items:
@@ -240,8 +235,29 @@ items:
           href: ../log-analytics/log-analytics-azure-vmext-troubleshoot.md?toc=/azure/azure-monitor/toc.json
         - name: Naplók hibaelhárítása – Linux-ügynök
           href: ../log-analytics/log-analytics-agent-linux-support.md?toc=/azure/azure-monitor/toc.json
-  - name: Adatok gyűjtése
-    items:
+    - name: Ügynökök adatforrásai
+      href: ../log-analytics/log-analytics-data-sources.md?toc=/azure/azure-monitor/toc.json
+      items:
+      - name: Windows-események
+        href: ../log-analytics/log-analytics-data-sources-windows-events.md?toc=/azure/azure-monitor/toc.json
+      - name: Egyéni JSON-adatok
+        href: ../log-analytics/log-analytics-data-sources-json.md?toc=/azure/azure-monitor/toc.json
+      - name: A CollectD teljesítményadatai
+        href: ../log-analytics/log-analytics-data-sources-collectd.md?toc=/azure/azure-monitor/toc.json
+      - name: Nagios- és Zabbix-riasztások
+        href: ../log-analytics/log-analytics-data-sources-alerts-nagios-zabbix.md?toc=/azure/azure-monitor/toc.json
+      - name: Rendszernapló
+        href: ../log-analytics/log-analytics-data-sources-syslog.md?toc=/azure/azure-monitor/toc.json
+      - name: Teljesítményszámlálók
+        href: ../log-analytics/log-analytics-data-sources-performance-counters.md?toc=/azure/azure-monitor/toc.json
+      - name: Linux-alkalmazások teljesítménye
+        href: ../log-analytics/log-analytics-data-sources-linux-applications.md?toc=/azure/azure-monitor/toc.json
+      - name: IIS-naplók
+        href: ../log-analytics/log-analytics-data-sources-iis-logs.md?toc=/azure/azure-monitor/toc.json
+      - name: Egyéni naplók
+        href: ../log-analytics/log-analytics-data-sources-custom-logs.md?toc=/azure/azure-monitor/toc.json
+      - name: Egyéni mezők
+        href: ../log-analytics/log-analytics-custom-fields.md?toc=/azure/azure-monitor/toc.json
     - name: Alkalmazások konfigurálása
       items:
       - name: Azure-alkalmazások
@@ -372,29 +388,6 @@ items:
           href: ../application-insights/app-insights-java-troubleshoot.md?toc=/azure/azure-monitor/toc.json
         - name: Használatelemzés
           href: ../application-insights/app-insights-usage-troubleshoot.md?toc=/azure/azure-monitor/toc.json
-    - name: Ügynökök adatforrásai
-      href: ../log-analytics/log-analytics-data-sources.md?toc=/azure/azure-monitor/toc.json
-      items:
-      - name: Windows-események
-        href: ../log-analytics/log-analytics-data-sources-windows-events.md?toc=/azure/azure-monitor/toc.json
-      - name: Egyéni JSON-adatok
-        href: ../log-analytics/log-analytics-data-sources-json.md?toc=/azure/azure-monitor/toc.json
-      - name: A CollectD teljesítményadatai
-        href: ../log-analytics/log-analytics-data-sources-collectd.md?toc=/azure/azure-monitor/toc.json
-      - name: Nagios- és Zabbix-riasztások
-        href: ../log-analytics/log-analytics-data-sources-alerts-nagios-zabbix.md?toc=/azure/azure-monitor/toc.json
-      - name: Rendszernapló
-        href: ../log-analytics/log-analytics-data-sources-syslog.md?toc=/azure/azure-monitor/toc.json
-      - name: Teljesítményszámlálók
-        href: ../log-analytics/log-analytics-data-sources-performance-counters.md?toc=/azure/azure-monitor/toc.json
-      - name: Linux-alkalmazások teljesítménye
-        href: ../log-analytics/log-analytics-data-sources-linux-applications.md?toc=/azure/azure-monitor/toc.json
-      - name: IIS-naplók
-        href: ../log-analytics/log-analytics-data-sources-iis-logs.md?toc=/azure/azure-monitor/toc.json
-      - name: Egyéni naplók
-        href: ../log-analytics/log-analytics-data-sources-custom-logs.md?toc=/azure/azure-monitor/toc.json
-      - name: Egyéni mezők
-        href: ../log-analytics/log-analytics-custom-fields.md?toc=/azure/azure-monitor/toc.json
     - name: Azure-erőforrások
       items:
       - name: Azure-tevékenységnaplók
@@ -411,14 +404,18 @@ items:
         href: ../log-analytics/log-analytics-collect-azurepass-posh.md?toc=/azure/azure-monitor/toc.json
       - name: Egyéni adatforrások egyeztetése
         href: ../application-insights/app-insights-custom-data-correlation.md?toc=/azure/azure-monitor/toc.json
-    - name: Egyéni adatok gyűjtése a Log Analyticsben
+    - name: Egyéni adatok gyűjtése
       items:
-      - name: Data collector API
+      - name: Naplótárolási adatgyűjtő API
         href: ../log-analytics/log-analytics-data-collector-api.md?toc=/azure/azure-monitor/toc.json
-      - name: Példa Data Collector API-folyamatra
+      - name: Példa naplótárolási adatgyűjtő API folyamatára
         href: ../log-analytics/log-analytics-create-pipeline-datacollector-api.md?toc=/azure/azure-monitor/toc.json
       - name: Alkalmazásadatok
         href: ../application-insights/app-insights-analytics-import.md?toc=/azure/azure-monitor/toc.json
+      - name: A metrikatár REST API-ja
+        href: ../monitoring-and-diagnostics/metrics-store-custom-rest-api.md?toc=/azure/azure-monitor/toc.json
+      - name: GuestOS küldése a metrikatárba – Linux rendszerű virtuális gép (Telegraf)
+        href: ../monitoring-and-diagnostics/metrics-store-custom-linux-telegraf.md?toc=/azure/azure-monitor/toc.json
     - name: System Center
       items:
       - name: Configuration Manager
@@ -506,6 +503,8 @@ items:
       items:
       - name: Azure Monitor tárolókhoz
         items:
+        - name: Áttekintés
+          href: ../monitoring/monitoring-container-insights-overview.md?toc=%2fazure%2fmonitoring%2ftoc.json
         - name: Előkészítés
           href: ../monitoring/monitoring-container-insights-onboard.md?toc=%2fazure%2fmonitoring%2ftoc.json
         - name: Elemzés
@@ -546,6 +545,8 @@ items:
       items:
       - name: Azure Monitor virtuális gépekhez
         items:
+        - name: Áttekintés
+          href: ../monitoring/monitoring-vminsights-overview.md?toc=/azure/azure-monitor/toc.json
         - name: Ismert problémák
           href: ../monitoring/monitoring-vminsights-known-issues.md?toc=/azure/azure-monitor/toc.json
         - name: GYIK
@@ -620,13 +621,13 @@ items:
       - name: Alkalmazások
         href: ../application-insights/app-insights-dashboards.md?toc=/azure/azure-monitor/toc.json
     - name: Power BI
-      href: ../monitoring-and-diagnostics/monitor-send-to-grafana.md?toc=/azure/azure-monitor/toc.json
       items:
       - name: Naplóadatok exportálása
         href: ../log-analytics/log-analytics-powerbi.md?toc=/azure/azure-monitor/toc.json
       - name: Alkalmazásadatok exportálása
         href: ../application-insights/app-insights-export-power-bi.md?toc=/azure/azure-monitor/toc.json
-      - name: Mérőszámok küldése a Grafana számára
+    - name: Mérőszámok küldése a Grafana számára
+      href: ../monitoring-and-diagnostics/monitor-send-to-grafana.md?toc=/azure/azure-monitor/toc.json
   - name: Adatok elemzése
     items:
     - name: Metrikadiagramok létrehozása a Metrikaböngészőben
@@ -976,9 +977,9 @@ items:
     href: https://stackoverflow.com/search?q=monitoring
   - name: Kódminták
     href: https://azure.microsoft.com/resources/samples/?service=monitor
-ms.openlocfilehash: 01539d32b6fb4fc0dd750dd970a4f502684c34fa
-ms.sourcegitcommit: 3150596c9d4a53d3650cc9254c107871ae0aab88
+ms.openlocfilehash: ecb930a1dc50b1a613533068846be2d7cfaeb748
+ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47419333"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48018893"

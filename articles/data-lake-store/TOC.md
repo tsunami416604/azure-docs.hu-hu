@@ -58,7 +58,7 @@
 ### [Az Azure PowerShell használata](data-lake-store-performance-tuning-powershell.md)
 ### [A Spark on HDInsight használata](data-lake-store-performance-tuning-spark.md)
 ### [A Hive on HDInsight használata](data-lake-store-performance-tuning-hive.md)
-### [A HDInsight használata](data-lake-store-performance-tuning-mapreduce.md)
+### [A MapReduce on HDInsight használata](data-lake-store-performance-tuning-mapreduce.md)
 ### [A Storm on HDInsight használata](data-lake-store-performance-tuning-storm.md)
 
 ## Integráció az Azure-szolgáltatásokkal
