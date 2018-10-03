@@ -9,12 +9,12 @@ ms.reviewer: jmartens
 ms.author: jordane
 author: jpe316
 ms.date: 09/24/2018
-ms.openlocfilehash: f8dae6de835173181430a98c19c7dd1fb3ebaa9f
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: ea7782f09902fe96c858cb30fc671d6503b56ba1
+ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47158903"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48236429"
 ---
 # <a name="what-is-the-azure-machine-learning-cli"></a>Mi az az Azure Machine Learning parancssori?
 
@@ -65,7 +65,7 @@ Használjon széles skáláját `az ml` parancsokat használhatja a szolgáltat�
 
 ### <a name="workspace-creation--compute-setup"></a>Munkaterület létrehozása és a számítási beállítása
 
-+ Hozzon létre egy Azure Machine Learning-munkaterület, machine Learning szolgáltatás a legfelső szintű erőforrás.
++ Hozzon létre egy Azure Machine Learning szolgáltatás munkaterületén, a machine Learning a legfelső szintű erőforrás.
    ```AzureCLI
    az ml workspace create -n myworkspace -g myresourcegroup
    ```

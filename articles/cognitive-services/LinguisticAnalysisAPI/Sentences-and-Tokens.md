@@ -10,14 +10,18 @@ ms.component: linguistic-analysis
 ms.topic: conceptual
 ms.date: 03/21/2016
 ms.author: davl
-ms.openlocfilehash: b31ca8f88d1e8d5710c3a6a6cfccbb167fdd762a
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ROBOTS: NOINDEX
+ms.openlocfilehash: 289cab4999276cbfb1fa558f558ebafa8e4e3a30
+ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46126275"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48237874"
 ---
 # <a name="sentence-separation-and-tokenization"></a>Mondatok szétválasztása és lexikális elemzése
+
+> [!IMPORTANT]
+> A nyelvi elemzés előzetes verziója 2018. augusztus 9 volt leszerelése. Azt javasoljuk, [Azure Machine Learning szövegelemzési moduljait](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/text-analytics) szöveg feldolgozásra és elemzésre.
 
 ## <a name="background-and-motivation"></a>Háttér-információkért és motiváció
 
@@ -39,7 +43,7 @@ Ez a szöveg három mondatokat tartalmazza:
 - Mr. és Patricia Smith fontos.
 
 Vegye figyelembe, hogy hogyan mondatokat ends különböző módokon vannak megjelölve.
-Az első végződő egy kérdőjelek és felkiáltójel (más néven egy interrobang) kombinációja.
+Az első kérdőjelek és felkiáltójel (más néven egy interrobang) karakterrel végződik.
 Az előzetes mondat, le kell kérnie a második véget ér, ponttal vagy teljes leállítása, de a következő idézőjelet.
 A harmadik mondat láthatja, hogyan, hogy adott időszak karakter való megjelöléséhez rövidítések is használható.
 Csak az absztrakt Hibaoldal kínál a jó jelöltnek számít, de további munka szükséges igaz mondat határainak azonosítása.
@@ -53,7 +57,8 @@ Az első mondat írható előfordulhat, hogy a "Whatdidyousay?")
 
 Nincsenek néhány bonyolult esetek.
 Első lépésként írásjelek gyakran (de nem mindig) kell környezet körülvevő dobozból osztható.
-A második, angol nyelven van *összevonásokat*, mint például a "nem" vagy "", ahol szavak tömörített és kisebb darabokra rövidítése. A jogkivonatokat létrehozó az a célja, hogy a karaktersorozat felosztása szavakat.
+A második, angol nyelven van *összevonásokat*, mint például a "nem" vagy "", ahol szavak tömörített és kisebb darabokra rövidítése.
+A jogkivonatokat létrehozó az a célja, hogy a karaktersorozat felosztása szavakat.
 
 Nézzük térjen vissza a ismét a fenti példa mondatokat.
 Most hogy elhelyezte a "center pont" (&middot;) minden egyes elkülönült jogkivonat között.
@@ -62,9 +67,10 @@ Most hogy elhelyezte a "center pont" (&middot;) minden egyes elkülönült jogki
 - E &middot; fejeződött &middot; n't &middot; hallani &middot; kapcsolatos &middot; a &middot; igazgató &middot; a &middot; " &middot; új &middot; javaslat &middot; . &middot; "
 - Ez &middot; a &middot; fontos &middot; való &middot; Mr. &middot; és &middot; asszony. &middot; Smith &middot; .
 
-Vegye figyelembe, hogyan legtöbb jogkivonatok olyan szavakat a szótár találjuk (pl. *fontos*, *igazgató*).
+Vegye figyelembe, hogyan legtöbb jogkivonatok olyan szavakat a szótár találjuk (például *fontos*, *igazgató*).
 Mások kizárólag írásjelek állnak.
-Végezetül vannak további szokatlan jogkivonatok, amelyek például összevonásokat *n't* a *nem*, possessives, például *a*stb. Ez a jogkivonatok lehetővé teszi számunkra az kezelni a word *nem* és a kifejezést *nem* több konzisztens módon, például.
+Végezetül vannak további szokatlan jogkivonatok, amelyek például összevonásokat *n't* a *nem*, és possessives *a*.
+Ez a jogkivonatok lehetővé teszi számunkra az kezelni a word *nem* és a kifejezést *nem* több konzisztens módon.
 
 ## <a name="specification"></a>Specifikáció
 

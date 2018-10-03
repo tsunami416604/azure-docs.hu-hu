@@ -5,25 +5,23 @@ services: active-directory
 documentationcenter: ''
 author: barbkess
 manager: mtillman
-ms.assetid: ''
 ms.service: active-directory
 ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/11/2017
+ms.date: 10/01/2018
 ms.author: barbkess
-ms.openlocfilehash: d357a9a7f249127289a256685d9555f777742b68
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: c4aa311018603b32e854d3d3423d342350e6520d
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44356663"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48044484"
 ---
-# <a name="how-to-assign-users-and-groups-to-an-application"></a>Felhasználók és csoportok hozzárendelése egy alkalmazáshoz
-
-Mielőtt a felhasználók ezt az alábbi egy adott alkalmazáshoz, első kell **hozzárendelheti őket az alkalmazás** való hozzáférést biztosít számukra:
+# <a name="assign-users-and-groups-to-an-application-in-azure-active-directory"></a>Felhasználók és csoportok hozzárendelése egy alkalmazáshoz az Azure Active Directoryban
+Ez a cikk bemutatja, hogyan felhasználók vagy csoportok hozzárendelése az Azure Active Directoryban (Azure AD-) alkalmazáshoz. Felhasználók először hozzá kell rendelni egy alkalmazás előtt a rendszergazda is hozzáférést biztosít nekik a következőket:
 
 -   Hozzáférés egy alkalmazás által **ellenőrizheti, hogy az alkalmazás URL-CÍMÉT közvetlenül** (más néven SP által kezdeményezett bejelentkezés).
 
@@ -33,17 +31,19 @@ Mielőtt a felhasználók ezt az alábbi egy adott alkalmazáshoz, első kell **
 
 -   Tekintse meg az alkalmazások jelennek meg azok [Office 365 Alkalmazásindítójában](https://support.office.com/article/Meet-the-Office-365-app-launcher-79f12104-6fed-442f-96a0-eb089a3f476a).
 
-## <a name="methods-to-assign-applications-with-azure-active-directory"></a>Módszerek az Azure Active Directoryval alkalmazások hozzárendelése 
+## <a name="prerequisties"></a>Prerequisties
+Felhasználók és csoportok alkalmazásokhoz való hozzárendelés előtt meg kell kérnie a felhasználó-hozzárendelés. A felhasználó-hozzárendelés szükséges:
 
-3 módon hozzárendelheti az alkalmazásokat az Azure Active Directoryval:
+1. Jelentkezzen be rendszergazdai fiókkal az Azure Portalon.
+2. Kattintson a a **minden szolgáltatás** a főmenü elemére.
+3. Válassza ki azt a könyvtárat az alkalmazás használ.
+4. Kattintson a **vállalati alkalmazások** fülre.
+5. Ebben a könyvtárban társított alkalmazások listájából válassza ki az alkalmazást.
+6. Kattintson a **tulajdonságok** fülre.
+7. Módosítsa a **kell felhasználó-hozzárendelés?** váltógomb Igen.
+8. Kattintson a **mentése** gombra a képernyő tetején.
 
--   [Felhasználó hozzárendelése közvetlenül egy alkalmazás-rendszergazdaként](#assign-a-user-directly-as-an-administrator)
-
--   [Csoport hozzárendelése közvetlenül egy alkalmazás-rendszergazdaként](#assign-a-group-directly-to-an-application-as-an-administrator)
-
--   [A felhasználók a saját alkalmazások kereséséhez önkiszolgáló alkalmazás-hozzáférés engedélyezése](#enable-self-service-application-access-to-allow-users-to-find-their-own-applications)
-
-## <a name="assign-a-user-directly-as-an-administrator"></a>Felhasználó hozzárendelése közvetlenül rendszergazdaként
+## <a name="assign-users"></a>Felhasználók hozzárendelése
 
 Közvetlenül rendelni egy vagy több felhasználó egy alkalmazást, kövesse az alábbi lépéseket:
 
@@ -81,7 +81,7 @@ Közvetlenül rendelni egy vagy több felhasználó egy alkalmazást, kövesse a
 
 Után rövid idő alatt a kiválasztott felhasználók tudják elindítani ezeket az alkalmazásokat a megoldás leírása szakaszban leírt módszerek használatával.
 
-## <a name="assign-a-group-directly-to-an-application-as-an-administrator"></a>Csoport hozzárendelése közvetlenül egy alkalmazás-rendszergazdaként
+## <a name="assign-groups"></a>Csoportok hozzárendelése
 
 Közvetlenül egy alkalmazás hozzárendelése egy vagy több csoportot, kövesse az alábbi lépéseket:
 
@@ -119,7 +119,7 @@ Közvetlenül egy alkalmazás hozzárendelése egy vagy több csoportot, kövess
 
 Rövid idő után a felhasználók a kijelölt csoportok lehet tudja majd elindítani ezeket az alkalmazásokat a megoldás leírása szakaszban leírt módszerek használatával. Ha ezek a dinamikus csoportok, lehet néhány további feldolgozás késéssel jelennek meg ezek a hozzárendelt csoportokat lévő felhasználók ezeket a hozzárendeléseket a.
 
-## <a name="enable-self-service-application-access-to-allow-users-to-find-their-own-applications"></a>A felhasználók a saját alkalmazások kereséséhez önkiszolgáló alkalmazás-hozzáférés engedélyezése
+## <a name="enable-self-service-application-access"></a>Az önkiszolgáló alkalmazás-hozzáférés engedélyezése
 
 Az önkiszolgáló alkalmazás-hozzáférés kiválóan alkalmas, hogy a felhasználók saját felderíteni az alkalmazások, igény szerint jóváhagyása ezeknek az alkalmazásoknak hozzáférést az üzleti csoport lehetővé teszik. Engedélyezheti, hogy az üzleti csoportok a hozzáférési paneljükön jelszó egyszeri bejelentkezést az alkalmazások jobb a felhasználókhoz rendelt hitelesítő adatok kezelésére.
 

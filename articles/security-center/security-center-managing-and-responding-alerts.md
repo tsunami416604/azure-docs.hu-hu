@@ -12,14 +12,14 @@ ms.topic: conceptual
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/30/2017
+ms.date: 10/3/2018
 ms.author: yurid
-ms.openlocfilehash: 7a7314b3aebd32c4a909bda4c88c5d43ab5df9f0
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: f139f2f967edc03419f41f8c903c71b9ab9e6fcb
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44161441"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48044433"
 ---
 # <a name="managing-and-responding-to-security-alerts-in-azure-security-center"></a>Biztonsági riasztások kezelése és válaszadás a riasztásokra az Azure Security Centerben
 Ez a dokumentum segít az Azure Security Center biztonsági riasztások kezelésére és a riasztásokra való válaszadásra szolgáló funkcióinak használatában.
@@ -57,6 +57,7 @@ Az oldal alsó részén találhatók az egyes riasztások részletei. Rendezés�
 * **Dátum:** Az a dátum, amelyen az esemény történt.
 * **Állapot:** A riasztás aktuális állapota. Kétféle állapot létezik:
   * **Aktív:** A biztonsági riasztást észlelték.
+  * **Elvetve:** A felhasználó elvetette a biztonsági riasztást. Ez az állapot jellemzően a riasztásokat, amelyek került sor, és vagy megoldottak, vagy azok nem bizonyultak tényleges támadásnak.
 * **Súlyosság:** A súlyosság szintje lehet magas, közepes vagy alacsony.
 
 > [!NOTE]

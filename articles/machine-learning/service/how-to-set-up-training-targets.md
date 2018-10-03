@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.component: core
 ms.topic: article
 ms.date: 09/24/2018
-ms.openlocfilehash: 65134d78fb011ae707c0629bef1ebb1a66bd8ec2
-ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
+ms.openlocfilehash: 99d85c769b876baa360628bfc20ad5b1563a0a3f
+ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48018502"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48237330"
 ---
 # <a name="select-and-use-a-compute-target-to-train-your-model"></a>Válassza ki, és a egy számítási célnak használja a modell betanításához
 
@@ -27,7 +27,7 @@ Indítsa el a helyi fut a gépen, és ezután más környezetekben, például a 
 
 ## <a name="supported-compute-targets"></a>Támogatott számítási célnak
 
-Az Azure Machine Learning a következő számítási célnak támogatja:
+Az Azure Machine Learning szolgáltatás a következő számítási célnak támogatja:
 
 |Számítási célt| GPU-gyorsítás | Automatizált hiperparaméter finomhangolása | Automatizált modell kiválasztása | A folyamatokban is használható|
 |----|:----:|:----:|:----:|:----:|
@@ -41,8 +41,8 @@ __[Az Azure Container Instances (aci) Szolgáltatásban](#aci)__  modelleket tan
 A kulcs versenytársaink a számítási célokhoz között a következők:
 * __GPU-gyorsítás__: gpu-k az adatelemző virtuális gép és az Azure Batch AI érhetők el. Előfordulhat, hogy a hozzáférést egy GPU a helyi számítógépen a hardver, az illesztőprogramok és a telepített függően.
 * __Automatikus hiperparaméter finomhangolása__: az Azure Machine Learning automatikus hiperparaméter optimalizálási segítséget a legjobb hiperparaméterek a modellhez.
-* __Modellválasztás automatikus__: az Azure Machine Learning intelligensen is javasoljuk algoritmus és a hiperparaméter kijelölés, a modell létrehozását. Automatizált modell kiválasztása segítségével gyorsabban manuálisan közben a különböző kombinációkkal, lesz egy kiváló minőségű modellhez. További információkért lásd: a [oktatóanyag: automatikusan a az Azure automatikus Machine Learning egy osztályozási modell betanításához](tutorial-auto-train-models.md) dokumentumot.
-* __A folyamatok__: az Azure Machine Learning lehetővé teszi a különböző feladatokat, köztük a képzés és üzembe helyezését egy folyamat kombinálhatja. A folyamatok a párhuzamosan vagy sorrendben kell, és a egy olyan megbízható automation mechanizmust. További információkért lásd: a [hozhat létre a machine learning-folyamatokat az Azure Machine Learning szolgáltatással](concept-ml-pipelines.md) dokumentumot.
+* __Modellválasztás automatikus__: az Azure Machine Learning szolgáltatás intelligensen is javasoljuk algoritmus és a hiperparaméter kijelölés, a modell létrehozását. Automatizált modell kiválasztása segítségével gyorsabban manuálisan közben a különböző kombinációkkal, lesz egy kiváló minőségű modellhez. További információkért lásd: a [oktatóanyag: automatikusan a az Azure automatikus Machine Learning egy osztályozási modell betanításához](tutorial-auto-train-models.md) dokumentumot.
+* __A folyamatok__: Azure Machine Learning szolgáltatás lehetővé teszi a különböző feladatokat, köztük a képzés és üzembe helyezését egy folyamat kombinálhatja. A folyamatok a párhuzamosan vagy sorrendben kell, és a egy olyan megbízható automation mechanizmust. További információkért lásd: a [hozhat létre a machine learning-folyamatokat az Azure Machine Learning szolgáltatással](concept-ml-pipelines.md) dokumentumot.
 
 Az Azure Machine Learning SDK, Azure CLI-vel vagy az Azure portal használatával hozzon létre a számítási célokhoz. Használhatja a meglévő számítási célnak (csatolása) hozzáadja őket a munkaterülethez.
 
