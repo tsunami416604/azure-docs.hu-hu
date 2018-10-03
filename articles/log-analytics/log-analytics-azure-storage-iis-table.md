@@ -1,6 +1,6 @@
 ---
-title: A blob storage használata az Azure Naplóelemzés eseményeket az IIS és a tábla tárolási |} Microsoft Docs
-description: A Naplóelemzési olvashatja a naplók az Azure-szolgáltatásokat, hogy az írási diagnostics meg tudja a table storage vagy a blob-tároló írni az IIS-naplókba.
+title: A blob storage használata az IIS és a table storage-események az Azure Log Analyticsben |} A Microsoft Docs
+description: A log Analytics képes olvasni az Azure-szolgáltatások diagnosztikai a table storage-be írni a naplófájlokban vagy IIS-napló írása blobtárolókba.
 services: log-analytics
 documentationcenter: ''
 author: mgoedtel
@@ -14,77 +14,77 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/12/2017
 ms.author: magoedte
-ms.component: na
-ms.openlocfilehash: 8f923cc081ea652c8e32d4109225044c70c8767d
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.component: ''
+ms.openlocfilehash: 9f4aae578606e14711deaac87e232bad0158bfe9
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37128741"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48041489"
 ---
-# <a name="use-azure-blob-storage-for-iis-and-azure-table-storage-for-events-with-log-analytics"></a>Az IIS és az Azure Naplóelemzés eseményeit a table storage Azure blob storage használata
+# <a name="use-azure-blob-storage-for-iis-and-azure-table-storage-for-events-with-log-analytics"></a>Az Azure blob storage használata az IIS és az Azure table storage-események Log Analytics szolgáltatással
 
-A Naplóelemzési a keresse meg a következő szolgáltatásokat, hogy az írási diagnostics meg tudja a table storage vagy a blob-tároló írni az IIS-napló olvashatja:
+A log Analytics a naplók a következő szolgáltatásokat, hogy az írási diagnosztika a table storage vagy az IIS-napló írása blobtárolókba olvashatja:
 
 * A Service Fabric-fürtök (előzetes verzió)
 * Virtuális gépek
-* Webes vagy feldolgozói szerepkörök
+* Webes/feldolgozói szerepkörök
 
-A Naplóelemzési ezekhez az erőforrásokhoz tartozó adatokat gyűjthet, mielőtt Azure diagnostics engedélyezve kell lennie.
+A Log Analytics gyűjtheti ezekhez az erőforrásokhoz, mielőtt az Azure diagnostics engedélyezve kell lennie.
 
-Ha diagnosztikai engedélyezve vannak, használhatja az Azure-portálon, vagy PowerShell Naplóelemzési a naplók gyűjtéséhez konfigurálja.
+Miután diagnosztika engedélyezve van, használhatja az Azure Portalon, vagy PowerShell konfigurálása a Log Analyticsben, hogy a naplók összegyűjtése.
 
-Az Azure Diagnostics egy Azure-bővítményt, amely lehetővé teszi a feldolgozói szerepkör, a webes szerepkör vagy az Azure-beli virtuális gép diagnosztikai adatainak összegyűjtése. Az adatok Azure storage-fiók tárolva van, és ezután gyűjthetők a Naplóelemzési.
+Az Azure Diagnostics az Azure kiterjesztése, amely lehetővé teszi, hogy egy feldolgozói szerepkör, a webes szerepkör vagy az Azure-ban futó virtuális gép diagnosztikai adatainak összegyűjtése. Az adatok Azure storage-fiók tárolva van, és ezután Log Analytics által összegyűjtött.
 
-A Naplóelemzési, ezek az Azure diagnosztikai naplók gyűjtésére a naplók kell a következő helyeken:
+A Log Analytics ezeket az Azure diagnosztikai naplók gyűjtésére a naplók a következő helyeken kell lennie:
 
 | Napló típusa | Erőforrás típusa | Hely |
 | --- | --- | --- |
-| IIS-naplók |Virtuális gépek <br> Webes szerepkörök <br> Feldolgozói szerepkörök |üvegvatta-az iis-naplófájlok (Blob-tároló) |
-| Rendszernapló |Virtuális gépek |LinuxsyslogVer2v0 (Table Storage) |
-| Service Fabric működési események |Service Fabric-csomópontokon |WADServiceFabricSystemEventTable |
-| Service Fabric megbízható szereplő események |Service Fabric-csomópontokon |WADServiceFabricReliableActorEventTable |
-| Service Fabric megbízható eseményei |Service Fabric-csomópontokon |WADServiceFabricReliableServiceEventTable |
-| Windows-eseménynaplók |Service Fabric-csomópontokon <br> Virtuális gépek <br> Webes szerepkörök <br> Feldolgozói szerepkörök |WADWindowsEventLogsTable (Table-tároló) |
-| A Windows ETW-naplók |Service Fabric-csomópontokon <br> Virtuális gépek <br> Webes szerepkörök <br> Feldolgozói szerepkörök |WADETWEventTable (Table-tároló) |
+| IIS-naplók |Virtuális gépek <br> Webes szerepkörök <br> Feldolgozói szerepkörök |WAD-az iis-naplófájlok (Blob Storage) |
+| Rendszernapló |Virtuális gépek |LinuxsyslogVer2v0 (a Table Storage) |
+| Service Fabric-működési események |A Service Fabric-csomópont |WADServiceFabricSystemEventTable |
+| Service Fabric Reliable Actors-események |A Service Fabric-csomópont |WADServiceFabricReliableActorEventTable |
+| Service Fabric Reliable Services-események |A Service Fabric-csomópont |WADServiceFabricReliableServiceEventTable |
+| Windows-eseménynaplók |A Service Fabric-csomópont <br> Virtuális gépek <br> Webes szerepkörök <br> Feldolgozói szerepkörök |WADWindowsEventLogsTable (a Table Storage) |
+| Windows ETW-naplók |A Service Fabric-csomópont <br> Virtuális gépek <br> Webes szerepkörök <br> Feldolgozói szerepkörök |WADETWEventTable (a Table Storage) |
 
 > [!NOTE]
-> Az Azure-webhelyek IIS-napló jelenleg nem támogatottak.
+> Az Azure-webhelyek IIS-naplók jelenleg nem támogatottak.
 >
 >
 
-A virtuális gépek, lehetősége van telepíteni a [Naplóelemzési ügynök](log-analytics-azure-vm-extension.md) ahhoz, hogy további betekintést nyerjen a virtuális géppé. Nem csak az IIS naplókat és az eseménynaplók elemzése, többek között a konfigurációs változások követését, az SQL értékelése és a frissítések értékelését további elemzés végezheti el.
+Virtuális gépek telepítésének lehetősége van a [Log Analytics-ügynököket](log-analytics-azure-vm-extension.md) további elemzések engedélyezése a virtuális géphez. Mellett elemzése az IIS-naplók és -eseménynaplók, többek között a konfigurációs változások követése SQL-felmérés és a frissítésfelmérés további elemzést végezhet.
 
-## <a name="enable-azure-diagnostics-in-a-virtual-machine-for-event-log-and-iis-log-collection"></a>A virtuális gép Azure diagnostics engedélyezése az eseménynaplót, és az IIS naplózása gyűjtemény
-A következő eljárással engedélyezheti a virtuális gépen a Microsoft Azure portál használatával Eseménynapló és az IIS-napló gyűjtemény Azure diagnostics.
+## <a name="enable-azure-diagnostics-in-a-virtual-machine-for-event-log-and-iis-log-collection"></a>Engedélyezze az Azure diagnostics egy virtuális gépen az Eseménynapló és az IIS naplót
+Az alábbi eljárás segítségével engedélyezze az Azure diagnostics Eseménynapló és az IIS naplógyűjtést a Microsoft Azure Portalon a virtuális gépen.
 
-### <a name="to-enable-azure-diagnostics-in-a-virtual-machine-with-the-azure-portal"></a>Ahhoz, hogy a virtuális gépen, és az Azure portál Azure diagnostics
-1. A Virtuálisgép-ügynök telepítése a virtuális gép létrehozásakor. Ha a virtuális gép már létezik, győződjön meg arról, hogy a Virtuálisgép-ügynök telepítve van.
+### <a name="to-enable-azure-diagnostics-in-a-virtual-machine-with-the-azure-portal"></a>Ahhoz, hogy az Azure diagnostics egy virtuális gépen az Azure portal használatával
+1. Virtuálisgép-ügynök telepítése egy virtuális gép létrehozásakor. Ha a virtuális gép már létezik, győződjön meg arról, hogy a Virtuálisgép-ügynök már telepítve van.
 
-   * A virtuális gépet, jelölje be az Azure-portálon lépjen **opcionális konfigurációs**, majd **diagnosztika** és **állapota** a **a** .
+   * Az Azure Portalon lépjen a virtuális gép, jelölje be **opcionális konfigurációs**, majd **diagnosztikai** és **állapot** való **a** .
 
-     Létrehozása után a virtuális gép kiterjesztése az Azure Diagnostics telepítve és fut. A bővítmény felelős a diagnosztikai adatainak összegyűjtése.
-2. Engedélyezze a megfigyelést és a meglévő virtuális az eseménynaplózás konfigurálásához. Diagnosztika a virtuális gép szintjén engedélyezhető. Diagnosztika engedélyezése, majd válassza az eseménynaplózás, a következő lépésekkel:
+     Befejeztével a virtuális gépen az Azure Diagnostics bővítmény telepítenie és futtatnia. Ez a bővítmény felelős a diagnosztikai adatok gyűjtése.
+2. Engedélyezze a monitorozást és a egy meglévő virtuális Gépet az eseménynaplózás konfigurálásához. Diagnosztika a virtuális gép szintjén engedélyezhető. Diagnosztika engedélyezése, és ezután az eseménynaplózás konfigurálásához, hajtsa végre az alábbi lépéseket:
 
    1. Válassza ki a virtuális gépet.
    2. Kattintson a **figyelési**.
-   3. Kattintson a **diagnosztika**.
+   3. Kattintson a **diagnosztikai**.
    4. Állítsa be a **állapot** való **ON**.
-   5. Válassza ki a gyűjteni kívánt diagnosztikai naplófájlok.
+   5. Válassza ki az egyes diagnosztikai napló, amely szeretne gyűjteni.
    6. Kattintson az **OK** gombra.
 
-## <a name="enable-azure-diagnostics-in-a-web-role-for-iis-log-and-event-collection"></a>Az IIS-napló és a esemény gyűjteményhez webes szerepkörrel rendelkező Azure diagnostics engedélyezése
-Tekintse meg [hogyan való engedélyezése diagnosztikai felhőszolgáltatásban](../cloud-services/cloud-services-dotnet-diagnostics.md) általános lépései az Azure diagnostics engedélyezése. Az alábbi utasításokat ezekkel az adatokkal, és szabja testre a Log Analyticshez való használatra.
+## <a name="enable-azure-diagnostics-in-a-web-role-for-iis-log-and-event-collection"></a>Engedélyezze az Azure diagnostics egy webes szerepkörben, az IIS-napló- és esemény gyűjtemény
+Tekintse meg [hogyan való engedélyezése diagnosztikai felhőszolgáltatásban](../cloud-services/cloud-services-dotnet-diagnostics.md) általános lépései az Azure diagnostics engedélyezése. Az alábbi utasítások ezzel az információval, és testre szabni a Log Analytics segítségével.
 
-Az Azure diagnostics engedélyezése:
+Az Azure diagnostics segítségével engedélyezve:
 
-* IIS-napló alapértelmezés szerint a scheduledTransferPeriod átviteli időközönként átvitt naplóadatokat tárolja.
-* Alapértelmezés szerint a Windows-Eseménynapló nem kerülnek.
+* IIS-naplók alapértelmezés szerint a napló adatátvitelre scheduledTransferPeriod átviteli időközönként tárolódnak.
+* Alapértelmezés szerint a Windows-eseménynaplók nem kerülnek.
 
 ### <a name="to-enable-diagnostics"></a>Diagnosztika engedélyezése
-Engedélyezése a Windows eseménynaplóiban keresse meg vagy módosíthatja a scheduledTransferPeriod, állítsa be az XML konfigurációs fájl (diagnostics.wadcfg), Azure-diagnosztika látható módon [4. lépés: a diagnosztika konfigurációs fájl létrehozása és a kiterjesztés telepítése](../cloud-services/cloud-services-dotnet-diagnostics.md)
+Engedélyezéséhez a Windows-eseménynaplók, vagy módosíthatja a scheduledTransferPeriod, az Azure Diagnostics konfigurálása az XML konfigurációs fájl (diagnostics.wadcfg), használatával, ahogyan [4. lépés: a diagnosztika konfigurációs fájl létrehozása és a bővítmény telepítése](../cloud-services/cloud-services-dotnet-diagnostics.md)
 
-A következő példa konfigurációs fájlt az IIS naplókat és az összes eseményt gyűjti az alkalmazás és rendszer kategóriájának bejegyzéseit:
+A következő példa konfigurációs fájlt az alkalmazás- és rendszernaplókat IIS-naplók és minden eseményt gyűjti:
 
 ```
     <?xml version="1.0" encoding="utf-8" ?>
@@ -116,49 +116,49 @@ Győződjön meg arról, hogy a ConfigurationSettings határozza meg a storage-f
     </ConfigurationSettings>
 ```
 
-A **AccountName** és **AccountKey** értékek találhatók, a tárolási fiók Tárelérési kulcsok kezelése irányítópulton Azure-portálon. A kapcsolati karakterlánc protokollja kell **https**.
+A **AccountName** és **AccountKey** értékek találhatók, a tárolási fiók irányítópultján, a Tárelérési kulcsok kezelése az Azure Portalon. A protokoll, a kapcsolati karakterlánc lehet **https**.
 
-Miután a frissített diagnosztikai konfiguráció alkalmazása a felhőalapú szolgáltatáshoz és diagnosztika ír, az Azure-tárhelyre, majd készen áll Naplóelemzési konfigurálása.
+A frissített diagnosztikai konfiguráció alkalmazása a felhőszolgáltatáshoz, és a diagnosztika az Azure Storage-írja, majd készen áll a Log Analytics konfigurálása.
 
-## <a name="use-the-azure-portal-to-collect-logs-from-azure-storage"></a>Az Azure portál segítségével naplógyűjtéshez Azure Storage-ból
-Az Azure portál segítségével konfigurálása az Azure-szolgáltatásokat a naplók összegyűjtésére Naplóelemzési:
+## <a name="use-the-azure-portal-to-collect-logs-from-azure-storage"></a>Naplók gyűjtése az Azure Storage-ból az Azure portal használatával
+Az Azure portal segítségével konfigurálhatja a Log Analyticsben, hogy a naplók a következő Azure-szolgáltatások gyűjtése:
 
 * Service Fabric-fürtök
 * Virtuális gépek
-* Webes vagy feldolgozói szerepkörök
+* Webes/feldolgozói szerepkörök
 
-Az Azure portálon nyissa meg a Naplóelemzési munkaterületet, és hajtsa végre a következő feladatokat:
+Az Azure Portalon keresse meg a Log Analytics-munkaterületet, és hajtsa végre az alábbi feladatokat:
 
-1. Kattintson a *tárfiókok naplók*
+1. Kattintson a *tárfióknaplók*
 2. Kattintson a *Hozzáadás* feladat
 3. Válassza ki a tárfiókot, amely tartalmazza a diagnosztikai naplók
-   * Ez a fiók lehet egy hagyományos tárolási fiók vagy egy Azure Resource Manager storage-fiók
-4. Válassza ki az adattípust szeretne gyűjteni a naplókat
-   * A választási lehetőségek: IIS-naplóit; Az eseményeket; Syslog (Linux); ETW naplók; Service Fabric-események
-5. Forrás értéket automatikusan kitölti a rendszer az adatok alapján, és nem módosítható
-6. Kattintson az OK gombra a konfiguráció mentéséhez
+   * Ez a fiók vagy klasszikus tárfiók, vagy egy Azure Resource Manager-tárfiókot is lehet.
+4. Válassza ki a gyűjtendő naplók
+   * A választási lehetőségek: az IIS-naplók; Az eseményeket; Syslog (Linux); Protokoly trasování událostí; Service Fabric-események
+5. A forrás értéke automatikusan adattípus alapján van feltöltve, és nem módosítható
+6. Kattintson az OK gombra a konfiguráció mentése
 
-A további tárfiókok és a Naplóelemzési gyűjtéséhez kívánt adattípusok ismételje meg a 2 – 6.
+További tárfiókok és a Log Analytics gyűjtéséhez kívánt adattípusok ismételje meg a 2 – 6.
 
-A körülbelül 30 percet is a a Naplóelemzési tárkonfigurációt adatok megtekintéséhez. Miután a konfiguráció alkalmazása Storage írt adatok csak akkor jelenik meg. A Naplóelemzési nem olvassa a már létező adatokat a tárfiók.
+Körülbelül 30 percet, az Ön láthatja az adatokat a Log Analytics a tárfiókból. A konfiguráció alkalmazása után tárolási írt adatok csak megjelennek. A log Analytics olvasni a már meglévő adatokat a tárfiókból.
 
 > [!NOTE]
-> A portál nem ellenőrzi, hogy a forrás létezik-e a tárfiókban lévő, vagy ha új adatok írása.
+> A portál nem ellenőrzi, hogy a forrás létezik-e a tárfiókban, vagy ha új adatokat ír.
 >
 >
 
-## <a name="enable-azure-diagnostics-in-a-virtual-machine-for-event-log-and-iis-log-collection-using-powershell"></a>A virtuális gép Azure diagnostics engedélyezése az eseménynaplót, és IIS töltsék PowerShell használatával
-Az alábbi témakörben található lépésekkel [Naplóelemzési konfigurálása az Azure diagnostics indexelésre](log-analytics-powershell-workspace-configuration.md#configuring-log-analytics-to-index-azure-diagnostics) lehet olvasni a table storage írt Azure diagnostics a PowerShell használatával.
+## <a name="enable-azure-diagnostics-in-a-virtual-machine-for-event-log-and-iis-log-collection-using-powershell"></a>Engedélyezze az Azure diagnostics egy virtuális gépen az Eseménynapló és az IIS naplót PowerShell-lel
+Szereplő lépések segítségével [indexelése az Azure diagnostics konfigurálása a Log Analytics](log-analytics-powershell-workspace-configuration.md#configuring-log-analytics-to-index-azure-diagnostics) írt a table storage, az Azure diagnostics olvasni a PowerShell használatával.
 
 Azure PowerShell használatával pontosabban megadhatja az Azure Storage írt események.
-További információkért lásd: [diagnosztika engedélyezésével az Azure virtuális gépek](../virtual-machines-dotnet-diagnostics.md).
+További információkért lásd: [Diagnosztikának az Azure Virtual machines gépeken](../virtual-machines-dotnet-diagnostics.md).
 
-Engedélyezi, és frissítse az Azure diagnostics a következő PowerShell-parancsfájl használatával.
-Ez a parancsfájl egy egyéni naplózási konfiguráció is használható.
-Módosítsa a parancsfájlt úgy állítsa be a tárfiók, a szolgáltatás neve és a virtuális gép nevét.
-A parancsfájl parancsmagok a klasszikus virtuális gépekhez.
+Engedélyezze, és frissítse az Azure diagnostics a következő PowerShell-parancsfájl használatával.
+Ez a szkript egy egyéni naplózási konfigurációt is használhatja.
+Módosítsa a parancsfájlt úgy, hogy a storage-fiók, a szolgáltatás neve, valamint a virtuális gép neve.
+A parancsfájl parancsmagok a klasszikus virtuális gépek számára.
 
-Tekintse át az alábbi parancsfájl-mintában, másolja, szükség szerint módosítsa a minta elmentse egy olyan PowerShell-parancsfájlt, és futtassa a parancsfájlt.
+Tekintse át a következő példaszkript, másolja, igény szerint módosítsa, mentse a minta egy olyan PowerShell-parancsfájlt, és ezután futtassa a szkriptet.
 
 ```
     #Connect to Azure
@@ -193,6 +193,6 @@ Tekintse át az alábbi parancsfájl-mintában, másolja, szükség szerint mód
 
 
 ## <a name="next-steps"></a>További lépések
-* [Gyűjteni a naplókat és az Azure-szolgáltatások metrikáját](log-analytics-azure-storage.md) támogatott Azure-szolgáltatásokhoz.
-* [Megoldások](log-analytics-add-solutions.md) betekintést az adatokba, így.
-* [Használja a keresési lekérdezések](log-analytics-log-searches.md) az adatok elemzésére.
+* [Naplók és mérőszámok az Azure-szolgáltatásokhoz gyűjtése](log-analytics-azure-storage.md) támogatott Azure-szolgáltatásokat.
+* [Megoldások engedélyezése](log-analytics-add-solutions.md) nyújt betekintést az adatokat.
+* [Keresési lekérdezéseket használnak](log-analytics-log-searches.md) az adatok elemzéséhez.

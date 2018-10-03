@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/16/2018
 ms.author: srrengar
-ms.openlocfilehash: 3d7cf50bd2c845764aa2c3ac3b3db6891ff5c8d8
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: d9d40a111faefee705c3ce1987c380ee2ba695ec
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46993850"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48040187"
 ---
 # <a name="performance-monitoring-with-log-analytics"></a>Alkalmazásteljesítmény-figyelés a Log Analytics használatával
 
@@ -86,7 +86,7 @@ Most, hogy hozzáadta a Log Analytics-ügynököket, lépjen a átváltunk a Log
 
 6. Zárja be a Speciális beállítások panelt.
 
-7. Kattintson az általános cím alatt **áttekintése**.
+7. Kattintson az általános cím alatt **munkaterület összefoglalás**.
 
 8. Csempék formájában grafikon, a megoldások engedélyezve van, például egy Service Fabric az egyes jelenik meg. Kattintson a **Service Fabric** graph, hogy a Service Fabric-elemzés megoldás.
 
