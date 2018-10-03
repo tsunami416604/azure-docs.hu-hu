@@ -1,0 +1,77 @@
+items:
+- name: Azure Blockchain Workbench (nyilvános előzetes verzió)
+  href: index.yml
+- name: Áttekintés
+  items:
+  - name: Tudnivalók az Azure Blockchain Workbenchről
+    href: overview.md
+  expanded: true
+- name: Alapelvek
+  items:
+  - name: Architektúra
+    href: architecture.md
+  - name: Integrációs minták
+    href: integration-patterns.md
+- name: Útmutatók
+  items:
+  - name: A Workbench üzembe helyezése
+    href: deploy.md
+  - name: Blokkláncalkalmazások létrehozása
+    href: create-app.md
+  - name: Workbench-felhasználók kezelése
+    href: manage-users.md
+  - name: Blokkláncalkalmazások használata
+    href: use.md
+  - name: A Workbench API használata
+    href: use-api.md
+  - name: Hibaelhárítási alkalmazások
+    href: troubleshooting.md
+  - name: Workbench-adatok használata
+    items:
+    - name: Adatbázistűzfal konfigurálása
+      href: database-firewall.md
+    - name: Adatbázis részleteinek lekérése
+      href: getdb-details.md
+    - name: Adatok használata az Excelben
+      href: data-excel.md
+    - name: Adatok használata a Power BI-ban
+      href: data-powerbi.md
+    - name: Adatok használata az SQL Management Studióban
+      href: data-sql-management-studio.md
+  expanded: true
+- name: Referencia
+  items:
+  - name: Konfiguráció
+    href: configuration.md
+  - name: Adatbázisnézetek
+    href: database-views.md
+  - name: Üzenetkezelési API
+    href: messages-overview.md
+  - name: REST API
+    href: https://docs.microsoft.com/rest/api/azure-blockchain-workbench
+- name: További források
+  items:
+  - name: Blog
+    href: https://azure.microsoft.com/blog/topics/blockchain/
+  - name: Kódminták
+    href: https://github.com/Azure-Samples/blockchain
+  - name: Közösség
+    href: https://techcommunity.microsoft.com/t5/Blockchain/bd-p/AzureBlockchain
+  - name: Fórum
+    href: https://aka.ms/workbenchforum
+  - name: Termékkel kapcsolatos visszajelzés
+    href: https://aka.ms/blockchainuservoice
+- name: Megoldássablonok
+  items:
+  - name: Ethereum Proof-of-Authority konzorcium
+    href: ../templates/ethereum-poa-deployment.md
+  - name: Ethereum Proof-of-Work konzorcium
+    href: ../templates/ethereum-deployment.md
+  - name: Hyperledger Fabric konzorcium
+    href: ../templates/hyperledger-fabric-single-member-blockchain.md
+ms.openlocfilehash: de9b0906450f3ba26ebfac6699c07d93039db6a7
+ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48239766"
