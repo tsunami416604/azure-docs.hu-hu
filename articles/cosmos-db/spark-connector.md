@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/11/2018
 ms.author: ramkris
-ms.openlocfilehash: 4fa28e2d3f5d94d7ab47ec3b1e1e3240e5c770de
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 26479ade27b18e817d7ad03d70d27b0cef687e8d
+ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48042979"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48269411"
 ---
 # <a name="accelerate-big-data-analytics-by-using-the-apache-spark-to-azure-cosmos-db-connector"></a>Gyorsítsa fel a big data-elemzés az Azure Cosmos DB-összekötő az Apache Spark használatával
  
@@ -179,7 +179,7 @@ Spark és az Azure Cosmos DB közötti kommunikáció a jelentősen gyorsabb, me
 
 4. Bontsa ki a Twitter-hírcsatornáján minta tartalmát, és nyissa meg a config.py fájlt. Frissítse a masterKey, a gazdagépet, a databaseId, a collectionId és a preferredlocations listában.  
 
-5. Lépjen a `http://apps.twitter.com/`, és a Twitter-hírcsatornáján az alkalmazás regisztrálásához. Miután kiválasztotta az alkalmazás nevét, hogy megkapják a egy **fogyasztói kulcs, a fogyasztói titkos kulcs, a hozzáférési jogkivonatot és a hozzáférési jogkivonat titkos kulcs**. Másolja ki ezeket az értékeket, és frissítse azokat a config.py fájlt adja meg a a Twitter-hírcsatorna alkalmazás programozott hozzáférést a Twitteren.   
+5. Lépjen a `http://apps.twitter.com/`, és a Twitter-hírcsatornáján az alkalmazás regisztrálásához. Miután kiválasztotta az alkalmazás nevét, hogy megkapják a egy **fogyasztói kulcs, a fogyasztói titkos kulcs, a hozzáférési jogkivonatot és a hozzáférési jogkivonat titkos kulcs**. Másolja ki ezeket az értékeket, és frissítse azokat a config.py fájlt adja meg a Twitter-hírcsatorna alkalmazás programozott hozzáférést a Twitteren.   
 
 6. Mentse a config.py fájlt. Nyisson meg egy parancssort, és a Python-alkalmazás futtatása a következő paranccsal:
 

@@ -9,12 +9,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 08/17/2018
 ms.author: jingwang
-ms.openlocfilehash: 46e12378812788d147c903046b50a93c13119f2f
-ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
+ms.openlocfilehash: 79bb3042af6a42b4a8c33e9a19c80d117c3216e7
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42444588"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48248856"
 ---
 # <a name="copy-data-to-or-from-azure-blob-storage-by-using-azure-data-factory"></a>Adatok másolása, vagy az Azure Blob storage-ból az Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -30,7 +30,7 @@ Bármely támogatott forrásadattárból adatokat másolhatja a Blob storage. Is
 A Blob storage-összekötővel, a következőket támogatja:
 
 - Blobok másolása, és az általános célú Azure storage-fiókok és a gyakori és ritka elérésű blob storage-bA. 
-- Blobok másolása a fiókkulcs, a szolgáltatás közös hozzáférésű jogosultságkódok, a szolgáltatás egyszerű vagy felügyelt identitások hitelesítése használatával.
+- Blobok másolása az Azure-erőforrások hitelesítések fiókkulcs, a szolgáltatás közös hozzáférésű jogosultságkódot, a fő- vagy felügyelt szolgáltatásidentitások használatával.
 - Hozzáfűző BLOB másolása letiltása, vagy a lapblobok és az adatok másolása csak blokkblobok. Az Azure Premium Storage nem támogatott fogadóként, mert azt-je támogat lapblobokat.
 - A blobok másolása, vagy elemzés vagy generálása blobok [támogatott fájlformátumok és tömörítési kodek](supported-file-formats-and-compression-codecs.md).
 
@@ -47,7 +47,7 @@ Az Azure Blob-összekötő a következő hitelesítési típusok támogatása, t
 - [Fiók kulcsos hitelesítés](#account-key-authentication)
 - [Közös hozzáférésű jogosultságkódos hitelesítés](#shared-access-signature-authentication)
 - [Egyszerű szolgáltatás hitelesítése](#service-principal-authentication)
-- [Felügyeltszolgáltatás-identitás hitelesítés](#managed-service-identity-authentication)
+- [Felügyelt identitások Azure-erőforrások hitelesítéshez](#managed-service-identity-authentication)
 
 >[!NOTE]
 >Platformját, az Azure Machine Learning és az Azure SQL Data Warehouse PolyBase betöltési csak Azure Blob storage-fiók kulcsos hitelesítést támogatják.
@@ -191,13 +191,13 @@ Ezek a Tulajdonságok támogatottak az Azure Blob storage társított szolgálta
 }
 ```
 
-### <a name="managed-service-identity-authentication"></a>Felügyeltszolgáltatás-identitás hitelesítés
+### <a name="managed-identity"></a> Felügyelt identitások Azure-erőforrások hitelesítéshez
 
-Adat-előállító társítható egy [felügyeltszolgáltatás-identitás](data-factory-service-identity.md), amely az adott adat-előállító jelöli. Használhatja a felügyeltszolgáltatás-identitás közvetlenül a Blob storage hitelesítéshez hasonló saját egyszerű szolgáltatás használatával. Lehetővé teszi a kijelölt factory eléréséhez és másolásához adatokhoz, és a Blob storage-bA.
+Adat-előállító társítható egy [-identitás az Azure-erőforrások](data-factory-service-identity.md), amely az adott adat-előállító jelöli. Használhatja a felügyeltszolgáltatás-identitás közvetlenül a Blob storage hitelesítéshez hasonló saját egyszerű szolgáltatás használatával. Lehetővé teszi a kijelölt factory eléréséhez és másolásához adatokhoz, és a Blob storage-bA.
 
 Az Azure Storage MSI-hitelesítéssel, tekintse meg [hitelesíti a hozzáférést az Azure Storage, Azure Active Directory használatával](../storage/common/storage-auth-aad.md).
 
-Felügyeltszolgáltatás-identitás (MSI) hitelesítés használatához kövesse az alábbi lépéseket:
+Felügyelt identitások Azure-erőforrások hitelesítés használatához kövesse az alábbi lépéseket:
 
 1. [Beolvasni a data factory-szolgáltatásidentitás](data-factory-service-identity.md#retrieve-service-identity) másolásával "SZOLGÁLTATÁSIDENTITÁS Alkalmazásazonosítója" az előállító együtt létrehozott értékét.
 
@@ -214,8 +214,8 @@ Ezek a Tulajdonságok támogatottak az Azure Blob storage társított szolgálta
 | serviceEndpoint | Adja meg az Azure Blob storage-szolgáltatásvégpont minta `https://<accountName>.blob.core.windows.net/`. |Igen |
 | connectVia | A [integrációs modul](concepts-integration-runtime.md) az adattárban való kapcsolódáshoz használandó. Használhatja az Azure integrációs modul vagy a helyi integrációs modul (ha az adattár egy magánhálózaton található). Ha nincs megadva, az alapértelmezett Azure integrációs modult használja. |Nem |
 
->[!NOTE]
->Felügyeltszolgáltatás-identitás hitelesítési csak "Azure BLOB Storage szolgáltatásról" típusú társított szolgáltatás által támogatott, de nem korábbi "AzureStorage" írja be a társított szolgáltatás. 
+> [!NOTE]
+> Felügyelt identitások az Azure-erőforrások "Azure BLOB Storage szolgáltatásról" csak támogatja a hitelesítést, írja be társított szolgáltatást, de nem korábbi "AzureStorage" írja be a társított szolgáltatás. 
 
 **Példa**
 

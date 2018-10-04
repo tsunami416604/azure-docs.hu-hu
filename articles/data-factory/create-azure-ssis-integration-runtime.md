@@ -13,12 +13,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: a7ba62a28b65d1cd7152c793bc303e747057cdf8
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: ace95d39cf7c2d183249b0b6c4094835132b3198
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46991470"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48249383"
 ---
 # <a name="create-the-azure-ssis-integration-runtime-in-azure-data-factory"></a>Az Azure-SSIS integrációs modul létrehozása az Azure Data Factoryban
 Ez a cikk egy Azure-SSIS integrációs modul az Azure Data Factory üzembe helyezés lépéseit. Ezután az SQL Server Data Tools (SSDT) vagy az SQL Server Management Studio (SSMS) használatával SQL Server Integration Services- (SSIS-) csomagokat helyezhet üzembe és futtathat ebben az Azure-beli modulban. 
@@ -27,7 +27,7 @@ Az oktatóanyag [oktatóanyag: SQL Server Integration Services csomagok (SSIS) �
 
 - Igény szerint használata Azure SQL Database virtuális hálózati szolgáltatás végpontok/Managed Instance-adatbázis-kiszolgálóként való üzemeltetésére az SSIS-katalógus (SSISDB-adatbázis). Gazdagépre SSISDB adatbázis-kiszolgáló típusú megválasztásához útmutatásért lásd: [hasonlítsa össze az SQL Database logikai kiszolgáló és az SQL Database felügyelt példányain](create-azure-ssis-integration-runtime.md#compare-sql-database-logical-server-and-sql-database-managed-instance). Előfeltételként kell az Azure-SSIS integrációs modul csatlakoztatása egy virtuális hálózatot, és szükség szerint a virtuális hálózat engedélyeit és beállításait konfigurálja. Lásd: [egy virtuális hálózathoz csatlakozzon Azure-SSIS integrációs](https://docs.microsoft.com/en-us/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network). 
 
-- Szükség esetén használja az Azure Active Directory (AAD) hitelesítés a az Azure Data Factory Felügyeltszolgáltatás-identitás (MSI) az Azure-SSIS integrációs modul az adatbázis-kiszolgálóhoz való csatlakozáshoz. Előfeltételként kell az adatbázis-kiszolgáló a hozzáférési engedélyek egy AAD csoport adja hozzá a Data Factory MSI, lásd: [Azure-SSIS integrációs modul engedélyezése AAD-hitelesítését](https://docs.microsoft.com/en-us/azure/data-factory/enable-aad-authentication-azure-ssis-ir). 
+- Igény szerint használata az Azure Active Directory (AAD) hitelesítés az Azure Data Factory által felügyelt identitásokat az Azure-erőforrások az Azure-SSIS integrációs modul az adatbázis-kiszolgálóhoz való csatlakozáshoz. Előfeltételként kell az adatbázis-kiszolgáló a hozzáférési engedélyek egy AAD csoport adja hozzá a Data Factory MSI, lásd: [Azure-SSIS integrációs modul engedélyezése AAD-hitelesítését](https://docs.microsoft.com/en-us/azure/data-factory/enable-aad-authentication-azure-ssis-ir). 
 
 ## <a name="overview"></a>Áttekintés
 Ez a cikk egy Azure-SSIS integrációs modul üzembe helyezésének különböző módszert mutat be: 
@@ -146,7 +146,7 @@ Ebben a szakaszban használhatja az Azure Portalon, kifejezetten a Data Factory 
 
     c. A **Katalógus adatbázis-kiszolgáló végpontja** mezőben válassza az SSISDB-t üzemeltető adatbázis-kiszolgáló végpontját. A kiválasztott adatbázis-kiszolgáló alapján, SSISDB létrehozhatók az Ön nevében önálló adatbázisként, egy rugalmas készlet vagy a felügyelt példány és elérhető-e nyilvános hálózaton vagy virtuális hálózatokhoz való csatlakozás. 
 
-    d. A **használata AAD-hitelesítés...**  jelölőnégyzetet, válassza ki az SSISDB-gazdagépre adatbázis-kiszolgálóhoz tartozó hitelesítési módszer: SQL- vagy Azure Active Directory (AAD) az az Azure Data Factory Felügyeltszolgáltatás-identitás (MSI). Ha bejelöli, adja hozzá a Data Factory MSI egy AAD csoport az adatbázis-kiszolgáló a hozzáférési engedélyek, olvassa el kell [Azure-SSIS integrációs modul engedélyezése AAD-hitelesítését](https://docs.microsoft.com/en-us/azure/data-factory/enable-aad-authentication-azure-ssis-ir). 
+    d. A **használata AAD-hitelesítés...**  jelölőnégyzetet, válassza ki az SSISDB-gazdagépre adatbázis-kiszolgálóhoz tartozó hitelesítési módszer: SQL- vagy Azure Active Directory (AAD) az Azure Data Factory által felügyelt identitás az Azure-erőforrásokhoz. Ha bejelöli, adja hozzá a Data Factory MSI egy AAD csoport az adatbázis-kiszolgáló a hozzáférési engedélyek, olvassa el kell [Azure-SSIS integrációs modul engedélyezése AAD-hitelesítését](https://docs.microsoft.com/en-us/azure/data-factory/enable-aad-authentication-azure-ssis-ir). 
 
     e. A **Rendszergazdai felhasználónév** értékeként adja meg az SSISDB-t üzemeltető adatbázis-kiszolgálóhoz tartozó SQL-hitelesítési felhasználónevet. 
 
@@ -333,7 +333,7 @@ Nem Azure SQL Database használata a virtuális hálózati szolgáltatás végpo
 
 Felügyelt példány gazdagép SSISDB használatakor CatalogPricingTier paraméter nincs megadva, vagy adja át az üres érték azt. Ellenkező esetben nem szereplejen és kell adja át egy érvényes értéket a listából tarifacsomagok az Azure SQL Database támogatott, lásd: [SQL Database erőforrás-korlátozások](../sql-database/sql-database-resource-limits.md). 
 
-Ha használ az Azure Active Directory (AAD) hitelesítés a az Azure Data Factory Felügyeltszolgáltatás-identitás (MSI) az adatbázis-kiszolgálóhoz való csatlakozáshoz, kihagyhatja CatalogAdminCredential paraméter, de egy AAD-csoport hozzáférést kell adnia a Data Factory MSI az adatbázis-kiszolgálóhoz, engedélyek, lásd: [Azure-SSIS integrációs modul engedélyezése AAD-hitelesítését](https://docs.microsoft.com/en-us/azure/data-factory/enable-aad-authentication-azure-ssis-ir). Ellenkező esetben nem hagyja, és át kell adnia egy érvényes, a kiszolgáló-rendszergazdai felhasználónevet és jelszót az SQL-hitelesítéshez megfelelő objektum.
+Ha az Azure Active Directory (AAD) hitelesítés az Azure Data Factory a felügyelt identitás az Azure-erőforrásokhoz való csatlakozáshoz az adatbázis-kiszolgáló, CatalogAdminCredential paramétert, akkor kihagyhatja, de egy AAD csoport kell adnia a Data Factory MSI az adatbázis-kiszolgálón történő hozzáférési engedélyek, lásd: [Azure-SSIS integrációs modul engedélyezése AAD-hitelesítését](https://docs.microsoft.com/en-us/azure/data-factory/enable-aad-authentication-azure-ssis-ir). Ellenkező esetben nem hagyja, és át kell adnia egy érvényes, a kiszolgáló-rendszergazdai felhasználónevet és jelszót az SQL-hitelesítéshez megfelelő objektum.
 
 ```powershell               
 Set-AzureRmDataFactoryV2IntegrationRuntime -ResourceGroupName $ResourceGroupName `

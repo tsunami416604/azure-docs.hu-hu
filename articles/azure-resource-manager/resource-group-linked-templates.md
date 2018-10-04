@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/10/2018
+ms.date: 10/03/2018
 ms.author: tomfitz
-ms.openlocfilehash: 8b09170c31691be34cea577eb82c8cce3402be96
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: e1d116b96abab89f08546d3c2d5d7bff3234ecbc
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46294661"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48249230"
 ---
 # <a name="using-linked-and-nested-templates-when-deploying-azure-resources"></a>Kapcsolt és beágyazott sablonok, az Azure-erőforrások üzembe helyezésekor
 
@@ -49,7 +49,7 @@ Egy másik sablonnal, vegyen fel egy **központi telepítések** erőforrás a f
 ]
 ```
 
-Ad meg az üzembe helyezés erőforrás a tulajdonságait, hogy van egy külső sablon összekapcsolása, vagy egy beágyazott sablont, a fő sablont a beágyazási megoldástól.
+Ad meg a központi telepítési erőforrás tulajdonságainak függ attól, létrehozhatja, ha egy külső sablon akár egy beágyazott sablont, a fő sablont a beágyazási.
 
 Mindkét kapcsolt és beágyazott sablonok, csak használhat [növekményes](deployment-modes.md) üzembe helyezési mód.
 
@@ -121,7 +121,9 @@ Nem kell adnia a `contentVersion` tulajdonságot a sablonból vagy a paramétere
 
 ### <a name="external-template-and-inline-parameters"></a>Külső sablon és a beágyazott paraméterek
 
-Vagy megadhatja a paraméterrel beágyazott. A fő sablonból értéket adnak át a hivatkozott sablonnak, használja a **paraméterek**.
+Vagy megadhatja a paraméterrel beágyazott. A beágyazott paraméterek és a egy hivatkozást az alkalmazásparaméter-fájlt nem használható. Egy hiba miatt nem sikerül a telepítés során is `parametersLink` és `parameters` vannak megadva.
+
+A fő sablonból értéket adnak át a hivatkozott sablonnak, használja a **paraméterek**.
 
 ```json
 "resources": [

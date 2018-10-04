@@ -12,15 +12,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 09/24/2018
+ms.date: 10/03/2018
 ms.author: alkohli
 ms.custom: ''
-ms.openlocfilehash: edb4995b626055be830a7accb74d99f1db3ef8d0
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 946c045407b150a923d0067776bf80cbfab54c67
+ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46962201"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48268038"
 ---
 # <a name="azure-data-box-gateway-limits-preview"></a>Az Azure Data Box Gateway korlátainak (előzetes verzió)
 
@@ -28,12 +28,12 @@ ms.locfileid: "46962201"
 Vegye figyelembe ezeket a korlátokat, üzembe helyezése és működtetése megoldását a Microsoft Azure Data Box-Gateway. 
 
 > [!IMPORTANT] 
-> Data Box-átjáró az előzetes verzióban. Tekintse át a [az előzetes verzió használati feltételeit](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) Ez a megoldás üzembe helyezése előtt. 
+> A Data Box Gateway előzetes verzióban érhető el. A megoldás üzembe helyezése előtt tekintse át [az előzetes verziókra vonatkozó szolgáltatási feltételeket](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). 
 
 
 ## <a name="data-box-gateway-service-limits"></a>Data Box Gateway szolgáltatási korlátozásai
 
-- Ebben a kiadásban szolgáltatás érhető el csak bizonyos régiókban az USA, Európa és Ázsia Csendes-óceáni. További információért ugorjon [régiók rendelkezésre állása](#data-box-gateway-overview#region-availability). A tárfiók fizikailag legközelebbi a régió, ahol az eszköz telepítve kell lennie (szolgáltatás földrajzilag eltérő is lehet).
+- Ebben a kiadásban szolgáltatás érhető el csak bizonyos régiókban az USA, Európa és Ázsia Csendes-óceáni. További információt a [regionális elérhetőséget](#data-box-gateway-overview#region-availability) tárgyaló témakörben talál. A tárfiók fizikailag legközelebbi a régió, ahol az eszköz telepítve kell lennie (szolgáltatás földrajzilag eltérő is lehet).
 - Egy Data Box-Gateway-erőforrás áthelyezése egy másik előfizetést vagy az erőforrást csoporthoz nem támogatott. További részletekért látogasson el [erőforrások áthelyezése új erőforráscsoportba vagy előfizetésbe](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-move-resources).
 
 ## <a name="data-box-gateway-device-limits"></a>A Data Box-átjáró eszköz korlátai
@@ -44,7 +44,7 @@ A következő táblázat ismerteti a korlátokat a Data Box átjáróeszköz sz�
 |---|---|
 |Nem. a fájlok eszközönként |100 millió <br> Legfeljebb ~ minden 2 TB-nyi szabad lemezterület 100 millió a maximális korlátot a 25-ös millió fájl |
 |Nem. a megosztások eszközönként |24 |
-|Maximális fájlméret megosztásra írt|5 TB |
+|Maximális fájlméret megosztásra írt|2 TB-os virtuális eszköz a fájl maximális mérete 500 GB-os. <br> Maximális fájlméret egyenes arányban növekszik az adatlemez mérete az előző arány legfeljebb 5 TB-os eléréséig. |
 
 ## <a name="azure-storage-limits"></a>Az Azure storage-korlátok
 
@@ -53,7 +53,7 @@ Ez a szakasz ismerteti az Azure Storage service korlátai, és a szükséges eln
 Az Azure storage szolgáltatási korlátai és gyakorlati tanácsok az elnevezési megosztások, a tárolók és a fájlok a legfrissebb információkért nyissa meg:
 
 - [Elnevezése és hivatkozása tárolók](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata)
-- [Elnevezése és hivatkozása megosztások](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata)
+- [Megosztások elnevezése és hivatkozása](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata)
 - [Blokkblobok és a blob szabályai lap](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs)
 
 > [!IMPORTANT]
@@ -89,4 +89,4 @@ Az alábbiakban az Azure objektumok lehet írni a méretét. Győződjön meg ar
 
 ## <a name="next-steps"></a>További lépések
 
-- [Az Azure Data Box átjáró telepítésének előkészítése](data-box-gateway-deploy-prep.md)
+- [Az Azure Data Box Gateway üzembe helyezésének előkészítése](data-box-gateway-deploy-prep.md)

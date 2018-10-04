@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/18/2018
+ms.date: 09/20/2018
 ms.author: magoedte
-ms.openlocfilehash: 446268f28e7c87196023636889f03be2da92ecfd
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 4a5f3178ad4d4152bb29e6c313b3fd332124c154
+ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46967642"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48269394"
 ---
 # <a name="how-to-query-logs-from-azure-monitor-for-vms"></a>Az Azure Monitor naplók lekérdezni a virtuális gépek
 Az Azure Monitor-beli virtuális gépek teljesítmény- és kapcsolati metrikák, a számítógép és a folyamat leltáradatokat és az állapotinformációkat gyűjt, és továbbítja azokat a Log Analytics data store az Azure Monitor.  Ezek az adatok érhető el [keresési](../log-analytics/log-analytics-log-searches.md) a Log Analyticsben. Ezeket az adatokat, beleértve az áttelepítés megtervezése, kapacitáselemzési, felderítési és igény szerinti teljesítménnyel kapcsolatos hibaelhárítás forgatókönyveket is alkalmazhat.
@@ -37,7 +37,7 @@ Több rekord megadott folyamat és a egy adott időtartományban számítógép 
 ### <a name="connections"></a>Kapcsolatok
 A Log Analytics - VMConnection új tábla kapcsolati metrika kerüljenek. Ez a táblázat ismerteti a kapcsolatokat a gép (bejövő és kimenő). Kapcsolati metrika is ki vannak téve az API-kkal, amelyek biztosítják az eszközöket egy adott metrika beszerzése egy adott időszakban.  TCP-kapcsolatok eredő "*fogadja el*- ing figyel-e szoftvercsatorna bejövő, míg a által létrehozott *csatlakozás*- ing, hogy egy adott IP-cím és port kimenő. A kapcsolat irányát képviseli a iránya tulajdonság, amely lehet megadni **bejövő** vagy **kimenő**. 
 
-Ezeknek a tábláknak rögzíti a függőségi ügynök által küldött adatokból jönnek létre. Minden rekord egy megfigyelési egy egy perces időszakra jelöli. A TimeGenerated tulajdonság az időintervallum kezdetét jelzi. Minden rekord tartalmazza a megfelelő entitás, amely azonosító adatokat, kapcsolat vagy a port, valamint az adott entitás kapcsolódó metrikák. Jelenleg csak akkor fordul elő, a TCP-val IPv4 hálózati aktivitás jelentett.
+Ezeknek a tábláknak rögzíti a függőségi ügynök által küldött adatokból jönnek létre. Minden rekord egy egy perces időszakra megfigyelési jelöli. A TimeGenerated tulajdonság az időintervallum kezdetét jelzi. Minden rekord tartalmazza a megfelelő entitás, amely azonosító adatokat, kapcsolat vagy a port, valamint az adott entitás kapcsolódó metrikák. Jelenleg csak akkor fordul elő, a TCP-val IPv4 hálózati aktivitás jelentett.
 
 Kezelheti a költségeket és összetettséget, csatlakozási rekordjainak nem felelnek meg az egyes fizikai hálózati kapcsolatokat. Több fizikai hálózati kapcsolatot, amely megjelenik majd a megfelelő tábla logikai kapcsolatot vannak csoportosítva.  Ez azt jelenti, rögzíti a *VMConnection* tábla felel meg a logikai csoportosítása és nem az egyes fizikai kapcsolatokat betartását. Egyetlen logikai rekord összesíti ugyanazt az értéket a következő attribútumok megosztása során egy adott egyperces időszakban, a fizikai hálózati kapcsolatot a rendszer *VMConnection*. 
 
@@ -69,9 +69,9 @@ Mellett száma kapcsolati metrika adatmennyiség kapcsolatos információkat kü
 |BytesSent |A jelentéskészítési időszakban elküldött bájtok száma |
 |BytesReceived |A jelentéskészítési időszakban fogadott bájtok teljes száma |
 |Válaszok |A jelentéskészítési időszakban megfigyelt válaszok száma. 
-|ResponseTimeMax |A legnagyobb válaszideje (ezredmásodperc) észlelt a jelentéskészítési időszakban.  Ha nincs érték a tulajdonság értéke üres.|
-|ResponseTimeMin |A legkisebb válaszideje (ezredmásodperc) észlelt a jelentéskészítési időszakban.  Ha nincs érték a tulajdonság értéke üres.|
-|ResponseTimeSum |Az összes válaszidők összege a jelentéskészítési időszakban megfigyelt (ezredmásodperc).  Ha nincs érték a tulajdonság üres|
+|ResponseTimeMax |A legnagyobb válaszideje (ezredmásodperc) észlelt a jelentéskészítési időszakban. Ha nincs érték a tulajdonság értéke üres.|
+|ResponseTimeMin |A legkisebb válaszideje (ezredmásodperc) észlelt a jelentéskészítési időszakban. Ha nincs érték a tulajdonság értéke üres.|
+|ResponseTimeSum |Az összes válaszidők összege a jelentéskészítési időszakban megfigyelt (ezredmásodperc). Ha nincs érték a tulajdonság értéke üres.|
 
 A jelentett adatokat harmadik típus a válaszidő - mennyi ideig does egy hívó költségek feldolgozni és a távoli végpont célzottól kapcsolaton keresztül küldött kérés vár. A válaszidő jelentett igaz válaszideje, az alapul szolgáló protokoll becslése. Számított heurisztika alapján a megfigyelési adatok között a forrás és cél végén egy fizikai hálózati kapcsolatot a flow használatával. Elméleti szinten a kérelem utolsó bájtját elhagyja a küldő, és az idő a válasz utolsó bájtját érkezésekor vissza közötti különbség. E két időbélyegek ábrázolni a kérések és válaszok események egy adott fizikai kapcsolathoz szolgálnak. A különbség a kettő válaszideje, egyetlen kérelem jelöli. 
 
@@ -93,8 +93,8 @@ Az egyszerűség kedvéért egy kapcsolat a távoli vég IP-címét a RemoteIp t
 | Tulajdonság | Leírás |
 |:--|:--|
 |RemoteCountry |Az üzemeltető RemoteIp ország neve.  Ha például *Egyesült Államok* |
-|RemoteLatitude |A földrajzi szélesség.  Ha például *47.68* |
-|RemoteLongitude |A földrajzi hosszúság.  Ha például *-122.12* |
+|RemoteLatitude |A földrajzi szélesség. Ha például *47.68* |
+|RemoteLongitude |A földrajzi hosszúság. Ha például *-122.12* |
 
 #### <a name="malicious-ip"></a>Kártékony IP-cím
 Minden RemoteIp tulajdonság *VMConnection* tábla be van jelölve IP-címek összevetéssel az ismert kártékony tevékenységek. Ha a RemoteIp kártevőként azonosított a következő tulajdonságok lesz kitöltve (azok üres, ha a IP-cím nem számít rosszindulatú) a rekord a következő tulajdonságai:
@@ -102,16 +102,16 @@ Minden RemoteIp tulajdonság *VMConnection* tábla be van jelölve IP-címek ös
 | Tulajdonság | Leírás |
 |:--|:--|
 |MaliciousIp |A RemoteIp címe |
-|IndicatorThreadType | |
-|Leírás | |
-|TLPLevel | |
-|Megbízhatóság | |
-|Severity | |
-|FirstReportedDateTime | |
-|LastReportedDateTime | |
-|IsActive | |
-|ReportReferenceLink | |
-|AdditionalInformation | |
+|IndicatorThreadType |Észlelt fenyegetés mutató a következő értékek egyike *Botnet*, *C2*, *CryptoMining*, *Darknet*, *DDos* , *MaliciousUrl*, *kártevő*, *adathalász*, *Proxy*, *elleni*, *Megnézendők*.   |
+|Leírás |Az észlelt fenyegetés leírása. |
+|TLPLevel |Közlekedési lámpa protokoll (TLP) szint egyike a meghatározott értékeknek *fehér*, *zöld*, *sárga*, *Red*. |
+|Megbízhatóság |Értékek a következők *0 – 100*. |
+|Severity |Értékek a következők *0 – 5*, ahol *5* van a legsúlyosabb és *0* nem súlyos egyáltalán. Alapértelmezett érték *3*.  |
+|FirstReportedDateTime |Először a szolgáltató jelenteni a kijelző. |
+|LastReportedDateTime |A kijelző Interflow által látott utolsó időpontját. |
+|IsActive |Azt jelzi, hogy a mutatók vannak inaktiválása az *igaz* vagy *hamis* értéket. |
+|ReportReferenceLink |Egy adott rendszernek megfigyelhetőnek kapcsolatos jelentéseket mutató hivatkozásokat tartalmaz. |
+|AdditionalInformation |További információkat biztosít, ha van ilyen, az észlelt fenyegetés kapcsolatban. |
 
 ### <a name="servicemapcomputercl-records"></a>ServiceMapComputer_CL records
 Típussal rendelkező rekordok *ServiceMapComputer_CL* leltáradatokat a függőségi ügynök esetében van. Ezeket a rekordokat az alábbi táblázatban az jellemzőkkel rendelkeznek:
@@ -166,34 +166,34 @@ Típussal rendelkező rekordok *ServiceMapProcess_CL* rendelkezik TCP-kapcsolatt
 ## <a name="sample-log-searches"></a>Naplókeresési minták
 
 ### <a name="list-all-known-machines"></a>Az összes ismert gépek listája
-ServiceMapComputer_CL |} Összegzés arg_max(TimeGenerated, *) erőforrás-azonosító szerint
+`ServiceMapComputer_CL | summarize arg_max(TimeGenerated, *) by ResourceId`
 
 ### <a name="list-the-physical-memory-capacity-of-all-managed-computers"></a>A fizikai memória-kapacitás az összes felügyelt számítógép listája.
-ServiceMapComputer_CL |} Összegzés arg_max(TimeGenerated, *) erőforrás-azonosító szerint |} Projekt PhysicalMemory_d, ComputerName_s
+`ServiceMapComputer_CL | summarize arg_max(TimeGenerated, *) by ResourceId | project PhysicalMemory_d, ComputerName_s`
 
 ### <a name="list-computer-name-dns-ip-and-os"></a>Számítógép neve, DNS, IP és az operációs rendszer.
-ServiceMapComputer_CL |} Összegzés arg_max(TimeGenerated, *) erőforrás-azonosító szerint |} a projekt ComputerName_s, OperatingSystemFullName_s, DnsNames_s, Ipv4Addresses_s
+`ServiceMapComputer_CL | summarize arg_max(TimeGenerated, *) by ResourceId | project ComputerName_s, OperatingSystemFullName_s, DnsNames_s, Ipv4Addresses_s`
 
 ### <a name="find-all-processes-with-sql-in-the-command-line"></a>A parancssorban keresse meg az "sql" összes folyamat
-ServiceMapProcess_CL |} ahol CommandLine_s contains_cs "sql" |} Összegzés arg_max(TimeGenerated, *) erőforrás-azonosító szerint
+`ServiceMapProcess_CL | where CommandLine_s contains_cs "sql" | summarize arg_max(TimeGenerated, *) by ResourceId`
 
 ### <a name="find-a-machine-most-recent-record-by-resource-name"></a>Keresse meg a gép (legutóbbi rekord) erőforrás szerint
-Keresés a (ServiceMapComputer_CL) "m-4b9c93f9-bc37-46df-b43c-899ba829e07b" |} Összegzés arg_max(TimeGenerated, *) erőforrás-azonosító szerint
+`search in (ServiceMapComputer_CL) "m-4b9c93f9-bc37-46df-b43c-899ba829e07b" | summarize arg_max(TimeGenerated, *) by ResourceId`
 
 ### <a name="find-a-machine-most-recent-record-by-ip-address"></a>Keresse meg a gép (legutóbbi rekord) IP-cím alapján
-Keresés a (ServiceMapComputer_CL) "10.229.243.232" |} Összegzés arg_max(TimeGenerated, *) erőforrás-azonosító szerint
+`search in (ServiceMapComputer_CL) "10.229.243.232" | summarize arg_max(TimeGenerated, *) by ResourceId`
 
 ### <a name="list-all-known-processes-on-a-specified-machine"></a>Egy megadott számítógép összes ismert folyamat listázása
-ServiceMapProcess_CL |} ahol MachineResourceName_s == "m-559dbcd8-3130-454d-8d1d-f624e57961bc" |} Összegzés arg_max(TimeGenerated, *) erőforrás-azonosító szerint
+`ServiceMapProcess_CL | where MachineResourceName_s == "m-559dbcd8-3130-454d-8d1d-f624e57961bc" | summarize arg_max(TimeGenerated, *) by ResourceId`
 
 ### <a name="list-all-computers-running-sql"></a>Az SQL futtató számítógépek listája
-ServiceMapComputer_CL |} ahol a ResourceName_s (((ServiceMapProcess_CL) lévő keresése "\*sql\*" |} különböző MachineResourceName_s)) |} különböző ComputerName_s
+`ServiceMapComputer_CL | where ResourceName_s in ((search in (ServiceMapProcess_CL) "\*sql\*" | distinct MachineResourceName_s)) | distinct ComputerName_s`
 
 ### <a name="list-all-unique-product-versions-of-curl-in-my-datacenter"></a>Saját adatközpontban curl összes egyedi termék verziója listázása
-ServiceMapProcess_CL |} ahol ExecutableName_s == "curl" |} különböző ProductVersion_s
+`ServiceMapProcess_CL | where ExecutableName_s == "curl" | distinct ProductVersion_s`
 
 ### <a name="create-a-computer-group-of-all-computers-running-centos"></a>Az összes számítógép CentOS rendszerű számítógépcsoport létrehozása
-ServiceMapComputer_CL |} ahol OperatingSystemFullName_s contains_cs "CentOS" |} különböző ComputerName_s
+`ServiceMapComputer_CL | where OperatingSystemFullName_s contains_cs "CentOS" | distinct ComputerName_s`
 
 ### <a name="summarize-the-outbound-connections-from-a-group-of-machines"></a>A kimenő kapcsolatok a gépek csoportból összefoglalója
 ```

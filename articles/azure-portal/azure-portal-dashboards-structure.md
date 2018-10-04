@@ -13,12 +13,12 @@ ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 09/01/2017
 ms.author: cwatson
-ms.openlocfilehash: 405e0d5184880a00c07de55bd968210fa28e45fc
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: 76f4a52b702a609d7181b9c6c0f2ce600d8a6aac
+ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47393077"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48267987"
 ---
 # <a name="the-structure-of-azure-dashboards"></a>Azure-irányítópultok struktúrája
 Ez a dokumentum végigvezeti egy Azure-irányítópultot, az alábbi példa irányítópulttal szerkezete:
@@ -326,7 +326,7 @@ A __részek__ objektum az egyes részek, ahol a tulajdonság neve-e a számos tu
 Minden egyes része objektum rendelkezik egy __pozíció__, és __metaadatok__.
 
 ### <a name="the-position-object"></a>Az objektum
-A __pozíció__ tulajdonság a méret és elhelyezkedés információkat tartalmaz, a kifejezett rész __x__, __y__, __rowSpan__, és __colSpan__. Az értékek a következők rács egységekben. A rács egységek láthatók, ha az irányítópult a Testreszabás módban van, ahogy az itt látható. Ha azt szeretné, hogy a csempét egy széles két rács egység van, egy egység egy rács magassága és a egy hely felső bal oldali sarokban, majd a pozíció obejct néz ki:
+A __pozíció__ tulajdonság a méret és elhelyezkedés információkat tartalmaz, a kifejezett rész __x__, __y__, __rowSpan__, és __colSpan__. Az értékek a következők rács egységekben. A rács egységek láthatók, ha az irányítópult a Testreszabás módban van, ahogy az itt látható. Ha azt szeretné, hogy a csempét egy széles két rács egység van, egy egység egy rács magassága és a egy hely felső bal oldali sarokban majd objektum a következőhöz hasonló:
 
 `location: { x: 0, y: 0, rowSpan: 2, colSpan: 1 }`
 
@@ -338,7 +338,7 @@ Egyes részek metaadat-tulajdonságot, akkor egy objektumnak csak egy szüksége
 
 1. `Extension/Microsoft_Azure_Monitoring/PartType/MetricsChartPart` – Megjelenítésére használ a metrikák figyelése
 1. `Extension[azure]/HubsExtension/PartType/MarkdownPart` – Használt szöveg és alapszintű formázásával, listák és hivatkozások, a kép megjelenítéséhez stb.
-1. `Extension[azure]/HubsExtension/PartType/VideoPart` – A YouTube-on, a channel9-on és bármilyen más típusú, amely egyaránt használható egy videó html-címke a videó videók megjelenítésére szolgál.
+1. `Extension[azure]/HubsExtension/PartType/VideoPart` – A YouTube-on, a channel9-on és bármilyen más típusú, amely egyaránt használható egy videó HTML-címke a videó videók megjelenítésére szolgál.
 1. `Extension/Microsoft_Azure_Compute/PartType/VirtualMachinePart` – Használja a neve és a egy Azure virtuális gép állapotának megjelenítése.
 
 Különböző típusú részét a saját konfigurációs van. A lehetséges konfigurációs tulajdonságok nevezzük __bemenetek__, __beállítások__, és __eszköz__. 

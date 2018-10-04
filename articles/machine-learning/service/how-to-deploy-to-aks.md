@@ -10,12 +10,12 @@ author: raymondlaghaeian
 manager: cgronlun
 ms.reviewer: larryfr
 ms.date: 09/24/2018
-ms.openlocfilehash: 4e2529e760e23ba9837137cf91fd6ca7f52253b2
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: e467445b631eca3084f8ec01a854681311979c93
+ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48237840"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48268410"
 ---
 # <a name="how-to-deploy-models-from-azure-machine-learning-service-to-azure-kubernetes-service"></a>Az Azure Kubernetes Service az Azure Machine Learning szolgáltatásból származó modellek üzembe helyezése
 
@@ -124,7 +124,7 @@ print(aks_target.provisioning_errors)
 Ha rendelkezik meglévő AKS-fürtöt az Azure-előfizetésében, használhatja a rendszerképének üzembe helyezéséhez. A következő kódrészletet bemutatja, hogyan csatlakoztathat egy fürtöt a munkaterülethez mutatja be. 
 
 > [!IMPORTANT]
-> Csak az AKS 1.8.7 verziója támogatott.
+> Csak az AKS 1.11.2 verziója támogatott.
 
 ```python
 # Get the resource id from https://porta..azure.com -> Find your resource group -> click on the Kubernetes service -> Properties

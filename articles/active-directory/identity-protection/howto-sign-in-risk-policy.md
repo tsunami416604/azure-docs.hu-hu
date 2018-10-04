@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 09/13/2018
 ms.author: markvi
 ms.reviewer: raluthra
-ms.openlocfilehash: bae71c55bdea838d0ef5e0ae3acbac3e98a92fa0
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.openlocfilehash: 4b48ffb450459891118d5f526bbc73c4a2577ddd
+ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47055051"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48268833"
 ---
 # <a name="how-to-configure-the-sign-in-risk-policy"></a>Útmutató: A bejelentkezési kockázati szabályzat beállítása
 
@@ -52,7 +52,7 @@ A bejelentkezési kockázati házirend konfigurálásakor kell beállítani:
 
 - A bejelentkezési kockázati szintet, amely elindítja a szabályzat:
 
-    ![Bejelentkezési kockázati szint](./media/howto-sign-in-risk-policy/12.png)
+    ![Bejelentkezés kockázati szintje](./media/howto-sign-in-risk-policy/12.png)
 
 - Milyen típusú hozzáférést szeretne kényszeríti ki a bejelentkezési kockázati szint teljesülésekor:  
 
@@ -79,7 +79,7 @@ Ha azt szeretné, a többtényezős hitelesítés megkövetelése a kockázatos 
 
 1. Engedélyezze a [többtényezős hitelesítési regisztrációs házirend](#multi-factor-authentication-registration-policy) az érintett felhasználók számára.
 
-2. Az érintett felhasználókat, hogy jelentkezzen be egy kockázatos munkamenetben az MFA-regisztráció végrehajtásához szükséges.
+2. Az érintett felhasználókat, hogy jelentkezzen be a kockázatos munkamenet az MFA-regisztráció végrehajtásához szükséges.
 
 Ezen lépések elvégzése biztosítja, hogy a többtényezős hitelesítés szükséges a kockázatos bejelentkezés.
 

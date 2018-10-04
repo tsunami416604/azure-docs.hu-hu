@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/28/2018
 ms.author: jingwang
-ms.openlocfilehash: ef1bd613943543f78d358064f4abefc6fa31b63e
-ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
+ms.openlocfilehash: 77b6149f175723ccf19db660ed500fb8897080e8
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "43842335"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48249621"
 ---
 #  <a name="copy-data-to-or-from-azure-sql-data-warehouse-by-using-azure-data-factory"></a>Adatok másolása, vagy az Azure SQL Data Warehouse-ból az Azure Data Factory használatával 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you're using:"]
@@ -33,7 +33,7 @@ Az Azure SQL Data Warehouse-ból adatokat másolhatja bármely támogatott fogad
 
 Pontosabban az Azure SQL Data Warehouse-összekötő támogatja ezeket a funkciókat:
 
-- Adatok másolása az SQL-hitelesítés és Azure Active Directory (Azure AD) alkalmazástoken-hitelesítésének használatával egy egyszerű szolgáltatást, vagy a Felügyeltszolgáltatás-identitás (MSI).
+- Adatok másolása az Azure-erőforrások egy egyszerű vagy felügyelt szolgáltatásidentitások SQL-hitelesítés és Azure Active Directory (Azure AD) alkalmazástoken-hitelesítésének használata által.
 - Forrásként adatok lekérdezése egy SQL-lekérdezést vagy tárolt eljárás használatával.
 - Fogadóként az adatok betöltése a PolyBase vagy a tömeges beszúrás. A PolyBase a jobb másolási teljesítmény érdekében javasoljuk.
 
@@ -70,7 +70,7 @@ Különböző hitelesítési típus tekintse meg a következő szakaszok az Elő
 
 - [SQL-hitelesítés](#sql-authentication)
 - Az Azure AD alkalmazástoken-hitelesítésének: [egyszerű szolgáltatás](#service-principal-authentication)
-- Az Azure AD alkalmazástoken-hitelesítésének: [Felügyeltszolgáltatás-identitás](#managed-service-identity-authentication)
+- Az Azure AD alkalmazástoken-hitelesítésének: [felügyelt identitások az Azure-erőforrásokhoz](#managed-service-identity-authentication)
 
 >[!TIP]
 >Ha nyomja le az "UserErrorFailedToConnectToSqlServer", hibakód: Hiba történt, és üzenet például a "a munkamenet korlátot, az adatbázis XXX elérte.", és adja hozzá `Pooling=false` a kapcsolati karakterláncot, és próbálkozzon újra.
@@ -152,9 +152,9 @@ Szolgáltatás egyszerűszolgáltatás-alapú Azure AD alkalmazástoken-hiteles�
 }
 ```
 
-### <a name="managed-service-identity-authentication"></a>Felügyeltszolgáltatás-identitás felügyelt hitelesítésre
+### <a name="managed-identities-for-azure-resources-authentication"></a>Felügyelt identitások Azure-erőforrások hitelesítéshez
 
-Adat-előállító társítható egy [Felügyeltszolgáltatás-identitás](data-factory-service-identity.md) , amely az adott előállító jelöli. A felügyeltszolgáltatás-identitás az Azure SQL Data Warehouse-hitelesítéshez használható. Férhet hozzá a kijelölt gyári, és a, vagy az adatok másolása az adatraktár-Ez az identitás használatával.
+Adat-előállító társítható egy [-identitás az Azure-erőforrások](data-factory-service-identity.md) , amely az adott előállító jelöli. A felügyeltszolgáltatás-identitás az Azure SQL Data Warehouse-hitelesítéshez használható. Férhet hozzá a kijelölt gyári, és a, vagy az adatok másolása az adatraktár-Ez az identitás használatával.
 
 > [!IMPORTANT]
 > Vegye figyelembe, hogy a PolyBase jelenleg nem támogatott az MSI-hitelesítéssel.

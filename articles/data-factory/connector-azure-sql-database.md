@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/12/2018
 ms.author: jingwang
-ms.openlocfilehash: 003fb667177bbf7f532946d34a06da757646ade3
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: c513ef76174507f1ea78b265b1882266b8473737
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45578582"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48248941"
 ---
 # <a name="copy-data-to-or-from-azure-sql-database-by-using-azure-data-factory"></a>Adatok másolása, vagy az Azure SQL Database-ből az Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you use:"]
@@ -33,7 +33,7 @@ Adatokat másolja vagy az Azure SQL Database bármely támogatott fogadó adatt�
 
 Pontosabban az Azure SQL Database-összekötő támogatja ezeket a funkciókat:
 
-- Adatok másolása az SQL-hitelesítés és Azure Active Directory (Azure AD) alkalmazástoken-hitelesítésének használatával egy egyszerű szolgáltatást, vagy a Felügyeltszolgáltatás-identitás (MSI).
+- Adatok másolása az Azure-erőforrások egy egyszerű vagy felügyelt szolgáltatásidentitások SQL-hitelesítés és Azure Active Directory (Azure AD) alkalmazástoken-hitelesítésének használata által.
 - Forrásként adatok lekérdezése egy SQL-lekérdezést vagy tárolt eljárás használatával.
 - Fogadóként adatok hozzáfűzése a táblát, vagy a másolás során az egyéni logikát tárolt eljárás meghívása.
 
@@ -64,7 +64,7 @@ Különböző hitelesítési típus tekintse meg a következő szakaszok az Elő
 
 - [SQL-hitelesítés](#sql-authentication)
 - [Az Azure AD alkalmazástoken-hitelesítésének: egyszerű szolgáltatás](#service-principal-authentication)
-- [Az Azure AD alkalmazástoken-hitelesítésének: Felügyeltszolgáltatás-identitás](#managed-service-identity-authentication)
+- [Az Azure AD alkalmazástoken-hitelesítésének: felügyelt identitások az Azure-erőforrásokhoz](#managed-service-identity-authentication)
 
 >[!TIP]
 >Ha nyomja le az "UserErrorFailedToConnectToSqlServer", hibakód: Hiba történt, és üzenet például a "a munkamenet korlátot, az adatbázis XXX elérte.", és adja hozzá `Pooling=false` a kapcsolati karakterláncot, és próbálkozzon újra.
@@ -146,9 +146,9 @@ A szolgáltatás egyszerűszolgáltatás-alapú Azure AD alkalmazástoken-hitele
 }
 ```
 
-### <a name="managed-service-identity-authentication"></a>Felügyeltszolgáltatás-identitás felügyelt hitelesítésre
+### <a name="managed-identities-for-azure-resources-authentication"></a>Felügyelt identitások Azure-erőforrások hitelesítéshez
 
-Adat-előállító társítható egy [Felügyeltszolgáltatás-identitás](data-factory-service-identity.md) , amely az adott adat-előállító jelöli. A felügyeltszolgáltatás-identitás az Azure SQL Database-hitelesítéshez használható. A kijelölt gyári férhet hozzá, és másolja ezt az identitást az adatok vagy az adatbázishoz.
+Adat-előállító társítható egy [-identitás az Azure-erőforrások](data-factory-service-identity.md) , amely az adott adat-előállító jelöli. A felügyeltszolgáltatás-identitás az Azure SQL Database-hitelesítéshez használható. A kijelölt gyári férhet hozzá, és másolja ezt az identitást az adatok vagy az adatbázishoz.
 
 MSI-alapú Azure AD alkalmazástoken-hitelesítésének használatához kövesse az alábbi lépéseket:
 

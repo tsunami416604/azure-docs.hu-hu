@@ -1,6 +1,6 @@
 ---
-title: Anomáliadetektálás Python-alkalmazás - Microsoft kognitív szolgáltatások |} Microsoft Docs
-description: Megismerheti a Python notebook, amely az Anomáliadetektálási észlelési API kognitív Microsoft-szolgáltatásokban. Eredeti adatpontok küldeni API, és a várt érték és anomáliadetektálási pontok.
+title: Anomáliadetektálás Python-alkalmazás – a Microsoft Cognitive Services |} A Microsoft Docs
+description: Fedezze fel a Microsoft Cognitive Services az Anomáliadetektáló API-t használó Python-jegyzetfüzetet. Küldés eredeti adatpontok API-hoz és a várt érték és anomáliadetektálási pontokat.
 services: cognitive-services
 author: chliang
 manager: bix
@@ -9,37 +9,39 @@ ms.technology: anomaly-detection
 ms.topic: article
 ms.date: 05/01/2018
 ms.author: chliang
-ms.openlocfilehash: d35f41ddab21aa155376ad52ff4084298dab8fc5
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 87cd9e976d231291ad13acecf188cfd668d692b6
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35348575"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48248227"
 ---
-# <a name="anomaly-detection-python-application"></a>Az anomáliadetektálási észlelési Python-alkalmazás
+# <a name="anomaly-detection-python-application"></a>Rendellenességek észlelése Python-alkalmazás
 
-Az oktatóanyag bemutatja az Anomáliadetektálási észlelési API használata a Python és hogyan kell a népszerű könyvtárak segítségével eredményeinek képi megjelenítése. Az oktatóanyag futtatásához használt Jupyter, majd próbálkozzon a saját adatok az előfizetés kulccsal. Az interaktív Jupyter notebookok első lépések megismeréséhez olvassa el [Jupyter dokumentáció](http://jupyter.readthedocs.io/en/latest/index.html). 
+[!INCLUDE [PrivatePreviewNote](../../../../../includes/cognitive-services-anomaly-finder-private-preview-note.md)]
+
+Ebből az oktatóanyagból megtudhatja, hogyan használható az Anomáliadetektáló API-t a Python és hogyan jelenítheti meg az eredményeket, népszerű kódtárak használatával. Az oktatóanyag futtatása a Jupyter használatával, és a saját adataival próbálja az előfizetési kulccsal végzett. Ismerje meg, hogyan interaktív Jupyter notebookok használatának első lépései, tekintse meg [Jupyter dokumentáció](http://jupyter.readthedocs.io/en/latest/index.html). 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-### <a name="subscribe-to-anomaly-detection-and-get-a-subscription-key"></a>Az anomáliadetektálás szolgáltatásra, és egy előfizetés kulcs beszerzése 
+### <a name="subscribe-to-anomaly-detection-and-get-a-subscription-key"></a>Fizessen elő a rendellenességek észlelése és a egy előfizetési kulcs lekérése 
 
 [!INCLUDE [GetSubscriptionKey](../includes/get-subscription-key.md)]
 
 ## <a name="download-the-example-code"></a>A mintakód letöltése
 
 1. Keresse meg a [github oktatóanyag notebook](https://github.com/MicrosoftAnomalyDetection/python-sample).
-2. Kattintson a klónozáshoz vagy töltse le az oktatóanyag zöld gombra. 
+2. Kattintson a zöld gombot a Klónozás vagy letöltés az oktatóanyag. 
 
-## <a name="opening-the-tutorial-notebook-in-jupyter"></a>Az oktatóanyag notebook nyithatók meg a Jupyter
+## <a name="opening-the-tutorial-notebook-in-jupyter"></a>Nyissa meg az oktatóanyag notebook Jupyter
 
-1. Nyisson meg egy parancssort, és nyissa meg a mappa python-mintát.
-2. A parancs Jupyter notebook futtassa a parancssorból, Jupyter elindító.
-3. A Jupyter ablakban kattintson a <em>Anomáliadetektálási észlelési API Example.ipynb</em> az oktatóanyag jegyzetfüzet megnyitása.   
+1. Nyisson meg egy parancssort, és nyissa meg a mappa python-mintához.
+2. Futtassa a parancsot a Jupyter notebook a parancssor használatával, amely elindítja a Jupyter.
+3. A Jupyter ablakában kattintson a <em>rendellenességek észlelése API Example.ipynb</em> a oktatóanyag notebook megnyitásához.   
 
-## <a name="running-the-tutorial"></a>Az oktatóanyag futtatása
+## <a name="running-the-tutorial"></a>Az oktatóanyag
 
-A notebook használatához szüksége lesz egy előfizetés kulcs az Anomáliadetektálási észlelési API-t. Látogasson el a regisztráció-előfizetés lapján. A "Bejelentkezés" oldalon a Microsoft-fiók használatával jelentkezzen be, és meg fogja tudni szolgáltatásra, és a kulcsok beolvasása. A regisztrációs folyamat befejezése után illessze be a kulcsot a változók szakaszban a notebook (az alábbiakban bemutatott). Működik az elsődleges vagy másodlagos kulcsát. Győződjön meg arról, hogy a kulcs tegye idézőjelek közé foglalt abba, hogy egy karakterláncot.
+Ez a jegyzetfüzet használatához szüksége lesz egy előfizetési kulcsot az Anomáliadetektáló API-t. Az előfizetés oldalán regisztráció. A "Sign-in" lapon a Microsoft-fiók használatával jelentkezzen be, és lesz regisztrációt és a kulcsokat. A regisztrációs folyamat befejezését követően illessze be a kulcsát a notebook (az alábbiakban találja), a változók szakaszban. Működik az elsődleges vagy másodlagos kulcsát. Ellenőrizze, hogy a kulcs tegye idézőjelek között, hogy egy karakterláncot.
 
 ```Python
 

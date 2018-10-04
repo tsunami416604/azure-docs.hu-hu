@@ -14,26 +14,26 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/27/2018
 ms.author: labattul
-ms.openlocfilehash: 205a1e399eadd268ffaa390a7ebb4397fda9feff
-ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
+ms.openlocfilehash: 34647c218bd5fd2eec775599a4d2f10373dbd2fd
+ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42444653"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48268276"
 ---
-# <a name="setup-dpdk-in-a-linux-virtual-machine"></a>A telepítő DPDK Linux rendszerű virtuális gépen
+# <a name="set-up-dpdk-in-a-linux-virtual-machine"></a>A Linux rendszerű virtuális gép DPDK beállítása
 
-Adatok Adatsík Development Kit (DPDK) az Azure-ban egy gyorsabb felhasználói terület csomag feldolgozási keretrendszert biztosít a teljesítményt igénylő alkalmazások, amelyeket a virtuális gép kernel hálózati vermet.
+Adatok Adatsík Development Kit (DPDK) az Azure-ban egy gyorsabb felhasználói térben csomag feldolgozást végző keretrendszer, teljesítmény-igényes alkalmazásokhoz kínál. Ez a keretrendszer megkerüli a virtuális gép kernel hálózati vermet.
 
-Tipikus csomag feldolgozása a kernel hálózati verem használata megszakítás alapú. Minden alkalommal, amikor a hálózati adapter bejövő csomagok fogadása a kernel megszakítási feldolgozása a csomag- és környezeti Váltás a kernel területről felhasználói hely van. DPDK kiküszöböli a környezet közötti váltás és a megszakítási alapuló módszer egy felhasználói helyet megvalósítási gyors csomagfeldolgozáshoz a lekérdezési mód illesztőprogramok használata helyett.
+A tipikus csomagfeldolgozáshoz, amely a kernel hálózati vermet használja, a folyamat nem megszakítási adatvezérelt. A hálózati adapter bejövő csomagok kap, ha nincs a kernel megszakítási folyamat a csomag és a egy helyi váltson a kernel területről a felhasználói felület. DPDK kiküszöböli a környezet közötti váltás és a megszakítási adatvezérelt metódust, hogy használja lekérdezik a gyors csomagfeldolgozáshoz illesztőprogram és a felhasználói térben megvalósítás értéke.
 
-Alacsonyabb szintű erőforrások, például a hardver, logikai magok, memória-kezelés, és lekérdezi a hálózati kártyák illesztőprogram való hozzáférés biztosítása a felhasználó terület kódtárak DPDK áll.
+Csoportok, amelyek alacsonyabb szintű erőforrásokhoz való hozzáférést biztosítanak a felhasználói térben könyvtárak DPDK áll. Ezeket az erőforrásokat is tartalmazhat, hardver, logikai magok, memória-kezelési és hálózati kártyák a lekérdezési mód illesztőprogramjait.
 
-DPDK több operációs rendszer disztribúciók támogató Azure virtual machines szolgáltatásban futtathatja. DPDK biztosítja a környezetbarát hálózati funkciót egy fő differenciálás virtualizálási megvalósítását, hálózati virtuális berendezések (NVA) formájában egy virtuális útválasztó, tűzfal, VPN, terheléselosztót, fejlődött csomag core és -szolgáltatásmegtagadásos (például DDoS-) alkalmazások.
+Az Azure virtuális gépek, amelyek támogatják a több operációs rendszer disztribúciók DPDK futtathatja. DPDK fő differenciálás a hálózati függvény virtualizálási megvalósításokhoz vezetői biztosít. Rendszer ezeket is igénybe vehet az űrlap hálózati virtuális készülékek (nva-k), például virtuális útválasztók, tűzfalak, VPN-eket, terheléselosztók, fejlődött csomag magok és szolgáltatásmegtagadásos (DDoS-) alkalmazások.
 
 ## <a name="benefit"></a>Előny
 
-**Magasabb csomagok másodpercenként (PPS)**: megkerüli a kernel és a felhasználói térben csomagok véve irányítását csökkenti a ciklus száma elkerülve a környezet kapcsoló, és növeli a csomagok az Azure-beli Linuxos virtuális gépeken a másodpercenként feldolgozott.
+**Magasabb csomagok másodpercenként (PPS)**: megkerüli a kernel és a felhasználói térben csomagok véve irányítását csökkenti a ciklus száma elkerülve a környezet kapcsolók. Ez növeli a csomagok Azure-beli Linuxos virtuális gépek a másodpercenként feldolgozott is.
 
 
 ## <a name="supported-operating-systems"></a>Támogatott operációs rendszerek
@@ -50,7 +50,7 @@ Az Azure katalógusából a következő disztribúciók támogatottak:
 
 **Egyéni kernel támogatása**
 
-Tekintse meg [javítások létrehozásához egy beállított Azure Linux-kernelt](https://github.com/microsoft/azure-linux-kernel) bármilyen Linux kernel verziója nem szerepel a listán, vagy további információkat, lépjen kapcsolatba [ azuredpdk@microsoft.com ](mailto:azuredpdk@microsoft.com). 
+Minden Linux kernel verziója, amely nem szerepel a listában, lásd: [javítások létrehozásához egy beállított Azure Linux-kernelt](https://github.com/microsoft/azure-linux-kernel). További információ is fordulhat [ azuredpdk@microsoft.com ](mailto:azuredpdk@microsoft.com). 
 
 ## <a name="region-support"></a>Régió támogatása
 
@@ -105,17 +105,17 @@ zypper \
   --gpg-auto-import-keys install kernel-default-devel gcc make libnuma-devel numactl librdmacm1 rdma-core-devel
 ```
 
-## <a name="setup-virtual-machine-environment-once"></a>(Ha) virtuális gépek környezetének beállítása
+## <a name="set-up-the-virtual-machine-environment-once"></a>A virtuális gép környezetet (egyszer)
 
 1. [Töltse le a legújabb DPDK](https://core.dpdk.org/download). 18.02 vagy újabb verziójú Azure szükség.
-2. Először hozhat létre az alapértelmezett konfigurációt `make config T=x86_64-native-linuxapp-gcc`.
+2. Az alapértelmezett konfigurációt hozhat létre `make config T=x86_64-native-linuxapp-gcc`.
 3. A generált konfigurációt Mellanox PMDs engedélyezése `sed -ri 's,(MLX._PMD=)n,\1y,' build/.config`.
 4. A fordítási `make`.
 5. Telepítés a `make install DESTDIR=<output folder>`.
 
-# <a name="configure-runtime-environment"></a>Futtatókörnyezet konfigurálása
+## <a name="configure-the-runtime-environment"></a>A futtatókörnyezet konfigurálása
 
-Futtassa az alábbi parancsokat egyszer, az újraindítást követően:
+Az újraindítás után futtassa egyszer a következő parancsokat:
 
 1. Hugepages
 
@@ -128,27 +128,29 @@ Futtassa az alábbi parancsokat egyszer, az újraindítást követően:
 
    *  Hozzon létre egy könyvtárat a csatlakoztatáshoz szükséges `mkdir /mnt/huge`.
    *  A csatlakoztatási hugepages `mount -t hugetlbfs nodev /mnt/huge`.
-   *  Ellenőrzés hugepages vannak fenntartva az `grep Huge /proc/meminfo`.
+   *  Ellenőrizze, hogy hugepages lefoglalták `grep Huge /proc/meminfo`.
 
      > [!NOTE]
-     > Egy lehetséges, hogy módosítsa a grub-fájlt, hogy a nagyon nagy lapok vannak fenntartva az rendszerindításkor a következő a [utasításokat](http://dpdk.org/doc/guides/linux_gsg/sys_reqs.html#use-of-hugepages-in-the-linux-environment) DPDK számára. A lap alján található utasítás. Egy Azure-beli Linuxos virtuális gépen futó, amikor módosítani /etc/config/grub.d fájlokat ehelyett hugepages lefoglalása újraindítások között.
+     > Egy lehetséges, hogy módosítsa a grub-fájlt, hogy a hugepages vannak fenntartva az rendszerindításkor az alábbi a [utasításokat](http://dpdk.org/doc/guides/linux_gsg/sys_reqs.html#use-of-hugepages-in-the-linux-environment) a DPDK számára. Az utasítások vannak a lap alján. Ha egy Azure-beli Linuxos virtuális gép használja, módosíthatja a fájlokat a **/etc/config/grub.d** ehelyett hugepages lefoglalása újraindítások között.
 
-2. MAC és IP-címek: használata `ifconfig –a` megtekintéséhez a hálózati adapterek MAC- és IP-címét. A *VF* hálózati adapter és *NETVSC* hálózati adapter van az azonos MAC-címet, de csak a *NETVSC* hálózati illesztőnek egy IP-címet. VF felületek futtatja, az alárendelt felületek NETVSC felületek.
+2. MAC és IP-címek: használata `ifconfig –a` megtekintéséhez a hálózati adapterek MAC- és IP-címét. A *VF* hálózati adapter és *NETVSC* hálózati adapter van az azonos MAC-címet, de csak a *NETVSC* hálózati illesztőnek egy IP-címet. Futtatja a VF felületek, alárendelt felületek NETVSC felületek.
 
 3. PCI-címek
 
-   * Ismerje meg a használni kívánt PCI cím *VF* a `ethtool -i <vf interface name>`.
-   * Győződjön meg arról, hogy testpmd véletlenül nem átveszi a VF pci eszközt *eth0*, ha *eth0* van a gyorsított hálózatkezelés engedélyezett. Ha DPDK alkalmazás véletlenül átvette a felügyeleti hálózati adaptert, és az SSH-kapcsolatot elvesztését eredményezi, használja a soros konzol kill DPDK alkalmazást, vagy a virtuális gép indítása vagy leállítása.
+   * Használjon `ethtool -i <vf interface name>` melyik PCI cím használandó *VF*.
+   * Ha *eth0* van a gyorsított hálózatkezelés engedélyezve van, győződjön meg arról, hogy testpmd véletlenül nem átveszi a VF pci eszközt *eth0*. Ha a DPDK alkalmazás véletlenül veszi át a felügyeleti hálózati adapter és okozza, hogy az SSH-kapcsolat megszakadhat, a soros konzol használatával állítsa le a DPDK alkalmazást. A soros konzol használatával a virtuális gép indítása vagy leállítása.
 
 4. Betöltés *ibuverbs* minden egyes újraindításkor a `modprobe -a ib_uverbs`. Csak a SLES 15., is terheléselosztást *mlx4_ib* a `modprobe -a mlx4_ib`.
 
 ## <a name="failsafe-pmd"></a>FailSafe PMD
 
-DPDK alkalmazások kell futtatnia a failsafe PMD, amely az Azure-ban van közzétéve. Ha az alkalmazás közvetlenül a VF PMD keresztül futtat, akkor nem kap **összes** csomagok, a virtuális gép felé irányuló, mivel bizonyos csomagok jelennek meg a szintetikus felületen keresztül történik. Keresztül a failsafe PMD garantálja, hogy az alkalmazás megkapja, felé irányuló összes csomag-e, és emellett biztosítja az alkalmazás fut DPDK módban való futás esetén is folytatódik a VF vissza lett vonva, ha a gazdagép javítás alatt áll. Failsafe PMD további információkért tekintse meg a [hibamentes lekérdezési mód illesztőprogram könyvtárából](http://doc.dpdk.org/guides/nics/fail_safe.html).
+DPDK alkalmazások kell futtatnia a failsafe PMD, amely az Azure-ban van közzétéve. Ha az alkalmazás közvetlenül a VF PMD keresztül futtat, akkor nem kap **összes** a virtuális géphez, mivel az egyes csomagok mutatja a szintetikus adapter küldött csomagokat. 
+
+A failsafe PMD keresztül futtatja egy DPDK alkalmazást, azt garantálja, hogy az alkalmazás megkapja az összes csomagokat, amelyek végül azt. Azt is gondoskodik arról, hogy az alkalmazás továbbra is működik DPDK módban, még akkor is, amennyiben a VF vissza lett vonva, ha a gazdagép javítás alatt áll. Failsafe PMD kapcsolatos további információkért lásd: [hibamentes lekérdezési mód illesztőprogram könyvtárából](http://doc.dpdk.org/guides/nics/fail_safe.html).
 
 ## <a name="run-testpmd"></a>Testpmd futtatása
 
-Használat `sudo` előtt a *testpmd* parancsot a legfelső szintű módban történő futtatására.
+Legfelső szintű módban testpmd futtatásához használja `sudo` előtt a *testpmd* parancsot.
 
 ### <a name="basic-sanity-check-failsafe-adapter-initialization"></a>Alapszintű: Megerősítést jelölőnégyzet, failsafe adapter inicializálása
 
@@ -171,12 +173,12 @@ Használat `sudo` előtt a *testpmd* parancsot a legfelső szintű módban tört
    -- -i
    ```
 
-   Ha a 2-nél több hálózati adapterrel, futtatja a `--vdev` argumentum ezt a mintát követi: `net_vdev_netvsc<id>,iface=<vf’s pairing eth>`.
+   Ha több mint két hálózati adapterrel, testpmd futtatja a `--vdev` argumentum ezt a mintát követi: `net_vdev_netvsc<id>,iface=<vf’s pairing eth>`.
 
-3.  Megkezdése után futtassa `show port info all` portadatokat ellenőrzéséhez. Megtekintheti az egy vagy két DPDK-portok net_failsafe (nem *net_mlx4*).
+3.  Miután elindult, futtassa `show port info all` portadatokat ellenőrzéséhez. Megtekintheti az egy vagy két DPDK-portok net_failsafe (nem *net_mlx4*).
 4.  Használat `start <port> /stop <port>` forgalom elindításához.
 
-Az előző parancsok start *testpmd* interaktív módban, amely ajánlott, próbálja ki néhány testpmd parancsot.
+Az előző parancsok start *testpmd* interaktív módban, amely ajánlott testpmd parancsok kipróbálásához.
 
 ### <a name="basic-single-sendersingle-receiver"></a>Alapszintű: Egyetlen feladó/egyetlen fogadó
 
@@ -188,7 +190,7 @@ A következő parancsok rendszeres időközönként nyomtatása a csomagok máso
    testpmd \
      -l <core-list> \
      -n <num of mem channels> \
-     -w <pci address of the device intended to use> \
+     -w <pci address of the device you plan to use> \
      --vdev="net_vdev_netvsc<id>,iface=<the iface to attach to>" \
      -- --port-topology=chained \
      --nb-cores <number of cores to use for test pmd> \
@@ -203,7 +205,7 @@ A következő parancsok rendszeres időközönként nyomtatása a csomagok máso
    testpmd \
      -l <core-list> \
      -n <num of mem channels> \
-     -w <pci address of the device intended to use> \
+     -w <pci address of the device you plan to use> \
      --vdev="net_vdev_netvsc<id>,iface=<the iface to attach to>" \
      -- --port-topology=chained \
      --nb-cores <number of cores to use for test pmd> \
@@ -212,7 +214,7 @@ A következő parancsok rendszeres időközönként nyomtatása a csomagok máso
      --stats-period <display interval in seconds>
    ```
 
-Módosítsa a virtuális gépen az előző parancs futtatásakor *IP_SRC_ADDR* és *IP_DST_ADDR* a `app/test-pmd/txonly.c` a konkrét IP-címet a virtuális gépek megfelelően, mielőtt fordítása. Ellenkező esetben a csomagok megszakadnak a fogadó elérése előtt.
+Az előző parancs egy virtuális gépen futtatja, amikor módosítani *IP_SRC_ADDR* és *IP_DST_ADDR* a `app/test-pmd/txonly.c` a konkrét IP-címet a virtuális gépek megfelelően, mielőtt fordítása. Ellenkező esetben a csomagok megszakadnak a fogadó elérése előtt.
 
 ### <a name="advanced-single-sendersingle-forwarder"></a>Speciális: Egyetlen feladó/egyetlen továbbító
 A következő parancsok rendszeres időközönként nyomtatása a csomagok másodpercenkénti statisztika:
@@ -223,7 +225,7 @@ A következő parancsok rendszeres időközönként nyomtatása a csomagok máso
    testpmd \
      -l <core-list> \
      -n <num of mem channels> \
-     -w <pci address of the device intended to use> \
+     -w <pci address of the device you plan to use> \
      --vdev="net_vdev_netvsc<id>,iface=<the iface to attach to>" \
      -- --port-topology=chained \
      --nb-cores <number of cores to use for test pmd> \
@@ -248,7 +250,7 @@ A következő parancsok rendszeres időközönként nyomtatása a csomagok máso
      --stats-period <display interval in seconds>
     ```
 
-Módosítsa a virtuális gépen az előző parancs futtatásakor *IP_SRC_ADDR* és *IP_DST_ADDR* a `app/test-pmd/txonly.c` a konkrét IP-címet a virtuális gépek megfelelően, mielőtt fordítása. Ellenkező esetben a csomagok megszakadnak a továbbító elérése előtt. Nem lehet szeretné, hogy egy harmadik gép továbbított forgalom fogadásához, mivel a *testpmd* továbbító nem módosítja a 3. rétegbeli címeket, kivéve, ha néhány kódot módosít.
+Az előző parancs egy virtuális gépen futtatja, amikor módosítani *IP_SRC_ADDR* és *IP_DST_ADDR* a `app/test-pmd/txonly.c` a konkrét IP-címet a virtuális gépek megfelelően, mielőtt fordítása. Ellenkező esetben a csomagok megszakadnak a továbbító elérése előtt. Nem lehet szeretné, hogy egy harmadik gép továbbított forgalom fogadásához, mivel a *testpmd* továbbító nem módosítja a 3. rétegbeli címeket, kivéve, ha néhány kódot módosít.
 
 ## <a name="references"></a>Referencia
 

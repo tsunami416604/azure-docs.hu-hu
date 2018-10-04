@@ -9,12 +9,12 @@ ms.reviewer: larryfr
 manager: cgronlun
 ms.topic: conceptual
 ms.date: 8/6/2018
-ms.openlocfilehash: f68d5d7faf3555918b9f9a6add7754c8ae23d0a8
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: 73cc346e882acab1c2c00cc49738a388927d3ccf
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/03/2018
-ms.locfileid: "48239234"
+ms.locfileid: "48248244"
 ---
 # <a name="configure-a-development-environment-for-the-azure-machine-learning-service"></a>Az Azure Machine Learning szolgáltatás a fejlesztési környezet konfigurálása
 
@@ -117,6 +117,11 @@ Példa Azure notebookok használatával az Azure Machine Learning szolgáltatás
      ```shell
     pip install --upgrade azureml-sdk[notebooks,automl]
     ```
+
+    > [!NOTE]
+    > Ha egy üzenetet kap, amely `PyYAML` nem lehet eltávolítani, helyette használja a következő parancsot:
+    > 
+    > `pip install --upgrade azureml-sdk[notebooks,automl] --ignore-installed PyYAML`
 
     Az SDK telepítése több percet is igénybe vehet.
 

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: 1be2d67d8a1ee51c4883ae1f50b80ad3a9691c2d
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 2291b2429e6c5c25e051c8f3eca30e1cc3f64611
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46981967"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48247329"
 ---
 # <a name="prepay-for-azure-cosmos-db-resources-with-reserved-capacity"></a>Fizessen elő az Azure Cosmos DB-erőforrásokat, hogy a lefoglalt kapacitás
 
@@ -32,11 +32,11 @@ Az Azure Cosmos DB szolgáltatás számára fenntartott kapacitás is elérhető
 
 Foglalási mérete alapján egy meglévő vagy hamarosan –--telepíteni az Azure Cosmos DB erőforrásokat (például adatbázisok és a tárolók - gyűjteményeket, táblák, grafikonok) által használt átviteli sebesség teljes mennyisége. Megadhatja, hogy a szükséges átviteli sebesség a következő módon:
 
-* Navigáljon a [az Azure Portal](https://portal.azure.com), keresse meg az Azure Cosmos DB-fiókot, nyissa meg a metrikák paneljén és az átlagos átviteli sebesség/s részletekért a **átviteli** lapon 3 – 6 hónapon keresztül. Adja meg ezt a méretet, a szolgáltatás számára fenntartott egységek beszerzésekor.
+* Korábbi adatainak lekérése a teljes kiosztott átviteli kapacitás az Azure Cosmos DB fiókok, adatbázisok és gyűjtemények között minden régióban. Ha például kiértékelheti a napi átlagos kiosztott átviteli sebesség úgy, hogy letölti a napi használati utasítás a `https://account.azure.com`
 
-Azt is megteheti, ha egy nagyvállalati szerződés (EA), letöltheti a használati fájlt és tekintse meg **szolgáltatástípus** értékét a **további információ** a használati fájlban az Azure Cosmos DB első szakasza átviteli adatokat.
+* Azt is megteheti, ha egy nagyvállalati szerződés (EA), letöltheti a használati fájlt és tekintse meg **szolgáltatástípus** értékét a **további információ** a használati fájlban az Azure Cosmos DB első szakasza átviteli adatokat.
 
-Az átlagos átviteli sebességet a számítási feladatok modult összeg a az Azure Cosmos DB-fiókokhoz, hogy fut várhatóan a következő egy vagy három évre, és használja ezt a mennyiséget foglaláshoz is.
+* Az átlagos átviteli sebességet a számítási feladatok modult összeg a az Azure Cosmos DB-fiókokhoz, hogy fut várhatóan a következő egy vagy három évre, és használja ezt a mennyiséget foglaláshoz is.
 
 ## <a name="buy-azure-cosmos-db-reserved-capacity"></a>Azure Cosmos DB szolgáltatás számára fenntartott kapacitás vásárlása
 

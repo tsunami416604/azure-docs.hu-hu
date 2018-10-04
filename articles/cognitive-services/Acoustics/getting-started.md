@@ -9,12 +9,12 @@ ms.component: acoustics
 ms.topic: article
 ms.date: 08/17/2018
 ms.author: kegodin
-ms.openlocfilehash: b80543b199d4b766c1a8800d2dff4cf5ed81f8cc
-ms.sourcegitcommit: 1aedb52f221fb2a6e7ad0b0930b4c74db354a569
+ms.openlocfilehash: 72a9d476b5e5dfc55c6a28dff7e09a20faab332c
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "40181664"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48246990"
 ---
 # <a name="getting-started-with-project-acoustics"></a>Projekt Akusztika – első lépések
 A rövid útmutató bemutatja, hogyan integrálhatja a beépülő modul a Unity-projektjét, a jelenethez os és Akusztika a alkalmazni a megbízható forrásból. Ebben a rövid útmutatóban a következőket kell tennie először hozzon létre egy [Azure batch-fiók](create-azure-account.md). Ez az útmutató a Unity bizonyos fokú ismeretét feltételezi.
@@ -93,9 +93,9 @@ Hozzon létre egy hangforrásról. Kattintson a jelölőnégyzetbe, amely szerin
 ![Hangbemeneti forrás](media/AudioSource.png)
 
 ## <a name="apply-post-bake-design"></a>Alkalmazása utáni bake kialakítása
-A parancsfájl csatolhat a szolgáltatáskéréshez **AcousticsSourceCustomization** kattintva engedélyezéséhez a forrás további tervezési paraméterek, a jelenet megbízható forrásra **összetevő felvétele** választva **parancsfájlok > Akusztika forrás testreszabási**:
+A parancsfájl csatolhat a szolgáltatáskéréshez **AcousticsDesign** kattintva engedélyezéséhez a forrás további tervezési paraméterek, a jelenet megbízható forrásra **összetevő felvétele** választva **parancsfájlok > Akusztika Tervezési**:
 
-![Forrás testreszabása](media/SourceCustomization.png)
+![Forrás testreszabása](media/AcousticsDesign.png)
 
 Nincsenek is paraméterek a a **Microsoft Akusztika Mixer**. Utáni bake tervezési kapcsolatos további információkért lásd: [paraméterek tervezési](design-process.md).
 

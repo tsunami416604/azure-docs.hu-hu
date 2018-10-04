@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/27/2018
+ms.date: 10/03/2018
 ms.author: jeedes
-ms.openlocfilehash: 94b8b935728110cd5dd07b2066e8320274e3b082
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: d28e28a2c4f8144da16c4838f07c9b8bb5ce67f0
+ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39428417"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48268157"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-jamf-pro"></a>Oktatóanyag: Azure Active Directory-integráció a Jamf Pro
 
@@ -38,7 +38,7 @@ Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsol
 
 Az Azure AD-integráció konfigurálása a Jamf Pro, a következőkre van szükség:
 
-- Az Azure AD-előfizetéshez
+- Azure AD-előfizetés
 - A Jamf Pro egyszeri bejelentkezés engedélyezve van az előfizetés
 
 > [!NOTE]
@@ -50,31 +50,34 @@ Ebben az oktatóanyagban a lépéseket teszteléséhez kövesse ezeket a javasla
 - Ha nem rendelkezik egy Azure ad-ben a próbakörnyezet, [egy hónapos próbaverzió beszerzése](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
-Ebben az oktatóanyagban tesztelni az Azure AD egyszeri bejelentkezés egy tesztkörnyezetben. Az ebben az oktatóanyagban ismertetett forgatókönyvben két fő építőelemeket áll:
+
+Ebben az oktatóanyagban tesztelni az Azure AD egyszeri bejelentkezés egy tesztkörnyezetben.
+Az ebben az oktatóanyagban ismertetett forgatókönyvben két fő építőelemeket áll:
 
 1. A Jamf Pro hozzáadása a katalógusból
-1. Konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés
+2. Konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés
 
 ## <a name="adding-jamf-pro-from-the-gallery"></a>A Jamf Pro hozzáadása a katalógusból
+
 A Jamf Pro integrálása az Azure AD beállítása, hozzá kell a Jamf Pro a galériából a felügyelt SaaS-alkalmazások listájára.
 
 **A Jamf Pro hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a  **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
+1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
 
-    ![Az Azure Active Directory gomb][1]
+    ![image](./media/jamfprosamlconnector-tutorial/selectazuread.png)
 
-1. Navigáljon a **vállalati alkalmazások**. Ezután lépjen a **minden alkalmazás**.
+2. Navigáljon a **vállalati alkalmazások**. Ezután lépjen a **minden alkalmazás**.
 
-    ![A vállalati alkalmazások panelen][2]
+    ![image](./media/jamfprosamlconnector-tutorial/a_select_app.png)
     
-1. Új alkalmazás hozzáadásához kattintson **új alkalmazás** gombra a párbeszédpanel tetején.
+3. Új alkalmazás hozzáadásához kattintson **új alkalmazás** gombra a párbeszédpanel tetején.
 
-    ![Az új alkalmazás gomb][3]
+    ![image](./media/jamfprosamlconnector-tutorial/a_new_app.png)
 
-1. A Keresés mezőbe írja be a **a Jamf Pro**, jelölje be **a Jamf Pro** eredmény panelen kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
+4. A Keresés mezőbe írja be a **a Jamf Pro**, jelölje be **a Jamf Pro** eredmény panelen kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
 
-    ![A Jamf Pro a találatok listájában](./media/jamfprosamlconnector-tutorial/tutorial_jamfprosamlconnector_addfromgallery.png)
+     ![image](./media/jamfprosamlconnector-tutorial/a_add_app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés tesztelése és konfigurálása
 
@@ -85,10 +88,10 @@ Az egyszeri bejelentkezés működéséhez az Azure AD tudnia kell, a partner fe
 Az Azure AD egyszeri bejelentkezés vizsgálata a Jamf Pro konfigurálni, kell hajtsa végre a következő építőelemeket:
 
 1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
-1. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
-1. **[A Jamf Pro tesztfelhasználó létrehozása](#create-a-jamf-pro-test-user)**  - a-megfelelője a Britta Simon rendelkezik a Jamf Pro szolgáltatásban, amely kapcsolódik az Azure AD felhasználói ábrázolása.
-1. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
-1. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
+2. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
+3. **[A Jamf Pro tesztfelhasználó létrehozása](#create-a-jamf-pro-test-user)**  - a-megfelelője a Britta Simon rendelkezik a Jamf Pro szolgáltatásban, amely kapcsolódik az Azure AD felhasználói ábrázolása.
+4. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
+5. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
 
@@ -96,50 +99,62 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
 
 **Az Azure AD egyszeri bejelentkezés konfigurálása a Jamf Pro, hajtsa végre az alábbi lépéseket:**
 
-1. Az Azure Portalon az a **a Jamf Pro** alkalmazás integrációs oldalán kattintson a **egyszeri bejelentkezési**.
+1. Az a [az Azure portal](https://portal.azure.com/), a a **a Jamf Pro** alkalmazás integráció lapon jelölje be **egyszeri bejelentkezési**.
 
-    ![Egyszeri bejelentkezési hivatkozás konfigurálása][4]
+    ![image](./media/jamfprosamlconnector-tutorial/b1_b2_select_sso.png)
 
-1. Az a **egyszeri bejelentkezési** párbeszédablakban válassza **mód** , **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezéséhez.
- 
-    ![Egyszeri bejelentkezési párbeszédpanel](./media/jamfprosamlconnector-tutorial/tutorial_jamfprosamlconnector_samlbase.png)
+2. Kattintson a **módosítása egyszeri bejelentkezési mód** felett válassza ki a képernyő a **SAML** mód.
 
-1. Az a **a Jamf Pro tartomány és URL-címek** területén kövesse az alábbi lépéseket, ha az alkalmazás a konfigurálni kívánt **Identitásszolgáltató** kezdeményezett mód:
+      ![image](./media/jamfprosamlconnector-tutorial/b1_b2_saml_ssso.png)
 
-    ![A Jamf Pro tartomány és URL-címek egyszeri bejelentkezési adatait](./media/jamfprosamlconnector-tutorial/tutorial_jamfprosamlconnector_url.png)
+3. Az a **egyszeri bejelentkezési módszer** párbeszédpanelen kattintson **kiválasztása** a **SAML** módot az egyszeri bejelentkezés engedélyezése.
 
-    a. Az a **azonosító (entityid)** szövegmezőbe írja be a következő minta használatával URL-címe: `https://<subdomain>.jamfcloud.com/saml/metadata`
+    ![image](./media/jamfprosamlconnector-tutorial/b1_b2_saml_sso.png)
 
-    b. Az a **válasz URL-cím** szövegmezőbe írja be a következő minta használatával URL-címe: `https://<subdomain>.jamfcloud.com/saml/SSO`
+4. Az a **állítsa be egyszeri bejelentkezést az SAML** kattintson **szerkesztése** gombra kattintva nyissa meg a **alapszintű SAML-konfigurációja** párbeszédpanel.
 
-1. Ellenőrizze **speciális URL-beállítások megjelenítése** , és hajtsa végre a következő lépést, ha az alkalmazás a konfigurálni kívánt **SP** kezdeményezett mód:
+    ![image](./media/jamfprosamlconnector-tutorial/b1-domains_and_urlsedit.png)
 
-    ![A Jamf Pro tartomány és URL-címek egyszeri bejelentkezési adatait](./media/jamfprosamlconnector-tutorial/tutorial_jamfprosamlconnector_url1.png)
+5. Az a **alapszintű SAML-konfigurációja** szakaszban, hajtsa végre az alábbi lépéseket:
 
-    Az a **bejelentkezési URL-** szövegmezőbe írja be a következő minta használatával URL-címe: `https://<subdomain>.jamfcloud.com`
-     
+    a. Az a **azonosító** szövegmezőbe írja be egy URL-címet a következő mintával: `https://<subdomain>.jamfcloud.com/saml/metadata`.
+
+    b. Az a **válasz URL-cím** szövegmezőbe írja be egy URL-címet a következő mintával: `https://<subdomain>.jamfcloud.com/saml/SSO`.
+
+    ![image](./media/jamfprosamlconnector-tutorial//b2-domains_and_urls.png)
+
+    c. Kattintson a **további URL-címet beállítani**.
+
+    d. Az a **bejelentkezési URL-** szövegmezőbe írja be egy URL-címet a következő mintával: `https://<subdomain>.jamfcloud.com`.
+
+    ![image](./media/jamfprosamlconnector-tutorial//b4-domains_and_urls.png)
+
     > [!NOTE]
     > Ezek a értékei nem valódi. Frissítse a tényleges azonosítóját, válasz URL-cím és bejelentkezési URL-ezeket az értékeket. A tényleges azonosító értéket kap **egyszeri bejelentkezés** a Jamf Pro portál, az oktatóanyag későbbi részében ismertetett szakaszban. A tényleges kibonthatja **altartomány** értéket az azonosító értékét, és azt használja **altartomány** adatokat bejelentkezési URL- és a válasz URL-cím.
 
-1. Az a **SAML-aláíró tanúsítvány** területén kattintson a Másolás gombra, hogy **alkalmazás összevonási metaadatainak URL-címe** , és illessze be a Jegyzettömbbe.
+6. Az a **állítsa be egyszeri bejelentkezést az SAML** lap a **SAML-aláíró tanúsítvány** területén kattintson a Másolás gombra, hogy **alkalmazás összevonási metaadatainak URL-címe** és mentse a számítógép.
 
-    ![A tanúsítvány letöltési hivatkozás](./media/jamfprosamlconnector-tutorial/tutorial_jamfprosamlconnector_certificate.png) 
+    ![image](./media/jamfprosamlconnector-tutorial/C2_certificate.png)
 
-1. Kattintson a **mentése** gombra.
+7. Automatizálhatja a Jamf Pro konfigurációra, telepítenie kell **saját alkalmazások biztonságos bejelentkezési böngészőbővítmény** kattintva **a bővítmény telepítése**.
 
-    ![Egyszeri bejelentkezés Mentés gomb konfigurálása](./media/jamfprosamlconnector-tutorial/tutorial_general_400.png)
-    
-1. Egy másik böngészőablakban jelentkezzen be a Jamf Pro vállalati hely rendszergazdaként.
+    ![image](./media/jamfprosamlconnector-tutorial/install_extension.png)
+ 
+8. A felvett bővítmény a böngészőre, kattintson a **beállítása a Jamf Pro** fog irányítja át a Jamf Pro alkalmazás. Itt adja meg a rendszergazdai hitelesítő adatait, jelentkezzen be a Jamf Pro szolgáltatásban. A webböngésző-bővítmény automatikusan konfigurálja az alkalmazást, és 9 és 12 lépések automatizálásához.
 
-1. Kattintson a **beállítások ikon** , az oldal jobb felső sarkában.
+    ![image](./media/jamfprosamlconnector-tutorial/d1_saml.png)
+
+9. Ha szeretné manuálisan beállítani a Jamf Pro, nyissa meg egy új böngészőablakban, és jelentkezzen be a Jamf Pro vállalati hely rendszergazdaként, és hajtsa végre az alábbi lépéseket:
+
+10. Kattintson a **beállítások ikon** , az oldal jobb felső sarkában.
 
     ![A Jamf Pro-konfiguráció](./media/jamfprosamlconnector-tutorial/configure1.png)
 
-1. Kattintson a **egyszeri bejelentkezés**.
+11. Kattintson a **egyszeri bejelentkezés**.
 
     ![A Jamf Pro-konfiguráció](./media/jamfprosamlconnector-tutorial/configure2.png)
 
-1. Az a **egyszeri bejelentkezés** oldalon tegye a következőket:
+12. Az a **egyszeri bejelentkezés** oldalon tegye a következőket:
 
     ![A Jamf Pro egyetlen](./media/jamfprosamlconnector-tutorial/tutorial_jamfprosamlconnector_single.png)
 
@@ -152,8 +167,8 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
     d. Válassza ki **E-mail** a **felhasználó-HOZZÁRENDELÉS: a JAMF PRO**. A Jamf Pro leképezi a következő módokon az identitásszolgáltató által küldött SAML-attribútumok: a felhasználók és csoportok számára. Amikor egy felhasználó megpróbál hozzáférni a Jamf Pro a Jamf Pro alapértelmezés szerint a felhasználóval kapcsolatos adatok beolvasása az identitásszolgáltató, és egyeztet a Jamf Pro felhasználói fiókok ellen. Ha a bejövő felhasználói fiók nem létezik a Jamf Pro szolgáltatásban, majd csoport névegyeztetés történik.
 
     e. Illessze be az értéket `http://schemas.microsoft.com/ws/2008/06/identity/claims/groups` a a **ATTRIBÚTUM CSOPORTNÉV** szövegmezőbe.
- 
-1. A legfeljebb azonos lapon görgetve **IDENTITÁSSZOLGÁLTATÓ** alatt a **egyszeri bejelentkezés** szakaszt, és hajtsa végre az alábbi lépéseket:
+
+13. A legfeljebb azonos lapon görgetve **IDENTITÁSSZOLGÁLTATÓ** alatt a **egyszeri bejelentkezés** szakaszt, és hajtsa végre az alábbi lépéseket:
 
     ![A Jamf Pro-konfiguráció](./media/jamfprosamlconnector-tutorial/configure3.png)
 
@@ -170,38 +185,31 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
 
     e. Kattintson a **Save** (Mentés) gombra.
 
-### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára
+### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára 
 
 Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy tesztfelhasználót.
 
-   ![Hozzon létre egy Azure ad-ben tesztfelhasználó számára][100]
+1. Az Azure Portalon, a bal oldali panelen válassza ki a **Azure Active Directory**válassza **felhasználók**, majd válassza ki **minden felhasználó**.
 
-**Tesztfelhasználó létrehozása az Azure AD-ban, hajtsa végre az alábbi lépéseket:**
+    ![image](./media/jamfprosamlconnector-tutorial/d_users_and_groups.png)
 
-1. Az Azure Portalon, a bal oldali ablaktáblán kattintson a **Azure Active Directory** gombra.
+2. Válassza ki **új felhasználó** a képernyő tetején.
 
-    ![Az Azure Active Directory gomb](./media/jamfprosamlconnector-tutorial/create_aaduser_01.png)
+    ![image](./media/jamfprosamlconnector-tutorial/d_adduser.png)
 
-1. A felhasználók listájának megjelenítéséhez, lépjen a **felhasználók és csoportok**, és kattintson a **minden felhasználó**.
+3. A felhasználó tulajdonságai között az alábbi lépések végrehajtásával.
 
-    ![A "felhasználók és csoportok" és "Minden felhasználó" hivatkozások](./media/jamfprosamlconnector-tutorial/create_aaduser_02.png)
-
-1. Megnyitásához a **felhasználói** párbeszédpanelen kattintson a **Hozzáadás** felső részén a **minden felhasználó** párbeszédpanel bezárásához.
-
-    ![A Hozzáadás gombra.](./media/jamfprosamlconnector-tutorial/create_aaduser_03.png)
-
-1. Az a **felhasználói** párbeszédpanelen hajtsa végre az alábbi lépéseket:
-
-    ![A felhasználó párbeszédpanel](./media/jamfprosamlconnector-tutorial/create_aaduser_04.png)
+    ![image](./media/jamfprosamlconnector-tutorial/d_userproperties.png)
 
     a. Az a **neve** mezőbe írja be **BrittaSimon**.
+  
+    b. Az a **felhasználónév** mezőtípus **brittasimon@yourcompanydomain.extension**  
+    Például: BrittaSimon@contoso.com
 
-    b. Az a **felhasználónév** mezőbe írja be a felhasználó Britta Simon e-mail-címét.
+    c. Válassza ki **tulajdonságok**, jelölje be a **Show jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel az értékkel, a jelszó mező jelenik meg.
 
-    c. Válassza ki a **jelszó megjelenítése** jelölje be a jelölőnégyzetet, és jegyezze fel a megjelenített érték a **jelszó** mezőbe.
+    d. Kattintson a **Létrehozás** gombra.
 
-    d. Kattintson a **Create** (Létrehozás) gombra.
- 
 ### <a name="create-a-jamf-pro-test-user"></a>A Jamf Pro tesztfelhasználó létrehozása
 
 Ahhoz, hogy az Azure AD-felhasználók jelentkezzen be a Jamf Pro, azok ki kell építeni a Jamf Pro be. Esetén a Jamf Pro oldalán kiépítése a manuális feladat.
@@ -210,30 +218,30 @@ Ahhoz, hogy az Azure AD-felhasználók jelentkezzen be a Jamf Pro, azok ki kell 
 
 1. Jelentkezzen be rendszergazdaként a Jamf Pro vállalati webhely.
 
-1. Kattintson a **beállítások ikon** , az oldal jobb felső sarkában.
+2. Kattintson a **beállítások ikon** , az oldal jobb felső sarkában.
 
     ![Alkalmazott hozzáadása](./media/jamfprosamlconnector-tutorial/configure1.png)
 
-1. Kattintson a **a Jamf Pro felhasználói fiókok és csoportok**.
+3. Kattintson a **a Jamf Pro felhasználói fiókok és csoportok**.
 
     ![Alkalmazott hozzáadása](./media/jamfprosamlconnector-tutorial/user1.png)
 
-1. Kattintson az **Új** lehetőségre.
+4. Kattintson az **Új** lehetőségre.
 
     ![Alkalmazott hozzáadása](./media/jamfprosamlconnector-tutorial/user2.png)
 
-1. Válassza ki **standard szintű fiók létrehozása**.
+5. Válassza ki **standard szintű fiók létrehozása**.
 
     ![Alkalmazott hozzáadása](./media/jamfprosamlconnector-tutorial/user3.png)
 
-1. Az a **új fiók** dailog, hajtsa végre az alábbi lépéseket:
+6. Az a **új fiók** dailog, hajtsa végre az alábbi lépéseket:
 
     ![Alkalmazott hozzáadása](./media/jamfprosamlconnector-tutorial/user4.png)
 
     a. Az a **felhasználónév** szövegmezőbe írja be a BrittaSimon teljes nevét.
 
     b. Válassza ki a megfelelő beállításokat a szervezet megfelelően **hozzáférési szint**, **jogosultság beállítása**, és a **hozzáférési állapota**.
-    
+
     c. Az a **teljes FÁJLVISSZAÁLLÍTÁSI név** szövegmezőbe írja be a Britta Simon teljes nevét.
 
     d. Az a **E-mail cím** szövegmezőbe írja be a Britta Simon fiók e-mail-címét.
@@ -248,55 +256,34 @@ Ahhoz, hogy az Azure AD-felhasználók jelentkezzen be a Jamf Pro, azok ki kell 
 
 Ebben a szakaszban engedélyezze Britta Simon hozzáférés biztosítása a Jamf Pro által használandó Azure egyszeri bejelentkezést.
 
-![A felhasználói szerepkör hozzárendelése][200] 
+1. Az Azure Portalon válassza ki a **vállalati alkalmazások**, jelölje be **minden alkalmazás**, majd **a Jamf Pro**.
 
-**A Jamf Pro Britta Simon rendel, hajtsa végre az alábbi lépéseket:**
+    ![image](./media/jamfprosamlconnector-tutorial/d_all_applications.png)
 
-1. Az Azure Portalon nyissa meg az alkalmazások megtekintése, és a könyvtár nézetben keresse meg és nyissa meg **vállalati alkalmazások** kattintson **minden alkalmazás**.
+2. Az alkalmazások listájában jelölje ki a **a Jamf Pro**.
 
-    ![Felhasználó hozzárendelése][201] 
+    ![image](./media/jamfprosamlconnector-tutorial/d_all_proapplications.png)
 
-1. Az alkalmazások listájában jelölje ki a **a Jamf Pro**.
+3. A bal oldali menüben válassza **felhasználók és csoportok**.
 
-    ![A Jamf Pro hivatkozásra az alkalmazások listáját](./media/jamfprosamlconnector-tutorial/tutorial_jamfprosamlconnector_app.png)  
+    ![image](./media/jamfprosamlconnector-tutorial/d_leftpaneusers.png)
 
-1. A bal oldali menüben kattintson **felhasználók és csoportok**.
+4. Válassza ki a **Hozzáadás** gombra, majd válassza **felhasználók és csoportok** a a **hozzárendelés hozzáadása** párbeszédpanel.
 
-    ![A "Felhasználók és csoportok" hivatkozásra][202]
+    ![image](./media/jamfprosamlconnector-tutorial/d_assign_user.png)
 
-1. Kattintson a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a **hozzárendelés hozzáadása** párbeszédpanel.
+4. Az a **felhasználók és csoportok** párbeszédpanelen válassza **Britta Simon** a felhasználók listában, majd kattintson a **kiválasztása** gombra a képernyő alján.
 
-    ![A hozzárendelés hozzáadása panel][203]
+5. Az a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **hozzárendelése** gombra.
 
-1. A **felhasználók és csoportok** párbeszédablakban válassza **Britta Simon** a felhasználók listában.
-
-1. Kattintson a **kiválasztása** gombot **felhasználók és csoportok** párbeszédpanel.
-
-1. Kattintson a **hozzárendelése** gombot **hozzárendelés hozzáadása** párbeszédpanel.
-    
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés vizsgálata
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 
 Ha a hozzáférési panelen a Jamf Pro csempére kattint, akkor kell lekérése automatikusan bejelentkezett a Jamf Pro alkalmazásba.
-A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezetés a hozzáférési Panel használatába](../user-help/active-directory-saas-access-panel-introduction.md). 
+A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezetés a hozzáférési Panel használatába](../user-help/active-directory-saas-access-panel-introduction.md).
 
 ## <a name="additional-resources"></a>További források
 
 * [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](tutorial-list.md)
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
-
-<!--Image references-->
-
-[1]: ./media/jamfprosamlconnector-tutorial/tutorial_general_01.png
-[2]: ./media/jamfprosamlconnector-tutorial/tutorial_general_02.png
-[3]: ./media/jamfprosamlconnector-tutorial/tutorial_general_03.png
-[4]: ./media/jamfprosamlconnector-tutorial/tutorial_general_04.png
-
-[100]: ./media/jamfprosamlconnector-tutorial/tutorial_general_100.png
-
-[200]: ./media/jamfprosamlconnector-tutorial/tutorial_general_200.png
-[201]: ./media/jamfprosamlconnector-tutorial/tutorial_general_201.png
-[202]: ./media/jamfprosamlconnector-tutorial/tutorial_general_202.png
-[203]: ./media/jamfprosamlconnector-tutorial/tutorial_general_203.png
-

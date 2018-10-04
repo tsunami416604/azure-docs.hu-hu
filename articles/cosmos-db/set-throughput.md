@@ -7,28 +7,18 @@ manager: kfile
 ms.service: cosmos-db
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/03/2018
+ms.date: 10/02/2018
 ms.author: andrl
-ms.openlocfilehash: 2da00f700f5cc234455cc686377e5863f1c35bdd
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: 2f6720e39856366e4bca387effdc2a0624d85826
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45734471"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48247994"
 ---
 # <a name="set-and-get-throughput-for-azure-cosmos-db-containers-and-database"></a>Állítsa be, és az Azure Cosmos DB-tárolók és az adatbázis átviteli sebesség lekérdezése
 
-Beállíthat átviteli sebességet egy Azure Cosmos DB-tároló vagy egy tárolót az Azure portal használatával, vagy az ügyfél SDK-k használatával. 
-
-**Tároló üzembe helyezése átviteli sebesség:** átviteli tárolók készletének üzembe helyezésekor, ezeket az összes tároló megosztás a kiosztott átviteli sebesség. Az egyes tárolókhoz kiépítési átviteli garantálja a meghatározott tároló átviteli sebesség fenntartása. A tároló szintjén RU/s hozzárendelésekor a tárolók hozható létre *rögzített* vagy *korlátlan*. A rögzített méretű tárolók mérete legfeljebb 10 GB, feldolgozási sebessége legfeljebb 10000 RU/s lehet. A korlátlan tároló létrehozásához meg kell adnia egy minimális 1000 RU/s átviteli sebességet és a egy [partíciókulcs](partition-data.md). Az adatok több partíción kell osztani, előfordulhat, hogy rendelkezik, szükség, válassza ki a partíciós kulcs, amely rendelkezik egy nagy számosságú (100 millió egyedi érték). Számos különböző értékeket a partíciókulcs kiválasztásával, győződjön meg arról, hogy a tároló/tábla/graph és a kérések skálázhatók egyenletesen Azure Cosmos DB által. 
-
-**A tárolók vagy az adatbázis kiépítése átviteli:** kiépítési átviteli adatbázis lehetővé teszi, hogy az átviteli sebességet, ahhoz az adatbázishoz tartozó összes tároló között megosztani. Egy Azure Cosmos DB adatbázison belül rendelkezhet tárolók egy készletét, amely megosztja az átviteli sebesség, valamint a tárolók, amely rendelkezik a dedikált átviteli sebességet. RU/s tárolók több hozzárendelésekor a tárolók a készlethez tartozó számít *korlátlan* tárolók és a egy partíciókulcsot kell megadnia.
-
-A kiosztott átviteli sebesség alapján, az Azure Cosmos DB foglal le a tároló(k) bérletét, és az elágazást/rebalances adatokat tárolni a több partícióra kiterjedő növekedésével, fizikai partíciók. Tároló és az adatbázis átviteli szintű üzembe helyezésének egymástól különálló ajánlatok, és mindkét közötti váltáskor szükséges áttelepítés forrás adatait a célhelyre. Ami azt jelenti, hogy hozzon létre egy új adatbázist vagy egy új gyűjteményt, és ezután telepítse át az adatok segítségével kell [tömeges végrehajtó könyvtár](bulk-executor-overview.md) vagy [Azure Data Factory](../data-factory/connector-azure-cosmos-db.md). Az alábbi ábrán különböző szinteken kiépítési átviteli sebesség:
-
-![Különálló tárolókat, és a tárolók beállított kiépítési kérelemegység](./media/request-units/provisioning_set_containers.png)
-
-A következő szakaszokban megismerheti a Azure Cosmos DB-fiókot a különböző szinteken átviteli sebesség konfigurálásához szükséges lépéseket. 
+Beállíthat átviteli sebességet egy Azure Cosmos DB-tároló vagy egy tárolót az Azure portal használatával, vagy az ügyfél SDK-k használatával. Ez a cikk ismerteti a különböző granularitása van egy Azure Cosmos DB-fiókot, átviteli sebesség konfigurálásához szükséges lépéseket.
 
 ## <a name="provision-throughput-by-using-azure-portal"></a>Kiépítés átviteli sebesség az Azure portal használatával
 

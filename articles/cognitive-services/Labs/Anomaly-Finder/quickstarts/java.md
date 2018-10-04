@@ -1,6 +1,6 @@
 ---
-title: Az Anomáliadetektálási kereső API használata Java - Microsoft kognitív szolgáltatások |} Microsoft Docs
-description: Get információkat és a kód minták segítségével gyorsan használatának megkezdésében Java és a Anomáliadetektálás kognitív szolgáltatásban.
+title: Az Anomáliadetektálási kereső API használata a Javával – a Microsoft Cognitive Services |} A Microsoft Docs
+description: Get information és kód minták segítségével gyorsan használatának első lépései a Java és a rendellenességek észlelése a Cognitive Services.
 services: cognitive-services
 author: chliang
 manager: bix
@@ -9,41 +9,43 @@ ms.technology: anomaly-detection
 ms.topic: article
 ms.date: 05/01/2018
 ms.author: kefre
-ms.openlocfilehash: 8152c23e6c5332d243d851be56bab1e4085dbe5a
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 84997b5d50f879fd4be286a3ca362e70f90c9202
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35348182"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48249185"
 ---
-# <a name="use-the-anomaly-finder-api-with-java"></a>Az Anomáliadetektálási kereső API használata Javával
+# <a name="use-the-anomaly-finder-api-with-java"></a>A Anomáliaészlelő API használata Javával
 
-Ez a cikk és a segítségével gyorsan mintakódok használatának megkezdésében a Anomáliadetektálási észlelési API Java feladatnak az anomáliadetektálási észlelésének eredménye idő adatsorozat beolvasása.
+[!INCLUDE [PrivatePreviewNote](../../../../../includes/cognitive-services-anomaly-finder-private-preview-note.md)]
+
+Ez a cikk bemutatja, és kódminták segítségével gyorsan az Anomáliadetektáló API-használatának Java a feladatnak az anomáliadetektálási az észlelés eredménye idősorozat-adatok beolvasása.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 [!INCLUDE [GetSubscriptionKey](../includes/get-subscription-key.md)]
 
-## <a name="getting-anomaly-points-with-the-anomaly-detection-api-using-java"></a>Az Anomáliadetektálási észlelési API-t használó Java anomáliadetektálási pontok lekérdezése
+## <a name="getting-anomaly-points-with-the-anomaly-detection-api-using-java"></a>A Java használatával Anomáliadetektálás API kezdeti lépéseket ismertető anomáliadetektálási pontokat
 
 [!INCLUDE [DataContract](../includes/datacontract.md)]
 
-### <a name="example-of-time-series-data"></a>Adatsorozat időadatok – példa
+### <a name="example-of-time-series-data"></a>Idősorozat-adatok – példa
 
-A példa az adatsorozat pontjainak idő a következőképpen történik.
+A példában az adatsorozat adatpontjainak idő a következőképpen történik.
 
 [!INCLUDE [Request](../includes/request.md)]
 
-### <a name="analyze-data-and-get-anomaly-points-java-example"></a>Adatok elemzése és anomáliadetektálási pontok például Java beolvasása
+### <a name="analyze-data-and-get-anomaly-points-java-example"></a>Adatok elemzése és anomáliadetektálási pontok első Java-példában
 
-A minta futtatásához hajtsa végre a következő lépéseket:
+A minta futtatásához hajtsa végre az alábbi lépéseket:
 1. Hozzon létre egy új parancssori alkalmazást.
-2. Cserélje le a következő kódot a fő osztály (megtartani `package` utasítások).
-3. Cserélje le a `[YOUR_SUBSCRIPTION_KEY]` értéke az érvényes előfizetés-kulccsal.
-4. Cserélje le a `[REPLACE_WITH_THE_EXAMPLE_OR_YOUR_OWN_DATA_POINTS]` a példa vagy a saját adatpontot tartalmaznak.
-5. A globális tárak letöltését a Maven tárház a `lib` a projekt könyvtár:
+2. Cserélje le a Main osztály tartalmát az alábbi kódra (a `package` utasításokat tartsa meg).
+3. Cserélje le a `[YOUR_SUBSCRIPTION_KEY]` értéket az érvényes előfizetői azonosítóra.
+4. Cserélje le a `[REPLACE_WITH_THE_EXAMPLE_OR_YOUR_OWN_DATA_POINTS]` a példa vagy a saját adatpont.
+5. Ezek a globális kódtárak letöltéséhez a Maven tárházból való a `lib` könyvtárat a projekthez:
    * `org.apache.httpcomponents:httpclient:4.5.2`
-6. Futtassa a "Fő".
+6. Futtassa a „Main” parancsot.
 
 ```java
 
@@ -113,7 +115,7 @@ public class Main {
 
 ### <a name="example-response"></a>Példaválasz
 
-A sikeres válasz JSON-ban adja vissza. Példa egy válasz a következőképpen történik.
+A rendszer JSON formátumban adja vissza a sikeres választ. Példaválasz a következőképpen történik.
 [!INCLUDE [Response](../includes/response.md)]
 
 ## <a name="next-steps"></a>További lépések

@@ -1,6 +1,6 @@
 ---
-title: Az Anomáliadetektálási kereső API használata a Python - Microsoft kognitív szolgáltatások |} Microsoft Docs
-description: Get információkat és a kód minták segítségével gyorsan használatának megkezdésében Anomáliadetektálási kereső Python kognitív szolgáltatásban.
+title: Az Anomáliadetektálási kereső API a Pythonnal – a Microsoft Cognitive Services használatával |} A Microsoft Docs
+description: Get information és kód minták segítségével gyorsan az Python a Cognitive Services-használatának Anomáliaészlelő.
 services: cognitive-services
 author: chliang
 manager: bix
@@ -9,35 +9,37 @@ ms.technology: anomaly-detection
 ms.topic: article
 ms.date: 05/01/2018
 ms.author: chliang
-ms.openlocfilehash: c14916b0644edab613b298d6e71f8bbb9a6bb804
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: c9fd96bf4a9bdc9dfe5baf52aa742e19d5436708
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35348158"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48247351"
 ---
-# <a name="use-the-anomaly-finder-api-with-python"></a>Az Anomáliadetektálási kereső API használata a Python
+# <a name="use-the-anomaly-finder-api-with-python"></a>Használja a Anomáliaészlelő API a Pythonnal
 
-Ez a cikk és a segítségével gyorsan mintakódok használatának megkezdésében a Anomáliadetektálási kereső API Python feladatnak az anomáliadetektálási eredmény idő adatsorozat beolvasása.
+[!INCLUDE [PrivatePreviewNote](../../../../../includes/cognitive-services-anomaly-finder-private-preview-note.md)]
+
+Ez a cikk bemutatja, és kódminták segítségével gyorsan az Anomáliadetektálási kereső API-használatának Python a feladatnak az anomáliadetektálási eredmény idősorozat-adatok beolvasása.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 [!INCLUDE [GetSubscriptionKey](../includes/get-subscription-key.md)]
 
-## <a name="getting-anomaly-points-with-anomaly-finder-api-using-python"></a>Az anomáliadetektálási pontok első Anomáliadetektálási kereső API-val pythonos környezetekben 
+## <a name="getting-anomaly-points-with-anomaly-finder-api-using-python"></a>Az Anomáliadetektálási kereső API-jával Python anomáliadetektálási pontok beolvasása 
 
 [!INCLUDE [DataContract](../includes/datacontract.md)]
 
-### <a name="example-of-time-series-data"></a>Adatsorozat időadatok – példa
+### <a name="example-of-time-series-data"></a>Idősorozat-adatok – példa
 
-A példa az adatsorozat pontjainak idő a következőképpen történik.
+A példában az adatsorozat adatpontjainak idő a következőképpen történik.
 
 [!INCLUDE [Request](../includes/request.md)]
 
-### <a name="analyze-data-and-get-anomaly-points-python-example"></a>Adatok elemzése és anomáliadetektálási pontok Python példa beolvasása
+### <a name="analyze-data-and-get-anomaly-points-python-example"></a>Adatok elemzése és anomáliadetektálási pontok Python-példát beolvasása
 
-Győződjön meg arról, python3 telepítette, majd hozzon létre egy detect.py nevű python végrehajtható fájlt. A detect.py a kódot kell tartalmaznia. A kód végrehajtása, előtt ne felejtse el lecserélni a `[YOUR_SUBSCRIPTION_KEY]` értéke az érvényes előfizetés-kulccsal.
-Cserélje le a `[REPLACE_WITH_THE_EXAMPLE_OR_YOUR_OWN_DATA_POINTS]` a adatpontokként.
+Ellenőrizze, hogy telepítve van a python3, majd hozzon létre egy python végrehajtható fájlt detect.py. Detect.py tartalmaznia kell az alábbi kódot. Mielőtt a kód hajtana végre, ne felejtse el kicserélni az `[YOUR_SUBSCRIPTION_KEY]` értéke az érvényes előfizetési kulccsal végzett.
+Cserélje le a `[REPLACE_WITH_THE_EXAMPLE_OR_YOUR_OWN_DATA_POINTS]` az adatpontok együtt.
 
 ```python
 import requests
@@ -65,7 +67,7 @@ print(result)
 
 ### <a name="example-response"></a>Példaválasz
 
-A sikeres válasz JSON-ban adja vissza. Mintaválasz a következőképpen történik.
+A rendszer JSON formátumban adja vissza a sikeres választ. Mintaválasz a következőképpen történik.
 [!INCLUDE [Response](../includes/response.md)]
 
 ## <a name="next-steps"></a>További lépések

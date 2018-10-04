@@ -1,6 +1,6 @@
 ---
-title: Hozzon létre egy felügyelt képre az Azure-ban |} Microsoft Docs
-description: Egy felügyelt képre egy általánosított virtuális gép vagy egy virtuális merevlemez létrehozása az Azure-ban. Lemezképek, a felügyelt lemezeket használó több virtuális gépek létrehozásához használható.
+title: Létrehozhat egy felügyelt rendszerképet az Azure-ban |} A Microsoft Docs
+description: Hozzon létre egy felügyelt rendszerképet egy általánosított virtuális gép vagy VHD-t az Azure-ban. Lemezképek több felügyelt lemezeket használó virtuális gépek létrehozásához használható.
 services: virtual-machines-windows
 documentationcenter: ''
 author: cynthn
@@ -13,68 +13,87 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 04/10/2018
+ms.date: 09/27/2018
 ms.author: cynthn
-ms.openlocfilehash: 4445787fd559c6d0a6dfc891910cb9a139a6907e
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: ac5ad9d0067205411c56562264aed81f8a5751bc
+ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/19/2018
-ms.locfileid: "31602569"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48267453"
 ---
-# <a name="create-a-managed-image-of-a-generalized-vm-in-azure"></a>Egy felügyelt képre egy általánosított virtuális gép létrehozása az Azure-ban
+# <a name="create-a-managed-image-of-a-generalized-vm-in-azure"></a>Az Azure-beli általánosított virtuális gép felügyelt rendszerképének létrehozása
 
-Egy felügyelt képre erőforrás vagy egy felügyelt lemezes, vagy egy nem felügyelt lemezek tárfiókokban tárolt általánosított virtuális gép alapján hozhatók létre. A kép majd több virtuális gépek létrehozásához használható. 
+Egy felügyelt rendszerképet erőforrás az általánosított virtuális gép (VM) tárolt felügyelt lemez vagy a storage-fiókban lévő nem felügyelt lemez hozható létre. A lemezkép ezután több virtuális gép létrehozására használható. 
 
-## <a name="generalize-the-windows-vm-using-sysprep"></a>A Windows virtuális gép Sysprep generalize
+## <a name="generalize-the-windows-vm-using-sysprep"></a>Windows rendszerű virtuális gép általánosítása a Sysprep használatával
 
-A Sysprep eltávolítja a személyes adatok, többek között, és előkészíti a számítógépet, hogy képként használni. A Sysprep kapcsolatos részletekért lásd: [hogyan használja a Sysprep: Bevezetés](http://technet.microsoft.com/library/bb457073.aspx).
+A Sysprep eltávolítja a személyes fiókot és a biztonsági adatokat, és ezután előkészíti a gép képként használni. További információ a Sysprep eszközről: [Sysprep áttekintése](https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep--system-preparation--overview).
 
-Győződjön meg arról, hogy a Sysprep által a gépen futó kiszolgálói szerepkörök támogatottak. További információkért lásd: [Sysprep támogatási kiszolgálói szerepköre tekintetében](https://msdn.microsoft.com/windows/hardware/commercialize/manufacture/desktop/sysprep-support-for-server-roles)
+Ellenőrizze, hogy a Sysprep a gépen futó kiszolgálói szerepkörök támogatottak. További információkért lásd: [kiszolgálói szerepkörök támogatása a Sysprep](https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep-support-for-server-roles).
 
 > [!IMPORTANT]
-> Miután a sysprep futtatása egy virtuális gépen, akkor tekinthető *általánosítva* nem indítható újra. A folyamat a virtuális gép normalizálása nincs visszafejthető. Veheti kell tartani az eredeti virtuális gép működik, ha egy [a virtuális gép másolata](create-vm-specialized.md#option-3-copy-an-existing-azure-vm) és a példány generalize. 
+> A virtuális gép a Sysprep futtatása után a virtuális gép számít *általánosítva* és nem indítható újra. A virtuális gép általánosítása nem vonható vissza. Ha kell tartani az eredeti virtuális gép működik, létre kell hoznia egy [a virtuális gép másolatának](create-vm-specialized.md#option-3-copy-an-existing-azure-vm) és általánosítása példányát. 
 >
-> Ha előtt a virtuális merevlemez feltöltése az Azure-bA az első alkalommal futtatja a Sysprep, győződjön meg arról, hogy [a virtuális gép előkészített](prepare-for-upload-vhd-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) a Sysprep futtatása előtt.  
+> Ha azt tervezi, mielőtt feltöltené a virtuális merevlemez (VHD) az Azure-ba, először futtassa a Sysprep eszközt, ellenőrizze, hogy [készíteni a virtuális gép](prepare-for-upload-vhd-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).  
 > 
 > 
 
-1. Jelentkezzen be a Windows rendszerű virtuális gép.
-2. Nyissa meg a parancssort rendszergazdaként. Lépjen be **%windir%\system32\sysprep**, majd futtassa a `sysprep.exe`.
-3. Az a **rendszer-előkészítő eszköz** párbeszédpanelen jelölje ki **adja meg a rendszer Out-of-Box élmény (OOBE)**, és győződjön meg arról, hogy a **Generalize** jelölőnégyzet be van jelölve.
-4. A **leállítási beállítások**, jelölje be **leállítási**.
+A Windows virtuális gép általánosításához, kövesse az alábbi lépéseket:
+
+1. Jelentkezzen be a Windows virtuális gép.
+   
+2. Nyisson meg egy parancssori ablakot rendszergazdaként. Lépjen a % windir%\system32\sysprep, és futtassa `sysprep.exe`.
+   
+3. Az a **rendszer-előkészítő eszköz** párbeszédpanelen jelölje ki **adja meg System Out-of-Box élmény (OOBE)** , és válassza ki a **Generalize** jelölőnégyzetet.
+   
+4. A **leállítási beállítások**válassza **leállítási**.
+   
 5. Kattintson az **OK** gombra.
    
     ![Indítsa el a Sysprep](./media/upload-generalized-managed/sysprepgeneral.png)
+
 6. A Sysprep befejezését követően a virtuális gép leáll. Ne indítsa újra a virtuális Gépet.
 
 
-## <a name="create-a-managed-image-in-the-portal"></a>Hozzon létre egy felügyelt képre a portálon 
+## <a name="create-a-managed-image-in-the-portal"></a>Létrehozhat egy felügyelt rendszerképet, a portálon 
 
-1. Nyissa meg a [portal](https://portal.azure.com).
-2. A bal oldali menüben kattintson a virtuális gépeket, és válassza ki a virtuális Gépet a listából.
-3. Kattintson a lap a virtuális géphez, a felső menüben **rögzítése**.
-3. A **neve**, írja be szeretné használni a lemezkép nevét.
-4. A **erőforráscsoport** válassza **hozzon létre új** , és adjon meg egy nevet, vagy válasszon **meglévő** , és válasszon egy erőforráscsoportot használni a legördülő listából.
-5. Ha azt szeretné, hogy a forrás virtuális gép törlése után a kép létrehozott, jelölje be **automatikusan törli a lemezkép létrehozása után a virtuális gép**.
-6. Ha végzett, kattintson a **Létrehozás** gombra.
-16. A lemezkép létrehozása után látni fogja, hogy egy **kép** erőforrás az erőforráscsoport erőforrásainak listája.
+1. Nyissa meg az [Azure Portalt](https://portal.azure.com).
+
+2. A bal oldali menüben válassza **virtuális gépek** , és válassza ki a virtuális Gépet a listából.
+
+3. Az a **virtuális gép** lapon a virtuális gép, a felső menüben válassza ki **rögzítése**.
+
+   A **kép létrehozása** lap jelenik meg.
+
+4. A **neve**, vagy fogadja el az előre megadott nevet, vagy adjon meg egy nevet, amely a lemezképet használni szeretne.
+
+5. A **erőforráscsoport**, válassza ki **új létrehozása** és adjon meg egy nevet, vagy bejelölheti **meglévő használata** és a egy erőforráscsoportot, használja a legördülő listából válassza ki.
+
+6. Ha azt szeretné, törölje a forrás virtuális Gépet, ha a rendszerkép lett létrehozva, jelölje be **automatikus törlése a rendszerkép létrehozása után a virtuális gép**.
+
+7. Ha azt szeretné, hogy a kép használata bármely [rendelkezésre állási zónában](../../availability-zones/az-overview.md)válassza **a** a **zónarugalmasságot**.
+
+8. Válassza ki **létrehozás** rendszerkép létrehozásához.
+
+9. A lemezkép létrehozása után annak legyen egy **kép** erőforrásra a listában, az erőforráscsoportban lévő erőforrásokat.
 
 
 
-## <a name="create-an-image-of-a-vm-using-powershell"></a>A Powershell használatával virtuális gépek lemezkép létrehozása
+## <a name="create-an-image-of-a-vm-using-powershell"></a>Hozzon létre egy rendszerképet a virtuális gépek Powershell-lel
 
-Lemezkép létrehozása a közvetlenül a virtuális gépről biztosítja, hogy a kép tartalmazza a virtuális gép, beleértve az operációs rendszer lemezének és adatlemezeket társított lemezeket. Ez a példa bemutatja, hogyan hozzon létre egy felügyelt képre egy virtuális gép által használt lemezek kezelését.
+Lemezkép létrehozása a virtuális gépről közvetlenül biztosítja, hogy a rendszerkép tartalmazza a virtuális Géphez, többek között az operációsrendszer-lemez és bármely adatlemez társított lemezeket. Ez a példa bemutatja, hogyan hozhat létre egy felügyelt rendszerképet, hogy a használt felügyelt lemezek virtuális gépből.
 
 
-Mielőtt elkezdené, győződjön meg arról, hogy rendelkezik-e a legújabb verzióját a AzureRM.Compute PowerShell-modult. Ez a cikk a AzureRM 5.7.0 verziója szükséges, vagy később. A verzió azonosításához futtassa a következőt: `Get-Module -ListAvailable AzureRM`. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-azurerm-ps) ismertető cikket. Ha helyileg futtatja a PowerShellt, akkor emellett a `Connect-AzureRmAccount` futtatásával kapcsolatot kell teremtenie az Azure-ral.
+Mielőtt elkezdené, győződjön meg arról, hogy a legújabb verzióját az AzureRM.Compute PowerShell-modul, amely 5.7.0 verziójúnak kell lennie, vagy később. A verzió megkereséséhez futtassa `Get-Module -ListAvailable AzureRM.Compute` a PowerShellben. Ha frissíteni szeretne, olvassa el [Azure PowerShell telepítése a Windows a Powershellgettel](/powershell/azure/install-azurerm-ps). Ha Ön helyileg futtatja a Powershellt, futtassa `Connect-AzureRmAccount` kapcsolat létrehozása az Azure-ral.
 
 
 > [!NOTE]
-> Ha szeretné a zóna rugalmas tárolás tárolják, egy régióban található, amely támogatja a létrehozásához szükséges [rendelkezésre állási zónák](../../availability-zones/az-overview.md) , és tartalmazzák a `-ZoneResilient` a lemezkép-konfigurációs paraméter.
+> Ha szeretné tárolni a rendszerképet a zónaredundáns tárolás, egy régióban, amely támogatja a létrehozásához szükséges [rendelkezésre állási zónák](../../availability-zones/az-overview.md) , és tartalmazzák a `-ZoneResilient` paramétert a rendszerkép-konfiguráció (`New-AzureRmImageConfig` parancsot).
 
+Virtuálisgép-rendszerkép létrehozásához kövesse az alábbi lépéseket:
 
-1. Bizonyos változókat létrehozni.
+1. Hozzon létre változókat.
 
     ```azurepowershell-interactive
     $vmName = "myVM"
@@ -82,40 +101,41 @@ Mielőtt elkezdené, győződjön meg arról, hogy rendelkezik-e a legújabb ver
     $location = "EastUS"
     $imageName = "myImage"
     ```
-2. Győződjön meg arról, hogy a virtuális gép fel lettek szabadítva.
+2. Győződjön meg arról, hogy a virtuális gép fel lett szabadítva.
 
     ```azurepowershell-interactive
     Stop-AzureRmVM -ResourceGroupName $rgName -Name $vmName -Force
     ```
     
-3. A virtuális gép állapotának beállítása **Generalized**. 
+3. A virtuális gép állapotának beállítása **Általánosítottra**. 
    
     ```azurepowershell-interactive
     Set-AzureRmVm -ResourceGroupName $rgName -Name $vmName -Generalized
     ```
     
-4. Helyezze a virtuális gépet. 
+4. Töltse be a virtuális gépet. 
 
     ```azurepowershell-interactive
     $vm = Get-AzureRmVM -Name $vmName -ResourceGroupName $rgName
     ```
 
-5. A lemezkép-konfiguráció létrehozása.
+5. Hozza létre a rendszerkép-konfigurációt.
 
     ```azurepowershell-interactive
-    $image = New-AzureRmImageConfig -Location $location -SourceVirtualMachineId $vm.ID 
+    $image = New-AzureRmImageConfig -Location $location -SourceVirtualMachineId $vm.Id 
     ```
-6. A lemezkép létrehozása.
+6. Hozza létre a rendszerképet.
 
     ```azurepowershell-interactive
     New-AzureRmImage -Image $image -ImageName $imageName -ResourceGroupName $rgName
     ``` 
-## <a name="create-an-image-from-a-managed-disk-using-powershell"></a>Lemezkép létrehozása a PowerShell használatával felügyelt lemezes
 
-Ha szeretné létrehozni az operációsrendszer-lemezképet képe, is létrehozhat lemezkép az operációs rendszer lemezeként a felügyelt Lemezazonosítóban megadásával.
+## <a name="create-an-image-from-a-managed-disk-using-powershell"></a>Rendszerkép létrehozása egy felügyelt lemezről a PowerShell használatával
+
+Ha azt szeretné, hozzon létre egy rendszerképet az operációsrendszer-lemez, adja meg a felügyelt lemez azonosítója az operációsrendszer-lemez:
 
     
-1. Bizonyos változókat létrehozni. 
+1. Hozzon létre változókat. 
 
     ```azurepowershell-interactive
     $vmName = "myVM"
@@ -125,38 +145,38 @@ Ha szeretné létrehozni az operációsrendszer-lemezképet képe, is létrehozh
     $imageName = "myImage"
     ```
 
-2. A virtuális gép beolvasása.
+2. A virtuális gép lekérése.
 
    ```azurepowershell-interactive
    $vm = Get-AzureRmVm -Name $vmName -ResourceGroupName $rgName
    ```
 
-3. A felügyelt lemezes Azonosítójának beolvasása.
+3. A felügyelt lemez Azonosítójának lekéréséhez.
 
     ```azurepowershell-interactive
     $diskID = $vm.StorageProfile.OsDisk.ManagedDisk.Id
     ```
    
-3. A lemezkép-konfiguráció létrehozása.
+3. Hozza létre a rendszerkép-konfigurációt.
 
     ```azurepowershell-interactive
     $imageConfig = New-AzureRmImageConfig -Location $location
     $imageConfig = Set-AzureRmImageOsDisk -Image $imageConfig -OsState Generalized -OsType Windows -ManagedDiskId $diskID
     ```
     
-4. A lemezkép létrehozása.
+4. Hozza létre a rendszerképet.
 
     ```azurepowershell-interactive
     New-AzureRmImage -ImageName $imageName -ResourceGroupName $rgName -Image $imageConfig
     ``` 
 
 
-## <a name="create-an-image-from-a-snapshot-using-powershell"></a>Lemezkép létrehozása egy pillanatképből Powershell használatával
+## <a name="create-an-image-from-a-snapshot-using-powershell"></a>Rendszerkép létrehozása pillanatképből a Powershell használatával
 
-Létrehozhat egy felügyelt képre egy általánosított virtuális gép pillanatképe.
+Egy általánosított virtuális gép pillanatképe a következő lépésekkel hozhat létre egy felügyelt rendszerképet:
 
     
-1. Bizonyos változókat létrehozni. 
+1. Hozzon létre változókat. 
 
     ```azurepowershell-interactive
     $rgName = "myResourceGroup"
@@ -171,45 +191,45 @@ Létrehozhat egy felügyelt képre egy általánosított virtuális gép pillana
    $snapshot = Get-AzureRmSnapshot -ResourceGroupName $rgName -SnapshotName $snapshotName
    ```
    
-3. A lemezkép-konfiguráció létrehozása.
+3. Hozza létre a rendszerkép-konfigurációt.
 
     ```azurepowershell-interactive
     $imageConfig = New-AzureRmImageConfig -Location $location
     $imageConfig = Set-AzureRmImageOsDisk -Image $imageConfig -OsState Generalized -OsType Windows -SnapshotId $snapshot.Id
     ```
-4. A lemezkép létrehozása.
+4. Hozza létre a rendszerképet.
 
     ```azurepowershell-interactive
     New-AzureRmImage -ImageName $imageName -ResourceGroupName $rgName -Image $imageConfig
     ``` 
 
 
-## <a name="create-image-from-a-vhd-in-a-storage-account"></a>Kép készítése a tárfiókban lévő virtuális merevlemez
+## <a name="create-an-image-from-a-vhd-in-a-storage-account"></a>Rendszerkép létrehozása a tárfiókban lévő virtuális merevlemezből
 
-Hozzon létre egy felügyelt képre tárfiókokban általánosított az operációs rendszer virtuális Merevlemezt. Az URI-azonosítója a VHD-n a tárfiókot, amely a formátum https:// kell*mystorageaccount*.blob.core.windows.net/*tároló*/*vhd_filename.vhd*. A jelen példában használjuk a virtuális merevlemez van *mystorageaccount* nevű tároló *vhdcontainer* és a virtuális merevlemez Fájlnév *osdisk.vhd*.
+Hozzon létre egy felügyelt rendszerképet általános virtuális merevlemezből operációsrendszer-storage-fiókban. Szükséges URI-ját a VHD-t a tárfiókban, amely a következő formátumban: https://*mystorageaccount*.blob.core.windows.net/*vhdcontainer* /  *vhdfilename.vhd*. Ebben a példában a virtuális merevlemez van *mystorageaccount*, nevű tárolóban *vhdcontainer*, és a virtuális merevlemez Fájlnév *vhdfilename.vhd*.
 
 
-1.  Első lépésként állítsa be a következő általános paramétereket:
+1.  Hozzon létre változókat.
 
     ```azurepowershell-interactive
     $vmName = "myVM"
     $rgName = "myResourceGroup"
     $location = "EastUS"
     $imageName = "myImage"
-    $osVhdUri = "https://mystorageaccount.blob.core.windows.net/vhdcontainer/osdisk.vhd"
+    $osVhdUri = "https://mystorageaccount.blob.core.windows.net/vhdcontainer/vhdfilename.vhd"
     ```
-2. A virtuális gép Step\deallocate.
+2. Állítsa le és felszabadítja a virtuális Gépet.
 
     ```azurepowershell-interactive
     Stop-AzureRmVM -ResourceGroupName $rgName -Name $vmName -Force
     ```
     
-3. A virtuális gép megjelölése általánosítva van.
+3. A virtuális gép megjelölése általánosítva.
 
     ```azurepowershell-interactive
     Set-AzureRmVm -ResourceGroupName $rgName -Name $vmName -Generalized 
     ```
-4.  A lemezkép az operációs rendszer általánosított példányát VHD létrehozása.
+4.  A rendszerkép létrehozása a operációs rendszer általánosított virtuális merevlemez használatával.
 
     ```azurepowershell-interactive
     $imageConfig = New-AzureRmImageConfig -Location $location
@@ -219,5 +239,5 @@ Hozzon létre egy felügyelt képre tárfiókokban általánosított az operáci
 
     
 ## <a name="next-steps"></a>További lépések
-- Most is [virtuális gép létrehozása a általánosított felügyelt lemezképből](create-vm-generalized-managed.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).  
+- [Virtuális gép létrehozása felügyelt rendszerképből](create-vm-generalized-managed.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).    
 

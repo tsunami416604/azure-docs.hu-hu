@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/19/2018
 ms.author: mbullwin
-ms.openlocfilehash: 093124432314472da06065fad3a7cdff0f558d22
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 3d1c90c5b74fd7f27335fbc0f7d5e8016d61ab8c
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46999817"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48249400"
 ---
 # <a name="get-started-with-application-insights-in-a-java-web-project"></a>Ismerkedés az Application Insights szolgáltatással Java webes projektben
 
@@ -233,7 +233,6 @@ Ez az osztály úgy konfigurálja a `WebRequestTrackingFilter` szűrőt, hogy ez
 
 > A Spring MVC-konfiguráció helyett a webes HTTP-szűrőkonfigurációt használjuk, mert ez egy Spring Boot-alkalmazás, és saját Spring MVC-konfigurációval rendelkezik. Az alábbi szakaszokban találja a Spring MVC-re jellemző konfigurációt.
 
-
 ### <a name="applications-using-webxml"></a>Web.xml fájlt használó alkalmazások
 Keresse meg és nyissa meg a web.xml fájlt a projektben, és egyesítse a következő kódot azon webalkalmazás-csomópont alatt, ahol az alkalmazás szűrői konfigurálva vannak.
 
@@ -251,6 +250,11 @@ A legpontosabb eredmények érdekében le kell képezni a szűrőt az összes t�
        <filter-name>ApplicationInsightsWebFilter</filter-name>
        <url-pattern>/*</url-pattern>
     </filter-mapping>
+
+   <!-- This listener handles shutting down the TelemetryClient when an application/servlet is undeployed. -->
+    <listener>
+      <listener-class>com.microsoft.applicationinsights.web.internal.ApplicationInsightsServletContextListener</listener-class>
+    </listener>
 ```
 
 #### <a name="if-youre-using-spring-web-mvc-31-or-later"></a>Ha a Spring Web MVC 3.1-es vagy újabb verzióját használja

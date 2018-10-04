@@ -12,12 +12,12 @@ ms.author: sashan
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 10/01/2018
-ms.openlocfilehash: 3242f683fd6190209e3395bd8410dd1b2cd36960
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: bc322857a459f9417ed7c89a6e4df7ce5c41c3f0
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48043348"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48246481"
 ---
 # <a name="use-read-only-replicas-to-load-balance-read-only-query-workloads-preview"></a>Csak olvasható replikákat használ a betöltése terheléselosztása csak olvasható lekérdezési számítási feladatok (előzetes verzió)
 
@@ -75,7 +75,11 @@ SELECT DATABASEPROPERTYEX(DB_NAME(), 'Updateability')
 > [!NOTE]
 > Egy adott időpontban csak az egyik az AlwaysON-replikák érhető el a csak olvasható munkameneteket.
 
-## <a name="enable-and-disable-read-scale-out-using-azure-powershell"></a>Engedélyezheti vagy letilthatja az olvasási horizontális Felskálázás az Azure PowerShell-lel
+## <a name="enable-and-disable-read-scale-out"></a>Engedélyezheti vagy letilthatja a horizontális Felskálázás olvasása
+
+Alapértelmezés szerint engedélyezve van a olvasási kibővített [felügyelt példány](sql-database-managed-instance.md) üzletileg kritikus fontosságú tier(Preview). Ez explicit módon engedélyezni kell a [database logikai kiszolgáló elhelyezett](sql-database-logical-servers.md) prémium és üzletileg kritikus szintet. A módszerek engedélyezése és letiltása olvasási horizontális Felskálázás az alábbiakban ismertetjük. 
+
+### <a name="enable-and-disable-read-scale-out-using-azure-powershell"></a>Engedélyezheti vagy letilthatja az olvasási horizontális Felskálázás az Azure PowerShell-lel
 
 A 2016. December kezelése olvasási horizontális Felskálázás az Azure PowerShell szükséges az Azure PowerShell kiadás vagy újabb. A legújabb PowerShell-verzió, lásd: [Azure PowerShell-lel](https://docs.microsoft.com/powershell/azure/install-azurerm-ps).
 
@@ -99,7 +103,7 @@ Hozhat létre egy új adatbázist a olvasási kibővített engedélyezve (cseré
 New-AzureRmSqlDatabase -ResourceGroupName <myresourcegroup> -ServerName <myserver> -DatabaseName <mydatabase> -ReadScale Enabled -Edition Premium
 ```
 
-## <a name="enabling-and-disabling-read-scale-out-using-the-azure-sql-database-rest-api"></a>Engedélyezése és letiltása olvasási horizontális Felskálázás az Azure SQL Database REST API használatával
+### <a name="enabling-and-disabling-read-scale-out-using-the-azure-sql-database-rest-api"></a>Engedélyezése és letiltása olvasási horizontális Felskálázás az Azure SQL Database REST API használatával
 
 Új adatbázis létrehozása az olvasási kibővített engedélyezve van, vagy a engedélyezi vagy letiltja a meglévő adatbázis olvasási kibővített, létrehozása vagy frissítése az adatbázis megfelelő entitásának a `readScale` tulajdonság `Enabled` vagy `Disabled` hasonlóan a az alábbi minta a kérést.
 

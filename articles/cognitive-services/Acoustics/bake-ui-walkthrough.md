@@ -9,12 +9,12 @@ ms.component: acoustics
 ms.topic: article
 ms.date: 08/17/2018
 ms.author: kegodin
-ms.openlocfilehash: 0e16ec765ae3cbef8a941f43a149428ffdf5bd8d
-ms.sourcegitcommit: 1aedb52f221fb2a6e7ad0b0930b4c74db354a569
+ms.openlocfilehash: a82472ccd5524e7cbe3d92070a6d2b583d8eb4d5
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "40181700"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48249298"
 ---
 # <a name="bake-acoustics"></a>Bake Akusztika
 
@@ -199,15 +199,19 @@ Ha elégedett a előzetes verziójában lévő adatokat, az a **os** fülre, és
 1. Ezt a lapot szolgáló lap os gomb.
 2. Mi a teendő ezen az oldalon rövid leírása.
 3. Adja meg Azure hitelesítő adatait, ha az Azure-fiókja létrejött mezőket. További információkért lásd: [Azure Batch-fiók létrehozása](create-azure-account.md).
-4. Az Azure batch számítási csomópont típusa kiszámításához használandó. A csomóponttípus támogatnia kell az Azure az Adatközpont-helyen. Ha nem biztos maradjon a **standard F8 méretű**.
-5. Ehhez a számításhoz használt csomópontok száma. Az itt hatással van a bake elvégzéséhez szükséges idő, és az Azure Batch alapvető foglalási korlátozza. Az alapértelmezett lefoglalási csak lehetővé teszi, hogy két 8 mag csomópontok vagy egy 16 mag csomópont, de bővíthetők. A core foglalási megkötések további információkért lásd: [Azure Batch-fiók létrehozása](create-azure-account.md).
-6. A helyszín, a kiszámított mintavételi számát a **mintavételek** fülre. A mintavételek számának meghatározásához szimulációk esetében, amelyeket a felhőben futtatni kell a száma határozza meg. Mintavételezők számánál több csomópont nem adható meg.
-7. Valószínű, hogy a feladatnak a felhőben való futtatásra tennie eltelt idő mennyisége. Ez nem vonatkozik a csomópont indítási idejének. Miután a feladat futni kezd, ez a arról, hogy mennyi ideig előtt kapja vissza az eredményeket kell lennie. Vegye figyelembe, hogy ez csak egy becsült.
-8. A teljes, a szimulációk futtatásához szükséges számítási idő mennyisége. Ez a csomópont számítási idő, az Azure-ban használt teljes mennyisége. Lásd: [Estimating bake költség](#Estimating-bake-cost) alatt további információt az ezzel az értékkel.
-9. Ez az üzenet arra kéri, ahol a bake eredményeit menti a rendszer a feladat befejezése után.
-10. (Csak a speciális használata) Ha valamilyen okból nincs szüksége egy bake kapcsolatos megfeledkezni Unity kényszerítése küldte el (pl. letöltötte az eredményeket egy másik gépen), kattintson a **állapot törlése** elfelejtette a feladatról küldött gombra. Vegye figyelembe, hogy ez azt jelenti, hogy az eredményfájlt, ha készen áll, a rendszer **nem** tölthető le, és **ez nem ugyanaz, mint a feladat megszakítása**. A feladatot, ha fut, továbbra is a felhőben való futtatásra.
-11. A Bake gombra kattintva küldje el a bake a felhőbe. A feladat futása közben látható **feladat megszakítása** helyette.
-12. Ez a terület a bake állapotát jeleníti meg. Amikor elkészült, ennek meg kell jelennie **letöltött**.
+4. Docker a Akusztika eszközkészlet képcímke.
+5. Indítsa el az Azure Portalon kezelheti az előfizetéseit, figyelheti és tekinteni a számlázási adatokat stb. 
+6. Az Azure batch számítási csomópont típusa kiszámításához használandó. A csomóponttípus támogatnia kell az Azure az Adatközpont-helyen. Ha nem biztos maradjon a **Standard_F8s_v2**.
+7. Ehhez a számításhoz használt csomópontok száma. Az itt hatással van a bake elvégzéséhez szükséges idő, és az Azure Batch alapvető foglalási korlátozza. Az alapértelmezett lefoglalási csak lehetővé teszi, hogy két 8 mag csomópontok vagy egy 16 mag csomópont, de bővíthetők. A core foglalási megkötések további információkért lásd: [Azure Batch-fiók létrehozása](create-azure-account.md).
+8. A jelölőnégyzet bejelölésével konfigurálhatja a számítási készletet használandó [alacsony prioritású csomópontok](https://docs.microsoft.com/azure/batch/batch-low-pri-vms). Alacsony prioritású számítási csomópontok kell sokkal alacsonyabb költségek, de előfordulhat, hogy nem érhető el, vagy a tetszőleges időpontban háttérbe szorulhatnak.
+9. A helyszín, a kiszámított mintavételi számát a **mintavételek** fülre. A mintavételek számának meghatározásához szimulációk esetében, amelyeket a felhőben futtatni kell a száma határozza meg. Mintavételezők számánál több csomópont nem adható meg.
+10. Valószínű, hogy a feladatnak a felhőben való futtatásra tennie eltelt idő mennyisége. Ez nem vonatkozik a csomópont indítási idejének. Miután a feladat futni kezd, ez a arról, hogy mennyi ideig előtt kapja vissza az eredményeket kell lennie. Vegye figyelembe, hogy ez csak egy becsült.
+11. A teljes, a szimulációk futtatásához szükséges számítási idő mennyisége. Ez a csomópont számítási idő, az Azure-ban használt teljes mennyisége. Lásd: [Estimating bake költség](#Estimating-bake-cost) alatt további információt az ezzel az értékkel.
+12. Ez az üzenet arra kéri, ahol a bake eredményeit menti a rendszer a feladat befejezése után.
+13. (Csak a speciális használata) Ha valamilyen okból nincs szüksége egy bake kapcsolatos megfeledkezni Unity kényszerítése küldte el (pl. letöltötte az eredményeket egy másik gépen), kattintson a **állapot törlése** elfelejtette a feladatról küldött gombra. Vegye figyelembe, hogy ez azt jelenti, hogy az eredményfájlt, ha készen áll, a rendszer **nem** tölthető le, és **ez nem ugyanaz, mint a feladat megszakítása**. A feladatot, ha fut, továbbra is a felhőben való futtatásra.
+14. A Bake gombra kattintva küldje el a bake a felhőbe. A feladat futása közben látható **feladat megszakítása** helyette.
+15. Előkészíti a helyi gépen Akusztika szimuláció feldolgozása. Lásd: [helyi bake](#Local-bake) további információt.  
+16. Ez a terület a bake állapotát jeleníti meg. Amikor elkészült, ennek meg kell jelennie **letöltött**.
 
 Teljes körű információt arról, hogy aktív feladatok, a számítási készletek és a tárolás mindig megtekintheti a [az Azure Portal](https://portal.azure.com).
 
@@ -217,13 +221,34 @@ Egy bake megkezdése után bezárhatja a Unity. Attól függően a projektet, a 
 
 Az Azure-beli hitelesítő rendszer biztonságosan tárolja a helyi gépen, és a Unity-szerkesztő társított. Ezek szolgálnak, kizárólag az Azure-bA biztonságos kapcsolatot létesíteni.
 
-### <a name="Estimating-bake-cost"></a> Bake költségek becslése
+### <a name="Estimating-bake-cost"></a> Az Azure bake költségek becslése
 
-Megbecsülheti egy adott bake díjait, hajtsa végre a megjelenített érték **becsült költség számítási**, ez az időtartam és a kettő többszörösének, amely szerint az óránkénti költség, a helyi pénznemben számított a **VM csomóponttípus** választotta. Az eredmény nem tartalmazza a csomópont idő szükséges a csomópontok szolgáltatásszintje és futtatásához. Például, ha kiválasztja **standard F8 méretű** az adott csomóponttípus költsége pedig $ 0,75/óra, amely rendelkezik, és a számítási becsült költség 3 óra és 57 perc, a feladat futtatásához a becsült költség lesz $0,75 * ~ 4 óra = ~ $3.00. A tényleges költségek valószínűleg egy kicsit nagyobb miatt az első lépések a csomópontok hosszabb időt. Az óránkénti csomópont költsége annak a [Azure Batch szolgáltatás díjszabása](https://azure.microsoft.com/pricing/details/virtual-machines/linux) (válassza "számításra optimalizált" vagy "nagy teljesítményű számítás" kategória) lap.
+Megbecsülheti egy adott bake díjait, hajtsa végre a megjelenített érték **becsült költség számítási**, ez az időtartam és a kettő többszörösének, amely szerint az óránkénti költség, a helyi pénznemben számított a **VM csomóponttípus** választotta. Az eredmény nem tartalmazza a csomópont idő szükséges a csomópontok szolgáltatásszintje és futtatásához. Például, ha kiválasztja **Standard_F8s_v2** az adott csomóponttípus költsége pedig $ 0,40/óra, amely rendelkezik, és a számítási becsült költség 3 óra és 57 perc, a feladat futtatásához a becsült költség lesz $0,40 * ~ 4 óra = ~ $1.60. A tényleges költségek valószínűleg egy kicsit nagyobb miatt az első lépések a csomópontok hosszabb időt. Az óránkénti csomópont költsége annak a [Azure Batch szolgáltatás díjszabása](https://azure.microsoft.com/pricing/details/virtual-machines/linux) (válassza "számításra optimalizált" vagy "nagy teljesítményű számítás" kategória) lap.
 
 ### <a name="reviewing-the-bake-results"></a>A bake találatok áttekintése
 
 A bake befejezése után ellenőrizze, hogy a mintavétel, valamint voxels pontok a várt helyen a beépülő modul futásidejű futtatásával. További információk [tervezési folyamat áttekintése Akusztika](design-process.md).
+
+## <a name="Local-bake"></a>Helyi bake
+Helyi bake Akusztika szimulátor helyett az Azure Batch számítási fürtnek való kiszervezése azt a saját helyi számítógépen fut. Ez lehet egy jó választás kísérleteztek az Akusztika anélkül, hogy egy Azure-előfizetés, de vegye figyelembe, hogy a nagy számítási erőforrás-igényes Akusztika szimuláció, és a jelenet szimuláció konfigurációs, méretétől függően hosszabb időt is igénybe vehet, és nyers a feldolgozó gépet számítási kapacitását.
+
+### <a name="minimum-hardware-requirements"></a>Minimális hardverkövetelmények
+64-bit-es Intel processzorral, legalább 8 maggal és 32 GB RAM vagy nagyobb.
+
+Tegyük fel, @ 3 GHz-es és a 32 GB memória – 8 mag gépen az Intel Xeon E5-1660
+* 100 mintákkal kisebb jeleneteket a egy durva bake és a egy vékony feloldási bake ~ 32 óráig KB. 2 órát vesz igénybe.
+* 1000 mintákkal nagyobb jelenet órát is igénybe vehet legfeljebb körülbelül 20 a egy durva feloldásához és a egy vékony feloldási bake ~ 21 nap.
+
+### <a name="setup-docker"></a>A telepítő Docker
+Telepítse és konfigurálja a Docker a számítógépen, amely feldolgozza a szimuláció-
+1. Telepítse a [Docker eszközkészlet](https://www.docker.com/products/docker-desktop).
+2. Indítsa el a Docker-beállításait, keresse meg a "Speciális" lehetőség, és konfigurálhat erőforrásokat, ahogy az alábbi. ![Docker-erőforrások](media/DockerSettings.png)
+3. Keresse meg a beállítások "Megosztott meghajtók", és kapcsolja be a feldolgozáshoz használt meghajtó megosztása.![DockerDriveSharing](media/DockerSharedDrives.png)
+
+### <a name="run-local-bake"></a>Helyi bake futtatása
+1. Kattintson a lap Bake "Előkészítése helyi os" gombjára, és válasszon ki egy mappát, ahol a bemeneti fájlok és parancsfájlok végrehajtása menti a rendszer. Ezután futtathatja a bake bármely gépen mindaddig, amíg megfelel-e a minimális hardverkövetelményeknek, és a Docker telepítve van a mappa, hogy a gép másolásával.
+2. Indítsa el a szimuláció, amely beolvassa a szimuláció feldolgozáshoz szükséges eszközkészlet a projekt Akusztika Docker-rendszerképet és a szimuláció elindításához "runlocalbake.bat" parancsfájl használatával. 
+3. A szimuláció befejeztével másolja vissza az eredményül kapott .ace fájl ugyanazon a helyen a mintavételek lapon megadott a Unity-projektjét. Ellenőrizze a célfájl nevében megfelel-e a Unity-követelmények úgy, hogy a fájl kiterjesztése ".bytes". A részletes naplókat a szimuláció "AcousticsLog.txt" fájlban vannak tárolva. Ha problémákat tapasztal, ossza meg ezt a diagnosztikát segítő fájlt.
 
 ## <a name="Data-Files"></a>Adatfájlok
 

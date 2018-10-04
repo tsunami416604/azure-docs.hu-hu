@@ -10,12 +10,12 @@ ms.component: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: a43c52143f936eaefd4383714b1c67b6b74d34e8
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: d0ad7093249bea761e0a36c6fffab8cdd151a662
+ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44378669"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48268021"
 ---
 # <a name="how-to-use-the-expected-entity-property-of-actions"></a>A "Várt entitás" tulajdonság a műveletek használata
 
@@ -63,9 +63,10 @@ Konkrétan Ha egy művelet a "várt entitás" mező értéke $entity, majd meg a
 2. A válasz írja be a "Mi a neve?".
 3. Adja meg a várt entitásokat, $name. Kattintson a Mentés gombra.
     - Ez az érték azt jelenti, hogy meg kell adnia ezt a kérdést, és a felhasználói válaszra nem rendelkezik a entitások észlelt, a bot kell feltételezik, hogy az egész a felhasználói válaszra ehhez az entitáshoz.
+    - Disqualifying entitásként a rendszer automatikusan hozzáadja az entitást. 
 2. Kattintson a műveletek, majd új műveletet egy másik művelet létrehozása.
 3. A válasz írja be a "Hello $name".
-    - Vegye figyelembe, hogy az entitás automatikusan hozzáadja a szükséges entitásként. 
+    - Szükséges entitásként a rendszer automatikusan hozzáadja az entitást.
 4. Kattintson a Mentés gombra.
 
 Most már két műveletet.
@@ -111,7 +112,7 @@ A következő példákban a "várt entitás" heurisztika aktivál, de nem megfel
 2. Adja meg a "hello".
 3. "Mi a neve" választ adja meg "Am meghívtam frank".
     - A teljes kifejezés ki van emelve. Ennek oka az, a statisztikai modell nem találta a nevét, így a heurisztika aktiválódott, és a teljes választ választotta a név entitás.
-2. Javítsa ki, kattintson a kiemelt kifejezést, majd kattintson a a piros x. 
+2. Javítsa ki, kattintson a kiemelt kifejezést, majd kattintson a pirossal a Kuka ikonra. 
 3. Jelölje be a frank, majd kattintson a nevére.
 2. Kattintson a pontszám műveletek
 3. Válassza ki a "Hello $name".

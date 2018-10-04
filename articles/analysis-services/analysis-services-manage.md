@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/03/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: fa5eeaad6ec98bb7ce725e1bf4c977cb2d5398a6
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 52dd9d0ab5a22b702ad7d55d91b860d57e81f607
+ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37448611"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48267766"
 ---
 # <a name="manage-analysis-services"></a>Analysis Services kezelése
 Miután az Azure-ban létrehozott egy Analysis Services-kiszolgálón, néhány felügyelet és kezelés feladatot kell elvégeznie a azonnal, vagy egy ideig le lehet. Például futtassa a frissítés adatokhoz, el tudja érni a modellek a kiszolgálón, vagy a kiszolgáló állapotának figyeléséhez vezérléséhez feldolgozása. Egyes felügyeleti feladatok csak az Azure Portalon, az SQL Server Management Studio (SSMS), mások hajtható végre, és néhány feladatot végezhető, vagy.
@@ -46,7 +46,7 @@ Töltse le a legújabb funkciókról és a legegyenletesebb élmény az Azure An
     > Hitelesítés típusa, **Active Directory - MFA-támogatással rendelkező univerzális**, ajánlott.
 
     > [!NOTE]
-    > Ha egy Microsoft-Account, Live ID, Yanoo, Gmail, stb. jelentkezik be, a jelszó mezőt üresen. Kattint, a csatlakozás után a jelszó megerősítését.
+    > Ha egy Microsoft-Account, Live ID, Yahoo, Gmail, stb. jelentkezik be, a jelszó mezőt üresen. Kattint, a csatlakozás után a jelszó megerősítését.
 
     **Windows-hitelesítés** , a Windows tartomány\felhasználónév és a jelszó hitelesítő adatok használatával.
 

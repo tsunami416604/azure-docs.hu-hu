@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/17/2018
 ms.author: jingwang
-ms.openlocfilehash: 7984d156c1f8d1c29bda57ae39991876341ea0ac
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 56f1769d601df6292decc46c9470768eac29102c
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46127244"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48249077"
 ---
 # <a name="load-data-into-azure-data-lake-storage-gen1-by-using-azure-data-factory"></a>Adatok betöltése az Azure Data Lake Storage Gen1 Azure Data Factory használatával
 
@@ -85,7 +85,7 @@ Ez a cikk bemutatja, hogyan használható a Data Factory az adatok másolása es
    2. Adja meg a **titkos elérési kulcsát** értéket.
    3. Válassza a **Finish** (Befejezés) elemet.
    
-   ![Az Amazon S3-fiók megadása](./media/load-data-into-azure-data-lake-store/specify-amazon-s3-account.png)
+     ![Az Amazon S3-fiók megadása](./media/load-data-into-azure-data-lake-store/specify-amazon-s3-account.png)
    
    4. Megjelenik egy új kapcsolatot. Kattintson a **Tovább** gombra.
    
@@ -110,7 +110,7 @@ Ez a cikk bemutatja, hogyan használható a Data Factory az adatok másolása es
    3. Kattintson a **Tovább** gombra.
    
    > [!IMPORTANT]
-   > Ebben a bemutatóban használhat egy _felügyeltszolgáltatás-identitás_ a Data Lake Storage Gen1 fiók hitelesítéséhez. Ügyeljen arra, hogy adja meg az MSI a Data Lake Storage Gen1 a megfelelő engedélyeket az alábbi [ezek az utasítások](connector-azure-data-lake-store.md#using-managed-service-identity-authentication).
+   > Ebben az útmutatóban egy felügyelt identitás, az Azure-erőforrásokhoz használhatja a Data Lake Storage Gen1 fiók hitelesítéséhez. Ügyeljen arra, hogy adja meg az MSI a Data Lake Storage Gen1 a megfelelő engedélyeket az alábbi [ezek az utasítások](connector-azure-data-lake-store.md#managed-identity).
    
    ![Adja meg a Data Lake Storage Gen1 fiók](./media/load-data-into-azure-data-lake-store/specify-adls.png)
 9. Az a **a kimeneti fájl vagy mappa kiválasztása** lap, adja meg **copyfroms3** , a kimeneti mappa nevét, és válassza **tovább**: 

@@ -12,19 +12,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/18/2018
+ms.date: 10/03/2018
 ms.author: magoedte
-ms.openlocfilehash: 819c3e74355cf80c7a998abb8b02b10c9e077059
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: 43000993c6a26ef8d44e941f5235ebad7aeee66f
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47062768"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48248060"
 ---
 # <a name="known-issues-with-azure-monitor-for-vms"></a>A virtuális gépek az Azure Monitor szolgáltatással kapcsolatos ismert problémák
 
 Az alábbi ismert problémák az Azure monitor az állapotfigyelő szolgáltatás a virtuális gépek:
 
+- Ha egy Azure virtuális gép többé nem létezik, mert lett eltávolítva, vagy törölve, a virtuális gép listanézetben három hét napig ez fog megjelenni. Ezenkívül kattintva eltávolított vagy törölt virtuális gép állapotát szeretné indítsa el a **egészségügyi diagnosztikai** nézetet, majd vonatkozik betöltése hurkot, amely. A törölt virtuális gép nevét kiválasztva indul el egy panel üzenet figyelmezteti, hogy a virtuális gép törölve lett.
 - Ebben a kiadásban nem lehet módosítani az adott időszakban és gyakoriságát tartalmazza állapotára vonatkozó feltételek. 
 - Nem lehet letiltani a állapotára vonatkozó feltételek. 
 - Az előkészítés, után időbe telhet, mielőtt adatok megjelennek az Azure Monitor -> virtuális gépek -> állapot vagy a VM-erőforrás paneljének -> Insights
@@ -36,9 +37,26 @@ Az alábbi ismert problémák az Azure monitor az állapotfigyelő szolgáltatá
 - Virtuális gépek leállítása frissíteni fogja a állapotára vonatkozó feltételek némelyike kritikus állapotba, és mások nettó állapota kritikus állapotban lévő virtuális gép Kifogástalan állapotba.
 - Riasztás súlyossága állapota nem módosítható, akkor is csak engedélyezhető vagy letiltható.  Emellett néhány súlyossági szint esetén csak frissítés állapotára vonatkozó feltételek állapota alapján.
 - Egészségügyi feltétel példányok beállítások módosítása, vezet ugyanazon beállítás módosításának azonos típusú összes állapotfigyelő feltételek példányok között a virtuális gépen. Például ha a lemez küszöbértéket szabad terület egészségügyi feltétel példány megfelelő logikai lemez C: módosul, majd ezt a küszöbértéket érvényes lesz az összes többi logikai lemez felderítésének és figyelésének a virtuális gép ugyanazon a.   
-- Küszöbértékek bizonyos Windows állapotára vonatkozó feltételek, például a DNS-ügyfél szolgáltatás állapota nem módosítható, a megfelelő állapotba már zárolva van mivel a **futó**, **elérhető** a szolgáltatás vagy az entitás állapota a környezet függően.  Ehelyett a érték szám 4 képviseli, át lesz alakítva a tényleges megjelenítendő karakterlánc egy későbbi kiadásban.  
-- Egyes Linux állapotára vonatkozó feltételek küszöbértékek nem módosítható, például a logikai lemez állapota, még a beállítás a nem megfelelő állapot eseményindítás.  Ezek azt jelzik, hogy valami online vagy offline állapotban van, vagy be- vagy kikapcsolása és szerepelnek az és ugyanaz az érték 1 vagy 0 megjelenítésével jelzi.
-- Frissítése az erőforrás biztonságicsoport-szűrőt bármely erőforráscsoport használata során az ipari méretekben az Azure monitor -> virtuális gépek -> állapot telepítendő, előre kiválasztott előfizetésben és erőforráscsoportban csoport bármely lista nézet ->, okoz a lista nézet megjelenítéséhez **nincs eredmény**.  Lépjen vissza az Azure Monitor a virtuális gépek -> Állapot lapon -> és válassza ki a kívánt előfizetést és erőforráscsoportot, és navigáljon arra a listanézet.
+- Küszöbértékek esetében a következő állapotára vonatkozó feltételek célzó Windows virtuális gép nem módosítható, a megfelelő állapotba óta már be van állítva **futó** vagy **elérhető**. A lekérdezéskor a [számítási feladatok a figyelő API](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/workloadmonitor/resource-manager), az egészségügyi állapota látható az *ÖsszehasonlítóOperátor* értékét **LessThan** vagy **GreaterThan**együtt egy *küszöbérték* értékét **4** a szolgáltatás vagy az entitás ha:
+   - DNS-ügyfél szolgáltatásának állapota – szolgáltatás nem fut 
+   - DHCP-ügyfél szolgáltatásának állapota – szolgáltatás nem fut 
+   - RPC szolgáltatás állapota – a szolgáltatás nem fut 
+   - Windows tűzfal szolgáltatásának állapota – a szolgáltatás nem fut
+   - Windows Eseménynapló szolgáltatás állapota – a szolgáltatás nem fut 
+   - Kiszolgálói szolgáltatás állapota – a szolgáltatás nem fut 
+   - Windows távoli felügyeleti szolgáltatásának állapota – a szolgáltatás nem fut 
+   - Fájlrendszer hibája vagy -sérülés – logikai lemez nem érhető el
+
+- Küszöbértékek számára a következő Linux állapotára vonatkozó feltételek nem módosítható, mert azok állapotát már be van állítva **igaz**.  Az állapotfigyelő állapota látható az *ÖsszehasonlítóOperátor* értékkel **LessThan** és *küszöbérték* értékét **1** a munkaterhelési történő lekérdezéskor Az entitás a környezettől függően figyelési API-val:
+   - Logikai lemez – logikai lemez állapota nem online / érhető el
+   - Lemez állapota – a lemez nem online / érhető el
+   - Hálózati Adapter állapotát - hálózati adapter le van tiltva.  
+
+- **Teljes CPU-kihasználtság** egészségügyi feltétel, a Windows jeleníti meg egy küszöbértéket **4-es nem egyenlő** a portálról, és a számítási feladatok figyelés API-ból lekérdezett, amennyiben 95 %-nál nagyobb CPU-kihasználtság és rendszer-várólistájának hossza nagyobb, mint 15. Ezen állapot feltétel ebben a kiadásban nem módosítható.  
+- Például egy küszöbértéket, frissítse a konfigurációs módosítások érvénybe léptetéséhez, annak ellenére, hogy a portál vagy a számítási feladatok a figyelő API azonnali frissítéséhez előfordulhat, hogy akár 30 percet vesz igénybe.  
+- Processzormag és logikai processzor szint állapotára vonatkozó feltételek nem érhető el a Windows, csak **teljes CPU-kihasználtság** Windows virtuális gépeken érhető el.  
+- Riasztási szabályok meghatározva az egyes állapotfigyelő feltétel nem érhetőek el, az Azure Portalon. Csak azok a konfigurálható a [számítási feladatok a figyelő API](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/workloadmonitor/resource-manager) engedélyezheti vagy tilthatja le a Szolgáltatásállapot-riasztási szabály.  
+- Hozzárendelése egy [Azure Monitor műveletcsoport](../monitoring-and-diagnostics/monitoring-action-groups.md) Health riasztások nem lehetséges az Azure Portalról. Az értesítési beállítás API használatával konfigurálja a műveletcsoport aktiválását, amint egy szolgáltatásállapot-riasztás aktiválódik kell. Jelenleg Műveletcsoportok, virtuális gépek ellen lehet hozzárendelni, hogy az összes *állapotriasztások* aktivált ellen a virtuális gép által aktivált az ugyanazon művelet (ok) ban. És nincs külön művelet csoport minden szolgáltatásállapot-riasztási szabály, mint a hagyományos Azure-riasztások esetében. Emellett a csak egy e-mailben vagy SMS küldése értesítse konfigurált Műveletcsoportok health-riasztások előállítása esetén támogatottak. 
 
 ## <a name="next-steps"></a>További lépések
 Felülvizsgálat [előkészítése az Azure Monitor-beli virtuális gépek](monitoring-vminsights-onboard.md) követelmények és módszerek ahhoz, hogy a virtuális gépek figyelése.

@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 09/14/2018
 ms.author: glenga
-ms.openlocfilehash: a601ea42549abad84d6cab5c429cf94147776436
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: d4a0d53c3438be9ea4e0229e4a456ed6f5960996
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46978624"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48249060"
 ---
 # <a name="azure-functions-runtime-versions-overview"></a>Az Azure Functions runtime verziók áttekintése
 
@@ -98,7 +98,7 @@ A VS Code is szükség lehet a felhasználó vonatkozó beállításainak friss�
 
 ### <a name="changing-version-of-apps-in-azure"></a>Az Azure-beli alkalmazások verziója módosítása
 
-Közzétett alkalmazás verziók az Alkalmazásbeállítás segítségével állíthatók be `FUNCTIONS_RUNTIME_VERSION`.  A beállított érték `~2` v2-alkalmazások esetén és `~1` v1 alkalmazások esetében.  Fontos, hogy ezeket a funkciókat is módosítása nélkül közzétett meglévő függvények futtatókörnyezetének verzióját módosítása nem ajánlott.  A javasolt elérési út, hozzon létre egy új függvényalkalmazást, és állítsa be a megfelelő verzióra, tesztelheti a módosításokat, majd tiltsa le vagy törölje az előző alkalmazást.
+Közzétett alkalmazás verziók az Alkalmazásbeállítás segítségével állíthatók be `FUNCTIONS_EXTENSION_VERSION`.  A beállított érték `~2` v2-alkalmazások esetén és `~1` v1 alkalmazások esetében.  Fontos, hogy ezeket a funkciókat is módosítása nélkül közzétett meglévő függvények futtatókörnyezetének verzióját módosítása nem ajánlott.  A javasolt elérési út, hozzon létre egy új függvényalkalmazást, és állítsa be a megfelelő verzióra, tesztelheti a módosításokat, majd tiltsa le vagy törölje az előző alkalmazást.
 
 ## <a name="bindings"></a>Kötések 
 

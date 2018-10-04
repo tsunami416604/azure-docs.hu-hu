@@ -12,12 +12,12 @@ ms.author: sashan
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 09/14/2018
-ms.openlocfilehash: e3296430cd58c8ba33f7cc9acd4cded2925b5be9
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: bd224317ba777939a1db4edeb7cb5df728fc434c
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47166282"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48249009"
 ---
 # <a name="overview-active-geo-replication-and-auto-failover-groups"></a>Áttekintés: Aktív georeplikációs és automatikus feladatátvételi csoportok
 
@@ -90,6 +90,10 @@ Az aktív georeplikációs szolgáltatás az alábbi alapvető képességeket bi
 ## <a name="auto-failover-group-capabilities"></a>Automatikus feladatátvételi csoport képességek
 
 Automatikus feladatátvételi csoportok funkció biztosítja, hogy az aktív georeplikáció egy hatékony absztrakciós szintű replikációs csoport és az Automatikus feladatátvétel támogatása. Ezenkívül eltávolítja az SQL-kapcsolati karakterlánc módosítása a feladatátvételt követően azáltal, hogy a további figyelő végpontok szükségességét. 
+
+> [!NOTE]
+> Automatikus feladatátvétel a felügyelt példány nem érhető el.
+>  
 
 * **Feladatátvételi csoport**: egy vagy több, feladatátvételi csoportok hozható létre több különböző régióban (az elsődleges és másodlagos kiszolgálók) két kiszolgáló között. Minden csoport egy vagy több adatbázis helyreállított egységként abban az esetben az összes vagy néhány elsődleges adatbázissal az elsődleges régióban leállás miatt elérhetetlenné lehetnek.  
 * **Elsődleges kiszolgáló**: egy kiszolgálót, amelyen az elsődleges adatbázisok a feladatátvételi csoportban.

@@ -12,19 +12,23 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/18/2018
-ms.author: daseidma;bwren
-ms.openlocfilehash: 30a03fd5df9d4119e61698cfe1e5fc612e2cfd3f
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.date: 10/03/2018
+ms.author: magoedte
+ms.openlocfilehash: 49688b958d904450c50944725b18e0d518e27146
+ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46297826"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48269258"
 ---
 # <a name="using-service-map-solution-in-azure"></a>A Service Map megoldást használ az Azure-ban
 A Szolgáltatástérkép automatikusan felderíti az alkalmazás-összetevőket Windows és Linux rendszereken, és feltérképezi a szolgáltatások közötti kommunikációt. A Service Map, megtekintheti a kiszolgálók ahogyan Ön gondol rájuk: rendszerekként, amelyek kritikus fontosságú szolgáltatások biztosításához. A Service Map megmutatja a kiszolgálók, a folyamatok, a bejövő és kimenő kapcsolat késési kapcsolatokat, és portok között, bármely TCP-kapcsolattal összekötött architektúrában, semmilyen beállítást nem szükséges ügynököt telepíteni.
 
 Ez a cikk bevezetése és használata a Service Map részleteit ismerteti. A Service Map és bevezetési ügynökök konfigurálásával kapcsolatos további információkért lásd: [konfigurálása a Service Map megoldás az Azure-ban]( monitoring-service-map-configure.md).
+
+>[!NOTE]
+>Ha már telepítette a Service Map, most is megtekintheti a maps az Azure monitorban a virtuális gépek esetében kiegészítő szolgáltatást a virtuális gép állapotának és teljesítményének figyeléséhez tartalmaz. További tudnivalókért lásd: [virtuális gépek – áttekintés az Azure Monitor](monitoring-vminsights-overview.md).
+
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.azure.com) webhelyen.
@@ -230,6 +234,7 @@ A cikk a csatlakoztatott ITSM-megoldás megnyitásához kattintson a **munkaelem
 
 Az elem részleteinek megtekintése a Naplókeresésben, kattintson a **megjelenítés a Naplókeresésben**.
 A Log Analytics két új táblázat írt kapcsolati metrika 
+
 ## <a name="change-tracking-integration"></a>Módosítsa a Híváskövetés-integráció
 A Service Map-integráció a Change Tracking akkor automatikus, ha mindkét megoldás engedélyezve van, és a Log Analytics-munkaterületen konfigurált.
 
@@ -359,16 +364,16 @@ Minden RemoteIp tulajdonság *VMConnection* tábla be van jelölve IP-címek ös
 | Tulajdonság | Leírás |
 |:--|:--|
 |MaliciousIp |A RemoteIp címe |
-|IndicatorThreadType | |
-|Leírás | |
-|TLPLevel | |
-|Megbízhatóság | |
-|Severity | |
-|FirstReportedDateTime | |
-|LastReportedDateTime | |
-|IsActive | |
-|ReportReferenceLink | |
-|AdditionalInformation | |
+|IndicatorThreadType |Észlelt fenyegetés mutató a következő értékek egyike *Botnet*, *C2*, *CryptoMining*, *Darknet*, *DDos* , *MaliciousUrl*, *kártevő*, *adathalász*, *Proxy*, *elleni*, *Megnézendők*.   |
+|Leírás |Az észlelt fenyegetés leírása. |
+|TLPLevel |Közlekedési lámpa protokoll (TLP) szint egyike a meghatározott értékeknek *fehér*, *zöld*, *sárga*, *Red*. |
+|Megbízhatóság |Értékek a következők *0 – 100*. |
+|Severity |Értékek a következők *0 – 5*, ahol *5* van a legsúlyosabb és *0* nem súlyos egyáltalán. Alapértelmezett érték *3*.  |
+|FirstReportedDateTime |Először a szolgáltató jelenteni a kijelző. |
+|LastReportedDateTime |A kijelző Interflow által látott utolsó időpontját. |
+|IsActive |Azt jelzi, hogy a mutatók vannak inaktiválása az *igaz* vagy *hamis* értéket. |
+|ReportReferenceLink |Egy adott rendszernek megfigyelhetőnek kapcsolatos jelentéseket mutató hivatkozásokat tartalmaz. |
+|AdditionalInformation |További információkat biztosít, ha van ilyen, az észlelt fenyegetés kapcsolatban. |
 
 ### <a name="servicemapcomputercl-records"></a>ServiceMapComputer_CL records
 Típussal rendelkező rekordok *ServiceMapComputer_CL* rendelkezik a kiszolgálókat a Szolgáltatástérkép-ügynökökkel Hardverleltár-adatait. Ezeket a rekordokat az alábbi táblázatban az jellemzőkkel rendelkeznek:

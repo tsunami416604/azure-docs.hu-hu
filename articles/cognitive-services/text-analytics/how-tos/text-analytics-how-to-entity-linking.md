@@ -1,35 +1,71 @@
 ---
-title: A Text Analytics API-val entitáskapcsolás használata
+title: Entitások felismerése használata a szövegelemzési API
 titleSuffix: Azure Cognitive Services
-description: Ismerje meg, hogyan azonosítani és megoldani a Text Analytics REST API használatával.
+description: Ismerje meg, hogyan ismerhetik fel a Text Analytics REST API használatával.
 services: cognitive-services
 author: ashmaka
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: text-analytics
 ms.topic: article
-ms.date: 09/12/2018
+ms.date: 10/01/2018
 ms.author: ashmaka
-ms.openlocfilehash: ad2168806f9ddd124faf66cdb5a0f51ed13dfadc
-ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
+ms.openlocfilehash: b2916e5c414562c55c35c9c5e7ab378963e004be
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45604739"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48248071"
 ---
-# <a name="how-to-identify-linked-entities-in-text-analytics-preview"></a>A Text Analytics (előzetes verzió) kapcsolt entitások azonosítása
+# <a name="how-to-use-named-entity-recognition-in-text-analytics-preview"></a>Megnevezett entitások felismerése használata a Text Analytics (előzetes verzió)
 
-A [Entitáskapcsolási API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/5ac4251d5b4ccd1554da7634) strukturálatlan szöveges vesz igénybe, és egyes JSON-dokumentumok listáját adja vissza használatát entitásokat is tartalmaz, hivatkozásokkal további információhoz a weben (Wikipédia és a Bing). 
+A [entitás Recognition API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1-Preview/operations/5ac4251d5b4ccd1554da7634) strukturálatlan szöveges vesz igénybe, és egyes JSON-dokumentumok listáját adja vissza használatát entitásokat is tartalmaz, hivatkozásokkal további információhoz a weben (Wikipédia és a Bing). 
 
-## <a name="entity-linking-vs-named-entity-recognition"></a>Entitás Linking vs. Megnevezett entitások felismerése
+## <a name="entity-linking-and-named-entity-recognition"></a>Entitáskapcsolás és nevesített entitások felismerése
 
-A természetes nyelvi feldolgozás, az entitáskapcsolás és a nevesített entitások felismerése (NER) könnyen összetéveszthetők is. A Text Analytics előzetes verziójának `entities` csak entitáskapcsolás-végpont támogatott.
+A Text Analytics `entities` mindkét végpont supprts nevű (NER) entitásfelismeréssel és -entitáskapcsolás.
 
+### <a name="entity-linking"></a>Entitáskapcsolás
 Entitáskapcsolás rendszer azon képessége, azonosíthatja és a egy entitás (pl. meghatározása-e a "Mars" globális vagy a latin god háború használja) szöveg található az identitás megkülönböztetéséhez. Ez a folyamat, amely felismeri a kapcsolódó entitások – Wikipedia szolgál a Tudásbázisban alapszintű ismerete szükséges a `entities` végpontot Text Analytics.
+
+A Text Analytics [2.1. dátumú előzetes Sémaverzióra](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1-Preview/operations/5ac4251d5b4ccd1554da7634), csak entitáskapcsolás érhető el.
+
+### <a name="named-entity-recognition-ner"></a>Nevesített entitások felismerése (NER)
+Megnevezett entitások felismerése (NER) rendszer azon képessége, azonosíthatja a szöveg különböző entitásokat, és előre meghatározott osztályokba kategorizálja őket. Az entitások támogatott osztályokat alább láthatók.
+
+Text Analytics 2.1-es verziója előzetes verzióban érhető el (`https://[region].api.cognitive.microsoft.com/text/analytics/v2.1-preview/entities`), entitáskapcsolás és nevesített entitások felismerése (NER) érhető el.
 
 ### <a name="language-support"></a>Nyelvi támogatás
 
 Entitáskapcsolás különféle nyelveken használatához az egyes nyelvekhez tartozó Tudásbázis használatával. A Text Analytics entitáskapcsolás, ez azt jelenti, hogy minden nyelv által támogatott a `entities` végpont kapcsolja a megfelelő Wikipedia forrásgyűjteményébe az adott nyelveken. Korpuszok mérete nyelvek közé esik, mivel várható, hogy a funkció a visszaírási entitáskapcsolás is változnak.
+
+## <a name="supported-types-for-named-entity-recognition"></a>Nevesített entitások felismerése támogatott típusai
+
+| Típus  | Altípus | Példa |
+|:-----------   |:------------- |:---------|
+| Személy        | N/A\*         | "Jeff", "Bill Gates"     |
+| Hely      | N/A\*         | "Redmond, Washington", "Párizs"  |
+| Szervezet  | N/A\*         | "Microsoft"   |
+| Mennyiség      | Szám        | "6", "hat"     | 
+| Mennyiség      | Százalék    | "50 %", "ötven százalék"| 
+| Mennyiség      | Sorszám       | "2.", "a második"     | 
+| Mennyiség      | NumberRange   | "4 – 8"     | 
+| Mennyiség      | Kor           | "90 napnál nem régebbi", "30 évnél fiatalabb"    | 
+| Mennyiség      | Currency (Pénznem)      | "$10.99"     | 
+| Mennyiség      | Dimenzió     | "10 mérföld", "40 cm"     | 
+| Mennyiség      | Hőmérséklet   | "32 fokos"    |
+| DateTime      | N/A\*         | "6:30 = 1997031213 2012. február 4."      | 
+| DateTime      | Dátum          | "2., 2017 május", "05/02/2017"   | 
+| Dátum és idő     | Time          | "8 am", "8:00"  | 
+| DateTime      | DateRange     | "Május 2. május 5-én a"    | 
+| DateTime      | timeRange     | "du. 6, 7 pm"     | 
+| DateTime      | Időtartam      | "1 perc 45 másodpercig"   | 
+| DateTime      | Beállítás           | "minden kedden"     | 
+| DateTime      | Időzóna      |    | 
+| URL-cím           | N/A\*         | „http://www.bing.com”    |
+| E-mail         | N/A\*         | „support@contoso.com” |
+\* Attól függően, a bemeneti és a kinyert entitásokat, bizonyos entitások előfordulhat, hogy kihagyja a `SubType`.
+
 
 
 ## <a name="preparation"></a>Előkészítés
@@ -43,11 +79,11 @@ Dokumentum mérete kell lennie a 5000 karakter / dokumentum, és legfeljebb 1000
 ```
 {"documents": [{"id": "1",
                 "language": "en",
-                "text": "I really enjoy the new XBox One S. It has a clean look, it has 4K/HDR resolution and it is affordable."
+                "text": "Jeff bought three dozen eggs because there was a 50% discount."
                 },
                {"id": "2",
                 "language": "en",
-                "text": "The Seattle Seahawks won the Super Bowl in 2014."
+                "text": "The Great Depression began in 1929. By 1933, the GDP in America fell by 25%."
                 }
                ]
 }
@@ -59,14 +95,14 @@ Kérelem definíciója a részletek megtalálhatók a [a szövegelemzési API h�
 
 + Hozzon létre egy **POST** kérelmet. A kérelem API-dokumentációban: [Entitáskapcsolási API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/5ac4251d5b4ccd1554da7634)
 
-+ Állítsa a kulcskifejezések kinyerése a HTTP-végpontot. Tartalmaznia kell a `/entities` erőforrás: `https://westus.api.cognitive.microsoft.com/text/analytics/v2.0/entities`
++ Állítsa a kulcskifejezések kinyerése a HTTP-végpontot. Tartalmaznia kell a `/entities` erőforrás: `https://westus.api.cognitive.microsoft.com/text/analytics/v2.1-preview/entities`
 
 + Állítsa be a hívóbetűt a Text Analytics műveletek közé tartozik a fejléc. További információkért lásd: [végpontok keresése és hozzáférési kulcsokkal](text-analytics-how-to-access-key.md).
 
 + A kérelem törzsében szereplő adja meg a JSON-dokumentumok ehhez az elemzéshez előkészített gyűjtemény
 
 > [!Tip]
-> Használata [Postman](text-analytics-how-to-call-api.md) , vagy nyissa meg a **API tesztelési konzollal** a a [dokumentáció](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/5ac4251d5b4ccd1554da7634) struktúra egy kérelmet, és KÖZZÉTESZI azokat a szolgáltatást.
+> Használata [Postman](text-analytics-how-to-call-api.md) , vagy nyissa meg a **API tesztelési konzollal** a a [dokumentáció](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1-Preview/operations/5ac4251d5b4ccd1554da7634) struktúra egy kérelmet, és KÖZZÉTESZI azokat a szolgáltatást.
 
 ## <a name="step-2-post-the-request"></a>2. lépés: A kérés küldése
 
@@ -82,74 +118,168 @@ Kimeneti azonnal adja vissza. Az eredményeket JSON elfogadó alkalmazás adatfo
 
 Egy példa a kimenetre entitáskapcsolás a következő látható:
 
-```
+```json
 {
-    "documents": [
+    "Documents": [
         {
-            "id": "1",
-            "entities": [
+            "Id": "1",
+            "Entities": [
                 {
-                    "name": "Xbox One",
-                    "matches": [
+                    "Name": "Jeff",
+                    "Matches": [
                         {
-                            "text": "XBox One",
-                            "offset": 23,
-                            "length": 8
+                            "Text": "Jeff",
+                            "Offset": 0,
+                            "Length": 4
                         }
                     ],
-                    "wikipediaLanguage": "en",
-                    "wikipediaId": "Xbox One",
-                    "wikipediaUrl": "https://en.wikipedia.org/wiki/Xbox_One",
-                    "bingId": "446bb4df-4999-4243-84c0-74e0f6c60e75"
+                    "Type": "Person"
                 },
                 {
-                    "name": "Ultra-high-definition television",
-                    "matches": [
+                    "Name": "three dozen",
+                    "Matches": [
                         {
-                            "text": "4K",
-                            "offset": 63,
-                            "length": 2
+                            "Text": "three dozen",
+                            "Offset": 12,
+                            "Length": 11
                         }
                     ],
-                    "wikipediaLanguage": "en",
-                    "wikipediaId": "Ultra-high-definition television",
-                    "wikipediaUrl": "https://en.wikipedia.org/wiki/Ultra-high-definition_television",
-                    "bingId": "7ee02026-b6ec-878b-f4de-f0bc7b0ab8c4"
+                    "Type": "Quantity",
+                    "SubType": "Number"
+                },
+                {
+                    "Name": "50",
+                    "Matches": [
+                        {
+                            "Text": "50",
+                            "Offset": 49,
+                            "Length": 2
+                        }
+                    ],
+                    "Type": "Quantity",
+                    "SubType": "Number"
+                },
+                {
+                    "Name": "50%",
+                    "Matches": [
+                        {
+                            "Text": "50%",
+                            "Offset": 49,
+                            "Length": 3
+                        }
+                    ],
+                    "Type": "Quantity",
+                    "SubType": "Percentage"
                 }
             ]
         },
         {
-            "id": "2",
-            "entities": [
+            "Id": "2",
+            "Entities": [
                 {
-                    "name": "2013 Seattle Seahawks season",
-                    "matches": [
+                    "Name": "Great Depression",
+                    "Matches": [
                         {
-                            "text": "Seattle Seahawks",
-                            "offset": 4,
-                            "length": 16
+                            "Text": "The Great Depression",
+                            "Offset": 0,
+                            "Length": 20
                         }
                     ],
-                    "wikipediaLanguage": "en",
-                    "wikipediaId": "2013 Seattle Seahawks season",
-                    "wikipediaUrl": "https://en.wikipedia.org/wiki/2013_Seattle_Seahawks_season",
-                    "bingId": "eb637865-4722-4eca-be9e-0ac0c376d361"
+                    "WikipediaLanguage": "en",
+                    "WikipediaId": "Great Depression",
+                    "WikipediaUrl": "https://en.wikipedia.org/wiki/Great_Depression",
+                    "BingId": "d9364681-98ad-1a66-f869-a3f1c8ae8ef8"
+                },
+                {
+                    "Name": "1929",
+                    "Matches": [
+                        {
+                            "Text": "1929",
+                            "Offset": 30,
+                            "Length": 4
+                        }
+                    ],
+                    "Type": "DateTime",
+                    "SubType": "DateRange"
+                },
+                {
+                    "Name": "By 1933",
+                    "Matches": [
+                        {
+                            "Text": "By 1933",
+                            "Offset": 36,
+                            "Length": 7
+                        }
+                    ],
+                    "Type": "DateTime",
+                    "SubType": "DateRange"
+                },
+                {
+                    "Name": "Gross domestic product",
+                    "Matches": [
+                        {
+                            "Text": "GDP",
+                            "Offset": 49,
+                            "Length": 3
+                        }
+                    ],
+                    "WikipediaLanguage": "en",
+                    "WikipediaId": "Gross domestic product",
+                    "WikipediaUrl": "https://en.wikipedia.org/wiki/Gross_domestic_product",
+                    "BingId": "c859ed84-c0dd-e18f-394a-530cae5468a2"
+                },
+                {
+                    "Name": "United States",
+                    "Matches": [
+                        {
+                            "Text": "America",
+                            "Offset": 56,
+                            "Length": 7
+                        }
+                    ],
+                    "WikipediaLanguage": "en",
+                    "WikipediaId": "United States",
+                    "WikipediaUrl": "https://en.wikipedia.org/wiki/United_States",
+                    "BingId": "5232ed96-85b1-2edb-12c6-63e6c597a1de",
+                    "Type": "Location"
+                },
+                {
+                    "Name": "25",
+                    "Matches": [
+                        {
+                            "Text": "25",
+                            "Offset": 72,
+                            "Length": 2
+                        }
+                    ],
+                    "Type": "Quantity",
+                    "SubType": "Number"
+                },
+                {
+                    "Name": "25%",
+                    "Matches": [
+                        {
+                            "Text": "25%",
+                            "Offset": 72,
+                            "Length": 3
+                        }
+                    ],
+                    "Type": "Quantity",
+                    "SubType": "Percentage"
                 }
             ]
         }
     ],
-    "errors": []
+    "Errors": []
 }
 ```
-
-Ha elérhető, akkor a válasz az egyes észlelt entitásokhoz tartalmaz a Wikipédia-azonosító, a Wikipedia URL-cím és a Bing azonosító. Ezek segítségével tovább javíthatja az alkalmazás a hivatkozott entitáson kapcsolatos információkat.
 
 
 ## <a name="summary"></a>Összegzés
 
 Ebben a cikkben megtanulta, fogalmak és a Cognitive Services Text Analytics használatával entitáskapcsolás munkafolyamatokat. Az Összegzés:
 
-+ [Entitáskapcsolási API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/5ac4251d5b4ccd1554da7634) érhető el a kiválasztott nyelveken.
++ [Entitások API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1-Preview/operations/5ac4251d5b4ccd1554da7634) érhető el a kiválasztott nyelveken.
 + A kérelem törzsében szereplő JSON-dokumentumok közé tartozik egy azonosító, a szöveg és a nyelvi kódot.
 + POST-kérelmet, hogy egy `/entities` végpontra, a személyre szabott [kulcs és a egy végpont elérésére](text-analytics-how-to-access-key.md) Ez érvényes az előfizetéshez.
 + Válasz kimenete, amely entitáskészlet (beleértve a megbízhatósági pontszámok eltolások és webes hivatkozások, minden egyes dokumentum-azonosító) áll használható bármely alkalmazásban
@@ -163,4 +293,4 @@ Ebben a cikkben megtanulta, fogalmak és a Cognitive Services Text Analytics has
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Szövegelemzési API-val](//westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c6)
+> [Szövegelemzési API-val](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1-Preview/operations/5ac4251d5b4ccd1554da7634)

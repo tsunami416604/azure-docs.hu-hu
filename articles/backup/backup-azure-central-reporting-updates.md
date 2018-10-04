@@ -1,6 +1,6 @@
 ---
-title: Az Azure biztonsági mentési központi jelentéskészítési tartalomcsomag frissítése
-description: Az Azure Backup-Tartalomcsomaghoz a Power bi-ban frissítésekkel kapcsolatos információk
+title: Az Azure Backup központi jelentéskészítési tartalomcsomag frissítése
+description: Az Azure Backup tartalom frissítésekkel kapcsolatos információk csomag a Power bi-ban
 services: backup
 documentationcenter: ''
 author: adigan
@@ -14,31 +14,31 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/24/2018
 ms.author: adigan;
-ms.openlocfilehash: 07774234849d96b9a44678b68ca7b13b6b4830f9
-ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
+ms.openlocfilehash: 73a5e8126ebe6223d790a5b58db7bd5d04b5350f
+ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39265670"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48267302"
 ---
-# <a name="updating-azure-backup-central-reporting-content-pack"></a>Az Azure biztonsági mentési központi jelentéskészítési tartalomcsomag frissítése 
+# <a name="update-the-azure-backup-central-reporting-content-pack"></a>Az Azure Backup központi jelentéskészítési tartalomcsomag frissítése 
 
-[Az Azure Backup-Tartalomcsomaghoz](https://docs.microsoft.com/azure/backup/backup-azure-configure-reports#view-reports-in-power-bi) segítségével központilag megtekintheti a jelentések biztonsági mentéséről. A tartalomcsomag további funkciókat rendszeresen frissül, és kijavítja a hibát. Ez a cikk végigvezeti a lépéseket, frissítse a Tartalomcsomagot, a frissítést, és a idővel végzett frissítések késleltetése.
+A [Azure Backup tartalomcsomag](https://docs.microsoft.com/azure/backup/backup-azure-configure-reports#view-reports-in-power-bi) központi biztonsági mentéssel kapcsolatos jelentések megtekintéséhez használható. A tartalomcsomag a további funkciók hozzáadása és hibajavítás rendszeresen frissül. Ez a cikk bemutatja, hogyan frissítse a tartalomcsomagot. Azt is bemutatja, hogyan lehet elhalasztani a frissítést, és az idő függvényében végzett frissítéseket.
 
-## <a name="how-to-get-updates-to-the-content-pack"></a>A tartalomcsomaghoz frissítések beszerzése
+## <a name="get-updates-to-the-content-pack"></a>A tartalomcsomag frissítése
 
-### <a name="to-get-the-updated-content-pack"></a>A frissített tartalomcsomag letöltése
-Rendszer nem végzett módosításokat, ha automatikusan frissíti a tartalomcsomagot a példányát. Abban az esetben, ha a tartalomcsomag módosult, értesítést a powerbi-ban, és közel azonos e-mail-értesítést fog kapni. Ha szeretné, megfelelően a felhasználók kényelme érdekében a frissített tartalomcsomag beszerzése. 
+### <a name="get-the-updated-content-pack"></a>A frissített tartalomcsomag beszerzése
+Ha még nem végzett módosításokat a tartalomcsomag példányának, automatikusan frissül. Ha módosítja a tartalomcsomagot, a Power BI és az e-mailben értesítést kap értesítést. Ha szeretné, a frissített tartalomcsomag beszerzése saját igényei. 
 
-### <a name="to-delay-the-update"></a>A frissítés késleltetése
-Az ajánlott eljárás szerint a rendszer importálja a tartalomcsomagot, egy [egyéni munkaterület](https://youtu.be/26zyOtyHPJM?t=1m57s). Most már a jelentések szerkesztési képességének.
-Ahogy említettük, ha a tartalomcsomag módosul, megjelenik egy értesítés, a powerbi-ban. Ha szeretné, a tartalomcsomag újabb beolvasása. 
+### <a name="postpone-the-update"></a>A frissítés elhalasztása
+Az ajánlott eljárás szerint a rendszer importálja a tartalomcsomagot, egy [egyéni munkaterület](https://youtu.be/26zyOtyHPJM?t=1m57s). Most már szerkesztheti a jelentéseket.
+Ahogy korábban említettük Ha módosítja a tartalomcsomagot, megjelenik egy értesítés a Power bi-ban. Ha szeretné, a tartalomcsomag újabb beolvasása. 
 
-## <a name="coming-soon"></a>Hamarosan
+## <a name="coming-soon"></a>Hamarosan elérhető
    
-Az Azure biztonsági mentési tartalomcsomag frissítése az aktuális támogatási MAB és Azure virtuális gép biztonsági mentése mellett támogatja a további számítási feladatok, az SQL IaaS VM biztonsági mentése, valamint a SC DPM, folyamatban van. Ez azt jelenti, hogy Ön hamarosan megtekintheti és elemezheti az adatokat a biztonsági mentési adatok egy központi helyen. A [jelentések testre is szabható](https://youtu.be/26zyOtyHPJM) a szervezet igényeinek megfelelően.
+Az Azure Backup-tartalomcsomaghoz további számítási feladatok frissül. Számítási feladat például az Azure SQL Database IaaS VM biztonsági mentése és a System Center Data Protection Manager. Ez a támogatás hozzáadása az aktuális támogatása az Azure backup és az Azure virtuális gép biztonsági mentéseinek. Ez a támogatás azt jelenti, hogy megtekintheti és elemezheti a biztonsági mentési adatok egy központi helyen. [Jelentések is testreszabható](https://youtu.be/26zyOtyHPJM) a szervezet igényeinek megfelelően.
 
-Ahhoz, hogy a jelentések kifejezőbb számítási feladatok, a következőre változik az Azure Backup-Tartalomcsomaghoz előre konfigurált jelentések készletét. A következő jelentések t lehetőségekbe itt érhető el:
+Az előre konfigurált jelentéseket, amelyek az Azure Backup-tartalomcsomaghoz kapható változnak. A módosításokat a jelentések kifejezőbb számítási feladatokhoz. A jelentések közelgő beállítva lehetőségekbe itt érhető el.
 
 ### <a name="summary"></a>Összegzés
    
@@ -57,7 +57,7 @@ Ahhoz, hogy a jelentések kifejezőbb számítási feladatok, a következőre v�
 ![Storage](.\media\backup-azure-central-reporting\AzBackup-Central-Reporting-Storage.png)
 
 ### <a name="backup-items"></a>Biztonsági másolati elemek
-![BackupItems](.\media\backup-azure-central-reporting\AzBackup-Central-Reporting-BackupItem.png)
+![Biztonsági másolati elemek](.\media\backup-azure-central-reporting\AzBackup-Central-Reporting-BackupItem.png)
 
 ### <a name="alerts"></a>Riasztások
 
@@ -68,7 +68,7 @@ Ahhoz, hogy a jelentések kifejezőbb számítási feladatok, a következőre v�
 ![Feladatok](.\media\backup-azure-central-reporting\AzBackup-Central-Reporting-Jobs.png)
     
 
-## <a name="next-steps"></a>További lépések:
+## <a name="next-steps"></a>További lépések
 
-* [A szervezet között megosztást jelentések](https://youtu.be/26zyOtyHPJM)
+* [Jelentések megosztása a szervezetben](https://youtu.be/26zyOtyHPJM)
 * [Az Azure Backup – gyakori kérdések](backup-azure-backup-faq.md)

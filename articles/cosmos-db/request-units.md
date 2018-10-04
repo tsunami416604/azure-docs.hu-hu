@@ -7,37 +7,37 @@ manager: kfile
 ms.service: cosmos-db
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/26/2018
+ms.date: 10/02/2018
 ms.author: rimman
-ms.openlocfilehash: 66beeb2cc724f75d17a4c155f1cdb888153e8fbf
-ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
+ms.openlocfilehash: 23a3e629e12e2a4d417757c9fef5db804bb72c9e
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43286765"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48248754"
 ---
-# <a name="request-units-in-azure-cosmos-db"></a>Azure Cosmos DB-kérésegységeiről
+# <a name="throughput-and-request-units-in-azure-cosmos-db"></a>Teljesítmény- és kérésegységek, az Azure Cosmos DB
 
-[Az Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) van a Microsoft globálisan elosztott többmodelles adatbázis. Az Azure Cosmos DB nem kell virtuális gépeket bérelhet, szoftver központi telepítése vagy adatbázisok figyelése. Az Azure Cosmos DB üzemeltetni, és folyamatosan figyeli, hogy világszínvonalú rendelkezésre állását, teljesítményét és adatok védelme a Microsoft vezető mérnökeinek. Például a kiválasztott API-k használatával is elérhetők az adatok a [SQL](documentdb-introduction.md), [MongoDB](mongodb-introduction.md), és [tábla](table-introduction.md) API-k és a graph-n keresztül a [Gremlin API](graph-introduction.md). Minden API-k mind a natív módon támogatottak. 
+Az Azure Cosmos DB-erőforrások fizetendő díjat a kiosztott átviteli sebesség és a tárolás. Az Azure Cosmos DB-átviteli fejezzük ki, hogy **kérelemegység / másodperc (RU/s)**. Az Azure Cosmos DB támogatja a különböző API-k, amelyek különböző műveleteket, és a simple beolvassa és az összetett graph-lekérdezéseket. Minden egyes kérelem alapján a számítást, ami szükséges a kérés kiszolgálása összegének kérelemegység használ fel. A művelet kérelemegység száma nem determinisztikus. Nyomon követheti a válaszfejléc használatával az Azure Cosmos DB-ben minden művelet által felhasznált kérelemegységek számát. Kiszámítható teljesítmény elérése érdekében átviteli egység: 100 Kérelemegység/s kell lefoglalni. Az Azure Cosmos DB segítségével meg tudja becsülni az átviteli sebesség igényeinek [kérelem egység Számológép](https://www.documentdb.com/capacityplanner).
 
-Azure Cosmos DB pénzneme az *kérelemegység (RU)*. Kérelemegységgel nem kell lefoglalni az olvasási/írási kapacitások vagy kiépítése CPU, memória és iops-t. Az Azure Cosmos DB támogatja a különböző API-k, amelyek különböző műveleteket, és a simple beolvassa és az összetett graph-lekérdezéseket. Mivel nem minden kérelmek egyenlő, a kérelmek kérelemegység alapján a számítást, ami szükséges a kérés kiszolgálása összegének normalizált mennyisége vannak hozzárendelve. A művelet kérelemegység száma nem determinisztikus. Követheti, hogy bármilyen műveletet az Azure Cosmos DB-válaszfejléc által felhasznált kérelemegységek számát. 
+Az Azure Cosmos DB átviteli sebességet két granularitással is kioszthatja: 
 
-Kiszámítható teljesítményt biztosítanak, fenntartott átviteli egység: 100 Kérelemegység/s. Is [az átviteli sebességet igényei meghatározásához](request-units.md#estimating-throughput-needs) az Azure Cosmos DB használatával [kérelem egység Számológép](https://www.documentdb.com/capacityplanner).
+1. **Az Azure Cosmos DB-tároló:** a tárolóban van fenntartva, csak az adott tároló számára kiosztott átviteli sebesség. A tároló szintjén throughput(RU/s) hozzárendelésekor a tárolók hozható létre **rögzített méretű** vagy **korlátlan**. 
 
-![Átviteli sebesség kalkulátor][5]
+  Rögzített méretű tárolók maximális átviteli sebesség legfeljebb 10 000 RU/s és 10 GB-os tárolási kapacitást kell. A korlátlan tároló létrehozásához meg kell adnia egy minimális 1000 RU/s átviteli sebességet és a egy [partíciókulcs](partition-data.md). Az adatok esetleg feloszthatók több partíciót, mert akkor válassza ki a partíciós kulcs, amely rendelkezik egy nagy számosságú (100 millió egyedi érték). Számos különböző értékeket a partíciókulcs kiválasztásával az Azure Cosmos DB biztosítja, hogy a kérések egy gyűjtemény, tábla és a graph egyenletesen vannak-e méretezve. 
 
-Ez a cikk elolvasása után is elérheti az alábbi kérdések megválaszolásához:
+2. **Az Azure Cosmos DB-adatbázishoz:** az adatbázis közösen használja, hogy az adatbázis belül a tárolók számára kiosztott átviteli sebességet. Az adatbázis szintjén átviteli kiépítésekor lehet váltani, amelyeket kifejezetten kizár egyes tárolók, és inkább oszthatnak ki átviteli kapacitásokat a ezeket a tárolókat a tároló szintjén. Adatbázis-szintű átviteli létrejön egy partíciókulccsal rendelkező összes gyűjtemény szükséges. Az adatbázis szintjén átviteli hozzárendelésekor a partíciókulccsal rendelkező ehhez az adatbázishoz tartozó tárolókat kell létrehozni, mert minden gyűjtemény egy **korlátlan** tároló.  
 
-* Mik a kérelemegységekről és a kérelem díjakat az Azure Cosmos DB?
-* Hogyan határozhatom meg a kérelem egység kapacitás egy tárolót vagy tárolók az Azure Cosmos DB?
-* Hogyan határozhatom meg, hogy az alkalmazásom által kérelemegység van szüksége?
-* Mi történik, ha túllépem a kérelem egység kapacitás egy tárolót vagy tárolók az Azure Cosmos DB?
+A kiosztott átviteli sebesség alapján, az Azure Cosmos DB foglal le a tároló(k) bérletét, és az elágazást adatokat tárolni a több partícióra kiterjedő növekedésével, fizikai partíciók. Az alábbi ábrán különböző szinteken kiépítési átviteli sebesség:
 
-Mivel az Azure Cosmos DB egy többmodelles adatbázis, fontos megjegyezni, hogy ez a cikk egyaránt vonatkozik az összes adatmodellek és API-k az Azure Cosmos DB. Ebben a cikkben az általános feltételek, például *tároló* általános hivatkozás egy gyűjtemény vagy a graph és *elem* általános hivatkozni egy tábla, a dokumentum, a csomópont vagy az entitás.
+  ![Különálló tárolókat, és a tárolók beállított kiépítési kérelemegység](./media/request-units/provisioning_set_containers.png)
+
+> [!NOTE] 
+> Kiépítés átviteli sebességet a tároló szintjén és az adatbázis szintjén különálló ajánlatok, és mindkét közötti váltáskor szükséges adatok áttelepítése a forrás célhelyre. Ami azt jelenti, hogy hozzon létre egy új adatbázist vagy egy új gyűjteményt, és ezután telepítse át az adatok segítségével kell [tömeges végrehajtó könyvtár](bulk-executor-overview.md) vagy [Azure Data Factory](../data-factory/connector-azure-cosmos-db.md).
 
 ## <a name="request-units-and-request-charges"></a>Kérelemegységek és a kérés díjak
 
-Az Azure Cosmos DB is gyors és kiszámítható teljesítményt, az átviteli sebességet az alkalmazás igényeinek kielégítéséhez erőforrások lefoglalásával. Alkalmazás által generált terhelést, és a hozzáférési minták az idő előrehaladtával változik. Az Azure Cosmos DB segítségével könnyedén növelheti vagy csökkentheti a mennyiséget, a fenntartott átviteli sebesség az alkalmazás számára elérhető.
+Az Azure Cosmos DB az erőforrások lefoglalásával gyors és kiszámítható teljesítményt nyújt az alkalmazása átviteli sebességre vonatkozó igényeinek kielégítése érdekében. Az alkalmazás terhelése és a hozzáférési mintázatok idővel változnak. Az Azure Cosmos DB segítségével egyszerűen növelhető vagy csökkenthető az alkalmazás számára rendelkezésre álló, lefoglalt átviteli sebesség.
 
 Az Azure Cosmos DB szolgáltatás számára fenntartott átviteli sebesség kérelemegység / másodperc feldolgozása van megadva. Átviteli sebesség pénznemként kérelemegység is felfoghatók. Fenntartott számos garantált kérelemegység másodpercalapú elszámolással, az alkalmazás számára elérhetővé válnak. Egyes műveletek az Azure Cosmos DB, beleértve a dokumentumok írása a lekérdezés végrehajtása, és a frissített egy dokumentumot, használ fel, a Processzor, memória és iops-t. Azt jelenti minden művelet kötelezettséggel jár kérelem, amely kérelemegység van kifejezve. Miután megértette a kérést egységekre vonatkozó díjakon és az alkalmazás átviteli sebességet megkövetelő befolyásoló tényezők, a lehető leghatékonyabban költséggel futtathatja az alkalmazást. 
 
@@ -57,7 +57,7 @@ Megbecsülheti, hogy az üzembe helyezni a kérelemegységek számát, fontos fi
 * **Parancsfájl-használat**. Lekérdezéseket, a tárolt eljárásokkal és eseményindítókkal végrehajtott műveletek összetettsége alapján kérelemegység felhasználni. Az alkalmazás fejlesztését, vizsgálja meg jobb megértése érdekében hogyan használ fel az egyes műveletek az kérelem egység kapacitás kérelemfejlécből díj.
 
 ## <a name="estimating-throughput-needs"></a>Teljesítménybeli becslése
-Kérelemegység kérelemfeldolgozási költség normalizált mértékegysége. Egy kérelemegység (önkiszolgáló hivatkozás vagy ID) keresztül olvassa el, amely 10 egyedi tulajdonság értéket (kivéve a rendszer tulajdonságai) áll egy 1 KB-os elem szükséges feldolgozási kapacitása jelöli. (Beszúrás), létrehozására irányuló kérelem cseréje vagy törlése az azonos elem a szolgáltatásból további feldolgozást igényel, és ezáltal a további kérelemegység szükséges. 
+Kérelemegység kérelemfeldolgozási költség normalizált mértékegysége. Egyetlen kérelemegység jelöli olvasásához szükséges feldolgozási kapacitása (keresztül önhivatkozást vagy azonosító) egy 1 KB-os elem, amely 10 egyedi tulajdonság értéket (kivéve a rendszer tulajdonságai) áll. (Beszúrás), létrehozására irányuló kérelem cseréje vagy törlése az azonos elem a szolgáltatásból további feldolgozást igényel, és ezáltal a további kérelemegység szükséges. 
 
 > [!NOTE]
 > Az alapkonfiguráció 1 kérelemegység egy 1 KB-os elem esetében, egy egyszerű GET önkiszolgáló csatlakozásonkénti vagy az elem azonosítója felel meg.
@@ -74,7 +74,6 @@ Például a következő hány kérelemegység cikkek három különböző méret
 | 4 KB | 500 | 500 | (500 * 1,3) + (500 * 7) = 4,150 RU/s
 | 64 KB | 500 | 100 | (500 * 10) + (100 * 48) = 9,800 RU/s
 | 64 KB | 500 | 500 | (500 * 10) + (500 * 48) = 29,000 RU/s
-
 
 ### <a name="use-the-request-unit-calculator"></a>A kérelem egység kalkulátor használata
 Az átviteli sebesség becsléseket finomhangolása segítségével használhatja a webalapú [kérelem egység Számológép](https://www.documentdb.com/capacityplanner). A kalkulátor segítségével az Ön becsült költsége jellemző műveleteket, köztük a kérelem egység követelményei:
@@ -237,4 +236,5 @@ Ha a kérések mennyisége felett összesítve működő egynél több ügyfél 
 [3]: ./media/request-units/RUEstimatorDocuments.png
 [4]: ./media/request-units/RUEstimatorResults.png
 [5]: ./media/request-units/RUCalculator2.png
+
 

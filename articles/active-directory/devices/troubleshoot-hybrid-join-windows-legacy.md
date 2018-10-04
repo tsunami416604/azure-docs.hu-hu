@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 04/23/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: 2c50ba1abfe3681a39b39bf52f127efd9d518aef
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 4365f12992c96ca45ff6b97b0f59202f1eeb4483
+ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43041868"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48268969"
 ---
 # <a name="troubleshooting-hybrid-azure-active-directory-joined-down-level-devices"></a>Hibaelhárítás az Azure Active Directory hibrid csatlakoztatott régebbi verziójú eszközök 
 
@@ -39,23 +39,18 @@ Ez a cikk feltételezi, hogy [konfigurált hibrid Azure Active Directory-hez csa
 
 - Eszközalapú feltételes hozzáférés
 
-- [Vállalati barangolás beállításai](../active-directory-windows-enterprise-state-roaming-overview.md)
-
-- [Windows Hello for Business](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-identity-verification) 
-
-
-
-
 
 Ez a cikk nyújt hibaelhárítási útmutatót a potenciális problémák megoldásához.  
 
 **Tudnivalók:** 
 
-- Eszközök felhasználónkénti maximális száma, eszközközpontú. Például ha *jdoe* és *jharnett* jelentkezzen be egy eszközt, egy különálló regisztrációs (DeviceID) jön létre minden egyes őket a **felhasználói** info lapon.  
+- Jelenleg felhasználónként legfeljebb alacsonyabb szintű hibrid Azure AD-csatlakoztatott eszközök is vonatkozik. 
+
+- Az ugyanazon fizikai eszköz több alkalommal Ha több tartományi felhasználó jelentkezzen be a korábbi verziójú hibrid Azure AD-csatlakoztatott eszközök Azure AD-ben jelenik meg.  Például ha *jdoe* és *jharnett* jelentkezzen be egy eszközt, egy különálló regisztrációs (DeviceID) jön létre minden egyes őket a **felhasználói** info lapon. 
+
+- Az operációs rendszer vagy egy manuális Újraregisztrálás újratelepítésre miatt egy eszközhöz, a felhasználó-információ lapon is kaphat több bejegyzést.
 
 - A kezdeti regisztráció / join eszközök megkísérli a bejelentkezést vagy a zárolás végrehajtása / feloldásához van konfigurálva. A Feladatütemező által aktivált 5 perces késleltetés lehet. 
-
-- A felhasználó adatai lap egy eszközhöz több bejegyzés miatt az operációs rendszer vagy egy manuális Újraregisztrálás újratelepítésre kérheti le. 
 
 - Győződjön meg arról, hogy [KB4284842](https://support.microsoft.com/help/4284842) van telepítve, Windows 7 SP1 vagy Windows Server 2008 R2 SP1 esetén. A frissítés megakadályozza, hogy az ügyfél-hozzáférési adatvesztés miatt a későbbi hitelesítési hibák védett kulcsokhoz jelszó módosítása után.
 
@@ -65,24 +60,39 @@ Ez a cikk nyújt hibaelhárítási útmutatót a potenciális problémák megold
 
 1. Jelentkezzen be a felhasználói fiókkal, amely a hibrid Azure AD-csatlakozás hajtott végre.
 
-2. Nyissa meg a parancssort rendszergazdaként 
+2. Nyissa meg a parancssort 
 
 3. Típusa `"%programFiles%\Microsoft Workplace Join\autoworkplace.exe" /i`
 
-Ez a parancs egy párbeszédpanel, amely biztosítja a join állapotával kapcsolatos további részleteket jeleníti meg.
+Ez a parancs megjelenít egy párbeszédpanelt, amely biztosítja a join állapot részletes adatai.
 
 ![A munkahelyi csatlakoztatás Windows esetében](./media/troubleshoot-hybrid-join-windows-legacy/01.png)
 
 
 ## <a name="step-2-evaluate-the-hybrid-azure-ad-join-status"></a>2. lépés: A hibrid Azure AD join állapot értékelése 
 
-Ha a hibrid Azure AD join nem volt sikeres, a párbeszédpanel biztosít információkhoz juthat a problémáról történt.
+Ha az eszköz nem volt a hibrid Azure AD-hez, megpróbálhatja hibrid Azure AD-csatlakozás ehhez a "Csatlakozás" gombra kattintva. Hibrid Azure AD-csatlakozás ehhez a kísérlet meghiúsul, ha a hiba részleteit jelenik meg.
+
 
 **A leggyakoribb kérdések a következők:**
 
-- Egy helytelenül konfigurált AD FS vagy az Azure ad-ben
+- A helytelenül van konfigurálva, az AD FS vagy az Azure AD vagy hálózati problémák
 
     ![A munkahelyi csatlakoztatás Windows esetében](./media/troubleshoot-hybrid-join-windows-legacy/02.png)
+    
+    - Autoworkplace.exe nem tudja az Azure AD vagy az AD FS-csendes hitelesítést. Ez okozhatja hiányzik vagy helytelenül van konfigurálva az Active Directory összevonási szolgáltatások (az összevont tartományok), vagy hiányzik vagy helytelenül konfigurált Azure AD közvetlen egyszeri bejelentkezés (a felügyelt tartományok), vagy hálózati problémák. 
+    
+     - Annak oka az lehet, hogy a multi-factor authentication (MFA) a kompatibilis vagy nincs konfigurálva a felhasználó számára, és WIAORMUTLIAUTHN nem az AD FS-kiszolgálón kell konfigurálni. 
+     
+     - Egy másik lehetőség, felhasználói beavatkozás, amely megakadályozza, hogy vár a kezdőtartomány felderítése (HRD) az oldal **autoworkplace.exe** csendes kérni egy token.
+     
+     - Annak oka az lehet, hogy az AD FS és az Azure ad-ben URL-címek hiányoznak az IE intranetzónához az ügyfélen.
+     
+     - Hálózati kapcsolódási problémák miatt **autoworkplace.exe** elérni az AD FS vagy az Azure AD URL-címeket. 
+     
+     - **Autoworkplace.exe** megköveteli, hogy közvetlen üzemel az ügyféltől a orgnanization a helyszínen rendelkeznek az ügyfél AD tartományvezérlőt, ami azt jelenti, hogy a hibrid Azure AD-csatlakozás sikeres, csak ha az ügyfél csatlakozik a szervezeti intraneten .
+     
+     - A szervezet használja az Azure AD közvetlen egyszeri bejelentkezés, `https://autologon.microsoftazuread-sso.com` vagy `https://aadg.windows.net.nsatc.net` nem találhatók az eszközök Internet Explorer intranetes beállításait, és **lehetővé teszik a frissítések állapotsor parancsfájl keresztül** nincs engedélyezve az Intranet zóna.
 
 - Nincs bejelentkezve tartományi felhasználóként
 
@@ -92,9 +102,7 @@ Ha a hibrid Azure AD join nem volt sikeres, a párbeszédpanel biztosít inform�
     
     - A bejelentkezett felhasználó nem egy tartományi felhasználó (például egy helyi felhasználó). Hibrid Azure AD join a régebbi verziójú eszközök csak tartományi felhasználók esetében támogatott.
     
-    - Autoworkplace.exe nem tudja az Azure AD vagy az AD FS-csendes hitelesítést. Ennek oka lehet egy kimenő irányú kötött hálózati problémák léptek fel az Azure AD URL-címekhez. Az is előfordulhat, hogy a multi-factor authentication (MFA) a kompatibilis vagy nincs konfigurálva a felhasználó számára, és WIAORMUTLIAUTHN nincs konfigurálva az összevonási kiszolgálón. Egy másik lehetőség, felhasználói beavatkozás, amely megakadályozza, hogy vár a kezdőtartomány felderítése (HRD) az oldal **autoworkplace.exe** csendes kérni egy token.
-    
-    - A szervezet használja az Azure AD közvetlen egyszeri bejelentkezés, `https://autologon.microsoftazuread-sso.com` vagy `https://aadg.windows.net.nsatc.net` nem találhatók az eszközök Internet Explorer intranetes beállításait, és **lehetővé teszik a frissítések állapotsor parancsfájl keresztül** nincs engedélyezve az Intranet zóna.
+    - Az ügyfél nem sikerül csatlakozni a tartományvezérlőhöz.    
 
 - Elérte a kvótáját
 
@@ -114,9 +122,11 @@ Az állapotinformációk keresse meg az eseménynaplóban: **alkalmazások és s
 
 - Szolgáltatás konfigurációs problémák: 
 
-  - Az összevonási kiszolgáló konfigurációja támogatásához **WIAORMULTIAUTHN**. 
+  - Az AD FS-kiszolgáló nincs beállítva támogatásához **WIAORMULTIAUTHN**. 
 
   - A számítógép erdő rendelkezik nincs Szolgáltatáskapcsolati pont objektumot, amely az ellenőrzött tartomány nevét az Azure ad-ben 
+  
+  - A tartomány felügyelt, akkor a közvetlen egyszeri bejelentkezés nem volt konfigurálva, vagy vagy nem működik.
 
   - A felhasználó elérte az eszközök felső határát. 
 

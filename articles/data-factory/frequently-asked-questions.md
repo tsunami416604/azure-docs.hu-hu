@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: shlo
-ms.openlocfilehash: 73bc8b6954470d11d6369bc733bb7c6f794ce892
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: d900c9c438ed40841639d556643a231075f4f194
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45577132"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48249587"
 ---
 # <a name="azure-data-factory-faq"></a>Az Azure Data Factory – gyakori kérdések
 Ez a cikk ismerteti az Azure Data Factory kapcsolatos gyakori kérdésekre adott válaszokat.  
@@ -83,7 +83,7 @@ Az adat-előállítók PowerShell, SDK-t vagy a böngésző felhasználói felü
 -   Felügyelt példány (MI)
 -   Rugalmas készlet
 -   Az Azure Resource Managerbeli virtuális hálózat (VNet) épülő klasszikus virtuális hálózat, a jövőben – fognak évülni támogatása Ez lehetővé teszi az Azure-SSIS integrációs modul (IR) egy virtuális hálózathoz virtuális hálózatok közötti szolgáltatás végpontok/MI az Azure SQL DB-hez konfigurált beszúrása/join / a helyszíni adatok elérése, lásd: https://docs.microsoft.com/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network 
--   Támogatás az Azure Active Directory (AAD) hitelesítés épülő SQL-hitelesítés szeretne csatlakozni az SSISDB - Ez lehetővé teszi, hogy AAD-hitelesítést használjon az az ADF Felügyeltszolgáltatás-identitás (MSI)
+-   Épülő SQL-hitelesítés szeretne csatlakozni az SSISDB - Ez lehetővé teszi, hogy használja az Azure Active Directory (AAD) hitelesítés támogatása az ADF az AAD-hitelesítés felügyelt identitás az Azure-erőforrásokhoz
 -   Saját licence a helyszíni SQL Server, az Azure Hybrid Benefit (AHB) beállítás jelentős költségmegtakarítást megszerzésére támogatása
 -   Támogatási Enterprise Edition az Azure-SSIS integrációs, amely lehetővé teszi a speciális/Premium szintű funkciók használata, telepítse a további összetevők/fájlnévkiterjesztéseket, valamint a 3. fél ökoszisztéma, lásd: egyéni telepítés: https://blogs.msdn.microsoft.com/ssis/2018/04/27/enterprise-edition-custom-setup-and-3rd-party-extensibility-for-ssis-in-adf/ 
 -   Lásd az SSIS az ADF, amellyel elsőosztályú SSIS-csomag végrehajtása tevékenységek az ADF-folyamatok meghívásához vagy trigger és ütemezni keresztül ssms-ben, ugyanakkor szorosabb integrációt: https://blogs.msdn.microsoft.com/ssis/2018/05/23/modernize-and-extend-your-etlelt-workflows-with-ssis-activities-in-adf-pipelines/ 

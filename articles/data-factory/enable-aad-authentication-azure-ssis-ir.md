@@ -12,16 +12,16 @@ ms.devlang: powershell
 ms.topic: conceptual
 ms.date: 06/21/2018
 ms.author: douglasl
-ms.openlocfilehash: aa06110a6f6fe668388c6aecd98c1ddeeae37edd
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: 234fb5af55565602d283539c63076adebad1ed25
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45576629"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48248975"
 ---
 # <a name="enable-azure-active-directory-authentication-for-the-azure-ssis-integration-runtime"></a>Az Azure-SSIS integrációs modul az Azure Active Directory-hitelesítés engedélyezése
 
-Ez a cikk bemutatja, hogyan hozható létre egy Azure-SSIS integrációs modul az Azure Data Factory-szolgáltatásidentitás. Az Azure Active Directory (Azure AD-) hitelesítés a a Felügyeltszolgáltatás-identitás (MSI) az Azure-SSIS integrációs modul lehetővé teszi a Data Factory MSI használata az SQL-hitelesítés helyett egy Azure-SSIS integrációs modul létrehozásához.
+Ez a cikk bemutatja, hogyan hozható létre egy Azure-SSIS integrációs modul az Azure Data Factory-szolgáltatásidentitás. Az Azure Active Directory (Azure AD-) hitelesítést az Azure-erőforrások az Azure-SSIS integrációs modul felügyelt identitással lehetővé teszi a Data Factory MSI használata az SQL-hitelesítés helyett egy Azure-SSIS integrációs modul létrehozásához.
 
 A Data Factory MSI kapcsolatos további információkért lásd: [Azure Data Factory-szolgáltatásidentitás](https://docs.microsoft.com/azure/data-factory/data-factory-service-identity).
 

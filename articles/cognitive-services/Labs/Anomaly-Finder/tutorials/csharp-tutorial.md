@@ -9,14 +9,16 @@ ms.technology: anomaly-detection
 ms.topic: article
 ms.date: 05/01/2018
 ms.author: chliang
-ms.openlocfilehash: 7d4f6a12c94620f447b5d6df4d7715d32eac2d98
-ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
+ms.openlocfilehash: fb434bd668b065fbdbaac39f2926676bcc90e794
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "41988792"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48247824"
 ---
 # <a name="anomaly-detection-c-application"></a>Rendellenességek észlelése C#-alkalmazás
+
+[!INCLUDE [PrivatePreviewNote](../../../../../includes/cognitive-services-anomaly-finder-private-preview-note.md)]
 
 Fedezze fel egy egyszerű Windows-alkalmazás, amely a bemeneti rendellenességek észlelése Anomáliadetektáló API-t használja. A példa az idősoros adatainak az Anomáliadetektáló API-t, elküldi az előfizetési kulccsal végzett, majd az anomáliadetektálási pontok és a várt érték az egyes lekérdezi az API-ból.
 

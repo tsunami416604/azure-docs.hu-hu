@@ -1,6 +1,6 @@
 ---
-title: Az Anomáliadetektálási kereső API használata cURL - Microsoft kognitív szolgáltatások |} Microsoft Docs
-description: Get-információk segítségével gyorsan használatának megkezdésében cURL és a Anomáliadetektálási kereső API kognitív szolgáltatásban.
+title: Az Anomáliadetektálási kereső API használata cURL - a Microsoft Cognitive Services |} A Microsoft Docs
+description: Get-információk segítségével gyorsan használatának első lépései a cURL és az Anomáliadetektálási kereső API-t a Cognitive Services.
 services: cognitive-services
 author: chliang
 manager: bix
@@ -9,39 +9,41 @@ ms.technology: anomaly-detection
 ms.topic: article
 ms.date: 05/01/2018
 ms.author: chliang
-ms.openlocfilehash: 3c1d791b8c0478715b4ffa93cd7dfa43f9be4586
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 31049e24687192b1ea1030a7180299f57bc76771
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35348162"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48246330"
 ---
-# <a name="use-the-anomaly-finder-api-with-curl"></a>Az Anomáliadetektálási kereső API használata cURL
+# <a name="use-the-anomaly-finder-api-with-curl"></a>Az Anomáliadetektálási kereső API-val a curl használatával
 
-Ez a cikk és a segítségével gyorsan mintakódok Ismerkedés az Anomáliadetektálási kereső API használata cURL feladatnak az első idő adatsorok anomáliadetektálási eredménye.
+[!INCLUDE [PrivatePreviewNote](../../../../../includes/cognitive-services-anomaly-finder-private-preview-note.md)]
+
+Ez a cikk bemutatja, és kódminták segítségével gyorsan az Anomáliadetektálási kereső API-használatának cURL a feladatnak az anomáliadetektálási eredményét idősorozat-adatok beolvasása.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 [!INCLUDE [GetSubscriptionKey](../includes/get-subscription-key.md)]
 
-## <a name="getting-anomaly-points-with-the-anomaly-finder-api-using-curl"></a>Az anomáliadetektálási pontok első használata cURL használatával Anomáliadetektálási kereső API-val 
+## <a name="getting-anomaly-points-with-the-anomaly-finder-api-using-curl"></a>A cURL használatával Anomáliadetektálási kereső API-val anomáliadetektálási pontok beolvasása 
 
 [!INCLUDE [DataContract](../includes/datacontract.md)]
 
-### <a name="example-of-time-series-data"></a>Adatsorozat időadatok – példa
+### <a name="example-of-time-series-data"></a>Idősorozat-adatok – példa
 
-A példa az adatsorozat pontjainak idő a következőképpen történik.
+A példában az adatsorozat adatpontjainak idő a következőképpen történik.
 
 [!INCLUDE [Request](../includes/request.md)]
 
-### <a name="analyze-data-and-get-anomaly-points-curl-example"></a>Adatok elemzése és anomáliadetektálási pontot kap a cURL – példa
+### <a name="analyze-data-and-get-anomaly-points-curl-example"></a>Adatok elemzése és anomáliadetektálási pontot kap a cURL-példa
 
-A példa lépésein a következők:
+A példa lépései a következők.
 
-1. Cserélje le a `[YOUR_SUBSCRIPTION_KEY]` értéke az érvényes előfizetés-kulccsal.
-2. Cserélje le a `[YOUR_REGION]` a helyet, ahol szerezte be az előfizetés kulcsok.
-3. Cserélje le a `[REPLACE_WITH_THE_EXAMPLE_OR_YOUR_OWN_DATA_POINTS]` a példa vagy a saját adatpontot tartalmaznak.
-4. Hajtható végre, és ellenőrizze a választ.
+1. Cserélje le a `[YOUR_SUBSCRIPTION_KEY]` értéket az érvényes előfizetői azonosítóra.
+2. Cserélje le a `[YOUR_REGION]` a helyet, ahol szerezte be az előfizetési kulcsok.
+3. Cserélje le a `[REPLACE_WITH_THE_EXAMPLE_OR_YOUR_OWN_DATA_POINTS]` a példa vagy a saját adatpont.
+4. Hajtsa végre, és ellenőrizze a választ.
 
 ```cURL
 
@@ -53,7 +55,7 @@ curl -v -X POST "https://api.labs.cognitive.microsoft.com/anomalyfinder/v1.0/ano
 ```
 
 ### <a name="example-response"></a>Példaválasz
-A sikeres válasz JSON-ban adja vissza. Példa egy válasz a következőképpen történik: [!INCLUDE [Response](../includes/response.md)]
+A rendszer JSON formátumban adja vissza a sikeres választ. Példaválasz a következőképpen történik: [!INCLUDE [Response](../includes/response.md)]
 
 ## <a name="next-steps"></a>További lépések
 

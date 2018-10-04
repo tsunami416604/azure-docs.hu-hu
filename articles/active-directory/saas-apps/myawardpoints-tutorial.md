@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/18/2018
+ms.date: 09/27/2018
 ms.author: jeedes
-ms.openlocfilehash: 9e3e3ff05836cb49d46a25ef3fa55d40a0bd134f
-ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
+ms.openlocfilehash: 479fcc0408021ff63dbcabe3734f60a4ad6d542f
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47184813"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48247754"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-my-award-points-top-subtop-team"></a>Oktatóanyag: Azure Active Directory-integráció az saját díj pontok felső Sub/felső csapata
 
@@ -50,7 +50,8 @@ Ebben az oktatóanyagban a lépéseket teszteléséhez kövesse ezeket a javasla
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
-Ebben az oktatóanyagban tesztelni az Azure AD egyszeri bejelentkezés egy tesztkörnyezetben. Az ebben az oktatóanyagban ismertetett forgatókönyvben két fő építőelemeket áll:
+Ebben az oktatóanyagban tesztelni az Azure AD egyszeri bejelentkezés egy tesztkörnyezetben.
+Az ebben az oktatóanyagban ismertetett forgatókönyvben két fő építőelemeket áll:
 
 1. Saját díj pontok felső Sub/felső csapata hozzáadása a katalógusból
 2. Konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés
@@ -112,7 +113,7 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
     Az a **bejelentkezési URL-** szövegmezőbe írja be a következő minta használatával URL-címe: `https://microsoftrr.performnet.com/biwv1auth/Shibboleth.sso/Login?providerId=<SAMLENTITYID>`
 
     > [!NOTE]
-    > Bejelentkezési URL-cím értéke nem valódi. Ez az érték frissítse a tényleges bejelentkezési URL-CÍMÉT. Kapcsolattartó [saját díjjal járó pontokat felső Sub/felső csapat ügyfél-támogatási csapatának](mailto:myawardpoints@biworldwide.com) lekérni ezt az értéket.
+    > Megjelenik a `<SAMLENTITYID>` érték ebben az oktatóanyagban a későbbi lépésekben.
 
 4. Az a **SAML-aláíró tanúsítvány** területén kattintson **metaadatainak XML** , és mentse a metaadat-fájlt a számítógépen.
 
@@ -122,7 +123,9 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
 
     ![Egyszeri bejelentkezés Mentés gomb konfigurálása](./media/myawardpoints-tutorial/tutorial_general_400.png)
 
-6. Az egyszeri bejelentkezés konfigurálása **saját díj pontok felső Sub/felső csapata** oldalon kell küldenie a letöltött **metaadatainak XML** való [saját díj pontok felső Sub/felső csapata támogatási csapatának](mailto:myawardpoints@biworldwide.com). Akkor állítsa ezt a beállítást, hogy a SAML SSO-kapcsolat megfelelően állítsa be mindkét oldalon.
+6. Az a **saját díjjal járó pontokat felső Sub/felső Team konfigurációs** szakaszban jelölje be **konfigurálása saját díj pontok felső Sub/felső csapata** a konfigurálás bejelentkezési ablak megnyitásához. Az SAML-entitás azonosítója a másolja a **rövid összefoglaló** szakaszt, és fűzze hozzá a SAML Entitásazonosító értékét a bejelentkezési URL-cím helyett, `<SAMLENTITYID>` a a **saját díjjal járó pontokat felső Sub/felső csapat tartomány és URL-címek** a szakasz az Azure Portalon.
+
+7. Az egyszeri bejelentkezés konfigurálása **saját díj pontok felső Sub/felső csapata** oldalon kell küldenie a letöltött **metaadatainak XML** való [saját díj pontok felső Sub/felső csapata támogatási csapatának](mailto:myawardpoints@biworldwide.com). Akkor állítsa ezt a beállítást, hogy a SAML SSO-kapcsolat megfelelően állítsa be mindkét oldalon.
 
 ### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára
 

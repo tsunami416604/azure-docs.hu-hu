@@ -10,12 +10,12 @@ author: shivanipatel
 manager: cgronlun
 ms.reviewer: larryfr
 ms.date: 09/24/2018
-ms.openlocfilehash: 20469e127c8e04f4c6418fe28c49b63fc3b363d8
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: 66370aec76044454ab4f11eb432fe2e9b0cdb9cf
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/03/2018
-ms.locfileid: "48239200"
+ms.locfileid: "48248585"
 ---
 # <a name="prepare-to-deploy-models-on-iot-edge"></a>Az IoT Edge-ben a modellek üzembe helyezés előkészítése
 
@@ -35,7 +35,7 @@ Mielőtt üzembe helyezéséhez egy edge-eszközön, a jelen dokumentumban leír
 
 * Egy [Azure IoT Hub](../../iot-hub/iot-hub-create-through-portal.md) az Azure-előfizetésében. 
 
-* Betanított modell. Találhat egy példát a modell betanítására, a [betanításához egy kép osztályozási modell az Azure Machine Learning](tutorial-train-models-with-aml.md) dokumentumot.
+* Betanított modell. Találhat egy példát a modell betanítására, a [betanításához egy kép osztályozási modell az Azure Machine Learning](tutorial-train-models-with-aml.md) dokumentumot. Előre betanított modell érhető el a [AI-eszközkészlet az Azure IoT Edge GitHub-adattárat](https://github.com/Azure/ai-toolkit-iot-edge/tree/master/IoT%20Edge%20anomaly%20detection%20tutorial).
 
 ## <a name="prepare-the-iot-device"></a>Az IoT-eszköz előkészítése
 

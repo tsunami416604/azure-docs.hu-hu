@@ -5,15 +5,15 @@ services: automation
 ms.service: automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 06/06/2018
+ms.date: 10/02/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: 60cdcbeba0c4149d8f049bbab553bd658c965338
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 322b21ae2273b949e9a46e0c47a9f9e4d661603e
+ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43128595"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48267953"
 ---
 # <a name="run-powershell-scripts-in-your-windows-vm-with-run-command"></a>PowerShell-szkriptek futtatása a Windows virtuális gép futtatása paranccsal
 
@@ -21,7 +21,7 @@ Futtassa a parancsot használja a Virtuálisgép-ügynök Windows Azure virtuál
 
 ## <a name="benefits"></a>Előnyök
 
-A virtuális gépek eléréséhez használható több lehetőség közül. A futtatási parancs futtathatók a parancsprogramok segítségével távolról a Virtuálisgép-ügynököt a virtuális gépeken. A futtatási parancs is használható az Azure Portalon keresztül [REST API-val](/rest/api/compute/virtual%20machines%20run%20commands/runcommand), [Azure CLI-vel](/cli/azure/vm/run-command?view=azure-cli-latest#az-vm-run-command-invoke), vagy [PowerShell](/powershell/module/azurerm.compute/invoke-azurermvmruncommand).
+A virtuális gépek eléréséhez használható több lehetőség közül. A futtatási parancs futtathatók a parancsprogramok segítségével távolról a Virtuálisgép-ügynököt a virtuális gépeken. A futtatási parancs is használható az Azure Portalon keresztül [REST API-val](/rest/api/compute/virtual%20machines%20run%20commands/runcommand), vagy [PowerShell](/powershell/module/azurerm.compute/invoke-azurermvmruncommand) Windows virtuális gépek számára.
 
 Ez a funkció akkor hasznos, minden olyan esetben, ha szeretne futtatni egy parancsfájlt a virtual machines szolgáltatáson belül, és a egy egyetlen módja hibaelhárítása és orvoslása egy virtuális gépet, amely nem rendelkezik az RDP vagy SSH-port megnyitásához miatt nem megfelelő hálózati vagy a rendszergazda felhasználó konfiguráció.
 
@@ -33,6 +33,7 @@ A következő korlátozások vonatkoznak, ha futtatása paranccsal:
 * A minimális ideje a parancsfájl futtatása után körülbelül 20 másodperc
 * A Windows rendszert futtató parancsfájlok
 * Egyszerre csak egy parancsfájl futhat.
+* Parancsfájlok, amelyek információkat (interaktív mód) kérése nem támogatottak.
 * Nem vethető el a parancsprogram futtatásához
 * A maximális idő egy parancsfájlt az 90 perc után, amelyben az időkorlátja
 * A virtuális gépről kimenő kapcsolat szükséges a parancsfájl eredményét adja vissza.

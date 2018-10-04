@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/28/2018
+ms.date: 10/03/2018
 ms.author: tomfitz
-ms.openlocfilehash: 7e0578572de53fefddb88e163520d2bf5f580012
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: 578d078550daaae54c63bf91da1fa5590bb8fdf6
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47434313"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48249145"
 ---
 # <a name="string-functions-for-azure-resource-manager-templates"></a>Karakterlánc-függvények az Azure Resource Manager-sablonok
 
@@ -1680,15 +1680,15 @@ Egy részét, amely a megadott Karakterpozíció kezdődik, és tartalmazza a me
 |:--- |:--- |:--- |:--- |
 | stringToParse |Igen |sztring |Az eredeti karakterláncot, amely az a karakterláncrészletet ki kell olvasni. |
 | startIndex |Nem |int |A nulla alapú kezdő karakter pozíciójának a karakterláncrészletet. |
-| Hossza |Nem |int |A substring karakterek száma. A karakterláncon belüli helyre kell hivatkoznia. |
+| Hossza |Nem |int |A substring karakterek száma. A karakterláncon belüli helyre kell hivatkoznia. Lehet nulla vagy nagyobb. |
 
 ### <a name="return-value"></a>Vrácená hodnota
 
-A karakterláncrészletet.
+A karakterláncrészletet. Vagy ha az érték nulla üres karakterlánc.
 
 ### <a name="remarks"></a>Megjegyzések
 
-A függvény sikertelen lesz, ha a karakterlánc végén túlnyúlik a karakterláncrészletet. A következő hibával meghiúsul a következő példa "az index és a hossz paraméternek a karakterláncon belüli helyre kell hivatkoznia. Az index paraméter: "0", a length paraméter: "11", a karakterlánc-paraméter hossza: "10". ".
+A függvény sikertelen lesz, ha a substring túlnyúlik a sztring végén, vagy ha hossza kisebb nullánál. A következő hibával meghiúsul a következő példa "az index és a hossz paraméternek a karakterláncon belüli helyre kell hivatkoznia. Az index paraméter: "0", a length paraméter: "11", a karakterlánc-paraméter hossza: "10". ".
 
 ```json
 "parameters": {

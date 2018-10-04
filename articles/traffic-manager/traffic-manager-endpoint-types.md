@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/29/2017
 ms.author: kumud
-ms.openlocfilehash: e0c2ad2385b5c8a54b4d8a743cc4f081e5ff6703
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 06965c43408e943922048804099f8f28d69c8540
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46127295"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48248285"
 ---
 # <a name="traffic-manager-endpoints"></a>Traffic Manager-végpontok
 A Microsoft Azure Traffic Manager lehetővé teszi, hogy vezérelheti a hálózati forgalom hogyan ossza el a különböző adatközpontokban futó alkalmazások központi telepítéseit. A Traffic Manager konfigurálása minden egyes alkalmazás üzembe helyezési-végpontként. Amikor a Traffic Manager DNS-kérelmet kap, azt úgy dönt, a DNS-válaszban visszaadandó elérhető végpontot. A TRAFFIC manager végpont aktuális állapota és a forgalom-útválasztási módszer a kiválasztott adatbázisok. További információkért lásd: [Traffic Manager működése](traffic-manager-how-it-works.md).
@@ -37,8 +37,9 @@ A következő szakaszok ismertetik az egyes többletköltségeket típusú végp
 
 Azure-beli Azure-alapú szolgáltatásokat a Traffic Manager szolgálnak. A következő Azure-erőforrás-típusokat támogatja:
 
-* A cloud services "Klasszikus" IaaS virtuális gépek és PaaS.
+* PaaS felhőszolgáltatások.
 * Web Apps
+* Webalkalmazás tárolóhelyeinek
 * PublicIPAddress erőforrásokat (virtuális gépek is csatlakoztathatók közvetlenül vagy egy Azure Load Balancer-n keresztül). A nyilvános IP-címre rendelkeznie kell egy DNS-nevet, egy Traffic Manager-profil használható rendelt.
 
 PublicIPAddress erőforrásokat az Azure Resource Manager-erőforrások. Nem léteznek, a klasszikus üzemi modellben. Így azok csak a támogatott Traffic Manager az Azure Resource Manager élményt. A többi végponttípusok erőforrás-kezelő, mind a klasszikus üzemi modell használatával támogatottak.

@@ -4,7 +4,7 @@ description: Ez a cikk bemutatja, hogyan biztosítja az Azure virtuális gépek 
 services: load-balancer
 documentationcenter: na
 author: KumudD
-manager: jeconnoc
+manager: jpconnock
 editor: ''
 ms.assetid: 5f666f2a-3a63-405a-abcd-b2e34d40e001
 ms.service: load-balancer
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/27/2018
+ms.date: 10/01/2018
 ms.author: kumud
-ms.openlocfilehash: 24eec3b1f3c85384f80823b82962038c235b6dac
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 58ae89a6b9d7b9e3858358d290e3ecb197e0ac2b
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47036990"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48249128"
 ---
 # <a name="outbound-connections-in-azure"></a>Az Azure kimenő kapcsolatainak
 
@@ -67,7 +67,7 @@ Az elosztott terhelésű virtuális gép egy kimenő folyamatot hoz létre, amik
 
 A terheléselosztó nyilvános IP-cím frontend-port a rövid élettartamú segítségével adja meg a virtuális gép által az egyes folyamatok megkülönböztetésére. Dinamikusan használja az SNAT [előzetesen lefoglalt elmúló port](#preallocatedports) kimenő folyamatok létrehozásakor. Ebben a környezetben a rövid élettartamú tűzfalakon SNAT SNAT portok nevezik.
 
-SNAT portok vannak előzetesen lefoglalt leírtak szerint a [ismertetése SNAT és a PAT](#snat) szakaszban. Azok, amelyek felhasználhatók, is véges erőforrás. Fontos tudni, hogyan vannak [felhasznált](#pat). Megtudhatja, hogyan tervezhet a felhasználásra és szükség szerint, tekintse át a [kezelése SNAT Erőforrásfogyás](#snatexhaust).
+SNAT portok előre kiosztott leírtak szerint a [ismertetése SNAT és a PAT](#snat) szakaszban. Azok, amelyek felhasználhatók, is véges erőforrás. Fontos tudni, hogyan vannak [felhasznált](#pat). Megtudhatja, hogyan tervezhet a felhasználásra és szükség szerint, tekintse át a [kezelése SNAT Erőforrásfogyás](#snatexhaust).
 
 Amikor [több nyilvános IP-címek társítva a Load Balancer alapszintű](load-balancer-multivip-overview.md), bármely, a nyilvános IP-címek vannak egy [a kimenő forgalom jelölt](#multivipsnat), és a egy véletlenszerűen kiválasztott.  
 
@@ -75,7 +75,7 @@ Kimenő kapcsolatok a Load Balancer alapszintű állapotának monitorozásához 
 
 ### <a name="defaultsnat"></a>3. forgatókönyv: Önálló virtuális gép példány szintű nyilvános IP-cím nélkül
 
-Ebben a forgatókönyvben a virtuális gép nem része egy nyilvános terheléselosztó-készlet (és nem egy Standard Load Balancer belső készlet része), és nem rendelkezik egy ILPIP-cím rendelve. Ha a virtuális Gépet hoz létre egy kimenő folyam, Azure lefordítja a kimenő folyamat egy nyilvános IP-forráscím privát forrás IP-címét. A kimenő flow használt nyilvános IP-cím nem konfigurálható, és nem számítanak bele az előfizetéshez tartozó nyilvános IP-erőforráskorlátot.
+Ebben a forgatókönyvben a virtuális gép nem része egy nyilvános terheléselosztó-készlet (és nem egy Standard Load Balancer belső készlet része), és nem rendelkezik egy ILPIP-cím rendelve. Ha a virtuális Gépet hoz létre egy kimenő folyam, Azure lefordítja a kimenő folyamat egy nyilvános IP-forráscím privát forrás IP-címét. A kimenő flow használt nyilvános IP-cím nem konfigurálható, és nem számítanak bele az előfizetéshez tartozó nyilvános IP-erőforráskorlátot. A nyilvános IP-cím nem tartozik, és nem lehet foglalt. Újbóli telepítése a virtuális gép vagy a rendelkezésre állási csoportban vagy VMSS, ha a nyilvános IP-cím elérhető lesz, és a egy új nyilvános IP-cím kért. Ebben a forgatókönyvben ne használja az engedélyezési IP-címeket. Ehelyett használjon egy másik két forgatókönyv ahol, explicit módon deklarálja a kimenő forgatókönyv és a kimenő kapcsolat használandó nyilvános IP-cím.
 
 >[!IMPORTANT] 
 >Ebben a forgatókönyvben azt is vonatkozik, amikor __csak__ egy belső alapszintű terheléselosztó van csatolva. 3. forgatókönyv van __nem érhető el__ amikor egy belső Standard Load Balancer egy virtuális Géphez van csatlakoztatva.  Explicit módon létre kell hoznia [1. forgatókönyv](#ilpip) vagy [2. forgatókönyv](#lb) Standard belső terheléselosztó használata mellett.

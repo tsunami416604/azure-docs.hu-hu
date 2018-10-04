@@ -11,13 +11,13 @@ author: giladmit
 ms.author: giladm
 ms.reviewer: vanto
 manager: craigg
-ms.date: 09/10/2018
-ms.openlocfilehash: 8ba07b22d247cb9263890a747bd166d63af27e3b
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.date: 02/10/2018
+ms.openlocfilehash: bf6757e4a31cf072a5d7395223df588be7ec49c2
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47395747"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48248482"
 ---
 # <a name="get-started-with-sql-database-auditing"></a>Ismerkedés az SQL-adatbázis naplózási szolgáltatásával
 Az Azure SQL database naplózási nyomon követi az adatbázisok eseményeit és felvezeti ezeket egy naplófájlba, az Azure storage-fiókban. A naplózás is:

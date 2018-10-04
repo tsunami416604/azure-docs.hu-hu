@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/27/2017
 ms.author: apimpm
-ms.openlocfilehash: f3734304bdcc4b3f0944ebf568094595eea01a4e
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: 160172b25f4bcdb04ac9f9649bca6b08e0be1b0d
+ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39214900"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48269072"
 ---
 # <a name="api-management-caching-policies"></a>Az API Management gyorsítótárazási házirendek
 Ez a témakör egy hivatkozást kínál a következő az API Management házirendek. Hozzáadása és házirendek konfigurálásával kapcsolatos tudnivalókat lásd: [az API Management házirendek](http://go.microsoft.com/fwlink/?LinkID=398186).  
@@ -83,7 +83,7 @@ Ez a témakör egy hivatkozást kínál a következő az API Management háziren
  Ez a példa bemutatja, hogyan konfigurálhatja az API Management gyorsítótárazási válaszidő, amely megfelel a háttérszolgáltatás az készült biztonsági másolat szolgáltatás által megadott válaszok gyorsítótárazását `Cache-Control` irányelv. Konfigurálása és használata a szabályzat bemutatójáért lásd: [Cloud Cover epizód 177: több API-t a felügyeleti funkcióinak Vlad Vinogradsky](https://azure.microsoft.com/documentation/videos/episode-177-more-api-management-features-with-vlad-vinogradsky/) és a 25:25 előretekerés.  
   
 ```xml  
-<!-- The following cache policy snippets demonstrate how to control API Management reponse cache duration with Cache-Control headers sent by the backend service. -->  
+<!-- The following cache policy snippets demonstrate how to control API Management response cache duration with Cache-Control headers sent by the backend service. -->  
   
 <!-- Copy this snippet into the inbound section -->  
 <cache-lookup vary-by-developer="false" vary-by-developer-groups="false" downstream-caching-type="public" must-revalidate="true" >  
@@ -91,7 +91,7 @@ Ez a témakör egy hivatkozást kínál a következő az API Management háziren
   <vary-by-header>Accept-Charset</vary-by-header>  
 </cache-lookup>  
   
-<!-- Copy this snippet into the outbound section. Note that cache duration is set to the max-age value provided in the Cache-Control header received from the backend service or to the deafult value of 5 min if none is found  -->  
+<!-- Copy this snippet into the outbound section. Note that cache duration is set to the max-age value provided in the Cache-Control header received from the backend service or to the default value of 5 min if none is found  -->  
 <cache-store duration="@{  
     var header = context.Response.Headers.GetValueOrDefault("Cache-Control","");  
     var maxAge = Regex.Match(header, @"max-age=(?<maxAge>\d+)").Groups["maxAge"]?.Value;  
@@ -104,7 +104,7 @@ Ez a témakör egy hivatkozást kínál a következő az API Management háziren
   
 ### <a name="elements"></a>Elemek  
   
-|Név|Leírás|Kötelező|  
+|Name (Név)|Leírás|Szükséges|  
 |----------|-----------------|--------------|  
 |gyorsítótár-keresés|A gyökérelem.|Igen|  
 |változó-által-fejléc|Kezdjék el gyorsítótárazni a válaszok száma elfogadás, Accept-karakterkészlet, Accept-Encoding, Accept-nyelv, hitelesítés, a várt, például a megadott fejléc értékét a gazdagépről, If-Match.|Nem|  
@@ -112,11 +112,11 @@ Ez a témakör egy hivatkozást kínál a következő az API Management háziren
   
 ### <a name="attributes"></a>Attribútumok  
   
-|Név|Leírás|Kötelező|Alapértelmezett|  
+|Name (Név)|Leírás|Szükséges|Alapértelmezett|  
 |----------|-----------------|--------------|-------------|  
-|lehetővé teszik privát-válasz-gyorsítótárazás|Ha a beállítása `true`, lehetővé teszi, hogy engedélyeztetési fejléc tartalmazó kérelmek gyorsítótárazási.|Nem|hamis|  
+|lehetővé teszik privát-válasz-gyorsítótárazás|Ha a beállítása `true`, lehetővé teszi, hogy engedélyeztetési fejléc tartalmazó kérelmek gyorsítótárazási.|Nem|false|  
 |alsóbb rétegbeli gyorsítótárazási típus|Ez az attribútum a következő értékek egyikére kell beállítani.<br /><br /> – Nincs – alsóbb rétegbeli gyorsítótárazás nem engedélyezett.<br />-privát – alsóbb rétegbeli privát gyorsítótárazás használata engedélyezett.<br />– nyilvános - titkos és megosztott alsóbb rétegbeli engedélyezve van a gyorsítótárazás.|Nem|nincs|  
-|kell-revalidate|Ha az alsóbb rétegbeli gyorsítótárazás engedélyezve van ez az attribútum be- vagy kikapcsolja a `must-revalidate` gyorsítótár vezérlő irányelv az átjáró válaszokat.|Nem|igaz|  
+|kell-revalidate|Ha az alsóbb rétegbeli gyorsítótárazás engedélyezve van ez az attribútum be- vagy kikapcsolja a `must-revalidate` gyorsítótár vezérlő irányelv az átjáró válaszokat.|Nem|true|  
 |változó-által-fejlesztő|Állítsa be `true` fejlesztői kulcsonként gyorsítótár által küldött válaszokhoz.|Igen||  
 |változó-által-developer-csoportok|Állítsa be `true` a gyorsítótár-válaszok száma felhasználói szerepkörhöz.|Igen||  
   
@@ -161,7 +161,7 @@ Ez a témakör egy hivatkozást kínál a következő az API Management háziren
  Ez a példa bemutatja, hogyan konfigurálhatja az API Management gyorsítótárazási válaszidő, amely megfelel a háttérszolgáltatás az készült biztonsági másolat szolgáltatás által megadott válaszok gyorsítótárazását `Cache-Control` irányelv. Konfigurálása és használata a szabályzat bemutatójáért lásd: [Cloud Cover epizód 177: több API-t a felügyeleti funkcióinak Vlad Vinogradsky](https://azure.microsoft.com/documentation/videos/episode-177-more-api-management-features-with-vlad-vinogradsky/) és a 25:25 előretekerés.  
   
 ```xml  
-<!-- The following cache policy snippets demonstrate how to control API Management reponse cache duration with Cache-Control headers sent by the backend service. -->  
+<!-- The following cache policy snippets demonstrate how to control API Management response cache duration with Cache-Control headers sent by the backend service. -->  
   
 <!-- Copy this snippet into the inbound section -->  
 <cache-lookup vary-by-developer="false" vary-by-developer-groups="false" downstream-caching-type="public" must-revalidate="true" >  
@@ -169,7 +169,7 @@ Ez a témakör egy hivatkozást kínál a következő az API Management háziren
   <vary-by-header>Accept-Charset</vary-by-header>  
 </cache-lookup>  
   
-<!-- Copy this snippet into the outbound section. Note that cache duration is set to the max-age value provided in the Cache-Control header received from the backend service or to the deafult value of 5 min if none is found  -->  
+<!-- Copy this snippet into the outbound section. Note that cache duration is set to the max-age value provided in the Cache-Control header received from the backend service or to the default value of 5 min if none is found  -->  
 <cache-store duration="@{  
     var header = context.Response.Headers.GetValueOrDefault("Cache-Control","");  
     var maxAge = Regex.Match(header, @"max-age=(?<maxAge>\d+)").Groups["maxAge"]?.Value;  
@@ -182,15 +182,15 @@ Ez a témakör egy hivatkozást kínál a következő az API Management háziren
   
 ### <a name="elements"></a>Elemek  
   
-|Név|Leírás|Kötelező|  
+|Name (Név)|Leírás|Szükséges|  
 |----------|-----------------|--------------|  
 |gyorsítótár-tároló|A gyökérelem.|Igen|  
   
 ### <a name="attributes"></a>Attribútumok  
   
-|Név|Leírás|Kötelező|Alapértelmezett|  
+|Name (Név)|Leírás|Szükséges|Alapértelmezett|  
 |----------|-----------------|--------------|-------------|  
-|időtartam|Time-to-live a gyorsítótárazott bejegyzések, másodpercben megadva.|Igen|-|  
+|időtartam|Time-to-live a gyorsítótárazott bejegyzések, másodpercben megadva.|Igen|–|  
   
 ### <a name="usage"></a>Használat  
  Ez a házirend használható a következő szabályzatot [szakaszok](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) és [hatókörök](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
@@ -224,17 +224,17 @@ Ez a témakör egy hivatkozást kínál a következő az API Management háziren
   
 ### <a name="elements"></a>Elemek  
   
-|Név|Leírás|Kötelező|  
+|Name (Név)|Leírás|Szükséges|  
 |----------|-----------------|--------------|  
 |gyorsítótár-keresési-érték|A gyökérelem.|Igen|  
   
 ### <a name="attributes"></a>Attribútumok  
   
-|Név|Leírás|Kötelező|Alapértelmezett|  
+|Name (Név)|Leírás|Szükséges|Alapértelmezett|  
 |----------|-----------------|--------------|-------------|  
 |alapértelmezett – érték|Egy érték, amely hozzá lesz rendelve a változó, ha a gyorsítótár-keresés tévesztés eredményezett. Ha ez az attribútum nincs megadva, `null` hozzá van rendelve.|Nem|`null`|  
-|kulcs|Gyorsítótár-kulcs értéke a keresés használatára.|Igen|-|  
-|a változó neve|Neve a [környezeti változó](api-management-policy-expressions.md#ContextVariables) looked mentése értékét rendeli hozzá, ha a keresés sikeres. Keresési tévesztés eredményez, ha a változó fog megegyezni értékét a `default-value` attribútum vagy `null`, ha a `default-value` attribútum hiányzik.|Igen|-|  
+|kulcs|Gyorsítótár-kulcs értéke a keresés használatára.|Igen|–|  
+|a változó neve|Neve a [környezeti változó](api-management-policy-expressions.md#ContextVariables) looked mentése értékét rendeli hozzá, ha a keresés sikeres. Keresési tévesztés eredményez, ha a változó fog megegyezni értékét a `default-value` attribútum vagy `null`, ha a `default-value` attribútum hiányzik.|Igen|–|  
   
 ### <a name="usage"></a>Használat  
  Ez a házirend használható a következő szabályzatot [szakaszok](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) és [hatókörök](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
@@ -266,17 +266,17 @@ Ez a témakör egy hivatkozást kínál a következő az API Management háziren
   
 ### <a name="elements"></a>Elemek  
   
-|Név|Leírás|Kötelező|  
+|Name (Név)|Leírás|Szükséges|  
 |----------|-----------------|--------------|  
 |gyorsítótár-tároló-érték|A gyökérelem.|Igen|  
   
 ### <a name="attributes"></a>Attribútumok  
   
-|Név|Leírás|Kötelező|Alapértelmezett|  
+|Name (Név)|Leírás|Szükséges|Alapértelmezett|  
 |----------|-----------------|--------------|-------------|  
-|időtartam|Érték a gyorsítótárba fognak a megadott időtartam érték, másodpercben megadva.|Igen|-|  
-|kulcs|A gyorsítótár kulcsának értékét tárolja.|Igen|-|  
-|érték|A gyorsítótárazható érték.|Igen|-|  
+|időtartam|Érték a gyorsítótárba fognak a megadott időtartam érték, másodpercben megadva.|Igen|–|  
+|kulcs|A gyorsítótár kulcsának értékét tárolja.|Igen|–|  
+|érték|A gyorsítótárazható érték.|Igen|–|  
   
 ### <a name="usage"></a>Használat  
  Ez a házirend használható a következő szabályzatot [szakaszok](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) és [hatókörök](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
@@ -305,15 +305,15 @@ A `cache-remove-value` töröl egy gyorsítótárazott elem, a kulcs azonosítja
   
 #### <a name="elements"></a>Elemek  
   
-|Név|Leírás|Kötelező|  
+|Name (Név)|Leírás|Szükséges|  
 |----------|-----------------|--------------|  
 |gyorsítótár-remove-value|A gyökérelem.|Igen|  
   
 #### <a name="attributes"></a>Attribútumok  
   
-|Név|Leírás|Kötelező|Alapértelmezett|  
+|Name (Név)|Leírás|Szükséges|Alapértelmezett|  
 |----------|-----------------|--------------|-------------|  
-|kulcs|A korábban gyorsítótárazott értéket el kell távolítani a gyorsítótárból kulcsa.|Igen|-|  
+|kulcs|A korábban gyorsítótárazott értéket el kell távolítani a gyorsítótárból kulcsa.|Igen|–|  
   
 #### <a name="usage"></a>Használat  
  Ez a házirend használható a következő szabályzatot [szakaszok](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) és [hatókörök](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) .  

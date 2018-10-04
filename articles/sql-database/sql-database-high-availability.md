@@ -12,12 +12,12 @@ ms.author: jovanpop
 ms.reviewer: carlrab, sashan
 manager: craigg
 ms.date: 09/14/2018
-ms.openlocfilehash: 9c06a028df098874a1ec12d83a362e01a5f4a711
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: dfb1e218218a44aafd318acb53750c875bdf1263
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47161896"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48247719"
 ---
 # <a name="high-availability-and-azure-sql-database"></a>Magas rendelkezésre állású és az Azure SQL Database
 
@@ -56,7 +56,7 @@ A prémium szintű modellben az Azure SQL database egyesíti a számítási és 
 
 Az SQL Server adatbázismotor folyamat és a mögöttes mdf/ldf-fájlok kerülnek ugyanazon a csomóponton a helyileg csatlakoztatott SSD-tárolás biztosítja a számítási feladathoz alacsony késést biztosít. Magas rendelkezésre állású standard használatával lett megvalósítva [Always On rendelkezésre állási csoportok](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server). Minden adatbázis, a fürt egy elsődleges adatbázis, amely elérhető ügyfél számítási feladata, és a egy három másodlagos folyamat adatok másolatát tartalmazó adatbázis-csomópont. Az elsődleges csomópont folyamatosan leküldi a módosítások a másodlagos csomópontot annak érdekében, hogy az adatok elérhető legyen a másodlagos replikákon. Ha bármilyen okból leáll az elsődleges csomópont. Feladatátvétel az SQL Server adatbázismotor kezeli – egy másodlagos másodpéldány az elsődleges csomópont válik, és annak biztosítására, elég a fürtben található csomópontok jön létre egy új másodlagos replikára. A számítási feladatok a rendszer automatikusan átirányítja az új elsődleges csomópontra.
 
-Emellett a kritikus fontosságú üzleti fürt biztosít beépített csak olvasható csomópont használt csak olvasási lekérdezések futtatása (például a jelentések), amely az elsődleges számítási feladat teljesítményét nem befolyásolja. 
+Emellett a kritikus fontosságú üzleti fürt olyan beépített [olvasási kibővített](sql-database-read-scale-out.md) képesség, amely ingyenes, biztosít beépített csak olvasható csomópont csak olvasási lekérdezések futtatása (például a jelentések) teljesítményét nem befolyásolja használható díja az elsődleges munkaterhelés.
 
 ## <a name="zone-redundant-configuration-preview"></a>Zóna redundáns configuration (előzetes verzió)
 
@@ -70,15 +70,6 @@ A redundáns kvórum-zónakészlet replikák néhány távolsága a különböz�
 A magas rendelkezésre állású architektúra redundáns zóna verziója által az alábbi ábra mutatja be:
  
 ![magas rendelkezésre állású architektúra zónaredundáns](./media/sql-database-high-availability/high-availability-architecture-zone-redundant.png)
-
-## <a name="read-scale-out"></a>Felskálázás olvasása
-Leírt, a prémium és üzletileg kritikus szolgáltatási szintek a magas rendelkezésre álláshoz egyetlen zóna és a redundáns zónabeállítások is használja ki a kvórum beállítása és AlwaysOn technológia. AlwaysOn előnyeinek egyik célja, hogy a replika mindig a tranzakciós szempontból konzisztens állapotban van. Mivel a replikák számítási mérete megegyezik az elsődleges, az alkalmazás kihasználhatja, hogy további kapacitást a csak olvasható számítási feladatok részeként karbantartási költségek (olvasási horizontális felskálázás). Ezzel a módszerrel a csak olvasási lekérdezések elkülönül a fő olvasási és írási számítási feladatok, és nem lesz hatással a teljesítményét. Olvasási horizontális felskálázás funkció célja az alkalmazások, amelyek logikailag tartalmaznak csak olvasható feladatokhoz, mint például az elemzési választják, és ezért hasznosíthatja a további kapacitások anélkül, hogy az elsődleges csatlakozna. 
-
-Az olvasási horizontális Felskálázás funkció használatához, hogy adott adatbázissal, explicit módon aktiválnia kell az adatbázis létrehozásakor vagy később a PowerShell használatával meghívásával konfiguráció módosítása a [Set-AzureRmSqlDatabase](/powershell/module/azurerm.sql/set-azurermsqldatabase) vagy a [New-AzureRmSqlDatabase](/powershell/module/azurerm.sql/new-azurermsqldatabase) parancsmagok vagy az Azure Resource Manager REST API használatával a [- adatbázisok létrehozása vagy frissítése](/rest/api/sql/databases/createorupdate) metódust.
-
-Olvasási horizontális Felskálázás egy adatbázis engedélyezését követően, hogy az adatbázis csatlakozó alkalmazások lesznek irányítva, vagy az írható-olvasható replika, vagy egy csak olvasható replika adatbázis szerint a `ApplicationIntent` tulajdonság, az alkalmazás konfigurálása kapcsolati karakterlánc. Információk a `ApplicationIntent` tulajdonságot használja, lásd: [adja meg az alkalmazások szándékáról](https://docs.microsoft.com/sql/relational-databases/native-client/features/sql-server-native-client-support-for-high-availability-disaster-recovery#specifying-application-intent). 
-
-Ha olvasási kibővített le van tiltva, vagy a ReadScale tulajdonsága egy nem támogatott szolgáltatási rétegben, minden kapcsolat a rendszer átirányítja az írható-olvasható replika, a független a `ApplicationIntent` tulajdonság.
 
 ## <a name="conclusion"></a>Összegzés
 Az Azure SQL Database és az Azure platform mélyen integrált, és nagymértékben függ, a Service Fabric hiba észlelése és a helyreállítás, az Azure Storage-Blobokból a data protection és a hibatűrés magasabb rendelkezésre állási zónák. Egy időben az Azure SQL database teljes mértékben kihasználja az Always On rendelkezésre állási csoport technológia a replikációt és feladatátvételt az SQL Server box termékből. Ezek a technológiák kombinációja lehetővé teszi, hogy az alkalmazásokat a teljes mértékben a vegyes tárolási modell előnyeinek és a legnagyobb erőforrás-igényű SLA-kat támogatja. 

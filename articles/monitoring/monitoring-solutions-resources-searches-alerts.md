@@ -14,12 +14,12 @@ ms.workload: infrastructure-services
 ms.date: 06/18/2018
 ms.author: bwren, vinagara
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: fd8ba47e8fb0d591fab7717117329357b74f907a
-ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
+ms.openlocfilehash: 8f5dba7ba1c21e33f23cf8917c93e478eadf5f88
+ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/01/2018
-ms.locfileid: "47585968"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48269530"
 ---
 # <a name="adding-log-analytics-saved-searches-and-alerts-to-management-solution-preview"></a>Log Analytics hozzáadása mentett keresések és a riasztások felügyeleti megoldásra (előzetes verzió)
 
@@ -84,7 +84,7 @@ Mentett keresés minden egyes tulajdonsága a következő táblázatban leírt.
 | lekérdezés | A lekérdezés futtatásához. |
 
 > [!NOTE]
-> Szükség lehet escape-karaktereket használja a lekérdezésben, ha JSON-fájlként is értelmezhető karaktereket tartalmaz.  Például, ha a lekérdezés a(z) **típusa: AzureActivity OperationName:"Microsoft.Compute/virtualMachines/write"**, ez a megoldás fájlt kell megírni **típusa: AzureActivity OperationName:\\" Microsoft.Compute/virtualMachines/write\\"**.
+> Szükség lehet escape-karaktereket használja a lekérdezésben, ha JSON-fájlként is értelmezhető karaktereket tartalmaz.  Például, ha a lekérdezés a(z) **AzureActivity |} OperationName:"Microsoft.Compute/virtualMachines/write"**, ez a megoldás fájlt kell megírni **AzureActivity |} OperationName: /\"Microsoft.Compute/virtualMachines/write\"**.
 
 ## <a name="alerts"></a>Riasztások
 [Az Azure naplóriasztások](../monitoring-and-diagnostics/monitor-alerts-unified-log.md) megadott naplózási lekérdezések futtatása rendszeres időközönként Azure riasztási szabályok alapján jönnek létre.  Ha a lekérdezés eredményeit a megadott feltételeknek, létrejön egy riasztásbejegyzés, és egy vagy több művelet futtatása használatával [Műveletcsoportok](../monitoring-and-diagnostics/monitoring-action-groups.md).  

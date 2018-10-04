@@ -12,12 +12,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 08/31/2018
 ms.author: jingwang
-ms.openlocfilehash: d500bc9c910858341d7fdacb4d85bffc8be215e1
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: 932ddf5f377556e815205b7ad34a735815317ac0
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43338762"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48249043"
 ---
 # <a name="copy-data-to-or-from-azure-data-lake-storage-gen1-by-using-azure-data-factory"></a>Adatok másolása, vagy az Azure Data Lake Storage Gen1 Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -32,7 +32,7 @@ Adatok másolása az Azure Data Lake Store bármilyen támogatott forrásadattá
 
 Pontosabban az Azure Data Lake Store-összekötő támogatja:
 
-- Másolás a fájlok **egyszerű szolgáltatás** vagy **felügyeltszolgáltatás-identitás (MSI)** hitelesítést.
+- Másolás a fájlok **egyszerű szolgáltatás** vagy **felügyelt identitások az Azure-erőforrások** hitelesítési.
 - Másolja a fájlokat,-, vagy fájlok az elemzés/létrehozása a [támogatott fájlformátumok és tömörítési kodek](supported-file-formats-and-compression-codecs.md).
 
 > [!IMPORTANT]
@@ -65,7 +65,7 @@ A következő tulajdonságok támogatottak az Azure Data Lake Store-beli társí
 Tekintse meg a következő szakaszok további tulajdonságok és JSON-minták az eltérő hitelesítési típusok jelölik:
 
 - [Használja az egyszerű szolgáltatásnév hitelesítése](#using-service-principal-authentication)
-- [Felügyeltszolgáltatás-identitás hitelesítéssel](#using-managed-service-identity-authentication)
+- [Felügyelt identitások használatával Azure-erőforrások hitelesítéshez](#using-managed-service-identity-authentication)
 
 ### <a name="using-service-principal-authentication"></a>Használja az egyszerű szolgáltatásnév hitelesítése
 
@@ -114,11 +114,11 @@ A következő tulajdonságok támogatottak:
 }
 ```
 
-### <a name="using-managed-service-identity-authentication"></a>Felügyeltszolgáltatás-identitás hitelesítéssel
+### <a name="managed-identity"></a> Felügyelt identitások használatával Azure-erőforrások hitelesítéshez
 
-Adat-előállító társítható egy [felügyeltszolgáltatás-identitás](data-factory-service-identity.md), amely az adott adat-előállító jelöli. Használhatja a felügyeltszolgáltatás-identitás közvetlenül a Data Lake Store hitelesítéshez hasonló saját egyszerű szolgáltatás használatával. Ez lehetővé teszi a kijelölt eléréséhez és másolásához a data factory a/a Data Lake Store.
+Adat-előállító társítható egy [-identitás az Azure-erőforrások](data-factory-service-identity.md), amely az adott adat-előállító jelöli. Használhatja a felügyeltszolgáltatás-identitás közvetlenül a Data Lake Store hitelesítéshez hasonló saját egyszerű szolgáltatás használatával. Ez lehetővé teszi a kijelölt eléréséhez és másolásához a data factory a/a Data Lake Store.
 
-Felügyeltszolgáltatás-identitás (MSI) hitelesítés használata:
+Azure-erőforrások hitelesítéshez használandó felügyelt identitások:
 
 1. [Beolvasni a data factory-szolgáltatásidentitás](data-factory-service-identity.md#retrieve-service-identity) másolásával "SZOLGÁLTATÁSIDENTITÁS Alkalmazásazonosítója" az előállító együtt létrehozott értékét.
 2. A szolgáltatás identitás hozzáférési jogot Data Lake Store a ugyanúgy szolgáltatás egyszerű következő alábbi megjegyzések.

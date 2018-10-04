@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/16/2018
 ms.author: jdial
-ms.openlocfilehash: e92c099d9e0dfacff71c13382059acb06037bb1e
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 2291136cf50439b7845c3a344be3218277257b34
+ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46999868"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48269479"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Az Azure Virtual Network – gyakori kérdések (GYIK)
 
@@ -230,7 +230,7 @@ Virtuális hálózatok közötti társviszony-létesítés (vagy virtuális hál
 Igen. Globális virtuális társhálózatok létesítése lehetővé teszi a különböző régiókban található virtuális hálózatok társviszonyba állítása. Globális virtuális társhálózatok létesítésének érhető el minden nyilvános Azure-régióban. Ön nem globális társviszonyt a nyilvános Azure-régióban országos felhőkhöz. Globális társviszony-létesítés jelenleg nem áll rendelkezésre a nemzeti felhőkben.
 
 ### <a name="can-i-enable-vnet-peering-if-my-virtual-networks-belong-to-subscriptions-within-different-azure-active-directory-tenants"></a>Lehet engedélyezni a virtuális hálózatok közötti Társviszonyt, ha a virtuális hálózatok különböző Azure Active Directory-bérlőn belül előfizetések tartoznak?
-Ez jelenleg nem lehet megállapítani a virtuális hálózatok közötti társviszony-létesítés (akár helyi, akár globális) Ha az előfizetés másik Azure Active Directory-bérlő tartozik.
+Igen. Emellett akkor lehet megállapítani a virtuális hálózatok közötti társviszony-létesítés (akár helyi, akár globális), ha az előfizetés másik Azure Active Directory-bérlő tartozik. Ezt megteheti a PowerShell vagy parancssori felület használatával. Portál még nem támogatott.
 
 ### <a name="my-vnet-peering-connection-is-in-initiated-state-why-cant-i-connect"></a>A virtuális hálózatok közötti társviszony-létesítési kapcsolaton egy *kezdeményezve* állapot, miért nem tudok csatlakozni?
 Ha a társviszony-létesítési kapcsolat által kezdeményezett állapotban van, ez azt jelenti, csak egy hivatkozás létrehozott. Egy kétirányú kapcsolat jöjjön létre kell hozni egy sikeres kapcsolat. Például a virtuális hálózat A b virtuális hálózatok közötti társviszonyt, hivatkozást kell létrehozni a b c és a b, c. Mindkét kapcsolat létrehozása módosítja a állapot *csatlakoztatva.*
@@ -259,7 +259,7 @@ Nem. Tranzitív társviszony-létesítés nem támogatott. Meg kell társviszony
 ### <a name="are-there-any-bandwidth-limitations-for-peering-connections"></a>Minden társviszony-kapcsolatok sávszélesség-korlátozások vannak?
 Nem. Virtuális hálózatok közötti társviszonyt, hogy a helyi vagy globális, sávszélesség-korlátozások nem ír elő. A virtuális gép vagy a számítási erőforrás által csak korlátok a sávszélesség.
 
-## <a name="virtual-network-tap"></a>Virtuális hálózati TAP
+## <a name="virtual-network-tap"></a>Virtuális hálózat TAP-jai
 
 ### <a name="which-azure-regions-are-available-for-virtual-network-tap"></a>Mely Azure-régiók érhetők el a virtuális hálózati TAP?
 Fejlesztői előzetes verzióban a funkció érhető el az USA nyugati középső régiójában. A figyelt hálózati adapterek, a virtuális hálózati TAP erőforrás és a gyűjtő vagy analytics megoldás ugyanabban a régióban kell telepíteni.

@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/17/2018
 ms.author: jingwang
-ms.openlocfilehash: ffe7337282d06dd9a7e22d6750ac98b3a56964bd
-ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
+ms.openlocfilehash: db0bc0cb64c0b6d7df9319c8d2c5850a27e767a1
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42060640"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48249213"
 ---
 # <a name="azure-data-factory-service-identity"></a>Az Azure Data Factory-szolgáltatásidentitás
 
@@ -169,6 +169,6 @@ Type                  : ServicePrincipal
 Tekintse meg a következő témakörök, amelyek vezeti be, mikor és hogyan használhatja a data factory-szolgáltatásidentitás:
 
 - [Hitelesítő adatok Store az Azure Key Vaultban](store-credentials-in-key-vault.md)
-- [Másolja az adatokat, és az Azure Data Lake Store felügyeltszolgáltatás-identitás hitelesítéssel](connector-azure-data-lake-store.md)
+- [Másolja az adatokat, és az Azure Data Lake Store az Azure-erőforrások hitelesítési felügyelt identitások használatával](connector-azure-data-lake-store.md)
 
-Lásd: [MSI áttekintése](~/articles/active-directory/msi-overview.md) a Felügyeltszolgáltatás-identitást ismertető háttér melyik data factory-szolgáltatásidentitás alapul. 
+Lásd: [felügyelt identitások Azure-erőforrások áttekintő](~/articles/active-directory/msi-overview.md) ismertető háttér-felügyelt identitások Azure-erőforrások számára, mely data factory-szolgáltatásidentitás alapul. 

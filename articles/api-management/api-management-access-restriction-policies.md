@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2017
 ms.author: apimpm
-ms.openlocfilehash: 54bb6056c41126aecada265eb0e079bc7c281be8
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: d5f5b66dee88a993347b6c1672fd9526ece09dc4
+ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37865933"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48269515"
 ---
 # <a name="api-management-access-restriction-policies"></a>Az API Management hozzáférés-korlátozási szabályzatok
 Ez a témakör egy hivatkozást kínál a következő az API Management házirendek. Hozzáadása és házirendek konfigurálásával kapcsolatos tudnivalókat lásd: [az API Management házirendek](http://go.microsoft.com/fwlink/?LinkID=398186).  
@@ -216,7 +216,7 @@ Ez a témakör egy hivatkozást kínál a következő az API Management háziren
 |Name (Név)|Leírás|Szükséges|  
 |----------|-----------------|--------------|  
 |ip-filter|A gyökérelem.|Igen|  
-|cím|Itt adhatja meg a szűrni kívánt egyetlen IP-címet.|Legalább egy `address` vagy `address-range` elem megadása kötelező.|  
+|Cím|Itt adhatja meg a szűrni kívánt egyetlen IP-címet.|Legalább egy `address` vagy `address-range` elem megadása kötelező.|  
 |címtartományból = "cím", "cím" =|Szűrni kívánt az IP-címet ad meg.|Legalább egy `address` vagy `address-range` elem megadása kötelező.|  
   
 ### <a name="attributes"></a>Attribútumok  
@@ -277,7 +277,7 @@ Ez a témakör egy hivatkozást kínál a következő az API Management háziren
 |Name (Név)|Leírás|Szükséges|Alapértelmezett|  
 |----------|-----------------|--------------|-------------|  
 |név|Az API-t vagy a kvóta vonatkozik, amelyhez a művelet neve.|Igen|–|  
-|a sávszélesség|A megadott időtartam során engedélyezett kilobájt maximális száma a `renewal-period`.|Mindkét `calls`, `bandwidth`, vagy együttesen kell megadni.|–|  
+|A sávszélesség|A megadott időtartam során engedélyezett kilobájt maximális száma a `renewal-period`.|Mindkét `calls`, `bandwidth`, vagy együttesen kell megadni.|–|  
 |hívás|A megadott időtartam során megengedett maximális száma a `renewal-period`.|Mindkét `calls`, `bandwidth`, vagy együttesen kell megadni.|–|  
 |megújítási időszak|Másodperc elteltével a kvóta alaphelyzetbe állítja az adott időszakban.|Igen|–|  
   
@@ -288,7 +288,7 @@ Ez a témakör egy hivatkozást kínál a következő az API Management háziren
 -   **A házirend-hatókörök:** termék  
   
 ##  <a name="SetUsageQuotaByKey"></a> Kulcs használati kvóta beállítása  
- A `quota-by-key` a szabályzat kötelezővé teszi a megújuló vagy élettartama hívás kötet és/vagy a sávszélesség kvóta, kulcs szerint történik. A kulcs egy tetszés szerinti karakterlánc értéke lehet, és általában biztosított egy házirend-kifejezés használatával. Adja meg, mely kérelmek kell számolni a kvóta felé választható növekmény feltétel is hozzáadhatók.  
+ A `quota-by-key` a szabályzat kötelezővé teszi a megújuló vagy élettartama hívás kötet és/vagy a sávszélesség kvóta, kulcs szerint történik. A kulcs egy tetszés szerinti karakterlánc értéke lehet, és általában biztosított egy házirend-kifejezés használatával. Adja meg, mely kérelmek kell számolni a kvóta felé választható növekmény feltétel is hozzáadhatók. Ez a szabályzat akkor aktiválódik, amikor a hívó kap egy `403 Forbidden` válasz állapotkódja.
   
  További információk és példák a szabályzat: [speciális kérésszabályzás az Azure API Management](https://azure.microsoft.com/documentation/articles/api-management-sample-flexible-throttling/).  
   
@@ -335,7 +335,7 @@ Ez a témakör egy hivatkozást kínál a következő az API Management háziren
   
 |Name (Név)|Leírás|Szükséges|Alapértelmezett|  
 |----------|-----------------|--------------|-------------|  
-|a sávszélesség|A megadott időtartam során engedélyezett kilobájt maximális száma a `renewal-period`.|Mindkét `calls`, `bandwidth`, vagy együttesen kell megadni.|–|  
+|A sávszélesség|A megadott időtartam során engedélyezett kilobájt maximális száma a `renewal-period`.|Mindkét `calls`, `bandwidth`, vagy együttesen kell megadni.|–|  
 |hívás|A megadott időtartam során megengedett maximális száma a `renewal-period`.|Mindkét `calls`, `bandwidth`, vagy együttesen kell megadni.|–|  
 |másik kulcsot|A kvóta szabályzathoz használandó kulcs.|Igen|–|  
 |increment-condition|A logikai kifejezés megadása, ha a kérés kell számolni a kvóta felé (`true`)|Nem|–|  
@@ -508,7 +508,7 @@ Ez a témakör egy hivatkozást kínál a következő az API Management háziren
 |igényelnek-lejárati-idő|Logikai érték. Megadja, hogy szükséges-e a jogkivonat lejárati jogcím.|Nem|true|
 |szükséges rendszer|A token neve séma, például: "Tulajdonos". Ez az attribútum beállításra kerül, ha a házirend biztosítja, hogy a megadott séma szerepel az engedélyezési fejléc értéke.|Nem|–|
 |igényelnek-aláírt-jogkivonatok|Logikai érték. Megadja, hogy a jogkivonat szükséges alá legyen írva.|Nem|true|  
-|elválasztó|Karakterlánc. Adja meg az elválasztó (pl. ",") értékek kinyerését többértékű jogcím használható.|Nem|–| 
+|elválasztó|karakterlánc. Adja meg az elválasztó (pl. ",") értékek kinyerését többértékű jogcím használható.|Nem|–| 
 |url|Nyissa meg az azonosító konfigurációs végpont URL-címe, amennyiben szerezhető be Open ID konfigurációs metaadatok. A válaszban meg kell felelnie a vonatkozó műszaki adatok, meghatározott URL-címen:`https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata`.  Az Azure Active Directory a következő URL-cím használata: `https://login.microsoftonline.com/{tenant-name}/.well-known/openid-configuration` és helyettesítse be a directory-bérlő neve, pl. `contoso.onmicrosoft.com`.|Igen|–|  
   
 ### <a name="usage"></a>Használat  

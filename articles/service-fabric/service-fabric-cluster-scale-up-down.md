@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/22/2017
 ms.author: aljo
-ms.openlocfilehash: d820898b1a0cc26d6832be9d302c74306fa4882f
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: d9ac3334d790c1844993c7d95bc24ce6690bed19
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42055331"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48248500"
 ---
 # <a name="read-before-you-scale"></a>Olvassa el, mielőtt méretezése
 Az alkalmazás terhelését szándékos tervezést igényel, szinte mindig hosszabb ideig tart, mint egy órát éles környezethez és igényel, hogy jobban megismerhesse a számítási feladatok és üzleti környezet; forrás méretezési számítási erőforrásokat valójában soha nem végzett előtt ezt a tevékenységet, ha ajánlott első lépésként kódmintáiban [tervezési megfontolások a Service Fabric-fürt kapacitása](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-cluster-capacity), ez a dokumentum további része a folytatás előtt. Ez a javaslat nem kívánt LiveSite problémák elkerülése érdekében, és emellett ajánlott sikerült tesztelni a műveletek végrehajtásához egy nem éles környezetben ellen dönt. Bármikor lehet [éles problémák jelentése és az Azure-ban fizetős támogatási kérelem](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-support#report-production-issues-or-request-paid-support-for-azure). Hajtsa végre ezeket a műveleteket, amelyek rendelkeznek a megfelelő környezet számára lefoglalt mérnökök Ez a cikk azt ismerteti, a méretezési műveletek, de kell döntse el, és a használati esetekhez; megfelelő mely műveletek megismeréséhez a méretezési csoport (Processzor és a Storage, memória), hogy milyen erőforrásokat például milyen irányba (függőleges vagy vízszintes), és milyen műveleteket (erőforrás-sablon telepítési Portal, PowerShell vagy a parancssori felületen).
@@ -33,7 +33,7 @@ Virtuálisgép-méretezési csoportok olyan számítási Azure-erőforrások üz
 > 
 
 ## <a name="choose-the-node-typevirtual-machine-scale-set-to-scale"></a>Csomópont típusa/virtuális gép méretezése méretezési kiválasztása
-Jelenleg nem képes az automatikus skálázási szabályok virtuálisgép-méretezési csoportok a portál használatával adja meg, ezért várjuk a csomóponttípusok a listában, majd adja hozzá automatikus skálázási szabályok azokat használhatja az Azure Powershellt (1.0 +).
+Jelenleg nem adhat meg az automatikus skálázási szabályok virtuálisgép-méretezési csoportok a portál segítségével Service Fabric-fürt létrehozása, ezért várjuk a csomóponttípusok a listában, majd adja hozzá automatikus skálázási szabályok azokat használhatja az Azure Powershellt (1.0 +).
 
 A fürtöt alkotó virtuálisgép-méretezési listájának lekéréséhez futtassa a következő parancsmagokat:
 

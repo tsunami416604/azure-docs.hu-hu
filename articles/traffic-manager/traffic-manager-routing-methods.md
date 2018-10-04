@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/17/2018
 ms.author: kumud
-ms.openlocfilehash: 797f97b9c1548484d72f518ae1d2c56633b7b5b3
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: ab5f6d10e4f9edc4d899e976291482bb3a795c07
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46126768"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48248924"
 ---
 # <a name="traffic-manager-routing-methods"></a>Traffic Manager útválasztási módszerek
 
@@ -105,7 +105,7 @@ Ha egy profil földrajzi útválasztásra van konfigurálva, minden végpont tá
 - Globális – bármelyik régióban
 - Regionális csoportosítás – például Afrikában, Közel-Kelet, Ausztrália/csendes-óceáni stb. 
 - Ország vagy régió – például Írországban Perui, Hongkong KKT stb. 
-- Állam/megye – például az USA-Kalifornia, Ausztrália-Queensland, Kanada-Alberta stb. (Megjegyzés: a részletesség szintje támogatott csak az államok / tartományok az ausztráliai, Kanada, Egyesült Királyság és az USA).
+- Állam/megye – például az USA-Kalifornia, Ausztrália-Queensland, Kanada-Alberta stb. (Megjegyzés: a részletesség szintje csak a állapotok támogatott / tartományok, Ausztrália, Kanadában és USA).
 
 Ha egy régió vagy egy régióban van rendelve egy végpontot, csak az adott végpontra ezekben a régiókban érkező kérelmeket legyen irányítva. A TRAFFIC Manager meghatározni azt a régiót, amelyből egy felhasználó kérdezi le, a – általában ez a felhasználó nevében a lekérdezés végrehajtása a helyi DNS-feloldó IP-címét a DNS-lekérdezés forrás IP-címét használja.  
 

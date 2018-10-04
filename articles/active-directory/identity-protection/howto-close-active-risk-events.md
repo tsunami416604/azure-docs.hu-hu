@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 09/24/2018
 ms.author: markvi
 ms.reviewer: raluthra
-ms.openlocfilehash: 230a4df2c43e8d5e6ae1a5a7e8188cf207461022
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.openlocfilehash: 11b6766533da65f55430d55bd8aa0b7067783e0c
+ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47057964"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48267470"
 ---
 # <a name="how-to-close-active-risk-events"></a>Útmutató: Zárja be az aktív kockázati események
 
@@ -51,7 +51,7 @@ Gombra kattintva zárja be az aktív kockázati események, a következő lehet�
 
 ![Új jelszó létrehozása](./media/howto-close-active-risk-events/13.png)
 
-A jelszó alaphelyzetbe állítása az összes aktív kockázatok események a kapcsolódó felhasználó bezárja, majd az identitás vissza biztosítható biztonságos állapotba. Felhasználói kockázati házirendet az a következő gombra kattintva zárja be aktív kockázati események, mert ez a módszer automatizált előnyben részesített módszere. Most már rendelkezésre áll szükséges az érintett felhasználó és a Súgó a segélyszolgálathoz vagy a rendszergazda közötti interakció.
+A jelszó alaphelyzetbe állítása az összes aktív kockázatok események a kapcsolódó felhasználó bezárja, majd az identitás vissza biztosítható biztonságos állapotba. Felhasználói kockázati házirendet az a következő gombra kattintva zárja be aktív kockázati események, mert ez a módszer automatizált előnyben részesített módszere. Nincs nem szükséges az érintett felhasználó és a Súgó a segélyszolgálathoz vagy a rendszergazda közötti interakció.
 
 Azonban a felhasználói kockázati házirend használatával nem mindig alkalmazható. Ez vonatkozik, például a:
 

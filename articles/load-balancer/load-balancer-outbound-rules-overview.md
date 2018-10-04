@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/24/2018
+ms.date: 10/3/2018
 ms.author: kumud
-ms.openlocfilehash: 63c193b4757c28f809a33b917058df36467d4db4
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 50b567b298406b936a11ad5a8737ce4b1e21c0c7
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47163018"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48248724"
 ---
 # <a name="load-balancer-outbound-rules"></a>A terheléselosztó kimenő szabályok
 
@@ -180,10 +180,10 @@ Nyilvános Standard Load Balancer meghatározása, a virtuális gépeket helyezi
 
 #### <a name="outbound-nat-for-internal-standard-load-balancer-scenarios"></a>Kimenő NAT-forgatókönyvekhez. a Standard Load Balancer belső.
 
-Egy belső Standard Load Balancer használatakor a kimenő NAT nem áll rendelkezésre mindaddig, amíg egy nyilvános Standard Load Balancer is konfigurálva van. Ezt módosíthatja a és a kimenő kapcsolat létrehozása egy Standard belső terheléselosztó mögötti virtuális gépek kimenő szabály.
+Egy belső Standard Load Balancer használatakor a kimenő NAT nem áll rendelkezésre, amíg a kimenő kapcsolat explicit módon deklarálni. Kimenő kapcsolat kimenő kapcsolat létrehozásához az alábbi lépéseket egy belső Standard terheléselosztó mögötti virtuális gépek kimenő szabály használatával adhatja meg:
 
 1. Nyilvános Standard Load Balancer létrehozása.
-2. Hozzon létre egy háttérkészlet, és a virtuális gépeket helyezzen egy nyilvános terheléselosztó háttérkészletének.
+2. Hozzon létre egy háttérkészlet és helyezi a virtuális gépek mellett a belső terheléselosztó a nyilvános terheléselosztó háttérkészlet.
 3. A nyilvános terheléselosztón programhoz kimenő NAT esetében ezek a virtuális gépek kimenő szabály konfigurálása.
 
 #### <a name="enable-both-tcp--udp-protocols-for-outbound-nat-with-a-public-standard-load-balancer"></a>A kimenő NAT nyilvános Standard Load Balancer a TCP és UDP egyaránt protokollok engedélyezése
