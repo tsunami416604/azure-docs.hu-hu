@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/22/2018
 ms.author: spelluru
-ms.openlocfilehash: e4dda534fd50c634f621558fa7d7821302c73979
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: b05e23019e7b0a03965e51052bf334d0cbff041d
+ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47395101"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48269343"
 ---
 # <a name="amqp-10-in-microsoft-azure-service-bus-request-response-based-operations"></a>A Microsoft Azure Service Bus AMQP 1.0-s: kérés-válasz alapú műveletek
 
@@ -369,7 +369,7 @@ A kérelemüzenet tartalmaznia kell a következő alkalmazás tulajdonságai:
   
 |Kulcs|Érték típusa|Szükséges|Érték tartalma|  
 |---------|----------------|--------------|--------------------|  
-|művelet|sztring|Igen|`com.microsoft:peek-message`|  
+|művelet|sztring|Igen|`com.microsoft:set-session-state`|  
 |`com.microsoft:server-timeout`|uint|Nem|A művelet kiszolgáló időkorlátja ezredmásodpercben.|  
   
 A kérelem üzenet törzsében kell állnia egy **amqp-érték** tartalmazó szakasz egy **térkép** az alábbi bejegyzéseket:  
