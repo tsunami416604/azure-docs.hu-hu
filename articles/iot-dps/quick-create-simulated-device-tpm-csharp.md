@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 055a1f09cf30665321d570978d800e1fbb3c0cf7
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.openlocfilehash: fd16defdcd3c3cb0c78994e9259b55f3d687163b
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "42023232"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47032648"
 ---
 # <a name="create-and-provision-a-simulated-tpm-device-using-c-device-sdk-for-iot-hub-device-provisioning-service"></a>Szimulált TPM-eszköz létrehozása és kiépítése az IoT Hub Device Provisioning Service-hez készült C# eszközoldali SDK-val
 
@@ -66,9 +66,9 @@ Amennyiben nem ismeri az automatikus kiépítés folyamatát, olvassa el [az aut
     ![A parancsablak kimenete](./media/quick-create-simulated-device-tpm-csharp/output1.png) 
 
 
-4. Az Azure Portal Device Provisioning Service összefoglalási panelén válassza a **Regisztrációk kezelése** lehetőséget. Válassza az **Egyéni regisztrációk** fület, és kattintson a felül lévő **Hozzáadás** gombra. 
+4. Az Azure Portal Device Provisioning Service összefoglalási panelén válassza a **Regisztrációk kezelése** lehetőséget. Válassza az **Egyéni regisztrációk** fület, és kattintson a felül lévő **Egyéni regisztráció hozzáadása** gombra. 
 
-5. A **Beléptetési listabejegyzés hozzáadása** területen adja meg a következő információkat:
+5. A **Regisztráció hozzáadása** alatt adja meg a következő információkat:
     - Válassza a **TPM** elemet az identitás igazolási *Mechanizmusaként*.
     - Írja be a TPM-eszköz *Regisztrációs azonosítóját* és *Ellenőrzőkulcsát*. 
     - Kiválaszthatja a kiépítési szolgáltatáshoz kapcsolódó egyik IoT hubot.
@@ -76,7 +76,7 @@ Amennyiben nem ismeri az automatikus kiépítés folyamatát, olvassa el [az aut
     - Frissítse az **Eszköz kezdeti ikerállapotát** az eszköz kívánt kezdeti konfigurációjával.
     - Ha végzett, kattintson a **Mentés** gombra. 
 
-    ![Írja be az eszköz beléptetési információit a portál panelén](./media/quick-create-simulated-device-tpm-csharp/enter-device-enrollment.png)  
+    ![Írja be az eszköz beléptetési információit a portál panelén](./media/quick-create-simulated-device-tpm-csharp/enterdevice-enrollment.png)  
 
    Sikeres beléptetés esetén az eszköz *Regisztrációs azonosítója* megjelenik az *Egyéni beléptetések* lapon lévő listában. 
 
@@ -84,7 +84,7 @@ Amennyiben nem ismeri az automatikus kiépítés folyamatát, olvassa el [az aut
 
 1. Ellenőrizze, hogy a rendszer kiépítette-e az eszközt. Ha sikeresen kiépíti a szimulált eszközt a kiépítési szolgáltatáshoz csatolt IoT Hubon, az eszköz azonosítója megjelenik a hub **IoT-eszközök** panelén. 
 
-    ![Az eszköz regisztrálva van az IoT Hubbal](./media/quick-create-simulated-device-tpm-csharp/hub-registration.png) 
+    ![Az eszköz regisztrálva van az IoT Hubbal](./media/quick-create-simulated-device-tpm-csharp/hub_registration.png) 
 
     Ha módosította az *Eszköz kezdeti ikerállapota* alapértelmezett értékét az eszköz beléptetési bejegyzésében, az lekérheti és felhasználhatja a kívánt ikerállapotot a központból. További információ: [Eszközök ikerállapotának megismerése és használata az IoT hubon](../iot-hub/iot-hub-devguide-device-twins.md)
 

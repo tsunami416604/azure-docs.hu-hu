@@ -3,19 +3,22 @@ title: 'SSMS: Csatlakozás és adatok lekérdezése Azure SQL Database adatbázi
 description: Ebből a cikkből megtudhatja, hogyan csatlakozhat az SQL Database-hez az Azure-ban az SQL Server Management Studio (SSMS) használatával. Ezután futtasson Transact-SQL (T-SQL) utasításokat az adatok lekérdezéséhez és szerkesztéséhez.
 keywords: csatlakozás sql database-hez,sql server management studio
 services: sql-database
-author: CarlRabeler
-manager: craigg
 ms.service: sql-database
-ms.custom: mvc,DBs & servers
+ms.subservice: operations
+ms.custom: ''
+ms.devlang: ''
 ms.topic: quickstart
-ms.date: 08/01/2018
+author: CarlRabeler
 ms.author: carlrab
-ms.openlocfilehash: 9177ad9cc4cbb668599d35b295ab939cea148a5a
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.reviewer: ''
+manager: craigg
+ms.date: 08/01/2018
+ms.openlocfilehash: 4c8b8a609fe5aa531570805d7a58141a6df84090
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39412814"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47063217"
 ---
 # <a name="azure-sql-database-use-sql-server-management-studio-to-connect-and-query-data"></a>Azure SQL Database: Az SQL Server Management Studio segítségével csatlakozhat és kérdezhet le adatokat
 
@@ -26,6 +29,8 @@ Az [SQL Server Management Studio][ssms-install-latest-84g] (SSMS) egy bármely S
 Ez a rövid útmutató az alábbi rövid útmutatókban létrehozott erőforrásokat használja kiindulási pontként:
 
 [!INCLUDE [prerequisites-create-db](../../includes/sql-database-connect-query-prerequisites-create-db-includes.md)]
+
+Ez a rövid útmutató egy kiszolgálószintű tűzfalszabály konfigurálását is megköveteli. Ennek módját a [Kiszolgálószintű tűzfalszabály létrehozása](sql-database-get-started-portal-firewall.md) szakasz ismerteti.
 
 #### <a name="install-the-latest-ssms"></a>Az SSMS legújabb verziójának telepítése
 
