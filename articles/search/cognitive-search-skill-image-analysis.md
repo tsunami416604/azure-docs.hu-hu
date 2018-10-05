@@ -10,12 +10,12 @@ ms.workload: search
 ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: luisca
-ms.openlocfilehash: 7b7e21e3e5ad02d74a2ae39e37c9dd8086c2cdd6
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: 6c59a7744e4630a04793b0c0e4d790a2e9cbe0f1
+ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45729470"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48803443"
 ---
 #   <a name="image-analysis-cognitive-skill"></a>Kép elemzése cognitive szakértelem
 
@@ -47,7 +47,6 @@ A paraméterei a kis-és nagybetűket.
 
 
 ##  <a name="sample-definition"></a>Minta-definíció
-
 ```json
 {
     "@odata.type": "#Microsoft.Skills.Vision.ImageAnalysisSkill",
@@ -220,7 +219,7 @@ A paraméterei a kis-és nagybetűket.
                         "Black"
                     ],
                     "accentColor": "873B59",
-                    "isBWImg": false
+                    "isBwImg": false
                     },
                 "imageType": {
                     "clipArtType": 0,

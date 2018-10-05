@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 09/06/2018
 ms.author: jeffpatt
 ms.component: files
-ms.openlocfilehash: ef70d3d3dd2a806ea978be8e996b7d5ba0fbc96b
-ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
+ms.openlocfilehash: 2b2d817c85528ef56fd0baef80d17c7cd6eae543
+ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/01/2018
-ms.locfileid: "47586359"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48802236"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Azure-fájlok szinkronizálásának hibaelhárítása
 Az Azure File Sync használatával fájlmegosztásainak a szervezet az Azure Files között, miközben gondoskodik a rugalmasságát, teljesítményét és kompatibilitását a helyszíni fájlkiszolgálók. Az Azure File Sync Windows Server az Azure-fájlmegosztás gyors gyorsítótáraivá alakítja át. Helyileg, az adatok eléréséhez a Windows Serveren elérhető bármely protokollt használhatja, beleértve az SMB, NFS és FTPS. Tetszőleges számú gyorsítótárak világszerte igény szerint is rendelkezhet.
@@ -319,6 +319,16 @@ Ez a hiba oka, hogy az Azure File Sync ügynök az Azure-fájlmegosztást, mert 
 | **Szervizelés szükséges** | Igen |
 
 Ez a hiba akkor fordul elő, amikor egy probléma az Azure File Sync által használt belső adatbázissal. Ha a probléma akkor fordul elő, hozzon létre egy támogatási kérést, és felvesszük Önnel a probléma megoldásához nyújt segítséget.
+
+<a id="-2134364053"></a>**Az Azure File Sync ügynök verziója telepítve van a kiszolgálón nem támogatott.**  
+| | |
+|-|-|
+| **HRESULT** | 0x80C8306B |
+| **HRESULT (decimális)** | -2134364053 |
+| **Hibakarakterlánc** | ECS_E_AGENT_VERSION_BLOCKED |
+| **Szervizelés szükséges** | Igen |
+
+Ez a hiba akkor fordul elő, ha az Azure File Sync ügynök verziója telepítve van a kiszolgálón nem támogatott. Ez a probléma megoldásához [frissítése]( https://docs.microsoft.com/en-us/azure/storage/files/storage-files-release-notes#upgrade-paths) , egy [ügynök verziója támogatott]( https://docs.microsoft.com/en-us/azure/storage/files/storage-files-release-notes#supported-versions).
 
 <a id="-2134351810"></a>**A megosztás Azure fájltárolási korlátot elérte.**  
 | | |

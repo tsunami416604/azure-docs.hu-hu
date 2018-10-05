@@ -9,12 +9,12 @@ ms.component: speech-service
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: v-jerkin
-ms.openlocfilehash: ef2f349333592e05185c5502490828832cb6c24c
-ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
+ms.openlocfilehash: 456b60ee44f3e47bc04da341fd0e3df86662d16b
+ms.sourcegitcommit: 4edf9354a00bb63082c3b844b979165b64f46286
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48018349"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48785443"
 ---
 # <a name="about-the-speech-to-text-api"></a>Tudnivalók a Speech to Text API
 
@@ -34,9 +34,11 @@ A **Speech to Text** API a következő szolgáltatásokat nyújtja:
 
 - Beszédfelismerés. Integráció révén [Language Understanding](https://docs.microsoft.com/azure/cognitive-services/luis/) (LUIS), akkor származtathatók szándékok és entitások speech. A felhasználók nem szükséges ismerni az alkalmazás szöveg szóhasználati, de tud adni, amit szeretnének a saját szavaival.
 
+- Magabiztossági pontszámot ad vissza a szolgáltatásból vissza, ha megad egy részletes kimenet a speech konfigurációs objektum (SpeechConfig.OutputFormat tulajdonság). Majd használja az eredményt vagy Best() metódust, vagy (alábbihoz hasonló eredményt a szolgáltatás által visszaadott JSON-ból közvetlenül a pontszám letöltés. Properties.GetProperty(PropertyId.SpeechServiceResponse_JsonResult)).
+
 ## <a name="api-capabilities"></a>API-funkciók
 
-Nagy mennyiségű képességeit a **Speech to Text** API - különös tekintettel testreszabása – REST-en keresztül érhetők el. Az alábbi táblázat foglalja össze az egyes módszerek az API eléréséhez képességeit. A lehetőségeket és az API teljes listáját meg részletesen consult [Swagger](https://swagger/service/11ed9226-335e-4d08-a623-4547014ba2cc#/)
+Az a funkciók némelyike a **Speech to Text** API - különös tekintettel testreszabása – REST-en keresztül érhetők el. Az alábbi táblázat foglalja össze az egyes módszerek az API eléréséhez képességeit. 
 
 | Használati eset | REST | SDK-k |
 |-----|-----|-----|----|

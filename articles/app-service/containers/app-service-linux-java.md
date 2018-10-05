@@ -12,12 +12,12 @@ ms.devlang: java
 ms.topic: article
 ms.date: 08/29/2018
 ms.author: routlaw
-ms.openlocfilehash: 2b2256ef5802160dbaa66e2a098a798fcdc653d2
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: 48d6836a2f1c7eb53fd6d7a08ee5a049cd9503f6
+ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47065112"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48803035"
 ---
 # <a name="java-developers-guide-for-app-service-on-linux"></a>A linuxon futó App Service-hez Java fejlesztői útmutatója
 
@@ -229,7 +229,7 @@ A kiszolgálói szintű közös erőforrások:
 
 ## <a name="docker-containers"></a>Docker-tárolók
 
-Szeretné használni az Azure által támogatott Zulu JDK a tárolókat az App Service-ben futó, ellenőrizze, hogy az alkalmazás `Dockerfile` lemezképeket használja a [Java App Service a Docker-rendszerkép tárház](https://github.com/Azure-App-Service/java).
+Szeretné használni az Azure által támogatott Zulu JDK a tárolókban, ügyeljen arra, hogy lekéréséhez, és használja a felsorolt előre elkészített rendszerképek [Azul a letöltési oldalon](https://www.azul.com/downloads/azure-only/zulu/#docker) vagy használja a `Dockerfile` példákat a a [Microsoft Java GitHub-adattárat](https://github.com/Microsoft/java/tree/master/docker).
 
 ## <a name="runtime-availability-and-statement-of-support"></a>Futásidejű rendelkezésre állását és a rendszerállapot-támogatás
 
@@ -242,7 +242,7 @@ App Service Linux rendszeren Java-webalkalmazások felügyelt üzemeltetési ké
 
 ### <a name="jdk-versions-and-maintenance"></a>JDK-verziók és karbantartás
 
-Az Azure támogatott Java fejlesztői készlet (JDK) van [Zulu](https://www.azul.com/products/zulu-and-zulu-enterprise/) keresztül [Azul Systems](https://www.azul.com/).
+Az Azure támogatott Java fejlesztői készlet (JDK) van [Zulu](https://www.azul.com/downloads/azure-only/zulu/) keresztül [Azul Systems](https://www.azul.com/).
 
 Főverzió-frissítései linuxos Azure App Service-ben új futásidejű beállítások keresztül biztosítunk. Ügyfelek frissítése a Java ezen újabb verziói az alkalmazásszolgáltatás üzemelő példányának konfigurálásával, és felelős tesztelése, és biztosítja a fő frissítés megfelel az igényeiknek.
 
@@ -258,15 +258,15 @@ Ha egy támogatott Java-futtatókörnyezet megszűnik, az érintett modul haszn�
 
 ### <a name="local-development"></a>Helyi fejlesztés
 
-A fejlesztők is letölthetik a éles kiadása az Azul Zulu Enterprise JDK a helyi fejlesztési [Azul a letöltési hely](https://www.azul.com/downloads/zulu/).
+A fejlesztők is letölthetik a éles kiadása az Azul Zulu Enterprise JDK a helyi fejlesztési [Azul a letöltési hely](https://www.azul.com/downloads/azure-only/zulu/).
 
 ### <a name="development-support"></a>Fejlesztés támogatása
 
-A Azul Zulu Enterprise JDK terméktámogatási keresztül érhető el, az Azure fejlesztésének vagy [Azure Stack](https://azure.microsoft.com/overview/azure-stack/) együtt egy [minősített Azure-támogatási csomag](https://azure.microsoft.com/support/plans/).
+Terméktámogatási a [Azure által támogatott Azul Zulu JDK](https://www.azul.com/downloads/azure-only/zulu/) érhető el, az Azure fejlesztésének vagy [Azure Stack](https://azure.microsoft.com/overview/azure-stack/) együtt egy [minősített Azure-támogatási csomag](https://azure.microsoft.com/support/plans/).
 
 ### <a name="runtime-support"></a>Podpora modulu Runtime
 
-A fejlesztők is [nyissa meg a probléma](/azure/azure-supportability/how-to-create-azure-support-request) az az App Service Linuxos Java-futtatókörnyezet, ha rendelkezik Azure-támogatási egy [minősített támogatási csomag](https://azure.microsoft.com/support/plans/).
+A fejlesztők is [nyissa meg a probléma](/azure/azure-supportability/how-to-create-azure-support-request) az Azure-támogatási, ha rendelkezik a Azul Zulu segítségével egy [minősített támogatási csomag](https://azure.microsoft.com/support/plans/).
 
 ## <a name="next-steps"></a>További lépések
 

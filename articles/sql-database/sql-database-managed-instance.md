@@ -12,19 +12,19 @@ ms.author: bonova
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 10/01/2018
-ms.openlocfilehash: a09a19957c318416f3cb4de79305b181dbc3be81
-ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
+ms.openlocfilehash: 698fafac771c79bf014d6e9492c8ca22d1c31b47
+ms.sourcegitcommit: 4edf9354a00bb63082c3b844b979165b64f46286
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48018284"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48784977"
 ---
 # <a name="what-is-a-managed-instance"></a>Mi a felügyelt példány?
 
 Az Azure SQL Database felügyelt példánya egy új központi telepítési modellt az Azure SQL Database, így a legújabb SQL Server-közel 100 %-os kompatibilitást a helyszíni adatbázis-kezelő (Enterprise Edition), a natív [virtuális hálózat (VNet)](../virtual-network/virtual-networks-overview.md) végrehajtását, amelyek közös biztonsági kérdéseket, és a egy [üzleti modell](https://azure.microsoft.com/pricing/details/sql-database/) kedvező a helyszíni SQL Server-ügyfelek számára. Felügyelt példány lehetővé teszi meglévő SQL Server a felhőre való minimális alkalmazás- és adatbázis módosításait azok a helyszíni alkalmazások átemelése. Felügyelt példány egyszerre, megőrzi az összes PaaS-képességet (automatikus javítás és a verzió frissítési [automatizált biztonsági mentések](sql-database-automated-backups.md), [magas rendelkezésre állású](sql-database-high-availability.md) ), amely jelentősen csökkenti felügyeleti költségeket és a teljes bekerülési Költséget.
 
 > [!IMPORTANT]
-> Azon régiók listájáért, amelyekben a felügyelt példány jelenleg elérhető, lásd a cikket, amely [az adatbázisok migrálásával foglalkozik egy teljes mértékben felügyelt szolgáltatásba az Azure SQL Database felügyelt példányával](https://azure.microsoft.com/blog/migrate-your-databases-to-a-fully-managed-service-with-azure-sql-database-managed-instance/).
+> Felügyelt példány jelenleg elérhető, amelyben régiók listáját lásd: [támogatott régiók](sql-database-managed-instance-resource-limits.md#supported-regions).
  
 A következő ábra a felügyelt példány legfontosabb funkcióit ismerteti:
 
@@ -41,7 +41,7 @@ Dönthet arról, hogy az Azure SQL Database önálló adatbázisok, Azure SQL Da
 Az Azure SQL Database felügyelt példánya a legjobb funkciókat, amelyek elérhetők mind az Azure SQL Database és SQL Server adatbázismotor egyesíti.
 
 > [!IMPORTANT]
-> Felügyelt példány az a funkciók az SQL Server online műveletek automatikus terv javításokat és más vállalati teljesítményt érintő továbbfejlesztés többek között a legújabb verziójának futtatja. 
+> Felügyelt példány az a funkciók az SQL Server online műveletek automatikus terv javításokat és más vállalati teljesítményt érintő továbbfejlesztés többek között a legújabb verziójának futtatja. Elérhető szolgáltatásainak összehasonlítása ezen [szolgáltatások összehasonlítása: Azure SQL Database és SQL Server összehasonlítása](sql-database-features.md).
 
 | **PaaS előnyei** | **Az üzletmenet folytonossága** |
 | --- | --- |
@@ -49,22 +49,34 @@ Az Azure SQL Database felügyelt példánya a legjobb funkciókat, amelyek elér
 |**Biztonság és megfelelőség** | **Felügyeleti**|
 |Izolált környezet ([VNet-integráció](sql-database-managed-instance-vnet-configuration.md), egyetlen dedikált számítási és a storage szolgáltatás bérlői) <br>[Transzparens adattitkosítás (TDE)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql)<br>[Az Azure AD-hitelesítés](sql-database-aad-authentication.md), egyszeri bejelentkezésének támogatása <br>Megfelelőségi szabványoknak megfelelő ugyanaz, mint az Azure SQL database <br>[SQL-naplózás](sql-database-managed-instance-auditing.md) <br>[Fenyegetések észlelése](sql-database-managed-instance-threat-detection.md) |Automatizálhatja a szolgáltatás üzembe helyezését és skálázás az Azure Resource Manager API <br>Az Azure portal funkciók manuális szolgáltatáshoz kiépítés és méretezés <br>Data Migration Service 
 
+Felügyelt példány legfontosabb funkcióit az alábbi táblázatban láthatók:
+
+|Szolgáltatás | Leírás|
+|---|---|
+| SQL Server-verzió létrehozása / | SQL Server Database Engine (poslední stabilní) |
+| Automatikus biztonsági másolatok kezelése | Igen |
+| Beépített példányt és az adatbázis figyelése és metrikák | Igen |
+| A szoftverfrissítések automatikus javítás | Igen |
+| A legújabb adatbázismotor-funkciók | Igen | 
+| Az adatbázisonkénti adatfájlt (sor) | Többszörös | 
+| Adatbázisonként (napló) fájlok száma | 1 | 
+| Virtuális hálózat – Azure Resource Manager üzembe helyezése | Igen |
+| Virtuális hálózat – klasszikus üzemi modellben | Nem |
+| Portal-támogatás | Igen|
+| Beépített integrációs szolgáltatás (SSIS) | Nem – SSIS része [Azure Data Factory PaaS](https://docs.microsoft.com/azure/data-factory/tutorial-deploy-ssis-packages-azure) |
+| Beépített Analysis Service (SSAS) | Nem – SSAS elkülönül [PaaS](https://docs.microsoft.com/azure/analysis-services/analysis-services-overview) |
+| Beépített jelentéskészítési szolgáltatás (SSRS) | Nem – a Power bi-ban vagy az SSRS IaaS használata |
+|||
+
 ## <a name="vcore-based-purchasing-model"></a>Virtuálismag-alapú vásárlási modell
 
-A [Virtuálismag-alapú vásárlási modell](sql-database-service-tiers-vcore.md) rugalmasságot, ellenőrzés, átláthatóság és lefordítani a helyszíni tevékenységprofil követelményeinek felhőbe emellett kézenfekvő módszert biztosít. Ez a modell lehetővé teszi méretezheti a számítási, memória és a tárolási számítási feladatok igényeik alapján. A Virtuálismag-modell nem is jogosult fel, a 30 %-os megtakarítást a [SQL Serverhez készült Azure Hybrid Use Benefit](../virtual-machines/windows/hybrid-use-benefit-licensing.md).
+A [Virtuálismag-alapú vásárlási modell](sql-database-service-tiers-vcore.md) a felügyelt példány lehetőséget kínál a rugalmasságot, ellenőrzés, átláthatóság és lefordítani a helyszíni tevékenységprofil követelményeinek felhőbe kézenfekvő módot. Ez a modell lehetővé teszi, hogy számítási, memória és a munkaterhelés igényei alapján tárolási módosíthatja. A Virtuálismag-modell nem is jogosult fel, a 30 %-os megtakarítást a [SQL Serverhez készült Azure Hybrid Use Benefit](../virtual-machines/windows/hybrid-use-benefit-licensing.md).
 
-Egy virtuális magot és generációk hardver lehetőség elérhető logikai CPU jelöli.
-- A Gen 4 logikai CPU-k Intel E5-2673 v3 (Haswell) 2,4 GHz-es processzorokon alapulnak.
-- Gen 5 logikai CPU k Intel E5-2673 v4 (Broadwell) 2,3 GHz-es processzorral.
+A Virtuálismag-modell választhat hardver generációja.
+- **4. generációs** logikai processzorok alapuló Intel E5-2673 v3 (Haswell) 2,4 GHz-es processzor, a csatlakoztatott SSD fizikai mag, 7 GB RAM-MAL / core és a számítási méret közötti 24, és 8 virtuális maggal.
+- **Velikost haldy 5** logikai processzorok alapuló Intel E5-2673 v4 (Broadwell) 2.3 GHz-es processzorokkal, SSD, logikai core többszálú eNVM gyors, és 8 és 80 magok közötti méretek számítási.
 
-Az alábbi táblázat segítségével megismerheti, hogyan lehet kiválasztani a számítási, memória, tárolási és i/o-erőforrások optimális konfigurációját.
-
-||Gen 4|Gen 5|
-|----|------|-----|
-|Hardver|Intel E5-2673 v3 (Haswell) 2,4 GHz-es processzorokkal, SSD virtuális mag csatolt = 1 PP (fizikai mag)|Intel E5-2673 v4 (Broadwell) 2,3 GHz-es processzorokkal, SSD, virtuális mag eNVM gyors = 1. LP (a hyper-szál)|
-|COMPUTE-méretek|8, 16, 24 virtuális mag|8, 16, 24, 32, 40, 64, 80 virtuális magok|
-|Memory (Memória)|7 GB / virtuális mag|5.5-ös GB / virtuális mag|
-||||
+További információ a különbség a hardvergenerációk [felügyelt példány erőforráskorlátok](sql-database-managed-instance-resource-limits.md#hardware-generation-characteristics).
 
 ## <a name="managed-instance-service-tiers"></a>Felügyelt példány szolgáltatási szintek
 
@@ -83,32 +95,11 @@ Az alábbi lista ismerteti az általános célú szolgáltatásszint kulcsfontos
 
 - A legtöbb üzleti alkalmazások, az általános teljesítmény-követelmények tervezése 
 - Nagy teljesítményű Azure Premium storage (8 TB) 
-- 100 adatbázisnak példányonként 
+- Beépített [magas rendelkezésre állású](sql-database-high-availability.md#standardgeneral-purpose-availability) alapján megbízható Azure Premium Storage és [Azure Service Fabric](../service-fabric/service-fabric-overview.md)
 
-Az alábbi lista ismerteti azokat az általános célú szolgáltatásszint főbb jellemzői:
+További információkért lásd: [általános célú csomagban Storate réteg](https://medium.com/azure-sqldb-managed-instance/file-layout-in-general-purpose-azure-sql-managed-instance-cf21fff9c76c) és [tárolási teljesítmény ajánlott eljárások és az Azure SQL DB felügyelt példányainak (általános célú) szempontjai](https://blogs.msdn.microsoft.com/sqlcat/2018/07/20/storage-performance-best-practices-and-considerations-for-azure-sql-db-managed-instance-general-purpose/).
 
-|Szolgáltatás | Leírás|
-|---|---|
-| Hány virtuális magok * | 8, 16, 24 (4. generációs)<br>8, 16, 24, 32, 40, 64, 80-as (általános 5)|
-| SQL Server-verzió létrehozása / | SQL Server Database Engine (poslední stabilní) |
-| Minimális tároló mérete | 32 GB |
-| Maximális tárméret | 8 TB |
-| Maximális tárterület adatbázisonként | Határozza meg a maximális tárhelyméretet a példány |
-| Várt tárolási IOPS | 500-7500 IOPS adatfájl (adatfájl függ). Lásd: [prémium szintű Storage](../virtual-machines/windows/premium-storage-performance.md#premium-storage-disk-sizes) |
-| Az adatbázisonkénti adatfájlt (sor) | Többszörös | 
-| Adatbázisonként (napló) fájlok száma | 1 | 
-| Automatikus biztonsági másolatok kezelése | Igen |
-| MAGAS RENDELKEZÉSRE ÁLLÁS | Az Azure Storage szolgáltatásban tárolt adatok és [Azure Service Fabric](../service-fabric/service-fabric-overview.md) |
-| Beépített példányt és az adatbázis figyelése és metrikák | Igen |
-| A szoftverfrissítések automatikus javítás | Igen |
-| Virtuális hálózat – Azure Resource Manager üzembe helyezése | Igen |
-| Virtuális hálózat – klasszikus üzemi modellben | Nem |
-| Portal-támogatás | Igen|
-|||
-
-\* Egy virtuális magot és generációk hardver lehetőség elérhető logikai CPU jelöli. Gen 4 logikai CPU k Intel E5-2673 v3 (Haswell) 2,4 GHz-es processzorral és a Gen 5 logikai CPU alapján Intel E5-2673 v4 (Broadwell) 2,3 GHz-es processzorral. 
-
-További információkért lásd: [Standard/általános célú rendelkezésre állási és architektúra](sql-database-high-availability.md#standardgeneral-purpose-availability) az Azure SQL Database és [tárolási teljesítmény ajánlott eljárások és az Azure SQL DB felügyelt példányainak (általános szempontok Célú)](https://blogs.msdn.microsoft.com/sqlcat/2018/07/20/storage-performance-best-practices-and-considerations-for-azure-sql-db-managed-instance-general-purpose/).
+További információ a szolgáltatási szintek közötti különbség [felügyelt példány erőforráskorlátok](sql-database-managed-instance-resource-limits.md#service-tier-characteristics).
 
 ### <a name="business-critical-service-tier-preview"></a>Üzleti kritikus fontosságú szolgáltatási szint (előzetes verzió)
 
@@ -117,33 +108,14 @@ További információkért lásd: [Standard/általános célú rendelkezésre á
 Az alábbi lista ismerteti azokat az üzletileg kritikus szolgáltatási rétegben főbb jellemzői: 
 -   A lehető legjobb teljesítmény és a magas rendelkezésre ÁLLÁSÚ követelmények üzleti alkalmazásokhoz tervezve 
 -   Együttműködik a villámgyors SSD-tárolás (legfeljebb 1 TB a Gen 4. és 4 TB-ra Gen 5)
--   Példányonként legfeljebb 100 adatbázisokat támogatja 
-- Beépített további csak olvasható példányhoz jelentéskészítési és egyéb csak olvasható feladatokhoz felhasználható
+- Beépített [magas rendelkezésre állású](sql-database-high-availability.md#premiumbusiness-critical-availability) alapján [Always On rendelkezésre állási csoportok](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server) és [Azure Service Fabric](../service-fabric/service-fabric-overview.md).
+- További beépített [csak olvasható adatbázis-replika](sql-database-read-scale-out.md) , amely a jelentéskészítés és más csak olvasási számítási feladatokhoz használható
 - [Memóriabeli OLTP](sql-database-in-memory.md) , amely nagy-prefrmance követelményekkel rendelkező számítási feladatokhoz használható  
-
-|Szolgáltatás | Leírás|
-|---|---|
-| Hány virtuális magok * | 8, 16, 24., 4, (általános) 32<br>8, 16, 24, 32, 40, 64, 80-as (általános 5)|
-| SQL Server-verzió létrehozása / | SQL Server legújabb (elérhető) |
-| További funkciók | [Memóriabeli OLTP beállítása](sql-database-in-memory.md)<br> 1 további csak olvasható replika ([olvasási kibővített](sql-database-read-scale-out.md))
-| Minimális tároló mérete | 32 GB |
-| Maximális tárméret | Általános 4: 1 TB-os (az összes virtuális mag méretet)<br> A gen 5:<ul><li>1 TB-os 8, 16 virtuális mag</li><li>2 TB az 24 virtuális mag</li><li>4 TB-os 32, 40, 64, 80 virtuális magok</ul>|
-| Maximális tárterület adatbázisonként | Határozza meg a maximális tárhelyméretet a példány |
-| Az adatbázisonkénti adatfájlt (sor) | Többszörös | 
-| Adatbázisonként (napló) fájlok száma | 1 | 
-| Automatikus biztonsági másolatok kezelése | Igen |
-| MAGAS RENDELKEZÉSRE ÁLLÁS | Helyi SSD és használható a tárolt adatok [Always On rendelkezésre állási csoportok](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server) és [Azure Service Fabric](../service-fabric/service-fabric-overview.md) |
-| Beépített példányt és az adatbázis figyelése és metrikák | Igen |
-| A szoftverfrissítések automatikus javítás | Igen |
-| Virtuális hálózat – Azure Resource Manager üzembe helyezése | Igen |
-| Virtuális hálózat – klasszikus üzemi modellben | Nem |
-| Portal-támogatás | Igen|
-|||
-
-További információ: [prémium és üzletileg kritikus fontosságú rendelkezésre állási és architektúra](sql-database-high-availability.md#premiumbusiness-critical-availability) Azure SQL Database-ben.
 
 > [!IMPORTANT]
 > A **üzletileg kritikus fontosságú** szolgáltatási szint jelenleg előzetes verzióban.
+
+További információ a szolgáltatási szintek közötti különbség [felügyelt példány erőforráskorlátok](sql-database-managed-instance-resource-limits.md#service-tier-characteristics).
 
 ## <a name="advanced-security-and-compliance"></a>Magas szintű biztonság és megfelelőség 
 

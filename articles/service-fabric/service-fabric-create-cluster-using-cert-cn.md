@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/24/2018
 ms.author: ryanwi
-ms.openlocfilehash: c4c60cccb890c883e9e57c9f146cc93aae99f224
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: 191471d3538a9151827ee24a5887aa559383345b
+ms.sourcegitcommit: 4edf9354a00bb63082c3b844b979165b64f46286
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42058431"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48785664"
 ---
 # <a name="deploy-a-service-fabric-cluster-that-uses-certificate-common-name-instead-of-thumbprint"></a>Ujjlenyomat helyett a tanúsítvány köznapi nevét használó Service Fabric-fürt üzembe helyezése
 Nincs két tanúsítványt ugyanazzal az ujjlenyomattal, ami megnehezíti a fürt tanúsítványváltás vagy felügyeleti is rendelkezhet. Több tanúsítvány, azonban lehet a ugyanazzal a névvel vagy a tulajdonos.  Tanúsítvány köznapi nevek a fürtök teszi tanúsítványok kezelése sokkal egyszerűbb. Ez a cikk ismerteti, hogyan helyezhet üzembe Service Fabric-fürt helyett a tanúsítvány ujjlenyomata a tanúsítvány köznapi nevét használni.
@@ -116,7 +116,7 @@ Ezután nyissa meg a *azuredeploy.json* fájlt egy szövegszerkesztőben, és h�
     "sfrpApiVersion": "2018-02-01",
     ```
 
-3. Az a **Microsoft.Compute/virtualMachineScaleSets** erőforrás, a köznapi név használata helyett az ujjlenyomat tanúsítványbeállítások virtuálisgép-bővítmény frissítése.  A **virtualMachineProfile**->**extenstionProfile**->**bővítmények**->**tulajdonságai** -> **beállítások**->**tanúsítvány**, hozzáadása 
+3. Az a **Microsoft.Compute/virtualMachineScaleSets** erőforrás, a köznapi név használata helyett az ujjlenyomat tanúsítványbeállítások virtuálisgép-bővítmény frissítése.  A **virtualMachineProfile**->**extensionProfile**->**bővítmények**->**tulajdonságok** -> **beállítások**->**tanúsítvány**, hozzáadása 
     ```json
        "commonNames": [
         "[parameters('certificateCommonName')]"

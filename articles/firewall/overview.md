@@ -6,14 +6,14 @@ ms.service: firewall
 services: firewall
 ms.topic: overview
 ms.custom: mvc
-ms.date: 9/24/2018
+ms.date: 9/26/2018
 ms.author: victorh
-ms.openlocfilehash: 2961f6cc8607ba7ec670b297a1858bf433c3ec89
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 1527ed9c0a83577da9a231cb91a93ad7f182061c
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46960787"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47392694"
 ---
 # <a name="what-is-azure-firewall"></a>Mi az Azure Firewall?
 
@@ -68,7 +68,9 @@ Az Azure Firewall az alábbi ismert hibákkal rendelkezik:
 |A globális társviszony-létesítéssel rendelkező küllős topológia nem működik|A küllős modell, amelyben a központ és a tűzfal az egyik Azure-régióban van telepítve, a küllők pedig egy másikban, és ezek a központhoz virtuális társhálózatok közötti globális tárviszony-létesítés útján kapcsolódnak, nem támogatott.|További információt a [virtuális hálózatok társviszony-létesítésének létrehozását, módosítását és törlését](https://docs.microsoft.com/azure/virtual-network/virtual-network-manage-peering#requirements-and-constraints) ismertető cikkben talál.|
 A nem TCP/UDP-protokollokra (például ICMP) vonatkozó hálózati szűrési szabályok nem működnek az internetre irányuló forgalom esetében|A nem TCP/UDP-protokollokra vonatkozó hálózati szűrési szabályok nem működnek a nyilvános IP-címre vonatkozó forráshálózati címfordítással. A nem TCP/UDP-protokollok a küllők alhálózatai és a virtuális hálózatok között támogatottak.|Az Azure Firewall a Standard Load Balancert használja, [amely jelenleg nem támogatja a forráshálózati címfordítást az IP-protokollokon](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview#limitations). Jelenleg vizsgáljuk a lehetőségeket, hogy ezt a forgatókönyvet valamelyik későbbi kiadás támogathassa majd.|
 |A DNAT nem működik a 80-as és 22-es port esetén.|A NAT-szabálygyűjtemény Destination Port (Célport) mezője nem tartalmazhatja a 80-as vagy a 22-es portot.|Dolgozunk a probléma mielőbbi megoldásán. Addig is használjon egy másik portot a NAT-szabályok célportjaként. A 80-as vagy a 22-es port továbbra is használható a lefordított portként (például leképezheti a nyilvános ip:81-et a magánhálózati ip:80-ra).|
-|
+|A PowerShell és a CLI nem támogatja az ICMP-t|Az Azure PowerShell és a CLI nem támogatja az ICMP-t érvényes protokollként a hálózati szabályok között.|Az ICMP továbbra is használható protokollként a portálon vagy a REST API-n keresztül. Dolgozunk azon, hogy hamarosan a PowerShellben és a CLI-ben is elérhető legyen az ICMP.|
+|Az FQDN-címkék protokoll: port megadását igénylik|Az FQDN-címkékkel rendelkező alkalmazásszabályok port:protokoll definíciót igényelnek.|A port:protokoll értékként használhat **https**-t. Dolgozunk azon, hogy ez a mező FQDN-címkék használatakor választható legyen.|
+|A tűzfalak áthelyezése más erőforráscsoportba vagy előfizetésbe nem támogatott.|A tűzfalak áthelyezése más erőforráscsoportba vagy előfizetésbe nem támogatott.|A funkció támogatása szerepel a terveink között. Ahhoz, hogy egy tűzfalat áthelyezzen másik erőforráscsoportba vagy előfizetésbe, először törölnie kell az aktuális példányt, és újra létre kell hoznia az új erőforráscsoportban vagy előfizetésben.|
 
 ## <a name="next-steps"></a>További lépések
 

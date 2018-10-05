@@ -14,12 +14,12 @@ ms.topic: get-started-article
 ms.date: 09/05/2018
 ms.author: mabrigg
 ms.reviwer: xiaofmao
-ms.openlocfilehash: 89f6a0c1adaded724f159ffbf33aae98969ab9fe
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: 14e32bdfcde6969b820c0950d59bd5cf946a51e6
+ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44027169"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48802321"
 ---
 # <a name="azure-stack-storage-differences-and-considerations"></a>Az Azure Stack storage: különbségek és szempontok
 
@@ -41,7 +41,6 @@ Ez a cikk az Azure Storage szolgáltatások ismert Azure Stack Storage különbs
 |Felügyelt lemezek|Prémium és standard szintű támogatott|1808 vagy újabb verzió használata esetén támogatott.
 |A blob neve|1024 karakter hosszúságú (2048 bájt)|880 karakter (1,760 bájt)
 |Block blob maximális mérete|4,75 TB (100 MB X 50 000 blokk)|Az 1802-es frissítés vagy újabb verzió 4,75 TB (100 MB x 50 000 blokk) 50 000 x 4 MB (KB. 195 GB), a korábbi verziók.
-|Blob pillanatkép-másolás lap|Biztonsági mentés nem felügyelt virtuális Géphez csatolt Azure lemezeken futó virtuális gépek támogatott|Még nem támogatott.
 |Blob növekményes pillanatkép-másolás lap|Prémium és standard oldala az Azure-blobok támogatott|Még nem támogatott.
 |A blob Storage tárolási rétegek|Gyakori és ritka elérésű és archív tárolási szintek.|Még nem támogatott.
 A blob Storage a helyreállítható törlés|Előzetes verzió|Még nem támogatott.

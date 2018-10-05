@@ -11,20 +11,20 @@ author: bonova
 ms.author: bonova
 ms.reviewer: carlrab, jovanpop
 manager: craigg
-ms.date: 10/03/2018
-ms.openlocfilehash: 6ae9b3f71cb5328c7f4a7ee8e43ec0aff8b5fcec
-ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
+ms.date: 10/04/2018
+ms.openlocfilehash: 3f571a8d8a138656fc8bae5d6f45d183a8819bc3
+ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48267784"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48803205"
 ---
 # <a name="overview-azure-sql-database-managed-instance-resource-limits"></a>Áttekintés az Azure SQL Database felügyelt példányain erőforráskorlátok
 
 Ez a cikk az Azure SQL Database felügyelt példányába erőforráskorlátok áttekintést nyújt, és ismerteti, hogyan hozhat létre az alapértelmezett területi előfizetési korlátozásait növelésére. 
 
 > [!NOTE]
-> Egyéb felügyelt példány korlátozások is érvényesek, lásd: [Virtuálismag-alapú vásárlási modell](sql-database-managed-instance.md#vcore-based-purchasing-model) és [felügyelt példány szolgáltatásszintek](sql-database-managed-instance.md#managed-instance-service-tiers).
+> Egyéb felügyelt példány korlátozások is érvényesek, lásd: [Virtuálismag-alapú vásárlási modell](sql-database-managed-instance.md#vcore-based-purchasing-model) és [felügyelt példány szolgáltatásszintek](sql-database-managed-instance.md#managed-instance-service-tiers). Támogatott szolgáltatások és a T-SQL eltérései utasításokat lásd [különbségek](sql-database-features.md) és [T-SQL utasítás támogatása](sql-database-managed-instance-transact-sql-information.md).
 
 ## <a name="instance-level-resource-limits"></a>A példányszintű erőforráskorlátok
 
@@ -38,8 +38,8 @@ Az Azure SQL Database felügyelt példánya is telepíthető a két hardver gene
 | --- | --- | --- |
 | Hardver | Intel E5-2673 v3 (Haswell) 2,4 GHz-es processzorokkal, SSD virtuális mag csatolt = 1 PP (fizikai mag) | Intel E5-2673 v4 (Broadwell) 2.3 GHz-es processzorokkal, SSD, virtuális mag eNVM gyors = 1. LP (a hyper-szál) |
 | Compute | 8, 16, 24 virtuális mag | 8, 16, 24, 32, 40, 64, 80 virtuális magok |
-| Memory (Memória) | 7 GB / virtuális mag | 5.5-ös GB / virtuális mag |
-| Maximális tárterület (üzletileg kritikus) | 1 TB-OT | 1 TB-os, 2 TB-os, 4 TB-os attól függően, a magok számát |
+| Memory (Memória) | 7 GB / virtuális mag | 5.1 GB / virtuális mag |
+| Maximális tárterület (üzletileg kritikus) | 1 TB | 1 TB-os, 2 TB vagy 4 TB-os attól függően, a magok számát |
 
 ### <a name="service-tier-characteristics"></a>Szolgáltatási szint tulajdonságok
 
@@ -53,11 +53,11 @@ Felügyelt példány két szolgáltatási csomagban – általános célú és a
 | Maximális tárterület adatbázisonként | Határozza meg a maximális tárhelyméretet a példány | Határozza meg a maximális tárhelyméretet a példány |
 | Egy példány adatbázisok maximális száma | 100 | 100 |
 | Maximális adatbázisfájlok példányonként | Legfeljebb 280 | Korlátlan |
-| Várt adatbázisonkénti maximális tárolási IOPS | Adatfájl 500-7500 IOPS ([adatok mérete attól függ,](https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/virtual-machines/windows/premium-storage-performance.md#premium-storage-disk-sizes)). | Alapul szolgáló SSD sebességétől függ. |
+| Várt adatbázisonkénti maximális tárolási IOPS | 500-5000 ([adatok mérete attól függ,](../virtual-machines/windows/premium-storage-performance.md#premium-storage-disk-sizes)). | Alapul szolgáló SSD sebességétől függ. |
 
 ## <a name="supported-regions"></a>Támogatott régiók
 
-Csak a felügyelt Instanced hozható létre [támogatott régiók](https://azure.microsoft.com/global-infrastructure/services/?products=sql-database). Ha szeretne egy felügyelt példány létrehozása jelenleg nem támogatott a régióban, akkor [küldési támogatási kérést az Azure Portalon keresztül](#obtaining-a-larger-quota-for-sql-managed-instance).
+Csak a felügyelt Instanced hozható létre [támogatott régiók](https://azure.microsoft.com/global-infrastructure/services/?products=sql-database&regions=all). Ha szeretne egy felügyelt példány létrehozása jelenleg nem támogatott a régióban, akkor [küldési támogatási kérést az Azure Portalon keresztül](#obtaining-a-larger-quota-for-sql-managed-instance).
 
 ## <a name="supported-subscription-types"></a>Támogatott előfizetéstípusok
 
@@ -94,23 +94,27 @@ Ezek a korlátok növelhető a speciális létrehozásával [támogatási kéré
 > [!IMPORTANT]
 > A telepítések megtervezésekor vegye figyelembe, hogy a kritikus fontosságú üzleti (BC) példány (miatt hozzáadott redundancia) általában felhasznál a nagyobb kapacitást, mint egy általános célú (GP) példány x 4. Igen, a számítások, 1 a csoportházirend-példány = 1 példány egység és 1 BC példány = 4 példány egység. Egyszerűsítése érdekében a felhasználási elemzés, szemben az alapértelmezés szerinti korlátozásoknak, a példány egységek összesítése a régióban, ahol felügyelt példányok üzembe helyezése összes alhálózat között, valamint az eredményeket hasonlítsa össze az előfizetés-típus példánykorlátok egység.
 
-### <a name="deployment-options-for-gp-and-bc-deployments-within-the-same-subnet"></a>Telepítési lehetőségek a csoportházirend és a BC ugyanazon az alhálózaton belül
+## <a name="strategies-for-deploying-mixed-general-purpose-and-business-critical-instances"></a>Vegyes általános célú és az üzletileg kritikus példányok üzembe helyezéséhez stratégiák
+
+[Nagyvállalati Szerződés (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/) előfizetések kombinációja csoportházirend és BC-példányok is rendelkezhet. Vannak azonban bizonyos az alhálózatokon a példányok elhelyezésére vonatkozó korlátozások.
+
+> [!Note] 
+> [Használatalapú fizetés](https://azure.microsoft.com/offers/ms-azr-0003p/) és [Felhőszolgáltató (CSP)](https://docs.microsoft.com/partner-center/csp-documents-and-learning-resources) típusú előfizetésessel is rendelkezik, vagy egy fontos üzleti vagy akár 4 általános célú példányok.
 
 A következő példákban üzembe helyezési esetekre, nem üres alhálózattal, és vegyes GP és a BC szolgáltatásszintek.
 
 |Alhálózatok száma|1. alhálózata|2. alhálózata|Alhálózat 3|
 |:---|:---|:---|:---|
-|1|0 BC és legfeljebb 12 GP<br>1 BC és legfeljebb 8 GP<br>2 BC és akár 4 általános védelmi<br>3 BC|–| –|
-|2|0 BC, akár 4 általános védelmi|0 BC, legfeljebb 8 GP<br>1 BC, akár 4 általános védelmi<br>2 BC|–|
-|2|1 BC|0 BC, legfeljebb 8 GP<br>1 BC, akár 4 általános védelmi<br>2 BC|–|
-|2|2 BC|0 BC, legfeljebb 8 GP<br>1 BC, akár 4 általános védelmi<br>2 BC|–|
+|1|1 BC és legfeljebb 8 GP<br>2 BC és akár 4 általános védelmi|–| –|
+|2|0 BC, akár 4 általános védelmi|1 BC, akár 4 általános védelmi<br>2 BC, 0 A CSOPORTHÁZIREND|–|
+|2|BC 1, 0 A CSOPORTHÁZIREND|0 BC, legfeljebb 8 GP<br>1 BC, akár 4 általános védelmi|–|
+|2|2 BC, 0 A CSOPORTHÁZIREND|0 BC, akár 4 általános védelmi|–|
 |3|BC 1, 0 A CSOPORTHÁZIREND|BC 1, 0 A CSOPORTHÁZIREND|0 BC, akár 4 általános védelmi|
-|3|1BC, 0 A CSOPORTHÁZIREND|0 BC, akár 4 általános védelmi|BC 1, 0 A CSOPORTHÁZIREND|
-|3|0 BC, akár 4 általános védelmi|BC 1, 0 A CSOPORTHÁZIREND|1BC, 0 A CSOPORTHÁZIREND|
+|3|BC 1, 0 A CSOPORTHÁZIREND|0 BC, akár 4 általános védelmi|0 BC, akár 4 általános védelmi|
 
-### <a name="obtaining-a-larger-quota-for-sql-managed-instance"></a>SQL felügyelt példánya a nagyobb kvótát beszerzése
+## <a name="obtaining-a-larger-quota-for-sql-managed-instance"></a>SQL felügyelt példánya a nagyobb kvótát beszerzése
 
-A folyamat lehet beszerezni a nagyobb kvótát kezdeményezéséhez:
+Ha több felügyelt példány az aktuális régióban, elküldheti a támogatási kérelmet a kvóta az Azure portal használatával kiterjesztheti. A folyamat lehet beszerezni a nagyobb kvótát kezdeményezéséhez:
 
 1. Nyissa meg **súgó + támogatás**, és kattintson a **új támogatási kérelem**. 
 

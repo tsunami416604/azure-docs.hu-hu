@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 9/10/2018
 ms.author: markgal
-ms.openlocfilehash: 00432e1b5a181c57e4901b684d0a86c1cc843037
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: ebfd879fcd619dab48e4a08130f86afc68f91207
+ms.sourcegitcommit: 4edf9354a00bb63082c3b844b979165b64f46286
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47408980"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48785426"
 ---
 # <a name="prepare-your-environment-to-back-up-resource-manager-deployed-virtual-machines"></a>A környezet előkészítése a Resource Managerrel üzembe helyezett virtuális gépek biztonsági mentéséhez
 
@@ -37,7 +37,7 @@ Ha ezek a feltételek a környezetében már létezik, ugorjon a [a virtuális g
 
  * **Linux**: az Azure Backup támogatja [disztribúciókat, amely Azure vannak jóváhagyva](../virtual-machines/linux/endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json), a CoreOS Linux kivételével. Fájlok visszaállítása a támogató Linux operációs rendszerek listáját lásd: [fájlok helyreállítása a virtuális gépek biztonsági mentésének](backup-azure-restore-files-from-vm.md#for-linux-os).
 
-    > [!NOTE] 
+    > [!NOTE]
     > Más bring-your-saját Linux-disztribúciók működnek, mindaddig, amíg a Virtuálisgép-ügynök nem érhető el a virtuális gépen, és támogatja a pythont. Azonban ezeket a disztribúció nem támogatottak.
     >
  * **A Windows Server**, **Windows ügyfél**: Windows Server 2008 R2 vagy Windows 7-nél régebbi verziók nem támogatottak.
@@ -46,11 +46,10 @@ Ha ezek a feltételek a környezetében már létezik, ugorjon a [a virtuális g
 ## <a name="limitations-when-backing-up-and-restoring-a-vm"></a>Korlátozások a biztonsági mentése és visszaállítása egy virtuális gép esetén
 Mielőtt a környezet előkészítése, ügyeljen arra, hogy ezek a korlátozások ismertetése:
 
-* Standard SSD-virtuális gépek biztonsági mentésének jelenleg nem támogatott.
 * Több mint 32 adatlemezekkel rendelkező virtuális gépek biztonsági mentése nem támogatott.
 * A fenntartott IP-cím és a nem meghatározott végpontot a virtuális gépek biztonsági mentése nem támogatott.
 * Linux egyesített kulcs beállítása (LUKS) titkosítással titkosított Linux rendszerű virtuális gépek biztonsági mentésének nem támogatott.
-* Nem ajánlott a fürt megosztott kötetei (CSV) vagy a Scale-Out File Server tartalmazó virtuális gépek biztonsági mentésének. Ha elkészült, a fürt megosztott kötetei szolgáltatás írók hiba várható. A fürt konfigurációját, a pillanatkép-feladat során szereplő összes virtuális gépet is érintő igényelnek. Az Azure Backup nem támogatja a több virtuális gépre kiterjedő konzisztencia. 
+* Nem ajánlott a fürt megosztott kötetei (CSV) vagy a Scale-Out File Server tartalmazó virtuális gépek biztonsági mentésének. Ha elkészült, a fürt megosztott kötetei szolgáltatás írók hiba várható. A fürt konfigurációját, a pillanatkép-feladat során szereplő összes virtuális gépet is érintő igényelnek. Az Azure Backup nem támogatja a több virtuális gépre kiterjedő konzisztencia.
 * Biztonsági mentési adatokat egy virtuális géphez csatlakoztatott hálózati meghajtók nem tartalmazza.
 * Egy meglévő virtuális gép cseréje a visszaállítás során nem támogatott. Ha megkísérli a virtuális gép visszaállítása, ha a virtuális gép létezik, a visszaállítási művelet sikertelen lesz.
 * Régiók közötti biztonsági mentése és visszaállítása nem támogatottak.
@@ -115,7 +114,7 @@ A tárreplikációs beállítás szerkesztése:
    Ha az Azure, elsődleges biztonsági mentési tároló végpontjaként használja, továbbra is a georedundáns tárolás használata. Ha Azure használja, egy nem elsődleges biztonsági mentési tároló végpontjaként, válassza a helyileg redundáns tárolás. További információ a tárolási lehetőségek a [Azure tárreplikáció áttekintése](../storage/common/storage-redundancy.md).
 
 1. Ha módosította a tárolóreplikáció típusa, válassza ki a **mentése**.
-    
+
 Után a beállítást választja a tároló számára, készen áll a virtuális gép társítása a tárolóban. A hozzárendelés megkezdéséhez fel kell fedezni és regisztrálni kell az Azure virtuális gépeket.
 
 ## <a name="select-a-backup-goal-set-policy-and-define-items-to-protect"></a>Válassza ki a biztonsági mentés célját, állítsa be a házirendet és határozza meg a megvédeni kívánt elemeket
@@ -172,11 +171,11 @@ Miután sikeresen engedélyezte a biztonsági mentés, a biztonsági mentési sz
 Ha problémába ütközik a virtuális gép regisztrálása, tekintse meg a következő információkat a Virtuálisgép-ügynök telepítése és a hálózati kapcsolatot. Ha az Azure-ban létrehozott virtuális gépek védelmét valószínűleg nem kell a következő információkat. De ha a virtuális gépek az Azure-bA végzett áttelepítést, győződjön meg a Virtuálisgép-ügynök megfelelően telepítve, és, hogy a virtuális gépek kommunikálhatnak-e a virtuális hálózat.
 
 ## <a name="install-the-vm-agent-on-the-virtual-machine"></a>Virtuálisgép-ügynök telepítése a virtuális gépen
-A Backup bővítmény működjön, az Azure [Virtuálisgép-ügynök](../virtual-machines/extensions/agent-windows.md) az Azure virtuális gépen telepítve kell lennie. Ha a virtuális gép az Azure Marketplace-en lett létrehozva, a Virtuálisgép-ügynök már jelen a virtuális gépen. 
+A Backup bővítmény működjön, az Azure [Virtuálisgép-ügynök](../virtual-machines/extensions/agent-windows.md) az Azure virtuális gépen telepítve kell lennie. Ha a virtuális gép az Azure Marketplace-en lett létrehozva, a Virtuálisgép-ügynök már jelen a virtuális gépen.
 
 A következő információ olyan esetekben, ahol Ön *nem* használatával egy virtuális gép létrehozása az Azure Marketplace-ről. **Például át a virtuális gép egy helyszíni adatközpontból. Ebben az esetben a virtuális gép ügynökét telepíteni kell a virtuális gép védelmét.**
 
-**Megjegyzés:**: a Virtuálisgép-ügynök telepítése után is használnia kell az Azure PowerShell a ProvisionGuestAgent tulajdonság frissíteni, így az Azure tudja, hogy a virtuális gépen az ügynök telepítve van. 
+**Megjegyzés:**: a Virtuálisgép-ügynök telepítése után is használnia kell az Azure PowerShell a ProvisionGuestAgent tulajdonság frissíteni, így az Azure tudja, hogy a virtuális gépen az ügynök telepítve van.
 
 Ha rendelkezik az Azure virtuális gép biztonsági mentésével kapcsolatos problémák, a következő táblázat segítségével ellenőrizze, hogy az Azure-beli Virtuálisgép-ügynök megfelelően telepítve van a virtuális gépen. A táblázat a Virtuálisgép-ügynök további információt a Windows és Linux rendszerű virtuális gépekhez.
 
@@ -207,11 +206,11 @@ Amikor a mérlegeli, a használandó módszer, kezelhetőségi, részletes ellen
 ### <a name="whitelist-the-azure-datacenter-ip-ranges"></a>Az Azure-adatközpont engedélyezett IP-címtartományok
 Az engedélyezési listára az Azure adatközpont IP-címtartományait, tekintse meg a [Azure-webhelyen](http://www.microsoft.com/en-us/download/details.aspx?id=41653) az IP-címtartományok és az utasításokat.
 
-Segítségével engedélyezheti az adott régió storage kapcsolatokat [szolgáltatáscímkéket](../virtual-network/security-overview.md#service-tags). Győződjön meg arról, hogy a szabály, amely lehetővé teszi a hozzáférést a tárfiókhoz magasabb prioritású, mint a szabályt, amely blokkolja az internet-hozzáféréssel rendelkezik-e. 
+Segítségével engedélyezheti az adott régió storage kapcsolatokat [szolgáltatáscímkéket](../virtual-network/security-overview.md#service-tags). Győződjön meg arról, hogy a szabály, amely lehetővé teszi a hozzáférést a tárfiókhoz magasabb prioritású, mint a szabályt, amely blokkolja az internet-hozzáféréssel rendelkezik-e.
 
 ![NSG-t egy régió címkék a storage](./media/backup-azure-arm-vms-prepare/storage-tags-with-nsg.png)
 
-Az alábbi videó végigvezeti a részletes eljárást szolgáltatáscímkék konfigurálása: 
+Az alábbi videó végigvezeti a részletes eljárást szolgáltatáscímkék konfigurálása:
 
 >[!VIDEO https://www.youtube.com/embed/1EjLQtbKm1M]
 
@@ -292,7 +291,7 @@ HttpProxy.Port=<proxy port>
    * A **helyi port**válassza **adott**. A következő párbeszédpanelen adja meg a konfigurált proxy-port száma.
    * A **távoli port**válassza **minden port**.
 
-A varázsló további részeit, a fogadja el az alapértelmezett beállításokat, amíg meg nem jelenik a teljes körű. Ez a szabály majd adni egy nevet. 
+A varázsló további részeit, a fogadja el az alapértelmezett beállításokat, amíg meg nem jelenik a teljes körű. Ez a szabály majd adni egy nevet.
 
 #### <a name="step-3-add-an-exception-rule-to-the-nsg"></a>3. lépés: Vegyen fel egy kivételt az NSG-hez
 Az alábbi parancs kivételt hozzáadja az NSG-hez. Ez a kivétel lehetővé teszi, hogy a TCP-forgalom a 80-as (HTTP) vagy a 443-as (HTTPS) porton bármely internetcím 10.0.0.5 a bármely portról. Ha egy adott portot a nyilvános interneten van szüksége, mindenképp vegye fel a portot ```-DestinationPortRange```.

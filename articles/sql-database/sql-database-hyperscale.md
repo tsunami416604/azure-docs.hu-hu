@@ -12,12 +12,12 @@ ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
 ms.date: 09/23/2018
-ms.openlocfilehash: 18f354f931995731bf4f0da47e830a575e96fc7c
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: be7c0b80b8f735a5eefe4e8345cd4d4a16885ec4
+ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48237772"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48803562"
 ---
 # <a name="what-is-the-hyperscale-service-tier-preview-in-azure-sql-database"></a>Mi az a nagy kapacitású szolgáltatásréteg (előzetes verzió) az Azure SQL Database?
 
@@ -25,6 +25,9 @@ A nagy kapacitású szolgáltatás az Azure SQL Database szintje a legújabb szo
 
 > [!IMPORTANT]
 > Nagy kapacitású szolgáltatási szint jelenleg nyilvános előzetes verzióban érhető el, és elérhető a korlátozott Azure-régióban. A régió teljes listát lásd: [nagy kapacitású szolgáltatási szinten elérhető régiók](#hyperscale-regions)
+
+> [!IMPORTANT]
+> Nagy kapacitású szolgáltatási szint jelenleg nyilvános előzetes verzióban érhető el. Nem ajánlott semmilyen éles számítási feladatok futtatása a nagy kapacitású adatbázisokban még. Nagy kapacitású adatbázis egyéb szolgáltatási csomagokra nem frissíthető. Tesztelési célra ajánlott másolatot készít az aktuális adatbázisban, és frissíti a példányt nagy kapacitású szolgáltatásszinthez.
 
 ## <a name="what-are-the-capabilities-of-the-hyperscale-service-tier"></a>Mik azok a nagy kapacitású szolgáltatásszint képességeit
 

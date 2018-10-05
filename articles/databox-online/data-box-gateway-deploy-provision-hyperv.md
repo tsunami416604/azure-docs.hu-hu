@@ -12,15 +12,15 @@ ms.devlang: NA
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 09/24/2018
+ms.date: 09/26/2018
 ms.author: alkohli
 ms.custom: ''
-ms.openlocfilehash: bf744d2aaab168b8ce918f7b776d8855cdc5ad16
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: ad498dc8c5bea9516bef5a62495fc0d0cc8f7399
+ms.sourcegitcommit: 3150596c9d4a53d3650cc9254c107871ae0aab88
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46975243"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47419695"
 ---
 # <a name="tutorial-provision-azure-data-box-gateway-in-hyper-v-preview"></a>Oktatóanyag: Az Azure Data Box Gateway üzembe helyezése a Hyper-V-ben
 
@@ -74,7 +74,7 @@ Az eszköz üzembe helyezése előtt győződjön meg az alábbiakról:
 Előkészületek:
 
 - Tekintse át a Data Box Gateway üzembe helyezésére vonatkozó hálózati követelményeket, és azoknak megfelelően konfigurálja az adatközponti hálózatot. További információkért lásd [a Data Box Gateway hálózati követelményeit](data-box-gateway-system-requirements.md#networking-requirements) ismertető szakaszt.
-- Az eszköz optimális működéséhez gondoskodjon róla, hogy az internetes sávszélesség legalább 20 Mb/s legyen.
+- Az eszköz optimális működéséhez gondoskodjon róla, hogy legalább 20 Mb/s sebességű internetes sávszélesség rendelkezésre álljon.
 
 
 ## <a name="check-the-host-system"></a>A gazdarendszer ellenőrzése
@@ -87,7 +87,7 @@ Virtuális eszköz létrehozásához a következőkre lesz szüksége:
 
     * Legalább 4 mag.
     * Legalább 8 GB RAM.
-    * Egy, a hálózatra csatlakozó hálózati adapter, amely képes a forgalmat az internetre irányítani. .
+    * Egy, a hálózatra csatlakozó hálózati adapter, amely képes a forgalmat az internetre irányítani. 
     * 250 GB-os operációsrendszer-lemez.
     * 2 TB-os virtuális lemez a rendszeradatok számára.
 
@@ -105,9 +105,6 @@ A következő lépések végrehajtásával helyezzen üzembe egy eszközt a hipe
    ![](./media/data-box-gateway-deploy-provision-hyperv/image2.png)
 4. Az Új virtuális gép varázsló **Előkészületek** lapján kattintson a **Tovább** gombra.
 5. A **Név és hely megadása** lapon adja meg a virtuális eszköz **nevét**. Kattintson a **Tovább** gombra.
-   
-   > [!IMPORTANT]
-   > Ebben a kiadásban csak nagybetűs karaktereket használhat a virtuális eszköz nevében.
 
    ![](./media/data-box-gateway-deploy-provision-hyperv/image3.png)
 6. A **Generáció beállítása** lapon válassza a **2. generáció** lehetőséget a .vhdx-eszköz rendszerképének típusaként, majd kattintson a **Tovább** gombra.    
@@ -171,17 +168,10 @@ Az alábbi lépések végrehajtásával indítsa el a virtuális eszközt, és c
 3. 10–15 percig is eltarthat, amíg az eszköz elkészül. A folyamat előrehaladtát egy állapotüzenet jelzi a konzolon. Ha az eszköz kész, lépjen a **Művelet** területre. A `Ctrl + Alt + Delete` billentyűparanccsal jelentkezzen be a virtuális eszközre. Az alapértelmezett felhasználó az *EdgeUser*, az alapértelmezett jelszó pedig a *Password1*.
 
    ![](./media/data-box-gateway-deploy-provision-hyperv/image21.png)
-4. Biztonsági okokból az eszköz rendszergazdai jelszava az első bejelentkezéskor lejár. A rendszer megkéri a jelszó módosítására.
-
-   Olyan jelszót adjon meg, amely legalább 8 karakterből áll. A jelszónak a következő négy típusból legalább hármat tartalmaznia kell: kisbetűk, nagybetűk, számok és speciális karakterek. Írja be ismét a jelszót a megerősítéséhez. A rendszer értesíti, hogy a jelszó megváltozott.
    
-5. A jelszó sikeres módosítását követően előfordulhat, hogy a virtuális eszköz újraindul. Várjon, amíg az eszköz elindul.  Megjelenik az eszköz Windows PowerShell-konzolja és egy folyamatjelző.
-
-   ![](./media/data-box-gateway-deploy-provision-hyperv/image22.png)
-
-6. A 6–8. lépést csak akkor kell végrehajtani, ha nem DHCP-környezetben végzi a rendszerindítást. Ha DHCP-környezetben van, hagyja ki ezeket a lépéseket, és folytassa a 9. lépéssel. Ha nem DHCP-környezetben indította az eszközt, erről egy üzenet tájékoztatja.
+6. Az 5–7. lépést csak akkor kell végrehajtani, ha nem DHCP-környezetben végzi a rendszerindítást. DHCP-környezetben hagyja ki ezeket a lépéseket. Ha nem DHCP-környezetben indította az eszközt, erről egy üzenet tájékoztatja.
     
-7. A hálózat konfigurálásához a `Get-HcsIpAddress` parancs használatával listázza ki a virtuális eszközön engedélyezett hálózati adaptereket. Ha az eszközön egyetlen hálózati adapter van engedélyezve, az ehhez az adapterhez rendelt alapértelmezett név az `DATA1`.
+7. A hálózat konfigurálásához a `Get-HcsIpAddress` parancs használatával listázza ki a virtuális eszközön engedélyezett hálózati adaptereket. Ha az eszközön egyetlen hálózati adapter van engedélyezve, az ehhez az adapterhez rendelt alapértelmezett név az `Ethernet`.
 
 8. A `Set-HcsIpAddress` parancsmaggal konfigurálhatja a hálózatot. Lásd a következő példát:
 
@@ -192,7 +182,7 @@ Az alábbi lépések végrehajtásával indítsa el a virtuális eszközt, és c
    ![](./media/data-box-gateway-deploy-provision-hyperv/image23.png)
       
 
-Ha az eszköz nem felel meg a minimális konfigurációs követelményeknek, egy hibaüzenet jelenik meg a szalagcím szövegében. Módosítsa az eszköz konfigurációját, hogy a gép elegendő erőforrással rendelkezzen a minimális követelmények kielégítéséhez. Ezután újraindíthatja az eszközt, és csatlakozhat hozzá. A minimális konfigurációs követelményeket az [1. lépésben tekintheti meg, amely ismerteti, hogyan ellenőrizheti a gazdarendszer megfelelését a virtuális eszközökre vonatkozó minimális követelményeknek](#step-1-ensure-that-the-host-system-meets-minimum-virtual-device-requirements).
+Ha az eszköz nem felel meg a minimális konfigurációs követelményeknek, egy hibaüzenet jelenik meg a szalagcím szövegében. Módosítsa az eszköz konfigurációját, hogy a gép elegendő erőforrással rendelkezzen a minimális követelmények kielégítéséhez. Ezután újraindíthatja az eszközt, és csatlakozhat hozzá. A minimális konfigurációs követelményeket [a gazdarendszer a virtuális eszközökre vonatkozó minimális követelményeknek való megfelelését ellenőrző](#check-the-host-system) szakaszban tekintheti meg.
 
 <!--If you face any other error during the initial configuration using the local web UI, refer to the following workflows:
 

@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: librown
-ms.openlocfilehash: af5fe7c00b2dedd6b3447cd0919bdce3ac38ae5d
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: 81c249c8dc8475428f4cb0014e57f09e28a3d9af
+ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48237007"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48804327"
 ---
 # <a name="password-less-phone-sign-in-with-the-microsoft-authenticator-app-public-preview"></a>Jelszó nélküli telefonnal bejelentkezni a Microsoft Authenticator alkalmazással (nyilvános előzetes verzió)
 
@@ -37,7 +37,7 @@ Nyilvános előzetes verzióként, a rendszergazda először hozzá kell egy sza
 
 ### <a name="steps-to-enable"></a>További lépések elvégzésével
 
-1. Telepítse a [az Azure Active Directory V2 PowerShell modul nyilvános előzetes verziója](https://www.powershellgallery.com/packages/AzureADPreview/2.0.0.114).  
+1. Telepítse a [az Azure Active Directory V2 PowerShell modul nyilvános előzetes verziója](https://www.powershellgallery.com/packages/AzureADPreview/).  
 2. A PowerShellben futtassa a két parancsot:
    1. `Connect-AzureAD`
       1. A hitelesítési párbeszédpanelen jelentkezzen be egy olyan fiókkal, a bérlőben. A fiók vagy biztonsági rendszergazdai vagy globális rendszergazdai kell lennie.

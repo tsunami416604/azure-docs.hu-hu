@@ -9,12 +9,12 @@ ms.workload: core
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: shvija
-ms.openlocfilehash: 4ec0433fe2bc1447344ea7b3b7ec296c7cbb583f
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: 27052759ccc4664ea95ea19cb52bebeec6fec5ae
+ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46368659"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48803358"
 ---
 # <a name="receive-events-from-azure-event-hubs-using-nodejs"></a>Események fogadása az Azure Event Hubs Node.js használatával
 
@@ -73,7 +73,6 @@ Az SDK-val rendelkeznie klónozta tartalmaz több minták azt mutatják be, hogy
 ## <a name="review-the-sample-code"></a>Tekintse át a mintakódot 
 A következő mintakód segítségével események fogadása az event hubs node.js használatával. Manuálisan hozzon létre egy sampleEph.js fájlt, és futtatni egy eseményközpontba események fogadására. 
 
-
   ```nodejs
   const { EventProcessorHost, delay } = require("@azure/event-processor-host");
 
@@ -124,6 +123,19 @@ A következő mintakód segítségével események fogadása az event hubs node.
   });
       
   ```
+
+Fontos, hogy állítsa be a környezeti változókat a parancsfájl futtatása előtt. Ez a parancssorban a következő példában látható módon konfigurálhatja, vagy a [dotenv csomag](https://www.npmjs.com/package/dotenv#dotenv). 
+
+```
+// For windows
+set EVENTHUB_CONNECTION_STRING="<your-connection-string>"
+set EVENTHUB_NAME="<your-event-hub-name>"
+
+// For linux or macos
+export EVENTHUB_CONNECTION_STRING="<your-connection-string>"
+export EVENTHUB_NAME="<your-event-hub-name>"
+```
+
 További minták annak [Itt](https://github.com/Azure/azure-event-hubs-node/tree/master/processor/examples).
 
 

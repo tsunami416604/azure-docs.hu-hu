@@ -6,15 +6,15 @@ ms.service: automation
 ms.component: process-automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 08/1/2018
+ms.date: 10/04/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 2f990f22d762c5f95d3274b740caf30691ded90e
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 9abdb17c7b1cf0662913a4c9cd59c49efc91e419
+ms.sourcegitcommit: 4edf9354a00bb63082c3b844b979165b64f46286
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47409844"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48785494"
 ---
 # <a name="startstop-vms-during-off-hours-solution-in-azure-automation"></a>Virtuális gépek indítása/leállítása munkaidőn kívül megoldás az Azure Automationben
 
@@ -24,7 +24,7 @@ Ez a megoldás a felhasználók számára, akik az saját VM-költségek optimal
 
 - Ütemezze a virtuális gépek indítása és leállítása.
 - Virtuális gépek indítása és leállítása növekvő sorrendben (klasszikus virtuális gépek esetében nem támogatott) az Azure-címkék használatával ütemezhető.
-- Virtuális gépeket automatikusan leállító alacsony CPU-használat alapján.
+- Remote virtuális gépek alacsony processzorhasználat alapján.
 
 Az aktuális megoldáshoz a korlátozások a következők:
 
@@ -42,7 +42,7 @@ Az ebben a megoldásban-forgatókönyvek egy [Azure-beli futtató fiók](automat
 
 Virtuális gépek indítása/leállítása munkaidőn kívül megoldás az Automation-fiók hozzáadása a következő lépésekkel, és a változók a megoldás testreszabásához konfigurálja.
 
-1. Egy Automation-fiókot válassza **indítása és leállítása a virtuális gép** alatt **kapcsolódó erőforrások**. Itt kattintson **tudjon meg többet, és a megoldás engedélyezéséhez**. Ha már üzembe helyezett megoldás indítása és leállítása a virtuális gép, rákattinthat **kezelheti a megoldást** , hogy az üzembe helyezett megoldások listáját, és jelölje ki onnan.
+1. Válasszon egy Automation-fiók **indítása és leállítása a virtuális gép** alatt **kapcsolódó erőforrások**. Itt kattintson **tudjon meg többet, és a megoldás engedélyezéséhez**. Ha már üzembe helyezett megoldás indítása és leállítása a virtuális gép, is kiválaszthatja, ehhez kattintson **kezelheti a megoldást** , és megkeresi a listában.
 
    ![Automation-fiók engedélyezése](./media/automation-solution-vm-management/enable-from-automation-account.png)
 
@@ -64,7 +64,7 @@ Virtuális gépek indítása/leállítása munkaidőn kívül megoldás az Autom
    - Válasszon egy tarifacsomagot a **Tarifacsomag** területen. Válassza ki a **Gigabájtonkénti (különálló)** lehetőséget. A log Analytics frissített [díjszabás](https://azure.microsoft.com/pricing/details/log-analytics/) , és a GB szinten az egyetlen lehetőség.
 
 5. Miután megadta a szükséges adatokat a **Log Analytics-munkaterület** kattintson **létrehozás**. Nyomon követheti a folyamat állapotát **értesítések** a menüben, amely adja vissza, hogy a **megoldás hozzáadása** lapon, ha ezzel elkészült.
-6. Az a **megoldás hozzáadása** lapon jelölje be **Automation-fiók**. Ha egy új Log Analytics-munkaterületet hoz létre, hozzon létre egy új Automation-fiókot társítja, vagy válasszon egy meglévő Automation-fiók nem a napló az elemzés munkaterülethez már kapcsolódó. Válassza ki a meglévő Automation-fiókot, vagy kattintson a **Automation-fiók létrehozása**, majd a a **Automation-fiók hozzáadása** lap, adja meg a következő információkat:
+6. Az a **megoldás hozzáadása** lapon jelölje be **Automation-fiók**. Egy új Log Analytics-munkaterületet hoz létre, hozzon létre egy új Automation-fiókot társítja, vagy válasszon egy meglévő Automation-fiókot, amely nem már kapcsolódik egy Log Analytics-munkaterületet. Válassza ki a meglévő Automation-fiókot, vagy kattintson a **Automation-fiók létrehozása**, majd a a **Automation-fiók hozzáadása** lap, adja meg a következő információkat:
    - A **Név** mezőbe írja be az Automation-fiók nevét.
 
     Minden egyéb lehetőségeket vannak alapján automatikusan kitölti a kiválasztott Log Analytics-munkaterület. Ezek a beállítások nem módosíthatók. A megoldásban szereplő runbookok alapértelmezett hitelesítési módszere egy Azure-futtatófiók. Miután rákattintott **OK**, a rendszer érvényesíti a konfigurációs beállításokat, és az Automation-fiók létrehozása. Az **Értesítések** menüpont alatt nyomon követheti a folyamat előrehaladását.
@@ -74,9 +74,9 @@ Virtuális gépek indítása/leállítása munkaidőn kívül megoldás az Autom
    ![Paraméterek lap megoldás](media/automation-solution-vm-management/azure-portal-add-solution-02.png)
 
    Itt kéri:
-   - Adja meg a **cél erőforráscsoport nevét**. Ezek azok az erőforráscsoportok nevei, amelyek a megoldás által felügyelendő virtuális gépeket tartalmazzák. Adjon meg egynél több nevet, és külön az egyes egy vesszőt (értékek nem számítanak különbözőnek) használatával. Helyettesítő karaktert is használhat, ha az előfizetés összes erőforráscsoportjában lévő virtuális gépeket szeretné megadni. Ez az érték a tárolódik a **External_Start_ResourceGroupNames** és **External_Stop_ResourceGroupNames** változókat.
-   - Adja meg a **VM kizárási lista (karakterlánc)**. Ez az egy vagy több virtuális gépet a célként megadott erőforráscsoportja nevét. Adjon meg egynél több nevet, és külön az egyes egy vesszőt (értékek nem számítanak különbözőnek) használatával. Helyettesítő karakterek használatával támogatott. Ez az érték a tárolódik a **External_ExcludeVMNames** változó.
-   - Válassza ki a **ütemezés**. Ez az ismétlődő dátum és idő és a virtuális gépek a célként megadott erőforráscsoport leállításáért. Alapértelmezés szerint az ütemezés van konfigurálva 30 perc múlva. Egy másik régió kiválasztásával nem érhető el. Az ütemezést, hogy az adott időzóna beállítása után a megoldás konfigurálásáról: [az indítási és leállítási ütemezés módosítása](#modify-the-startup-and-shutdown-schedule).
+   - Adja meg a **cél erőforráscsoport nevét**. Ezek az értékek az erőforráscsoportok nevei, amelyek a megoldás által felügyelendő virtuális gépeket tartalmazzák. Adjon meg egynél több nevet, és külön az egyes egy vesszőt (értékek nem számítanak különbözőnek) használatával. Helyettesítő karaktert is használhat, ha az előfizetés összes erőforráscsoportjában lévő virtuális gépeket szeretné megadni. Ez az érték a tárolódik a **External_Start_ResourceGroupNames** és **External_Stop_ResourceGroupNames** változókat.
+   - Adja meg a **VM kizárási lista (karakterlánc)**. Ez az érték egy vagy több virtuális gépet a célként megadott erőforráscsoportja nevét. Adjon meg egynél több nevet, és külön az egyes egy vesszőt (értékek nem számítanak különbözőnek) használatával. Helyettesítő karakterek használatával támogatott. Ez az érték a tárolódik a **External_ExcludeVMNames** változó.
+   - Válassza ki a **ütemezés**. Ismétlődő dátum és idő és a célként megadott erőforráscsoport a virtuális gépek leállítási értéke. Alapértelmezés szerint az ütemezés van konfigurálva 30 perc múlva. Egy másik régió kiválasztásával nem érhető el. Az ütemezést, hogy az adott időzóna beállítása után a megoldás konfigurálásáról: [az indítási és leállítási ütemezés módosítása](#modify-the-startup-and-shutdown-schedule).
    - Fogadásához **E-mail-értesítések** a műveletcsoport, fogadja el alapértékként a **Igen** , és adjon meg egy érvényes e-mail címet. Ha **nem** egy későbbi időpontban döntse el, hogy szeretne email értesítéseket kapni, frissítheti, de a [műveletcsoport](../monitoring-and-diagnostics/monitoring-action-groups.md) létrehozott az érvényes e-mail címeket vesszővel elválasztva. Akkor is engedélyeznie kell a következő riasztási szabályok:
 
      - AutoStop_VM_Child
@@ -94,7 +94,7 @@ A megoldás három különböző forgatókönyveket tartalmaz. Ezek a forgatók�
 
 ### <a name="scenario-1-startstop-vms-on-a-schedule"></a>1. forgatókönyv: A gépek indítása/leállítása ütemezés szerint
 
-Ez a az alapértelmezett konfiguráció, a megoldás első telepítésekor. Például beállíthatja, hogy minden virtuális gép leállítása előfizetésen, ha munkahelyi esténként hagyja, és indítsa el őket a reggel, amikor áll vissza a office. Az ütemezések konfigurálásakor **ütemezett-StartVM** és **ütemezett-StopVM** központi telepítése során indítsa el, és állítsa le a célként kijelölt virtuális gépek. Ez a megoldás csak a virtuális gépek leállításához konfigurálása támogatott, lásd: [indítási és leállítási ütemezés módosítása](#modify-the-startup-and-shutdown-schedules) megtudhatja, hogyan állítson be egy egyéni ütemezést.
+Ez a forgatókönyv az alapértelmezett konfiguráció esetén a megoldás első üzembe. Például beállíthatja, hogy minden virtuális gép leállítása előfizetésen, ha munkahelyi esténként hagyja, és indítsa el őket a reggel, amikor áll vissza a office. Az ütemezések konfigurálásakor **ütemezett-StartVM** és **ütemezett-StopVM** központi telepítése során indítsa el, és állítsa le a célként kijelölt virtuális gépek. Ez a megoldás csak a virtuális gépek leállításához konfigurálása támogatott, lásd: [indítási és leállítási ütemezés módosítása](#modify-the-startup-and-shutdown-schedules) megtudhatja, hogyan állítson be egy egyéni ütemezést.
 
 > [!NOTE]
 > Az adott időzóna kell az aktuális időzóna, ha az ütemezés időpont paraméter megadásának. Azonban ez tárolt UTC formátumban, az Azure Automationben. Nem rendelkezik bármely időzóna átalakítása tennie, mivel ez végzi az üzembe helyezés során.
@@ -120,18 +120,18 @@ A műveletet egy előfizetésben és erőforráscsoportban célzó, vagy egy ado
 
 ### <a name="scenario-2-startstop-vms-in-sequence-by-using-tags"></a>2. forgatókönyv: Indítása és leállítása a virtuális gépek sorrendben a címkék használatával
 
-A több, elosztott számítási feladatok támogatása virtuális gépen kettő vagy több összetevőt tartalmazó környezetekben támogató összetevők indíthatók és állíthatók le, amelyben a feladatütemezési sorrendben fontos. Ehhez a következő lépésekkel:
+A több, elosztott számítási feladatok támogatása virtuális gépen kettő vagy több összetevőt tartalmazó környezetekben támogató összetevők indíthatók és állíthatók le, amelyben a feladatütemezési sorrendben fontos. Ebben a forgatókönyvben a következő lépések végrehajtásával végezheti el:
 
 #### <a name="target-the-start-and-stop-actions-against-a-subscription-and-resource-group"></a>Az Indítás és leállítás műveletek egy előfizetésben és erőforráscsoportban csoport cél
 
-1. Adjon hozzá egy **SequenceStart** és a egy **SequenceStop** megcélzott virtuális gépre egy pozitív egész számot tartalmazó címke **External_Start_ResourceGroupNames** és  **External_Stop_ResourceGroupNames** változókat. Az Indítás és leállítás műveletek növekvő sorrendben történik. Virtuális gép címkézése kapcsolatban lásd: [Windows virtuális gép címkézése Azure-ban](../virtual-machines/windows/tag.md) és [Linux rendszerű virtuális gép címkézése Azure-ban](../virtual-machines/linux/tag.md).
+1. Adjon hozzá egy **sequencestart** és a egy **sequencestop** megcélzott virtuális gépre egy pozitív egész számot tartalmazó címke **External_Start_ResourceGroupNames** és  **External_Stop_ResourceGroupNames** változókat. Az Indítás és leállítás műveletek növekvő sorrendben történik. Virtuális gép címkézése kapcsolatban lásd: [Windows virtuális gép címkézése Azure-ban](../virtual-machines/windows/tag.md) és [Linux rendszerű virtuális gép címkézése Azure-ban](../virtual-machines/linux/tag.md).
 1. A ütemezésének módosítása **Sequenced-StartVM** és **Sequenced-StopVM** az a dátum és idő, amelyek megfelelnek az elvárásainak, és engedélyezni az ütemezést.
 1. Futtassa a **SequencedStartStop_Parent** beállítása művelet paraméterrel runbook **start** és a WHATIF paraméter beállítása **igaz** a preview changes.
 1. Tekintse meg a műveletet, és végezze el a szükséges módosításokat az éles virtuális gépek elleni implementálása előtt. Amikor készen, manuálisan végrehajtja a forgatókönyvet a paraméter beállítása **hamis**, vagy lehetővé teszik az Automation ütemezési **Sequenced-StartVM** és **Sequenced-StopVM** futtatása a meghatározott ütemezés szerint automatikusan követően.
 
 #### <a name="target-the-start-and-stop-action-by-vm-list"></a>Az indítási és leállítási művelet a célzott Virtuálisgép-lista
 
-1. Adjon hozzá egy **SequenceStart** és a egy **SequenceStop** virtuális gépekhez való hozzáadását tervezi egy pozitív egész számot tartalmazó címke a **VMList** változó. 
+1. Adjon hozzá egy **sequencestart** és a egy **sequencestop** virtuális gépekhez való hozzáadását tervezi egy pozitív egész számot tartalmazó címke a **VMList** változó. 
 1. Futtassa a **SequencedStartStop_Parent** beállítása művelet paraméterrel runbook **start**, vesszővel tagolt listája, a virtuális gépek a *VMList* paramétert, majd állítsa be a WHATIF paraméter **igaz**. A módosítások előnézetét.
 1. Konfigurálja a **External_ExcludeVMNames** paramétert a virtuális gépek (VM1, VM2, VM3) vesszővel elválasztott listáját.
 1. Ebben a forgatókönyvben nem fogadja el a **External_Start_ResourceGroupNames** és **External_Stop_ResourceGroupnames** változókat. Ebben az esetben szüksége saját Automation ütemezés létrehozásához. További információkért lásd: [runbook ütemezése az Azure Automation](../automation/automation-schedules.md).
@@ -141,7 +141,7 @@ A több, elosztott számítási feladatok támogatása virtuális gépen kettő 
 
 Ez a megoldás segítségével az előfizetésében futó virtuális gépek értékelése az Azure virtuális gépek nem használt nem csúcsidőre időszakokban például óra elteltével, és automatikusan leáll őket, ha a processzorhasználat értéke: záró x % költségének kezeléséhez.
 
-Alapértelmezés szerint a megoldás az előre konfigurált kiértékelni a százalékos CPU metrika átlagos kihasználtság e 5 %-os vagy annál kisebb. Ez vezérli az alábbi változókat, és módosíthatók, ha az alapértelmezett értékek nem felelnek meg a követelményeknek:
+Alapértelmezés szerint a megoldás az előre konfigurált kiértékelni a százalékos CPU metrika átlagos kihasználtság e 5 %-os vagy annál kisebb. Ebben a forgatókönyvben az alábbi változókat vezérli, és módosíthatók, ha az alapértelmezett értékek nem felelnek meg a követelményeknek:
 
 - External_AutoStop_MetricName
 - External_AutoStop_Threshold
@@ -173,7 +173,7 @@ Ez a megoldás előre konfigurált runbookok ütemezését és a Log Analytics-i
 
 ### <a name="runbooks"></a>Runbookok
 
-Az alábbi táblázat a megoldás által telepített az Automation-fiók runbookok. Meg nem módosítja a runbook-kódot. Ehelyett írja a saját új funkciók a runbook.
+Az alábbi táblázat a megoldás által telepített az Automation-fiók runbookok. Ne módosítsa a runbook-kód. Ehelyett írja a saját új funkciók a runbook.
 
 > [!IMPORTANT]
 > Ne közvetlenül futtassa bármely olyan runbookhoz és "gyermek" jelöléssel nevére.
@@ -188,12 +188,12 @@ Minden szülő runbook közé tartozik a _WhatIf_ paraméter. Ha beállítása *
 |AutoStop_StopVM_Child | WebHookData | A szülő runbook meghívva. Riasztási szabályok hívja meg a runbookot, hogy a virtuális gép leállítása.|
 |Bootstrap_Main | nincs | Egyszer például webhookURI, rendszer-indításkori-konfigurációk, amelyek általában nem érhetők el az Azure Resource Manager beállításához használt. Ez a forgatókönyv a sikeres telepítés automatikusan törlődnek.|
 |ScheduledStartStop_Child | VMName <br> Művelet: Indítása vagy leállítása <br> ResourceGroupName | A szülő runbook meghívva. Egy ütemezett leállítását elindítása vagy leállítása műveletet hajt végre.|
-|ScheduledStartStop_Parent | Művelet: Indítása vagy leállítása <br>VMList <br> WhatIf: IGAZ vagy hamis | Ez hatással van az előfizetésben található összes virtuális gépet. Szerkessze a **External_Start_ResourceGroupNames** és **External_Stop_ResourceGroupNames** csak végre ezeket a megcélzott csoportok. Szintén kizárhatja az adott virtuális gépek frissítésével a **External_ExcludeVMNames** változó.<br> VMList: Vesszővel elválasztott virtuális gépek listáját. Ha például _vm1, vm2, vm3_.<br> _WhatIf_ érvényesíti a runbook logikája végrehajtása nélkül.|
-|SequencedStartStop_Parent | Művelet: Indítása vagy leállítása <br> WhatIf: IGAZ vagy hamis<br>VMList| Nevű címkék létrehozása **SequenceStart** és **SequenceStop** az egyes virtuális Gépeken, amelyekhez feladatütemezési indítása/leállítása tevékenységhez. A címke értékének pozitív egész szám (1, 2, 3), amely annak a sorrendnek, amelyben meg szeretné elindítani vagy leállítani kell lennie. <br> VMList: Vesszővel elválasztott virtuális gépek listáját. Ha például _vm1, vm2, vm3_. <br> _WhatIf_ érvényesíti a runbook logikája végrehajtása nélkül. <br> **Megjegyzés:**: virtuális gépek az Azure Automation változó External_Start_ResourceGroupNames External_Stop_ResourceGroupNames és External_ExcludeVMNames részlete erőforráscsoportokon belül kell lennie. A megfelelő címkék műveletek érvénybe kell rendelkezniük.|
+|ScheduledStartStop_Parent | Művelet: Indítása vagy leállítása <br>VMList <br> WhatIf: IGAZ vagy hamis | Ez a beállítás hatással van az előfizetésben található összes virtuális gépet. Szerkessze a **External_Start_ResourceGroupNames** és **External_Stop_ResourceGroupNames** csak végre ezeket a megcélzott csoportok. Szintén kizárhatja az adott virtuális gépek frissítésével a **External_ExcludeVMNames** változó.<br> VMList: Vesszővel elválasztott virtuális gépek listáját. Ha például _vm1, vm2, vm3_.<br> _WhatIf_ érvényesíti a runbook logikája végrehajtása nélkül.|
+|SequencedStartStop_Parent | Művelet: Indítása vagy leállítása <br> WhatIf: IGAZ vagy hamis<br>VMList| Nevű címkék létrehozása **sequencestart** és **sequencestop** az egyes virtuális Gépeken, amelyekhez feladatütemezési indítása/leállítása tevékenységhez. Ezek a címkenevek és nagybetűk. A címke értékének pozitív egész szám (1, 2, 3), amely annak a sorrendnek, amelyben meg szeretné elindítani vagy leállítani kell lennie. <br> VMList: Vesszővel elválasztott virtuális gépek listáját. Ha például _vm1, vm2, vm3_. <br> _WhatIf_ érvényesíti a runbook logikája végrehajtása nélkül. <br> **Megjegyzés:**: virtuális gépek az Azure Automation változó External_Start_ResourceGroupNames External_Stop_ResourceGroupNames és External_ExcludeVMNames részlete erőforráscsoportokon belül kell lennie. A megfelelő címkék műveletek érvénybe kell rendelkezniük.|
 
 ### <a name="variables"></a>Változók
 
-A következő táblázat felsorolja az Automation-fiókban létrehozott változókat. Csak kell módosítania a változók előtaggal van ellátva **külső**. Változók módosítása előtaggal **belső** nemkívánatos hatásokkal okoz.
+A következő táblázat felsorolja az Automation-fiókban létrehozott változókat. Csak a következő előtaggal kezdődik változók módosításához **külső**. Változók módosítása előtaggal **belső** nemkívánatos hatásokkal okoz.
 
 |Változó | Leírás|
 |---------|------------|
@@ -215,17 +215,17 @@ Az összes környezetekben a **External_Start_ResourceGroupNames**, **External_S
 
 ### <a name="schedules"></a>Ütemezések
 
-A következő táblázat felsorolja az egyes az Automation-fiókban létrehozott ütemezése. Módosítsa azokat, vagy hozzon létre saját egyéni ütemezéseket. Alapértelmezés szerint minden egyes le vannak tiltva az alábbiakat kivéve **Scheduled_StartVM** és **Scheduled_StopVM**.
+A következő táblázat felsorolja az egyes az Automation-fiókban létrehozott ütemezése. Módosítsa azokat, vagy hozzon létre saját egyéni ütemezéseket. Alapértelmezés szerint minden ütemezés le vannak tiltva az alábbiakat kivéve **Scheduled_StartVM** és **Scheduled_StopVM**.
 
 Az ütemezést, mert előfordulhat, hogy hozzon létre egymást átfedő ütemezés műveletek, ez ne engedélyezze. Célszerű meghatározni, melyik optimalizálást szeretné végrehajtani, és ennek megfelelően módosítsa. Tekintse meg a további magyarázat az Áttekintés szakaszban szereplő példakörnyezetek.
 
 |Ütemezés neve | Gyakoriság | Leírás|
 |--- | --- | ---|
 |Schedule_AutoStop_CreateAlert_Parent | 8 óránként | Futtatja a AutoStop_CreateAlert_Parent runbookot 8 óránként, ami viszont a Virtuálisgép-alapú értékei External_Start_ResourceGroupNames External_Stop_ResourceGroupNames és External_ExcludeVMNames az Azure Automation változó leállítja. Megadhatja azt is megteheti, a virtuális gépek vesszővel elválasztott listáját a VMList paraméter használatával.|
-|Scheduled_StopVM | Felhasználó által megadott, naponta | A Scheduled_Parent runbookot futtat egy s parametrem _leállítása_ minden nap, a megadott időpontban. Automatikusan leállítja a virtuális gépeket, amelyek megfelelnek a szabályokat, eszközintelligencia változók határozzák meg. Engedélyeznie kell a kapcsolódó ütemezés **ütemezett-StartVM**.|
-|Scheduled_StartVM | Felhasználó által megadott, naponta | A Scheduled_Parent runbookot futtat egy s parametrem _Start_ minden nap, a megadott időpontban. Minden virtuális gépre, amelyek megfelelnek a szabályok határozzák meg a megfelelő változók automatikusan elindul. Engedélyeznie kell a kapcsolódó ütemezés **ütemezett-StopVM**.|
-|Az előkészített StopVM | 1:00-kor (UTC), minden pénteken | A Sequenced_Parent runbookot futtat egy s parametrem _leállítása_ minden pénteken, a megadott időpontban. Egymás után (növekvő) leállítja a címkével ellátott összes virtuális gép **SequenceStop** határozzák meg a megfelelő változókat. Tekintse meg a Runbookok címkeértékeket és az eszközintelligencia változók kapcsolatos további információk szakaszt. Engedélyeznie kell a kapcsolódó ütemezés **Sequenced-StartVM**.|
-|Az előkészített StartVM | 1:00 Órakor (UTC), minden hétfőn | A Sequenced_Parent runbookot futtat egy s parametrem _Start_ minden hétfőn, a megadott időpontban. Egymás után minden virtuális gép (csökkenő) kezdődik, egy címke **SequenceStart** határozzák meg a megfelelő változókat. Tekintse meg a Runbookok címkeértékeket és az eszközintelligencia változók kapcsolatos további információk szakaszt. Engedélyeznie kell a kapcsolódó ütemezés **Sequenced-StopVM**.|
+|Scheduled_StopVM | Felhasználó által megadott, naponta | A Scheduled_Parent runbookot futtat egy s parametrem _leállítása_ minden nap, a megadott időpontban. Automatikusan leállítja a virtuális gépeket, amelyek megfelelnek a szabályokat, eszközintelligencia változók határozzák meg. A kapcsolódó ütemezés engedélyezése **ütemezett-StartVM**.|
+|Scheduled_StartVM | Felhasználó által megadott, naponta | A Scheduled_Parent runbookot futtat egy s parametrem _Start_ minden nap, a megadott időpontban. Minden virtuális gépre, amelyek megfelelnek a szabályok határozzák meg a megfelelő változók automatikusan elindul. A kapcsolódó ütemezés engedélyezése **ütemezett-StopVM**.|
+|Az előkészített StopVM | 1:00-kor (UTC), minden pénteken | A Sequenced_Parent runbookot futtat egy s parametrem _leállítása_ minden pénteken, a megadott időpontban. Egymás után (növekvő) leállítja a címkével ellátott összes virtuális gép **SequenceStop** határozzák meg a megfelelő változókat. A címkeértékeket és az eszközintelligencia változók további információkért tekintse meg a Runbookok szakaszt. A kapcsolódó ütemezés engedélyezése **Sequenced-StartVM**.|
+|Az előkészített StartVM | 1:00 Órakor (UTC), minden hétfőn | A Sequenced_Parent runbookot futtat egy s parametrem _Start_ minden hétfőn, a megadott időpontban. Egymás után minden virtuális gép (csökkenő) kezdődik, egy címke **SequenceStart** határozzák meg a megfelelő változókat. A címkeértékeket és az eszközintelligencia változók további információkért tekintse meg a Runbookok szakaszt. A kapcsolódó ütemezés engedélyezése **Sequenced-StopVM**.|
 
 ## <a name="log-analytics-records"></a>Log Analytics-rekordok
 
@@ -279,8 +279,8 @@ A következő táblázat a megoldás által összegyűjtött feladatrekordokkal 
 
 |Lekérdezés | Leírás|
 |----------|----------|
-|Runbook ScheduledStartStop_Parent, amelyek sikeresen befejeződött feladatainak megkeresése | Keresés kategória == "JobLogs" &#124; ahol (RunbookName_s == "ScheduledStartStop_Parent") &#124; ahol (ResultType == "Befejezve") &#124; összefoglalója |AggregatedValue = count() by ResultType, a bin (TimeGenerated, 1 óra) &#124; TimeGenerated desc rendezés|
-|Runbook SequencedStartStop_Parent, amelyek sikeresen befejeződött feladatainak megkeresése | Keresés kategória == "JobLogs" &#124; ahol (RunbookName_s == "SequencedStartStop_Parent") &#124; ahol (ResultType == "Befejezve") &#124; összefoglalója |AggregatedValue = count() by ResultType, a bin (TimeGenerated, 1 óra) &#124; TimeGenerated desc rendezés
+|Runbook ScheduledStartStop_Parent, amelyek sikeresen befejeződött feladatainak megkeresése | "" kategóriában keresse == "JobLogs." | ahol (RunbookName_s == "ScheduledStartStop_Parent") | ahol (ResultType == "Kész")  | Összegzés |AggregatedValue = count() by ResultType, a bin (TimeGenerated, 1 óra) | Rendezés szempontja: TimeGenerated desc ""|
+|Runbook SequencedStartStop_Parent, amelyek sikeresen befejeződött feladatainak megkeresése | "" kategóriában keresse == "JobLogs." | ahol (RunbookName_s == "SequencedStartStop_Parent") | ahol (ResultType == "Kész") | Összegzés |AggregatedValue = count() by ResultType, a bin (TimeGenerated, 1 óra) | Rendezés szempontja: TimeGenerated desc ""|
 
 ## <a name="viewing-the-solution"></a>A megoldás megtekintése
 
@@ -317,10 +317,10 @@ Ebben a megoldásban az indítási és leállítási ütemezés felügyelete lé
 A megoldás csak leállítja a virtuális gépek egy adott időpontra való konfigurálásáról használata támogatott. Ehhez a következőket kell tennie:
 
 1. Az erőforráscsoportok, hogy állítsa le a virtuális gépek hozzá a **External_Start_ResourceGroupNames** változó.
-1. A saját az idő, állítsa le a virtuális gépeket szeretne ütemezést létrehozni.
-1. Keresse meg a **ScheduledStartStop_Parent** runbook kattintson **ütemezés**. Ez lehetővé teszi, hogy válassza ki az előző lépésben létrehozott ütemezést.
-1. Válassza ki **paraméterek és futtatási beállítások** és állítsa be a "Stop" művelet paramétert.
-1. Kattintson az **OK** gombra a módosítások mentéséhez.
+2. A saját az idő, állítsa le a virtuális gépeket szeretne ütemezést létrehozni.
+3. Keresse meg a **ScheduledStartStop_Parent** runbook kattintson **ütemezés**. Ez lehetővé teszi, hogy válassza ki az előző lépésben létrehozott ütemezést.
+4. Válassza ki **paraméterek és futtatási beállítások** és állítsa be a "Stop" művelet paramétert.
+5. Kattintson az **OK** gombra a módosítások mentéséhez.
 
 ## <a name="update-the-solution"></a>A megoldás frissítése
 

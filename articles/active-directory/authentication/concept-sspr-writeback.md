@@ -5,27 +5,33 @@ services: active-directory
 ms.service: active-directory
 ms.component: authentication
 ms.topic: conceptual
-ms.date: 07/11/2018
+ms.date: 10/04/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: 8440d8a492105365417190ad286798e0bdf47a0c
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 43d2ba496be90e9e87185e6365dd998adccfa09d
+ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46295835"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48804531"
 ---
 # <a name="what-is-password-writeback"></a>Mi a jelszóvisszaíró?
 
-Felhőalapú jelszó-visszaállításra segédprogram kellene kiválóan alkalmazható, de a legtöbb vállalat továbbra is rendelkezik egy helyszíni címtár, ahol a felhasználók létezik. Hogyan történik a Microsoft támogatási megtartja a hagyományos helyszíni Active Directory (AD) szinkronban a jelszó módosítására a felhőben? A jelszóvisszaíró funkciója engedélyezve van a [az Azure AD Connect](../hybrid/whatis-hybrid-identity.md) , amely lehetővé teszi, hogy a jelszó módosítására a meglévő helyszíni címtárhoz valós idejű visszaírása a felhőben.
+Kellene felhőalapú jelszó-visszaállításra segédprogram remek, de a legtöbb vállalat továbbra is rendelkezik egy helyszíni címtár, ahol a felhasználók létezik. Hogyan történik a Microsoft támogatási megtartja a hagyományos helyszíni Active Directory (AD) szinkronban a jelszó módosítására a felhőben? A jelszóvisszaíró funkciója engedélyezve van a [az Azure AD Connect](../hybrid/whatis-hybrid-identity.md) , amely lehetővé teszi, hogy a jelszó módosítására a meglévő helyszíni címtárhoz valós időben visszaírása a felhőben.
 
 A jelszóvisszaíró támogatják az olyan környezetekben, amelyek:
 
 * [Active Directory összevonási szolgáltatások](../hybrid/how-to-connect-fed-management.md)
 * [Jelszókivonat szinkronizálása](../hybrid/how-to-connect-password-hash-synchronization.md)
-* [Az átmenő hitelesítés](../hybrid/how-to-connect-pta.md)
+* [Átmenő hitelesítés](../hybrid/how-to-connect-pta.md)
+
+> [!WARNING]
+> A jelszóvisszaíró régebbi során és az Azure AD Connect verziója 1.0.8641.0 használó ügyfeleink számára megszűnnek működni a [Azure Access Control service (ACS) 2018. November 7 kivonják](../develop/active-directory-acs-migration.md). Az Azure AD Connect verziója 1.0.8641.0 és a régebbi engedélyezi többé a jelszóvisszaíró adott időpontban, mert az a funkciók ACS függenek.
+>
+> A szolgáltatás, az Azure AD Connect egy korábbi verziójáról egy újabb verzióra frissítés elkerülése érdekében tekintse meg a cikket [az Azure AD Connect: frissítés egy előző verzióról a legújabbra](../hybrid/how-to-upgrade-previous-version.md)
+>
 
 A jelszóvisszaíró biztosítja:
 

@@ -12,15 +12,15 @@ ms.devlang: NA
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 09/05/2018
+ms.date: 09/28/2018
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: f25d0b3522658d5fcd4b34110cb03b624dd9e7b1
-ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
+ms.openlocfilehash: 776f70b6b24288006d52cb0e91797d1074180160
+ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "43841505"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47452615"
 ---
 # <a name="tutorial-copy-data-to-azure-data-box-disk-and-verify"></a>Oktatóanyag: Adatok másolása Azure Data Box Diskre, majd azok ellenőrzése
 
@@ -30,17 +30,14 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * Adatok másolása Data Box Diskre
-> * Adatok integritásának ellenőrzése
+> * Az adatok ellenőrzése
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 Mielőtt hozzákezd, győződjön meg az alábbiakról:
 - Befejezte az [Azure Data Box Disk üzembe helyezését és konfigurálását ismertető oktatóanyagot](data-box-disk-deploy-set-up.md).
-- A lemezek ki vannak csomagolva, és be vannak kapcsolva.
-- Rendelkezik egy gazdagéppel, amelyről adatokat szeretne másolni a lemezekre. A gazdaszámítógépen:
-    - egy [támogatott operációs rendszernek](data-box-disk-system-requirements.md) kell futnia;
-    - a [Windows PowerShell 4-es verziójának telepítve kell lennie](https://www.microsoft.com/download/details.aspx?id=40855);
-    - a [.NET-keretrendszer 4.5-ös verziójának telepítve kell lennie](https://www.microsoft.com/download/details.aspx?id=30653).
+- Lemezeit feloldotta és csatlakoztatta az ügyfélszámítógéphez.
+- Az ügyfélszámítógépnek, amelyet az adatok a lemezekre történő másolásához használ, [támogatott operációs rendszert](data-box-disk-system-requirements.md) kell futtatnia.
 
 
 ## <a name="copy-data-to-disks"></a>Adatok másolása a lemezekre
@@ -59,6 +56,7 @@ Az alábbi lépések elvégzésével csatlakoztathatja, majd másolhatja át az 
 
     A tároló- és blobnevek esetében mindig kövesse az Azure elnevezési követelményeit.
 
+    #### <a name="azure-naming-conventions-for-container-and-blob-names"></a>A tárolókra és blobokra vonatkozó Azure elnevezési konvenciók
     |Entitás   |Konvenciók  |
     |---------|---------|
     |Tárolónevek blokkblob és lapblob esetén     |Betűvel vagy számmal kell kezdődnie, és csak kisbetűket, számokat és kötőjelet (-) tartalmazhat. Minden kötőjel (-) előtt és után közvetlenül egy betűnek vagy számnak kell állnia. A tárolók nevében nem szerepelhetnek egymást követő kötőjelek. <br>Érvényes DNS-névnek kell lennie, amely 3–63 karakter hosszúságú lehet.          |
@@ -165,17 +163,21 @@ Az alábbi lépések elvégzésével csatlakoztathatja, majd másolhatja át az 
 > -  Adatok másolása közben győződjön meg arról, hogy az adatok mérete megfelel az [Azure Storage és a Data Box Disk korlátaival](data-box-disk-limits.md) foglalkozó cikkben ismertetett méretkorlátoknak. 
 > - Ha a Data Box Disk által éppen feltöltés alatt álló adatokat egyidejűleg egy másik alkalmazás is feltölti a Data Box Disken kívül, ez a feltöltési feladatok meghiúsulásához és az adatok meghibásodásához vezethet.
 
-## <a name="verify-data-integrity"></a>Adatok integritásának ellenőrzése
+## <a name="verify-data"></a>Az adatok ellenőrzése 
 
-Az adatok integritásának ellenőrzéséhez hajtsa végre a következő lépéseket.
+Az adatok ellenőrzéséhez hajtsa végre a következő lépéseket.
 
-1. Futtassa az `AzureExpressDiskService.ps1` parancsot az ellenőrzőösszeg-érvényesítéshez. A Fájlkezelőben keresse meg a meghajtó *AzureImportExport* mappáját. Kattintson a jobb gombbal, és válassza a **Futtatás PowerShell-lel** lehetőséget. 
+1. Futtassa az `DataBoxDiskValidation.cmd` parancsot az ellenőrzőösszeg-érvényesítéshez a meghajtó *AzureImportExport* mappájában. 
+    
+    ![A Data Box Disk érvényesítési eszköz kimenete](media/data-box-disk-deploy-copy-data/data-box-disk-validation-tool-output.png)
 
-    ![Ellenőrzőösszeg futtatása](media/data-box-disk-deploy-copy-data/data-box-disk-checksum.png)
-
-2. Az adatok méretétől függően a lépésben írtak elvégzése hosszabb időt is igénybe vehet. Az adatintegritás ellenőrzési folyamatának összegzése, valamint a folyamat befejezéséhez szükséges idő megjelenik a szkript futásának befejezésekor. A parancsablakból való kilépéshez nyomja le az **Enter** billentyűt.
+2. Válassza ki a megfelelő lehetőséget. **Javasoljuk, hogy a fájlok érvényesítéséhez és az ellenőrzőösszegek létrehozásához mindig a 2. lehetőséget válassza**. Az adatok méretétől függően a lépésben írtak elvégzése hosszabb időt is igénybe vehet. Ha a szkript futtatása befejeződött, zárja be a parancsablakot. Ha hiba történik az érvényesítés és az ellenőrzőösszeg létrehozása során, a rendszer értesíti, és megjelenít egy, a hibanaplóra mutató hivatkozást.
 
     ![Ellenőrzőösszeg kimenete](media/data-box-disk-deploy-copy-data/data-box-disk-checksum-output.png)
+
+    > [!TIP]
+    > - Állítsa alaphelyzetbe az eszközt két futtatás között.
+    > - Az 1. lehetőséget nagy számú, kis méretű fájlokat (~KBs) tartalmazó adatkészletek érvényesítésére használja. Ezekben az esetekben az ellenőrzőösszeg létrehozása nagyon hosszú időt vehet igénybe, és a folyamat jelentősen lelassíthatja a rendszert.
 
 3. Több lemez használata esetén futtassa a parancsot minden lemezen.
 

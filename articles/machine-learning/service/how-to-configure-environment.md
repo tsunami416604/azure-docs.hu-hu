@@ -9,12 +9,12 @@ ms.reviewer: larryfr
 manager: cgronlun
 ms.topic: conceptual
 ms.date: 8/6/2018
-ms.openlocfilehash: 73cc346e882acab1c2c00cc49738a388927d3ccf
-ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
+ms.openlocfilehash: 40a74af4f71fe649e5e4c6e67d4fdcb9751cc06e
+ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48248244"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48800757"
 ---
 # <a name="configure-a-development-environment-for-the-azure-machine-learning-service"></a>Az Azure Machine Learning szolgáltatás a fejlesztési környezet konfigurálása
 
@@ -188,7 +188,7 @@ Példa Azure notebookok használatával az Azure Machine Learning szolgáltatás
     conda install <new package>
     ```
 
-6. Indítsa el a Visual Studio Code-ot, és hogyan __CTRL-SHIFT-P__ beolvasni a __Parancskatalógus__. Adja meg *Python: kiválasztása Interpret*, és válassza ki a létrehozott conda-környezetet.
+6. Indítsa el a Visual Studio Code-ot, és hogyan __CTRL-SHIFT-P__ for Windows vagy __parancs-SHIFT-P__ beolvasni a Mac számítógépen a __Parancskatalógus__. Adja meg *Python: kiválasztása Interpret*, és válassza ki a létrehozott conda-környezetet.
 
     > [!NOTE]
     > A Visual Studio Code automatikusan tudomása conda-környezeteket a számítógépen. További információkért lásd: [Visual Studio code dokumentáció](https://code.visualstudio.com/docs/python/environments#_conda-environments).

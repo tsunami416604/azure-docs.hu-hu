@@ -5,17 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.component: authentication
 ms.topic: conceptual
-ms.date: 07/11/2018
+ms.date: 10/04/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: 1ae74f7c43e763962224683954b28e5941136c08
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 57446f068945d74351a77f21e16874d9e24ddcab
+ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46295818"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48801930"
 ---
 # <a name="how-to-configure-password-writeback"></a>Útmutató: A jelszóvisszaírás konfigurálása
 
@@ -34,6 +34,12 @@ A következő lépések azt feltételezik, hogy már konfigurálta az Azure AD C
 8. Ha látja, hogy a konfigurálás befejeződött, kattintson a **Kilépés** gombra.
 
 A jelszóvisszaírás, kapcsolódó általános hibaelhárítási feladatokat című [a jelszóvisszaíró hibaelhárítása](active-directory-passwords-troubleshoot.md#troubleshoot-password-writeback) hibaelhárítási című cikkben.
+
+> [!WARNING]
+> A jelszóvisszaíró régebbi során és az Azure AD Connect verziója 1.0.8641.0 használó ügyfeleink számára megszűnnek működni a [Azure Access Control service (ACS) 2018. November 7 kivonják](../develop/active-directory-acs-migration.md). Az Azure AD Connect verziója 1.0.8641.0 és a régebbi engedélyezi többé a jelszóvisszaíró adott időpontban, mert az a funkciók ACS függenek.
+>
+> A szolgáltatás, az Azure AD Connect egy korábbi verziójáról egy újabb verzióra frissítés elkerülése érdekében tekintse meg a cikket [az Azure AD Connect: frissítés egy előző verzióról a legújabbra](../hybrid/how-to-upgrade-previous-version.md)
+>
 
 ## <a name="active-directory-permissions"></a>Az Active Directory-engedélyek
 
@@ -67,7 +73,7 @@ Ha ezeket az engedélyeket, az egyes erdők MA-szolgáltatásfiókja kezelheti j
 4. Az a **engedélyek** lapon jelölje be **Hozzáadás**.
 5. Válassza ki a fiókot, amelyet engedélyek vannak alkalmazva (az az Azure AD Connect beállítása).
 6. Az a **vonatkozik** legördülő listában válassza **leszármazott felhasználó** objektumokat.
-7. A **engedélyek**, jelölje be az alábbiakat:
+7. A **engedélyek**, jelölje be a következő beállításokat:
     * **Új jelszó létrehozása**
     * **Jelszó módosítása**
     * **LockoutTime írása**

@@ -1,19 +1,20 @@
 ---
-title: Használja ki és jelenítheti meg a Bing helyesírás ellenőrizze API-k követelményeinek |} Microsoft Docs
-description: 'A Bing helyesírás ellenőrizze API-adatok használatával javíthatja a keresési eredmények között, az automatizált folyamatokhoz is pl.: gépi tanulás.'
+title: Használja, és megjeleníti a Bing Spell Check API-követelményei
+titlesuffix: Azure Cognitive Services
+description: A Bing Spell Check API-k származó adatok használatával javíthatja a keresési eredmények automatizált folyamatok, például a machine learning.
 services: cognitive-services
 author: swhite-msft
-manager: ehansen
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-spell-check
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/15/2018
 ms.author: scottwhi
-ms.openlocfilehash: 9fcb774535a31f021baba156c3ac937f56145977
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 96f1cb6d8d9f73a3a807befd845fd057f5572aea
+ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35349398"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48804225"
 ---
 [!INCLUDE [cognitive-services-bing-use-and-display-requirements](../../../includes/cognitive-services-bing-use-and-display-requirements.md)]

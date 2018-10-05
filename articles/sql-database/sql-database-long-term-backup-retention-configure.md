@@ -10,17 +10,20 @@ ms.topic: conceptual
 ms.author: sashan
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 09/19/2018
-ms.openlocfilehash: 68746874ec01f44055421f0033acd0d485e1d230
-ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
+ms.date: 10/04/2018
+ms.openlocfilehash: fd747eb66a91a1ac9fe3b1c0d2ef7ac50a08faea
+ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/01/2018
-ms.locfileid: "47586087"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48801120"
 ---
 # <a name="manage-azure-sql-database-long-term-backup-retention"></a>Az Azure SQL-adatbázis hosszú távú megőrzésének kezelése
 
-Konfigurálhatja az Azure SQL database egy [hosszú távú adatmegőrzés](sql-database-long-term-retention.md) házirend (LTR) automatikusan az Azure blob storage-biztonsági mentések megőrzési idejét, akár 10 évig. Ezt követően helyreállíthatja a segítségével ezeket a biztonsági másolatokat az Azure portal vagy a PowerShell használatával.
+Egyetlen vagy készletezett adatbázis konfigurálhatja az Azure SQL Database, egy [hosszú távú adatmegőrzés](sql-database-long-term-retention.md) házirend (LTR) automatikusan az Azure blob storage-biztonsági mentések megőrzési idejét, akár 10 évig. Ezt követően helyreállíthatja a segítségével ezeket a biztonsági másolatokat az Azure portal vagy a PowerShell használatával.
+
+> [!IMPORTANT]
+> [Az Azure SQL Database felügyelt példányain](sql-database-managed-instance.md) jelenleg nem támogatja a hosszú távú adatmegőrzés.
 
 ## <a name="use-the-azure-portal-to-configure-long-term-retention-policies-and-restore-backups"></a>Az Azure portal használatával konfigurálhatja a hosszú távú adatmegőrzési házirendek, és biztonsági mentések visszaállítása
 A következő szakaszok bemutatják, hogyan a hosszú távú megőrzésének konfigurálása, biztonsági másolatok megtekintése hosszú távú megőrzés alatt, és a hosszú távú megőrzéséből biztonsági másolatának visszaállítása az Azure portal használatával.

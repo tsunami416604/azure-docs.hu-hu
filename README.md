@@ -26,7 +26,7 @@ Kövesse az utasításokat a [tartalomkészítő eszközök telepítése](https:
 
 ## <a name="license"></a>Licenc
 
-Tekintse meg [licenc](.github/LICENSE), [LICENSE-CODE](.github/LICENSE-CODE) és [ThirdPartyNotices](.github/ThirdPartyNotices) összes licencelési információkat.
+Tekintse meg [licenc](.github/LICENSE), [LICENSE-CODE](.github/LICENSE-CODE) és [ThirdPartyNotices](.github/ThirdPartyNotices.md) összes licencelési információkat.
 
 ## <a name="code-of-conduct"></a>Viselkedési szabályzat
 

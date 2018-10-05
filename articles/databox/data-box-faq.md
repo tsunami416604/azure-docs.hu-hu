@@ -13,14 +13,14 @@ ms.topic: overview
 ms.custom: ''
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 09/24/2018
+ms.date: 09/27/2018
 ms.author: alkohli
-ms.openlocfilehash: d0da9107fe1dd34481ca0bf1aa9a0b260bb10951
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: e47ffbe15291275a7104d5e201a597d084cdbdd9
+ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46946629"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47422864"
 ---
 # <a name="azure-data-box-frequently-asked-questions"></a>Azure Data Box: gyakori kérdések
 
@@ -117,7 +117,7 @@ A.
 A.-->
 
 ### <a name="q-the-system-fault-indicator-led-on-the-front-operating-panel-is-on-what-should-i-do"></a>K. Az elülső kezelőpanelen világít a rendszerhibajelző LED. Mit tegyek?
-A. Ha a rendszerhibajelző LED világít, az azt jelzi, hogy a rendszer állapota nem kifogástalan. A további lépésekhez kérjen segítséget a Microsoft ügyfélszolgálatától.
+A. Ha a rendszerhibajelző LED világít, az azt jelzi, hogy a rendszer állapota nem kifogástalan. A további lépésekért [forduljon a Microsoft ügyfélszolgálatához](data-box-disk-contact-microsoft-support.md).
 
 ### <a name="q-i-cant-access-the-data-box-unlock-password-in-the-azure-portal-why-would-this-be"></a>K. Nem férek hozzá a Data Box zárolásfeloldási jelszavához az Azure Portalon. Mi lehet ennek az oka?
 A. Ha nem fér hozzá a Data Box zárolásfeloldási jelszavához az Azure Portalon, ellenőrizze az előfizetése és a tárfiókja jogosultságait. Győződjön meg arról, hogy közreműködői vagy tulajdonosi jogosultságokkal rendelkezik az erőforráscsoport szintjén. Ha nem, akkor is rendelkeznie kell legalább a Data Box-kezelői szerepkör jogosultságaival a hozzáférési hitelesítő adatok megtekintéséhez.
@@ -127,8 +127,8 @@ A. Ha nem fér hozzá a Data Box zárolásfeloldási jelszavához az Azure Porta
 ### <a name="q-how-do-i-track-the-data-box-from-when-i-placed-the-order-to-shipping-the-device-back"></a>K. Hogyan tudom nyomon követni a Data Boxot a megrendelésem feladásától kezdve egészen az eszköz visszaküldéséig? 
 A.  A Data Box-megrendelésének állapotát az Azure Portalon követheti nyomon. A megrendelés létrehozásakor a rendszer egy értesítési e-mail-cím megadását is kéri. Ha adott meg ilyen e-mail-címet, akkor a megrendelés állapotváltozásairól e-mailben is értesíteni fogjuk. További információ az [Értesítési e-mailek beállítása](data-box-portal-ui-admin.md#edit-notification-details) témában.
 
-### <a name="q-how-do-i-return-the-disks"></a>K. Hogyan küldhetem vissza a lemezeket? 
-A.  A Microsoft megjelenít egy szállítási címkét az E-Ink-megjelenítőn. Ragassza ezt a címkét egy szállítódobozra, majd adja le a lezárt dobozt a szállítmányozójánál. Ha a címke megsérült vagy elveszett, nyissa meg az **Áttekintés > Levélcímke letöltése** menüpontot, és töltsön le egy új levélcímkét.
+### <a name="q-how-do-i-return-the-device"></a>K. Hogyan küldhetem vissza az eszközt? 
+A.  A Microsoft megjelenít egy fuvarlevélcímkét az E-ink-megjelenítőn. Ha a fuvarlevélcímke nem jelenik meg az E-ink-képernyőn, lépjen az **Áttekintés > Levélcímke letöltése** menüpontra. Töltse le és nyomtassa ki a címkét, majd helyezze az átlátszó műanyag tasakba az eszközön, és adja le azt a szállítmányozójánál. 
 
 ### <a name="q-i-received-an-email-notification-that-my-device-has-reached-the-azure-datacenter-how-do-i-find-out-if-the-data-upload-is-in-progress"></a>K. Kaptam egy e-mail-értesítést, hogy az eszközöm elért az Azure-adatközpontba. Hogyan deríthetem ki, hogy az adatok felöltése folyamatban van-e?
 A. Nyissa meg az Azure Portalon a Data Box-megrendelését, majd az **Áttekintést**. Ha az adatok feltöltése már megkezdődött, a jobb oldali panelen látható a másolás folyamatának előrehaladása. 
@@ -181,11 +181,11 @@ A. Ha az eszköz sérülten érkezett, vagy a jelek illetéktelen hozzáférésr
 ### <a name="q-can-i-use-my-own-shipping-carrier-to-ship-data-box"></a>K. Használhatom a saját futáromat a Data Box szállításához?
 A. A Data Box szolgáltatás keretében a Microsoft intézi az Azure-adatközpontba és onnan történő szállítást. Ha saját futárt szeretne igénybe venni, használja az Azure Import/Export szolgáltatást. További információ [az Azure Import/Export szolgáltatásról](../storage/common/storage-import-export-service.md).
 
-### <a name="q-e-ink-display-is-not-showing-the-return-shipment-label-what-should-i-do"></a>K. Az E Ink-képernyőn nem jelenik meg a csomagvisszaküldési címke. Mit tegyek?
-A. Ha az E Ink-képernyőn nem jelenik a csomagvisszaküldési címke, hajtsa végre a következő lépéseket:
+### <a name="q-e-ink-display-is-not-showing-the-return-shipment-label-what-should-i-do"></a>K. Az E-ink-képernyőn nem jelenik meg a csomagvisszaküldési címke. Mit tegyek?
+A. Ha az E Ink-képernyőn nem jelenik meg a csomagvisszaküldési címke, hajtsa végre a következő lépéseket:
 - Távolítsa el a régi szállítási címkét és minden egyéb, az előző szállításból származó címkét.
-- Nyissa meg az Azure Portalon a megrendelését. Lépjen az Áttekintés oldalra, és töltse le a szállítási címkét. További információ a [fuvarlevélcímke letöltéséről](data-box-portal-admin.md#download-shipping-label).
-- Nyomtassa ki a címkét, és helyezze az eszközre rögzített átlátszó tasakba. 
+- Nyissa meg az Azure Portalon a megrendelését. Lépjen az **Áttekintés** oldalra, és **töltse le a fuvarlevélcímkét**. További információ a [fuvarlevélcímke letöltéséről](data-box-portal-admin.md#download-shipping-label).
+- Nyomtassa ki a címkét, és helyezze az eszközre rögzített átlátszó műanyag tasakba. 
 - Ügyeljen arra, hogy a fuvarlevélcímke jól látható legyen. 
 
 ### <a name="q-how-is-my-data-protected-during-transit"></a>K. Milyen védelem alatt állnak az adataim a szállítás közben? 
@@ -204,12 +204,11 @@ A. Igen. Bekapcsolhatja az eszközt, és további adatokat adhat hozzá. A máso
 A.  Amint az **Adatmásolás** megrendelési állapota **befejeződöttként** jelenik meg, azonnal hozzáférhet az adataihoz.
 
 ### <a name="q-where-is-my-data-located-in-azure-after-the-upload"></a>K. A feltöltést követően hol lesznek az adataim az Azure-ban?
-A.  A Data Boxra másolt adatok – attól függően, hogy blokkblob, lapblob vagy Azure-fájl formátumúak – a következő elérési utakra lesznek feltöltve az Azure Storage-fiókban:
- - `<You_storage_account_name_BlockBlob>/<my_container>/Blob` 
- - `<Your_storage_account_name_PageBlob>/<my_container>/Blob`
- - `<Your_storage_account_name_AzFile>/` 
-
-A blokkblob- és lapblobmegosztások alatti első szintű entitások tárolók, a második szintű entitások pedig blobok. Az Azure Files-megosztások alatti első szintű entitások megosztások, a második szintű entitások pedig fájlok.
+A.  A Data Boxra másolt adatok – attól függően, hogy blokkblob, lapblob vagy Azure-fájl formátumúak – a következő elérési utak egyikére lesznek feltöltve az Azure Storage-fiókban.
+ - `https://<storage_account_name>.blob.core.windows.net/<containername>` 
+ -  `https://<storage_account_name>.file.core.windows.net/<sharename>`
+ 
+ Alternatív megoldásként navigálhat az Azure Storage-fiókjából is az Azure Portalon.
 
 ### <a name="q-i-just-noticed-that-i-did-not-follow-the-azure-naming-requirements-for-my-containers-will-my-data-fail-to-upload-to-azure"></a>K. Most vettem észre, hogy nem követtem az Azure elnevezési követelményeit a tárolóim esetében. Így is fel lehet tölteni az adataimat az Azure-ba?
 A.  Ha a tárolók nevei nagybetűket tartalmaznak, akkor azokat automatikusan kisbetűsekké alakítja át a rendszer. Ha a nevek valami más szempontból nem megfelelőek (például speciális karaktereket tartalmaznak, más nyelvűek stb.) akkor a feltöltés meghiúsul. További információk a megosztások, tárolók és fájlok elnevezésének ajánlott eljárásairól: 

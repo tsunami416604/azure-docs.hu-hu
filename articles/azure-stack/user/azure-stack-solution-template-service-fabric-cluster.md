@@ -14,18 +14,18 @@ ms.topic: tutorial
 ms.date: 09/12/2018
 ms.author: mattbriggs
 ms.reviewer: shnatara
-ms.openlocfilehash: 3d3701c670236d67697f4109a59fa31900037a0d
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: d402b2bcd5187cbb6ece78d7e981068c279c1f75
+ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44720936"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48804429"
 ---
 # <a name="deploy-a-service-fabric-cluster-in-azure-stack"></a>Az Azure Stack a Service Fabric-fürt üzembe helyezése
 
 Használja a **Service Fabric-fürt** elem a biztonságos Service Fabric-fürtön az Azure Stack üzembe helyezése az Azure piactérről. 
 
-A Service Fabric használatával kapcsolatos további információkért lásd: [áttekintése az Azure szolgáltatás Frabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-overview) és [Service Fabric-fürtök biztonsági forgatókönyveit](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-security), az Azure dokumentációjában olvashatók.
+A Service Fabric használatával kapcsolatos további információkért lásd: [áttekintése az Azure Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-overview) és [Service Fabric-fürtök biztonsági forgatókönyveit](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-security), az Azure dokumentációjában olvashatók.
 
 ## <a name="prerequisites"></a>Előfeltételek
 

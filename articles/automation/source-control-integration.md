@@ -6,19 +6,19 @@ ms.service: automation
 ms.component: process-automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 09/17/2018
+ms.date: 09/26/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: c2d13a409d095bca64da781e5c5ca58553f9710c
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 9bbf3582da2664b6e6429677d47aad4d69a7c1bb
+ms.sourcegitcommit: 4edf9354a00bb63082c3b844b979165b64f46286
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47047587"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48785324"
 ---
 # <a name="source-control-integration-in-azure-automation"></a>Verziókövetés integrálása az Azure Automation szolgáltatásban
 
-Verziókövetés lehetővé teszi a runbookok az Automation-fiók vannak a parancsfájlok a GitHub vagy az Azure-fejlesztéshez verziókövetési tárházat naprakészen tartani. Verziókövetés együttműködhet a csapatával, követi a változásokat, és állítsa vissza a runbookok korábbi verzióira teszi lehetővé. Például verziókövetés lehetővé teszi, hogy a verziókövetés, a fejlesztési, tesztelési vagy éles Automation-fiókok, így könnyen előléptetni a kódot, amely a fejlesztési környezetben, az éles üzemben futó Automation tesztelve lett különböző ágak szinkronizálása fiók.
+Verziókövetés lehetővé teszi, hogy a forgatókönyvek az Automation fiókhoz a parancsfájlok a GitHub vagy az Azure-fejlesztéshez verziókövetési tárházat a naprakészek legyenek. Verziókövetés együttműködhet a csapatával, követi a változásokat, és állítsa vissza a runbookok korábbi verzióira teszi lehetővé. Például verziókövetés lehetővé teszi, hogy a fejlesztési, tesztelési vagy éles környezetben az Automation-fiókok a verziókövetési rendszerben különböző ágak szinkronizálása. Ez megkönnyíti az előléptetni a kódot, amely a fejlesztési környezetben, az Automation-fiók éles üzemben futó tesztelve lett.
 
 Az Azure Automation verziókövetés 3 típust támogat:
 
@@ -29,6 +29,7 @@ Az Azure Automation verziókövetés 3 típust támogat:
 ## <a name="pre-requisites"></a>Előfeltételek
 
 * Verziókövetési adattár (a GitHub vagy a Visual Studio Team Services)
+* A megfelelő [engedélyek](#personal-access-token-permissions) a verziókövetési tárházzal,
 * A [Run-As fiók és -kapcsolat](manage-runas-account.md)
 
 > [!NOTE]
@@ -40,7 +41,7 @@ Válassza ki az Automation-fiókban lévő **Source-Control (előzetes verzió)*
 
 ![Válassza ki a verziókövetés](./media/source-control-integration/select-source-control.png)
 
-Válasszon **verziókövetési típus** , kattintson a **hitelesítés**.
+Válasszon **verziókövetési típus**, kattintson a **hitelesítés**.
 
 A kérelem Alkalmazásengedélyek lapon tekintse át, és kattintson a **elfogadás**.
 
@@ -49,8 +50,8 @@ Az a **forrás vezérlő összefoglalás** lapon adja meg az adatokat, és katti
 |Tulajdonság  |Leírás  |
 |---------|---------|
 |Forrás vezérlő neve     | Egy rövid nevet a verziókövetés        |
-|Verziókövetési típusa     | A forrás-vezérlő típusa. Az elérhető lehetőségek:</br> GitHub</br>A Visual Studio Team Services (Git)</br>A Visual Studio Team Services (TFVC)        |
-|Tárház     | A tárház vagy projekt nevét. Ez a vezérlő adattárból kéri le. Például: $/ ContosoFinanceTFVCExample         |
+|Verziókövetési típusa     | A forrás-vezérlő típusa. Az elérhető lehetőségek:</br> GitHub</br>A Visual Studio Team Services (Git)</br> A Visual Studio Team Services (TFVC)        |
+|Tárház     | A tárház vagy projekt nevét. Ezt az értéket a vezérlő adattárból kéri le. Például: $/ ContosoFinanceTFVCExample         |
 |Ág     | Az ág forrásfájlok lekérni. Ág célzó nem áll rendelkezésre a TFVC verziókövetési típusa számára.          |
 |Mappa elérési útja     | A runbookok szinkronizálása tartalmazó mappát. Példa: /Runbooks         |
 |Automatikus szinkronizálása     | Engedélyezi vagy letiltja az automatikus szinkronizálás, amikor a véglegesítés történik a verziókövetési tárházat a         |
@@ -61,13 +62,13 @@ Az a **forrás vezérlő összefoglalás** lapon adja meg az adatokat, és katti
 
 ## <a name="syncing"></a>Szinkronizálás…
 
-Automatikus szinkronizálás konfigurálása a verziókövetés integrálása során adta meg, a kezdeti szinkronizálás automatikusan lép érvénybe. Ha automatikus szinkronizálása nem lett beállítva, válassza ki a forrás a tábla a a **verziókövetés (előzetes verzió)** lapot. Kattintson a **szinkronizálás indítása** a szinkronizálási folyamat elindításához.  
+Automatikusan autosync konfigurálása a verziókövetés integrációja konfigurálása során, elindítja a kezdeti szinkronizálás. Ha automatikus szinkronizálása nem lett beállítva, válassza ki a forrás a tábla a a **verziókövetés (előzetes verzió)** lapot. Kattintson a **szinkronizálás indítása** a szinkronizálási folyamat elindításához.  
 
 A jelenlegi szinkronizálási feladat vagy a korábbiakat kattintva állapotát is megtekintheti a **feladatok szinkronizálása** fülre. Az a **verziókövetés** legördülő menüben válassza ki a verziókövetési.
 
 ![Szinkronizálás állapota](./media/source-control-integration/sync-status.png)
 
-Egy olyan feladatra kattintva lehetővé teszi a feladat kimenetének megtekintéséhez. Az alábbiakban látható egy példa a kimenetre a forrás vezérlő szinkronizálási feladat.
+Egy olyan feladatra kattintva lehetővé teszi a feladat kimenetének megtekintéséhez. Az alábbi példa egy forrás vezérlő szinkronizálási feladat kimenete.
 
 ```output
 ========================================================================================================
@@ -101,6 +102,35 @@ Source Control Sync Summary:
 
 ========================================================================================================
 ```
+
+## <a name="personal-access-token-permissions"></a>Személyes hozzáférési jogkivonat engedélyek
+
+Verziókövetés személyes hozzáférési jogkivonatok egyes minimális engedélyekkel kell rendelkeznie. Az alábbi táblázatok a GitHub és az Azure DevOps szükséges minimális engedélyeket tartalmaznak.
+
+### <a name="github"></a>GitHub
+
+|Hatókör  |Leírás  |
+|---------|---------|
+|**adattár**     |         |
+|Adattár: állapota     | Hozzáférés lefoglaltsági állapota         |
+|repo_deployment      | Hozzáférési telepítési állapota         |
+|public_repo     | Hozzáférés a nyilvános adattár         |
+|**Admin: repo_hook**     |         |
+|írás: repo_hook     | Tárház hurkokat írása         |
+|Olvasás: repo_hook|Olvassa el a tárházat hurkokat|
+
+### <a name="azure-devops"></a>Azure DevOps
+
+|Hatókör  |
+|---------|
+|A kód (olvasás)     |
+|Projekt és a team (olvasás)|
+|Identitás (olvasás)      |
+|Felhasználói profil (olvasás)     |
+|A munkaelemek (olvasás)    |
+|(Olvasása, lekérdezéséhez és kezeléséhez) Szolgáltatáskapcsolatokat<sup>1</sup>    |
+
+<sup>1</sup>a Szolgáltatáskapcsolatokat engedély csak akkor szükséges, ha engedélyezte a autosync.
 
 ## <a name="disconnecting-source-control"></a>Verziókezelő leválasztása
 

@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 04/23/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: 4365f12992c96ca45ff6b97b0f59202f1eeb4483
-ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
+ms.openlocfilehash: b5fd5a9544e27092c8b65e18d59701421fc59ef5
+ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48268969"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48800859"
 ---
 # <a name="troubleshooting-hybrid-azure-active-directory-joined-down-level-devices"></a>Hibaelhárítás az Azure Active Directory hibrid csatlakoztatott régebbi verziójú eszközök 
 
@@ -43,6 +43,10 @@ Ez a cikk feltételezi, hogy [konfigurált hibrid Azure Active Directory-hez csa
 Ez a cikk nyújt hibaelhárítási útmutatót a potenciális problémák megoldásához.  
 
 **Tudnivalók:** 
+
+- Hibrid Azure AD joinnal korábbi verziójú Windows eszközök működése némileg eltérően, mint a Windows 10-es nem. Számos ügyfél nem tud szükségük van az Active Directory összevonási szolgáltatások (az összevont tartományok) vagy a közvetlen egyszeri bejelentkezés konfigurálva (a felügyelt tartományok).
+
+- Összevont tartományok élvező vásárlók esetében ha a szolgáltatási csatlakozási pontot (SCP) lett konfigurálva, hogy a felügyelt tartomány nevét (például contoso.onmicrosoft.com, helyett contoso.com), mutat majd hibrid Azure AD Join korábbi verziójú Windows-eszközök esetén a rendszer nem működik.
 
 - Jelenleg felhasználónként legfeljebb alacsonyabb szintű hibrid Azure AD-csatlakoztatott eszközök is vonatkozik. 
 

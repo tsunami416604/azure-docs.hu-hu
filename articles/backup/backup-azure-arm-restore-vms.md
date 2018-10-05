@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 09/04/2017
 ms.author: geg
-ms.openlocfilehash: eb47b1d8d3f2859b2b5c0b79633b2d37e5a40756
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: f7561ef4978e19439eafb6ef1a6ca1275c0f2bc7
+ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44380165"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48804616"
 ---
 # <a name="use-the-azure-portal-to-restore-virtual-machines"></a>Virtuális gépek visszaállítása az Azure portal használatával
 Védje adatait az adatpillanatképek meghatározott időközönként végrehajtásával. Ezek a pillanatképek a helyreállítási pontok nevezzük, és a Recovery Services-tárolók tárolásuk. Szükség esetén javítsa ki vagy építse újra a virtuális gép (VM), visszaállíthatja a virtuális gép bármelyik mentett helyreállítási pontokat. Egy helyreállítási pontot állítja vissza, ha Ön a következőket teheti:
@@ -37,6 +37,7 @@ Virtuális gép és az összes lemez visszaállítása virtuális gépről bizto
 * Válassza ki a helyreállítás típusát, hozzon létre egy új virtuális Gépet lemezek visszaállítása, és adja meg a szükséges paramétereket. 
 
 ## <a name="select-a-restore-point-for-restore"></a>Válasszon egy visszaállítási pontot a visszaállításhoz
+
 1. Jelentkezzen be az [Azure Portalra](http://portal.azure.com/).
 
 1. Az Azure menüben válassza ki a **Tallózás**. A szolgáltatások listájában, írja be **Recovery Services**. A szolgáltatások listájába, írja be az itt állíthatja be. Amikor látja **Recovery Services-tárolók**, jelölje ki azt.
@@ -102,7 +103,7 @@ Miután kiválasztotta a visszaállítási pontot, válassza ki a Virtuálisgép
 A portál biztosít egy **Gyorslétrehozás** a visszaállított virtuális gép. A Virtuálisgép-konfigurációt vagy egy új virtuális gép választott létrehozásának részeként létrehozott erőforrások nevei egyéni beállításához használja PowerShell vagy a portál lemezek biztonsági másolat visszaállításához. PowerShell-parancsok segítségével csatolja őket a kiválasztott Virtuálisgép-konfigurációhoz. Vagy használhatja a sablont, amely együttműködik a helyreállított lemezek szabhatja testre a visszaállított virtuális Gépet. Virtuális gép több hálózati adapterrel rendelkezik, vagy egy terheléselosztó alatt visszaállításával kapcsolatos további információkért lásd: [speciális hálózati konfigurációval rendelkező virtuális gép visszaállítása](#restore-vms-with-special-network-configurations). Ha a Windows virtuális gép használ [központi licencelési](../virtual-machines/windows/hybrid-use-benefit-licensing.md), állítsa vissza a lemezeket, és a virtuális gép létrehozásához használja a PowerShell/sablon ebben a cikkben megadott. Győződjön meg arról, hogy megadja a **licenctípus** mint "Windows_Server" elérhetővé tételéhez a HUB előnyei a visszaállított virtuális Gépet a virtuális gép létrehozásakor. 
  
 ## <a name="create-a-new-vm-from-a-restore-point"></a>Hozzon létre egy új virtuális Gépet egy visszaállítási pont
-1. Ha még nem tette, [jelöljön ki egy visszaállítási pontot](#restore-a vm-with-special-network-configurations) új virtuális gép egy visszaállítási pont létrehozása előtt. A visszaállítási pont kijelölése után a **konfiguráció visszaállítása** panelen adja meg vagy válassza ki az értékeket a következő mezők mindegyike esetében:
+1. Ha még nem tette, [jelöljön ki egy visszaállítási pontot](#select-a-restore-point-for-restore) új virtuális gép egy visszaállítási pont létrehozása előtt. A visszaállítási pont kijelölése után a **konfiguráció visszaállítása** panelen adja meg vagy válassza ki az értékeket a következő mezők mindegyike esetében:
 
     a. **Visszaállítási típus**. Virtuális gépet hoz létre.
 
@@ -239,9 +240,9 @@ Teljes körűen újra létre a virtuális gépek lemez visszaállítása után, 
 
    b. Hozzon létre egy virtuális Gépet szeretne csatlakozni egy [internetre irányuló terheléselosztó](https://azure.microsoft.com/documentation/articles/load-balancer-internet-getstarted/).
 
-   c. Egy virtuális gépet a [több hálózati adapterrel](https://azure.microsoft.com/documentation/articles/virtual-networks-multiple-nics/).
+   c. Egy virtuális gépet a [több hálózati adapterrel](../virtual-machines/windows/multiple-nics.md).
 
-   d. Egy virtuális gépet a [több fenntartott IP-címek](https://azure.microsoft.com/documentation/articles/virtual-networks-reserved-public-ip/).
+   d. Egy virtuális gépet a [több fenntartott IP-címek](../virtual-network/virtual-network-multiple-ip-addresses-powershell.md).
 
 ## <a name="next-steps"></a>További lépések
 Most, hogy a virtuális gépek visszaállításához tanulmányozza a hibaelhárítási információk a virtuális gépek gyakori hibák: Emellett tekintse meg a cikk a feladatok a virtuális gépekkel kezelését.

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/17/2018
 ms.author: kumud
-ms.openlocfilehash: ab5f6d10e4f9edc4d899e976291482bb3a795c07
-ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
+ms.openlocfilehash: be429e7d3ae847eec6dc4fd5ad6b9c3e5d76d5b5
+ms.sourcegitcommit: 4edf9354a00bb63082c3b844b979165b64f46286
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48248924"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48785409"
 ---
 # <a name="traffic-manager-routing-methods"></a>Traffic Manager útválasztási módszerek
 
@@ -39,7 +39,7 @@ Traffic Manager-profilok közé tartozik a végpontonkénti állapotot és a vé
 
 Gyakran egy szervezet szeretné a szolgáltatások megbízhatóságot biztosítanak egy vagy több biztonsági mentési szolgáltatás telepítésével, abban az esetben, ha az elsődleges szolgáltatás leáll. A "Priority" forgalom-útválasztási módszer lehetővé teszi, hogy az Azure-ügyfelek egyszerűen implementálni a feladatátvételi minta.
 
-! [Az azure Traffic Manager-on "Priority" forgalom-útválasztási módszer] [1]
+![Az Azure Traffic Manager-on "Priority" forgalom-útválasztási módszer](media/traffic-manager-routing-methods/priority.png)
 
 A Traffic Manager-profil Szolgáltatásvégpontok rangsorolt listáját tartalmazza. Alapértelmezés szerint a Traffic Manager minden forgalmat küld az elsődleges (legnagyobb prioritás) végponthoz. Ha az elsődleges végpont nem érhető el, a Traffic Manager a második végpontra irányítja a forgalmat. Ha az elsődleges és másodlagos végpontok nem érhetők el, áramlik a forgalom, a harmadik, és így tovább. A végpont rendelkezésre állását a konfigurált állapota (engedélyezve vagy letiltva), és a folyamatban lévő végpont-monitorozás alapul.
 
@@ -47,10 +47,10 @@ A Traffic Manager-profil Szolgáltatásvégpontok rangsorolt listáját tartalma
 
 Az Azure Resource Manager, a végpontok a "prioritás" tulajdonság használatát végpont prioritásának beállítása. Ez a tulajdonság értéke 1 és 1000 között. Alacsonyabb érték egy nagyobb prioritást jelölnek. Végpontok prioritás értéke nem lehet megosztani. A következő tulajdonság beállítása nem kötelező. Ha nincs megadva, a végpont sorrend alapján alapértelmezett prioritást szolgál.
 
-##<a name = "weighted"></a>Súlyozott forgalom-útválasztási módszer
+## <a name = "weighted"></a>Súlyozott forgalom-útválasztási módszer
 "Súlyozott" forgalom-útválasztási módszer lehetővé teszi, hogy egyenletesen osztja el a forgalmat, vagy egy előre meghatározott súlyozási használandó.
 
-! [Az azure Traffic Manager "Súlyozott" forgalom-útválasztási módszer] a(z) [2]
+![Az Azure Traffic Manager az "Súlyozott" forgalom-útválasztási módszer](media/traffic-manager-routing-methods/weighted.png)
 
 Súlyozott forgalom-útválasztási módszer esetében a súlyt rendel a Traffic Manager-profil konfigurációjának a végpontot. A súly egy egész számot 1 és 1000. Ez a paraméter nem kötelező. Ha nincs megadva, a Traffic Manager-példányok "1" alapértelmezett súlyozást használ. A nagyobb súlyt, annál magasabb a prioritás.
 
@@ -78,7 +78,7 @@ Az összes, DNS-alapú forgalom útválasztási rendszeren, nem csak az Azure Tr
 
 Az egész világon üzembe helyezése a végpontok két vagy több helyen irányítaná a forgalmat a helyre, '' Önhöz legközelebbi számos alkalmazás válaszkészségét növelheti. A "Teljesítmény" forgalom-útválasztási módszer biztosítja ezt a lehetőséget.
 
-! [Az azure Traffic Manager "Teljesítmény" forgalom-útválasztási módszer] [3]
+![Az Azure Traffic Manager "Teljesítmény" forgalom-útválasztási módszer](media/traffic-manager-routing-methods/performance.png)
 
 A "legközelebbi" végpont nem feltétlenül legközelebbi mért földrajzi távolság. Ehelyett a "Teljesítmény" forgalom-útválasztási módszer alapján lehetet nyilvántartani hálózati késés a legközelebbi végpontot határozza meg. A TRAFFIC Manager egy internetes késés tábla nyomon követéséhez az üzenetváltási idő közötti IP-címtartományok és minden egyes Azure-adatközpont tárolja.
 

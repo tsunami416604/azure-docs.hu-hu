@@ -16,12 +16,12 @@ ms.topic: overview
 ms.date: 08/25/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: 456b28c50bd5e7d69c3f16dd3e76a9ced20112f9
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 3baa48113022bed1bdc7caa5854a231334c975af
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43048862"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47224630"
 ---
 # <a name="what-is-device-management-in-azure-active-directory"></a>Az Azure Active Directory eszközfelügyeletének ismertetése
 
@@ -121,7 +121,7 @@ Több mint egy évtizede számos cég használja a tartományi csatlakoztatást 
 
 A helyszíni lábnyommal rendelkező cégek általában rendszerképkezelő megoldásokat használnak az eszközök üzembe helyezéséhez, és a **System Center Configuration Manager (SCCM)** vagy **csoportszabályzatok (GP)** használatával felügyelik azokat.
 
-Ha az Ön környezetének van helyszíni AD-lábnyoma, ugyanakkor az Azure Active Directory nyújtotta lehetőségeket is ki szeretné használni, implementálhat hibrid Azure AD-csatlakoztatott eszközöket. Ezek olyan eszközök, amelyek a helyszíni Active Directoryhoz és az Azure Active Directoryhoz is csatlakoznak.
+Ha az Ön környezetének van helyszíni AD-lábnyoma, ugyanakkor az Azure Active Directory nyújtotta lehetőségeket is ki szeretné használni, implementálhat hibrid Azure AD-csatlakoztatott eszközöket. Ezek olyan eszközök, amelyek a helyszíni Active Directoryhoz csatlakoznak, és regisztrálva vannak az Azure Active Directoryban is.
 
 ![Azure AD-ben regisztrált eszközök](./media/overview/01.png)
 

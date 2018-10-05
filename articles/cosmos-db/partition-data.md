@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 07/26/2018
 ms.author: andrl
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d53106efa4e3761a497e67181546c8ec09fd880c
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: c35082d107b538e7e908162c00facafecc406bc6
+ms.sourcegitcommit: 4edf9354a00bb63082c3b844b979165b64f46286
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44055505"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48785646"
 ---
 # <a name="partition-and-scale-in-azure-cosmos-db"></a>Particionálási és horizontális Azure Cosmos DB-ben
 
@@ -32,7 +32,7 @@ Az Azure Cosmos DB (dokumentumok) gyűjtemények, diagramok és táblázatok nev
 
 ### <a name="physical-partition"></a>Fizikai partíciónként
 
-A *fizikai* partíciója egy meghatározott méretű változó mennyiségű számítási erőforrások (CPU és memória) kombinálva fenntartott SSD-alapú tárolást. Minden egyes fizikai partíciók magas rendelkezésre állás érdekében a rendszer replikálja. Tárolók minden készlete egy vagy több fizikai partíciók megoszthatja. Fizikai partíciók felügyeleti teljes körűen felügyelt Azure Cosmos DB által, és nem kell komplex kódot írnia, vagy a partíciók kezeléséhez. Az Azure Cosmos DB-tárolók olyan korlátlan tárolási és átviteli sebesség tekintetében. Fizikai partíciók egy Azure Cosmos DB belső fogalma, és átmeneti jellegűek. Az Azure Cosmos DB automatikusan skálázzák a számítási feladatok alapján fizikai partíciók száma. Így Ön nem corelate az adatbázis-tervezésben fizikai partíciók száma alapján inkább, gondoskodnia kell választani a megfelelő partíciókulcs, amely megadja, hogy a logikai partíció. 
+A *fizikai* partíciója egy meghatározott méretű változó mennyiségű számítási erőforrások (CPU és memória) kombinálva fenntartott SSD-alapú tárolást. Minden egyes fizikai partíciók magas rendelkezésre állás érdekében a rendszer replikálja. Tárolók minden készlete egy vagy több fizikai partíciók megoszthatja. Fizikai partíciók felügyeleti teljes körűen felügyelt Azure Cosmos DB által, és nem kell komplex kódot írnia, vagy a partíciók kezeléséhez. Az Azure Cosmos DB-tárolók olyan korlátlan tárolási és átviteli sebesség tekintetében. Fizikai partíciók egy Azure Cosmos DB belső fogalma, és átmeneti jellegűek. Az Azure Cosmos DB automatikusan elvégzi a fizikai partíciók számának skálázását a számítási feladatok alapján. Így Ön nem corelate az adatbázis-tervezésben fizikai partíciók száma alapján inkább, gondoskodnia kell választani a megfelelő partíciókulcs, amely megadja, hogy a logikai partíció. 
 
 ### <a name="logical-partition"></a>Logikai partíció
 
@@ -93,11 +93,13 @@ Ha úgy dönt, hogy a fenti szempontok a partíciókulcsot, nem kell aggódnia a
 
 ## <a name="prerequisites"></a>A particionálás előfeltételei
 
-Az Azure Cosmos DB-tárolók hozhatók létre rögzített vagy korlátlan, az Azure Portalon. A rögzített méretű tárolók mérete legfeljebb 10 GB, feldolgozási sebessége legfeljebb 10000 RU/s lehet. Hozzon létre egy tároló korlátlan, az egy partíciókulcsot és a egy minimális 1000 RU/s átviteli kell megadnia. Az Azure Cosmos DB-tárolók is konfigurálható átviteli sebesség, tárolók, ahol a tárolók adja meg kell között megosztani egy partíció kulcsra, és korlátlan növelhető. Csak az alábbi előfeltételek particionálás és méretezés figyelembe venni:
+Az Azure Cosmos DB-tárolók hozhatók létre rögzített vagy korlátlan. A rögzített méretű tárolók mérete legfeljebb 10 GB, feldolgozási sebessége legfeljebb 10000 RU/s lehet. Hozzon létre egy tároló korlátlan, az egy partíciókulcsot és a egy minimális 1000 RU/s átviteli kell megadnia. Az Azure Cosmos DB-tárolók, hogy megosztják az átviteli sebesség is létrehozhat. Ezekben az esetekben adja meg kell egyes tárolók egy partíciókulcsot és korlátlan növelhető. 
 
-* Ha (például egy gyűjteményt, gráf vagy tábla) tároló létrehozása az Azure Portalon, válassza ki a **korlátlan** tárolási kapacitás lehetőség kihasználásához korlátlan méretezés. A fizikai partíciók auto-bontás **p1** és **p2** leírtak szerint [particionálási működése](#how-does-partitioning-work), a tárolót létre kell hozni egy 1000 RU/s átviteli sebesség vagy több (vagy több tároló megosztás átviteli), és a egy partíciókulcsot kell megadni. 
+Csak az alábbi előfeltételek particionálás és méretezés figyelembe venni:
 
-* Ha létrehozott egy tárolót az Azure Portalon vagy programozott módon, és a kezdeti átviteli volt 1000 RU/s, vagy több megadott egy partíciókulcsot, akkor kihasználhatja korlátlan méretezés a tároló módosítása nélkül. Ez magában foglalja **rögzített méretű** tárolók, amennyiben a kezdeti tároló létrehozásakor legalább 1000 RU/s átviteli sebesség és a partíciókulcs meg van adva.
+* Ha (például egy gyűjteményt, gráf vagy tábla) tároló létrehozása az Azure Portalon, válassza ki a **korlátlan** tárolási kapacitás lehetőség kihasználásához korlátlan méretezés. Automatikus – felosztott fizikai partíciókra való **p1** és **p2** leírtak szerint [particionálási működése](#how-does-partitioning-work) a cikkben a tárolót létre kell hozni egy 1000 RU/s átviteli sebességgel vagy További (vagy több tároló megosztás átviteli), és a egy partíciókulcsot kell megadni. 
+
+* Ha hozzon létre egy tárolót a kezdeti sebessége nagyobb vagy egyenlő 1000 RU/s, és adjon meg egy partíciókulcsot, akkor igénybe veheti a korlátlan méretezés a tároló módosítása nélkül. Ami azt jelenti, annak ellenére, hogy létrehoz egy **rögzített méretű** tárolót, ha a kezdeti tároló jön létre egy sebessége legalább 1000 RU/s, és ha a partíciós kulcs van megadva, a tároló funkcionál a korlátlan tároló.
 
 * Az összes tároló átviteli megosztásához tárolók készletét részeként konfigurált számít **korlátlan** tárolók.
 

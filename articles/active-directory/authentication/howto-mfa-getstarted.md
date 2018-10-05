@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: michmcla
-ms.openlocfilehash: e8d4286e282ebbe727941712f3f3c4d3ea749cb5
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: 07e9126b73b0282f61567fe8d06f785bf9a04fef
+ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46366590"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48803477"
 ---
 # <a name="deploy-cloud-based-azure-multi-factor-authentication"></a>Felhőalapú Azure multi-factor Authentication szolgáltatás üzembe helyezése
 
@@ -30,9 +30,9 @@ Mielőtt elkezdené, győződjön meg arról, az alábbi előfeltételek:
 
 **Feltételes hozzáférési szabályzat által engedélyezett** – Ez a módszer van a cikkben leírtak szerint. Célszerű a legrugalmasabb, hogy engedélyezze a kétlépéses ellenőrzést, a felhasználók számára. Engedélyezése csak a feltételes hozzáférési szabályzat segítségével az Azure multi-factor Authentication a felhőben működik, és az Azure AD prémium szintű szolgáltatása.
 
-Engedélyezve van az Azure AD Identity Protection - ezt a módszert használja az Azure AD Identity Protection kockázati szabályzat minden felhőalapú alkalmazásra bejelentkezési kockázat alapján a kétlépéses ellenőrzés megkövetelése. Ez a metódus szükséges, Azure Active Directory P2 licencelési. Ez a módszer további információ található [konfigurálása a felhasználói kockázati házirend](../identity-protection/howto-user-risk-policy.md).
+**Az Azure AD Identity Protection által engedélyezett** – ezt a módszert használja az Azure AD Identity Protection kockázati szabályzat minden felhőalapú alkalmazásra bejelentkezési kockázat alapján a kétlépéses ellenőrzés megkövetelése. Ez a metódus szükséges, Azure Active Directory P2 licencelési. Ez a módszer további információ található [konfigurálása a felhasználói kockázati házirend](../identity-protection/howto-user-risk-policy.md).
 
-Engedélyezve van, úgy módosítja a felhasználói állapot – Ez az a kétlépéses ellenőrzést igénylő hagyományos módszere. Mind a felhőbeli Azure MFA és az Azure MFA-kiszolgáló működik. Ezzel a módszerrel megköveteli a felhasználóktól a kétlépéses ellenőrzés végrehajtására **minden alkalommal, amikor** jelentkezzen be, és felülírja a feltételes hozzáférési szabályzatokat. Ez a módszer további információ található [igénylése a kétlépéses ellenőrzés egy felhasználó](howto-mfa-userstates.md).
+**Engedélyezve van a felhasználói állapot módosításával** – Ez az a kétlépéses ellenőrzést igénylő hagyományos módszere. Mind a felhőbeli Azure MFA és az Azure MFA-kiszolgáló működik. Ezzel a módszerrel megköveteli a felhasználóktól a kétlépéses ellenőrzés végrehajtására **minden alkalommal, amikor** jelentkezzen be, és felülírja a feltételes hozzáférési szabályzatokat. Ez a módszer további információ található [igénylése a kétlépéses ellenőrzés egy felhasználó](howto-mfa-userstates.md).
 
 > [!Note]
 > További információ a licencekkel és a díjszabás találhatók a [Azure ad-ben](https://azure.microsoft.com/pricing/details/active-directory/

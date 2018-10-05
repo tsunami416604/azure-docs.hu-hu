@@ -7,14 +7,14 @@ author: ggailey777
 manager: jeconnoc
 ms.service: azure-functions
 ms.topic: conceptual
-ms.date: 09/14/2018
+ms.date: 10/03/2018
 ms.author: glenga
-ms.openlocfilehash: d4a0d53c3438be9ea4e0229e4a456ed6f5960996
-ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
+ms.openlocfilehash: 372cf445e518ccdb287ce23ade6a3d92ddc5bc2b
+ms.sourcegitcommit: 4edf9354a00bb63082c3b844b979165b64f46286
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48249060"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48784899"
 ---
 # <a name="azure-functions-runtime-versions-overview"></a>Az Azure Functions runtime verziók áttekintése
 
@@ -63,6 +63,7 @@ Nyelvek és -kötések változásai kívül néhány szolgáltatás eltávolítv
 * Alkalmazásbeállítások (`local.settings.json`) értéket kell megadni a tulajdonság `FUNCTIONS_WORKER_RUNTIME` , amely leképezi a nyelvet, az alkalmazás `dotnet | node | java | python`.
     * Erőforrás-igényű és indítási idő javítása érdekében alkalmazások pedig csak egyetlen nyelvet. Több alkalmazás funkciói a megoldásban a különböző nyelveken teheti közzé.
 * A functions az app service-csomag alapértelmezett időtúllépési érték 30 perc.  Még mindig manuálisan beállítható korlátlan.
+* HTTP-egyidejűség szabályozások fogyasztási terv függvények (100 egyidejű kérelmek példányonként) alapértelmezés szerint vannak megvalósítva.  Ezek a beállítások-n keresztül módosíthatók a `host.json` fájlt.
 * [Miatt a .NET core korlátozásokkal](https://github.com/Azure/azure-functions-host/issues/3414), `.fsx` parancsfájlok, F #-függvények el lett távolítva. Lefordított F #-függvények továbbra is támogatottak.
 * Webhookokon alapuló triggereket (Példa: Event Grid) formátumát változott `https://{app}/runtime/webhooks/{triggerName}`
 

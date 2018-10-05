@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/20/2018
 ms.author: jasonh
-ms.openlocfilehash: 3dea97d674c2027307ac7eb7cae34b6664e40b0b
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 29d6aa99b972dacb12ffb016eabb3a46afab7c7a
+ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43108120"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48804072"
 ---
 # <a name="ports-used-by-hadoop-services-on-hdinsight"></a>HDInsight Hadoop-szolgáltatások által használt portok
 
@@ -37,7 +37,7 @@ További gépeket csatlakoztatni a virtuális hálózat, először hozza létre 
 Egy HDInsight-fürt összes csomópontja egy Azure virtuális hálózatban találhatók, és nem tudnak közvetlenül hozzáférni az internetről. Egy nyilvános átjáró a következő portokat, amelyek közösek az összes HDInsight-fürt típusa internet-hozzáférést biztosít.
 
 | Szolgáltatás | Port | Protokoll | Leírás |
-| --- | --- | --- | --- | --- |
+| --- | --- | --- | --- |
 | sshd |22 |SSH |Az ügyfelek az elsődleges átjárócsomóponton sshd kapcsolódik. További információ: [Az SSH használata HDInsighttal](hdinsight-hadoop-linux-use-ssh-unix.md). |
 | sshd |22 |SSH |Az ügyfelek csatlakozik, az élcsomóponton sshd. További információ: [Az SSH használata HDInsighttal](hdinsight-hadoop-linux-use-ssh-unix.md). |
 | sshd |23 |SSH |Ügyfelek sshd meg a másodlagos átjárócsomóponthoz csatlakozik. További információ: [Az SSH használata HDInsighttal](hdinsight-hadoop-linux-use-ssh-unix.md). |

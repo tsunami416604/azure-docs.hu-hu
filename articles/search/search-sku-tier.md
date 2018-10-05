@@ -9,12 +9,12 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 09/25/2018
 ms.author: heidist
-ms.openlocfilehash: d28b9177684cf7b9a3ddc83107806aaa6afde477
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: 0e1a0d299fb794c3aa937cb62dba9a6ce12c0570
+ms.sourcegitcommit: 4edf9354a00bb63082c3b844b979165b64f46286
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47434030"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48785307"
 ---
 # <a name="choose-a-pricing-tier-for-azure-search"></a>Válasszon egy tarifacsomagot az Azure Search
 
@@ -41,19 +41,21 @@ The purpose of this article is to help you choose a tier. It supplements the [pr
 
 Az Azure Search szolgáltatásban a legfontosabb számlázási megértéséhez koncepciójuk egy *keresési egység* (SU). Azure Search a replikák és partíciók függvényt is függ, mivel csak az egyik vagy másik számlázási nincs értelme. Ehelyett mindkét összetett számlázási alapul. 
 
-Formulaically, egy SU-e, a termék *replika* és *partíciók* a szolgáltatás által használt: **`(R X P = SU)`**
+SU, a termék *replika* és *partíciók* a szolgáltatás által használt: **`(R X P = SU)`**
 
-Legalább 1 SU (egy másodpéldány egy partíciót megszorozza) kezdődik minden szolgáltatás, de nagyobb méretű számítási feladatokhoz, realisztikusabb modell előfordulhat, hogy egy 3 és a replikakiszolgáló, a 3-partition service 9 SUS-t számít. 
+Mindegyik szolgáltatás az a minimális 1 SU (egy másodpéldány egy partíciót megszorozza) kezdődik. Bármely szolgáltatás a maximális mérete 36 SUS-t, amely többféle módon is megvalósítható: 6 partíciók x 6 replikák vagy 3 partíció x 12 replikákat, hogy néhányat említsünk. 
+
+Kevesebb, mint a teljes kapacitás szokás. Például egy 3-replika, a 3-partition szolgáltatás 9 SUS-t számít. 
 
 A számlázási sebessége **óránkénti száma SU**, minden egyes kellene fokozatosan magasabb szinten. A magasabb szintű nagyobb és gyorsabb partíciókat, hozzájárul a magasabb, a teljes óránkénti elszámolása kapható. Értékeli az egyes szintek találhatók [díjszabása](https://azure.microsoft.com/pricing/details/search/). 
 
-Az egyes csomagok fokozatosan nagyobb kapacitást biztosít, bár közzétehet egy *részét* teljes kapacitás online, a többi tulajdonában foglalás. A számlázás tekintetében, a partíciókat és -replikákat, hogy tenné online, számított képlettel a SU, amely meghatározza a ténylegesen kell fizetnie a száma.
+A legtöbb ügyfél használata csak egy része online, a teljes kapacitás, a többi tulajdonában foglalás. A számlázási tekintetében, a partíciókat és -replikákat online, számított képlettel a SU, amely meghatározza a ténylegesen kell fizetnie óránként hozza a száma.
 
 ### <a name="tips-for-reducing-costs"></a>Tippek a költségek csökkentése
 
-Nem lehet leállítani a szolgáltatást, hogy csökkentse a számla. Dedikált erőforrásokkal a partíciókat és -replikákat olyan működési 24-7, a kizárólagos használatára, a szolgáltatás teljes élettartama lefoglalva. Csak úgy csökkentheti a számla a replikákat és partíciókat, hogy továbbra is a elfogadható teljesítményt biztosít alacsony szintű csökkentésével és [SLA megfelelőségi](https://azure.microsoft.com/support/legal/sla/search/v1_0/). 
+Nem lehet leállítani a szolgáltatást, hogy csökkentse a számla. Dedikált erőforrások működési 24-7, a kizárólagos használatára, a szolgáltatás teljes élettartama lefoglalva. Csak úgy csökkentheti a számla a replikákat és partíciókat, hogy továbbra is a elfogadható teljesítményt biztosít alacsony szintű csökkentésével és [SLA megfelelőségi](https://azure.microsoft.com/support/legal/sla/search/v1_0/). 
 
-Egy másik kar által generált költségek csökkentésére egy réteget, az alacsonyabb óránkénti megválasztása. S1 óradíjak alacsonyabbak, mint az S2 vagy S3 szintű díjszabás szerint. A betöltés leképezések alacsonyabb végén célzó szolgáltatás sikerült építhet ki. Ha a szolgáltatás akkor elszaporodó, hozzon létre egy második nagyobb többrétegű service, a második szolgáltatás az indexek újraépítése, és törölje a az elsőt. A helyi kiszolgálókon, szokás "megvásárlása", hogy a tervezett növekedést is kezelni tudja. De a szolgáltatás egy felhőszolgáltatással, végezze el költségmegtakarítást legtöbb agresszív ismerete, hogy bármikor átválthat egy nagyobb többrétegű Service, ha a jelenlegi előfizetéssel nem elegendő.
+A költségek csökkentésére egy szintje alacsonyabb óránkénti egy szintre megválasztása. S1 óradíjak alacsonyabbak, mint az S2 vagy S3 szintű díjszabás szerint. A betöltés leképezések alacsonyabb végén célzó szolgáltatás sikerült építhet ki. Ha a szolgáltatás akkor elszaporodó, hozzon létre egy második nagyobb többrétegű service, a második szolgáltatás az indexek újraépítése, és törölje a az elsőt. Ha elvégezte a kapacitástervezés helyi kiszolgálókon, tudja, hogy, hogy az általános "megvásárlása", hogy a tervezett növekedést is kezelni tudja. De a szolgáltatás egy felhőszolgáltatással, akkor is szerezni a költségmegtakarítást további agresszív mert, sok mindent megváltoztathat egy adott beszerzési. Egy újabb többrétegű szolgáltatás mindig váltson, ha a jelenlegi előfizetéssel nem elegendő.
 
 ### <a name="capacity-drill-down"></a>Kapacitás kibontása
 
@@ -92,7 +94,7 @@ Portál és díjszabási oldal helyezze a fókuszt a partíció méretét és a 
 **S3** és **S3 HD** biztonsági azonos nagy kapacitású infrastruktúrával, de egyes egy eléri a maximális korlátot különböző módon. **S3** célozza meg, nagyon nagy méretű indexek kevesebb. Mint ilyen, a maximális kapacitásnak az erőforrás kötött (az egyes szolgáltatások 2,4 TB). **S3 HD** nagy számú kis indexek célozza. 1000 indexet, **S3 HD** eléri a teljesítménye korlátait index megkötések formájában. Ha Ön egy **S3 HD** vevő akinek van szüksége a több mint 1000 indexek, forduljon a Microsoft Support információkat a következő lépésekre.
 
 > [!NOTE]
-> Korábban a dokumentum korlátok veszi figyelembe volt, de már nem alkalmazható a legtöbb Azure Search szolgáltatás 2018 január után létesített verziókat. Amelynek a dokumentum korlátozások is érvényesek feltételekkel kapcsolatos további információkért lásd: [szolgáltatási korlátozásaival: korlátait dokumentálja](search-limits-quotas-capacity.md#document-limits).
+> Korábban a dokumentum korlátok veszi figyelembe volt, de már nem alkalmazható az új szolgáltatások verziókat. További információ a feltételek alapján, amely dokumentumot korlátok továbbra is érvényben maradnak: [szolgáltatási korlátozásaival: korlátait dokumentálja](search-limits-quotas-capacity.md#document-limits).
 >
 
 ## <a name="evaluate-capacity"></a>Kapacitás kiértékelése

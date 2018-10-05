@@ -6,12 +6,12 @@ ms.service: multiple
 ms.topic: article
 ms.date: 07/03/2018
 ms.author: raynew
-ms.openlocfilehash: c500a1ecc817e4d95e39ca0ac985e1d90ffc8a78
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 5678b8408eac303d9036d21612f60fafc325425d
+ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44721263"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48801913"
 ---
 # <a name="business-continuity-and-disaster-recovery-bcdr-azure-paired-regions"></a>Üzleti folytonosság és vészhelyreállítás helyreállítási (BCDR): Azure párosított régiói
 
@@ -34,6 +34,7 @@ Minden egyes Azure-régió párban áll egy regionális párokból érdemes egy�
 | Kanada |Közép-Kanada |Kelet-Kanada |
 | Kína |Észak-Kína |Kelet-Kína|
 | Európa |Észak-Európa |Nyugat-Európa |
+| Franciaország |Közép-Franciaország|Dél-Franciaország|
 | Németország |Közép-Németország |Északkelet-Németország |
 | India |Közép-India |Dél-India |
 | India |Nyugat-India (1) |Dél-India |
@@ -69,7 +70,7 @@ Javasoljuk, hogy úgy beállítani, hogy üzleti folytonossági vészhelyreáll�
 ## <a name="cross-region-activities"></a>Régiók közötti tevékenységek
 2. ábra az említett.
 
-![PaaS](./media/best-practices-availability-paired-regions/1Green.png) **Azure Compute (PaaS)** – további számítási erőforrásokat előzetesen győződjön meg, hogy az erőforrások elérhetők egy másik régióban egy katasztrófa során kell kiépítenie. További információkért lásd: [műszaki útmutatást az Azure rugalmassága](resiliency/resiliency-technical-guidance.md).
+![IaaS](./media/best-practices-availability-paired-regions/1Green.png) **Azure Compute (IaaS)** – további számítási erőforrásokat előzetesen győződjön meg, hogy az erőforrások elérhetők egy másik régióban egy katasztrófa során kell kiépítenie. További információkért lásd: [műszaki útmutatást az Azure rugalmassága](resiliency/resiliency-technical-guidance.md).
 
 ![Tárolási](./media/best-practices-availability-paired-regions/2Green.png) **Azure Storage** -Georedundáns tárolás (GRS) alapértelmezés szerint konfigurálva, egy Azure Storage-fiók létrehozásakor. A grs Tárolással az adatok automatikus replikációja háromszor az elsődleges régióban, és három alkalommal a párosított régióban. További információkért lásd: [Azure Storage Redundanciabeállításainál](storage/common/storage-redundancy.md).
 

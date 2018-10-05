@@ -9,16 +9,22 @@ ms.date: 09/25/2017
 ms.author: johnkem
 ms.custom: mvc
 ms.component: metrics
-ms.openlocfilehash: f6b7b9fe73f5e815e08bbf4f6493ee181a0c692b
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: be6f3efd74d013e9ddb02c44031dd6a402f00871
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37918271"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47409490"
 ---
-# <a name="archive-azure-monitoring-data"></a>Azure monitorozási adatok archiválása
+# <a name="archive-azure-metric-and-log-data-using-azure-storage"></a>Azure-metrikák és naplóadatok archiválása az Azure Storage használatával
 
-Az Azure-környezet több rétege készít napló- és metrikaadatokat, amelyek Azure Storage-fiókban archiválhatók. Ezt azért érdemes elvégezni, hogy megőrizze a monitorozási adatok előzményeit egy olcsó, nem kereshető tárolóban, miután lejárt az adatok megőrzési ideje a Log Analyticsben vagy az Azure Monitorban. Ez az oktatóanyag végigvezeti azon a folyamaton, amely során az Azure-környezetet az adatok tárfiókban való archiválásához konfigurálhatja.
+Az Azure-környezet több rétege készít napló- és metrikaadatokat, amelyek Azure Storage-fiókban archiválhatók. Ezt azért érdemes elvégezni, hogy megőrizze a monitorozási adatok előzményeit egy kedvező árú, nem kereshető tárolóban, miután lejárt az adatok megőrzési ideje. 
+
+- Az Azure Monitor platformra vonatkozó metrikák 93 napig érhetők el. 
+- Az erőforrásokra vonatkozó diagnosztikai naplók csak akkor jelennek meg, ha a Log Analyticsbe vannak irányítva, ahol legalább 30 napos megőrzési időtartam van hozzájuk beállítva. 
+- A tevékenységnapló-bejegyzések 90 napig érhetők el.  
+
+Ez az oktatóanyag végigvezeti azon a folyamaton, amely során az Azure-környezetet az adatok tárfiókban való archiválásához konfigurálhatja.
 
 > [!div class="checklist"]
 > * Tárfiók létrehozása monitorozási adatok tárolásához

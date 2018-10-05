@@ -11,19 +11,19 @@ author: sachinpMSFT
 ms.author: sachinp
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 09/20/2018
-ms.openlocfilehash: 48ba68e8fd40af859fc6701495a2dca280a1c222
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.date: 10/04/2018
+ms.openlocfilehash: 2f25b167572f36334ce84657ee3d235683dfa125
+ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48042631"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48803885"
 ---
 # <a name="resource-limits-for-single-databases-using-the-dtu-based-purchasing-model"></a>A DTU-alapú vásárlási modell segítségével az önálló adatbázisok számára erőforráskorlátok 
 
 Ez a cikk a részletes erőforráskorlátok a DTU-alapú vásárlási modell használatával Azure SQL Database önálló adatbázisok számára.
 
-DTU-alapú vásárlási modell erőforráskorlátok a rugalmas készletek, lásd: [DTU-alapú erőforráskorlátok – rugalmas készletek](sql-database-vcore-resource-limits-elastic-pools.md). Virtuálismag-alapú erőforráskorlátok, lásd: [Virtuálismag-alapú erőforráskorlátok – önálló adatbázisok](sql-database-vcore-resource-limits-single-databases.md) és [Virtuálismag-alapú erőforráskorlátok – rugalmas készletek](sql-database-vcore-resource-limits-elastic-pools.md).
+DTU-alapú vásárlási modell erőforráskorlátok a rugalmas készletek, lásd: [DTU-alapú erőforráskorlátok – rugalmas készletek](sql-database-vcore-resource-limits-elastic-pools.md). Virtuálismag-alapú erőforráskorlátok, lásd: [Virtuálismag-alapú erőforráskorlátok – önálló adatbázisok](sql-database-vcore-resource-limits-single-databases.md) és [Virtuálismag-alapú erőforráskorlátok – rugalmas készletek](sql-database-vcore-resource-limits-elastic-pools.md). A különböző vásárlási modell kapcsolatos további információkért lásd: [vásárlási modellt és a szolgáltatási szintekről](sql-database-service-tiers.md). 
 
 > [!IMPORTANT]
 > Bizonyos körülmények között szükség lehet az adatbázis nem használt terület felszabadítását zsugorítani. További információkért lásd: [kezelése az Azure SQL Database területe](sql-database-file-space-management.md).

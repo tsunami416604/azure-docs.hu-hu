@@ -12,14 +12,14 @@ ms.devlang: NA
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 09/24/2018
+ms.date: 09/25/2018
 ms.author: alkohli
-ms.openlocfilehash: 0204445464a9d61b4e25be1d71373ce8394b32f0
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 9bc84a9b08c4cfbdf7f24416c923e0dbd7076556
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46957671"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47161930"
 ---
 # <a name="tutorial-copy-data-to-azure-data-box"></a>Oktatóanyag: Adatok másolása az Azure Data Boxra 
 
@@ -233,7 +233,7 @@ Az adatok integritásának biztosítása érdekében az ellenőrzőösszeg kisz�
 
 Linux rendszerű gazdagép esetében használjon egy, a Robocopyhoz hasonló másolási segédprogramot. Ilyen például az [rsync](https://rsync.samba.org/), a [FreeFileSync](https://www.freefilesync.org/), a [Unison](https://www.cis.upenn.edu/~bcpierce/unison/) vagy az [Ultracopier](https://ultracopier.first-world.info/).  
 
-A cp parancs az egyik legjobb választás a könyvtárak másolására. A parancs használatáról [a cp tájékoztató oldalain](http://man7.org/linux/man-pages/man1/cp.1.html) talál további információt.
+A `cp` parancs az egyik legjobb választás a könyvtárak másolására. A parancs használatáról [a cp tájékoztató oldalain](http://man7.org/linux/man-pages/man1/cp.1.html) talál további információt.
 
 Amennyiben az rsyncet használja többszálas másoláshoz, a következő irányelveket kell betartania:
 
@@ -273,7 +273,7 @@ Az utolsó lépés az eszköz szállításának előkészítése. Ebben a lépé
    
     ![A szállítás előkészítése 1](media/data-box-deploy-copy-data/prepare-to-ship1.png)
 
-2. Ha nem engedélyezte az ellenőrzőösszeget, a rendszer felajánlja annak engedélyezését. Az adatok integritása érdekében azt javasoljuk, hogy érvényesítse az ellenőrzőösszeget. Az **Enable checksum** (Ellenőrzőösszeg engedélyezése) lehetőség bejelölése elindítja az ellenőrzőösszeg kiszámítását. Ez az adatok mennyiségétől függően eltarthat egy ideig. Kattintson a **Start preparation** (Előkészítés indítása) elemre.
+2. Alapértelmezés szerint az ellenőrzőösszegek kiszámítására beágyazva, a szállítás előkészítése során kerül sor. Az ellenőrzőösszeg kiszámítása az adatok mennyiségétől függően eltarthat egy ideig. Kattintson a **Start preparation** (Előkészítés indítása) elemre.
     1. Az eszközmegosztások offline állapotba kerülnek, és az eszköz zárolva lesz, amíg a rendszer előkészíti a szállítást.
         
         ![A szállítás előkészítése 1](media/data-box-deploy-copy-data/prepare-to-ship2.png) 

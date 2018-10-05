@@ -9,12 +9,12 @@ ms.workload: core
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: shvija
-ms.openlocfilehash: 3497abdd571282974d85ebaa58d06b47cbe3b159
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: 413f36a12dee135cc1a7dc99a34d8b7b2be6c46f
+ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46368680"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48801063"
 ---
 # <a name="send-events-to-azure-event-hubs-using-nodejs"></a>Események küldése az Azure Event Hubs Node.js használatával
 
@@ -72,6 +72,7 @@ Az SDK-val rendelkeznie klónozta tartalmaz több minták azt mutatják be, hogy
 ## <a name="review-the-sample-code"></a>Tekintse át a mintakódot 
 A következő mintakód segítségével eseményeket küld egy eseményközpontnak node.js használatával. Manuálisan hozzon létre egy sampleSender.js fájlt, majd futtassa eseményeket küld egy eseményközpontnak. 
 
+
 ```nodejs
 const { EventHubClient, EventPosition } = require('@azure/event-hubs');
 
@@ -89,6 +90,18 @@ main().catch((err) => {
     console.log(err);
 });
 
+```
+
+Fontos, hogy állítsa be a környezeti változókat a parancsfájl futtatása előtt. Ez a parancssorban a következő példában látható módon konfigurálhatja, vagy a [dotenv csomag](https://www.npmjs.com/package/dotenv#dotenv). 
+
+```
+// For windows
+set EVENTHUB_CONNECTION_STRING="<your-connection-string>"
+set EVENTHUB_NAME="<your-event-hub-name>"
+
+// For linux or macos
+export EVENTHUB_CONNECTION_STRING="<your-connection-string>"
+export EVENTHUB_NAME="<your-event-hub-name>"
 ```
 
 ## <a name="next-steps"></a>További lépések

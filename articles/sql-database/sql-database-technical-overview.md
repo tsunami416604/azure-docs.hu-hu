@@ -12,13 +12,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 09/14/2018
-ms.openlocfilehash: 21350fe9a44ad801204b8288f3c49eda82ca6343
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.date: 10/04/2018
+ms.openlocfilehash: dc5147ff2ebd7bdd6782d92fab33a08b62d854d2
+ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47163182"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48804123"
 ---
 # <a name="what-is-the-azure-sql-database-service"></a>Mi az Azure SQL Database szolgáltatás? 
 
@@ -59,7 +59,7 @@ Az SQL Database a [DTU-alapú vásárlási modellt](sql-database-service-tiers-d
 Hozza létre első alkalmazását egy egyedülálló, kisméretű adatbázison alacsony áron az általános célú szolgáltatási szinten a havonta, és ezután váltson szolgáltatásszintet manuálisan vagy programon keresztül bármikor, ha a megoldás a kritikus fontosságú üzleti szolgáltatási szintet. Úgy módosíthatja a teljesítményt, hogy az nem jár leállással az alkalmazás vagy az ügyfelek számára. A dinamikus méretezhetőség révén az adatbázis átlátható módon reagál a gyorsan változó erőforrásigényekre, és lehetővé teszi, hogy csak azokért az erőforrásokért fizessen, amelyekre és amikor szüksége van.
 
 > [!IMPORTANT]
-> Egy általános célú és az üzletileg kritikus szolgáltatási rétegben, hogy a nem skálázhatja a [nagy kapacitású szolgáltatásszint](sql-database-hyperscale.md). A nagy kapacitású szolgáltatási szinten belüli teljesítményszintet azonban módosíthatja.
+> A [nagy kapacitású szolgáltatásszint](sql-database-hyperscale.md) jelenleg nyilvános előzetes verzióban érhető el. Nem ajánlott semmilyen éles számítási feladatok futtatása a nagy kapacitású adatbázisokban még. Nagy kapacitású adatbázis egyéb szolgáltatási csomagokra nem frissíthető. Tesztelési célra javasoljuk, hogy másolatot készít az aktuális adatbázisban, és a példány nagy kapacitású szolgáltatásszinthez frissítése...
 
 A dinamikus méretezhetőség különbözik az automatikus skálázástól. Automatikus skálázás esetén a szolgáltatás adott feltételek alapján, automatikusan méretez, míg a dinamikus méretezhetőség lehetővé teszi a manuális méretezést, amely nem jár állásidővel. Az önálló Azure SQL Database a manuális dinamikus méretezhetőséget támogatja, de az automatikus skálázást nem. Ha *automatikus* megoldást keres, érdemes megfontolni a rugalmas készletek használatát, amely lehetővé teszi, hogy az adatbázisok osztozzanak egy készlet erőforrásain az egyes adatbázisok egyedi igényei alapján. Vannak olyan szkriptek azonban, amelyek segítségével egy önálló Azure SQL Database esetén is automatizálhatja a méretezhetőséget. Erre az [Egyetlen SQL-adatbázis monitorozása és skálázása a PowerShell használatával](scripts/sql-database-monitor-and-scale-database-powershell.md) című témakörben láthat példát. 
 

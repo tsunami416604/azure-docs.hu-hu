@@ -12,12 +12,12 @@ ms.date: 09/18/2018
 ms.author: lizross
 ms.reviewer: elkuzmen
 ms.custom: it-pro
-ms.openlocfilehash: c4529948a0a1b165945de78de97cc2470c6b431e
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: 30b4a038c2ad9bd86f2ba78d52ed3754acec07f0
+ms.sourcegitcommit: 4edf9354a00bb63082c3b844b979165b64f46286
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48237551"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48785257"
 ---
 # <a name="how-to-add-your-custom-domain-name-using-the-azure-active-directory-portal"></a>Útmutató: az Azure Active Directory portál használatával egyéni tartománynév hozzáadása
 Minden új Azure AD-bérlőt egy kezdeti tartománynevet tartalmaz *domainname*. onmicrosoft.com. Nem módosítható, és a kezdeti tartománynév törlése, de a szervezet neveket adhat hozzá a listában. Egyéni tartománynevek hozzáadása segítségével hozhat létre, amely számára is felismerhetők a felhasználók számára, például felhasználóneveket *alain@contoso.com*.
@@ -84,7 +84,7 @@ Miután regisztrálta az egyéni tartománynevet, meg kell róla, hogy érvénye
 
     ![A DNS-bejegyzés adatainak és az ellenőrzés gombra a Contoso lap](media/add-custom-domain/contoso-blade-with-dns-info-verify.png)
 
-### <a name="common-verification-issues"></a>Gyakori hitelesítési hibák
+## <a name="common-verification-issues"></a>Gyakori hitelesítési hibák
 - Ha az Azure AD nem képes egyéni tartománynév ellenőrzésére, próbálkozzon a következőkkel:
     - **Várjon legalább egy órát, és próbálkozzon újra**. DNS-rekordokat kell propagálása előtt az Azure AD ellenőrizni tudja a tartományt, és ez a folyamat egy vagy több óráig tarthat.
 
@@ -93,7 +93,8 @@ Miután regisztrálta az egyéni tartománynevet, meg kell róla, hogy érvénye
     Ha nem frissíti a rekordot a regisztrálójánál helyen, egy olyan személlyel, amely rendelkezik a megfelelő engedélyekkel a bejegyzést, és győződjön meg arról, pontosan meg kell osztania a bejegyzést.
 
 - **Ellenőrizze, hogy a tartománynév már nem használt egy másik címtárban.** A tartománynév csak egy címtárban, ami azt jelenti, hogy a tartománynév jelenleg ellenőrizve van egy másik címtárban, ha azt nem is lehet ellenőrizni az új címtárban ellenőrizhető. Duplikáció a probléma elhárításához törölnie kell az a tartomány nevét a régi könyvtárból. További információ a tartománynevek törléséről: [egyéni tartománynevek kezelése](../users-groups-roles/domains-manage.md).
-    - Ha rendelkezik olyan felhasználókkal, akik önkiszolgáló bejelentkezésen keresztül aktiválták a PowerBI szolgáltatást, és létrehoztak egy nem felügyelt bérlőt a munkahelyén belül, a rendszergazda átveheti a felügyeletet a bérlő felett, vagy folytathatja a tartomány hozzáadásával a PowerShell-en belüli kikényszerített átvétel lehetőség segítségével. Rendszergazdai tartomány átvételéről kapcsolatos további információkért lásd: [rendszergazdaként az Azure Active Directoryban egy nem felügyelt könyvtár átvétele](../users-groups-roles/domains-admin-takeover.md).
+
+- **Ellenőrizze, hogy nem kell minden olyan nem felügyelt Power BI-bérlők.** Ha a felhasználók önkiszolgáló regisztráció a Power bi-ban aktiválták és létrehozott egy nem felügyelt bérlőt a szervezetén belül, meg kell átveszi belső vagy külső rendszergazdaként PowerShell használatával. Egy nem felügyelt könyvtár átvétele kapcsolatos további tudnivalókért lásd: [rendszergazdaként az Azure Active Directoryban egy nem felügyelt könyvtár átvétele](../users-groups-roles/domains-admin-takeover.md).
 
 ## <a name="next-steps"></a>További lépések
 

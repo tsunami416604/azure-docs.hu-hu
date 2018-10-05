@@ -7,15 +7,15 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: manage
-ms.date: 07/10/2018
+ms.date: 10/04/2018
 ms.author: rortloff
 ms.reviewer: igorstan
-ms.openlocfilehash: e901d147d757a046d50927d6f2651b0a74657b1f
-ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
+ms.openlocfilehash: ab90b4431a0f8d3a4ee70869e053174f89f23dba
+ms.sourcegitcommit: 4edf9354a00bb63082c3b844b979165b64f46286
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43288189"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48785215"
 ---
 # <a name="memory-and-concurrency-limits-for-azure-sql-data-warehouse"></a>Az Azure SQL Data Warehouse a memória- és egyidejűségi korlátok
 Tekintse meg a különböző teljesítményszintek és az Azure SQL Data Warehouse erőforrásosztályok számára lefoglalt memória- és egyidejűségi korlátok. További információt, és a alkalmazni ezeket a képességeket a számítási feladat felügyeleti csomag: [erőforrásosztályok számítási feladatok kezeléséhez](resource-classes-for-workload-management.md). 
@@ -27,10 +27,11 @@ Az alábbi táblázatokban található különböző teljesítményszintek az ad
 
 ### <a name="gen2"></a>Gen2
 
-Gen2 2,5 x a Gen1 lekérdezésenként több memóriát biztosít. Az extra memóriát segít a Gen2 a gyors teljesítményt.  A teljesítményszintek DW1000c Gen2 esnie DW30000c. 
+Gen2 2,5 x a Gen1 lekérdezésenként több memóriát biztosít. Az extra memóriát segít a Gen2 a gyors teljesítményt.  A teljesítményszintek DW500c Gen2 esnie DW30000c. 
 
 | Teljesítményszint | Számítási csomópontok | Számítási csomópontok disztribúciók | Adatraktár (GB) memória |
 |:-----------------:|:-------------:|:------------------------------:|:------------------------------:|
+| DW500c            | 1             | 60                             |   300                          |
 | DW1000c           | 2             | 30                             |   600                          |
 | DW1500c           | 3             | 20                             |   900                          |
 | DW2000c           | 4             | 15                             |  1200                          |
@@ -75,6 +76,7 @@ Az alábbi táblázat a maximális párhuzamos lekérdezéseket és az egyidejű
 
 | Szolgáltatásszint | Maximális párhuzamos lekérdezések | Párhuzamos időszeletek érhető el |staticrc10 | staticrc20 | staticrc30 | staticrc40 | staticrc50 | staticrc60 | staticrc70 | staticrc80 |
 |:-------------:|:--------------------------:|:---------------------------:|:---------:|:----------:|:----------:|:----------:|:----------:|:----------:|:----------:|:----------:|
+| DW500c        | 20                         |   20                        | 1         | 2          | 4          | 8          | 16         | 16         | 16         |  16        |
 | DW1000c       | 32                         |   40                        | 1         | 2          | 4          | 8          | 16         | 32         | 32         |  32        |
 | DW1500c       | 32                         |   60                        | 1         | 2          | 4          | 8          | 16         | 32         | 32         |  32        |
 | DW2000c       | 48                         |   80                        | 1         | 2          | 4          | 8          | 16         | 32         | 64         |  64        |
@@ -90,7 +92,7 @@ Az alábbi táblázat a maximális párhuzamos lekérdezéseket és az egyidejű
 **Dinamikus erőforrás-osztályok**
 
 > [!NOTE]
-> Gen2 smallrc erőforrásosztály dinamikusan ad hozzá a memória, a szolgáltatási szint nő, és csak támogatja az egy legfeljebb 32 egyidejű lekérdezéseket.  Az egyidejű helyet foglalnak le, és a a szolgáltatási szint növekedése smallrc növekszik által felhasznált memóriát. 
+> Gen2 smallrc erőforrásosztály dinamikusan ad hozzá a memória, a szolgáltatási szint nő, és csak a DW1000c és 20 és DW500c maximális 32 egyidejű lekérdezéseket támogatja.  Ha a példány méretezett DW1500c, az egyidejű helyet foglalnak le, és a által használt memória mellett smallrc a a szolgáltatási szint növekedése is nő. 
 >
 >
 
@@ -98,6 +100,7 @@ Az alábbi táblázat a maximális párhuzamos lekérdezéseket és az egyidejű
 
 | Szolgáltatásszint | Maximális párhuzamos lekérdezések | Párhuzamos időszeletek érhető el | A tárolóhelyek smallrc által használt | A tárolóhelyek mediumrc által használt | Largerc által használt tárolóhely | A tárolóhelyek xlargerc által használt |
 |:-------------:|:--------------------------:|:---------------------------:|:---------------------:|:----------------------:|:---------------------:|:----------------------:|
+| DW500c        | 20                         |   20                        | 1                     |  2                     |  4                    |  14                    |
 | DW1000c       | 32                         |   40                        | 1                     |  4                     |  8                    |  28                    |
 | DW1500c       | 32                         |   60                        | 1                     |  6                     |  13                   |  42                    |
 | DW2000c       | 32                         |   80                        | 2                     |  8                     |  17                   |  56                    |

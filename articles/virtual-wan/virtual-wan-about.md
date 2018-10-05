@@ -5,15 +5,15 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: overview
-ms.date: 09/21/2018
+ms.date: 09/25/2018
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to understand what Virtual WAN is and if it is the right choice for my Azure network.
-ms.openlocfilehash: a21b97f603fc28cdbba8983547ce958a34df0774
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 54d177d7542d7501a91a955be20af776b16657a2
+ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46968594"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47182365"
 ---
 # <a name="what-is-azure-virtual-wan"></a>Mi az Azure Virtual WAN?
 
@@ -43,6 +43,8 @@ Ha Virtual WAN-partnerekkel működik együtt, a folyamat a következőképpen n
 Ha nem szeretne választott partnert használni, manuálisan is konfigurálhatja a kapcsolatot, ehhez lásd [a helyek közötti kapcsolatok a Virtual WAN használatával való létrehozását](virtual-wan-site-to-site-portal.md) ismertető cikket.
 
 ## <a name="p2s"></a>Pont–hely kapcsolatok (előzetes verzió)
+
+A pont–hely (P2S) kapcsolat lehetővé teszi biztonságos kapcsolat létesítését a virtuális központtal egy különálló ügyfélszámítógépről. A pont–hely kapcsolat létesítéséhez a kapcsolatot az ügyfélszámítógépről kell elindítani. Ez a megoldás főleg távmunkások számára hasznos, akik egy távoli helyről szeretnének csatlakozni, például otthonról vagy konferenciáról. A pont–hely VPN emellett akkor is hasznos megoldás lehet a helyek közötti VPN helyett, ha csak néhány ügyfelet szeretne csatlakoztatni.
 
 A kapcsolat manuális létrehozásával kapcsolatban lásd [a pont–hely kapcsolatok a Virtual WAN használatával való létrehozását](https://go.microsoft.com/fwlink/p/?linkid=2020051&clcid) ismertető cikket.
 

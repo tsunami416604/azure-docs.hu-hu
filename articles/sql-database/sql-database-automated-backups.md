@@ -12,12 +12,12 @@ ms.author: sashan
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 09/25/2018
-ms.openlocfilehash: 5c6ebfcb7eae52915af24fc67e9b3c774656149d
-ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
+ms.openlocfilehash: e01f48ebee9ade35b44242eba3b03e6e0a4faf46
+ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47181141"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48802032"
 ---
 # <a name="learn-about-automatic-sql-database-backups"></a>További információ az automatikus SQL-adatbázisok biztonsági mentése
 
@@ -59,7 +59,8 @@ A DTU-alapú vásárlási modell használatával létrehozott adatbázis alapér
 * Standard szintű szolgáltatáscsomagban 5 hétre.
 * Prémium szintű szolgáltatási szinten 5 hétre.
 
-Ha használja a [Virtuálismag-alapú vásárlási modell](sql-database-service-tiers-vcore.md), a biztonsági mentések megőrzési konfigurálható mentése 35 napon belül. 
+Ha használja a [Virtuálismag-alapú vásárlási modell](sql-database-service-tiers-vcore.md), az alapértelmezett biztonsági másolat megőrzési idejének (mind a logikai kiszolgálók és a felügyelt példányok) 7 nap.
+A logikai kiszolgálón is [módosítsa a biztonsági másolat megőrzési idejének 35 napon belül](#how-to-change-backup-retention-period). Biztonsági másolat megőrzési idejének módosítása nem áll rendelkezésre a felügyelt példányhoz. 
 
 Ha csökkenti az aktuális PITR a megőrzési időszak, az összes meglévő biztonsági másolatok, az új megőrzési időszaknál korábbi már nem lesz elérhető. 
 
@@ -74,7 +75,7 @@ A PITR a biztonsági mentések georedundáns és által védett [Azure Storage-r
 További információkért lásd: [-időponthoz visszaállítása](sql-database-recovery-using-backups.md#point-in-time-restore)
 
 ### <a name="backups-for-long-term-retention"></a>Biztonsági másolatok hosszú távú megőrzésének
-SQL Database teljes biztonsági mentések konfigurálása hosszú távú megőrzésének (LTR) lehetőséget kínál az Azure blob storage akár 10 évig. Ha LTR-szabályzat engedélyezve van, a heti teljes biztonsági mentés automatikusan átmásolja egy másik RA-GRS-tárolóba. A különböző megfelelőségi követelménynek megfelel, heti, havi és/vagy éves biztonsági mentések különböző megőrzési időtartamú választhat. A tárhelyhasználat biztonsági mentéseket és a megőrzési időszak a kiválasztott gyakorisága függ. Használhatja a [LTR díjkalkulátor](https://azure.microsoft.com/pricing/calculator/?service=sql-database) LTR tárolási költségek becsléséhez. 
+SQL Database logikai kiszolgálón lévő üzemeltetett teljes biztonsági mentések konfigurálása hosszú távú megőrzésének (LTR) lehetőséget az Azure blob storage akár 10 évig kínál. Ha LTR-szabályzat engedélyezve van, a heti teljes biztonsági mentés automatikusan átmásolja egy másik RA-GRS-tárolóba. A különböző megfelelőségi követelménynek megfelel, heti, havi és/vagy éves biztonsági mentések különböző megőrzési időtartamú választhat. A tárhelyhasználat biztonsági mentéseket és a megőrzési időszak a kiválasztott gyakorisága függ. Használhatja a [LTR díjkalkulátor](https://azure.microsoft.com/pricing/calculator/?service=sql-database) LTR tárolási költségek becsléséhez. 
 
 PITR, például az LTR biztonsági mentések rendszer georedundáns és által védett [Azure Storage-régiók közti replikációs](../storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage).
 
@@ -95,6 +96,10 @@ Ha az adatbázis telepít át az alapértelmezett PITR a megőrzési 35 nap a DT
 [!INCLUDE [GDPR-related guidance](../../includes/gdpr-intro-sentence.md)]
 
 ## <a name="how-to-change-backup-retention-period"></a>Biztonsági másolat megőrzési idejének módosítása
+
+> [!Note]
+> Alapértelmezett biztonsági másolatainak megőrzési ideje (7 nap) a felügyelt példány nem módosítható. 
+
 Módosíthatja az alapértelmezett megőrzési REST API vagy a PowerShell használatával. A támogatott értékek a következők: 7, 14, 21, 28 és 35 nap. Az alábbi példák bemutatják, hogyan PITR a Megtartás módosítása 28 nap. 
 
 > [!NOTE]

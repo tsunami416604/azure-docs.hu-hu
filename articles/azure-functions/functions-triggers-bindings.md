@@ -9,14 +9,14 @@ keywords: azure-függvények, függvények, eseményfeldolgozás, webhookok, din
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: reference
-ms.date: 05/24/2018
+ms.date: 09/24/2018
 ms.author: glenga
-ms.openlocfilehash: cc965073863375d76efb969ad66cf5750c9755bb
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 694dd98caadb12571c58f9d615cf75325654c772
+ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46969427"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48801305"
 ---
 # <a name="azure-functions-triggers-and-bindings-concepts"></a>Az Azure Functions eseményindítók és kötések fogalmak
 
@@ -168,7 +168,7 @@ Ez a szakasz csak az funkciók vonatkozik 2.x. Kötési bővítményeket nem kel
 
 Hozzon létre egy függvényt, vagy a felvenni egy kötést, ha kéri a bővítmény számára az eseményindítóval vagy kötéssel van szükség a regisztráció során. A gombra kattintva megismert **telepítése** regisztrálni a bővítményt. Telepítés akár 10 percet is igénybe a használatalapú csomag is.
 
-Csak telepítenie kell minden egyes bővítmény megadott függvényalkalmazás egy alkalommal. 
+Csak telepítenie kell minden egyes bővítmény megadott függvényalkalmazás egy alkalommal. Támogatott kötések, amelyek nem állnak rendelkezésre a portálon, vagy frissíteni a telepített kiterjesztést is [manuálisan telepíteni vagy frissíteni a kötési bővítményeket a portálról az Azure Functions](install-update-binding-extensions-manual.md).  
 
 ### <a name="local-development-azure-functions-core-tools"></a>Helyi fejlesztés az Azure Functions Core Tools
 

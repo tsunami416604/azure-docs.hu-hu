@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: annaba
-ms.openlocfilehash: 2f6b9ee7a23341f27272a4614bed6be5ae422ce0
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: ea65dcca3e5de06d1bc966b3e7cb6b608260a053
+ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46297271"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48803962"
 ---
 # <a name="get-started-with-certificate-based-authentication-in-azure-active-directory"></a>Az Azure Active Directory Tanúsítványalapú hitelesítés első lépései
 
@@ -203,6 +203,6 @@ EAS-profilnévként konfigurálhatók és az eszközön keresztül a kihasznált
 
 ## <a name="next-steps"></a>További lépések
 
-[Ügyféltanúsítvány-alapú bejelöltük további információt az Android-eszközökön.](active-directory-certificate-based-authentication-android.md)
+[Tanúsítványalapú hitelesítés további információt az Android-eszközökön.](active-directory-certificate-based-authentication-android.md)
 
-[Ügyféltanúsítvány-alapú bejelöltük további információ az iOS-eszközökön.](active-directory-certificate-based-authentication-ios.md)
+[Tanúsítványalapú hitelesítés további információ az iOS-eszközökön.](active-directory-certificate-based-authentication-ios.md)

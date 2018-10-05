@@ -1,6 +1,6 @@
 ---
-title: A Azure verem Development Kit (ASDK) számítógép előkészítése |} Microsoft Docs
-description: Ismerteti, hogyan lehet a Azure verem Development Kit (ASDK) számítógép ASDK telepítés előkészítéséhez.
+title: Az Azure Stack Development Kit (ASDK) gazdaszámítógép előkészítése |} A Microsoft Docs
+description: Ismerteti, hogyan készíti elő az Azure Stack Development Kit (ASDK) a számítógép ASDK telepítéséhez.
 services: azure-stack
 documentationcenter: ''
 author: jeffgilb
@@ -15,21 +15,21 @@ ms.topic: article
 ms.date: 03/22/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: 5de25f574cb876701ffce74f1dca8c4bb9764157
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: fc9681ee286c30825ac908f9f97ae092808c783a
+ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
-ms.locfileid: "30165670"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48802137"
 ---
 # <a name="prepare-the-asdk-host-computer"></a>A ASDK számítógép előkészítése
-A ASDK az állomáson telepítése előtt a ASDK környezet telepítési kell készíteni. Ha a development kit gazdaszámítógép készült, akkor a CloudBuilder.vhdx virtuális gép merevlemez-meghajtóról ASDK telepítésének megkezdéséhez fog indulni.
+Mielőtt telepítené a ASDK a gazdagépen, a ASDK környezet telepítésének kell készíteni. A fejlesztői csomag gazdaszámítógép elő van készítve, amikor az merevlemez-meghajtóról a CloudBuilder.vhdx virtuális gép ASDK üzembe helyezés megkezdéséhez fog elindulni.
 
-## <a name="prepare-the-development-kit-host-computer"></a>Készítse elő a development kit gazdaszámítógépen
-A ASDK az állomáson telepítése előtt elő kell készíteni a ASDK állomás számítógépes környezetekben.
-1. Jelentkezzen be a helyi rendszergazdájaként a development kit gazdaszámítógéphez.
-2. Győződjön meg arról, hogy a CloudBuilder.vhdx fájlt a C:\ meghajtó (C:\CloudBuilder.vhdx), a legfelső szintű át lett helyezve.
-3. Futtassa a következő parancsfájlt a development kit telepítőfájl (asdk-installer.ps1) töltheti le a [Azure verem GitHub-eszközök adattár](https://github.com/Azure/AzureStack-Tools) számára a **C:\AzureStack_Installer** mappájában található a fejlesztői csomag gazdaszámítógépen:
+## <a name="prepare-the-development-kit-host-computer"></a>A fejlesztői csomag fogadó számítógép előkészítése
+A ASDK a gazdagépen telepítése előtt elő kell készíteni a ASDK gazdakörnyezetben számítógép.
+1. Jelentkezzen be egy helyi rendszergazdaként a fejlesztői csomag állomás számítógépen.
+2. Győződjön meg arról, hogy a CloudBuilder.vhdx fájl át lett helyezve a legfelső szintű a C:\ meghajtó (C:\CloudBuilder.vhdx).
+3. Futtassa a következő szkriptet a development kit telepítőfájl (asdk-installer.ps1) töltheti le a [Azure Stack GitHub-eszközök adattár](https://github.com/Azure/AzureStack-Tools) , a **C:\AzureStack_Installer** mappájába a fejlesztői csomag állomás számítógépen:
 
   ```powershell
   # Variables
@@ -43,33 +43,32 @@ A ASDK az állomáson telepítése előtt elő kell készíteni a ASDK állomás
   Invoke-WebRequest $uri -OutFile ($LocalPath + '\' + 'asdk-installer.ps1')
   ```
 
-4. Egy rendszergazda jogú PowerShell-konzolon, indítsa el a **C:\AzureStack_Installer\asdk-installer.ps1** parancsfájlt, és kattintson a **környezet előkészítése**.
+4. Egy rendszergazda jogú PowerShell-konzolon indítsa el a **C:\AzureStack_Installer\asdk-installer.ps1** szkriptet, és kattintson a **környezet előkészítését ismertető**.
 
     ![](media/asdk-prepare-host/1.PNG) 
 
-5. Az a **Cloudbuilder válasszon vhdx** oldalon a telepítő, keresse meg és válassza ki a **cloudbuilder.vhdx** letöltött és kibontott a fájl [az előző lépések](asdk-download.md). Ezen a lapon, ha szükséges, engedélyezheti a **illesztőprogramok hozzáadásával** jelölőnégyzetet, ha további illesztőprogramok hozzáadásához a development kit gazdaszámítógépre van szüksége. Kattintson a **Tovább** gombra.  
+5. Az a **Cloudbuilder válasszon vhdx** lapján, a telepítő, keresse meg és válassza ki a **cloudbuilder.vhdx** fájlt, amely a letöltött és kibontott az [az előző lépések](asdk-download.md). Ezen a lapon emellett igény szerint engedélyezheti a **illesztőprogramokat** jelölőnégyzetet, ha további illesztőprogramok hozzáadása a development kit gazdaszámítógépre van szüksége. Kattintson a **Tovább** gombra.  
 
     ![](media/asdk-prepare-host/2.PNG)
 
-6. A a **választható beállítások** lapján adja meg a helyi rendszergazda fiókot a development kit fogadó számítógép információi, és kattintson a **következő**. A következő választható beállítások értékeket is megadhatja:
-  - **Számítógépnév**: Ez a beállítás egy development kit állomás neve. A név FQDN követelményeknek kell megfelelniük, és lehet 15 karakternél rövidebb szerepnevet. Az alapértelmezett érték a Windows által generált véletlenszerű számítógép nevét.
-  - **Időzóna**: időzónáját adja meg a development kit gazdagép. Az alapértelmezett érték (UTC-8:00) csendes-óceáni idő (Egyesült Államok és Kanada).
-  - **Statikus IP-konfiguráció**: Beállítja azt a környezetet, hogy statikus IP-cím. Ellenkező esetben amikor a telepítő újraindítja a cloudbuilder.vhx, a hálózati adapterek vannak konfigurálva a DHCP.
+6. Az a **választható beállítások** lap, adja meg a helyi rendszergazda a development kit fogadó számítógép fiókját, és kattintson a **tovább**. Az alábbi választható beállításokat is megadhat értékeket:
+  - **ComputerName**: Ez a beállítás a development kit gazdagép nevének beállítása. A névnek FQDN-követelményeknek kell megfelelniük, és hosszabb 15 karakternél rövidebb szerepnevet kell lennie. Az alapértelmezett érték a Windows által generált véletlenszerű számítógép nevét.
+  - **Statikus IP-konfiguráció**: Beállítja a központi telepítés egy statikus IP-címet használja. Ellenkező esetben a telepítő újraindítja a cloudbuilder.vhx, ha a hálózati adapterek vannak konfigurálva a DHCP Protokollt.
 
     ![](media/asdk-prepare-host/3.PNG)
 
   > [!IMPORTANT]
-  > Ha nem ad meg ebben a lépésben a helyi rendszergazdai hitelesítő adatokat, szüksége lesz közvetlen vagy a gazdagép eléréséhez KVM beállítása a csomag részeként a számítógép újraindítása után.
+  > Ha nem ad meg ebben a lépésben a helyi rendszergazdai hitelesítő adatokkal, kell közvetlenül vagy a gazdagépre KVM-hozzáférés beállítása a csomag részeként a számítógép újraindítása után.
 
-7. Ha az előző lépésben a statikus IP-konfigurációt, akkor most le kell:
-    - Válasszon olyan hálózati adaptert. Győződjön meg arról is elérheti az adapter kattintás előtt **következő**.
-    - Győződjön meg arról, hogy a **IP-cím**, **átjáró**, és **DNS** értékek megfelelőek, és kattintson a **következő**.
-13. Kattintson a **következő** az előkészítési folyamat elindításához.
-14. Az előkészítési azt jelzi, ha **befejezve**, kattintson a **következő**.
-15. Kattintson a **Újraindítás most** a development kit gazdaszámítógép indul a cloudbuilder.vhdx és [a telepítési folyamat folytatásához](asdk-install.md).
+7. Ha az előző lépésben statikus IP-konfigurációt, meg kell most:
+    - Válasszon ki egy hálózati adaptert. Ellenőrizze, hogy csatlakozhat az adapter gombra való kattintás előtt **tovább**.
+    - Győződjön meg arról, hogy a **IP-cím**, **átjáró**, és **DNS** értékek helyesek, és kattintson a **tovább**.
+13. Kattintson a **tovább** az előkészítési folyamat elindításához.
+14. Az előkészítés azt jelzi, ha **befejezve**, kattintson a **tovább**.
+15. Kattintson a **Újraindítás most** , a fejlesztői csomag gazdaszámítógépen indítsa el a cloudbuilder.vhdx és [a telepítési folyamat folytatásához](asdk-install.md).
 
     ![](media/asdk-prepare-host/4.PNG)
 
 
 ## <a name="next-steps"></a>További lépések
-[A ASDK telepítése](asdk-install.md)
+[Telepítse a ASDK](asdk-install.md)

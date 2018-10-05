@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/24/2018
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 727d38cae6c2f98d2922d5760f116ab85d75b8ac
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: ff8df51011ef664950ecfeb9eef0b201306c8ad5
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46983514"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47221651"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-using-the-azure-portal"></a>Oktatóanyag: Az Azure Firewall üzembe helyezése és konfigurálása az Azure Portalon
 
@@ -31,9 +31,7 @@ A hálózati forgalmat a konfigurált tűzfalszabályok irányítják, ha alapé
 
 Az alkalmazás- és hálózatszabályokat *szabálygyűjteményekben* tárolja a rendszer. A szabálygyűjtemény olyan szabályok listája, amelyeknek a művelete és a prioritása megegyezik.  A hálózatszabályok gyűjteménye hálózati szabályokat, az alkalmazásszabály-gyűjtemény alkalmazásszabályokat tartalmaz.
 
-Az Azure Firewallon a bejövő és kimenő szabályok fogalma nem létezik. Csak alkalmazás- és hálózati szabályok léteznek, és ezek alkalmazása minden forgalomra megtörténik, amely a tűzfalra érkezik. A tűzfal először a hálózati, majd az alkalmazásszabályokat alkalmazza, és a szabályok illeszkedés esetén lezárják a szabályalkalmazási folyamatot.
-
-Ha például valamelyik hálózati szabály illeszkedik a forgalomra, az alkalmazásszabályok alapján nem történik meg a csomag vizsgálata. Ha egyik hálózati szabály sem érvényes, és a csomag protokollja HTTP/HTTPS, a csomag ezután az alkalmazásszabályok szerint is ki lesz értékelve. Ha itt sincs egyezés, a rendszer a csomagot az infrastruktúra szabálygyűjteménye alapján is értékeli. És ha továbbra sincs egyezés, a tűzfal a csomagot alapértelmezés szerint elutasítja.
+Az Azure Firewall NAT-szabályokat, hálózati szabályokat és alkalmazásszabályokat tartalmaz. Az Azure Firewall szabályfeldolgozási logikájával kapcsolatos további információkért tekintse meg az [Azure Firewall szabályfeldolgozási logikájával](rule-processing.md) kapcsolatos cikket.
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
@@ -69,7 +67,7 @@ Először is hozzon létre egy erőforráscsoportot, amely a tűzfal üzembe hel
 2. Az **Erőforráscsoport neve** mezőbe írja be a következőt: **Test-FW-RG**.
 3. Az **Előfizetés** beállításnál válassza ki az előfizetését.
 4. Az **Erőforráscsoport helye** beállításnál válasszon ki egy helyet. Minden ezután létrehozott erőforrásnak ugyanezen a helyen kell lennie.
-5. Kattintson a **Létrehozás** gombra.
+5. Kattintson a **Create** (Létrehozás) gombra.
 
 
 ### <a name="create-a-vnet"></a>Virtuális hálózat létrehozása
@@ -157,7 +155,7 @@ Az Srv-Work virtuális gép **beállításainak** konfigurálásához használja
    
    |Beállítás  |Érték  |
    |---------|---------|
-   |Név     |Test-FW01|
+   |Name (Név)     |Test-FW01|
    |Előfizetés     |\<az Ön előfizetése\>|
    |Erőforráscsoport     |**Meglévő használata**: Test-FW-RG |
    |Hely     |Válassza a korábban használt helyet|
@@ -183,7 +181,7 @@ A **Workload-SN** alhálózatot konfigurálja úgy, hogy a kimenő alapértelmez
 5. Az **Előfizetés** beállításnál válassza ki az előfizetését.
 6. Az **Erőforráscsoport** mezőben válassza a **Meglévő használata**, majd a **Test-FW-RG** lehetőséget.
 7. A **Hely** elemnél válassza a korábban használt helyet.
-8. Kattintson a **Létrehozás** gombra.
+8. Kattintson a **Create** (Létrehozás) gombra.
 9. Kattintson a **Frissítés** elemre, majd a **Firewall-route** útválasztási táblázatra.
 10. Kattintson az **Alhálózatok**, majd a **Társítás** elemre.
 11. Kattintson a **Virtuális hálózat** elemre, majd válassza a **Test-FW-VN** elemet.
@@ -216,9 +214,6 @@ A **Workload-SN** alhálózatot konfigurálja úgy, hogy a kimenő alapértelmez
 
 Az Azure Firewall tartalmaz egy beépített szabálygyűjteményt az infrastruktúra alapértelmezés szerint engedélyezett teljes tartományneveiről. Ezek a teljes tartománynevek csak az adott platformra vonatkoznak, egyéb célra nem használhatók. További információ: [Infrastruktúra FQDN-jei](infrastructure-fqdns.md).
 
-> [!Note]
-> FQDN-címkék jelenleg csak az Azure PowerShell és a REST használatával konfigurálhatók. További információkért kattintson [ide](https://aka.ms/firewallapplicationrule). 
-
 ## <a name="configure-network-rules"></a>Hálózati szabályok konfigurálása
 
 1. Kattintson a **Hálózati szabálygyűjtemény hozzáadása** elemre.
@@ -242,7 +237,7 @@ Ebben az oktatóanyagban tesztelés céljából konfiguráljuk az elsődleges é
 3. A **Beállítások** területen kattintson a **DNS-kiszolgálók** elemre.
 4. A **DNS-kiszolgálók** területen kattintson az **Egyéni** elemre.
 5. Írja be a **209.244.0.3** a címet a **DNS-kiszolgáló hozzáadása** szövegmezőbe, és **209.244.0.4** címet a következő szövegmezőbe.
-6. Kattintson a **Mentés** gombra. 
+6. Kattintson a **Save** (Mentés) gombra. 
 7. Indítsa újra az **Srv-Work** virtuális gépet.
 
 

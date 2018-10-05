@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/27/2018
+ms.date: 10/04/2018
 ms.author: sethm
 ms.reviewer: ''
-ms.openlocfilehash: 8e9d40451cd0d9c3a6505ee24ca02852d9d4c527
-ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
+ms.openlocfilehash: ef6b068e7a8b97713c54ddeea1817a6c379703c8
+ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47423476"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48804599"
 ---
 # <a name="azure-marketplace-items-available-for-azure-stack"></a>Elérhető az Azure Stackhez az Azure piactéren elemek
 
@@ -239,6 +239,7 @@ A Microsoft Azure Stackhez az Azure piactér következő virtuális gépek és a
 | ![CloudLink SecureVM](media/azure-stack-marketplace-azure-items/cloudlink.png) | [CloudLink SecureVM](https://azuremarketplace.microsoft.com/marketplace/apps/cloudlink.cloudlink-securevm)  | Szabályozhatja, figyelését és virtuális gépek titkosítása egyszerű és megbízható. **Töltse le az összes CloudLink SecureVM-elemek.** | Dell EMC |
 | ![Eseménykövető SIEM](media/azure-stack-marketplace-azure-items/eventtracker.png) | [Eseménykövető SIEM](https://azuremarketplace.microsoft.com/marketplace/apps/eventtracker.eventtracker-siem)  | Eseménykövető SIEM egy átfogó biztonsági platformot kiépítenünk, amely speciális naplózási használatra kész megfelelőségi funkciókkal rendelkező biztonsági eszközök. | Eseménykövető |
 | ![F5](media/azure-stack-marketplace-azure-items/f5.png) | [F5 Big-IP virtuális kiadás](https://azuremarketplace.microsoft.com/marketplace/apps/f5-networks.f5-big-ip-best)  | Speciális terheléselosztás, a GSLB, a hálózati tűzfal, a DNS, a WAF és az alkalmazás eléréséhez. | F5 Networks |
+| ![FortiGate új generációs tűzfal](media/azure-stack-marketplace-azure-items/fortinetsquare.png) | [FortiGate új generációs tűzfal](https://azuremarketplace.microsoft.com/marketplace/apps/fortinet.fortinet-fortigate-singlevm) | Tűzfal-technológiája, amely teljes körű tartalom- és hálózatvédelmet és egy átfogó, hatékony biztonsági funkciókészlet biztosít. Alkalmazásvezérlést, IP-CÍMEK, webszűrést, valamint olyan speciális funkciókat, például a biztonsági rések kezelése VPN azonosításához és elhárításához szükséges a legújabb összetett biztonsági fenyegetések vírusvédelmet működik. | Fortinet |
 | ![Hortonworks Data Platform (HDP) tesztkörnyezet](media/azure-stack-marketplace-azure-items/hortonworks.png) | [Hortonworks Data Platform (HDP) tesztkörnyezet](https://azuremarketplace.microsoft.com/marketplace/apps/hortonworks.hortonworks-sandbox) | Szolgáltató: HDP 2,5 100 %-os nyílt forráskódú platform a Hadoop, Spark, Storm, HBase, a Kafka, Hive, az Ambari. | Hortonworks |
 | ![KEMP LoadMaster Load Balancer ADC tartalom kapcsoló](media/azure-stack-marketplace-azure-items/kemp.png) | [KEMP LoadMaster Load Balancer ADC tartalom kapcsoló](https://azuremarketplace.microsoft.com/marketplace/apps/kemptech.vlm-azure) | 4 – 7. rétegbeli alkalmazás kézbesítési Vezérlőszolgáltatást (ADC) terheléselosztót, Content kapcsolóval, és a Traffic Manager. | KEMP Technologies Inc. |
 | ![NRI mPLAT Suite - Többfelhős Conductor](media/azure-stack-marketplace-azure-items/nri.png) | [mPLAT Suite - Többfelhős Conductor](https://azuremarketplace.microsoft.com/marketplace/apps/nri.mplatmc2018-vm) | Szeretne figyelni, a vészhelyzeti egyetlen panelen konfigurálása, üzembe helyezése, automatizálhatja és szabályozása bármilyen számítási feladat vagy a felhőben. | NRI |

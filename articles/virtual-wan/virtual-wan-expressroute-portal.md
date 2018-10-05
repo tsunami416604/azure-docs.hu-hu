@@ -5,15 +5,15 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: tutorial
-ms.date: 09/12/2018
+ms.date: 09/26/2018
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to connect my corporoate on-premises network(s) to my VNets using Virtual WAN and ExpressRoute.
-ms.openlocfilehash: 46a48c6e06f37968ab3f41b30d983f2664785811
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 0b8de4d04d9cca47423634164e458e8699154f30
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46990552"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47405308"
 ---
 # <a name="tutorial-create-an-expressroute-association-using-azure-virtual-wan-preview"></a>Oktatóanyag: ExpressRoute-társítás létrehozása az Azure Virtual WAN (előzetes verzió) használatával
 
@@ -39,6 +39,30 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 [!INCLUDE [Before you begin](../../includes/virtual-wan-tutorial-vwan-before-include.md)]
 
+## <a name="register"></a>A funkció regisztrálása
+
+Kattintson a **Kipróbálás** gombra a funkció egyszerű regisztrálásához az Azure Cloud Shell használatával.
+
+>[!NOTE]
+>Ha nem regisztrálja a funkciót, nem használhatja, és nem jelenik meg a portálon sem.
+>
+>
+
+Miután a **Kipróbálás** gombra kattintva megnyílik az Azure Cloud Shell, másolja és illessze be a következő parancsokat:
+
+```azurepowershell-interactive
+Register-AzureRmProviderFeature -ProviderNamespace Microsoft.Network -FeatureName AllowCortexExpressRouteGateway
+```
+ 
+```azurepowershell-interactive
+Get-AzureRmProviderFeature -ProviderNamespace Microsoft.Network -FeatureName AllowCortexExpressRouteGateway
+```
+
+Amikor a funkció már regisztráltként jelenik meg, regisztrálja újra az előfizetést a Microsoft.Network névtérben.
+
+```azurepowershell-interactive
+Register-AzureRmResourceProvider -ProviderNamespace Microsoft.Network
+```
 
 ## <a name="vnet"></a>1. Virtuális hálózat létrehozása
 
@@ -46,7 +70,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 ## <a name="openvwan"></a>2. Virtuális WAN létrehozása
 
-Egy böngészőből lépjen az [Azure Portalra](https://portal.azure.com), majd jelentkezzen be az Azure-fiókjával.
+Egy böngészőből lépjen az [Azure Portalra (előzetes verzió)](http://aka.ms/azurevirtualwanpreviewfeatures), majd jelentkezzen be Azure-fiókjával.
 
 [!INCLUDE [Create a virtual WAN](../../includes/virtual-wan-tutorial-vwan-include.md)]
 

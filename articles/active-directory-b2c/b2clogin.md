@@ -1,57 +1,71 @@
 ---
-title: A b2clogin.com használata |} A Microsoft Docs
-description: Ismerje meg a b2clogin.com használata helyett login.microsoftonline.com.
+title: Set átirányítási URL-címek a b2clogin.com-on Azure Active Directory B2C |} A Microsoft Docs
+description: További információ a b2clogin.com használata az átirányítási URL-címek az Azure Active Directory B2C-t.
 services: active-directory-b2c
 author: davidmu1
 manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 04/29/2018
+ms.date: 10/04/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: c24582fce44006d9a3972d73078aa8cb0d212c11
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.openlocfilehash: 8e06cf1a443d4fd158e29ef4b53206a83800dfe9
+ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47053844"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48803052"
 ---
-# <a name="using-b2clogincom"></a>A B2Clogin.com használata
+# <a name="set-redirect-urls-to-b2clogincom-for-azure-active-directory-b2c"></a>Set átirányítási URL-címek a b2clogin.com-on Azure Active Directory B2C-vel
 
-Továbbítja, hogy még arra ösztönzi használni minden ügyfél `<YourDirectoryName>.b2clogin.com` megszüntetjük, és `login.microsoftonline.com`. A B2Clogin.com biztosít további előnyöket és juttatásokat például:
-* Már nem az azonos cookie-k megosztása más Microsoft-szolgáltatás.
-* Minden hivatkozás, amelyben a Microsoft eltávolíthatja az URL-címben (lecserélheti `<YourDirectoryName>.onmicrosoft.com` a címtár-azonosító). Például: `https://<YourDirectoryName>.b2clogin.com/tfp/<YourDirectoryID>/<policyname>/v2.0/.well-known/openid-configuration`.
+Az identitásszolgáltató-előfizetés, és jelentkezzen be az Azure Active Directory (Azure AD) B2C alkalmazásban beállításakor szüksége egy átirányítási URL-címet. A múltban login.microsoftonline.com használták, most kell a b2clogin.com használata.
 
-Íme, mit kell tennie a b2clogin.com-on keresztül áttelepítése
+A b2clogin.com használata lehetővé teszi további előnyökkel, például:
 
-* Az átirányítási URI-k a közösségi szolgáltató alkalmazások módosítása
-* Az alkalmazás helyett a B2Clogin.com használata szerkesztése `login.microsoftonline.com` házirend-referenciák és jogkivonat-végpont számára.
-* Ha MSAL használ, be kell `ValidateAuthority=false`.  
+- A cookie-k már nem a más Microsoft-szolgáltatásokba vannak megosztva.
+- Az URL-címek már nem a Microsoft hivatkozást tartalmaz. Például: `https://your-tenant-name.b2clogin.com/tfp/your-tenant-ID/policyname/v2.0/.well-known/openid-configuration`.
 
-##<a name="redirect-uris-for-social-identity-providers"></a>A közösségi identitásszolgáltatókat átirányítási URI-k
+A b2clogin.com használata esetén állítsa be az átirányítási URL-címek az identity provider alkalmazásokban a b2clogin.com használata. Is meg az Azure AD B2C alkalmazás a b2clogin.com használata a házirend-referenciák és jogkivonat-végpont. Az MSAL használatakor be kell a **ValidateAuthority** tulajdonságot `false`.
 
-Ha közösségi fiók Identitásszolgáltatók állítsa be a könyvtárban van szüksége, módosításokat végezzen az alkalmazásaikba.  Nincs olyan paramétert az alkalmazást, a közösségi szolgáltató, amely megbízható URL-címének átirányítása az Azure AD B2C-vel listáját tartalmazza.  Jelenleg, valószínűleg nincs beállítva visszairányítja néhány `login.microsoftonline.com` helyen kell módosítani az URL-címet, hogy `YourDirectoryName.b2clogin.com` lesz egy engedéllyel rendelkező átirányítási URI-t.  El kell távolítania a `/te` is.  Kisebb-változatok vannak az URL-címet minden egyes identitásszolgáltató ezért ellenőrizze a megfelelő lapon, a pontos URL-Címének lekéréséhez.  
+## <a name="change-redirect-urls"></a>Változás átirányítási URL-címek
 
-| Identitásszolgáltató |
-|-------------------|
-|[Microsoft-fiók](active-directory-b2c-setup-msa-app.md)|
-|[Facebook](active-directory-b2c-setup-fb-app.md)|
-|[Google](active-directory-b2c-setup-goog-app.md)|
-|[Amazon](active-directory-b2c-setup-amzn-app.md)|
-|[LinkedIn](active-directory-b2c-setup-li-app.md)|
-|[Twitter](active-directory-b2c-setup-twitter-app.md)|
-|[GitHubon](active-directory-b2c-setup-github-app.md)|
-|[Weibo](active-directory-b2c-setup-weibo-app.md)|
-|[QQ](active-directory-b2c-setup-qq-app.md)|
-|[WeChat](active-directory-b2c-setup-wechat-app.md)|
-|[Azure AD](active-directory-b2c-setup-oidc-azure-active-directory.md)|
-|[Egyéni OIDC](active-directory-b2c-setup-oidc-idp.md)|
+Szeretne használni a b2clogin.com, az identity provider alkalmazás beállításait, keresse meg és megbízható URL-címének átirányítása az Azure AD B2C-vel listája.  Jelenleg, valószínűleg nincs beállítva néhány login.microsoftonline.com hely visszairányítja. 
 
-##<a name="update-your-application-references"></a>Az alkalmazás hivatkozások frissítését
+Módosítsa az átirányítási URL-címet kell, hogy `your-tenant-name.b2clogin.com` jogosult. Cserélje le `your-tenant-name` neve az Azure AD B2C-bérlőben, és távolítsa el `/te` Ha az URL-cím létezik. Kisebb-változatok vannak az URL-címet minden egyes identitásszolgáltató ezért ellenőrizze a megfelelő lapon, a pontos URL-Címének lekéréséhez.
 
-Az alkalmazás valószínűleg hivatkozik `login.microsoftonline.com` több helyen, például a házirend-hivatkozások és a jogkivonat-végpont.  Győződjön meg arról, hogy az engedélyezési végpont, a jogkivonat-végpont és a kiállító frissítve lett-e.  
+Identitás-szolgáltatóktól telepítési adatait a következő cikkekben találja meg:
 
-##<a name="set-validateauthorityfalse-in-msal"></a>Állítsa be `ValidateAuthority=false` az MSAL
+- [Microsoft-fiók](active-directory-b2c-setup-msa-app.md)
+- [Facebook](active-directory-b2c-setup-fb-app.md)
+- [Google](active-directory-b2c-setup-goog-app.md)
+- [Amazon](active-directory-b2c-setup-amzn-app.md)
+- [LinkedIn](active-directory-b2c-setup-li-app.md)
+- [Twitter](active-directory-b2c-setup-twitter-app.md)
+- [GitHubon](active-directory-b2c-setup-github-app.md)
+- [Weibo](active-directory-b2c-setup-weibo-app.md)
+- [QQ](active-directory-b2c-setup-qq-app.md)
+- [WeChat](active-directory-b2c-setup-wechat-app.md)
+- [Azure AD](active-directory-b2c-setup-oidc-azure-active-directory.md)
+- [Egyéni OIDC](active-directory-b2c-setup-oidc-idp.md)
 
-Ha MSAL használ, meg kell beállítani `ValidateAuthority=false`.  További információkért lásd: [ebben a dokumentációban](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.clientapplicationbase?view=azure-dotnet).
+## <a name="update-your-application"></a>Az alkalmazás frissítése
+
+Az Azure AD B2C-alkalmazást valószínűleg hivatkozik `login.microsoftonline.com` több helyen, például a házirend-hivatkozások és a jogkivonat-végpont.  Győződjön meg arról, hogy az engedélyezési végpont, a jogkivonat-végpont és a kiállító használatára frissítve lett-e `your-tenant-name.b2clogin.com`.  
+
+## <a name="set-the-validateauthority-property"></a>A ValidateAuthority tulajdonsága
+
+Ha MSAL használ, állítsa be a **ValidateAuthority** való `false`. Az alábbi példa bemutatja, hogyan lehet, hogy a tulajdonság értéke:
+
+```
+this.clientApplication = new UserAgentApplication(
+  env.auth.clientId,
+  env.auth.loginAuthority,
+  this.authCallback.bind(this),
+  {
+    validateAuthority: false
+  }
+);
+```
+
+ További információkért lásd: [ClientApplicationBase osztály ](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.clientapplicationbase?view=azure-dotnet).

@@ -12,15 +12,15 @@ ms.devlang: NA
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 09/24/2018
+ms.date: 09/26/2018
 ms.author: alkohli
 ms.custom: ''
-ms.openlocfilehash: d0c6f8723909b71501894c9363932c752c1e130c
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 5a173340be424c74c76da659816b1b95b74c465f
+ms.sourcegitcommit: 3150596c9d4a53d3650cc9254c107871ae0aab88
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46989855"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47419542"
 ---
 # <a name="tutorial-provision-azure-data-box-gateway-in-vmware-preview"></a>Oktatóanyag: Az Azure Data Box Gateway üzembe helyezése a VMware-ben (előzetes verzió)
 
@@ -34,7 +34,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * A gazdagép minimális eszközkövetelményeknek való megfelelésének ellenőrzése
-> * Virtuális eszköz üzembe helyezése a hipervizorban
+> * Virtuális eszköz üzembe helyezése a VMware-ben
 > * A virtuális eszköz elindítása és az IP-cím lekérése
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
@@ -74,7 +74,7 @@ A virtuális eszköz üzembe helyezése előtt győződjön meg az alábbiakról
 Előkészületek:
 
 - Tekintse át a Data Box Gateway üzembe helyezésére vonatkozó hálózati követelményeket, és azoknak megfelelően konfigurálja az adatközponti hálózatot. További információkért lásd [a Data Box Gateway hálózati követelményeit](data-box-gateway-system-requirements.md#networking-requirements) ismertető szakaszt.
-- Az eszköz optimális működéséhez gondoskodjon róla, hogy az internetes sávszélesség legalább 20 Mb/s legyen.
+- Az eszköz optimális működéséhez gondoskodjon róla, hogy legalább 20 Mb/s sebességű internetes sávszélesség rendelkezésre álljon.
 
 ## <a name="check-the-host-system"></a>A gazdarendszer ellenőrzése
 
@@ -198,7 +198,7 @@ Az alábbi lépések végrehajtásával indítsa el a virtuális eszközt, és c
 
 6. Az 5–7. lépést csak akkor kell végrehajtani, ha nem DHCP-környezetben végzi a rendszerindítást. Ha DHCP-környezetben van, hagyja ki ezeket a lépéseket, és folytassa a 8. lépéssel. Ha nem DHCP-környezetben indította az eszközt, megjelenik egy, a következőhöz hasonló üzenet: **A Set-HcsIPAddress parancsmaggal konfigurálhatja a hálózatot**. 
    
-7. A hálózat konfigurálásához a parancssorban a `Get-HcsIpAddress` parancs használatával listázza ki a virtuális eszközön engedélyezett hálózati adaptereket. Ha az eszközön egyetlen hálózati adapter van engedélyezve, az ehhez az adapterhez rendelt alapértelmezett név az `DATA1`.
+7. A hálózat konfigurálásához a parancssorban a `Get-HcsIpAddress` parancs használatával listázza ki a virtuális eszközön engedélyezett hálózati adaptereket. Ha az eszközön egyetlen hálózati adapter van engedélyezve, az ehhez az adapterhez rendelt alapértelmezett név az `Ethernet`.
 
 8. A `Set-HcsIpAddress` parancsmaggal konfigurálhatja a hálózatot. Erre alább láthat egy példát:
 
@@ -208,7 +208,7 @@ Az alábbi lépések végrehajtásával indítsa el a virtuális eszközt, és c
 
    ![](./media/data-box-gateway-deploy-provision-vmware/image24.png)
 
-Ha az eszköz nem felel meg a minimális konfigurációs követelményeknek, egy hibaüzenet jelenik meg a szalagcím szövegében (lásd alább). Módosítania kell az eszköz konfigurációját, hogy elegendő erőforrással rendelkezzen a minimális követelmények teljesítéséhez. Ezután újraindíthatja az eszközt, és csatlakozhat hozzá. A minimális konfigurációs követelményeket az [1. lépésben tekintheti meg, amely ismerteti, hogyan ellenőrizheti a gazdarendszer megfelelését a virtuális eszközökre vonatkozó minimális követelményeknek](#step-1-ensure-host-system-meets-minimum-virtual-device-requirements).
+Ha az eszköz nem felel meg a minimális konfigurációs követelményeknek, egy hibaüzenet jelenik meg a szalagcím szövegében (lásd alább). Módosítania kell az eszköz konfigurációját, hogy elegendő erőforrással rendelkezzen a minimális követelmények teljesítéséhez. Ezután újraindíthatja az eszközt, és csatlakozhat hozzá. A minimális konfigurációs követelményeket [a gazdarendszer a virtuális eszközökre vonatkozó minimális követelményeknek való megfelelését ellenőrző](#check-the-host-system) szakaszban tekintheti meg.
 
 <!---If you face any other error during the initial configuration using the local web UI, refer to the following workflows:
 
@@ -221,7 +221,7 @@ Ebben az oktatóanyagban a Data Box Gatewayjel kapcsolatos alábbi témakörökk
 
 > [!div class="checklist"]
 > * A gazdagép minimális eszközkövetelményeknek való megfelelésének ellenőrzése
-> * Virtuális eszköz üzembe helyezése a hipervizorban
+> * Virtuális eszköz üzembe helyezése a VMware-ben
 > * A virtuális eszköz elindítása és az IP-cím lekérése
 
 A következő oktatóanyag a virtuális eszköz csatlakoztatását, beállítását és aktiválását mutatja be.

@@ -9,12 +9,12 @@ ms.reviewer: jmartens
 ms.author: aashishb
 author: aashishb
 ms.date: 10/02/2018
-ms.openlocfilehash: 8a26491acc7215598e57ce6074fffe26a4374a96
-ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
+ms.openlocfilehash: 885d867d0733ef923d327d8d6a36fc1588fd4961
+ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48251048"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48801012"
 ---
 # <a name="secure-azure-machine-learning-web-services-with-ssl"></a>Biztonságos SSL-lel az Azure Machine Learning-webszolgáltatások
 
@@ -81,7 +81,7 @@ A tanúsítvány igénylésekor meg kell adni a teljesen minősített tartomány
     aci_config = AciWebservice.deploy_configuration(ssl_enabled=True, ssl_cert_pem_file="cert.pem", ssl_key_pem_file="key.pem", ssl_cname="www.contoso.com")
     ```
 
-+ **A mező programozható gamma arrays (FPGA) üzembe helyezése**
++ **A mező Programmable Gate Arrays (FPGA) üzembe helyezése**
 
   Válasza a `create_service` művelet a szolgáltatás IP-címét tartalmazza. Ha a DNS-név leképezése az IP-címet, a szolgáltatás az IP-címet használja. A válasz is tartalmaz egy __elsődleges kulcs__ és __másodlagos kulcs__ használt a szolgáltatás felhasználásához. Paraméterek értékének megadására az SSL-kapcsolódó kódrészletben látható módon:
 
@@ -119,7 +119,7 @@ Ezt követően frissítenie kell a DNS, a web Service mutasson.
 
   Frissítse a DNS, a "Beállítások" lapon a "nyilvános IP-címe" az AKS-fürtöt a képen látható módon. A nyilvános IP-címet az erőforráscsoportban, amely tartalmazza az AKS-ügynök csomópontok és más hálózati erőforrások létrehozása az erőforrástípusok egyikét találja.
 
-  [ ![Az Azure Machine Learning szolgáltatás: webszolgáltatások SSL használatával biztonságossá tétele](./media/how-to-secure-web-service/aks-public-ip-address.png) ] ((.media/how-to-secure-web-service/aks-public-ip-address.png#lightbox)
+  ![Az Azure Machine Learning szolgáltatás: webszolgáltatások SSL használatával biztonságossá tétele](./media/how-to-secure-web-service/aks-public-ip-address.png)
 
 ## <a name="consume-authenticated-services"></a>Hitelesített szolgáltatásainak használata
 
@@ -131,7 +131,7 @@ Ezt követően frissítenie kell a DNS, a web Service mutasson.
 
   + [Az aks üzembe helyezése](how-to-deploy-to-aks.md)
 
-+ **Az ACI és az FPGA**:  
++ **A FPGA**:  
 
   Az alábbi példák bemutatják, hogyan lehet egy hitelesített FPGA-szolgáltatás a Python és a C# használata.
   Cserélje le `authkey` az elsődleges vagy másodlagos kulcsot, a szolgáltatás telepítésekor visszaadott együtt.

@@ -14,12 +14,12 @@ ms.component: users-groups-roles
 ms.date: 01/14/2018
 ms.author: curtand
 ms.custom: seohack1
-ms.openlocfilehash: 10851990f26124ae89945d4b56058115cacb81ee
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: 5beee2fae518fec23b65ff05a79281e0fc3f1417
+ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37861866"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48800740"
 ---
 # <a name="how-to-add-licensed-users-to-a-group-for-licensing-in-azure-active-directory"></a>A licenccel rendelkező felhasználók felvétele egy csoportba licencelése az Azure Active Directory
 
@@ -47,7 +47,7 @@ A legfontosabb, amit figyelembe kell venni az, hogy egy olyan helyzetet, ahol mi
 
 6. Fontolja meg az eredeti közvetlen hozzárendelés; eltávolítása fokozatos, ehhez "regisztrálások", a felhasználók egy alhalmazára eredményeinek figyelése először érdemes.
 
-  Az eredeti közvetlen hozzárendelés sikerült hagyja, a felhasználók, de amikor a felhasználók elhagyják a licenccel rendelkező csoportok, azok továbbra is megőrzik az eredeti licenc, amely valószínűleg nem kíván szeretne.
+  Az eredeti közvetlen hozzárendelés sikerült hagyja, a felhasználók, de ha a felhasználók elhagyják a licenccel rendelkező csoportok azok továbbra is megőrzik az eredeti licenc, amely valószínűleg nem ajánlott.
 
 ## <a name="an-example"></a>Példa
 
@@ -84,7 +84,7 @@ Egy szervezet 1000 felhasználó rendelkezik. Az összes felhasználóknak szük
 
 Licenc felügyeleti csoportok használatával kapcsolatos egyéb forgatókönyvek kapcsolatos további információkért olvassa el
 
-* [Licencek hozzárendelése egy csoporthoz az Azure Active Directory](licensing-groups-assign.md)
+* [Licencek hozzárendelése egy csoporthoz az Azure Active Directoryban](licensing-groups-assign.md)
 * [Mit jelent a Csoportalapú licencelés az Azure Active Directoryban?](../fundamentals/active-directory-licensing-whatis-azure-portal.md)
-* [Az Azure Active Directory csoport kapcsolatos problémák észleléséhez és a](licensing-groups-resolve-problems.md)
-* [Csoportalapú licencelés további forgatókönyvek az Azure Active Directory](licensing-group-advanced.md)
+* [A csoportok licencproblémáinak azonosítása és megoldása az Azure Active Directoryban](licensing-groups-resolve-problems.md)
+* [Az Azure Active Directory csoportalapú licencelésének további forgatókönyvei](licensing-group-advanced.md)

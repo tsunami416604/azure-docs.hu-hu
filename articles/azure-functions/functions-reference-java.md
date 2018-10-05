@@ -11,12 +11,12 @@ ms.devlang: java
 ms.topic: conceptual
 ms.date: 09/14/2018
 ms.author: routlaw
-ms.openlocfilehash: f6c5eb4a3ace1fcca1bbbef321371d55a0ce8da9
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 9e07cddb9d446ea24143d3a6dec5e310d3ed6f1c
+ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46123487"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48802117"
 ---
 # <a name="azure-functions-java-developer-guide"></a>Az Azure Functions Java fejlesztői útmutatója
 
@@ -115,9 +115,15 @@ az ehhez tartozó `function.json`:
 
 ```
 
+## <a name="jdk-runtime-availability-and-support"></a>JDK futásidejű rendelkezésre állásával és támogatásával 
+
+Töltse le és használja a [Azul Zulu Azure](https://assets.azul.com/files/Zulu-for-Azure-FAQ.pdf) segítségével a [Azul Systems](https://www.azul.com/downloads/azure-only/zulu/) helyi függvény Java-alkalmazások fejlesztéséhez. Segítségével Windows, Linux és MacOS rendszeren érhető el és [az Azure-támogatás](https://support.microsoft.com/en-us/help/4026305/sql-contact-microsoft-azure-support) érhető el a fejlesztés során észlelt problémákat olyan [minősített támogatási csomag](https://azure.microsoft.com/support/plans/).
+
 ## <a name="third-party-libraries"></a>Külső gyártó kódtárait 
 
 Az Azure Functions támogatja a külső gyártótól származó kódtárakat. Alapértelmezés szerint az összes függősége a projekt megadott `pom.xml` fájl automatikusan kötegelve fog során a `mvn package` cél. Nincs megadva függőségeként-tárak a `pom.xml` fájlt, helyezze el őket egy `lib` könyvtárat a gyökérkönyvtár a függvény. Függőségeket helyezi el a `lib` directory hozzáadódik a rendszer osztálybetöltő futásidőben.
+
+A `com.microsoft.azure.functions:azure-functions-java-library` függőségi alapértelmezés szerint az osztályútvonal lemezén, és nem kell szerepelnie a `lib` könyvtár.
 
 ## <a name="data-type-support"></a>Adattípus-támogatás
 
@@ -235,7 +241,7 @@ Néha egy függvény részletes bemenetek és kimenetek felett. Speciális típu
 
 | Speciális típusa      |       Cél        | Tipikus használati                  |
 | --------------------- | :-----------------: | ------------------------------ |
-| `HttpRequestMessage<T>`  |    HTTP-eseményindító     | Első módszer, fejlécek és lekérdezések |
+| `HttpRequestMessage<T>`  |    HTTP-trigger     | Első módszer, fejlécek és lekérdezések |
 | `HttpResponseMessage<T>` | HTTP-kimeneti kötése | 200-as eltérő állapotot adott vissza   |
 
 > [!NOTE] 

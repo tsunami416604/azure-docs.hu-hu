@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: michmcla
-ms.openlocfilehash: c39b78995aaa7e6754b180142c03cf3aa25199a5
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: 2927521a76e74686592fbc4b3ccb931ece7981fd
+ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45574272"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48803307"
 ---
 # <a name="how-to-require-two-step-verification-for-a-user"></a>Egy felhasználó kétlépéses ellenőrzést igénylése
 
@@ -87,8 +87,17 @@ A felhasználói állapot módosítása használatával [az Azure AD PowerShell]
 
 Ne helyezze át máshová felhasználók közvetlenül a *kényszerített* állapota. Ha így tesz, nem böngészőalapú alkalmazások tovább működni, mert a felhasználó nem ment keresztül az Azure MFA-regisztráció, és kapott egy [alkalmazásjelszót](howto-mfa-mfasettings.md#app-passwords).
 
+A modul telepítéséhez először használatával:
+
+       Install-Module MSOnline
+       
+> [!TIP]
+> Ne felejtse el először létesítsen **Connect-MsolService**
+
+
 PowerShell-lel jó választás, ha a felhasználók kötegelt engedélyezésének kell. Hozzon létre egy PowerShell-parancsprogram, amely végighalad a felhasználók listáját, és lehetővé teszi őket:
 
+        Import-Module MSOnline
         $st = New-Object -TypeName Microsoft.Online.Administration.StrongAuthenticationRequirement
         $st.RelyingParty = "*"
         $st.State = “Enabled”
@@ -106,6 +115,14 @@ A következő parancsfájlt a következő egy példa:
         $sta = @($st)
         Set-MsolUser -UserPrincipalName $user -StrongAuthenticationRequirements $sta
     }
+    
+A letiltott MFA használni ezt a parancsfájlt:
+
+    Get-MsolUser -UserPrincipalName user@domain.com | Set-MsolUser -StrongAuthenticationRequirements @()
+    
+vagy is lehet Rövidítse le:
+
+    Set-MsolUser -UserPrincipalName user@domain.com -StrongAuthenticationRequirements @()
 
 ## <a name="next-steps"></a>További lépések
 

@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: 8a7ecac3776d767160b07f550251c54793926056
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 8fbfd37be0bc6f05f30b71fdae2e7cc88601d628
+ms.sourcegitcommit: 4edf9354a00bb63082c3b844b979165b64f46286
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47033192"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48785545"
 ---
 # <a name="authoring-and-endpoint-user-access"></a>Létrehozási és -végpont felhasználói hozzáférés
 Authoring hozzáférés tulajdonosok és a közreműködők érhető el. Saját alkalmazások esetén végponti hozzáférés tulajdonosai és a közreműködők érhető el. Egy nyilvános alkalmazás végponti hozzáférés érhető el mindenki számára, amelyek a saját LUIS-fiókkal rendelkezik, és a nyilvános alkalmazás-azonosítóval rendelkezik. 
@@ -85,7 +85,7 @@ Szabályozhatja, hogy ki láthatja a LUIS végpontkulcsának kiszolgálók-körn
 
 ## <a name="security-compliance"></a>Biztonsági megfelelőségi
  
-[!include[LUIS Free account](../../../includes/cognitive-services-luis-security-compliance.md)]
+[!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-security-compliance.md)]
 
 ## <a name="next-steps"></a>További lépések
 

@@ -1,6 +1,6 @@
 ---
-title: Szolgáltatási korlátait, az Azure Search |} Microsoft Docs
-description: A kapacitástervezés használt szolgáltatásra vonatkozó korlátozások és kérelmeit és válaszait az Azure Search maximális korlátozásait.
+title: Szolgáltatási korlátozásaival, az Azure Search szolgáltatásban |} A Microsoft Docs
+description: A kapacitástervezés használt szolgáltatási korlátai és a kérelmek és válaszok az Azure Search maximális korlátig.
 author: HeidiSteen
 manager: cgronlun
 services: search
@@ -9,32 +9,32 @@ ms.devlang: NA
 ms.topic: conceptual
 ms.date: 05/24/2018
 ms.author: heidist
-ms.openlocfilehash: c24cccde507873424e3c51d584f5cd094df2b876
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 8abcc90bf72544e6226d6c8487d2951b60ea6d29
+ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34641169"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48802152"
 ---
-# <a name="service-limits-in-azure-search"></a>Az Azure Search szolgáltatásra vonatkozó korlátozások
-Maximális korlátozza a tárolási, számítási feladatok és indexek, dokumentumok, mennyiségét, és más objektumok függenek, hogy Ön [kiépíteni az Azure Search](search-create-service-portal.md) : **szabad**, **alapvető**, vagy **Szabványos** tarifacsomag szükséges.
+# <a name="service-limits-in-azure-search"></a>Az Azure Search szolgáltatási korlátai
+Maximális korlátozza a storage, a számítási feladatok és az indexek, dokumentumok, mennyiségét, és más objektumok függenek, hogy Ön [üzembe helyezése az Azure Search](search-create-service-portal.md) , **ingyenes**, **alapszintű**, vagy **Standard** díjcsomagok árából.
 
-+ **Szabad** egy több-bérlős megosztott szolgáltatás, amely az Azure-előfizetéssel rendelkezik.
++ **Ingyenes** egy több-bérlős megosztott szolgáltatás, amely az Azure-előfizetésében.
 
-+ **Alapszintű** dedikált számítási erőforrások biztosít egy kisebb léptékű termelési számítási feladatokhoz.
++ **Alapszintű** dedikált számítási erőforrásokat biztosít a kisebb léptékű termelési számítási feladatokhoz.
 
-+ **Standard** minden szinten további tárolási és feldolgozási kapacitással rendelkező dedikált gépeken futtatja. Standard elérhető lesz a négy szinten lévő: S1, S2, S3 és S3 HD.
++ **Standard szintű** minden szinten több tárolási és feldolgozási kapacitással rendelkező dedikált gépen üzemel. Standard négy szinten érhető el: S1, S2, S3 és S3 HD.
 
-  S3 nagy sűrűségű (S3 HD) van fejthetők vissza az adott munkaterhelés konkrét: [több-bérlős](search-modeling-multitenant-saas-applications.md) és nagy mennyiségű kis indexek (1 millió dokumentumok / index, három év indexek-szolgáltatás esetében). Ez a szint nem biztosít a [indexelő szolgáltatás](search-indexer-overview.md). S3 HD, az adatfeldolgozást a leküldéses módszerrel, index forrástól elküldik az adatokat az API-hívásokban használatával kell használni. 
+  Nagy kapacitású S3 (S3 HD) van fejthetők vissza az adott munkaterhelés konkrét: [több-bérlős](search-modeling-multitenant-saas-applications.md) és nagy mennyiségű (1 millió indexenkénti, három példányban indexek szolgáltatásonként) kis méretű indexeket. Ez a szint nem biztosít a [indexelő szolgáltatás](search-indexer-overview.md). Az S3 HD adatbetöltés kell kihasználni a ügyfélleküldéses módszer használatával a forrás és a indexet az adatok leküldéséhez API-hívások. 
 
 > [!NOTE]
-> A szolgáltatás van üzembe helyezve egy konkrét csomagot kiválasztani. Ahhoz, hogy a kapacitás rétegek Ugrás magában foglalja a (nincs nincs frissítés) egy új szolgáltatás kiépítését. További információkért lásd: [válasszon egy SKU vagy a réteg](search-sku-tier.md). Beállítja egy már kiépített szolgáltatás belül kapcsolatos további információkért lásd: [erőforrás szintek lekérdezési és indexelési munkaterhelések méretezése](search-capacity-planning.md).
+> A szolgáltatás egy adott szinten van üzembe helyezve. Kapacitás próbál a jeggyel rétegek lépésközt magában foglalja a (nincs nem helyi frissítése) egy új kiszolgáló üzembe helyezése. További információkért lásd: [Termékváltozat vagy szint kiválasztása](search-sku-tier.md). Már kiépített egy szolgáltatás kapacitásokat módosításával kapcsolatos további információkért lásd: [erőforrásszintek méretezése a lekérdezés és a számítási feladatok indexeléséhez](search-capacity-planning.md).
 >
 
 ## <a name="subscription-limits"></a>Előfizetés korlátai
 [!INCLUDE [azure-search-limits-per-subscription](../../includes/azure-search-limits-per-subscription.md)]
 
-## <a name="storage-limits"></a>Tárolási korlátai
+## <a name="storage-limits"></a>Tárolási korlátok
 [!INCLUDE [azure-search-limits-per-service](../../includes/azure-search-limits-per-service.md)]
 
 <a name="index-limits"></a>
@@ -44,26 +44,26 @@ Maximális korlátozza a tárolási, számítási feladatok és indexek, dokumen
 | Erőforrás | Ingyenes | Basic&nbsp;<sup>1</sup>  | S1 | S2 | S3 | S3&nbsp;HD |
 | -------- | ---- | ------------------- | --- | --- | --- | --- |
 | Indexek maximális száma |3 |5 vagy 15 |50 |200 |200 |1000 partíciónként vagy 3000 szolgáltatásonként |
-| Egy index maximális mezők |1000 |100 |1000 |1000 |1000 |1000 |
-| Maximális [javaslattevők](https://docs.microsoft.com/rest/api/searchservice/suggesters) / index |1 |1 |1 |1 |1 |1 |
-| Maximális [profilok pontozási](https://docs.microsoft.com/rest/api/searchservice/add-scoring-profiles-to-a-search-index) / index |100 |100 |100 |100 |100 |100 |
-| Profilonként maximális funkciók |8 |8 |8 |8 |8 |8 |
+| Indexenkénti maximális mezők |1000 |100 |1000 |1000 |1000 |1000 |
+| Maximális [javaslattevők](https://docs.microsoft.com/rest/api/searchservice/suggesters) indexenkénti |1 |1 |1 |1 |1 |1 |
+| Maximális [pontozási profilok](https://docs.microsoft.com/rest/api/searchservice/add-scoring-profiles-to-a-search-index) indexenkénti |100 |100 |100 |100 |100 |100 |
+| Profil maximális függvények |8 |8 |8 |8 |8 |8 |
 
-<sup>1</sup> alapvető szolgáltatások létrehozása után késői 2017 megnövekedett legfeljebb 15 indexek, az adatforrások és az indexelők. A korábban létrehozott szolgáltatások 5 rendelkeznek. Az alapszintű csomag az index / 100 mezők alsó határának csak SKU.
+<sup>1</sup> késői 2017 Miután megnövekedett legfeljebb 15 indexeket, adatforrásból és indexelőből létrehozott alapvető szolgáltatások. Korábban létrehozott szolgáltatások 5 rendelkeznek. Alapszintű csomag egyetlen Termékváltozat és a egy alacsonyabb korlátja 100 mezők indexenkénti.
 
 <a name="document-limits"></a>
 
 ## <a name="document-limits"></a>A dokumentum korlátok 
 
-A legtöbb régióban tarifacsomagok (Basic, S1, S2, S3, S3 HD) Azure Search korlátlan dokumentumok számát az összes szolgáltatás létrehozása utáni novemberi/December 2017. Ez a szakasz azonosítja a régiókban, ahol a határok vonatkoznak, és annak megállapítása, hogy a szolgáltatás hatással van. 
+2018. október már nem léteznek a dokumentum korlátait minden olyan új szolgáltatás bármely számlázható szint szerint kalkuláljuk (alap, S1, S2, S3 szintű, S3 HD) bármelyik régióban hozza létre. Bár a legtöbb régióban kellett volna 2017 November/December óta száma korlátlan, öt régióban, amely továbbra is a dokumentum készletként volt. Attól függően, hol és mikor egy keresési szolgáltatás hozta létre akkor előfordulhat, hogy fut egy szolgáltatás, amely dokumentumot korlátok továbbra is vonatkozik.
 
-Annak megállapításához, hogy a szolgáltatás rendelkezik-e a dokumentum korlátok, ellenőrizze a használata csempe a áttekintése lapon a szolgáltatást. Dokumentálja száma korlátlan, vagy a réteg alapján korlátozni alá.
+Annak megállapításához, hogy a szolgáltatás rendelkezik-e a dokumentum korlátok, ellenőrizze a szolgáltatás áttekintés oldalán a használati csempét. Dokumentum-száma korlátlan, vagy egy réteg korlát hatálya alá tartozik, a rendszer.
 
-  ![Használata csempe](media/search-limits-quotas-capacity/portal-usage-tile.png)
+  ![Használat csempe](media/search-limits-quotas-capacity/portal-usage-tile.png)
 
-### <a name="regions-and-services-having-document-limits"></a>Régiók és dokumentum korlátok rendelkező szolgáltatások
+### <a name="regions-previously-having-document-limits"></a>Korábban a dokumentum korlátok rendelkező régiók
 
-Korlátok rendelkező szolgáltatások késői 2017 előtt hozták létre, vagy alacsonyabb teljesítményű fürtök használata az Azure Search szolgáltatás üzemeltetési adatközpontok futtatja. Érintett adatközpontokban a következő régiók a következők:
+A portál jelzi, hogy egy dokumentumos korlátja, ha a szolgáltatás létre késői 2017., vagy egy data Center alacsonyabb teljesítményű-fürtöket használó Azure Search-szolgáltatások üzemeltetésére lett létrehozva:
 
 + Kelet-Ausztrália
 + Kelet-Ázsia
@@ -71,72 +71,74 @@ Korlátok rendelkező szolgáltatások késői 2017 előtt hozták létre, vagy 
 + Nyugat-Japán
 + USA nyugati középső régiója
 
-A dokumentum korlátai szolgáltatásokra a következő maximális korlátok vonatkoznak:
+A dokumentum korlátai szolgáltatások esetében a következő korlátozásokat a alkalmazni:
 
 |  Ingyenes | Alapszintű | S1 | S2 | S3 | S3&nbsp;HD |
 |-------|-------|----|----|----|-------|
 |  10,000 |1 millió |15 millió partíciónként vagy 180 millió szolgáltatásonként |60 millió partíciónként vagy 720 millió szolgáltatásonként |120 millió partíciónként vagy 1,4 milliárd szolgáltatásonként |1 millió indexenként vagy 200 millió partíciónként |
 
+Ha a szolgáltatás, amely a rendszer blokkolja, korlátai, hozzon létre egy új szolgáltatást, és majd újbóli az adott szolgáltatás teljes tartalmát. Nincs új hardverre a színfalak mögött a szolgáltatást zökkenőmentesen reprovisioning mód.
+
 > [!Note] 
-> S3 nagy sűrűségű szolgáltatások késői 2017 után létrehozott a 200 millió dokumentumot partíciónként el lett távolítva, azonban az 1 millió dokumentumot index korlát marad.
+> Nagy kapacitású S3 Services késői 2017 után létrehozott a partíciónként 200 millió dokumentumot el lett távolítva, de a / index korlát továbbra is 1 millió dokumentumot.
 
 
-### <a name="document-size-limits-per-api-call"></a>A dokumentum méretkorlátait API-hívások száma
+### <a name="document-size-limits-per-api-call"></a>A dokumentum méretbeli korlátokat API-hívás száma
 
-A maximális dokumentum egy Index API meghívásakor mérete körülbelül 16 MB.
+A maximális dokumentum Index API hívásakor mérete körülbelül 16 megabájt.
 
-A dokumentum mérete ténylegesen maximális mérete a Index API-kérés törzsében. Átadhatók egy kötegelt több dokumentumot az Index API egyszerre, mivel a méretkorlátot reálisan hány dokumentumok szerepelnek a kötegelt függ. Egyetlen dokumentum kötegben a dokumentum maximális mérete 16 MB JSON.
+Dokumentum mérete ténylegesen az Index API-kérelem törzse mérete korlátozva. Több dokumentumot kötegelt egyszerre az Index API adhat át, mivel a méretkorlátot reálisan hány dokumentumok a Batch olyan függ. Egyetlen dokumentum kötegben dokumentum maximális mérete 16 MB-os JSON.
 
-Tartsa a dokumentum mérete, ne felejtse el nem lekérdezhető adatok kihagyása a kérelemből. Képek és egyéb bináris adatokat nem közvetlenül lekérdezhető, és nem szabad az index. Nem lekérdezhető adatok integrálja a keresési eredmények között, adja meg az erőforrás URL-cím hivatkozást tartalmazó nem kereshető mező.
+Ne feledje alacsonyan tartani a dokumentumok méretétől, a kérelem nem lekérdezhető adatok kizárása. Képek és más bináris adatok nem közvetlenül lekérdezhető, és nem tárolható az indexben. Keresési eredmények nem lekérdezhető adatokat integrálhat, adjon meg egy nem kereshető mező, amely tárolja az erőforrás URL-cím hivatkozást.
 
 ## <a name="indexer-limits"></a>Az indexelő korlátok
 
-Késői 2017 után létrehozott alapvető szolgáltatások megnövekedett legfeljebb 15 indexek, az adatforrások, skillsets és indexelők rendelkeznek.
+Késedelmes 2017 után létrehozott alapvető szolgáltatások megnövekedett legfeljebb 15 indexeket, adatforrások, szakértelmével és indexelők rendelkezik.
 
-Erőforrás-igényes műveletek, például a lemezkép elemzés Azure blobindexelés vagy kognitív keresési természetes nyelvű feldolgozási rövidebb maximális futó idővel rendelkezik, úgy, hogy más, az indexelő feladat elhelyezhetők. Az indexelő feladat a maximális rendelkezésre álló időn belül nem tudja végrehajtani, ha futtassa az ütemezés szerint. Az ütemező nyomon követi az indexelési állapot. Ha egy ütemezett indexelő feladat bármilyen okból megszakad, az indexelő is onnan folytathatja az adatgyűjtést, ahol utolsó abbahagyta a következő ütemezett futáskor.
+Erőforrás-igényes művelet, például képelemzés, az Azure blob-indexelés vagy a természetes nyelvi feldolgozás, a kognitív keresés rövidebb maximális futó idővel rendelkezik, úgy, hogy más indexelési feladatokat is elhelyezkedhetnek. Ha egy indexelési feladat a maximális rendelkezésre álló időn belül nem tudja végrehajtani, próbálja meg egy ütemezés szerint fut. Az ütemező nyomon követi az indexelés állapotát. Ha egy ütemezett indexelési feladat bármilyen okból megszakad, az indexelő folytathatja a munkát, ahol utolsó abbahagyta a következő ütemezett futáskor.
 
-| Erőforrás | Szabad&nbsp;<sup>1</sup> | Basic&nbsp;<sup>2</sup>| S1 | S2 | S3 | S3&nbsp;HD&nbsp;<sup>3</sup>|
+| Erőforrás | Ingyenes&nbsp;<sup>1</sup> | Basic&nbsp;<sup>2</sup>| S1 | S2 | S3 | S3&nbsp;HD&nbsp;<sup>3</sup>|
 | -------- | ----------------- | ----------------- | --- | --- | --- | --- |
 | Indexelők maximális száma |3 |5 vagy 15|50 |200 |200 |– |
 | Adatforrások maximális száma |3 |5 vagy 15 |50 |200 |200 |– |
-| Maximális skillsets <sup>4</sup> |3 |5 vagy 15 |50 |200 |200 |– |
-| Hívásonkénti maximális indexelési betöltése |10 000 dokumentumok |Maximális dokumentumokat csak korlátozva |Maximális dokumentumokat csak korlátozva |Maximális dokumentumokat csak korlátozva |Maximális dokumentumokat csak korlátozva |– |
-| Maximális futási idejét <sup>5</sup> | 1-3 perc |24 óra |24 óra |24 óra |24 óra |–  |
-| Maximális futási ideje kognitív keresési skillsets vagy a kép elemzés indexelő blob <sup>5</sup> | 3 – 10 percig |2 óra |2 óra |2 óra |2 óra |–  |
-| A BLOB indexelő: blob maximális mérete, MB |16 |16 |128 |256 |256 |–  |
-| A BLOB indexelő: blob kinyert tartalom maximális karakterszám |32,000 |64,000 |4 millió |4 millió |4 millió |– |
+| Maximális szakértelmével <sup>4</sup> |3 |5 vagy 15 |50 |200 |200 |– |
+| Maximális indexelési terhelés száma indításonként |10 000 dokumentum |Csak a dokumentumok maximális száma korlátozott |Csak a dokumentumok maximális száma korlátozott |Csak a dokumentumok maximális száma korlátozott |Csak a dokumentumok maximális száma korlátozott |– |
+| Maximális futási idejét <sup>5</sup> | 1 – 3 perc alatt |24 óra |24 óra |24 óra |24 óra |–  |
+| Maximális futási idejét, a kognitív keresés szakértelmével vagy a blob-indexelés a képelemzés <sup>5</sup> | 3 – 10 perc |2 óra |2 óra |2 óra |2 óra |–  |
+| BLOB indexelőjével: blob maximális mérete, MB |16 |16 |128 |256 |256 |–  |
+| BLOB indexelőjével: blob kinyert tartalom maximális karakter |32,000 |64,000 |4 millió |4 millió |4 millió |– |
 
-<sup>1</sup> az ingyenes szolgáltatásokhoz indexelő maximális végrehajtási idő 3 perc alatt van, a blob-forrásoknak és más adatforrások 1 perc.
+<sup>1</sup> ingyenes szolgáltatások indexelő maximális végrehajtási ideje 3 perc alatt van, a blob-forrásoknak és minden más adatforrás esetében 1 perc.
 
-<sup>2</sup> alapvető szolgáltatások létrehozása után késői 2017 megnövekedett legfeljebb 15 indexek, az adatforrások és az indexelők. A korábban létrehozott szolgáltatások 5 rendelkeznek.
+<sup>2</sup> késői 2017 Miután megnövekedett legfeljebb 15 indexeket, adatforrásból és indexelőből létrehozott alapvető szolgáltatások. Korábban létrehozott szolgáltatások 5 rendelkeznek.
 
-<sup>3</sup> S3 HD services nem támogatja az indexelő.
+<sup>3</sup> S3 HD szolgáltatások nem támogatják az indexelő.
 
-<sup>4</sup> maximális száma skillset 30 képességek.
+<sup>4</sup> maximális indexmezők / 30 képességek.
 
-<sup>5</sup> kognitív keresési munkaterhelések és lemezkép elemzése az Azure blob indexelő mint rendszeres szöveges indexelés rövidebb futó idővel rendelkezik. Kép elemzés természetes nyelvű feldolgozási számításilag intenzív és rendelkezésre álló számítási kapacitásért le aránytalanul nagy mennyiségű felhasználását. Futásidő le lett csökkentve a várólista más feladatok futtatásához lehetőséget ad.  
+<sup>5</sup> cognitive search számítási feladatok és az Azure blob-indexelés képelemzés, mint a rendszeres szöveges indexelés rövidebb futó idővel rendelkezik. Képelemzés és a természetes nyelvi feldolgozás nagy számítási igényű, és elérhető feldolgozási teljesítmény aránytalanul nagy mennyiségű felhasználását. Futtatási idő képfájljának futtatásához lehetőséget ad az üzenetsorban lévő egyéb feladatokhoz.  
 
-## <a name="queries-per-second-qps"></a>Lekérdezések / másodperc (QPS)
+## <a name="queries-per-second-qps"></a>Lekérdezések másodpercenkénti (lekérdezési QPS)
 
-QPS becslése egymástól függetlenül kifejlesztett minden ügyfél. Index mérete és összetettségét, lekérdezés méretét és összetettségét és az adatforgalom mennyisége olyan elsődleges befolyásoló QPS. Nincs semmilyen módon nem értelmezhető becslése ajánlatot tényezőket számára ismeretlen.
+QPS becslések egymástól függetlenül minden ügyfélnek kellett kifejleszteni. Index mérete és összetettsége, lekérdezések mérete és összetettsége és forgalom mennyisége olyan elsődleges befolyásoló QPS. Nincs lehetőség a jelentéssel bíró becslések kínáló venni olyan tényezőket, ha ismeretlen.
 
-Megbecsli több előre jelezhető, ha a dedikált erőforrások (Basic és Standard rétegek) futó szolgáltatások számított. További QPS megbecsülheti szorosan mert befolyásolni több paramétert. Megközelítés becslés kapcsolatos útmutatásért lásd: [Azure Search teljesítmény- és optimalizálási](search-performance-optimization.md).
+A becslések olyan kiszámíthatóbb, ha dedikált erőforrások (alap és Standard szinten) futó szolgáltatások alapján számítjuk ki. További QPS megbecsülheti szorosan, mert rendelkezik több paraméter felett. Megközelítés-becslésére módjáról útmutatóért lásd: [Azure Search-teljesítmény és optimalizálás](search-performance-optimization.md).
 
 ## <a name="api-request-limits"></a>API-kérelmekre vonatkozó korlátok
-* 16 MB kérelmenként maximálisan <sup>1</sup>
+* Legfeljebb 16 MB-os kérelmenként <sup>1</sup>
 * 8 KB-os URL-cím maximális hossza
-* Legfeljebb 1000 dokumentumok kötegenként index feltöltését, egyesíti vagy törlése
-* A $orderby záradékban maximális 32 mezők
-* Maximális keresési kifejezés mérete 32766 bájt (32 KB-os mínusz 2 bájt) UTF-8 kódolású szöveg
+* Index kötegenként legfeljebb 1000 dokumentumok tölt fel, egyesítése vagy törlése
+* $Orderby záradékban legfeljebb 32 mezők
+* Maximális keresési kifejezés mérete 32766 bájt (32 KB-os mínusz 2 bájt) UTF-8 kódolású szöveges
 
-<sup>1</sup> az Azure Search kérelem törzse 16 MB, a gyakorlati küszöbérték egyéni mezők vagy gyűjtemények, ellenkező esetben nem korlátozott elméleti korlátok tartalmára előíró felső korlát vonatkozik (lásd: [támogatott adatok típusok](https://docs.microsoft.com/rest/api/searchservice/supported-data-types) mező összetételűnek és korlátozások olvashat).
+<sup>1</sup> az Azure Search szolgáltatásban a kérelem törzsében van egy felső korlátot 16 MB-ot, a tartalmát az egyes mezők vagy gyűjtemények, ellenkező esetben nem korlátozza elméleti korlátok gyakorlati korlátozva betartatásához vonatkoznak (lásd: [támogatott adatok típusok](https://docs.microsoft.com/rest/api/searchservice/supported-data-types) mező felépítés és korlátozások kapcsolatos további részletekért).
 
-## <a name="api-response-limits"></a>API-válaszból korlátok
-* A keresési eredmények laponként visszaadott legfeljebb 1000 dokumentumok
+## <a name="api-response-limits"></a>API-válasz korlátok
+* Legfeljebb 1000 dokumentumot adja vissza a keresési eredmények oldalanként
 * Javaslat API kérelmenként visszaadott legfeljebb 100 javaslatok
 
-## <a name="api-key-limits"></a>Az API-kulcs korlátok
-API-kulcsokat használnak a szolgáltatás-hitelesítéshez. Két típusukat különböztetjük meg. A kérelem fejlécében megadott adminisztrációs kulcsok, és a szolgáltatás teljes olvasási és írási hozzáférést. Lekérdezés kulcsai csak olvasható, az URL-cím a megadott, és általában elosztott ügyfélalkalmazások számára.
+## <a name="api-key-limits"></a>API-kulcs korlátok
+API-kulcsok szolgáltatás hitelesítéshez használhatók. Két típusukat különböztetjük meg. Az adminisztrációs kulcsok a kérelem fejlécében megadott, és a szolgáltatás teljes olvasási és írási hozzáférést. Lekérdezési kulcsok a csak olvasható, az URL-cím a megadott, és az ügyfélalkalmazások általában elosztott rendszer.
 
-* Legfeljebb 2 adminisztrációs kulcsok-szolgáltatás
-* Legfeljebb 50 lekérdezési kulcsok-szolgáltatás
+* Legfeljebb 2 az adminisztrációs kulcsok szolgáltatásonként
+* Legfeljebb 50 lekérdezési kulcsok szolgáltatásonként

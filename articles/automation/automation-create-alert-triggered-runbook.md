@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 09/18/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: ac117994140f96ec993e4fed739626f736ad7efc
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 98de7a84dc388f74c64d7c265d2ce8ed32995a5a
+ms.sourcegitcommit: 4edf9354a00bb63082c3b844b979165b64f46286
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46965279"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48784775"
 ---
 # <a name="use-an-alert-to-trigger-an-azure-automation-runbook"></a>Használjon olyan riasztást, egy Azure Automation-runbook elindítása
 
@@ -24,7 +24,7 @@ Használhat [Azure Monitor](../azure-monitor/overview.md?toc=%2fazure%2fautomati
 
 Automation-runbookok három riasztási típusokkal használható:
 * Klasszikus metrikariasztásokat
-* A tevékenységnapló-riasztások
+* Tevékenységnapló-riasztások
 * Közel valós idejű metrikákhoz kapcsolódó riasztások
 
 Riasztás a runbookot hívja, a tényleges hívás esetén, a webhook HTTP POST-kérelmet. A POST-kérés törzse tartalmazza a JSON-formátumú objektum, amelynek hasznosak a riasztáshoz kapcsolódó tulajdonságok. Az alábbi táblázat az egyes riasztástípusok tartalom sémáját mutató hivatkozásokat:
@@ -211,7 +211,7 @@ A műveletcsoport létrehozása egy értesítési műveletet:
    ![Adja hozzá a műveleti csoport oldalán](./media/automation-create-alert-triggered-runbook/add-action-group.png)
 1. A műveletcsoport létrehozásához válassza **OK**.
 
-Ez a művelet a csoport is használhatja a [tevékenységnapló-riasztások](../monitoring-and-diagnostics/monitoring-activity-log-alerts.md?toc=%2fazure%2fautomation%2ftoc.json) és [közel valós idejű riasztások](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md?toc=%2fazure%2fautomation%2ftoc.json#create-an-alert-rule-with-the-azure-portal) létrehozott.
+Ez a művelet a csoport is használhatja a [tevékenységnapló-riasztások](../monitoring-and-diagnostics/monitoring-activity-log-alerts.md?toc=%2fazure%2fautomation%2ftoc.json) és [közel valós idejű riasztások](../monitoring-and-diagnostics/monitoring-overview-alerts.md?toc=%2fazure%2fautomation%2ftoc.json) létrehozott.
 
 ## <a name="classic-alert"></a>Klasszikus riasztás
 
@@ -231,4 +231,4 @@ Egy klasszikus riasztás létrehozása:
 * Automation-runbook indítása egy webhook használatával kapcsolatos további információkért lásd: [runbook indítása webhookból](automation-webhooks.md).
 * Módjai, indítson el egy runbookot, lásd: [runbook elindítása](automation-starting-a-runbook.md).
 * Tevékenységnapló-riasztás létrehozása kapcsolatban lásd: [tevékenységnapló-riasztások létrehozása](../monitoring-and-diagnostics/monitoring-activity-log-alerts.md?toc=%2fazure%2fautomation%2ftoc.json).
-* Riasztás létrehozása, közel valós idejű kezelésével kapcsolatos információkért lásd: [riasztási szabályt létrehozni az Azure Portalon](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md?toc=%2fazure%2fautomation%2ftoc.json#create-an-alert-rule-with-the-azure-portal).
+* Riasztás létrehozása, közel valós idejű kezelésével kapcsolatos információkért lásd: [riasztási szabályt létrehozni az Azure Portalon](../monitoring-and-diagnostics/alert-metric.md?toc=/azure/azure-monitor/toc.json).

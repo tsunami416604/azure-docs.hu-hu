@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 09/12/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: a8821b2e1be10cddafba04109041e76ef65f6a6a
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: 5e8e8d1923caf5f51cffedd6b918dbc617b5c3a9
+ms.sourcegitcommit: 4edf9354a00bb63082c3b844b979165b64f46286
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47433701"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48785477"
 ---
 # <a name="manage-azure-automation-run-as-accounts"></a>Azure Automation futtató fiókok kezelése
 
@@ -35,7 +35,7 @@ Futtató fiókok két típusa van:
 
 ## <a name="permissions"></a>Engedélyek futtató fiókok beállítása
 
-Hozzon létre, vagy frissíteni egy futtató fiókot, jogosultságokkal és engedélyekkel kell rendelkeznie. Egy globális rendszergazdai vagy Társadminisztrátori elvégezhető összes feladatot. Az olyan helyzet, ahol a feladatkörök seperation rendelkezik az alábbi táblázat mutatja a feladatok, a varázsló használatával egyenértékű parancsmagot és a szükséges engedélyek listája:
+Hozzon létre, vagy frissíteni egy futtató fiókot, jogosultságokkal és engedélyekkel kell rendelkeznie. Egy globális rendszergazdai vagy Társadminisztrátori elvégezhető összes feladatot. A feladatkörök esetében olyan helyzet az alábbi táblázat mutatja a feladatok, a varázsló használatával egyenértékű parancsmagot és a szükséges engedélyek listája:
 
 |Tevékenység|Parancsmag  |Minimális engedélyek  |
 |---|---------|---------|
@@ -49,18 +49,18 @@ Hozzon létre, vagy frissíteni egy futtató fiókot, jogosultságokkal és enge
 * Című cikkben ismertetett módon Microsoft.Automation-erőforrások közreműködői szerepkörével egyenértékű engedélyekkel rendelkezik az AD-felhasználói fiókot [szerepköralapú hozzáférés-vezérlés az Azure Automationben](automation-role-based-access-control.md#contributor).  
 * Az Azure AD-bérlő nem rendszergazda jogosultságú felhasználói abban az esetben végezhetik el az [AD-alkalmazások regisztrálását](../azure-resource-manager/resource-group-create-service-principal-portal.md#check-azure-subscription-permissions), ha az Azure AD-bérlő **Felhasználói beállítások** oldalán található **A felhasználók regisztrálhatnak alkalmazásokat** beállítás **Igen** értékre van állítva. Ha az Alkalmazásregisztrációk beállítás értéke **Nem**, ezt a műveletet csak az Azure AD globális rendszergazdái hajthatják végre.
 
-Ha nem tagja az előfizetéshez tartozó Active Directory-példánynak, mielőtt hozzáadják Önt az előfizetés globális rendszergazdai vagy társadminisztrátori szerepköréhez, vendégként lesz hozzáadva az Active Directoryhoz. Ebben a helyzetben kap egy `You do not have permissions to create…` szóló figyelmeztetés a **Automation-fiók hozzáadása** lap. A globális rendszergazdai vagy társadminisztrátori szerepkörhöz hozzáadott felhasználók először eltávolíthatók az előfizetéshez tartozó Active Directory-példányból, majd újra hozzáadhatók, így teljes jogú felhasználók lehetnek az Active Directoryban. Ez a helyzet úgy ellenőrizhető, ha az Azure Portal **Azure Active Directory** panelén a **Felhasználók és csoportok** és a **Minden felhasználó** elemre kattint, majd a konkrét felhasználó kiválasztása után a **Profil** elemet választja. A felhasználók profilja alatti **Felhasználó típusa** attribútum értéke ne legyen **Guest** (vendég).
+Ha nem tagja az előfizetéshez tartozó Active Directory-példánynak, mielőtt hozzáadják a globális rendszergazdai vagy társadminisztrátori szerepkörhöz az előfizetés, vendégként van hozzáadva. Ebben a helyzetben kap egy `You do not have permissions to create…` szóló figyelmeztetés a **Automation-fiók hozzáadása** lap. A globális rendszergazdai vagy társadminisztrátori szerepkörhöz hozzáadott felhasználók először eltávolíthatók az előfizetéshez tartozó Active Directory-példányból, majd újra hozzáadhatók, így teljes jogú felhasználók lehetnek az Active Directoryban. Ez a helyzet úgy ellenőrizhető, ha az Azure Portal **Azure Active Directory** panelén a **Felhasználók és csoportok** és a **Minden felhasználó** elemre kattint, majd a konkrét felhasználó kiválasztása után a **Profil** elemet választja. A felhasználók profilja alatti **Felhasználó típusa** attribútum értéke ne legyen **Guest** (vendég).
 
 ## <a name="create-a-run-as-account-in-the-portal"></a>Futtató fiók létrehozása a portálon
 
 Az ebben a szakaszban szereplő lépéseket követve frissítheti Azure Automation-fiókját az Azure Portalról. Egyenként hozza létre a futtató és a klasszikus futtató fiókokat. Ha nem kell klasszikus erőforrásokat felügyelnie, egyszerűen létrehozhatja csak a futtató fiókot.  
 
 1. Jelentkezzen be az Azure Portal webhelyre egy olyan fiókkal, amely tagja az Előfizetés-adminisztrátorok szerepkörhöz tartozó csoportnak, és emellett az előfizetés társadminisztrátorának is számít.
-1. Az Azure Portalon kattintson a **Minden szolgáltatás** lehetőségre. Az erőforrások listájába írja be az **Automation** kifejezést. Ahogy elkezd gépelni, a lista a beírtak alapján szűri a lehetőségeket. Válassza az **Automation-fiókok** elemet.
-1. Az **Automation-fiókok** oldalon válassza ki az Automation-fiókját a listából.
-1. A bal oldali panel **Fiókbeállítások** részén válassza a **Futtató fiókok** lehetőséget.  
-1. Attól függően, hogy melyik fiókra van szüksége, válassza az **Azure-alapú futtató fiók** vagy a **Klasszikus Azure-alapú futtató fiók** lehetőséget. Miután választott, megjelenik az **Azure-alapú futtató fiók felvétele** vagy a **Klasszikus Azure-alapú futtató fiók felvétele** panel. Az áttekintési információk tanulmányozása után kattintson a **Létrehozás** gombra a futtató fiók létrehozásának folytatásához.  
-1. Amíg az Azure létrehozza a futtató fiókot, a menü **Értesítések** részén nyomon követheti a folyamat állapotát. Megjelenik egy szalagcím is azzal az üzenettel, hogy a fiók létrehozása folyamatban van. A folyamat eltarthat pár percig.  
+2. Az Azure Portalon kattintson a **Minden szolgáltatás** lehetőségre. Az erőforrások listájába írja be az **Automation** kifejezést. Ahogy elkezd gépelni, a lista a beírtak alapján szűri a lehetőségeket. Válassza az **Automation-fiókok** elemet.
+3. Az **Automation-fiókok** oldalon válassza ki az Automation-fiókját a listából.
+4. A bal oldali panel **Fiókbeállítások** részén válassza a **Futtató fiókok** lehetőséget.  
+5. Attól függően, hogy melyik fiókra van szüksége, válassza az **Azure-alapú futtató fiók** vagy a **Klasszikus Azure-alapú futtató fiók** lehetőséget. Miután választott, megjelenik az **Azure-alapú futtató fiók felvétele** vagy a **Klasszikus Azure-alapú futtató fiók felvétele** panel. Az áttekintési információk tanulmányozása után kattintson a **Létrehozás** gombra a futtató fiók létrehozásának folytatásához.  
+6. Amíg az Azure létrehozza a futtató fiókot, a menü **Értesítések** részén nyomon követheti a folyamat állapotát. Megjelenik egy szalagcím is azzal az üzenettel, hogy a fiók létrehozása folyamatban van. A folyamat eltarthat pár percig.  
 
 ## <a name="create-run-as-account-using-powershell"></a>Hozzon létre futtató fiókot PowerShell-lel
 
@@ -73,7 +73,7 @@ Az alábbi lista tartalmazza a futtató fiók létrehozása a PowerShell követe
 * Egy Automation-fiók, amelyre a rendszer az *–AutomationAccountName* és az *-ApplicationDisplayName* paraméterek értékeként hivatkozik.
 * Milyen szerepel, az egyenértékű engedélyekkel rendelkezik [szükséges engedélyek futtató fiókok beállítása](#permissions)
 
-A szkript végrehajtásához feltétlenül szükséges *SubscriptionID*, *ResourceGroup* és *AutomationAccountName* paraméterek értékének lekéréséhez tegye a következőket:
+A tartozó értékeket beolvasni *SubscriptionID*, *ResourceGroup*, és *AutomationAccountName*, a parancsfájl szükséges paraméterek, a következő lépéseket:
 
 1. Az Azure Portalon kattintson a **Minden szolgáltatás** lehetőségre. Az erőforrások listájába írja be az **Automation** kifejezést. Ahogy elkezd gépelni, a lista a beírtak alapján szűri a lehetőségeket. Válassza az **Automation-fiókok** elemet.
 1. Az Automation-fiók oldalon válassza ki az Automation-fiókját, majd a **Fiókbeállítások** területen válassza a **Tulajdonságok** lehetőséget.  
@@ -306,7 +306,7 @@ A szkript sikeres futtatása után jegyezze fel a következőket:
 
 * Ha önaláírt nyilvános tanúsítvánnyal (.cer fájl) ellátott klasszikus futtató fiókot hoz létre, a szkript létrehozza és menti a tanúsítványt a számítógépen a PowerShell-munkamenet végrehajtásához használt *%USERPROFILE%\AppData\Local\Temp* felhasználói profilhoz tartozó ideiglenes mappába.
 
-* Ha egy (.cer formátumú) vállalati tanúsítvánnyal rendelkező klasszikus futtató fiókot hozott létre, használja ezt a tanúsítványt. Kövesse az utasításokat [felügyeleti API-tanúsítványok feltöltése az Azure Portalra](../azure-api-management-certs.md). () Automation-verify-runas-Authentication.md#Classic-Run-as-Authentication).
+* Ha egy (.cer formátumú) vállalati tanúsítvánnyal rendelkező klasszikus futtató fiókot hozott létre, használja ezt a tanúsítványt. Kövesse az utasításokat [felügyeleti API-tanúsítványok feltöltése az Azure Portalra](../azure-api-management-certs.md).
 
 ## <a name="delete-a-run-as-or-classic-run-as-account"></a>Futtató fiók vagy klasszikus futtató fiók törlése
 
@@ -314,9 +314,9 @@ Ez a témakör ismerteti, hogyan törölhet és hozhat újra létre futtató fi�
 
 1. Az Azure Portalon nyissa meg az Automation-fiókot.
 
-1. Az **Automation-fiók** oldalon válassza a **Futtató fiókok** lehetőséget.
+2. Az **Automation-fiók** oldalon válassza a **Futtató fiókok** lehetőséget.
 
-1. A **Futtató fiókok** tulajdonságlapján válassza ki azt a futtató fiókot vagy klasszikus futtató fiókot, amelyet törölni kíván. Ezt követően a kiválasztott fiók **Tulajdonságok** paneljén kattintson a **Törlés** elemre.
+3. A **Futtató fiókok** tulajdonságlapján válassza ki azt a futtató fiókot vagy klasszikus futtató fiókot, amelyet törölni kíván. Ezt követően a kiválasztott fiók **Tulajdonságok** paneljén kattintson a **Törlés** elemre.
 
  ![Futtató fiók törlése](media/manage-runas-account/automation-account-delete-runas.png)
 
@@ -330,7 +330,7 @@ Ez a témakör ismerteti, hogyan törölhet és hozhat újra létre futtató fi�
 
 Később a Futtatás mint fiók lejárata előtt szüksége a tanúsítvány megújításához. Ha úgy véli, hogy a futtató fiók biztonsága sérült, akkor törölheti, majd újra létrehozhatja a fiókot. Ebben a részben ezeknek a műveleteknek a végrehajtását ismertetjük.
 
-A futtató fiókhoz létrehozott önaláírt tanúsítvány a létrehozás dátumától számítva egy év múlva jár le. A tanúsítványt bármikor meg lehet újítani a lejárata előtt. A megújításkor a jelenleg érvényes tanúsítványt megőrzi a rendszer, hogy a művelet ne érintse hátrányosan a várólistán lévő vagy aktívan futó runbookokat, amelyek hitelesítést végeznek a futtató fiókkal. A tanúsítvány a lejárati dátumáig érvényes marad.
+A futtató fiókhoz létrehozott önaláírt tanúsítvány a létrehozás dátumától számítva egy év múlva jár le. A tanúsítványt bármikor meg lehet újítani a lejárata előtt. A Megújításkor, a rendszer megőrzi a jelenleg érvényes tanúsítványt annak érdekében, hogy a nem negatív hatással runbookokat, amelyek akár vagy aktívan futó rendszer várólistára helyezi, és hitelesítést végeznek a futtató fiókot. A tanúsítvány a lejárati dátumáig érvényes marad.
 
 > [!NOTE]
 > Ha úgy konfigurálta az Automation futtató fiókot, hogy a vállalati hitelesítésszolgáltató által kibocsátott tanúsítványt használja, és ezt a lehetőséget alkalmazza, a vállalati tanúsítvány egy önaláírt tanúsítványra lesz lecserélve.
@@ -359,7 +359,7 @@ Az Azure Portalon válassza ki a **előfizetések** , és válassza ki az előfi
 
 ![Előfizetés közreműködő](media/manage-runas-account/automation-account-remove-subscription.png)
 
-Az egyszerű szolgáltatás hozzáadása egy erőforráscsoportot, válassza ki az erőforráscsoportot az Azure Portalon, és válassza a **hozzáférés-vezérlés (IAM)**. Válassza ki **Hozzáadás**, ekkor megnyílik a **engedélyek hozzáadása** lapot. A **szerepkör**válassza **közreműködői**. Az a **kiválasztása** szöveg mezőbe írja be az egyszerű szolgáltatás a Futtatás mint fiók nevét, majd válassza ki a listából. Kattintson a **Mentés** gombra a módosítások mentéséhez. Ehhez az Azure Automation futtató szolgáltatásnév hozzáférhessen a hozzárendelni kívánt erőforrások csoportjai számára.
+Az egyszerű szolgáltatás hozzáadása egy erőforráscsoportot, válassza ki az erőforráscsoportot az Azure Portalon, és válassza a **hozzáférés-vezérlés (IAM)**. Válassza ki **Hozzáadás**, ekkor megnyílik a **engedélyek hozzáadása** lapot. A **szerepkör**válassza **közreműködői**. Az a **kiválasztása** szöveg mezőbe írja be az egyszerű szolgáltatás a Futtatás mint fiók nevét, majd válassza ki a listából. Kattintson a **Mentés** gombra a módosítások mentéséhez. Hajtsa végre ezeket a lépéseket az erőforráscsoportoknál, szeretne adni az Azure Automation futtató szolgáltatásnév hozzáférhessen a.
 
 ## <a name="misconfiguration"></a>Hibás konfiguráció
 

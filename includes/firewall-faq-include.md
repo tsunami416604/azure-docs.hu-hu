@@ -5,15 +5,15 @@ services: firewall
 author: vhorne
 ms.service: ''
 ms.topic: include
-ms.date: 9/14/2018
+ms.date: 10/4/2018
 ms.author: victorh
 ms.custom: include file
-ms.openlocfilehash: 1242cf80ffd283471eb507612949a81d4b3fd594
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: fa2542d530c37876de38a510a6771144043aae77
+ms.sourcegitcommit: 4edf9354a00bb63082c3b844b979165b64f46286
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47401644"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48812241"
 ---
 ### <a name="what-is-azure-firewall"></a>Mi az Azure Firewall?
 
@@ -69,7 +69,7 @@ Az Azure tűzfal egyszerű tűzfal szolgáltatása kezelheti az egyes felhaszná
  
 ### <a name="what-is-the-difference-between-application-gateway-waf-and-azure-firewall"></a>Mi a különbség az Application Gateway WAF és az Azure-tűzfal?
 
-A webalkalmazási tűzfal (WAF) az Application Gateway, amelyek a webalkalmazásoknak a gyakori támadások és biztonsági rések bejövő központi védelmet nyújt olyan szolgáltatása. Azure-tűzfalon biztosít minden portok és protokollok a kimenő hálózati szintű védelmet és alkalmazásszintű védelemhez tartozó kimenő HTTP/s Bejövő védelmét nem HTTP/Https protokollok (például RDP, SSH-FTP) feltételesen tervezett Azure-tűzfal általánosan elérhető
+A webalkalmazási tűzfal (WAF) az Application Gateway, amelyek a webalkalmazásoknak a gyakori támadások és biztonsági rések bejövő központi védelmet nyújt olyan szolgáltatása. Azure tűzfal bejövő védelmét nem HTTP/Https protokollok (például RDP, SSH, FTP), minden portok és protokollok a kimenő hálózati szintű védelmet és kimenő HTTP/s az alkalmazásszintű védelemhez biztosít
 
 ### <a name="what-is-the-difference-between-network-security-groups-nsgs-and-azure-firewall"></a>Mi a különbség a hálózati biztonsági csoportok (NSG-k) és a tűzfal az Azure között?
 

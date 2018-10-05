@@ -7,17 +7,17 @@ ms.subservice: security
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: giladmit
-ms.author: giladm
+author: ronitr
+ms.author: ronitr
 ms.reviewer: vanto
 manager: craigg
-ms.date: 09/10/2018
-ms.openlocfilehash: d34bb54729fe0adc4b26d213bfaa4ad4fb210ab7
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.date: 10/04/2018
+ms.openlocfilehash: e40f2f3f0a6551fd9fc38ad138d92f694a09879f
+ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47064183"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48803239"
 ---
 # <a name="azure-sql-database-data-discovery-and-classification"></a>Az Azure SQL-adatbázis adatainak felderítése és besorolása
 Adatfelderítés és besorolás (jelenleg előzetes verzióban érhető el) biztosít az Azure SQL Database-be épített fejlettebb képességek **felderítése**, **Írisz**, **címkézés**  &  **védelme** a bizalmas adatokat az adatbázisban.
@@ -108,7 +108,7 @@ Miután az összes bérlőre vonatkozó házirend lett meghatározva, továbbra 
 
 Fontos szempont az information protection paradigmát a rendszer azon képessége, bizalmas adatokhoz való hozzáférés figyelésére. [Az Azure SQL Database naplózási](https://docs.microsoft.com/azure/sql-database/sql-database-auditing) v auditovacím protokolu nevű új mező tartalmazza a továbbfejlesztett *data_sensitivity_information*, amelyek az érzékenységi besorolások (címkék), a tényleges adatok által visszaadott naplók a lekérdezés.
 
-![Auditnapló](./media/sql-data-discovery-and-classification/11_data_classification_audit_log.png)
+![Napló](./media/sql-data-discovery-and-classification/11_data_classification_audit_log.png)
 
 ## <a id="subheading-4"></a>Automatikus/Programmatic besorolás
 

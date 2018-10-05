@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: 27f271a20af2bb9910f1cf7d63e6033d78e67b83
-ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
+ms.openlocfilehash: f2f2208f325728275706eeed9ff16e8afc3b11cf
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/15/2018
-ms.locfileid: "41919401"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47166877"
 ---
 # <a name="tutorial-azure-ad-password-reset-from-the-login-screen"></a>Oktatóanyag: Új Azure AD-jelszó kérése a bejelentkezési képernyőről
 
@@ -45,8 +45,6 @@ A legrugalmasabb módszer az, ha az Intune használatával telepíti a konfigur�
    * Ha kívánja, megadhat egy kifejező leírást is a profilhoz
    * Platform: **Windows 10 és újabb**
    * Profiltípus: **Egyéni**
-
-   ![Profil létrehozása][CreateProfile]
 
 3. **Beállítások** konfigurálása
    * **Adja hozzá** a következő OMA-URI beállítást a Jelszó-visszaállítási hivatkozás használatának engedélyezéséhez
@@ -100,7 +98,6 @@ Milyen változást tapasztalnak a felhasználók a szabályzat konfigurálása �
 ![Bejelentkezési képernyő][LoginScreen]
 
 Amikor a felhasználók megpróbálnak bejelentkezni, a bejelentkezési képernyőn mostantól egy Új jelszó kérése hivatkozást láthatnak, amely megnyitja az önkiszolgáló jelszó-visszaállítási felületet. Ezzel a funkcióval a felhasználók visszaállíthatják a jelszavukat anélkül, hogy egy másik eszközt kellene használniuk egy webböngésző eléréséhez.
-Amikor a felhasználók megpróbálnak bejelentkezni, a bejelentkezési képernyőn mostantól egy Új jelszó kérése hivatkozást láthatnak, amely megnyitja az önkiszolgáló jelszó-visszaállítási felületet. Ezzel a funkcióval a felhasználók visszaállíthatják a jelszavukat anélkül, hogy egy másik eszközt kellene használniuk egy webböngésző eléréséhez.
 
 A felhasználók a funkcióval kapcsolatban a [Munkahelyi vagy iskolai jelszó visszaállítása](../user-help/active-directory-passwords-update-your-own-password.md#reset-password-at-sign-in) témakörben találhatnak útmutatást.
 
@@ -116,6 +113,10 @@ A funkció a Távoli asztal használatával történő tesztelésekor a „Jelsz
 
 Ha a Windows zárolási képernyő egy beállításkulcs vagy csoportszabályzat használatával le lett tiltva, a **Jelszó visszaállítása** hivatkozás nem elérhető.
 
+Az Azure AD auditnaplója információkat tartalmaz az IP-címről és az ügyféltípusról, ahol az új jelszó kérése megtörtént.
+
+![Példa új jelszó kérésére a bejelentkezési képernyőn az Azure AD auditnaplójában](media/tutorial-sspr-windows/windows-sspr-azure-ad-audit-log.png)
+
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha az oktatóanyag keretében konfigurált funkciót már nem szeretné tovább használni, törölje az Ön által létrehozott Intune eszközkonfigurációs profilt vagy a beállításkulcsot.
@@ -127,6 +128,5 @@ Ebben az oktatóanyagban engedélyezte, hogy a felhasználók új jelszót kérj
 > [!div class="nextstepaction"]
 > [Kockázat értékelése bejelentkezéskor](tutorial-risk-based-sspr-mfa.md)
 
-[CreateProfile]: ./media/tutorial-sspr-windows/create-profile.png "Intune eszközkonfigurációs profil létrehozása új jelszó kérésére szolgáló hivatkozása engedélyezéséhez a Windows 10 bejelentkezési képernyőjén"
 [Assignment]: ./media/tutorial-sspr-windows/profile-assignment.png "Intune eszközkonfigurációs szabályzat hozzárendelése Windows 10-eszközök egy csoportjához"
 [LoginScreen]: ./media/tutorial-sspr-windows/logon-reset-password.png "Új jelszó kérésére szolgáló hivatkozás a Windows 10 bejelentkezési képernyőjén"

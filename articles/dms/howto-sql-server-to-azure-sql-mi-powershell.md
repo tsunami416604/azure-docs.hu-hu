@@ -3,7 +3,7 @@ title: Az SQL-kiszolgáló áttelepítése a Microsoft Azure PowerShell használ
 description: Ismerje meg a helyszíni SQL Serverről migrálhatók az Azure SQL DB MI az Azure PowerShell használatával.
 services: database-migration
 author: HJToland3
-ms.author: jtoland
+ms.author: rajpo
 manager: ''
 ms.reviewer: ''
 ms.service: database-migration
@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 08/13/2018
-ms.openlocfilehash: 7bd7e7a4cb78cf8a9f818936c980b47a2e7865e7
-ms.sourcegitcommit: 0fcd6e1d03e1df505cf6cb9e6069dc674e1de0be
+ms.openlocfilehash: c8747b7b8125f097fab3752693f4f14440ed7ce7
+ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2018
-ms.locfileid: "40099901"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48804378"
 ---
 # <a name="migrate-sql-server-on-premises-to-azure-sql-db-using-azure-powershell"></a>A helyszíni SQL Server migrálása az Azure SQL DB, Azure PowerShell-lel
 Ebben a cikkben telepít át a **Adventureworks2012** adatbázis egy helyi példányára, az SQL Server 2005 vagy újabb visszaállítása egy Azure SQL Database a Microsoft Azure PowerShell használatával. Telepíthet át adatbázisokat egy helyszíni SQL Server-példány az Azure SQL Database használatával a `AzureRM.DataMigration` a Microsoft Azure PowerShell-modulja.
@@ -24,9 +24,9 @@ Ebben a cikkben telepít át a **Adventureworks2012** adatbázis egy helyi péld
 Ebben a cikkben az alábbiakkal ismerkedhet meg:
 > [!div class="checklist"]
 > * Hozzon létre egy erőforráscsoportot.
-> * Hozza létre az Azure Database Migration Service egy példányát.
+> * Egy Azure Database Migration Service-példány létrehozása.
 > * Migrálási projekt létrehozása az Azure Database Migration Service-példányában.
-> * Végezze el az áttelepítést.
+> * A migrálás futtatása.
 
 ## <a name="prerequisites"></a>Előfeltételek
 A lépések elvégzéséhez szüksége:
@@ -175,7 +175,7 @@ Hozza létre a változót, amely tartalmazza az SAS URI-t, amelyhez a szolgálta
 $blobSasUri="https://mystorage.blob.core.windows.net/test?st=2018-07-13T18%3A10%3A33Z&se=2019-07-14T18%3A10%3A00Z&sp=rwdl&sv=2018-03-28&sr=c&sig=qKlSA512EVtest3xYjvUg139tYSDrasbftY%3D"
 ```
 
-### <a name="select-logins"></a>Bejelentkezések kiválasztása
+### <a name="select-logins"></a>Bejelentkezési adatok kiválasztása
 Hozzon létre bejelentkezések kell áttelepíteni az alábbi példában látható módon: vegye figyelembe, jelenleg csak az SQL-bejelentkezésekben áttelepítése DMS támogatja. 
 
 ```powershell
@@ -229,7 +229,7 @@ $migTask = New-AzureRmDataMigrationTask -TaskType MigrateSqlServerSqlDbMi `
   -SelectedAgentJobs $selectedJobs `
 ```
 
-## <a name="monitor-the-migration"></a>A migrálás figyelésére
+## <a name="monitor-the-migration"></a>A migrálás monitorozása
 Az áttelepítési feladat fut a feladat a következő példában látható módon állapot tulajdonságának lekérdezésével figyelheti:
 
 ```powershell

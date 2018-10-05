@@ -11,13 +11,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: sashan, moslake
 manager: craigg
-ms.date: 09/26/2018
-ms.openlocfilehash: 3fb1357b7a70579fa527a896d5bd359749b10ad6
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.date: 10/04/2018
+ms.openlocfilehash: 9056eb6d93b0ead2a62dc5f58984fa6342af2d8e
+ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47407655"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48801659"
 ---
 # <a name="choosing-a-vcore-service-tier-compute-memory-storage-and-io-resources"></a>Virtuális mag szolgáltatásszint kiválasztása, számítási, memória, tárolási és i/o-erőforrások
 
@@ -25,7 +25,7 @@ A Virtuálismag-alapú vásárlási modell lehetővé teszi, hogy egymástól f�
 - 4 – általános legfeljebb 24 logikai CPU-alapú Intel E5-2673 v3 (Haswell) 2,4 GHz-es processzor, a virtuális mag = 1 PP (fizikai mag), egy mag, 7 GB-os csatlakoztatott SSD
 - 5 – általános legfeljebb 80 logikai CPU-alapú Intel E5-2673 v4 (Broadwell) 2,3 GHz-es processzor, a virtuális mag = 1. LP (a hyper-szál), egy 5.5-ös. GB / core, gyors eNVM SSD
 
-Virtuálismag-modell azt is lehetővé teszi, hogy [Azure Hybrid Use Benefitet az SQL Server](../virtual-machines/windows/hybrid-use-benefit-licensing.md) költségmegtakarítást biztosítanak.
+Virtuálismag-modell azt is lehetővé teszi, hogy [Azure Hybrid Use Benefitet az SQL Server](https://azure.microsoft.com/pricing/hybrid-benefit/) költségmegtakarítást biztosítanak.
 
 ## <a name="service-tier-characteristics"></a>Szolgáltatási szint tulajdonságok
 

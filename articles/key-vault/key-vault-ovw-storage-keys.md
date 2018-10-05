@@ -8,19 +8,19 @@ ms.service: key-vault
 author: bryanla
 ms.author: bryanla
 manager: mbaldwin
-ms.date: 08/21/2017
-ms.openlocfilehash: 7545a035541a4e464a6c82acb9fa9de18cf8e86d
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.date: 10/03/2018
+ms.openlocfilehash: 38717fed9f3877dfd0aa9819571ef0f32befc117
+ms.sourcegitcommit: 4edf9354a00bb63082c3b844b979165b64f46286
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44304322"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48785511"
 ---
-# <a name="azure-key-vault-storage-account-keys"></a>Az Azure Key Vault-Tárfiókkulcsok
+# <a name="azure-key-vault-storage-account-keys"></a>Az Azure Key Vault-tárfiókkulcsok
 
-Az Azure Key Vault Tárfiókkulcsokat, mielőtt a fejlesztők kellett a saját Azure Storage-fiók (ASA) kulcsok kezelése és rotálása őket manuálisan vagy egy külső automation. Key Vault Tárfiókkulcsokat megvalósított most [Key Vault titkos kódok](https://docs.microsoft.com/rest/api/keyvault/about-keys--secrets-and-certificates#BKMK_WorkingWithSecrets) hitelesítéséhez az Azure Storage-fiókban.
+Az Azure Key Vault tárfiókkulcsokat, mielőtt fejlesztők kellett a saját Azure Storage-fiók (ASA) kulcsok kezelése, és manuálisan vagy egy külső automation elforgatása őket. Key Vault Tárfiókkulcsokat megvalósított most [Key Vault titkos kódok](https://docs.microsoft.com/rest/api/keyvault/about-keys--secrets-and-certificates#BKMK_WorkingWithSecrets) hitelesítéséhez az Azure Storage-fiókban.
 
-Az Azure Storage-fiók (ASA) fontos szolgáltatása, titkos Elforgatás kezeli. Azt is kiküszöböli az a közvetlen kapcsolatba ASA kulccsal rendelkező közös hozzáférésű Jogosultságkódok (SAS) módszerként felajánlásával.
+Az Azure Storage-fiók (ASA) fontos szolgáltatása, titkos Elforgatás kezeli. Azt is kiküszöböli az közvetlen kapcsolatba az ASA-kulccsal, azzal közös hozzáférésű Jogosultságkódok (SAS) módszerként.
 
 Az Azure Storage-fiókokról további általános információkért lásd: [tudnivalók az Azure storage-fiókok](https://docs.microsoft.com/azure/storage/storage-create-storage-account).
 
@@ -91,32 +91,42 @@ accountSasCredential.UpdateSASToken(sasToken);
 
  ### <a name="developer-guidance"></a>Fejlesztői útmutatás
 
-- Csak engedélyezze a Key Vault az ASA kulcsok kezeléséhez. Ne kísérelje meg saját maga kezelhetők, a Key Vault folyamatok zavarja meg.
-- Ne engedélyezze a ASA kulcsok a Key Vault egynél több objektumot is felügyelhesse.
+- Csak engedélyezze a Key Vault az ASA kulcsok kezeléséhez. Ne kísérelje meg saját maga kezelheti őket, a Key Vault folyamatok zavarja meg.
+- Több Key Vault-objektum által felügyelendő ASA kulcsok nem teszik lehetővé.
 - Ha manuálisan a az ASA-kulcsok újragenerálása van szüksége, azt javasoljuk, Key Vault-n keresztül újragenerálása.
 
-## <a name="getting-started"></a>Első lépések
+## <a name="authorize-key-vault-to-access-to-your-storage-account"></a>A tárfiók eléréséhez a Key Vault engedélyezése
 
-### <a name="give-key-vault-access-to-your-storage-account"></a>A Key Vault hozzáférést a tárfiókhoz 
+A Key Vault eléréséhez és a kezelése a tárfiók kulcsait, mielőtt engedélyeznie kell a hozzáférést a tárfiókhoz.  Számos alkalmazás, például a Key Vault integrálható az Azure AD identitás- és hozzáférés-kezelő szolgáltatásokra. 
 
-Számos alkalmazás, például Key Vault regisztrálva van az Azure AD OAuth használatához, más szolgáltatások eléréséhez. Regisztráció során [szolgáltatásnév](/azure/active-directory/develop/app-objects-and-service-principals) objektum létrehozása, amely az alkalmazás azonosítóját képviseli a futási időben szolgál. Egyszerű szolgáltatás engedélyezéséhez az alkalmazás azonosítóját egy másik erőforrás eléréséhez a szerepköralapú hozzáférés-vezérlés (RBAC) révén is szolgál.
+Mivel a Key Vault egy Microsoft-alkalmazásba, előzetesen regisztrálva van az alkalmazás azonosítója alapján az összes Azure AD-bérlőt `cfa8b339-82a2-471a-a3c9-0fc0be7a4093`. Hasonlóan az Azure AD-ben regisztrált összes alkalmazás egy [szolgáltatásnév](/azure/active-directory/develop/app-objects-and-service-principals) objektum tartalmazza az alkalmazás identitását tulajdonságainál. Egyszerű szolgáltatás majd kaphatnak egy másik erőforrás hozzáférési szerepköralapú hozzáférés-vezérlés (RBAC) révén.  
 
-Az Azure Key Vault identitása engedélyekre van szüksége *lista* és *újragenerálása* kulcsokat a tárfiók számára. Állítsa be ezeket az engedélyeket az alábbi lépéseket követve:
+Az Azure Key Vault alkalmazás engedélyekre van szüksége *lista* és *újragenerálása* kulcsokat a tárfiók számára. Ezeket az engedélyeket a beépített [tárolási fiók kulcs üzemeltető szolgáltatás](/azure/role-based-access-control/built-in-roles#storage-account-key-operator-service-role) RBAC szerepkör. A Key Vault egyszerű szolgáltatás hozzárendelése ehhez a szerepkörhöz, az alábbi lépéseket követve:
 
 ```powershell
-# Get the resource ID of the Azure Storage Account you want to manage.
-# Below, we are fetching a storage account using Azure Resource Manager
+# Get the resource ID of the Azure Storage Account you want Key Vault to manage
 $storage = Get-AzureRmStorageAccount -ResourceGroupName "mystorageResourceGroup" -StorageAccountName "mystorage"
 
-# Get Application ID of Azure Key Vault's service principal
-$servicePrincipal = Get-AzureRmADServicePrincipal -ServicePrincipalName cfa8b339-82a2-471a-a3c9-0fc0be7a4093
-
 # Assign Storage Key Operator role to Azure Key Vault Identity
-New-AzureRmRoleAssignment -ObjectId $servicePrincipal.Id -RoleDefinitionName 'Storage Account Key Operator Service Role' -Scope $storage.Id
+New-AzureRmRoleAssignment -ApplicationId “cfa8b339-82a2-471a-a3c9-0fc0be7a4093” -RoleDefinitionName 'Storage Account Key Operator Service Role' -Scope $storage.Id
 ```
 
-    >[!NOTE]
-    > For a classic account type, set the role parameter to *"Classic Storage Account Key Operator Service Role."*
+> [!NOTE]
+> Klasszikus fiók írja be a következőt, állítsa a szerepkör paramétert *"Klasszikus tárolási fiók kulcs operátora – szolgáltatási szerepkör."*
+
+A sikeres szerepkör hozzárendelése után kell megjelennie a következőhöz hasonló kimenetet
+
+```console
+RoleAssignmentId   : /subscriptions/03f0blll-ce69-483a-a092-d06ea46dfb8z/resourceGroups/rgSandbox/providers/Microsoft.Storage/storageAccounts/sabltest/providers/Microsoft.Authorization/roleAssignments/189cblll-12fb-406e-8699-4eef8b2b9ecz
+Scope              : /subscriptions/03f0blll-ce69-483a-a092-d06ea46dfb8z/resourceGroups/rgSandbox/providers/Microsoft.Storage/storageAccounts/sabltest
+DisplayName        : Azure Key Vault
+SignInName         :
+RoleDefinitionName : Storage Account Key Operator Service Role
+RoleDefinitionId   : 81a9blll-bebf-436f-a333-f67b29880f1z
+ObjectId           : c730c8da-blll-4032-8ad5-945e9dc8262z
+ObjectType         : ServicePrincipal
+CanDelegate        : False
+```
 
 ## <a name="working-example"></a>Működő példát
 
@@ -124,7 +134,7 @@ A következő példa bemutatja, hogy a Key Vault létrehozása a felügyelt Azur
 
 ### <a name="prerequisite"></a>Előfeltétel
 
-Győződjön meg arról, hogy végrehajtotta [beállítása szerepköralapú hozzáférés-vezérlés (RBAC) engedélyekkel](#setup-for-role-based-access-control-rbac-permissions).
+Mielőtt elkezdené, győződjön meg arról, hogy [engedélyezze a Key Vault eléréséhez a tárfiókhoz](#authorize-key-vault-to-access-to-your-storage-account).
 
 ### <a name="setup"></a>Beállítás
 
