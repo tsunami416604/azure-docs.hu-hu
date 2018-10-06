@@ -17,12 +17,12 @@ ms.date: 09/14/2018
 ms.author: celested
 ms.reviewer: elisol, bryanla
 ms.custom: aaddev
-ms.openlocfilehash: 3d6692808bad2010779323cecc42778def32a38c
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: dd164882f9820cab970edd4d01f2f28c26771f88
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46980270"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48815216"
 ---
 # <a name="how-to-list-your-application-in-the-azure-active-directory-application-gallery"></a>Útmutató: az alkalmazás szerepeltetése az Azure Active Directory alkalmazáskatalógusában
 
@@ -39,7 +39,7 @@ ms.locfileid: "46980270"
 
 - Az összevont alkalmazások (Open ID és az SAML/WS-Fed) az alkalmazás támogatnia kell az Azure AD katalógusából származó címtárban való megjelenésről a SaaS-modell. A vállalati katalógus alkalmazások támogatnia kell a több ügyfél-konfiguráció, és nem bármely adott ügyfél.
 
-- Az Open ID Connect, az alkalmazás legyen, több-bérlős és [Azure ad-ben hozzájárulási keretrendszer](quickstart-v1-integrate-apps-with-azure-ad.md#overview-of-the-consent-framework) megfelelően valósuljon meg az alkalmazáshoz. A felhasználó a bejelentkezési kérelem küldhet egy közös végpontot, hogy minden ügyfél biztosíthat hozzájárulás az alkalmazáshoz. Szabályozhatja a felhasználói hozzáférést a bérlő Azonosítóját és a felhasználó egyszerű Felhasználónevét a jogkivonat érkezett alapján.
+- Az Open ID Connect, az alkalmazás legyen, több-bérlős és [Azure ad-ben hozzájárulási keretrendszer](consent-framework.md) megfelelően valósuljon meg az alkalmazáshoz. A felhasználó a bejelentkezési kérelem küldhet egy közös végpontot, hogy minden ügyfél biztosíthat hozzájárulás az alkalmazáshoz. Szabályozhatja a felhasználói hozzáférést a bérlő Azonosítóját és a felhasználó egyszerű Felhasználónevét a jogkivonat érkezett alapján.
 
 - Az SAML 2.0 vagy WS-Fed az alkalmazás rendelkeznie kell a funkció a SAML/WS-Fed egyszeri bejelentkezési integrálni SP vagy Identitásszolgáltató módban. Ellenőrizze, hogy ez megfelelően működik-e a kérés elküldése előtt.
 
@@ -107,7 +107,7 @@ Frissítse vagy távolítsa el a meglévő alkalmazások az Azure AD-alkalmazás
     * Ha el kívánja távolítani a meglévő alkalmazások az Azure AD katalógusából, válassza ki a **távolítsa el a meglévő alkalmazás listaelem**.
     * Ha rendelkezik hozzáféréssel kapcsolatos problémákat, lépjen kapcsolatba a [Azure AD SSO integrációs csapat](<mailto:SaaSApplicationIntegrations@service.microsoft.com>). 
 
-## <a name="timelines"></a>Idősor
+## <a name="timelines"></a>Idősorok
 
 A folyamat a tőzsdei a SAML 2.0 vagy WS-Fed alkalmazás a katalógus ütemtervét 7 – 10 munkanapon.
 

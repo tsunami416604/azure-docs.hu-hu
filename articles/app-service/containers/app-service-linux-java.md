@@ -12,12 +12,12 @@ ms.devlang: java
 ms.topic: article
 ms.date: 08/29/2018
 ms.author: routlaw
-ms.openlocfilehash: 48d6836a2f1c7eb53fd6d7a08ee5a049cd9503f6
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: e11b115d7a6421c34e7f1371ad8931b6affa0436
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/05/2018
-ms.locfileid: "48803035"
+ms.locfileid: "48815171"
 ---
 # <a name="java-developers-guide-for-app-service-on-linux"></a>A linuxon futó App Service-hez Java fejlesztői útmutatója
 
@@ -216,14 +216,18 @@ A kiszolgálói szintű közös erőforrások:
 
 4. Győződjön meg arról, hogy a JDBC-illesztőprogram fájlokat is helyezheti őket a Tomcat classloader rendelkezésére állnak a `/home/tomcat/lib` könyvtár. Ezeket a fájlokat feltöltheti az App Service-példányhoz, hajtsa végre az alábbi lépéseket:  
     1. Az Azure App Service-webpp bővítményének telepítése:
+
       ```azurecli-interactive
       az extension add –name webapp
       ```
+
     2. Futtassa a következő CLI-parancsot hozhat létre egy SSH-alagutat a helyi rendszerről, App Service-ben:
+
       ```azurecli-interactive
       az webapp remote-connection create –g [resource group] -n [app name] -p [local port to open]
       ```
-    3. Az SFTP-ügyféllel a helyi bújtatás port csatlakozik és tölt fel a fájlokat, és `/home/tomcat/lib`.
+
+    3. Az SFTP-ügyféllel a helyi bújtatás port csatlakozik és tölt fel a fájlokat, és a `/home/tomcat/lib` mappát.
 
 5. Az App Service Linux alkalmazás újraindítása. Alaphelyzetbe állítja a tomcat `CATALINA_HOME` való `/home/tomcat` , és a frissített konfigurációt és osztályokat.
 

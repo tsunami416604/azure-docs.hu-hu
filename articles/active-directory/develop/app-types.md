@@ -16,12 +16,12 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: saeeda, jmprieur, andret
 ms.custom: aaddev
-ms.openlocfilehash: 3ac97ac5e9ae0a7059d9c74c5918212f1ce02790
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 5a8e43934393c2e6a97b81809284781a5c207e41
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46959954"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48816344"
 ---
 # <a name="application-types-in-v10"></a>Alkalmazástípusok az 1.0-s verzió
 
@@ -69,7 +69,7 @@ Részletekért megtudhatja, hogyan [alkalmazás regisztrálása az Azure AD-1.0-
 Kiépítés válik világosabb, miután megértette, hogy az alkalmazásokat, amelyek az alkalmazáskódok fejlesztésének és Azure AD-vel integrált két kategóriába sorolhatók:
 
 * **Egyetlen bérlő alkalmazás** – egy egybérlős alkalmazást egy szervezeten belüli használatra szolgál. Ezek a általában az üzletági (LoB) alkalmazásokat egy vállalati fejlesztők által írt. Egy egybérlős alkalmazást csak kell a felhasználók egy címtárban lehet elérni, és ennek eredményeképpen csak kell egy címtárban ki kell építeni. Ezek az alkalmazások általában egy fejlesztő a szervezetben vannak regisztrálva.
-* **Több-bérlős alkalmazás** – több-bérlős alkalmazás használatra szánt szervezetekben, nem csak egyetlen szervezet. Ezek a független szoftverszállító (ISV-k) által írt általában-as-szoftverszolgáltatások (SaaS) alkalmazások. Több-bérlős alkalmazásokhoz szükség lesz összes könyvtárban, ahol használni fogják őket, amelyhez szükség van a felhasználó vagy rendszergazda hozzájárulását, regisztrálja őket. A jóváhagyási folyamat akkor kezdődik, amikor egy alkalmazás regisztrálva van a címtárban, és a Graph API vagy akár egy másik webes API-hoz való hozzáféréssel kap. Amikor az alkalmazás regisztrál egy felhasználó vagy egy másik szervezet rendszergazdájának, jelenjenek meg ezek egy párbeszédpanel, amely megjeleníti az alkalmazáshoz szükséges engedélyeket. A felhasználó vagy rendszergazda ezután jóváhagyhatja az alkalmazáshoz, amely az alkalmazás hozzáférést biztosít a megadott adatokat, és végül regisztrálja az alkalmazást a címtárban. További információkért lásd: [a hozzájárulási keretrendszer áttekintése](quickstart-v1-integrate-apps-with-azure-ad.md#overview-of-the-consent-framework).
+* **Több-bérlős alkalmazás** – több-bérlős alkalmazás használatra szánt szervezetekben, nem csak egyetlen szervezet. Ezek a független szoftverszállító (ISV-k) által írt általában-as-szoftverszolgáltatások (SaaS) alkalmazások. Több-bérlős alkalmazásokhoz szükség lesz összes könyvtárban, ahol használni fogják őket, amelyhez szükség van a felhasználó vagy rendszergazda hozzájárulását, regisztrálja őket. A jóváhagyási folyamat akkor kezdődik, amikor egy alkalmazás regisztrálva van a címtárban, és a Graph API vagy akár egy másik webes API-hoz való hozzáféréssel kap. Amikor az alkalmazás regisztrál egy felhasználó vagy egy másik szervezet rendszergazdájának, jelenjenek meg ezek egy párbeszédpanel, amely megjeleníti az alkalmazáshoz szükséges engedélyeket. A felhasználó vagy rendszergazda ezután jóváhagyhatja az alkalmazáshoz, amely az alkalmazás hozzáférést biztosít a megadott adatokat, és végül regisztrálja az alkalmazást a címtárban. További információkért lásd: [a hozzájárulási keretrendszer áttekintése](consent-framework.md).
 
 ### <a name="additional-considerations-when-developing-single-tenant-or-multi-tenant-apps"></a>További szempontok fejlesztése során egyetlen bérlő vagy a több-bérlős alkalmazások
 

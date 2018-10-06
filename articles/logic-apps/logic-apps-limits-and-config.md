@@ -8,13 +8,13 @@ author: ecfan
 ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
-ms.date: 09/26/2018
-ms.openlocfilehash: c557c3e34fc4588b8bf13d69159a144d059b039e
-ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
+ms.date: 10/03/2018
+ms.openlocfilehash: ac13080ec6100734a5b777cc7cb243720f8424a6
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47452452"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48817154"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Korlátozások és konfigurációs adatokat az Azure Logic Apps
 
@@ -156,6 +156,15 @@ Az alábbiakban a webes API-kat hozhat létre egyéni összekötőket vonatkozó
 | Egyéni összekötők száma | Azure-előfizetésenként 1000 | 
 | Percenkénti kérések száma az egyéni összekötő által létesített egyes kapcsolatokon | kapcsolatonként 500 kérés |
 |||| 
+
+<a name="managed-identity"></a>
+
+## <a name="managed-identities"></a>Felügyelt identitások
+
+| Name (Név) | Korlát | 
+| ---- | ----- | 
+| A logic apps, a rendszer által hozzárendelt száma felügyelt identitások Azure-előfizetésenként | 10 | 
+|||
 
 <a name="integration-account-limits"></a>
 

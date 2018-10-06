@@ -9,19 +9,19 @@ ms.author: minxia
 author: mx-iao
 ms.reviewer: sgilley
 ms.date: 09/24/2018
-ms.openlocfilehash: ba43593e90b78aaa0083faf4f8162a7663c0ad47
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 43302bd449b2a25e3e1a65da5ae2a70c3660cb09
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46974221"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48815018"
 ---
 # <a name="how-to-train-tensorflow-models"></a>Hogyan TensorFlow modelleket taníthat be
 
-Az Azure Machine Learning Neurális hálózat (DNN) képzést nyújt tensorflow-hoz, egy egyéni TensorFlow osztályt a Estimator biztosít. Az Azure SDK TensorFlow Estimator (, nem kell a conflated a [ `tf.estimator.Estimator` ](https://www.tensorflow.org/api_docs/python/tf/estimator/Estimator) osztály) lehetővé teszi, hogy egyszerűen a tensorflow-hoz is egyetlen csomópontot, és elosztott futtatások az Azure-beli számítási feladatok elküldéséhez.
+Neurális hálózat (DNN) képzést nyújt tensorflow-hoz, az Azure Machine Learning biztosít egyéni `TensorFlow` osztályát az `Estimator`. Az Azure SDK `TensorFlow` estimator (, nem kell a conflated a [ `tf.estimator.Estimator` ](https://www.tensorflow.org/api_docs/python/tf/estimator/Estimator) osztály) lehetővé teszi, hogy egyszerűen a tensorflow-hoz is egyetlen csomópontot, és elosztott futtatások az Azure-beli számítási feladatok elküldéséhez.
 
 ## <a name="single-node-training"></a>Egy csomópontos képzés
--Betanítás a TensorFlow Estimator a hasonlít a használatával a [Estimator kiinduló](how-to-train-ml-models.md), ezért először olvassa el a cikkben található útmutató, és ellenőrizze, hogy tisztában van a bemutatott fogalmakkal.
+A képzés a `TensorFlow` estimator hasonlít a használatával a [alap `Estimator` ](how-to-train-ml-models.md), ezért először olvassa el a cikkben található útmutató, és ellenőrizze, hogy tisztában van a bemutatott fogalmakkal.
   
 TensorFlow-feladatok futtatásához, hozza létre a `TensorFlow` objektum. Már létrehozott kell a [számítási célt](how-to-set-up-training-targets.md#batch) objektum `compute_target`.
 
@@ -42,13 +42,15 @@ tf_est = TensorFlow(source_directory='./my-tf-proj',
 ```
 
 Itt hogy adja meg a következő paraméterek, a TensorFlow-konstruktor:
-* `source_directory`: A helyi könyvtárban, amely tartalmazza az összes a betanítási feladathoz szükséges kódot. Ez a mappa a távoli számítási átmásolódnak a helyi gépen
-* `script_params`: Egy a tanítási szkriptet a parancssori argumentumok megadása szótárban `entry_script`, < parancssori argumentum, érték > formájában párok
-* `compute_target`: A távoli számítási arról, hogy az a tanítási szkriptet, ebben az esetben egy [Batch AI](how-to-set-up-training-targets.md#batch) fürt
-* `entry_script`: A fájl elérési útja (viszonyítva a `source_directory`), a tanítási szkriptet futtatandó távoli számítási. Ezt a fájlt, és a további fájlokat attól függ, ebben a mappában kell elhelyezni.
-* `conda_packages`: Python-csomagokat a tanítási szkriptet által igényelt conda-n keresztül kell telepíteni a listája. Ebben az esetben használja a tanítási szkriptet `sklearn` tölt be az adatokat, így adja meg ezt a csomagot kell telepíteni.  
-A konstruktor rendelkezik egy másik nevű paramétert `pip_packages` használható az esetleges pip csomagokat szükséges
-* `use_gpu`: Ezt a jelzőt `True` kihasználhatja a GPU, a betanításhoz. Alapértelmezés szerint a `False`.
+
+Paraméter | Leírás
+--|--
+`source_directory` | Helyi könyvtár, amely tartalmazza az összes a betanítási feladathoz szükséges kódot. Ez a mappa a távoli számítási átmásolódnak a helyi gépen
+`script_params` | A parancssori paraméterek, a tanítási szkriptet megadása szótárban `entry_script`, < parancssori argumentum, érték > formájában párok
+`compute_target` | Távoli számítási arról, hogy az a tanítási szkriptet, ebben az esetben egy [Batch AI](how-to-set-up-training-targets.md#batch) fürt
+`entry_script` | Fájl elérési útja (viszonyítva a `source_directory`), a tanítási szkriptet futtatandó távoli számítási. Ezt a fájlt, és a további fájlokat attól függ, ebben a mappában kell elhelyezni.
+`conda_packages` | Szükség szerint a tanítási szkriptet conda-n keresztül kell telepíteni a Python-csomagok listáját. Ebben az esetben használja a tanítási szkriptet `sklearn` tölt be az adatokat, így adja meg ezt a csomagot kell telepíteni.  A konstruktor rendelkezik egy másik nevű paramétert `pip_packages` használható az esetleges pip csomagokat szükséges
+`use_gpu` | Ezt a jelzőt `True` kihasználhatja a GPU, a betanításhoz. Alapértelmezés szerint a `False`.
 
 Mivel a TensorFlow estimator használ, a képzési használt tároló alapértelmezés szerint a TensorFlow-csomag és a szükséges képzés a processzorok és gpu-k kapcsolódó függőségeket tartalmaznak.
 
@@ -61,8 +63,8 @@ run = exp.submit(tf_est)
 A TensorFlow Estimator emellett lehetővé teszi különböző Azure-beli virtuális Processzor és GPU fürtök ipari méretekben a modellek betanítása. Könnyedén futtathat elosztott TensorFlow-betanítás néhány API-hívások, amíg az Azure Machine Learning fogja kezelni a háttérben, az infrastruktúra és a vezénylési ilyen számítási feladat végrehajtásához szükséges.
 
 Az Azure Machine Learning elosztott képzési két módszert támogat, a tensorflow-hoz:
-1. MPI-alapú elosztott képzési használatával a [Horovod](https://github.com/uber/horovod) keretrendszer
-2. natív [elosztott TensorFlow](https://www.tensorflow.org/deploy/distributed) paraméter metoda keresztül
+* MPI-alapú elosztott képzési használatával a [Horovod](https://github.com/uber/horovod) keretrendszer
+* natív [elosztott TensorFlow](https://www.tensorflow.org/deploy/distributed) paraméter metoda keresztül
 
 ### <a name="horovod"></a>Horovod
 [Horovod](https://github.com/uber/horovod) Uber által fejlesztett elosztott betanítás egy kör-allreduce nyílt forráskódú keretrendszer van.
@@ -83,13 +85,17 @@ tf_est = TensorFlow(source_directory='./my-tf-proj',
 ```
 
 A fenti kód a következő új paraméterek, a TensorFlow-konstruktor tünteti fel:
-* `node_count`: A betanítási feladathoz használandó csomópontok száma. Ennek az argumentumnak az alapértelmezett `1`
-* `process_count_per_node`: Minden egyes csomóponton futtatandó folyamatok (vagy "dolgozó szakemberek") a száma. Ennek az argumentumnak az alapértelmezett `1`
-* `distributed_backend`: A háttérrendszer indításakor elosztott képzés, így az a Estimator MPI-n keresztül. Ennek az argumentumnak az alapértelmezett `None`. Ha szeretné-e a párhuzamos és elosztott képzési végez (például `node_count`> 1 vagy `process_count_per_node`> 1 vagy mindkét) beállítása MPI (és Horovod), `distributed_backend='mpi'`. Az Azure Machine Learning által használt MPI végrehajtása [nyílt MPI](https://www.open-mpi.org/).
+
+Paraméter | Leírás | Alapértelmezett
+--|--|--
+`node_count` | A betanítási feladathoz használandó csomópontok száma. | `1`
+`process_count_per_node` | Minden egyes csomóponton futtatandó folyamatok (vagy "dolgozó szakemberek") száma.|`1`
+`distributed_backend` | Háttérbeli indításakor elosztott képzés, így az a Estimator MPI-n keresztül. Ha szeretné-e a párhuzamos és elosztott képzési végez (például `node_count`> 1 vagy `process_count_per_node`> 1 vagy mindkét) beállítása MPI (és Horovod), `distributed_backend='mpi'`. Az Azure Machine Learning által használt MPI végrehajtása [nyílt MPI](https://www.open-mpi.org/). | `None`
 
 A fenti példában fognak futni az elosztott képzési két feldolgozó egy feldolgozó csomópontonkénti.
 
 Horovod és annak függőségeit lesz telepítve, így egyszerűen importálhatja azt a tanítási szkriptet a `train.py` módon:
+
 ```Python
 import tensorflow as tf
 import horovod
@@ -104,6 +110,7 @@ run = exp.submit(tf_est)
 Futtathat [natív elosztott TensorFlow](https://www.tensorflow.org/deploy/distributed), melyik a paraméter kiszolgálómodellt használ. Ezzel a módszerrel, betanítását paraméter kiszolgálók és a munkavállalók fürtök között. A feldolgozók kiszámítása során képzés, a átmenetekhez, a paraméter kiszolgálók összesíteni az átmenetek során.
 
 Hozza létre a TensorFlow-objektum:
+
 ```Python
 from azureml.train.dnn import TensorFlow
 
@@ -119,9 +126,12 @@ tf_est = TensorFlow(source_directory='./my-tf-proj',
 ```
 
 A következő paraméterek odafigyelni a TensorFlow-konstruktor a fenti kódban:
-* `worker_count`: A feldolgozók száma. Ennek az argumentumnak az alapértelmezett `1`
-* `parameter_server_count`: A paraméter-kiszolgálók száma. Ennek az argumentumnak az alapértelmezett `1`
-* `distributed_backend`: A háttérrendszer elosztott képzéshez használatára. Ennek az argumentumnak az alapértelmezett `None`. Hajtsa végre az elosztott képzési paraméter-kiszolgálón keresztül, kell beállítani `distributed_backend='ps'`
+
+Paraméter | Leírás | Alapértelmezett
+--|--|--
+`worker_count` | Feldolgozók száma. | `1`
+`parameter_server_count` | A paraméter-kiszolgálók száma. | `1`
+`distributed_backend` | Használjon elosztott képzéshez-háttérrendszerrel. Ehhez az elosztott képzési paraméter-kiszolgálón keresztül, állítsa be `distributed_backend='ps'` | `None`
 
 #### <a name="note-on-tfconfig"></a>Vegye figyelembe a `TF_CONFIG`
 Is szüksége lesz a hálózati címek és portok, a fürt a [ `tf.train.ClusterSpec` ](https://www.tensorflow.org/api_docs/python/tf/train/ClusterSpec), így az Azure Machine Learning beállítja a `TF_CONFIG` környezeti változót az Ön számára.
@@ -161,13 +171,13 @@ run = exp.submit(tf_est)
 
 ## <a name="examples"></a>Példák
 Egy csomópontos TensorFlow-betanítás oktatóanyagot tekintse meg:
-* `training/03.train-tune-deploy-tensorflow/03.train-tune-deploy-tensorflow.ipynb`
+* `training/03.train-hyperparameter-tune-deploy-with-tensorflow `
 
 Az elosztott TensorFlow-Horovod oktatóanyagért lásd:
-* `training/04.distributed-tensorflow-with-horovod/04.distributed-tensorflow-with-horovod.ipynb`
+* `training/04.distributed-tensorflow-with-horovod`
 
 Natív elosztott TensorFlow-oktatóanyagot tekintse meg:
-* `training/05.distributed-tensorflow-with-parameter-server/05.distributed-tensorflow-with-parameter-server.ipynb`
+* `training/05.distributed-tensorflow-with-parameter-server`
 
 Ezeket a notebookokat lekérése:
 

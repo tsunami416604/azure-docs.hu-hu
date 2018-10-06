@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 08/26/2018
 ms.author: tamram
 ms.component: common
-ms.openlocfilehash: 1df237a65a8b5312b20de19a99399b3a3dd075ff
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 76da33a74ad95d7f074bc4efd3a8d9f97c19d612
+ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43049610"
+ms.lasthandoff: 10/06/2018
+ms.locfileid: "48830312"
 ---
 # <a name="moving-data-to-and-from-azure-storage"></a>Adatok áthelyezése az Azure Storage szolgáltatásba vagy onnan máshová
 Ha meg szeretné áthelyezni a helyszíni adatok Azure Storage (vagy fordítva), nincsenek ehhez többféleképpen. Az Önnek leginkább megfelelő megoldást, amelyen a forgatókönyvtől függ. Ez a cikk gyors áttekintést és különféle forgatókönyvekre és minden egyes megfelelő ajánlatokat nyújtanak.
@@ -38,7 +38,7 @@ Ha szükséges, vagy egy parancssori eszköz (például a rendszergazdák) felk�
 ### <a name="azcopy"></a>AzCopy
 Az AzCopy parancssori segédprogram az készült nagy teljesítményű másolása az adatok és az Azure Storage-ból. Adatok a tárfiókon belül vagy között különböző tárfiókokban is másolhatja. Az AzCopy érhető el az [Windows](storage-use-azcopy.md) és a [Linux](storage-use-azcopy-linux.md).
 
-Lásd: [adatátvitel az AzCopy parancssori segédprogrammal](storage-use-azcopy.md) vagy [adatok áthelyezése az Azcopyval Linux rendszeren](storage-use-azcopy-linux.md) további.
+A helyszíni adatok migrálása az Azure Storage kapcsolatban lásd: [oktatóanyag: a helyszíni adatok Migrálása a tárolási AzCopy használatával](storage-use-azcopy-migrate-on-premises-data.md).
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 Az Azure PowerShell modul parancsmagokat biztosít az Azure-szolgáltatások kezeléséhez. Ez egy feladatalapú parancshéj és parancsnyelv, amely kifejezetten rendszer-felügyeleti célra készült.

@@ -12,12 +12,12 @@ ms.topic: reference
 ms.date: 03/22/2018
 ms.author: rnagpal
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 7000fc13a792f4f6def592e78dc759c8cf165881
-ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
+ms.openlocfilehash: ca4113050069698c74a5d1e7903d068946123543
+ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47451918"
+ms.lasthandoff: 10/06/2018
+ms.locfileid: "48830106"
 ---
 # <a name="azure-cosmos-db-net-core-sdk-for-sql-api-release-notes-and-resources"></a>Az Azure Cosmos DB .NET Core SDK-t az SQL API-hoz: kibocsátási megjegyzések és erőforrások
 > [!div class="op_single_selector"]
@@ -52,6 +52,10 @@ ms.locfileid: "47451918"
 ## <a name="release-notes"></a>Kibocsátási megjegyzések
 
 Az Azure Cosmos DB .NET Core SDK legújabb verziójában funkcióparitás rendelkezik a [Azure Cosmos DB .NET SDK](sql-api-sdk-dotnet.md).
+
+### <a name="a-name212212"></a><a name="2.1.2"/>2.1.2
+
+* Diagnosztikai nyomkövetés fejlesztései.
 
 ### <a name="a-name211211"></a><a name="2.1.1"/>2.1.1
 
@@ -204,6 +208,7 @@ Ha ez az SDK kapcsolatos kérdése van, küldése a [StackOverflow](http://stack
 
 | Verzió | Kiadás dátuma | Visszavonás dátuma |
 | --- | --- | --- |
+| [2.1.2](#2.1.2) |2018. október 04. |--- |
 | [2.1.1](#2.1.1) |2018. szeptember 27. |--- |
 | [2.1.0](#2.1.0) |2018. szeptember 21. |--- |
 | [2.0.0](#2.0.0) |2018. szeptember 07. |--- |

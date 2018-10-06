@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: 5910417696651cad06d6f21513e81728be4181cd
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: 0e604138c35e476d1635cb695923bb7d2b83de82
+ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47432461"
+ms.lasthandoff: 10/06/2018
+ms.locfileid: "48831262"
 ---
 # <a name="language-understanding-faq"></a>Language Understanding – gyakori kérdések
 
@@ -135,7 +135,7 @@ Ha az alkalmazás korábban létezett, előtt a LUIS általánosan elérhető (G
 LUIS-alkalmazásokon át egy másik Azure-előfizetést, a LUIS alkalmazás exportálása, és importálja egy új fiók használatával. Frissítse a LUIS alkalmazás azonosítója, amely meghívja ezt az ügyfélalkalmazásban. Az új alkalmazás adhat vissza eltérő LUIS pontszámokat az eredeti alkalmazásból.
 
 ### <a name="how-do-i-download-a-log-of-user-utterances"></a>Hogyan töltse le a felhasználó utterances naplózása?
-Alapértelmezés szerint a LUIS-alkalmazás a felhasználók naplózza a kimondott szöveg. Töltse le, hogy a felhasználók küldeni a LUIS-alkalmazás megcímkézzen naplóját, lépjen a **saját alkalmazások**, és kattintson a három (***...*** ) az alkalmazások listáján. Kattintson a **végpont naplók exportálása**. A napló formátuma vesszővel tagolt (CSV) fájlként.
+Alapértelmezés szerint a LUIS-alkalmazás a felhasználók naplózza a kimondott szöveg. Töltse le, hogy a felhasználók küldeni a LUIS-alkalmazás megcímkézzen naplóját, lépjen a **saját alkalmazások**, és válassza ki az alkalmazást. Környezetfüggő eszköztárán válassza **végpont naplók exportálása**. A napló formátuma vesszővel tagolt (CSV) fájlként.
 
 ### <a name="how-can-i-disable-the-logging-of-utterances"></a>Hogyan tilthatom az utterances naplózását?
 Felhasználók bármikor kikapcsolhatják a naplózást a felhasználói kimondott szöveg beállításával `log=false` az a végpont URL-címe, amely az ügyfélalkalmazásban használ a LUIS-lekérdezéshez. Azonban letiltja a LUIS-alkalmazás lehetőségét utterances javaslat, amely azon alapul, a teljesítmény javítása naplózási kikapcsolásával [aktív tanulás](luis-concept-review-endpoint-utterances.md#what-is-active-learning). Ha `log=false` miatt az adatvédelem problémákat, nem töltheti le az adott felhasználó utterances rekord LUIS és használja ezeket a kimondott szöveg tökéletesítheti alkalmazását.

@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/27/2018
+ms.date: 10/04/2018
 ms.author: magoedte
-ms.openlocfilehash: df145ebe6276c911ef3064e3f8ff7a23a2faa870
-ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
+ms.openlocfilehash: 9fa0df0bbf363a7c751de460fd98740b4314f996
+ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47423034"
+ms.lasthandoff: 10/06/2018
+ms.locfileid: "48831194"
 ---
 # <a name="how-to-onboard-azure-monitor-for-containers"></a>Hogyan előkészítése az Azure Monitor for containers szolgáltatásban
 Ez a cikk bemutatja, hogyan állítható be az Azure Monitor for containers szolgáltatásban üzembe helyezett Kubernetes-környezetben és lévő üzemeltetett számítási feladatok teljesítményének figyeléséhez [Azure Kubernetes Service](https://docs.microsoft.com/azure/aks/).
@@ -39,8 +39,7 @@ Mielőtt elkezdené, győződjön meg arról, hogy rendelkezik az alábbiakkal:
 A teljesítmény monitorozását teszi lehetővé a teljesítmény- és esemény-adatokat gyűjti össze a fürt összes csomópontja Linux rendszeren tárolóalapú Log Analytics-ügynököket támaszkodik. Az ügynök automatikus telepítése és regisztrálása a megadott Log Analytics-munkaterület-, miután engedélyezte a tárolók figyelését. 
 
 >[!NOTE] 
->Ha már telepített egy AKS-fürtöt, akkor engedélyeznie figyelése Azure CLI vagy a megadott Azure Resource Manager-sablon használatával, ahogyan az a cikk későbbi részében is. Nem használhat `kubectl` frissítése, törlése, telepítse újra vagy telepítheti az ügynököt. 
->
+>Ha már telepített egy AKS-fürtöt, akkor engedélyeznie figyelése Azure CLI vagy a megadott Azure Resource Manager-sablon használatával, ahogyan az a cikk későbbi részében is. Nem használhat `kubectl` frissítése, törlése, telepítse újra vagy telepítheti az ügynököt. A sablon kell telepíteni szeretné ugyanabban az erőforráscsoportban a fürttel."
 
 ## <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra
 Jelentkezzen be az [Azure Portalra](https://portal.azure.com). 
@@ -71,6 +70,18 @@ A következő lépés lehetővé teszi, hogy az AKS-fürt Azure CLI-vel figyelé
 
 ```azurecli
 az aks enable-addons -a monitoring -n MyExistingManagedCluster -g MyExistingManagedClusterRG  
+```
+
+A kimenet az alábbihoz hasonló lesz:
+
+```azurecli
+provisioningState       : Succeeded
+```
+
+Ha szeretné inkább integrálása egy meglévő munkaterületet, a következő parancs használatával adja meg a munkaterület.
+
+```azurecli
+az aks enable-addons -a monitoring -n MyExistingManagedCluster -g MyExistingManagedClusterRG --workspace-resource-id <ExistingWorkspaceResourceID> 
 ```
 
 A kimenet az alábbihoz hasonló lesz:
@@ -124,6 +135,10 @@ Ez a módszer két JSON-sablont tartalmaz. Egy sablon határozza meg, a konfigur
 * Az AKS tároló erőforrás-azonosítója. 
 * Az erőforráscsoport, amely a fürt üzemel.
 * A Log Analytics-munkaterületet és régióban hozhat létre a munkaterületén. 
+
+>[!NOTE]
+>A sablonhoz telepíteni szeretné ugyanabban az erőforráscsoportban a fürttel.
+>
 
 A Log Analytics-munkaterületen van, manuálisan kell létrehozni. A munkaterület létrehozásához, beállíthatja azt keresztül [Azure Resource Manager](../log-analytics/log-analytics-template-workspace-configuration.md)segítségével, [PowerShell](https://docs.microsoft.com/azure/log-analytics/scripts/log-analytics-powershell-sample-create-workspace?toc=%2fpowershell%2fmodule%2ftoc.json), vagy a [az Azure portal](../log-analytics/log-analytics-quick-create-workspace.md).
 

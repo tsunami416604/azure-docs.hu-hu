@@ -5,21 +5,24 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 09/18/2018
+ms.date: 10/05/2018
 ms.topic: conceptual
 ms.service: cost-management
 manager: dougeby
 ms.custom: ''
-ms.openlocfilehash: 09035146fe3211f9fc46d3ad51326a6e76921b7d
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 48f1afcbef873e1af4346199c00ee2fadb1ad858
+ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46977298"
+ms.lasthandoff: 10/06/2018
+ms.locfileid: "48830243"
 ---
 # <a name="connect-a-google-cloud-platform-account"></a>A Google Cloud Platform-fiók csatlakoztatása
 
 A Cloudyn csatlakozhat a Google Cloud Platform-fiókját. Miután csatlakozott a fiók a Cloudyn, Cloudyn jelentésekben költség- és használati adatok érhető el. Ez a cikk segít beállítása és csatlakozása a Google-fiókját a Cloudynre.
+
+> [!NOTE]
+> Google módosította a biztonsági fiók, amely megakadályozza az új kapcsolatokat a Cloudyn és a Google között jön létre. A Cloudyn továbbra is fennáll, a felhasználók számára, akik már csatlakozik a Google Cloudyn Google adatainak gyűjtéséről. Azonban nem adhat új Google-fiókok a Cloudyn jelenleg. A Cloudyn csapata nem ismert, amikor új Google-fiókok hozzáadása a Cloudyn támogatása folytatódik. Ha folytatja a támogatási törölni fogjuk ezt a megjegyzést.
 
 ## <a name="collect-project-information"></a>Projekt adatainak gyűjtése
 

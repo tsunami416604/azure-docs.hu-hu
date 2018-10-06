@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: michmcla
-ms.openlocfilehash: 890a6b9dd1ef63fcc59984686b2d6dec773cdb52
-ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
+ms.openlocfilehash: 8ba1286f7283a1062b2b94d58c2439e8461c1573
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44391844"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48817126"
 ---
 # <a name="configure-azure-multi-factor-authentication-settings"></a>Az Azure multi-factor Authentication beállításainak konfigurálása
 
@@ -111,17 +111,33 @@ Mielőtt hozzálátna, vegye figyelembe a következő korlátozásokkal:
 * A fájl mérete legfeljebb 5 MB-ot.
 * Lehet, hogy a hitelesítési üzenetek 20 másodpercnél rövidebb. Üzenetek 20 másodpercnél hosszabb okozhat az ellenőrzés sikertelen lesz. A felhasználó előfordulhat, hogy nem válaszol, mielőtt befejezi az üzenetet, és az ellenőrzés túllépi az időkorlátot.
 
+### <a name="custom-message-language-behavior"></a>Egyéni üzenet nyelvi viselkedése
+
+Egyéni hangüzenet játsszák a felhasználónak, amikor a nyelv, az üzenet attól függ, ezek a tényezők:
+
+* Az aktuális felhasználó nyelve.
+   * A nyelv, a felhasználó böngészője által észlelt.
+   * Más hitelesítési forgatókönyvek viselkedése rendellenes lehet.
+* Minden rendelkezésre álló egyéni üzenetek nyelve.
+   * Ezt a nyelvet a rendszergazda által van kiválasztva, egy egyéni üzenetet hozzáadásakor.
+
+Ha például van egy német rendszernyelvű csak egy egyéni üzenetet:
+
+* Egy felhasználó hitelesíti magát a német nyelven fog hallgassa meg az egyéni német üzenet.
+* Egy felhasználó hitelesíti magát, angol nyelven fog hallgassa meg a szabványos angol üzenetet.
+
 ### <a name="set-up-a-custom-message"></a>Egy egyéni üzenetet beállítása
 
 1. Jelentkezzen be az [Azure Portal](https://portal.azure.com) felületére rendszergazdaként.
-2. Keresse meg a **Azure Active Directory** > **MFA-kiszolgáló** > **telefonhívási beállítások**.
+1. Keresse meg a **Azure Active Directory** > **MFA-kiszolgáló** > **telefonhívási beállítások**.
 
    ![Rekord egyéni telefonos üzenetek](./media/howto-mfa-mfasettings/phonecallsettings.png)
 
-3. Válassza ki **Hozzáadás üdvözlés**.
-4. Válassza ki az üdvözlőlap. Válassza ki a nyelvet.
-5. Válassza ki egy .mp3, .wav vagy hangfájl feltöltése.
-6. Válassza a **Hozzáadás** lehetőséget.
+1. Válassza ki **Hozzáadás üdvözlés**.
+1. Válassza ki az üdvözlőlap. 
+1. Válassza ki a nyelvet.
+1. Válassza ki egy .mp3, .wav vagy hangfájl feltöltése.
+1. Válassza a **Hozzáadás** lehetőséget.
 
 ## <a name="caching-in-azure-multi-factor-authentication"></a>Gyorsítótárazás az Azure multi-factor Authentication szolgáltatás
 

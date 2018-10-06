@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/12/2018
 ms.author: jingwang
-ms.openlocfilehash: c513ef76174507f1ea78b265b1882266b8473737
-ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
+ms.openlocfilehash: e50d1696fdc22916f5ac4699bd17ddc21a82a148
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48248941"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48815868"
 ---
 # <a name="copy-data-to-or-from-azure-sql-database-by-using-azure-data-factory"></a>Adatok másolása, vagy az Azure SQL Database-ből az Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you use:"]
@@ -64,7 +64,7 @@ Különböző hitelesítési típus tekintse meg a következő szakaszok az Elő
 
 - [SQL-hitelesítés](#sql-authentication)
 - [Az Azure AD alkalmazástoken-hitelesítésének: egyszerű szolgáltatás](#service-principal-authentication)
-- [Az Azure AD alkalmazástoken-hitelesítésének: felügyelt identitások az Azure-erőforrásokhoz](#managed-service-identity-authentication)
+- [Az Azure AD alkalmazástoken-hitelesítésének: felügyelt identitások az Azure-erőforrásokhoz](#managed-identity)
 
 >[!TIP]
 >Ha nyomja le az "UserErrorFailedToConnectToSqlServer", hibakód: Hiba történt, és üzenet például a "a munkamenet korlátot, az adatbázis XXX elérte.", és adja hozzá `Pooling=false` a kapcsolati karakterláncot, és próbálkozzon újra.
@@ -146,7 +146,7 @@ A szolgáltatás egyszerűszolgáltatás-alapú Azure AD alkalmazástoken-hitele
 }
 ```
 
-### <a name="managed-identities-for-azure-resources-authentication"></a>Felügyelt identitások Azure-erőforrások hitelesítéshez
+### <a name="managed-identity"></a> Felügyelt identitások Azure-erőforrások hitelesítéshez
 
 Adat-előállító társítható egy [-identitás az Azure-erőforrások](data-factory-service-identity.md) , amely az adott adat-előállító jelöli. A felügyeltszolgáltatás-identitás az Azure SQL Database-hitelesítéshez használható. A kijelölt gyári férhet hozzá, és másolja ezt az identitást az adatok vagy az adatbázishoz.
 

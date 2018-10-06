@@ -12,26 +12,43 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/13/2018
+ms.date: 10/04/2018
 ms.author: magoedte
-ms.openlocfilehash: 2b989fbebe237e4e3746ef2f237193587173dfe4
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 12a8b1f43fd822035417096bc21e0e44f574448d
+ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46963406"
+ms.lasthandoff: 10/06/2018
+ms.locfileid: "48830635"
 ---
-# <a name="how-to-stop-monitoring-your-azure-kubernetes-service-aks-azure-monitor-for-containers"></a>Az Azure Kubernetes Service (AKS) Azure Monitor-tárolókhoz figyelésének leállításáról
+# <a name="how-to-stop-monitoring-your-azure-kubernetes-service-aks-with-azure-monitor-for-containers"></a>Az Azure Kubernetes Service (AKS) tárolókat és az Azure Monitor figyelésének leállítása
 
-Ha engedélyezése után az AKS-fürt figyelése, úgy döntene, hogy már nem szeretne, megfigyeli azt, akkor is *kikapcsolhatja az újat* vagy a megadott Azure Resource Manager-sablonok segítségével a PowerShell-parancsmag  **Új AzureRmResourceGroupDeployment** vagy az Azure CLI használatával. Egy JSON-sablon meghatározza a konfigurációt a *kikapcsolhatja az újat*. A másik, konfigurálja úgy, hogy adja meg az AKS Azonosítót és erőforrás erőforráscsoportot, amely a fürt üzembe lesz helyezve, a paraméterértékeket tartalmaz. 
+Ha engedélyezése után az AKS-fürt figyelése, úgy döntene, hogy már nem szeretne, megfigyeli azt, akkor is *kikapcsolhatja az újat*.  Ez a cikk bemutatja, hogyan teheti ezt meg az Azure CLI vagy a megadott Azure Resource Manager-sablonokkal.  
+
+
+## <a name="azure-cli"></a>Azure CLI
+Használja a [az aks disable-bővítmények](https://docs.microsoft.com/cli/azure/aks?view=azure-cli-latest#az-aks-disable-addons) paranccsal tiltsa le az Azure Monitor for containers szolgáltatásban. A parancs eltávolítja az ügynököt a fürt csomópontjai, nem távolítja el a megoldás vagy az adatok már összegyűjtött és tárolt a Log Analytics-erőforrás.  
+
+```azurecli
+az aks disable -a monitoring -n MyExistingManagedCluster -g MyExistingManagedClusterRG
+```
+
+Kívánja újból engedélyezni a figyelést a fürt számára, lásd: [engedélyezze a monitorozást az Azure CLI-vel](monitoring-container-insights-onboard.md#enable-monitoring-using-azure-cli).
+
+## <a name="azure-resource-manager-template"></a>Azure Resource Manager-sablon
+Megadott van két Azure Resource Manager-sablon eltávolítása az erőforráscsoportban a megoldásokkal kapcsolatos forrásanyagok konzisztens és ismétlődő támogatásához. Adja meg a konfigurációt a JSON-sablon egyik *kikapcsolhatja az újat* és a másik, konfigurálja úgy, hogy adja meg az AKS Azonosítót és erőforrás erőforráscsoportot, amely a fürt üzembe lesz helyezve, a paraméterértékeket tartalmaz. 
 
 Ha még nem ismeri a sablon segítségével üzembe helyezni erőforrásokat fogalma, lásd:
 * [Erőforrások üzembe helyezése Resource Manager-sablonokkal és az Azure PowerShell-lel](../azure-resource-manager/resource-group-template-deploy.md)
 * [Erőforrások üzembe helyezése Resource Manager-sablonokkal és az Azure CLI](../azure-resource-manager/resource-group-template-deploy-cli.md)
 
+>[!NOTE]
+>A sablonhoz telepíteni szeretné ugyanabban az erőforráscsoportban a fürttel.
+>
+
 Ha az Azure CLI-vel, akkor először helyi telepítése és használata a parancssori felület. Kell futnia az Azure CLI 2.0.27-es vagy újabb. A verzió azonosításához futtassa `az --version`. Ha telepíteni vagy frissíteni szeretné az Azure CLI, lásd: kell [az Azure CLI telepítése](https://docs.microsoft.com/cli/azure/install-azure-cli). 
 
-## <a name="create-template"></a>Sablon létrehozása
+### <a name="create-template"></a>Sablon létrehozása
 
 1. Másolja és illessze be a következő JSON-szintaxist a létrehozott fájlba:
 
@@ -101,7 +118,7 @@ Ha az Azure CLI-vel, akkor először helyi telepítése és használata a paranc
 5. Mentse a fájlt **OptOutParam.json** egy helyi mappába.
 6. Készen áll a sablon üzembe helyezésére. 
 
-## <a name="remove-the-solution-using-azure-cli"></a>Távolítsa el a megoldás az Azure CLI használatával
+### <a name="remove-the-solution-using-azure-cli"></a>Távolítsa el a megoldás az Azure CLI használatával
 Futtassa a következő parancsot az Azure CLI használatával távolítsa el a megoldás és az AKS-fürt a konfiguráció tisztítása Linux rendszeren.
 
 ```azurecli
@@ -116,7 +133,7 @@ A konfiguráció módosításának befejezése néhány percet is igénybe vehet
 ProvisioningState       : Succeeded
 ```
 
-## <a name="remove-the-solution-using-powershell"></a>Távolítsa el a megoldás a PowerShell használatával
+### <a name="remove-the-solution-using-powershell"></a>Távolítsa el a megoldás a PowerShell használatával
 
 A megoldás eltávolítása és az AKS-fürt a konfiguráció tisztítása a sablont tartalmazó könyvtárban hajtsa végre a következő PowerShell-parancsokat.    
 

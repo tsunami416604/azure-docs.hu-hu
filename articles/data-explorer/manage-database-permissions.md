@@ -8,12 +8,12 @@ ms.service: data-explorer
 services: data-explorer
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: fbbc5a199116e46aac0874f3dc6d6d9aa18c60cd
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 7f1e06fba76b833d4a344af1163ef7ef2c29bdb6
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46954021"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48816854"
 ---
 # <a name="manage-azure-data-explorer-database-permissions"></a>Adatkezelő az Azure adatbázis-engedélyek kezelése
 
@@ -31,7 +31,6 @@ Az adatkezelő az Azure rendelkezik a következő szerepkörök:
 |Adatbázis-felhasználót.              |Olvashatja az összes adatot és az adatbázis metaadatait. Emellett azok hozhat létre táblák (a tábla rendszergazda számára, hogy a táblázat neve) és a functions az adatbázisban.|
 |Adatbázis-megjelenítő            |Olvashatja az összes adatot és az adatbázis metaadatait.|
 |Adatbázis módon eredményesen dolgozható          |Képes kiolvasni az adatokat az összes meglévő táblák az adatbázisban, de nem a lekérdezést.|
-|Adatbázis unrestrictedviewer|Lekérdezheti a táblákat, amelyek rendelkeznek a **RestrictedViewAccess** házirend engedélyezve van. Más táblák nem lehet lekérdezni.|
 |Adatbázis-figyelője           |Az adatbázis és a gyermekentitások kontextusában a ".show..." parancsokat hajthat végre.|
 |Tábla rendszergazda                |Bármit egy adott tábla hatókörében. |
 |Tábla módon eredményesen dolgozható             |Képes kiolvasni az adatokat egy adott tábla hatókörében, de nem lekérdezheti az adatokat.|

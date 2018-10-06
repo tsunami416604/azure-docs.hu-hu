@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/18/2017
 ms.author: victorh
-ms.openlocfilehash: a9325dff84635955600bc78687ec0156495ae893
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: d0a20de8738e8c7b2719a9de85d5fd16aa5778cf
+ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46954381"
+ms.lasthandoff: 10/06/2018
+ms.locfileid: "48829682"
 ---
 # <a name="how-to-manage-dns-zones-in-the-azure-portal"></a>DNS-zónák kezelése az Azure Portalon
 
@@ -32,7 +32,7 @@ Ez a cikk bemutatja, hogyan kezelheti a DNS-zónák az Azure portal használatá
 ## <a name="create-a-dns-zone"></a>DNS-zóna létrehozása
 
 1. Jelentkezzen be az Azure Portalra
-2. A központi menüben kattintson, és kattintson a **erőforrás létrehozása > Hálózatkezelés >** majd **DNS-zóna** a hozzon létre DNS-zóna panel megnyitásához.
+2. Lépjen a központ menüben **erőforrás létrehozása > Hálózatkezelés > DNS-zóna** megnyitásához a **DNS-zóna létrehozása** panelen.
 
     ![DNS-zóna](./media/dns-operations-dnszones-portal/openzone650.png)
 
@@ -51,13 +51,13 @@ Ez a cikk bemutatja, hogyan kezelheti a DNS-zónák az Azure portal használatá
 
 ## <a name="list-dns-zones"></a>DNS-zónák listázása
 
-Az Azure Portalon lépjen **további szolgáltatások** > **hálózatkezelés** > **DNS-zónák**. Minden DNS-zóna saját erőforrás, például-rekordhalmazok számának és azok ebben a nézetben látható a névkiszolgálókat. Az oszlop **NÉVKISZOLGÁLÓK** nem szerepel, hozzáadása, kattintson az alapértelmezett nézet **oszlopok**, jelölje be **névkiszolgálók** kattintson **kész**.
+Az Azure Portalon lépjen **további szolgáltatások** > **hálózatkezelés** > **DNS-zónák**. Minden DNS-zónát a saját erőforrás- és -rekordhalmazok száma például és névkiszolgálók teljesítményobjektumok ebben a nézetben. Az oszlop **NÉVKISZOLGÁLÓK** nem szerepel az alapértelmezett nézet. Adja hozzá, kattintson a **oszlopok**válassza **névkiszolgálók**, és kattintson a **kész**.
 
 ![DNS-zónák listázása](./media/dns-operations-dnszones-portal/listzones.png)
 
 ## <a name="delete-a-dns-zone"></a>DNS-zóna törlése
 
-Keresse meg a DNS-zóna, a portálon. Az a **DNS-zóna** panelen kattintson a **zóna törlése**. Szeretne térni a DNS-zóna törlése megerősítésére kéri. Is DNS-zónák törlésével a zónában lévő összes rekordját törli.
+Keresse meg a DNS-zóna, a portálon. Az a **DNS-zóna** panelen kattintson a **zóna törlése**. Ezután a rendszer kéri, győződjön meg arról, hogy térni a DNS-zóna törlése. DNS-zóna törlése is törli az összes rekordot a zónában található.
 
 ## <a name="next-steps"></a>További lépések
 

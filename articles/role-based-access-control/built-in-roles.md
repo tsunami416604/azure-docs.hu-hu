@@ -15,12 +15,12 @@ ms.date: 09/27/2018
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro
-ms.openlocfilehash: 6fe9a106975a03fabc9d674ede694e683dc3cd94
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 88667749d9cdf5239be33f3aca52d1a614556a41
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47410272"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48816608"
 ---
 # <a name="built-in-roles-for-azure-resources"></a>Az Azure-erőforrások beépített szerepkörök
 [Szerepköralapú hozzáférés-vezérlés (RBAC)](overview.md) rendelkezik, amelyeket hozzárendelhet a felhasználók, csoportok és az egyszerű szolgáltatások számos beépített szerepkör-definíciók. Szerepkör-hozzárendelések módon az Azure-erőforrások elérését Ön szabályozza. Ha a beépített szerepkörök nem felelnek meg a cég vagy intézmény igényeinek, saját [egyéni szerepköröket](custom-roles.md) is létrehozhat.
@@ -786,14 +786,14 @@ A következő táblázat a beépített szerepkörök rövid leírása. A szerepk
 > | **Leírás** | Lehetővé teszi az adat-előállítók kezelését, az azokhoz való hozzáférés nélkül. |
 > | **Azonosító** | 673868aa-7521-48A0-acc6-0f60742d39f5 |
 > | **Műveletek** |  |
-> | Microsoft.Authorization/*/read | Olvasási szerepköröket és szerepkör hozzárendelések |
+> | Microsoft.Authorization/*/read | Olvassa el a szerepköröket és szerepkör-hozzárendeléseket. |
 > | Microsoft.DataFactory/dataFactories/* | Létrehozhat és kezelhet adat-előállítók és a bennük található gyermekerőforrásait. |
 > | Microsoft.DataFactory/factories/* | Létrehozhat és kezelhet adat-előállítók és a bennük található gyermekerőforrásait. |
-> | Microsoft.Insights/alertRules/* | Hozzon létre, és a riasztási szabályok kezelése |
-> | Microsoft.ResourceHealth/availabilityStatuses/read | Beolvassa a megadott hatókörben lévő összes erőforrás rendelkezésre állási állapotát |
-> | Microsoft.Resources/deployments/* | Erőforráscsoportok üzemelő példányainak elindíthatók |
-> | Microsoft.Resources/subscriptions/resourceGroups/read | Beolvassa vagy listázza az erőforráscsoportokat. |
-> | Microsoft.Support/* | Hozzon létre, és a támogatási jegyek kezelése |
+> | Microsoft.Insights/alertRules/* | Hozzon létre, és a riasztási szabályok kezelése. |
+> | Microsoft.ResourceHealth/availabilityStatuses/read | A rendelkezésre állási állapotok beolvasása az összes erőforrás a megadott hatókörben. |
+> | Microsoft.Resources/deployments/* | Létrehozhat és kezelhet erőforráscsoportok üzemelő példányainak. |
+> | Microsoft.Resources/subscriptions/resourceGroups/read | GET vagy list erőforráscsoport. |
+> | Microsoft.Support/* | Hozzon létre, és kezelhetik a támogatási jegyeket. |
 
 ## <a name="data-lake-analytics-developer"></a>Data Lake Analytics-fejlesztő
 > [!div class="mx-tableFixed"]

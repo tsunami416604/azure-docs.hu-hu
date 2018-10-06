@@ -1,20 +1,21 @@
 ---
-title: 'Bing Custom Search: Megosztani az egyéni keresés |} A Microsoft Docs'
-description: Ismerteti, hogyan oszthat meg egy egyéni keresési példány
+title: Egyéni keresés – Bing egyéni keresés megosztása
+titlesuffix: Azure Cognitive Services
+description: Ismerteti, hogyan oszthat meg egy egyéni keresési példány.
 services: cognitive-services
 author: brapel
-manager: ehansen
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-custom-search
-ms.topic: article
+ms.topic: conceptual
 ms.date: 09/28/2017
 ms.author: v-brapel
-ms.openlocfilehash: 4a9761ce0671b57d802fe332c92e32d1f410fa6f
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: b6834681f2b6478943c43e44d694ae278ddd4682
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46960957"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48815919"
 ---
 # <a name="share-your-custom-search-instance"></a>Az egyéni keresési példány megosztása
 

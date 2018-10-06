@@ -7,12 +7,12 @@ ms.date: 9/18/2018
 ms.topic: conceptual
 ms.service: azure-monitor
 ms.component: alerts
-ms.openlocfilehash: 586ced5b239b77dd9ae596a754613a66cee371a9
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 0ac19ec18c443f677260ba22b6bce1c06237fb2e
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47405920"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48816430"
 ---
 # <a name="understand-how-metric-alerts-work-in-azure-monitor"></a>Megismerheti, hogyan riasztást küld a metrika a munkát az Azure monitorban
 
@@ -93,7 +93,43 @@ A metrikákhoz kapcsolódó riasztások általában értesítést kap 5 perc ala
 
 ## <a name="supported-resource-types-for-metric-alerts"></a>Metrikákhoz kapcsolódó riasztások a támogatott erőforrástípusok
 
-Annak a támogatott típusok teljes listáját a jelen [cikk](monitoring-near-real-time-metric-alerts.md#metrics-and-dimensions-supported)
+Annak a támogatott típusok teljes listáját a jelen [cikk](monitoring-near-real-time-metric-alerts.md#metrics-and-dimensions-supported).
+
+Ha klasszikus metrikariasztásokat használatát még ma, és keres, ha metrikákhoz kapcsolódó riasztások támogatásához az összes erőforrás megtekintéséhez használja, az alábbi táblázat az erőforrás típusok klasszikus metrikariasztásokat támogatja, és ha támogatja őket metrikákhoz kapcsolódó riasztások még ma, vagy sem.
+
+|Klasszikus metrikariasztásokat támogatja erőforrás típusa | Metrikákhoz kapcsolódó riasztások által támogatott |
+|-------------------------------------------------|----------------------------|
+| Microsoft.ApiManagement/service | Igen |
+| Microsoft.Batch/batchAccounts| Igen|
+|Microsoft.Cache/redis| Igen
+|Microsoft.ClassicCompute/virtualMachines | Nem |
+|Microsoft.ClassicCompute/domainNames/slots/roles | Nem|
+|Microsoft.CognitiveServices/accounts | Nem |
+|Microsoft.Compute/virtualMachines | Igen|
+|Microsoft.Compute/virtualMachineScaleSets| Igen|
+|Microsoft.ClassicStorage/storageAccounts| Nem |
+|Microsoft.DataFactory/datafactories | Igen|
+|Microsoft.DBforMySQL/servers| Igen|
+|Microsoft.DBforPostgreSQL/servers| Igen|
+|Microsoft.Devices/IotHubs | Nem|
+|Microsoft.DocumentDB/databaseAccounts| Nem|
+|Microsoft.EventHub/namespaces | Igen|
+|Microsoft.Logic/workflows | Igen|
+|Microsoft.Network/loadBalancers |Igen|
+|Microsoft.Network/publicIPAddresses| Igen|
+|Microsoft.Network/applicationGateways| Igen|
+|Microsoft.Network/expressRouteCircuits| Igen|
+|Microsoft.Network/trafficManagerProfiles | Igen|
+|Microsoft.Search/searchServices | Nem|
+|Microsoft.ServiceBus/namespaces| Nem|
+|Microsoft.Storage/storageAccounts | Igen|
+|Microsoft.StreamAnalytics/streamingjobs| Igen|
+|Microsoft.TimeSeriesInsights/environments | Igen|
+|A Microsoft. Webalkalmazás/kiszolgálófarmok | Igen |
+|A Microsoft. Webhelyek / (kivéve a functions) | Igen|
+|A Microsoft. Webalkalmazás/hostingEnvironments/multiRolePools | Nem|
+|A Microsoft. Webalkalmazás/hostingEnvironments/workerPools| Nem
+|Microsoft.SQL/Servers | Nem|
 
 ## <a name="next-steps"></a>További lépések
 

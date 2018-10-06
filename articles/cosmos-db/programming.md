@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: andrl
-ms.openlocfilehash: 3c18478fb2996178ee0b75870ce63dfc79ad4c4c
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: 8452f84c1358c410cd0431416a5b65a88a8b903e
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44054723"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48817104"
 ---
 # <a name="azure-cosmos-db-server-side-programming-stored-procedures-database-triggers-and-udfs"></a>Az Azure Cosmos DB kiszolgálóoldali programozása: tárolt eljárások, adatbázis-eseményindítók és felhasználói függvények
 
@@ -92,7 +92,7 @@ client.executeStoredProcedureAsync('dbs/testdb/colls/testColl/sprocs/helloWorld'
     });
 ```
 
-A context objektumot biztosít hozzáférést a Cosmos DB storage elvégezhető összes műveletet, valamint a kérések és válaszok objektumok elérését. A válasz objektum ebben az esetben az ügyfélnek küldött válasz törzsében beállításához használható. További információkért lásd: a [SDK-dokumentáció az Azure Cosmos DB a JavaScript-kiszolgáló](https://azure.github.io/azure-cosmosdb-js-server/).  
+A context objektumot biztosít hozzáférést a Cosmos DB storage elvégezhető összes műveletet, valamint a kérések és válaszok objektumok elérését. A válasz objektum ebben az esetben az ügyfélnek küldött válasz törzsében beállításához használható. További információkért lásd: a [Azure Cosmos DB a JavaScript API-referencia a kiszolgálóoldali](https://azure.github.io/azure-cosmosdb-js-server/).  
 
 Ossza meg velünk az ebben a példában bontsa ki, és további adatbázissal kapcsolatos funkciók hozzáadása a tárolt eljárást. Tárolt eljárások is létrehozni, frissíteni, olvassa el, lekérdezése és dokumentumok és mellékletek belül a gyűjtemény törlése.    
 
@@ -503,7 +503,7 @@ client.createUserDefinedFunctionAsync('dbs/testdb/colls/testColl', taxUdf)
 ```
 
 ## <a name="javascript-language-integrated-query-api"></a>A JavaScript nyelvintegrált lekérdezési API
-Dokumentumkeresési lekérdezések, az Azure Cosmos DB SQL-szintaxis használatával, valamint a kiszolgálóoldali SDK lehetővé teszi SQL ismerete fluent JavaScript felületen optimalizált lekérdezések végrehajtásához. Az API lehetővé teszi a programozott módon hozhat létre lekérdezéseket átadásával a predikátum függvény chainable függvény JavaScript lekérdezés hív meg, egy ECMAScript5 a tömb built-ins és a népszerű JavaScript-kódtárak Lodash hasonló szintaxissal. Lekérdezések által futtatandó hatékonyan navigálhat az Azure Cosmos DB-indexek a JavaScript futásidejű elemzi.
+Dokumentumkeresési lekérdezések az Azure Cosmos DB SQL-szintaxis használata mellett a [kiszolgálóoldali SDK](https://azure.github.io/azure-cosmosdb-js-server/) optimalizált lekérdezések SQL ismerete egy fluent JavaScript-felület használatával végezhető el. Az API lehetővé teszi a programozott módon hozhat létre lekérdezéseket átadásával a predikátum függvény chainable függvény JavaScript lekérdezés hív meg, egy ECMAScript5 a tömb built-ins és a népszerű JavaScript-kódtárak Lodash hasonló szintaxissal. Lekérdezések által futtatandó hatékonyan navigálhat az Azure Cosmos DB-indexek a JavaScript futásidejű elemzi.
 
 > [!NOTE]
 > `__` (double-aláhúzásjelet) szerepel aliasként a `getContext().getCollection()`.
@@ -831,9 +831,8 @@ Ha már rendelkezik egy vagy több tárolt eljárások, eseményindítók és fe
 
 Azt is tapasztalhatja a következő hivatkozások és erőforrások hasznos, ha az elérési út tudhat meg többet az Azure Cosmos dB kiszolgálóoldali programozása:
 
-* [Azure Cosmos DB SDKs](sql-api-sdk-dotnet.md)
+* [Az Azure Cosmos DB a JavaScript kiszolgálóoldali API-referencia](https://azure.github.io/azure-cosmosdb-js-server/)
 * [DocumentDB Studio](https://github.com/mingaliu/DocumentDBStudio/releases)
-* [JSON](http://www.json.org/) 
 * [JavaScript ECMA-262](http://www.ecma-international.org/publications/standards/Ecma-262.htm)
 * [Biztonságos és hordozható adatbázis bővíthetőség](http://dl.acm.org/citation.cfm?id=276339) 
 * [Szolgáltatás-orientált adatbázis-architektúra](http://dl.acm.org/citation.cfm?id=1066267&coll=Portal&dl=GUIDE) 

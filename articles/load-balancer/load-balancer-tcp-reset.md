@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/26/2018
 ms.author: kumud
-ms.openlocfilehash: 0b533a48e94db880f23d42decc5c3fb39a27e5ac
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: bf55f4f4aa91efaf1c4512339a6d54f893788bae
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47395644"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48816752"
 ---
 # <a name="load-balancer-with-tcp-reset-on-idle-public-preview"></a>Load Balancer a TCP üresjárati (nyilvános előzetes verzió) alaphelyzetbe állítása
 
@@ -43,7 +43,7 @@ Gondosan vizsgálja meg a teljes végpontok közötti forgatókönyv eldönteni,
 
 ## <a name="enabling-tcp-reset-on-idle-timeout"></a>Az üresjárati időkorlát engedélyezése a TCP alaphelyzetbe állítása
 
-2018-07-01-es verziójú API-val, engedélyezheti a küldését a kétirányú alaphelyzetbe állítja a TCP üresjárati időtúllépés miatt egy szabály alapján:
+2018-08-01-es verziójú API-val, engedélyezheti a küldését a kétirányú alaphelyzetbe állítja a TCP üresjárati időtúllépés miatt egy szabály alapján:
 
 ```json
       "loadBalancingRules": [

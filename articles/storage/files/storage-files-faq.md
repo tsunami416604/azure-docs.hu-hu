@@ -4,15 +4,15 @@ description: Azure Files szolgáltatással kapcsolatos gyakori kérdésekre adot
 services: storage
 author: RenaShahMSFT
 ms.service: storage
-ms.date: 09/11/2018
+ms.date: 10/04/2018
 ms.author: renash
 ms.component: files
-ms.openlocfilehash: 1f7fc9916fc856d636b6ad850f831a3235b80632
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: 725aa5ff0d5ac0d6760656fc596fe44ca8661d1f
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48237755"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48816123"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>Az Azure Files kapcsolatos gyakori kérdések (GYIK)
 [Az Azure Files](storage-files-introduction.md) teljes körűen felügyelt fájlmegosztást kínáló, amely az iparági szabványnak megfelelő keresztül érhető el a felhőben [Server Message Block (SMB) protokoll](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx). Azure-fájlmegosztások párhuzamosan csatlakoztathatja felhőbeli vagy helyszíni üzemelő példányok esetében a Windows, Linux és macOS. A Windows Server-gépek Azure-fájlmegosztások közel, ahol az adatok felhasználásának gyors hozzáférés az Azure File Sync használatával képes gyorsítótárazni.
@@ -179,7 +179,7 @@ Ez a cikk az Azure Files szolgáltatást és funkciót, beleértve az Azure File
 * <a id="ad-support-regions"></a>
 **Érhető el az előzetes verzió, az Azure AD SMB-n keresztül az Azure Files számára az összes Azure-régióban?**
 
-    Az összes nyilvános régióban, az alábbiakat kivéve az előzetes verzió érhető el: USA nyugati RÉGIÓJA, USA nyugati RÉGIÓJA 2, USA déli középső Régiója, USA keleti RÉGIÓJA, USA keleti RÉGIÓJA 2, USA középső RÉGIÓJA, USA északi középső Régiója, Kelet-Ausztrália, Nyugat-Európa, Észak-Európa.
+    Az összes nyilvános régióban, az alábbiakat kivéve az előzetes verzió érhető el: USA nyugati RÉGIÓJA, USA déli középső Régiója, USA középső RÉGIÓJA, Nyugat-Európa, Észak-Európa.
 
 * <a id="ad-support-on-premises"></a>
 **Támogatja az Azure AD-hitelesítés SMB-n keresztül az Azure Files (előzetes verzió) hitelesítés a helyszíni gépeket az Azure AD-vel?**

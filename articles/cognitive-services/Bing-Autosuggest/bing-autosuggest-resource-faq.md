@@ -1,55 +1,56 @@
 ---
-title: Gyakran ismételt kérdések (GYIK) kapcsolatos Azure automatikus kiegészítési API |} Microsoft Docs
-description: Válaszok Azure kognitív szolgáltatások automatikus kiegészítési API-val kapcsolatos gyakori kérdéseket az Azure-on.
+title: Gyakori kérdések (GYIK) – a Bing Autosuggest API
+titlesuffix: Azure Cognitive Services
+description: A Bing Autosuggest API kapcsolatos gyakori kérdésekre adott válaszok.
 services: cognitive-services
 author: HeidiSteen
-manager: jhubbard
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-autosuggest
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/26/2017
 ms.author: heidist
-ms.openlocfilehash: 00b91728bcfec52ff30697f080d5c2619bab79a8
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 84f1b0555922119e9de4addc3d51ac233e7bae65
+ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35348934"
+ms.lasthandoff: 10/06/2018
+ms.locfileid: "48831364"
 ---
-# <a name="frequently-asked-questions-faq-about-autosuggest-api-cognitive-services"></a>Gyakran ismételt kérdések (GYIK) kapcsolatos automatikus kiegészítési API (kognitív szolgáltatások)
+# <a name="frequently-asked-questions-faq-about-bing-autosuggest-api"></a>Gyakori kérdések (GYIK) tudnivalók a Bing Autosuggest API
  
- Válaszok a fogalmakat, kódot és az automatikus kiegészítési API kognitív Azure-szolgáltatásokhoz kapcsolódó forgatókönyvek gyakran feltett kérdésekre.
+ Kapcsolatos fogalmakat, a kód és a forgatókönyvek az Azure Cognitive Services az automatikus kiegészítési API-val kapcsolatos gyakori kérdésekre adott válaszok.
 
-### <a name="how-do-i-get-the-optional-client-headers-when-calling-the-bing-autosuggest-api-from-javascript"></a>Hogyan szerezhetek a választható ügyféltanúsítvány fejlécek, a Bing automatikus kiegészítési API a JavaScript meghívásakor?
+### <a name="how-do-i-get-the-optional-client-headers-when-calling-the-bing-autosuggest-api-from-javascript"></a>Hogyan kaphatok a választható ügyféltanúsítvány-fejléceket, a Bing Autosuggest API hívása JavaScript-alapú során?
 
-A következő fejlécek nem kötelező, de javasoljuk, hogy szükség szerint kezelje. Ezek a fejlécek segítenek a Bing automatikus kiegészítési API pontosabb eredményeket adjon.
+A következő fejlécek nem kötelező, de javasoljuk, hogy szükség szerint kezelje. Ezek a fejlécek segítenek a Bing Autosuggest API pontosabb eredményeket adja vissza.
 
-- X keresése
+- A hely keresése X
 - X-MSEdge-ClientID
 - X-MSEdge-Ügyfélip
 
-Azonban a Bing automatikus kiegészítési API a JavaScript hívja, a böngésző beépített biztonsági szolgáltatások megakadályozhatja ezek a fejlécek értékének elérésekor.
+Azonban amikor a Bing Autosuggest API hívása JavaScript, a böngésző beépített biztonsági funkciókat előfordulhat, hogy megakadályozzák a fér hozzá a következő fejlécek értékeit.
 
-A probléma megoldásához, hogy a Bing automatikus kiegészítési API-kérelem a CORS-proxyn keresztül történő. Ilyen proxy válaszát rendelkezik egy `Access-Control-Expose-Headers` fejléc adott whitelists válaszfejlécek és elérhetővé válnak a JavaScript nyelvvel.
+A probléma megoldásához, a Bing Autosuggest API-kérelem CORS proxyn keresztül teheti meg. Ilyen proxyn válasza rendelkezik egy `Access-Control-Expose-Headers` fejléc adott listáinak válaszfejlécek, és elérhetővé teszi azokat a JavaScript.
 
-Engedélyezi a CORS-proxy telepítéséhez egyszerűen a [oktatóanyag app](tutorials/autosuggest.md) a választható ügyféltanúsítvány fejlécek eléréséhez. Ha még nem rendelkezik, először [telepítse a Node.js-](https://nodejs.org/en/download/). Adja meg a következő parancsot a parancssorba.
+Egyszerű, hogy a CORS-proxy telepítéséhez a [oktatóanyag alkalmazása](tutorials/autosuggest.md) eléréséhez a választható ügyféltanúsítvány-fejléceket. Ha még nem rendelkezik, először [a Node.js telepítéséhez](https://nodejs.org/en/download/). Majd adja meg a következő parancsot a parancssorba.
 
     npm install -g cors-proxy-server
 
-Ezután módosítsa a Bing automatikus kiegészítési API-végpont a HTML-fájlban:
+Ezután módosítsa a Bing Autosuggest API-végpont lévő a HTML-fájl:
 
     http://localhost:9090/https://api.cognitive.microsoft.com/bing/v7.0/Suggestions
 
-Végezetül indítsa el a CORS-proxy a következő paranccsal:
+Végezetül indítsa el a CORS-proxy a következő parancsot:
 
     cors-proxy-server
 
-A parancssori ablakban nyitva hagyja az oktatóanyag alkalmazás; használatakor az ablak bezárása leállítja a proxy. A bővíthető HTTP-fejlécek című szakaszt a keresési eredmények között, a most már megtekintheti a `X-MSEdge-ClientID` fejléc (többek között), és győződjön meg arról, hogy minden kérelem esetén.
+Hagyja meg a parancssori ablakban nyissa meg az oktatóanyag alkalmazása; használata közben az ablak bezárása leállítja a proxy. A bővíthető HTTP-fejlécek szakaszban alább a keresési eredmények között, most már megtekintheti a `X-MSEdge-ClientID` fejléc (többek között), és ellenőrizze, hogy minden egyes kérés esetében azonos.
 
 ## <a name="next-steps"></a>További lépések
 
-Egy hiányzó szolgáltatást és funkciót a kérdése van? A kért, vagy szavazott a [User Voice webhely](https://cognitive.uservoice.com/).
+Egy hiányzó szolgáltatás vagy funkció a kérdése van? Kérő vagy szavaz, fontolja meg a [felhasználói visszajelzési webhelyen](https://cognitive.uservoice.com/).
 
 ## <a name="see-also"></a>Lásd még
 
-- [Stack overflow webhelyre: Kognitív szolgáltatások](http://stackoverflow.com/questions/tagged/microsoft-cognitive)
+- [A stack Overflow: Cognitive Services](http://stackoverflow.com/questions/tagged/microsoft-cognitive)

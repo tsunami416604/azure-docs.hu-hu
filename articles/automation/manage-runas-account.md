@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 09/12/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 5e8e8d1923caf5f51cffedd6b918dbc617b5c3a9
-ms.sourcegitcommit: 4edf9354a00bb63082c3b844b979165b64f46286
+ms.openlocfilehash: d2023d30cdb86a218d27024c8ccf0f397a7a5d09
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48785477"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48816609"
 ---
 # <a name="manage-azure-automation-run-as-accounts"></a>Azure Automation futtató fiókok kezelése
 
@@ -32,6 +32,9 @@ Futtató fiókok két típusa van:
 * **Az Azure klasszikus futtató fiók** – Ez a fiók használható a klasszikus üzembe helyezési modell erőforrások kezeléséhez.
   * Létrehoz egy *AzureClassicRunAsCertificate* nevű Automation-tanúsítványobjektumot a megadott Automation-fiókban. Ez a tanúsítványobjektum tartalmazza a felügyeleti tanúsítvány által használt titkos tanúsítványkulcsot.
   * Létrehoz egy *AzureClassicRunAsConnection* nevű Automation-kapcsolatobjektumot a megadott Automation-fiókban. Ez a kapcsolatobjektum tartalmazza az előfizetés nevét, a subscriptionId paramétert, valamint a tanúsítványobjektum nevét.
+  
+  > [!NOTE]
+  > Az Azure Cloud Solution Provider (az Azure CSP)-előfizetések támogatása csak az Azure Resource Manager modellel, nem az Azure Resource Manager - szolgáltatások nem érhetők el a programban. Az Azure klasszikus futtató fiók létrehozása nem CSP-előfizetésekben használatakor. Az Azure futtató fiók továbbra is létrejön. Kriptográfiai Szolgáltató az előfizetésekkel kapcsolatos további tudnivalókért lásd: [CSP-előfizetésekben elérhető szolgáltatások](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-available-services#comments).
 
 ## <a name="permissions"></a>Engedélyek futtató fiókok beállítása
 

@@ -9,20 +9,22 @@ ms.service: security
 ms.topic: article
 ms.date: 07/23/2018
 ms.author: rarangap
-ms.openlocfilehash: b20da0f31f197ed23aa73b185d127a6d5f2dbd8a
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: cbeee643ee4a2705d3f0202a7206e10fbcc5acab
+ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39214941"
+ms.lasthandoff: 10/06/2018
+ms.locfileid: "48831619"
 ---
 # <a name="azure-security-and-compliance-blueprint---hipaahitrust-health-data-and-ai"></a>Azure biztonsági és megfelelőségi terv – a HIPAA/HITRUST-állapotadatok és mesterséges Intelligencia
 
 ## <a name="overview"></a>Áttekintés
 
-**Az Azure biztonsági és -megfelelőségi terv – a HIPAA/HITRUST-állapotadatok és mesterséges Intelligencia egy kulcsrakész megoldás üzembe helyezése egy Azure PaaS, bemutatják, hogyan lehet biztonságosan betöltési, tárolásához, elemzéséhez és egészségügyi adatok kezelése során képes arra, hogy megfelel az iparági megfelelőségi ajánlatok követelmények. A tervezet segítségével felgyorsíthatja a felhőre való áttérés és kihasználtságát az ügyfelek, amelyek a szabályozott adatokkal.**
+**Az Azure biztonsági és -megfelelőségi terv – a HIPAA/HITRUST-állapotadatok és mesterséges Intelligencia kínál egy kulcsrakész megoldás üzembe helyezése egy Azure PaaS és IaaS bemutatják, hogyan lehet betöltési, tárolása, elemzése, kezelheti, identitás, és biztonságosan a egészségügyi adatok, miközben a megoldások üzembe helyezése tudnak iparági megfelelőségi előírások teljesítése érdekében. A tervezet segítségével felgyorsíthatja a felhőre való áttérés és kihasználtságát az ügyfelek, amelyek a szabályozott adatokkal.**
 
-Az Azure biztonsági és -megfelelőségi terv – a HIPAA/HITRUST egészségügyi adatok és AI-terv biztosít eszközöket és útmutatás nyújtása a telepítése egy biztonságos, Health Insurance Portability és Accountability Act (HIPAA) és egészségügyi információk megbízható Alliance (HITRUST) készen áll Platform--szolgáltatásként (PaaS) környezetet fürtjét, tárolása, elemzése és személyes, mind a nem személyes orvosi egy biztonságos, többrétegű felhőalapú környezetben, egy teljes körű megoldás telepített implementálására. Ez gyakori referenciaarchitektúra bemutatja, és egyszerűsíti a Microsoft Azure bevezetését. A megadott architektúra a felhőalapú megközelítés a terheket és a központi telepítési költségek csökkentéséhez kérő szervezetek igényeit megoldást mutatja be.
+Az Azure biztonsági és -megfelelőségi terv – a HIPAA/HITRUST egészségügyi adatok és AI-terv biztosít eszközöket és útmutatás nyújtása a telepítése egy biztonságos, Health Insurance Portability és Accountability Act (HIPAA) és egészségügyi információk megbízható Alliance (HITRUST) készen áll Platform--szolgáltatásként (PaaS) környezetet fürtjét, tárolása, elemzése és személyes, mind a nem személyes orvosi egy biztonságos, többrétegű felhőalapú környezetben, egy teljes körű megoldás telepített implementálására. 
+
+IaaS-megoldások lesz bemutatják, hogyan lehet egy helyszíni SQL-alapú megoldás áttelepítése az Azure-ba, és a egy emelt szintű hozzáférési szintű munkaállomás (PAW) biztonságosan kezelheti a felhő alapú szolgáltatások és megoldások megvalósításához. Az IaaS SQL Server-adatbázis hozzáadása lehetséges Kísérletezési adatok importálása az SQL IaaS virtuális gépre, valamint, hogy a virtuális gép MSI használ hitelesített hozzáféréssel használhatja egy SQL Azure PaaS-szolgáltatás. Mindkét ezen közös referenciaarchitektúra bemutatja, és egyszerűsíti a Microsoft Azure bevezetését. A megadott architektúra a felhőalapú megközelítés a terheket és a központi telepítési költségek csökkentéséhez kérő szervezetek igényeit megoldást mutatja be.
 
 ![](images/components.png)
 
@@ -38,23 +40,15 @@ Ez a megoldás alkalmas szolgál az ügyfelek számára állítsa be az adott k�
 
 ## <a name="deploying-the-automation"></a>Az automatizálás telepítése
 
-- A megoldás üzembe helyezéséhez kövesse az ismertetett az üzembe helyezési útmutatót. 
+- A megoldás üzembe helyezéséhez kövesse az ismertetett a [üzembe helyezési útmutatót](https://github.com/Azure/Health-Data-and-AI-Blueprint/blob/master/deployment.md). 
 
-[![](./images/deploy.png)](https://aka.ms/healthblueprintdeploy)
-
-Röviden, ez a megoldás működéséről, tekintse meg ezt [videó](https://aka.ms/healthblueprintvideo) pedig elmagyarázza és annak üzembe helyezési bemutatására.
+- Röviden, ez a megoldás működéséről, tekintse meg ezt [videó](https://aka.ms/healthblueprintvideo) pedig elmagyarázza és annak üzembe helyezési bemutatására.
 
 - Gyakran feltett kérdést találhat a [– gyakori kérdések](https://aka.ms/healthblueprintfaq) útmutatást.
 
 -   **Architekturális diagramja.** Az ábrán látható a referenciaarchitektúrát a tervezet használt, és a példát használja használatieset-forgatókönyvek.
 
--   **A központi telepítési sablonok**. Ebben a felállásban [Azure Resource Manager-sablonok](/azure/azure-resource-manager/resource-group-overview#template-deployment) automatikusan helyezheti üzembe az architektúra összetevői a Microsoft Azure konfigurációs paraméterek megadásával a telepítés során használt.
-
--   **[Automatizált üzembehelyezési szkriptek](https://aka.ms/healthblueprintdeploy)**. Ezek a szkriptek segítségével, a megoldás üzembe helyezéséhez. A parancsfájlok áll:
-
-
--   A modul telepítése és [globális rendszergazdai](/azure/active-directory/active-directory-assign-admin-roles-azure-portal) telepítési parancsfájl segítségével telepítse, és győződjön meg arról, hogy a szükséges PowerShell-modulok és a globális rendszergazdai szerepkör megfelelően vannak konfigurálva. 
--   Egy telepítési PowerShell-parancsfájl segítségével üzembe helyezheti a megoldást egy .zip fájlt, amely tartalmaz egy előre elkészített bemutató funkciókat nyújtja.
+-   [IaaS-bővítményt](https://github.com/Azure/Health-Data-and-AI-Blueprint/blob/master/README%20IaaS.md) ebben a megoldásban bemutatjuk, hogyan egy helyszíni SQL-alapú megoldás áttelepítése az Azure-ba, és a egy Privieged hozzáférési szintű munkaállomásokat biztonságosan kezelheti a felhő-bsed szolgáltatások és megoldások megvalósításához. 
 
 ## <a name="solution-components"></a>Megoldás-összetevők
 
@@ -70,7 +64,7 @@ Alapvető architektúrája a következő összetevőkből áll:
 # <a name="architectural-diagram"></a>Architekturális diagramja
 
 
-![](images/refarch.png)
+![](images/ra2.png)
 
 ## <a name="roles"></a>Szerepkörök
 
@@ -296,7 +290,7 @@ A storage, az adatok elérése, egy közös API-séma implementálása a követk
 
 
 
-### <a name="event-grid"></a>Eseményrács
+### <a name="event-grid"></a>Event Grid
 
 
 A megoldás az Azure Event Grid, egy egyetlen szolgáltatás kezelése, az összes esemény bármilyen forrásból bármilyen cél felé való útválasztását biztosító támogatja:
@@ -331,7 +325,7 @@ A megoldás az Azure Event Grid, egy egyetlen szolgáltatás kezelése, az össz
 
 -   Csak a szükséges IP-címek engedélyezettek a hozzáférés az SQL-tűzfalon keresztül.
 
-### <a name="storage-accounts"></a>Storage-fiókok
+### <a name="storage-accounts"></a>Tárfiókok
 
 
 -   [Mozgásban lévő adatok továbbítása a TLS/SSL használatával csak](/azure/storage/common/storage-require-secure-transfer?toc=%2Fazure%2Fstorage%2Fblobs%2Ftoc.json).
@@ -384,7 +378,7 @@ A megoldás az Azure Event Grid, egy egyetlen szolgáltatás kezelése, az össz
 
     -   [Azure WebApp Analytics](/azure/log-analytics/log-analytics-azure-web-apps-analytics) megoldás
 
-    -   Key Vault Analytics
+    -   Key Vault-elemzés
 
     -   Változások követése
 

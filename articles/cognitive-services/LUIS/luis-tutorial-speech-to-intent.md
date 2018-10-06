@@ -10,12 +10,12 @@ ms.technology: language-understanding
 ms.topic: article
 ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: 14956fd716a6939d5e7dd9d670cc78b58adf7f45
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 1625bb9e9f51f8460db4e7ccbaf6e5eada3f8180
+ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47042074"
+ms.lasthandoff: 10/06/2018
+ms.locfileid: "48831059"
 ---
 # <a name="integrate-speech-service"></a>Beszédszolgáltatás integrálása
 A [beszédszolgáltatás](https://docs.microsoft.com/azure/cognitive-services/Speech-Service/) lehetővé teszi, hogy egyetlen kérés fogadásához hang, és a LUIS-előrejelzési JSON objektumokat adjanak vissza. Ebben a cikkben töltse le, és a Visual Studióban egy C#-projektben használatával az utterance (kifejezés) mikrofon beszél, és a LUIS előrejelzési információkat kapni. A projekt használja, a beszéd [NuGet](https://www.nuget.org/packages/Microsoft.CognitiveServices.Speech/) csomag már szerepel a hivatkozásként van listázva. 
@@ -118,7 +118,7 @@ A megfelelő leképezés **GetEmployeeOrgChart**, a munkavállalók 61 %-os tal�
 A beszédfelismerés SDK-t a teljes LUIS választ adja vissza. 
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
-Ha már nincs rá szükség, törölje a LUIS emberi alkalmazást. Ehhez válassza az alkalmazáslistában az alkalmazás neve mellett jobbra található három pontot (***...***), majd a **Delete** (Törlés) lehetőséget. A **Delete app?** (Törli az alkalmazást?) előugró párbeszédpanelen válassza az **OK** lehetőséget.
+Ha már nincs rá szükség, törölje a LUIS emberi alkalmazást. Ehhez jelölje ki az alkalmazást, majd válassza az eszközlista feletti környezetfüggő eszköztárán **törlése**. A **Delete app?** (Törli az alkalmazást?) előugró párbeszédpanelen válassza az **OK** lehetőséget.
 
 Ne felejtse el törölni a LUIS-Samples-könyvtár, amikor elkészült a mintakóddal.
 

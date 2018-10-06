@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2018
 ms.author: juluk
-ms.openlocfilehash: 2184d006bb99d57f50e71c0096d68b7a0b69a219
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 51dc1280dcc8c47c3cb3ad46fc720e0a38e04b69
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47162287"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48814440"
 ---
 # <a name="features--tools-for-azure-cloud-shell"></a>Funkciók és eszközök az Azure Cloud Shell
 
@@ -60,13 +60,13 @@ A cloud Shell nyílt forráskódú eszközök, például a Terraform, az Ansible
 |Kategória   |Name (Név)   |
 |---|---|
 |Linux rendszerű eszközök            |A bash<br> a zsh<br> SH<br> tmux<br> tájékozódjon<br>               |
-|Azure-eszközök            |[Az Azure CLI](https://github.com/Azure/azure-cli) és [Azure klasszikus parancssori felület](https://github.com/Azure/azure-xplat-cli)<br> [AzCopy](https://docs.microsoft.com/azure/storage/storage-use-azcopy)<br> [Service Fabric parancssori felület](https://docs.microsoft.com/azure/service-fabric/service-fabric-cli) |
+|Azure-eszközök            |[Az Azure CLI](https://github.com/Azure/azure-cli) és [Azure klasszikus parancssori felület](https://github.com/Azure/azure-xplat-cli)<br> [AzCopy](https://docs.microsoft.com/azure/storage/storage-use-azcopy)<br> [Service Fabric parancssori felület](https://docs.microsoft.com/azure/service-fabric/service-fabric-cli)<br> [Batch Shipyard](https://github.com/Azure/batch-shipyard)<br> [blobxfer](https://github.com/Azure/blobxfer)|
 |Szövegszerkesztő           |VIM<br> a nano<br> emacs       |
 |Verziókövetés         |git                    |
 |Eszközök létrehozása            |Győződjön meg arról<br> Maven<br> npm<br> a pip         |
 |Containers             |[Docker CLI](https://github.com/docker/cli)/[a Docker Machine](https://github.com/docker/machine)<br> [Kubectl](https://kubernetes.io/docs/user-guide/kubectl-overview/)<br> [Helm](https://github.com/kubernetes/helm)<br> [DC/OS PARANCSSORI FELÜLETTEL](https://github.com/dcos/dcos-cli)         |
 |Adatbázisok              |MySQL-ügyfél<br> PostgreSql-ügyfél<br> [Az Sqlcmd segédprogram](https://docs.microsoft.com/sql/tools/sqlcmd-utility)<br> [mssql-scripter](https://github.com/Microsoft/sql-xplat-cli) |
-|Egyéb                  |iPython ügyfél<br> [A cloud Foundry parancssori felület](https://github.com/cloudfoundry/cli)<br> [A Terraform](https://www.terraform.io/docs/providers/azurerm/)<br> [Az Ansible](https://www.ansible.com/microsoft-azure)<br> [A Chef InSpec](https://www.chef.io/inspec/)| 
+|Egyéb                  |iPython ügyfél<br> [A cloud Foundry parancssori felület](https://github.com/cloudfoundry/cli)<br> [A Terraform](https://www.terraform.io/docs/providers/azurerm/)<br> [Az Ansible](https://www.ansible.com/microsoft-azure)<br> [A Chef InSpec](https://www.chef.io/inspec/)|
 
 ## <a name="language-support"></a>Nyelvi támogatás
 

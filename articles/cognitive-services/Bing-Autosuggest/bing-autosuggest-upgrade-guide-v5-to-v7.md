@@ -1,53 +1,53 @@
 ---
-title: Frissítési Bing automatikus kiegészítési API v5 való v7 |} Microsoft Docs
-description: Azonosítja a 7-es verzió használatához frissítenie kell az alkalmazás részei.
+title: Frissítés a Bing Autosuggest API v5 a 7-es verziója
+titlesuffix: Azure Cognitive Services
+description: Azonosítja, hogy 7-es verzió használatához frissítenie kell az alkalmazás részei.
 services: cognitive-services
 author: swhite-msft
-manager: ehansen
-ms.assetid: 751EDCF0-0C8B-4C23-942C-FA06F5DAD3FD
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-autosuggest
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/12/2017
 ms.author: scottwhi
-ms.openlocfilehash: 5663a671711dba4f44c89e8221a729c6670ec8fc
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 8ada9ab6622ea12e48475230787168d90e95ec0d
+ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35348979"
+ms.lasthandoff: 10/06/2018
+ms.locfileid: "48829868"
 ---
-# <a name="autosuggest-api-upgrade-guide"></a>Automatikus kiegészítési API frissítési útmutató
+# <a name="autosuggest-api-upgrade-guide"></a>Automatikus kiegészítés API frissítési útmutató
 
-Az frissítési útmutató meghatározza azokat a változtatásokat, 5-ös verzió és a Bing automatikus kiegészítési API 7-es verziója között. Ez az útmutató segítségével azonosíthatja a 7-es verzió használatához frissítenie kell az alkalmazás részei.
+A frissítési útmutató 5-ös verzió és a Bing Autosuggest API 7-es verziója közötti különbségek azonosítja. Ez az útmutató segítségével azonosíthatja, hogy 7-es verzió használatához frissítenie kell az alkalmazás részei.
 
-## <a name="breaking-changes"></a>Meghibásodást okozó változások
+## <a name="breaking-changes"></a>Kompatibilitástörő változások
 
 ### <a name="endpoints"></a>Végpontok
 
-- A végpont verziószám v7 v5 változik. Például https://api.cognitive.microsoft.com/bing/\ * \*v7.0 ** / javaslatokat.
+- A végpont verziószám V5-ös verziója megváltozott a 7-es verziója. Ha például https://api.cognitive.microsoft.com/bing/\ * \*v7.0 ** / javaslatokat.
 
-### <a name="error-response-objects-and-error-codes"></a>Hiba válasz objektumok és hibakódok
+### <a name="error-response-objects-and-error-codes"></a>Hiba történt a válasz objektumok és hibakódok
 
-- Összes sikertelen kérelem most tartalmaznia kell egy `ErrorResponse` az adott válasz törzsének objektumban.
+- Most már tartalmazza az összes sikertelen kérelem egy `ErrorResponse` objektum a válasz törzsében.
 
 - A következő mezőket hozzáadni a `Error` objektum.  
-  - `subCode`&mdash;A hiba kódja particionálja be különálló gyűjtők, ha lehetséges
-  - `moreDetails`&mdash;A leírt hibával kapcsolatban további információt a `message` mező
+  - `subCode`&mdash;Hibakód particionálja be különálló gyűjtők, ha lehetséges
+  - `moreDetails`&mdash;A leírt hibával kapcsolatos további információkat a `message` mező
 
-- A következő lehetséges v5 hibakódok helyett `code` és `subCode` értékeket.
+- Az 5-ös verziójának hibakódok cseréli a következő lehetséges `code` és `subCode` értékeket.
 
 |Kód|Alkód|Leírás
 |-|-|-
-|ServerError|UnexpectedError<br/>ResourceError<br/>Nincs implementálva|Bing ServerError adja vissza, ha az alárendelt kód feltételek bármelyike teljesül. A válasz tartalmazza ezeket a hibákat, ha a HTTP-állapotkód: 500.
-|InvalidRequest|ParameterMissing<br/>ParameterInvalidValue<br/>HttpNotAllowed<br/>Letiltva|Bing InvalidRequest adja vissza, ha valamely része a kérelem érvénytelen. Például egy kötelező paraméter hiányzik, vagy egy paraméter értéke érvénytelen.<br/><br/>A hiba ParameterMissing vagy ParameterInvalidValue, a HTTP-állapotkód akkor 400.<br/><br/>Ha a hiba HttpNotAllowed, a HTTP-állapotkód 410.
-|RateLimitExceeded||Bing RateLimitExceeded adja vissza, ha az túllépi a lekérdezések / másodperc (QPS) vagy a lekérdezések száma (QPM) havi kvóta.<br/><br/>Bing HTTP-állapotkód 429 adja vissza, ha túllépte QPS és 403 Ha QPM túllépte.
-|InvalidAuthorization|AuthorizationMissing<br/>AuthorizationRedundancy|Bing InvalidAuthorization adja vissza, ha a Bing a hívó nem tudja hitelesíteni. Például a `Ocp-Apim-Subscription-Key` fejléc hiányzik, vagy az Előfizetés kulcs nem érvényes.<br/><br/>Redundancia akkor fordul elő, ha egynél több hitelesítési módszer adja meg.<br/><br/>A hiba InvalidAuthorization, a HTTP-állapotkód akkor 401-es.
-|InsufficientAuthorization|AuthorizationDisabled<br/>AuthorizationExpired|Bing InsufficientAuthorization adja vissza, ha a hívó nem jogosult az erőforrás elérésére. Ez akkor fordulhat elő, ha az Előfizetés kulcs le van tiltva, vagy lejárt. <br/><br/>A hiba InsufficientAuthorization, a HTTP-állapotkód akkor 403-as.
+|Kiszolgálóhibái|UnexpectedError<br/>ResourceError<br/>Nincs implementálva|A Bing Kiszolgálóhibái adja vissza, minden alkalommal, amikor az alárendelt kód feltételek bármelyike teljesül. A válasz tartalmazza ezeket a hibákat, ha a HTTP-állapotkód: 500.
+|InvalidRequest|ParameterMissing<br/>ParameterInvalidValue<br/>HttpNotAllowed<br/>Letiltva|A Bing InvalidRequest adja vissza, ha bármelyik részét a kérés érvénytelen, nem. Például egy kötelező paraméter hiányzik, vagy egy paraméter értéke nem érvényes.<br/><br/>Ha a hiba ParameterMissing vagy ParameterInvalidValue, a a HTTP-állapotkód: 400.<br/><br/>Ha a hiba HttpNotAllowed, 410-es HTTP-állapotkódot.
+|RateLimitExceeded||Minden alkalommal, amikor a lekérdezések másodpercenkénti (lekérdezési QPS) és a lekérdezések száma (QPM) havi kvótát túllépi a Bing RateLimitExceeded adja vissza.<br/><br/>A Bing 429-es HTTP-állapotkód: adja vissza, ha túllépte QPS és a 403-as, QPM túllépése.
+|InvalidAuthorization|AuthorizationMissing<br/>AuthorizationRedundancy|A Bing InvalidAuthorization adja vissza, ha a Bing a hívó nem tudja hitelesíteni. Ha például a `Ocp-Apim-Subscription-Key` fejléc hiányzik, vagy az előfizetési kulcs nem érvényes.<br/><br/>A redundancia akkor fordul elő, ha egynél több hitelesítési módszer adja meg.<br/><br/>Ha a hiba InvalidAuthorization, a HTTP-állapotkód: a 401-es.
+|InsufficientAuthorization|AuthorizationDisabled<br/>AuthorizationExpired|A Bing InsufficientAuthorization adja vissza, ha a hívó nem rendelkezik engedéllyel az erőforrás eléréséhez. Ez akkor fordulhat elő, ha az előfizetési kulcs le lett tiltva, vagy lejárt. <br/><br/>Ha a hiba InsufficientAuthorization, a HTTP-állapotkód: a 403-as.
 
-- A következő van leképezve az előző hibakódok új kódokkal. Ha egy függőséget már végzett v5 hibakódok, ennek megfelelően frissítse a kódot.
+- A következő képez le az előző hibakódok új kódokkal. Ha függőséget az 5-ös verziójának hibakódok készített, ennek megfelelően frissülnek a kódot.
 
-|5-ös verzió kódot|7-es verzió code.subCode
+|5-ös verzió kód|7-es verzió code.subCode
 |-|-
 |RequestParameterMissing|InvalidRequest.ParameterMissing
 RequestParameterInvalidValue|InvalidRequest.ParameterInvalidValue
@@ -71,4 +71,4 @@ Letiltva|InvalidRequest.Blocked
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Használja ki és jelenítheti meg a követelményeknek](./UseAndDisplayRequirements.md)
+> [Használati és megjelenítési követelményeinek](./UseAndDisplayRequirements.md)

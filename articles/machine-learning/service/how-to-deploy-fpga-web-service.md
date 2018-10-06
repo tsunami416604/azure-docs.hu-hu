@@ -9,12 +9,12 @@ ms.reviewer: jmartens
 ms.author: tedway
 author: tedway
 ms.date: 10/01/2018
-ms.openlocfilehash: df6637f1a52b679ba9ad0a49fb37d4e4b72f35e4
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: b78a199df9f457b09bb487df74a646363fb172b9
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48237823"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48815069"
 ---
 # <a name="deploy-a-model-as-a-web-service-on-an-fpga-with-azure-machine-learning"></a>Modell üzembe helyezése az Azure Machine Learning-FPGA webszolgáltatásként
 
@@ -165,157 +165,8 @@ registered_model.delete()
 
 ## <a name="secure-fpga-web-services"></a>Biztonságos FPGA-webszolgáltatások
 
-FPGA-kban futtat az Azure Machine Learning-modellek adja meg az SSL-támogatás és a kulcs alapú hitelesítés. Ez lehetővé teszi, hogy a szolgáltatás és az ügyfelek által küldött biztonságos adatokat való hozzáférés korlátozása.
+FPGA-kban futtat az Azure Machine Learning-modellek adja meg az SSL-támogatás és a kulcs alapú hitelesítés. Ez lehetővé teszi, hogy a szolgáltatás és az ügyfelek által küldött biztonságos adatokat való hozzáférés korlátozása. [Ismerje meg, hogyan védheti meg a webszolgáltatás](how-to-secure-web-service.md).
 
-> [!IMPORTANT]
-> Hitelesítési szolgáltatások, amelyek egy SSL-tanúsítvány és kulcs megadott csak engedélyezve van. 
->
-> Ha nem engedélyezi az SSL, az interneten bármely felhasználó tudják a szolgáltatáshoz való meghíváshoz.
->
-> Ha engedélyezi az SSL és a hitelesítési kulcs kötelező, ha a szolgáltatás elérésével.
-
-SSL titkosítja az ügyfél és a szolgáltatás között küldött adatokat. Ez a kiszolgáló identitását ellenőrizze az ügyfél által is használt.
-
-Az SSL engedélyezve van a szolgáltatás telepítése vagy frissítése egy már üzembe helyezett szolgáltatás engedélyezéséhez. A lépések ugyanazok:
-
-1. Szerez a tartomány nevét.
-
-2. SSL-tanúsítvány beszerzéséhez.
-
-3. Üzembe helyezése vagy frissítse a szolgáltatást az SSL engedélyezve van.
-
-4. Frissítse a DNS, hogy a szolgáltatás mutasson.
-
-### <a name="acquire-a-domain-name"></a>A tartománynév beszerzése
-
-Ha Ön nem tulajdonosa a tartománynevet, vásárolhat egyet egy __tartományregisztrálóhoz__. A folyamat szolgáltatásfrissítési regisztráló szervezetek, mint a költségek. A regisztráló is használható eszközöket biztosít a tartománynév kezeléséhez. Ezek az eszközök, amelyek a szolgáltatás üzemel, IP-címet (például www.contoso.com) teljesen minősített tartománynév hozzárendelése szolgálnak.
-
-### <a name="acquire-an-ssl-certificate"></a>SSL-tanúsítvány beszerzése
-
-Számos módon SSL-tanúsítvány beszerzése. A leggyakoribb eset az, hogy vásároljon egyet egy __hitelesítésszolgáltató__ (CA). Ha beszerezte a tanúsítványt, függetlenül kell a következő fájlokat:
-
-* A __tanúsítvány__. A tanúsítvány kell tartalmaznia a teljes tanúsítványlánccal, és a PEM-kódolású kell lennie.
-* A __kulcs__. A kulcsnak kell lennie a PEM-kódolású.
-
-> [!TIP]
-> Ha a hitelesítésszolgáltató nem adja meg a tanúsítvány és kulcs-fájlok PEM-kódolású formájában, a segédprogram használható például [OpenSSL](https://www.openssl.org/) használatával módosíthatja.
-
-> [!IMPORTANT]
-> Önaláírt tanúsítványok használandó csakis fejlesztési célokra. Ezek nem használandó éles környezetben.
->
-> Ha egy önaláírt tanúsítványt használ, tekintse meg a [önaláírt tanúsítványok a szolgáltatások felhasználásához](#self-signed) adott című fejezetet.
-
-> [!WARNING]
-> Amikor tanúsítványt igényel, a cím, a szolgáltatás használatához meg kell adnia a teljesen minősített tartománynevét (FQDN). Például www.contoso.com. A cím a tanúsítványba megjelölve, és az ügyfelek által használt cím képest, a szolgáltatás identitásának érvényesítése során.
->
-> A címek nem egyeznek, ha az ügyfelek egy hibaüzenetet fog kapni. 
-
-### <a name="deploy-or-update-the-service-with-ssl-enabled"></a>Üzembe helyezése vagy frissítse a szolgáltatást az SSL engedélyezve
-
-Az SSL engedélyezve van a szolgáltatás üzembe helyezéséhez, állítsa be a `ssl_enabled` paramétert `True`. Állítsa be a `ssl_certificate` paraméter értékét a __tanúsítvány__ fájl és a `ssl_key` értékéhez a __kulcs__ fájlt. A következő példa bemutatja, hogy engedélyezve van az SSL-szolgáltatás telepítése:
-
-```python
-from amlrealtimeai import DeploymentClient
-
-subscription_id = "<Your Azure Subscription ID>"
-resource_group = "<Your Azure Resource Group Name>"
-model_management_account = "<Your AzureML Model Management Account Name>"
-location = "eastus2"
-
-model_name = "resnet50-model"
-service_name = "quickstart-service"
-
-deployment_client = DeploymentClient(subscription_id, resource_group, model_management_account, location)
-
-with open('cert.pem','r') as cert_file:
-    with open('key.pem','r') as key_file:
-        cert = cert_file.read()
-        key = key_file.read()
-        service = deployment_client.create_service(service_name, model_id, ssl_enabled=True, ssl_certificate=cert, ssl_key=key)
-```
-
-Válasza a `create_service` művelet a szolgáltatás IP-címét tartalmazza. Ha a DNS-név leképezése az IP-címet, a szolgáltatás az IP-címet használja.
-
-A válasz is tartalmaz egy __elsődleges kulcs__ és __másodlagos kulcs__ használt a szolgáltatás felhasználásához.
-
-### <a name="update-your-dns-to-point-to-the-service"></a>A szolgáltatás átirányítása a DNS frissítése
-
-Az a tartománynév regisztrálójánál az által biztosított eszközök segítségével frissítse a DNS-rekordot a tartománynév. A rekord a szolgáltatás IP-címre kell mutatnia.
-
-> [!NOTE]
-> A regisztráló és az idő függvényében élettartam (TTL) van konfigurálva a tartománynév, akár néhány órát, mielőtt az ügyfelek fel tudják oldani a tartománynév több percet is igénybe vehet.
-
-### <a name="consume-authenticated-services"></a>Hitelesített szolgáltatásainak használata
-
-Az alábbi példák bemutatják, hogyan lehet egy hitelesített service a Python és a C# használata:
-
-> [!NOTE]
-> Cserélje le `authkey` az elsődleges vagy másodlagos kulcsot a adja vissza, ha a szolgáltatás létrehozása.
-
-```python
-from amlrealtimeai import PredictionClient
-client = PredictionClient(service.ipAddress, service.port, use_ssl=True, access_token="authKey")
-image_file = R'C:\path_to_file\image.jpg'
-results = client.score_image(image_file)
-```
-
-```csharp
-var client = new ScoringClient(host, 50051, useSSL, "authKey");
-float[,] result;
-using (var content = File.OpenRead(image))
-    {
-        IScoringRequest request = new ImageRequest(content);
-        result = client.Score<float[,]>(request);
-    }
-```
-
-Más gRPC ügyfelek hitelesítése történhet kérelem engedélyeztetési fejléc beállítása. Az általános megközelítés az, hogy hozzon létre egy `ChannelCredentials` objektum, amely egyesíti az `SslCredentials` a `CallCredentials`. Ez hozzáadódik a kérés hitelesítési fejlécéhez. További információk a végrehajtása támogatja a megadott fejlécek,: [ https://grpc.io/docs/guides/auth.html ](https://grpc.io/docs/guides/auth.html).
-
-Az alábbi példák bemutatják, hogyan lehet a C# és nyissa meg a fejléc beállítása:
-
-```csharp
-creds = ChannelCredentials.Create(baseCreds, CallCredentials.FromInterceptor(
-                      async (context, metadata) =>
-                      {
-                          metadata.Add(new Metadata.Entry("authorization", "authKey"));
-                          await Task.CompletedTask;
-                      }));
-
-```
-
-```go
-conn, err := grpc.Dial(serverAddr, 
-    grpc.WithTransportCredentials(credentials.NewClientTLSFromCert(nil, "")),
-    grpc.WithPerRPCCredentials(&authCreds{
-    Key: "authKey"}))
-
-type authCreds struct {
-    Key string
-}
-
-func (c *authCreds) GetRequestMetadata(context.Context, uri ...string) (map[string]string, error) {
-    return map[string]string{
-        "authorization": c.Key,
-    }, nil
-}
-
-func (c *authCreds) RequireTransportSecurity() bool {
-    return true
-}
-```
-
-### <a id="self-signed"></a>Önaláírt tanúsítványok a szolgáltatások felhasználásához
-
-Az ügyfél hitelesítése egy önaláírt tanúsítvánnyal védett kiszolgálóra két módja van:
-
-* Az ügyfélen, állítsa be a `GRPC_DEFAULT_SSL_ROOTS_FILE_PATH` környezeti változót, mutasson a tanúsítványfájlt az ügyfélrendszeren.
-
-* Hozhat létre, amikor egy `SslCredentials` objektumazonosító, illesztheti be a tanúsítvány fájl tartalmát a konstruktor.
-
-Mindkét módszerrel rendelkezik, a tanúsítványt használja, a legfelső szintű tanúsítvány gRPC.
-
-> [!IMPORTANT]
-> gRPC nem fogadja el a nem megbízható tanúsítványok. A nem megbízható tanúsítvánnyal meghiúsul egy `Unavailable` állapotkódot. A hiba részleteit tartalmazza `Connection Failed`.
 
 ## <a name="sample-notebook"></a>Minta notebook
 

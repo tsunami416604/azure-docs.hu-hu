@@ -9,19 +9,19 @@ ms.author: minxia
 author: mx-iao
 ms.reviewer: sgilley
 ms.date: 09/24/2018
-ms.openlocfilehash: e569b63f676fb750bcbab88dda6cda39156d41f5
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 281fafe858f2000a19fe3c6a26a4ffd587557361
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46977032"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48816021"
 ---
 # <a name="how-to-train-pytorch-models"></a>Hogyan PyTorch modelleket taníthat be
 
-Azure Machine Learning Neurális hálózat (DNN) képzést nyújt PyTorch, itt a Estimator egyéni PyTorch osztályát. Az Azure SDK PyTorch Estimator lehetővé teszi, hogy könnyedén beküldhető PyTorch mind egyetlen csomópontot, és elosztott futtatások az Azure-beli számítási feladatok.
+Neurális hálózat (DNN) képzést nyújt PyTorch, az Azure Machine Learning biztosít egyéni `PyTorch` osztályát az `Estimator`. Az Azure SDK `PyTorch` estimator lehetővé teszi, hogy könnyedén beküldhető PyTorch mind egyetlen csomópontot, és elosztott futtatások az Azure-beli számítási feladatok.
 
 ## <a name="single-node-training"></a>Egy csomópontos képzés
-A PyTorch Estimator képzést hasonlít a használatával a [Estimator kiinduló](how-to-train-ml-models.md), ezért először olvassa el a cikkben található útmutató, és ellenőrizze, hogy tisztában van a bemutatott fogalmakkal.
+A képzés a `PyTorch` estimator hasonlít a használatával a [alap `Estimator` ](how-to-train-ml-models.md), ezért először olvassa el a cikkben található útmutató, és ellenőrizze, hogy tisztában van a bemutatott fogalmakkal.
   
 Hozza létre a PyTorch feladatok futtatásához egy `PyTorch` objektum. Már létrehozott kell a [számítási célt](how-to-set-up-training-targets.md#batch) objektum `compute_target` és a [adattárolója](how-to-access-data.md) objektum `ds`.
 
@@ -40,15 +40,16 @@ pt_est = PyTorch(source_directory='./my-pytorch-proj',
 ```
 
 Itt hogy adja meg az alábbi paramétereket a PyTorch konstruktor:
-* `source_directory`: A helyi könyvtárban, amely tartalmazza az összes a betanítási feladathoz szükséges kódot. Ez a mappa a távoli számítási átmásolódnak a helyi gépen
-* `script_params`: Egy a tanítási szkriptet a parancssori argumentumok megadása szótárban `entry_script`, < parancssori argumentum, érték > formájában párok
-* `compute_target`: A távoli számítási arról, hogy az a tanítási szkriptet, ebben az esetben egy [Batch AI](how-to-set-up-training-targets.md#batch) fürt
-* `entry_script`: A fájl elérési útja (viszonyítva a `source_directory`), a tanítási szkriptet futtatandó távoli számítási. Ezt a fájlt, és a további fájlokat attól függ, ebben a mappában kell elhelyezni.
-* `conda_packages`: Python-csomagokat a tanítási szkriptet által igényelt conda-n keresztül kell telepíteni a listája.
-A konstruktor rendelkezik egy másik nevű paramétert `pip_packages` használható az esetleges pip csomagokat szükséges
-* `use_gpu`: Ezt a jelzőt `True` kihasználhatja a GPU, a betanításhoz. Az alapértelmezett érték `False`
+Paraméter | Leírás
+--|--
+`source_directory` |  Helyi könyvtár, amely tartalmazza az összes a betanítási feladathoz szükséges kódot. Ez a mappa a távoli számítási átmásolódnak a helyi gépen
+`script_params` |  A parancssori paraméterek, a tanítási szkriptet megadása szótárban `entry_script`, < parancssori argumentum, érték > formájában párok
+`compute_target` |  Távoli számítási arról, hogy az a tanítási szkriptet, ebben az esetben egy [Batch AI](how-to-set-up-training-targets.md#batch) fürt
+`entry_script` |  Fájl elérési útja (viszonyítva a `source_directory`), a tanítási szkriptet futtatandó távoli számítási. Ezt a fájlt, és a további fájlokat attól függ, ebben a mappában kell elhelyezni.
+`conda_packages` |  Szükség szerint a tanítási szkriptet conda-n keresztül kell telepíteni a Python-csomagok listáját. A konstruktor rendelkezik egy másik nevű paramétert `pip_packages` használható az esetleges pip csomagokat szükséges
+`use_gpu` |  Ezt a jelzőt `True` kihasználhatja a GPU, a betanításhoz. Az alapértelmezett érték `False`
 
-Mivel a PyTorch estimator használ, a képzési használt tároló alapértelmezés szerint a PyTorch csomag és a szükséges képzés a processzorok és gpu-k kapcsolódó függőségeket tartalmaznak.
+Mivel használ a `PyTorch` estimator, a képzési használt tároló tartalmazza a PyTorch csomag és a kapcsolódó függőségeket, a processzorok és gpu-k képzéshez szükséges.
 
 Ezután küldje el a PyTorch feladatot:
 ```Python
@@ -56,7 +57,7 @@ run = exp.submit(pt_est)
 ```
 
 ## <a name="distributed-training"></a>Elosztott betanítás
-A PyTorch Estimator emellett lehetővé teszi különböző Azure-beli virtuális Processzor és GPU fürtök ipari méretekben a modellek betanítása. Könnyedén futtathat elosztott PyTorch képzési néhány API-hívások, amíg az Azure Machine Learning fogja kezelni a háttérben, az infrastruktúra és a vezénylési ilyen számítási feladat végrehajtásához szükséges.
+A `PyTorch` estimator lehetővé teszi, hogy ipari méretekben a modellek betanítása Azure-beli virtuális Processzor és GPU fürtök között. Könnyedén futtathat elosztott PyTorch képzési néhány API-hívások, amíg az Azure Machine Learning fogja kezelni a háttérben, az infrastruktúra és a vezénylési ilyen számítási feladat végrehajtásához szükséges.
 
 Az Azure Machine Learning jelenleg támogatja a Horovod keretrendszerrel PyTorch elosztott képzésének MPI-alapú.
 
@@ -78,10 +79,12 @@ pt_est = PyTorch(source_directory='./my-pytorch-project',
                  use_gpu=True)
 ```
 
-A fenti kód a következő új paraméterek a PyTorch konstruktor tünteti fel:
-* `node_count`: A betanítási feladathoz használandó csomópontok száma. Ennek az argumentumnak az alapértelmezett `1`
-* `process_count_per_node`: Minden egyes csomóponton futtatandó folyamatok (vagy "dolgozó szakemberek") a száma. Ennek az argumentumnak az alapértelmezett `1`
-* `distributed_backend`: A háttérrendszer indításakor elosztott képzés, így az a Estimator MPI-n keresztül. Ennek az argumentumnak az alapértelmezett `None`. Ha szeretné-e a párhuzamos és elosztott képzési végez (például `node_count`> 1 vagy `process_count_per_node`> 1 vagy mindkét) beállítása MPI (és Horovod), `distributed_backend='mpi'`. Az Azure Machine Learning által használt MPI végrehajtása [nyílt MPI](https://www.open-mpi.org/).
+Ez a kód a következő új paraméterek a PyTorch konstruktor tünteti fel:
+Paraméter | Leírás | Alapértelmezett
+--|--|--
+`node_count` |  A betanítási feladathoz használandó csomópontok száma. | `1`
+`process_count_per_node` |  Minden egyes csomóponton futtatandó folyamatok (vagy "dolgozó szakemberek") száma. | `1`
+`distributed_backend` |  Háttérbeli indításakor elosztott képzés, így az a Estimator MPI-n keresztül.  Párhuzamos és elosztott képzési elvégzésére (pl. `node_count`> 1 vagy `process_count_per_node`> 1 vagy mindkét) beállítása MPI (és Horovod) `distributed_backend='mpi'`. Az Azure Machine Learning által használt MPI végrehajtása [nyílt MPI](https://www.open-mpi.org/). | `None`
 
 A fenti példában fognak futni az elosztott képzési két feldolgozó egy feldolgozó csomópontonkénti.
 
@@ -98,10 +101,10 @@ run = exp.submit(pt_est)
 
 ## <a name="examples"></a>Példák
 Egy csomópontos PyTorch képzési oktatóanyagért lásd:
-* `training/01.train-tune-deploy-pytorch/01.train-tune-deploy-pytorch.ipynb`
+* `training/01.train-hyperparameter-tune-deploy-with-pytorch`
 
 Elosztott PyTorch Horovod az oktatóanyagot tekintse meg:
-* `training/02.distributed-pytorch-with-horovod/02.distributed-pytorch-with-horovod.ipynb`
+* `training/02.distributed-pytorch-with-horovod`
 
 Ezeket a notebookokat lekérése:
 

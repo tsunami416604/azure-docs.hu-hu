@@ -14,12 +14,12 @@ ms.component: report-monitor
 ms.date: 12/06/2017
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 2cfdd5b903b8ffd9702745df150fe578d42e5a11
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: c0326a6b611d5f3d5633db2d2b64b8cdc15e10a7
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45735832"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48816684"
 ---
 # <a name="how-to-use-the-azure-active-directory-power-bi-content-pack"></a>Az Azure Active Directory Power BI-tartalomcsomag használata
 
@@ -29,6 +29,10 @@ ms.locfileid: "45735832"
 |  |
 
 INFORMATIKAI rendszergazdaként kell megértéséhez a felhasználók elfogadják és az Azure Active Directory-szolgáltatások használata. Ez lehetővé teszi, hogy az informatikai infrastruktúráját és kommunikációját, használatára és a legtöbbet az Azure AD-funkciók tervezése. A Power BI-tartalomcsomag az Azure Active Directory teszi lehetővé a részletesebb betekintések, mi történik a címtár adatainak további elemzéséhez. Az Azure Active Directory API-k a Power BI-ba történő integrációnak köszönhetően könnyedén letöltheti az előre elkészített tartalomcsomag és betekintést a biztosított részletes megjelenítések használatával, amely a Power bi-ban az Azure Active Directoryn belüli tevékenységekbe. Létrehozhatja saját irányítópultját, és könnyedén megoszthatja szervezete bármelyik tagjával. 
+
+## <a name="prerequisites"></a>Előfeltételek
+
+A tartalomcsomag használatához egy Azure AD prémium verzió (P1 vagy P2)-licencre van szüksége. 
 
 ## <a name="install-the-content-pack"></a>A tartalomcsomag telepítésére
 

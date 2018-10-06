@@ -6,15 +6,15 @@ ms.service: automation
 ms.component: update-management
 author: georgewallace
 ms.author: gwallace
-ms.date: 09/18/2018
+ms.date: 10/05/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 3e21cb90dbe76a648cbb23729cc5068e75e8e5f7
-ms.sourcegitcommit: 8b694bf803806b2f237494cd3b69f13751de9926
+ms.openlocfilehash: 403c52cb2de61f1c2d02ad72e9067da09b40a814
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/20/2018
-ms.locfileid: "46498538"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48816038"
 ---
 # <a name="update-management-solution-in-azure"></a>Frissítéskezelési megoldás az Azure-ban
 
@@ -36,6 +36,8 @@ Az alábbi ábrán látható egy koncepcióvázlaton jelenítik működését é
 ![Frissítéskezelési folyamatdiagramja](media/automation-update-management/update-mgmt-updateworkflow.png)
 
 Az Update Management segítségével natív módon előkészítheti a gépeket ugyanabban a bérlőben több előfizetésben található. Egy másik bérlőben, be kell vezetnie a gépek kezeléséhez, azokat [nem Azure-gépek](automation-onboard-solutions-from-automation-account.md#onboard-a-non-azure-machine). 
+
+Ha egy CVE kiadás, a javítás jelenik meg a Linux rendszerű gépek értékelés 2 – 3 órát vesz igénybe.  Windows-gépek megjelenjen az értékeléshez, miután megtörtént a javítás 12 – 15 órát vesz igénybe.
 
 Miután a számítógép frissítési megfelelőség szempontjából vizsgálatot végez, az ügynök továbbítja az adatokat tömeges az Azure Log Analyticshez való. A Windows-számítógépen a megfelelőségi vizsgálat 12 óránként történik alapértelmezés szerint.
 

@@ -9,12 +9,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 08/17/2018
 ms.author: jingwang
-ms.openlocfilehash: 79bb3042af6a42b4a8c33e9a19c80d117c3216e7
-ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
+ms.openlocfilehash: ee3dafe55799c46231aa3ca7c19684d905a057de
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48248856"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48815426"
 ---
 # <a name="copy-data-to-or-from-azure-blob-storage-by-using-azure-data-factory"></a>Adatok másolása, vagy az Azure Blob storage-ból az Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -47,7 +47,7 @@ Az Azure Blob-összekötő a következő hitelesítési típusok támogatása, t
 - [Fiók kulcsos hitelesítés](#account-key-authentication)
 - [Közös hozzáférésű jogosultságkódos hitelesítés](#shared-access-signature-authentication)
 - [Egyszerű szolgáltatás hitelesítése](#service-principal-authentication)
-- [Felügyelt identitások Azure-erőforrások hitelesítéshez](#managed-service-identity-authentication)
+- [Felügyelt identitások Azure-erőforrások hitelesítéshez](#managed-identity)
 
 >[!NOTE]
 >Platformját, az Azure Machine Learning és az Azure SQL Data Warehouse PolyBase betöltési csak Azure Blob storage-fiók kulcsos hitelesítést támogatják.

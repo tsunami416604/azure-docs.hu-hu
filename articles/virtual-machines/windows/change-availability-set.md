@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/30/2018
 ms.author: cynthn
-ms.openlocfilehash: 8d11f81d5fea47ccef8689a84c06768c4ca36012
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: 82a9363d5199c6e4446a76ab46f4f97ea3704710
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44162036"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48813515"
 ---
 # <a name="change-the-availability-set-for-a-windows-vm"></a>A Windows virtuális gép rendelkezésre állási módosítása
 A következő lépések bemutatják, hogyan módosíthatja a rendelkezésre állási csoport a virtuális gépek Azure PowerShell-lel. Virtuális gép csak egy rendelkezésre állási csoport létrehozásakor lehet hozzáadni. Módosíthatja a rendelkezésre állási beállítása, törölje és hozza létre a virtuális gép szükséges. 
@@ -40,9 +40,6 @@ Az alábbi parancsprogram azt szemlélteti, a szükséges adatok összegyűjtés
        -ResourceGroupName $resourceGroup `
        -Name $vmName
 
-# Remove the original VM
-    Remove-AzureRmVM -ResourceGroupName $resourceGroup -Name $vmName
-
 # Create new availability set if it does not exist
     $availSet = Get-AzureRmAvailabilitySet `
        -ResourceGroupName $resourceGroup `
@@ -57,6 +54,9 @@ Az alábbi parancsprogram azt szemlélteti, a szükséges adatok összegyűjtés
        -PlatformUpdateDomainCount 2 `
        -Sku Aligned
     }
+    
+# Remove the original VM
+    Remove-AzureRmVM -ResourceGroupName $resourceGroup -Name $vmName    
 
 # Create the basic configuration for the replacement VM
     $newVM = New-AzureRmVMConfig `

@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 09/06/2018
 ms.author: diberry
-ms.openlocfilehash: 6831f67a33d114ca5c42ddacf8ef4de704e21711
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 32ef8ba2f6416e1b59fc98595f1b204e94bd2ead
+ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47036956"
+ms.lasthandoff: 10/06/2018
+ms.locfileid: "48830990"
 ---
 # <a name="use-phrase-lists-to-boost-signal-of-word-list"></a>Használja a kifejezés boost jelre a word lista sorolja fel
 
@@ -46,7 +46,7 @@ A pontosság javítása érdekében a LUIS-alkalmazás funkciókat adhat hozzá.
 <a name="deactivate-phrase-list"></a>
 
 > [!Note]
-> Szerkesztése, törlése vagy inaktiválni a kifejezést a lista a három pontra (***...*** ) gombra az EAC segítségével kifejezéslista sorának végén.
+> Törölheti, vagy a kifejezést a lista a környezetfüggő eszköztár inaktiválása a **listák kifejezés** lapot.
 
 ## <a name="pattern-regular-expression-feature"></a>Minta (reguláris kifejezés) szolgáltatás 
 **Ez a funkció elavult**. A LUIS nem adható hozzá a minta új funkciókat. Bármely meglévő minta-szolgáltatások 2018. május ig támogatottak. Standard LUIS reguláris kifejezés egy lekéréses kérelmet a megfelelő hozzájárulnak a [felismerő szöveges Github-adattár](https://github.com/Microsoft/Recognizers-Text). 

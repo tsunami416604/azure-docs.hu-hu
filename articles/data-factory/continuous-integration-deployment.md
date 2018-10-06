@@ -10,14 +10,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/01/2018
+ms.date: 10/04/2018
 ms.author: douglasl
-ms.openlocfilehash: aa8572ea0195891657baf3df1916ce0b4f36f788
-ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
+ms.openlocfilehash: 8027b167481fd4e48e03b3c1ad3ed8c6adcb853e
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48018808"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48815443"
 ---
 # <a name="continuous-integration-and-delivery-cicd-in-azure-data-factory"></a>Folyamatos integráció és teljesítés (CI/CD) az Azure Data Factoryban
 
@@ -116,7 +116,7 @@ Az alábbiakban a lépéseket egy Azure-folyamatok verzió beállításához, ad
     g. Válassza ki a **növekményes** üzembe helyezési mód.
 
     > [!WARNING]
-    > Ha **Complete** üzembe helyezési mód, a meglévő erőforrások törlődhet, köztük a céloldali erőforráscsoport.
+    > Ha **Complete** üzembe helyezési mód, a meglévő erőforrások törlődhet, többek között az összes erőforrást, amelyek nincsenek meghatározva a Resource Manager-sablon a célként megadott erőforráscsoportban.
 
 1.  Mentse a kiadási folyamathoz.
 

@@ -1,39 +1,39 @@
 ---
-title: Prioritás használatával válaszok megjelenítendő |} Microsoft Docs
-description: Bemutatja, hogyan prioritás használatával megjelenítheti a kérdésekre adott válaszokat, hogy az entitás Bing keresési API adja vissza.
+title: Használatával a ranglistán megjelenő válaszok – Bing Entity Search megjelenítése
+titlesuffix: Azure Cognitive Services
+description: Bemutatja, hogyan ranglistán megjelenő használatával megjelenítheti a Bing Entity Search API adja vissza a válaszokat.
 services: cognitive-services
 author: v-jerkin
-manager: ehansen
-ms.assetid: BBF87972-B6C3-4910-BB52-DE90893F6C71
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-entity-search
-ms.topic: article
+ms.topic: conceptual
 ms.date: 12/12/2017
 ms.author: v-jerkin
-ms.openlocfilehash: 53354c0f78419a37e8896bb4d00e0d7aebf32203
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: 4a336ccaea18ab84464f28aef170ccdc423b216d
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37059991"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48814593"
 ---
-# <a name="using-ranking-to-display-results"></a>Eredmények megjelenítéséhez használja a prioritása  
+# <a name="using-ranking-to-display-results"></a>Eredmények megjelenítése a ranglistán megjelenő használatával  
 
-Minden entitás keresési válasz tartalmazza a [RankingResponse](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#rankingresponse) fogadja a hívást, hasonló egy, a Bing webes keresés választ, amely meghatározza, hogyan meg kell jelenítenie a keresési eredmények között. A rangsorolási válasz sarkpontot mainline, az eredmények és az oldalsó sáv tartalom felsorolását tartalmazza. A sarkpontot eredmény fontos vagy a jól láthatóan elhelyezett eredménye, és először üzenetnek kell megjelennie. Ha nem jelenik meg a fennmaradó eredményezi egy hagyományos mainline és az oldalsó sáv formátumát, mint az oldalsó sáv mainline tartalom magasabb látható kell megadnia. 
+Minden entitás keresési válasz tartalmazza a [RankingResponse](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#rankingresponse) választ, hasonlóan egy, a Bing webes keresés választ, amely megadja, hogyan kell a keresési eredmények megjelenítéséhez. Ennek a területnek válasz pole által, az eredmények és az oldalsáv tartalom csoportosítja. Pole eredménye a leginkább fontos vagy neves eredménye, és először üzenetnek kell megjelennie. Ha nem jelennek meg a fennmaradó eredményez a hagyományos által és az oldalsáv formátumát, meg kell adnia által tartalom magasabb látható-e, mint az oldalsáv tartalmat. 
   
-Az egyes csoportok a [elemek](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#rankinggroup-items) tömb azonosítja a megfelelő szerepelnie kell a tartalmát. Minden elem azonosításához az eredmény választ belül két lehetőséget biztosít.  
+Minden egyes csoporton belül a [elemek](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#rankinggroup-items) tömb azonosítja a rendelést, szerepelnie kell a tartalmat. Minden elem azonosítására, az eredmény belül választ kétféle módszert biztosít.  
   
--   `answerType` és `resultIndex` – a `answerType` mező azonosítja a válasz (entitás vagy a hely) és `resultIndex` belül a válasz (például egy entitás) eredményeként azonosítja. Az index értéke nulla alapú.  
+-   `answerType` és `resultIndex` – a `answerType` mező azonosítja a választ (entitás vagy a hely) és `resultIndex` azonosítja egy eredményt a válasz (például egy entitás) belül. Az index nulla alapú.  
   
--   `value` – A `value` mezőben egy megfelelő választ vagy a válasz belül eredményeként az azonosítója. A válasz vagy az eredményeket az azonosítója, de nem mindkettőt tartalmaz.  
+-   `value` – A `value` mező, amely a válasz vagy válasz belül eredményt azonosítója megegyezik-Azonosítót tartalmaz. Vagy a választ, vagy az eredmények tartalmazzák az azonosítója, de nem mindkettőt.  
   
-A azonosítójával meg kell egyeznie a rangsorolási-Azonosítójával az eredmények közül választ vagy azonosítójú. Ha egy válasz objektum tartalmaz egy `id` mezőben, a válasz eredmények együttes megjelenítése. Például ha a `Entities` objektum tartalmazza a `id` mezőbe az entitások cikkeket együttes megjelenítése. Ha a `Entities` objektum nem tartalmazza a `id` mezőben, majd minden egyes entitás tartalmaz egy `id` mező, és a rangsorolási válasz keveri az entitásokat a helyek eredmények.  
+Az azonosító használatával megköveteli, hogy egyezik meg ennek a területnek Azonosítóval azonosítójú, válasz vagy az eredmények közül. Ha egy válasz objektum tartalmaz egy `id` mezőben együtt a válasz eredmények megjelenítéséhez. Például ha a `Entities` objektum tartalmazza a `id` mezőt, és megjelenítheti az összes entitások cikk együtt. Ha a `Entities` objektum nem tartalmaz a `id` mezőben, majd minden egyes entitás tartalmaz egy `id` mező, és a rangsorolás válasz eredményét az entitásokat a helyek eredményekkel.  
   
-Használja a `answerType` és `resultIndex` egy kétlépéses folyamat. Először is használhat `answerType` azonosítására a választ, amely tartalmazza az eredmények megjelenítéséhez. Akkor használja `resultIndex` az adott válasz eredmények megjelenítéséhez eredmény index. (A `answerType` mezőjének neve a [SearchResponse](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#searchresponse) objektum.) Ha a válasz eredmények együttes megjelenítése elvárt befejezési rangsorolási válasz elem nem tartalmazza a a `resultIndex` mező.
+Használatával a `answerType` és `resultIndex` egy kétlépéses folyamat. Első lépésként használhat `answerType` azonosíthatja a választ, amely tartalmazza az eredmények megjelenítéséhez. Ezután használhatja `resultIndex` index adott válasz találatok megjelenítéséhez eredmény eléréséhez. (A `answerType` a neve, a mező a [SearchResponse](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#searchresponse) objektum.) Ön kellene együtt a válasz eredményeket megjeleníteni, ha a rangsorolás válasz elem nem tartalmazza a `resultIndex` mező.
 
-## <a name="ranking-response-example"></a>Prioritás válasz – példa
+## <a name="ranking-response-example"></a>Példa a válasz rangsorolása
 
-A következő példáját mutatja be [RankingResponse](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#rankingresponse).
+Az alábbi példán látható [RankingResponse](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#rankingresponse).
   
 ```json
 {
@@ -65,9 +65,9 @@ A következő példáját mutatja be [RankingResponse](https://docs.microsoft.co
 }
 ```
 
-Ez rangsorolási a válasz alapján, az oldalsávon jeleníti meg, a két entitás eredmények Jimi Hendrix kapcsolódik.
+Ez ennek a területnek a válasz alapján, az oldalsáv jeleníti meg, a két entitás eredmények Jimi Hendrix kapcsolatos.
 
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Bing entitás keresési oktatóanyag](tutorial-bing-entities-search-single-page-app.md)
+> [A Bing Entity Search-oktatóanyag](tutorial-bing-entities-search-single-page-app.md)

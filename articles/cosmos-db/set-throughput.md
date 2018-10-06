@@ -9,12 +9,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/02/2018
 ms.author: andrl
-ms.openlocfilehash: 2f6720e39856366e4bca387effdc2a0624d85826
-ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
+ms.openlocfilehash: c345235fa16a28877a46d5eaef54093d89ffcdd0
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48247994"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48815834"
 ---
 # <a name="set-and-get-throughput-for-azure-cosmos-db-containers-and-database"></a>Állítsa be, és az Azure Cosmos DB-tárolók és az adatbázis átviteli sebesség lekérdezése
 
@@ -35,7 +35,7 @@ Beállíthat átviteli sebességet egy Azure Cosmos DB-tároló vagy egy tárol�
    |Adatbázis azonosítója  |  Adjon meg egy egyedi nevet az adatbázis azonosításához. Adatbázis, egy vagy több gyűjtemény logikai tárolói. Az adatbázis neve 1–255 karakter hosszúságú lehet, és nem tartalmazhat /, \\, #, ? karaktereket vagy záró szóközt. |
    |Katalógus azonosítója  | Adjon meg egy egyedi nevet a gyűjtemény azonosításához. A gyűjteményazonosítók nevére ugyanazok a karakterkorlátozások vonatkoznak, mint az adatbázisnevekre. |
    |Tárkapacitás   | Ez az érték az adatbázis tárkapacitása jelöli. Egy adott gyűjtemény átviteli kiépítésekor tárolókapacitás lehet **rögzített méretű (10 GB)** vagy **korlátlan**. Korlátlan tárolási kapacitás szükséges partíciókulcsot az adatok.  |
-   |Teljesítmény   | Minden gyűjtemény és az adatbázis kérelemegység / s átviteli sebesség is lehet.  Rögzített tárolókapacitás minimum 400 kérelemegység / másodperc (RU/s), a korlátlan tárolási kapacitás, a minimális átviteli sebesség 1000 RU/s értéke.|
+   |Teljesítmény   | Minden gyűjtemény és az adatbázis kérelemegység / s átviteli sebesség is lehet.  És a egy gyűjtemény is rögzített vagy korlátlan tárolási kapacitás. |
 
 6. Után az alábbi mezők értékeket ad meg, jelölje be az **OK** a beállítások mentéséhez.  
 

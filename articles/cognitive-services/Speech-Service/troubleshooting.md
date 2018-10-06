@@ -1,7 +1,7 @@
 ---
-title: Cognitive Services beszéd SDK hibáinak elhárítása
-description: Problémajegyek hibaelhárítási Cognitive Services beszédfelismerő SDK
-titleSuffix: Microsoft Cognitive Services
+title: A Cognitive Services beszédfelismerő SDK hibaelhárítása
+description: Végezzen hibaelhárítást a Cognitive Services beszédfelismerő SDK-t.
+titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: wolfma61
 ms.service: cognitive-services
@@ -9,41 +9,43 @@ ms.component: speech-service
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: wolfma
-ms.openlocfilehash: ff8aba562cfd2d6d54c708ee7fdc4c6ca7185f29
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: 02564021257c97f6c865fcbebf30c73babee859a
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39284122"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48816213"
 ---
-# <a name="troubleshooting-speech-services-sdk"></a>Hibaelhárítási Speech Services SDK-val
+# <a name="troubleshoot-the-speech-sdk"></a>Az SDK Speech elhárítása
 
-Ez a cikk előforduló beszéd SDK-val kapcsolatos problémák megoldásához információkat nyújt.
+Ez a cikk beszéd SDK használata során esetlegesen jelentkező problémák megoldásához információkat nyújt.
 
-## <a name="error-websocket-upgrade-failed-with-an-authentication-error-403"></a>Hiba történt `WebSocket Upgrade failed with an authentication error (403).`
+## <a name="error-websocket-upgrade-failed-with-an-authentication-error-403"></a>Hiba: A WebSocket-frissítés (403) hitelesítési hiba miatt meghiúsult
 
-Előfordulhat, hogy a nem megfelelő végpont az régió vagy szolgáltatás. Ellenőrizze, hogy helyes-e az URI-t. A következő szakaszban is láthatja, ahogy ez az előfizetési kulcs vagy engedélyezési hiba is lehet tokent.
+Előfordulhat, hogy a nem megfelelő végpont az régió vagy szolgáltatás. Ellenőrizze, hogy helyes-e az URI-t. 
 
-## <a name="error-http-403-forbidden-or-error-http-401-unauthorized"></a>Hiba `HTTP 403 Forbidden` vagy hiba `HTTP 401 Unauthorized`
+Ezenkívül előfordulhat, a probléma az előfizetési kulcs vagy engedélyezési jogkivonat. További információkért tekintse meg a következő szakaszban.
 
-Ez a hiba gyakran okozza a hitelesítési problémákat. Csatlakozási kérelmek nem egy érvényes `Ocp-Apim-Subscription-Key` vagy `Authorization` fejléc visszautasítja 401-es vagy a 403-as állapotú.
+## <a name="error-http-403-forbidden-or-http-401-unauthorized"></a>Hiba: A HTTP 403 Tiltott vagy a HTTP 401-es nem engedélyezett
 
-* Ha egy előfizetési kulcsot használ a hitelesítéshez, a ok lehet:
+Ez a hiba gyakran okozza hitelesítéssel kapcsolatos problémáiról. Csatlakozási kérelmek nem egy érvényes `Ocp-Apim-Subscription-Key` vagy `Authorization` fejléc a 403-as vagy a 401-es állapotot a rendszer elutasítja.
+
+* Ha egy előfizetési kulcsot használ a hitelesítéshez, láthatja a hiba, mert:
 
     - az előfizetési kulcs nem található vagy érvénytelen
     - túllépte az előfizetés használati kvóta
 
-* Ha egy engedélyezési jogkivonatot használ a hitelesítéshez, a ok lehet:
+* Ha egy engedélyezési jogkivonatot használ a hitelesítéshez, láthatja a hiba, mert:
 
     - a hitelesítési jogkivonat érvénytelen
     - a hitelesítési jogkivonat lejárt
 
 ### <a name="validate-your-subscription-key"></a>Az előfizetési kulcs ellenőrzése
 
-Ellenőrizze, hogy egy érvényes előfizetési kulcsot az alábbi parancsok futtatásával ellenőrizheti.
+Ellenőrizheti, hogy van-e egy érvényes előfizetési kulcsot a következő parancsok egyikét futtatja.
 
 > [!NOTE]
-> Cserélje le `YOUR_SUBSCRIPTION_KEY` és `YOUR_REGION` saját előfizetési kulcs és a társított régió jelölik.
+> Cserélje le `YOUR_SUBSCRIPTION_KEY` és `YOUR_REGION` saját előfizetési kulcs és a társított régió.
 
 * PowerShell
 
@@ -68,7 +70,7 @@ Ellenőrizze, hogy egy érvényes előfizetési kulcsot az alábbi parancsok fut
 Egy engedélyezési jogkivonatot használnak a hitelesítéshez, ha annak ellenőrzéséhez, hogy az engedélyezési jogkivonatot továbbra is érvényes a következő parancsok egyikét futtatja. 10 percig jogkivonatok érvényesek.
 
 > [!NOTE]
-> Cserélje le `YOUR_AUDIO_FILE` az elérési útját a korábban rögzített hangfájl `YOUR_ACCESS_TOKEN` az az engedélyezési jogkivonatot adott vissza az előző lépésben és `YOUR_REGION` és a megfelelő régió.
+> Cserélje le `YOUR_AUDIO_FILE` a korábban rögzített hangfájl az elérési útját. Cserélje le `YOUR_ACCESS_TOKEN` az az engedélyezési jogkivonatot adott vissza az előző lépésben. Cserélje le `YOUR_REGION` és a megfelelő régió.
 
 * PowerShell
 
@@ -83,12 +85,12 @@ Egy engedélyezési jogkivonatot használnak a hitelesítéshez, ha annak ellen�
       'Content-type' = 'audio/wav; codec=audio/pcm; samplerate=16000'
     }
     
-    # Read audio into byte array
+    # Read audio into byte array.
     $audioBytes = [System.IO.File]::ReadAllBytes("YOUR_AUDIO_FILE")
     
     $RecoResponse = Invoke-RestMethod -Method POST -Uri $SpeechServiceURI -Headers $RecoRequestHeader -Body $audioBytes
     
-    # Show the result
+    # Show the result.
     $RecoResponse
     ```
 
@@ -100,22 +102,23 @@ Egy engedélyezési jogkivonatot használnak a hitelesítéshez, ha annak ellen�
 
 ---
 
-## <a name="error-http-400-bad-request"></a>Hiba történt `HTTP 400 Bad Request`
+## <a name="error-http-400-bad-request"></a>Hiba: A HTTP 400 – Hibás kérés
 
-Ez a hiba általában akkor fordul elő, ha a kérés törzsében érvénytelen hang adatokat tartalmaz. Csak `WAV` formátum támogatott. Ellenőrizze a kérelemfejlécek, hogy adja meg egy megfelelő `Content-Type` és `Content-Length`.
+Ez a hiba általában akkor fordul elő, ha a kérés törzsében érvénytelen hang adatokat tartalmaz. Csak a WAV-formátum támogatott. Emellett ellenőrizze, hogy biztosan a megfelelő értékeket adja meg a kérelem fejlécek `Content-Type` és `Content-Length`.
 
-## <a name="error-http-408-request-timeout"></a>Hiba történt `HTTP 408 Request Timeout`
+## <a name="error-http-408-request-timeout"></a>Hiba: A HTTP 408 kérés időtúllépése
 
-A hiba oka az, valószínűleg nincs hang adatot küld a szolgáltatásnak. Ezt a hibát emellett okozhatja hálózati probléma.
+A hiba legvalószínűbb oka az, hogy nincs hang adatot küld a szolgáltatásnak. Ezt a hibát emellett okozhatja hálózati probléma.
 
-## <a name="the-recognitionstatus-in-the-response-is-initialsilencetimeout"></a>A `RecognitionStatus` a válaszban `InitialSilenceTimeout`
+## <a name="recognitionstatus-in-the-response-is-initialsilencetimeout"></a>A válasz a "RecognitionStatus" a "InitialSilenceTimeout"
 
-Hang adatokat általában a a probléma okát. Példa:
+A probléma okozza hívásaiból. Mivel ez a hiba jelenhetnek meg:
 
-* Nincs hosszú többhelyes csend a hanganyag elején. A szolgáltatás leáll a felismerés néhány másodperc múlva, és vissza `InitialSilenceTimeout`.
+* Nincs hosszú többhelyes csend a hanganyag elején. Ebben az esetben a szolgáltatás leáll a felismerés néhány másodperc múlva, és adja vissza `InitialSilenceTimeout`.
+
 * A hanganyag egy nem támogatott kodek formátumot, azaz a hang kell tekinteni a csend használja.
 
 ## <a name="next-steps"></a>További lépések
 
-* [Kiadási megjegyzések](releasenotes.md)
+* [Tekintse át a kibocsátási megjegyzések](releasenotes.md)
 

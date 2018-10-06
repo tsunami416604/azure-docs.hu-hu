@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 09/17/2018
 ms.author: dobett
-ms.openlocfilehash: cc2b813efe31822b273a98d21d0dcf0b62385b92
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: 55c8ff799ba3ff7fe9691d46dc90a00d5182d390
+ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45734301"
+ms.lasthandoff: 10/06/2018
+ms.locfileid: "48829410"
 ---
 # <a name="connect-your-device-to-the-remote-monitoring-solution-accelerator-windows"></a>Az eszköz csatlakoztatása a távoli figyelési megoldásgyorsító (Windows)
 
@@ -29,15 +29,15 @@ Végezze el ez az Útmutató lépéseit kövesse a [a Windows fejlesztési körn
 
 ## <a name="view-the-code"></a>A kód megtekintéséhez
 
-A [mintakód](https://github.com/Azure/azure-iot-sdk-c/tree/master/samples/solutions/remote_monitoring) használja a jelen útmutató az Azure IoT C SDK-k GitHub-tárházban érhető el.
+A [mintakód](https://github.com/Azure/azure-iot-sdk-c/tree/master/samples/solutions/remote_monitoring_client) használja a jelen útmutató az Azure IoT C SDK-k GitHub-tárházban érhető el.
 
 ### <a name="download-the-source-code-and-prepare-the-project"></a>Letöltheti a forráskódot, és készítse elő a projekt
 
 A projekt elkészítéséhez Klónozás vagy letöltés a [Azure IoT C SDK-k tárház](https://github.com/Azure/azure-iot-sdk-c) a Githubról.
 
-A mintában található a **samples/megoldások/remote_monitoring** mappát.
+A mintában található a **samples/megoldások/remote_monitoring_client** mappát.
 
-Nyissa meg a **remote_monitoring.c** fájlt a **samples/megoldások/remote_monitoring** mappát egy szövegszerkesztőben.
+Nyissa meg a **remote_monitoring.c** fájlt a **samples/megoldások/remote_monitoring_client** mappát egy szövegszerkesztőben.
 
 [!INCLUDE [iot-accelerators-connecting-code](../../includes/iot-accelerators-connecting-code.md)]
 
@@ -50,7 +50,7 @@ Nyissa meg a **remote_monitoring.c** fájlt a **samples/megoldások/remote_monit
 1. A parancssor a megoldás felépítéséhez használt futtassa a következő:
 
     ```cmd
-    samples\solutions\remote_monitoring\Release\remote_monitoring_client.exe
+    samples\solutions\remote_monitoring_client\Release\remote_monitoring_client.exe
     ```
 
     A konzolon, üzeneteket jelenít meg:

@@ -1,6 +1,6 @@
 ---
 title: Az Azure Backup-fájlok és -mappák lassú biztonsági mentésének hibaelhárítása
-description: Az Azure Backup teljesítményproblémák okait diagnosztizálása hibaelhárítási útmutatást nyújt
+description: Hibaelhárítási útmutató segít az Azure Backup teljesítménybeli problémák okának biztosít
 services: backup
 author: genlin
 manager: cshepard
@@ -8,77 +8,77 @@ ms.service: backup
 ms.topic: troubleshooting
 ms.date: 05/11/2018
 ms.author: genli
-ms.openlocfilehash: 46ec43aee8588af98c815bdf6aadffd90aec8537
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: e78ea2a132a75a5424c0078c2b41edb8209c781c
+ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34606290"
+ms.lasthandoff: 10/06/2018
+ms.locfileid: "48831534"
 ---
 # <a name="troubleshoot-slow-backup-of-files-and-folders-in-azure-backup"></a>Az Azure Backup-fájlok és -mappák lassú biztonsági mentésének hibaelhárítása
-Ez a cikk nyújt hibaelhárítási útmutatót okának fájlok és mappák biztonsági mentési teljesítménycsökkenést használatakor Azure Backup segítségével. Fájlok biztonsági mentése az Azure Backup szolgáltatás ügynöke használatakor a biztonsági mentési folyamat hosszabb ideig eltarthat. Ez a késés oka lehet az alábbiak közül:
+Ez a cikk segítségével diagnosztizálhatja a fájlok és mappák lassú biztonsági mentési teljesítmény okának, amikor az Azure Backup használata a hibaelhárítási útmutatót. Fájlok biztonsági mentése az Azure Backup-ügynök használatakor a biztonsági mentési folyamat a vártnál hosszabb vehet igénybe. Ez a késleltetés oka lehet egy vagy több, a következők:
 
-* [Nincsenek szűk keresztmetszetek a számítógépen, amelyek biztonsági mentése van folyamatban.](#cause1)
-* [Egy másik folyamat vagy a víruskereső szoftver ütközik az Azure biztonsági mentési folyamat során.](#cause2)
+* [Nincsenek a teljesítmény szűk azon a számítógépen, a másolat készül.](#cause1)
+* [Egy másik folyamat vagy víruskereső zavarja az Azure biztonsági mentési folyamat.](#cause2)
 * [A Backup szolgáltatás ügynökének futása egy Azure virtuális gépen (VM).](#cause3)  
-* [Biztonsági mentést készít a fájlok sok (több millió).](#cause4)
+* [Biztonsági másolatot egy nagy mennyiségű (több millió) fájlt.](#cause4)
 
-Mielőtt elkezdené a problémák elhárításához, azt javasoljuk, hogy töltse le és telepítse a [legújabb Azure Backup szolgáltatás ügynökének](http://aka.ms/azurebackup_agent). Gyakori frissítések különböző kapcsolatos problémák megoldása, a szolgáltatások hozzáadása és a teljesítmény javítása a biztonsági mentés Agent biztosítjuk.
+Mielőtt elkezdené kapcsolatos hibák elhárítása, azt javasoljuk, hogy töltse le és telepítse a [legújabb Azure Backup szolgáltatás ügynökének](http://aka.ms/azurebackup_agent). Gyakori frissítések különböző kapcsolatos problémák megoldása, a szolgáltatások hozzáadása és a teljesítmény javítása a biztonsági mentési ügynök VÁLLALUNK.
 
-Emellett ajánlott áttekinteni a [Azure Backup szolgáltatás – gyakori kérdések](backup-azure-backup-faq.md) győződjön meg arról, hogy nem minden a közös konfigurációs problémák tapasztalhatók a.
+Emellett javasoljuk, hogy tekintse át a [Azure Backup szolgáltatás – gyakori kérdések](backup-azure-backup-faq.md) , hogy nem oldják a gyakori konfigurációs hibáinak bármelyikét.
 
 [!INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
 
 <a id="cause1"></a>
 
-## <a name="cause-performance-bottlenecks-on-the-computer"></a>OK: Szűk keresztmetszetek a számítógépen
-A szűk keresztmetszetek a számítógépen, amely biztonsági mentése van folyamatban késést okozhat. Például a számítógép képes olvasni vagy írni lemezre vagy küldhet adatokat a hálózaton keresztül a rendelkezésre álló sávszélesség szűk keresztmetszetek okozhat.
+## <a name="cause-performance-bottlenecks-on-the-computer"></a>OK: A teljesítmény szűk azon a számítógépen
+Azon a számítógépen, a másolat készül a szűk keresztmetszetek késéseket okozhat. Például a számítógép képes olvasni vagy írni lemezre vagy adatokat küldeni a hálózaton keresztül a rendelkezésre álló sávszélesség az szűk keresztmetszeteket okozhat.
 
-A Windows beépített eszközt nevezett biztosít [Teljesítményfigyelő](https://technet.microsoft.com/magazine/2008.08.pulse.aspx) (Perfmon) a szűk keresztmetszetek észleléséhez.
+Windows beépített eszközt, amelynek a neve biztosít [Teljesítményfigyelő](https://technet.microsoft.com/magazine/2008.08.pulse.aspx) (Teljesítményfigyelő) észleli ezeket a szűk keresztmetszeteket.
 
-Íme, néhány teljesítményszámlálók és a tartományt a szűk keresztmetszetek optimális biztonsági másolatok diagnosztizálásához hasznos lehet.
+Íme, néhány teljesítményszámlálók és az optimális biztonsági mentésekhez szűk diagnosztizálásakor hasznos lehet,-címtartományokat.
 
 | Számláló | status |
 | --- | --- |
-| Logikai lemez (fizikai lemez) – üresjárati % |• 100 %-os üresjárati 50 %-os üresjárati = kifogástalan</br>• 49 % 20 %-át üresjárati üresjárati = figyelmeztetés vagy a figyelő</br>• 19 % 0 % üresjárati üresjárati kritikus vagy kívüli Spec = |
-| Logikai lemez (fizikai lemez) – % Átl. Lemez mp Olvasás vagy írás |• 0,015 MS 0,001 ms = kifogástalan</br>• 0,025 MS 0,015 ms = figyelmeztetés vagy a figyelő</br>• 0.026 ms vagy kritikus vagy kívüli Spec már = |
-| Logikai lemez (fizikai lemez) – Lemezvárólista jelenlegi hossza (az összes példányra) |80 kérelem 6 percnél hosszabb ideig |
-| Memória – nem lapozható memória |• Felhasznált készlet 60 %-nál kisebb = kifogástalan<br>• 61 % és 80 %-készlet felhasznált = figyelmeztetés vagy a figyelő</br>• Nagyobb, mint a 80 %-készlet felhasznált kritikus vagy kívüli Spec = |
-| Memória – lapozható készlet mérete bájtban |• Felhasznált készlet 60 %-nál kisebb = kifogástalan</br>• 61 % és 80 %-készlet felhasznált = figyelmeztetés vagy a figyelő</br>• Nagyobb, mint a 80 %-készlet felhasznált kritikus vagy kívüli Spec = |
-| Memória – rendelkezésre álló hely MB-ban |• 50 %-a rendelkezésre álló szabad memória vagy további = kifogástalan</br>• 25 %-a rendelkezésre álló szabad memória = figyelője</br>• 10 %-a rendelkezésre álló szabad memória = figyelmeztetés</br>• Kevesebb mint 100 MB vagy 5 %-a rendelkezésre álló szabad memória kritikus vagy kívüli Spec = |
-| Processzor –\%processzor kihasználtsága () |• 60 %-nál kisebb felhasznált = kifogástalan</br>• 61 – 90 %-felhasznált = figyelő vagy figyelmeztetés</br>• 91-100 % felhasznált kritikus = |
+| Logikai lemez (a fizikai lemez) – üresjárati % |• 100 %-os üresjárati 50 %-os üresjárati = kifogástalan</br>• 49 % 20 %-os üresjárati üresjárati = figyelmeztetés vagy a figyelő</br>• 19: % 0 % üresjárati üresjárati = kritikus vagy kívüli specifikációja |
+| Logikai lemez (a fizikai lemez) – % átlagos száma Lemez mp Olvasás vagy írás |• 0,015 MS 0,001 ms = kifogástalan</br>• 0,025 MS 0,015 ms = figyelmeztetés vagy a figyelő</br>• 0.026 ms vagy kritikus vagy kívüli specifikációja már = |
+| Logikai lemez (a fizikai lemez) – a Lemezvárólista jelenlegi hossza (az összes példányra) |80 kérelem 6 percnél hosszabb ideig |
+| Memória – nem készlet mérete (bájt) |• Legfeljebb 60 %-ban felhasznált készlet = kifogástalan<br>• 61 % és 80 %-készlet felhasznált = figyelmeztetés vagy a figyelő</br>• Nagyobb, mint 80 %-os készlet felhasznált = kritikus vagy kívüli specifikációja |
+| Memória – készlet mérete (bájt) |• Legfeljebb 60 %-ban felhasznált készlet = kifogástalan</br>• 61 % és 80 %-készlet felhasznált = figyelmeztetés vagy a figyelő</br>• Nagyobb, mint 80 %-os készlet felhasznált = kritikus vagy kívüli specifikációja |
+| Memória – rendelkezésre álló hely MB-ban |• 50 %-a rendelkezésre álló szabad memória vagy további = kifogástalan</br>• 25 %-a rendelkezésre álló szabad memória = figyelője</br>• 10 %-a rendelkezésre álló szabad memória figyelmeztetés =</br>• Kevesebb mint 100 MB-os vagy 5 %-a rendelkezésre álló szabad memória = kritikus vagy kívüli specifikációja |
+| Processzor –\%processzor kihasználtsága (összes) |• 60 %-nál kisebb felhasznált = kifogástalan</br>• 61 90 %-felhasznált = figyelő vagy figyelmeztetés</br>• 91 – 100 % felhasznált kritikus = |
 
 > [!NOTE]
-> Ha azt állapítja meg, hogy az infrastruktúra-e a probléma oka, azt javasoljuk, hogy a lemezek, rendszeresen a jobb teljesítmény töredezettségmentesítése.
+> Ha azt állapítja meg, hogy az infrastruktúra képes legyen a probléma oka, azt javasoljuk, hogy a lemezek, a jobb teljesítmény érdekében rendszeresen töredezettségmentesítése.
 >
 >
 
 <a id="cause2"></a>
 
-## <a name="cause-another-process-or-antivirus-software-interfering-with-azure-backup"></a>OK: Egy másik folyamat vagy az Azure Backup zavarja, a víruskereső szoftver
-Ahol más folyamatok, a Windows rendszerben az Azure Backup szolgáltatás ügynökének folyamatánál teljesítményét negatívan befolyásolt több példányt is láttuk. Például ha használja az Azure Backup szolgáltatás ügynöke egy másik program adatok biztonsági mentéséhez, vagy ha víruskereső fut, és zárolta a fájlok biztonsági mentését, az a többszörös zárolja a fájlok okozhat versengés. Ebben a helyzetben a biztonsági mentés sikertelen lehet, vagy a feladat a vártnál hosszabb ideig is tarthat.
+## <a name="cause-another-process-or-antivirus-software-interfering-with-azure-backup"></a>OK: Egy másik folyamat vagy víruskereső zavarja a folyamatot az Azure Backup szolgáltatással
+Megtudtuk, hogy több példányt, ahol más folyamatok, a Windows rendszerben rendelkezik az zavarhatja az Azure Backup ügynök folyamat teljesítményét. Például ha az Azure Backup ügynök és a egy másik program használja, a biztonsági másolatokat, vagy ha víruskereső fut, és zárolta a fájlok biztonsági mentése, az a többszörös zárolja a fájlok okozhat a versengés. Ebben a helyzetben a biztonsági mentés sikertelen lehet, vagy a feladat a vártnál hosszabb ideig tarthat.
 
-A legjobb javasoljuk ebben a forgatókönyvben, megtekintéséhez, hogy megváltozik-e a biztonsági mentési időt, hogy az Azure Backup szolgáltatás ügynöke más biztonsági mentési program kikapcsolása. Általában annak biztosítása, hogy több biztonsági mentési feladatok nem futnak egyszerre is használhatók, nehogy azok egymással.
+Ebben a forgatókönyvben a legjobb javaslat, hogy kapcsolja ki a másik biztonsági mentési program meg, hogy az Azure Backup-ügynök biztonsági mentésének ideje változik. Általában gondoskodik róla, hogy több biztonsági mentési feladat nem fut egyszerre is használhatók, nehogy azok egymással.
 
-A víruskereső programok azt javasoljuk, hogy a következő fájlok és helyek kizárása:
+A víruskeresők azt javasoljuk, hogy a következő fájlok és helyek kizárása:
 
 * C:\Program Files\Microsoft Azure Recovery Services Agent\bin\cbengine.exe folyamatként
 * C:\Program Files\Microsoft Azure Recovery Services Agent\ mappák
-* Ideiglenes helyre (Ha nem használja a szokásos helyre)
+* Ideiglenes hely (Ha nem használ a szokásos helyre)
 
 <a id="cause3"></a>
 
-## <a name="cause-backup-agent-running-on-an-azure-virtual-machine"></a>OK: Egy Azure virtuális gépen futó Backup szolgáltatás ügynökének
-Ha a virtuális gép futtatja a biztonsági mentési ügynök, teljesítmény lesz lassabb, mint ha is futtat, a fizikai gépen. Ez egy várható üzenet, IOPS korlátozásai miatt.  A teljesítmény azonban a adatok meghajtókat, amelyek biztonsági mentése folyamatban prémium szintű Azure Storage váltásával is optimalizálhatja. A probléma megoldásán dolgozunk, és a javítás egy későbbi kiadásban elérhető lesz.
+## <a name="cause-backup-agent-running-on-an-azure-virtual-machine"></a>OK: Egy Azure virtuális gépen futó Backup-ügynök
+A Backup szolgáltatás ügynökét a virtuális gép futtatja, ha a teljesítmény lassabb, mint ha is futtat, a fizikai gép lesz. Ez várható IOPS-korlátozások miatt.  Azonban optimalizálhatja a teljesítményt az adatmeghajtók, amely éppen készül biztonsági másolat az Azure Premium Storage között. Dolgozunk a probléma javítása, és a javítás egy későbbi kiadásban elérhető lesz.
 
 <a id="cause4"></a>
 
-## <a name="cause-backing-up-a-large-number-millions-of-files"></a>OK: Biztonsági másolatának fájljait sok (több millió)
-Nagy mennyiségű adat áthelyezését-nál kisebb mennyiségű adat áthelyezését hosszabb ideig tart. Bizonyos esetekben nem csupán az adatokat, hanem a fájlok vagy mappák száma méretétől biztonságimásolat-készítési időpont vezethető vissza. Ez akkor különösen igaz olyan esetben, ha több millió kis fájlt (néhány kilobájtostól néhány bájtok) biztonsági mentése van folyamatban.
+## <a name="cause-backing-up-a-large-number-millions-of-files"></a>OK: Mentésére sok (millió)-fájlok
+Nagy mennyiségű adat áthelyezését-nál kisebb mennyiségű adatot áthelyezése hosszabb ideig tart. Bizonyos esetekben a biztonsági mentés időpontja nem csupán az adatok, hanem a fájlok és mappák száma méretének kapcsolódik. Ez akkor különösen igaz olyankor, amikor a kisméretű fájlok (és a néhány kilobájt néhány bájt) több millió éppen készül biztonsági másolat.
 
-Ez akkor fordul elő, mert az adatok biztonsági mentése és áthelyezni, ha az Azure-ba, amíg Azure egyidejűleg katalogizálni a fájlokat. Bizonyos ritka esetekben a katalógus művelet hosszabb ideig is tarthat.
+Ez az oka, hogy közben az adatok biztonsági mentése és áthelyezi az Azure-ba, Azure egyidejűleg katalogizálni a fájlokat. Egyes ritka esetekben a katalógus műveletet is igénybe vehet a vártnál hosszabb.
 
-A következő mutatók segítségére lehetnek a szűk keresztmetszetek ismertetése, és ennek megfelelően működni a következő lépéseket:
+A következő mutatók segítségével megismerheti a szűk keresztmetszetet, és ennek megfelelően működjön a következő lépéseket:
 
-* **Felhasználói felület folyamatban láthatók az adatátvitel**. A továbbra is adatátvitel. A hálózati sávszélesség vagy adatok mérete okozza késést.
-* **Felhasználói felület nem látható folyamatban van az adatok átvitele**. Nyissa meg a naplók helye: C:\Microsoft Azure Recovery Services Agent\Temp, és ellenőrizze a naplókat a FileProvider::EndData bejegyzést. Ez a bejegyzés azt jelzi, hogy, hogy az adatok átvitele befejeződött, és a katalógus művelet történik. A biztonsági mentési feladat nem szakítható meg. Ehelyett Várjon, amíg már kissé a katalógus művelet befejezéséhez. Ha a probléma továbbra is fennáll, forduljon a [az Azure támogatási](https://portal.azure.com/#create/Microsoft.Support).
+* **Felhasználói felület folyamatban láthatók az adatátvitel**. Az adatok átkerülnek még mindig folyamatban van. A hálózati sávszélességet vagy az adatok mérete, előfordulhat, hogy lehet késedelmet okoz.
+* **Felhasználói felület folyamat nem jelenik a adatátvitel**. Nyissa meg a C:\Program Files\Microsoft Azure Recovery Services Agent\Temp található naplókat, és ellenőrizze a naplókat a FileProvider::EndData bejegyzést. Ez a bejegyzés azt jelzi, hogy, hogy az adatátvitel befejeződött, és a katalógus művelet történik. A biztonsági mentési feladatok ne szakítsa meg. Inkább várja meg, már egy kicsit a katalógus művelet befejeződik. Ha a probléma tartósan fennáll, forduljon a [az Azure-támogatás](https://portal.azure.com/#create/Microsoft.Support).

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/17/2018
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: d087a3d5746396d81ef4ea44d90e917f25ebf19d
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: c79b6f854dc78670a7eb8a1275c3e2fc46fcdd99
+ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45739181"
+ms.lasthandoff: 10/06/2018
+ms.locfileid: "48831687"
 ---
 ### <a name="code-walkthrough"></a>Kód bemutatása
 
@@ -26,7 +26,7 @@ A következő kódrészlet azt mutatja be, hogyan határozta meg a jelentett tul
 - Az eszköz támogatja a módszerek listája.
 - Az eszköz által küldött telemetriai üzeneteket sémája.
 
-[!code-cpp[Define data structures for Chiller](~/iot-samples-c/samples/solutions/remote_monitoring/remote_monitoring.c?name=datadefinition "Define data structures for Chiller")]
+[!code-cpp[Define data structures for Chiller](~/iot-samples-c/samples/solutions/remote_monitoring_client/remote_monitoring.c?name=datadefinition "Define data structures for Chiller")]
 
 A minta tartalmaz egy **serializeToJson** -függvény, amely az adatszerkezetet a Parson könyvtár használatával szerializálja.
 
@@ -39,15 +39,15 @@ A minta több visszahívási függvényekben, amelyek kinyomtatják a konzol inf
 
 A következő kódrészlet azt mutatja be a **device_method_callback** függvény. Ez a függvény meghatározza, hogy a megoldásgyorsító a metódushívásokat fogadásakor végrehajtandó műveletet. A függvény egy hivatkozást kap a **hűtő** adatokat a struktúra a **userContextCallback** paraméter. Értékét **userContextCallback** van beállítva, ha a visszahívási függvény konfigurálva van a **fő** függvény:
 
-[!code-cpp[Device method callback](~/iot-samples-c/samples/solutions/remote_monitoring/remote_monitoring.c?name=devicemethodcallback "Device method callback")]
+[!code-cpp[Device method callback](~/iot-samples-c/samples/solutions/remote_monitoring_client/remote_monitoring.c?name=devicemethodcallback "Device method callback")]
 
 Amikor a megoldásgyorsító meghívja a belső vezérlőprogram frissítési metódusát, a minta a JSON-adattartalom deserializes, és elindítja egy háttérszálból történik, a frissítés befejezéséhez. A következő kódrészlet azt mutatja be a **do_firmware_update** , amely a szál fut:
 
-[!code-cpp[Firmware update thread](~/iot-samples-c/samples/solutions/remote_monitoring/remote_monitoring.c?name=firmwareupdate "Firmware update thread")]
+[!code-cpp[Firmware update thread](~/iot-samples-c/samples/solutions/remote_monitoring_client/remote_monitoring.c?name=firmwareupdate "Firmware update thread")]
 
 A következő kódrészlet azt mutatja be, hogyan az ügyfél a megoldásgyorsító telemetriai üzenetet küld. Az üzenettulajdonságokban szerepel az üzenet séma, a telemetriai adatok megjelenítése az irányítópulton megoldásgyorsító segítségével:
 
-[!code-cpp[Send telemetry](~/iot-samples-c/samples/solutions/remote_monitoring/remote_monitoring.c?name=sendmessage "Send telemetry")]
+[!code-cpp[Send telemetry](~/iot-samples-c/samples/solutions/remote_monitoring_client/remote_monitoring.c?name=sendmessage "Send telemetry")]
 
 A **fő** funkciót a minta:
 
@@ -57,4 +57,4 @@ A **fő** funkciót a minta:
 - Az eszköz metódus visszahívást függvény konfigurálása.
 - A szimulált telemetriai értékeket a megoldásgyorsító küld.
 
-[!code-cpp[Main](~/iot-samples-c/samples/solutions/remote_monitoring/remote_monitoring.c?name=main "Main")]
+[!code-cpp[Main](~/iot-samples-c/samples/solutions/remote_monitoring_client/remote_monitoring.c?name=main "Main")]

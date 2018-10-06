@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 09/17/2018
 ms.author: dobett
-ms.openlocfilehash: add49aaf96190f782d2133e2a5f620a340f05eaf
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: c20b1d5f3a84e950e37a3236272256db620a5985
+ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45733831"
+ms.lasthandoff: 10/06/2018
+ms.locfileid: "48831100"
 ---
 # <a name="connect-your-raspberry-pi-device-to-the-remote-monitoring-solution-accelerator-c"></a>A Raspberry Pi-eszköz csatlakoztatása a távoli figyelési megoldásgyorsító (C)
 
@@ -57,15 +57,15 @@ A következő lépések bemutatják, hogyan készíti elő a Raspberry Pi a C al
 
 ## <a name="view-the-code"></a>A kód megtekintéséhez
 
-A [mintakód](https://github.com/Azure/azure-iot-sdk-c/tree/master/samples/solutions/remote_monitoring) használja a jelen útmutató az Azure IoT C SDK-k GitHub-tárházban érhető el.
+A [mintakód](https://github.com/Azure/azure-iot-sdk-c/tree/master/samples/solutions/remote_monitoring_client) használja a jelen útmutató az Azure IoT C SDK-k GitHub-tárházban érhető el.
 
 ### <a name="download-the-source-code-and-prepare-the-project"></a>Letöltheti a forráskódot, és készítse elő a projekt
 
 A projekt elkészítéséhez Klónozás vagy letöltés a [Azure IoT C SDK-k tárház](https://github.com/Azure/azure-iot-sdk-c) a Githubról.
 
-A mintában található a **samples/megoldások/remote_monitoring** mappát.
+A mintában található a **samples/megoldások/remote_monitoring_client** mappát.
 
-Nyissa meg a **remote_monitoring.c** fájlt a **samples/megoldások/remote_monitoring** mappát egy szövegszerkesztőben.
+Nyissa meg a **remote_monitoring.c** fájlt a **samples/megoldások/remote_monitoring_client** mappát egy szövegszerkesztőben.
 
 [!INCLUDE [iot-accelerators-connecting-code](../../includes/iot-accelerators-connecting-code.md)]
 
@@ -87,7 +87,7 @@ Az alábbi lépések bemutatják, hogyan használható *CMake* ügyfélalkalmaz�
 1. Futtassa az ügyfélalkalmazást és telemetriát küldjön az IoT hubnak:
 
     ```sh
-    ./samples/solutions/remote_monitoring/remote_monitoring_client
+    ./samples/solutions/remote_monitoring_client/remote_monitoring_client
     ```
 
     A konzolon, üzeneteket jelenít meg:
