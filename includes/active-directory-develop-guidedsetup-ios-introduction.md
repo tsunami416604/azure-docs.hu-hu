@@ -6,7 +6,6 @@ documentationcenter: dev-center-name
 author: andretms
 manager: mtillman
 editor: ''
-ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
 ms.service: active-directory
 ms.devlang: na
 ms.topic: include
@@ -15,12 +14,12 @@ ms.workload: identity
 ms.date: 09/19/2018
 ms.author: andret
 ms.custom: include file
-ms.openlocfilehash: 93a1772eba291b5141a0bba4ee9a777feb51ab9e
-ms.sourcegitcommit: 06724c499837ba342c81f4d349ec0ce4f2dfd6d6
+ms.openlocfilehash: 063ca2bbb334c120e285d4b3eac8af00fafa7e5a
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46466170"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48843016"
 ---
 # <a name="call-the-microsoft-graph-api-from-an-ios-application"></a>A Microsoft Graph API meghívása iOS-alkalmazásból
 
@@ -32,9 +31,9 @@ Miután végzett az útmutatóban szereplő gyakorlatok, az alkalmazás meghívh
 - XCode-verzió 10.x a jelen útmutatóban létrehozott minta megadása kötelező. Az XCode letöltheti a [iTunes webhely](https://geo.itunes.apple.com/us/app/xcode/id497799835?mt=12 "XCode letöltési URL-cím").
 - A [Carthage](https://github.com/Carthage/Carthage) Függőségkezelő csomagkezelés szükség.
 
-## <a name="how-this-guide-works"></a>Ez az útmutató működése
+## <a name="how-this-guide-works"></a>Az útmutató működése
 
-![Ez az útmutató működése](media/active-directory-develop-guidedsetup-ios-introduction/iosintro.png)
+![Az útmutató működése](media/active-directory-develop-guidedsetup-ios-introduction/iosintro.png)
 
 Ebben az útmutatóban a mintaalkalmazás lehetővé teszi az IOS-es alkalmazás lekérdezése a Microsoft Graph API vagy a webes API-t, amely az Azure AD v2.0-végpont származó jogkivonatokat fogad el. Ebben a forgatókönyvben egy jogkivonatot a HTTP-kérelmekre szolgáltatással hozzáadott a **engedélyezési** fejléc. Token beszerzése és megújítása a Microsoft hitelesítési tár (MSAL) kezeli.
 
@@ -52,7 +51,7 @@ Az MSAL gyorsítótárazását és hozzáférési jogkivonatok, frissíteni, íg
 
 Ez az útmutató használja a következő könyvtárban:
 
-|Részletes ismertetés|Leírás|
+|Erőforrástár|Leírás|
 |---|---|
 |[MSAL.framework](https://github.com/AzureAD/microsoft-authentication-library-for-objc)|IOS-hez készült Microsoft hitelesítési tár előzetes verzióját|
 

@@ -1,34 +1,56 @@
-
+---
+title: fájl belefoglalása
+description: fájl belefoglalása
+services: active-directory
+documentationcenter: dev-center-name
+author: jmprieur
+manager: mtillman
+editor: ''
+ms.service: active-directory
+ms.devlang: na
+ms.topic: include
+ms.tgt_pltfrm: na
+ms.workload: identity
+ms.date: 09/17/2018
+ms.author: jmprieur
+ms.custom: include file
+ms.openlocfilehash: fb521fc9d4927a953cdd66948101969dfc102de4
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48843626"
+---
 ## <a name="register-your-application"></a>Alkalmazás regisztrálása
-Az alkalmazás az alábbi két módon is regisztrálhat.
+Az alkalmazás két módon regisztrálhatja.
 
 ### <a name="option-1-express-mode"></a>1. lehetőség: Expressz mód
-Az alkalmazás a következőképpen gyorsan regisztrálhatja:
+Az alkalmazás gyorsan regisztrálhatja az alábbiak szerint:
 1. Lépjen a [Microsoft alkalmazásregisztrációs portálra](https://apps.dev.microsoft.com/portal/register-app?appType=mobileAndDesktopApp&appTech=windowsDesktop&step=configure).
 
-2. Válassza ki **hozzáadhat egy alkalmazást**.
+2. Válassza ki **alkalmazás hozzáadása**.
 
-3. Az a **alkalmazásnév** mezőbe írjon be egy nevet az alkalmazásnak.
+3. Az **Alkalmazás neve** mezőben nevezze el az alkalmazását.
 
-4. Győződjön meg arról, hogy a **interaktív telepítés** jelölőnégyzet be kiválasztva, majd jelölje ki **létrehozása**.
+4. Ügyeljen arra, hogy a **interaktív telepítés** kiválasztott, és adja meg a jelölőnégyzet nincs **létrehozás**.
 
-5. Kövesse az utasításokat az beszerzése az Alkalmazásazonosító, és illessze be a kódját.
+5. Kövesse az utasításokat az Alkalmazásazonosító beszerzése, és illessze be a kódot.
 
 ### <a name="option-2-advanced-mode"></a>2. lehetőség: Speciális módban
-Az alkalmazás regisztrálása és az alkalmazás regisztrációs adatokat hozzáadni a megoldás, tegye a következőket:
-1. Ha az alkalmazás már még nem regisztrált, folytassa a [Microsoft alkalmazásregisztrációs portálra](https://apps.dev.microsoft.com/portal/register-app).
+Az alkalmazása regisztrálásához és az alkalmazás regisztrációs információinak a megoldáshoz való hozzáadásához tegye a következőket:
+1. Ha már az alkalmazás még nem regisztrált, lépjen a [Microsoft alkalmazásregisztrációs portálon](https://apps.dev.microsoft.com/portal/register-app).
 
-2. Válassza ki **hozzáadhat egy alkalmazást**.
+2. Válassza ki **alkalmazás hozzáadása**.
 
-3. Az a **alkalmazásnév** mezőbe írjon be egy nevet az alkalmazásnak. 
+3. Az **Alkalmazás neve** mezőben nevezze el az alkalmazását. 
 
-4. Győződjön meg arról, hogy a **interaktív telepítés** jelölőnégyzet nincs bejelölve, és jelölje ki **létrehozása**.
+4. Ügyeljen arra, hogy az **Irányított beállítás** jelölőnégyzet ne legyen bejelölve, majd válassza a **Létrehozás** lehetőséget.
 
-5. Válassza ki **hozzáadása Platform**, jelölje be **natív alkalmazás**, majd válassza ki **mentése**.
+5. Válassza a **Platform hozzáadása**, a **Natív alkalmazás**, majd a **Mentés** lehetőséget.
 
-6. Az a **Alkalmazásazonosító** mezőbe GUID-azonosítóját.
+6. Az a **Alkalmazásazonosító** mezőbe másolja a GUID Azonosítót.
 
-7. Nyissa meg a Visual Studio, nyissa meg a *App.xaml.cs* fájlt, és lecseréli `your_client_id_here` az alkalmazás azonosítójával, amelyet csak regisztrált, és másolja.
+7. Lépjen a Visual Studióban nyissa meg a *App.xaml.cs* fájlt, és cserélje `your_client_id_here` az imént regisztrált és másolt alkalmazás azonosítójával.
 
     ```csharp
     private static string ClientId = "your_application_id_here";

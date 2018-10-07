@@ -1,37 +1,60 @@
+---
+title: fájl belefoglalása
+description: fájl belefoglalása
+services: active-directory
+documentationcenter: dev-center-name
+author: jmprieur
+manager: mtillman
+editor: ''
+ms.service: active-directory
+ms.devlang: na
+ms.topic: include
+ms.tgt_pltfrm: na
+ms.workload: identity
+ms.date: 09/17/2018
+ms.author: jmprieur
+ms.custom: include file
+ms.openlocfilehash: d333f8ecd7e1044575f570d893227f9dcb394974
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48843341"
+---
 ## <a name="test-your-code"></a>Tesztelheti a kódját
 
-Futtatja a projektet a Visual Studio, jelölje be **F5**. Az alkalmazás **MainWindow** jelenik meg, ahogy az itt látható:
+Futtassa a projektet a Visual Studióban, válassza a **F5**. Az alkalmazás **MainWindow** jelenik meg, ahogy az itt látható:
 
 ![Az alkalmazás tesztelése](./media/active-directory-develop-guidedsetup-windesktop-test/samplescreenshot.png)
 
-Először futtassa az alkalmazást, és válassza ki a **Microsoft Graph API hívása** gomb, felszólítást kap a bejelentkezéshez. Használjon egy Azure Active Directory-fiók (munkahelyi vagy iskolai fiókkal) vagy a Microsoft-fiókkal (live.com, outlook.com) tesztelik azt.
+Az első alkalommal futtatja az alkalmazást, és válassza ki a **Microsoft Graph API meghívása** gomb a kéri, jelentkezzen be. Használja az Azure Active Directory-fiókkal (munkahelyi vagy iskolai fiók) vagy Microsoft-fiókkal (live.com, Outlook.com-os) teszteléséhez.
 
 ![Jelentkezzen be az alkalmazás](./media/active-directory-develop-guidedsetup-windesktop-test/signinscreenshot.png)
 
-### <a name="provide-consent-for-application-access"></a>Alkalmazás-hozzáférés hozzájárulás megadása
-Az első alkalommal bejelentkezik az alkalmazás is felszólítja arra, hozzájárul ahhoz, hogy az alkalmazás a profil eléréséhez, és itt látható a bejelentkezés: 
+### <a name="provide-consent-for-application-access"></a>Alkalmazás-hozzáférési hozzájárulás megadása
+Először jelentkezik be az alkalmazás is kéri, adja meg, beleegyezik, hogy az alkalmazás érhető el a profil, és itt látható módon a szolgáltatásba: 
 
 ![Adja meg az Ön hozzájárul az alkalmazás-hozzáférés](./media/active-directory-develop-guidedsetup-windesktop-test/consentscreen.png)
 
-### <a name="view-application-results"></a>Alkalmazás-eredmények megtekintése
-Miután bejelentkezik, a felhasználói profil adatait a Microsoft Graph API-hívás által visszaadott kell megjelennie. Az eredmények jelennek meg a **API-hívási eredmények** mezőbe. A jogkivonat-hívás keresztül megszerzett alapvető információkat `AcquireTokenAsync` vagy `AcquireTokenSilentAsync` megjelennek a a **Token adatait** mezőbe. Az eredmények az alábbi tulajdonságokat tartalmazzák:
+### <a name="view-application-results"></a>Kérelem eredményének megtekintése
+Miután bejelentkezett, megjelenik a profilok adatainak a Microsoft Graph API-hívás által visszaadott. Az eredmények megjelennek a **API-hívási eredmények** mezőbe. Alapvető információkat szeretne a jogkivonatot, amely a hívást keresztül szerezték be `AcquireTokenAsync` vagy `AcquireTokenSilentAsync` meg fognak jelenni a **Tártoken adatainak** mezőbe. Az eredmények az alábbi tulajdonságokat tartalmazzák:
 
 |Tulajdonság  |Formátum  |Leírás |
 |---------|---------|---------|
-|**Name (Név)** |Felhasználó teljes neve |A felhasználó nagyapja vezeték- és keresztneve.|
+|**Name (Név)** |A felhasználó teljes neve |A felhasználó vezetékneve és nevét.|
 |**Felhasználónév** |<span>user@domain.com</span> |A felhasználónév, amely a felhasználó azonosítására szolgál.|
-|**Jogkivonat lejár** |DateTime |Az az idő, amelynél a jogkivonat lejár. MSAL szükség szerint a token megújításával terjeszti ki a lejárati dátum.|
-|**Hozzáférési jogkivonat** |Karakterlánc |A lexikális elem karakterlánca küldött HTTP-kérelmek igénylő egy *Authorization fejlécet*.|
+|**Jogkivonat lejár** |DateTime |Az az időpont, amikor a jogkivonat lejár. Az MSAL szükség szerint a token megújítása kiterjeszti a lejárati dátumot.|
+|**Hozzáférési jogkivonat** |Sztring |A jogkivonat-karakterláncot, amelyet elküld a HTTP-kérelmek, amely esetében egy *engedélyeztetési fejléc*.|
 
 <!--start-collapse-->
-### <a name="more-information-about-scopes-and-delegated-permissions"></a>További információ a hatókörök és delegált jogosultságokkal sikeresen telepítették
+### <a name="more-information-about-scopes-and-delegated-permissions"></a>További információ a hatókörök és delegált engedélyek
 
-A Microsoft Graph API megköveteli a *user.read* hatókörrel, hogy a felhasználói profil olvasása. Minden egyes, amely regisztrálva van az alkalmazásregisztrációs portálra az alkalmazás alapértelmezés szerint automatikusan megjelenik az ebben a hatókörben. Más Microsoft Graph API-k, valamint a egyéni API-k, a háttér-kiszolgáló további hatókörökkel lehet szükség. A Microsoft Graph API megköveteli a *Calendars.Read* hatókörrel, hogy a felhasználók naptáraiban lévő listából.
+A Microsoft Graph API megköveteli a *user.read* hatókörrel, hogy a felhasználói profil olvasása. Minden alkalmazás, amely regisztrálva van az alkalmazásregisztrációs portálon alapértelmezés szerint automatikusan megjelenik az ebben a hatókörben. Egyéb Microsoft Graph API-k, valamint a egyéni API-k, a háttér-kiszolgáló további hatókörökkel lehet szükség. A Microsoft Graph API megköveteli a *Calendars.Read* hatókörrel, hogy a felhasználók naptáraiban listázása.
 
-A felhasználók naptáraiban a környezetben, az alkalmazások eléréséhez vegye fel a *Calendars.Read* jogosultságot a az alkalmazás regisztrációs adatait. Adja hozzá a *Calendars.Read* a hatókör a `acquireTokenSilent` hívható meg. 
+A felhasználók naptáraiban keretén belül egy alkalmazás eléréséhez, adja hozzá a *Calendars.Read* delegált engedéllyel az alkalmazás regisztrációs adatok. Adja hozzá a *Calendars.Read* a hatókört a `acquireTokenSilent` hívja. 
 
 >[!NOTE]
->A felhasználó kérheti további hozzájárulásokat azoktól a hatókörök számának növelésével.
+>A felhasználó további címtárbérlőhöz hatókörök számának növelésével kérheti.
 
 <!--end-collapse-->
 

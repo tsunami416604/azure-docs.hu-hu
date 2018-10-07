@@ -6,7 +6,6 @@ documentationcenter: dev-center-name
 author: navyasric
 manager: mtillman
 editor: ''
-ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
 ms.service: active-directory
 ms.devlang: na
 ms.topic: include
@@ -15,12 +14,12 @@ ms.workload: identity
 ms.date: 09/17/2018
 ms.author: nacanuma
 ms.custom: include file
-ms.openlocfilehash: be8ffeae1977fb2f56e0f85a716d982a6d2f84dc
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.openlocfilehash: 77400453e455ff2ebf20f59f888a3e3d641bcf07
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47060710"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48843621"
 ---
 ## <a name="use-the-microsoft-authentication-library-msal-to-sign-in-the-user"></a>A Microsoft-hitelesítési tár (MSAL) segítségével a felhasználók bejelentkeztetése
 
@@ -132,16 +131,16 @@ Miután egy felhasználó rákattint a *"Bejelentkezés"* gomb az első alkalomm
 
 Az ez által generált SPA hívások útmutató `acquireTokenSilent` és/vagy `acquireTokenPopup` beszerezni egy *hozzáférési jogkivonat* kérdezhetők le a Microsoft Graph API a felhasználói profil adatait. Ha egy mintát, amely ellenőrzi az azonosító jogkivonat, vessen egy pillantást [ez](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi-v2 "active-directory-javascript-singlepageapp-dotnet-webapi-v2 Github-minta") mintaalkalmazás github – a mintát használja egy ASP .NET webes API a jogkivonat érvényesítésére.
 
-#### <a name="getting-a-user-token-interactively"></a>A felhasználó interaktív jogkivonat beolvasása
+#### <a name="getting-a-user-token-interactively"></a>Felhasználói jogkivonat interaktív lekérése
 
 Az első bejelentkezés után, nem szeretné, hogy kérje meg a felhasználók számára, hogy hitelesítse magát újra, minden alkalommal, amikor szükségük van egy erőforrás – így eléréséhez egy jogkivonat kérelmezéséhez *acquireTokenSilent* használandó a legtöbbször szerzi be a jogkivonatokat. Vannak helyzetek, de ilyen például, hogy szeretne-e kommunikálni az Azure Active Directory v2 végpontot – a felhasználókat:
-- Felhasználók előfordulhat, hogy meg kell adnia a hitelesítő adataikat, mert lejárt a jelszava
-- Az alkalmazás, amely a felhasználónak van szüksége, hogy engedélyt adjanak az erőforrásokhoz való hozzáférést
-- Kéttényezős hitelesítés megadása kötelező
+- Lehet, hogy a felhasználóknak újból meg kell adniuk a hitelesítési adataikat, mert a jelszó lejárt
+- Az alkalmazás olyan erőforráshoz kér hozzáférést, amelyhez szükséges a felhasználó hozzájárulása
+- Kétfaktoros hitelesítésre van szükség
 
 Hívása a *acquireTokenPopup(scope)* egy előugró ablak eredményez (vagy *acquireTokenRedirect(scope)* felhasználók átirányítása az Azure Active Directory v2 végpontot eredményezi), a felhasználóknak kell megerősíti a hitelesítő adataikat, engedélyezi a hogy a szükséges erőforrás vagy a kéttényezős hitelesítés elvégzése kommunikálhatnak egymással.
 
-#### <a name="getting-a-user-token-silently"></a>A felhasználói token első beavatkozás nélkül
+#### <a name="getting-a-user-token-silently"></a>Felhasználói jogkivonat csendes beszerzése
 A ` acquireTokenSilent` metódus kezeli a token beszerzését és -megújítás, felhasználói beavatkozás nélkül. Miután `loginPopup` (vagy `loginRedirect`) hajtja végre az első alkalommal `acquireTokenSilent` hívások kérelem vagy token megújítása csendes módban végzett hívások – a védett erőforrások eléréséhez használt tokenek beszerzése érdekében a gyakran használt módszer.
 `acquireTokenSilent` sikertelen lehet, hogy bizonyos esetekben – például a felhasználó jelszava lejárt. Az alkalmazás ehhez a kivételhez, két módon tudják kezelni:
 

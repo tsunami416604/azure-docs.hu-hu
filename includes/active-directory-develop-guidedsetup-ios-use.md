@@ -6,7 +6,6 @@ documentationcenter: dev-center-name
 author: andretms
 manager: mtillman
 editor: ''
-ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
 ms.service: active-directory
 ms.devlang: na
 ms.topic: include
@@ -15,12 +14,12 @@ ms.workload: identity
 ms.date: 09/19/2018
 ms.author: andret
 ms.custom: include file
-ms.openlocfilehash: c6d5fab6ff065dee336c510e3f94583cb0c4960b
-ms.sourcegitcommit: 06724c499837ba342c81f4d349ec0ce4f2dfd6d6
+ms.openlocfilehash: 248f2575e284ae456578b071013e1a5501329116
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46466179"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48843354"
 ---
 ## <a name="use-the-microsoft-authentication-library-msal-to-get-a-token-for-the-microsoft-graph-api"></a>A Microsoft-hitelesítési tár (MSAL) használatával egy token beszerzése a Microsoft Graph API-hoz
 
@@ -205,10 +204,10 @@ class ViewController: UIViewController, UITextFieldDelegate, URLSessionDelegate 
 
 <!--start-collapse-->
 ### <a name="more-information"></a>További információ
-#### <a name="getting-a-user-token-interactively"></a>A felhasználó interaktív jogkivonat beolvasása
+#### <a name="getting-a-user-token-interactively"></a>Felhasználói jogkivonat interaktív lekérése
 Hívása a `acquireToken` módszer eredményezi egy kéri a felhasználót, hogy jelentkezzen be a böngészőablakot. Az alkalmazásoknak általában egy felhasználó először egy védett erőforrás eléréséhez szükséges interaktív bejelentkezéshez, vagy ha egy figyelő művelet beszerezni egy token sikertelen (például a felhasználó jelszava lejárt).
 
-#### <a name="getting-a-user-token-silently"></a>A felhasználói token első beavatkozás nélkül
+#### <a name="getting-a-user-token-silently"></a>Felhasználói jogkivonat csendes beszerzése
 A `acquireTokenSilent` metódus kezeli a token beszerzését és -megújítás, felhasználói beavatkozás nélkül. Miután `acquireToken` hajtja végre az első alkalommal `acquireTokenSilent` hívások kérelem vagy token megújítása csendes módban végzett hívások – a védett erőforrások eléréséhez használt tokenek beszerzése érdekében a gyakran használt módszer.
 
 Végül `acquireTokenSilent` sikertelen lesz, – például a felhasználó kijelentkeztetése rendelkezik, vagy megváltoztatta a jelszavát egy másik eszközön. Ha az MSAL észleli, hogy a probléma megoldhatók egy interaktív intézkedést kér, akkor aktiválódik egy `MSALErrorCode.interactionRequired` kivétel. Az alkalmazás ehhez a kivételhez, két módon tudják kezelni:

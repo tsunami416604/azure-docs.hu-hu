@@ -6,7 +6,6 @@ documentationcenter: dev-center-name
 author: andretms
 manager: mtillman
 editor: ''
-ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
 ms.service: active-directory
 ms.devlang: na
 ms.topic: include
@@ -15,18 +14,18 @@ ms.workload: identity
 ms.date: 09/13/2018
 ms.author: andret
 ms.custom: include file
-ms.openlocfilehash: f0e584a4a4a54fc04b5539b56d5c901bfaa42bcc
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 6e20ce083c415bced22231835cc616ede8f0dd04
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46293760"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48843034"
 ---
 ## <a name="register-your-application"></a>Alkalmazás regisztrálása
 Két módon regisztrálhatja alkalmazását, a következő két szakasz leírtak szerint.
 
 ### <a name="option-1-express"></a>1. lehetőség: expressz
-1. Nyissa meg a [Microsoft alkalmazásregisztrációs portálon](https://apps.dev.microsoft.com/portal/register-app?appType=mobileAndDesktopApp&appTech=android&step=configure).
+1. Lépjen a [Microsoft alkalmazásregisztrációs portálra](https://apps.dev.microsoft.com/portal/register-app?appType=mobileAndDesktopApp&appTech=android&step=configure).
 2.  A **alkalmazásnév**, adjon meg egy nevet az alkalmazásnak.
 
 3. Ügyeljen arra, hogy a **interaktív telepítés** kiválasztott, és adja meg a jelölőnégyzet nincs **létrehozás**.
@@ -34,12 +33,12 @@ Két módon regisztrálhatja alkalmazását, a következő két szakasz leírtak
 4. Kövesse az utasításokat az Alkalmazásazonosító beszerzése, és illessze be a kódot.
 
 ### <a name="option-2-advanced"></a>2. lehetőség: speciális 
-1. Nyissa meg a [Microsoft alkalmazásregisztrációs portálon](https://apps.dev.microsoft.com/portal/register-app).
-2. Az a **alkalmazásnév** mezőbe írjon be egy nevet az alkalmazásnak. 
+1. Lépjen a [Microsoft alkalmazásregisztrációs portálra](https://apps.dev.microsoft.com/portal/register-app).
+2. Az **Alkalmazás neve** mezőben nevezze el az alkalmazását. 
 
-3. Ügyeljen arra, hogy a **interaktív telepítés** üres, és adja meg a jelölőnégyzet nincs **létrehozás**.
+3. Ügyeljen arra, hogy az **Irányított beállítás** jelölőnégyzet ne legyen bejelölve, majd válassza a **Létrehozás** lehetőséget.
 
-4. Válassza ki **Platform hozzáadása**válassza **natív alkalmazás**, majd válassza ki **mentése**.
+4. Válassza a **Platform hozzáadása**, a **Natív alkalmazás**, majd a **Mentés** lehetőséget.
 
 5. A **alkalmazás** > **java** > **{gazdagép}. { névtér}**, nyissa meg `MainActivity`. 
 

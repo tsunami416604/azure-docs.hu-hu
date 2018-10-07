@@ -2,36 +2,42 @@
 title: fájl belefoglalása
 description: fájl belefoglalása
 services: active-directory
+documentationcenter: dev-center-name
 author: andretms
+manager: mtillman
+editor: ''
 ms.service: active-directory
+ms.devlang: na
 ms.topic: include
-ms.date: 05/08/2018
+ms.tgt_pltfrm: na
+ms.workload: identity
+ms.date: 09/17/2018
 ms.author: andret
 ms.custom: include file
-ms.openlocfilehash: 9c7daf7bc947b08835148f6d09c58b47c9e0186b
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 99eabd8f9c9b3ab86c348350e8924cea0eb668ba
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "36204920"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48843575"
 ---
 ## <a name="set-up-your-project"></a>A projekt beállítása
 
-Ez a szakasz ismerteti a lépéseket, telepítését és konfigurálását a hitelesítési folyamatot OWIN köztes keresztül egy ASP.NET-projekt OpenID Connect használatával. 
+Ez a szakasz bemutatja a lépéseket, telepítése és konfigurálása a hitelesítési folyamat keresztül OWIN közbenső szoftvert az OpenID Connect hitelesítést használó ASP.NET-projekt. 
 
-> Ez a minta Visual Studio-projekt letöltése helyette inkább? [Töltse le a projekt](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIDConnect-DotNet/archive/master.zip) és ugorjon a [konfigurációs lépés](#register-your-application) konfigurálása a kódminta végrehajtása előtt.
+> Töltse le ezt a mintát a Visual Studio-projekt ehelyett inkább? [Töltse le a projekt](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIDConnect-DotNet/archive/master.zip) , és ugorjon a [konfigurációs lépés](#register-your-application) konfigurálása a kódminta végrehajtása előtt.
 
 ### <a name="create-your-aspnet-project"></a>Az ASP.NET-projekt létrehozása
 
-1. A Visual Studio: `File` > `New` > `Project`
-2. A *Visual C# \Web*, jelölje be `ASP.NET Web Application (.NET Framework)`.
-3. Az alkalmazás neve, és kattintson a *OK*
-4. Válassza ki `Empty` hozzáadása jelölőnégyzet bejelölésével és `MVC` hivatkozások
+1. A Visual Studióban: `File` > `New` > `Project`
+2. A *Visual C# \Web*válassza `ASP.NET Web Application (.NET Framework)`.
+3. Adjon nevet az alkalmazásnak, és kattintson a *OK*
+4. Válassza ki `Empty` , és adja hozzá a jelölőnégyzet bejelölésével `MVC` referenciák
 
-## <a name="add-authentication-components"></a>Hitelesítés-összetevők hozzáadása
+## <a name="add-authentication-components"></a>Adja hozzá a hitelesítés összetevői
 
-1. A Visual Studio: `Tools` > `Nuget Package Manager` > `Package Manager Console`
-2. Adja hozzá *OWIN köztes NuGet-csomagok* , a Package Manager Console ablakban írja be a következő:
+1. A Visual Studióban: `Tools` > `Nuget Package Manager` > `Package Manager Console`
+2. Az *OWIN közbenső szoftver NuGet-csomagokat* hozzáadásához írja az alábbiakat a Package Manager Console (Csomagkezelő konzol) ablakba:
 
     ```powershell
     Install-Package Microsoft.Owin.Security.OpenIdConnect
@@ -40,21 +46,21 @@ Ez a szakasz ismerteti a lépéseket, telepítését és konfigurálását a hit
     ```
 
 <!--start-collapse-->
-> ### <a name="about-these-libraries"></a>Ezek a kódtárak kapcsolatos
->A fenti könyvtárak engedélyezése az egyszeri bejelentkezés (SSO) használata az OpenID Connect cookie-alapú hitelesítéssel. Miután a hitelesítés végbemegy, és a felhasználó jelképező jogkivonatot kap az alkalmazáshoz, OWIN köztes egy munkamenetcookie-t hoz létre. A böngésző a felhasználónak nem kell újra a jelszót, és nincs további ellenőrzés van szükség, majd használja a cookie későbbi kérelmeket.
+> ### <a name="about-these-libraries"></a>Ezeket a kódtárakat
+>A fenti kódtárak engedélyezik az egyszeri bejelentkezést (SSO) az OpenID Connecttel, cookie-alapú hitelesítés használatával. Ha befejeződött a hitelesítés, és a rendszer elküldte a felhasználóhoz tartozó jogkivonatot az alkalmazásnak, az OWIN közbenső szoftver létrehoz egy munkameneti cookie-t. A böngésző majd használja a cookie-k további kérések így a felhasználóknak nem kell újra a jelszót, és nincs további ellenőrzés van szükség.
 <!--end-collapse-->
 
-## <a name="configure-the-authentication-pipeline"></a>A hitelesítési folyamatot konfigurálása
-Az alábbi lépéseket egy OWIN indítási osztály konfigurálása az OpenID Connect hitelesítési köztes létrehozásához használt. Ez az osztály a lesz automatikusan végre, amikor az IIS-folyamat elindul.
+## <a name="configure-the-authentication-pipeline"></a>A hitelesítési folyamat konfigurálásához
+Az alábbi lépések segítségével hozzon létre egy OWIN indítási osztályt OpenID Connect-hitelesítés konfigurálása közbenső szoftvert. Ez az osztály a lesz automatikusan végrehajtva, amikor az IIS-folyamat elindul.
 
 > [!TIP]
-> Ha a projekt nem rendelkezik egy `Startup.cs` fájl a gyökérmappában található:
-> 1. Kattintson a jobb gombbal a projekt gyökérmappához: > `Add` > `New Item...` > `OWIN Startup class`<br/>
-> 2. Nevezze el `Startup.cs`
+> Ha a projekt gyökérmappája nem tartalmazza a `Startup.cs` fájlt:
+> 1. Kattintson a jobb gombbal a projektmappa gyökérkönyvtárába a: > `Add` > `New Item...` > `OWIN Startup class`<br/>
+> 2. Adja neki a `Startup.cs` nevet
 >
->> Győződjön meg arról, hogy a kiválasztott osztály egy OWIN indítási osztályt és a nem szabványos C#-osztály. Ellenőrizheti, ha ellenőrzésével `[assembly: OwinStartup(typeof({NameSpace}.Startup))]` fent a névteret.
+>> Győződjön meg arról, hogy a kiválasztott osztály egy OWIN indítási osztály, és nem egy szabványos C#-osztály. Ehhez ellenőrizze, hogy látja-e a következőt a névtér fölött: `[assembly: OwinStartup(typeof({NameSpace}.Startup))]`.
 
-1. Adja hozzá *OWIN* és *Microsoft.IdentityModel* hivatkozása `Startup.cs`:
+1. Adjon hozzá *OWIN* és *Microsoft.IdentityModel* való hivatkozások `Startup.cs`:
 
     ```csharp
     using Microsoft.Owin;
@@ -67,7 +73,7 @@ Az alábbi lépéseket egy OWIN indítási osztály konfigurálása az OpenID Co
     using Microsoft.Owin.Security.Notifications;
     ```
 
-2. Indítási osztály cserélje le az alábbi kódot:
+2. Indítási osztályt cserélje le az alábbi kódot:
 
     ```csharp
     public class Startup
@@ -137,6 +143,6 @@ Az alábbi lépéseket egy OWIN indítási osztály konfigurálása az OpenID Co
 
 <!--start-collapse-->
 > ### <a name="more-information"></a>További információ
-> Megadja a paraméterek *OpenIDConnectAuthenticationOptions* kommunikálni az Azure AD alkalmazás-koordináták szolgálnak. Az OpenID Connect köztes cookie-kat használ, a háttérben, mert akkor is be kell állítania cookie-hitelesítés, a fent látható kódot. A *ValidateIssuer* értéke közli OpenIdConnect úgy nem korlátozza a hozzáférést egy adott szervezet számára.
+> Az *OpenIDConnectAuthenticationOptions* alatt megadott paraméterek koordinátaként szolgálnak az alkalmazás számára az Azure AD-vel való kommunikációhoz. Az OpenID Connect közbenső szoftvert használ cookie-kat a háttérben, mert azt is be kell állítania hitelesítési cookie-k a fent látható kóddal. A *ValidateIssuer* értéke arra utasítja az OpenIdConnectet, hogy ne korlátozza a hozzáférést egy adott szervezetre.
 <!--end-collapse-->
 

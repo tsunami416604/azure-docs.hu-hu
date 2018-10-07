@@ -6,7 +6,6 @@ documentationcenter: dev-center-name
 author: andretms
 manager: mtillman
 editor: ''
-ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
 ms.service: active-directory
 ms.devlang: na
 ms.topic: include
@@ -15,12 +14,12 @@ ms.workload: identity
 ms.date: 09/13/2018
 ms.author: andret
 ms.custom: include file
-ms.openlocfilehash: cf6ded1252528a0bbfac9c7378f03384cc484c50
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 9d512af7fdd68ec3356b427429144ec9195fd95b
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46293781"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48843084"
 ---
 ## <a name="use-msal-to-get-a-token"></a>Egy token beszerzéséhez az MSAL használatával 
 
@@ -242,10 +241,10 @@ ms.locfileid: "46293781"
 
 <!--start-collapse-->
 ### <a name="more-information"></a>További információ
-#### <a name="get-a-user-token-interactively"></a>A felhasználó interaktív token beszerzése
+#### <a name="get-a-user-token-interactively"></a>Felhasználói jogkivonat interaktív lekérése
 Hívása a `AcquireTokenAsync` metódus elindít egy ablak, amely felkéri a felhasználót a bejelentkezéshez, vagy válassza ki azt a fiókot. Alkalmazások általában kell kérnie a felhasználót a kezdeti interakciónak, de működhet csendesen ettől a. 
 
-#### <a name="get-a-user-token-silently"></a>A felhasználói beavatkozás nélkül token beszerzése
+#### <a name="get-a-user-token-silently"></a>Felhasználói jogkivonat csendes beszerzése
 A `AcquireTokenSilentAsync` metódus, kér le egy tokent, felhasználói beavatkozás nélkül.  `AcquireTokenSilentAsync` a legjobb kéréseket, és a egy tartalék is kell kezelni `AcquireTokenAsync` amikor a felhasználónak van szüksége, jelentkezzen be újra, vagy néhány további engedélyt, például a többtényezős hitelesítési lehetőségek 
 
 Amikor `AcquireTokenSilentAsync` sikertelen, hozza létre a `MsalUiRequiredException`. Az alkalmazás ehhez a kivételhez, két módon tudják kezelni:

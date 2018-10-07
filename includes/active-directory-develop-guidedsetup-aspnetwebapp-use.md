@@ -6,7 +6,6 @@ documentationcenter: dev-center-name
 author: andretms
 manager: mtillman
 editor: ''
-ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
 ms.service: active-directory
 ms.devlang: na
 ms.topic: include
@@ -15,22 +14,22 @@ ms.workload: identity
 ms.date: 04/19/2018
 ms.author: andret
 ms.custom: include file
-ms.openlocfilehash: 98bb86be1e1d0dccb5a76b91489e664ee4a30765
-ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
+ms.openlocfilehash: 167fccd8e0546bc8f5ac1b24489cae68cc14191f
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36943589"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48843235"
 ---
-## <a name="add-a-controller-to-handle-sign-in-and-sign-out-requests"></a>Be- és kijelentkezési kérések kezelésére vezérlő hozzáadása
+## <a name="add-a-controller-to-handle-sign-in-and-sign-out-requests"></a>Bejelentkezési és kijelentkezési kérések kezelésére vezérlő hozzáadása
 
-Ez a lépés bemutatja, hogyan hozzon létre egy új tartományvezérlő teszi közzé a bejelentkezési és kijelentkezési metódusokat.
+Ez a lépés bemutatja, hogyan hozhat létre egy új vezérlőt elérhetővé a bejelentkezési és kijelentkezési metódusokat.
 
-1.  Kattintson a jobb gombbal a `Controllers` mappára, és válassza `Add` > `Controller`
+1.  Kattintson a jobb gombbal a `Controllers` mappát, és válassza ki `Add` > `Controller`
 2.  Válassza a(z) `MVC (.NET version) Controller – Empty` lehetőséget.
 3.  Kattintson a *hozzáadása*
 4.  Nevezze el `HomeController` kattintson *hozzáadása*
-5.  Adja hozzá *OWIN* osztály mutató hivatkozásokat:
+5.  Adjon hozzá *OWIN* az osztályra hivatkozik:
 
     ```csharp
     using Microsoft.Owin.Security;
@@ -38,7 +37,7 @@ Ez a lépés bemutatja, hogyan hozzon létre egy új tartományvezérlő teszi k
     using Microsoft.Owin.Security.OpenIdConnect;
     ```
     
-6. A tartományvezérlő egy hitelesítési kérdés kód lekérhetik a két módszer bejelentkezési kezeléséhez az alábbi és kijelentkezési hozzáadása:
+6. Adja hozzá a két módszer kezeléséhez jelentkezzen be az alábbi és kijelentkezési a tartományvezérlőre, amely kezdeményezi egy hitelesítési ellenőrző kód használatával:
     
     ```csharp
     /// <summary>
@@ -66,13 +65,13 @@ Ez a lépés bemutatja, hogyan hozzon létre egy új tartományvezérlő teszi k
     }
     ```
 
-## <a name="create-the-apps-home-page-to-sign-in-users-via-a-sign-in-button"></a>Az alkalmazás kezdőlapját jelentkezzen be a bejelentkezési gomb felhasználókat létrehozása
+## <a name="create-the-apps-home-page-to-sign-in-users-via-a-sign-in-button"></a>Hozzon létre a felhasználók keresztül egy bejelentkezés gombot az alkalmazás kezdőlapja
 
-A Visual Studio vegye fel a Bejelentkezés gombra, és megjeleníti a felhasználói adatok hitelesítés után új nézet létrehozása:
+A Visual Studióban hozzon létre egy új nézetet a bejelentkezés gomb hozzáadásához és a felhasználói adatok hitelesítés utáni megjelenítéséhez:
 
-1.  Kattintson a jobb gombbal a `Views\Home` mappára, és válassza `Add View`
+1.  Kattintson a jobb gombbal a `Views\Home` mappát, és válassza ki `Add View`
 2.  Nevezze el a következőképpen: `Index`.
-3.  A következő HTML, amely tartalmazza a Bejelentkezés gombra, adja hozzá a fájlhoz:
+3.  Adja hozzá a fájlhoz a következő, bejelentkezés gombot tartalmazó HTML-kódot:
 
     ```html
     <html>
@@ -114,17 +113,17 @@ A Visual Studio vegye fel a Bejelentkezés gombra, és megjeleníti a felhaszná
 
 <!--start-collapse-->
 > ### <a name="more-information"></a>További információ
-> Ezen a lapon egy fekete háttérrel SVG-formátumban ad hozzá a Bejelentkezés gombra:<br/>![Jelentkezzen be Microsoft](media/active-directory-develop-guidedsetup-aspnetwebapp-use/aspnetsigninbuttonsample.png)<br/> Több bejelentkezési gomb, előbb lépjen a [ezen a lapon](https://docs.microsoft.com/azure/active-directory/develop/active-directory-branding-guidelines "irányelvek Branding").
+> Ezen a lapon fekete háttérrel SVG-formátumban ad hozzá egy bejelentkezés gombot:<br/>![Bejelentkezés Microsoft-fiókkal](media/active-directory-develop-guidedsetup-aspnetwebapp-use/aspnetsigninbuttonsample.png)<br/> További bejelentkezési gombok, nyissa meg a [ezt oldal](https://docs.microsoft.com/azure/active-directory/develop/active-directory-branding-guidelines "védjegyzési útmutató").
 <!--end-collapse-->
 
-## <a name="add-a-controller-to-display-users-claims"></a>Felhasználói jogcímek megjelenítendő vezérlő hozzáadása
-Ebben a vezérlőben a használatát mutatja be a `[Authorize]` attribútum egy tartományvezérlőre védelméhez. Ez az attribútum korlátozza a hozzáférést a vezérlő csak a hitelesített felhasználók lehetővé. Az alábbi kódot alkalmazza az attribútum részeként a bejelentkezés felhasználói jogcímeket lekérése megjelenítéséhez.
+## <a name="add-a-controller-to-display-users-claims"></a>Felhasználói jogcímek megjeleníthető vezérlő hozzáadása
+Ez a vezérlő bemutatja, hogy hogyan védheti meg a vezérlőt az `[Authorize]` attribútummal. Ez az attribútum oly módon korlátozza a hozzáférést, hogy csak a hitelesített felhasználókat engedi hozzáférni a vezérlőhöz. Az alábbi kódot használ az attribútum megjelenítendő felhasználói jogcímeket, amelyek lekérni a bejelentkezés során.
 
-1.  Kattintson a jobb gombbal a `Controllers` mappába: `Add` > `Controller`
+1.  Kattintson a jobb gombbal a `Controllers` mappa: `Add` > `Controller`
 2.  Válassza a(z) `MVC {version} Controller – Empty` lehetőséget.
 3.  Kattintson a *hozzáadása*
-4.  Nevezze el `ClaimsController`
-5.  Cserélje le a vezérlő osztályhoz tartozó kódot - Ez a gyorsjavítás a `[Authorize]` attribútumot az osztályra:
+4.  Adja neki a `ClaimsController` nevet
+5.  Cserélje le a kódot a vezérlő osztályhoz az alábbi - kód Ez hozzáadja a `[Authorize]` attribútumot az osztályra:
 
     ```csharp
     [Authorize]
@@ -157,16 +156,16 @@ Ebben a vezérlőben a használatát mutatja be a `[Authorize]` attribútum egy 
 
 <!--start-collapse-->
 > ### <a name="more-information"></a>További információ
-> Használata miatt a `[Authorize]` csak akkor hajtható végre attribútum, a tartományvezérlő minden módszert, ha a felhasználó hitelesítése. Ha a felhasználó nincs hitelesítve, és megpróbál hozzáférni a tartományvezérlő, OWIN egy hitelesítési kérdés kezdeményezése, és hitelesíteni a felhasználót. A fenti kódot ellenőrzi, hogy az adott felhasználói attribútumok a felhasználói azonosítót jogkivonatban foglalt jogcímek listája. Ezek az attribútumok közé tartozik a felhasználó teljes neve és a felhasználónév, valamint a globális felhasználói azonosító tulajdonos. Is tartalmaz, a *Bérlőazonosító*, amely jelenti, hogy a szervezet a felhasználói Azonosítóját. 
+> Az `[Authorize]` attribútum használata miatt a vezérlő metódusait csak akkor lehet végrehajtani, ha a felhasználó hitelesítve van. Ha a felhasználó nincs hitelesítve, és megpróbál hozzáférni a vezérlő, OWIN kezdeményezzen egy hitelesítési kérdés, és hitelesíti a felhasználót. A fenti kód megvizsgálja az adott felhasználói attribútumok a felhasználói azonosító jogkivonat szerepel a jogcímek listája. Ilyen attribútum például a felhasználó teljes neve és felhasználóneve, valamint a globális felhasználóazonosító tárgya. Emellett tartalmazza a *bérlőazonosítót* is, amely a felhasználó szervezetének azonosítóját jelöli. 
 <!--end-collapse-->
 
-## <a name="create-a-view-to-display-the-users-claims"></a>A felhasználói jogcímek megjelenítendő nézet létrehozása
+## <a name="create-a-view-to-display-the-users-claims"></a>A felhasználói jogcímek megjeleníthető nézet létrehozása
 
-A Visual Studio a felhasználói jogcímek megjelenő weblap új nézet létrehozása:
+A Visual Studióban hozzon létre egy új nézetet a felhasználói jogcímek weboldalon való megjelenítéséhez:
 
-1.  Kattintson a jobb gombbal a `Views\Claims` mappa és: `Add View`
+1.  Kattintson a jobb gombbal a `Views\Claims` mappát és: `Add View`
 2.  Nevezze el a következőképpen: `Index`.
-3.  Adja hozzá a fájlhoz a következő HTML-KÓDBAN:
+3.  Adja hozzá a következő HTML-kódot a fájlhoz:
 
     ```html
     <html>

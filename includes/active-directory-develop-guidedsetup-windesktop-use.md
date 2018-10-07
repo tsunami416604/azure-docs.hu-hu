@@ -3,24 +3,23 @@ title: fájl belefoglalása
 description: fájl belefoglalása
 services: active-directory
 documentationcenter: dev-center-name
-author: andretms
+author: jmprieur
 manager: mtillman
 editor: ''
-ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
 ms.service: active-directory
 ms.devlang: na
 ms.topic: include
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/18/2018
-ms.author: andret
+ms.date: 09/17/2018
+ms.author: jmprieur
 ms.custom: include file
-ms.openlocfilehash: d4ba15e4ad46044c04c242c8805af9f320e95150
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: 538b0c969d8c039079c09232e06f55e24aabf393
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46368450"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48843286"
 ---
 ## <a name="use-msal-to-get-a-token-for-the-microsoft-graph-api"></a>Használható az MSAL egy token beszerzése a Microsoft Graph API-hoz
 
@@ -98,11 +97,11 @@ Ebben a szakaszban Ön használható az MSAL egy token beszerzése a Microsoft G
 <!--start-collapse-->
 ### <a name="more-information"></a>További információ
 
-#### <a name="get-a-user-token-interactively"></a>A felhasználó interaktív token beszerzése
+#### <a name="get-a-user-token-interactively"></a>Felhasználói jogkivonat interaktív lekérése
 
 Hívása a `AcquireTokenAsync` módszer eredményezi egy ablak, amely felkéri a felhasználót, hogy jelentkezzen be. Alkalmazások általában felhasználóktól interaktívan jelentkezik be először egy védett erőforrás eléréséhez szükséges. Akkor is előfordulhat, hogy kell bejelentkezni, amikor egy token beszerzéséhez a beavatkozás nélküli művelet sikertelen (például, ha a felhasználó jelszava lejárt).
 
-#### <a name="get-a-user-token-silently"></a>A felhasználói beavatkozás nélkül token beszerzése
+#### <a name="get-a-user-token-silently"></a>Felhasználói jogkivonat csendes beszerzése
 
 A `AcquireTokenSilentAsync` metódus kezeli a token beszerzését és a megújítások felhasználói beavatkozás nélkül. Miután `AcquireTokenAsync` hajtja végre az első alkalommal `AcquireTokenSilentAsync` a szokásos módszer használatával szerezze be a jogkivonatokat, amelyeket a későbbi hívások, védett erőforrások eléréséhez, mert kérelem vagy token megújítása hívások beavatkozás nélkül.
 

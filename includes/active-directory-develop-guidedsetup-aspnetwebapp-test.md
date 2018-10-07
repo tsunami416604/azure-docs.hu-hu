@@ -6,7 +6,6 @@ documentationcenter: dev-center-name
 author: andretms
 manager: mtillman
 editor: ''
-ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
 ms.service: active-directory
 ms.devlang: na
 ms.topic: include
@@ -15,80 +14,80 @@ ms.workload: identity
 ms.date: 04/19/2018
 ms.author: andret
 ms.custom: include file
-ms.openlocfilehash: bfdc89d9bc5d5a07c04e857c1a46e4b988c125ab
-ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
+ms.openlocfilehash: 3a141bcde75872f2384aedf982ffef5cba9666a3
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36943555"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48843514"
 ---
 ## <a name="test-your-code"></a>Tesztelheti a kódját
 
-A Visual Studióban az alkalmazás teszteléséhez nyomja le az **F5** a projekt futtatásához. A böngésző megnyitja a http://<span></span>localhost: {port} helyre, és tekintse meg a **jelentkezzen be Microsoft** gombra. Kattintson a gombra, majd indítsa el a bejelentkezési folyamat.
+Az alkalmazás tesztelése a Visual Studióban, nyomja le a **F5** , futtassa a projektet. A böngésző megnyitja a http://<span></span>localhost: {port} helyen, és tekintse meg a **Bejelentkezés Microsoft-fiókkal** gombra. Válassza ki a gombra kattintva indítsa el a bejelentkezési folyamatot.
 
-Ha készen a teszt futtatása, használja a Microsoft Azure Active Directory (Azure AD-) fiók (munkahelyi vagy iskolai fiókkal) vagy személyes Microsoft-fiókkal (<span>élő.</span> COM vagy <span>outlook.</span> COM) jelentkezzen be.
+Amikor elkészült, futtassa a tesztet, használja a Microsoft Azure Active Directory (Azure AD-) fiók (munkahelyi vagy iskolai fiók) vagy személyes Microsoft-fiókkal (<span>élő.</span> COM vagy <span>outlook.</span> COM) való bejelentkezéshez.
 
-![Jelentkezzen be Microsoft](media/active-directory-develop-guidedsetup-aspnetwebapp-test/aspnetbrowsersignin.png)
+![Bejelentkezés Microsoft-fiókkal](media/active-directory-develop-guidedsetup-aspnetwebapp-test/aspnetbrowsersignin.png)
 <br/><br/>
-![Jelentkezzen be Microsoft-fiókja](media/active-directory-develop-guidedsetup-aspnetwebapp-test/aspnetbrowsersignin2.png)
+![Jelentkezzen be Microsoft-fiókjával](media/active-directory-develop-guidedsetup-aspnetwebapp-test/aspnetbrowsersignin2.png)
 
-#### <a name="view-application-results"></a>Alkalmazás-eredmények megtekintése
-Miután bejelentkezik, a felhasználót a rendszer átirányítja a kezdőlapot, a webhely. A kezdőlap a Microsoft alkalmazás-regisztrálási portál alkalmazás regisztrációs adatait a megadott HTTPS URL-CÍMÉT. A kezdőlap magában foglalja az üdvözlő üzenet *"Hello \<felhasználó >,"* kijelentkezés mutató hivatkozást, és megtekintheti a felhasználói jogcímek mutató hivatkozást. A hivatkozás a felhasználói jogcímek nyit a *jogcímek* korábban létrehozott vezérlő.
+#### <a name="view-application-results"></a>Kérelem eredményének megtekintése
+Miután bejelentkezett, a rendszer átirányítja a felhasználót, a webhely kezdőlapjára. A kezdőlapon az alkalmazás regisztrációs információit a Microsoft alkalmazásregisztrációs portálon megadott HTTPS URL-címet. A kezdőlap tartalmaz egy üdvözlő üzenet *"Hello \<felhasználó >,"* jelentkezzen ki, és a egy hivatkozásra kattintva a felhasználói jogcímeket. A felhasználói jogcímek mutató hivatkozás címre lép a *jogcímek* tartományvezérlővel, amely a korábban létrehozott.
 
-### <a name="browse-to-see-the-users-claims"></a>Keresse ki a felhasználói jogcímek
-A felhasználói jogcímeket, jelölje ki a hivatkozásra kattintva tallózással keresse meg a vezérlő nézet csak a hitelesített felhasználók számára elérhető.
+### <a name="browse-to-see-the-users-claims"></a>Megkeresheti a felhasználói jogcímek
+A felhasználói jogcímeket, jelölje ki a hivatkozásra kattintva keresse meg a vezérlő nézet csak a hitelesített felhasználók számára elérhető.
 
 #### <a name="view-the-claims-results"></a>A jogcímek eredmények megtekintése
-Után keresse meg a vezérlő nézetet, a felhasználók alapszintű tulajdonságainak tartalmazó kell megjelennie:
+A vezérlő nézetben keresse meg, miután egy táblát, amely tartalmazza a felhasználók alapszintű tulajdonságainak kell megjelennie:
 
 |Tulajdonság |Érték |Leírás |
 |---|---|---|
-|**Name (Név)** |Felhasználó teljes neve | A felhasználó nagyapja vezeték- és keresztneve.
-|**Felhasználónév** |felhasználó<span>@domain.com</span> | A felhasználónév, amely a felhasználó azonosítására szolgál.
+|**Name (Név)** |A felhasználó teljes neve | A felhasználó vezetékneve és nevét.
+|**Felhasználónév** |Felhasználó<span>@domain.com</span> | A felhasználónév, amely a felhasználó azonosítására szolgál.
 |**Tárgy** |Tárgy |Egy karakterlánc, amely egyedileg azonosítja a felhasználó a weben.|
-|**Bérlő azonosítója** |GUID | A **guid** , amely egyedi módon a felhasználó az Azure AD szervezete jelöli.|
+|**Bérlő azonosítója** |GUID | A **guid** , amely a felhasználó Azure ad-ben szervezete egyedi jelöli.|
 
-Ezenkívül megjelenik egy tábla, amelyek a hitelesítési kérelem minden jogcím. További információkért lásd: a [listája, amelyeket egy Azure AD Azonosítót jogkivonatban](https://docs.microsoft.com/azure/active-directory/develop/active-directory-token-and-claims).
+Emellett megtekintheti az egy táblázat minden jogcím található a hitelesítési kérelmet. További információkért lásd: a [listája, amelyeket egy Azure AD-azonosító jogkivonat](https://docs.microsoft.com/azure/active-directory/develop/active-directory-token-and-claims).
 
 
-### <a name="test-access-to-a-method-that-has-an-authorize-attribute-optional"></a>(Választható) engedélyezés attribútummal rendelkezik: metódusra-hozzáférés tesztelése
-Való hozzáférés tesztelése a vezérlőhöz névtelen felhasználó védettként a `Authorize` attribútumot, kövesse az alábbi lépéseket:
-1. Jelölje ki a felhasználó kijelentkezik, majd fejezze be a kijelentkezési folyamat hivatkozást.
-2. A böngészőben, írja be a http://<span></span>localhost: {port} / jogcímeket a tartományvezérlő által védett eléréséhez a `Authorize` attribútum.
+### <a name="test-access-to-a-method-that-has-an-authorize-attribute-optional"></a>(Nem kötelező) engedélyezés attribútummal rendelkezik metódus való hozzáférés tesztelése
+Hozzáférés teszteléséhez a vezérlőhöz névtelen felhasználó védettként a `Authorize` attribútumot, kövesse az alábbi lépéseket:
+1. Kattintson a Kijelentkezés a felhasználói és a kijelentkezési folyamat befejezéséhez.
+2. A böngészőben, írja be a http://<span></span>localhost: {port} / eléréséhez a tartományvezérlő által védett jogcímek a `Authorize` attribútum.
 
-#### <a name="expected-results-after-access-to-a-protected-controller"></a>Kívánt eredmény elérése érdekében a hozzáférést a védett tartományvezérlő után
-Használja a védett tartományvezérlő felé történő hitelesítésre kéri.
+#### <a name="expected-results-after-access-to-a-protected-controller"></a>A hozzáférést a védett tartományvezérlő után várt eredmény
+Kéri, hogy a védett tartományvezérlő-nézet használata a hitelesítéshez.
 
 ## <a name="advanced-options"></a>Speciális beállítások
 
 <!--start-collapse-->
-### <a name="protect-your-entire-website"></a>A teljes webhelyet védelme
-A teljes webhely védeni a **Global.asax** fájlt, adja hozzá a `AuthorizeAttribute` attribútumot a `GlobalFilters` szűrés a `Application_Start` metódus:
+### <a name="protect-your-entire-website"></a>Az egész webhely védelme
+Védelméhez, az egész webhely a **Global.asax** fájlt, adja hozzá a `AuthorizeAttribute` attribútumot a `GlobalFilters` szűrőt a `Application_Start` módszer:
 
 ```csharp
 GlobalFilters.Filters.Add(new AuthorizeAttribute());
 ```
 <!--end-collapse-->
 
-### <a name="restrict-who-can-sign-in-to-your-application"></a>Korlátozza, aki jelentkezhetnek be az alkalmazás
-Alapértelmezés szerint ez az útmutató által létrehozott alkalmazás építésekor az alkalmazás elfogadja bejelentkezések a személyes fiókok (például outlook.com, live.com és mások) valamint a munkahelyi és iskolai fiókok bármely vállalat vagy szervezet, amely integrálva van Az Azure Active Directory. Ez a beállítás ajánlott az SaaS-alkalmazásokhoz.
+### <a name="restrict-who-can-sign-in-to-your-application"></a>Korlátozhatja, hogy ki jelentkezhet be az alkalmazás
+Alapértelmezés szerint ez az útmutató által létrehozott alkalmazás készítése során az alkalmazás fogadja bejelentkezések a személyes fiókok (beleértve az Outlook.com-os, live.com, és mások) valamint a munkahelyi és iskolai fiókok bármely vállalat vagy szervezet, amely integrálva van az Az Azure Active Directory. Ez a beállítás ajánlott a SaaS-alkalmazásokhoz.
 
-Az alkalmazás felhasználói bejelentkezési hozzáférés korlátozásához, több lehetőség is elérhető:
+Az alkalmazás felhasználói bejelentkezési hozzáférés korlátozása, több lehetőség is elérhető:
 
-#### <a name="option-1-restrict-users-from-only-one-organizations-active-directory-instance-to-sign-in-to-your-application-single-tenant"></a>1. lehetőség: A felhasználók korlátozása csak egy szervezet Active Directory példányból bejelentkezni az alkalmazás (single-bérlő)
+#### <a name="option-1-restrict-users-from-only-one-organizations-active-directory-instance-to-sign-in-to-your-application-single-tenant"></a>1. lehetőség: A felhasználók korlátozása a szervezet csak egy Active Directory-példányból, jelentkezzen be az alkalmazás (egybérlős)
 
-Ez a beállítás akkor egy általános forgatókönyv a *LOB-alkalmazások*: Ha szeretné-e az alkalmazás csak az Azure Active Directory adott példányához tartozó fiókok bejelentkezések fogadására (beleértve a *vendégfiókok*, hogy a példány) tegye a következőket:
+Ez a beállítás akkor gyakran előfordul *LOB-alkalmazások*: szeretné-e az alkalmazás csak egy adott Azure Active Directory-példányhoz tartozó számlák történő bejelentkezések fogadására (beleértve a *vendégfiókok*az adott példány) tegye a következőket:
 
-1. Az a **web.config** fájl, módosítsa a `Tenant` paramétert `Common` számára a szervezet bérlőjének a nevével, mint `contoso.onmicrosoft.com`.
-2. Az a [OWIN indítási osztály](#configure-the-authentication-pipeline), beállíthatja a `ValidateIssuer` argumentumának `true`.
+1. Az a **web.config** fájl, módosítsa az értéket a a `Tenant` paramétert `Common` a szervezet bérlőjének a nevével, például `contoso.onmicrosoft.com`.
+2. Az a [OWIN indítási osztályt](#configure-the-authentication-pipeline)állítsa be a `ValidateIssuer` argumentumának `true`.
 
-#### <a name="option-2-restrict-access-to-your-application-to-users-in-a-specific-list-of-organizations"></a>2. lehetőség: Az alkalmazás a felhasználók számára az adott szervezetek való hozzáférés korlátozása
+#### <a name="option-2-restrict-access-to-your-application-to-users-in-a-specific-list-of-organizations"></a>2. lehetőség: Az alkalmazás a szervezetek a felhasználók számára egy adott listában való hozzáférés korlátozása
 
-Bejelentkezési hozzáférés csak felhasználói fiókot, amely szerepel a listában az engedélyezett szervezetek az Azure AD szervezetében korlátozhatja:
-1. Az a [OWIN indítási osztály](#configure-the-authentication-pipeline), beállíthatja a `ValidateIssuer` argumentumának `true`.
-2. Állítsa a `ValidIssuers` paraméter engedélyezett szervezetek listájához.
+Jelentkezzen be a hozzáférés csak felhasználói fiókok, egy Azure AD-szervezethez, amely szerepel a listán az engedélyezett szervezetek korlátozhatja:
+1. Az a [OWIN indítási osztályt](#configure-the-authentication-pipeline)állítsa be a `ValidateIssuer` argumentumának `true`.
+2. Az értékét állítsa be a `ValidIssuers` paraméter engedélyezett szervezetek listájához.
 
-#### <a name="option-3-use-a-custom-method-to-validate-issuers"></a>3. lehetőség: Egyéni módszer segítségével ellenőrizheti azokat kibocsátók
-Megvalósíthat egy egyéni módszer használatával kiállítók érvényesítéséhez a **IssuerValidator** paraméter. Ez a paraméter használatával kapcsolatos további információkért olvassa el a [TokenValidationParameters osztály](https://msdn.microsoft.com/library/system.identitymodel.tokens.tokenvalidationparameters.aspx) az MSDN Webhelyén.
+#### <a name="option-3-use-a-custom-method-to-validate-issuers"></a>3. lehetőség: Egyéni módszer használatával kiállítók ellenőrzése
+Egy egyéni módszert, kiállítók használatával valósítható meg a **IssuerValidator** paraméter. Ez a paraméter használatával kapcsolatos további információkért olvassa el a [TokenValidationParameters osztály](https://msdn.microsoft.com/library/system.identitymodel.tokens.tokenvalidationparameters.aspx) az MSDN Webhelyén.
 
 [!INCLUDE [Help and support](./active-directory-develop-help-support-include.md)]
