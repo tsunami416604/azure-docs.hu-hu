@@ -1,26 +1,32 @@
 ---
-title: Python-alkalmazás üzembe helyezése az Azure Web App for Containersben
-description: Python-alkalmazást futtató Docker-rendszerkép üzembe helyezése a Web App for Containersben.
-keywords: azure app service, webalkalmazás, python, docker, tároló
-services: app-service
+title: Python-webalkalmazások létrehozása a Linuxon futó Azure App Service-ben | Microsoft Docs
+description: Percek alatt üzembe helyezheti első Hello World Python-alkalmazását a Linuxon futó Azure App Service-ben.
+services: app-service\web
+documentationcenter: ''
 author: cephalin
 manager: jeconnoc
-ms.service: app-service
-ms.devlang: python
+editor: ''
+ms.assetid: ''
+ms.service: app-service-web
+ms.workload: web
+ms.tgt_pltfrm: na
+ms.devlang: na
 ms.topic: quickstart
-ms.date: 07/13/2018
+ms.date: 09/13/2018
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: 6d328d8a3556f565e7eac8ee079bd191b7dcadef
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: c3089ad11dc951d3105b25b6857b7697f8c38d1a
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39433442"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47432069"
 ---
-# <a name="deploy-a-python-web-app-in-web-app-for-containers"></a>Python-webalkalmazás üzembe helyezése a Web App for Containersben
+# <a name="create-a-python-web-app-in-azure-app-service-on-linux-preview"></a>Python-webalkalmazások létrehozása a Linuxon futó Azure App Service-ben (előzetes verzió)
 
-A [Linuxon futó App Service](app-service-linux-intro.md) hatékonyan méretezhető, önjavító webes üzemeltetési szolgáltatást nyújt a Linux operációs rendszer használatával. Ez a rövid útmutató webalkalmazások létrehozását és egyszerű Flask-alkalmazások üzembe helyezését mutatja be egyéni Docker Hub-rendszerkép használatával. Az [Azure CLI-vel](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) létrehozhatja a webalkalmazást.
+A [Linuxon futó App Service](app-service-linux-intro.md) hatékonyan méretezhető, önjavító webes üzemeltetési szolgáltatást nyújt a Linux operációs rendszer használatával. A jelen rövid útmutató bemutatja az App Service-ben a beépített Python-rendszerképre (előzetes verzió) épülő Python-alkalmazás üzembe helyezését Linux rendszerben az [Azure CLI](/cli/azure/install-azure-cli) használatával.
+
+A cikk lépéseit Mac, Windows vagy Linux rendszert futtató gépen is követheti.
 
 ![Az Azure-ban futó mintaalkalmazás](media/quickstart-python/hello-world-in-browser.png)
 
@@ -28,11 +34,10 @@ A [Linuxon futó App Service](app-service-linux-intro.md) hatékonyan méretezhe
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az oktatóanyag elvégzéséhez:
+A gyorsútmutató elvégzéséhez:
 
+* <a href="https://www.python.org/downloads/" target="_blank">A Python 3.7 telepítése</a>
 * <a href="https://git-scm.com/" target="_blank">A Git telepítése</a>
-* <a href="https://www.docker.com/community-edition" target="_blank">A Docker Community Edition telepítése</a>
-* <a href="https://hub.docker.com/" target="_blank">Regisztráció Docker Hub-fiókra</a>
 
 ## <a name="download-the-sample"></a>A minta letöltése
 
@@ -43,52 +48,36 @@ git clone https://github.com/Azure-Samples/python-docs-hello-world
 cd python-docs-hello-world
 ```
 
-Az adattár _/app_ mappájában egy egyszerű Flask-alkalmazás és az alábbi három dolgot megadó _Docker-fájl_ található:
-
-- A [tiangolo/uwsgi-nginx-flask:python3.6-alpine3.7](https://hub.docker.com/r/tiangolo/uwsgi-nginx-flask/) alaprendszerkép használata.
-- A tárolónak a 8000-es porton kell figyelnie.
-- Az `/app` könyvtár másolása a tároló `/app` könyvtárába.
-
-A konfiguráció az [alaprendszerképre vonatkozó útmutatás](https://hub.docker.com/r/tiangolo/uwsgi-nginx-flask/) szerint történik.
-
 ## <a name="run-the-app-locally"></a>Az alkalmazás futtatása helyben
 
-Futtassa az alkalmazást egy Docker-tárolóban.
+Futtassa helyileg az alkalmazást, hogy lássa, hogyan fog kinézni az Azure-ban üzembe helyezve. Nyisson meg egy terminálablakot, és használja az alábbi parancsokat a szükséges függőségek telepítéséhez, majd indítsa el a beépített fejlesztési kiszolgálót. 
 
 ```bash
-docker build --rm -t flask-quickstart .
-docker run --rm -it -p 8000:8000 flask-quickstart
+# In Bash
+python3 -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
+FLASK_APP=application.py flask run
+
+# In PowerShell
+py -3 -m venv env
+env\scripts\activate
+pip install -r requirements.txt
+Set-Item Env:FLASK_APP ".\application.py"
+flask run
 ```
 
-Nyisson meg egy webböngészőt, majd keresse meg a mintaalkalmazást a `http://localhost:8000` címen.
+Nyisson meg egy webböngészőt, majd keresse meg a mintaalkalmazást a `http://localhost:5000/` címen.
 
-Az oldalon látható mintaalkalmazáson ekkor a **Hello World** üzenetnek kell megjelennie.
+Az oldalon látható mintaalkalmazáson ekkor a **Hello World!** üzenet jelenik meg.
 
-![A helyileg futó mintaalkalmazás](media/quickstart-python/localhost-hello-world-in-browser.png)
+![A helyileg futó mintaalkalmazás](media/quickstart-python/hello-world-in-browser.png)
 
-A terminálablakban nyomja le a **Ctrl+C** billentyűkombinációt a tároló leállításához.
-
-## <a name="deploy-image-to-docker-hub"></a>Rendszerkép telepítése a Docker Hubra
-
-Jelentkezzen be Docker Hub-fiókjába. Az utasításokat követve adja meg Docker Hub hitelesítő adatait.
-
-```bash
-docker login
-```
-
-Címkézze fel a rendszerképet, és küldje le a Docker Hub-fiókjában található új _nyilvános_ adattárba, amelynek neve a következő: `flask-quickstart`. A *\<dockerhub_id>* helyére írja be Docker Hub-azonosítóját.
-
-```bash
-docker tag flask-quickstart <dockerhub_id>/flask-quickstart
-docker push <dockerhub_id>/flask-quickstart
-```
-
-> [!NOTE]
-> `docker push` létrehoz egy nyilvános adattárat, ha a megadott adattár nem található. Ez a rövid útmutató feltételezi, hogy rendelkezik nyilvános adattárral a Docker Hubon. Ha inkább privát adattárat szeretne használni, akkor a későbbiekben konfigurálnia kell Docker Hub hitelesítő adatait az Azure App Service-ben. Lásd a [webalkalmazás létrehozását](#create-a-web-app) ismertető témakört.
-
-Miután a rendszerkép leküldése befejeződött, használatba is veheti az Azure-webalkalmazásban.
+A terminálablakban nyomja le a **Ctrl+C** billentyűkombinációt a webkiszolgálóból történő kilépéshez.
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
+
+[!INCLUDE [Configure deployment user](../../../includes/configure-deployment-user.md)]
 
 [!INCLUDE [Create resource group](../../../includes/app-service-web-create-resource-group-linux.md)]
 
@@ -96,99 +85,100 @@ Miután a rendszerkép leküldése befejeződött, használatba is veheti az Azu
 
 ## <a name="create-a-web-app"></a>Webalkalmazás létrehozása
 
-Az [ az webapp create](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) paranccsal hozzon létre egy [webalkalmazást](../app-service-web-overview.md) a `myAppServicePlan` App Service-csomagban. Az *\<app name>* helyett adjon meg egy globálisan egyedi alkalmazásnevet, a *\<dockerhub_id>* helyett pedig Docker Hub-azonosítóját.
+[!INCLUDE [Create app service plan](../../../includes/app-service-web-create-web-app-python-linux-no-h.md)]
 
-```azurecli-interactive
-az webapp create --resource-group myResourceGroup --plan myAppServicePlan --name <app name> --deployment-container-image-name <dockerhub_id>/flask-quickstart
+Az újonnan létrehozott, beépített rendszerképpel rendelkező webalkalmazás megtekintéséhez tallózással keresse meg a helyet. Az _&lt;app name>_ helyett adja meg a webalkalmazása nevét.
+
+```bash
+http://<app_name>.azurewebsites.net
 ```
 
-A webalkalmazás létrehozása után az Azure CLI az alábbi példához hasonló eredményeket jelenít meg:
+Az új webalkalmazásnak így kell kinéznie:
 
-```json
-{
-  "availabilityState": "Normal",
-  "clientAffinityEnabled": true,
-  "clientCertEnabled": false,
-  "cloningInfo": null,
-  "containerSize": 0,
-  "dailyMemoryTimeQuota": 0,
-  "defaultHostName": "<app name>.azurewebsites.net",
-  "deploymentLocalGitUrl": "https://<username>@<app name>.scm.azurewebsites.net/<app name>.git",
-  "enabled": true,
-  < JSON data removed for brevity. >
-}
-```
+![Üres webalkalmazás oldal](media/quickstart-php/app-service-web-service-created.png)
 
-Ha már korábban töltött fel adatokat privát adattárba, akkor emellett az App Service-ben konfigurálnia kell Docker Hub hitelesítő adatait. További információkat a [Docker Hubról származó privát rendszerkép használatát](tutorial-custom-docker-image.md#use-a-private-image-from-docker-hub-optional) ismertető témakörben olvashat.
+[!INCLUDE [Push to Azure](../../../includes/app-service-web-git-push-to-azure.md)] 
 
-### <a name="specify-container-port"></a>Tárolóport megadása
-
-A _Docker-fájlban_ megadottak szerint a tároló a 8000-es porton figyel. Ahhoz, hogy az App Service a megfelelő porthoz tudja irányítani a kéréseket, meg kell adnia a *WEBSITES_PORT* alkalmazásbeállítást.
-
-A Cloud Shellben futtassa az [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) parancsot.
-
-
-```azurecli-interactive
-az webapp config appsettings set --name <app_name> --resource-group myResourceGroup --settings WEBSITES_PORT=8000
-```
+```bash
+Counting objects: 42, done.
+Delta compression using up to 8 threads.
+Compressing objects: 100% (39/39), done.
+Writing objects: 100% (42/42), 9.43 KiB | 0 bytes/s, done.
+Total 42 (delta 15), reused 0 (delta 0)
+remote: Updating branch 'master'.
+remote: Updating submodules.
+remote: Preparing deployment for commit id 'c40efbb40e'.
+remote: Generating deployment script.
+remote: Generating deployment script for python Web Site
+.
+.
+.
+remote: Finished successfully.
+remote: Running post deployment command(s)...
+remote: Deployment successful.
+remote: App container will begin restart within 10 seconds.
+To https://user2234@cephalin-python.scm.azurewebsites.net/cephalin-python.git
+ * [new branch]      master -> master
+ ```
 
 ## <a name="browse-to-the-app"></a>Az alkalmazás megkeresése tallózással
 
+Tallózással keresse meg az üzembe helyezett alkalmazást a webböngésző használatával.
+
 ```bash
-http://<app_name>.azurewebsites.net/
+http://<app_name>.azurewebsites.net
 ```
+
+A Python-mintakód beépített rendszerképpel rendelkező webalkalmazásban fut.
 
 ![Az Azure-ban futó mintaalkalmazás](media/quickstart-python/hello-world-in-browser.png)
 
-> [!NOTE]
-> A webalkalmazás elindítása hosszabb időt vesz igénybe, mivel a Docker Hub-rendszerképet le kell tölteni és el kell indítani az alkalmazás első igénylésekor. Ha először hosszú várakozási idő után hibát észlel, frissítse a lapot.
+**Gratulálunk!** Elvégezte az első Python-webapp üzembe helyezését az App Service-ben Linux rendszeren.
 
-**Gratulálunk!** Egy Python-alkalmazást futtató egyéni Docker-rendszerképet helyezett üzembe a Web App for Containersben.
+## <a name="update-locally-and-redeploy-the-code"></a>A kód frissítése helyileg és ismételt üzembe helyezése
 
-## <a name="update-locally-and-redeploy"></a>Frissítés helyileg és ismételt üzembe helyezés
-
-Egy helyi szövegszerkesztővel nyissa meg a `app/main.py` fájlt a Python-alkalmazásban, majd módosítsa kissé annak szövegét a `return` utasítás mellett:
+A helyi adattárban nyissa meg az `application.py` fájlt, majd módosítsa annak szövegét az utolsó sorban:
 
 ```python
-return 'Hello, Azure!'
+return "Hello Azure!"
 ```
 
-Hozza létre újra a rendszerképet, majd ismételten küldje le a Docker Hubra.
+Mentse a módosításokat a Gitben, majd továbbítsa a kód módosításait az Azure-ba.
 
 ```bash
-docker build --rm -t flask-quickstart .
-docker tag flask-quickstart <dockerhub_id>/flask-quickstart
-docker push <dockerhub_id>/flask-quickstart
+git commit -am "updated output"
+git push azure master
 ```
 
-Indítsa újra az alkalmazást a Cloud Shellben. Az alkalmazás újraindítása biztosítja, hogy minden beállítás alkalmazva lesz, és a rendszer a legújabb tárolót kéri le a tárolóregisztrációs adatbázisból.
-
-```azurecli-interactive
-az webapp restart --resource-group myResourceGroup --name <app_name>
-```
-
-Az App Service-ben várjon körülbelül 15 másodpercet a frissített rendszerkép lekérésére. Váltson vissza **Az alkalmazás megkeresése tallózással** lépésben megnyitott böngészőablakra, és frissítse az oldalt.
+Az üzembe helyezés befejezését követően váltson vissza **Az alkalmazás megkeresése tallózással** lépésben megnyitott böngészőablakra, és frissítse az oldalt.
 
 ![Az Azure-ban futó frissített mintaalkalmazás](media/quickstart-python/hello-azure-in-browser.png)
 
-## <a name="manage-your-azure-web-app"></a>Az Azure-webalkalmazás kezelése
+## <a name="manage-your-new-azure-web-app"></a>Az új Azure-webapp kezelése
 
-Lépjen az [Azure Portalra](https://portal.azure.com), és tekintse meg a létrehozott webalkalmazást.
+A létrehozott webalkalmazás felügyeletéhez ugorjon az <a href="https://portal.azure.com" target="_blank">Azure Portalra</a>.
 
-A bal oldali menüben kattintson az **App Services** lehetőségre, majd az Azure-webapp nevére.
+A bal oldali menüben kattintson az **App Services** lehetőségre, majd az Azure-webalkalmazás nevére.
 
 ![Navigálás a portálon az Azure-webapphoz](./media/quickstart-python/app-service-list.png)
 
-Alapértelmezés szerint a portálon a webalkalmazás **Áttekintés** oldala jelenik meg. Ezen az oldalon megtekintheti az alkalmazás állapotát. Itt elvégezhet olyan alapszintű felügyeleti feladatokat is, mint a böngészés, leállítás, elindítás, újraindítás és törlés. Az oldal bal oldalán lévő lapok a különböző megnyitható konfigurációs oldalakat jelenítik meg.
+Megtekintheti a webalkalmazás Áttekintés oldalát. Itt elvégezhet olyan alapszintű felügyeleti feladatokat, mint a tallózás, leállítás, elindítás, újraindítás és törlés.
 
-![Az App Service lap az Azure Portalon](./media/quickstart-python/app-service-detail.png)
+![Az App Service lap az Azure Portalon](media/quickstart-python/app-service-detail.png)
 
-[!INCLUDE [Clean-up section](../../../includes/cli-script-clean-up.md)]
+A bal oldali menü az alkalmazás konfigurálásához biztosít különböző oldalakat. 
+
+[!INCLUDE [cli-samples-clean-up](../../../includes/cli-samples-clean-up.md)]
 
 ## <a name="next-steps"></a>További lépések
 
+A beépített Python-rendszerkép a Linuxon futó App Service-ben jelenleg előzetes verzióban érhető el. Éles környezetben egy egyéni tárolót használva hozhat létre Python-alkalmazásokat.
+
 > [!div class="nextstepaction"]
-> [Python és PostgreSQL](tutorial-docker-python-postgresql-app.md)
+> [Python és PostgreSQL](tutorial-python-postgresql-app.md)
+
+> [!div class="nextstepaction"]
+> [Beépített Python-rendszerkép konfigurálása](how-to-configure-python.md)
 
 > [!div class="nextstepaction"]
 > [Egyéni rendszerképek használata](tutorial-custom-docker-image.md)

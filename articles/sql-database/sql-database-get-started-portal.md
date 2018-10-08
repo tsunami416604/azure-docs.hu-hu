@@ -1,25 +1,27 @@
 ---
 title: 'Azure Portal: SQL-adatbázis létrehozása | Microsoft Docs'
 description: SQL Database logikai kiszolgáló, kiszolgálószintű tűzfalszabályok és adatbázisok létrehozása és lekérdezése az Azure Portal használatával.
-keywords: oktatóanyag az SQL Database használatához, SQL-adatbázis létrehozása
 services: sql-database
-author: CarlRabeler
-manager: craigg
 ms.service: sql-database
-ms.custom: mvc,DBs & servers
+ms.subservice: security
+ms.custom: ''
+ms.devlang: ''
 ms.topic: quickstart
-ms.date: 07/16/2018
+author: sachinpMSFT
 ms.author: sachinp
-ms.openlocfilehash: 172ee6c2200334a57ebaa073d7ff530d19b2f07d
-ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
+ms.reviewer: carlrab
+manager: craigg
+ms.date: 09/07/2018
+ms.openlocfilehash: 0e7ea33fa775bfba934d68d7cbcdd754880c3e55
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39090530"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47165007"
 ---
 # <a name="create-an-azure-sql-database-in-the-azure-portal"></a>Azure SQL Database létrehozása az Azure Portalon
 
-Ez a rövid útmutató végigvezeti azon, hogyan hozhat létre SQL-adatbázist az Azure-ban a [DTU-alapú vásárlási modell](sql-database-service-tiers-dtu.md) segítségével. Az Azure SQL Database egy adatbázis-szolgáltatási ajánlat, amellyel magas rendelkezésre állású SQL Server-adatbázisokat futtathat és méretezhet a felhőben. Ez a rövid útmutató bemutatja, hogyan teheti meg az SQL Database-adatbázisok létrehozásának első lépéseit az Azure Portalon.
+Ez a rövid útmutató végigvezeti azon, hogyan hozhat létre SQL-adatbázist az Azure-ban a [DTU-alapú vásárlási modell](sql-database-service-tiers-dtu.md) segítségével. Az Azure SQL Database egy adatbázis-szolgáltatási ajánlat, amellyel magas rendelkezésre állású SQL Server-adatbázisokat futtathat és méretezhet a felhőben. Ez a rövid útmutató bemutatja, hogyan teheti meg az SQL Database-adatbázisok létrehozásának, majd lekérdezésének első lépéseit az Azure Portalon.
 
 Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
 
@@ -28,7 +30,7 @@ Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány
 
 ## <a name="log-in-to-the-azure-portal"></a>Bejelentkezés az Azure Portalra
 
-Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
+Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
 ## <a name="create-a-sql-database"></a>SQL-adatbázis létrehozása
 
@@ -96,36 +98,6 @@ Kövesse az alábbi lépéseket az Adventure Works LT mintaadatokat tartalmazó 
 
      ![értesítés](./media/sql-database-get-started-portal/notification.png)
 
-## <a name="create-a-server-level-firewall-rule"></a>Kiszolgálószintű tűzfalszabály létrehozása
-
-Az SQL Database szolgáltatás egy tűzfalat hoz létre a kiszolgáló szintjén, amely megakadályozza, hogy a külső alkalmazások és eszközök csatlakozzanak a kiszolgálóhoz vagy a kiszolgálón lévő adatbázisokhoz, kivéve, ha létrehoz tűzfalszabályt, hogy adott IP-címek számára megnyissa a tűzfalat. A következő lépésekkel hozzon létre egy [kiszolgálószintű SQL Database-tűzfalszabályt](sql-database-firewall-configure.md) az ügyfél IP-címéhez, és engedélyezze a külső kapcsolatokat csak az Ön IP-címéhez az SQL Database-tűzfalon keresztül.
-
-> [!NOTE]
-> Az SQL Database az 1433-as porton kommunikál. Ha vállalati hálózaton belülről próbál csatlakozni, elképzelhető, hogy a hálózati tűzfal nem engedélyezi a kimenő forgalmat az 1433-as porton keresztül. Ebben az esetben nem tud csatlakozni az Azure SQL Database-kiszolgálóhoz, ha az informatikai részleg nem nyitja meg az 1433-as portot.
->
-
-1. Az üzembe helyezés befejezése után kattintson az **SQL-adatbázisok** elemre a bal oldali menüben, majd kattintson a **mySampleDatabase** adatbázisra az **SQL-adatbázisok** lapon. Megnyílik az adatbázis áttekintő oldala, amelyen látható a teljes kiszolgálónév (például: **mynewserver-20170824.database.windows.net**), valamint a további konfigurálható beállítások.
-
-2. Másolja ezt a teljes kiszolgálónevet, mert a későbbi rövid útmutatók során szüksége lesz rá a kiszolgálóhoz és az adatbázisokhoz való csatlakozáshoz.
-
-   ![kiszolgáló neve](./media/sql-database-get-started-portal/server-name.png)
-
-3. Kattintson a **Kiszolgálótűzfal beállítása** lehetőségre az eszköztáron az előző képen látható módon. Megnyílik az SQL Database kiszolgálóhoz tartozó **Tűzfalbeállítások** oldal.
-
-   ![kiszolgálói tűzfalszabály](./media/sql-database-get-started-portal/server-firewall-rule.png)
-
-4. Az eszköztár **Ügyfél IP-címének hozzáadása** elemére kattintva vegye fel aktuális IP-címét egy új tűzfalszabályba. A tűzfalszabály az 1433-as portot egy egyedi IP-cím vagy egy IP-címtartomány számára nyithatja meg.
-
-5. Kattintson a **Save** (Mentés) gombra. A rendszer létrehoz egy kiszolgálószintű tűzfalszabályt az aktuális IP-címhez, és megnyitja az 1433-as portot a logikai kiszolgálón.
-
-6. Kattintson az **OK** gombra, majd zárja be a **Tűzfalbeállítások** lapot.
-
-Mostantól csatlakozhat az SQL Database-kiszolgálóhoz és annak adatbázisaihoz erről az IP-címről az SQL Server Management Studióval vagy más választott eszközzel, az előzőekben létrehozott kiszolgálói rendszergazdai fiókkal.
-
-> [!IMPORTANT]
-> Alapértelmezés szerint az összes Azure-szolgáltatás számára engedélyezett a hozzáférés az SQL Database tűzfalán keresztül. Kattintson a **KI** gombra ezen az oldalon az összes Azure-szolgáltatás hozzáférésének letiltásához.
->
-
 ## <a name="query-the-sql-database"></a>Az SQL-adatbázis lekérdezése
 
 Most, miután létrehozott egy mintaadatbázist az Azure-ban, az Azure Portalon található beépített lekérdezési eszközzel ellenőrizzük, hogy tud-e csatlakozni az adatbázishoz, és le tudja-e kérdezni az adatokat.
@@ -161,7 +133,9 @@ Mentse ezeket az erőforrásokat, ha a [Következő lépésekre](#next-steps) sz
 
 ## <a name="next-steps"></a>További lépések
 
-- Most, hogy rendelkezik egy adatbázissal, [csatlakoztathatja a kedvenc eszközeinek vagy nyelveinek egyikét, és lekérdezéseket hajthat végre velük](sql-database-connect-query.md). 
-- Az első adatbázis megtervezésével, a táblák létrehozásával és az adatok beszúrásával kapcsolatos információkért tekintse meg az alábbi oktatóanyagok egyikét:
- - [Az első Azure SQL-adatbázis megtervezése SSMS használatával](sql-database-design-first-database.md)
-  - [Azure SQL-adatbázis megtervezése, és kapcsolódás C# és ADO.NET használatával](sql-database-design-first-database-csharp.md)
+- Most, hogy rendelkezik egy adatbázissal, létre kell hoznia egy kiszolgálószintű tűzfalszabályt a helyszíni eszközökből való csatlakozáshoz. Lásd: [Kiszolgálószintű tűzfalszabály létrehozása](sql-database-get-started-portal-firewall.md)
+- Kiszolgálószintű tűzfalszabály létrehozása esetében [csatlakozhat és lekérdezhet](sql-database-connect-query.md) kedvenc eszközeinek vagy nyelveinek egyikét használva, beleértve a következőt:
+  - [Kapcsolódás és lekérdezés az SQL Server Management Studióval](sql-database-connect-query-ssms.md)
+  - [Kapcsolódás és lekérdezés az Azure Data Studióval](https://docs.microsoft.com/sql/azure-data-studio/quickstart-sql-database?toc=/azure/sql-database/toc.json)
+- Adatbázisok az Azure CLI-vel való létrehozásáról lásd: [Azure CLI-minták](sql-database-cli-samples.md)
+- Adatbázisok az Azure PowerShell-lel való létrehozásáról lásd: [Azure PowerShell-minták](sql-database-powershell-samples.md)

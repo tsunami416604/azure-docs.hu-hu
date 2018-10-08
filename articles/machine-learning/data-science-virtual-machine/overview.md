@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 10/27/2017
 ms.author: gokuma
-ms.openlocfilehash: 661c757cda2f70b03d136f3726c7afe633fbbe04
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: 62c8ff225b9c649afa7532ad5edfdd627e573d81
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42023575"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47032231"
 ---
 # <a name="introduction-to-azure-data-science-virtual-machine-for-linux-and-windows"></a>A Linux és Windows rendszerre készült Azure Data Science Virtual Machine (DSVM, adatelemző virtuális gép) bemutatása
 
@@ -137,3 +137,5 @@ Az adatelemző virtuális gépen sok közkedvelt adatelemzési és deep learning
 * Ubuntus DSVM létrehozásáról és használatáról az [Adatelemző virtuális gép üzembe helyezése Linuxon (Ubuntu)](dsvm-ubuntu-intro.md) című cikk nyújt bővebb tájékoztatást. CentOS-es DSVM létrehozásáról és használatáról az [Linux CentOS-es adatelemző virtuális gép üzembe helyezése az Azure-on](linux-dsvm-intro.md) című cikk nyújt bővebb tájékoztatást.
 * A gyakori adatelemzési feladatok végrehajtását CentOS és Ubuntu Linux rendszeren is bemutató útmutatást talál az [Adatelemzés a linuxos adatelemző virtuális gépen](linux-dsvm-walkthrough.md) című cikkben.
 
+## <a name="next-steps"></a>További lépések
+[Az Azure R fejlesztői útmutatója](../r-developers-guide.md)

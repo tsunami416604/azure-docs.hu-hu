@@ -15,12 +15,12 @@ ms.topic: quickstart
 ms.date: 05/24/2018
 ms.author: v-deasim
 ms.custom: mvc
-ms.openlocfilehash: 05ce8c932e9d3d812e34e23c082d459c3193ea40
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 1f720c8921a9a49e76465cce1c8226232fdb12ea
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34608501"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47096241"
 ---
 # <a name="quickstart-integrate-an-azure-storage-account-with-azure-cdn"></a>Rövid útmutató: Azure Storage-fiók integrálása az Azure CDN-nel
 Ebben a rövid útmutatóban engedélyezni fogja az [Azure Content Delivery Network (CDN)](cdn-overview.md) számára az Azure Storage-ből származó tartalmak gyorsítótárazását. Az Azure CDN egy globális megoldást kínál a fejlesztők számára a tartalmak nagy sávszélességű kézbesítéséhez. Képes arra, hogy fizikai csomópontokon gyorsítótárazza a blobokat és a számítási példányok statikus tartalmát az Amerikai Egyesült Államok, Európa, Ázsia, Ausztrália és Dél-Amerika területén.
@@ -30,7 +30,7 @@ Ebben a rövid útmutatóban engedélyezni fogja az [Azure Content Delivery Netw
 ## <a name="log-in-to-the-azure-portal"></a>Bejelentkezés az Azure Portalra
 Jelentkezzen be az [Azure Portalra](https://portal.azure.com) az Azure-fiókjával.
 
-## <a name="create-a-storage-account"></a>Create a storage account
+## <a name="create-a-storage-account"></a>Tárfiók létrehozása
 Az alábbi módon hozhat létre Azure-előfizetéshez tartozó új tárfiókot. A tárfiókok hozzáférést biztosítanak az Azure Storage szolgáltatásaihoz, és ők képviselik az Azure Storage szolgáltatási összetevőihez – Azure Blob, Queue és Table Storage – való hozzáférés legmagasabb szintű névterét. További információkért lásd: [A Microsoft Azure Storage bemutatása](../storage/common/storage-introduction.md).
 
 Tárfiók létrehozásához a társított előfizetés szolgáltatás-rendszergazdájának vagy társadminisztrátorának kell lennie.
@@ -39,7 +39,7 @@ Többféle módon is létrehozhat tárfiókot, többek között az Azure Portal 
 
 **Tárfiók létrehozása egy Azure-előfizetéshez**
 
-1. Válassza az Azure Portal bal felső sarkában az **Erőforrás létrehozása** lehetőséget. 
+1. Válassza az Azure Portal bal felső sarkában az **Erőforrás létrehozás** lehetőséget. 
 
     Ekkor megnyílik az **Új** panel.
 
@@ -84,7 +84,7 @@ Többféle módon is létrehozhat tárfiókot, többek között az Azure Portal 
 
 ## <a name="enable-azure-cdn-for-the-storage-account"></a>Az Azure CDN engedélyezése a tárfiókhoz
 
-Az Azure CDN-t a tárfiókhoz közvetlenül a tárfiókból is engedélyezheti. Ha szeretne speciális konfigurációkat beállítani a CDN-végponthoz (például az optimalizálás típusát), az [Azure CDN bővítményt](cdn-create-new-endpoint.md) is használhatja CDN-profil vagy -végpont létrehozásához.
+Az Azure CDN-t a tárfiókhoz közvetlenül a tárfiókból is engedélyezheti. Ha szeretne speciális konfigurációkat beállítani a CDN-végponthoz (például a [nagyméretű fájl letöltésének optimalizálását](cdn-optimization-overview.md#large-file-download)), az [Azure CDN bővítményt](cdn-create-new-endpoint.md) is használhatja CDN-profil és végpont létrehozásához.
 
 1. Válasszon ki egy tárfiókot az irányítópulton, majd válassza az **Azure CDN** lehetőséget a bal oldali panelen. Ha az **Azure CDN** gomb nem jelenik meg azonnal, beírhatja a CDN kifejezést a bal oldali panel **Keresés** mezőjébe.
     
@@ -109,6 +109,9 @@ Az Azure CDN-t a tárfiókhoz közvetlenül a tárfiókból is engedélyezheti. 
 A tárfiók **Azure CDN** oldalán válassza ki a CDN-végpontot, hogy megnyissa annak konfigurációs lapját. Ezen a lapon engedélyezhet további CDN-szolgáltatásokat a kézbesítéshez, például a [tömörítést](cdn-improve-performance.md), [a lekérdezési sztringek gyorsítótárazását](cdn-query-string.md) és a [geoszűrést](cdn-restrict-access-by-country.md). 
     
 ![Tároló CDN-végpontjának konfigurálása](./media/cdn-create-a-storage-account-with-cdn/cdn-storage-endpoint-configuration.png)
+
+## <a name="enable-sas"></a>A SAS engedélyezése
+Ha korlátozott hozzáférést szeretne adni privát tárolókhoz, használhatja Azure-tárfiókjának közös hozzáférésű jogosultságkód (SAS) funkcióját. A SAS olyan URI, amely az Azure Storage erőforrásainak korlátozott hozzáférési jogosultságát biztosítja anélkül, hogy közzétenné a fiók kulcsát. További információk: [Az Azure CDN használata a SAS-szal](cdn-sas-storage-support.md).
 
 ## <a name="access-cdn-content"></a>Hozzáférés a CDN tartalmához
 A CDN-en lévő gyorsítótárazott tartalmakhoz való hozzáféréshez használja a CDN portálon megadott URL-címét. A gyorsítótárazott blobok címének formátuma a következő:
@@ -139,8 +142,8 @@ A korábbi lépésekben létrehozott egy CDN-profilt és egy végpontot egy erő
 3. A törlendő tárfiókot jelölje ki az irányítópulton, majd válassza ki a **Törlés** lehetőséget a felső menüben.
 
 ## <a name="next-steps"></a>További lépések
-Az alábbi útmutatóból megtudhatja, hogyan adhat hozzá egyéni tartományt CDN-végpontjához:
+Az alábbi útmutatóból megtudhatja, hogyan adhat hozzá egyéni tartományt CDN-végpontjához és engedélyezheti azon a HTTPS-t:
 
 > [!div class="nextstepaction"]
-> [Oktatóanyag: Egyéni tartomány hozzáadása az Azure CDN-végponthoz](cdn-map-content-to-custom-domain.md)
+> [Oktatóanyag: Storage-blobok elérése egyéni CDN-tartomány használatával HTTPS-en keresztül](cdn-storage-custom-domain-https.md)
 

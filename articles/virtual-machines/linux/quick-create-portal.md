@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 07/03/2018
+ms.date: 09/14/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: f659c424f7d5e705343c113d2ba0971164ca622a
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: fcc9f338ad69322091199ce9d5d2d1d6f9f2165e
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43108806"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47227282"
 ---
 # <a name="quickstart-create-a-linux-virtual-machine-in-the-azure-portal"></a>Rövid útmutató: Linux rendszerű virtuális gép létrehozása az Azure Portalon
 
@@ -49,26 +49,27 @@ Jelentkezzen be az Azure Portalra a http://portal.azure.com címen.
 
 1. Válassza az Azure Portal bal felső sarkában az **Erőforrás létrehozása** lehetőséget.
 
-2. Az Azure Marketplace-erőforrások fölött lévő keresőmezőben keressen az **Ubuntu Server 16.04 LTS** (Canonical) elemre, és válassza ki, majd válassza a **Létrehozás** lehetőséget.
+1. Az Azure Marketplace-erőforrások fölött lévő keresőmezőben keressen az **Ubuntu Server 16.04 LTS** (Canonical) elemre, és válassza ki, majd válassza a **Létrehozás** lehetőséget.
 
-3. Adja meg a virtuális gép nevét (például *myVM*), a lemez típusát hagyja az *SSD* értéken, majd adjon meg egy felhasználónevet (például *azureuser*).
+1. Az **Alapok** lap **Projektadatok** részén győződjön meg arról, hogy a megfelelő előfizetés van kiválasztva, és válassza az **Új létrehozása** lehetőséget az **Erőforráscsoport** részen. Az előugró ablakban írja be a *myResourceGroup* nevet az erőforráscsoport neveként, és kattintson az **OK* gombra. 
 
-4. A **Hitelesítés típusa** résznél válassza az **Nyilvános SSH-kulcs** lehetőséget, majd illessze be a nyilvános kulcsot a szövegmezőbe. Ügyeljen rá, hogy eltávolítsa a kezdő vagy záró térközöket a nyilvános kulcsból.
+    ![Új erőforráscsoport létrehozása saját virtuális géphez](./media/quick-create-portal/project-details.png)
 
-    ![Írja be a virtuális gép alapvető adatait a portálpanelen](./media/quick-create-portal/create-vm-portal-basic-blade.png)
+1. Alatt **Példány részletei** szakaszban írja be a *myVM* nevet a **Virtuális gép neve** mezőbe, és válassza *USA keleti régiója* lehetőséget a **Régió** részen. Hagyja meg a többi alapértelmezett értéket.
 
-5. Válassza az **Új létrehozása** lehetőséget egy erőforráscsoport létrehozásához, majd adjon meg egy nevet (például *myResourceGroup*). Válassza ki a kívánt **Helyet**, majd kattintson az **OK** gombra.
+    ![Példány részletei szakasz](./media/quick-create-portal/instance-details.png)
 
-4. Válasszon méretet a virtuális gép számára. Szűrhet például *számítási típus* vagy *lemeztípus* alapján. A virtuális gép ajánlott mérete a *D2s_v3*.
+1. A **Rendszergazdai fiók** részen válassza a **Nyilvános SSH-kulcs**, lehetőséget, írja be a felhasználónevét, majd illessze be a nyilvános kulcsát a szövegmezőbe. Távolítsa el a kezdő vagy záró szóközöket a nyilvános kulcsból.
 
-    ![Képernyőkép a virtuális gépek méreteivel](./media/quick-create-portal/create-linux-vm-portal-sizes.png)
+    ![Rendszergazdai fiók](./media/quick-create-portal/administrator-account.png)
 
-5. A **Beállítások** lap **Hálózat** > **Hálózati biztonsági csoport** > **területén válassza a nyilvános bejövő portokat**, majd válassza a **HTTP** és az **SSH(22)** lehetőséget. Tartsa meg az alapértelmezett értékeket a többi beállításnál, majd kattintson az **OK** gombra.
+1. A **Bejövőport-szabályok** > **Nyilvános bejövő portok** részen válassza a **Kijelölt portok engedélyezése** lehetőséget, majd az **SSH (22)** és a **HTTP (80)** elemet a legördülő listából. 
 
-6. Az Összefoglalás lapon válassza a **Létrehozás** lehetőséget a virtuális gép üzembe helyezésének megkezdéséhez.
+    ![Az RDP- és a HTTP-portok megnyitása](./media/quick-create-portal/inbound-port-rules.png)
 
-7. A virtuális gép rögzítve lesz az Azure Portal irányítópultján. Az üzembe helyezés befejeztével a virtuális gép összefoglalás panelje automatikusan megnyílik.
+1. Hagyja meg a többi alapértelmezett beállítást, és kattintson a **Felülvizsgálat + létrehozás** gombra a lap alján.
 
+    
 ## <a name="connect-to-virtual-machine"></a>Csatlakozás virtuális géphez
 
 Hozzon léte egy SSH-kapcsolatot a virtuális géppel.
