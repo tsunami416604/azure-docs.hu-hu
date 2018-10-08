@@ -14,12 +14,12 @@ ms.date: 09/25/2018
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
-ms.openlocfilehash: 293d8376d83d729588aab0aeaa1040d9b3e5e0b5
-ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
+ms.openlocfilehash: 722a9ada338420cc1ed55eb7c4400f946d58ebac
+ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47182280"
+ms.lasthandoff: 10/06/2018
+ms.locfileid: "48831653"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Az Azure Active Directory rendszergazdája szerepkör engedélyei
 
@@ -84,11 +84,15 @@ A következő rendszergazdai szerepkörök érhetők el:
 
 * **[2. rétegbeli támogatása partneri](#partner-tier2-support)**: ne használja. Ez a szerepkör elavult és törlődni fog a későbbiekben az Azure AD-ből. Ez a szerepkör kis számú Microsoft-viszonteladói partnerek általi használatra van, és nem célja általános használatra.
 
-* **[Jelszókezelő / ügyfélszolgálati adminisztrátor](#helpdesk-administrator)**: Ezzel a szerepkörrel rendelkező felhasználók is módosíthatja a jelszavát, érvényteleníti frissítési biztonsági jogkivonat, kezelhetik és szolgáltatások állapotának figyelése. Segélyszolgálat rendszergazdák módosíthatja a jelszavát, és frissítési biztonsági jogkivonat csak a felhasználók és más ügyfélszolgálati rendszergazdák érvénytelenítéséhez. A frissítési jogkivonatok érvénytelenítése kényszeríti a felhasználót, hogy jelentkezzen be újra.
-
+* **[Jelszókezelő / ügyfélszolgálati adminisztrátor](#helpdesk-administrator)**: Ezzel a szerepkörrel rendelkező felhasználók is módosíthatja a jelszavát, érvényteleníti frissítési biztonsági jogkivonat, kezelhetik és szolgáltatások állapotának figyelése. A frissítési jogkivonatok érvénytelenítése kényszeríti a felhasználót, hogy jelentkezzen be újra. Segélyszolgálat rendszergazdák új jelszót és érvényteleníti a frissítési biztonsági jogkivonat, más felhasználók, akik nem rendszergazdák, vagy csak a következő szerepkörök tagjai:
+  * Directory-olvasók
+  * Vendég meghívója
+  * Ügyfélszolgálati adminisztrátor
+  * Üzenetközpont-olvasó
+  * Jelentésolvasó
+  
   > [!NOTE]
   > A Microsoft Graph API, Azure AD Graph API és az Azure AD PowerShell a szerepkör "Ügyfélszolgálati adminisztrátor" azonosítja. Ezt "Jelszókezelő" szerepel a [az Azure portal](https://portal.azure.com/).
-  >
   >
   
 * **[A Power BI-Szolgáltatásadminisztrátor](#power-bi-service-administrator)**: Ezzel a szerepkörrel rendelkező felhasználók kezelhetik a támogatási jegyeket, és a szolgáltatások állapotának figyelése szolgáltatásuk, ezenkívül a Microsoft Power BI, a szolgáltatás megléte esetén globális engedélyekkel rendelkeznek. További információ: [a Power BI rendszergazdai szerepkörét ismertető](https://docs.microsoft.com/power-bi/service-admin-role).
@@ -132,11 +136,13 @@ A következő rendszergazdai szerepkörök érhetők el:
 
 * **[Szolgáltatás-rendszergazda csapatok](#teams-service-administrator)**: az ehhez a szerepkörhöz felhasználók kezelhetik a Microsoft Teams munkaterhelés, a Microsoft Teams és a Skype vállalati felügyeleti központot és a megfelelő PowerShell-modulok minden aspektusát. Ez magában foglalja, többek között a más területeken, telefonos, üzenetkezelés, értekezletek és a csapatok maguk kapcsolatos összes felügyeleti eszközök. Ez a szerepkör is képes kezelni az Office 365-csoportokat biztosít.
 
-* **[Felhasználóifiók-adminisztrátor](#user-account-administrator)**: Ezzel a szerepkörrel rendelkező felhasználók létrehozása és kezelése a felhasználók és csoportok minden aspektusát. Ez a szerepkör ezenkívül kezelhetik a támogatási jegyeket, és a szolgáltatások állapotának figyelése is. Bizonyos korlátozások vonatkoznak. Például ez a szerepkör nem teszi lehetővé egy globális rendszergazda törlése. Felhasználói fiókok adminisztrátorai módosíthatja a jelszavak és a felhasználóknak, az ügyfélszolgálat adminisztrátorai és egyéb felhasználói fiók a rendszergazdák csak a frissítési biztonsági jogkivonat érvénytelenítéséhez. A frissítési jogkivonatok érvénytelenítése kényszeríti a felhasználót, hogy jelentkezzen be újra.
+* **[Felhasználóifiók-adminisztrátor](#user-account-administrator)**: Ezzel a szerepkörrel rendelkező felhasználók felhasználók létrehozása, és bizonyos korlátozásokkal (lásd alább) a felhasználók minden aspektusa kezelhető. Továbbá ezzel a szerepkörrel rendelkező felhasználók is csoportok létrehozásához és kezeléséhez minden. Ez a szerepkör is létrehozhatók és kezelhetők a felhasználói nézetek, kezelhetik a támogatási jegyeket, és szolgáltatások állapotának figyelése lehetővé teszi.
 
-| Teheti meg | Nem hajtható végre |
-| --- | --- |
-| <p>Vállalati és felhasználói adatok megtekintése</p><p>Office-támogatási jegyek kezelése</p><p>A felhasználóknak, az ügyfélszolgálat adminisztrátorai és más felhasználói fiókadminisztrátorok csak-jelszavaikat</p><p>Létre és kezelhet felhasználói nézetek</p><p>Létrehozása, szerkesztése, és törli a felhasználók és csoportok és felhasználói licencek korlátozásokkal kezelése. Ő nem törölhet globális rendszergazdát vagy hozhat létre más rendszergazdákat.</p> |<p>Office-termékek számlázási és beszerzési műveletek végrehajtása</p><p>Tartományok kezelése</p><p>Vállalati adatok kezelése</p><p>Rendszergazdai szerepkörök delegálása</p><p>Címtár-szinkronizálás</p><p>Engedélyezheti vagy tilthatja le a többtényezős hitelesítés</p><p>Auditnaplók megtekintése</p> |
+  | | |
+  | --- | --- |
+  |Általános engedélyek|<p>Felhasználók és csoportok létrehozása</p><p>Létre és kezelhet felhasználói nézetek</p><p>Office-támogatási jegyek kezelése|
+  |<p>Az összes felhasználó többek között az összes rendszergazda</p>|<p>Licencek kezelése</p><p>Egyszerű felhasználónév kivételével az összes felhasználó tulajdonságainak kezelése</p>
+  |Csak a nem rendszergazda jogosultságú és a következők egyikét a korlátozott rendszergazdai szerepkörök felhasználóknak:<ul><li>Directory-olvasók<li>Vendég meghívója<li>Ügyfélszolgálati adminisztrátor<li>Üzenetközpont-olvasó<li>Jelentésolvasó<li>Felhasználóifiók-adminisztrátor|<p>Törlés és helyreállítás</p><p>Letiltása és engedélyezése</p><p>Érvénytelenítéséhez frissítési jogkivonatok</p><p>Egyszerű felhasználónév többek között az összes felhasználói tulajdonságainak kezelése</p><p>Új jelszó létrehozása</p><p>Frissítés (FIDO) eszközkulcsok</p>
 
 Az alábbi táblázatok ismertetik az Azure Active Directory minden egyes szerepkörhöz megadott engedélyeket. Egyes szerepkörök előfordulhat, hogy további engedélyekkel rendelkeznek a Microsoft services outide az Azure Active Directory.
 
@@ -747,7 +753,7 @@ Az Azure Information Protection termékkel kapcsolatos összes felügyeleti jogo
 | Microsoft.office365.serviceHealth/allEntities/allTasks | Office 365-szolgáltatás-állapot olvasása és konfigurálása. |
 | Microsoft.office365.supportTickets/allEntities/allTasks | Office 365-támogatási jegyek létrehozása és kezelése. |
 
-## <a name="intune-service-administrator"></a>Intune-szolgáltatásadminisztrátor
+## <a name="intune-service-administrator"></a>Intune szolgáltatás rendszergazdája
 Az Intune termékkel kapcsolatos összes felügyeleti jogosultsággal rendelkezik.
 
   > [!NOTE]
