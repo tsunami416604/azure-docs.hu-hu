@@ -1,59 +1,59 @@
 ---
-title: Videó keresési gyors üzembe helyezési SDK C# |} Microsoft Docs
-description: A telepítő a videó keresés SDK konzolalkalmazást.
-titleSuffix: Azure cognitive services setup News search SDK C# console application
+title: 'Rövid útmutató: Bing Video Search SDK, C#'
+titleSuffix: Azure Cognitive Services
+description: Bing Video Search SDK-konzolalkalmazás beállítása.
 services: cognitive-services
 author: mikedodaro
-manager: rosh
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-video-search
-ms.topic: article
+ms.topic: quickstart
 ms.date: 01/29/2018
-ms.author: v-gedod
-ms.openlocfilehash: f53e2d0f0052ccfabb6d750556cb532f069c9121
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
-ms.translationtype: MT
+ms.author: rosh
+ms.openlocfilehash: 6cf7a16fa28602e5e3733741db8bfb7296882487
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35349479"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47219940"
 ---
-# <a name="video-search-sdk-c-quickstart"></a>Videó gyorsindítási keresési SDK C#
+# <a name="quickstart-bing-video-search-sdk-with-c"></a>Rövid útmutató: Bing Video Search SDK C# használatával 
 
-A Bing videó keresési SDK tartalmazza a REST API-t a webes kérelmek és elemzési eredmények funkcióit.
+A Bing Video Search SDK a REST API funkcióit tartalmazza a webes kérelmekhez és az eredmények elemzéséhez.
 
-A [forráskód C# Bing videó keresési SDK minták](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7/BingVideoSearch) érhető el a Git központ.
+A [C# Bing Video Search SDK-minták forráskódja](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7/BingVideoSearch) elérhető a GitHubon.
 
 ## <a name="application-dependencies"></a>Alkalmazásfüggőségek
 
-Állítsa be a Konzolalkalmazás, a Bing videó keresési SDK használatával, keresse meg a `Manage NuGet Packages` lehetőséget a Visual Studio megoldáskezelőjében.  Adja hozzá a `Microsoft.Azure.CognitiveServices.Search.VideoSearch` csomag.
+Ha a Bing Video Search SDK-val szeretne beállítani egy konzolalkalmazást, keresse meg a `Manage NuGet Packages` lehetőséget a Visual Studióban, a Megoldáskezelőben.  Vegye fel a `Microsoft.Azure.CognitiveServices.Search.VideoSearch` csomagot.
 
-Telepíti a [[NuGet videó keresési SDK csomag]](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.VideoSearch/1.2.0) is telepíti a függőségek, beleértve:
+A [[NuGet Video Search SDK-csomag]](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.VideoSearch/1.2.0) telepítésekor függőségeket is telepít, például:
 * Microsoft.Rest.ClientRuntime
 * Microsoft.Rest.ClientRuntime.Azure
 * Newtonsoft.Json
 
 
-## <a name="video-search-client"></a>Videó keresési ügyfél
-Egy példányának létrehozása a `VideoSearchAPI` ügyfelet, adja hozzá az irányelvek segítségével:
+## <a name="video-search-client"></a>Video Search-ügyfél
+A `VideoSearchAPI` ügyfél egy példányának létrehozásához adja hozzá a using parancsokat:
 ```
 using Microsoft.Azure.CognitiveServices.Search.VideoSearch;
 using Microsoft.Azure.CognitiveServices.Search.VideoSearch.Models;
 
 ```
-Az ügyfél ezután példányosítható:
+Ezután példányosítsa az ügyfelet:
 ```
 var client = new VideoSearchAPI(new ApiKeyServiceClientCredentials("YOUR-ACCESS-KEY"));
 
 
 ```
-Az ügyfél használja a keresést a lekérdezés szövegének "SwiftKey" videók segítségével.
+Az ügyfél használatával keressen videókat a „SwiftKey” lekérdezési szöveggel.
 ```
 var videoResults = client.Videos.SearchAsync(query: "SwiftKey").Result;
 Console.WriteLine("Search videos for query \"SwiftKey\"");
 
 ```
 
-Az eredményeket elemezni, majd ellenőrizze az eredmények számát, és nyomtassa ki Azonosítóját, nevét és URL-cím első videó eredményének.
+Elemezze az eredményeket, majd ellenőrizze a találatok számát, és nyomtassa ki az első videótalálat azonosítóját, nevét és URL-címét.
 ```
 if (videoResults == null)
 {
@@ -77,9 +77,9 @@ else
 }
 
 ```
-## <a name="complete-console-application"></a>Teljes Konzolalkalmazás
+## <a name="complete-console-application"></a>A teljes konzolalkalmazás
 
-A következő Konzolalkalmazás végrehajtja a korábban meghatározott lekérdezést, és elemzi az eredményeket.
+A következő konzolalkalmazás végrehajtja az előzőleg meghatározott lekérdezést, és elemzi az eredményt.
 
 ```
 using System;
@@ -140,9 +140,9 @@ namespace VideoSrchSDK
         }
 
 ```
-## <a name="url-parameters"></a>URL-cím Paraméterek
+## <a name="url-parameters"></a>URL-paraméterek
 
-Keresési lekérdezés szöveg "Bellevue pótkocsi" az változatlan marad, a rövid videókért és 1080p feloldásához.  Ellenőrizze a eredmények számát, és nyomtassa ki Azonosítóját, nevét és URL-cím első videó eredményének.
+A „Bellevue Trailer” lekérdezési szöveggel keressen olyan videókat, amelyek változatlanok, rövidek és 1080p felbontásúak.  Ellenőrizze a találatok számát, és nyomtassa ki az első videótalálat azonosítóját, nevét és URL-címét.
 
 ```
         public static void VideoSearchWithFilters(VideoSearchAPI client)
@@ -183,8 +183,8 @@ Keresési lekérdezés szöveg "Bellevue pótkocsi" az változatlan marad, a rö
 
 
 ```
-## <a name="trending-videos"></a>A világ legnépszerűbb videói
-Keresse meg a trendekkel videók, és ellenőrizze a szalagcím csempék és kategóriák.
+## <a name="trending-videos"></a>Népszerű videók
+Keressen népszerű videókat, majd ellenőrizze a szalagcímcsempéket és a kategóriákat.
 ```
         public static void VideoTrending(VideoSearchAPI client)
         {
@@ -259,7 +259,7 @@ Keresse meg a trendekkel videók, és ellenőrizze a szalagcím csempék és kat
 
 ```
 ## <a name="details"></a>Részletek
-Videók keressen a "Bellevue pótkocsi", és keressen a videó első részletes információkat.
+Keressen a „Bellevue Trailer” kifejezéssel kapcsolatos videókat, majd keressen részletes adatokat az első videóról.
 ```
         public static void VideoDetail(VideoSearchAPI client)
         {
@@ -323,4 +323,4 @@ Videók keressen a "Bellevue pótkocsi", és keressen a videó első részletes 
 
 ## <a name="next-steps"></a>További lépések
 
-[Kognitív services .NET SDK-minták](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7)
+[Cognitive services .NET SDK-minták](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7)

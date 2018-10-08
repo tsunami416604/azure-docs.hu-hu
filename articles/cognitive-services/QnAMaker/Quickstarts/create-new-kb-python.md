@@ -1,24 +1,27 @@
 ---
-title: Új tudásbázis létrehozása – A Python rövid útmutatója – A Microsoft QnA Maker API-hoz (v4) – Azure Cognitive Services | Microsoft Docs
-description: Hozzon létre egy tudásbázist Python nyelven a gyakori kérdések és a termékkézikönyvek tárolásához és a QnA Maker használatának elkezdéséhez.
+title: 'Rövid útmutató: Python nyelvű API – Tudásbázis létrehozása – QnA Maker'
+titlesuffix: Azure Cognitive Services
+description: Ez a rövid útmutató programozott módon végigvezeti egy minta QnA Maker tudásbázis létrehozásán, amely a Cognitive Services API-fiók Azure-irányítópultján fog megjelenni.
 services: cognitive-services
-author: noellelacharite
-manager: nolachar
+author: diberry
+manager: cgronlun
 ms.service: cognitive-services
 ms.technology: qna-maker
 ms.topic: quickstart
-ms.date: 06/15/2018
-ms.author: nolachar
-ms.openlocfilehash: a8e3ae73c76c13d44267f221d37a07eea721a608
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.date: 09/12/2018
+ms.author: diberry
+ms.openlocfilehash: 9a3b801058a2614b9b484a3ebf414a9225c5371e
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "43769822"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47033294"
 ---
 # <a name="create-a-new-knowledge-base-in-python"></a>Új tudásbázis létrehozása Python nyelven
 
 Ez a rövid útmutató programozott módon végigvezeti egy minta QnA Maker tudásbázis létrehozásán, amely a Cognitive Services API-fiók Azure-irányítópultján fog megjelenni.
+
+[!INCLUDE [Code is available in Azure-Samples Github repo](../../../../includes/cognitive-services-qnamaker-python-repo-note.md)]
 
 Alább két minta GYIK URL-cím található (az „urls” **req** szótárelemben). A QnA Maker automatikusan nyer ki kérdéseket és válaszokat a félig strukturált tartalmak, például a gyakori kérdések közül, amiről további részleteket ebben az [adatforrásokat leíró](../Concepts/data-sources-supported.md) dokumentumban talál. Ebben a rövid útmutatóban saját GYIK URL-eket is használhat.
 

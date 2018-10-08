@@ -1,24 +1,25 @@
 ---
-title: A Bing Video Search egyoldalas webalkalmazást (forráskód) |} A Microsoft Docs
-description: A Bing Videókeresési API használata egy egyoldalas webalkalmazást a bemutató oktatóanyag forráskódját.
+title: 'Oktatóanyag: Egyoldalas webalkalmazás készítése – Bing Video Search'
+titlesuffix: Azure Cognitive Services
+description: Forráskód a Bing Video Search API egyoldalas webalkalmazásban való használatát bemutató oktatóanyaghoz.
 services: cognitive-services
 author: mikedodaro
-manager: rosh
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-video-search
-ms.topic: article
+ms.topic: tutorial
 ms.date: 11/01/2017
-ms.author: v-gedod
-ms.openlocfilehash: bed17c1df2b7c8dff9f874e43be8d67900fd7836
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
-ms.translationtype: MT
+ms.author: rosh
+ms.openlocfilehash: b0856be88382e1bb7a4cc65f5fd05910b814e152
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39112460"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47223287"
 ---
-# <a name="tutorial-single-page-video-search-app"></a>Oktatóanyag: Egyoldalas Videókeresési alkalmazás
+# <a name="tutorial-single-page-bing-video-search-app"></a>Oktatóanyag: Egyoldalas Bing Video Search-alkalmazás
 
-Ez az a teljes forráskódot tárgyalt a [egyoldalas alkalmazás oktatóanyag](tutorial-bing-video-search-single-page-app.md) a Bing Videókeresés. Az alkalmazás futtatásához, a forráskód másolja a Jegyzettömbbe vagy más szövegszerkesztőben, és mentse `bing.html`. Ezután nyissa meg a mentett fájlt a Microsoft Edge vagy más népszerű böngésző.
+Ez az [egyoldalas Bing Video Search-alkalmazást bemutató oktatóanyagban](tutorial-bing-video-search-single-page-app.md) ismertetett teljes forráskód. Az alkalmazás futtatásához másolja a forráskódot a Jegyzettömbbe vagy más szövegszerkesztőbe, és mentse `bing.html` néven. Ezután nyissa meg a mentett fájlt a Microsoft Edge-ben vagy más népszerű böngészőben.
 
 ```html
 <!DOCTYPE html>

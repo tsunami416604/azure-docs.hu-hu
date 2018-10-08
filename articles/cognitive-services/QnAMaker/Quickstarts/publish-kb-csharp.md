@@ -1,24 +1,27 @@
 ---
-title: Tudásbázis közzététele – A C# rövid útmutatója – Azure Cognitive Services | Microsoft Docs
+title: 'Rövid útmutató: Tudásbázis közzététele C# nyelven – QnA Maker'
+titleSuffix: Azure Cognitive Services
 description: Tudásbázis közzététele C# nyelven a QnA Makerhez.
 services: cognitive-services
-author: noellelacharite
-manager: nolachar
+author: diberry
+manager: cgronlun
 ms.service: cognitive-services
 ms.technology: qna-maker
 ms.topic: quickstart
-ms.date: 06/18/2018
-ms.author: nolachar
-ms.openlocfilehash: 2517e7d70b3235c419faf98f452d2b5f43dfad88
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
+ms.date: 09/12/2018
+ms.author: diberry
+ms.openlocfilehash: 232b8a31ccfd8fad580af1f71b6816f93342faea
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "43769589"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47033056"
 ---
 # <a name="publish-a-knowledge-base-in-c"></a>Tudásbázis közzététele C# nyelven
 
 A következő kód egy meglévő tudásbázist tesz közzé a [Publish](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75fe) metódussal.
+
+[!INCLUDE [Code is available in Azure-Samples Github repo](../../../../includes/cognitive-services-qnamaker-csharp-repo-note.md)]
 
 1. Hozzon létre egy új C#-projektet a kedvenc IDE-jében.
 2. Adja hozzá az alábbi kódot.

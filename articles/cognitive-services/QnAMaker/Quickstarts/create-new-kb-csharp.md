@@ -1,24 +1,27 @@
 ---
-title: Új tudásbázis létrehozása – A C# rövid útmutatója – A Microsoft QnA Maker API-hoz (v4) – Azure Cognitive Services | Microsoft Docs
-description: Hozzon létre egy tudásbázist C# nyelven a gyakori kérdések és a termékkézikönyvek tárolásához és a QnA Maker használatának elkezdéséhez.
+title: 'Rövid útmutató: C# nyelvű API – Tudásbázis létrehozása – QnA Maker'
+titlesuffix: Azure Cognitive Services
+description: Ez a rövid útmutató programozott módon végigvezeti egy minta QnA Maker tudásbázis létrehozásán, amely a Cognitive Services API-fiók Azure-irányítópultján fog megjelenni.
 services: cognitive-services
-author: noellelacharite
-manager: nolachar
+author: diberry
+manager: cgronlun
 ms.service: cognitive-services
 ms.technology: qna-maker
 ms.topic: quickstart
-ms.date: 06/15/2018
-ms.author: nolachar
-ms.openlocfilehash: 16d17a335bb84212497010b3eeb930582fa86dc4
-ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
+ms.date: 09/12/2018
+ms.author: diberry
+ms.openlocfilehash: 8a0840a96f21f76f3a742d973c86dd02929b8e30
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2018
-ms.locfileid: "43769774"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47039446"
 ---
 # <a name="create-a-new-knowledge-base-in-c"></a>Új tudásbázis létrehozása C# nyelven
 
 Ez a rövid útmutató programozott módon végigvezeti egy minta QnA Maker tudásbázis létrehozásán, amely a Cognitive Services API-fiók Azure-irányítópultján fog megjelenni.
+
+[!INCLUDE [Code is available in Azure-Samples Github repo](../../../../includes/cognitive-services-qnamaker-csharp-repo-note.md)]
 
 Alább két minta GYIK URL-cím található (a kb sztringben „urls”). A QnA Maker automatikusan nyer ki kérdéseket és válaszokat a félig strukturált tartalmak, például a gyakori kérdések közül, amiről további részleteket ebben az [adatforrásokat leíró](../Concepts/data-sources-supported.md) dokumentumban talál. Ebben a rövid útmutatóban saját GYIK URL-eket is használhat.
 

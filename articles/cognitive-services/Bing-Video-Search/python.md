@@ -1,35 +1,37 @@
 ---
-title: Python gyors üzembe helyezés az Azure kognitív szolgáltatások, a Bing videó keresési API |} Microsoft Docs
-description: Get információkat és a kód minták segítségével gyorsan használatának megkezdésében a videó Bing keresési API a Microsoft Azure kognitív Services.
+title: 'Rövid útmutató: Bing Video Search, Python'
+titlesuffix: Azure Cognitive Services
+description: Információk és kódminták segítségével ismerkedhet meg a Bing Video Search API használatának első lépéseivel.
 services: cognitive-services
 author: v-jerkin
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-video-search
-ms.topic: article
+ms.topic: quickstart
 ms.date: 9/21/2017
 ms.author: v-jerkin
-ms.openlocfilehash: ce4356f05e69540bc3bc3241e2ec1751ff7a7276
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
-ms.translationtype: MT
+ms.openlocfilehash: 797eb476aa3386949b08efb957edf48a97e40d6b
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35347511"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47220014"
 ---
-# <a name="quickstart-for-bing-video-search-api-with-python"></a>A Bing videó keresési API-t Python gyors üzembe helyezés
+# <a name="quickstart-bing-video-search-api-with-python"></a>Rövid útmutató: Bing Video Search API Python használatával
 
-Ez a forgatókönyv bemutatja, hogyan a Bing videó keresési API-t használó, Microsoft Azure kognitív szolgáltatások részét. Tekintse meg a [API-referencia](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference) az API-k technikai részleteiért.
+Ez az útmutató bemutatja, hogyan használható a Microsoft Cognitive Services részét képező Bing Video Search API az Azure-on. Az API-k technikai részleteit az [API-referencia](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference) című részben tekintheti meg.
 
-Futtathatja, ebben a példában Jupyter notebook [MyBinder](https://mybinder.org) az indítási kötő kattintva jelvények: 
+Ezt a példát futtathatja Jupyter-notebookként a [MyBinderen](https://mybinder.org), az indítás Binder-jelvényére kattintva. 
 
-[![Kötő](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/Microsoft/cognitive-services-notebooks/master?filepath=BingVideoSearchAPI.ipynb)
+[![Binder](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/Microsoft/cognitive-services-notebooks/master?filepath=BingVideoSearchAPI.ipynb)
 
 
 ## <a name="prerequisites"></a>Előfeltételek
-Rendelkeznie kell egy [kognitív szolgáltatások API-fiók](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) rendelkező **Bing keresési API-k**. A [ingyenes próbaverzió](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) elegendő-e a gyors üzembe helyezés. Az elérési kulcsot, ha aktiválja az ingyenes próbaverzió, vagy egy fizetős kulcsot használhatja az Azure irányítópultról van szüksége.
+Egy **Bing Search API-kat** tartalmazó [Cognitive Services API-fiókkal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) kell rendelkeznie. Az [ingyenes próbaverzió](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) elegendő ehhez a rövid útmutatóhoz. Szüksége lesz az ingyenes próbaverzió aktiválásakor kapott hozzáférési kulcsra, vagy beszerezhet egy fizetős előfizetői azonosítót az Azure-irányítópultról.
 
-## <a name="running-the-walkthrough"></a>A forgatókönyv futtatása
+## <a name="running-the-walkthrough"></a>Az útmutató futtatása
 
-Első lépésként állítsa `subscription_key` az API-kulccsal, a Bing API-szolgáltatás.
+Először állítsa a `subscription_key` értékét a Bing API-szolgáltatáshoz kapott API-kulcsára.
 
 
 ```python
@@ -37,21 +39,21 @@ subscription_key = None
 assert subscription_key
 ```
 
-Ezt követően ellenőrizze, hogy a `search_url` végpont helyességéről. Csak egy végpont írásának, a Bing keresési API-k használható. Ha engedélyezési hibákat észlel, gondosan ellenőrizze ezt az értéket a Bing keresési végpont az Azure irányítópulton ellen.
+Ellenőrizze, hogy helyes-e a `search_url` végpont. A jelen dokumentum írásakor a rendszer csak egy végpontot használ a Bing keresési API-khoz. Ha hitelesítési hibákba ütközik, ellenőrizze újra ezt az értéket az Azure-irányítópulton lévő Bing-keresési végponttal összevetve.
 
 
 ```python
 search_url = "https://api.cognitive.microsoft.com/bing/v7.0/videos/search"
 ```
 
-Állítsa be `search_term` kismacskák a videók keres
+A `search_term` értékének beállítása cicás videók kereséséhez
 
 
 ```python
 search_term = "kittens"
 ```
 
-A következő blokkolása használja a `requests` könyvtár hívásához a Bing keresési API-kat, és térjen vissza az eredményeket a JSON-objektumként a Python. Figyelje meg, hogy azt adjon át az API-kulcs használatával a `headers` könyvtár és a keresési kifejezést keresztül a `params` szótárban. A keresés találatainak szűréséhez használt beállítások teljes listájának megtekintéséhez tekintse meg a [REST API](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference) dokumentációját.
+A következő blokk a Python `requests` kódtárát használja a Bing keresési API-k meghívásához, és JSON-objektumként adja vissza az eredményeket. Figyelje meg, hogy az API-kulcs átadása a `headers` szótárban történik, a keresési kifejezés pedig a `params` szótárban. A keresési eredmények szűrésénél alkalmazható összes lehetőség teljes listáját a [REST API](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference) dokumentációjában találja.
 
 
 ```python
@@ -64,7 +66,7 @@ response.raise_for_status()
 search_results = response.json()
 ```
 
-A `search_results` objektum tartalmazza a megfelelő videók gazdag metaadatok együtt. Megtekintheti az a videók, használja a `embedHtml` tulajdonság, és helyezze be egy `IFrame`.
+A `search_results` objektum tartalmazza a releváns videókat és részletes metaadatokat. Az egyik videó megtekintéséhez használja az `embedHtml` tulajdonságát, és illessze be egy `IFrame`-be.
 
 
 ```python
@@ -75,9 +77,9 @@ HTML(search_results["value"][0]["embedHtml"].replace("autoplay=1","autoplay=0"))
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Lapozófájl videók](paging-videos.md)
-> [Resizing és a vágás miniatűr képeket](resize-and-crop-thumbnails.md)
+> [Videók lapozása](paging-videos.md)
+> [Miniatűrképek átméretezése és levágása](resize-and-crop-thumbnails.md)
 
 ## <a name="see-also"></a>Lásd még 
 
- [A webes videók keresés](search-the-web.md) [kipróbálás](https://azure.microsoft.com/services/cognitive-services/bing-video-search-api/)
+ [Videók keresése az interneten](search-the-web.md) [Kipróbálás](https://azure.microsoft.com/services/cognitive-services/bing-video-search-api/)

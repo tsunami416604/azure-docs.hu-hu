@@ -1,50 +1,50 @@
 ---
-title: Visual keresési SDK Python gyors üzembe helyezés |} Microsoft Docs
-description: SDK Python konzolalkalmazást a Visual keresési telepítője.
+title: 'Rövid útmutató: Bing Visual Search SDK, Python'
 titleSuffix: Azure Cognitive Services
+description: A Visual Search SDK Python konzolalkalmazás beállítása.
 services: cognitive-services
 author: mikedodaro
-manager: rosh
+manager: cgronlun
 ms.service: cognitive-services
-ms.component: bing-web-search
-ms.topic: article
+ms.component: bing-visual-search
+ms.topic: quickstart
 ms.date: 06/11/2018
 ms.author: v-gedod
-ms.openlocfilehash: f7a1f275f9059abdceaef577fb5ca722c9951366
-ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
-ms.translationtype: MT
+ms.openlocfilehash: 269eaccbf834646b540123dfeeeec7c569b8ced4
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36939466"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47222641"
 ---
-# <a name="visual-search-sdk-python-quickstart"></a>Visual keresési SDK Python gyors üzembe helyezés
+# <a name="quickstart-bing-visual-search-sdk-python"></a>Rövid útmutató: Bing Visual Search SDK Python
 
-A Bing Visual keresési SDK használja, a REST API a webes kérelmek és elemzési eredmények.
-A [forráskód Python Bing Visual keresési SDK minták](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/blob/master/samples/search/visual_search_samples.py) érhető el a Git központ.
+A Bing Visual Search SDK a REST API funkcióit használja a webes kérelmekhez és az eredmények elemzéséhez.
+[A Python Bing Visual Search SDK minták forráskódja](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/blob/master/samples/search/visual_search_samples.py) elérhető a GitHubon.
 
-Kód forgatókönyvek szerepelnek, az alábbi kategóriákban:
-* [Visual keresési ügyfél](#client)
-* [Teljes Konzolalkalmazás](#complete-console)
-* [Kép bináris post rendelkező cropArea](#binary-crop)
+A kódforgatókönyvek dokumentációja az alábbi címsorok alatt található:
+* [Visual Search-ügyfél](#client)
+* [Teljes konzolalkalmazás](#complete-console)
+* [Bináris kép közzététele a cropArea használatával](#binary-crop)
 * [KnowledgeRequest paraméter](#knowledge-req)
-* [Címkék, műveletek és művelettípus](#tags-actions)
+* [Címkék, műveletek és actionType](#tags-actions)
 
 ## <a name="application-dependencies"></a>Alkalmazásfüggőségek
-* SDK-hívások hitelesítése kognitív szolgáltatások API-kulcs szükséges. Regisztráljon egy [ingyenes próba kulcs](https://azure.microsoft.com/try/cognitive-services/?api=search-api-v7). A Próbakulcs jó másodpercenként 1 hívással hét napja. Éles telepítési forgatókönyvhöz [hozzáférési kulcs vásárlása](https://portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7). Lásd még: [árakról](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/visual/).
-* Ha az még nincs, telepítse a Python. Az SDK nem kompatibilis a Python 2.7, 3.3-as, illetve 3.4, 3.5-ös és 3.6.
-* A Python fejlesztési általános javaslat, hogy használja a [virtuális környezet](https://docs.python.org/3/tutorial/venv.html). Telepítse, és a virtuális környezet inicializálása a [venv modul](https://pypi.python.org/pypi/virtualenv). Python 2.7 virtualenv telepítse.
+* Az SDK-hívások hitelesítéséhez Cognitive Services API-kulcsra van szükség. Regisztráljon egy [ingyenes próbaverzióra](https://azure.microsoft.com/try/cognitive-services/?api=search-api-v7). A próbakulcs másodpercenként 1 hívással hét napig érvényes. Az éles forgatókönyvekhez [vásároljon egy hozzáférési kulcsot](https://portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7). Lásd még a [díjszabási információkat](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/visual/).
+* Ha még nincs telepítve a Python, telepítse. Az SDK a Python 2.7-es, 3.3-as, 3.4-es, 3.5-ös és 3.6-os verziójával kompatibilis.
+* A Pythonnal való fejlesztéskor általánosságban javasolt egy [virtuális környezet](https://docs.python.org/3/tutorial/venv.html) használata. Telepítse és inicializálja a virtuális környezetet az új [venv modullal](https://pypi.python.org/pypi/virtualenv). Telepítse a Python 2.7-hez készült virtualenv modult.
 ```
 python -m venv mytestenv
 ```
-Bing Visual keresési SDK-függőség telepítése:
+Telepítse a Bing Visual Search SDK függőségeit:
 ```
 cd mytestenv
 python -m pip install azure-cognitiveservices-search-visualsearch
 ```
 
 <a name="client"></a> 
-## <a name="visual-search-client"></a>Visual keresési ügyfél
-Egy példányának létrehozása a `VisualSearchAPI` ügyfél, a következő könyvtárak importálása:
+## <a name="visual-search-client"></a>Visual Search-ügyfél
+A `VisualSearchAPI` ügyfél egy példányának létrehozásához importálja a következő kódtárakat:
 ```
 import http.client, urllib.parse
 import json
@@ -58,15 +58,15 @@ from azure.cognitiveservices.search.visualsearch.models import (
     KnowledgeRequest,
 )
 ```
-Cserélje le a subscriptionKey karakterlánc értékét a érvényes előfizetés-kulccsal.
+Cserélje le a subscriptionKey sztring értékét a saját érvényes előfizetői kulcsára.
 ```
 subscription_key = 'YOUR-VISUAL-SEARCH-ACCESS-KEY'
 ```
-Az ügyfél ezután példányosítható:
+Ezután példányosítsa az ügyfelet:
 ```
 var client = new WebSearchAPI(new ApiKeyServiceClientCredentials("YOUR-ACCESS-KEY"));
 ```
-Az ügyfél használja a képek keresheti ki és eredményeket elemezni:
+Az ügyfél használatával keressen képeket, és elemezze az eredményeket:
 ```
 PATH = 'C:\\Users\\USER\\azure-cognitive-samples\\mytestenv\\TestImages\\'
 image_path = os.path.join(PATH, "image.jpg")
@@ -106,9 +106,9 @@ with open(image_path, "rb") as image_fd:
 ```
 
 <a name="complete-console"></a> 
-## <a name="complete-console-application"></a>Teljes Konzolalkalmazás
+## <a name="complete-console-application"></a>A teljes konzolalkalmazás
 
-A következő Konzolalkalmazás végrehajtja a korábban meghatározott lekérdezést, és elemzi az eredményeket:
+A következő konzolalkalmazás végrehajtja az előzőleg meghatározott lekérdezést, és elemzi az eredményeket:
 ```
 import http.client, urllib.parse
 import json
@@ -173,12 +173,12 @@ with open(image_path, "rb") as image_fd:
 
 ```
 
-Az SDK különböző funkciókat fogunk bemutatni, a Bing keresési minták.  A következő funkciók hozzáadása a korábban meghatározott `VisualSrchSDK` osztály.
+A Bing keresési minták az SDK különböző funkcióit mutatják be.  Adja hozzá az alábbi függvényeket a korábban meghatározott `VisualSrchSDK` osztályhoz.
 
 <a name="binary-crop"></a>
-## <a name="image-binary-post-with-croparea"></a>Kép bináris post rendelkező cropArea
+## <a name="image-binary-post-with-croparea"></a>Bináris kép közzététele a cropArea használatával
 
-Az alábbi kód elküldi a post-kérelmet, és egy cropArea objektum törzsét bináris kép.  Ezután hogy kiírja a imageInsightsToken, a címkék száma, a műveletek száma és az első művelettípus.
+Az alábbi kód elküld egy képbinárist a POST kérelem törzsében egy cropArea objektummal együtt.  Ezután kinyomtatja az imageInsightsToken jogkivonatot, a címkék számát, a műveletek számát és az első actionType típust.
 
 ```
 def search_image_binary_with_crop_area(client, sub_key, file_path):
@@ -227,7 +227,7 @@ def search_image_binary_with_crop_area(client, sub_key, file_path):
 <a name="knowledge-req"></a>
 ## <a name="knowledgerequest-parameter"></a>KnowledgeRequest paraméter
 
-Az alábbi kód elküldi egy kép URL-címe a `knowledgeRequest` paraméter, valamint egy \"webhely: www.bing.com\" szűrő. Ezt követően, hogy kiírja a `imageInsightsToken`, a címkék száma, a műveletek száma és az első művelettípus.
+Az alábbi kód elküldi egy kép URL-címét a `knowledgeRequest` paraméterben, valamint egy \"site:www.bing.com\" szűrőt. Ezután kinyomtatja az `imageInsightsToken` jogkivonatot, a címkék számát, a műveletek számát és az első actionType típust.
 ```
 def search_url_with_filters(client_in, sub_key):
 
@@ -274,9 +274,9 @@ def search_url_with_filters(client_in, sub_key):
 
 ```
 <a name="tags-actions"></a>
-## <a name="tags-actions-and-actiontype"></a>Címkék, műveletek és művelettípus
+## <a name="tags-actions-and-actiontype"></a>Címkék, műveletek és actionType
 
-A következő kód egy kép insights jogkivonatot a knowledgeRequest paraméter együtt egy cropArea objektum küldi el. Ezután hogy kiírja a imageInsightsToken, a címkék száma, a műveletek száma és az első művelettípus.
+Az alábbi kód elküld egy megállapítási jogkivonatot a knowledgeRequest paraméterben, valamint egy cropArea objektumot. Ezután kinyomtatja az imageInsightsToken jogkivonatot, a címkék számát, a műveletek számát és az első actionType típust.
 
 ```
     client = client_in
@@ -325,4 +325,4 @@ A következő kód egy kép insights jogkivonatot a knowledgeRequest paraméter 
 
 ## <a name="next-steps"></a>További lépések
 
-[Kognitív services .NET SDK-minták](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7).
+[Cognitive Services .NET SDK-minták](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7).

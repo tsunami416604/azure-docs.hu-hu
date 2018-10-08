@@ -1,46 +1,46 @@
 ---
-title: Vizuális keresés SDK C# Gyorsútmutató |} A Microsoft Docs
-description: A telepítő Visual Search SDK C# konzolalkalmazást.
+title: 'Rövid útmutató: A Bing Visual Search SDK C# használata'
 titleSuffix: Azure Cognitive Services
+description: A Visual Search SDK C# konzolalkalmazás beállítása.
 services: cognitive-services
 author: mikedodaro
-manager: rosh
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-web-search
-ms.topic: article
+ms.topic: quickstart
 ms.date: 05/16/2018
 ms.author: v-gedod
-ms.openlocfilehash: e9b93c46cf0702dc58398e247fef79c3f31bb50c
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
-ms.translationtype: MT
+ms.openlocfilehash: 938768ad366611b8651adc3d554c44c16a3830ef
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39213105"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47224528"
 ---
-# <a name="visual-search-sdk-c-quickstart"></a>Vizuális keresés SDK C# Gyorsútmutató
+# <a name="quickstart-bing-visual-search-sdk-c"></a>Rövid útmutató: Bing Visual Search SDK C#
 
-A Bing Visual Search SDK-t használja, a REST API-webes kéréseket és az elemzési eredményeket.
-A [forráskódját a C# a Bing Visual Search SDK-minták](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7/BingVisualSearch) Github érhető el.
+A Bing Visual Search SDK a REST API funkcióit használja webes kérelmekhez és elemzési eredményekhez.
+A [C# Bing Visual Search SDK mintáinak forráskódja](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7/BingVisualSearch) elérhető a GitHubon.
 
-Kód forgatókönyvek szerepelnek a következő kategóriákban:
-* [Vizuális keresés ügyfél](#client)
-* [Teljes Konzolalkalmazás](#complete)
-* [Kép bináris post-cropArea](#binary-crop)
+A kódforgatókönyvek a következő kategóriákban vannak dokumentálva:
+* [Visual Search-ügyfél](#client)
+* [A teljes konzolalkalmazás](#complete)
+* [Bináris kép a cropArea elemmel](#binary-crop)
 * [KnowledgeRequest paraméter](#knowledge-req)
-* [A címkék, műveleteket és actionType](#tags-actions)
-* [A címkék, műveleteket és első actionType száma száma](#num-tags-actions)
+* [Címkék, műveletek és actionType](#tags-actions)
+* [A címkék és műveletek száma, valamint az első actionType ](#num-tags-actions)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Visual Studio 2017. Ha szükséges, hogy ingyenes közösségi verziója letölthető innen: https://www.visualstudio.com/vs/community/.
-* Hitelesítés az SDK-hívásokat a Cognitive Services API-kulcs szükséges. Regisztráljon egy [ingyenes próba kulcs](https://azure.microsoft.com/try/cognitive-services/?api=search-api-v7). A Próbakulcs jó másodpercenként egy hívás a hét napja. A termelési esetben [hívóbetű vásárlása](https://portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7). Lásd még: [díjszabási információk](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/visual/).
-* Lehetővé teszi a .NET core SDK-t, .net core 1.1-es alkalmazások futtatásához. Itt megtekintheti mag, keretrendszer és a futtatókörnyezet: https://www.microsoft.com/net/download/.
+* Visual Studio 2017. Szükség esetén innen letöltheti az ingyenes közösségi verziót: https://www.visualstudio.com/vs/community/.
+* Az SDK-hívások hitelesítéséhez egy Cognitive Services API-kulcs szükséges. Regisztráljon egy [ingyenes próbaverziós kulcsért](https://azure.microsoft.com/try/cognitive-services/?api=search-api-v7). A próbaverziós kulcs hét napig érvényes, másodpercenként egy hívással. Éles környezeti forgatókönyvekhez [vásároljon hozzáférési kulcsot](https://portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7). [Díjszabási információ](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/visual/).
+* .NET Core SDK- és .NET Core 1.1-alapú alkalmazások futtatása. A CORE, a keretrendszer és a futtatókörnyezet itt tölthető le: https://www.microsoft.com/net/download/.
 
 ## <a name="application-dependencies"></a>Alkalmazásfüggőségek
 
-Szeretne beállítani egy konzolalkalmazást, a Bing Web Search SDK használatával, keresse meg a `Manage NuGet Packages` lehetőség a Visual Studio Megoldáskezelőjében.  Adja hozzá a `Microsoft.Azure.CognitiveServices.Search.VisualSearch` csomagot.
+Ha a Bing Web Search SDK-val szeretne beállítani egy konzolalkalmazást, keresse meg a `Manage NuGet Packages` lehetőséget a Visual Studióban, a Megoldáskezelőben.  Vegye fel a `Microsoft.Azure.CognitiveServices.Search.VisualSearch` csomagot.
 
-Telepíti a [NuGet Web Search SDK csomagot](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.VisualSearch/1.0) is telepíti a függőségeket, többek között:
+A [NuGet Web Search SDK-csomag](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.VisualSearch/1.0) telepítésekor függőségeket is telepít, például a következőket:
 * Microsoft.Rest.ClientRuntime
 * Microsoft.Rest.ClientRuntime.Azure
 * Newtonsoft.Json
@@ -48,20 +48,20 @@ Telepíti a [NuGet Web Search SDK csomagot](https://www.nuget.org/packages/Micro
 <a name="client"></a>
 
 ## <a name="visual-search-client"></a>Visual Search-ügyfél
-Hozzon létre egy példányt, a `VisualSearchAPI` ügyfél, Hozzáadás irányelvekkel:
+A `VisualSearchAPI` ügyfél egy példányának létrehozásához adja hozzá a using parancsot:
 
 ```csharp
 using Microsoft.Azure.CognitiveServices.Search.VisualSearch;
 using Microsoft.Azure.CognitiveServices.Search.VisualSearch.Models;
 ```
 
-Ezután hozza létre az ügyfél:
+Ezután példányosítsa az ügyfelet:
 
 ```csharp
 var client = new WebSearchAPI(new ApiKeyServiceClientCredentials("YOUR-ACCESS-KEY"));
 ```
 
-Az ügyfél kereshet a lemezképeket használja:
+Az ügyféllel keressen képeket:
 
 ```csharp
  System.IO.FileStream stream = new FileStream(Path.Combine("TestImages", "image.jpg"), FileMode.Open;
@@ -69,7 +69,7 @@ Az ügyfél kereshet a lemezképeket használja:
  var visualSearchResults = client.Images.VisualSearchMethodAsync(image: stream, knowledgeRequest: (string)null).Result;
 ```
 
-Elemezni az előző lekérdezés eredményei:
+Elemezze az előző lekérdezés eredményeit:
 
 ```csharp
 // Visual Search results
@@ -103,9 +103,9 @@ if (visualSearchResults.Tags.Count > 0)
 
 <a name="complete"></a> 
 
-## <a name="complete-console-application"></a>Teljes Konzolalkalmazás
+## <a name="complete-console-application"></a>A teljes konzolalkalmazás
 
-A következő Konzolalkalmazás végrehajtja a korábban meghatározott lekérdezést, és elemzi az eredmények:
+A következő konzolalkalmazás végrehajtja a korábban definiált lekérdezést, és elemzi az eredményeket:
 
 ```csharp
 using Microsoft.Azure.CognitiveServices.Search.VisualSearch;
@@ -200,13 +200,13 @@ namespace VisualSrchSDK
 }
 ```
 
-A Bing search-minták az SDK különböző funkcióit mutatják be.  A következő funkciók hozzáadása a korábban meghatározott `VisualSrchSDK` osztály.
+A Bing keresőmintái az SDK különböző funkcióit mutatják be.  Adja hozzá a következő függvényeket a korábban definiált `VisualSrchSDK` osztályhoz.
 
 <a name="binary-crop"></a>
 
-## <a name="image-binary-post-with-croparea"></a>Kép bináris post-cropArea
+## <a name="image-binary-post-with-croparea"></a>Bináris kép a cropArea elemmel
 
-A következő kódot küld, és a egy cropArea objektumot a post-kérés törzse bináris képet.  Ezután jelenít meg a imageInsightsToken, a címkék száma, a műveletek száma és az első actionType.
+A következő kód egy bináris képet és egy cropArea-objektumot küld a POST-kérés törzsében.  Ezután kinyomtatja az imageInsightsTokent, a címkék számát, a műveletek számát, valamint az első actionType elemet.
 
 ```csharp
 public static void VisualSearchImageBinaryWithCropArea(string subscriptionKey)
@@ -280,7 +280,7 @@ public static void VisualSearchImageBinaryWithCropArea(string subscriptionKey)
 
 ## <a name="knowledgerequest-parameter"></a>KnowledgeRequest paraméter
 
-Küld egy kép URL-címe a következő kódot a `knowledgeRequest` paramétert, és egy \"hely: www.bing.com\" szűrőt.  Jelenít meg, majd a `imageInsightsToken`, a címkék száma, a műveletek száma és az első actionType.
+A következő kód egy kép URL-címét, valamint a \"site:www.bing.com\" szűrőt küldi a `knowledgeRequest` paraméterben.  Ezután kinyomtatja az `imageInsightsToken` elemet, a címkék számát, a műveletek számát, valamint az első actionType elemet.
 
 ```csharp
 public static void VisualSearchUrlWithFilters(string subscriptionKey)
@@ -353,9 +353,9 @@ public static void VisualSearchUrlWithFilters(string subscriptionKey)
 
 <a name="tags-actions"></a>
 
-## <a name="tags-actions-and-actiontype"></a>A címkék, műveleteket és actionType
+## <a name="tags-actions-and-actiontype"></a>Címkék, műveletek és actionType
 
-A következő kódot egy kép insights tokent a knowledgeRequest paramétert, és a egy cropArea objektum küldi el.  Ezután jelenít meg a imageInsightsToken, a címkék száma, a műveletek száma és az első actionType.
+A következő kód egy imageinsightstoken elemet és egy cropArea-objektumot küld a knowledgeRequest paraméterben.  Ezután kinyomtatja az imageInsightsTokent, a címkék számát, a műveletek számát, valamint az első actionType elemet.
 
 ```csharp
 public static void VisualSearchInsightsTokenWithCropArea(string subscriptionKey)
@@ -427,9 +427,9 @@ public static void VisualSearchInsightsTokenWithCropArea(string subscriptionKey)
 
 <a name="num-tags-actions"></a>
 
-## <a name="number-of-tags-number-of-actions-and-first-actiontype"></a>A címkék, műveleteket és első actionType száma száma
+## <a name="number-of-tags-number-of-actions-and-first-actiontype"></a>A címkék és műveletek száma, valamint az első actionType
 
-A következő kódot egy kép URL-címe a knowledgeRequest paramétert, és egy növényi területen küldi el.  Majd kinyomtatja a imageInsightsToken, a címkék száma, a műveletek száma és az első actionType.
+A következő kód egy kép URL-címét és egy körülvágási területet küld a knowledgeRequest paraméterben.  Ezután kinyomtatja az imageInsightsTokent, a címkék számát, a műveletek számát, valamint az első actionType elemet.
 
 ```csharp
 public static void VisualSearchUrlWithJson(string subscriptionKey)
@@ -514,4 +514,4 @@ public static void VisualSearchUrlWithJson(string subscriptionKey)
 
 ## <a name="next-steps"></a>További lépések
 
-[Cognitive Services .NET SDK-minták](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7).
+[Cognitive services .NET SDK-minták](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7).

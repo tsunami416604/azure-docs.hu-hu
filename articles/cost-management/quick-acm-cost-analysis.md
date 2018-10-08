@@ -1,0 +1,107 @@
+---
+title: Rövid útmutató – Az Azure-költségek feltérképezése költségelemzés használatával | Microsoft Docs
+description: Ez a rövid útmutató bemutatja, hogyan vizsgálhatja meg és elemezheti vállalata Azure-költségeit a Költségelemzés szolgáltatás használatával.
+services: cost-management
+keywords: ''
+author: bandersmsft
+ms.author: banders
+ms.date: 09/21/2018s
+ms.topic: quickstart
+ms.service: cost-management
+manager: dougeby
+ms.custom: ''
+ms.openlocfilehash: 9092629c7bef46cdb7c464fca5e22d4aea0da9fc
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47041540"
+---
+# <a name="quickstart-explore-and-analyze-costs-with-cost-analysis"></a>Rövid útmutató – Költségek feltérképezése és elemzése a Költségelemzés szolgáltatás használatával
+
+Ahhoz, hogy érdemben szabályozhassa és optimalizálhassa Azure-költségeit, fontos, hogy tudja a vállalaton belül hol keletkeznek ezek a költségek. Emellett nem árt, ha tudja, mennyibe kerülnek az egyes szolgáltatások, és milyen környezeteket vagy rendszereket szolgálnak ki. A költségek teljes spektrumának ismerete elengedhetetlen a szervezet kiadásaiban fellépő mintázatok pontos megértéséhez. A kiadásoknál fellépő mintázatok segítségével költségszabályozó mechanizmusok, például költségkeretek léptethetők érvénybe.
+
+Ebben a rövid útmutatóban költségelemzés használatával megvizsgálja és elemzi a szervezet költségeit. Az összesített költségeket szervezetekre lebontva jelenítheti meg, így jobban átláthatja, hogy az idő múlásával mely területeken keletkeznek költségei és felismerheti a kiadások trendjeit. Megtekintheti az egy adott időszak során felhalmozott költségeket is, így havi, negyedéves vagy akár éves költségtrendbecsléseket is készíthet a költségvetéshez viszonyítva. Költségvetés használatával könnyebb betartani a pénzügyi korlátozásokat. Ezen felül a költségvetés segít áttekinteni napi vagy havi szintű költségeit és elkülöníteni a rendhagyó kiadásokat. Az adatokat le is töltheti további elemzés vagy külső rendszerben való használat céljából.
+
+Ezen rövid útmutató segítségével megtanulhatja a következőket:
+
+- Költségek áttekintése a Költségelemzés használatával
+- Költségnézetek testreszabása
+- Költségelemzési adatok letöltése
+
+
+## <a name="prerequisites"></a>Előfeltételek
+
+A Költségelemzés az összes [Nagyvállalati Szerződéssel](https://azure.microsoft.com/pricing/enterprise-agreement/) rendelkező ügyfél számára elérhető. A költségadatok megtekintéséhez olvasási jogosultsággal kell rendelkeznie a következő hatókörök legalább egyikében:
+
+- Számlázási fiók
+- Részleg
+- Regisztrációs fiók
+- Felügyeleti csoport
+- Előfizetés
+- Erőforráscsoport
+
+
+## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
+
+- Jelentkezzen be az Azure Portalra a http://portal.azure.com webhelyen.
+
+## <a name="review-costs-in-cost-analysis"></a>Költségek áttekintése a Költségelemzés használatával
+
+A költségek költségelemzés használatával való megtekintéséhez az Azure Portalon lépjen a **Költségkezelés + Számlázás**&gt;**Költségkezelés**&gt;**Hatókör megváltoztatása** területre, majd válassza ki a hatókört, és kattintson a **Kiválasztás** lehetőségre.
+
+A választott hatókör az adatkonszolidációt és a költségadatokhoz való hozzáférés szabályozását határozza meg a Költségkezelés során. A hatókörök használata során nem lehet egyszerre több hatókört is kiválasztani. Ehelyett egy magasabb szintű hatókört választ ki, amely alá több alacsonyabb szintű hatókör is tartozik, és szűrő alkalmazásával keresi meg a kívánt adatokat. Ez azért fontos, mert nem minden személy rendelkezhet hozzáféréssel egy szülőhatókörhöz, amely több gyermekhatókört is magába foglal.
+
+Kattintson a **Költségelemzés megnyitása** lehetőségre.
+
+A kezdő költségelemzési nézet a következő területeket foglalja magába:
+
+**Összesen** – Az aktuális hónap összes költségét jeleníti meg.
+
+**Költségkeret** – A kijelölt hatókör tervezett költségkeretét jeleníti meg, amennyiben az elérhető.
+
+**Halmozott költség** – Megjeleníti az összes összegyűlt napi kiadást a hónap kezdetétől számítva. Miután számlázási fiókjához vagy előfizetéséhez [létrehozta költségvetését](tutorial-acm-create-budgets.md), itt gyorsan, költségkeretéhez viszonyítottan áttekintheti kiadási trendjeit. A kurzort egy adott dátum felé helyezve megtekintheti az adott nap halmozott költségeit.
+
+**Kimutatásdiagramok (fánkdiagramok)** – Dinamikus kimutatásokat tesznek lehetővé a teljes költséget alapvető jellemzők alapján lebontva. Az adott hónap költségeit jelenítik meg a legmagasabb halmozott költségtől a legalacsonyabb felé. A kimutatásdiagramokat bármikor módosíthatja másik kimutatás kiválasztásával. A költségek alapértelmezetten a következő kategóriákba vannak sorolva: szolgáltatás (fogyasztásmérő kategória), hely (régió), valamint gyermekhatókör. Például a regisztrációs fiókok a számlázási fiókok alatt, az erőforráscsoportok az előfizetések alatt, az erőforrások, pedig az erőforráscsoportok alatt jelennek meg.
+
+![A költségelemzés kezdőnézete](./media/quick-acm-cost-analysis/cost-analysis-01.png)
+
+## <a name="customize-cost-views"></a>Költségnézetek testreszabása
+
+Az alapértelmezett nézet gyors választ adhat az olyan gyakori kérdésekre, mint:
+
+- Mennyit költöttem összesen?
+- Belül maradok-e a költségkeretemen?
+
+Azonban sok esetben ennél mélyebb elemzésre is szükség lehet. A testreszabást az oldal tetején a dátum kiválasztásánál kezdhetjük.
+
+Alapértelmezetten a költségelemzés az aktuális hónap adatait jeleníti meg. A választómező segítségével gyorsan átválthat az előző hónap, az aktuális hónap, az aktuális negyedév, az aktuális év, vagy egy egyénileg választott dátumtartomány adatainak megjelenítésére. A előző hónap lehetőség választásával könnyedén kielemezheti legfrissebb Azure-számláját és egyeztetheti kiadásait. Az aktuális negyedév és aktuális év lehetőségek segítenek költségeit nyomon követni a hosszabb távú költségvetések viszonyában is. Egyedi dátumtartományt is megadhat. Kiválaszthat például egyetlen napot, az elmúlt hét napot, vagy bármilyen időtartamot az aktuális hónaptól számítva egy évre visszamenőleg.
+
+![Dátumválasztó](./media/quick-acm-cost-analysis/date-selector.png)
+
+A költségelemzés alapértelmezetten a **Halmozott** költségeket jeleníti meg. A halmozott költségek az egyes napok költségét, valamint a megelőző napok költségeit foglalják magukba, tehát a napi költségek folyamatos halmozódásának nyomon követésére szolgálnak. A nézetet arra optimalizáltuk, hogy megvizsgálhassa, hogyan alakulnak költségei az adott időszakban a tervezett költségvetéshez képest.
+
+Emellett a **napi** nézet használatával az egyes napok költségeit is megtekintheti. A napi nézet nem jeleníti meg a növekedési trendeket. A nézet célja a szabálytalanságok, vagyis a kiugróan magas vagy alacsony értékek megjelenítése a napról napra jelentkező költségekben. Ha költségvetést is kiválasztott, a napi nézet egy becslést is megjelenít az egy napra vonatkozó költségkeretet illetően. Ha a napi költségei következetesen meghaladják a becsült napi költségkeretet, várhatóan havi költségkeretét is túl fogja lépni. A becsült napi költségkeret egy olyan eszköz, amellyel könnyebben megjelenítheti költségvetése alacsonyabb szintjeit. Ha napi költségei ingadozóak, a becsült napi költségkeret viszonya a havi költségkeretével kevésbé lesz pontos.
+
+![Napi nézet](./media/quick-acm-cost-analysis/daily-view.png)
+
+A **Csoportosítás** használatával csoportkategóriák közül választhat, és módosítja, mely adatok jelenjenek meg a felső összes költség terület diagramjában. A csoportosítás használatával gyorsan áttekintheti költségei milyen erőforrástípusok szerinti kategóriákra bonthatók. Íme egy példa az elmúlt havi Azure-szolgáltatási költségeket bemutató nézetről.
+
+![Csoportosított napi halmozott költségek megtekintése](./media/quick-acm-cost-analysis/grouped-daily-accum-view.png)
+
+A felső összes költség nézet alatt található kimutatásdiagramok különböző csoportosítási és szűrési kategóriák nézeteit jelenítik meg. Ha kiválasztja valamelyik csoportosítási kategóriát, az összes költség teljes adatkészlete a nézet alsó részére kerül. Íme egy példa az erőforráscsoportokhoz.
+
+![A jelenlegi nézet összes adata](./media/quick-acm-cost-analysis/full-data-set.png)
+
+Az előző képen az erőforráscsoportok nevei olvashatóak. Az egyes erőforrások címkéi nem érhetőek el egyik költségelemzési nézet, szűrési feltétel vagy csoportosítás használatával sem.
+
+## <a name="download-cost-analysis-data"></a>Költségelemzési adatok letöltése
+
+A költségelemzés adatait **letöltheti** és az Azure Portalon jelenleg látható összes adatból egy CSV-fájlt generálhat. Az alkalmazott csoportosítások és szűrők a fájlban is szerepelni fognak. A fájlban az összes költség diagram olyan mögöttes adatai is szerepelni fognak, amelyek az aktív nézetben nem láthatóak.
+
+## <a name="next-steps"></a>További lépések
+
+Lépjen tovább az első oktatóanyaghoz, amely a költségvetés létrehozását és kezelését mutatja be.
+
+> [!div class="nextstepaction"]
+> [Költségvetések létrehozása és kezelése](tutorial-acm-create-budgets.md)

@@ -1,32 +1,32 @@
 ---
-title: A Bing Visual Search feltöltési kép oktatóanyag |} A Microsoft Docs
-titleSuffix: Bing Web Search APIs - Cognitive Services
-description: Kép feltöltése a Bing kaphat elemzési információkat, majd elemzése és megjelenítése a választ, a folyamat leáll.
+title: 'Oktatóanyag: Kép feltöltése – Bing Visual Search'
+titleSuffix: Azure Cognitive Services
+description: Lebontja a kép a Bingbe való feltöltésének folyamatát, melynek során a rendszer megállapításokat ad vissza a képről, majd elemzi és megjeleníti a választ.
 services: cognitive-services
 author: swhite-msft
-manager: rosh
+manager: cgronlun
 ms.service: cognitive-services
 ms.technology: bing-visual-search
-ms.topic: article
+ms.topic: tutorial
 ms.date: 07/10/2018
 ms.author: scottwhi
-ms.openlocfilehash: 1352ccbcda35c693c5ac0b36156af199ae46bee9
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
-ms.translationtype: MT
+ms.openlocfilehash: a5bc5197ecd1f35b4d0026caa076a844c9d57c40
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39068668"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47221321"
 ---
-# <a name="tutorial-breaking-down-bing-visual-search-upload"></a>Oktatóanyag: Bontásához, a Bing Visual Search feltöltése
+# <a name="tutorial-breaking-down-bing-visual-search-upload"></a>Oktatóanyag: A Bing Visual Search feltöltési folyamatának lebontása
 
-Ebben az oktatóanyagban felszámolja kép feltöltése a Bing és az elemzések visszaállítani. Azt is bemutatja, hogyan eléréséhez, és az elemzések megjelennek a JSON-választ. A teljes HTML és JavaScript példa: [fejezze be a kódot](#complete-code).
+Ez az oktatóanyag lebontja a kép Bingbe való feltöltésének és a megállapítások visszaadásának folyamatát Azt is bemutatja, hogyan érhető el és jeleníthető meg a JSON-válaszban lévő megállapítás. A teljes HTML- és JavaScript-példáért tekintse meg a [teljes kódot](#complete-code).
 
-Ebben az oktatóanyagban, amely szeretne Fedezze fel a Bing Visual Search válasz tartalmát a fejlesztő biztosítunk. Nem a alkalmazni minden használati és megjelenítési követelményeihez (például nem biztosítják a Microsoft adatvédelmi hivatkozás). Minden használati követelmények, lásd: [követelmények Bing használata és megjelenítése](./use-and-display-requirements.md).
+Ez az oktatóanyag azoknak a fejlesztőknek szól, akik a Bing Visual Search által visszaadott válasz tartalmát szeretnék megvizsgálni. Nem alkalmaz minden használati és megjelenítési követelményt (például nem biztosít hivatkozást a Microsoft adatvédelmi szabályzatához). Az összes használati követelmény megismeréséhez tekintse meg a [Bing használati és megjelenítési követelményeit](./use-and-display-requirements.md).
 
 
-## <a name="where-to-start"></a>Hol kell elkezdeni?
+## <a name="where-to-start"></a>Első lépések
 
-Kezdjük egy HTML-oldalt, amely elküldi a Bing képet, és visszakap insights, és megjeleníti őket. A kedvenc szerkesztőjében hozzon létre egy fájlt, uploaddemo.html. Adja hozzá a fájlhoz a következő egyszerű HTML-struktúrát.
+Kezdjük egy HTML-oldallal, amely elküld egy képet a Bingnek, majd megjeleníti a visszakapott megállapításokat. Hozzon létre egy uploaddemo.html nevű fájlt kedvenc szerkesztőjében. Adja hozzá a következő alapvető HTML-struktúrát a fájlhoz.
 
 ```html
 <!DOCTYPE html>
@@ -40,7 +40,7 @@ Kezdjük egy HTML-oldalt, amely elküldi a Bing képet, és visszakap insights, 
 </html>      
 ```
 
-Először hozzunk osztása a lap egy kérelem szakaszt, ahol a felhasználó megadja a kérés szükséges összes információt, és a egy válasz szakaszt, ahol az insights jelennek meg. Adja hozzá a következő \<div\> -címkék a \<törzs\>. A \<hr\> címke vizuálisan delineates a kérelem szakaszban, a válasz szakaszban.
+Kezdésként osszuk fel az oldalt egy kérelmi szakara és egy válasz szakaszra. A kérelmi szakaszban a felhasználó a kérelemhez szükséges adatokat adhatja meg, a válasz szakaszban pedig a visszakapott megállapítások jelennek meg. Adja hozzá a következő \<div\> címkéket a \<body\> szakaszhoz. A \<hr\> címke vizuálisan elválasztja a válasz szakaszt és a kérelem szakaszt.
 
 ```html
         <div id="requestSection"></div>
@@ -50,13 +50,13 @@ Először hozzunk osztása a lap egy kérelem szakaszt, ahol a felhasználó meg
         <div id="responseSection"></div>
 ```
 
-## <a name="get-the-file-to-upload"></a>A feltölteni kívánt fájl beolvasása
+## <a name="get-the-file-to-upload"></a>A fájl feltöltése
 
-Ahhoz, hogy a felhasználó, válassza ki a feltölteni a lemezképet, a bemutató használja a \<bemeneti\> a type attribútumot állítsa be a következő fájl címke. A felhasználói felületen kell, hogy törölje a jelet, hogy használja-e a bemutató a Bing keresési eredményt. 
+Ahhoz, hogy a felhasználó kiválaszthasson egy feltöltendő képet, a bemutató az \<input\> címkét használja, fájl értékre állított típus attribútummal. A felhasználói felületnek egyértelművé kell tennie, hogy a bemutató a Binget használja a keresési eredmények megjelenítéséhez. 
 
-Adja hozzá a következő \<div\> , a requestSection div. A bemeneti fájllal fogad bármilyen kép típusa (például .jpg, .gif, .png) egyetlen fájlt. A `onchange` esemény adja meg a kezelő, amelynek a neve, amikor a felhasználó kiválaszt egy fájlt.
+Adja hozzá a következő \<div\> címkéket a requestSection divhez. A bemeneti fájl egyetlen képet fogad el, amely bármilyen típusú lehet (például .jpg, .gif, .png). Az `onchange` esemény megadja a kezelőt, amelyet a rendszer akkor hív meg, amikor a felhasználó kiválaszt egy fájlt.
 
-A \<kimeneti\> címkét használ a kiválasztott kép egy miniatűr megjelenítéséhez.
+Az \<output\> címke a kiválasztott kép miniatűrjének megjelenítésére használható.
 
 
 ```html
@@ -69,14 +69,14 @@ A \<kimeneti\> címkét használ a kiválasztott kép egy miniatűr megjelenít�
             </div>
 ```
 
-Mielőtt hozzáadná a kezelő, adjon hozzá egy \<parancsfájl\> címkét a \<fő\> címke.
+Mielőtt hozzáadná a kezelőt, adjon hozzá egy \<script\> címkét a \<head\> címkéhez.
 
 ```html
         <script>
         <\script>
 ```
 
-Az alábbiakban látható a kezelő, amely a kiválasztott lemezképhez rögzíti. A kezelő beépített logikája képes ellenőrizze, hogy a kiválasztott fájl képfájl és annak mérete 1 MB vagy kisebb. Engedélyezheti a felhasználók kiválaszthatják a nagyobb fájlok, de mielőtt feltöltené azokat a Bing csökkentése érdekében a lemezkép mérete kisebb, mint 1 MB-ra kell. A legutolsó dolog, a kezelő does megjelenítéséhez a kép miniatűrjét, így a felhasználónak engedélyt a fájl visual emlékeztetőt.
+Az alábbi képen a kiválasztott képet rögzítő kezelő látható. A kezelő logikát tartalmaz, amely biztosítja, hogy a kiválasztott fájlt egy képfájl, a mérete pedig 1 MB vagy kisebb legyen. Engedélyezheti a felhasználóknak, hogy nagyobb fájlt válasszanak ki, de a Bingbe történő feltöltés előtt 1 MB-nál kisebbre kell csökkentenie a kép méretét. Az utolsó művelet, amelyet a kezelő elvégez, a kép miniatűrjének megjelenítése, így a felhasználó vizuális emlékeztetőt kap a kiválasztott fájlról.
 
 ```javascript
         function handleFileSelect(selector) {
@@ -126,9 +126,9 @@ Az alábbiakban látható a kezelő, amely a kiválasztott lemezképhez rögzít
 ```
 
 
-## <a name="what-else-is-needed-before-making-the-call-to-bing"></a>Tudnivalók a Bing-hívás végrehajtása előtt van szükség?
+## <a name="what-else-is-needed-before-making-the-call-to-bing"></a>Mire van szükség a Bing meghívása előtt?
 
-A bemutató továbbra is szüksége van egy előfizetési kulcsot. A gyakorlatban akkor valószínűleg az előfizetési kulcs biztonságos tárolóból azonban ez a bemutató egyszerűsége kell adja meg azt a felhasználói felületen. Adja hozzá a következő \<bemeneti\> címkét (az a szöveges értékre type attribútum) a \<törzs\> csak a fájl alábbi \<kimeneti\> címke.
+A bemutatóhoz még szükség van egy előfizetési kulcsra is. A gyakorlatban az előfizetési kulcsot valószínűleg egy biztonságos tárolóból szerezné be, de a bemutató egyszerűségének kedvéért a felhasználói felületen kell megadnia. Adja hozzá a következő \<input\> címkét (a típus attribútum beállítása szöveg legyen) a \<body\> részhez a fájl \<output\> címkéje alatt.
 
 ```html
         <div>
@@ -138,9 +138,9 @@ A bemutató továbbra is szüksége van egy előfizetési kulcsot. A gyakorlatba
         </div>
 ```
 
-A lemezkép és az aktuális előfizetési kulcsot győződjön meg, a hívást a Bing Visual Search kaphat elemzési információkat a lemezképet. A hívás használja az alapértelmezett piaci és biztonságos keresés értékeket (en-us és közepes, jelölik).
+A kép és az előfizetési kulcs birtokában meghívhatja a Bing Visual Search szolgáltatást, hogy megállapításokat kapjon a képről. A hívás az alapértelmezett piaci és biztonságos keresési értékeket használja (en-us és közepes).
 
-Ez a bemutató lehetővé teszi a felhasználó módosítsa ezeket az értékeket. Adja hozzá a következő \<div\> alább az előfizetési kulcs div. A bemutató használ egy \<kiválasztása\> piaci és biztonságos keresés értékeket adja meg a legördülő listából válassza ki a címkét. Mindkét listái Bing alapértelmezett értéket.
+Ez a bemutató lehetővé teszi, hogy a felhasználó módosítsa ezeket az értékeket. Adja hozzá a következő \<div\> elemet az előfizetési kulcs div eleme alatt. A bemutató a \<select\> címkét használja a piaci és biztonságos keresési értékek legördülő listájának megadásához. Mindkét lista a Bing alapértelmezett értékeit jeleníti meg.
 
  
 ```html
@@ -203,7 +203,7 @@ Ez a bemutató lehetővé teszi a felhasználó módosítsa ezeket az értékeke
         </div>
 ```
 
-A bemutató elrejti a listákat egy összecsukható div, amelyek vezérlik a lekérdezési beállítások hivatkozására. Ha a lekérdezési beállítások hivatkozására kattint, a div kibővíti az, hogy mit talál és a lekérdezési beállítások módosítása. Kattintva a lekérdezési beállítások újra, a div összecsukódik hivatkozásra, és el van rejtve. Az alábbiakban látható a lekérdezési beállítások hivatkozására onclick kezelő. A kezelő szabályozza a div megjelenített vagy rejtett. A kezelő történő hozzáadása a \<parancsfájl\> szakaszban. A kezelő a bemutató a DIV összes összecsukható címkék használják.
+A bemutató elrejti a listákat egy összecsukható div elemben, amelyet a Lekérdezési beállítások hivatkozás vezérel. Ha a Lekérdezési beállítások hivatkozásra kattint, a div lenyílik, és lehetőséget kap a lekérdezési beállítások megtekintésére és módosítására. Ha ismét a Lekérdezési beállítások hivatkozásra kattint, a rendszer összecsukja és elrejti a div elemet. A következő képen a Lekérdezési beállítások hivatkozás onclick kezelője látható. A kezelő vezérli a div kibontását és összecsukását. Adja hozzá ezt a kezelőt a \<script\> szakaszhoz. A kezelőt minden összecsukható div használja ebben a bemutatóban.
 
 ```javascript
         // Contains the toggle state of divs.
@@ -226,15 +226,15 @@ A bemutató elrejti a listákat egy összecsukható div, amelyek vezérlik a lek
 ```
 
 
-## <a name="making-the-call"></a>A következő hívással
+## <a name="making-the-call"></a>A hívás kezdeményezése
 
-Adja hozzá a következő Get insights gomb a beállítások div alábbi törzsében. A gomb lehetővé teszi, hogy a felhasználó a hívás indításához. Amikor a felhasználó a gombra kattint, a kurzort a tartalomfogyasztás várakozási kurzor változott, és a kattintásra-kezelő nevezzük.
+Adja hozzá az alábbi Megállapítások lekérése gombot a törzsben található beállítások div alatt. A gomb lehetővé teszi, hogy a felhasználó elindítsa a hívást. Ha a felhasználó a gombra kattint, a kurzor átvált a várakozást jelző forgó kurzorra, a rendszer pedig meghívja az onclick kezelőt.
 
 ```html
         <p><input type="button" id="query" value="Get insights" onclick="document.body.style.cursor='wait'; handleQuery()" /></p>
 ```
 
-A gomb onclick kezelő hozzáadása a \<parancsfájl\> címke. A kezelő biztosítja, hogy az előfizetési kulcsot jelen, és 32 karakter hosszú, és, hogy a kép lett kiválasztva. Egy korábbi lekérdezés által elemzéseket is törli. Ha mindent rendben, meghívja a sendRequest függvény, amely a hívást.
+Adja hozzá a gomb onclick kezelőjét a \<script\> címkéhez. A kezelő biztosítja az előfizetési kulcs meglétét és 32 karakteres hosszúságát, valamint azt, hogy egy kép legyen kiválasztva. Eltávolítja az előző lekérdezésből származó megállapításokat is. Ha minden rendben, meghívja a sendRequest függvényt a hívás indításához.
 
 ```javascript
         function handleQuery() {
@@ -271,7 +271,7 @@ A gomb onclick kezelő hozzáadása a \<parancsfájl\> címke. A kezelő biztos�
         }
 ```
 
-A sendRequest függvény formázza a végpont URL-címe, állítja be az Ocp-Apim-Subscription-Key fejléc az előfizetési kulcsot, fűzi hozzá a bináris feltöltése a kép, adja meg a válasz-kezelő és a hívást. 
+A sendRequest függvény formázza a végponti URL-címet, beállítja az Ocp-Apim-Subscription-Key fejlécet az előfizetési kulcshoz, hozzáfűzi a kép bináris adatait a feltöltéshez, megadja a válaszkezelőt és elvégzi a hívást. 
 
 ```javascript
         function sendRequest(file, key) {
@@ -293,11 +293,11 @@ A sendRequest függvény formázza a végpont URL-címe, állítja be az Ocp-Api
 
 ## <a name="handling-the-response"></a>A válasz kezelése
 
-A handleResponse függvény kezeli a hívást a Bing Visual Search válaszát. Ha a hívás sikeres, az egyes címkék, az elemzéseket tartalmazó elemzi a JSON-választ. Ezután hozzáadja a karakterlánc, a Bing – internetes keresési eredmények között, lehetővé teszik a felhasználó ismeri az adatok származási Bing az oldalon.
+A handleResponse függvény kezeli a Bing Visual Search hívásából érkező választ. Ha a hívás sikeres, elemzi a JSON-választ az egyes címkéknek megfelelően, amelyek a megállapításokat tartalmazzák. Ezután hozzáadja a Bing internetes keresés eredményei sztringet az oldalhoz, amely tájékoztatja a felhasználót, hogy az adatok a Bingből származnak.
 
-A bemutató a lapra az insights sikerült memóriakép, de néhány képet, adja vissza az adatokat, amelyek megnehezítik felhasználásához sok. Ehelyett a bemutató hoz létre egy összecsukható div egyes címkével ellátott, így felügyelheti, mennyi adatot, akkor látni.
+A bemutató az összes megállapítást a megjeleníthetné az oldalon, de néhány kép nagyon sok adatot ad vissza, amely megnehezítheti a felhasználást. Ehelyett a bemutató létrehoz egy összecsukható div elemet az egyes címkékhez, így a felhasználó kezelheti a megjelenítendő adatok mennyiségét.
 
-Adja hozzá a kezelő a \<parancsfájl\> szakaszban.
+Adja hozzá a kezelőt a \<script\> szakaszhoz.
 
 ```javascript
         function handleResponse() {
@@ -334,7 +334,7 @@ Adja hozzá a kezelő a \<parancsfájl\> szakaszban.
         }
 ```
 
-A buildTagSections végighalad az elemzett JSON-címkékkel és a hozhat létre minden címke egy div buildDiv függvényt hívja. Csakúgy, mint a lekérdezési beállítás, minden címke jelenik meg hivatkozásként. Amikor a felhasználó a hivatkozásra kattint, a címke a címkéhez társított az elemzéseket megjelenítő bontja ki. Ha a felhasználó újra a hivatkozásra kattint, a szakasz összecsukása a elrejti az elemzéseket, a felhasználó elől.
+A buildTagSections függvény végighalad az elemzett JSON-címkéken, és meghívja a buildDiv függvényt, amely létrehozza az egyes címkékhez tartozó div elemeket. Csakúgy, mint a Lekérdezési beállítások esetében, a címkék hivatkozásként jelennek meg. Ha a felhasználó a hivatkozásra kattint, a címke kibomlik, és megjelennek a hozzá társított megállapítások. Ha a felhasználó ismét a hivatkozásra kattint, a szakasz összecsukódik, elrejtve a megállapításokat.
 
 ```javascript
         function buildTagSections(tags) {
@@ -372,11 +372,11 @@ A buildTagSections végighalad az elemzett JSON-címkékkel és a hozhat létre 
         }
 ```
 
-A buildDiv függvény meghívja a addDivContent függvény, amely minden címke összecsukható div. tartalmának létrehozása
+A buildDiv függvény meghívja az addDivContent függvényt, amely létrehozza az egyes címkék összecsukható div elemeinek tartalmát.
 
-Egy címke tartalmat a JSON a választ a címke tartalmazza. A bemutató a JSON tartalmazza ezeket a JSON mögött a válasz megtekintéséhez a fejlesztők számára. Kezdetben csak az első 100 karakter a JSON jelenik meg, de kattinthat a JSON-karakterlánc minden JSON megjelenítéséhez. Ha Ön kattintson újra rá, a JSON-karakterlánc magasságúra csökken vissza 100 karakternél.
+A címke tartalmazza a címkéhez tartozó válaszból származó JSON-t. A bemutató tartalmazza a JSON-t azon fejlesztők számára, akik szeretnék látni a JSON-t a válasz mögött. Kezdetben csak az első 100 JSON-karakter jelenik meg, de ha a JSON-sztringre kattint, megjelenik a teljes JSON. Ha ismét rákattint, a JSON-sztring összecsukódik, és ismét csak 100 karakter látható.
 
-Ezután adja hozzá a Művelettípusok címke található. Minden egyes művelettípus hívja meg a különféle funkciók hozzáadása az elemzéseket.
+Következő lépésként adja hozzá a címkében található művelettípusokat. Az egyes művelettípusokhoz hívja meg a különböző függvényeket, hogy hozzáadják a megállapításokat.
 
 ```javascript
         function addDivContent(div, tag, json) {
@@ -451,9 +451,9 @@ Ezután adja hozzá a Művelettípusok címke található. Minden egyes művelet
         }
 ```
 
-Az alábbiakban a függvények, amelyek a különböző műveletek meg. Ezek a funkciók legtöbbje nagyon egyszerű &mdash; vagy biztosítanak egy kattintható rendszerképet vagy kattintható hivatkozás, amely a felhasználót, hogy egy weblap, akkor értesítést kaphatnak a lemezkép (Bing.com vagy a kép gazdagép weblap) további információt. Az oktatóanyag a elemzés társított minden adatot nem jeleníti meg. Tekintse meg egy elemzést érhető el az összes mező megjelenítéséhez [a Bing Visual Search referencia](https://aka.ms/bingvisualsearchreferencedoc).
+Az alábbi függvények használhatók a különböző műveletek megállapításainak megjelenítéséhez. Ezen függvények legtöbbje egyértelmű – vagy egy kattintható képet, vagy egy kattintható hivatkozást biztosítanak, amelyek átirányítják a felhasználót egy weboldalra, ahol további információt találhatnak a képről (a Bing.com webhelyen vagy a kép eredeti webhelyén). A bemutató nem jeleníti meg a megállapításhoz társított összes adatot. A megállapításhoz elérhető összes mező megtekintéséhez lásd: [A Bing Visual Search referenciája](https://aka.ms/bingvisualsearchreferencedoc).
 
-Ne feledje, hogy nincs egy minimális mennyiségű adatot kell megjelenítenie, a többi szerint strukturálhatja. Győződjön meg arról, hogy a megfelelőségi, lásd: [követelmények Bing használata és megjelenítése](./use-and-display-requirements.md).
+Ne feledje, hogy meg kell jelenítenie egy minimális mennyiségű adatot, de a továbbiakról Ön dönthet. A megfelelőség biztosítása érdekében lásd: [A Bing használati és megjelenítési követelményei](./use-and-display-requirements.md).
 
 
 ```javascript
@@ -676,9 +676,9 @@ Ne feledje, hogy nincs egy minimális mennyiségű adatot kell megjelenítenie, 
 
 
 
-## <a name="adding-styles-to-make-the-page-display-correctly"></a>Hogy hibásan jelennek meg az oldal stílusok hozzáadása
+## <a name="adding-styles-to-make-the-page-display-correctly"></a>Stílusok hozzáadása az oldal helyes megjelenítéséhez
 
-Adja hozzá a következő \<stílus\> részt a \<fő\> címke.
+Adja hozzá az alábbi \<style\> szakaszt a \<head\> címkéhez.
 
 ```html
         <style>
@@ -713,9 +713,9 @@ Adja hozzá a következő \<stílus\> részt a \<fő\> címke.
 
 
 
-## <a name="complete-code"></a>Teljes kódját
+## <a name="complete-code"></a>Teljes kód
 
-Itt látható a teljes HTML és JavaScript-példát.
+A teljes HTML- és JavaScript-példa.
 
 ```html
 <!DOCTYPE html>
@@ -1331,4 +1331,4 @@ Itt látható a teljes HTML és JavaScript-példát.
 
 ## <a name="next-steps"></a>További lépések
 
-Az elemzések lekérése kipróbálásához használ, és elemzéseket token, lásd: [a Bing Visual Search SDK ImageInsightsToken oktatóanyag](.\tutorial-visual-search-insights-token.md).
+A megállapítások megállapítási jogkivonatokkal történő beszerzésének megismeréséhez lásd: [A Bing Visual Search SDK ImageInsightsToken oktatóanyaga](.\tutorial-visual-search-insights-token.md).

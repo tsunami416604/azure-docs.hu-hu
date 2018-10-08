@@ -1,165 +1,166 @@
 ---
-title: Az Azure Content Moderator Facebook tartalommoderálási |} A Microsoft Docs
-description: Mérsékelt Facebook-oldalak a machine-learning alapú Content Moderator
+title: 'Oktatóanyag: Facebook-tartalom moderálása – Azure Content Moderator'
+titlesuffix: Azure Cognitive Services
+description: A Content Moderator segítségével Facebook-oldalakat moderálhat.
 services: cognitive-services
 author: sanjeev3
-manager: mikemcca
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: content-moderator
-ms.topic: article
+ms.topic: tutorial
 ms.date: 09/18/2017
 ms.author: sajagtap
-ms.openlocfilehash: 66caea65c21bb1f8bb6efa9b50c917599bb71e2f
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
-ms.translationtype: MT
+ms.openlocfilehash: ead8c1d445bf32ecaaf236b4e73c2a583c755049
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43093977"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47223938"
 ---
-# <a name="facebook-content-moderation-with-content-moderator"></a>A Content Moderator tartalom Facebook-jóváhagyás
+# <a name="tutorial-facebook-content-moderation-with-content-moderator"></a>Oktatóanyag: Facebook-tartalom moderálása a Content Moderatorral
 
-Ebben az oktatóanyagban azt megtudhatja, hogyan használható a machine learning-alapú Content Moderator mérsékelt Facebook-bejegyzések és megjegyzéseket.
+Ez az oktatóanyag bemutatja, hogyan használható a gépi tanuláson alapuló Content Moderator a Facebook-bejegyzések és -hozzászólások moderálására.
 
-Az oktatóanyag végigvezeti a felhasználót az alábbi lépéseket:
+Az oktatóanyag a következő lépéseken vezeti végig:
 
-1. A Content Moderator a csoport létrehozása.
-2. Hozzon létre az Azure Functions, a Facebook és a Content Moderator HTTP-események figyelésére.
-3. Hozzon létre egy Facebook-oldalon és a alkalmazást, és csatlakoztathatja azt a Content Moderator.
+1. Content Moderator-csapat létrehozása.
+2. A Content Moderator és a Facebook HTTP-eseményeit figyelő Azure Functions-függvények létrehozása.
+3. Facebook-oldal és -alkalmazás létrehozása, majd annak csatlakoztatása a Content Moderatorhoz.
 
-Miután készen vagyunk, Facebook küld a Content Moderator a látogatói által közzétett tartalom. A match küszöbértékek alapján, a Content Moderator munkafolyamatok vagy a tartalom közzététele vagy létrehozni a felülvizsgálatok belül a felülvizsgálati eszköz. 
+Miután ezzel elkészültünk, a Facebook elküldi a Content Moderator számára a látogatók által közzétett tartalmakat. A Content Moderator-munkafolyamat az egyezési küszöbérték alapján közzéteszi a tartalmat vagy felülvizsgálatot végez a felülvizsgálati eszközben. 
 
-A következő ábrán látható a megoldás építőelemei.
+Az alábbi ábrán a megoldás építőelemei láthatók.
 
 ![Facebook-hozzászólások moderálása](images/tutorial-facebook-moderation.png)
 
-## <a name="create-a-content-moderator-team"></a>A Content Moderator a csoport létrehozása
+## <a name="create-a-content-moderator-team"></a>Content Moderator-csapat létrehozása
 
-Tekintse meg a [rövid](quick-start.md) lapon iratkozzon fel a Content Moderator, és hozzon létre egy csapatot.
+A [rövid útmutatóban](quick-start.md) szereplő lépéseket követve regisztráljon a Content Moderatorba, és hozzon létre egy csapatot.
 
-## <a name="configure-image-moderation-workflow-threshold"></a>Kép moderálás munkafolyamat (küszöb) konfigurálása
+## <a name="configure-image-moderation-workflow-threshold"></a>Képmoderálási munkafolyamat konfigurálása (küszöbérték)
 
-Tekintse meg a [munkafolyamatok](review-tool-user-guide/workflows.md) lapján egy egyéni rendszerkép munkafolyamat (küszöb) konfigurálása. Vegye figyelembe a munkafolyamat **neve**.
+A [munkafolyamatokat](review-tool-user-guide/workflows.md) ismertető oldalon szereplő lépéseket követve konfiguráljon egy egyéni képmoderálási munkafolyamatot (küszöbérték). Jegyezze fel a munkafolyamat **nevét**.
 
-## <a name="3-configure-text-moderation-workflow-threshold"></a>3. Szöveg moderálása munkafolyamat (küszöb) konfigurálása
+## <a name="3-configure-text-moderation-workflow-threshold"></a>3. Szövegmoderálási munkafolyamat konfigurálása (küszöbérték)
 
-Hasonló lépésekkel a [munkafolyamatok](review-tool-user-guide/workflows.md) lapon konfigurálhatja egy egyéni szöveg küszöbérték és a munkafolyamat. Vegye figyelembe a munkafolyamat **neve**.
+A [munkafolyamatokat](review-tool-user-guide/workflows.md) ismertető oldalon szereplő lépéseket követve konfiguráljon egy egyéni szövegmoderálási küszöbértéket és munkafolyamatot. Jegyezze fel a munkafolyamat **nevét**.
 
-![Szöveg munkafolyamat konfigurálása](images/text-workflow-configure.PNG)
+![Szövegalapú munkafolyamat konfigurálása](images/text-workflow-configure.PNG)
 
-A munkafolyamat tesztelése a "Workflow hajtható végre" gombbal.
+A munkafolyamat teszteléséhez használja a „Munkafolyamat végrehajtása” gombot.
 
-![Szöveg munkafolyamat tesztelése](images/text-workflow-test.PNG)
+![Szövegalapú munkafolyamat tesztelése](images/text-workflow-test.PNG)
 
-## <a name="create-azure-functions"></a>Az Azure Functions létrehozása
+## <a name="create-azure-functions"></a>Azure Functions-függvény létrehozása
 
-Jelentkezzen be a [Azure felügyeleti portálján](https://portal.azure.com/) létrehozása az Azure Functions. Kövesse az alábbi lépéseket:
+Azure Functions-függvény létrehozásához jelentkezzen be az [Azure felügyeleti portáljára](https://portal.azure.com/). Kövesse az alábbi lépéseket:
 
-1. Hozzon létre egy Azure-Függvényalkalmazást, mint a a [Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-create-function-app-portal) lapot.
-2. Nyissa meg az újonnan létrehozott Függvényalkalmazás.
-3. Lépjen az alkalmazáson belüli **Platform szolgáltatások -> nastavení Aplikace**
-4. Adja meg a következőket [Alkalmazásbeállítások](https://docs.microsoft.com/azure/azure-functions/functions-how-to-use-azure-function-app-settings#settings):
+1. Hozzon létre egy Azure-függvényalkalmazást az [Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-create-function-app-portal) oldalon leírtak szerint.
+2. Nyissa meg az újonnan létrehozott függvényalkalmazást.
+3. Az alkalmazásban lépjen a **Platformfunkciók -> Alkalmazásbeállítások** területre.
+4. Adja meg az alábbi [alkalmazásbeállításokat](https://docs.microsoft.com/azure/azure-functions/functions-how-to-use-azure-function-app-settings#settings):
 
 > [!NOTE]
-> A **cm: régió** (szóközök) nélkül a régió nevét kell megadni.
-> Ha például **westeurope**, nem Nyugat-Európa, **westcentralus**, nem USA nyugati középső Régiója, és így tovább.
+> A **cm: Region** értéke a régió neve legyen (szóköz nélkül).
+> Például a West Europe helyett a **westeurope**, a West Central US helyett pedig a **westcentralus** értéket adja meg.
 >
 
-| Alkalmazás-beállítás | Leírás   | 
+| Alkalmazásbeállítás | Leírás   | 
 | -------------------- |-------------|
-| cm:TeamId   | A Content Moderator teamid értéknek  | 
-| cm:SubscriptionKey | A Content Moderator előfizetési kulcs – lásd: [hitelesítő adatok](review-tool-user-guide/credentials.md) | 
-| cm:Region | A Content Moderator régió neve, a szóközök nélkül. Lásd a fenti megjegyzést. |
-| cm:ImageWorkflow | Képeken futtatásához a munkafolyamat neve |
-| cm:TextWorkflow | Szöveg futtatásához a munkafolyamat neve |
-| cm:CallbackEndpoint | Az útmutató későbbi részében létrehozott CMListener Függvényalkalmazás URL-címe |
-| FB:VerificationToken | A titkos jogkivonat, iratkozzon fel a Facebook segítségével is hírcsatorna-esemény |
-| FB:PageAccessToken | A Facebook graph api hozzáférési jogkivonat nem jár le, és lehetővé teszi, hogy a funkció elrejtése vagy törölhetnek bejegyzések az Ön nevében. |
+| cm:TeamId   | A Content Moderator csapatazonosítójának beállítása  | 
+| cm:SubscriptionKey | A Content Moderator előfizetői azonosítója – lásd: [Hitelesítő adatok](review-tool-user-guide/credentials.md) | 
+| cm:Region | A Content Moderator-régió neve szóközök nélkül. Lásd a fenti megjegyzést. |
+| cm:ImageWorkflow | A képek esetében futtatandó munkafolyamat neve |
+| cm:TextWorkflow | A szövegek esetében futtatandó munkafolyamat neve |
+| cm:CallbackEndpoint | A jelen útmutató későbbi részében létrehozandó CMListener függvényalkalmazás URL-címe |
+| fb:VerificationToken | Titkos jogkivonat, amely a Facebook-hírcsatorna eseményeire való feliratkozásra is szolgál |
+| fb:PageAccessToken | A Facebook Graph API hozzáférési jogkivonatának nincs lejárati ideje, és lehetővé teszi, hogy a függvény az Ön nevében elrejtsen vagy töröljön bejegyzéseket. |
 
-5. Hozzon létre egy új **HttpTrigger-CSharp** nevű függvény **FBListener**. Ez a függvény facebookról fogadja az eseményeket. Ez a függvény létrehozása az alábbi lépéseket:
+5. Hozzon létre egy új **HttpTrigger-CSharp** függvényt **FBListener** néven. Ez a függvény Facebook-események fogadását végzi. A függvény létrehozásához kövesse az alábbi lépéseket:
 
-    1. Tartsa a [Azure Functions létrehozása](https://docs.microsoft.com/azure/azure-functions/functions-create-function-app-portal) referenciaként lapot.
-    2. Kattintson a **+** hozzáadása új függvény létrehozásához.
-    3. A beépített sablonok helyett válassza ki a **használatának első lépései a saját/egyéni függvény** lehetőséget.
-    4. Kattintson a csempére, amely szerint **HttpTrigger-CSharp**.
-    5. Adja meg a nevét **FBListener**. A **engedélyszint** mezőt állítsa **függvény**.
+    1. Hagyja megnyitva a [függvényalkalmazás létrehozását](https://docs.microsoft.com/azure/azure-functions/functions-create-function-app-portal) bemutató oldalt referenciaként.
+    2. Új függvény létrehozásához kattintson a **+** hozzáadás elemre.
+    3. A beépített sablonok helyett válassza a **Saját vagy egyéni függvény létrehozásának első lépései** lehetőséget.
+    4. Kattintson a **HttpTrigger-CSharp** feliratú csempére.
+    5. Adja meg az **FBListener** nevet. Az **Engedélyszint** mező értéke legyen **Függvény**.
     6. Kattintson a **Create** (Létrehozás) gombra.
-    7. Cserélje le a tartalmát a **run.csx** rendelkező tartalmát [ **FbListener/run.csx**](https://github.com/MicrosoftContentModerator/samples-fbPageModeration/blob/master/FbListener/run.csx).
+    7. Cserélje le a **run.csx** fájl tartalmát az [**FbListener/run.csx**](https://github.com/MicrosoftContentModerator/samples-fbPageModeration/blob/master/FbListener/run.csx) fájl tartalmára.
 
-6. Hozzon létre egy új **HttpTrigger-CSharp** nevű függvény **CMListener**. Ez a funkció a Content Moderator fogadja az eseményeket. Kövesse az alábbi lépéseket, ez a függvény létrehozásához.
+6. Hozzon létre egy új **HttpTrigger-CSharp** függvényt **CMListener** néven. Ez a függvény Content Moderator-események fogadását végzi. Kövesse az alábbi lépéseket a függvény létrehozásához.
 
-    1. Tartsa a [Azure Functions létrehozása](https://docs.microsoft.com/azure/azure-functions/functions-create-function-app-portal) referenciaként lapot.
-    2. Kattintson a **+** hozzáadása új függvény létrehozásához.
-    3. A beépített sablonok helyett válassza ki a **használatának első lépései a saját/egyéni függvény** lehetőséget.
-    4. Kattintson a csempére, amely szerint **HttpTrigger-CSharp**
-    5. Adja meg a nevét **CMListener**. A **engedélyszint** mezőt állítsa **függvény**.
+    1. Hagyja megnyitva a [függvényalkalmazás létrehozását](https://docs.microsoft.com/azure/azure-functions/functions-create-function-app-portal) bemutató oldalt referenciaként.
+    2. Új függvény létrehozásához kattintson a **+** hozzáadás elemre.
+    3. A beépített sablonok helyett válassza a **Saját vagy egyéni függvény létrehozásának első lépései** lehetőséget.
+    4. Kattintson a **HttpTrigger-CSharp** feliratú csempére.
+    5. Adja meg a **CMListener** nevet. Az **Engedélyszint** mező értéke legyen **Függvény**.
     6. Kattintson a **Create** (Létrehozás) gombra.
-    7. Cserélje le a tartalmát a **run.csx** rendelkező tartalmát [ **CMListener/run.csx**](https://github.com/MicrosoftContentModerator/samples-fbPageModeration/blob/master/CmListener/run.csx).
+    7. Cserélje le a **run.csx** fájl tartalmát az [**CMListener/run.csx**](https://github.com/MicrosoftContentModerator/samples-fbPageModeration/blob/master/CmListener/run.csx) fájl tartalmára.
 
-## <a name="configure-the-facebook-page-and-app"></a>A Facebook-oldalon és az alkalmazás konfigurálása
-1. Hozzon létre egy Facebook-alkalmazást.
+## <a name="configure-the-facebook-page-and-app"></a>Facebook-oldal és -alkalmazás konfigurálása
+1. Facebook-alkalmazás létrehozása.
 
-    1. Keresse meg a [Facebook fejlesztői webhelyre](https://developers.facebook.com/)
-    2. Kattintson a **saját alkalmazások**.
+    1. Lépjen a [Facebook fejlesztői webhelyére](https://developers.facebook.com/).
+    2. Kattintson a **My Apps** (Saját alkalmazások) elemre.
     3. Adjon hozzá egy új alkalmazást.
-    4. Válassza ki **Webhookok Get -> használatába**
-    5. Válassza ki **lap -> az előfizetés ehhez a témakörhöz**
-    6. Adja meg a **FBListener URL-cím** visszahívási URL-címként, és a **Token ellenőrzése** alatt vannak konfigurálva, a **Függvényalkalmazás-beállításokat**
-    7. Miután feliratkozott, görgessen le a csatorna, és válassza ki **előfizetés**.
+    4. Válassza a **Webhooks -> Get Started** (Webhookok -> Első lépések) lehetőséget.
+    5. Válassza a **Page -> Subscribe to this topic**  (Oldal -> Feliratkozás erre a témakörre) lehetőséget.
+    6. Visszahívási URL-címként adja meg **FBListener URL**-címét, valamint a **Függvényalkalmazás beállításai** területen konfigurált **Ellenőrzési jogkivonatot**.
+    7. Ha a feliratkozás megtörtént, görgessen le a hírcsatornához, és kattintson a **Feliratkozás** gombra.
 
-2. Hozzon létre egy Facebook-oldalon.
+2. Facebook-oldal létrehozása.
 
-    1. Navigáljon a [Facebook](https://www.facebook.com/bookmarks/pages) , és hozzon létre egy **új Facebook-oldalon**.
-    2. Lehetővé teszi a Facebook-alkalmazást a lap eléréséhez az alábbi lépéseket:
-        1. Keresse meg a [Graph API-tallózó](https://developers.facebook.com/tools/explorer/).
-        2. Válassza ki **alkalmazás**.
-        3. Válassza ki **lap hozzáférési jogkivonat**, küldjön egy **első** kérelem.
-        4. Kattintson a **Lapazonosító** a válaszban.
-        5. Most már fűzze hozzá a **/subscribed_apps** az URL-cím és a küldési egy **első** (válasz üres) kérelem.
-        6. Küldje el a **Post** kérelmet. A válasz való kap **sikeres: true**.
+    1. Lépjen a [Facebookra](https://www.facebook.com/bookmarks/pages), és hozzon létre egy **új Facebook-oldalt**.
+    2. Az alábbi lépéseket követve engedélyezze a Facebook alkalmazás számára az oldalhoz való hozzáférést:
+        1. Nyissa meg a [Graph API Explorert](https://developers.facebook.com/tools/explorer/).
+        2. Válassza az **Application** (Alkalmazás) elemet.
+        3. Válassza a **Page Access Token** (Oldalhozzáférési jogkivonat) elemet, majd küldjön egy **GET** kérést.
+        4. A válaszban kattintson a **Page ID** (Oldal azonosítója) elemre.
+        5. Fűzze hozzá a **/subscribed_apps** sztringet az URL-címhez, majd küldjön egy **GET** (üres válasz) kérést.
+        6. Küldjön el egy **POST** kérést. A következő választ fogja kapni: **success: true**.
 
-3. Hozzon létre egy nem avuló Graph API hozzáférési jogkivonatot.
+3. Lejárati idővel nem rendelkező Graph API hozzáférési jogkivonat létrehozása.
 
-    1. Keresse meg a [Graph API-tallózó](https://developers.facebook.com/tools/explorer/).
-    2. Válassza ki a **alkalmazás** lehetőséget.
-    3. Válassza ki a **felhasználói hozzáférési jogkivonat lekérése** lehetőséget.
-    4. Alatt a **engedélyek kiválasztása**válassza **manage_pages** és **publish_pages** beállítások.
-    5. Ezzel a **hozzáférési jogkivonat** (rövid Életűek Token) a következő lépésben.
+    1. Nyissa meg a [Graph API Explorert](https://developers.facebook.com/tools/explorer/).
+    2. Válassza az **Application** (Alkalmazás) elemet.
+    3. Válassza a **Get User Access Token** (Felhasználói hozzáférési jogkivonat beszerzése) lehetőséget.
+    4. A **Select Permissions** (Engedélyek kiválasztása) területen válassza a **manage_pages** és a **publish_pages** elemeket.
+    5. A **hozzáférési jogkivonatot** (Rövid élettartamú jogkivonat) a következő lépésben fogjuk használni.
 
-4. A következő néhány lépést Postman használunk.
+4. A következő lépésekhez a Postmant használjuk.
 
-    1. Nyissa meg **Postman** (vagy letöltés [Itt](https://www.getpostman.com/)).
-    2. Importálja a két fájlt:
-        1. [Postman-gyűjtemény](https://github.com/MicrosoftContentModerator/samples-fbPageModeration/blob/master/Facebook%20Permanant%20Page%20Access%20Token.postman_collection.json)
-        2. [Postman-környezet](https://github.com/MicrosoftContentModerator/samples-fbPageModeration/blob/master/FB%20Page%20Access%20Token%20Environment.postman_environment.json)       
-    3. Frissítés az ezeket a környezeti változókat.
+    1. Nyissa meg a **Postmant** (vagy szerezze be [innen](https://www.getpostman.com/)).
+    2. Importálja a következő két fájlt:
+        1. [Postman Collection](https://github.com/MicrosoftContentModerator/samples-fbPageModeration/blob/master/Facebook%20Permanant%20Page%20Access%20Token.postman_collection.json) (Postman-gyűjtemény)
+        2. [Postman Environment](https://github.com/MicrosoftContentModerator/samples-fbPageModeration/blob/master/FB%20Page%20Access%20Token%20Environment.postman_environment.json) (Postman-környezet)       
+    3. Frissítse a következő környezeti változókat:
     
     | Kulcs | Érték   | 
     | -------------------- |-------------|
-    | appId   | Itt a Facebook alkalmazásazonosító beszúrása  | 
-    | appSecret | Itt a Facebook-alkalmazás titkos kulcs beszúrása | 
-    | short_lived_token | A rövid élettartamú felhasználói hozzáférési jogkivonatot az előző lépésben létrehozott beszúrása |
-    4. Most futtassa a 3 API-k szerepel a gyűjteményben: 
-        1. Válassza ki **Long-Lived hozzáférési jogkivonat létrehozása** kattintson **küldése**.
-        2. Válassza ki **felhasználói azonosító beszerzése a** kattintson **küldése**.
-        3. Válassza ki **állandó lap hozzáférési jogkivonat lekérése** kattintson **küldése**.
-    5. Másolás a **access_token** a válaszban szereplő értéket, és rendelje hozzá az Alkalmazásbeállítás **fb:PageAccessToken**.
+    | appId   | Ide szúrja be a Facebook-alkalmazás azonosítóját  | 
+    | appSecret | Ide szúrja be a Facebook-alkalmazás titkos kódját | 
+    | short_lived_token | Ide szúrja be az előző lépésben létrehozott rövid élettartamú felhasználói hozzáférési jogkivonatot |
+    4. Futtassa a gyűjteményben lévő három API-t: 
+        1. Válassza a **Generate Long-Lived Access Token** (Hosszú élettartamú hozzáférési jogkivonat létrehozása) elemet, majd kattintson a **Send** (Küldés) gombra.
+        2. Válassza a **Get User ID** (Felhasználói azonosító lekérése) lehetőséget, majd kattintson a **Send** (Küldés) gombra.
+        3. Válassza a **Get Permanent Page Access Token** (Állandó oldalhozzáférési jogkivonat lekérése) elemet, majd kattintson a **Send** (Küldés) gombra.
+    5. Másolja ki a válaszból az **access_token** értékét, és rendelje hozzá az **fb:PageAccessToken** alkalmazásbeállításhoz.
 
 Ennyi az egész!
 
-A megoldás összes képek és szöveg, a Content Moderator a Facebook-oldalon közzétett küld. A munkafolyamatok, amelyek a korábban beállított kerül meghívásra. A tartalmat, amely nem felel meg a feltételeket határozza meg a munkafolyamatok belül a vizsgálóeszközt felülvizsgálatok eredményez. A tartalmat a többi közzétételre.
+A megoldás a Facebook-oldalon közzétett összes képet és szöveget elküldi a Content Moderatornek. A rendszer meghívja a korábban konfigurált munkafolyamatokat. A munkafolyamatokban meghatározott feltételeknek meg nem felelő tartalmak felülvizsgálatokat eredményeznek a felülvizsgálati eszközben. A tartalom többi részét a rendszer közzéteszi.
 
 ## <a name="license"></a>Licenc
 
-Minden Microsoft Cognitive Services SDK-k és minták az MIT-licenccel rendelkező rendelkezik licenccel. További részletekért lásd: [licenc](https://microsoft.mit-license.org/).
+Az összes Microsoft Cognitive Services SDK és -minta licencelése MIT-licenccel történik. További információ: [LICENC](https://microsoft.mit-license.org/).
 
-## <a name="developer-code-of-conduct"></a>Fejlesztői viselkedési szabályzat
+## <a name="developer-code-of-conduct"></a>Fejlesztői magatartási kódex
 
-Cognitive Services, például az ügyféloldali kódtár és az minta használatával a fejlesztők a várhatóan kövesse a "fejlesztői kódot a viselkedési szabályzattal a Microsoft Cognitive Services", címen található http://go.microsoft.com/fwlink/?LinkId=698895.
+A Cognitive Servicest (beleértve a jelen ügyfélkódtárat és mintát is) használó fejlesztőknek követniük kell a Microsoft Cognitive Services fejlesztőire vonatkozó magatartási kódexben foglaltakat. A dokumentum ezen a címen érhető el: http://go.microsoft.com/fwlink/?LinkId=698895.
 
 ## <a name="next-steps"></a>További lépések
 
-1. [(Videó) bemutató megtekintése](https://channel9.msdn.com/Events/Build/2017/T6033) a megoldás a Microsoft Build 2017.
-1. [A Facebook-minta a Githubon](https://github.com/MicrosoftContentModerator/samples-fbPageModeration)
+1. [Tekintsen meg egy bemutatót (videó)](https://channel9.msdn.com/Events/Build/2017/T6033) a megoldásról, amely a Microsoft Build 2017 alkalmával volt látható.
+1. [Facebook-minta a GitHubon](https://github.com/MicrosoftContentModerator/samples-fbPageModeration)
 1. https://docs.microsoft.com/azure/azure-functions/functions-create-github-webhook-triggered-function
 2. http://ukimiawz.github.io/facebook/2015/08/12/webhook-facebook-subscriptions/
 3. http://stackoverflow.com/questions/17197970/facebook-permanent-page-access-token

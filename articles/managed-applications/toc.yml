@@ -7,14 +7,16 @@ items:
     href: overview.md
 - name: Gyors útmutatók
   items:
-  - name: Felügyelt alkalmazás létrehozása
-    href: managed-apps-quickstart-cli.md
+  - name: Alkalmazásdefiníció közzététele
+    href: publish-managed-app-definition-quickstart.md
+  - name: Szolgáltatáskatalógusban elérhető alkalmazás üzembe helyezése
+    href: deploy-service-catalog-quickstart.md
   expanded: true
 - name: Oktatóanyagok
   items:
-  - name: Felügyelt alkalmazásfájlok létrehozása
+  - name: Definíciós fájlok létrehozása
     href: publish-service-catalog-app.md
-  - name: Piactéren elérhető alkalmazás létrehozása
+  - name: Piactéren elérhető alkalmazás közzététele
     href: publish-marketplace-app.md
 - name: Példák
   items:
@@ -26,16 +28,22 @@ items:
     href: sample-projects.md
 - name: Útmutatók
   items:
-  - name: Portálfelület létrehozása
-    href: create-uidefinition-overview.md
-  - name: A portálfelület tesztelése
-    href: test-createuidefinition.md
-  - name: Kezelt erőforrások frissítése
-    href: update-managed-resources.md
-  - name: Közzététel a portál használatával
-    href: publish-portal.md
-  - name: Key Vaultból származó titkos kulcs használata
-    href: key-vault-access.md
+  - name: Kiadók
+    items:
+    - name: Portálfelület létrehozása
+      href: create-uidefinition-overview.md
+    - name: A portálfelület tesztelése
+      href: test-createuidefinition.md
+    - name: Kezelt erőforrások frissítése
+      href: update-managed-resources.md
+    - name: Alkalmazásdefiníció közzététele a portál használatával
+      href: publish-portal.md
+    - name: Key Vaultból származó titkos kulcs használata
+      href: key-vault-access.md
+  - name: Fogyasztók
+    items:
+    - name: Felügyelt alkalmazások monitorozása
+      href: monitor-managed-application-portal.md
 - name: Referencia
   items:
   - name: Azure CLI
@@ -97,9 +105,9 @@ items:
     href: https://azure.microsoft.com/pricing/calculator/
   - name: Stack Overflow
     href: http://stackoverflow.com/questions/tagged/azure-managedapps
-ms.openlocfilehash: 03a385046c0f30932e6ba99fdce46fbdc9849eb6
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: b74cfed4f0208a1b70980d34284fd7f9ff207ca4
+ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46365298"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48801557"

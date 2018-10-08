@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: quickstart
 ms.date: 01/08/2018
 ms.author: lbosq
-ms.openlocfilehash: 905873a695635ba80de258cbf458c8dd3e18d443
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: e73b0e88a98c1b06216378078626b4338c598816
+ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43700338"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47422966"
 ---
 # <a name="azure-cosmos-db-create-query-and-traverse-a-graph-in-the-gremlin-console"></a>Azure Cosmos DB: Elemek létrehozása, lekérdezése és a gráfok bejárása a Gremlin konzolban
 
@@ -90,21 +90,16 @@ serializer: { className: org.apache.tinkerpop.gremlin.driver.ser.GraphSONMessage
 
 5. Ezután a(z) `:remote console` futtatásával irányítson át minden konzolparancsot a távoli kiszolgálóra.
 
+   > [!NOTE]
+   > Ha nem futtatja a `:remote console` parancsot, azonban minden konzolparancsot a távoli kiszolgálóra szeretne irányítani, a parancs elé helyezze a(z) `:>` előtagot, tehát például a következőhöz hasonlóképp futtassa a parancsot: `:> g.V().count()`. Ez az előtag a parancs része, és fontos a Gremlin-konzol Azure Cosmos DB-vel való használatánál. Az előtag kihagyása arra utasítja a konzolt, hogy helyileg, gyakran egy, a memóriában tárolt gráfon hajtsa végre a parancsot. A(z) `:>` előtag alkalmazása távoli parancs végrehajtására utasítja a konzolt ebben az esetben az Azure Cosmos DB-n (a localhost emulátoron vagy egy Azure-példányon).
+
 Remek! Most, hogy befejeztük a beállítást, futtassunk néhány konzolparancsot!
 
 Próbáljon ki egy egyszerű count() parancsot. Írja be a következőket a konzolon, amikor a rendszer kéri:
-```
-:> g.V().count()
-```
 
-> [!TIP]
-> Észrevette a `g.V().count()` szöveg előtti `:>` előtagot? 
->
-> Ez része a parancsnak, amit be kell írnia. Ez fontos a Gremlin-konzol Azure Cosmos DB-vel való használatánál.  
->
-> A `:>` előtag kihagyása arra utasítja a konzolt, hogy helyileg, gyakran egy, a memóriában tárolt gráfon hajtsa végre a parancsot.
-> A `:>` előtag alkalmazása távoli parancs végrehajtására utasítja a konzolt ebben az esetben a Cosmos DB-n (a localhost emulátoron vagy egy > Azure-példányon).
-
+```
+g.V().count()
+```
 
 ## <a name="create-vertices-and-edges"></a>Csúcsok és élek létrehozása
 
@@ -113,7 +108,7 @@ Először hozzon létre öt darab, egy-egy személyt jelölő csúcsot *Thomas*,
 Bemenet (Thomas):
 
 ```
-:> g.addV('person').property('firstName', 'Thomas').property('lastName', 'Andersen').property('age', 44).property('userid', 1)
+g.addV('person').property('firstName', 'Thomas').property('lastName', 'Andersen').property('age', 44).property('userid', 1)
 ```
 
 Kimenet:
@@ -124,7 +119,7 @@ Kimenet:
 Bemenet (Mary Kay):
 
 ```
-:> g.addV('person').property('firstName', 'Mary Kay').property('lastName', 'Andersen').property('age', 39).property('userid', 2)
+g.addV('person').property('firstName', 'Mary Kay').property('lastName', 'Andersen').property('age', 39).property('userid', 2)
 
 ```
 
@@ -138,7 +133,7 @@ Kimenet:
 Bemenet (Robin):
 
 ```
-:> g.addV('person').property('firstName', 'Robin').property('lastName', 'Wakefield').property('userid', 3)
+g.addV('person').property('firstName', 'Robin').property('lastName', 'Wakefield').property('userid', 3)
 ```
 
 Kimenet:
@@ -150,7 +145,7 @@ Kimenet:
 Bemenet (Ben):
 
 ```
-:> g.addV('person').property('firstName', 'Ben').property('lastName', 'Miller').property('userid', 4)
+g.addV('person').property('firstName', 'Ben').property('lastName', 'Miller').property('userid', 4)
 
 ```
 
@@ -163,7 +158,7 @@ Kimenet:
 Bemenet (Jack):
 
 ```
-:> g.addV('person').property('firstName', 'Jack').property('lastName', 'Connor').property('userid', 5)
+g.addV('person').property('firstName', 'Jack').property('lastName', 'Connor').property('userid', 5)
 ```
 
 Kimenet:
@@ -178,7 +173,7 @@ Ezután adjunk meg éleket. Ezek a személyek közötti kapcsolatokat jelölik.
 Bemenet (Thomas -> Mary Kay):
 
 ```
-:> g.V().hasLabel('person').has('firstName', 'Thomas').addE('knows').to(g.V().hasLabel('person').has('firstName', 'Mary Kay'))
+g.V().hasLabel('person').has('firstName', 'Thomas').addE('knows').to(g.V().hasLabel('person').has('firstName', 'Mary Kay'))
 ```
 
 Kimenet:
@@ -190,7 +185,7 @@ Kimenet:
 Bemenet (Thomas -> Robin):
 
 ```
-:> g.V().hasLabel('person').has('firstName', 'Thomas').addE('knows').to(g.V().hasLabel('person').has('firstName', 'Robin'))
+g.V().hasLabel('person').has('firstName', 'Thomas').addE('knows').to(g.V().hasLabel('person').has('firstName', 'Robin'))
 ```
 
 Kimenet:
@@ -202,7 +197,7 @@ Kimenet:
 Bemenet (Robin -> Ben):
 
 ```
-:> g.V().hasLabel('person').has('firstName', 'Robin').addE('knows').to(g.V().hasLabel('person').has('firstName', 'Ben'))
+g.V().hasLabel('person').has('firstName', 'Robin').addE('knows').to(g.V().hasLabel('person').has('firstName', 'Ben'))
 ```
 
 Kimenet:
@@ -217,7 +212,7 @@ Most frissítsük a *Thomas* csúcspontot új életkor (*45*) megadásával.
 
 Bemenet:
 ```
-:> g.V().hasLabel('person').has('firstName', 'Thomas').property('age', 45)
+g.V().hasLabel('person').has('firstName', 'Thomas').property('age', 45)
 ```
 Kimenet:
 
@@ -234,7 +229,7 @@ Első lépésként futtassunk egy lekérdezést olyan szűrővel, amely csak a 4
 Bemenet (szűrőlekérdezés):
 
 ```
-:> g.V().hasLabel('person').has('age', gt(40))
+g.V().hasLabel('person').has('age', gt(40))
 ```
 
 Kimenet:
@@ -248,7 +243,7 @@ Most jelenítsük meg a 40 évesnél idősebb személyek utónevét.
 Bemenet (szűrő- és kivetítési lekérdezés):
 
 ```
-:> g.V().hasLabel('person').has('age', gt(40)).values('firstName')
+g.V().hasLabel('person').has('age', gt(40)).values('firstName')
 ```
 
 Kimenet:
@@ -264,7 +259,7 @@ A gráf bejárásával most kérdezzük le Thomas összes barátját.
 Bemenet (Thomas barátai):
 
 ```
-:> g.V().hasLabel('person').has('firstName', 'Thomas').outE('knows').inV().hasLabel('person')
+g.V().hasLabel('person').has('firstName', 'Thomas').outE('knows').inV().hasLabel('person')
 ```
 
 Kimenet: 
@@ -279,7 +274,7 @@ Ezután folytassuk a csúcsok következő szintjével. A gráf bejárásával k�
 Bemenet (Thomas barátainak barátai):
 
 ```
-:> g.V().hasLabel('person').has('firstName', 'Thomas').outE('knows').inV().hasLabel('person').outE('knows').inV().hasLabel('person')
+g.V().hasLabel('person').has('firstName', 'Thomas').outE('knows').inV().hasLabel('person').outE('knows').inV().hasLabel('person')
 ```
 Kimenet:
 
@@ -294,7 +289,7 @@ Töröljünk egy csúcsot a gráfadatbázisból.
 Bemenet (a Jack csúcs elvetése):
 
 ```
-:> g.V().hasLabel('person').has('firstName', 'Jack').drop()
+g.V().hasLabel('person').has('firstName', 'Jack').drop()
 ```
 
 ## <a name="clear-your-graph"></a>Gráf adatainak törlése
@@ -304,8 +299,8 @@ Végezetül töröljük az adatbázisból az összes csúcsot és élet.
 Bemenet:
 
 ```
-:> g.E().drop()
-:> g.V().drop()
+g.E().drop()
+g.V().drop()
 ```
 
 Gratulálunk! Az Azure Cosmos DB: Gremlin API-oktatóanyag végére ért.

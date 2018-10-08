@@ -1,4 +1,9 @@
-Az Azure Media Services képzési terveiről az alábbiakban olvashat:
+Megérkezett az Azure Media Services legújabb verziója, az [Azure Media Services v3](https://docs.microsoft.com/azure/media-services/latest/).
 
-* [Media Services élő streaming-munkafolyamat](https://azure.microsoft.com/documentation/learning-paths/media-services-streaming-live/)
-* [Media Services igényalapú streaming-munkafolyamat](https://azure.microsoft.com/documentation/learning-paths/media-services-streaming-on-demand/)
+Kezdésként tekintse meg az alábbi témaköröket: 
+
+* [Áttekintés](https://docs.microsoft.com/azure/media-services/latest/media-services-overview)
+* [Videók feltöltése, kódolása és streamelése API-k használatával](https://docs.microsoft.com/azure/media-services/latest/stream-files-tutorial-with-api)
+* [Elemzés](https://docs.microsoft.com/azure/media-services/latest/analyze-videos-tutorial-with-api)
+* [Élő stream](https://docs.microsoft.com/azure/media-services/latest/stream-live-tutorial-with-api)
+* [A saját tartalom védelme](https://docs.microsoft.com/azure/media-services/latest/protect-with-aes128)

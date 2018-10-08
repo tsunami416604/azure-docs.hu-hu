@@ -1,57 +1,58 @@
 ---
-title: Az Azure .NET segédmetódus tartalom moderátor SDK |} Microsoft Docs
-description: Hogyan állítható vissza a tartalom moderátor ügyfél Azure tartalom moderátor SDK for .NET használatával
+title: 'Rövid útmutató: Content Moderator SDK for .NET-segédmetódus'
+titlesuffix: Azure Cognitive Services
+description: Content Moderator-ügyfél visszaadása Azure Content Moderator SDK for .NET használatával
 services: cognitive-services
 author: sanjeev3
-manager: mikemcca
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: content-moderator
-ms.topic: article
+ms.topic: quickstart
 ms.date: 01/04/2018
 ms.author: sajagtap
-ms.openlocfilehash: 36f2124708731f78f34849d8210ed39ea8f59140
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
-ms.translationtype: MT
+ms.openlocfilehash: 0c167de3af8aea6820962e7cc8d0c21f5ba61807
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35346930"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47223270"
 ---
-# <a name="helper-code-to-return-a-content-moderator-client"></a>Térjen vissza a tartalom moderátor ügyfél segítő kódot
+# <a name="quickstart-helper-code-to-return-a-content-moderator-client"></a>Rövid útmutató: Segédkód Content Moderator-ügyfél visszaadásához
 
-Ez a cikk bemutatja, és mintakódok segítséget nyújtanak az előfizetéshez tartozó tartalom moderátor ügyfelet létrehozni a tartalom moderátor SDK for .NET használatának megkezdése.
+Ez a cikk ahhoz biztosít információt és kódmintákat, hogy létrehozhasson egy Content Moderator-ügyfelet az előfizetéséhez a Content Moderator SDK for .NET segítségével.
 
-A könyvtár használják más quickstarts ebben a szakaszban.
+Ezt a kódtárat a jelen szakasz egyéb rövid útmutatói is használják.
 
-Ez a cikk feltételezi, hogy Ön már ismeri a Visual Studio és a C#.
+Ez a cikk feltételezi, hogy már ismeri a Visual Studiót és a C# nyelvet.
 
 > [!IMPORTANT]
-> Ez az osztály könyvtár csak bemutató célokra szánt kódot tartalmaz.
-> Igazítani ezt a kódot, éles használatra, ha módszert egy biztonságos tárolás és a tartalom moderátor előfizetés kulcs használatával.
+> A jelen osztálytárban lévő kódok csak bemutatási célra szolgálnak.
+> Ha ezt a kódot éles környezetben szeretné alkalmazni, használjon biztonságos módszert a Content Moderator előfizetői azonosítójának tárolásához és használatához.
 
-## <a name="sign-up-for-content-moderator-services"></a>Iratkozzon fel a tartalom moderátor szolgáltatások
+## <a name="sign-up-for-content-moderator-services"></a>Regisztráció a Content Moderator szolgáltatásaiba
 
-Tartalom moderátor-szolgáltatások díjairól a REST API-t vagy az SDK használata előtt be kell egy előfizetési kulcsot.
-Tekintse meg a [gyors üzembe helyezés](quick-start.md) megtudhatja, hogyan szerezhet a kulcsot.
+Ahhoz, hogy a REST API-n vagy az SDK-n keresztül használhassa a Content Moderator szolgáltatásait, előbb be kell szereznie egy előfizetői azonosítót.
+[Ebből a rövid útmutatóból](quick-start.md) megtudhatja, hogyan szerezheti be ezt az azonosítót.
 
-## <a name="create-your-visual-studio-project"></a>A Visual Studio-projekt létrehozása
+## <a name="create-your-visual-studio-project"></a>Visual Studio-projekt létrehozása
 
-1. Hozzon létre egy új **Class Library (.NET-keretrendszer)** projekt.
+1. Hozzon létre egy új **Class Library (.NET Framework)** projektet.
 
-   A mintakód I a projekt neve **ModeratorHelper**.
+   A mintakódban a projektnek a **ModeratorHelper** nevet adtam.
 
-1. Adjon hozzá egy hivatkozást, a **System.Configuration** keretrendszer szerelvényében.
+1. Adjon hozzá egy, a **System.Configuration** keretrendszer-szerelvényre mutató hivatkozást.
 
 ### <a name="install-required-packages"></a>Szükséges csomagok telepítése
 
-A következő NuGet-csomagok telepítése:
+Telepítse az alábbi NuGet-csomagokat:
 
 - Microsoft.Azure.CognitiveServices.ContentModerator
 - Microsoft.Rest.ClientRuntime
 - Newtonsoft.Json
 
-### <a name="create-the-content-moderator-client"></a>A tartalom moderátor ügyfél létrehozása
+### <a name="create-the-content-moderator-client"></a>Content Moderator-ügyfél létrehozása
 
-Cserélje le a ModeratorHelper.cs fájl tartalmát az alábbira:
+Cserélje le a ModeratorHelper.cs fájl tartalmát a következő kódra:
 
     using Microsoft.CognitiveServices.ContentModerator;
 
@@ -102,10 +103,10 @@ Cserélje le a ModeratorHelper.cs fájl tartalmát az alábbira:
 
 
 > [!IMPORTANT]
-> Frissítés a **AzureRegion** és **CMSubscriptionKey** mezők a régió azonosítója és az Előfizetés kulcs értékeivel.
+> Adja meg a régióazonosító és az előfizetői azonosító értékét az **AzureRegion** és a **CMSubscriptionKey** mezőkben.
 
-Most már rendelkezik egy gyors módja, ha az előfizetés tartalom moderátor ügyfelet létrehozni.
+Most már tudja, hogyan hozhat létre gyorsan Content Moderator-ügyfelet az előfizetéséhez.
 
 ## <a name="next-steps"></a>További lépések
 
-[Töltse le a Visual Studio megoldás](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/ContentModerator) ennél és egyéb tartalom moderátor quickstarts a .NET-hez, és az integráció a kezdéshez.
+[Töltse le a Visual Studio-megoldást](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/ContentModerator) a .NET-es Content Moderator ezen és további rövid útmutatóihoz, hogy nekikezdhessen az integrációnak.

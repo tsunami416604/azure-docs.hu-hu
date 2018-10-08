@@ -1,68 +1,69 @@
 ---
-title: Az Azure Content Moderator – létrehozása .NET használatával felülvizsgálatok |} A Microsoft Docs
-description: Hogyan lehet létrehozni a felülvizsgálatok az Azure Content Moderator SDK használatával a .NET-hez
+title: 'Rövid útmutató: Felülvizsgálatok létrehozása a .NET-es Content Moderatorral'
+titlesuffix: Azure Cognitive Services
+description: Felülvizsgálatok létrehozása a .NET-hez készült Azure Content Moderator SDK-val.
 services: cognitive-services
 author: sanjeev3
-manager: mikemcca
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: content-moderator
-ms.topic: article
+ms.topic: quickstart
 ms.date: 09/10/2018
 ms.author: sajagtap
-ms.openlocfilehash: c5f301e7ed15100c39f0af77942147275b966ed9
-ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
-ms.translationtype: MT
+ms.openlocfilehash: ce90c5f691a0a8a333161f3135856d720d1de310
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 09/26/2018
-ms.locfileid: "47180773"
+ms.locfileid: "47226585"
 ---
-# <a name="create-reviews-using-net"></a>Hozzon létre értékelések .NET használatával
+# <a name="quickstart-create-reviews-using-net"></a>Rövid útmutató: Felülvizsgálatok létrehozása a .NET használatával
 
-Ez a cikk nyújt információt, és kódminták segítségével történő használatának első lépései a [Content Moderator SDK for .NET](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) való:
+Ez a cikk ahhoz biztosít információt és kódmintákat, hogy elvégezhesse a következő műveleteket a [Content Moderator SDK for .NET](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) segítségével:
  
-- Az emberi moderátorok felülvizsgálatok készletének létrehozása
-- Az emberi moderátorok meglévő felülvizsgálatok állapotának lekérése
+- Felülvizsgálati készlet létrehozása emberi moderátorok számára
+- Meglévő felülvizsgálatok állapotának lekérése emberi moderátorok számára
 
-Általában a tartalom halad végig az emberi ellenőrző ütemezett előtt bizonyos automatizált moderálás előnyeit. Ez a cikk csak az emberi moderálás vonatkozó felülvizsgálat létrehozása ismerteti. Egy teljes, olvassa az [Facebook tartalom-jóváhagyás](facebook-post-moderation.md) és [e-kereskedelmi katalógusok moderálása](ecommerce-retail-catalog-moderation.md) oktatóanyagok.
+A tartalmak általában némi automatizált moderáláson mennek keresztül, mielőtt be lennének ütemezve az ember általi felülvizsgálatra. Ez a cikk csak azt tárgyalja, hogyan hozhat létre felülvizsgálatot ember által végzett moderáláshoz. A [Facebook-tartalmak moderálásával](facebook-post-moderation.md) és az [elektronikus kereskedelmi katalógusok moderálásával](ecommerce-retail-catalog-moderation.md) foglalkozó oktatóanyagokban teljesebb forgatókönyveket talál.
 
-Ez a cikk azt feltételezi, hogy már ismeri a Visual Studio és C#.
+Ez a cikk feltételezi, hogy már ismeri a Visual Studiót és a C# nyelvet.
 
-## <a name="sign-up-for-content-moderator"></a>Iratkozzon fel a Content Moderator
+## <a name="sign-up-for-content-moderator"></a>Regisztráció a Content Moderatorba
 
-A REST API-t vagy az SDK-t a Content Moderator szolgáltatások használata előtt szüksége van egy előfizetési kulcsot.
-Tekintse meg a [rövid](quick-start.md) megtudhatja, hogyan szerezheti be a kulcsot.
+Ahhoz, hogy a REST API-n vagy az SDK-n keresztül használhassa a Content Moderator szolgáltatásait, előbb be kell szereznie egy előfizetői azonosítót.
+[Ebből a rövid útmutatóból](quick-start.md) megtudhatja, hogyan szerezheti be ezt az azonosítót.
 
-## <a name="sign-up-for-a-review-tool-account-if-not-completed-in-the-previous-step"></a>Ha nem végzi el az előző lépésben felülvizsgálati eszköz fiókot regisztráljon
+## <a name="sign-up-for-a-review-tool-account-if-not-completed-in-the-previous-step"></a>Fiók létrehozása a felülvizsgálati eszközhöz, ha az előző lépésben erre nem került sor
 
-Ha kapott a Content Moderator az Azure Portalon is [a felülvizsgálati eszköz fiók](https://contentmoderator.cognitive.microsoft.com/) , és tekintse át a csoport létrehozása. A csoport azonosítója, és indítsa el a feladatot, és tekintse meg az értékelések a vizsgálóeszközt, a felülvizsgálati API hívása a felülvizsgálati eszköz szükséges.
+Ha a Content Moderatort az Azure Portalon szerezte be, [hozzon létre egy fiókot a felülvizsgálati eszközhöz](https://contentmoderator.cognitive.microsoft.com/) is, és hozzon létre egy felügyeleti csapatot. Szüksége lesz a csapatazonosítóra és a felülvizsgálati eszközre, ha egy feladat elkezdéséhez meg szeretné hívni a felülvizsgálati API-t, illetve ha meg szeretné tekinteni a felülvizsgálatokat a felülvizsgálati eszközben.
 
-## <a name="ensure-your-api-key-can-call-the-review-api-for-review-creation"></a>Győződjön meg arról, az API-kulcs segítségével meghívhatja a felülvizsgálati API felülvizsgálat létrehozása
+## <a name="ensure-your-api-key-can-call-the-review-api-for-review-creation"></a>Arról való gondoskodás, hogy az API-kulcs meg tudja hívni a felülvizsgálati API-t a felülvizsgálat létrehozásához
 
-Az előző lépések végrehajtását követően, előfordulhat, hogy végül két a Content Moderator kulcs Ha használatba az Azure Portalról. 
+Az előző lépések végrehajtása után elképzelhető, hogy két Content Moderator-kulcsa is lesz, ha az Azure Portalról indította el a folyamatot. 
 
-Ha azt tervezi, használja az Azure által biztosított API-kulcsot az SDK-minta, hajtsa végre a szereplő lépéseket a [a felülvizsgálati API-val az Azure key](review-tool-user-guide/credentials.md#use-the-azure-account-with-the-review-tool-and-review-api) szakaszban, hogy az alkalmazása a felülvizsgálati API-t, és létrehozni a felülvizsgálatok.
+Ha az Azure által biztosított API-kulcsot tervezi használni az SDK-mintában, kövesse az [Azure-kulcs felülvizsgálati API-val történő használatát](review-tool-user-guide/credentials.md#use-the-azure-account-with-the-review-tool-and-review-api) ismertető szakaszban szereplő lépéseket annak érdekében, hogy alkalmazása meghívhassa a felülvizsgálati API-t, és felülvizsgálatokat hozhasson létre.
 
-Ingyenes próba hozza létre a kulcsot a felülvizsgálati eszköz használatakor a felülvizsgálati eszköz fiók már ismer a kulcsot, és ezért semmilyen további lépésekre szükség.
+Ha a felülvizsgálati eszköz által létrehozott ingyenes próbakulcsot használja, a felülvizsgálati eszközhöz tartozó fiókja már tud a kulcsról, így nincs szükség további lépésekre.
 
-## <a name="create-your-visual-studio-project"></a>A Visual Studio-projekt létrehozása
+## <a name="create-your-visual-studio-project"></a>Visual Studio-projekt létrehozása
 
-1. Vegyen fel egy új **Console app (.NET Framework)** projektet a megoldáshoz.
+1. Adjon hozzá egy új **Konzolalkalmazás (.NET-keretrendszer)** projektet a megoldáshoz.
 
-   A mintakód adja a projektnek **CreateReviews**.
+   A mintakódban adja a **CreateReviews** nevet a projektnek.
 
-1. Jelölje ki a projektet a megoldáshoz egyetlen indítási projektként.
+1. Válassza ki ezt a projektet a megoldás egyedüli kezdőprojektjeként.
 
 ### <a name="install-required-packages"></a>Szükséges csomagok telepítése
 
-A következő NuGet-csomagok telepítéséhez:
+Telepítse az alábbi NuGet-csomagokat:
 
 - Microsoft.Azure.CognitiveServices.ContentModerator
 - Microsoft.Rest.ClientRuntime
 - Newtonsoft.Json
 
-### <a name="update-the-programs-using-statements"></a>Frissítés a program által utasítások segítségével.
+### <a name="update-the-programs-using-statements"></a>A program „using” utasításainak frissítése
 
-Módosítsa a program által utasítások segítségével.
+Módosítsa a program „using” utasításait.
 
     using Microsoft.Azure.CognitiveServices.ContentModerator;
     using Microsoft.CognitiveServices.ContentModerator;
@@ -73,12 +74,12 @@ Módosítsa a program által utasítások segítségével.
     using System.IO;
     using System.Threading;
 
-### <a name="create-the-content-moderator-client"></a>A Content Moderator ügyfél létrehozása
+### <a name="create-the-content-moderator-client"></a>Content Moderator-ügyfél létrehozása
 
-Adja hozzá a következő kódot a Content Moderator ügyfélbeállítások az előfizetéshez.
+Adja meg a következő kódot, hogy létrehozzon egy Content Moderator-ügyfelet az előfizetéséhez.
 
 > [!IMPORTANT]
-> Frissítés a **AzureRegion** és **CMSubscriptionKey** mezőket a régió azonosítója és az Előfizetés kulcs értékét.
+> Adja meg a régióazonosító és az előfizetői azonosító értékét az **AzureRegion** és a **CMSubscriptionKey** mezőkben.
 
 
     /// <summary>
@@ -123,10 +124,10 @@ Adja hozzá a következő kódot a Content Moderator ügyfélbeállítások az e
         }
     }
 
-## <a name="create-a-class-to-associate-internal-content-information-with-a-review-id"></a>Hozzon létre egy osztályt belső tartalom adatai társítása egy felülvizsgálat azonosítója
+## <a name="create-a-class-to-associate-internal-content-information-with-a-review-id"></a>Osztály létrehozása belső tartalomadatok és egy felülvizsgálati azonosító társításához
 
-Adja hozzá a következő osztály a **Program** osztály.
-Ez az osztály használatával társítja a belső tartalom ID, az elem a felülvizsgálat azonosítója.
+Adja hozzá a következő osztályt a **Program** osztályhoz.
+Az osztály használatával társítsa a felülvizsgálati azonosítót az elem belső tartalomazonosítójához.
 
     /// <summary>
     /// Associates the review ID (assigned by the service) to the internal
@@ -155,14 +156,14 @@ Ez az osztály használatával társítja a belső tartalom ID, az elem a felül
         public string ReviewId;
     }
 
-### <a name="initialize-application-specific-settings"></a>Alkalmazás-specifikus beállítások inicializálása
+### <a name="initialize-application-specific-settings"></a>Alkalmazásra jellemző beállítások inicializálása
 
 > [!NOTE]
-> A Content Moderator Szolgáltatáskulcs rendelkezik egy második (RPS) sávszélesség-korlátjának kérelemre, és ha túllépi a korlátot, az SDK kivételt 429 hibakód. 
+> A Content Moderator-szolgáltatáskulcs rendelkezik egy RPS-alapú (kérések másodpercenkénti száma) sebességkorláttal, amelyet ha túllép, az SDK egy 429-es hibakódú kivételt jelez. 
 >
-> Ingyenes szint kulcs esetében egy függő Entitás sebessége.
+> Az ingyenes szint kulcsának a sebességkorlátja egy RPS.
 
-#### <a name="add-the-following-constants-to-the-program-class-in-programcs"></a>Adja hozzá a következő állandókat a **Program** osztály a program.cs fájlban.
+#### <a name="add-the-following-constants-to-the-program-class-in-programcs"></a>Adja hozzá a következő állandókat a **Program** osztályhoz a Program.cs-ben.
     
     /// <summary>
     /// The minimum amount of time, in milliseconds, to wait between calls
@@ -182,14 +183,14 @@ Ez az osztály használatával társítja a belső tartalom ID, az elem a felül
     /// <remarks>Relative paths are relative to the execution directory.</remarks>
     private const string OutputFile = "OutputLog.txt";
 
-#### <a name="add-the-following-constants-and-static-fields-to-the-program-class-in-programcs"></a>Adja hozzá a következő állandókat és a statikus mezők a **Program** osztály a program.cs fájlban.
+#### <a name="add-the-following-constants-and-static-fields-to-the-program-class-in-programcs"></a>Adja hozzá a következő állandókat és statikus mezőket a **Program** osztályhoz a Program.cs-ben.
 
-Frissítse előfizetését és csapat-specifikus adatait tartalmazza ezeket az értékeket.
+Frissítse ezeket az értékeket, hogy tartalmazzák az előfizetés és a csapat adatait.
 
 > [!NOTE]
-> A TeamName konstans értékre a létrehozásakor használt nevet a [Content Moderator felülvizsgálati eszközben](https://contentmoderator.cognitive.microsoft.com/) előfizetés. Kérheti le a TeamName származó a **hitelesítő adatok** című rész a **beállítások** (fogaskerék) menüben.
+> Állítsa a TeamName állandót arra a névre, amelyet a [Content Moderator felülvizsgálati eszköz](https://contentmoderator.cognitive.microsoft.com/) előfizetésének létrehozásakor használt. A TeamName értékét a **Beállítások** (fogaskerék) menü **Hitelesítő adatok** szakaszában találja meg.
 >
-> A csapat nevét az az érték a **azonosító** mezőbe a **API** szakaszban.
+> A csapatnév az **API** szakasz **Azonosító** mezőjében megadott érték.
 
     /// <summary>
     /// The name of the team to assign the review to.
@@ -237,9 +238,9 @@ Frissítse előfizetését és csapat-specifikus adatait tartalmazza ezeket az �
     /// </summary>
     private const string MetadataValue = "true";
 
-#### <a name="add-the-following-static-fields-to-the-program-class-in-programcs"></a>Adja hozzá a következő statikus mezőket a **Program** osztály a program.cs fájlban.
+#### <a name="add-the-following-static-fields-to-the-program-class-in-programcs"></a>Adja hozzá a következő statikus mezőket a **Program** osztályhoz a Program.cs-ben.
 
-Ezek a mezők segítségével nyomon követheti az alkalmazás állapotát.
+Ezeket a mezőket az alkalmazás állapotának nyomon követésére használhatja.
 
     /// <summary>
     /// A static reference to the text writer to use for logging.
@@ -253,7 +254,7 @@ Ezek a mezők segítségével nyomon követheti az alkalmazás állapotát.
     private static List<ReviewItem> reviewItems =
         new List<ReviewItem>();
 
-## <a name="create-a-method-to-write-messages-to-the-log-file"></a>A naplófájl üzeneteket írni metódus létrehozása
+## <a name="create-a-method-to-write-messages-to-the-log-file"></a>Metódus létrehozása üzenetek naplófájlba történő írására
 
 Adja hozzá a **Program** osztályhoz a következő metódust. 
 
@@ -272,9 +273,9 @@ Adja hozzá a **Program** osztályhoz a következő metódust.
         }
     }
 
-## <a name="create-a-method-to-create-a-set-of-reviews"></a>Létrehozhat egy csoportot felülvizsgálatokról azoknak metódus létrehozása
+## <a name="create-a-method-to-create-a-set-of-reviews"></a>Metódus létrehozása felülvizsgálati készlet létrehozására
 
-Normális esetben azonosításához bejövő képek, szöveg-, egy üzleti logikát rendelkezik, vagy a videó, meg kell vizsgálni. Itt ugyanúgy használják, rögzített rendszerképek listáját.
+Rendszerint a rendelkezésére áll valamilyen üzleti logika azon bejövő képek, szövegek vagy videók azonosítására, amelyek felülvizsgálatra szorulnak. Itt azonban a képeknek csak egy rögzített listáját fogjuk használni.
 
 Adja hozzá a **Program** osztályhoz a következő metódust.
 
@@ -339,13 +340,13 @@ Adja hozzá a **Program** osztályhoz a következő metódust.
         Thread.Sleep(throttleRate);
     }
 
-## <a name="create-a-method-to-get-the-status-of-existing-reviews"></a>A meglévő felülvizsgálatok állapotának lekéréséhez metódus létrehozása
+## <a name="create-a-method-to-get-the-status-of-existing-reviews"></a>Metódus létrehozása a meglévő felülvizsgálatok állapotának lekérésére
 
 Adja hozzá a **Program** osztályhoz a következő metódust. 
 
 > [!Note]
-> A gyakorlatban, így állíthatja be a visszahívási URL-Címének `CallbackEndpoint` szeretne kapni a manuális ellenőrzést (keresztül egy HTTP POST-kérés) URL-címre.
-> Ez a módszer a függőben lévő értékelések állapotát ellenőrizni, módosításával.
+> A gyakorlatban a `CallbackEndpoint` visszahívási URL-címet rendszerint arra az URL-re állítjuk be, amely megkapja a manuális felülvizsgálat eredményeit (egy HTTP POST kérésen keresztül).
+> Ezt a metódust úgy is módosíthatja, hogy a függőben lévő felülvizsgálatok állapotát ellenőrizze.
 
     /// <summary>
     /// Gets the review details from the server.
@@ -370,11 +371,11 @@ Adja hozzá a **Program** osztályhoz a következő metódust.
         }
     }
 
-## <a name="add-code-to-create-a-set-of-reviews-and-check-its-status"></a>Adja hozzá a kódot felülvizsgálatok csoportját hozhatja létre, és ellenőrizze a állapotát
+## <a name="add-code-to-create-a-set-of-reviews-and-check-its-status"></a>Kód hozzáadása felülvizsgálati készlet létrehozásához és állapotának ellenőrzéséhez
 
-Adja hozzá a következő kódot a **fő** metódust.
+Adja hozzá az alábbi kódot a **Main** metódushoz.
 
-Ez a kód szimulálja számos, a művelet, amely definiálása és kezelése a listában, valamint listájának képernyőképek a használatával hajt végre. A naplózási szolgáltatások lehetővé teszi a válaszobjektumok hozta a Content Moderator Service SDK-hívásokat.
+Ez a kód sok olyan műveletet szimulál, amelyet a lista definiálásakor és kezelésekor, illetve a lista képek vizsgálatához történő használatakor hajt végre. A naplózási szolgáltatásokkal megtekintheti azokat a válaszobjektumokat, amelyeket a Content Moderator szolgáltatásnak intézett SDK-hívások hoztak létre.
 
     using (TextWriter outputWriter = new StreamWriter(OutputFile, false))
     {
@@ -405,9 +406,9 @@ Ez a kód szimulálja számos, a művelet, amely definiálása és kezelése a l
     Console.WriteLine("Press any key to exit...");
     Console.ReadKey();
 
-## <a name="run-the-program-and-review-the-output"></a>Futtassa a programot, és tekintse át a kimenetet
+## <a name="run-the-program-and-review-the-output"></a>A program futtatása és a kimenet áttekintése
 
-Az alábbi kimeneti példa láthatja:
+A következő mintakimenetet fogja látni:
 
     Creating reviews for the following images:
         - https://moderatorsampleimages.blob.core.windows.net/samples/sample1.jpg; with id = 0.
@@ -415,13 +416,13 @@ Az alábbi kimeneti példa láthatja:
     Getting review details:
     Review 201712i46950138c61a4740b118a43cac33f434 for item ID 0 is Pending.
 
-Jelentkezzen be a Content Moderator felülvizsgálati eszközében megtekintheti a függőben lévő rendszerképet, tekintse át a a **sc** címke beállítása **igaz**. Is megjelenik az alapértelmezett **egy** és **r** címkéket és a felülvizsgálati eszköz belül definiált egyéni címkéket. 
+Jelentkezzen be a Content Moderator felülvizsgálati eszközbe a függőben lévő képfelülvizsgálat megtekintéséhez, amelynek **sc** címkéje **true** értékre van állítva. Láthatja az alapértelmezett **a** és **r** címkéket, illetve egyéb olyan egyéni címkéket, amelyeket definiált a felülvizsgálati eszközben. 
 
-Használja a **tovább** gombra kattintva küldje el.
+Kattintson a **Next** (Tovább) gombra a küldéshez.
 
-![Az emberi moderátorok kép áttekintése](images/moderation-reviews-quickstart-dotnet.PNG)
+![Képek felülvizsgálata emberi moderátorok által](images/moderation-reviews-quickstart-dotnet.PNG)
 
-Ezután nyomja le bármelyik billentyűt a folytatáshoz.
+A folytatáshoz nyomjon le egy billentyűt.
 
     Waiting 45 seconds for results to propagate.
 
@@ -430,12 +431,12 @@ Ezután nyomja le bármelyik billentyűt a folytatáshoz.
 
     Press any key to exit...
 
-## <a name="check-out-the-following-output-in-the-log-file"></a>Tekintse meg a következő kimenetet a naplófájlban.
+## <a name="check-out-the-following-output-in-the-log-file"></a>Az alábbi kimenet áttekintése a naplófájlban
 
 > [!NOTE]
-> A kimeneti fájl, a karakterláncok "\{teamname}" és "\{callbackUrl}" értékeit tükrözze a `TeamName` és `CallbackEndpoint` mezőket, illetve.
+> A kimeneti fájl \{teamname} és \{callbackUrl} sztringjei a `TeamName` és `CallbackEndpoint` mezők értékeit mutatják.
 
-A felülvizsgálat azonosítók és a tartalom URL-címek különböznek minden alkalommal, amikor a lemezkép futtassa az alkalmazást, és ha felülvizsgálat befejezése, a `reviewerResultTags` a mező jelzi, hogy hogyan a felülvizsgáló címkével ellátott az elemet.
+A felülvizsgálati azonosítók és a képi tartalmak URL-címei az alkalmazás minden egyes futtatásakor különböznek, és amikor a felülvizsgálat befejeződik, a `reviewerResultTags` mező mutatja meg, hogy a felülvizsgáló milyen címkével látta el az elemet.
 
     Creating reviews for the following images:
         - https://moderatorsampleimages.blob.core.windows.net/samples/sample1.jpg; with id = 0.
@@ -496,9 +497,9 @@ A felülvizsgálat azonosítók és a tartalom URL-címek különböznek minden 
         "callbackEndpoint": "{callbackUrl}"
     }
 
-## <a name="your-callback-url-if-provided-receives-this-response"></a>Ha meg van adva, megkapja ezt a választ a visszahívási URL-címét
+## <a name="your-callback-url-if-provided-receives-this-response"></a>A visszahívási URL-cím (ha meg van adva) által kapott válasz
 
-A válasz az alábbi példához hasonlóan jelenik meg:
+A következő példához hasonló választ fog látni:
 
     {
         "ReviewId": "201801i48a2937e679a41c7966e838c92f5e649",
@@ -519,4 +520,4 @@ A válasz az alábbi példához hasonlóan jelenik meg:
 
 ## <a name="next-steps"></a>További lépések
 
-Első a [Content Moderator .NET SDK-val](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) és a [Visual Studio-megoldás](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/ContentModerator) ennél és a többi a Content Moderator rövid útmutató a .NET-hez, és az integrációval kapcsolatos első lépések.
+Szerezze be a kapcsolódó [Content Moderator .NET SDK-t](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) és [Visual Studio-megoldást](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/ContentModerator) a .NET-es Content Moderator ezen és további rövid útmutatóihoz, hogy nekikezdhessen az integrációnak.

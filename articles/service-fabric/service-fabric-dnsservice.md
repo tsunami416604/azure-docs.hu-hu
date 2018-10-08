@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 7/20/2018
 ms.author: msfussell
-ms.openlocfilehash: 3c8eac98414fa43213136940fb4c91694a78a2c1
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.openlocfilehash: a420033d96a1366a79f5f2032693c38d7eca4ac3
+ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39397526"
+ms.lasthandoff: 10/06/2018
+ms.locfileid: "48830973"
 ---
 # <a name="dns-service-in-azure-service-fabric"></a>Az Azure Service Fabric DNS-szolgáltatás
 A DNS szolgáltatás nem egy választható rendszerszolgáltatás, amely a fürt engedélyezheti a DNS protokollt használó egyéb szolgáltatások észlelését. 
@@ -132,7 +132,7 @@ Az alkalmazás üzembe helyezése után, a szolgáltatás-példánya a Service F
 
 ![Szolgáltatásvégpontok](./media/service-fabric-dnsservice/service-fabric-explorer-dns.png)
 
-A következő példa egy állapotalapú szolgáltatás DNS-nevét állítja `statefulsvc.app`. A szolgáltatás egy elnevezett particionálási sémát használ. Figyelje meg, hogy a partíció neve kisbetűket. Ez azért szükséges, hogy a DNS-lekérdezések; célzott partíciók További információkért lásd: [így DNS-lekérdezéseket egy állapotalapú szolgáltatás partíció](#making-dns-queries-on-a-stateful-service-partition).
+A következő példa egy állapotalapú szolgáltatás DNS-nevét állítja `statefulsvc.app`. A szolgáltatás egy elnevezett particionálási sémát használ. Figyelje meg, hogy a partíció neve kisbetűket. Ez azért szükséges, hogy a DNS-lekérdezések; célzott partíciók További információkért lásd: [így DNS-lekérdezéseket egy állapotalapú szolgáltatás partíció](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-dnsservice#preview-making-dns-queries-on-a-stateful-service-partition).
 
 ```xml
     <Service Name="Stateful1" ServiceDnsName="statefulsvc.app" />

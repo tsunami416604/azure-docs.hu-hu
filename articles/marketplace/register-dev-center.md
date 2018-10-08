@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: ffc2a9fb7b0ed516645c833f87c9ef5c95ca20ff
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: 7416a6ccbb734c031f09bd4185b2674dead71dc8
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45580752"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48816803"
 ---
 # <a name="register-in-dev-center"></a>A fejlesztői központban regisztrálása  
 Annak érdekében, győződjön meg arról, hogy nem jelentkezve egy böngésző személyes fiók, nyisson meg egy új Internet Explorer InPrivate vagy Chrome Inkognitó böngészési munkamenetében.  
@@ -130,7 +130,10 @@ Ha problémába ütközik a fejlesztői központ-regisztráció, majd kövesse a
 > Keresse meg az e-mailt verify@microsoft.com tárgysorban a "szükséges művelet: Ellenőrizze az e-mail-fiókjába, a Microsoft". Kattintson a regisztráció befejezéséhez idő-és nagybetűket visszaigazoló hivatkozásra. *Ha még nem kapott belül 24 órában e-mailt, ellenőrizze a Levélszemét mappát.*
 
 *   **Mik a következő lépések Dev Center ellenőrzés után?**
-> Lépjen a "Program" (https://developer.microsoft.com/en-us/dashboard/Account/Programs) , és jelentkezzen be a fejlesztői központban lévő fiókjához. Megjelenik egy "Az Ön számára ajánlott programok telepítése" című szakasz és adott, az Azure mellett. Kattintson az "Első lépések" lesz, és nyissa meg az Azure-fiók beállításának folyamatán.
+> Lépjen a "Program" (https://developer.microsoft.com/dashboard/Account/Programs) , és jelentkezzen be a fejlesztői központban lévő fiókjához. Ha nem lát Azure regisztrált programként, keresse meg a "Ajánlott programok Ön", és keresse meg az Azure-hoz, jelölje be az "Első lépések."
+
+*   **Hogyan lehet hivatkozni a saját fejlesztői központban lévő fiókjához a Cloud Partner Portalon közzétevő profilomhoz?**
+> Az utolsó lépés előtt a közzététel a Cloud Partner portálra a fejlesztői központban lévő fiókjához összekapcsolása [profil](https://cloudpartner.azure.com/#profile). A fejlesztői központban lévő fiókjához eltér-e a fiókját a [Cloud Partner Portalon](https://cloudpartner.azure.com/#alloffers), adja hozzá a fejlesztői központban lévő fiókjához új [felhasználói](https://cloudpartner.azure.com/#documentation/manage-users) az a Cloud Partner portálra. Jelentkezzen be a [Cloud Partner Portalon](https://cloudpartner.azure.com/#alloffers) a fejlesztői központ-fiókjához. Közzétevő profil található, a felső menüben válassza ki, a böngésző jobb. Válassza ki hivatkozás fejlesztői központban lévő fiókjához.
 
 *   **Miért elutasítják a fejlesztői központban az alkalmazásom?**
 > A külső átvizsgálási vállalati (Duns & Bradstreet) nem tudta Önnel a kapcsolatot a megadott telefonszám keresztül. Forduljon a támogatási szolgálathoz [developer.microsoft.com/windows/support](https://developer.microsoft.com/windows/support) , indítsa újra a átvizsgálási folyamatot

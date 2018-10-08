@@ -1,40 +1,41 @@
 ---
-title: Ruby gyors üzembe helyezés az Azure kognitív szolgáltatások, a Bing videó keresési API |} Microsoft Docs
-description: Get információkat és a kód minták segítségével gyorsan használatának megkezdésében a videó Bing keresési API a Microsoft Azure kognitív Services.
+title: 'Rövid útmutató: Bing Video Search – Ruby'
+titlesuffix: Azure Cognitive Services
+description: Információk és kódminták segítségével ismerkedhet meg a Bing Video Search API használatának első lépéseivel.
 services: cognitive-services
-documentationcenter: ''
 author: v-jerkin
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-video-search
-ms.topic: article
+ms.topic: quickstart
 ms.date: 9/21/2017
 ms.author: v-jerkin
-ms.openlocfilehash: d621944415ec376f11a45ea96c331138ec4d6cdb
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
-ms.translationtype: MT
+ms.openlocfilehash: dfabfe24a653f84e5e242f32167b57b6a28b0075
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35348975"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47223573"
 ---
-# <a name="quickstart-for-bing-video-search-api-with-ruby"></a>A Bing videó keresési API-t Ruby gyors üzembe helyezés
+# <a name="quickstart-bing-video-search-api-with-ruby"></a>Rövid útmutató: Bing Video Search API Ruby használatával
 
-Ez a cikk bemutatja, hogyan a Bing videó keresési API-t használja, a Microsoft kognitív szolgáltatások, Azure része. Amíg ez a cikk alkalmazta a Ruby, az API-t olyan kompatibilis bármely programozási nyelv, amely HTTP-kérelmeket, és elemezni a JSON a RESTful webes szolgáltatás. 
+Ez a cikk bemutatja, hogyan használható a Microsoft Cognitive Services részét képező Bing Video Search API az Azure-on. Bár ez a cikk Rubyt használ, az API egy RESTful-webszolgáltatás, így kompatibilis minden olyan programozási nyelvvel, amely képes HTTP-kérések küldésére és JSON-elemzésre. 
 
-A kód készült Ruby 2.4 futtatásához.
+A mintakód úgy lett megírva, hogy Ruby 2.4 alatt fusson.
 
-Tekintse meg a [API-referencia](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference) az API-k technikai részleteiért.
+Az API-k technikai részleteit az [API-referencia](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference) című részben tekintheti meg.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Rendelkeznie kell egy [kognitív szolgáltatások API-fiók](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) rendelkező **Bing keresési API-k**. A [ingyenes próbaverzió](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) elegendő-e a gyors üzembe helyezés. Szüksége lesz az elérési kulcsot, ha aktiválja az ingyenes próbaverzió, vagy egy fizetős kulcsot az Azure irányítópultról használhat.
+Egy **Bing Search API-kat** tartalmazó [Cognitive Services API-fiókkal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) kell rendelkeznie. Az [ingyenes próbaverzió](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) elegendő ehhez a rövid útmutatóhoz. Szüksége lesz az ingyenes próbaverzió aktiválásakor kapott hozzáférési kulcsra, de beszerezhet egy fizetős előfizetői azonosítót is az Azure-irányítópultról.
 
-## <a name="bing-video-search"></a>Bing Videó keresése
+## <a name="bing-video-search"></a>Bing Video Search
 
-A [Bing videó Search API](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference) videó eredményeket ad vissza a Bing keresőmotort.
+A [Bing Video Search API](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference) a Bing keresőmotor videótalálatait adja vissza.
 
-1. Hozzon létre egy új Ruby-projektet a kedvenc IDE vagy szerkesztő.
+1. Hozzon létre egy új Ruby-projektet a kedvenc IDE-környezetében vagy szerkesztőjében.
 2. Adja hozzá az alábbi kódot.
-3. Cserélje le a `accessKey` hívóbetű érvényes az előfizetéshez tartozó értéket.
+3. A `accessKey` értéket cserélje le az előfizetéshez érvényes hozzáférési kulcsra.
 4. Futtassa a programot.
 
 ```ruby
@@ -84,7 +85,7 @@ puts JSON::pretty_generate(JSON(response.body))
 
 **Válasz**
 
-A sikeres válasz ad vissza a JSON-ban, a következő példában látható módon:
+A rendszer JSON formátumban ad vissza egy sikeres választ a következő példában látható módon:
 
 ```json
 {
@@ -196,9 +197,9 @@ A sikeres válasz ad vissza a JSON-ban, a következő példában látható módo
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Lapozófájl videók](paging-videos.md)
-> [Resizing és a vágás miniatűr képeket](resize-and-crop-thumbnails.md)
+> [Videók lapozása](paging-videos.md)
+> [Miniatűrképek átméretezése és levágása](resize-and-crop-thumbnails.md)
 
 ## <a name="see-also"></a>Lásd még 
 
- [A webes videók keresés](search-the-web.md) [kipróbálás](https://azure.microsoft.com/services/cognitive-services/bing-video-search-api/)
+ [Videók keresése az interneten](search-the-web.md) [Kipróbálás](https://azure.microsoft.com/services/cognitive-services/bing-video-search-api/)

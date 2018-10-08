@@ -1,26 +1,27 @@
 ---
-title: Javaslatok API |} Microsoft Docs
-description: Előnézeti API most megszakad, a javaslatok megoldássablonban helyébe.
+title: Mi az a Javaslatok API?
+titlesuffix: Azure Cognitive Services
+description: Az előzetes API megszűnt, a helyét a Javaslatok megoldássablon vette át.
 services: cognitive-services
 author: LuisCabrer
-manager: mwinkle
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: recommendations
-ms.topic: article
+ms.topic: overview
 ms.date: 02/15/2018
 ms.author: luisca
-ms.openlocfilehash: 2224a44c76ce7b04ab6705babbe9fa4f3bfa1c04
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
-ms.translationtype: MT
+ms.openlocfilehash: 59529806c322176c1d85c273a99682eaa7c13e41
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35347390"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47222664"
 ---
-# <a name="recommendations-api-discontinued"></a>Javaslatok API (szakad meg)
+# <a name="recommendations-api-discontinued"></a>Javaslatok API (megszűnt)
 
-Az ajánlások API előzetes már nem aktív fejlesztés alatt áll, és lett hivatalosan használatból február 15. 
+A Javaslatok API előzetes verziója már nincs aktív fejlesztés alatt áll, február 15-én hivatalosan elavulttá vált. 
 
-A másik lehetőség, fontolja meg az új nyílt forráskódú [javaslatok megoldássablonban](http://aka.ms/recopcs), amely lehetővé teszi a javaslatok motor belül a saját Azure-előfizetés tárolására. Miközben is meg a telepítendő bármely Azure-régió, a legfontosabb forgatókönyvek, az ajánlások API támogatja, és több szigorúan szabályozzák a modellek betanítása és javaslatok kiszolgálásához használt számítási erőforrást. 
+Alternatív megoldásként használhatja az új, nyílt forráskódú [Javaslatok megoldássablont](http://aka.ms/recopcs), amely segítségével egy javaslattételi alrendszert üzemeltethet a saját Azure-előfizetésén belül. Ez támogatja a Javaslatok API legfontosabb forgatókönyveit, emellett pedig lehetővé teszi az üzembe helyezést bármelyik Azure-régióban, valamint a modellek betanításához és a javaslatok felkínálásához használt számítási erőforrások pontosabb vezérlését. 
 
-További információ a javaslatok megoldássablonban olvasásával [dokumentációjában](https://github.com/Microsoft/Product-Recommendations). 
+A Javaslatok megoldássablonról további információkat [a dokumentációban](https://github.com/Microsoft/Product-Recommendations) olvashat. 
 

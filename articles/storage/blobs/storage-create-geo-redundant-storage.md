@@ -9,14 +9,14 @@ ms.date: 03/26/2018
 ms.author: tamram
 ms.custom: mvc
 ms.component: blobs
-ms.openlocfilehash: b3916fb0de48f30bd4809d1fc42dde6ac78c07b6
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: d50291a33a9456fad20382d8e646bf6a19d6179e
+ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44023266"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47180881"
 ---
-# <a name="make-your-application-data-highly-available-with-azure-storage"></a>Az alkalmazásadatok magas rendelkezésre állásának biztosítása az Azure Storage használatával
+# <a name="tutorial-make-your-application-data-highly-available-with-azure-storage"></a>Oktatóanyag: Az alkalmazásadatok magas rendelkezésre állásának biztosítása az Azure Storage használatával
 
 Ez az oktatóanyag egy sorozat első része, amely azt ismerteti, hogyan biztosítható az alkalmazásadatok magas rendelkezésre állása az Azure-ban. Az oktatóanyagban egy konzolalkalmazást hoz majd létre, amely egy blobot tölt fel és kér le egy [írásvédett georedundáns](../common/storage-redundancy-grs.md#read-access-geo-redundant-storage) (RA-GRS) tárfiókba. Az RA-GRS úgy működik, hogy az elsődleges régióból a másodlagosba replikálja a tranzakciókat. A replikációs folyamat garantálja a másodlagos régió adatainak végső konzisztenciáját. Az alkalmazás az [áramköri megszakító](/azure/architecture/patterns/circuit-breaker) mintával határozza meg, hogy melyik végponthoz kapcsolódjon. Az alkalmazás a másodlagos végpontra vált, ha szimulált hibát tapasztal.
 

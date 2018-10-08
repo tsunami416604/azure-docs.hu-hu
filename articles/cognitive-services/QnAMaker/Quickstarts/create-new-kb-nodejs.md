@@ -1,24 +1,26 @@
 ---
-title: Új tudásbázis létrehozása – A Node.js rövid útmutatója – A Microsoft QnA Maker API-hoz (v4) – Azure Cognitive Services | Microsoft Docs
-description: Hozzon létre egy tudásbázist Node.js nyelven a gyakori kérdések és a termékkézikönyvek tárolásához és a QnA Maker használatának elkezdéséhez.
+title: 'Rövid útmutató: Node.js nyelvű API – Tudásbázis létrehozása – QnA Maker'
+description: Ez a rövid útmutató programozott módon végigvezeti egy minta QnA Maker tudásbázis létrehozásán, amely a Cognitive Services API-fiók Azure-irányítópultján fog megjelenni.
 services: cognitive-services
-author: noellelacharite
-manager: nolachar
+author: diberry
+manager: cgronlun
 ms.service: cognitive-services
 ms.technology: qna-maker
 ms.topic: quickstart
-ms.date: 06/15/2018
-ms.author: nolachar
-ms.openlocfilehash: cbf89aa3a10012ea2d99972c6a83dd351739c5a6
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.date: 09/12/2018
+ms.author: diberry
+ms.openlocfilehash: 435c937e64d0befc5a3bf30f9d58ccd303247b9e
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "43769828"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47037303"
 ---
 # <a name="create-a-new-knowledge-base-in-nodejs"></a>Új tudásbázis létrehozása Node.js nyelven
 
 Ez a rövid útmutató programozott módon végigvezeti egy minta QnA Maker tudásbázis létrehozásán, amely a Cognitive Services API-fiók Azure-irányítópultján fog megjelenni.
+
+[!INCLUDE [Code is available in Azure-Samples Github repo](../../../../includes/cognitive-services-qnamaker-nodejs-repo-note.md)]
 
 Alább két minta GYIK URL-cím található (a **req={}** „urls” értékében), amely a tartalmat adja meg. A QnA Maker automatikusan nyer ki kérdéseket és válaszokat ezek közül a félig strukturált tartalmak közül, amelyről részleteket ebben az [adatforrásokat leíró](../Concepts/data-sources-supported.md) dokumentumban talál. Ebben a rövid útmutatóban saját GYIK URL-eket is használhat.
 

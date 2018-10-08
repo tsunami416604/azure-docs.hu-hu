@@ -3,7 +3,7 @@ title: Oktatóanyag – Az Azure Security Center használata az Azure-beli Linux
 description: Ebben az oktatóanyagban megismerkedhet az Azure Security Center szolgáltatásaival, amelyekkel megvédheti és biztonságossá teheti Linux rendszerű virtuális gépeit az Azure-ban.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
-author: iainfoulds
+author: cynthn
 manager: jeconnoc
 editor: tysonn
 tags: azure-resource-manager
@@ -13,14 +13,15 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 05/07/2017
-ms.author: iainfou
+ms.date: 06/11/2018
+ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: e049bed6336f87d8077726843bbc870be90c633f
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 562fc267a056d6908af5b89fd7a93e858f1c6165
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47092611"
 ---
 # <a name="tutorial-use-azure-security-center-to-monitor-linux-virtual-machines"></a>Oktatóanyag: Az Azure Security Center használata a Linux rendszerű virtuális gépek monitorozásához
 
@@ -46,12 +47,13 @@ A Security Center az adatészlelésen túl javaslatokat is ad az észlelt probl�
 
 ## <a name="set-up-data-collection"></a>Adatgyűjtés beállítása
 
-Ha a virtuális gép biztonsági konfigurációjára kíváncsi, előbb be kell állítania a Security Center adatgyűjtését. Ennek során be kell kapcsolnia az adatgyűjtést, és létre kell hoznia egy Azure Storage-fiókot a gyűjtött adatok tárolásához. 
+Ha a virtuális gép biztonsági konfigurációjára kíváncsi, előbb be kell állítania a Security Center adatgyűjtését. Ennek során be kell kapcsolnia az adatgyűjtést, amely automatikusan telepíti a Microsoft Monitoring Agentet az előfizetés minden virtuális gépén.
 
 1. A Security Center irányítópultján kattintson a **Biztonsági szabályzat** elemre, és válassza ki az előfizetését. 
-2. Az **Adatgyűjtés** elemnél válassza a **Be** lehetőséget.
-3. Tárfiók létrehozásához válassza a **Tárfiók kiválasztása** elemet. Ezután válassza az **OK** lehetőséget.
-4. A **Biztonsági szabályzat** panelen válassza a **Mentés** lehetőséget. 
+2. Az **Automatikus kiépítés** **Adatgyűjtés** pontjánál válassza a **Be** lehetőséget.
+3. Az **Alapértelmezett munkaterület-konfiguráció** menüpont beállítása maradjon a **Security Center által létrehozott munkaterület(ek) használata (alapértelmezett)**.
+4. A **Biztonsági eseményeknél** tartsa meg az **Általános** alapértelmezett beállítást.
+4. Kattintson az oldal tetején lévő **Mentés** elemre. 
 
 Ekkor a rendszer telepíti a Security Center adatgyűjtési ügynökét minden virtuális gépen, és megkezdődik az adatgyűjtés. 
 
@@ -59,26 +61,12 @@ Ekkor a rendszer telepíti a Security Center adatgyűjtési ügynökét minden v
 
 A biztonsági szabályzatok segítségével határozhatók meg azok az elemek, amelyekhez a Security Center adatokat gyűjt és javaslatokat tesz. Az Azure-erőforrások különböző halmazaira különböző biztonsági szabályzatokat alkalmazhat. Noha alapértelmezés szerint a rendszer az Azure-erőforrásokat az összes szabályzatelem szerint értékeli ki, az egyes szabályzatelemek kikapcsolhatók minden Azure-erőforráshoz, vagy egy adott erőforráscsoporthoz. Ha további információt szeretne megtudni a Security Center biztonsági szabályzatairól olvassa el a [biztonsági szabályzatok az Azure Security Centerben történő beállítását](../../security-center/security-center-policies.md) ismertető részt. 
 
-Biztonsági szabályzat beállítása az összes Azure-erőforráshoz:
+Ha biztonsági szabályzatot szeretne beállítani a teljes előfizetéshez:
 
 1. A Security Center irányítópultján válassza a **Biztonsági szabályzat** lehetőséget, és válassza ki az előfizetését.
-2. Válassza a **Megelőzési szabályzat** lehetőséget.
-3. Kapcsolja be vagy ki az összes Azure-erőforrásra alkalmazni kívánt szabályzatelemeket.
-4. Ha elkészült a beállítások kiválasztásával, válassza az **OK** elemet.
-5. A **Biztonsági szabályzat** panelen válassza a **Mentés** lehetőséget. 
-
-Egy szabályzat beállítása egy adott erőforráscsoporthoz:
-
-1. A Security Center irányítópultján kattintson a **Biztonsági szabályzat** lehetőségre, és válasszon egy erőforráscsoportot.
-2. Válassza a **Megelőzési szabályzat** lehetőséget.
-3. Kapcsolja be vagy ki az erőforrásra alkalmazni kívánt szabályzatelemeket.
-4. Az **ÖRÖKLÉS** elemnél válassza az **Egyedi** lehetőséget.
-5. Ha elkészült a beállítások kiválasztásával, válassza az **OK** elemet.
-6. A **Biztonsági szabályzat** panelen válassza a **Mentés** lehetőséget.  
-
-Ezen az oldalon egy adott erőforráscsoporthoz is kikapcsolhatja az adatgyűjtést.
-
-A következő példában létrehozunk egy egyedi szabályzatot egy *myResourceGroup* nevű erőforráscsoporthoz. Ebben a szabályzatban ki vannak kapcsolva a lemeztitkosításra és a webalkalmazási tűzfalra vonatkozó javaslatok.
+2. A **Biztonsági szabályzat** panelen válassza a **Biztonsági szabályzat** elemet. 
+3. A ** Biztonsági szabályzat – Biztonsági szabályzat ** panelen kapcsolja be vagy ki az előfizetésre alkalmazni kívánt szabályzatelemeket.
+4. Ha végzett a beállítások megadásával, kattintson a panel tetején lévő **Mentés** elemre. 
 
 ![Egyedi szabályzat](./media/tutorial-azure-security/unique-policy.png)
 
@@ -90,12 +78,12 @@ Ahogy gyűlnek az adatok, az egyes virtuális gépek erőforrás-állapotát és
 
 Az erőforrás állapotának megtekintése:
 
-1.  A Security Center irányítópultjának **Erőforrások biztonsági állapota** területén válassza a **Compute** elemet. 
-2.  A **Compute** panelen válassza a **Virtuális gépek** lehetőséget. Ebben a nézetben megtekintheti az összes virtuális gép konfigurációs állapotának összegzését.
+1.  A Security Center irányítópultjának **Megelőzés** területén válassza a **Compute** elemet. 
+2.  A **Compute** panelen válassza a **Virtuális gépek és számítógépek** lehetőséget. Ebben a nézetben megtekintheti az összes virtuális gép konfigurációs állapotának összegzését.
 
 ![Compute-állapot](./media/tutorial-azure-security/compute-health.png)
 
-A virtuális gépre vonatkozó összes javaslat megtekintéséhez válassza ki a virtuális gépet. A javaslatokról és a javításokról a jelen oktatóanyag következő szakaszában lesz részletesebben szó.
+A virtuális gépre vonatkozó összes javaslat megtekintéséhez válassza ki a virtuális gépet. 
 
 ## <a name="remediate-configuration-issues"></a>Konfigurációs problémák javítása
 
@@ -105,7 +93,7 @@ A javaslatok listájának megtekintése:
 
 1. A Security Center irányítópultján válassza a **Javaslatok** elemet.
 2. Válasszon ki egy adott javaslatot. Megjelenik azon erőforrások listája, amelyekre vonatkozik a javaslat.
-3. Egy javaslat alkalmazásához válasszon ki egy adott erőforrást. 
+3. Egy javaslat alkalmazásához válasszon ki egy erőforrást. 
 4. A javítási lépések végrehajtásához kövesse az utasításokat. 
 
 A Security Center olyan végrehajtható lépéseket ajánl, amelyekkel a Security Center elhagyása nélkül kezelhet egy javaslatot. A következő példában a Security Center olyan hálózati biztonsági csoportot észlel, amelyhez tartozik egy korlátozás nélküli bejövő szabály. A javaslatok oldalán kiválaszthatja a **Bejövő szabályok szerkesztése** gombot. Megjelenik a szabály módosításához szükséges felhasználói felület. 
@@ -118,14 +106,14 @@ Ha a rendszer elvégzi a javaslatokhoz tartozó javításokat, megoldottként je
 
 Az erőforrások konfigurációjára vonatkozó javaslatok mellett a Security Center megjelenít fenyegetésészlelési riasztásokat is. A biztonsági riasztások szolgáltatása az Azure-erőforrásokra leselkedő biztonsági fenyegetések felderítése érdekében összesíti az egyes virtuális gépekről gyűjtött adatokat, az Azure-beli hálózati naplókat és a csatlakoztatott partnermegoldásokat. A Security Center fenyegetésészlelési képességeivel kapcsolatban további információt [az Azure Security Center észlelési képességeit](../../security-center/security-center-detection-capabilities.md) ismertető szakaszban talál.
 
-A biztonsági riasztások funkciójának használatához a Security Center tarifacsomagját *Ingyenesről* *Standardra* kell emelni. Ha erre a magasabb tarifacsomagra lép, elérhető egy 30 napos **ingyenes próbaidőszak**. 
+A biztonsági riasztások funkciójának használatához a Security Center tarifacsomagját *Ingyenesről* *Standardra* kell emelni. Ha erre a magasabb tarifacsomagra vált, egy 60 napos **ingyenes próbaidőszak** áll a rendelkezésére. 
 
 A tarifacsomag módosítása:  
 
 1. A Security Center irányítópultján kattintson a **Biztonsági szabályzat** elemre, és válassza ki az előfizetését.
 2. Válassza a **Tarifacsomag** lehetőséget,
-3. Válassza ki az új csomagot, majd kattintson a **Kiválasztás** elemre.
-4. A **Biztonsági szabályzat** panelen válassza a **Mentés** lehetőséget. 
+3. Válassza a **Standard** lehetőséget, majd kattintson a panel tetején lévő **Mentés** elemre.
+
 
 Miután módosította a tarifacsomagot, a rendszer feltölti a biztonsági riasztások diagramját, amint biztonsági fenyegetéseket észlel.
 

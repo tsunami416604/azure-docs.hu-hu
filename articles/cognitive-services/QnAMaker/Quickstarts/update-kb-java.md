@@ -1,24 +1,27 @@
 ---
-title: Tudásbázis közzététele – A Java rövid útmutatója – Azure Cognitive Services | Microsoft Docs
+title: 'Rövid útmutató: Tudásbázis frissítése Java nyelven – QnA Maker'
+titleSuffix: Azure Cognitive Services
 description: Tudásbázis frissítése Java nyelven a QnA Makerhez.
 services: cognitive-services
-author: noellelacharite
-manager: nolachar
+author: diberry
+manager: cgronlun
 ms.service: cognitive-services
-ms.technology: qna-maker
+ms.component: qna-maker
 ms.topic: quickstart
-ms.date: 06/18/2018
-ms.author: nolachar
-ms.openlocfilehash: ea55305479888e678166431123b9bd58188e2d78
-ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
+ms.date: 09/12/2018
+ms.author: diberry
+ms.openlocfilehash: f78e9bca7b1b4ce048826b887f99c6dc12f596b7
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "43769930"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47040006"
 ---
 # <a name="update-a-knowledge-base-in-java"></a>Tudásbázis frissítése Java nyelven
 
 A következő kód egy meglévő tudásbázist frissít az [Update](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da7600) metódussal.
+
+[!INCLUDE [Code is available in Azure-Samples Github repo](../../../../includes/cognitive-services-qnamaker-java-repo-note.md)]
 
 Ha még nem rendelkezik tudásbázissal, létrehozhat egy minta tudásbázist ehhez a rövid útmutatóhoz: [Új tudásbázis létrehozása](create-new-kb-java.md).
 

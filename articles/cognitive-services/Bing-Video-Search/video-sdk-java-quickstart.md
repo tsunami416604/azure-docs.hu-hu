@@ -1,30 +1,30 @@
 ---
-title: Bing videó keresési SDK Java gyors üzembe helyezés |} Microsoft Docs
-description: Ismerje meg, hogyan állíthat be a Bing videó keresési SDK konzolalkalmazást.
+title: 'Rövid útmutató: Bing Video Search SDK – Java'
 titleSuffix: Azure Cognitive Services
+description: Megtudhatja, hogyan helyezheti üzembe a Bing Video SDK-konzolalkalmazást.
 services: cognitive-services
 author: mikedodaro
-manager: rosh
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-video-search
-ms.topic: article
+ms.topic: quickstart
 ms.date: 02/18/2018
-ms.author: v-gedod
-ms.openlocfilehash: 1d9ccd88de4b91060861c39ab20f6a203c820384
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
-ms.translationtype: MT
+ms.author: rosh
+ms.openlocfilehash: b0e083a7397378956d9fe0d0ae2257aaf0bbdf1e
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35349470"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47223423"
 ---
-# <a name="bing-video-search-sdk-java-quickstart"></a>Bing videó keresési SDK Java gyors üzembe helyezés
+# <a name="quickstart-bing-video-search-sdk-java"></a>Rövid útmutató: Bing Video Search SDK – Java
 
-A Bing videó keresési SDK videó lekérdezések és elemzési eredmények REST API-t a funkcionalitást biztosítja.
+A Bing Video Search SDK a REST API funkciót biztosítja a videolekérdezésekhez és az eredmények elemzéséhez.
 
-A [forráskód Java Bing videó keresési SDK minták](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples/tree/master/Search/BingVideoSearch) érhető el a Git központ.
+A [Java Bing Video Search SDK-minták forráskódja](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples/tree/master/Search/BingVideoSearch) elérhető a GitHubon.
 
 ## <a name="application-dependencies"></a>Alkalmazásfüggőségek
-Első egy [kognitív szolgáltatások hozzáférési kulcs](https://azure.microsoft.com/try/cognitive-services/) alatt **keresési**. Telepítse a Bing videó keresési SDK-függőség Maven, a gradle-lel vagy a másik függőségi felügyeleti rendszerbe. A Maven POM fájl szükséges a:
+A [Cognitive Services hozzáférési kulcsát](https://azure.microsoft.com/try/cognitive-services/) a **Keresés** területen kérheti le. Telepítse a Bing Video Search SDK függőségeit a Maven, a Gradle vagy más függőségkezelési rendszer segítségével. A Maven POM-fájlhoz a következő deklarációra van szükség:
 ```
   <dependencies>
     <dependency>
@@ -34,8 +34,8 @@ Első egy [kognitív szolgáltatások hozzáférési kulcs](https://azure.micros
     </dependency>
   </dependencies> 
 ```
-## <a name="video-search-client"></a>Videó keresési ügyfél
-Adja hozzá a importálásokat osztály megvalósításához.
+## <a name="video-search-client"></a>Video Search-ügyfél
+Vegyen fel importálásokat az osztályimplementációhoz.
 ```
 import com.microsoft.azure.cognitiveservices.videosearch.*;
 import com.microsoft.azure.cognitiveservices.videosearch.Freshness;
@@ -54,7 +54,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 ```
-Alkalmazzon a **VideoSearchAPIImpl** az ügyfelet egy példányát igényli a **ServiceClientCredentials** osztály.
+Implementálja a **VideoSearchAPIImpl** ügyfelet. Ehhez szükség van a **ServiceClientCredentials** osztály egy példányára.
 ```
 public static VideoSearchAPIImpl getClient(final String subscriptionKey) {
     return new VideoSearchAPIImpl("https://api.cognitive.microsoft.com/bing/v7.0/",
@@ -78,7 +78,7 @@ public static VideoSearchAPIImpl getClient(final String subscriptionKey) {
             });
 }
 ```
-Keresse meg a videók a "SwiftKey." Ellenőrizze a eredmények számát. Az első videó eredmény nyomtatása Azonosítóját, nevét és URL-CÍMÉT.
+Keressen a „SwiftKey” kifejezéssel kapcsolatos videókat. Ellenőrizze az eredmények számát. Nyomtassa ki az első videotalálat azonosítóját, nevét és URL-címét.
 ```
 public static void VideoSearch(String subscriptionKey)
 {
@@ -120,7 +120,7 @@ public static void VideoSearch(String subscriptionKey)
 
 
 ```
-Keresse meg a videók a "Bellevue pótkocsi." Szűrheti a keresést a *szabad*, *rövid*, és *1080p feloldási* paraméterek. Ellenőrizze a eredmények számát. Az első videó eredmény nyomtatása Azonosítóját, nevét és URL-CÍMÉT.
+Keressen a „Bellevue Trailer” kifejezéssel kapcsolatos videókat. Szűrje a keresést a *free*, a *short* és a *1080p resolution* paraméterekkel. Ellenőrizze az eredmények számát. Nyomtassa ki az első videotalálat azonosítóját, nevét és URL-címét.
 ```
 public static void VideoSearchWithFilters(String subscriptionKey)
 {
@@ -160,7 +160,7 @@ public static void VideoSearchWithFilters(String subscriptionKey)
 }
 
 ```
-Keresse meg a trendekkel videók. Ellenőrizze a **bannerTiles** és **kategóriák** paraméterek.
+Keressen népszerű videókat. Ellenőrizze a **bannerTiles** és a **categories** paramétereket.
 ```
 public static void VideoTrending(String subscriptionKey)
 {
@@ -245,7 +245,7 @@ public static void VideoTrending(String subscriptionKey)
 }
 
 ```
-Keresse meg a "Bellevue pótkocsi" videókat, és az első videó eredmény vonatkozó további információért keressen.
+Keressen a „Bellevue Trailer” kifejezéssel kapcsolatos videókat, majd keressen rá az első videotalálat részletes adataira.
 ```
 public static void VideoDetail(String subscriptionKey)
 {
@@ -315,7 +315,7 @@ public static void VideoDetail(String subscriptionKey)
     }
 }
 ```
-Adja hozzá a metódusokat, a cikkben egy fő függvénnyel a kódot hajthatók végre osztályra.
+Vegye fel a jelen cikkben ismertetett metódusokat egy olyan osztályba, amelyben a fő függvény a kód futtatására szolgál.
 ```
 package videoSDK;
 import com.microsoft.azure.cognitiveservices.videosearch.*;
@@ -337,4 +337,4 @@ public class VideoSDK {
 ```
 ## <a name="next-steps"></a>További lépések
 
-[Kognitív szolgáltatások Java SDK-minták](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples)
+[Cognitive Services Java SDK-minták](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples)

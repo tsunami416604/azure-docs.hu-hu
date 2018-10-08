@@ -1,69 +1,70 @@
 ---
-title: Bing egyoldalas videó fájlkeresés alkalmazás |} Microsoft Docs
-description: A videó Bing keresési API használatát egy egyoldalas webalkalmazást a ismerteti.
+title: 'Oktatóanyag: Egyoldalas Bing Video Search-alkalmazás létrehozása'
+titlesuffix: Azure Cognitive Services
+description: Azt ismerteti, hogyan használható a Bing Video Search API egy egyoldalas webalkalmazásban.
 services: cognitive-services
 author: mikedodaro
-manager: ronakshah
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-video-search
-ms.topic: article
+ms.topic: tutorial
 ms.date: 11/01/2017
-ms.author: v-gedod
-ms.openlocfilehash: 55f662721e007e03c8f43f19d8b905e755cfe1d8
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
-ms.translationtype: MT
+ms.author: rosh
+ms.openlocfilehash: a7c6646a69aec11797d354da28baca669b802ab0
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35349030"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47226602"
 ---
-# <a name="tutorial-single-page-video-search-app"></a>Oktatóanyag: Egyoldalas videó fájlkeresés alkalmazás
-Videó Bing keresési API lehetővé teszi a weben, és eredményt videó vonatkozó keresési lekérdezés. Az oktatóanyag azt a lapon a keresési eredmények megjelenítendő a Bing keresési API-t használó egyoldalas-webalkalmazás létrehozása. Az alkalmazás HTML, CSS és JavaScript összetevőket tartalmazza.
+# <a name="tutorial-single-page-video-search-app"></a>Oktatóanyag: Egyoldalas Video Search-alkalmazás
+A Bing Video Search API kikeresi az interneten a keresési lekérdezésnek megfelelő videótalálatokat. Ebben az oktatóanyagban létrehozunk egy egyoldalas webalkalmazást, amely a Bing Search API-t használja a keresési eredmények megjelenítéséhez az oldalon. Az alkalmazás HTML-, CSS- és JavaScript-összetevőkből áll.
 
 <!-- Remove until it can be replaced with a sanitized version.
 ![Single-page Bing Video Search app](./media/video-search-singlepage.png)
 -->
 
 > [!NOTE]
-> A JSON és a HTTP-fejlécek kattintáskor a lap alján a JSON-válasz és a HTTP-kérelem információk megjelenítése. Ezen adatok akkor lehet hasznos, ha a szolgáltatás fel.
+> A lap alján található JSON- és HTTP-fejlécek a JSON-válasz és a HTTP-kérés adatait mutatják, ha rájuk kattint. Ezek a részletek hasznosak lehetnek, ha meg szeretne ismerkedni a szolgáltatással.
 
-![JSON-NÁ, HTTP nyers eredmények](./media/json-http-raw-results.png)
+![nyers JSON- és HTTP-eredmények](./media/json-http-raw-results.png)
 
-Ez az oktatóanyag alkalmazás bemutatja, hogyan:
+Az oktatóanyag részeként összeállított alkalmazás a következők bemutatására szolgál:
 > [!div class="checklist"]
-> * Végezze el a Bing videó keresési API-hívás JavaScript
-> * Keresési beállítások átadása a Bing keresési API
-> * Videó keresési eredmények megjelenítéséhez, vagy választhatóan a weblapokat, híreket és képek
-> * Keresési időkereteket a 24 órát, a múlt hét, hónap vagy az összes rendelkezésre álló idő
-> * A keresési eredmények lap
-> * A Bing ügyfél azonosítója és API előfizetés kulcs kezelése
-> * Előforduló hibák kezelésének
+> * Bing Video Search API-hívás indítása a JavaScriptben
+> * Keresési beállítások továbbítása a Bing Search API-nak
+> * Videótalálatok megjelenítése vagy a megjelenítés kiterjesztése weblapokra, hírekre vagy képekre
+> * Az elmúlt 24 órára, az elmúlt hétre vagy elmúlt hónapra korlátozódó, vagy minden elérhető időtartományt magában foglaló időkeret
+> * Keresési eredmények közötti lapozás
+> * A Bing-ügyfélazonosító és az API előfizetői azonosító kezelése
+> * Az esetlegesen előforduló problémák kezelése
 
-Az oktatóprogram lap nincs teljes mértékben; bármely külső keretrendszerek, a stíluslapok, vagy a képfájlok nem használ. Csak széles körben támogatott JavaScript nyelvi funkciókat használ, és minden nagyobb webböngésző az aktuális verzióival működik.
+Az oktatóanyag oldala teljesen önálló; nem használ semmilyen külső keretrendszert, stíluslapot vagy képfájlt. Egyedül széles körben támogatott JavaScript nyelvi funkciókat használ, és az összes nagyobb webböngésző aktuális verziójával kompatibilis.
 
-Ebben az oktatóanyagban arról lesz szó a forráskód kijelölt részei. A teljes [forráskód](tutorial-bing-video-search-single-page-app-source.md) érhető el. A példa futtatásához, másolja és illessze be a kódot egy szövegszerkesztőbe, és mentse a fájt `bing.html`.
+Ebben az oktatóanyagban a forráskódnak csak egyes részeit fogjuk megtárgyalni. A teljes [forráskód itt érhető el](tutorial-bing-video-search-single-page-app-source.md). A példa futtatásához másolja a forráskódot egy szövegszerkesztőbe, és mentse el `bing.html` néven.
 
-## <a name="app-components"></a>Alkalmazások összetevői
-Bármely egyoldalas webalkalmazást, mint ez az oktatóanyag alkalmazás három rész tartalmazza:
+## <a name="app-components"></a>Alkalmazás-összetevők
+Mint minden egyoldalas webalkalmazás, ez az oktatóalkalmazás is három részből áll:
 
 > [!div class="checklist"]
-> * HTML - struktúra és a lap tartalma határozza meg
-> * CSS - határozza meg az oldal megjelenítési módja
-> * JavaScript - meghatározza az oldal viselkedését
+> * HTML – Meghatározza az oldal szerkezetét és tartalmát
+> * CSS – Meghatározza az oldal megjelenését
+> * JavaScript – Meghatározza az oldal viselkedését
 
-A HTML-és CSS hagyományos, így az útmutató nem tárgyalja azt. A HTML-KÓDBAN a keresés, amelyben a felhasználó beírja egy lekérdezést, majd keresési beállítások tartalmazza. Az űrlap JavaScript, amelyet a keresési használatával kapcsolódik a `onsubmit` attribútuma a `<form>` címke:
+A HTML és a CSS nagy része hagyományos, ezért az oktatóanyag részeként nem vesszük át őket. A HTML tartalmazza a keresési űrlapot, amelyen a felhasználó megad egy lekérdezést, és kiválasztja a keresési beállításokat. Az űrlap a JavaScripthez van csatlakoztatva, amely végrehajtja a keresést a `<form>` címke `onsubmit` attribútumával:
 
 ```html
 <form name="bing" onsubmit="return bingWebSearch(this)">
 ```
-A `onsubmit` kezelő azt `false`, amely az űrlap tartja a kiszolgáló nem továbbíthatók. A JavaScript-kód végzi a munka a szükséges információk begyűjtése az űrlap és a keresés végrehajtása.
+Az `onsubmit` kezelő `false` értéket ad vissza, ami megakadályozza az űrlap elküldését a kiszolgálóra. A JavaScript-kód begyűjti a szükséges adatokat az űrlapból, és végrehajtja a keresést.
 
-A HTML is tartalmaz, a részlegek (HTML `<div>` címkék) hol jelenjenek meg a keresési eredmények között.
+A HTML azokat a részlegeket (HTML `<div>` címkéket) is tartalmazza, amelyekben a keresési eredmények megjelennek.
 
-## <a name="managing-subscription-key"></a>Előfizetés kulcs kezelése
+## <a name="managing-subscription-key"></a>Előfizetői azonosító kezelése
 
-Kívánja kerülni a Bing keresési API-előfizetés kulcs szerepeljenek a kódot, használjuk a böngésző állandó tároló tárolja a kulcsot. A kulcsot tárolják, mielőtt azt a felhasználói kulcs kérni. Ha a kulcs később elutasította az API-t, azt érvénytelenné válnak a tárolt kulcs, a program ismét kéri a felhasználó.
+Annak érdekében, hogy a Bing Search API előfizetői azonosítóját ki lehessen hagyni a kódból, a böngésző állandó tárolójában tároljuk az azonosítót. Mielőtt az azonosítót eltárolnánk, elkérjük a felhasználó azonosítóját. Ha az azonosítót később elutasítja az API, érvénytelenítjük a tárolt azonosítót, ezért a felhasználótól újra el kell kérnünk az övét.
 
-Meghatároztuk `storeValue` és `retrieveValue` függvények, amelyek használja a `localStorage` (nem minden böngésző támogatja) objektum vagy egy cookie-t. A `getSubscriptionKey()` függvény használja ezeket a funkciókat tárolásához és lekéréséhez a felhasználói kulcsot.
+Meghatározzuk a `storeValue` és `retrieveValue` függvényeket, amelyek vagy a `localStorage` objektumot használják (amelyet nem minden böngésző támogat), vagy egy cookie-t. A `getSubscriptionKey()` függvény a felhasználó azonosítójának tárolására és lekérésére használja ezeket a függvényeket.
 
 ``` javascript
 // Cookie names for data we store
@@ -86,31 +87,31 @@ function getSubscriptionKey() {
     return key;
 }
 ```
-A HTML `<form>` címke `onsubmit` hívások a `bingWebSearch` függvény által visszaadott a keresési eredmények között. `bingWebSearch` használja a `getSubscriptionKey()` minden egyes lekérdezés hitelesítéséhez. Ahogy az az előző definíció `getSubscriptionKey` bekéri a felhasználótól a kulcsot, ha a kulcs nem lett megadva. A kulcsot majd tárolja a folyamatos használata az alkalmazás.
+Egy HTML `<form>` címke, az `onsubmit` meghívja a `bingWebSearch` függvényt, hogy visszaadja a keresési eredményeket. A `bingWebSearch` minden lekérdezés hitelesítéséhez a `getSubscriptionKey()` függvényt használja. Ahogy az előző definíció is mutatja, a `getSubscriptionKey` elkéri a felhasználótól az azonosítót, ha az még nem lett megadva. A rendszer ezután eltárolja az azonosítót az alkalmazás által további használatra.
 
 ```html
 <form name="bing" onsubmit="this.offset.value = 0; return bingWebSearch(this.query.value, 
     bingSearchOptions(this), getSubscriptionKey())">
 ```
 ## <a name="selecting-search-options"></a>Keresési beállítások kiválasztása
-Az alábbi ábrán látható, a lekérdezés szöveges mezőbe, majd a keresés meghatározó beállítások.
+A következő ábrán a lekérdezési szövegmező és a keresést meghatározó beállítások láthatók.
 
-![Bing hírek keresési beállítások](media/video-search-options.png)
+![A Bing News Search beállításai](media/video-search-options.png)
 
-A HTML-űrlaphoz, a következő nevű elemeket tartalmazza:
+A HTML-űrlap a következő nevű elemeket tartalmazza:
 
 |Elem|Leírás|
 |-|-|
-| `where` | A legördülő menüből a kereséshez használt piaci (a hely és a nyelvi) kiválasztásához. |
-| `query` | A szövegmezőbe írja be a keresőkifejezést. |
-| `modules` | Az eredmények eredményeit, illetve a kapcsolódó videók adott modulok elősegítő jelölőnégyzeteket. |
-| `when` | A Keresés a legutóbbi naponta, hetente vagy havonta opcionálisan korlátozó legördülő menü. |
-| `safe` | A jelölőnégyzet, amely azt jelzi, hogy "felnőtt" eredményeket szűrheti a Bing biztonságos keresés funkció segítségével. |
-| `count` | Rejtett mező. Keresési eredmények vissza az egyes kérelmek száma. Módosítsa a laponként kevesebb vagy további eredmények megtekintése céljából. |
-| `offset`|  Rejtett mező. A kérelem; az első keresési eredmény eltolása a lapozáshoz használt. Lesz visszaállítva `0` az új kérelemhez. |
+| `where` | Legördülő menü a kereséshez használt piac (hely és nyelv) kiválasztásához. |
+| `query` | Szövegmező a keresőkifejezések megadásához. |
+| `modules` | Jelölőnégyzetek az eredmények bizonyos moduljainak, minden eredménynek vagy a kapcsolódó videóknak az előléptetéséhez. |
+| `when` | Legördülő menü a keresés opcionális, az elmúlt napra, hétre vagy hónapra történő korlátozásához. |
+| `safe` | Jelölőnégyzet, amellyel megadható, hogy a Bing SafeSearch funkció kiszűrje-e a „felnőtteknek szánt” tartalmakat. |
+| `count` | Rejtett mező. A kérésenként visszaadandó keresési eredmények száma. A módosításával oldalanként kevesebb vagy több keresési eredmény jeleníthető meg. |
+| `offset`|  Rejtett mező. Az első keresési eredmény eltolása a kérésben; a lapozást segíti elő. Új kérésnél `0` értékre van visszaállítva. |
 
 > [!NOTE]
-> Bing webes keresés kínál más lekérdezési paramétereket. Csak néhány őket használunk.
+> A Bing Web Search más lekérdezési paramétereket is kínál, de mi ezek közül csak néhányat használunk.
 
 ``` javascript
 // build query options from the HTML form
@@ -137,10 +138,10 @@ function bingSearchOptions(form) {
 }
 ```
 
-Például a `SafeSearch` tényleges API-hívásban paraméter lehet `strict`, `moderate`, vagy `off`, a `moderate` az alapértelmezett alatt. Az űrlap – számára, azonban a jelölőnégyzet, amelynek csak kétállapotú használja. A JavaScript-kód alakítja át, ezt a beállítást az egyik `strict` vagy `off` (`moderate` nem használatos).
+A `SafeSearch` paraméter értéke például egy tényleges API-hívásban `strict`, `moderate` vagy `off` lehet. Ezek közül a `moderate` az alapértelmezett. A mi űrlapunk viszont egy jelölőnégyzetet használ, amelynek csak két állapota van. A JavaScript-kód ezt a beállítást `strict` vagy `off` értékké alakítja (a `moderate` nem használatos).
 
-## <a name="performing-the-request"></a>A kérelem végrehajtása
-A lekérdezés, a beállítások karakterlánc és az API-kulcsot a `BingWebSearch` függvény egy `XMLHttpRequest` objektum gombra a kérelem a Bing keresési végpontnak.
+## <a name="performing-the-request"></a>A kérés végrehajtása
+A lekérdezés, a beállítási sztring és az API-kulcs ismeretében a `BingWebSearch` függvény egy `XMLHttpRequest` objektumot használ arra, hogy kérést intézzen a Bing Search-végponthoz.
 
 ```javascript
 // Search on the query, using search options, authenticated by the key.
@@ -189,7 +190,7 @@ function bingWebSearch(query, options, key) {
     return false;
 }
 ```
-A HTTP-kérelem sikeres befejezését követően, a JavaScript-hívásokat a `load` eseménykezelő, `handleOnLoad()`, kezelni egy sikeres HTTP GET kérést az API-t. 
+A HTTP-kérés sikeres befejezése esetén a JavaScript meghívja a `load` `handleOnLoad()` eseménykezelőjét, hogy kezeljen egy, az API-hoz intézett sikeres HTTP GET kérést. 
 
 ```javascript
 // handle Bing search request results
@@ -255,21 +256,21 @@ function handleOnLoad() {
 ```
 
 > [!IMPORTANT]
-> Ha hiba lép fel a keresési művelet, a Bing hírek Search API nem 200-as HTTP - állapotkódot adja vissza, és tartalmazza a hiba adatait a JSON-NÁ válaszul. Emellett a kérelmező sebessége korlátozott, ha a az API-t egy üres választ ad vissza.
-A sikeres HTTP-kérelmek does *nem* feltétlenül jelenti azt, hogy a keresési szolgáltatás sikeresen befejeződött. 
+> Ha a keresési műveletben hiba merül fel, a Bing News Search API visszaad egy nem 200-as értékű HTTP-állapotkódot, és belefoglalja a hibára vonatkozó információkat a JSON-válaszba. Továbbá, ha a kérés sebessége korlátozva volt, az API egy üres választ ad vissza.
+Egy sikeres HTTP-kérés *nem* feltétlenül jelenti azt, hogy maga a keresés is sikeres volt. 
 
-Nagy részét a kódot is az előző funkciók hibakezelés van kijelölve. Hibák fordulhatnak elő a következő szakaszokban:
+Az előző két függvény kódjainak nagy része a hibakezelésért felel. A következő fázisoknál léphetnek fel hibák:
 
-|Fázis|A lehetséges hibák|Kezeli|
+|Fázis|Lehetséges hiba vagy hibák|Kezelő|
 |-|-|-|
-|A JavaScript request objektumon felépítése|Érvénytelen URL|`try`/`catch` letiltása|
-|A kérést|Hálózati hiba, megszakított kapcsolatok|`error` és `abort` eseménykezelők|
-|A keresés végrehajtása|Érvénytelen kérelemben érvénytelen JSON sebességhatárok|a tesztek `load` eseménykezelő|
+|A JavaScript-kérésobjektum létrehozása|Érvénytelen URL-cím|`try`/`catch` blokk|
+|Kérés végrehajtása|Hálózati hibák, megszakított kapcsolatok|`error` és `abort` eseménykezelők|
+|Keresés végrehajtása|Érvénytelen kérés, érvénytelen JSON, sebességkorlátok|tesztek a `load` eseménykezelőben|
 
-Hibák hívásával kezeli `renderErrorMessage()` a hibával kapcsolatos ismert bármely adatokkal. Ha a válasz a teljes gauntlet hiba teszten megfelelt, nevezzük `renderSearchResults()` a keresési eredmények megjelennek a lapon.
+A hibák kezelése a `renderErrorMessage()` meghívásával történik a hibával kapcsolatos ismert részletek megadásával. Ha a válasz hibatesztek teljes skáláját továbbítja, meghívjuk a `renderSearchResults()` függvényt, hogy megjelenítse a keresési eredményeket az oldalon.
 
 ## <a name="displaying-search-results"></a>Keresési eredmények megjelenítése
-A keresési eredmények megjelenítése a fő funkciója `renderSearchResults()`. Ez a funkció a JSON a Bing hírek keresési szolgáltatás által visszaadott veszi, és ez a beállítás a hírek és a kapcsolódó keres, ha van ilyen.
+A keresési eredmények megjelenítésére használatos fő függvény a `renderSearchResults()`. Ez a függvény a Bing News Search szolgáltatás által visszaadott JSON segítségével rendereli a hírtalálatokat és a kapcsolódó kereséseket, ha vannak.
 
 ```javascript
 // render the search results given the parsed JSON response
@@ -286,7 +287,7 @@ function renderSearchResults(results) {
     }
 }
 ```
-A keresési eredmények vissza, a legfelső szintű `value` a JSON-NÁ válaszul objektum. Azt adja meg azokat a függvény `renderResultsItems()`, amely megismétli a rajtuk keresztül, és HTML egyes elemek megjelenítéséhez a függvényt. Az eredményül kapott HTML küld vissza `renderSearchResults()`, ahol azt bekerülnek a `results` osztás a lapon.
+A JSON-válasz a keresési eredményeket a legfelső szintű `value` objektumként adja vissza. Mi elküldjük őket a `renderResultsItems()` függvénynek, amely végighalad rajtuk, és meghív egy függvényt az egyes elemek HTML-be történő rendereléséhez. A kapott HTML vissza lesz adva a `renderSearchResults()` függvénynek, amelyben a lap `results` részlegébe lesz beszúrva.
 
 ```javascript
 // render search results
@@ -305,20 +306,20 @@ A keresési eredmények vissza, a legfelső szintű `value` a JSON-NÁ válaszul
 }
 ```
 
-A Bing hírek Search API legfeljebb négy különböző típusú kapcsolódó saját legfelső szintű objektum eredményeket ad vissza. Ezek a következők:
+A Bing News Search API legfeljebb négy különböző típusú kapcsolódó eredményt ad vissza, mindegyiket a saját legfelső szintű objektumában. Ezek a következők:
 
-|Kapcsolat|Leírás|
+|Kapcsolat típusa|Leírás|
 |-|-|
-|`pivotSuggestions`|Lecseréli az eredeti search pivot szót egy másik lekérdezések. Például ha a "red virág", lehet, hogy a pivot szót "red", és előfordulhat, hogy a pivot javaslat "sárga virág."|
-|`queryExpansions`|Azok a lekérdezések, amelyek az eredeti keresés szűkítéséhez további feltételek hozzáadásával. Ha a "Microsoft Surface", a lekérdezés bővítése lehet például "Microsoft Surface Pro."|
-|`relatedSearches`|Az eredeti keresési megadott más felhasználók is megadott lekérdezések. Például ha a "Mount Rudolf", a kapcsolódó keresés lehet "Mt. Saint Helens."|
-|`similarTerms`|A hasonló jelentése van az eredeti keresési lekérdezések. Ha a "iskolákat", egy hasonló kifejezés lehet például "oktatási."|
+|`pivotSuggestions`|Lekérdezések, amelyek az eredeti keresés egyik lecserélhető szavát egy másikra cserélik. Ha például a „piros virágok” kifejezésre keres, a „piros” egy lecserélhető szó, a „sárga virágok” pedig egy alternatív javaslat.|
+|`queryExpansions`|Lekérdezések, amelyek további kifejezések hozzáadásával szűkítik az eredeti keresést. Ha például a „Microsoft Surface” kifejezésre keres, a lekérdezés egyik lehetséges kibővítése a „Microsoft Surface Pro”.|
+|`relatedSearches`|Az eredeti keresőkifejezéssel is próbálkozó felhasználók további lekérdezései. Ha például a „Mount Rainier” kifejezésre keres, egy lehetséges kapcsolódó keresés lehet a „Mt. Saint Helens”.|
+|`similarTerms`|Lekérdezések, amelyeknek az eredeti kereséshez hasonló jelentésük van. Ha például az „iskolák” kifejezésre keres, az „oktatás” az egyik ilyen hasonló értelmű keresőszó.|
 
-A korábban már látott `renderSearchResults()`, azt csak leképezési a `relatedItems` vonatkozó javaslatokat és a hely a kapott a lap nézetállapotán oldalsávon hivatkozásokat tartalmaz.
+Ahogy a `renderSearchResults()` függvényben láthatta, csak a `relatedItems` javaslatokat rendereljük, és a kapott hivatkozásokat a lap oldalsávjában helyezzük el.
 
-## <a name="rendering-result-items"></a>Eredmény elemek megjelenítése
+## <a name="rendering-result-items"></a>Eredményelemek renderelése
 
-A a JavaScript-kód az objektum `searchItemRenderers`, is tartalmaz *jelentéselemeket:* függvény alapján, amelyek HTML minden milyen keresési eredmények. A videó keresés lapon csak használ `videos`. Tekintse meg a többi oktatóanyag különféle típusú jelentéselemeket.
+A JavaScript-kódban a `searchItemRenderers` objektum *leképezőket* is tartalmazhat, olyan függvényeket, amelyek minden típusú keresési eredményhez létrehoznak egy HTML-t. A videós találatok oldala csak a `videos` elemet használja. A leképezők különféle típusait más oktatóanyagok ismertetik.
 
 ```javascript
 searchItemRenderers = {
@@ -329,17 +330,17 @@ searchItemRenderers = {
     relatedSearches: function(item) { ... }
 }
 ```
-Egy megjelenítő függvény is fogadja el a következő paraméterekkel:
+Egy leképező függvény a következő paramétereket fogadja el:
 
 |Paraméter|Leírás|
 |-|-|
-|`item`| A JavaScript objektumra, amely a elem tulajdonságai, például az URL-CÍMÉT és leírását.|
-|`index`| Az index, az eredmény elem a gyűjteményben.|
-|`count`| A keresési eredmény cikk gyűjtemény elemeinek száma.|
+|`item`| A JavaScript-objektum, amely az elem tulajdonságait tartalmazza, például az URL-címét és a leírását.|
+|`index`| Az eredményelem indexe a saját gyűjteményén belül.|
+|`count`| Az eredményelem gyűjteményében található elemek száma.|
 
-A `index` és `count` paraméterek képes használni a el a szám, speciális HTML-KÓDBAN a elején vagy végén egy gyűjteményhez, a sortörések beszúrása elemek, bizonyos számú után, és így tovább. Ha egy leképező nem kell ezt a funkciót, azt nem kell a két paraméterek elfogadásához.
+Az `index` és `count` paraméterek használhatók a találatok megszámozására, egy gyűjtemény elején vagy végén egy speciális HTML létrehozására, egy bizonyos számú elem utáni sortörés beszúrására és így tovább. Ha egy leképezőnek nincs szüksége erre a funkcióra, akkor nem kell elfogadnia ezt a két paramétert.
 
-A `video` leképező látható a következő javascript-kivonata. Minden eredmény sem használja a videók végpont, típusú `Videos`. A `searchItemRenderers` jelennek meg a következő kódszegmensben arra a helyre.
+A következő JavaScript-kivonatban a `video` leképező látható. A Videók végpont használatakor minden találat `Videos` típusú lesz. A következő kódszakaszban a `searchItemRenderers` leképezők láthatók.
 
 ```javascript
 // render functions for various types of search results
@@ -364,46 +365,46 @@ A `video` leképező látható a következő javascript-kivonata. Minden eredmé
 }
 ```
 
-A megjelenítő funkciót:
+A leképező függvény:
 > [!div class="checklist"]
-> * Létrehoz egy bekezdéscímkén, úgy, hogy hozzárendel a `images` osztály, és leküldéses értesítések, a html-tömbhöz.
-> * Kiszámítja a miniatűr képméret (width rögzített, 60 képpont magasság számított arányosan).
-> * A HTML buildek `<img>` címkén belül, hogy a kép miniatűr megjelenítéséhez. 
-> * A HTML buildek `<a>` címkéket, amelyek a lemezkép és az azt tartalmazó lap.
-> * A leírást, információkat jelenít meg a lemezkép és a helyet, mert nem hoz létre.
+> * Létrehoz egy bekezdéscímkét, hozzárendeli az `images` osztályhoz, és leküldéssel továbbítja a HTML-tömbnek.
+> * Kiszámítja a képminiatűr méretét (a szélesség 60 képpontban rögzített, a magasságot ezzel arányosan számítja ki).
+> * Létrehozza az `<img>` HTML-címkét a képminiatűr megjelenítéséhez. 
+> * Létrehozza az `<a>` HTML -címkéket, amelyek a képre és a képet tartalmazó oldalra hivatkoznak.
+> * Létrehozza a leírást, amely információkat jelenít meg a képről és a képet tartalmazó oldalról.
 
-A miniatűrök méretének is szerepel a `<img>` címke és a `h` és `w` mezők a Miniatűr URL-címben. A [Bing miniatűr szolgáltatás](resize-and-crop-thumbnails.md) kézbesíti a miniatűr nézete pontosan ez a méret.
+A miniatűr méretét az `<img>` címke, illetve a miniatűr URL-címének `h` és `w` mezője is használja. A [Bing miniatűr-szolgáltatása](resize-and-crop-thumbnails.md) ezután egy pontosan ekkora méretű miniatűrt állít elő.
 
-## <a name="persisting-client-id"></a>Persisting ügyfél-azonosító
-A Bing keresési API-k válaszainak tartalmazhat egy `X-MSEdge-ClientID` fejlécet tartalmazta, amely vissza az API-t egymást követő kéréseket kell küldeni. Ha több Bing keresési API-k vannak használatban, az azonos ügyfél-Azonosítót kell használható azokat, ha lehetséges.
+## <a name="persisting-client-id"></a>Ügyfél-azonosító megőrzése
+A Bing Search API-k válaszai tartalmazhatnak egy `X-MSEdge-ClientID` fejlécet, amelyet egymást követő kérésekkel vissza kell küldeni az API-nak. Ha több Bing Search API-t is használ, mindegyikhez ugyanazt az ügyfél-azonosítót használja, ha lehetséges.
 
-Így a `X-MSEdge-ClientID` fejléc lehetővé teszi, hogy a Bing API-k az összes felhasználó keresések, amely két fontos előnnyel jár.
+Az `X-MSEdge-ClientID` fejléc megadása lehetővé teszi, hogy a Bing API-k egymáshoz társítsák a felhasználó összes keresését, amelynek két fontos előnye van.
 
-Először lehetővé teszi a Bing keresőmotor keresések található eredmények, amelyek jobban megfeleljenek a felhasználói környezet túli alkalmazása. Ha a felhasználó a korábban keresést kihajózás kapcsolódó feltételek, például egy újabb keresse meg a "csomó" Előfordulhat, hogy lehetőleg vonatkozó adatokat ad vissza csomó kihajózás használt.
+Egyrészt lehetővé teszi, hogy a Bing keresőmotorja korábbi kontextusokat is alkalmazzon a keresésekhez olyan találatok megjelenítése érdekében, amelyek jobban megfelelnek a felhasználó igényeinek. Ha például a felhasználó korábban vitorlázáshoz kapcsolódó kifejezésekre keresett rá, egy későbbi keresés a „csomó” kifejezésre nagy valószínűséggel a vitorlázásban használt csomókkal kapcsolatos információkat fog eredményezni.
 
-Második a Bing véletlenszerűen jelölje ki felhasználók számára, hogy mielőtt széles körben elérhető új szolgáltatások. Így az azonos ügyfél-Azonosítót minden egyes kérelemmel biztosítja, hogy a felhasználók, akik jelenik meg a szolgáltatás mindig látja. Az ügyfél-azonosító nélkül a felhasználó jelenhet meg a szolgáltatás megjelennek és eltűnnek, látszólag véletlenszerű, a keresési eredmények között.
+Másrészt a Bing véletlenszerűen kiválaszthat felhasználókat, hogy új funkciókat próbálhassanak ki, mielőtt azok széles körben elérhetővé válnának. Ha minden kéréshez ugyanazt az ügyfél-azonosítót adja meg, akkor azok a felhasználók, akiknek megjelenik a funkció, mindig látni fogják. Az ügyfél-azonosító nélkül a felhasználó azt tapasztalhatja, hogy egy funkció látszólag véletlenszerűen hol megjelenik, hol eltűnik a keresési eredményeknél.
 
-Böngésző biztonsági házirendek (CORS) előfordulhat, hogy a `X-MSEdge-ClientID` rendelkezésre állása, a JavaScript fejléc. Ez a korlátozás következik be, amikor a keresési válasz van egy eltérő eredetű az oldalról, amely azt kéri. Éles környezetben eleget kell tennie ezt a házirendet, amelyet a weblap megegyező tartományban lévő API-hívás kiszolgálóoldali parancsfájl üzemeltetnie. Mivel a parancsfájlt a weblapként azonos forrásból a `X-MSEdge-ClientID` fejléc JavaScript számára elérhető lesz.
+A böngészők biztonsági szabályzatai (CORS) megakadályozhatják, hogy a JavaScript hozzáférjen az `X-MSEdge-ClientID` fejléchez. Ez a korlátozás akkor léphet életbe, ha a keresési válasz eredete különbözik az azt lekérő oldalétól. Éles környezetben egy olyan kiszolgálóoldali szkript futtatásával oldhatja fel a szabályzat okozta korlátozást, amely a weboldaléval megegyező tartományból hívja meg az API-t. Mivel a szkript eredete megegyezik a weboldaléval, az `X-MSEdge-ClientID` fejléc elérhető lesz a JavaScript számára.
 
 > [!NOTE]
-> Webes alkalmazás éles végre kell hajtania a kérelem kiszolgálóoldali. Ellenkező esetben a Bing keresési API-kulcsot kell szerepelnie a weblap, amelyen érhető el számára, akik megtekinti az adatforrás. Az API előfizetés kulcs, még akkor is, kérelmeire jogosulatlan felek, ezért fontos, hogy a kulcs alatt minden használatának számlázása.
+> Éles webalkalmazásban kiszolgálói oldalról hajtsa végre a kérést. Ellenkező esetben a weboldalnak tartalmaznia kell a Bing Search API-kulcsot, ahol a forrást megtekintők is hozzáférhetnek. Az API előfizetési kulcsával történő összes használatért Ön fizet, még az illetéktelen felek által létrehozott kérésekért is, ezért fontos, hogy a kulcsot ne tegye elérhetővé.
 
-Fejlesztési célokra szolgál hogy a Bing webes keresési API-kérelem a CORS-proxyn keresztül. Ilyen proxy válaszát rendelkezik egy `Access-Control-Expose-Headers` fejléc adott whitelists válaszfejlécek és elérhetővé válnak a JavaScript nyelvvel.
+Fejlesztési célokból a Bing Web Search API-kérést egy CORS-proxyn keresztül is végrehajthatja. Egy ilyen proxyk válasza rendelkezik egy `Access-Control-Expose-Headers` fejléccel, amely engedélyezési listára teszi a válaszfejléceket, és elérhetővé teszi őket a JavaScript számára.
 
-Akkor is könnyen lehetővé teszi az oktatóanyag alkalmazásnak, az ügyfél eléréséhez Tevékenységazonosító fejlécet a CORS-proxyt telepíteni szeretné. Ha még nem rendelkezik, először [telepítse a Node.js-](https://nodejs.org/en/download/). Majd adja ki a következő parancsot a parancssorba:
+CORS-proxyt könnyedén telepíthet annak érdekében, hogy oktatóalkalmazásunk hozzáférhessen az ügyfél-azonosító fejlécéhez. Első lépésként [telepítse a Node.js-t](https://nodejs.org/en/download/), ha még nem tette meg. Ezután hajtsa végre egy parancsablakban a következő parancsot:
 
     npm install -g cors-proxy-server
 
-Ezután módosítsa a Bing keresést a következőben szereplő végpontnál: a HTML-fájlt:
+Következő lépésként írja át a Bing Web Search-végpontot a HTML-fájlban a következőre:
 
     http://localhost:9090/https://api.cognitive.microsoft.com/bing/v7.0/search
 
-Végezetül indítsa el a CORS-proxy a következő paranccsal:
+Végül indítsa el a CORS-proxyt a következő paranccsal:
 
     cors-proxy-server
 
-A parancssori ablakban nyitva hagyja az oktatóanyag alkalmazás; használatakor az ablak bezárása leállítja a proxy. A bővíthető HTTP-fejlécek című szakaszt a keresési eredmények között, a most már megtekintheti a `X-MSEdge-ClientID` fejléc (többek között), és győződjön meg arról, hogy minden kérelem esetén.
+Ne zárja be a parancsablakot, amíg használja az oktatóalkalmazást; az ablak bezárása leállítja a proxyt. A bővíthető HTTP-fejlécek szakaszában, a keresési eredmények alatt, most már az `X-MSEdge-ClientID` fejléc is megjelenik, és ellenőrizheti, hogy ugyanaz a fejléc szerepel-e minden kérésnél.
 
 ## <a name="next-steps"></a>További lépések
 > [!div class="nextstepaction"]
-> [Bing videó keresési API-referencia](//docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference)
+> [Bing Video Search API-referencia](//docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference)

@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.date: 07/03/2018
+ms.date: 09/14/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: f5a92d421bbf7bfe485252c148d5f64ae2fb8e23
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 692d8c0a1a427fa65a94d474f78792b1a071de46
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37916115"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47219719"
 ---
 # <a name="quickstart-create-a-windows-virtual-machine-in-the-azure-portal"></a>Rövid útmutató: Windows rendszerű virtuális gép létrehozása az Azure Portalon
 
@@ -37,23 +37,28 @@ Jelentkezzen be az Azure Portalra a https://portal.azure.com webhelyen.
 
 1. Válassza az Azure Portal bal felső sarkában az **Erőforrás létrehozása** lehetőséget.
 
-2. Az Azure Marketplace-erőforrások fölött lévő keresési mezőben keressen a **Windows Server 2016 Datacenter** elemre, és válassza ki, majd válassza a **Létrehozás** lehetőséget.
+1. Az Azure Marketplace-erőforrások fölött lévő keresési mezőben keressen a **Windows Server 2016 Datacenter** elemre, és válassza ki, majd válassza a **Létrehozás** lehetőséget.
 
-3. Adja meg a virtuális gép nevét (például *myVM*), a lemez típusát hagyja az *SSD* értéken, majd adjon meg egy felhasználónevet (például *azureuser*). A jelszónak legalább 12 karakter hosszúságúnak kell lennie, [az összetettségre vonatkozó követelmények teljesülése mellett](faq.md#what-are-the-password-requirements-when-creating-a-vm).
+1. Az **Alapok** fül **Projektadatok** részén győződjön meg arról, hogy a megfelelő előfizetés van kiválasztva, és válassza az **Új létrehozása** lehetőséget az Erőforráscsoport részen. Nevezze el így: *myResourceGroup*. 
 
-    ![Írja be a virtuális gép alapvető adatait a portálpanelen](./media/quick-create-portal/create-windows-vm-portal-basic-blade.png)
+    ![Új erőforráscsoport létrehozása virtuális géphez](./media/quick-create-portal/project-details.png)
 
-5. Válassza az **Új létrehozása** lehetőséget egy erőforráscsoport létrehozásához, majd adjon meg egy nevet (például *myResourceGroup*). Válassza ki a **Helyet**, majd kattintson az **OK** gombra.
+1. A **Példány részletei** területen írja a *myVM* nevet a **Virtuális gép neve** mezőbe, majd a **Régió** menüjéből válassza ki az *USA keleti régiója* lehetőséget. Hagyja változatlanul a többi alapértelmezett értéket.
 
-4. Válasszon méretet a virtuális gép számára. Szűrhet például *számítási típus* vagy *lemeztípus* alapján. A virtuális gép ajánlott mérete a *D2s_v3*. Kattintson a **Kiválasztás** elemre a méret kiválasztása után.
+    ![Példány részletei szakasz](./media/quick-create-portal/instance-details.png)
 
-    ![Képernyőkép a virtuális gépek méreteivel](./media/quick-create-portal/create-windows-vm-portal-sizes.png)
+1. A **Rendszergazdai fiók**, területen adjon meg egy felhasználónevet (pl. *azureuser*) és egy jelszót. A jelszónak legalább 12 karakter hosszúságúnak kell lennie, [az összetettségre vonatkozó követelmények teljesülése mellett](faq.md#what-are-the-password-requirements-when-creating-a-vm).
 
-5. A **Beállítások** lap **Hálózat** > **Hálózati biztonsági csoport** > **Nyilvános bejövő portok** területén válassza a **HTTP** és az **RDP (3389)** lehetőséget a legördülő listából. Tartsa meg az alapértelmezett értékeket a többi beállításnál, majd kattintson az **OK** gombra.
+    ![Felhasználónév és jelszó megadása](./media/quick-create-portal/administrator-account.png)
 
-6. Az Összefoglalás lapon válassza a **Létrehozás** lehetőséget a virtuális gép üzembe helyezésének megkezdéséhez.
+1. A **Bejövőport-szabályok** területen válassza a **Kijelölt portok engedélyezése**lehetőséget, majd válassza az **RDP (3389)** és a **HTTP** elemeket a legördülő listából.
 
-7. A virtuális gép rögzítve lesz az Azure Portal irányítópultján. Az üzembe helyezés befejeztével a virtuális gép összefoglalás panelje automatikusan megnyílik.
+    ![RDP- és a HTTP-portok megnyitása](./media/quick-create-portal/inbound-port-rules.png)
+
+1. Hagyja változatlanul a többi alapértelmezett beállítást, és kattintson a **Áttekintés + létrehozás** gombra a lap alján.
+
+    ![Áttekintés és létrehozás](./media/quick-create-portal/review-create.png)
+
 
 ## <a name="connect-to-virtual-machine"></a>Csatlakozás virtuális géphez
 
@@ -61,7 +66,7 @@ Hozzon létre egy távoli asztali kapcsolatot a virtuális géppel. Ezek az utas
 
 1. Kattintson a **Csatlakozás** gombra a virtuális gép tulajdonságainak lapján. 
 
-    ![Csatlakozás az Azure-beli virtuális gépekhez a portálról](./media/quick-create-portal/quick-create-portal/portal-quick-start-9.png)
+    ![Csatlakozás az Azure-beli virtuális gépekhez a portálról](./media/quick-create-portal/portal-quick-start-9.png)
     
 2. A **Csatlakozás virtuális géphez** oldalon tartsa meg az alapértelmezett beállításokat a DNS-név alapján a 3389-es porton keresztül való csatlakozáshoz, és kattintson az **RDP-fájl letöltése** parancsra.
 
