@@ -1,75 +1,63 @@
 ---
-title: Oktatóanyag – LUIS-alkalmazás létrehozása pontos szövegegyezést mutató listázott adatok lekéréséhez – Azure | Microsoft Docs
-description: Az oktatóanyag azt ismerteti, hogyan hozhat létre szándékokkal és listaentitásokkal egy egyszerű LUIS-alkalmazást az adatok kinyeréséhez.
+title: '4. oktatóanyag: Pontos szövegegyezés – LUIS listaentitás'
+titleSuffix: Azure Cognitive Services
+description: Elemek előre meghatározott listájával egyező adatok lekérése. A lista minden elemének lehetnek pontosan megegyező szinonimái
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
-ms.component: luis
+ms.component: language-understanding
 ms.topic: tutorial
-ms.date: 08/02/2018
+ms.date: 09/09/2018
 ms.author: diberry
-ms.openlocfilehash: 04411f415b7cfe07d893c43e758bd2a4a226472a
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: b4fdf094653a4b16dead6397fe8e1a9f1a0258b9
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44162198"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47162083"
 ---
-# <a name="tutorial-4-add-list-entity"></a>Oktatóanyag: 4. Listaentitás hozzáadása
-Ebben az oktatóanyagban létrehozunk egy alkalmazást, amely bemutatja, hogyan kérhetők le egy előre meghatározott listával egyező adatok. 
+# <a name="tutorial-4-extract-exact-text-matches"></a>4. oktatóanyag: Pontos szövegegyezések kinyerése
+Ebben az oktatóanyagban megismerheti, hogyan kérheti le az elemek előre meghatározott listájával egyező adatokat. A lista minden eleme tartalmazhatja szinonimák egy listáját. Az Emberi erőforrások alkalmazásban egy alkalmazottat számos kulcsfontosságú információ azonosíthat, például a név, az e-mail-cím, a telefonszám és az USA-beli szövetségi adóazonosító szám. 
 
-<!-- green checkmark -->
-> [!div class="checklist"]
-> * A listaentitások ismertetése 
-> * Új LUIS-alkalmazás létrehozása az emberi erőforrások (HR) tartományához a MoveEmployee szándékkal
-> * Egy listaentitás hozzáadása a kimondott szöveg alkalmazottakra vonatkozó elemeinek kinyeréséhez
-> * Alkalmazás betanítása és közzététele
-> * Alkalmazás végpontjának lekérdezése a LUIS által visszaadott JSON-válasz megtekintéséhez
+Az Emberi Erőforrások alkalmazásnak meg kell határoznia, melyik alkalmazottat helyezik át az egyik épületből egy másikba. Az alkalmazott költözéséről szóló kimondott szövegben a LUIS meghatározza a szándékot, és úgy nyeri ki az alkalmazottat, hogy az ügyfélalkalmazás létrehozhasson egy szokványos sorrendet az alkalmazott áthelyezéséhez.
 
-[!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
-
-## <a name="before-you-begin"></a>Előkészületek
-Ha még nincs meg az Emberi erőforrások alkalmazása a [regex entitás](luis-quickstart-intents-regex-entity.md) oktatóanyagából, [importálja](luis-how-to-start-new-app.md#import-new-app) a JSON-t egy új alkalmazásba a [LUIS](luis-reference-regions.md#luis-website) webhelyén. Az importálandó alkalmazás a [LUIS-minták](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-regex-HumanResources.json) GitHub-adattárban található.
-
-Ha meg szeretné tartani az eredeti Emberi erőforrások alkalmazást, klónozza a [Settings](luis-how-to-manage-versions.md#clone-a-version) (Beállítások) lapon a verziót, és adja neki a következő nevet: `list`. A klónozás nagyszerű mód, hogy kísérletezhessen a különböző LUIS-funkciókkal anélkül, hogy az az eredeti verzióra hatással lenne. 
-
-## <a name="purpose-of-the-list-entity"></a>A listaentitás feladata
-Ez az alkalmazás előre jelzi egy alkalmazott egyik épületből másik épületbe történő áthelyezéséről szóló kimondott szöveget. Ez az alkalmazás egy listaentitást használ az alkalmazott kinyeréséhez. Az alkalmazottra név, telefonszám, e-mail-cím vagy USA-beli szövetségi társadalombiztosítási szám alapján lehet hivatkozni. 
-
-A listaentitás számos elemet tartalmazhat, mindegyik elem szinonimájával együtt. Egy kis és közepes méretű vállalat esetében a listaentitás az alkalmazotti információk kinyerésére használható. 
-
-Az egyes elemek kanonikus neve az alkalmazotti szám. Ebben a tartományban a szinonimák példái: 
-
-|Szinonima célja|Szinonima értéke|
-|--|--|
-|Name (Név)|John W. Smith|
-|E-mail-cím|john.w.smith@mycompany.com|
-|Telefonmellék|x12345|
-|Saját mobiltelefonszám|425-555-1212|
-|USA-beli szövetségi társadalombiztosítási szám (SSN)|123-45-6789|
+Ez az alkalmazás egy listaentitást használ az alkalmazott kinyeréséhez. Az alkalmazottra név, vállalati telefonmellék, e-mail-cím, mobiltelefonszám vagy USA-beli szövetségi társadalombiztosítási szám alapján lehet hivatkozni. 
 
 A listaentitás megfelelő választás az ilyen típusú adatok esetén, amikor:
 
 * Az adatok értékei egy ismert készletbe tartoznak.
 * A készlet nem haladja meg a LUIS maximális [határait](luis-boundaries.md) ezen entitástípus esetében.
-* A kimondott szöveg egy része pontosan megegyezik egy szinonimával. 
+* A kimondott szöveg egy része pontosan megegyezik egy szinonimával vagy a kanonikus névvel. 
 
-A LUIS úgy nyeri ki az alkalmazottakat, hogy az ügyfélalkalmazás létrehozhasson egy szokványos sorrendet az alkalmazottak áthelyezéséhez.
-<!--
-## Example utterances
-Simple example utterances for a `MoveEmployee` inent:
+**Ebben az oktatóanyagban az alábbiakkal fog megismerkedni:**
 
-```
-move John W. Smith from B-1234 to H-4452
-mv john.w.smith@mycompany from office b-1234 to office h-4452
+<!-- green checkmark -->
+> [!div class="checklist"]
+> * Meglévő oktatóalkalmazás használata
+> * MoveEmployee szándék hozzáadása
+> * Listaentitás hozzáadása 
+> * Betanítás 
+> * Közzététel
+> * Szándék és entitások lekérése a végpontról
 
-```
--->
+[!include[LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
-## <a name="add-moveemployee-intent"></a>MoveEmployee szándék hozzáadása
+## <a name="use-existing-app"></a>Meglévő alkalmazás használata
+Folytassa az előző oktatóanyagban létrehozott **EmberiErőforrások** nevű alkalmazással. 
 
-1. Győződjön meg arról, hogy az Emberi erőforrások alkalmazás a LUIS **Build** (Létrehozás) szakaszában van. Ha erre a szakaszra szeretne lépni, válassza a jobb felső menüsávon a **Build** (Létrehozás) elemet. 
+Amennyiben nem rendelkezik az előző oktatóanyagból származó EmberiErőforrások alkalmazással, kövesse a következő lépéseket:
+
+1.  Töltse le és mentse az [alkalmazás JSON-fájlját](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/tutorials/custom-domain-regex-HumanResources.json).
+
+2. Importálja a JSON-t egy új alkalmazásba.
+
+3. A **Manage** (Kezelés) szakasz **Versions** (Verziók) lapján klónozza a verziót, és adja neki a `list` nevet. A klónozás nagyszerű mód, hogy kísérletezhessen a különböző LUIS-funkciókkal anélkül, hogy az az eredeti verzióra hatással lenne. Mivel a verzió neve az URL-útvonal részét képezi, a név nem tartalmazhat olyan karaktert, amely URL-címben nem érvényes. 
+
+
+## <a name="moveemployee-intent"></a>MoveEmployee szándék
+
+1. [!include[Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
 
 2. Válassza a **Create new intent** (Új szándék létrehozása) lehetőséget. 
 
@@ -94,8 +82,23 @@ mv john.w.smith@mycompany from office b-1234 to office h-4452
 
     [ ![Képernyőkép a Szándék lapról, az új kimondott szövegek kiemelésével](./media/luis-quickstart-intent-and-list-entity/hr-enter-utterances.png) ](./media/luis-quickstart-intent-and-list-entity/hr-enter-utterances.png#lightbox)
 
-## <a name="create-an-employee-list-entity"></a>Alkalmazottlista-entitás létrehozása
-Most, hogy a **MoveEmployee** szándéknak vannak kimondott szövegei, a LUIS-nak meg kell értenie, hogy az alkalmazott pontosan micsoda. 
+    Ne feledje, hogy a number és a datetimeV2 az előző oktatóanyagban hozzá lettek adva, így automatikusan meg lesznek címkézve, ha szerepelnek egy kimondottszöveg-mintában.
+
+    [!include[Do not use too few utterances](../../../includes/cognitive-services-luis-too-few-example-utterances.md)]  
+
+## <a name="employee-list-entity"></a>Alkalmazottlista-entitás
+Most, hogy a **MoveEmployee** szándéknak vannak kimondottszöveg-mintái, a LUIS-nak meg kell értenie, hogy az alkalmazott pontosan micsoda. 
+
+Az egyes elemek elsődleges, _kanonikus_ neve az alkalmazotti szám. Ebben a tartományban az egyes kanonikus nevek szinonimáinak példái: 
+
+|Szinonima célja|Szinonima értéke|
+|--|--|
+|Name (Név)|John W. Smith|
+|E-mail-cím|john.w.smith@mycompany.com|
+|Telefonmellék|x12345|
+|Saját mobiltelefonszám|425-555-1212|
+|USA-beli szövetségi társadalombiztosítási szám (SSN)|123-45-6789|
+
 
 1. Válassza az **Entities** (Entitások) elemet a bal oldali ablaktáblán.
 
@@ -133,15 +136,15 @@ Most, hogy a **MoveEmployee** szándéknak vannak kimondott szövegei, a LUIS-na
     |Saját mobiltelefonszám|425-555-0000|
     |USA-beli szövetségi társadalombiztosítási szám (SSN)|234-56-7891|
 
-## <a name="train-the-luis-app"></a>A LUIS-alkalmazás betanítása
+## <a name="train"></a>Betanítás
 
 [!INCLUDE [LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
 
-## <a name="publish-the-app-to-get-the-endpoint-url"></a>Az alkalmazás közzététele a végpont URL-címének lekéréshez
+## <a name="publish"></a>Közzététel
 
 [!INCLUDE [LUIS How to Publish steps](../../../includes/cognitive-services-luis-tutorial-how-to-publish.md)]
 
-## <a name="query-the-endpoint-with-a-different-utterance"></a>A végpont lekérdezése egy másik kimondott szöveggel
+## <a name="get-intent-and-entities-from-endpoint"></a>Szándék és entitások lekérése a végpontból
 
 1. [!INCLUDE [LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)] 
 
@@ -259,22 +262,12 @@ Most, hogy a **MoveEmployee** szándéknak vannak kimondott szövegei, a LUIS-na
 
   A rendszer megtalálta az alkalmazottat, és visszaadta `Employee` típusúként, `Employee-24612` megoldásértékkel.
 
-## <a name="where-is-the-natural-language-processing-in-the-list-entity"></a>Hogyan viszonyul a természetes nyelvi feldolgozás a listaentitásokhoz? 
-Mivel a listaentitás pontos szövegegyezés, ezért nem támaszkodik a természetes nyelvi feldolgozásra (vagy gépi tanulásra). A LUIS a természetes nyelvi feldolgozás (vagy gépi tanulás) segítségével választja ki a legvalószínűbb szándékot. Egy kimondott szöveg állhat több entitás keverékéből, vagy akár többféle entitástípusból is. Az alkalmazás minden kimondott szöveget minden entitáshoz feldolgoz, beleértve a természetes nyelvi feldolgozási (vagy gépi tanulási) entitásokat is.
-
-## <a name="what-has-this-luis-app-accomplished"></a>Milyen műveleteket végzett el a LUIS-alkalmazás?
-Ez az alkalmazás a listaentitással a megfelelő alkalmazottat nyerte ki. 
-
-A csevegőrobot már elég információval rendelkezik az elsődleges művelet (`MoveEmployee`) és az áthelyezendő alkalmazott meghatározásához. 
-
-## <a name="where-is-this-luis-data-used"></a>Hol vannak használatban ezek a LUIS-adatok? 
-A LUIS végzett ezzel a kéréssel. A hívó alkalmazás, például egy csevegőrobot, felhasználhatja a topScoringIntent eredményt és az entitás adatait a következő lépés végrehajtásához. A LUIS nem végzi el ezt a programozható munkát a csevegőrobotnak vagy a hívó alkalmazásnak. A LUIS csak azt határozza meg, hogy mi a felhasználó szándéka. 
-
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 [!INCLUDE [LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
 
 ## <a name="next-steps"></a>További lépések
+Ez az oktatóanyag létrehozott egy új szándékot, kimondottszöveg-példákat adott hozzá, majd létrehozott egy listaentitást a pontos szövegegyezések kimondott szövegből történő kinyerése céljából. Az alkalmazás betanítása és közzététele után egy végpontlekérdezés azonosította a szándékot, és visszaadta a kinyert adatokat.
 
 > [!div class="nextstepaction"]
 > [Hierarchikus entitás hozzáadása az alkalmazáshoz](luis-quickstart-intent-and-hier-entity.md)

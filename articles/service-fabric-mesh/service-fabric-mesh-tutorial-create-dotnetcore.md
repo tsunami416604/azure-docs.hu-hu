@@ -1,5 +1,5 @@
 ---
-title: Oktatóanyag – Többszolgáltatású webalkalmazás létrehozása, hibaelhárítása és üzembe helyezése a Service Fabric Mesh-ben | Microsoft Docs
+title: Oktatóanyag – Többszolgáltatású webalkalmazás létrehozása, hibaelhárítása, üzembe helyezése és figyelése a Service Fabric Meshben | Microsoft Docs
 description: Ebben az oktatóanyagban létrehozhat egy ASP.NET Core-webhelyet tartalmazó, háttér-webszolgáltatással kommunikáló, többszolgáltatású Azure Service Fabric mesh-szolgáltatást, valamint azon helyi hibakeresést végezhet, majd közzéteheti az Azure-on.
 services: service-fabric-mesh
 documentationcenter: .net
@@ -12,26 +12,28 @@ ms.devlang: dotNet
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 07/17/2018
+ms.date: 09/18/2018
 ms.author: twhitney
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 59ff3434e7b984f4530ad4f8b03b27991d3a9c1c
-ms.sourcegitcommit: 1aedb52f221fb2a6e7ad0b0930b4c74db354a569
+ms.openlocfilehash: 09112aafdbabf0cda2b3ae13af73a9223533a6e1
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "41919948"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46979193"
 ---
-# <a name="tutorial-create-debug-and-deploy-a-multi-service-web-application-to-service-fabric-mesh"></a>Oktatóanyag: Többszolgáltatású webalkalmazás létrehozása, hibaelhárítása és üzembe helyezése a Service Fabric meshben
+# <a name="tutorial-create-debug-deploy-and-upgrade-a-multi-service-service-fabric-mesh-app"></a>Oktatóanyag: Többszolgáltatású Service Fabric Meshben-alkalmazás létrehozása, hibaelhárítása, üzembe helyezése és frissítése
 
-Ez az oktatóanyag egy sorozat első része. Megismerheti, hogyan állíthat össze egy ASP.NET webes előtérrendszerrel és egy ASP.NET Core Web API háttérszolgáltatással rendelkező Service Fabric mesh-alkalmazást. Ezt követően futtathatja az alkalmazás helyi hibakeresését a helyi fejlesztési fürtön, és közzéteheti az alkalmazást az Azure-ban. Miután elkészült, egy egyszerű feladatlista-alkalmazás áll a rendelkezésére, amely bemutatja, hogyan intézhet szolgáltatások közti hívást egy Azure Service Fabric meshben futtatott Service Fabric mesh-alkalmazásban.
+Ez az oktatóanyag egy sorozat első része. Megismerheti, hogyan állíthat össze egy ASP.NET webes előtérrendszerrel és egy ASP.NET Core Web API háttérszolgáltatással rendelkező Service Fabric Mesh-alkalmazást a Visual Studióban. Ezt követően futtathatja az alkalmazás helyi hibakeresését a helyi fejlesztési fürtön. Az alkalmazást közzéteheti az Azure-on, majd konfigurációs és kódmódosításokat végezhet, és frissítheti az alkalmazást. Végül törölheti a nem használt Azure-erőforrásokat, így csak azért kell fizetnie, amit használ.
+
+Miután elkészült, megismerkedett az alkalmazások életciklus-kezelésének legtöbb szakaszával, és létrehozott egy olyan alkalmazást, amely bemutatja, hogyan intézhet szolgáltatások közti hívást egy Service Fabric Mesh-alkalmazásban.
 
 Ha nem szeretné manuálisan létrehozni a feladatlista-alkalmazást, akkor [letöltheti a forráskódot](https://github.com/azure-samples/service-fabric-mesh) a kész alkalmazáshoz, és folytathatja az [alkalmazás helyi hibakeresésével](service-fabric-mesh-tutorial-debug-service-fabric-mesh-app.md).
 
 A sorozat első részében a következőkkel ismerkedhet meg:
 
 > [!div class="checklist"]
-> * Egy ASP.NET webes előtérrendszerrel rendelkező Service Fabric mesh-alkalmazás létrehozása.
+> * Egy ASP.NET webes előtérrendszerrel rendelkező Service Fabric mesh-alkalmazás létrehozása a Visual Studióval.
 > * Egy feladatlista-elemeket megjelenítő modell létrehozása.
 > * Egy háttérszolgáltatás létrehozása, majd adatok lekérése.
 > * Vezérlő és DataContext környezet hozzáadása a háttérszolgáltatás Model-View-Controller elrendezésének részeként.
@@ -40,9 +42,11 @@ A sorozat első részében a következőkkel ismerkedhet meg:
 
 Ebben az oktatóanyag-sorozatban az alábbiakkal ismerkedhet meg:
 > [!div class="checklist"]
-> * Service Fabric mesh-alkalmazás fejlesztése
-> * [Helyi hibakeresés az alkalmazásban](service-fabric-mesh-tutorial-debug-service-fabric-mesh-app.md)
-> * [Az alkalmazás közzététele az Azure-ban](service-fabric-mesh-tutorial-deploy-service-fabric-mesh-app.md)
+> * Service Fabric Mesh-alkalmazás létrehozása Visual Studióban
+> * [Egy helyi fejlesztési fürtben futó Service Fabric Mesh-alkalmazás hibakeresése](service-fabric-mesh-tutorial-debug-service-fabric-mesh-app.md)
+> * [Service Fabric Mesh-alkalmazás üzembe helyezése](service-fabric-mesh-tutorial-deploy-service-fabric-mesh-app.md)
+> * [Service Fabric Mesh-alkalmazás frissítése](service-fabric-mesh-tutorial-upgrade.md)
+> * [A Service Fabric Mesh erőforrásainak eltávolítása](service-fabric-mesh-tutorial-cleanup-resources.md)
 
 [!INCLUDE [preview note](./includes/include-preview-note.md)]
 
@@ -54,9 +58,7 @@ Az oktatóanyag elkezdése előtt:
 
 * Először [alakítsa ki a fejlesztési környezetet](service-fabric-mesh-howto-setup-developer-environment-sdk.md) a Service Fabric futtatókörnyezet, az SDK, a Docker, és a Visual Studio 2017 telepítésével.
 
-* Ebben az oktatóanyagban angol területi beállításokkal kell létrehoznia az alkalmazást.
-
-## <a name="create-a-service-fabric-mesh-project"></a>Service Fabric mesh-projekt létrehozása
+## <a name="create-a-service-fabric-mesh-project-in-visual-studio"></a>Service Fabric Mesh-projekt létrehozása Visual Studióban
 
 Nyissa meg a Visual Studio alkalmazást, majd válassza a **File** (Fájl)  > **New** (Új)  > **Project** (Projekt) elemet
 
@@ -212,10 +214,7 @@ public static class DataContext
 
     static DataContext()
     {
-        ToDoList = new Model.ToDoList("Main List");
-
         // Seed to-do list
-
         ToDoList.Add(Model.ToDoItem.Load("Learn about microservices", 0, true));
         ToDoList.Add(Model.ToDoItem.Load("Learn about Service Fabric", 1, true));
         ToDoList.Add(Model.ToDoItem.Load("Learn about Service Fabric Mesh", 2, false));
@@ -368,6 +367,7 @@ A service.yaml fájlban adja hozzá a következő változókat a(z) `environment
 
 > [!IMPORTANT]
 > A service.yaml fájl változóit szóközökkel, és nem tabulátorokkal kell behúzni, különben nem fognak működni. Előfordulhat, hogy a Visual Studio beszúr tabulátorokat a környezeti változók létrehozásakor. Ezeket cserélje szóközökre. Bár a **build** hibakeresési eredményei közt előfordulhatnak hibák, az alkalmazás el fog indulni. Működni azonban nem fog addig, amíg a tabulátorokat szóközökre nem cseréli. Annak érdekében, hogy ne maradjanak tabulátorok a service.yaml fájlban, láthatóvá teheti a térközöket a Visual Studio szerkesztőben az **Edit**  > **Advanced**  > **View White Space** (Szerkesztés > Speciális > Térközök megjelenítése) lehetőséggel.
+> Vegye figyelembe, hogy service.yaml fájlok feldolgozása az angol területi beállítással történik.  Például ha tizedes elválasztót szeretne használni, pontot kell tennie vessző helyett.
 
 A **WebFrontEnd** projekt **service.yaml** fájljának ehhez hasonlónak kell lennie, bár a(z) `ApiHostPort` érték az Ön esetében valószínűleg eltérő lesz:
 
@@ -380,7 +380,7 @@ Most már készen áll a Service Fabric mesh-alkalmazás, valamint a háttér-we
 Az oktatóanyag jelen részében megismerkedhetett a következőkkel:
 
 > [!div class="checklist"]
-> * Egy ASP.NET webes előtérrendszerrel rendelkező Service Fabric mesh-alkalmazás létrehozása.
+> * Egy ASP.NET webes előtérrendszerrel rendelkező Service Fabric Mesh-alkalmazás létrehozása.
 > * Egy feladatlista-elemeket megjelenítő modell létrehozása.
 > * Egy háttérszolgáltatás létrehozása, majd adatok lekérése.
 > * Vezérlő és DataContext környezet hozzáadása a háttérszolgáltatás Model-View-Controller elrendezésének részeként.
@@ -389,4 +389,4 @@ Az oktatóanyag jelen részében megismerkedhetett a következőkkel:
 
 Folytassa a következő oktatóanyaggal:
 > [!div class="nextstepaction"]
-> [Egy helyi szinten futó Service Fabric mesh-alkalmazás hibakeresése](service-fabric-mesh-tutorial-debug-service-fabric-mesh-app.md)
+> [Egy helyi fejlesztési fürtben futó Service Fabric Mesh-alkalmazás hibakeresése](service-fabric-mesh-tutorial-debug-service-fabric-mesh-app.md)

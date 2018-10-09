@@ -1,108 +1,71 @@
 ---
-title: 'Gyors útmutató: Recognize speech, a Windows, a Cognitive Services beszédfelismerő SDK használatával a .NET-keretrendszer C#-ban'
+title: 'Rövid útmutató: Beszéd felismerése Windowson, C# nyelven, a .NET-keretrendszerben a Cognitive Services Speech SDK segítségével'
 titleSuffix: Microsoft Cognitive Services
-description: Ismerje meg, hogyan beszédfelismerést a Windows, a Cognitive Services beszédfelismerő SDK használatával a .NET-keretrendszer C#-ban
+description: A beszédfelismerés elsajátítása Windowson, C# nyelven, a .NET-keretrendszerben a Cognitive Services Speech SDK segítségével
 services: cognitive-services
 author: wolfma61
 ms.service: cognitive-services
 ms.component: speech-service
-ms.topic: article
-ms.date: 07/16/2018
+ms.topic: quickstart
+ms.date: 09/24/2018
 ms.author: wolfma
-ms.openlocfilehash: 0f4c0243c09fd7a6b8d221d6c077775f83d82b8b
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
-ms.translationtype: MT
+ms.openlocfilehash: 32b484451c4ee2264c25cca92b1d03d91b955a29
+ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44024543"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47053996"
 ---
-# <a name="quickstart-recognize-speech-in-c-under-net-framework-on-windows-using-the-speech-sdk"></a>Gyors útmutató: Recognize speech mellett a Windows, a beszéd SDK-val .NET-keretrendszer C#-ban
+# <a name="quickstart-recognize-speech-in-c-under-net-framework-on-windows-by-using-the-speech-sdk"></a>Rövid útmutató: Beszéd felismerése Windowson, C# nyelven, a .NET-keretrendszerben a Speech SDK segítségével
 
 [!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
-Ebből a cikkből elsajátíthatja, hogyan hozzon létre egy C# konzolalkalmazást a beszédfelismerés lefényképezze a Cognitive Services beszédfelismerő SDK segítségével Windows .NET-keretrendszer.
-Az alkalmazás össze lett a [Microsoft Cognitive Services beszédfelismerő SDK NuGet-csomag](https://aka.ms/csspeech/nuget) és a Microsoft Visual Studio 2017-ben.
+Ebben a cikkben létre fog hozni a Windowson egy C# konzolalkalmazást a .NET-keretrendszerhez a [Speech SDK](speech-sdk.md) használatával. A számítógép mikrofonjába beszélve valós időben konvertálhat át beszédet szöveggé. Az alkalmazást a [Speech SDK NuGet-csomaggal](https://aka.ms/csspeech/nuget) és a Microsoft Visual Studio 2017-tel (annak bármely kiadásával) lehet összeállítani.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* A beszédfelismerési szolgáltatás egy előfizetési kulcsot. Lásd: [próbálja ki ingyenesen a speech service](get-started.md).
-* Windows rendszerű számítógépek működő mikrofonnal.
-* A Visual Studio 2017, a Community Edition vagy újabb verziója.
-* A **.NET asztali fejlesztés** számítási feladatot a Visual Studióban. Engedélyezheti a **eszközök** \> **első eszközeivel és szolgáltatásaival**.
-
-  ![.NET asztali fejlesztés engedélyezése](media/sdk/vs-enable-net-desktop-workload.png)
+A rövid útmutató elvégzéséhez szüksége van a Speech Service előfizetői azonosítójára, amelyet ingyenesen is beszerezhet. További részletekért tekintse át a [Speech Service ingyenes kipróbálását](get-started.md) ismertető részt.
 
 ## <a name="create-a-visual-studio-project"></a>Visual Studio-projekt létrehozása
 
-1. A Visual Studio 2017 hozzon létre egy új Visual C#-Konzolalkalmazást. Az a **új projekt** párbeszédpanelen, a bal oldali ablaktáblán, bontsa ki a **telepített** \> **Visual C#** \> **Windows asztali** majd **Console App (.NET Framework)**. Adja meg a projekt nevére, *helloworld*.
+[!INCLUDE [Create project ](../../../includes/cognitive-services-speech-service-create-speech-project-vs-csharp.md)]
 
-    ![Hozzon létre Visual C# Konzolalkalmazás (.NET keretrendszer)](media/sdk/qs-csharp-dotnet-windows-01-new-console-app.png "létrehozása Visual C# Konzolalkalmazás (.NET keretrendszer)")
+## <a name="add-sample-code"></a>Mintakód hozzáadása
 
-1. Telepítse, és hivatkozni a [beszéd SDK NuGet-csomagot](https://aka.ms/csspeech/nuget). A megoldáskezelőben kattintson a jobb gombbal a megoldás, és válassza ki **NuGet-csomagok kezelése megoldáshoz**.
-
-    ![Kattintson a jobb gombbal a NuGet-csomagok kezelése megoldáshoz](media/sdk/qs-csharp-dotnet-windows-02-manage-nuget-packages.png "NuGet-csomagok kezelése megoldáshoz")
-
-1. A jobb felső sarokban található a **csomag forrása** mezőben válassza **Nuget.org**. Keresse meg a `Microsoft.CognitiveServices.Speech` csomagot, majd telepítse őket a **helloworld** projekt.
-
-    ![Telepítse a NuGet-csomag Microsoft.CognitiveServices.Speech](media/sdk/qs-csharp-dotnet-windows-03-nuget-install-0.5.0.png "telepítse a Nuget-csomag")
-
-1. Fogadja el a megjelenített licencfeltételeit.
-
-    ![Fogadja el a licencfeltételeket](media/sdk/qs-csharp-dotnet-windows-04-nuget-license.png "fogadja el a licencfeltételeket")
-
-1. A Package Manager konzol a következő kimeneti sor jelenik meg.
-
-   ```text
-   Successfully installed 'Microsoft.CognitiveServices.Speech 0.6.0' to helloworld
-   ```
-
-## <a name="create-a-platform-configuration-matching-your-pc-architecture"></a>A számítógép architektúrájának megfelelő platform konfiguráció létrehozása
-
-Ebben a szakaszban egy új platformra a konfigurációt, amely megfelel a processzor-architektúra hozzáadhat.
-
-1. Indítsa el a Configuration Manager. Válassza ki **összeállítása** > **a Configuration Manager**.
-
-    ![A configuration manager indítása](media/sdk/qs-csharp-dotnet-windows-05-cfg-manager-click.png "a configuration manager indítása")
-
-1. Az a **Configuration Manager** párbeszédpanelen adjon hozzá egy új platformra. Az a **aktív megoldás platformját** legördülő listában válassza **új**.
-
-    ![Adjon hozzá egy új platform szerint a configuration manager ablak](media/sdk/qs-csharp-dotnet-windows-06-cfg-manager-new.png "adjon hozzá egy új platform szerint a configuration manager ablak")
-
-1. Ha 64 bites Windows futtatja, hozzon létre egy újat platform nevű `x64`. Ha 32 bites Windows futtatja, hozzon létre egy újat platform nevű `x86`. Ebben a cikkben létrehoz egy `x64` platformregisztrációt.
-
-    ![A Windows 64 bites, vegye fel a "x64" nevű új platformra](media/sdk/qs-csharp-dotnet-windows-07-cfg-manager-add-x64.png "Hozzáadás x64 platform")
-
-## <a name="add-the-sample-code"></a>A mintakód hozzáadása
-
-1. Nyissa meg `Program.cs` , és cserélje le azt a kódot a következőre.
+1. Nyissa meg a `Program.cs` fájlt, és cserélje le a benne lévő teljes kódot a következőre.
 
     [!code-csharp[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/csharp-dotnet-windows/helloworld/Program.cs#code)]
 
-1. Cserélje le a karakterláncot `YourSubscriptionKey` az előfizetési kulccsal végzett.
+1. Ugyanebben a fájlban cserélje le a `YourSubscriptionKey` sztringet a Speech Service előfizetői azonosítójára.
 
-1. Cserélje le a karakterláncot `YourServiceRegion` együtt a [régió](regions.md) az előfizetéséhez tartozó (például `westus` az ingyenes próba-előfizetésre).
+1. Cserélje le a `YourServiceRegion` sztringet az előfizetéséhez társított [régióra](regions.md) (ez a `westus` régió, ha az ingyenes próbaverzióra regisztrált).
 
-1. Mentse a módosításokat a projekthez.
+1. Mentse a projekt módosításait.
 
-## <a name="build-and-run-the-sample"></a>A minta létrehozása és futtatása
+## <a name="build-and-run-the-app"></a>Az alkalmazás létrehozása és futtatása
 
-1. Hozza létre az alkalmazást. A menüsávban válassza **összeállítása** > **megoldás fordítása**. A kódot kell fordítási hibák nélkül most.
+1. Hozza létre az alkalmazást. A menüsávon válassza a **Létrehozás** > **Megoldás fordítása** elemet. A kód fordításának hiba nélkül végbe kell mennie.
 
-    ![A build sikeres létrehozása](media/sdk/qs-csharp-dotnet-windows-08-build.png "build sikeres létrehozása")
+    ![A Visual Studio képernyőképe, amelyen ki van emelve a Megoldás fordítása lehetőség](media/sdk/qs-csharp-dotnet-windows-08-build.png "Sikeres létrehozás")
 
-1. Indítsa el az alkalmazást. A menüsávban válassza **Debug** > **Start Debugging**, vagy nyomja le az **F5**.
+1. Indítsa el az alkalmazást. A menüsávon válassza a **Hibakeresés** > **Hibakeresés indítása** elemet, vagy nyomja le az **F5** billentyűt.
 
-    ![Az alkalmazás elindításához az into hibakeresés](media/sdk/qs-csharp-dotnet-windows-09-start-debugging.png "indítsa el az alkalmazást into hibakeresés")
+    ![A Visual Studio képernyőképe, amelyen ki van emelve a Hibakeresés indítása lehetőség](media/sdk/qs-csharp-dotnet-windows-09-start-debugging.png "Hibakeresés indítása az alkalmazáson")
 
-1. A konzolablakban jelenik meg, például valamit (angolul), és felszólítja a. A felismert szöveget majd ugyanabban az ablakban jelenik meg.
+1. Megjelenik egy konzolablak, amely arra kéri Önt, hogy mondjon valamit. Mondjon ki egy angol nyelvű kifejezést vagy mondatot. A rendszer továbbítja a beszédet a Speech Service-be, majd szöveggé alakítja át, amely ugyanabban az ablakban meg is jelenik.
 
-    ![Sikeres felismerés után konzolkimenetet](media/sdk/qs-csharp-dotnet-windows-10-console-output.png "Konzolkimenetet követően sikeres felismerése")
+    ![Képernyőkép a konzolról a sikeres felismerést követően](media/sdk/qs-csharp-dotnet-windows-10-console-output.png "A konzol a sikeres felismerést követően")
 
-[!INCLUDE [Download the sample](../../../includes/cognitive-services-speech-service-speech-sdk-sample-download-h2.md)]
-Keresse meg az ehhez a mintához a `quickstart/csharp-dotnet-windows` mappát.
+[!INCLUDE [Download this sample](../../../includes/cognitive-services-speech-service-speech-sdk-sample-download-h2.md)]
+A jelen útmutatóban használt mintát a `quickstart/csharp-dotnet-windows` mappában találja.
 
 ## <a name="next-steps"></a>További lépések
 
+> [!div class="nextstepaction"]
+> [Szándék felismerése beszédből a C#-hez készült Speech SDK használatával](how-to-recognize-intents-from-speech-csharp.md)
+
+## <a name="see-also"></a>Lásd még
+
 - [Beszéd fordítása](how-to-translate-speech-csharp.md)
-- [Akusztikai modell testreszabása](how-to-customize-acoustic-models.md)
-- [Nyelvi modell testreszabása](how-to-customize-language-model.md)
+- [Akusztikai modellek testreszabása](how-to-customize-acoustic-models.md)
+- [Nyelvi modellek testreszabása](how-to-customize-language-model.md)

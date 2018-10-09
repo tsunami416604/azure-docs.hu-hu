@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.date: 05/29/2018
 ms.topic: tutorial
 ms.service: iot-hub
-ms.openlocfilehash: dc857760cf0d3fa2e146f22196b7bc36d119df5f
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: 5a09211dc134cdb372a9712c1f45d7c44660a759
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37869570"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46966860"
 ---
 # <a name="tutorial-use-a-simulated-device-to-test-connectivity-with-your-iot-hub"></a>Oktatóanyag: Szimulált eszköz használata az IoT Hub-kapcsolat ellenőrzéséhez
 
@@ -33,7 +33,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az oktatóanyag során futtatott parancssori felületi szkriptek az [Azure CLI 2.0-hoz készült IoT-bővítményt](https://github.com/Azure/azure-iot-cli-extension/blob/master/README.md) használják. A bővítmény telepítéséhez futtassa a következő parancssori felületi parancsot:
+Az oktatóanyag során futtatott parancssori felületi szkriptek az [Azure CLI-hez készült IoT-bővítményt](https://github.com/Azure/azure-iot-cli-extension/blob/master/README.md) használják. A bővítmény telepítéséhez futtassa a következő parancssori felületi parancsot:
 
 ```azurecli-interactive
 az extension add --name azure-cli-iot-ext
@@ -100,7 +100,7 @@ A **MyTestDevice** elsődleges eszközkulcsának visszaállításához futtassa 
 # Generate a new Base64 encoded key using the current date
 read key < <(date +%s | sha256sum | base64 | head -c 32)
 
-# Requires the IoT Extension for Azure CLI 2.0
+# Requires the IoT Extension for Azure CLI
 # az extension add --name azure-cli-iot-ext
 
 # Reset the primary device key for MyTestDevice

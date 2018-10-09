@@ -1,64 +1,43 @@
 ---
-title: 'Rövid útmutató: Language Understanding-alkalmazás (LUIS-alkalmazás) meghívása a Python használatával | Microsoft Docs'
+title: Rövid Python-útmutató – szándék előrejelzése – LUIS
+titleSuffix: Azure Cognitive Services
 description: Ez a rövid útmutató bemutatja, hogyan hívhat meg egy LUIS-alkalmazást a Python használatával.
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: quickstart
-ms.date: 06/27/2018
+ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: bc7ae912d762a98c34b9a1b2d6a82d5630c4794b
-ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
+ms.openlocfilehash: e560aeffecf63f63966a49053e0f79d012b4a0a3
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "43770002"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47038272"
 ---
-# <a name="quickstart-call-a-luis-endpoint-using-python"></a>Rövid útmutató: LUIS-végpont meghívása Python használatával
+# <a name="quickstart-get-intent-using-python"></a>Rövid útmutató: Szándék lekérése Python használatával
 Ebben a rövid útmutatóban átadhat kimondott szövegeket egy LUIS-végpontnak, majd visszakaphatja a szándékot és az entitásokat.
 
-<!-- green checkmark -->
-<!--
-> [!div class="checklist"]
-> * Create LUIS subscription and copy key value for later use
-> * View LUIS endpoint results from browser to public sample IoT app
-> * Create Visual Studio C# console app to make HTTPS call to LUIS endpoint
--->
+[!include[Quickstart introduction for endpoint](../../../includes/cognitive-services-luis-qs-endpoint-intro-para.md)]
 
-Ehhez a cikkhez egy ingyenes [LUIS](luis-reference-regions.md#luis-website)-fiókra van szüksége a LUIS-alkalmazás létrehozásához.
+## <a name="prerequisites"></a>Előfeltételek
 
-<a name="create-luis-subscription-key"></a>
-## <a name="create-luis-endpoint-key"></a>LUIS-végpont kulcsának létrehozása
-Az ebben a bemutatóban használt LUIS-mintaalkalmazások hívásához egy Cognitive Services API-kulcsra lesz szüksége. 
+* [Python 3.6](https://www.python.org/downloads/) vagy újabb.
+* [Visual Studio Code](https://code.visualstudio.com/)
 
-Az API-kulcs beszerzéséhez kövesse az alábbi lépéseket: 
+[!include[Use authoring key for endpoint](../../../includes/cognitive-services-luis-qs-endpoint-luis-repo-note.md)]
 
-1. Először létre kell hoznia egy [Cognitive Services API-fiókot](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) az Azure Portalon. Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
+## <a name="get-luis-key"></a>LUIS-kulcs lekérése
 
-2. Jelentkezzen be az Azure Portalra a https://portal.azure.com címen. 
+[!include[Use authoring key for endpoint](../../../includes/cognitive-services-luis-qs-endpoint-get-key-para.md)]
 
-3. Kövesse a [végpontkulcsok Azure-ral történő létrehozását](./luis-how-to-azure-subscription.md) ismertető cikkben leírt lépéseket a kulcs beszerzéséhez.
+## <a name="get-intent-with-browser"></a>Szándék lekérése böngészővel
 
-4. Lépjen vissza a [LUIS](luis-reference-regions.md) webhelyére, és jelentkezzen be az Azure-fiókjával. 
+[!include[Use authoring key for endpoint](../../../includes/cognitive-services-luis-qs-endpoint-browser-para.md)]
 
-    [![](media/luis-get-started-node-get-intent/app-list.png "Alkalmazáslista képernyőképe")](media/luis-get-started-node-get-intent/app-list.png)
-
-## <a name="understand-what-luis-returns"></a>A LUIS által visszaadott eredmények értelmezése
-
-Annak megismeréséhez, hogy mit ad vissza egy LUIS-alkalmazás, beillesztheti a LUIS-mintaalkalmazás URL-címét egy böngészőablakba. A mintaalkalmazás egy IoT-alkalmazás, amely észleli, hogy a felhasználó fel- vagy lekapcsolni szeretné-e a világítást.
-
-1. A mintaalkalmazás végpontja a következő formátumban van: `https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/df67dcdb-c37d-46af-88e1-8b97951ca1c2?subscription-key=<YOUR_API_KEY>&verbose=false&q=turn%20on%20the%20bedroom%20light` Másolja az URL-címet, és cserélje le a végpontkulcsot a `subscription-key` mezőben található értékre.
-2. Illessze be az URL-címet egy böngészőablakba, és nyomja le az Enter billentyűt. A böngészőben megjelenik egy JSON-eredmény, amely jelzi, hogy a LUIS észleli a `HomeAutomation.TurnOn` szándékot és a `bedroom` értékű `HomeAutomation.Room` entitást.
-
-    ![A TurnOn szándékot észlelő JSON-eredmény](./media/luis-get-started-node-get-intent/turn-on-bedroom.png)
-3. Módosítsa az URL-címben található `q=` paraméter értékét `turn off the living room light` értékre, majd nyomja le az Enter billentyűt. Az eredmény most jelzi, hogy a LUIS észleli a `HomeAutomation.TurnOff` szándékot és a `living room` értékű `HomeAutomation.Room` entitást. 
-
-    ![A TurnOff szándékot észlelő JSON-eredmény](./media/luis-get-started-node-get-intent/turn-off-living-room.png)
-
-
-## <a name="consume-a-luis-result-using-the-endpoint-api-with-python"></a>LUIS-eredmény felhasználása a végponti API és Python használatával
+## <a name="get-intent--programmatically"></a>Szándék lekérése programozott módon
 
 A Pythonnal hozzáférhet ugyanazokhoz az eredményekhez, amelyeket a böngészőablakban látott az előző lépésben.
 
@@ -73,13 +52,15 @@ A Pythonnal hozzáférhet ugyanazokhoz az eredményekhez, amelyeket a böngész�
 3. Telepítsen függőségeket a következővel: `pip install requests`.
 
 4. Futtassa a szkriptet a következővel: `python ./quickstart-call-endpoint.py`. Megjelenik a korábban a böngészőablakban látott JSON.
-<!-- 
-![Console window displays JSON result from LUIS](./media/luis-get-started-python-get-intent/console-turn-on.png)
--->
+
+## <a name="luis-keys"></a>LUIS-kulcsok
+
+[!include[Use authoring key for endpoint](../../../includes/cognitive-services-luis-qs-endpoint-key-usage-para.md)]
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
-Az oktatóanyagban létrehozott két erőforrás a LUIS-végpont kulcsa és a C#-projekt volt. Törölje a LUIS-végpont kulcsát az Azure Portalról. Zárja be a Visual Studio-projektet, és távolítsa el a könyvtárat a fájlrendszerből. 
+Törölje a Python-fájlt. 
 
 ## <a name="next-steps"></a>További lépések
+
 > [!div class="nextstepaction"]
 > [Beszédmódok hozzáadása](luis-get-started-python-add-utterance.md)

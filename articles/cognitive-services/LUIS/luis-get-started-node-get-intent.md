@@ -1,22 +1,23 @@
 ---
-title: Természetes nyelvű szöveg elemzése a Language Understanding (LUIS) szolgáltatásban Node.js használatával – Cognitive Services – Azure Cognitive Services | Microsoft Docs
+title: Rövid Node.js-útmutató – szándék előrejelzése – LUIS
+titleSuffix: Azure Cognitive Services
 description: Ebben a rövid útmutatóban elérhető nyilvános LUIS-alkalmazással határozza meg egy felhasználó szándékát egy beszélgetés szövegéből. Node.js nyelven küldje el szövegként a felhasználó szándékát a nyilvános alkalmazás HTTP-előrejelzési végpontjára. A LUIS a végpontnál a nyilvános alkalmazás modelljét alkalmazza a természetes nyelvű szövegen a jelentés elemzése érdekében, amellyel meghatározza az általános szándékot, valamint kinyeri az alkalmazás témájában releváns adatokat.
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: quickstart
-ms.date: 08/23/2018
+ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: b85b8ef19d4cc46d80d600d1cb4404edd71e2374
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: 37a94b217e2b9c0d417ad0bdd7678b13e333305d
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44158007"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47038918"
 ---
-# <a name="quickstart-analyze-text-using-nodejs"></a>Rövid útmutató: Szövegelemzés Node.js használatával
+# <a name="quickstart-get-intent-using-nodejs"></a>Rövid útmutató: Szándék lekérése a Node.js használatával
 
 [!INCLUDE [Quickstart introduction for endpoint](../../../includes/cognitive-services-luis-qs-endpoint-intro-para.md)]
 
@@ -36,11 +37,11 @@ ms.locfileid: "44158007"
 
 [!INCLUDE [Use authoring key for endpoint](../../../includes/cognitive-services-luis-qs-endpoint-get-key-para.md)]
 
-## <a name="analyze-text-with-browser"></a>Elemzés böngészővel
+## <a name="get-intent-with-browser"></a>Szándék lekérése böngészővel
 
 [!INCLUDE [Use authoring key for endpoint](../../../includes/cognitive-services-luis-qs-endpoint-browser-para.md)]
 
-## <a name="analyze-text-with-nodejs"></a>Szövegelemzés Node.js használatával
+## <a name="get-intent-programmatically"></a>Szándék lekérése programozott módon
 
 A Node.js használatával hozzáférhet ugyanazokhoz az eredményekhez, amelyeket a böngészőablakban látott az előző lépésben.
 

@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/07/2018
 ms.author: wolfma
-ms.openlocfilehash: c90971d92c84054d981ecb8857f3f77f3d65fe96
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
-ms.translationtype: MT
+ms.openlocfilehash: 328a54e01fb46fca5b7b90a707c0c0bdbdcb4a4f
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43129758"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47454503"
 ---
 > [!IMPORTANT]
-> Töltse le a Cognitive Services beszédfelismerő SDK az összetevőket ezen az oldalon, a licenc tudomásul veszi, lásd: [beszéd SDK licencszerződés](~/articles/cognitive-services/speech-service/license.md).
+> A Cognitive Services Speech SDK ezen az oldalon található bármely összetevőjének letöltésével elfogadja annak licencét. További információkat a [Speech SDK licencszerződésében](https://aka.ms/csspeech/license201809) talál.

@@ -1,51 +1,51 @@
 ---
-title: Videó keresési SDK Python gyors üzembe helyezés |} Microsoft Docs
-description: Videó keresési SDK Konzolalkalmazás beállítása.
-titleSuffix: Azure Video Search SDK Python quickstart
+title: 'Rövid útmutató: Video Search SDK, Python'
+titleSuffix: Azure Cognitive Services
+description: A Video Search SDK konzolalkalmazás beállítása.
 services: cognitive-services
 author: mikedodaro
-manager: rosh
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-video-search
-ms.topic: article
+ms.topic: quickstart
 ms.date: 02/15/2018
-ms.author: v-gedod
-ms.openlocfilehash: 1c4769a6ca3391fa595cc078651beff330bbfd60
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
-ms.translationtype: MT
+ms.author: rosh
+ms.openlocfilehash: 9784894ea9a9deb350171e0d19042eb65644093b
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35349471"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47225650"
 ---
-# <a name="video-search-sdk-python-quickstart"></a>Videó keresési SDK Python gyors üzembe helyezés
+# <a name="quickstart-bing-video-search-sdk-with-python"></a>Rövid útmutató: Bing Video Search SDK Python használatával
 
-A Bing kép keresési SDK a REST API webkiszolgáló lekérdezések és elemzési eredmények funkcióit tartalmazza.
+A Bing Image Search SDK a REST API funkcióit biztosítja a webes lekérdezésekhez és az eredmények elemzéséhez.
 
-A [forráskód Python Bing videó keresési SDK minták](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/blob/master/samples/search/video_search_samples.py) érhető el a Git központ.
+A [Python Bing Video Search SDK-minták forráskódja](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/blob/master/samples/search/video_search_samples.py) elérhető a GitHubon.
 
 
 ## <a name="application-dependencies"></a>Alkalmazásfüggőségek
-Ha az még nincs, telepítse a Python. Az SDK nem kompatibilis a Python 2.7, 3.3-as, illetve 3.4, 3.5-ös és 3.6.
+Ha még nincs telepítve a Python, telepítse. Az SDK a Python 2.7-es, 3.3-as, 3.4-es, 3.5-ös és 3.6-os verziójával kompatibilis.
 
-A Python fejlesztési általános javaslat, hogy használja a [virtuális környezet](https://docs.python.org/3/tutorial/venv.html). Telepítse, és a virtuális környezet inicializálása a [venv modul](https://pypi.python.org/pypi/virtualenv). Python 2.7 virtualenv telepítse.
+A Pythonnal való fejlesztéskor általánosságban javasolt egy [virtuális környezet](https://docs.python.org/3/tutorial/venv.html) használata. Telepítse és inicializálja a virtuális környezetet az új [venv modullal](https://pypi.python.org/pypi/virtualenv). Telepítse a Python 2.7-hez készült virtualenv modult.
 ```
 python -m venv mytestenv
 ```
-Bing videók keresési SDK-függőség telepítése:
+Telepítse a Bing Video Search SDK függőségeit:
 ```
 cd mytestenv
 python -m pip install azure-cognitiveservices-search-videosearch
 ```
-## <a name="video-search-client"></a>Videó keresési ügyfél
-Első egy [kognitív szolgáltatások hozzáférési kulcs](https://azure.microsoft.com/try/cognitive-services/) alatt *keresési*. Adja hozzá a importálásokat:
+## <a name="video-search-client"></a>Video Search-ügyfél
+A [Cognitive Services hozzáférési kulcsát](https://azure.microsoft.com/try/cognitive-services/) a *Keresés* területen kérheti le. Adja hozzá az importálásokat:
 ```
 subscription_key = "YOUR-SUBSCRIPTION-KEY"
 ```
-Hozzon létre egy példányát a `CognitiveServicesCredentials`, és az ügyfél példányának:
+Hozza létre a `CognitiveServicesCredentials` egy példányát, és példányosítsa az ügyfelet:
 ```
 client = VideoSearchAPI(CognitiveServicesCredentials(subscription_key))
 ```
-Videók keresse meg (SwiftKey), és ellenőrizze az eredmények száma. Kinyomtathatja a `ID`, `name` és `URL` első videó eredmény.
+Keressen „SwiftKey” kifejezéssel kapcsolatos videókat, majd ellenőrizze a találatok számát. Nyomtassa ki az első találat `ID`, `name` és `URL` adatait.
 ```
 client = VideoSearchAPI(CognitiveServicesCredentials(subscription_key))
 
@@ -66,7 +66,7 @@ except Exception as err:
     print("Encountered exception. {}".format(err))
 
 ```
-Videók (Bellevue pótkocsi), amely nem tartalmaz, rövid és 1080p megoldás kereséséhez. Ellenőrizze az eredmények számát, és nyomtassa ki `ID`, `name` és `URL` első videó eredmény.
+Keressen a „Bellevue Trailer” kifejezéssel kapcsolatos videókat, amelyek ingyenesek, rövidek és 1080p felbontásúak. Ellenőrizze a találatok számát, és nyomtassa ki az első találat `ID`, `name` és `URL` adatait.
 ```
 def video_search_with_filtering(subscription_key):
 
@@ -95,7 +95,7 @@ def video_search_with_filtering(subscription_key):
 
 ```
 
-Trendekkel eredményt ad. Ellenőrizze a szalagcím csempék és kategóriák:
+Kérdezze le a népszerű találatokat. Ellenőrizze a szalagcím-csempéket és a kategóriákat:
 ```
 def video_trending(subscription_key):
 
@@ -139,7 +139,7 @@ def video_trending(subscription_key):
         print("Encountered exception. {}".format(err))
 
 ```
-Videók keresni (Bellevue pótkocsi), és keressen a részletes információkat az első videó.
+Keressen a „Bellevue Trailer” kifejezéssel kapcsolatos videókat, majd keressen rá az első videó részletes adataira.
 ```
 def video_detail(subscription_key):
 
@@ -181,5 +181,5 @@ def video_detail(subscription_key):
 ```
 ## <a name="next-steps"></a>További lépések
 
-[Kognitív szolgáltatások Python SDK-minták](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples)
+[Cognitive Services Python SDK-minták](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples)
 

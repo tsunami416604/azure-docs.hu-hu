@@ -1,21 +1,22 @@
 ---
-title: Természetes nyelvű szöveg elemzése a Language Understanding (LUIS) szolgáltatásban Java használatával – Cognitive Services – Azure Cognitive Services | Microsoft Docs
+title: Rövid Java-útmutató – szándék előrejelzése – LUIS
+titleSuffix: Azure Cognitive Services
 description: Ebben a rövid útmutatóban elérhető nyilvános LUIS-alkalmazással határozza meg egy felhasználó szándékát egy beszélgetés szövegéből. Java nyelven küldje el szövegként a felhasználó szándékát a nyilvános alkalmazás HTTP-előrejelzési végpontjára. A LUIS a végpontnál a nyilvános alkalmazás modelljét alkalmazza a természetes nyelvű szövegen a jelentés elemzése érdekében, amellyel meghatározza az általános szándékot, valamint kinyeri az alkalmazás témájában releváns adatokat.
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: quickstart
-ms.date: 06/27/2018
+ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: 4dd5437940994a2f264b5a11baebcd67fdddb43d
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: 03fd376e58062ae9b4593fcaf7904200157c4dc3
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44163090"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47031424"
 ---
-# <a name="quickstart-analyze-text-using-java"></a>Rövid útmutató: Szövegelemzés Java használatával
+# <a name="quickstart-get-intent-using-java"></a>Rövid útmutató: Szándék lekérése a Java használatával
 
 [!INCLUDE [Quickstart introduction for endpoint](../../../includes/cognitive-services-luis-qs-endpoint-intro-para.md)]
 
@@ -34,11 +35,11 @@ ms.locfileid: "44163090"
 
 [!INCLUDE [Use authoring key for endpoint](../../../includes/cognitive-services-luis-qs-endpoint-get-key-para.md)]
 
-## <a name="analyze-text-with-browser"></a>Elemzés böngészővel
+## <a name="get-intent-with-browser"></a>Szándék lekérése böngészővel
 
 [!INCLUDE [Use authoring key for endpoint](../../../includes/cognitive-services-luis-qs-endpoint-browser-para.md)]
 
-## <a name="analyze-text-with-java"></a>Szövegelemzés Java használatával 
+## <a name="get-intent-programmatically"></a>Szándék lekérése programozott módon 
 
 A Java használatával hozzáférhet ugyanazokhoz az eredményekhez, amelyeket a böngészőablakban látott az előző lépésben. 
 

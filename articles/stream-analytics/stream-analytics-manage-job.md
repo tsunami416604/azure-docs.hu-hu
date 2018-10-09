@@ -10,12 +10,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 04/04/2018
-ms.openlocfilehash: 6b924e0555ea7a57f8d5e5309a266b6d2fb44f44
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 1955fc033e0351be9da89bbee11dc41d6281a63a
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43702527"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47433990"
 ---
 # <a name="create-a-stream-analytics-job-to-analyze-phone-call-data-and-visualize-results-in-a-power-bi-dashboard"></a>Stream Analytics-feladat létrehozása telefonhívás-adatok elemzésére és az eredmények Power BI-irányítópulton való vizualizációjára
  
@@ -101,12 +101,12 @@ A TelcoGenerator alkalmazást úgy kell beállítania az indítása előtt, hogy
 5. Ezután nyisson egy parancsablakot, váltson arra a mappára, ahová kicsomagolta a TelcoGenerator alkalmazást, és írja be a következő parancsot:
 
    ```
-   telcodatagen.exe 1000 .2 2
+   telcodatagen.exe 1000 0.2 2
    ```
 
    A paranccsal a következő paraméterek használhatók:
    * **Óránkénti hívásadatrekordok száma**.  
-   * **Csalások valószínűségének százalékos aránya** – ez azt adja meg, hogy az alkalmazás milyen gyakran szimuláljon csaló hívásokat. A .2 érték azt jelenti, hogy nagyjából a hívások 20%-a fog csalónak tűnni.  
+   * **Csalások valószínűségének százalékos aránya** – ez azt adja meg, hogy az alkalmazás milyen gyakran szimuláljon csaló hívásokat. A 0,2-es érték azt jelenti, hogy nagyjából a hívások 20%-a fog csalónak tűnni.  
    * **Időtartam órában** – ez azt adja meg, hogy hány óráig fusson az alkalmazás. Az alkalmazást bármikor leállíthatja úgy is, ha a parancssorban leállítja a folyamatot (Ctrl+C).
 
    Néhány másodperc elteltével az alkalmazás elkezdi kijelezni a hívásrekordokat a képernyőn, miközben az eseményközpontba küldi őket. A telefonhívási adatok a következő mezőket tartalmazzák:
@@ -228,7 +228,7 @@ A lekérdezésszerkesztőben létrehozott lekérdezéseket tesztelheti, amihez m
 
 3. Állítsa a **Percek** beállítást 3 értékre, majd válassza az **OK** lehetőséget. A rendszer három percnyi adatmintát vesz a bemeneti streamből, és értesítést küld, amikor készen állnak a mintaadatok. A mintavételezés állapotát az értesítési sávon tekintheti meg. 
 
-   A rendszer ideiglenesen tárolja a mintaadatokat, amelyek akkor érhetők el, amikor meg van nyitva a lekérdezési ablak. Ha bezárja a lekérdezési ablakot, a mintaadatok elvesznek, és új mintaadatkészletet kell létrehoznia. Alternatív megoldásként a [GitHubról](https://github.com/Azure/azure-stream-analytics/blob/master/Sample Data/telco.json) beszerezhet egy mintaadatokat tartalmazó .json fájlt, majd feltöltheti ezt a .json fájlt, hogy a benne lévő mintaadatokat használja a CallStream bemenetéhez.  
+   A rendszer ideiglenesen tárolja a mintaadatokat, amelyek akkor érhetők el, amikor meg van nyitva a lekérdezési ablak. Ha bezárja a lekérdezési ablakot, a mintaadatok elvesznek, és új mintaadatkészletet kell létrehoznia. Alternatív megoldásként a [GitHubról](https://github.com/Azure/azure-stream-analytics/blob/master/Sample%20Data/telco.json) beszerezhet egy mintaadatokat tartalmazó .json fájlt, majd feltöltheti ezt a .json fájlt, hogy a benne lévő mintaadatokat használja a CallStream bemenetéhez.  
 
 4. Válassza a **Tesztelés** lehetőséget a lekérdezés teszteléséhez. A kimeneti eredmények a következő képernyőképen láthatóhoz hasonlóan jelennek meg:  
 
@@ -262,7 +262,7 @@ A lekérdezésszerkesztőben létrehozott lekérdezéseket tesztelheti, amihez m
 
 Az oktatóanyag ezen részében egy [ASP.NET](http://asp.net/) minta-webalkalmazást fog használni, amelyet a Power BI csapata készített az irányítópultja beágyazásához. További információ az irányítópult beágyazásáról: [Beágyazás a Power BI-ba](https://docs.microsoft.com/power-bi/developer/embedding).
 
-Ebben az oktatóanyagban „a felhasználó az adatok tulajdonosa” alkalmazás lépéseit követjük. Az alkalmazás beállításához keresse fel a [PowerBI-Developer-Samples](https://github.com/Microsoft/PowerBI-Developer-Samples) Github-adattárat, és kövesse a **Felhasználó az adatok tulajdonosa** szakaszt (használja az **integrate-dashboard-web-app** alszakaszban található átirányítási és a kezdőlap URL-t). Mivel az irányítópult-alapú példát alkalmazzuk, használja a [GitHub-adattárban](https://github.com/Microsoft/PowerBI-Developer-Samples/tree/master/User Owns Data/integrate-dashboard-web-app) található integrate-dashboard-web-app mintakódot.
+Ebben az oktatóanyagban „a felhasználó az adatok tulajdonosa” alkalmazás lépéseit követjük. Az alkalmazás beállításához keresse fel a [PowerBI-Developer-Samples](https://github.com/Microsoft/PowerBI-Developer-Samples) Github-adattárat, és kövesse a **Felhasználó az adatok tulajdonosa** szakaszt (használja az **integrate-dashboard-web-app** alszakaszban található átirányítási és a kezdőlap URL-t). Mivel az irányítópult-alapú példát alkalmazzuk, használja a [GitHub-adattárban](https://github.com/Microsoft/PowerBI-Developer-Samples/tree/master/User%20Owns%20Data/integrate-dashboard-web-app) található integrate-dashboard-web-app mintakódot.
 Miután az alkalmazás fut a böngészőjében, az alábbi lépések végrehajtásával ágyazza be a weblapra a korábban létrehozott irányítópultot:
 
 1. Válassza a **Bejelentkezés a Power BI-ba** lehetőséget, amely engedélyezi az alkalmazásnak a Power BI-fiókjában lévő irányítópultokhoz való hozzáférést.  

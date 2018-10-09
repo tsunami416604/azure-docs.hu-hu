@@ -8,12 +8,12 @@ ms.service: dns
 ms.topic: tutorial
 ms.date: 6/13/2018
 ms.author: victorh
-ms.openlocfilehash: 44f5bf9a28d56e85bae1d50136c50868ec96eb4e
-ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
+ms.openlocfilehash: ea0dc257d691326bc073b4cbff37e847a6990f02
+ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39205441"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47452298"
 ---
 # <a name="tutorial-host-your-domain-in-azure-dns"></a>Oktatóanyag: Saját tartomány üzemeltetése az Azure DNS-ben
 
@@ -70,6 +70,9 @@ Az Azure DNS automatikusan létrehozza a zóna mérvadó névkiszolgálói rekor
 Most, hogy létrehozta a DNS-zónát, és megvannak a névkiszolgálók is, frissítenie kell a szülőtartományt az Azure DNS-névkiszolgálókkal. Minden tartományregisztráló a saját DNS-kezelési eszközeit használja a tartományok névkiszolgálói rekordjainak módosítására. A regisztráló DNS-kezelési oldalán szerkessze a névkiszolgálói rekordokat, és cserélje le őket az Azure DNS névkiszolgálóira.
 
 Amikor egy tartományt az Azure DNS-be delegál, az Azure DNS által nyújtott névkiszolgálókat kell használnia. Javasoljuk, hogy használja mind a négy névkiszolgálói nevet, a tartomány nevétől függetlenül. A tartománydelegáláshoz nem szükséges, hogy a névkiszolgáló ugyanazt a legfelső szintű tartományt használja, mint az Ön tartománya.
+
+> [!NOTE]
+> Amikor átmásolja a névkiszolgálók címeit, mindenképpen másolja át a cím végén szereplő pontot is. A záró karakterként szolgáló pont jelzi egy teljes tartománynév végét. Előfordulhat, hogy egyes regisztrálók hozzáfűzik a pontot, ha nincsen ott a névkiszolgáló nevének végén. Azonban a DNS RFC-vel való megfelelés érdekében mindenképpen tegye a cím végére a záró pontot, mert nem számolhat azzal, hogy minden regisztráló hozzáfűzi a címhez, ha Ön lehagyja.
 
 A saját zónájában történő, névkiszolgálókat használó delegálásokat – más néven *személyes névkiszolgálókat* – az Azure DNS jelenleg nem támogatja.
 

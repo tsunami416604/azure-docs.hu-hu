@@ -1,20 +1,21 @@
 ---
-title: 'Rövid útmutató: Kimondott szövegek hozzáadása LUIS-alkalmazáshoz a JavaScript használatával – Azure Cognitive Services | Microsoft Docs'
+title: Rövid JavaScript-útmutató – modell módosítása és LUIS-alkalmazás betanítása
+titleSuffix: Azure Cognitive Services
 description: Ez a rövid útmutató bemutatja, hogyan hívhat meg egy LUIS-alkalmazást a JavaScript használatával.
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: quickstart
-ms.date: 08/24/2018
+ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: 0920a194d3e9c93883b88b7131f7e81dc8fb3302
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: 38e25b0634b53f4fcc0507091e78ab49b29c8d38
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44159690"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47033396"
 ---
 # <a name="quickstart-change-model-using-javascript"></a>Rövid útmutató: Modell módosítása a JavaScript használatával
 
@@ -34,7 +35,7 @@ ms.locfileid: "44159690"
 
 ## <a name="create-quickstart-code"></a>A rövid útmutató kódjának létrehozása
 
-Hozza létre a(z) `add-utterances.html` fájlt, és adja hozzá a következő kódot:
+Hozza létre az `add-utterances.html` fájlt, és adja hozzá a következő kódot:
 
    [!code-html[Html code](~/samples-luis/documentation-samples/quickstarts/change-model/javascript/add-utterance.html "Javascript code")]
 
@@ -69,11 +70,11 @@ Hozza létre a(z) `add-utterances.html` fájlt, és adja hozzá a következő k�
     ];
     ```
 
-4. Kattintson a(z) `Upload utterance` gombra. A gombok alatt megjelennek a LUIS-eredmények.
+4. Kattintson az `Upload utterance` gombra. A gombok alatt megjelennek a LUIS-eredmények.
 
-5. Kattintson a(z) `Train model` gombra, hogy megtanítsa az alkalmazásnak az új kimondott szövegeket.
+5. Kattintson a `Train model` gombra, hogy megtanítsa az alkalmazásnak az új kimondott szövegeket.
 
-6. Kattintson a(z) `Train Status` gombra a betanítás állapotának megtekintéséhez. 
+6. Kattintson a `Train Status` gombra a betanítás állapotának megtekintéséhez. 
 
     ![Add-utterances.html](./media/luis-quickstart-javascript-add-utterance/add-utterance.png)
 

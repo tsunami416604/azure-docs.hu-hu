@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 09/05/2017
 ms.author: jopapa
 ms.custom: mvc
-ms.openlocfilehash: 583400dba7077ebab3ce80d6a03b26f13a659b35
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: b6654afa27255b0ebd0cc80b94212f44bbf16f34
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43696870"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46960073"
 ---
 # <a name="create-a-mongodb-app-with-angular-and-azure-cosmos-db---part-4-create-an-azure-cosmos-db-account-using-the-azure-cli"></a>MongoDB-alkalmazás létrehozása az Angular és az Azure Cosmos DB használatával – 4. rész: Azure Cosmos DB-fiók létrehozása az Azure CLI használatával
 
@@ -37,7 +37,7 @@ Az oktatóanyag 4. része a [3. részre](tutorial-develop-mongodb-nodejs-part3.m
 
 Ennek a résznek a megkezdése előtt mindenképp végezze el az oktatóanyag [3. részében](tutorial-develop-mongodb-nodejs-part3.md) ismertetett lépéseket. 
 
-Az oktatóanyag ezen szakaszában az Azure Cloud Shellt (a webböngészőben) vagy a helyileg telepített [Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli) eszközt használhatja. Ha helyileg használja az Azure CLI-t, győződjön meg arról, hogy az Azure CLI 2.0-s vagy újabb verzióját futtatja. A parancssorban futtassa a(z) `az --version` parancsot a verzió ellenőrzéséhez. 
+Az oktatóanyag ezen szakaszában az Azure Cloud Shellt (a webböngészőben) vagy a helyileg telepített [Azure CLI-t](https://docs.microsoft.com/cli/azure/install-azure-cli) eszközt használhatja.
 
 [!INCLUDE [cloud-shell-try-it](../../includes/cloud-shell-try-it.md)]
 

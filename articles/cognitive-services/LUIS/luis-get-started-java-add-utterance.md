@@ -1,20 +1,21 @@
 ---
-title: 'Rövid útmutató: Modell módosítása és LUIS-alkalmazás betanítása Java használatával – Azure Cognitive Services | Microsoft Docs'
+title: Rövid Java-útmutató – modell módosítása és LUIS-alkalmazás betanítása
+titleSuffix: Azure Cognitive Services
 description: Ebben a rövid Java-útmutatóban kimondott példaszövegeket ad egy otthonautomatizálási alkalmazáshoz, és betanítja az alkalmazást. A kimondott példaszövegek szándékhoz rendelt beszélgetésre szánt felhasználói szövegek. A szándékok kimondott példaszövegeinek megadásával megtanítja a LUIS-t arra, hogy milyen típusú felhasználói szöveg mely szándékhoz tartozik.
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: quickstart
-ms.date: 08/24/2018
+ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: ddb22bce77dda55ad6e83efa8c0ca2c476f78836
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: 8500dfdd639b4f1de46a0b79b87a8564d338b6ab
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44161118"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47042024"
 ---
 # <a name="quickstart-change-model-using-java"></a>Rövid útmutató: Modell módosítása a Java használatával 
 

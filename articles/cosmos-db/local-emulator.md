@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/20/2018
 ms.author: danoble
-ms.openlocfilehash: 355f80479ba7c6d6399bb25f7ba1511c6b18599b
-ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
+ms.openlocfilehash: 7067a71eea3ffbfadf006a102ee926fb15347f63
+ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43285227"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47423646"
 ---
 # <a name="use-the-azure-cosmos-db-emulator-for-local-development-and-testing"></a>Az Azure Cosmos DB Emulator használata helyi fejlesztéshez és teszteléshez
 
@@ -35,10 +35,7 @@ ms.locfileid: "43285227"
 </tr>
 </table>
   
-Az Azure Cosmos DB Emulator helyi környezetet biztosít, amely az Azure Cosmos DB szolgáltatást emulálja a fejlesztéshez. Az Azure Cosmos DB Emulator használatával helyben fejlesztheti és tesztelheti alkalmazását, anélkül, hogy ehhez regisztrálnia kellene egy Azure-előfizetést, vagy fizetnie kellene a szolgáltatásért. Amikor már elégedett az alkalmazás működésével az Azure Cosmos DB Emulatorban, átválthat az Azure Cosmos DB-fiók használatára a felhőben.
-
-> [!NOTE]
-> Jelenleg az emulátor adatkezelője teljes mértékben támogatja az SQL API-gyűjteményeket és a MongoDB-gyűjteményeket. A táblázat-, gráf- és Cassandra-tárolók jelenleg nem teljes mértékben támogatottak. 
+Az Azure Cosmos DB Emulator helyi környezetet biztosít, amely az Azure Cosmos DB szolgáltatást emulálja a fejlesztéshez. Az Azure Cosmos DB Emulator használatával helyben fejlesztheti és tesztelheti alkalmazását, anélkül, hogy ehhez regisztrálnia kellene egy Azure-előfizetést, vagy fizetnie kellene a szolgáltatásért. Amikor már elégedett az alkalmazás működésével az Azure Cosmos DB Emulatorban, átválthat az Azure Cosmos DB-fiók használatára a felhőben. Használhatja az Azure Cosmos DB Emulatort, amely rendelkezik az összes szükséges (SQL, MongoDB, Cassandra, Gremlin és Table) API-val.
 
 Ez a cikk a következő feladatokat mutatja be: 
 
@@ -54,9 +51,9 @@ Ez a cikk a következő feladatokat mutatja be:
 
 ## <a name="how-the-emulator-works"></a>Az emulátor működése
 
-Az Azure Cosmos DB Emulator az Azure Cosmos DB szolgáltatás kiváló minőségű emulációját nyújtja. Az Azure Cosmos DB-vel megegyező funkciókat támogat, beleértve a JSON-dokumentumok létrehozásának és lekérdezésének támogatását, a gyűjtemények kiépítését és méretezését, valamint a tárolt eljárások és eseményindítók végrehajtását. Az Azure Cosmos DB Emulator használatával alkalmazásokat fejleszthet és tesztelhet, és globális léptékben üzembe helyezheti azokat az Azure-ba, ha csupán egyetlen konfigurációs módosítást végez az Azure Cosmos DB kapcsolati végpontján.
+Az Azure Cosmos DB Emulator az Azure Cosmos DB szolgáltatás kiváló minőségű emulációját nyújtja. Az Azure Cosmos DB-vel megegyező funkciókat támogat, beleértve a JSON-dokumentumok létrehozásának és lekérdezésének támogatását, a gyűjtemények kiépítését és méretezését, valamint a tárolt eljárások és eseményindítók végrehajtását. Az Azure Cosmos DB Emulator használatával alkalmazásokat fejleszthet és tesztelhet, és globális léptékben üzembe helyezheti azokat az Azure-ban, ha csupán egyetlen konfigurációs módosítást végez az Azure Cosmos DB kapcsolati végpontján.
 
-Bár az Azure Cosmos DB emulációja valósághű, az emulátor megvalósítása eltér a szolgáltatásétól. Az emulátor például szabványos operációsrendszer-összetevőket használ, például a helyi fájlrendszert az adatmegőrzéshez és a HTTPS-protokollvermet a kapcsolatokhoz. Az Azure-infrastruktúrára támaszkodó néhány funkció, például a globális replikáció, az egy számjegyű ezredmásodperces késés az olvasás/írás műveleteknél és az aprólékosan beállítható konzisztenciaszintek nem érhetők el.
+Bár az Azure Cosmos DB emulációja valósághű, az emulátor implementálása eltér a szolgáltatásétól. Az emulátor például szabványos operációsrendszer-összetevőket használ, például a helyi fájlrendszert az adatmegőrzéshez és a HTTPS-protokollvermet a kapcsolatokhoz. Az Azure-infrastruktúrára támaszkodó néhány funkció, például a globális replikáció, az egy számjegyű ezredmásodperces késés az olvasás/írás műveleteknél és az aprólékosan beállítható konzisztenciaszintek nem érhetők el.
 
 ## <a name="differences-between-the-emulator-and-the-service"></a>Az emulátor és a szolgáltatás közötti különbségek 
 Mivel az Azure Cosmos DB Emulator egy helyi fejlesztői munkaállomáson futó emulált környezetet nyújt, különbségek vannak az emulátor és a felhőben lévő Azure Cosmos DB-fiókok funkciói között:
@@ -79,7 +76,7 @@ Az Azure Cosmos DB Emulator a következő hardver- és szoftverkövetelményekke
   * 10 GB szabad merevlemez-terület
 
 ## <a name="installation"></a>Telepítés
-A [Microsoft letöltőközpontból](https://aka.ms/cosmosdb-emulator) töltheti le vagy telepítheti az Azure Cosmos DB Emulatort, vagy a Windows rendszerhez készült Dockeren futtathatja az emulátort. A Windows rendszerhez készült Docker emulátor használatának útmutatásaiért lásd: [Futtatás a Dockeren](#running-on-docker). 
+A [Microsoft letöltőközpontból](https://aka.ms/cosmosdb-emulator) töltheti le vagy telepítheti az Azure Cosmos DB Emulatort, vagy a Windows rendszerhez készült Dockeren futtathatja az emulátort. A Windows rendszerhez készült Docker-emulátor használatára vonatkozó útmutatásért lásd: [Futtatás a Dockeren](#running-on-docker). 
 
 > [!NOTE]
 > Az Azure Cosmos DB Emulator telepítéséhez, konfigurálásához és futtatásához rendszergazdai jogosultságokkal kell rendelkeznie a számítógépen.
@@ -98,7 +95,7 @@ Az Azure Cosmos DB Emulator alapértelmezés szerint a `C:\Program Files\Azure C
 
 ## <a name="start-data-explorer"></a>Az Adatkezelő elindítása
 
-Az Azure Cosmos DB Emulator indításakor az automatikusan megnyitja az Azure Cosmos DB Adatkezelőt a böngészőben. A cím a következőképpen jelenik meg: [https://localhost:8081/_explorer/index.html](https://localhost:8081/_explorer/index.html). Ha bezárja az Adatkezelőt, és később újra meg szeretné nyitni, megnyithatja az URL-t a böngészőben, vagy elindíthatja azt a Windows tálca Azure Cosmos DB Emulator ikonjával az alább látható módon.
+Az Azure Cosmos DB Emulator az indításakor automatikusan megnyitja az Azure Cosmos DB Adatkezelőt a böngészőben. A cím a következőképpen jelenik meg: [https://localhost:8081/_explorer/index.html](https://localhost:8081/_explorer/index.html). Ha bezárja az Adatkezelőt, és később újra meg szeretné nyitni, megnyithatja az URL-t a böngészőben, vagy elindíthatja azt a Windows tálca Azure Cosmos DB Emulator ikonjával az alább látható módon.
 
 ![Az Azure Cosmos DB helyi emulátor adatkezelőjének értesítése](./media/local-emulator/database-local-emulator-data-explorer-launcher.png)
 
@@ -129,7 +126,7 @@ Egy helyi hálózaton futtathatja az emulátort. A hálózati hozzáférés enge
 A hálózati hozzáférés első engedélyezéséhez a felhasználónak le kell állítania az emulátort, és törölnie kell az emulátor adatkönyvtárát (C:\Users\user_name\AppData\Local\CosmosDBEmulator).
 
 ## <a name="developing-with-the-emulator"></a>Fejlesztés az emulátorral
-Amikor az Azure Cosmos DB Emulator fut az asztalon, bármely támogatott [Azure Cosmos DB SDK-t](sql-api-sdk-dotnet.md) vagy [Azure Cosmos DB REST API-t](/rest/api/cosmos-db/) használhatja az emulátor használatához. Az Azure Cosmos DB Emulator beépített Adatkezelőt is tartalmaz, amellyel gyűjteményeket hozhat létre az SQL és a MongoDB API-khoz, és kód írása nélkül tekintheti meg és szerkesztheti a dokumentumokat.   
+Amikor az Azure Cosmos DB Emulator fut az asztalon, bármelyik támogatott [Azure Cosmos DB SDK-t](sql-api-sdk-dotnet.md) vagy [Azure Cosmos DB REST API-t](/rest/api/cosmos-db/) használhatja az emulátor használatához. Az Azure Cosmos DB Emulator beépített Adatkezelőt is tartalmaz, amellyel gyűjteményeket hozhat létre az SQL és a MongoDB API-khoz, és kód írása nélkül tekintheti meg és szerkesztheti a dokumentumokat.   
 
     // Connect to the Azure Cosmos DB Emulator running locally
     DocumentClient client = new DocumentClient(
@@ -314,11 +311,11 @@ Az Azure Cosmos DB Emulatorhoz elérhető gyűjtemények számának módosítás
 2. Törölje a C:\Users\felhasználónév\AppData\Local\CosmosDBEmulator mappában található összes emulátoradatot.
 3. Az összes nyitott példány bezárásához kattintson a jobb gombbal a rendszertálcán lévő **Azure Cosmos DB Emulator** ikonra, majd kattintson a **Kilépés** lehetőségre. Az összes példány bezárása egy percig is eltarthat.
 4. Telepítse az [Azure Cosmos DB Emulator](https://aka.ms/cosmosdb-emulator) legújabb verzióját.
-5. Indítsa el az emulátort a PartitionCount jelzővel egy <= 250 érték beállításával. Például: `C:\Program Files\Azure CosmosDB Emulator>CosmosDB.Emulator.exe /PartitionCount=100`.
+5. Indítsa el az emulátort a PartitionCount jelzővel egy <= 250 érték beállításával. Például: `C:\Program Files\Azure Cosmos DB Emulator> CosmosDB.Emulator.exe /PartitionCount=100`.
 
 ## <a name="controlling-the-emulator"></a>Az emulátor vezérlése
 
-Az emulátor egy PowerShell modullal rendelkezik a szolgáltatás állapotának elindításához, leállításához, eltávolításához és lekéréséhez. A használatához:
+Az emulátor egy PowerShell-modullal rendelkezik a szolgáltatás elindításához, leállításához, eltávolításához és állapotának lekéréséhez. A használatához:
 
 ```powershell
 Import-Module "$env:ProgramFiles\Azure Cosmos DB Emulator\PSModules\Microsoft.Azure.CosmosDB.Emulator"
@@ -380,7 +377,7 @@ Az Azure Cosmos DB Emulator futtatható a Windows rendszerhez készült Dockeren
 
 A [Windows rendszerhez készült Docker](https://www.docker.com/docker-windows) telepítése után váltson Windows-tárolókra. Ehhez kattintson a jobb gombbal az eszköztáron lévő Docker ikonra, és válassza a **Switch to Windows containers** (Váltás Windows-tárolókra) lehetőséget.
 
-Ezután a kedvenc rendszerhéjában a következő parancs futtatásával kérje le az emulátor rendszerképét a Docker Hubról.
+Ezután kérje le az emulátor rendszerképét a Docker Hubról. Ehhez futtassa a következő parancsot azon a felületen, amelyet használni szokott.
 
 ```     
 docker pull microsoft/azure-cosmosdb-emulator 
@@ -402,7 +399,7 @@ docker run -v $env:LOCALAPPDATA\CosmosDBEmulatorCert:C:\CosmosDB.Emulator\Cosmos
 A válasz a következőhöz hasonlóan néz ki:
 
 ```
-Starting Emulator
+Starting emulator
 Emulator Endpoint: https://172.20.229.193:8081/
 Master Key: C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==
 Exporting SSL Certificate
@@ -427,7 +424,7 @@ cd $env:LOCALAPPDATA\CosmosDBEmulatorCert
 .\importcert.ps1
 ```
 
-Az emulátor elindítása után az interaktív rendszerhéj bezárása leállítja az emulátor tárolóját.
+Az emulátor elindítása után az interaktív felület bezárása leállítja az emulátor tárolóját.
 
 Az Adatkezelő megnyitásához nyissa meg a következő URL-címet a böngészőben. Az emulátor végpontja a fent látható válaszüzenetben van megadva.
 
@@ -440,7 +437,7 @@ A következő tippekkel háríthatja el az Azure Cosmos DB Emulatorral kapcsolat
 
 - Ha az emulátor új verzióját telepítette, és hibákat tapasztal, állítsa vissza az adatokat. Az adatok visszaállításához kattintson a jobb gombbal a rendszertálcán lévő Azure Cosmos DB Emulator ikonra, majd kattintson az Adatok visszaállítása… lehetőségre. Ha ez nem segít a problémán, eltávolíthatja, majd újból telepítheti az alkalmazást. Útmutatásért lásd: [A helyi emulátor eltávolítása](#uninstall).
 
-- Ha az Azure Cosmos DB Emulator összeomlik, gyűjtsön be összeomlási memóriaképfájlokat a c:\Users\felhasználónév\AppData\Local\CrashDumps mappából, tömörítse azokat, és küldje el azokat csatolva az [askcosmosdb@microsoft.com](mailto:askcosmosdb@microsoft.com) címre.
+- Ha az Azure Cosmos DB Emulator összeomlik, gyűjtsön be összeomlási memóriaképfájlokat a c:\Users\felhasználónév\AppData\Local\CrashDumps mappából, tömörítse azokat, és küldje el csatolva az [askcosmosdb@microsoft.com](mailto:askcosmosdb@microsoft.com) címre.
 
 - Ha összeomlásokat tapasztal a CosmosDB.StartupEntryPoint.exe fájlban, futtassa a következő parancsot egy rendszergazdai parancssorból: `lodctr /R` 
 
@@ -448,12 +445,14 @@ A következő tippekkel háríthatja el az Azure Cosmos DB Emulatorral kapcsolat
 
 - Ha **A szolgáltatás nem érhető el** üzenetet kap, előfordulhat, hogy az emulátor nem tudja elindítani a hálózati vermet. Ellenőrizze, hogy telepítve van-e a Pulse Secure ügyfél vagy a Juniper Networks ügyfél, mert ezek hálózatszűrő illesztőprogramjai okozhatják a problémát. A külső gyártótól származó hálózatszűrő illesztőprogramok eltávolítása általában kijavítja a problémát.
 
+- Amennyiben az emulátor futtatása közben a számítógép alvó állapotba lép vagy frissül az operációs rendszere, a **Szolgáltatás jelenleg nem érhető el** üzenet jelenik meg. Az emulátor alaphelyzetbe állításához kattintson a jobb gombbal a Windows értesítési tálcáján megjelenő ikonra, és válassza az **Adatok visszaállítása** lehetőséget.
+
 ### <a id="trace-files"></a>Profilelemzési fájlok gyűjtése
 
 Hibakeresési nyomok begyűjtéséhez futtassa a következő parancsokat egy rendszergazdai parancssorból:
 
 1. `cd /d "%ProgramFiles%\Azure Cosmos DB Emulator"`
-2. `CosmosDB.Emulator.exe /shutdown`. Figyelje meg a rendszertálcán, hogy a program leállt-e, mert ez egy percig is eltarthat. Az Azure Cosmos DB Emulator felhasználói felületén lévő **Kilépés** gombra is kattinthat.
+2. `CosmosDB.Emulator.exe /shutdown`. Figyelje meg a rendszertálcán, hogy a program leállt-e, mert ez egy percig is eltarthat. Azt is megteheti, hogy rákattint az Azure Cosmos DB Emulator felhasználói felületén lévő **Kilépés** gombra.
 3. `CosmosDB.Emulator.exe /starttraces`
 4. `CosmosDB.Emulator.exe`
 5. Hozza létre ismét a problémát. Ha az Adatkezelő nem működik, csak néhány másodpercig kell megnyitnia a böngészőt a hiba megtalálásához.
@@ -466,7 +465,7 @@ Hibakeresési nyomok begyűjtéséhez futtassa a következő parancsokat egy ren
 1. Az emulátor összes nyitott példányának bezárásához kattintson a jobb gombbal a rendszertálcán lévő Azure Cosmos DB Emulator ikonra, majd kattintson a Kilépés lehetőségre. Az összes példány bezárása egy percig is eltarthat.
 2. A Windows keresőmezőbe írja be az **alkalmazások és szolgáltatások** kifejezést, majd kattintson az **Alkalmazások és szolgáltatások (rendszerbeállítások)** eredményre.
 3. Az alkalmazások listájában görgessen az **Azure Cosmos DB Emulator** elemhez, válassza ki azt, kattintson az **Eltávolítás** lehetőségre, majd erősítse meg, és kattintson ismét az **Eltávolítás** elemre.
-4. Az alkalmazás eltávolításakor nyissa meg a C:\Users\<felhasználó>\AppData\Local\CosmosDBEmulator mappát, és törölje azt. 
+4. Az alkalmazás eltávolításakor lépjen a `C:\Users\<user>\AppData\Local\CosmosDBEmulator` mappához, és törölje ki. 
 
 ## <a name="change-list"></a>Lista módosítása
 
@@ -474,7 +473,7 @@ A verziószám ellenőrzéséhez kattintson a jobb gombbal a tálcán lévő emu
 
 ### <a name="1220-released-on-april-20-2018"></a>1.22.0. Kiadás dátuma: 2018. április 20.
 
-Az emulátorszolgáltatások a Cosmos DB felhőszolgáltatásokkal való paritást szolgáló frissítése mellett továbbfejlesztett PowerShell dokumentációt és néhány különböző hibajavítást is hozzáadtunk.
+Az emulátorszolgáltatások a Cosmos DB felhőszolgáltatásokkal való paritást szolgáló frissítése mellett továbbfejlesztett PowerShell-dokumentáció és néhány különböző hibajavítás is elérhetővé vált.
 
 ### <a name="12106-released-on-march-27-2018"></a>1.21.0.6 Kiadás dátuma: 2018. március 27.
 
@@ -510,7 +509,7 @@ Ebben a kiadásban egy új szolgáltatás és két hibajavítás szerepel. Kösz
 
 #### <a name="features"></a>Szolgáltatások
 
-Számos megkérdezett ügyfelünk azt mondta: Remek lenne, ha az emulátort szkriptekkel lehetne vezérelni. Ezért a jelen kiadásban hozzáadtunk néhány szkriptképességet. Az emulátor mostantól tartalmaz egy PowerShell-modult az indításhoz, a leállításhoz, az állapot lekéréséhez és az eltávolításhoz: `Microsoft.Azure.CosmosDB.Emulator`. 
+Számos megkérdezett ügyfelünk kihangsúlyozta, hogy remek lenne, ha az emulátort szkriptekkel lehetne vezérelni. Ezért a jelen kiadásban hozzáadtunk néhány szkriptképességet. Az emulátor mostantól tartalmaz egy PowerShell-modult az indításhoz, a leállításhoz, az állapot lekéréséhez és az eltávolításhoz: `Microsoft.Azure.CosmosDB.Emulator`. 
 
 ### <a name="120911-released-on-january-26-2018"></a>1.20.91.1 Kiadás dátuma: 2018. január 26.
 
@@ -529,7 +528,7 @@ Ebben az oktatóanyagban a következőket hajtotta végre:
 > * Behívta az emulátort a parancssorból
 > * Profilelemzési fájlokat gyűjtött össze
 
-Ebben az oktatóanyagban megtudta, hogyan használhatja a helyi emulátort ingyenes helyi fejlesztéshez. Most továbbléphet a következő oktatóanyagra, amelyben megismerheti, hogyan exportálhatja az emulátor SSL-tanúsítványait. 
+Ebben az oktatóanyagban azt ismertettük, hogyan használhatja a helyi emulátort ingyenes helyi fejlesztési feladatokhoz. Most továbbléphet a következő oktatóanyagra, amelyben megismerheti, hogyan exportálhatja az emulátor SSL-tanúsítványait. 
 
 > [!div class="nextstepaction"]
 > [Az Azure Cosmos DB Emulator tanúsítványok exportálása](local-emulator-export-ssl-certificates.md)

@@ -1,63 +1,63 @@
 ---
-title: Egyszerű alkalmazás létrehozása két szándékkal – Azure | Microsoft Docs
-description: Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre egy egyszerű LUIS-alkalmazást két szándékkal és entitások nélkül a kimondott felhasználói szövegek azonosításához.
+title: '1. oktatóanyag: Szándékok keresése egyéni LUIS-alkalmazásban'
+titleSuffix: Azure Cognitive Services
+description: Hozzon létre egy egyéni alkalmazást, amely előrejelzi a felhasználók szándékát. Ez az alkalmazás a legegyszerűbb típusú LUIS-alkalmazás, mert a kimondott szövegből nem nyer ki különféle adatelemeket, például e-mail-címeket vagy dátumokat.
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: tutorial
-ms.date: 08/02/2018
+ms.date: 09/09/2018
 ms.author: diberry
-ms.openlocfilehash: 3f23ade2b0256c72c344e2a619227a79e3c79a47
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: b229dbc90f3f6ecc226c88ee393114f233bcf1a2
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44160115"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47035406"
 ---
-# <a name="tutorial-1-build-app-with-custom-domain"></a>Oktatóanyag: 1. Egyéni tartományt használó alkalmazás létrehozása
-Ebben az oktatóanyagban létrehozunk egy alkalmazást, amely bemutatja, hogyan használhatja a **szándékokat** a felhasználó _szándékának_ meghatározásához az alkalmazás számára elküldött kimondott szöveg (szöveg) alapján. Amikor végzett, egy felhőben futó LUIS-végponttal fog rendelkezni.
+# <a name="tutorial-1-build-custom-app-to-determine-user-intentions"></a>1. oktatóanyag: Egyéni alkalmazás létrehozása felhasználói szándék meghatározására
 
-Ez az alkalmazás a legegyszerűbb típusú LUIS-alkalmazás, mert nem nyer ki adatokat a kimondott szövegekből. Kizárólag a felhasználó szándékát határozza meg a kimondott szöveg alapján.
+Ebben az oktatóanyagban létrehoz egy egyéni Emberi erőforrások (HR) alkalmazást, amely előrejelzi a felhasználók szándékát a kimondott szöveg alapján. Amikor végzett, egy felhőben futó LUIS-végponttal fog rendelkezni.
 
-<!-- green checkmark -->
+Az alkalmazás célja a beszélgetések természetes nyelvű szövegei által kifejezett szándék meghatározása. Ezek különféle **szándékokként** vannak csoportosítva. Az alkalmazás rendelkezik szándékokkal. Az első szándék (**`GetJobInformation`**) azonosítja, amikor egy felhasználó a vállalatnál meghirdetett állásokkal kapcsolatban szeretne információt kapni. A második szándék (**`None`**) a felhasználó azon kimondott szövegeit jelöli, amelyek az alkalmazás _tartományán_ (hatókörén) kívül esnek. Később hozzáadunk egy harmadik szándékot is (**`ApplyForJob`**), amely az állásokra való jelentkezéssel kapcsolatos kimondott szövegekre vonatkozik. Ez a harmadik szándék más, mint a `GetJobInformation`, mivel az állásra jelentkező felhasználók már ismerik az állással kapcsolatos információkat. Azonban a szóhasználattól függően nehéz lehet meghatározni, melyik szándékról van szó, hiszen mindkettő állással kapcsolatos.
+
+Miután a LUIS visszaadja a JSON-választ, a LUIS nem foglalkozik tovább a kéréssel. A LUIS nem ad választ a felhasználók kimondott szövegeire, csak azonosítja a természetes nyelven kért információ típusát. 
+
+**Ebben az oktatóanyagban az alábbiakkal fog megismerkedni:**
+
 > [!div class="checklist"]
-> * Új alkalmazás létrehozása az emberi erőforrások (HR) tartományához 
-> * A GetJobInformation szándék hozzáadása
-> * Kimondott példaszövegek hozzáadása a GetJobInformation szándékhoz 
-> * Alkalmazás betanítása és közzététele
-> * Alkalmazás végpontjának lekérdezése a LUIS által visszaadott JSON-válasz megtekintéséhez
-> * Az ApplyForJob szándék hozzáadása
-> * Kimondott példaszövegek hozzáadása az ApplyForJob szándékhoz 
-> * Betanítás, közzététel és végpont ismételt lekérdezése 
+> * Új alkalmazás létrehozása 
+> * Szándékok létrehozása
+> * Példa kimondott szövegek hozzáadása
+> * Alkalmazás betanítása
+> * Alkalmazás közzététele
+> * Szándék lekérése végpontból
 
 [!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
-## <a name="purpose-of-the-app"></a>Az alkalmazás célja
-Az alkalmazás rendelkezik szándékokkal. Az első szándék (**`GetJobInformation`**) azonosítja, amikor egy felhasználó a vállalatnál meghirdetett állásokkal kapcsolatban szeretne információt kapni. A második szándék (**`None`**) az összes többi típusú kimondott szöveget azonosítja. A rövid útmutató későbbi szakaszában hozzáadunk egy harmadik szándékot is: `ApplyForJob`. 
-
 ## <a name="create-a-new-app"></a>Új alkalmazás létrehozása
-1. Jelentkezzen be a [LUIS](luis-reference-regions.md#luis-website) webhelyére. Győződjön meg arról, hogy abban a [régióban](luis-reference-regions.md#publishing-regions) jelentkezik be, ahol közzé szeretné tenni a LUIS-végpontokat.
 
-2. A [LUIS](luis-reference-regions.md#luis-website) webhelyén válassza a **Create new app** (Új alkalmazás létrehozása) lehetőséget.  
+1. Jelentkezzen be a LUIS portálra a [https://www.luis.ai](https://www.luis.ai) URL-címen. 
 
-    [![](media/luis-quickstart-intents-only/app-list.png "A Saját alkalmazások oldal képernyőképe")](media/luis-quickstart-intents-only/app-list.png#lightbox)
+2. Válassza a **Create new app** (Új alkalmazás létrehozása) lehetőséget.  
 
-3. Az előugró párbeszédpanelen írja be a következő nevet: `HumanResources`. Ez az alkalmazás a vállalat emberi erőforrások részlegével kapcsolatos kérdéseket fedi le. Az ilyen típusú részleg a foglalkoztatással kapcsolatos ügyeket intézi, például a betöltendő pozíciókat a vállalatnál.
+    [![](media/luis-quickstart-intents-only/app-list.png "A Language Understanding (LUIS) My Apps (Saját alkalmazások) lapjának képernyőképe")](media/luis-quickstart-intents-only/app-list.png#lightbox)
+
+3. Az előugró párbeszédpanelen írja be a következő nevet: `HumanResources`. Hagyja meg az alapértelmezett kulturális környezet, amely az **English** (angol). A leírást hagyja üresen.
 
     ![LUIS – új alkalmazás](./media/luis-quickstart-intents-only/create-app.png)
 
-4. Amikor a folyamat befejeződött, az alkalmazás megjeleníti az **Intents** (Szándékok) lapot és rajta a **None** szándékot. 
+    Ezután az alkalmazás megjeleníti az **Intents** (Szándékok) lapot és rajta a **None** szándékot.
 
-## <a name="create-getjobinformation-intention"></a>A GetJobInformation szándék létrehozása
-1. Válassza a **Create new intent** (Új szándék létrehozása) lehetőséget. Adja meg az új szándék nevét: `GetJobInformation`. A rendszer erre a szándékra következtet, ha a felhasználó a vállalatnál elérhető állásokról szeretne információt kapni.
+## <a name="getjobinformation-intent"></a>A GetJobInformation szándék
 
-    ![](media/luis-quickstart-intents-only/create-intent.png "Az Új szándék párbeszédablak képernyőképe")
+1. Válassza a **Create new intent** (Új szándék létrehozása) lehetőséget. Adja meg az új szándék nevét: `GetJobInformation`. A rendszer ezt a szándékot jelzi előre, ha a felhasználó a vállalatnál elérhető állásokról szeretne információt kapni.
 
-    A szándék létrehozásával azt az információkategóriát hozza létre, amelyet azonosítani szeretne. A kategória elnevezése lehetővé teszi, hogy a LUIS lekérdezési eredményeit használó egyéb alkalmazások is használják ezt a kategórianevet a megfelelő válasz megkereséséhez. A LUIS nem válaszol ezekre a kérdésekre, csak azonosítja a természetes nyelven kért információ típusát. 
+    ![](media/luis-quickstart-intents-only/create-intent.png "A Language Understanding (LUIS) New intent (Új szándék) párbeszédablakának képernyőképe")
 
-2. Adjon hozzá hét kimondott szöveget ehhez a szándékhoz, amelyet a felhasználók várhatóan használni fognak, például:
+2. _Kimondott példaszövegek_ megadásával betaníthatja a LUIS-t arra, milyen típusú kimondott szövegeket kell előre jeleznie ehhez a szándékhoz. Ehhez a szándékhoz számos olyan kimondott példaszöveget is hozzáadhat, amelyet a felhasználók várhatóan használni fognak, például:
 
     | Példák kimondott szövegekre|
     |--|
@@ -71,9 +71,17 @@ Az alkalmazás rendelkezik szándékokkal. Az első szándék (**`GetJobInformat
 
     [![](media/luis-quickstart-intents-only/utterance-getstoreinfo.png "Új kimondott szövegek megadásának képernyőképe a MyStore szándékhoz")](media/luis-quickstart-intents-only/utterance-getstoreinfo.png#lightbox)
 
-3. A LUIS-alkalmazásnak jelenleg nincsenek kimondott szövegei a **None** szándékhoz. Olyan kimondott szövegekre van szüksége, amelyekre az alkalmazás nem válaszol. Ne hagyja üresen a szándékot. A bal oldali panelen válassza az **Intents** (Szándékok) lehetőséget. 
+    [!include[Do not use too few utterances](../../../includes/cognitive-services-luis-too-few-example-utterances.md)]    
 
-4. Válassza ki a **None** szándékot. Adjon hozzá három olyan kimondott szöveget, amelyet a felhasználó beírhat, de az alkalmazás számára nem releváns. Ha az alkalmazás a meghirdetett állásokkal kapcsolatos, akkor jó példák lehetnek **None** kimondott szövegre a következők:
+
+## <a name="none-intent"></a>A None szándék 
+Az ügyfélalkalmazásnak tudnia kell, ha egy kimondott szöveg az alkalmazás tárgyán kívül esik. Ha a LUIS a **None** szándékot adja vissza egy kimondott szöveghez, az ügyfélalkalmazás meg tudja kérdezni, hogy a felhasználó be szeretné-e fejezni a beszélgetést. Az ügyfélalkalmazás további iránymutatásokat is adhat a beszélgetés folytatásához, ha a felhasználó azt szeretné. 
+
+Ezeket a tárgyon kívül eső kimondott példaszövegeket a rendszer a **None** szándékba csoportosítja. Ne hagyja üresen a szándékot. 
+
+1. A bal oldali panelen válassza az **Intents** (Szándékok) lehetőséget.
+
+2. Válassza ki a **None** szándékot. Adjon meg három olyan kimondott szöveget, amelyet a felhasználó megadhat, de az Emberi erőforrások alkalmazás nem fog foglalkozni velük. Ha az alkalmazás a meghirdetett állásokkal kapcsolatos, akkor példák lehetnek **None** kimondott szövegre a következők:
 
     | Példák kimondott szövegekre|
     |--|
@@ -81,25 +89,24 @@ Az alkalmazás rendelkezik szándékokkal. Az első szándék (**`GetJobInformat
     |Rendeljen nekem egy pizzát|
     |Pingvinek az óceánban|
 
-    Ha a LUIS-t hívó alkalmazásban, például egy csevegőrobotban a LUIS a **None** szándékot adja vissza egy kimondott szöveghez, a robot meg tudja kérdezni, hogy a felhasználó be szeretné-e fejezni a beszélgetést. A csevegőrobot további iránymutatásokat is adhat a beszélgetés folytatásához, ha a felhasználó azt szeretné. 
 
-## <a name="train-and-publish-the-app"></a>Az alkalmazás betanítása és közzététele
+## <a name="train"></a>Betanítás 
 
 [!INCLUDE [LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
 
-## <a name="publish-app-to-endpoint"></a>Alkalmazás közzététele a végponton
+## <a name="publish"></a>Közzététel
 
 [!INCLUDE [LUIS How to Publish steps](../../../includes/cognitive-services-luis-tutorial-how-to-publish.md)] 
 
-## <a name="query-endpoint-for-getjobinformation-intent"></a>Végpont lekérdezése a GetJobInformation szándékhoz
+## <a name="get-intent"></a>Szándék lekérése
 
 1. [!INCLUDE [LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)]
 
-2. Lépjen az URL-cím végéhez, és írja be a következőt: `I'm looking for a job with Natual Language Processing`. Az utolsó lekérdezésisztring-paraméter a `q`, a kimondott szöveg pedig **query**. A kimondott szöveg nem egyezik meg a 4. lépésben található egyik kimondott példaszöveggel sem, ezért tesztnek megfelelő, és a `GetJobInformation` szándékot kell visszaadnia a legmagasabb pontszámot elérő szándékként. 
+2. Lépjen az URL-cím végéhez a címsorban, és írja be a következőt: `I'm looking for a job with Natural Language Processing`. Az utolsó lekérdezésisztring-paraméter a `q`, a kimondott szöveg pedig **query**. A kimondott szöveg nem egyezik meg egyik kimondott példaszöveggel sem, ezért tesztnek megfelelő, és a `GetJobInformation` szándékot kell visszaadnia a legmagasabb pontszámot elérő szándékként. 
 
-    ```
+    ```JSON
     {
-      "query": "I'm looking for a job with Natual Language Processing",
+      "query": "I'm looking for a job with Natural Language Processing",
       "topScoringIntent": {
         "intent": "GetJobInformation",
         "score": 0.8965092
@@ -118,8 +125,12 @@ Az alkalmazás rendelkezik szándékokkal. Az első szándék (**`GetJobInformat
     }
     ```
 
-## <a name="create-applyforjob-intention"></a>Az ApplyForJob szándék létrehozása
-Térjen vissza a LUIS-webhely böngészőlapjára, és hozzon létre egy új, állásra jelentkezési szándékot.
+    Az eredmények között szerepel az alkalmazásban található **összes szándék**, vagyis jelenleg 2 szándék. Az entitások tömbje üres, mert az alkalmazás jelenleg nem rendelkezik entitásokkal. 
+
+    A JSON-eredmény a **`topScoringIntent`** tulajdonságként azonosítja a legmagasabb pontszámot elérő szándékot. Minden pontszám 1 és 0 közé esik, a jobb pontszám 1-hez közelebb található. 
+
+## <a name="applyforjob-intent"></a>Az ApplyForJob szándék
+Térjen vissza a LUIS-webhelyre, és hozzon létre egy új szándékot, amely meghatározza, hogy egy felhasználói kimondott szöveg állásra való jelentkezésről szól-e.
 
 1. Válassza a **Build** (Létrehozás) lehetőséget a jobb felső menüben az alkalmazáskészítéshez való visszatéréshez.
 
@@ -143,15 +154,21 @@ Térjen vissza a LUIS-webhely böngészőlapjára, és hozzon létre egy új, á
 
     A címkézett szándék piros színnel van bekeretezve, mert LUIS nem biztos a szándék helyességében. Az alkalmazás betanítása megtanítja LUIS-t arra, hogy a kimondott szövegek a megfelelő szándékhoz tartoznak. 
 
-    [Betanítás és közzététel](#train-and-publish-the-app) újból. 
+## <a name="train-again"></a>Betanítás újra
 
-## <a name="query-endpoint-for-applyforjob-intent"></a>Végpont lekérdezése az ApplyForJob szándékhoz
+[!include[LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
+
+## <a name="publish-again"></a>Közzététel újra
+
+[!include[LUIS How to Publish steps](../../../includes/cognitive-services-luis-tutorial-how-to-publish.md)] 
+
+## <a name="get-intent-again"></a>Szándék lekérése újra
 
 1. [!INCLUDE [LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)]
 
 2. Az új böngészőablakban az URL-cím végén adja meg a következőt: `Can I submit my resume for job 235986`. 
 
-    ```
+    ```JSON
     {
       "query": "Can I submit my resume for job 235986",
       "topScoringIntent": {
@@ -176,19 +193,15 @@ Térjen vissza a LUIS-webhely böngészőlapjára, és hozzon létre egy új, á
     }
     ```
 
-## <a name="what-has-this-luis-app-accomplished"></a>Milyen műveleteket végzett el a LUIS-alkalmazás?
-Az alkalmazás mindössze néhány szándékkal azonosított egy természetes nyelvi lekérdezést, amely ugyanahhoz a szándékhoz tartozik, csak más szavakkal van megfogalmazva. 
-
-A JSON-eredmény azonosítja a legmagasabb pontszámú szándékot. Minden pontszám 1 és 0 közé esik, a jobb pontszám 1-hez közelebb található. A `GetJobInformation` és a `None` szándék pontszáma sokkal közelebb van a nullához. 
-
-## <a name="where-is-this-luis-data-used"></a>Hol vannak használatban ezek a LUIS-adatok? 
-A LUIS végzett ezzel a kéréssel. A hívó alkalmazás, például egy csevegőrobot, a topScoringIntent eredmény segítségével megkeresheti az információkat (amelyek nem a LUIS-ban vannak tárolva) a kérdés megválaszolásához, vagy befejezheti a beszélgetést. Ezek programozható lehetőségek a robothoz vagy a hívó alkalmazáshoz. Ezt nem végzi el a LUIS. A LUIS csak azt határozza meg, hogy mi a felhasználó szándéka. 
+    Az eredmények között a meglévő szándékok mellett szerepel az új **ApplyForJob** szándék is. 
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 [!INCLUDE [LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
 
 ## <a name="next-steps"></a>További lépések
+
+Ebben az oktatóanyagban létrehozta az Emberi erőforrások (HR) alkalmazást és két szándékot, kimondott példaszövegeket adott az egyes szándékokhoz és a None szándékhoz, valamint betanítást, közzétételt és tesztelést végzett a végponton. Ezek a LUIS-modellek létrehozásának alapvető lépései. 
 
 > [!div class="nextstepaction"]
 > [Előre összeállított szándékok és entitások hozzáadása ehhez az alkalmazáshoz](luis-tutorial-prebuilt-intents-entities.md)

@@ -1,7 +1,7 @@
 ---
-title: Ruby alkalmazás létrehozása és telepítése a Linux App Service-be | Microsoft Docs
-description: Ruby alkalmazások létrehozásának megismerése a Linuxon futó App Service segítségével.
-keywords: azure app service, linux, oss, ruby
+title: Ruby on Rails-alkalmazás létrehozása és üzembe helyezése a Linuxon futó App Service-ben | Microsoft Docs
+description: Ismerje meg egy Ruby on Rails-alkalmazás létrehozásának menetét a Linuxon futó App Service segítségével.
+keywords: azure app service, linux, oss, ruby, rails
 services: app-service
 documentationcenter: ''
 author: SyntaxC4
@@ -16,16 +16,19 @@ ms.topic: quickstart
 ms.date: 08/24/2018
 ms.author: cfowler
 ms.custom: mvc
-ms.openlocfilehash: 729ed8ac4568f5f39fd62fadbc8d4d0e4595f7b8
-ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
+ms.openlocfilehash: 04025998f78843b1cc69acd663681b9563a531bc
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42885289"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47431226"
 ---
-# <a name="create-a-ruby-app-in-app-service-on-linux"></a>Ruby alkalmazás létrehozása a Linux App Service-ben | Microsoft Docs
+# <a name="create-a-ruby-on-rails-app-in-app-service-on-linux"></a>Ruby on Rails-alkalmazás létrehozása a Linuxon futó App Service-ben
 
 A [Linuxon futó Azure App Service](app-service-linux-intro.md) hatékonyan skálázható, önjavító webes üzemeltetési szolgáltatást nyújt. Az alábbi gyors útmutató megmutatja, hogyan készíthet alapszintű [Ruby on Rails](https://rubyonrails.org/) alkalmazást, amelyet aztán Web App on Linux alkalmazásként telepíthet az Azure-ba.
+
+> [!NOTE]
+> A Ruby fejlesztői verem jelenleg csak a Ruby on Railst támogatja. Ha más platformot szeretne használni, például a Sinatrát, olvassa el a [Web App for Containers](https://docs.microsoft.com/azure/app-service/containers/) használatát ismertető rövid útmutatót.
 
 ![Hello-world](./media/quickstart-ruby/hello-world-updated.png)
 
@@ -48,9 +51,16 @@ git clone https://github.com/Azure-Samples/ruby-docs-hello-world
 
 Futtassa helyileg az alkalmazást, hogy lássa, hogyan fog kinézni az Azure-ban üzembe helyezve. Nyisson meg egy terminálablakot, váltson át a `hello-world` könyvtárra, és használja a `rails server` parancsot a kiszolgáló elindításához.
 
+Az első lépés a szükséges gemek telepítése. A minta tartalmaz egy `Gemfile` elemet, így nem Önnek kell megadnia a telepítendő gemeket. Ehhez a következő csomagolót használjuk:
+
+```
+bundle install
+```
+
+Ha a gemek telepítése befejeződött, az alkalmazás indítása csomagolóval történik:
+
 ```bash
-cd hello-world\bin
-rails server
+bundle exec rails server
 ```
 
 Webböngészőjével a `http://localhost:3000` hely megkeresésével helyileg tesztelheti az alkalmazást.

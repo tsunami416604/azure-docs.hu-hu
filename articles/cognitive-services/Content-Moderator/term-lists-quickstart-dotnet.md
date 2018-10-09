@@ -1,66 +1,67 @@
 ---
-title: Az Azure Content Moderator az egyéni kifejezéslisták mérsékelt |} A Microsoft Docs
-description: Az egyéni kifejezés közepes hogyan sorolja fel, .NET-hez készült Azure Content Moderator SDK használatával.
+title: 'Rövid útmutató: Moderálás egyéni kifejezéslistákkal – Content Moderator'
+titlesuffix: Azure Cognitive Services
+description: Bemutatja, hogyan végezhető moderálás egyéni kifejezéslistákkal a Content Moderator SDK for .NET segítségével.
 services: cognitive-services
 author: sanjeev3
-manager: mikemcca
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: content-moderator
-ms.topic: article
+ms.topic: quickstart
 ms.date: 09/10/2018
 ms.author: sajagtap
-ms.openlocfilehash: 55233198c4553f9838036e4eb91cff380af1988d
-ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
-ms.translationtype: MT
+ms.openlocfilehash: c7a9e98444b47b058a17b18ba7d9a7c6b2249ba4
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 09/26/2018
-ms.locfileid: "47182297"
+ms.locfileid: "47223219"
 ---
-# <a name="moderate-with-custom-term-lists-in-net"></a>A .NET-keretrendszerben egyéni kifejezéslisták mérsékelt
+# <a name="quickstart-moderate-with-custom-term-lists-in-net"></a>Rövid útmutató: Moderálás egyéni kifejezéslistákkal a .NET-ben
 
-Az alapértelmezett globális listáját az Azure Content Moderator feltételeket is elegendő legtöbb tartalom moderálása igényei szerint. Azonban szüksége lehet a szervezet adott feltételek képernyőn. Érdemes például versenytárs címkenevek további ellenőrzésre. 
+Az Azure Content Moderator alapértelmezett globális kifejezéslistája a legtöbb tartalommoderálási igénynek megfelel. Azonban szükség lehet bizonyos szervezetspecifikus kifejezések szűrésére is. Például elképzelhető, hogy meg szeretné címkézni az üzleti vetélytársak neveit további ellenőrzés céljából. 
 
-Használhatja a [Content Moderator SDK for .NET](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) egyéni listák a moderálási API használata a feltételek létrehozásához.
+A [Content Moderator SDK for .NET](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) segítségével létrehozhat egyéni listákat a szövegmoderálási API-val való használatra.
 
 > [!NOTE]
-> A maximális korlát **5 kifejezés sorolja fel** az egyes lista **nem haladhatja meg a 10 000 feltételek**.
+> A maximális korlát **5 kifejezéslista**, amelyek egyenként **nem haladhatják meg a 10 000 kifejezést**.
 >
 
-Ez a cikk nyújt információt, és kódminták segítségével .NET-Content Moderator SDK használatának első lépései:
-- Hozzon létre egy listát.
-- Feltételek hozzáadása a listához.
-- Képernyőn elleni egy lista a használati feltételeket.
-- Feltételek törlése egy listáról.
-- Egy lista törölhető.
-- Lista adatainak szerkesztése.
-- Frissítse az index, hogy a lista módosításainak egy új vizsgálatot szerepelnek.
+Ez a cikk ahhoz biztosít információt és kódmintákat, hogy elvégezhesse a következő műveleteket a Content Moderator SDK for .NET segítségével:
+- Lista létrehozása.
+- Kifejezések hozzáadása egy listához.
+- Egy listán szereplő kifejezések szűrése.
+- Kifejezések törlése egy listából.
+- Lista törlése.
+- Listaadatok szerkesztése.
+- Frissítse az indexet, hogy az új beolvasások észleljék a lista módosításait.
 
-Ez a cikk azt feltételezi, hogy már ismeri a Visual Studio és C#.
+Ez a cikk feltételezi, hogy már ismeri a Visual Studiót és a C# nyelvet.
 
-## <a name="sign-up-for-content-moderator-services"></a>Iratkozzon fel a Content Moderator szolgáltatások
+## <a name="sign-up-for-content-moderator-services"></a>Regisztráció a Content Moderator szolgáltatásaiba
 
-A REST API-t vagy az SDK-t a Content Moderator szolgáltatások használata előtt szüksége van egy előfizetési kulcsot.
+Ahhoz, hogy a REST API-n vagy az SDK-n keresztül használhassa a Content Moderator szolgáltatásait, előbb be kell szereznie egy előfizetői azonosítót.
 
-A Content Moderator irányítópultján található az előfizetési kulcs a **beállítások** > **hitelesítő adatok** > **API**  >  **Próbaverziós Ocp-Apim-Subscription-Key**. További információkért lásd: [áttekintése](overview.md).
+Az előfizetői azonosítót a Content Moderator irányítópultján, a **Beállítások** > **Hitelesítő adatok** > **API** > **Trial Ocp-Apim-Subscription-Key** elemnél találja meg. További információkért lásd az [Áttekintést](overview.md).
 
-## <a name="create-your-visual-studio-project"></a>A Visual Studio-projekt létrehozása
+## <a name="create-your-visual-studio-project"></a>Visual Studio-projekt létrehozása
 
-1. Vegyen fel egy új **Console app (.NET Framework)** projektet a megoldáshoz.
+1. Adjon hozzá egy új **Konzolalkalmazás (.NET-keretrendszer)** projektet a megoldáshoz.
 
-1. Adja a projektnek **TermLists**. Jelölje ki a projektet a megoldáshoz egyetlen indítási projektként.
+1. Adja a projektnek a **TermLists** (Kifejezéslisták) nevet. Válassza ki ezt a projektet a megoldás egyedüli kezdőprojektjeként.
 
 ### <a name="install-required-packages"></a>Szükséges csomagok telepítése
 
-A következő, a TermLists projekt NuGet-csomagok telepítéséhez:
+Telepítse a következő NuGet-csomagokat a TermLists projekthez:
 
 - Microsoft.Azure.CognitiveServices.ContentModerator
 - Microsoft.Rest.ClientRuntime
 - Microsoft.Rest.ClientRuntime.Azure
 - Newtonsoft.Json
 
-### <a name="update-the-programs-using-statements"></a>Frissítés a program által utasítások segítségével.
+### <a name="update-the-programs-using-statements"></a>A program „using” utasításainak frissítése
 
-Módosítsa a program által utasítások segítségével.
+Módosítsa a program „using” utasításait.
 
     using Microsoft.Azure.CognitiveServices.ContentModerator;
     using Microsoft.CognitiveServices.ContentModerator;
@@ -71,12 +72,12 @@ Módosítsa a program által utasítások segítségével.
     using System.IO;
     using System.Threading;
 
-### <a name="create-the-content-moderator-client"></a>A Content Moderator ügyfél létrehozása
+### <a name="create-the-content-moderator-client"></a>Content Moderator-ügyfél létrehozása
 
-Adja hozzá a következő kódot a Content Moderator ügyfélbeállítások az előfizetéshez.
+Adja meg a következő kódot, hogy létrehozzon egy Content Moderator-ügyfelet az előfizetéséhez.
 
 > [!IMPORTANT]
-> Frissítés a **AzureRegion** és **CMSubscriptionKey** mezőket a régió azonosítója és az Előfizetés kulcs értékét.
+> Adja meg a régióazonosító és az előfizetői azonosító értékét az **AzureRegion** és a **CMSubscriptionKey** mezőkben.
 
 
     /// <summary>
@@ -121,9 +122,9 @@ Adja hozzá a következő kódot a Content Moderator ügyfélbeállítások az e
         }
     }
 
-### <a name="add-private-properties"></a>Adja hozzá a saját tulajdonságai
+### <a name="add-private-properties"></a>Privát tulajdonságok hozzáadása
 
-Adja hozzá a következő privát tulajdonságok névtérhez TermLists, osztály Program.
+Adja hozzá az alábbi privát tulajdonságokat a TermLists névtér Program osztályához.
 
     /// <summary>
     /// The language of the terms in the term lists.
@@ -142,16 +143,16 @@ Adja hozzá a következő privát tulajdonságok névtérhez TermLists, osztály
     /// </summary>
     private const double latencyDelay = 0.5;
 
-## <a name="create-a-term-list"></a>Hozzon létre egy kifejezéslista
+## <a name="create-a-term-list"></a>Kifejezéslista létrehozása
 
-Az előfizetési időszak lista létrehozása **ContentModeratorClient.ListManagementTermLists.Create**. Az első paraméterként **létrehozás** egy karakterlánc, amely tartalmazza a MIME-típust, amely "application/json" kell lennie. További információkért lásd: a [API-referencia](https://westus2.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f67f). A második paraméter egy **törzs** objektum, amely egy nevet és leírást az új kifejezés listáját tartalmazza.
+Kifejezéslistát a **ContentModeratorClient.ListManagementTermLists.Create** segítségével hozhat létre. A **létrehozás** első paramétere egy sztring, amely egy MIME-típust tartalmaz, ez pedig az „application/json” típus kell, hogy legyen. További információkért lásd az [API-referenciát](https://westus2.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f67f). A második paraméter egy **Törzs** objektum, amely az új kifejezéslista nevét és leírását tartalmazza.
 
-Adja hozzá a következő definice metody névtér TermLists, osztály Program.
+Adja hozzá az alábbi metódusdefiníciót a TermLists névtér Program osztályához.
 
 > [!NOTE]
-> A Content Moderator Szolgáltatáskulcs rendelkezik egy második (RPS) sávszélesség-korlátjának kérelemre, és ha túllépi a korlátot, az SDK kivételt 429 hibakód. 
+> A Content Moderator-szolgáltatáskulcs rendelkezik egy RPS-alapú (kérések másodpercenkénti száma) sebességkorláttal, amelyet ha túllép, az SDK egy 429-es hibakódú kivételt jelez. 
 >
-> Ingyenes szint kulcs esetében egy függő Entitás sebessége.
+> Az ingyenes szint kulcsának a sebességkorlátja egy RPS.
 
     /// <summary>
     /// Creates a new term list.
@@ -177,11 +178,11 @@ Adja hozzá a következő definice metody névtér TermLists, osztály Program.
         }
     }
 
-## <a name="update-term-list-name-and-description"></a>Kifejezés nevének és leírásának frissítése
+## <a name="update-term-list-name-and-description"></a>Kifejezéslista nevének és leírásának frissítése
 
-Az előfizetési időszak adatok frissítése **ContentModeratorClient.ListManagementTermLists.Update**. Az első paraméterként **frissítés** az előfizetési időszak lista azonosítója. A második paraméter egy MIME-típust, amely "application/json" kell lennie. További információkért lásd: a [API-referencia](https://westus2.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f685). A harmadik paraméter egy **törzs** objektum, amely tartalmazza az új nevet és leírást.
+A kifejezéslista adatai a **ContentModeratorClient.ListManagementTermLists.Update** segítségével frissíthetők. A **Frissítés** első paramétere a kifejezéslista azonosítója. A második paraméter egy MIME-típus, ez pedig az „application/json” kell, hogy legyen. További információkért lásd az [API-referenciát](https://westus2.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f685). A harmadik paraméter egy **Törzs** objektum, amely az új nevet és leírást tartalmazza.
 
-Adja hozzá a következő definice metody névtér TermLists, osztály Program.
+Adja hozzá az alábbi metódusdefiníciót a TermLists névtér Program osztályához.
 
     /// <summary>
     /// Update the information for the indicated term list.
@@ -198,9 +199,9 @@ Adja hozzá a következő definice metody névtér TermLists, osztály Program.
         Thread.Sleep(throttleRate);
     }
 
-## <a name="add-a-term-to-a-term-list"></a>Egy kifejezés listához kifejezés hozzáadása
+## <a name="add-a-term-to-a-term-list"></a>Kifejezés hozzáadása kifejezéslistához
 
-Adja hozzá a következő definice metody névtér TermLists, osztály Program.
+Adja hozzá az alábbi metódusdefiníciót a TermLists névtér Program osztályához.
 
     /// <summary>
     /// Add a term to the indicated term list.
@@ -215,9 +216,9 @@ Adja hozzá a következő definice metody névtér TermLists, osztály Program.
         Thread.Sleep(throttleRate);
     }
 
-## <a name="get-all-terms-in-a-term-list"></a>Minden használati lépjen be egy kifejezéslista
+## <a name="get-all-terms-in-a-term-list"></a>Egy kifejezéslista minden kifejezésének lekérése
 
-Adja hozzá a következő definice metody névtér TermLists, osztály Program.
+Adja hozzá az alábbi metódusdefiníciót a TermLists névtér Program osztályához.
 
     /// <summary>
     /// Get all terms in the indicated term list.
@@ -236,13 +237,13 @@ Adja hozzá a következő definice metody névtér TermLists, osztály Program.
         Thread.Sleep(throttleRate);
     }
 
-## <a name="add-code-to-refresh-the-search-index"></a>Adja hozzá a kódot a search-index frissítése
+## <a name="add-code-to-refresh-the-search-index"></a>Kód hozzáadása a keresési index frissítése céljából
 
-A kifejezéslista módosítása után frissíti a search-index része lesz a következő képernyő szövege kifejezés lista használatakor a módosítások. Ez hasonlít hogyan egy keresőmotor, az asztalon (Ha engedélyezve van) és a egy webes keresőmotor folyamatosan frissíti új fájlok és lapok indexét.
+Miután módosít egy kifejezéslistát, frissítse a lista keresési indexét, hogy a rendszer figyelembe vegye a módosításokat, amikor legközelebb szűr egy szöveget a lista használatával. Ez hasonlít arra, ahogy egy asztali keresőmotor (ha engedélyezve van) vagy webes keresőmotor folyamatosan frissíti az indexét, hogy az tartalmazza az új fájlokat és oldalakat.
 
-Frissíti az előfizetési időszak lista keresési indexet **ContentModeratorClient.ListManagementTermLists.RefreshIndexMethod**.
+A kifejezéslista keresési index a **ContentModeratorClient.ListManagementTermLists.RefreshIndexMethod** segítségével frissíthető.
 
-Adja hozzá a következő definice metody névtér TermLists, osztály Program.
+Adja hozzá az alábbi metódusdefiníciót a TermLists névtér Program osztályához.
 
     /// <summary>
     /// Refresh the search index for the indicated term list.
@@ -256,22 +257,22 @@ Adja hozzá a következő definice metody névtér TermLists, osztály Program.
         Thread.Sleep((int)(latencyDelay * 60 * 1000));
     }
 
-## <a name="screen-text-using-a-term-list"></a>Képernyő szövege kifejezés lista használatával
+## <a name="screen-text-using-a-term-list"></a>Szöveg szűrése egy kifejezéslista használatával
 
-A képernyőn az előfizetési időszak lista használatával szöveg **ContentModeratorClient.TextModeration.ScreenText**, amely a következő paramétereket fogadja.
+Szövegek egy adott kifejezéslista alapján való szűrését a **ContentModeratorClient.TextModeration.ScreenText** segítségével lehet elvégezni, amelyhez az alábbi paraméterek tartoznak.
 
-- A feltételek a kifejezéslista nyelve.
-- A MIME-típust, amely "text/html", "szöveg/xml", "szöveg/markdown" vagy "text/plain" lehet.
-- A képernyő szöveg.
-- Logikai érték. Adja meg a mezőben **igaz** automatikus javítási előtt megkötése azt a szöveget.
-- Logikai érték. Adja meg a mezőben **igaz** a személyes azonosításra alkalmas adatok (PII) észlelheti a szövegben.
-- A kifejezés listaazonosító.
+- A kifejezéslistában szereplő kifejezések nyelve.
+- Egy MIME-típus, amely lehet „text/html”, „text/xml”, „text/markdown” vagy „text/plain”.
+- Az átvizsgálandó szöveg.
+- Logikai érték. Ebben a mezőben adja meg az **igaz** értéket a szöveg automatikus javításához az átvizsgálást megelőzően.
+- Logikai érték. Ebben a mezőben adja meg az **igaz** értéket a szövegben található személyes azonosításra alkalmas adatok (PII) észleléséhez.
+- A kifejezéslista azonosítója.
 
-További információkért lásd: a [API-referencia](https://westus2.dev.cognitive.microsoft.com/docs/services/57cf753a3f9b070c105bd2c1/operations/57cf753a3f9b070868a1f66f).
+További információkért lásd az [API-referenciát](https://westus2.dev.cognitive.microsoft.com/docs/services/57cf753a3f9b070c105bd2c1/operations/57cf753a3f9b070868a1f66f).
 
-**ScreenText** adja vissza egy **képernyő** objektum, amely rendelkezik egy **feltételek** tulajdonság, amely felsorolja az összes feltételeit, hogy a Content Moderator, a szűrés észlelhető. Ha a Content Moderator nem talált meg a vonatkozó használati feltételek a szűrés során vegye figyelembe, hogy a **feltételek** vlastnost má hodnotu **null**.
+A **ScreenText** egy **Screen** objektumot ad vissza, amely rendelkezik egy **Terms** tulajdonsággal. Ez felsorolja az összes kifejezést, amelyeket a Content Moderator észlelt a szöveg átvizsgálásakor. Ha a Content Moderator nem talált egyetlen kifejezést sem az átvizsgálás során, akkor a **Terms** tulajdonság értéke **null**.
 
-Adja hozzá a következő definice metody névtér TermLists, osztály Program.
+Adja hozzá az alábbi metódusdefiníciót a TermLists névtér Program osztályához.
 
     /// <summary>
     /// Screen the indicated text for terms in the indicated term list.
@@ -297,17 +298,17 @@ Adja hozzá a következő definice metody névtér TermLists, osztály Program.
         read.Sleep(throttleRate);
     }
 
-## <a name="delete-terms-and-lists"></a>Listák szerződési feltételek törlése
+## <a name="delete-terms-and-lists"></a>Kifejezések és listák törlése
 
-Egy kifejezést vagy egy lista törlése nagyon egyszerű. Az SDK használatával a következő feladatokat végezheti el:
+Egy kifejezés vagy egy lista törlése nagyon egyszerű. Az SDK segítségével végezhetők el a következő feladatok:
 
 - Egy kifejezés törlése. (**ContentModeratorClient.ListManagementTerm.DeleteTerm**)
-- A lista összes használati törlése a lista törlése nélkül. (**ContentModeratorClient.ListManagementTerm.DeleteAllTerms**)
-- Törölje a listáját, és annak teljes tartalmát. (**ContentModeratorClient.ListManagementTermLists.Delete**)
+- Egy listán szereplő összes kifejezés törlése a lista törlése nélkül. (**ContentModeratorClient.ListManagementTerm.DeleteAllTerms**)
+- Egy lista törlése annak teljes tartalmával együtt. (**ContentModeratorClient.ListManagementTermLists.Delete**)
 
-### <a name="delete-a-term"></a>Kifejezés törlése
+### <a name="delete-a-term"></a>Egy kifejezés törlése
 
-Adja hozzá a következő definice metody névtér TermLists, osztály Program.
+Adja hozzá az alábbi metódusdefiníciót a TermLists névtér Program osztályához.
 
     /// <summary>
     /// Delete a term from the indicated term list.
@@ -322,9 +323,9 @@ Adja hozzá a következő definice metody névtér TermLists, osztály Program.
         Thread.Sleep(throttleRate);
     }
 
-### <a name="delete-all-terms-in-a-term-list"></a>Egy kifejezés lista összes feltételek törlése
+### <a name="delete-all-terms-in-a-term-list"></a>Egy kifejezéslista összes kifejezésének törlése
 
-Adja hozzá a következő definice metody névtér TermLists, osztály Program.
+Adja hozzá az alábbi metódusdefiníciót a TermLists névtér Program osztályához.
 
     /// <summary>
     /// Delete all terms from the indicated term list.
@@ -338,9 +339,9 @@ Adja hozzá a következő definice metody névtér TermLists, osztály Program.
         Thread.Sleep(throttleRate);
     }
 
-### <a name="delete-a-term-list"></a>Kifejezés listájának törlése
+### <a name="delete-a-term-list"></a>Egy kifejezéslista törlése
 
-Adja hozzá a következő definice metody névtér TermLists, osztály Program.
+Adja hozzá az alábbi metódusdefiníciót a TermLists névtér Program osztályához.
 
     /// <summary>
     /// Delete the indicated term list.
@@ -354,9 +355,9 @@ Adja hozzá a következő definice metody névtér TermLists, osztály Program.
         Thread.Sleep(throttleRate);
     }
 
-## <a name="putting-it-all-together"></a>A teljes kép
+## <a name="putting-it-all-together"></a>Végső összeállítás
 
-Adja hozzá a **fő** metódus TermLists, névtér-definíciót a Program osztályhoz. Végül zárja be a Program osztályt, valamint a TermLists névteret.
+Adja hozzá a **Main** metódusdefiníciót a TermLists névtér Program osztályához. Végül zárja be a Program osztályt és a TermLists névteret.
 
     static void Main(string[] args)
     {
@@ -392,9 +393,9 @@ Adja hozzá a **fő** metódus TermLists, névtér-definíciót a Program osztá
         }
     }
 
-## <a name="run-the-application-to-see-the-output"></a>A kimenet megtekintéséhez az alkalmazás futtatása
+## <a name="run-the-application-to-see-the-output"></a>Futtassa az alkalmazást a kimenet megtekintéséhez
 
-A kimenet a következő sorokban lesz, de az adatok eltérőek lehetnek.
+A kimenet az alábbihoz hasonló lesz, de eltérő adatokkal.
 
     Creating term list.
     Term list created. ID: 252.
@@ -426,4 +427,4 @@ A kimenet a következő sorokban lesz, de az adatok eltérőek lehetnek.
     
 ## <a name="next-steps"></a>További lépések
 
-Első a [Content Moderator .NET SDK-val](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) és a [Visual Studio-megoldás](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/ContentModerator) ennél és a többi a Content Moderator rövid útmutató a .NET-hez, és az integrációval kapcsolatos első lépések.
+Szerezze be a kapcsolódó [Content Moderator .NET SDK-t](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) és [Visual Studio-megoldást](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/ContentModerator) a .NET-es Content Moderator ezen és további rövid útmutatóihoz, hogy nekikezdhessen az integrációnak.

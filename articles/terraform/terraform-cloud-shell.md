@@ -9,12 +9,12 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 10/19/2017
-ms.openlocfilehash: 107a6dd82465ce1455a3c2922c8f9cba6b73dd64
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: a5f44edf201ce9a2e2c0da6b5da9031958a11fdc
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43667962"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46959308"
 ---
 # <a name="terraform-cloud-shell-development"></a>Cloud Shell-alapú Terraform-fejlesztések 
 
@@ -45,7 +45,7 @@ A Cloud Shell az `azurerm` szükséges értékeit környezeti változókon keres
 
 A fájlok és a rendszerhéj-állapotok megmaradnak az Azure Storage-ben a Cloud Shell-munkamenetek között. Az [Azure Storage Explorer](/azure/vs-azure-tools-storage-manage-with-storage-explorer) használatával másolhatja és töltheti fel a fájlokat a helyi számítógépről a Cloud Shellbe.
 
-Az Azure CLI 2.0 elérhető a Cloud Shellben, és igen jól használható a konfigurációk tesztelésére és az elvégzett munka ellenőrzésére a `terraform apply` és `terraform destroy` parancsok végrehajtása után.
+Az Azure CLI elérhető a Cloud Shellben, és igen jól használható a konfigurációk tesztelésére és az elvégzett munka ellenőrzésére a `terraform apply` és `terraform destroy` parancsok végrehajtása után.
 
 
 ## <a name="next-steps"></a>További lépések

@@ -1,20 +1,21 @@
 ---
-title: 'Rövid útmutató: Modell módosítása és LUIS-alkalmazás betanítása PHP használatával – Azure Cognitive Services | Microsoft Docs'
+title: Rövid PHP-útmutató – modell módosítása és LUIS-alkalmazás betanítása
+titleSuffix: Azure Cognitive Services
 description: Ebben a rövid PHP-útmutatóban kimondott példaszövegeket ad egy otthonautomatizálási alkalmazáshoz, és betanítja az alkalmazást. A kimondott példaszövegek szándékhoz rendelt beszélgetésre szánt felhasználói szövegek. A szándékok kimondott példaszövegeinek megadásával megtanítja a LUIS-t arra, hogy milyen típusú felhasználói szöveg mely szándékhoz tartozik.
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: quickstart
-ms.date: 08/24/2018
+ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: 31840f34b99bbb474776ce81a7f87df94a0e338e
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: c2f2343b889166a9fe7ea9356ee82620dba27d08
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44156987"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47034269"
 ---
 # <a name="quickstart-change-model-using-php"></a>Rövid útmutató: Modell módosítása a PHP használatával 
 

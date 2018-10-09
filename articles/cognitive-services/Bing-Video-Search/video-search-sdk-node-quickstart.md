@@ -1,44 +1,44 @@
 ---
-title: Videó keresési SDK csomópont gyors üzembe helyezés |} Microsoft Docs
-description: Videó keresési SDK Konzolalkalmazás beállítása.
-titleSuffix: Azure cognitive services
+title: 'Rövid útmutató: Bing Video Search SDK, Node'
+titleSuffix: Azure Cognitive Services
+description: A Bing Video Search SDK konzolalkalmazás beállítása.
 services: cognitive-services
 author: mikedodaro
-manager: rosh
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-video-search
-ms.topic: article
+ms.topic: quickstart
 ms.date: 02/12/2018
-ms.author: v-gedod
-ms.openlocfilehash: 5718c750288e0a5605db3296d2911cca5e03375c
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
-ms.translationtype: MT
+ms.author: rosh
+ms.openlocfilehash: 4dcc9220d4d38bfe34514edd6a3ad47c7a7d4ba8
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "35349783"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47225616"
 ---
-# <a name="video-search-sdk-node-quickstart"></a>Videó keresési SDK csomópont gyors üzembe helyezés
+# <a name="quickstart-bing-video-search-sdk-with-node"></a>Rövid útmutató: Bing Video Search SDK Node használatával
 
-A Bing videó keresési SDK tartalmazza a REST API videó lekérdezések és elemzési eredmények funkcióit. 
+A Bing Video Search SDK a REST API funkcióit biztosítja a videolekérdezésekhez és az eredmények elemzéséhez. 
 
-A [forráskód csomópont Bing videó keresési SDK minták](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/blob/master/Samples/videoSearch.js) érhető el a Git központ.
+A [Node Bing Video Search SDK-minták forráskódja](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/blob/master/Samples/videoSearch.js) elérhető a GitHubon.
 
 ## <a name="application-dependencies"></a>Alkalmazásfüggőségek
 
-Egy konzolalkalmazást, a Bing videó keresési SDK használatával beállításához futtassa `npm install azure-cognitiveservices-videosearch` a fejlesztői környezetben.
+Ha a Bing Video Search SDK-val szeretne beállítani egy konzolalkalmazást, futtassa a fejlesztési környezetben a következőt: `npm install azure-cognitiveservices-videosearch`.
 
-## <a name="video-search-client"></a>Videó keresési ügyfél
-Első egy [kognitív szolgáltatások hozzáférési kulcs](https://azure.microsoft.com/try/cognitive-services/) alatt *keresési*. Hozzon létre egy példányát a `CognitiveServicesCredentials`:
+## <a name="video-search-client"></a>Video Search-ügyfél
+A [Cognitive Services hozzáférési kulcsát](https://azure.microsoft.com/try/cognitive-services/) a *Keresés* területen kérheti le. Hozza létre a `CognitiveServicesCredentials` egy példányát:
 ```
 const CognitiveServicesCredentials = require('ms-rest-azure').CognitiveServicesCredentials;
 let credentials = new CognitiveServicesCredentials('YOUR-ACCESS-KEY');
 ```
-Az ügyfél ezután példányosítható:
+Ezután példányosítsa az ügyfelet:
 ```
 const VideoSearchAPIClient = require('azure-cognitiveservices-videosearch');
 let client = new VideoSearchAPIClient(credentials);
 ```
-Keresési eredmények.
+Keressen rá az eredményekre.
 ```
 client.videosOperations.search('Interstellar Trailer').then((result) => {
     console.log(result.value);
@@ -57,4 +57,4 @@ The code prints `result.value` items to the console without parsing any text. Th
 
 ## <a name="next-steps"></a>További lépések
 
-[Kognitív szolgáltatások Node.js SDK-minták](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples)
+[Cognitive Services Node.js SDK-minták](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples)

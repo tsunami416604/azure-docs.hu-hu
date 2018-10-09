@@ -1,22 +1,23 @@
 ---
-title: Rövid útmutató – Természetes nyelvű szöveg elemzése a Language Understanding (LUIS) szolgáltatásban PHP nyelven – Cognitive Services – Azure Cognitive Services | Microsoft Docs
+title: Rövid PHP-útmutató – szándék előrejelzése – LUIS
+titleSuffix: Azure Cognitive Services
 description: Ebben a rövid útmutatóban elérhető nyilvános LUIS-alkalmazással határozza meg egy felhasználó szándékát egy beszélgetés szövegéből. PHP nyelven küldje el szövegként a felhasználó szándékát a nyilvános alkalmazás HTTP-előrejelzési végpontjára. A LUIS a végpontnál a nyilvános alkalmazás modelljét alkalmazza a természetes nyelvű szövegen a jelentés elemzése érdekében, amellyel meghatározza az általános szándékot, valamint kinyeri az alkalmazás témájában releváns adatokat.
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: quickstart
-ms.date: 08/23/2018
+ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: 80d9371cc36ca9ab6b25e79a78e15b7445f0084d
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: 87c37de611056c5672ed0910afdd344325a0c6f7
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44160268"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47036895"
 ---
-# <a name="quickstart-analyze-text-using-php"></a>Rövid útmutató: Szövegelemzés PHP használatával
+# <a name="quickstart-get-intent-using-php"></a>Rövid útmutató: Szándék lekérése a PHP használatával
 
 [!INCLUDE [Quickstart introduction for endpoint](../../../includes/cognitive-services-luis-qs-endpoint-intro-para.md)]
 
@@ -35,11 +36,11 @@ ms.locfileid: "44160268"
 
 [!INCLUDE [Use authoring key for endpoint](../../../includes/cognitive-services-luis-qs-endpoint-get-key-para.md)]
 
-## <a name="analyze-text-with-browser"></a>Elemzés böngészővel
+## <a name="get-intent-with-browser"></a>Szándék lekérése böngészővel
 
 [!INCLUDE [Use authoring key for endpoint](../../../includes/cognitive-services-luis-qs-endpoint-browser-para.md)]
 
-## <a name="analyze-text-with-php"></a>Szövegelemzés PHP használatával 
+## <a name="get-intent-programmatically"></a>Szándék lekérése programozott módon 
 
 A PHP-vel hozzáférhet ugyanazokhoz az eredményekhez, amelyeket a böngészőablakban látott az előző lépésben. 
 
@@ -49,7 +50,7 @@ A PHP-vel hozzáférhet ugyanazokhoz az eredményekhez, amelyeket a böngészőa
 
 2. A `"YOUR-KEY"` helyére írja be a végpont kulcsát.
 
-3. Futtassa a PHP-alkalmazást a(z) `php endpoint-call.php` használatával. Megjelenik a korábban a böngészőablakban látott JSON.
+3. Futtassa a PHP-alkalmazást a `php endpoint-call.php` használatával. Megjelenik a korábban a böngészőablakban látott JSON.
 
 ## <a name="luis-keys"></a>LUIS-kulcsok
 

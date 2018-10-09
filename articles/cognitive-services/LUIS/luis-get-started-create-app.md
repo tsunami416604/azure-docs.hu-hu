@@ -1,20 +1,21 @@
 ---
-title: Az első Language Understanding- (LUIS-) alkalmazás létrehozása 10 perc alatt – Cognitive Services LUIS | Microsoft Docs
-description: Ebben a rövid útmutatóban egy LUIS-alkalmazást hoz létre, amely az előre összeállított `HomeAutomation` tartományt használja a világítás és a berendezések be- és kikapcsolásához. Ez az előre összeállított tartomány szándékokat, entitásokat és kimondott szövegek példáit tartalmazza. Amikor végzett, egy felhőben futó LUIS-végponttal fog rendelkezni.
+title: Az első LUIS-alkalmazás létrehozása 10 perc alatt
+titleSuffix: Azure Cognitive Services
+description: Hozzon létre egy LUIS-alkalmazást, amely az előre összeállított `HomeAutomation` tartományt használja a világítás és a berendezések be- és kikapcsolásához. Ez az előre összeállított tartomány szándékokat, entitásokat és kimondott szövegek példáit tartalmazza. Amikor végzett, egy felhőben futó LUIS-végponttal fog rendelkezni.
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: quickstart
-ms.date: 08/22/2018
+ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: 457f23936dec0cf85e9aebbf3e54bba37c2f3ca3
-ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
+ms.openlocfilehash: 12a660b49d1a81865c34ceda38f041de9be31eb1
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/23/2018
-ms.locfileid: "43769941"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47037473"
 ---
 # <a name="quickstart-use-prebuilt-home-automation-app"></a>Rövid útmutató: Előre összeállított otthonautomatizálási alkalmazás használata
 
@@ -54,11 +55,7 @@ A tartomány sikeres hozzáadása után az előre összeállított tartomány me
 
 ## <a name="intents-and-entities"></a>Szándékok és entitások
 
-A bal oldali navigációs ablaktáblán válassza az **Intents** (Szándékok) elemet a Home Automation-tartomány leképezéseinek megtekintéséhez. 
-
-[ ![](media/luis-quickstart-new-app/home-automation-intents.png "A szándékok listájának képernyőképe, a táblában a szándéknevek kiemelve")](media/luis-quickstart-new-app/home-automation-intents.png)
-
-Minden szándék kimondottszöveg-mintákkal rendelkezik.
+A bal oldali navigációs ablaktáblán válassza az **Intents** (Szándékok) elemet a Home Automation-tartomány leképezéseinek megtekintéséhez. Minden szándék kimondottszöveg-mintákkal rendelkezik.
 
 > [!NOTE]
 > A **None** (Nincs) az összes LUIS-alkalmazásban szereplő szándék. Olyan kimondott szövegek kezelésére szolgál, amelyek nem felelnek meg az alkalmazás által nyújtott funkcióknak. 
@@ -67,11 +64,9 @@ Válassza a **HomeAutomation.TurnOff** szándékot. Láthatja, hogy a szándék 
 
 [![](media/luis-quickstart-new-app/home-automation-turnon.png "A HomeAutomation.TurnOff szándék képernyőképe")](media/luis-quickstart-new-app/home-automation-turnon.png)
 
-## <a name="train-your-app"></a>Az alkalmazás betanítása
+## <a name="train-the-luis-app"></a>A LUIS-alkalmazás betanítása
 
-A felső navigációs ablakban válassza a **Betanítás** elemet.
-
-[![](media/luis-quickstart-new-app/trained.png "A HomeAutomation.TurnOff szándék képernyőképe zöld, sikert jelölő értesítéssel")](media/luis-quickstart-new-app/trained.png)
+[!include[LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
 
 ## <a name="test-your-app"></a>Az alkalmazás tesztelése
 Miután betanította az alkalmazását, tesztelheti is. A felső navigációs ablakban válassza a **Test** (Tesztelés) elemet. Írjon be egy kimondott tesztszöveget (például „A világítás kikapcsolása”) az Interaktív tesztelés ablaktáblán, és nyomja le az Enter billentyűt. 
@@ -89,29 +84,23 @@ Ebben a példában „A világítás kikapcsolását” a rendszer helyesen azon
 
 Válassza ismét a **Test** (Tesztelés) gombot a tesztpanel összecsukásához. 
 
-## <a name="publish-your-app"></a>Az alkalmazás közzététele
-A felső navigációs ablakban válassza a **Publish** (Közzététel) elemet. 
+<a name="publish-your-app"></a>
 
-[![](media/luis-quickstart-new-app/publish.png "Az alkalmazás képernyőképe a kiemelt Publish (Közzététel) gombbal")](media/luis-quickstart-new-app/publish.png)
+## <a name="publish-the-app-to-get-the-endpoint-url"></a>Az alkalmazás közzététele a végpont URL-címének lekéréshez
 
-Válasza a Production (Termelés) helyet, és kattintson a **Publish** (Közzététel) gombra.
+[!include[LUIS How to Publish steps](../../../includes/cognitive-services-luis-tutorial-how-to-publish.md)]
 
-A felül lévő zöld értesítési sáv jelzi, hogy az alkalmazás közzététele sikerült.
+## <a name="query-the-endpoint-with-a-different-utterance"></a>A végpont lekérdezése egy másik kimondott szöveggel
 
-[![](media/luis-quickstart-new-app/published.png "Az alkalmazás képernyőképe a sikeres közzétételről szóló értesítéssel")](media/luis-quickstart-new-app/published.png)
+1. [!include[LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)] 
 
-A sikeres közzététel után a **Publish app** (Alkalmazás közzététele) lapon megjelenő végponti URL-címet használhatja.
+2. Lépjen az URL-cím végéhez, és írja be a következőt: `turn off the living room light`, majd nyomja le az Enter billentyűt. A böngésző megjeleníti a HTTP-végpont JSON-válaszát.
 
-[![](media/luis-quickstart-new-app/endpoint.png "A Publish (Közzététel) lap képernyőképe a kiemelt végponti URL-címmel")](media/luis-quickstart-new-app/endpoint.png)
-
-## <a name="use-your-app"></a>Az alkalmazás használata
-A létrejött URL-lel tesztelheti a közzétett végpontot egy böngészőben. Nyissa meg ezt az URL-címet egy böngészőben, és állítsa be a „&q” URL-paramétert a tesztlekérdezéshez. Adja például a `turn off the living room light` szöveget az URL végéhez, majd nyomja le az Enter billentyűt. A böngésző megjeleníti a HTTP-végpont JSON-válaszát.
-
-
-[![](media/luis-quickstart-new-app/turn-off-living-room.png "A böngésző képernyőképe, amelyen a JSON-eredmény a TurnOff szándékot észleli")](media/luis-quickstart-new-app/turn-off-living-room.png)
-
+    [![](media/luis-quickstart-new-app/turn-off-living-room.png "A böngésző képernyőképe, amelyen a JSON-eredmény a TurnOff szándékot észleli")](media/luis-quickstart-new-app/turn-off-living-room.png)
+    
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
-Ha már nincs rá szükség, törölje a LUIS-alkalmazást. Ehhez válassza az alkalmazáslistában az alkalmazás neve mellett jobbra található három pontot (***...***), majd a **Delete** (Törlés) lehetőséget. A **Delete app?** (Törli az alkalmazást?) előugró párbeszédpanelen válassza az **OK** lehetőséget.
+
+[!include[LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
 
 ## <a name="next-steps"></a>További lépések
 

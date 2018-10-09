@@ -1,69 +1,70 @@
 ---
-title: Kereskedelmi katalógus moderálás a gépi tanulási és az Azure Content moderátor AI |} Microsoft Docs
-description: A gépi tanulási és AI automatikusan mérsékelt kereskedelmi katalógusok
+title: 'Oktatóanyag: Elektronikus kereskedelmi katalógusok moderálása – Content Moderator'
+titlesuffix: Azure Cognitive Services
+description: Automatikusan moderálhat elektronikus kereskedelmi katalógusokat gépi tanulással és mesterséges intelligenciával.
 services: cognitive-services
 author: sanjeev3
-manager: mikemcca
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: content-moderator
-ms.topic: article
+ms.topic: tutorial
 ms.date: 09/25/2017
 ms.author: sajagtap
-ms.openlocfilehash: 6177758eaa3e611ad67da0778d889df48b052d90
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
-ms.translationtype: MT
+ms.openlocfilehash: 2405ba9087e63b57c7bd6bc6f290cdafacaf7a49
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37095751"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47227350"
 ---
-# <a name="ecommerce-catalog-moderation-with-machine-learning"></a>Kereskedelmi katalógus moderálás machine Learning segítségével
+# <a name="tutorial-ecommerce-catalog-moderation-with-machine-learning"></a>Oktatóanyag: Elektronikus kereskedelmi katalógusok moderálása gépi tanulással
 
-Ez az oktatóanyag azt megtudhatja, hogyan gép támogatású AI technológiák kombinálásával emberi moderálás arra, hogy egy intelligens termékkatalógus-rendszert a machine learning-alapú intelligens kereskedelmi katalógus moderálás végrehajtásához.
+Ebben az oktatóanyagban megismerheti, hogyan valósítható meg az elektronikus kereskedelmi katalógusok gépi tanuláson alapuló intelligens moderálása a gépi támogatású MI-technológiák és az emberi moderálás ötvözésével egy intelligens katalógusrendszer biztosítása érdekében.
 
-![Minősített Termékképek](images/tutorial-ecommerce-content-moderator.PNG)
+![Besorolt termékképek](images/tutorial-ecommerce-content-moderator.PNG)
 
-## <a name="business-scenario"></a>Üzleti forgatókönyv
+## <a name="business-scenario"></a>Vállalati forgatókönyv
 
-Gép támogatású technológiák használatával besorolt és közepes szintű Termékképek ezekben a kategóriákban található:
+Gépi támogatású technológiákat használhat a termékképek következő kategóriákba történő besorolásához és moderálásához:
 
 1. Felnőtt (meztelenség)
-2. Ellopható (kétértelmű)
-3. Celebrities
-4. USA jelzők
+2. Kényes (kétértelmű)
+3. Hírességek
+4. Amerikai zászlók
 5. Játékok
-6. Toll
+6. Tollak
 
-## <a name="tutorial-steps"></a>Oktatóanyag lépései
+## <a name="tutorial-steps"></a>Az oktatóanyag lépései
 
-Az oktatóanyag végigvezeti a felhasználót az alábbi lépéseket:
+Az oktatóanyag a következő lépéseken vezeti végig:
 
-1. Regisztráció és a tartalom moderátor csoportot létrehozni.
-2. Konfigurálja a lehetséges celebrity és jelző tartalom moderálás címkék (címke).
-3. Tartalom moderátor kép API segítségével ellenőrizze a lehetséges felnőtt és ellopható tartalmát.
-4. A számítógép Látástechnológiai API segítségével ellenőrizze a lehetséges celebrities.
-5. Az egyéni stratégiai szolgáltatás segítségével ellenőrizze a lehetséges jelenlétével jelzők.
-6. Jelenleg a nuanced vizsgálat eredményeit, emberi áttekintésre és végső révén.
+1. Regisztráció, és egy Content Moderator-csapat létrehozása.
+2. Moderálási címkék (feliratok) konfigurálása a lehetséges „híresség” és „zászló” tartalomhoz.
+3. A Content Moderator Image API-jának használata a lehetséges felnőtteknek szóló és kényes tartalom keresésére.
+4. A Computer Vision API használata a lehetséges hírességek keresésére.
+5. A Custom Vision Service használata zászlók lehetséges jelenlétének keresésére.
+6. Az árnyalt vizsgálati eredmények bemutatása emberi felülvizsgálathoz és végső döntéshozatalhoz.
 
-## <a name="create-a-team"></a>A csoport létrehozása
+## <a name="create-a-team"></a>Csapat létrehozása
 
-Tekintse meg a [gyors üzembe helyezés](quick-start.md) tartalom moderátor regisztrálhat és a csoport létrehozása lapon. Megjegyzés: a **Csoportazonosító** a a **hitelesítő adatok** lap.
+A [rövid útmutatóban](quick-start.md) szereplő lépéseket követve regisztráljon a Content Moderatorba, és hozzon létre egy csapatot. Jegyezze fel a **Csapatazonosító** **Hitelesítő adatok** oldalon látható értékét.
 
 
-## <a name="define-custom-tags"></a>Egyéni címkék megadása
+## <a name="define-custom-tags"></a>Egyéni címkék meghatározása
 
-Tekintse meg a [címkék](https://docs.microsoft.com/azure/cognitive-services/content-moderator/review-tool-user-guide/tags) cikk egyéni címkék megadása. A beépített mellett **felnőtt** és **ellopható** címkéket, az új címkék lehetővé teszik a felülvizsgálati eszközzel címkékkel leíró neveket.
+Tekintse meg a [címkékkel](https://docs.microsoft.com/azure/cognitive-services/content-moderator/review-tool-user-guide/tags) foglalkozó cikket az egyéni címkék hozzáadásához. A beépített **felnőtt** és **kényes** címkék mellett az új címkék lehetővé teszik, hogy a felülvizsgálati eszköz megjelenítse a címkék leíró nevét.
 
-Ebben az esetben ezeket az egyéni címkéket meghatároztuk (**celebrity**, **jelző**, **velünk**, **játék**, **toll**):
+Esetünkben az alábbi egyéni címkéket határozzuk meg (**celebrity**, **flag**, **us**, **toy**, **pen**):
 
 ![Egyéni címkék konfigurálása](images/tutorial-ecommerce-tags2.PNG)
 
-## <a name="list-your-api-keys-and-endpoints"></a>Az API-kulcsokat és a végpontok felsorolása
+## <a name="list-your-api-keys-and-endpoints"></a>Az API-kulcsok és -végpontok listázása
 
-1. Az oktatóanyag három API-k és tartozó kulcsok és API-végpontok használja.
-2. Az API-végpontok eltérőek aszerint a előfizetés régiók és a tartalom moderátor tekintse át a csapat azonosítója.
+1. Az oktatóanyag három API-t, valamint a hozzájuk tartozó kulcsokat és API-végpontokat használja.
+2. Az API-végpontok eltérőek az előfizetés régiója és Content Moderator felülvizsgálati csapatának azonosítója szerint.
 
 > [!NOTE]
-> Az oktatóanyag célja, hogy előfizetés-kulcsok használata a régiókban, a következő végpontok látható. Győződjön meg arról, az API-kulcsokat, és a régió, egyébként pedig a kulcsok nem működnek együtt a következő végpontok URI kereséséhez:
+> Az oktatóanyag az előfizetési kulcsoknak a következő végpontokban látható régiókban való használatára lett tervezve. Győződjön meg arról, az API-kulcsok megfelelnek a régió URI-jaihoz, különben előfordulhat, hogy a kulcsok nem működnek a következő végpontokkal:
 
          // Your API keys
         public const string ContentModeratorKey = "XXXXXXXXXXXXXXXXXXXX";
@@ -76,12 +77,12 @@ Ebben az esetben ezeket az egyéni címkéket meghatároztuk (**celebrity**, **j
         public const string ComputerVisionUri = "https://westcentralus.api.cognitive.microsoft.com/vision/v1.0";
         public const string CustomVisionUri = "https://southcentralus.api.cognitive.microsoft.com/customvision/v1.0/Prediction/XXXXXXXXXXXXXXXXXXXX/url";
 
-## <a name="scan-for-adult-and-racy-content"></a>Felnőtt és ellopható tartalom keresése
+## <a name="scan-for-adult-and-racy-content"></a>Felnőtteknek szóló és kényes tartalom keresése
 
-1. A függvény argumentuma egy kép URL-CÍMÉT és a kulcs-érték párokból álló tömb paraméterekként.
-2. Meghívja a tartalom moderátor kép API a felnőtt és Racy pontszámok eléréséhez.
-3. Ha az érték nagyobb, mint 0,4 (tartomány: 0 és 1), azt az értéket állít be a **ReviewTags** a tömb **igaz**.
-4. A **ReviewTags** tömb jelöljön ki a megfelelő címkét a felülvizsgálati eszköz használatával.
+1. A függvény egy kép URL-jét és kulcs-érték párok egy tömbjét veszi fel paraméterként.
+2. A Content Moderator Image API-jának meghívásával lekéri a „felnőtt” és „kényes” besorolás pontszámát.
+3. Ha a pontszám 0,4-nél nagyobb (a 0–1 tartományban), a **ReviewTags** tömbben **True** értéket állít be.
+4. A **ReviewTags** tömb a megfelelő címkének a felülvizsgálati eszközben való kiemelésére szolgál.
 
         public static bool EvaluateAdultRacy(string ImageUrl, ref KeyValuePair[] ReviewTags)
         {
@@ -119,17 +120,17 @@ Ebben az esetben ezeket az egyéni címkéket meghatároztuk (**celebrity**, **j
             return response.IsSuccessStatusCode;
         }
 
-## <a name="scan-for-celebrities"></a>Celebrities vizsgálata
+## <a name="scan-for-celebrities"></a>Hírességek keresése
 
-1. Regisztráljon egy [ingyenes próbaverzió](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision) , a [számítógép Látástechnológiai API](https://azure.microsoft.com/services/cognitive-services/computer-vision/).
-2. Kattintson a **API-kulcs beolvasása** gombra.
+1. Regisztráljon a [Computer Vision API](https://azure.microsoft.com/services/cognitive-services/computer-vision/) [ingyenes próbaverziójára](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision).
+2. Kattintson az **API-kulcs beszerzése** gombra.
 3. Fogadja el a feltételeket.
-4. A bejelentkezés, választhat a rendelkezésre álló internetes fiókjai.
-5. Megjegyzés: az API-kulcsokat, a szolgáltatás lapon jelenik meg.
+4. A bejelentkezéshez válasszon az elérhető internetes fiókok listájáról.
+5. Jegyezze fel a szolgáltatás oldalán megjelenő API-kulcsokat.
     
-   ![Számítógép Látástechnológiai API-kulcsokat](images/tutorial-computer-vision-keys.PNG)
+   ![Computer Vision API-kulcsok](images/tutorial-computer-vision-keys.PNG)
     
-6. Tekintse meg a projekt forráskódot, a függvény, amely megvizsgálja a kép és a számítógép Látástechnológiai API-t.
+6. A képet a Computer Vision API-val vizsgáló függvénnyel kapcsolatban tekintse meg a projekt forráskódját.
 
          public static bool EvaluateComputerVisionTags(string ImageUrl, string ComputerVisionUri, string ComputerVisionKey, ref KeyValuePair[] ReviewTags)
         {
@@ -156,13 +157,13 @@ Ebben az esetben ezeket az egyéni címkéket meghatároztuk (**celebrity**, **j
             return Response.IsSuccessStatusCode;
         }
 
-## <a name="classify-into-flags-toys-and-pens"></a>Jelző, játékok és toll besorolása
+## <a name="classify-into-flags-toys-and-pens"></a>Besorolás a zászlók, játékok és tollak kategóriába
 
-1. [Jelentkezzen be a](https://azure.microsoft.com/en-us/services/cognitive-services/custom-vision-service/) számára a [egyéni Látástechnológiai API előzetes](https://www.customvision.ai/).
-2. Használja a [gyors üzembe helyezés](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/getting-started-build-a-classifier) hozhat létre az egyéni osztályozó jelzők, játékok és toll lehetséges észleléséhez.
-   ![Egyéni stratégiai képzési lemezképek](images/tutorial-ecommerce-custom-vision.PNG)
-3. [Az előrejelzés végpont URL-cím beszerzése](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/use-prediction-api) az egyéni osztályozó.
-4. Tekintse meg a projekt forráskódban a függvényt, amely meghívja a egyéni osztályozó előrejelzés végpont beolvasni a képet.
+1. [Jelentkezzen be](https://azure.microsoft.com/en-us/services/cognitive-services/custom-vision-service/) a [Custom Vision API előzetes verziójába](https://www.customvision.ai/).
+2. A [rövid útmutató](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/getting-started-build-a-classifier) segítségével hozza létre az egyéni besorolót a zászlók, játékok és tollak lehetséges jelenlétének észleléséhez.
+   ![Egyéni vizuális képzési képek](images/tutorial-ecommerce-custom-vision.PNG)
+3. [Kérje le az előrejelzési végpont URL-címét](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/use-prediction-api) az egyéni besoroló számára.
+4. Az egyéni besoroló előrejelzési végpontját a kép vizsgálata céljából meghívó függvénnyel kapcsolatban tekintse meg a projekt forráskódját.
 
         public static bool EvaluateCustomVisionTags(string ImageUrl, string CustomVisionUri, string CustomVisionKey, ref KeyValuePair[] ReviewTags)
         {
@@ -180,11 +181,11 @@ Ebben az esetben ezeket az egyéni címkéket meghatároztuk (**celebrity**, **j
             return response.IsSuccessStatusCode;
         }       
  
-## <a name="reviews-for-human-in-the-loop"></a>Emberi hurok értékelést
+## <a name="reviews-for-human-in-the-loop"></a>Emberi beavatkozást igénylő felülvizsgálat
 
-1. A korábbi szakaszokban ellenőrizte a bejövő lemezképek felnőtt és ellopható (tartalom moderátor) celebrities (számítógép stratégiai) és jelzők (egyéni stratégiai).
-2. Az egyeztetés küszöbértékek minden vizsgálat alapján, a nuanced esetekben elérhetővé teszi emberi tekintse át a felülvizsgálati eszközben.
-        nyilvános statikus logikai CreateReview (karakterlánc ImageUrl, KeyValuePair [] metaadatok) {
+1. Az előző szakaszokban megvizsgálta, hogy a bejövő képeken van-e felnőtteknek szóló és kényes tartalom (Content Moderator), híresség (Computer Vision) és zászló (Custom Vision).
+2. Minden egyes keresés egyezési küszöbértéke alapján az árnyalt esetek elérhetővé tehetők emberi felülvizsgálatra a felülvizsgálati eszközben.
+        public static bool CreateReview(string ImageUrl, KeyValuePair[] Metadata) {
 
             ReviewCreationRequest Review = new ReviewCreationRequest();
             Review.Item[0] = new ReviewItem();
@@ -202,11 +203,11 @@ Ebben az esetben ezeket az egyéni címkéket meghatároztuk (**celebrity**, **j
             return response.IsSuccessStatusCode;
         }
 
-## <a name="submit-batch-of-images"></a>A képek kötegelt elküldése
+## <a name="submit-batch-of-images"></a>Képköteg elküldése
 
-1. Ez az oktatóanyag feltételezi, hogy a "C:Test" könyvtár, egy szövegfájlt, amely a kép URL-címek listája.
-2. A következő kódot a fájl keres, és olvassa be az URL-címet a memóriába.
-            Egy teszt címtár kép URL-címek var topdir beolvasásához listáját tartalmazó szövegfájlt keressen = @"C:\test\"; var Urlsfile = topdir +"Urls.txt";
+1. Az oktatóanyag egy „C:Test” könyvtár meglétét feltételezi, amelyben egy szövegfájl tartalmazza a képek URL-jeinek a listáját.
+2. A következő kód ellenőrzi a fájl meglétét, és beolvassa az összes URL-t a memóriába.
+            // Check for a test directory for a text file with the list of Image URLs to scan var topdir = @"C:\test\"; var Urlsfile = topdir + "Urls.txt";
 
             if (!Directory.Exists(topdir))
                 return;
@@ -219,11 +220,11 @@ Ebben az esetben ezeket az egyéni címkéket meghatároztuk (**celebrity**, **j
             // Read all image URLs in the file
             var Urls = File.ReadLines(Urlsfile);
 
-## <a name="initiate-all-scans"></a>Az összes vizsgálat kezdeményezése
+## <a name="initiate-all-scans"></a>Az összes vizsgálatának indítása
 
-1. Ez a legfelső szintű függvény végighalad a azt a korábban említett szövegfájlban szereplő összes kép URL-cím.
-2. Megvizsgálja őket minden egyes API-t, és az egyeztetés abban, hogy pontszám a feltételek, ha létrehozott egy felülvizsgálati emberi moderátorok.
-             az egyes kép URL-címet a fájlban... foreach (var URL-címet az URL-címek) {/ / egy új felülvizsgálati címkék tömb ReviewTags Initiatize = új KeyValuePair [MAXTAGSCOUNT];
+1. Ez a legfelső szintű funkció végighalad a korábban említett szövegfájlban lévő összes kép URL-jén.
+2. Átvizsgálja az API-k mindegyikével, és ha az egyezés megbízhatósági pontszáma a feltételeken belülre esik, létrehoz egy felülvizsgálatot az emberi moderátorok számára.
+             // for each image URL in the file... foreach (var Url in Urls) { // Initiatize a new review tags array ReviewTags = new KeyValuePair[MAXTAGSCOUNT];
 
                 // Evaluate for potential adult and racy content with Content Moderator API
                 EvaluateAdultRacy(Url, ref ReviewTags);
@@ -240,12 +241,12 @@ Ebben az esetben ezeket az egyéni címkéket meghatároztuk (**celebrity**, **j
 
 ## <a name="license"></a>Licenc
 
-Az összes Microsoft kognitív Services SDK-k és minták a MIT licenccel rendelkező licencét. További részletekért lásd: [licenc](https://microsoft.mit-license.org/).
+Az összes Microsoft Cognitive Services SDK és -minta licencelése MIT-licenccel történik. További információ: [LICENC](https://microsoft.mit-license.org/).
 
-## <a name="developer-code-of-conduct"></a>Fejlesztői viselkedési szabályzat
+## <a name="developer-code-of-conduct"></a>Fejlesztői magatartási kódex
 
-A fejlesztők kognitív szolgáltatásokkal, beleértve az ügyféloldali kódtár & minta, hajtsa végre a "fejlesztői kódot, végezze el a Microsoft kognitív szolgáltatások", a következő címen található várhatóan http://go.microsoft.com/fwlink/?LinkId=698895.
+A Cognitive Servicest (beleértve a jelen ügyfélkódtárat és mintát is) használó fejlesztőknek követniük kell a Microsoft Cognitive Services fejlesztőire vonatkozó magatartási kódexben foglaltakat. A dokumentum ezen a címen érhető el: http://go.microsoft.com/fwlink/?LinkId=698895.
 
 ## <a name="next-steps"></a>További lépések
 
-Hozza létre, és az oktatóanyag kiterjesztése használatával a [forrásfájlok projekt](https://github.com/MicrosoftContentModerator/samples-eCommerceCatalogModeration) a Githubon.
+Építse tovább és bővítse az oktatóanyagot a [projektnek a GitHubon elérhető forrásfájljaival](https://github.com/MicrosoftContentModerator/samples-eCommerceCatalogModeration).

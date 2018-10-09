@@ -1,6 +1,6 @@
 ---
-title: Oktatóanyag – Service Fabric Mesh-alkalmazás üzembe helyezése a Service Fabric Mesh szolgáltatásban | Microsoft Docs
-description: Ismerje meg, hogyan tehet közzé egy háttér-webszolgáltatással kommunikáló ASP.NET Core webhelyet tartalmazó Azure Service Mesh-alkalmazást.
+title: Oktatóanyag – Service Fabric Mesh-alkalmazás üzembe helyezése  | Microsoft Docs
+description: Ismerje meg, hogyan tehet közzé egy háttér-webszolgáltatással kommunikáló ASP.NET Core webhelyet tartalmazó Azure Service Mesh-alkalmazást a Visual Studióval.
 services: service-fabric-mesh
 documentationcenter: .net
 author: TylerMSFT
@@ -12,35 +12,35 @@ ms.devlang: dotNet
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 07/26/2018
+ms.date: 09/18/2018
 ms.author: twhitney
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 350749161260768071afbb47b854cb2e9184bd9d
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: 467484824ec3a3ceffb6dfa692953406ed6acc1b
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39284727"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46963321"
 ---
-# <a name="tutorial-deploy-a-service-fabric-mesh-web-application"></a>Oktatóanyag – Service Fabric Mesh-alkalmazás üzembe helyezése
+# <a name="tutorial-deploy-a-service-fabric-mesh-application"></a>Oktatóanyag: Service Fabric Mesh-alkalmazás üzembe helyezése
 
 Ez az oktatóanyag egy sorozat harmadik része, és azt mutatja be, hogyan tehető közzé az Azure Service Fabric Mesh-alkalmazás közvetlenül a Visual Studióból.
 
 Ezen oktatóanyag segítségével megtanulhatja a következőket:
 > [!div class="checklist"]
-> * Az alkalmazás közzététele az Azure-ban.
+> * Alkalmazás közzététele az Azure-ban a Visual Studio használatával.
 > * Az alkalmazás üzembe helyezésének ellenőrzése
 > * Az előfizetésben jelenleg üzembe helyezett összes alkalmazás megtekintése
-> * Alkalmazásnaplók megtekintése
-> * Az alkalmazás által használt erőforrások törlése.
 
 Ebben az oktatóanyag-sorozatban az alábbiakkal ismerkedhet meg:
 > [!div class="checklist"]
-> * [Service Fabric Mesh-webalkalmazás összeállítása](service-fabric-mesh-tutorial-create-dotnetcore.md)
-> * [Helyi hibakeresés az alkalmazásban](service-fabric-mesh-tutorial-debug-service-fabric-mesh-app.md)
-> * Az alkalmazás közzététele az Azure-ban
+> * [Service Fabric Mesh-alkalmazás létrehozása Visual Studióban](service-fabric-mesh-tutorial-create-dotnetcore.md)
+> * [Egy helyi fejlesztési fürtben futó Service Fabric Mesh-alkalmazás hibakeresése](service-fabric-mesh-tutorial-debug-service-fabric-mesh-app.md)
+> * Service Fabric Mesh-alkalmazás üzembe helyezése
+> * [Service Fabric Mesh-alkalmazás frissítése](service-fabric-mesh-tutorial-upgrade.md)
+> * [A Service Fabric Mesh erőforrásainak eltávolítása](service-fabric-mesh-tutorial-cleanup-resources.md)
 
-Megismerheti, hogyan állíthat össze egy ASP.NET webes előtérrendszerrel és egy ASP.NET Core Web API háttérszolgáltatással rendelkező Service Fabric Mesh-alkalmazást. Ezt követően futtathatja az alkalmazás helyi hibakeresését a helyi fejlesztési fürtön, és közzéteheti az alkalmazást az Azure-ban. Így hozzájut egy egyszerű feladatlista-alkalmazáshoz, amely bemutatja a szolgáltatások közti hívás intézését a Service Fabric Mesh-webalkalmazásban.
+[!INCLUDE [preview note](./includes/include-preview-note.md)]
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -62,7 +62,7 @@ Az alkalmazás az `src\todolistapp` könyvtárban található.
 
 ## <a name="publish-to-azure"></a>Közzététel az Azure platformon
 
-A Service Fabric Mesh-projekt Azure-on történő közzétételéhez a Visual Studióban kattintson a jobb gombbal a **ServiceFabricMeshApp** elemre, és válassza a **Közzététel...** lehetőséget.
+A Service Fabric Mesh-projekt Azure-on történő közzétételéhez a Visual Studióban kattintson a jobb gombbal a **todolistapp** elemre, és válassza a **Közzététel...** lehetőséget.
 
 Ekkor megjelenik a **Service Fabric-alkalmazás közzététele** párbeszédpanel.
 
@@ -74,9 +74,9 @@ Az **Erőforráscsoport** területen válassza az **\<Új erőforráscsoport lé
 
 ![A Service Fabric Mesh új párbeszédpanelje a Visual Studióban](./media/service-fabric-mesh-tutorial-deploy-dotnetcore/visual-studio-publish-new-resource-group-dialog.png)
 
-Miután visszatért a **Service Mesh-alkalmazás közzététele** párbeszédpanelhez, az **Azure Container Registry** területen válassza a **\<Create New Container Registry...>** (Tárolóregisztrációs adatbázis létrehozása) lehetőséget. A **Tárolóregisztrációs adatbázis** párbeszédpanelen használjon egyedi nevet a **Tárolóregisztrációs adatbázis neve** elemhez. Adjon meg egy **helyet** (ebben az oktatóanyagban az **USA keleti régiója** szerepel). A legördülő listában válassza ki az előző lépésben létrehozott **Erőforráscsoportot**, például a **sfmeshTutorial1RG** nevűt. Állítsa **Alapszintűre** a **termékváltozatot**, majd a **Létrehozás** elemre kattintva térjen vissza a közzétételi párbeszédpanelhez.
+Miután visszatért a **Service Mesh-alkalmazás közzététele** párbeszédpanelhez, az **Azure Container Registry** területen válassza a **\<Create New Container Registry...>** (Tárolóregisztrációs adatbázis létrehozása) lehetőséget. A **Tárolóregisztrációs adatbázis** párbeszédpanelen használjon egyedi nevet a **Tárolóregisztrációs adatbázis neve** elemhez. Adjon meg egy **helyet** (ebben az oktatóanyagban az **USA keleti régiója** szerepel). A legördülő listában válassza ki az előző lépésben létrehozott **Erőforráscsoportot**, például a **sfmeshTutorial1RG** nevűt. Állítsa **Alapszintűre** a **termékváltozatot**, majd a **Létrehozás** elemre kattintva hozzon létre a privát Azure Container Registryt, és térjen vissza a közzétételi párbeszédpanelhez.
 
-![A Service Fabric Mesh új párbeszédpanelje a Visual Studióban](./media/service-fabric-mesh-tutorial-deploy-dotnetcore/visual-studio-publish-new-container-registry-dialog.png)
+![A Service Fabric Mesh új tárolóregisztrációs adatbázisról szóló párbeszédpanelje a Visual Studióban](./media/service-fabric-mesh-tutorial-deploy-dotnetcore/visual-studio-publish-new-container-registry-dialog.png)
 
 Ha olyan hibaüzenetet kap, hogy egy erőforrás-szolgáltató nincs regisztrálva az előfizetésében, regisztrálhatja azt. Először is nézze meg, hogy az erőforrás-szolgáltató elérhető-e az előfizetése számára:
 
@@ -109,7 +109,6 @@ Nyisson meg egy webböngészőt, és a megadott URL-címen tekintse meg az Azure
 ## <a name="set-up-service-fabric-mesh-cli"></a>A Service Fabric Mesh parancssori felületének beállítása 
 A további lépésekhez használhatja az Azure Cloud Shellt vagy az Azure CLI helyileg telepített példányát. Az Azure Service Fabric Mesh CLI-bővítmény moduljának telepítéséhez kövesse ezeket az [útmutatásokat](service-fabric-mesh-howto-setup-cli.md).
 
-
 ## <a name="check-application-deployment-status"></a>Az alkalmazás üzembe helyezésének ellenőrzése
 
 Mostanra befejeződött az alkalmazás telepítése. A(z) `app show` paranccsal ellenőrizheti az állapotát. 
@@ -124,46 +123,20 @@ az mesh app show --resource-group $rg --name ServiceMeshApp
 
 Az „app list” paranccsal lekérheti az előfizetéséhez üzembe helyezett alkalmazások listáját.
 
-```cli
+```azurecli-interactive
 az mesh app list --output table
 ```
 
-## <a name="see-the-application-logs"></a>Alkalmazásnaplók megtekintése
-
-Vizsgálja meg az üzembe helyezett alkalmazás naplóit:
-
-```azurecli-interactive
-az mesh code-package-log get --resource-group $rg --application-name ServiceMeshApp --service-name todoservice --replica-name 0 --code-package-name ServiceMeshApp
-```
-
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
-
-Ha már nincs szüksége a létrehozott erőforrásokra, törölje az összeset. Mivel az ACR és a Service Fabric Mesh szolgáltatás erőforrásaihoz már létrehozott egy új erőforráscsoportot, ezt az erőforráscsoportot nyugodtan törölheti, és ezzel törli az összes társított erőforrást is.
-
-```azurecli
-az group delete --resource-group sfmeshTutorial1RG
-```
-
-```powershell
-Remove-AzureRmResourceGroup -Name sfmeshTutorial1RG
-```
-
-Az erőforráscsoportot [a portálról](../azure-resource-manager/resource-group-portal.md#delete-resource-group-or-resources) is törölheti. 
-
 ## <a name="next-steps"></a>További lépések
 
-Az oktatóanyag jelen része az alábbiakat ismertette:
+Az oktatóanyag jelen részében megismerkedhetett a következőkkel:
 > [!div class="checklist"]
 > * Az alkalmazás közzététele az Azure-ban.
 > * Az alkalmazás üzembe helyezésének ellenőrzése
 > * Az előfizetésben jelenleg üzembe helyezett összes alkalmazás megtekintése
-> * Alkalmazásnaplók megtekintése
-> * Az alkalmazás által használt erőforrások törlése.
 
-Most, hogy közzétette az Azure-ban a Service Fabric Mesh-alkalmazást, próbálkozzon a következőkkel:
-
-* A szolgáltatások közötti kommunikáció további példájaként ismerje meg a [Szavazóalkalmazás-mintát](https://github.com/Azure-Samples/service-fabric-mesh/tree/master/src/votingapp).
-* Tájékozódjon a [Service Fabric-erőforrásokról](service-fabric-mesh-service-fabric-resources.md).
-* Tájékozódjon a [Cloud Shellről](https://docs.microsoft.com/azure/cloud-shell/overview).
+Folytassa a következő oktatóanyaggal:
+> [!div class="nextstepaction"]
+> [Service Fabric Mesh-alkalmazás frissítése](service-fabric-mesh-tutorial-upgrade.md)
 
 [azure-cli-install]: https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest

@@ -1,6 +1,6 @@
 ---
-title: Belső terheléselosztó létrehozása – klasszikus Azure CLI | Microsoft Docs
-description: Ismerje meg, hogyan hozható létre belső terheléselosztó az Azure parancssori felület használatával a klasszikus üzembehelyezési modellben
+title: Belső terheléselosztó létrehozása – Azure klasszikus CLI | Microsoft Docs
+description: Ismerje meg, hogyan hozható létre belső terheléselosztó az Azure klasszikus CLI használatával a klasszikus üzembehelyezési modellben
 services: load-balancer
 documentationcenter: na
 author: genlin
@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 01/23/2017
+ms.date: 06/18/2018
 ms.author: genli
-ms.openlocfilehash: 8f0ac03ff7b749e47692d03d65502df0a19bb758
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: fb8929b31fa4325b996ddf4c5ec48e4acb0b930a
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38539517"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46966909"
 ---
-# <a name="get-started-creating-an-internal-load-balancer-classic-using-the-azure-cli"></a>Bevezetés a belső terheléselosztó (klasszikus) létrehozásába az Azure parancssori felület használatával
+# <a name="get-started-creating-an-internal-load-balancer-using-the-azure-classic-cli"></a>Bevezetés a belső terheléselosztó létrehozásába az Azure klasszikus CLI felület használatával
 
 > [!div class="op_single_selector"]
 > * [PowerShell](../load-balancer/load-balancer-get-started-ilb-classic-ps.md)
@@ -44,11 +44,11 @@ Belső terheléselosztó készlet, illetve a forgalmukat a készletnek küldő k
 2. Adja hozzá a virtuális gépekhez rendelt végpontokat, amelyek a bejövő forgalmat tudják fogadni.
 3. Konfigurálja úgy a kiszolgálókat, hogy a forgalmat a belső terheléselosztási példány virtuális IP-címére (VIP) küldjék.
 
-## <a name="step-by-step-creating-an-internal-load-balancer-using-cli"></a>Belső terheléselosztó parancssori felület használatával történő létrehozásának lépései
+## <a name="step-by-step-creating-an-internal-load-balancer-using-classic-cli"></a>Belső terheléselosztó a klasszikus CLI használatával történő létrehozásának lépései
 
 Ez az útmutató bemutatja, hogyan hozhat létre belső terheléselosztót a fenti forgatókönyv alapján.
 
-1. Ha még sosem használta az Azure CLI-t, akkor tekintse meg [Install and Configure the Azure CLI](../cli-install-nodejs.md) (Az Azure CLI telepítése és konfigurálása) részt, és kövesse az utasításokat addig a pontig, ahol ki kell választania az Azure-fiókot és -előfizetést.
+1. Ha még sosem használta a klasszikus CLI-t, akkor tekintse meg [Az Azure CLI telepítése és konfigurálása](../cli-install-nodejs.md) részt, és kövesse az utasításokat addig a pontig, ahol ki kell választania az Azure-fiókot és -előfizetést.
 2. Az **azure config mode** parancs futtatásával váltson a klasszikus módra, a lent látható módon.
 
     ```azurecli

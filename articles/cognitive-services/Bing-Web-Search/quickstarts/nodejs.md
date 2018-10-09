@@ -1,23 +1,25 @@
 ---
-title: 'Rövid útmutató: A Bing Web Search API meghívása a Node.js segítségével'
+title: 'Rövid útmutató: Keresés a Node.js használatával – Bing Web Search API'
+titleSuffix: Azure Cognitive Services
 description: Ebből a rövid útmutatóból megtudhatja, hogyan hozhatja létre első Bing Web Search API-hívását a Node.js használatával, majd hogyan fogadhatja a JSON-választ.
 services: cognitive-services
 author: erhopf
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-web-search
 ms.topic: quickstart
-ms.date: 8/16/2018
+ms.date: 9/26/2018
 ms.author: erhopf
-ms.openlocfilehash: 7a46500f7cbf319c788761bccfaa92197ef67490
-ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
+ms.openlocfilehash: debaa63adeb97063d0ea42e1da36352dc2c9c4e7
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42886931"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47405856"
 ---
 # <a name="quickstart-use-nodejs-to-call-the-bing-web-search-api"></a>Rövid útmutató: A Bing Web Search API meghívása a Node.js segítségével  
 
-Ebből a rövid útmutatóból megtudhatja, hogyan hozhatja létre 10 perc alatt az első Bing Web Search API-hívását, majd hogyan fogadhatja a JSON-választ.  
+Ebből a rövid útmutatóból megtudhatja, hogyan hozhatja létre 10 perc alatt az első Bing Web Search API-hívását, majd hogyan fogadhatja a JSON-választ.
 
 [!INCLUDE [bing-web-search-quickstart-signup](../../../../includes/bing-web-search-quickstart-signup.md)]
 
@@ -26,102 +28,120 @@ Ebből a rövid útmutatóból megtudhatja, hogyan hozhatja létre 10 perc alatt
 Az alábbi dolgokra szüksége lesz a rövid útmutató futtatásához:
 
 * A [Node.js 6-os](https://nodejs.org/en/download/) vagy újabb verziója
-* Egy előfizetői azonosító  
+* Egy előfizetői azonosító
 
 ## <a name="create-a-project-and-declare-required-modules"></a>Projekt létrehozása és a szükséges modulok deklarálása
 
-Hozzon létre egy új Node.js-projektet a kedvenc IDE-környezetében vagy szerkesztőjében. Ezután másolja az alábbi kódrészletet a projektjébe. Ez a rövid útmutató kötött módot használ, és szüksége van a `https` modulra az adatok küldéséhez és fogadásához.
+Hozzon létre egy új Node.js-projektet a kedvenc IDE-környezetében vagy szerkesztőjében.
+Ezután másolja az alábbi kódrészletet egy `search.js` nevű fájlba a projektjében.
 
 ```javascript
-// Use strict mode.
-'use strict';
-
-// Require the https module.
-let https = require('https');
+// Use this simple app to query the Bing Web Search API and get a JSON response.
+// Usage: node search.js "your query".
+const https = require('https')
 ```
 
-## <a name="define-variables"></a>Változók meghatározása
+## <a name="set-the-subscription-key"></a>Az előfizetői azonosító megadása
 
-Mielőtt folytatnánk, meg kell adni néhány változót. Ellenőrizze, hogy a `host` és a `path` értéke érvényes-e, és cserélje le a `subscriptionKey` értékét egy érvényes előfizetői azonosítóra az Azure-fiókjából. Nyugodtan testreszabhatja a keresési lekérdezést a `term` értékének lecserélésével.
+Ez a kódrészlet az `AZURE_SUBSCRIPTION_KEY` környezeti változót használja az előfizetői azonosító tárolásához, ami célszerű megoldás az azonosítók véletlen felfedésének megakadályozására a kód telepítése során. [Kattintson ide](https://azure.microsoft.com/try/cognitive-services/my-apis/?apiSlug=search-api-v7) az előfizetői azonosító megkereséséhez.
+
+Amennyiben nem ismeri a környezeti változók használatát, vagy minél előbb futtatni szeretné az alkalmazást, sztringként is lecserélheti a `process.env['AZURE_SUBSCRIPTION_KEY']` értékét az előfizetői azonosítóra.
 
 ```javascript
-// Replace with a valid subscription key.
-let subscriptionKey = 'enter key here';
-
-/*
- * Verify the endpoint URI. If you
- * encounter unexpected authorization errors, double-check this host against
- * the endpoint for your Bing Web search instance in your Azure dashboard.  
- */
-let host = 'api.cognitive.microsoft.com';
-let path = '/bing/v7.0/search';
-let term = 'Microsoft Cognitive Services';
-
-// Validate the subscription key.
-if (subscriptionKey.length === 32) {
-    bing_web_search(term);
-} else {
-    console.log('Invalid Bing Search API subscription key!');
-    console.log('Please paste yours into the source code.');
+const SUBSCRIPTION_KEY = process.env['AZURE_SUBSCRIPTION_KEY']
+if (!SUBSCRIPTION_KEY) {
+  throw new Error('AZURE_SUBSCRIPTION_KEY is not set.')
 }
 ```
 
-## <a name="create-a-response-handler"></a>Válaszkezelő létrehozása
+## <a name="create-a-function-to-make-the-request"></a>Függvény létrehozása a kérés végrehajtásához
 
-Hozzon létre egy kezelőt a válasz sztringekben tárolására és elemzésére. Ahogy azt a következő szakaszban is látni fogja, minden egyes Bing Web Search API-nak szánt kérés indításakor végbemegy a `response_handler` meghívása.
+A függvény egy biztonságos GET kérést hajt végre, és a keresési lekérdezést lekérdezési paraméterként menti az elérési úthoz. Az `encodeURIComponent` az érvénytelen karakterek feloldására szolgál, az előfizetői azonosító átadása pedig a fejlécben történik. A visszahívásra adott [válasz](https://nodejs.org/dist/latest-v10.x/docs/api/http.html#http_class_http_serverresponse) feliratkozik a `data` eseményre a JSON-törzs összesítéséhez, az `error` eseményre az esetleges hibák naplózásához, és az `end` eseményre az üzenet befejezési időpontjának lekéréséhez. Amikor végzett, az alkalmazás kinyomtatja az érdekesebb fejléceket és az üzenet törzsét. Kedve szerint kísérletezhet a színekkel, és beállíthatja a részletességet. `1` részletességgel remek összegzést készíthet a válaszról.
 
 ```javascript
-let response_handler = function (response) {
-    let body = '';
-    response.on('data', function (d) {
-        body += d;
-    });
-    response.on('end', function () {
-        console.log('\nRelevant Headers:\n');
-        for (var header in response.headers)
-            // Headers are lowercased by Node.js.
-            if (header.startsWith("bingapis-") || header.startsWith("x-msedge-"))
-                 console.log(header + ": " + response.headers[header]);
-        // Stringify and parse the response body.
-        body = JSON.stringify(JSON.parse(body), null, '  ');
-        console.log('\nJSON Response:\n');
-        console.log(body);
-    });
-    response.on('error', function (e) {
-        console.log('Error: ' + e.message);
-    });
-};
+function bingWebSearch(query) {
+  https.get({
+    hostname: 'api.cognitive.microsoft.com',
+    path:     '/bing/v7.0/search?q=' + encodeURIComponent(query),
+    headers:  { 'Ocp-Apim-Subscription-Key': SUBSCRIPTION_KEY },
+  }, res => {
+    let body = ''
+    res.on('data', part => body += part)
+    res.on('end', () => {
+      for (var header in res.headers) {
+        if (header.startsWith("bingapis-") || header.startsWith("x-msedge-")) {
+          console.log(header + ": " + res.headers[header])
+        }
+      }
+      console.log('\nJSON Response:\n')
+      console.dir(JSON.parse(body), { colors: false, depth: null })
+    })
+    res.on('error', e => {
+      console.log('Error: ' + e.message)
+      throw e
+    })
+  })
+}
+```
+
+## <a name="get-the-query"></a>A lekérdezés fogadása
+
+A lekérdezés megkereséséhez tekintsük át a program argumentumait. Az első argumentum a csomópont elérési útja, a második a fájlnév, a harmadik pedig a lekérdezés. Ha a lekérdezés argumentuma hiányzik, akkor a „Microsoft Cognitive Services” alapértelmezett lekérdezését használjuk.
+
+```javascript
+const query = process.argv[2] || 'Microsoft Cognitive Services'
 ```
 
 ## <a name="make-a-request-and-print-the-response"></a>Kérés indítása és a válasz megjelenítése
 
-Hozza létre a kérést, és küldjön egy hívást a Bing Web Search API-nak. A kérés indítása után a rendszer meghívja a `response_handler` függvényt, és megjeleníti a választ.
+Most, hogy minden beállítást megadtunk, hívjuk meg a függvényt!
 
 ```javascript
-let bing_web_search = function (search) {
-    console.log('Searching the Web for: ' + term);
-        // Declare the method, hostname, path, and headers.
-        let request_params = {
-            method : 'GET',
-            hostname : host,
-            path : path + '?q=' + encodeURIComponent(search),
-            headers : {
-                'Ocp-Apim-Subscription-Key' : subscriptionKey,
-            }
-        };
-    // Request to the Bing Web Search API.
-    let req = https.request(request_params, response_handler);
-    req.end();
-}
+bingWebSearch(query)
 ```
 
 ## <a name="put-it-all-together"></a>Az alkalmazás összeállítása
 
-Az utolsó lépés a kód futtatása. Ha szeretné összevetni a saját kódját a miénkkel, [a mintakódot megtekintheti a GitHubon](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/nodejs/Search/BingWebSearchv7.js).
+Az utolsó lépés a saját kód futtatása: `node search.js "<your query>"`.
+
+Ha szeretné összevetni a saját kódját a miénkkel, íme az egész program:
+
+```javascript
+const https = require('https')
+const SUBSCRIPTION_KEY = process.env['AZURE_SUBSCRIPTION_KEY']
+if (!SUBSCRIPTION_KEY) {
+  throw new Error('Missing the AZURE_SUBSCRIPTION_KEY environment varable')
+}
+function bingWebSearch(query) {
+  https.get({
+    hostname: 'api.cognitive.microsoft.com',
+    path:     '/bing/v7.0/search?q=' + encodeURIComponent(query),
+    headers:  { 'Ocp-Apim-Subscription-Key': SUBSCRIPTION_KEY },
+  }, res => {
+    let body = ''
+    res.on('data', part => body += part)
+    res.on('end', () => {
+      for (var header in res.headers) {
+        if (header.startsWith("bingapis-") || header.startsWith("x-msedge-")) {
+          console.log(header + ": " + res.headers[header])
+        }
+      }
+      console.log('\nJSON Response:\n')
+      console.dir(JSON.parse(body), { colors: false, depth: null })
+    })
+    res.on('error', e => {
+      console.log('Error: ' + e.message)
+      throw e
+    })
+  })
+}
+const query = process.argv[2] || 'Microsoft Cognitive Services'
+bingWebSearch(query)
+```
 
 ## <a name="sample-response"></a>Mintaválasz
 
-A Bing Web Search API válaszai JSON formátumban érkeznek vissza. A mintaválasz egyetlen eredményre van csonkolva.  
+A Bing Web Search API válaszai JSON formátumban érkeznek vissza. A mintaválasz egyetlen eredményre van csonkolva.
 
 ```json
 {
@@ -157,7 +177,7 @@ A Bing Web Search API válaszai JSON formátumban érkeznek vissza. A mintavála
           },
           {
             "name": "Emotion",
-            "url": "https://www.microsoft.com/cognitive-services/en-us/emotion-api",
+            "url": "https://www.microsoft.com/cognitive-services/emotion-api",
             "snippet": "Cognitive Services Emotion API - microsoft.com"
           },
           {

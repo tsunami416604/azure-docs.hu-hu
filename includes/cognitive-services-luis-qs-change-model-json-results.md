@@ -3,21 +3,21 @@ title: fájl belefoglalása
 description: fájl belefoglalása
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: luis
 ms.topic: include
 ms.custom: include file
 ms.date: 08/16/2018
 ms.author: diberry
-ms.openlocfilehash: e14f29593d588a8b13162b374372b723c50db8e9
-ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
-ms.translationtype: MT
+ms.openlocfilehash: ec178827a2f27a4566f509fe76b58e451329efd4
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42920390"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47044153"
 ---
-A `response` az a példában beszédmódok hozzáadása azt jelzi, hogy sikeres vagy sikertelen tartozó valamennyi példa utterance (kifejezés) a tárolótömb a `hasError` tulajdonság. A következő JSON-válasz jeleníti meg, mindkét beszédmódok hozzáadása sikerült. 
+A kimondott példaszövegek hozzáadására szolgáló `response` tömb a `hasError` tulajdonsággal jelzi, hogy a művelet a kimondott példaszövegek esetében sikeres vagy sikertelen volt. A következő JSON-válasz azt mutatja, hogy mindkét kimondott szöveg hozzáadása sikeres volt. 
 
 ```json
     "response": [
@@ -50,7 +50,7 @@ A következő JSON-ban a betanításra irányuló sikeres kérés eredménye lá
 }
 ```
 
-A következő JSON jeleníti meg a kérelem sikeres képzési állapot. Minden egyes modelID megjelölésű. Minden egyes szándékot helyesen azonosítani a kimondott szöveg tartozik a leképezést, valamint a kimondott szöveg, amely a leképezés nem tartozik az összes megcímkézzen vélik rendelkezik. 
+A következő JSON-ban a betanítási állapotra irányuló sikeres kérés eredménye látható. Minden modelID egy szándékot jelöl. Minden szándékot be kell tanítani minden kimondott szöveggel kapcsolatban, hogy helyesen azonosítani tudják azokat a kimondott szövegeket, amelyek a szándékhoz tartoznak, és azokat is, amelyek nem tartoznak a szándékhoz. 
 
 ```JSON
 [

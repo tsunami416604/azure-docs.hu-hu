@@ -1,98 +1,108 @@
 ---
-title: 'Gyors útmutató: Ismeri fel a beszéd, a C++, a Cognitive Services beszédfelismerő SDK használatával a Windows asztalon'
+title: 'Rövid útmutató: Beszéd felismerése Windowson, C++ nyelven a Cognitive Services Speech SDK segítségével'
 titleSuffix: Microsoft Cognitive Services
-description: Hogyan ismerhetik fel a beszéd, a C++ Windows asztalán a Cognitive Services beszédfelismerő SDK használatával
+description: A beszédfelismerés elsajátítása asztali Windows rendszeren, C++ nyelven a Cognitive Services Speech SDK segítségével
 services: cognitive-services
 author: wolfma61
 ms.service: cognitive-services
 ms.technology: Speech
-ms.topic: article
-ms.date: 07/16/2018
+ms.topic: quickstart
+ms.date: 09/24/2018
 ms.author: wolfma
-ms.openlocfilehash: 9fae855de2a746084f4775f194e04c6dbe09f684
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
-ms.translationtype: MT
+ms.openlocfilehash: e6f8b8f2a3bcdf78de28bddc73502872e851da12
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43127291"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47434296"
 ---
-# <a name="quickstart-recognize-speech-in-c-on-windows-desktop-using-the-speech-sdk"></a>Gyors útmutató: Ismeri fel a beszéd, a C++, a Speech SDK-val a Windows asztalon
+# <a name="quickstart-recognize-speech-in-c-on-windows-by-using-the-speech-sdk"></a>Rövid útmutató: Beszéd felismerése Windowson, C++ nyelven a Speech SDK segítségével
 
 [!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
-C++-alapú Konzolalkalmazás létrehozása, amelyek a beszéd SDK-t használja a Windows asztali ismertetünk.
-Az alkalmazás alapján a [Microsoft Cognitive Services beszédfelismerő SDK NuGet-csomag](https://aka.ms/csspeech/nuget) és a Microsoft Visual Studio 2017-ben.
+Ebben az útmutatóban egy C++ konzolalkalmazást fog létrehozni a Windowshoz. A Cognitive Services [Speech SDK](speech-sdk.md) használatával a számítógép mikrofonjába beszélve valós időben konvertálhat át beszédet szöveggé. Az alkalmazást a [Speech SDK NuGet-csomaggal](https://aka.ms/csspeech/nuget) és a Microsoft Visual Studio 2017-tel (annak bármely kiadásával) lehet összeállítani.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* A beszédfelismerési szolgáltatás egy előfizetési kulcsot. Lásd: [próbálja ki ingyenesen a speech service](get-started.md).
-* Windows rendszerű számítógépek működő mikrofonnal.
-* [A Microsoft Visual Studio 2017](https://www.visualstudio.com/), Community Edition vagy újabb verziója.
-* A **asztali fejlesztés C++ használatával** számítási feladatot a Visual Studióban, és a **NuGet-Csomagkezelő** összetevőt a Visual Studióban.
-  Engedélyezheti a is **eszközök** \> **első eszközök és szolgáltatások**alatt a **számítási feladatok** és **az egyes összetevők** lapok , illetve:
-
-  ![Asztali fejlesztés C++ számítási feladat engedélyezése](media/sdk/vs-enable-cpp-workload.png)
-
-  ![A Visual Studióban NuGet-Csomagkezelő engedélyezése ](media/sdk/vs-enable-nuget-package-manager.png)
+A rövid útmutató elvégzéséhez szüksége van a Speech Service előfizetői azonosítójára, amelyet ingyenesen is beszerezhet. További részletekért tekintse át a [Speech Service ingyenes kipróbálását](get-started.md) ismertető részt.
 
 ## <a name="create-a-visual-studio-project"></a>Visual Studio-projekt létrehozása
 
-A Visual Studio 2017 hozzon létre egy új Visual C++ Windows asztali Windows-Konzolalkalmazást. Az a **új projekt** párbeszédpanelen, a bal oldali ablaktáblán, bontsa ki a **telepített** \> **Visual C++** \> **Windows asztali** majd **Windows-Konzolalkalmazást**. Adja meg a projekt nevére, *helloworld*.
+1. Indítsa el a Visual Studio 2017-et.
 
-![Visual C++ Windows asztali Windows-Konzolalkalmazás létrehozása](media/sdk/qs-cpp-windows-01-new-console-app.png)
+1. Győződjön róla meg, hogy elérhető az **Asztali fejlesztés a C++ segítségével** számítási feladat. A Visual Studio telepítőjének megnyitásához válassza az **Eszközök** > **Eszközök és funkciók beszerzése** elemet a Visual Studio menüsorából. Ha már engedélyezve van ez a számítási feladat, ugorjon a következő lépésre. 
 
-Futtat egy 64 bites Windows telepítésére, ha igény szerint válthat a build platform `x64`:
+    ![A Visual Studio Számítási feladatok lapjának képernyőképe](media/sdk/vs-enable-cpp-workload.png)
 
-![Váltson a build platform x64](media/sdk/qs-cpp-windows-02-switch-to-x64.png)
+    Ha még nincs, jelölje be az **Asztali fejlesztés a C++ segítségével** lehetőség mellett található jelölőnégyzetet. 
 
-## <a name="install-and-reference-the-speech-sdk-nuget-package"></a>Telepítse, és hivatkozni a Speech SDK NuGet-csomag
+1. Ellenőrizze, hogy a **NuGet-csomagkezelő** összetevő elérhető-e. Váltson a Visual Studio telepítési párbeszédpaneljének **Egyéni összetevők** lapjára, és válassza ki a **NuGet-csomagkezelő** lehetőséget, ha még nincs engedélyezve.
 
-A megoldáskezelőben kattintson a jobb gombbal a megoldás, és kattintson a **NuGet-csomagok kezelése megoldáshoz**.
+      ![A Visual Studio Egyéni összetevők lapjának képernyőképe](media/sdk/vs-enable-nuget-package-manager.png)
 
-![Kattintson a jobb gombbal a megoldás NuGet-csomagok kezelése](media/sdk/qs-cpp-windows-03-manage-nuget-packages.png)
+1. Ha engedélyeznie kell a C++ tevékenységprofilt vagy a NuGetet, válassza a **Módosítás** lehetőséget (a párbeszédpanel jobb alsó sarkában). Az új funkciók telepítése eltarthat egy kis ideig. Ha már mindkét funkció engedélyezve van, csak zárja be a párbeszédpanelt.
 
-A jobb felső sarokban található a **csomag forrása** mezőben válassza ki a "Nuget.org".
-Az a **Tallózás** fülre, keressen a "Microsoft.CognitiveServices.Speech" csomag, válassza ki, és ellenőrizze a **projekt** és **helloworld** mezőket jogát, és válassza **Telepítése** telepítheti a helloworld-projektbe.
+1. Hozzon létre egy új Visual C++ asztali Windows-konzolalkalmazást. Először válassza a **Fájl** > **Új** > **Projekt** lehetőséget a menüben. Az **Új projekt** párbeszédpanelen bontsa ki a **Telepítve** > **Visual C++** > **Windows asztali verzió** elemet a bal oldali panelen. Válassza a **Windows-konzolalkalmazás** lehetőséget. A projekt neve legyen *helloworld*.
 
-> [!NOTE]
-> A Cognitive Services beszédfelismerő SDK jelenlegi verziója `0.6.0`.
+    ![Képernyőkép az Új projekt párbeszédpanelről](media/sdk/qs-cpp-windows-01-new-console-app.png)
 
-![Microsoft.CognitiveServices.Speech NuGet-csomag telepítése](media/sdk/qs-cpp-windows-04-nuget-install-0.5.0.png)
+1. Ha 64 bites Windowst használ, a Visual Studio eszköztárában található legördülő menüt használva átválthatja a build platformját `x64` értékre. (A 64 bites Windows rendszer 32 bites alkalmazásokat is képes futtatni, ezért ez nem tartozik az előfeltételek közé.)
 
-A felugró licenc képernyőn fogadja el a licenc:
+    ![A Visual Studio eszköztárának képernyőképe, amelyen kiemelve szerepel az x64-es beállítás](media/sdk/qs-cpp-windows-02-switch-to-x64.png)
 
-![Fogadja el a licencfeltételeket](media/sdk/qs-cpp-windows-05-nuget-license.png)
+1. A Megoldáskezelőben kattintson a jobb gombbal a megoldásra, majd válassza a **Manage NuGet Packages for Solution** (NuGet-csomagok kezelése a megoldáshoz) parancsot.
 
-## <a name="add-the-sample-code"></a>A mintakód hozzáadása
+    ![A Megoldáskezelő képernyőképe, amelyen kiemelve szerepel a Manage NuGet Packages for Solution lehetőség](media/sdk/qs-cpp-windows-03-manage-nuget-packages.png)
 
-1. Cserélje le az alapértelmezett kezdő kódot az alábbi kódra:
+1. A jobb felső sarokban lévő **Package Source** (Csomag forrása) mezőben jelölje ki a **nuget.org** fájlt. Keressen rá a `Microsoft.CognitiveServices.Speech` csomagra, és telepítse a **helloworld** nevű projektbe.
+
+    ![A megoldás csomagjainak kezelésére szolgáló párbeszédpanel képernyőképe](media/sdk/qs-cpp-windows-04-nuget-install-1.0.0.png)
+
+    > [!NOTE]
+    > A Cognitive Services Speech SDK jelenlegi verziója az `1.0.0`.
+
+1. A NuGet-csomag telepítésének indításához fogadja el a képernyőn megjelenő licencet.
+
+    ![A licencelfogadási párbeszédpanel képernyőképe](media/sdk/qs-cpp-windows-05-nuget-license.png)
+
+A csomag telepítése után a Package Manager konzolban egy megerősítési üzenet jelenik meg.
+
+## <a name="add-sample-code"></a>Mintakód hozzáadása
+
+1. Nyissa meg a *helloworld.cpp* forrásfájlt. Cserélje le a kezdeti „include” állítás (`#include "stdafx.h"` vagy `#include "pch.h"`) alatt található teljes kódot a következőre:
 
    [!code-cpp[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/cpp-windows/helloworld/helloworld.cpp#code)]
 
-1. Cserélje le a karakterláncot `YourSubscriptionKey` az előfizetési kulccsal végzett.
+1. Ugyanabban a fájlban cserélje le a `YourSubscriptionKey` sztringet az előfizetői azonosítóra.
 
-1. Cserélje le a karakterláncot `YourServiceRegion` együtt a [régió](regions.md) az előfizetéséhez tartozó (például `westus` az ingyenes próba-előfizetésre).
+1. Cserélje le a `YourServiceRegion` sztringet az előfizetéséhez társított [régióra](regions.md) (ez a `westus` régió, ha az ingyenes próbaverzióra regisztrált).
 
-1. Mentse a módosításokat a projekthez.
+1. Mentse a projekt módosításait.
 
-## <a name="build-and-run-the-sample"></a>A minta létrehozása és futtatása
+## <a name="build-and-run-the-app"></a>Az alkalmazás létrehozása és futtatása
 
-1. Hozza létre az alkalmazást. A menüsávban válassza **összeállítása** > **megoldás fordítása**. A kódot kell fordítási hibák nélkül most:
+1. Hozza létre az alkalmazást. A menüsávon válassza a **Létrehozás** > **Megoldás fordítása** elemet. A kód fordításának hiba nélkül kell végbe mennie.
 
-   ![A build sikeres létrehozása](media/sdk/qs-cpp-windows-06-build.png)
+   ![A Visual Studio képernyőképe, amelyen ki van emelve a Megoldás fordítása lehetőség](media/sdk/qs-cpp-windows-06-build.png)
 
-1. Indítsa el az alkalmazást. A menüsávban válassza **Debug** > **Start Debugging**, vagy nyomja le az **F5**.
+1. Indítsa el az alkalmazást. A menüsávon válassza a **Hibakeresés** > **Hibakeresés indítása** lehetőséget, vagy nyomja le az **F5** billentyűt.
 
-   ![Indítsa el az alkalmazást into hibakeresés](media/sdk/qs-cpp-windows-07-start-debugging.png)
+   ![A Visual Studio képernyőképe, amelyen ki van emelve a Hibakeresés indítása lehetőség](media/sdk/qs-cpp-windows-07-start-debugging.png)
 
-1. A konzolablakban hibaikonra, azaz valami (angolul), és felszólítja a.
-   A felismerés eredményét képernyőn jelennek meg.
+1. Megjelenik egy konzolablak, amely arra kéri Önt, hogy mondjon valamit. Mondjon ki egy angol nyelvű kifejezést vagy mondatot. A rendszer továbbítja a beszédet a Speech Service-be, majd szöveggé alakítja át, amely ugyanabban az ablakban meg is jelenik.
 
-   ![A sikeres felismerés után a konzol kimenete](media/sdk/qs-cpp-windows-08-console-output-release.png)
+   ![Képernyőkép a konzolról a sikeres felismerést követően](media/sdk/qs-cpp-windows-08-console-output-release.png)
 
-[!INCLUDE [Download the sample](../../../includes/cognitive-services-speech-service-speech-sdk-sample-download-h2.md)]
-Keresse meg az ehhez a mintához a `quickstart/cpp-windows` mappát.
+[!INCLUDE [Download this sample](../../../includes/cognitive-services-speech-service-speech-sdk-sample-download-h2.md)]
+A jelen útmutatóban használt mintát a `quickstart/cpp-windows` mappában találja.
 
 ## <a name="next-steps"></a>További lépések
 
-* [A minták letöltése](speech-sdk.md#get-the-samples)
+> [!div class="nextstepaction"]
+> [Szándék felismerése beszédből a C++-hoz készült Speech SDK használatával](how-to-recognize-intents-from-speech-cpp.md)
+
+## <a name="see-also"></a>Lásd még
+
+- [Beszéd fordítása](how-to-translate-speech-csharp.md)
+- [Akusztikai modellek testreszabása](how-to-customize-acoustic-models.md)
+- [Nyelvi modellek testreszabása](how-to-customize-language-model.md)

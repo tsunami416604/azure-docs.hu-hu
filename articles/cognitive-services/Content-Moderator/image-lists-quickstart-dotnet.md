@@ -1,65 +1,66 @@
 ---
-title: Az egyéni rendszerkép listák az Azure Content Moderator mérsékelt |} A Microsoft Docs
-description: Hogyan lehet egyéni rendszerképpel rendelkező közepes sorolja fel, az Azure Content Moderator SDK használatával a .NET-hez.
+title: 'Rövid útmutató: Moderálás egyéni képlistákkal – Content Moderator'
+titlesuffix: Azure Cognitive Services
+description: Bemutatja, hogyan végezhető moderálás egyéni képlistákkal a Content Moderator SDK for .NET segítségével.
 services: cognitive-services
 author: sanjeev3
-manager: mikemcca
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: content-moderator
-ms.topic: article
+ms.topic: quickstart
 ms.date: 09/14/2018
 ms.author: sajagtap
-ms.openlocfilehash: 855d89af70e080e2837fe2c0b66ea66c188dbd61
-ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
-ms.translationtype: MT
+ms.openlocfilehash: 094542bad7ea8e9283d9a07fe620e363be1d0c2e
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 09/26/2018
-ms.locfileid: "47182688"
+ms.locfileid: "47226457"
 ---
-# <a name="moderate-with-custom-image-lists-in-net"></a>Üzletmenetre gyakorolt közepes egyéni rendszerkép listákkal a .NET-ben
+# <a name="quickstart-moderate-with-custom-image-lists-in-net"></a>Rövid útmutató: Moderálás egyéni képlistákkal a .NET-ben
 
-Ez a cikk nyújt információt, és kódminták segítségével történő használatának első lépései a [Content Moderator SDK for .NET](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) való:
-- Hozzon létre egy egyéni rendszerkép
-- Hozzáadhat és eltávolíthat a lemezképek a listából
-- Az összes rendszerkép azonosítóinak beszerzését a listában
-- A lekérésére és frissítésére listametaadatok
-- A lista keresési index frissítése
-- Képernyőképek a listában található rendszerképek ellen
-- Törölje az összes lemezképet a listából
+Ez a cikk ahhoz biztosít információt és kódmintákat, hogy elvégezhesse a következő műveleteket a [Content Moderator SDK for .NET](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) segítségével:
+- Egyéni képlista létrehozása
+- Képek hozzáadása és eltávolítása a listából
+- A listában szereplő összes kép azonosítóinak lekérése
+- A lista metaadatainak lekérése és frissítése
+- A lista keresési indexének frissítése
+- Képek összevetése a listában szereplő képekkel
+- Minden kép törlése a listából
 - Az egyéni lista törlése
 
 > [!NOTE]
-> A maximális korlát **5 kép listák** az egyes lista **nem haladhatja meg a 10 000 lemezképek**.
+> A maximális korlát **5 képlista**, amelyek egyenként **nem haladhatják meg a 10 000 képet**.
 >
 
-Ebben a rövid útmutatóban a konzolalkalmazást szimulálja a feladatokat hajthat végre a képlista API.
+Az oktatóanyagban leírt konzolalkalmazás néhány olyan feladatot szimulál, amelyek a képlista API-val végezhetők el.
 
-Ez a cikk azt feltételezi, hogy már ismeri a Visual Studio és C#.
+Ez a cikk feltételezi, hogy már ismeri a Visual Studiót és a C# nyelvet.
 
-## <a name="sign-up-for-content-moderator-services"></a>Iratkozzon fel a Content Moderator szolgáltatások
+## <a name="sign-up-for-content-moderator-services"></a>Regisztráció a Content Moderator szolgáltatásaiba
 
-A REST API-t vagy az SDK-t a Content Moderator szolgáltatások használata előtt szüksége van egy előfizetési kulcsot.
-Tekintse meg a [rövid](quick-start.md) megtudhatja, hogyan szerezheti be a kulcsot.
+Ahhoz, hogy a REST API-n vagy az SDK-n keresztül használhassa a Content Moderator szolgáltatásait, előbb be kell szereznie egy előfizetői azonosítót.
+[Ebből a rövid útmutatóból](quick-start.md) megtudhatja, hogyan szerezheti be ezt az azonosítót.
 
-## <a name="create-your-visual-studio-project"></a>A Visual Studio-projekt létrehozása
+## <a name="create-your-visual-studio-project"></a>Visual Studio-projekt létrehozása
 
-1. Vegyen fel egy új **Console app (.NET Framework)** projektet a megoldáshoz.
+1. Adjon hozzá egy új **Konzolalkalmazás (.NET-keretrendszer)** projektet a megoldáshoz.
 
-   A mintakód adja a projektnek **ImageLists**.
+   A mintakódban adja a projektnek az **ImageLists** nevet.
 
-1. Jelölje ki a projektet a megoldáshoz egyetlen indítási projektként.
+1. Válassza ki ezt a projektet a megoldás egyedüli kezdőprojektjeként.
 
 ### <a name="install-required-packages"></a>Szükséges csomagok telepítése
 
-A következő NuGet-csomagok telepítéséhez:
+Telepítse az alábbi NuGet-csomagokat:
 
 - Microsoft.Azure.CognitiveServices.ContentModerator
 - Microsoft.Rest.ClientRuntime
 - Newtonsoft.Json
 
-### <a name="update-the-programs-using-statements"></a>Frissítés a program által utasítások segítségével.
+### <a name="update-the-programs-using-statements"></a>A program „using” utasításainak frissítése
 
-Módosítsa a program által utasítások segítségével.
+Módosítsa a program „using” utasításait.
 
     using Microsoft.Azure.CognitiveServices.ContentModerator;
     using Microsoft.CognitiveServices.ContentModerator;
@@ -70,12 +71,12 @@ Módosítsa a program által utasítások segítségével.
     using System.IO;
     using System.Threading;
 
-### <a name="create-the-content-moderator-client"></a>A Content Moderator ügyfél létrehozása
+### <a name="create-the-content-moderator-client"></a>Content Moderator-ügyfél létrehozása
 
-Adja hozzá a következő kódot a Content Moderator ügyfélbeállítások az előfizetéshez.
+Adja meg a következő kódot, hogy létrehozzon egy Content Moderator-ügyfelet az előfizetéséhez.
 
 > [!IMPORTANT]
-> Frissítés a **AzureRegion** és **CMSubscriptionKey** mezőket a régió azonosítója és az Előfizetés kulcs értékét.
+> Adja meg a régióazonosító és az előfizetői azonosító értékét az **AzureRegion** és a **CMSubscriptionKey** mezőkben.
 
 
     /// <summary>
@@ -121,9 +122,9 @@ Adja hozzá a következő kódot a Content Moderator ügyfélbeállítások az e
     }
 
 
-### <a name="initialize-application-specific-settings"></a>Alkalmazás-specifikus beállítások inicializálása
+### <a name="initialize-application-specific-settings"></a>Alkalmazásra jellemző beállítások inicializálása
 
-Adja hozzá a következő osztályok és a statikus mezők a **Program** osztály a program.cs fájlban.
+Adja hozzá a következő osztályokat és statikus mezőket a **Program** osztályhoz a Program.cs fájlban.
 
     /// <summary>
     /// The minimum amount of time, im milliseconds, to wait between calls
@@ -245,12 +246,12 @@ Adja hozzá a következő osztályok és a statikus mezők a **Program** osztál
    
 
 > [!NOTE]
-> A Content Moderator Szolgáltatáskulcs rendelkezik egy második (RPS) sávszélesség-korlátjának kérelemre, és ha túllépi a korlátot, az SDK kivételt 429 hibakód. 
+> A Content Moderator-szolgáltatáskulcs rendelkezik egy RPS-alapú (kérések másodpercenkénti száma) sebességkorláttal, amelyet ha túllép, az SDK egy 429-es hibakódú kivételt jelez. 
 >
-> Ingyenes szint kulcs esetében egy függő Entitás sebessége.
+> Az ingyenes szint kulcsának a sebességkorlátja egy RPS.
 
 
-## <a name="create-a-method-to-write-messages-to-the-log-file"></a>A naplófájl üzeneteket írni metódus létrehozása
+## <a name="create-a-method-to-write-messages-to-the-log-file"></a>Metódus létrehozása üzenetek naplófájlba történő írására
 
 Adja hozzá a **Program** osztályhoz a következő metódust. 
 
@@ -269,7 +270,7 @@ Adja hozzá a **Program** osztályhoz a következő metódust.
         }
     }
 
-## <a name="create-a-method-to-create-the-custom-list"></a>Egyéni lista létrehozása metódus létrehozása
+## <a name="create-a-method-to-create-the-custom-list"></a>Metódus létrehozása egyéni lista létrehozására
 
 Adja hozzá a **Program** osztályhoz a következő metódust. 
 
@@ -296,11 +297,11 @@ Adja hozzá a **Program** osztályhoz a következő metódust.
         return result;
     }
 
-## <a name="create-a-method-to-add-a-collection-of-images-to-the-list"></a>Képek gyűjteménye hozzáadása a listához metódus létrehozása
+## <a name="create-a-method-to-add-a-collection-of-images-to-the-list"></a>Metódus létrehozása egy képgyűjtemény listához való hozzáadására
 
 Adja hozzá a **Program** osztályhoz a következő metódust.
 
-Ez a rövid útmutató nem bemutatják, hogyan lehet a listában található rendszerképek címkékkel. 
+Ez a rövid útmutató nem mutatja be, hogy a listában található képek hogyan láthatók el címkékkel. 
 
     /// <summary>
     /// Adds images to an image list.
@@ -340,7 +341,7 @@ Ez a rövid útmutató nem bemutatják, hogyan lehet a listában található ren
         }
     }
 
-## <a name="create-a-method-to-remove-images-from-the-list"></a>Képek eltávolítása a listából metódus létrehozása
+## <a name="create-a-method-to-remove-images-from-the-list"></a>Metódus létrehozása a képek listából való eltávolítására
 
 Adja hozzá a **Program** osztályhoz a következő metódust. 
 
@@ -375,7 +376,7 @@ Adja hozzá a **Program** osztályhoz a következő metódust.
         }
     }
 
-## <a name="create-a-method-to-get-all-of-the-content-ids-for-images-in-the-list"></a>A listában található rendszerképek lekérése azonosítók tartalom mindegyikét metódus létrehozása
+## <a name="create-a-method-to-get-all-of-the-content-ids-for-images-in-the-list"></a>Metódus létrehozása a listában található összes kép tartalomazonosítójának lekérésére
 
 Adja hozzá a **Program** osztályhoz a következő metódust. 
 
@@ -400,7 +401,7 @@ Adja hozzá a **Program** osztályhoz a következő metódust.
         return result;
     }
 
-## <a name="create-a-method-to-update-the-details-of-the-list"></a>A részletek a lista frissítéséhez metódus létrehozása
+## <a name="create-a-method-to-update-the-details-of-the-list"></a>Metódus létrehozása a lista részleteinek frissítésére
 
 Adja hozzá a **Program** osztályhoz a következő metódust. 
 
@@ -428,7 +429,7 @@ Adja hozzá a **Program** osztályhoz a következő metódust.
         return result;
     }
 
-## <a name="create-a-method-to-retrieve-the-details-of-the-list"></a>A lista adatai olvashatók be metódus létrehozása
+## <a name="create-a-method-to-retrieve-the-details-of-the-list"></a>Metódus létrehozása a lista részleteinek lekérésére
 
 Adja hozzá a **Program** osztályhoz a következő metódust.
 
@@ -453,11 +454,11 @@ Adja hozzá a **Program** osztályhoz a következő metódust.
         return result;
     }
 
-## <a name="create-a-method-to-refresh-the-search-index-of-the-list"></a>A search-index a lista frissítéséhez metódus létrehozása
+## <a name="create-a-method-to-refresh-the-search-index-of-the-list"></a>Metódus létrehozása a lista keresési indexének frissítésére
 
 Adja hozzá a **Program** osztályhoz a következő metódust.
 
-Bármikor listáját, frissítenie kell a keresési index frissítése előtt listájának képernyőképek a használatával.
+Valahányszor frissít egy listát, frissítenie kell a keresési indexét is, mielőtt képeket vetne össze a listával.
 
     /// <summary>
     /// Refreshes the search index for an image list.
@@ -480,7 +481,7 @@ Bármikor listáját, frissítenie kell a keresési index frissítése előtt li
         return result;
     }
 
-## <a name="create-a-method-to-match-images-against-the-list"></a>Képek a lista alapján megfelelő metódus létrehozása
+## <a name="create-a-method-to-match-images-against-the-list"></a>Metódus létrehozása a képek listával való összevetésére
 
 Adja hozzá a **Program** osztályhoz a következő metódust. 
 
@@ -508,7 +509,7 @@ Adja hozzá a **Program** osztályhoz a következő metódust.
         }
     }
 
-## <a name="create-a-method-to-delete-all-images-from-the-list"></a>Az összes rendszerkép törlése a listáról metódus létrehozása
+## <a name="create-a-method-to-delete-all-images-from-the-list"></a>Metódus létrehozása a listában található összes kép törlésére
 
 Adja hozzá a **Program** osztályhoz a következő metódust. 
 
@@ -530,7 +531,7 @@ Adja hozzá a **Program** osztályhoz a következő metódust.
         WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
     }
 
-## <a name="create-a-method-to-delete-the-list"></a>A lista törlése metódus létrehozása
+## <a name="create-a-method-to-delete-the-list"></a>Metódus létrehozása a lista törlésére
 
 Adja hozzá a **Program** osztályhoz a következő metódust. 
 
@@ -552,7 +553,7 @@ Adja hozzá a **Program** osztályhoz a következő metódust.
         WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
     }
 
-## <a name="create-a-method-to-retrieve-ids-for-all-image-lists"></a>Az összes rendszerképlisták azonosítók lekéréséhez metódus létrehozása
+## <a name="create-a-method-to-retrieve-ids-for-all-image-lists"></a>Metódus létrehozása az összes képlista azonosítóinak lekérésére
 
 Adja hozzá a **Program** osztályhoz a következő metódust. 
 
@@ -575,11 +576,11 @@ Adja hozzá a **Program** osztályhoz a következő metódust.
         return result;
     }
 
-## <a name="add-code-to-simulate-the-use-of-an-image-list"></a>Adja hozzá a kódot egy képlista használatának szimulálása
+## <a name="add-code-to-simulate-the-use-of-an-image-list"></a>Kód hozzáadása egy képlista használatának szimulálására
 
-Adja hozzá a következő kódot a **fő** metódust.
+Adja hozzá az alábbi kódot a **Main** metódushoz.
 
-Ez a kód szimulálja számos, a művelet, amely a definiálása és kezelése a listában, valamint listájának képernyőképek a használatával elvégezhető. A naplózási szolgáltatások lehetővé teszi a válaszobjektumok hozta a Content Moderator Service SDK-hívásokat.
+Ez a kód sok olyan műveletet szimulál, amelyet a lista definiálásakor és kezelésekor, illetve a lista képek vizsgálatához történő használatakor hajtana végre. A naplózási szolgáltatásokkal megtekintheti azokat a válaszobjektumokat, amelyeket a Content Moderator szolgáltatásnak intézett SDK-hívások hoztak létre.
 
     // Create the text writer to use for logging, and cache a static reference to it.
     using (StreamWriter outputWriter = new StreamWriter(OutputFile))
@@ -647,10 +648,10 @@ Ez a kód szimulálja számos, a művelet, amely a definiálása és kezelése a
     Console.WriteLine("Press any key to exit...");
     Console.ReadKey();
 
-## <a name="run-the-program-and-review-the-output"></a>Futtassa a programot, és tekintse át a kimenetet
+## <a name="run-the-program-and-review-the-output"></a>A program futtatása és a kimenet áttekintése
 
-A lista azonosítója és a tartalom és más kép minden alkalommal, amikor az alkalmazás futtatásához.
-A naplófájl a program által írt rendelkezik a következő kimenet:
+A listaazonosítók és a képi tartalmak azonosítói az alkalmazás minden egyes futtatásakor különböznek.
+A program által írt naplófájl kimenete a következő:
 
     Creating list MyList.
     Response:
@@ -1069,4 +1070,4 @@ A naplófájl a program által írt rendelkezik a következő kimenet:
 
 ## <a name="next-steps"></a>További lépések
 
-Első a [Content Moderator .NET SDK-val](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) és a [Visual Studio-megoldás](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/ContentModerator) ennél és a többi a Content Moderator rövid útmutató a .NET-hez, és az integrációval kapcsolatos első lépések.
+Szerezze be a kapcsolódó [Content Moderator .NET SDK-t](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) és [Visual Studio-megoldást](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/ContentModerator) a .NET-es Content Moderator ezen és további rövid útmutatóihoz, hogy nekikezdhessen az integrációnak.

@@ -1,54 +1,71 @@
 ---
-title: Oktatóanyag – LUIS-alkalmazás létrehozása adatok kinyeréséhez – Azure | Microsoft Docs
-description: Ebből az oktatóanyagban megismerheti, hogyan hozhat létre egy szándékokat és egyszerű entitást használó egyszerű LUIS-alkalmazást gépi tanulással létrejött adatok kinyeréséhez.
+title: '7. oktatóanyag: Egyszerű entitás kifejezéslistával a LUIS-ban'
+titleSuffix: Azure Cognitive Services
+description: Gépi tanulással létrejött adatok kinyerése kimondott szövegből
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
-ms.component: luis
+ms.component: language-understanding
 ms.topic: tutorial
-ms.date: 08/02/2018
+ms.date: 09/09/2018
 ms.author: diberry
-ms.openlocfilehash: a69ea8ea45a02399b7c6ad22f0dc514ad8537e06
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: 941c29506aa8f17dcb6262495b28dd26e78194d5
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44159656"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47036057"
 ---
-# <a name="tutorial-7-add-simple-entity-and-phrase-list"></a>Oktatóanyag: 7. Egyszerű entitás és kifejezéslista hozzáadása
-Ebben az oktatóanyagban létrehozunk egy alkalmazást, amely bemutatja, hogyan nyerhetők ki gépi tanulással létrejött adatok egy kimondott szövegből az **Egyszerű** entitás használatával.
+# <a name="tutorial-7-extract-names-with-simple-entity-and-phrase-list"></a>7. oktatóanyag: Nevek kinyerése egyszerű entitással és kifejezéslistával
+
+Ebben az oktatóanyagban egy állás nevével kapcsolatos gépi tanulással létrejött adatokat nyer ki egy kimondott szövegből az **Egyszerű** entitás használatával. A kinyerés pontosságának növeléséhez adjon hozzá egy kifejezéslistát az egyszerű entitásra jellemző kifejezésekről.
+
+Ez az oktatóanyag egy új egyszerű entitást vesz fel az állás nevének kinyeréséhez. Az ebben a LUIS-alkalmazásban található egyszerű entitás célja megtanítani a LUIS-nak, hogy mi az állás neve, és hol található meg a kimondott szövegben. A kimondott szöveg állásnevet jelentő része szövegenként változhat a szóhasználat és a kimondott szöveg hossza alapján. A LUIS-nak példákra van szüksége az állások neveire minden állásnevet használó szándékhoz.  
+
+Az egyszerű entitás megfelelő választás az ilyen típusú adatok esetén, amikor:
+
+* Az adatok egyetlen fogalmat alkotnak.
+* Az adatok nincsenek helyesen formázva, mint a reguláris kifejezések.
+* Az adatok nem általánosak, mint a telefonszámok vagy adatok előre összeállított entitásai.
+* Az adatok nem kapcsolódnak ismert szavak listájához, mint a listaentitások.
+* Az adatok nem tartalmaznak más adatelemeket, mint az összetett vagy a hierarchikus entitások.
+
+**Ebben az oktatóanyagban az alábbiakkal fog megismerkedni:**
 
 <!-- green checkmark -->
 > [!div class="checklist"]
-> * Az entitások értelmezése 
-> * Új LUIS-alkalmazás létrehozása az emberi erőforrások (HR) tartományához 
+> * Meglévő oktatóalkalmazás használata
 > * Egyszerű entitás felvétele egy alkalmazásban található állások kinyeréséhez
-> * Alkalmazás betanítása és közzététele
-> * Alkalmazás végpontjának lekérdezése a LUIS által visszaadott JSON-válasz megtekintéséhez
 > * Kifejezéslista hozzáadása az állással kapcsolatos szavak jelének erősítéséhez
-> * Betanítás, alkalmazás közzététele és végpont ismételt lekérdezése
+> * Betanítás 
+> * Közzététel 
+> * Szándék és entitások lekérése a végpontról
 
 [!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
-## <a name="before-you-begin"></a>Előkészületek
-Ha még nincs meg az Emberi erőforrások alkalmazása az [összetett entitás](luis-tutorial-composite-entity.md) oktatóanyagából, [importálja](luis-how-to-start-new-app.md#import-new-app) a JSON-t egy új alkalmazásba a [LUIS](luis-reference-regions.md#luis-website) webhelyén. Az importálandó alkalmazás a [LUIS-minták](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-composite-HumanResources.json) GitHub-adattárban található.
+## <a name="use-existing-app"></a>Meglévő alkalmazás használata
 
-Ha meg szeretné tartani az eredeti Emberi erőforrások alkalmazást, klónozza a [Settings](luis-how-to-manage-versions.md#clone-a-version) (Beállítások) lapon a verziót, és adja neki a következő nevet: `simple`. A klónozás nagyszerű mód, hogy kísérletezhessen a különböző LUIS-funkciókkal anélkül, hogy az az eredeti verzióra hatással lenne.  
+Folytassa az előző oktatóanyagban létrehozott **EmberiErőforrások** nevű alkalmazással. 
 
-## <a name="purpose-of-the-app"></a>Az alkalmazás célja
-Ez az alkalmazás bemutatja, hogy nyerhetők ki adatok egy kimondott szövegből. Vegyük például egy csevegőrobot által kimondott következő szövegeket:
+Amennyiben nem rendelkezik az előző oktatóanyagból származó EmberiErőforrások alkalmazással, kövesse a következő lépéseket:
+
+1.  Töltse le és mentse az [alkalmazás JSON-fájlját](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/tutorials/custom-domain-composite-HumanResources.json).
+
+2. Importálja a JSON-t egy új alkalmazásba.
+
+3. A **Manage** (Kezelés) szakasz **Versions** (Verziók) lapján klónozza a verziót, és adja neki a `simple` nevet. A klónozás nagyszerű mód, hogy kísérletezhessen a különböző LUIS-funkciókkal anélkül, hogy az az eredeti verzióra hatással lenne. Mivel a verzió neve az URL-útvonal részét képezi, a név nem tartalmazhat olyan karaktert, amely URL-címben nem érvényes.
+
+## <a name="simple-entity"></a>Egyszerű entitás
+Az egyszerű entitás egyetlen, szavakban vagy kifejezésekben szereplő adatfogalmat észlelésére szolgál.
+
+Vegyük például egy csevegőrobot által kimondott következő szövegeket:
 
 |Kimondott szöveg|Kinyerhető állásnév|
 |:--|:--|
 |Szeretnék jelentkezni az új könyvelői állásra.|könyvelés|
-|Kérem, adja be az önéletrajzomat a mérnöki pozícióra.|mérnöki terület|
+|Adja be az önéletrajzomat a mérnöki pozícióra.|mérnöki terület|
 |Jelentkezés kitöltése az 123456 számú állásra|123456|
-
-Ez az oktatóanyag egy új entitást vesz fel az állás nevének kinyeréséhez. 
-
-## <a name="purpose-of-the-simple-entity"></a>Az egyszerű entitás célja
-Az ebben a LUIS-alkalmazásban található egyszerű entitás célja megtanítani a LUIS-nak, hogy mi az állás neve, és hol található meg a kimondott szövegben. A kimondott szöveg állás része szövegenként változhat a szóhasználat és a kimondott szöveg hossza alapján. A LUIS-nak minden kimondott szövegben lévő minden szándék álláspéldájára szüksége van.  
 
 Az állás nevét nehéz megállapítani, mert a név lehet főnév, ige, vagy több szóból álló kifejezés. Például:
 
@@ -65,15 +82,13 @@ Az állás nevét nehéz megállapítani, mert a név lehet főnév, ige, vagy t
 |présgépkezelő|
 |gépszerelő|
 
-Ez a LUIS-alkalmazás számos szándékban rendelkezik állásnevekkel. Ezen szavak felcímkézésével a szándékok minden kimondott szövegében, a LUIS többet tud meg arról, hogy mi egy állás, és hol található a kimondott szövegben.
+Ez a LUIS-alkalmazás számos szándékban rendelkezik állásnevekkel. Ezen szavak a szándékok minden kimondott szövegében való felcímkézésével a LUIS többet tud meg arról, mi az állásnév, és hol található a kimondott szövegekben.
 
-## <a name="create-job-simple-entity"></a>Egyszerű állásentitás létrehozása
+Miután megjelöli az entitásokat a példaszövegekben, fontos lépés a kifejezéslista hozzáadása. Ez a lista felerősíti az egyszerű entitás jelét. A kifejezéslistát a rendszer **nem** pontos egyezésként használja, így nem szükséges benne megadni az összes várható értéket. 
 
-1. Győződjön meg arról, hogy az Emberi erőforrások alkalmazás a LUIS **Build** (Létrehozás) szakaszában van. Ha erre a szakaszra szeretne lépni, válassza a jobb felső menüsávon a **Build** (Létrehozás) elemet. 
+1. [!include[Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
 
 2. Az **Intents** (Szándékok) lapon válassza az **ApplyForJob** szándékot. 
-
-    [![](media/luis-quickstart-primary-and-secondary-data/hr-select-applyforjob.png "A LUIS képernyőképe a kiemelt ApplyForJob szándékkal")](media/luis-quickstart-primary-and-secondary-data/hr-select-applyforjob.png#lightbox)
 
 3. Az `I want to apply for the new accounting job` kimondott szövegben válassza az `accounting` lehetőséget, az előugró menü felső mezőjébe írja be a `Job` kifejezést, majd válassza a **Create new entity** (Új entitás létrehozása) elemet az előugró menüben. 
 
@@ -110,7 +125,10 @@ Ez a LUIS-alkalmazás számos szándékban rendelkezik állásnevekkel. Ezen sza
     |Csatoltam az önéletrajzom a biológiaprofesszori álláshoz.|biológiaprofesszor|
     |Szeretnék jelentkezni a fényképészi állásra.|fényképész|git 
 
-## <a name="label-entity-in-example-utterances-for-getjobinformation-intent"></a>Címkézze meg a kimondott példaszövegek entitásait GetJobInformation szándékkal
+## <a name="label-entity-in-example-utterances"></a>Entitás megcímkézése kimondott példaszövegekben
+
+Az entitás megcímkézése vagy _megjelölése_ megmutatja a LUIS-nak, hol található az entitás a kimondott példaszövegekben.
+
 1. A bal oldali menüben válassza az **Intents** (Szándékok) lehetőséget.
 
 2. A szándékok listájából válassza ki a **GetJobInformation** elemet. 
@@ -125,80 +143,83 @@ Ez a LUIS-alkalmazás számos szándékban rendelkezik állásnevekkel. Ezen sza
 
     Vannak más kimondott példaszövegek, de nem tartalmaznak állással kapcsolatos szavakat.
 
-## <a name="train-the-luis-app"></a>A LUIS-alkalmazás betanítása
+## <a name="train"></a>Betanítás
 
 [!INCLUDE [LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
 
-## <a name="publish-the-app-to-get-the-endpoint-url"></a>Az alkalmazás közzététele a végpont URL-címének lekéréshez
+## <a name="publish"></a>Közzététel
 
 [!INCLUDE [LUIS How to Publish steps](../../../includes/cognitive-services-luis-tutorial-how-to-publish.md)]
 
-## <a name="query-the-endpoint-with-a-different-utterance"></a>A végpont lekérdezése egy másik kimondott szöveggel
+## <a name="get-intent-and-entities-from-endpoint"></a>Szándék és entitások lekérése a végpontból 
 
 1. [!INCLUDE [LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)]
 
 2. Lépjen az URL-cím végéhez, és írja be a következőt: `Here is my c.v. for the programmer job`. Az utolsó lekérdezésisztring-paraméter `q`, a kimondott szöveg pedig a **query**. A kimondott szöveg nem egyezik meg egyik címkézett kimondott szöveggel sem, ezért tesztnek megfelelő, és a következő kimondott szövegeket kell visszaadnia: `ApplyForJob`.
 
-```JSON
-{
-  "query": "Here is my c.v. for the programmer job",
-  "topScoringIntent": {
-    "intent": "ApplyForJob",
-    "score": 0.9826467
-  },
-  "intents": [
+    ```JSON
     {
-      "intent": "ApplyForJob",
-      "score": 0.9826467
-    },
-    {
-      "intent": "GetJobInformation",
-      "score": 0.0218927357
-    },
-    {
-      "intent": "MoveEmployee",
-      "score": 0.007849265
-    },
-    {
-      "intent": "Utilities.StartOver",
-      "score": 0.00349470088
-    },
-    {
-      "intent": "Utilities.Confirm",
-      "score": 0.00348804821
-    },
-    {
-      "intent": "None",
-      "score": 0.00319909188
-    },
-    {
-      "intent": "FindForm",
-      "score": 0.00222647213
-    },
-    {
-      "intent": "Utilities.Help",
-      "score": 0.00211193133
-    },
-    {
-      "intent": "Utilities.Stop",
-      "score": 0.00172086991
-    },
-    {
-      "intent": "Utilities.Cancel",
-      "score": 0.00138010911
+      "query": "Here is my c.v. for the programmer job",
+      "topScoringIntent": {
+        "intent": "ApplyForJob",
+        "score": 0.9826467
+      },
+      "intents": [
+        {
+          "intent": "ApplyForJob",
+          "score": 0.9826467
+        },
+        {
+          "intent": "GetJobInformation",
+          "score": 0.0218927357
+        },
+        {
+          "intent": "MoveEmployee",
+          "score": 0.007849265
+        },
+        {
+          "intent": "Utilities.StartOver",
+          "score": 0.00349470088
+        },
+        {
+          "intent": "Utilities.Confirm",
+          "score": 0.00348804821
+        },
+        {
+          "intent": "None",
+          "score": 0.00319909188
+        },
+        {
+          "intent": "FindForm",
+          "score": 0.00222647213
+        },
+        {
+          "intent": "Utilities.Help",
+          "score": 0.00211193133
+        },
+        {
+          "intent": "Utilities.Stop",
+          "score": 0.00172086991
+        },
+        {
+          "intent": "Utilities.Cancel",
+          "score": 0.00138010911
+        }
+      ],
+      "entities": [
+        {
+          "entity": "programmer",
+          "type": "Job",
+          "startIndex": 24,
+          "endIndex": 33,
+          "score": 0.5230502
+        }
+      ]
     }
-  ],
-  "entities": [
-    {
-      "entity": "programmer",
-      "type": "Job",
-      "startIndex": 24,
-      "endIndex": 33,
-      "score": 0.5230502
-    }
-  ]
-}
-```
+    ```
+    
+    A LUIS megtalálta a helyes szándékot (**ApplyForJob**), és kinyerte a helyes entitást (**Job**) a következő értékkel: `programmer`.
+
 
 ## <a name="names-are-tricky"></a>A nevek bonyolultak
 A LUIS-alkalmazás nagy magabiztossággal megtalálta a megfelelő szándékot és kinyerte az állás nevét, a nevek azonban bonyolultak. Próbálja meg a `This is the lead welder paperwork` kimondott szöveget.  
@@ -260,18 +281,15 @@ A következő JSON-ben, a LUIS a megfelelő szándékkal (`lead welder`) válasz
 
 Mivel a név bármi lehet, a LUIS pontosabban jósolja meg az entitásokat, ha rendelkezik egy szavakból álló kifejezéslistával a jel erősítéséhez.
 
-## <a name="to-boost-signal-add-jobs-phrase-list"></a>A jel erősítéséhez vegyen fel állással kapcsolatos kifejezéslistát
+## <a name="to-boost-signal-add-phrase-list"></a>A jel erősítéséhez vegyen fel egy kifejezéslistát.
+
 Nyissa meg a [jobs-phrase-list.csv](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/job-phrase-list.csv) fájlt a LUIS-minták GitHub-adattárából. A lista több mint ezer, állásokkal kapcsolatos szót és kifejezést tartalmaz. Keressen a listában olyan állással kapcsolatos szavakat, amelyek hasznosak Önnek. Ha a keresett szavak vagy kifejezések nincsenek a listán, adja hozzá őket.
 
 1. A LUIS-alkalmazás **Build** (Létrehozás) szakaszában válassza a **Phrase lists** (Kifejezéslisták) lehetőséget az **Improve app performance** (Az alkalmazás teljesítményének növelése) menüben.
 
-    [![](media/luis-quickstart-primary-and-secondary-data/hr-select-phrase-list-left-nav.png "Képernyőkép a kifejezéslistákról, a bal navigációs gomb kiemelve")](media/luis-quickstart-primary-and-secondary-data/hr-select-phrase-list-left-nav.png#lightbox)
-
 2. Válassza a **Create new phrase list** (Új kifejezéslista létrehozása) lehetőséget. 
 
-    [![](media/luis-quickstart-primary-and-secondary-data/hr-create-new-phrase-list.png "Képernyőkép: az új kifejezéslista létrehozására szolgáló gomb, kiemelve")](media/luis-quickstart-primary-and-secondary-data/hr-create-new-phrase-list.png#lightbox)
-
-3. Az új kifejezéslistának adja a `Jobs` nevet és a jobs-phrase-list.csv fájlban található listát másolja a **Values** (Értékek) szövegmezőbe. Nyomja le az Enter billentyűt. 
+3. Az új kifejezéslistának adja a `Job` nevet és a jobs-phrase-list.csv fájlban található listát másolja a **Values** (Értékek) szövegmezőbe. Nyomja le az Enter billentyűt. 
 
     [![](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-1.png "Képernyőkép: az új kifejezéslista létrehozása előugró párbeszédpanel")](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-1.png#lightbox)
 
@@ -348,22 +366,13 @@ Nyissa meg a [jobs-phrase-list.csv](https://github.com/Microsoft/LUIS-Samples/bl
     }
     ```
 
-## <a name="phrase-lists"></a>Kifejezéslisták
-A kifejezéslista hozzáadása felerősítette a listában szereplő szavak jelét, de a rendszer **nem** használja pontos egyezésként. A kifejezéslistán számos állás szerepel a `lead` első szóval, és a `welder` állást is tartalmazza, de nem szerepel benne a `lead welder` állás. Lehet, hogy az állások kifejezéslistája nem teljes. Ha rendszeresen [áttekinti a végponti kimondott szövegeket](luis-how-to-review-endoint-utt.md) és állásokkal kapcsolatos egyéb szavakat is keres, adja hozzá ezeket a kifejezéslistához. Ezután tanítsa be ismét és tegye újra közzé az alkalmazást.
-
-## <a name="what-has-this-luis-app-accomplished"></a>Milyen műveleteket végzett el a LUIS-alkalmazás?
-Az alkalmazás, egy egyszerű entitással és egy kifejezéslistával azonosított egy természetes nyelvi lekérdezési szándékot, és visszaadta az állásadatokat. 
-
-A csevegőrobot már elég információval rendelkezik az állásra való jelentkezés elsődleges műveletének megállapításához, illetve a művelet paraméterének és a hivatkozott állás megállapításához. 
-
-## <a name="where-is-this-luis-data-used"></a>Hol vannak használatban ezek a LUIS-adatok? 
-A LUIS végzett ezzel a kéréssel. A hívó alkalmazás, például egy csevegőrobot, használhatja a topScoringIntent eredményt és az entitásból származó adatokat arra, hogy egy külső API használatával elküldje az állás információit egy emberierőforrás-képviselőhöz. Ha a csevegőrobot vagy a hívó alkalmazás egyéb programozható beállítással rendelkezik, a LUIS ezeket nem végzi el. A LUIS csak azt határozza meg, hogy mi a felhasználó szándéka. 
-
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 [!INCLUDE [LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
 
 ## <a name="next-steps"></a>További lépések
+
+Ebben az oktatóanyagban az Emberi erőforrások alkalmazás egy gépi tanulással létrejött egyszerű entitást használ az állások neveinek megkeresésére a kimondott szövegekben. Mivel számos különféle szó és kifejezés jelölhet állásnevet, az alkalmazásnak szüksége van egy kifejezéslistára az állásneveket jelentő szavak jelének felerősítéséhez. 
 
 > [!div class="nextstepaction"]
 > [Előre összeállított kulcskifejezés-entitás hozzáadása](luis-quickstart-intent-and-key-phrase.md)

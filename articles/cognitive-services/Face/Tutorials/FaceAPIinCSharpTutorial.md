@@ -1,21 +1,21 @@
 ---
-title: Face API – C#-oktatóanyag | Microsoft Docs
-titleSuffix: Microsoft Cognitive Services
-description: Ebben az oktatóanyagban egy Windows-alkalmazást hozunk létre, amely a Cognitive Services arcfelismerési szolgáltatása segítségével észleli és bekeretezi a képeken lévő arcokat.
+title: 'Oktatóanyag: Arcok észlelése és bekeretezése egy képen – Face API, C#'
+titleSuffix: Azure Cognitive Services
+description: Ebben az oktatóanyagban egy Windows-alkalmazást hozunk létre, amely a Face API segítségével észleli és bekeretezi a képeken lévő arcokat.
 services: cognitive-services
 author: noellelacharite
-manager: nolachar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: face-api
 ms.topic: tutorial
-ms.date: 06/29/2018
+ms.date: 09/24/2018
 ms.author: nolachar
-ms.openlocfilehash: e4f2192c40f0b650b31ed59642dee89e42eca703
-ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
+ms.openlocfilehash: 657c471761c36de5095763623210909308f55c2a
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39125939"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47162611"
 ---
 # <a name="tutorial-create-a-wpf-app-to-detect-and-frame-faces-in-an-image"></a>Oktatóanyag: WPF-alkalmazás létrehozása képeken lévő arcok észleléséhez és bekeretezéséhez
 
@@ -36,7 +36,7 @@ Ez az oktatóanyag a következőket mutatja be:
 
 - A minta futtatásához előfizetési kulcs szükséges. Ingyenes próba előfizetési kulcsot itt szerezhet: [A Cognitive Services kipróbálása](https://azure.microsoft.com/try/cognitive-services/?api=face-api).
 - A [Visual Studio 2015 vagy 2017](https://www.visualstudio.com/downloads/) bármely kiadása. A Visual Studio 2017-hez szükséges a .NET asztali alkalmazásfejlesztési számítási feladat. Ez az oktatóanyag a Visual Studio 2017 Community Editiont használja.
-- A [Microsoft.Azure.CognitiveServices.Vision.Face 2.0.0-preview](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.Face/2.0.0-preview) ügyfélkódtár NuGet-csomagja. A csomag letöltése nem szükséges. A telepítési utasításokat az alábbiakban találja.
+- A [Microsoft.Azure.CognitiveServices.Vision.Face 2.2.0-preview](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.Face/2.2.0-preview) ügyfélkódtár NuGet-csomagja. A csomag letöltése nem szükséges. A telepítési utasításokat az alábbiakban találja.
 
 ## <a name="create-the-visual-studio-solution"></a>A Visual Studio-megoldás létrehozása
 
@@ -54,7 +54,7 @@ Kövesse ezeket az utasításokat az ügyfélkódtár telepítéséhez.
 1. A **Tools** (Eszközök) menüben válassza a **NuGet Package Manager** (NuGet-csomagkezelő), majd a **Package Manager Console** (Csomagkezelői konzol) lehetőséget.
 1. A **Package Manager Console** (Csomagkezelői konzol) felületén illessze be a következőt, majd nyomja le az **Enter** billentyűt.
 
-    `Install-Package Microsoft.Azure.CognitiveServices.Vision.Face -Version 2.0.0-preview`
+    `Install-Package Microsoft.Azure.CognitiveServices.Vision.Face -Version 2.2.0-preview`
 
 ## <a name="add-the-initial-code"></a>Kezdeti kód hozzáadása
 
@@ -122,8 +122,8 @@ namespace FaceTutorial
         // NOTE: Free trial subscription keys are generated in the westcentralus
         // region, so if you are using a free trial subscription key, you should
         // not need to change this region.
-        private const string baseUri =
-            "https://westcentralus.api.cognitive.microsoft.com/face/v1.0";
+        private const string faceEndpoint =
+            "https://westcentralus.api.cognitive.microsoft.com";
 
         private readonly IFaceClient faceClient = new FaceClient(
             new ApiKeyServiceClientCredentials(subscriptionKey),
@@ -137,13 +137,13 @@ namespace FaceTutorial
         {
             InitializeComponent();
 
-            if (Uri.IsWellFormedUriString(baseUri, UriKind.Absolute))
+            if (Uri.IsWellFormedUriString(faceEndpoint, UriKind.Absolute))
             {
-                faceClient.BaseUri = new Uri(baseUri);
+                faceClient.Endpoint = faceEndpoint;
             }
             else
             {
-                MessageBox.Show(baseUri,
+                MessageBox.Show(faceEndpoint,
                     "Invalid URI", MessageBoxButton.OK, MessageBoxImage.Error);
                 Environment.Exit(0);
             }
@@ -197,8 +197,8 @@ namespace FaceTutorial
 - Keresse meg a következő sort a *MainWindow.xaml.cs* elemben, és cserélje le vagy ellenőrizze az előfizetési kulcshoz társított Azure-régiót:
 
     ```csharp
-    private const string baseUri =
-        "https://westcentralus.api.cognitive.microsoft.com/face/v1.0";
+    private const string Endpoint =
+        "https://westcentralus.api.cognitive.microsoft.com";
     ```
 
     Ellenőrizze, hogy a hely ugyanaz-e, ahonnan az előfizetési kulcsot beszerezte. Ha például a **westus** régióból szerezte be az előfizetési kulcsot, cserélje le a `Westcentralus` elemet a `Westus` elemre.

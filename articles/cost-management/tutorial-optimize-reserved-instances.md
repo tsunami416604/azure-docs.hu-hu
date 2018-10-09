@@ -1,30 +1,30 @@
 ---
-title: Oktatóanyag – Fenntartott példányok költségeinek optimalizálása az Azure Cost Managementtel | Microsoft Docs
+title: Oktatóanyag – Fenntartott példányok költségeinek optimalizálása az Azure Cloudynnel | Microsoft Docs
 description: Ebben az oktatóanyagban megismerheti, hogyan optimalizálhatja a fenntartott példányok költségeit az Azure-ban és az Amazon Web Servicesben (AWS).
 services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 04/26/2018
+ms.date: 09/18/2018
 ms.topic: tutorial
 ms.service: cost-management
 ms.custom: ''
 manager: dougeby
-ms.openlocfilehash: f0edad58256ecc29e2fd215095e8b5ab13d69ce8
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: c50259f0df955c3a22edc979dfebc8bfb2059e16
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32177323"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46987766"
 ---
 <!-- Intent: As a cloud-consuming administrator, I need to ensure that my reserved instances are optimized for cost and usage
 -->
 
 # <a name="tutorial-optimize-reserved-instances"></a>Oktatóanyag: Fenntartott példányok optimalizálása
 
-Ebben az oktatóanyagban megismerheti, hogyan segít a Cost Management optimalizálni a fenntartott példányok költségeit és kihasználtságát az Azure-ban és az Amazon Web Servicesben (AWS). A felhőszolgáltatók által biztosított fenntartott példányok hosszú távú szerződés keretében érhetőek el, amelyben a felhasználó előre elkötelezi magát a virtuális gép későbbi használata mellett. Ez a modell jelentős megtakarítást eredményezhet a virtuális gépek hagyományos használatalapú díjszabási modelljével szemben. Azonban csak akkor érhető el megtakarítás, ha teljes mértékben kihasználjuk a fenntartott példányok kapacitását.
+Ebben az oktatóanyagban megismerheti, hogyan segít a Cloudyn optimalizálni a fenntartott példányok költségeit és kihasználtságát az Azure-ban és az Amazon Web Servicesben (AWS). A felhőszolgáltatók által biztosított fenntartott példányok hosszú távú szerződés keretében érhetőek el, amelyben a felhasználó előre elkötelezi magát a virtuális gép későbbi használata mellett. Ez a modell jelentős megtakarítást eredményezhet a virtuális gépek hagyományos használatalapú díjszabási modelljével szemben. Azonban csak akkor érhető el megtakarítás, ha teljes mértékben kihasználjuk a fenntartott példányok kapacitását.
 
-Ez az oktatóanyag azt ismerteti, hogyan támogatja a Cost Management az Azure-beli és AWS-beli fenntartott példányait (RI). Emellett leírja, hogyan optimalizálhatók a fenntartott példányok költségei. Elsősorban a foglalások teljes kihasználtságának biztosításával. Az oktatóanyag során az alábbi lépéseket fogja végrehajtani:
+Ez az oktatóanyag azt ismerteti, hogyan támogatja a Cloudyn az Azure-beli és AWS-beli fenntartott példányait (RI). Emellett leírja, hogyan optimalizálhatók a fenntartott példányok költségei. Elsősorban a foglalások teljes kihasználtságának biztosításával. Az oktatóanyag során az alábbi lépéseket fogja végrehajtani:
 
 > [!div class="checklist"]
 > * Az Azure-beli fenntartott példányok költségeinek ismertetése
@@ -41,7 +41,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 ## <a name="prerequisites"></a>Előfeltételek
 
 - Rendelkeznie kell egy Azure-fiókkal.
-- Rendelkeznie kell az Azure Cost Management próbaverziójával vagy fizetett előfizetésével.
+- Rendelkeznie kell a Cloudyn próbaverziójával vagy fizetett előfizetésével.
 - Rendelkeznie kell megvásárolt fenntartott példányokkal az Azure-ban vagy az AWS-ben.
 
 ## <a name="understand-azure-ri-costs"></a>Az Azure-beli fenntartott példányok költségeinek ismertetése
@@ -85,7 +85,7 @@ A megosztott vásárlási hatókör a legrugalmasabb, ezért ennek a használata
 
 ## <a name="optimize-azure-ri-costs"></a>Az Azure-beli fenntartott példányok költségeinek optimalizálása
 
-Az Azure Cost Management a következőképp támogatja a fenntartott példányok és a Hybrid Benefits használatát:
+A Cloudyn a következőképp támogatja a fenntartott példányok és a Hybrid Benefits használatát:
 
 - Az egyes díjszabási modellekre vonatkozó költségek bemutatása
 - A fenntartott példányok használatának nyomon követése
@@ -116,7 +116,7 @@ Ha azonban csak az idő 50%-ában fut, akkor a megtérülési pont 10 hónap ut�
 
 ## <a name="view-ri-costs"></a>A fenntartott példányok költségeinek megtekintése
 
-Egy foglalás megvásárlása egyszeri fizetéssel jár. A fizetés a Cost Managementben kétféleképpen tekinthető meg:
+Egy foglalás megvásárlása egyszeri fizetéssel jár. A fizetés a Cloudyn szolgáltatásban kétféleképpen tekinthető meg:
 
 - Tényleges költség
 - Amortizált költség

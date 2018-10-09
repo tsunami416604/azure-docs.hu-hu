@@ -1,60 +1,61 @@
 ---
-title: Beszélőfelismerési API-nevéből felismert |} Microsoft Docs
-description: Speciális algoritmusok használata hangalapú ellenőrzési és hangalapú azonosítási kognitív szolgáltatásokban felismerés Beszélőfelismerési API-val.
+title: Mi a Speaker Recognition?
+titlesuffix: Azure Cognitive Services
+description: A Speaker Recognition API-val fejlett algoritmusokat használhat beszélő-ellenőrzéshez és beszélőazonosításhoz.
 services: cognitive-services
 author: dwlin
-manager: zhang
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: speaker-recognition
-ms.topic: article
+ms.topic: overview
 ms.date: 03/20/2016
 ms.author: dwlin
-ms.openlocfilehash: 6d5e4e4bbe0cb5e57d2556f680ffcf8d16ee1818
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
-ms.translationtype: MT
+ms.openlocfilehash: 13a95aff8b2b0d5dad0574e6107958a20576702a
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35347395"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47227333"
 ---
 # <a name="speaker-recognition-api"></a>Beszélőfelismerés API
 
-Üdvözli a Microsoft hangalapú felismerés API-k. Hangalapú felismerés API-k, amelyek a legtöbb speciális algoritmusok hangalapú ellenőrzési és hangalapú azonosítási API felhőalapú. Beszélőfelismerési felismerés két kategóriába oszthatók: hangalapú ellenőrzési és hangalapú azonosítási.
+Üdvözlik a Speaker Recognition API-k! A Speaker Recognition API-k olyan felhőalapú API-k, amelyek a legfejlettebb algoritmusokat biztosítják a beszélő-ellenőrzéshez és beszélőazonosításhoz. A Speaker Recognition két kategóriára oszlik: beszélő-ellenőrzés és beszélőazonosítás.
 
 
-## <a name="speaker-verification"></a>Hangalapú azonosítás
+## <a name="speaker-verification"></a>Beszélő-ellenőrzés
 
 
-Hang jellemzői egyedi személy, mint például egy ujjlenyomat azonosítására használható.  Hangalámondás használatával, mint a hozzáférés-vezérléshez és a hitelesítési forgatókönyvek esetén jel mutatkozott új innovatív eszközként – tulajdonképpen ajánlat, amely egyszerűbbé teszi az ügyfelek felhasználói hitelesítés biztonsági egy szint.
+A hangnak olyan egyedi jellemzői vannak, amelyek segítségével ugyanúgy azonosítható egy személy, mint egy ujjlenyomattal.  A hang jelként való használata a hozzáférés-vezérlési és a hitelesítési forgatókönyvekben új, innovatív eszközként jelent meg – lényegében a biztonság magasabb szintjét kínálja, amely egyszerűsíti a hitelesítési folyamatot az ügyfelek számára.
 
-Hangalapú azonosítási API-k automatikusan győződjön meg arról, és hitelesíti a felhasználókat a hang- vagy beszéd használatával.
+A beszélő-ellenőrzési API-k automatikusan ellenőrzik és hitelesítik a felhasználókat a hangjuk vagy beszédük alapján.
 
 ### <a name="enrollment"></a>Regisztráció
 
-Beszélőfelismerési ellenőrzés igénylés ennek szöveg függő, ami azt jelenti, hangszórók kell választania a regisztráció és a ellenőrzési fázis során használandó különleges hozzáférési kódot. 
+A beszélő-ellenőrzésre történő regisztráció szövegfüggő, ami azt jelenti, hogy a beszélőknek választaniuk kell egy jelszóként használt kifejezést, amelyet a regisztráció és az ellenőrzés fázisában használnak. 
 
-Beléptetését a beszélőre hang rögzítése közli, hogy egy adott kifejezés, akkor számos szolgáltatást ki kell olvasni, és a rendszer felismeri a kiválasztott kifejezés. Együtt kibontott funkciókat, mind a kiválasztott kifejezés űrlap egyedi hang aláírás.
+A regisztráció során a rendszer rögzíti a beszélő hangját, miközben kimondja a választott kifejezést, majd számos jellemzőt kinyer, és felismeri a választott kifejezést. A kinyert jellemzők és a választott kifejezés együttesen alkot egy egyedi hangaláírást.
 
 ### <a name="verification"></a>Ellenőrzés
 ###
-Ellenőrzés, egy bemeneti hang- és kifejezés összehasonlítja a beléptetési hang aláírás és kódot – ugyanazon személy vannak-e, és ha azok a helyes kódot véleményét ellenőrzése érdekében.
+Az ellenőrzés során a rendszer egy bemeneti hangot és kifejezést hasonlít össze a regisztrált hangaláírással és kifejezéssel, majd ellenőrzi, hogy ugyanattól a személytől származnak-e, és hogy a megfelelő kifejezés hangzott-e el.
 
-A hangalapú ellenőrzési kapcsolatos további tudnivalókért tekintse meg az API-t [hangalapú - ellenőrzési](https://westus.dev.cognitive.microsoft.com/docs/services/563309b6778daf02acc0a508/operations/563309b7778daf06340c9652).
+A beszélő-ellenőrzéssel kapcsolatos további információért tekintse meg a [beszélő-ellenőrzési](https://westus.dev.cognitive.microsoft.com/docs/services/563309b6778daf02acc0a508/operations/563309b7778daf06340c9652) API dokumentációját.
 
-## <a name="speaker-identification"></a>Beszélőfelismerés
+## <a name="speaker-identification"></a>Beszélőazonosítás
 
-Hangalapú azonosítási API-k automatikusan azonosíthatja a személy, és beszéljen hangfájl, a megadott potenciális hangszórók csoportja. A bemeneti hang párosítva van a megadott csoport hangszóró ellen, és abban az esetben, amely található egyezés, a beszélőre identitás ad vissza.
+A beszélőazonosítási API-k automatikusan azonosítják a hangfájlban beszélő személyt, ha rendelkezésre áll a leendő beszélők egy csoportja. A rendszer a bemeneti hangot veti össze a megadott beszélők csoportjával, és egyezés esetén visszaadja a beszélő személyazonosságát.
 
-Minden hangszórók kell egy regisztrációs folyamat használatának alapjaival a hang, a rendszer regisztrálva, és létrehozott egy hang nyomtatása rendelkezik.
+Először az összes beszélőnek át kell esnie a regisztrációs folyamaton a hangjuknak a rendszerben történő regisztrálásához, és a hanglenyomat létrehozásához.
 
 
 ### <a name="enrollment"></a>Regisztráció
 
-Hangalapú azonosítási regisztrálásának szöveg független, ami azt jelenti, hogy nincsenek-e meg, hogy mi a beszélőre a hallható szerint korlátozások. A beszélőre hang rögzítése, és számos szolgáltatást és egyedi hang aláírás ki kell olvasni. 
+A beszélőazonosításba történő regisztráció szövegfüggetlen, ami azt jelenti, hogy nincsenek korlátozások arra vonatkozóan, mit mond a beszélő a hanganyagban. A rendszer rögzíti a beszélő hangját, és több jellemzőt kinyer egy egyedi hangaláírás létrehozása céljából. 
 
 
-### <a name="recognition"></a>Elismerés
+### <a name="recognition"></a>Felismerés
 
-Az ismeretlen hangalapú beszélők többsége potenciális csoportja és a hang felismerés során megadott. A bemeneti hang össze lesz hasonlítva annak meghatározására, amelynek hang összes hangszórók szemben, és ha egyezés található, a beszélőre identitásának adja vissza.
+Az ismeretlen beszélő hangjának biztosítása a leendő beszélők csoportjával együtt történik a felismerés során. A rendszer összehasonlítja a bemeneti hangot minden beszélőével, hogy meghatározza, kinek a hangjáról van szó, és ha van egyezés, visszaadja a beszélő személyazonosságát.
 
 
-Hangalapú azonosítási kapcsolatos további részletekért tekintse meg az API-t [hangalapú - azonosító](https://westus.dev.cognitive.microsoft.com/docs/services/563309b6778daf02acc0a508/operations/5645c068e597ed22ec38f42e).
+A beszélőazonosítással kapcsolatos további információért tekintse meg a [beszélőazonosítási](https://westus.dev.cognitive.microsoft.com/docs/services/563309b6778daf02acc0a508/operations/5645c068e597ed22ec38f42e) API dokumentációját.
