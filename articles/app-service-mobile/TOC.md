@@ -146,7 +146,7 @@
 ## Integrálás
 ### [E-mail küldése a SendGrid és az Azure használatával](../sendgrid-dotnet-how-to-send-email.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 ### [Exportálás a PowerAppsbe és a Microsoft Flow-ba](../azure-functions/app-service-export-api-to-powerapps-and-flow.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
-### [Felügyeltszolgáltatás-identitás használata](../app-service/app-service-managed-service-identity.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
+### [Felügyelt identitás használata](../app-service/app-service-managed-service-identity.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 
 ## Hibaelhárítás
 ### Mobile Apps általános hibaelhárítás
