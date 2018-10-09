@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/18/2018
 ms.author: snmuvva
 ms.component: alerts
-ms.openlocfilehash: e0c9cc342bb4b06053f53abc891ee1c415327998
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 308ba7fd7635dc243d88b73b7785b747969bbbbb
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47410000"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48854014"
 ---
 # <a name="create-view-and-manage-classic-metric-alerts-using-azure-monitor"></a>Létrehozása, megtekintése és kezelése a klasszikus metrikariasztásokat az Azure Monitor használatával
 
@@ -36,7 +36,7 @@ Az Azure monitorban klasszikus metrikariasztásokat hardvermódosításainak ér
 
 6. Válassza ki **E-mail-tulajdonosok...**  Ha azt szeretné, hogy e-mailben értesítést kapni, amikor a riasztás akkor aktiválódik, a rendszergazdák és a társadminisztrátorok.
 
-7. Értesítések küldése további e-mail-címeket, a riasztás akkor aktiválódik, ha szeretné, ha hozzá őket a **további rendszergazdai email(s)** mező. Pontosvesszővel több e-mailek, a következő formátumban:  *email@contoso.com; email2@contoso.com*
+7. Értesítések küldése további e-mail-címeket, a riasztás akkor aktiválódik, ha szeretné, ha hozzá őket a **további rendszergazdai email(s)** mező. Pontosvesszővel több e-mailek, a következő formátumban:  *email@contoso.com;email2@contoso.com*
 
 8. Érvényes URI-t a helyezni a **Webhook** mezőben, ha azt szeretné, ha a riasztás akkor aktiválódik, která bude volána.
 

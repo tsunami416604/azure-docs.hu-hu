@@ -12,12 +12,12 @@ ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
 ms.date: 09/14/2018
-ms.openlocfilehash: 9de7fe9972f1ae0fca1c4e527f718b31fddf4294
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: e828b288f2c3ab86a74709682eb7f96f8baf73ab
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47161528"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48869482"
 ---
 # <a name="import-a-bacpac-file-to-a-new-azure-sql-database"></a>Az új Azure SQL-adatbázis BACPAC-fájl importálása
 
@@ -49,7 +49,7 @@ Annak ellenőrzéséhez, hogy az adatbázist a kiszolgálón az élő, kattintso
 
 ## <a name="import-from-a-bacpac-file-using-sqlpackage"></a>SQLPackage használatával BACPAC-fájlból való importálása
 
-Importálása egy SQL database-adatbázishoz a [SqlPackage](https://msdn.microsoft.com/library/hh550080.aspx) parancssori segédprogram, lásd: [paramétereknek és tulajdonságoknak importálása](https://msdn.microsoft.com/library/hh550080.aspx#Import Parameters and Properties). A legújabb tartalmaz az SQLPackage segédprogram [SQL Server Management Studio](https://msdn.microsoft.com/library/mt238290.aspx) és [SQL Server Data Tools for Visual Studio](https://msdn.microsoft.com/library/mt204009.aspx), vagy letöltheti a legújabb [SqlPackage ](https://www.microsoft.com/download/details.aspx?id=53876) közvetlenül a Microsoft letöltőközpontból.
+Importálása egy SQL database-adatbázishoz a [SqlPackage](https://docs.microsoft.com/sql/tools/sqlpackage) parancssori segédprogram, lásd: [paramétereknek és tulajdonságoknak importálása](https://docs.microsoft.com/sql/tools/sqlpackage#Import Parameters and Properties). A legújabb tartalmaz az SQLPackage segédprogram [SQL Server Management Studio](https://msdn.microsoft.com/library/mt238290.aspx) és [SQL Server Data Tools for Visual Studio](https://msdn.microsoft.com/library/mt204009.aspx), vagy letöltheti a legújabb [SqlPackage ](https://www.microsoft.com/download/details.aspx?id=53876) közvetlenül a Microsoft letöltőközpontból.
 
 A méretezéshez és teljesítményhez a legtöbb éles környezetben az SQLPackage segédprogram használatát javasoljuk. További információ a BACPAC-fájlokkal végzett migrálásról az SQL Server ügyféltanácsadói csapat blogján: [Migrálás SQL Serverről az Azure SQL Database-re BACPAC-fájlokkal](https://blogs.msdn.microsoft.com/sqlcat/2016/10/20/migrating-from-sql-server-to-azure-sql-database-using-bacpac-files/).
 

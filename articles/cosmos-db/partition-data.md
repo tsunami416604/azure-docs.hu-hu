@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 07/26/2018
 ms.author: andrl
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c35082d107b538e7e908162c00facafecc406bc6
-ms.sourcegitcommit: 4edf9354a00bb63082c3b844b979165b64f46286
+ms.openlocfilehash: 9b7d9a0dd439b7c25180c8f250a87ae5ee184139
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48785646"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48870570"
 ---
 # <a name="partition-and-scale-in-azure-cosmos-db"></a>Particionálási és horizontális Azure Cosmos DB-ben
 
@@ -119,6 +119,8 @@ Egy particionált gráftárolót létrehozásakor, vegye figyelembe a következ�
 
 - **Graph-lekérdezéseket adjon meg egy partíciókulcsot**. Teljes mértékben kihasználhatja a vízszintes particionálás az Azure Cosmos DB, ha lehetséges a grafikon a lekérdezések tartalmaznia kell partíciókulcs. Például ha egy csúcspont van kiválasztva. A következő példalekérdezés bemutatják, hogyan közé tartozik a partíciókulcs egy vagy több csúcspontok particionált grafikon kiválasztásakor:
 
+    - **Nem használhat érhető `/id` partíciókulcs egy tárolóhoz, a Gremlin API-t**.
+
     - Csúcs azonosítója, majd kiválasztja **használja a `.has()` lépéssel megadhatja azokat a partíciós kulcs tulajdonságát**: 
     
         ```
@@ -147,7 +149,7 @@ Egy particionált gráftárolót létrehozásakor, vegye figyelembe a következ�
 
 * **Használja a kimenő irányban élek lekérdezésekor** minden alkalommal, amikor is lehet. A forrás csúcspontok a kimenő irányban élek tárolja. Ez azt jelenti, hogy a szoftver-és hibahivatkozások foka partíciók közötti lekérdezések, amikor az adatok és a lekérdezések terveztük, vegye figyelembe ezt a mintát kis méretben.
 
-## <a name="designing-for-partitioning"></a> Partíciós kulcs létrehozása 
+## <a name="designing-for-partitioning"></a> A partíciós kulcs létrehozása 
 Használhatja az Azure Portalon vagy az Azure CLI-tárolók létrehozása, és bármikor skálázhatja őket. Ez a szakasz bemutatja, hogyan hozhat létre tárolókat, és adja meg a kiosztott átviteli sebesség és a partíció kulcsot minden egyes API-val.
 
 
@@ -225,6 +227,9 @@ További információkért lásd: [fejlesztés a Table API-val](tutorial-develop
 ### <a name="gremlin-api"></a>Gremlin API
 
 A Gremlin API-val használhatja az Azure portal vagy az Azure CLI-vel, hozzon létre egy tárolót, amely egy graph jelöli. Azt is megteheti mivel az Azure Cosmos DB többmodelles, használhatja a más API-k egyik hozhat létre, és a graph-tároló méretezése.
+
+> [!NOTE]
+> Nem használhat `/id` partíciókulcs egy tárolóhoz, a Gremlin API-t. 
 
 Minden csomópont- vagy peremtábla a partíciókulcs és Azonosítóját a Gremlin használatával olvashatja. Például egy Graph-régióhoz ("USA") a partíciókulcs és a "Seattle" sorkulcsként, annak csúcs a következő szintaxis használatával:
 

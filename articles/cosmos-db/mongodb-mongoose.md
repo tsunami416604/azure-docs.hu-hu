@@ -10,12 +10,12 @@ ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 01/08/2018
 ms.author: sclyon
-ms.openlocfilehash: aa178a24f0c36a1c5fb56b342141b066c150c7c3
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: 8cfa53a1792d8e01c05aad8e4a1a0b5239a092c1
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "42054882"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48857393"
 ---
 # <a name="azure-cosmos-db-using-the-mongoose-framework-with-azure-cosmos-db"></a>Azure Cosmos DB: A Mongoose-keretrendszer használata Azure Cosmos DB-vel
 
@@ -50,7 +50,11 @@ Hozzunk létre egy Azure Cosmos DB-fiókot. Ha már rendelkezik egy használni k
 
 1. Vegyen fel a mappába egy új fájlt, és adja neki az ```index.js``` nevet.
 1. Telepítse a szükséges csomagokat az egyik ```npm install``` lehetőséggel:
-    * Mongoose: ```npm install mongoose --save```
+    * Mongoose: ```npm install mongoose@5 --save```
+
+    > [!Note]
+    > A Mongoose példa-kapcsolatot az alábbi 5 +, amely a korábbi verziók óta megváltozott a Mongoose alapul.
+    
     * Dotenv (ha a titkos kulcsokat egy .env fájlból szeretné betölteni): ```npm install dotenv --save```
 
     >[!Note]
@@ -65,19 +69,21 @@ Hozzunk létre egy Azure Cosmos DB-fiókot. Ha már rendelkezik egy használni k
 1. Vegye fel a Cosmos DB kapcsolati sztringjét és a Cosmos DB-nevet a ```.env``` fájlba.
 
     ```JavaScript
-    COSMOSDB_CONNSTR={Your MongoDB Connection String Here}
-    COSMOSDB_DBNAME={Your DB Name Here}
+    COSMOSDB_CONNSTR=mongodb://{cosmos-user}.documents.azure.com:10255/{dbname}
+    COSMODDB_USER=cosmos-user
+    COSMOSDB_PASSWORD=cosmos-secret
     ```
 
 1. Csatlakozzon az Azure Cosmos DB-hez a Mongoose-keretrendszerrel, ehhez vegye fel az alábbi kódot az index.js végéhez.
     ```JavaScript
-    mongoose.connect(process.env.COSMOSDB_CONNSTR+process.env.COSMOSDB_DBNAME+"?ssl=true&replicaSet=globaldb"); //Creates a new DB, if it doesn't already exist
-
-    var db = mongoose.connection;
-    db.on('error', console.error.bind(console, 'connection error:'));
-    db.once('open', function() {
-    console.log("Connected to DB");
-    });
+    mongoose.connect(process.env.COSMOSDB_CONNSTR+"?ssl=true&replicaSet=globaldb", {
+      auth: {
+        user: process.env.COSMODDB_USER,
+        password: process.env.COSMOSDB_PASSWORD
+      }
+    })
+    .then(() => console.log('Connection to CosmosDB successful'))
+    .catch((err) => console.error(err));
     ```
     >[!Note]
     > Itt a környezeti változók a process.env{variableName} segítségével, a „dotenv” npm-csomaggal tölthetők be.

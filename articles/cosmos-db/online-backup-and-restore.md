@@ -10,15 +10,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/15/2017
 ms.author: govindk
-ms.openlocfilehash: 77f22201b897703f6e74a5a3626a2ccc04a814f4
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 580c7410119a26ed3601c7c6ee020a13029339fe
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48043226"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48867799"
 ---
 # <a name="automatic-online-backup-and-restore-with-azure-cosmos-db"></a>Automatikus online biztonsági mentés és visszaállítás Azure Cosmos DB-vel
-Az Azure Cosmos DB az összes biztonsági mentések a rendszeres időközönként automatikusan vesz igénybe. Az automatikus biztonsági mentést készít a teljesítmény vagy az adatbázis-műveleteket rendelkezésre állásának befolyásolása nélkül. A biztonsági mentések külön-külön tárolja, egy másik storage szolgáltatásban, és ezeket a biztonsági mentéseket globálisan replikálva vannak a regionális katasztrófa szembeni ellenálló-képesség. Az automatikus biztonsági mentések készültek forgatókönyvek esetén, ha véletlenül törli a Cosmos DB-tárolóhoz, és később a adat-helyreállítás vagy egy vész-helyreállítási megoldást igényelnek.  
+Az Azure Cosmos DB az összes biztonsági mentések a rendszeres időközönként automatikusan vesz igénybe. Az automatikus biztonsági mentést készít a teljesítmény vagy az adatbázis-műveleteket rendelkezésre állásának befolyásolása nélkül. A biztonsági mentések külön-külön tárolja, egy másik storage szolgáltatásban, és ezeket a biztonsági mentéseket globálisan replikálva vannak a regionális katasztrófa szembeni ellenálló-képesség. Ha véletlenül törli a Cosmos DB-tárolóhoz, és később megkövetelése az adat-helyreállítás szánt forgatókönyvek az automatikus biztonsági mentést.  
 
 Ez a cikk a redundáns adattárolás érdekében és a Cosmos DB-ben rendelkezésre állási rövid összefoglalásképpen kezdődik, és majd a biztonsági mentések ismerteti. 
 
@@ -67,14 +67,17 @@ Ha az adatbázis visszaállításához (tartalmazza az esetekben, ahol a rendsze
 
 Az Azure Cosmos DB megőrzi az adatbázis-fiókot minden partíció utolsó két biztonsági mentéseit. Ez a modell jól működik, ha egy tárolót (gyűjteményt dokumentumok, gráf, tábla), vagy egy adatbázis véletlenül törölt, mivel a legutóbbi verziók egyikével állíthatók vissza. Azonban abban az esetben, amikor a felhasználók vezethet be olyan adatok sérülés, lehet, hogy az Azure Cosmos DB nélkül is működőképesek maradhatnak az adatsérülés, és lehetséges, hogy a sérülés előfordulhat, hogy rendelkezik felülírja a meglévő biztonsági másolatok. 
 
-Az adatbázis fiók és tároló adatai megsérülnek megközelítőleges időpont, amikor az ügyfél-támogatási kapcsolatba, amint a sérülés észlelése esetén. A felhasználó visszaállíthatja az egy másik műveletet (adatok törlése/frissítése) sérült a felhasználó törölje a sérült tárolót (gyűjteményt/graph vagy tábla), hogy a biztonsági mentések felülírásra kerüljön a sérült adatok védettek.  
+Amint sérülés észlel, a felhasználó törölje a sérült tárolót (gyűjteményt/graph vagy tábla), hogy a biztonsági mentések felülírásra kerüljön a sérült adatok védettek. És a legfontosabb Support kapcsolatba, és egy jegyet az adott kérelem súlyossága 2 előléptetése. 
 
 Az alábbi ábrán a véletlen törlés és a tárolóban lévő adatok frissítése az Azure Portalon keresztül container(collection/graph/table) visszaállításhoz a támogatási kérelem létrehozása
 
 ![Állítsa vissza a garanciafeltételeknek frissítési tárolója, vagy törölje az adatokat a Cosmos DB-ben](./media/online-backup-and-restore/backup-restore-support.png)
 
-Amikor a visszaállítás történik az ilyen helyzetekben - adatainak visszaállítása egy másik fiókba (utótagja a "-vissza") és a tároló. A visszaállítás nem történik meg, hogy egy alkalommal adja meg a vásárlói adatok érvényesítése és szükség szerint az adatok áthelyezéséhez. A visszaállított tároló-e ugyanabban a régióban, illetve azonos indexelési szabályzatok. 
+Amikor a visszaállítás történik az ilyen helyzetekben - adatainak visszaállítása egy másik fiókba (utótagja a "-vissza") és a tároló. A visszaállítás nem történik meg, hogy egy alkalommal adja meg a vásárlói adatok érvényesítése és szükség szerint az adatok áthelyezéséhez. A visszaállított tároló-e ugyanabban a régióban, illetve azonos indexelési szabályzatok. Felhasználó, aki a előfizetés rendszergazdai vagy társadminisztrátori láthatja a visszaállított fiók.
 
+
+> [!NOTE]
+> Ha az adatok rögzítésére sérülés, vagy távolítsa el őket, kérjük vegye figyelembe a csak tesztelésre, hamarosan ahogyan az a tevékenység visszaállítani, tárolók vagy adatbázis ára extra – kiosztott átviteli sebesség alapján. 
 ## <a name="next-steps"></a>További lépések
 
 Az adatbázis több adatközpontban replikációt, tekintse meg [terjesztheti az adatait globálisan Cosmos DB-vel](distribute-data-globally.md). 

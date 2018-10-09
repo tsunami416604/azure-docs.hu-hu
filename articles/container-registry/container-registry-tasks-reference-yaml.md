@@ -2,17 +2,17 @@
 title: Az Azure Container Registry feladatok leírása – YAML
 description: Útmutató a tevékenységek meghatározása a YAML ACR feladatokhoz, beleértve a feladat tulajdonságai, a lépés típusok, a lépés tulajdonságai és a beépített változók.
 services: container-registry
-author: mmacy
+author: dlepow
 ms.service: container-registry
 ms.topic: article
 ms.date: 09/24/2018
-ms.author: marsma
-ms.openlocfilehash: a40c05b2775e32bd0932122245914951d42cf712
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.author: danlep
+ms.openlocfilehash: a26b766c18ea2b14796af796abe7f36aa4fc1c66
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47047635"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48854949"
 ---
 # <a name="acr-tasks-reference-yaml"></a>ACR-feladatok hivatkozás: YAML
 
@@ -30,7 +30,7 @@ ACR-feladatok többlépéses feladat deklarace támogatja a szabványos YAML-szi
 A legfelső szintű `acr-task.yaml` primitívekhez van **feladatok Tulajdonságok párbeszédpanelén**, **típusok lépés**, és **. lépés: Tulajdonságok**:
 
 * [Feladatok Tulajdonságok párbeszédpanelén](#task-properties) vonatkozik az összes feladat a végrehajtás lépéseit. Nincsenek három globális feladat tulajdonságai:
-  * verzió:
+  * version
   * stepTimeout
   * totalTimeout
 * [Tevékenység-lépés típusok](#task-step-types) képviseli, amely egy feladat elvégezhető műveletek a típusú. Három lépés típusa van:

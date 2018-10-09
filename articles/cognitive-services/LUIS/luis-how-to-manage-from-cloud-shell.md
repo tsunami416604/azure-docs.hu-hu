@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 09/06/2017
 ms.author: diberry
-ms.openlocfilehash: b0a02d2e5e0a1f1765098e1b1e258424b6443878
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 42bd8ef95ac1b55e76fe1cf0702b79de91832741
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47039578"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48870179"
 ---
 # <a name="usage-data-for-luis-service-from-azure-cloud-shell"></a>Intelligens HANGFELISMERÉSI szolgáltatás az Azure Cloud Shell a használati adatok
 Az Azure Portalon a LUIS-erőforrásokat a PowerShell-parancsmagok használatával teszi lehetővé. 
@@ -23,7 +23,7 @@ Az Azure Portalon a LUIS-erőforrásokat a PowerShell-parancsmagok használatáv
 Ezek a parancsmagok lehetővé teszik [létrehozása](https://docs.microsoft.com/powershell/module/azurerm.cognitiveservices/new-azurermcognitiveservicesaccount?view=azurermps-6.0.0) LUIS-előfizetéssel, tájékoztatást nyújt az előfizetést, beleértve a [használati](https://docs.microsoft.com/powershell/module/azurerm.cognitiveservices/get-azurermcognitiveservicesaccountusage?view=azurermps-6.0.0), és [eltávolítása](https://docs.microsoft.com/powershell/module/azurerm.cognitiveservices/remove-azurermcognitiveservicesaccount?view=azurermps-6.0.0) az előfizetés. 
 
 ## <a name="cloud-shell-storage-account-and-authentication"></a>Cloud shell-storage-fiók és hitelesítés
-Annak érdekében, hogy a PowerShell használata az Azure Portalon [cloud shell](https://docs.microsoft.com/azure/cloud-shell/quickstart-powershell), szüksége lesz egy Azure storage-fiókot. Ha nem rendelkezik egy [tárfiók](https://docs.microsoft.com/azure/cloud-shell/persisting-shell-storage#set-up-a-clouddrive-file-share), kérni fogja hozzon létre egyet. A storage-fiók lehetővé teszi, hogy mentse a PowerShell-parancsprogramok a cloud shellben.  
+Annak érdekében, hogy a PowerShell használata az Azure Portalon [cloud shell](https://docs.microsoft.com/azure/cloud-shell/quickstart-powershell), szüksége lesz egy Azure storage-fiókot. Ha nem rendelkezik egy [tárfiók](https://docs.microsoft.com/azure/cloud-shell/persisting-shell-storage), kérni fogja hozzon létre egyet. A storage-fiók lehetővé teszi, hogy mentse a PowerShell-parancsprogramok a cloud shellben.  
 
 Is kell hitelesíteni a cloud shellben bármely erőforrás eléréséhez. 
 

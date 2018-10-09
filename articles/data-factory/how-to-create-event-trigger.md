@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/23/2018
 ms.author: douglasl
-ms.openlocfilehash: 53ea7425f0497eca7c95ddefeaa09aa40259672b
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: 38fbb62de60bc5604210c8ad7339368a04967c27
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39216266"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48867052"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-in-response-to-an-event"></a>Hozzon létre egy eseményindítót, amely futtatja a folyamatot az adott esemény
 
@@ -58,11 +58,11 @@ Amint a tárolási hely érkezik a fájlt, és a megfelelő blob jön létre, ez
 
 ### <a name="map-trigger-properties-to-pipeline-parameters"></a>Térkép eseményindító tulajdonságai a folyamat paramétereihez
 
-Egy adott BLOB eseményindító akkor következik be, amikor az esemény kell-e be a tulajdonságokat a mappa elérési útját és nevét a BLOB `@triggerBody().folderPath` és `@triggerBody().fileName`. Ezek a tulajdonságok értékeit a folyamat használatához le kell képeznie a Tulajdonságok folyamat paramétereihez. A Tulajdonságok leképezése paraméterek, után az értékek keresztül az eseményindító által rögzített érheti el a `@pipeline.parameters.parameterName` kifejezés a folyamat során.
+Egy adott BLOB eseményindító akkor következik be, amikor az esemény kell-e be a tulajdonságokat a mappa elérési útját és nevét a BLOB `@triggerBody().folderPath` és `@triggerBody().fileName`. Ezek a tulajdonságok értékeit a folyamat használatához le kell képeznie a Tulajdonságok folyamat paramétereihez. A Tulajdonságok leképezése paraméterek, után az értékek keresztül az eseményindító által rögzített érheti el a `@pipeline().parameters.parameterName` kifejezés a folyamat során.
 
 ![Tulajdonságok hozzárendelése a folyamat paramétereihez](media/how-to-create-event-trigger/event-based-trigger-image4.png)
 
-Ha például az az előző képernyőképen látható. az eseményindító aktiválódik, amikor egy blob elérési útja a végződésű van konfigurálva `.csv` jön létre a Tárfiókot. Eredményként, ha a blob a `.csv` bővítmény bárhol jön létre a Storage-fiókban a `folderPath` és `fileName` tulajdonságok rögzítése az új blob helyét. Például `@triggerBody().folderPath` értéke például `/containername/foldername/nestedfoldername` és `@triggerBody().fileName` értéke például `filename.csv`. Ezek az értékek vannak leképezve a példában a folyamat paramétereihez `sourceFolder` és `sourceFile`. Használhatja őket, a folyamat során `@pipeline.parameters.sourceFolder` és `@pipeline.parameters.sourceFile` jelölik.
+Ha például az az előző képernyőképen látható. az eseményindító aktiválódik, amikor egy blob elérési útja a végződésű van konfigurálva `.csv` jön létre a Tárfiókot. Eredményként, ha a blob a `.csv` bővítmény bárhol jön létre a Storage-fiókban a `folderPath` és `fileName` tulajdonságok rögzítése az új blob helyét. Például `@triggerBody().folderPath` értéke például `/containername/foldername/nestedfoldername` és `@triggerBody().fileName` értéke például `filename.csv`. Ezek az értékek vannak leképezve a példában a folyamat paramétereihez `sourceFolder` és `sourceFile`. Használhatja őket, a folyamat során `@pipeline().parameters.sourceFolder` és `@pipeline().parameters.sourceFile` jelölik.
 
 ## <a name="json-schema"></a>JSON-sémája
 

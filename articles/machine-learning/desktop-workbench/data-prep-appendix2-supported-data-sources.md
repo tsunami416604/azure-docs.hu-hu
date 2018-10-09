@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 02/01/2018
 ROBOTS: NOINDEX
-ms.openlocfilehash: c4686bf01031e30bd9dc94f42d80da524db82931
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: eb84638e2996b0ee9bd5a580b7e827ea30d0ab21
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46969257"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48855986"
 ---
 # <a name="supported-data-sources-for-azure-machine-learning-data-preparation"></a>Támogatott adatforrások az Azure Machine Learning adat-előkészítés 
 
@@ -115,7 +115,7 @@ Horizontális felskálázás végrehajtási képességek olvasása a Spark a par
 A helyi merevlemezre vagy egy csatlakoztatott hálózati tárhelyet.
 
 ### <a name="sql-server"></a>SQL Server
-Helyszíni SQL Server, vagy az Azure SQL database.
+Helyszíni SQL server vagy az Azure SQL database.
 
 ### <a name="azure-blob-storage"></a>Azure Blob Storage
 Az Azure Blob storage, amely egy Azure-előfizetés szükséges.

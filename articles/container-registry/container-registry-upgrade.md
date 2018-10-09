@@ -2,17 +2,17 @@
 title: A klasszikus Azure-tároló beállításjegyzékének frissítése
 description: Kihasználhatja a kibontott szolgáltatáskészletére vonatkozóan a Basic, Standard és prémium szintű tároló-beállításjegyzékek felügyelt a nem felügyelt klasszikus tárolóregisztrációs adatbázis frissítésével.
 services: container-registry
-author: mmacy
+author: dlepow
 ms.service: container-registry
 ms.topic: article
 ms.date: 08/28/2018
-ms.author: marsma
-ms.openlocfilehash: 951866c1c74cb14536ea341d80c06e0fcfe0e4fe
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.author: danlep
+ms.openlocfilehash: fd22677c2acc9e61abc082b3515a817c01c163cb
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44025588"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48855969"
 ---
 # <a name="upgrade-a-classic-container-registry"></a>Klasszikus tároló-beállításjegyzék frissítése
 

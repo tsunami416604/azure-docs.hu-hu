@@ -11,17 +11,17 @@ author: DhruvMsft
 ms.author: dmalik
 ms.reviewer: genemi, vanto
 manager: craigg
-ms.date: 06/14/2018
-ms.openlocfilehash: 50e88dd11b8a883a4d2999ad2d0419cbf7176078
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.date: 10/05/2018
+ms.openlocfilehash: f21614757716b860c25436acfa7b6275cd848109
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47161148"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48868207"
 ---
-# <a name="use-powershell-to-create-a-virtual-service-endpoint-and-rule-for-azure-sql-database-and-sql-data-warehouse"></a>Virtuális szolgáltatásvégpont és a szabály az Azure SQL Database és az SQL Data Warehouse létrehozása PowerShell használatával
+# <a name="powershell--create-a-virtual-service-endpoint-and-vnet-rule-for-sql"></a>PowerShell: Hozzon létre egy virtuális szolgáltatás végpontját és a VNet szabály SQL
 
-Mindkét Azure [SQL Database](sql-database-technical-overview.md) és [SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) virtuális Szolgáltatásvégpontok támogatja. 
+Mindkét Azure [SQL Database](sql-database-technical-overview.md) és [SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) virtuális Szolgáltatásvégpontok támogatja.
 
 > [!NOTE]
 > Ez a témakör az Azure SQL Server-kiszolgálókra, valamint az Azure SQL Serveren létrehozott SQL Database- és SQL Data Warehouse-adatbázisokra vonatkozik. Az egyszerűség kedvéért a jelen témakörben az SQL Database és az SQL Data Warehouse megnevezése egyaránt SQL Database.
@@ -36,52 +36,43 @@ A szabályok létrehozásához motivációit mutatjuk be: [virtuális Szolgálta
 > [!TIP]
 > Ha szüksége, mérje fel, vagy adja hozzá a virtuális szolgáltatásvégpont *típusnév* az SQL Database, az alhálózatra, áttérhet a szélesebb [PowerShell-parancsprogram közvetlen](#a-verify-subnet-is-endpoint-ps-100).
 
-#### <a name="major-cmdlets"></a>Fő parancsmagok
+## <a name="major-cmdlets"></a>Fő parancsmagok
 
-Ez a cikk területdiagram nevű parancsmagot **új New-AzureRmSqlServerVirtualNetworkRule**, amely az alhálózat-végpont hozzáadása az Azure SQL Database-kiszolgáló, ezáltal olyan szabályt hoz létre hozzáférés-vezérlési lista (ACL).
+Ez a cikk emeli ki a **új New-AzureRmSqlServerVirtualNetworkRule** parancsmag, amely hozzáadja az alhálózat végpont a hozzáférés-vezérlési lista (ACL) az Azure SQL Database-kiszolgáló, ezáltal a szabályok létrehozásához.
 
 Az alábbi lista tartalmazza a sorozat egyéb *fő* parancsmagok, amelyek futtatnia kell a hívás előkészítése **új New-AzureRmSqlServerVirtualNetworkRule**. Ez a cikk ezeket a hívásokat fordulnak elő [parancsfájl 3 "virtuális hálózati szabály"](#a-script-30):
 
 1. [Új AzureRmVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/azurerm.network/new-azurermvirtualnetworksubnetconfig): egy alhálózat objektumot hoz létre.
-
 2. [Új-AzureRmVirtualNetwork](https://docs.microsoft.com/powershell/module/azurerm.network/new-azurermvirtualnetwork): a virtuális hálózatot hoz létre az alhálózat számára.
-
 3. [Set-AzureRmVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/azurerm.network/Set-AzureRmVirtualNetworkSubnetConfig): az alhálózat egy virtuális végpontot rendel.
-
 4. [Set-AzureRmVirtualNetwork](https://docs.microsoft.com/powershell/module/azurerm.network/Set-AzureRmVirtualNetwork): továbbra is fennáll a frissítések a virtuális hálózat.
-
 5. [Új AzureRmSqlServerVirtualNetworkRule](https://docs.microsoft.com/powershell/module/azurerm.sql/new-azurermsqlservervirtualnetworkrule): Miután az alhálózat egy végpontot, hozzáadja az alhálózat egy virtuális hálózati szabály, az ACL-t az Azure SQL Database-kiszolgáló.
-    - A paraméter kínál **- IgnoreMissingVnetServiceEndpoint**, már akár az Azure RM PowerShell-modul 5.1.1-es verzió.
+   - Ez a parancsmag kínál a paraméter **- IgnoreMissingVNetServiceEndpoint**, már akár az Azure RM PowerShell-modul 5.1.1-es verzió.
 
-#### <a name="prerequisites-for-running-powershell"></a>Futtatja a Powershellt előfeltételei
+## <a name="prerequisites-for-running-powershell"></a>Futtatja a Powershellt előfeltételei
 
 - Már bejelentkezhet az Azure-ba, mint például keresztül a [az Azure portal][http-azure-portal-link-ref-477t].
 - PowerShell-szkriptek már futtathatja.
 
 > [!NOTE]
-> Győződjön meg arról, hogy a Szolgáltatásvégpontok a virtuális hálózat/alhálózat, amelyeket szeretne hozzáadni a kiszolgálóhoz ellenkező esetben a Vnet tűzfalszabály létrehozása sikertelen lesz vannak kapcsolva.
+> Győződjön meg arról, hogy a Szolgáltatásvégpontok a virtuális hálózat/alhálózat, amelyeket szeretne hozzáadni a kiszolgálóhoz ellenkező esetben a VNet tűzfalszabály létrehozása sikertelen lesz vannak kapcsolva.
 
-#### <a name="one-script-divided-into-four-chunks"></a>Egy parancsprogram négy adattömbök felosztva
+## <a name="one-script-divided-into-four-chunks"></a>Egy parancsprogram négy adattömbök felosztva
 
 A PowerShell-parancsprogram bemutató kisebb parancsfájlok sorozatát oszlik. A részleg megkönnyíti a tanulási és rugalmasságot biztosít. A parancsfájlok a megjelölt sorrendben kell futtatni. Ha nem rendelkeznek aktuális idő a szkriptek futtatására, a tényleges tesztkimenet szkript 4 után jelenik meg.
 
-
-
-
-
-
 <a name="a-script-10" />
 
-## <a name="script-1-variables"></a>Parancsfájl-1: változók
+### <a name="script-1-variables"></a>Parancsfájl-1: változók
 
 Az első PowerShell-parancsprogram értékeket rendel a változókat. Az ezt követő parancsfájlok attól függ, hogy ezeket a változókat.
 
 > [!IMPORTANT]
 > Mielőtt ezt a szkriptet futtatta, igény szerint szerkesztheti az értékeket. Például ha már rendelkezik erőforráscsoporttal, érdemes az erőforráscsoport nevét a hozzárendelt érték szerkesztéséhez.
 >
->  Az előfizetés nevét módosítani kell a parancsfájlba.
+> Az előfizetés nevét módosítani kell a parancsfájlba.
 
-#### <a name="powershell-script-1-source-code"></a>PowerShell parancsfájl 1 forráskód
+### <a name="powershell-script-1-source-code"></a>PowerShell parancsfájl 1 forráskód
 
 ```powershell
 ######### Script 1 ########################################
@@ -119,20 +110,16 @@ $ServiceEndpointTypeName_SqlDb = 'Microsoft.Sql';  # Official type name.
 Write-Host 'Completed script 1, the "Variables".';
 ```
 
-
-
-
-
 <a name="a-script-20" />
 
-## <a name="script-2-prerequisites"></a>Parancsfájl-2: Előfeltételek
+### <a name="script-2-prerequisites"></a>Parancsfájl-2: Előfeltételek
 
 Ez a parancsfájl előkészíti a következő szkriptet, ahol a végpont beavatkozásra. Ez a szkript létrehoz az Ön számára a következő elemek, de csak listában, ha azok nem léteznek. Szkript 2 kihagyhatja, ha biztos benne, hogy ezek az elemek már létezik:
 
 - Azure-erőforráscsoport
 - Azure SQL Database-kiszolgáló
 
-#### <a name="powershell-script-2-source-code"></a>PowerShell parancsfájl 2 forráskód
+### <a name="powershell-script-2-source-code"></a>PowerShell parancsfájl 2 forráskód
 
 ```powershell
 ######### Script 2 ########################################
@@ -214,18 +201,13 @@ $sqlDbServer                 = $null;
 Write-Host 'Completed script 2, the "Prerequisites".';
 ```
 
-
-
-
-
-
 <a name="a-script-30" />
 
 ## <a name="script-3-create-an-endpoint-and-a-rule"></a>Parancsfájl 3: A végpont és a egy szabály létrehozása
 
 Ez a szkript létrehoz egy virtuális hálózat alhálózatához. Ezután a parancsfájl hozzárendeli a **Microsoft.Sql** típusú végpont az alhálózathoz. Végül pedig a parancsfájl az SQL Database-kiszolgálóhoz, és ezáltal a szabály létrehozása a hozzáférés-vezérlési lista (ACL) ad hozzá az alhálózat.
 
-#### <a name="powershell-script-3-source-code"></a>PowerShell parancsfájl 3 forráskód
+### <a name="powershell-script-3-source-code"></a>PowerShell parancsfájl 3 forráskód
 
 ```powershell
 ######### Script 3 ########################################
@@ -302,13 +284,8 @@ $vnetRuleObject2 = Get-AzureRmSqlServerVirtualNetworkRule `
 
 $vnetRuleObject2;
 
-Write-Host 'Completed script 3, the "Virtual-Netowrk-Rule".';
+Write-Host 'Completed script 3, the "Virtual-Network-Rule".';
 ```
-
-
-
-
-
 
 <a name="a-script-40" />
 
@@ -321,7 +298,7 @@ A végső parancsfájl törli a bemutató a korábbi parancsfájlok létrehozott
 
 Szkript 4 1 parancsfájl befejezése után bármikor futtathatja.
 
-#### <a name="powershell-script-4-source-code"></a>PowerShell-szkript 4 forráskód
+### <a name="powershell-script-4-source-code"></a>PowerShell-szkript 4 forráskód
 
 ```powershell
 ######### Script 4 ########################################
@@ -371,14 +348,14 @@ $yesno = Read-Host 'CAUTION !: Do you want to DELETE your Azure SQL Database ser
 if ('yes' -eq $yesno)
 {
     Write-Host "Remove the Azure SQL DB server.";
-    
+
     Remove-AzureRmSqlServer `
       -ServerName        $SqlDbServerName `
       -ResourceGroupName $ResourceGroupName `
       -ErrorAction       SilentlyContinue;
-    
+
     Write-Host "Remove the Azure Resource Group.";
-    
+
     Remove-AzureRmResourceGroup `
       -Name        $ResourceGroupName `
       -ErrorAction SilentlyContinue;
@@ -391,18 +368,13 @@ else
 Write-Host 'Completed script 4, the "Clean-Up".';
 ```
 
-
-
-
-
-
 <a name="a-actual-output" />
 
 ## <a name="actual-output-from-scripts-1-through-4"></a>1 – 4 parancsfájlok tényleges kimenete
 
 A tesztfuttatás kimenete ezután megjelenik egy rövidített formátumban. A kimenet jelenthet, abban az esetben, ha nem szeretné, hogy futtatja a PowerShell-parancsfájlok most ténylegesen.
 
-```
+```cmd
 [C:\WINDOWS\system32\]
 0 >> C:\Demo\PowerShell\sql-database-vnet-service-endpoint-powershell-s1-variables.ps1
 Do you need to log into Azure (only one time per powershell.exe session)?  [yes/no]: yes
@@ -413,7 +385,7 @@ Account               : xx@microsoft.com
 TenantId              : 11111111-1111-1111-1111-111111111111
 SubscriptionId        : 22222222-2222-2222-2222-222222222222
 SubscriptionName      : MySubscriptionName
-CurrentStorageAccount : 
+CurrentStorageAccount :
 
 
 
@@ -426,7 +398,7 @@ Creating your missing Resource Group - RG-YourNameHere.
 ResourceGroupName : RG-YourNameHere
 Location          : westcentralus
 ProvisioningState : Succeeded
-Tags              : 
+Tags              :
 ResourceId        : /subscriptions/22222222-2222-2222-2222-222222222222/resourceGroups/RG-YourNameHere
 
 Check whether your Azure SQL Database server already exists.
@@ -438,14 +410,12 @@ ResourceGroupName        : RG-YourNameHere
 ServerName               : mysqldbserver-forvnet
 Location                 : westcentralus
 SqlAdministratorLogin    : ServerAdmin
-SqlAdministratorPassword : 
+SqlAdministratorPassword :
 ServerVersion            : 12.0
-Tags                     : 
-Identity                 : 
+Tags                     :
+Identity                 :
 
 Completed script 2, the "Prerequisites".
-
-
 
 [C:\WINDOWS\system32\]
 0 >> C:\Demo\PowerShell\sql-database-vnet-service-endpoint-powershell-s3-vnet-rule.ps1
@@ -457,15 +427,13 @@ Persist the updates made to the virtual network > subnet.
 
 Get the subnet object.
 Add the subnet .Id as a rule, into the ACLs for your Azure SQL Database server.
-ProvisioningState Service       Locations      
------------------ -------       ---------      
+ProvisioningState Service       Locations
+----------------- -------       ---------
 Succeeded         Microsoft.Sql {westcentralus}
-                                               
+
 Verify that the rule is in the SQL DB ACL.
-                                               
+
 Completed script 3, the "Virtual-Network-Rule".
-
-
 
 [C:\WINDOWS\system32\]
 0 >> C:\Demo\PowerShell\sql-database-vnet-service-endpoint-powershell-s4-clean-up.ps1
@@ -482,10 +450,10 @@ ResourceGroupName        : RG-YourNameHere
 ServerName               : mysqldbserver-forvnet
 Location                 : westcentralus
 SqlAdministratorLogin    : ServerAdmin
-SqlAdministratorPassword : 
+SqlAdministratorPassword :
 ServerVersion            : 12.0
-Tags                     : 
-Identity                 : 
+Tags                     :
+Identity                 :
 
 Remove the Azure Resource Group.
 True
@@ -493,10 +461,6 @@ Completed script 4, the "Clean-Up".
 ```
 
 Ez az a fő PowerShell-szkript végén.
-
-
-
-
 
 <a name="a-verify-subnet-is-endpoint-ps-100" />
 
@@ -510,7 +474,7 @@ Vagy, akkor előfordulhat, hogy nem tudja, hogy hogy rendelkezik-e az alhálóza
 2. Igény szerint rendelje hozzá a típusnév, ha nincs megadva.
     - A parancsprogram kéri, hogy *megerősítése*, mielőtt vonatkozik a hiányzó típus neve.
 
-#### <a name="phases-of-the-script"></a>A parancsfájl fázisai
+### <a name="phases-of-the-script"></a>A parancsfájl fázisai
 
 A PowerShell-parancsfájl fázisai a következők:
 
@@ -522,7 +486,7 @@ A PowerShell-parancsfájl fázisai a következők:
 > [!IMPORTANT]
 > Ez a szkript futtatása, szerkesztenie kell a $változók, a parancsfájl elején rendelt értékeket.
 
-#### <a name="direct-powershell-source-code"></a>A közvetlen forráskódot PowerShell
+### <a name="direct-powershell-source-code"></a>A közvetlen forráskódot PowerShell
 
 A PowerShell-parancsprogram nem frissíti semmit, kivéve, ha az Igen válaszol, ha jóváhagyást kér. A parancsfájl adhat hozzá a típusnév **Microsoft.Sql** az alhálózathoz. De a parancsfájl megpróbálja hozzáadása csak akkor, ha az alhálózat nem rendelkezik a típusnév.
 
@@ -618,7 +582,7 @@ for ($nn=0; $nn -lt $vnet.Subnets.Count; $nn++)
 { $vnet.Subnets[0].ServiceEndpoints; }  # Display.
 ```
 
-#### <a name="actual-output"></a>Aktuális kimenete
+### <a name="actual-output"></a>Aktuális kimenete
 
 A következő blokkot a tényleges visszajelzés (formai módosításokat) jeleníti meg.
 
@@ -633,7 +597,7 @@ Account               : xx@microsoft.com
 TenantId              : 11111111-1111-1111-1111-111111111111
 SubscriptionId        : 22222222-2222-2222-2222-222222222222
 SubscriptionName      : MySubscriptionName
-CurrentStorageAccount : 
+CurrentStorageAccount :
 
 
 ProvisioningState : Succeeded
@@ -644,12 +608,8 @@ Good: Subnet found, and is already tagged as an endpoint of type 'Microsoft.Sql'
 #>
 ```
 
-
-
-
 <!-- Link references: -->
 
 [sql-db-vnet-service-endpoint-rule-overview-735r]: sql-database-vnet-service-endpoint-rule-overview.md
 
 [http-azure-portal-link-ref-477t]: https://portal.azure.com/
-

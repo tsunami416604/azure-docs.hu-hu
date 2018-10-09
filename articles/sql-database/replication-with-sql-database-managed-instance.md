@@ -12,12 +12,12 @@ ms.author: xiwu
 ms.reviewer: mathoma
 manager: craigg
 ms.date: 09/25/2018
-ms.openlocfilehash: 95c27bcc99f08cb1e4998e43a6a2abd508bee0ac
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 25d13ba53eb5a8b411a557b5eaf05d278faa3733
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47228366"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48869312"
 ---
 # <a name="replication-with-sql-database-managed-instance"></a>A replikáció az SQL Database felügyelt példánya
 
@@ -76,21 +76,22 @@ A következőket támogatja:
 
 ## <a name="configure-publishing-and-distribution-example"></a>Közzététel és terjesztés példa konfigurálása
 
-1. [Hozzon létre egy Azure SQL Database felügyelt példányába](http://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-create-tutorial-portal) a portálon.
+1. [Hozzon létre egy Azure SQL Database felügyelt példányába](sql-database-managed-instance-create-tutorial-portal.md) a portálon.
+2. [Hozzon létre egy Azure Storage-fiók](http://docs.microsoft.com/azure/storage/common/storage-create-storage-account#create-a-storage-account) a munkakönyvtárhoz.
 
-1. [Hozzon létre egy Azure Storage-fiók](http://docs.microsoft.com/azure/storage/common/storage-create-storage-account#create-a-storage-account) a munkakönyvtárhoz. Győződjön meg arról, a tárelérési kulcsok másolása. Lásd: [megtekintése és másolása tárelérési kulcsok](http://docs.microsoft.com/azure/storage/common/storage-create-storage-account#manage-your-storage-access-keys).
-
-1. Hozzon létre egy adatbázist a közzétevőre vonatkozóan.
+   Győződjön meg arról, a tárelérési kulcsok másolása. Lásd: [megtekintése és másolása tárelérési kulcsok](../storage/common/storage-account-manage.md#access-keys
+).
+3. Hozzon létre egy adatbázist a közzétevőre vonatkozóan.
 
    Cserélje le az alábbi parancsfájlpéldákat `<Publishing_DB>` e adatbázis nevére.
 
-1. Hozzon létre egy adatbázis-felhasználót a terjesztő SQL-hitelesítés. Látható, [adatbázis-felhasználók létrehozása](http://docs.microsoft.com/azure/sql-database/sql-database-security-tutorial#creating-database-users). Használjon biztonságos jelszót.
+4. Hozzon létre egy adatbázis-felhasználót a terjesztő SQL-hitelesítés. Látható, [adatbázis-felhasználók létrehozása](http://docs.microsoft.com/azure/sql-database/sql-database-security-tutorial#creating-database-users). Használjon biztonságos jelszót.
 
    Használja az alábbi parancsfájlpéldákat `<SQL_USER>` és `<PASSWORD>` az SQL Server-fiók adatbázis-felhasználót és a jelszót.
 
-1. [Csatlakozás az SQL Database felügyelt példány](http://docs.microsoft.com/azure/sql-database/sql-database-connect-query-ssms).
+5. [Csatlakozás az SQL Database felügyelt példány](http://docs.microsoft.com/azure/sql-database/sql-database-connect-query-ssms).
 
-1. Futtassa a következő lekérdezést a terjesztőn és a terjesztési adatbázis hozzáadása.
+6. Futtassa a következő lekérdezést a terjesztőn és a terjesztési adatbázis hozzáadása.
 
    ```sql
    USE [master]
@@ -99,7 +100,7 @@ A következőket támogatja:
    EXEC sp_adddistributiondb @database = N'distribution';
    ```
 
-1. Megadott terjesztési adatbázis közzétevő konfigurálása, frissítése és a feloldását kérte lekérdezés futtatásához.
+7. Egy megadott terjesztési adatbázis közzétevő konfigurálása, frissítése és a következő lekérdezés futtatásával.
 
    Cserélje le `<SQL_USER>` és `<PASSWORD>` az SQL Server-fiók és jelszó.
 
@@ -107,7 +108,7 @@ A következőket támogatja:
 
    Cserélje le `<STORAGE_CONNECTION_STRING>` a kapcsolati karakterláncra az **hozzáférési kulcsok** a Microsoft Azure storage-fiók fülre.
 
-   Miután frissítette a következő lekérdezést, futtassa. 
+   Miután frissítette a következő lekérdezést, futtassa.
 
    ```sql
    USE [master]
@@ -121,7 +122,7 @@ A következőket támogatja:
    GO
    ```
 
-1. Konfigurálja a replikáció közzétevő. 
+8. Konfigurálja a replikáció közzétevő.
 
     Cserélje le a következő lekérdezést, `<Publishing_DB>` a közzétevői adatbázis nevével.
 
@@ -155,15 +156,13 @@ A következőket támogatja:
                 @job_password = N'<PASSWORD>'
    ```
 
-1. Adja hozzá a cikkben, az előfizetés és a leküldéses előfizetési ügynök. 
+9. Adja hozzá a cikkben, az előfizetés és a leküldéses előfizetési ügynök.
 
    Adja hozzá ezeket az objektumokat, frissítse az alábbi parancsfájlt.
 
-   Cserélje le `<Object_Name>` a kiadvány-objektum nevével.
-
-   Cserélje le `<Object_Schema>` a forrás sémájának nevét. 
-
-   Cserélje le a csúcsos zárójelpárban van a többi paraméter `<>` azokra az értékekre a korábbi parancsfájlok. 
+   - Cserélje le `<Object_Name>` a kiadvány-objektum nevével.
+   - Cserélje le `<Object_Schema>` a forrás sémájának nevét.
+   - Cserélje le a csúcsos zárójelpárban van a többi paraméter `<>` azokra az értékekre a korábbi parancsfájlok.
 
    ```sql
    EXEC sp_addarticle @publication = N'<Publication_Name>',
@@ -183,7 +182,7 @@ A következőket támogatja:
                 @subscriber_security_mode = 0,
                 @subscriber_login = N'<SQL_USER>',
                 @subscriber_password = N'<PASSWORD>',
-                @job_login = N'<SQL_USER>', 
+                @job_login = N'<SQL_USER>',
                 @job_password = N'<PASSWORD>'
    GO
    ```

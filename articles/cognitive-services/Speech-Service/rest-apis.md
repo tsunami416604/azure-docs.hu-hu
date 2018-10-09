@@ -8,20 +8,20 @@ ms.technology: speech
 ms.topic: article
 ms.date: 05/09/2018
 ms.author: v-jerkin
-ms.openlocfilehash: cc73be09cec4ef963a496687d112f98e05d98802
-ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
+ms.openlocfilehash: 8a441f43a5d7ab3daa3c430dc715fab9ff8c63bb
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48018519"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48868309"
 ---
 # <a name="speech-service-rest-apis"></a>Beszédszolgáltatás REST API-k
 
-Az az Azure Cognitive Services – REST API-k egységes Speech service hasonlóak az API-k által biztosított a [Bing Speech API](https://docs.microsoft.com/azure/cognitive-services/Speech). A végpontok a végpontokat, a Bing Speech-szolgáltatás által használt eltérnek. Regionális végpontok érhetők el, és a egy előfizetési kulcsot, amely megfelel a végpontot használja kell használnia.
+A REST API-k az Azure Cognitive Services beszéd szolgáltatás hasonlóak az API-k által biztosított a [Bing Speech API](https://docs.microsoft.com/azure/cognitive-services/Speech). A végpontok a végpontokat, a Bing Speech-szolgáltatás által használt eltérnek. Regionális végpontok érhetők el, és a egy előfizetési kulcsot, amely megfelel a végpontot használja kell használnia.
 
 ## <a name="speech-to-text"></a>Diktálás
 
-A végpontok a Speech to Text REST API az alábbi táblázatban láthatók. Használja az egyik, amely megfelel az előfizetés régiót.
+A végpontok a Speech to Text REST API az alábbi táblázatban láthatók. Használja az egyik, amely megfelel az előfizetés régiót. Referencia a **felismerés módok** cserélje le az alábbi szakasz `conversation` mindkettővel `interactive` vagy `dictation` számára a kívánt sceanrio egy adott API-hívással.
 
 [!INCLUDE [](../../../includes/cognitive-services-speech-service-endpoints-speech-to-text.md)]
 
@@ -29,6 +29,53 @@ A végpontok a Speech to Text REST API az alábbi táblázatban láthatók. Hasz
 > Ha testre szabta az akusztikai modell vagy a nyelvi modell, vagy a írásmódja, használja az egyéni végpontra.
 
 Az API-t csak rövid beszédet támogat. Kérelmek legfeljebb 10 másodpercet, hang és tartalmazhat az elmúlt 14 másodperc teljes legfeljebb. A REST API-t csak végső eredményt, nem átmeneti vagy részleges eredményt adja vissza. A beszédfelismerési szolgáltatás is rendelkezik egy [beszédátírási batch](batch-transcription.md) API, amely hosszabb hang is lefényképezze.
+
+### <a name="recognition-modes"></a>Elismerés módok
+
+Használatakor a REST API vagy a WebSocket protokoll közvetlenül kell felismerés módja: `interactive`, `conversation`, vagy `dictation`. A beszédfelismerést mód beszédfelismerés hogyan a felhasználók valószínűleg beszéd alapján állítja be. Válassza ki a megfelelő mód az alkalmazáshoz.
+
+> [!NOTE]
+> Elismerés módok másként lehet a REST protokoll, mint ők a WebSocket protokoll. Például a REST API nem támogatja folyamatos felismerés beszélgetés vagy Diktálás módban is.
+> [!NOTE]
+> Módokban alkalmazandók, ha közvetlenül a REST vagy a WebSocket protokoll használ. A [beszéd SDK](speech-sdk.md) felismerés konfigurációs adja meg a különböző paramétereket használja. További információkért tekintse meg az ügyféloldali kódtár a választott.
+
+A Microsoft beszédfelismerési szolgáltatás minden felismerés mód csak egy felismerés kifejezés eredményét adja vissza. Minden olyan egyetlen utterance (kifejezés), a 15 másodperces időtúllépési korlát van, amikor közvetlenül a REST API vagy a WebSocket protokoll használatával.
+
+#### <a name="interactive-mode"></a>Interaktív mód
+
+A `interactive` mód, a felhasználó rövid kérelmek segítségével, és vár választ egy műveletet az alkalmazás.
+
+Interaktív mód kérelmek jellemzően a a következő jellemzőkkel:
+
+- Felhasználók, hogy a gép és a egy másik emberi beszéd.
+- Alkalmazás felhasználói számára, hogy időben szeretnének tegyük fel, alapján, amit szeretnének tenni az alkalmazást.
+- Beszédmódok általában kapcsolatos legutóbbi 2-3 másodpercet.
+
+#### <a name="conversation-mode"></a>Beszélgetés mód
+
+A `conversation` mód, felhasználók bízott emberi beszélgetésbe.
+
+A következők jellemzően a beszélgetés módhoz készült alkalmazások a következő jellemzőkkel:
+
+- Felhasználók tudják, hogy meghatalmazottjával áll egy másik személynek.
+- A beszédfelismerés növeli az emberi beszélgetések azáltal, hogy legalább az egyik résztvevők a kimondott szöveg.
+- Felhasználók nem mindig tervezi tegyük fel, hogy szeretnének.
+- A felhasználók gyakran a szleng és az egyéb informális speech használhatják.
+
+#### <a name="dictation-mode"></a>Diktálás
+
+A `dictation` mód, felhasználók álmából hosszabb kimondott szöveg az alkalmazás további feldolgozás céljából.
+
+A következők jellemzően a Diktálás módhoz készült alkalmazások a következő jellemzőkkel:
+
+- Felhasználók tudják, hogy meghatalmazottjával áll egy géphez.
+- Felhasználók jelennek meg a speech recognition szöveges eredményt.
+- Felhasználók gyakran megtervezése, amit szeretnének tegyük fel, és a formális nyelvet használja.
+- Felhasználók alkalmaz teljes sentences, amely elmúlt 5 – 8 másodpercben.
+
+> [!NOTE]
+> Diktálás és beszélgetés módban a Microsoft beszédfelismerési szolgáltatás nem ad vissza részleges eredményeket. Ehelyett a szolgáltatás az audio-adatfolyamot csend határokon után állandó kifejezés eredményeket ad vissza. A Microsoft fokozott előfordulhat, hogy ezek folyamatos felismerés módban a felhasználói élmény javítása érdekében a speech protokollt.
+
 
 ### <a name="query-parameters"></a>Lekérdezési paraméterek
 
@@ -55,13 +102,19 @@ A következő mezőket a HTTP-kérés fejlécében érkeznek.
 
 ### <a name="audio-format"></a>Formát zvuku
 
-A törzs a HTTP küldése a hanganyag `PUT` kérelmet. Azt a 16 bites WAV PCM egyetlen csatornát (mono) 16 KHz formátumban kell lennie.
+A törzs a HTTP küldése a hanganyag `PUT` kérelmet. Azt a 16 bites WAV PCM egyetlen csatornát (mono) a következő formátumok/kódování 16 KHz formátumban kell lennie.
+
+* WAV PCM kodek formátumban
+* OPUS kodekkel OGG formátum
+
+>[!NOTE]
+>A fenti formátumok REST API-t és a WebSocket a Speech Service-ben támogatottak. A [beszéd SDK](/index.yml) jelenleg csak támogatja a WAV PCM kodekkel formázása. 
 
 ### <a name="chunked-transfer"></a>Darabolásos átvitel
 
 Darabolásos átvitel (`Transfer-Encoding: chunked`) segít minimálisra csökkenteni a felismerés késés, mert lehetővé teszi a beszédfelismerési szolgáltatás feldolgozza a hangfájl folyamatban átvitel közben. A REST API-t nem biztosít részleges vagy köztes eredményeket. Ez a beállítás kizárólag növelni a válaszkészséget a funkcionalitást.
 
-A következő kód azt ábrázolja, hogyan küldhet hang tömbökben. `request` egy HTTPWebRequest objektumot a megfelelő REST-végponthoz csatlakozik. `audioFile` a hangfájl lemezen út.
+A következő kód azt ábrázolja, hogyan küldhet hang tömbökben. Csak az első adatrészletben kell tartalmaznia a hangfájl fejléc. `request` egy HTTPWebRequest objektumot a megfelelő REST-végponthoz csatlakozik. `audioFile` a hangfájl lemezen út.
 
 ```csharp
 using (fs = new FileStream(audioFile, FileMode.Open, FileAccess.Read))

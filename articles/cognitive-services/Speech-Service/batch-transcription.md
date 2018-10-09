@@ -8,16 +8,16 @@ ms.technology: Speech to Text
 ms.topic: article
 ms.date: 04/26/2018
 ms.author: panosper
-ms.openlocfilehash: 860b58a18fbc14532a8591fc753453d60492d3c0
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: e702cb6da3378e460ebb68542d82e736b9f57a52
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46981372"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48857788"
 ---
 # <a name="batch-transcription"></a>Kötegelt átírás
 
-Batch beszédátírási ideális, ha nagy mennyiségű hang rendelkezik. Hangfájlok mutasson, és aszinkron módú beszédátírás visszaszerzésében.
+Batch beszédátírási ideális, ha nagy mennyiségű hang rendelkezik. Hangfájlok URI mutasson, és aszinkron módú beszédátírás visszaszerzésében.
 
 ## <a name="batch-transcription-api"></a>A Batch beszédátírási API
 
@@ -59,7 +59,7 @@ Sztereó audiostreamek lejátszásával, a Batch beszédátírási bontja a bal 
 
 ## <a name="authorization-token"></a>Engedélyezési jogkivonat
 
-Az egyesített beszédszolgáltatás minden szolgáltatását, létrehozhat egy előfizetési kulcsot, a a [az Azure portal](https://portal.azure.com) következő a [első lépések útmutató](get-started.md). Ha azt tervezi, hogy beszédátírás kérhet az eredeti modellt akkor kell tennie. 
+Ahogy a beszédfelismerési szolgáltatás összes funkcióját, létrehozhat egy előfizetési kulcsot, a a [az Azure portal](https://portal.azure.com) következő a [első lépések útmutató](get-started.md). Ha azt tervezi, hogy beszédátírás kérhet az eredeti modellt akkor kell tennie. 
 
 Ha azt tervezi, hogy a testreszabás, és a egy egyéni modell használatával majd hozzá kell subscritpion ezt a kulcsot a custom speech-portál a következőképpen:
 

@@ -17,12 +17,12 @@ ms.date: 07/23/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: d94aaa93596a18cf92b745267a6be9966454e36f
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 7ff7167d60a4c22459622aea6a71130bd1e209fb
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46971548"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48868870"
 ---
 # <a name="v20-protocols---oauth-20-authorization-code-flow"></a>2.0-s protokollok – az OAuth 2.0 hitelesítési kódfolyamat
 
@@ -234,7 +234,9 @@ Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZn
 
 ## <a name="refresh-the-access-token"></a>A hozzáférési jogkivonat frissítéséhez
 
-Access_tokens rövid életűek, és frissítenie kell azokat után folytatja az erőforrások eléréséhez. Ha elküldi egy másik megteheti `POST` kérelmet a `/token` végpont, ezúttal biztosítása a `refresh_token` helyett a `code`:
+Access_tokens rövid életűek, és frissítenie kell azokat után folytatja az erőforrások eléréséhez. Ha elküldi egy másik megteheti `POST` kérelmet a `/token` végpont, ezúttal biztosítása a `refresh_token` helyett a `code`.  Frissítési jogkivonatok érvényesek az összes engedélyt, hogy az ügyfél már megkapta-hozzájárulás, a frissítési jogkivonatok kiadott vonatkozó kérés `scope=mail.read` segítségével egy új hozzáférési jogkivonat a kérelem `scope=api://contoso.com/api/UseResource`.  
+
+Frissítési jogkivonatok nem rendelkezik megadott élettartam. A frissítési biztonsági jogkivonat élettartamának jellemzően viszonylag hosszú. Azonban bizonyos esetekben frissítési biztonsági jogkivonat lejár, vissza lenne vonva, vagy nem rendelkezik megfelelő jogosultsággal a kívánt műveletet. Az alkalmazás várható és kezelni kell [a kiállítási végpont által visszaadott hibák](#error-codes-for-token-endpoint-errors) megfelelően. 
 
 ```
 // Line breaks for legibility only

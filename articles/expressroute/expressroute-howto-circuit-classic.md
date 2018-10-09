@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 07/26/2018
 ms.author: ganesr;cherylmc
-ms.openlocfilehash: 407782ff59147f227f5f34bc3318333093b4f57e
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: 820caf1ef1b5a92ccea066ef1b5fc8e20737ef21
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39283571"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48870419"
 ---
 # <a name="modify-an-expressroute-circuit-using-powershell-classic"></a>PowerShell (klasszikus) használatával egy ExpressRoute-kapcsolatcsoport módosítása
 
@@ -47,7 +47,7 @@ Jelentkezzen be az Azure-fiókjába, használja az alábbi példában:
 
 1. Nyissa meg emelt szintű jogosultságokkal a PowerShell konzolt, és csatlakozzon a fiókjához. A következő példa segít a kapcsolódásban:
 
-  ```powershel
+  ```powershell
   Connect-AzureRmAccount
   ```
 2. Keresse meg a fiókot az előfizetésekben.
@@ -225,7 +225,7 @@ At line:1 char:1
 
 * Az ExpressRoute-kapcsolatcsoport esetében ez a művelet sikeres végrehajtásához az összes virtuális hálózatot kell leválasztása. Ellenőrizze, hogy van-e minden olyan virtuális hálózatok, amelyek kapcsolódnak a kapcsolatcsoportot, ha ez a művelet sikertelen.
 * Ha az ExpressRoute kapcsolatcsoport szolgáltató üzembe helyezési állapota **kiépítési** vagy **kiépített** -e, hogy azok oldalán a kapcsolatcsoport megszüntetése a szolgáltató. Továbbra is erőforrásokat tartalékolnia, és addig, amíg a szolgáltató befejeződött, a kapcsolatcsoport megszüntetése, és értesítést küld nekünk fel díjat.
-* Ha a szolgáltató eltávolította a kapcsolatcsoportot (a szolgáltató kiépítési állapot értéke **nincs kiépítve**), megvan, törölheti a kapcsolatcsoportot. Ezzel leállítja a számlázás a kapcsolatcsoporthoz.
+* Ha a szolgáltató eltávolította a kapcsolatcsoportot (a szolgáltató kiépítési állapot értéke **nincs kiépítve**), megvan, törölheti a kapcsolatcsoportot. Ez leállítja a kapcsolatcsoport számlázását.
 
 #### <a name="delete-a-circuit"></a>Kapcsolatcsoport törlése
 

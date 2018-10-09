@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/14/2018
 ms.author: spelluru
-ms.openlocfilehash: d75f8654a33d670f107508b9e91661b1a7719755
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: adc9d64c4756e055b3ff9b772feebd80902d2c9f
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47408555"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48857873"
 ---
 # <a name="service-bus-access-control-with-shared-access-signatures"></a>A Service Bus hozzáférés-vezérlés közös hozzáférésű jogosultságkódokkal
 
@@ -31,7 +31,7 @@ SAS védelmet nyújt a Service Bus-engedélyezési szabályok alapján való hoz
 
 Közös hozzáférésű Jogosultságkódok olyan egy jogcímalapú engedélyezési mechanizmusa, egyszerű jogkivonatok használatával. Az SAS segítségével kulcsok soha nem továbbítódnak a keresztülhaladnak a hálózaton. Titkosítási szempontból aláírni az adatokat később a szolgáltatás által ellenőrzött kulcsot használnak. SAS is használható egy felhasználónevet és jelszót a rendszer hasonló, ahol az ügyfél-engedélyezési szabály neve és a egy megfelelő kulcsot azonnali birtokában van. SAS is használható hasonlóan egy összevont biztonsági modell, ahol az ügyfél fogad egy időben korlátozott és aláírt jogkivonatokat biztonságijogkivonat-szolgáltatás az aláíró kulcs birtokában minden eddiginél érkező nélkül.
 
-A Service Bus SAS-hitelesítés van konfigurálva a nevű [megosztott hozzáférés-engedélyezési szabályok](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) kellene társított hozzáférési jogosultságokat, és az elsődleges és másodlagos titkosítási kulcsok párjai. A kulcsokat a 256 bites Base64-ábrázolásból értékeket. Szabályokat konfigurálhat a névterek szintjén, a Service Buson [továbbítókat](service-bus-fundamentals-hybrid-solutions.md#relays), [üzenetsorok](service-bus-fundamentals-hybrid-solutions.md#queues), és [témakörök](service-bus-fundamentals-hybrid-solutions.md#topics).
+A Service Bus SAS-hitelesítés van konfigurálva a nevű [megosztott hozzáférés-engedélyezési szabályok](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) kellene társított hozzáférési jogosultságokat, és az elsődleges és másodlagos titkosítási kulcsok párjai. A kulcsokat a 256 bites Base64-ábrázolásból értékeket. Szabályokat konfigurálhat a névterek szintjén, a Service Buson [továbbítókat](../service-bus-relay/relay-what-is-it.md), [üzenetsorok](/service-bus-messaging/service-bus-messaging-overview.md#queues), és [témakörök](/service-bus-messaging/service-bus-messaging-overview.md#topics).
 
 A [közös hozzáférésű Jogosultságkód](/dotnet/api/microsoft.servicebus.sharedaccesssignaturetokenprovider) jogkivonat a kiválasztott engedélyezési szabály, az erőforrás URI-ját az, hogy legyen elérhető, az azonnali, lejárati nevét tartalmazza, és a egy HMAC-SHA256 kriptográfiai aláírás számított át ezeket a mezőket az elsődleges vagy a kiválasztott engedélyezési szabály másodlagos titkosítási kulcsa.
 
@@ -301,7 +301,6 @@ Az alábbi táblázat bemutatja a Service Bus-erőforrások különféle művele
 
 A Service Bus üzenetkezelésről az alábbi témakörökben találhat további információkat.
 
-* [A Service Bus alapjai](service-bus-fundamentals-hybrid-solutions.md)
 * [Service Bus-üzenetsorok, -témakörök és -előfizetések](service-bus-queues-topics-subscriptions.md)
 * [How to use Service Bus Queues](service-bus-dotnet-get-started-with-queues.md) (A Service Bus-üzenetsorok használata)
 * [A Service Bus-üzenettémakörök és -előfizetések használata](service-bus-dotnet-how-to-use-topics-subscriptions.md)

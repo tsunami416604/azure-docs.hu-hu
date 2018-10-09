@@ -14,12 +14,12 @@ ms.date: 09/20/2018
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
-ms.openlocfilehash: 16826ddb2dd76629454137f8ae3d9476b0126e52
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: e8f0077bf5a1a2911b3aec032fadacf31ad75463
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48804582"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48855272"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>Az Azure Active Directory a dinamikus tagsági szabályok
 
@@ -139,6 +139,20 @@ Ha azt szeretné, a felhasználói attribútum több különböző érték össz
 ```
    user.department -in ["50001","50002","50003",“50005”,“50006”,“50007”,“50008”,“50016”,“50020”,“50024”,“50038”,“50039”,“51100”]
 ```
+
+
+### <a name="using-the--match-operator"></a>Használja a - egyezés operátor 
+A **-megfelelő** operátor használata az egyező bármely reguláris kifejezést. Példák:
+
+```
+user.displayName -match "Da.*"   
+```
+Da, Dav, David igaz értéked, akadálymentes kifejezés hamis.
+
+```
+user.displayName -match ".*vid"
+```
+David igaz értéket ad vissza, Da kifejezés hamis.
 
 ## <a name="supported-values"></a>Támogatott értékek
 

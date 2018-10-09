@@ -11,13 +11,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 10/02/2018
-ms.openlocfilehash: 1bcaceb0f4d96b66d7fd25b1733b3f505316fe5a
-ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
+ms.date: 10/05/2018
+ms.openlocfilehash: 660252c987c06a7afd8974a65cd57009b4973a25
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/06/2018
-ms.locfileid: "48830555"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48868292"
 ---
 # <a name="azure-sql-database-purchasing-models"></a>Az Azure SQL Database vásárlási modellek
 
@@ -41,7 +41,7 @@ Az alábbi táblázatos és hasonlítsa össze két vásárlási modell.
 
 ## <a name="vcore-based-purchasing-model"></a>Virtuálismag-alapú vásárlási modell 
 
-Egy virtuális magot és hardver generációja és fizikai jellemzők hardver (például a magok, memória, tároló mérete száma) közül választhat lehetőség elérhető logikai CPU jelöli. A Virtuálismag-alapú vásárlási modell biztosítja a rugalmasságot, a vezérlő, az egyéni erőforrás-használat átláthatósága és közvetlen módon lefordítani a helyszíni tevékenységprofil követelményeinek a felhőben. Ez a modell lehetővé teszi a számítási, memória és a tárolási számítási feladatok igényeik alapján kiválaszthatja. A Virtuálismag-alapú vásárlási modell, választhat [általános célú](sql-database-high-availability.md#standardgeneral-purpose-availability) és [üzletileg kritikus](sql-database-high-availability.md#premiumbusiness-critical-availability) szolgáltatásszintek egyaránt [önálló adatbázisok](sql-database-single-database-scale.md), [ felügyelt példányok](sql-database-managed-instance.md), és [rugalmas készletek](sql-database-elastic-pool.md). Az önálló adatbázisokhoz is választhat a [nagy kapacitású (előzetes verzió)](sql-database-service-tier-hyperscale.md) szolgáltatási szint.
+Egy virtuális magot és hardver generációja és fizikai jellemzők hardver (például a magok, memória, tároló mérete száma) közül választhat lehetőség elérhető logikai CPU jelöli. A Virtuálismag-alapú vásárlási modell biztosítja a rugalmasságot, a vezérlő, az egyéni erőforrás-használat átláthatósága és közvetlen módon lefordítani a helyszíni tevékenységprofil követelményeinek a felhőben. Ez a modell lehetővé teszi a számítási, memória és a tárolási számítási feladatok igényeik alapján kiválaszthatja. A Virtuálismag-alapú vásárlási modell, választhat [általános célú](sql-database-high-availability.md#basic-standard-and-general-purpose-service-tier-availability) és [üzletileg kritikus](sql-database-high-availability.md#premium-and-business-critical-service-tier-availability) szolgáltatásszintek egyaránt [önálló adatbázisok](sql-database-single-database-scale.md), [ felügyelt példányok](sql-database-managed-instance.md), és [rugalmas készletek](sql-database-elastic-pool.md). Az önálló adatbázisokhoz is választhat a [nagy kapacitású (előzetes verzió)](sql-database-service-tier-hyperscale.md) szolgáltatási szint.
 
 A Virtuálismag-alapú vásárlási modell lehetővé teszi, hogy egymástól függetlenül válassza ki a számítási és tárolási erőforrások, a helyszíni teljesítmény és optimalizálás ár. A Virtuálismag-alapú vásárlási modell, az ügyfeleknek kell fizetniük:
 

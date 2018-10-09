@@ -13,12 +13,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 09/16/2018
 ms.author: mbullwin
-ms.openlocfilehash: 7ee1dc7a3e3ae6bff6f2084d7290a37dc999dec7
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 865dfa1f3adbcea5907c309c8cbf2daa30513fd6
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47040211"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48855754"
 ---
 # <a name="application-insights-api-for-custom-events-and-metrics"></a>Application Insights API egyéni eseményekhez és metrikák
 
@@ -28,6 +28,7 @@ Helyezze be néhány sornyi kóddal az alkalmazásban, ismerje meg, milyen felha
 > `TrackMetric()` már nem az előnyben részesített módja a .NET-keretrendszerhez készült egyéni mérőszámok küldése-alapú alkalmazások. A [2.60 – beta 3-as verziójú](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/develop/CHANGELOG.md#version-260-beta3) , az Application Insights .NET SDK egy új módszer [ `TelemetryClient.GetMetric()` ](https://docs.microsoft.com/dotnet/api/microsoft.applicationinsights.telemetryclient.getmetric?view=azure-dotnet) jelent meg. Az Application Insights .NET SDK-tól [verzió 2.72](https://docs.microsoft.com/en-us/dotnet/api/microsoft.applicationinsights.telemetryclient.getmetric?view=azure-dotnet) ezt a funkciót már stabil kiadásában.
 
 ## <a name="api-summary"></a>API összefoglaló
+
 A core API-t a egységes szereplőkkel néhány változata létezik például minden platformon `GetMetric`(csak a .NET).
 
 | Módszer | Használt |
@@ -44,6 +45,7 @@ A core API-t a egységes szereplőkkel néhány változata létezik például mi
 Is [tulajdonságok és a metrikák](#properties) legtöbb telemetriai hívások.
 
 ## <a name="prep"></a>Előkészületek
+
 Ha a hivatkozás még nem rendelkezik az Application Insights SDK:
 
 * Az Application Insights SDK hozzáadása a projekthez:
@@ -59,28 +61,36 @@ Ha a hivatkozás még nem rendelkezik az Application Insights SDK:
     *A Visual Basic:* `Imports Microsoft.ApplicationInsights`
 
     *Java:* `import com.microsoft.applicationinsights.TelemetryClient;`
-    
+
     *NODE.js:* `var applicationInsights = require("applicationinsights");`
 
 ## <a name="get-a-telemetryclient-instance"></a>A TelemetryClient-példány beolvasása
+
 Első példányát `TelemetryClient` (csak a JavaScript weblapokon):
 
 *C#*
 
-    private TelemetryClient telemetry = new TelemetryClient();
+```csharp
+private TelemetryClient telemetry = new TelemetryClient();
+```
 
 *Visual Basic*
 
-    Private Dim telemetry As New TelemetryClient
+```vb
+Private Dim telemetry As New TelemetryClient
+```
 
 *Java*
 
-    private TelemetryClient telemetry = new TelemetryClient();
-    
+```java
+private TelemetryClient telemetry = new TelemetryClient();
+``` 
+
 *Node.js*
 
-    var telemetry = applicationInsights.defaultClient;
-
+```javascript
+var telemetry = applicationInsights.defaultClient;
+```
 
 TelemetryClient szálbiztos.
 
@@ -88,17 +98,22 @@ Az ASP.NET és a Java-projektek a bejövő HTTP-kérések automatikus rögzíté
 
 *C#*
 
-    TelemetryClient.Context.User.Id = "...";
-    TelemetryClient.Context.Device.Id = "...";
+```csharp
+TelemetryClient.Context.User.Id = "...";
+TelemetryClient.Context.Device.Id = "...";
+```
 
 *Java*
 
-    telemetry.getContext().getUser().setId("...);
-    telemetry.getContext().getDevice().setId("...");
+```java
+telemetry.getContext().getUser().setId("...");
+telemetry.getContext().getDevice().setId("...");
+```
 
 A projektek, a Node.js használhatja `new applicationInsights.TelemetryClient(instrumentationKey?)` hozhat létre egy új példányt, de ez csak ajánlott elkülönített konfigurációt az Egypéldányos igénylő forgatókönyvek `defaultClient`.
 
 ## <a name="trackevent"></a>TrackEvent
+
 Az Application insights szolgáltatásban egy *egyéni esemény* van, amely megjelenítheti, hogy egy adatpont [Metrikaböngésző](app-insights-metrics-explorer.md) összegzett darabszámát, és a [diagnosztikai keresés](app-insights-diagnostic-search.md) önálló események. (Ez nem kapcsolódó MVC vagy más keretrendszer "események".)
 
 Helyezze be `TrackEvent` meghívja a kódban történt különféle események számát. Milyen gyakran a felhasználók megadhatják, egy adott funkció, milyen gyakran adott célok eléréséhez, vagy előfordulhat, hogy milyen gyakran vállalnak bizonyos típusú hibákkal.
@@ -107,33 +122,43 @@ Például a játék alkalmazásban, küldünk egy eseményt, amikor egy felhaszn
 
 *JavaScript*
 
-    appInsights.trackEvent("WinGame");
+```javascript
+appInsights.trackEvent("WinGame");
+```
 
 *C#*
 
-    telemetry.TrackEvent("WinGame");
+```csharp
+telemetry.TrackEvent("WinGame");
+```
 
 *Visual Basic*
 
-    telemetry.TrackEvent("WinGame")
+```vb
+telemetry.TrackEvent("WinGame")
+```
 
 *Java*
 
-    telemetry.trackEvent("WinGame");
-    
+```java
+telemetry.trackEvent("WinGame");
+```
+
 *Node.js*
 
-    telemetry.trackEvent({name: "WinGame"});
+```javascript
+telemetry.trackEvent({name: "WinGame"});
+```
 
 ### <a name="custom-events-in-analytics"></a>Egyéni események az Analyticsben
 
-A telemetria érhető el a `customEvents` táblára [Application Insights-elemzési](app-insights-analytics.md). Minden egyes sora jelöl hívása `trackEvent(..)` az alkalmazásban. 
+A telemetria érhető el a `customEvents` táblára [Application Insights-elemzési](app-insights-analytics.md). Minden egyes sora jelöl hívása `trackEvent(..)` az alkalmazásban.
 
 Ha [mintavételi](app-insights-sampling.md) van folyamatban, az elemek száma tulajdonság egy értéket 1-nél nagyobb mutatja. A példában az elemek száma a == 10 azt jelenti, hogy a trackEvent() a 10 hívás a mintavételi folyamata csak továbbított adatok köre az egyiket. Egyéni események megfelelő száma lekéréséhez használjon ezért használható kóddal például `customEvent | summarize sum(itemCount)`.
 
 ## <a name="getmetric"></a>GetMetric
 
-### <a name="examples"></a>Példák:
+### <a name="examples"></a>Példák
 
 *C#*
 
@@ -229,13 +254,13 @@ namespace User.Namespace.Example01
 
 Az Application Insights is diagram, amelyek nem kapcsolódnak az egyes események metrikákat. A várólista hossza például rendszeres időközönként sikerült figyelése. Metrikákkal az egyes mérések érdekesek lehetnek kevesebb, mint a változatok és a trendeket, és így statisztikai diagramok hasznosak.
 
-Annak érdekében, hogy a mérőszámok küldése az Application Insightsba, használhatja a `TrackMetric(..)` API-t. Metrika küldése két módja van: 
+Annak érdekében, hogy a mérőszámok küldése az Application Insightsba, használhatja a `TrackMetric(..)` API-t. Metrika küldése két módja van:
 
-* Egyetlen érték. Minden alkalommal, amikor az alkalmazás egy mérték hajt végre, a megfelelő értéket küld az Application Insights. Vegyük például, hogy rendelkezik-e a tárolóban lévő elemek száma leíró metrikát. Egy adott időszak során először mindössze három elemet a tárolót, és majd két elemet távolít el. Ennek megfelelően a meghívta `TrackMetric` kétszer: először átadott az érték `3` , majd az értéke `-2`. Az Application Insights mindkét értéket tárolja az Ön nevében. 
+* Egyetlen érték. Minden alkalommal, amikor az alkalmazás egy mérték hajt végre, a megfelelő értéket küld az Application Insights. Vegyük például, hogy rendelkezik-e a tárolóban lévő elemek száma leíró metrikát. Egy adott időszak során először mindössze három elemet a tárolót, és majd két elemet távolít el. Ennek megfelelően a meghívta `TrackMetric` kétszer: először átadott az érték `3` , majd az értéke `-2`. Az Application Insights mindkét értéket tárolja az Ön nevében.
 
 * Összesítés. Metrikák az használatakor minden egyetlen mérték ritkán érdekében áll. Ehelyett fontos Mi történt egy adott időszakban összegzését. Az ilyen összegzését nevezzük _összesítési_. A fenti példában az adott időszakra vonatkozó összesített metrika összeg van `1` és száma, a metrikaértékek `2`. Az összesítési módszer használata esetén csak hívhat meg `TrackMetric` egyszer egy adott időszakra vonatkozóan, és az összesített értékek küldje. Ez az az ajánlott módszer, mivel azt jelentősen csökkentheti a költségeket és a teljesítmény terhelés küldésével kevesebb adatpontot az Application Insightsba, továbbra is az összes kapcsolódó információt összegyűjtése közben.
 
-### <a name="examples"></a>Példák:
+### <a name="examples"></a>Példák
 
 #### <a name="single-values"></a>Egyetlen értékként
 
@@ -243,67 +268,78 @@ Egy egyetlen metrikaérték küldése:
 
 *JavaScript*
 
- ```Javascript
-     appInsights.trackMetric("queueLength", 42.0);
+ ```javascript
+appInsights.trackMetric("queueLength", 42.0);
  ```
 
 *C#*
 
 ```csharp
-    var sample = new MetricTelemetry();
-    sample.Name = "metric name";
-    sample.Value = 42.3;
-    telemetryClient.TrackMetric(sample);
+var sample = new MetricTelemetry();
+sample.Name = "metric name";
+sample.Value = 42.3;
+telemetryClient.TrackMetric(sample);
 ```
 
 *Java*
 
-```Java
-    
-    telemetry.trackMetric("queueLength", 42.0);
-
+```java
+telemetry.trackMetric("queueLength", 42.0);
 ```
 
 *Node.js*
 
- ```Javascript
-     telemetry.trackMetric({name: "queueLength", value: 42.0});
+ ```javascript
+telemetry.trackMetric({name: "queueLength", value: 42.0});
  ```
 
 ### <a name="custom-metrics-in-analytics"></a>Egyéni metrikák Analytics
 
 A telemetria érhető el a `customMetrics` táblára [Application Insights-elemzési](app-insights-analytics.md). Minden egyes sora jelöl hívása `trackMetric(..)` az alkalmazásban.
+
 * `valueSum` – Ez a mérés összege. A középérték lekéréséhez nullával `valueCount`.
 * `valueCount` -Mérések száma, amelyek jelenleg lettek összesítve `trackMetric(..)` hívja.
 
 ## <a name="page-views"></a>Lapmegtekintések
+
 Lapmegtekintések telemetriai adatai egy eszköz vagy weblap alkalmazásban zajlik alapértelmezés szerint minden képernyőre vagy lapra betöltésekor. Azonban módosíthatja, amely nyomon követéséhez a lapmegtekintések további vagy különböző időpontokban. Például egy adott alkalmazásban, amely megjeleníti a lapok vagy panelek, érdemes nyomon követni egy oldal, amikor a felhasználó egy új panel nyílik meg.
 
 Felhasználói és munkamenetadatok weblapok látogatottságát, valamint tulajdonságokként zajlik, így a felhasználók és munkamenetek diagramok életben származnak, ha nincs a lapmegtekintések telemetriai adatai.
 
 ### <a name="custom-page-views"></a>Egyéni lapmegtekintés
+
 *JavaScript*
 
-    appInsights.trackPageView("tab1");
+```javascript
+appInsights.trackPageView("tab1");
+```
 
 *C#*
 
-    telemetry.TrackPageView("GameReviewPage");
-
-*Java*
-
-    telemetry.trackPageView("GameReviewPage");
+```csharp
+telemetry.TrackPageView("GameReviewPage");
+```
 
 *Visual Basic*
 
-    telemetry.TrackPageView("GameReviewPage")
+```vb
+telemetry.TrackPageView("GameReviewPage")
+```
 
+*Java*
+
+```java
+telemetry.trackPageView("GameReviewPage");
+```
 
 Ha több különböző HTML-lapok utasítások, túl adhatja meg az URL-cím:
 
-    appInsights.trackPageView("tab1", "http://fabrikam.com/page1.htm");
+```javascript
+appInsights.trackPageView("tab1", "http://fabrikam.com/page1.htm");
+```
 
 ### <a name="timing-page-views"></a>Időzítési lapmegtekintés
+
 Alapértelmezés szerint az időpontokat jelentett **lapmegtekintés betöltési ideje** mérik a, amikor a böngésző elküldi a kérést, amíg a böngésző oldal betöltési esemény neve.
 
 Ehelyett közül választhat:
@@ -313,13 +349,15 @@ Ehelyett közül választhat:
 
 *JavaScript*
 
-    // To start timing a page:
-    appInsights.startTrackPage("Page1");
+```javascript
+// To start timing a page:
+appInsights.startTrackPage("Page1");
 
 ...
 
-    // To stop timing and log the page:
-    appInsights.stopTrackPage("Page1", url, properties, measurements);
+// To stop timing and log the page:
+appInsights.stopTrackPage("Page1", url, properties, measurements);
+```
 
 Az első paraméterként a nevet az Indítás és leállítás hívások társítja. A rendszer alapértelmezés szerint az aktuális oldal nevét.
 
@@ -334,23 +372,27 @@ A [Analytics](app-insights-analytics.md) két táblázat böngésző műveleti a
 
 Megkeresése, mennyi időt vesz igénybe a böngésző feldolgozása különböző oldalakat:
 
-```
-browserTimings | summarize avg(networkDuration), avg(processingDuration), avg(totalDuration) by name 
+```kusto
+browserTimings
+| summarize avg(networkDuration), avg(processingDuration), avg(totalDuration) by name
 ```
 
 A különböző böngészők popularities felderítése:
 
-```
-pageViews | summarize count() by client_Browser
+```kusto
+pageViews
+| summarize count() by client_Browser
 ```
 
 Az AJAX-hívások lapmegtekintés társítani, csatlakozik a függőségek:
 
-```
-pageViews | join (dependencies) on operation_Id 
+```kusto
+pageViews
+| join (dependencies) on operation_Id 
 ```
 
 ## <a name="trackrequest"></a>TrackRequest
+
 A kiszolgáló SDK TrackRequest használja a HTTP-kérések naplózására.
 
 Akkor is is meghívhatja, ha szeretné szimulálni a kéréseket a környezetek ahol nem fut webszolgáltatás modul rendelkezik.
@@ -358,6 +400,7 @@ Akkor is is meghívhatja, ha szeretné szimulálni a kéréseket a környezetek 
 Azonban az ajánlott módszer a kérelem telemetriát küldjön, ahol működik-e a kérés egy <a href="#operation-context">műveletkörnyezetet</a>.
 
 ## <a name="operation-context"></a>Műveleti környezet
+
 Telemetriai együtt kapcsolhatja össze műveleti környezet alkalmazásával. A normál kérés-követési modult azért teszi ezt a kivételeket és eseményeket, amelyek nem érkeznek, míg a HTTP-kérés feldolgozása folyamatban van. A [keresési](app-insights-diagnostic-search.md) és [Analytics](app-insights-analytics.md), megtalálhatja minden olyan események, kapcsolódó a kérést a művelet azonosítója.
 
 Lásd: [az Application Insights Telemetriai korreláció](application-insights-correlation.md) korrelációs további részleteiért.
@@ -374,6 +417,7 @@ using (var operation = telemetryClient.StartOperation<RequestTelemetry>("operati
     ...
     telemetryClient.TrackTrace(...); // or other Track* calls
     ...
+
     // Set properties of containing telemetry item--for example:
     operation.Telemetry.ResponseCode = "200";
 
@@ -385,7 +429,7 @@ using (var operation = telemetryClient.StartOperation<RequestTelemetry>("operati
 
 Egy műveleti környezet beállításával együtt `StartOperation` egy Ön által megadott típusú telemetriát elemet hoz létre. Elküldi a telemetriai elem, valamint lezárhatja azokat a műveletet, vagy ha explicit módon hívja `StopOperation`. Ha `RequestTelemetry` a telemetriai adatok típusa időtartamát az időközönkénti közötti indítás és leállítás van beállítva.
 
-Egy művelet hatókörén belül jelentett telemetriai elem "gyermek" ilyen művelet válnak. A művelet környezetek sikerült ágyazható be. 
+Egy művelet hatókörén belül jelentett telemetriai elem "gyermek" ilyen művelet válnak. A művelet környezetek sikerült ágyazható be.
 
 A Keresés a műveleti környezet létrehozásához használt az **kapcsolódó elemek** lista:
 
@@ -399,12 +443,13 @@ A [Application Insights-elemzési](app-insights-analytics.md), show kéri fel a 
 
 Ha [mintavételi](app-insights-sampling.md) van folyamatban, az elemek száma tulajdonság értékét fogja megjeleníteni egy 1-nél nagyobb. A példában az elemek száma a == 10 azt jelenti, hogy trackRequest() a 10 hívás a mintavételi folyamata csak továbbított adatok köre az egyiket. Kérelmek és a kérelmek név szerint szegmentált átlagos időtartamának megfelelő megszámlálása használja például a kódot:
 
-```AIQL
-requests | summarize count = sum(itemCount), avgduration = avg(duration) by name
+```kusto
+requests
+| summarize count = sum(itemCount), avgduration = avg(duration) by name
 ```
 
-
 ## <a name="trackexception"></a>TrackException
+
 Kivételek küldése az Application Insights:
 
 * A [azok megszámlálása](app-insights-metrics-explorer.md), mint arra utalhat, hogy a probléma gyakoriságát.
@@ -414,44 +459,52 @@ A jelentések közé tartozik a hívásláncokat.
 
 *C#*
 
-    try
-    {
-        ...
-    }
-    catch (Exception ex)
-    {
-       telemetry.TrackException(ex);
-    }
+```csharp
+try
+{
+    ...
+}
+catch (Exception ex)
+{
+    telemetry.TrackException(ex);
+}
+```
 
 *Java*
 
-    try {
-        ...
-    } catch (Exception ex) {
-        telemetry.trackException(ex);
-    }
+```java
+try {
+    ...
+} catch (Exception ex) {
+    telemetry.trackException(ex);
+}
+```
 
 *JavaScript*
 
-    try
-    {
-       ...
-    }
-    catch (ex)
-    {
-       appInsights.trackException(ex);
-    }
-    
+```javascript
+try
+{
+    ...
+}
+catch (ex)
+{
+    appInsights.trackException(ex);
+}
+```
+
 *Node.js*
 
-    try
-    {
-       ...
-    }
-    catch (ex)
-    {
-       telemetry.trackException({exception: ex});
-    }
+```javascript
+try
+{
+    ...
+}
+catch (ex)
+{
+    telemetry.trackException({exception: ex});
+}
+```
 
 Az SDK-k számos-komponensek kivételeinek kezelése automatikusan, így mindig nincs explicit módon hívja a TrackException.
 
@@ -459,12 +512,12 @@ Az SDK-k számos-komponensek kivételeinek kezelése automatikusan, így mindig 
 * J2ee-kiszolgálókon: [kivételeket automatikusan észlelt](app-insights-java-get-started.md#exceptions-and-request-failures).
 * JavaScript: Kivételek automatikusan észlelt. Ha szeretné tiltani az automatikus gyűjtését, adjon hozzá egy sort a weblapok beillesztett kódrészlet:
 
-    ```
-    ({
-      instrumentationKey: "your key"
-      , disableExceptionTracking: true
-    })
-    ```
+```javascript
+({
+    instrumentationKey: "your key",
+    disableExceptionTracking: true
+})
+```
 
 ### <a name="exceptions-in-analytics"></a>Kivételek az Analyticsben
 
@@ -472,25 +525,27 @@ A [Application Insights-elemzési](app-insights-analytics.md), kivételek jelenn
 
 Ha [mintavételi](app-insights-sampling.md) van folyamatban, a `itemCount` tulajdonság egy értéket 1-nél nagyobb mutatja. A példában az elemek száma a == 10 azt jelenti, hogy trackexception() hívásait a 10 hívás a mintavételi folyamata csak továbbított adatok köre az egyiket. Kivétel típusa alapján szegmentált kivételek megfelelő számát, amelyet kód például:
 
-```
-exceptions | summarize sum(itemCount) by type
+```kusto
+exceptions
+| summarize sum(itemCount) by type
 ```
 
 A legtöbb fontos stack információ már kinyert külön változók, de egymástól kérheti le a `details` hatékonyabban struktúra. Mivel ez a struktúra dinamikus, az eredmény a várt típussal kell szavazattal. Példa:
 
-```AIQL
+```kusto
 exceptions
 | extend method2 = tostring(details[0].parsedStack[1].method)
 ```
 
 Kivételek társítani a kapcsolódó kéréseket, használja a csatlakozzon:
 
-```
+```kusto
 exceptions
-| join (requests) on operation_Id 
+| join (requests) on operation_Id
 ```
 
 ## <a name="tracktrace"></a>TrackTrace
+
 TrackTrace a segítségével diagnosztizálhatja a problémákat azzal, hogy az Application Insights "útkövetés" küld. Adattömbök diagnosztikai adatokat küld, és vizsgálja meg azokat a [diagnosztikai keresés](app-insights-diagnostic-search.md).
 
 A .NET-ben [adapterek jelentkezzen](app-insights-asp-net-trace-logs.md) külső naplók elküldése a portálra az API használatával.
@@ -499,16 +554,25 @@ A Java nyelven [Standard másolása, például Log4J, a Logback](app-insights-ja
 
 *C#*
 
-    telemetry.TrackTrace(message, SeverityLevel.Warning, properties);
+```csharp
+telemetry.TrackTrace(message, SeverityLevel.Warning, properties);
+```
 
 *Java*
 
-    telemetry.trackTrace(message, SeverityLevel.Warning, properties);
-    
+```java
+telemetry.trackTrace(message, SeverityLevel.Warning, properties);
+```
+
 *Node.js*
 
-    telemetry.trackTrace({message: message, severity:applicationInsights.Contracts.SeverityLevel.Warning, properties:properties});
-
+```javascript
+telemetry.trackTrace({
+    message: message,
+    severity: applicationInsights.Contracts.SeverityLevel.Warning,
+    properties: properties
+});
+```
 
 Az üzenet tartalmát kereshet, de (ellentétben a tulajdonságértékek), nem lehet szűrni.
 
@@ -519,25 +583,22 @@ Emellett is hozzáadhat egy súlyossági szintet az üzenetet. És egyéb teleme
 
 *C#*
 
-```C#
-    var telemetry = new Microsoft.ApplicationInsights.TelemetryClient();
-    telemetry.TrackTrace("Slow database response",
-                   SeverityLevel.Warning,
-                   new Dictionary<string,string> { {"database", db.ID} });
+```csharp
+var telemetry = new Microsoft.ApplicationInsights.TelemetryClient();
+telemetry.TrackTrace("Slow database response",
+                SeverityLevel.Warning,
+                new Dictionary<string,string> { {"database", db.ID} });
 ```
 
 *Java*
 
-```Java
-
-    Map<String, Integer> properties = new HashMap<>();
-    properties.put("Database", db.ID);
-    telemetry.trackTrace("Slow Database response", SeverityLevel.Warning, properties);
-
+```java
+Map<String, Integer> properties = new HashMap<>();
+properties.put("Database", db.ID);
+telemetry.trackTrace("Slow Database response", SeverityLevel.Warning, properties);
 ```
 
 A [keresési](app-insights-diagnostic-search.md), majd könnyen kiszűrheti az összes üzenetet egy adott súlyossági szint, amely egy adott adatbázishoz kapcsolódik.
-
 
 ### <a name="traces-in-analytics"></a>Nyomok Analytics
 
@@ -546,6 +607,7 @@ A [Application Insights-elemzési](app-insights-analytics.md), megjelennek Track
 Ha [mintavételi](app-insights-sampling.md) van folyamatban, az elemek száma tulajdonság egy értéket 1-nél nagyobb mutatja. A példában az elemek száma == 10-es azt jelenti, hogy a 10 hívás `trackTrace()`, mintavételi folyamata továbbított csak az egyiket. Megszerezni a nyomkövetési hívásokat megfelelő számát, használjon ezért kód például `traces | summarize sum(itemCount)`.
 
 ## <a name="trackdependency"></a>TrackDependency
+
 A TrackDependency hívás segítségével nyomon követheti a válaszidők és a sikerességi arányokat kód külső kódnak küldött hívások. Az eredmények a portál függőségi diagramjain jelennek meg.
 
 *C#*
@@ -569,25 +631,24 @@ finally
 
 *Java*
 
-```Java
-    boolean success = false;
-    long startTime = System.currentTimeMillis();
-    try {
-        success = dependency.call();
-    }
-    finally {
-        long endTime = System.currentTimeMillis();
-        long delta = endTime - startTime;
-        RemoteDependencyTelemetry dependencyTelemetry = new RemoteDependencyTelemetry("My Dependency", "myCall", delta, success);
-        telemetry.setTimeStamp(startTime);
-        telemetry.trackDependency(dependencyTelemetry);
-    }
-
+```java
+boolean success = false;
+long startTime = System.currentTimeMillis();
+try {
+    success = dependency.call();
+}
+finally {
+    long endTime = System.currentTimeMillis();
+    long delta = endTime - startTime;
+    RemoteDependencyTelemetry dependencyTelemetry = new RemoteDependencyTelemetry("My Dependency", "myCall", delta, success);
+    telemetry.setTimeStamp(startTime);
+    telemetry.trackDependency(dependencyTelemetry);
+}
 ```
 
 *JavaScript*
 
-```Javascript
+```javascript
 var success = false;
 var startTime = new Date().getTime();
 try
@@ -597,7 +658,12 @@ try
 finally
 {
     var elapsed = new Date() - startTime;
-    telemetry.trackDependency({dependencyTypeName: "myDependency", name: "myCall", duration: elapsed, success:success});
+    telemetry.trackDependency({
+        dependencyTypeName: "myDependency",
+        name: "myCall",
+        duration: elapsed,
+        success: success
+    });
 }
 ```
 
@@ -615,53 +681,57 @@ A [Application Insights-elemzési](app-insights-analytics.md), trackDependency h
 
 Ha [mintavételi](app-insights-sampling.md) van folyamatban, az elemek száma tulajdonság egy értéket 1-nél nagyobb mutatja. A példában az elemek száma a == 10 azt jelenti, hogy trackDependency() a 10 hívás a mintavételi folyamata csak továbbított adatok köre az egyiket. A célként megadott összetevő által szegmentált függőségek megfelelő számát, amelyet kód például:
 
-```
-dependencies | summarize sum(itemCount) by target
+```kusto
+dependencies
+| summarize sum(itemCount) by target
 ```
 
 Függőségek társítani a kapcsolódó kéréseket, használja a csatlakozzon:
 
-```
+```kusto
 dependencies
-| join (requests) on operation_Id 
+| join (requests) on operation_Id
 ```
 
 ## <a name="flushing-data"></a>Könyvelési adatok
+
 Normális esetben az SDK elküldi az adatokat esetenként választotta, a felhasználó gyakorolt hatás minimalizálása érdekében. Azonban bizonyos esetekben előfordulhat, hogy szeretné kiüríteni a puffer – például ha az SDK-t használja egy alkalmazásban, hogy leállítja.
 
 *C#*
- 
- ```C#
-    telemetry.Flush();
-    // Allow some time for flushing before shutdown.
-    System.Threading.Thread.Sleep(5000);
+
+ ```csharp
+telemetry.Flush();
+// Allow some time for flushing before shutdown.
+System.Threading.Thread.Sleep(5000);
 ```
 
 *Java*
 
-```Java
-    telemetry.flush();
-    //Allow some time for flushing before shutting down
-    Thread.sleep(5000);
+```java
+telemetry.flush();
+//Allow some time for flushing before shutting down
+Thread.sleep(5000);
 ```
 
-    
 *Node.js*
 
-    telemetry.flush();
+```javascript
+telemetry.flush();
+```
 
 Vegye figyelembe, hogy a függvény az aszinkron a [kiszolgáló telemetriai csatorna](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel/).
 
 Ideális esetben az alkalmazás leállítása tevékenység flush() metódus használandó.
 
 ## <a name="authenticated-users"></a>Hitelesített felhasználók
+
 A web app alkalmazásban felhasználók (alapértelmezés szerint) azonosítja a cookie-k. A felhasználó számítanak előfordulhat, hogy egynél többször férnek hozzá az alkalmazás egy másik gépen vagy a böngészőben, vagy ha ezek a cookie-k törléséhez.
 
 Ha a felhasználók bejelentkeznek az alkalmazásba, a hitelesített felhasználó azonosítója a böngésző-kód beállításával kaphat egy pontosabb száma:
 
 *JavaScript*
 
-```JS
+```javascript
 // Called when my app has identified the user.
 function Authenticated(signInId) {
     var validatedId = signInId.replace(/[,;=| ]+/g, "_");
@@ -674,14 +744,16 @@ Az ASP.NET-webalkalmazás MVC-alkalmazás, például:
 
 *Razor*
 
-        @if (Request.IsAuthenticated)
-        {
-            <script>
-                appInsights.setAuthenticatedUserContext("@User.Identity.Name
-                   .Replace("\\", "\\\\")"
-                   .replace(/[,;=| ]+/g, "_"));
-            </script>
-        }
+```cshtml
+@if (Request.IsAuthenticated)
+{
+    <script>
+        appInsights.setAuthenticatedUserContext("@User.Identity.Name
+            .Replace("\\", "\\\\")"
+            .replace(/[,;=| ]+/g, "_"));
+    </script>
+}
+```
 
 Nem a tényleges bejelentkezési felhasználónév használata szükséges. Csak azt nem lehet, hogy a felhasználó egyedi Azonosítóját. Nem tartalmazhat szóközt, és a karakterek egyikét sem `,;=|`.
 
@@ -689,13 +761,16 @@ A felhasználói azonosító van is egy munkamenet-cookie-ban és a kiszolgáló
 
 Ha az alkalmazás felhasználók csoportosítja a fiókok, is átadhat a fiók (az azonos karakter korlátozások) azonosítója.
 
-      appInsights.setAuthenticatedUserContext(validatedId, accountId);
+```javascript
+appInsights.setAuthenticatedUserContext(validatedId, accountId);
+```
 
 A [Metrikaböngésző](app-insights-metrics-explorer.md), létrehozhat egy diagram, amely counts **, felhasználók hitelesítése**, és **felhasználói fiókok**.
 
 Emellett [keresési](app-insights-diagnostic-search.md) ügyfél adatpontokhoz az adott felhasználói neveket és fiókok.
 
 ## <a name="properties"></a>Szűrést, a Keresés és az adatok példájaként tulajdonságok felhasználásával
+
 Is csatlakoztathat tulajdonságait és a mértékek az események (, valamint is a metrikákhoz, nézetek, kivételeket és egyéb telemetriai adatokat oldalon).
 
 *Tulajdonságok* olyan karakterlánc-értékek, amelyek segítségével szűrheti a telemetria a használati jelentésekben. Például ha az alkalmazás biztosít több játékok, csatlakoztathat a játék neve minden egyes esemény, hogy melyik játékok további népszerű látható.
@@ -710,91 +785,99 @@ Van azonban néhány [tulajdonságai, a tulajdonságértékeket és a metrikák 
 
 *JavaScript*
 
-    appInsights.trackEvent
-      ("WinGame",
-         // String properties:
-         {Game: currentGame.name, Difficulty: currentGame.difficulty},
-         // Numeric metrics:
-         {Score: currentGame.score, Opponents: currentGame.opponentCount}
-         );
+```javascript
+appInsights.trackEvent
+    ("WinGame",
+        // String properties:
+        {Game: currentGame.name, Difficulty: currentGame.difficulty},
+        // Numeric metrics:
+        {Score: currentGame.score, Opponents: currentGame.opponentCount}
+        );
 
-    appInsights.trackPageView
-        ("page name", "http://fabrikam.com/pageurl.html",
-          // String properties:
-         {Game: currentGame.name, Difficulty: currentGame.difficulty},
-         // Numeric metrics:
-         {Score: currentGame.score, Opponents: currentGame.opponentCount}
-         );
-
+appInsights.trackPageView
+    ("page name", "http://fabrikam.com/pageurl.html",
+        // String properties:
+        {Game: currentGame.name, Difficulty: currentGame.difficulty},
+        // Numeric metrics:
+        {Score: currentGame.score, Opponents: currentGame.opponentCount}
+        );
+```
 
 *C#*
 
-    // Set up some properties and metrics:
-    var properties = new Dictionary <string, string>
-       {{"game", currentGame.Name}, {"difficulty", currentGame.Difficulty}};
-    var metrics = new Dictionary <string, double>
-       {{"Score", currentGame.Score}, {"Opponents", currentGame.OpponentCount}};
+```csharp
+// Set up some properties and metrics:
+var properties = new Dictionary <string, string>
+    {{"game", currentGame.Name}, {"difficulty", currentGame.Difficulty}};
+var metrics = new Dictionary <string, double>
+    {{"Score", currentGame.Score}, {"Opponents", currentGame.OpponentCount}};
 
-    // Send the event:
-    telemetry.TrackEvent("WinGame", properties, metrics);
+// Send the event:
+telemetry.TrackEvent("WinGame", properties, metrics);
+```
 
 *Node.js*
 
-    // Set up some properties and metrics:
-    var properties = {"game": currentGame.Name, "difficulty": currentGame.Difficulty};
-    var metrics = {"Score": currentGame.Score, "Opponents": currentGame.OpponentCount};
+```javascript
+// Set up some properties and metrics:
+var properties = {"game": currentGame.Name, "difficulty": currentGame.Difficulty};
+var metrics = {"Score": currentGame.Score, "Opponents": currentGame.OpponentCount};
 
-    // Send the event:
-    telemetry.trackEvent({name: "WinGame", properties: properties, measurements: metrics});
-
+// Send the event:
+telemetry.trackEvent({name: "WinGame", properties: properties, measurements: metrics});
+```
 
 *Visual Basic*
 
-    ' Set up some properties:
-    Dim properties = New Dictionary (Of String, String)
-    properties.Add("game", currentGame.Name)
-    properties.Add("difficulty", currentGame.Difficulty)
+```vb
+' Set up some properties:
+Dim properties = New Dictionary (Of String, String)
+properties.Add("game", currentGame.Name)
+properties.Add("difficulty", currentGame.Difficulty)
 
-    Dim metrics = New Dictionary (Of String, Double)
-    metrics.Add("Score", currentGame.Score)
-    metrics.Add("Opponents", currentGame.OpponentCount)
+Dim metrics = New Dictionary (Of String, Double)
+metrics.Add("Score", currentGame.Score)
+metrics.Add("Opponents", currentGame.OpponentCount)
 
-    ' Send the event:
-    telemetry.TrackEvent("WinGame", properties, metrics)
-
+' Send the event:
+telemetry.TrackEvent("WinGame", properties, metrics)
+```
 
 *Java*
 
-    Map<String, String> properties = new HashMap<String, String>();
-    properties.put("game", currentGame.getName());
-    properties.put("difficulty", currentGame.getDifficulty());
+```java
+Map<String, String> properties = new HashMap<String, String>();
+properties.put("game", currentGame.getName());
+properties.put("difficulty", currentGame.getDifficulty());
 
-    Map<String, Double> metrics = new HashMap<String, Double>();
-    metrics.put("Score", currentGame.getScore());
-    metrics.put("Opponents", currentGame.getOpponentCount());
+Map<String, Double> metrics = new HashMap<String, Double>();
+metrics.put("Score", currentGame.getScore());
+metrics.put("Opponents", currentGame.getOpponentCount());
 
-    telemetry.trackEvent("WinGame", properties, metrics);
-
+telemetry.trackEvent("WinGame", properties, metrics);
+```
 
 > [!NOTE]
 > Ügyeljen, nem arra, hogy személyes azonosításra alkalmas adatokat jelentkezzen be a tulajdonságokat.
 >
 >
 
-
 ### <a name="alternative-way-to-set-properties-and-metrics"></a>Állítsa be a tulajdonságokat és a metrikák történő megadásának alternatív módja
+
 Ha kényelmesebb, begyűjtheti a paramétereket egy külön objektumban esemény:
 
-    var event = new EventTelemetry();
+```csharp
+var event = new EventTelemetry();
 
-    event.Name = "WinGame";
-    event.Metrics["processingTime"] = stopwatch.Elapsed.TotalMilliseconds;
-    event.Properties["game"] = currentGame.Name;
-    event.Properties["difficulty"] = currentGame.Difficulty;
-    event.Metrics["Score"] = currentGame.Score;
-    event.Metrics["Opponents"] = currentGame.Opponents.Length;
+event.Name = "WinGame";
+event.Metrics["processingTime"] = stopwatch.Elapsed.TotalMilliseconds;
+event.Properties["game"] = currentGame.Name;
+event.Properties["difficulty"] = currentGame.Difficulty;
+event.Metrics["Score"] = currentGame.Score;
+event.Metrics["Opponents"] = currentGame.Opponents.Length;
 
-    telemetry.TrackEvent(event);
+telemetry.TrackEvent(event);
+```
 
 > [!WARNING]
 > Ne használja újra ugyanazon telemetriai elem (`event` ebben a példában) Track*() hívni többször is feldolgozza. Emiatt előfordulhat, hogy a telemetria küldésének helytelen konfiguráció.
@@ -807,9 +890,9 @@ A [Analytics](app-insights-analytics.md), egyéni metrikákkal és tulajdonságo
 
 Például hozzáadta a kérelmek telemetriai adatai "játék" nevű tulajdonságot, ha ez a lekérdezés a különböző értékek "játék" előfordulását számolja, és az egyéni metrika "pontszám" átlagát megjelenítése:
 
-```
+```kusto
 requests
-| summarize sum(itemCount), avg(todouble(customMeasurements.score)) by tostring(customDimensions.game) 
+| summarize sum(itemCount), avg(todouble(customMeasurements.score)) by tostring(customDimensions.game)
 ```
 
 Figyelje meg, hogy:
@@ -817,92 +900,96 @@ Figyelje meg, hogy:
 * Egy érték kinyerése a customDimensions vagy customMeasurements JSON, ha dinamikus típusa van, és úgy kell alakítania azt `tostring` vagy `todouble`.
 * Annak a lehetőségét figyelembe [mintavételi](app-insights-sampling.md), használjon `sum(itemCount)`, nem `count()`.
 
-
-
 ## <a name="timed"></a> Időzítési események
+
 Néha érdemes diagram, mennyi ideig tart egy műveletet. Például érdemes tudni, hogy mennyi ideig felhasználók lehetőségek a játék figyelembe vesz igénybe. Ennek a mérési paraméter is használhatja.
 
 *C#*
 
-```C#
-    var stopwatch = System.Diagnostics.Stopwatch.StartNew();
+```csharp
+var stopwatch = System.Diagnostics.Stopwatch.StartNew();
 
-    // ... perform the timed action ...
+// ... perform the timed action ...
 
-    stopwatch.Stop();
+stopwatch.Stop();
 
-    var metrics = new Dictionary <string, double>
-       {{"processingTime", stopwatch.Elapsed.TotalMilliseconds}};
+var metrics = new Dictionary <string, double>
+    {{"processingTime", stopwatch.Elapsed.TotalMilliseconds}};
 
-    // Set up some properties:
-    var properties = new Dictionary <string, string>
-       {{"signalSource", currentSignalSource.Name}};
+// Set up some properties:
+var properties = new Dictionary <string, string>
+    {{"signalSource", currentSignalSource.Name}};
 
-    // Send the event:
-    telemetry.TrackEvent("SignalProcessed", properties, metrics);
+// Send the event:
+telemetry.TrackEvent("SignalProcessed", properties, metrics);
 ```
 
 *Java*
 
-```Java
-    long startTime = System.currentTimeMillis();
+```java
+long startTime = System.currentTimeMillis();
 
-    // perform timed action
+// Perform timed action
 
-    long endTime = System.currentTimeMillis();
-    Map<String, Double> metrics = new HashMap<>();
-    metrics.put("ProcessingTime", endTime-startTime);
+long endTime = System.currentTimeMillis();
+Map<String, Double> metrics = new HashMap<>();
+metrics.put("ProcessingTime", endTime-startTime);
 
-    // Setup some propereties
-    Map<String, String> properties = new HashMap<>();
-    properties.put("signalSource", currentSignalSource.getName());
+// Setup some properties
+Map<String, String> properties = new HashMap<>();
+properties.put("signalSource", currentSignalSource.getName());
 
-    //send the event
-    telemetry.trackEvent("SignalProcessed", properties, metrics);
-
+// Send the event
+telemetry.trackEvent("SignalProcessed", properties, metrics);
 ```
 
-
 ## <a name="defaults"></a>Egyéni telemetriai alapértelmezett tulajdonságai
+
 Szeretne beállított alapértelmezett tulajdonságértékeket néhány egyéni eseményt írt, teheti meg egy TelemetryClient-példányban. Minden, hogy az ügyfél által küldött telemetriai elem vannak csatolva.
 
 *C#*
 
-    using Microsoft.ApplicationInsights.DataContracts;
+```csharp
+using Microsoft.ApplicationInsights.DataContracts;
 
-    var gameTelemetry = new TelemetryClient();
-    gameTelemetry.Context.Properties["Game"] = currentGame.Name;
-    // Now all telemetry will automatically be sent with the context property:
-    gameTelemetry.TrackEvent("WinGame");
+var gameTelemetry = new TelemetryClient();
+gameTelemetry.Context.Properties["Game"] = currentGame.Name;
+// Now all telemetry will automatically be sent with the context property:
+gameTelemetry.TrackEvent("WinGame");
+```
 
 *Visual Basic*
 
-    Dim gameTelemetry = New TelemetryClient()
-    gameTelemetry.Context.Properties("Game") = currentGame.Name
-    ' Now all telemetry will automatically be sent with the context property:
-    gameTelemetry.TrackEvent("WinGame")
+```vb
+Dim gameTelemetry = New TelemetryClient()
+gameTelemetry.Context.Properties("Game") = currentGame.Name
+' Now all telemetry will automatically be sent with the context property:
+gameTelemetry.TrackEvent("WinGame")
+```
 
 *Java*
 
-    import com.microsoft.applicationinsights.TelemetryClient;
-    import com.microsoft.applicationinsights.TelemetryContext;
-    ...
+```java
+import com.microsoft.applicationinsights.TelemetryClient;
+import com.microsoft.applicationinsights.TelemetryContext;
+...
 
 
-    TelemetryClient gameTelemetry = new TelemetryClient();
-    TelemetryContext context = gameTelemetry.getContext();
-    context.getProperties().put("Game", currentGame.Name);
+TelemetryClient gameTelemetry = new TelemetryClient();
+TelemetryContext context = gameTelemetry.getContext();
+context.getProperties().put("Game", currentGame.Name);
 
-    gameTelemetry.TrackEvent("WinGame");
-    
+gameTelemetry.TrackEvent("WinGame");
+```
+
 *Node.js*
 
-    var gameTelemetry = new applicationInsights.TelemetryClient();
-    gameTelemetry.commonProperties["Game"] = currentGame.Name;
+```javascript
+var gameTelemetry = new applicationInsights.TelemetryClient();
+gameTelemetry.commonProperties["Game"] = currentGame.Name;
 
-    gameTelemetry.TrackEvent({name: "WinGame"});
-
-
+gameTelemetry.TrackEvent({name: "WinGame"});
+```
 
 Egyéni telemetriát hívások felülbírálhatja az alapértelmezett értékeket a saját tulajdonság szótárak.
 
@@ -911,6 +998,7 @@ Egyéni telemetriát hívások felülbírálhatja az alapértelmezett értékeke
 *Tulajdonságok hozzáadása összes telemetriai adat*, beleértve a szabványos adatgyűjtő modulok, adatait [megvalósítása `ITelemetryInitializer` ](app-insights-api-filtering-sampling.md#add-properties).
 
 ## <a name="sampling-filtering-and-processing-telemetry"></a>Mintavétel, a szűrést és a telemetriai adatok feldolgozása
+
 Írhat kódot a telemetriai adatok feldolgozásához, az SDK-val való továbbítás előtt. A feldolgozás a normál telemetriai modulok, például a HTTP kérés és a függőségi gyűjtemény által küldött adatokat tartalmaz.
 
 [Adja hozzá tulajdonságokat](app-insights-api-filtering-sampling.md#add-properties) alkalmazásával a telemetriai `ITelemetryInitializer`. Például hozzáadhat vagy verziószámokat, amelyek kiszámítása más tulajdonságok alapján.
@@ -922,109 +1010,119 @@ Egyéni telemetriát hívások felülbírálhatja az alapértelmezett értékeke
 [További információk](app-insights-api-filtering-sampling.md).
 
 ## <a name="disabling-telemetry"></a>Telemetria letiltása
+
 A *dinamikusan leállítására és elindítására* a gyűjtemény és a telemetriai adatok továbbítása:
 
 *C#*
 
 ```csharp
+using  Microsoft.ApplicationInsights.Extensibility;
 
-    using  Microsoft.ApplicationInsights.Extensibility;
-
-    TelemetryConfiguration.Active.DisableTelemetry = true;
+TelemetryConfiguration.Active.DisableTelemetry = true;
 ```
 
 *Java*
 
-```Java
-    
-    telemetry.getConfiguration().setTrackingDisabled(true);
-
+```java
+telemetry.getConfiguration().setTrackingDisabled(true);
 ```
 
 A *tiltsa le a kiválasztott standard naplógyűjtők*– például teljesítményszámlálók, a HTTP-kérések vagy a függőségek--törlése vagy tegye megjegyzésbe a megfelelő a [ApplicationInsights.config](app-insights-configuration-with-applicationinsights-config.md). Ehhez, például, ha azt szeretné, a saját TrackRequest adatküldéshez.
 
 *Node.js*
 
-```Javascript
-
-    telemetry.config.disableAppInsights = true;
+```javascript
+telemetry.config.disableAppInsights = true;
 ```
 
 A *tiltsa le a kiválasztott standard naplógyűjtők*– például teljesítményszámlálók, a HTTP-kérések vagy a függőségek--inicializálási időpontban láncolt SDK inicializálási kódot való konfigurálásának módját:
 
-```Javascript
-
-    applicationInsights.setup()
-        .setAutoCollectRequests(false)
-        .setAutoCollectPerformance(false)
-        .setAutoCollectExceptions(false)
-        .setAutoCollectDependencies(false)
-        .setAutoCollectConsole(false)
-        .start();
+```javascript
+applicationInsights.setup()
+    .setAutoCollectRequests(false)
+    .setAutoCollectPerformance(false)
+    .setAutoCollectExceptions(false)
+    .setAutoCollectDependencies(false)
+    .setAutoCollectConsole(false)
+    .start();
 ```
 
 Tiltsa le ezeket a gyűjtőket inicializálása után, a konfigurációs objektum használja: `applicationInsights.Configuration.setAutoCollectRequests(false)`
 
 ## <a name="debug"></a>Fejlesztői mód
+
 Hibakeresés során hasznos kell jelenniük az, hogy az eredmények azonnal láthatók a telemetria. Akkor is get további üzeneteket, amelyek segítségével nyomon követheti a problémával, a telemetriai adatokat. Kapcsolja éles környezetben, mivel az alkalmazás lassíthatja.
 
 *C#*
 
-    TelemetryConfiguration.Active.TelemetryChannel.DeveloperMode = true;
+```csharp
+TelemetryConfiguration.Active.TelemetryChannel.DeveloperMode = true;
+```
 
 *Visual Basic*
 
-    TelemetryConfiguration.Active.TelemetryChannel.DeveloperMode = True
-
+```vb
+TelemetryConfiguration.Active.TelemetryChannel.DeveloperMode = True
+```
 
 ## <a name="ikey"></a> A kiválasztott egyéni telemetriához kialakítási kulcs beállítása
+
 *C#*
 
-    var telemetry = new TelemetryClient();
-    telemetry.InstrumentationKey = "---my key---";
-    // ...
-
+```csharp
+var telemetry = new TelemetryClient();
+telemetry.InstrumentationKey = "---my key---";
+// ...
+```
 
 ## <a name="dynamic-ikey"></a> A dinamikus kialakítási kulcs
+
 A fejlesztési, tesztelési és éles környezetek származó telemetriai adatok mentése keverése elkerüléséhez is [külön Application Insights-erőforrások létrehozása](app-insights-create-new-resource.md) és azok kulcsait a környezettől függően módosítsa.
 
 Helyett a kialakítási kulcs lekérése a konfigurációs fájlban, beállíthatja a kódban. A kulcsot meg például az ASP.NET-szolgáltatások Global.aspx.cs osztályból, egy inicializálási metódust:
 
 *C#*
 
-    protected void Application_Start()
-    {
-      Microsoft.ApplicationInsights.Extensibility.
-        TelemetryConfiguration.Active.InstrumentationKey =
-          // - for example -
-          WebConfigurationManager.Settings["ikey"];
-      ...
+```csharp
+protected void Application_Start()
+{
+    Microsoft.ApplicationInsights.Extensibility.
+    TelemetryConfiguration.Active.InstrumentationKey =
+        // - for example -
+        WebConfigurationManager.Settings["ikey"];
+    ...
+}
+```
 
 *JavaScript*
 
-    appInsights.config.instrumentationKey = myKey;
-
-
+```javascript
+appInsights.config.instrumentationKey = myKey;
+```
 
 A weboldalakon érdemes állítható be azt a webalkalmazás-kiszolgáló állapota, nem pedig kódolási szó szerint a parancsfájlba. Ha például az egy weblap ASP.NET-alkalmazás létrehozva:
 
 *A Razor JavaScript*
 
-    <script type="text/javascript">
-    // Standard Application Insights webpage script:
-    var appInsights = window.appInsights || function(config){ ...
-    // Modify this part:
-    }({instrumentationKey:  
-      // Generate from server property:
-      @Microsoft.ApplicationInsights.Extensibility.
-         TelemetryConfiguration.Active.InstrumentationKey;
-    }) // ...
-
+```cshtml
+<script type="text/javascript">
+// Standard Application Insights webpage script:
+var appInsights = window.appInsights || function(config){ ...
+// Modify this part:
+}({instrumentationKey:  
+    // Generate from server property:
+    @Microsoft.ApplicationInsights.Extensibility.
+        TelemetryConfiguration.Active.InstrumentationKey;
+}) // ...
+```
 
 ## <a name="telemetrycontext"></a>TelemetryContext
+
 TelemetryClient rendelkezik egyik környezeti tulajdonsága, amely küldött telemetriai adatokkal együtt értékeket tartalmaz. Általában a normál telemetriai modulok által vannak beállítva, de is állíthatja őket saját maga. Példa:
 
-    telemetry.Context.Operation.Name = "MyOperationName";
+```csharp
+telemetry.Context.Operation.Name = "MyOperationName";
+```
 
 Ha megadta ezeket az értékeket saját magának, érdemes eltávolítani a megfelelő sort a [ApplicationInsights.config](app-insights-configuration-with-applicationinsights-config.md), hogy az értékek és a standard szintű értékek nem Zavarba.
 
@@ -1041,6 +1139,7 @@ Ha megadta ezeket az értékeket saját magának, érdemes eltávolítani a megf
 * **Felhasználói**: felhasználói adatokat.
 
 ## <a name="limits"></a>Korlátok
+
 [!INCLUDE [application-insights-limits](../../includes/application-insights-limits.md)]
 
 A sávszélesség-korlátjának elkerülje, használja a [mintavételi](app-insights-sampling.md).
@@ -1048,6 +1147,7 @@ A sávszélesség-korlátjának elkerülje, használja a [mintavételi](app-insi
 Mennyi ideig meghatározásához adatért, lásd: [adatok megőrzésére és az adatvédelmi](app-insights-data-retention-privacy.md).
 
 ## <a name="reference-docs"></a>Segédanyagok
+
 * [ASP.NET-referencia](https://msdn.microsoft.com/library/dn817570.aspx)
 * [Java-referencia](http://dl.windowsazure.com/applicationinsights/javadoc/)
 * [JavaScript-referencia](https://github.com/Microsoft/ApplicationInsights-JS/blob/master/API-reference.md)
@@ -1055,6 +1155,7 @@ Mennyi ideig meghatározásához adatért, lásd: [adatok megőrzésére és az 
 * [iOS SDK](https://github.com/Microsoft/ApplicationInsights-iOS)
 
 ## <a name="sdk-code"></a>SDK-kód
+
 * [ASP.NET Core SDK](https://github.com/Microsoft/ApplicationInsights-aspnetcore)
 * [ASP.NET 5](https://github.com/Microsoft/ApplicationInsights-dotnet)
 * [A Windows Server-csomagok](https://github.com/Microsoft/applicationInsights-dotnet-server)
@@ -1064,6 +1165,7 @@ Mennyi ideig meghatározásához adatért, lásd: [adatok megőrzésére és az 
 * [Összes platform](https://github.com/Microsoft?utf8=%E2%9C%93&query=applicationInsights)
 
 ## <a name="questions"></a>Kérdések
+
 * *Milyen kivételek előfordulhat, hogy throw Track_() hívások?*
 
     Nincs. Nem kell őket try-catch záradékok wrap funkciót. Ha az SDK problémákat észlel, üzenetek naplózza a hibakeresési konzol kimeneteként és – ha az üzeneteket kaphat – a diagnosztikai keresésben.
@@ -1072,6 +1174,6 @@ Mennyi ideig meghatározásához adatért, lásd: [adatok megőrzésére és az 
     Igen, a [adathozzáférési API](https://dev.applicationinsights.io/). Más módokon is gyűjthet ki adatokat tartalmaznak [Analytics exportálhat a Power bi-bA](app-insights-export-power-bi.md) és [a folyamatos exportálás](app-insights-export-telemetry.md).
 
 ## <a name="next"></a>Következő lépések
-* [Keresési események és naplók](app-insights-diagnostic-search.md)
 
+* [Keresési események és naplók](app-insights-diagnostic-search.md)
 * [hibaelhárítással](app-insights-troubleshoot-faq.md)

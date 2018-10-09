@@ -2,18 +2,18 @@
 title: fájl belefoglalása
 description: fájl belefoglalása
 services: storage
-author: rogara
+author: roygara
 ms.service: storage
 ms.topic: include
 ms.date: 04/09/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 26c3e8a096a3ee7bc5146759f8de62e5c1c7fed1
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 796614a9e60ccb7ab155bc986b39c04c781224e8
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47389854"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48874064"
 ---
 ## <a name="about-vhds"></a>Tudnivalók a VHD-kről
 
@@ -34,11 +34,11 @@ Mielőtt a forrás .vhd fájlt törölhetné, el kell távolítania a bérlést,
 
 Az Azure Disks 99,999%-os elérhetőséggel büszkélkedhet. Az Azure Disks következetesen szállított nagyvállalati szintű tartósság érdekében az iparágvezető nulla % Annualized hibaaránya.
 
-Nincsenek három teljesítményszint, amelyek közül választhat a lemezek prémium szintű SSD-lemezeket (előzetes verzió) Standard SSD és HDD Standard Storage létrehozásakor. Ezenkívül nem felügyelt és felügyelt két típusa van.
+Nincsenek három teljesítményszint, amelyek közül választhat a prémium szintű SSD-lemezeket, Standard SSD és HDD-tárolási Standard lemezek létrehozásakor. Ezenkívül nem felügyelt és felügyelt két típusa van.
 
 ### <a name="standard-hdd-disks"></a>A standard szintű HDD-lemezek
 
-A standard szintű HDD-lemezek meghajtókra készül, és költséghatékony tárolás biztosításához. HDD standard storage replikálható helyileg egy adatközpontban, vagy lehet georedundáns az elsődleges és másodlagos adatközpontok. Storage-replikációval kapcsolatos további információkért lásd: [Azure Storage replikáció](../articles/storage/common/storage-redundancy.md). 
+A standard szintű HDD-lemezek meghajtókra készül, és költséghatékony tárolás biztosításához. HDD standard storage replikálható helyileg egy adatközpontban, vagy lehet georedundáns az elsődleges és másodlagos adatközpontok. Storage-replikációval kapcsolatos további információkért lásd: [Azure Storage replikáció](../articles/storage/common/storage-redundancy.md).
 
 Standard HDD-lemezekkel kapcsolatos további információkért lásd: [Standard Storage és a lemezek](../articles/virtual-machines/windows/standard-storage.md).
 

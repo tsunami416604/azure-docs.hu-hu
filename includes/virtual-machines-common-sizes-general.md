@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/06/2018
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
-ms.openlocfilehash: eac6c6d76bcc3b3d9cfeda7d8ca4e52e28ba9d8f
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 2d1a6bdb0cb53e3e58b4b4e8fed4bf29957d6489
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44369165"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48858077"
 ---
 Általános célú virtuális gépek méreteit adja meg a kiegyensúlyozott Processzor-memória arány. Ideális választás tesztelési-fejlesztési feladatokhoz, kis és közepes méretű adatbázisokhoz, valamint kis és közepes adatforgalmú webkiszolgálókhoz. Ez a cikk ismerteti a vcpu-k, az adatlemezeket és a hálózati adapterek, valamint az ennél a csoportosításnál méretek esetében a tárterületek átviteli sebességének számát. 
 
@@ -26,6 +26,8 @@ ms.locfileid: "44369165"
 - A Dv3-sorozat funkciói a 2,4 GHz-es Intel Xeon® E5-2673 v3 (Haswell) processzor- és a legújabb 2,3 GHz-es Intel XEON® E5-2673 v4 (Broadwell) processzoron többszálú konfiguráció esetén a legtöbb általános célú számítási feladatok esetében jobb értékajánlat biztosít.  Memória (a ~3.5 GiB/vCPU, 4 GB/vcpu-ira) ki lett terjesztve, amíg a lemez és a hálózati korlátok hozzá lett igazítva, helyezze át a Hyper-Threading technológia igazodva magonként alapon.  A Dv3 már nem rendelkezik a D/Dv2 családok magas memóriahasználat Virtuálisgép-méretek, ezek az új Ev3 termékcsalád lettek áthelyezve.
 
   A D-sorozat használati Példák többek között a nagyvállalati alkalmazások, relációs adatbázisok, memórián belüli gyorsítótárazás és elemzés. 
+  
+- A [DC-sorozat](#dc-series) új családba tartozó virtuális gépek az Azure-ban, amelyek segítségével a bizalmas és az adatok sértetlenségének védelme és a kód a nyilvános felhőben feldolgozása közben. Ezek a gépek élvezik legújabb generációja, 3,7 GHz-es Intel XEON E - 2176G processzor SGX technológiával. Ezek a gépek az Intel Turbo Boost Technology az 4.7 GHz meg. DC-sorozat példányai ügyfeleink biztonságos enklávé-alapú alkalmazások és azok adatai védelmét, miközben használatban van
 
 ## <a name="b-series"></a>B sorozat
 
@@ -138,6 +140,7 @@ A Premium Storage: Nem támogatott.
 
 Prémium szintű Storage gyorsítótárazási: Nem támogatott
 
+
 | Méret            | vCPU | Memória: GiB | Ideiglenes tárterület (SSD) GiB | Ideiglenes tárterület maximális teljesítménye: IOPS / Olvasási MBps / Írási MBps | Adatlemezek max. száma / teljesítménye: IOPS | Hálózati adapterek max. száma / várt hálózati sávszélesség (Mbps) | 
 |-----------------|-----------|-------------|----------------|----------------------------------------------------------|-----------------------------------|------------------------------|
 | Standard_A1_v2  | 1         | 2           | 10             | 1000 / 20 / 10                                           | 2 / 2x500               | 2 / 250                 |
@@ -149,6 +152,22 @@ Prémium szintű Storage gyorsítótárazási: Nem támogatott
 | Standard_A8m_v2 | 8         | 64          | 80             | 8000 / 160 / 80                                          | 16 / 16x500             | 8 / 2000                     |
 
 <br>
+
+
+## <a name="dc-series"></a>DC-sorozat
+
+A Premium Storage: támogatott
+
+Prémium szintű Storage gyorsítótárazási: támogatott
+
+
+
+| Méret          | vCPU | Memória: GiB | Ideiglenes tárterület (SSD) GiB | Adatlemezek max. száma | Maximális gyorsítótárazott és ideiglenes tárolóteljesítmény: IOPS/MBps (gyorsítótár mérete GiB-ban) | Max. gyorsítótárazás nélküli lemezteljesítmény: IOPS/MBps | Hálózati adapterek max. száma / várt hálózati sávszélesség (Mbps) |
+|---------------|------|-------------|------------------------|----------------|-------------------------------------------------------------------------|-------------------------------------------|----------------------------------------------|
+| Standard_DC2s | 2    | 8           | 100                    | 2              | 4000-es / 32 (43)                                                          | 3200 /48                                  | 2 / 1500                                     |
+| Standard_DC4s | 4    | 16          | 200                    | 4              | 8000 / 64 (86)                                                          | 6400 /96                                  | 2 / 3000                                     |
+
+
 
 
 

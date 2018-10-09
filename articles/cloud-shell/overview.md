@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/04/2018
 ms.author: juluk
-ms.openlocfilehash: ea7393584e77b51073ca8938ec03e9d6f6ad6fc0
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 85d054be6b72c736ec66384b9caec71208f36802
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47166673"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48869363"
 ---
 # <a name="overview-of-azure-cloud-shell"></a>Az Azure Cloud Shell áttekintése
 Az Azure Cloud Shell egy interaktív, a böngésző által elérhető shell Azure-erőforrások kezeléséhez.
@@ -78,7 +78,7 @@ További információ a megtudhatja, hogyan csatlakoztathat egy [új vagy meglé
 * A cloud Shell Azure-fájlmegosztások csatlakoztatnia kell van szükség.
 * A cloud Shell Bash és a PowerShell az azonos Azure-fájlmegosztást használja
 * A cloud Shell felhasználói fiókonként egy machine van hozzárendelve.
-* A cloud Shell továbbra is fennáll, a fájlmegosztáson tárolt 5 GB-os-lemezkép használatával $Home
+* A cloud Shell továbbra is fennáll, a fájlmegosztáson tárolt 5 GB-os-lemezkép használatával $HOME
 * A Bash Linux felhasználói engedélyek beállítása
 
 További tudnivalók a szolgáltatások a [a Cloud Shell Bash](features.md) és [a Cloud Shellbeli PowerShell](features-powershell.md).

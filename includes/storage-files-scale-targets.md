@@ -1,4 +1,4 @@
-| Erőforrás | Standard fájlmegosztások megosztások | Prémium szintű fájlmegosztások (előzetes verzió) |
+| Erőforrás | Standard fájlmegosztások | Prémium szintű fájlmegosztások (előzetes verzió) |
 |----------|---------------|------------------------------------------|
 | Egy fájlmegosztás minimális mérete | (nincs minimum; utólagos elszámolású) | 100 GiB |
 | Egy fájlmegosztás maximális mérete | 5 TiB | 5 TiB |

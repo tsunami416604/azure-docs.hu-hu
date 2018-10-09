@@ -10,12 +10,12 @@ ms.component: speech-service
 ms.topic: article
 ms.date: 10/01/2018
 ms.author: panosper
-ms.openlocfilehash: b5f23cf5a9dc3a675d9103bb32f686d387fda837
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: 4b5d0b66c4d39320a082cb9e76252bfc00db6c3a
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48239939"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48854138"
 ---
 # <a name="migrate-from-the-custom-speech-service-to-the-speech-service"></a>A Custom Speech service áttelepít a beszédszolgáltatás
 
@@ -48,7 +48,7 @@ A díjszabási modell az egyszerűbb, áthelyezése egy óra-alapú díjszabási
 
 ## <a name="migration-for-existing-customers"></a>Meglévő ügyfelek migrálása
 
-Meglévő ügyfeleink van szükség a meglévő erőforrás kulcsainak áttelepítése az új szolgáltatást, a beszéd portálon. Ehhez a következő lépések szükségesek: 
+Meglévő ügyfeleink van szükség a meglévő erőforrás kulcsainak áttelepítése a Speech service, a beszéd portálon. Ehhez a következő lépések szükségesek: 
 
 > [!NOTE] 
 > Erőforrás kulcsainak csak áttelepíthetők ugyanazon a régión belül. 

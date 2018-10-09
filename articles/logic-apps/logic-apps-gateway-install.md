@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: yshoukry, LADocs
 ms.topic: article
 ms.date: 07/20/2018
-ms.openlocfilehash: daeb0c5436d851b6e234c1b97583df526192659e
-ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
+ms.openlocfilehash: 5fc4ccacaaedfc3fe6c77fa9a0ad693530bdde93
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48018774"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48855425"
 ---
 # <a name="install-on-premises-data-gateway-for-azure-logic-apps"></a>A helyszíni adatátjárót telepíthet az Azure Logic Apps
 
@@ -211,7 +211,7 @@ Adja meg a proxyadatokat az átjáró számára, lásd: [konfigurálja a proxybe
 > [!NOTE]
 > Ez a parancs csak a hálózati kapcsolatot és a kapcsolatot az Azure Service Bus ellenőrzi. A parancs nem csinál semmi az átjáró vagy az átjáró felhőszolgáltatása, amely titkosítja, és tárolja a hitelesítő adatok és az átjáró részleteit. 
 >
-> Ez a parancs a, csak a Windows Server 2012 R2 vagy újabb, és a Windows 8.1 vagy újabb verziója. A korábbi operációsrendszer-verziók a Telnet használatával kapcsolat tesztelése. Tudjon meg többet [Azure Service Bus és a hibrid megoldások](../service-bus-messaging/service-bus-fundamentals-hybrid-solutions.md).
+> Ez a parancs a, csak a Windows Server 2012 R2 vagy újabb, és a Windows 8.1 vagy újabb verziója. A korábbi operációsrendszer-verziók a Telnet használatával kapcsolat tesztelése. Tudjon meg többet [Azure Service Bus és a hibrid megoldások](../service-bus-messaging/service-bus-messaging-overview.md).
 
 Az eredmények az alábbihoz hasonlóan kell kinéznie **TcpTestSucceeded** beállítása **igaz**:
 
@@ -232,7 +232,7 @@ A tűzfal is előfordulhat, hogy blokkolja a kapcsolatokat, az Azure Service Bus
 
 ## <a name="configure-ports"></a>Portok konfigurálása
 
-Az átjáró egy kimenő kapcsolatot hoz létre [Azure Service Bus](https://azure.microsoft.com/services/service-bus/) és a kimenő portokon kommunikál: TCP 443 (alapméretezett), 5671, 5672, 9350 – 9354. Az átjáró használatához nincs szükség bejövő portokra. Tudjon meg többet [Azure Service Bus és a hibrid megoldások](../service-bus-messaging/service-bus-fundamentals-hybrid-solutions.md).
+Az átjáró egy kimenő kapcsolatot hoz létre [Azure Service Bus](https://azure.microsoft.com/services/service-bus/) és a kimenő portokon kommunikál: TCP 443 (alapméretezett), 5671, 5672, 9350 – 9354. Az átjáró használatához nincs szükség bejövő portokra. Tudjon meg többet [Azure Service Bus és a hibrid megoldások](../service-bus-messaging/service-bus-messaging-overview.md).
 
 Az átjáró a teljesen minősített tartománynevet használja:
 

@@ -10,16 +10,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/03/2018
 ms.author: sngun
-ms.openlocfilehash: 686f21aa805560bb4c2a7fbf9b0c61e1edef14bb
-ms.sourcegitcommit: 4edf9354a00bb63082c3b844b979165b64f46286
+ms.openlocfilehash: dfd66c1ac2e627b72d24a520fc37c6ebfb361556
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48785528"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48869998"
 ---
 # <a name="visualize-azure-cosmos-db-data-by-using-the-power-bi-connector"></a>Azure Cosmos DB-adatok megjelenítése Power BI-összekötő használatával
 
-[A Power bi](https://powerbi.microsoft.com/) egy online szolgáltatás, amelyben hozhat létre, és az irányítópultok és jelentések megosztása. A Power BI Desktop egy eszköz, amely lehetővé teszi a különféle adatforrásokból származó adatok beolvasása a Jelentésszerkesztő. Az Azure Cosmos DB az alábbiak egyikét az adatforrás, amely a Power BI Desktopban is használhatja. Power BI Desktopban csatlakozhat az Azure Cosmos DB-fiókot az Azure Cosmos DB-összekötő a Power bi-hoz.  Azure Cosmos DB-adatok importálása a Power bi-ba, után átalakítja a, jelentéseket hozhat létre, és a jelentések közzététele a Power bi-bA.   
+[A Power bi](https://powerbi.microsoft.com/) egy online szolgáltatás, amelyben hozhat létre, és az irányítópultok és jelentések megosztása. A Power BI Desktop egy eszköz, amely lehetővé teszi a különféle adatforrásokból származó adatok beolvasása a Jelentésszerkesztő. Az Azure Cosmos DB az egyik az adatforrás, amely a Power BI Desktopban is használhatja. Power BI Desktopban csatlakozhat az Azure Cosmos DB-fiókot az Azure Cosmos DB-összekötő a Power bi-hoz.  Azure Cosmos DB-adatok importálása a Power bi-ba, után átalakítja a, jelentéseket hozhat létre, és a jelentések közzététele a Power bi-bA.   
 
 Ez a cikk az Azure Cosmos DB-fiókot a Power BI Desktop a csatlakozáshoz szükséges lépéseket ismerteti. A csatlakozás után, lépjen egy gyűjteményhez, az adatok kinyerése, átalakítása JSON-adatokat a táblázatos formátumra és egy jelentés közzététele a Power bi.
 

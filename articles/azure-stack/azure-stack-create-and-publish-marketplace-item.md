@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/14/2018
+ms.date: 10/03/2018
 ms.author: sethm
-ms.reviewer: jeffgo
-ms.openlocfilehash: 9e579123124615df83483e244ef11810ca590844
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.reviewer: avishwan
+ms.openlocfilehash: 40ecb474b4faa4031cb364dfc1151c6fe6f09dd6
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45633963"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48856447"
 ---
 # <a name="create-and-publish-a-marketplace-item"></a>Piactéri termék létrehozása és közzététele
 
@@ -29,12 +29,15 @@ ms.locfileid: "45633963"
 1. [Töltse le](http://www.aka.ms/azurestackmarketplaceitem) az Azure katalógusában Packager eszköz és a minta az Azure Stack piactéren elemet.
 2. Nyissa meg a minta Piactéri elemet, és nevezze át a **SimpleVMTemplate** mappát. (Például használja ugyanazt a nevet, a Piactéri elem – **Contoso.TodoList**.) Ez a mappa tartalmaz:
    
-       /Contoso.TodoList/
-       /Contoso.TodoList/Manifest.json
-       /Contoso.TodoList/UIDefinition.json
-       /Contoso.TodoList/Icons/
-       /Contoso.TodoList/Strings/
-       /Contoso.TodoList/DeploymentTemplates/
+   ```shell
+   /Contoso.TodoList/
+   /Contoso.TodoList/Manifest.json
+   /Contoso.TodoList/UIDefinition.json
+   /Contoso.TodoList/Icons/
+   /Contoso.TodoList/Strings/
+   /Contoso.TodoList/DeploymentTemplates/
+   ```
+
 3. [Hozzon létre egy Azure Resource Manager-sablon](../azure-resource-manager/resource-group-authoring-templates.md) , vagy válasszon ki egy sablont a Githubból. A Piactéri elem a sablont használja az erőforrás létrehozásához.
 
     > [!Note]  
@@ -52,22 +55,30 @@ ms.locfileid: "45633963"
 8. Az a **manifest.json** fájl, módosítsa **neve** a Piactéri elem nevét. Módosítson **közzétevő** a neve vagy a vállalat.
 9. Alatt **összetevők**, módosítsa **neve** és **elérési út** a Azure Resource Manager-sablon, amely tartalmazza a megfelelő információkkal történő.
    
-         "artifacts": [
-            {
-                "name": "Type your template name",
-                "type": "Template",
-                "path": "DeploymentTemplates\\Type your path",
-                "isDefault": true
-            }
+   ```json
+   "artifacts": [
+      {
+          "name": "Type your template name",
+          "type": "Template",
+          "path": "DeploymentTemplates\\Type your path",
+          "isDefault": true
+      }
+   ```
+
 10. Cserélje le **My Marketplace-elemek** , a Piactéri elem meg kell jelennie a kategóriák listája.
     
-             "categories":[
-                 "My Marketplace Items"
-              ],
+   ```json
+   "categories":[
+   "My Marketplace Items"
+   ],
+   ```
+
 11. Manifest.json további szerkesztéseket tekintse [hivatkozás: Piactéri elem manifest.json](#reference-marketplace-item-manifestjson).
 12. A mappák csomag .azpkg fájlba, nyisson meg egy parancssort, és futtassa a következő parancsot:
     
-        AzureGalleryPackager.exe package –m <path to manifest.json> -o <output location for the package>
+   ```shell
+   AzureGalleryPackager.exe package –m <path to manifest.json> -o <output location for the package>
+   ```
     
     > [!NOTE]
     > A teljes elérési útja a kimeneti csomaghoz léteznie kell. Például ha a kimeneti elérési út C:\MarketPlaceItem\yourpackage.azpkg, a mappa C:\MarketPlaceItem léteznie kell.
@@ -79,8 +90,10 @@ ms.locfileid: "45633963"
 2. Az ügyfél virtuális gépen a Microsoft Azure Stack-környezetben győződjön meg arról, hogy a PowerShell-munkamenethez be van állítva a szolgáltatás rendszergazdai hitelesítő adataival. Hogyan hitelesítheti az Azure stack PowerShell vonatkozó utasításokat talál [a PowerShell-sablon üzembe helyezése](user/azure-stack-deploy-template-powershell.md).
 3. Használata esetén [PowerShell 1.3.0]( azure-stack-powershell-install.md) vagy újabb, használhatja a **Add-AzsGalleryItem** a Piactéri elem közzététele az Azure Stack PowerShell-parancsmagot. Előtt PowerShell 1.3.0 használatával, használhatja a parancsmagot **Add-AzureRMGalleryitem** helyén **Add-AzsGalleryItem**.  Ha például a PowerShell 1.3.0 használ, vagy később:
    
-       Add-AzsGalleryItem -GalleryItemUri `
-       https://sample.blob.core.windows.net/gallerypackages/Microsoft.SimpleTemplate.1.0.0.azpkg –Verbose
+   ```powershell
+   Add-AzsGalleryItem -GalleryItemUri `
+   https://sample.blob.core.windows.net/gallerypackages/Microsoft.SimpleTemplate.1.0.0.azpkg –Verbose
+   ```
    
    | Paraméter | Leírás |
    | --- | --- |
@@ -102,7 +115,9 @@ ms.locfileid: "45633963"
 
 6. Piactéri elem használatával is eltávolíthatja a **Remove-AzureRMGalleryItem** parancsmagot. Példa:
    
-        Remove-AzsGalleryItem -Name Microsoft.SimpleTemplate.1.0.0  –Verbose
+   ```powershell
+   Remove-AzsGalleryItem -Name Microsoft.SimpleTemplate.1.0.0  –Verbose
+   ```
    
    > [!NOTE]
    > A piactér felhasználói felület valószínűleg hiba elem eltávolítása után. A hiba javításához kattintson **beállítások** a portálon. Ezután válassza ki **módosítások elvetése** alatt **portál testreszabási**.

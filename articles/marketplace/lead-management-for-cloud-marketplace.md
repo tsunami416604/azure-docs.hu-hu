@@ -12,14 +12,14 @@ ms.workload: ''
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: article
-ms.date: 09/18/2018
-ms.author: v-yijong
-ms.openlocfilehash: d484452e03110a71933f3c503f5bd06c93aac68c
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.date: 10/05/2018
+ms.author: yijenj
+ms.openlocfilehash: 47333a7b5ad7d76ee8bbac19884ba8246eadc05e
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47047498"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48855782"
 ---
 # <a name="lead-management-for-cloud-marketplace"></a>A felhőbeli piactér felügyeleti vezethet
 
@@ -56,6 +56,42 @@ Megfelelően konfigurálva az érdeklődő cél, és a közzététel elérte az 
 
 Után állítsa be a műszaki van beállítva, az érdeklődők válaszaránya meg kell építhet be az aktuális értékesítési és marketing stratégia és üzemeltetési folyamatokat. Hogy jobb megértése a teljes értékesítési folyamat iránt, és szorosan együttműködnek Önnel, hogy kiváló minőségű érdeklődőket és elég adat, melyekkel biztosíthatja sikerét szeretné. Szívesen fogadjuk, hogyan lehet optimalizálja és növelje az érdeklődők, további adatokkal annak érdekében, ezeket az ügyfeleket a sikeres küldhetjük a. Tudassa velünk, ha érdekelné vélemények és tanácsok ahhoz, hogy az értékesítési csoportnak további sikeres, a piactér-beli érdeklődők biztosít.
 
+
+
+## <a name="common-lead-configuration-errors-during-publishing-on-cloud-partner-portal"></a>A cloud partner Portalon közzététele során közös érdeklődő konfigurációs hibák 
+
+**Nem sikerült menteni az érdeklődő a Dynamics CRM-hez. Ellenőrizze a Dynamics CRM-fiók beállításait. LastCRMError: Nem sikerült bejelentkezni a Dynamics CRM, LastCRMException:** 
+
+> Ha O365 hitelesítési volt jelölve, ellenőrizze, ha a felhasználói fiók és jelszó érvényes. Ha az aad-ben lett kiválasztva, ellenőrizze, ha a bérlő azonosítója, a Alkalmazásazonosító és az alkalmazás titkos kulcs megfelel mi be lett állítva az aad-ben. Kövesse az utasításokat [Itt](https://cloudpartner.azure.com/#documentation/lead-management-instructions-dynamics). Ha a fiók felhasználónév/jelszó érvényes, győződjön meg arról, Dynamics 365-hozzáféréssel rendelkezik, és rendelkezik egy hozzárendelni a licencet (lépések 11. 15. Ha egy Office-felhasználó használata az Azure Active Directory vagy a biztonsági beállítások használatával). 
+
+ 
+**Nem sikerült menteni az érdeklődő a Dynamics CRM-hez. Felhasználó nem rendelkezik létrehozása engedély az leadsourcecode attribútum az érdeklődő entitásban** 
+
+> Az alkalmazás/felhasználó biztonsági szerepkört a Microsoft Marketplace érdeklődő író hiányzik. Lépése 11. 15. Ha egy Office-felhasználó használata az Azure Active Directory vagy a biztonsági beállítások használatával [Itt](https://cloudpartner.azure.com/#documentation/lead-management-instructions-dynamics).
+
+**Nem sikerült menteni az érdeklődő a Dynamics CRM-hez AAD használatával. Kivétel:: Tenant nem található. Ez a példány akkor fordulhat elő, ha a bérlő nincs aktív előfizetések tartoznak.**  
+
+> Az érdeklődő felügyeleti szakaszban megadott címtár-azonosító nem érvényes. Kérjük, vegye fel a címtár-azonosító, a 2. lépés utasításait alapján (az Azure Active Directory, a [Itt](https://cloudpartner.azure.com/#documentation/lead-management-instructions-dynamics) 
+
+**Nem sikerült menteni az érdeklődő a Dynamics CRM-hez. LastCRMError: Nem sikerült – SecLib::RetrievePrivilegeForUser nincsenek szerepkörök vannak hozzárendelve felhasználóhoz.**  
+
+> Megoldás: Biztonsági szerepkör hozzárendelése a Microsoft Marketplace érdeklődő írta. Kövesse az utasításokat [Itt](https://cloudpartner.azure.com/#documentation/lead-management-instructions-dynamics) a biztonsági beállítások 
+
+**Nem sikerült menteni az érdeklődő a Dynamics CRM-hez AAD használatával. Kivétel:: Azonosítójú alkalmazás nem található a címtárban** 
+
+> Az érdeklődő felügyeleti szakaszban az alkalmazás-azonosító nem érvényes. Kérjük, vegye fel a címtár-azonosító, a 8. lépés utasításait alapján (az Azure Active Directory, a [Itt](https://cloudpartner.azure.com/#documentation/lead-management-instructions-dynamics)). 
+
+**Nem sikerült menteni az érdeklődő a Dynamics CRM-hez AAD használatával. Kivétel:: Kért bérlőazonosító formátuma nem érvényes és érvénytelen külső tartományt** 
+
+> Az érdeklődő felügyeleti szakaszban megadott címtár-azonosító nem érvényes. Kérjük, vegye fel a címtár-azonosító, a 2. lépés utasításait alapján (az Azure Active Directory, a [Itt](https://cloudpartner.azure.com/#documentation/lead-management-instructions-dynamics)). 
+
+**Nem sikerült menteni az érdeklődő a Dynamics CRM-hez AAD használatával. Kivétel: Ellenőrzése hitelesítő adatait. hiba: Érvénytelen titkos Ügyfélkód van megadva.** 
+
+> Megoldás: Jelentkezzen be az Azure Portal, ellenőrizze, hogy az alkalmazáskulcsot megegyezik, mi az a Cloud Partner portálra. Hozza létre a jelszó alapján utasítás (az Azure Active Directory), 10. lépésében a [Itt](https://cloudpartner.azure.com/#documentation/lead-management-instructions-dynamics)). 
+
+**Nem sikerült menteni az érdeklődő a Dynamics CRM-hez. LastCRMError: A 00:02:00 után egy válasz várakozás közben túllépte az időkorlátot kérelem-csatornát. Növelje az időkorlát értékét átadott kérelem hívása, vagy növelje a SendTimeout értékét a kötés. Ez a művelet engedélyezett idő egy része egy hosszabb időkorlát törölték.**  
+
+> Megoldás: Bejelentkezési Cloud Partner portálra, ellenőrizze a részleteket kirakat >> érdeklődő cél >> URL-CÍMÉT, ellenőrizze, hogy egy érvényes dinamikus CRM-példányon
 
 ## <a name="frequently-asked-questions"></a>Gyakori kérdések
 
@@ -201,41 +237,3 @@ Személyazonosításra alkalmas adatok (személyes azonosításra alkalmas adato
 **Konfiguráltam az Azure Storage (BLOB/tábla) saját érdeklődő célhelyeként, hogy mennyibe kerül?** 
 
 Elégtelen általános adatokat értéke alacsony (< 1 GB-os szinte minden gyártó esetében). A költségek kapott, az érdeklődők számát függ 1000 érdeklődők az adott hónapban érkezik, ha körülbelül 50 cent költségei. 
-
- 
-
-
-## <a name="common-lead-configuration-errors-during-publishing-on-cloud-partner-portal"></a>A cloud partner Portalon közzététele során közös érdeklődő konfigurációs hibák 
-
-**Nem sikerült menteni az érdeklődő a Dynamics CRM-hez. Ellenőrizze a Dynamics CRM-fiók beállításait. LastCRMError: Nem sikerült bejelentkezni a Dynamics CRM, LastCRMException:** 
-
-> Ha O365 hitelesítési volt jelölve, ellenőrizze, ha a felhasználói fiók és jelszó érvényes. Ha az aad-ben lett kiválasztva, ellenőrizze, ha a bérlő azonosítója, a Alkalmazásazonosító és az alkalmazás titkos kulcs megfelel mi be lett állítva az aad-ben. Kövesse az utasításokat [Itt](https://cloudpartner.azure.com/#documentation/lead-management-instructions-dynamics). Ha a fiók felhasználónév/jelszó érvényes, győződjön meg arról, Dynamics 365-hozzáféréssel rendelkezik, és rendelkezik egy hozzárendelni a licencet (lépések 11. 15. Ha egy Office-felhasználó használata az Azure Active Directory vagy a biztonsági beállítások használatával). 
-
- 
-**Nem sikerült menteni az érdeklődő a Dynamics CRM-hez. Felhasználó nem rendelkezik létrehozása engedély az leadsourcecode attribútum az érdeklődő entitásban** 
-
-> Az alkalmazás/felhasználó biztonsági szerepkört a Microsoft Marketplace érdeklődő író hiányzik. Lépése 11. 15. Ha egy Office-felhasználó használata az Azure Active Directory vagy a biztonsági beállítások használatával [Itt](https://cloudpartner.azure.com/#documentation/lead-management-instructions-dynamics).
-
-**Nem sikerült menteni az érdeklődő a Dynamics CRM-hez AAD használatával. Kivétel:: Tenant nem található. Ez a példány akkor fordulhat elő, ha a bérlő nincs aktív előfizetések tartoznak.**  
-
-> Az érdeklődő felügyeleti szakaszban megadott címtár-azonosító nem érvényes. Kérjük, vegye fel a címtár-azonosító, a 2. lépés utasításait alapján (az Azure Active Directory, a [Itt](https://cloudpartner.azure.com/#documentation/lead-management-instructions-dynamics) 
-
-**Nem sikerült menteni az érdeklődő a Dynamics CRM-hez. LastCRMError: Nem sikerült – SecLib::RetrievePrivilegeForUser nincsenek szerepkörök vannak hozzárendelve felhasználóhoz.**  
-
-> Megoldás: Biztonsági szerepkör hozzárendelése a Microsoft Marketplace érdeklődő írta. Kövesse az utasításokat [Itt](https://cloudpartner.azure.com/#documentation/lead-management-instructions-dynamics) a biztonsági beállítások 
-
-**Nem sikerült menteni az érdeklődő a Dynamics CRM-hez AAD használatával. Kivétel:: Azonosítójú alkalmazás nem található a címtárban** 
-
-> Az érdeklődő felügyeleti szakaszban az alkalmazás-azonosító nem érvényes. Kérjük, vegye fel a címtár-azonosító, a 8. lépés utasításait alapján (az Azure Active Directory, a [Itt](https://cloudpartner.azure.com/#documentation/lead-management-instructions-dynamics)). 
-
-**Nem sikerült menteni az érdeklődő a Dynamics CRM-hez AAD használatával. Kivétel:: Kért bérlőazonosító formátuma nem érvényes és érvénytelen külső tartományt** 
-
-> Az érdeklődő felügyeleti szakaszban megadott címtár-azonosító nem érvényes. Kérjük, vegye fel a címtár-azonosító, a 2. lépés utasításait alapján (az Azure Active Directory, a [Itt](https://cloudpartner.azure.com/#documentation/lead-management-instructions-dynamics)). 
-
-**Nem sikerült menteni az érdeklődő a Dynamics CRM-hez AAD használatával. Kivétel: Ellenőrzése hitelesítő adatait. hiba: Érvénytelen titkos Ügyfélkód van megadva.** 
-
-> Megoldás: Jelentkezzen be az Azure Portal, ellenőrizze, hogy az alkalmazáskulcsot megegyezik, mi az a Cloud Partner portálra. Hozza létre a jelszó alapján utasítás (az Azure Active Directory), 10. lépésében a [Itt](https://cloudpartner.azure.com/#documentation/lead-management-instructions-dynamics)). 
-
-**Nem sikerült menteni az érdeklődő a Dynamics CRM-hez. LastCRMError: A 00:02:00 után egy válasz várakozás közben túllépte az időkorlátot kérelem-csatornát. Növelje az időkorlát értékét átadott kérelem hívása, vagy növelje a SendTimeout értékét a kötés. Ez a művelet engedélyezett idő egy része egy hosszabb időkorlát törölték.**  
-
-> Megoldás: Bejelentkezési Cloud Partner portálra, ellenőrizze a részleteket kirakat >> érdeklődő cél >> URL-CÍMÉT, ellenőrizze, hogy egy érvényes dinamikus CRM-példányon

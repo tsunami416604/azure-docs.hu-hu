@@ -4,41 +4,61 @@ description: Ez a cikk bemutatja, hogyan Azure-adatbázis PostgreSQL állít el�
 services: postgresql
 author: rachel-msft
 ms.author: raagyema
-manager: kfile
 editor: jasonwhowell
 ms.service: postgresql
-ms.topic: article
-ms.date: 02/28/2018
-ms.openlocfilehash: bcca8ce8d11482dd8517992297b7e8a5b94ac8b1
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
+ms.topic: conceptual
+ms.date: 10/04/2018
+ms.openlocfilehash: 2a6744bdec48e59b820605bb4d1cc01d32702bcf
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37435490"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48867764"
 ---
 # <a name="server-logs-in-azure-database-for-postgresql"></a>Kiszolgálói naplók az Azure Database for postgresql-hez 
-Azure Database for PostgreSQL állít elő, lekérdezés és a hiba naplókat. Azonban a tranzakciós naplókhoz való hozzáférést nem támogatott. Lekérdezés és a hiba a naplók segítségével azonosítása, elhárítása és konfigurációs hibák és az optimálisnál rosszabb teljesítmény javításához. További információkért lásd: [hibajelentés és a naplózás](https://www.postgresql.org/docs/9.6/static/runtime-config-logging.html).
+Azure Database for PostgreSQL állít elő, lekérdezés és a hiba naplókat. Lekérdezés és a hiba a naplók segítségével azonosítása, elhárítása és konfigurációs hibák és az optimálisnál rosszabb teljesítmény javításához. (A tranzakciós naplókhoz való hozzáférést lehetőség nem része). 
 
-## <a name="access-server-logs"></a>Hozzáférés a kiszolgálói naplókhoz
-A listában, és az Azure Portallal, Azure PostgreSQL server hibanaplójában le [Azure CLI-vel](howto-configure-server-logs-using-cli.md), és az Azure REST API-k.
+## <a name="configure-logging"></a>Naplózás konfigurálása 
+Konfigurálhatja a naplózás a kiszolgálón a naplózás kiszolgálói paraméterek használatával. Minden új kiszolgálón **log_checkpoints** és **log_connections** alapértelmezés szerint. Nincsenek további paraméterek, a naplózás igényeinek megfelelően módosíthatja: 
 
-## <a name="log-retention"></a>Napló megőrzése
-Rendszer naplókat használatával beállíthatja a megőrzési időszak a **log\_megőrzési\_időszak** a kiszolgálóhoz társított paraméter. Ez a paraméter mértékegysége a nap. Az alapértelmezett érték 3 nap. A maximális értéke 7 nap. A kiszolgáló kell van-e elegendő lefoglalt tárhely a megőrzött naplófájlok tartalmaznak.
-A naplófájlok elforgatása minden egy óra vagy 100 MB méretű, amelyiket hamarabb.
+![Azure Database for PostgreSQL – a naplózási paraméterek](./media/concepts-server-logs/log-parameters.png)
 
-## <a name="configure-logging-for-azure-postgresql-server"></a>Az Azure PostgreSQL server-naplózás beállítása
-A kiszolgáló engedélyezheti a lekérdezések naplózása és a hibanaplózás. Hibanaplók automatikus vákuumszivattyú és a kapcsolat és az ellenőrzőpontok információkat is tartalmazhat.
+További információ ezekről a paraméterekről tekintse meg a PostgreSQL [hibajelentés és a naplózás](https://www.postgresql.org/docs/current/static/runtime-config-logging.html) dokumentációját. Azure-adatbázis PostgreSQL paraméterek konfigurálása, lásd: a [portál dokumentációja](howto-configure-server-parameters-using-portal.md) vagy a [CLI dokumentációját](howto-configure-server-parameters-using-cli.md).
 
-Lekérdezés naplózás engedélyezésével a PostgreSQL adatbázis-példány két kiszolgáló paraméterek beállításával: `log_statement` és `log_min_duration_statement`.
+## <a name="access-server-logs-through-portal-or-cli"></a>Hozzáférés a kiszolgálói naplókhoz portálon vagy parancssori felületen keresztül
+Ha engedélyezte a naplókat, akkor érhetők el az Azure Database for PostgreSQL log storage használatával a [az Azure portal](howto-configure-server-logs-in-portal.md), [Azure CLI-vel](howto-configure-server-logs-using-cli.md), és az Azure REST API-k. A naplófájlok elforgatása minden 1 óra vagy 100MB méretű, amelyiket hamarabb. A megőrzési ideje a log storage segítségével beállíthatja a **log\_megőrzési\_időszak** a kiszolgálóhoz társított paraméter. Az alapértelmezett érték 3 nap; a maximális értéke 7 nap. A kiszolgáló elegendő kell rendelkeznie, amely tárolja a naplófájlokat tároló lefoglalva. (A megőrzési paraméter nem szabályozza az Azure diagnosztikai naplók.)
 
-A **log\_utasítás** paraméter határozza meg, melyik SQL-utasítások a rendszer naplózza. Javasoljuk, hogy ez a paraméter beállítása ***összes*** való bejelentkezéshez az összes utasítást; az alapértelmezett értéke none.
 
-A **log\_min\_időtartama\_utasítás** paraméter a korlátot állít be kell jelentkeznie egy utasítás ezredmásodpercben. Az összes SQL-utasítások futtatása hosszabb, mint a paraméter értéke a rendszer naplózza. Ez a paraméter le van tiltva, alapértelmezés szerint a mínuszjel (-1) 1 értékre. Ez a paraméter engedélyezi a nem optimalizált lekérdezések az alkalmazásokban nyomon hasznos lehet.
+## <a name="diagnostic-logs"></a>Diagnosztikai naplók
+Azure Database for PostgreSQL integrálva van az Azure monitort, diagnosztikai naplók. Miután engedélyezte a naplók PostgreSQL-kiszolgálón, ha szeretné, azokat a kibocsátott [Log Analytics](../log-analytics/log-analytics-queries.md), az Event Hubs vagy az Azure Storage. Diagnosztikai naplók engedélyezésével kapcsolatos további tudnivalókért lásd: útmutató szakasza a [diagnosztikai naplók dokumentáció](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md). 
 
-A **log\_min\_üzenetek** lehetővé teszi, hogy szabályozhatja, hogy mely szintek üzenet naplóba írja a program a kiszolgáló. Az alapértelmezett figyelmeztetés. 
 
-Ezek a beállítások további információkért lásd: [hibajelentés és a naplózás](https://www.postgresql.org/docs/9.6/static/runtime-config-logging.html) dokumentációját. Különösen konfigurálása az Azure Database for PostgreSQL-kiszolgálói paramétert, lásd: [Azure CLI-vel a kiszolgáló konfigurációs paramétereinek testreszabása](howto-configure-server-parameters-using-cli.md).
+A következő táblázat ismerteti, mi az egyes naplókhoz. Attól függően, a kimeneti végpont választja, a mezők és a sorrend, amelyben szerepelnek a eltérőek lehetnek. 
+
+|**Mező** | **Leírás** |
+|---|---|
+| TenantId | A bérlő azonosítója |
+| SourceSystem | `Azure` |
+| TimeGenerated [UTC] | Időbélyeg mikor lett rögzítve a napló (UTC) |
+| Típus | A napló típusa. Mindig `AzureDiagnostics` |
+| SubscriptionId | GUID Azonosítóját az előfizetést, amelyhez a kiszolgáló tartozik. |
+| ResourceGroup | A kiszolgáló tartozik az erőforráscsoport neve |
+| ResourceProvider | Az erőforrás-szolgáltató neve. Mindig `MICROSOFT.DBFORPOSTGRESQL` |
+| ResourceType | `Servers` |
+| ResourceId | Erőforrás-URI |
+| Erőforrás | A kiszolgáló neve |
+| Kategória | `PostgreSQLLogs` |
+| OperationName | `LogEvent` |
+| errorLevel | Naplózási szint, példa: napló, hiba, figyelmeztetés |
+| Üzenet | Elsődleges naplófájlüzenetre | 
+| Domain | Kiszolgáló verziója, például: postgres-10-es |
+| Részletek | Másodlagos naplófájlüzenetre (ha van) |
+| Oszlopnév | (Ha alkalmazható) oszlop neve |
+| %{Schemaname/ | (Ha van ilyen) a séma neve |
+| DatatypeName | Az adattípus (ha alkalmazható) neve |
+| LogicalServerName | A kiszolgáló neve | 
+| _ResourceId | Erőforrás-URI |
 
 ## <a name="next-steps"></a>További lépések
-- Hozzáférhet az Azure CLI parancssori felület használatával a naplókat, lásd: [Azure CLI-vel kiszolgálónaplók konfigurálása és a hozzáférés](howto-configure-server-logs-using-cli.md).
-- A kiszolgáló paramétereinek további információkért lásd: [Azure CLI-vel a kiszolgáló konfigurációs paramétereinek testreszabása](howto-configure-server-parameters-using-cli.md).
+- További információ a naplóinak elérése a [az Azure portal](howto-configure-server-logs-in-portal.md) vagy [Azure CLI-vel](howto-configure-server-logs-using-cli.md).
+- Tudjon meg többet [díjszabás az Azure Monitor](https://azure.microsoft.com/pricing/details/monitor/).

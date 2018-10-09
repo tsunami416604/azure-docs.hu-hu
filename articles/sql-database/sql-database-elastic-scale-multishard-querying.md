@@ -11,16 +11,18 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 manager: craigg
-ms.date: 04/01/2018
-ms.openlocfilehash: 5af6779bfb6075aa3606cc32939ae715241afe8d
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.date: 10/05/2018
+ms.openlocfilehash: 93408b266a239e897b49ab2482818a5221742685
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47166316"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48870402"
 ---
-# <a name="multi-shard-querying"></a>Többszegmenses lekérdezés
+# <a name="multi-shard-querying-using-elastic-database-tools"></a>Többszegmenses lekérdezés a rugalmas Adatbáziseszközök használatáról
+
 ## <a name="overview"></a>Áttekintés
+
 Az a [rugalmas adatbáziseszközöket](sql-database-elastic-scale-introduction.md), szilánkokra osztott adatbázis megoldásokat hozhat létre. **Többszegmenses lekérdezés** feladatok szolgál, például a gyűjtemény/jelentő egy lekérdezés futtatásának igénylő húzódó több szegmens között. (A, ellentétben [Adatfüggő útválasztásnak](sql-database-elastic-scale-data-dependent-routing.md), amely az összes munkát végez egy szegmenst.) 
 
 1. Get- **RangeShardMap** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.map._range_shard_map), [.NET](https://msdn.microsoft.com/library/azure/dn807318.aspx)) vagy **ListShardMap** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.map._list_shard_map), [.NET ](https://msdn.microsoft.com/library/azure/dn807370.aspx)) használatával a **TryGetRangeShardMap** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager._shard_map_manager.trygetrangeshardmap), [.NET](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.trygetrangeshardmap.aspx)), a **TryGetListShardMap** ([ Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager._shard_map_manager.trygetlistshardmap), [.NET](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.trygetlistshardmap.aspx)), vagy a **GetShardMap** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager._shard_map_manager.getshardmap), [.NET](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.getshardmap.aspx)) metódust. Lásd: **[hozhat létre, amely egy ShardMapManager](sql-database-elastic-scale-shard-map-management.md#constructing-a-shardmapmanager)** és  **[egy RangeShardMap vagy ListShardMap](sql-database-elastic-scale-shard-map-management.md#get-a-rangeshardmap-or-listshardmap)**.
@@ -31,6 +33,7 @@ Az a [rugalmas adatbáziseszközöket](sql-database-elastic-scale-introduction.m
 6. Tekintse meg az eredményeket használja a **MultiShardResultSet vagy MultiShardDataReader** ([Java](/java/api/com.microsoft.azure.elasticdb.query.multishard._multi_shard_result_set), [.NET](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.query.multisharddatareader.aspx)) osztály. 
 
 ## <a name="example"></a>Példa
+
 Az alábbi kód bemutatja a használatát több horizontális partíciós lekérdezések használatával egy adott **ShardMap** nevű *myShardMap*. 
 
 ```csharp
@@ -63,8 +66,7 @@ Vegye figyelembe a hívást **myShardMap.GetShards()**. Ez a módszer minden sze
 Egy, a több szegmensre vonatkozó lekérdezésekkel kapcsolatos korlátozás jelenleg szegmens és shardlet, hogy a rendszer megkérdezi a érvényesítése hiánya. Adatfüggő útválasztás ellenőrzi, hogy egy adott szegmens a szegmenstérkép része a lekérdezés időpontjában, amíg több horizontális partíciós lekérdezések ne végezze el ezt az ellenőrzést. Több horizontális partíciós lekérdezések adatbázisokon, amelyek a szegmenstérkép el lettek távolítva vezethet.
 
 ## <a name="multi-shard-queries-and-split-merge-operations"></a>Több horizontális partíciós lekérdezések és műveletek szétválasztás és egyesítés esetén
+
 Több horizontális partíciós lekérdezések ne ellenőrizze-e a lekérdezett adatbázison shardlet résztvevő szétválasztás és egyesítés folyamatban lévő műveletek. (Lásd: [az Elastic Database felosztási-egyesítési eszközének használatával végzett skálázást bemutató](sql-database-elastic-scale-overview-split-and-merge.md).) Ez vezethet inkonzisztenciákat, ugyanaz a shardlet tárolhatja sorait több adatbázis ugyanazon többszegmenses lekérdezés megjelenítése. Vegye figyelembe ezeket a korlátozásokat, és fontolja meg a kiürítési folyamatos felosztási-egyesítési műveletek használatát és a szegmenstérkép módosítások több horizontális partíciós lekérdezések végrehajtása közben.
 
 [!INCLUDE [elastic-scale-include](../../includes/elastic-scale-include.md)]
-
-

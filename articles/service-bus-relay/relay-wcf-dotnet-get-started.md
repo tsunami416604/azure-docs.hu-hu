@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 12/20/2017
 ms.author: spelluru
-ms.openlocfilehash: b9701eae026522238424a21ae3ecf2baa40334fa
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 6c8498a43b127fecc02473177ac955ae51a647d6
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43701765"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48854116"
 ---
 # <a name="how-to-use-azure-relay-wcf-relays-with-net"></a>Az Azure Relay WCF közvetítők használata a .NET használatával
 Ez a cikk ismerteti, hogyan használható az Azure Relay szolgáltatásban. A kódminták C# nyelven íródtak, és a Windows Communication Foundation (WCF) API-t használják a Service Bus-összeállításban található bővítményekkel. Az Azure relay kapcsolatos további információkért lásd: a [Azure Relay áttekintése](relay-what-is-it.md).
@@ -220,7 +220,6 @@ A végpontdefiníciók ekkor az App.config fájlba kerülnek. A következő pél
 Most, hogy megismerte az alapokat, az Azure Relay, kövesse az alábbi hivatkozások további.
 
 * [Mi az az Azure Relay?](relay-what-is-it.md)
-* [Az Azure Service Bus-architektúra áttekintése](../service-bus-messaging/service-bus-fundamentals-hybrid-solutions.md)
 * Töltse le a Service Bus-minták [Azure-minták] [ Azure samples] , vagy tekintse meg a [a Service Bus-minták áttekintését][overview of Service Bus samples].
 
 [Shared Access Signature Authentication with Service Bus]: ../service-bus-messaging/service-bus-shared-access-signature-authentication.md

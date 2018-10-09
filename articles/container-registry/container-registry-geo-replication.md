@@ -1,6 +1,6 @@
 ---
-title: Egy Azure-tárolót beállításjegyzék földrajzi replikálása
-description: Ismerkedés a létrehozása és kezelése az Azure-tárolót georeplikált nyilvántartó.
+title: Egy Azure container registryt GEO-replikálásához
+description: Ismerkedés a georeplikált Azure container registryk létrehozásába és kezelésébe.
 services: container-registry
 author: stevelas
 manager: jeconnoc
@@ -8,98 +8,98 @@ ms.service: container-registry
 ms.topic: overview-article
 ms.date: 04/10/2018
 ms.author: stevelas
-ms.openlocfilehash: e4695428b03961f5e899007609dfb1088dde77a8
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 784174c1fb2427441e0ed1a13b147d2440539fa9
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33768209"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48870338"
 ---
 # <a name="geo-replication-in-azure-container-registry"></a>Georeplikáció az Azure Container Registryben
 
-Egy helyi vagy a működés közbeni biztonsági másolatot, kívánó vállalatok válassza ki a több Azure-régiók szolgáltatások futtatásához. Ajánlott eljárásként helyezi el a tároló beállításjegyzék minden egyes régió, ahol képek futnak engedélyezi a hálózati bezárású műveleteket, gyors és megbízható kép réteg átvitel engedélyezése. A georeplikáció lehetővé teszi, hogy az Azure-tárolót beállításjegyzék egy egyetlen beállításjegyzék működhet több régióba szolgál a több főkiszolgálós regionális internetregiszterek.
+Egy helyi jelenlét, vagy egy gyakran használt adatok biztonsági mentése, kívánó vállalatok szolgáltatások futtatása több Azure-régió közül válassza ki. Ajánlott eljárásként elhelyezése egy tároló-beállításjegyzéket minden egyes régióban, ahol lemezképek futnak hálózatközeli operations, gyors és megbízható kép réteg adatátvitel engedélyezése lehetővé teszi. Georeplikáció lehetővé teszi egy egyetlen regisztrációs adatbázisként működik, az Azure container registry több régióban folyamatazonosítóval rendelkező több főkiszolgálós regionális beállításjegyzékek.
 
-Georeplikált beállításjegyzék a következő előnyöket nyújtja:
+A georeplikált beállításjegyzékbe a következő előnyöket nyújtja:
 
-* Egyetlen beállításjegyzék/képcímke nevek használható különféle régiókban
-* Beállításjegyzék hálózati zárja be a hozzáférést a regionális központi telepítések
-* Nincsenek további kilépő díjak képként kikerülnek egy helyi, a replikált beállításjegyzék ugyanabban a régióban, mint a tároló-gazdagépen
-* Egyetlen felügyeleti különféle régiókban nyilvántartó
+* Egyetlen beállításjegyzék/képcímke nevek segítségével több régióban
+* Hálózatközeli beállításjegyzék hozzáférést regionálisan üzemelő példányokba
+* Nincsenek további forgalmi díjat képként kikerülnek az tárológazda ugyanabban a régióban egy helyi, a replikált beállításjegyzék
+* Egyetlen felügyeleti beállításjegyzék több régióban
 
-## <a name="example-use-case"></a>Példa használati eset
-Contoso futtat egy nyilvános jelenléte webhelyen keresztül az Amerikai Egyesült Államok, Kanada és Európa el. A piacon kiszolgálására helyi és a hálózat-záró tartalommal, Contoso fut [Azure Tárolószolgáltatás](/azure/container-service/kubernetes/) az USA nyugati régiója, USA keleti régiója, Kanada központi és Nyugat-Európában clusters (ACS) Kubernetes. A webhely alkalmazást, Docker képként telepített összes régiók közötti kód és a lemezkép használja. Tartalom helyi a régióba veszi át egy adatbázis, amely egyedileg minden régióban lett kiépítve. Minden egyes regionális központi telepítés rendelkezik az erőforrásokhoz, mint a helyi adatbázis egyedi konfigurációjában.
+## <a name="example-use-case"></a>Példa használati esetekhez
+Contoso fut, az Egyesült Államok, Kanada és Európában lévő nyilvános jelenlét webhely. E piacokon kiszolgálása a helyi és a hálózatközeli tartalommal, Contoso fut [az Azure Container Service](/azure/container-service/kubernetes/) (ACS) Kubernetes-fürtök az USA nyugati RÉGIÓJA, USA keleti RÉGIÓJA, közép-Kanada és Nyugat-Európa. A webhely alkalmazást, egy Docker-rendszerképet telepített a kód és a kép minden régióban használja. Tartalom helyi régióban, veszi át egy adatbázis, amely egyedi az egyes régiókban van kiépítve. Minden egyes regionális központi telepítés rendelkezik az erőforrásokhoz, mint a helyi adatbázis egyedi konfigurációjában.
 
-A fejlesztői csapat Seattle WA, az USA nyugati régiója adatközpont okhoz található.
+A fejlesztői csapat található Seattle WA, az USA nyugati RÉGIÓJA adatközpont felhasználásával.
 
-![Több nyilvántartó küldését](media/container-registry-geo-replication/before-geo-replicate.png)<br />*Több nyilvántartó küldését*
+![Több beállításjegyzékek leküldése](media/container-registry-geo-replication/before-geo-replicate.png)<br />*Több beállításjegyzékek leküldése*
 
-A georeplikáció funkciókat használ, mielőtt Contoso kellett egy Egyesült államokbeli beállításjegyzéket az USA nyugati régiója, egy további beállításjegyzék Nyugat-Európa. Ezek különböző régiókban kiszolgálására, a fejlesztői csapat kellett képek leküldése két különböző nyilvántartó.
+Előtt a georeplikációs funkciókat használ, a Contoso egy Egyesült Államokbeli székhelyű beállításjegyzék az USA nyugati RÉGIÓJA, Nyugat-Európában, egy további beállításjegyzék rendelkezett. Ezek a különböző régiók szolgálnak, a fejlesztői csapat kellett rendszerképek leküldése a két különböző beállításjegyzékek.
 
 ```bash
-docker push contoso.azurecr.io/pubic/products/web:1.2
-docker push contosowesteu.azurecr.io/pubic/products/web:1.2
+docker push contoso.azurecr.io/public/products/web:1.2
+docker push contosowesteu.azurecr.io/public/products/web:1.2
 ```
-![Jogosultak-e a több nyilvántartó](media/container-registry-geo-replication/before-geo-replicate-pull.png)<br />*Jogosultak-e a több nyilvántartó*
+![A több beállításjegyzékek lekérése](media/container-registry-geo-replication/before-geo-replicate-pull.png)<br />*A több beállításjegyzékek lekérése*
 
-Az több nyilvántartó tipikus kihívások közé tartozik:
+Tipikus kihívást több beállításjegyzékek, a következők:
 
-* USA keleti régiója, USA nyugati régiója és Kanada központi fürtök összes lekéréses nélül kilépő díjak, az egyes alábbi távoli tároló állomások képek lekéréses az adatközpontok USA nyugati régiója, USA nyugati régiója beállításjegyzékből való.
-* A fejlesztői csapat kell lemezképeket leküldése USA nyugati régiója és Nyugat-Európában nyilvántartó.
+* Az összes USA keleti RÉGIÓJA, USA nyugati RÉGIÓJA és közép-Kanada fürtök forgalmi díjat generálnak, a szóban forgó gazdagépek távoli tároló minden egyes rendszerképek lekérése adatközpontok USA nyugati RÉGIÓJA, USA nyugati RÉGIÓJA beállításjegyzékből való lekérése.
+* A fejlesztői csapat kell rendszerképek leküldése a beállításjegyzékek USA nyugati Régiójában és Nyugat-Európa.
 * A fejlesztői csapat kell konfigurálása és karbantartása egyes regionális központi lemezkép nevű a helyi beállításjegyzékben hivatkozik.
-* Beállításjegyzék elérésének mindegyik régióhoz kell konfigurálni.
+* Beállításjegyzék elérésének kell konfigurálni minden olyan régió esetében.
 
-## <a name="benefits-of-geo-replication"></a>A georeplikáció előnyei
+## <a name="benefits-of-geo-replication"></a>Georeplikáció előnyei
 
-![Húzza a georeplikált beállításjegyzékből.](media/container-registry-geo-replication/after-geo-replicate-pull.png)
+![A georeplikált beállításjegyzékbe való lekérése](media/container-registry-geo-replication/after-geo-replicate-pull.png)
 
-Az Azure-tároló beállításjegyzék georeplikáció szolgáltatásával, a következő előnyökkel is vannak tudjuk:
+Az Azure Container Registry georeplikációs funkcióját használja, ezeket az előnyöket is felismerte, hogy:
 
-* Minden egyes egyetlen beállításjegyzék kezelését: `contoso.azurecr.io`
-* Minden egyes használt a kép URL-CÍMÉRE felügyelete az lemezképek központi telepítésére egyetlen konfigurálása: `contoso.azurecr.io/public/products/web:1.2`
-* ACR kezeli a georeplikáció, beleértve a helyi értesítések regionális webhookok egy egyetlen beállításjegyzék nyomni
+* Regisztrációs adatbázis kezelése minden régióban: `contoso.azurecr.io`
+* Egy egyetlen konfigurációja lemezképek központi telepítésére, felügyeletére minden régióban használja ugyanazt a kép URL-címe: `contoso.azurecr.io/public/products/web:1.2`
+* Miközben ACR kezeli a georeplikációt, beleértve a regionális webhookok helyi értesítéseket egy egyetlen regisztrációs leküldése
 
 ## <a name="configure-geo-replication"></a>Aktív georeplikáció konfigurálása
-A georeplikáció konfigurálása lehető legkönnyebben kattintva régiók a térképen.
+Georeplikáció konfigurálása az olyan egyszerű, mintha a régiókat a térképen kattint.
 
-A georeplikáció csak a [prémium nyilvántartó](container-registry-skus.md) csak. Ha a beállításjegyzék nem prémium, módosíthatja a Basic és Standard a prémium szintű még a [Azure-portálon](https://portal.azure.com):
+Georeplikációs funkciója [prémium szintű beállításjegyzékek](container-registry-skus.md) csak. Ha a beállításjegyzék nem prémium szintű, módosíthatja az alapszintű és standard szintű, a prémium szintű, de a [az Azure portal](https://portal.azure.com):
 
-![Az Azure portálon átváltását termékváltozatok](media/container-registry-skus/update-registry-sku.png)
+![Váltás a termékváltozatok között az Azure Portalon](media/container-registry-skus/update-registry-sku.png)
 
-A georeplikáció a prémium szintű beállításjegyzék konfigurálása, jelentkezzen be az Azure portálon, a http://portal.azure.com.
+A prémium szintű tárolójegyzékkel georeplikációt konfigurálásához jelentkezzen be az Azure Portalra a http://portal.azure.com.
 
-Az Azure-tároló beállításjegyzék váltson, és jelölje ki **replikációk**:
+Keresse meg az Azure Container Registrybe, és válassza ki **replikációk**:
 
 ![Replikációk az Azure Portal tárolójegyzékeinek felhasználói felületén](media/container-registry-geo-replication/registry-services.png)
 
-Olyan térképet jelenik meg, melyen az összes jelenlegi Azure-régiókat:
+Térkép jelenik meg, melyen az összes aktuális Azure-régióban:
 
  ![Régiótérkép az Azure Portalon](media/container-registry-geo-replication/registry-geo-map.png)
 
-* Kék hatszögek képviselő aktuális replikák
+* Kék hatszögek jelölik az aktuális replika
 * Zöld hatszögek képviselő lehetséges replika régiók
-* Szürke hatszögek képviselő még nem érhető el a replikáció Azure-régiók
+* Szürke hatszögek képviselő még nem érhető el a replikáció az Azure-régiók
 
-Konfigurálhatja egy replikát, jelöljön ki egy zöld hatszög, majd **létrehozása**:
+-Replika konfigurálásához válassza ki a zöld hatszög, majd jelölje ki **létrehozás**:
 
  ![Replikáció létrehozásának felhasználói felülete az Azure Portalon](media/container-registry-geo-replication/create-replication.png)
 
-További replikák konfigurálásához a zöld hatszögek más területen, majd kattintson **létrehozása**.
+További replikák konfigurálásához válassza ki a zöld hatszögek többi régió esetében, majd kattintson **létrehozás**.
 
-ACR kezdődik, képek között a konfigurált replikák szinkronizálása. Művelet befejeződése után a portál által adott jelentéseket tükrözik *készen*. A másodpéldány állapotát a portál nem frissül automatikusan. A frissített állapotának megtekintéséhez használja a frissítés gombra.
+ACR megkezdi a lemezképek szinkronizálása a beállított replikákat között. Ha elkészült, a portál tükrözi *készen*. A replika állapota a portálon nem frissül automatikusan. A frissítés gomb segítségével megtekintheti a frissített állapotot.
 
-## <a name="geo-replication-pricing"></a>A georeplikáció díjszabása
+## <a name="geo-replication-pricing"></a>Georeplikáció – díjszabás
 
-A georeplikáció csak a a [Premium Termékváltozat](container-registry-skus.md) Azure tároló beállításjegyzék. A replikált beállításjegyzékbeli a kívánt területek, Ön tudomásával prémium beállításjegyzék díjak mindegyik régióhoz.
+Georeplikációs funkciója a [prémium szintű Termékváltozat](container-registry-skus.md) az Azure Container Registrybe. A kívánt régiókhoz replikálásakor a beállításjegyzék díjak prémium beállításjegyzék díjak mindegyik régióhoz.
 
-Az előző példában a Contoso konszolidált le egy, két nyilvántartó replikák hozzáadása USA keleti régiója, Kanada központi és Nyugat-Európa. Contoso négy alkalommal prémium további konfigurációs és felügyeleti nélkül havonta fizetendő. Minden egyes régió most kéri le. a képek helyileg, teljesítmény, a megbízhatóság nélkül hálózati kilépő díjak Kanada USA nyugati régiója és USA keleti régiója.
+Az előző példában az Contoso konszolidált le egy, két beállításjegyzékek replikák hozzáadásával az USA keleti RÉGIÓJA, közép-Kanada és Nyugat-Európa. Contoso / hó, nincs további konfigurációs vagy felügyeleti négyszer prémium kell. Minden egyes régió most lekéri a saját rendszerképek helyi, teljesítmény, a megbízhatóság, Kanada, USA nyugati RÉGIÓJA és USA keleti RÉGIÓJA – hálózati forgalmi díjat nélkül.
 
 ## <a name="summary"></a>Összegzés
 
-A georeplikáció kezelheti a regionális adatközpontok egy globális felhők. Különböző sok Azure használnak, előnyeit úgy használhatja ki egy egyetlen felügyeleti vezérlősík gyors hálózati bezárású fenntartva, és megbízható kép: helyi kéri le.
+A georeplikáció kezelheti a regionális adatközpontok globális felhőként. Sok Azure-szolgáltatás használ rendszerképeket, gyors hálózatközeli, miközben egy egyetlen felügyeleti felületben rejlő előnyöket előnyeit, és lekéri a megbízható helyi rendszerképet.
 
 ## <a name="next-steps"></a>További lépések
 
-Tekintse meg a három részből oktatóanyag adatsorozat [Azure tároló beállításjegyzék georeplikáció](container-registry-tutorial-prepare-registry.md). Georeplikált beállításjegyzékbeli létrehozását, a tároló létrehozása, és majd telepítését egyetlen bízná `docker push` több regionális Web Apps tárolók példányok parancsot.
+Tekintse meg a háromrészes oktatóanyag-sorozatban [az Azure Container Registry georeplikációs](container-registry-tutorial-prepare-registry.md). A georeplikált beállításjegyzékbe létrehozásához, egy tároló létrehozása és majd telepítése egyetlen végig `docker push` parancs több regionális Web Apps for Containers-példányt.
 
 > [!div class="nextstepaction"]
-> [Azure-tárolót beállításjegyzék georeplikáció](container-registry-tutorial-prepare-registry.md)
+> [Az Azure Container Registry georeplikációja](container-registry-tutorial-prepare-registry.md)

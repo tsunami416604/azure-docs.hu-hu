@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 09/06/2018
 ms.author: jeffpatt
 ms.component: files
-ms.openlocfilehash: 2b2d817c85528ef56fd0baef80d17c7cd6eae543
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 8c6736d52ea0854a83bb213077c21946dc23141f
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48802236"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48857431"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Azure-fájlok szinkronizálásának hibaelhárítása
 Az Azure File Sync használatával fájlmegosztásainak a szervezet az Azure Files között, miközben gondoskodik a rugalmasságát, teljesítményét és kompatibilitását a helyszíni fájlkiszolgálók. Az Azure File Sync Windows Server az Azure-fájlmegosztás gyors gyorsítótáraivá alakítja át. Helyileg, az adatok eléréséhez a Windows Serveren elérhető bármely protokollt használhatja, beleértve az SMB, NFS és FTPS. Tetszőleges számú gyorsítótárak világszerte igény szerint is rendelkezhet.
@@ -780,11 +780,11 @@ Egy kiszolgálói rétegezési tevékenység monitorozásához használja Event 
 <a id="monitor-recall-activity"></a>**Egy kiszolgálói visszaírási tevékenység figyelése**  
 A kiszolgálói tevékenység visszaírási monitorozásához használja Event ID 9005, 9006, 9007 a telemetriai adatok eseménynaplóban (alkalmazások és az eseménynaplóban Services\Microsoft\FileSync\Agent alatt található). Vegye figyelembe, hogy ezeket az eseményeket a rendszer óránként naplózza.
 
-- Eseményazonosító 9005 biztosít egy kiszolgáló végponton visszaírási megbízhatóságát. Például teljes egyedi fájlok elérni, egyedi fájlok száma és a sikertelen hozzáférés, stb.
+- 9005-es Azonosítójú esemény a kiszolgálói végpont visszaírási megbízhatóságot biztosít. Például teljes egyedi fájlok elérni, egyedi fájlok száma és a sikertelen hozzáférés, stb.
 
 - Eseményazonosító 9006 visszaírási hibaeloszlás a kiszolgálói végpont biztosít. Például összes sikertelen kérelem ErrorCode, stb. Vegye figyelembe, hogy egy eseményt a rendszer naplózza hibakód.
 
-- Eseményazonosító 9007 a kiszolgáló-végpont visszaírási teljesítményt nyújt. Például TotalRecallIOSize, TotalRecallTimeTaken, stb.
+- Eseményazonosító 9007 kiszolgálói végpont visszaírási teljesítményt biztosít. Például TotalRecallIOSize, TotalRecallTimeTaken, stb.
 
 <a id="files-fail-tiering"></a>**A nem induló réteg-fájlok hibaelhárítása**  
 Ha az Azure Files Tier fájloknál:

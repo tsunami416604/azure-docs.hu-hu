@@ -11,15 +11,16 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 manager: craigg
-ms.date: 04/01/2018
-ms.openlocfilehash: 25bb665d9ea9166d099ab7f3f9696d92da8314e9
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.date: 10/05/2018
+ms.openlocfilehash: c54a644b140d65ccad1a3cba6c5a07a8e201cddb
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47161818"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48869618"
 ---
-# <a name="data-dependent-routing"></a>Adatfüggő Útválasztás
+# <a name="use-data-dependent-routing-to-route-a-query-to-appropriate-database"></a>Adatfüggő útválasztás irányíthatja a megfelelő adatbázis-lekérdezés használata
+
 **Adatfüggő útválasztás** képessége, hogy az adatok segítségével egy lekérdezésben irányítsa át a kérést a megfelelő adatbázishoz. Egy alapvető mintája adatok függő útválasztás akkor, ha horizontálisan skálázott adatbázisok használata. A kérelem környezetéből is használható, irányítsa át a kérést, különösen akkor, ha a horizontális skálázási kulcs nem szerepel a lekérdezésben. Minden egyes lekérdezés vagy a tranzakció egy alkalmazásban Adatfüggő útválasztás használatával fér hozzá egy önálló adatbázis kérelmenként korlátozódik. Az Azure SQL Database rugalmas eszközök, az Útválasztás segítségével lehet megvalósítani a **ShardMapManager** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager._shard_map_manager), [.NET](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.aspx)) osztály.
 
 Az alkalmazás nem kell nyomon követni a különböző kapcsolati karakterláncok vagy a horizontálisan skálázott környezetben adatok eltérő szeletek társított DB helyeket. Ehelyett a [Szilánkleképezés-kezelővel](sql-database-elastic-scale-shard-map-management.md) megnyílik kapcsolatok a megfelelő adatbázisokhoz, amikor szükséges, hogy a szegmenstérkép és az alkalmazásigénylés célja a horizontális skálázási kulcs értékét az adatok alapján. A kulcs: általában az *customer_id*, *tenant_id*, *date_key*, vagy valamilyen más specifikus azonosító, amely az adatbázis-kérelem alapvető paraméter. 

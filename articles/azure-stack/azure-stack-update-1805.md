@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 09/26/2018
 ms.author: sethm
 ms.reviewer: justini
-ms.openlocfilehash: 7cf3e08caad93bb7fb7fd221b6fdb9b2fc39397a
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: b6cb095736bbf41d53359bf7d07206703de5335c
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48816735"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48870003"
 ---
 # <a name="azure-stack-1805-update"></a>Azure Stack 1805 frissítése
 
@@ -72,8 +72,8 @@ Ez a frissítés az Azure Stack a következő fejlesztéseket tartalmazza.
 ## <a name="before-you-begin"></a>Előkészületek    
 
 ### <a name="prerequisites"></a>Előfeltételek
-- Az Azure Stack telepítése [1804 frissítése](azure-stack-update-1804.md) az Azure Stack 1805 frissítés alkalmazása előtt.  
-- Telepítse a legújabb elérhető [frissítést vagy gyorsjavítást verzió 1804](azure-stack-update-1804.md#post-update-steps).   
+- Az Azure Stack 1804 frissítés az Azure Stack 1805 frissítés alkalmazása előtt.  
+- Telepítse a legújabb elérhető frissítés vagy gyorsjavítás 1804 verzió.   
 - 1805 frissítés telepítésének megkezdése előtt futtassa [Test-AzureStack](azure-stack-diagnostic-test.md) állapotát, az Azure Stack érvényesítéséhez és a kapcsolódó működési problémák megoldásához. Emellett tekintse át az aktív riasztások, és oldja meg az esetleges beavatkozást igénylő. 
 
 ### <a name="known-issues-with-the-update-process"></a>A frissítési folyamat ismert problémái   
@@ -117,7 +117,7 @@ Az alábbiakban a telepítés utáni ismert hibáit a build-verziószáma.
   Megkerülő megoldás: A frissítés telepítése után a probléma megoldásához használja a 3. lépés a [eseményindító automation konfigurálása jogcím-szolgáltatói megbízhatósági az Azure Stackben](azure-stack-integrate-identity.md#trigger-automation-to-configure-claims-provider-trust-in-azure-stack-1) eljárás alaphelyzetbe állítani az alapértelmezett szolgáltatója előfizetés tulajdonosa.   
 
 <!-- TBD - IS ASDK --> 
-- Bizonyos felügyeleti előfizetés-típusok nem érhető el.  Azure Stack erre a verzióra frissít, ha a két előfizetés, amely-típusokat [verziójú 1804-es verzióban bevezetett](azure-stack-update-1804.md#new-features) nem láthatók a konzolon. Ez a várható eredmény. A nem érhető el előfizetés-típusok a következők *előfizetés mérési*, és *Használatalapú előfizetés*. Ezek a típusok előfizetés új Azure Stack-környezetek verziójától kezdve az 1804 láthatók, de még nem használatra kész. Ön továbbra is használja a *alapértelmezett szolgáltató* előfizetés-típus.  
+- Bizonyos felügyeleti előfizetés-típusok nem érhető el. Amikor az Azure Stack erre a verzióra frissít, a két előfizetés típusok verziójú 1804-es verzióban bevezetett nem láthatók a konzolon. Ez a várható eredmény. A nem érhető el előfizetés-típusok a következők *előfizetés mérési*, és *Használatalapú előfizetés*. Ezek a típusok előfizetés új Azure Stack-környezetek verziójától kezdve az 1804 láthatók, de még nem használatra kész. Ön továbbra is használja a *alapértelmezett szolgáltató* előfizetés-típus.  
 
 <!-- 2403291 - IS ASDK --> 
 - Lehet, hogy nincs használatát a vízszintes görgetősáv a rendszergazdai és felhasználói portál alján. Ha nem éri el a vízszintes görgetősáv, az útkövetés, keresse meg a portálon egy előző panelen válassza a panel neve, a tetején található navigációs listában megtekinteni kívánt használati a portál bal oldali.

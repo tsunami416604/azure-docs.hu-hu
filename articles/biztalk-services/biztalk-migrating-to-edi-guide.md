@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 07/31/2018
 ms.reviewer: jonfan, LADocs
 ms.suite: integration
-ms.openlocfilehash: 001dc4d5057767191003697c5fb819e53a8658f2
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 681cafc60661e16d70deb862da71f6baf80509fd
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44719936"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48856530"
 ---
 # <a name="migrate-biztalk-server-edi-solutions-to-biztalk-services-technical-guide"></a>BizTalk Server EDI-megoldások áttelepítése a BizTalk Services: műszaki útmutató
 
@@ -28,7 +28,7 @@ Véleményezők: Karthik Bharthy
 Használatával írt: a Microsoft Azure BizTalk Services – 2014. februárban kiadás.
 
 ## <a name="introduction"></a>Bevezetés
-Elektronikus adatcserére (EDI) az egyik a legelterjedtebb azt jelenti, hogy melyik vállalkozások exchange-adatok alapján elektronikus úton, vállalatok vagy B2B tranzakcióként is hívják. BizTalk Server esetében több mint egy évtizedes BizTalk Server megjelenése óta támogatása EDI. A BizTalk Services a Microsoft támogatást biztosít az EDI-megoldások a Microsoft Azure platformon továbbra is. B2B-tranzakciók többnyire egy szervezeten kívüli, és ezért az egyszerűbb, ha azt egy felhőalapú platformon lett megvalósítva. A Microsoft Azure BizTalk Services segítségével ezt a képességet biztosít.
+Elektronikus adatcserére (EDI) az egyik a legelterjedtebb azt jelenti, hogy melyik vállalkozások exchange-adatok alapján elektronikus úton, vállalatok vagy B2B tranzakcióként is hívják. BizTalk Server EDI támogatása több mint egy évtizedes, mivel a kezdeti BizTalk Server-kiadás esetében. A BizTalk Services a Microsoft támogatást biztosít az EDI-megoldások a Microsoft Azure platformon továbbra is. B2B-tranzakciók többnyire egy szervezeten kívüli, és ezért az egyszerűbb, ha azt egy felhőalapú platformon lett megvalósítva. A Microsoft Azure BizTalk Services segítségével ezt a képességet biztosít.
 
 Egyes ügyfeleink a BizTalk Services új EDI-megoldások "zöldmezős" platformként tekinti meg, míg számos ügyfelünk aktuális BizTalk Server EDI-megoldások, amelyek szeretnék áttelepíteni az Azure-bA. Mivel a BizTalk Services EDI tervezésnek lesz a azonos kulcsentitások (kereskedelmi partnerek, entitásokat, szerződések), a BizTalk Server EDI-architektúra alapján, lehetőség a BizTalk Services áttelepítése a BizTalk Server EDI-összetevők.
 

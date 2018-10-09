@@ -2,18 +2,17 @@
 title: A szolgáltatásnevek Azure Tárolóregisztrációs adatbázis hitelesítési
 description: Megtudhatja, hogyan biztosíthat a hozzáférést a privát tárolójegyzékben található rendszerképek az Azure Active Directory egyszerű szolgáltatás használatával.
 services: container-registry
-author: mmacy
-manager: jeconnoc
+author: dlepow
 ms.service: container-registry
 ms.topic: article
 ms.date: 04/23/2018
-ms.author: marsma
-ms.openlocfilehash: ffdf8af805ce7e5068ceef9a4b265ea00d36fc79
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.author: danlep
+ms.openlocfilehash: 30f0eb04b4b7d07785854e3079bc6656889edec6
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39448009"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48854487"
 ---
 # <a name="azure-container-registry-authentication-with-service-principals"></a>A szolgáltatásnevek Azure Tárolóregisztrációs adatbázis hitelesítési
 

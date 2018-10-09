@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2018
 ms.author: juluk
-ms.openlocfilehash: 51dc1280dcc8c47c3cb3ad46fc720e0a38e04b69
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: 9a6f7aeea799787becf0bb99cdfa08bed4e9d355
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48814440"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48867459"
 ---
 # <a name="features--tools-for-azure-cloud-shell"></a>Funkciók és eszközök az Azure Cloud Shell
 
@@ -33,12 +33,12 @@ Az Azure Cloud Shell futtat `Ubuntu 16.04 LTS`.
 
 A cloud Shell biztonságosan és automatikusan végzi a hitelesítést felhasználóifiók-hozzáférés az Azure CLI és az Azure PowerShell.
 
-### <a name="home-persistence-across-sessions"></a>$Home megőrzése munkamenetek között
+### <a name="home-persistence-across-sessions"></a>$HOME megőrzése munkamenetek között
 
 A fájlok munkamenetek közötti megtartása, a Cloud Shell végigvezeti csatlakoztatása egy Azure-fájlmegosztást az alkalmazás első indításakor.
-Ha befejeződött, a Cloud Shell automatikusan elvégzi a storage (meghajtóként csatlakoztatott `$Home\clouddrive`) minden későbbi munkamenet során.
-Ezenkívül a `$Home` könyvtár, egy .img az Azure-fájlmegosztás a rendszer megőrzi.
-Fájlok kívül `$Home` és a gép állapota nem megmaradnak a munkamenetek között. Ajánlott eljárások akkor használja, ha az SSH-kulcsok például a titkos kulcsok tárolására. Szolgáltatásokat, mint például [Azure Key Vault rendelkezik a telepítő oktatóanyagok](https://docs.microsoft.com/azure/key-vault/key-vault-manage-with-cli2#prerequisites).
+Ha befejeződött, a Cloud Shell automatikusan elvégzi a storage (meghajtóként csatlakoztatott `$HOME\clouddrive`) minden későbbi munkamenet során.
+Ezenkívül a `$HOME` könyvtár, egy .img az Azure-fájlmegosztás a rendszer megőrzi.
+Fájlok kívül `$HOME` és a gép állapota nem megmaradnak a munkamenetek között. Ajánlott eljárások akkor használja, ha az SSH-kulcsok például a titkos kulcsok tárolására. Szolgáltatásokat, mint például [Azure Key Vault rendelkezik a telepítő oktatóanyagok](https://docs.microsoft.com/azure/key-vault/key-vault-manage-with-cli2#prerequisites).
 
 [További információ a Cloud Shellben fájlokat.](persisting-shell-storage.md)
 
@@ -61,7 +61,7 @@ A cloud Shell nyílt forráskódú eszközök, például a Terraform, az Ansible
 |---|---|
 |Linux rendszerű eszközök            |A bash<br> a zsh<br> SH<br> tmux<br> tájékozódjon<br>               |
 |Azure-eszközök            |[Az Azure CLI](https://github.com/Azure/azure-cli) és [Azure klasszikus parancssori felület](https://github.com/Azure/azure-xplat-cli)<br> [AzCopy](https://docs.microsoft.com/azure/storage/storage-use-azcopy)<br> [Service Fabric parancssori felület](https://docs.microsoft.com/azure/service-fabric/service-fabric-cli)<br> [Batch Shipyard](https://github.com/Azure/batch-shipyard)<br> [blobxfer](https://github.com/Azure/blobxfer)|
-|Szövegszerkesztő           |VIM<br> a nano<br> emacs       |
+|Szövegszerkesztő           |VIM<br> a nano<br> emacs<br> Kód       |
 |Verziókövetés         |git                    |
 |Eszközök létrehozása            |Győződjön meg arról<br> Maven<br> npm<br> a pip         |
 |Containers             |[Docker CLI](https://github.com/docker/cli)/[a Docker Machine](https://github.com/docker/machine)<br> [Kubectl](https://kubernetes.io/docs/user-guide/kubectl-overview/)<br> [Helm](https://github.com/kubernetes/helm)<br> [DC/OS PARANCSSORI FELÜLETTEL](https://github.com/dcos/dcos-cli)         |
@@ -76,7 +76,7 @@ A cloud Shell nyílt forráskódú eszközök, például a Terraform, az Ansible
 |Indítás         |1.9        |
 |Java       |1.8        |
 |Node.js    |8.9.4      |
-|PowerShell |[6.1.0-Preview.4](https://github.com/PowerShell/powershell/releases)       |
+|PowerShell |[6.1.0](https://github.com/PowerShell/powershell/releases)       |
 |Python     |2.7-es és 3.5-ös (alapértelmezett)|
 
 ## <a name="next-steps"></a>További lépések

@@ -12,12 +12,12 @@ ms.author: jovanpop
 ms.reviewer: bonova, carlrab
 manager: craigg
 ms.date: 09/25/2018
-ms.openlocfilehash: ce4b87735f16b4167605f2897ba96f10155f7c01
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: b68e65bdcefcabb2804b259cff45e0a8719f7ab7
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47222301"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48870516"
 ---
 # <a name="feature-comparison-azure-sql-database-versus-sql-server"></a>Szolgáltatások összehasonlítása: Azure SQL Database, és az SQL Server összehasonlítása 
 
@@ -42,7 +42,7 @@ A következő táblázat az SQL Server legfontosabb funkcióit, és a szolgálta
 | [Az automatikus biztonsági mentés](sql-database-automated-backups.md) | Igen | Igen |
 | [Automatikus hangolás (lekérdezésterv)](https://docs.microsoft.com/sql/relational-databases/automatic-tuning/automatic-tuning)| [Igen](sql-database-automatic-tuning.md)| [Igen](https://docs.microsoft.com/sql/relational-databases/automatic-tuning/automatic-tuning) |
 | [Automatikus hangolás (indexek)](https://docs.microsoft.com/sql/relational-databases/automatic-tuning/automatic-tuning)| [Igen](sql-database-automatic-tuning.md)| Nem |
-| [Az Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/what-is) | Igen | Igen |
+| [Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/what-is) | Igen | Igen |
 | [BACPAC-fájl (Exportálás)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/export-a-data-tier-application) | Igen – lásd: [SQL Database-adatbázis exportálása](sql-database-export.md) | Nem |
 | [BACPAC-fájl (importálás)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database) | Igen – lásd: [SQL-adatbázis importálása](sql-database-import.md) | Nem |
 | [Biztonsági MENTÉSI parancs](https://docs.microsoft.com/sql/t-sql/statements/backup-transact-sql) | Nem, csak rendszer által kezdeményezett automatikus biztonsági mentések - látható [automatizált biztonsági mentések](sql-database-automated-backups.md) | Rendszer által kezdeményezett automatikus biztonsági másolatokat és a felhasználó által kezdeményezett csak másolatot biztonsági mentések – lásd: [különbségek biztonsági mentése](sql-database-managed-instance-transact-sql-information.md#backup) |
@@ -141,7 +141,7 @@ A következő táblázat az SQL Server legfontosabb funkcióit, és a szolgálta
 | [Nyomkövetési jelzők](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-traceon-trace-flags-transact-sql) | Nem | Nem |
 | [Változók](https://docs.microsoft.com/sql/t-sql/language-elements/variables-transact-sql) | Igen | Igen |
 | [Transzparens adattitkosítás (TDE)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-tde) | Igen – általános célú és a kritikus fontosságú üzleti szolgáltatásszintek csak| Részlegesen, csak a szolgáltatás által felügyelt titkosítás segítségével |
-[Virtuális hálózat](../virtual-network/virtual-networks-overview.md) | Részben – lásd: [VNET-végpontok](sql-database-vnet-service-endpoint-rule-overview.md) | Igen, csak a Resource Manager-modell |
+[Virtuális hálózat](../virtual-network/virtual-networks-overview.md) | Részben – lásd: [VNet-végpontok](sql-database-vnet-service-endpoint-rule-overview.md) | Igen, csak a Resource Manager-modell |
 | [Windows Server feladatátvételi fürtszolgáltatás](https://docs.microsoft.com/sql/sql-server/failover-clusters/windows/windows-server-failover-clustering-wsfc-with-sql-server) | [Magas rendelkezésre állású](sql-database-high-availability.md) minden adatbázis részét képezi. Vész-helyreállítási a következő cikkben [az Azure SQL Database üzletmenet-folytonossági funkcióinak áttekintése](sql-database-business-continuity.md) | [Magas rendelkezésre állású](sql-database-high-availability.md) minden adatbázis részét képezi. Vész-helyreállítási a következő cikkben [az Azure SQL Database üzletmenet-folytonossági funkcióinak áttekintése](sql-database-business-continuity.md) |
 | [XML-indexek](https://docs.microsoft.com/sql/t-sql/statements/create-xml-index-transact-sql) | Igen | Igen |
 

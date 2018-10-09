@@ -9,12 +9,12 @@ ms.component: acoustics
 ms.topic: article
 ms.date: 08/17/2018
 ms.author: kegodin
-ms.openlocfilehash: a82472ccd5524e7cbe3d92070a6d2b583d8eb4d5
-ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
+ms.openlocfilehash: 7a409b1ecdd693a0f28d2303d55a27b177644eb0
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48249298"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48855408"
 ---
 # <a name="bake-acoustics"></a>Bake Akusztika
 
@@ -230,25 +230,25 @@ Megbecsülheti egy adott bake díjait, hajtsa végre a megjelenített érték **
 A bake befejezése után ellenőrizze, hogy a mintavétel, valamint voxels pontok a várt helyen a beépülő modul futásidejű futtatásával. További információk [tervezési folyamat áttekintése Akusztika](design-process.md).
 
 ## <a name="Local-bake"></a>Helyi bake
-Helyi bake Akusztika szimulátor helyett az Azure Batch számítási fürtnek való kiszervezése azt a saját helyi számítógépen fut. Ez lehet egy jó választás kísérleteztek az Akusztika anélkül, hogy egy Azure-előfizetés, de vegye figyelembe, hogy a nagy számítási erőforrás-igényes Akusztika szimuláció, és a jelenet szimuláció konfigurációs, méretétől függően hosszabb időt is igénybe vehet, és nyers a feldolgozó gépet számítási kapacitását.
+Helyi bake Akusztika szimulátor helyett az Azure Batch számítási fürtnek való kiszervezése azt a saját számítógépen fut. Ez lehet egy jó választás kísérleteztek Akusztika az Azure-előfizetés nélkül. Vegye figyelembe, hogy a Akusztika szimuláció van nagy számítási erőforrás-igényes, és a jelenet, a szimuláció konfiguráció és a nyers számítási teljesítmény, a feldolgozó gép méretétől függően hosszabb időt is igénybe vehet.
 
 ### <a name="minimum-hardware-requirements"></a>Minimális hardverkövetelmények
 64-bit-es Intel processzorral, legalább 8 maggal és 32 GB RAM vagy nagyobb.
 
-Tegyük fel, @ 3 GHz-es és a 32 GB memória – 8 mag gépen az Intel Xeon E5-1660
+Tegyük fel, az Intel Xeon E5-1660 @ 3 GHz-es és 32 GB RAM - gépen 8 mag
 * 100 mintákkal kisebb jeleneteket a egy durva bake és a egy vékony feloldási bake ~ 32 óráig KB. 2 órát vesz igénybe.
 * 1000 mintákkal nagyobb jelenet órát is igénybe vehet legfeljebb körülbelül 20 a egy durva feloldásához és a egy vékony feloldási bake ~ 21 nap.
 
 ### <a name="setup-docker"></a>A telepítő Docker
 Telepítse és konfigurálja a Docker a számítógépen, amely feldolgozza a szimuláció-
 1. Telepítse a [Docker eszközkészlet](https://www.docker.com/products/docker-desktop).
-2. Indítsa el a Docker-beállításait, keresse meg a "Speciális" lehetőség, és konfigurálhat erőforrásokat, ahogy az alábbi. ![Docker-erőforrások](media/DockerSettings.png)
-3. Keresse meg a beállítások "Megosztott meghajtók", és kapcsolja be a feldolgozáshoz használt meghajtó megosztása.![DockerDriveSharing](media/DockerSharedDrives.png)
+2. Indítsa el a Docker-beállítások, keresse meg a "Speciális" beállításokat, és 8 GB RAM-MAL konfigurálására, hogy az erőforrások. A több processzort foglalhat le a Docker, annál gyorsabban bake fog befejeződni. ![Docker-példabeállítások](media/DockerSettings.png)
+3. Keresse meg "Megosztott meghajtók", és kapcsolja be a feldolgozáshoz használt meghajtó megosztása.![DockerDriveSharing](media/DockerSharedDrives.png)
 
 ### <a name="run-local-bake"></a>Helyi bake futtatása
 1. Kattintson a lap Bake "Előkészítése helyi os" gombjára, és válasszon ki egy mappát, ahol a bemeneti fájlok és parancsfájlok végrehajtása menti a rendszer. Ezután futtathatja a bake bármely gépen mindaddig, amíg megfelel-e a minimális hardverkövetelményeknek, és a Docker telepítve van a mappa, hogy a gép másolásával.
-2. Indítsa el a szimuláció, amely beolvassa a szimuláció feldolgozáshoz szükséges eszközkészlet a projekt Akusztika Docker-rendszerképet és a szimuláció elindításához "runlocalbake.bat" parancsfájl használatával. 
-3. A szimuláció befejeztével másolja vissza az eredményül kapott .ace fájl ugyanazon a helyen a mintavételek lapon megadott a Unity-projektjét. Ellenőrizze a célfájl nevében megfelel-e a Unity-követelmények úgy, hogy a fájl kiterjesztése ".bytes". A részletes naplókat a szimuláció "AcousticsLog.txt" fájlban vannak tárolva. Ha problémákat tapasztal, ossza meg ezt a diagnosztikát segítő fájlt.
+2. Indítsa el a szimulációt, a "runlocalbake.bat" parancsfájl használatával. Ez a szkript beolvassa a szimuláció feldolgozáshoz szükséges eszközkészlet a projekt Akusztika Docker-rendszerképet, és a a szimuláció elindításához. 
+3. A szimuláció befejeztével másolja az eredményül kapott .ace fájl vissza a Unity-projektjét. Ahhoz, hogy a Unity felismeri a bináris fájlként, ".bytes" hozzáfűzése a fájlkiterjesztés (például "Scene1.ace.bytes"). A részletes naplókat a szimuláció vannak tárolva "AcousticsLog.txt." Ha problémákat tapasztal, ossza meg ezt a diagnosztikát segítő fájlt.
 
 ## <a name="Data-Files"></a>Adatfájlok
 

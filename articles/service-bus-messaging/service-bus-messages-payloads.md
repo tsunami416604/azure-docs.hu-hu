@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/26/2018
 ms.author: spelluru
-ms.openlocfilehash: 636b48f409c1a86f7da87c38b6250610026d4547
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: 00c7605b09c32328a8324b13b8151a258a39dc22
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47392603"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48857601"
 ---
 # <a name="messages-payloads-and-serialization"></a>Üzenetek, hasznos adatforgalom és szerializáció
 
@@ -89,7 +89,6 @@ A .NET Standard és a Java API-változatok csak fogadni a bájttömbökhöz, ami
 
 További információ a Service Bus-üzenetkezelés, tekintse meg a következő témaköröket:
 
-* [A Service Bus alapjai](service-bus-fundamentals-hybrid-solutions.md)
 * [Service Bus-üzenetsorok, -témakörök és -előfizetések](service-bus-queues-topics-subscriptions.md)
 * [Bevezetés a Service Bus által kezelt üzenetsorok használatába](service-bus-dotnet-get-started-with-queues.md)
 * [A Service Bus-üzenettémakörök és -előfizetések használata](service-bus-dotnet-how-to-use-topics-subscriptions.md)

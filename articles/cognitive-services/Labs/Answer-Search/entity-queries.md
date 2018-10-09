@@ -1,37 +1,38 @@
 ---
-title: Projekt válasz keresési entitás lekérdezés - Microsoft kognitív szolgáltatások |} Microsoft Docs
-description: Az entitások projekt válasz keresési lekérdezések
+title: 'Gyors útmutató: Projekt válasz keresési Entity query'
+titlesuffix: Azure Cognitive Services
+description: Lekérdezések az entitások használatával projekt válaszkeresés
 services: cognitive-services
 author: mikedodaro
-manager: rosh
+manager: cgronlun
 ms.service: cognitive-services
-ms.technology: project-answer-search
+ms.component: project-answer-search
 ms.topic: article
 ms.date: 04/16/2018
-ms.author: rosh, v-gedod
-ms.openlocfilehash: 2b8382b791c02514e5110097700e223d98fafd6a
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.author: rosh
+ms.openlocfilehash: efb46fc7064bcad69b5ea84f9bdfe923d95ccbe6
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35348603"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48867578"
 ---
-# <a name="query-for-entities"></a>Az entitások lekérdezés
+# <a name="quickstart-query-for-entities"></a>Gyors útmutató: Entitások lekérdezése
 
-Ha a lekérdezés egy személy, hely vagy dolog adatokat kér, a válasz tartalmazhat egy `entities` fogadja a hívást.  Lekérdezések mindig vissza weblapjait, [tények](fact-queries.md) és/vagy [entitások](entity-queries.md) lekérdezés függenek.
+Ha a lekérdezés egy személy, hely vagy dolog adatokat kér, a válasz tartalmazhat egy `entities` választ.  Lekérdezések bármikor visszatérhet a weblapok, [tények](fact-queries.md) és/vagy [entitások](entity-queries.md) lekérdezés függenek.
 
 Entitások három lekérdezés forgatókönyveket támogatja: 
--   DominantEntity – csak egy entitás, amely megfelel a felhasználó lekérdezés és a leképezés. A lekérdezés terület tű, például egy DominantEntity forgatókönyv. 
--   Egyértelműsítő – egynél több olyan entitás, amely megfelel a felhasználó lekérdezés és a cél és a felhasználó számára a megfelelő entitás esetén. Például a lekérdezés játék a Thrones olyan Egyértelműsítő forgatókönyvekben, amelyek a televízió-műsor és a könyv adatsorozat adja vissza. 
--   Lista – több entitás, amely megfelel-e a felhasználó lekérdezés és a leképezés van. Például a "Veszélyeztetett listája" lekérdezés egy webfarmos listán megjelenítendő sorok és a cella formázott táblázatos értékeket ad vissza. 
+-   DominantEntity – csak egy entitást, amely megfelel a felhasználó lekérdezés és a leképezés van. Például a lekérdezést, terület tű, egy DominantEntity forgatókönyvet. 
+-   Egyértelműsítő – egynél több entitás, amely megfelel a felhasználó lekérdezési és szándékot, és a felhasználó a megfelelő entitás kijelölése esetén a. Például a lekérdezés játékot, Thrones Egyértelműsítő a forgatókönyv a televízió-műsor és a könyv sorozat adja vissza. 
+-   Lista – nincsenek több entitások, amelyek megfelelnek a felhasználói lekérdezés és szándékot. A lekérdezés "Veszélyeztetett List" például formázott megjelenítéshez a sorok és a cellák táblázatos értékeit adja vissza a lista forgatókönyv lesz. 
  
-A lekérdezés forgatókönyv határozhatja meg a `queryScenario` mezőjét a `entities` objektum. Az adatok az entitást tartalmazó attól függ, hogy az entitás típusa. Habár entitások ugyanazokat az alapszintű információkat tartalmaz, például sport létesítmények vagy könyvek bizonyos entitások további tulajdonságok közé tartozik. További tulajdonságokat tartalmazó entitásokat tartalmaz a `_type` a szerializáló által használt javaslat tartalmazó mezőt. A következő entitásokat tartalmaz további tulajdonságok: 
--   Könyv 
+A lekérdezés forgatókönyv meghatározásához használja a `queryScenario` mezőjében a `entities` objektum. Az adatokat, amely az entitás tartalmazza az entitás típusától függ. Habár entitások ugyanazokat az alapszintű információkat tartalmaz, például idegenforgalmi létesítmények vagy könyvek néhány entitás tartalmazza a további tulajdonságokat. Entitások, amelyek tartalmazzák a további tulajdonságok közé tartozik a `_type` mező, amely tartalmaz egy mutatót a szerializáló használják. A következő entitásokat további tulajdonságokat tartalmazza: 
+-   Címjegyzék 
 -   MusicRecording 
 -   Személy 
 -   A vonzás 
  
-A válasz tartalmazó entitástípus határozhatja meg a `entityTypeHints` mezőben, ahogy a lekérdezésben Bill Gates.
+Entitás, amely tartalmazza a válasz típusának meghatározása, használja a `entityTypeHints` mező, ahogy az a lekérdezés esetében Bill Gates.
 ````
         },
         "description": "Bill Gates is an American business man and philanthropist, co-founder of Microsoft",
@@ -44,11 +45,11 @@ A válasz tartalmazó entitástípus határozhatja meg a `entityTypeHints` mező
         "bingId": "6d7d66a7-2cb8-0ae9-637c-f81fd749dc9a"
       }
 ````
-A következő egy hely tű vonatkozó lekérdezést:
+Az alábbiakban látható egy hely tű-lekérdezést:
 ````
 https://api.labs.cognitive.microsoft.com/answerSearch/v7.0/search?q=space+needle&mkt=en-us
 ````
-A válasz tartalmazza a `entities` fogadja a hívást. Megjegyzés: a `entityScenario` és `entityTypeHints` mezőket. 
+A válasz tartalmazza a `entities` választ. Megjegyzés: a `entityScenario` és `entityTypeHints` mezőket. 
 ````
   "entities": {
     "value": [
@@ -109,16 +110,16 @@ A válasz tartalmazza a `entities` fogadja a hívást. Megjegyzés: a `entitySce
   },
 ````
 
-A lekérdezés is adja vissza egy listában érvényes.
+A lekérdezés listáját is visszaadása, ha megfelelő.
 
-**Lekérdezés:** a következő lekérdezés megkeresi veszélyeztetett:
+**Lekérdezés:** a következő lekérdezés talál veszélyeztetett listáját:
 
 ````
 https://api.labs.cognitive.microsoft.com/answerSearch/v7.0/search?q=list+of+endangered+species
 
 ````
 
-**Válasz:** a válasz formázva megjelenítendő táblázatos értékek listáját tartalmazza:
+**Válasz:** a válasz formázott megjelenítéshez táblázatos értékek listáját tartalmazza:
 ````
   "facts": {
     "id": "https://www.bingapis.com/api/v7/#Facts",
@@ -220,7 +221,7 @@ https://api.labs.cognitive.microsoft.com/answerSearch/v7.0/search?q=list+of+enda
 
 
 ## <a name="next-steps"></a>További lépések
-- [C# gyors üzembe helyezés](c-sharp-quickstart.md)
-- [Java gyors üzembe helyezés](java-quickstart.md)
-- [Csomópont gyors üzembe helyezés](node-quickstart.md)
-- [Python gyors üzembe helyezés](python-quickstart.md)
+- [C# gyorsútmutató](c-sharp-quickstart.md)
+- [Java a rövid útmutató](java-quickstart.md)
+- [Csomópont a rövid útmutató](node-quickstart.md)
+- [Python a rövid útmutató](python-quickstart.md)

@@ -10,12 +10,12 @@ ms.technology: language-understanding
 ms.topic: article
 ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: 1625bb9e9f51f8460db4e7ccbaf6e5eada3f8180
-ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
+ms.openlocfilehash: fb17e2d8c0ef1df5a6d4965730d3ddd3764d58f5
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/06/2018
-ms.locfileid: "48831059"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48868751"
 ---
 # <a name="integrate-speech-service"></a>Beszédszolgáltatás integrálása
 A [beszédszolgáltatás](https://docs.microsoft.com/azure/cognitive-services/Speech-Service/) lehetővé teszi, hogy egyetlen kérés fogadásához hang, és a LUIS-előrejelzési JSON objektumokat adjanak vissza. Ebben a cikkben töltse le, és a Visual Studióban egy C#-projektben használatával az utterance (kifejezés) mikrofon beszél, és a LUIS előrejelzési információkat kapni. A projekt használja, a beszéd [NuGet](https://www.nuget.org/packages/Microsoft.CognitiveServices.Speech/) csomag már szerepel a hivatkozásként van listázva. 
@@ -26,7 +26,7 @@ Ez a cikk szüksége lesz egy ingyenes [LUIS] [ LUIS] webhely fiók annak érdek
 Az Azure Portalon [létrehozása](luis-how-to-azure-subscription.md#create-luis-endpoint-key) egy **Language Understanding** (LUIS) kulcsa. 
 
 ## <a name="import-human-resources-luis-app"></a>Importálja az emberi erőforrások LUIS alkalmazás
-A leképezések és a kimondott szöveg ebben a cikkben vannak az emberi erőforrások LUIS érhető el az alkalmazásból a [LUIS-Samples](https://github.com/Microsoft/LUIS-Samples) Github-adattárban. Töltse le a [HumanResources.json](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/HumanResources.json) *.json kiterjesztésű, mentse a fájlt, és [importálása](luis-how-to-start-new-app.md#import-new-app) LUIS be azt. 
+A leképezések és a kimondott szöveg ebben a cikkben vannak az emberi erőforrások LUIS érhető el az alkalmazásból a [LUIS-Samples](https://github.com/Microsoft/LUIS-Samples) Github-adattárban. Töltse le a [HumanResources.json](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/tutorials/HumanResources.json) fájlt mentse azt a `.json` bővítményt, és [importálása](luis-how-to-start-new-app.md#import-new-app) LUIS be azt. 
 
 Az alkalmazás van, szándék fog vonatkozni, az entitások és az emberi erőforrások tartományhoz kapcsolódó kimondott szöveg. Példa utterances a következők:
 
@@ -68,52 +68,24 @@ A beszédfelismerés SDK már elérhető az egy rá mutató hivatkozást.
 [![](./media/luis-tutorial-speech-to-intent/nuget-package.png "Képernyőfelvétel a Visual Studio 2017 megjelenítésének Microsoft.CognitiveServices.Speech NuGet-csomag")](./media/luis-tutorial-speech-to-intent/nuget-package.png#lightbox)
 
 ## <a name="modify-the-c-code"></a>A C#-kód módosítása
-Nyissa meg a **LUIS_samples.cs** fájlt, és módosítsa az alábbi változókat:
+Nyissa meg a `Program.cs` fájlt, és módosítsa az alábbi változókat:
 
 |Változó neve|Cél|
 |--|--|
-|luisSubscriptionKey|A közzétételi oldalon végpont URL-ekhez előfizetés-kulcs-érték felel meg|
-|luisRegion|Végpont URL-cím első altartomány felel meg|
-|luisAppId|A következő végpont URL-útvonal megfelel **apps /**|
+|LUIS_assigned_endpoint_key|A végpont URL-CÍMEK hozzárendelve előfizetés-kulcs-érték a közzétételi oldalon felel meg|
+|LUIS_endpoint_key_region|A végpont URL-cím első együtt, például felel meg `westus`|
+|LUIS_app_ID|A következő végpont URL-útvonal megfelel **apps /**|
 
-[![](./media/luis-tutorial-speech-to-intent/change-variables.png "Képernyőfelvétel a Visual Studio 2017 LUIS_samples.cs változók megjelenítése")](./media/luis-tutorial-speech-to-intent/change-variables.png#lightbox)
-
-A fájl már rendelkezik az emberi erőforrások leképezések leképezve.
-
-[![](./media/luis-tutorial-speech-to-intent/intents.png "Képernyőfelvétel a Visual Studio 2017 LUIS_samples.cs leképezések megjelenítése")](./media/luis-tutorial-speech-to-intent/intents.png#lightbox)
+A `Program.cs` fájlban már vannak leképezve az emberi erőforrások szándék fog vonatkozni.
 
 Hozhat létre, és futtassa az alkalmazást. 
 
 ## <a name="test-code-with-utterance"></a>Tesztelje a kódot az utterance (kifejezés)
-Válassza ki **1** , és beszéljen a mikrofon "Ki is Kovács János igazgatója".
+A mikrofon beszéljen "Kik a jóváhagyott fogorvoshoz redmondban?".
 
-```cmd
-1. Speech recognition of LUIS intent.
-0. Stop.
-Your choice: 1
-LUIS...
-Say something...
-ResultId:cc83cebc9d6040d5956880bcdc5f5a98 Status:Recognized IntentId:<GetEmployeeOrgChart> Recognized text:<Who is the manager of John Smith?> Recognized Json:{"DisplayText":"Who is the manager of John Smith?","Duration":25700000,"Offset":9200000,"RecognitionStatus":"Success"}. LanguageUnderstandingJson:{
-  "query": "Who is the manager of John Smith?",
-  "topScoringIntent": {
-    "intent": "GetEmployeeOrgChart",
-    "score": 0.617331
-  },
-  "entities": [
-    {
-      "entity": "manager of john smith",
-      "type": "builtin.keyPhrase",
-      "startIndex": 11,
-      "endIndex": 31
-    }
-  ]
-}
+[!code-console[Command line response from spoken utterance](~/samples-luis/documentation-samples/tutorial-speech-intent-recognition/console-output.txt "Command line response from spoken utterance")]
 
-Recognition done. Your Choice:
-
-```
-
-A megfelelő leképezés **GetEmployeeOrgChart**, a munkavállalók 61 %-os található. A keyPhrase entitást adott vissza. 
+A megfelelő leképezés **GetEmployeeBenefits**, több mint 85 %-os megbízhatósággal található. A keyPhrase entitást adott vissza. 
 
 A beszédfelismerés SDK-t a teljes LUIS választ adja vissza. 
 

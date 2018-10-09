@@ -3,7 +3,7 @@ title: A grub-HIBÁT és egyfelhasználós üzemmódban Azure soros konzol |} A 
 description: Soros konzol használata az Azure-beli virtuális gépek grub-hibát.
 services: virtual-machines-linux
 documentationcenter: ''
-author: alsin
+author: asinn826
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -14,19 +14,40 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: alsin
-ms.openlocfilehash: 47a97d842822ed3d6c8c1583808552c1b2d1d53e
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 411c743421af79ea066df3a5fc07f71b8b6cb993
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47414071"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48855867"
 ---
 # <a name="use-serial-console-to-access-grub-and-single-user-mode"></a>Használja a soros konzol eléréséhez a grub-HIBÁT, és az egyfelhasználós módot
-Egyfelhasználós módban, minimális környezetet minimális funkciókkal. Rendszerindító kapcsolatos problémák vizsgálatában vagy hálózati problémák hasznos lehet, mivel kevesebb services futhat a háttérben, és attól függően, a paraméterben megadott futtatási szint, a fájlrendszer előfordulhat, hogy még akkor is automatikusan csatlakoztatása nem. Ez akkor hasznos, amikor például egy sérült fájlrendszer, a tört fstab vizsgálata vagy a hálózati kapcsolat (helytelen engedélyezze az iptables konfigurálása).
+Grub-HIBÁT a végösszeget egyesített rendszertöltő. A grub-HIBÁT Ön tudja módosítani a rendszerindítási konfiguráció többek között a egyfelhasználós módban indul.
 
-Néhány disztribúciókhoz automatikusan csökken, egyfelhasználós módban vagy vészhelyzeti módban, ha a virtuális gép rendszerindítási nem lehet. További telepítési, mások azonban szükség van, mielőtt azok vethetők el, egyfelhasználós, vagy vészhelyzeti módban automatikusan.
+Egyfelhasználós módban, minimális környezetet minimális funkciókkal. A rendszerindítási problémák, filesystem, vagy hálózati problémák kivizsgálása hasznos lehet. Kevesebb services futhat a háttérben, és a paraméterben megadott futtatási szint, attól függően egy fájlrendszer előfordulhat, hogy nem is automatikusan csatlakoztatni.
 
-Győződjön meg arról, hogy GRUB engedélyezve van a virtuális Gépen ahhoz, hogy hozzáférési egyfelhasználós mód célszerű. A disztribúció függően néhány beállítás munka győződjön meg arról, hogy engedélyezve van-e a grub-HIBÁT is lehet. 
+Egyfelhasználós üzemmódban is akkor hasznosak, ahol a virtuális gép csak konfigurálhatók úgy, hogy fogadja el a bejelentkezéshez SSH-kulcsokat. Ebben az esetben előfordulhat, hogy lehet egyfelhasználós módban használhatják a fióknál engedélyezze a jelszavas hitelesítés.
+
+Adja meg az egyfelhasználós módot, szüksége lesz adja meg a grub-HIBÁT, amikor a virtuális gép másolatából van, és módosítsa a rendszerindítási konfiguráció a grub-HIBÁT. Előfordulhat, hogy erre a virtuális gép soros konzolon. 
+
+## <a name="general-grub-access"></a>Általános GRUB-hozzáférés
+Hozzáférhet a grub-HIBÁT, kell, miközben a soros konzol panelen nyissa meg a virtuális gép újraindítása. Néhány disztribúciókhoz bevitelt a billentyűzetről megjelenítéséhez a grub-HIBÁT, míg mások automatikusan GRUB megjelenítése néhány másodpercet, és lehetővé teszi a felhasználó által beírt megszakítja az időkorlát van szükség. 
+
+Győződjön meg arról, hogy GRUB engedélyezve van a virtuális Gépen ahhoz, hogy hozzáférési egyfelhasználós mód célszerű. A disztribúció függően néhány beállítás munka győződjön meg arról, hogy engedélyezve van-e a grub-HIBÁT is lehet. Disztribúció kapcsolatos információkat alább érhető el.
+
+### <a name="reboot-your-vm-to-access-grub-in-serial-console"></a>A virtuális gépet grub-HIBÁT a soros konzol eléréséhez
+A virtuális gép újraindítása a soros konzol panel nyílik meg a végezheti a SysRq `'b'` parancsot, ha [SysRq](./serial-console-nmi-sysrq.md) engedélyezve van, vagy kattintson az Újraindítás gombot az áttekintési panelen (megnyitása a virtuális Gépet egy új böngészőlapon bezárása nélkül indítsa újra a a soros konzol panel). Kövesse a disztribúció-specifikus utasításokat megtudhatja, mi várható a grub-HIBÁT, indítsa újra.
+
+## <a name="general-single-user-mode-access"></a>Hozzáférés az egyfelhasználós módot
+Manuális hozzáférés egyfelhasználós üzemmódra helyzetekben, ahol nincs konfigurálva egy fiók jelszavas hitelesítéssel lehet szükség. Adja meg manuálisan az egyfelhasználós módot a grub-HIBÁT konfigurációját módosítani kell. Ha ezzel végzett, tekintse meg a [használja az egyfelhasználós módot visszaállítására vagy a jelszó hozzáadása](#-Use-Single-User-Mode-to-reset-or-add-a-password) további útmutatást.
+
+Azokban az esetekben, ahol a virtuális gép nem tud rendszerindító disztribúciókhoz gyakran automatikusan csökken, akkor egyfelhasználós módban vagy vészhelyzeti módban. További telepítési, mások azonban szükség van, mielőtt is dobja el egyfelhasználós vagy vészhelyzeti módban automatikusan (például a gyökér szintű jelszó beállítása).
+
+### <a name="use-single-user-mode-to-reset-or-add-a-password"></a>Az egyfelhasználós módot használni a visszaállítására vagy a jelszó hozzáadása
+Ha egyfelhasználós módban van, tegye a következőt adja hozzá egy új felhasználót sudo jogosultsági szinttel:
+1. Futtatás `useradd <username>` felhasználó hozzáadása
+1. Futtatás `sudo usermod -a -G sudo <username>` , az új felhasználó legfelső szintű jogosultságok engedélyezése
+1. Használat `passwd <username>` a jelszó beállítása az új felhasználó. Ezután lesz jelentkezzen be az új felhasználó
 
 
 ## <a name="access-for-red-hat-enterprise-linux-rhel"></a>Red Hat Enterprise Linux (RHEL) hozzáférés
@@ -64,7 +85,7 @@ Ha meg van adva grub-HIBÁT, és a legfelső szintű eléréséhez a fenti lép�
 1. A kilépéshez, és indítsa újra a alkalmazott beállítások a Ctrl + X
 1. Meg kell adnia a rendszergazdai jelszó előtt képes arra, hogy adja meg az egyfelhasználós módban – Ez az a fenti utasítások létrehozott ugyanazt a jelszót    
 
-    ![](/media/virtual-machines-serial-console/virtual-machine-linux-serial-console-rhel-enter-emergency-shell.gif)
+    ![](../media/virtual-machines-serial-console/virtual-machine-linux-serial-console-rhel-enter-emergency-shell.gif)
 
 ### <a name="enter-single-user-mode-without-root-account-enabled-in-rhel"></a>Adja meg a egyfelhasználós mód engedélyezve van a RHEL root fiók nélkül
 Ha nem tudta a gyökér szintű felhasználó engedélyezéséhez a fenti lépéseket, a legfelső szintű jelszavát továbbra is visszaállíthatja. Kövesse az alábbi utasításokat:
@@ -81,7 +102,7 @@ Ha nem tudta a gyökér szintű felhasználó engedélyezéséhez a fenti lépé
 1. Miután egyfelhasználós módban indul, írja be a `chroot /sysroot` lehet átváltani a `sysroot` egyes
 1. Ön mostantól legfelső szintű. A legfelső szintű jelszavát is alaphelyzetbe `passwd` , majd a fenti utasítások egyfelhasználós üzemmódra. Típus `reboot -f` elkészült újraindítását.
 
-![](/media/virtual-machines-serial-console/virtual-machine-linux-serial-console-rhel-emergency-mount-no-root.gif)
+![](../media/virtual-machines-serial-console/virtual-machine-linux-serial-console-rhel-emergency-mount-no-root.gif)
 
 > Megjegyzés: Keresztül a fenti utasítások futtató csökken, akkor vészhelyzeti shellbe, így is elvégezheti a feladatok, például `fstab`. Azonban a általánosan elfogadott javaslat, hogy a legfelső szintű jelszó alaphelyzetbe állítása, és azt használja az egyfelhasználós módot adja meg. 
 
@@ -100,6 +121,13 @@ Ubuntu-rendszerképek nem szükséges egy rendszergazdai jelszót. Ha a rendszer
 
 ### <a name="grub-access-in-ubuntu"></a>Az Ubuntu GRUB-hozzáférés
 Hozzáférhet a grub-HIBÁT, tartsa nyomva 'Esc' közben a virtuális gép van másolatából.
+
+Alapértelmezés szerint Ubuntu-rendszerképek előfordulhat, hogy nem automatikus megjelenítése a grub-HIBÁT képernyő. Ez módosítható a következő lépéseket:
+1. Nyissa meg `/etc/default/grub.d/50-cloudimg-settings.cfg` egy tetszőleges szövegszerkesztőben
+1. Módosítsa a `GRUB_TIMEOUT` értéke nem nulla értéket
+1. Nyissa meg `/etc/default/grub` egy tetszőleges szövegszerkesztőben
+1. Tegye megjegyzésbe a `GRUB_HIDDEN_TIMEOUT=1` sor
+1. Futtassa a `sudo update-grub` parancsot.
 
 ### <a name="single-user-mode-in-ubuntu"></a>Az Ubuntu egyfelhasználós üzemmódban
 Ubuntu csökken, akkor egyfelhasználós üzemmódba automatikusan ha általában nem rendszerindító. Manuálisan adja meg az egyfelhasználós mód, használja az alábbi utasításokat:
@@ -136,7 +164,7 @@ SLES GRUB-hozzáféréshez YaST rendszerbetöltőt konfiguráció szükséges. E
 1. Adja meg a grub-HIBÁT, indítsa újra a virtuális gép, és nyomja le bármelyik billentyűt, hogy hagyja el a képernyőn lévő GRUB rendszerindítási folyamat során
     - Az alapértelmezett időtúllépési érték GRUB 1s. Ez módosításával módosíthatja a `GRUB_TIMEOUT` változót `/etc/default/grub`
 
-![](/media/virtual-machines-serial-console/virtual-machine-linux-serial-console-sles-yast-grub-config.gif)
+![](../media/virtual-machines-serial-console/virtual-machine-linux-serial-console-sles-yast-grub-config.gif)
 
 ### <a name="single-user-mode-in-suse-sles"></a>A SUSE SLES egyfelhasználós üzemmódban
 Ön automatikusan eldobja vészhelyzeti shellbe SLES általában nem indítható. Adja meg manuálisan a vészhelyzeti rendszerhéj, használja az alábbi utasításokat:

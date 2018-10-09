@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/07/2018
 ms.author: harijay
-ms.openlocfilehash: e1884048d0f02de1b3a354bc4dac2b3e98dcccc9
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 17fec61e73298a6250cf6805bb9a713ff3d3a488
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47414222"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48858009"
 ---
 # <a name="virtual-machine-serial-console"></a>Virtuális gépek soros konzolja
 
@@ -28,7 +28,7 @@ Az Azure-beli virtuális gépek soros konzolja egy szöveges alapú konzol Windo
 
 A soros konzol dokumentáció Linux rendszerű virtuális gépekhez [ide](serial-console-linux.md).
 
-> [!Note] 
+> [!NOTE] 
 > Globális Azure-régiókban található virtuális gépek soros konzol szolgáltatás általánosan elérhető. Ezen a ponton soros konzol még nem érhető el az Azure Government vagy Azure China-felhőkben.
 
  
@@ -83,9 +83,12 @@ Ha a Windows rendszertöltő engedélyeznie kell a rendszerindítási konfigurá
 1. Csatlakozás a Windows virtuális géphez a távoli asztalon keresztül
 2. Egy rendszergazdai parancssorból a következő parancsok futtatásával. 
 * `bcdedit /set {bootmgr} displaybootmenu yes`
-* `bcdedit /set {bootmgr} timeout 5`
+* `bcdedit /set {bootmgr} timeout 30`
 * `bcdedit /set {bootmgr} bootems yes`
 3. Indítsa újra a rendszert, engedélyezni kell a rendszerindító menü
+
+> [!NOTE] 
+> Az időkorlát, a rendszerindító manager menü jelenik meg a beállított negatív hatással lesz az operációs rendszer rendszerindítási ideje a jövőben. Egyes hozzáadni, győződjön meg arról, hogy a rendszertöltés-vezérlő látható soros konzolon keresztül 30 második időtúllépés elfogadható lehet, míg mások érdemes lehet egy rövidebb időkorlát. Időtúllépési értéke teljesebb értéket.
 
 ## <a name="use-serial-console-for-nmi-calls-in-windows-vms"></a>Használja a soros konzol NMI hívások Windows-beli virtuális gépeken
 Egy nem maszkolható (NMI) úgy tervezték, hogy hozzon létre egy olyan jelet, hogy a szoftverek virtuális gépi nem figyelmen kívül hagyja. Hagyományosan NMIs figyelje a hardverekkel kapcsolatos problémák szerepelnek, amelyek adott válaszidők szükséges rendszereken voltak használva.  Ma, programozók és a rendszer a rendszergazdák gyakran használnak NMI mechanizmusként javításához vagy hibaelhárítása a rendszerek, amelyek leáll.
@@ -99,7 +102,7 @@ Windows egy összeomlási memóriakép létrehozása egy NMI kap való konfigur�
 ## <a name="disable-serial-console"></a>Tiltsa le a soros konzol
 Alapértelmezés szerint minden előfizetés rendelkezik a soros konzol hozzáférés engedélyezve van az összes virtuális gép. Soros konzol vagy az előfizetés szintjén, vagy a virtuális gép szintjén letiltható.
 
-> [!Note]       
+> [!NOTE]       
 > Annak érdekében, hogy engedélyezi vagy letiltja a soros konzol-előfizetéssel, az előfizetés írási engedéllyel kell rendelkeznie. Ez magában foglalja, de a rendszergazda vagy tulajdonos szerepkörök nem korlátozódik. Egyéni szerepkörök is rendelkezhetnek írási jogosultsággal.
 
 ### <a name="subscription-level-disable"></a>Előfizetés-szintű letiltása

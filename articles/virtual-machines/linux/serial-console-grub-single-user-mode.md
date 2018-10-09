@@ -14,19 +14,19 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: alsin
-ms.openlocfilehash: e3745efdd0d0ea159afcda177c306f5865ac2aad
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: 150147a0fe0fdfcf2e6c9f2b780587749af1ded0
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46366834"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48857907"
 ---
 # <a name="use-serial-console-to-access-grub-and-single-user-mode"></a>Használja a soros konzol eléréséhez a grub-HIBÁT, és az egyfelhasználós módot
-Grub-HIBÁT a végösszeget egyesített rendszertöltő. A grub-HIBÁT Ön tudja módosítani a rendszerindítási konfiguráció többek között a egyfelhasználós módban indul. 
+Grub-HIBÁT a végösszeget egyesített rendszertöltő. A grub-HIBÁT Ön tudja módosítani a rendszerindítási konfiguráció többek között a egyfelhasználós módban indul.
 
 Egyfelhasználós módban, minimális környezetet minimális funkciókkal. A rendszerindítási problémák, filesystem, vagy hálózati problémák kivizsgálása hasznos lehet. Kevesebb services futhat a háttérben, és a paraméterben megadott futtatási szint, attól függően egy fájlrendszer előfordulhat, hogy nem is automatikusan csatlakoztatni.
 
-Egyfelhasználós üzemmódban is akkor hasznosak, ahol a virtuális gép csak konfigurálhatók úgy, hogy fogadja el a bejelentkezéshez SSH-kulcsokat. Ebben az esetben előfordulhat, hogy lehet egyfelhasználós módban használhatják a fióknál engedélyezze a jelszavas hitelesítés. 
+Egyfelhasználós üzemmódban is akkor hasznosak, ahol a virtuális gép csak konfigurálhatók úgy, hogy fogadja el a bejelentkezéshez SSH-kulcsokat. Ebben az esetben előfordulhat, hogy lehet egyfelhasználós módban használhatják a fióknál engedélyezze a jelszavas hitelesítés.
 
 Adja meg az egyfelhasználós módot, szüksége lesz adja meg a grub-HIBÁT, amikor a virtuális gép másolatából van, és módosítsa a rendszerindítási konfiguráció a grub-HIBÁT. Előfordulhat, hogy erre a virtuális gép soros konzolon.
 

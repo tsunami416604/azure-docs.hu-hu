@@ -3,7 +3,7 @@ title: Az Azure Marketplace és AppSource támogatása |} Az Azure
 description: Információk és hivatkozások támogatása az Azure Marketplace és appsource-ban
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
 documentationcenter: ''
-author: ellacroi
+author: yijenj
 manager: nunoc
 editor: ''
 ms.assetid: ''
@@ -12,27 +12,27 @@ ms.workload: ''
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: article
-ms.date: 07/02/2018
-ms.author: ellacroi
-ms.openlocfilehash: 55f66203c7d84a41e6c060dd6ae5241b4a719f1c
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.date: 10/05/2018
+ms.author: yijenj
+ms.openlocfilehash: 884432d5604868ad2307a7d7ababa3e5a004a982
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44049031"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48854065"
 ---
 # <a name="support-for-the-marketplace"></a>A Marketplace-en támogatása  
 A támogatási lehetőségeket a Marketplace-en.  
 
 ## <a name="onboarding"></a>Előkészítés
 
-[Hozzon létre egy jegyet](https://support.microsoft.com/en-us/getsupport?wf=0&tenant=classiccommercial&oaspworkflow=start_1.0.0.0&locale=en-us&supportregion=en-us&pesid=16230&forceorigin=esmc&ccsid=636595105151894820) "Marketplace bevezetési" a Microsoft támogatási az első lépések az összes előforduló problémák megoldására.
+Nyissa meg a Microsoft egy jegyet [marketplace publisher támogatási](https://support.microsoft.com/en-us/getsupport?wf=0&tenant=classiccommercial&oaspworkflow=start_1.0.0.0&locale=en-us&supportregion=en-us&pesid=16230&forceorigin=esmc&ccsid=636595105151894820) előkészítés és bevezetés minden probléma.
 
 ## <a name="cloud-partner-portal"></a>Felhőpartnerportál  
 
 | Támogatási csatornán keresztül | Leírás | Rendelkezésre állás |  
 |:--- |:--- |:--- |  
-| Támogatás<ul> <li>További segítségért látogasson el a helyen található egy incidens-lap létrehozása [go.microsoft.com/fwlink/?linkid=844975](https://go.microsoft.com/fwlink/?linkid=844975)</li> </ul> | Támogatás a Cloud Partner portálra. | Biztosítunk támogatást minden alkalommal éjszakai és nap során. |  
+| További segítségért látogasson el a helyen található egy incidens-lap létrehozása [piactér-támogatás](https://go.microsoft.com/fwlink/?linkid=844975)</li> </ul> | Támogatás a Cloud Partner portálra. | Közötti 6: 00 - 6 ESTE biztosítunk támogatást. |  
 
 ## <a name="technical"></a>Műszaki  
 

@@ -10,19 +10,19 @@ ms.service: active-directory
 ms.workload: identity
 ms.component: users-groups-roles
 ms.topic: article
-ms.date: 10/04/2018
+ms.date: 10/05/2018
 ms.author: curtand
 ms.reviewer: elkuzmen
-ms.openlocfilehash: 65c3fa4c667fdb2d670ff259b190db140b4d968f
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: d5f926ac41bb90ba716e0c52b790a60fd74e0631
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48803919"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48854915"
 ---
 # <a name="managing-custom-domain-names-in-your-azure-active-directory"></a>Az Azure Active Directoryban egyéni tartománynevek kezelése
 
-Tartománynév fontos része annak a directory-erőforrások esetében az azonosító: felhasználói név vagy e-mail-cím egy felhasználó, csoport, a cím első része, és a egy alkalmazás az alkalmazás Alkalmazásazonosító URI-ja része lehet. Egy erőforrást az Azure Active Directory (Azure AD-) tartalmazhatnak, amely szerint a címtár, amely tartalmazza az erőforrás tulajdonosa már ellenőrizve van egy tartománynevet. Csak globális rendszergazda az Azure AD tartományi felügyeleti feladatok is végrehajthatja.
+Tartománynév fontos része annak a directory-erőforrások esetében az azonosító: egy felhasználói név vagy e-mail cím egy felhasználó, csoport, a cím szerepel, és egyes esetekben az alkalmazás Alkalmazásazonosító URI-t az alkalmazás részét képezi. Egy erőforrást az Azure Active Directory (Azure AD), amely a címtár, amely tartalmazza az erőforrás tulajdonosa tartománynevet is tartalmaznak. Csak globális rendszergazda is tartományok kezelése az Azure ad-ben.
 
 ## <a name="set-the-primary-domain-name-for-your-azure-ad-directory"></a>Állítsa be az elsődleges tartomány nevét az Azure AD-címtár
 
@@ -38,19 +38,19 @@ Ha a címtár létrejött, a kezdeti tartománynevet, például "contoso.onmicro
   
    ![Tartománynév elsődlegessé alakítás](./media/domains-manage/make-primary-domain.png)
 
-Módosíthatja a át minden olyan ellenőrzött egyéni tartománynak, amely nincs összevonva az elsődleges tartomány nevét. Az elsődleges tartomány a címtár módosítása nem módosítja a felhasználónevek, bármely meglévő felhasználó számára.
+Módosíthatja a át minden olyan ellenőrzött egyéni tartománynak, amely nincs összevonva az elsődleges tartomány nevét. Az elsődleges tartomány a címtár módosítása minden olyan meglévő felhasználók számára a felhasználónév nem változnak.
 
 ## <a name="add-custom-domain-names-to-your-azure-ad-tenant"></a>Egyéni tartománynevek hozzáadása az Azure AD-bérlővel
 
-Legfeljebb 900 felügyelt tartománynév felvételére van lehetőség. Az összevonáshoz minden tartományban a helyszíni Active Directoryval való konfigurálásakor, adhat hozzá minden könyvtárban 450 tartománynevek legfeljebb. 
+Legfeljebb 900 felügyelt tartományneveket adhat hozzá. Az összevonáshoz a tartományok konfigurálása esetén a helyszíni Active Directoryval, minden könyvtár akár 450 tartományneveket adhat hozzá.
 
 ## <a name="add-subdomains-of-a-custom-domain"></a>Egyéni tartomány altartományait hozzáadása
 
-Ha például a "europe.contoso.com" harmadik szintű tartománynév hozzáadása a címtárhoz, kell először adja hozzá és ellenőrizze a második szintű tartomány, például a contoso.com. Az altartomány rendszer automatikusan ellenőrzi az Azure AD által. Látható, hogy az imént hozzáadott altartomány ellenőrzése megtörtént, frissítse a lapot a böngészőben, amely azokat a tartományokat listázza.
+Ha például a "europe.contoso.com" harmadik szintű tartománynév hozzáadása a címtárhoz, kell először adja hozzá és ellenőrizze a második szintű tartomány, például a contoso.com. Az altartomány automatikusan az Azure AD által ellenőrizve. A hozzáadott altartomány ellenőrzése, hogy megtekintéséhez frissítse a tartományok listáját a böngészőben.
 
 ## <a name="what-to-do-if-you-change-the-dns-registrar-for-your-custom-domain-name"></a>Mi a teendő, ha módosítja a DNS-regisztráló az egyéni tartománynevet?
 
-Ha módosítja a DNS-regisztráló az egyéni tartománynevet, továbbra is az egyéni tartománynevét használja az Azure AD-magát és további konfigurációs feladatok megszakítás nélkül. Ha az egyéni tartománynevet az Office 365-öt használ, Intune-ban vagy más szolgáltatások által használt egyéni tartománynevek, az Azure ad-ben, tekintse meg ezeket a szolgáltatásokat a dokumentációban.
+Ha módosítja a DNS-regisztráló szervezetek, nincsenek további konfigurációs feladatok az Azure ad-ben. Továbbra is tartománynév használata az Azure ad-vel megszakítás nélkül. Ha az egyéni tartománynevet az Office 365-öt használ, Intune-ban vagy más szolgáltatások által használt egyéni tartománynevek, az Azure ad-ben, ezeket a szolgáltatásokat a dokumentációjában talál.
 
 ## <a name="delete-a-custom-domain-name"></a>Egyéni tartománynév törlése
 
@@ -83,7 +83,7 @@ Hibát ad vissza mikor:
 
 * Át kell nevezni objektumok száma nagyobb, mint 1000
 * Az alkalmazások, át kell nevezni egyik egy több-bérlős alkalmazást
-  
+
 ### <a name="frequently-asked-questions"></a>Gyakori kérdések
 
 **K: Miért sikertelen egy hiba, amely arról tájékoztatja, hogy a tartománynév van kezelt Exchange-csoportok a tartomány törlése?** <br>

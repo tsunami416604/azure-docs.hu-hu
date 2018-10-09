@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/06/2017
 ms.author: spelluru
-ms.openlocfilehash: fa5b4ba02eda75d16243c9aebbf38dfb30afe53d
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: d4ecbb7101e7b1f0f3dd6978ae7d35bb5066126d
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43695408"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48854932"
 ---
 # <a name="azure-wcf-relay-rest-tutorial"></a>Az Azure WCF Relay REST oktatóanyag
 
@@ -561,7 +561,6 @@ A megoldás létrehozása után az alábbi lépéseket követve futtathatja az a
 ## <a name="next-steps"></a>További lépések
 Most, hogy létrehozott egy alkalmazást, amely az Azure Relay szolgáltatás használja, tekintse meg az alábbi cikkekből tudhat meg:
 
-* [Az Azure Service Bus-architektúra áttekintése](../service-bus-messaging/service-bus-fundamentals-hybrid-solutions.md)
 * [Az Azure Relay áttekintése](relay-what-is-it.md)
 * [A WCF relay szolgáltatás használata .NET-tel](relay-wcf-dotnet-get-started.md)
 

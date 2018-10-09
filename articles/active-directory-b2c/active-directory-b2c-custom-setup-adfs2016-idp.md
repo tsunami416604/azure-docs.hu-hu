@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/20/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 50b4470ee1d958081f4dd090d20a810b88a40560
-ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
+ms.openlocfilehash: 39b9c2d9eb982eaffa7cb6246fd0b22375939f52
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48268123"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48868691"
 ---
 # <a name="add-adfs-as-a-saml-identity-provider-using-custom-policies-in-azure-active-directory-b2c"></a>AD FS egyéni szabályzatok használatával az Azure Active Directory B2C egy SAML-identitásszolgáltató hozzáadása
 
@@ -144,7 +144,7 @@ Most, hogy egyetlen helyen, amelyekkel hozzákapcsolhatja egy műveletet kell. A
 AD FS használata Identitásszolgáltatóként az Azure AD B2C-ben, szeretne egy AD FS megbízható függő entitás megbízhatóságának létrehozása az Azure AD B2C-vel SAML-metaadatokat. Az alábbi példa bemutatja egy Azure AD B2C-vel technikai profil SAML-metaadataira mutató URL-címet:
 
 ```
-https://login.microsoftonline.com/your-tenant/your-policy/samlp/metadata?idptp=your-technical-profile
+https://login.microsoftonline.com/te/your-tenant/your-policy/samlp/metadata?idptp=your-technical-profile
 ```
 
 Cserélje le a következő értékeket:

@@ -12,30 +12,20 @@ ms.workload: ''
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: article
-ms.date: 09/20/2018
+ms.date: 10/05/2018
 ms.author: yijenj
-ms.openlocfilehash: 0b971535120e51a9aeec7b57da133c6b8db6a09e
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 383f16bf0671e0bdec840afe1abe85e37ed32ce2
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47219412"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48855357"
 ---
 # <a name="azure-marketplace-listing-guidelines"></a>Az Azure Marketplace piactéren irányelvek
 
 Ez a dokumentum tartalmaz új ajánlatokat és az Azure Marketplace-en felsorolt szolgáltatások részt vevő felülvizsgálóknak követelmény útmutatást, valamint egy ellenőrzőlistát.
 
-Minden ajánlat meg kell felelnie a "minden listaelem kapcsolatos követelmények". További követelmények és ellenőrzőlistákat előírt adott lista típusai, így: csatolt kísérleteket, ajánlatok, a SaaS-alkalmazások és a tárolók consulting kínál.
-
-**Tekintse meg az ajánlott eljárás, listázás, itt szereplő példák:**
-| Csomag típusa | Az ajánlat hivatkozás
-|:--- |:--- |
-| Általános kérdések | <br> https://azuremarketplace.microsoft.com/en-us/marketplace/apps/barracudanetworks.waf?tab=Overview <br> https://azuremarketplace.microsoft.com/en-us/marketplace/apps/netapp.netapp-altavault-cloud-integrated-storage-solution?tab=Overview |
-| Próbaverzió | https://azuremarketplace.microsoft.com/en-us/marketplace/apps/intigua.intigua-agent-manager-trial?tab=Overview |
-| SaaS-alkalmazások | https://azuremarketplace.microsoft.com/en-us/marketplace/apps/apptimized.isvtesting?tab=Overview |
-| Containers |https://azuremarketplace.microsoft.com/en-us/marketplace/apps/couchbase.couchbase-server-enterprise-containercouchbase-enterprise-server-container-byol?tab=Overview |
-| Tanácsadási szolgáltatások | https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/wipro-ltd.cmp-wipro?page=1 |
-
+Minden ajánlat meg kell felelnie a [ajánlati követelményeinek](https://docs.microsoft.com/azure/marketplace/marketplace-criteria-content-validation#all-listing-requirements) lásd alább. További követelmények és ellenőrzőlistákat előírt adott lista típusai, így:, amelyek csatolt [kísérletek](https://docs.microsoft.com/azure/marketplace/marketplace-criteria-content-validation#trial-offer-requirements), [SaaS-alkalmazások](https://docs.microsoft.com/azure/marketplace/marketplace-criteria-content-validation#saas-apps-requirements), [tárolók](https://docs.microsoft.com/azure/marketplace/marketplace-criteria-content-validation#container-offer-requirements), és [ajánlatok consulting](https://docs.microsoft.com/azure/marketplace/marketplace-criteria-content-validation#consulting-offer-requirements).
 
 
 ## <a name="all-listing-requirements"></a>Listaelem szükséges összes követelmény
@@ -69,7 +59,7 @@ Minden ajánlat meg kell felelnie a "minden listaelem kapcsolatos követelménye
 |:--- |:--- |:--- |:--- |
 | 1 | Az ajánlat címe |<br>• Kell állnia csak kisbetűket, alfanumerikus karaktereket, kötőjeleket és aláhúzást tartalmazhatnak. Nem módosítható a közzétételt követően. <br>• Leíró megoldás ajánlat.<br>• A partner webhelyére megoldás előléptetése online illeszkedik. | Kulcs keresett szavakat tartalmaz |
 | 2 | Technikai információ: konfiguráció |<br>• A SaaS-alkalmazás, válassza ki, csak kívánja-e a listában az alkalmazást, vagy ha ügyfelek az alkalmazás Azure-on keresztül engedélyezni kívánja.<br>• Válassza ki a megfelelő szöveget, amelyet a beszerzési gombra az ajánlat: ingyenes, ingyenes próba vagy kapcsolatfelvételi<br>• Csak válassza ki (egy előugró)-e megfelelő termékek, ha az alkalmazás már használja a technológia: Cortana Intelligence, Power BI-Megoldássablonok, a Power Apps |  |
-| 3 | Kipróbálás | Válassza a következőt: Igen vagy nem | Ügyfél könnyen képes megérteni érhető el a következő lépések vannak: <br>1. A próbaverzió kipróbálása <br>2. Vásárlás most <br>3. Forduljon a PoC, értékelési vagy Briefing elrendezése e-mail vagy telefon száma. |
+| 3 | Tesztverzió | Válassza a következőt: Igen vagy nem | Ügyfél könnyen képes megérteni érhető el a következő lépések vannak: <br>1. A próbaverzió kipróbálása <br>2. Vásárlás most <br>3. Forduljon a PoC, értékelési vagy Briefing elrendezése e-mail vagy telefon száma. |
 | 4 | Storefront részletek: ajánlat összegzése | Ez fog megjelenni az alkalmazás keresési oldalon, amely legfeljebb 100 karakterből állhat | |
 | 5 | Storefront részletek: iparágak | Iparágak (maximális száma % 2): Válassza ki az iparág, hogy az alkalmazás-e a legjobban igazodó és alkalmazható. | |
 | 6 | Az ajánlat leírása | <br>• Egyszerű HTML-kód például a p, em, ul, li, engedélyezett ol és fejléc-címkéket. Legfeljebb 3000 karakter hosszú lehet. <br>• 2-3 bekezdést <br>• Szolgáltatásajánlat könnyen megérthető egyetlen pillantással <br>• Leírás átfogó, és rögzíti: cél célközönség *, a felhasználó, hogy értékes típusa (érték prop) <br>• Ajánlat leírása a bekezdés nyújt narratíva formájában a mondatok rövid, könnyen érthető. | <br>• Cél iparági vázolja (Ha releváns) <br>• Jó alapuló mindegyik egy-a mondat vagy kifejezés, amely a következő tartalom és listajele magában foglaló összefoglalójához bekezdés fejléccel formázás mutat (ha szükséges) fő előnyöket emelje ki. Itt célja az olvasó tudni, hogy az ajánlat egy könnyen formátum megtekintheti, és nem kell olvasni a bekezdések egy pillanat. <br>• Nincs minden bekezdés és a egy autó ismertetőben például olvasási közötti térközt. Tehát nem technikai funkciók vagy nyelvjárás, de az ajánlat egyszerűen fogalmazva leíró code, és átfogó. | 
@@ -108,10 +98,8 @@ Minden ajánlat meg kell felelnie a "minden listaelem kapcsolatos követelménye
 | 12 | További információ  | <br>• Hivatkozások (a leírás, nem a Marketplace-en hivatkozások a bal oldali) alján vezet, a megoldás további információt és nyilvánosan elérhető és megjelenítésének megfelelően. <br>• Hivatkozások rendelkeznie kell egy "felhasználóbarát neve", és nem jelennek meg, bármely letöltött fájl neve | |
 
 
-
-
 ## <a name="next-steps"></a>További lépések
-* További információ a különböző típusú a Marketplace-en <br>[SaaS-alkalmazások](https://docs.microsoft.com/azure/marketplace/marketplace-saas-applications-technical-publishing-guide) <br>[Containers](https://docs.microsoft.com/azure/marketplace/marketplace-containers) <br>[Tanácsadási szolgáltatások](https://docs.microsoft.com/azure/marketplace/consulting-services)
+* További információ a különböző típusú a Marketplace-en <br>[SaaS-alkalmazások](https://docs.microsoft.com/azure/marketplace/marketplace-saas-applications-technical-publishing-guide) <br>[Containers](https://docs.microsoft.com/azure/marketplace/marketplace-containers) <br>[Tanácsadói szolgáltatások](https://docs.microsoft.com/azure/marketplace/consulting-services)
 *   [A megoldás lista típusának meghatározása](https://docs.microsoft.com/azure/marketplace/determine-your-listing-type)
 
  

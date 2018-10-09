@@ -8,22 +8,16 @@ ms.service: data-explorer
 services: data-explorer
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 571a005dd3f50690f291a7ffa3c1174ea15cb0ed
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 07ee05128333df963c2d8ff3dd3f6442a3843d07
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47047610"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48866890"
 ---
 # <a name="delete-data-from-azure-data-explorer"></a>Adatok törlése az Azure Data Explorer
 
 Az adatkezelő az Azure támogatja a több tömeges törlés megközelítést, amely ebben a cikkben bemutatjuk. Azt nem támogatja a rekord törlési valós időben, mert gyors olvasási hozzáférés van optimalizálva.
-
-* Ha az adatbázis már nincs rá szükség, törölje azt a drop database parancs használatával.
-
-    ```Kusto
-    .drop database <DatabaseName>
-    ```
 
 * Egy vagy több tábla már nincs rá szükség, ha törli ezeket a drop table segítségével, vagy dobja el a táblák parancs.
 
@@ -44,12 +38,5 @@ Az adatkezelő az Azure támogatja a több tömeges törlés megközelítést, a
     ```
 
     További információkért lásd: [adatmegőrzési](https://docs.microsoft.com/azure/kusto/concepts/retentionpolicy).
-
-* Az egyes rekordok használatával törölheti az *kiürítése* művelet, egy predikátum hasonló alapján `where CustomerName == 'contoso'`. Mindemellett végleges törlésére a valós idejű törlése nem tervezett tömeges törlés. Az alábbi példa bemutatja a végleges törlésére.
-
-    ```Kusto
-    .purge table Customer records
-    | where CustomerName =='contoso'
-    ```
 
 Ha adat törlésének problémák segítségre van szüksége, nyisson egy támogatási kérést a [az Azure portal](https://portal.azure.com).

@@ -2,18 +2,17 @@
 title: Azure Container Instances a tárolók frissítése
 description: Ismerje meg az Azure Container Instances-tároló csoportokat a futó tárolók frissítése.
 services: container-instances
-author: mmacy
-manager: jeconnoc
+author: dlepow
 ms.service: container-instances
 ms.topic: article
 ms.date: 08/01/2018
-ms.author: marsma
-ms.openlocfilehash: 5a42b0983b0f754b119fa304317e758a976fb4f6
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.author: danlep
+ms.openlocfilehash: 2df6a2724cbdcd6bbb6c6ca6636256b7e399da8e
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39432616"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48854541"
 ---
 # <a name="update-containers-in-azure-container-instances"></a>Azure Container Instances a tárolók frissítése
 
@@ -23,7 +22,7 @@ A container Instances szolgáltatásban a szokásos működés során előfordul
 
 Frissítés a tárolócsoportban a tárolók újbóli üzembe helyezés egy meglévő csoporthoz legalább egy módosított tulajdonsággal. Amikor frissít egy tárolócsoportot, a csoportban lévő összes futó tárolók újraindul helyben.
 
-Ismételt üzembe helyezése egy meglévő tárolócsoport kiadásával a create parancs (vagy használja az Azure Portalon), és adja meg a meglévő csoport nevét. Módosítsa a csoport legalább egy érvényes tulajdonság, az újbóli üzembe helyezés indításához a create parancs kiadásakor. Nem minden tárolócsoport tulajdonságainak jsou platné Pro újbóli üzembe helyezés. Lásd: [delete igénylő tulajdonságok](#properties-that-require-delete) nem támogatott tulajdonságok listáját.
+Ismételt üzembe helyezése egy meglévő tárolócsoport kiadásával a create parancs (vagy használja az Azure Portalon), és adja meg a meglévő csoport nevét. Módosítsa a csoport legalább egy érvényes tulajdonság, az újbóli üzembe helyezés indításához a create parancs kiadásakor. Nem minden tárolócsoport tulajdonságainak jsou platné Pro újbóli üzembe helyezés. Lásd: [delete igénylő tulajdonságok](#properties-that-require-container-delete) nem támogatott tulajdonságok listáját.
 
 Az alábbi Azure CLI-példa egy új DNS-névcímke egy tárolócsoport frissíti. A DNS-név címke, a csoport tulajdonsága módosítanak, mert a tárolócsoport újratelepítése van, és a tárolók újraindul.
 

@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/14/2018
 ms.author: pbutlerm
-ms.openlocfilehash: b15224a5be6c3c1df0778c35680836cbbfee2e48
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 8c432146d33db992a0ae612dfc56ace9460ade17
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48810671"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48870859"
 ---
 # <a name="configure-lead-management-for-dynamics-crm-online"></a>Konfigurálható a érdeklődő a Dynamics CRM online
 
@@ -95,7 +95,7 @@ Az alábbi lépések segítségével az Azure Active Directory konfigurálása a
 
 ### <a name="office-365"></a>Office 365
 
-Ha nem szeretné használni az Azure Active Directoryban, regisztrálhat egy új felhasználó az Office 365 felügyeleti portálon. Meg kell kell frissíteni a felhasználónév/jelszó 90 naponként továbbra is megkaphatja az érdeklődők.
+Ha nem szeretné használni az Azure Active Directoryban, regisztrálhat egy új felhasználó az Office 365 felügyeleti portálon. Kötelező frissítéséhez a felhasználónév/jelszó 90 naponként továbbra is megkaphatja az érdeklődők fogja.
 
 A következő lépések segítségével konfigurálhatja a Office 365-höz a Dynamics CRM.
 

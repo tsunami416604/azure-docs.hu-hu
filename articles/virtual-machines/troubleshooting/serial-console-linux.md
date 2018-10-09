@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/11/2018
 ms.author: harijay
-ms.openlocfilehash: 642bf03ecef7f6db25c51671635d96ef7baed91a
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: ce799f4201a560077c5bb1b943a9e587a71806f2
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47413818"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48856343"
 ---
 # <a name="virtual-machine-serial-console"></a>Virtuális gépek soros konzolja
 
@@ -49,7 +49,7 @@ A soros konzol dokumentációja a Windows virtuális gépek esetében [ide](../w
 
 
 ## <a name="get-started-with-serial-console"></a>Soros konzol használatának első lépései
-A virtuális gépek soros konzolon keresztül csak érhető el [az Azure portal](https://portal.azure.com). A portálon keresztül a virtuális gépek soros konzol eléréséhez a lépéseket az alábbiakban 
+A virtuális gépek soros konzolon keresztül csak érhető el [az Azure portal](https://portal.azure.com). Győződjön meg arról, hogy teljesülnek a [Előfeltételek](#prerequisites) felett. Az alábbiakban a lépéseket a portálon keresztül a virtuális gépek soros konzol eléréséhez:
 
   1. Nyissa meg az Azure Portalon
   1. (Hagyja ki ezt, ha a virtuális gép rendelkezik a jelszó-hitelesítést használó felhasználó) Kattintson a "Jelszó visszaállítása" panelen felhasználóneves és jelszavas hitelesítéssel rendelkező felhasználó hozzáadása

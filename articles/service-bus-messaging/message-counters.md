@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/26/2018
 ms.author: spelluru
-ms.openlocfilehash: bd9d1b813c90be09301eeff1de7580f22c15500b
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 954c16cefe6d7ffe61a0b04b274b9bf92306a587
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47407586"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48857584"
 ---
 # <a name="message-counters"></a>Üzenetszámlálók
 
@@ -40,13 +40,12 @@ Az aktív üzenetek száma ismerete hasznos meghatározásához, hogy egy üzene
 -   [TransferDeadLetterMessageCount](/dotnet/api/microsoft.servicebus.messaging.messagecountdetails.transferdeadlettermessagecount#Microsoft_ServiceBus_Messaging_MessageCountDetails_TransferDeadLetterMessageCount): nem sikerült az átviteli be egy másik üzenetsor vagy témakör és az átvitel kézbesítetlen levelek várólistájára helyezett üzenetek.
 -   [TransferMessageCount](/dotnet/api/microsoft.servicebus.messaging.messagecountdetails.transfermessagecount#Microsoft_ServiceBus_Messaging_MessageCountDetails_TransferMessageCount): egy másik üzenetsorra vagy témakörbe történő átvitel függőben lévő üzenetek.
 
-Ha egy alkalmazás szeretné méretezni az erőforrásokat, az üzenetsor hossza alapján, azt kell ehhez a nagyon mért ütemben. A üzenetszámlálók megszerzését belül a közvetítő drága művelet, és futtassa a jelentést, gyakran közvetlenül és kedvezőtlen hatással van az a entitás teljesítményre.
+Ha egy alkalmazás szeretné méretezni az erőforrásokat, az üzenetsor hossza alapján, azt kell ehhez a mért ütemben. A üzenetszámlálók megszerzését belül a közvetítő drága művelet, és futtassa a jelentést, gyakran közvetlenül és kedvezőtlen hatással van az a entitás teljesítményre.
 
 ## <a name="next-steps"></a>További lépések
 
 További információ a Service Bus-üzenetkezelés, tekintse meg a következő témaköröket:
 
-* [A Service Bus alapjai](service-bus-fundamentals-hybrid-solutions.md)
 * [Service Bus-üzenetsorok, -témakörök és -előfizetések](service-bus-queues-topics-subscriptions.md)
 * [Bevezetés a Service Bus által kezelt üzenetsorok használatába](service-bus-dotnet-get-started-with-queues.md)
 * [A Service Bus-üzenettémakörök és -előfizetések használata](service-bus-dotnet-how-to-use-topics-subscriptions.md)

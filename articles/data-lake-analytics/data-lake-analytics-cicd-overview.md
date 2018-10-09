@@ -10,12 +10,12 @@ ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.workload: big-data
 ms.date: 09/14/2018
-ms.openlocfilehash: 740549e1ed1447781707c5e4b9fdc6961075d017
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: 974ef7a51736c2e2b0a0de3c13d23ddc37fa13b7
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46364788"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48855017"
 ---
 # <a name="how-to-set-up-a-cicd-pipeline-for-azure-data-lake-analytics"></a>Az Azure Data Lake Analytics egy CI/CD-folyamat beállítása  
 
@@ -311,7 +311,7 @@ A NuGet-csomag hivatkozás hozzáadásához kattintson a jobb gombbal a megoldá
 
 ### <a name="build-u-sql-a-database-project-with-the-msbuild-command-line"></a>U-SQL az MSBuild parancssorral adatbázis a projekt létrehozása
 
-A U-SQL database-projekt létrehozásához, a standard szintű MSBuild parancssor hívja, és adja át a U-SQL SDK NuGet-csomag hivatkozás a további argumentumként. Tekintse meg a következő példát: 
+A U-SQL database-projekt létrehozásához, a standard szintű MSBuild parancssor hívja, és adja át a U-SQL SDK NuGet-csomag hivatkozás a további argumentumként. Lásd a következő példát: 
 
 ```
 msbuild DatabaseProject.usqldbproj /p:USQLSDKPath=packages\Microsoft.Azure.DataLake.USQL.SDK.1.3.180615\build\runtime
@@ -388,8 +388,8 @@ Az alábbi lépéseket egy adatbázis-üzembe helyezési feladat az Azure-folyam
     echo "workingfolder=$workingfolder, outputfolder=$outputfolder"
     echo "Downloading required packages..."
 
-    iwr https://www.nuget.org/api/v2/package/Microsoft.Azure.Management.DataLake.Analytics/3.2.3-preview -outf Microsoft.Azure.Management.DataLake.Analytics.3.2.3-preview.zip
-    iwr https://www.nuget.org/api/v2/package/Microsoft.Azure.Management.DataLake.Store/2.3.3-preview -outf Microsoft.Azure.Management.DataLake.Store.2.3.3-preview.zip
+    iwr https://www.nuget.org/api/v2/package/Microsoft.Azure.Management.DataLake.Analytics/3.5.1-preview -outf Microsoft.Azure.Management.DataLake.Analytics.3.5.1-preview.zip
+    iwr https://www.nuget.org/api/v2/package/Microsoft.Azure.Management.DataLake.Store/2.4.1-preview -outf Microsoft.Azure.Management.DataLake.Store.2.4.1-preview.zip
     iwr https://www.nuget.org/api/v2/package/Microsoft.IdentityModel.Clients.ActiveDirectory/2.28.3 -outf Microsoft.IdentityModel.Clients.ActiveDirectory.2.28.3.zip
     iwr https://www.nuget.org/api/v2/package/Microsoft.Rest.ClientRuntime/2.3.11 -outf Microsoft.Rest.ClientRuntime.2.3.11.zip
     iwr https://www.nuget.org/api/v2/package/Microsoft.Rest.ClientRuntime.Azure/3.3.7 -outf Microsoft.Rest.ClientRuntime.Azure.3.3.7.zip
@@ -399,8 +399,8 @@ Az alábbi lépéseket egy adatbázis-üzembe helyezési feladat az Azure-folyam
 
     echo "Extracting packages..."
 
-    Expand-Archive Microsoft.Azure.Management.DataLake.Analytics.3.2.3-preview.zip -DestinationPath Microsoft.Azure.Management.DataLake.Analytics.3.2.3-preview -Force
-    Expand-Archive Microsoft.Azure.Management.DataLake.Store.2.3.3-preview.zip -DestinationPath Microsoft.Azure.Management.DataLake.Store.2.3.3-preview -Force
+    Expand-Archive Microsoft.Azure.Management.DataLake.Analytics.3.5.1-preview.zip -DestinationPath Microsoft.Azure.Management.DataLake.Analytics.3.5.1-preview -Force
+    Expand-Archive Microsoft.Azure.Management.DataLake.Store.2.4.1-preview.zip -DestinationPath Microsoft.Azure.Management.DataLake.Store.2.4.1-preview -Force
     Expand-Archive Microsoft.IdentityModel.Clients.ActiveDirectory.2.28.3.zip -DestinationPath Microsoft.IdentityModel.Clients.ActiveDirectory.2.28.3 -Force
     Expand-Archive Microsoft.Rest.ClientRuntime.2.3.11.zip -DestinationPath Microsoft.Rest.ClientRuntime.2.3.11 -Force
     Expand-Archive Microsoft.Rest.ClientRuntime.Azure.3.3.7.zip -DestinationPath Microsoft.Rest.ClientRuntime.Azure.3.3.7 -Force
@@ -412,8 +412,8 @@ Az alábbi lépéseket egy adatbázis-üzembe helyezési feladat az Azure-folyam
 
     mkdir $AzureSDK -Force
     mkdir $DBDeploymentTool -Force
-    copy Microsoft.Azure.Management.DataLake.Analytics.3.2.3-preview\lib\net452\*.dll $AzureSDK
-    copy Microsoft.Azure.Management.DataLake.Store.2.3.3-preview\lib\net452\*.dll $AzureSDK
+    copy Microsoft.Azure.Management.DataLake.Analytics.3.5.1-preview\lib\net452\*.dll $AzureSDK
+    copy Microsoft.Azure.Management.DataLake.Store.2.4.1-preview\lib\net452\*.dll $AzureSDK
     copy Microsoft.IdentityModel.Clients.ActiveDirectory.2.28.3\lib\net45\*.dll $AzureSDK
     copy Microsoft.Rest.ClientRuntime.2.3.11\lib\net452\*.dll $AzureSDK
     copy Microsoft.Rest.ClientRuntime.Azure.3.3.7\lib\net452\*.dll $AzureSDK
@@ -475,7 +475,7 @@ Az alábbi lépéseket egy adatbázis-üzembe helyezési feladat az Azure-folyam
 |Bérlő|A bérlő neve az Azure Active Directory (Azure AD) tartománynév. Az előfizetés-kezelési oldalán, az Azure Portalon keresse meg azt.|NULL|true|
 |AzureSDKPath|Függő szerelvényei keresése az Azure SDK elérési útja.|NULL|true|
 |Interaktív|E interaktív módban használja a hitelesítéshez.|false|false|
-|ClientId|Az Azure AD-alkalmazás azonosítója nem interaktív hitelesítés szükséges.|NULL|Nem interaktív hitelesítés szükséges.|
+|ClientID|Az Azure AD-alkalmazás azonosítója nem interaktív hitelesítés szükséges.|NULL|Nem interaktív hitelesítés szükséges.|
 |Secrete|A secrete vagy a jelszó nem interaktív hitelesítés. Csak a megbízható és biztonságos környezetben használandó.|NULL|Nem interaktív hitelesítéssel, vagy pedig SecreteFile használata szükséges.|
 |SecreteFile|A fájl mentésekor a secrete vagy a jelszó nem interaktív hitelesítés. Győződjön meg arról, hogy csak az aktuális felhasználó által olvasható legyen.|NULL|Nem interaktív hitelesítéssel, vagy pedig Secrete használata szükséges.|
 |Tanúsítványfájl|A fájl mentésekor X.509 tanúsítvány, nem interaktív hitelesítés. Az alapértelmezett érték használatához az ügyfél hitelesítési secrete.|NULL|false|

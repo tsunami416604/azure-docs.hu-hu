@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 04/17/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 29f1e1aeb68fbd9509abfc4f9274ee6ddae89c7b
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: d3fb6557571042be7db1380010738bacd72e50f5
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48041577"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48869500"
 ---
 # <a name="perform-cross-resource-log-searches-in-log-analytics"></a>Hajtsa végre az erőforrások közötti naplókeresések a Log Analyticsben  
 
@@ -94,12 +94,13 @@ Azonosító egy alkalmazást az Application Insights segítségével végezhető
 Az erőforrás-példányok bármelyikével tetszőleges irányú lekérdezheti több erőforrást, ezek lehetnek, munkaterületek és alkalmazások kombinált.
     
 Példa a munkaterületeket két lekérdezést:    
-    ```
-    union Update, workspace("contosoretail-it").Update, workspace("b459b4u5-912x-46d5-9cb1-p43069212nb4").Update
-    | where TimeGenerated >= ago(1h)
-    | where UpdateState == "Needed"
-    | summarize dcount(Computer) by Classification
-    ```
+
+```
+union Update, workspace("contosoretail-it").Update, workspace("b459b4u5-912x-46d5-9cb1-p43069212nb4").Update
+| where TimeGenerated >= ago(1h)
+| where UpdateState == "Needed"
+| summarize dcount(Computer) by Classification
+```
 
 ## <a name="next-steps"></a>További lépések
 

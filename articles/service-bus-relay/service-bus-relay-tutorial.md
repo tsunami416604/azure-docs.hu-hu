@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/02/2017
 ms.author: spelluru
-ms.openlocfilehash: 0833a7ec71a0aea66f8ebfdfff81d88925019309
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 12902fef0a27aa0af5995d2fd6ab87d951413d1d
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43701865"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48857975"
 ---
 # <a name="azure-wcf-relay-tutorial"></a>Az Azure WCF Relay-oktatóanyag
 
@@ -719,7 +719,6 @@ Ez az oktatóanyag bemutatta, hogyan hozhat létre egy Azure Relay-ügyfelet, é
 
 Az Azure Relay kapcsolatos további információkért tekintse meg a következő témaköröket.
 
-* [Az Azure Service Bus-architektúra áttekintése](../service-bus-messaging/service-bus-fundamentals-hybrid-solutions.md#relays)
 * [Az Azure Relay áttekintése](relay-what-is-it.md)
 * [A WCF relay szolgáltatás használata .NET-tel](relay-wcf-dotnet-get-started.md)
 

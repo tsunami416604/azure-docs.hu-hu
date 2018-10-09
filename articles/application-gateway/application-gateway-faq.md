@@ -3,18 +3,17 @@ title: Gyakori kérdések az Azure Application Gateway
 description: Ez az oldal nyújt az Azure Application Gatewayjel kapcsolatos gyakori kérdésekre adott válaszok
 services: application-gateway
 author: vhorne
-manager: jpconnock
 ms.service: application-gateway
 ms.topic: article
 ms.workload: infrastructure-services
-ms.date: 9/6/2018
+ms.date: 10/6/2018
 ms.author: victorh
-ms.openlocfilehash: 56c66418b9f47e0ae0d345cd6e8a7d3ef2914b82
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 7b2a550c902e85caf02f05fcbbe5dd7b02acd0cc
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46986676"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48868853"
 ---
 # <a name="frequently-asked-questions-for-application-gateway"></a>Az Application Gateway gyakori kérdések
 
@@ -22,15 +21,15 @@ ms.locfileid: "46986676"
 
 **Q. Mi az Application Gateway?**
 
-Az Azure Application Gateway egy alkalmazás Vezérlőszolgáltatást (ADC) szolgáltatás, amely számos 7. rétegbeli terheléselosztási lehetőséget az alkalmazások. Magas rendelkezésre állású és skálázható szolgáltatás, amely az Azure teljes körűen felügyelt kínál.
+Az Azure Application Gateway-példány egy alkalmazás Vezérlőszolgáltatást (ADC) szolgáltatás, az alkalmazások különböző 7. rétegbeli terheléselosztási funkciókat kínál. Magas rendelkezésre állású és skálázható szolgáltatás, amely az Azure teljes körűen felügyelt kínál.
 
 **Q. Milyen funkciókat támogatja az Application Gateway?**
 
-Az Application Gateway támogatja az SSL-kiürítés és teljes körű SSL, a webalkalmazási tűzfal, cookie-alapú munkamenet-affinitást, URL-cím-alapú útválasztást, többhelyes üzemeltetés és mások. Támogatott szolgáltatások teljes listájáért látogasson el [Application Gateway bemutatása](application-gateway-introduction.md)
+Az Application Gateway támogatja az automatikus skálázás, SSL-kiürítés és teljes körű SSL, a webalkalmazási tűzfal, cookie-alapú munkamenet-affinitást, URL-cím-alapú útválasztás, többhelyes üzemeltetés és mások. Támogatott szolgáltatások teljes listáját lásd: [Application Gateway bemutatása](application-gateway-introduction.md).
 
 **Q. Mi a különbség az Application Gateway és az Azure Load Balancer?**
 
-Az Application Gateway egy 7. rétegbeli terheléselosztó, ami azt jelenti, és együttműködik a csak internetes forgalmat (HTTP/HTTPS/WebSocket). Támogatja a képességek, például SSL lezárást, cookie-alapú munkamenet-affinitást és Ciklikus időszeleteléses terheléselosztás a adatforgalom. Load Balancer, a jóváírásokat összefoglaló balances forgalom rétegben 4 (TCP/UDP).
+Az Application Gateway egy 7. rétegbeli terheléselosztó, ami azt jelenti, és együttműködik a csak internetes forgalmat (HTTP/HTTPS/WebSocket). Támogatja a képességek, például SSL lezárást, cookie-alapú munkamenet-affinitást és Ciklikus időszeleteléses terheléselosztás a adatforgalom. Töltse be a terheléselosztó terhelés jóváírásokat összefoglaló balances forgalom rétegben 4 (TCP/UDP).
 
 **Q. Milyen protokollokat támogat az Application Gateway?**
 
@@ -38,7 +37,7 @@ Az Application Gateway támogatja a HTTP, HTTPS, HTTP/2 és WebSocket.
 
 **Q. Hogyan támogatja az Application Gateway a HTTP/2?**
 
-HTTP/2 protokoll támogatása csak a figyelők az Application Gateway-ügyfelekhez érhető el. A háttér-kiszolgálókészlethez kommunikációs HTTP/1.1 felett van. 
+HTTP/2 protokoll támogatása az application gateway figyelői-ügyfelekhez érhető el. A háttér-kiszolgálókészlethez kommunikációs HTTP/1.1 felett van. 
 
 Alapértelmezés szerint a HTTP/2-támogatás le van tiltva. A következő Azure PowerShell-lel kódrészlet példakód bemutatja, hogyan tehető lehetővé, hogy:
 
@@ -62,7 +61,7 @@ Application Gateway-példány dedikált központi telepítés a virtuális hál�
 
 **Q. A HTTP -> támogatott HTTPS-átirányítás?**
 
-Átirányítás használata támogatott. Látogasson el [Application Gateway átirányítás áttekintése](application-gateway-redirect-overview.md) további.
+Átirányítás használata támogatott. Lásd: [Application Gateway átirányítás áttekintése](application-gateway-redirect-overview.md) további.
 
 **Q. Milyen sorrendben dolgozzák fel figyelői?**
 
@@ -70,34 +69,36 @@ Figyelők láthatók a rendelés feldolgozása történik. Ezért ha egy alapszi
 
 **Q. Hol találom meg az Application Gateway IP- és DNS?**
 
-Nyilvános IP-cím-végpontként használatakor ez az információ található a nyilvános IP-cím erőforrás, illetve az Áttekintés oldal az Application Gateway számára a portálon. A belső IP-címek ez található az Áttekintés oldalon.
+Nyilvános IP-cím-végpontként használatakor ezt az információt találja a nyilvános IP-cím erőforrás, illetve az Áttekintés oldal az application gatewayhez a portálon. A belső IP-címek ez található az Áttekintés oldalon.
 
-**Q. Az IP- vagy DNS-változik az Application Gateway élettartama során?**
+**Q. Az IP- vagy DNS-nevét az Application Gateway életciklusa alatt változik?**
 
-A VIP-címet módosíthatja, ha az átjáró leáll, majd indítja el az ügyfél. Az Application Gateway társított DNS nem módosítja az átjáró életciklusa. Ezért ajánlott egy CNAME-aliast használni, és az Application Gateway DNS-címére mutasson.
+A VIP-címet módosíthatja, ha az application gateway leállítása és elindítása. Az application gateway társított DNS-név nem változik az átjáró életciklusa. Ezért ajánlott egy CNAME-aliast használni, és az application gateway DNS-címére mutasson.
 
 **Q. Az Application Gateway támogatja a statikus IP-cím?**
 
-Nem, az Application Gateway nem támogatja a statikus nyilvános IP-címeket, de támogatja a statikus belső IP-címek.
+Igen, az Application Gateway V2 szintű Termékváltozatot támogatja a statikus nyilvános IP-címeket. A V1 Termékváltozatot támogatja a statikus belső IP-címek.
 
 **Q. Az Application Gateway támogatja a több nyilvános IP-címek az átjárón?**
 
-Csak egy nyilvános IP-cím egy Application Gateway esetében támogatott.
+Csak egy nyilvános IP-cím egy application gateway esetében támogatott.
 
 **Q. Milyen méretű kell még saját alhálózatot az Application Gateway?**
 
 Az Application Gateway egy példány egy magánhálózati IP-címet, valamint egy másik magánhálózati IP-címet használ fel, ha magánhálózati előtérbeli IP-konfiguráció van konfigurálva. Emellett az Azure lefoglalja az első négy és utolsó IP-cím mindegyik olyan alhálózatban, belső használatra.
-Például, ha az Application Gateway három példányban, és nincs magánhálózati előtérbeli IP-címet, majd egy/29 méretű vagy nagyobb alhálózat van szükség. Ebben az esetben az Application Gateway három IP-címet használ. Ha rendelkezik három példányban és a egy IP-címet a magánhálózati előtérbeli IP-konfigurációhoz, majd egy/28-as méretet, vagy nagyobb alhálózat van szükség, mert négy IP-címeket kell megadni.
+Ha például egy application gateway beállítása három példányban, és nincs magánhálózati előtérbeli IP-címet, majd egy/29 méretű vagy nagyobb alhálózat szükséges. Ebben az esetben az application gateway három IP-címet használ. Ha rendelkezik három példányban és a egy IP-címet a magánhálózati előtérbeli IP-konfigurációhoz, majd egy/28-as méretet, vagy nagyobb alhálózat van szükség, mert négy IP-címeket kell megadni.
 
 **Q. Az Application Gateway támogatja az x-továbbított – a fejlécek?**
 
-Igen, az Application Gateway x – továbbított – a x továbbított protokollverzió és x továbbított port fejlécek szúr be a háttérrendszere továbbítja a kérelmet. Az x-továbbított – a fejléc formátuma IP:Port vesszővel tagolt listája. Az x továbbított proto érvényes értékei a következők: http vagy HTTPS protokollt. X továbbított port portot határozza meg, amelyen a kérelem eléri az Application gatewayben.
+Igen, az Application Gateway x – továbbított – a x továbbított protokollverzió és x továbbított port fejlécek szúr be a háttérrendszere továbbítja a kérelmet. Az x-továbbított – a fejléc formátuma IP:Port vesszővel tagolt listája. Az x továbbított proto érvényes értékei a következők: http vagy HTTPS protokollt. X továbbított port portot határozza meg, amelyen a kérelem eléri az application gatewayben.
 
 Az Application Gateway is szúr be a X-eredeti-állomásfejlécet, amely tartalmazza az eredeti állomásfejlécet, amelyhez a kérés érkezett. Ezt a fejlécet hasznos olyan szituációkra, mint az Azure-webhely-integráció, ahol a bejövő állomásfejléc módosította-e előtt az adatforgalmat, a háttérkiszolgáló.
 
 **Q. Mennyi ideig tart egy Application Gateway üzembe helyezéséhez? Az Application Gateway továbbra is működik, ha a frissítés alatt?**
 
-Új Application Gateway-telepítések esetén is igénybe vehet akár 20 percig kiépítése. Példány mérete és száma módosításai nem zavaró, és ez idő alatt az átjáró aktív marad.
+Új Application Gateway V1 Termékváltozatot telepítések esetén is igénybe vehet akár 20 percig kiépítése. Példány mérete és száma módosításai nem zavaró, és ez idő alatt az átjáró aktív marad.
+
+V2 szintű Termékváltozatot központi telepítések kiépítése körülbelül 5-6 percig is eltarthat.
 
 ## <a name="configuration"></a>Konfiguráció
 
@@ -105,19 +106,19 @@ Az Application Gateway is szúr be a X-eredeti-állomásfejlécet, amely tartalm
 
 Igen, az Application Gateway mindig helyezünk üzembe a virtuális hálózat alhálózatán. Ez az alhálózat csak az Application Gateway átjárók tartalmazhat.
 
-**Q. Az Application Gateway közötti kommunikáció a virtuális hálózatán kívüli példányok?**
+**Q. Az Application Gateway kommunikálhatnak a virtuális hálózatán kívüli példányok?**
 
-Az Application Gateway, amely mindaddig, amíg nincs IP-kapcsolat van a virtuális hálózaton kívüli példányok közötti kommunikáció. Háttérkészlet-tagként belső IP-címek használatát tervezi, akkor a szükséges [virtuális hálózatok közötti társviszony-létesítés](../virtual-network/virtual-network-peering-overview.md) vagy [VPN-átjáró](../vpn-gateway/vpn-gateway-about-vpngateways.md).
+Az Application Gateway mindaddig, amíg nincs IP-kapcsolatot, hogy a virtuális hálózaton kívüli példányok kommunikálhat. Háttérkészlet-tagként belső IP-címek használatát tervezi, akkor a szükséges [virtuális hálózatok közötti társviszony-létesítés](../virtual-network/virtual-network-peering-overview.md) vagy [VPN-átjáró](../vpn-gateway/vpn-gateway-about-vpngateways.md).
 
-**Q. Üzembe helyezhetem bármi más, az Application Gateway-alhálózat?**
+**Q. Üzembe helyezhetem az application gateway alhálózatának megkezdéséhez?**
 
 Nem, de telepítheti az alhálózat más alkalmazásátjárók.
 
-**Q. Hálózati biztonsági csoportok az Application Gateway-alhálózat támogatottak?**
+**Q. Hálózati biztonsági csoportok az application gateway alhálózatának támogatottak?**
 
-Hálózati biztonsági csoportok az Application Gateway-alhálózat a következő korlátozásokkal támogatottak:
+Hálózati biztonsági csoportok az application gateway alhálózatának a következő korlátozásokkal támogatottak:
 
-* Kivételek kell elhelyezni, a bejövő forgalom a portokon 65503 – 65534. Ezen a porttartományon szükség Azure-infrastruktúra kommunikációjához. A portokat Azure-tanúsítványok védik (zárják le). Megfelelő tanúsítványok nélkül a külső entitások – például az ügyfelek átjárók nem lesz a végpontokra módosításokat kezdeményezhetnek.
+* Kivételek kell elhelyezni, a bejövő forgalmat az Application Gateway V1 Termékváltozatot és portok 65200 – 65535 portok 65503 – 65534 a V2 termékváltozat. Ezen a porttartományon szükség Azure-infrastruktúra kommunikációjához. A portokat Azure-tanúsítványok védik (zárják le). Megfelelő tanúsítványok nélkül a külső entitások – például az ügyfelek átjárók nem lesz a végpontokra módosításokat kezdeményezhetnek.
 
 * Kimenő internetkapcsolattal nem lehet blokkolni.
 
@@ -131,11 +132,11 @@ Például beállíthat egy UDR az application gateway alhálózatának az, hogy 
 
 **Q. Mik azok a korlátok Application Gateway-en? Növelheti ezeket a korlátokat?**
 
-Látogasson el [Application Gateway korlátainak](../azure-subscription-service-limits.md#application-gateway-limits) korlátait megtekintéséhez.
+Lásd: [Application Gateway korlátainak](../azure-subscription-service-limits.md#application-gateway-limits) korlátait megtekintéséhez.
 
 **Q. Használható az Application Gateway belső és külső forgalom egyszerre?**
 
-Igen, az Application Gateway támogatja az egy belső IP-cím és a egy külső IP-Címek száma az Application Gateway kellene.
+Igen, az Application Gateway támogatja az egy belső IP-cím és a egy külső IP-Címek száma az application gateway kellene.
 
 **Q. Támogatott virtuális hálózatok közötti társviszony?**
 
@@ -163,7 +164,7 @@ A gazdagép mező a neve a mintavétel való küldéséhez. Alkalmazható csak a
 
 **Q. Application Gateway hozzáférés néhány forrás IP-címek engedélyezési lehetőségeket?**
 
-Ebben a forgatókönyvben teheti meg az Application Gateway-alhálózat NSG-k használatával. Az alábbi korlátozásokat kell elhelyezni az alhálózat prioritás a listában szereplő sorrendben:
+Ebben a forgatókönyvben teheti meg az application gateway alhálózatának az NSG-k használatával. Az alábbi korlátozásokat kell elhelyezni az alhálózat prioritás a listában szereplő sorrendben:
 
 * Engedélyezik a bejövő forgalmat a forrás IP-/ IP-címtartományt.
 
@@ -183,23 +184,25 @@ Nem, ez nem lehetséges.
 
 **Q. Hogyan támogatja a Application Gateway a magas rendelkezésre állás és méretezhetőség?**
 
-Az Application Gateway támogatja a magas rendelkezésre állás elérésére, ha két vagy több példánya. Azure ezek a példányok győződjön meg arról, hogy minden példány nem egy időben, frissítési és a tartalék tartomány között osztja el. Az Application Gateway támogatja a méretezhetőség átjáróhoz megosztani a terhelés több példánya hozzáadásával.
+Az Application Gateway V1 Termékváltozat támogatja a magas rendelkezésre állás elérésére, ha két vagy több példánya van. Azure ezek a példányok győződjön meg arról, hogy minden példány nem egy időben, frissítési és a tartalék tartomány között osztja el. A V1 Termékváltozatot támogatja a méretezhetőség átjáróhoz megosztani a terhelés több példánya hozzáadásával.
+
+A V2 szintű Termékváltozatot automatikusan biztosítja, hogy az új példányok vannak elosztva a tartalék tartományok és frissítési tartományok. Ha ki van választva a zone redudancy, az a legújabb példányok is vannak elosztva a zónaszintű hiba rugalmasságot kínálnak a rendelkezésre állási zónák.
 
 **Q. Hogyan válhatok Vészhelyreállítási forgatókönyvhöz rendelkező Application Gateway adatközpontokon?**
 
 Ügyfeleink a Traffic Manager használatával elosztani a forgalmat több Application Gateway átjárók különböző adatközpontokban.
 
-**Q. Automatikus skálázás támogatott?**
+**Q. Az automatikus skálázás támogatott?**
 
-Nem, de Application Gateway átviteli metrikát, amely riasztást küld, ha a küszöbérték elérése használható. Manuálisan további példányok hozzáadása vagy méretének módosítása nem indítja újra az átjárót, és nem befolyásolja a meglévő forgalmat.
+Igen, az Application Gateway V2 szintű Termékváltozatot támogatja az automatikus skálázás. További információkért lásd: [automatikus skálázás és zónaredundáns Application Gateway (nyilvános előzetes verzió)](application-gateway-autoscaling-zone-redundant.md).
 
 **Q. Manuális skálázás történik, felfelé és lefelé OK állásidő?**
 
 Nem jár, a példányok frissítési és tartalék tartományok között oszlanak meg.
 
-**Q. Támogatja az application gateway támogatása a kapcsolat kiürítése?**
+**Q. Az Application Gateway támogatja a kapcsolat kiürítése?**
 
-Igen. -Kapcsolatának kiürítéséhez módosítása tagok találhatóak a háttérkészlet megszakítása nélkül is beállíthatja. Ez lehetővé teszi a meglévő kapcsolatok továbbra is az előző cél kell küldeni, amíg a kapcsolat le van zárva, vagy egy konfigurálható időkorlát lejár. Vegye figyelembe, hogy-kapcsolatának kiürítéséhez, csak megvárja a jelenlegi szükségszerű kapcsolatok végrehajtásához. Az Application Gateway még nem ismeri az alkalmazás munkamenet-állapot.
+Igen. -Kapcsolatának kiürítéséhez módosítása tagok találhatóak a háttérkészlet megszakítása nélkül is beállíthatja. Ez lehetővé teszi a meglévő kapcsolatok továbbra is az előző cél kell küldeni, amíg a kapcsolat le van zárva, vagy egy konfigurálható időkorlát lejár. Aktuális szükségszerű kapcsolatok végrehajtásához megvárja, amíg a kapcsolat csak kiürítése. Az Application Gateway még nem ismeri az alkalmazás munkamenet-állapot.
 
 **Q. Mik azok az application gateway méretét?**
 
@@ -225,11 +228,11 @@ Igen, az Azure elosztja példányok, győződjön meg arról, hogy minden péld�
 
 **Q. Milyen tanúsítványok az Application Gatewayen támogatottak?**
 
-Önaláírt tanúsítványok, CA-tanúsítványok és a helyettesítő tanúsítványok támogatottak. Bővített tanúsítványok nem támogatottak.
+Önaláírt tanúsítványok, a CA-tanúsítványok és a helyettesítő tanúsítványok használata támogatott. Bővített tanúsítványok nem támogatottak.
 
 **Q. Mik azok az aktuális titkosító csomagok, az Application Gateway által támogatott?**
 
-Az aktuális, az application gateway által támogatott titkosító csomagok a következők. Látogatás: [konfigurálása SSL házirend verziója és az Application Gatewayen titkosító csomagok](application-gateway-configure-ssl-policy-powershell.md) megtudhatja, hogyan szabhatja testre az SSL-beállításokat.
+Az aktuális, az Application Gateway által támogatott titkosító csomagok a következők. Lásd: [konfigurálása SSL-szabályzat verziók és az Application Gatewayen titkosító csomagok](application-gateway-configure-ssl-policy-powershell.md) megtudhatja, hogyan szabhatja testre az SSL-beállításokat.
 
 - TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 - TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
@@ -311,7 +314,7 @@ Nem, a észlelési mód csak naplózza a forgalmat, amely a WAF-szabály aktivá
 
 **Q. Hogyan szabható testre a WAF-szabályok?**
 
-Igen, a WAF-szabályok is testre szabható, hogyan szabhatja testre őket látogasson el a további információt [testreszabása WAF-szabálycsoportjainak és szabályok](application-gateway-customize-waf-rules-portal.md)
+Igen, a WAF-szabályok is testre szabható, bővebben lásd a Testreszabás [testreszabása WAF-szabálycsoportjainak és szabályok](application-gateway-customize-waf-rules-portal.md)
 
 **Q. Milyen szabályok jelenleg érhetők el?**
 
@@ -339,9 +342,9 @@ Igen. Engedélyezheti a DDos protection a vneten, ahol az application gateway ü
 
 **Q. Milyen típusú naplók érhetők el az Application Gateway szolgáltatással?**
 
-Nincsenek elérhető, az Application Gateway három naplókat. Ezek a naplók és egyéb diagnosztikai képességek a további információért látogasson el [háttérrendszer állapota, diagnosztikai naplók és mérőszámok az Application Gateway](application-gateway-diagnostics.md).
+Nincsenek elérhető, az Application Gateway három naplókat. Ezek a naplók és egyéb diagnosztikai képességek a további információkért lásd: [háttérrendszer állapota, diagnosztikai naplók és mérőszámok az Application Gateway](application-gateway-diagnostics.md).
 
-- **ApplicationGatewayAccessLog** – a hozzáférési napló tartalmazza minden egyes kérelem, az Application Gateway frontend elküldve. A hívó IP-Címek használatához, kért URL-cím válasz késése szerepel, és visszatérési kód, bájt. Hozzáférési napló 300 másodpercenként gyűjti. Ez a napló az Application Gateway-példányonként több rekordot tartalmaz.
+- **ApplicationGatewayAccessLog** – a hozzáférési napló tartalmazza minden egyes kérelem, az application gateway frontend elküldve. A hívó IP-Címek használatához, kért URL-cím válasz késése szerepel, és visszatérési kód, bájt. Hozzáférési napló 300 másodpercenként gyűjti. Ez a napló egy application gateway-példányonként több rekordot tartalmaz.
 - **ApplicationGatewayPerformanceLog** – a teljesítménynaplóban rögzíti a teljesítményadatok alapon példány kérelmek száma összesen szolgálja ki, beleértve a átviteli sebesség (bájt), a kérelmek teljes száma szolgálja ki, a sikertelen kérések száma, kifogástalan állapotú, és nem megfelelő állapotú háttér- példányok száma.
 - **ApplicationGatewayFirewallLog** – a tűzfal naplója tartalmaz, amelynek része a webalkalmazási tűzfallal rendelkező application gateway az észlelésük vagy a megelőzési módban naplózott kérések.
 
@@ -351,17 +354,17 @@ A PowerShell-parancsmagot is használhatja `Get-AzureRmApplicationGatewayBackend
 
 **Q. Mi a megőrzési házirend a diagnosztikai naplók?**
 
-Diagnosztikai naplók folyamat ügyfelek storage-fiókba, és ügyfelek állíthatja be a megtartási házirend alapján választaniuk. Diagnosztikai naplók is lehet küldeni egy Eseményközpontba és a Log Analytics. Látogasson el [Application Gateway-diagnosztika](application-gateway-diagnostics.md) további részletekért.
+Diagnosztikai naplók folyamat ügyfelek storage-fiókba, és ügyfelek állíthatja be a megtartási házirend alapján választaniuk. Diagnosztikai naplók is lehet küldeni egy Eseményközpontba és a Log Analytics. Lásd: [Application Gateway-diagnosztika](application-gateway-diagnostics.md) további részletekért.
 
 **Q. Hogyan kaphatok auditnaplók az Application Gateway?**
 
-Auditnaplók az Application Gateway számára érhetők el. Kattintson a portál **tevékenységnapló** menü paneljén látható az Application Gateway a napló eléréséhez. 
+Auditnaplók az Application Gateway számára érhetők el. Kattintson a portál **tevékenységnapló** menü paneljén látható az application gateway a napló eléréséhez. 
 
 **Q. Beállíthatom a riasztásokat az Application Gateway?**
 
-Igen, az Application Gateway támogatja a riasztások, értesítések metrikák ki vannak konfigurálva. Az Application Gateway jelenleg rendelkezik egy "átviteli", amely konfigurálható a metrika riasztásra. További információ a riasztásokkal kapcsolatban, látogasson el [riasztási értesítések fogadása](../monitoring-and-diagnostics/insights-receive-alert-notifications.md).
+Igen, az Application Gateway támogatja a riasztásokat. Riasztások a metrikák vannak konfigurálva. Lásd: [Application Gateway metrikák](https://docs.microsoft.com/azure/application-gateway/application-gateway-diagnostics#metrics) további információ az Application Gateway metrikákat. Riasztásokkal kapcsolatos további tudnivalókért lásd: [riasztási értesítések fogadása](../monitoring-and-diagnostics/insights-receive-alert-notifications.md).
 
-**Q. Hogyan elemzi a forgalom statisztikák az Application Gateway?**
+**Q. Hogyan elemezheti a forgalom statisztikák az Application Gateway?**
 
 Megtekintheti és keresztül mechanizmusokkal, mint például az Azure Log Analytics, az Excel, a Power BI stb számos hozzáférés-naplók elemzése.
 
@@ -369,8 +372,8 @@ A Resource Manager-sablon, amely telepíti és futtatja a népszerű Microsoft k
 
 **Q. Háttérkiszolgáló állapotadatainak adja vissza a állapota ismeretlen, Mi ez az állapot okozza?**
 
-A leggyakoribb oka a háttérrendszer a hozzáférést egy NSG-t vagy az egyéni DNS-megjelenítését blokkolják. Látogasson el [háttérrendszer állapota, diagnosztikai naplózás és mérőszámok az Application Gateway](application-gateway-diagnostics.md) további.
+A leggyakoribb oka a háttérrendszer a hozzáférést egy NSG-t vagy az egyéni DNS-megjelenítését blokkolják. Lásd: [háttérrendszer állapota, diagnosztikai naplózás és mérőszámok az Application Gateway](application-gateway-diagnostics.md) további.
 
 ## <a name="next-steps"></a>További lépések
 
-További információ az Application Gateway látogatás [Mi az Azure Application Gateway?](overview.md)
+További információ az Application Gateway lásd [Mi az Azure Application Gateway?](overview.md)

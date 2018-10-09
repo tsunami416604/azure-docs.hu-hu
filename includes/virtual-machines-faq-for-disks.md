@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/03/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 7208eb112b5f4a5b458c0374541dff113906aa0c
-ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
+ms.openlocfilehash: ea9eecbc1d59b80e5454a2677e897588d258c96a
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47185915"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48873988"
 ---
 # <a name="frequently-asked-questions-about-azure-iaas-vm-disks-and-managed-and-unmanaged-premium-disks"></a>Azure IaaS virtuális gépek és a felügyelt és nem felügyelt prémium szintű lemezek – gyakori kérdések
 
@@ -146,7 +146,7 @@ Standard SSD-lemez IOPS alacsonyabb szinten egységes teljesítményt igénylő 
 Minden Azure-régióban mostantól támogatja a Standard SSD-lemezeket.
 
 **Az Azure Backup Standard SSD-k használata esetén érhető el?**
-Nem, az Azure Backup még nem áll rendelkezésre.
+Igen, az Azure Backup már elérhető.
 
 **Hogyan hozhatok létre Standard SSD-lemez?**
 Standard SSD-lemez Azure Resource Manager-sablonok, SDK-t, a PowerShell vagy a parancssori felület használatával is létrehozhat. Az alábbiakban Standard SSD-lemez létrehozása a Resource Manager-sablon a szükséges paraméterek:

@@ -15,12 +15,12 @@ ms.devlang: azurecli
 ms.date: 06/13/2018
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 578488163482dd0b7b486ca152455ff9686f1a43
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 93ff349eb14823784ca574a70279cd623c720872
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46949213"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48853725"
 ---
 # <a name="add-a-disk-to-a-linux-vm"></a>Add a disk to a Linux VM (Lemez hozzáadása Linux rendszerű virtuális géphez)
 Ez a cikk bemutatja, hogyan való állandó lemez csatolása a virtuális gép így megőrizheti az adatait – még akkor is, ha a virtuális gép a karbantartás vagy átméretezése miatt van kiépíteni. 
@@ -169,7 +169,7 @@ sudo mount /dev/sdc1 /datadrive
 Annak érdekében, hogy a meghajtó újraindítás után automatikusan csatlakoztatni, hozzá kell adni a a */etc/fstab* fájlt. Azt is javasoljuk szolgál, hogy az UUID (univerzálisan egyedi azonosító) */etc/fstab* lehet hivatkozni az eszköznév helyett (például */dev/sdc1*). Ha az operációs rendszer észleli a lemezhiba rendszerindítás során, UUID használatával elkerülheti a helytelen lemez, folyamatban van egy adott helyre. Adatlemezek fennmaradó majd hozzájuk ezek azonos eszközazonosítókat. Az új meghajtó UUID megkereséséhez használja a `blkid` segédprogrammal:
 
 ```bash
-sudo -i blkid
+sudo blkid
 ```
 
 A kimenet a következő példához hasonlóan néz ki:

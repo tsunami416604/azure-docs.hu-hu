@@ -16,12 +16,12 @@ ms.date: 07/23/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: bd9d3a677d9fea54331200258d4b9b8e07a54312
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: e896392404c23e88d697d45146f802576d6045d3
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46956897"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48870825"
 ---
 # <a name="authorize-access-to-azure-active-directory-web-applications-using-the-oauth-20-code-grant-flow"></a>Az OAuth 2.0 kód engedélyezési folyamatával használatával az Azure Active Directory webes alkalmazásokhoz való hozzáférés engedélyezése
 
@@ -274,7 +274,7 @@ Az RFC 6750 specifikáció határozza meg a következő hibák a válaszban a WW
 
 ## <a name="refreshing-the-access-tokens"></a>A hozzáférési jogkivonatok frissítése
 
-Hozzáférési jogkivonatok rövid életű, és folytatja az erőforrások elérése után frissíteni kell. Frissítheti a `access_token` Ha elküldi egy másik `POST` kérelmet a `/token` végpont, de ez idő kezeléséről a `refresh_token` helyett a `code`.
+Hozzáférési jogkivonatok rövid életű, és folytatja az erőforrások elérése után frissíteni kell. Frissítheti a `access_token` Ha elküldi egy másik `POST` kérelmet a `/token` végpont, de ez idő kezeléséről a `refresh_token` helyett a `code`.  Frissítési jogkivonatok érvényesek az összes erőforrást, amely az ügyfél már rendelkezésre beleegyezik abba, hogy hozzáférés -, a frissítési jogkivonatok vonatkozó kérés kiadott `resource=https://graph.microsoft.com` segítségével egy új hozzáférési jogkivonat a kérelem `resource=https://contoso.com/api`. 
 
 Frissítési jogkivonatok nem rendelkezik megadott élettartam. A frissítési biztonsági jogkivonat élettartamának jellemzően viszonylag hosszú. Azonban bizonyos esetekben frissítési biztonsági jogkivonat lejár, vissza lenne vonva, vagy nem rendelkezik megfelelő jogosultsággal a kívánt műveletet. Az alkalmazás várható és megfelelően a kiállítási végpont által visszaadott hibák kezelni kell.
 

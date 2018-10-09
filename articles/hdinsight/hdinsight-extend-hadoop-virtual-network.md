@@ -7,13 +7,13 @@ ms.author: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 07/26/2018
-ms.openlocfilehash: 6df64afa5e99ea5fe3d3c6531e6e50425520286b
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.date: 10/08/2018
+ms.openlocfilehash: 724d3d7fe8ff037b82bbce797e391c21060aa53d
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48801964"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48870961"
 ---
 # <a name="extend-azure-hdinsight-using-an-azure-virtual-network"></a>Az Azure Virtual Network használata Azure HDInsight kiterjesztése
 
@@ -302,7 +302,7 @@ Ha a hálózati biztonsági csoportok vagy a felhasználó által megadott útvo
 
     Az IP-címek az Azure Government használatára vonatkozó információért lásd: a [Azure Government intelligencia és elemzés](https://docs.microsoft.com/azure/azure-government/documentation-government-services-intelligenceandanalytics) dokumentumot.
 
-3. Ha egyéni DNS-kiszolgálót használ a virtuális hálózattal, is engedélyeznie kell a hozzáférési __168.63.129.16__. Ez a cím az Azure rekurzív feloldó. További információkért lásd: a [névfeloldás virtuális gépek és a szerepkör példányai](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md) dokumentumot.
+3. Is engedélyeznie kell a hozzáférést a __168.63.129.16__. Ez a cím az Azure rekurzív feloldó. További információkért lásd: a [névfeloldás virtuális gépek és a szerepkör példányai](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md) dokumentumot.
 
 További információkért lásd: a [hálózati forgalom szabályozása](#networktraffic) szakaszban.
 

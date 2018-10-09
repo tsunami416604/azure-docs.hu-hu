@@ -1,39 +1,38 @@
 ---
-title: Azure-tárolót beállításjegyzék Azure tároló példányokból hitelesítéshez
-description: Megtudhatja, hogyan biztosít hozzáférést a személyes tárolót beállításjegyzék lemezképeihez Azure tároló példányokból az Azure Active Directory szolgáltatás egyszerű.
+title: Az Azure tároló-beállításjegyzéket az Azure Container Instances a hitelesítéshez
+description: Ismerje meg, hogyan elérést biztosíthat a privát tárolójegyzékben található rendszerképek az Azure Container Instances szolgáltatásban az Azure Active Directory egyszerű szolgáltatás használatával.
 services: container-registry
-author: mmacy
-manager: jeconnoc
+author: dlepow
 ms.service: container-registry
 ms.topic: article
 ms.date: 04/23/2018
-ms.author: marsma
-ms.openlocfilehash: daa9c098de0c410bd4033cc62ee911631eb3b634
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.author: danlep
+ms.openlocfilehash: 32b1788d73e1c323d93b40b778bc64a1ba45c4ad
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33768226"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48855833"
 ---
-# <a name="authenticate-with-azure-container-registry-from-azure-container-instances"></a>Azure-tárolót beállításjegyzék Azure tároló példányokból hitelesítéshez
+# <a name="authenticate-with-azure-container-registry-from-azure-container-instances"></a>Az Azure tároló-beállításjegyzéket az Azure Container Instances a hitelesítéshez
 
-Egy Azure Active Directory (Azure AD) egyszerű szolgáltatásnév segítségével hozzáférést biztosítson a saját tároló nyilvántartó Azure tároló beállításjegyzékben.
+Az Azure Active Directory (Azure AD) egyszerű szolgáltatás használatával hozzáférést biztosítanak a privát tárolójegyzékek az Azure Container Registryben.
 
-Ebből a cikkből megismerheti, létrehozása és konfigurálása az Azure AD szolgáltatás egyszerű *lekéréses* a beállításjegyzék engedélyek. Ezt követően először egy tárolót az Azure tároló példányok (ACI), amely lekéri a lemezképet a titkos beállításjegyzék, az egyszerű szolgáltatás használata a hitelesítéshez.
+Ebből a cikkből megtudhatja, létrehozni és konfigurálni egy Azure AD-szolgáltatásnevet a *lekéréses* engedélyeket a tárolójegyzékbe. Ezt követően először egy tárolót az Azure Container Instances (ACI), amely lekéri a rendszerképet a privát tárolójegyzékből az egyszerű szolgáltatás használatával a hitelesítéshez.
 
-## <a name="when-to-use-a-service-principal"></a>Egy egyszerű szolgáltatás használata
+## <a name="when-to-use-a-service-principal"></a>Egyszerű szolgáltatás használata
 
-Egy egyszerű szolgáltatást kell használnia a hitelesítéshez a ACI **távfelügyeleti forgatókönyvek**, például alkalmazásokhoz vagy szolgáltatásokhoz, a felügyelet nélküli automatizált vagy egyéb módon tároló példányok létrehozása.
+Egy egyszerű szolgáltatást kell használnia az aci Szolgáltatásban történő hitelesítéshez **távfelügyelt forgatókönyvek**, például alkalmazások és szolgáltatások által létrehozott tárolópéldányok a felügyelet nélküli automatikus vagy egyéb módon.
 
-Például, ha az automatizált parancsfájlt, amely minden éjjel hoz létre egy [feladatalapú tároló példány](../container-instances/container-instances-restart-policy.md) bizonyos adatok feldolgozására, is használjon egyszerű szolgáltatás lekéréses (olvasó) engedélyekkel rendelkező hitelesítésére a beállításjegyzékhez. Majd forgassa el az egyszerű szolgáltatás hitelesítő adatait, vagy a hozzáférése teljesen visszavonása anélkül, hogy befolyásolná a szolgáltatások és alkalmazások.
+Ha például van egy automatizált szkript, amely nightly fut, és létrehoz egy [feladatalapú tárolópéldány](../container-instances/container-instances-restart-policy.md) bizonyos adatok feldolgozásához, ezáltal az egyszerű szolgáltatás lekéréses (olvasó) engedélyekkel a beállításjegyzék hitelesítéséhez. Ezután az egyszerű szolgáltatás hitelesítő adatok forgatása vagy teljesen vonni a hozzáférést a más szolgáltatások és alkalmazások befolyásolása nélkül.
 
-Szolgáltatás rendszerbiztonsági tagoknak is kell használni a beállításjegyzékben [rendszergazdai jogú felhasználó](container-registry-authentication.md#admin-account) le van tiltva.
+A szolgáltatásnevek is kell használni a beállításjegyzék [rendszergazdai felhasználó](container-registry-authentication.md#admin-account) le van tiltva.
 
 [!INCLUDE [container-registry-service-principal](../../includes/container-registry-service-principal.md)]
 
 ## <a name="authenticate-using-the-service-principal"></a>Hitelesítés az egyszerű szolgáltatás használatával
 
-Egy tároló egy egyszerű szolgáltatást használó Azure-tároló példányokat az indításához adja meg az Azonosítót, a `--registry-username`, és a hozzá tartozó jelszó `--registry-password`.
+Egy tárolót az Azure Container Instances használatával egy egyszerű szolgáltatás elindításához, adja meg az Azonosítóját `--registry-username`, és a kapcsolódó jelszó `--registry-password`.
 
 ```azurecli-interactive
 az container create \
@@ -47,17 +46,17 @@ az container create \
 
 ## <a name="sample-scripts"></a>Mintaszkriptek
 
-Az előző mintaparancsfájlok Azure parancssori felület a Githubon, Azure PowerShell jól verzióként található:
+Jól verzióként az Azure PowerShell előző mintaszkriptek találja meg a Githubon, az Azure CLI-hez:
 
-* [Az Azure parancssori felület][acr-scripts-cli]
-* [Az Azure PowerShell][acr-scripts-psh]
+* [Az Azure CLI][acr-scripts-cli]
+* [Azure PowerShell-lel][acr-scripts-psh]
 
 ## <a name="next-steps"></a>További lépések
 
-A következő cikkek szolgáltatásnevekről és ACR használatával kapcsolatos további részleteket tartalmaznak:
+A következő cikkeket tartalmaz további részleteket az egyszerű szolgáltatásnevekről és ACR használata:
 
-* [Az Azure tároló beállításjegyzék hitelesítést a szolgáltatás rendszerbiztonsági tagok](container-registry-auth-service-principal.md)
-* [A hitelesítést az Azure tároló beállításjegyzék Azure Kubernetes szolgáltatásból (AKS)](container-registry-auth-aks.md)
+* [A szolgáltatásnevek Azure Tárolóregisztrációs adatbázis hitelesítési](container-registry-auth-service-principal.md)
+* [Hitelesítés az Azure tároló-beállításjegyzéket az Azure Kubernetes Service (AKS)](container-registry-auth-aks.md)
 
 <!-- IMAGES -->
 

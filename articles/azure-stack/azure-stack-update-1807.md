@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/26/2018
+ms.date: 10/07/2018
 ms.author: sethm
 ms.reviewer: justini
-ms.openlocfilehash: bde8ea74d2b6d36cd070598d0542e5be4bdef244
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: bce76827c56fd660b6ab4353fed1c43f88132587
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48816174"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48868819"
 ---
 # <a name="azure-stack-1807-update"></a>Azure Stack 1807 frissítése
 
@@ -190,7 +190,7 @@ További információ a biztonsági rések, kattintson a fenti hivatkozásokat a
 
 ### <a name="post-update-steps"></a>Frissítés utáni lépések
 Ez a frissítés telepítése után bármely alkalmazandó gyorsjavítások telepítéséről. További információt a következő cikkeket, megtekintése, valamint a [karbantartási szabályzat](azure-stack-servicing-policy.md). 
-- [KB 4464231 – az Azure Stack gyorsjavítás az Azure Stack gyorsjavítás 1.1807.1.78](https://support.microsoft.com/help/4464231)
+- [KB 4467061 – az Azure Stack gyorsjavítás az Azure Stack gyorsjavítás 1.1807.3.82](https://support.microsoft.com/help/4467061/)
 
 <!-- 2933866 – IS --> A frissítés telepítése után megtekintheti a **javult a sikertelen frissítés telepítések állapotát.** Ez tartalmazhat, amelyek módosítják, hogy a két új állapot kategória előző frissítés telepítési hibák adatait. Az új állapot kategória *PreparationFailed*, és *InstallationFailed*.  
 
@@ -211,7 +211,7 @@ Az alábbiakban a telepítés utáni ismert hibáit a build-verziószáma.
 - Amikor telepít egy új Azure Stack-környezet, amely ebben a verzióban fut, a riasztás azt jelzi, *aktiválás szükséges* nem jelenítik meg. [Az aktiválás](azure-stack-registration.md) marketplace szindikálási használatához szükség.  
 
 <!-- TBD - IS ASDK --> 
-- A két felügyeleti előfizetés adattípusokat [verziójú 1804-es verzióban bevezetett](azure-stack-update-1804.md#new-features) nem használható. Az előfizetés-típusok a következők **előfizetés mérési**, és **Használatalapú előfizetés**. Ezek a típusok előfizetés új Azure Stack-környezetek verziójától kezdve az 1804 láthatók, de még nem használatra kész. Ön továbbra is használja a **alapértelmezett szolgáltató** előfizetés-típus.
+- A két felügyeleti előfizetés-típus verziójú 1804-es verzióban bevezetett nem használható. Az előfizetés-típusok a következők **előfizetés mérési**, és **Használatalapú előfizetés**. Ezek a típusok előfizetés új Azure Stack-környezetek verziójától kezdve az 1804 láthatók, de még nem használatra kész. Ön továbbra is használja a **alapértelmezett szolgáltató** előfizetés-típus.
 
 <!-- 2403291 - IS ASDK --> 
 - Lehet, hogy nincs használatát a vízszintes görgetősáv a rendszergazdai és felhasználói portál alján. Ha nem éri el a vízszintes görgetősáv, az útkövetés, keresse meg a portálon egy előző panelen válassza a panel neve, a tetején található navigációs listában megtekinteni kívánt használati a portál bal oldali.

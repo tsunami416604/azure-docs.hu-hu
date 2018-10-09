@@ -4,7 +4,7 @@ description: Ismerteti a szerepkörök és engedélyek szükségesek a Data Fact
 author: douglaslMS
 ms.author: douglasl
 manager: craigg
-ms.date: 10-04/2018
+ms.date: 10/08/2018
 ms.topic: conceptual
 ms.service: data-factory
 services: data-factory
@@ -12,12 +12,12 @@ documentationcenter: ''
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.openlocfilehash: cd6e28298b773f466ea317b7217af7709802aa12
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: 0c915c6b102f3aeedb316048fad1c6dc238fa0ad
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48817517"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48868615"
 ---
 # <a name="roles-and-permissions-for-azure-data-factory"></a>Szerepkörök és engedélyek az Azure Data Factoryhoz
 
@@ -50,6 +50,9 @@ További információ erről a munkakörről: [Data Factory Közreműködője sz
 ### <a name="resource-manager-template-deployment"></a>Resource Manager-sablon üzembe helyezése
 
 A **Data Factory Közreműködője** szerepkör, az erőforráscsoport szintjén vagy annál magasabb, lehetővé teszi, hogy a felhasználók üzembe helyezése Resource Manager-sablonok. Ennek eredményeképpen a szerepkör tagjai, Resource Manager-sablonok adat-előállítók és a gyermek erőforrásaikat, beleértve az adatkészletek, a társított szolgáltatások, folyamatok, eseményindítók és integrációs modulok üzembe helyezéséhez használható. Tagság a szerepkör nem teszi lehetővé a felhasználó más erőforrások, azonban létrehozása.
+
+> [!WARNING]
+> A Resource Manager-sablon telepítése a **Data Factory Közreműködője** szerepkör nem a jogosultságszint. Például ha telepít egy sablont, amely egy Azure virtuális gépet hoz létre, és nincs engedélye létrehozni virtuális gépeket, a központi telepítés sikertelen, és egy engedélyezési.
 
 ### <a name="custom-scenarios-and-custom-roles"></a>Egyéni forgatókönyvek és egyéni szerepkörök
 

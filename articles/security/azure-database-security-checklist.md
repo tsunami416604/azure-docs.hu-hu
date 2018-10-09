@@ -1,6 +1,6 @@
 ---
-title: Azure-adatbázis biztonsági ellenőrzőlista |} Microsoft Docs
-description: Ez a cikk ellenőrzőlista biztosít az Azure-adatbázis biztonsági.
+title: Azure database biztonsági ellenőrzőlista |} A Microsoft Docs
+description: Ez a cikk biztosít az Azure adatbázis biztonsági ellenőrzőlista készletét.
 services: security
 documentationcenter: na
 author: unifycloud
@@ -14,54 +14,54 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: tomsh
-ms.openlocfilehash: 7712196caefeea8a62045d432d762fbd16f42011
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 7682a733c5630c16d9684ec3cb9e7757b03a8b1b
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33893966"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48855935"
 ---
-# <a name="azure-database-security-checklist"></a>Azure-adatbázis biztonsági ellenőrzőlista
+# <a name="azure-database-security-checklist"></a>Azure database biztonsági ellenőrzőlista
 
-A biztonság növelése érdekében Azure adatbázis számos olyan beépített biztonsági vezérlők, amelyekkel korlátozás és a vezérlő eléréséhez.
+A biztonság növelése érdekében az Azure-adatbázis számos olyan beépített biztonsági vezérlőkkel használható a korlát és hozzáférés.
 
 Ezek a következők:
 
--   A tűzfal, amely lehetővé teszi, hogy hozzon létre [tűzfal-szabályok](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure) kapcsolat korlátozza az IP-címe
--   Az Azure-portálon elérhető kiszolgálószintű tűzfal
--   Adatbázis-szintű tűzfalszabályok érhető el a szolgáltatáshoz az SSMS
--   Az adatbázis biztonságos kapcsolati karakterláncok használatával biztonságos kapcsolatot
--   Hozzáférés-kezelés
+-   A tűzfal, amely lehetővé teszi, hogy hozzon létre [tűzfalszabályok](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure) kapcsolat korlátozza az IP-címe
+-   Kiszolgálószintű tűzfal elérhető az Azure Portalról
+-   Adatbázisszintű tűzfalszabályok ssms-ben elérhető
+-   Az adatbázishoz biztonságos kapcsolati karakterláncok használatával biztonságos kapcsolatok
+-   Access management használata
 -   Adattitkosítás
 -   Az SQL Database naplózási funkciója
--   SQL-adatbázis fenyegetések észlelése
+-   Az SQL Database fenyegetések észlelése
 
 ## <a name="introduction"></a>Bevezetés
-A felhőalapú informatika igényel az új biztonsági mintáknak, amelyek számos alkalmazás felhasználóinak, adatbázis-rendszergazdák és programozók ismeretlen. Ennek eredményeképpen egyes szervezetek a következők határozatlanok adatkezelés észlelt biztonsági kockázatok miatt a felhőalapú infrastruktúra végrehajtásához. Azonban nagy részét ezen probléma enyhíthetők keresztül a Microsoft Azure és a Microsoft Azure SQL Database beépített biztonsági szolgáltatásai jobb megértése.
+A felhőalapú számítástechnika új biztonsági paradigmákat, amely számos alkalmazás felhasználói számára, adatbázis-rendszergazdák és programozók ismeri igényel. Ennek eredményeképpen, amelyek végrehajtása egy felhő-infrastruktúra az észlelt biztonsági kockázatok miatt felügyeletéhez szívesen. Azonban nagy része a veszélyt elháríthatók, hogy a Microsoft Azure, Microsoft Azure SQL Database beépített biztonsági funkciók révén.
 
-## <a name="checklist"></a>Feladatlista
-Azt javasoljuk, hogy olvassa el a [Azure adatbázis ajánlott biztonsági eljárások](https://docs.microsoft.com/azure/security/azure-database-security-best-practices) cikk előtt tekintse át ezt az ellenőrző listát. Használja ki az alábbi ellenőrzőlista, Miután megismerte az ajánlott eljárásokkal lehet. Az alábbi ellenőrzőlista segítségével majd győződjön meg arról, hogy az Azure-adatbázis biztonsági már foglalkozott a fontos problémákat.
+## <a name="checklist"></a>Ellenőrzőlista
+Azt javasoljuk, hogy elolvasta a [Azure adatbázis ajánlott biztonsági eljárások](https://docs.microsoft.com/azure/security/azure-database-security-best-practices) cikk előtt az alábbi ellenőrzőlista áttekintése. A lehető leghatékonyabban ezzel az ellenőrzőlistával az ajánlott eljárások megismerése után tekintse át tudják. Az alábbi ellenőrzőlista használatával győződjön meg arról, hogy van-e a fontos hibák javításával, az Azure adatbázis-biztonsági, majd.
 
 
-|Feladatlista kategória| Leírás|
+|Ellenőrzőlista kategória| Leírás|
 | ------------ | -------- |
 |**Adatok védelme**||
-| <br> Mozgásérzékelő – / átvitel titkosítás| <ul><li>[Transport Layer Security](https://docs.microsoft.com/windows-server/security/tls/transport-layer-security-protocol), az adatok titkosításához adatok a hálózatokhoz való áthelyezésekor.</li><li>Adatbázis szükséges a biztonságos kommunikációt olyan ügyfelektől, alapján a [(tabulált adatfolyamban) TDS](https://msdn.microsoft.com/en-in/library/dd357628.aspx) keresztüli TLS (Transport Layer Security).</li></ul> |
-|<br>Titkosítás inaktív állapotban| <ul><li>[Az átlátható adattitkosítási](http://go.microsoft.com/fwlink/?LinkId=526242), ha inaktív adatok fizikailag bármely digitális formában van tárolva.</li></ul>|
-|**Elérés**||  
-|<br> Adatbázis-hozzáférés | <ul><li>[Hitelesítési](https://docs.microsoft.com/azure/sql-database/sql-database-control-access) (Azure Active Directory-hitelesítés) AD hitelesítési használja az Azure Active Directory által kezelt identitások.</li><li>[Engedélyezési](https://docs.microsoft.com/azure/sql-database/sql-database-control-access) felhasználóknak adja meg a lehető legkevesebb szükséges jogosultsággal.</li></ul> |
-|<br>Alkalmazás-hozzáférés| <ul><li>[Biztonsági szint sor](https://msdn.microsoft.com/library/dn765131) (használatával biztonsági házirend, a felhasználó identitását, a szerepkör vagy a végrehajtási környezet alapján sorszintű hozzáférés korlátozása egy időben).</li><li>[A dinamikus Adatmaszkolás](https://docs.microsoft.com/azure/sql-database/sql-database-dynamic-data-masking-get-started) (használatával engedély & házirend, korlátozza a bizalmas adatok veszélyeztetettségének által maszkolás a jogosulatlan felhasználók számára)</li></ul>|
-|**Az előrejelzéses figyeléssel**||  
-| <br>Követés & észlelése| <ul><li>[Naplózás](https://docs.microsoft.com/azure/sql-database/sql-database-auditing) követi az adatbázisban, és egy naplófájlba írja őket / tevékenység jelentkezzen be a [Azure Storage-fiók](https://docs.microsoft.com/azure/storage/storage-create-storage-account).</li><li>Track Azure adatbázis állapotfigyelő segítségével [Azure figyelő tevékenységi naplóit](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs).</li><li>[Veszélyforrások Detektálása](https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection) adatbázist érintő rendellenes tevékenységeket, amelyek esetleges biztonsági fenyegetéseket jelezhetnek a észleli. </li></ul> |
-|<br>Azure Security Center| <ul><li>[Adatok figyelés](https://docs.microsoft.com/azure/security-center/security-center-enable-auditing-on-sql-databases) használja az Azure Security Center biztonsági központi felügyeleti megoldás az SQL és más Azure-szolgáltatásokkal.</li></ul>|       
+| <br> Mozgásérzékelő/átvitel titkosítása| <ul><li>[Transport Layer Security](https://docs.microsoft.com/windows-server/security/tls/transport-layer-security-protocol), adat-hálózatokhoz való áthelyezésekor az adattitkosítás.</li><li>Adatbázis alapján ügyfelekről érkező biztonságos kommunikációt igényel a [(táblázatos adatok Stream) TDS](https://msdn.microsoft.com/en-in/library/dd357628.aspx) keresztüli TLS (Transport Layer Security) protokoll.</li></ul> |
+|<br>Titkosítás inaktív állapotban| <ul><li>[Transzparens adattitkosítás](http://go.microsoft.com/fwlink/?LinkId=526242), amikor az inaktív adatok bármely digitális formában fizikailag tárolja.</li></ul>|
+|**Hozzáférés vezérlése**||  
+|<br> Adatbázis-hozzáférés | <ul><li>[Hitelesítési](https://docs.microsoft.com/azure/sql-database/sql-database-control-access) (az Azure Active Directory-hitelesítés) AD-hitelesítés az Azure Active Directory által felügyelt identitásokat használ.</li><li>[Engedélyezési](https://docs.microsoft.com/azure/sql-database/sql-database-control-access) biztosítson a felhasználó számára a minimálisan szükséges.</li></ul> |
+|<br>Alkalmazás-hozzáférés| <ul><li>[Biztonsági szint sor](https://msdn.microsoft.com/library/dn765131) (használatával biztonsági házirend, a felhasználó identitását, szerepkör vagy végrehajtási környezet alapján sorszintű hozzáférés korlátozása egy időben).</li><li>[A dinamikus Adatmaszkolás](https://docs.microsoft.com/azure/sql-database/sql-database-dynamic-data-masking-get-started) (használatával engedély & házirend, korlátozza a bizalmas adatok adatmaszkolás segít Önnek nem kiemelt jogosultságú felhasználók által)</li></ul>|
+|**Proaktív figyeléshez**||  
+| <br>Nyomkövetési & észlelése| <ul><li>[Naplózás](https://docs.microsoft.com/azure/sql-database/sql-database-auditing) nyomon követi az adatbázisok eseményeit, és írja őket az auditnapló / tevékenység jelentkezzen be a [Azure Storage-fiók](https://docs.microsoft.com/azure/storage/storage-create-storage-account).</li><li>Nyomon követheti az Azure-adatbázis állapotfigyelő használatával [Azure Monitor tevékenységeket tartalmazó naplók](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs).</li><li>[Veszélyforrások Detektálása](https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection) észleli a rendellenes adatbázis-tevékenységek utaló esetleges biztonsági fenyegetések az adatbázishoz. </li></ul> |
+|<br>Azure Security Center| <ul><li>[Adatok figyelés](https://docs.microsoft.com/azure/security-center/security-center-enable-auditing-on-sql-databases) az Azure Security Center figyelési megoldás az SQL és más Azure-szolgáltatások központi biztonsági.</li></ul>|       
 
 ## <a name="conclusion"></a>Összegzés
-Azure-adatbázis egy robusztus adatbázis platform, amely sok szervezeti és szabályozási megfelelőségi követelményeknek funkciókat teljes tartománnyal. Adatok egyszerűen megvédheti a adatokhoz való fizikai hozzáférés vezérlése, és számos lehetőséget használ az adatok biztonsági a fájl-, oszlop-vagy sorszintű átlátható adattitkosítási, cellaszintű titkosítását alkalmazza vagy sorszintű biztonság. Mindig titkosított is lehetővé teszi a titkosított adatok műveleteket leegyszerűsítésével alkalmazás frissítések. Viszont naplófájlokat SQL adatbázis-tevékenység hozzáférést biztosít a szükséges információkat, így tudja, hogyan és mikor adatokhoz.
+Azure Database egy robusztus cassandrára, a számos szervezet és szabályozási megfelelőségi követelmények teljesítése érdekében biztonsági szolgáltatások széles köre. Adatok védelme érdekében egyszerűen a fizikai hozzáférés az adatokhoz, és számos lehetőség használatával az adatokat a fájl-, oszlop- vagy a transzparens adattitkosítás, a cellaszintű titkosítás vagy a sorszintű biztonság sorszintű biztonságot. Mindig titkosított is lehetővé teszi a titkosított adatok, kapcsolatos művelet-végrehajtási megkönnyíti a frissítések alkalmazása folyamatát. Ezután naplók az SQL Database-tevékenység naplózása a hozzáférést biztosít a szükséges információkat, amely lehetővé teszi, hogy tudja, hogyan és mikor az adatokhoz.
 
 ## <a name="next-steps"></a>További lépések
 Mindössze néhány lépés végrehajtásával fokozhatja az adatbázis védelmét a rosszindulatú felhasználókkal és a jogosulatlan hozzáféréssel szemben. Ebben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
-- Állítson be [tűzfal-szabályok](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure) adatbázis és a kiszolgálón.
+- Állítsa be a [tűzfalszabályok](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure) a kiszolgálón, és vagy az adatbázis számára.
 - Az adatok védelméhez [titkosítási](https://docs.microsoft.com/sql/relational-databases/security/encryption/sql-server-encryption).
-- Engedélyezése [SQL Database auditing](https://docs.microsoft.com/azure/sql-database/sql-database-auditing).
+- Engedélyezése [SQL Database naplózási funkciójának](https://docs.microsoft.com/azure/sql-database/sql-database-auditing).
 

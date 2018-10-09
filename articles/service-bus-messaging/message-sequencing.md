@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2018
 ms.author: spelluru
-ms.openlocfilehash: a15e726e237bcdbd9d380aaf9232e5d16a2e648f
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 631c4334b1e2ca37dfc87709718b6639c2762c5c
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47409135"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48857686"
 ---
 # <a name="message-sequencing-and-timestamps"></a>Üzenetek előkészítése és időbélyegek
 
@@ -26,7 +26,7 @@ Alkalmazás-előkészítés és a timestamping is két olyan szolgáltatás, ame
 
 Az azokban az esetekben, ahol az üzenetek abszolút sorrend és/vagy, amelyben egy fogyasztó szüksége van a megbízható egyedi azonosító üzenetek, és a gap ingyenes, a közvetítő stampek üzenetek sorszáma képest az üzenetsor vagy témakör növelése. A particionált entitások esetében a sorszám képest a partíció jelenik meg.
 
-A **SequenceNumber** értéke, egy üzenet fogadja, és a belső azonosítóként a közvetítő és a függvény által tárolt rendelt egyedi 64 bites egész. A particionált entitások a legfelső 16 bit tükrözik, a partíció azonosítója. Sorozatszámok vihetők át a nulla, ha elfogy a 48, 64 bites tartomány.
+A **SequenceNumber** értéke, egy üzenet fogadja, és a belső azonosítóként a közvetítő és a függvény által tárolt rendelt egyedi 64 bites egész. A particionált entitások a legfelső 16 bit tükrözik, a partíció azonosítója. Sorozatszámok száma nulla, ha elfogy a 48/64 bites tartomány vihetők át.
 
 A sorszám is lehet megbízható egyedi azonosítóként, mivel a központi és semleges hatóság és az ügyfelek által nem van hozzárendelve. Azt is érkezési igaz sorrendet jelöli, és pontosabb, mint egy rendelés feltételként időbélyeg mert előfordulhat, hogy rendelkezik egy elég nagy felbontású szélsőséges üzenet díjakon időbélyegzőket és a (azonban minimális) óra torzulása helyzetekben áldozatai lehetnek, a közvetítő csomópontok közötti átmeneteket tulajdonjogát.
 
@@ -50,7 +50,6 @@ Mivel a funkció az egyes üzeneteket van rögzítve és üzenetek csak akkor le
 
 További információ a Service Bus-üzenetkezelés, tekintse meg a következő témaköröket:
 
-* [A Service Bus alapjai](service-bus-fundamentals-hybrid-solutions.md)
 * [Service Bus-üzenetsorok, -témakörök és -előfizetések](service-bus-queues-topics-subscriptions.md)
 * [Bevezetés a Service Bus által kezelt üzenetsorok használatába](service-bus-dotnet-get-started-with-queues.md)
 * [A Service Bus-üzenettémakörök és -előfizetések használata](service-bus-dotnet-how-to-use-topics-subscriptions.md)

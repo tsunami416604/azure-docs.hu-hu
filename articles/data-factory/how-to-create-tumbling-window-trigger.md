@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/27/2018
 ms.author: shlo
-ms.openlocfilehash: c42d6235af8a5ab27fbd550b63c301fd9c6f15b1
-ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
+ms.openlocfilehash: 1a24079292ce8fdd6a514a85484fc10b77491ba6
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39325033"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48868334"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-on-a-tumbling-window"></a>Hozzon létre egy eseményindítót, amely futtatja a folyamatot egy átfedésmentes ablak
 Ez a cikk létrehozása, indítása és monitorozása az átfedésmentes ablakos eseményindító lépéseit ismerteti. Eseményindítók és a támogatott típusok kapcsolatos általános információkért lásd: [folyamat-végrehajtás és eseményindítók](concepts-pipeline-execution-triggers.md).
@@ -80,7 +80,7 @@ Az alábbi táblázat a fő JSON-elemek, amelyek kapcsolatos ismétlődés és �
 |:--- |:--- |:--- |:--- |:--- |
 | **type** | A trigger típusa. A típus a rögzített érték "TumblingWindowTrigger." | Sztring | "TumblingWindowTrigger" | Igen |
 | **runtimeState** | Az eseményindító-futtatás ideje aktuális állapotát.<br/>**Megjegyzés:**: Ez az elem \<readOnly >. | Sztring | "Elindítva", "leállított," "Letiltva" | Igen |
-| **frequency** | Az eseményindító ismétlődésének gyakorisági gyakoriság egysége (percek vagy órák) jelölő karakterláncot. Ha a **startTime** dátum értékek a következők részletesebben, mint a **gyakorisága** érték, a **startTime** dátumok számítanak, amikor számítja ki az ablak határok. Például ha a **gyakorisága** értéke óránként és a **startTime** értéke 2016-04-01T10:10:10Z, az első ablak van (2017-09-01T10:10:10Z, 2017-09-01T11:10:10Z). | Sztring | "minute", "hour"  | Igen |
+| **frequency** | Az eseményindító ismétlődésének gyakorisági gyakoriság egysége (percek vagy órák) jelölő karakterláncot. Ha a **startTime** dátum értékek a következők részletesebben, mint a **gyakorisága** érték, a **startTime** dátumok számítanak, amikor számítja ki az ablak határok. Például ha a **gyakorisága** értéke óránként és a **startTime** értéke 2017-09-01T10:10:10Z, az első ablak van (2017-09-01T10:10:10Z, 2017-09-01T11:10:10Z). | Sztring | "minute", "hour"  | Igen |
 | **interval** | Pozitív egész szám, amely az eseményindító futásának gyakoriságát meghatározó **frequency** érték időközét jelöli. Például ha a **időköz** 3 és a **gyakorisága** "hour", akkor az eseményindító 3 óránként ismétlődik. | Egész szám | Pozitív egész szám. | Igen |
 | **startTime**| Az első előfordulás, amely lehet múltbeli. Az első eseményindító időköz (**startTime**, **startTime** + **időköz**). | DateTime | Egy dátum/idő érték. | Igen |
 | **endTime**| Az utolsó előfordulás, amely lehet múltbeli. | DateTime | Egy dátum/idő érték. | Igen |

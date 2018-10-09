@@ -14,12 +14,12 @@ ms.component: report-monitor
 ms.date: 11/14/2017
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 3fab0648a2ad0e0a4c193d37875913dd27bf9af4
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: 38ae18dca08b50a90102149d7e44169c956a1c0e
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45574276"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48869635"
 ---
 # <a name="risky-sign-ins-report-in-the-azure-active-directory-portal"></a>Kockázatos bejelentkezésekre vonatkozó jelentések az Azure Active Directory portálon
 
@@ -37,6 +37,15 @@ Az [Azure Portalon](https://portal.azure.com) a biztonsági jelentések az **Azu
 
 ![Kockázatos bejelentkezések](./media/concept-risky-sign-ins/10.png)
 
+## <a name="who-can-access-the-risky-sign-ins-report"></a>A kockázatos bejelentkezések jelentés férhet hozzá?
+
+A kockázatos bejelentkezések jelentéseit a felhasználók számára a következő szerepkörök érhetők el:
+
+- Biztonsági rendszergazda
+- Globális rendszergazda
+- Biztonsági olvasó
+
+Rendszergazdai szerepkörök hozzárendelése az Azure Active Directory felhasználó kapcsolatban lásd: [nézet és rendelhet hozzá rendszergazdai szerepköröket az Azure Active Directoryban](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-manage-roles-portal).
 
 ## <a name="what-azure-ad-license-do-you-need-to-access-a-security-report"></a>Milyen Azure AD-licencre van szükség a biztonsági jelentések eléréséhez?  
 
@@ -48,8 +57,6 @@ A jelentések részletességi szintje azonban különbözik a kiadások között
 - Az **Azure Active Directory 1. prémium** kiadása kibővíti ezt a modellt, mert lehetővé teszi azt is, hogy megvizsgáljon néhány, az egyes jelentésekhez észlelt mögöttes kockázatos eseményt. 
 
 - Az **Azure Active Directory 2. prémium** kiadása nyújtja a legrészletesebb információkat minden mögöttes kockázatos eseményről, és lehetővé teszi olyan biztonsági szabályzatok konfigurálását, amelyek automatikusan, a konfigurált kockázati szinteknek megfelelően válaszolnak.
-
-
 
 ## <a name="azure-active-directory-free-and-basic-edition"></a>Azure Active Directory – ingyenes és alapszintű kiadások
 

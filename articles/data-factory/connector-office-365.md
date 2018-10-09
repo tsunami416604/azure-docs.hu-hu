@@ -11,20 +11,24 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/26/2018
+ms.date: 10/08/2018
 ms.author: jingwang
-ms.openlocfilehash: 2229a8a01d29fc167eb3696423224f1d2ef0df4e
-ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
+ms.openlocfilehash: 3caae8ecae66178bc538d0b9d1240293028f33ad
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48248465"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48867357"
 ---
 # <a name="copy-data-from-office-365-into-azure-using-azure-data-factory-preview"></a>Adatok másolása az Office 365-ből az Azure-bA az Azure Data Factory (előzetes verzió) használatával 
 
 Az Azure Data Factory lehetővé teszi a szervezeti adatokat az Office 365 bérlői az Azure-ba, skálázható módon, és analytics alkalmazásokat hozhat létre, és az elemzések alapján értékes adategységekhez gazdag használata. Integráció a Privileged Access Management az értékes összeválogatott adatokat, az Office 365-ben a biztonságos hozzáférés-vezérlést biztosít.  További információ a Microsoft Graph adatváltozásainak csatlakozni, tekintse meg [ezt a hivatkozást](https://github.com/OfficeDev/ManagedAccessMSGraph/wiki).
 
 Ez a cikk ismerteti, hogyan használja a másolási tevékenység az Azure Data Factoryban az adatok másolása az Office 365-höz. Épül a [másolási tevékenység áttekintése](copy-activity-overview.md) cikket, amely megadja a másolási tevékenység általános áttekintést.
+
+A 9 perces bevezető és demonstrációs kapcsolatos adat-előállító Office 365-adatokhoz való csatlakozásról tekintse meg a következő videót:
+
+> [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Get-cloud-scale-analytics-of-Office-365-data-with-Azure-Data-Factory/player]
 
 ## <a name="supported-capabilities"></a>Támogatott képességek
 

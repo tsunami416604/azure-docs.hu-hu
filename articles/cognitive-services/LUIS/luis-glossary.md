@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: a741cb1c2643e48080018e5c9f4ada7038bce29e
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: b24b21ee5fc929d3e7bd026191ce8791d79f9abc
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47434806"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48870774"
 ---
 # <a name="glossary"></a>Szószedet
 A Language Understanding (LUIS) szószedet ismerteti feltételeit, amelyek találkozhat végzett munka során az intelligens HANGFELISMERÉSI API-szolgáltatást.
@@ -74,7 +74,7 @@ A LUIS a környezetben egy **tartomány** olyan terület, az ismeretek. A tartom
 
 ## <a name="endpoint"></a>Végpont
 
-A [LUIS végpont](https://aka.ms/luis-endpoint-apis) URL-címe, ahol elküldése után a LUIS-lekérdezéseket a [LUIS-alkalmazásokon](#luis-app) létrehozott és közzétett. A végpont URL-címe tartalmazza a régió, a közzétett alkalmazás, valamint az alkalmazás azonosítóját. A végpont található a **[kulcsokat és a végpontok](/luis-how-to-manage-keys.md)** lapja az alkalmazás, vagy beszerezheti a végpont URL-CÍMÉT a [alkalmazásadatok lekérése](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c37) API.
+A [LUIS végpont](https://aka.ms/luis-endpoint-apis) URL-címe, ahol elküldése után a LUIS-lekérdezéseket a [LUIS-alkalmazásokon](#luis-app) létrehozott és közzétett. A végpont URL-címe tartalmazza a régió, a közzétett alkalmazás, valamint az alkalmazás azonosítóját. A végpont található a **[kulcsokat és a végpontok](luis-how-to-manage-keys.md)** lapja az alkalmazás, vagy beszerezheti a végpont URL-CÍMÉT a [alkalmazásadatok lekérése](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c37) API.
 
 A példában a végpont hasonlóan néz ki:
 

@@ -1,27 +1,28 @@
 ---
-title: A projekt URL-cím előnézeti végpont - Microsoft kognitív szolgáltatások |} Microsoft Docs
-description: Az URL-cím előnézeti végpont összegzését.
+title: Projekt URL-cím előzetes verziójú végpont
+titlesuffix: Azure Cognitive Services
+description: Az URL-cím előnézete végpont összefoglalása.
 services: cognitive-services
 author: mikedodaro
-manager: rosh
+manager: cgronlun
 ms.service: cognitive-services
-ms.technology: project-url-preview
-ms.topic: article
+ms.component: project-url-preview
+ms.topic: reference
 ms.date: 03/29/2018
 ms.author: rosh, v-gedod
-ms.openlocfilehash: ddd53aa49db01d7a6db397eb285d0854edc59388
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 0464ac80c451ada46561de78b5ba0860c59a9e34
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35348615"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48868649"
 ---
-# <a name="project-url-preview-endpoint"></a>Projekt URL-cím előnézeti végpont
+# <a name="project-url-preview-endpoint"></a>Projekt URL-cím előzetes verziójú végpont
 
-Az URL-cím előnézeti API-t egy végpontot tartalmaz.
+Az URL-cím előzetes API tartalmaz egy végpontot.
 
 ## <a name="endpoint"></a>Végpont
-Ahhoz, hogy egy URL-cím Preview, a következő végpont kérelmet küld. A fejlécek és URL-cím Paraméterek használata egyéb beállításokat.
+A következő végpont kérelmet küld egy URL-cím előnézete lekéréséhez. A fejlécek és URL-paraméterek használata egyéb beállításokat.
 
 GET:
 ````
@@ -32,10 +33,10 @@ https://api.labs.cognitive.microsoft.com/urlpreview/v7.0/search?q=https://swiftk
 ### <a name="query-parameters"></a>Lekérdezési paraméterek
 |Name (Név)|Érték|Típus|Szükséges|  
 |----------|-----------|----------|--------------|  
-|A Q|Az előzetes URL-címe|Sztring |Igen|
-|biztonságos keresés|Felnőtt tartalom érvénytelen vagy hamisított tartalom le van tiltva, hibakód: 400, és a *isFamilyFriendly* jelző nem ad vissza. <p>Jogi felnőtt tartalom, az alábbi történik. Állapotkód adja vissza a 200 lesz, és a *isFamilyFriendly* jelző hamisra van állítva.<ul><li>biztonságos keresés = szigorú: cím, a leírás, a URL-cím és a lemezkép nem állítható vissza.</li><li>biztonságos keresés = mérsékelt; Cím, URL-cím és leírás, de nem a leíró kép lekérése.</li><li>biztonságos keresés = off; Minden válasz objektumok/elemet – cím, az URL-címet, a leírás és a kép lekérése.</li></ul> |Sztring|Nem szükséges. </br> Alapértelmezés szerint biztonságos keresés az = szigorú.| 
+|válaszok|Az előzetes verzióra URL-címe|Sztring |Igen|
+|biztonságos keresés|Érvénytelen felnőtt tartalom, vagy a hamisított tartalom le van tiltva, hibakód: 400, és a *isFamilyFriendly* jelző nem ad vissza. <p>Jogi felnőtt tartalom, az alábbi történik. Állapotkód: 200, adja vissza, és a *isFamilyFriendly* jelző false értékre van állítva.<ul><li>biztonságos keresés = szigorú: cím, leírás, URL-cím és a lemezkép nem állítható vissza.</li><li>biztonságos keresés = közepes; Cím, URL-cím és leírás, de nem a leíró képet kaphat.</li><li>biztonságos keresés kikapcsolása:; = Minden válasz objektumok/elemet – title, URL-címet, leírást és képet kaphat.</li></ul> |Sztring|Nem kötelező. </br> Biztonságos keresés alapértelmezés szerint szigorú =.| 
 
-## <a name="response-object"></a>Válasz objektum
+## <a name="response-object"></a>Válaszobjektum
 
 A válasz HTTP-fejlécek és attribútumok weblap objektum tartalmazza a következő példában látható módon: `name`, `url`, `description`, `isFamilyFriendly`, és `primaryImageOfPage`.
 
@@ -59,8 +60,8 @@ X-MSEdge-Ref: Ref A: 15AFE52A97AA422F960433A94803F6CE Ref B: PAOEDGE0418 Ref C: 
 ````
 
 ## <a name="next-steps"></a>További lépések
-- [C# gyors üzembe helyezés](csharp.md)
-- [Java gyors üzembe helyezés](java-quickstart.md)
-- [JavaScript gyors üzembe helyezés](javascript.md)
-- [Csomópont gyors üzembe helyezés](node-quickstart.md)
-- [Python gyors üzembe helyezés](python-quickstart.md)
+- [C# gyorsútmutató](csharp.md)
+- [Java a rövid útmutató](java-quickstart.md)
+- [JavaScript a rövid útmutató](javascript.md)
+- [Csomópont a rövid útmutató](node-quickstart.md)
+- [Python a rövid útmutató](python-quickstart.md)

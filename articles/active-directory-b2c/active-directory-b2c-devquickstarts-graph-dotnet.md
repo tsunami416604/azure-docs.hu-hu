@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/07/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 013fd019771fb9994c87e363c78eae36431f91de
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 32a887d54a239db0c1e40458e1b304d899befff5
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46953225"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48870553"
 ---
 # <a name="azure-ad-b2c-use-the-azure-ad-graph-api"></a>Az Azure AD B2C: Az Azure AD Graph API használata
 
@@ -38,7 +38,7 @@ Alkalmazások vagy felhasználók hozhat létre, meg kell egy Azure AD B2C-bérl
 Miután egy B2C-bérlő, az alkalmazást a regisztrálnia kell a [az Azure portal](https://portal.azure.com).
 
 > [!IMPORTANT]
-> A Graph API-val való használatához a B2C-bérlőt egy alkalmazást a regisztrálnia kell a *Alkalmazásregisztrációk* szolgáltatást az Azure Portalon **nem** Azure AD B2C *alkalmazások*menüben. Az alábbi utasítások alapján kell létrehoznia. tanúsítványtárolójához menüre. Nem használhatja újra a meglévő B2C-alkalmazásokat az Azure AD B2C-ben regisztrált *alkalmazások* menü.
+> A Graph API-val való használatához a B2C-bérlőt egy alkalmazást a regisztrálnia kell a *Alkalmazásregisztrációk* szolgáltatást az Azure Portalon **nem** Azure AD B2C *alkalmazások*menüben. Az alábbi utasítások alapján a megfelelő menü vezethet. Nem használhatja újra a meglévő B2C-alkalmazásokat az Azure AD B2C-ben regisztrált *alkalmazások* menü.
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 2. Válassza ki a fiókot az oldal jobb felső sarokban, válassza ki az Azure AD B2C-bérlő.

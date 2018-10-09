@@ -1,20 +1,21 @@
 ---
-title: Projekt URL-cím előnézete referencia – a Microsoft Cognitive Services |} A Microsoft Docs
+title: Projekt URL-cím előnézete referencia
+titlesuffix: Azure Cognitive Services
 description: Projekt URL-cím előnézete végponthoz tartozó hivatkozás.
 services: cognitive-services
 author: mikedodaro
-manager: rosh
+manager: cgronlun
 ms.service: cognitive-services
-ms.technology: project-url-preview
-ms.topic: article
+ms.component: project-url-preview
+ms.topic: reference
 ms.date: 03/29/2018
-ms.author: rosh, v-gedod
-ms.openlocfilehash: 46c011d62b6ae51f5f7d292345e6ece0e27a8541
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.author: rosh
+ms.openlocfilehash: 3416fd9bc63c48e976d0b00f42ec9f8119a40eb8
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37865875"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48870808"
 ---
 # <a name="project-url-preview-v7-reference"></a>Projekt URL-cím előnézete v7-referencia
 
@@ -98,9 +99,9 @@ Határozza meg a következő hiba történt.
 |<a name="error-code" />Kód|A hiba kódja, amely azonosítja a hiba kategóriáját. Lehetséges kódok listáját lásd: [hibakódok](#error-codes).|Sztring|  
 |<a name="error-message" />üzenet|A hiba leírása.|Sztring|  
 |<a name="error-moredetails" />moreDetails|Egy leírást, amely a hibával kapcsolatos további információkat biztosít.|Sztring|  
-|<a name="error-parameter" />a paraméter|A lekérdezési paraméter, amely a hibát okozó a kérésben.|Sztring|  
+|<a name="error-parameter" />A paraméter|A lekérdezési paraméter, amely a hibát okozó a kérésben.|Sztring|  
 |<a name="error-subcode" />Alkód|A hiba kódja, amely azonosítja a hibát. Például ha `code` InvalidRequest, akkor `subCode` ParameterInvalid vagy ParameterInvalidValue is lehet. |Sztring|  
-|<a name="error-value" />érték|A lekérdezési paraméter értéke, amely nem érvényes.|Sztring|  
+|<a name="error-value" />Érték|A lekérdezési paraméter értéke, amely nem érvényes.|Sztring|  
   
 
 ### <a name="errorresponse"></a>Byl vrácen Prvek  
@@ -109,7 +110,7 @@ A legfelső szintű objektum, amely a válasz tartalmazza, ha a kérés nem telj
 |Name (Név)|Érték|Típus|  
 |----------|-----------|----------|  
 |í_rja be|Mutató típusa.|Sztring|  
-|<a name="errors" />hibák|Miért nem sikerült a kérelem miatt hibák listája.|[Hiba](#error)]|   
+|<a name="errors" />Hibák|Miért nem sikerült a kérelem miatt hibák listája.|[Hiba](#error)]|   
   
 
 ### <a name="webpage"></a>Weblap  

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2017
 ms.author: jeconnoc
-ms.openlocfilehash: 6af4533a4ab374071b904cc4b03ca239a3e83364
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 309c7275a1e775ed2bd689520ac39501e8bd6052
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39008964"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48857822"
 ---
 # <a name="overview-of-azure-cloud-services"></a>Az Azure Cloud Services áttekintése
 Az Azure Cloud Services egyik példája egy [szolgáltatásként nyújtott platformon](https://azure.microsoft.com/overview/what-is-paas/) (PaaS). Például [Azure App Service](../app-service/app-service-web-overview.md), ez a technológia úgy tervezték, hogy skálázható, megbízható és költséghatékony működéséhez alkalmazások támogatása. Ugyanolyan módon, hogy App Service-ben üzemeltetett virtuális gépeken (VM), tehát túl van az Azure Cloud Servicesben. Azonban hogy jobban szabályozhatja a virtuális gépeket. Azure Cloud Services szolgáltatást használó virtuális gépek is telepíthető a saját szoftvereit, és távolról elérheti azokat.
@@ -33,7 +33,7 @@ Azure Cloud Services-szerepkörök két típusa van. Az egyetlen különbség a 
 
 * **Feldolgozói szerepkör**: nem használja az IIS és az alkalmazás különálló futtatja.
 
-Előfordulhat, hogy például, hogy egy egyszerű alkalmazást csak egyetlen webes szerepkör, a kiszolgáló a webhely használja. Olyan összetettebb alkalmazást előfordulhat, hogy egy webes szerepkör segítségével kezeli a felhasználók a bejövő kéréseket, és akkor továbbítja a feldolgozói szerepkör feldolgozási be ezeket a kérelmeket. (Ehhez a kommunikációhoz használhat [Azure Service Bus](../service-bus-messaging/service-bus-fundamentals-hybrid-solutions.md) vagy [Azure Queue storage](../storage/common/storage-introduction.md).)
+Előfordulhat, hogy például, hogy egy egyszerű alkalmazást csak egyetlen webes szerepkör, a kiszolgáló a webhely használja. Olyan összetettebb alkalmazást előfordulhat, hogy egy webes szerepkör segítségével kezeli a felhasználók a bejövő kéréseket, és akkor továbbítja a feldolgozói szerepkör feldolgozási be ezeket a kérelmeket. (Ehhez a kommunikációhoz használhat [Azure Service Bus](../service-bus-messaging/service-bus-messaging-overview.md) vagy [Azure Queue storage](../storage/common/storage-introduction.md).)
 
 Mivel az előző ábrán javasol, egy alkalmazást az összes virtuális gép ugyanazon a felhőszolgáltatáson futnak. Az alkalmazás keretében egyetlen nyilvános IP-címet, a kérelmek automatikusan betölteni a felhasználói hozzáférés az alkalmazás virtuális gépek kiegyensúlyozását. A platform [méretezi és helyezi üzembe](cloud-services-how-to-scale-portal.md) a virtuális gépek az Azure Cloud Services alkalmazások úgy, hogy elkerüli a hardverhiba hibaérzékeny pont.
 

@@ -9,12 +9,12 @@ ms.technology: Speech
 ms.topic: article
 ms.date: 10/01/2018
 ms.author: gracez
-ms.openlocfilehash: 432a17b1e3cd065bd6189ffa9f80ca5985629bb7
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: 2dc034ea28075019b74fe9d9be548cf9d355d20e
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48239949"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48857482"
 ---
 # <a name="migrate-from-bing-speech-to-the-speech-service"></a>Bing Speech áttelepít a beszédszolgáltatás
 
@@ -49,7 +49,7 @@ Egyéni hangtípust | : heavy_check_mark: | : heavy_check_mark: | Bing Speech eg
 Beszéd szándékának felismerése | Intelligens HANGFELISMERÉSI API-hívás külön igényel | (SDK-val integrált) |  A LUIS-kulcs a beszédfelismerési szolgáltatás is használhatók.
 Egyszerű szándékfelismerés | : heavy_minus_sign: | : heavy_check_mark: 
 A Batch beszédátírási hosszú hangfájlok | : heavy_minus_sign: | : heavy_check_mark:
-Elismerés mód | Manuális végpont URI-n keresztül | Automatikus | Elismerés mód Speech Service-ben nem érhető el
+Felismerési mód | Manuális végpont URI-n keresztül | Automatikus | Elismerés mód Speech Service-ben nem érhető el
 Végpont helye | Globális | Regionális | Regionális végpontok javíthatja a késés. Egy globális végpontja figyelembe veszi a beszédfelismerési szolgáltatás alatt áll.
 REST API-k | : heavy_check_mark: | : heavy_check_mark: | Beszédfelismerési szolgáltatás REST API a Bing Speech (másik végpont) esetén. REST API-k támogatják a szöveg-beszéd átalakítás, és csak hang-szöveg transzformációs funkciót.
 A websockets protokoll protokollok | : heavy_check_mark: | : heavy_check_mark: | Bing Speech (másik végpont) esetén a websockets protokoll Beszédszolgáltatási API Használatába. Telepítse át a Speech SDK lemezrendszert egyszerűbbé teszik a kódolást.
@@ -74,11 +74,11 @@ A beszédfelismerési szolgáltatás jelenleg nem kínál egy globális végpont
 
 Ha az alkalmazás hosszú élettartamú kapcsolatokat használ, és nem használható egy elérhető SDK-t, WebsSockets kapcsolatot használ, és kezelheti a 10 perces időtúllépési korlát újracsatlakozás a megfelelő időben.
 
-Ismerkedés az új beszéd SDK-val:
+Első lépések a beszédfelismerő SDK:
 
 1. Töltse le a [beszéd SDK](speech-sdk.md).
 1. Munka a Speech szolgáltatással [gyors útmutatók](quickstart-csharp-dotnet-windows.md), [oktatóanyagok](how-to-recognize-intents-from-speech-csharp.md), és tekintse meg a [Kódminták](samples.md) élmény az új API-khoz való.
-1. Az új beszédszolgáltatás és API-k használata az alkalmazás frissítése.
+1. A Speech service és az API-k használata az alkalmazás frissítése.
 
 ## <a name="support"></a>Támogatás
 

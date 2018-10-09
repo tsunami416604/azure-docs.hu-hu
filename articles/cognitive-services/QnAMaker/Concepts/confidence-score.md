@@ -10,12 +10,12 @@ ms.component: QnAMaker
 ms.topic: article
 ms.date: 09/27/2018
 ms.author: tulasim
-ms.openlocfilehash: e878da5f6741b1a4c31874af05b7a37f6dee21df
-ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
+ms.openlocfilehash: 9bcd2ccfc5fb8ddc71d2df178dd214be2a67160d
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/01/2018
-ms.locfileid: "47586223"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48856853"
 ---
 # <a name="confidence-score"></a>Megbízhatósági pontszám
 Ha egy felhasználó lekérdezése Tudásbázis van, a QnA Maker azokra adott válaszokat, és a egy magabiztossági pontszámot ad vissza. Ezt az értéket, hogy a válasz-e a megfelelő egyezik a megadott felhasználói lekérdezés magabiztosan jelzi. 
@@ -70,7 +70,7 @@ Itt látható a [közzététele](../How-To/publish-knowledge-base.md) művelet m
 ## <a name="no-match-found"></a>Nincs találat.
 Nem megfelelő talál egyezést szerint a rangsorolás, amikor a 0,0 vagy "None" megbízhatósági pontszámot ad vissza, és az alapértelmezett válasz "nem szerepel jó a KB-ban található". Ez a robot vagy alkalmazás kód, a végpontot hív-e alapértelmezett válasz felül lehet bírálni. Azt is megteheti a felülbírálás válasz állítsa be az Azure-ban, és a egy adott QnA Maker szolgáltatást üzembe helyezett összes tudásbázisok az alapértelmezett értékre változik.
 
-1. Nyissa meg a [az Azure portal](http://portal.azure.com) , és keresse meg az erőforráscsoport, amely a QnA Maker szolgáltatást létrehozott jelöli.
+1. Nyissa meg a [az Azure portal](https://portal.azure.com) , és keresse meg az erőforráscsoport, amely a QnA Maker szolgáltatást létrehozott jelöli.
 
 2. Ide kattintva megnyithatja a **App Service-ben**.
 

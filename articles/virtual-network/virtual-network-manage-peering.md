@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/24/2018
 ms.author: jdial;anavin
-ms.openlocfilehash: 8ce550fcd9756286488d17ac5cad258aaf1682ba
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: bde451a2a01a8baa347f093a1b56525dcead00f3
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46946856"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48855306"
 ---
 # <a name="create-change-or-delete-a-virtual-network-peering"></a>Létrehozása, módosítása vagy egy virtuális hálózati társviszony törlése
 
@@ -116,7 +116,7 @@ Ha azt szeretné, hogy a virtuális hálózatok néha kommunikációhoz, de nem 
 - Amikor hoz létre, globális társviszonyt, a társviszonyban álló virtuális hálózatba bármelyik Azure nyilvános felhő régióban, de nem az országos Azure felhőkhöz létezhet. A nemzeti felhőkben ugyanabban a régióban található virtuális hálózatok csak társviszonyt.
 - Egy virtuális hálózatban lévő erőforrásokra globálisan két társviszonyban álló virtuális hálózatban lévő Azure belső terheléselosztó előtérbeli IP-címe nem lehet kommunikálni. A load balancer és a vele kommunikáló erőforrások a virtuális hálózat ugyanabban a régióban kell lennie. A társviszonyban lévő virtuális hálózatok azonban találhatók ugyanabban a régióban, szükség esetén bármelyik virtuális hálózatban lévő erőforrások kommunikálni tudnak bármelyik virtuális hálózatban a társviszony-létesítést az Azure belső terheléselosztó előtérbeli IP-címét.
 - Nem lehet távoli átjárók használata, vagy a globális virtuális társhálózatok átjárótranzit engedélyezése. A távoli átjárók használata, vagy átjárótranzit engedélyezése, a társviszonyban lévő virtuális hálózatok ugyanabban a régióban kell lennie.
-- A virtuális hálózatok lehetnek azonos vagy eltérő előfizetésekben. Különböző előfizetésekben található virtuális hálózatok társviszonyba állítása akkor, ha mindkét előfizetés társíthatók az azonos vagy eltérő Azure Active Directory-bérlő. Ha még nem rendelkezik az AD-bérlő, akkor gyorsan [hozzon létre egyet](../active-directory/develop/quickstart-create-new-tenant.md?toc=%2fazure%2fvirtual-network%2ftoc.json#create-a-new-azure-ad-tenant). A különböző Azure Aztuve Directory-bérlőkhöz társított előfizetésekben virtuális hálózatok közötti társviszony-létesítés támogatása a portál nem érhető el. Parancssori felület, a PowerShell vagy a sablonok is használhatja.
+- A virtuális hálózatok lehetnek azonos vagy eltérő előfizetésekben. Különböző előfizetésekben található virtuális hálózatok társviszonyba állítása akkor, ha mindkét előfizetés társíthatók az azonos vagy eltérő Azure Active Directory-bérlő. Ha még nem rendelkezik az AD-bérlő, akkor gyorsan [hozzon létre egyet](../active-directory/develop/quickstart-create-new-tenant.md?toc=%2fazure%2fvirtual-network%2ftoc.json#create-a-new-azure-ad-tenant). A különböző Azure Active Directory-bérlőkhöz társított előfizetésekben virtuális hálózatok közötti társviszony-létesítés támogatása a portál nem érhető el. Parancssori felület, a PowerShell vagy a sablonok is használhatja.
 - A virtuális hálózat társviszonyt, egymást nem átfedő IP-címtereket kell rendelkeznie.
 - Adja hozzá a címtartományok nem, vagy törlése címtartományokat egy virtuális hálózat címtere egy virtuális hálózatot és egy másik virtuális hálózat társviszonyba. Hozzáadása vagy törlése címtartományokat, a társviszony-létesítés törlése, hozzáadása vagy eltávolítása a címtartományt, majd újra létrehozza a társviszonyt. Adja hozzá a-címtartományokat, vagy távolítsa el a címtartomány a virtuális hálózatok, lásd: [virtuális hálózatok kezelése](manage-virtual-network.md).
 - Erőforrás-kezelő vagy a Resource Managerrel üzembe helyezett egy virtuális hálózathoz a klasszikus üzemi modellel üzembe helyezett virtuális hálózaton üzembe helyezett két virtuális hálózat társviszonyt. A klasszikus üzemi modellel létrehozott két virtuális hálózat nem társviszonyt. Ha még nem ismeri az Azure üzembe helyezési modellel, olvassa el a [Azure üzemi modelljeinek megismerése](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json) cikk. A [VPN Gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json#V2V) használatával összeköthető két, a klasszikus üzembehelyezési modellel létrehozott virtuális hálózat.

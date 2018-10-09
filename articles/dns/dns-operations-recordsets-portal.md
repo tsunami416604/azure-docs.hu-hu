@@ -1,26 +1,18 @@
 ---
-title: DNS-rekordhalmazok és rekordok az Azure DNS használata kezelheti |} A Microsoft Docs
+title: DNS-rekordhalmazok és rekordok az Azure DNS használata kezelheti
 description: Az Azure DNS lehetővé teszi, hogy a DNS-rekordhalmazok és rekordok kezelése, ha a tartomány üzemeltetésének.
 services: dns
-documentationcenter: na
 author: vhorne
-manager: jeconnoc
-editor: ''
-tags: azure-resource-manager
-ms.assetid: 18ed44a1-7bfe-454f-964e-922ad978264a
 ms.service: dns
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 08/16/2016
+ms.date: 10/6/2018
 ms.author: victorh
-ms.openlocfilehash: e24aa8d0fb72147b0ac30e7c495b598d6e9ea96f
-ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
+ms.openlocfilehash: 891adfacde6e46b1d8fe8e2f6b5fb39c90ce27a0
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47451392"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48853708"
 ---
 # <a name="manage-dns-records-and-record-sets-by-using-the-azure-portal"></a>DNS-rekordok kezelése és a rekordhalmazok az Azure portal használatával
 
@@ -120,3 +112,4 @@ Nem lehet törölni a SOA és NS-rekord zóna felső pontjánál állítja be (n
 * Azure DNS szolgáltatással kapcsolatos további információkért lásd: a [Azure DNS áttekintését biztosító](dns-overview.md).
 * DNS automatizálása kapcsolatos további információkért lásd: [létrehozása DNS-zónák és -rekordhalmazok a .NET SDK használatával](dns-sdk.md).
 * Fordított DNS-rekordok kapcsolatos további információkért lásd: [fordított DNS és támogatás az Azure-ban – áttekintés](dns-reverse-dns-overview.md).
+* Alias rekordokat Azure DNS szolgáltatással kapcsolatos további információkért lásd: [Azure DNS-alias a rekordok áttekintése](dns-alias.md).

@@ -12,15 +12,15 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: ''
 manager: craigg
-ms.date: 04/01/2018
-ms.openlocfilehash: d944ead01da81e2fec49d256a4da939067bcceee
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.date: 10/05/2018
+ms.openlocfilehash: 2d735225782398b4e22a42816586a56cab54b763
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47064408"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48870196"
 ---
-# <a name="always-encrypted-protect-sensitive-data-in-sql-database-and-store-your-encryption-keys-in-azure-key-vault"></a>Always Encrypted: SQL Database-ben a bizalmas adatok védelme és tárolni a titkosítási kulcsokat az Azure Key Vaultban
+# <a name="always-encrypted-protect-sensitive-data-and-store-encryption-keys-in-azure-key-vault"></a>Always Encrypted: Bizalmas adatok védelme és tárolni a titkosítási kulcsokat az Azure Key Vaultban
 
 Ez a cikk bemutatja, hogyan titkosítás használatával az SQL-adatbázisban tárolt bizalmas adatok védelme a [Always Encrypted varázsló](https://msdn.microsoft.com/library/mt459280.aspx) a [SQL Server Management Studio (SSMS)](https://msdn.microsoft.com/library/hh213248.aspx). Emellett olyan utasításokat tartalmaz, amelyek bemutatják, hogyan egyes titkosítási kulcsok tárolására az Azure Key Vaultban.
 

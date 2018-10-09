@@ -1,56 +1,54 @@
 ---
-title: Az Azure-tároló példányát emptyDir kötet csatlakoztatása
-description: 'Útmutató: a tárolók egy Azure-tároló példányát a tárolócsoport közötti adatmegosztásra egy emptyDir kötet csatlakoztatása'
+title: Az Azure Container Instances szolgáltatásban az emptyDir kötet csatlakoztatási
+description: Ismerje meg, hogyan csatlakoztathatja az emptyDir köteten az adatmegosztást a tárolókat az Azure Container Instances szolgáltatásban egy tárolócsoport
 services: container-instances
-author: mmacy
-manager: jeconnoc
+author: dlepow
 ms.service: container-instances
 ms.topic: article
 ms.date: 02/08/2018
-ms.author: marsma
-ms.openlocfilehash: 89289a7a0bb5c486c662d528c5014bdbd8eebaca
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.author: danlep
+ms.openlocfilehash: 98a72123a05fa7d8dc16be7ddb787f2a2cf7e4d1
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32164890"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48857652"
 ---
-# <a name="mount-an-emptydir-volume-in-azure-container-instances"></a>Az Azure-tároló példányát emptyDir kötet csatlakoztatása
+# <a name="mount-an-emptydir-volume-in-azure-container-instances"></a>Az Azure Container Instances szolgáltatásban az emptyDir kötet csatlakoztatási
 
-Megtudhatja, hogyan csatlakoztatása egy *emptyDir* kötet a tárolókat az Azure-tároló példányát egy tárolócsoport közötti adatmegosztásra.
+Ismerje meg, hogyan csatlakoztathat egy *emptyDir* kötet egy tárolócsoportban, az Azure Container Instances a tárolók közötti.
 
 > [!NOTE]
-> Csatlakoztatása egy *emptyDir* kötet korlátozódik jelenleg Linux tárolók. Arra törekszünk, hogy idővel az összes funkció elérhető legyen a Windows-tárolókon is. Az egyes platformok közötti aktuális eltérésekről a [Azure Container Instances-kvóták és -régiók rendelkezésre állása](container-instances-quotas.md) részben tájékozódhat.
+> Csatlakoztatási egy *emptyDir* kötet Linux-tárolók jelenleg korlátozva. Arra törekszünk, hogy idővel az összes funkció elérhető legyen a Windows-tárolókon is. Az egyes platformok közötti aktuális eltérésekről a [Azure Container Instances-kvóták és -régiók rendelkezésre állása](container-instances-quotas.md) részben tájékozódhat.
 
-## <a name="emptydir-volume"></a>emptyDir kötet
+## <a name="emptydir-volume"></a>az emptyDir kötet
 
-A *emptyDir* kötet biztosít egy írható directory érhető el a tárolócsoport minden tárolóját. A csoport a tárolók is fájlok olvasása és írása az ugyanazon a köteten, és az ugyanazon vagy másik elérési az egyes tárolókban használatával csatlakoztatható.
+A *emptyDir* kötet elérhető-e az egyes tárolók egy tárolócsoport írható könyvtár biztosít. A csoportban lévő tárolókat olvashat és írhat ugyanazokat a fájlokat a kötet, és az egyes tárolókban az ugyanazon vagy különböző elérési utak segítségével csatlakoztathatók.
 
-Néhány példa használ egy *emptyDir* kötet:
+Néhány példa a egy *emptyDir* kötet:
 
 * Ideiglenes terület
-* Ellenőrzőpontok használata során hosszan futó feladatokat
-* Egy oldalkocsi tároló által lekért és egy alkalmazás tároló által kiszolgált adatok tárolásához
+* Ellenőrzőpontok használata során hosszú ideig futó feladatok
+* Egy oldalkocsi tároló által lekért és a egy alkalmazástárolót által kiszolgált data Store
 
-Az adatok egy *emptyDir* kötet tároló összeomlások keresztül is megőrződjenek. Tárolókat újraindul, azonban nem garantált, hogy az adatok megőrzéséhez egy *emptyDir* kötet.
+Az adatok egy *emptyDir* kötet rendszer megőrzi a tároló szoftverleállások keresztül. Tárolók, amelyek újra lesz indítva, azonban nem garantált, hogy az adatok megőrzése egy *emptyDir* kötet.
 
-## <a name="mount-an-emptydir-volume"></a>Egy emptyDir kötet csatlakoztatása
+## <a name="mount-an-emptydir-volume"></a>Az emptyDir kötet csatlakoztatási
 
-Egy tároló példányt emptyDir kötet csatlakoztatása, ha már telepítette használatával egy [Azure Resource Manager sablon](/azure/templates/microsoft.containerinstance/containergroups).
+A tárolópéldány az emptyDir kötet csatlakoztatása, telepítenie kell használatával egy [Azure Resource Manager-sablon](/azure/templates/microsoft.containerinstance/containergroups).
 
-Először feltöltése a `volumes` a tároló csoport tömb `properties` a sablon szakasza. Minden egyes tároló, amelyben szeretné csatlakoztatni a tárolócsoport a következő a *emptyDir* kötet, feltölti a `volumeMounts` tömb a a `properties` szakasz tároló-definícióban.
+Első lépésként töltse fel a `volumes` tömb tárolócsoportban `properties` szakaszában a sablont. Minden tároló, amelyben szeretné csatlakoztatni a tárolócsoport esetén tovább a *emptyDir* kötet, töltse fel a `volumeMounts` Pole a `properties` a tároló-definíció szakasza.
 
-Például a következő Resource Manager-sablon két tárolók álló tároló csoportot hoz létre minden egyes mely csatlakoztatástípus a *emptyDir* kötet:
+Például a következő Resource Manager-sablont hoz létre egy tárolócsoportot, két tárolót, amely minden egyes melyik csatlakoztatása a *emptyDir* kötet:
 
-<!-- https://github.com/Azure/azure-docs-json-samples/blob/master/container-instances/aci-deploy-volume-emptydir.json -->
-[!code-json[volume-emptydir](~/azure-docs-json-samples/container-instances/aci-deploy-volume-emptydir.json)]
+<!-- https://github.com/Azure/azure-docs-json-samples/blob/master/container-instances/aci-deploy-volume-emptydir.json --> [!code-json[volume-emptydir](~/azure-docs-json-samples/container-instances/aci-deploy-volume-emptydir.json)]
 
-Az Azure Resource Manager sablonnal tároló példány szemléltet, olvassa el [központi telepítése az Azure-tároló esetekben több tárolócsoportok](container-instances-multi-container-group.md).
+Tárolópéldány üzembe helyezésének Azure Resource Manager-sablonnal egy példát, olvassa el [többtárolós csoportok az Azure Container Instancesben üzembe helyezése](container-instances-multi-container-group.md).
 
 ## <a name="next-steps"></a>További lépések
 
-Megtudhatja, hogyan csatlakoztatása egyéb Azure tároló példányok kötet típusa:
+Ismerje meg, hogyan csatlakoztathat egyéb kötettípusok az Azure Container Instances szolgáltatásban:
 
 * [Azure-tároló példányát az Azure fájlmegosztások csatlakoztatása](container-instances-volume-azure-files.md)
 * [Azure-tároló példányát gitRepo kötet csatlakoztatása](container-instances-volume-gitrepo.md)
-* [Azure-tároló példányát titkos kötet csatlakoztatása](container-instances-volume-secret.md)
+* [Az Azure Container Instances szolgáltatásban titkos kötet csatlakoztatása](container-instances-volume-secret.md)

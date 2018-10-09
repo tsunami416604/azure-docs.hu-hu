@@ -11,13 +11,13 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: carlrab, sashan
 manager: craigg
-ms.date: 09/14/2018
-ms.openlocfilehash: dfb1e218218a44aafd318acb53750c875bdf1263
-ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
+ms.date: 10/05/2018
+ms.openlocfilehash: 1c6fb3660f395e709207e788b4ef648a69cae48d
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48247719"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48868575"
 ---
 # <a name="high-availability-and-azure-sql-database"></a>Magas rendelkezésre állású és az Azure SQL Database
 
@@ -31,9 +31,9 @@ Az Azure SQL Database az SQL Server adatbázismotor architektúra, amely 99,99 %
 
 Az Azure frissíti, és javítások alapjául szolgáló operációs rendszert, illesztőprogramokat és az SQL Server adatbázismotor transzparens módon az a minimális-ideje a végfelhasználók számára. Az Azure SQL Database az SQL Server adatbázismotor és a Windows operációs rendszer legújabb stabil verziója fut, és a felhasználók többsége nem észre, hogy a frissítések folyamatosan történik.
 
-## <a name="standardgeneral-purpose-availability"></a>Standard/általános célú rendelkezésre állása
+## <a name="basic-standard-and-general-purpose-service-tier-availability"></a>A Basic, Standard és az általános célú szolgáltatási szint rendelkezésre állása
 
-Standard szintű rendelkezésre állás 99,99 %-os SLA-t, amely a Standard és alapszintű vagy általános célú csomagban kérik hivatkozik. Ebben a modellben architekturális magas rendelkezésre állású számítási és tárolási rétegek elkülönítése és az adatok tárolási szinten a replikáció érhető el.
+Standard szintű rendelkezésre állás 99,99 %-os SLA az alapszintű, Standard és általános célú szolgáltatásszintek alkalmazott hivatkozik. Ebben a modellben architekturális magas rendelkezésre állású számítási és tárolási rétegek elkülönítése és az adatok tárolási szinten a replikáció érhető el.
 
 A következő ábrán látható négy csomópont elkülönített számítási és tárolási rétegekkel standard architekturális modellben.
 
@@ -46,9 +46,9 @@ A standard szintű rendelkezésre állás modellben az alábbi két réteg:
 
 Alapul szolgáló infrastruktúra egy része sikertelen lesz, amikor az adatbázis-kezelő vagy az operációs rendszer frissítve van, vagy az Sql Server-folyamat kritikus probléma észlelése esetén az Azure Service Fabric az állapot nélküli SQL Server-folyamat áthelyezi egy másik az állapot nélküli számítási csomóponton. Nincs meg az új számítási szolgáltatás feladatátvétel esetén futtassa a feladatátvételi idő minimalizálása érdekében váró tartalék csomópontok. Nincs hatással az Azure Storage-rétegből az adatokat, és adatokat vagy naplófájlokat csatolt újrainicializált SQL Server folyamatán. Ez a folyamat garantálja a 99,99 %-os rendelkezésre állást, de előfordulhat, hogy rendelkezik néhány teljesítményére nagy terhelést, amely miatt a váltás ideje fut-e a, és azt a tényt az új SQL Server-csomópont hideg gyorsítótáras kezdődik.
 
-## <a name="premiumbusiness-critical-availability"></a>Prémium és üzletileg kritikus fontosságú rendelkezésre állása
+## <a name="premium-and-business-critical-service-tier-availability"></a>Prémium és üzletileg kritikus szolgáltatási szint rendelkezésre állása
 
-Prémium szintű rendelkezésre állás engedélyezve van az Azure SQL Database prémium szintű, és arra tervezték, intenzív számítási feladatokhoz, amelyek működését zavarják a teljesítmény romlása a folyamatban lévő karbantartási tevékenységek miatt.
+Az Azure SQL Database prémium és üzletileg kritikus szolgáltatási szinten a prémium szintű rendelkezésre állás engedélyezve van, és arra tervezték, intenzív számítási feladatokhoz, amelyek működését zavarják a teljesítmény romlása a folyamatban lévő karbantartási tevékenységek miatt.
 
 A prémium szintű modellben az Azure SQL database egyesíti a számítási és a egy csomóponton. Magas rendelkezésre állású architektúra ebben a modellben valósítja meg az üzembe helyezett 4 csomópontos (SQL Server adatbázismotor folyamat) számítási és tárolási (helyileg csatlakoztatott SSD) replikációs [Always On rendelkezésre állási csoportok](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server) fürt.
 
