@@ -22,6 +22,7 @@
 #### [2 – Csoportos fejlesztés](team-development-nodejs.md)
 
 ## Útmutató
+### [Kubernetes-fürt létrehozása az Azure Cloud Shell-lel](how-to/create-cluster-cloud-shell.md)
 ### [Azure Dev Spaces megosztása](how-to/share-dev-spaces.md)
 ### [Titkos kulcsok kezelése](how-to/manage-secrets.md)
 ### [Egyéni NuGet hírcsatorna használata](how-to/use-custom-nuget-feed.md)
