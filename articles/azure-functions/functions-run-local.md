@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: glenga
-ms.openlocfilehash: 52330d9f999676301e3a92487c0106f2fa59bc76
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: e77e81624c93bf1189afd556a8257362197c6b60
+ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48237944"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48902960"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Az Azure Functions Core Tools használata
 
@@ -180,7 +180,7 @@ További információkért lásd: [Azure Functions eseményindítók és kötés
 
 ## <a name="local-settings-file"></a>Local settings file (Helyi beállításfájl)
 
-A fájl local.settings.json Alkalmazásbeállítások, a kapcsolati karakterláncok és a beállítások az Azure Functions Core Tools tárolja. Az alábbi struktúrával rendelkezik:
+A fájl local.settings.json Alkalmazásbeállítások, a kapcsolati karakterláncok és a beállítások az Azure Functions Core Tools tárolja. A local.settings.json fájlban beállítások csak által használt funkciók eszközök helyi futtatás során. Alapértelmezés szerint ezek a beállítások nem települnek át automatikusan az Azure-bA a projekt közzétételekor. Használja a `--publish-local-settings` váltson [közzétételekor](#publish) , hogy ezek a beállítások lettek hozzáadva a függvényalkalmazáshoz az Azure-ban. Vegye figyelembe, hogy az értékek **kapcsolati Sztringjei** soha nem kerülnek közzétételre. A fájl az alábbi struktúrával rendelkezik:
 
 ```json
 {
@@ -214,11 +214,9 @@ A függvény alkalmazás beállítások értékeit is elolvashatja a kódban kö
 
 + [C# előre lefordított](functions-dotnet-class-library.md#environment-variables)
 + [C# script (.csx)](functions-reference-csharp.md#environment-variables)
-+ [F#](functions-reference-fsharp.md#environment-variables)
++ [F #-szkript (.fsx)](functions-reference-fsharp.md#environment-variables)
 + [Java](functions-reference-java.md#environment-variables) 
 + [JavaScript](functions-reference-node.md#environment-variables)
-
-A local.settings.json fájlban beállítások csak által használt funkciók eszközök helyi futtatás során. Alapértelmezés szerint ezek a beállítások nem települnek át automatikusan az Azure-bA a projekt közzétételekor. Használja a `--publish-local-settings` váltson [közzétételekor](#publish) , hogy ezek a beállítások lettek hozzáadva a függvényalkalmazáshoz az Azure-ban. Az értékek **kapcsolati Sztringjei** soha nem kerülnek közzétételre.
 
 Ha nincs érvényes tárolási kapcsolati karakterlánc beállítása a **AzureWebJobsStorage** és az emulatort használja, a következő hibaüzenet jelenik meg:  
 
@@ -425,7 +423,7 @@ func run MyHttpTrigger -c '{\"name\": \"Azure\"}'
 
 ## <a name="publish"></a>Közzététel az Azure-bA
 
-Core Tools két típusú központi, támogatja a függvény soubory projektu közvetlenül a függvényalkalmazás üzembe helyezése és üzembe helyezése egy egyéni Linux-tárolót, amely csak a verzió támogatott 2.x.
+Core Tools két típusú központi, támogatja a függvény soubory projektu közvetlenül a függvényalkalmazás üzembe helyezése és üzembe helyezése egy egyéni Linux-tárolót, amely csak a verzió támogatott 2.x. Már rendelkeznie kell [egy függvényalkalmazás létrehozása az Azure-előfizetésében](functions-cli-samples.md#create).
 
 Verzió 2.x, rendelkeznie kell [regisztrálva a bővítmények](#register-extensions) a projekt közzététel előtt. Fordítási igénylő projektek kell kialakítani, hogy a bináris fájlokat is üzembe helyezhetők.
 
@@ -444,13 +442,8 @@ Ez a parancs az Azure-ban meglévő függvényalkalmazással tesz közzé. Hiba 
 A `publish` parancs feltölti az a funkciók projekt könyvtár tartalmát. Ha törli a fájlokat helyileg, a `publish` parancs nem törli őket az Azure-ból. Használatával törölheti az Azure-ban a [Kudu eszköz](functions-how-to-use-azure-function-app-settings.md#kudu) a a [Azure Portal].  
 
 >[!IMPORTANT]  
-> Ha függvényalkalmazást hoz létre az Azure-ban, akkor verzióját használja, alapértelmezés szerint a függvény futtatókörnyezetét 2.x. Győződjön meg arról, a függvény Alkalmazásverzió használatát, a futtatókörnyezet 1.x adja hozzá az Alkalmazásbeállítás `FUNCTIONS_EXTENSION_VERSION=~1`.  
-Az alábbi Azure CLI-kód használatával adja hozzá ezt a beállítást a függvényalkalmazáshoz:
-
-```azurecli-interactive
-az functionapp config appsettings set --name <function_app> \
---resource-group myResourceGroup --settings FUNCTIONS_EXTENSION_VERSION=~1
-```
+> Ha függvényalkalmazást hoz létre az Azure Portalon, akkor verzióját használja, alapértelmezés szerint a függvény futtatókörnyezetét 2.x. Győződjön meg arról, a függvény Alkalmazásverzió használatát, a futtatókörnyezet 1.x kövesse a [verziót futtat 1.x](functions-versions.md#creating-1x-apps).  
+> A futtatókörnyezet verziója, amely rendelkezik a meglévő funkciók függvényalkalmazás nem módosítható.
 
 A következő közzétételi lehetőségeket, amelyek a alkalmazni verziója, a 1.x és 2.x használhatja:
 

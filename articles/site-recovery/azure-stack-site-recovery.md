@@ -6,16 +6,16 @@ author: rayne-wiselman
 manager: carmonm
 ms.topic: conceptual
 ms.service: site-recovery
-ms.date: 08/30/2018
+ms.date: 10/09/2018
 ms.author: raynew
-ms.openlocfilehash: c71f683355a09c8ba2381db406eeb1ccabdb7afa
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 802c2223a72a89dbe2a97404aab4b0fc85c391ed
+ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43697696"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48902824"
 ---
-# <a name="replicate-azure-stack-vms-to-azure-preview"></a>Az Azure Stack virtuális gépek replikálása az Azure-ba (előzetes verzió)
+# <a name="replicate-azure-stack-vms-to-azure"></a>Az Azure Stack-alapú virtuális gépek replikálása az Azure-bA
 
 Ez a cikk bemutatja, hogyan állítható be vészhelyreállítást az Azure-bA az Azure Stack virtuális gépek, használatával a [Azure Site Recovery szolgáltatás](https://docs.microsoft.com/azure/site-recovery/site-recovery-overview).
 
@@ -25,10 +25,6 @@ A Site Recovery hozzájárul (az üzleti folytonossági és vészhelyreállítá
 - Szolgáltatáskimaradás esetén az elsődleges helyen, a Site Recovery használatával az Azure-bA feladatátvételt.
 - Feladatátvétel esetén az Azure virtuális gépek jönnek létre a tárolt virtuális gép adatokból, és a felhasználók továbbra is hozzáférő, Azure virtuális gépeken futó számítási feladatokat.
 - Ha mindent újra működik, Azure virtuális gépek feladatokat az elsődleges helynek, és -bA replikáljon az Azure storage újra.
-
-
-> [!NOTE]
-> Az Azure Stack a Site Recovery jelenleg nyilvános előzetes verzióban érhető el.
 
 
 Ebben a cikkben az alábbiakkal ismerkedhet meg:
