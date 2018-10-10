@@ -97,61 +97,6 @@ items:
       href: iot-accelerators-remote-monitoring-rbac.md
     - name: Hozzáférés biztosítása a telemetriakezelőhöz
       href: iot-accelerators-remote-monitoring-rbac-tsi.md
-  - name: Távoli monitorozás (előző verzió)
-    items:
-    - name: Mik azok az előre konfigurált megoldások?
-      href: ../iot-suite/iot-suite-v1-what-are-preconfigured-solutions.md
-    - name: GYIK
-      href: ../iot-suite/iot-suite-v1-faq.md
-    - name: Első lépések
-      items:
-      - name: Első lépések az előre konfigurált megoldásokkal
-        href: ../iot-suite/iot-suite-v1-getstarted-preconfigured-solutions.md
-      - name: Engedélyek az azureiotsuite.com webhelyen
-        href: ../iot-suite/iot-suite-v1-permissions.md
-      - name: A távoli monitorozási megoldás bemutatója
-        href: ../iot-suite/iot-suite-v1-remote-monitoring-sample-walkthrough.md
-      - name: A Raspberry Pi csatlakoztatása
-        href: ../iot-suite/iot-suite-v1-raspberry-pi-kit-get-started.md
-        items:
-        - name: C használata
-          items:
-          - name: Szimulált adatok
-            href: ../iot-suite/iot-suite-v1-raspberry-pi-kit-c-get-started-simulator.md
-          - name: Valódi érzékelők használata
-            href: ../iot-suite/iot-suite-v1-raspberry-pi-kit-c-get-started-basic.md
-          - name: Vezérlőprogram-frissítés megvalósítása
-            href: ../iot-suite/iot-suite-v1-raspberry-pi-kit-c-get-started-advanced.md
-        - name: Node.js használata
-          items:
-          - name: Szimulált adatok
-            href: ../iot-suite/iot-suite-v1-raspberry-pi-kit-node-get-started-simulator.md
-          - name: Valódi érzékelők használata
-            href: ../iot-suite/iot-suite-v1-raspberry-pi-kit-node-get-started-basic.md
-          - name: Vezérlőprogram-frissítés megvalósítása
-            href: ../iot-suite/iot-suite-v1-raspberry-pi-kit-node-get-started-advanced.md
-      - name: Az MXChip IoT DevKit csatlakoztatása
-        href: ../iot-hub/iot-hub-arduino-iot-devkit-az3166-devkit-remote-monitoring.md
-    - name: Útmutatók
-      items:
-      - name: Szimulált eszköz csatlakoztatása
-        items:
-        - name: C Windowson
-          href: ../iot-suite/iot-suite-v1-connecting-devices.md
-        - name: C Linuxon
-          href: ../iot-suite/iot-suite-v1-connecting-devices-linux.md
-        - name: Node.js
-          href: ../iot-suite/iot-suite-v1-connecting-devices-node.md
-      - name: Logikai alkalmazás csatlakoztatása a távoli monitorozási megoldáshoz
-        href: ../iot-suite/iot-suite-v1-logic-apps-tutorial.md
-      - name: Megoldásgyorsítók testreszabása
-        href: ../iot-suite/iot-suite-v1-guidance-on-customizing-preconfigured-solutions.md
-      - name: Dinamikus telemetria használata a távoli monitorozási megoldással
-        href: ../iot-suite/iot-suite-v1-dynamic-telemetry.md
-      - name: Egyéni szabály létrehozása a távoli monitorozási megoldásban
-        href: ../iot-suite/iot-suite-v1-custom-rule.md
-      - name: Eszközinformációk a távoli monitorozási megoldásban
-        href: ../iot-suite/iot-suite-v1-remote-monitoring-device-info.md
   - name: Csatlakoztatott gyár
     items:
     - name: Az irányítópult használata
@@ -203,7 +148,7 @@ items:
   - name: Megoldások
     items:
     - name: IoT-megoldásgyorsítók
-      href: /azure/iot-suite
+      href: /azure/iot-accelerators
     - name: IoT-központ
       href: https://docs.microsoft.com/microsoft-iot-central/
   - name: Platformszolgáltatások
@@ -256,9 +201,9 @@ items:
     href: https://stackoverflow.com/questions/tagged/azure-iot-suite
   - name: Az IoT-megoldásgyorsítók képzési terve
     href: https://azure.microsoft.com/documentation/learning-paths/iot-suite/
-ms.openlocfilehash: 935b9acf2eeaaee73745426eefb5625f470f62b7
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: f0efa66bd9ed85ed4ab79f5937355bd19c404a64
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46365468"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48884333"

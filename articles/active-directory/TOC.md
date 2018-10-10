@@ -25,7 +25,7 @@
 # Útmutató
 ## Tervezés és kialakítás
 ### [Az Azure AD architektúrájának ismertetése](fundamentals/active-directory-architecture.md)
-### [Jogcímtársítások az Azure Active Directoryban](active-directory-claims-mapping.md)
+### [Jogcímtársítások az Azure Active Directoryban](develop/active-directory-claims-mapping.md)
 ### [Hibrid identitáskezelési megoldás üzembe helyezése](hybrid/plan-hybrid-identity-design-considerations-overview.md)
 #### Követelmények meghatározása
 ##### [Identitáskezelés](hybrid/plan-hybrid-identity-design-considerations-business-needs.md)
@@ -72,7 +72,7 @@
 #### [Külső B2B- és Office 365-megosztás](b2b/o365-external-user.md)
 #### [B2B-licencelés](b2b/licensing-guidance.md)
 #### [Aktuális korlátozások](b2b/current-limitations.md)
-#### [GYIK](b2b/faq.md)
+#### [Gyakori kérdések](b2b/faq.md)
 #### [B2B-hibaelhárítás](b2b/troubleshoot.md)
 #### [A B2B-felhasználók ismertetése](b2b/user-properties.md)
 #### [B2B-felhasználói jogkivonat](b2b/user-token.md)
@@ -92,7 +92,7 @@
 ### [Kockázatos bejelentkezések](reports-monitoring/concept-risky-sign-ins.md)
 ### [Kockázati események](reports-monitoring/concept-risk-events.md)
 ### [Naplók monitorozása az Azure Monitorral](reports-monitoring/concept-activity-logs-in-azure-monitor.md)
-### [GYIK](reports-monitoring/reports-faq.md)
+### [Gyakori kérdések](reports-monitoring/reports-faq.md)
 
 ### Feladatok
 #### [Bejelentkezési jelentés letöltése](reports-monitoring/quickstart-download-sign-in-report.md)
@@ -200,7 +200,7 @@
 #### [Bérlőkorlátozások](manage-apps/tenant-restrictions.md)
 #### [SCIM használata a felhasználók átadására](manage-apps/use-scim-to-provision-users-and-groups.md)
 
-### [Az Azure AD-alkalmazások hozzájárulási folyamatának ismertetése](application-consent-experience.md)
+### [Az Azure AD-alkalmazások hozzájárulási folyamatának ismertetése](develop/application-consent-experience.md)
 
 ### Hibaelhárítás
 
@@ -323,7 +323,7 @@
 
 ### [Helyszíni identitások integrálása az Azure AD Connecttel](hybrid/whatis-hybrid-identity.md)
 
-### [A jogkivonatok élettartamának beállítása](active-directory-configurable-token-lifetimes.md)
+### [A jogkivonatok élettartamának beállítása](develop/active-directory-configurable-token-lifetimes.md)
 
 ## Identitások védelme
 
