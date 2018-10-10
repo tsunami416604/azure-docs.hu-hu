@@ -1,22 +1,23 @@
 ---
-title: Academic Knowledge API-ban. a JSON-keresési szintaxisának |} Microsoft Docs
-description: Ismerje meg a JSON keresési szintaxist a Academic Knowledge API kognitív Microsoft-szolgáltatásokban is használhatja.
+title: JSON keresési szintaxis - Academic Knowledge API
+titlesuffix: Azure Cognitive Services
+description: Ismerje meg a JSON keresési szintaxis az Academic Knowledge API is használhatja.
 services: cognitive-services
 author: alch-msft
-manager: kuansanw
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: academic-knowledge
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/23/2017
 ms.author: alch
-ms.openlocfilehash: a4b9cf535dae60258d71c43bba6f9eec1444bd41
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 5ece028f89ad9e93840211383db97a5d8a80069a
+ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35346862"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48900410"
 ---
-# <a name="json-search-syntax"></a>JSON-keresési szintaxisának
+# <a name="json-search-syntax"></a>JSON keresési szintaxis
 
 ```javascript
 /* Query Object:
@@ -32,9 +33,9 @@ ms.locfileid: "35346862"
 }
 ```
 
-A lekérdezés elérési út a csomópont nevének (_v0, v1,..._ ) olyan csomópont azonosítók, amelyek lehet hivatkozni a lekérdezésben objektumot. a peremhálózati nevek (_e0, e1,..._ ) az elérési út határoz meg a megfelelő szélek típusú. Használhatunk csillag _*_ a csomópont és él neveként (kivéve a kiinduló csomóponthoz, amelyhez meg kell adni) deklarálnia, amelyek nincsenek nem korlátozza a ilyen elemet. Például egy lekérdezés elérési `/v0/*/v1/e1/*/` elérési utak átveszi a diagram a peremhálózati típusú korlátozás nélkül _(v0, 1-es verzió)_. Eközben a lekérdezés nem rendelkezik a cél (az utolsó csomópont) az elérési út megkötések vagy.
+Lekérdezés elérési út a csomópont nevének (_v0, v1,..._ ) olyan csomópont-azonosítók, amely lehet hivatkozni a lekérdezésben objektumot. az edge-nevek (_e0, e1,..._ ) az elérési út a megfelelő élek típusú jelölik. Használhatjuk a csillag _*_ (kivéve a kiindulási csomópont, amely se musí zadat) csomópont- vagy peremtábla névként deklarálnia ilyen elemet a korlátozások nélkül. Például egy lekérdezési elérési `/v0/*/v1/e1/*/` elérési utak lekéri a diagramon az edge típusú korlátozása nélkül _(v0 v1)_. Eközben a lekérdezés nem rendelkezik a cél (az utolsó csomópont), az útvonal megkötések vagy.
 
-Ha egy elérési utat csak egy csomópontot tartalmaz, azaz _v0_, a lekérdezés egyszerűen térjen vissza az összes entitás, amely eleget kell tennie. A korlátozás az objektumot a kiindulási csomóponton alkalmazott egy *indítása lekérdezési objektum*, amelynek leírását a következőképpen elbírálása.
+Ha egy elérési út csak egyetlen csomópontot tartalmaz, például _v0_, a lekérdezés egyszerűen adja vissza az összes olyan entitás, amely eleget kell tennie. A korlátozás az objektumot a kiindulási csomópont a alkalmazni egy *indítása lekérdezési objektummal*, amelynek leírását a következő van megadva.
 
 ```javascript
 /* Starting Query Object:
@@ -63,7 +64,7 @@ Ha egy elérési utat csak egy csomópontot tartalmaz, azaz _v0_, a lekérdezés
 }
 ```
 
-Ha egy elérési utat nem csak a kiinduló csomópontot tartalmaz, a lekérdezésfeldolgozó egy grafikonon átjárás a megadott elérési út mintája a következő hajtja végre. Amikor egy csomópont érkezik, a felhasználó által megadott átjárás műveletek indul, ez azt jelenti, hogy az aktuális csomópontban leállításához, és térjen vissza, vagy továbbra is megismerheti a diagramhoz. Ha nincs átjárás művelet van megadva, alapértelmezett műveleteket hajtja végre. Egy köztes csomópont az alapértelmezett művelet, hogy továbbra is megismerheti a diagramon. Az utolsó csomópont, elérési utat az alapértelmezett művelet, hogy állítsa le, és adja vissza. A korlátozás az objektumot, amely meghatározza a átjárás műveletek egy *átjárás műveleti objektum*. A meghatározás arra az alábbiak szerint:
+Ha egy elérési út nem csak egy kiindulási csomópont tartalmaz, a lekérdezésfeldolgozó végre fogja hajtani a gráf bejárása a megadott elérési út mintája a következő. Amikor egy csomópont érkezik, a felhasználó által megadott bejárási műveleteket akkor aktiválódik, azt jelenti, hogy az aktuális csomópont állni, és adja vissza, vagy továbbra is a gráf megismerése. Ha nincs bejárási művelet van megadva, alapértelmezett műveleteket hajtja végre. Egy köztes csomópont az alapértelmezett műveletet, hogy továbbra is a gráf megismerése. Egy elérési út utolsó csomópontjának az alapértelmezett műveletet, hogy állítsa le és adja vissza. A korlátozás az objektum, amely meghatározza az bejárási műveleteket egy *bejárási műveleti objektum*. Annak meghatározása a következőképpen van megadva:
 
 ```javascript
 /* Traversal Action Object:
@@ -106,7 +107,7 @@ Ha egy elérési utat nem csak a kiinduló csomópontot tartalmaz, a lekérdezé
 }
 ```
 
-A POST törzsét egy *json* keresési lekérdezésnek tartalmaznia kell legalább egy *elérési* mintát. Bejárás művelet objektumok nem kötelező. Az alábbiakban a két példa.
+A bejegyzés törzse egy *json* keresési lekérdezésnek tartalmaznia kell legalább egy *elérési út* mintát. Bejárás művelet objektumok nem kötelező. Az alábbiakban két példa.
 
 ```JSON
 {

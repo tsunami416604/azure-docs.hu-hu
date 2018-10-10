@@ -5,23 +5,23 @@ services: cognitive-services
 author: chliang
 manager: bix
 ms.service: cognitive-services
-ms.technology: anomaly-finder
+ms.component: anomaly-finder
 ms.topic: include
 ms.date: 04/13/2018
 ms.author: chliang
 ms.custom: include file
-ms.openlocfilehash: a806cac410eb57e59dacb42da9be954b2f962956
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: fb02496d9c107a2c21acca6c65ef69fdfceb4597
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35348171"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48904692"
 ---
 <a name="paths"></a>
 ## <a name="paths"></a>Elérési utak
 
 <a name="anomalydetection-post"></a>
-### <a name="detect-anomaly-points-for-the-time-series-data-points-requested"></a>Az anomáliadetektálási pontok észleléséhez az adatsorozat pontjainak alkalommal irányuló kérés.
+### <a name="detect-anomaly-points-for-the-time-series-data-points-requested"></a>A kért adatsorozat adatpontjainak alkalommal anomáliadetektálási pontok észleléséhez
 ```
 POST /anomalydetection
 ```
@@ -31,26 +31,26 @@ POST /anomalydetection
 
 |Típus|Name (Név)|Leírás|Séma|
 |---|---|---|---|
-|**Törzs**|**Törzs**  <br>*Szükséges*|Az idősor adatpont, valamint szükség esetén időszak.|[Kérelem](#request)|
+|**Törzs**|**Törzs**  <br>*Szükséges*|A time series adatpontok és az időszakot, ha szükséges.|[Kérelem](#request)|
 
 
 #### <a name="responses"></a>Válaszok
 
 |HTTP-kód|Leírás|Séma|
 |---|---|---|
-|**200**|A sikeres műveletet.|< [válasz](#response) > tömb|
-|**400**|JSON-kérelmi nem tudja értelmezni.|Nincs tartalom|
-|**403**|A megadott tanúsítvány nem fogadja el a kiszolgálón.|Nincs tartalom|
-|**405**|A metódus nem engedélyezett.|Nincs tartalom|
+|**200**|Sikeres művelet.|< [válasz](#response) > tömb|
+|**400**|JSON-kérelem nem elemezhető.|Nincs tartalom|
+|**403-as**|A megadott tanúsítvány nem fogadja el a kiszolgálót.|Nincs tartalom|
+|**405-ös**|Metoda není Povolena.|Nincs tartalom|
 |**500**|Belső kiszolgálóhiba.|Nincs tartalom|
 
 
-#### <a name="consumes"></a>Felhasználva
+#### <a name="consumes"></a>Használ fel
 
 * `application/json`
 
 
-#### <a name="produces"></a>Hozza létre
+#### <a name="produces"></a>Eredményez
 
 * `application/json`
 

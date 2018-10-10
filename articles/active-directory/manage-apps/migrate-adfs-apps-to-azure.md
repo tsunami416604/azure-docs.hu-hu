@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.date: 03/02/2018
 ms.author: barbkess
-ms.openlocfilehash: 8d5f31f09d51794f9ad3c126edf2fd935f379221
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: fa19c932a18102107068303e1474abd992df3161
+ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46296472"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48903028"
 ---
 # <a name="migrate-ad-fs-on-premises-apps-to-azure"></a>AD FS helyszíni alkalmazások migrálása az Azure-ba 
 
@@ -151,7 +151,7 @@ A jelenleg könnyen migrálható alkalmazások közé a konfigurációs elemek �
 - Utónév.
 - Vezetéknév.
 - Az SAML **NameID**-ként használt alternatív attribútum, például az Azure AD Mail attribútum, a Mail előtag, az alkalmazott azonosítója, az 1-15 bővítményattribútumok vagy a helyszíni **SamAccountName**. További információkat itt talál: A [NameIdentifier](../develop/active-directory-saml-claims-customization.md) jogcím szerkesztése.
-- Egyéni jogcímek. A támogatott jogcímek társításával kapcsolatos információért tekintse meg a [Jogcímtársítások az Azure Active Directory-ban](../active-directory-claims-mapping.md) és az [SAML-jogkivonatban kiadott jogcímek testreszabása vállalati alkalmazások esetén az Azure Active Directory-ban](../develop/active-directory-saml-claims-customization.md) témakört.
+- Egyéni jogcímek. A támogatott jogcímek társításával kapcsolatos információért tekintse meg a [Jogcímtársítások az Azure Active Directory-ban](../develop/active-directory-claims-mapping.md) és az [SAML-jogkivonatban kiadott jogcímek testreszabása vállalati alkalmazások esetén az Azure Active Directory-ban](../develop/active-directory-saml-claims-customization.md) témakört.
 
 Az egyéni jogcímek és **NameID** elemek mellett az Azure AD-ben a migráció keretében további konfigurációs lépéseket igénylő konfigurációk a következők:
 - Az AD FS egyéni hitelesítési vagy többtényezős hitelesítési szabályai. Az [Azure AD feltételes hozzáférés](../active-directory-conditional-access-azure-portal.md) funkciójával konfigurálhatja őket.
@@ -171,7 +171,7 @@ A következő képességeket igénylő alkalmazások jelenleg nem migrálhatók.
 - Jogkivonatokban lévő jogcímek képességei:
     - Helyszíni csoportnevek kiállítása jogcímekként.
     - Az Azure AD-től eltérő tárolókból származó jogcímek.
-    - Összetett jogcímkiadás-átalakítási szabályok. A támogatott jogcímek társításával kapcsolatos információért tekintse meg a [Jogcímtársítások az Azure Active Directory-ban](../active-directory-claims-mapping.md) és az [SAML-jogkivonatban kiadott jogcímek testreszabása vállalati alkalmazások esetén az Azure Active Directory-ban](../develop/active-directory-saml-claims-customization.md) témakört.
+    - Összetett jogcímkiadás-átalakítási szabályok. A támogatott jogcímek társításával kapcsolatos információért tekintse meg a [Jogcímtársítások az Azure Active Directory-ban](../develop/active-directory-claims-mapping.md) és az [SAML-jogkivonatban kiadott jogcímek testreszabása vállalati alkalmazások esetén az Azure Active Directory-ban](../develop/active-directory-saml-claims-customization.md) témakört.
     - Címtárbővítmények kiállítása jogcímekként.
     - A **NameID**-formátum egyedi meghatározása.
     - Többértékű attribútumok kiállítása.

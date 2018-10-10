@@ -2,7 +2,7 @@
 title: Az Azure Database Migration Service használatával kapcsolatos gyakori kérdések |} A Microsoft Docs
 description: Ismerje meg az adatbázis-migrálási parancsait végrehajtásához az Azure Database Migration Service használatával kapcsolatos gyakori kérdésekre.
 services: database-migration
-author: HJToland3
+author: pochiraju
 ms.author: rajpo
 manager: ''
 ms.reviewer: ''
@@ -10,13 +10,13 @@ ms.service: database-migration
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
-ms.date: 06/19/2018
-ms.openlocfilehash: 08158843d0dfb3e5eb0635b5f5b5d015938d895e
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.date: 10/09/2018
+ms.openlocfilehash: f1f67921e7eadded4292f244f5754c8f00341a15
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48804412"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48887104"
 ---
 # <a name="faq-about-using-the-azure-database-migration-service"></a>Az Azure Database Migration Service használatával kapcsolatos gyakori kérdések
 Ez a cikk felsorolja az Azure Database Migration Service kapcsolódó válaszokat és használatával kapcsolatos gyakori kérdésekre.
@@ -28,7 +28,7 @@ Az Azure Database Migration Service egy teljes körűen felügyelt szolgáltatá
 - Folyamatos befektetést áttelepítések fennakadások nélkül használható.
 
 ### <a name="q-what-source-target-pairs-does-the-azure-database-migration-service-currently-support"></a>K. Milyen forrás – cél párok az Azure Database Migration Service jelenleg támogatja?
-A szolgáltatás jelenleg támogatja az SQL Serverről az Azure SQL Database, és megnyithatja az Azure portal webhelyen ebben a forgatókönyvben az Azure Database Migration Service használatának megkezdéséhez. Egyéb forrás – cél párok, például az Oracle az Azure SQL Database egy korlátozott Private Preview-n keresztül érhetők el. Részt venni a korlátozott előzetes verzióban elérhető saját forgatókönyv esetében lehetőség esetében regisztráció [Itt](https://aka.ms/dms-preview/).
+A szolgáltatás jelenleg támogatja az SQL Serverről az Azure SQL Database, és megnyithatja az Azure portal webhelyen ebben a forgatókönyvben az Azure Database Migration Service használatának megkezdéséhez. Egyéb forrás – cél párok, például az Azure SQL Database, Oracle egy korlátozott Private Preview-n keresztül érhetők el. Részt venni a korlátozott előzetes verzióban elérhető saját forgatókönyv esetében lehetőség esetében regisztráció [Itt](https://aka.ms/dms-preview/).
 
 ### <a name="q-how-does-the-azure-database-migration-service-compare-to-other-microsoft-database-migration-tools-such-as-the-database-migration-assistant-dma-or-sql-server-migration-assistant-ssma"></a>K. Az Azure Database Migration Service összehasonlítása a más Microsoft adatbázis-áttelepítési eszközök például a Database Migration Assistant (DMA) vagy az SQL Server Migrálási Assistant (SSMA)
 Az Azure Database Migration Service legyen az előnyben részesített módszere ipari méretekben a Microsoft Azure adatbázis-migrálást. További részleteket az Azure Database Migration Service hogyan hasonlítja össze a más Microsoft-adatbázis-áttelepítési eszközök és kapcsolatos javaslatokat a szolgáltatás különböző forgatókönyvek segítségével, tekintse meg a blog könyvelés [sokoldalúbbá Microsoft adatbázis Migrálási eszközöket és szolgáltatásokat](https://blogs.msdn.microsoft.com/datamigration/2017/10/13/differentiating-microsofts-database-migration-tools-and-services/).
@@ -61,7 +61,7 @@ Jelenlegi versenyének adott áttelepítési forgatókönyvek használatával az
 ### <a name="q-how-do-i-find-the-ip-address-for-the-azure-database-migration-service-so-that-i-can-create-an-allow-list-for-the-firewall-rules-used-to-access-my-source-database-for-migration"></a>K. Hogyan találhatom meg az IP-cím az Azure Database Migration Service úgy, hogy létre tudok hozni egy engedélyezési listája a tűzfalszabályok az áttelepítéshez a forrás-adatbázis eléréséhez használt?
 Előfordulhat, hogy a tűzfalszabályok engedélyezése a forráshely adatbázisára az áttelepítéshez eléréséhez az Azure Database Migration Service hozzá kell. A szolgáltatás IP-címét a dinamikus, de ha Express Route használja, ezt a címet közvetlenül a Microsoftnak a vállalati hálózat által hozzárendelt. A legegyszerűbben úgy, hogy azonosítsa a megfelelő IP-címet, nézze meg ugyanazt az erőforráscsoportot és a kiépített Azure Database Migration Service-erőforrásnak a társított hálózati adapter található. A hálózati adapter erőforrás neve általában a hálózati adapter előtaggal kezdődik, és egy egyedi karaktert, és a sorrend, például NIC-jj6tnztnmarpsskr82rbndyp követ. Az IP-cím, amelyet a portál oldala az Azure erőforrás-áttekintés az engedélyezési listán szereplő megjelenik a hálózati adapter erőforrás kijelölésével.
 
-Szükség lehet a port forrás, amely az SQL Server figyel az engedélyezési listáját tartalmazza. Alapértelmezés szerint 1433-as porton, de a forrás SQL Server konfigurálhatók úgy, hogy más porton figyeljen. Ebben az esetben kell ezeket a portokat, valamint az engedélyezési listán szereplő tartalmazza. Megadhatja, hogy a port, amelyet az SQL Server dinamikus felügyeleti nézet lekérdezéssel figyel:
+Szükség lehet a port forrás, amely az SQL Server figyel az engedélyezési listáját tartalmazza. Alapértelmezés szerint a 1433-as porton, de a forrás SQL Server konfigurálhatók úgy, hogy más porton figyeljen. Ebben az esetben kell ezeket a portokat, valamint az engedélyezési listán szereplő tartalmazza. Megadhatja, hogy a port, amelyet az SQL Server dinamikus felügyeleti nézet lekérdezéssel figyel:
 
 ```sql
     SELECT DISTINCT 

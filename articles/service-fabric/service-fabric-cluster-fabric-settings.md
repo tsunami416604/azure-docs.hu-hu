@@ -12,14 +12,14 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 08/27/2018
+ms.date: 10/08/2018
 ms.author: aljo
-ms.openlocfilehash: 69f29eac17ecdf5381a550bc182c547fa0c25278
-ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
+ms.openlocfilehash: 7a80693090b92db55ad2feed52fdbb2a455e3c39
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48018978"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48884493"
 ---
 # <a name="customize-service-fabric-cluster-settings"></a>Service Fabric-fürt beállítások testre szabása
 Ez a cikk ismerteti, hogyan szabhatja testre a különböző hálóbeállítások a Service Fabric-fürt számára. A fürtök az Azure-ban üzemeltetett, testre szabhatja a beállításokat a [az Azure portal](https://portal.azure.com) vagy Azure Resource Manager-sablon használatával. Az önálló fürtök esetén a beállítások a ClusterConfig.json fájl frissítése és a fürtön lévő konfigurációs frissítés végrehajtása testre. 
@@ -361,6 +361,7 @@ A következő fabric testreszabható, beállítások szakasz szerint vannak rend
 |DeploymentMaxFailureCount|Int, az alapértelmezett érték 20| Dinamikus|Alkalmazás központi telepítésének DeploymentMaxFailureCount alkalommal sikertelen volt, hogy a csomópont-alkalmazás központi telepítésének előtt a rendszer megpróbálja újból.| 
 |DeploymentMaxRetryInterval| Időtartam, az alapértelmezett érték Common::TimeSpan::FromSeconds(3600)|Dinamikus| Adja meg az időtartam másodpercben. Maximális újrapróbálkozási időköz az üzembe helyezéshez. Minden folyamatos hiba esetén az újrapróbálkozási időköznek számítjuk ki, hogy Min (DeploymentMaxRetryInterval; Folyamatos hibaszám * DeploymentRetryBackoffInterval) |
 |DeploymentRetryBackoffInterval| Időtartam, az alapértelmezett érték Common::TimeSpan::FromSeconds(10)|Dinamikus|Adja meg az időtartam másodpercben. Visszatartási időköz az üzembe helyezés sikertelen. Minden folyamatos üzembe helyezés hiba esetén a rendszer újra megpróbálja a MaxDeploymentFailureCount legfeljebb üzembe. Az újrapróbálkozási időköznek egy folyamatos üzembe helyezés sikertelen szorzatát és üzembe helyezési leállítási időközét. |
+|DisableDockerRequestRetry|bool, alapértelmezett érték a hamis |Dinamikus| Alapértelmezés szerint SF kommunikál a DD (docker dameon) "DockerRequestTimeout" az egyes neki küldött http-kérelem időtúllépés. Ha nn nem válaszol ezen idő alatt Ha a legfelső szintű művelet még remining idő SF létrehozása után újraküldi a kérelmet.  A Hyper-v-tároló; DD néha viszi, megjelenik a tároló vagy inaktiválásához sokkal több időt vesz igénybe. Ilyen esetekben nn kérelem időtúllépés történik az SF szempontjából, illetve SF újrapróbálkozik a műveletet. Egyes esetekben ez a megszokottnál több nyomás hozzáadja a nn. Ez a konfiguráció lehetővé teszi, hogy tiltsa le az újra gombra, és várjon, amíg nn válaszolni. |
 |EnableActivateNoWindow| bool, alapértelmezett érték a hamis|Dinamikus| Az aktivált folyamat a háttérben bármely konzol jön létre. |
 |EnableContainerServiceDebugMode|bool, alapértelmezett értéke igaz|Statikus|A docker-tárolók naplózás engedélyezését vagy letiltását.  Csak Windows.|
 |EnableDockerHealthCheckIntegration|bool, alapértelmezett értéke igaz|Statikus|Lehetővé teszi az integrációt a docker HEALTHCHECK események a Service Fabric rendszerállapot-jelentésbe |
@@ -422,6 +423,7 @@ A következő fabric testreszabható, beállítások szakasz szerint vannak rend
 |SharedLogId |sztring, alapértelmezett érték a "" |Statikus|Közös naplózási tároló egyedi GUID azonosítója. Használatát "" Ha az alapértelmezett elérési út a fabric adatgyökere alatt. |
 |SharedLogPath |sztring, alapértelmezett érték a "" |Statikus|Helyre helyezi el a megosztott naplózási tároló elérési útja és fájlneve neve. Használatát "" az alapértelmezett elérési út alapján a fabric adatgyökere használatával. |
 |SharedLogSizeInMB |Int, az alapértelmezett érték 8192 |Statikus|Az a közös naplózási tároló lefoglalása MB száma. |
+|SharedLogThrottleLimitInPercentUsed|int, alapértelmezett érték 0 | Statikus | A megosztott napló végrehajtását fogja szabályozás használati aránya. Értékének 0 és 100 között kell lennie. A 0 érték azt jelenti, az alapértelmezett százalékos értéket használja. A 100 érték azt jelenti, hogy egyáltalán nincs szabályozás. 1 és 99 közötti értéket adja meg a napló használati fenti melyik kerül sor szabályozásra; aránya például ha a megosztott napló 10 GB-os és az érték érték 90 majd throttleing történik után 9GB használatban van. Az alapértelmezett érték használata javasolt.|
 |WriteBufferMemoryPoolMaximumInKB | int, alapértelmezett érték 0 |Dinamikus|A száma, hogy az írási memória pufferkészletben akár nő KB. A 0 korlátlan jelzi. |
 |WriteBufferMemoryPoolMinimumInKB |Int, az alapértelmezett érték 8388608 |Dinamikus|Kezdetben a írási pufferkészlet-memória lefoglalása KB száma. Használja a 0 korlátlan alapértelmezett jelzi az alábbi SharedLogSizeInMB összhangban kell lennie. |
 

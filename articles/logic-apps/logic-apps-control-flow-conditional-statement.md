@@ -1,84 +1,91 @@
 ---
-title: Adja hozzá a feltételes utasításokat a munkafolyamatokat – Azure Logic Apps |} Microsoft Docs
-description: Az Azure Logic Apps-munkafolyamatok műveleteket szabályzó feltételek létrehozása
+title: Adja hozzá a feltételes utasításokat-munkafolyamatok – Azure Logic Apps |} A Microsoft Docs
+description: Az Azure Logic Apps-munkafolyamatokban műveleteket szabályzó feltételek létrehozása
 services: logic-apps
 ms.service: logic-apps
+ms.suite: integration
 author: ecfan
 ms.author: estfan
-manager: jeconnoc
-ms.date: 03/05/2018
-ms.topic: article
 ms.reviewer: klam, LADocs
-ms.suite: integration
-ms.openlocfilehash: d4e69d33e07f484b4ccc5343786865230368c7ca
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.topic: article
+ms.date: 10/09/2018
+ms.openlocfilehash: 462a21c760f7dec727148f2a41dec9f508e24dbc
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37096376"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48885238"
 ---
-# <a name="create-conditional-statements-that-control-workflow-actions-in-azure-logic-apps"></a>Az Azure Logic Apps munkafolyamat-műveleteket szabályzó feltételes utasítások létrehozása
+# <a name="create-conditional-statements-that-control-workflow-actions-in-azure-logic-apps"></a>Hozzon létre feltételes utasításokat, amelyek vezérlik a munkafolyamat-műveletek az Azure Logic Appsben
 
-A Logic Apps alkalmazást az adott műveletek futtatása csak a megadott feltétel sikeres után, vegye fel a *feltételes utasítás*. Ez a struktúra összehasonlítja az adatokat a munkafolyamat jellemző vagy mezők ellen. Majd megadhatja a különféle műveletek alapján a futó-e az adatok megfelel a feltételnek. Feltételek belül egymással ágyazhatja be.
+Bizonyos műveletek csak a megadott feltétel átadása után a logikai alkalmazás fut, adjon hozzá egy *feltételes utasítás*. Ez a vezérlő struktúra hasonlítja össze az adatokat a munkafolyamatban meghatározott értékek vagy mezők. Megadhatja, hogy különböző műveleteket, amelyek alapján futtathatók-e az adatok megfelel a megadott követelményeknek. Beágyazhatja feltételek belül egymással.
 
-Tegyük fel például, hogy túl sok e-mailt küld, amikor új elemek jelennek meg a webhely RSS-hírcsatorna logikai alkalmazás. Az e-mail üzenetek küldéséhez, csak akkor, ha az új elem egy adott karakterláncot tartalmaz feltételes utasítás adhat hozzá. 
+Tegyük fel például, egy logikai alkalmazást, amely túl sok e-mailt küld, amikor egy webhely RSS-hírcsatornában új elemek jelennek meg. E-mail küldése, csak akkor, amikor az új elem egy adott karakterláncot tartalmaz egy feltételes utasítást adhat hozzá. 
 
 > [!TIP]
-> Különböző megadott értékek alapján más lépéseket futtatásához használja a [ *utasítás kapcsoló* ](../logic-apps/logic-apps-control-flow-switch-statement.md) helyette.
+> Különböző lépéseket különböző megadott értékek alapján futtatásához használja a [ *utasítás váltson* ](../logic-apps/logic-apps-control-flow-switch-statement.md) helyette.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Azure-előfizetés. Ha még nincs előfizetése, [regisztráljon egy ingyenes Azure-fiókra](https://azure.microsoft.com/free/).
 
-* Alapszintű ismerete [logic Apps alkalmazások létrehozása](../logic-apps/quickstart-create-first-logic-app-workflow.md)
+* Alapvető ismeretek szerezhetők [logikai alkalmazások létrehozása](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 
-* Kövesse az ebben a cikkben példa [a minta logikai alkalmazás létrehozása](../logic-apps/quickstart-create-first-logic-app-workflow.md) Outlook.com vagy az Office 365 Outlook-fiókkal.
+* Kövesse az ebben a cikkben szereplő példa [a minta logikai alkalmazás létrehozása](../logic-apps/quickstart-create-first-logic-app-workflow.md) Outlook.com-os vagy Office 365 Outlook-fiókkal.
 
-## <a name="add-a-condition"></a>Feltétel hozzáadása
+## <a name="add-condition"></a>Feltétel hozzáadása
 
-1. Az a <a href="https://portal.azure.com" target="_blank">Azure-portálon</a>, nyissa meg a Logic Apps alkalmazást a Logic App tervezőben.
+1. Az a <a href="https://portal.azure.com" target="_blank">az Azure portal</a>, nyissa meg a logikai alkalmazás a Logikaialkalmazás-tervezőben.
 
-2. Adja hozzá a feltételt, amelyet a helyen. 
+1. Adjon hozzá egy feltételt a kívánt helyen található. 
 
-   Lépések között feltétel hozzáadásához húzza az egérmutatót a nyíl ahová adja hozzá a feltételt. Válassza ki a **pluszjel** (**+**), amely akkor jelenik meg, majd válassza a **feltétel hozzáadása**. Példa:
+   Lépések közötti feltétel hozzáadása, vigye az egérmutatót a nyíl felett, amelyre a feltétel hozzáadása. Válassza ki a **plusz jelre** (**+**), amely akkor jelenik meg, majd válassza a **művelet hozzáadása**. Példa:
 
-   ![Lépések között feltétel hozzáadása](./media/logic-apps-control-flow-conditional-statement/add-condition.png)
+   ![Lépések közötti művelet hozzáadása](./media/logic-apps-control-flow-conditional-statement/add-action.png)
 
-   Ha hozzá szeretne adni egy feltétel, a logikai alkalmazás alján a munkafolyamat végén válassza **+ új lépés** > **feltétel hozzáadása**.
+   Ha szeretne hozzáadni egy feltételt, alján, a logikai alkalmazás a munkafolyamat végén **új lépés** > **művelet hozzáadása**.
 
-3. A **feltétel**, a feltétel létrehozása. 
+1. A Keresés mezőbe írja be a "feltétel" szűrőként. Válassza a következő műveletet: **feltétel – szabályozza**
 
-   1. A bal oldali panelen adja meg az adatok vagy az összehasonlítani kívánt mező.
+   ![Feltétel hozzáadása](./media/logic-apps-control-flow-conditional-statement/add-condition.png)
 
-      Gombra a bal oldali panelen belül a dinamikus tartalom listába jelenik meg, így a kimenetek az előző lépéseket a Logic Apps alkalmazást a. 
-      Ehhez a példához válassza ki az RSS-hírcsatorna összegzése.
+1. Az a **feltétel** mezőben hozzon létre a feltételt. 
 
-      ![A feltétel létrehozása](./media/logic-apps-control-flow-conditional-statement/edit-condition.png)
+   1. A bal oldali panelen adja meg az adatok vagy összehasonlítani kívánt mezőt.
 
-   2. A középső listában válassza ki a végrehajtandó műveletet. 
+      Kattintson a bal oldali panelen, amikor a dinamikus tartalmak listája jelenik meg, így a kimenet az előző lépésekből a logikai alkalmazásban. 
+      Ebben a példában válassza ki az RSS-hírcsatorna összegzése.
+
+      ![Hozzon létre a feltételt](./media/logic-apps-control-flow-conditional-statement/edit-condition.png)
+
+   1. A középső mezőben válassza ki a végrehajtandó műveletet. 
    Ebben a példában válassza a "**tartalmaz**". 
 
-   3. A megfelelő mezőben adja meg a feltételként egy érték vagy mező. 
-   A jelen példában adja meg ezt a karakterláncot: **Microsoft**
+   1. A megfelelő mezőben adja meg egy érték vagy mező a megadott feltételeknek. 
+   Ebben a példában adja meg a következő karakterláncot: **Microsoft**
 
-   A teljes feltétel a következő:
+   Itt látható a teljes feltétel:
 
    ![Teljes feltétel](./media/logic-apps-control-flow-conditional-statement/edit-condition-2.png)
 
-5. A **igaz értéke esetén** és **hamis**, adja hozzá a feltétel teljesülését vizsgálja alapján végrehajtásához szükséges lépéseket. Példa:
+   Új sor hozzáadása a feltételhez, kattintson a **Hozzáadás** > **sor hozzáadása**. 
+   A subconditions csoport hozzáadásához válassza a **Hozzáadás** > **csoport hozzáadása**. 
+   Létező sorok csoportosítása, jelölje be a jelölőnégyzeteket a sorokat, a három pontra (…) gombra az összes sort, és válassza **márka csoport**.
 
-   ![A feltétel a "Ha az érték true" és "Ha false" elérési út](./media/logic-apps-control-flow-conditional-statement/condition-yes-no-path.png)
+1. Alatt **ha igaz** és **ha hamis**, adja hozzá a feltétel teljesülését alapján végrehajtásához szükséges lépéseket. Példa:
+
+   ![A feltétel "Ha true" és "Ha false" elérési út](./media/logic-apps-control-flow-conditional-statement/condition-yes-no-path.png)
 
    > [!TIP]
-   > A meglévő műveletek áthúzhatja a **igaz értéke esetén** és **hamis** elérési utak.
+   > Áthúzhatja a meglévő műveleteket, a **ha igaz** és **ha hamis** elérési utak.
 
-6. Mentse a logikai alkalmazást.
+1. Mentse a logikai alkalmazást.
 
-Most már a logic app csak küld mail az RSS-hírcsatorna új elemeinek felel meg a feltételnek.
+Ez a logikai alkalmazás most már levelet küld, csak akkor, amikor az RSS-hírcsatorna új elemeinek megfelel a feltételnek.
 
-## <a name="json-definition"></a>JSON-definícióból
+## <a name="json-definition"></a>JSON-definíció
 
-Most, hogy a létrehozott logikai alkalmazás egy feltételes utasítás használatával, a magas szintű kód megadása a feltételes utasítás mögött vizsgáljuk meg.
+A következő mögött feltételes utasítás a magas szintű kód definíciója:
 
 ``` json
 "actions": {
@@ -93,7 +100,8 @@ Most, hogy a létrehozott logikai alkalmazás egy feltételes utasítás haszná
       "and": [ 
         { 
           "contains": [ 
-            "@triggerBody()?['summary']", "Microsoft"
+            "@triggerBody()?['summary']", 
+            "Microsoft"
           ]
         } 
       ]
@@ -106,11 +114,11 @@ Most, hogy a létrehozott logikai alkalmazás egy feltételes utasítás haszná
 ## <a name="get-support"></a>Támogatás kérése
 
 * A kérdéseivel látogasson el az [Azure Logic Apps fórumára](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
-* Küldje el, vagy szavazna funkciók és javaslatok, látogasson el a [Azure Logic Apps felhasználói visszajelzési webhelyet](http://aka.ms/logicapps-wish).
+* Küldje el, vagy szavazhat a funkciók és javaslatok, látogasson el a [Azure Logic Apps felhasználói visszajelzések oldalon](http://aka.ms/logicapps-wish).
 
 ## <a name="next-steps"></a>További lépések
 
-* [Futtatás (kapcsoló utasítások) eltérő értékek alapján](../logic-apps/logic-apps-control-flow-switch-statement.md)
+* [Hajtsa végre a lépéseket, a különböző értékek (switch-utasítások) alapján](../logic-apps/logic-apps-control-flow-switch-statement.md)
 * [Futtassa, és ismételje meg a (hurkok)](../logic-apps/logic-apps-control-flow-loops.md)
-* [Futtatás vagy egyesítési párhuzamos lépéseket (ágak)](../logic-apps/logic-apps-control-flow-branches.md)
-* [Futtassa a csoportosított (hatókör) állapota alapján](../logic-apps/logic-apps-control-flow-run-steps-group-scopes.md)
+* [Futtatás vagy egyesítési párhuzamos lépéseket (ág)](../logic-apps/logic-apps-control-flow-branches.md)
+* [Hajtsa végre a lépéseket, a csoportosított műveleti állapota (hatóköröket) alapján](../logic-apps/logic-apps-control-flow-run-steps-group-scopes.md)

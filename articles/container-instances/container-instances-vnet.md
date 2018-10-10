@@ -7,12 +7,12 @@ ms.service: container-instances
 ms.topic: article
 ms.date: 09/24/2018
 ms.author: danlep
-ms.openlocfilehash: 6d319c09b8a935b5ca81a6d5815daa5d2f706f45
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: feb9547b004141a3c1d02ef4b356b9d00b74fc95
+ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48854607"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48902367"
 ---
 # <a name="deploy-container-instances-into-an-azure-virtual-network"></a>Egy Azure-beli virtuális hálózatban a tárolópéldányok üzembe helyezése
 
@@ -174,15 +174,85 @@ index.html           100% |*******************************|  1663   0:00:00 ETA
 
 A kimenet kell megjelennie, amely `wget` tudta csatlakozhat, és töltse le az index fájlt az első tároló privát IP-címének használatával a helyi alhálózaton. A két tárolócsoportok közötti hálózati forgalmat a virtuális hálózaton belüli maradt.
 
+## <a name="deploy-to-existing-virtual-network---yaml"></a>Meglévő virtuális hálózat – YAML üzembe helyezése
+
+Egy meglévő virtuális hálózatot egy YAML-fájl használatával is telepítheti egy tárolócsoport. Egy alhálózatot a virtuális hálózatban való üzembe helyezéséhez meg néhány további tulajdonságok a YAML:
+
+* `ipAddress`: Az IP-cím beállításait, a tárolócsoport.
+  * `ports`: A portok megnyitásához, ha van ilyen.
+  * `protocol`: A protokollt (TCP vagy UDP) a megnyitott port.
+* `networkProfile`: Itt adhatja meg a hálózati beállítások, például a virtuális hálózatot és alhálózatot az Azure-beli erőforráshoz.
+  * `id`: A teljes erőforrás-kezelő erőforrás-Azonosítóját a `networkProfile`.
+
+Virtuális hálózat egy tárolócsoport telepíteni egy YAML-fájllal, akkor először a hálózati profil Azonosítójának lekéréséhez. Hajtsa végre a [az hálózati profillista] [ az-network-profile-list] parancsot az erőforráscsoport, amely tartalmazza a virtuális hálózat és a delegált alhálózat nevét.
+
+``` azurecli
+az network profile list --resource-group myResourceGroup --query [0].id --output tsv
+```
+
+A parancs kimenete megjeleníti a teljes erőforrás-azonosító, a hálózati profil:
+
+```console
+$ az network profile list --resource-group myResourceGroup --query [0].id --output tsv
+/subscriptions/<Subscription ID>/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkProfiles/aci-network-profile-aci-vnet-aci-subnet
+```
+
+Ha a hálózat profilazonosító, másolja a következő yaml-kódot egy új fájlt *virtuális hálózat üzembe helyezése aci.yaml*. A `networkProfile`, cserélje le a `id` érték csak azonosítójú beolvassa, majd mentse a fájlt. A YAML létrehoz egy tárolócsoport nevű *appcontaineryaml* a virtuális hálózaton.
+
+```YAML
+apiVersion: '2018-09-01'
+location: westus
+name: appcontaineryaml
+properties:
+  containers:
+  - name: appcontaineryaml
+    properties:
+      image: microsoft/aci-helloworld
+      ports:
+      - port: 80
+        protocol: TCP
+      resources:
+        requests:
+          cpu: 1.0
+          memoryInGB: 1.5
+  ipAddress:
+    type: Private
+    ports:
+    - protocol: tcp
+      port: '80'
+  networkProfile:
+    id: /subscriptions/<Subscription ID>/resourceGroups/container/providers/Microsoft.Network/networkProfiles/aci-network-profile-aci-vnet-subnet
+  osType: Linux
+  restartPolicy: Always
+tags: null
+type: Microsoft.ContainerInstance/containerGroups
+```
+
+Üzembe helyezése az a tárolócsoportot a [az tároló létrehozása] [ az-container-create] a YAML-fájl nevét, a parancsot a `--file` paramétert:
+
+```azurecli
+az container create --resource-group myResourceGroup --file vnet-deploy-aci.yaml
+```
+
+Az üzembe helyezés befejezése után futtassa a [az container show] [ az-container-show] parancsot annak állapotának megjelenítése:
+
+```console
+$ az container show --resource-group myResourceGroup --name appcontaineryaml --output table
+Name              ResourceGroup    Status    Image                     IP:ports     Network    CPU/Memory       OsType    Location
+----------------  ---------------  --------  ------------------------  -----------  ---------  ---------------  --------  ----------
+appcontaineryaml  myResourceGroup  Running   microsoft/aci-helloworld  10.0.0.5:80  Private    1.0 core/1.5 gb  Linux     westus
+```
+
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 ### <a name="delete-container-instances"></a>Tárolópéldányok törlése
 
-Elkészült a container instances használata létrehozott, törölje mindkét az alábbi parancsokkal:
+Ha elkészült a container instances használata létrehozott, törölheti őket az alábbi parancsokkal:
 
 ```azurecli
 az container delete --resource-group myResourceGroup --name appcontainer -y
 az container delete --resource-group myResourceGroup --name commchecker -y
+az container delete --resource-group myResourceGroup --name appcontaineryaml -y
 ```
 
 ### <a name="delete-network-resources"></a>Hálózati erőforrások törlése
@@ -239,4 +309,6 @@ Több virtuális hálózati erőforrások és szolgáltatások ebben a cikkben a
 
 <!-- LINKS - Internal -->
 [az-container-create]: /cli/azure/container#az-container-create
+[az-container-show]: /cli/azure/container#az-container-show
 [az-network-vnet-create]: /cli/azure/network/vnet#az-network-vnet-create
+[az-network-profile-list]: /cli/azure/network/profile#az-network-profile-list

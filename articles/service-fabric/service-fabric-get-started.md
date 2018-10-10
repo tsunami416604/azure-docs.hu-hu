@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 09/25/2018
 ms.author: ryanwi
-ms.openlocfilehash: 9d287abf8963ba46cce42f101aecba31c9762c7a
-ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
+ms.openlocfilehash: f2795e2836dbb374d147b84d2ac91977659a1520
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48249536"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48883515"
 ---
 # <a name="prepare-your-development-environment-on-windows"></a>A fejlesztőkörnyezet előkészítése Windowson
 > [!div class="op_single_selector"]
@@ -93,7 +93,6 @@ Most, hogy végzett a fejlesztőkörnyezet beállításával, belefoghat az alka
 * [További tudnivalók a programozási modellekről: Reliable Services és Reliable Actors](service-fabric-choose-framework.md)
 * [A Service Fabric mintakódjainak megtekintése a GitHubon](https://aka.ms/servicefabricsamples)
 * [A fürt megjelenítése a Service Fabric Explorer segítségével](service-fabric-visualizing-your-cluster.md)
-* [A platform átfogó bemutatásának megtekintéséhez kövesse a Service Fabric képzési tervét](https://azure.microsoft.com/documentation/learning-paths/service-fabric/)
 * A [Service Fabric támogatási lehetőségeinek](service-fabric-support.md) ismertetése
 
 [1]: https://azure.microsoft.com/campaigns/service-fabric/ "A Service Fabric kampányoldala"

@@ -5,16 +5,16 @@ services: cognitive-services
 author: nitinme
 manager: cgronlund
 ms.service: cognitive-services
-ms.component: cognitive-services
+ms.component: ''
 ms.topic: article
 ms.date: 09/12/2018
 ms.author: nitinme
-ms.openlocfilehash: e0d60b655628f15cdaf5e1b8839bd4087ac30807
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 5fcd625edf913e6629bfedb7ce7a6b5fe204af28
+ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44718995"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48901431"
 ---
 # <a name="what-are-azure-cognitive-services"></a>Mik az Azure Cognitive Services?
 
@@ -36,7 +36,7 @@ Az Azure Cognitive Services olyan API-k, SDK-k és szolgáltatások segítségé
 |Szolgáltatásnév|A szolgáltatás leírása|
 |:-----------|:------------------|
 |[Beszédszolgáltatás](https://docs.microsoft.com/azure/cognitive-services/speech-service/ "beszédszolgáltatás") (előzetes verzió)|Beszédszolgáltatás beszédfeldolgozó funkciókat ad hozzá alkalmazásokat.|
-|[Custom Speech Service](https://docs.microsoft.com/azure/cognitive-services/custom-speech-service/cognitive-services-custom-speech-home "Custom Speech Service") (előzetes verzió)|A Custom Speech Service lehetővé teszi, hogy testreszabott nyelvi modell és az alkalmazás és a felhasználók személyre szabott akusztikai modell létrehozásához.|
+|[Custom Speech Service](https://docs.microsoft.com/azure/cognitive-services/custom-speech-service/cognitive-services-custom-speech-home "Custom Speech Service") (előzetes verzió)|A Custom Speech Service-szel alkalmazására és felhasználóira szabott nyelvi modelleket és akusztikai modelleket hozhat létre.|
 |[Bing Speech API](https://docs.microsoft.com/azure/cognitive-services/speech/home "Bing Speech API")|A Bing Speech API segítségével egyszerűen beszédfeldolgozó funkciók létrehozása az alkalmazásokban.|
 |[Fordítói beszéd](https://docs.microsoft.com/azure/cognitive-services/translator-speech/ "fordítói beszéd")|Fordítói beszéd egy olyan gépi fordítási szolgáltatás.|
 |[Speaker Recognition API](https://docs.microsoft.com/azure/cognitive-services/speaker-recognition/home "Speaker Recognition API") (előzetes verzió)|A Speaker Recognition API algoritmusokat biztosít a beszélő felismerése és ellenőrzése.|

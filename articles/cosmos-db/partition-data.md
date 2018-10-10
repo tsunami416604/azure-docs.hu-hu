@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 07/26/2018
 ms.author: andrl
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 9b7d9a0dd439b7c25180c8f250a87ae5ee184139
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.openlocfilehash: d7c1c28b3d7b2f51c31f5f05cdef66cc8d71e192
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48870570"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48886382"
 ---
 # <a name="partition-and-scale-in-azure-cosmos-db"></a>Particionálási és horizontális Azure Cosmos DB-ben
 
@@ -104,50 +104,6 @@ Csak az alábbi előfeltételek particionálás és méretezés figyelembe venni
 * Az összes tároló átviteli megosztásához tárolók készletét részeként konfigurált számít **korlátlan** tárolók.
 
 Ha létrehozott egy **rögzített méretű** tároló nélkül partícióazonosító kulcs vagy az átviteli sebesség kisebb, mint 1000 RU/s, a tároló nem automatikus skálázás lesz. Az adatok áttelepíthetők rögzített tárolóba a korlátlan tároló, kell használnia a [adatáttelepítési eszközét](import-data.md) vagy a [módosítási hírcsatorna könyvtár](change-feed.md). 
-
-## <a name="PartitionedGraph"></a>A particionált graph követelményei
-
-Egy particionált gráftárolót létrehozásakor, vegye figyelembe a következő adatokat:
-
-- **Particionálás beállításához szükség** , ha a tároló várhatóan több mint 10 GB méretű, illetve ha több mint 10 000 kérelemegység / másodperc (RU/s) lefoglalása lesz szükség.
-
-- **Csúcsok és élek JSON-dokumentumok formájában tárolja** a az Azure Cosmos DB Gremlin API a háttéralkalmazás.
-
-- **Csúcspontok szükséges partíciókulcsot**. Ezt a kulcsot határozza meg, hogy melyik partíciót a csúcspont tárolására szolgál, és ez a folyamat egy kivonatoló algoritmust használ. A partíciós kulcs neve szóközt és speciális karakterek nélküli egyszavas karakterláncok, és amikor hoz létre egy új tárolót, a következő formátumban van definiálva `/partitioning-key-name`.
-
-- **A forráscsúcspont élek tárolja**. Minden csúcspont számára más szóval a partíciókulcs meghatározása a csúcspont és a kimenő élek tárolására. Ez azért történt, elkerülheti a partícióra kiterjedő lekérdezések használata esetén a `out()` számossága a graph-lekérdezéseket.
-
-- **Graph-lekérdezéseket adjon meg egy partíciókulcsot**. Teljes mértékben kihasználhatja a vízszintes particionálás az Azure Cosmos DB, ha lehetséges a grafikon a lekérdezések tartalmaznia kell partíciókulcs. Például ha egy csúcspont van kiválasztva. A következő példalekérdezés bemutatják, hogyan közé tartozik a partíciókulcs egy vagy több csúcspontok particionált grafikon kiválasztásakor:
-
-    - **Nem használhat érhető `/id` partíciókulcs egy tárolóhoz, a Gremlin API-t**.
-
-    - Csúcs azonosítója, majd kiválasztja **használja a `.has()` lépéssel megadhatja azokat a partíciós kulcs tulajdonságát**: 
-    
-        ```
-        g.V('vertex_id').has('partitionKey', 'partitionKey_value')
-        ```
-    
-    - A csúcspont kiválasztásával **egy rekord, beleértve a partíciókulcs-értékkel, és az azonosító megadása**: 
-    
-        ```
-        g.V(['partitionKey_value', 'vertex_id'])
-        ```
-        
-    - Csúcs kiválasztásával adjon meg egy **rekordokat, amelyek tartalmazzák a partíciókulcs és azonosítók tömbje**:
-    
-        ```
-        g.V(['partitionKey_value0', 'verted_id0'], ['partitionKey_value1', 'vertex_id1'], ...)
-        ```
-        
-    - A csúcspontok készletét kiválasztása **partíciókulcs-értékek listáját megadó**: 
-    
-        ```
-        g.V('vertex_id0', 'vertex_id1', 'vertex_id2', …).has('partitionKey', within('partitionKey_value0', 'partitionKey_value01', 'partitionKey_value02', …)
-        ```
-
-* **Mindig adja meg a partíciókulcs-értékkel csúcs lekérdezésekor**. Csúcs beszerzése egy ismert partíció a teljesítmény tekintetében a leghatékonyabb módja.
-
-* **Használja a kimenő irányban élek lekérdezésekor** minden alkalommal, amikor is lehet. A forrás csúcspontok a kimenő irányban élek tárolja. Ez azt jelenti, hogy a szoftver-és hibahivatkozások foka partíciók közötti lekérdezések, amikor az adatok és a lekérdezések terveztük, vegye figyelembe ezt a mintát kis méretben.
 
 ## <a name="designing-for-partitioning"></a> A partíciós kulcs létrehozása 
 Használhatja az Azure Portalon vagy az Azure CLI-tárolók létrehozása, és bármikor skálázhatja őket. Ez a szakasz bemutatja, hogyan hozhat létre tárolókat, és adja meg a kiosztott átviteli sebesség és a partíció kulcsot minden egyes API-val.

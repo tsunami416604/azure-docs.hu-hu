@@ -5,16 +5,16 @@ description: Ismerje meg, hogyan beszédfelismerést Objective-C nyelven a Cogni
 services: cognitive-services
 author: chlandsi
 ms.service: cognitive-services
-ms.technology: Speech
+ms.component: Speech
 ms.topic: article
 ms.date: 09/24/2018
 ms.author: chlandsi
-ms.openlocfilehash: e343c24a5ef223e1fd6dc618f41d4acf89fc2f5d
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 3945bf0ae6edc0af0db90efca6811aeb22494592
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47226024"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48883432"
 ---
 # <a name="quickstart-recognize-speech-in-objective-c-on-ios-using-the-cognitive-services-speech-sdk"></a>Gyors útmutató: Beszédfelismerést Objective-C nyelven a Cognitive Services beszédfelismerő SDK használatával iOS rendszeren
 
@@ -31,7 +31,7 @@ Ebből a cikkből megismerheti, hogyan hozhat létre iOS-alkalmazások a Cogniti
 
 [!INCLUDE [License Notice](../../../includes/cognitive-services-speech-service-license-notice.md)]
 
-A Cognitive Services beszédfelismerő SDK jelenlegi verziója `1.0.0`.
+A Cognitive Services Speech SDK jelenlegi verziója az `1.0.0`.
 
 A Cognitive Services beszédfelismerő SDK for Mac és IOS-es terjesztése zajlik, Cocoa keretrendszert.
 Le is tölthetők: https://aka.ms/csspeech/iosbinary. Töltse le a fájlt a kezdőkönyvtárban.
@@ -83,8 +83,8 @@ Kattintson a **Befejezés** a következő párbeszédpanelen, a beállítások m
 
     <string>Need microphone access for speech recognition from microphone.</string>
     ```
-1. Cserélje le a karakterláncot `YourSubscriptionKey` az előfizetési kulccsal végzett.
-1. Cserélje le a karakterláncot `YourServiceRegion` együtt a [régió](regions.md) az előfizetéséhez tartozó (például `westus` az ingyenes próba-előfizetésre).
+1. Cserélje le a `YourSubscriptionKey` sztringet az előfizetői azonosítóra.
+1. Cserélje le a `YourServiceRegion` sztringet az előfizetéséhez társított [régióra](regions.md) (ez a `westus` régió, ha az ingyenes próbaverzióra regisztrált).
 
 
 ## <a name="building-and-running-the-sample"></a>Épület és a minta futtatása
@@ -96,7 +96,7 @@ Kattintson a **Befejezés** a következő párbeszédpanelen, a beállítások m
  ![Szimulált iOS-alkalmazás](media/sdk/qs-objectivec-simulated-app.png)
 
 [!INCLUDE [Download the sample](../../../includes/cognitive-services-speech-service-speech-sdk-sample-download-h2.md)]
-Keresse meg az ehhez a mintához a `quickstart/objectivec-ios` mappát.
+A jelen útmutatóban használt mintát a `quickstart/objectivec-ios` mappában találja.
 
 ## <a name="next-steps"></a>További lépések
 

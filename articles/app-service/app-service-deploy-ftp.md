@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: cephalin;dariac
-ms.openlocfilehash: 66d375022d200cc916c77c059fa64eb6dbbc17e2
-ms.sourcegitcommit: cfff72e240193b5a802532de12651162c31778b6
+ms.openlocfilehash: f82a01f3a2b88e66988717eb008a65c8f2aecf28
+ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39308146"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48900325"
 ---
 # <a name="deploy-your-app-to-azure-app-service-using-ftps"></a>Alkalmazás üzembe helyezése az Azure App Service-be FTP/S
 
@@ -66,7 +66,7 @@ A fokozott biztonság érdekében engedélyezze az FTP SSL-en keresztül csak. H
 
 Az alkalmazás erőforrások oldalának a [az Azure portal](https://portal.azure.com)válassza **Alkalmazásbeállítások** a bal oldali navigációs.
 
-Titkosítatlan FTP letiltásához válassza **FTPS csak**. Az FTP és a FTPS teljes letiltásához válassza **letiltása**. Ha befejezte, kattintson a **mentése**. Ha használ **FTPS csak** ki kell kényszerítenie a TLS 1.1-es vagy magasabb, az a **SSL-beállítások** az web App. Nem támogatja a TLS 1.0 **FTPS csak**.
+Titkosítatlan FTP letiltásához válassza **FTPS csak**. Az FTP és a FTPS teljes letiltásához válassza **letiltása**. Amikor végzett, kattintson a **Mentés** gombra. Ha használ **FTPS csak** ki kell kényszerítenie a TLS 1.1-es vagy magasabb, az a **SSL-beállítások** az web App. Nem támogatja a TLS 1.0 **FTPS csak**.
 
 ![Tiltsa le az FTP/S](./media/app-service-deploy-ftp/disable-ftp.png)
 
@@ -109,4 +109,4 @@ Az Azure App Service támogatja az aktív és passzív mód használatával csat
 
 ## <a name="more-resources"></a>További források
 
-* [Az Azure App Service üzembe helyezési hitelesítő adatok](app-service-deploy-ftp.md)
+* [Az Azure App Service üzembe helyezési hitelesítő adatok](app-service-deployment-credentials.md)

@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 09/15/2017
 ms.author: glenga
-ms.openlocfilehash: fb9de98a80d348c3ba1e84ae19551c7ca080628b
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 66d04ca93a79f4d9cdd9f162c6cd3210ae35f4d2
+ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46966843"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48902705"
 ---
 # <a name="monitor-azure-functions"></a>Az Azure Functions monitorozása
 
@@ -317,9 +317,9 @@ Naplók írhat a függvénykódban az Application Insights nyomkövetésként je
 
 ### <a name="ilogger"></a>ILogger
 
-Használja az [ILogger](https://docs.microsoft.com/aspnet/core/api/microsoft.extensions.logging.ilogger) paraméter az a funkciók helyett egy `TraceWriter` paraméter. Használatával létrehozott naplók `TraceWriter` nyissa meg az Application Insightsba, de `ILogger` lehetővé teszi [strukturált naplózást](https://softwareengineering.stackexchange.com/questions/312197/benefits-of-structured-logging-vs-basic-logging).
+Használja az [ILogger](https://docs.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger) paraméter az a funkciók helyett egy `TraceWriter` paraméter. Használatával létrehozott naplók `TraceWriter` nyissa meg az Application Insightsba, de `ILogger` lehetővé teszi [strukturált naplózást](https://softwareengineering.stackexchange.com/questions/312197/benefits-of-structured-logging-vs-basic-logging).
 
-Az egy `ILogger` objektum a meghívása `Log<level>` [ILogger a bővítő metódusokat](https://docs.microsoft.com/aspnet/core/api/microsoft.extensions.logging.loggerextensions#Methods_) naplók létrehozása. Ha például a következő kód a írási `Information` "Függvény" kategóriájú naplók.
+Az egy `ILogger` objektum a meghívása `Log<level>` [ILogger a bővítő metódusokat](https://docs.microsoft.com/dotnet/api/microsoft.extensions.logging.loggerextensions#methods) naplók létrehozása. Ha például a következő kód a írási `Information` "Függvény" kategóriájú naplók.
 
 ```cs
 public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, ILogger logger)

@@ -10,14 +10,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/31/2018
+ms.date: 10/09/2018
 ms.author: douglasl
-ms.openlocfilehash: 7bc603ceee1f85e6f00cdac9a6ac098abb39e217
-ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
+ms.openlocfilehash: 287dcdedede5cab575aa0b9a73ec3e122556dc93
+ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48251031"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48900723"
 ---
 # <a name="parameterize-linked-services-in-azure-data-factory"></a>Az Azure Data Factory társított szolgáltatásokat paraméterezése
 
@@ -27,6 +27,18 @@ A Data Factory felhasználói felületének az Azure Portal vagy egy alkalmazás
 
 > [!TIP]
 > Jelszó vagy titkos kulcsok paraméterezni, nem ajánlott. Az összes kapcsolati karakterláncok inkább Store az Azure Key Vaultban, és paraméterezni a *titkos kód nevét*.
+
+## <a name="supported-data-stores"></a>Támogatott adattárak
+
+Jelenleg társított szolgáltatás paraméterezés a Data Factory felhasználói felülete az Azure Portalon a következő adattárakat támogatja. Minden más adattárakban kiválasztásával lehet paraméterezni a társított szolgáltatás a **kód** ikonra a folyamat fülre, és a JSON-szerkesztő használatával.
+- Azure SQL Database
+- Azure SQL Data Warehouse
+- SQL Server
+- Oracle
+- Cosmos DB
+- Amazon Redshift
+- MySQL
+- Azure Database for MySQL
 
 ## <a name="data-factory-ui"></a>A Data Factory felhasználói felülete
 

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/20/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 39b9c2d9eb982eaffa7cb6246fd0b22375939f52
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.openlocfilehash: e8737e379dc69385b2bd5ac2b2af89bf8d38b63a
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48868691"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48886874"
 ---
 # <a name="add-adfs-as-a-saml-identity-provider-using-custom-policies-in-azure-active-directory-b2c"></a>AD FS egyéni szabályzatok használatával az Azure Active Directory B2C egy SAML-identitásszolgáltató hozzáadása
 
@@ -170,6 +170,18 @@ Nyisson meg egy böngészőt, és keresse meg az URL-címet. Győződjön meg r�
 13. A Kiszolgálókezelőben válasza **eszközök**, majd válassza ki **AD FS felügyeleti**.
 14. Válassza ki a függő entitás megbízhatóságához hozott létre, jelölje be **összevonási metaadatokat frissítés**, és kattintson a **frissítés**. 
 
+## <a name="create-an-azure-ad-b2c-application"></a>Az Azure AD B2C-alkalmazás létrehozása
+
+Kommunikáció az Azure AD B2C-vel hoz létre a bérlő alkalmazás keresztül történik. Ez a szakasz felsorolja a nem kötelező lépések is elvégezheti egy test-alkalmazás létrehozása, ha ezt még nem tette meg.
+
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+2. Győződjön meg arról, hogy használja az Azure AD B2C-bérlő kattintva tartalmazó könyvtárba a **címtár és előfizetés-szűrő** a felső menüben, és a könyvtár, amely tartalmazza a bérlő kiválasztása.
+3. Válasszon **minden szolgáltatás** az Azure Portalon, és majd keresse meg és válassza a bal felső sarkában lévő **Azure AD B2C-vel**.
+4. Válassza ki **alkalmazások**, majd válassza ki **Hozzáadás**.
+5. Adja meg egy nevet az alkalmazásnak, például *testapp1*.
+6. A **Web App / Web API**, jelölje be `Yes`, majd adja meg `https://jwt.ms` a a **válasz URL-cím**.
+7. Kattintson a **Create** (Létrehozás) gombra.
+
 ### <a name="update-and-test-the-relying-party-file"></a>Frissítse és a függő entitás fájl tesztelése
 
 Frissítse a függő entitásonkénti (RP) fájl, amely az Ön által létrehozott felhasználói interakciósorozat kezdeményezi.
@@ -178,4 +190,6 @@ Frissítse a függő entitásonkénti (RP) fájl, amely az Ön által létrehozo
 2. Nyissa meg az új fájlt, és frissítse az értéket, a **PolicyId** az attribútum **TrustFrameworkPolicy** egyedi értékkel. Például: `SignUpSignInADFS`.
 3. Frissítse az értéket a **PublicPolicyUri** URI-a szabályzat. Például "http://contoso.com/B2C_1A_signup_signin_adfs" >
 4. Frissítse az értéket, a **hivatkozásazonosító** attribútum **DefaultUserJourney** megfelelően (SignUpSignInADFS) létrehozott új felhasználói interakciósorozat azonosítója.
-5. Mentse a módosításokat, a fájl feltöltéséhez, tesztelje azt megnyitásával, és kattintson a **Futtatás most**.
+5. A módosítások mentéséhez, feltöltheti a fájlt, és válassza ki az új házirendet a listában.
+6. Győződjön meg arról, hogy a létrehozott Azure AD B2C-alkalmazást az van kiválasztva, a **válassza ki az alkalmazás** mezőben, majd tesztelje kattintva **Futtatás most**.
+

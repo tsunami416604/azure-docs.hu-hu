@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 09/08/2018
 ms.author: glenga
-ms.openlocfilehash: a477554c836a7f84e1694c5d00abd6373f544aa6
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 704a41ec840e2a252a1bbb5c20688f722bd0cdfd
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47036201"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48887036"
 ---
 # <a name="hostjson-reference-for-azure-functions"></a>az Azure Functions – Host.JSON referencia
 
@@ -49,7 +49,7 @@ Az alábbi minta *host.json* fájlok a megadott összes lehetséges lehetősége
         },
         "http": {
             "routePrefix": "api",
-            "maxConcurrentRequests": 5,
+            "maxConcurrentRequests": 100,
             "maxOutstandingRequests": 30
         },
         "queues": {
@@ -440,10 +440,10 @@ Konfigurációs beállítások használatával létrehozott naplók egy `TraceWr
 
 |Tulajdonság  |Alapértelmezett | Leírás |
 |---------|---------|---------| 
-|consoleLevel|Adatai|A konzol naplózási nyomkövetési szintet. Lehetőségek a következők: `off`, `error`, `warning`, `info`, és `verbose`.|
+|consoleLevel|információ|A konzol naplózási nyomkövetési szintet. Lehetőségek a következők: `off`, `error`, `warning`, `info`, és `verbose`.|
 |fileLoggingMode|debugOnly|A nyomkövetési fájl naplózási szintet. Lehetőségek a következők `never`, `always`, `debugOnly`.| 
 
-## <a name="version"></a>verzió:
+## <a name="version"></a>version
 
 *Verzió 2.x*
 

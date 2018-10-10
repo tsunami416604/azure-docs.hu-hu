@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 8/2/2018
 ms.author: markgal
-ms.openlocfilehash: efe08eddaceb5a764dbd5393e79644eac1e2e106
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 9168a67366664f50a49ae04ef8ddc2f7aa9d665b
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47406158"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48886487"
 ---
 # <a name="questions-about-the-azure-backup-service"></a>Kérdések az Azure Backup szolgáltatással kapcsolatban
 Ez a cikk az Azure Backup-összetevővel kapcsolatos gyakori kérdésekre ad választ. Egyes válaszokban részletes információkat tartalmazó cikkekre mutató hivatkozások találhatók. Ha kérdést szeretne feltenni az Azure Backup szolgáltatással kapcsolatban, kattintson a jobb oldalon található **Megjegyzések** gombra. A megjegyzések a cikk alján jelennek meg. Megjegyzések írásához Livefyre-fiók szükséges. Emellett egy fórumbejegyzésben is feltehet kérdéseket az Azure Backup szolgáltatással kapcsolatban a [vitafórumon](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup).
@@ -43,10 +43,10 @@ Nem. A tároló előfizetési szinten jön létre, és nem lehet hozzárendelni 
 Nem. A tárolókban tárolt biztonsági mentési adatok nem helyezhető át egy másik tárban.
 
 ### <a name="can-i-change-from-grs-to-lrs-after-a-backup-br"></a>Módosíthatom a GRS az LRS egy biztonsági mentés után? <br/>
-Nem. Recovery Services-tárolót is csak tárolási beállításainak módosítása előtt minden biztonsági eltárolta 
+Nem. Recovery Services-tárolót is csak tárolási beállításainak módosítása előtt minden biztonsági eltárolta
 
 ### <a name="recovery-services-vaults-are-resource-manager-based-are-backup-vaults-still-supported-br"></a>A helyreállítási tárak a Resource Manageren alapulnak. Biztonsági mentési tárak továbbra is támogatottak? <br/>
-A Backup-tárolók Recovery Services-tárolók lett konvertálva. Ha Ön nem konvertálható a Backup-tároló Recovery Services-tárolót, majd a Backup-tároló lett konvertálva Recovery Services-tároló az Ön számára. 
+A Backup-tárolók Recovery Services-tárolók lett konvertálva. Ha Ön nem konvertálható a Backup-tároló Recovery Services-tárolót, majd a Backup-tároló lett konvertálva Recovery Services-tároló az Ön számára.
 
 ### <a name="can-i-migrate-a-backup-vault-to-a-recovery-services-vault-br"></a>Áttelepíthetek egy Backup tárolót egy Recovery Services-tárolóra? <br/>
 Minden Backup-tároló Recovery Services-tárolók lett konvertálva. Ha Ön nem konvertálható a Backup-tároló Recovery Services-tárolót, majd a Backup-tároló lett konvertálva Recovery Services-tároló az Ön számára.
@@ -60,7 +60,6 @@ A kérdések részletes listája a [Gyakori kérdések az Azure-beli virtuális 
 ## <a name="back-up-vmware-servers"></a>VMware-kiszolgálók biztonsági mentése
 
 ### <a name="can-i-back-up-vmware-vcenter-servers-to-azure"></a>Tudok biztonsági mentést készíteni VMware vCenter-kiszolgálókról az Azure-ban?
-
 Igen. Az Azure Backup Server használatával biztonsági mentést készíthet a VMware vCenter-, valamint az ESXi-kiszolgálókról az Azure-ban. A támogatott VMware-verziókkal kapcsolatos információkért tekintse meg az [Azure Backup Server védelmi mátrix](backup-mabs-protection-matrix.md)című cikket. Részletes útmutatásért lásd: [VMware-kiszolgáló biztonsági mentése az Azure Backup Server használatával](backup-azure-backup-server-vmware.md).
 
 ### <a name="do-i-need-a-separate-license-to-recover-a-full-on-premises-vmwarehyper-v-cluster-from-dpm-or-azure-backup-serverbr"></a>Egy teljes helyi VMware vagy Hyper-V fürt helyreállítása a DPM vagy az Azure Backup Server különálló licenc szükséges?<br/>
@@ -74,17 +73,14 @@ Igen.
 Nem. A DPM- vagy MABS- kiszolgálók csak egy tárolóhoz regisztrálhatók.
 
 ### <a name="which-version-of-system-center-data-protection-manager-is-supported"></a>A System Center – Data Protection Manager melyik verziója támogatott?
-
-Javasoljuk, hogy telepítse a [legújabb](http://aka.ms/azurebackup_agent) Azure Backup-ügynököt a System Center – Data Protection Manager legújabb kumulatív frissítésén. 
+Javasoljuk, hogy telepítse a [legújabb](http://aka.ms/azurebackup_agent) Azure Backup-ügynököt a System Center – Data Protection Manager legújabb kumulatív frissítésén.
 - A System Center DPM 2012 R2 [kumulatív frissítés 14](https://support.microsoft.com/help/4043315/update-rollup-14-for-system-center-2012-r2-data-protection-manager) van a legújabb frissítést.
 - A System Center DPM 2016 [2. kumulatív](https://support.microsoft.com/en-us/help/3209593) van a legújabb frissítést.
 
 ### <a name="i-have-installed-azure-backup-agent-to-protect-my-files-and-folders-can-i-install-system-center-dpm-to-protect-on-premises-applicationvm-workloads-to-azure"></a>Telepítettem az Azure Backup ügynököt a fájljaim és mappáim megvédéséhez. Telepítheti a System Center DPM védelme érdekében a helyszíni alkalmazás/virtuális gépek számítási feladatait az Azure-bA?
-
 Igen. Az Azure Backup használatához a System Center Data Protection Manager (DPM), azonban először a DPM telepítése, és telepítse az Azure Backup-ügynök. Az Azure Backup ügynök és a DPM együttműködését úgy biztosíthatja, ha az Azure Backup-összetevőket ebben a sorrendben telepíti. Nem javasolt és nem támogatott az Azure Backup ügynök telepítése a DPM telepítése előtt.
 
 ### <a name="can-i-use-dpm-to-back-up-apps-in-azure-stack"></a>A DPM használatával biztonsági másolatot készíteni az alkalmazásokat az Azure Stack?
-
 Nem. Bár az Azure Backup segítségével megvédheti az Azure Stack, az Azure Backup jelenleg nem támogatja a DPM biztonsági mentése alkalmazások az Azure Stack használatával.
 
 ## <a name="how-azure-backup-works"></a>Az Azure Backup működése
@@ -115,7 +111,7 @@ Az Azure Backup a következő operációs rendszerek biztonsági mentését tám
 | Windows Server 2016 |64 bit |Standard, Datacenter, Essentials |
 | Windows Server 2012 R2 és a legújabb szervizcsomagok |64 bit |Standard, Datacenter, Foundation |
 | Windows Server 2012 és a legújabb szervizcsomagok |64 bit |Datacenter, Foundation, Standard |
-| Windows Storage Server 2016 és a legújabb szervizcsomagok |64 bit |Standard, Workgroup | 
+| Windows Storage Server 2016 és a legújabb szervizcsomagok |64 bit |Standard, Workgroup |
 | Windows Storage Server 2012 R2 és a legújabb szervizcsomagok |64 bit |Standard, Workgroup |
 | Windows Storage Server 2012 és a legújabb szervizcsomagok |64 bit |Standard, Workgroup |
 | Windows Server 2012 R2 és a legújabb szervizcsomagok |64 bit |Essential |
@@ -192,7 +188,7 @@ Igen. Az adatokat a rendszer az AES256 használatával a helyszíni kiszolgáló
 Igen. Az Azure-ba küldött (aktívan nem használt) adatok titkosítva maradnak. A Microsoft soha nem fejt vissza adatokat. Azure virtuális gép biztonsági mentése esetén az Azure Backup a virtuális gép titkosítására támaszkodik. Ha például a virtuális gépe az Azure Disk Encryption vagy más titkosítási technológiával van titkosítva, az Azure Backup ezzel védi az adatait.
 
 ### <a name="what-is-the-minimum-length-of-encryption-key-used-to-encrypt-backup-data-br"></a>Mi az adatok biztonsági másolatának titkosításához használt titkosítási kulcs minimális hossza? <br/>
-Az Azure Backup-ügynök használatakor a titkosítási kulcsnak legalább 16 karakterből kell állnia. Az Azure-beli virtuális gépek esetében nincs korlátozva az Azure KeyVault által használt kulcsok hossza. 
+Az Azure Backup-ügynök használatakor a titkosítási kulcsnak legalább 16 karakterből kell állnia. Az Azure-beli virtuális gépek esetében nincs korlátozva az Azure KeyVault által használt kulcsok hossza.
 
 ### <a name="what-happens-if-i-misplace-the-encryption-key-can-i-recover-the-data-or-can-microsoft-recover-the-data-br"></a>Mi történik, ha elveszítem a titkosítási kulcsot? Helyre tudom állítani az adatokat (vagy) a Microsoft helyre tudja állítani az adatokat? <br/>
 Az adatok biztonsági másolatának titkosításához használt kulcs csak az ügyfél telephelyén van jelen. A Microsoft nem tárol másolatot az Azure-ban, és nem rendelkezik hozzáféréssel a kulcshoz. Ha az ügyfél elveszíti a kulcsot, a Microsoft nem tudja helyreállítani az adatok biztonsági másolatát.

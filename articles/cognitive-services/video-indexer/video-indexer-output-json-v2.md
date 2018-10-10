@@ -8,19 +8,19 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: video-indexer
 ms.topic: conceptual
-ms.date: 09/15/2018
+ms.date: 10/08/2018
 ms.author: juliako
-ms.openlocfilehash: 76f83e7ad70e3e1906bc1aa90c74d600053aeb6f
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: 27f24d588cf1cac5f580a41cc0901a8907b66652
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45985644"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48884291"
 ---
 # <a name="examine-the-video-indexer-output-produced-by-v2-api"></a>A v2 API által előállított Videóindexelő kimenetének vizsgálata
 
 > [!Note]
-> A Video Indexer V1 API 2018. augusztus 1-től. a rendszer elavult. Most már a Video Indexer v2 API-t kell használnia. <br/>A Video Indexer v2 API-k fejlesztéséhez, tekintse meg a útmutatását [Itt](https://api-portal.videoindexer.ai/). 
+> A Video Indexer API 1-es verziója 2018. augusztus 1-jével elavult. Használja a Video Indexer API 2-es verzióját. <br/>A Video Indexer API-k 2-es verziójával való fejlesztéshez tekintse át az [itt](https://api-portal.videoindexer.ai/) található útmutatót. 
 
 Meghívásakor a **első videó Index** API és a válasz állapota OK, a részletes JSON-kimenet, a válasz tartalma kapunk. A JSON-tartalmak a megadott feltárását részleteit tartalmazza. Az insights közé tartozik például a dimenziók: szövegekben felismerése, arcok, témakörök, blokkok, stb. A dimenziók időtartományok azt mutatják be, amikor a videó minden dimenzió jelentek meg a példányban.  
 
@@ -115,7 +115,7 @@ Ez a szakasz az insights összegzését jeleníti meg.
 |publishedUrlProxy|(Az Apple-eszközök esetén), a Videó-URL-címe.|
 |viewToken|Egy rövid élettartamú nézet jogkivonatot a videó streameléshez.|
 |sourceLanguage|A videó Forrásnyelv.|
-|Nyelv|A videó tényleges nyelv (fordítás).|
+|language|A videó tényleges nyelv (fordítás).|
 |indexingPreset|A készletet, a videó indexelésére használja.|
 |streamingPreset|A készlet tesz közzé a videót.|
 |linguisticModelId|A videó lefényképezze használt CRIS modell.|
@@ -155,7 +155,7 @@ Előfordulhat, hogy egy ARC Azonosítóját, nevét, a miniatűr, más metaadato
 |Verzió|A kód verziója|
 |---|---|
 |sourceLanguage|A videó Forrásnyelv (feltéve, hogy egy fő nyelvet). Formájában egy [BCP-47](https://tools.ietf.org/html/bcp47) karakterlánc.|
-|Nyelv|Az insights nyelv (a forrás nyelvről lefordított). Formájában egy [BCP-47](https://tools.ietf.org/html/bcp47) karakterlánc.|
+|language|Az insights nyelv (a forrás nyelvről lefordított). Formájában egy [BCP-47](https://tools.ietf.org/html/bcp47) karakterlánc.|
 |a szövegben|A [átirat](#transcript) dimenzió.|
 |optikai karakterfelismerés|A [ocr](#ocr) dimenzió.|
 |a kulcsszavak|A [kulcsszavak](#keywords) dimenzió.|
@@ -205,7 +205,7 @@ példányok|A blokk időtartományok listája.|
 |---|---|
 |id|A sor azonosítója.|
 |szöveg|Az átirat magát.|
-|Nyelv|A szöveges nyelvet. Szánt támogatásához, átirat, ahol az egyes sorok rendelkezhet egy másik nyelvet.|
+|language|A szöveges nyelvet. Szánt támogatásához, átirat, ahol az egyes sorok rendelkezhet egy másik nyelvet.|
 |példányok|Amikor ezt a sort jelent meg időt a tartományok listája. Ha a példány a szövegben, 1 példánnyal fog rendelkezni.|
 
 Példa:
@@ -244,7 +244,7 @@ Példa:
 |id|Az optikai Karakterfelismerés sor azonosítója.|
 |szöveg|Az optikai Karakterfelismerés szöveg.|
 |magabiztosan|Elismerés magabiztosan.|
-|Nyelv|Az optikai Karakterfelismerés nyelv.|
+|language|Az optikai Karakterfelismerés nyelv.|
 |példányok|Amikor jelent meg az optikai Karakterfelismeréssel időt tartományok listája (az azonos OCR többször is megjelenhetnek).|
 
 ```json
@@ -287,7 +287,7 @@ Példa:
 |id|A kulcsszó-azonosítót.|
 |szöveg|A kulcsszó szöveg.|
 |magabiztosan|A kulcsszó felismerés magabiztosan.|
-|Nyelv|A kulcsszó nyelv (Ha a fordítás melyik változatot).|
+|language|A kulcsszó nyelv (Ha a fordítás melyik változatot).|
 |példányok|Amikor ezt a kulcsszót jelent meg időt a tartományok listája (kulcsszó többször is megjelenhetnek).|
 
 ```json
@@ -332,7 +332,7 @@ Példa:
 |Name (Név)|Leírás|
 |---|---|
 |id|A face azonosítója.|
-|név|A face neve. "Ismeretlen #0", az azonosított hírességek vagy ügyfél betanított személy is lehet.|
+|név|A face neve. Lehet "Ismeretlen #0, az azonosított hírességek vagy ügyfél betanított személy.|
 |magabiztosan|Arcok azonosítása magabiztosan.|
 |leírás|A hírességek leírása. |
 |thumbnalId|A miniatűr képét, arc azonosítója.|
@@ -378,7 +378,7 @@ Példa:
 |---|---|
 |id|A címke azonosítója.|
 |név|A címke nevét (például "Számítógép", "TV").|
-|Nyelv|A címke neve nyelv, (Ha a fordítás melyik változatot). BCP-47|
+|language|A címke neve nyelv, (Ha a fordítás melyik változatot). BCP-47|
 |példányok|Amikor ezt a címkét jelent meg időt a tartományok listája (címkék többször is megjelenhetnek). Minden példány egy megbízhatósági mező tartozik. |
 
 
@@ -678,7 +678,7 @@ Video Indexer – érzelmek beszéd- és audio jelek alapján azonosítja. Az az
 |Name (Név)|Leírás|
 |---|---|
 |id|Az emotion azonosítója.|
-|type|Az emotion videórészletet azonosított beszéd- és audiotartalmak jelek alapján. Az emotion lehet: tudatjuk, szomorúság, düh vagy lehetőségének.|
+|type|Az emotion videórészletet azonosított beszéd- és audiotartalmak jelek alapján. Az érzelmek a következők lehetnek: öröm, szomorúság, harag vagy félelem.|
 |példányok|Amikor jelent meg az emotion időtartományok listája.|
 
 ```json
@@ -771,7 +771,7 @@ Video Indexer – lehetővé teszi a legfontosabb témakörök az átiratok köv
 |név|A témakör nevét, például: "Pharmaceuticals".|
 |a referenceid megadása|A témakörök hierarchia tükröző útkövetés. Például: "állapotát és jólétének / orvosi és egészségügyi / Pharmaceuticals".|
 |magabiztosan|A [0,1] tartományban konfidencia-pontszám. Újabb sokkal magabiztosabb a munkában.|
-|Nyelv|A témakörben használt nyelv.|
+|language|A témakörben használt nyelv.|
 |iptcName|A IPTC adathordozó-neve, kód észlelésekor.|
 |példányok |Video Indexer jelenleg nem indexeli témakörre való időintervallumok, így a teljes videó szolgál az időközt.|
 

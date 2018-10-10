@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/15/2017
 ms.author: govindk
-ms.openlocfilehash: 580c7410119a26ed3601c7c6ee020a13029339fe
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.openlocfilehash: 657b75e5e3bb5c35bb23221235e62298fc797046
+ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48867799"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48902671"
 ---
 # <a name="automatic-online-backup-and-restore-with-azure-cosmos-db"></a>Automatikus online biztonsági mentés és visszaállítás Azure Cosmos DB-vel
 Az Azure Cosmos DB az összes biztonsági mentések a rendszeres időközönként automatikusan vesz igénybe. Az automatikus biztonsági mentést készít a teljesítmény vagy az adatbázis-műveleteket rendelkezésre állásának befolyásolása nélkül. A biztonsági mentések külön-külön tárolja, egy másik storage szolgáltatásban, és ezeket a biztonsági mentéseket globálisan replikálva vannak a regionális katasztrófa szembeni ellenálló-képesség. Ha véletlenül törli a Cosmos DB-tárolóhoz, és később megkövetelése az adat-helyreállítás szánt forgatókönyvek az automatikus biztonsági mentést.  
@@ -47,12 +47,18 @@ Az alábbi ábrán a rendszeres teljes biztonsági mentést az összes Cosmos DB
 ## <a name="backup-retention-period"></a>Biztonsági másolat megőrzési idejének
 A fentiekben ismertetettek szerint az Azure Cosmos DB pillanatképeket készít az adatok négy óránként a partíció szintjén. Egy adott időpontban csak az utolsó két pillanatfelvételek megmaradnak. Azonban ha a tárolót, illetve az adatbázis törlődik, Azure Cosmos DB összes törölt partícióra belül az adott tároló adatbázis meglévő pillanatképeinek 30 napig őrzi meg.
 
-Az SQL API-hoz, ha meg szeretné tartani a saját pillanatképek használható JSON lehetőség az adatok exportálása az Azure Cosmos DB-ben [adatáttelepítési eszközét](import-data.md#export-to-json-file) további biztonsági mentések ütemezéséhez.
+Az SQL API-hoz Ha meg szeretné tartani a saját pillanatképek megteheti az alábbi lehetőségek használatával:
+
+* Az Exportálás a JSON kapcsoló használata az Azure Cosmos DB-ben [adatáttelepítési eszközét](import-data.md#export-to-json-file) további biztonsági mentések ütemezéséhez.
+
+* Használat [Azure Data Factory](../data-factory/connector-azure-cosmos-db.md) adatok rendszeres időközönként áthelyezése.
+
+* Az Azure Cosmos dB-ben [módosításcsatornáját](change-feed.md) rendszeres időközönként a teljes biztonsági mentéshez, és külön-külön léptetési adatolvasási és a blob cél. 
+
+* Online biztonsági mentések kezeléséhez, az adatokat rendszeres időközönként olvasni módosítási hírcsatorna és a egy másik gyűjteménybe való írás késleltetés. Ez biztosítja, nem rendelkezik az adatok helyreállítását, és azonnal tekintse meg a probléma adatait. 
 
 > [!NOTE]
-> Ha Ön "Kiépítése átviteli több adatbázis szintjén tárolók" – Ne feledje, a visszaállítás teljes adatbázis fiók szintjén történik. Ön Emellett ellenőrizze bizalommal a segélyszolgálatnak 8 órán belül, ha véletlenül törölte a tárolót. Adatok nem állítható vissza, ha 8 órán belül nem forduljon az ügyfélszolgálathoz. 
-
-
+> Ha Ön "Kiépítése átviteli több adatbázis szintjén tárolók" – Ne feledje, a visszaállítás teljes adatbázis fiók szintjén történik. Ön Emellett ellenőrizze bizalommal a segélyszolgálatnak 8 órán belül, ha véletlenül törli a tárolót. Adatok nem állítható vissza, ha 8 órán belül nem forduljon az ügyfélszolgálathoz.
 
 ## <a name="restoring-a-database-from-an-online-backup"></a>Adatbázis visszaállítása az online biztonsági mentés
 
@@ -61,7 +67,7 @@ Ha véletlenül törli az adatbázis vagy -tároló, [küldjön egy támogatási
 Ha az adatbázis visszaállításához (tartalmazza az esetekben, ahol a rendszer törli-e a tárolóban lévő dokumentumok) adatok sérülése probléma miatt, tekintse meg kell [adatsérülés kezelése](#handling-data-corruption) további lépéseket a sérült adatok elkerülése érdekében szükség szerint felülírják a meglévő biztonsági másolatok. Egy adott vissza kell állítani a biztonsági mentési pillanatkép a Cosmos DB van szükség, hogy az adatok a biztonsági mentési ciklust, hogy a pillanatkép idejére elérhető volt.
 
 > [!NOTE]
-> Gyűjtemények és adatbázisok csak egy kéréseinek visszaállítása után vissza tudja állítani. Az ügyfél responsbility arra, hogy a tároló vagy az adatbázis törlése az adatok visszaállítása után azonnal. Ha nem törli a visszaállított adatbázisokat vagy gyűjteményeket, azok áfatartalma a visszaállított gyűjtemény vagy az adatbázis költsége számítunk fel. Tehát nagyon fontos azonnal törli őket. 
+> Csak kifejezett felhasználói kérések a gyűjtemények és adatbázisok állíthatók vissza. Az ügyfél felelőssége, hogy a tároló vagy az adatbázis törlése után azonnal az adatok megbízhatóan. Ha nem törli a visszaállított adatbázisokat vagy gyűjteményeket, azok költséget számítunk fel kérelemegység, a storage és a kimenő forgalom.
 
 ## <a name="handling-data-corruption"></a>Adatsérülés kezelése
 
@@ -73,7 +79,7 @@ Az alábbi ábrán a véletlen törlés és a tárolóban lévő adatok frissít
 
 ![Állítsa vissza a garanciafeltételeknek frissítési tárolója, vagy törölje az adatokat a Cosmos DB-ben](./media/online-backup-and-restore/backup-restore-support.png)
 
-Amikor a visszaállítás történik az ilyen helyzetekben - adatainak visszaállítása egy másik fiókba (utótagja a "-vissza") és a tároló. A visszaállítás nem történik meg, hogy egy alkalommal adja meg a vásárlói adatok érvényesítése és szükség szerint az adatok áthelyezéséhez. A visszaállított tároló-e ugyanabban a régióban, illetve azonos indexelési szabályzatok. Felhasználó, aki a előfizetés rendszergazdai vagy társadminisztrátori láthatja a visszaállított fiók.
+Amikor a visszaállítás történik az ilyen helyzetekben - adatainak visszaállítása egy másik fiókba (utótagja a "-vissza") és a tároló. A visszaállítás nem történik meg, hogy egy alkalommal adja meg a vásárlói adatok érvényesítése és szükség szerint az adatok áthelyezéséhez. A visszaállított tároló-e ugyanabban a régióban, illetve azonos indexelési szabályzatok. Felhasználó, aki előfizetés rendszergazdája vagy társfelügyeletű láthatja a visszaállított fiók.
 
 
 > [!NOTE]

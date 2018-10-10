@@ -5,17 +5,19 @@ services: virtual-machines
 author: jonbeck7
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 07/06/2018
+ms.date: 10/08/2018
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
-ms.openlocfilehash: 2d1a6bdb0cb53e3e58b4b4e8fed4bf29957d6489
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: 8297e324f03d263acaa30dfa2147f7ee713bd265
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48858077"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48904645"
 ---
 Általános célú virtuális gépek méreteit adja meg a kiegyensúlyozott Processzor-memória arány. Ideális választás tesztelési-fejlesztési feladatokhoz, kis és közepes méretű adatbázisokhoz, valamint kis és közepes adatforgalmú webkiszolgálókhoz. Ez a cikk ismerteti a vcpu-k, az adatlemezeket és a hálózati adapterek, valamint az ennél a csoportosításnál méretek esetében a tárterületek átviteli sebességének számát. 
+
+- A [DC-sorozat](#dc-series) új családba tartozó virtuális gépek az Azure-ban, amelyek segítségével a bizalmas és az adatok sértetlenségének védelme és a kód a nyilvános felhőben feldolgozása közben. Ezek a gépek élvezik legújabb generációja, 3,7 GHz-es Intel XEON E - 2176G processzor SGX technológiával. Ezek a gépek az Intel Turbo Boost Technology az 4.7 GHz meg. DC-sorozat példányai ügyfeleink a kód és az adatok védelmét, miközben használatban van a biztonságos enklávé-alapú alkalmazásokat fejleszthet.
 
 - Az Av2-sorozat virtuális gépei különféle hardvertípusokon és processzorokon is telepíthető. Az A sorozatú virtuális gépek a belépő szintű számítási feladatokhoz – például fejlesztéshez és teszteléshez – igazodó CPU-teljesítmény- és memóriakonfigurációkkal rendelkeznek. A méretük a hardvernek megfelelően szabályozott, hogy egyenletes processzorteljesítményt nyújtsanak a futó példány számára, a futtató hardvertől függetlenül. Az adott méretet futtató fizikai hardver meghatározásához kérdezze le a virtuális hardvert a virtuális gépen belülről.
 
@@ -27,7 +29,6 @@ ms.locfileid: "48858077"
 
   A D-sorozat használati Példák többek között a nagyvállalati alkalmazások, relációs adatbázisok, memórián belüli gyorsítótárazás és elemzés. 
   
-- A [DC-sorozat](#dc-series) új családba tartozó virtuális gépek az Azure-ban, amelyek segítségével a bizalmas és az adatok sértetlenségének védelme és a kód a nyilvános felhőben feldolgozása közben. Ezek a gépek élvezik legújabb generációja, 3,7 GHz-es Intel XEON E - 2176G processzor SGX technológiával. Ezek a gépek az Intel Turbo Boost Technology az 4.7 GHz meg. DC-sorozat példányai ügyfeleink biztonságos enklávé-alapú alkalmazások és azok adatai védelmét, miközben használatban van
 
 ## <a name="b-series"></a>B sorozat
 

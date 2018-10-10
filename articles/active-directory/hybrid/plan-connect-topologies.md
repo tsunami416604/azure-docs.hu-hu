@@ -12,18 +12,21 @@ ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.topic: article
-ms.date: 02/27/2018
+ms.date: 10/09/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: bab18c5c36cf4ffbbe6268910bf9121bc351fdca
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 26049b1e7283d53be7214130ff64cf830935708c
+ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46311996"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48901802"
 ---
 # <a name="topologies-for-azure-ad-connect"></a>Azure AD Connect-topológiák
 Ez a cikk ismerteti a különböző helyszíni és Azure Active Directory (Azure AD) topológiákat, amelyek az Azure AD Connect-szinkronizálást használ, a főbb integrációs megoldása. Ez a cikk is támogatott, és nem támogatott konfigurációkat tartalmaz.
+
+>[!IMPORTANT]
+>Megoldással az Azure AD Connect nem szinkronizálja az Active Directory és az Azure AD-inkonzisztens vagy nem támogatott állapotban eredményezhet. Ennek eredményeképpen az a Microsoft nem biztosít az technikai támogatás az ilyen környezetekhez.
 
 Íme a képeket a cikkben a jelmagyarázatban:
 

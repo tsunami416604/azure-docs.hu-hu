@@ -9,12 +9,12 @@ ms.reviewer: jmartens
 author: hjerez
 ms.author: hjerez
 ms.date: 09/24/2018
-ms.openlocfilehash: afba483172bc34b9d54afc3af755f0967affc875
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: b09ef259d73744612c41adc4fc40ea0235da9bcb
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48239166"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48885067"
 ---
 # <a name="manage-deploy-and-monitor-models-with-azure-machine-learning-service"></a>Kezelheti, telepítheti és figyelheti a modellek az Azure Machine Learning szolgáltatás
 
@@ -71,7 +71,7 @@ A következő is üzembe helyezhetik a rendszerképeket [telepítési céljainak
 * Azure-beli FPGA-gépek
 * Az Azure IoT Edge-eszközök
 
-A szolgáltatás üzemel, a következtetési kérelme, mert automatikusan kiegyenlített terhelésű és a fürt méretezése igény szerint bármely ugrásszerűen kielégítéséhez. [A szolgáltatással kapcsolatos telemetriai adatok](https://docs.microsoft.com/python/api/azureml-telemetry/azureml.telemetry?view=azure-ml-py) az Azure Application Insights szolgáltatásba a munkaterülethez társított rögzíthetők.
+A szolgáltatás üzemel, a következtetési kérelme, mert automatikusan kiegyenlített terhelésű és a fürt méretezése igény szerint bármely ugrásszerűen kielégítéséhez. [A szolgáltatással kapcsolatos telemetriai rögzíthetők](how-to-enable-app-insights.md) a a munkaterülethez társított Azure Application Insights szolgáltatásba.
 
 ## <a name="step-4-monitor-models-and-collect-data"></a>4. lépés: Modellek adatainak figyelésére és gyűjtésére
 

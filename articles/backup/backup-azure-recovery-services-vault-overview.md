@@ -8,22 +8,22 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 8/10/2018
 ms.author: markgal
-ms.openlocfilehash: 04b755d7ca1ec72b075ecaa4b32a35f5009a938b
-ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
+ms.openlocfilehash: 697245a6465fc15c943acefa4b820982fbaecb55
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2018
-ms.locfileid: "42060810"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48887598"
 ---
 # <a name="recovery-services-vaults-overview"></a>Recovery Services tárolók áttekintése
 
-Ez a cikk a Recovery Services-tároló funkcióját ismerteti. Recovery Services-tárolót egy tárolóentitás az Azure-beli adat-környezetet tároló. Az adatok általában a másolatait adatokat, illetve a virtuális gépek (VM), a számítási feladatok, a kiszolgálókra vagy munkaállomásokra konfigurációs adatait. Recovery Services-tárolók segítségével különböző Azure-szolgáltatások például az Azure SQL-adatbázisok és az IaaS virtuális gépek (Linux vagy Windows) a biztonsági mentési adatok tárolásához. Helyreállítási szolgáltatások tárolók támogatása a System Center DPM, a Windows Server, az Azure Backup Server és több. A Recovery Services-tárolók leegyszerűsítik a biztonsági mentési adatok szervezését, miközben minimálisra csökkentik a munkaterhelést. 
+Ez a cikk a Recovery Services-tároló funkcióját ismerteti. Recovery Services-tárolót egy tárolóentitás az Azure-beli adat-környezetet tároló. Az adatok általában a másolatait adatokat, illetve a virtuális gépek (VM), a számítási feladatok, a kiszolgálókra vagy munkaállomásokra konfigurációs adatait. Recovery Services-tárolók segítségével különböző Azure-szolgáltatások például az Azure SQL-adatbázisok és az IaaS virtuális gépek (Linux vagy Windows) a biztonsági mentési adatok tárolásához. Helyreállítási szolgáltatások tárolók támogatása a System Center DPM, a Windows Server, az Azure Backup Server és több. A Recovery Services-tárolók leegyszerűsítik a biztonsági mentési adatok szervezését, miközben minimálisra csökkentik a munkaterhelést.
 
 Egy Azure-előfizetés keretében előfizetésenként és régiónként legfeljebb 500 Recovery Services-tárolót hozhat létre.
 
 ## <a name="comparing-recovery-services-vaults-and-backup-vaults"></a>Összehasonlító Recovery Services-tárolók és a Backup-tárolók
 
-Ha biztonsági mentési tárak továbbra is rendelkezik, azok folyamatban van az automatikus frissítése Recovery Services-tárolókra. 2017 November szerint az összes biztonsági mentési tárak is frissülnek a Recovery Services-tárolók. 
+Ha biztonsági mentési tárak továbbra is rendelkezik, azok folyamatban van az automatikus frissítése Recovery Services-tárolókra. 2017 November szerint az összes biztonsági mentési tárak is frissülnek a Recovery Services-tárolók.
 
 Recovery Services-tárolók az Azure-ban, az Azure Resource Manager modellel alapulnak, mivel a Backup-tárolók az Azure Service Manager modellel is alapján. Amikor frissít egy biztonsági mentési tárolót egy Recovery Services-tároló, a biztonsági mentési adatok sértetlenek maradnak alatt és a frissítési folyamat után. Recovery Services-tárolók adja meg a funkciók nem érhető el a Backup-tárolók, például:
 
@@ -38,7 +38,7 @@ Recovery Services-tárolók az Azure-ban, az Azure Resource Manager modellel ala
 - **IaaS virtuális gépekhez azonnali helyreállítás**: használatával Recovery Services-tárolók, visszaállíthatja fájlokat és mappákat az IaaS virtuális gépek visszaállítása a teljes virtuális Gépet, amely lehetővé teszi a gyorsabb helyreállítás nélkül. Azonnali helyreállítás IaaS virtuális gépekhez Windows és Linux rendszerű virtuális gépeken érhető el. [További információ](http://azure.microsoft.com/blog/instant-file-recovery-from-azure-linux-vm-backup-using-azure-backup-preview)
 
 ## <a name="managing-your-recovery-services-vaults-in-the-portal"></a>A portálon a Recovery Services-tárolók kezelése
-Létrehozása és kezelése az Azure Portalon a Recovery Services-tárolók oka egyszerűen az egyéb Azure-szolgáltatásokkal integrálható a Backup szolgáltatás. Ez az integráció azt jelenti, létrehozhat vagy kezelheti a Recovery Services-tároló *a célként megadott szolgáltatás kontextusában*. Ha például egy virtuális Gépet a helyreállítási pontok megtekintéséhez válassza ki a virtuális Gépet, majd kattintson **Backup** a Műveletek menü. 
+Létrehozása és kezelése az Azure Portalon a Recovery Services-tárolók oka egyszerűen az egyéb Azure-szolgáltatásokkal integrálható a Backup szolgáltatás. Ez az integráció azt jelenti, létrehozhat vagy kezelheti a Recovery Services-tároló *a célként megadott szolgáltatás kontextusában*. Ha például egy virtuális Gépet a helyreállítási pontok megtekintéséhez válassza ki a virtuális Gépet, majd kattintson **Backup** a Műveletek menü.
 
 ![Recovery services tár adatait VM](./media/backup-azure-recovery-services-vault-overview/rs-vault-in-context-vm.png)
 
@@ -51,6 +51,9 @@ Az előző példában **ContosoVM** a virtuális gép neve. **ContosoVM-demovaul
 Ha egy Recovery Services-tároló védi azokat több kiszolgálóra, és tekintse meg a Recovery Services-tároló több logikai lehet. Keresse meg az összes, az előfizetés Recovery Services-tárolók, és válassza ki azt a listából.
 
 Az alábbi szakaszok azt ismertetik, hogyan használja a Recovery Services-tároló minden típusú tevékenység található hivatkozásokat.
+
+> [!NOTE]
+> Recovery Services-tároló ugyanazzal a névvel nem hozható létre, ha 24 órán belül törölve lett. Használja egy másik erőforrásnevet, vagy válasszon másik erőforráscsoportot, vagy újra 24 óra múlva próbálkozzon újra.
 
 ### <a name="back-up-data"></a>Adatok biztonsági mentése
 - [Készítsen biztonsági másolatot egy Azure virtuális Gépen](backup-azure-vms-first-look-arm.md)

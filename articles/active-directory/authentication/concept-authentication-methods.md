@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry, michmcla
-ms.openlocfilehash: 7776ca63dd5c02e470ead35e3dad73c051731fd1
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: a8bcbc37ffba2caace0934c5414e1ccfd6fbb558
+ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42058741"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48901991"
 ---
 # <a name="what-are-authentication-methods"></a>Mik a hitelesítési módszerek?
 
@@ -31,6 +31,7 @@ A Microsoft nyomatékosan javasolja a rendszergazdák engedélyezés felhasznál
 | Biztonsági kérdések | Csak az SSPR |
 | E-mail-cím | Csak az SSPR |
 | A Microsoft Authenticator alkalmazás | Többtényezős hitelesítés és az SSPR nyilvános előzetes verzió |
+| OATH-token hardver | A többtényezős hitelesítés és az SSPR nyilvános előzetes verzió |
 | SMS | Többtényezős hitelesítés és az SSPR |
 | Hanghívás | Többtényezős hitelesítés és az SSPR |
 | Alkalmazásjelszók | Bizonyos esetekben csak a többtényezős hitelesítés |
@@ -39,7 +40,7 @@ A Microsoft nyomatékosan javasolja a rendszergazdák engedélyezés felhasznál
 
 |     |
 | --- |
-| Mobilalkalmazás-értesítés és módszerek a az Azure AD önkiszolgáló jelszó-, mobilalkalmazás-kód alaphelyzetbe állítása a nyilvános előzetes verziójú funkciók az Azure Active Directory. Előzetes verziók kapcsolatos további információkért lásd: [kiegészítő használati feltételek a Microsoft Azure Előzetesekre vonatkozó](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)|
+| OATH hardvertokenek többtényezős hitelesítés és az SSPR és a Mobile app értesítési vagy a mobilalkalmazás-kód módszerek az Azure AD önkiszolgáló jelszó-visszaállítás nyilvános előzetes verziójú funkciók az Azure Active Directory rendszer. Előzetes verziók kapcsolatos további információkért lásd: [kiegészítő használati feltételek a Microsoft Azure Előzetesekre vonatkozó](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)|
 |     |
 
 ## <a name="password"></a>Jelszó
@@ -146,6 +147,28 @@ A Microsoft Authenticator alkalmazást, vagy más harmadik felek alkalmazásaiho
 > [!WARNING]
 > A önkiszolgáló jelszó-átállítási mikor csak egy módszert szükség ellenőrző kód alaphelyzetbe állítása az egyetlen lehetőség a felhasználók számára elérhető **annak biztosítása érdekében a legmagasabb szintű biztonság**.
 >
+
+## <a name="oath-hardware-tokens"></a>Az OATH-tokenek hardver
+
+A rendszer OATH nyílt szabvány, amely megadja, hogy egyszeri jelszavas (OTP) kódok jönnek létre. Azure ad-ben az OATH-TOTP SHA-1-tokenek a 30 másodperces vagy 60 másodperces fajta használatát támogatja. Ügyfelek is be kell szereznie ezek a jogkivonatok a szállítótól választott eszközükön. Vegye figyelembe, hogy a titkos kulcsok legfeljebb 128 karakter hosszúságú lehet, nem lesz kompatibilis az összes jogkivonat.
+
+![Az OATH-tokenek tölt fel az MFA-kiszolgáló OATH-tokenek panel az Azure Portalon](media/concept-authentication-methods/oath-tokens-azure-ad.png)
+
+Miután jogkivonatok beszerzett, fel kell tölteni egy vesszővel tagolt (CSV) fájlformátumban, például az egyszerű felhasználónév, sorozatszám, titkos kulcs, időtartam alatt, gyártó és modell, az alábbi példában.
+
+```
+upn,serial number,secret key,timeinterval,manufacturer,model
+Helga@contoso.com,1234567,1234567890abcdef1234567890abcdef,60,Contoso,HardwareKey
+```
+
+> [!NOTE]
+> Ellenőrizze, hogy a fejléc sorában szerepeltetni a CSV-fájl, ahogy fent látható.
+
+Egyszer megfelelően formázott CSV-fájl, a rendszergazda ezután jelentkezzen be az Azure Portalon, és keresse meg **Azure Active Directory**, **MFA-kiszolgáló**, **OATH-tokenek**, és az eredményül kapott CSV-fájl feltöltése.
+
+A CSV-fájl méretétől függően eltarthat néhány perc alatt dolgozza fel. Kattintson a **frissítése** gombra az aktuális állapotát. Ha hiba történik a fájlban, akkor ajánlati feloldhatja az esetleges hibákat a CSV-fájl letöltése lehetőséget.
+
+Hibák elhárítása után a rendszergazda ezután aktiválhatja minden kulcs kattintva **aktiválás** a token aktiválását és belépés az egyszeri Jelszavas jelenik meg a jogkivonatot.
 
 ## <a name="mobile-phone"></a>Mobiltelefon
 

@@ -3,17 +3,17 @@ title: Képezze le az Azure Maps funkciói stílus |} A Microsoft Docs
 description: További tudnivalók az Azure Maps stílus kapcsolatos funkciók.
 author: walsehgal
 ms.author: v-musehg
-ms.date: 10/05/2018
+ms.date: 10/08/2018
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: d0614f55b9666f6d5d7e95529fd78fdf1c19e615
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: 32571d88ffc08c19f819335254b4f5dda521bdb0
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48857618"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48885921"
 ---
 # <a name="choose-a-map-style-in-azure-maps"></a>Azure Maps-térkép stílus kiválasztása
 
@@ -24,7 +24,7 @@ Az Azure Maps rendelkezik négy külön térképeken stílusok közül választh
 <iframe height='500' scrolling='no' title='A térkép betöltéskor stílusának beállítása' src='//codepen.io/azuremaps/embed/WKOQRq/?height=265&theme-id=0&default-tab=js,result&embed-version=2' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Tekintse meg a toll típusú <a href='https://codepen.io/azuremaps/pen/WKOQRq/'>stílusának beállítása a térkép betöltéskor</a> által az Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) a <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
-A fenti kódblokk beállítja az előfizetési kulcsot, és a egy térkép-objektumot hoz létre a stílus be van állítva, szürkeárnyalatos. Lásd: [térkép létrehozásához](./map-create.md) térkép létrehozásához útmutatást.
+A fenti kódblokk beállítja az előfizetési kulcsot, és a egy térkép-objektumot hoz létre a stílus be van állítva, a grayscale_dark. Lásd: [térkép létrehozásához](./map-create.md) térkép létrehozásához útmutatást.
 
 ## <a name="update-the-style"></a>Frissítés a stílus
 
@@ -33,7 +33,7 @@ A fenti kódblokk beállítja az előfizetési kulcsot, és a egy térkép-objek
 
 A fenti kódblokk beállítja az előfizetési kulcsot, és előre a stílus beállítása nélkül egy térkép objektumot hoz létre. Lásd: [térkép létrehozásához](./map-create.md) térkép létrehozásához útmutatást.
 
-A második kód óráját használja a térkép [setStyle](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#setstyle) metódussal adja a térkép stílus műholdas.
+A második kódblokk használja a térkép [setStyle](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#setstyle) metódussal adja a térkép stílus műholdas.
 
 ## <a name="add-the-style-picker"></a>Adja hozzá a stílus kiválasztása
 
@@ -44,7 +44,7 @@ Az első kódblokkot a fenti kód beállítja az előfizetési kulcsot, és a eg
 
 A második kódblokk hoz létre a atlas használatával stílus selektor [StyleControl](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.control.stylecontrol?view=azure-iot-typescript-latest#stylecontrol) konstruktor.
 
-A stílus kiválasztása lehetővé teszi, hogy a térkép stílus kiválasztása. A harmadik kódblokk hozzáadja a stílus kiválasztása a térkép a leképezéssel [control.add](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#addcontrol) metódust. A vezérlőelemeket a térkép eseményfigyelő annak érdekében, hogy az összes vezérlő rendszer után teljes betölti a maps belül vannak.
+A stílus kiválasztása lehetővé teszi, hogy a térkép stílus kiválasztása. A harmadik kódblokk hozzáadja a stílus kiválasztása a térkép a leképezéssel [controls.add](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#addcontrol) metódust. A térkép belül van a stílus választó **eseményfigyelő** annak érdekében, hogy betölti után teljes betölti a térképen.
 
 ## <a name="next-steps"></a>További lépések
 

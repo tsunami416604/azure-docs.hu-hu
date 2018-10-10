@@ -12,15 +12,15 @@ ms.workload: big-compute
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/24/2018
+ms.date: 09/10/2018
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b3f4907d99b25df31ac7f081282cebe700f55b62
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 25a8150a2fcf7cdd4e3c82478c0b3db3dad870b4
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39423742"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48887564"
 ---
 # <a name="batch-service-quotas-and-limits"></a>A Bach szolgáltatás kvótái és korlátozásai
 
@@ -53,7 +53,9 @@ Ha beállítása készletlefoglalási móddal létrehozott Batch-fiók **felhasz
 | [Alkalmazások](batch-application-packages.md) Batch-fiókonként |20 |
 | Alkalmazáscsomagok alkalmazásonként |40 |
 | A tevékenység maximális élettartama | 7 nap<sup>1</sup> |
-| Csomópontok közötti kommunikáció engedélyezve van a készlet számítási csomópontjain | 100 |
+| Számítási csomópontok [készletben a csomópontok közötti kommunikáció engedélyezve](batch-mpi.md) | 100 |
+| Dedikált számítási csomópontok [egyéni Virtuálisgép-rendszerkép használatával létrehozott készlet](batch-custom-images.md) | 2500 |
+| Alacsony prioritású számítási csomópontok [egyéni Virtuálisgép-rendszerkép használatával létrehozott készlet](batch-custom-images.md) | 1000 |
 
 <sup>1</sup> maximális élettartama egy feladatot, amikor megjelenik a feladat befejezését követően a rendszer 7 nap. A befejezett tevékenységek korlátlan ideig megőrződnek; a maximális élettartamon belül nem befejezett tevékenységek adatai nem elérhetőek.
 

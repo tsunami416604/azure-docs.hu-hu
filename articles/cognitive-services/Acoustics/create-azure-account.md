@@ -1,20 +1,21 @@
 ---
-title: Azure Akusztika – Cognitive Services-fiókok beállítása
+title: A projekt Akusztika Azure-fiókok beállítása
+titlesuffix: Azure Cognitive Services
 description: Ezt az útmutatót Akusztika használata az Azure Batch- és Storage-fiókok beállításához.
 services: cognitive-services
 author: ashtat
-manager: noelc
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: acoustics
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/17/2018
 ms.author: kegodin
-ms.openlocfilehash: d5e78df2cb17e8275aef3694dda90a705ef4bdaa
-ms.sourcegitcommit: 1aedb52f221fb2a6e7ad0b0930b4c74db354a569
+ms.openlocfilehash: 05f7c435ca61930da6270c54e71c784f1b7aebcc
+ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "40181641"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48900624"
 ---
 # <a name="create-an-azure-batch-account"></a>Az Azure Batch-fiók létrehozása
 Ezt az útmutatót Akusztika használata az Azure Batch- és Storage-fiókok beállításához. A Unity beépülő modul projekt Akusztika részeként kifejlesztett kapcsolatos információkért lásd: [Akusztika mi](what-is-acoustics.md). Akusztika beépítheti a Unity-projektjét kapcsolatos információkért lásd: [bevezetés](getting-started.md).  

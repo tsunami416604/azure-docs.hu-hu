@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 09/22/2018
 ms.author: glenga
-ms.openlocfilehash: 4e40a731530e9423c7be6f2e2449aad970bb327c
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: b3b96bec7a56a0d1f8471f0290ae928ef80d7b3a
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47040244"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48883737"
 ---
 # <a name="app-settings-reference-for-azure-functions"></a>Az Azure Functions – alkalmazásbeállítási referencia
 
@@ -114,7 +114,7 @@ A használt TypeScript-fordítóprogram elérési útja. Ha szeretné az alapér
 
 ## <a name="functionsextensionversion"></a>FÜGGVÉNYEK\_BŐVÍTMÉNY\_VERZIÓ
 
-A függvényalkalmazás használata az Azure Functions futtatókörnyezettel verziója. A főverzió tilde azt jelenti, hogy jelentős 2-es verziójú (például "~") legújabb verzióját használja. Érhetők el ugyanazon új verziók, automatikusan települ a függvényalkalmazáshoz. Alkalmazás rögzítése a egy adott verziót, használja a teljes verziószám (például "2.0.12345"). Alapértelmezett érték a "~ 2".
+A használatához a függvényalkalmazást a Functions futtatókörnyezetének verzióját. A főverzió tilde azt jelenti, hogy jelentős 2-es verziójú (például "~") legújabb verzióját használja. Érhetők el ugyanazon új verziók, automatikusan települ a függvényalkalmazáshoz. Alkalmazás rögzítése a egy adott verziót, használja a teljes verziószám (például "2.0.12345"). Alapértelmezett érték a "~ 2". Érték `~1` verziójára az alkalmazás rögzíti a futtatókörnyezet 1.x.
 
 |Kulcs|Mintaérték|
 |---|------------|
@@ -122,7 +122,7 @@ A függvényalkalmazás használata az Azure Functions futtatókörnyezettel ver
 
 ## <a name="functionsworkerruntime"></a>FÜGGVÉNYEK\_FELDOLGOZÓ\_MODUL
 
-A nyelvi feldolgozói modul betöltése a függvényalkalmazáshoz.  Ez felel meg a nyelvet, az alkalmazásban (például "dotnet") használja. Functions több nyelven is szüksége lesz, ha közzétesszük őket, több alkalmazás, amelyek mindegyike egy megfelelő értéket a worker futásidejű.  Érvényes értékek a következők `dotnet`, `node`, és `java`.
+A nyelvi feldolgozói modul betöltése a függvényalkalmazáshoz.  Ez felel meg a nyelvet, az alkalmazásban (például "dotnet") használja. Functions több nyelven is szüksége lesz, ha közzétesszük őket, több alkalmazás, amelyek mindegyike egy megfelelő értéket a worker futásidejű.  Érvényes értékek a következők `dotnet` (C# /F #), `node` (JavaScript), és `java` (Java).
 
 |Kulcs|Mintaérték|
 |---|------------|

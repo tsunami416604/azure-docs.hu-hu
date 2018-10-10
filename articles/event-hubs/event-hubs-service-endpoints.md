@@ -10,16 +10,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/16/2018
 ms.author: shvija
-ms.openlocfilehash: b8c3270149c254898ad3180b92a4ff398f3efb6c
-ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
+ms.openlocfilehash: ff0ebbb140627caaaa71c5d09d0a4078eca86055
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/23/2018
-ms.locfileid: "42745909"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48888109"
 ---
 # <a name="use-virtual-network-service-endpoints-with-azure-event-hubs"></a>Virtuális hálózati Szolgáltatásvégpontok használata az Azure Event hubs szolgáltatással
 
 Az Event hubs-integráció [virtuális hálózat (VNet) Szolgáltatásvégpontok] [ vnet-sep] lehetővé teszi, hogy biztonságos hozzáférést üzenetküldési funkciókat biztosít a számítási feladatok, például a virtuális gépek, virtuális vannak kötve hálózatok mindkét végén védeni kívánt hálózati forgalom elérési útját. 
+
+> [!IMPORTANT]
+> A virtuális hálózatok támogatottak **standard** és **dedikált** az Event hubs szinten. Az alapszintű díjcsomagban nem támogatott. 
 
 Legalább egy virtuális hálózati alhálózat szolgáltatásvégpont kell kötni konfigurálása után az adott Event Hubs-névtér már nem fogadja a forgalmat bárhonnan, de virtuális hálózat engedélyezett. A virtuális hálózati szempontból a kötés Event Hubs-névtér egy végpontot az üzenetküldő szolgáltatás a virtuális hálózati alhálózatról egy elkülönített hálózati alagút állítja be.
 

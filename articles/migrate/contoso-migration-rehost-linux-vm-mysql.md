@@ -6,12 +6,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 09/05/2018
 ms.author: raynew
-ms.openlocfilehash: 49667251cbce4a3f71d71a6508793a2d4c7aac38
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: f6c877a182395d12ee46e9fd9b7892a4a3e5cdb8
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44300410"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48887785"
 ---
 # <a name="contoso-migration-rehost-an-on-premises-linux-app-to-azure-vms-and-azure-mysql"></a>Contoso áttelepítési: egy a helyszíni Linux alkalmazás Újratárolása az Azure virtuális gépek és Azure-beli MySQL
 
@@ -53,7 +53,7 @@ Az informatikai vezetőségi szorosan együttműködik üzleti partnerek megért
 
 A Contoso felhőalapú csapat rendelkezik rögzített az áttelepítés célok le annak érdekében, hogy a legmegfelelőbb migrálási módszer:
 
-- Az áttelepítés után az alkalmazás az Azure-ban kell teljesítmény ugyanazokat a lehetőségeket, mint jelenleg helyszíni VMWare környezetben.  Az alkalmazás kritikus jelzéssel a felhőben, a helyszínen marad. 
+- Az áttelepítés után az alkalmazás az Azure-ban kell teljesítmény ugyanazokat a lehetőségeket, mint jelenleg helyszíni VMware környezetben.  Az alkalmazás kritikus jelzéssel a felhőben, a helyszínen marad. 
 - Nem a Contoso szeretné fektethet be ezt az alkalmazást.  Fontos, hogy az üzleti, de a jelenlegi formájában Contoso egyszerűen át szeretné helyezni azt biztonságosan a felhőben.
 - Windows app áttelepítések néhány befejezését követően, a Contoso biztosítani szeretné egy Linux-alapú infrastruktúra használata az Azure-ban.
 - A Contoso biztosítani szeretné az adatbázis-rendszergazdai feladatok minimalizálása érdekében, az alkalmazás a felhőbe való áthelyezése után.

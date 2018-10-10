@@ -1,20 +1,21 @@
 ---
-title: A projekt Akusztika – Cognitive Services bake Akusztika
+title: A projekt Akusztika bake Akusztika
+titlesuffix: Azure Cognitive Services
 description: Ez a dokumentum ismerteti egy Akusztika bake a Unity-szerkesztő bővítménnyel be.
 services: cognitive-services
 author: kegodin
-manager: noelc
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: acoustics
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/17/2018
 ms.author: kegodin
-ms.openlocfilehash: 7a409b1ecdd693a0f28d2303d55a27b177644eb0
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: c37e050cd762cb173d64f78b5267e4ad252d17a9
+ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48855408"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48902246"
 ---
 # <a name="bake-acoustics"></a>Bake Akusztika
 

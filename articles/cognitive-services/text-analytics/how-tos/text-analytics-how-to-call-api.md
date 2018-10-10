@@ -1,21 +1,21 @@
 ---
-title: A Text Analytics REST API meghívása
-titleSuffix: Azure Cognitive Services
+title: Szövegelemzési API hívása
+titlesuffix: Azure Cognitive Services
 description: Ismerje meg, hogyan hívhat meg a Text Analytics REST API.
 services: cognitive-services
 author: ashmaka
 manager: cgronlun
 ms.service: cognitive-services
-ms.technology: text-analytics
+ms.component: text-analytics
 ms.topic: conceptual
-ms.date: 09/12/2018
+ms.date: 10/01/2018
 ms.author: ashmaka
-ms.openlocfilehash: 5293aaf6083dc832f7fe96fd6656fc8d1c30060e
-ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
+ms.openlocfilehash: a70ef893019264ffc0eb3cb2982b05b15ebd0acf
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45603260"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48884368"
 ---
 # <a name="how-to-call-the-text-analytics-rest-api"></a>A Text Analytics REST API meghívása
 
@@ -40,7 +40,7 @@ Rendelkeznie kell a [végpontját és hozzáférési kulcsát](text-analytics-ho
 
 Bemeneti nyers, strukturálatlan szöveges JSON kell lennie. Nem támogatott XML. A séma az egyszerű, amely az alábbi listában szereplő elemeket. 
 
-Ugyanazt a dokumentumokat, a Text Analytics művelet jelenleg nyújthatja: véleményeket, a kulcsfontosságú kifejezések, nyelv észlelése és entitáskapcsolás. (A sémát a eltérhet a jövőben az egyes elemzés céljából.)
+Ugyanazt a dokumentumokat, a Text Analytics művelet jelenleg nyújthatja: véleményeket, a kulcsfontosságú kifejezések, nyelv észlelése és entitás azonosítója. (A sémát a eltérhet a jövőben az egyes elemzés céljából.)
 
 | Elem | Érvényes értékek | Kötelező? | Használat |
 |---------|--------------|-----------|-------|
@@ -65,7 +65,7 @@ A szolgáltatás fogadja a kérelem legfeljebb 1 MB méretű. Postman (vagy egy 
    + `https://westus.api.cognitive.microsoft.com/text/analytics/v2.0/sentiment`
    + `https://westus.api.cognitive.microsoft.com/text/analytics/v2.0/keyPhrases`
    + `https://westus.api.cognitive.microsoft.com/text/analytics/v2.0/languages`
-   + `https://westus.api.cognitive.microsoft.com/text/analytics/v2.0/entities`
+   + `https://westus.api.cognitive.microsoft.com/text/analytics/v2.1-preview/entities`
 
 2. Állítsa be a három kérelemfejlécek:
 
@@ -86,7 +86,7 @@ A szolgáltatás fogadja a kérelem legfeljebb 1 MB méretű. Postman (vagy egy 
   + [Nyelvfelismerés](text-analytics-how-to-language-detection.md)  
   + [Kulcskifejezések kinyerése](text-analytics-how-to-keyword-extraction.md)  
   + [Hangulatelemzés](text-analytics-how-to-sentiment-analysis.md)  
-  + [Entitáskapcsolás](text-analytics-how-to-entity-linking.md)  
+  + [Entitások felismerése (előzetes verzió)](text-analytics-how-to-entity-linking.md)  
 
 
 6. Kattintson a **küldése** a kérelmet küldeni. Percenkénti kérések legfeljebb 100 küldhet. 

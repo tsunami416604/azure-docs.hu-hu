@@ -11,12 +11,12 @@ ms.component: core
 ms.workload: data-services
 ms.topic: article
 ms.date: 01/12/2018
-ms.openlocfilehash: d72f1b986671bfab1d79772ac50935918da7e681
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 8177808fd4d666ea04b1bc097f261c7643931704
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46963270"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48885047"
 ---
 # <a name="azure-machine-learning-workbench---known-issues-and-troubleshooting-guide"></a>Az Azure Machine Learning Workbench – ismert problémák és hibaelhárítási útmutató 
 Ez a cikk segít keresse meg és javítsa ki a hibákat vagy hibákat észlelt az Azure Machine Learning Workbench alkalmazás használatával részeként. 
@@ -25,7 +25,7 @@ Ez a cikk segít keresse meg és javítsa ki a hibákat vagy hibákat észlelt a
 A támogatási csoporthoz való kommunikáció során, esetén fontos, hogy a buildszám, a Workbench alkalmazás. A Windows, talál a buildszám kattintva a **súgó** menüben, és válassza **kapcsolatos Azure ML Workbench**. MacOS-gépeken, kattintson a a **Azure ML Workbench** menüben, és válassza a **kapcsolatos Azure ML Workbench**.
 
 ## <a name="machine-learning-msdn-forum"></a>A Machine Learning MSDN-fórum
-Összeállítottunk egy MSDN-fórum, hogy Ön felteheti kérdéseit. A termékcsoport aktívan figyeli a fórumot. Az URL-cím fórum [ https://aka.ms/azureml-forum ](https://aka.ms/azureml-forum). 
+Összeállítottunk egy MSDN-fórum, hogy Ön felteheti kérdéseit. A termékcsoport aktívan figyeli a fórumot. Az URL-cím fórum [ https://aka.ms/aml-forum-service ](https://aka.ms/aml-forum-service). 
 
 ## <a name="gather-diagnostics-information"></a>Diagnosztikai adatainak összegyűjtése
 Egyes esetekben hasznos lehet, ha a diagnosztikai adatok segítség kérése során megadhatja. Itt látható, ahol a naplófájlok élő:

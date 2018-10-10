@@ -1,31 +1,32 @@
 ---
-title: Adatsorozat entitásattribútumhoz konferencia Academic Knowledge API-ban |} Microsoft Docs
-description: További tudnivalók az attribútumok csak akkor használhatja a konferencia adatsorozat entitás kognitív szolgáltatásban.
+title: Konferencia sorozat tevékenységentitás-attribútumok – Academic Knowledge API
+titlesuffix: Azure Cognitive Services
+description: Ismerje meg az attribútumok a Konferenciasorozat entitással is használhatja.
 services: cognitive-services
 author: alch-msft
-manager: kuansanw
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: academic-knowledge
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/23/2017
 ms.author: alch
-ms.openlocfilehash: 332736c927bdaa00334546f626a6eabb8e11d3b5
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: f9f28afd7005d7a61aa0d2f4dba69ca598034b52
+ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35346859"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48900748"
 ---
-# <a name="conference-series-entity"></a>Konferencia adatsorozat entitás
+# <a name="conference-series-entity"></a>Konferencia sorozat entitás
 
-<sub> * A következő attribútumok konferencia adatsorozat entitás vonatkoznak. (Most = "3") </sub>
+<sub> * A következő attribútumok konferencia sorozat entitás jellemzőek. (Folyó évi = "3") </sub>
 
 Name (Név)    |Leírás                            |Típus       | Műveletek
 ------- | ------------------------------------- | --------- | ----------------------------
 Azonosító      |Entitásazonosító                              |Int64      |Egyenlő
-CN      |Konferencia adatsorozat normalizált neve      |Sztring     |Egyenlő
-DCN     |Konferencia adatsorozat megjelenített neve         |Sztring     |nincs
-Másolat      |Konferencia adatsorozat hivatkozás száma összesen         |Int32      |nincs  
-ECC     |Konferencia adatsorozat becsült hivatkozás teljes száma   |Int32      |nincs
-F.FId   |A vizsgálat entitás azonosítója az konferencia adatsorozathoz tartozó mező |Int64  | Egyenlő
-F.FN    |A konferencia adatsorozat társított vizsgálat név mezője  | Egyenlő,<br/>StartsWith
+CN      |Konferenciasorozat normalized neve      |Sztring     |Egyenlő
+DCN     |Konferencia sorozat megjelenített neve         |Sztring     |nincs
+Másolat      |Konferenciasorozat idézetet száma összesen         |Int32      |nincs  
+ECC     |Konferencia sorozat becsült idézetet teljes száma   |Int32      |nincs
+F.FId   |A konferenciasorozat társított tanulmány Entitásazonosító mezője |Int64  | Egyenlő
+F.FN    |A konferenciasorozat társított tanulmány név mező  | Egyenlő,<br/>StartsWith

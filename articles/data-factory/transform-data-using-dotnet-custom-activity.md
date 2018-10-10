@@ -10,14 +10,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/01/2018
+ms.date: 10/18/2018
 ms.author: douglasl
-ms.openlocfilehash: fa13b6509052438a0f59c4610f250d0b88b41f2b
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 77e5d6c278436a1fc192421c9867106409389a66
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48043075"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48888221"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>Egyéni tevékenységek használata Azure Data Factory-folyamatban
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -293,6 +293,23 @@ Ha szeretné az alsóbb rétegbeli tevékenység stdout.txt tartalmának felhasz
   > [!IMPORTANT]
   > - A activity.json linkedServices.json és datasets.json a Batch-feladat a futtatókörnyezet mappában vannak tárolva. Ebben a példában a activity.json linkedServices.json és datasets.json vannak tárolva "https://adfv2storage.blob.core.windows.net/adfjobs/<GUID>/runtime/" elérési út. Szükség esetén meg kell törölnie őket külön. 
   > - A társított szolgáltatást használja, helyi Integration Runtime, a bizalmas információkat, például kulcsokat vagy jelszavakat titkosítja a helyi Integration Runtime hitelesítő adatok biztosítására marad az ügyfél határozza meg magánhálózati környezetben. Néhány időérzékeny mezőinek hiányzó lehet, amikor ezzel a módszerrel az egyéni alkalmazás kódjában hivatkozik. Használja a SecureString a extendedProperties helyett társított szolgáltatásra mutató hivatkozást, ha szükséges. 
+
+## <a name="retrieve-securestring-outputs"></a>Kimenetek SecureString beolvasása
+
+Bizalmas tulajdonságértékek típusúként megjelölt *SecureString*, ahogyan az ebben a cikkben szereplő példák némelyike maszkolva ki a figyelés lapon, a Data Factory felhasználói felületén.  A tényleges folyamat-végrehajtás, azonban egy *SecureString* tulajdonság szerializálva van belül JSON-fájlként a `activity.json` egyszerű szöveges fájlt. Példa:
+
+```json
+"extendedProperties": {
+    "connectionString": {
+        "type": "SecureString",
+        "value": "aSampleSecureString"
+    }
+}
+```
+
+A szerializálás nem teljesen biztonságos, és nem tekinthető biztonságos. A célja, hogy a Data Factory maszkolandó az érték a Monitorozás lapon érhető el.
+
+A típus tulajdonságai *SecureString* az egyéni tevékenységek, olvassa el a `activity.json` fájlt, amely az azonos mappába kerül a. Exe-fájl, a JSON deszerializálni, ezután pedig hozzáfér a JSON-tulajdonságot (extendedProperties = > [propertyName] = > érték).
 
 ## <a name="compare-v2-v1"></a> Hasonlítsa össze a v2 egyéni tevékenységei és verzió 1 (egyéni) DotNet tevékenységi
 

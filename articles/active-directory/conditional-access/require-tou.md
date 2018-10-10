@@ -1,6 +1,6 @@
 ---
 title: Rövid útmutató – Azure Active Directory feltételes hozzáférés által védett felhőalapú alkalmazások elérése előtt el kell fogadni a használati feltételeket tartalmazó fájl szükséges |} A Microsoft Docs
-description: Ez a rövid útmutatóban megismerheti, hogyan megkövetelheti, hogy a rendszer elfogadja az a használati feltételeket tartalmazó fájl a kijelölt felhőalapú alkalmazásokhoz való hozzáférés az Azure Active Directory feltételes hozzáférés által megadása előtt.
+description: Ez a rövid útmutatóban megismerheti, hogyan megkövetelheti, hogy az Azure Active Directory feltételes hozzáférés által kiválasztott felhőalapú alkalmazásokhoz való hozzáférés megadása előtt elfogadja a használati feltételeket.
 services: active-directory
 keywords: feltételes hozzáférés az alkalmazások, a feltételes hozzáférés az Azure ad-ben, a biztonságos hozzáférés a vállalati erőforrásokhoz, a feltételes hozzáférési szabályzatokat, a használati feltételeket
 documentationcenter: ''
@@ -16,12 +16,12 @@ ms.workload: identity
 ms.date: 06/13/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: 2b06dcfd4bdeb68d114c0c6dd57134fadfef57b5
-ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
+ms.openlocfilehash: e121cfddf8dc598771d630e011b4410217f5e92b
+ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45605844"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48901886"
 ---
 # <a name="quickstart-require-terms-of-use-to-be-accepted-before-accessing-cloud-apps"></a>Rövid útmutató: A felhőbeli alkalmazások elérése előtt el kell fogadni a használati feltételeket tartalmazó fájl megkövetelése 
 
@@ -193,7 +193,7 @@ Ez a szakasz bemutatja, hogyan hozhat létre a feltételes hozzáférési szabá
 
 ## <a name="evaluate-a-simulated-sign-in"></a>Egy szimulált bejelentkezési kiértékelése
 
-Most, hogy a feltételes hozzáférési szabályzat van beállítva, érdemes tudni, hogy a várt módon működik-e azt. Első lépésként, a feltételes hozzáférés használata a Mi történik, ha a házirend eszközzel egy jelentkezzen be a tesztfelhasználó szimulálásához. A szimuláció becslése a hatás bejelentkezési ebben a szabályzatok a, és a szimuláció jelentést hoz létre.  
+Most, hogy konfigurálta a feltételes hozzáférési szabályzatot, érdemes ellenőriznie, hogy a várt módon működik-e. Első lépésként, a feltételes hozzáférés használata a Mi történik, ha a házirend eszközzel egy jelentkezzen be a tesztfelhasználó szimulálásához. A szimuláció megbecsüli a bejelentkezésnek a szabályzatokra gyakorolt hatását, és létrehoz egy szimulációs jelentést.  
 
 A mi inicializálni a szabályzat kiértékelési eszközével, ha:
 

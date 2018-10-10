@@ -1,20 +1,21 @@
 ---
-title: Az Academic Knowledge API a tevékenységentitás-attribútumok papír |} A Microsoft Docs
-description: Ismerje meg, hogy az attribútumok a papír entitás az Academic Knowledge API, a Cognitive Services használata.
+title: A tanulmány tevékenységentitás-attribútumok – Academic Knowledge API
+titlesuffix: Azure Cognitive Services
+description: Ismerje meg, hogy az attribútumok a papír entitás az Academic Knowledge API használható.
 services: cognitive-services
 author: alch-msft
-manager: kuansanw
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: academic-knowledge
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/31/2017
 ms.author: alch
-ms.openlocfilehash: 75efba2c2ce8842f233f766876ca00844338fb25
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: c1f97896a8c3264fca0e76a0800731b8c6c85267
+ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47094711"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48901601"
 ---
 # <a name="paper-entity"></a>A tanulmány entitás
 

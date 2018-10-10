@@ -6,16 +6,16 @@ services: cognitive-services
 author: swhite-msft
 manager: cgronlun
 ms.service: cognitive-services
-ms.technology: bing-visual-search
+ms.component: bing-visual-search
 ms.topic: conceptual
 ms.date: 04/17/2018
 ms.author: scottwhi
-ms.openlocfilehash: 542f25df9837a471f6f0e2cf36575c2dd1be2680
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: cf0b53d13e65b0815c0501a70570788f7be599b1
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47224782"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48883398"
 ---
 # <a name="default-insights-tag"></a>Az alapértelmezett insights címke
 
@@ -432,4 +432,4 @@ A DocumentLevelSuggestions elemzés a kép tartalma alapján javasolt keresési 
 
 Tekintse meg a Bing hogyan jeleníthet meg a vizuális elemzések példák (lásd: [példák a Bing insights – használat](bing-insights-usage.md)).
 
-Gyorsan megkezdheti az első kérelmét, tekintse meg a rövid útmutató: [C#](quickstarts/csharp.md) | [Java](quickstarts/java.md) | [node.js](quickstarts/nodejs.md)  |  [Python](quickstarts/python.md).
+Annak érdekében, hogy gyorsan nekiláthasson az első kérés létrehozásának, olvassa el a következő rövid útmutatókat: [C#](quickstarts/csharp.md) | [Java](quickstarts/java.md) | [node.js](quickstarts/nodejs.md) | [Python](quickstarts/python.md).

@@ -5,16 +5,16 @@ description: Bemutatja, hogyan lefordítani a beszédfelismerés, beszédfelisme
 services: cognitive-services
 author: wolfma61
 ms.service: cognitive-services
-ms.technology: Speech
+ms.component: Speech
 ms.topic: article
 ms.date: 09/24/2018
 ms.author: wolfma
-ms.openlocfilehash: 32cbfada359fb39e71abdf1b9ab892a7cd407cc2
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 2e69dabb3be0aada952fe3acba4d4c0b30f62945
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46996672"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48887615"
 ---
 # <a name="translate-speech-with-the-cognitive-services-speech-sdk-for-c"></a>A C# lefordítja a beszéd, a Cognitive Services beszéd SDK-val
 
@@ -39,5 +39,5 @@ Keresse meg a kódot, amely ebben a cikkben a konzol samples/csharp/sharedconten
 
 ## <a name="next-steps"></a>További lépések
 
-- [Hogyan ismerhetik fel a beszédfelismerés](how-to-recognize-speech-csharp.md)
+- [Beszéd felismerése](how-to-recognize-speech-csharp.md)
 - [A beszédfelismerés leképezések felismerése](how-to-recognize-intents-from-speech-csharp.md)

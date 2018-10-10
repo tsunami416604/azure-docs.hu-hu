@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/05/2018
 ms.author: alkarche
-ms.openlocfilehash: f5e23a5734f8451b99823f238b577a21a4752c18
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: babad23743a0a3c9631c0bcf406de3521174264a
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47047510"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48887212"
 ---
 # <a name="how-to-troubleshoot-functions-runtime-is-unreachable"></a>Hogyan háríthatók el a "a functions futtatókörnyezete nem érhető el"
 
@@ -28,7 +28,7 @@ Ezt a dokumentumot célja, ha a Functions portálon jelenik meg a következő hi
 `Error: Azure Functions Runtime is unreachable. Click here for details on storage configuration`
 
 ### <a name="summary"></a>Összegzés
-Ez a probléma akkor fordul elő, amikor az Azure unctions modul nem indítható el. Ez a hiba fordul elő a leggyakoribb oka a függvényalkalmazás a tárfiókhoz való hozzáférés elvesztése. [További információ a tárolási fiók követelményeit Itt](https://docs.microsoft.com/azure/azure-functions/functions-create-function-app-portal#storage-account-requirements)
+Ez a probléma akkor fordul elő, amikor az Azure Functions Runtime nem indítható el. Ez a hiba fordul elő a leggyakoribb oka a függvényalkalmazás a tárfiókhoz való hozzáférés elvesztése. [További információ a tárolási fiók követelményeit Itt](https://docs.microsoft.com/azure/azure-functions/functions-create-function-app-portal#storage-account-requirements)
 
 ### <a name="troubleshooting"></a>Hibaelhárítás
 Végigvezetjük a négy leggyakoribb hibák azonosítása és megoldása minden esetben.

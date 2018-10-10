@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/4/2018
+ms.date: 10/8/2018
 ms.author: kumud
-ms.openlocfilehash: 57bb3fea9ad8128520b5d186bd7a27483308e606
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 15783822631a5372b181f2d65746664d90b389da
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48802797"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48883958"
 ---
 # <a name="load-balancer-outbound-rules"></a>A terheléselosztó kimenő szabályok
 
@@ -47,7 +47,7 @@ Kimenő szabályok összes Load Balancer-szabályt, például hajtsa végre a te
 
 Az kimenő szabályt konfigurálja a kimenő NAT _háttérkészlet által azonosított összes virtuális gép_ fordítandó a _előtérbeli_.  És _paraméterek_ adja meg a további szabályozásához a kimenő NAT-algoritmus.
 
-API-verzió "2018-08-01" lehetővé teszi egy kimenő szabály definícióját strukturált az alábbiak szerint:
+API-verzió "2018-07-01" lehetővé teszi egy kimenő szabály definícióját strukturált az alábbiak szerint:
 
 ```json
       "outboundRules": [

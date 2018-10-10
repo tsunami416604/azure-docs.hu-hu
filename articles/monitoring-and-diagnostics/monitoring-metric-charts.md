@@ -8,20 +8,14 @@ ms.topic: conceptual
 ms.date: 09/17/2017
 ms.author: vitaly.gorbenko
 ms.component: metrics
-ms.openlocfilehash: 21b0029ff12915c8416ad2366fbf6c45ddfaa288
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: f82b4dff20e2b26e62889c41b3ff3c27bc86066a
+ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46978420"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48901413"
 ---
 # <a name="azure-monitor-metrics-explorer"></a>Az Azure Monitor Metrikaböngészőjének
-
-Ebben az útmutatóban következő generációs Azure Monitor-metrikák diagramkészítési élményt ismerteti, amely jelenleg nyilvános előzetes verzióban érhető el. Az új funkció támogatja a többdimenziós metrikák és alapszintű, sem a dimenziókkal rendelkező metrikák diagramokat. Dolgozunk, amely a különböző típusú, különböző erőforráscsoportokból és előfizetések metrikák átfedő diagramokat is. A többdimenziós metrikák diagramok dimenzió szűrők alkalmazása, valamint a csoportosítás szabható testre. Bármilyen diagram, beleértve a testre szabott diagramokat kitűzhetők az irányítópultokra.
-
-Ha a régi felületre, amely csak az alapszintű, sem a dimenziókkal rendelkező metrikák támogatja kapcsolatos információkat keres, tekintse meg "Elérése a portálon keresztül mérőszámok" című szakaszban található a [útmutató a Microsoft Azure metrikáinak áttekintésében](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-metrics).
-
-## <a name="what-is-azure-monitor-metrics-explorer"></a>Mi az Azure Monitor Metrikaböngészőjének?
 
 Az Azure Monitor Metrikaböngészőjének a Microsoft Azure-portálon, amely lehetővé teszi, hogy a diagramok küldik az ábrázolást, vizuálisan naplókezelője trendeket és kivizsgálása adatforgalmi csúcsokhoz és a ' értékeihez süllyedések egyik összetevője. Metrikaböngésző egy alapvető kiindulási pontként különböző teljesítmény- és az alkalmazások és az Azure-ban üzemeltetett vagy az Azure Monitor szolgáltatás által figyelt infrastruktúra rendelkezésre állási problémák kivizsgálása. 
 
@@ -29,34 +23,29 @@ Az Azure Monitor Metrikaböngészőjének a Microsoft Azure-portálon, amely leh
 
 A Microsoft Azure-ban mérőszámok olyan mért értékek sorozata, összegyűjtött és tárolt idővel számát. Nincsenek metrikák standard (vagy "platform"), és egyéni mérőszámok. A standard mérőszámok az Azure platform saját maga által biztosított Önnek. Standard mérőszámok az Azure-erőforrások állapotát és a használati statisztikáit tükrözik. Mivel az egyéni metrikák használatával az alkalmazások által az Azure-bA küldött a [Application Insights API egyéni eseményekhez](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics). Egyéni metrikák és más alkalmazás adott mérőszámok az Application Insights-erőforrások vannak tárolva.
 
-
-
 ## <a name="how-do-i-create-a-new-chart"></a>Hogyan hozhatok létre egy új diagramot?
 
-   > [!NOTE]
-   > A régi metrikák felületet funkcióit még nem állnak rendelkezésre az új. Amíg az új felhasználói felület előzetes verzióként, továbbra is a régi (dimenziók nélküli) metrikák nézet használatával Azure monitor. 
-
 1. Nyissa meg az Azure Portalon
-2. Lépjen az új **figyelő** lapra, és válassza ki **metrikák (előnézet)**.
+2. Lépjen az új **figyelő** lapra, és válassza ki **metrikák**.
 
-   ![Metrikák előnézeti képe](./media/monitoring-metric-charts/0001.png)
+   ![Metrikák kép](./media/monitoring-metric-charts/0001.png)
 
 3. A **metrika választó** automatikusan lesz nyissa meg az Ön számára. Válassza ki egy erőforrást a listából, a kapcsolódó metrikákat tekinthet meg. Csak a metrikák az erőforrások listájában jelennek meg.
 
-   ![Metrikák előnézeti képe](./media/monitoring-metric-charts/0002.png)
+   ![Metrikák kép](./media/monitoring-metric-charts/0002.png)
 
    > [!NOTE]
    >Ha egynél több Azure-előfizetéssel, Metrikaböngésző lekéri az erőforrásokat az összes előfizetés, amely ki van jelölve, a portál beállításaiban -> szűrő által az előfizetések listája. Módosításához kattintson a portál beállítások fogaskerék ikonra a képernyő fölött, és válassza ki a használni kívánt melyik előfizetések.
 
-4. Bizonyos erőforrások esetében (azaz a Storage-fiókok és a virtuális gépek), egy metrika kijelölése előtt ki kell választania egy **Namespace**. Minden névtér csak ezt a névteret, és más névterek nem releváns metrikákat a saját készletét hordozza.
+4. Néhány erőforrás esetében (Storage-fiókok és a virtuális gépek) metrika kijelölése előtt ki kell választania egy **Namespace**. Minden névtér csak ezt a névteret, és más névterek nem releváns metrikákat a saját készletét hordozza.
 
    Például minden Azure Storage, a "BLOB", "Fájlok", "Üzenetsorok" és "Táblák", a storage-fiók minden részét képező subservices metrikáit. A metrika "Üzenetsorbeli üzenetek száma" azonban csak a subservice "Várólista" és a bármely más tároló-subservices természetes módon alkalmazható.
 
-   ![Metrikák előnézeti képe](./media/monitoring-metric-charts/0003.png)
+   ![Metrikák kép](./media/monitoring-metric-charts/0003.png)
 
 5. Válasszon ki egy metrikát a listából. Ha ismeri a mérőszám kívánt név, kezdje el beírni a rendelkezésre álló metrikák szűrt listájának megtekintéséhez:
 
-   ![Metrikák előnézeti képe](./media/monitoring-metric-charts/0004.png)
+   ![Metrikák kép](./media/monitoring-metric-charts/0004.png)
 
 6. Miután egy metrikát, a diagram az alapértelmezett összesítés a kiválasztott metrika az jelenik meg. Ezen a ponton, egyszerűen kattintson a a **metrikák választó** bezárásához. A diagram egy másik összesítésre is igény szerint válthat. Bizonyos metrikák összesítési váltás lehetővé teszi, hogy kiválaszthatja, melyik értéket meg szeretné tekinteni a diagramra. Például átválthat az átlagos, minimális és maximális értékek között. 
 

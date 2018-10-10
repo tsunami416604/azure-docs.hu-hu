@@ -1,101 +1,105 @@
 ---
-title: Adja hozzá a kapcsoló utasításokat a munkafolyamatokat – Azure Logic Apps |} Microsoft Docs
-description: Az Azure Logic Apps megadott értékek alapján munkafolyamat-műveleteket szabályzó kapcsoló utasítás létrehozása
+title: Switch-utasítások hozzáadása az Azure Logic Apps-munkafolyamatok – |} A Microsoft Docs
+description: Switch-utasítások alapján adott értékekre Azure Logic Apps munkafolyamat-műveletek vezérlő létrehozása
 services: logic-apps
 ms.service: logic-apps
+ms.suite: integration
 author: ecfan
 ms.author: estfan
-manager: jeconnoc
-ms.date: 03/05/2018
-ms.topic: article
 ms.reviewer: klam, LADocs
-ms.suite: integration
-ms.openlocfilehash: e15f89d4b7e33ce7e28676c219344f7d7d9cd465
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.topic: article
+ms.date: 10/08/2018
+ms.openlocfilehash: 27a73bddc2e7fb613950d78967d3100c7adcae41
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35299616"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48883839"
 ---
-# <a name="create-switch-statements-that-run-workflow-actions-based-on-specific-values-in-azure-logic-apps"></a>Rendszert futtató munkafolyamat-műveleteket az Azure Logic Apps megadott értékek alapján kapcsoló utasítás létrehozása
+# <a name="create-switch-statements-that-run-workflow-actions-based-on-specific-values-in-azure-logic-apps"></a>Switch-utasítások, amely alapján az adott értékekre Azure Logic Apps munkafolyamat-műveletek létrehozása
 
-Objektumok, kifejezés vagy jogkivonatok értékek alapján a konkrét műveletek futtatására, vegye fel a *kapcsoló* utasítást. Ez a struktúra kiértékeli az objektum, kifejezés vagy token, kiválasztja azt az esetet, amely megfelel az eredmény, és adott esetben csak a konkrét műveletek futtatása. Amikor a switch utasítás fut, csak egyetlen esetet meg kell felelnie az eredményt.
+Objektumok, kifejezések vagy jogkivonatok értékei alapján műveleteket futtatni, adjon hozzá egy *váltson* utasítást. Ez a struktúra értékeli ki az objektumot, kifejezés vagy token, úgy dönt, az eset, amely megegyezik az eredményt, és adott esetben csak az adott műveletek futtatása. A switch utasítás futtatása közben csak egyetlen esetet tartalmaz meg kell egyeznie az eredményt.
 
-Tegyük fel például azt szeretné, hogy a logikai alkalmazás, amely végrehajtja az e-mailben kiválasztott lehetőségnek alapján különböző műveleteket. Ebben a példában a logikai alkalmazás ellenőrzi a webhely RSS-hírcsatorna új tartalom. Az RSS-hírcsatorna megjelenik egy új elemet, a logikai alkalmazás jóváhagyó e-mailt küld. Hogy a jóváhagyó választja-e a "Jóváhagyás" vagy "Elutasítás" alapján, a logikai alkalmazás eltérő módon történik.
+Például tegyük fel, hogy egy logikai alkalmazást, amely a különböző lépések alapján egy e-mailben a jelölőnégyzetet. Ebben a példában a logikai alkalmazás ellenőrzi egy webhely RSS-Hírcsatornájában keres új tartalmat. Az RSS-hírcsatornában új elem jelenik meg, ha a logikai alkalmazás egy jóváhagyó e-mailt küld. Alapján választja-e a jóváhagyó a "Jóváhagyás" vagy "Elutasítás", a logikai alkalmazás eltérő módon történik.
 
 > [!TIP]
-> Minden programozási nyelv, például a switch utasítás csak egyenlőségi operátorok támogatja. Ha szükség más relációs operátorok, például a "nagyobb, mint", akkor egy [feltételes utasítás](#conditions).
-> Ahhoz, hogy determinisztikus végrehajtási viselkedésének, esetekben dinamikus jogkivonatok vagy kifejezések helyett egyedi és statikus értéket kell tartalmaznia.
+> Minden programozási nyelvet – például a switch-utasítások csak egyenlőségi operátorok támogatja. Ha más relációs operátorokat, például "nagyobb, mint", van szüksége egy [feltételes utasítás](../logic-apps/logic-apps-control-flow-conditional-statement.md).
+> Ahhoz, hogy determinisztikus végrehajtási viselkedése, esetekben dinamikus jogkivonatok vagy kifejezések helyett egyedi és statikus értéket kell tartalmaznia.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Azure-előfizetés. Ha még nincs előfizetése, [regisztráljon egy ingyenes Azure-fiókra](https://azure.microsoft.com/free/).
 
-* Kövesse az ebben a cikkben példa [a minta logikai alkalmazás létrehozása](../logic-apps/quickstart-create-first-logic-app-workflow.md) Outlook.com vagy az Office 365 Outlook-fiókkal.
+* Kövesse az ebben a cikkben szereplő példa [a minta logikai alkalmazás létrehozása](../logic-apps/quickstart-create-first-logic-app-workflow.md) Outlook.com-os vagy Office 365 Outlook-fiókkal.
 
-  1. Amikor az e-mail üzenetek küldéséhez a művelet, válassza ki a **jóváhagyása e-mailt küldeni** helyette.
+  1. Amikor hozzáadja a műveletet az e-mailt, keresse meg és válassza inkább a következő műveletet: **jóváhagyási e-mail küldése**
 
      ![Válassza a "Jóváhagyási e-mail küldése"](./media/logic-apps-control-flow-switch-statement/send-approval-email-action.png)
 
-  2. Adja meg a kötelező mezőket, például a személy, aki a jóváhagyási e-mailben kap e-mail címet. 
-  A **felhasználói beállítások**, adja meg "Jóváhagyása, elutasítása".
+  1. Adja meg a kötelező mezőket, például a jóváhagyási e-mailben megkapó személy e-mail címet. 
+  A **felhasználói beállítások**, adja meg "Jóváhagyás, Elutasítás".
 
-     ![Adja meg az e-mailek részletei](./media/logic-apps-control-flow-switch-statement/send-approval-email-details.png)
+     ![Adja meg az e-mail adatai](./media/logic-apps-control-flow-switch-statement/send-approval-email-details.png)
 
-## <a name="add-a-switch-statement"></a>Adjon hozzá egy kapcsoló utasítást
+## <a name="add-switch-statement"></a>Switch utasítás hozzáadása
 
-1. Válassza ki a minta-munkafolyamat végén **+ új lépés** > **... További** > **kapcsoló eset hozzáadása**. 
+1. Ebben a példában adjon hozzá egy kapcsoló utasítást a végén a munkafolyamat-minta. Válassza ki az utolsó lépés után **új lépés**.
 
-   ![Adjon hozzá egy kapcsoló utasítást](./media/logic-apps-control-flow-switch-statement/add-switch-statement.png)
+   Ha szeretne hozzáadni egy switch utasítás lépések közötti, vigye az egérmutatót a nyíl felett oda, ahol a switch utasítás hozzá szeretné. Válassza ki a **plusz jelre** (**+**), amely akkor jelenik meg, majd válassza a **művelet hozzáadása**.
 
-   A switch utasítás egyetlen esetet és egy alapértelmezett esetben jelenik meg. 
-   A switch utasítás szükséges legalább egy esetet, valamint az alapértelmezett eset. 
+1. A Keresés mezőbe írja be "kapcsoló" szűrőként. Válassza a következő műveletet: **váltás – szabályozza**
 
-   Ha hozzá szeretne adni egy switch utasítás lépések között, vigye az egérmutatót a nyíl ahol hozzáadandó a switch utasítás. 
-   Válassza ki a **pluszjel** (**+**), amely akkor jelenik meg, majd válassza a **kapcsoló eset hozzáadása**.
+   ![Kapcsoló hozzáadása](./media/logic-apps-control-flow-switch-statement/add-switch-statement.png)
 
-4. Az a **a** mezőben válassza a **SelectedOption** mező, amelynek kimenete meghatározza, hogy milyen műveletet kell végrehajtani. 
-   
-   Kiválaszthatja a mezőt a **dinamikus tartalom hozzáadása az** lista, amely akkor jelenik meg.
+   A switch utasítás egyetlen esetet tartalmaz, és a egy alapértelmezett eset jelenik meg. 
+   Alapértelmezés szerint a switch utasítás legalább egy esetet, valamint az alapértelmezett esetben van szükség. 
 
-5. A esetek, ahol a jóváhagyó kiválasztja kezelésére `Approve` vagy `Reject`, adja hozzá egy másik helyzet közötti **eset** és **alapértelmezett**. 
-   
-6. Vegye fel ezeket a műveleteket a megfelelő esetekben:
+   ![Üres alapértelmezett switch utasítás](./media/logic-apps-control-flow-switch-statement/empty-switch.png)
 
-   | Nagybetűk # | **SelectedOption** | Műveletek |
-   |:------ |:-------------------|:------ |
-   | 1. eset | **Jóváhagyása** | Adja hozzá az Outlook **egy e-mailek küldése** művelet az RSS-elem adatokat küldjenek a jóváhagyó kiválasztásakor csak **jóváhagyás**. |
-   | 2. eset | **Elutasítása** | Adja hozzá az Outlook **egy e-mailek küldése** , hogy az RSS-elem vissza lett utasítva, más jóváhagyóknak értesítési művelet. |
-   | Alapértelmezett | \<none\> | Nincs szükség műveletre. Ebben a példában a **alapértelmezett** esetben üres mert **SelectedOption** csak két pontot tartalmaz. |
-   |         |          |
+1. Kattintson a **a** mezőre, hogy a dinamikus tartalmak listája jelenik meg. A listában jelölje ki a **SelectedOption** mező, amelynek kimeneti meghatározza, hogy a művelet végrehajtásához. 
 
-   ![Switch utasítás](./media/logic-apps-control-flow-switch-statement/switch.png)
+   ![Válassza ki a "SelectedOption"](./media/logic-apps-control-flow-switch-statement/select-selected-option.png)
 
-7. Mentse a logikai alkalmazást. 
+1. Kezelje az esetekben, ahol a jóváhagyó kiválasztja `Approve` vagy `Reject`, egy másik eset közötti **eset** és **alapértelmezett**. 
 
-   Ez a példa manuális teszteléséhez válassza **futtatása** mindaddig, amíg a logic app keresi meg egy új RSS és jóváhagyási e-mailt küld. 
-   Válassza ki **jóváhagyás** és figyelje meg az eredményeket.
+   ![Egy másik eset](./media/logic-apps-control-flow-switch-statement/switch-plus.png)
 
-## <a name="json-definition"></a>JSON-definícióból
+1. Adja hozzá ezeket a műveleteket a megfelelő esetekben:
 
-Most, hogy a létrehozott logikai alkalmazás egy switch utasítás használatával, a magas szintű kód megadása a switch utasítás mögött vizsgáljuk meg.
+   | Kis # | **SelectedOption** | Műveletek |
+   |--------|--------------------|--------|
+   | 1. eset | **Hagyja jóvá** | Adja hozzá az Outlook **e-mail küldése** művelet csak akkor, ha a jóváhagyó kijelölve az RSS-elem részleteinek megadása **jóváhagyás**. |
+   | 2. eset | **Elutasítás** | Adja hozzá az Outlook **e-mail küldése** műveletet, hogy az RSS-elem el lett utasítva, más jóváhagyók értesítésére. |
+   | Alapértelmezett | None | Nincs szükség műveletre. Ebben a példában a **alapértelmezett** funkcióban üres mert **SelectedOption** csak két pontot tartalmaz. |
+   |||
+
+   ![Befejezett switch utasítás](./media/logic-apps-control-flow-switch-statement/finished-switch.png)
+
+1. Mentse a logikai alkalmazást. 
+
+   Ebben a példában manuális teszteléséhez válassza **futtatása** mindaddig, amíg a logikai alkalmazás egy új RSS-elem keresése, és a egy jóváhagyási e-mailt küld. 
+   Válassza ki **jóváhagyás** megfigyelni az eredményeket.
+
+## <a name="json-definition"></a>JSON-definíció
+
+Most, hogy létrehozott egy logikai alkalmazást egy switch utasítás használatával, tekintsük át a magas szintű kód definíciója a switch utasítás mögött.
 
 ``` json
 "Switch": {
    "type": "Switch",
    "expression": "@body('Send_approval_email')?['SelectedOption']",
    "cases": {
-      "Case" : {
-         "actions" : {
-           "Send_an_email": { }
+      "Case": {
+         "actions": {
+           "Send_an_email": {}
          },
          "case" : "Approve"
       },
-      "Case_2" : {
-         "actions" : {
-           "Send_an_email_2": { }
+      "Case_2": {
+         "actions": {
+           "Send_an_email_2": {}
          },
-         "case" : "Reject"
+         "case": "Reject"
       }
    },
    "default": {
@@ -109,23 +113,23 @@ Most, hogy a létrehozott logikai alkalmazás egy switch utasítás használatá
 }
 ```
 
-| Címke              | Leírás |
-| :----------------- | :---------- |
-| `"Switch"`         | A kapcsoló utasítást, ami az olvashatóság átnevezheti neve |
+| Címke | Leírás |
+|-------|-------------|
+| `"Switch"`         | A switch utasításban, amely átnevezheti az olvashatóság érdekében neve |
 | `"type": "Switch"` | Megadja, hogy a művelet egy switch utasítás |
-| `"expression"`     | Ebben a példában határozza meg, amely minden esetben későbbi szakaszában a definícióban megadott képest értékeli ki a jóváhagyó kijelölt beállítás |
-| `"cases"` | Meghatározza bármely esetek számát. A minden esetben `"Case_*"` az adott esetben az olvashatóság átnevezhető alapértelmezett neve. |
-| `"case"` | Adja meg az eset értéket, amely a switch utasítás az összehasonlításhoz használó állandó és egyedi értéknek kell lennie. Ha egyetlen eset felel meg a kapcsoló kifejezés eredményének, a műveletek a `"default"` szakasz futnak.
-|           |         |
+| `"expression"`     | Ebben a példában adja meg, amely minden esetben, mivel később a definícióban képest értékeli ki a jóváhagyó a kiválasztott beállítás |
+| `"cases"` | Minden olyan esetek számát határozza meg. Minden esetben a `"Case_*"` erre az esetre az olvashatóság érdekében átnevezheti alapértelmezett neve |
+| `"case"` | Adja meg a kis értéket, amely a switch utasítás az összehasonlítást használó állandó és egyedi értéknek kell lennie. Ha egyetlen eset szereplő műveletek kapcsoló kifejezés eredménye megfelel-e a `"default"` szakasz futnak. | 
+| | | 
 
 ## <a name="get-support"></a>Támogatás kérése
 
 * A kérdéseivel látogasson el az [Azure Logic Apps fórumára](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
-* Küldje el, vagy szavazna szolgáltatások vagy a javaslatok, látogasson el a [Azure Logic Apps felhasználói visszajelzési webhelyet](http://aka.ms/logicapps-wish).
+* Küldje el, vagy szavazhat a szolgáltatások vagy a javaslatok, látogasson el a [Azure Logic Apps felhasználói visszajelzések oldalon](http://aka.ms/logicapps-wish).
 
 ## <a name="next-steps"></a>További lépések
 
-* [A lépéseket (feltételes utasítások) feltétel alapján](../logic-apps/logic-apps-control-flow-conditional-statement.md)
+* [Hajtsa végre a lépéseket, egy feltételt (feltételes kifejezések) alapján](../logic-apps/logic-apps-control-flow-conditional-statement.md)
 * [Futtassa, és ismételje meg a (hurkok)](../logic-apps/logic-apps-control-flow-loops.md)
-* [Futtatás vagy egyesítési párhuzamos lépéseket (ágak)](../logic-apps/logic-apps-control-flow-branches.md)
-* [Futtassa a csoportosított (hatókör) állapota alapján](../logic-apps/logic-apps-control-flow-run-steps-group-scopes.md)
+* [Futtatás vagy egyesítési párhuzamos lépéseket (ág)](../logic-apps/logic-apps-control-flow-branches.md)
+* [Hajtsa végre a lépéseket, a csoportosított műveleti állapota (hatóköröket) alapján](../logic-apps/logic-apps-control-flow-run-steps-group-scopes.md)

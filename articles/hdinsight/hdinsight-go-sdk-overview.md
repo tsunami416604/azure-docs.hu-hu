@@ -7,17 +7,17 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 9/21/2018
 ms.author: tyfox
-ms.openlocfilehash: bb7cdbc340c6e9763277d5cdacc0cfb510fdc0db
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 8beb75748c2e9fe3f71ad321c4cd523e344fb90c
+ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47047683"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48901906"
 ---
 # <a name="hdinsight-go-management-sdk-preview"></a>HDInsight Go SDK előzetes verziójának
 
 ## <a name="overview"></a>Áttekintés
-A HDInsight Go SDK nyújt az osztályok, amelyeket a HDInsight-fürtök kezelését teszi lehetővé. Ez magában foglalja a műveletek létrehozása, törlése, frissítése, list, méretezhető, hajtsa végre a Parancsfájlműveletek, figyelése, HDInsight-fürtök és egyéb tulajdonságainak beolvasása.
+A HDInsight Go SDK nyújt az osztályok, amelyeket a HDInsight-fürtök kezelését teszi lehetővé. Ez magában foglalja a műveletek létrehozása, törlése, frissítése, listázása, átméretezése, parancsfájl műveletek végrehajtása, figyelése, HDInsight-fürtök és egyéb tulajdonságainak beolvasása.
 
 > [!NOTE]
 >GoDoc referenciaanyag az olyan Ez az SDK egyben [elérhető itt](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/preview/hdinsight/mgmt/2018-06-01-preview/hdinsight).
@@ -325,9 +325,9 @@ client.Update(context.Background(), "<Resource Group Name>", "<Cluster Name>", h
 client.Update(context.Background(), "SDKTestRG", "SDKTest", hdi.ClusterPatchParameters{map[string]*string{"tag1Name" : to.StringPtr("tag1Value"), "tag2Name" : to.StringPtr("tag2Value")}})
 ```
 
-### <a name="scale-cluster"></a>Fürt méretezése
+### <a name="resize-cluster"></a>Fürt átméretezése
 
-Adjon meg egy új méret méretezhetők munkavégző csomópontok számát egy adott fürtben, például így:
+Adjon meg egy új méret átméretezheti a munkavégző csomópontok számát egy adott fürtben, például így:
 
 ```golang
 client.Resize(context.Background(), "<Resource Group Name>", "<Cluster Name>", hdi.ClusterResizeParameters{<Num of Worker Nodes (int)>})
@@ -437,7 +437,7 @@ for (page.NotDone()) {
 
 ### <a name="list-all-scripts-execution-history"></a>Az összes parancsfájl végrehajtási előzmények listázása
 
-Ehhez a művelethez szeretne létrehozni egy `ScriptExecutionHistoryClient` való használatra, hasonló módon, hogy létrehozott `ClusterClient` felügyeleti műveletekhez használandó. Miután végzett a fenti hitelesítés szakaszban, létrehozhat egy `ScriptActionsClient` lépések szerint:
+Ehhez a művelethez szeretne létrehozni egy `ScriptExecutionHistoryClient`, hasonló módon, hogy hogyan létrehozott `ClusterClient` felügyeleti műveletekhez használandó. Miután végzett a fenti hitelesítés szakaszban, létrehozhat egy `ScriptActionsClient` lépések szerint:
 
 ```golang
 scriptExecutionHistoryClient := hdi.NewScriptExecutionHistoryClient(SUBSCRIPTION_ID)

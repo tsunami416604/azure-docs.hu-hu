@@ -9,14 +9,21 @@ ms.component: custom-vision
 ms.topic: conceptual
 ms.date: 08/28/2018
 ms.author: anroth
-ms.openlocfilehash: 61fa0b1d2fc40daed8b3b99a0ab0d36de802ce3d
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: 8b4ba1601a7c5a9f523f7f8145a032861aac5d8c
+ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46367984"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48901328"
 ---
 # <a name="custom-vision-service-release-notes"></a>Custom Vision Service kibocsátási megjegyzései
+
+## <a name="october-9-2018"></a>2018. október 9.
+- Objektum észlelési fizetett előzetes verzióként kerül. Mostantól létrehozhat Objektumfelismerés projektek és a egy Azure-erőforrás.
+- A hozzáadott "Áthelyezése az Azure-bA" funkció webhelyre, hogy egyszerűbb legyen a korlátozott próbaverzió projektek az Azure-frissítése. erőforrás társított project (F0 vagy S0.) Megtalálhatja a beállítások lapon a termékhez.  
+- ONNX 1.2 Windows 2018. október frissítés verzióját, a Windows ML hozzáadott exportálás.
+Bugfixes, beleértve az ONNX-exportálás a különleges karakterek. 
+
 
 ## <a name="august-14-2018"></a>2018. augusztus 14.
 - A hozzáadott "Első lépések" widget végigvezetik a felhasználókat szóló customvision.ai helyet. 
@@ -24,12 +31,12 @@ ms.locfileid: "46367984"
 
 ## <a name="june-28-2018"></a>2018. június 28.
 - Bugfixes & háttérrendszer fejlesztései.
-- Enabeled osztályú osztályozás, projektek, ahol a képek pontosan egy címkével rendelkezik. Az előrejelzések multiclass módhoz, valószínűségek fog összeg egy (az összes rendszerkép sorolják be a megadott címkék között).
+- Engedélyezett Többosztályos osztályozási projektek, ahol a képek pontosan egy címkével rendelkezik. Az előrejelzések multiclass módhoz, valószínűségek fog összeg egy (az összes rendszerkép sorolják be a megadott címkék között).
 
 ## <a name="june-13-2018"></a>2018. június 13.
 - UX frissítés, a könnyű használat és a kisegítő lehetőségek összpontosít. 
 - A machine learning-folyamat számára, hogy a címkék nagy számú multilabel projektek fejlesztései.
-- Kijavítva a hiba, a TensorFlow-exportálás. Exportált Enabeled modell verziószámozás, így az ismétlések egynél többször is exportálható. 
+- Kijavítva a hiba, a TensorFlow-exportálás. Engedélyezve van a exportált modell verziószámozás, így az ismétlések egynél többször is exportálható. 
 
 ## <a name="may-7-2018"></a>2018. május 7.
 - Előzetes verziójú objektumészlelési szolgáltatás bevezetése korlátozott próbaverziójú projektekhez.
@@ -38,7 +45,7 @@ ms.locfileid: "46367984"
 - Jelentős háttérbeli fejlesztések a képosztályozási projektek gépi tanulási folyamataiban. A 2018. április 27. után betanított projektek már kihasználják ezen frissítések előnyeit.
 - Hozzáadott modellexportálás az ONNX-hez, Windows ML-el való használathoz.
 - Hozzáadott modellexportálás a Dockerfile-hoz. Ez lehetővé teszi az összetevők, például a DockerFile, a TensorFlow-modell és a szolgáltatáskód letöltését saját Windows- vagy Linux-tárolók létrehozásához. 
-- A TensorFlow-ba exportált, újonnan betanított modellek esetében az Általános (Kompakt) és Tereptárgy (Kompakt) tartományokban a [középérték mostantól (0,0,0)](https://github.com/azure-samples/cognitive-services-android-customvision-sample) lesz a projektek közötti konzisztencia érdekében. 
+- Az újonnan betanított modellek az általános (CD) és tereptárgyak (CD) tartományokban, TensorFlow exportált [értékek jelenti azt, hogy immár (0,0,0)](https://github.com/azure-samples/cognitive-services-android-customvision-sample), az összes projekt belüli konzisztencia biztosításához. 
 
 ## <a name="march-1-2018"></a>2018. március 1.
 - A fizetős előzetes verzió elérhetővé válik az Azure Portalon. Mostantól csatolhatók projektek az F0 (Ingyenes) vagy S0 (Standard) szintű Azure-erőforrásokhoz. S0 szintű projektek bevezetve, amelyek akár 100 címkét és 25 000 képet is engedélyeznek. 

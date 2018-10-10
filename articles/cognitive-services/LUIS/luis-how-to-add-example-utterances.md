@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 09/06/2018
 ms.author: diberry
-ms.openlocfilehash: 387668263a6bab6e12a21adf04aebfbbf108a006
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: adb44dcc8c41b1a7846ff346d141dc0c4b028e96
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47036490"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48888288"
 ---
 # <a name="add-example-utterances-and-label-with-entities"></a>Példa kimondott szöveg és az entitások címke hozzáadása
 
@@ -92,12 +92,12 @@ A lista entitás kiválasztásával a szót vagy kifejezést az utterance (kifej
 
 Az utterance (kifejezés), válassza a azonos szót, például `aqua` vízzel, majd válassza ki a lista entitás nevét a legördülő listából válassza ki, például **ital**, majd **szinonimát állítja**, majd válassza ki a listát elem azonos, a, mint például **víz**.
 
-![Képernyőkép a leképezések részletek oldala, amelyen hozzon létre egy új szinonimát kiemelésével](./media/luis-how-to-add-example-utterances/set-agua-as-synonym.png)
+![Képernyőkép a leképezések részletek oldala, amelyen kiemelve normalizált új nézet létrehozása](./media/luis-how-to-add-example-utterances/set-agua-as-synonym.png)
 
 ## <a name="create-new-item-for-list-entity"></a>Új elem a lista entitás létrehozása
-Hozzon létre egy új elem egy meglévő lista entitás kiválasztásával a szót vagy kifejezést az utterance (kifejezés). Ha a listában, és hozzá szeretné adni ital `tea` új elemként, kövesse a lépéseket:
+Hozzon létre egy új elem egy meglévő lista entitás kiválasztásával a szót vagy kifejezést az utterance (kifejezés). Ha egy alkalmazott a listában, és hozzá szeretné adni `Bob Smith` új elemként, kövesse a lépéseket:
 
-Az utterance (kifejezés), válassza az új listaelem a word például `tea`, majd válassza ki a lista entitás nevét a legördülő listában, például **ital**, majd **hozzon létre egy új szinonimát**. 
+Az utterance (kifejezés), válassza ki a szó vagy kifejezés új listaelem, például `Bob Smith`, majd válassza ki a lista entitás nevét a legördülő listában, például **alkalmazott**, majd **hozzon létre egy új normalizált nézet**. 
 
 ![Képernyőkép az új listaelem hozzáadása](./media/luis-how-to-add-example-utterances/list-entity-create-new-item.png)
 

@@ -3,19 +3,19 @@ title: Az Azure Event Hubs IP-kapcsolat szűrők |} A Microsoft Docs
 description: Használja az IP-szűrés blokk-kapcsolatokat, az adott IP-címek az Azure Event Hubsba.
 services: event-hubs
 documentationcenter: ''
-author: ShubhaVijayasarathy
+author: spelluru
 manager: timlt
 ms.service: event-hubs
 ms.devlang: na
 ms.topic: article
-ms.date: 08/26/2018
-ms.author: shvija
-ms.openlocfilehash: 6d96eac3ecd249de3ba0da82eff95c45e45fa02d
-ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
+ms.date: 10/08/2018
+ms.author: spelluru
+ms.openlocfilehash: c229a6f84096ecca892b74f7ce65cb831fa50be3
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/23/2018
-ms.locfileid: "42746195"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48886177"
 ---
 # <a name="use-ip-filters"></a>IP-szűrők használata
 
@@ -48,6 +48,9 @@ Például ha azt szeretné, a tartomány 70.37.104.0/24 címeit fogadja el, és 
 > IP-címek visszautasítja megakadályozhatja az egyéb Azure-szolgáltatások (például az Azure Stream Analytics, Azure Virtual Machines vagy a portálon a Device Explorer) az Event hubs szolgáltatással való interakcióhoz.
 
 ### <a name="creating-a-virtual-network-rule-with-azure-resource-manager-templates"></a>Azure Resource Manager-sablonokkal a virtuális hálózati szabály létrehozása
+
+> [!IMPORTANT]
+> A virtuális hálózatok támogatottak **standard** és **dedikált** az Event hubs szinten. Az alapszintű díjcsomagban nem támogatott. 
 
 A következő Resource Manager-sablon lehetővé teszi, hogy egy virtuális hálózati szabályt ad hozzá egy meglévő Event Hubs-névtér.
 

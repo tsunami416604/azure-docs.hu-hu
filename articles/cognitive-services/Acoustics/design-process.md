@@ -1,20 +1,21 @@
 ---
-title: Akusztika – Cognitive Services a tervezési folyamat áttekintése
+title: A projekt Akusztika tervezési folyamat áttekintése
+titlesuffix: Azure Cognitive Services
 description: Ez a dokumentum ismerteti az összes három szakaszban a projekt Akusztika munkafolyamat-Tervező tervez express.
 services: cognitive-services
 author: kegodin
-manager: noelc
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: acoustics
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/17/2018
 ms.author: kegodin
-ms.openlocfilehash: bb3e5010f1839f7b18396cc8e177ed07e52ea98a
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.openlocfilehash: 46e2e276086f836ff881fde1db6462f6e7788e22
+ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48867637"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48901362"
 ---
 # <a name="design-process-overview"></a>Tervezési folyamat áttekintése
 Az összes három szakaszban a projekt Akusztika munkafolyamat-Tervező tervez fejezhető: előre os jelenet telepítése, a megbízható forrás elhelyezési és utáni bake Tervező. A folyamat kevesebb jelölőnyelvi társított visszhang kötetek elhelyezése Tervező szabályozhatja, hogyan álló jelenet renderelése; hangok megőrzése szükséges.

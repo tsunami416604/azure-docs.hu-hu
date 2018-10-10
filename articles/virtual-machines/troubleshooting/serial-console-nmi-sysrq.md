@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: alsin
-ms.openlocfilehash: ba42c3cc50466f9b5bf46cd1eef8f0d4e48bf89a
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: 9dcec525adf7676b23c6dec14dff07c6d419c085
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48856003"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48884642"
 ---
 # <a name="use-serial-console-for-sysrq-and-nmi-calls"></a>Használja a soros konzol SysRq és NMI hívások
 
@@ -30,11 +30,11 @@ Miután a SysRq feladatütemezési érkezik, a kernel konfigurációs szabályoz
 
 Az Azure soros konzol segítségével egy SysRq küldeni egy Azure virtuális gépen a billentyűzet ikon használatával az alább látható a parancssávon.
 
-![](/media/virtual-machines-serial-console/virtual-machine-serial-console-command-menu.jpg)
+![](../media/virtual-machines-serial-console/virtual-machine-serial-console-command-menu.jpg)
 
 Kiválasztása "SysRq parancs küldése" megnyílik egy párbeszédpanel, amely közös SysRq lehetőségeket nyújtanak, vagy fogadja el a párbeszédpanelen megadott SysRq parancsok sorozatát fog.  Ez lehetővé teszi a SysRq sorozatát egy magas szintű művelet, például a biztonságos újraindítás végrehajtásához a: `REISUB`.
 
-![](/media/virtual-machines-serial-console/virtual-machine-serial-console-sysreq_UI.png)
+![](../media/virtual-machines-serial-console/virtual-machine-serial-console-sysreq_UI.png)
 
 A SysRq parancs nem használható a virtuális gépek, amelyek le vannak állítva, vagy amelyek kernel nem válaszol. (például kernelpánikot).
 
@@ -103,8 +103,9 @@ Egy nem maszkolható (NMI) úgy tervezték, hogy hozzon létre egy olyan jelet, 
 
 A soros konzol segítségével egy NMI küldeni egy Azure virtuális gépen a billentyűzet ikon használatával az alább látható a parancssávon. Miután a NMI érkezik, a virtuális gép konfigurációja szabályozza hogyan reagál a rendszer.  Linux operációs rendszerek beállítható úgy, hogy az összeomlási, és a memóriakép létrehozása az operációs rendszer egy NMI kap.
 
-![](/media/virtual-machines-serial-console/virtual-machine-serial-console-command-menu.jpg) <br>
+![](../media/virtual-machines-serial-console/virtual-machine-serial-console-command-menu.jpg) <br>
 
+### <a name="enable-nmi"></a>NMI engedélyezése
 Kernel-paraméterek konfigurálásának sysctl támogató Linux rendszerek esetében engedélyezheti egy kilépjen a NMI fogadásakor a következő használatával:
 1. Ezt a sort a hozzáadása */etc/sysctl.conf* <br>
     `kernel.panic_on_unrecovered_nmi=1`

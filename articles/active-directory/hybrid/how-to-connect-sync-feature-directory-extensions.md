@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/12/2017
+ms.date: 10/05/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 4809a413ce40532cc0367945fd902188f065baaa
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 9c40cfd9b15f2ae6398b70effc4f4d38111cfe1e
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46312052"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48886065"
 ---
 # <a name="azure-ad-connect-sync-directory-extensions"></a>Az Azure AD Connect szinkronizálása: címtárbővítmények
 Címtárbővítmények segítségével az Azure Active Directoryban (Azure AD) a séma kiterjesztése a saját helyszíni Active Directoryból származó attribútumok. Ez a funkció lehetővé teszi felhasználása az attribútumokat, amelyek továbbra is kezelheti a helyszíni LOB-alkalmazások készítését. Ezek az attribútumok felhasználhatók keresztül [Azure AD Graph API címtárbővítmények](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-directory-schema-extensions) vagy [Microsoft Graph](https://graph.microsoft.io/). Megjelenik a rendelkezésre álló attribútumok használatával [Azure AD Graph Explorer](https://graphexplorer.azurewebsites.net/) és [Microsoft Graph Explorer](https://developer.microsoft.com/graph/graph-explorer), illetve.
@@ -28,6 +28,9 @@ Címtárbővítmények segítségével az Azure Active Directoryban (Azure AD) a
 Jelenleg nincs Office 365 számítási feladat használ fel ezeket az attribútumokat.
 
 Milyen további attribútumok szeretné szinkronizálni az egyéni beállítások elérési út a telepítési varázslóban konfigurálja.
+
+>[!NOTE]
+>A rendelkezésre álló attribútumok mezőben a kis-és nagybetűket.
 
 ![Séma kiterjesztése varázsló](./media/how-to-connect-sync-feature-directory-extensions/extension2.png)  
 

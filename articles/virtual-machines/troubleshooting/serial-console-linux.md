@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/11/2018
 ms.author: harijay
-ms.openlocfilehash: ce799f4201a560077c5bb1b943a9e587a71806f2
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: bccf53ed5554579f4ff0a864c38562b7b7f0d3ca
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48856343"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48885289"
 ---
 # <a name="virtual-machine-serial-console"></a>Virtuális gépek soros konzolja
 
@@ -44,7 +44,7 @@ A soros konzol dokumentációja a Windows virtuális gépek esetében [ide](../w
 
     ![](./media/virtual-machines-serial-console/virtual-machine-serial-console-reset-password.png)
 
-* Linux-disztribúciók jellemző beállításait, lásd: [a soros konzol eléréséhez linuxhoz](#Serial-Console-Linux-distro-availability)
+* Linux-disztribúciók jellemző beállításait, lásd: [soros konzolon Linux-disztribúció rendelkezésre állása](#serial-console-linux-distro-availability)
 
 
 
@@ -206,7 +206,7 @@ A. Közreműködője szintű hozzáféréssel kell rendelkeznie legalább egy vi
 
 **Q. A soros konzol nem látható semmi, mi a teendő?**
 
-A. A rendszerkép valószínűleg hibásan konfigurált, soros hozzáféréshez. Lásd: [Linux hozzáférés a soros konzol](#Access-Serial-Console-for-Linux) engedélyezése a soros konzol lemezképeiben konfigurációval kapcsolatos részletekért.
+A. A rendszerkép valószínűleg hibásan konfigurált, soros hozzáféréshez. Lásd: [soros konzolon Linux-disztribúció rendelkezésre állási](#serial-console-linux-distro-availability) engedélyezése a soros konzol lemezképeiben konfigurációval kapcsolatos részletekért.
 
 **Q. Soros konzolon érhető el a Virtual Machine Scale Sets?**
 

@@ -1,6 +1,6 @@
 ---
-title: Hogyan kell konfigurációs fájlokat az Azure Service Fabric paraméterezni |} Microsoft Docs
-description: Bemutatja, hogyan kell konfigurációs fájlokat a Service Fabric paraméterezni
+title: Konfigurációs fájlok az Azure Service Fabric paraméterezni |} A Microsoft Docs
+description: Megtudhatja, hogyan paraméterezni a konfigurációs fájlokat a Service Fabricben.
 documentationcenter: .net
 author: mikkelhegn
 manager: msfussell
@@ -10,70 +10,59 @@ ms.devlang: dotNet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 12/06/2017
+ms.date: 10/09/2018
 ms.author: mikhegn
-ms.openlocfilehash: e5bb2f270cc5a6f288e1e995f4bfa74f4e3551b7
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 9057cdc22e277e4e12e9f439f3fbe0c5a5cda2a2
+ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34207818"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48900513"
 ---
-# <a name="how-to-parameterize-configuration-files-in-service-fabric"></a>Hogyan kell konfigurációs fájlokat a Service Fabric paraméterezni
+# <a name="how-to-parameterize-configuration-files-in-service-fabric"></a>Hogyan lehet paraméterezni a konfigurációs fájlokat a Service Fabricben
 
-Ez a cikk bemutatja, hogyan parametrizálja a Service Fabric konfigurációs fájlt.
+Ez a cikk bemutatja, hogyan paraméterezni a Service Fabric egy konfigurációs fájlt.  Ha nem már ismeri az alapfogalmakat kezelése több környezethez tartozó alkalmazásokat, olvassa el a [alkalmazások kezelése több környezethez](service-fabric-manage-multiple-environment-app-configuration.md).
 
-## <a name="procedure-for-parameterizing-configuration-files"></a>A konfigurációs fájlok paraméterezése eljárás
+## <a name="procedure-for-parameterizing-configuration-files"></a>Az eljárás a konfigurációs fájlok paraméterezése
 
-Ebben a példában bírálja felül a paraméterek használatát az alkalmazások központi telepítésének konfigurációs érték.
+Ebben a példában a paraméterek használatával az alkalmazások központi telepítésének a konfigurációs érték felülírása.
 
-1. Nyissa meg a Config\Settings.xml fájlt.
-1. Egy konfigurációs paraméter állította a következő XML-fájlok hozzáadása:
+1. Nyissa meg a  *<MyService>\PackageRoot\Config\Settings.xml* fájlt a projektet.
+1. Állítsa be a konfigurációs paraméter nevének és értékének, például gyorsítótár méretének 25-én egyenlő adja hozzá a következő XML-kódot:
 
-    ```xml
-      <Section Name="MyConfigSection">
-        <Parameter Name="CacheSize" Value="25" />
-      </Section>
-    ```
+  ```xml
+    <Section Name="MyConfigSection">
+      <Parameter Name="CacheSize" Value="25" />
+    </Section>
+  ```
 
 1. Mentse és zárja be a fájlt.
-1. Nyissa meg az `ApplicationManifest.xml` fájlt.
-1. Adja hozzá a `ConfigOverride` elem, a konfigurációs csomagot, a szakasz és a paraméter hivatkozik.
+1. Nyissa meg a  *<MyApplication>\ApplicationPackageRoot\ApplicationManifest.xml* fájlt.
+1. Az ApplicationManifest.xml fájl deklaráljon egy paraméter és az alapértelmezett érték a `Parameters` elemet.  Javasoljuk, hogy a paraméter neve tartalmazza a szolgáltatás (például "MyService") nevét.
 
-      ```xml
-        <ConfigOverrides>
-          <ConfigOverride Name="Config">
-              <Settings>
-                <Section Name="MyConfigSection">
-                    <Parameter Name="CacheSize" Value="[Stateless1_CacheSize]" />
-                </Section>
-              </Settings>
-          </ConfigOverride>
-        </ConfigOverrides>
-      ```
+  ```xml
+    <Parameters>
+      <Parameter Name="MyService_CacheSize" DefaultValue="80" />
+    </Parameters>
+  ```
+1. Az a `ServiceManifestImport` szakasz az ApplicationManifest.xml fájl hozzáadása egy `ConfigOverride` elem, a konfigurációs csomag, a szakasz és a paraméter hivatkozik.
 
-1. Továbbra is a ApplicationManifest.xml fájlban, akkor adja meg a paraméter a `Parameters` elem
-
-    ```xml
-      <Parameters>
-        <Parameter Name="Stateless1_CacheSize" />
-      </Parameters>
-    ```
-
-1. És adja meg a `DefaultValue`
-
-    ```xml
-      <Parameters>
-        <Parameter Name="Stateless1_CacheSize" DefaultValue="80" />
-      </Parameters>
-    ```
+  ```xml
+    <ConfigOverrides>
+      <ConfigOverride Name="Config">
+          <Settings>
+            <Section Name="MyConfigSection">
+                <Parameter Name="CacheSize" Value="[MyService_CacheSize]" />
+            </Section>
+          </Settings>
+      </ConfigOverride>
+    </ConfigOverrides>
+  ```
 
 > [!NOTE]
-> Abban az esetben, ahol hozzáadhat egy ConfigOverride a Service Fabric mindig úgy dönt, az alkalmazás paramétereit vagy az alkalmazás jegyzékében meghatározott alapértelmezett érték.
+> Abban az esetben, ahol hozzáadhat egy ConfigOverride Service Fabric mindig úgy dönt, az alkalmazás paramétereit vagy az alapértelmezett érték az alkalmazásjegyzékben megadott.
 >
 >
 
 ## <a name="next-steps"></a>További lépések
-Ebben a cikkben ismertetett alapfogalmakat némelyike kapcsolatos további tudnivalókért tekintse meg a [több környezetek cikkek alkalmazásokat kezeléséhez](service-fabric-manage-multiple-environment-app-configuration.md).
-
-Más elérhető a Visual Studio alkalmazás-felügyeleti képességekkel kapcsolatos információkért lásd: [kezelése a Service Fabric-alkalmazások, a Visual Studio](service-fabric-manage-application-in-visual-studio.md).
+Egyéb elérhető a Visual Studio alkalmazás-felügyeleti képességekkel kapcsolatos információkért lásd: [kezelése a Service Fabric-alkalmazásokat a Visual Studióban](service-fabric-manage-application-in-visual-studio.md).

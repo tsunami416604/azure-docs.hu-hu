@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 10/05/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 403c52cb2de61f1c2d02ad72e9067da09b40a814
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: 8cdff34078c759379b5b939bdcdbc55155b51251
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48816038"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48887455"
 ---
 # <a name="update-management-solution-in-azure"></a>Frissítéskezelési megoldás az Azure-ban
 
@@ -515,7 +515,7 @@ Megtudhatja, hogyan integrálható a felügyeleti megoldás a System Center Conf
 
 ## <a name="inclusion-behavior"></a>Belefoglalási viselkedés
 
-Frissítés belefoglalási lehetővé teszi, hogy adja meg a alkalmazni a frissítéseket. Függetlenül attól, hogy a besorolásokat a telepítésre kijelölt telepítve javítások vagy a csomagokat, amelyek felhasználhatók.
+Frissítés belefoglalási lehetővé teszi, hogy adja meg a alkalmazni a frissítéseket. Javítások vagy vannak beállítva, hogy bekerüljenek-csomagok települnek. Amikor a javítások vagy a csomagok vannak beállítva, hogy bekerüljenek, és a egy besorolást, valamint van-e jelölve, a csomagban foglalt elemek és a elemek, amelyek megfelelnek a besorolás telepítve lesz.
 
 A Linux rendszerű gépek Ha egy csomag részét képezi, de egy függő csomagot, amely ki van zárva, specifcally volt a csomag nincs telepítve.
 

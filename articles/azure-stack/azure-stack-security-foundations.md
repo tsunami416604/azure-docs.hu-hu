@@ -1,5 +1,5 @@
 ---
-title: Megismerheti az Azure Stack biztonsági vezérlők |} A Microsoft Docs
+title: Megismerheti az Azure Stack biztonsági vezérlőket
 description: Szolgáltatás-rendszergazdaként a alkalmazni az Azure Stack biztonsági ellenőrzések ismertetése
 services: azure-stack
 documentationcenter: ''
@@ -11,20 +11,20 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/12/2018
+ms.date: 10/9/2018
 ms.author: patricka
-ms.openlocfilehash: 048a2e8204b3b8776b5a7e0e425dbc5fdf3d504c
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 32c268c1e4a0ff4d17c5b03f0ffd33b0ddf5b927
+ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44719018"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48901481"
 ---
 # <a name="azure-stack-infrastructure-security-posture"></a>Az Azure Stack infrastruktúrájának biztonsági rendszer kialakításához
 
 *A következőkre vonatkozik: Azure Stackkel integrált rendszerek*
 
-Biztonsági szempontok és a megfelelőségi szabályzat is a fő illesztőprogramokat a hibrid felhők között. Ezek a forgatókönyvek az Azure Stack tervezték, és fontos megérteni a már a vezérlők beállítása az Azure Stack elfogadásakor.
+Biztonsági szempontok és a megfelelőségi szabályzat is a fő illesztőprogramokat a hibrid felhők között. Ezek a forgatókönyvek az Azure Stack tervezték. Ez a cikk ismerteti a helyen az Azure Stack biztonsági vezérlők.
 
 Két biztonsági rendszer kialakításához rétegek futhatnak az Azure Stackben. Az első réteg az Azure Stack-infrastruktúra, amely tartalmazza a hardverösszetevők, akár az Azure Resource Manager. Az első réteget tartalmaz, a rendszergazda és a bérlői portált. A második réteg a számítási feladatok létre, telepítheti és kezelheti a bérlők által áll. A második réteg például a virtuális gépek és alkalmazásszolgáltatások webhelyeket tartalmaz.
 
@@ -50,14 +50,14 @@ Minden külső infrastruktúra-végpontokra, például a REST-végpontokat vagy 
 Önaláírt tanúsítványokat külső végpontokkal is használható, amíg a Microsoft erősen tanácsolja elleni használja őket. 
 
 ## <a name="secret-management"></a>Titkos kódok kezelése
-Az Azure Stack-infrastruktúra titkos adatait, például jelszavak, számos függvényt használja. Ezek többsége automatikusan vannak elforgatott gyakran, mert azok a csoport felügyelt szolgáltatásfiókok, amelyek 24 óránként elforgatása.
+Az Azure Stack-infrastruktúra titkos adatait, például jelszavak, számos függvényt használja. Ezek többsége automatikusan vannak elforgatott gyakran, mivel azok Group-Managed szolgáltatásfiókok, amelyek 24 óránként elforgatása.
 
-A fennmaradó titkos kódok, amelyek nem csoport felügyelt szolgáltatásfiókok manuálisan is rotációja parancsprogrammal Rendszerjogosultságú végpontját.
+A fennmaradó titkos kódok, amelyek nem Group-Managed szolgáltatásfiókok manuálisan is rotációja parancsprogrammal Rendszerjogosultságú végpontját.
 
 ## <a name="code-integrity"></a>Kódintegritás
 Az Azure Stack felhasznál a legújabb Windows Server 2016 biztonsági funkciói. Őket egyik, a Windows Defender Device Guard, amely biztosítja az alkalmazások engedélyezési listáinak, és biztosítja, hogy, hogy csak hitelesített a kód lefut az Azure Stack-infrastruktúrán belül. 
 
-Microsoft vagy az OEM-partner által aláírt jogosult kódot, és a Microsoft által definiált szabályzat megadott engedélyezett szoftverek listája szerepel. Más szóval csak olyan szoftver, amely az Azure Stack-infrastruktúra futtatásához jóvá lett hagyva hajthatók végre. Jogosulatlan kódvégrehajtást tett bármilyen kísérlet le van tiltva, és a egy naplózási jön létre.
+Microsoft vagy az OEM-partner meghatalmazott kódot írt alá. Az aláírt jogosult kódot a Microsoft által meghatározott házirendben megadott engedélyezett szoftverek listáját tartalmazza. Más szóval csak olyan szoftver, amely az Azure Stack-infrastruktúra futtatásához jóvá lett hagyva hajthatók végre. Jogosulatlan kódvégrehajtást tett bármilyen kísérlet le van tiltva, és a egy naplózási jön létre.
 
 A Device Guard-szabályzat is megakadályozza, hogy külső ügynökeinek és szoftverének futtatása az Azure Stack-infrastruktúra.
 
@@ -67,7 +67,7 @@ Egy másik Windows Server 2016 biztonsági szolgáltatás az Azure Stackben a Wi
 ## <a name="antimalware"></a>Kártevőirtó
 Az Azure Stackben (Hyper-V-gazdagépek és virtuális gépek) minden összetevő a Windows Defender víruskereső használható védett.
 
-A csatlakoztatott esetben víruskereső definíció- és keresőmotor-frissítéseket érvényesek naponta több alkalommal. Kapcsolat nélküli esetekben használható, a kártevőirtó-frissítések alkalmazása a havi Azure Stack-frissítés részeként. Lásd: [frissítése a Windows Defender víruskereső használható az Azure Stacken](azure-stack-security-av.md) további információt.
+A csatlakoztatott esetben víruskereső definíció- és keresőmotor-frissítéseket érvényesek naponta több alkalommal. Kapcsolat nélküli esetekben használható, a kártevőirtó-frissítések alkalmazása a havi Azure Stack-frissítés részeként. További információkért lásd: [frissítése a Windows Defender víruskereső használható az Azure Stacken](azure-stack-security-av.md).
 
 ## <a name="constrained-administration-model"></a>Korlátozott adminisztrációs modell
 Az Azure Stackben felügyeleti szabályozza mindegyike adott célt három belépési pontok használatával: 
@@ -76,12 +76,24 @@ Az Azure Stackben felügyeleti szabályozza mindegyike adott célt három belép
 3. Adott alacsony szintű műveletek, például data center integration vagy forgatókönyvek támogatása, Azure Stack egy nevű PowerShell-végpontot tesz közzé [kiemelt végponthoz](azure-stack-privileged-endpoint.md). Ezt a végpontot tesz elérhetővé, csak engedélyezési listához hozzáadni kívánt parancsmagok, és erősen ellenőrzi.
 
 ## <a name="network-controls"></a>Hálózati vezérlők
-Az Azure Stack-infrastruktúra hálózati hozzáférés-vezérlési List(ACL) több réteget tartalmaz. Az ACL-ek jogosulatlan hozzáférés elkerülése érdekében az infrastruktúra-összetevőket, és csak az elérési utak a működéséhez szükséges infrastruktúra kommunikációt korlátozza. 
+Az Azure Stack-infrastruktúra hálózati hozzáférés-vezérlési lista (ACL) több réteget tartalmaz. Az ACL-ek jogosulatlan hozzáférés elkerülése érdekében az infrastruktúra-összetevőket, és csak az elérési utak a működéséhez szükséges infrastruktúra kommunikációt korlátozza. 
 
 Hálózati hozzáférés-vezérlési listák érvényben vannak, a három réteg:
 1.  Tor-kapcsolók
 2.  Szoftveralapú hálózat
 3.  Gazdagép és a virtuális gép operációsrendszer-tűzfalak
+
+## <a name="regulatory-compliance"></a>Előírásoknak való megfelelés
+
+Az Azure Stack egy harmadik féltől származó független naplózási cég távozott a formális értékelés keresztül. Ennek eredményeképpen a hogyan az Azure Stack-infrastruktúra megfelel-e a alkalmazni beállításait számos fontos megfelelőségi előírásoknak dokumentációja is elérhető. A dokumentáció nem áll az Azure Stack a minősítési miatt a szabványokat, beleértve a több csoporthoz kapcsolódó és a folyamat kapcsolatos vezérlőelem. Inkább ügyfelek használhatják ezt a dokumentációt gyorsan elindíthatja a minősítési folyamatot.
+
+Az értékelések az alábbi szabályok betartása tartalmazza:
+
+- [PCI-DSS](https://www.pcisecuritystandards.org/pci_security/) a iparágával címek.
+- [CSA Cloud Control Matrix](https://cloudsecurityalliance.org/group/cloud-controls-matrix/#_overview) el az átfogó leképezése több szabványokat, többek között FedRAMP mérsékelt ISO27001, HIPAA, HITRUST, ITAR, NIST SP800-53-as és mások.
+- [Magas szintű FedRAMP](https://www.fedramp.gov/fedramp-releases-high-baseline/) kormányzati ügyfelek számára.
+
+A megfelelőségi dokumentációjában találhatók a [Microsoft Szolgáltatásmegbízhatósági portált](https://servicetrust.microsoft.com/ViewPage/Blueprint). A megfelelőségi útmutatók védett erőforrásokhoz és igényel, hogy jelentkezzen be az Azure cloud service hitelesítő adataival.
 
 ## <a name="next-steps"></a>További lépések
 

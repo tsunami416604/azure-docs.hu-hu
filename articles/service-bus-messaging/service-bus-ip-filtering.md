@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/26/2018
 ms.author: clemensv
-ms.openlocfilehash: ccb759a9151d734aa99a6f6b9c68e6072874dd84
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: c6e9eef762d4a9eb95685d94c61ce10d499bb155
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47394828"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48884803"
 ---
 # <a name="use-ip-filters"></a>IP-szűrők használata
 
@@ -48,6 +48,8 @@ Például ha azt szeretné, a tartomány 70.37.104.0/24 címeit fogadja el, és 
 > IP-címek visszautasítja megakadályozhatja az egyéb Azure-szolgáltatások (például az Azure Stream Analytics, Azure Virtual Machines vagy a portálon a Device Explorer) Service Bus szolgáltatással való interakcióhoz.
 
 ### <a name="creating-a-virtual-network-rule-with-azure-resource-manager-templates"></a>Azure Resource Manager-sablonokkal a virtuális hálózati szabály létrehozása
+
+> ! [FONTOS] Csak a virtuális hálózatok támogatottak a **prémium** a Service Bus szintjét.
 
 A következő Resource Manager-sablon lehetővé teszi, hogy egy virtuális hálózati szabályt ad hozzá egy meglévő Service Bus-névteret.
 

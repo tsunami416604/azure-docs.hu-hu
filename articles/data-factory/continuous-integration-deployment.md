@@ -10,14 +10,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/04/2018
+ms.date: 10/09/2018
 ms.author: douglasl
-ms.openlocfilehash: 8027b167481fd4e48e03b3c1ad3ed8c6adcb853e
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: 5da9d4b33951e14df251fe4939c54cff822843aa
+ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48815443"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48901957"
 ---
 # <a name="continuous-integration-and-delivery-cicd-in-azure-data-factory"></a>Folyamatos integráció és teljesítés (CI/CD) az Azure Data Factoryban
 
@@ -182,6 +182,9 @@ Központi telepítés is sikertelen, ha aktív eseményindítók frissíti. Akt�
     ![](media/continuous-integration-deployment/continuous-integration-image11.png)
 
 Hasonló lépésekkel és a hasonló kóddal (az a `Start-AzureRmDataFactoryV2Trigger` függvény) a telepítést követően újraindítható az eseményindítók.
+
+> [!IMPORTANT]
+> A folyamatos integrációt és üzembe helyezési forgatókönyvek ugyanaz a saját üzemeltetésű integrációs típusát különböző környezetek között kell lennie. Például, ha rendelkezik egy *saját üzemeltetésű* Integration Runtime (IR) a fejlesztési környezetben, ugyanezt az integrációs Modult típusúnak kell lennie *saját üzemeltetésű* más, például a tesztelési és éles környezetekben is. Hasonlóképpen, ha az integrációs modulok között több szakaszt, hogy az IRS-nek, konfigurálnia *saját üzemeltetésű társított* összes környezetekben, például fejlesztési, tesztelési és éles környezetben.
 
 ## <a name="sample-deployment-template"></a>A mintasablon üzembe helyezés
 

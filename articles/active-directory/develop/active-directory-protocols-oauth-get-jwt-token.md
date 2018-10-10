@@ -1,5 +1,5 @@
 ---
-title: Az Azure AD-hitelesítés és a egy JWT jogkivonat beszerzése az OAuth 2.0 használatával
+title: Az Azure AD-hitelesítés és a egy OAuth 2.0-val JWT-token beszerzése
 description: Hitelesítés az Azure Active Directory, az OAuth 2.0 használatával biztonságos webalkalmazásokat és webes API-kat a szervezeten belüli bemutató példa kód.
 services: active-directory
 author: rloutlaw
@@ -13,14 +13,14 @@ ms.topic: article
 ms.date: 06/12/2018
 ms.author: routlaw
 ms.custom: aaddev
-ms.openlocfilehash: d77af898d5baef4fa7970132b0eb8deddb8f68cb
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: f4bcbb2064a8f7fcdfd2002d2e8d6e0c4f679ffc
+ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46981797"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48902909"
 ---
-# <a name="request-an-access-token-using-oauth-20-to-access-web-apis-and-applications-secured-by-azure-active-directory"></a>OAuth 2.0 használatával hozzáférés webes API-kat és alkalmazásokat az Azure Active Directory által biztosított hozzáférési jogkivonat kérése
+# <a name="how-to-request-an-access-token-using-oauth-20-to-access-web-apis-and-applications-secured-by-azure-ad"></a>Útmutató: az OAuth 2.0 segítségével hozzáférés webes API-k és az Azure AD által védett alkalmazások hozzáférési jogkivonat kérése
 
 Ez a cikk bemutatja, hogyan tehet szert egy JSON webes jogkivonat (JWT) az Azure AD által védett erőforrások eléréséhez. Feltételezi, hogy rendelkezik egy [engedélyezési jogkivonat](/azure/active-directory/develop/active-directory-protocols-oauth-code#request-an-authorization-code) felhasználó kapott engedélyt vagy keresztül egy [szolgáltatásnév](/azure/active-directory/develop/active-directory-application-objects).
 
@@ -45,7 +45,6 @@ A következő fejléceket szükség:
 |--------------------|-----------------|  
 | *Gazdagép:* | https://login.microsoftonline.com |
 | *A Content-Type:*| Application/x-www-form-urlencoded |
- 
 
 ### <a name="uri-parameters"></a>URI-paraméterek
 
@@ -59,6 +58,7 @@ A következő fejléceket szükség:
 | redirect_uri  | szükséges              | Az azonos redirect_uri használt értékkel beszerezni a authorization_code.                                                                                                                                                                                                                                                                                                                                                             |
 | client_secret | a web apps szükséges | Az alkalmazás titkos, amelyet az alkalmazás az alkalmazás regisztrációs portálon létrehozott. Ne használjon egy natív alkalmazást, mert client_secrets megbízhatóan nem tárolható az eszközökön. Web apps és a webes API-kat, amelynek a titkos ügyfélkódot tárolja biztonságos helyen a kiszolgálói oldalon lehetősége.  Ügyfél titkos kódok kell URL-kódolású elküldése előtt.                                                                                 |
 | code_verifier | választható              | Az azonos code_verifier a authorization_code beszerzéséhez használt. Szükséges, ha az engedélyezési kód engedélyezési kérésben PKCE használt. További információkért lásd: a [PKCE RFC](https://tools.ietf.org/html/rfc7636)                                                                                                                                                                                                                                                                                             |
+
 ## <a name="handle-the-response"></a>A válasz kezelése
 
 Token sikeres válasz tartalmazni fogja a JWT jogkivonat és fog kinézni:
@@ -81,6 +81,3 @@ Token sikeres válasz tartalmazni fogja a JWT jogkivonat és fog kinézni:
 | scope         | A hatókörök, amely a access_token érvényes.                                                                                                                                                                                                                                                                                                                                                                                                         |
 | refresh_token | Az OAuth 2.0-s frissítési jogkivonatot. Az alkalmazás használhatja ezt a jogkivonatot a jelenlegi hozzáférési jogkivonat lejárata után szerzi be a további hozzáférési jogkivonatokat. Refresh_tokens hosszú élettartamú, és az erőforrásokhoz való hozzáférés megőrzése hosszabb ideig is használható. További részletekért tekintse meg a [v2.0-kód megadása referencia](v2-oauth2-auth-code-flow.md#refresh-the-access-token). <br> **Megjegyzés:** csak a megadott if `offline_access` a kért hatókörhöz.                                               |
 | id_token      | Az előjel nélküli JSON webes jogkivonat (JWT). Az alkalmazásnak a bejelentkezett felhasználóval kapcsolatos információkat a token a szegmensek is dekódol. Az alkalmazás gyorsítótárazzák az értékeket, és megjelenítheti őket, de azt nem igazolható azokat bármilyen engedélyezési és biztonsági határokat. Id_tokens kapcsolatos további információkért lásd: a [ `id_token reference` ](id-tokens.md). <br> **Megjegyzés:** csak a megadott if `openid` a kért hatókörhöz. |
-
-
-

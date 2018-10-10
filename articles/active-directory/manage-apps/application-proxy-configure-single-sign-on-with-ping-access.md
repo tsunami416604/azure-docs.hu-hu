@@ -15,12 +15,12 @@ ms.date: 10/11/2017
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: aae73816b883fe782eff27c56174c71f14c253c4
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: 53d613052713e5144cb9d96aeeb937392fd4736a
+ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39577186"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48902926"
 ---
 # <a name="header-based-authentication-for-single-sign-on-with-application-proxy-and-pingaccess"></a>Fejlécalapú hitelesítéskor az egyszeri bejelentkezést az alkalmazásproxy és a PingAccess
 
@@ -162,10 +162,10 @@ Ebben a példában a [az Azure portal](https://portal.azure.com) való végigjá
 >[!NOTE]
 >Egyéni jogcím használatával is rendelkeznie kell meghatározott, és az alkalmazáshoz hozzárendelt egyéni házirendet.  Ez a szabályzat tartalmaznia kell az összes szükséges egyéni attribútumokat.
 >
->Szabályzat-definíció és a hozzárendelés végezhető el a PowerShell, az Azure AD Graph Explorer vagy az MS Graph.  Ha ez a PowerShell, szüksége lehet, hogy először a `New-AzureADPolicy `, és hozzárendelheti az alkalmazást a `Set-AzureADServicePrincipalPolicy`.  További információ: a [Azure AD-Policy dokumentációja](../active-directory-claims-mapping.md#claims-mapping-policy-assignment).
+>Szabályzat-definíció és a hozzárendelés végezhető el a PowerShell, az Azure AD Graph Explorer vagy az MS Graph.  Ha ez a PowerShell, szüksége lehet, hogy először a `New-AzureADPolicy `, és hozzárendelheti az alkalmazást a `Set-AzureADServicePrincipalPolicy`.  További információ: a [Azure AD-Policy dokumentációja](../develop/active-directory-claims-mapping.md#claims-mapping-policy-assignment).
 
 ### <a name="optional---use-a-custom-claim"></a>Nem kötelező – egyéni jogcím használata
-Ahhoz, hogy az alkalmazás egy egyéni jogcímszabályok használja, és további mezőket tartalmaznak, hogy rendelkezik-e is lehet [egy egyéni jogcímek társítása a házirend létrehozása és hozzárendelése, az alkalmazás](../active-directory-claims-mapping.md#claims-mapping-policy-assignment).
+Ahhoz, hogy az alkalmazás egy egyéni jogcímszabályok használja, és további mezőket tartalmaznak, hogy rendelkezik-e is lehet [egy egyéni jogcímek társítása a házirend létrehozása és hozzárendelése, az alkalmazás](../develop/active-directory-claims-mapping.md#claims-mapping-policy-assignment).
 
 ## <a name="download-pingaccess-and-configure-your-app"></a>PingAccess letöltéséhez, és az alkalmazás konfigurálása
 

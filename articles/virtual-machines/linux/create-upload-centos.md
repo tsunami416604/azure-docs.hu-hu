@@ -1,6 +1,6 @@
 ---
-title: Hozzon létre, és a CentOS-alapú Linux VHD-fájlt feltölti az Azure-ban
-description: Ismerje meg, létrehozása és feltöltése az Azure virtuális merevlemez (VHD), amely tartalmazza a CentOS-alapú Linux operációs rendszert.
+title: Az Azure-ban a CentOS-alapú Linux rendszerű VHD létrehozása és feltöltése
+description: Ismerje meg, hozhat létre és töltse fel az Azure virtuális merevlemez (VHD), amely egy Linux CentOS-alapú operációs rendszert tartalmazza.
 services: virtual-machines-linux
 documentationcenter: ''
 author: szarkos
@@ -15,39 +15,39 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/04/2018
 ms.author: szark
-ms.openlocfilehash: d7c35b79dcdf75dbb3f891dc4c66cbf893b61c03
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 5328ee7e3e3035ebce1ff9fccbfc6e9ccfd86ee8
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33777688"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48888396"
 ---
 # <a name="prepare-a-centos-based-virtual-machine-for-azure"></a>CentOS-alapú virtuális gép előkészítése Azure-beli használatra
-* [Az Azure-bA a CentOS 6.x virtuális gép előkészítése](#centos-6x)
-* [Az Azure-bA a CentOS 7.0 + virtuális gép előkészítése](#centos-70)
+* [CentOS 6.x virtuális gép előkészítése Azure-beli használatra](#centos-6x)
+* [CentOS 7.0 + virtuális gép előkészítése Azure-beli használatra](#centos-70)
 
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
 
 ## <a name="prerequisites"></a>Előfeltételek
-Ez a cikk feltételezi, hogy a CentOS már telepítve van (vagy hasonló származtatott) Linux operációs rendszer virtuális merevlemezre. Több különféle eszköz található .vhd fájlok, például egy például a Hyper-V virtualizálási megoldás létrehozása. Útmutatásért lásd: [a Hyper-V szerepkör telepítése és konfigurálása a virtuális gépek](http://technet.microsoft.com/library/hh846766.aspx).
+Ez a cikk feltételezi, hogy a CentOS már telepítve van (vagy hasonló származtatott) Linux operációs rendszer virtuális merevlemezre. Több eszköz létezik a .vhd fájlokat, például például a Hyper-V virtualizálási megoldás létrehozása. Útmutatásért lásd: [a Hyper-V szerepkör telepítése és konfigurálása a virtuális gép](http://technet.microsoft.com/library/hh846766.aspx).
 
-**Telepítési jegyzetek centOS**
+**CentOS telepítési jegyzetek**
 
-* Is lásd: [általános Linux telepítési jegyzetek](create-upload-generic.md#general-linux-installation-notes) kapcsolatos további információkat az Azure Linux előkészítése.
-* A VHDX formátum nem támogatott az Azure csak **rögzített VHD**.  Átválthat a lemez VHD formátumú Hyper-V kezelője vagy a convert-vhd-parancsmag segítségével. VirtualBox rendszer használata esetén ez azt jelenti, hogy kiválasztásával **mérete rögzített** az alapértelmezett, a lemez létrehozásakor dinamikusan kiosztott szemben.
-* Ha telepíti a Linux rendszer *ajánlott* LVM (gyakran sok telepítés alapértelmezett), hanem szabványos partíciók használja. LVM neve ütközik a klónozott virtuális gépek, így elkerülhető, különösen akkor, ha egy operációsrendszer-lemez legalább egyszer kell hibaelhárítási egy másik, azonos virtuális géphez csatlakoztatható. [LVM](configure-lvm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) vagy [RAID](configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) adatlemezek használható.
-* Kernel támogatása UDF fájlrendszerek csatlakoztatására szükség. Azure első rendszerindításkor az üzembe helyezési konfiguráció lett átadva a Linux virtuális gép keresztül UDF formátumú adathordozót, amely csatolva van a Vendég. Az Azure Linux ügynök a UDF fájlrendszerben beolvasni a konfigurációt, és helyezze üzembe a virtuális gép csatlakoztatása képesnek kell lennie.
-* Linux kernel verziójánál régebbi 2.6.37 nem támogatott a Hyper-V nagyobb Virtuálisgép-méretek a. A probléma főként hatások régebbi azokat a terjesztéseket használatával a felsőbb rétegbeli Red Hat 2.6.32 kernel és javítását a RHEL 6.6 (kernel-2.6.32-504). Rendszerekre egyéni kernelek régebbi, mint 2.6.37 vagy régebbi RHEL alapú kernelek 2.6.32-504 a rendszerindító paramétert kell beállítani, mint `numa=off` a parancssori grub.conf a kernel. További információ: a Red Hat [KB 436883](https://access.redhat.com/solutions/436883).
-* Ne konfiguráljon egy swap partíciót az operációsrendszer-lemezképet. A Linux-ügynök beállítható úgy, hogy az ideiglenes erőforrás lemezen a lapozófájl létrehozásához.  További információk a megtalálhatók az alábbi lépéseket.
-* Minden, az Azure virtuális merevlemez rendelkeznie kell egy virtuális mérete 1MB igazodik. Virtuális merevlemez egy nyers lemezen történő átalakítása meg kell győződnie arról, hogy a nyers lemez mérete 1MB átalakítás előtti többszöröse. Lásd: [Linux telepítési jegyzetek](create-upload-generic.md#general-linux-installation-notes) további információt.
+* Tekintse meg a is [általános Linux telepítési jegyzetek](create-upload-generic.md#general-linux-installation-notes) kapcsolatos további tippek Linux előkészítése az Azure-hoz.
+* A VHDX formátum nem támogatott az Azure-ban, csak **rögzített VHD**.  Átválthat a lemez VHD formátumú Hyper-V kezelőjével vagy a convert-vhd-parancsmag használatával. VirtualBox használatakor ez azt jelenti, hogy kiválasztja **rögzített méretű** dinamikusan kiosztott lemez létrehozásakor az alapértelmezett helyett.
+* A Linux rendszer telepítése esetén *ajánlott* LVM (gyakran sok telepítés alapértelmezett), hanem szabványos partíciókat használni. LVM neve nem felel meg a klónozott virtuális gépeket, így elkerülhető, különösen akkor, ha minden eddiginél kell operációsrendszer-lemezt egy másik, azonos virtuális Géphez van csatlakoztatva a hibaelhárításhoz. [LVM](configure-lvm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) vagy [RAID](configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) használnak, az adatlemezeket.
+* Kernel támogatása csatlakoztatni UDF fájlrendszerek megadása kötelező. Első rendszerindításkor az Azure-ban az üzembe helyezési konfiguráció átadódik a Linux rendszerű virtuális gép UDF-formátumú adathordozót, amely csatolva van a Vendég-n keresztül. Az Azure Linux-ügynök csatlakoztatása az UDF-fájlrendszer, olvassa el a konfigurációját, és a virtuális gép képesnek kell lennie.
+* Linux-kernel verziók alatt 2.6.37 támogatott Hyper-v, nagyobb Virtuálisgép-mérettel. A probléma elsősorban hatással van a felsőbb rétegbeli használó régebbi disztribúciók Red Hat 2.6.32 kernel, és kijavítottuk RHEL 6.6 (kernel-2.6.32-504). Rendszert futtató egyéni 2.6.37 régebbi kernelekkel, vagy régebbi RHEL-alapú kernelekkel 2.6.32-504 a rendszerindító paramétert kell beállítani, mint `numa=off` a parancssori grub.conf a kernel. További információ: Red Hat [KB-os 436883](https://access.redhat.com/solutions/436883).
+* Az operációsrendszer-lemez nem konfigurál egy lapozó partíciót. A Linux-ügynök beállítható úgy, hogy hozzon létre egy ideiglenes erőforrás lemezen a lapozófájl.  További információ található a következő lépéseket.
+* Az Azure-ban minden virtuális merevlemezek rendelkeznie kell egy virtuális méret 1 MB igazítva. A virtuális merevlemez nyers lemezről történő konvertálása során biztosítania kell, hogy a nyers lemez mérete nagyobb-e az átalakítás előtt 1MB többszöröse. Lásd: [Linux telepítési jegyzetek](create-upload-generic.md#general-linux-installation-notes) további információt.
 
 ## <a name="centos-6x"></a>CentOS 6.x
 
 1. A Hyper-V kezelőjében válassza ki a virtuális gépet.
 
-2. Kattintson a **Connect** nyissa meg a konzol ablakot a virtuális gép számára.
+2. Kattintson a **Connect** , nyisson meg egy konzolablakot, a virtuális gép.
 
-3. A CentOS 6 NetworkManager megzavarhatja az Azure Linux ügynök. Távolítsa el a csomagot a következő parancs futtatásával:
+3. CentOS 6 NetworkManager zavarhatja az Azure Linux-ügynök. Távolítsa el ezt a csomagot a következő parancs futtatásával:
    
         # sudo rpm -e --nodeps NetworkManager
 
@@ -66,16 +66,16 @@ Ez a cikk feltételezi, hogy a CentOS már telepítve van (vagy hasonló szárma
         PEERDNS=yes
         IPV6INIT=no
 
-6. Az Ethernet-adaptert statikus szabályainak elkerülése érdekében udev szabályok módosítása. Ezek a szabályok problémákat okozhat, ha a Microsoft Azure- vagy Hyper-v virtuális gép klónozása
+6. Az Ethernet-adaptert statikus szabályainak elkerülése érdekében, udev szabályok módosítása. Ezek a szabályok problémákat okozhat, ha a Microsoft Azure vagy Hyper-v virtuális gépek klónozásának
    
         # sudo ln -s /dev/null /etc/udev/rules.d/75-persistent-net-generator.rules
         # sudo rm -f /etc/udev/rules.d/70-persistent-net.rules
 
-7. Győződjön meg arról, a hálózati szolgáltatás elkezdi rendszerindítás, a következő parancs futtatásával:
+7. Ellenőrizze, hogy a hálózati szolgáltatás elkezdi rendszerindítás, a következő parancs futtatásával:
    
         # sudo chkconfig network on
 
-8. Ha szeretné használni a OpenLogic tükör, amely az Azure adatközpontjaiban központja üzemelteti, majd cserélje le a `/etc/yum.repos.d/CentOS-Base.repo` fájlt a következő tárházak találhatók.  A művelet továbbá felvesz a **[openlogic]** tárház, például az Azure Linux ügynök további csomagokat tartalmazza:
+8. Ha szeretné használni az OpenLogic tükör, amely az Azure-adatközpontokban üzemelteti, majd cserélje le a `/etc/yum.repos.d/CentOS-Base.repo` fájlt a következő tárházakban.  A művelet továbbá felvesz a **[openlogic]** , például az Azure Linux-ügynök további csomagokat tartalmazó tárházban:
 
         [openlogic]
         name=CentOS-$releasever - openlogic packages for $basearch
@@ -125,60 +125,60 @@ Ez a cikk feltételezi, hogy a CentOS már telepítve van (vagy hasonló szárma
         gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-6
 
     >[!Note]
-    Ez az útmutató többi fogja feltételezni, hogy azok be számára legalább a `[openlogic]` tárház, az alábbi Azure Linux ügynök telepítéséhez használandó.
+    Ez az útmutató többi használandó használja legalább az `[openlogic]` adattár, az alábbi Azure Linux-ügynök telepítéséhez használandó.
 
 
-9. Adja hozzá az alábbi /etc/yum.conf:
+9. Adja hozzá a következő sort a /etc/yum.conf:
     
         http_caching=packages
 
-10. Törölje az aktuális yum metaadatokat, és frissítse a legújabb csomagokat a rendszer a következő parancsot futtassa:
+10. Futtassa a következő parancsot az aktuális yum metaadatokat törléséhez, és frissítse a rendszer a legújabb csomagok:
     
         # yum clean all
 
-    Kivéve, ha a régebbi verziójú CentOS egy kép létrehozásakor, javasoljuk, hogy a csomagok frissítése a legújabb verzióra:
+    Hacsak nem hoz létre a CentOS egy régebbi verzióját egy kép, javasoljuk, hogy minden a csomagok frissítése a legújabb verzióra:
 
         # sudo yum -y update
 
-    A parancs futtatása után a rendszer újraindítása lehet szükség.
+    A parancs futtatása után újraindítás lehet szükséges.
 
-11. (Választható) Telepíthetik az illesztőprogramokat a Linux integrációs szolgáltatások (LIS).
+11. (Nem kötelező) Telepítse az illesztőprogramokat a Linux Integration Services (LIS).
    
     >[!IMPORTANT]
-    A lépés **szükséges** a CentOS 6.3 és korábbi, és kötelező megadni a későbbi kibocsátásokban megtörténik.
+    A lépés **szükséges** a CentOS 6.3 és a korábbi és újabb verziók esetén nem kötelező.
 
         # sudo rpm -e hypervkvpd  ## (may return error if not installed, that's OK)
         # sudo yum install microsoft-hyper-v
 
-    Azt is megteheti, kövesse a manuális telepítési utasításokat a [LIS letöltési oldalát](https://go.microsoft.com/fwlink/?linkid=403033) , a virtuális gép RPM telepítéséhez.
+    Másik lehetőségként kövesse a manuális telepítési utasításait a [LIS letöltési oldalát](https://go.microsoft.com/fwlink/?linkid=403033) az RPM alakzatot a virtuális gép telepítéséhez.
  
-12. Telepítse az Azure Linux ügynök és a függőségek:
+12. Az Azure Linux-ügynök és a függőségek telepítése:
     
         # sudo yum install python-pyasn1 WALinuxAgent
     
-    A WALinuxAgent csomagot, azzal eltávolítja a NetworkManager és NetworkManager-gnome csomagok Ha nem már eltávolította azokat lásd a 3. lépés.
+    A WALinuxAgent csomag eltávolítja a NetworkManager és NetworkManager-gnome csomagokat, ha azok nem lettek már eltávolítva leírt módon a 3. lépés.
 
 
-13. Módosítsa a kernel rendszerindító sor lárvajárat konfigurációs kiegészítő rendszermag paraméterek az Azure-bA felvenni. Ehhez nyissa meg a `/boot/grub/menu.lst` egy szövegszerkesztőben, és győződjön meg arról, hogy az alapértelmezett kernel az alábbi paramétereket tartalmazza:
+13. Módosítsa a rendszermag rendszerindítási sorához további kernel paramétereket tartalmazza az Azure-hoz a grub-hibát konfigurációjában. Ehhez nyissa meg a `/boot/grub/menu.lst` egy szövegszerkesztőben, és győződjön meg arról, hogy az alapértelmezett kernel tartalmazza a következő paraméterekkel:
     
         console=ttyS0 earlyprintk=ttyS0 rootdelay=300
     
-    Ez biztosítja az összes konzol küldi el az első soros port, amely segít az Azure által támogatott hibáinak feltárására.
+    Ez biztosítja az összes konzol üzenetet küld az első soros port, amely segítheti az Azure támogatási problémák hibakeresésében.
     
     A fentiek mellett javasoljuk, hogy *eltávolítása* a következő paraméterekkel:
     
         rhgb quiet crashkernel=auto
     
-    Grafikus és a csendes rendszerindító egy felhőalapú környezetben, ahol azt szeretnénk, hogy minden a naplókat a soros port küldendő nem hasznosak.  A `crashkernel` beállítás lehet, hogy szükség esetén konfigurálva balra, de vegye figyelembe, hogy ez a paraméter csökkenti a virtuális gépen legalább 128 MB, rendelkezésre álló memória mennyisége kisebb Virtuálisgép-méretek a problematikus esetleg.
+    Grafikus és a csendes rendszerindító, amelyek nem hasznos, ha egy felhőalapú környezetben, ahol szeretnénk a soros port kell küldeni a naplókat.  A `crashkernel` beállítás lehet bal konfigurálva, ha szükséges, de vegye figyelembe, hogy ez a paraméter csökken a rendelkezésre álló memória a virtuális gépen legalább 128 MB, amely a kisebb Virtuálisgép-méretek problémás lehet.
 
     >[!Important]
-    CentOS 6.5-ös vagy korábbi is be kell állítani a kernel paraméter `numa=off`. Tekintse meg a Red Hat [KB 436883](https://access.redhat.com/solutions/436883).
+    CentOS 6.5-ös vagy régebbi is be kell állítania a kernel paraméter `numa=off`. Tekintse meg a Red Hat [KB 436883](https://access.redhat.com/solutions/436883).
 
-14. Győződjön meg arról, hogy az SSH-kiszolgálót telepítse és konfigurálja a rendszerindítás elindításához.  Ez általában az alapértelmezett beállítás.
+14. Győződjön meg arról, hogy az SSH-kiszolgáló telepítve és konfigurálva van rendszerindítás elindításához.  Ez általában az alapértelmezett érték.
 
-15. Ne hozzon létre az operációsrendszer-lemezképet a lapozóterület.
+15. Nem hozható létre lapozófájl-kapacitás az operációsrendszer-lemez.
     
-    Az Azure Linux ügynök automatikusan konfigurálhatók a lapozóterület használata a helyi erőforrás lemezt a virtuális Géphez csatolt Azure kiépítése után. Vegye figyelembe, hogy a helyi erőforrás lemez egy *ideiglenes* lemezre, és előfordulhat, hogy szerepelnek, ha a virtuális gép van platformelőfizetés. Az Azure Linux ügynök telepítése után (lásd az előző lépésben), módosítsa a következő paramétereket `/etc/waagent.conf` megfelelően:
+    Az Azure Linux-ügynök automatikusan konfigurálhatják a lapozóterület használata a helyi erőforrás-lemez, amely az Azure-ban üzembe helyezés után a virtuális Géphez van csatlakoztatva. Vegye figyelembe, hogy a helyi erőforrás-lemez egy *ideiglenes* lemezre, és előfordulhat, hogy ki kell üríteni, ha a virtuális gép. Az Azure Linux-ügynök telepítése után (lásd az előző lépésben), módosítsa a következő paramétereket lévő `/etc/waagent.conf` megfelelően:
     
         ResourceDisk.Format=y
         ResourceDisk.Filesystem=ext4
@@ -186,30 +186,30 @@ Ez a cikk feltételezi, hogy a CentOS már telepítve van (vagy hasonló szárma
         ResourceDisk.EnableSwap=y
         ResourceDisk.SwapSizeMB=2048    ## NOTE: set this to whatever you need it to be.
 
-16. A virtuális gép kiosztásának megszüntetése, és előkészíti az Azure-on történő üzembe helyezéséhez a következő parancsok futtatásával:
+16. Futtassa az alábbi parancsokat a virtuális gép megszüntetése és kiépítése az Azure előkészítése:
     
         # sudo waagent -force -deprovision
         # export HISTSIZE=0
         # logout
 
-17. Kattintson a **művelet le -> leállítási** a Hyper-V kezelőjében. A Linux virtuális merevlemez az Azure-bA feltölteni kívánt készen áll.
+17. Kattintson a **művelet le -> Leállítás** a Hyper-V kezelőjében. A Linux rendszerű VHD-t most már készen áll a tölthető fel az Azure-bA.
 
 
 - - -
 ## <a name="centos-70"></a>CentOS 7.0 +
 **Változások a CentOS 7 (és hasonló származékai)**
 
-A CentOS 7 virtuális gép előkészítése az Azure-hasonlít a CentOS 6, azonban nincsenek érdemes megjegyezni számos fontos különbség:
+A CentOS 7 virtuális gép előkészítése Azure-hasonlít a CentOS 6, azonban nincsenek megjegyezni számos fontos különbség:
 
-* A NetworkManager csomag már nem ütközik az Azure Linux ügynök. Alapértelmezés szerint ez a csomag telepítve van, és azt javasoljuk, hogy nem törli.
-* GRUB2 most lesz az alapértelmezett rendszertöltő, az eljárás kernel paraméterek szerkesztésre megváltozott (lásd alább).
-* XFS mostantól az alapértelmezett fájlrendszert. A ext4 fájlrendszer továbbra is használható, ha szükséges.
+* A NetworkManager csomag már nem ütközik az Azure Linux-ügynök. Ez a csomag alapértelmezés szerint telepítve van, és azt javasoljuk, hogy nem törli.
+* GRUB2 most történik, az alapértelmezett rendszerbetöltőt, ezért az eljárás kernel paraméterek szerkesztésre megváltozott (lásd alább).
+* XFS már az alapértelmezett fájlrendszer. A ext4 fájlrendszer továbbra is használható, ha szükséges.
 
 **Konfigurációs lépések**
 
 1. A Hyper-V kezelőjében válassza ki a virtuális gépet.
 
-2. Kattintson a **Connect** nyissa meg a konzol ablakot a virtuális gép számára.
+2. Kattintson a **Connect** , nyisson meg egy konzolablakot, a virtuális gép.
 
 3. Hozzon létre vagy szerkessze a fájlt `/etc/sysconfig/network` , és adja hozzá a következő szöveget:
    
@@ -227,11 +227,11 @@ A CentOS 7 virtuális gép előkészítése az Azure-hasonlít a CentOS 6, azonb
         IPV6INIT=no
         NM_CONTROLLED=no
 
-5. Az Ethernet-adaptert statikus szabályainak elkerülése érdekében udev szabályok módosítása. Ezek a szabályok problémákat okozhat, ha a Microsoft Azure- vagy Hyper-v virtuális gép klónozása
+5. Az Ethernet-adaptert statikus szabályainak elkerülése érdekében, udev szabályok módosítása. Ezek a szabályok problémákat okozhat, ha a Microsoft Azure vagy Hyper-v virtuális gépek klónozásának
    
         # sudo ln -s /dev/null /etc/udev/rules.d/75-persistent-net-generator.rules
 
-6. Ha szeretné használni a OpenLogic tükör, amely az Azure adatközpontjaiban központja üzemelteti, majd cserélje le a `/etc/yum.repos.d/CentOS-Base.repo` fájlt a következő tárházak találhatók.  A művelet továbbá felvesz a **[openlogic]** tárház, amely az Azure Linux ügynök csomagokat tartalmazza:
+6. Ha szeretné használni az OpenLogic tükör, amely az Azure-adatközpontokban üzemelteti, majd cserélje le a `/etc/yum.repos.d/CentOS-Base.repo` fájlt a következő tárházakban.  A művelet továbbá felvesz a **[openlogic]** , az Azure Linux ügynök-csomagokat tartalmazó tárházban:
    
         [openlogic]
         name=CentOS-$releasever - openlogic packages for $basearch
@@ -272,35 +272,35 @@ A CentOS 7 virtuális gép előkészítése az Azure-hasonlít a CentOS 6, azonb
         gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7
 
     >[!Note]
-    Ez az útmutató többi fogja feltételezni, hogy azok be számára legalább a `[openlogic]` tárház, az alábbi Azure Linux ügynök telepítéséhez használandó.
+    Ez az útmutató többi használandó használja legalább az `[openlogic]` adattár, az alábbi Azure Linux-ügynök telepítéséhez használandó.
 
-7. Futtassa a következő parancsot, törölje az aktuális yum metaadatokat, és telepítse a frissítéseket:
+7. Futtassa a következő parancsot az aktuális yum metaadatokat törléséhez, és telepítse a frissítéseket:
    
         # sudo yum clean all
 
-    Kivéve, ha a régebbi verziójú CentOS egy kép létrehozásakor, javasoljuk, hogy a csomagok frissítése a legújabb verzióra:
+    Hacsak nem hoz létre a CentOS egy régebbi verzióját egy kép, javasoljuk, hogy minden a csomagok frissítése a legújabb verzióra:
 
         # sudo yum -y update
 
-    Lehet, hogy ez a parancs futtatása után a szükséges újraindítás.
+    A parancs futtatása után esetleg szükséges újraindítás.
 
-8. Módosítsa a kernel rendszerindító sor lárvajárat konfigurációs kiegészítő rendszermag paraméterek az Azure-bA felvenni. Ehhez nyissa meg a `/etc/default/grub` egy szövegszerkesztőben, és a Szerkesztés a `GRUB_CMDLINE_LINUX` paraméter, például:
+8. Módosítsa a rendszermag rendszerindítási sorához további kernel paramétereket tartalmazza az Azure-hoz a grub-hibát konfigurációjában. Ehhez nyissa meg a `/etc/default/grub` egy szövegszerkesztőben, és a Szerkesztés a `GRUB_CMDLINE_LINUX` paramétert, például:
    
         GRUB_CMDLINE_LINUX="rootdelay=300 console=ttyS0 earlyprintk=ttyS0 net.ifnames=0"
    
-   Ez biztosítja az összes konzol küldi el az első soros port, amely segít az Azure által támogatott hibáinak feltárására. Azt is kikapcsolja a CentOS 7 új elnevezési szabályai a hálózati adapterek. A fentiek mellett javasoljuk, hogy *eltávolítása* a következő paraméterekkel:
+   Ez biztosítja az összes konzol üzenetet küld az első soros port, amely segítheti az Azure támogatási problémák hibakeresésében. Azt is kikapcsolja az új CentOS 7 elnevezési konvencióinak hálózati adapterek. A fentiek mellett javasoljuk, hogy *eltávolítása* a következő paraméterekkel:
    
         rhgb quiet crashkernel=auto
    
-    Grafikus és a csendes rendszerindító egy felhőalapú környezetben, ahol azt szeretnénk, hogy minden a naplókat a soros port küldendő nem hasznosak. A `crashkernel` beállítás lehet, hogy szükség esetén konfigurálva balra, de vegye figyelembe, hogy ez a paraméter csökkenti a virtuális gépen legalább 128 MB, rendelkezésre álló memória mennyisége kisebb Virtuálisgép-méretek a problematikus esetleg.
+    Grafikus és a csendes rendszerindító, amelyek nem hasznos, ha egy felhőalapú környezetben, ahol szeretnénk a soros port kell küldeni a naplókat. A `crashkernel` beállítás lehet bal konfigurálva, ha szükséges, de vegye figyelembe, hogy ez a paraméter csökken a rendelkezésre álló memória a virtuális gépen legalább 128 MB, amely a kisebb Virtuálisgép-méretek problémás lehet.
 
-9. Miután a szerkesztési `/etc/default/grub` / felett, a következő parancsot, hogy a lárvajárat konfiguráció:
+9. Ha elkészült szerkesztési `/etc/default/grub` kiszolgálónként felett, a következő parancsot a grub konfigurációs újraépítése:
    
         # sudo grub2-mkconfig -o /boot/grub2/grub.cfg
 
-10. Ha a lemezkép **VMWare, VirtualBox vagy KVM:** ellenőrizze, hogy a Hyper-V-illesztőprogramok a initramfs szerepelnek:
+10. Ha az a rendszerkép összeállítására **VMware, VirtualBox vagy KVM:** gondoskodjon arról, hogy a Hyper-V illesztőprogramok a initramfs szerepelnek:
    
-   Szerkesztés `/etc/dracut.conf`, adja hozzá a tartalomhoz:
+   Szerkesztés `/etc/dracut.conf`, adja hozzá a tartalmat:
    
         add_drivers+=”hv_vmbus hv_netvsc hv_storvsc”
    
@@ -308,14 +308,14 @@ A CentOS 7 virtuális gép előkészítése az Azure-hasonlít a CentOS 6, azonb
    
         # sudo dracut -f -v
 
-11. Telepítse az Azure Linux ügynök és a függőségek:
+11. Az Azure Linux-ügynök és a függőségek telepítése:
 
         # sudo yum install python-pyasn1 WALinuxAgent
         # sudo systemctl enable waagent
 
-12. Ne hozzon létre az operációsrendszer-lemezképet a lapozóterület.
+12. Nem hozható létre lapozófájl-kapacitás az operációsrendszer-lemez.
    
-   Az Azure Linux ügynök automatikusan konfigurálhatók a lapozóterület használata a helyi erőforrás lemezt a virtuális Géphez csatolt Azure kiépítése után. Vegye figyelembe, hogy a helyi erőforrás lemez egy *ideiglenes* lemezre, és előfordulhat, hogy szerepelnek, ha a virtuális gép van platformelőfizetés. Az Azure Linux ügynök telepítése után (lásd az előző lépésben), módosítsa a következő paramétereket `/etc/waagent.conf` megfelelően:
+   Az Azure Linux-ügynök automatikusan konfigurálhatják a lapozóterület használata a helyi erőforrás-lemez, amely az Azure-ban üzembe helyezés után a virtuális Géphez van csatlakoztatva. Vegye figyelembe, hogy a helyi erőforrás-lemez egy *ideiglenes* lemezre, és előfordulhat, hogy ki kell üríteni, ha a virtuális gép. Az Azure Linux-ügynök telepítése után (lásd az előző lépésben), módosítsa a következő paramétereket lévő `/etc/waagent.conf` megfelelően:
    
         ResourceDisk.Format=y
         ResourceDisk.Filesystem=ext4
@@ -323,14 +323,14 @@ A CentOS 7 virtuális gép előkészítése az Azure-hasonlít a CentOS 6, azonb
         ResourceDisk.EnableSwap=y
         ResourceDisk.SwapSizeMB=2048    ## NOTE: set this to whatever you need it to be.
 
-13. A virtuális gép kiosztásának megszüntetése, és előkészíti az Azure-on történő üzembe helyezéséhez a következő parancsok futtatásával:
+13. Futtassa az alábbi parancsokat a virtuális gép megszüntetése és kiépítése az Azure előkészítése:
    
         # sudo waagent -force -deprovision
         # export HISTSIZE=0
         # logout
 
-14. Kattintson a **művelet le -> leállítási** a Hyper-V kezelőjében. A Linux virtuális merevlemez az Azure-bA feltölteni kívánt készen áll.
+14. Kattintson a **művelet le -> Leállítás** a Hyper-V kezelőjében. A Linux rendszerű VHD-t most már készen áll a tölthető fel az Azure-bA.
 
 ## <a name="next-steps"></a>További lépések
-Most már készen áll a CentOS Linux virtuális merevlemez segítségével új virtuális gépek létrehozása az Azure-ban. Ha az első alkalommal, hogy van-e a .vhd fájl feltöltése az Azure, lásd: [Linux virtuális gép létrehozása az egyéni lemezről](upload-vhd.md#option-1-upload-a-vhd).
+Most már készen áll a CentOS Linux rendszerű virtuális merevlemez használatával hozzon létre új virtuális gépek az Azure-ban. Ha ez az első alkalommal, hogy a .vhd fájlt videófájl az Azure-ba, tekintse meg a [egy Linux virtuális gép létrehozása egy egyéni lemezről](upload-vhd.md#option-1-upload-a-vhd).
 

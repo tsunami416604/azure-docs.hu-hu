@@ -1,29 +1,30 @@
 ---
-title: Academic Knowledge API-ban. a napló entitásattribútumhoz |} Microsoft Docs
-description: Ismerje meg, az attribútumokat, a napló entitás kognitív szolgáltatásban a Academic Knowledge API használatával.
+title: Napló tevékenységentitás-attribútumok – Academic Knowledge API
+titlesuffix: Azure Cognitive Services
+description: Ismerje meg, hogy a napló entitás az Academic Knowledge API, a Cognitive Services használata az attribútumokat.
 services: cognitive-services
 author: alch-msft
-manager: kuansanw
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: academic-knowledge
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/23/2017
 ms.author: alch
-ms.openlocfilehash: e782c57b8ac57028e070c16382c53ec76666e94d
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 45b2860b56e79c197d96998350131a142326157a
+ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35346847"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48902807"
 ---
 # <a name="journal-entity"></a>Napló entitás
 
-<sub> * A következő attribútumok napló entitás vonatkoznak. (Most = "2") </sub>
+<sub> * A következő attribútumok napló entitás jellemzőek. (Folyó évi = "2") </sub>
 
 Name (Név)    |Leírás                            |Típus       | Műveletek
 ------- | ------------------------------------- | --------- | ----------------------------
 Azonosító      |Entitásazonosító                              |Int64      |Egyenlő
-DJN     |Normalizált napló neve                |Sztring     |nincs
+DJN     |Napló normalizált neve                |Sztring     |nincs
 JN      |Napló megjelenített neve                   |Sztring     |Egyenlő
-Másolat      |Napló teljes hivatkozás száma           |Int32      |nincs  
-ECC     |Napló becsült hivatkozás teljes száma |Int32      |nincs
+Másolat      |Napló idézetet teljes száma           |Int32      |nincs  
+ECC     |Napló becsült idézetet teljes száma |Int32      |nincs

@@ -5,16 +5,16 @@ description: Ismerje meg, hogyan beszédfelismerést a JavaScript a Cognitive Se
 services: cognitive-services
 author: fmegen
 ms.service: cognitive-services
-ms.technology: Speech
+ms.component: Speech
 ms.topic: article
 ms.date: 09/24/2018
 ms.author: fmegen
-ms.openlocfilehash: 9ac48bd77087a8dc050ccd1ee8fe63ec5c25a643
-ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
+ms.openlocfilehash: 75dcda643741e3aeb1238f82128e4c5b058be840
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48018384"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48883658"
 ---
 # <a name="quickstart-recognize-speech-in-javascript-in-a-browser-using-the-cognitive-services-speech-sdk"></a>Gyors útmutató: Recognize speech a JavaScript a Cognitive Services beszédfelismerő SDK használatával
 
@@ -103,7 +103,7 @@ Indítsa el az alkalmazást, kattintson duplán az index.html fájlt, vagy nyiss
 Indítsa el az alkalmazást, nyissa meg a kedvenc webböngészőjét, és mutasson a nyilvános URL-címre, amely az működtetni a mappát, adja meg a [régió](regions.md), és a egy felismerés, a mikrofon használatával aktiválásához. Ha konfigurálta, azt fogják beszerezni egy jogkivonatot a jogkivonat forrásból.
 
 [!INCLUDE [Download the sample](../../../includes/cognitive-services-speech-service-speech-sdk-sample-download-h2.md)]
-Keresse meg az ehhez a mintához a `quickstart/js-browser` mappát.
+A jelen útmutatóban használt mintát a `quickstart/js-browser` mappában találja.
 
 ## <a name="next-steps"></a>További lépések
 

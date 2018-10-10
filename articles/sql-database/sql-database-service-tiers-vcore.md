@@ -11,13 +11,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: sashan, moslake
 manager: craigg
-ms.date: 10/04/2018
-ms.openlocfilehash: 6321c1dab0ae9db231a5ba494c981f47aee3ee6b
-ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
+ms.date: 10/09/2018
+ms.openlocfilehash: e93de9b3642e0b01bf65b6761d8832b0d4c2a431
+ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/06/2018
-ms.locfileid: "48831351"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48901685"
 ---
 # <a name="vcore-service-tiers-azure-hybrid-use-benefit-and-migration"></a>virtuális mag szolgáltatásszintek, Azure Hybrid Use Benefit és migrálása
 
@@ -33,7 +33,7 @@ Virtuálismag-modell azt is lehetővé teszi, hogy [Azure Hybrid Use Benefitet a
 
 ## <a name="service-tier-characteristics"></a>Szolgáltatási szint tulajdonságok
 
-A Virtuálismag-modell általános célú és a kritikus fontosságú üzleti szolgáltatáscsomagban biztosítja. Szolgáltatásszintek számítási méretű, a magas rendelkezésre állás kialakítása, a hibák elszigetelését, a tárolási típust kínál számos és i/o-tartomány különbözteti meg. Az ügyfél külön-külön kell konfigurálnia a szükséges tárolási és a megőrzési időszak a biztonsági mentésekhez.
+A Virtuálismag-modell általános célú és a kritikus fontosságú üzleti szolgáltatáscsomagban biztosítja. Szolgáltatásszintek számítási méretű, a magas rendelkezésre állás kialakítása, a hibák elszigetelését, a tárolási típust kínál számos és i/o-tartomány különbözteti meg. Az ügyfél külön-külön kell konfigurálnia a szükséges tárolási és a megőrzési időszak a biztonsági mentésekhez. Külön-külön konfigurálnia kell a szükséges tárolási és a megőrzési időszak a biztonsági mentésekhez. Az Azure Portalon nyissa meg a kiszolgáló (nem az adatbázis) > felügyelt biztonsági mentés > szabályzat konfigurálása > pont az idő visszaállítása konfiguráció > 7 – 35 nap.
 
 Az alábbi táblázat segít a két szintek közötti különbségeket:
 

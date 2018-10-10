@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 9/10/2018
 ms.author: markgal
-ms.openlocfilehash: ebfd879fcd619dab48e4a08130f86afc68f91207
-ms.sourcegitcommit: 4edf9354a00bb63082c3b844b979165b64f46286
+ms.openlocfilehash: 7ab88ce3565ccf79f20847a3a5e744c495d5fcb1
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48785426"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48884933"
 ---
 # <a name="prepare-your-environment-to-back-up-resource-manager-deployed-virtual-machines"></a>A környezet előkészítése a Resource Managerrel üzembe helyezett virtuális gépek biztonsági mentéséhez
 
@@ -62,6 +62,9 @@ Mielőtt a környezet előkészítése, ügyeljen arra, hogy ezek a korlátozás
   * Virtuális gépek terheléselosztó-konfiguráció (belső és külső)
   * Több fenntartott IP-címmel rendelkező virtuális gépek
   * Virtuális gépek több hálózati adapter
+
+  > [!NOTE]
+  > Az Azure Backup támogatja [SSD standard szintű Managed Disks](https://azure.microsoft.com/blog/announcing-general-availability-of-standard-ssd-disks-for-azure-virtual-machine-workloads/), egy új Microsoft Azure virtuális gépek tartós tárolási típusú. A felügyelt lemezek esetében támogatott [Azure virtuális gép biztonsági mentési vermének v2 verziójára](backup-upgrade-to-vm-backup-stack-v2.md).
 
 ## <a name="create-a-recovery-services-vault-for-a-vm"></a>Létrehoz egy Recovery Services-tárolót egy virtuális Géphez
 Recovery Services-tároló olyan entitás, amely a biztonsági mentések és idővel létrehozott helyreállítási pontokat tárolja. A Recovery Services-tárolót is tartalmaz, amely a védett virtuális gépek társítva vannak a biztonsági mentési szabályzatok.

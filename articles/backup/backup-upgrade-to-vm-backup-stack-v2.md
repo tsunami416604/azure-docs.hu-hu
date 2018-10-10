@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 8/1/2018
 ms.author: trinadhk
-ms.openlocfilehash: 1021900620272cc5476d8972daf9d7e0a161797a
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.openlocfilehash: 6f19a536861d236a82cc77a17570d8e3004a2ba1
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39398001"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48888271"
 ---
 # <a name="upgrade-to-azure-vm-backup-stack-v2"></a>Azure virtuális gép biztonsági mentési vermének v2 verziójára frissítsen.
 
@@ -28,19 +28,19 @@ A Resource Manager üzemi modell a virtuális gép (VM) biztonsági másolat ver
 
 * Lehetővé teszi egy nem felügyelt virtuális gép eredeti tárfiókokban, visszaállításához használni. Ez a lehetőség létezik, akkor is, ha a virtuális gép lemezei tárfiókokban vannak elosztva. Ez felgyorsítja a visszaállítási műveletek számos különböző Virtuálisgép-konfigurációk esetében.
     > [!NOTE]
-    > Ez a lehetőség nem ugyanaz, mint az eredeti virtuális gép felülbírálása. 
+    > Ez a lehetőség nem ugyanaz, mint az eredeti virtuális gép felülbírálása.
     >
 
 ## <a name="whats-changing-in-the-new-stack"></a>Mi változik a új verem?
 A biztonsági mentési feladat jelenleg két fázisból áll:
-1.  Virtuális gép pillanatképének elkészítése. 
-2.  Átvitele az Azure Backup-tárolót egy virtuális gép pillanatképét. 
+1.  Virtuális gép pillanatképének elkészítése.
+2.  Átvitele az Azure Backup-tárolót egy virtuális gép pillanatképét.
 
-Helyreállítási pont számít jönnek létre csak azt követően 1. és 2 fázisban kell elvégezni. Az új stack részeként a helyreállítási pont jön létre, amint a pillanatkép befejeződött. Is visszaállíthatja a helyreállítási pont használatával ugyanezt a helyreállítási folyamatot. A helyreállítási pont típusa "pillanatkép" segítségével azonosíthatja a helyreállítási pont, az Azure Portalon. Miután a pillanatkép átkerülnek a tárolóba, a helyreállítási pont típusa változik "pillanatkép és tár." 
+Helyreállítási pont számít jönnek létre csak azt követően 1. és 2 fázisban kell elvégezni. Az új stack részeként a helyreállítási pont jön létre, amint a pillanatkép befejeződött. Is visszaállíthatja a helyreállítási pont használatával ugyanezt a helyreállítási folyamatot. A helyreállítási pont típusa "pillanatkép" segítségével azonosíthatja a helyreállítási pont, az Azure Portalon. Miután a pillanatkép átkerülnek a tárolóba, a helyreállítási pont típusa változik "pillanatkép és tár."
 
-![Virtuális gép biztonsági másolat verem Resource Manager üzemi modell – tárolási és a tárolóban lévő biztonsági mentési feladat](./media/backup-azure-vms/instant-rp-flow.jpg) 
+![Virtuális gép biztonsági másolat verem Resource Manager üzemi modell – tárolási és a tárolóban lévő biztonsági mentési feladat](./media/backup-azure-vms/instant-rp-flow.jpg)
 
-Alapértelmezés szerint a pillanatképek őrzi meg a hét napja. Ez a funkció lehetővé teszi, hogy a visszaállítás a pillanatképek a gyorsabb befejezéséhez. Ez csökkenti az adatokat másolja vissza a tárolóból az ügyfél tárfiókja szükséges idő. 
+Alapértelmezés szerint a pillanatképek őrzi meg a hét napja. Ez a funkció lehetővé teszi, hogy a visszaállítás a pillanatképek a gyorsabb befejezéséhez. Ez csökkenti az adatokat másolja vissza a tárolóból az ügyfél tárfiókja szükséges idő.
 
 ## <a name="considerations-before-upgrade"></a>Frissítés előtt megfontolandó szempontok
 
@@ -48,25 +48,28 @@ Alapértelmezés szerint a pillanatképek őrzi meg a hét napja. Ez a funkció 
 
 * A pillanatképek a rendszer helyben tárolja, a helyreállítási pont létrehozása növelése érdekében és visszaállítási műveletek felgyorsítása érdekében. Ennek eredményeképpen láthatja a tárolási költségek, amelyek megfelelnek a 7 napos időszakban készített pillanatkép.
 
-* Növekményes pillanatképek lapblobként tárolt. Nem felügyelt lemezeket használó összes ügyfelei a hét nap, a pillanatképek vannak tárolva az ügyfél helyi tárfiók díjkötelesek. Mivel a visszaállítási pont gyűjtemények által felügyelt virtuális gép biztonsági mentéseinek használt blobpillanatképeket használja az alapul szolgáló tárolási szinten, a felügyelt lemezek érhet el megfelelő költségeket [blob-pillanatkép díjszabás](https://docs.microsoft.com/rest/api/storageservices/understanding-how-snapshots-accrue-charges) és a növekményes-e. 
+* Növekményes pillanatképek lapblobként tárolt. Nem felügyelt lemezeket használó összes ügyfelei a hét nap, a pillanatképek vannak tárolva az ügyfél helyi tárfiók díjkötelesek. Mivel a visszaállítási pont gyűjtemények által felügyelt virtuális gép biztonsági mentéseinek használt blobpillanatképeket használja az alapul szolgáló tárolási szinten, a felügyelt lemezek érhet el megfelelő költségeket [blob-pillanatkép díjszabás](https://docs.microsoft.com/rest/api/storageservices/understanding-how-snapshots-accrue-charges) és a növekményes-e.
 
 * Egy prémium szintű virtuális gép egy pillanatkép helyreállítási pontból állítja vissza, ha egy ideiglenes tárolási helyet szolgál, míg a virtuális gép létrehozása.
 
 * Prémium szintű tárfiókok esetén az azonnali helyreállítási pontok száma legfeljebb 10 TB-os felé készített pillanatképeket lefoglalt terület.
 
+> [!NOTE]
+> Frissítés az Azure virtuális gép biztonsági mentési vermének v2 verziójára kérhet támogatást az Azure Backup az a [SSD standard szintű Managed Disks](https://azure.microsoft.com/blog/announcing-general-availability-of-standard-ssd-disks-for-azure-virtual-machine-workloads/) és legfeljebb 32 adatlemezt a virtuális gépekkel.
+
 ## <a name="upgrade"></a>Frissítés
 ### <a name="the-azure-portal"></a>Az Azure Portal
 Ha használja az Azure Portalon, a tároló irányítópultjának megjelenik egy értesítés. Ezt az értesítést a nagyméretű lemezek támogatása és a biztonsági mentés és visszaállítás sebességének fejlesztései vonatkozik. Másik lehetőségként megnyithatja a tároló frissítési lehetősége tulajdonságok lapján.
 
-![A virtuális gép biztonsági másolat verem Resource Manager üzemi modell – értesítés a támogatás megszűnéséről biztonsági mentési feladat](./media/backup-azure-vms/instant-rp-banner.png) 
+![A virtuális gép biztonsági másolat verem Resource Manager üzemi modell – értesítés a támogatás megszűnéséről biztonsági mentési feladat](./media/backup-azure-vms/instant-rp-banner.png)
 
-Az új stack verziójára való frissítéshez egy képernyő megnyitásához, válassza ki a szalagcímet. 
+Az új stack verziójára való frissítéshez egy képernyő megnyitásához, válassza ki a szalagcímet.
 
-![A virtuális gép biztonsági másolat verem Resource Manager üzemi modell – biztonsági mentési feladat frissítése](./media/backup-azure-vms/instant-rp.png) 
+![A virtuális gép biztonsági másolat verem Resource Manager üzemi modell – biztonsági mentési feladat frissítése](./media/backup-azure-vms/instant-rp.png)
 
 ### <a name="powershell"></a>PowerShell
 Futtassa a következő parancsmagokat egy emelt szintű PowerShell terminálon:
-1.  Jelentkezzen be az Azure-fiókjával: 
+1.  Jelentkezzen be az Azure-fiókjával:
 
     ```
     PS C:> Connect-AzureRmAccount
@@ -98,25 +101,22 @@ Ugyanakkor "Regisztrálva", majd az előfizetés frissül virtuális gép bizton
 Az alábbi kérdések és válaszok összegyűjtése a fórumok és a vásárlói kérdésre.
 
 ### <a name="will-upgrading-to-v2-impact-current-backups"></a>Negatívan befolyásolja jelenlegi biztonsági mentések V2 verzióra?
-
 V2 verzióra frissíti, van-e a jelenlegi biztonsági mentések nem érinti, és nem kell konfigurálnia a környezetben. A frissítés és a biztonsági mentési környezet továbbra is működik, mert.
 
 ### <a name="what-does-it-cost-to-upgrade-to-azure-vm-backup-stack-v2"></a>Mit költséggel jár a frissítsen az Azure VM Backup stack v2?
-
 Nincs frissítés a verem v2 költség nélkül. A pillanatképek rendszer helyben tárolja a helyreállítási pont létrehozása felgyorsítása és visszaállítási műveletek. Ennek eredményeképpen láthatja a tárolási költségek, amelyek megfelelnek a 7 napos időszakban készített pillanatképeket.
 
 ### <a name="does-upgrading-to-stack-v2-increase-the-premium-storage-account-snapshot-limit-by-10-tb"></a>Megnöveli a prémium szintű storage fiók pillanatképekre vonatkozó korlát 10 TB-os által a verem v2 verzióra?
-
-Nem, a tárolási fiók továbbra is megmarad, 10 TB-os teljes pillanatkép-korlátozást. 
+Nem, a tárolási fiók továbbra is megmarad, 10 TB-os teljes pillanatkép-korlátozást.
 
 ### <a name="in-premium-storage-accounts-do-snapshots-taken-for-instant-recovery-point-occupy-the-10-tb-snapshot-limit"></a>A prémium szintű Storage-fiókok hajtsa végre az azonnali helyreállítási pontok készített pillanatkép foglalhat el a 10 TB-os pillanatképekre vonatkozó korlát?
-
 Igen, prémium szintű tárfiókok esetén az azonnali helyreállítási pontok, készített pillanatképeket foglalhat el a lefoglalt 10 TB-nyi területet.
 
-### <a name="how-does-the-snapshot-work-during-the-seven-day-period"></a>Hogyan működik a pillanatkép a 7 napos időszakban? 
-
+### <a name="how-does-the-snapshot-work-during-the-seven-day-period"></a>Hogyan működik a pillanatkép a 7 napos időszakban?
 Minden nap, egy új pillanatkép készítésének időpontjában. Hét egyes pillanatképek vannak. A szolgáltatásnak nincs **nem** készítsen róla egy másolatot az első napon, és adja hozzá a módosítások a következő hat nap.
 
 ### <a name="is-a-v2-snapshot-an-incremental-snapshot-or-full-snapshot"></a>Egy v2 pillanatkép, olyan növekményes pillanatkép vagy a teljes pillanatkép?
+Nem felügyelt lemezek növekményes pillanatképek szolgálnak. Felügyelt lemezek visszaállítási pont gyűjteményt használ az Azure Backup által létrehozott blob-pillanatképekkel, és ezért növekményes.
 
-Nem felügyelt lemezek növekményes pillanatképek szolgálnak. Felügyelt lemezek visszaállítási pont gyűjteményt használ az Azure Backup által létrehozott blob-pillanatképekkel, és ezért növekményes. 
+### <a name="how-to-get-standard-ssd-managed-disk-support-for-a-virtual-machine"></a>Standard SSD beszerzése felügyelt virtuális gépek számára?
+Frissítés az Azure virtuális gép biztonsági mentési vermének v2 verziójára kérhet támogatást az Azure Backup az a [SSD standard szintű Managed Disks](https://azure.microsoft.com/blog/announcing-general-availability-of-standard-ssd-disks-for-azure-virtual-machine-workloads/). Miután frissített, biztonsági mentési legfeljebb 32 adatlemezt a virtuális gépekkel.

@@ -8,17 +8,17 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/27/2018
+ms.date: 10/09/2018
 author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: a9a4b7728eff3057b9677d12df51cc8c477744ca
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: e6950c38db83efb57e5f3b1809aa6baa56532cd0
+ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46953939"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48903045"
 ---
 # <a name="join-an-azure-ssis-integration-runtime-to-a-virtual-network"></a>Egy Azure-SSIS integrációs modul csatlakoztatása virtuális hálózathoz
 Csatlakozás az Azure-SSIS integrációs modulját (IR) az Azure virtual Networkhöz a következő esetekben: 
@@ -57,6 +57,8 @@ A következő szakaszok további részleteket.
 ## <a name="requirements-for-virtual-network-configuration"></a>Virtuális hálózati konfiguráció követelményei
 -   Győződjön meg arról, hogy `Microsoft.Batch` egy regisztrált szolgáltató az előfizetés, a virtuális hálózati alhálózat, amely az Azure-SSIS integrációs modult. Ha a klasszikus virtuális hálózatot használ, csatlakoztatnia `MicrosoftAzureBatch` a virtuális gépek hagyományos Közreműködője szerepkörhöz, a virtuális hálózaton. 
 
+-   Győződjön meg arról, hogy rendelkezik a szükséges engedélyekkel. Lásd: [szükséges engedélyek](#perms).
+
 -   Válassza ki a megfelelő alhálózatot üzemeltetni az Azure-SSIS integrációs modult. Lásd: [válassza ki az alhálózatot](#subnet). 
 
 -   Ha a saját tartománynév-szolgáltatásokat (DNS) kiszolgáló használ a virtuális hálózaton, [tartománynév-szolgáltatásokat server](#dns_server). 
@@ -66,6 +68,16 @@ A következő szakaszok további részleteket.
 -   Ha Azure Express Route használatával vagy felhasználó által megadott útvonal (UDR) konfigurálása, lásd: [használata az Azure expressroute-on vagy a felhasználó által definiált útvonal](#route). 
 
 -   Győződjön meg arról, hogy az erőforráscsoport, a virtuális hálózat létrehozása, és bizonyos Azure-hálózati erőforrások törlése. Lásd: [erőforráscsoport követelményei](#resource-group). 
+
+### <a name="perms"></a> Szükséges engedélyek
+
+- Ha az SSIS integrációs modul az Azure virtual Networkhöz a jelenlegi verzió tartományhoz csatlakoztatja, két lehetősége van:
+
+  - A beépített szerepkör használja *hálózati közreműködő*. Ez a szerepkör megköveteli a *Microsoft.Network/\**  engedéllyel, azonban, amely sokkal nagyobb hatóköre.
+
+  - Hozzon létre egy egyéni szerepkört, amely tartalmazza az engedély *Microsoft.Network/virtualNetworks/\*/join/művelet*. 
+
+- Ha az SSIS integrációs modul az Azure klasszikus virtuális hálózathoz csatlakozik, azt javasoljuk, hogy a beépített szerepkör használja *virtuális gépek hagyományos Közreműködője*. Ellenkező esetben meg kell adnia egy egyéni biztonsági szerepkört, amely tartalmazza az csatlakozzon a virtuális hálózat számára.
 
 ### <a name="subnet"></a> Válassza ki az alhálózatot
 -   Ne válassza az átjáró-alhálózat egy Azure-SSIS integrációs modul üzembe helyezéséhez, mert dedikált virtuális hálózati átjárókhoz. 
