@@ -1,6 +1,6 @@
 ---
-title: Azure DC/OS-fürtről fájlmegosztásához
-description: Hozzon létre, és azt csatlakoztatja a fájlmegosztást a DC/OS fürtben, az Azure Tárolószolgáltatásban
+title: Fájlmegosztás Azure DC/OS-fürthöz
+description: Fájlmegosztás létrehozása és csatlakoztatása DC/OS-fürthöz az Azure Container Service-ben
 services: container-service
 author: julienstroheker
 manager: dcaro
@@ -9,31 +9,31 @@ ms.topic: tutorial
 ms.date: 06/07/2017
 ms.author: juliens
 ms.custom: mvc
-ms.openlocfilehash: c1c318f4204efd24a2d9d3d83bb1cb71f5775bdb
-ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
+ms.openlocfilehash: 4e03a0b450c9806edfb81a867fba97052659ec44
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2017
-ms.locfileid: "26331202"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46973504"
 ---
-# <a name="create-and-mount-a-file-share-to-a-dcos-cluster"></a>Hozzon létre, és azt csatlakoztatja a fájlmegosztást a DC/OS-fürtről
+# <a name="create-and-mount-a-file-share-to-a-dcos-cluster"></a>Fájlmegosztás létrehozása és csatlakoztatása DC/OS-fürthöz
 
-Ez az oktatóanyag fájlmegosztás létrehozása az Azure-ban, és csatlakoztassa azt minden ügynök és a DC/OS-fürt fő részletezi. Fájlmegosztás beállítása megkönnyíti a fürt, például a konfigurációs, access, naplók és egyéb fájlok megosztása. Ebben az oktatóanyagban a következő műveleteket foglalja:
+Ez az oktatóanyag részletesen ismerteti, hogyan hozhat létre fájlmegosztást az Azure-ban, és hogyan csatlakoztathatja azt a DC/OS-fürtök egyes ügynökein és főkiszolgálóin. Fájlmegosztás beállítása megkönnyíti a fájlok, például a konfigurációk, hozzáférési jogosultságok, naplók és egyebek megosztását a fürtben. Az oktatóanyagban az alábbi feladatokat fogja végrehajtani:
 
 > [!div class="checklist"]
 > * Azure-tárfiók létrehozása
 > * Fájlmegosztás létrehozása
-> * A DC/OS fürtben a megosztás csatlakoztatásához
+> * A fürt csatlakoztatása a DC/OS-fürtben
 
-Az ACS DC/OS-fürt az oktatóanyag lépéseinek végrehajtásához van szüksége. Ha szükséges, [a parancsfájl minta](./../kubernetes/scripts/container-service-cli-deploy-dcos.md) hozhat létre egyet.
+Az oktatóanyagban ismertetett lépések végrehajtásához szüksége lesz egy ACS DC/OS-fürtre. Amennyiben szükséges, [ezzel a mintaszkripttel](./../kubernetes/scripts/container-service-cli-deploy-dcos.md) létrehozhat egyet.
 
-Az oktatóanyaghoz az Azure CLI 2.0.4-es vagy újabb verziójára lesz szükség. A verzió azonosításához futtassa a következőt: `az --version`. Ha frissíteni szeretne: [Az Azure CLI 2.0 telepítése]( /cli/azure/install-azure-cli). 
+Az oktatóanyaghoz az Azure CLI 2.0.4-es vagy újabb verziójára lesz szükség. A verzió azonosításához futtassa a következőt: `az --version`. Ha frissíteni szeretne: [Az Azure CLI telepítése]( /cli/azure/install-azure-cli). 
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-## <a name="create-a-file-share-on-microsoft-azure"></a>Fájlmegosztás létrehozása a Microsoft Azure
+## <a name="create-a-file-share-on-microsoft-azure"></a>Fájlmegosztás létrehozása a Microsoft Azure-ban
 
-Az Azure fájlmegosztások használ egy ACS DC/OS-fürtről, mielőtt a storage-fiókot és -fájlmegosztást kell létrehozni. Az alábbi parancsprogrammal hozzon létre a tároló és a fájlmegosztást. Frissítse a paraméterek thoes a környezetből.
+Mielőtt Azure-fájlmegosztást használna egy ACS DC/OS-fürtben, létre kell hoznia a tárfiókot és a fájlmegosztást. A tárat és a fájlmegosztást a következő szkripttel hozhatja létre. A paramétereket cserélje le a saját környezetéből származókkal.
 
 ```azurecli-interactive
 # Change these four parameters
@@ -52,48 +52,48 @@ export AZURE_STORAGE_CONNECTION_STRING=`az storage account show-connection-strin
 az storage share create -n $DCOS_PERS_SHARE_NAME
 ```
 
-## <a name="mount-the-share-in-your-cluster"></a>A fürt a megosztás csatlakoztatásához
+## <a name="mount-the-share-in-your-cluster"></a>A megosztás csatlakoztatása a fürtben
 
-Ezután a fájlmegosztást kell csatlakoztatni kell a fürtben található összes virtuális gépen. Ez a feladat befejeződött, a cifs eszköz/protokoll használatával. A szalagcsatlakoztatási művelet manuálisan minden csomóponton, a fürt, vagy a fürt minden csomópontja elleni parancsfájl futtatásával is elvégezhető.
+Ezután a fájlmegosztást csatlakoztatnia kell a fürtön belül minden virtuális gépen. Ezt a feladatot a cifs eszközzel/protokollal hajthatja végre. A csatlakoztatási művelet elvégezhető manuálisan a fürt egyes csomópontjain vagy szkript futtatásával a fürt csomópontjain.
 
-Ebben a példában két parancsfájlok, egy csatlakoztatása az Azure-fájlmegosztáshoz, és egy második, a parancsfájl futtatásához a DC/OS-fürt mindegyik csomópontján.
+Ebben a példában két szkriptet futtatunk, egyet az Azure-fájlmegosztás csatlakoztatásához, a másikat pedig ennek a szkriptnek a DC/OS-fürt egyes csomópontjain való futtatásához.
 
-Először a az Azure storage-fiók neve és elérési kulcs van szükség. Ezek az információk beolvasása a következő parancsok futtatásával. Jegyezze fel az egyes, ezeket az értékeket használni egy későbbi lépésben.
+Először az Azure Storage-fiók nevére és hozzáférési kulcsára lesz szükség. Ezeknek az adatoknak a beszerzéséhez futtassa a következő parancsokat. Jegyezze fel ezek mindegyikét, egy későbbi lépésben szükség lesz rájuk.
 
-Tárfiók nevét:
+Tárfiók neve:
 
 ```azurecli-interactive
 STORAGE_ACCT=$(az storage account list --resource-group $DCOS_PERS_RESOURCE_GROUP --query "[?contains(name, '$DCOS_PERS_STORAGE_ACCOUNT_NAME')].[name]" -o tsv)
 echo $STORAGE_ACCT
 ```
 
-Tárfiók hozzáférési kulcsának:
+Tárfiók hozzáférési kulcsa:
 
 ```azurecli-interactive
 az storage account keys list --resource-group $DCOS_PERS_RESOURCE_GROUP --account-name $STORAGE_ACCT --query "[0].value" -o tsv
 ```
 
-A következő beolvasása a DC/OS fő teljes Tartománynevét, és tárolható egy változóban.
+Ez után kérje le a DC/OS-főkiszolgáló teljes tartománynevét, és tárolja egy változóban.
 
 ```azurecli-interactive
 FQDN=$(az acs list --resource-group $DCOS_PERS_RESOURCE_GROUP --query "[0].masterProfile.fqdn" --output tsv)
 ```
 
-Másolja a titkos kulcsot a fő csomópont. Ez a kulcs létrehozásához szükséges egy ssh-kapcsolatot a fürt összes csomópontján. Frissítse a felhasználó nevét, ha egy nem alapértelmezett érték lett megadva, a fürt létrehozásakor. 
+Másolja a titkos kulcsot a főcsomópontba. Erre a kulcsra szükség lesz a fürt összes csomópontjával létrehozott ssh-kapcsolat kialakításához. Amennyiben a fürt eredeti létrehozása alkalmával nem alapértelmezett értéket használt, frissítse a felhasználónevet. 
 
 ```azurecli-interactive
 scp ~/.ssh/id_rsa azureuser@$FQDN:~/.ssh
 ```
 
-Az SSH-kapcsolat létrehozása a főkiszolgáló (vagy az első főkiszolgálójának) a DC/OS-alapú fürt. Frissítse a felhasználó nevét, ha egy nem alapértelmezett érték lett megadva, a fürt létrehozásakor.
+Hozzon létre SSH-kapcsolatot a DC/OS-alapú fürt főkiszolgálójával (vagy az első főkiszolgálójával). Amennyiben a fürt eredeti létrehozása alkalmával nem alapértelmezett értéket használt, frissítse a felhasználónevet.
 
 ```azurecli-interactive
 ssh azureuser@$FQDN
 ```
 
-Hozzon létre egy fájlt **cifsMount.sh**, és a következő tartalom másolása. 
+Hozzon létre egy fájlt **cifsMount.sh** néven, és másolja bele a következő tartalmat. 
 
-Ez a parancsfájl Azure fájlmegosztás csatlakoztatásához használatos. Frissítés a `STORAGE_ACCT_NAME` és `ACCESS_KEY` korábban összegyűjtött változóit.
+Ez a szkript az Azure-fájlmegosztás csatlakoztatása szolgál. Frissítse a `STORAGE_ACCT_NAME` és az `ACCESS_KEY` változókat a korábban beszerzett adatokkal.
 
 ```azurecli-interactive
 #!/bin/bash
@@ -112,9 +112,9 @@ if [ ! -d "/mnt/share/$SHARE_NAME" ]; then sudo mkdir -p "/mnt/share/$SHARE_NAME
 # Mount the share under the previous local folder created
 sudo mount -t cifs //$STORAGE_ACCT_NAME.file.core.windows.net/$SHARE_NAME /mnt/share/$SHARE_NAME -o vers=3.0,username=$STORAGE_ACCT_NAME,password=$ACCESS_KEY,dir_mode=0777,file_mode=0777
 ```
-Hozzon létre egy második fájlt **getNodesRunScript.sh** és másolja az alábbiakat a fájlba. 
+Hozzon létre egy második fájlt **getNodesRunScript.sh** névvel, és másolja az alábbi tartalmat a fájlba. 
 
-Ez a parancsfájl deríti fel a fürt összes csomópontján, és majd futtatja a **cifsMount.sh** parancsfájl minden egyes a fájlmegosztás csatlakoztatásához.
+Ez a szkript felderíti az összes fürtcsomópontot, és ezután futtatja a **cifsMount.sh** szkriptet a fájlmegosztás csomópontokban történő csatlakoztatásához.
 
 ```azurecli-interactive
 #!/bin/bash
@@ -132,24 +132,24 @@ do
   done
 ```
 
-Futtassa a parancsfájlt a fürt összes csomópontján Azure fájlmegosztás csatlakoztatásához.
+Futtassa a szkriptet az Azure-fájlmegosztásnak a fürt összes csomópontján való csatlakoztatásához.
 
 ```azurecli-interactive
 sh ./getNodesRunScript.sh
 ```  
 
-A fájlmegosztás mostantól elérhető a `/mnt/share/dcosshare` a fürt mindegyik csomópontján.
+A fájlmegosztás mostantól elérhető az `/mnt/share/dcosshare` útvonalon a fürt mindegyik csomópontján.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Ebben az oktatóanyagban az Azure fájlmegosztás lett elérhetővé tenni az a DC/OS fürtben, a lépéseket követve:
+Ebben az oktatóanyagban elérhetővé tettünk egy Azure-fájlmegosztás a DC/OS-fürtben a következő lépések követésével:
 
 > [!div class="checklist"]
 > * Azure-tárfiók létrehozása
 > * Fájlmegosztás létrehozása
-> * A DC/OS fürtben a megosztás csatlakoztatásához
+> * A fürt csatlakoztatása a DC/OS-fürtben
 
-A következő oktatóanyag további információt az Azure-tároló beállításjegyzék integrálása az Azure-ban a DC/OS továbblépés.  
+A következő oktatóanyagban megtudhatja, hogyan integrálhatja az Azure Container Registryt a DC/OS szolgáltatással az Azure-ban.  
 
 > [!div class="nextstepaction"]
 > [Terheléselosztási alkalmazások](container-service-dcos-acr.md)

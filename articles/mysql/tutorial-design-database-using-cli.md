@@ -1,6 +1,6 @@
 ---
 title: 'Oktatóanyag: Azure Database for MySQL tervezése az Azure CLI használatával'
-description: Ez az oktatóanyag azt ismerteti, hogyan hozható létre és kezelhető az Azure Database for MySQL-kiszolgáló és -adatbázis az Azure CLI 2.0 a parancssorból történő használatával.
+description: Ez az oktatóanyag azt ismerteti, hogyan hozható létre és kezelhető az Azure Database for MySQL-kiszolgáló és -adatbázis az Azure CLI parancssorból történő használatával.
 services: mysql
 author: ajlam
 ms.author: andrela
@@ -11,12 +11,12 @@ ms.devlang: azure-cli
 ms.topic: tutorial
 ms.date: 04/01/2018
 ms.custom: mvc
-ms.openlocfilehash: 07dc1c2fa166be066df9bd8a663e08db830fe1af
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 60cfb5e1c5fa44952ca6a5e6fc411f4a6ab0e8be
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39446330"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46966979"
 ---
 # <a name="tutorial-design-an-azure-database-for-mysql-using-azure-cli"></a>Oktatóanyag: Azure Database for MySQL tervezése az Azure CLI használatával
 
@@ -31,11 +31,11 @@ Az Azure Database for MySQL egy relációsadatbázis-szolgáltatás a Microsoft 
 > * Adatok frissítése
 > * Adatok visszaállítása
 
-Egy böngészőben az Azure Cloud Shell használatával vagy a számítógépen az [Azure CLI 2.0 telepítésével]( /cli/azure/install-azure-cli) futtathatja az oktatóanyag kódblokkjait.
+Egy böngészőben az Azure Cloud Shell használatával vagy a számítógépen az [Azure CLI telepítésével]( /cli/azure/install-azure-cli) futtathatja az oktatóanyag kódblokkjait.
 
 [!INCLUDE [cloud-shell-try-it](../../includes/cloud-shell-try-it.md)]
 
-Ha a parancssori felület helyi telepítése és használata mellett dönt, a témakörben leírt lépésekhez az Azure CLI 2.0-s vagy újabb verzióját kell futtatnia. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI 2.0 telepítése]( /cli/azure/install-azure-cli). 
+Ha a parancssori felület helyi telepítése és használata mellett dönt, a témakörben leírt lépésekhez az Azure CLI 2.0-s vagy újabb verzióját kell futtatnia. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése]( /cli/azure/install-azure-cli). 
 
 Ha több előfizetéssel rendelkezik, válassza a megfelelő előfizetést, amelyen az erőforrás megtalálható vagy terhelve van. Válasszon ki egy megadott előfizetés-azonosítót a fiókja alatt az [az account set](/cli/azure/account#az-account-set) parancs segítségével.
 ```azurecli-interactive

@@ -1,6 +1,6 @@
 ---
-title: Belső alapszintű terheléselosztó létrehozása – Azure CLI 2.0 | Microsoft Docs
-description: Ismerje meg, hogyan hozható létre belső terheléselosztó az Azure CLI 2.0 használatával
+title: Belső alapszintű terheléselosztó létrehozása – Azure CLI | Microsoft Docs
+description: Ismerje meg, hogyan hozható létre belső terheléselosztó az Azure CLI használatával
 services: load-balancer
 documentationcenter: na
 author: KumudD
@@ -15,20 +15,20 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/27/2018
 ms.author: kumud
-ms.openlocfilehash: bd4dda835279a21509f77814f4d5f9e30e8a42c1
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 7e556d3900d257410050e37b714d2005675e185d
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39439198"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46967710"
 ---
-# <a name="create-an-internal-load-balancer-to-load-balance-vms-using-azure-cli-20"></a>Belső terheléselosztó létrehozása a virtuális gépek terhelésének elosztásához az Azure CLI 2.0 használatával
+# <a name="create-an-internal-load-balancer-to-load-balance-vms-using-azure-cli"></a>Belső terheléselosztó létrehozása a virtuális gépek terhelésének elosztásához az Azure CLI használatával
 
 Ebből a cikkből megtudhatja, hogyan hozhat létre belső terheléselosztót a virtuális gépek terhelésének elosztása érdekében. A terheléselosztó teszteléséhez két, Ubuntu kiszolgálót futtató virtuális gépet helyez üzembe a webalkalmazások terhelésének elosztása érdekében.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)] 
 
-Ha a parancssori felület helyi telepítését és használatát választja, akkor ehhez az oktatóanyaghoz az Azure CLI 2.0.28-as vagy újabb verziójára lesz szükség. A verzió megkereséséhez futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI 2.0 telepítése]( /cli/azure/install-azure-cli).
+Ha a parancssori felület helyi telepítését és használatát választja, akkor ehhez az oktatóanyaghoz az Azure CLI 2.0.28-as vagy újabb verziójára lesz szükség. A verzió megkereséséhez futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése]( /cli/azure/install-azure-cli).
 
 ## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 

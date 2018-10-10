@@ -1,155 +1,152 @@
 ---
-title: Ismerkedés az Azure Portal Azure Scheduler szolgáltatásával | Microsoft Docs
-description: Ismerkedés az Azure portál Azure Scheduler szolgáltatásával
+title: Ütemezett feladatok létrehozása az Azure Portal Azure Scheduler szolgáltatásával | Microsoft Docs
+description: Elsajátíthatja, hogyan hozhatja létre, ütemezheti és futtathatja az első automatizált feladatát az Azure Scheduler használatával az Azure Portalon
 services: scheduler
-documentationcenter: .NET
-author: derek1ee
-manager: kevinlam1
-editor: ''
-ms.assetid: e69542ec-d10f-4f17-9b7a-2ee441ee7d68
 ms.service: scheduler
-ms.workload: infrastructure-services
-ms.tgt_pltfrm: na
-ms.devlang: dotnet
-ms.topic: hero-article
-ms.date: 08/10/2016
+ms.suite: infrastructure-services
+author: derek1ee
 ms.author: deli
-ms.openlocfilehash: f03ddb475835b30e9b931b7f057c062b57ac45f3
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.reviewer: klam
+ms.assetid: e69542ec-d10f-4f17-9b7a-2ee441ee7d68
+ms.topic: hero-article
+ms.date: 09/17/2018
+ms.openlocfilehash: f1f7e67fbd5d8a9ebfae03c00eb0de36e86d9a97
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31413430"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46949587"
 ---
-# <a name="get-started-with-azure-scheduler-in-azure-portal"></a>Ismerkedés az Azure portál Azure Scheduler szolgáltatásával
-Az Azure Scheduler szolgáltatásban egyszerűen hozhat létre ütemezett feladatokat. Ezen oktatóanyag segítségével elsajátíthatja egy feladat létrehozásának műveletét. Megismerkedhet a Scheduler megfigyelési és felügyeleti képességeivel is.
+# <a name="create-and-schedule-your-first-job-with-azure-scheduler---azure-portal"></a>Az első feladat létrehozása és ütemezése az Azure Scheduler használatával az Azure Portalon
 
-## <a name="create-a-job"></a>Feladat létrehozása
-1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).  
-2. Kattintson az **+Új** lehetőségre, írja be a *Scheduler* kifejezést a keresőmezőbe, majd válassza ki a **Scheduler** elemet az eredmények között, végül pedig kattintson a **Létrehozás** gombra.
-   
-    ![][marketplace-create]
-3. Hozzunk létre egy olyan feladatot, amely egy GET kéréssel egyszerűen rákeres a http://www.microsoft.com/ webhelyre. A **Scheduler-feladat** képernyőn adja meg a következő információkat:
-   
-   1. **Név:**`getmicrosoft`  
-   2. **Előfizetés:** Az Ön Azure-előfizetése   
-   3. **Feladatgyűjtemény:** Válasszon ki egy létező feladatgyűjteményt, vagy kattintson az **Új létrehozása** lehetőségre, és adjon meg egy nevet.
-4. Ezt követően határozza meg a következő értékeket a **Művelet beállításai** területen:
-   
-   1. **Művelettípus:**` HTTP`  
-   2. **Módszer:**`GET`  
-   3. **URL-cím:**` http://www.microsoft.com`  
-      
-      ![][action-settings]
-5. Végül határozzon meg egy ütemezést. A feladat egyszeriként is megadható, most azonban vegyünk fel egy ismétlődési ütemezést:
-   
-   1. **Ismétlődés**: `Recurring`
-   2. **Indítás**: A mai dátum
-   3. **Ismétlődés**: `12 Hours`
-   4. **Befejeződés**: A mai naptól számított két nap múlva  
-      
-      ![][recurrence-schedule]
-6. Kattintson a  **Create** (Létrehozás) gombra
+> [!IMPORTANT]
+> A kivezetésre kerülő Azure Scheduler helyébe az [Azure Logic Apps](../logic-apps/logic-apps-overview.md) lép. Feladatok ütemezéséhez [próbálja ki inkább az Azure Logic Apps szolgáltatást](../scheduler/migrate-from-scheduler-to-logic-apps.md). 
 
-## <a name="manage-and-monitor-jobs"></a>Feladatok kezelése és figyelése
-A létrehozott feladatok megjelennek az Azure fő irányítópultján. A feladatra kattintva egy új ablak nyílik meg a következő lapokkal:
+Ebből az oktatóanyagból megtudhatja, milyen egyszerűen hozhat létre és ütemezhet feladatot, majd monitorozhatja és kezelheti a feladatot. 
 
-1. Tulajdonságok  
-2. Művelet beállításai  
-3. Ütemezés  
-4. Előzmények
-5. Felhasználók
+Ha nem rendelkezik Azure-előfizetéssel, <a href="https://azure.microsoft.com/free/" target="_blank">regisztráljon egy ingyenes Azure-fiókra</a>.
+
+## <a name="create-job"></a>Feladat létrehozása
+
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).  
+
+1. Az Azure főmenüjében válassza az **Erőforrás létrehozása** lehetőséget. A keresőmezőbe írja be a „scheduler” kifejezést. Az eredmények listájában válassza a **Scheduler** elemet, majd kattintson a **Létrehozás** gombra.
+
+   ![A Scheduler-erőforrás létrehozása](./media/scheduler-get-started-portal/scheduler-v2-portal-marketplace-create.png)
+
+   Most hozzon létre egy feladatot, amely egy GET kérést küld az URL-címre: `http://www.microsoft.com/` 
+
+1. A **Scheduler-feladat** alatt adja meg ezt az adatot:
+
+   | Tulajdonság | Példaérték | Leírás |
+   |----------|---------------|-------------| 
+   | **Name (Név)** | getMicrosoft | A feladat neve | 
+   | **Feladatgyűjtemény** | <*feladatgyűjtemény-neve*> | Hozzon létre egy feladatgyűjteményt, vagy válasszon ki egy meglévő gyűjteményt. | 
+   | **Előfizetés** | <*Azure-előfizetés-neve*> | Az Azure-előfizetés neve | 
+   |||| 
+
+1. Válassza a **Műveletbeállítások – konfigurálás** lehetőséget, adja meg ezt az adatot, majd, ha elkészült, kattintson az **OK** gombra:
+
+   | Tulajdonság | Példaérték | Leírás |
+   |----------|---------------|-------------| 
+   | **Művelet** | **Http** | A futtatandó művelet típusa | 
+   | **Metódus** | **Get** | A meghívott metódus | 
+   | **URL-cím** | **http://www.microsoft.com** | A cél URL-címe | 
+   |||| 
    
-   ![][job-overview]
+   ![Feladat meghatározása](./media/scheduler-get-started-portal/scheduler-v2-portal-action-settings.png)
+
+1. Válassza az **Ütemezés – konfigurálás** lehetőséget, határozza meg az ütemezést, majd, ha elkészült kattintson az **OK** gombra:
+
+   Bár létrehozhat egy egyszeri feladatot, ebben a példában egy ismétlődő ütemezést állítunk be.
+
+   | Tulajdonság | Példaérték | Leírás |
+   |----------|---------------|-------------| 
+   | **Ismétlődés** | **Ismétlődő** | Egy egyszeri vagy ismétlődő feladat | 
+   | **Kezdés** | <*a mai dátum*> | A feladat kezdő dátuma | 
+   | **Ismétlődés** | **1 óra** | Az ismétlés időköze és gyakorisága | 
+   | **Befejezés** | **Befejeződés**: a mai naptól számított két nap múlva | A feladat befejezési dátuma | 
+   | **UTC-eltérés** | **UTC +08:00** | Az egyezményes világidő (UTC) és a hely megfigyelt ideje közötti különbség | 
+   |||| 
+
+   ![Ütemezés megadása](./media/scheduler-get-started-portal/scheduler-v2-portal-recurrence-schedule.png)
+
+1. Ha elkészült, válassza a **Létrehozás** elemet.
+
+   Miután létrehozta a feladatot, az Azure bevezeti azt, és megjelenik az Azure-irányítópulton. 
+
+1. Amikor az Azure megjeleníti a sikeres bevezetésről szóló üzenetet, válassza a **Rögzítés az irányítópulton** lehetőséget. Ellenkező esetben válassza az **Értesítések** ikont (harang) az Azure eszköztárán, majd a **Rögzítés az irányítópulton** lehetőséget.
+
+## <a name="monitor-and-manage-jobs"></a>Feladatok monitorozása és kezelése
+
+A feladat áttekintéséhez, monitorozásához és kezeléséhez válassza ki az Azure Portalon a feladatot. A **Beállítások** alatt a következő területeket tekintheti át és kezelheti a feladathoz:
+
+![Feladatbeállítások](./media/scheduler-get-started-portal/scheduler-v2-portal-job-overview-1.png)
+
+Ezekről a területekről további információért jelöljön ki egy területet:
+
+* [**Tulajdonságok**](#properties)
+* [**Művelet beállításai**](#action-settings)
+* [**Ütemezés**](#schedule)
+* [**Előzmények**](#history)
+* [**Felhasználók**](#users)
+
+<a name="properties"></a>
 
 ### <a name="properties"></a>Tulajdonságok
-A Scheduler-feladathoz tartozó metaadatok kezelését ezen írásvédett tulajdonságok írják le.
 
-   ![][job-properties]
+A kezelési metaadatokat leíró, csak olvasható tulajdonságok megtekintéséhez a feladatnál válassza a **Tulajdonságok** lehetőséget.
+
+![Feladat tulajdonságainak megtekintése](./media/scheduler-get-started-portal/scheduler-v2-portal-job-properties.png)
+
+<a name="action-settings"></a>
 
 ### <a name="action-settings"></a>Művelet beállításai
-Az adott feladat konfigurálásához kattintson rá a **Feladatok** képernyőn. Ha a gyorslétrehozási varázslóban ezt nem tette meg, itt lehetősége van speciális beállítások konfigurálására.
 
-Az újrapróbálkozási házirend és a hibakezelési művelet módosítására az összes művelettípus esetében lehetőség van.
+A feladat speciális beállításainak módosításához válassza a **Művelet beállításai** lehetőséget. 
 
-A HTTP- és a HTTPS-feladatok művelettípusai esetében a módszer bármely engedélyezett HTTP-parancsra módosítható. Lehetőség van továbbá a fejlécek és az egyszerű hitelesítési adatok hozzáadására, törlésére vagy módosítására is.
+![Művelet beállításainak áttekintése](./media/scheduler-get-started-portal/scheduler-v2-portal-job-action-settings.png)
 
-Tárolásisor-művelettípusok esetében módosítható a tárfiók, az üzenetsor neve, az SAS-token és a törzs.
+| Művelettípus | Leírás | 
+|-------------|-------------| 
+| Minden típus | Módosíthatja az **Újrapróbálkozási szabályzat** és a **Hibakezelési művelet** beállításait. | 
+| HTTP és HTTPS | A **Metódus** beállítását módosíthatja bármelyik engedélyezett metódusra. Lehetőség van továbbá a fejlécek és az egyszerű hitelesítési adatok hozzáadására, törlésére vagy módosítására is. | 
+| Tárolási üzenetsor| Módosíthatja a tárfiókot, az üzenetsornevet, a SAS-jogkivonatot és törzset. | 
+| Service Bus | Módosíthatja a névteret, a témakör/üzenetsor elérési útját, a hitelesítési beállításokat, az átvitel típusát, az üzenettulajdonságokat és az üzenettörzset. | 
+||| 
 
-Service Bus művelettípusok esetében módosítható a névtér, a témakör/üzenetsor elérési útvonala, a hitelesítési beállítások, az átvitel típusa, az üzenettulajdonságok és az üzenettörzs.
-
-   ![][job-action-settings]
+<a name="schedule"></a>
 
 ### <a name="schedule"></a>Ütemezés
-Ha módosítani kívánja a gyorslétrehozási varázslóban létrehozott ütemezést, itt újrakonfigurálhatja azt.
 
-Ez lehetőséget ad [komplex és speciális, ismétlődő ütemezések létrehozására a feladathoz](scheduler-advanced-complexity.md).
+Ha a feladatvarázslóval állít be ütemezést, ezt az ütemezést módosíthatja, például a kezdő és befejező dátumát, az ismétlődést és az ismétlődő feladatok befejező napját és idejét.
+Felépíthet továbbá [komplex ütemezéseket és speciális ismétlődéseket](scheduler-advanced-complexity.md).
 
-Módosítható a kezdési dátum és időpont, az ismétlődési ütemezés, valamint a befejezési dátum és időpont (amennyiben a feladat ismétlődő jellegű).
+A nézet vagy a feladatütemezés módosításához válassza az **Ütemezés** lehetőséget:
 
-   ![][job-schedule]
+![Feladatütemezés megtekintése](./media/scheduler-get-started-portal/scheduler-v2-portal-job-schedule.png)
+
+<a name="history"></a>
 
 ### <a name="history"></a>Előzmények
-Az adott feladathoz a rendszerben elérhető valamennyi feladat-végrehajtási mód kiválasztott adatai megjelennek az **Előzmények** lapon. Ezen adatok segítségével valós időben értékelhető a Scheduler szolgáltatás állapota:
 
-1. status  
-2. Részletek  
-3. Újrapróbálkozási kísérletek
-4. Előfordulás: 1., 2., 3. stb.
-5. A futtatás kezdési időpontja  
-6. A futtatás befejezési időpontja
-   
-   ![][job-history]
+Ha szeretné megtekinteni egy kijelölt feladat minden futtatásának metrikáját, válassza az **Előzmények** lehetőséget. Ezek az adatok valós idejű értékeket biztosítanak a feladat állapotára, például az újrapróbálkozások számára, az előfordulások számára, a kezdési időre és a befejezési időre vonatkozóan.
 
-Az adott futtatásra kattintva megtekintheti annak **Előzményadatait**, beleértve a teljes választ minden végrehajtás esetében. Ezen párbeszédpanelről lehetőség van a válasz vágólapra másolására is.
+![Feladatelőzmények és metrikák megtekintése](./media/scheduler-get-started-portal/scheduler-v2-portal-job-history.png)
 
-   ![][job-history-details]
+Az egyes futtatásokhoz tartozó előzmények részleteinek, például az egyes futtatásokra adott teljes válasznak a megtekintéséhez jelölje ki az **Előzmények** alatt az egyes futtatásokat. 
+
+![Feladatelőzmények részleteinek megtekintése](./media/scheduler-get-started-portal/scheduler-v2-portal-job-history-details.png)
+
+<a name="users"></a>
 
 ### <a name="users"></a>Felhasználók
-Az Azure Szerepköralapú hozzáférés-vezérlés (RBAC) részletesen beállítható hozzáférés-vezérlést biztosít az Azure Scheduler szolgáltatáshoz. A Felhasználók lap használatának elsajátításához lásd: [Azure szerepköralapú hozzáférés-vezérlés](../role-based-access-control/role-assignments-portal.md)
 
-## <a name="see-also"></a>Lásd még
- [A Scheduler ismertetése](scheduler-intro.md)
+Azure szerepköralapú hozzáférés-vezérlés (RBAC) használatával részletes beállításokat adhat meg az egyes felhasználók számára az Azure Scheduler eléréséhez. Ha szeretné megtudni, hogyan adhat meg szerepköralapú hozzáférés-beállítást, tekintse át a [Hozzáférés kezelése RBAC-vel](../role-based-access-control/role-assignments-portal.md) című szakaszt
 
- [A Scheduler alapfogalmai, terminológiája és entitáshierarchiája](scheduler-concepts-terms.md)
+## <a name="next-steps"></a>További lépések
 
- [Csomagok és számlázás az Azure Schedulerben](scheduler-plans-billing.md)
-
- [Komplex és speciális, ismétlődő ütemezések létrehozása az Azure Scheduler használatával](scheduler-advanced-complexity.md)
-
- [A Scheduler REST API-jának leírása](https://msdn.microsoft.com/library/mt629143)
-
- [A Scheduler PowerShell-parancsmagjainak leírása](scheduler-powershell-reference.md)
-
- [Scheduler – magas fokú rendelkezésre állás és megbízhatóság](scheduler-high-availability-reliability.md)
-
- [Scheduler – korlátozások, alapértékek és hibakódok](scheduler-limits-defaults-errors.md)
-
- [Kimenő hitelesítés a Schedulerben](scheduler-outbound-authentication.md)
-
-[marketplace-create]: ./media/scheduler-get-started-portal/scheduler-v2-portal-marketplace-create.png
-[action-settings]: ./media/scheduler-get-started-portal/scheduler-v2-portal-action-settings.png
-[recurrence-schedule]: ./media/scheduler-get-started-portal/scheduler-v2-portal-recurrence-schedule.png
-[job-properties]: ./media/scheduler-get-started-portal/scheduler-v2-portal-job-properties.png
-[job-overview]: ./media/scheduler-get-started-portal/scheduler-v2-portal-job-overview-1.png
-[job-action-settings]: ./media/scheduler-get-started-portal/scheduler-v2-portal-job-action-settings.png
-[job-schedule]: ./media/scheduler-get-started-portal/scheduler-v2-portal-job-schedule.png
-[job-history]: ./media/scheduler-get-started-portal/scheduler-v2-portal-job-history.png
-[job-history-details]: ./media/scheduler-get-started-portal/scheduler-v2-portal-job-history-details.png
-
-
-[1]: ./media/scheduler-get-started-portal/scheduler-get-started-portal001.png
-[2]: ./media/scheduler-get-started-portal/scheduler-get-started-portal002.png
-[3]: ./media/scheduler-get-started-portal/scheduler-get-started-portal003.png
-[4]: ./media/scheduler-get-started-portal/scheduler-get-started-portal004.png
-[5]: ./media/scheduler-get-started-portal/scheduler-get-started-portal005.png
-[6]: ./media/scheduler-get-started-portal/scheduler-get-started-portal006.png
-[7]: ./media/scheduler-get-started-portal/scheduler-get-started-portal007.png
-[8]: ./media/scheduler-get-started-portal/scheduler-get-started-portal008.png
-[9]: ./media/scheduler-get-started-portal/scheduler-get-started-portal009.png
-[10]: ./media/scheduler-get-started-portal/scheduler-get-started-portal010.png
-[11]: ./media/scheduler-get-started-portal/scheduler-get-started-portal011.png
-[12]: ./media/scheduler-get-started-portal/scheduler-get-started-portal012.png
-[13]: ./media/scheduler-get-started-portal/scheduler-get-started-portal013.png
-[14]: ./media/scheduler-get-started-portal/scheduler-get-started-portal014.png
-[15]: ./media/scheduler-get-started-portal/scheduler-get-started-portal015.png
+* Az [alapfogalmak, terminológia és entitáshierarchia](scheduler-concepts-terms.md) megismerése
+* [Komplex ütemezések és speciális ismétlődések létrehozása](scheduler-advanced-complexity.md)
+* A [Schedulerrel kapcsolatos magas fokú rendelkezésre állás és megbízhatóság](scheduler-high-availability-reliability.md) megismerése
+* [Korlátok, kvóták, alapértékek és hibakódok](scheduler-limits-defaults-errors.md) megismerése

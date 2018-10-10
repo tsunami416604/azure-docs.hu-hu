@@ -1,6 +1,6 @@
 ---
-title: Azure CLI-példaszkript – Webalkalmazások manuális skálázása az Azure CLI 2.0 használatával | Microsoft Docs
-description: Azure CLI-példaszkript – Webalkalmazások manuális skálázása az Azure CLI 2.0 használatával
+title: Azure CLI-példaszkript – Webalkalmazások manuális skálázása az Azure CLI használatával | Microsoft Docs
+description: Azure CLI-példaszkript – Webalkalmazások manuális skálázása az Azure CLI használatával
 services: appservice
 documentationcenter: appservice
 author: syntaxc4
@@ -16,12 +16,12 @@ ms.workload: web
 ms.date: 12/11/2017
 ms.author: cfowler
 ms.custom: mvc
-ms.openlocfilehash: 844250dce567bac280ae3a9a688cc8e5bc5852c9
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: 28ca20d44d18e8fe25153b7f9298d5174412ad79
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2018
-ms.locfileid: "30282446"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46988580"
 ---
 # <a name="scale-a-web-app-manually"></a>Webalkalmazások manuális skálázása
 
@@ -31,7 +31,7 @@ Ez a példaszkript egy erőforráscsoportot, egy App Service-csomagot és egy we
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Ha a parancssori felület helyi telepítését és használatát választja, az Azure CLI 2.0-s vagy újabb verziójára lesz szükség. A verzió megkereséséhez futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI 2.0 telepítése]( /cli/azure/install-azure-cli).
+Ha a parancssori felület helyi telepítését és használatát választja, az Azure CLI 2.0-s vagy újabb verziójára lesz szükség. A verzió megkereséséhez futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure CLI telepítését]( /cli/azure/install-azure-cli) ismertető cikket.
 
 ## <a name="sample-script"></a>Példaszkript
 

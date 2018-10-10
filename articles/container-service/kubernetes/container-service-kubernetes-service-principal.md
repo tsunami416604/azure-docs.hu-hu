@@ -9,12 +9,12 @@ ms.topic: get-started-article
 ms.date: 02/26/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: efedb7cde06ed03ec330027a18b00bcc897919cf
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: e3e3a981daf1273b8b2387cb1c665317f860b1d2
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39576919"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46974867"
 ---
 # <a name="set-up-an-azure-ad-service-principal-for-a-kubernetes-cluster-in-container-service"></a>Kubernetes-fürthöz tartozó Azure AD egyszerű szolgáltatás beállítása a Container Service-ben
 
@@ -23,7 +23,7 @@ ms.locfileid: "39576919"
 Az Azure Container Service-ben a Kubernetes számára szükséges egy [Azure Active Directory egyszerű szolgáltatás](../../active-directory/develop/app-objects-and-service-principals.md) az Azure API-kkal való kommunikációhoz. Az egyszerű szolgáltatással dinamikusan kezelhet olyan erőforrásokat, mint a [felhasználó által meghatározott útvonalak](../../virtual-network/virtual-networks-udr-overview.md) és a [4. rétegű Azure Load Balancer](../../load-balancer/load-balancer-overview.md).
 
 
-Ebben a cikkben különböző lehetőségeket talál arra, hogyan állíthat be egy egyszerű szolgáltatást a Kubernetes-fürthöz. Például ha telepítette és beállította az [Azure CLI 2.0](/cli/azure/install-az-cli2)-t, akkor futtathatja a [`az acs create`](/cli/azure/acs#az-acs-create) parancsot a Kubernetes-fürt és az egyszerű szolgáltatás egyidejű létrehozásához.
+Ebben a cikkben különböző lehetőségeket talál arra, hogyan állíthat be egy egyszerű szolgáltatást a Kubernetes-fürthöz. Ha például telepítette és beállította az [Azure CLI-t](/cli/azure/install-az-cli2)-t, akkor futtathatja a [`az acs create`](/cli/azure/acs#az_acs_create) parancsot a Kubernetes-fürt és az egyszerű szolgáltatás egyidejű létrehozásához.
 
 
 ## <a name="requirements-for-the-service-principal"></a>Az egyszerű szolgáltatás követelményei
@@ -44,7 +44,7 @@ Meglévő Azure AD egyszerű szolgáltatást is használhat, amely megfelel az a
 
 Az Azure-ban többféle módszerrel is létrehozható Azure AD egyszerű szolgáltatás a Kubernetes-fürt üzembe helyezése előtt.
 
-A következő példaparancsok megmutatják, hogyan teheti ezt meg az [Azure CLI 2.0](../../azure-resource-manager/resource-group-authenticate-service-principal-cli.md) segítségével. Másik megoldásként az [Azure PowerShell](../../azure-resource-manager/resource-group-authenticate-service-principal.md), a [portál](../../azure-resource-manager/resource-group-create-service-principal-portal.md) és egyéb módszerek használatával is létrehozhat egyszerű szolgáltatást.
+A következő példaparancsok megmutatják, hogyan teheti ezt meg az [Azure CLI](../../azure-resource-manager/resource-group-authenticate-service-principal-cli.md) segítségével. Másik megoldásként az [Azure PowerShell](../../azure-resource-manager/resource-group-authenticate-service-principal.md), a [portál](../../azure-resource-manager/resource-group-create-service-principal-portal.md) és egyéb módszerek használatával is létrehozhat egyszerű szolgáltatást.
 
 ```azurecli
 az login
@@ -67,13 +67,13 @@ A fürt üzembe helyezéséhez használt egyszerű szolgáltatás paraméterek, 
 
 A Kubernetes-fürt létrehozásakor adja meg paraméterekként egy létező egyszerű szolgáltatás **ügyfél-azonosítóját** (`appId` néven is szerepel az alkalmazás-azonosító esetében) és a **titkos ügyfélkulcsot** (`password`). Ellenőrizze, hogy az egyszerű szolgáltatás megfelel-e a cikk elején szereplő feltételeknek.
 
-Ezeket a paramétereket a Kubernetes-fürt üzembe helyezésekor adhatja meg az [Azure Command-Line Interface (CLI) 2.0](container-service-kubernetes-walkthrough.md) vagy az [Azure Portal](../dcos-swarm/container-service-deployment.md) segítségével, illetve más módszerekkel.
+Ezeket a paramétereket a Kubernetes-fürt üzembe helyezésekor adhatja meg az [Azure Command-Line Interface (CLI)](container-service-kubernetes-walkthrough.md) vagy az [Azure Portal](../dcos-swarm/container-service-deployment.md) segítségével, illetve más módszerekkel.
 
 >[!TIP]
 >Az **ügyfél-azonosító** megadásakor győződjön meg arról, hogy az egyszerű szolgáltatás `appId`-ját és nem az `ObjectId`-ját használja.
 >
 
-Az alábbi példában az Azure CLI 2.0-s verziójával adjuk át a paramétereket. Ez a példa a [Kubernetes gyorsindítási sablont](https://github.com/Azure/azure-quickstart-templates/tree/master/101-acs-kubernetes) használja.
+Az alábbi példában az Azure CLI-vel adjuk át a paramétereket. Ez a példa a [Kubernetes gyorsindítási sablont](https://github.com/Azure/azure-quickstart-templates/tree/master/101-acs-kubernetes) használja.
 
 1. A paraméterfájl-sablont `azuredeploy.parameters.json` a GitHubról [töltheti le](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-acs-kubernetes/azuredeploy.parameters.json).
 

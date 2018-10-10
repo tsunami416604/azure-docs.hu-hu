@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: Hibakeresés az Azure Service Fabric mesh-alkalmazásokban | Microsoft Docs'
+title: Oktatóanyag – Hibakeresés egy helyi fejlesztési fürtben futó Azure Service Fabric Mesh-webalkalmazásban | Microsoft Docs
 description: Ebben az oktatóanyagban egy olyan Azure Service Fabric mesh-alkalmazásban végez hibakeresést, amely a helyi fürtön fut.
 services: service-fabric-mesh
 documentationcenter: .net
@@ -12,19 +12,19 @@ ms.devlang: dotNet
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 07/17/2018
+ms.date: 09/18/2018
 ms.author: twhitney
 ms.custom: mvc, devcenter
-ms.openlocfilehash: c519d24a8401823039f3d6598276890ec6498bbc
-ms.sourcegitcommit: 1aedb52f221fb2a6e7ad0b0930b4c74db354a569
+ms.openlocfilehash: 27e4c8f6ac24d40a6afacf10175413745f5151d9
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "41920557"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46997012"
 ---
-# <a name="tutorial-debug-a-service-fabric-mesh-web-application"></a>Oktatóanyag: Hibakeresés a Service Fabric mesh-webalkalmazásokban
+# <a name="tutorial-debug-a-service-fabric-mesh-application-running-in-your-local-development-cluster"></a>Oktatóanyag: Egy helyi fejlesztési fürtben futó Service Fabric Mesh-alkalmazás hibakeresése
 
-Ez az oktatóanyag a sorozat második része, amely az Azure Service Fabric mash-webalkalmazások helyi fejlesztői fürtön történő hibakeresését ismerteti.
+Ez az oktatóanyag a sorozat második része, amely az Azure Service Fabric Mesh-alkalmazások helyi fejlesztői fürtön történő felépítését és hibakeresését ismerteti.
 
 Ebben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
@@ -34,9 +34,11 @@ Ebben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 Ebben az oktatóanyag-sorozatban az alábbiakkal ismerkedhet meg:
 > [!div class="checklist"]
-> * [Service Fabric mesh-alkalmazás fejlesztése](service-fabric-mesh-tutorial-create-dotnetcore.md)
-> * Helyi hibakeresés az alkalmazásban
-> * [Az alkalmazás közzététele az Azure-ban](service-fabric-mesh-tutorial-deploy-service-fabric-mesh-app.md)
+> * [Service Fabric Mesh-alkalmazás létrehozása Visual Studióban](service-fabric-mesh-tutorial-create-dotnetcore.md)
+> * Egy helyi fejlesztési fürtben futó Service Fabric Mesh-alkalmazás hibakeresése
+> * [Service Fabric Mesh-alkalmazás üzembe helyezése](service-fabric-mesh-tutorial-deploy-service-fabric-mesh-app.md)
+> * [Service Fabric Mesh-alkalmazás frissítése](service-fabric-mesh-tutorial-upgrade.md)
+> * [A Service Fabric Mesh erőforrásainak eltávolítása](service-fabric-mesh-tutorial-cleanup-resources.md)
 
 [!INCLUDE [preview note](./includes/include-preview-note.md)]
 
@@ -105,4 +107,4 @@ Az oktatóanyag jelen része az alábbiakat ismertette:
 
 Folytassa a következő oktatóanyaggal:
 > [!div class="nextstepaction"]
-> [Service Fabric mesh-webalkalmazás közzététele](service-fabric-mesh-tutorial-deploy-service-fabric-mesh-app.md)
+> [Service Fabric Mesh-alkalmazás üzembe helyezése](service-fabric-mesh-tutorial-deploy-service-fabric-mesh-app.md)

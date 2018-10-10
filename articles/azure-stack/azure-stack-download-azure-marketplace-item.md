@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 10/03/2018
+ms.date: 10/09/2018
 ms.author: sethm
 ms.reviewer: ''
-ms.openlocfilehash: 785161d0f897b583c0c5536440afc1e8f05e736e
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: cf6bc980f6fd821056a987d0c830863bd15ba779
+ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48854830"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48902008"
 ---
 # <a name="download-marketplace-items-from-azure-to-azure-stack"></a>Az Azure marketplace-elemek letöltése az Azure Stackhez
 
@@ -126,7 +126,10 @@ Ebben a forgatókönyvben két részből áll:
    ```PowerShell  
    Import-Module .\Syndication\AzureStack.MarketplaceSyndication.psm1
 
-   Export-AzSOfflineMarketplaceItem -destination "Destination folder path"
+   Sync-AzSOfflineMarketplaceItem 
+      -Destination "Destination folder path in quotes" `
+      -AzureTenantID $AzureContext.Tenant.TenantId `
+      -AzureSubscriptionId $AzureContext.Subscription.Id 
    ```
 
 6. Amikor az eszköz fut, az Azure-fiók hitelesítő adatainak megadását kéri. Jelentkezzen be az Azure-fiók, amely regisztrálja az Azure Stack segítségével. Miután a bejelentkezés sikeres volt, megtekintheti az elérhető marketplace-elemek listáját az alábbi képen egy képernyő.  

@@ -1,6 +1,6 @@
 ---
-title: Modell-létrehozási útmutató az Azure Machine Learning-szolgáltatásokhoz (előzetes verzió) | Microsoft Docs
-description: Ez a részletes oktatóanyag bemutatja, hogyan használhatók ki teljeskörűen az (előzetes verziójú) Azure Machine Learning-szolgáltatások. Ez a 2. rész, amely a kísérletezést ismerteti.
+title: Modell-létrehozási útmutató az Azure Machine Learning szolgáltatáshoz (előzetes verzió) | Microsoft Docs
+description: Ez a részletes oktatóanyag bemutatja, hogyan használható ki teljes körűen az (előzetes verziójú) Azure Machine Learning szolgáltatás. Ez a 2. rész, amely a kísérletezést ismerteti.
 services: machine-learning
 author: hning86
 ms.author: haining
@@ -12,17 +12,21 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 3/15/2018
-ms.openlocfilehash: 4f9b14762332bd11fd69a855d8fabdb206e34919
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ROBOTS: NOINDEX
+ms.openlocfilehash: 6faabc3003048c93c08451c537496e762352b50b
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "41917569"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46997315"
 ---
 # <a name="tutorial-2-classify-iris---build-a-model"></a>2. oktatóanyag – Írisz osztályozása: Modell létrehozása
-Az (előzetes verziójú) Azure Machine Learning-szolgáltatások az adatszakértők számára készült, az adatok előkészítéséhez, a kísérletek kidolgozásához és a modellek felhőszinten való üzembe helyezéséhez létrehozott integrált és fejlett adatelemzési megoldások.
 
-Ez az oktatóanyag **egy háromrészes sorozat második része**. Az oktatóanyagnak ebben a részében az Azure Machine Learning-szolgáltatások segítségével a következőket hajtja végre:
+[!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)]
+
+Az (előzetes verziójú) Azure Machine Learning szolgáltatás az adatszakértők számára készült, az adatok előkészítéséhez, a kísérletek kidolgozásához és a modellek felhőszinten való üzembe helyezéséhez létrehozott integrált és fejlett adatelemzési megoldások.
+
+Ez az oktatóanyag **egy háromrészes sorozat második része**. Az oktatóanyagnak ebben a részében az Azure Machine Learning szolgáltatás segítségével a következőket hajtja végre:
 
 > [!div class="checklist"]
 > * Szkriptek megnyitása és kód áttekintése
@@ -39,7 +43,7 @@ Az oktatóanyag a jól ismert [Iris flower adatkészletet](https://en.wikipedia.
 
 Az oktatóanyag elvégzéséhez a következőkre lesz szüksége:
 - Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt. 
-- Az ebben a [rövid útmutatóban](../service/quickstart-installation.md) ismertetett kísérletezési fiók és telepített Azure Machine Learning Workbench.
+- Az ebben a [rövid útmutatóban](quickstart-installation.md) ismertetett kísérletezési fiók és telepített Azure Machine Learning Workbench.
 - Az [oktatóanyag 1. részében](tutorial-classifying-iris-part-1.md) szereplő projekt és előkészített Iris-adatok.
 - Egy helyben telepített és futtatott Docker-motor. A Docker Community Edition változata is megfelel. A Docker telepítésének módjáról lásd: https://docs.docker.com/engine/installation/.
 

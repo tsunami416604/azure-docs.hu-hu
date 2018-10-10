@@ -17,20 +17,20 @@ ms.workload: infrastructure-services
 ms.date: 03/19/2018
 ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: 7cca2475228155de6dc1f5c00a0d306e3a40c11a
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 3eb7ae721b0c275ffa39e04904e19c067b949214
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39441986"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46965496"
 ---
-# <a name="quickstart-create-a-public-load-balancer-to-load-balance-vms-using-azure-cli-20"></a>Rövid útmutató: Nyilvános Load Balancer létrehozása a virtuális gépek terhelésének elosztásához az Azure CLI 2.0 használatával
+# <a name="quickstart-create-a-public-load-balancer-to-load-balance-vms-using-azure-cli"></a>Rövid útmutató: Nyilvános Load Balancer létrehozása a virtuális gépek terhelésének elosztásához az Azure CLI használatával
 
 Ez a rövid útmutató bemutatja, hogyan hozhat létre egy Azure Load Balancert. A terheléselosztó teszteléséhez két, Ubuntu kiszolgálót futtató virtuális gépet helyez üzembe, és elosztja ezek között egy webalkalmazás terhelését.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)] 
 
-Ha a parancssori felület helyi telepítését és használatát választja, akkor ehhez az oktatóanyaghoz az Azure CLI 2.0.28-as vagy újabb verziójára lesz szükség. A verzió megkereséséhez futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI 2.0 telepítése]( /cli/azure/install-azure-cli).
+Ha a parancssori felület helyi telepítését és használatát választja, akkor ehhez az oktatóanyaghoz az Azure CLI 2.0.28-as vagy újabb verziójára lesz szükség. A verzió megkereséséhez futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése]( /cli/azure/install-azure-cli).
 
 ## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 

@@ -1,6 +1,6 @@
 ---
 title: 'Első lépések: Nyilvános Standard Load Balancer létrehozása – Azure CLI | Microsoft Docs'
-description: Ez az útmutató bemutatja, hogyan hozható létre nyilvános terheléselosztót az Azure CLI használatával
+description: Ez a rövid útmutató ismerteti, hogyan hozható létre nyilvános Load Balancer az Azure CLI használatával
 services: load-balancer
 documentationcenter: na
 author: KumudD
@@ -17,20 +17,20 @@ ms.workload: infrastructure-services
 ms.date: 03/20/2018
 ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: 2b6623b614a254635cb758f615271dac826f08b2
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: e4429c5ec808b561360f5088236b16a9fa6a276a
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39439744"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46955129"
 ---
-# <a name="quickstart-create-a-standard-load-balancer-to-load-balance-vms-using-azure-cli-20"></a>Első lépések: Standard Load Balancer létrehozása a virtuális gépek terhelésének elosztásához az Azure CLI 2.0 használatával
+# <a name="quickstart-create-a-standard-load-balancer-to-load-balance-vms-using-azure-cli"></a>Első lépések: Standard Load Balancer létrehozása a virtuális gépek terhelésének elosztásához az Azure CLI használatával
 
 Ez a rövid útmutató bemutatja, hogyan hozhat létre egy Standard Load Balancert. A terheléselosztó teszteléséhez két, Ubuntu kiszolgálót futtató virtuális gépet helyez üzembe, és elosztja ezek között egy webalkalmazás terhelését.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)] 
 
-Ha a parancssori felület helyi telepítését és használatát választja, akkor ehhez az oktatóanyaghoz az Azure CLI 2.0.28-as vagy újabb verziójára lesz szükség. A verzió megkereséséhez futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI 2.0 telepítése]( /cli/azure/install-azure-cli).
+Ha a parancssori felület helyi telepítését és használatát választja, akkor ehhez az oktatóanyaghoz az Azure CLI 2.0.28-as vagy újabb verziójára lesz szükség. A verzió megkereséséhez futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure CLI telepítését]( /cli/azure/install-azure-cli) ismertető cikket.
 
 ## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 

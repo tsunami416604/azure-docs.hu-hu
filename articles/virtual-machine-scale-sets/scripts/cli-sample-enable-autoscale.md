@@ -1,6 +1,6 @@
 ---
-title: Azure CLI 2.0-minták – Gazdagépalapú automatikus méretezés engedélyezése | Microsoft Docs
-description: Azure CLI 2.0-minták
+title: Azure CLI-minták – Gazdagépalapú automatikus méretezés engedélyezése | Microsoft Docs
+description: Azure CLI-minták
 services: virtual-machine-scale-sets
 documentationcenter: ''
 author: cynthn
@@ -16,14 +16,14 @@ ms.workload: na
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 2f41ca6f85e28f57d6606d85c3a1d58ee390148c
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: f146f673127d4495c2a2a392e26c1f51cd82a188
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38652139"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46951270"
 ---
-# <a name="automatically-scale-a-virtual-machine-scale-set-with-the-azure-cli-20"></a>Virtuálisgép-méretezési csoport automatikus méretezése az Azure CLI 2.0 használatával
+# <a name="automatically-scale-a-virtual-machine-scale-set-with-the-azure-cli"></a>Virtuálisgép-méretezési csoport automatikus méretezése az Azure CLI használatával
 Ez a szkript egy Ubuntu rendszert futtató virtuálisgép-méretezési csoportot hoz létre, illetve gazdagépalapú mérőszámok használatával automatikusan elvégzi a méretezést a CPU terhelésének változása alapján.
 
 [!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]
@@ -51,6 +51,6 @@ A szkript a következő parancsokat használja egy erőforráscsoport, egy virtu
 | [az group delete](/cli/azure/ad/group#delete) | Töröl egy erőforráscsoportot az összes beágyazott erőforrással együtt. |
 
 ## <a name="next-steps"></a>További lépések
-Az Azure CLI 2.0-val kapcsolatos további információért lásd az [Azure CLI 2.0 parancssori felületdokumentációját](https://docs.microsoft.com/cli/azure/overview).
+Az Azure CLI-vel kapcsolatos további információért lásd az [Azure CLI dokumentációját](https://docs.microsoft.com/cli/azure/overview).
 
-A virtuálisgép-méretezési csoportokhoz kapcsolódó további Azure CLI 2.0-példaszkripteket az [Azure virtuálisgép-méretezési csoportok dokumentációjában](../cli-samples.md) találhat.
+A virtuálisgép-méretezési csoportokhoz kapcsolódó további Azure CLI-példaszkripteket az [Azure virtuálisgép-méretezési csoportok dokumentációjában](../cli-samples.md) találhat.
