@@ -11,12 +11,12 @@ ms.date: 09/24/2018
 ms.topic: hub-page
 ms.prod: cognitive-services
 ms.technology: cognitive-services
-ms.openlocfilehash: 5403ec448725504c0b0a57a3d82853d0884c7c48
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 1c07a02369af90580615fd9e7eaf6e239949ea36
+ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46985430"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49068468"
 ---
 <h1>Az Azure Cognitive Services dokumentációja</h1>
         <p style="font-size: 1.12rem;margin-bottom: 1rem;">Megtudhatja, hogyan teheti intelligens algoritmusokkal képessé az alkalmazásokat, weboldalakat és robotokat a látásra, hallásra, beszédre és megértésre, hogy azok a felhasználók természetes nyelvi kommunikációját is értelmezni tudják. Oktatóanyagokból, rövid útmutatókból, API-referenciákból és példákból ismerheti meg mindezt.</p>
@@ -28,7 +28,7 @@ ms.locfileid: "46985430"
                     <div class="cardPadding">
                         <div class="card">
                             <div class="cardImageOuter">
-                                <div class="cardImage"> 
+                                <div class="cardImage">
                                     <img src="media/index/i_overview.svg" alt="" />
                                 </div>
                             </div>
@@ -115,6 +115,8 @@ ms.locfileid: "46985430"
                         <h3>Beszédfelismerés a Speech Service használatával</h3>
                         <p><a href="/azure/cognitive-services/speech-service/quickstart-csharp-windows/">A C# használata</a></p>
                         <p><a href="/azure/cognitive-services/speech-service/quickstart-java-jre">A Java használata</a></p>
+                        <p><a href="/azure/cognitive-services/speech-service/quickstart-objectivec-ios">Az Objective-C használata</a></p>
+                        <p><a href="/azure/cognitive-services/speech-service/quickstart-js-browser">A JavaScript használata</a></p>
                         <p><a href="/azure/cognitive-services/speech-service/quickstart-cpp-windows">A C++ használata</a></p>
                     </div>
                 </div>
@@ -274,7 +276,7 @@ ms.locfileid: "46985430"
                 <div class="card">
                     <div class="cardText">
                         <h3>Speech API</h3>
-                        <p><a href="/azure/cognitive-services/speech-service">Speech Service</a></p>
+                        <p><a href="/azure/cognitive-services/speech-service">Speech Service API</a></p>
                         <p><a href="/azure/cognitive-services/speech/home">Bing Speech API</a></p>
                         <p><a href="/azure/cognitive-services/custom-speech-service/cognitive-services-custom-speech-home"><span>Custom Speech Service&nbsp;<sup style="font-size:70%">ELŐZETES VERZIÓ</sup></span></a></p>
                         <p><a href="/azure/cognitive-services/speaker-recognition/home"><span>Speaker Recognition&nbsp;<sup style="font-size:70%">ELŐZETES VERZIÓ</sup></span></a></p>
@@ -293,7 +295,7 @@ ms.locfileid: "46985430"
                         <p><a href="/azure/cognitive-services/bing-spell-check/">Bing helyesírás-ellenőrzés</a></p>
                         <p><a href="/azure/cognitive-services/luis/">Language Understanding (LUIS)</a></p>
                         <p><a href="/azure/cognitive-services/linguisticanalysisapi/home"><span>Linguistic Analysis&nbsp;<sup style="font-size:70%">ELŐZETES VERZIÓ</sup></span></a></p>
-                        <p><a href="/azure/cognitive-services/text-analytics/">Text Analytics</a></p>
+                        <p><a href="/azure/cognitive-services/text-analytics/">Szövegelemzés</a></p>
                         <p><a href="/azure/cognitive-services/translator/">Translator Text</a></p>
                         <p><a href="/azure/cognitive-services/web-language-model/home"><span>Web Language Model&nbsp;<sup style="font-size:70%">ELŐZETES VERZIÓ</sup></span></a></p>
                     </div>

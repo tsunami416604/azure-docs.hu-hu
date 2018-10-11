@@ -5,7 +5,7 @@ items:
   items:
   - name: Mi az Azure Machine Learning szolgáltatás?
     href: overview-what-is-azure-ml.md
-  - name: Mi történt a Workbenchcsel?
+  - name: Mi történik a Workbenchcsel?
     href: overview-what-happened-to-workbench.md
   expanded: true
 - name: Gyors útmutatók
@@ -333,9 +333,9 @@ items:
       href: ../desktop-workbench/frequently-asked-questions.md
     - name: Régi problémák
       href: ../desktop-workbench/known-issues-and-troubleshooting-guide.md
-ms.openlocfilehash: 183622c419558d696cd5cf4c4a2dabb5f6b9d150
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: f5d778c032383f0573ce7e60f6bf0ab46b0126b3
+ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48884786"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49079514"

@@ -1,0 +1,51 @@
+### YamlMime:YamlDocument
+ms.openlocfilehash: ceab905b2baf87446238d44151146b5066e55335
+ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49079748"
+documentType: LandingData
+title: Az Azure Portal testreszabása – dokumentáció
+metadata:
+  description: Tudnivalók az Azure Portal testreszabásáról.
+  services: azure portal
+  documentationcenter: ''
+  author: cwatson-cat
+  manager: dougeby
+  editor: ''
+  ms.assetid: 3e12c488-9c8c-4d0d-9b07-e018dec42fc6
+  ms.service: azure-portal
+  ms.devlang: na
+  ms.topic: landing-page
+  ms.tgt_pltfrm: na
+  ms.workload: na
+  ms.date: 10/08/2018
+  ms.author: cwatson
+abstract:
+  description: Az Azure Portal egy egységesített felületet biztosító webes konzol, amely sokféle alkalmazás összeállítását, kezelését és monitorozását teszi lehetővé, az egyszerű webalkalmazásoktól egészen az összetett felhőalapú megoldásokig. Az irányítópultja testre szabható, és kisegítő lehetőségekkel is rendelkezik.
+sections:
+- items:
+  - type: list
+    style: cards
+    className: cardsM
+    columns: 3
+    items:
+    - href: /azure/azure-preview-portal-supported-browsers-devices
+      html: <p>Az Azure Portal minden modern asztali és táblagépen, és minden korszerű böngészőben futtatható.</p>
+      title: Támogatott böngészők és eszközök
+    - href: /azure/azure-portal/azure-portal-change-theme-high-contrast
+      html: <p>Az Azure Portal kontrasztbeállításai és színsémája módosítható.</p>
+      title: Kontrasztos megjelenítés bekapcsolása
+    - href: /azure/azure-portal/azure-portal-keyboard-shortcuts
+      html: <p>Megismerkedhet azokkal a billentyűparancsokkal, amelyek az Azure Portal minden felületén működnek.</p>
+      title: Billentyűparancsok
+    - href: /azure/azure-portal/azure-portal-dashboards
+      html: <p>Több irányítópultot is létrehozhat, amelyeket megoszthat azokkal, akik hozzáféréssel rendelkeznek Azure-előfizetéseihez.</p>
+      title: Azure-irányítópultok létrehozása és megosztása
+    - href: /azure/azure-portal/azure-portal-dashboard-share-access
+      html: <p>Közzéteheti az irányítópultjait, amelyeket a cégen belül másokkal is megoszthat.</p>
+      title: Irányítópultok megosztása RBAC-vel
+    - href: /azure/azure-portal/azure-portal-dashboards-create-programmatically
+      html: <p>Irányítópultok programozott módon történő létrehozása és közzététele a cégen belül</p>
+      title: Azure-irányítópultok létrehozása programozott módon
