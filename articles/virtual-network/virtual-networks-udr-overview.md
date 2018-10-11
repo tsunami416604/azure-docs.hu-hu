@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 10/26/2017
 ms.author: jdial
 ms.custom: ''
-ms.openlocfilehash: b206d93d7c72f5d8ff3dd3baa277cd0db33ba583
-ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
+ms.openlocfilehash: 97e192312619455c0055a917df880cc48eb082dd
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42811913"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46978916"
 ---
 # <a name="virtual-network-traffic-routing"></a>Virtuális hálózat forgalmának útválasztása
 
@@ -105,13 +105,13 @@ Felhasználó által megadott útvonalak esetén nem adhat meg **Virtuális hál
 
 A következő ugrás típusaihoz megjelenített és hivatkozott név eltér az Azure Portal és a parancssori eszközök között, valamint az Azure Resource Manager és a klasszikus üzemi modellek között. A következő táblázat felsorolja a neveket, amelyekkel a különféle eszközök és az [üzembehelyezési modellek](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json) a következő ugrások típusaira hivatkoznak:
 
-|A következő ugrás típusa                   |Azure CLI 2.0 és PowerShell (Resource Manager) |Azure CLI 1.0 és PowerShell (klasszikus)|
+|A következő ugrás típusa                   |Azure CLI és PowerShell (Resource Manager) |Azure klasszikus parancssori felület és PowerShell (klasszikus)|
 |-------------                   |---------                                       |-----|
 |Virtuális hálózati átjáró         |VirtualNetworkGateway                           |VPNGateway|
-|Virtuális hálózat                 |VNetLocal                                       |VNetLocal (nem érhető el a parancssori felület 1.0-s verziójában asm mód esetén)|
-|Internet                        |Internet                                        |Internet (nem érhető el a parancssori felület 1.0-s verziójában asm mód esetén)|
+|Virtuális hálózat                 |VNetLocal                                       |VNetLocal (nem érhető el a klasszikus parancssori felületen asm mód esetén)|
+|Internet                        |Internet                                        |Internet (nem érhető el a klasszikus parancssori felületen asm mód esetén)|
 |Virtuális berendezés               |VirtualAppliance                                |VirtualAppliance|
-|None                            |None                                            |Null (nem érhető el a parancssori felület 1.0-s verziójában asm mód esetén)|
+|None                            |None                                            |Null (nem érhető el a klasszikus parancssori felületen asm mód esetén)|
 |Társviszony létesítése virtuális hálózatok között         |Társviszony létesítése virtuális hálózatok között                                    |Nem alkalmazható|
 |Virtuális hálózati szolgáltatásvégpont|VirtualNetworkServiceEndpoint                   |Nem alkalmazható|
 

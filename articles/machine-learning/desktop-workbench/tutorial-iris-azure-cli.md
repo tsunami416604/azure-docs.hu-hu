@@ -10,15 +10,19 @@ ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: tutorial
 ms.date: 10/15/2017
-ms.openlocfilehash: 10fe861682da6c1d1ac701a565cef11f9b44cd1e
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ROBOTS: NOINDEX
+ms.openlocfilehash: b9b515a2ccaedc40fc531d6a1cc58cbe98212b4a
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "41924830"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46967897"
 ---
 # <a name="tutorial-classifying-iris-using-the-command-line-interface"></a>Oktatóanyag: Írisz osztályozása a parancssori felület segítségével
-Az Azure Machine Learning-szolgáltatások (előzetes verzió) az adatszakértők számára az adatok előkészítéséhez, a kísérletek kidolgozásához és a modellek felhőszinten való üzembe helyezéséhez létrehozott átfogó, integrált és fejlett adatelemzési megoldások.
+
+[!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)]
+
+Az Azure Machine Learning szolgáltatás (előzetes verzió) az adatszakértők számára az adatok előkészítéséhez, a kísérletek kidolgozásához és a modellek felhőszinten való üzembe helyezéséhez létrehozott átfogó, integrált és fejlett adatelemzési megoldás.
 
 Ebből az oktatóanyagból elsajátíthatja, hogyan használhatja a parancssori felületi (CLI) eszközöket az Azure Machine Learning előzetes verzió funkcióiban a következőkre: 
 > [!div class="checklist"]
@@ -34,7 +38,7 @@ Az oktatóanyag elvégzéséhez a következőkre lesz szüksége:
   
   Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
-- Az [Azure Machine Learning-szolgáltatások telepítését és elindítását ismertető rövid útmutatóban](../service/quickstart-installation.md) leírt módon telepített Azure Machine Learning Workbench alkalmazás. 
+- Az [Azure Machine Learning szolgáltatás telepítését és elindítását ismertető rövid útmutatóban](quickstart-installation.md) leírt módon telepített Azure Machine Learning Workbench alkalmazás. 
 
   >[!IMPORTANT]
   >Ne hozza létre az Azure Machine Learning-szolgáltatásfiókokat, mivel ezt ebben a cikkben fogja elvégezni a parancssori felületről.
@@ -139,16 +143,16 @@ $ az ml project create --name <project name> --workspace <workspace name> --acco
 ```
 
 ### <a name="create-a-new-project-associated-with-a-cloud-git-repository"></a>Felhőbeli Git-adattárhoz társított új projekt létrehozása
-Létrehozhat egy VSTS (Visual Studio Team Services) Git-adattárhoz társított új projektet. A rendszer minden kísérlet elküldésekor a távoli Git-adattárba menti a teljes projektmappáról készült pillanatfelvételt. További részletekért tekintse meg a [Git-adattár és az Azure Machine Learning Workbench-projekt együttes használatát ismertető](using-git-ml-project.md) cikket.
+Létrehozhat egy Azure DevOps Git-adattárral társított új projektet. A rendszer minden kísérlet elküldésekor a távoli Git-adattárba menti a teljes projektmappáról készült pillanatfelvételt. További részletekért tekintse meg a [Git-adattár és az Azure Machine Learning Workbench-projekt együttes használatát ismertető](using-git-ml-project.md) cikket.
 
 > [!NOTE]
-> Az Azure Machine Learning csak a VSTS-ben létrehozott üres Git-adattárakat támogatja.
+> Az Azure Machine Learning csak az Azure DevOpsban létrehozott üres Git-adattárakat támogatja.
 
 ```azure-cli
 $ az ml project create --name <project name> --workspace <workspace name> --account <experimentation account name> --resource-group <resource group name> --path <local folder path> --repo <VSTS repo URL>
 ```
 > [!TIP]
-> Ha „Az adattár URL-címe valószínűleg érvénytelen vagy a felhasználónak nincs hozzáférése” hibaüzenet jelenik meg, létrehozhat egy biztonsági tokent a VSTS-ben (a _Security_ (Biztonság), _Add personal access tokens_ (Személyes hozzáférési tokenek hozzáadása) menüben), és a `--vststoken` argumentumot használhatja a projekt létrehozásakor. 
+> Ha „Az adattár URL-címe valószínűleg érvénytelen vagy a felhasználónak nincs hozzáférése” hibaüzenet jelenik meg, létrehozhat egy biztonsági tokent Azure DevOpsban (a _Security_ (Biztonság), _Add personal access tokens_ (Személyes hozzáférési tokenek hozzáadása) menüben), és a `--vststoken` argumentumot használhatja a projekt létrehozásakor. 
 
 ### <a name="sample_create"></a>Új projekt létrehozása mintából
 Ebben a példában egy új projektet hoz létre egy mintaprojektet használva sablonként.

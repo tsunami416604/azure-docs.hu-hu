@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 11/23/2017
 ms.author: suhuruli
 ms.custom: mvc, devcenter
-ms.openlocfilehash: cedc13cb18440eee32e333d395494043e2eca9d1
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 702d247bf331a4231b4b71ae6661ff88c9e0be2e
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39442513"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46982766"
 ---
 # <a name="quickstart-deploy-a-java-spring-boot-application-to-service-fabric"></a>Rövid útmutató: Java Spring Boot-alkalmazás telepítése a Service Fabricben
 
@@ -187,7 +187,7 @@ Jelentkezzen be, és csatlakozzon egy [Linux-fürthöz](http://aka.ms/tryservice
 A Service Fabric számos eszközt nyújt, amelyekkel kezelheti a fürtöket és azok alkalmazásait:
 
 * A Service Fabric Explorert, amely egy böngészőalapú eszköz.
-* A Service Fabric parancssori felületet (CLI-t), amely az Azure CLI 2.0-n fut.
+* A Service Fabric parancssori felületet (CLI-t), amely az Azure CLI-n fut.
 * PowerShell-parancsokat.
 
 Ebben a rövid útmutatóban a Service Fabric parancssori felületet és a Service Fabric Explorert használja.

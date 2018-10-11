@@ -9,22 +9,22 @@ ms.service: iot-dps
 services: iot-dps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: e3aa2cf93e529fcc430162ac90be06a75690fb21
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 45558e25f2f61090cfb3ddb5c382170ab40792d0
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39523444"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46999042"
 ---
 # <a name="set-up-the-iot-hub-device-provisioning-service-with-an-azure-resource-manager-template"></a>Az IoT Hub Device Provisioning Service üzembe helyezése Azure Resource Manager-sablonnal
 
-Az [Azure Resource Managerrel](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) programozott módon üzembe helyezheti az eszközök regisztrációjához szükséges Azure felhőbeli erőforrásokat. Az alábbi lépések IoT Hub és új IoT Hub Device Provisioning Service létrehozását, valamint a két szolgáltatás Azure Resource Manager-sablonnal végzett összekapcsolását ismertetik. Ez a rövid útmutató az [Azure CLI 2.0-s](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy-cli) verzióját használja az erőforráscsoport létrehozásához és a sablon üzembe helyezéséhez szükséges programozási lépések elvégzéséhez, de használhatja helyette az [Azure Portalt](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy-portal), a [PowerShellt](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy), illetve a .NET-et, a Rubyt vagy más programozási nyelveket is. 
+Az [Azure Resource Managerrel](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) programozott módon üzembe helyezheti az eszközök regisztrációjához szükséges Azure felhőbeli erőforrásokat. Az alábbi lépések IoT Hub és új IoT Hub Device Provisioning Service létrehozását, valamint a két szolgáltatás Azure Resource Manager-sablonnal végzett összekapcsolását ismertetik. Ez a rövid útmutató az [Azure CLI-t](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy-cli) használja az erőforráscsoport létrehozásához és a sablon üzembe helyezéséhez szükséges programozási lépések elvégzéséhez, de használhatja helyette az [Azure Portalt](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy-portal), a [PowerShellt](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy), illetve a .NET-et, a Rubyt vagy más programozási nyelveket is. 
 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 - Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
-- A rövid útmutatóhoz az Azure CLI helyi futtatása szükséges. Az Azure CLI 2.0-s vagy újabb verzióját kell telepíteni. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretné a parancssori felületet: [Az Azure CLI 2.0 telepítése](https://docs.microsoft.com/cli/azure/install-azure-cli).
+- A rövid útmutatóhoz az Azure CLI helyi futtatása szükséges. Az Azure CLI 2.0-s vagy újabb verzióját kell telepíteni. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretné a parancssori felületet, olvassa el [az Azure CLI telepítését](https://docs.microsoft.com/cli/azure/install-azure-cli) ismertető témakört.
 
 
 ## <a name="sign-in-to-azure-and-create-a-resource-group"></a>Bejelentkezés az Azure-ba és erőforráscsoport létrehozása

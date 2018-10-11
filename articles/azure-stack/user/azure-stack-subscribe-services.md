@@ -3,7 +3,7 @@ title: Ebben az oktatóanyagban megismerheti, hogyan fizethet elő az Azure Stac
 description: Ez az oktatóanyag bemutatja, hogyan hozzon létre egy új előfizetést az Azure Stack-szolgáltatások és a egy tesztcélú virtuális gép létrehozása az ajánlat teszteléséhez.
 services: azure-stack
 documentationcenter: ''
-author: brenduns
+author: sethmanheim
 manager: femila
 editor: ''
 ms.assetid: ''
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 09/05/2018
-ms.author: brenduns
+ms.author: sethm
 ms.reviewer: ''
-ms.openlocfilehash: 0e2fa9b01d27d68c1eab9097a20b6e350ba47f99
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: aff20cba3bc07924f669420a8c367613b41111a1
+ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44028803"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49076100"
 ---
 # <a name="tutorial-create-and-test-a-subscription"></a>Oktatóanyag: létrehozása és tesztelése egy előfizetést
 Ez az oktatóanyag bemutatja, hogyan hozzon létre egy ajánlatot tartalmazó előfizetést, és tesztelje azt. A teszthez lesz majd hozzon létre egy virtuális gépet, előfizetnek az ajánlatra és jelentkezzen be az Azure Stack felhasználói portál a felhő-rendszergazdák el.

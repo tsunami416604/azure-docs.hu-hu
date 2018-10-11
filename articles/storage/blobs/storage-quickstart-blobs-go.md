@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 04/09/2018
 ms.author: seguler
-ms.openlocfilehash: 90858501cbf20af032c98ca8703f9e74b475e9c1
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.openlocfilehash: 93dc651767fc2be815fb706f71386ce72b382a37
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39398576"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46981719"
 ---
 # <a name="quickstart-upload-download-and-list-blobs-using-go"></a>Rövid útmutató: blobok feltöltése, letöltése és listázása a Go használatával
 
@@ -23,11 +23,14 @@ A rövid útmutató azt ismerteti, hogyan használható a Go programnyelv blokkb
 
 A gyorsútmutató elvégzéséhez: 
 * telepítse a [Go 1.8-as vagy újabb verzióját](https://golang.org/dl/);
-* töltse le és telepítse a [Go-hoz készült Azure Storage Blob SDK-t](https://github.com/azure/azure-storage-blob-go/) a `go get -u github.com/azure/azure-storage-blob-go/2016-05-31/azblob` paranccsal. 
+* töltse le és telepítse a [Go-hoz készült Azure Storage Blob SDK-t](https://github.com/azure/azure-storage-blob-go/) a `go get -u github.com/Azure/azure-storage-blob-go/2016-05-31/azblob` paranccsal. 
+
+> [!WARNING]
+> Győződjön meg arról, hogy az Azure nagybetűvel szerepeljen az URL-címben. Ellenkező esetben az írásmóddal kapcsolatos importálási hibák fordulhatnak elő az SDK használatakor. Az Azure szót az importálási utasításokban is nagybetűvel kell megadni.
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
-[!INCLUDE [storage-quickstart-tutorial-create-account-portal](../../../includes/storage-quickstart-tutorial-create-account-portal.md)]
+[!INCLUDE [storage-create-account-portal-include](../../../includes/storage-create-account-portal-include.md)]
 
 ## <a name="download-the-sample-application"></a>A mintaalkalmazás letöltése
 A rövid útmutatóban használt [mintaalkalmazás](https://github.com/Azure-Samples/storage-blobs-go-quickstart.git) egy egyszerű Go-alkalmazás.  

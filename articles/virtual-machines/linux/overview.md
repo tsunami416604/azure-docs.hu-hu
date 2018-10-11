@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 11/29/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017, mvc
-ms.openlocfilehash: 1ac55b728a29ff1bb8129087da5992ffe5f23df9
-ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
+ms.openlocfilehash: 6ed1ef6019e339768c4ba6a62d8b4d99d844f254
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42820318"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46949525"
 ---
 # <a name="azure-and-linux"></a>Az Azure és a Linux
 A Microsoft Azure integrált nyilvános felhőszolgáltatások (például elemzési, virtuálisgép-, adatbázis-, mobil-, hálózati, tárolási és webes szolgáltatások) egyre bővülő gyűjteménye&mdash;ideális a megoldások üzemeltetéséhez.  A Microsoft Azure egy skálázható számítási platformot kínál, amely lehetővé teszi, hogy csak a valóban használt funkciókért fizessen, és csak akkor, amikor használja azokat, mindezt helyszíni hardverberuházások nélkül.  Az Azure készen áll a megoldások vertikális és horizontális skálázásakor, bármilyen méretre is lenne szüksége az ügyfelek igényeinek kiszolgálásához.
@@ -37,7 +37,7 @@ Az Azure bejelentett egy iparágvezető, 99,9%-os elérhetőséget biztosító e
 
 ## <a name="managed-disks"></a>Felügyelt lemezek
 
-A felügyelt lemezek a háttérben végzik az Azure Storage-fiók létrehozását és kezelését, hogy Önnek ne kelljen foglalkoznia a tárfiók skálázási korlátaival. Adja meg a lemez méretét és teljesítményszintjét (Standard vagy Prémium), és az Azure létrehozza és felügyeli a lemezt. Nem kell a használt tárterület miatt aggódnia, amikor lemezeket ad hozzá, vagy fel-/leskálázza a virtuális gépet. Ha új virtuális gépeket hoz létre, [használja az Azure CLI 2.0-t](quick-create-cli.md) vagy az Azure Portalt a felügyelt operációs rendszerrel és adatlemezekkel rendelkező virtuális gépek létrehozásához. Ha a virtuális gépei nem felügyelt lemezeket tartalmaznak, [átalakíthatja a virtuális gépeket, hogy felügyelt lemezek támogassák őket](convert-unmanaged-to-managed-disks.md).
+A felügyelt lemezek a háttérben végzik az Azure Storage-fiók létrehozását és kezelését, hogy Önnek ne kelljen foglalkoznia a tárfiók skálázási korlátaival. Adja meg a lemez méretét és teljesítményszintjét (Standard vagy Prémium), és az Azure létrehozza és felügyeli a lemezt. Nem kell a használt tárterület miatt aggódnia, amikor lemezeket ad hozzá, vagy fel-/leskálázza a virtuális gépet. Ha új virtuális gépeket hoz létre, [használja az Azure CLI-t](quick-create-cli.md) vagy az Azure Portalt felügyelt operációs rendszerrel és adatlemezekkel rendelkező virtuális gépek létrehozásához. Ha a virtuális gépei nem felügyelt lemezeket tartalmaznak, [átalakíthatja a virtuális gépeket, hogy felügyelt lemezek támogassák őket](convert-unmanaged-to-managed-disks.md).
 
 Az egyéni rendszerképeit Azure-régiónként egyetlen tárfiókban is felügyelheti, és a használatukkal több száz virtuális gépet hozhat létre egy adott előfizetésben. A felügyelt lemezekkel kapcsolatos további információért tekintse meg [a felügyelt lemezek áttekintésével kapcsolatos cikket](../linux/managed-disks-overview.md).
 
@@ -91,7 +91,7 @@ Az Azure használatának megkezdéséhez szüksége lesz egy Azure-fiókra, tele
 Az Azure Cloud használatának első lépése egy Azure-fiók létrehozása.  A kezdéshez nyissa meg az [Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/) oldalt.
 
 ### <a name="install-the-cli"></a>A CLI telepítése
-Az új Azure-fiókkal azonnal megkezdheti az Azure Portal használatát, amely egy webalapú felügyeleti panel.  Az Azure Cloud parancssori felületen történő kezeléséhez telepítse a következőt: `azure-cli`.  Telepítse az [Azure CLI 2.0-t](/cli/azure/install-azure-cli) a Mac vagy Linux munkaállomásra.
+Az új Azure-fiókkal azonnal megkezdheti az Azure Portal használatát, amely egy webalapú felügyeleti panel.  Az Azure Cloud parancssori felületen történő kezeléséhez telepítse a következőt: `azure-cli`.  Telepítse az [Azure CLI](/cli/azure/install-azure-cli)-t Mac vagy Linux rendszerű munkaállomására.
 
 ### <a name="create-an-ssh-key-pair"></a>SSH-kulcs létrehozása
 Ezen a ponton rendelkezik egy Azure-fiókkal, az Azure webportállal és az Azure CLI-vel.  A következő lépés egy SSH-kulcspár létrehozása, amellyel SSH-n keresztül, jelszó használata nélkül jelentkezhet be Linuxba.  [Hozzon létre SSH-kulcsokat a Linux és a Mac rendszerben](mac-create-ssh-keys.md), hogy lehetővé tegye a jelszó nélküli bejelentkezést, és növelje a biztonságot.

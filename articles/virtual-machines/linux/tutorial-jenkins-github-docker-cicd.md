@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 03/27/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 05ec147e705da4951735616881ad19ad265b403d
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.openlocfilehash: d1d760c2642e0c986e50570630d31dda11d17478
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "41919949"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46964737"
 ---
 # <a name="tutorial-create-a-development-infrastructure-on-a-linux-vm-in-azure-with-jenkins-github-and-docker"></a>Oktatóanyag: Fejlesztési infrastruktúra létrehozása egy Azure-beli Linux rendszerű virtuális gépen a Jenkins, a GitHub és a Docker használatával
 
@@ -37,7 +37,7 @@ Az alkalmazás fejlesztésének létrehozási és tesztelési fázisának automa
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Ha a parancssori felület helyi telepítését és használatát választja, akkor ehhez az oktatóanyaghoz az Azure CLI 2.0.30-as vagy újabb verziójára lesz szükség. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI 2.0 telepítése]( /cli/azure/install-azure-cli).
+Ha a parancssori felület helyi telepítését és használatát választja, akkor ehhez az oktatóanyaghoz az Azure CLI 2.0.30-as vagy újabb verziójára lesz szükség. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése]( /cli/azure/install-azure-cli).
 
 ## <a name="create-jenkins-instance"></a>Jenkins-példány létrehozása
 A [Linux virtuális gép testre szabása az első rendszerbetöltéskor](tutorial-automate-vm-deployment.md) című korábbi oktatóanyagból megtudhatta, hogyan automatizálható egy virtuális gép testreszabása a cloud-init használatával. Ez az oktatóanyag egy cloud-init-fájlt használ a Jenkins és a Docker egy virtuális gépre való telepítéséhez. A Jenkins egy népszerű, nyílt forráskódú automatizáló kiszolgáló, amely zökkenőmentesen integrálható az Azure-ral a folyamatos integráció (CI) és a folyamatos továbbítás (CD) érdekében. A Jenkins további oktatóanyagait itt találja: [Jenkins az Azure-központban](https://docs.microsoft.com/azure/jenkins/).
@@ -241,7 +241,7 @@ Ebben az oktatóanyagban úgy konfiguráltuk a GitHubot, hogy minden egyes kódv
 > * Docker-rendszerkép létrehozása az alkalmazáshoz
 > * Annak ellenőrzése, hogy a GitHub-véglegesítések új Docker-rendszerképet hoznak létre és frissítik a futó alkalmazást
 
-A következő oktatóanyag azt mutatja be, hogyan integrálható a Jenkins és a Visual Studio Team Services.
+A következő oktatóanyag azt mutatja be, hogyan integrálható a Jenkins és az Azure DevOps Services.
 
 > [!div class="nextstepaction"]
-> [Alkalmazások üzembe helyezése a Jenkins és a Team Services használatával](tutorial-build-deploy-jenkins.md)
+> [Alkalmazások üzembe helyezése a Jenkins és az Azure DevOps Services használatával](tutorial-build-deploy-jenkins.md)

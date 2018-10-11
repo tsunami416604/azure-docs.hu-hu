@@ -1,131 +1,130 @@
 ---
-title: Az Azure Functions használatával egy kiszolgáló nélküli API létrehozása |} Microsoft Docs
-description: Az Azure Functions használatával egy kiszolgáló nélküli API létrehozása
+title: Kiszolgáló nélküli API létrehozása az Azure Functions használatával | Microsoft Docs
+description: Kiszolgáló nélküli API létrehozása az Azure Functions használatával
 services: functions
 author: mattchenderson
-manager: cfowler
-ms.service: functions
-ms.tgt_pltfrm: na
+manager: jeconnoc
+ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: tutorial
 ms.date: 05/04/2017
 ms.author: mahender
 ms.custom: mvc
-ms.openlocfilehash: 7c3933210c01c81077b594abb8c3183d6e3c58a0
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 9a35c1205c0b564c8d0db1fbd0535d41bb9c84a0
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2017
-ms.locfileid: "24811600"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46989906"
 ---
-# <a name="create-a-serverless-api-using-azure-functions"></a>Az Azure Functions használatával egy kiszolgáló nélküli API létrehozása
+# <a name="create-a-serverless-api-using-azure-functions"></a>Kiszolgáló nélküli API létrehozása az Azure Functions használatával
 
-Ebből az oktatóanyagból megtudhatja, hogyan Azure Functions lehetővé teszi a magas szinten méretezhető API-k létrehozásához. Az Azure Functions számos beépített HTTP eseményindítók és kötések, amely megkönnyíti a különböző nyelveken, beleértve a Node.JS, a C#, és több végpont szerzői gyűjteménye. Ebben az oktatóanyagban testre fogja szabni a konkrét műveletek az API kialakításában kezelni egy HTTP-eseményindítóval. Is előkészítheti a növekvő az API integrálása az Azure Functions proxyk és utánzatait API-k beállítása. Mindez érhető el, a funkciók kiszolgáló nélküli számítási környezet felett, nem kell foglalkoznia az erőforrások skálázás – a API logika csak összpontosíthat.
+Az oktatóanyag bemutatja, hogyan hozhat létre hatékonyan skálázható API-kat az Azure Functions segítségével. Az Azure Functions számos beépített HTTP-eseményindítót és -kötést tartalmaz, így egyszerűen létrehozhat végpontokat különböző nyelveken (például Node.JS, C# stb.). Az oktatóanyag során egy HTTP-eseményindítót hozhat létre, hogy kezelje az API egyes műveleteit. Ezenkívül integrálhatja az API-t az Azure Functions-proxykkal, és API-utánzatokat hozhat létre, ezzel készítve elő az API később bővítését. Mindez a kiszolgáló nélküli Functions-környezetre épül, ezért nem kell aggódnia az erőforrások skálázása miatt – egyelőre koncentráljon API-logikára.
 
 ## <a name="prerequisites"></a>Előfeltételek 
 
 [!INCLUDE [Previous quickstart note](../../includes/functions-quickstart-previous-topics.md)]
 
-Az eredményül kapott funkció ebben az oktatóanyagban a többi fog történni.
+Az eredményül kapott függvényt fogja használni az oktatóanyag hátralevő részében.
 
 ### <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
-Nyissa meg az Azure-portálon. Ehhez jelentkezzen be [https://portal.azure.com](https://portal.azure.com) fel fiókjával.
+Nyissa meg az Azure Portalt. Ehhez jelentkezzen be Azure-fiókjával a [https://portal.azure.com](https://portal.azure.com) oldalon.
 
-## <a name="customize-your-http-function"></a>A HTTP-funkció testreszabása
+## <a name="customize-your-http-function"></a>A HTTP-függvény testreszabása
 
-Alapértelmezés szerint a HTTP-eseményindítóval aktivált függvény HTTP-metódus elfogadására van konfigurálva. Emellett van alapértelmezett URL-cím a `http://<yourapp>.azurewebsites.net/api/<funcname>?code=<functionkey>`. Ha a gyors üzembe helyezés, majd követi `<funcname>` valószínűleg valahogy "HttpTriggerJS1". Ebben a szakaszban módosítani fogja a függvény csak a GET kérelmek elleni megválaszolásához `/api/hello` útvonal helyett. 
+Alapértelmezés szerint a HTTP-eseményindító által aktivált függvény minden HTTP-metódust elfogad. Az űrlap alapértelmezett URL-címe: `http://<yourapp>.azurewebsites.net/api/<funcname>?code=<functionkey>`. Ha követte a rövid útmutatót, akkor a `<funcname>` értéke „HttpTriggerJS1” vagy ahhoz hasonló. Ebben a szakaszban módosítani fogja a függvényt, hogy csak az `/api/hello` útvonalra vonatkozó GET kérésekre válaszoljon. 
 
-1. Nyissa meg a függvény az Azure portálon. Válassza ki **integráció** a bal oldali navigációs.
+1. Az Azure Portalon keresse meg a függvényt. A bal oldali navigációs menüben válassza az **Integrálás** lehetőséget.
 
-    ![Egy HTTP-funkció testreszabása](./media/functions-create-serverless-api/customizing-http.png)
+    ![HTTP-függvény testreszabása](./media/functions-create-serverless-api/customizing-http.png)
 
-1. A HTTP-eseményindító beállításokat használják a táblázatban megadott.
+1. Használja a táblázatban megadott, a HTTP-eseményindítóra vonatkozó beállításokat.
 
     | Mező | Mintaérték | Leírás |
     |---|---|---|
-    | Engedélyezett HTTP-metódusok | A kijelölt metódusok | Meghatározza, hogy mely HTTP-metódus is használható a függvény meghívása |
-    | A kijelölt HTTP-metódusok | GET | Lehetővé teszi, hogy csak a kijelölt HTTP metódusok használandó, a függvény meghívása |
-    | Útvonal-sablon | hello | Meghatározza, hogy milyen útvonalat használ a függvény meghívása |
-    | Jogosultsági szint | Névtelen | Választható lehetőség: Elérhetővé válnak a függvény egy API-kulcs nélkül |
+    | Engedélyezett HTTP-metódusok | Kiválasztott metódusok | Meghatározza, hogy mely HTTP-metódusokkal hívható meg a függvény |
+    | Kiválasztott HTTP-metódusok | GET | Csak bizonyos HTTP-metódusoknak engedélyezi a függvény meghívását |
+    | Útvonalsablon | /hello | Meghatározza, hogy melyik útvonalat használja a függvény meghívására |
+    | Engedélyszint | Névtelen | Opcionális: A függvényt API-kulcs nélkül is elérhetővé teszi |
 
     > [!NOTE] 
-    > Vegye figyelembe, hogy Ön nem foglal a `/api` kiinduló az útvonalsablonhoz elérési előtagot, mivel ez egy globális beállítás kezeli.
+    > Figyelje meg, hogy az `/api` nem szerepel az útvonalsablon alapútvonal-előtagjában, mivel ezt egy globális beállítás kezeli.
 
 1. Kattintson a **Save** (Mentés) gombra.
 
-A HTTP-funkciók testreszabása többet is megtudhat [Azure Functions HTTP és a webhook kötések](https://docs.microsoft.com/azure/azure-functions/functions-bindings-http-webhook#customizing-the-http-endpoint).
+További információ a HTTP-függvények testreszabásáról: [Azure Functions HTTP-kötések](https://docs.microsoft.com/azure/azure-functions/functions-bindings-http-webhook#customizing-the-http-endpoint).
 
-### <a name="test-your-api"></a>Az API-teszt
+### <a name="test-your-api"></a>Az API tesztelése
 
-Ezt követően tesztelje meg szeretné tekinteni, az új API felület használata a függvénynek.
-1. Lépjen vissza a fejlesztési lapon kattintson a bal oldali navigációs a függvény nevét.
-1. Kattintson a **függvény URL-cím beszerzése** és másolja az URL-címet. Láthatja, hogy használja a `/api/hello` címre.
-1. Másolja az URL-címet egy új böngészőlapon vagy a kívánt REST-ügyfél. Böngészők alapértelmezés szerint fogja használni a GET.
-1. Paraméterek hozzáadása az URL-ben a lekérdezési karakterlánc pl.`/api/hello/?name=John`
-1. Kattintson az "Adja meg" annak ellenőrzéséhez, hogy működik. A válasz megjelenik "*Hello John*"
-1. A végpont meghívása a megerősítéséhez, hogy a függvény nem hajtotta végre egy másik HTTP-metódussal is próbálkozhat. Ehhez szüksége lesz egy REST-ügyfél, például a cURL, a Postman vagy a Fiddler használata.
+Ezután ellenőrizze, hogy a függvény hogyan működik az új API felületén.
+1. Kattintson a függvény nevére a bal oldali navigációs sávon, visszatérve ezzel a fejlesztési oldalra.
+1. Kattintson a **Függvény URL-címének lekérése** elemre, és másolja ki az URL-címet. Figyelje meg, hogy az már az `/api/hello` útvonalat használja.
+1. Nyissa meg az URL-címet egy új böngészőlapon vagy a választott REST-ügyfélben. A böngészők alapértelmezés szerint a GET kérést használják.
+1. Adjon hozzá paramétereket az URL-címben található lekérdezési sztringhez, például: `/api/hello/?name=John`
+1. Nyomja le az Enter billentyűt, hogy ellenőrizze, minden működik-e. A következő választ kell kapnia: „*Hello John*”
+1. Megpróbálhatja meghívni a végpontot egy másik HTTP-metódussal, hogy megbizonyosodjon arról, hogy a függvényt így nem hajtja végre a szolgáltatás. Ehhez egy REST-ügyfélt kell használnia (például cURL, Postman vagy Fiddler).
 
 ## <a name="proxies-overview"></a>Proxyk áttekintése
 
-A következő szakaszban az API-proxyn keresztül fog surface. Az Azure Functions proxyk lehetővé teszi további erőforrások kérelmeket továbbítja. Ugyanúgy, mint a HTTP-eseményindítóval, de kódot mikor hajthat végre ahelyett, hogy a végpont neve HTTP végpont meghatározása, megadja a távoli megvalósításának URL-CÍMÉT. Ez lehetővé teszi, hogy több API-forrás írja be az ügyfelek használhatnak könnyen egyetlen API felülete. Ez különösen fontos, ha az API-t, mikroszolgáltatások létrehozására.
+A következő szakaszban az API felületének létrehozását egy proxyn keresztül fogja elvégezni. Az Azure Functions-proxyk lehetővé teszik a kérések továbbítását más erőforrásokhoz. Ugyanúgy definiálja majd a HTTP-végpontot, mint a HTTP-eseményindító esetében, viszont nem olyan kódot ír, amely végrehajtódik a végpont hívásakor, hanem megad egy URL-címet a távoli megvalósításhoz. Így több API-forrást foglalhat egyetlen API-felületbe, hogy az ügyfelek könnyebben használhassák. Ez különösen hasznos, ha az API-t mikroszolgáltatásként kívánja kiépíteni.
 
-A proxy, mint a HTTP-erőforrás mutathat:
+A proxyk bármilyen HTTP-erőforrásra mutathatnak, például:
 - Azure Functions 
-- Az API-alkalmazások [az Azure App Service](https://docs.microsoft.com/azure/app-service/app-service-web-overview)
-- A docker-tároló [Linux App Service](https://docs.microsoft.com/azure/app-service/containers/app-service-linux-intro)
-- Más üzemeltetett API-k
+- API Apps alkalmazások az [Azure App Service-ben](https://docs.microsoft.com/azure/app-service/app-service-web-overview)
+- Docker-tárolók a [Linuxon futó App Service-ben](https://docs.microsoft.com/azure/app-service/containers/app-service-linux-intro)
+- Bármely más üzemeltetett API
 
-Proxyk kapcsolatos további információkért lásd: [használata az Azure Functions proxyk].
+További információ a proxykról: [Azure Functions-proxyk használata].
 
-## <a name="create-your-first-proxy"></a>Az első proxy létrehozása
+## <a name="create-your-first-proxy"></a>Első proxy létrehozása
 
-Ebben a szakaszban egy új proxy, amely az általános API-nak időtúllépést hoz létre. 
+Ebben a szakaszban létrehoz egy új proxyt, amely az API egészének előtereként fog szolgálni. 
 
-### <a name="setting-up-the-frontend-environment"></a>Az előtér-környezet létrehozása
+### <a name="setting-up-the-frontend-environment"></a>Az előtérrendszer beállítása
 
-Ismételje meg a [függvény-alkalmazás létrehozása](https://docs.microsoft.com/azure/azure-functions/functions-create-first-azure-function#create-a-function-app) függvény a proxy hoz létre új alkalmazás létrehozása. Az új alkalmazás URL-címe erre a célra a frontend az API-hoz, és a korábban Szerkesztés függvény alkalmazás erre a célra egy háttér.
+Ismételje meg a [Függvényalkalmazás létrehozása](https://docs.microsoft.com/azure/azure-functions/functions-create-first-azure-function#create-a-function-app) szakasz lépéseit egy új függvényalkalmazás létrehozásához, amelyben létrehozhatja a proxyt. Az új alkalmazás URL-címe szolgál majd az API előtereként, a korábban szerkesztett függvényalkalmazás pedig a háttérrendszer lesz.
 
-1. Nyissa meg az új előtér függvény alkalmazás a portálon.
-1. Válassza ki **Platform funkciói** válassza **Alkalmazásbeállítások**.
-1. Görgessen le a **Alkalmazásbeállítások** Ha kulcs/érték párok tárolják, és hozzon létre egy új kulcsot "HELLO_HOST" beállításnál. Állítsa be az értékét, mint a háttéralkalmazás függvény alkalmazáshoz, a gazdagép `<YourBackendApp>.azurewebsites.net`. Ez a korábban kimásolt a HTTP-függvény tesztelése során URL-cím része. Ez a beállítás később a konfigurációban kell hivatkozik.
+1. Keresse meg az új előtérbeli függvényalkalmazást a portálon.
+1. Válassza a **Platformfunkciók**, majd az **Alkalmazásbeállítások** lehetőséget.
+1. Görgessen le az **Alkalmazásbeállításokig**, ahol a kulcs-érték párok vannak tárolva, és hozzon létre egy új beállítást a „HELLO_HOST” kulccsal. Állítsa az értékét háttérbeli függvényalkalmazás gazdagépére, például `<YourBackendApp>.azurewebsites.net`. Ez azon URL-cím része, amelyet korábban kimásolt a HTTP-függvény tesztelésekor. Erre a beállításra később hivatkozni fog a konfigurációban.
 
     > [!NOTE] 
-    > Alkalmazásbeállítások a gazdagép konfigurációja a proxy-sablonja környezet függőség megelőzése érdekében ajánlott. Alkalmazásbeállítások használata azt jelenti, hogy a proxy konfigurációs áthelyezheti különböző környezetek között, a környezet-specifikus alkalmazás beállítások lesznek alkalmazva.
+    > Azért érdemes alkalmazásbeállításokat használni a gazdagép konfigurálásához, hogy a proxynak ne legyen nem módosítható környezeti függősége. Az alkalmazásbeállítások használatakor lehetősége van áthelyezni a proxykonfigurációt más környezetekbe, és ekkor a környezetspecifikus alkalmazásbeállítások fognak vonatkozni rá.
 
 1. Kattintson a **Save** (Mentés) gombra.
 
-### <a name="creating-a-proxy-on-the-frontend"></a>Az előtér egy proxy létrehozása
+### <a name="creating-a-proxy-on-the-frontend"></a>Proxy létrehozása az előtérben
 
-1. Lépjen vissza az előtér-függvény alkalmazás a portálon.
-1. A bal oldali navigációs, kattintson a plusz jelre "+" "Proxyk" mellett.
-    ![A proxy létrehozása](./media/functions-create-serverless-api/creating-proxy.png)
-1. A táblázatban megadott proxybeállításainak használata. 
+1. Térjen vissza az előtérbeli függvényalkalmazáshoz a portálon.
+1. A bal oldali navigációs sávon kattintson a „Proxyk” elem mellett látható plusz jelre (+).
+    ![Proxy létrehozása](./media/functions-create-serverless-api/creating-proxy.png)
+1. Használja a táblázatban megadott proxybeállításokat. 
 
     | Mező | Mintaérték | Leírás |
     |---|---|---|
-    | Név | HelloProxy | Rövid név csak olyan felügyeleti |
-    | Útvonal-sablon | / api/hello | Meghatározza, hogy milyen útvonalat használ a proxy meghívása |
-    | Háttérkiszolgáló URL-címe | https://%HELLO_HOST%/API/hello | Megadja a végpontot, amelyhez a kérés küldése a proxyn keresztül kell lennie |
+    | Name (Név) | HelloProxy | Felhasználóbarát név, kizárólag kezelési célra |
+    | Útvonalsablon | /api/hello | Meghatározza, hogy melyik útvonalat használja a proxy meghívására |
+    | Háttér-URL | https://%HELLO_HOST%/api/hello | Meghatározza a végpontot, ahova továbbítja a kéréseket a proxyn keresztül |
     
-1. Vegye figyelembe, hogy proxyk nem biztosít a `/api` alap elérési útja előtag, és ez az útvonalsablonhoz szerepelnie kell.
-1. A `%HELLO_HOST%` szintaxis használatával a korábban létrehozott Alkalmazásbeállítás hivatkozik. A feloldott URL-címet az eredeti funkciókat mutasson.
+1. Figyelje meg, hogy a proxyk nem adják hozzá az `/api` alapútvonal-előtagot, azt Önnek kell beírni az útvonalsablonba.
+1. A `%HELLO_HOST%` szintaxis a korábban létrehozott alkalmazásbeállításra hivatkozik. A feloldott URL az eredeti függvényre fog mutatni.
 1. Kattintson a **Create** (Létrehozás) gombra.
-1. Az új proxy kipróbálhatja a proxykiszolgáló URL-cím másolásával és a vizsgálja, hogy a böngészőben, vagy a kedvenc HTTP-ügyféllel.
-    1. Egy névtelen függvény felhasználásra:
+1. Ki is próbálhatja az új proxyt. Másolja ki a proxy URL-címét, és tesztelje le a böngészőben vagy a választott HTTP-ügyféllel.
+    1. Névtelen funkció esetében ezt használja:
         1. `https://YOURPROXYAPP.azurewebsites.net/api/hello?name="Proxies"`
-    1. Egy függvény engedélyezési használatával:
+    1. Engedélyezést igénylő függvény esetében ezt használja:
         1. `https://YOURPROXYAPP.azurewebsites.net/api/hello?code=YOURCODE&name="Proxies"`
 
-## <a name="create-a-mock-api"></a>Egy utánzatait API létrehozása
+## <a name="create-a-mock-api"></a>API-utánzat létrehozása
 
-A következő szüksége lesz egy proxy utánzatait API a megoldás létrehozásához. Ez lehetővé teszi, hogy folyamatban van, az ügyféloldali fejlesztés anélkül, hogy a háttér teljes végrehajtását. Később a fejlesztési hozzon létre egy új függvény alkalmazást, amely támogatja a logikai és a proxy átirányítása sikerült.
+Ezután egy proxyt használva hoz létre egy API-utánzatot a megoldása számára. Így folytatódhat az ügyfél fejlesztése a háttérrendszer teljes megvalósítása nélkül is. A fejlesztés egy későbbi pontján létrehozhat egy új függvényalkalmazást, amely támogatja ezt a logikát, és átirányítja ide a proxyt.
 
-Az utánzatait API létrehozásához létrehozunk egy új proxyt a használatával a [App Service-szerkesztő](https://github.com/projectkudu/kudu/wiki/App-Service-Editor). Először keresse meg a függvény app a portálon. Válassza ki **Platform funkciói** és a **Fejlesztőeszközök** található **App Service-szerkesztő**. A hivatkozásra kattintva az megnyílik az App Service-szerkesztő új ablakban.
+Az API-utánzat létrehozásához létrehozunk egy új proxyt, ezúttal az [App Service Editor](https://github.com/projectkudu/kudu/wiki/App-Service-Editor) használatával. Először is keresse meg a függvényalkalmazást a portálon. Válassza a **Platformfunkciók** elemet, majd a **Fejlesztési eszközök** pontban keresse meg az **App Service Editort**. Erre kattintva megnyílik az App Service Editor egy új lapon.
 
-Válassza ki `proxies.json` a bal oldali navigációs. Ez az a fájlt, amely az összes a proxyk konfigurációs tárolja. Ha valamelyikét használja a [működik a központi telepítési módszerekkel](https://docs.microsoft.com/azure/azure-functions/functions-continuous-deployment), a fájl megmaradjanak a verziókövetési rendszerrel. Ez a fájl kapcsolatos további információkért lásd: [proxyk speciális konfigurációs](https://docs.microsoft.com/azure/azure-functions/functions-proxies#advanced-configuration).
+Válassza ki a `proxies.json` elemet a bal oldali navigációs sávon. Ez a fájl tárolja az összes proxy konfigurációját. Ha a [funkciók üzembe helyezési metódusainak](https://docs.microsoft.com/azure/azure-functions/functions-continuous-deployment) egyikét használja, ezt a fájlt kell karban tartania a verziókövetéshez. A fájlról itt olvashat részletesen: [Proxyk speciális konfigurációja](https://docs.microsoft.com/azure/azure-functions/functions-proxies#advanced-configuration).
 
-Ha végrehajtotta eddig, a proxies.json kell a következőhöz hasonló:
+Ha követte az eddigi lépéseket, akkor a proxies.json fájlnak így kell kinéznie:
 
 ```json
 {
@@ -141,7 +140,7 @@ Ha végrehajtotta eddig, a proxies.json kell a következőhöz hasonló:
 }
 ```
 
-Ezután a utánzatait API fogja hozzáadni. Cserélje le a proxies.json fájl a következő:
+Most következik az API-utánzat hozzáadása. Cserélje a proxies.json fájlt a következőre:
 
 ```json
 {
@@ -177,20 +176,20 @@ Ezután a utánzatait API fogja hozzáadni. Cserélje le a proxies.json fájl a 
 }
 ```
 
-Ezzel hozzáad egy új proxy, "GetUserByName", a backendUri tulajdonság nélkül. Helyett egy másik erőforrás, módosítja egy válasz felülbírálás használatával proxyk alapértelmezett válaszát. Kérelem és válasz felülbírálások használhatók a URL-t együtt. Ez akkor különösen hasznos, ha a proxy használatát az ügynökökön egy örökölt rendszerre, ahol előfordulhat, hogy módosítania kell a fejlécek, lekérdezési paraméterek stb. Kérelem és válasz felülbírálások kapcsolatos további információkért lásd: [kérelmeit és válaszait a proxyk módosítása](https://docs.microsoft.com/azure/azure-functions/functions-proxies#a-namemodify-requests-responsesamodifying-requests-and-responses).
+Ez hozzáad egy új, „GetUserByName” nevű proxyt a backendUri tulajdonság nélkül. Egy másik erőforrás meghívása helyett módosítja a proxyk alapértelmezett válaszát, felülírva azt. A kérések és a válaszfelülírások egy háttér-URL-lel együtt is használhatók. Ez különösen akkor lehet hasznos, amikor egy régi rendszerben használ proxykat, ahol szükség lehet a fejlécek, a lekérdezési paraméterek stb. módosítására. További információk a kérésekről és a válaszfelülírásokról: [Kérések és válaszok módosítása a proxykban](https://docs.microsoft.com/azure/azure-functions/functions-proxies#a-namemodify-requests-responsesamodifying-requests-and-responses).
 
-Tesztelje a utánzatait API hívása a `<YourProxyApp>.azurewebsites.net/api/users/{username}` végpont egy böngésző vagy a kedvenc REST-ügyfél használatával. Ügyeljen arra, hogy a csere _{username}_ egy karakterláncértéket, amely egy felhasználónévvel rendelkező.
+Az API-utánzat teszteléséhez hívja meg a `<YourProxyApp>.azurewebsites.net/api/users/{username}` végpontot a böngésző vagy a választott REST-ügyfél használatával. A _{username}_ értéket cserélje a felhasználónevet képviselő sztringre.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Ebben az oktatóanyagban megtanulta, hogyan állíthatja össze és testreszabása az Azure Functions egy API-t. Is megtanulta, hogyan kell az több API-k, mocks, beleértve a együtt, egyetlen egyesített API felület. Ezek a technológiák használatával ki bármely összetettségi API-k létrehozása minden, a kiszolgáló nélküli számítási modellt a futtatása közben az Azure Functions által biztosított.
+Ez az oktatóanyag bemutatta, hogyan lehet kiépíteni és testreszabni egy API-t az Azure Functions szolgáltatásban. Ezenkívül elsajátította, hogyan lehet több API-t, köztük utánzatokat egyesíteni egyetlen API-felületen. Ezekkel a technikákkal bármilyen összetettségű API-t kiépíthet az Azure Functions kiszolgáló nélküli számítási modelljének használatával.
 
-Az API-további fejleszt, hasznos lehet a következő hivatkozásokat:
+A következő referenciák hasznára lehetnek az API továbbfejlesztése során:
 
-- [Az Azure Functions HTTP és a webhook kötések](https://docs.microsoft.com/azure/azure-functions/functions-bindings-http-webhook)
-- [használata az Azure Functions proxyk]
-- [Az Azure Functions API-k (előzetes verzió) dokumentálása](https://docs.microsoft.com/azure/azure-functions/functions-api-definition-getting-started)
+- [Azure Functions HTTP-kötések](https://docs.microsoft.com/azure/azure-functions/functions-bindings-http-webhook)
+- [Azure Functions-proxyk használata]
+- [Azure Functions API dokumentálása (előzetes verzió)](https://docs.microsoft.com/azure/azure-functions/functions-api-definition-getting-started)
 
 
 [Create your first function]: https://docs.microsoft.com/azure/azure-functions/functions-create-first-azure-function
-[használata az Azure Functions proxyk]: https://docs.microsoft.com/azure/azure-functions/functions-proxies
+[Azure Functions-proxyk használata]: https://docs.microsoft.com/azure/azure-functions/functions-proxies

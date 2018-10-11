@@ -3,7 +3,7 @@ title: Site-to-site VPN-kapcsolat létrehozása két virtuális hálózat közö
 description: Lépésről lépésre haladó eljárás, amely a felhő rendszergazdájának használja a site-to-site VPN-kapcsolat létrehozása két egycsomópontos Azure Stack Development Kit környezetek között.
 services: azure-stack
 documentationcenter: ''
-author: brenduns
+author: sethmanheim
 manager: femila
 editor: ''
 ms.assetid: 3f1b4e02-dbab-46a3-8e11-a777722120ec
@@ -13,15 +13,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 09/12/2018
-ms.author: brenduns
+ms.author: sethm
 ms.reviewer: scottnap
 ROBOTS: NOINDEX
-ms.openlocfilehash: a219f44cb27bb6ebe4e17079ad487457ae8852f0
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: b17b1b077a1acac5ddb0e9eea8c4a2cf44697979
+ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44718117"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49078902"
 ---
 # <a name="create-a-site-to-site-vpn-connection-between-two-virtual-networks-in-different-azure-stack-development-kit-environments"></a>Site-to-site VPN-kapcsolat létrehozása két virtuális hálózat között eltérő Azure Stack Development Kit környezetek között
 ## <a name="overview"></a>Áttekintés

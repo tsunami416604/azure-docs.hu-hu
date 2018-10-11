@@ -1,26 +1,29 @@
 ---
-title: Oktatóanyag – Költségek kezelése az Azure Cost Managementtel | Microsoft Docs
+title: Oktatóanyag – Költségek kezelése a Cloudynnel az Azure-ban | Microsoft Docs
 description: Ebben az oktatóanyagban megtudhatja, hogyan kezelheti a költségeket költséglefoglalási, költséghelyi visszacsatolási és költséghelyi elszámolási jelentésekkel.
 services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 04/26/2018
+ms.date: 09/18/2018
 ms.topic: tutorial
 ms.service: cost-management
 ms.custom: ''
 manager: dougeby
-ms.openlocfilehash: 16f86eace9b5848f263e0d0772db441a123f21ae
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 743576d8cbd7135369fb692e601360cb57a6c3bd
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46989635"
 ---
-# <a name="tutorial-manage-costs-by-using-azure-cost-management"></a>Oktatóanyag: Költségek kezelése az Azure Cost Managementtel
+# <a name="tutorial-manage-costs-by-using-cloudyn"></a>Oktatóanyag: Költségek kezelése a Cloudyn használatával
 
-Az Azure Cost Managementben a költségeket címkék alapján foglalhatja le a költségek kezelése és a visszacsatolási jelentések előállítása érdekében. A költséglefoglalási folyamat során költségeket rendel hozzá a felhasznált felhőalapú erőforrásokhoz. A költségek teljes lefoglalása akkor történik meg, ha az összes erőforrást kategóriákba sorolta címkék segítségével. A költségek lefoglalását követően irányítópultokon és jelentéseken keresztül biztosíthat költséghelyi visszacsatolást és elszámolást a felhasználóknak. Azonban a Cost Management használatba vételekor előfordulhat, hogy számos erőforrás nem rendelkezik vagy nem látható el címkével.
+A Cloudynben a költségeket címkék alapján foglalhatja le a költségek kezelése és a visszacsatolási jelentések előállítása során. A költséglefoglalási folyamat során költségeket rendel hozzá a felhasznált felhőalapú erőforrásokhoz. A költségek teljes lefoglalása akkor történik meg, ha az összes erőforrást kategóriákba sorolta címkék segítségével. A költségek lefoglalását követően irányítópultokon és jelentéseken keresztül biztosíthat költséghelyi visszacsatolást és elszámolást a felhasználóknak. Azonban a Cloudyn használatba vételekor előfordulhat, hogy számos erőforrás nem rendelkezik vagy nem látható el címkével.
 
 Például előfordulhat, hogy szeretné megtéríttetni a műszaki tervezési költségeket. Be kell tudnia mutatni a műszaki csapat számára az adott igényelt összeget az erőforrásköltségek alapján. Mutathat nekik egy jelentést, amely a *műszaki tervezés* címkével ellátott összes felhasznált erőforrást tartalmazza.
+
+A cikkben a címkéket és a kategóriákat helyenként azonos értelemben használjuk. A kategóriák tág gyűjtemények, melyek sok mindent jelölhetnek. Ezek lehetnek üzleti egységek, költséghelyek, webszolgáltatások vagy bármely felcímkézett dolog. A címkék olyan név/érték párok, amelyek segítségével kategóriákba sorolhatja az erőforrásokat, és ha ugyanazt a címkét több erőforrásra és erőforráscsoportra is alkalmazza, ezzel együtt jelenítheti meg és kezelheti azok összesített számlázási adatait. Az Azure Portal korábbi verzióiban a *címkenév* helyett a *kulcs* kifejezést alkalmaztuk. A címkék egy adott Azure-előfizetésre vonatkozóan hozhatók létre és abban tárolhatók. Az AWS címkéi kulcs/érték párok. Mivel az Azure és az AWS is a *kulcs* kifejezést használta, a Cloudyn is megmaradt ennél. A Category Manager kulcsok (címkenevek) használatával egyesíti a címkéket.
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
@@ -33,9 +36,18 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 ## <a name="prerequisites"></a>Előfeltételek
 
 - Rendelkeznie kell egy Azure-fiókkal.
-- Rendelkeznie kell az Azure Cost Management próbaverziójával vagy fizetett előfizetésével.
+- Rendelkeznie kell a Cloudyn próbaverziójával vagy fizetett előfizetésével.
+- [A nem aktivált fiókokat aktiválni kell](activate-subs-accounts.md) a Cloudyn portálon.
+- A [vendégszintű monitorozást](azure-vm-extended-metrics.md) engedélyezni kell a virtuális gépeken.
+
 
 ## <a name="use-custom-tags-to-allocate-costs"></a>Költségek lefoglalása egyéni címkék használatával
+
+A Cloudyn az erőforráscsoportok címkeadatait az Azure-ból kéri le, és automatikusan propagálja a címkeinformációkat az erőforrásokra. A költséglefoglalásokban a költségek erőforráscímke szerint tekinthetők meg.
+
+A Költséglefoglalási modell használatával kategóriákat (címkéket) definiálhat, amelyeket a rendszeren belül a kategorizálatlan (címkézetlen) erőforrásokra alkalmazva csoportokba rendezheti a költségeket, és szabályokat határozhat meg a címkézetlen költségek kezelésére. A költséglefoglalási szabályok olyan mentett utasítások, amelyek egy szolgáltatás költségeit egy másik szolgáltatásra osztják le. Ezt követően a létrehozott modellt kiválasztva ezek az erőforrások megjelenítik a címkéket/kategóriákat a *költséglefoglalási* jelentésekben.
+
+Vegye figyelembe, hogy a címkeinformációk nem jelennek meg ezeknél az erőforrásoknál a *költségelemzési* jelentésekben. Emellett a Cloudynben a költséglefoglalás használatával alkalmazott címkék nem lesznek továbbítva az Azure-ba, így nem láthatja azokat az Azure Portalon.
 
 A költséglefoglalás első lépéseként a hatókört kell definiálni egy költségmodell segítségével. A költségmodell nem módosítja a költségeket, csak leosztja azokat. A költségmodell létrehozásakor az adatokat költségentitás, fiók vagy előfizetés, valamint több címke alapján szegmentálja. A címkék általában lehetnek számlázási kódok, költséghelyek vagy csoportnevek. A címkék emellett abban is segítenek, hogy költséghelyi visszacsatolást és elszámolást végezzen a vállalat egyéb részeire vonatkozóan.
 
@@ -59,7 +71,7 @@ Például előfordulhat, hogy az Azure Storage költségeit szeretné egyenletes
 
 
 
-Egy másik példa kedvéért tegyük fel, hogy az Azure-hálózattal kapcsolatos összes költséget a vállalat egy adott üzleti egységéhez szeretné rendelni. Ehhez válassza az **Azure/hálózat** szolgáltatást, majd a **Kifejezett leosztás** lehetőséget. Ezután állítsa a leosztás százalékos arányát 100-ra, és válassza ki az üzleti egységet – ez a **G&amp;A** a következő képen:
+Egy másik példa kedvéért tegyük fel, hogy az Azure-hálózattal kapcsolatos összes költséget a vállalat egy adott üzleti egységéhez szeretné rendelni. Ehhez válassza az **Azure/Hálózat** szolgáltatást, majd a **Lefoglalási szabály definiálása** alatt a **Kifejezett leosztás** lehetőséget. Ezután állítsa a leosztás százalékos arányát 100-ra, és válassza ki az üzleti egységet – ez a **G&amp;A** a következő képen:
 
 ![Példa egy adott üzleti egységhez létrehozott költségmodell-lefoglalási szabályra](./media/tutorial-manage-costs/cost-model03.png)
 
@@ -99,7 +111,7 @@ A Cloudyn jelentésekben szereplő címkeadatok három helyről származhatnak:
 
 A felhőszolgáltatói címkék a Cloudyn-költségjelentésekben való megjelenítéséhez egyéni költséglefoglalási modellt kell létrehoznia a Cost Allocation 360 használatával. Ehhez nyissa meg a **Költségek** > **Költségkezelés** > **Cost Allocation 360** eszközt, válassza ki a kívánt címkéket, majd adja meg a szabályokat a címkézetlen költségek kezeléséhez. Ezután hozzon létre egy új költségmodellt. Ezt követően a Költséglefoglalási elemzésben elérhető jelentésekben megtekintheti, szűrheti és rendezheti az Azure-erőforráscímkéket.
 
-Az Azure-erőforráscímkék kizárólag a **Költséglefoglalási elemzés** jelentéseiben jelennek meg.
+Az Azure-erőforráscímkék kizárólag a **Költségek** > **Költséglefoglalási elemzés** jelentésekben jelennek meg.
 
 A felhőszolgáltatói számlázási címkék az összes költségjelentésben megjelennek.
 

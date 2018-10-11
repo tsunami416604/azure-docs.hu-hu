@@ -1,55 +1,57 @@
 ---
-title: Java rövid útmutató az Azure Cognitive Services, a Microsoft Translator Speech API |} A Microsoft Docs
-description: Get information és kód minták segítségével gyorsan használatának első lépései a Microsoft Translator Speech API a Microsoft Cognitive Services, Azure-ban.
+title: 'Rövid útmutató: Translator Speech API – Java'
+titlesuffix: Azure Cognitive Services
+description: Információ és kódminták segítségével ismerkedhet meg a Translator Speech API használatának alapjaival.
 services: cognitive-services
-documentationcenter: ''
 author: v-jaswel
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-speech
-ms.topic: article
+ms.topic: quickstart
 ms.date: 3/5/2018
 ms.author: v-jaswel
-ms.openlocfilehash: 0db55f4064d3415cb647519ea9030936012a8446
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
-ms.translationtype: MT
+ROBOTS: NOINDEX
+ms.openlocfilehash: dde7d3dc7c1a744da9a22c0e4c0a483a186aa327
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "41987959"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46969461"
 ---
-# <a name="quickstart-for-microsoft-translator-speech-api-with-java"></a>Gyors útmutató: a Microsoft Translator Speech API a Javával 
+# <a name="quickstart-translator-speech-api-with-java"></a>Rövid útmutató: Translator Speech API a Java használatával 
 <a name="HOLTop"></a>
 
-Ez a cikk bemutatja, hogyan .wav fájl a kimondott szavakat lefordítása a Microsoft Translator Speech API használatával.
+Ez a cikk bemutatja, hogyan használhatja a Translator Speech API-t egy .wav fájlban elhangzó beszéd lefordításához.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Szüksége lesz [JDK 7 vagy 8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) fordítsa le és futtassa ezt a kódot. Ha kedvencként, de egy szövegszerkesztőben elegendő használhatja a Java ide Környezethez.
+A kód lefordításához és futtatásához a [JDK 7 vagy 8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) telepítése szükséges. Ha van kedvence, használhat Java IDE-t vagy egy szövegszerkesztőt is.
 
-Szüksége lesz a következő fájlokat.
+A következő fájlokra lesz szüksége.
 - [javax.websocket-api-1.1.jar (vagy újabb)](https://mvnrepository.com/artifact/javax.websocket/javax.websocket-api)
 - [jetty-http-9.4.11.v20180605.jar (vagy újabb)](https://mvnrepository.com/artifact/org.eclipse.jetty/jetty-http)
-- [jetty-i/o-9.4.11.v20180605.jar (vagy újabb)](https://mvnrepository.com/artifact/org.eclipse.jetty/jetty-io)
+- [jetty-io-9.4.11.v20180605.jar (vagy újabb)](https://mvnrepository.com/artifact/org.eclipse.jetty/jetty-io)
 - [jetty-util-9.4.11.v20180605.jar (vagy újabb)](https://mvnrepository.com/artifact/org.eclipse.jetty/jetty-util)
-- [websocket – api-9.4.11.v20180605.jar (vagy újabb)](https://mvnrepository.com/artifact/org.eclipse.jetty.websocket/websocket-api)
-- [websocket – ügyfél-9.4.11.v20180605.jar (vagy újabb)](https://mvnrepository.com/artifact/org.eclipse.jetty.websocket/websocket-client)
-- [websocket – közös-9.4.11.v20180605.jar (vagy újabb)](https://mvnrepository.com/artifact/org.eclipse.jetty.websocket/websocket-common)
-- [javax-websocket-ügyfél-impl-9.4.11.v20180605.jar (vagy újabb)](https://mvnrepository.com/artifact/org.eclipse.jetty.websocket/javax-websocket-client-impl)
-- [jetty-ügyfél-9.4.11.v20180605.jar (vagy újabb)](https://mvnrepository.com/artifact/org.eclipse.jetty/jetty-client)
+- [websocket-api-9.4.11.v20180605.jar (vagy újabb)](https://mvnrepository.com/artifact/org.eclipse.jetty.websocket/websocket-api)
+- [websocket-client-9.4.11.v20180605.jar (vagy újabb)](https://mvnrepository.com/artifact/org.eclipse.jetty.websocket/websocket-client)
+- [websocket-common-9.4.11.v20180605.jar (vagy újabb)](https://mvnrepository.com/artifact/org.eclipse.jetty.websocket/websocket-common)
+- [javax-websocket-client-impl-9.4.11.v20180605.jar (vagy újabb)](https://mvnrepository.com/artifact/org.eclipse.jetty.websocket/javax-websocket-client-impl)
+- [jetty-client-9.4.11.v20180605.jar (vagy újabb)](https://mvnrepository.com/artifact/org.eclipse.jetty/jetty-client)
 
-Szüksége lesz egy .wav "speak.wav" ugyanabban a mappában az alábbi kód fordítása futtatható fájlt. Ezt a fájlt .wav standard PCM, 16 bites, 16kHz Monó formátumban kell lennie. Szerezhet be ilyen .wav fájl a [Text to Speech API](https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/rest-apis#text-to-speech).
+A „speak.wav” fájlnak ugyanabban a mappában kell lennie, mint az alábbi kódból fordított végrehajtható fájlnak. Ennek a .wav fájlnak standard PCM, 16 bites, 16 kHz-es, mono formátumúnak kell lennie. Ilyen .wav fájlt a [Text to Speech API-tól](https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/rest-apis#text-to-speech) szerezhet be.
 
-Rendelkeznie kell egy [Cognitive Services API-fiók](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) a **Microsoft Translator Speech API**. Szüksége lesz egy fizetős kulcs a [Azure irányítópultján](https://portal.azure.com/#create/Microsoft.CognitiveServices).
+Rendelkeznie kell egy [Cognitive Services API-fiókkal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) és a **Microsoft Translator Speech API-val**. Egy fizetős előfizetői kulcsra van szüksége az [Azure-irányítópultról](https://portal.azure.com/#create/Microsoft.CognitiveServices).
 
 ## <a name="translate-speech"></a>Beszéd fordítása
 
-A következő kódot a speech egyik nyelvről a másikra fordítja le.
+A következő kód beszédet fordít le egyik nyelvről a másikra.
 
-1. Hozzon létre egy új Java-projektet a kedvenc IDE-ben.
+1. Hozzon létre egy új Java-projektet kedvenc IDE-környezetében.
 2. Adja hozzá az alábbi kódot.
-3. Cserélje le a `key` az előfizetéshez tartozó érvényes hozzáférési kulcs-érték.
+3. A `key` értéket cserélje le az előfizetéshez érvényes hozzáférési kulcsra.
 4. Futtassa a programot.
 
-Config.Java:
+Config.java:
 
 ```java
 import java.util.*;
@@ -71,7 +73,7 @@ public class Config extends ClientEndpointConfig.Configurator {
 }
 ```
 
-Client.Java:
+Client.java:
 
 ```java
 import java.io.*;
@@ -214,7 +216,7 @@ See:
 }
 ```
 
-Speak.Java:
+Speak.java:
 
 ```java
 /*
@@ -263,18 +265,18 @@ public class Speak {
 }
 ```
 
-**Beszéd válasz fordítása**
+**Beszéd fordításának válasza**
 
-Egy sikeres eredménye "speak2.wav" nevű fájl létrehozása. A fájl tartalmazza a fordítás beszélt "speak.wav" szó.
+A „speak2.wav” fájl létrejötte sikeres eredményt jelent. Ez a fájl tartalmazza a „speak.wav” fájlban elhangzó szavak fordítását.
 
 [Vissza a tetejére](#HOLTop)
 
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Translator Speech oktatóanyag](../tutorial-translator-speech-csharp.md)
+> [Translator Speech – oktatóanyag](../tutorial-translator-speech-csharp.md)
 
 ## <a name="see-also"></a>Lásd még 
 
-[Translator Speech áttekintése](../overview.md)
+[A Translator Speech áttekintése](../overview.md)
 [API-referencia](https://docs.microsoft.com/azure/cognitive-services/translator-speech/reference)

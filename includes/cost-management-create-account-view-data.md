@@ -5,16 +5,16 @@ services: cost-management
 author: bandersmsft
 ms.service: cost-management
 ms.topic: include
-ms.date: 04/26/2018
+ms.date: 09/17/2018
 ms.author: banders
 manager: dougeby
 ms.custom: include file
-ms.openlocfilehash: 1b65775ef5ad40ca9e9c1e2c96fe1c2b8d92afdc
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 4acc3f43f04c51e5303c8eba1d934580802312b5
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32198855"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47017659"
 ---
 ## <a name="view-cost-data"></a>Költségadatok megtekintése
 
@@ -26,27 +26,27 @@ Ebben a példában a Kezelési irányítópult a Contoso vállalat összes felh�
 
 Ha nem tudja, hogy egy jelentés miért van az irányítópulton, húzza az egeret az **i** szimbólum fölé a magyarázatának megjelenítéséhez. A teljes jelentés megjelenítéséhez kattintson bármelyik jelentésre az irányítópulton.
 
-A jelentéseket a Portal tetején található jelentések menüből is megtekintheti. Nézzük meg a Contoso Azure-erőforrásokra vonatkozó kiadásait az elmúlt 30 napban. Kattintson a **Cost** (Költség) > **Cost Analysis** (Költségelemzés) > **Actual Cost Analysis** (Tényleges költségelemzés) elemre. Törölje a beállított címkék, csoportok és szűrők értékeit a jelentésben.
+A jelentéseket a Portal tetején található jelentések menüből is megtekintheti. Nézzük meg a Contoso Azure-erőforrásokra vonatkozó kiadásait az elmúlt 30 napban. Kattintson a **Costs** (Költségek) > **Cost Analysis** (Költségelemzés) > **Actual Cost Analysis** (Tényleges költségelemzés) elemre. Törölje a beállított címkék, csoportok és szűrők értékeit a jelentésben.
 
 ![Tényleges költségelemzés](./media/cost-management-create-account-view-data/actual-cost-01.png)
 
-Ebben a példában a teljes költség 75 970 USD, a költségkeret pedig 130 000 USD.
+Ebben a példában a teljes költség 122 273 USD, a költségkeret pedig 290 000 USD.
 
 Most módosítsuk a jelentés formátumát, és állítsunk be csoportokat és szűrőket, hogy az Azure-hoz kapcsolódó költségekre szűkítsük az eredményeket. Állítsa a **Date Range** (Dátumtartomány) értékét az elmúlt 30 napra. A jobb felső sarokban kattintson az oszlop szimbólumra oszlopdiagramként történő formázáshoz, majd a Csoportok területen válassza a **Provider** (Szolgáltató) lehetőséget. Ezután állítson be egy szűrőt a **Provider** (Szolgáltató) számára **Azure** értékkel.
 
 ![Szűrt tényleges költségelemzés](./media/cost-management-create-account-view-data/actual-cost-02.png)
 
-Ebben a példában az Azure-erőforrások teljes költsége 3839 USD volt az elmúlt 30 napban.
+Ebben a példában az Azure-erőforrások teljes költsége 3309 USD volt az elmúlt 30 napon.
 
 Kattintson a jobb gombbal a Szolgáltató (Azure) oszlopra, és indítson részletes elemzést a **Resource types** (Erőforrástípusok) jellemzőről.
 
 ![részletes elemzés](./media/cost-management-create-account-view-data/actual-cost-03.png)
 
-A következő ábra a Contoso Azure-erőforrásokkal kapcsolatos költségeit jeleníti meg. A teljes összeg 3839 USD volt. A példában körülbelül a költségek fele a helyileg redundáns tárolásból, a másik fele pedig a különböző virtuálisgép-példányokból adódott.
+A következő ábra a Contoso Azure-erőforrásokkal kapcsolatos költségeit jeleníti meg. A teljes összeg 3309 USD volt. A példában körülbelül a költségek fele a Standard_A1 virtuális gépekből, a másik fele pedig a különböző Azure-szolgáltatásokból és virtuálisgép-példányokból adódott.
 
 ![erőforrástípusok](./media/cost-management-create-account-view-data/actual-cost-04.png)
 
-Kattintson a jobb gombbal egy erőforrástípusra, és válassza a **Cost Entities** (Költségelemek) lehetőséget a költségelemek és az erőforrást felhasználó szolgáltatások megjelenítéséhez. A példában a DevOps VM és a feldolgozó szolgáltatásai 486,60 USD és 435,71 USD költséget használtak fel. A kettő összege 922 USD.
+Kattintson a jobb gombbal egy erőforrástípusra, és válassza a **Cost Entities** (Költségelemek) lehetőséget a költségelemek és az erőforrást felhasználó szolgáltatások megjelenítéséhez. Az alábbi példaábrán az Erőforrás típusa beállítás értéke Helyileg redundáns tárolás. A Contoso|Azure/Storage 15,65 dollárba került. A Mérnöki tervezés|Azure/Storage 164,25 dollárba került. A Megosztott infrastruktúra|Azure/Storage 116,58 dollárba került. A szolgáltatások teljes költsége 296 USD.
 
 ![költségelemek és szolgáltatások](./media/cost-management-create-account-view-data/actual-cost-05.png)
 

@@ -1,41 +1,43 @@
 ---
-title: Az Azure Cognitive Services, a Microsoft Translator Speech API rövid útmutatóban a C# |} A Microsoft Docs
-description: Get information és kód minták segítségével gyorsan használatának első lépései a Microsoft Translator Speech API a Microsoft Cognitive Services, Azure-ban.
+title: 'Rövid útmutató: Translator Speech API – C#'
+titlesuffix: Azure Cognitive Services
+description: Információ és kódminták segítségével ismerkedhet meg a Translator Speech API használatának alapjaival.
 services: cognitive-services
-documentationcenter: ''
 author: v-jaswel
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-speech
-ms.topic: article
+ms.topic: quickstart
 ms.date: 3/5/2018
 ms.author: v-jaswel
-ms.openlocfilehash: c8c1945d8343ad966fe4b09f67099bccdae4be29
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
-ms.translationtype: MT
+ROBOTS: NOINDEX
+ms.openlocfilehash: 7d1f5968fe6ddffce3194f070b6a17aca4d3d9ab
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43128537"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46995040"
 ---
-# <a name="quickstart-for-microsoft-translator-speech-api-with-c"></a>Gyors útmutató: a Microsoft Translator Speech API a C# használatával 
+# <a name="quickstart-translator-speech-api-with-c"></a>Rövid útmutató: Translator Speech API és C# 
 <a name="HOLTop"></a>
 
-Ez a cikk bemutatja, hogyan .wav fájl a kimondott szavakat lefordítása a Microsoft Translator Speech API használatával.
+Ez a cikk bemutatja, hogyan használhatja a Translator Speech API-t egy .wav fájlban elhangzó beszéd lefordításához.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Szüksége lesz [Visual Studio 2017](https://www.visualstudio.com/downloads/) ezt a kódot futtathatnak Windows. (Az ingyenes Community Edition is elegendő.)
+A kód Windowson történő futtatásához [Visual Studio 2017](https://www.visualstudio.com/downloads/) szükséges. (Az ingyenes Community Edition is elegendő.)
 
-Szüksége lesz egy .wav "speak.wav" ugyanabban a mappában az alábbi kód fordítása futtatható fájlt. Ezt a fájlt .wav standard PCM, 16 bites, 16kHz Monó formátumban kell lennie.
+A „speak.wav” fájlnak ugyanabban a mappában kell lennie, mint az alábbi kódból fordított végrehajtható fájlnak. Ennek a .wav fájlnak standard PCM, 16 bites, 16 kHz-es, mono formátumúnak kell lennie.
 
-Rendelkeznie kell egy [Cognitive Services API-fiók](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) a **Microsoft Translator Speech API**. Szüksége lesz egy fizetős kulcs a [Azure irányítópultján](https://portal.azure.com/#create/Microsoft.CognitiveServices).
+Rendelkeznie kell egy [Cognitive Services API-fiókkal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) és a **Microsoft Translator Speech API-val**. Egy fizetős előfizetői kulcsra van szüksége az [Azure-irányítópultról](https://portal.azure.com/#create/Microsoft.CognitiveServices).
 
 ## <a name="translate-speech"></a>Beszéd fordítása
 
-A következő kódot a speech egyik nyelvről a másikra fordítja le.
+A következő kód beszédet fordít le egyik nyelvről a másikra.
 
-1. Hozzon létre egy új C#-projektet a kedvenc IDE-ben.
+1. Hozzon létre egy új C#-projektet a kedvenc IDE-jében.
 2. Adja hozzá az alábbi kódot.
-3. Cserélje le a `key` az előfizetéshez tartozó érvényes hozzáférési kulcs-érték.
+3. A `key` értéket cserélje le az előfizetéshez érvényes hozzáférési kulcsra.
 4. Futtassa a programot.
 
 ```csharp
@@ -142,18 +144,18 @@ namespace TranslateSpeechQuickStart
 }
 ```
 
-**Beszéd válasz fordítása**
+**Beszéd fordításának válasza**
 
-Egy sikeres eredménye "speak2.wav" nevű fájl létrehozása. A fájl tartalmazza a fordítás beszélt "speak.wav" szó.
+A „speak2.wav” fájl létrejötte sikeres eredményt jelent. Ez a fájl tartalmazza a „speak.wav” fájlban elhangzó szavak fordítását.
 
 [Vissza a tetejére](#HOLTop)
 
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Translator Speech oktatóanyag](../tutorial-translator-speech-csharp.md)
+> [Translator Speech – oktatóanyag](../tutorial-translator-speech-csharp.md)
 
 ## <a name="see-also"></a>Lásd még 
 
-[Translator Speech áttekintése](../overview.md)
+[A Translator Speech áttekintése](../overview.md)
 [API-referencia](https://docs.microsoft.com/azure/cognitive-services/translator-speech/reference)

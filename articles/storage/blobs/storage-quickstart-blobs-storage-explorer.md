@@ -1,29 +1,31 @@
 ---
-title: Azure rövid útmutató – Blob létrehozása objektumtárban az Azure Storage Explorer használatával | Microsoft Docs
-description: Ebben a rövid útmutatóban az Azure Storage Explorer használatával kezelheti az objektumtárat (blobtárat). Majd a Storage Explorer segítségével feltölt egy blobot az Azure Storage-ba, letölt egy blobot, és kilistázza a tárolóban lévő blobokat.
+title: 'Rövid útmutató: Blob létrehozása az objektumtárolóban az Azure Storage Explorer használatával'
+description: Ebből a rövid útmutatóból elsajátíthatja, hogyan hozhat létre egy tárolót és egy blobot az Azure Storage Explorer használatával. Ezután megtudhatja, hogyan töltheti le a blobot a helyi számítógépére, és hogyan tekintheti meg a tárolóban található összes blobot. Ezenkívül megtanulja, hogyan készíthet pillanatfelvételt egy blobról, hogyan kezelheti a tárolók hozzáférési szabályzatait, illetve hogyan hozhat létre közös hozzáférésű jogosultságkódot.
 services: storage
 author: tamram
 ms.custom: mvc
 ms.service: storage
 ms.topic: quickstart
-ms.date: 04/09/2018
+ms.date: 08/27/2018
 ms.author: tamram
-ms.openlocfilehash: 83698abd3006671c5edce37e3cada26d07d25b8f
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.openlocfilehash: 3f0418e9ccdc5fe3babd2f1ac4482795994fe3b4
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39399636"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46996128"
 ---
-# <a name="quickstart-upload-download-and-list-blobs-using-azure-storage-explorer"></a>Rövid útmutató: blobok feltöltése, letöltése és listázása az Azure Storage Explorer használatával
+# <a name="quickstart-use-azure-storage-explorer-to-create-a-blob-in-object-storage"></a>Rövid útmutató: Blob létrehozása az objektumtárolóban az Azure Storage Explorer használatával
 
-[Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) egy több platformot is támogató felhasználói felület a tárfiókok tartalmának kezeléséhez. Ez a rövid útmutató részletesen ismerteti, hogyan vihetők át a fájlok egy helyi lemez és az Azure Blob Storage között az Azure Storage Explorer használatával.
+Ebből a rövid útmutatóból elsajátíthatja, hogyan hozhat létre egy tárolót és egy blobot az [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) használatával. Ezután megtudhatja, hogyan töltheti le a blobot a helyi számítógépére, és hogyan tekintheti meg a tárolóban található összes blobot. Ezenkívül megtanulja, hogyan készíthet pillanatfelvételt egy blobról, hogyan kezelheti a tárolók hozzáférési szabályzatait, illetve hogyan hozhat létre közös hozzáférésű jogosultságkódot.
+
+## <a name="prerequisites"></a>Előfeltételek
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
-A rövid útmutatóhoz az Azure Storage Explorer telepítése szükséges. Ha még telepítenie kell, akkor az [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) oldalról töltheti le Windows, Macintosh vagy Linux rendszerre.
+A rövid útmutatóhoz az Azure Storage Explorer telepítése szükséges. Az Azure Storage Explorer Windows, Macintosh vagy Linux rendszerre való letöltése: [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/).
 
-[!INCLUDE [storage-quickstart-tutorial-create-account-portal](../../../includes/storage-quickstart-tutorial-create-account-portal.md)]
+[!INCLUDE [storage-create-account-portal-include](../../../includes/storage-create-account-portal-include.md)]
 
 ## <a name="log-in-to-storage-explorer"></a>Bejelentkezés a Storage Explorerbe
 

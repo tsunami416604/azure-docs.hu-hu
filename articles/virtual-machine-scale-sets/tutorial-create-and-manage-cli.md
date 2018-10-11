@@ -1,6 +1,6 @@
 ---
 title: Oktatóanyag – Azure virtuálisgép-méretezési csoport létrehozása és kezelése | Microsoft Docs
-description: Megismerheti, hogy az Azure CLI 2.0 segítségével hogyan hozhat létre virtuálisgép-méretezési csoportokat, valamint néhány általános felügyeleti feladattal ismerkedhet meg, például a példány elindításának és leállításának módjával vagy a méretezési csoport kapacitásának módosításával.
+description: Megismerheti, hogy az Azure CLI segítségével hogyan hozhat létre virtuálisgép-méretezési csoportokat, valamint néhány általános felügyeleti feladattal ismerkedhet meg, például a példány elindításának és leállításának módjával vagy a méretezési csoport kapacitásának módosításával.
 services: virtual-machine-scale-sets
 documentationcenter: ''
 author: cynthn
@@ -16,14 +16,14 @@ ms.topic: tutorial
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: a076603519cdce5a16881e0f0703d8187001e058
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: f00f7934bfb78c16f9e93dc2fcd94025e5f806a1
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38452549"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46993286"
 ---
-# <a name="tutorial-create-and-manage-a-virtual-machine-scale-set-with-the-azure-cli-20"></a>Oktatóanyag: Virtuálisgép-méretezési csoport létrehozása és kezelése az Azure CLI 2.0 használatával
+# <a name="tutorial-create-and-manage-a-virtual-machine-scale-set-with-the-azure-cli"></a>Oktatóanyag: Virtuálisgép-méretezési csoport létrehozása és kezelése az Azure CLI használatával
 A virtuálisgép-méretezési csoportok segítségével azonos, automatikus skálázású virtuális gépek csoportját hozhatja létre és kezelheti. A virtuálisgép-méretezési csoport életciklusa során egy vagy több felügyeleti feladat futtatására lehet szükség. Ezen oktatóanyag segítségével megtanulhatja a következőket:
 
 > [!div class="checklist"]
@@ -37,7 +37,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Ha a parancssori felület helyi telepítését és használatát választja, akkor ehhez az oktatóanyaghoz az Azure CLI 2.0.29-es vagy újabb verziójára lesz szükség. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI 2.0 telepítése]( /cli/azure/install-azure-cli). 
+Ha a parancssori felület helyi telepítését és használatát választja, akkor ehhez az oktatóanyaghoz az Azure CLI 2.0.29-es vagy újabb verziójára lesz szükség. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése]( /cli/azure/install-azure-cli). 
 
 
 ## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
@@ -303,7 +303,7 @@ az group delete --name myResourceGroup --no-wait --yes
 
 
 ## <a name="next-steps"></a>További lépések
-Ez az oktatóanyag az Azure CLI 2.0 néhány alapszintű méretezésicsoport-létrehozási és -kezelési műveletét mutatta be:
+Ez az oktatóanyag az Azure CLI néhány alapszintű méretezésicsoport-létrehozási és -kezelési műveletét mutatta be:
 
 > [!div class="checklist"]
 > * Virtuálisgép-méretezési csoport létrehozása és kapcsolódás a csoporthoz

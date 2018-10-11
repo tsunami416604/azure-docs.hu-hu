@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 10/23/2017
 ms.author: suhuruli
 ms.custom: mvc, devcenter
-ms.openlocfilehash: ed5da0afe67deaa7000c1bf3b8d75bdea14f2ecd
-ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
+ms.openlocfilehash: 7fcf0b924868d755bc76f7d1e695e73afc4eae6a
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42616326"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46993391"
 ---
 # <a name="quickstart-deploy-a-java-reliable-services-application-to-service-fabric"></a>Rövid útmutató: Java Reliable Services-alkalmazás üzembe helyezése a Service Fabricben
 
@@ -101,7 +101,7 @@ Jelentkezzen be, és csatlakozzon egy [Linux-fürthöz](http://aka.ms/tryservice
 A Service Fabric számos eszközt nyújt, amelyekkel kezelheti a fürtöket és azok alkalmazásait:
 
 * A Service Fabric Explorert, amely egy böngészőalapú eszköz.
-* A Service Fabric parancssori felületet (CLI-t), amely az Azure CLI 2.0-n fut.
+* A Service Fabric parancssori felületet (CLI-t), amely az Azure CLI-n fut.
 * PowerShell-parancsokat.
 
 Ebben a rövid útmutatóban a Service Fabric parancssori felületet és a Service Fabric Explorert használja.

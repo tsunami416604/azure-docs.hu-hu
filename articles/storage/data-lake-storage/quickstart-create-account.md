@@ -9,12 +9,12 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 06/27/2018
 ms.author: jamesbak
-ms.openlocfilehash: 1009a7a1d9f354f7a41b0e3a0fbc49d57992bc31
-ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
+ms.openlocfilehash: 034731ac2c965d6b9b682c62b9866870e558ff6d
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42916470"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46964667"
 ---
 # <a name="quickstart-create-an-azure-data-lake-storage-gen2-preview-storage-account"></a>Rövid útmutató: Előzetes verziójú, 2. generációs Azure Data Lake Storage-tárfiók létrehozása
 
@@ -49,7 +49,7 @@ A gombra kattintva megjelenik egy interaktív kezelőfelület jelenik, amelyet a
 
 ### <a name="install-the-cli-locally"></a>A parancssori felület helyi telepítése
 
-Az Azure CLI-t helyben is telepítheti és használhatja. A rövid útmutatóhoz az Azure CLI 2.0.38-as vagy újabb verziójára van szükség. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI 2.0 telepítése](/cli/azure/install-azure-cli).
+Az Azure CLI-t helyben is telepítheti és használhatja. A rövid útmutatóhoz az Azure CLI 2.0.38-as vagy újabb verziójára van szükség. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure CLI telepítését](/cli/azure/install-azure-cli) ismertető cikket.
 
 ## <a name="overview-of-creating-an-azure-data-lake-storage-gen2-account"></a>2. generációs Azure Data Lake Storage-fiókok létrehozása – áttekintés
 
@@ -58,7 +58,7 @@ Mielőtt létrehozna egy fiókot, először létre kell hoznia egy erőforráscs
 > [!NOTE]
 > A 2. generációs Data Lake Store funkcióinak használatához az új tárfiókokat **StorageV2 (általános célú V2)** típusúként kell létrehoznia.  
 
-További információt a tárfiókok típusairól [az Azure Storage-fiók beállításait](../common/storage-account-options.md) ismertető szakaszban talál.
+További információ a tárfiókokról: [Az Azure Storage-fiókok áttekintése](../common/storage-account-overview.md).
 
 Ne feledje ezeket a szabályokat a tárfiók elnevezésekor:
 

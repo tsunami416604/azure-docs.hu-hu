@@ -2,16 +2,17 @@
 title: Hyper-V – Azure replikációs architektúra az Azure Site Recovery |} A Microsoft Docs
 description: Ez a cikk áttekintést nyújt a helyszíni Hyper-V (VMM nélküli) virtuális gépeknek az Azure Site Recovery szolgáltatással az Azure-ba történő replikációjakor használt összetevőkről és architektúráról.
 author: rayne-wiselman
+manager: carmonm
 ms.service: site-recovery
-ms.topic: article
-ms.date: 07/06/2018
+ms.topic: conceptual
+ms.date: 10/10/2018
 ms.author: raynew
-ms.openlocfilehash: c5d31b6217d3afe8ddb3550c145820be5996c96a
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 49059415c5f96eeb4dd871e7d2c8ae4ab9b2c12e
+ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37920603"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49078358"
 ---
 # <a name="hyper-v-to-azure-replication-architecture"></a>Hyper-V – Azure-replikáció architektúrája
 
@@ -69,7 +70,7 @@ A következő táblázat és grafikus adja meg a Hyper-V-gazdagépek a VMM-felh�
 1. Miután engedélyezte a védelmet egy Hyper-V-alapú virtuális gép esetében az Azure Portalon vagy a helyszíni környezetben, elindul a **Védelem engedélyezése** feladat.
 2. A feladat ellenőrzi, hogy a gép megfelel-e az előfeltételeknek, mielőtt meghívja a [CreateReplicationRelationship](https://msdn.microsoft.com/library/hh850036.aspx) metódust, amely az Ön által megadott beállításoknak megfelelően beállítja a replikációt.
 3. A feladat elindítja a kezdeti replikációt a [StartReplication](https://msdn.microsoft.com/library/hh850303.aspx) metódus meghívásával egy teljes körű virtuálisgép-replikáció elindítása céljából, majd a virtuális gépek virtuális lemezeit továbbítja az Azure-ba.
-4. A feladatot a **Feladatok** lapon követheti nyomon.      ![Feladatok listája](media/hyper-v-azure-architecture/image1.png)![Védelem engedélyezésének részletei](media/hyper-v-azure-architecture/image2.png)
+4. A feladatot a **Feladatok** lapon követheti nyomon.      ![Feladatok listája](media/hyper-v-azure-architecture/image1.png) ![Védelem engedélyezésének részletei](media/hyper-v-azure-architecture/image2.png)
 
 
 ### <a name="initial-data-replication"></a>Kezdeti replikálás

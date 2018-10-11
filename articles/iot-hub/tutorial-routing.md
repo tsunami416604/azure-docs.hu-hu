@@ -6,21 +6,21 @@ manager: timlt
 ms.service: iot-hub
 services: iot-hub
 ms.topic: tutorial
-ms.date: 05/01/2018
+ms.date: 09/11/2018
 ms.author: robinsh
 ms.custom: mvc
-ms.openlocfilehash: a52ab4ff65312088e65d56006b6f99a7470b88f6
-ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
+ms.openlocfilehash: 575c8a5bec4c7763c75154835830ba350f009e93
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43287250"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46946936"
 ---
 # <a name="tutorial-configure-message-routing-with-iot-hub"></a>Oktatóanyag: Üzenetek útválasztásának konfigurálása az IoT Hub használatával
 
-Az üzenetek útválasztása lehetővé teszi telemetriaadatok küldését az IoT-eszközökről a beépített, Event Hub-kompatibilis végpontokra vagy olyan egyéni végpontokra, mint például a Blob Storage, a Service Bus-üzenetsorok, a Service Bus-témakörök és az eseményközpontok. Az üzenetek útválasztásának konfigurálásakor létrehozhat útválasztási szabályokat, amelyekkel megadható egy adott szabálynak megfelelő útvonal. A beállítás után az IoT Hub automatikusan a végpontokhoz irányítja át a bejövő adatokat. 
+Az [üzenetek útválasztása](iot-hub-devguide-messages-d2c.md) lehetővé teszi telemetriaadatok küldését az IoT-eszközökről a beépített, Event Hub-kompatibilis végpontokra vagy olyan egyéni végpontokra, mint például a Blob Storage, a Service Bus-üzenetsorok, a Service Bus-témakörök és az Event Hubs. Az üzenetek útválasztásának konfigurálásakor létrehozhat [útválasztási lekérdezéseket](iot-hub-devguide-routing-query-syntax.md), amelyekkel megadható egy adott feltételnek megfelelő útvonal. A beállítás után az IoT Hub automatikusan a végpontokhoz irányítja át a bejövő adatokat. 
 
-Ez az oktatóanyag bemutatja, hogyan állíthat be és használhat útválasztási szabályokat az IoT Hubbal. Az üzeneteket egy IoT-eszközről egy másik szolgáltatásra, például a Blob Storage-ra és egy Service Bus-üzenetsorra fogja átirányítani. A Service Bus-üzenetsorhoz küldött üzeneteket egy logikai alkalmazás veszi át, és a rendszer e-mailben küldi el őket. Azokat az üzeneteket, amelyekhez nincs külön útválasztás beállítva, a rendszer az alapértelmezett végpontra küldi, és egy Power BI-vizualizációban tekinthetők meg.
+Ez az oktatóanyag bemutatja, hogyan állíthat be és használhat útválasztási lekérdezéseket az IoT Hubbal. Az üzeneteket egy IoT-eszközről egy másik szolgáltatásra, például a Blob Storage-ra és egy Service Bus-üzenetsorra fogja átirányítani. A Service Bus-üzenetsorhoz küldött üzeneteket egy logikai alkalmazás veszi át, és a rendszer e-mailben küldi el őket. Azokat az üzeneteket, amelyekhez nincs külön útválasztás beállítva, a rendszer az alapértelmezett végpontra küldi, és egy Power BI-vizualizációban tekinthetők meg.
 
 Az oktatóanyagban az alábbi feladatokat fogja végrehajtani:
 
@@ -39,36 +39,13 @@ Az oktatóanyagban az alábbi feladatokat fogja végrehajtani:
 
 - Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
-- Telepítse [a Windowshoz készült Visual Studio programot](https://www.visualstudio.com/). 
+- A [Visual Studio](https://www.visualstudio.com/) telepítése. 
 
 - Power BI-fiók az alapértelmezett végpont Stream Analytics-elemzéséhez. ([A Power BI ingyenes kipróbálása](https://app.powerbi.com/signupredirect?pbi_source=web).)
 
 - Office 365-fiók értesítési e-mailek küldéséhez. 
 
-Azure CLI vagy Azure PowerShell az oktatóanyag beállítási lépéseinek elvégzéséhez. 
-
-Az Azure CLI használatához az Azure CLI-t helyileg is telepítheti, de az Azure Cloud Shell használata ajánlott. Az Azure Cloud Shell egy ingyenes, interaktív felület, amelyet az Azure CLI-szkriptek futtatására használhat. A fiókjával való használat érdekében a gyakran használt Azure-eszközök már előre telepítve és konfigurálva vannak a Cloud Shellben, ezért nem kell helyileg telepítenie őket. 
-
-Ha a PowerShellt kívánja használni, telepítse helyileg az alábbi utasítások szerint. 
-
-### <a name="azure-cloud-shell"></a>Azure Cloud Shell
-
-A Cloud Shell többféleképpen is megnyitható:
-
-|  |   |
-|-----------------------------------------------|---|
-| Kattintson a **Kipróbálás** elemre egy kódblokk jobb felső sarkában. | ![A Cloud Shell ebben a cikkben](./media/tutorial-routing/cli-try-it.png) |
-| Nyissa meg a Cloud Shellt a böngészőben. | [![https://shell.azure.com/bash](./media/tutorial-routing/launchcloudshell.png)](https://shell.azure.com) |
-| Az [Azure Portal](https://portal.azure.com) jobb felső sarkában található menüben kattintson a **Cloud Shell** gombra. |    ![A Cloud Shell a portálon](./media/tutorial-routing/cloud-shell-menu.png) |
-|  |  |
-
-### <a name="using-azure-cli-locally"></a>Az Azure CLI helyi használata
-
-Ha inkább helyileg szeretné használni a CLI-t a Cloud Shell helyett, az Azure CLI moduljának 2.0.30.0-s vagy újabb verziójával kell rendelkeznie. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI 2.0 telepítése](/cli/azure/install-azure-cli). 
-
-### <a name="using-powershell-locally"></a>A PowerShell helyi használata
-
-Az oktatóanyaghoz az Azure PowerShell-modul 5.7-es vagy újabb verziója szükséges. A verzió azonosításához futtassa a következőt: `Get-Module -ListAvailable AzureRM`. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-azurerm-ps) ismertető cikket.
+[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 ## <a name="set-up-resources"></a>Erőforrások beállítása
 
@@ -78,19 +55,19 @@ Az alábbi szakaszok ismertetik a szükséges lépések elvégzésének módját
 
 1. Hozzon létre egy [erőforráscsoportot](../azure-resource-manager/resource-group-overview.md). 
 
-    <!-- When they add the Basic tier, change this to use Basic instead of Standard. -->
+2. Hozzon létre egy IoT Hubot az S1 szinten. Adjon hozzá egy fogyasztói csoportot az IoT Hubhoz. A fogyasztói csoportot az Azure Stream Analytics használja az adatok lekérésekor.
 
-1. Hozzon létre egy IoT Hubot az S1 szinten. Adjon hozzá egy fogyasztói csoportot az IoT Hubhoz. A fogyasztói csoportot az Azure Stream Analytics használja az adatok lekérésekor.
+3. Hozzon létre egy standard szintű V1-tárfiókot Standard_LRS-replikációval.
 
-1. Hozzon létre egy standard szintű V1-tárfiókot Standard_LRS-replikációval.
+4. Hozzon létre egy Service Bus-névteret és üzenetsort. 
 
-1. Hozzon létre egy Service Bus-névteret és üzenetsort. 
+5. Hozzon létre egy eszközidentitást ahhoz a szimulált eszközhöz, amely üzeneteket küld a központnak. Mentse a kulcsot a tesztelési fázishoz.
 
-1. Hozzon létre egy eszközidentitást ahhoz a szimulált eszközhöz, amely üzeneteket küld a központnak. Mentse a kulcsot a tesztelési fázishoz.
+### <a name="set-up-your-resources-using-azure-cli"></a>Erőforrások beállítása az Azure CLI használatával
 
-### <a name="azure-cli-instructions"></a>Azure CLI utasítások
+Másolja és illessze be az alábbi szkriptet a Cloud Shellbe. A szolgáltatás azt feltételezi, hogy már bejelentkezett, és soronként futtatja a szkriptet. 
 
-A szkript használatának legegyszerűbb módja a szkript másolása és beillesztése a Cloud Shellbe. A szolgáltatás azt feltételezi, hogy már bejelentkezett, és soronként futtatja a szkriptet. 
+Azokhoz a változókhoz, amelyeknek globálisan egyedinek kell lenniük, a következő van hozzáfűzve: `$RANDOM`. Ha a szkript fut, és a változók be vannak állítva, a rendszer létrehoz egy véletlenszerű numerikus sztringet, és hozzáfűzi a rögzített sztring végéhez, hogy a sztring egyedi legyen.
 
 ```azurecli-interactive
 
@@ -182,9 +159,11 @@ az iot hub device-identity show --device-id $iotDeviceName \
 
 ```
 
-### <a name="powershell-instructions"></a>PowerShell-utasítások
+### <a name="set-up-your-resources-using-azure-powershell"></a>Erőforrások beállítása az Azure PowerShell használatával
 
-A szkript használatának legegyszerűbb módja a [PowerShell ISE](https://docs.microsoft.com/powershell/scripting/core-powershell/ise/introducing-the-windows-powershell-ise?view=powershell-6) megnyitása, a szkript másolása a vágólapra, majd a teljes szkript beillesztése a szkriptablakba. Ezután, igény esetén módosíthatja az erőforrások nevének értékeit és futtathatja a teljes szkriptet. 
+Másolja és illessze be az alábbi szkriptet a Cloud Shellbe. A szolgáltatás azt feltételezi, hogy már bejelentkezett, és soronként futtatja a szkriptet.
+
+Azokhoz a változókhoz, amelyeknek globálisan egyedinek kell lenniük, a következő van hozzáfűzve: `$(Get-Random)`. Ha a szkript fut, és a változók be vannak állítva, a rendszer létrehoz egy véletlenszerű numerikus sztringet, és hozzáfűzi a rögzített sztring végéhez, hogy a sztring egyedi legyen.
 
 ```azurepowershell-interactive
 # Log into Azure account.
@@ -265,15 +244,15 @@ Következő lépésként hozzon létre egy eszközidentitást, és mentse a hozz
 
 1. Nyissa meg az [Azure Portalt](https://portal.azure.com), majd jelentkezzen be az Azure-fiókjába.
 
-1. Kattintson az **Erőforráscsoportok** elemre, és válassza ki az erőforráscsoportját. Ez az oktatóanyag a **ContosoResources** erőforráscsoportot használja.
+2. Kattintson az **Erőforráscsoportok** elemre, és válassza ki az erőforráscsoportját. Ez az oktatóanyag a **ContosoResources** erőforráscsoportot használja.
 
-1. Az erőforrások listájában kattintson az IoT Hub-jára. Ez az oktatóanyag a **ContosoTestHub** erőforrást használja. Válassza ki az **IoT-eszközök** lehetőséget a Hub panelről.
+3. Az erőforrások listájában kattintson az IoT Hub-jára. Ez az oktatóanyag a **ContosoTestHub** erőforrást használja. Válassza ki az **IoT-eszközök** lehetőséget a Hub panelről.
 
-1. Kattintson a **+Hozzáadás** gombra. Az Eszköz hozzáadása panelen adja meg az eszköz azonosítóját. Ez az oktatóanyag a **Contoso-Test-Device** eszközt használja. Hagyja üresen a kulcsokat, majd jelölje be a **Kulcsok automatikus létrehozása** jelölőnégyzetet. Ellenőrizze, hogy az **Eszköz csatlakoztatása az IoT Hubhoz** engedélyezve van-e. Kattintson a **Save** (Mentés) gombra.
+4. Kattintson a **+Hozzáadás** gombra. Az Eszköz hozzáadása panelen adja meg az eszköz azonosítóját. Ez az oktatóanyag a **Contoso-Test-Device** eszközt használja. Hagyja üresen a kulcsokat, majd jelölje be a **Kulcsok automatikus létrehozása** jelölőnégyzetet. Ellenőrizze, hogy az **Eszköz csatlakoztatása az IoT Hubhoz** engedélyezve van-e. Kattintson a **Save** (Mentés) gombra.
 
    ![Az eszközhozzáadási képernyő képernyőképe.](./media/tutorial-routing/add-device.png)
 
-1. Most, hogy az eszköz létrejött, kattintson rá a létrehozott kulcsok megtekintéséhez. Kattintson az Elsődleges kulcs másolás ikonjára, és mentse (például egy Jegyzettömb-dokumentumba) az oktatóanyag tesztelési fázisában történő használatra.
+5. Most, hogy az eszköz létrejött, kattintson rá a létrehozott kulcsok megtekintéséhez. Kattintson az Elsődleges kulcs másolás ikonjára, és mentse (például egy Jegyzettömb-dokumentumba) az oktatóanyag tesztelési fázisában történő használatra.
 
    ![Képernyőkép az eszköz részleteiről, többek között a kulcsokról.](./media/tutorial-routing/device-details.png)
 
@@ -289,69 +268,85 @@ Az üzeneteket különböző forrásokhoz fogja irányítani azon tulajdonságok
 
 ### <a name="routing-to-a-storage-account"></a>Irányítás egy tárfiókba 
 
-Most beállíthatja az útválasztást a tárfiókhoz. Adjon meg egy végpontot, majd állítson be hozzá egy útvonalat. Azokat az üzeneteket, amelyeknél a **level** tulajdonság **storage** értékre van állítva, automatikusan egy tárfiókba írja a rendszer.
+Most beállíthatja az útválasztást a tárfiókhoz. Lépjen az Üzenetirányítás panelre, majd adjon hozzá egy útvonalat. Az útvonal hozzáadásakor definiáljon egy új végpontot az útvonalhoz. Ezután azokat az üzeneteket, amelyeknél a **level** tulajdonság **storage** értékre van állítva, automatikusan egy tárfiókba írja a rendszer.
 
-1. Az [Azure Portalon](https://portal.azure.com) kattintson az **Erőforráscsoportok** elemre, majd válassza ki az erőforráscsoportot. Ez az oktatóanyag a **ContosoResources** erőforráscsoportot használja. Az erőforrások listájában kattintson az IoT Hub elemre. Ez az oktatóanyag a **ContosoTestHub** erőforrást használja. Kattintson a **Végpontok** elemre. A **Végpontok** panelen kattintson a **+Hozzáadás** elemre. Adja meg a következő információkat:
+1. Az [Azure Portalon](https://portal.azure.com) kattintson az **Erőforráscsoportok** elemre, majd válassza ki az erőforráscsoportot. Ez az oktatóanyag a **ContosoResources** erőforráscsoportot használja. 
 
-   **Név**: Adja meg a végpont nevét. Ez az oktatóanyag a **StorageContainer** nevet használja.
+2. Az erőforrások listájában kattintson az IoT Hub elemre. Ez az oktatóanyag a **ContosoTestHub** erőforrást használja. 
+
+3. Kattintson az **Üzenetirányítás** lehetőségre. Az **Üzenetirányítás** panelen kattintson a +**Hozzáadás** lehetőségre. Az **Útvonal hozzáadása** panelen kattintson a +**Hozzáadás** lehetőségre a Végpont mező mellett, az alábbi ábrán látható módon:
+
+   ![A végpont egy útvonalhoz való hozzáadását bemutató képernyőkép.](./media/tutorial-routing/message-routing-add-a-route-w-storage-ep.png)
+
+4. Válassza a **Blob Storage** lehetőséget. Ekkor megjelenik a **Tárolási végpont hozzáadása** panel. 
+
+   ![A végpont hozzáadását bemutató képernyőkép.](./media/tutorial-routing/message-routing-add-storage-ep.png)
+
+5. Adja meg a végpont nevét. Ez az oktatóanyag a **StorageContainer** nevet használja.
+
+6. Kattintson a **Tároló kiválasztása** lehetőségre. Ekkor megjelenik a saját tárfiókok listája. Válassza ki azt, amelyiket az előkészítő lépések során állított be. Ez az oktatóanyag a **contosostorage** tárfiókot használja. Ebben az ehhez a tárfiókhoz tartozó tárolókat láthatja. Válassza ki azt, amelyiket az előkészítő lépések során állított be. Ez az oktatóanyag a **contosoresults** tárolót használja. Kattintson a **Kiválasztás** gombra. Ekkor visszakerül a **Végpont hozzáadása** panelre. 
+
+7. A többi mezőnél használja az alapértelmezett beállításokat. A tárolási végpont létrehozásához és az útvonalhoz való hozzáadásához kattintson a **Létrehozás** lehetőségre. Ekkor visszakerül az **Útvonal hozzáadása** panelre.
+
+8.  Töltse ki az útválasztási lekérdezés hiányzó adatait. Ez a lekérdezés megszabja az üzenetek az imént végpontként hozzáadott tárolóhoz való irányításának feltételeit. Töltse ki a képernyőn látható mezőket. 
+
+   **Név**: Adja meg az útválasztási lekérdezés nevét. Ez az oktatóanyag a **StorageRoute** nevet használja.
+
+   **Végpont**: Az imént beállított végpontot jeleníti meg. 
    
-   **Végpont típusa**: A legördülő listából válassza ki az **Azure Storage-tárolót**.
+   **Adatforrás**: A legördülő listából válassza az **Eszköztelemetria-üzenetek** elemet.
 
-   Kattintson a **Tároló kiválasztása** elemre a tárfiókok listájának megtekintéséhez. Válassza ki a tárfiókot. Ez az oktatóanyag a **contosostorage** tárfiókot használja. Ezután válassza ki a tárolót. Ez az oktatóanyag a **contosoresults** tárolót használja. Kattintson a **Kiválasztás** gombra, ezzel visszatér a **Végpont hozzáadása** ablaktáblához. 
+   **Útvonal engedélyezése**: Ügyeljen rá, hogy ez a beállítás engedélyezve legyen.
    
-   ![A végpont hozzáadását bemutató képernyőkép.](./media/tutorial-routing/add-endpoint-storage-account.png)
-   
-   A végpont hozzáadásának befejezéshez kattintson az **OK** gombra.
-   
-1. Az IoT Hubon kattintson az **Útvonalak** elemre. Létre fog hozni egy útválasztási szabályt, amely a végpontként az imént hozzáadott Storage-tárolóhoz irányítja az üzeneteket. Az Útvonalak panel tetején kattintson a **+Hozzáadás** elemre. Töltse ki a képernyőn látható mezőket. 
+   **Útválasztási lekérdezés**: Lekérdezési sztringként írja be a következőt: `level="storage"`. 
 
-   **Név**: Adja meg az útválasztási szabály nevét. Ez az oktatóanyag a **StorageRule** nevet használja.
-
-   **Adatforrás**: A legördülő listából válassza az **Eszközüzenetek** elemet.
-
-   **Végpont**: Válassza ki az imént beállított végpontot. Ez az oktatóanyag a **StorageContainer** nevet használja. 
+   ![A tárfiók útválasztási lekérdezésének létrehozását bemutató képernyőkép.](./media/tutorial-routing/message-routing-finish-route-storage-ep.png)  
    
-   **Lekérdezési sztring**: Lekérdezési sztringként írja be a következőt: `level="storage"`. 
-
-   ![A tárfiók útválasztási szabályának létrehozását bemutató képernyőkép.](./media/tutorial-routing/create-a-new-routing-rule-storage.png)
-   
-   Kattintson a **Save** (Mentés) gombra. A befejezés után a rendszer visszalép az Útvonalak panelre, ahol láthatja a tároló új útválasztási szabályát. Zárja be az Útvonalak panelt, ezzel visszatér az Erőforráscsoport oldalra.
+   Kattintson a **Save** (Mentés) gombra. A befejezés után a rendszer visszalép az Üzenetirányítás panelre, ahol láthatja a tároló új útválasztási lekérdezését. Zárja be az Útvonalak panelt, ezzel visszatér az Erőforráscsoport oldalra.
 
 ### <a name="routing-to-a-service-bus-queue"></a>Irányítás Service Bus-üzenetsorra 
 
-Most állítsa be az útválasztást a Service Bus-üzenetsorhoz. Adjon meg egy végpontot, majd állítson be hozzá egy útvonalat. Azokat az üzeneteket, amelyeknél a **level** tulajdonság **critical** értékre van állítva, a rendszer a Service Bus-üzenetsorba írja. Ez elindít egy logikai alkalmazást, amely ezután az információkat tartalmazó e-mailt küld. 
+Most állítsa be az útválasztást a Service Bus-üzenetsorhoz. Lépjen az Üzenetirányítás panelre, majd adjon hozzá egy útvonalat. Az útvonal hozzáadásakor definiáljon egy új végpontot az útvonalhoz. A beállítás után azokat az üzeneteket, amelyeknél a **level** tulajdonság **critical** értékre van állítva, a rendszer a Service Bus-üzenetsorba írja. Ez elindít egy logikai alkalmazást, amely ezután az információkat tartalmazó e-mailt küld. 
 
-1. Az Erőforráscsoport lapon kattintson az IoT Hub, majd a **Végpontok** elemre. A **Végpontok** panelen kattintson a **+Hozzáadás** elemre. Adja meg a következő információkat:
+1. Az Erőforráscsoport lapon kattintson az IoT Hub, majd az **Üzenetirányítás** elemre. 
 
-   **Név**: Adja meg a végpont nevét. Ez az oktatóanyag a **CriticalQueue** nevet használja. 
+2. Az **Üzenetirányítás** panelen kattintson a +**Hozzáadás** lehetőségre. 
 
-   **Végpont típusa**: A legördülő listából válassza ki a **Service Bus-üzenetsor** elemet.
+3. Az **Útvonal hozzáadása** panelen kattintson a +**Hozzáadás** lehetőségre a Végpont mező mellett. Válasszon egy **Service Bus-üzenetsort**. Ekkor megjelenik a **Service Bus-végpont hozzáadása** panel. 
 
-   **Service Bus-névtér**: A legördülő listából válassza az oktatóanyaghoz tartozó Service Bus-névteret. Ez az oktatóanyag a **ContosoSBNamespace** névteret használja.
+   ![Képernyőkép egy Service Bus-végpont hozzáadásáról](./media/tutorial-routing/message-routing-add-sbqueue-ep.png)
 
-   **Service Bus-üzenetsor**: A legördülő listából válassza ki a Service Bus-üzenetsort. Ez az oktatóanyag a **contososbqueue** üzenetsort használja.
+4. Töltse ki a mezőket:
 
-   ![Végpont Service Bus-üzenetsorhoz való hozzáadását bemutató képernyőkép.](./media/tutorial-routing/add-endpoint-sb-queue.png)
-
-   A végpont mentéséhez kattintson az **OK** gombra. Ha kész, zárja be a Végpontok panelt. 
-    
-1. Az IoT Hubon kattintson az **Útvonalak** elemre. Létre fog hozni egy útválasztási szabályt, amely a végpontként az imént hozzáadott Service Bus-üzenetsorhoz irányítja az üzeneteket. Az Útvonalak panel tetején kattintson a **+Hozzáadás** elemre. Töltse ki a képernyőn látható mezőket. 
-
-   **Név**: Adja meg az útválasztási szabály nevét. Ez az oktatóanyag a **SBQueueRule** nevet használja. 
-
-   **Adatforrás**: A legördülő listából válassza az **Eszközüzenetek** elemet.
-
-   **Végpont**: Válassza ki az imént beállított **CriticalQueue** végpontot.
-
-   **Lekérdezési sztring**: Lekérdezési sztringként írja be a következőt: `level="critical"`. 
-
-   ![Útválasztási szabály Service Bus-üzenetsorhoz való létrehozását bemutató képernyőkép.](./media/tutorial-routing/create-a-new-routing-rule-sbqueue.png)
+   **Végpont neve**: Adja meg a végpont nevét. Ez az oktatóanyag a **CriticalQueue** nevet használja.
    
-   Kattintson a **Save** (Mentés) gombra. Miután visszatért az Útvonalak panelre, láthatja a két új útválasztási szabályt, ahogy itt is szerepelnek.
+   **Service Bus-névtér**: Kattintson a mezőre a legördülő lista megjelenítéséhez, majd válassza ki az előkészítő lépésekben beállított Service Bus-névteret. Ez az oktatóanyag a **ContosoSBNamespace** névteret használja.
 
-   ![Képernyőkép az imént beállított útvonalakról.](./media/tutorial-routing/show-routing-rules-for-hub.png)
+   **Service Bus-üzenetsor**: Kattintson a mezőre a legördülő lista megjelenítéséhez, majd válassza ki a Service Bus-üzenetsort. Ez az oktatóanyag a **contososbqueue** üzenetsort használja.
 
-   Zárja be az Útvonalak panelt, ezzel visszatér az Erőforráscsoport oldalra.
+5. A Service Bus-üzenetsor végpontjának hozzáadásához kattintson a **Létrehozás** lehetőségre. Ekkor visszakerül az **Útvonal hozzáadása** panelre. 
+
+6.  Töltse ki az útválasztási lekérdezés hiányzó adatait. Ez a lekérdezés megszabja az üzenetek az imént végpontként hozzáadott Service Bus-üzenetsorhoz való irányításának feltételeit. Töltse ki a képernyőn látható mezőket. 
+
+   **Név**: Adja meg az útválasztási lekérdezés nevét. Ez az oktatóanyag az **SBQueueRoute** nevet használja. 
+
+   **Végpont**: Az imént beállított végpontot jeleníti meg.
+
+   **Adatforrás**: A legördülő listából válassza az **Eszköztelemetria-üzenetek** elemet.
+
+   **Útválasztási lekérdezés**: Lekérdezési sztringként írja be a következőt: `level="critical"`. 
+
+   ![Útválasztási lekérdezés Service Bus-üzenetsorhoz való létrehozását bemutató képernyőkép.](./media/tutorial-routing/message-routing-finish-route-sbq-ep.png)
+
+7. Kattintson a **Save** (Mentés) gombra. Miután visszatért az Útvonalak panelre, láthatja a két új útvonalat, ahogy itt is szerepelnek.
+
+   ![Képernyőkép az imént beállított útvonalakról.](./media/tutorial-routing/message-routing-show-both-routes.png)
+
+8. Az **Egyéni végpontok** lapra kattintva megtekintheti a beállított egyéni végpontokat.
+
+   ![Képernyőkép az imént beállított egyéni végpontokról.](./media/tutorial-routing/message-routing-show-custom-endpoints.png)
+
+9. Zárja be az Üzenetirányítás panelt, ezzel visszatér az Erőforráscsoport panelre.
 
 ## <a name="create-a-logic-app"></a>Logikai alkalmazás létrehozása  
 

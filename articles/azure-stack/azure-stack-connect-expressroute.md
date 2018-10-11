@@ -3,7 +3,7 @@ title: Azure Stack csatlakozni az Azure ExpressRoute használatával
 description: Útmutató az Azure Stackben virtuális hálózatok összekapcsolása virtuális hálózatok az Azure ExpressRoute használatával.
 services: azure-stack
 documentationcenter: ''
-author: brenduns
+author: sethmanheim
 manager: femila
 editor: ''
 ms.assetid: ''
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 09/12/2018
-ms.author: brenduns
+ms.author: sethm
 ms.reviewer: ''
-ms.openlocfilehash: db9f19154668fa33bb94e59a4da6735b1a6d3d49
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: eee4407af8d7def94061002941d758a99237645f
+ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44720497"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49078698"
 ---
 # <a name="connect-azure-stack-to-azure-using-azure-expressroute"></a>Csatlakozás Azure Stack az Azure ExpressRoute használatával
 
@@ -345,7 +345,7 @@ Kövesse a [PowerShell-lel ExpressRoute virtuális hálózati átjáró konfigur
 
 Az agyi virtuális hálózat az ExpressRoute-kapcsolatcsoport csatolásához kövesse [virtuális hálózat összekapcsolása egy ExpressRoute-kapcsolatcsoporthoz](../expressroute/expressroute-howto-linkvnet-portal-resource-manager.md).
 
-### <a name="peer-the-vnets"></a>A virtuális hálózatok társviszonyba állítása
+### <a name="peer-the-vnets"></a>A virtuális hálózatok társítása
 
 Az eseményközpont és a küllő virtuális hálózatok használata a lépések [egy virtuális hálózati társviszony-létesítés létrehozása az Azure portal használatával](../virtual-network/virtual-networks-create-vnetpeering-arm-portal.md). Virtuális hálózatok közötti társviszony konfigurálásakor győződjön meg arról, hogy a következő beállításokkal:
 

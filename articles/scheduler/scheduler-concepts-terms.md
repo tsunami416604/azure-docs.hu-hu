@@ -1,200 +1,323 @@
 ---
-title: A Scheduler alapfogalmai, terminológiája és entitásai | Microsoft Docs
-description: Az Azure Scheduler alapfogalmai, entitáshierarchiája és terminológiája, beleértve a feladatokat és a feladatgyűjteményeket.  Egy ütemezett feladat átfogó példáját mutatja be.
+title: Alapfogalmak, terminológia és entitások – Azure Scheduler  Microsoft Docs
+description: Elsajátíthatja az Azure Scheduler alapfogalmait, entitáshierarchiáját és terminológiáját, beleértve a feladatokat és a feladatgyűjteményeket
 services: scheduler
-documentationcenter: .NET
-author: derek1ee
-manager: kevinlam1
-editor: ''
-ms.assetid: 3ef16fab-d18a-48ba-8e56-3f3e0a1bcb92
 ms.service: scheduler
-ms.workload: infrastructure-services
-ms.tgt_pltfrm: na
-ms.devlang: dotnet
+ms.suite: infrastructure-services
+author: derek1ee
+ms.author: deli
+ms.reviewer: klam
+ms.assetid: 3ef16fab-d18a-48ba-8e56-3f3e0a1bcb92
 ms.topic: get-started-article
 ms.date: 08/18/2016
-ms.author: deli
-ms.openlocfilehash: 91302d57c43a6c9d14aeeee95df3d61fa6f73172
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 07b7cce4b026464ba34296b54c4ae90d6d2b1afa
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31418842"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46981161"
 ---
-# <a name="scheduler-concepts-terminology--entity-hierarchy"></a>A Scheduler alapfogalmai, entitáshierarchiája és terminológiája
-## <a name="scheduler-entity-hierarchy"></a>A Scheduler entitáshierarchiája
-A következő táblázat ismerteti a feladatütemezési API által közzétett vagy használt fő erőforrásokat:
+# <a name="concepts-terminology-and-entities-in-azure-scheduler"></a>Az Azure Scheduler alapfogalmai, terminológiája és entitásai
 
-| Erőforrás | Leírás |
-| --- | --- |
-| **Feladatgyűjtemény** |A feladatgyűjtemények feladatok csoportjait tartalmazzák, valamint a gyűjteményben lévő feladatok által közösen használt beállításokat, kvótákat és szabályozásokat tartják karban. A feladatgyűjteményeket az előfizetés tulajdonosa hozza létre, ahol a feladatokat használat vagy alkalmazáshatárok alapján csoportosítja. Ez egyetlen régióra van korlátozva. Lehetővé teszi a kvóták kényszerítését is, az adott gyűjteményben lévő összes feladat használatának korlátozásához. Példák a kvótákra: MaxJobs, MaxRecurrence. |
-| **Feladat** |Egyedi, ismétlődő műveletet megadó feladat, egyszerű vagy összetett végrehajtási stratégiákkal. A műveletek HTTP-, tárolásisor-, Service Bus üzenetsor- vagy Service Bus témakörkéréseket tartalmazhatnak. |
-| **Feladatelőzmények** |A feladatelőzmény egy feladat végrehajtásának részletes adatait jelenti. Megállapítható belőle a feladat végrehajtásának sikeressége vagy meghiúsulása, illetve bármely részletes válaszadat. |
+> [!IMPORTANT]
+> A kivezetésre kerülő Azure Scheduler helyébe az [Azure Logic Apps](../logic-apps/logic-apps-overview.md) lép. Feladatok ütemezéséhez [próbálja ki inkább az Azure Logic Apps szolgáltatást](../scheduler/migrate-from-scheduler-to-logic-apps.md). 
 
-## <a name="scheduler-entity-management"></a>A Scheduler entitáskezelése
-Az Scheduler és a Service Management API lényegében a következő műveleteket teszi elérhetővé az erőforrásokon:
+## <a name="entity-hierarchy"></a>Entitáshierarchia
 
-| Képesség | Leírás és URI-cím |
-| --- | --- |
-| **A feladatgyűjtemény kezelése** |GET, PUT és DELETE kérések támogatása a feladatgyűjtemények, valamint a bennük lévő feladatok létrehozásához és módosításához. A feladatgyűjtemények kvótákra és megosztott beállításokra vonatkozó feladatok tárolói. Példák a később részletezendő kvótákra: feladatok maximális száma és legkisebb ismétlődési időköz. <p>PUT és DELETE: `https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Scheduler/jobCollections/{jobCollectionName}`</p><p>GET: `https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Scheduler/jobCollections/{jobCollectionName}`</p> |
-| **Feladatkezelés** |GET, PUT, POST, PATCH és DELETE kérések támogatása a feladatok létrehozásához és módosításához. Az összes feladatnak egy már létező feladatgyűjteményhez kell tartoznia, így nem történhet implicit létrehozás. <p>`https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Scheduler/jobCollections/{jobCollectionName}/jobs/{jobName}`</p> |
-| **Feladatelőzmények kezelése** |GET parancs támogatása a 60 napos feladat-végrehajtási előzménytörténet lekéréséhez, ide értve a végrehajtás során eltelt időt és annak eredményeit is. Az állapot szerinti szűrés érdekében támogatja a lekérdezési karakterláncok paramétereit. <P>`https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Scheduler/jobCollections/{jobCollectionName}/jobs/{jobName}/history`</p> |
+Az Azure Scheduler REST API az alábbi fő entitásokat (más néven erőforrásokat) használja:
+
+| Entitás | Leírás |
+|--------|-------------|
+| **Feladat** | Egyedi, ismétlődő műveletet definiál, egyszerű vagy összetett végrehajtási stratégiákkal. A műveletek HTTP-hez, Storage-üzenetsorhoz, Service Bus-üzenetsorhoz vagy Service Bushoz kapcsolódó témakörkéréseket tartalmazhatnak. | 
+| **Feladatgyűjtemény** | Feladatok egy csoportját tartalmazza, valamint a gyűjteményben lévő feladatok által közösen használt beállításokat, kvótákat és szabályozásokat tartja karban. Azure-előfizetés tulajdonosaként létrehozhat feladatgyűjteményeket és csoportfeladatokat használat vagy alkalmazáshatárok alapján. A feladatgyűjtemények a következő attribútumokkal rendelkeznek: <p>– Egyetlen régióra vannak korlátozva. <br>– Lehetővé teszik a kvóták kényszerítését, így a gyűjtemények összes feladatának használatát korlátozhatja. <br>– Példák a kvótákra: MaxJobs, MaxRecurrence. | 
+| **Feladatelőzmények** | A feladat-végrehajtás részleteit ismerteti, például az állapotot és a válasz részleteit. |
+||| 
+
+## <a name="entity-management"></a>Entitáskezelés
+
+A magasabb szinteken a Scheduler REST API ezeket a műveleteket teszi elérhetővé az entitáskezeléshez.
+
+### <a name="job-management"></a>Feladatkezelés
+
+Feladatok létrehozására és szerkesztésére szolgáló műveleteket támogat. Az összes feladatnak egy létező feladatgyűjteményhez kell tartoznia, így nem történhet implicit létrehozás. További információ: [Scheduler REST API – Feladatok](https://docs.microsoft.com/rest/api/scheduler/jobs). Ezen műveletek URI-címe:
+
+`https://management.azure.com/subscriptions/{subscriptionID}/resourceGroups/{resourceGroupName}/providers/Microsoft.Scheduler/jobCollections/{jobCollectionName}/jobs/{jobName}`
+
+### <a name="job-collection-management"></a>A feladatgyűjtemény kezelése
+
+Feladatok és feladatgyűjtemények létrehozására és szerkesztésére szolgáló műveleteket támogat, amelyek kvótákra és megosztott beállításokra végeznek leképezéseket. Például a kvóták szabják meg a feladatok maximális számát és legkisebb ismétlődési időközt. További információ: [Scheduler REST API –- Feladatgyűjtemények](https://docs.microsoft.com/rest/api/scheduler/jobcollections). Ezen műveletek URI-címe:
+
+`https://management.azure.com/subscriptions/{subscriptionID}/resourceGroups/{resourceGroupName}/providers/Microsoft.Scheduler/jobCollections/{jobCollectionName}`
+
+### <a name="job-history-management"></a>Feladatelőzmények kezelése
+
+A 60 napos feladat-végrehajtási előzménytörténetet lekérő GET műveletet támogatja, például a végrehajtás során eltelt időt és annak eredményeit is. Az állapot szerinti szűrés érdekében támogatja a lekérdezési sztringek paramétereit. További információ: [Scheduler REST API – Feladatok – Feladatelőzmények listázása](https://docs.microsoft.com/rest/api/scheduler/jobs/listjobhistory). A művelet URI-címe:
+
+`https://management.azure.com/subscriptions/{subscriptionID}/resourceGroups/{resourceGroupName}/providers/Microsoft.Scheduler/jobCollections/{jobCollectionName}/jobs/{jobName}/history`
 
 ## <a name="job-types"></a>Feladattípusok
-Számos feladattípus létezik: HTTP-feladatok (beleértve az SSL-t támogató HTTPS-feladatokat), tárolásisor-feladatok, Service Bus üzenetsor-feladatok és Service Bus témakör-feladatok. A HTTP-feladatok remekül használhatók, ha egy meglévő számítási feladat vagy szolgáltatás egy végponttal rendelkezik. A tárolásisor-feladatok a tárolási sorokon történő üzenet-közzétételre használhatók, így e feladatok ideálisan alkalmazhatók tárolási sorokat használó számítási feladatok esetében. Ehhez hasonlóan a Service Bus feladatok olyan számítási feladatok esetében alkalmazhatók előnyösen, amelyek Service Bus-üzenetsorokat és -témaköröket használnak.
 
-## <a name="the-job-entity-in-detail"></a>Részletes információk a „feladat” entitásról
-Alapszinten egy ütemezett feladat számos részből áll:
+Az Azure Scheduler több feladattípust támogat: 
 
-* A feladat időzítőjének indításakor végrehajtandó művelet  
-* (Nem kötelező) A feladat futtatásának időpontja  
-* (Nem kötelező) A feladat megismétlésének időpontja és gyakorisága  
-* (Nem kötelező) Az elsődleges művelet meghiúsulása esetén elinduló művelet  
+* HTTP-feladatok, így az SSL-t támogató HTTPS-feladatok is, amelyekre egy meglévő szolgáltatás vagy alkalmazás végpontjához lehet szükség
+* Storage-üzenetsorbeli feladatok a tárolási üzenetsorokat használó alkalmazásokhoz és szolgáltatásokhoz, például a tárolási üzenetsorokba történő üzenetküldés
+* Service Bus-üzenetsorok feladatai olyan alkalmazásokhoz és szolgáltatásokhoz, amelyek Service Bus-üzenetsorokat használnak
+* Service Bus-témafeladatok olyan alkalmazásokhoz és szolgáltatásokhoz, amelyek Service Bus-témafeladatokat használnak
 
-Belső használatra az ütemezett feladatok olyan, a rendszer által biztosított adatokat is tartalmaznak, mint a következő ütemezett végrehajtás időpontja.
+## <a name="job-definition"></a>Feladat definíciója
 
-Az alábbi kód egy ütemezett feladat átfogó példáját mutatja be. Részletes információkat az ezt követő szakaszokban talál.
+Magasabb szinteken a Scheduler-feladatok az alábbi alapszintű összetevőkből állnak:
 
-    {
-        "startTime": "2012-08-04T00:00Z",               // optional
-        "action":
-        {
-            "type": "http",
-            "retryPolicy": { "retryType":"none" },
-            "request":
-            {
-                "uri": "http://contoso.com/foo",        // required
-                "method": "PUT",                        // required
-                "body": "Posting from a timer",         // optional
-                "headers":                              // optional
+* A feladat időzítőjének indításakor futó művelet
+* Nem kötelező: A feladat futtatásának időpontja
+* Nem kötelező: A feladat megismétlésének időpontja és gyakorisága
+* Nem kötelező: Az elsődleges művelet meghiúsulása esetén futó hibaművelet
 
-                {
-                    "Content-Type": "application/json"
-                },
-            },
-           "errorAction":
-           {
-               "type": "http",
-               "request":
-               {
-                   "uri": "http://contoso.com/notifyError",
-                   "method": "POST",
-               },
-           },
-        },
-        "recurrence":                                   // optional
-        {
-            "frequency": "week",                        // can be "year" "month" "day" "week" "minute"
-            "interval": 1,                              // optional, how often to fire (default to 1)
-            "schedule":                                 // optional (advanced scheduling specifics)
-            {
-                "weekDays": ["monday", "wednesday", "friday"],
-                "hours": [10, 22]
-            },
-            "count": 10,                                 // optional (default to recur infinitely)
-            "endTime": "2012-11-04",                     // optional (default to recur infinitely)
-        },
-        "state": "disabled",                           // enabled or disabled
-        "status":                                       // controlled by Scheduler service
-        {
-            "lastExecutionTime": "2007-03-01T13:00:00Z",
-            "nextExecutionTime": "2007-03-01T14:00:00Z ",
-            "executionCount": 3,
-                                                "failureCount": 0,
-                                                "faultedCount": 0
-        },
-    }
+A feladat olyan, a rendszer által biztosított adatokat is tartalmaz, mint a következő ütemezett futás időpontja. A feladat kóddefiníciója egy JavaScript Object Notation (JSON) formátumú objektum, amely a következő elemeket tartalmazza:
 
-Ahogy az a fenti ütemezett mintafeladat esetében is látható, a feladatdefiníciók több részből állnak:
+| Elem | Kötelező | Leírás | 
+|---------|----------|-------------| 
+| [**startTime**](#start-time) | Nem | A feladat kezdési ideje időzóna-eltolódással [ISO 8601 formátumban](http://en.wikipedia.org/wiki/ISO_8601) | 
+| [**action**](#action) | Igen | Az elsődleges művelet részletei, amelyek **errorAction** objektumot tartalmazhatnak | 
+| [**errorAction**](#error-action) | Nem | Az elsődleges művelet meghiúsulása esetén futó másodlagos művelet részletei |
+| [**recurrence**](#recurrence) | Nem | Egy ismétlődő feladat részletei, például a gyakoriság és az időköz | 
+| [**retryPolicy**](#retry-policy) | Nem | A művelet újrapróbálására vonatkozó szabályok | 
+| [**state**](#state) | Igen | A feladat aktuális állapotának részletei |
+| [**status**](#status) | Igen | A feladat jelenlegi állapotának részletei, amelyeket a szolgáltatás vezérel |
+||||
 
-* Kezdési idő („startTime”)  
-* Művelet („action”), amely hibaműveletet („errorAction”) is tartalmaz
-* Ismétlődés („recurrence”)  
-* Folyamatállapot („state”)  
-* Feladatállapot („status”)  
-* Újrapróbálkozási házirend („retryPolicy”)  
+Íme, egy példa egy HTTP-művelet átfogó feladatdefiníciójára, amelyhez a későbbi szakaszok részletesebb elemleírásokat is tartalmaznak: 
 
-Vizsgáljuk meg részletesebben ezeket:
+```json
+"properties": {
+   "startTime": "2012-08-04T00:00Z",
+   "action": {
+      "type": "Http",
+      "request": {
+         "uri": "http://contoso.com/some-method", 
+         "method": "PUT",          
+         "body": "Posting from a timer",
+         "headers": {
+            "Content-Type": "application/json"
+         },
+         "retryPolicy": { 
+             "retryType": "None" 
+         },
+      },
+      "errorAction": {
+         "type": "Http",
+         "request": {
+            "uri": "http://contoso.com/notifyError",
+            "method": "POST"
+         }
+      }
+   },
+   "recurrence": {
+      "frequency": "Week",
+      "interval": 1,
+      "schedule": {
+         "weekDays": ["Monday", "Wednesday", "Friday"],
+         "hours": [10, 22]
+      },
+      "count": 10,
+      "endTime": "2012-11-04"
+   },
+   "state": "Disabled",
+   "status": {
+      "lastExecutionTime": "2007-03-01T13:00:00Z",
+      "nextExecutionTime": "2007-03-01T14:00:00Z ",
+      "executionCount": 3,
+      "failureCount": 0,
+      "faultedCount": 0
+   }
+}
+```
+
+<a name="start-time"></a>
 
 ## <a name="starttime"></a>startTime
-A „startTime” paraméter a kezdési időpont, és lehetőséget ad a hívó számára hálózati időzóna-eltolódás megadására [ISO-8601 formátumban](http://en.wikipedia.org/wiki/ISO_8601).
 
-## <a name="action-and-erroraction"></a>action és errorAction
-Az „action” a minden alkalommal meghívott művelet, és egy szolgáltatásmeghívási típust ír le. A művelet a megadott ütemezés szerint végrehajtandó elemet jelenti. A Scheduler támogatja a HTTP-, a tárolásisor-, a Service Bus üzenetsor- és a Service Bus témakörműveleteket.
+A **startTime** objektumban megadhatja a kezdési időpontot és az időzóna-eltolódást [ISO 8601 formátumban](http://en.wikipedia.org/wiki/ISO_8601).
 
-A fenti példán egy HTTP-művelet látható. Az alábbiakban egy példát láthat egy tárolásisor-műveletre:
+<a name="action"></a>
 
-    {
-            "type": "storageQueue",
-            "queueMessage":
-            {
-                "storageAccount": "myStorageAccount",  // required
-                "queueName": "myqueue",                // required
-                "sasToken": "TOKEN",                   // required
-                "message":                             // required
-                    "My message body",
-            },
+## <a name="action"></a>action
+
+A Scheduler-feladat egy elsődleges **action** műveletet futtat a megadott ütemezés szerint. A Scheduler a HTTP-, a Storage-üzenetsor-, a Service Bus üzenetsor- és a Service Bus-alapú témakörműveleteket támogatja. Ha az elsődleges **action** művelet meghiúsul, a Scheduler egy másodlagos [**errorAction**](#errorAction) műveletet futtathat, amely kezeli a hibát. Az **action** objektum a következő elemeket ismerteti:
+
+* A művelet szolgáltatástípusa
+* A művelet adatai
+* Egy alternatív **errorAction** művelet
+
+Az előző példa egy HTTP-műveletet ismertet. Íme, egy példa egy tárolási üzenetsorbeli műveletre:
+
+```json
+"action": {
+   "type": "storageQueue",
+   "queueMessage": {
+      "storageAccount": "myStorageAccount",  
+      "queueName": "myqueue",                
+      "sasToken": "TOKEN",                   
+      "message": "My message body"
     }
+}
+```
 
-Az alábbiakban egy példát láthat egy a Service Bus témakör-műveletre:
+Íme, egy példa egy Service Bus-üzenetsorbeli műveletre:
 
-  "action": { "type": "serviceBusTopic", "serviceBusTopicMessage": { "topicPath": "t1",  
-      "namespace": "mySBNamespace", "transportType": "netMessaging", // Can be either netMessaging or AMQP "authentication": { "sasKeyName": "QPolicy", "type": "sharedAccessKey" }, "message": "Some message", "brokeredMessageProperties": {}, "customMessageProperties": { "appname": "FromScheduler" } }, }
+```json
+"action": {
+   "type": "serviceBusQueue",
+   "serviceBusQueueMessage": {
+      "queueName": "q1",  
+      "namespace": "mySBNamespace",
+      "transportType": "netMessaging", // Either netMessaging or AMQP
+      "authentication": {  
+         "sasKeyName": "QPolicy",
+         "type": "sharedAccessKey"
+      },
+      "message": "Some message",  
+      "brokeredMessageProperties": {},
+      "customMessageProperties": {
+         "appname": "FromScheduler"
+      }
+   }
+},
+```
 
-Az alábbiakban egy példát láthat egy Service Bus üzenetsor-műveletre:
+Íme, egy példa egy Service Bus-beli témakörműveletre:
 
-  "action": { "serviceBusQueueMessage": { "queueName": "q1",  
-      "namespace": "mySBNamespace", "transportType": "netMessaging", // Can be either netMessaging or AMQP "authentication": {  
-        "sasKeyName": "QPolicy", "type": "sharedAccessKey" }, "message": "Some message",  
-      "brokeredMessageProperties": {}, "customMessageProperties": { "appname": "FromScheduler" } }, "type": "serviceBusQueue" }
+```json
+"action": {
+   "type": "serviceBusTopic",
+   "serviceBusTopicMessage": {
+      "topicPath": "t1",  
+      "namespace": "mySBNamespace",
+      "transportType": "netMessaging", // Either netMessaging or AMQP
+      "authentication": {
+         "sasKeyName": "QPolicy",
+         "type": "sharedAccessKey"
+      },
+      "message": "Some message",
+      "brokeredMessageProperties": {},
+      "customMessageProperties": {
+         "appname": "FromScheduler"
+      }
+   }
+},
+```
 
-Az „errorAction” hibakezelő művelet az elsődleges művelet meghiúsulása esetén lesz meghívva. Ezen változót egy hibakezelési végpont meghívására vagy felhasználói értesítés küldésére használhatja. Ha az elsődleges végpont nem érhető el (például vészhelyzet esetén a végponti helyen), ez a másodlagos végpont elérésére vagy egy hibakezelési végpont értesítésére használható. Az elsődleges művelethez hasonlóan a hibakezelési művelet is lehet egyszerű vagy összetett (más műveleteken alapuló) logikájú. Az SAS-token létrehozását lásd: [Közös hozzáférésű jogosultságkód létrehozása és használata](https://msdn.microsoft.com/library/azure/jj721951.aspx).
+További információ a közös hozzáférésű jogosultságkódok (SAS) tokenjeiről: [Engedélyezés a közös hozzáférésű jogosultságkódokkal](../storage/common/storage-dotnet-shared-access-signature-part-1.md).
+
+<a name="error-action"></a>
+
+## <a name="erroraction"></a>errorAction
+
+Ha a feladat elsődleges **action** művelete meghiúsul, a Scheduler egy **errorAction** műveletet futtathat, amely kezeli a hibát. Az elsődleges **action** műveletben megadhat egy **errorAction** objektumot, a Scheduler így meghívhat egy hibakezelő végpontot, vagy felhasználói értesítést küldhet. 
+
+Ha például katasztrófa történik az elsődleges végpontnál, az **errorAction** művelettel meghívhat egy másodlagos végpontot, vagy értesíthet egy hibakezelő végpontot. 
+
+Az elsődleges **action** művelethez hasonlóan a hibakezelési művelet is lehet egyszerű vagy összetett (más műveleteken alapuló) logikájú. 
+
+<a name="recurrence"></a>
 
 ## <a name="recurrence"></a>recurrence
-Az ismétlődés több részből áll:
 
-* Gyakoriság: percenként, óránként, naponta, hetente, havonta, évente  
-* Időköz: az ismétlődés adott gyakoriságának megfelelő időköz  
-* Előírt ütemezés: ismétlődési értékként megadhat perceket, órákat, munkanapokat, hónapokat és a hónap adott napjait  
-* Darabszám: Az előfordulások darabszáma  
-* Befejezés időpontja: A megadott befejezési időt követően egyetlen feladat sem lesz végrehajtva  
+Egy feladat akkor ismétlődik, ha annak JSON-definíciója tartalmazza a **recurrence** objektumot, például:
 
-Ismétlődő feladatról akkor beszélünk, ha ismétlődő objektummal rendelkezik a JSON-definíciójában. Ha a count (darabszám) és az endTime (befejezés időpontja) paraméter is meg van adva, az elsőként teljesülő befejezési szabály lesz figyelembe véve.
+```json
+"recurrence": {
+   "frequency": "Week",
+   "interval": 1,
+   "schedule": {
+      "hours": [10, 22],
+      "minutes": [0, 30],
+      "weekDays": ["Monday", "Wednesday", "Friday"]
+   },
+   "count": 10,
+   "endTime": "2012-11-04"
+},
+```
 
-## <a name="state"></a>state
-A feladat folyamatállapota négyféle érték egyikét veheti fel: engedélyezve, letiltva, befejezve vagy meghiúsult. A PUT és a PATCH feladatok engedélyezett vagy letiltott állapotúra frissíthetők. A befejeződött vagy meghiúsult feladatok végállapota nem frissíthető (bár a feladaton keresztül továbbra is törölhetők). Példa a State tulajdonságra:
+| Tulajdonság | Kötelező | Érték | Leírás | 
+|----------|----------|-------|-------------| 
+| **frequency** | Igen, a **recurrence** használatakor | Percenként, óránként, naponta, hetente, havonta, évente | Az előfordulások közötti időegység | 
+| **interval** | Nem | 1 és 1000 között, a szélsőértékeket is beleértve | Pozitív egész szám, amely a **frequency** gyakoriságérték alapján meghatározza az egyes előfordulások közötti időegységek számát | 
+| **schedule** | Nem | Változó | Összetettebb és speciális ütemezések részletei. Lásd: **hours**, **minutes**, **weekDays**, **months** és **monthDays** (órák, percek, munkanapok, hónapok és hónap adott napjai) | 
+| **hours** | Nem | 1–24 | A feladat futtatásának időpontját meghatározó órajelek | 
+| **minutes** | Nem | 1–24 | A feladat futtatásának időpontját meghatározó percjelek | 
+| **months** | Nem | 1–12 | A feladat futtatásának időpontját meghatározó hónapok | 
+| **monthDays** | Nem | Változó | A feladat futtatásának időpontját meghatározó hónap napjai | 
+| **weekDays** | Nem | „Monday”, „Tuesday”, „Wednesday”, „Thursday”, „Friday”, „Saturday”, „Sunday” (Hétfő, Kedd, Szerda, Csütörtök, Péntek, Szombat, Vasárnap) | A feladat futtatásának időpontját meghatározó hét napjai | 
+| **count** | Nem | <*none*> | Az ismétlődések száma. Az alapértelmezett beállítás a végtelen ismétlődés. Nem használhatja egyszerre a **count** és az **endTime** elemeket, így ilyen esetekben mindig az elsőként lefutó szabály érvényesül. | 
+| **endTime** | Nem | <*none*> | Az ismétlődés befejezésének dátuma és ideje. Az alapértelmezett beállítás a végtelen ismétlődés. Nem használhatja egyszerre a **count** és az **endTime** elemeket, így ilyen esetekben mindig az elsőként lefutó szabály érvényesül. | 
+||||
 
-        "state": "disabled", // enabled, disabled, completed, or faulted
-A befejeződött vagy meghiúsult feladatok 60 nap után törlődnek.
+További információ az elemekről: [Komplex ütemezések és speciális ismétlődések létrehozása](../scheduler/scheduler-advanced-complexity.md).
 
-## <a name="status"></a>status
-Ha elindít egy feladatot a Schedulerben, a rendszer értesíteni fogja annak aktuális állapotáról. Ennek az objektumnak a beállítását a felhasználó nem, kizárólag a rendszer végezheti el. Ezt azonban egy külön hivatkozott erőforrás helyett a feladatobjektum tartalmazza, így a feladat állapota egyszerűen lekérhető.
-
-A feladat állapota magában foglalja az előző végrehajtás időpontját (ha volt ilyen), a következő ütemezett végrehajtás időpontját (a folyamatban lévő feladatok esetében) és a feladat végrehajtásainak számát.
+<a name="retry-policy"></a>
 
 ## <a name="retrypolicy"></a>retryPolicy
-Ha egy Scheduler-feladat meghiúsul, újrapróbálkozási házirend adható meg a művelet újraindítására, illetve annak módjára vonatkozóan. Ezt a **retryType** objektum határozza meg – ha nem létezik újrapróbálkozási házirend, ennek értéke **none** (nincs), ahogy fent látható. Ha létezik újrapróbálkozási házirendet, állítsa **fixed** (rögzített) értékűre.
 
-Egy újrapróbálkozási házirend beállításához a rendszer két további beállítás megadását kérheti: az újbóli próbálkozási időközt (**retryInterval**) és az újbóli próbálkozások számát (**retryCount**).
+Arra az esetre, ha a Scheduler-feladat hibába ütközik, beállíthat egy újrapróbálkozási szabályzatot, amely megszabja, hogy a Scheduler újra elindítsa-e a műveletet, és ha igen, hogyan. Alapértelmezés szerint a Scheduler négyszer próbálkozik újra, 30 másodperces időközönként. Ezt a szabályzatot szigoríthatja és lazíthatja is, ez a szabályzat például napi kétszer próbálkozik újra egy művelettel:
 
-A **retryInterval** objektummal megadott újrapróbálkozási időköz az újbóli próbálkozások közötti időtartamot jelenti. Ennek alapértelmezett értéke 30 másodperc; minimum 15 másodperc, maximum 18 hónap állítható be. Ennek megadása ISO 8601 formátumban történik. Ehhez hasonlóan történik a **retryCount** objektummal megadott újbóli próbálkozási szám értékének megadása is; ez a megkísérelt újbóli próbálkozások száma. Ennek alapértelmezett értéke 4, és legfeljebb 20 lehet. A **retryInterval** és a **retryCount** egyike sem kötelező. Ha a **retryType** objektum beállítása **fixed** (rögzített), és explicit módon nem lett megadva érték, az alapértelmezett értékek lesznek érvényesek.
+```json
+"retryPolicy": { 
+   "retryType": "Fixed",
+   "retryInterval": "PT1D",
+   "retryCount": 2
+},
+```
+
+| Tulajdonság | Kötelező | Érték | Leírás | 
+|----------|----------|-------|-------------| 
+| **retryType** | Igen | **Fixed**, **None** | Azt határozza meg, hogy megad-e egy újrapróbálkozási szabályzatot (**fixed** – rögzített) vagy sem (**none** – nincs). | 
+| **retryInterval** | Nem | PT30S | Megadja az újrapróbálkozások gyakoriságát [ISO 8601 formátumban](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations). A minimális érték 15 másodperc, a maximális érték pedig 18 hónap. | 
+| **retryCount** | Nem | 4 | Megszabja az újrapróbálkozási kísérletek számát. A maximális érték 20. | 
+||||
+
+További információ: [Magas rendelkezésre állás és megbízhatóság](../scheduler/scheduler-high-availability-reliability.md).
+
+<a name="status"></a>
+
+## <a name="state"></a>state
+
+A feladatok állapota a következő lehet: **Enabled** (Engedélyezve), **Disabled** (Letiltva), **Completed** (Befejezve) vagy **Faulted** (Hibás), például: 
+
+`"state": "Disabled"`
+
+Ha **Enabled** vagy **Disabled** állapotra szeretne módosítani egy feladatot, használja a PUT vagy a PATCH műveletet.
+Azonban ha egy feladat **Completed** vagy **Faulted** állapotú, azt nem frissítheti, habár a DELETE műveletet így is elvégezheti rajta. A Scheduler 60 nap után törli a befejeződött vagy hibás feladatokat. 
+
+<a name="status"></a>
+
+## <a name="status"></a>status
+
+Miután elindul egy feladat, a Scheduler megjeleníti annak állapotadatait a **status** objektumban, amelyet csak a Scheduler vezérelhet. A **status** objektumot azonban megtalálhatja a **job** objektumban. A feladatok állapota a következő információkat tartalmazza:
+
+* Az előző végrehajtás ideje (ha volt ilyen)
+* Folyamatban lévő feladatok esetén a következő ütemezett végrehajtás ideje
+* A feladat-végrehajtások száma
+* A meghiúsulások száma (ha volt ilyen)
+* A hibák száma (ha volt ilyen)
+
+Például:
+
+```json
+"status": {
+   "lastExecutionTime": "2007-03-01T13:00:00Z",
+   "nextExecutionTime": "2007-03-01T14:00:00Z ",
+   "executionCount": 3,
+   "failureCount": 0,
+   "faultedCount": 0
+}
+```
 
 ## <a name="see-also"></a>Lásd még
- [A Scheduler ismertetése](scheduler-intro.md)
 
- [Ismerkedés a Scheduler szolgáltatás Azure Portalon való használatával](scheduler-get-started-portal.md)
-
- [Csomagok és számlázás az Azure Schedulerben](scheduler-plans-billing.md)
-
- [Komplex és speciális, ismétlődő ütemezések létrehozása az Azure Scheduler használatával](scheduler-advanced-complexity.md)
-
- [Az Azure Scheduler REST API-jának leírása](https://msdn.microsoft.com/library/mt629143)
-
- [Az Azure Scheduler PowerShell-parancsmagjainak leírása](scheduler-powershell-reference.md)
-
- [Azure Scheduler – magas fokú rendelkezésre állás és megbízhatóság](scheduler-high-availability-reliability.md)
-
- [Azure Scheduler – korlátozások, alapértékek és hibakódok](scheduler-limits-defaults-errors.md)
-
- [Kimenő hitelesítés az Azure Schedulerben](scheduler-outbound-authentication.md)
-
+* [Mi az Azure Scheduler?](scheduler-intro.md)
+* [Alapfogalmak, terminológia és entitáshierarchia](scheduler-concepts-terms.md)
+* [Komplex ütemezések és speciális ismétlődések létrehozása](scheduler-advanced-complexity.md)
+* [Korlátok, kvóták, alapértékek és hibakódok](scheduler-limits-defaults-errors.md)
+* [Az Azure Scheduler REST API-jának leírása](https://docs.microsoft.com/rest/api/schedule)
+* [Az Azure Scheduler PowerShell-parancsmagjainak leírása](scheduler-powershell-reference.md)

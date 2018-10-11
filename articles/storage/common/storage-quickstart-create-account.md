@@ -1,27 +1,24 @@
 ---
-title: Azure rövid útmutató – Tárfiók létrehozása | Microsoft Docs
-description: Gyorsan megismerheti, hogyan hozhat létre új tárfiókokat az Azure Portal, az Azure PowerShell vagy az Azure CLI használatával.
+title: 'Rövid útmutató: Tárfiók létrehozása – Azure Storage'
+description: Ez a rövid útmutató bemutatja, hogyan hozhat létre tárfiókokat az Azure Portal, az Azure PowerShell vagy az Azure CLI használatával. Az Azure Storage-fiók egyedi névteret biztosít a Microsoft Azure-ban a létrehozott Azure Storage-adatobjektumok tárolásához és eléréséhez.
 services: storage
 author: tamram
 ms.custom: mvc
 ms.service: storage
 ms.topic: quickstart
-ms.date: 07/03/2018
+ms.date: 09/18/2018
 ms.author: tamram
 ms.component: common
-ms.openlocfilehash: 91e98f74fd6cd88533a5090a383897eaa0e60648
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: a695e333f48ed0bbf1ad5656c20964232feff4d7
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39524020"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46990127"
 ---
 # <a name="create-a-storage-account"></a>Tárfiók létrehozása
 
-Az Azure Storage-fiók egyedi névteret biztosít a felhőben az Azure Storage-adatobjektumok tárolásához és eléréséhez. A tárfiókok bármely olyan blobot, fájlt, üzenetsort, táblát vagy lemezt tartalmazhatnak, amelyeket az adott fiók használata során létrehoz. 
-
-Az Azure Storage használatának megkezdéséhez először létre kell hoznia egy új tárfiókot. Azure Storage-fiókot az [Azure Portal](https://portal.azure.com/), az [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview) vagy az [Azure CLI](https://docs.microsoft.com/cli/azure?view=azure-cli-latest) használatával hozhat létre. Ez a rövid útmutató azt ismerteti, hogyan használhatók ezek a lehetőségek új tárfiók létrehozására. 
-
+Ez a rövid útmutató bemutatja, hogyan hozhat létre tárfiókokat az [Azure Portal](https://portal.azure.com/), az [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview) vagy az [Azure CLI](https://docs.microsoft.com/cli/azure?view=azure-cli-latest) használatával.  
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -54,7 +51,7 @@ A gombra kattintva megjelenik egy interaktív kezelőfelület jelenik, amelyet a
 
 ### <a name="install-the-cli-locally"></a>A parancssori felület helyi telepítése
 
-Az Azure CLI-t helyben is telepítheti és használhatja. A rövid útmutatóhoz az Azure CLI 2.0.4-es vagy újabb verziójára lesz szükség. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI 2.0 telepítése](/cli/azure/install-azure-cli). 
+Az Azure CLI-t helyben is telepítheti és használhatja. A rövid útmutatóhoz az Azure CLI 2.0.4-es vagy újabb verziójára lesz szükség. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure CLI telepítését](/cli/azure/install-azure-cli) ismertető cikket. 
 
 ---
 
@@ -84,26 +81,21 @@ az login
 
 ---
 
-## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
+## <a name="create-a-storage-account"></a>Tárfiók létrehozása
 
-Az Azure-erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat. További információ az erőforráscsoportokkal kapcsolatban: [Az Azure Resource Manager áttekintése](../../azure-resource-manager/resource-group-overview.md).
+Ezzel készen áll a tárfiók létrehozására.
+
+Minden tárfióknak egy Azure-erőforráscsoporthoz kell tartoznia. Az erőforráscsoport egy logikai tároló az Azure-szolgáltatások csoportosításához. A tárfiók létrehozásakor lehetősége van létrehozni egy új erőforráscsoportot, vagy választhat egy meglévő erőforráscsoportot. A rövid útmutató bemutatja, hogyan kell létrehozni új erőforráscsoportot. 
+
+Az **általános célú v2**-tárfiókok az összes Azure Storage-szolgáltatáshoz (blobokhoz, fájlokhoz, üzenetsorokhoz, táblákhoz és lemezekhez) hozzáférést biztosítanak. A rövid útmutató egy általános célú v2-tárfiókot hoz létre, de minden típusú tárfiókot hasonló módon hozhat létre.   
 
 # <a name="portaltabportal"></a>[Portál](#tab/portal)
 
-Az Azure Portalon a következő lépések végrehajtásával hozhat létre egy erőforráscsoportot:
-
-1. Az Azure Portalon bontsa ki a bal oldalon a szolgáltatásmenüt, és válassza az **Erőforráscsoportok** lehetőséget.
-2. Új erőforráscsoport hozzáadásához kattintson a **Hozzáadás** gombra.
-3. Adja meg az új erőforráscsoport nevét.
-4. Válassza ki azt az előfizetést, amelyben létre kívánja hozni az új erőforráscsoportot.
-5. Válassza ki az erőforráscsoport helyét.
-6. Kattintson a **Létrehozás** gombra.  
-
-![Az erőforráscsoportok Azure Portalon történő létrehozását bemutató képernyőkép](./media/storage-quickstart-create-account/create-resource-group.png)
+[!INCLUDE [storage-create-account-portal-include](../../../includes/storage-create-account-portal-include.md)]
 
 # <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
 
-Az új erőforráscsoport PowerShell használatával történő létrehozása a [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup) paranccsal történik: 
+Először is hozzon létre egy új erőforráscsoportot a PowerShell használatával, a [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup) paranccsal: 
 
 ```powershell
 # put resource group in a variable so you can use the same group name going forward,
@@ -119,64 +111,7 @@ Get-AzureRmLocation | select Location
 $location = "westus"
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
-
-Ha az Azure CLI használatával kíván új erőforráscsoportot létrehozni, használja az [az group create](/cli/azure/group#az_group_create) parancsot. 
-
-```azurecli-interactive
-az group create \
-    --name storage-quickstart-resource-group \
-    --location westus
-```
-
-Ha nem biztos abban, hogy melyik régiót kell megadnia a `--location` paraméterhez, az előfizetéséhez tartozó támogatott régiók listáját az [az account list-locations](/cli/azure/account#az_account_list) paranccsal kérheti le.
-
-```azurecli-interactive
-az account list-locations \
-    --query "[].{Region:name}" \
-    --out table
-```
-
----
-
-## <a name="create-a-general-purpose-storage-account"></a>Általános célú tárfiók létrehozása
-
-Az általános célú tárfiókok az összes Azure Storage-szolgáltatáshoz (blobokhoz, fájlokhoz, üzenetsorokhoz és táblákhoz) hozzáférést biztosítanak. Az általános célú tárfiókok standard és prémium szinten is létrehozhatók. A jelen cikkben szereplő példák egy általános célú tárfiók (alapértelmezett) standard szinten történő létrehozását mutatják be.
-
-Az Azure Storage két különböző általános tárfióktípust tesz elérhetővé:
-
-- Általános célú v2-fiókok 
-- Általános célú v1-fiókok 
-
-> [!NOTE]
-> Javasoljuk, hogy az új tárfiókokat **általános célú v2-fiókokként** hozza létre, hogy kihasználhassa az ilyen fiókok számára elérhető újabb funkciókat.  
-
-További információt a tárfiókok típusairól [az Azure Storage-fiók beállításait](storage-account-options.md) ismertető szakaszban talál.
-
-Ne feledje ezeket a szabályokat a tárfiók elnevezésekor:
-
-- A tárfiókok neve 3–24 karakter hosszúságú lehet, és csak számokból és kisbetűkből állhat.
-- A tárfiók nevének egyedinek kell lennie az Azure rendszerben. Két tárfióknak nem lehet azonos neve.
-
-# <a name="portaltabportal"></a>[Portál](#tab/portal)
-
-Kövesse az alábbi lépéseket egy általános célú v2-tárfiók létrehozásához az Azure Portalon:
-
-1. Az Azure Portalon nyissa ki bal oldalon a szolgáltatásmenüt, és válassza a **Minden szolgáltatás** lehetőséget. Ezután görgessen le a **Storage** szakaszig, és válassza a **Storage-fiókok** lehetőséget. A megjelenő **Storage-fiókok** ablakban válassza a **Hozzáadás** lehetőséget.
-2. Adja meg a tárfiók nevét.
-3. Állítsa be a **Fiók típusa** mezőben a **StorageV2 (általános célú v2)** értéket.
-4. A **Replikáció** mezőben hagyja meg a **Helyileg redundáns tárolás (LRS)** értéket. Ezenkívül a következő lehetőségek közül választhat: **Zónaredundáns tárolás (ZRS)**, **Georedundáns tárolás (GRS)** vagy **Írásvédett georedundáns tárolás (RA-GRS)**.
-5. Ne módosítsa a következő mezők alapértelmezett értékeit: **Üzemi modell**, **Teljesítmény**, **Biztonságos átvitelre van szükség**.
-6. Válassza ki azt az előfizetést, amelyikben létre kívánja hozni a tárfiókot.
-7. Az **Erőforráscsoport** szakaszban válassza a **Meglévő használata** lehetőséget, majd válassza ki az előző szakaszban létrehozott erőforráscsoportot.
-8. Válassza ki az új tárfiók helyét.
-9. Kattintson a **Létrehozás** parancsra a tárfiók létrehozásához.      
-
-![A tárfiók Azure Portalon történő létrehozását bemutató képernyőkép](./media/storage-quickstart-create-account/create-account-portal.png)
-
-# <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
-
-Egy helyileg redundáns tárolást (LRS) használó általános célú v2-tárfiók létrehozásához a PowerShellben használja a [New-AzureRmStorageAccount](/powershell/module/azurerm.storage/New-AzureRmStorageAccount) parancsot: 
+Ezután hozza létre az általános célú v2-tárfiókot helyileg redundáns tárolással (LRS). Használja a [New-AzureRmStorageAccount](/powershell/module/azurerm.storage/New-AzureRmStorageAccount) parancsot: 
 
 ```powershell
 New-AzureRmStorageAccount -ResourceGroupName $resourceGroup `
@@ -197,7 +132,23 @@ Egy zónaredundáns tárolást (ZRS) (előzetes verzió), georedundáns tárolá
 
 # <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Egy helyileg redundáns tárolást (LRS) használó általános célú v2-tárfiók létrehozásához az Azure CLI-ben használja az [az storage account create](/cli/azure/storage/account#az_storage_account_create) parancsot.
+Ezután hozza létre az új erőforráscsoportot az Azure CLI használatával, az [az group create](/cli/azure/group#az_group_create) paranccsal. 
+
+```azurecli-interactive
+az group create \
+    --name storage-quickstart-resource-group \
+    --location westus
+```
+
+Ha nem biztos abban, hogy melyik régiót kell megadnia a `--location` paraméterhez, az előfizetéséhez tartozó támogatott régiók listáját az [az account list-locations](/cli/azure/account#az_account_list) paranccsal kérheti le.
+
+```azurecli-interactive
+az account list-locations \
+    --query "[].{Region:name}" \
+    --out table
+```
+
+Ezután hozza létre az általános célú v2-tárfiókot helyileg redundáns tárolással. Használja az [az storage account create](/cli/azure/storage/account#az_storage_account_create) parancsot:
 
 ```azurecli-interactive
 az storage account create \
@@ -258,16 +209,16 @@ Ebben a rövid útmutatóban egy általános célú standard szintű tárfiókot
 # <a name="portaltabportal"></a>[Portál](#tab/portal)
 
 > [!div class="nextstepaction"]
-> [Objektumok továbbítása Azure Blob-tárolókra és -tárolókról az Azure Portal használatával](../blobs/storage-quickstart-blobs-portal.md)
+> [Blobok használata az Azure Portal segítségével](../blobs/storage-quickstart-blobs-portal.md)
 
 # <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
 
 > [!div class="nextstepaction"]
-> [Objektumok továbbítása Azure Blob-tárolókra és -tárolókról a PowerShell-lel](../blobs/storage-quickstart-blobs-powershell.md)
+> [Blobok használata a PowerShell segítségével](../blobs/storage-quickstart-blobs-powershell.md)
 
 # <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 > [!div class="nextstepaction"]
-> [Objektumok továbbítása Azure Blob-tárolókra és -tárolókról az Azure CLI-vel](../blobs/storage-quickstart-blobs-cli.md)
+> [Blobtárolók használata az Azure CLI segítségével](../blobs/storage-quickstart-blobs-cli.md)
 
 ---

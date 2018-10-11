@@ -1,6 +1,6 @@
 ---
-title: Adatok előkészítése az Írisz osztályozása oktatóanyaghoz az Azure Machine Learning-szolgáltatásokban (előzetes verzió) | Microsoft Docs
-description: Ez a részletes oktatóanyag bemutatja, hogyan használhatók ki teljeskörűen az (előzetes verziójú) Azure Machine Learning-szolgáltatások. Ez az 1. rész, amely az adatok előkészítését ismerteti.
+title: Adatok előkészítése az Írisz osztályozása oktatóanyaghoz az Azure Machine Learning-szolgáltatásban (előzetes verzió) | Microsoft Docs
+description: Ez a részletes oktatóanyag bemutatja, hogyan használhatók ki teljeskörűen az (előzetes verziójú) Azure Machine Learning-szolgáltatás. Ez az 1. rész, amely az adatok előkészítését ismerteti.
 services: machine-learning
 author: hning86
 ms.author: haining
@@ -12,18 +12,21 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 3/7/2018
-ms.openlocfilehash: 56f1d26d5d687982366b9a8fb20235ff338a9573
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ROBOTS: NOINDEX
+ms.openlocfilehash: 272b8250a80fee42780311dec92f6d47c221c160
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38722983"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46990161"
 ---
 # <a name="tutorial-1-classify-iris---preparing-the-data"></a>1. oktatóanyag: Írisz osztályozása – Az adatok előkészítése
 
+[!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)]
+
 Az Azure Machine Learning szolgáltatás (előzetes verzió) az adatszakértők általi használatra szánt, az adatok előkészítéséhez, a kísérletek kidolgozásához és a modellek felhőszinten való üzembe helyezéséhez létrehozott átfogó, integrált és fejlett adatelemzési megoldás.
 
-Ez az oktatóanyag **egy háromrészes sorozat első része**. Az oktatóanyag az Azure Machine Learning-szolgáltatások (előzetes verzió) alapjait és a következőket mutatja be:
+Ez az oktatóanyag **egy háromrészes sorozat első része**. Az oktatóanyag az Azure Machine Learning-szolgáltatás (előzetes verzió) alapjait és a következőket mutatja be:
 
 > [!div class="checklist"]
 > * Projekt létrehozása az Azure Machine Learning Workbenchben
@@ -31,6 +34,8 @@ Ez az oktatóanyag **egy háromrészes sorozat első része**. Az oktatóanyag a
 > * Python-/PySpark-kód létrehozása az adat-előkészítési csomagok meghívásához
 
 Az oktatóanyag a jól ismert [Iris flower adatkészletet](https://en.wikipedia.org/wiki/Iris_flower_data_set) használja. 
+
+[!INCLUDE [aml-preview-note](../../../includes/aml-preview-note.md)]
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -40,11 +45,11 @@ Az oktatóanyag teljesítéséhez a következőkre lesz szüksége:
 - Egy Azure Machine Learning kísérletezési fiókra
 - Egy telepített Azure Machine Learning Workbenchre
 
-Ezen előfeltételek hiányában kövesse a [telepítés és indítás rövid útmutatójában](../service/quickstart-installation.md) ismertetett lépéseket a fiókok beállításához és az Azure Machine Learning Workbench alkalmazás telepítéséhez. 
+Ezen előfeltételek hiányában kövesse a [telepítés és indítás rövid útmutatójában](quickstart-installation.md) ismertetett lépéseket a fiókok beállításához és az Azure Machine Learning Workbench alkalmazás telepítéséhez. 
 
 ## <a name="create-a-new-project-in-workbench"></a>Új projekt létrehozása a Workbenchben
 
-Ha követte a [telepítés és indítás rövid útmutatójában](../service/quickstart-installation.md) ismertetett lépéseket, már létrehozta ezt a projektet, és továbbléphet a következő szakaszra.
+Ha követte a [telepítés és indítás rövid útmutatójában](quickstart-installation.md) ismertetett lépéseket, már létrehozta ezt a projektet, és továbbléphet a következő szakaszra.
 
 1. Nyissa meg az Azure Machine Learning Workbench alkalmazást, és szükség esetén jelentkezzen be. 
    
@@ -62,7 +67,7 @@ Ha követte a [telepítés és indítás rövid útmutatójában](../service/qui
    Projektnév | myIris |Adjon meg egy egyedi nevet a fiók azonosításához. Használhatja a saját nevét, vagy egy részleg vagy projekt nevét is. Olyasmit adjon meg, amivel a legjobban azonosítható a kísérlet. A név 2–32 karakter hosszúságú lehet. A név csak alfanumerikus és kötőjel (-) karaktert tartalmazhat. 
    Projektkönyvtár | c:\Temp\ | Adja meg a könyvtárat, amelyben a projekt létrejött.
    Projekt leírása | _hagyja üresen_ | A projekt leírására szolgáló mező, amelyet nem kötelező kitölteni.
-   Visualstudio.com GIT-adattár URL-címe |_hagyja üresen_ | Nem kötelező kitölteni. Egy projektet egy Git-adattárhoz társíthat a Visual Studio Team Servicesben a forráskezelés és az együttműködés megkönnyítése érdekében. [További tudnivalókat erről a lehetőségről itt talál](https://docs.microsoft.com/azure/machine-learning/desktop-workbench/using-git-ml-project#step-3-set-up-a-machine-learning-project-and-git-repo). 
+   Visualstudio.com GIT-adattár URL-címe |_hagyja üresen_ | Nem kötelező kitölteni. Egy projektet egy Git-adattárhoz társíthat az Azure DevOpsban a verziókövetés és az együttműködés megkönnyítése érdekében. [További tudnivalókat erről a lehetőségről itt talál](https://docs.microsoft.com/azure/machine-learning/desktop-workbench/using-git-ml-project#step-3-set-up-a-machine-learning-project-and-git-repo). 
    Kiválasztott munkaterület | IrisGarden (ha van) | Válasszon egy olyan munkaterületet, amelyet a kísérletezési fiókhoz hozott létre az Azure Portalon. <br/>Ha követte a rövid útmutatót, rendelkeznie kell egy IrisGarden nevű munkaterülettel. Ha nincs ilyen munkaterülete, válassza azt, amelyet a kísérletezési fiók létrehozásakor hozott létre, vagy válasszon egy tetszőleges munkaterületet.
    Projektsablon | Írisz osztályozása | A sablonok olyan szkripteket és adatokat tartalmaznak, amelyek elősegítik a termék különböző funkcióinak megismerését. Ez a sablon azokat a szkripteket és adatokat tartalmazza, amelyekre szüksége van ehhez a rövid bemutatóhoz, illetve a dokumentációs webhelyen található egyéb oktatóanyagokhoz. 
 

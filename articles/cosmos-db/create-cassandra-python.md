@@ -1,36 +1,40 @@
 ---
-title: 'Gyors útmutató: Cassandra API a Pythonnal – Azure Cosmos DB | Microsoft Docs'
-description: Ez a gyors útmutató azt ismerteti, hogy hogyan használható az Azure Cosmos DB Apache Cassandra API profilalkalmazások létrehozására a Python használatával
+title: 'Gyors útmutató: Cassandra API a Pythonnal – Azure Cosmos DB'
+description: Ez a gyors útmutató azt ismerteti, hogyan használható az Azure Cosmos DB Apache Cassandra API profilalkalmazások létrehozására a Python használatával.
 services: cosmos-db
 author: SnehaGunda
-manager: kfile
+ms.author: sngun
 ms.service: cosmos-db
 ms.component: cosmosdb-cassandra
 ms.custom: quick start connect, mvc
 ms.devlang: python
 ms.topic: quickstart
-ms.date: 11/15/2017
-ms.author: sngun
-ms.openlocfilehash: 8f662f1d7b39e1757786193911e9fd2623b0a09a
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.date: 09/24/2018
+ms.openlocfilehash: 4712c0b40209cd6d40703176f95a80f491d0364c
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39214585"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46979100"
 ---
 # <a name="quickstart-build-a-cassandra-app-with-python-and-azure-cosmos-db"></a>Gyors útmutató: Cassandra alkalmazás felépítése a Python és az Azure Cosmos DB használatával
 
-Ez a gyors útmutató azt ismerteti, hogy hogyan használható a Python és az Azure Cosmos DB [Cassandra API](cassandra-introduction.md) egy profilalkalmazás létrehozására egy GitHubról származó példa klónozásával. Az útmutató emellett azt is bemutatja, hogyan hozható létre egy Azure Cosmos DB-fiók a webes alapú Azure Portal használatával.
+> [!div class="op_single_selector"]
+> * [.NET](create-cassandra-dotnet.md)
+> * [Java](create-cassandra-java.md)
+> * [Node.js](create-cassandra-nodejs.md)
+> * [Python](create-cassandra-python.md)
+>  
 
-Az Azure Cosmos DB a Microsoft globálisan elosztott többmodelles adatbázis-szolgáltatása. Segítségével gyorsan létrehozhat és lekérdezhet dokumentum, tábla, kulcs-érték és gráf típusú adatbázisokat, amelyek mindegyike felhasználja az Azure Cosmos DB középpontjában álló globális elosztási és horizontális skálázhatósági képességeket.   
+Ez a gyors útmutató azt ismerteti, hogy hogyan használható a Python és az Azure Cosmos DB [Cassandra API](cassandra-introduction.md) egy profilalkalmazás létrehozására egy GitHubról származó példa klónozásával. Ez a rövid útmutató emellett azt is bemutatja, hogyan hozható létre egy Azure Cosmos DB-fiók a webes alapú Azure Portalon.
+
+Az Azure Cosmos DB a Microsoft globálisan elosztott többmodelles adatbázis-szolgáltatása. Segítségével gyorsan létrehozhat és lekérdezhet dokumentum, tábla, kulcs-érték és gráf típusú adatbázisokat, amelyek mindegyike felhasználja az Azure Cosmos DB középpontjában álló globális elosztási és horizontális skálázhatósági képességeket.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)] Alternatív lehetőségként [kipróbálhatja ingyenesen az Azure Cosmos DB-t](https://azure.microsoft.com/try/cosmosdb/) Azure-előfizetés, díjfizetés és elköteleződés nélkül.
 
-Csatlakozzon az Azure Cosmos DB Cassandra API előzetes programjához. Ha még nem igényelt hozzáférést, [regisztráljon most](cassandra-introduction.md#sign-up-now).
-
-Továbbá:
+Emellett szüksége lesz a következőkre:
 * [Python](https://www.python.org/downloads/) 2.7.14-es verziója
 * [Git](http://git-scm.com/)
 * [Python illesztő az Apache Cassandra felülethez](https://github.com/datastax/python-driver)
@@ -45,7 +49,7 @@ A dokumentum-adatbázis létrehozásához először létre kell hoznia egy Cassa
 
 Most pedig klónozunk egy Cassandra API-alkalmazást a GitHubról, beállítjuk a kapcsolati sztringet, majd futtatni fogjuk az alkalmazást. Ilyen egyszerű az adatokkal programozott módon dolgozni. 
 
-1. Nyisson meg egy parancssort, hozzon létre egy git-samples nevű új mappát, majd zárja be a parancssort.
+1. Nyisson meg egy parancssort. Hozzon létre egy `git-samples` nevű mappát. Ezután zárja be a parancssort.
 
     ```bash
     md "C:\git-samples"
@@ -65,9 +69,9 @@ Most pedig klónozunk egy Cassandra API-alkalmazást a GitHubról, beállítjuk 
 
 ## <a name="review-the-code"></a>A kód áttekintése
 
-Ez a lépés nem kötelező. Ha meg szeretné ismerni, hogyan jönnek létre az adatbázis erőforrásai a kódban, tekintse át a következő kódrészleteket. A kódrészletek mind a pyquickstart.py fájlból származnak. Egyéb esetben ugorhat [A kapcsolati sztring frissítése](#update-your-connection-string) szakaszra. 
+Ez a lépés nem kötelező. Ha meg szeretné ismerni, hogyan hozza létre a kód az adatbázis erőforrásait, tekintse át a következő kódrészleteket. A kódrészletek mind a pyquickstart.py fájlból származnak. Egyéb esetben ugorhat [A kapcsolati sztring frissítése](#update-your-connection-string) szakaszra. 
 
-* A felhasználónév és a jelszó a kapcsolati sztring oldalán állítható be az Azure Portalon. Cserélje le a path\to\cert paraméter értékét az X509-tanúsítvány elérési útjára.
+* A felhasználónév és a jelszó értékei a kapcsolati sztring oldalán állíthatók be az Azure Portalon. A `path\to\cert` egy X509-tanúsítvány elérési útját tartalmazza. 
 
    ```python
     ssl_opts = {
@@ -132,9 +136,9 @@ Ez a lépés nem kötelező. Ha meg szeretné ismerni, hogyan jönnek létre az 
 
 ## <a name="update-your-connection-string"></a>A kapcsolati sztring frissítése
 
-Lépjen vissza az Azure Portalra a kapcsolati sztring adataiért, majd másolja be azokat az alkalmazásba. Ez lehetővé teszi az alkalmazás számára, hogy kommunikáljon az üzemeltetett adatbázissal.
+Lépjen vissza az Azure Portalra a kapcsolati sztring adataiért, majd másolja be azokat az alkalmazásba. A kapcsolati sztring lehetővé teszi az alkalmazás számára, hogy kommunikáljon az üzemeltetett adatbázissal.
 
-1. Az [Azure Portalon](http://portal.azure.com/) kattintson a **Kapcsolati sztring** elemre. 
+1. Az [Azure Portalon](http://portal.azure.com/) válassza a **Kapcsolati sztring** lehetőséget. 
 
     Válassza a ![Másolás gomb](./media/create-cassandra-python/copy.png) használatával (a képernyő jobb oldalán) másolja a vágólapra a felső, CONTACT POINT (Kapcsolódási pont) értéket.
 
@@ -164,15 +168,17 @@ Lépjen vissza az Azure Portalra a kapcsolati sztring adataiért, majd másolja 
     
 ## <a name="use-the-x509-certificate"></a>Az X509-tanúsítvány használata
 
-1. Ha hozzá kell adnia a Baltimore CyberTrust legfelső szintű tanúsítványát, a sorozatszáma 02:00:00:b9 és a SHA1 ujjlenyomata d4🇩🇪20:d0:5e:66:fc:53:fe:1a:50:88:2c:78:db:28:52:ca:e4:74. Letölthető a https://cacert.omniroot.com/bc2025.crt címről, és .cer kiterjesztéssel helyi fájlba menthető.
+1. Töltse le a Baltimore CyberTrust főtanúsítványát a következő címről: [https://cacert.omniroot.com/bc2025.crt](https://cacert.omniroot.com/bc2025.crt). Nevezze át a fájlt `.cer` kiterjesztésűre.
 
-2. Nyissa meg a pyquickstart.py fájlt, és változtassa meg a 'path\to\cert' paramétert úgy, hogy az új tanúsítványára mutasson.
+   A tanúsítvány sorozatszáma `02:00:00:b9`, az SHA1 ujjlenyomata pedig `d4🇩🇪20:d0:5e:66:fc:53:fe:1a:50:88:2c:78:db:28:52:ca:e4:74`.
 
-3. Mentse a pyquickstart.py fájlt.
+2. Nyissa meg `pyquickstart.py` fájlt, és változtassa meg a `path\to\cert` útvonalat úgy, hogy az új tanúsítványára mutasson.
 
-## <a name="run-the-app"></a>Az alkalmazás futtatása
+3. Mentse a `pyquickstart.py` fájlt.
 
-1. A cd paranccsal a git terminálon váltson az azure-cosmos-db-cassandra-python-getting-started mappára. 
+## <a name="run-the-python-app"></a>A Python-alkalmazás futtatása
+
+1. A cd paranccsal a git terminálon váltson az `azure-cosmos-db-cassandra-python-getting-started` mappára. 
 
 2. Futtassa az alábbi parancsokat a szükséges modulok telepítéséhez:
 
@@ -195,7 +201,7 @@ Lépjen vissza az Azure Portalra a kapcsolati sztring adataiért, majd másolja 
 
     ![A kimenet megtekintése és ellenőrzése](./media/create-cassandra-python/output.png)
     
-    Most megnyithatja az Adatkezelőt az Azure Portalon, ahol lekérdezheti és módosíthatja az új adatokat, valamint dolgozhat azokkal. 
+4. Ha megnyitja az **Adatkezelőt** az Azure Portalon, lekérdezheti és módosíthatja és használhatja az új adatokat. 
 
     ![Adatok megtekintése az Adatkezelőben](./media/create-cassandra-python/data-explorer.png)
 

@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 04/11/2018
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: b0ded0fb274f6b64935ddaba75abf23a94063120
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: c84470936dfc9610f23dacb55d8d8643a2651f71
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38452651"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46948400"
 ---
 # <a name="quickstart-deploy-linux-containers-to-service-fabric"></a>Rövid útmutató: Linux-tárolók üzembe helyezése a Service Fabricben
 
@@ -65,7 +65,7 @@ Jelentkezzen be, és csatlakozzon egy [Linux-fürthöz](http://aka.ms/tryservice
 A Service Fabric számos eszközt nyújt, amelyekkel kezelheti a fürtöket és azok alkalmazásait:
 
 - A Service Fabric Explorert, amely egy böngészőalapú eszköz.
-- A Service Fabric parancssori felületet (CLI-t), amely az Azure CLI 2.0-n fut.
+- A Service Fabric parancssori felületet (CLI-t), amely az Azure CLI-n fut. 
 - PowerShell-parancsokat.
 
 Ebben a rövid útmutatóban a Cloud Shellben lévő Service Fabric parancssori felületet és a Service Fabric Explorert használja. A következő szakaszok bemutatják, hogyan telepítheti a biztonságos fürthöz való csatlakozáshoz szükséges tanúsítványt ezekkel az eszközökkel.

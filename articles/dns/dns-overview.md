@@ -5,14 +5,14 @@ author: vhorne
 manager: jeconnoc
 ms.service: dns
 ms.topic: overview
-ms.date: 6/7/2018
+ms.date: 9/24/2018
 ms.author: victorh
-ms.openlocfilehash: 0812f5e3e23fbf49afec91524b4de2ff0eb7cd9a
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: e3e04bf7e35b22a56465810f476323ed217e047a
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45574181"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46967625"
 ---
 # <a name="what-is-azure-dns"></a>Mi az Azure DNS?
 
@@ -52,6 +52,14 @@ A tartományok és a rekordok az Azure Portal, az Azure PowerShell-parancsmagok 
 Az Azure DNS a privát DNS-tartományok használatát is támogatja, amelyek mostantól nyilvános előzetes verzióban érhetők el. Ez lehetővé teszi, hogy a jelenleg elérhető, Azure által biztosított nevek helyett egyéni tartományneveket használjon a virtuális magánhálózatokon.
 
 További információkat az [Azure DNS privát tartományokhoz való használatát](private-dns-overview.md) ismertető cikkben olvashat.
+
+## <a name="alias-records"></a>Aliasrekordok
+
+Az Azure DNS az aliasrekord-készletek használatát is támogatja. Aliasrekord-készletekkel Azure-erőforrásra is hivatkozhat, például nyilvános Azure IP-címre vagy Traffic Manager-profilra. Ha a mögöttes erőforrás IP-címe módosul, az aliasrekord-készlet a DNS feloldása során zökkenőmentesen frissíti magát. Az aliasrekord-készlet a szolgáltatáspéldányra mutat, a szolgáltatáspéldány pedig egy IP-címmel van társítva. 
+
+Ezenkívül mostantól a legfelső vagy csupasz tartományt (például contoso.com) egy Traffic Manager-profilra irányíthatja egy aliasrekorddal.
+
+További információért lásd: [Az Azure DNS-aliasrekordok áttekintése](dns-alias.md).
 
 
 ## <a name="next-steps"></a>További lépések

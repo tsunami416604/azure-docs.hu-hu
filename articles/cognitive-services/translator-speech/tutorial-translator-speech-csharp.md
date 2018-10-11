@@ -1,78 +1,78 @@
 ---
-title: Translator Speech oktatóanyag (C#) |} A Microsoft Docs
-titleSuffix: Cognitive Services
-description: Ismerje meg, hogyan valós idejű fordíthat a Translator speech service segítségével.
+title: 'Oktatóanyag: Translator Speech API – C#'
+titleSuffix: Azure Cognitive Services
+description: A Translator Speech API használatával valós időben fordíthat szövegeket.
 services: cognitive-services
 author: v-jerkin
-manager: chriswendt1
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-speech
-ms.devlang: csharp
-ms.topic: article
+ms.topic: tutorial
 ms.date: 3/5/2018
 ms.author: v-jerkin
-ms.openlocfilehash: 010ad8b5ceeaf046c8d361ff352e6058154a482d
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
-ms.translationtype: MT
+ROBOTS: NOINDEX
+ms.openlocfilehash: 2de56366c3204e77eb2e6775ddd88b6fc4f0c219
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "41987481"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46993867"
 ---
-# <a name="tutorial-microsoft-translator-wpf-application-in-c"></a>Oktatóanyag: A Microsoft Translator WPF-alkalmazás a C#-ban
+# <a name="tutorial-translator-speech-application-in-c"></a>Oktatóanyag: C# nyelven írt Translator Speech alkalmazás
 
-Ez az oktatóanyag olyan egy interaktív speech fordítási eszközt, amely a Microsoft Translator Speech fordítási szolgáltatás, az Azure-ban a Microsoft Cognitive Services részét bemutatóját. Az alábbiak végrehajtásának módját ismerheti meg:
+Ez az oktatóanyag az Azure Cognitive Services részét képező Translator Speech API-t használó interaktív szövegfordító eszközt mutat be. Az alábbiakat fogja elsajátítani:
 
 > [!div class="checklist"]
-> * Kérelem a szolgáltatás által támogatott nyelvek listája
-> * Hang rögzítése, és továbbítja azt a szolgáltatás
-> * Kap, és megjeleníti a fordítások a beszéd szövegként
-> * Igény szerint lejátszása a fordítás kimondott (szöveg-hang transzformációs) verzióját
+> * A szolgáltatás által támogatott nyelvek listájának lekérése
+> * Hanganyagok rögzítése és közvetítése a szolgáltatás felé
+> * Beszéd fordításának fogadása és szövegként való megjelenítése
+> * A fordítás beszélt változatának (szövegfelolvasás) opcionális lejátszása
 
-Ehhez az alkalmazáshoz a Visual Studio megoldásfájl [elérhető a Githubon](https://github.com/MicrosoftTranslator/SpeechTranslator).
+Az alkalmazáshoz tartozó Visual Studio-megoldásfájl [elérhető a GitHubon](https://github.com/MicrosoftTranslator/SpeechTranslator).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ebben az oktatóanyagban szüksége lesz minden Visual Studio 2017, beleértve a Community Edition kiadását. 
+Ehhez az oktatóanyaghoz a Visual Studio 2017 valamelyik kiadására – a Community Editiont is beleértve – lesz szüksége. 
 
-A Visual Studio-megoldás meg is alapozza a telepítő az alkalmazáshoz. Van szüksége a [WiX eszközkészlet](http://wixtoolset.org/) és a [WiX eszközkészlet a Visual Studio-bővítmény](https://marketplace.visualstudio.com/items?itemName=RobMensching.WixToolsetVisualStudio2017Extension) az funkciót.
+A Visual Studio-megoldás telepítőt is létrehoz az alkalmazáshoz. A funkció támogatásához a [WiX eszközkészlet](http://wixtoolset.org/) és a [WiX eszközkészlethez készült Visual Studio-bővítmény](https://marketplace.visualstudio.com/items?itemName=RobMensching.WixToolsetVisualStudio2017Extension) szükséges.
 
-A Translator Speech szolgáltatáshoz, amelyet a Microsoft Azure-irányítópulton keresztül szerezhet be egy előfizetési kulcsot is szükséges. Egy ingyenes tarifacsomag érhető el, amely lehetővé teszi, hogy akár 10 órányi díjmentes havi speech fordítása. Ezen a szinten is elegendő ehhez az oktatóanyaghoz.
+A Translator Speech szolgáltatáshoz szükség van továbbá egy előfizetői azonosítóra, amelyet a Microsoft Azure-irányítópultról szerezhet be. Az ingyenes tarifacsomag keretében havonta legfeljebb 10 órányi beszédet ingyenesen fordíthat le. Ez a szint elegendő ehhez az oktatóanyaghoz.
 
-A külső [JSON.Net könyvtár](https://www.newtonsoft.com/json) (a Newtonsoft) is szükség. Ez a szerelvény által automatikusan telepített NuGet-csomagok visszaállításának különül engedélyezve vannak a Visual Studio-díjcsomagok Ha.
+A külső [JSON.Net kódtár](https://www.newtonsoft.com/json) (a Newtonsofttól) is szükséges. Ezt a szerelvényt a NuGet automatikusan telepíti, ha mindkét csomag-visszaállítási jelölőnégyzet be van jelölve a Visual Studio beállításaiban.
 
-## <a name="trying-the-translation-app"></a>A fordítási app közben
+## <a name="trying-the-translation-app"></a>A fordítóalkalmazás kipróbálása
 
-A Microsoft a Beszédfordító megoldás megnyitása után (`SpeechTranslator.sln`) a Visual Studióban lenyomja az F5 billentyűt, és indítsa el az alkalmazást.  A program fő ablakában jelenik meg.
+Nyissa meg a Speech Translator megoldást (`SpeechTranslator.sln`) a Visual Studióban, majd nyomja le az F5 billentyűt az alkalmazás összeállításához és futtatásához.  Megjelenik a program fő ablaka.
 
-![[Az Translator speech fő ablakban]](media/speech-translator-main-window.png)
+![[A Speech Translator fő ablaka]](media/speech-translator-main-window.png)
 
-Az első futtatásakor válassza **Fiókbeállítások** származó a **beállítások** menü az itt látható ablak megnyitásához.
+Az első futtatásakor válassza a **Fiókbeállítások** elemet a **Beállítások** menüben az itt látható ablak megnyitásához.
 
-![[Az Translator speech fő ablakban]](media/speech-translator-settings-window.png)
+![[A Speech Translator fő ablaka]](media/speech-translator-settings-window.png)
 
-Ebben az ablakban illessze be a Microsoft Translator Speech előfizetési kulcsot, majd kattintson a **mentéséhez.** A kulcsot a rendszer menti futtatásai között.
+Illessze be a Translator Speech előfizetői azonosítóját ebbe az ablakba, majd kattintson a **Mentés** gombra. A rendszer menti a kulcsot a későbbi futtatáshoz.
 
-Vissza a fő ablakban válassza ki a hang bemeneti és kimeneti eszközök szeretné használni, és a feladó és nyelvek. Ha szeretnénk hallani a hangot a fordítás, ellenőrizze, hogy a **Szövegfelolvasás** (szöveg-hang transzformációs) beállítás be van jelölve. Ha meg szeretné tekinteni a spekulatív részleges fordításokat, a beszéd, engedélyezze a **részleges eredményeket** lehetőséget.
+A fő ablakra visszatérve válassza ki a használni kívánt hangbemeneti és -kimeneti eszközöket, majd a forrás- és célnyelvet. Ha meg kívánja hallgatni a fordítást, ügyeljen rá, hogy be legyen jelölve a **TTS** (szövegfelolvasás) lehetőség. Ha beszéd közben szeretné látni a spekulatív részleges fordításokat, engedélyezze a **Részleges eredmények** lehetőséget.
 
-Végül kattintson **Start** fordítási megkezdéséhez. Tegyük fel, hogy valami lefordított rendelkezik, és nézze meg a felismert szöveget és a fordítás a ablakban jelennek meg. Ha engedélyezte a szöveg-beszéd átalakítás lehetőséget, a fordítás is hallott.
+Végezetül kattintson az **Indítás** gombra a fordítás elindításához. Mondjon valamit, amit le szeretne fordítani, és figyelje, ahogy megjelenik a felismert szöveg és a fordítás az ablakban. Ha engedélyezte a szövegfelolvasás lehetőségét, hallhatja is a fordítást.
 
 ## <a name="obtaining-supported-languages"></a>Támogatott nyelvek beszerzése
 
-Írásának pillanatában a Microsoft Translator szolgáltatás több mint öt tucat nyelveket támogatja a szöveg fordítását. Beszédalapú fordítási kevesebb nyelveket támogatja. Az ilyen nyelvű mindkét beszédátírási (beszédfelismerés), és a szöveg-hang transzformációs kimenet összefoglaló támogatásra van szüksége.
+E dokumentum írásakor a Translator Speech szolgáltatás a szöveges fordítást több mint öt tucat nyelven támogatja. A beszédfordítás esetében a támogatott nyelvek száma kisebb. Ezen nyelvek esetében szükség van az átírás (beszédfelismerés), valamint a szövegfelolvasáshoz a szintézis támogatására is.
 
-Más szóval a tolmácsolás, a Forrásnyelv egyikét kell megadni beszédátírási esetében támogatott. A kimeneti nyelv szövegfordítás, feltéve, hogy azt szeretné, hogy egy szöveges eredményt a támogatott nyelvek bármelyike lehet. Ha azt szeretné, hogy a kimeneti speech, csak lefordíttathatja a szöveg-hang transzformációs támogatott nyelvre.
+Más szóval a beszédfordításhoz a forrásnyelv átírásának támogatása szükséges. A kimeneti nyelv bármely olyan nyelv lehet, amelynek a szöveges fordítása támogatott, feltéve, ha szöveges eredményt szeretne. Ha beszédkimenetre van szüksége, csak olyan nyelvre fordíthat, amelyhez a szövegfelolvasás támogatott.
 
-A Microsoft időről időre új nyelvek támogatását adhat hozzá. Ezen okból kifolyólag nem kódolnia kell az alkalmazásban támogatott nyelvek ismerete. Ehelyett a Translator Speech API, amely lehetővé teszi, hogy futásidőben a támogatott nyelvek beolvasása nyelvek végpontot biztosít. Nyelvek listája egy vagy több fogadásához választhat: 
+A Microsoft időről időre további nyelvek támogatását vezetheti be, ezért ne rögzítse szoftveresen a támogatott nyelvekre vonatkozó ismereteket az alkalmazásaiba. A Translator Speech API egy Nyelvek végpontot biztosít, amely lehetővé teszi a támogatott nyelvek lekérdezését a futtatáskor. Egy vagy több nyelvlista lekérése közül választhat: 
 
 | | |
 |-|-|
-|`speech`|A lejegyzés támogatott nyelveket. Beszédalapú fordítási forrás nyelvet is lehet.|
-|`text`|A szöveg szövegfordítás támogatott nyelveket. Cél nyelveit beszédalapú fordítási akkor lehet, ha a szöveges kimenet szolgál.|
-|`tts`|A beszédszintézishez támogatott beszédhangot, egyes társított nyelv. Cél nyelveit beszédalapú fordítási akkor lehet, ha a szöveg-hang transzformációs szolgál. Egy adott nyelven lehet, hogy egynél több hangalapú támogatja.|
+|`speech`|A beszédátírás támogatott nyelvei. A beszédfordítás forrásnyelvei is lehetnek.|
+|`text`|A szöveges fordítás támogatott nyelvei. A beszédfordítás célnyelvei is lehetnek szöveges kimenet használata esetében.|
+|`tts`|A beszédszintézis támogatott hangjai, amelyek mindegyike egy adott nyelvhez tartozik. A beszédfordítás célnyelvei is lehetnek szövegfelolvasásos kimenet használata esetében. Egy adott nyelvet egynél több hang is támogathat.|
 
-A nyelvek végpont nem igényel egy előfizetési kulcsot, és azok használatát nem számítanak bele a kvótába. Az URI-ja `https://dev.microsofttranslator.com/languages` és az eredményeket JSON formátumban adja vissza.
+A Nyelvek végpont nem igényel előfizetői azonosítót, és a használata nem számít bele a kvótába. Az URI-ja `https://dev.microsofttranslator.com/languages`, és az eredményeket JSON formátumban adja vissza.
 
-A metódus `UpdateLanguageSettingsAsync()` a `MainWindow.xaml.cs`, látható itt, meghívja a nyelvek végpont beolvasni a támogatott nyelvek listáját. 
+A `MainWindow.xaml.cs` itt látható `UpdateLanguageSettingsAsync()` metódusa hívja meg a Nyelvek végpontot a támogatott nyelvek listájának lekéréséhez. 
 
 ```csharp
 private async Task UpdateLanguageSettingsAsync()
@@ -188,54 +188,54 @@ private async Task UpdateLanguageSettingsAsync()
 }
 ```
 
-Ez a módszer először létrehoz egy HTTP-kérelem a nyelvek végpont nyelvek három listáját kérő (`text`, `speech`, és `tts`).
+Ez a metódus először egy, a Nyelvek végpontnak címzett HTTP-kérelmet állít össze, amely mind a három nyelvlistát lekéri (`text`, `speech` és `tts`).
 
-A nyelvek végpontot használ a kérelem `Accept-Languages` fejléc meghatározni a nyelvet, amelyben a nyelvek nevei szerepelnek. Például a nyelv angol nyelvű előadói ismert "Német" nevezik "Deutsch" német és spanyol "Alemán", és nyelvek listáját jeleníti meg a különbségeket. A rendszer alapértelmezett nyelv a fejléc szolgál.
+A Nyelvek végpont a kérelem `Accept-Languages` fejléce alapján határozza meg, melyik nyelven jelenítse meg a nyelvek nevét. Például a magyarul beszélők számára „német” néven ismert nyelv németül „Deutsch”, spanyolul pedig „Alemán”, és a nyelvek listája tükrözi ezeket az eltéréseket. Ez a fejléc a rendszer alapértelmezett nyelvét használja.
 
-Miután a kérelem el lett küldve, és azokat a belső adattárakon elemzi a JSON-válasz érkezik, a válasz. Ezen szerkezetek vannak majd segítségével hozza létre a a nyelv és a nyelvi menü. 
+Ha a kérelem el lett küldve, és megérkezett a JSON-válasz, a választ belső adatszerkezetekbe elemzi a rendszer. A Forrásnyelv és Célnyelv menük létrehozása e belső struktúrák alapján történik. 
 
-Rendelkezésre álló beszédhangot attól függ, hogy a felhasználó által kiválasztott, nyelvi, mivel nem állítható be a hangalapú menü még. Ehelyett az egyes nyelvekhez tartozó elérhető hangok tárolódnak későbbi használatra. A `ToLanguage_SelectionChanged` (ugyanabban a fájlban forrás) kezelő később frissíti a hangalapú menü meghívásával `UpdateVoiceComboBox()` amikor a felhasználó úgy dönt, a nyelvet. 
+Mivel az elérhető hangok a felhasználó által választott Célnyelvtől függenek, még nem lehetséges a Hang menü felépítése. Ehelyett az egyes nyelvekhez tartozó elérhető hangok későbbi használatra tárolódnak. A `ToLanguage_SelectionChanged` kezelő (ugyanebben a forrásfájlban) később frissíti a Hang menüt az `UpdateVoiceComboBox()` meghívásával, amikor a felhasználó kiválasztja a Célnyelvet. 
 
-Csak a szórakoztató a nyelv véletlenszerűen kiválasztása a felhasználó nem futott az alkalmazás előtt. (A menü Beállítások tárolt munkamenetek között.)
+A móka kedvéért a Célnyelv kiválasztása véletlenszerűen történik, ha a felhasználó most futtatja először az alkalmazást. (A menübeállításokat a munkamenetek között menti a rendszer.)
 
 ## <a name="authenticating-requests"></a>Kérelmek hitelesítése
 
-A Microsoft Translator Speech szolgáltatással kell az Azure-előfizetési kulcs küldése a fejléc értékeként való hitelesítésre `Ocp-Apim-Subscription-Key` a kapcsolati kérésben.
+A Microsoft Translator Speech szolgáltatással való hitelesítéshez az Azure előfizetői azonosítóját kell a `Ocp-Apim-Subscription-Key` értékeként elküldenie a csatlakozási kérelem fejlécében.
 
-## <a name="translation-overview"></a>Fordítási áttekintése
+## <a name="translation-overview"></a>Fordítás áttekintése
 
-A fordítás API-t (a websockets protokoll végpont `wss://dev.microsofttranslator.com/speech/translate`) fogad hang lehet a monophonic, 16 kHz, 16 bites aláírt audiostreamként. A szolgáltatás legalább egy JSON-válaszok tartalmazó, mind a felismert és lefordított szöveget adja vissza. Szöveg-hang transzformációs van szükség, ha egy hangfájlt zajlik.
+A Translate API (WebSockets-végpont: `wss://dev.microsofttranslator.com/speech/translate`) mono, 16 kHz-es, 16 bites aláírt WAVE formátumban fogad hangbemenetet fordításra. A szolgáltatás egy vagy több JSON-választ ad vissza, amelyek tartalmazzák a felismert és a fordított szöveget is. Szövegfelolvasás igénylése esetén a rendszer hangfájlt küld.
 
-A felhasználó úgy dönt, hogy a bemeneti mikrofon/fájl menü segítségével hangforrásról. A hang-eszköz (például a mikrofon) vagy a származhat egy `.WAV` fájlt.
+A felhasználó kiválasztja a hangforrást a Mikrofon/Fájlbemenet menüben. A hang forrása lehet egy hangeszköz (pl. mikrofon) vagy egy `.WAV` fájl.
 
-A metódus `StartListening_Click` akkor aktiválódnak, ha a felhasználó a Start gombra kattint. Az eseménykezelő meghívja `Connect()` hang küldeni a szolgáltatás API-végpont a folyamat megkezdéséhez. A `Connect()` módszer a következő feladatokat hajtja végre:
+Amikor a felhasználó az Indítás gombra kattint, a rendszer meghívja a `StartListening_Click` metódust. Ez az eseménykezelő ekkor a `Connect()` meghívásával megkezdi a hanganyag elküldését a szolgáltatás API-végpontjának. A `Connect()` metódus a következő feladatokat végzi el:
 
-
-> [!div class="checklist"]
-> * Felhasználói beállítások lekérése a fő ablakot, és ellenőrizze őket
-> * Inicializálása a hang bemeneti és kimeneti steamjeihez
-> * Hívó `ConnectAsync()` , a többit bízza a munka
-
-`ConnectAsync()`, viszont kezeli a következő teendőt:
 
 > [!div class="checklist"]
-> * Az Azure Subscription-key fejléc a hitelesítése `Ocp-Apim-Subscription-Key`
-> * Létrehozás egy `SpeechClient` példány (található `SpeechClient.cs`) a szolgáltatással való kommunikációra
-> * Inicializálása `TextMessageDecoder` és `BinaryMessageDecoder` példányok (lásd: `SpeechResponseDecoder.cs`) válaszok kezeléséhez
-> * A hang-n keresztül küld a `SpeechClient` a Translator Speech service-példány
-> * Fogadására és feldolgozására a fordítás az eredményeit
+> * Felhasználói beállítások lekérése a főablakból, majd azok ellenőrzése
+> * A hangbemeneti és -kimeneti streamek inicializálása
+> * A `ConnectAsync()` meghívása a további feladatok elvégzéséhez
 
-A felelősséget a `SpeechClient` kevesebb:
+A `ConnectAsync()` a következő feladatokról gondoskodik:
 
 > [!div class="checklist"]
-> * A Translator Speech service WebSocket kapcsolatot
-> * Hang adatküldés és a válaszfogadás a szoftvercsatorna-n keresztül
+> * Hitelesítés a `Ocp-Apim-Subscription-Key` fejlécben lévő Azure előfizetői azonosítóval
+> * `SpeechClient`-példány létrehozása (helye: `SpeechClient.cs`) a szolgáltatással való kommunikációhoz
+> * `TextMessageDecoder`- és `BinaryMessageDecoder`-példányok inicializálása (lásd: `SpeechResponseDecoder.cs`) a válaszok kezeléséhez
+> * A hanganyag `SpeechClient`-példány révén történő elküldése a Translator Speech szolgáltatásnak
+> * A fordítás eredményének fogadása és feldolgozása
 
-## <a name="a-closer-look"></a>Részletes bemutatása
+A `SpeechClient` feladatköre kisebb:
 
-Kell világosabb most már az alkalmazás részei együttműködésének a fordítási kérelem végrehajtásához. Vessünk egy pillantást egy kódrészletet, a fontos részekkel kellene összpontosítani.
+> [!div class="checklist"]
+> * WebSocket-kapcsolat létesítése a Translator Speech szolgáltatással
+> * Hangadatok elküldése és válaszok fogadása a szoftvercsatornán keresztül
 
-Íme egy részleges verziója `Connect()` , amely az audio-adatfolyamokat beállítás jelenik meg:
+## <a name="a-closer-look"></a>Közelebbi vizsgálat
+
+Mostanra már jobban tisztában lehet vele, hogyan működnek együtt az alkalmazás egyes részei a fordítási kérés végrehajtása céljából. Nézzük meg a kódot, a fontos részekre koncentrálva.
+
+Íme a `Connect()` egy részleges változata, amely a hangstreamek felépítését mutatja:
 
 ```csharp
 private void Connect()
@@ -357,11 +357,11 @@ private void Connect()
 }
 ```
 
-Egy jelentős része `Connect()` magában foglalja a létrehozása egy `SpeechClientOptions` példány (lásd: `SpeechClientOptions.cs`), amely tárolja a fordítási lehetőségeket. A lehetőségek között (például a hitelesítési kulcsot és állomásnév) a szolgáltatáshoz való csatlakozáshoz szükséges információkat és a fordításhoz használt funkciókhoz. Itt a mezők leképezése a üzenetfejlécének mezői és által elérhetővé tett HTTP-paraméterek [a Translator Speech API](https://docs.microsoft.com/azure/cognitive-services/translator-speech/reference).
+A `Connect()` jelentős részét egy `SpeechClientOptions`-példány létrehozása teszi ki (lásd: `SpeechClientOptions.cs`), amely a fordítás beállításait tartalmazza. A beállításokba tartoznak a szolgáltatáshoz való csatlakozáshoz szükséges információk (pl. hitelesítési kulcs és gazdagépnév), valamint a fordításhoz használt funkciók. Az itt található mezők a [Translator Speech API](https://docs.microsoft.com/azure/cognitive-services/translator-speech/reference) által elérhetővé tett fejlécmezőkbe és HTTP-paraméterekbe lesznek leképezve.
 
-`Connect()` is hoz létre, és előkészíti a hangbemeneti eszköz (változó `sampleProvider`), amely kiszolgálja a speech lehet forrásaként. Ez az eszköz, vagy egy bemeneti hardvereszközhöz, például egy mikrofonnal, vagy egy WAVE hang adatokat tartalmazó fájl.
+A `Connect()` továbbá létrehozza és inicializálja a bementi hangeszközt (`sampleProvider` változó), amely a fordítandó beszédanyag forrásaként szolgál. Ez az eszköz vagy hardveres bemeneti eszköz, pl. mikrofon, vagy egy WAVE-hangadatokat tartalmazó fájl.
 
-Íme a `ConnectAsync()` módszer, amely példányosítja az `speechClient` osztály és kezeli a szöveg és a szolgáltatás bináris parancsválaszait névtelen funkciók be hurkokat.
+Íme a `ConnectAsync()` metódus, amely példányosítja a `speechClient` osztályt, és névtelen függvényeket csatlakoztat a szolgáltatástól érkező szöveges és bináris válaszok kezeléséhez.
 
 ```csharp
 private async Task ConnectAsync(SpeechClientOptions options, bool suspendInputAudioDuringTTS)
@@ -422,13 +422,13 @@ private async Task ConnectAsync(SpeechClientOptions options, bool suspendInputAu
 }
 ```
 
-Hitelesítés után a metódus létrehozza a `SpeechClient` példány. A `SpeechClient` osztály (a `SpeechClient.cs`) hívja meg az eseménykezelőket beérkezési bináris és szöveges adatokat. További kezelők kerül meghívásra, ha a kapcsolat meghibásodik vagy bontja a kapcsolatot.
+A hitelesítés után a metódus létrehozza a `SpeechClient`-példányt. A `SpeechClient`-osztály (helye: `SpeechClient.cs`) eseménykezelőket hív meg a bináris és szöveges adatok fogadásakor. Ha a kapcsolat sikertelen vagy megszakad, további kezelők lesznek meghívva.
 
-Bináris adatok a hang (szöveg-hang transzformációs kimeneti), a szolgáltatás által küldött, ha engedélyezve van a szöveg-beszéd átalakítás. Szöveges adatok egy részleges vagy teljes fordítását, a kimondott szöveg. Úgy hárítható el, miután a metódus kezelje ezeket az üzeneteket funkciókat hooks: audio tárolva későbbi lejátszás és szöveget az ablakban megjelenítésével.
+A bináris adatok a szolgáltatás által küldött hangadatok (szövegfelolvasási kimenet), ha a TTS engedélyezve van. A szöveges adatok a beszélt szöveg részleges vagy teljes fordítását tartalmazzák. Tehát a példányosítás után a metódus függvényeket csatlakoztat ezeknek az üzeneteknek a kezeléséhez: a hangadatokat későbbi lejátszás céljából tárolja, a szöveget pedig megjeleníti az ablakban.
 
 ## <a name="next-steps"></a>További lépések
 
-Ez a kódminta a funkciógazdag alkalmazások bemutatásához a Translator Speech API használatát. Emiatt a nincsenek megértéséhez részek valós számát. A legfontosabb bits bizonnyal már. A többi lehet fontos információkat tartalmazó állítson be néhány töréspontokat a Visual Studio és a fordítási folyamat bemutatására. Miután megismerte a mintaalkalmazást, a használt látni a Translator Speech service használata a saját alkalmazásokban.
+Ez a kódminta egy funkciókban gazdag alkalmazás, amely a Translator Speech API használatát mutatja be. Ebből kifolyólag sok, megértést kívánó, mozgó alkatrésze van. A legfontosabb részeket már megismerte. A továbbiak megértése szempontjából tanulságos lehet töréspontokat beállítani a Visual Studióban, és végighaladni a fordítási folyamaton. Ha megértette a mintaalkalmazást, képes lesz használni a Translator Speech szolgáltatást a saját alkalmazásaiban.
 
 > [!div class="nextstepaction"]
-> [A Microsoft Translator Speech API-referencia](https://docs.microsoft.com/azure/cognitive-services/translator-speech/reference)
+> [Microsoft Translator Speech API-referencia](https://docs.microsoft.com/azure/cognitive-services/translator-speech/reference)

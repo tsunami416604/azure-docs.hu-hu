@@ -1,9 +1,9 @@
 ---
-title: Az Azure verem terv, ajánlat, kvóta és előfizetés áttekintése |} Microsoft Docs
-description: Felhő operátorként kívánt Azure verem terveket, ajánlatokat, kvóták és előfizetések ismertetése.
+title: Az Azure Stack csomag, ajánlat, kvóta és előfizetés áttekintése |} A Microsoft Docs
+description: Felhő-felelősként szeretnék megtudni az Azure Stack csomagok, ajánlatok, kvóták és előfizetések.
 services: azure-stack
 documentationcenter: ''
-author: brenduns
+author: sethmanheim
 manager: femila
 editor: ''
 ms.assetid: 3dc92e5c-c004-49db-9a94-783f1f798b98
@@ -13,75 +13,75 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 06/07/2018
-ms.author: brenduns
+ms.author: sethm
 ms.reviewer: ''
-ms.openlocfilehash: d8aef778807d3a8a61cf9eedaae24abce84a19ab
-ms.sourcegitcommit: 50f82f7682447245bebb229494591eb822a62038
+ms.openlocfilehash: 70ed5d45701133434c708ad80aaafc58645297e8
+ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35248758"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49077119"
 ---
 # <a name="plan-offer-quota-and-subscription-overview"></a>Csomag, ajánlat, kvóta és előfizetés áttekintése
 
-*A következőkre vonatkozik: Azure verem integrált rendszerek és az Azure verem szoftverfejlesztői készlet*
+*A következőkre vonatkozik: Azure Stackkel integrált rendszerek és az Azure Stack fejlesztői készlete*
 
-[Azure verem](azure-stack-poc.md) megadható, hogy számos átadná szolgáltatások, például a virtuális gépeket, SQL Server-adatbázisok, SharePoint, Exchange, sőt akár [Azure piactéren elemek](azure-stack-marketplace-azure-items.md). Azure verem kezelőként konfigurálása, és ilyen szolgáltatások biztosításához Azure verem terveket, a ajánlatok és a kvóták segítségével.
+[Az Azure Stack](azure-stack-poc.md) széles választéka révén lehetővé teszi szolgáltatások, például virtuális gépeket, SQL Server-adatbázisok, a SharePoint, Exchange, sőt akár [Azure Marketplace-elemek](azure-stack-marketplace-azure-items.md). Az Azure Stack operátorait szerint konfigurálja, és ezek a szolgáltatások biztosításához az Azure Stackben csomagok, ajánlatok és kvóták használatával.
 
-Ajánlatok tartalmazhat egy vagy több terveket, és minden csomag tartalmaz egy vagy több szolgáltatás. Tervek létrehozásával, és azokat a különböző ajánlatok kombinálásával, kezelheti:
+Ajánlatok tartalmaznak egy vagy több terveket, és minden csomag egy vagy több szolgáltatást is magában foglal. Csomagok létrehozása, és azokat összefűzhet ajánlatáról, kezelheti:
 
-- Mely szolgáltatások és erőforrások a felhasználók férhetnek hozzá.
-- A mérete, hogy a felhasználók is felhasználhatnak.
-- Mely régiókat férhetnek hozzá az erőforrásokhoz.
+- Melyik szolgáltatások és erőforrások a felhasználók férhetnek hozzá.
+- A felhasználók akkor használhatnak erőforrások mennyiségét.
+- Mely régiók rendelkezik az erőforrásokhoz való hozzáférést.
 
-Ha valamilyen szolgáltatás biztosításához kövesse az alábbi magas szintű lépéseket:
+Ha valamilyen szolgáltatás biztosításához, kövesse az alábbi magas szintű lépéseket:
 
-1. Adjon hozzá egy szolgáltatás, amelyet telepíthet a felhasználók számára.
-2. Hozzon létre egy tervet, amely rendelkezik egy vagy több szolgáltatást. Terv létrehozása, amikor válassza ki, vagy a csomagban az erőforrás korlátai által megszabott minden egyes szolgáltatás meghatározó kvóták létrehozása.
-3. Hozzon létre egy vagy több terveket tartalmazó ajánlatot. Az ajánlat alap tervek és választható bővítmény terveket tartalmazhatnak.
+1. Adjon hozzá egy szolgáltatás, amely a felhasználók számára szeretné.
+2. Hozzon létre egy csomagot, amely rendelkezik egy vagy több szolgáltatást. Amikor csomagot hoz létre, válassza ki, vagy a kvóták, amelyek meghatározzák az egyes szolgáltatások erőforráskorlátok a csomag létrehozása.
+3. Hozzon létre egy ajánlatot, amely egy vagy több csomag tartalmazza. Az ajánlat alapcsomagok és a választható kiegészítő csomagok tartalmazhatnak.
 
-Az ajánlat létrehozása után a felhasználók előfizethetnek a szolgáltatásokat és erőforrásokat biztosít a ajánlat elérésére. Felhasználók előfizethetnek annyi ajánlatok szerint. Az alábbi ábrán egy egyszerű példa egy felhasználó két ajánlatok fizet elő. Minden egyes ajánlat rendelkezik a szolgáltatáscsomag vagy a kettő, és minden terv hozzáférést biztosít szolgáltatások.
+Miután létrehozta az ajánlatra, a felhasználók előfizethetnek hozzáférjen a szolgáltatásokhoz és erőforrásokhoz, az ajánlat biztosít. Felhasználók is előfizethetnek azokra annyi konfigurálhatnak. Az alábbi ábrán egy olyan felhasználó, aki két ajánlatok előfizetett egyszerű példát mutat be. Minden ajánlat esetében a szolgáltatáscsomag vagy a kettő, és minden a terv elérhetik a szolgáltatásokat.
 
-![Bérlői előfizetéshez ajánlatok és tervek](media/azure-stack-key-features/image4.png)
+![Bérlő előfizetési ajánlatok és csomagok](media/azure-stack-key-features/image4.png)
 
 ## <a name="plans"></a>Tervek
 
-Tervek csoportosítását egy vagy több szolgáltatást is. Azure verem kezelőként Ön [tervek létrehozása](azure-stack-create-plan.md) történő szinkronizálásával. A felhasználók, a csomagok és szolgáltatások tartoznak a ajánlatok előfizetni. Tervek létrehozásakor győződjön meg arról, hogy a kvótákat, az alap tervek meghatározása, és nem kötelező bővítmény terveket is.
+Csomagok egy vagy több szolgáltatás csoportjai. Az Azure Stack operátorait szerint Ön [terveket hozhat létre](azure-stack-create-plan.md) nyújtani a felhasználóknak. Ezután a felhasználók előfizethetnek azokra a a csomagok és szolgáltatások tartoznak. Tervek létrehozásakor ügyeljen arra, hogy a kvóták beállítása, a alapcsomagok definiálása és fontolja meg, beleértve a választható kiegészítő csomagok.
 
 ### <a name="quotas"></a>Kvóták
 
-Kezelheti a felhő kapacitása, előre konfigurált kvótákat használni, vagy létrehozhat egy új kvótát minden egyes szolgáltatás egy csomagban. Kvóták határait felső erőforrás felhasználói előfizetés kiépítése vagy felhasználását. Például a kvóta lehetővé teheti a felhasználó legfeljebb öt virtuális gépek (VM) létrehozásához. A virtuális gépeken, például a memória és CPU magok beállíthatja a további kvótákról.
+Amelyek segítségével kezelheti a felhő kapacitása, használja az előre konfigurált kvóták, vagy hozzon létre egy új kvótát az egyes szolgáltatások egy csomagban. Kvóták, amely a felhasználói előfizetés is üzembe helyezése és felhasználása felső erőforráskorlátok adja meg. Például kvóta lehetővé teheti a felhasználó legfeljebb öt virtuális gépek (VM) létrehozásához. A virtuális gépek, mint a RAM-MAL és CPU-magok további kvótákról meg.
 
-Régiónként kvóták is rendelhetők. Például egy számítási szolgáltatásokat biztosít a terület A terv eredményezhet. a kvóta a 4 GB RAM és 8 processzormag két virtuális gépek.
+Beállíthatja, hogy kvótái régiónként. Például a számítási szolgáltatásokat nyújt a terület A csomagot lehet két virtuális gépet a 4 GB RAM és 8 processzormag-kvótát.
 
 >[!NOTE]
->A csomagban Azure verem, csak egy régió tartozik (nevű *helyi*) érhető el.
+>Az az Azure Stack Development Kit, csak egy régió (nevű *helyi*) érhető el.
 
-További információ [kvóta típusok Azure verem](azure-stack-quota-types.md).
+Tudjon meg többet [kvótatípusok az Azure Stackben](azure-stack-quota-types.md).
 
 ### <a name="base-plan"></a>Alapcsomag
 
-Az ajánlat létrehozásakor a szolgáltatás-rendszergazda tartalmazhat egy referenciaterv. E alap tervek szerepelnek alapértelmezés szerint, amikor a felhasználó adott ajánlatra. Amikor a felhasználó, hozzáférhetnek az e alap terveket (és a megfelelő kvóták.) a megadott összes erőforrás-szolgáltató
+Az ajánlat létrehozásakor a szolgáltatás-rendszergazda tartalmazhat egy alapcsomagot. Ezek alapcsomagok szerepelnek alapértelmezés szerint, amikor a felhasználó az ajánlat. Amikor a felhasználó, ők is hozzáférhetnek az e alap terveket (és a megfelelő kvóták.) a megadott összes erőforrás-szolgáltató
 
 ### <a name="add-on-plans"></a>Kiegészítő csomagok
 
-Bővítmény tervek tervekben választható ajánlatot ad hozzá. Bővítmény tervek alapértelmezés szerint az előfizetés a nem tartalmaz. Bővítmény tervek további terveket (kvóták), amely az előfizető adhat hozzá az előfizetések ajánlatot érhető el. Például kínálhat egy referenciaterv próbaverziójára korlátozott erőforrásokkal, és nagyobb mértékű erőforrásokkal bővítmény tervének az ügyfelek, akik úgy dönt, hogy elfogadja a szolgáltatást.
+Kiegészítő csomagok tervekben választható ajánlat ad hozzá. Az előfizetés alapértelmezés szerint nem szerepelnek a kiegészítő csomagok. Kiegészítő csomagok további tervek (és kvóták), egy előfizető hozzáadhat saját előfizetések ajánlat érhető el. Például egy alapcsomagot a korlátozott erőforrásokkal ingyenes próbaverziójára, és a egy kiegészítő csomag további lényeges erőforrásokkal is kínálnak az ügyfelek számára, akik úgy dönt, hogy a szolgáltatás fogad el.
 
 ## <a name="offers"></a>Ajánlatok
 
-Ajánlatok olyan beállításcsoportok, egy vagy több tervek az Ön által létrehozott, hogy a felhasználók előfizethetnek őket. Például kínálnak Alpha terv A, amely biztosít számítási szolgáltatások és tervezze meg a B kiszolgálóra, tárolási és hálózati szolgáltatásokat biztosít, amely tartalmazhat.
+Ajánlatok egy vagy több tervek, hogy a felhasználók előfizethetnek az őket létrehozó csoportjai. Például ajánlat Alpha terv A, amely biztosítja a számítási szolgáltatások és a terv B, amely biztosítja a tárolási és hálózati szolgáltatások tartalmazhat.
 
-Ha Ön [hozzon létre egy ajánlatot](azure-stack-create-offer.md), meg kell adni legalább egy referenciaterv, de bővítmény terveket tartalmazhatnak, amelyek felhasználókat adhat hozzá az előfizetés is létrehozhat.
+Ha Ön [hozzon létre egy ajánlatot](azure-stack-create-offer.md), akkor tartalmaznia kell legalább egy alapcsomagot, de is létrehozhat, amelyek felhasználókat adhat hozzá az előfizetés kiegészítő csomagok.
 
 ## <a name="subscriptions"></a>Előfizetések
 
-Az előfizetés egy, a felhasználók miként csatlakoznak a ajánlatokat. Ha Ön Azure verem operátor szolgáltató, a felhasználók (bérlőkkel) vásároljon a szolgáltatások a ajánlatok való feliratkozással. Ha egy szervezet Azure verem operátort, a felhasználók (alkalmazottak) fizethet nélkül fizető kínált szolgáltatásokat.
+Az előfizetés egy, hogy a felhasználók miként férhetnek hozzá az ajánlatok. Ha Ön az Azure Stack operátorait szolgáltató, a a felhasználók (bérlők) a szolgáltatások megvásárlása az ajánlatok való feliratkozással. Ha egy szervezet az Azure Stack operátorait, a felhasználók (alkalmazottak) előfizethetnek anélkül kínált szolgáltatásokat.
 
-Ajánlattal felhasználó minden értékkombinációja egyedi előfizetés. Egy felhasználó rendelkezhet több ajánlatokat az előfizetések, de az egyes előfizetések csak egy ajánlat vonatkozik. Tervek ajánlatok és kvóták csak vonatkozik egy egyedi – nem osztható előfizetések között. Az egyes erőforrások egy felhasználó által létrehozott egy előfizetés tartozik.
+Egy felhasználó egy ajánlatot az egyes kombinációja egy egyedi előfizetésre szükség. Felhasználók még több ajánlatok, előfizetések, de az egyes előfizetésekhez csak egyszer veheti igénybe az vonatkozik. Csomagok, ajánlatok és kvóták csak az egyedi előfizetés a alkalmazni – ezek az előfizetések között nem lehet megosztani. Egy felhasználó által létrehozott minden erőforrás egy előfizetéssel társítva.
 
-### <a name="default-provider-subscription"></a>Alapértelmezett szolgáltató előfizetés
+### <a name="default-provider-subscription"></a>Alapértelmezett szolgáltatói előfizetés
 
-Az alapértelmezett szolgáltató előfizetés automatikusan létrejön a Azure verem csomag telepítésekor. Ez az előfizetés kezelése az Azure-vermet, további erőforrás-szolgáltatók telepítéséhez és tervek és a felhasználók ajánlatok létrehozása használható. A biztonsági és licencelési okok azt nem használja ügyfél számítási feladatok és alkalmazások futtatásához.
+Az alapértelmezett szolgáltatója előfizetés az Azure Stack Development Kit központi telepítésekor automatikusan létrejön. Ez az előfizetés kezelése az Azure Stack, további erőforrás-szolgáltató üzembe helyezése és csomagokat és ajánlatokat felhasználók létrehozásához használható. Biztonsági és licencelési okokból azt nem használható ügyfél számítási feladatok és alkalmazások futtatásához.
 
 ## <a name="next-steps"></a>További lépések
 
