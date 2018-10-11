@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 9/26/2018
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 6c54706f45653c43e6b41d0adb3132583079e6b6
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: d86ce2e1bac2fb58df8df748381a00eac21e65cb
+ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47167530"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48016934"
 ---
 # <a name="tutorial-create-an-autoscaling-zone-redundant-application-gateway-with-a-reserved-virtual-ip-address-using-azure-powershell"></a>Oktatóanyag: Fenntartott IP-címmel rendelkező, automatikus skálázású, zónaredundáns Application Gateway létrehozása az Azure PowerShell használatával
 
@@ -119,7 +119,7 @@ Most megadhatja az Application Gateway automatikus skálázási konfigurációj�
 - **Rögzített kapacitású mód**. Ebben a módban az Application Gateway nem automatikus skálázású, és rögzített skálázásiegység-kapacitással működik.
 
    ```azurepowershell
-   $sku = New-AzureRmApplicationGatewaySku -Name Standard_v2 -Tier Standard_v2
+   $sku = New-AzureRmApplicationGatewaySku -Name Standard_v2 -Tier Standard_v2 -Capacity 2
    ```
 - **Automatikus skálázási mód**. Ebben a módban az Application Gateway az alkalmazás forgalmi mintázata alapján automatikus skálázású.
 
