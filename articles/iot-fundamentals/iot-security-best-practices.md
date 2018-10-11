@@ -1,26 +1,22 @@
 ---
 title: Ajánlott biztonsági eljárások az IoT-hez
 description: Ajánlott biztonsági eljárások az IoT-infrastruktúra védelme
-author: dominicbetts
-manager: timlt
+author: robinsh
 ms.service: iot-fundamentals
 services: iot-fundamentals
 ms.topic: conceptual
-ms.date: 06/14/2018
-ms.author: dobett
-ms.openlocfilehash: dd34cbb2cf79bb5a490e7cf19319a3fce7e8178f
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.date: 10/09/2018
+ms.author: robinsh
+ms.openlocfilehash: 2cddb68aa83d131b11932e53f6f2c08600088010
+ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "42060131"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49066972"
 ---
 [!INCLUDE [iot-security-best-practices](../../includes/iot-security-best-practices.md)]
 
 ## <a name="see-also"></a>Lásd még
-A megoldás hozott létre egy IoT-megoldásgyorsítók védelmével kapcsolatos további tudnivalókért lásd: [biztonságos az IoT-környezet][lnk-security-deployment].
+A megoldás hozott létre egy IoT-megoldásgyorsítók védelmével kapcsolatos további tudnivalókért lásd: [biztonságos az IoT-környezet](iot-security-deployment.md).
 
-További információ az IoT Hub biztonsági [férhet hozzá az IoT Hub] [ lnk-devguide-security] az IoT Hub fejlesztői útmutatójában található.
-
-[lnk-security-deployment]: iot-security-deployment.md
-[lnk-devguide-security]: /azure/iot-hub/iot-hub-devguide-security
+További információ az IoT Hub biztonsági [férhet hozzá az IoT Hub](../iot-hub/iot-hub-devguide-security.md) az IoT Hub fejlesztői útmutatójában található.

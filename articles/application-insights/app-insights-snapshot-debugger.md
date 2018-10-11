@@ -10,21 +10,23 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/08/2018
+ms.date: 10/10/2018
 ms.reviewer: pharring
 ms.author: mbullwin
-ms.openlocfilehash: 887e3361f5cb472d7a105558684d156826f89eab
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: 6dd39fddd99f5f8ea9329f21c271ed4c1063362d
+ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48237247"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49078970"
 ---
 # <a name="debug-snapshots-on-exceptions-in-net-apps"></a>A .NET-alkalmazások kivételeinek hibakeresési pillanatképei
 
 Ha egy kivétel lép fel, automatikusan gyűjtheti hibakereső pillanatképek az élő webalkalmazások. A pillanatkép abban a pillanatban a kivétel történt a Forráskód és a változók állapotát mutatja. A pillanatkép-hibakereső (előzetes verzió) a [Azure Application Insights](app-insights-overview.md) kivétel telemetriát a webalkalmazás figyeli. Ez adatokat gyűjt a pillanatképek a felső értesítő kivételek, hogy rendelkezik diagnosztizálhatja a problémákat, éles környezetben a szükséges információkat. Tartalmazza a [Snapshot collector NuGet-csomag](http://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) az alkalmazásban, és szükség esetén konfigurálja a gyűjtési paramétereket lévő [ApplicationInsights.config](app-insights-configuration-with-applicationinsights-config.md). A pillanatképek jelennek meg [kivételek](app-insights-asp-net-exceptions.md) az Application Insights portálon.
 
 A portálon a hibakeresési pillanatfelvételeket megtekintve láthatja a hívásvermet és megvizsgálhatja a változókat az egyes hívásveremkeretekre vonatkozóan. A hatékonyabb hibakeresési környezetben a forráskóddal beszerzéséhez nyissa meg a pillanatképek a Visual Studio 2017 Enterprise [a pillanatkép-hibakereső bővítmény letöltése a Visual Studióhoz készült](https://aka.ms/snapshotdebugger). A Visual Studióban is [állítsa be az interaktív módon pillanatfelvételeket Snappoints](https://aka.ms/snappoint) kivétel nélkül.
+
+Hibakeresési pillanatképek hét napig tárolja. A megőrzési házirend van beállítva a alkalmazásonként. Ha ez az érték növelése van szüksége, kérheti növelését az Azure Portalon nyissa meg egy támogatási esetet.
 
 Pillanatkép-gyűjtemény érhető el:
 * .NET-keretrendszer és az ASP.NET alkalmazások futtatása a .NET-keretrendszer 4.5-ös vagy újabb.

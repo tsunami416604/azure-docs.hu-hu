@@ -3,18 +3,16 @@ title: Az Azure-beli Kubernetes Helm-tárolók üzembe helyezése
 description: Tárolók az Azure Kubernetes Service (AKS)-fürt üzembe helyezése a Helm csomagolás eszközzel
 services: container-service
 author: iainfoulds
-manager: jeconnoc
 ms.service: container-service
 ms.topic: article
-ms.date: 07/13/2018
+ms.date: 10/01/2018
 ms.author: iainfou
-ms.custom: mvc
-ms.openlocfilehash: dd2deba25615373765dd3492d03c1ba547c8ba8c
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: d95f7ad337e52aed47656c2ea60e6b193a427946
+ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39055134"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49068577"
 ---
 # <a name="install-applications-with-helm-in-azure-kubernetes-service-aks"></a>Alkalmazások telepítése a Helm használatával az Azure Kubernetes Service (AKS)
 
@@ -26,32 +24,11 @@ Ez a cikk bemutatja, hogyan konfigurálhatja és használhatja a Helm a Kubernet
 
 Ebben a dokumentumban ismertetett lépések feltételezik, hogy már létrehozott egy AKS-fürtöt, és létrehozott egy `kubectl` kapcsolatot a fürttel. Ha ezeket az elemeket kell jelenik meg, a [AKS gyors][aks-quickstart].
 
-## <a name="install-helm-cli"></a>Helm CLI telepítése
-
-A Helm CLI egy ügyfél, amely a fejlesztői rendszeren fut, és lehetővé teszi, hogy indítása, leállítása és felügyelje alkalmazásait, a Helm használatával.
-
-Ha az Azure Cloud Shellt használja, a Helm CLI már telepítve van. A Helm CLI telepítéséhez a Mac számítógépen, használjon `brew`. A további telepítési lehetőségek lásd [telepítése Helm][helm-install-options].
-
-```console
-brew install kubernetes-helm
-```
-
-Kimenet:
-
-```
-==> Downloading https://homebrew.bintray.com/bottles/kubernetes-helm-2.9.1.high_sierra.bottle.tar.gz
-######################################################################## 100.0%
-==> Pouring kubernetes-helm-2.9.1.high_sierra.bottle.tar.gz
-==> Caveats
-Bash completion has been installed to:
-  /usr/local/etc/bash_completion.d
-==> Summary
-🍺  /usr/local/Cellar/kubernetes-helm/2.9.1: 50 files, 66.2MB
-```
+A Helm CLI telepítve van, az ügyfél, amely a fejlesztői rendszeren fut, és lehetővé teszi, hogy indítása, leállítása és felügyelje alkalmazásait, a Helm használatával is szükséges. Ha az Azure Cloud Shellt használja, a Helm CLI már telepítve van. A témakör a telepítési utasításokat a helyi platformon, [telepítése Helm][helm-install].
 
 ## <a name="create-a-service-account"></a>Szolgáltatásfiók létrehozása
 
-Helm RBAC képességű-fürtben való telepítéséhez, szükség van a szolgáltatásfiók és a szerepkör kötést a tiller valóban szolgáltatás. További információ biztonságossá tenni a Helm / az RBAC a tiller valóban engedélyezve van a fürtöt, tekintse meg [a tiller valóban, a névterek és az RBAC][tiller-rbac]. Ha a fürt nem RBAC engedélyezve van, hagyja ki ezt a lépést.
+Az RBAC-kompatibilis AKS-fürt telepítése Helm, előtt szükség van a szolgáltatásfiók és a szerepkör kötést a tiller valóban szolgáltatás. További információ biztonságossá tenni a Helm / az RBAC a tiller valóban engedélyezve van a fürtöt, tekintse meg [a tiller valóban, a névterek és az RBAC][tiller-rbac]. Ha az AKS-fürt nem RBAC engedélyezve van, hagyja ki ezt a lépést.
 
 Hozzon létre egy fájlt `helm-rbac.yaml` másolja be a következő yaml-kódot:
 
@@ -76,10 +53,10 @@ subjects:
     namespace: kube-system
 ```
 
-A szolgáltatásfiók és a szerepkör-kötés létrehozása a `kubectl create` parancsot:
+A szolgáltatásfiók és a szerepkör-kötés létrehozása a `kubectl apply` parancsot:
 
 ```console
-kubectl create -f helm-rbac.yaml
+kubectl apply -f helm-rbac.yaml
 ```
 
 ## <a name="secure-tiller-and-helm"></a>A tiller valóban és a Helm védelmének biztosítása
@@ -96,7 +73,7 @@ Egy alapszintű tiller valóban az AKS-fürt üzembe helyezéséhez használja a
 helm init --service-account tiller
 ```
 
-Ha konfigurálta a TLS/SSL Helm és a tiller valóban között adja meg a `--tiller-tls-` paramétereket és a saját tanúsítványok, az alábbi példában látható módon nevei:
+Ha konfigurálta a TLS/SSL Helm és a tiller valóban között adja meg a `--tiller-tls-*` paramétereket és a saját tanúsítványok, az alábbi példában látható módon nevei:
 
 ```console
 helm init \

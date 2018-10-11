@@ -7,12 +7,12 @@ ms.service: storage
 ms.date: 10/04/2018
 ms.author: renash
 ms.component: files
-ms.openlocfilehash: 7cab1d0594792437c03427177159b193765aa92e
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.openlocfilehash: b3aca33bea8f7847b7069bba3f2a6dcd143cf29c
+ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48870995"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49079129"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>Az Azure Files kapcsolatos gyakori kérdések (GYIK)
 [Az Azure Files](storage-files-introduction.md) teljes körűen felügyelt fájlmegosztást kínáló, amely az iparági szabványnak megfelelő keresztül érhető el a felhőben [Server Message Block (SMB) protokoll](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx). Azure-fájlmegosztások párhuzamosan csatlakoztathatja felhőbeli vagy helyszíni üzemelő példányok esetében a Windows, Linux és macOS. A Windows Server-gépek Azure-fájlmegosztások közel, ahol az adatok felhasználásának gyors hozzáférés az Azure File Sync használatával képes gyorsítótárazni.
@@ -149,7 +149,7 @@ Ez a cikk az Azure Files szolgáltatást és funkciót, beleértve az Azure File
 
 * <a id="afs-tiered-files-out-of-endpoint"></a>
 **Miért léteznek a rétegzett fájlok kívül a kiszolgálói végpont névtér?**  
-    Azure File Sync ügynök 3-as verziójú, mielőtt az Azure File Sync blokkolja a rétegzett fájlok a kiszolgálói végpont kívüli, de a kiszolgálói végpont ugyanazon a köteten az áthelyezés. Másolási műveletek – a rétegzett fájlok áthelyezése és áthelyezi a rétegzett más köteteket is nem érinti. Ez a jelenség oka implicit feltételezve, hogy a Fájlkezelőben és a többi Windows API-k, hogy ugyanazon a köteten műveletekre (majdnem) instanenous műveletek átnevezése volt. Ez azt jelenti, a kurzor elvégzi a Fájlkezelőben, vagy más áthelyezési módszerek (mint például a parancssor vagy PowerShell) jelennek meg nem válaszol, amíg az Azure File Sync visszahívja az adatok a felhőből. Kezdve [Azure File Sync ügynök verziója 3.0.12.0](storage-files-release-notes.md#agent-version-30120), az Azure File Sync lehetővé teszi a áthelyezése egy rétegzett fájlt a kiszolgálói végpont kívül. A korábban említett engedélyezi a rétegzett fájl létezik és a egy rétegzett fájlt a kiszolgálói végpont kívül, és ezután – a háttérben a fájl lehívása negatív hatások elkerülése azt. Ez azt jelenti, hogy áthelyezi az ugyanazon kötet instaneous, és visszaírni a lemezre a fájlt, az Áthelyezés befejezése után a munkát végzünk. 
+    Azure File Sync ügynök 3-as verziójú, mielőtt az Azure File Sync blokkolja a rétegzett fájlok a kiszolgálói végpont kívüli, de a kiszolgálói végpont ugyanazon a köteten az áthelyezés. Másolási műveletek – a rétegzett fájlok áthelyezése és áthelyezi a rétegzett más köteteket is nem érinti. Ez a jelenség oka implicit feltételezve, hogy a Fájlkezelőben és a többi Windows API-k, hogy ugyanazon a köteten műveletekre (majdnem) instanenous műveletek átnevezése volt. Ez azt jelenti, a kurzor elvégzi a Fájlkezelőben, vagy más áthelyezési módszerek (mint például a parancssor vagy PowerShell) jelennek meg nem válaszol, amíg az Azure File Sync visszahívja az adatok a felhőből. Kezdve [Azure File Sync ügynök verziója 3.0.12.0](storage-files-release-notes.md#supported-versions), az Azure File Sync lehetővé teszi a áthelyezése egy rétegzett fájlt a kiszolgálói végpont kívül. A korábban említett engedélyezi a rétegzett fájl létezik és a egy rétegzett fájlt a kiszolgálói végpont kívül, és ezután – a háttérben a fájl lehívása negatív hatások elkerülése azt. Ez azt jelenti, hogy áthelyezi az ugyanazon kötet instaneous, és visszaírni a lemezre a fájlt, az Áthelyezés befejezése után a munkát végzünk. 
 
 * <a id="afs-do-not-delete-server-endpoint"></a>
 **Problémát tapasztalok egy probléma az Azure File Sync használatával a my server (szinkronizálási szolgáltatás cloud rétegezési, stb). E távolítsa el, majd hozza létre újra a kiszolgálói végpontot?**  

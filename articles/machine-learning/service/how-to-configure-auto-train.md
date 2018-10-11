@@ -9,12 +9,12 @@ ms.service: machine-learning
 ms.component: core
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: cbd475ae4ce944db3ebf57b415b60e7abdd52677
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 33126c094a55bc57edd49a54fbc4f5acd7401998
+ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47163851"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49079004"
 ---
 # <a name="configure-your-automated-machine-learning-experiment"></a>Az automatikus machine learning-kísérlet konfigurálása
 
@@ -184,13 +184,13 @@ Ez a táblázat felsorolja a paraméterek beállításai is futtathatja a kísé
 Tulajdonság |  Leírás | Alapértelmezett érték
 --|--|--
 `task`  |Adja meg a machine learning probléma típusát. Megengedett értékek: <li>osztályozás</li><li>Regresszió</li>    | None |
-`primary_metric` |Ez a metrika szeretné optimalizálni a modell épületben. Például a primary_metric pontossága ad meg, ha automatikus ML keres egy modell található a legnagyobb pontosságú. Csak egy primary_metric kísérletenként adható meg. Megengedett értékek: <br/>**Besorolási**:<br/><li> pontosság  </li><li> AUC_weighted</li><li> precision_score_weighted </li><li> balanced_accuracy </li><li> average_precision_score_weighted </li><br/>**Regresszió**: <br/><li> normalized_mean_absolute_error </li><li> spearman_correlation </li><li> normalized_root_mean_squared_error </li><li> normalized_root_mean_squared_log_error</li><li> R2_score    </li> | Besorolási: pontossága <br/>A regresszió: spearman_correlation <br/> |
+`primary_metric` |Ez a metrika szeretné optimalizálni a modell épületben. Például a primary_metric pontossága ad meg, ha automatikus ML keres egy modell található a legnagyobb pontosságú. Csak egy primary_metric kísérletenként adható meg. Megengedett értékek: <br/>**Besorolási**:<br/><li> accuracy  </li><li> AUC_weighted</li><li> precision_score_weighted </li><li> balanced_accuracy </li><li> average_precision_score_weighted </li><br/>**Regresszió**: <br/><li> normalized_mean_absolute_error </li><li> spearman_correlation </li><li> normalized_root_mean_squared_error </li><li> normalized_root_mean_squared_log_error</li><li> R2_score    </li> | Besorolási: pontossága <br/>A regresszió: spearman_correlation <br/> |
 `exit_score` |  A primary_metric célérték adhatja meg. Miután egy modell található, amely megfelel a primary_metric cél, gépi tanulás automatikus le fog állni, léptetés, és az a kísérlet befejeződik. Ha ez az érték nincs beállítva (alapértelmezett), automatikus gépi Tanulási kísérlet ismétléseinek megadott tevékenységsort futtatásához továbbra is. Egy dupla értéket vesz fel. Ha soha nem eléri a cél, majd automatikus Machine Learning továbbra is addig ismétlések megadott ismétlések száma.|   None
 `iterations` |Az ismétlések maximális számát. Minden egyes ismétléskor megegyezik a betanítási feladat, amely egy folyamat eredményez. Folyamat az adatok előfeldolgozása és a modell. Egy jó minőségű modellt használja 250 vagy több | 100
 `Concurrent_iterations`|    Párhuzamosan futtatni az ismétlések maximális száma. Ez a beállítás csak távoli számítási működik.|    1
 `max_cores_per_iteration`   | Azt jelzi, hogy hány magunk a számítási célnak a használni kívánt betanításához egy folyamatot. Ha az algoritmus kihasználhatják a több mag, majd ez növeli a Többmagos gépen a teljesítményt. Beállíthatja a gépen elérhető összes mag használandó 1 értéket ad.|  1
 `max_time_sec` |    Korlátozza egy adott iterációhoz szükséges idő (másodperc). Ha egy iterációját meghaladja a megadott mennyiséget, a iteráció beolvasása megszakítva. Ha nincs megadva, a rendszer az iteráció továbbra is fut, amíg befejeződik. |   None
-`n_cross_validations`   |Közötti érvényesítési megszakítások száma| None
+`n_cross_validations`   |A keresztellenőrzés felosztásainak száma| None
 `validation_size`   |Állítsa be az összes képzési minta százalékában érvényesítési mérete.|  None
 `preprocess` | Igaz/hamis <br/>Igaz lehetővé teszi, hogy a bemeneti adatok az előfeldolgozási végrehajtásához kísérletezhet. Következő része a előfeldolgozása<li>Hiányzó adatok: Biztosítják a hiányzó adatokat-numerikus az átlag, a legtöbb elemként szöveg </li><li>Kategorikus értékek: Adattípusa szám és egyedi száma értékek e kevesebb mint 5 %-os, az egyik gyakori kódolási alakíthatók át egymásba </li><li>Stb. Ellenőrizze a teljes listát [a GitHub-adattár](https://aka.ms/aml-notebooks)</li><br/>Megjegyzés: Ha az adatok ritka nem használhat előfeldolgozása = true |  False (Hamis) | 
 `blacklist_algos`   | Automatizált gépi Tanulási kísérlet megkísérli számos különböző algoritmus rendelkezik. Konfigurálja a gépi tanulás automatikus bizonyos algoritmusok kizárása a kísérletet. Akkor hasznos, ha vegye figyelembe, hogy aránytól nem működnek jól az adatkészlet. Kivéve a algoritmusok is takaríthat meg számítási erőforrásokat és képzési időt.<br/>Besorolási megengedett értékek<br/><li>Logisztikai regresszió</li><li>SGD osztályozó</li><li>MultinomialNB</li><li>BernoulliNB</li><li>SVM</li><li>LinearSVM</li><li>kNN</li><li>DT</li><li>RF</li><li>Extra fák</li><li>Színátmenet kiemelése</li><li>lgbm_classifier</li><br/>Engedélyezett értékek regresszió<br/><li>Nettó rugalmas</li><li>Színátmenet kiemelési regressor erre</li><li>DT regressor erre</li><li>kNN regressor erre</li><li>Szabadkézi lars</li><li>SGD regressor erre</li><li>RF regressor erre</li><li>Extra fák regressor erre</li>|   None
@@ -225,8 +225,7 @@ A következő metrikák minden egyes ismétléskor lesznek mentve.
 * AUC_macro
 * AUC_micro
 * AUC_weighted
-* AUC_weighted_max
-* pontosság
+* accuracy
 * average_precision_score_macro
 * average_precision_score_micro
 * average_precision_score_weighted

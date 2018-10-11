@@ -9,12 +9,12 @@ ms.date: 10/03/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 74310e50f37e40856d5fe379baec071b4773f80e
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 6094236269df881eac6f8cd2fd04183dd9d6df3b
+ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48801420"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49068757"
 ---
 # <a name="store-data-at-the-edge-with-azure-blob-storage-on-iot-edge-preview"></a>Az Azure Blob Storage a peremhálózaton data Store az IoT Edge-ben (előzetes verzió)
 
@@ -60,7 +60,7 @@ Többféleképpen is a modulok IoT Edge-eszköz üzembe helyezése, és ezek min
 
 A blob storage, az Azure Portalon üzembe helyezéséhez kövesse [üzembe helyezése az Azure IoT Edge-modulok az Azure Portalról](how-to-deploy-modules-portal.md). Nyissa meg a modul üzembe helyezése, másolhatja az URI-t, és készítse elő a tároló előtt hozzon létre a beállításokat az operációs rendszer alapján. Ezeket az értékeket használja a **konfigurálása egy manifest nasazení** az üzembe helyezés című szakaszban. 
 
-Adja meg a kép URI-t a blob storage-modulban: **mcr.microsoft.com/azure-blob-storage**. 
+Adja meg a kép URI-t a blob storage-modulban: **mcr.microsoft.com/azure-blob-storage:latest**. 
    
 A következő JSON-sablon használata a **tároló létrehozása beállítások** mező. A JSON-fájllal konfigurálja a tárfiók neve, a tárfiók-kulcsot és a storage directory kötési.  
    
@@ -86,8 +86,10 @@ Frissítse a létrehozási lehetőségek JSON `\<your storage account name\>` b�
 Frissítse a létrehozási lehetőségek JSON `<storage directory bind>` tároló operációs rendszertől függően. Adja meg a nevét egy [kötet](https://docs.docker.com/storage/volumes/) vagy az IoT Edge-eszköz, ahol azt szeretné, hogy a blob modul tárolja az adatokat egy könyvtár abszolút elérési útját.  
 
    * Linux-tárolókat:  **\<. tárolási elérési útja >: / blobroot**. Ha például/srv/containerdata: / blobroot. Vagy a kötet: / blobroot. 
-   * Windows-tárolók:  **\<. tárolási elérési útja >: C: / BlobRoot**. Például: C: / ContainerData:C: / BlobRoot. Másik lehetőségként saját – kötet: C: / blobroot. 
-
+   * Windows-tárolók:  **\<. tárolási elérési útja >: C: / BlobRoot**. Például: C: / ContainerData:C: / BlobRoot. Másik lehetőségként saját – kötet: C: / blobroot.
+   
+   > [!CAUTION]
+   > Ne módosítsa a "/ blobroot" Linux és a "C:/BlobRoot" a Windows, a  **\<Storage directory kötési >** értékeket.
 
 Nem kell adnia a tárolójegyzék hitelesítő adatainak eléréséhez az Azure Blob Storage, az IoT Edge-ben, és nem kell deklarálnia az összes olyan esetleges útvonalat az üzembe helyezéshez. 
 
@@ -111,7 +113,7 @@ A következő lépések segítségével hozzon létre egy új IoT Edge-megoldás
    
    4. **Adjon meg egy modulnév** – például írja be egy felismerhető nevet a modulnak **Azure BLOB Storage szolgáltatásról**.
    
-   5. **A modul adja meg a Docker-rendszerkép** – adja meg a lemezkép URI-ja: **mcr.microsoft.com/azure-blob-storage**
+   5. **A modul adja meg a Docker-rendszerkép** – adja meg a lemezkép URI-ja: **mcr.microsoft.com/azure-blob-storage:latest**
 
 A VS Code időt vesz igénybe, a megadott információt, létrehoz egy IoT Edge-megoldást, majd betölti azt egy új ablakban. 
 
@@ -133,6 +135,9 @@ A megoldássablon hoz létre, amely tartalmazza a blob storage modul rendszerké
 
    * Linux-tárolókat:  **\<. tárolási elérési útja >: / blobroot**. Ha például/srv/containerdata: / blobroot. Vagy a kötet: / blobroot.
    * Windows-tárolók:  **\<. tárolási elérési útja >: C: / BlobRoot**. Például: C: / ContainerData:C: / BlobRoot. Másik lehetőségként saját – kötet: C: / blobroot.
+   
+   > [!CAUTION]
+   > Ne módosítsa a "/ blobroot" Linux és a "C:/BlobRoot" a Windows, a  **\<Storage directory kötési >** értékeket.
 
 5. Mentés **deployment.template.json**.
 
@@ -159,7 +164,13 @@ A fiók neve és a fiókkulcsot, hogy konfigurálta-e a modul az IoT Edge-eszkö
 
 Adja meg a tárolási blob végpontja az IoT Edge-eszköz végrehajtott módosítások hozzá kérelmeket. Is [hozzon létre egy kapcsolati karakterláncot egy explicit storage-végpont](../storage/common/storage-configure-connection-string.md#create-a-connection-string-for-an-explicit-storage-endpoint) az IoT Edge-eszköz adatait és a beállított fiók nevét. 
 
-Az Azure Blob Storage, az IoT Edge-ben a blob végpontja `http://<IoT Edge device hostname>:11002/<account name>`. 
+1. Olyan modulok, amelyek telepítve vannak, az "Azure Blob Storage az IoT Edge" futtató azonos peremhálózati eszköz, a blob végpontja van: `http://<Module Name>:11002/<account name>`. 
+2. A modulok, amelyek különböző peremhálózati eszköz, mint a peremhálózati eszköz, amelyben "Azure Blob Storage az IoT Edge" fut, akkor a telepítő a blob végpontja készlettől van telepítve vannak: `http://<device IP >:11002/<account name>` vagy `http://<IoT Edge device hostname>:11002/<account name>` vagy `http://<FQDN>:11002/<account name>`
+
+## <a name="logs"></a>Logs
+
+A tárolóban, a naplók alapján találja meg: 
+* Linux: /blobroot/logs/platformblob.log
 
 ## <a name="deploy-multiple-instances"></a>Több példány üzembe helyezése
 
@@ -193,7 +204,7 @@ Nem minden Azure Blob Storage-műveletek az Azure Blob Storage, az IoT Edge-ben 
 ### <a name="account"></a>Fiók
 
 Támogatott: 
-* Tárolók listája
+* Tárolók listázása
 
 Nem támogatott: 
 * GET, és állítsa be a blob szolgáltatás tulajdonságai

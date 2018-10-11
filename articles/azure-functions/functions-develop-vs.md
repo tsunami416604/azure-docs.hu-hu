@@ -8,14 +8,14 @@ manager: jeconnoc
 ms.service: azure-functions
 ms.custom: vs-azure
 ms.topic: conceptual
-ms.date: 09/12/2018
+ms.date: 10/08/2018
 ms.author: glenga
-ms.openlocfilehash: 63a2d5a62cf2cdfa2a1a08c56ef5a87aaaa13529
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: 3ba8919a499da0db8e2deb626d8cf4d5067c1c25
+ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47395543"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49069177"
 ---
 # <a name="develop-azure-functions-using-visual-studio"></a>Fejlesztés az Azure Functions Visual Studio használatával  
 
@@ -198,6 +198,20 @@ Alkalmazásbeállítások ezeket más módon is kezelhetők:
 * [Az Azure portal használatával](functions-how-to-use-azure-function-app-settings.md#settings).
 * [Használatával a `--publish-local-settings` publish beállítást, az az Azure Functions Core Tools](functions-run-local.md#publish).
 * [Az Azure CLI-vel](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set). 
+
+## <a name="monitoring-functions"></a>Figyelési funkciók
+
+Az ajánlott módszer a figyelése az Azure-ban a függvény végrehajtásának van integrálja az Azure Application insights segítségével. Ha függvényalkalmazást hoz létre az Azure Portalon, az integráció, készen áll alapértelmezés szerint. Azonban amikor a Visual Studio közzététel során a függvényalkalmazást hoz létre, az integráció az Azure-ban a függvényalkalmazásban nem fejeződött. Ehelyett kap beépített naplózást, amit nem javasolunk.
+
+Az Application Insights engedélyezése a függvényalkalmazás Azure-ban:
+
+1. Hozzon létre egy Application Insights-példányt a [az Azure portal](https://portal.azure.com) , és másolja a kialakítási kulcsot. További információ [manuálisan csatlakoztassa az App Insights-erőforrás](functions-monitoring.md#manually-connect-an-app-insights-resource).  
+
+1. Nevű beállításhoz alkalmazás hozzáadása `APPINSIGHTS_INSTRUMENTATIONKEY` a függvényalkalmazás beállításait az Azure-ban leírtak szerint [Alkalmazásbeállítások függvény](#function-app-settings). Ennek az alkalmazásbeállításnak a kialakítási kulcs az előző lépésben létrehozott tartalmazza.
+
+1. Távolítsa el a `AzureWebJobsDashboard` a függvényalkalmazáshoz az Azure-ban, amely letiltja a beépített naplózást alkalmazásbeállításhoz.  
+
+További tudnivalókért lásd: [figyelése az Azure Functions](functions-monitoring.md).
 
 ## <a name="next-steps"></a>További lépések
 

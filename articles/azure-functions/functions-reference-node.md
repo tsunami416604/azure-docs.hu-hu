@@ -12,12 +12,12 @@ ms.devlang: nodejs
 ms.topic: reference
 ms.date: 03/04/2018
 ms.author: glenga
-ms.openlocfilehash: 24f7faa0fb111e4e537a7db3f5e1eea709d1ca59
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: c4206b3178cd02082b8e0815081fedf59a6836b1
+ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46957733"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49068304"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Az Azure Functions JavaScript-fejlesztői útmutató
 Ez az útmutató az Azure Functions JavaScript írása jainak részleteivel kellene információt tartalmaz.
@@ -66,6 +66,8 @@ module.exports = function(context, myTrigger, myInput, myOtherInput) {
     // function logic goes here :)
     context.done();
 };
+```
+```javascript
 // You can also use 'arguments' to dynamically handle inputs
 module.exports = async function(context) {
     context.log('Number of inputs: ' + arguments.length);
@@ -79,6 +81,37 @@ module.exports = async function(context) {
 Eseményindítók és kötések bemeneti (vazby prvku `direction === "in"`) is lehet a függvénynek átadott paraméterek. A függvény ugyanabban a sorrendben vannak meghatározva, a rendszer átad *function.json*. Bemenet a JavaScript használatával dinamikusan kezelheti [ `arguments` ](https://msdn.microsoft.com/library/87dw3w1k.aspx) objektum. Például, ha rendelkezik `function(context, a, b)` , és módosítsa a következőre `function(context, a)`, továbbra is használhatja az értékét `b` lépésként tekintse át a függvény kódját a `arguments[2]`.
 
 Összes kötését iránya, függetlenül is továbbít a `context` objektumba a `context.bindings` tulajdonság.
+
+### <a name="exporting-an-async-function"></a>Egy aszinkron függvény exportálása
+Ha a JavaScript használatával [ `async function` ](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/async_function) nyilatkozat vagy egyszerű JavaScript [ígéretek](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise) (nem érhető el a függvények v1.x), nem explicit módon kell meghívni a [ `context.done` ](#contextdone-method) visszahívási, hogy jelezze, hogy befejeződött-e a függvényt. A függvény befejezi az exportált aszinkron függvény/Promise befejezéséről.
+
+Például ez az egyszerű függvény, amely naplózza, hogy lett elindítva, és azonnal a végrehajtás befejeződik.
+``` javascript
+module.exports = async function (context) {
+    context.log('JavaScript trigger function processed a request.');
+};
+```
+
+Egy aszinkron függvény exportálásakor kimeneti kötések érvénybe is konfigurálhatja a `return` értéket. Ez az egy alternatív módszer használatával Kimenetek hozzárendelésével a [ `context.bindings` ](#contextbindings-property) tulajdonság.
+
+Egy kimeneti-nal hozzárendelendő `return`, módosítsa a `name` tulajdonságot `$return` a `function.json`.
+```json
+{
+  "type": "http",
+  "direction": "out",
+  "name": "$return"
+}
+```
+A JavaScript-függvény kód nézhet ki:
+```javascript
+module.exports = async function (context, req) {
+    context.log('JavaScript HTTP trigger function processed a request.');
+    // You can call and await an async method here
+    return {
+        body: "Hello, world!"
+    };
+}
+```
 
 ## <a name="context-object"></a>környezeti objektumra
 A futtatókörnyezet-használja egy `context` objektum át adat és a függvényt, és lehetővé teszi, hogy futtatókörnyezetével.

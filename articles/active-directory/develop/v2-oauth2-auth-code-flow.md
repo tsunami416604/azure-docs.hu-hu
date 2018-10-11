@@ -17,12 +17,12 @@ ms.date: 07/23/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 7ff7167d60a4c22459622aea6a71130bd1e209fb
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.openlocfilehash: 1b9f1f1ff5e0a2a178b5a0b2a09f5513bf508b3f
+ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48868870"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49079174"
 ---
 # <a name="v20-protocols---oauth-20-authorization-code-flow"></a>2.0-s protokollok – az OAuth 2.0 hitelesítési kódfolyamat
 
@@ -178,8 +178,10 @@ Token sikeres válasz fog kinézni:
 | expires_in    | Mennyi ideig a hozzáférési jogkivonat érvénytelen (másodpercben).                                                                                                                                                                                                                                                                                                                                                                                                       |
 | scope         | A hatókörök, amely a access_token érvényes.                                                                                                                                                                                                                                                                                                                                                                                                         |
 | refresh_token | Az OAuth 2.0-s frissítési jogkivonatot. Az alkalmazás használhatja ezt a jogkivonatot a jelenlegi hozzáférési jogkivonat lejárata után szerzi be a további hozzáférési jogkivonatokat. Refresh_tokens hosszú élettartamú, és az erőforrásokhoz való hozzáférés megőrzése hosszabb ideig is használható. A hozzáférési jogkivonat frissítése További részletekért tekintse meg a [az alábbi szakasz](#refresh-the-access-token). <br> **Megjegyzés:** csak a megadott if `offline_access` a kért hatókörhöz.                                               |
-| id_token      | Az előjel nélküli JSON webes jogkivonat (JWT). Az alkalmazásnak a bejelentkezett felhasználóval kapcsolatos információkat a token a szegmensek is dekódol. Az alkalmazás gyorsítótárazzák az értékeket, és megjelenítheti őket, de azt nem igazolható azokat bármilyen engedélyezési és biztonsági határokat. Id_tokens kapcsolatos további információkért lásd: a [ `id_token reference` ](id-tokens.md). <br> **Megjegyzés:** csak a megadott if `openid` a kért hatókörhöz. |
+| id_token      | A JSON webes jogkivonat (JWT). Az alkalmazásnak a bejelentkezett felhasználóval kapcsolatos információkat a token a szegmensek is dekódol. Az alkalmazás gyorsítótárazzák az értékeket, és megjelenítheti őket, de azt nem igazolható azokat bármilyen engedélyezési és biztonsági határokat. Id_tokens kapcsolatos további információkért lásd: a [ `id_token reference` ](id-tokens.md). <br> **Megjegyzés:** csak a megadott if `openid` a kért hatókörhöz. |
+
 #### <a name="error-response"></a>Hiba történt a válasz
+
 Hibaválaszok ehhez hasonló lesz:
 
 ```json

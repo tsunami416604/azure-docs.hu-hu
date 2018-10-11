@@ -3,16 +3,17 @@ title: Az Azure Site Recoveryben áttelepítésről |} A Microsoft Docs
 description: Ez a cikk azt ismerteti, hogyan telepítheti át a helyszíni és Azure virtuális gépek az Azure Site Recovery szolgáltatással.
 services: site-recovery
 author: rayne-wiselman
+manager: carmonm
 ms.service: site-recovery
-ms.topic: article
-ms.date: 07/06/2018
+ms.topic: conceptual
+ms.date: 10/10/2018
 ms.author: raynew
-ms.openlocfilehash: 2cc030bf9724e98c1ef0a43134c5066c81b38b6b
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: 329f03c30af167b147e5e45c618e6ec4e58efd3f
+ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39213088"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49075999"
 ---
 # <a name="about-migration"></a>A migrálás ismertetése
 

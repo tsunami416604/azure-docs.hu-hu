@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/01/2018
 ms.author: bahariri
-ms.openlocfilehash: 90d9f3620f954da42add08a0aebf779a95c7e7a3
-ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
+ms.openlocfilehash: 2fbca7179d8bc64a92f79f6eaced8d4f1666c530
+ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42022932"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49069216"
 ---
 # <a name="stream-into-event-hubs-for-the-apache-kafka"></a>Streamelés az Apache Kafkához készült Event Hubsba
 Ez a rövid útmutató bemutatja, hogyan streamelhet a Kafka-kompatibilis Event Hubsba anélkül, hogy módosítaná a protokollügyfeleket vagy saját fürtöket futtatna. Megtudhatja, hogyan érheti el egy egyszerű konfigurációmódosítással az alkalmazásokban, hogy az előállítók és a fogyasztók kommunikáljanak a Kafka-kompatibilis Event Hubsszal. Az Azure Event Hubs az [Apache Kafka 1.0-s verzióját](https://kafka.apache.org/10/documentation.html) támogatja.
@@ -75,12 +75,14 @@ A rövid útmutató elvégzéséhez győződjön meg arról, hogy teljesülnek a
     sasl.mechanism=PLAIN
     sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule required username="$ConnectionString" password="{YOUR.EVENTHUBS.CONNECTION.STRING}";
     ```
+    
 4. Futtassa az előállító kódját, és streameljen a Kafka-kompatibilis Event Hubsba:
    
     ```shell
     mvn clean package
     mvn exec:java -Dexec.mainClass="TestProducer"                                    
     ```
+    
 5. Nyissa meg a `azure-event-hubs/samples/kafka/quickstart/consumer` címet.
 
 6. Az alábbiakban látható módon módosítsa a fogyasztó konfigurációs adatait az `src/main/resources/consumer.config` fájlban:

@@ -2,19 +2,18 @@
 title: Az Azure Container Registry oktatóanyaga – Georeplikált Azure Container Registry előkészítése
 description: Létrehozhat egy Azure Container Registryt, georeplikációt konfigurálhat, előkészíthet egy Docker-rendszerképet, és üzembe helyezheti azt a tárolójegyzékben. Ez egy háromrészes sorozat első része.
 services: container-registry
-author: mmacy
-manager: jeconnoc
+author: dlepow
 ms.service: container-registry
 ms.topic: tutorial
 ms.date: 04/30/2017
-ms.author: marsma
+ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: 379878e261007eca13a4e455ef2b97237c81eeba
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 9d1371dc02f37889b15b3448d82c62d76472f847
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39450028"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48854303"
 ---
 # <a name="tutorial-prepare-a-geo-replicated-azure-container-registry"></a>Oktatóanyag: Georeplikált Azure Container Registry előkészítése
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/01/2017
 ms.author: apurvajo;cephalin
-ms.openlocfilehash: c223e8fb000686aedefa1c02e93c1c8cbb30ec73
-ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
+ms.openlocfilehash: 0c2adcfa4e11e444f66e1a9c04bea6e3d352f117
+ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42888293"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49077726"
 ---
 # <a name="buy-and-configure-an-ssl-certificate-for-your-azure-app-service"></a>SSL-tanúsítvány vásárlása és konfigurálása saját Azure App Service szolgáltatások számára
 
@@ -198,14 +198,6 @@ Ehelyett manuálisan újítsa meg a tanúsítványt, kattintson a **manuális me
 
 > [!NOTE]
 > A megújított tanúsítvány nem automatikusan kötött alkalmazását, akár manuálisan megújítani automatikusan megújul. Kösse az alkalmazáshoz, tekintse meg [tanúsítványok megújítása](./app-service-web-tutorial-custom-ssl.md#renew-certificates). 
-
-<a name="notrenewed"></a>
-## <a name="why-is-my-certificate-not-auto-renewed"></a>Miért érdemes a tanúsítvány nem automatikus – újítja meg?
-
-Ha az SSL-tanúsítvány automatikus megújítása van konfigurálva, de nem automatikusan megújítani, előfordulhat, hogy rendelkezik egy függőben lévő tartomány-ellenőrzés. Vegye figyelembe: 
-
-- GoDaddy, az App Service-tanúsítványokat hoz létre, amely a tartomány-ellenőrzés két évente van szükség. A tartományi rendszergazda három évente egyszer kap egy e-mailt a tartomány ellenőrzéséhez. Ellenőrizze az e-mailben, vagy ellenőrizze a tartomány megakadályozza, hogy az App Service-tanúsítvány automatikus megújítása. 
-- A GoDaddy házirend módosítása miatt a 2017. március 1. előtt kiadott összes App Service-tanúsítványok reverification tartomány tovább a megújítás időpontjában megkövetelése a (még akkor is, ha az automatikus megújítás engedélyezve van a tanúsítvány). Tekintse meg az e-mail, és fejezze be az automatikus megújítás az App Service-tanúsítvány továbbra is a egyszeri tartomány-ellenőrzésére. 
 
 ## <a name="more-resources"></a>További erőforrások
 

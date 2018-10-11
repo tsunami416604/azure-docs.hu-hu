@@ -1,6 +1,6 @@
 ---
 title: Az Azure Active Directory-azonosító jogkivonat-referencia |} A Microsoft Docs
-description: Id_tokens használatával projektsablon által kibocsátott a v1 és v2 végpontok az Azure ad-ben.
+description: Ismerje meg, hogyan használhatja az 1.0-s és 2.0-s verziójú végpontok az Azure AD által kibocsátott id_tokens.
 services: active-directory
 documentationcenter: ''
 author: CelesteDG
@@ -16,12 +16,12 @@ ms.date: 10/05/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 85c8100dd567308500fac1c1d8577c84da98013f
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: e74d2cbada1d433bdaf4ebc905e88d66444b2e2f
+ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48815358"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49078205"
 ---
 # <a name="id-tokens"></a>Azonosító jogkivonatok
 
@@ -64,11 +64,12 @@ Megtekintheti a v2.0-minta lexikális elem szerepel az [jwt.ms](https://jwt.ms/#
 
 |Jogcím | Formátum | Leírás |
 |-----|--------|-------------|
-|`aud` | Az Alkalmazásazonosító URI-karakterláncot | A jogkivonat az illetékes címzett azonosítja. A `id_tokens`, a célközönségét az alkalmazás Alkalmazásazonosító, az Azure Portalon az alkalmazáshoz rendelt. Az alkalmazás kell érvényesíteni ezt az értéket, és elutasítja a tokent, ha az érték nem egyezik. |
-|`iss` | Az STS-URI-karakterláncot | Azonosítja a biztonsági jogkivonat-szolgáltatás (STS) hoz létre, és a jogkivonatot, és az Azure AD-bérlővel, amelyben a felhasználó hitelesítési adja vissza. Ha a jogkivonat bocsátotta a v2.0-végpont, belül véget ér. az URI-t `/v2.0`. A GUID, amely azt jelzi, hogy a felhasználó Microsoft-fiók fogyasztói felhasználója `9188040d-6c67-4c5b-b112-36a304b66dad`. Az alkalmazás, amely bejelentkezhet az alkalmazásba, ha van ilyen bérlők korlátozni a jogcím GUID részének kell használni. |
-|`iat` | int, a UNIX-időbélyege | "Feltüntetett tulajdonos:" azt jelenti, amikor a hitelesítés a jogkivonat történt. |
-|`nbf` | int, a UNIX-időbélyege | Az "nbf" (előtte) jogcím azonosítja az idő előtt, amely a JWT kell nem lesznek elfogadva feldolgozásra.|
-|`exp` | int, a UNIX-időbélyege | Az "exp" (lejárati ideje) jogcím azonosítja a lejárati időt, vagy azt követően, amely a JWT kell nem lesznek elfogadva feldolgozásra. Fontos megjegyezni, hogy egy erőforrás elutasíthatja a jogkivonatot, valamint - megadott idő előtti Ha például szükség egy az megváltoztatására hitelesítést, vagy a tokenek visszavonása észlelt. |
+|`aud` |  Az Alkalmazásazonosító URI-karakterláncot | A jogkivonat az illetékes címzett azonosítja. A `id_tokens`, a célközönségét az alkalmazás Alkalmazásazonosító, az Azure Portalon az alkalmazáshoz rendelt. Az alkalmazás kell érvényesíteni ezt az értéket, és elutasítja a tokent, ha az érték nem egyezik. |
+|`iss` |  Az STS-URI-karakterláncot | Azonosítja a biztonsági jogkivonat-szolgáltatás (STS) hoz létre, és a jogkivonatot, és az Azure AD-bérlővel, amelyben a felhasználó hitelesítési adja vissza. Ha a jogkivonat bocsátotta a v2.0-végpont, belül véget ér. az URI-t `/v2.0`.  A GUID, amely azt jelzi, hogy a felhasználó Microsoft-fiók fogyasztói felhasználója `9188040d-6c67-4c5b-b112-36a304b66dad`. Az alkalmazás, amely bejelentkezhet az alkalmazásba, ha van ilyen bérlők korlátozni a jogcím GUID részének kell használni. |
+|`iat` |  int, a UNIX-időbélyege | "Feltüntetett tulajdonos:" azt jelenti, amikor a hitelesítés a jogkivonat történt.  |
+|`idp`|Karakterlánc, általában egy STS URI | A jogkivonat alanyát hitelesítő identitásszolgáltatót adja meg. Ez az érték megegyezik a kiállító jogcím értékét, kivéve, ha a felhasználói fiók nem ugyanahhoz a bérlőhöz, a kibocsátó - Vendégek, például. Ha a jogcím nem található, azt jelenti, hogy értékét `iss` is lehet használni.  Személyes fiókok orgnizational környezetben (például egy személyes fiók meghívjuk az Azure AD-bérlő), használja a `idp` jogcím lehet "live.com" és a egy STS URI, amely tartalmazza a Microsoft-fiók bérlő `9188040d-6c67-4c5b-b112-36a304b66dad`. |
+|`nbf` |  int, a UNIX-időbélyege | Az "nbf" (előtte) jogcím azonosítja az idő előtt, amely a JWT kell nem lesznek elfogadva feldolgozásra.|
+|`exp` |  int, a UNIX-időbélyege | Az "exp" (lejárati ideje) jogcím azonosítja a lejárati időt, vagy azt követően, amely a JWT kell nem lesznek elfogadva feldolgozásra.  Fontos megjegyezni, hogy egy erőforrás elutasíthatja a jogkivonatot, valamint - megadott idő előtti Ha például szükség egy az megváltoztatására hitelesítést, vagy a tokenek visszavonása észlelt. |
 | `c_hash`| Sztring |A kód kivonat csak akkor, ha az azonosító jogkivonat, az OAuth 2.0 engedélyezési kóddal kiadott azonosító-jogkivonatokat szerepel. Az engedélyezési kódot hitelességének ellenőrzéséhez használható. További ellenőrzés elvégzésével kapcsolatos információkért lásd: a [OpenID Connect specifikáció](http://openid.net/specs/openid-connect-core-1_0.html). |
 |`at_hash`| Sztring |Jogkivonat kivonata azonosító szerepel a hozzáférési jogkivonatok, csak ha az azonosító jogkivonat kiadott egy OAuth 2.0 hozzáférési jogkivonatban. Hozzáférési jogkivonat hitelességének ellenőrzéséhez használható. További ellenőrzés elvégzésével kapcsolatos információkért lásd: a [OpenID Connect specifikáció](http://openid.net/specs/openid-connect-core-1_0.html). |
 |`aio` | Átlátszatlan karakterlánc | Egy jogkivonat újrafelhasználásra erőforrásrekord-adatokat az Azure AD által használt belső jogcímet. Figyelmen kívül lehet hagyni.|

@@ -13,14 +13,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: troubleshooting
-ms.date: 10/08/2018
+ms.date: 10/10/2018
 ms.author: genli
-ms.openlocfilehash: 53c7b2f217e315d473e18da8f134352722229ee0
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: d3e5eb6157b474fc7b7057022bffa3eb5d36cae2
+ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48855816"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49068385"
 ---
 # <a name="prepare-a-windows-vhd-or-vhdx-to-upload-to-azure"></a>Windows VHD vagy VHDX feltöltése az Azure előkészítése
 Mielőtt egy Windows virtuális gépek (VM) a helyi Microsoft Azure-bA tölt fel, elő kell készítenie a virtuális merevlemez (VHD vagy vhdx-fájlt). Az Azure támogatja a **csak az 1. generációs virtuális gépeket** , amely a VHD formátumban, és rögzített méretű lemezt. A VHD számára engedélyezett maximális mérete 1,023 GB. Átválthat egy generation 1 VM a vhdx-fájlt a fájlrendszer VHD-t és a egy dinamikusan bővülő rögzített méretű lemezt. De nem módosíthatja a virtuális gép létrehozás. További információkért lásd: [érdemes létrehozni egy 1 vagy 2. generációs virtuális gép a Hyper-V](https://technet.microsoft.com/windows-server-docs/compute/hyper-v/plan/should-i-create-a-generation-1-or-2-virtual-machine-in-hyper-v).
@@ -265,12 +265,10 @@ Győződjön meg arról, hogy a következő beállításokkal megfelelően van k
 3. A memóriakép napló a hibaelhárítást a Windows összeomlási hasznos lehet. A napló memóriakép-gyűjtés engedélyezése:
 
     ```powershell
-    cmd
-
     # Setup the Guest OS to collect a kernel dump on an OS crash event
-    Set-ItemProperty -Path 'HKLM\SYSTEM\CurrentControlSet\Control\CrashControl' -name CrashDumpEnabled -Type DWord -force -Value 2
-    Set-ItemProperty -Path 'HKLM\SYSTEM\CurrentControlSet\Control\CrashControl' -name DumpFile -Type ExpandString -force -Value "%SystemRoot%\MEMORY.DMP"
-    Set-ItemProperty -Path 'HKLM\SYSTEM\CurrentControlSet\Control\CrashControl' -name NMICrashDump -Type DWord -force -Value 1
+    Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\CrashControl' -name CrashDumpEnabled -Type DWord -force -Value 2
+    Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\CrashControl' -name DumpFile -Type ExpandString -force -Value "%SystemRoot%\MEMORY.DMP"
+    Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\CrashControl' -name NMICrashDump -Type DWord -force -Value 1
 
     #Setup the Guest OS to collect user mode dumps on a service crash event
     $key = 'HKLM:\SOFTWARE\Microsoft\Windows\Windows Error Reporting\LocalDumps'
@@ -278,9 +276,7 @@ Győződjön meg arról, hogy a következő beállításokkal megfelelően van k
     New-ItemProperty -Path $key -name DumpFolder -Type ExpandString -force -Value "c:\CrashDumps"
     New-ItemProperty -Path $key -name CrashCount -Type DWord -force -Value 10
     New-ItemProperty -Path $key -name DumpType -Type DWord -force -Value 2
-    sc config WerSvc start= demand
-
-    exit
+    Set-Service -Name WerSvc -StartupType Manual
     ```
 4. Ellenőrizze, hogy a Windows Management Instrumentations tárház egységes. Ennek végrehajtásához futtassa a következő parancsot:
 

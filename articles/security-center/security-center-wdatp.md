@@ -1,6 +1,6 @@
 ---
-title: A Windows Defender komplex veszélyforrások elleni védelem (ATP) az Azure Security Centerrel |} A Microsoft Docs
-description: Ez a dokumentum bemutatja az integráció az Azure Security Center és a Windows Defender ATP között.
+title: A Windows Defender komplex veszélyforrások elleni védelem az Azure Security Centerrel
+description: Ez a dokumentum bemutatja az integráció az Azure Security Center és a Windows Defender komplex veszélyforrások elleni védelem között.
 services: security-center
 documentationcenter: na
 author: barclayn
@@ -13,96 +13,98 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/20/2018
 ms.author: barclayn
-ms.openlocfilehash: 5f604583aeb9a633d34bad633008e0c2ddeb3ef2
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: e7bb7f0c4cb63390b91012e071589611991a2866
+ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47032036"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49068332"
 ---
-# <a name="windows-defender-advanced-threat-protection-atp-with-azure-security-center"></a>A Windows Defender komplex veszélyforrások elleni védelem (ATP) az Azure Security Centerrel
+# <a name="windows-defender-advanced-threat-protection-with-azure-security-center"></a>A Windows Defender komplex veszélyforrások elleni védelem az Azure Security Centerrel
 
-Az Azure Security Center integrálásával kiterjeszti a Felhőbeli számítási feladatok védelmét platformok (CWPP) nyújthassa [Windows Defender ATP](https://www.microsoft.com/WindowsForBusiness/windows-atp).
-Ez a változás végpont észlelés és válasz (EDR) funkciókészletet biztosít. Ez lehetővé teszi a helyszíni rendellenességeket, észlelését és elhárítását az ASC által figyelt kiszolgálói végpontot a speciális támadások.
+Az Azure Security Center integrálásával kiterjeszti a Felhőbeli számítási feladatok védelmét platformok nyújthassa [Windows Defender komplex veszélyforrások elleni védelem](https://www.microsoft.com/en-us/WindowsForBusiness/windows-atp) (ATP).
+Ez a változás végpont észlelés és válasz (EDR) funkciókészletet biztosít. A Windows Defender ATP-integráció felismerése rendellenességeket. Is észleli, és az Azure Security Center által figyelt kiszolgálói végpontot a speciális támadások válaszolni.
 
-Az Azure Security Center-ügyfelek mostantól a Windows Defender ATP funkciók is használhatók:
+Az Azure Security Center-ügyfelek már az funkcióit a Windows Defender ATP-ben:
 
-- **Következő – általános utáni incidensek észlelési érzékelők:** Windows-kiszolgálók hatalmas választékának viselkedési jelek, engedélyezze a speciális támadások észlelése és kivizsgálása érdekében gyűjti a Windows Defender ATP-érzékelő.
+- **Következő generációs utáni incidensek észlelési érzékelők**: Windows-kiszolgálók a Windows Defender ATP-érzékelő viselkedési jelek hatalmas választékának gyűjtése.
 
-- **Analytics-alapú, felhőalapú utáni incidensek észlelése:** Windows Defender ATP gyorsan alkalmazkodik a változó fenyegetések. Fejlett elemzés és big data alkalmaz. Az Intelligent Security Graph-jelek hatékonyságát, akkor egészíteni, Windows, az Azure és Office ismeretlen fenyegetések észleléséhez. Gyakorlatban hasznosítható riasztásokat biztosít, és lehetővé teszi, hogy gyorsan reagálhat.
+- **Analytics-alapú, felhőalapú post illetéktelen behatolás-észlelési**: a Windows Defender ATP gyorsan alkalmazkodik a változó fenyegetések. Fejlett elemzés és big data használ. A Windows Defender ATP egészíteni együtt az Intelligent Security Graph hatékonyságával Windows, az Azure és Office ismeretlen fenyegetések észleléséhez. Gyakorlatban hasznosítható riasztásokat biztosít, és lehetővé teszi, hogy gyorsan reagálhat.
 
-- **Fenyegetések felderítése**: a Windows Defender ATP azonosítja a támadó eszközök technikák és eljárásokat, és riasztásokat állít elő, ha ezek jelennek meg. Microsoft vadászok, biztonsági csoportokat, hozza létre, és a partnerek által biztosított a fenyegetésfelderítés kibővített adatokat használ.
+- **Fenyegetések felderítése**: a Windows Defender ATP azonosítja a támadó eszközök technikák és eljárásokat. Ha ezek észlel, riasztásokat állít elő. Microsoft threat vadászok által létrehozott adatokat és biztonsági csapatok, partnerek által biztosított kiegészítve használ.
 
 Ezek a képességek, mostantól elérhetők az Azure Security Center:
 
-- Windows-kiszolgálók, amelyek az ASC-hez felkészített automatikusan engedélyezve van az automatikus előkészítés – a Windows Defender ATP-érzékelő
+- **Bevezetési automatikus**: Windows-kiszolgálók, amelyek előkészítve az Azure Security Center automatikusan engedélyezve van a Windows Defender ATP-érzékelő.
 
-- Egyetlen panelen az ASC - tekinthesse Windows Defender ATP-riasztások állnak rendelkezésre az ASC-konzolon
+- **Egyetlen**: az Azure Security Center konzolján Windows Defender ATP riasztásokat jeleníti meg.
 
-- Részletes vizsgálat machine - ASC ügyfelek elérhetik a Windows Defender ATP konzol használatával hajtja végre a részletes vizsgálat elvégzésével nyújt betekintést az illetéktelen behatolás hatóköre
+- **Részletes vizsgálat gép**: az Azure Security Center ügyfelek elérhetik a Windows Defender ATP konzol egy részletes vizsgálat elvégzésével nyújt betekintést a hatókör, a támadásokról végrehajtásához.
 
-![*. Ábra – 1 jelennek meg a teljes kép során, beleértve az ASC * által generált riasztások vizsgálata](media/security-center-wdatp/image1.png)
+![Az Azure Security Center, riasztások és az egyes riasztásokkal kapcsolatos általános információk megjelenítése](media/security-center-wdatp/image1.png)
 
-Is [vizsgálata](security-center-investigation.md) a riasztást az Azure Security Centerben:
+Is [a riasztás kivizsgálásához](security-center-investigation.md) az Azure Security Centerben:
 
-![2. ábra vizsgálat – az Azure Security Center](media/security-center-wdatp/image2.png)
+![A riasztási vizsgálati irányítópult az Azure Security Centerben](media/security-center-wdatp/image2.png)
 
-A riasztás további megvizsgálhatja a Windows Defender ATP alapján történő kimutatás. Nincs látható további információk, például a riasztási folyamat fanézetben, incidens gráfokat és részletes machine ütemterv adatokhoz hozzáférést biztosító összes viselkedések legfeljebb hat hónappal korábbi időszakra.
+A riasztás további megvizsgálhatja a Windows Defender ATP alapján történő kimutatás. Nincs látható további információk, például a riasztási folyamat fanézetben, és az incidens grafikon. Megtekintheti a részletes machine ütemterv legfeljebb hat hónappal korábbi ideig minden viselkedés megjelenítő is.
 
-![Ábra 3 vizsgálat – a Windows Defender ATP](media/security-center-wdatp/image3.png)
+![Riasztásokkal kapcsolatos részletes információk a Windows Defender ATP lap](media/security-center-wdatp/image3.png)
 
 ## <a name="platform-support"></a>Platformtámogatás
 
 Ez a funkció a Windows Server 2012 R2 és Windows Server 2016 észlelési támogatja.
 
-Csak a Standard szintű előfizetésekhez kiszolgálók
+Csak azokat a kiszolgálókat, az előfizetések esetében a standard szolgáltatásszinten támogatottak.
 
 ## <a name="onboarding-instructions"></a>Előkészítési utasítások
 
-Ha engedélyezve van a Windows Defender ATP-integráció megtekintéséhez válassza ki a Security center > biztonsági házirend > előfizetés > beállításainak szerkesztése
+Ha engedélyezve van a Windows Defender ATP-integráció megtekintéséhez jelölje ki **a Security center** > **biztonsági házirend** > **előfizetés**  >  **Beállításainak szerkesztése**.
 
-  ![A szabályzat megtekintése](media/security-center-wdatp/policy-management.png)
+  ![Az Azure Security Center Szabályzatkezelés](media/security-center-wdatp/policy-management.png)
 
-Itt láthatja a integrációja jelenleg engedélyezve van
+Itt látható a jelenleg engedélyezett való integrációt.
 
-  ![Engedélyezett Integrációk](media/security-center-wdatp/enable-integrations.png)
+  ![Az Azure Security Center Threat detection beállítások lap engedélyezve van a Windows Defender ATP-integráció](media/security-center-wdatp/enable-integrations.png)
 
-- Ha Ön már az ASC standard szintre - semmilyen műveletet a kiszolgálók szükséges, az ASC a rendszer automatikusan készítse elő a kiszolgálók WDATP előkészítve. Ez akár 24 óráig is eltarthat.
+- Ha már előkészítve a kiszolgálók az Azure Security Center standard szintű, kell nem tesz semmit további. Az Azure Security Center a rendszer automatikusan készítse elő a kiszolgálók a Windows Defender ATP-ben. Ez akár 24 óráig is eltarthat.
 
-- Ha Ön soha nem a kiszolgálók ASC standard díjcsomag – készítse elő az ASC-hez a szokásos módon előkészítve.
+- Ha soha nem előkészítve a kiszolgálók az Azure Security Center standard szintű, készítse elő azokat az Azure Security Center a szokott módon.
 
-- Ha előkészített a kiszolgálók WDATP keresztül:
+- Ha előkészítve a Windows Defender ATP keresztül kiszolgálók:
   - Esetében tekintse meg az útmutató a [regisztrációjának megszüntetésére szerverek hogyan](https://go.microsoft.com/fwlink/p/?linkid=852906).
-  - Előkészítheti az ASC-hez
+  - Előkészítése az Azure Security Center ezeken a kiszolgálókon.
 
-## <a name="access-to-wdatp-portal"></a>WDATP portáljához való hozzáférésre
+## <a name="access-to-the-windows-defender-atp-portal"></a>A Windows Defender ATP portáljához való hozzáférésre
 
-Kövesse az [felhasználói hozzáférések hozzárendelése a portálon](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-atp/assign-portal-access-windows-defender-advanced-threat-protection)
+Kövesse a [felhasználói hozzáférések hozzárendelése a portál](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-atp/assign-portal-access-windows-defender-advanced-threat-protection).
 
-## <a name="set-firewall-configuration"></a>Tűzfal-konfiguráció beállítása
+## <a name="set-the-firewall-configuration"></a>A tűzfal-konfiguráció beállítása
 
-Ha a proxy vagy tűzfal blokkolja a névtelen forgalmat, a Windows Defender ATP-érzékelő a rendszerkörnyezetben csatlakozik, ellenőrizze, hogy névtelen forgalom engedélyezett; kövesse az utasításokat [a proxykiszolgálót a Windows Defender ATP szolgáltatás URL-címek hozzáférésének engedélyezése](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-atp/configure-proxy-internet-windows-defender-advanced-threat-protection#enable-access-to-windows-defender-atp-service-urls-in-the-proxy-server)
+Ha a proxy vagy tűzfal blokkolja a névtelen forgalmat, a Windows Defender ATP-érzékelő csatlakozik a rendszer környezetéből, győződjön meg arról, hogy névtelen forgalom engedélyezett. Kövesse a [engedélyezze a hozzáférést a Windows Defender ATP szolgáltatás URL-címeinek a proxykiszolgálón](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-atp/configure-proxy-internet-windows-defender-advanced-threat-protection#enable-access-to-windows-defender-atp-service-urls-in-the-proxy-server).
 
-## <a name="how-can-i-test-the-feature"></a>Hogyan tesztelheti a szolgáltatást?
+## <a name="test-the-feature"></a>A szolgáltatás tesztelése
 
- Az alábbi lépéseket egy ártalmatlan WDATP teszt riasztást generál.
+A Windows Defender ATP jóindulatú tesztriasztás generálása:
 
-1. A Windows Server rendszerű virtuális gépek közül távoli asztali eléréséhez (2012 R2 vagy 2016) az előfizetésben, és nyissa meg egy parancssori ablakot
+1. Távoli asztali eléréséhez, vagy egy Windows Server 2012 R2 virtuális Gépet, vagy egy Windows Server 2016 virtuális gép használja.  Nyisson meg egy parancssori ablakot.
 
-2. Amikor a rendszer kéri másolja, és futtassa az alábbi parancsot. A parancssori ablakban automatikusan bezáródik.
+2. Amikor a rendszer kéri másolja, és futtassa a következő parancsot. A parancssori ablakban automatikusan bezáródik.
 
-    **PowerShell.exe - NoExit - ExecutionPolicy Mellőzés - je hodnota allowstransparency Nastavena rejtett (New-Object System.Net.WebClient). DownloadFile ("http://127.0.0.1/1.exe", "C:\\test-WDATP-test\\invoice.exe"); Folyamatának elindítása "C:\\test-WDATP-test\\invoice.exe a(z) **
+    ```
+    powershell.exe -NoExit -ExecutionPolicy Bypass -WindowStyle Hidden (New-Object System.Net.WebClient).DownloadFile('http://127.0.0.1/1.exe', 'C:\\test-WDATP-test\\invoice.exe'); Start-Process 'C:\\test-WDATP-test\\invoice.exe'
+    ```
 
-  ![a fenti parancsot egy parancssori ablakot képe](media/security-center-wdatp/image4.jpeg)
+   ![Egy parancssori ablakot a fenti paranccsal](media/security-center-wdatp/image4.jpeg)
 
-3. Ha sikeres, egy új riasztás ASC és WD ATP portálján néhány perc múlva fog megjelenni.
+3. A parancs végrehajtása sikeres, ha az Azure Security Center irányítópultjának és a Windows Defender ATP portáljának egy új riasztás megjelenik. Ez a riasztás jelenik meg néhány percet is igénybe vehet.
 
-4. Tekintse át a riasztás az Azure Security Centerben, ugorjon a **biztonsági riasztások –\> gyanús Powershell-parancssor**
+4. Tekintse át a riasztás a Security Centerben, lépjen a **biztonsági riasztások** >  **gyanús Powershell CommandLine**.
 
-5. A vizsgálat alapján az ablakban kattintson a hivatkozásra WDATP portál átirányítása
+5. A vizsgálat ablakban jelölje ki a hivatkozásra kattintva nyissa meg a Windows Defender ATP portálján.
 
 ## <a name="next-steps"></a>További lépések
 
-- [Biztonsági szabályzatok beállítása az Azure Security Centerben](security-center-policies.md) – Ez a cikk bemutatja, hogyan konfigurálhat biztonsági házirendeket Azure-előfizetései és -erőforráscsoportjai számára.
-- [Biztonsági javaslatok kezelése az Azure Security Center](security-center-recommendations.md) – megtudhatja, hogyan javaslatok az Azure-erőforrások védelme.
-- [Biztonsági állapotfigyelés az Azure Security Center](security-center-monitoring.md) – útmutató az Azure-erőforrások állapotának monitorozásához.
+- [Biztonsági szabályzatok beállítása az Azure Security Center](security-center-policies.md): ismerje meg, hogyan konfigurálhat biztonsági házirendeket az Azure-előfizetések és -erőforráscsoportok.
+- [Biztonsági javaslatok kezelése az Azure Security Center](security-center-recommendations.md): megtudhatja, hogyan javaslatok az Azure-erőforrások védelme.
+- [Biztonsági állapotmonitorozás az Azure Security Centerben](security-center-monitoring.md): Útmutató az Azure-erőforrások állapotának monitorozásához.

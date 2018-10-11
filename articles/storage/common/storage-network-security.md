@@ -8,18 +8,18 @@ ms.topic: article
 ms.date: 10/25/2017
 ms.author: cbrooks
 ms.component: common
-ms.openlocfilehash: ff382becb71f187ac38b0ef5d31c1b29c43f3fe7
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: bcb772185f0a16183b8a6c9674419781ef41be3e
+ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46972555"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49068536"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>Az Azure Storage-tűzfalak és virtuális hálózatok konfigurálása
 Az Azure Storage lehetővé teszi, hogy a tárfiókok meghatározott engedélyezett hálózatok biztonságos többrétegű biztonsági modellt biztosít.  Ha a hálózati szabályok vannak beállítva, csak az engedélyezett hálózatok alkalmazások férhetnek hozzá egy tárfiókot.  Egy engedélyezett hálózatról hívásakor az alkalmazások továbbra is megfelelő jogosultságokkal (egy érvényes hozzáférési kulcs vagy SAS-token) a tárfiók eléréséhez szükséges.
 
 > [!IMPORTANT]
-> Ne tudják bekapcsolni a tűzfalszabályok a tárfiók letiltja a hozzáférést adataihoz, más Azure-szolgáltatásokból származó bejövő kérelmek.  Ez magában foglalja a portálról, írása, naplók, stb.  A programban részt vevő services újra engedélyezheti a funkciót a [kivételek](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions) az alábbi szakaszban.  A portál eléréséhez kell ehhez a gépről megbízható modulokon belül (IP vagy virtuális hálózat), amely meg van adva.
+> Ne tudják bekapcsolni a tűzfalszabályok a tárfiók letiltja a hozzáférést adataihoz, más Azure-szolgáltatásokból származó bejövő kérelmek.  Ez magában foglalja a portálról, írása, naplók, stb.  Azure-szolgáltatások a virtuális hálózaton belül működő számára hozzáférés engedélyezhető azáltal, hogy az alhálózat, a szolgáltatás példánya.  Nem működik a virtuális hálózaton belüli Azure-szolgáltatásokkal a tűzfal blokkolja.  Forgatókönyvek csak korlátozott számú keresztül engedélyezhető a [kivételek](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions) alább ismertetett mechanizmus.  A portál eléréséhez kell ehhez a gépről megbízható modulokon belül (IP vagy virtuális hálózat), amely meg van adva.
 >
 
 ## <a name="scenarios"></a>Forgatókönyvek

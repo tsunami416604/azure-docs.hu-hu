@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/06/2018
 ms.reviewer: martincoetzer
 ms.author: billmath
-ms.openlocfilehash: 6ad8e04a3cd61061b44ca9b6a216f92d69a70f6b
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: 7cf0e2b211f9d34f6d8f4fe89a230d8a2e97512a
+ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/10/2018
-ms.locfileid: "48902994"
+ms.locfileid: "49069013"
 ---
 # <a name="factors-influencing-the-performance-of-azure-ad-connect"></a>Az Azure AD Connect teljesítményét befolyásoló tényezők
 
@@ -62,15 +62,13 @@ A kezdeti szinkronizálás profil először a csatlakoztatott könyvtárak, pél
 
 ### <a name="delta-sync-profile"></a>Különbözeti szinkronizálás profil
 
-A szinkronizálási folyamat optimalizálása érdekében a futtatási profil csak feldolgozása a módosításokat (hoz létre, törlése és frissítések) objektumok a csatlakoztatott címtárakban, a legutóbbi szinkronizálási folyamat óta. Alapértelmezés szerint a különbözeti szinkronizálás profil 30 percenként fut. Szervezetek törekedni kell tartani, hogy mennyi idő 30 perc alatt ellenőrizze, hogy naprakész az Azure ad-ben. Az Azure AD Connect állapotának monitorozásához használja a [monitoring agent health](how-to-connect-health-sync.md) esetleges problémákat a folyamat megtekintéséhez. A különbözeti szinkronizálás profilt a következő lépésekből áll:
+A szinkronizálási folyamat optimalizálása érdekében a futtatási profil csak feldolgozása a módosításokat (hoz létre, törlése és frissítések) objektumok a csatlakoztatott címtárakban, a legutóbbi szinkronizálási folyamat óta. Alapértelmezés szerint a különbözeti szinkronizálás profil 30 percenként fut. Szervezetek törekedni kell tartani, hogy mennyi idő 30 perc alatt ellenőrizze, hogy naprakész az Azure ad-ben. Az Azure AD Connect állapotának monitorozásához használja a [monitoring agent health](how-to-connect-health-sync.md) problémák a folyamat megtekintéséhez. A különbözeti szinkronizálás profilt a következő lépésekből áll:
 
 1. Különbözeti importálás az összes összekötő
 2. Különbözeti szinkronizálás az összes összekötő
 3. Exportálás az összes összekötő
 
 Egy jellemző nagyvállalati szervezet különbözeti szinkronizálási forgatókönyv a következő:
-
-
 
 - a rendszer törli az objektumok ~ 1 %
 - ~ 1 % objektumok jönnek létre.
@@ -94,7 +92,7 @@ Egy teljes szinkronizálási ciklust a következő műveleteket tartalmazza:
 3. Exportálás az összes összekötő
 
 > [!NOTE]
-> Gondos tervezést akkor szükséges, amikor sok objektumot az Active Directory vagy az Azure AD a tömeges frissítéseit. Tömeges frissítések miatt a különbözeti szinkronizálási folyamat hosszabb időt vesz igénybe, mivel sok objektum változásai importálása során. Hosszú import akkor fordulhat elő, akkor is, ha a kötegelt frissítés nem befolyásolja a szinkronizálási folyamat során. Például sok felhasználó licencek hozzárendelése az Azure ad-ben egy hosszú importálás ciklus miatt az Azure ad-ből, de nem eredményez bármely attribútumainak módosítása az Active Directoryban.
+> Gondos tervezést akkor szükséges, amikor sok objektumot az Active Directory vagy az Azure AD a tömeges frissítéseit. Tömeges frissítések miatt a különbözeti szinkronizálási folyamat hosszabb időt vesz igénybe, mivel sok objektum változásai importálása során. Hosszú import akkor fordulhat elő, akkor is, ha a kötegelt frissítés nem befolyásolják a szinkronizálási folyamat során. Például sok felhasználó licencek hozzárendelése az Azure ad-ben egy hosszú importálás ciklus miatt az Azure ad-ből, de nem eredményez bármely attribútumainak módosítása az Active Directoryban.
 
 ### <a name="synchronization"></a>Szinkronizálás
 
@@ -103,7 +101,7 @@ A szinkronizálási folyamat modul a következő teljesítmény jellemzőkkel re
 * Szinkronizálási egyetlen összefűzött, ami azt jelenti, a kiépítési motor nem csatlakoztatott könyvtárak, objektumok vagy attribútumok futtatási profil párhuzamos feldolgozási.
 * Importálás idő szinkronizálódik objektumok száma lineárisan vele együtt. Például ha 10 000 objektumok importálása 10 percet is igénybe, majd 20 000 objektumra érvénybe körülbelül 20 percig ugyanazon a kiszolgálón.
 * Exportálás az is lineáris.
-* A szinkronizálás más objektumok hivatkozó objektumok száma alapján exponenciálisan növekszik. Csoport tagságát, beágyazott csoportokat a fő teljesítményre gyakorolt hatás, lehet, mert a tagok tekintse meg a felhasználói objektumok vagy más csoportokhoz. Ezeket a hivatkozásokat kell található, és a befejezéséhez a szinkronizálási ciklus MV a tényleges objektumra hivatkozik.
+* A szinkronizálás más objektumok hivatkozó objektumok száma alapján exponenciálisan növekszik. Csoport tagságát, beágyazott csoportokat kell a fő teljesítményre gyakorolt hatás, mert a tagjaik tekintse meg a felhasználói objektumok vagy más csoportokhoz. Ezeket a hivatkozásokat kell található, és a befejezéséhez a szinkronizálási ciklus MV a tényleges objektumra hivatkozik.
 
 ### <a name="filtering"></a>Szűrés
 
@@ -147,7 +145,7 @@ A teljesítmény az Azure AD Connect szolgáltatás függ, importálja és expor
 
 ### <a name="active-directory-factors"></a>Az Active Directory tényezők
 
-Ahogy korábban említettük, az importálandó objektumok száma jelentős mértékben befolyásolja teljesítmény. A [hardver- és az Azure AD Connect előfeltételei](how-to-connect-install-prerequisites.md) szerkezeti az üzemelő példány mérete alapján meghatározott típusú hardveres szinten. Az Azure AD Connect csak támogatja adott topológiák a leírt módon [az Azure AD Connect-topológiák](plan-connect-topologies.md). Nincsenek, nem támogatott topológiák javaslatok és teljesítményoptimalizálás.
+Ahogy korábban említettük, az importálandó objektumok száma jelentősen befolyásolja a teljesítményt. A [hardver- és az Azure AD Connect előfeltételei](how-to-connect-install-prerequisites.md) szerkezeti az üzemelő példány mérete alapján meghatározott típusú hardveres szinten. Az Azure AD Connect csak támogatja adott topológiák a leírt módon [az Azure AD Connect-topológiák](plan-connect-topologies.md). Nincsenek, nem támogatott topológiák javaslatok és teljesítményoptimalizálás.
 
 Győződjön meg arról, hogy az Azure AD Connect-kiszolgáló megfelel a hardverkövetelményeknek az Active Directory mérete alapján szeretne importálni. Az Azure AD Connect-kiszolgáló és az Active Directory-tartományvezérlők közötti hibás vagy lassú hálózati kapcsolat lelassíthatják az importálás.
 
@@ -183,10 +181,10 @@ Az Azure AD Connect megvalósítási a teljesítmény optimalizálása érdekéb
 - Használja a [hardverkonfiguráció javasolt](how-to-connect-install-prerequisites.md) a megvalósítása az Azure AD Connect-kiszolgáló mérete alapján.
 - Amikor frissíti az Azure AD Connect nagy méretű telepítések, érdemes [áttelepítési módszer párhuzamos](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-upgrade-previous-version#swing-migration), hogy ellenőrizze, hogy a minimális állásidő és a legjobb megbízhatóság. 
 - Az SQL database a legjobb teljesítmény írása SSD használja.
-- Csak olyan objektumok, amelyek úgy kell létrehozni az Azure AD-ben a tartomány, szervezeti egység vagy attribútumszűrés az Active Directory szűrje.
+- Az Active Directory szűrje a csak az, hogy szükség lesz az Azure AD-ben a tartomány, szervezeti egység vagy attribútumszűrés objektumokat tartalmazza.
 - Módosítsa az alapértelmezett szabályok attribútum van szüksége, ha először másolja a szabályt, majd módosítsa a másolás és letiltja az eredeti szabályt. Futtassa újra a teljes szinkronizálás a vágólapra.
 - Tervezze meg a kezdeti teljes szinkronizálás futtatási profil elegendő időt.
-- A különbözeti szinkronizálás üzemeltetői ciklus befejezésekor 30 percben. A különbözeti szinkronizálás profil 30 perc múlva indul el, ha egy teljes különbözeti szinkronizálási ciklus tartalmazza alapértelmezett szinkronizálási gyakoriságot módosítani.
+- Arra törekszik, a különbözeti szinkronizálási ciklus 30 percen belül befejeződik. A különbözeti szinkronizálás profil 30 perc múlva indul el, ha egy teljes különbözeti szinkronizálási ciklus tartalmazza alapértelmezett szinkronizálási gyakoriságot módosítani.
 - A figyelő a [az Azure AD Connect szinkronizálási állapot](how-to-connect-health-agent-install.md) az Azure ad-ben.
 
 ## <a name="next-steps"></a>További lépések

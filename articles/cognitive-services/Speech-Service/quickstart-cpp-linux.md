@@ -5,16 +5,16 @@ description: A beszédfelismerés elsajátítása Linuxon, C++ nyelven a Cogniti
 services: cognitive-services
 author: wolfma61
 ms.service: cognitive-services
-ms.technology: Speech
+ms.component: Speech
 ms.topic: quickstart
 ms.date: 09/24/2018
 ms.author: wolfma
-ms.openlocfilehash: 98007a11ceadcdddbcd881607f7dda1222d90bc4
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.openlocfilehash: f3bcbc7bcbd57e9baa5a01f3a2ef572b09128260
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47055917"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48886245"
 ---
 # <a name="quickstart-recognize-speech-in-c-on-linux-by-using-the-speech-sdk"></a>Rövid útmutató: Beszéd felismerése Linuxon, C++ nyelven a Speech SDK segítségével
 

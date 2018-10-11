@@ -10,63 +10,122 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/12/2018
+ms.date: 10/10/2018
 ms.author: tomfitz
-ms.openlocfilehash: 9cb9fcbb6750bf854cca74ed6bd08a91caed9e26
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 06719f3a92dae805081ea85c346df97ebed0e0dc
+ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44717590"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49078070"
 ---
 # <a name="use-azure-key-vault-to-pass-secure-parameter-value-during-deployment"></a>Az Azure Key Vault segítségével biztonságos paraméter értéke továbbítása üzembe helyezés során
 
 Továbbítása (például a jelszó) biztonságos értéket paraméterként, üzembe helyezés során szüksége, amikor az értéket lekérheti egy [Azure Key Vault](../key-vault/key-vault-whatis.md). A key vaulttal és a titkos kulcsot az alkalmazásparaméter-fájlt a hivatkozó kérje le az értéket. Az érték sosem hagyja el, mert csak hivatkozhat a key vault azonosítója. A key vault egy másik előfizetésben, mint az erőforráscsoport telepíti, akkor is szerepel.
 
-## <a name="enable-access-to-the-secret"></a>A titkos kulcs hozzáférésének engedélyezése
-
-Ebben az esetben két fontos feltételt, amely léteznie kell a key vault eléréséhez a sablon üzembe helyezése során:
-
-1. A key vaulttal tulajdonság `enabledForTemplateDeployment` kell `true`.
-2. A felhasználó helyezi üzembe a sablont a titkos kulcsot, hozzáféréssel kell rendelkeznie. A felhasználónak rendelkeznie kell a `Microsoft.KeyVault/vaults/deploy/action` engedély a key vaultban. A [tulajdonosa](../role-based-access-control/built-in-roles.md#owner) és [közreműködői](../role-based-access-control/built-in-roles.md#contributor) szerepkör egyaránt a hozzáférés engedélyezéséhez.
-
-A sablon egy Key Vault használata esetén egy [felügyelt alkalmazás](../managed-applications/overview.md), hozzáférést kell biztosítania a **készülék erőforrás-szolgáltató** egyszerű szolgáltatást. További információkért lásd: [Access Key Vault titkos kulcsából, Azure által felügyelt alkalmazások telepítésekor](../managed-applications/key-vault-access.md).
-
-
 ## <a name="deploy-a-key-vault-and-secret"></a>Telepítsen egy kulcstartó és a titkos kulcs
 
-A key vaulttal és a titkos kulcs létrehozásához használja az Azure CLI vagy a PowerShell. Figyelje meg, hogy a key vault engedélyezve van-e a sablon üzembe helyezéshez. 
+A key vaulttal és a titkos kulcs létrehozásához használja az Azure CLI vagy a PowerShell. `enabledForTemplateDeployment` a key vaulttal tulajdona. A titkos kulcsok a Key vaultban hozzá a Resource Manager-alapú `enabledForTemplateDeployment` kell `true`. 
+
+Az alábbi Azure PowerShell és az Azure CLI-vel parancsprogram bemutatja, hogyan hozhat létre egy Key Vaultot és a egy titkos kulcsot.
 
 Azure CLI esetén használja az alábbi parancsot:
 
 ```azurecli-interactive
-vaultname={your-unique-vault-name}
-password={password-value}
+keyVaultName='{your-unique-vault-name}'
+resourceGroupName='{your-resource-group-name}'
+location='centralus'
+userPrincipalName='{your-email-address-associated-with-your-subscription}'
 
-az group create --name examplegroup --location 'South Central US'
+# Create a resource group
+az group create --name $resourceGroupName --location $location
+
+# Create a Key Vault
 az keyvault create \
-  --name $vaultname \
-  --resource-group examplegroup \
-  --location 'South Central US' \
+  --name $keyVaultName \
+  --resource-group $resourceGroupName \
+  --location $location \
   --enabled-for-template-deployment true
-az keyvault secret set --vault-name $vaultname --name examplesecret --value $password
+az keyvault set-policy --upn $userPrincipalName --name $keyVaultName --secret-permissions set delete get list
+
+# Create a secret with the name, vmAdminPassword
+password=$(openssl rand -base64 32)
+echo $password
+az keyvault secret set --vault-name $keyVaultName --name 'vmAdminPassword' --value $password
 ```
 
 PowerShell esetén használja az alábbi parancsot:
 
-```powershell
-$vaultname = "{your-unique-vault-name}"
-$password = "{password-value}"
+```azurepowershell-interactive
+$keyVaultName = "{your-unique-vault-name}"
+$resourceGroupName="{your-resource-group-name}"
+$location='Central US'
+$userPrincipalName='{your-email-address-associated-with-your-subscription}'
 
-New-AzureRmResourceGroup -Name examplegroup -Location "South Central US"
+New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
+
 New-AzureRmKeyVault `
-  -VaultName $vaultname `
-  -ResourceGroupName examplegroup `
-  -Location "South Central US" `
+  -VaultName $keyVaultName `
+  -resourceGroupName $resourceGroupName `
+  -Location $location `
   -EnabledForTemplateDeployment
+Set-AzureRmKeyVaultAccessPolicy -VaultName $keyVaultName -UserPrincipalName $userPrincipalName -PermissionsToSecrets set,delete,get,list
+
+$password = openssl rand -base64 32
+echo $password
 $secretvalue = ConvertTo-SecureString $password -AsPlainText -Force
-Set-AzureKeyVaultSecret -VaultName $vaultname -Name "examplesecret" -SecretValue $secretvalue
+Set-AzureKeyVaultSecret -VaultName $keyVaultName -Name "vmAdminPassword" -SecretValue $secretvalue
 ```
+
+Ha a Cloud Shellben kívül a PowerShell-parancsfájlt futtat, a következő paranccsal helyette létrehozni a jelszót:
+
+```powershell
+Add-Type -AssemblyName System.Web
+[System.Web.Security.Membership]::GeneratePassword(16,3)
+```
+
+A Resource Manager-sablon használatával: lásd: [oktatóanyag: integrálása az Azure Key Vault Resource Manager-sablon központi telepítésben lévő](./resource-manager-tutorial-use-key-vault.md#prepare-the-key-vault).
+
+> [!NOTE]
+> Egyes Azure-szolgáltatások meghatározott jelszót követelményekkel rendelkezik. Például az Azure virtuális gépekre vonatkozó követelmények fürtpéldány [Mik a jelszót a virtuális gép létrehozásakor?](../virtual-machines/windows/faq.md#what-are-the-password-requirements-when-creating-a-vm).
+
+## <a name="enable-access-to-the-secret"></a>A titkos kulcs hozzáférésének engedélyezése
+
+Más, a beállítás `enabledForTemplateDeployment` való `true`, helyezi üzembe a sablont a felhasználónak rendelkeznie kell a `Microsoft.KeyVault/vaults/deploy/action` hatókörhöz, amely tartalmazza a Key Vault, beleértve az erőforráscsoportot és a Key Vault engedély. A [tulajdonosa](../role-based-access-control/built-in-roles.md#owner) és [közreműködői](../role-based-access-control/built-in-roles.md#contributor) szerepkör egyaránt a hozzáférés engedélyezéséhez. A Key Vault hoz létre, ha Ön a tulajdonosa, az engedéllyel rendelkezik. Ha a Key Vault egy másik előfizetésben, a Key Vault tulajdonosának kell grand a hozzáférést.
+
+A következő eljárás azt mutatja be, hogyan hozhat létre egy szerepkört a minimális permssion, és rendelje hozzá a felhasználót annak
+1. Hozzon létre egy egyéni szerepkör definíció JSON-fájlt:
+
+    ```json
+    {
+      "Name": "Key Vault resource manager template deployment operator",
+      "IsCustom": true,
+      "Description": "Lets you deploy a resource manager template with the access to the secrets in the Key Vault.",
+      "Actions": [
+        "Microsoft.KeyVault/vaults/deploy/action"
+      ],
+      "NotActions": [],
+      "DataActions": [],
+      "NotDataActions": [],
+      "AssignableScopes": [
+        "/subscriptions/00000000-0000-0000-0000-000000000000"
+      ]
+    }
+    ```
+    Cserélje le a "00000000-0000-0000-0000-000000000000" az előfizetés-azonosító, a felhasználó, aki a sablonok üzembe helyezése.
+
+2. Az új szerepkör JSON-fájl létrehozása:
+
+    ```azurepowershell
+    $resourceGroupName= "<Resource Group Name>" # the resource group which contains the Key Vault
+    $userPrincipalName = "<Email Address of the deployment operator>"
+    New-AzureRmRoleDefinition -InputFile "<PathToTheJSONFile>" 
+    New-AzureRmRoleAssignment -ResourceGroupName $resourceGroupName -RoleDefinitionName "Key Vault resource manager template deployment operator" -SignInName $userPrincipalName
+    ```
+
+    A `New-AzureRmRoleAssignment` minta az egyéni szerepkör hozzárendelése a felhasználóhoz, az az erőforráscsoport szintjén.  
+
+A sablon egy Key Vault használata esetén egy [felügyelt alkalmazás](../managed-applications/overview.md), hozzáférést kell biztosítania a **készülék erőforrás-szolgáltató** egyszerű szolgáltatást. További információkért lásd: [Access Key Vault titkos kulcsából, Azure által felügyelt alkalmazások telepítésekor](../managed-applications/key-vault-access.md).
 
 ## <a name="reference-a-secret-with-static-id"></a>Hivatkozás statikus azonosítójú titkos kulcs
 
@@ -147,7 +206,7 @@ Most helyezze üzembe a sablont, és adja át az alkalmazásparaméter-fájlt. A
 Azure CLI esetén használja az alábbi parancsot:
 
 ```azurecli-interactive
-az group create --name datagroup --location "South Central US"
+az group create --name datagroup --location $location
 az group deployment create \
     --name exampledeployment \
     --resource-group datagroup \
@@ -157,8 +216,8 @@ az group deployment create \
 
 PowerShell esetén használja az alábbi parancsot:
 
-```powershell
-New-AzureRmResourceGroup -Name datagroup -Location "South Central US"
+```powershell-interactive
+New-AzureRmResourceGroup -Name datagroup -Location $location
 New-AzureRmResourceGroupDeployment `
   -Name exampledeployment `
   -ResourceGroupName datagroup `
@@ -274,7 +333,7 @@ Az előző sablon üzembe helyezése, és adja meg a paraméterek értékeit. A 
 Azure CLI esetén használja az alábbi parancsot:
 
 ```azurecli-interactive
-az group create --name datagroup --location "South Central US"
+az group create --name datagroup --location $location
 az group deployment create \
     --name exampledeployment \
     --resource-group datagroup \
@@ -285,7 +344,7 @@ az group deployment create \
 PowerShell esetén használja az alábbi parancsot:
 
 ```powershell
-New-AzureRmResourceGroup -Name datagroup -Location "South Central US"
+New-AzureRmResourceGroup -Name datagroup -Location $location
 New-AzureRmResourceGroupDeployment `
   -Name exampledeployment `
   -ResourceGroupName datagroup `

@@ -1,9 +1,9 @@
 ---
-title: Kapacitásának tervezése az Azure App Service kiszolgálói szerepkörök Azure verem |} Microsoft Docs
-description: Kapacitástervezési Azure verem Azure App Service kiszolgálói szerepköre tekintetében
+title: Kapacitás megtervezése a az Azure App Service-ben kiszolgálói szerepkörök az Azure Stackben |} A Microsoft Docs
+description: Az Azure App Service-ben kiszolgálói szerepkörök az Azure Stackben kapacitástervezése
 services: azure-stack
 documentationcenter: ''
-author: brenduns
+author: sethmanheim
 manager: femila
 editor: ''
 ms.assetid: ''
@@ -13,100 +13,100 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/28/2018
-ms.author: brenduns
+ms.author: sethm
 ms.reviewer: anwestg
-ms.openlocfilehash: f54481fe59df21b500ee860d1e9a202ed32bdd87
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.openlocfilehash: 7cdcd8b7e9814c206255077fae0af2029fab6583
+ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37097148"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49078113"
 ---
-# <a name="capacity-planning-for-azure-app-service-server-roles-in-azure-stack"></a>Kapacitástervezési Azure verem Azure App Service kiszolgálói szerepköre tekintetében
+# <a name="capacity-planning-for-azure-app-service-server-roles-in-azure-stack"></a>Az Azure App Service-ben kiszolgálói szerepkörök az Azure Stackben kapacitástervezése
 
-*A következőkre vonatkozik: Azure verem integrált rendszerek és az Azure verem szoftverfejlesztői készlet*
+*A következőkre vonatkozik: Azure Stackkel integrált rendszerek és az Azure Stack fejlesztői készlete*
 
-Az Azure App Service Azure veremben éles készen áll a környezet beállításához meg kell tervezni a kapacitás, a rendszer támogatja a várt.  
+Állítsa be az Azure App Service az Azure Stacken kész éles környezet, meg kell terveznie a kapacitás, a rendszer támogatja a várt.  
 
-Ez a cikk nyújt útmutatást a számítási példányokért és számítási kell használnia minden éles környezet termékváltozat minimális száma.
+Ez a cikk nyújt útmutatást a számítási példányok és számítási éles rendszerek üzembe használjon SKU-k minimális száma.
 
-Az App Service kapacitás stratégia használja ezeket az irányelveket is tervezhet. Azure verem jövőbeli verzióiban az App Service magas rendelkezésre állású lehetőségeket kínál.
+Az App Service-ben kapacitás stratégia használatával ezeket az irányelveket is tervezhet. Azure Stack későbbi verzióiban biztosít magas rendelkezésre állási lehetőségek az App Service-ben.
 
-| App Service-kiszolgálói szerepkör | Ajánlott a példányok száma | Ajánlott számítási Termékváltozat|
+| Az App Service-kiszolgálói szerepkör | Legrégebbi ajánlott példányok száma | Javasolt számítási Termékváltozat|
 | --- | --- | --- |
 | Vezérlő | 2 | A1 |
 | Előtér | 2 | A1 |
 | Kezelés | 2 | A3 |
 | Közzétevő | 2 | A1 |
-| Webes munkavállalók - megosztott | 2 | A1 |
-| Webes munkavállalók - dedikált | 2 / réteg | A1 |
+| Webes feldolgozó – megosztott | 2 | A1 |
+| Webes feldolgozó – dedikált | 2 / csomag | A1 |
 
-## <a name="controller-role"></a>Tartományvezérlő szerepkör
+## <a name="controller-role"></a>Vezérlői szerepkör
 
-**Ajánlott minimális**: A1 szabványos két példánya
+**Ajánlott minimális**: A1 Standard két példánya
 
-Az Azure App Service Controller általában teljesen alacsony használat Processzor, memória és hálózati erőforrásokat. Azonban a magas rendelkezésre állás, rendelkeznie kell két vezérlő. Két vezérlő megtalálhatók a tartományvezérlők engedélyezett maximális számát. Létrehozhat a második webhelyek vezérlő közvetlen a telepítő a telepítés során.
+Az Azure App Service Controller általában teljesen alacsony felhasználás a Processzor, memória és hálózati erőforrásokat. Ugyanakkor a magas rendelkezésre állás érdekében rendelkeznie kell két vezérlőn. Két vezérlőn is rendelkezésre állnak a tartományvezérlők engedélyezett maximális számát. Hozhat létre a második Web Sites vezérlő közvetlen a telepítő a telepítés során.
 
-## <a name="front-end-role"></a>Első szerep
+## <a name="front-end-role"></a>Az előtérbeli szerep
 
-**Ajánlott minimális**: A1 szabványos két példánya
+**Ajánlott minimális**: A1 Standard két példánya
 
-Az előtér kérelmeket továbbítja a webes munkavállalók attól függően, hogy a webes munkavégző rendelkezésre állási. A magas rendelkezésre állás érdekében egynél több előtér kell lennie, és akkor is meghaladja a kettőt. Kapacitástervezési célból fontolja meg, hogy minden egyes core kezelni tud a körülbelül 100 kérések száma másodpercenként.
+Az előtér felé irányítja a kérelmeket a webes feldolgozók webes feldolgozó rendelkezésre állás. A magas rendelkezésre állás érdekében egynél több előtér rendelkeznie kell, és legfeljebb két rendelkezhet. Kapacitástervezési célból fontolja meg, hogy egyes maghoz kezelhetik a körülbelül 100 vonatkozó kérelmek másodpercenkénti száma.
 
-## <a name="management-role"></a>Kezelés szerepköre
+## <a name="management-role"></a>Felügyeleti szerepkör
 
-**Ajánlott minimális**: A3 szabványos két példánya
+**Ajánlott minimális**: A3 Standard két példánya
 
-Az App Service Azure Resource Manager és API-végpontokon portál extensions (admin, tenant, Functions portálon) és a szolgáltatás felelős az Azure App Service felügyeleti szerepkört. A felügyeleti kiszolgálói szerepkör általában csak a 4 GB RAM, éles környezetben kapcsolatos van szükség. Azonban ez problémákat tapasztalhat a Processzor magas szintű (például a webhely létrehozása) számos felügyeleti feladatok végrehajtásakor. A magas rendelkezésre állás ehhez a szerepkörhöz rendelt egynél több kiszolgálón kell lennie, és legalább két processzormag kiszolgálónként.
+Az Azure App Service felügyeleti szerepkör az App Service az Azure Resource Manager és az API-végpontokat, portál extensions (felügyeleti, a bérlő, a Functions portálon.) és az adatszolgáltatás felelős. A felügyeleti kiszolgálói szerepkör általában csak a 4 GB RAM, éles környezetben kapcsolatos van szükség. Azonban ez tapasztalhat magas CPU-szintű (például a webhely létrehozása) számos felügyeleti feladatot el kell végezni. A magas rendelkezésre állás érdekében kell rendelkeznie ehhez a szerepkörhöz hozzárendelt egynél több kiszolgálón, és legalább két kiszolgáló magok.
 
-## <a name="publisher-role"></a>A Publisher szerepkör
+## <a name="publisher-role"></a>Közzétevői szerepkör
 
-**Ajánlott minimális**: A1 szabványos két példánya
+**Ajánlott minimális**: A1 Standard két példánya
 
-Ha sok felhasználó tesz közzé egy időben, a közzétevő szerepkört problémákat tapasztalhat a nagy CPU-használat. A magas rendelkezésre állás szabadítson fel több közzétevő szerepkört.  A közzétevő kizárólag az FTP-/ FTPS-forgalmat kezeli.
+Hány felhasználó egyszerre tesz közzé, ha a közzétevői szerepkör tapasztalhat a nagy CPU-használat. A magas rendelkezésre állás érdekében győződjön meg arról, egynél több közzétevői szerepkör érhető el.  A kiadó csak kezeli az FTP-/ FTPS-forgalmat.
 
-## <a name="web-worker-role"></a>Webes feldolgozói szerepkör
+## <a name="web-worker-role"></a>Webes feldolgozó szerepkör
 
-**Ajánlott minimális**: A1 szabványos két példánya
+**Ajánlott minimális**: A1 Standard két példánya
 
-A magas rendelkezésre állás érdekében legalább négy webes feldolgozói szerepköröket kell rendelkeznie, kettőt csak a megosztott webhelyet üzemmód és két minden speciális feldolgozó réteg azt tervezi, hogy kínálnak. A megosztott és dedikált számítási módok szolgáltatás különböző szinteken biztosít a bérlők számára. További webalkalmazás munkavállalók lehet szükség, ha sok ügyfelei az alábbiakra:
+A magas rendelkezésre állás érdekében legalább négy webes feldolgozói szerepkörök van szükség, két megosztott webhely-üzemmód és két egyes dedikált feldolgozói réteg csomagot az ajánlathoz. A megosztott és dedikált számítási mód szolgáltatás különböző szinteken biztosít a bérlők számára. Ha az ügyfelek számos további a webes feldolgozók lehet szükség:
 
-- Dedikált számítási mód munkavégző rétegek (amelyek erőforrás-igényes.)
-- Megosztott számítási módban fut.
+- Dedikált számítási mód feldolgozói rétegek (amelyek erőforrás-igényes.) használatával
+- A megosztott számítási üzemmódban fut.
 
-Miután a felhasználó hozott létre egy App Service-csomag egy dedikált számítási mód Termékváltozat, a webes dolgozniuk abban, hogy az App Service-csomag már nem lesz elérhető a felhasználók számára megadott számát.
+Miután a felhasználó által létrehozott App Service-csomag számára egy dedikált számítási üzemmódra Termékváltozat, a megadott App Service-csomag már nem lesz elérhető a felhasználók számára, hogy webes feldolgozót száma.
 
-Adja meg az Azure Functions a felhasználók számára a fogyasztás terv modellben, megosztott webes munkavállalók kell telepítenie.
+Adja meg az Azure Functions a használatalapú csomag modell a felhasználók számára, a webes feldolgozók megosztott kell telepíteni.
 
-Amikor eldönti, a megosztott webes feldolgozói szerepkörök számának használatához, tekintse át ezeket a szempontokat:
+Amikor eldönti, megosztott webes feldolgozói szerepkörök számának használatához, tekintse át ezeket a szempontokat:
 
-- **Memória**: memória az a kritikus fontosságú erőforrás egy webes feldolgozói szerepkör esetében. Nincs elég memória hatások webhely teljesítményét az alábbi virtuális memória lemezről van cserélve. Minden egyes kiszolgáló 1,2 GB RAM-MAL az operációs rendszer igényel. A küszöbérték fölött RAM webhelyek futtatásához használható.
-- **Az aktív webhelyek százalékos**: alkalmazások az Azure App Service üzemelő Azure verem körülbelül 5 százalékát általában aktív. Azonban a kérelmek százalékos arányát, amely egy adott időpontban aktív magasabb vagy alacsonyabb lehet. 5 százalékkal aktív alkalmazás sebesség, az alkalmazások az Azure App Service az Azure Alkalmazásveremben üzembe helyezendő maximális száma nem lehet kisebb, mint:
+- **Memória**: memória mérete a kritikus fontosságú erőforrás egy webes feldolgozói szerepkör esetében. Nincs elég memória a virtuális memória lemezről átváltásakor hatással van a webhely teljesítményét. Minden kiszolgálón az operációs rendszer 1,2 GB RAM szükséges. A küszöbérték fölött RAM segítségével webhelyeket.
+- **Aktív webhelyek százaléka**: általában az Azure Stack üzembe helyezés az Azure App Service-alkalmazások körülbelül 5 %-os aktívak. Azonban, amely egy adott időpontban aktív kérelmek aránya magasabb vagy alacsonyabb lehet. Egy aktív alkalmazás arány 5 %-os, helyezze el az Azure Stack üzemelő példányon, egy Azure App Service-alkalmazások maximális számát lehet kisebb, mint:
   - 20 alkalommal aktív webhelyek (5 x 20 = 100) száma.
-- **Átlagos memóriaigény**: az átlagos memóriaigény éles környezetekben megfigyelt alkalmazások pedig körülbelül 70 MB. Ezt az erőforrást használ, az összes webes feldolgozói szerepkörben működő számítógép vagy virtuális gépek között lefoglalt memória kerülhet sor, az alábbiak szerint:
+- **Átlagos memória-erőforrás-igényű**: az alkalmazások éles környezetben megfigyelt átlagos memóriaigénye körülbelül 70 MB. Az erőforrás-igényű használja, minden webes feldolgozói szerepkörben működő számítógép vagy virtuális gépek számára fenntartott memória mérete számítható ki a következő:
 
-    *Kiépítve alkalmazások száma * 70 MB * 5 % - (száma a webszolgáltatás feldolgozói szerepkörök * 1044 MB)*
+    *Kiépített alkalmazások száma * 70 MB * 5 % - (szám a webes feldolgozói szerepkörök * 1044 MB)*
 
-   Például ha 10 webes munkavégző szerepkört futtató környezetben 5000 alkalmazások, minden webes feldolgozói szerepkör VM 7060 MB RAM-ot kell rendelkezniük:
+   Például ha a környezetben, 10 webes feldolgozói szerepkörök 5000 alkalmazások is vannak, egyes webes feldolgozói szerepkörök VM 7060 MB RAM-MAL kell rendelkeznie:
 
-   5000 * 70 * 0,05 – (10 * 1044) = 7060 (= 7 GB-os)
+   5 000 * 70 * 0,05 – (10 * 1044) = 7060 (= 7 GB-os)
 
-   Több worker-példányok hozzáadásával kapcsolatos további információkért lásd: [további feldolgozói szerepkörök hozzáadása](azure-stack-app-service-add-worker-roles.md).
+   Több feldolgozói példányból hozzáadásával kapcsolatos további információkért lásd: [további feldolgozói szerepkörök hozzáadása](azure-stack-app-service-add-worker-roles.md).
 
 ## <a name="file-server-role"></a>Fájlkiszolgálói szerepkör
 
-A Fájlkiszolgáló szerepkör használható önálló fájlkiszolgáló fejlesztési és tesztelési, például amikor üzembe helyezése az Azure verem szoftverfejlesztői készlet az Azure App Service használhatja ezt a sablont - <https://aka.ms/appsvconmasdkfstemplate>. Élesben való használat esetén érdemes használni a előre beállított Windows-fájlkiszolgálón, vagy egy előre megadott-Windows fájlkiszolgálókon.
+A Fájlkiszolgáló szerepkör használható önálló fájlkiszolgáló fejlesztési és tesztelési, például amikor az Azure Stack Development Kit futó Azure App Service üzembe helyezése használhatja a sablon - <https://aka.ms/appsvconmasdkfstemplate>. Termelési célra egy előre konfigurált Windows-fájlkiszolgáló, vagy egy előre konfigurált nem Windows fájlkiszolgáló kell használnia.
 
-Éles környezetben a Fájlkiszolgáló szerepkör intenzív lemez i/o észlel. Mert Kezelőkód összes tartalom és alkalmazás fájlt a felhasználó-webhelyekhez, előre, konfigurálnia kell a szerepkör a következőket:
+Éles környezetben a Fájlkiszolgáló szerepkör teljesen intenzív lemez i/o. Kezelőkód összes tartalom és alkalmazás fájlt a felhasználó-webhelyekhez, mert előre konfigurálnia kell ezt a szerepkört az alábbiak egyikét:
 
-- Windows-fájlkiszolgálón
-- a Windows fájlkiszolgáló-fürtökhöz
-- a-Windows fájlkiszolgáló
-- a-Windows fájlkiszolgáló-fürtökhöz
-- NAS (hálózati csatolt tároló) eszköz
+- Windows fájlkiszolgáló
+- a Windows fájlkiszolgáló fürt
+- nem Windows fájlkiszolgáló
+- a nem Windows-fájlkiszolgáló fürt
+- (hálózati tárolóeszközök) NAS-eszközök
 
-További információkért lásd: [kiépíteni egy fájlkiszolgáló](azure-stack-app-service-before-you-get-started.md#prepare-the-file-server).
+További információkért lásd: [fájlkiszolgáló üzembe helyezése](azure-stack-app-service-before-you-get-started.md#prepare-the-file-server).
 
 ## <a name="next-steps"></a>További lépések
 
-[Az App Service Azure veremben megkezdése előtt](azure-stack-app-service-before-you-get-started.md)
+[Mielőtt elkezdené, az Azure Stack App Service-szel](azure-stack-app-service-before-you-get-started.md)

@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
 ms.date: 04/04/2017
-ms.openlocfilehash: f1364435d2f7b50c642d1bb5b41708ec52bda533
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 240be0e7dc199a84130739244743d245b780b608
+ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46946204"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48902076"
 ---
 # <a name="overview-diagram-of-azure-machine-learning-studio-capabilities"></a>Az Azure Machine Learning Studio képességeit áttekintő diagram
 A **Microsoft Azure Machine Learning Studio képességeinek áttekintése** diagram átfogó képet nyújt a Machine Learning Studio prediktív elemzési kísérletek kifejlesztéséhez, és azok Azure felhőben történő üzembe helyezéséhez való használatáról.
@@ -47,7 +47,7 @@ Töltse le a **Microsoft Azure Machine Learning Studio képességeinek áttekint
 
 
 ## <a name="more-help-with-machine-learning-studio"></a>További segítség a Machine Learning Studio használatához
-* A Microsoft Azure Machine Learning szolgáltatás áttekintéséhez tekintse meg a [Gépi tanulás bemutatása a Microsoft Azure-ban](what-is-machine-learning.md) című fejezetet.
+* A Microsoft Azure Machine Learning szolgáltatás áttekintéséhez tekintse meg a [Gépi tanulás bemutatása a Microsoft Azure-ban](../service/overview-what-is-azure-ml.md) című fejezetet.
 * A Machine Learning Studio áttekintéséhez olvassa el a [Mi a Machine Learning Studio](what-is-ml-studio.md) című fejezetet.
 * A Machine Learning Studióban található gépi tanulási algoritmusok részletes leírását az [Algoritmusok kiválasztása a Microsoft Azure Machine Learninghez](algorithm-choice.md) című fejezetben találja.
 

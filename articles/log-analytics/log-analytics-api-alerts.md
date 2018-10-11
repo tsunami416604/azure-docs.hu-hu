@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 04/10/2018
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: 6aaf9b42677064b31c56be96775692c75812e145
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: b178744911d03547509de58e35be5cd99e046391
+ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48044620"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49079055"
 ---
 # <a name="create-and-manage-alert-rules-in-log-analytics-with-rest-api"></a>Hozzon létre, és a Log Analytics REST API-val riasztási szabályok kezelése
 A Log Analytics Alert REST API lehetővé teszi, hogy hozhat létre és kezelheti a riasztásokat az Operations Management Suite (OMS).  Ez a cikk részletesen az API-val és néhány példa a különféle műveletek végezhetők.
@@ -138,6 +138,7 @@ A művelet azonosítójú a Delete metódus használatával törölhet olyan mű
 |:--- |:--- |:--- |
 | Küszöbérték |Ha a művelet futtatása feltételeit.| Szükséges minden egyes riasztás előtt vagy után bővítve lettek az Azure-bA. |
 | Severity |Adatvezérelt riasztás osztályozására szolgáló címkéje.| Szükséges minden egyes riasztás előtt vagy után bővítve lettek az Azure-bA. |
+| Mellőzés |Lehetőség van a riasztásból értesítéseket leállítani. | Minden egyes riasztás esetén nem kötelező előtt vagy után bővítve lettek az Azure-bA. |
 | Műveletcsoportok |Ahol szükséges műveletek meg van adva, az Azure ActionGroup azonosítói, például - e-mailek, SMSs, intézett Hanghívásokhoz, Webhookok, Automation-Runbookok, ITSM-összekötő, stb.| Ha a riasztások bővítve lettek az Azure-bA szükséges|
 | Műveletek testreszabása|A normál a kimenetbe ActionGroup a select műveletek módosítása| Minden riasztás esetén nem kötelező használható után a riasztások bővítve lettek az Azure-bA. |
 | EmailNotification |E-mail küldés több címzettnek. | Nem kötelező, ha a riasztások bővítve lettek az Azure-bA|
@@ -213,6 +214,37 @@ Egy súlyossági műveletet egy ütemezés módosításához használja a Put me
 
     $thresholdWithSevJson = "{'etag': 'W/\"datetime'2016-02-25T20%3A54%3A20.1302566Z'\"','properties': { 'Name': 'My Threshold', 'Version':'1','Severity': 'critical', 'Type':'Alert', 'Threshold': { 'Operator': 'gt', 'Value': 10 } }"
     armclient put /subscriptions/{Subscription ID}/resourceGroups/OI-Default-East-US/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/mythreshold?api-version=2015-03-20 $thresholdWithSevJson
+
+#### <a name="suppress"></a>Mellőzés
+A log Analytics-alapú riasztások aktiválódnak, minden alkalommal, amikor küszöbérték van elérte vagy túllépte a lekérdezést. A hallgatólagos a lekérdezésben logika alapján, emiatt előfordulhat, hogy az adott időközönként sorozata első aktivált riasztás, és így értesítést is küld a rendszer folyamatosan. Ilyen forgatókönyv megelőzése érdekében mellőzése beállítást a Log Analytics ezt kell várni egy sorba mennyi idő elteltével az értesítés aktiválódik, amikor a riasztási szabály beállítását. Tehát ha le van állítva; 30 percig Ezután a riasztás első alkalommal aktiválódik, és konfigurált értesítések küldése. De Várjon 30 percet, mielőtt újra használta a riasztási szabály értesítést. A köztes időszakban riasztási szabály továbbra is működni fog - csak értesítési van, amelyeket az Eseményszabályozás Log Analytics számára megadott időpontban, függetlenül attól, hogy hányszor a riasztási szabály aktiválva ebben az időszakban.
+
+Riasztási szabály használatával van megadva a Log Analytics tulajdonságát mellőzése a *sávszélesség-szabályozási* érték és a Tiltási időtartam használatával *DurationInMinutes* értéket.
+
+Következő egy minta válasza egy műveletet, amelyek csak küszöbértéke, súlyosság és elrejtése tulajdonság
+
+    "etag": "W/\"datetime'2016-02-25T20%3A54%3A20.1302566Z'\"",
+    "properties": {
+        "Type": "Alert",
+        "Name": "My threshold action",
+        "Threshold": {
+            "Operator": "gt",
+            "Value": 10
+        },
+        "Throttling": {
+          "DurationInMinutes": 30
+        },
+        "Severity": "critical",
+        "Version": 1    }
+
+A művelet egyedi azonosítója a Put metódust használatával hozzon létre egy új művelet ütemezés súlyossági.  
+
+    $AlertSuppressJson = "{'properties': { 'Name': 'My Threshold', 'Version':'1','Severity': 'critical', 'Type':'Alert', 'Throttling': { 'DurationInMinutes': 30 },'Threshold': { 'Operator': 'gt', 'Value': 10 } }"
+    armclient put /subscriptions/{Subscription ID}/resourceGroups/OI-Default-East-US/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/myalert?api-version=2015-03-20 $AlertSuppressJson
+
+Egy súlyossági műveletet egy ütemezés módosításához használja a Put metódust egy meglévő azonosítójú művelet.  A kérelem törzsében tartalmaznia kell az etag címkéje a műveletet.
+
+    $AlertSuppressJson = "{'etag': 'W/\"datetime'2016-02-25T20%3A54%3A20.1302566Z'\"','properties': { 'Name': 'My Threshold', 'Version':'1','Severity': 'critical', 'Type':'Alert', 'Throttling': { 'DurationInMinutes': 30 },'Threshold': { 'Operator': 'gt', 'Value': 10 } }"
+    armclient put /subscriptions/{Subscription ID}/resourceGroups/OI-Default-East-US/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/myalert?api-version=2015-03-20 $AlertSuppressJson
 
 #### <a name="action-groups"></a>Műveletcsoportok
 Az Azure-ban, az összeset műveletcsoport használja az alapértelmezett mechanizmusként műveletek kezelésére. A műveletcsoport adja meg a műveletet egyszer, és társíthatja a műveletcsoport több riasztás – az Azure-ban. Nem szükséges, ismételten deklarálja és újra ugyanazokat a műveleteket. Műveletcsoportok támogatja a több műveletek – például az e-mailben, SMS, hanghívás, az ITSM-kapcsolatot, Automation-Runbook, Webhook URI. 

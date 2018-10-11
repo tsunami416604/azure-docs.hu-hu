@@ -2,18 +2,17 @@
 title: Tárolók figyelése az Azure Container Instances-ben
 description: Részletesen ismerteti, hogyan lehet figyelni a számítási erőforrások, mint a CPU és memória fogyasztását az Azure Container Instances tárolóiban.
 services: container-instances
-author: mmacy
-manager: jeconnoc
+author: dlepow
 ms.service: container-instances
 ms.topic: overview
 ms.date: 04/24/2018
-ms.author: marsma
-ms.openlocfilehash: 6107aee0a4d7497e90186e0ea4bda6cd2712820d
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.author: danlep
+ms.openlocfilehash: ef9a710694c21dde934d1ce1454ea355d7034d72
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46979607"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48853884"
 ---
 # <a name="monitor-container-resources-in-azure-container-instances"></a>Tároló-erőforrások figyelése az Azure Container Instances-ben
 

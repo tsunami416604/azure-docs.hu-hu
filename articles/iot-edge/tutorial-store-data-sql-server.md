@@ -9,12 +9,12 @@ ms.date: 09/21/2018
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 0cfcc01d50937f80a5c621c95ccec0901da270f3
-ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
+ms.openlocfilehash: f10b8e34c653add6f93b0234a9efff43d78036f3
+ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47423272"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48237212"
 ---
 # <a name="tutorial-store-data-at-the-edge-with-sql-server-databases"></a>Oktatóanyag: Adatok tárolása a peremhálózaton SQL Server-adatbázisokkal
 
@@ -209,7 +209,7 @@ Az IoT Edge-futtatókörnyezet által az IoT Edge-eszközön telepítendő modul
    * Linux-tárolók:
 
       ```json
-      "image": "microsoft/mssql-server-linux:2017-latest",
+      "image": "mcr.microsoft.com/mssql/server:latest",
       "createOptions": "{\"Env\": [\"ACCEPT_EULA=Y\",\"MSSQL_SA_PASSWORD=Strong!Passw0rd\"],\"HostConfig\": {\"Mounts\": [{\"Target\": \"/var/opt/mssql\",\"Source\": \"sqlVolume\",\"Type\": \"volume\"}],\"PortBindings\": {\"1433/tcp\": [{\"HostPort\": \"1401\"}]}}}"
       ```
 

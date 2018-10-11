@@ -1,28 +1,34 @@
 ---
-title: Az Azure használata az aks-sel
-description: Azure-lemezek használata az aks-sel
+title: Dinamikusan hozhat létre több podok fájlok kötet Azure Kubernetes Service (AKS)
+description: Ismerje meg, hogyan dinamikusan hozhat létre egy tartós kötet az Azure Files a több egyidejű podok Azure Kubernetes Service (AKS) segítségével
 services: container-service
 author: iainfoulds
 ms.service: container-service
 ms.topic: article
-ms.date: 08/15/2018
+ms.date: 10/08/2018
 ms.author: iainfou
-ms.openlocfilehash: dfc9171f54effe3da7a0f13695ab233d561357d4
-ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
+ms.openlocfilehash: 022ffeaf75f8f03447b931ed9c3a474286a17f89
+ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43285685"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49067805"
 ---
-# <a name="persistent-volumes-with-azure-files"></a>Az Azure-fájlok állandó kötetek
+# <a name="dynamically-create-and-use-a-persistent-volume-with-azure-files-in-azure-kubernetes-service-aks"></a>Dinamikusan létrehozása, és a egy tartós kötet használata az Azure Files Azure Kubernetes Service (AKS)
 
-Tartós kötet olyan tárolási megoldás, amely létre lett hozva egy Kubernetes-fürt használatát. Tartós kötet segítségével egy vagy több podok és statikusan vagy dinamikusan létrehozhatók. Ez a dokumentum részletesen **dinamikus létrehozása** az Azure-fájlmegosztás kötetként állandó.
+Tartós kötet egy Kubernetes-podok való használatra vett tárolási részét jelöli. Tartós kötet egy vagy több podok által használható, és hogy statikusan vagy dinamikusan bővítheti. Ha több podok kell az azonos tárolókötethez való egyidejű hozzáférés, az Azure Files használatával történő kapcsolódás használhatja a [Server Message Block (SMB) protokoll][smb-overview]. Ez a cikk bemutatja, hogyan dinamikusan létrehozása az Azure Kubernetes Service (AKS)-fürt az Azure Files megosztási több podok általi használatra.
 
-További információk a Kubernetes szolgáltatásban állandó kötetek, statikus létrehozását, beleértve: [Kubernetes állandó kötetek][kubernetes-volumes].
+A Kubernetes állandó köteteken további információkért lásd: [Kubernetes állandó kötetek][kubernetes-volumes].
+
+## <a name="before-you-begin"></a>Előkészületek
+
+Ez a cikk azt feltételezi, hogy egy meglévő AKS-fürtöt. Ha egy AKS-fürtre van szüksége, tekintse meg az AKS gyors [az Azure CLI-vel] [ aks-quickstart-cli] vagy [az Azure portal használatával][aks-quickstart-portal].
+
+Emellett az Azure CLI 2.0.46 verziójára van szükség, vagy később telepített és konfigurált. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése][install-azure-cli].
 
 ## <a name="create-a-storage-account"></a>Tárfiók létrehozása
 
-Amikor dinamikusan hoz létre egy Azure-fájlmegosztást, egy Kubernetes-kötet, minden olyan storage-fiók is használható, mindaddig, amíg az AKS van **csomópont** erőforráscsoportot. Ez a csoport nincs a *MC_* előtagot, amely hozta létre az AKS-fürt erőforrásainak üzembe helyezése. Az erőforráscsoport nevét a [az aks show] [az-aks-show] paranccsal kaphat.
+Ha dinamikusan hozhat létre egy Azure-fájlmegosztást, egy Kubernetes-kötet, minden olyan storage-fiók is használható, mindaddig, amíg az AKS van **csomópont** erőforráscsoportot. Ez a csoport nincs a *MC_* előtagot, amely hozta létre az AKS-fürt erőforrásainak üzembe helyezése. Az erőforráscsoport nevét az első a [az aks show] [ az-aks-show] parancsot.
 
 ```azurecli
 $ az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeResourceGroup -o tsv
@@ -77,7 +83,7 @@ Ahhoz, hogy a szükséges tárolási erőforrások létrehozása az Azure platfo
 
 ```yaml
 ---
-apiVersion: rbac.authorization.k8s.io/v1beta1
+apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
   name: system:azure-cloud-provider
@@ -86,7 +92,7 @@ rules:
   resources: ['secrets']
   verbs:     ['get','create']
 ---
-apiVersion: rbac.authorization.k8s.io/v1beta1
+apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
 metadata:
   name: system:azure-cloud-provider
@@ -154,11 +160,18 @@ metadata:
   name: mypod
 spec:
   containers:
-    - name: myfrontend
-      image: nginx
-      volumeMounts:
-      - mountPath: "/mnt/azure"
-        name: volume
+  - name: mypod
+    image: nginx:1.15.5
+    resources:
+      requests:
+        cpu: 100m
+        memory: 128Mi
+      limits:
+        cpu: 250m
+        memory: 256Mi
+    volumeMounts:
+    - mountPath: "/mnt/azure"
+      name: volume
   volumes:
     - name: volume
       persistentVolumeClaim:
@@ -175,9 +188,9 @@ Az Azure csatlakoztatott lemezzel most már rendelkezik egy futó pod a */mnt/az
 
 ```
 Containers:
-  myfrontend:
+  mypod:
     Container ID:   docker://053bc9c0df72232d755aa040bfba8b533fa696b123876108dec400e364d2523e
-    Image:          nginx
+    Image:          nginx:1.15.5
     Image ID:       docker-pullable://nginx@sha256:d85914d547a6c92faa39ce7058bd7529baacab7e0cd4255442b04577c4d1f424
     State:          Running
       Started:      Wed, 15 Aug 2018 22:22:27 +0000
@@ -189,7 +202,7 @@ Containers:
 Volumes:
   volume:
     Type:       PersistentVolumeClaim (a reference to a PersistentVolumeClaim in the same namespace)
-    ClaimName:  azurefile2
+    ClaimName:  azurefile
     ReadOnly:   false
 [...]
 ```
@@ -198,7 +211,7 @@ Volumes:
 
 Alapértelmezett *fileMode* és *dirMode* érték azonos a szerepkörtárolók Kubernetes-verzió az alábbi táblázatban leírtak szerint.
 
-| verzió: | érték |
+| version | érték |
 | ---- | ---- |
 | V1.6.x, v1.7.x | 0777 |
 | v1.8.0-v1.8.5 | 0700 |
@@ -244,7 +257,7 @@ spec:
   - file_mode=0777
   - uid=1000
   - gid=1000
-  ```
+```
 
 Ha használja a fürt verziójának 1.8.0-as - 1.8.4-es verzióra, a biztonsági környezet adható a *felhasználó* értékre állítva *0*. A Pod biztonsági környezet további információkért lásd: [konfigurálása a biztonsági környezet][kubernetes-security-context].
 
@@ -267,6 +280,7 @@ További tudnivalók a Kubernetes Azure Files használatával állandó kötetek
 [kubernetes-volumes]: https://kubernetes.io/docs/concepts/storage/persistent-volumes/
 [pv-static]: https://kubernetes.io/docs/concepts/storage/persistent-volumes/#static
 [kubernetes-rbac]: https://kubernetes.io/docs/reference/access-authn-authz/rbac/
+[smb-overview]: /windows/desktop/FileIO/microsoft-smb-protocol-and-cifs-protocol-overview
 
 <!-- LINKS - internal -->
 [az-group-create]: /cli/azure/group#az-group-create
@@ -277,3 +291,7 @@ További tudnivalók a Kubernetes Azure Files használatával állandó kötetek
 [az-storage-key-list]: /cli/azure/storage/account/keys#az-storage-account-keys-list
 [az-storage-share-create]: /cli/azure/storage/share#az-storage-share-create
 [mount-options]: #mount-options
+[aks-quickstart-cli]: kubernetes-walkthrough.md
+[aks-quickstart-portal]: kubernetes-walkthrough-portal.md
+[install-azure-cli]: /cli/azure/install-azure-cli
+[az-aks-show]: /cli/azure/aks#az-aks-show
