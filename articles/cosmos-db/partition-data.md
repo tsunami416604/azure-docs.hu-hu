@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 07/26/2018
 ms.author: andrl
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d7c1c28b3d7b2f51c31f5f05cdef66cc8d71e192
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: 968651e2bd06d54c8b735bf2418e0d84b94f315d
+ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48886382"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49078564"
 ---
 # <a name="partition-and-scale-in-azure-cosmos-db"></a>Particionálási és horizontális Azure Cosmos DB-ben
 
@@ -185,7 +185,7 @@ További információkért lásd: [fejlesztés a Table API-val](tutorial-develop
 A Gremlin API-val használhatja az Azure portal vagy az Azure CLI-vel, hozzon létre egy tárolót, amely egy graph jelöli. Azt is megteheti mivel az Azure Cosmos DB többmodelles, használhatja a más API-k egyik hozhat létre, és a graph-tároló méretezése.
 
 > [!NOTE]
-> Nem használhat `/id` partíciókulcs egy tárolóhoz, a Gremlin API-t. 
+> `/id` és `/label` egy tárolóhoz, a Gremlin API partíciókulcsok nem támogatottak.
 
 Minden csomópont- vagy peremtábla a partíciókulcs és Azonosítóját a Gremlin használatával olvashatja. Például egy Graph-régióhoz ("USA") a partíciókulcs és a "Seattle" sorkulcsként, annak csúcs a következő szintaxis használatával:
 

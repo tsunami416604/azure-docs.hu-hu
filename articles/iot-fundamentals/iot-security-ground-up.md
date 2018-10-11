@@ -1,24 +1,21 @@
 ---
 title: Az eszközök internetes hálózata az alapoktól védelme mentése
 description: Ez a cikk bemutatja a beépített biztonsági szolgáltatásait a Microsoft Azure IoT-megoldásgyorsítók
-author: dominicbetts
-manager: timlt
+author: robinsh
 ms.service: iot-fundamentals
 services: iot-fundamentals
 ms.topic: conceptual
-ms.date: 06/14/2018
-ms.author: dobett
-ms.openlocfilehash: e710d1ea10deb07dd9c405b11681b17c37e3b962
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.date: 10/09/2018
+ms.author: robinsh
+ms.openlocfilehash: 043ba54f3607cd669245e7defbf32aeb586ae292
+ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38299272"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49066955"
 ---
 [!INCLUDE [iot-security-ground-up](../../includes/iot-security-ground-up.md)]
 
 ## <a name="next-steps"></a>További lépések
 
-További információ az IoT Hub biztonsági [férhet hozzá az IoT Hub] [ lnk-devguide-security] az IoT Hub fejlesztői útmutatójában található.
-
-[lnk-devguide-security]: ../iot-hub/iot-hub-devguide-security.md
+További információ az IoT Hub biztonsági [férhet hozzá az IoT Hub](../iot-hub/iot-hub-devguide-security.md) az IoT Hub fejlesztői útmutatójában található.

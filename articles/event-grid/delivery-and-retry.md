@@ -5,14 +5,14 @@ services: event-grid
 author: tfitzmac
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 09/13/2018
+ms.date: 10/10/2018
 ms.author: tomfitz
-ms.openlocfilehash: 15d68e4da6dd03751300f87ea5830c2db0470b60
-ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
+ms.openlocfilehash: 4d53c33daefaadb4c58ce500a5d564af7988b606
+ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45604858"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49077088"
 ---
 # <a name="event-grid-message-delivery-and-retry"></a>Event Grid az üzenetek kézbesítését, és próbálkozzon újra
 
@@ -22,7 +22,7 @@ Event Grid biztosít a tartós kézbesítési. Minden üzenet legalább egyszer 
 
 Jelenleg Event Grid küld minden esemény külön-külön előfizetők számára. Az előfizető egy tömböt egyetlen eseményt kap.
 
-## <a name="retry-intervals-and-duration"></a>Újrapróbálkozási időközök és időtartama
+## <a name="retry-schedule-and-duration"></a>Ismételje meg az ütemezés és időtartama
 
 Event Grid egy exponenciális leállítási újrapróbálkozási házirend eseménykézbesítés használ. A végpont nem válaszol, vagy esetén hibakódot ad vissza, ha az Event Grid újrapróbálkozik kézbesítési a következő ütemezés szerint:
 
@@ -34,7 +34,7 @@ Event Grid egy exponenciális leállítási újrapróbálkozási házirend esem�
 6. 30 perc
 7. 1 óra
 
-Event Grid egy kis véletlenszerű ad hozzá minden újrapróbálkozási időközhöz. Egy óra elteltével eseménykézbesítés rendszer óránként egyszer.
+Event Grid ad hozzá egy kis véletlenszerű újrapróbálkozási lépéseket. Egy óra elteltével eseménykézbesítés rendszer óránként egyszer.
 
 Alapértelmezés szerint az Event Grid összes eseményt, amely nem biztosított 24 órán belül lejár. Is [testre szabhatja az újrapróbálkozási szabályzat](manage-event-delivery.md) egy esemény-előfizetés létrehozásakor. Biztosítanak a maximális számát (alapértelmezés: 30) a kézbesítési kísérletek és az esemény élő idő (1440 perc az alapértelmezett érték).
 

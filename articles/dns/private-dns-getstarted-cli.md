@@ -7,14 +7,14 @@ ms.service: dns
 ms.topic: tutorial
 ms.date: 7/25/2018
 ms.author: victorh
-ms.openlocfilehash: 023a1ecb6afc49dd20a14d57558d72a44779dbe9
-ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
+ms.openlocfilehash: 27a27cfb81362b070deb0bad367ff62e8c39460c
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39257565"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46964389"
 ---
-# <a name="create-an-azure-dns-private-zone-using-azure-cli"></a>Saját Azure DNS-zóna létrehozása az Azure CLI használatával
+# <a name="create-an-azure-dns-private-zone-using-the-azure-cli"></a>Saját Azure DNS-zóna létrehozása az Azure CLI használatával
 
 Ez az oktatóanyag végigvezeti az első saját DNS-zóna és -rekord Azure CLI-vel való létrehozásának lépésein.
 

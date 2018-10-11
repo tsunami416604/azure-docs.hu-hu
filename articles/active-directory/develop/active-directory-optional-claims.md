@@ -16,12 +16,12 @@ ms.date: 10/05/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 56b0f0ce39d421e80890ad0dbad9b7cfe0812cdb
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: c42e8978a94730669f3c3f879d1d26c4426bd9da
+ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/10/2018
-ms.locfileid: "48902875"
+ms.locfileid: "49079137"
 ---
 # <a name="how-to-provide-optional-claims-to-your-azure-ad-app-public-preview"></a>Hogyan: Adja meg a választható jogcímeket, az Azure AD-alkalmazás (nyilvános előzetes verzió)
 
@@ -35,18 +35,22 @@ Ez a szolgáltatás-k segítségével az alkalmazásfejlesztők adja meg, milyen
 
 Standard jogcímek és azok hogyan használhatók a tokenek listáját lásd: a [alapjait, az Azure AD által kiállított jogkivonatokban](v1-id-and-access-tokens.md). 
 
-Az egyik a [az Azure AD v2.0-végpont](active-directory-appmodel-v2-overview.md) az ügyfelek által az optimális teljesítmény biztosítása érdekében kisebb token méretű.  Ennek eredményeképpen korábban szerepelni fog a hozzáférési és azonosító-jogkivonatokat több jogcím már nem találhatók a 2.0-s verziójú jogkivonatokban, és kifejezetten a alkalmazásonkénti alapján kell kérni.  
+Az egyik a [az Azure AD v2.0-végpont](active-directory-appmodel-v2-overview.md) az ügyfelek által az optimális teljesítmény biztosítása érdekében kisebb token méretű.  Ennek eredményeképpen korábban szerepelni fog a hozzáférési és azonosító-jogkivonatokat több jogcím már nem találhatók a 2.0-s verziójú jogkivonatokban, és kifejezetten a alkalmazásonkénti alapján kell kérni.
+
+  
 
 **1. táblázat: alkalmazhatósági**
 
 | Fiók típusa | 1.0-s verziójú végpont | 2.0 verziójú végpont  |
 |--------------|---------------|----------------|
 | Személyes Microsoft-fiók  | NA – jegyek RPS ehelyett használt | A támogatás hamarosan elérhető |
-| Azure AD-fiók            | Támogatott                          | Támogatott      |
+| Azure AD-fiók          | Támogatott                          | Szem előtt a következőket támogatja      |
+
+> [!Important]
+> Jelenleg, mind a személyes fiókokat, és az Azure AD-t támogató alkalmazások (regisztrálva a [alkalmazás regisztrációs portál](https://apps.dev.microsoft.com)) választható jogcímek nem használható.  Azonban csak az Azure ad v2.0-végpont használatával regisztrált alkalmazás kérheti le a nem kötelező jogcímeket a kért a jegyzékfájlban.
 
 ## <a name="standard-optional-claims-set"></a>Standard választható jogcímek készletébe
-
-Az alkalmazásokkal való használatra alapértelmezés szerint elérhető nem kötelező jogcímek készlete alább láthatók.  Az egyéni opcionális jogcímek az alkalmazáshoz adni, tekintse meg a [Címtárbővítmények](active-directory-optional-claims.md#Configuring-custom-claims-via-directory-extensions), az alábbi. 
+Az alkalmazásokkal való használatra alapértelmezés szerint elérhető nem kötelező jogcímek készlete alább láthatók.  Az egyéni opcionális jogcímek az alkalmazáshoz adni, tekintse meg a [Címtárbővítmények](active-directory-optional-claims.md#Configuring-custom-claims-via-directory-extensions), az alábbi.  Vegye figyelembe, hogy jogcímeket hozzáadásakor a **hozzáférési jogkivonat**, ez lesz érvényes hozzáférési jogkivonatok kért *a* az alkalmazás (webes API-k), azokat *által* az alkalmazást.  Ez biztosítja, hogy az ügyfelet, az API elérése, függetlenül attól, hogy a megfelelő adatok már jelen vannak a hozzáférési jogkivonat hitelesíti a rendszer az API-t használják.
 
 > [!Note]
 >A legtöbb ezeket a jogcímeket is szerepelnek JWTs az 1.0-s verziója és a 2.0-s verziójú jogkivonatok, de nem SAML-jogkivonatokat, kivéve, ahol ennek ellenezőjét jelöltük a jogkivonat típusa oszlopban.  Emellett bár nem kötelező jogcímek csak jelenleg támogatott az AAD-felhasználók, MSA támogatási ad hozzá.  Amikor MSA választható jogcímeket támogatja a v2.0-végpont, a felhasználói adattípusú oszlop jogcím elérhető-e az AAD vagy az MSA-felhasználók esetében fog jelöl.  
@@ -241,7 +245,7 @@ Több lehetőség van egy alkalmazás identitás konfiguráció engedélyezése 
             ]
       }
       ```
-      Ebben az esetben másik választható jogcímek hozzáadott minden típusú jogkivonatot, amely az alkalmazás fogadhat. Az azonosító-jogkivonatokat mostantól tartalmazza a teljes képernyőn összevont felhasználók esetében az egyszerű Felhasználónevet (`<upn>_<homedomain>#EXT#@<resourcedomain>`). A hozzáférési jogkivonatok most fog kapni a auth_time jogcímet. Az SAML-jogkivonatok mostantól tartalmazza a skypeId directory-séma kiterjesztését (ebben a példában az alkalmazás az alkalmazás csomagazonosítója ab603c56068041afb2f6832e2a17e237).  Az SAML-jogkivonatok fogja elérhetővé tenni a Skype-azonosító, `extension_skypeId`.
+      Ebben az esetben másik választható jogcímek hozzáadott minden típusú jogkivonatot, amely az alkalmazás fogadhat. Az azonosító-jogkivonatokat mostantól tartalmazza a teljes képernyőn összevont felhasználók esetében az egyszerű Felhasználónevet (`<upn>_<homedomain>#EXT#@<resourcedomain>`). A hozzáférési tokenek kérő ügyfelek számára az alkalmazás most már tartalmazza a auth_time jogcímet. Az SAML-jogkivonatok mostantól tartalmazza a skypeId directory-séma kiterjesztését (ebben a példában az alkalmazás az alkalmazás csomagazonosítója ab603c56068041afb2f6832e2a17e237).  Az SAML-jogkivonatok fogja elérhetővé tenni a Skype-azonosító, `extension_skypeId`.
 
 1. Ha elkészült, a jegyzékfájl frissítése, kattintson a **mentése** a jegyzékfájl mentése
 

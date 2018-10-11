@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: da4f06ff4e1478043bc147c2c08083e118bccbe4
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 4532355130fff987e25c5c804630fb6bdd7699df
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38723119"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46959835"
 ---
 # <a name="tutorial-automatically-scale-a-virtual-machine-scale-set-with-an-azure-template"></a>Oktatóanyag: Virtuálisgép-méretezési csoport automatikus méretezése Azure-sablonnal
 Méretezési csoport létrehozásakor meghatározza a futtatni kívánt virtuálisgép-példányok számát. Az alkalmazás igényeihez igazodva automatikusan növelheti vagy csökkentheti a virtuálisgép-példányok számát. Az automatikus méretezésnek köszönhetően lépést tarthat az ügyfeleik igényeivel és az alkalmazás teljes élettartama alatt reagálhat az alkalmazás teljesítményében bekövetkezett változásokra. Ezen oktatóanyag segítségével megtanulhatja a következőket:
@@ -36,7 +36,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Ha a parancssori felület helyi telepítését és használatát választja, akkor ehhez az oktatóanyaghoz az Azure CLI 2.0.29-es vagy újabb verziójára lesz szükség. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI 2.0 telepítése]( /cli/azure/install-azure-cli). 
+Ha a parancssori felület helyi telepítését és használatát választja, akkor ehhez az oktatóanyaghoz az Azure CLI 2.0.29-es vagy újabb verziójára lesz szükség. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése]( /cli/azure/install-azure-cli). 
 
 
 ## <a name="define-an-autoscale-profile"></a>Automatikus skálázási profil meghatározása
@@ -272,7 +272,7 @@ az group delete --name myResourceGroup --yes --no-wait
 
 
 ## <a name="next-steps"></a>További lépések
-Ez az oktatóanyag bemutatta, hogyan lehet automatikusan horizontálisan le- illetve felskálázni egy méretezési csoportot az Azure CLI 2.0 használatával:
+Ez az oktatóanyag bemutatta, hogyan lehet automatikusan horizontálisan le- illetve felskálázni egy méretezési csoportot az Azure CLI használatával:
 
 > [!div class="checklist"]
 > * Automatikus skálázás használata méretezési csoportokkal
@@ -280,7 +280,7 @@ Ez az oktatóanyag bemutatta, hogyan lehet automatikusan horizontálisan le- ill
 > * Virtuálisgép-példányok és automatikus skálázás-aktiválási szabályok terhelési tesztje
 > * Visszaméretezés, ha az igény csökken
 
-A virtuálisgép-méretezési csoportok működésével kapcsolatos további példákért tekintse meg az alábbi Azure CLI 2.0 mintaszkripteket:
+A virtuálisgép-méretezési csoportok működésével kapcsolatos további példákért tekintse meg az alábbi Azure CLI-mintaszkripteket:
 
 > [!div class="nextstepaction"]
-> [Méretezési csoportokhoz tartozó szkriptminták az Azure CLI 2.0-hoz](cli-samples.md)
+> [Méretezési csoportokhoz tartozó szkriptminták az Azure CLI-hoz](cli-samples.md)

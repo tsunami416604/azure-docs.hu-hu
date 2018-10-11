@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/17/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 0368d9822df193fbf00d8a2069108e23100a58cd
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: c9ed3f3511def085f5e0658bbcbd7978e3a7ce20
+ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48810593"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49079315"
 ---
 <a name="saas-sell-through-azure---apis"></a>SaaS-értékesítési Azure - API-k segítségével
 ==============================
@@ -63,12 +63,14 @@ Az Azure Portallal egy új alkalmazás regisztrálásához hajtsa végre az alá
 
 4.  A Létrehozás lapon adja meg az alkalmazás\'s regisztrációs adatokat:
     -   **Név**: Adjon meg egy kifejező alkalmazásnevet
-    -   **Az alkalmazástípus**: válassza ki **webalkalmazás / API** a [ügyfélalkalmazások](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#client-application) és [erőforrás és az API-alkalmazások](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#resource-server) biztonságos kiszolgálón telepített. Ezzel a beállítással az OAuth bizalmas [webes ügyfél](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#web-client) és nyilvános [felhasználói ügynök-alapú ügyfelek](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#user-agent-based-client).
+    -   **Az alkalmazástípus**: 
+        - Válassza a **Natív** lehetőséget a helyileg vagy eszközre telepített [ügyfélalkalmazások](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#client-application) esetében. Ez a beállítás használatos a nyilvános OAuth [natív ügyfelekhez](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#native-client).
+        - Válassza ki **webalkalmazás / API** a [ügyfélalkalmazások](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#client-application) és [erőforrás és az API-alkalmazások](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#resource-server) biztonságos kiszolgálón telepített. Ezzel a beállítással az OAuth bizalmas [webes ügyfél](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#web-client) és nyilvános [felhasználói ügynök-alapú ügyfelek](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#user-agent-based-client).
         Egyazon alkalmazás az ügyfelet és az erőforrást/API-t is elérhetővé teheti.
     -   **Bejelentkezési URL-**: A webes alkalmazás és az API-alkalmazások, adja meg az alkalmazás alap URL-CÍMÉT. Ha például **http://localhost:31544** lehet, hogy a helyi gépen futó webalkalmazás URL-CÍMÉT. Felhasználók a webes ügyfélalkalmazás bejelentkezni majd használna az URL-címet.
     -   **Átirányítási URI**: A natív alkalmazások esetén adja meg az Azure AD a jogkivonatválaszok visszaadására használt URI-ja. Adja meg például egy adott értéket az alkalmazás **http://MyFirstAADApp**.
 
-        Adott példák a webalkalmazásokra vagy natív alkalmazásokat, tekintse meg a gyors üzembe helyezési interaktív bevezetés szakaszában rendelkezésre álló beállításokat a [az Azure AD fejlesztői útmutató](https://docs.microsoft.com/azure/active-directory/develop/active-directory-developers-guide#get-started).
+        ![SaaS-AD Alkalmazásregisztrációk](media/saas-offer-publish-with-subscription-apis/saas-offer-app-registration-2.png) adott példák a webalkalmazásokra vagy natív alkalmazásokat, tekintse meg a gyors üzembe helyezési interaktív bevezetés szakaszában rendelkezésre álló beállításokat a [az Azure AD fejlesztői útmutató](https://docs.microsoft.com/azure/active-directory/develop/active-directory-developers-guide#get-started).
 
 5.  Ha végzett, kattintson a **Létrehozás** gombra. Az Azure AD egy egyedi Alkalmazásazonosító rendeli az alkalmazást, és\'újra megnyílik az alkalmazás\'s fő való regisztrációhoz. Attól függően, hogy az alkalmazás webes vagy natív, eltérő lehetőségek állnak rendelkezésre az alkalmazás további funkcióinak hozzáadásához.
 
@@ -112,7 +114,7 @@ HTTP-metódus
 |  Megadástípus (grant_type)         | True (Igaz)         | Engedélyezési típus. Az alapértelmezett érték `client_credentials`.                    |
 |  Client_id          | True (Igaz)         |  Az Azure AD-alkalmazáshoz társított ügyfél/alkalmazás azonosítója.                  |
 |  client_secret      | True (Igaz)         |  Az Azure AD-alkalmazáshoz társított jelszót.                               |
-|  Erőforrás           | True (Igaz)         |  A célerőforrás, amelyre a jogkivonat kérik. Az alapértelmezett érték `b3cca048-ed2e-406c-aff2-40cf19fe7bf5`. |
+|  Erőforrás           | True (Igaz)         |  A célerőforrás, amelyre a jogkivonat kérik. Az alapértelmezett érték `62d94f6c-d599-489b-a797-3e10e42fbe22`. |
 |  |  |  |
 
 
@@ -120,7 +122,7 @@ HTTP-metódus
 
 |  **Name (Név)**  | **Típus**       |  **Leírás**    |
 | ---------- | -------------  | ------------------- |
-| 200 OK /    | TokenResponse  | A kérelem sikeres volt   |
+| 200 OK    | TokenResponse  | A kérelem sikeres volt   |
 |  |  |  |
 
 *TokenResponse*
@@ -170,6 +172,7 @@ A POST művelet oldja meg a végpont lehetővé teszi a felhasználóknak oldja 
 | x-ms-korrelációs azonosító | Nem           | A műveletet az ügyfél egyedi karakterlánc-érték. Ez utal. a kiszolgálói oldalon eseményekkel rendelkező ügyfél művelet összes eseménye. Ha ez az érték nincs megadva, az egyik létrehozott és a válaszfejlécek megadott. |
 | a Content-type       | Igen          | `application/json`                                        |
 | Engedélyezési      | Igen          | A JSON webes jogkivonat (JWT) tulajdonosi jogkivonatot.                    |
+| x-ms-piactér-token| Igen| A token lekérdezési paraméter, amikor a felhasználó az Azure-ból SaaS ISV webhelyre átirányítási URL-címét. **Megjegyzés:** URL-címet a böngészőből a token érték dekódolása használat előtt.|
 |  |  |  |
   
 
@@ -178,14 +181,16 @@ A POST művelet oldja meg a végpont lehetővé teszi a felhasználóknak oldja 
  ``` json       
     { 
         “id”: “”, 
+        “subscriptionName”: “”,
         “offerId”:””, 
-         “planId”:””, 
+         “planId”:””
     }     
 ```
 
 | **Paraméter neve** | **Adattípus** | **Leírás**                       |
 |--------------------|---------------|---------------------------------------|
 | id                 | Sztring        | Az SaaS-előfizetés azonosítója.          |
+| subscriptionName| Sztring| Az SaaS-előfizetés beállítása az Azure-ban a felhasználó a SaaS-szolgáltatásra előfizető neve.|
 | Ajánlat azonosítója            | Sztring        | Ajánlat azonosítója, amelyre a felhasználó előfizetett. |
 | planId             | Sztring        | Tervezze meg, hogy a felhasználó előfizetett azonosítója.  |
 |  |  |  |
@@ -224,7 +229,7 @@ Az előfizetési végpont lehetővé teszi, hogy a felhasználók számára egy 
 
 | **Paraméter neve**  | **Leírás**                                       |
 |---------------------|-------------------------------------------------------|
-| subscriptionId      | ID az SaaS-előfizetés.                              |
+| subscriptionId      | Saas-előfizetés, hogy a jogkivonat feloldása API-n keresztül megoldása után egyedi azonosítója.                              |
 | API-verzió         | A művelet ehhez a kérelemhez használt verziója. |
 |  |  |
 
@@ -237,19 +242,20 @@ Az előfizetési végpont lehetővé teszi, hogy a felhasználók számára egy 
 | If-Match/If-None-Match |   Nem         |   Erős érvényesítő ETag-érték.                                                          |
 | a Content-type           |   Igen        |    `application/json`                                                                   |
 |  Engedélyezési         |   Igen        |    A JSON webes jogkivonat (JWT) tulajdonosi jogkivonatot.                                               |
+| x-ms-piactér-munkamenet-mód| Nem | Ez a jelző azt tesztfuttatás módban ahhoz, hogy egy SaaS-ajánlat feliratkozás során. Ha a beállítása, az előfizetés nem számítunk fel. Ez akkor hasznos, ISV-k olyan forgatókönyvek tesztelése esetében. Állítsa be azt **"tesztfuttatási hiba:**|
 |  |  |  |
 
 *Törzs*
 
 ``` json
   { 
-      “planId”:””, 
+      “planId”:””
    }      
 ```
 
 | **Elem neve** | **Adattípus** | **Leírás**                      |
 |------------------|---------------|--------------------------------------|
-| planId           | Sztring        | Tervezze meg, hogy a felhasználó előfizetett azonosítója. |
+| planId           | (Kötelező) Karakterlánc        | Tervezze meg a SaaS-szolgáltatás felhasználói előfizetés azonosítója.  |
 |  |  |  |
 
 *Válaszkódok*
@@ -264,6 +270,8 @@ Az előfizetési végpont lehetővé teszi, hogy a felhasználók számára egy 
 | 429                  | `RequestThrottleId`  | Szolgáltatás egy foglalt feldolgozási kérelmek, próbálkozzon újra később.                  |
 | 503                  | `ServiceUnavailable` | Szolgáltatás van lefelé átmenetileg, próbálkozzon újra később.                          |
 |  |  |  |
+
+202-es választ nyomon követheti a kért művelet állapotát az "A művelet-location" fejléc. A hitelesítés megegyezik más Marketplace API-k formájában.
 
 *Válaszfejlécek*
 
@@ -306,14 +314,14 @@ A módosítás végpont lehetővé teszi, hogy a felhasználó az aktuálisan el
 
 ``` json
                 { 
-                    “planId”:””, 
+                    “planId”:””
                 } 
 ```
 
 
 |  **Elem neve** |  **Adattípus**  | **Leírás**                              |
 |  ---------------- | -------------   | --------------------------------------       |
-|  planId           |  Sztring         | Tervezze meg, hogy a felhasználó előfizetett azonosítója.         |
+|  planId           |  (Kötelező) Karakterlánc         | Tervezze meg a SaaS-szolgáltatás felhasználói előfizetés azonosítója.          |
 |  |  |  |
 
 *Válaszkódok*
@@ -377,6 +385,8 @@ Az előfizetési végpont a törlési művelet lehetővé teszi, hogy a felhaszn
 | 429                  | `RequestThrottleId`  | Service foglalt feldolgozási kérelmek, próbálkozzon újra később.                  |
 | 503                  | `ServiceUnavailable` | Szolgáltatás ideiglenesen nem működik. Próbálkozzon újra később.                          |
 |  |  |  |
+
+202-es választ nyomon követheti a kért művelet állapotát az "A művelet-location" fejléc. A hitelesítés megegyezik más Marketplace API-k formájában.
 
 *Válaszfejlécek*
 
@@ -457,7 +467,6 @@ Ez a végpont lehetővé teszi a felhasználó egy aktivált aszinkron művelet 
 | x-ms-korrelációs azonosító | Igen          | Korrelációs azonosító által átadott az ügyfelet, egyébként ez-e a korrelációs azonosítóját.                   |
 | x-ms-tevékenységazonosító    | Igen          | A szolgáltatás a kérelem követési egyedi karakterlánc-érték. Bármely egyeztetések szolgál. |
 | Retry-After        | Igen          | Melyik ügyfél időköz ellenőrizheti.                                                       |
-| A művelet-helye | Igen          | Hivatkozás az erőforrás műveleti állapotának beolvasása.                                                        |
 |  |  |  |
 
 ### <a name="get-subscription"></a>Előfizetés beszerzése
@@ -493,9 +502,9 @@ A Get műveletet az előfizetési végpont lehetővé teszi, hogy egy felhaszná
       “saasSubscriptionName”:””, 
       “offerId”:””, 
        “planId”:””, 
-      “saasSubscriptionStatus”:”” 
-      “created”:”” 
-      “lastModified”: “”, 
+      “saasSubscriptionStatus”:””, 
+      “created”:””, 
+      “lastModified”: “” 
   }
 ```
 | **Paraméter neve**     | **Adattípus** | **Leírás**                               |
@@ -541,7 +550,7 @@ A Get műveletet előfizetések végponton lehetővé teszi, hogy egy felhaszná
 
 **GET**
 
-**https://marketplaceapi.microsoft.com/api/saas/subscriptions/subscriptions?api-version=2017-04-15**
+**https://marketplaceapi.microsoft.com/api/saas/subscriptions?api-version=2017-04-15**
 
 | **Paraméter neve**  | **Leírás**                                       |
 |---------------------|-------------------------------------------------------|
@@ -566,9 +575,9 @@ A Get műveletet előfizetések végponton lehetővé teszi, hogy egy felhaszná
       “saasSubscriptionName”:””, 
       “offerId”:””, 
        “planId”:””, 
-      “saasSubscriptionStatus”:”” 
-      “created”:”” 
-      “lastModified”: “”, 
+      “saasSubscriptionStatus”:””, 
+      “created”:””, 
+      “lastModified”: “”
   }
 ```
 

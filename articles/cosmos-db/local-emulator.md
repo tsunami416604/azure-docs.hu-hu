@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/20/2018
 ms.author: danoble
-ms.openlocfilehash: 7067a71eea3ffbfadf006a102ee926fb15347f63
-ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
+ms.openlocfilehash: a5481f9b2b443a0860ce0df5643427f357e1c294
+ms.sourcegitcommit: 4edf9354a00bb63082c3b844b979165b64f46286
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47423646"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48785371"
 ---
 # <a name="use-the-azure-cosmos-db-emulator-for-local-development-and-testing"></a>Az Azure Cosmos DB Emulator használata helyi fejlesztéshez és teszteléshez
 
@@ -466,54 +466,6 @@ Hibakeresési nyomok begyűjtéséhez futtassa a következő parancsokat egy ren
 2. A Windows keresőmezőbe írja be az **alkalmazások és szolgáltatások** kifejezést, majd kattintson az **Alkalmazások és szolgáltatások (rendszerbeállítások)** eredményre.
 3. Az alkalmazások listájában görgessen az **Azure Cosmos DB Emulator** elemhez, válassza ki azt, kattintson az **Eltávolítás** lehetőségre, majd erősítse meg, és kattintson ismét az **Eltávolítás** elemre.
 4. Az alkalmazás eltávolításakor lépjen a `C:\Users\<user>\AppData\Local\CosmosDBEmulator` mappához, és törölje ki. 
-
-## <a name="change-list"></a>Lista módosítása
-
-A verziószám ellenőrzéséhez kattintson a jobb gombbal a tálcán lévő emulátor ikonra, és kattintson az Információ menüelemre.
-
-### <a name="1220-released-on-april-20-2018"></a>1.22.0. Kiadás dátuma: 2018. április 20.
-
-Az emulátorszolgáltatások a Cosmos DB felhőszolgáltatásokkal való paritást szolgáló frissítése mellett továbbfejlesztett PowerShell-dokumentáció és néhány különböző hibajavítás is elérhetővé vált.
-
-### <a name="12106-released-on-march-27-2018"></a>1.21.0.6 Kiadás dátuma: 2018. március 27.
-
-Az emulátorszolgáltatások a Cosmos DB felhőszolgáltatásokkal való paritást szolgáló frissítése mellett egy új funkciót és két hibajavítást is hozzáadtunk ehhez a kiadáshoz.
-
-#### <a name="features"></a>Szolgáltatások
-
-1. A Start-CosmosDbEmulator parancs mostantól indítási beállításokat is tartalmaz.
-
-#### <a name="bug-fixes"></a>Hibajavítások
-
-1. A Microsoft.Azure.CosmosDB.Emulator PowerShell-modul mostantól biztosítja, hogy a `ServiceControllerStatus` felsorolás be legyen töltve.
-
-2. A Microsoft.Azure.CosmosDB.Emulator PowerShell-modul mostantól tartalmaz egy jegyzékfájlt; ez az első kiadásból kimaradt.
-
-### <a name="1201084-released-on-february-14-2018"></a>1.20.108.4 Kiadás dátuma: 2018. február 14.
-
-Ebben a kiadásban egy új szolgáltatás és két hibajavítás szerepel. Köszönet azoknak a felhasználóknak, akik segítettek a problémák megkeresésében és kijavításában.
-
-#### <a name="bug-fixes"></a>Hibajavítások
-
-1. Az emulátor mostantól 1 vagy 2 maggal (vagy virtuális processzorral) rendelkező számítógépekkel is működik
-
-   A Cosmos DB feladatokat foglal le különböző szolgáltatások elvégzése érdekében. A lefoglalt feladatok száma a gazdagépen lévő magok többszöröse. Az alapértelmezett szorzó jól működik éles környezetekben, ahol nagy a magok száma. Az 1 vagy 2 maggal rendelkező gépeken azonban nincsenek lefoglalva feladatok ezen szolgáltatások elvégzéséhez ezen szorzó alkalmazásakor.
-
-   Ennek kijavítása érdekében egy konfiguráció-felülbírálást adtunk az emulátorhoz. Mostantól az 1-es szorzót alkalmazzuk. A különböző szolgáltatások elvégzése érdekében lefoglalt feladatok száma mostantól egyenlő a gazdagépen lévő magok számával.
-
-   Ha semmi mást nem is tettünk volna ebben a kiadásban, ezt a problémát meg kellett oldani. Úgy tapasztaljuk, hogy számos, az emulátort futtató fejlesztési/tesztelési környezet 1 vagy 2 maggal rendelkezik.
-
-2. Az emulátorhoz mostantól nem kell telepíteni a Microsoft Visual C++ 2015 újraterjeszthető csomagot.
-
-   Úgy találtuk, hogy a Windows (asztali és kiszolgálói kiadások) friss telepítései nem tartalmazzák ezt az újraterjeszthető csomagot. Ezért mostantól az újraterjeszthető bináris fájlokat az emulátorhoz csomagoljuk.
-
-#### <a name="features"></a>Szolgáltatások
-
-Számos megkérdezett ügyfelünk kihangsúlyozta, hogy remek lenne, ha az emulátort szkriptekkel lehetne vezérelni. Ezért a jelen kiadásban hozzáadtunk néhány szkriptképességet. Az emulátor mostantól tartalmaz egy PowerShell-modult az indításhoz, a leállításhoz, az állapot lekéréséhez és az eltávolításhoz: `Microsoft.Azure.CosmosDB.Emulator`. 
-
-### <a name="120911-released-on-january-26-2018"></a>1.20.91.1 Kiadás dátuma: 2018. január 26.
-
-* A MongoDB összesítőfolyamat alapértelmezés szerint engedélyezett.
 
 ## <a name="next-steps"></a>További lépések
 

@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 07/19/2018
 ms.author: seanmck
 ms.custom: mvc
-ms.openlocfilehash: 6f57bc41cddc997a69f92ba4e8ca66faaeb29738
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: d2e4491f2ee21deedd674a5a8a64e4dd99149924
+ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39424602"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49079354"
 ---
 # <a name="troubleshoot-common-issues-in-azure-container-instances"></a>Az Azure Container Instances szolgáltatásban gyakori problémáinak elhárítása
 
@@ -89,11 +89,24 @@ Ha a kép nem kell lekérni, az alábbihoz hasonló események kimenete láthat�
 ],
 ```
 
-## <a name="container-continually-exits-and-restarts"></a>Tároló folyamatosan kilép, és újraindul
+## <a name="container-continually-exits-and-restarts-no-long-running-process"></a>Tároló folyamatosan kilép, és újraindítja a (nincs hosszan futó folyamat)
 
-Ha a tároló befejeződjön, és automatikusan újraindul, szüksége lehet beállítani egy [újraindítási házirend](container-instances-restart-policy.md) , **OnFailure** vagy **soha**. Ha megad **OnFailure** , és továbbra is folyamatos lásd újraindul, előfordulhat, hogy egy probléma a alkalmazás vagy a parancsfájl végrehajtása a tárolóban.
+Tárolócsoportok alapértelmezés szerint egy [újraindítási házirend](container-instances-restart-policy.md) , **mindig**, így az mindig tárolócsoportban a tárolók újraindítása után a Futtatás befejezési. Előfordulhat, hogy módosítania azt **OnFailure** vagy **soha** Ha szeretne feladat-alapú tárolók futtatásához. Ha megad **OnFailure** , és továbbra is folyamatos lásd újraindul, előfordulhat, hogy egy probléma a alkalmazás vagy a parancsfájl végrehajtása a tárolóban.
 
-A Container Instances API tartalmaz egy `restartCount` tulajdonság. Ellenőrizze a tárolóhoz újraindítások számát, használhatja a [az container show] [ az-container-show] parancsot az Azure CLI-ben. A következő példa a kimenetre (amely kivonatosan csonkolta), megtekintheti a `restartCount` tulajdonság kimenetének a végén.
+Tárolócsoportok nélkül hosszú futású folyamatok futtatásakor ismétlődő Kilépés és képekkel, például az Ubuntu vagy Alpine újraindítást jelenhet meg. Kapcsolódás a következő [EXEC](container-instances-exec.md) nem fog működni, mert a tároló egyetlen folyamat életben tartása. Megoldásához közé tartozik, hogy a tároló futtatását az üzembe helyezett tárolókat csoport a következő indítási parancsot.
+
+```azurecli-interactive
+## Deploying a Linux container
+az container create -g MyResourceGroup --name myapp --image ubuntu --command-line "tail -f /dev/null"
+```
+
+```azurecli-interactive 
+## Deploying a Windows container
+az container create -g myResourceGroup --name mywindowsapp --os-type Windows --image windowsservercore:ltsc2016
+ --command-line "ping -t localhost"
+```
+
+A Container Instances API és az Azure portal tartalmaz egy `restartCount` tulajdonság. Ellenőrizze a tárolóhoz újraindítások számát, használhatja a [az container show] [ az-container-show] parancsot az Azure CLI-ben. A kimeneti (amely csonkolta kivonatosan) a következő példában látható a `restartCount` tulajdonság kimenetének a végén.
 
 ```json
 ...

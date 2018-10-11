@@ -9,16 +9,17 @@ author: bryanla
 ms.author: bryanla
 manager: mbaldwin
 ms.date: 10/03/2018
-ms.openlocfilehash: 80601ed30785af37346f801b7e4f1c90e897b3cd
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: b5b30f7f5ffc7fcbef918162bc736c1f0a888d1b
+ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48888099"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49067737"
 ---
 # <a name="azure-key-vault-storage-account-keys"></a>Az Azure Key Vault-Tárfiókkulcsok
 
-[!NOTE] [Az Azure storage mostantól támogatja az aad-ben engedélyezési](https://docs.microsoft.com/azure/storage/common/storage-auth-aad). Azt javasoljuk, hogy az Azure Active Directory hitelesítés és engedélyezés a Storage, a felhasználóknak nem kell aggódnia a Storage-fiók kulcsok. 
+> [!NOTE]
+> [Az Azure storage mostantól támogatja az aad-ben engedélyezési](https://docs.microsoft.com/azure/storage/common/storage-auth-aad). Azt javasoljuk, hogy az Azure Active Directory hitelesítés és engedélyezés a Storage, a felhasználóknak nem kell aggódnia a Storage-fiók kulcsok.
 
 - Az Azure Key Vault kezeli a kulcsok az Azure Storage fiók (ASA).
     - Belsőleg az Azure Key Vault listázhatja az Azure Storage-fiók kulcsok (sync).    

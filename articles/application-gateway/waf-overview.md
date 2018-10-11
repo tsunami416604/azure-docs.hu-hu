@@ -4,14 +4,14 @@ description: Ez a cikk a webalkalmazási tűzfal (WAF) áttekintést nyújt az A
 services: application-gateway
 author: amsriva
 ms.service: application-gateway
-ms.date: 10/6/2017
+ms.date: 10/11/2018
 ms.author: amsriva
-ms.openlocfilehash: a16f8d988c900d015810bfe72b04ff5e9eb0682a
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: 10a67eab142287cf9303e54005b6b167e9890df0
+ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48815664"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49068451"
 ---
 # <a name="web-application-firewall-waf"></a>Webalkalmazási tűzfal (WAF)
 
@@ -47,21 +47,43 @@ Az alábbiak az Application Gateway és a webalkalmazási tűzfal használatána
 
 ## <a name="features"></a>Szolgáltatások
 
-A webalkalmazási tűzfal alapértelmezés szerint a CRS 3.0-s verziójával van előre konfigurálva, de a 2.2.9-es verzió használata mellett is dönthet. A CRS 3.0-s verziója esetén kevesebb hibás riasztással kell számolnia, mint a 2.2.9-es verziónál. A [szabályok igény szerinti testreszabására](application-gateway-customize-waf-rules-portal.md) is lehetősége van. A webalkalmazási tűzfal többek között a következő gyakori internetes biztonsági rések ellen nyújt védelmet:
+- SQL-injektálás elleni védelem
+- Webhelyek közötti, parancsprogramot alkalmazó támadások elleni védelem
+- Gyakori webes támadások (például parancsinjektálás, HTTP-kéréscsempészet, HTTP-válaszfelosztás és távolifájl-beszúrásos támadás) elleni védelem
+- HTTP protokoll megsértése elleni védelem
+- HTTP protokollanomáliák (például hiányzó gazdagép-felhasználói ügynök és Accept (Elfogadás) fejlécek) elleni védelem
+- Robotprogramok, webbejárók és képolvasók elleni védelem
+- Gyakori alkalmazások konfigurációs hibáinak észlelése (vagyis Apache, IIS stb.)
 
-* SQL-injektálás elleni védelem
-* Webhelyek közötti, parancsprogramot alkalmazó támadások elleni védelem
-* Gyakori webes támadások (például parancsinjektálás, HTTP-kéréscsempészet, HTTP-válaszfelosztás és távolifájl-beszúrásos támadás) elleni védelem
-* HTTP protokoll megsértése elleni védelem
-* HTTP protokollanomáliák (például hiányzó gazdagép-felhasználói ügynök és Accept (Elfogadás) fejlécek) elleni védelem
-* Robotprogramok, webbejárók és képolvasók elleni védelem
-* Gyakori alkalmazások konfigurációs hibáinak észlelése (vagyis Apache, IIS stb.)
+### <a name="public-preview-features"></a>Nyilvános előzetes verziójú funkciók
 
-A szabályok és a hozzájuk tartozó védelmi megoldások részletesebb listáját az [Alapvető szabálykészletek](#core-rule-sets) című szakasz tartalmazza.
+A WAF aktuális nyilvános előzetes verzió Termékváltozat incudes a következő funkciókat:
+
+- **Kérelem méretbeli korlátokat** -webalkalmazási tűzfal lehetővé teszi a felhasználóknak kérelem méretbeli korlátokat belül alsó és felső határai konfigurálása.
+- **Kizárási listák** -WAF kizárási listák engedélyezése a felhasználók számára bizonyos attribútumainak WAF során hagyja ki. Ilyenek például az Active Directory beszúrt jogkivonatokat, amelyek a hitelesítéshez, vagy a beírt jelszavak.
+
+A WAF nyilvános előzetes verzióban kapcsolatos további információkért lásd: [Web application firewall kérelem méretbeli korlátokat és kizárási listák (nyilvános előzetes verzió)](application-gateway-waf-configuration.md).
+
+
+
+
 
 ### <a name="core-rule-sets"></a>Alapvető szabálykészletek
 
 Az Application Gateway a következő két szabálykészletet támogatja: CRS 3.0 és CRS 2.2.9. Ezek az alapvető szabálykészletek olyan szabályok gyűjteményei, amelyek megvédik a webalkalmazásokat a kártékony tevékenységek ellen.
+
+A webalkalmazási tűzfal alapértelmezés szerint a CRS 3.0-s verziójával van előre konfigurálva, de a 2.2.9-es verzió használata mellett is dönthet. A CRS 3.0-s verziója esetén kevesebb hibás riasztással kell számolnia, mint a 2.2.9-es verziónál. A [szabályok igény szerinti testreszabására](application-gateway-customize-waf-rules-portal.md) is lehetősége van. A webalkalmazási tűzfal többek között a következő gyakori internetes biztonsági rések ellen nyújt védelmet:
+
+- SQL-injektálás elleni védelem
+- Webhelyek közötti, parancsprogramot alkalmazó támadások elleni védelem
+- Gyakori webes támadások (például parancsinjektálás, HTTP-kéréscsempészet, HTTP-válaszfelosztás és távolifájl-beszúrásos támadás) elleni védelem
+- HTTP protokoll megsértése elleni védelem
+- HTTP protokollanomáliák (például hiányzó gazdagép-felhasználói ügynök és Accept (Elfogadás) fejlécek) elleni védelem
+- Robotprogramok, webbejárók és képolvasók elleni védelem
+- Alkalmazások (vagyis Apache, IIS stb.) gyakori konfigurációs hibáinak észlelése
+
+Szabályok és a hozzájuk tartozó védelmi megoldások részletesebb listáját lásd: [alapvető szabálykészletek](#core-rule-sets).
+
 
 #### <a name="owasp30"></a>OWASP_3.0
 

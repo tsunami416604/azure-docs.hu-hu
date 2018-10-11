@@ -8,14 +8,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/21/2018
+ms.date: 10/10/2018
 ms.author: rithorn
-ms.openlocfilehash: b436336a3484ec27e4b90785d668ba905281f158
-ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
+ms.openlocfilehash: 6273f265ebb5f9a2336040aacc01d1428fd0db11
+ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48018598"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49077748"
 ---
 # <a name="create-management-groups-for-resource-organization-and-management"></a>Erőforrás-szervezet és felügyeleti felügyeleti csoportok létrehozása
 
@@ -69,7 +69,7 @@ Használja a **ParentId** paramétert a felügyeleti csoportot létrehozni egy m
 Azure CLI-t, akkor használhat a az fiók felügyeleti-group create paranccsal.
 
 ```azurecli-interactive
-az account management-group create --group-name 'Contoso'
+az account management-group create --name 'Contoso'
 ```
 
 ## <a name="next-steps"></a>További lépések

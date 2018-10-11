@@ -1,22 +1,25 @@
 ---
 title: Podok statikus kötetet létrehozni az Azure Kubernetes Service (AKS)
-description: Ismerje meg, hogyan hozhat létre manuálisan egy kötet a podok Azure Kubernetes Service (AKS) segítségével Azure-lemezek
+description: Ismerje meg, hogyan hozhat létre manuálisan egy kötet a podot Azure Kubernetes Service (AKS) segítségével Azure-lemezek
 services: container-service
 author: iainfoulds
 ms.service: container-service
 ms.topic: article
-ms.date: 09/26/2018
+ms.date: 10/08/2018
 ms.author: iainfou
-ms.openlocfilehash: 20c7d20399392e653668953029bcb81886863ce4
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 9c5879474568885d9a705e7bfd16e2a4e2304b96
+ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47404619"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49068184"
 ---
-# <a name="manually-create-and-use-kubernetes-volume-with-azure-disks-in-azure-kubernetes-service-aks"></a>Manuálisan hozzon létre, és a Kubernetes-kötet használata Azure-lemezek az Azure Kubernetes Service (AKS)
+# <a name="manually-create-and-use-a-volume-with-azure-disks-in-azure-kubernetes-service-aks"></a>Manuális létrehozásához és a egy kötet használata Azure-lemezek az Azure Kubernetes Service (AKS)
 
-Tárolóalapú alkalmazások gyakran kell eléréséhez, és a egy külső adatmennyiség adatok megőrzése. Azure-lemezek a külső adatok tárolását is használható. Az aks-ben kötetek dinamikusan a tartós kötet jogcímek segítségével hozható létre, vagy manuálisan is létrehozhat, és közvetlenül csatlakoztathat egy Azure-lemez. Ez a cikk bemutatja, hogyan manuálisan hozzon létre egy Azure-lemez, és mellékelje egy pod az aks-ben.
+Tárolóalapú alkalmazások gyakran kell eléréséhez, és a egy külső adatmennyiség adatok megőrzése. Ha egy podot kell a hozzáférést a tárolóhoz, az alkalmazások által használható natív kötet jelenleg Azure lemez is használható. Ez a cikk bemutatja, hogyan manuálisan hozzon létre egy Azure-lemez, és mellékelje egy pod az aks-ben.
+
+> [!NOTE]
+> Egy Azure-lemez csak csatlakoztathatók a egy podot egyszerre. Ha a tartós kötet megosztása több podok van szüksége, használja a [Azure Files][azure-files-volume].
 
 A Kubernetes-köteteken további információkért lásd: [Kubernetes kötetek][kubernetes-volumes].
 
@@ -65,15 +68,22 @@ Az Azure-lemez csatlakoztatása a pod be, konfigurálja a kötetet a tároló sp
 apiVersion: v1
 kind: Pod
 metadata:
- name: azure-disk-pod
+  name: mypod
 spec:
- containers:
-  - image: microsoft/sample-aks-helloworld
-    name: azure
+  containers:
+  - image: nginx:1.15.5
+    name: mypod
+    resources:
+      requests:
+        cpu: 100m
+        memory: 128Mi
+      limits:
+        cpu: 250m
+        memory: 256Mi
     volumeMounts:
       - name: azure
         mountPath: /mnt/azure
- volumes:
+  volumes:
       - name: azure
         azureDisk:
           kind: Managed
@@ -87,7 +97,32 @@ Használja a `kubectl` paranccsal hozza létre a pod.
 kubectl apply -f azure-disk-pod.yaml
 ```
 
-Egy Azure-lemez csatlakoztatásának helye a most már rendelkezik egy futó pod `/mnt/azure`. Használhat `kubectl describe pod azure-disk-pod` ellenőrizze a lemez sikeresen csatlakoztatva van.
+Egy Azure-lemez csatlakoztatásának helye a most már rendelkezik egy futó pod `/mnt/azure`. Használhat `kubectl describe pod mypod` ellenőrizze a lemez sikeresen csatlakoztatva van. A következő sűrített példához kimenetet jeleníti meg a kötet csatlakoztatva van a tárolóban:
+
+```
+[...]
+Volumes:
+  azure:
+    Type:         AzureDisk (an Azure Data Disk mount on the host and bind mount to the pod)
+    DiskName:     myAKSDisk
+    DiskURI:      /subscriptions/<subscriptionID/resourceGroups/MC_myResourceGroupAKS_myAKSCluster_eastus/providers/Microsoft.Compute/disks/myAKSDisk
+    Kind:         Managed
+    FSType:       ext4
+    CachingMode:  ReadWrite
+    ReadOnly:     false
+  default-token-z5sd7:
+    Type:        Secret (a volume populated by a Secret)
+    SecretName:  default-token-z5sd7
+    Optional:    false
+[...]
+Events:
+  Type    Reason                 Age   From                               Message
+  ----    ------                 ----  ----                               -------
+  Normal  Scheduled              1m    default-scheduler                  Successfully assigned mypod to aks-nodepool1-79590246-0
+  Normal  SuccessfulMountVolume  1m    kubelet, aks-nodepool1-79590246-0  MountVolume.SetUp succeeded for volume "default-token-z5sd7"
+  Normal  SuccessfulMountVolume  41s   kubelet, aks-nodepool1-79590246-0  MountVolume.SetUp succeeded for volume "azure"
+[...]
+```
 
 ## <a name="next-steps"></a>További lépések
 
@@ -107,3 +142,4 @@ További információ az AKS fürtök kezelése az Azure-lemezek, lásd: a [Kube
 [aks-quickstart-portal]: kubernetes-walkthrough-portal.md
 [az-aks-show]: /cli/azure/aks#az-aks-show
 [install-azure-cli]: /cli/azure/install-azure-cli
+[azure-files-volume]: azure-files-volume.md

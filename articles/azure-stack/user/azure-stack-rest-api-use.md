@@ -3,22 +3,22 @@ title: Az Azure Stack API használata |} A Microsoft Docs
 description: Ismerje meg, hogyan kérheti le a hitelesítést, hogy API-kéréseket az Azure Stack Azure-ból.
 services: azure-stack
 documentationcenter: ''
-author: cblackuk
+author: mattbriggs
 manager: femila
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/02/2018
+ms.date: 10/10/2018
 ms.author: mabrigg
 ms.reviewer: thoroet
-ms.openlocfilehash: 3b89564bf17a9884640b51faa1c3966dce93f89a
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.openlocfilehash: 945c5df9aa76cef6d55b759e3cef7c00bf54e1c4
+ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37346790"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49078330"
 ---
 <!--  cblackuk and charliejllewellyn. This is a community contribution by cblackuk-->
 
@@ -34,7 +34,7 @@ Ez a cikk példákat, amelyek használják a **cURL** segédprogram az Azure Sta
 
 Tekintse át az Azure Stack – REST API használatával olyan általános REST ügyfelekkel, mint például a teljes folyamatán **cURL**, segítenek megérteni a mögöttes kéréseket, és bemutatja, hogy mire számíthat egy válasz hasznos adatok fogadására.
 
-Ez a cikk nem érhető el a jogkivonatokat, például az interaktív bejelentkezési beolvasása, vagy dedikált Alkalmazásazonosítók létrehozásának minden lehetőségek közül válogathat. Ezek a témakörök kapcsolatos információk lekéréséhez lásd: [Azure REST API-referencia](https://docs.microsoft.com/rest/api/).
+Ez a cikk nem érhető el a jogkivonatokat, például az interaktív bejelentkezéshez beolvasása, vagy dedikált Alkalmazásazonosítók létrehozásának minden lehetőségek közül válogathat. Ezek a témakörök kapcsolatos információk lekéréséhez lásd: [Azure REST API-referencia](https://docs.microsoft.com/rest/api/).
 
 ## <a name="get-a-token-from-azure"></a>Az Azure-ból egy token beszerzése
 
@@ -138,7 +138,7 @@ Minden egyes érték:
 
 ### <a name="example"></a>Példa
 
-A kérelem:
+Kérés:
 
 ```
 curl -X "POST" "https://login.windows.net/fabrikam.onmicrosoft.com/oauth2/token" \
@@ -169,7 +169,7 @@ Válasz:
 
 A hozzáférési jogkivonatot kap, miután hozzá kell azt fejlécnek egyes az API-kérelmek. Ehhez hozzon létre egy fejlécet kell **engedélyezési** értékkel: `Bearer <access token>`. Példa:
 
-A kérelem:
+Kérés:
 
 ```bash  
 curl -H "Authorization: Bearer eyJ0eXAiOi...truncated for readability..." 'https://adminmanagement.local.azurestack.external/subscriptions?api-version=2016-05-01'

@@ -1,6 +1,6 @@
 ---
 title: Az Azure Active Directory hozzáférési jogkivonatok hivatkozás |} A Microsoft Docs
-description: Hozzáférési jogkivonatok elfogadása projektsablon által kibocsátott az 1.0-s és 2.0-s verziójú végpontok az Azure ad-ben.
+description: Ismerje meg az 1.0-s és 2.0-s verziójú végpontok az Azure AD által kibocsátott hozzáférési jogkivonatok.
 services: active-directory
 documentationcenter: ''
 author: CelesteDG
@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/24/2018
+ms.date: 10/02/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 5f467b5fd9db913d41342bfec3e08791ad41a36a
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: f184c18e97144f7efb30d61ebd024344510f3f5c
+ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48815630"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49078766"
 ---
 # <a name="azure-active-directory-access-tokens"></a>Az Azure Active Directory hozzáférési jogkivonatok
 
@@ -87,6 +87,7 @@ Jogcím jelen, csak akkor, ha egy érték létezik, és töltse fel. Így az alk
 |-----|--------|-------------|
 | `aud` | Az Alkalmazásazonosító URI-karakterláncot | A jogkivonat az illetékes címzett azonosítja. A hozzáférési jogkivonatokban a célközönségét az alkalmazás Alkalmazásazonosító, az Azure Portalon az alkalmazáshoz rendelt. Az alkalmazás kell érvényesíteni ezt az értéket, és elutasítja a tokent, ha az érték nem egyezik. |
 | `iss` | Az STS-URI-karakterláncot | Azonosítja a biztonsági jogkivonat-szolgáltatás (STS) hoz létre, és a jogkivonatot, és az Azure AD-bérlővel, amelyben a felhasználó hitelesítési adja vissza. Ha a jogkivonat bocsátotta a v2.0-végpont, belül véget ér. az URI-t `/v2.0`. A GUID, amely azt jelzi, hogy a felhasználó Microsoft-fiók fogyasztói felhasználója `9188040d-6c67-4c5b-b112-36a304b66dad`. Az alkalmazás, amely bejelentkezhet az alkalmazásba, ha van ilyen bérlők korlátozni a jogcím GUID részének kell használni. |
+|`idp`|Karakterlánc, általában egy STS URI | A jogkivonat alanyát hitelesítő identitásszolgáltatót adja meg. Ez az érték megegyezik a kiállító jogcím értékét, kivéve, ha a felhasználói fiók nem ugyanahhoz a bérlőhöz, a kibocsátó - Vendégek, például. Ha a jogcím nem található, azt jelenti, hogy értékét `iss` is lehet használni.  Személyes fiókok orgnizational környezetben (például egy személyes fiók meghívjuk az Azure AD-bérlő), használja a `idp` jogcím lehet "live.com" és a egy STS URI, amely tartalmazza a Microsoft-fiók bérlő `9188040d-6c67-4c5b-b112-36a304b66dad`. |  
 | `iat` | int, a UNIX-időbélyege | "Feltüntetett tulajdonos:" azt jelenti, amikor a hitelesítés a jogkivonat történt. |
 | `nbf` | int, a UNIX-időbélyege | Az "nbf" (előtte) jogcím azonosítja az idő előtt, amely a JWT kell nem lesznek elfogadva feldolgozásra. |
 | `exp` | int, a UNIX-időbélyege | Az "exp" (lejárati ideje) jogcím azonosítja a lejárati időt, vagy azt követően, amely a JWT kell nem lesznek elfogadva feldolgozásra. Fontos megjegyezni, hogy egy erőforrás utasíthatja a jogkivonatot, megadott idő előtti amikor hitelesítés módosítása nem szükséges, vagy értéket észlelt a tokenek visszavonása. |

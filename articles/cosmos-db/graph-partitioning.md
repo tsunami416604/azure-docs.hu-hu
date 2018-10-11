@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/28/2018
 ms.author: lbosq
-ms.openlocfilehash: a513d186f895c33ef9329ce0464c70de5884330d
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: bf91ec77f8d7248c6fa2047636f295c187f626c8
+ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48891062"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49078222"
 ---
 # <a name="using-a-partitioned-graph-in-azure-cosmos-db"></a>Az Azure Cosmos DB egy particionált graph használatával
 
@@ -41,7 +41,7 @@ Részletek, amelyek egy particionált gráftárolót létrehozásakor konfigurá
 
 - **Graph-lekérdezések meg kell adni egy partíciókulcsot**. Teljes mértékben kihasználhatja a vízszintes particionálás az Azure Cosmos DB, a partíciókulcs meg kell határozni egy egyetlen csúcspont kiválasztásakor, ha lehetséges. Egy vagy több csúcspontok kiválasztásakor egy particionált gráfon lekérdezések a következők:
 
-    - Nem használhat érhető `/id` partíciókulcs egy tárolóhoz, a Gremlin API-t.
+    - `/id` és `/label` nem támogatottak, egy tárolóhoz, a Gremlin API partíciókulcsok...
 
 
     - Csúcs azonosítója, majd kiválasztja **használatával a `.has()` lépéssel megadhatja azokat a partíciós kulcs tulajdonságát**: 

@@ -9,12 +9,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 07/06/2018
 ms.author: manayar
-ms.openlocfilehash: ac64c73ac26c610c08dceff13cbd524916853146
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: eb28a3d165bcb6cc5e63162053029ce14b0d7f8f
+ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37916421"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49078137"
 ---
 # <a name="azure-expressroute-with-azure-site-recovery"></a>Az Azure Site Recovery az Azure ExpressRoute
 
@@ -49,7 +49,7 @@ Az Azure Site Recovery lehetővé teszi, hogy a vész-helyreállítási [Azure-b
 
 Az Azure-beli virtuális gépek vészhelyreállításához alapértelmezés szerint az ExpressRoute nem kötelező replikálásra. Miután a virtuális gépek átadja a feladatokat a cél Azure-régióban, elérheti azokat használó [magánhálózati társviszony-létesítés](../expressroute/expressroute-circuit-peerings.md#azure-private-peering).
 
-Ha ExpressRoute kapcsolódni a helyi adatközpontból az Azure Virtual machines a forrásrégióban már használ, megtervezheti az újbóli bekapcsolását. a feladatátvételi célként megadott régióban az ExpressRoute-kapcsolat. Használhatja az ugyanahhoz az ExpressRoute-kapcsolatcsoporthoz a célrégióban, egy új virtuális hálózati kapcsolaton keresztül csatlakozni, vagy egy külön az ExpressRoute-kapcsolatcsoport és a vész-helyreállítási kapcsolat. A másik lehetséges forgatókönyv leírása olvasható [Itt](azure-vm-disaster-recovery-with-expressroute.md#failover-models-with-expressroute).
+Ha ExpressRoute kapcsolódni a helyi adatközpontból az Azure Virtual machines a forrásrégióban már használ, megtervezheti az újbóli bekapcsolását. a feladatátvételi célként megadott régióban az ExpressRoute-kapcsolat. Használhatja az ugyanahhoz az ExpressRoute-kapcsolatcsoporthoz a célrégióban, egy új virtuális hálózati kapcsolaton keresztül csatlakozni, vagy egy külön az ExpressRoute-kapcsolatcsoport és a vész-helyreállítási kapcsolat. A másik lehetséges forgatókönyv leírása olvasható [Itt](azure-vm-disaster-recovery-with-expressroute.md#fail-over-azure-vms-when-using-expressroute).
 
 Az Azure virtual machines leírtaknak megfelelően földrajzi ugyanazon a fürtön belüli Azure-régiókba replikálhatja [Itt](../site-recovery/azure-to-azure-support-matrix.md#region-support). Ha a kiválasztott cél Azure-régió nem forrásaként ugyanazon geopolitikai régión belül, szüksége lehet ahhoz, hogy az ExpressRoute Premium. További részletekért ellenőrizze [ExpressRoute-helyek](../expressroute/expressroute-locations.md#azure-regions-to-expressroute-locations-within-a-geopolitical-region) és [ExpressRoute – díjszabás](https://azure.microsoft.com/pricing/details/expressroute/).
 

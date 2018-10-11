@@ -1,19 +1,19 @@
 ---
 title: fájl belefoglalása
 description: fájl belefoglalása
-services: iot-suite
-author: dominicbetts
-ms.service: iot-suite
+services: iot-fundamentals
+author: robinsh
+ms.service: iot-fundamentals
 ms.topic: include
-ms.date: 04/24/2018
-ms.author: dobett
+ms.date: 08/07/2018
+ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: 1137f1dac9570b56dc202194e5f94dfd72c31c9f
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 64c7525be9bd44b0d33fdcd8da717e9fe893e057
+ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39030031"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49070185"
 ---
 # <a name="internet-of-things-security-architecture"></a>IOT-biztonsági architektúrája
 
@@ -185,7 +185,7 @@ Az egyes kategóriák leírt az Azure IoT-architektúra, az ebben a példában a
 
 Íme néhány példa a fenyegetések ebbe a kategóriába:
 
-Hamisítást: Egy támadó előfordulhat, hogy kigyűjtése a titkosítási kulcs adatai egy eszközt, vagy a szoftver vagy hardver szintjén, és ezt követően a rendszer egy másik fizikai vagy virtuális eszköz identitása alatt az eszköz a megosztottkulcs-anyag foglalt a hozzáférés.
+**Hamisítást**: egy támadó előfordulhat, hogy titkosítási kulcs adatai kinyerése egy eszközt, vagy a szoftver vagy hardver szintjén, és ezt követően a rendszer egy másik fizikai vagy virtuális eszköz identitása alatt az eszköz a megosztottkulcs-anyag hozzáférése a foglalt.
 
 **Szolgáltatásmegtagadás**: egy eszköz nem alkalmas működik vagy történő kommunikációhoz választógomb gyakoriságot vagy cutting fenyegetéseknek zavarása jeleníthetők meg. Például egy felügyeleti kamera, amely a teljesítmény vagy a hálózati kapcsolat szándékosan kiejtése rendelkezett nem készíthető jelentés az adatokat, minden.
 

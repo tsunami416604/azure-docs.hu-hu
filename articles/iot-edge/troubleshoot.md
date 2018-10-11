@@ -8,12 +8,12 @@ ms.date: 06/26/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 413b94c1f1845e0dcda54b04882e5d6664b81380
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: a63a31c5ceb4298829f85627196fea5d7a38ca4b
+ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48815494"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49068502"
 ---
 # <a name="common-issues-and-resolutions-for-azure-iot-edge"></a>Az Azure IoT Edge gyakori problémái és azok megoldásai
 
@@ -324,6 +324,18 @@ Az IoT Edge-démon érvényesíti a folyamat azonosítóját összes modult a bi
 
 ### <a name="resolution"></a>Megoldás:
 Győződjön meg arról, hogy az azonos folyamatazonosító mindig használják az egyéni IoT Edge-modul üzeneteket küldeni a edgeHub. Például, ügyeljen arra, hogy `ENTRYPOINT` helyett `CMD` parancsot a Docker-fájlban, mivel `CMD` vezet a modul egy folyamat azonosítója és a bash-parancs a fő program fut, mivel egy másik folyamat azonosítója `ENTRYPOINT` lesz egy egyetlen folyamat azonosítója.
+
+
+## <a name="firewall-and-port-configuration-rules-for-iot-edge-deployment"></a>Üzemelő IoT Edge-példány konfigurációs szabályokat tűzfal- és portbeállítások
+Az Azure IoT Edge lehetővé teszi, hogy az Azure-felhőben az IoT Hub támogatott protokollok használatával és egy helyszíni peremhálózati kiszolgáló közötti kommunikáció, lásd: [kommunikációs protokoll kiválasztása](../iot-hub/iot-hub-devguide-protocols.md). A fokozott biztonság érdekében az Azure IoT Edge és az Azure IoT Hub közötti kommunikációs csatornákat mindig megtörténik az lennie kimenő; Ez alapján a [szolgáltatások támogatott kommunikációs mintát](https://blogs.msdn.microsoft.com/clemensv/2014/02/09/service-assisted-communication-for-connected-devices/), amely minimálisra csökkenti a támadási felületet a rosszindulatú entitás megismerése. Csak a bejövő kommunikációhoz szükséges bizonyos forgatókönyvek esetén, ahol az Azure IoT Hub kell leküldéses üzenetek le az Azure IoT Edge-kiszolgáló (például felhő az eszközök üzenetküldése), ezek biztonságos TLS-csatorna használatával újra védelemmel, és további segítségével biztosítható X.509 a tanúsítványok és a TPM-eszköz modulok. Az Azure IoT Edge biztonsági Manager szabályozza, hogy ez a kommunikáció hogyan lehet létrehozni, tekintse meg [IoT Edge-biztonságkezelő](../iot-edge/iot-edge-security-manager.md).
+
+IoT Edge biztosít továbbfejlesztett konfigurálása az Azure IoT Edge-futtatókörnyezet, és üzembe helyezett modulokat, az továbbra is függ az alapul szolgáló machine és a hálózati konfiguráció. Ezért elengedhetetlen, annak érdekében, hogy biztonságos peremhálózati és a felhő közötti kommunikációhoz megfelelő hálózati és tűzfalbeállításokat szabályok vannak beállítva. A következő használhatja útmutatóként tűzfalszabályok konfigurálása az alapul szolgáló kiszolgálók az Azure IoT Edge-futtatókörnyezet üzemeltető:
+
+|Protokoll|Port|bejövő|Kimenő|Útmutatás|
+|--|--|--|--|--|
+|MQTT|8883|TILTOTT (alapértelmezett)|TILTOTT (alapértelmezett)|<ul> <li>Konfigurálja a kimenő (kimenő) kell nyílt, amikor az MQTT protokoll használatával.<li>az MQTT 1883 IoT Edge által nem támogatott. <li>Bejövő (bejövő) kapcsolatok le kell tiltani.</ul>|
+|AMQP|5671|TILTOTT (alapértelmezett)|NYÍLT (alapértelmezett)|<ul> <li>Alapértelmezett kommunikációs protokollt az IoT Edge-hez. <li> Nyissa meg kell, ha más támogatott protokollok nincs konfigurálva az Azure IoT Edge vagy az AMQP protokoll kívánt kell konfigurálni.<li>az AMQP 5672 IoT Edge által nem támogatott.<li>Tiltsa le ezt a portot, ha az Azure IoT Edge használata egy másik IoT Hub protokoll támogatott.<li>Bejövő (bejövő) kapcsolatok le kell tiltani.</ul></ul>|
+|HTTPS|443|TILTOTT (alapértelmezett)|NYÍLT (alapértelmezett)|<ul> <li>Konfigurálja a kimenő (kimenő) kell nyissa meg a 443-as kiépítése az IoT Edge, ez akkor szükséges, ha manuális parancsprogramokkal vagy az Azure IoT Device Provisioning Service (DPS). <li>Bejövő (bejövő) kapcsolatot kell lennie a nyílt csak az adott forgatókönyveket: <ul> <li>  Ha a levéleszközök is küldhet kéréseket metódus, amely transzparens átjáró. Ebben az esetben 443-as portot nem kell megnyitni a külső hálózatokhoz IoTHub csatlakozni, vagy adja meg az IoTHub-szolgáltatások az Azure IoT Edge segítségével. Így a bejövő szabály csak megnyitásához a belső hálózatról bejövő (bejövő) korlátozott lehet. <li> -Ügyfél (C2D) eszközök esetén.</ul><li>IoT Edge által nem támogatott a 80-as HTTP-hez.<li>Ha nem HTTP protokollt (például AMQP, MQTT) nem konfigurálható a vállalat; az üzenetek küldhetők a websockets protokoll. 443-as portot ebben az esetben WebSocket-kommunikációhoz fogja használni.</ul>|
 
 
 ## <a name="next-steps"></a>További lépések

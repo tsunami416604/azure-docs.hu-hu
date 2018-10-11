@@ -5,16 +5,16 @@ services: container-service
 author: iainfoulds
 ms.service: container-service
 ms.topic: article
-ms.date: 09/26/2018
+ms.date: 10/08/2018
 ms.author: iainfou
-ms.openlocfilehash: e5518ebb2985635507368943774e6be803cfffa8
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 1a8609dbf5fa1c1e7d5f4e35b081ecaa09994eb6
+ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47409054"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49068077"
 ---
-# <a name="manually-create-and-use-an-azure-files-share-in-azure-kubernetes-service-aks"></a>Manuális módszerrel hozzon létre, és egy Azure-fájlmegosztást az Azure Kubernetes Service (AKS)
+# <a name="manually-create-and-use-a-volume-with-azure-files-share-in-azure-kubernetes-service-aks"></a>Manuális létrehozásához és a egy kötet használata Azure-fájlmegosztást az Azure Kubernetes Service (AKS)
 
 Tárolóalapú alkalmazások gyakran kell eléréséhez, és a egy külső adatmennyiség adatok megőrzése. Ha több podok kell az azonos tárolókötethez való egyidejű hozzáférés, az Azure Files használatával történő kapcsolódás használhatja a [Server Message Block (SMB) protokoll][smb-overview]. Ez a cikk bemutatja, hogyan manuálisan hozzon létre egy Azure-fájlmegosztást, és mellékelje egy pod az aks-ben.
 
@@ -65,10 +65,10 @@ Jegyezze fel a tárfiók nevét és a kulcs a parancsprogram kimenete végén l�
 
 Kubernetes van szüksége a fájlmegosztás az előző lépésben létrehozott eléréséhez szükséges hitelesítő adatokat. Ezek a hitelesítő adatok vannak tárolva egy [Kubernetes titkos][kubernetes-secret], amelyre hivatkozik egy Kubernetes-podok létrehozásakor.
 
-Használja a `kubectl create secret` paranccsal hozza létre a titkos kulcsot. A következő példában létrehozunk egy megosztott nevű *azure-secret*. Cserélje le *storage_account_name mezőbe* az a tárfiók nevét az előző lépés kimenetében található és *STORAGE_ACCOUNT_KEY* az a tárfiók kulcsát:
+Használja a `kubectl create secret` paranccsal hozza létre a titkos kulcsot. A következő példában létrehozunk egy megosztott nevű *azure-secret* tölti fel a *azurestorageaccountname* és *azurestorageaccountkey* az előző lépésben. Meglévő Azure storage-fiókot használ, adja meg a fiók nevét és kulcsát.
 
 ```console
-kubectl create secret generic azure-secret --from-literal=azurestorageaccountname=STORAGE_ACCOUNT_NAME --from-literal=azurestorageaccountkey=STORAGE_ACCOUNT_KEY
+kubectl create secret generic azure-secret --from-literal=azurestorageaccountname=$AKS_PERS_STORAGE_ACCOUNT_NAME --from-literal=azurestorageaccountkey=$STORAGE_KEY
 ```
 
 ## <a name="mount-the-file-share-as-a-volume"></a>A fájlmegosztás kötetként csatlakoztatása
@@ -79,15 +79,22 @@ Csatlakoztatása az Azure-fájlmegosztást be a pod, konfigurálja a tároló sp
 apiVersion: v1
 kind: Pod
 metadata:
- name: azure-files-pod
+  name: mypod
 spec:
- containers:
-  - image: microsoft/sample-aks-helloworld
-    name: azure
+  containers:
+  - image: nginx:1.15.5
+    name: mypod
+    resources:
+      requests:
+        cpu: 100m
+        memory: 128Mi
+      limits:
+        cpu: 250m
+        memory: 256Mi
     volumeMounts:
       - name: azure
         mountPath: /mnt/azure
- volumes:
+  volumes:
   - name: azure
     azureFile:
       secretName: azure-secret
@@ -101,7 +108,32 @@ Használja a `kubectl` paranccsal hozza létre a pod.
 kubectl apply -f azure-files-pod.yaml
 ```
 
-Egy Azure-fájlmegosztási csatlakoztatásának helye a most már rendelkezik egy futó pod */mnt/azure*. Használhat `kubectl describe pod azure-files-pod` ellenőrizze, hogy a fájlmegosztás sikeresen csatlakoztatva van.
+Egy Azure-fájlmegosztási csatlakoztatásának helye a most már rendelkezik egy futó pod */mnt/azure*. Használhat `kubectl describe pod mypod` ellenőrizze, hogy a fájlmegosztás sikeresen csatlakoztatva van. A következő sűrített példához kimenetet jeleníti meg a kötet csatlakoztatva van a tárolóban:
+
+```
+Containers:
+  mypod:
+    Container ID:   docker://86d244cfc7c4822401e88f55fd75217d213aa9c3c6a3df169e76e8e25ed28166
+    Image:          nginx:1.15.5
+    Image ID:       docker-pullable://nginx@sha256:9ad0746d8f2ea6df3a17ba89eca40b48c47066dfab55a75e08e2b70fc80d929e
+    State:          Running
+      Started:      Mon, 08 Oct 2018 19:28:34 +0000
+    Ready:          True
+    Mounts:
+      /mnt/azure from azure (rw)
+      /var/run/secrets/kubernetes.io/serviceaccount from default-token-z5sd7 (ro)
+[...]
+Volumes:
+  azure:
+    Type:        AzureFile (an Azure File Service mount on the host and bind mount to the pod)
+    SecretName:  azure-secret
+    ShareName:   aksshare
+    ReadOnly:    false
+  default-token-z5sd7:
+    Type:        Secret (a volume populated by a Secret)
+    SecretName:  default-token-z5sd7
+[...]
+```
 
 ## <a name="next-steps"></a>További lépések
 

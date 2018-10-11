@@ -5,17 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.component: B2B
 ms.topic: conceptual
-ms.date: 04/20/2018
+ms.date: 10/10/2018
 ms.author: mimart
 author: msmimart
 manager: mtillman
 ms.reviewer: sasubram
-ms.openlocfilehash: 65f43eb28ef2ef51409469934d59e1add7e83666
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 57c807b7729b58d2537ee09ddd5d05d4f2afb55e
+ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46297214"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49068843"
 ---
 # <a name="grant-b2b-users-in-azure-ad-access-to-your-on-premises-applications"></a>Támogatás B2B-felhasználók Azure AD-ben a hozzáférést a helyszíni alkalmazások
 
@@ -65,9 +65,9 @@ A helyszíni B2B felhasználói objektumok életciklus-kezelési házirendek has
 - Beállíthatja a vendégfelhasználót a többtényezős hitelesítés (MFA) szabályzatokat, hogy a többtényezős hitelesítés a Application Proxy hitelesítése során használatos. További információkért lásd: [feltételes hozzáférés B2B-együttműködés felhasználók](conditional-access.md).
 - Bármely sponsorship, a hozzáférési felülvizsgálatok, a fiók számán és az egyéb végzett felhasználói vonatkozik, a helyszíni felhasználók felhőbeli B2B. Például az életciklus-kezelési házirendek segítségével a felhőbeli felhasználó törlésekor, helyi felhasználó is törlődik az MIM Sync vagy az Azure AD Connect sync. További információkért lásd: [vendég-hozzáférés kezelése az Azure AD hozzáférési felülvizsgálatok](../governance/manage-guest-access-with-access-reviews.md).
 
-### <a name="create-b2b-guest-user-objects-through-mim-preview"></a>Hozzon létre B2B Vendég felhasználói objektumok keresztül MIM (előzetes verzió)
+### <a name="create-b2b-guest-user-objects-through-mim"></a>B2B Vendég felhasználói objektumok a MIM keresztül létrehozása
 
-A Vendég felhasználói objektumok létrehozása a helyszíni címtárban a MIM 2016 Service Pack 1 és a MIM-kezelőügynök a Microsoft Graph használatával kapcsolatos információkért lásd: [az Azure AD vállalatközi (B2B) együttműködés a Microsoft Identity Manager (MIM) 2016 SP1-et az Azure Application Proxy (nyilvános előzetes verzió)](https://docs.microsoft.com/microsoft-identity-manager/microsoft-identity-manager-2016-graph-b2b-scenario).
+A Vendég felhasználói objektumok létrehozása a helyszíni címtárban a MIM 2016 Service Pack 1 és a MIM-kezelőügynök a Microsoft Graph használatával kapcsolatos információkért lásd: [az Azure AD vállalatközi (B2B) együttműködés a Microsoft Identity Manager (MIM) 2016 SP1-et az Azure-alkalmazásproxyval](https://docs.microsoft.com/microsoft-identity-manager/microsoft-identity-manager-2016-graph-b2b-scenario).
 
 ### <a name="create-b2b-guest-user-objects-through-a-script-preview"></a>B2B-vendégként felhasználói objektumok egy parancsfájl (előzetes verzió) segítségével létrehozása
 

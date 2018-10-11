@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 09/08/2018
 ms.author: sethm
 ms.reviewer: sijuman
-ms.openlocfilehash: 59b637e6887a645430d902cd846cacda13b14cfe
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 6042aa4dd8b26a0986737edc3c89b8e165ae970a
+ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46972810"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49067703"
 ---
 # <a name="use-api-version-profiles-with-azure-cli-in-azure-stack"></a>API-verzióprofilok használata az Azure CLI-vel az Azure Stackben
 
@@ -168,7 +168,8 @@ A következő lépések segítségével csatlakozhat az Azure Stack:
 
 1. Jelentkezzen be az Azure Stack-környezet használatával a `az login` parancsot. Bejelentkezhet az Azure Stack-környezet vagy egy felhasználó vagy egy [szolgáltatásnév](https://docs.microsoft.com/azure/active-directory/develop/active-directory-application-objects). 
 
-   * Jelentkezzen be egy *felhasználói*: megadhatja a felhasználónevet és jelszót közvetlenül belül a `az login` parancsot, vagy hitelesíteni tudja a webböngésző használatával. Ehhez az utóbbi, ha a fiók rendelkezik-e többtényezős hitelesítés engedélyezve van.
+    * AAD-környezetek
+      * Jelentkezzen be egy *felhasználói*: megadhatja a felhasználónevet és jelszót közvetlenül belül a `az login` parancsot, vagy hitelesíteni tudja a webböngésző használatával. Ehhez az utóbbi, ha a fiók rendelkezik-e többtényezős hitelesítés engedélyezve van.
 
       ```azurecli
       az login \
@@ -179,7 +180,7 @@ A következő lépések segítségével csatlakozhat az Azure Stack:
       > [!NOTE]
       > Ha a felhasználói fiók rendelkezik a többtényezős hitelesítés engedélyezve van, használhatja a `az login command` anélkül, hogy a `-u` paraméter. A következő parancs futtatásával lehetővé teszi egy URL-CÍMÉT és a egy kódot, amely hitelesítést kell használnia.
    
-   * Jelentkezzen be egy *szolgáltatásnév*: jelentkezik be, mielőtt [hozzon létre egy egyszerű szolgáltatást az Azure Portalon keresztül](azure-stack-create-service-principals.md) vagy a parancssori felület, és rendelje hozzá egy szerepkörhöz. Most jelentkezzen be a következő paranccsal:
+      * Jelentkezzen be egy *szolgáltatásnév*: jelentkezik be, mielőtt [hozzon létre egy egyszerű szolgáltatást az Azure Portalon keresztül](azure-stack-create-service-principals.md) vagy a parancssori felület, és rendelje hozzá egy szerepkörhöz. Most jelentkezzen be a következő paranccsal:
 
       ```azurecli
       az login \
@@ -188,6 +189,22 @@ A következő lépések segítségével csatlakozhat az Azure Stack:
         -u <Application Id of the Service Principal> \
         -p <Key generated for the Service Principal>
       ```
+    * Az AD FS-környezetek
+
+        * Jelentkezzen be egy *szolgáltatásnév*: 
+          1.    Készítse elő a .pem-fájlt a szolgáltatás egyszerű bejelentkezéshez használandó.
+                * Az ügyfélszámítógépen, ahol a rendszerbiztonsági tag lett létrehozva, a szolgáltatás egyszerű tanúsítvány exportálása a pfx titkos kulccsal (cert: \CurrentUser\My; helyen található a tanúsítvány nevét a neve megegyezik a rendszerbiztonsági tag van).
+
+                *   A pfx konvertálható pem (OpenSSL segédprogram használata).
+
+          1.    Jelentkezzen be a parancssori felület. :
+                ```azurecli
+                az login --service-principal \
+                 -u <Client ID from the Service Principal details> \
+                 -p <Certificate's fully qualified name. Eg. C:\certs\spn.pem>
+                 --tenant <Tenant ID> \
+                 --debug 
+                ```
 
 ## <a name="test-the-connectivity"></a>A kapcsolat tesztelése
 

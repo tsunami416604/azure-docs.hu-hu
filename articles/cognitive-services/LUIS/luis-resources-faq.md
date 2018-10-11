@@ -1,5 +1,5 @@
 ---
-title: Gyakori kérdések – Language Understanding (LUIS)
+title: GYIK – gyakori kérdések – Language Understanding (LUIS)
 titleSuffix: Azure Cognitive Services
 description: Ez a cikk a Language Understanding (LUIS) kapcsolatos gyakori kérdésekre adott válaszokat tartalmazza.
 author: diberry
@@ -8,14 +8,14 @@ services: cognitive-services
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 09/10/2018
+ms.date: 10/10/2018
 ms.author: diberry
-ms.openlocfilehash: 0e604138c35e476d1635cb695923bb7d2b83de82
-ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
+ms.openlocfilehash: b5433ea0a92635b5bf9c2a4887451f1e64ec62e6
+ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/06/2018
-ms.locfileid: "48831262"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49067766"
 ---
 # <a name="language-understanding-faq"></a>Language Understanding – gyakori kérdések
 
@@ -112,6 +112,10 @@ Tekintse meg a [Batch tesztelés](luis-tutorial-batch-testing.md) oktatóanyag.
 ### <a name="when-an-app-is-exported-then-reimported-into-a-new-app-with-a-new-app-id-the-luis-prediction-scores-are-different-why-does-this-happen"></a>Amikor az alkalmazás van exportálva, majd újra be egy új alkalmazást (egy új alkalmazás azonosítója), a LUIS-előrejelzési eredmények eltérőek. Miért jelentkezik?
 
 Lásd: [ugyanazon alkalmazás példánya előrejelzési különbségeit](luis-concept-prediction-score.md#differences-with-predictions).
+
+### <a name="some-utterances-go-to-the-wrong-intent-after-i-made-changes-to-my-app-the-issue-seems-to-disappear-at-random-how-do-i-fix-it"></a>Néhány utterances nyissa meg a nem megfelelő leképezés után az alkalmazás végrehajtott módosításokat. A probléma úgy tűnik, hogy véletlenszerűen eltűnnek. Hogyan javíthatom? 
+
+Lásd: [összes adatot Train](luis-how-to-train.md#train-with-all-data).
 
 ## <a name="app-publishing"></a>Alkalmazások közzététele
 

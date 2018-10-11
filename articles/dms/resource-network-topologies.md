@@ -2,7 +2,7 @@
 title: Hálózati topológiák az Azure SQL Database felügyelt példányába áttelepítéshez az Azure Database Migration Service segítségével |} A Microsoft Docs
 description: Ismerje meg, a Database Migration Service forrás- és konfigurációkat.
 services: database-migration
-author: HJToland3
+author: pochiraju
 ms.author: rajpo
 manager: ''
 ms.reviewer: ''
@@ -10,13 +10,13 @@ ms.service: database-migration
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
-ms.date: 06/21/2018
-ms.openlocfilehash: cfbfd71f75cd3717392f9aa2c020cedda844d774
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.date: 10/10/2018
+ms.openlocfilehash: 39bcea36f3599530413aa9fc4dbb308ee2fb1681
+ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48803959"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49066853"
 ---
 # <a name="network-topologies-for-azure-sql-db-managed-instance-migrations-using-the-azure-database-migration-service"></a>Hálózati topológiák az Azure SQL DB felügyelt példányainak áttelepítése az Azure Database Migration Service segítségével
 Ez a cikk ismerteti a különböző hálózati topológiákat, amely az Azure Database Migration Service, a helyszíni SQL Server-kiszolgálók teljes körű migrálási felhasználói élményt nyújtson az Azure SQL Database felügyelt példányain használható.

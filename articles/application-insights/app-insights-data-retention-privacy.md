@@ -11,17 +11,16 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/29/2018
+ms.date: 10/10/2018
 ms.author: mbullwin
-ms.openlocfilehash: ef79ff7c8e238a0a90912d099b4b9dfe2a387c1d
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: 5ea026de228f3c93eed04770ad931d072387aa95
+ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45577224"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49079072"
 ---
 # <a name="data-collection-retention-and-storage-in-application-insights"></a>Adatgyűjtés, megőrzés és tárolás az Application Insights szolgáltatásban
-
 
 Amikor telepít [Azure Application Insights] [ start] SDK csomagot az alkalmazásban, küld telemetriai adatokat gyűjthessen az alkalmazás a felhőbe. Természetesen felelős fejlesztői mindenképpen tudni szeretnének pontosan az elküldött adatok, mi történik az adatok, és hogyan azok tartani az irányítást, akkor ismernie. Ebben az esetben sikerült bizalmas adatokat küldött, hol található a tárolt és mennyire vannak biztonságban? 
 
@@ -90,6 +89,8 @@ Ez akkor lehetséges, ha egy [telemetriai processzor beépülő modul](app-insig
 A nyers adatpontokat (vagyis a cikkek, amelyek Analytics-lekérdezést, és vizsgálja meg a keresés) legfeljebb 90 napig őrzi meg. Ha szeretné megőrizni az adatokat, amelyek hosszabb, akkor használhatja [a folyamatos exportálás](app-insights-export-telemetry.md) másolja azt a tárfiókot.
 
 Összesített adatok (azt jelenti, számát, átlagokat és egyéb statisztikai adatok Metrikaböngésző látható), egy 90 napig 1 perces időfelbontási szint megmaradnak.
+
+[Hibakeresési pillanatképei](app-insights-snapshot-debugger.md) hét napig tárolja. A megőrzési házirend van beállítva a alkalmazásonként. Ha ez az érték növelése van szüksége, kérheti növelését az Azure Portalon nyissa meg egy támogatási esetet.
 
 ## <a name="who-can-access-the-data"></a>Ki férhet hozzá az adatokhoz?
 Az Ön adatai, és ha már van szervezeti fiókja, a munkacsoportja többi tagjával. 
@@ -203,7 +204,7 @@ Nem javasoljuk, hogy explicit módon beállítása az alkalmazás csak a TLS 1.2
 | Azure App Services  | Támogatott konfigurációra lehet szükség. | Támogatás a 2018 április mutattuk be. A bejelentés a [konfigurációs részletek](https://blogs.msdn.microsoft.com/appserviceteam/2018/04/17/app-service-and-functions-hosted-apps-can-now-update-tls-versions/).  |
 | Azure Function Appsszel | Támogatott konfigurációra lehet szükség. | Támogatás a 2018 április mutattuk be. A bejelentés a [konfigurációs részletek](https://blogs.msdn.microsoft.com/appserviceteam/2018/04/17/app-service-and-functions-hosted-apps-can-now-update-tls-versions/). |
 |.NET | Konfiguráció verziója által támogatott, változik. | Részletes információ a .NET 4.7 és korábbi verziók hivatkoznak [ezek az utasítások](https://docs.microsoft.com/dotnet/framework/network-programming/tls#support-for-tls-12).  |
-|A figyelő állapota | Támogatott, konfiguráció szükséges | Az állapotfigyelő támaszkodik [operációs rendszer konfigurációja](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings) + [.NET-konfiguráció](https://docs.microsoft.com/dotnet/framework/network-programming/tls#support-for-tls-12) a TLS 1.2 támogatása.
+|Állapotmonitor | Támogatott, konfiguráció szükséges | Az állapotfigyelő támaszkodik [operációs rendszer konfigurációja](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings) + [.NET-konfiguráció](https://docs.microsoft.com/dotnet/framework/network-programming/tls#support-for-tls-12) a TLS 1.2 támogatása.
 |Node.js |  V10.5.0, támogatott konfigurációra lehet szükség. | Használja a [hivatalos Node.js TLS/SSL-dokumentáció](https://nodejs.org/api/tls.html) bármely alkalmazás adott konfigurációhoz. |
 |Java | Támogatott, a TLS 1.2 JDK támogatása hozzáadva [JDK 6-frissítés 121](http://www.oracle.com/technetwork/java/javase/overview-156328.html#R160_121) és [JDK 7](http://www.oracle.com/technetwork/java/javase/7u131-relnotes-3338543.html). | JDK 8 használ [a TLS 1.2 alapértelmezés szerint](https://blogs.oracle.com/java-platform-group/jdk-8-will-use-tls-12-as-default).  |
 |Linux | Linux-disztribúciók általában támaszkodhat [OpenSSL](https://www.openssl.org) a TLS 1.2 támogatása.  | Ellenőrizze a [OpenSSL változásnaplójában](https://www.openssl.org/news/changelog.html) annak ellenőrzéséhez, hogy az OpenSSL-verziót támogatja.|

@@ -1,19 +1,19 @@
 ---
 title: fájl belefoglalása
 description: fájl belefoglalása
-services: iot-suite
-author: dominicbetts
-ms.service: iot-suite
+services: iot-fundamentals
+author: robinsh
+ms.service: iot-fundamentals
 ms.topic: include
 ms.date: 04/24/2018
-ms.author: dobett
+ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: 181432c3050bbc614898b1ddf779bc90239a35be
-ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
+ms.openlocfilehash: 8137a292045377c5dccb69c21a8118d0dc17874e
+ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39189286"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49069952"
 ---
 # <a name="internet-of-things-security-from-the-ground-up"></a>IOT-biztonság az alapoktól
 
@@ -62,7 +62,9 @@ Az Azure IoT Hub hozzáférés-vezérlési házirendeket a felhőben az aktivál
 További biztonsági funkciói a következők:
 
 * Eszközök nem fogadja el kéretlen hálózati kapcsolatokat. Csak kimenő el azok létesíthet kapcsolatokat és útvonalakat. Egy eszköz parancsot fogadjon a háttérrendszer az eszköz kell kapcsolatot kezdeményeznie a függőben lévő feldolgozandó parancsok ellenőrzéséhez. Miután az eszköz és az IoT Hub között biztonságos létrejön a kapcsolat, üzenetküldés a felhőből az eszközre és eszközről a felhőbe az elküldött transzparens módon.
+
 * Eszközök csak csatlakozni, vagy ezekkel létesíthetnek útvonalat jól ismert, amellyel társított szolgáltatásokhoz, például egy Azure IoT hubot.
+
 * Rendszerszintű engedélyezés és hitelesítés eszközönkénti identitásokon, így a hozzáférési hitelesítő adataival és engedélyeivel közel használata – azonnali visszavonható.
 
 ### <a name="secure-connectivity"></a>Biztonságos kapcsolatok
@@ -76,7 +78,9 @@ Méretezhetőség biztonságosan együttműködni eszközök számos lehetőség
 Kapcsolat további biztonsági szolgáltatások a következők:
 
 * Eszközök és az Azure IoT Hub között, vagy átjárókat és az Azure IoT Hub közötti kommunikációs útvonal az Azure IoT Hub X.509-protokoll használatával hitelesíti szabványos Transport Layer Security (TLS) használatával lett biztonságossá téve.
+
 * Annak érdekében, hogy az eszközök védelme a kéretlen bejövő kapcsolatokat, az Azure IoT Hub nem nyitható meg az eszköz minden olyan kapcsolatot. Az eszköz összes kapcsolatot kezdeményez.
+
 * Az Azure IoT Hub tartósan tárolja az üzeneteket az eszközöket, és megvárja, amíg az eszköz csatlakozhat. Ezeket a parancsokat az áramellátási vagy csatlakozási problémákat, ezek a parancsok fogadására miatt szórványosan, kapcsolódó eszközök engedélyezése két napig tárolódnak. Az Azure IoT Hub egy eszközre irányuló várólista minden egyes eszközhöz fenntart.
 
 ### <a name="secure-processing-and-storage-in-the-cloud"></a>Biztonságos feldolgozására és tárolására, a felhőben
@@ -100,8 +104,13 @@ A megoldásgyorsítók biztonsági intézkedéseket a kialakításból fakadóan
 Egyes megoldásgyorsítók hoz létre példányok az Azure-szolgáltatások, például:
 
 * [**Az Azure IoT Hub**](https://azure.microsoft.com/services/iot-hub/): az átjáró a felhőben csatlakozó eszközöket. Eszközönkénti hitelesítés támogatását, így megoldását biztonságos a hubot és a folyamat nagy mennyiségű adatot-nként több millió skálázhatja.
+
 * [**Az Azure Cosmos DB**](https://azure.microsoft.com/services/cosmos-db/): méretezhető, teljes körűen indexelt adatbázis-szolgáltatás, amely felügyeli az eszközök metaadatait, részben strukturált adatok számára hozza létre, például az attribútumokat, konfigurációs és biztonsági tulajdonságait. Az Azure Cosmos DB kínál a nagy teljesítményű és nagy átviteli sebességű feldolgozására, sémafüggetlen indexelését, adatok és a egy részletes SQL-lekérdezési felületet.
+
 * [**Az Azure Stream Analytics**](https://azure.microsoft.com/services/stream-analytics/): valós idejű streamfeldolgozás a felhőben, amely lehetővé teszi, hogy gyors fejlesztése és üzembe helyezése egy alacsony költségű analytics megoldás a valós idejű feltárásában eszközök, érzékelők, az infrastruktúra és alkalmazások . E teljes körűen felügyelt szolgáltatás az adatokat tetszőleges adatmennyiséghez a nagy átviteli sebességet, közel valós idejű és rugalmasság méretezheti.
+
 * [**Az Azure App Services**](https://azure.microsoft.com/services/app-service/): egy felhőalapú platform, amely hatékony webes és mobilalkalmazások bárhol adatokat; a felhőben vagy a helyszínen. Vonzó alkalmazások készítése iOS, Android és Windows rendszerre. Integrálható a szoftvert, mint a szoftverszolgáltatások (SaaS) és a vállalati alkalmazásait-az-a – azonnali kapcsolódás több tucat felhőalapú szolgáltatáshoz és vállalati alkalmazáshoz. A kedvenc nyelvét és IDE – .NET, Node.js, PHP, Python vagy Java-webalkalmazások és API-k, minden eddiginél gyorsabban készíthet.
+
 * [**A Logic Apps**](https://azure.microsoft.com/services/app-service/logic/): az Azure App Service Logic Apps funkciója segít integrálni az IoT-megoldás a meglévő üzleti rendszerekhez és a munkafolyamatok automatizálása. A Logic Apps segítségével a fejlesztők olyan egy eseményindítóval kezdődnek, majd végrehajtanak bizonyos lépéseket munkafolyamatokat – szabályok és műveletek, amely integrálható az üzleti folyamatok hatékony összekötők használatával. A Logic Apps-az-– azonnali kapcsolatok beépítésével az SaaS, felhőalapú, és kínál a helyszíni alkalmazásokat.
-* [**Az Azure blob storage-bA**](https://azure.microsoft.com/services/storage/): megbízható, gazdaságos felhőalapú tárolás az adatok, amelyek az eszközök küldenek a felhőbe.
+
+* [**Az Azure Blob storage**](https://azure.microsoft.com/services/storage/): megbízható, gazdaságos felhőalapú tárolás az adatok, amelyek az eszközök küldenek a felhőbe.

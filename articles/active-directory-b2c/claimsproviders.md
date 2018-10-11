@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: a9159ade6e16c1d14149197e85cee8720dd98b09
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: b226aeac86084c56a49d00c2a2f8deddaf7b0f68
+ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44381302"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49068774"
 ---
 # <a name="claimsproviders"></a>ClaimsProviders 
 
@@ -52,7 +52,7 @@ A **ClaimsProvider** elem tartalmazza gyermekeleme a következők közül:
 
 | Elem | Ismétlődések | Leírás |
 | ------- | ---------- | ----------- |
-| Domain | 0:1 | A jogcím-szolgáltató a tartomány nevét tartalmazó karakterlánc. Például ha a jogcím-szolgáltatói is tartalmaz, a Facebook technikai profilban, a tartománynév Facebook.com weboldalt. Ez a tartománynév a jogcímszolgáltató bírálni a technikai profil által meghatározott összes technikai profil szolgál. |
+| Domain | 0:1 | A jogcím-szolgáltató a tartomány nevét tartalmazó karakterlánc. Például ha a jogcím-szolgáltatói is tartalmaz, a Facebook technikai profilban, a tartománynév Facebook.com weboldalt. Ez a tartománynév a jogcímszolgáltató bírálni a technikai profil által meghatározott összes technikai profil szolgál. A tartomány nevét is lehet hivatkozni egy **domain_hint**. További információkért lásd: a **bejelentkezési átirányítása egy közösségi szolgáltató** szakaszában [állítsa be a közvetlen bejelentkezés az Azure Active Directory B2C használatával](direct-signin.md). |
 | Megjelenítendő név | 0:1 | A jogcímszolgáltatótól, a felhasználók számára megjelenített nevét tartalmazó karakterlánc. |
 | [TechnicalProfiles](technicalprofiles.md) | 0:1 | Az igényt szolgáltatója által támogatott technikai profilok |
 

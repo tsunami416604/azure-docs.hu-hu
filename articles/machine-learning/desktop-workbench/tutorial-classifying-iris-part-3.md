@@ -1,6 +1,6 @@
 ---
-title: Modell-üzembehelyezési útmutató az Azure Machine Learning-szolgáltatásokhoz
-description: Ez a részletes oktatóanyag bemutatja, hogyan használhatók ki teljes körűen az Azure Machine Learning-szolgáltatások. Ez a harmadik rész, amely a modell üzembe helyezését ismerteti.
+title: Modell-üzembehelyezési útmutató az Azure Machine Learning szolgáltatáshoz
+description: Ez a részletes oktatóanyag bemutatja, hogyan használhatók ki teljes körűen az Azure Machine Learning szolgáltatás. Ez a harmadik rész, amely a modell üzembe helyezését ismerteti.
 services: machine-learning
 author: aashishb
 ms.author: aashishb
@@ -12,14 +12,18 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 3/13/2018
-ms.openlocfilehash: de0c93ef5b907b56e6ad66a04bb728b5b9aabb9a
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ROBOTS: NOINDEX
+ms.openlocfilehash: 2eb6eb5090b0a68a189e2d4f1148d3238bc3ee0d
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "41919597"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46946612"
 ---
 # <a name="tutorial-3-classify-iris-deploy-a-model"></a>3. oktatóanyag: Írisz osztályozása: Modellek üzembe helyezése
+
+[!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)]
+
 Az Azure Machine Learning (előzetes verzió) az adatszakértők számára létrehozott átfogó, integrált és fejlett adatelemzési megoldás. Az adatszakértők a használatával az adatok előkészítését, a kísérletek kidolgozását és a modellek felhőszinten való üzembe helyezését hajthatják végre.
 
 Ez az oktatóanyag **egy háromrészes sorozat harmadik része**. Az oktatóanyagnak ebben a részében a Machine Learning (előzetes verzió) segítségével a következőket hajtja végre:
@@ -38,7 +42,7 @@ Az oktatóanyag a jól ismert [Iris flower adatkészletet](https://en.wikipedia.
 
 Az oktatóanyag elvégzéséhez a következőkre lesz szüksége:
 - Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt. 
-- Az ebben a [rövid útmutatóban](../service/quickstart-installation.md) ismertetett kísérletezési fiók és telepített Azure Machine Learning Workbench.
+- Az ebben a [rövid útmutatóban](quickstart-installation.md) ismertetett kísérletezési fiók és telepített Azure Machine Learning Workbench.
 - Az [oktatóanyag 2. részében](tutorial-classifying-iris-part-2.md) szereplő osztályozási modell.
 - Egy helyben telepített és futtatott Docker-motor.
 
@@ -224,9 +228,9 @@ Most már készen áll a valós idejű webszolgáltatás létrehozására.
 1. Valós idejű webszolgáltatás létrehozásához használja a következő parancsot:
 
    ```azurecli
-   az ml service create realtime -f score_iris.py --model-file model.pkl -s service_schema.json -n irisapp -r python --collect-model-data true -c aml_config\conda_dependencies.yml
+   az ml service create realtime -f score_iris.py --model-file model.pkl -s ./output/service_schema.json -n irisapp -r python --collect-model-data true -c aml_config\conda_dependencies.yml
    ```
-   Ez a parancs létrehoz egy webszolgáltatás-azonosítót, amelyet később felhasználhat.
+   Ez a parancs létrehoz egy webszolgáltatás-azonosítót, amelyet később felhasználhat. Notebook használata esetén hagyja el a kimeneti könyvtárat.
 
    Az **az ml service create realtime** parancsot az alábbi kapcsolókkal lehet használni:
 
@@ -276,9 +280,9 @@ Először regisztrálja a modellt. Ezután hozza létre a jegyzéket, állítsa 
    Jegyzék létrehozásához használja az alábbi parancsot, és adja meg az előző lépésből származó modellazonosító-kimenetet:
 
    ```azurecli
-   az ml manifest create --manifest-name <new manifest name> -f score_iris.py -r python -i <model ID> -s service_schema.json -c aml_config\conda_dependencies.yml
+   az ml manifest create --manifest-name <new manifest name> -f score_iris.py -r python -i <model ID> -s ./output/service_schema.json -c aml_config\conda_dependencies.yml
    ```
-   Ez a parancs létrehoz egy jegyzékazonosítót.
+   Ez a parancs létrehoz egy jegyzékazonosítót.  Notebook használata esetén hagyja el a kimeneti könyvtárat.
 
 1. Hozzon létre egy Docker-rendszerképet.
 

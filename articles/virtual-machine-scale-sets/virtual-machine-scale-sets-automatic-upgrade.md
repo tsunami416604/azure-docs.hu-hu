@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2018
 ms.author: rajraj
-ms.openlocfilehash: 1ca0ec7185707d9b9f9712c2ace8dacb361f7b5b
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: cf25d08fc9a0e1ae458d350be93af31447928ecb
+ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47394369"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49069454"
 ---
 # <a name="azure-virtual-machine-scale-set-automatic-os-image-upgrades"></a>Az Azure virtuálisgép-méretezési csoport automatikus operációs rendszer lemezkép frissítéseinek beállítása
 
@@ -92,7 +92,12 @@ PUT or PATCH on `/subscriptions/subscription_id/resourceGroups/myResourceGroup/p
 } 
 ```
 
-Ez a tulajdonság az Azure PowerShell és a CLI 2.0-n keresztül konfigurálásának a támogatását a 10/09 fog történni.
+Az alábbi példában az Azure parancssori felület (2.0.47 vagy újabb) nevű méretezési az automatikus frissítések konfigurálása *myVMSS* az erőforráscsoport neve *myResourceGroup*:
+
+```azurecli
+az vmss update --name myVMSS --resource-group myResourceGroup --set UpgradePolicy.AutomaticOSUpgradePolicy.EnableAutomaticOSUpgrade=true
+```
+Ez a tulajdonság az Azure Powershellen keresztül konfigurálásának a támogatását a hamarosan fog történni.
 
 ## <a name="using-application-health-probes"></a>Az alkalmazás Health mintavételek 
 
@@ -139,10 +144,10 @@ Get-AzureRmVmss -ResourceGroupName myResourceGroup -VMScaleSetName myVMSS -OSUpg
 ```
 
 ### <a name="azure-cli-20"></a>Azure CLI 2.0
-Az alábbi példában az Azure parancssori felület (2.0.20-as vagy újabb) ellenőrizheti az állapotot, a méretezési csoport nevű *myVMSS* az erőforráscsoport neve *myResourceGroup*:
+Az alábbi példában az Azure parancssori felület (2.0.47 vagy újabb) ellenőrizheti az állapotot, a méretezési csoport nevű *myVMSS* az erőforráscsoport neve *myResourceGroup*:
 
 ```azurecli
-az vmss rolling-upgrade get-latest --resource-group myResourceGroup --name myVMSS
+az vmss get-os-upgrade-history --resource-group myResourceGroup --name myVMSS
 ```
 
 ### <a name="rest-api"></a>REST API
@@ -192,10 +197,18 @@ A GET hívást hasonló ad vissza tulajdonságait az alábbi példa kimenetében
 
 ## <a name="how-to-get-the-latest-version-of-a-platform-os-image"></a>Szerezze be a legújabb verziót a platform operációsrendszer-lemezkép hogyan? 
 
-A lemezkép-verziók esetében az operációs rendszer frissítése támogatott SKU-k használatával megtekintheti az alábbi PowerShell-parancsmagokat: 
+A lemezkép-verziók esetében az operációs rendszer frissítése támogatott SKU-k használatával megtekintheti az alábbi példákat: 
+
+```
+GET on `/subscriptions/subscription_id/providers/Microsoft.Compute/locations/{location}/publishers/{publisherName}/artifacttypes/vmimage/offers/{offer}/skus/{skus}/versions?api-version=2018-10-01`
+```
 
 ```powershell
 Get-AzureRmVmImage -Location "westus" -PublisherName "Canonical" -Offer "UbuntuServer" -Skus "16.04-LTS"
+```
+
+```azurecli
+az vm image list --location "westus" --publisher "Canonical" --offer "UbuntuServer" --sku "16.04-LTS" --all
 ```
 
 ## <a name="deploy-with-a-template"></a>Üzembe helyezés egy sablon használatával

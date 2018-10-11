@@ -6,22 +6,22 @@ author: banisadr
 manager: timlt
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 08/13/2018
+ms.date: 10/09/2018
 ms.author: babanisa
-ms.openlocfilehash: 257f7cbd20d21903f4cf7daf68b5f185d0af10bc
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 2fd8712cbe5d34baed158a56e6f06b6235f5d4b2
+ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46965455"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49068195"
 ---
 # <a name="event-grid-security-and-authentication"></a>Event Grid biztonsági és hitelesítés 
 
 Az Azure Event Grid hitelesítési három típusa van:
 
-* Esemény-előfizetések
-* Események közzététele
 * WebHook eseménykézbesítés
+* Esemény-előfizetések
+* Közzététel egyéni témakörben
 
 ## <a name="webhook-event-delivery"></a>WebHook eseménykézbesítés
 
@@ -37,18 +37,18 @@ Ha bármilyen más típusú végpont, például egy HTTP-eseményindító-alapú
 
 1. **ValidationCode kézfogás**: esemény-előfizetés létrehozása idején EventGrid tesz közzé egy "előfizetés érvényesítési esemény" a végponthoz. Ez az esemény sémája hasonlít bármilyen más EventGridEvent, és ez az esemény adatok részének tartalmaz egy `validationCode` tulajdonság. Miután az alkalmazás ellenőrizte, hogy van-e az érvényesítési kérelmet egy várt esemény-előfizetés, az alkalmazás kódjában kell válaszolnia a echo vissza az érvényesítési kódot EventGrid által. A kézfogás mechanizmus az összes EventGrid-verziót támogatja.
 
-2. **ValidationURL kézfogás (manuális kézfogás)**: bizonyos esetekben valószínűleg nem rendelkezik a forráskódot a végpont tudják megvalósítani a alapú ValidationCode kézfogás ellenőrzése. Például, ha egy külső szolgáltatást használ (például [Zapier](https://zapier.com) vagy [IFTTT](https://ifttt.com/)), nem fogja tudni programozott módon reagálhat az érvényesítési kóddal vissza. Ezért verzió 2018-05-01-preview verziótól kezdődően EventGrid mostantól támogatja az egy manuális érvényesítésre kézfogás. Az új API verzió (2018-05-01-preview), EventGrid küld használó SDK és eszközök használatával egy esemény-előfizetés létrehozásakor egy `validationUrl` tulajdonság (mellett a `validationCode` tulajdonság) az előfizetés érvényesítése esemény adatok részének részeként. A kézfogás elvégzéséhez tegye egy GET kérelmek az URL-CÍMRE, vagy a REST-ügyféllel, vagy a webböngésző használatával. A megadott érvényesítési URL-CÍMÉT a érvényes csak nagyjából 10 percet. Az időszakban az üzembe helyezési az esemény-előfizetés állapota `AwaitingManualAction`. Ha nem végezte el a kézi ellenőrzés 10 percen belül, a kiépítési állapot értéke `Failed`. Az esemény-előfizetés létrehozása naplófájljában, mielőtt újra a manuális érvényesítésre kísérel meg kell.
+2. **ValidationURL kézfogás (manuális kézfogás)**: bizonyos esetekben valószínűleg nem rendelkezik a forráskódot a végpont tudják megvalósítani a alapú ValidationCode kézfogás ellenőrzése. Például, ha egy külső szolgáltatást használ (például [Zapier](https://zapier.com) vagy [IFTTT](https://ifttt.com/)), nem fogja tudni programozott módon reagálhat az érvényesítési kóddal vissza. Verzió 2018-05-01-preview verziótól kezdődően EventGrid mostantól támogatja a kézi ellenőrzés kézfogás. Ha egy esemény-előfizetés az új API verzió (2018-05-01-preview), EventGrid küld használó SDK és eszközök használatával hoz létre egy `validationUrl` tulajdonság az előfizetés érvényesítése esemény adatok részének részeként. A kézfogás elvégzéséhez tegye egy GET kérelmek az URL-CÍMRE, vagy a REST-ügyféllel, vagy a webböngésző használatával. A megadott érvényesítési URL-CÍMÉT a érvényes csak nagyjából 10 percet. Az időszakban az üzembe helyezési az esemény-előfizetés állapota `AwaitingManualAction`. Ha nem végezte el a kézi ellenőrzés 10 percen belül, a kiépítési állapot értéke `Failed`. Az esemény-előfizetés a kézi ellenőrzés előtt újra létre kell.
 
-Ez a mechanizmus manuális érvényesítésének az előzetes verzióban. A használatához telepítenie kell az [Event Grid-bővítményt](/cli/azure/azure-cli-extensions-list) az [Azure CLI](/cli/azure/install-azure-cli)-hez. A telepítést az `az extension add --name eventgrid` paranccsal tudja végrehajtani. A REST API használata esetén ügyeljen rá, hogy az `api-version=2018-05-01-preview` verziót használja.
+Ez a mechanizmus manuális érvényesítésének az előzetes verzióban. A használatához telepítenie kell az [Event Grid-bővítményt](/cli/azure/azure-cli-extensions-list) az [Azure CLI](/cli/azure/install-azure-cli)-hez. A telepítést az `az extension add --name eventgrid` paranccsal tudja végrehajtani. Ha a REST API-t használ, ellenőrizze, hogy használ `api-version=2018-05-01-preview`.
 
 ### <a name="validation-details"></a>Az érvényesítés részletei
 
 * Esemény előfizetés létrehozása és frissítése időpontjában Event Grid egy előfizetés érvényesítési esemény a cél-végpontot tesz közzé. 
 * Az esemény tartalmaz egy fejléc értéke "AEG ügyet Eseménytípus: SubscriptionValidation".
 * Az esemény törzsét, más Event Grid-események ugyanazzal a sémával rendelkezik.
-* Az esemény típusa az esemény tulajdonság "Microsoft.EventGrid.SubscriptionValidationEvent".
-* A data-tulajdonság az esemény tartalmaz egy véletlenszerűen létrehozott karakterlánc "validationCode" tulajdonságot. Például "validationCode: acb13 …".
-* API verzió 2018-05-01-preview használatakor az esemény-adatokat is tartalmaz egy `validationUrl` tulajdonság manuális érvényesítésének az előfizetéshez tartozó URL-címet.
+* Esemény típusa az esemény tulajdonság `Microsoft.EventGrid.SubscriptionValidationEvent`.
+* Az esemény adat tulajdonság tartalmazza a `validationCode` tulajdonság egy véletlenszerűen létrehozott karakterlánccal. Például "validationCode: acb13 …".
+* API verzió 2018-05-01-preview használja, ha az esemény-adatokat is tartalmaz egy `validationUrl` tulajdonság manuális érvényesítésének az előfizetéshez tartozó URL-címet.
 * A tömb csak az érvényesítési eseményt tartalmaz. Az eseményeket küld egy külön kérelmet echo vissza az érvényesítési kód után.
 * A EventGrid-Adatsík SDK-k az előfizetés érvényesítése eseményadatok és előfizetés érvényesítési válaszhoz tartozó osztályok rendelkezik.
 
@@ -78,30 +78,32 @@ Végpont tulajdonjogának igazolásához, echo vissza a validationResponse tulaj
 }
 ```
 
-Azt is megteheti manuálisan ellenőrizheti az előfizetés egy GET kérést küld az érvényesítési URL-címet. Az esemény-előfizetés mindaddig, amíg érvényesítve függő állapotban marad.
+Vagy manuálisan ellenőrizheti az előfizetés egy GET kérést küld az érvényesítési URL-címet. Az esemény-előfizetés mindaddig, amíg érvényesítve függő állapotban marad.
 
 C#-minta bemutatja, hogyan kezelje az előfizetés érvényesítése kézfogás, annak https://github.com/Azure-Samples/event-grid-dotnet-publish-consume-events/blob/master/EventGridConsumer/EventGridConsumer/Function1.cs.
 
 ### <a name="checklist"></a>Ellenőrzőlista
 
-Esemény előfizetés létrehozása során, ha hibaüzenetet tapasztal például "a megadott végpont ellenőrzése a kísérlet https://your-endpoint-here nem sikerült. További részletekért látogasson el https://aka.ms/esvalidation", az azt jelzi, hogy nincs-e hiba a érvényesítési kézfogás. Ez a hiba elhárításához ellenőrizze a következő szempontokat:
+Esemény előfizetés létrehozása során, ha például egy hibaüzenetet lát "a megadott végpont ellenőrzése a kísérlet https://your-endpoint-here nem sikerült. További részletekért látogasson el https://aka.ms/esvalidation", az azt jelzi, hogy nincs-e hiba a érvényesítési kézfogás. Ez a hiba elhárításához ellenőrizze a következő szempontokat:
 
-* Rendelkezik a cél végpontját ellenőrzése az alkalmazás kódja? Például ha egy HTTP-eseményindító-alapú Azure-függvény, rendelkezik az alkalmazás kódja, módosíthatja a hozzáférést?
-* Ha rendelkezik hozzáféréssel az alkalmazáskód, valósítsa meg a alapú ValidationCode kézfogás mechanizmus a fenti példában látható módon.
+* Rendelkezik a cél végpontját ellenőrzése az alkalmazás kódja? Például ha szeretne írni egy HTTP-eseményindító-alapú Azure-függvény, rendelkezik az alkalmazás kódja, módosíthatja a hozzáférést?
+* Ha rendelkezik hozzáféréssel az alkalmazáskód, a alapú ValidationCode kézfogás mechanizmus megvalósításához, a fenti példában látható módon.
 
-* Ha nem rendelkezik hozzáféréssel az alkalmazáskód (például egy harmadik féltől származó webhookokat támogató szolgáltatás használatakor), a manuális kézfogás mechanizmust is használhatja. Annak érdekében, hogy ehhez győződjön meg, hogy a 2018-05-01-preview API-verzió (pl. használatával a fent leírt EventGrid CLI-bővítmény) használja annak érdekében, hogy a validationUrl kapják meg az érvényesítési esemény. A kézi ellenőrzés kézfogás elvégzéséhez, a "validationUrl" tulajdonság értékének lekérése, és látogasson el az URL-CÍMRE a böngészőben. Sikeres ellenőrzés esetén üzenetnek kell megjelennie a böngészőben, hogy az ellenőrzés nem jelez hibát, és látni fogja, hogy esemény-előfizetés provisioningState van "sikeres". 
+* Ha Ön nem rendelkezik hozzáféréssel az alkalmazáskód (például, ha egy külső szolgáltatás, amely támogatja a webhookok használata), a manuális kézfogás mechanizmust is használhatja. Ellenőrizze, hogy a 2018-05-01-preview API-verzió vagy újabb (telepítés Event Grid Azure CLI-bővítmény)-t használ a validationUrl kapják meg az érvényesítési esemény. A manuális érvényesítésre kézfogás elvégzéséhez gépkulcsengedélyek értékének a `validationUrl` tulajdonságot, és látogasson el az URL-CÍMRE a böngészőben. Sikeres ellenőrzés esetén megjelenik egy üzenet a böngészőben, hogy az ellenőrzés nem jelez. Látni fogja, hogy esemény-előfizetés provisioningState van "sikeres". 
 
 ### <a name="event-delivery-security"></a>Kézbesítési biztonsági esemény
 
 Egy esemény-előfizetés létrehozásakor lekérdezési paraméterek hozzáadásával a webhook URL-cím gondoskodhat a webhook-végpontot. Állítsa be a lehet például egy titkos kulcsot a lekérdezési paraméterek egyike egy [hozzáférési jogkivonat](https://en.wikipedia.org/wiki/Access_token) , amelyet a webhook használatával ismerik fel az esemény érkezik Event Grid érvényes engedélyekkel. Event Grid a webhook minden eseménykézbesítés tartalmazza a lekérdezési paraméterek.
 
-Az esemény-előfizetés szerkesztésekor a lekérdezési paraméterek nem lehet jelenik meg, vagy nem adott vissza, ha a [--– teljes-végpont-URL-címek](https://docs.microsoft.com/cli/azure/eventgrid/event-subscription?view=azure-cli-latest#az-eventgrid-event-subscription-show) paraméter használata az Azure-ban [CLI](https://docs.microsoft.com/cli/azure?view=azure-cli-latest).
+Az esemény-előfizetés szerkesztésekor a lekérdezési paraméterek nem jelenik meg vagy nem adott vissza, ha a [--– teljes-végpont-URL-címek](https://docs.microsoft.com/cli/azure/eventgrid/event-subscription?view=azure-cli-latest#az-eventgrid-event-subscription-show) paraméter használata az Azure-ban [CLI](https://docs.microsoft.com/cli/azure?view=azure-cli-latest).
 
 Végezetül fontos megjegyezni, hogy csak az Azure Event Grid támogatja a webhook koncové body protokolu HTTPS.
 
 ## <a name="event-subscription"></a>Esemény-előfizetés
 
-Feliratkozás egy eseményt, rendelkeznie kell a **Microsoft.EventGrid/EventSubscriptions/Write** engedéllyel a szükséges erőforrás. Szüksége erre az engedélyre, mert a ír be egy új előfizetést az erőforrás a hatókörben. A szükséges erőforrás eltér attól még egy rendszer témakört vagy egy egyéni témakör előfizetés alapján. Ebben a szakaszban mindkét fajta ismerteti.
+Feliratkozás egy eseményt, igazolnia kell, hogy a forrás és a kezelő a hozzáférést. Igazolja, hogy a WebHook saját az előző szakaszban ismertetett volt. Egy eseménykezelő, amely egy WebHook (például egy event hub vagy az queue storage) nem használja, ha ennek az erőforrásnak írási hozzáférés szükséges. Az engedélyek ellenőrzését egy jogosulatlan felhasználó megakadályozza az események küldése az erőforrás.
+
+Rendelkeznie kell a **Microsoft.EventGrid/EventSubscriptions/Write** engedéllyel az erőforrás, amely az esemény forrását. Szüksége erre az engedélyre, mert a ír be egy új előfizetést az erőforrás a hatókörben. A szükséges erőforrás eltér attól még egy rendszer témakört vagy egy egyéni témakör előfizetés alapján. Ebben a szakaszban mindkét fajta ismerteti.
 
 ### <a name="system-topics-azure-service-publishers"></a>Rendszer témakörök (az Azure service közzétevők)
 
@@ -115,9 +117,9 @@ Egyéni témakörök szüksége lesz egy új esemény-előfizetés a hatókörbe
 
 Például a feliratkozás egyéni témakörre nevű **mytopic**, az a Microsoft.EventGrid/EventSubscriptions/Write engedélyre van szüksége: `/subscriptions/####/resourceGroups/testrg/providers/Microsoft.EventGrid/topics/mytopic`
 
-## <a name="topic-publishing"></a>A témakör közzététele
+## <a name="custom-topic-publishing"></a>Közzététel egyéni témakörben
 
-Témakörök közös hozzáférésű Jogosultságkód (SAS) vagy a kulcs alapú hitelesítés használata. Azt javasoljuk, hogy a SAS, de kulcsos hitelesítés egyszerű programozási biztosít, és számos meglévő webhook-közzétevők kompatibilis. 
+Egyéni témakörök közös hozzáférésű Jogosultságkód (SAS) vagy a kulcs alapú hitelesítés használata. Azt javasoljuk, hogy a SAS, de kulcsos hitelesítés egyszerű programozási biztosít, és számos meglévő webhook-közzétevők kompatibilis. 
 
 A hitelesítési érték szerepel a HTTP-fejléc. SAS használata **AEG ügyet sas-jogkivonat** a fejléc értékeként. Kulcsos hitelesítés használata **AEG ügyet-sas-kulcs** a fejléc értékeként.
 
@@ -185,7 +187,7 @@ Az Azure event grid támogatja a következő műveleteket:
 * Microsoft.EventGrid/topics/listKeys/action
 * Microsoft.EventGrid/topics/regenerateKey/action
 
-Az utolsó három műveletek potenciálisan titkos információt, amely lekérdezi a normál olvasási műveletek szűrt adja vissza. Fontos, hogy ezek a műveletek való hozzáférés korlátozása az ajánlott eljárás. Egyéni szerepkörök használatával hozható létre [Azure PowerShell-lel](../role-based-access-control/role-assignments-powershell.md), [Azure parancssori felület (CLI)](../role-based-access-control/role-assignments-cli.md), és a [REST API-val](../role-based-access-control/role-assignments-rest.md).
+Az utolsó három műveletek potenciálisan titkos információt, amely lekérdezi a normál olvasási műveletek szűrt adja vissza. Javasoljuk, hogy korlátozza a hozzáférést ezeket a műveleteket. Egyéni szerepkörök használatával hozható létre [Azure PowerShell-lel](../role-based-access-control/role-assignments-powershell.md), [Azure parancssori felület (CLI)](../role-based-access-control/role-assignments-cli.md), és a [REST API-val](../role-based-access-control/role-assignments-rest.md).
 
 ### <a name="enforcing-role-based-access-check-rbac"></a>Kényszerítése a szerepkör alapú hozzáférés-ellenőrzés (RBAC)
 
@@ -193,7 +195,7 @@ A következő lépések segítségével a különböző felhasználók számára
 
 #### <a name="create-a-custom-role-definition-file-json"></a>Hozzon létre egy egyéni szerepkör-definíciós fájlt (.json)
 
-Az alábbiakban a minta Event Grid szerepkör-definíciók, amelyek lehetővé teszik a felhasználók más-más részhalmazához műveletek végrehajtásához.
+Az alábbiakban a minta Event Grid szerepkör-definíciók, amelyek lehetővé teszik a felhasználók számára a különböző műveleteket.
 
 **EventGridReadOnlyRole.json**: engedélyezése csak a csak olvasható műveletekhez.
 

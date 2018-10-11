@@ -12,14 +12,14 @@ ms.topic: article
 ms.date: 10/05/2018
 ms.author: celested
 ms.reviewer: hirsin, jeedes
-ms.openlocfilehash: c188b800e2227a5c9f3a11d7d8d752af3efdf66a
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: 43b17c54014d2f1beedd02f9ec627dd087e65d5a
+ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/10/2018
-ms.locfileid: "48904327"
+ms.locfileid: "49069267"
 ---
-# <a name="how-to-customize-claims-emitted-in-tokens-for-a-specific-app-in-a-tenant-public-preview"></a>Útmutató: a bérlőben (nyilvános előzetes verzió) egy adott alkalmazáshoz tartozó jogkivonatok kibocsátott jogcímek testreszabása
+# <a name="how-to-customize-claims-emitted-in-tokens-for-a-specific-app-in-a-tenant-preview"></a>Útmutató: a bérlőben (előzetes verzió) egy adott alkalmazáshoz tartozó jogkivonatok kibocsátott jogcímek testreszabása
 
 > [!NOTE]
 > Ez a szolgáltatás váltja fel, és hatályon kívül helyez a [jogcímek testreszabása](active-directory-saml-claims-customization.md) jelenleg elérhető a portálon keresztül. A ugyanazt az alkalmazást Ha testre szabhatja a jogcímek, az ebben a dokumentumban részletes Graph vagy PowerShell-módszer mellett a portál használatával jogkivonatok ki, hogy alkalmazás figyelmen kívül hagyja a konfiguráció a portálon. Ebben a dokumentumban ismertetett módszerek használatával végzett konfigurációk nem tükröződnek a portálon.

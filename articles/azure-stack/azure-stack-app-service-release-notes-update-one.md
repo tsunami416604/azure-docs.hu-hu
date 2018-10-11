@@ -1,6 +1,6 @@
 ---
-title: App Service az Azure-verem update 1 kibocsátási megjegyzései |} Microsoft Docs
-description: A frissítés a veremben Azure App Service megismerése az ismert problémákról, valamint a frissítés letöltése helyét.
+title: App Service-ben az Azure Stack update 1 kibocsátási megjegyzései |} A Microsoft Docs
+description: Ismerje meg a frissítést az App Service az Azure Stacken, az ismert problémákról, valamint a helyét, a frissítés letöltése.
 services: azure-stack
 documentationcenter: ''
 author: apwestgarth
@@ -14,50 +14,50 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2018
 ms.author: anwestg
-ms.reviewer: brenduns
-ms.openlocfilehash: 80bd865b7a08d9488c0fb6a1a5b60445b9c6eaaa
-ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
+ms.reviewer: sethm
+ms.openlocfilehash: ee6e4397345b4cb169e7e22d951d4c4fdff5b7b7
+ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "34358081"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49078715"
 ---
-# <a name="app-service-on-azure-stack-update-1-release-notes"></a>App Service az Azure-verem update 1 kibocsátási megjegyzései
+# <a name="app-service-on-azure-stack-update-1-release-notes"></a>App Service-ben az Azure Stack update 1 kibocsátási megjegyzései
 
-*A következőkre vonatkozik: Azure verem integrált rendszerek és az Azure verem szoftverfejlesztői készlet*
+*A következőkre vonatkozik: Azure Stackkel integrált rendszerek és az Azure Stack fejlesztői készlete*
 
-A kibocsátási megjegyzések a fejlesztései és a javításokat az Azure App Service Azure verem Update 1 és olyan ismert problémákat ismertetik. Ismert problémák közvetlenül a telepítés, a frissítési folyamat és a problémákat a build (telepítés utáni) kapcsolatos problémák vannak felosztva.
+A kibocsátási megjegyzések láthatók a fejlesztései, valamint a javításokat az Azure App Service az Azure Stack Update 1 és olyan ismert problémákat. Ismert problémák az üzembe helyezési, frissítési folyamat és a build (telepítés utáni) problémái közvetlenül kapcsolódó problémák vannak felosztva.
 
 > [!IMPORTANT]
-> A 1802 frissítés alkalmazásához a integrált Azure verem rendszerre, vagy telepítheti a legújabb Azure verem szoftverfejlesztői készlet Azure App Service üzembe helyezése előtt.
+> Az 1802-es frissítés alkalmazása az Azure Stackkel integrált rendszer, vagy a legújabb Azure Stack fejlesztői készletének telepítése az Azure App Service üzembe helyezése előtt.
 >
 >
 
 ## <a name="build-reference"></a>Hivatkozás létrehozása
 
-Az App Service az Azure verem Update 1 buildszáma **69.0.13698.9**
+Az App Service az Azure Stack Update 1 buildszám **69.0.13698.9**
 
 ### <a name="prerequisites"></a>Előfeltételek
 
 > [!IMPORTANT]
-> Az Azure App Service Azure veremben új telepítés most igényel a [három-tulajdonos helyettesítő tanúsítvány](azure-stack-app-service-before-you-get-started.md#get-certificates) , amelyben az Azure App Service-ben mostantól kezelése a Kudu SSO fejlesztései miatt. Az új tulajdonos  **\*. sso.appservice.\< a régióban\>.\< tartománynév\>.\< bővítmény\>**
+> Új telepítések esetén az Azure App Service az Azure Stacken most szükséges egy [három-tulajdonos helyettesítő tanúsítvány](azure-stack-app-service-before-you-get-started.md#get-certificates) köszönhető, amelyben az Azure App Service mostantól kezelése a Kudu egyszeri Bejelentkezést. Az új tulajdonos  **\*. sso.appservice.\< régió\>.\< tartománynév\>.\< bővítmény\>**
 >
 >
 
-Tekintse meg a [mielőtt hozzáfogna dokumentáció](azure-stack-app-service-before-you-get-started.md) központi telepítésének megkezdése előtt.
+Tekintse meg a [mielőtt elkezdené a dokumentáció](azure-stack-app-service-before-you-get-started.md) központi telepítésének megkezdése előtt.
 
-### <a name="new-features-and-fixes"></a>Új szolgáltatásokat és javításokat
+### <a name="new-features-and-fixes"></a>Új funkciókkal és javításokkal
 
-Az Azure App Service Azure verem Update 1 tartalmazza a következő fejlesztéseket és javításokat:
+Az Azure App Service-ben az Azure Stack 1. frissítés tartalmazza a következő fejlesztések és javítások:
 
-- **Magas rendelkezésre állás az Azure App Service** – az Azure-verem 1802 update szolgáltatást munkaterhelések történő központi fault tartományok. Ezért App Service-infrastruktúrát, képes lehet a hibatűrő, mivel a tartalék tartományok lesznek telepítve. Alapértelmezés szerint a minden új központi telepítéséhez, az Azure App Service ezzel a képességgel rendelkezik, azonban a központi telepítés előtt Azure verem 1802 befejeződött a frissítés alkalmazva tekintse meg a [App Service tartalék tartomány dokumentáció](azure-stack-app-service-fault-domain-update.md)
+- **Magas rendelkezésre állás az Azure App Service** – az Azure Stack 1802-es frissítés engedélyezve számítási feladatokhoz történő központi tartalék tartományokat. Ezért az App Service-infrastruktúra képes legyen képes lehet a hibatűrő, mivel a tartalék tartomány között pedig települnek. Alapértelmezés szerint az Azure App Service összes új üzemelő példányhoz rendelkezik ezzel a képességgel azonban a központi telepítés befejezése előtt az Azure Stack 1802-es frissítés alkalmazása folyamatban tekintse meg a [App Service-tartalék tartomány dokumentációja](azure-stack-app-service-fault-domain-update.md)
 
-- **Meglévő virtuális hálózat üzembe** -ügyfelek most már telepítheti a verem Azure App Service egy meglévő virtuális hálózaton belül. A meglévő virtuális hálózat telepítése lehetővé teszi az ügyfelek csatlakozni az SQL Server és a fájlkiszolgáló személyes portokon keresztül az Azure App Service-ben szükséges. A telepítés során az ügyfelek választhatja azonban központi telepítése egy meglévő virtuális hálózatban [kell létrehozni, használja az App Service-alhálózatok](azure-stack-app-service-before-you-get-started.md#virtual-network) telepítését megelőzően.
+- **A meglévő virtuális hálózat üzembe helyezése** -ügyfelek most már telepítheti az Azure Stack App Service-ben meglévő virtuális hálózaton belül. Egy meglévő virtuális hálózaton üzembe helyezése lehetővé teszi ügyfeleink számára, az SQL Server és a fájlkiszolgáló, az Azure App Service-ben privát portokon keresztül szükséges kapcsolódni. Üzembe helyezés során az ügyfelek üzembe helyezése meglévő virtuális hálózattal, viszont ki [létre kell hoznia az App Service általi használatra alhálózatok](azure-stack-app-service-before-you-get-started.md#virtual-network) üzembe helyezés előtt.
 
-- Szoftverfrissítések **App Services-bérlő, a rendszergazda, Funkciók portálok és a Kudu eszközök**. Konzisztens Azure verem portál SDK-verzió.
+- Frissítések **App Services-bérlő, a rendszergazda, a Functions-portálok és eszközök a Kudu**. Az Azure Stack Portal SDK-verzió összhangban.
 
-- **A következő alkalmazás-keretrendszerbeli és eszközök frissítések**:
-    - Hozzáadott **.Net 2.0 alapvető** támogatja
+- **A következő alkalmazás-keretrendszerek és eszközök frissítések**:
+    - Hozzáadott **.Net Core 2.0** támogatása
     - Hozzáadott **Node.JS** verziók:
         - 6.11.2
         - 6.11.5
@@ -80,49 +80,49 @@ Az Azure App Service Azure verem Update 1 tartalmazza a következő fejlesztése
     - Hozzáadott **PHP** frissítések:
         - 5.6.32
         - 7.0.26 (x86 és x64)
-        - 7.1.12 (x86 és x64)
+        - 7.1.12-es (x86 és x64)
     - Frissített **Git for Windows** v 2.14.1
-    - Frissített **Mercurial** v4.5.0 számára
+    - Frissített **Mercurial** v4.5.0,
 
-  - Támogatása az **csak HTTPS** egyéni tartományi szolgáltatásban a bérlői portálon App Service szolgáltatást. 
+  - Támogatás hozzáadva az **csak HTTPS** belül az App Service-bérlői portál az egyéni tartomány a szolgáltatás a szolgáltatás. 
 
-  - Az egyéni tárolási választó tárolási kapcsolat az Azure Functions hozzáadott érvényesítése 
+  - Az Azure Functions az egyéni tároló-választó tárolási kapcsolat hozzáadott érvényesítése 
 
 #### <a name="fixes"></a>Javítások
 
-- Amikor egy offline központi telepítési csomagot hoz létre, az ügyfelek többé nem kapja meg hozzáférés megtagadásáról szóló hibaüzenetet, amikor megnyitja a mappa az App Service-telepítő
+- Egy kapcsolat nélküli telepítőcsomag létrehozása, ha ügyfelek többé nem kapja meg "hozzáférés megtagadva" hibaüzenetet kap, amikor megnyitni a mappát, az az App Service-telepítő
 
-- Az alkalmazás bérlői portál az egyéni tartományok szolgáltatás használata során meg a problémát.
+- Az App Service-bérlői portál az egyéni tartományok funkció használatakor a probléma megoldása.
 
-- Rendszergazda fenntartott nevek használatával a telepítés során az ügyfelek megakadályozása
+- Megakadályozza a telepítés során fenntartott rendszergazdai neveket használó ügyfeleink
 
-- Engedélyezve van az App Service telepítési **tartományhoz csatlakoztatott** fájlkiszolgáló
+- Engedélyezve van az App Service-környezet **tartományhoz csatlakoztatott** fájlkiszolgáló
 
-- Azure verem legfelső szintű továbbfejlesztett beolvasása a parancsfájl-tanúsítványt, és most ellenőrzi a legfelső szintű tanúsítvány az App Service telepítőjét a.
+- Továbbfejlesztett lekérése az Azure Stack legfelső szintű tanúsítvány-szkriptben, és most az az App Service-telepítő a legfelső szintű tanúsítvány érvényesítése.
 
-- Az Azure Resource Manager alatt adja vissza, ha egy előfizetés rögzített helytelen állapot Microsoft.Web névtér a benne lévő erőforrások törlése.
+- Az Azure Resource Manager alatt adja vissza, ha egy előfizetés rögzített helytelen állapot a benne foglalt erőforrásokat Microsoft.Web névtér törlése.
 
-### <a name="known-issues-with-the-deployment-process"></a>A telepítési folyamat szolgáltatással kapcsolatos ismert problémák
+### <a name="known-issues-with-the-deployment-process"></a>Az üzembe helyezési folyamat ismert problémái
 
-- Tanúsítvány érvényesítési hibák
+- Tanúsítvány-ellenőrzési hibák
 
-Egyes ügyfelek rendelkezik közben a problémák miatt túl szigorú ellenőrzés a telepítő az integrált rendszeren való telepítésekor tanúsítványok biztosítása az App Service telepítőjét. Az App Service telepítőjét új kiadása, az ügyfelek kell [töltse le a frissített telepítő](https://aka.ms/appsvconmasinstaller). Ha folytatja, a frissített telepítővel tanúsítványok érvényesítése közben hibákat tapasztal, forduljon a támogatási szolgálathoz.
+Egyes ügyfeleink problémák lépett fel változatának tanúsítványok az App Service-telepítő való telepítésekor egy integrált rendszer, a telepítő a túl szigorú ellenőrzési miatt. Az App Service-telepítő új kiadása, az ügyfeleknek kell [töltse le a frissített](https://aka.ms/appsvconmasinstaller). Ha folytatja, a frissített telepítővel tanúsítványok érvényesítése hibákat tapasztal, forduljon az ügyfélszolgálathoz.
 
-- A probléma integrált rendszer Azure verem legfelső szintű tanúsítvány lekérése.
+- A probléma az Azure Stack főtanúsítványának integrált rendszer való beolvasásakor.
 
-A Get-AzureStackRootCert.ps1 hibát okozott az ügyfelek számára nem sikerült beolvasni az Azure-verem legfelső szintű tanúsítvány olyan gépen, amely nem rendelkezik a legfelső szintű tanúsítvány telepítése a parancsfájl végrehajtása közben. A parancsfájl is most újra megjelent, ezt a problémát, és a kérelem ügyfelek feloldása [töltse le a frissített segítő parancsfájlok](https://aka.ms/appsvconmashelpers). Ha folytatja, a főtanúsítványt a frissített parancsfájllal beolvasása hibákat tapasztal, forduljon a támogatási szolgálathoz.
+A Get-AzureStackRootCert.ps1 hibája miatt az ügyfelek számára nem sikerült beolvasni az Azure Stack főtanúsítványának olyan számítógépen, amelyen nincs telepítve a legfelső szintű tanúsítvány a parancsfájl végrehajtása közben. A parancsfájl emellett mostantól új kiadása, ezt a problémát, és a kérés ügyfelek feloldása [töltse le a frissített segítő szkripteket](https://aka.ms/appsvconmashelpers). Ha továbbra is a frissített szkript a következő főtanúsítványok beolvasása közben jelentkezik, forduljon az ügyfélszolgálathoz.
 
-### <a name="known-issues-with-the-update-process"></a>A frissítési folyamat szolgáltatással kapcsolatos ismert problémák
+### <a name="known-issues-with-the-update-process"></a>A frissítési folyamat ismert problémái
 
-- Nincsenek ismert problémák a frissítés az Azure App Service Azure verem frissítése 1.
+- Nem tartoznak ismert problémák az Azure App Service az Azure Stack Update 1 frissítése.
 
 ### <a name="known-issues-post-installation"></a>Ismert problémák (telepítés utáni)
 
-- A Tárolóhelycsere nem működik.
+- Tárolóhelycsere nem működik.
 
-Hely tárolóhelycsere ebben a kiadásban megszakad. Működésének visszaállításához végezze el az alábbi lépéseket:
+Ebben a kiadásban hely tárolóhelycsere megszakadt. Működésének visszaállításához hajtsa végre a következő lépéseket:
 
-1. A ControllersNSG hálózati biztonsági csoportot **engedélyezése** az App controller szolgáltatáspéldány távoli asztali kapcsolatokat. AppService.local cserélje le az App Service telepítette az erőforráscsoport nevét.
+1. Módosítsa a ControllersNSG hálózati biztonsági csoport **engedélyezése** vezérlő App Service-példányok távoli asztali kapcsolatokat. AppService.local cserélje le az üzembe helyezett App Service-erőforráscsoport nevére.
 
     ```powershell
       Add-AzureRmAccount -EnvironmentName AzureStackAdmin
@@ -147,8 +147,8 @@ Hely tárolóhelycsere ebben a kiadásban megszakad. Működésének visszaáll�
       Set-AzureRmNetworkSecurityGroup -NetworkSecurityGroup $nsg
       ```
 
-2. Keresse meg a **CN0-VM** alatt az Azure verem felügyeleti portálon található virtuális gépek és **kattintson a kapcsolódás** megnyitása a távoli asztali munkamenetgazda, a vezérlő példánya. Az App Service központi telepítése során megadott hitelesítő adatokat használja.
-3. Start **rendszergazdaként PowerShell** és hajtsa végre a következő parancsfájlt
+2. Keresse meg a **CN0 virtuális** alatt az Azure Stack felügyeleti portálon található virtuális gépek és **kattintson a csatlakozás** , nyissa meg a távoli asztali munkamenetet a tartományvezérlő-példány. Az App Service üzembe helyezése során megadott hitelesítő adatokat használja.
+3. Indítsa el **Powershellt rendszergazdaként** , és hajtsa végre a következő parancsfájl
 
     ```powershell
         Import-Module appservice
@@ -171,8 +171,8 @@ Hely tárolóhelycsere ebben a kiadásban megszakad. Működésének visszaáll�
         
     ```
 
-4. Zárja be a távoli asztali munkamenetben.
-5. Állítsa vissza a ControllersNSG hálózati biztonsági csoport **Megtagadás** az App controller szolgáltatáspéldány távoli asztali kapcsolatokat. AppService.local cserélje le az App Service telepítette az erőforráscsoport nevét.
+4. Zárja be a távoli asztali munkamenetet.
+5. A ControllersNSG hálózati biztonsági csoport a visszaállítás **Megtagadás** vezérlő App Service-példányok távoli asztali kapcsolatokat. AppService.local cserélje le az üzembe helyezett App Service-erőforráscsoport nevére.
 
     ```powershell
 
@@ -197,24 +197,24 @@ Hely tárolóhelycsere ebben a kiadásban megszakad. Működésének visszaáll�
         # Commit the changes back to NSG
         Set-AzureRmNetworkSecurityGroup -NetworkSecurityGroup $nsg
     ```
-- Munkavállalók nem érhető el a fájlkiszolgáló, ha az App Service egy meglévő virtuális hálózat és a fájlkiszolgáló csak érhető el a privát hálózaton.
+- Feldolgozók nem érhető el a fájlkiszolgálót, amikor az App Service-ben meglévő virtuális hálózaton van üzembe helyezve, és a fájlkiszolgáló csak érhető el a magánhálózaton.
  
-Ha úgy dönt, hogy az üzembe helyezés meglévő virtuális hálózat és a fájl kiszolgálóhoz való csatlakozás belső IP-címet, hozzá kell adnia egy kimenő biztonsági szabály engedélyezése az SMB adatforgalmát. a munkavégző és a fájlkiszolgáló között. Ehhez nyissa meg a felügyeleti portál WorkersNsg, és a következő tulajdonságokkal kimenő biztonsági szabály felvétele:
- * Forrás: bármely
- * Forrás-porttartomány: *
+Ha úgy döntött, hogy egy meglévő virtuális hálózattal és belső IP-cím szeretne csatlakozni a fájlkiszolgáló üzembe helyezése, hozzá kell adnia egy kimenő biztonsági szabályt a feldolgozó és a fájlkiszolgáló között SMB-forgalom engedélyezése. Ehhez nyissa meg a WorkersNsg a felügyeleti portálon, és adjon hozzá egy kimenő biztonsági szabályt a következő tulajdonságokkal:
+ * Forrás: összes
+ * Forrás porttartomány: *
  * Cél: IP-címek
- * Cél IP-címtartomány: IP-címtartományra a fájlkiszolgáló
- * Célporttartomány: 445-ös
+ * Cél IP-címtartomány: IP-címtartományt a fájlkiszolgálóhoz
+ * Cél porttartomány: 445-ös
  * Protokoll: TCP
  * Művelet: engedélyezése
  * Prioritás: 700
  * Name: Outbound_Allow_SMB445
 
-### <a name="known-issues-for-cloud-admins-operating-azure-app-service-on-azure-stack"></a>Azure App Service Azure veremben működő felhő rendszergazdák kapcsolatos ismert problémák
+### <a name="known-issues-for-cloud-admins-operating-azure-app-service-on-azure-stack"></a>Ismert problémák működtetése az Azure App Service az Azure Stack felhő-rendszergazdák számára
 
-A dokumentációban találja a [Azure verem 1802 kibocsátási megjegyzései](azure-stack-update-1802.md)
+A dokumentáció a [Azure Stack 1802 kibocsátási megjegyzései](azure-stack-update-1802.md)
 
 ## <a name="next-steps"></a>További lépések
 
-- Az Azure App Service áttekintéséért lásd: [Azure verem – áttekintés az Azure App Service](azure-stack-app-service-overview.md).
-- App Service Azure veremben telepítendő előkészítése további információkért lásd: [az App Service Azure veremben megkezdése előtt](azure-stack-app-service-before-you-get-started.md).
+- Az Azure App Service áttekintését lásd: [Azure App Service az Azure Stack áttekintése](azure-stack-app-service-overview.md).
+- Hogyan készíti elő az Azure Stack App Service üzembe helyezése kapcsolatos további információkért lásd: [az App Service-ben az Azure Stack használatának megkezdése előtt](azure-stack-app-service-before-you-get-started.md).

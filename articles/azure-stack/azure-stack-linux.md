@@ -1,9 +1,9 @@
 ---
-title: Linux-lemezképek hozzáadása Azure verem
-description: Megtudhatja, hogyan Linux lemezképek hozzáadása Azure verem.
+title: Linux-lemezképek hozzáadása az Azure Stackhez
+description: Ismerje meg, hogyan adja hozzá a Linux-rendszerképeket az Azure Stackhez.
 services: azure-stack
 documentationcenter: ''
-author: brenduns
+author: sethmanheim
 manager: femila
 editor: ''
 ms.service: azure-stack
@@ -12,46 +12,46 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/08/2018
-ms.author: brenduns
+ms.author: sethm
 ms.reviewer: jeffgo
-ms.openlocfilehash: 64a860bc925b9c7499363c1fe39d03df88a9a51d
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: db52d145c3bfbd9415072be13ccb502969f07374
+ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33935716"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49077647"
 ---
-# <a name="add-linux-images-to-azure-stack"></a>Linux-lemezképek hozzáadása Azure verem
+# <a name="add-linux-images-to-azure-stack"></a>Linux-lemezképek hozzáadása az Azure Stackhez
 
-*A következőkre vonatkozik: Azure verem integrált rendszerek és az Azure verem szoftverfejlesztői készlet*
+*A következőkre vonatkozik: Azure Stackkel integrált rendszerek és az Azure Stack fejlesztői készlete*
 
-A Linux-alapú lemezkép az Azure-verem piactéren hozzáadásával telepítheti Linux virtuális gépek (VM) Azure veremben. A Linux-lemezkép hozzáadása Azure verem legkönnyebben piactér felügyelet használatával. Ezeket a lemezképeket készíteni, és tesztelt Azure verem való kompatibilitás érdekében.
+Az Azure Stacken Linux rendszerű virtuális gépek (VM) telepíthet egy linuxos rendszerképet az Azure Stack piactéren hozzáadásával. A Linux-rendszerképen hozzáadása az Azure Stackhez legegyszerűbben Marketplace Management szolgáltatáson keresztül. Ezeket a lemezképeket készíteni, és tesztelni az Azure Stackkel való kompatibilitás érdekében.
 
-## <a name="marketplace-management"></a>Piactér-kezelés
+## <a name="marketplace-management"></a>Marketplace-en kezelése
 
-Az Azure piactérről Linux képek letöltéséhez az eljárásokkal a következő cikkben található. Válassza ki a kívánt felhasználók számára az Azure Linux lemezképeket. 
+Töltse le a Linux-rendszerképeket az Azure Marketplace-ről, használja a eljárások a következő cikkben talál. Válassza ki, hogy a felhasználók számára az Azure Stack kívánt Linux-lemezképekhez. 
 
-[Töltse le a Piactéri elemek az Azure-ból Azure verem](azure-stack-download-azure-marketplace-item.md).
+[Az Azure marketplace-elemek letöltése az Azure Stackhez](azure-stack-download-azure-marketplace-item.md).
 
-Vegye figyelembe, hogy vannak-e ezek a lemezképek gyakori frissítéseit, ezért a piactér felügyeleti gyakran naprakész állapotban tartása érdekében ellenőrizze.
+Vegye figyelembe, hogy nincsenek-e képek gyakori frissítések, ezért érdemes ellenőrizni a Marketplace-en felügyeleti gyakran és naprakész állapotban tarthatja.
 
 ## <a name="prepare-your-own-image"></a>A saját lemezkép előkészítése
 
- Ahol lehetséges, töltse le a piactér kezelhetőségét, ami elő és tesztelt Azure verem keresztül elérhető lemezképeket. 
+ Amikor csak lehetséges, töltse le a lemezkép érhető el, amely készített, és tesztelni az Azure Stack piactéren Management szolgáltatáson keresztül. 
  
- Az Azure Linux ügynök (általában nevezik `WALinuxAgent` vagy `walinuxagent`) kell megadni, és az ügynök nem minden verziói működnek az Azure-veremben. Használjon 2.2.18 verzió vagy újabb, ha saját rendszerkép létrehozása. Vegye figyelembe, hogy [felhő inicializálás](https://cloud-init.io/) Azure veremben jelenleg nem támogatott.
+ Az Azure Linux-ügynök (általános nevén `WALinuxAgent` vagy `walinuxagent`) szükség, és az ügynök nem minden verzióinak fog működni az Azure Stacken. Használjon 2.2.18 verzió vagy újabb, ha hoz létre a saját rendszerképét. Vegye figyelembe, hogy [a cloud-init](https://cloud-init.io/) jelenleg nem támogatott az Azure Stacken.
 
- Előkészítheti a saját Linux kép a következő útmutatás szerint:
+ Saját Linux-rendszerképek, az alábbi utasítások segítségével készítheti elő:
 
-   * [CentOS-alapú Disztribúciók](../virtual-machines/linux/create-upload-centos.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+   * [CentOS-alapú Disztribúciókon](../virtual-machines/linux/create-upload-centos.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
    * [Debian Linux](../virtual-machines/linux/debian-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
    * [Red Hat Enterprise Linux](azure-stack-redhat-create-upload-vhd.md)
    * [SLES & openSUSE](../virtual-machines/linux/suse-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
    * [Ubuntu Server](../virtual-machines/linux/create-upload-ubuntu.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
     
-## <a name="add-your-image-to-the-marketplace"></a>A lemezkép hozzáadása a piactér
+## <a name="add-your-image-to-the-marketplace"></a>A lemezkép felvétele a Marketplace-en
  
-Hajtsa végre a [adja hozzá a piactér](azure-stack-add-vm-image.md). Győződjön meg arról, hogy a `OSType` paraméter értéke `Linux`.
+Hajtsa végre a [adja hozzá a lemezképet a Marketplace-en](azure-stack-add-vm-image.md). Győződjön meg arról, hogy a `OSType` paraméter értéke `Linux`.
 
-A lemezkép hozzáadása a piactéren, után a Piactéri elemet létrejön, és felhasználók telepítheti egy Linux virtuális gép.
+A lemezképet a Marketplace-en való felvételét, Piactéri elem jön létre, és a felhasználók üzembe helyezhetnek egy Linux rendszerű virtuális gépet.

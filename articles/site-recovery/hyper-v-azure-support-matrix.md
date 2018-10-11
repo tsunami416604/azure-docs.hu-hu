@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 10/02/2018
+ms.date: 10/10/2018
 ms.author: raynew
-ms.openlocfilehash: 8c943b9ec8114699a7fad487c7d669b58942c019
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 83d2fabbe3a1b0ab44cb97e53baf0aa40349aeed
+ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48042529"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49079208"
 ---
 # <a name="support-matrix-for-hyper-v-replication-to-azure"></a>Hyper-V-replikáció az Azure-támogatási mátrixa
 
@@ -90,7 +90,7 @@ Gyorsított hálózatkezelés | Nem | Nem
 
 ## <a name="hyper-v-host-storage"></a>A Hyper-V-gazdagép tárolási
 
-**Storage** | **A Hyper-V Virtual Machine Manager** | **A Hyper-V Virtual Machine Manager nélkül**
+**Tárolás** | **A Hyper-V Virtual Machine Manager** | **A Hyper-V Virtual Machine Manager nélkül**
 --- | --- | --- | ---
 NFS | NA | NA
 SMB 3.0 | Igen | Igen
@@ -99,7 +99,7 @@ Több elérési út (MPIO). Tesztelték:<br></br> A Microsoft DSM-et, EMC PowerP
 
 ## <a name="hyper-v-vm-guest-storage"></a>A Hyper-V virtuális gép vendég storage
 
-**Storage** | **A Hyper-V Virtual Machine Manager** | **A Hyper-V Virtual Machine Manager nélkül**
+**Tárolás** | **A Hyper-V Virtual Machine Manager** | **A Hyper-V Virtual Machine Manager nélkül**
 --- | --- | ---
 VMDK | NA | NA
 VHD/VHDX | Igen | Igen

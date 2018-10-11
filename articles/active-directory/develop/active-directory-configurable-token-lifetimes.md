@@ -16,14 +16,15 @@ ms.date: 10/05/2018
 ms.author: celested
 ms.custom: aaddev
 ms.reviewer: hirsin
-ms.openlocfilehash: 292783d3710914af27870b1ae5259b43e284242d
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: 1fa5a2f9d63dfd9af006285beec256395d7ac668
+ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/10/2018
-ms.locfileid: "48904316"
+ms.locfileid: "49069505"
 ---
-# <a name="configurable-token-lifetimes-in-azure-active-directory-public-preview"></a>Az Azure Active Directoryban (nyilvános előzetes verzió) konfigurálható jogkivonatok élettartama
+# <a name="configurable-token-lifetimes-in-azure-active-directory-preview"></a>Az Azure Active Directoryban (előzetes verzió) konfigurálható jogkivonatok élettartama
+
 Az Azure Active Directory (Azure AD) által kiállított jogkivonatok élettartamát is megadhat. Beállíthatja a jogkivonatok élettartamának, a szervezet minden alkalmazás, több-bérlős (több cég) alkalmazás vagy egy adott szolgáltatásnév a szervezetben.
 
 > [!IMPORTANT]
@@ -47,7 +48,7 @@ A frissítési biztonsági jogkivonat, hozzáférési jogkivonatok, munkamenetek
 Az ügyfelek hozzáférési jogkivonatok használatával védett erőforrások eléréséhez. Hozzáférési jogkivonat csak olyan felhasználó, az ügyfél és az erőforrás egyedi kombinációja használható. Hozzáférési jogkivonatok nem vonható vissza, és azok lejáratig érvényesek. Egy rosszindulatú aktor, amely a kapott hozzáférési jogkivonat használhatja azt élettartamuk mértékét. Hozzáférési jogkivonat élettartama módosításával között a rendszer a teljesítmény fokozása és növelése az idő, hogy az ügyfél megőrzi-e a hozzáférést, miután a felhasználói fiók le van tiltva. Továbbfejlesztett rendszer teljesítmény akkor érhető el, hogy hányszor egy friss hozzáférési token beszerzéséhez az ügyfélnek kell csökkentésével.  Az alapértelmezett érték 1 óra – 1 óra elteltével az ügyfelet kell használnia a frissítési jogkivonat (általában csendes) egy új frissítési jogkivonatot beszerezni, és a hozzáférési tokent. 
 
 ### <a name="refresh-tokens"></a>Frissítési jogkivonatok
-Amikor egy ügyfél védett erőforrások eléréséhez hozzáférési jogkivonatot szerez be, az ügyfél is fogad egy frissítési jogkivonatot. A frissítési jogkivonat segítségével a új hozzáférési vagy frissítési jogkivonat párok Ha a jelenlegi hozzáférési jogkivonat lejár. A frissítési jogkivonat felhasználói és az ügyfél kombinációja van kötve. A frissítési jogkivonatok lehet [bármikor visszavont](v1-id-and-access-tokens.md#token-revocation), és a jogkivonat érvényességi be van jelölve, minden alkalommal, amikor a jogkivonat.  
+Amikor egy ügyfél védett erőforrások eléréséhez hozzáférési jogkivonatot szerez be, az ügyfél is fogad egy frissítési jogkivonatot. A frissítési jogkivonat segítségével a új hozzáférési vagy frissítési jogkivonat párok Ha a jelenlegi hozzáférési jogkivonat lejár. A frissítési jogkivonat felhasználói és az ügyfél kombinációja van kötve. A frissítési jogkivonatok lehet [bármikor visszavont](access-tokens.md#token-revocation), és a jogkivonat érvényességi be van jelölve, minden alkalommal, amikor a jogkivonat.  
 
 Fontos, hogy bizalmas ügyfelek és a nyilvános ügyfelek közötti különbséget, ez hatással van, hogy mennyi ideig frissítési biztonsági jogkivonat használható. További információ a különböző típusú ügyfelek: [RFC 6749](https://tools.ietf.org/html/rfc6749#section-2.1).
 

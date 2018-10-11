@@ -8,12 +8,12 @@ ms.component: speech
 ms.topic: article
 ms.date: 05/09/2018
 ms.author: v-jerkin
-ms.openlocfilehash: dd43aff91568ba4bd93f27e88cc63a50b9d8e4bd
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: fea4f762a46963f923ba8f44644df37b29fc77a6
+ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48886436"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49068740"
 ---
 # <a name="speech-service-rest-apis"></a>Beszédszolgáltatás REST API-k
 
@@ -21,7 +21,7 @@ A REST API-k az Azure Cognitive Services beszéd szolgáltatás hasonlóak az AP
 
 ## <a name="speech-to-text"></a>Diktálás
 
-A végpontok a Speech to Text REST API az alábbi táblázatban láthatók. Használja az egyik, amely megfelel az előfizetés régiót. Referencia a **felismerés módok** cserélje le az alábbi szakasz `conversation` mindkettővel `interactive` vagy `dictation` számára a kívánt sceanrio egy adott API-hívással.
+A végpontok a Speech to Text REST API az alábbi táblázatban láthatók. Használja az egyik, amely megfelel az előfizetés régiót. 
 
 [!INCLUDE [](../../../includes/cognitive-services-speech-service-endpoints-speech-to-text.md)]
 
@@ -29,52 +29,6 @@ A végpontok a Speech to Text REST API az alábbi táblázatban láthatók. Hasz
 > Ha testre szabta az akusztikai modell vagy a nyelvi modell, vagy a írásmódja, használja az egyéni végpontra.
 
 Az API-t csak rövid beszédet támogat. Kérelmek legfeljebb 10 másodpercet, hang és tartalmazhat az elmúlt 14 másodperc teljes legfeljebb. A REST API-t csak végső eredményt, nem átmeneti vagy részleges eredményt adja vissza. A beszédfelismerési szolgáltatás is rendelkezik egy [beszédátírási batch](batch-transcription.md) API, amely hosszabb hang is lefényképezze.
-
-### <a name="recognition-modes"></a>Elismerés módok
-
-Használatakor a REST API vagy a WebSocket protokoll közvetlenül kell felismerés módja: `interactive`, `conversation`, vagy `dictation`. A beszédfelismerést mód beszédfelismerés hogyan a felhasználók valószínűleg beszéd alapján állítja be. Válassza ki a megfelelő mód az alkalmazáshoz.
-
-> [!NOTE]
-> Elismerés módok másként lehet a REST protokoll, mint ők a WebSocket protokoll. Például a REST API nem támogatja folyamatos felismerés beszélgetés vagy Diktálás módban is.
-> [!NOTE]
-> Módokban alkalmazandók, ha közvetlenül a REST vagy a WebSocket protokoll használ. A [beszéd SDK](speech-sdk.md) felismerés konfigurációs adja meg a különböző paramétereket használja. További információkért tekintse meg az ügyféloldali kódtár a választott.
-
-A Microsoft beszédfelismerési szolgáltatás minden felismerés mód csak egy felismerés kifejezés eredményét adja vissza. Minden olyan egyetlen utterance (kifejezés), a 15 másodperces időtúllépési korlát van, amikor közvetlenül a REST API vagy a WebSocket protokoll használatával.
-
-#### <a name="interactive-mode"></a>Interaktív mód
-
-A `interactive` mód, a felhasználó rövid kérelmek segítségével, és vár választ egy műveletet az alkalmazás.
-
-Interaktív mód kérelmek jellemzően a a következő jellemzőkkel:
-
-- Felhasználók, hogy a gép és a egy másik emberi beszéd.
-- Alkalmazás felhasználói számára, hogy időben szeretnének tegyük fel, alapján, amit szeretnének tenni az alkalmazást.
-- Beszédmódok általában kapcsolatos legutóbbi 2-3 másodpercet.
-
-#### <a name="conversation-mode"></a>Beszélgetés mód
-
-A `conversation` mód, felhasználók bízott emberi beszélgetésbe.
-
-A következők jellemzően a beszélgetés módhoz készült alkalmazások a következő jellemzőkkel:
-
-- Felhasználók tudják, hogy meghatalmazottjával áll egy másik személynek.
-- A beszédfelismerés növeli az emberi beszélgetések azáltal, hogy legalább az egyik résztvevők a kimondott szöveg.
-- Felhasználók nem mindig tervezi tegyük fel, hogy szeretnének.
-- A felhasználók gyakran a szleng és az egyéb informális speech használhatják.
-
-#### <a name="dictation-mode"></a>Diktálás
-
-A `dictation` mód, felhasználók álmából hosszabb kimondott szöveg az alkalmazás további feldolgozás céljából.
-
-A következők jellemzően a Diktálás módhoz készült alkalmazások a következő jellemzőkkel:
-
-- Felhasználók tudják, hogy meghatalmazottjával áll egy géphez.
-- Felhasználók jelennek meg a speech recognition szöveges eredményt.
-- Felhasználók gyakran megtervezése, amit szeretnének tegyük fel, és a formális nyelvet használja.
-- Felhasználók alkalmaz teljes sentences, amely elmúlt 5 – 8 másodpercben.
-
-> [!NOTE]
-> Diktálás és beszélgetés módban a Microsoft beszédfelismerési szolgáltatás nem ad vissza részleges eredményeket. Ehelyett a szolgáltatás az audio-adatfolyamot csend határokon után állandó kifejezés eredményeket ad vissza. A Microsoft fokozott előfordulhat, hogy ezek folyamatos felismerés módban a felhasználói élmény javítása érdekében a speech protokollt.
 
 
 ### <a name="query-parameters"></a>Lekérdezési paraméterek

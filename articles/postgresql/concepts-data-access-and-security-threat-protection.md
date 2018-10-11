@@ -8,12 +8,12 @@ ms.service: postgresql
 ms.topic: article
 ms.date: 09/20/2018
 ms.author: mbolz
-ms.openlocfilehash: c3242d9c1725d88c7feded01b95bb889dedcc1c7
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 392947919813753dc57422957029e961a037a616
+ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47047567"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49066938"
 ---
 # <a name="azure-database-for-postgresql-advanced-threat-protection"></a>Azure Database for PostgreSQL komplex veszélyforrások elleni védelem
 
@@ -34,8 +34,8 @@ Komplex veszélyforrások elleni védelem az Azure Database for PostgreSQL bizto
 ## <a name="advanced-threat-protection-alerts"></a>A speciális veszélyforrások elleni védelem riasztások 
 Komplex veszélyforrások elleni védelem az Azure Database for PostgreSQL észleli az adatbázisokat elérni vagy kiaknázni a szokatlan és vélhetően kárt okozó kísérleteket jelző rendellenes tevékenységek, és azt is aktiválhatja a következő riasztásokat:
 - **Hozzáférés szokatlan helyről**: Ez a riasztás akkor aktiválódik, ha a módosítják, az Azure Database for PostgreSQL-kiszolgálóhoz, amikor valaki jelentkezett be az Azure database for PostgreSQL-kiszolgálót, egy szokatlan földrajzi a hozzáférési mintájában a hely. Bizonyos esetekben a riasztás jogszerű műveleteket észlel (egy új alkalmazást vagy fejlesztői karbantartást). Más esetekben a riasztás kártékony műveleteket észlel (egy korábbi alkalmazott vagy egy külső támadó részéről).
-- **Hozzáférés szokatlan Azure-beli adat központból**: Ez a riasztás akkor aktiválódik, ha a módosítják, az Azure Database for PostgreSQL-kiszolgálóhoz, amikor valaki jelentkezett be az SQL Server egy szokatlan Azure adatközpontból a látott a hozzáférési mintájában a kiszolgáló a legutóbbi időszakban. Bizonyos esetekben a riasztás jogszerű műveleteket (az Azure-ban, a Power bi-ban, Azure Database for PostgreSQL Lekérdezésszerkesztő új alkalmazás) észlel. Más esetekben a riasztás kártékony műveleteket észlel egy Azure-erőforrás vagy -szolgáltatás felől (egy korábbi alkalmazott vagy egy külső támadó részéről).
-- **Hozzáférés résztvevő részéről**: Ez a riasztás akkor aktiválódik, amikor megváltozik a hozzáférési mintájában, az Azure Database for PostgreSQL-kiszolgálóhoz, amikor valaki jelentkezett be az SQL Server egy szokatlan résztvevő (az Azure Database for PostgreSQL használatával a felhasználó). Bizonyos esetekben a riasztás jogszerű műveleteket észlel (egy új alkalmazást vagy fejlesztői karbantartást). Más esetekben a riasztás kártékony műveleteket észlel (egy korábbi alkalmazott vagy egy külső támadó részéről).
+- **Hozzáférés szokatlan Azure-beli adat központból**: Ez a riasztás akkor aktiválódik, ha a módosítják, az Azure Database for PostgreSQL-kiszolgálóhoz, amikor valaki jelentkezett be a kiszolgálóra egy szokatlan Azure adatközpontból a látott a hozzáférési mintájában a kiszolgáló a legutóbbi időszakban. Bizonyos esetekben a riasztás jogszerű műveleteket (az Azure-ban, a Power bi-ban, Azure Database for PostgreSQL Lekérdezésszerkesztő új alkalmazás) észlel. Más esetekben a riasztás kártékony műveleteket észlel egy Azure-erőforrás vagy -szolgáltatás felől (egy korábbi alkalmazott vagy egy külső támadó részéről).
+- **Hozzáférés résztvevő részéről**: Ez a riasztás akkor aktiválódik, ha a módosítják, az az Azure Database for PostgreSQL-kiszolgálóhoz, amikor valaki jelentkezett be, a használatával egy szokatlan résztvevő (az Azure Database for PostgreSQL-kiszolgáló hozzáférési mintájában a felhasználó). Bizonyos esetekben a riasztás jogszerű műveleteket észlel (egy új alkalmazást vagy fejlesztői karbantartást). Más esetekben a riasztás kártékony műveleteket észlel (egy korábbi alkalmazott vagy egy külső támadó részéről).
 - **Hozzáférés potenciálisan kártékony alkalmazással**: Ez a riasztás akkor aktiválódik, ha valaki egy potenciálisan káros alkalmazást használ az adatbázis eléréséhez. Bizonyos esetekben a riasztás behatolási teszteket észlel működés közben. Más esetekben a riasztás egy gyakori támadóeszközökkel végrehajtott támadást észlel.
 - **Találgatásos Azure Database for PostgreSQL hitelesítő adatok**: Ez a riasztás akkor aktiválódik, ha van egy rendellenes magas a különböző hitelesítő adatok használatával történő sikertelen bejelentkezések száma. Bizonyos esetekben a riasztás behatolási teszteket észlel működés közben. Más esetekben a riasztás egy találgatásos támadást észlel.
 

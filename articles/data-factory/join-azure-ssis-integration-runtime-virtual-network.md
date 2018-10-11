@@ -8,17 +8,17 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/09/2018
+ms.date: 10/10/2018
 author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: e6950c38db83efb57e5f3b1809aa6baa56532cd0
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: cc206e1134fe6df0280512e89447336a32a2d810
+ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/10/2018
-ms.locfileid: "48903045"
+ms.locfileid: "49068364"
 ---
 # <a name="join-an-azure-ssis-integration-runtime-to-a-virtual-network"></a>Egy Azure-SSIS integrációs modul csatlakoztatása virtuális hálózathoz
 Csatlakozás az Azure-SSIS integrációs modulját (IR) az Azure virtual Networkhöz a következő esetekben: 
@@ -70,6 +70,8 @@ A következő szakaszok további részleteket.
 -   Győződjön meg arról, hogy az erőforráscsoport, a virtuális hálózat létrehozása, és bizonyos Azure-hálózati erőforrások törlése. Lásd: [erőforráscsoport követelményei](#resource-group). 
 
 ### <a name="perms"></a> Szükséges engedélyek
+
+Az Azure-SSIS integrációs modul létrehozó felhasználó a következő engedélyekkel kell rendelkeznie:
 
 - Ha az SSIS integrációs modul az Azure virtual Networkhöz a jelenlegi verzió tartományhoz csatlakoztatja, két lehetősége van:
 

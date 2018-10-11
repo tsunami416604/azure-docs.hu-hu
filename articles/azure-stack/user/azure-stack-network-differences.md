@@ -5,17 +5,17 @@ services: azure-stack
 keywords: ''
 author: mattbriggs
 manager: femila
-ms.author: brenduns
 ms.date: 08/02/2018
 ms.topic: article
 ms.service: azure-stack
+ms.author: mabrigg
 ms.reviewer: scottnap
-ms.openlocfilehash: 50fe3c0c7fda745047c71afb8eedf7fa8806c4ec
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: 1863236a51d89dd311cd8aacfcd737faddf21ab0
+ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "42054883"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49079191"
 ---
 # <a name="considerations-for-azure-stack-networking"></a>Azure Stack hálózati szempontjai
 
@@ -40,7 +40,7 @@ Ez a cikk az Azure Stack hálózati és annak szolgáltatásait egyedi szempontj
 |  | Méretezési csoport IP-konfigurációk | Támogatott | Még nem támogatott. |
 |  | Személyes elérési szolgáltatások (alhálózat) | Támogatott | Még nem támogatott. |
 |  | Service Endpoints – szolgáltatásvégpont | Belső (nem Internet) kapcsolatot Azure-szolgáltatások esetében támogatott. | Még nem támogatott. |
-| Kizárólag az IPv4 használata támogatott. | Szolgáltatásvégpont-szabályzat | Támogatott | Még nem támogatott. |
+| Kizárólag az IPv4 használata támogatott. | Szolgáltatásvégpont-szabályzatok | Támogatott | Még nem támogatott. |
 |  | Szolgáltatás-alagút | Támogatott | Még nem támogatott.  |
 | Network Security Groups (Hálózati biztonsági csoportok) | Kibővített biztonsági szabályok | Támogatott | Még nem támogatott. |
 |  | Érvényes biztonsági szabályok | Támogatott | Még nem támogatott. |

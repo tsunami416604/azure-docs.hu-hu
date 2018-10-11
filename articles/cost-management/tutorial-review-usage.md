@@ -1,28 +1,32 @@
 ---
-title: Oktatóanyag - A használat és a költségek áttekintése az Azure Cost Managementben | Microsoft Docs
+title: Oktatóanyag - A használat és a költségek áttekintése az Cloudynnel az Azure-ban | Microsoft Docs
 description: Ebben az oktatóanyagban a használat és a költségek áttekintésével nyomon követheti a trendeket, észlelheti a hatékonysági hiányosságokat, és riasztásokat állíthat be.
 services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 06/07/2018
+ms.date: 09/18/2018
 ms.topic: tutorial
 ms.service: cost-management
 ms.custom: ''
 manager: dougeby
-ms.openlocfilehash: 5505ec8dd25e5468fad81d4eb26980202425969a
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 72eaa6f085581f34b696a946e2168eceaa21a849
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/04/2018
-ms.locfileid: "35628125"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46987713"
 ---
 <!-- Intent: As a cloud-consuming user, I need to view usage and costs for my cloud resources and services.
 -->
 
 # <a name="tutorial-review-usage-and-costs"></a>Oktatóanyag: A használat és a költségek áttekintése
 
-Az Azure Cost Managementben megtekintheti a használati mutatókat és a költségeket, így nyomon követheti a trendeket, észlelheti a hatékonysági hiányosságokat, valamint riasztásokat állíthat be. Minden használati és költségadat megjelenik a Cloudyn irányítópultjain és jelentéseiben. Az oktatóanyagban szereplő példák bemutatják, hogyan tekintheti át a használatot és a költségeket az irányítópultok és jelentések segítségével. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+A Cloudynnel megtekintheti a használati mutatókat és a költségeket, így nyomon követheti a trendeket, észlelheti a hatékonysági hiányosságokat, valamint riasztásokat állíthat be. Minden használati és költségadat megjelenik a Cloudyn irányítópultjain és jelentéseiben. Az oktatóanyagban szereplő példák bemutatják, hogyan tekintheti át a használatot és a költségeket az irányítópultok és jelentések segítségével.
+
+Az Azure Cost Management hasonló funkciókat kínál, mint a Cloudyn. Az Azure Cost Management egy natív Azure-beli költségkezelési megoldás. Segítségével elemezheti a költségeket, létrehozhatja és kezelheti a költségvetéseket, exportálhatja az adatokat, valamint áttekintheti és végrehajthatja az optimalizálási javaslatokat, hogy pénzt takarítson meg. További információ: [Azure Cost Management](overview-cost-mgt.md).
+
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * Használati és költségtrendek követése
@@ -35,7 +39,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 ## <a name="prerequisites"></a>Előfeltételek
 
 - Rendelkeznie kell egy Azure-fiókkal.
-- Rendelkeznie kell az Azure Cost Management próbaverziójával vagy fizetett előfizetésével.
+- Rendelkeznie kell a Cloudyn próbaverziójával vagy fizetett előfizetésével.
 
 ## <a name="open-the-cloudyn-portal"></a>A Cloudyn portál megnyitása
 
@@ -59,7 +63,7 @@ Az előző példában 2017. augusztus 31-től kezdve a korábbinál kevesebb kia
 
 A példában jól látható, hogy az Azure Storage költségei 2017. augusztus 31-ével alacsonyabbak lettek, miközben a többi Azure-szolgáltatással kapcsolatos kiadások változatlanok maradtak. Mi okozta vajon a kiadások csökkenését? A példánkban az történt, hogy néhány alkalmazott szabadságon volt a kérdéses időszakban, és nem használta a Storage szolgáltatást.
 
-A használati és költségtrendek követéséről szóló oktatóvideóért tekintse meg a [felhőszámlázási adatok időalapú elemzését az Azure Cost Managementben](https://youtu.be/7LsVPHglM0g).
+A használati és költségtrendek követéséről szóló oktatóvideóért tekintse meg a [felhőszámlázási adatok időalapú elemzését](https://youtu.be/7LsVPHglM0g).
 
 ## <a name="detect-usage-inefficiencies"></a>A használat hatékonysági hiányosságainak észlelése
 
@@ -83,7 +87,7 @@ A virtuálisgép-példányok azonosítóit a **List of Candidates** (Jelöltek l
 
 ![Jelöltek listája](./media/tutorial-review-usage/sizing03.png)
 
-A használattal kapcsolatos hatékonysági hiányosságok felderítéséről szóló oktatóvideóért tekintse meg a [virtuális gépek méretének optimalizálását az Azure Cost Managementben](https://youtu.be/1xaZBNmV704).
+A használattal kapcsolatos hatékonysági hiányosságok felderítéséről szóló oktatóvideóért tekintse meg a [virtuális gépek méretének optimalizálását a Cloudynben](https://youtu.be/1xaZBNmV704).
 
 ## <a name="create-alerts-for-unusual-spending"></a>Szokatlan kiadásokra figyelmeztető riasztások létrehozása
 

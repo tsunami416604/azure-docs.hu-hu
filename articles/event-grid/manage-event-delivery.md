@@ -5,14 +5,14 @@ services: event-grid
 author: tfitzmac
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 09/13/2018
+ms.date: 10/10/2018
 ms.author: tomfitz
-ms.openlocfilehash: 5db53567b1df9e726fb0c507f0302536ea45b7f4
-ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
+ms.openlocfilehash: fcf3ecaff6e8ba1421496a96d01428946cf8ab8e
+ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45603770"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49077782"
 ---
 # <a name="dead-letter-and-retry-policies"></a>Kézbesítetlen levelek és újrapróbálkozási szabályzatok
 
@@ -48,7 +48,7 @@ Kikapcsolja a kézbesítetlen levelek kezelése, futtassa újra a parancsot az e
 
 Event Grid-előfizetés létrehozásakor beállíthatja mennyi ideig kell próbálja az Event Grid, hogy az esemény értékeit. Alapértelmezés szerint az Event Grid kísérletek 24 óra (1440 perc), és legfeljebb 30 alkalommal próbálkozik. Ezek az értékek valamelyike beállíthatja az event grid-előfizetés számára. A time-to-live event értékét 1-től 1440 egész szám lehet. Kézbesítések maximális kísérletek értéke 30 1 közötti egész számnak kell lennie.
 
-Nem lehet konfigurálni a [újrapróbálkozási időköz](delivery-and-retry.md#retry-intervals-and-duration).
+Nem lehet konfigurálni a [újrapróbálkozási ütemezés](delivery-and-retry.md#retry-schedule-and-duration).
 
 Az esemény time-to-live 1440 perc értéktől létrehozásához használja:
 

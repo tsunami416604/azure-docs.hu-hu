@@ -8,12 +8,12 @@ ms.service: mysql
 ms.topic: article
 ms.date: 09/20/2018
 ms.author: mbolz
-ms.openlocfilehash: 21fd686854782826439b807ca57ba773e80c3a22
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: e123acd09e4cbfdbaf0531db72598dbd478fa1c9
+ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47047524"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49069386"
 ---
 # <a name="azure-database-for-mysql-advanced-threat-protection"></a>Azure Database for MySQL komplex veszélyforrások elleni védelem
 
@@ -34,8 +34,8 @@ Komplex veszélyforrások elleni védelem az Azure Database for MySQL biztonság
 ## <a name="advanced-threat-protection-alerts"></a>A speciális veszélyforrások elleni védelem riasztások 
 Komplex veszélyforrások elleni védelem az Azure Database for MySQL észleli az adatbázisokat elérni vagy kiaknázni a szokatlan és vélhetően kárt okozó kísérleteket jelző rendellenes tevékenységek, és azt is aktiválhatja a következő riasztásokat:
 - **Hozzáférés szokatlan helyről**: Ez a riasztás akkor aktiválódik, ha a az Azure Database for MySQL-kiszolgálóhoz, amikor valaki jelentkezett be az Azure database for MySQL-kiszolgáló egy szokatlan földrajzi helyről a hozzáférési mintájában változik. Bizonyos esetekben a riasztás jogszerű műveleteket észlel (egy új alkalmazást vagy fejlesztői karbantartást). Más esetekben a riasztás kártékony műveleteket észlel (egy korábbi alkalmazott vagy egy külső támadó részéről).
-- **Hozzáférés szokatlan Azure-beli adat központból**: Ez a riasztás akkor aktiválódik, ha a módosítják, az Azure Database for MySQL-kiszolgálóhoz, amikor valaki jelentkezett be az SQL Server egy szokatlan Azure-beli adat központból ezen a kiszolgálón is látható volt a hozzáférési mintájában a legutóbbi időszakban. Bizonyos esetekben a riasztás jogszerű műveleteket (az Azure-ban, a Power bi-ban, Azure Database for MySQL Lekérdezésszerkesztő új alkalmazás) észlel. Más esetekben a riasztás kártékony műveleteket észlel egy Azure-erőforrás vagy -szolgáltatás felől (egy korábbi alkalmazott vagy egy külső támadó részéről).
-- **Hozzáférés résztvevő részéről**: Ez a riasztás akkor aktiválódik, ha a változás a hozzáférési mintájában, az Azure Database for MySQL-kiszolgálóhoz, amikor valaki jelentkezett be az SQL Server egy szokatlan résztvevő (, Azure Database for MySQL-felhasználó) használatával történik. Bizonyos esetekben a riasztás jogszerű műveleteket észlel (egy új alkalmazást vagy fejlesztői karbantartást). Más esetekben a riasztás kártékony műveleteket észlel (egy korábbi alkalmazott vagy egy külső támadó részéről).
+- **Hozzáférés szokatlan Azure-beli adat központból**: Ez a riasztás akkor aktiválódik, ha a módosítják, az Azure Database for MySQL-kiszolgálóhoz, amikor valaki jelentkezett be a kiszolgálóra egy szokatlan Azure-beli adat központból ezen a kiszolgálón is látható volt a hozzáférési mintájában a legutóbbi időszakban. Bizonyos esetekben a riasztás jogszerű műveleteket (az Azure-ban, a Power bi-ban, Azure Database for MySQL Lekérdezésszerkesztő új alkalmazás) észlel. Más esetekben a riasztás kártékony műveleteket észlel egy Azure-erőforrás vagy -szolgáltatás felől (egy korábbi alkalmazott vagy egy külső támadó részéről).
+- **Hozzáférés résztvevő részéről**: Ez a riasztás akkor aktiválódik, ha a változás a hozzáférési mintájában, az Azure Database for MySQL-kiszolgálóhoz, amikor valaki jelentkezett be a kiszolgálóra egy szokatlan résztvevő (, Azure Database for MySQL-felhasználó) használatával történik. Bizonyos esetekben a riasztás jogszerű műveleteket észlel (egy új alkalmazást vagy fejlesztői karbantartást). Más esetekben a riasztás kártékony műveleteket észlel (egy korábbi alkalmazott vagy egy külső támadó részéről).
 - **Hozzáférés potenciálisan kártékony alkalmazással**: Ez a riasztás akkor aktiválódik, ha valaki egy potenciálisan káros alkalmazást használ az adatbázis eléréséhez. Bizonyos esetekben a riasztás behatolási teszteket észlel működés közben. Más esetekben a riasztás egy gyakori támadóeszközökkel végrehajtott támadást észlel.
 - **Találgatásos Azure Database for MySQL hitelesítő adatok**: Ez a riasztás akkor aktiválódik, ha van egy rendellenes magas a különböző hitelesítő adatok használatával történő sikertelen bejelentkezések száma. Bizonyos esetekben a riasztás behatolási teszteket észlel működés közben. Más esetekben a riasztás egy találgatásos támadást észlel.
 
