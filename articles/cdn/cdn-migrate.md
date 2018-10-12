@@ -1,10 +1,10 @@
 ---
-title: Az Azure CDN-profil át Verizon Standard Verizon Premium |} Microsoft Docs
-description: Ismerje meg a profil áttelepítése Verizon Standard Verizon Premium részleteit.
+title: Standard – Verizon Azure CDN-profil át Verizon Premium |} A Microsoft Docs
+description: Ismerje meg a profil áttelepítés Standard – Verizon a Verizon prémium szintű részleteit.
 services: cdn
 documentationcenter: ''
-author: dksimpson
-manager: cfowler
+author: mdgattuso
+manager: danielgi
 editor: ''
 ms.assetid: ''
 ms.service: cdn
@@ -13,42 +13,42 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/21/2018
-ms.author: v-deasim
+ms.author: magattus
 ms.custom: ''
-ms.openlocfilehash: 074dbb094e7ae2cd1f1719016928bd7348da3949
-ms.sourcegitcommit: 0408c7d1b6dd7ffd376a2241936167cc95cfe10f
+ms.openlocfilehash: 7768dde424aedc295b53512db50c9dfc9db9ab8c
+ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/26/2018
-ms.locfileid: "36958054"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49091470"
 ---
-# <a name="migrate-an-azure-cdn-profile-from-standard-verizon-to-premium-verizon"></a>Az Azure CDN-profil át Standard Verizon Premium Verizon
+# <a name="migrate-an-azure-cdn-profile-from-standard-verizon-to-premium-verizon"></a>Standard – Verizon Azure CDN-profil át prémium – Verizon
 
-A végpontok kezelése az Azure Content Delivery Network (CDN) profil létrehozásakor az Azure CDN választhat négy különböző termékek kínál. A különböző termékek és azok elérhető funkciókkal kapcsolatos információkért lásd: [összehasonlítása Azure CDN termék funkcióiról](cdn-features.md).
+Amikor létrehoz egy Azure Content Delivery Network (CDN) profilt a végpontok kezeléséhez, az Azure CDN kínál négy különböző termékekhez tartozó közül választhat. A különböző termékek és az elérhető funkciókkal kapcsolatos további információkért lásd: [hasonlítsa össze az Azure CDN termékszolgáltatásai](cdn-features.md).
 
-Ha már létre egy **Azure CDN Standard verizon** profilhoz, és azt használja a CDN-végpontokat kezelheti a lehetőséggel frissítheti úgy, hogy rendelkezik egy **verizon Azure CDN Premium** profil. Amikor frissít, a CDN-végpontokat és az összes adat megmarad. 
+Ha már létrehozott egy **Azure CDN Standard a Verizontól** profilját, és kezelheti a CDN-végpontokat, használja azt, hogy a frissítési lehetőség van egy **verizon Azure CDN Premium** profil. Amikor frissít, a CDN-végpontokat, és az adatok megmaradnak. 
 
 > [!IMPORTANT]
-> Miután végzett korábban is egy **verizon Azure CDN Premium** profil, már nem később módosíthatja vissza egy **Azure CDN Standard verizon** profil.
+> Miután már frissített egy **verizon Azure CDN Premium** profil, akkor nem később alakíthatja vissza a egy **Azure CDN Standard a Verizontól** profil.
 > 
 
-Frissítése az **Azure CDN Standard verizon** profil, kapcsolattartási [Microsoft Support](https://azure.microsoft.com/support/options/).
+Frissítése az **Azure CDN Standard verizon** profil, a kapcsolattartási [Support](https://azure.microsoft.com/support/options/).
 
 ## <a name="profile-comparison"></a>Profil összehasonlítása
-**Verizon Azure CDN Premium** profilok rendelkezik a következő kulcs különbségeket **Azure CDN Standard verizon** profilokat:
-- Az egyes Azure CDN szolgáltatások, például a [tömörítés](cdn-improve-performance.md), [szabályok gyorsítótárazás](cdn-caching-rules.md), és [földrajzi szűrés](cdn-restrict-access-by-country.md), nem használhatja az Azure CDN felület, a Verizon portálon keresztül kell használnia a **Kezelése** gombra.
-- Alkalmazásprogramozási felületek: Eltérően a Standard Verizon, nem használhatja az API-t ezek a Funkciók, amelyek a Premium Verizon portálról érhetők el. Az API segítségével azonban más közös a Funkciók, például egy végpont létrehozása/törlése, gyorsítótárazott eszközök kiürítése/betöltése, és az egyéni tartománynév engedélyezése vagy tiltása.
-- Árképzési: Premium Verizon adatátviteli mint Standard Verizon rendelkezik különböző árképzési struktúra. További információkért lásd: [Content Delivery Network árképzési](https://azure.microsoft.com/pricing/details/cdn/).
+**Az Azure CDN Premiumhoz a Verizontól** profilok a következő különbségeket kell **Azure CDN Standard verizon** profilok:
+- Az egyes Azure CDN szolgáltatások, például a [tömörítési](cdn-improve-performance.md), [gyorsítótár-szabályokkal](cdn-caching-rules.md), és [geoszűrési](cdn-restrict-access-by-country.md), nem használhatja az Azure CDN-felület, a Verizon portálon keresztül kell használnia a **Kezelés** gombra.
+- API: Eltérően Standard – Verizon, az nem az API-t használhatja ezeket a Premium Verizon portálról elért szolgáltatások. Az API segítségével azonban más közös szolgáltatások, például a végpont létrehozása/törlése, a gyorsítótárazott eszközök végleges törlése, betöltése és a egy egyéni tartomány engedélyezése vagy letiltása.
+- Díjszabás: Prémium – Verizon adatforgalmi, mint a Standard – Verizon van egy másik árképzési struktúráját. További információkért lásd: [Content Delivery Network díjszabása](https://azure.microsoft.com/pricing/details/cdn/).
 
-**Verizon Azure CDN Premium** profilok az alábbi további funkciókkal rendelkeznek:
-- [Jogkivonat hitelesítési](cdn-token-auth.md): lehetővé teszi a felhasználóknak, hogy megszerezze és használja a jogkivonatot beolvasni a biztonságos erőforrások.
+**Az Azure CDN Premiumhoz a Verizontól** profilok a következő további szolgáltatások rendelkezik:
+- [Jogkivonat-hitelesítés](cdn-token-auth.md): lehetővé teszi a felhasználóknak le és használható jogkivonatot beolvasni a biztonságos erőforrásokhoz.
 - [Szabálymotor](cdn-rules-engine.md): segítségével testre szabhatja a HTTP-kérések kezelésének módja.
-- Bővített analitikát eszközök:
-   - [Részletes HTTP elemzés](cdn-advanced-http-reports.md)
-   - [Peremhálózati teljesítmény elemzés](cdn-edge-performance.md)
-   - [Valós idejű elemzési](cdn-real-time-alerts.md)
+- Fejlett analitikai eszközöket:
+   - [Részletes HTTP-elemzés](cdn-advanced-http-reports.md)
+   - [Peremhálózati Teljesítményelemzés](cdn-edge-performance.md)
+   - [Valós idejű elemzés](cdn-real-time-alerts.md)
 
 
 ## <a name="next-steps"></a>További lépések
-A szabályok motor kapcsolatos további információkért lásd: [Azure CDN szabályok motor hivatkozás](cdn-rules-engine-reference.md).
+A rules engine kapcsolatos további információkért lásd: [Azure CDN szabálymotor-referencia](cdn-rules-engine-reference.md).
 
