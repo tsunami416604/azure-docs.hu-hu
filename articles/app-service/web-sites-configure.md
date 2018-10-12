@@ -1,6 +1,6 @@
 ---
 title: Webalkalmazások konfigurálása az Azure App Service-ben
-description: A webes alkalmazás beállítása az Azure App Service szolgáltatások
+description: Webalkalmazás konfigurálása az Azure App Servicesben
 services: app-service\web
 documentationcenter: ''
 author: cephalin
@@ -14,150 +14,151 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/25/2017
 ms.author: cephalin
-ms.openlocfilehash: 84bd2019e9586fa008560dba07119323ecb7f02e
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ms.openlocfilehash: cf3a6fe24082a10db6a5b1267b70435d9e36b720
+ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36293716"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49115522"
 ---
 # <a name="configure-web-apps-in-azure-app-service"></a>Webalkalmazások konfigurálása az Azure App Service-ben
 
-Ez a témakör ismerteti, hogyan konfigurálhatja a web app használatával a [Azure Portal].
+Ez a témakör azt ismerteti, hogyan konfigurálhatja a webalkalmazás a [Azure Portal].
 
 [!INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
 
 ## <a name="application-settings"></a>Alkalmazásbeállítások
-1. Az a [Azure Portal], nyissa meg a webalkalmazás a panelt.
+1. Az a [Azure Portal], a webalkalmazáshoz tartozó panel megnyitásához.
 3. Válassza az **Alkalmazásbeállítások** elemet.
 
 ![Alkalmazásbeállítások][configure01]
 
-A **Alkalmazásbeállítások** panel több kategóriák szerint csoportosítva beállításokkal rendelkezik.
+A **Alkalmazásbeállítások** panel alatt különböző kategóriákba vannak csoportosítva beállításokkal rendelkezik.
 
 ### <a name="general-settings"></a>Általános beállítások
-**Keretrendszer-verziók**. Állítsa be ezeket a beállításokat, ha az alkalmazás használja, minden ezen keretrendszerek: 
+**Keretrendszer-verziókat**. Állítsa be ezeket a beállításokat, ha az alkalmazás használja, minden ezek a keretrendszerek: 
 
-* **.NET-keretrendszer**: állítsa be a .NET-keretrendszer verziója. 
-* **A PHP**: állítsa be a PHP verzióját vagy **OFF** PHP letiltása. 
-* **Java**: válassza ki a Java verzióját vagy **OFF** Java letiltása. Használja a **webes tároló** lehetőséget választhat a Tomcat- és Jetty-verziót.
-* **Python**: Jelölje ki a Python-verziót, vagy **OFF** Python letiltása.
+* **.NET-keretrendszer**: állítsa be a .NET-keretrendszer verzióját. 
+* **A PHP**: állítsa be a PHP-verzió vagy **OFF** PHP letiltása. 
+* **Java**: válassza ki a Java-verzió vagy **OFF** Java letiltásához. Használja a **webes tároló** választhat a Tomcat és a Jetty-verziót.
+* **Python**: jelölje be a Python-verzió vagy **OFF** Python letiltása.
 
-Technikai okokból Java az alkalmazás engedélyezése letiltja a .NET, PHP és Python beállításokat.
+Technikai okokból Java engedélyezése az alkalmazás letiltja a .NET, PHP és Python-beállításokat.
 
 <a name="platform"></a>
-**Platform**. Választja ki, hogy a webalkalmazás fut, 32 bites vagy 64 bites környezetben. A 64 bites környezetben csak az alapszintű vagy Standard használható. Ingyenes, és a közös réteg mindig 32-bit-es környezetben fusson.
+**Platform**. Választja ki, hogy a webalkalmazás fut egy 32 bites vagy 64-bit-es környezetben. A 64 bites környezet alapszintű vagy Standard csomag szükséges. Az ingyenes és közös szint mindig 32-bit-es környezetben futnak.
 
 [!INCLUDE [app-service-dev-test-note](../../includes/app-service-dev-test-note.md)]
 
-**Webes szoftvercsatornák**. Állítsa be **ON** ahhoz, hogy a WebSocket protokoll; például, ha a webes alkalmazás használ [ASP.NET SignalR] vagy [socket.io](https://socket.io/).
+**Webes szoftvercsatornák**. Állítsa be **ON** a WebSocket protokoll; például, ha a webalkalmazás használ [Az ASP.NET SignalR] vagy [a Socket.IO kódtár](https://socket.io/).
 
 <a name="alwayson"></a>
-**Always On**. Alapértelmezés szerint a webalkalmazások a memóriából, ha bizonyos ideig inaktív. Ez lehetővé teszi, hogy a rendszer, ezért az erőforrások megőrzése. Basic vagy Standard módban, ahol engedélyezheti **mindig a** az alkalmazás mindig betöltve a folyamatosan. Ha az alkalmazás fut a folyamatos webjobs-feladatok webjobs-feladatok futtatása indított CRON-kifejezés használatával, vagy engedélyezze **mindig a**, vagy a webes feladatok nem futtatható megbízhatóan.
+**Always On**. Alapértelmezés szerint a webalkalmazások távolítva a memóriából, ha bizonyos ideig inaktív legyenek. Ez lehetővé teszi, hogy a rendszer erőforrások megőrzése. Alap vagy Standard módban engedélyezheti **Always On** , hogy az alkalmazás betöltése a folyamatosan. Ha az alkalmazás fut a folyamatos webjobs-feladatok vagy futtatása webjobs-feladatok által aktivált egy CRON-kifejezés használatával, akkor engedélyezze a **Always On**, vagy a webjobs-feladatok futása nem megbízható.
 
-**Felügyelt folyamatkezelési verzió**. Beállítja az IIS [folyamatkezelési mód]. Ne módosítsa integrált (alapértelmezett) kivéve, ha egy örökölt alkalmazás, amely az IIS egy régebbi verziója szükséges.
+**Kezelt Folyamatverzió**. Beállítja az IIS [folyamatkezelési mód]. Hagyja meg a set integrált (alapértelmezett), kivéve, ha egy örökölt alkalmazás, amely az IIS egy régebbi verziója szükséges.
 
-**HTTP-verzió**. Beállítása **2.0** támogatásának engedélyezése [HTTPS/2](https://wikipedia.org/wiki/HTTP/2) protokoll. 
+**HTTP-verzió**. Állítsa be **2.0** támogatásának engedélyezéséhez [HTTPS/2](https://wikipedia.org/wiki/HTTP/2) protokollt. 
 
 > [!NOTE]
-> A modern böngészők támogatja a HTTP/2 protokoll TLS feletti csak, amíg nem titkosított forgalom továbbra is használja a HTTP/1.1. Győződjön meg arról, hogy az ügyfél böngészők csatlakozzon az alkalmazás a HTTP/2, vagy [egy App Service-tanúsítvány vásárlása](web-sites-purchase-ssl-web-site.md) az alkalmazás egyéni tartomány vagy [egy harmadik féltől származó tanúsítvány kötése](app-service-web-tutorial-custom-ssl.md).
+> Legtöbb modern böngésző támogatja a HTTP/2 protokoll TLS protokollon keresztüli csak, miközben továbbra is használja a HTTP/1.1-es nem titkosított forgalmat. Győződjön meg arról, hogy az ügyfél böngészők csatlakoznia kell a HTTP/2, alkalmazások vagy [egy App Service-tanúsítvány vásárlása](web-sites-purchase-ssl-web-site.md) az alkalmazás egyéni tartomány vagy [harmadik féltől származó tanúsítvány kötése](app-service-web-tutorial-custom-ssl.md).
 
-**Az ARR affinitás**. Alkalmazáson belüli, amely van méretezhető több Virtuálisgép-példányok, ARR affinitási cookie-k garantálja, hogy az ügyfél irányítása ugyanazon a munkamenet során. Állapot nélküli alkalmazások teljesítményének javítása érdekében a választógombot bejelölve **ki**.   
+**Az ARR-affinitás**. Az alkalmazás, amely horizontálisan a Virtuálisgép-példányok, az ARR-affinitás cookie-k biztosítása, hogy az ügyfél lesz irányítva a munkamenet élettartamára ugyanezen példányában. Állapot nélküli alkalmazások teljesítményének javítása érdekében ehhez a beállításhoz **ki**.   
 
-**Az automatikus felcserélés**. Ha engedélyezte az automatikus felcserélés egy üzembe helyezési tárhelyet, App Service lesz automatikusan felcserélni a webalkalmazás éles környezetben ha egy frissítés leküldése a tárolóhely. További információkért lásd: [központi telepítése az átmeneti üzembe helyezési ponti az Azure App Service web Apps](web-sites-staged-publishing.md).
+**Automatikus felcserélés**. Ha engedélyezi az automatikus felcserélés egy üzembe helyezési ponthoz, az App Service lesz automatikusan felcserélni a webalkalmazás éles környezetben amikor leküld egy frissítést, hogy a tárolóhely. További információkért lásd: [üzembe helyezés előkészítési ponton az Azure App Service web Apps](web-sites-staged-publishing.md).
 
 ### <a name="debugging"></a>Hibakeresés
-**Távoli hibakeresés**. Távoli hibakeresésének engedélyezése. Ha engedélyezve van, használhatja a távoli hibakereső a Visual Studio közvetlenül kapcsolódni a webes alkalmazást. Távoli hibakeresés továbbra is engedélyezett marad 48 órán keresztül. 
+**Távoli hibakeresés**. Lehetővé teszi a távoli hibakeresésről. Ha engedélyezve van, használhatja a távoli hibakeresőt a Visual Studióban közvetlenül kapcsolódni a webalkalmazás. Távoli hibakeresés továbbra is engedélyezett marad 48 órán át. 
 
 ### <a name="app-settings"></a>Alkalmazásbeállítások
-Ez a szakasz olyan név/érték párok, amelyek a webalkalmazás a kezdőlapon tölti fel. 
+Ebben a szakaszban be a webalkalmazás betölti a Start menüben név-érték párokat tartalmaz. 
 
-* .NET-alkalmazások esetén ezek a beállítások vannak be a nézetmodellbe, a .NET-konfiguráció `AppSettings` futásidőben, felülírva a meglévő beállításokat. 
-* A PHP, Python, Java és csomópont alkalmazások férhetnek hozzá ezeket a beállításokat a környezeti változók futásidőben. Minden egyes alkalmazás-beállítás két környezeti változók jönnek létre; egy alkalmazás beállítási bejegyzésre, és egy másik APPSETTING_ előtaggal rendelkező által a megadott néven. Is tartalmaznak ugyanarra az értékre.
+* A .NET-alkalmazások esetén ezek a beállítások elhelyezte a .NET-konfiguráció `AppSettings` futásidőben, felülírva a meglévő beállításokat. 
+* Az App Service Linux vagy a Web App for Containers, ha a beágyazott json struktúra neve például `ApplicationInsights:InstrumentationKey` rendelkeznie kell `ApplicationInsights__InstrumentationKey` kulcs neveként. Ezért figyelje meg, hogy bármely `:` kell helyettesíteni `__` (azaz dupla aláhúzásjelet lehet).
+* A PHP, Python, Java és csomópont alkalmazásai is elérhetik ezeket a beállításokat a környezeti változók futásidőben. Az egyes alkalmazás-beállításoknál két környezeti változó jön létre; az egyik az alkalmazás beállítás-bejegyzést, és egy másik APPSETTING_ előtaggal rendelkező által megadott névvel. Mindkettő ugyanazt az értéket tartalmazza.
 
-Alkalmazásbeállítások mindig titkosíthatók tárolt (titkosított nyugalmi).
+Alkalmazásbeállítások mindig titkosított tárolt (titkosított inaktív).
 
 ### <a name="connection-strings"></a>Kapcsolati sztringek
-Kapcsolati karakterláncok kapcsolt erőforrásokban. 
+Kapcsolati karakterláncok társított erőforrások. 
 
-.NET-alkalmazások esetén a kapcsolati karakterláncok vannak be a nézetmodellbe, a .NET-konfiguráció `connectionStrings` beállításokat futásidőben, felülírva a meglévő bejegyzéseket, ahol a kulcs értéke a hivatkozott adatbázis neve. 
+A .NET-alkalmazások esetén ezek a kapcsolati karakterláncok elhelyezte a .NET-konfiguráció `connectionStrings` beállításokat futásidőben, felülírva a meglévő bejegyzést, ahol a kulcs megegyezik-e a társított adatbázis neve. 
 
-A PHP, Python, Java és csomópont alkalmazások ezek a beállítások használhatók környezeti változók futásidőben, a kapcsolat típusa előtagként. A környezeti változó előtagok a következők: 
+A PHP, Python, Java és a Node-alkalmazások ezeket a beállításokat futásidőben, a kapcsolat típusa előtaggal környezeti változókként érhetők el lesz. A környezeti változó előtagok a következők: 
 
-* SQL Server: `SQLCONNSTR_`
+* SQL-kiszolgáló: `SQLCONNSTR_`
 * MySQL: `MYSQLCONNSTR_`
 * SQL-adatbázis: `SQLAZURECONNSTR_`
 * Egyéni: `CUSTOMCONNSTR_`
 
-Például, ha a MySql-kapcsolati karakterlánc lett nevű `connectionstring1`, akkor elérhetőek a környezeti változó `MYSQLCONNSTR_connectionString1`.
+Például, ha egy MySql-kapcsolati karakterlánc lett nevű `connectionstring1`, azt szeretné, a környezeti változó keresztül érhetők el `MYSQLCONNSTR_connectionString1`.
 
-Kapcsolati karakterláncok mindig titkosíthatók tárolt (titkosított nyugalmi).
+Kapcsolati karakterláncok mindig titkosított tárolt (titkosított inaktív).
 
 ### <a name="default-documents"></a>Alapértelmezett dokumentumok
-Az alapértelmezett dokumentum egy a weblap, akkor jelenik meg, a webhely a gyökér URL-címen.  A listán szereplő első egyező fájlok szolgál. 
+Az alapértelmezett dokumentum a weblap, amelyen egy webhely gyökérszintű URL-címen jelenik meg.  A lista első egyeztetési fájlt használja. 
 
-Webalkalmazások használhatja a modulok, hogy útvonal URL-címe alapján. ahelyett, hogy nincs alapértelmezett dokumentum ilyen szolgáltató statikus tartalmat, ebben az esetben nincs.    
+Web apps modulokkal, hogy útvonal URL-cím alapján. ahelyett, hogy szolgáltató statikus tartalmat, ebben az esetben nincs ilyen nincs alapértelmezett dokumentum használhatnak.    
 
 ### <a name="handler-mappings"></a>Leírók leképezése
-Ez a terület segítségével egyéni parancsfájl processzorok, a tanúsítványigénylések meghatározott fájlnév-kiterjesztések hozzáadása. 
+Ez a terület használatával adja hozzá az egyéni szkriptek processzorok az adott kérések kezelésére. 
 
 * **Bővítmény**. A fájl kiterjesztése például *.php vagy handler.fcgi kezelni. 
-* **Parancsfájl-feldolgozó elérési útja**. A parancsprogram-feldolgozó abszolút elérési utat. A parancsprogram-feldolgozó által a fájlokat, amelyek megfelelnek a fájlnévkiterjesztés kérelmek dolgoz fel. Az elérési utat használja `D:\home\site\wwwroot` utal, hogy az alkalmazás gyökérkönyvtárában.
+* **Processzor elérési útja parancsfájl**. A parancsprogram-feldolgozó abszolút elérési útja. A parancsprogram-feldolgozó fogja feldolgozni, fájlok, amelyek megfelelnek a fájlkiterjesztés kérelmeket. Az elérési utat használja `D:\home\site\wwwroot` , tekintse meg az alkalmazás gyökérkönyvtárában.
 * **További argumentumok**. Parancssori argumentumokat használni a parancsprogram-feldolgozó 
 
 ### <a name="virtual-applications-and-directories"></a>Virtuális alkalmazások és könyvtárak
-Konfigurálja a virtuális alkalmazások és könyvtárak, adja meg az egyes virtuális könyvtárakat és az annak megfelelő fizikai elérési út a webhely gyökeréhez viszonyítva. Ha, akkor jelölje be a **alkalmazás** jelölőnégyzetet, hogy egy alkalmazás egy virtuális könyvtárat.
+Konfigurálja a virtuális alkalmazások és könyvtárak, adja meg minden egyes virtuális könyvtár és az annak megfelelő fizikai elérési út a webhely gyökeréhez viszonyítva. Másik lehetőségként kiválaszthatja a **alkalmazás** jelölőnégyzetet, hogy egy alkalmazás egy virtuális könyvtárat.
 
 ## <a name="enabling-diagnostic-logs"></a>Diagnosztikai naplók engedélyezése
 Diagnosztikai naplók engedélyezése:
 
-1. A webalkalmazás panelen kattintson **összes beállítás**.
-2. Kattintson a **diagnosztikai naplók**. 
+1. A webalkalmazás panelén kattintson **minden beállítás**.
+2. Kattintson a **Diagnosztikai naplók** elemre. 
 
 Diagnosztikai naplók írása egy webalkalmazás, amely támogatja a naplózási beállítások: 
 
-* **Alkalmazásnaplózás**. A fájlrendszer alkalmazásnaplók ír. A naplózás 12 óra ideig tart. 
+* **Alkalmazásnaplózás**. A fájlrendszer a naplófájlba írja az alkalmazásnaplókat. A naplózás 12 órán át aktiválást. 
 
-**Szint**. Ha alkalmazás-naplózás engedélyezve van, ezzel a beállítással megadhatja, amely lesz adatmennyiség rögzített (hiba, figyelmeztetés, információ, vagy a részletes).
+**Szint**. Ha az alkalmazásadatok naplózása engedélyezve van, ezzel a beállítással megadhatja, kívánt adatok mennyiségétől (hiba, figyelmeztetés, információ vagy részletes) rögzíti.
 
-**Webkiszolgáló naplózásának**. A W3C bővített naplófájlformátum naplók lesznek mentve. 
+**Webkiszolgálói naplózás**. A W3C bővített naplófájlformátum naplók lesznek mentve. 
 
-**A részletes hibaüzeneteket**. Menti a hiba részleteit a .htm fájl üzenetek. A fájlok a /LogFiles/DetailedErrors kerülnek mentésre. 
+**A részletes hibaüzeneteket**. Menti a hiba részletei üzenetek .htm fájl. A fájlok /LogFiles/DetailedErrors alapján kerülnek mentésre. 
 
-**Sikertelen kérelmek követésének**. Naplók sikertelen kérelmek XML-fájlok számára. A fájlok fájl/naplófájlok/W3SVC*xxx*, ahol a xxx egyedi azonosítója. Ez a mappa tartalmaz egy XSL-fájlt és egy vagy több XML-fájlokat. Ügyeljen arra, hogy az XSL-fájl letöltése, mert formázására és az XML-fájlok tartalmát szűrés funkciókat biztosít.
+**Sikertelen kérelmek követésének**. Naplók sikertelen kérelmeket, XML-fájlok. A fájlok kerülnek mentésre alatt/LogFiles/W3SVC*xxx*, ahol a xxx egyedi azonosítója. Ez a mappa tartalmaz egy XSL-fájl és a egy vagy több XML-fájlt. Ügyeljen arra, hogy töltse le a XSL-fájlt, mert funkciókat biztosít a formázás és szűrés az XML-fájlok tartalmát.
 
-A naplófájlban, létre kell hoznia FTP hitelesítő adatokat, az alábbiak szerint:
+Naplófájljainak megtekintéséhez, létre kell hoznia az FTP-hitelesítő adatokat, a következő:
 
-1. A webalkalmazás panelen kattintson **összes beállítás**.
+1. A webalkalmazás panelén kattintson **minden beállítás**.
 2. Kattintson a **üzembe helyezési hitelesítő adatok**.
 3. Adjon meg egy felhasználónevet és jelszót.
 4. Kattintson a **Save** (Mentés) gombra.
 
 ![Telepítési hitelesítő adatok beállítása][configure03]
 
-A teljes FTP-felhasználó neve "app\username" hol *app* a webes alkalmazás neve. A felhasználónév, szerepel a webalkalmazás panelen, a **Essentials**.
+Az FTP-felhasználó teljes neve "app\username" hol *alkalmazás* a webalkalmazás neve. A felhasználónév alatt szerepel a webalkalmazás panelére, **Essentials**.
 
 ![FTP telepítési hitelesítő adatok][configure02]
 
 ## <a name="other-configuration-tasks"></a>Egyéb konfigurációs feladatok
 ### <a name="ssl"></a>SSL
-Basic vagy Standard módban SSL-tanúsítványokat az egyéni tartományt is feltölthet. További információkért lásd: [HTTPS engedélyezése az webalkalmazáshoz](app-service-web-tutorial-custom-ssl.md). 
+Alap vagy Standard módban feltölthet egy egyéni tartomány SSL-tanúsítványok. További információkért lásd: [HTTPS engedélyezése webes alkalmazásokhoz](app-service-web-tutorial-custom-ssl.md). 
 
-A feltöltött tanúsítványok megtekintéséhez kattintson **összes beállítás** > **egyéni tartományok és SSL**.
+A feltöltött tanúsítványok megtekintéséhez kattintson **minden beállítás** > **egyéni tartományok és SSL**.
 
 ### <a name="domain-names"></a>Tartománynevek
-A webalkalmazás egyéni tartományneveket adhat hozzá. További információkért lásd: [egy webalkalmazást az egyéni tartománynév beállítása az Azure App Service](app-service-web-tutorial-custom-domain.md).
+A webalkalmazás egyéni tartományneveket adhat hozzá. További információkért lásd: [webalkalmazásokhoz egyéni tartománynév beállítása az Azure App Service](app-service-web-tutorial-custom-domain.md).
 
-A tartománynevek megtekintéséhez kattintson **összes beállítás** > **egyéni tartományok és SSL**.
+A tartománynevek megtekintéséhez kattintson **minden beállítás** > **egyéni tartományok és SSL**.
 
 ### <a name="deployments"></a>Központi telepítés
-* Folyamatos üzembe helyezést beállítani. Lásd: [Git használatával is telepíthet webalkalmazásokat az Azure App Service](app-service-deploy-local-git.md).
-* Üzembe helyezési pontok. Lásd: [Az Azure App Service Web Apps előkészítési környezetek telepítése].
+* Folyamatos üzembe helyezés beállítása. Lásd: [Git használatával üzembe helyezéséhez az Azure App Service Web Apps](app-service-deploy-local-git.md).
+* Üzembe helyezési pontok. Lásd: [Átmeneti környezetek, az Azure App Service Web Apps üzembe helyezése].
 
-Az üzembe helyezési megtekintéséhez kattintson **összes beállítás** > **üzembe helyezési**.
+Az üzembe helyezési pontok megtekintéséhez kattintson **minden beállítás** > **üzembe helyezési pontok**.
 
 ### <a name="monitoring"></a>Figyelés
-Basic vagy Standard módban tesztelheti a HTTP vagy HTTPS-végpontokkal, legfeljebb három földrajzilag elosztott helyekről rendelkezésre állását. A figyelési teszt sikertelen, ha a HTTP válaszkódot (4xx vagy 5xx) hiba vagy a választ több mint 30 másodpercet vesz igénybe. A végpont tekinthető érhető el, ha a figyelési tesztek sikeres legyen, az összes meghatározott helyeiről. 
+Alap vagy Standard módban tesztelheti a rendelkezésre állási HTTP vagy HTTPS-végpontot, legfeljebb három földrajzilag elosztott helyekről. Egy figyelési teszt sikertelen, ha HTTP-válaszkódot (4xx vagy 5xx) hiba vagy a válasz több mint 30 másodperc. A végpont érhető el, ha a figyelési tesztek összes meghatározott helyeiről származó sikeres számít. 
 
 További információkért lásd: [Útmutató: webes végpont állapotának figyelése].
 
@@ -168,21 +169,21 @@ További információkért lásd: [Útmutató: webes végpont állapotának figy
 
 ## <a name="next-steps"></a>További lépések
 * [Egyéni tartománynév konfigurálása az Azure App Service-ben]
-* [HTTPS engedélyezése az alkalmazásoknak az Azure App Service-ben]
-* [A webalkalmazás skálázása az Azure App Service-ben]
-* [Az Azure App Service Web Apps figyelési alapjai]
+* [HTTPS engedélyezése az Azure App Service-alkalmazás]
+* [Webalkalmazások méretezése az Azure App Service-ben]
+* [Megfigyelési alapismeretek az Azure App Service Web Apps]
 
 <!-- URL List -->
 
-[ASP.NET SignalR]: http://www.asp.net/signalr
+[Az ASP.NET SignalR]: http://www.asp.net/signalr
 [Azure Portal]: https://portal.azure.com/
 [Egyéni tartománynév konfigurálása az Azure App Service-ben]: ./app-service-web-tutorial-custom-domain.md
-[Az Azure App Service Web Apps előkészítési környezetek telepítése]: ./web-sites-staged-publishing.md
-[HTTPS engedélyezése az alkalmazásoknak az Azure App Service-ben]: ./app-service-web-tutorial-custom-ssl.md
+[Átmeneti környezetek, az Azure App Service Web Apps üzembe helyezése]: ./web-sites-staged-publishing.md
+[HTTPS engedélyezése az Azure App Service-alkalmazás]: ./app-service-web-tutorial-custom-ssl.md
 [Útmutató: webes végpont állapotának figyelése]: http://go.microsoft.com/fwLink/?LinkID=279906
-[Az Azure App Service Web Apps figyelési alapjai]: ./web-sites-monitor.md
+[Megfigyelési alapismeretek az Azure App Service Web Apps]: ./web-sites-monitor.md
 [folyamatkezelési mód]: http://www.iis.net/learn/get-started/introduction-to-iis/introduction-to-iis-architecture#Application
-[A webalkalmazás skálázása az Azure App Service-ben]: ./web-sites-scale.md
+[Webalkalmazások méretezése az Azure App Service-ben]: ./web-sites-scale.md
 [Az App Service kipróbálása]: https://azure.microsoft.com/try/app-service/
 
 <!-- IMG List -->

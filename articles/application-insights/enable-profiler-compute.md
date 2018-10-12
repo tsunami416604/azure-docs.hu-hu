@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 10/16/2017
 ms.reviewer: ramach
 ms.author: mbullwin
-ms.openlocfilehash: 2da281f52a85992c6fade360c94fbf473c38dc20
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: eb2ec0c0b77e71a54d1e7f852a22d82203abf7b6
+ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39424024"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49091980"
 ---
 # <a name="enable-application-insights-profiler-for-azure-vms-service-fabric-and-azure-cloud-services"></a>Application Insights Profiler engedélyezése az Azure virtuális gépek, Service Fabric és az Azure Cloud Services
 
@@ -48,7 +48,7 @@ Teljes mértékű engedélyezéséhez Profiler, módosítania kell a három hely
 
    ![A kialakítási kulcs helyét](./media/enable-profiler-compute/CopyAIKey.png)
 
-1. A Profiler az Application Insights-példány beállításának befejezéséhez, hajtsa végre az eljárást, itt olvashat [Profiler engedélyezése. Nem kell összekapcsolni a webalkalmazásokat, mivel az app services-erőforrás a lépéseket. Győződjön meg arról, hogy a Profiler engedélyezve van az a **Profiler konfigurálása** ablaktáblán.
+1. A Profiler az Application Insights-példány beállításának befejezéséhez, hajtsa végre az eljárást, leírt [Profiler engedélyezése](https://docs.microsoft.com/azure/application-insights/app-insights-profiler). Nem kell összekapcsolni a webalkalmazásokat, mivel az app services-erőforrás a lépéseket. Győződjön meg arról, hogy a Profiler engedélyezve van az a **Profiler konfigurálása** ablaktáblán.
 
 
 ## <a name="set-up-the-application-source-code"></a>Az alkalmazás forráskódja beállítása
@@ -163,7 +163,7 @@ Teljes példákért lásd:
 
 ### <a name="azure-cloud-services"></a>Azure Cloud Services
 
-1. Győződjön meg arról, hogy használja a [.NET-keretrendszer 4.6.1-es](https://docs.microsoft.com/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed) , vagy később ellenőrizheti, hogy elegendő a *ServiceConfiguration.\*. cscfg* fájlok egy `osFamily` érték "5" vagy újabb verzió.
+1. Győződjön meg arról, hogy használja a [.NET-keretrendszer 4.6.1-es](https://docs.microsoft.com/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed) , vagy később ellenőrizheti, hogy elegendő a *ServiceConfiguration.\*.cscfg* fájlok egy `osFamily` érték "5" vagy újabb verzió.
 
 1. Keresse meg a [Azure Diagnostics](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics) *diagnostics.wadcfgx* fájlt az alkalmazás-szerepkörökhöz az itt látható módon:  
 
@@ -191,7 +191,7 @@ Teljes példákért lásd:
 >  * A kulcs, amelyet a `ApplicationInsights` fogadó.  
 >  * A kulcs, amelyet a `ApplicationInsightsProfiler` fogadó.  
 >
-> Az által használt tényleges kialakítási kulcs értéke annak a `ApplicationInsights` gyűjtése a *ServiceConfiguration.\*. cscfg* fájlokat.  
+> Az által használt tényleges kialakítási kulcs értéke annak a `ApplicationInsights` gyűjtése a *ServiceConfiguration.\*.cscfg* fájlokat.  
 > A Visual Studio 15.5 Azure SDK-verzió, csak az alkalmazás által használt kialakítási kulcs után és a `ApplicationInsightsProfiler` fogadó kell egymással.
 
 

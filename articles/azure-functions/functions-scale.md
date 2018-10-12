@@ -13,16 +13,16 @@ ms.topic: reference
 ms.date: 08/09/2018
 ms.author: glenga
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4585b6d4e9e3f6c64e1c583b947f979b8edc5a74
-ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
+ms.openlocfilehash: 5f597425fc3813f243950b16f5debbd63ce3a805
+ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/06/2018
-ms.locfileid: "48830259"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49113937"
 ---
 # <a name="azure-functions-scale-and-hosting"></a>Az Azure Functions méretezése és üzemeltetése
 
-Az Azure Functions két különböző módban fut: Használatalapú és az Azure App Service-csomag. A Használatalapú csomag automatikusan lefoglalja a számítási erőforrásokat a kód futtatásakor. Az alkalmazás horizontálisan felskálázott, ha a terhelés kezeléséhez szükséges, és vertikálisan leskálázni, ha nem fut a kódot. Nem kell fizetnie a tétlen virtuális gépeket vagy foglalhat le előre a kapacitás. Ez a cikk elsősorban a Használatalapú csomagok esetében egy [kiszolgáló nélküli](https://azure.microsoft.com/overview/serverless-computing/) alkalmazásmodell. A dedikált App Service-csomag működésével kapcsolatos részletekért lásd: a [Azure App Service díjcsomagjainak részletes áttekintése](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md).
+Az Azure Functions két különböző módban fut: Használatalapú és az Azure App Service-csomag. A Használatalapú csomag automatikusan lefoglalja a számítási erőforrásokat a kód futtatásakor. Az alkalmazás horizontálisan felskálázott, ha a terhelés kezeléséhez szükséges, és vertikálisan leskálázni, ha nem fut a kódot. Nem kell fizetnie a tétlen virtuális gépeket vagy foglalhat le előre a kapacitás. Ez a cikk elsősorban a Használatalapú csomagok esetében egy [kiszolgáló nélküli](https://azure.microsoft.com/solutions/serverless/) alkalmazásmodell. A dedikált App Service-csomag működésével kapcsolatos részletekért lásd: a [Azure App Service díjcsomagjainak részletes áttekintése](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md).
 
 > [!NOTE]  
 > [Linux rendszerű futtató](functions-create-first-azure-function-azure-cli-linux.md) jelenleg csak az App Service-csomag érhető el.
