@@ -13,12 +13,12 @@ ms.author: vanto
 ms.reviewer: ''
 manager: craigg
 ms.date: 10/05/2018
-ms.openlocfilehash: 2d735225782398b4e22a42816586a56cab54b763
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.openlocfilehash: 79613ab7a0e96405abbb3b380800f5ba951c3bdc
+ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48870196"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49092695"
 ---
 # <a name="always-encrypted-protect-sensitive-data-and-store-encryption-keys-in-azure-key-vault"></a>Always Encrypted: Bizalmas adatok védelme és tárolni a titkosítási kulcsokat az Azure Key Vaultban
 
@@ -55,6 +55,7 @@ Most, hogy az ügyfélalkalmazás van konfigurálva, és rendelkezik az alkalmaz
 
 Gyorsan létrehozhat egy kulcstartót a következő szkript futtatásával. Ezeket a parancsmagokat és a további információ a létrehozása és konfigurálása a key vault részletes leírását lásd: [első lépései az Azure Key Vault](../key-vault/key-vault-get-started.md).
 
+```powershell
     $subscriptionName = '<your Azure subscription name>'
     $userPrincipalName = '<username@domain.com>'
     $applicationId = '<application ID from your AAD application>'
@@ -72,7 +73,7 @@ Gyorsan létrehozhat egy kulcstartót a következő szkript futtatásával. Ezek
 
     Set-AzureRmKeyVaultAccessPolicy -VaultName $vaultName -ResourceGroupName $resourceGroupName -PermissionsToKeys create,get,wrapKey,unwrapKey,sign,verify,list -UserPrincipalName $userPrincipalName
     Set-AzureRmKeyVaultAccessPolicy  -VaultName $vaultName  -ResourceGroupName $resourceGroupName -ServicePrincipalName $applicationId -PermissionsToKeys get,wrapKey,unwrapKey,sign,verify,list
-
+```
 
 
 
@@ -88,7 +89,7 @@ Szüksége lesz a kapcsolati karakterlánc az oktatóanyag későbbi részében,
 1. Lépjen a **SQL-adatbázisok** > **Clinic** > **adatbázis kapcsolati karakterláncainak megjelenítése**.
 2. Másolja a kapcsolati karakterláncot a **ADO.NET**.
    
-    ![Másolja a kapcsolati karakterláncot](./media/sql-database-always-encrypted-azure-key-vault/connection-strings.png)
+    ![A kapcsolati sztring másolása](./media/sql-database-always-encrypted-azure-key-vault/connection-strings.png)
 
 ## <a name="connect-to-the-database-with-ssms"></a>Kapcsolódás az adatbázishoz SSMS segítségével
 Nyissa meg az ssms-ben, és csatlakozzon a Clinic adatbázist tartalmazó kiszolgálón.
@@ -96,7 +97,7 @@ Nyissa meg az ssms-ben, és csatlakozzon a Clinic adatbázist tartalmazó kiszol
 1. Nyissa meg az SSMS-t. (Ugrás a **Connect** > **adatbázismotor** megnyitásához a **kapcsolódás a kiszolgálóhoz** ablakot, ha még nincs megnyitva.)
 2. Adja meg a kiszolgáló nevét és hitelesítő adatokat. Az SQL-adatbázis panelen található a kiszolgáló nevét, és a kapcsolati karakterláncban korábban vágólapra másolt. Írja be a teljes kiszolgálónevet, beleértve a *database.windows.net*.
    
-    ![Másolja a kapcsolati karakterláncot](./media/sql-database-always-encrypted-azure-key-vault/ssms-connect.png)
+    ![A kapcsolati sztring másolása](./media/sql-database-always-encrypted-azure-key-vault/ssms-connect.png)
 
 Ha a **Új tűzfalszabály** ablak megnyílik, jelentkezzen be Azure-ban, és lehetővé teszik az ssms-ben hozzon létre egy új tűzfalszabályt az Ön számára.
 
@@ -107,6 +108,7 @@ Ebben a szakaszban létrehozhat egy táblát, amely a betegek adatokat tárolja.
 2. Kattintson a jobb gombbal a **Clinic** adatbázis, és kattintson a **új lekérdezés**.
 3. Az új lekérdezési ablakban illessze be a következő Transact-SQL (T-SQL) és **Execute** azt.
 
+```sql
         CREATE TABLE [dbo].[Patients](
          [PatientId] [int] IDENTITY(1,1),
          [SSN] [char](11) NOT NULL,
@@ -120,7 +122,7 @@ Ebben a szakaszban létrehozhat egy táblát, amely a betegek adatokat tárolja.
          [BirthDate] [date] NOT NULL
          PRIMARY KEY CLUSTERED ([PatientId] ASC) ON [PRIMARY] );
          GO
-
+```
 
 ## <a name="encrypt-columns-configure-always-encrypted"></a>(Az Always Encrypted konfigurálása) oszlop titkosítása
 SSMS biztosít egy varázsló, amellyel könnyen konfigurálhatja az Always Encrypted által az Ön számára a oszlopfőkulcshoz oszloptitkosítási kulcs és a titkosított oszlopokat beállítását.
@@ -183,9 +185,10 @@ Most, hogy az Always Encrypted be van állítva, hozhat létre olyan alkalmazás
 
 A Package Manager Console két kódsorok futnak.
 
+```powershell
     Install-Package Microsoft.SqlServer.Management.AlwaysEncrypted.AzureKeyVaultProvider
     Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory
-
+```
 
 
 ## <a name="modify-your-connection-string-to-enable-always-encrypted"></a>Always Encrypted engedélyezéséhez a kapcsolati karakterlánc módosítása
@@ -204,6 +207,7 @@ Adja hozzá a következő kulcsszó a kapcsolati karakterláncot.
 ### <a name="enable-always-encrypted-with-sqlconnectionstringbuilder"></a>Mindig titkosított SqlConnectionStringBuilder engedélyezése
 A következő kód bemutatja, hogyan lehet engedélyezni az Always Encrypted beállításával [SqlConnectionStringBuilder.ColumnEncryptionSetting](https://msdn.microsoft.com/library/system.data.sqlclient.sqlconnectionstringbuilder.columnencryptionsetting.aspx) való [engedélyezve](https://msdn.microsoft.com/library/system.data.sqlclient.sqlconnectioncolumnencryptionsetting.aspx).
 
+```CS
     // Instantiate a SqlConnectionStringBuilder.
     SqlConnectionStringBuilder connStringBuilder =
        new SqlConnectionStringBuilder("replace with your connection string");
@@ -211,10 +215,12 @@ A következő kód bemutatja, hogyan lehet engedélyezni az Always Encrypted be�
     // Enable Always Encrypted.
     connStringBuilder.ColumnEncryptionSetting =
        SqlConnectionColumnEncryptionSetting.Enabled;
+```
 
 ## <a name="register-the-azure-key-vault-provider"></a>Az Azure Key Vault-szolgáltató regisztrálása
 A következő kód bemutatja, hogyan regisztrálja az Azure Key Vault-szolgáltató az ADO.NET-illesztő.
 
+```C#
     private static ClientCredential _clientCredential;
 
     static void InitializeAzureKeyVaultProvider()
@@ -230,8 +236,7 @@ A következő kód bemutatja, hogyan regisztrálja az Azure Key Vault-szolgálta
        providers.Add(SqlColumnEncryptionAzureKeyVaultProvider.ProviderName, azureKeyVaultProvider);
        SqlConnection.RegisterColumnEncryptionKeyStoreProviders(providers);
     }
-
-
+```
 
 ## <a name="always-encrypted-sample-console-application"></a>Always Encrypted minta-Konzolalkalmazás
 Ez a minta azt ismerteti, hogyan lehet:
@@ -244,7 +249,7 @@ Ez a minta azt ismerteti, hogyan lehet:
 Cserélje le a tartalmát **Program.cs** az alábbi kódra. Cserélje le a kapcsolati karakterláncot a connectionString globális változó a sor közvetlenül megelőző a Main metódushoz, az Azure Portalon érvényes kapcsolati karakterláncra. Ez az az egyetlen változás, győződjön meg arról, hogy ez a kód kell.
 
 Always Encrypted megtekintéséhez működés közben az alkalmazás futtatásához.
-
+```CS
     using System;
     using System.Collections.Generic;
     using System.Linq;
@@ -584,7 +589,7 @@ Always Encrypted megtekintéséhez működés közben az alkalmazás futtatásá
         public DateTime BirthDate { get; set; }
     }
     }
-
+```
 
 
 ## <a name="verify-that-the-data-is-encrypted"></a>Győződjön meg arról, hogy az adatok titkosítása
@@ -592,7 +597,9 @@ Gyorsan ellenőrizheti, hogy a kiszolgálón a tényleges adatok titkosítja az 
 
 Futtassa a következő lekérdezést a Clinic adatbázison.
 
+```sql
     SELECT FirstName, LastName, SSN, BirthDate FROM Patients;
+```
 
 Láthatja, hogy a titkosított oszlopokban nem tartalmaz egyszerű szöveges adatokat.
 
@@ -608,12 +615,13 @@ Majd adja hozzá a *oszlop titkosítási beállítás = engedélyezve* paraméte
    
     ![Új Konzolalkalmazás](./media/sql-database-always-encrypted-azure-key-vault/ssms-connection-parameter.png)
 4. Futtassa a következő lekérdezést a Clinic adatbázison.
-   
-        SELECT FirstName, LastName, SSN, BirthDate FROM Patients;
-   
-     Most már megtekintheti a titkosított oszlopokban az egyszerű szöveges adatokat.
 
-    ![Új Konzolalkalmazás](./media/sql-database-always-encrypted-azure-key-vault/ssms-plaintext.png)
+   ```sql
+      SELECT FirstName, LastName, SSN, BirthDate FROM Patients;
+   ```
+
+     Most már megtekintheti a titkosított oszlopokban az egyszerű szöveges adatokat.
+     ![Új Konzolalkalmazás](./media/sql-database-always-encrypted-azure-key-vault/ssms-plaintext.png)
 
 
 ## <a name="next-steps"></a>További lépések

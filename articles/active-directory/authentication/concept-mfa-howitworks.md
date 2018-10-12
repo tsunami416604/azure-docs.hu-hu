@@ -5,17 +5,17 @@ services: multi-factor-authentication
 ms.service: active-directory
 ms.component: authentication
 ms.topic: conceptual
-ms.date: 07/11/2018
+ms.date: 10/11/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: michmcla
-ms.openlocfilehash: f6067a6270010aaf57a404f66b8a99cbafa525ca
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 4a90dc1d97121426e7b161b1d5c92df78b0925a6
+ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48041696"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49114158"
 ---
 # <a name="how-it-works-azure-multi-factor-authentication"></a>Hogyan működik: az Azure multi-factor Authentication
 
@@ -42,15 +42,6 @@ A multi-factor Authentication szolgáltatás része a következő ajánlatokra:
 > [!NOTE]
 > Új ügyfeleket már nem vásárolhat Azure multi-factor Authentication kínál hatékony 1-től, 2018 szeptember önálló. A multi-factor authentication továbbra is egy elérhető funkciónak az Azure AD Premium-licencet.
 
-### <a name="auth-provider-or-mfa-license"></a>Hitelesítési szolgáltató vagy az MFA-licenc
-
-Ha rendelkezik Azure AD prémium vagy egy másik, amely tartalmazza az Azure AD Premium licenc-csomagot, már rendelkezik Azure MFA. A szervezet nem kell semmi mást a kétlépéses ellenőrzés képesség kiterjesztését minden felhasználó számára. Csak kell egy licencet hozzárendelni egy felhasználóhoz, és ezután többtényezős hitelesítés bekapcsolása.
-
-Ha nem rendelkezik licencekkel, amelyek tartalmazzák az Azure MFA, vagy nem rendelkezik elegendő licenccel ahhoz, hogy biztosítsák az összes felhasználót, létrehozhat egy [MFA hitelesítési szolgáltatót](concept-mfa-authprovider.md) MFA teljes funkcionalitásának kiterjesztése a felhasználók számára szükség van rájuk.
-
-> [!IMPORTANT]
-> Ha minden felhasználó számára nem elegendő licenccel rendelkezik, létrehozhat egy felhasználónkénti multi-factor Auth szolgáltatót, hogy biztosítsák a szervezet többi tagja. Ne hozzon létre egy hitelesítésenkénti multi-factor Auth szolgáltatót. Ha így tesz, akkor sikerült végül ellenőrzési kérések licenccel már rendelkező felhasználóktól.
-
 ## <a name="supportability"></a>Támogatási lehetőségek
 
 Mivel a legtöbb felhasználó vannak bemutatásával csak jelszavak használatával hitelesíteni, fontos, hogy a szervezet kapcsolatban a folyamat minden felhasználó kommunikál. Tájékoztatási valószínűsége, hogy a felhasználók hívja a segélyszolgálatot MFA kisebb kapcsolatban csökkenthető. Vannak azonban néhány olyan forgatókönyvekben, ahol ideiglenesen letilthatja a többtényezős hitelesítés szükséges. Ezek a forgatókönyvek kezelése megértéséhez használja az alábbi irányelveket:
@@ -65,8 +56,8 @@ Mivel a legtöbb felhasználó vannak bemutatásával csak jelszavak használat�
 
 - A részletes MFA beszerzése [központi telepítési csomag](https://aka.ms/MFADeploymentPlan)
 
-- Keresse meg a részleteket kapcsolatos [licencelése a felhasználók számára](concept-mfa-licensing.md)
+- További részletek a [felhasználók licenceléséről](concept-mfa-licensing.md)
 
-- Részletekért [verziót üzembe helyezése](concept-mfa-whichversion.md)
+- További részletek arról, hogy [melyik verziót telepítse](concept-mfa-whichversion.md)
 
-- Választ találhat [– gyakori kérdések](multi-factor-authentication-faq.md)
+- Választ kaphat a [gyakori kérdésekre](multi-factor-authentication-faq.md)

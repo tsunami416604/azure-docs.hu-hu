@@ -9,12 +9,12 @@ ms.reviewer: jmartens
 ms.author: marthalc
 author: marthalc
 ms.date: 10/01/2018
-ms.openlocfilehash: 812c9911486174b1ed3be5373486e992e4037425
-ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
+ms.openlocfilehash: 45871ab515c7ffd9520b1d77d3fd1e77abcc29ef
+ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48248529"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49114566"
 ---
 # <a name="monitor-your-azure-machine-learning-models-in-production-with-application-insights"></a>Az Azure Machine Learning-modellek éles környezetben az Application Insights figyelése
 
@@ -127,7 +127,7 @@ Kattintson a [Itt](../../application-insights/app-insights-overview.md) további
 
 ## <a name="example-notebook"></a>Példa Notebook
 
-A `00.Getting Started/13.enable-app-insights-in-production-service.ipynb` notebook mutatja be a jelen cikk fogalmait.  Ez a jegyzetfüzet lekérése:
+A [00. első Started/13.enable-app-insights-in-production-service.ipynb](https://github.com/Azure/MachineLearningNotebooks/tree/master/01.getting-started/13.enable-app-insights) notebook mutatja be a jelen cikk fogalmait.  Ez a jegyzetfüzet lekérése:
  
 [!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-for-examples.md)]
 

@@ -1,6 +1,6 @@
 ---
-title: Hogyan olvasására vagy írására particionálva adatokat az Azure Data Factory |} Microsoft Docs
-description: Megtudhatja, hogyan olvasására vagy írására particionált adatokat az Azure Data Factory.
+title: Hogyan lehet olvasási vagy írási particionálva az Azure Data Factory |} A Microsoft Docs
+description: Megtudhatja, hogyan olvasására vagy írására particionált adatok az Azure Data Factoryban.
 services: data-factory
 documentationcenter: ''
 author: sharonlo101
@@ -13,18 +13,20 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/15/2018
 ms.author: shlo
-ms.openlocfilehash: 59644f3318e2bf9c4f0ea6c3f5699fe1d19f2089
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 24464d110b00508cfb3fde4ab1a050773511e255
+ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37053710"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49091049"
 ---
-# <a name="how-to-read-or-write-partitioned-data-in-azure-data-factory"></a>Hogyan olvasására vagy írására particionálva az Azure Data Factoryben az adatok
-1-es verziójával Azure Data Factory Olvasás vagy írás a particionált SliceStart/SliceEnd/WindowStart/WindowEnd rendszerváltozók használatával támogatott. Adat-előállító jelenlegi verziójában ez a viselkedés érhet el, a paraméter értékének a feldolgozási sor paraméter és eseményindító ütemezett időpont/kezdete használatával. 
+# <a name="how-to-read-or-write-partitioned-data-in-azure-data-factory"></a>Hogyan lehet olvasási vagy írási particionálva az Azure Data Factory
+
+Az Azure Data Factory 1. verziójának, hogy sikerült olvasási vagy írási particionált adatok használatával a **SliceStart**, **SliceEnd**, **WindowStart**, és **WindowEnd** rendszerváltozók. A jelenlegi verzióban a Data Factory a folyamat paraméter és a egy eseményindító kezdési és a megadott időpont a paraméter értékével érheti el ezt a viselkedést. 
 
 ## <a name="use-a-pipeline-parameter"></a>Egy folyamat paraméterrel 
-1. verziójában használhatja a partitionedBy tulajdonság és SliceStart rendszer változó a következő példában látható módon: 
+
+A Data Factory 1. verziójának, használhatja a **partitionedBy** tulajdonság és **SliceStart** rendszerváltozó az alábbi példában látható módon: 
 
 ```json
 "folderPath": "adfcustomerprofilingsample/logs/marketingcampaigneffectiveness/{Year}/{Month}/{Day}/",
@@ -35,13 +37,13 @@ ms.locfileid: "37053710"
 ],
 ```
 
-A partitonedBy tulajdonságra vonatkozó további információkért lásd: [1-es verziójú Azure Blob összekötő](v1/data-factory-azure-blob-connector.md#dataset-properties) cikk. 
+További információ a **partitonedBy** tulajdonságot használja, lásd: [másolhat az Azure Blob storage-ból az Azure Data Factory használatával](v1/data-factory-azure-blob-connector.md#dataset-properties). 
 
-A Data Factory jelenlegi verziója Ez a viselkedés érdekében, hogy a következő műveleteket hajthatja végre: 
+Ez a viselkedés a jelenlegi verzióban adat-előállító eléréséhez: 
 
-1. Adja meg a **paraméter a következő feldolgozási sorban** karakterlánc típusú. A következő példában az adatcsatorna paraméter neve nem **windowStartTime**. 
-2. Állítsa be **folderPath** hivatkozhasson rá az adatcsatorna paraméter értékének adatkészlet-definícióban. 
-3. A csővezeték-igény szerinti hívásakor adja át a a tényleges érték a paraméterhez, vagy egy eseményindító ütemezett időpont/kezdete dinamikusan futásidőben adja át. 
+1. Adja meg egy *paraméter folyamat* típusú **karakterlánc**. A következő példában a folyamat paraméter neve nem **windowStartTime**. 
+2. Állítsa be **folderPath** való hivatkozáshoz a folyamat paraméter értékét az adatkészlet-definícióban. 
+3. Írjon be a tényleges paraméter értéke, a folyamat igény szerinti meghívása során. Is átadhat egy eseményindító kezdési és a megadott időpont dinamikusan, futásidőben. 
 
 ```json
 "folderPath": {
@@ -50,8 +52,9 @@ A Data Factory jelenlegi verziója Ez a viselkedés érdekében, hogy a követke
 },
 ```
 
-## <a name="pass-in-value-from-a-trigger"></a>Adjon át egy értéket
-A következő átfedésmentes ablak eseményindító definícióját, az ablak indítási időpontja az eseményindító a feldolgozási sor paraméter értékeként átadott **windowStartTime**: 
+## <a name="pass-in-a-value-from-a-trigger"></a>Egy eseményindítóból ad meg értéket
+
+Az átfedésmentes ablak eseményindító alábbi definíciójában a az ablak indítási időpontja az eseményindító átadott, a folyamat paraméter értékeként **windowStartTime**: 
 
 ```json
 {
@@ -80,7 +83,7 @@ A következő átfedésmentes ablak eseményindító definícióját, az ablak i
 
 ## <a name="example"></a>Példa
 
-Íme egy minta adatkészlet-definícióban:
+Itt látható egy minta adatkészlet definíciója:
 
 ```json
 {
@@ -116,7 +119,7 @@ A következő átfedésmentes ablak eseményindító definícióját, az ablak i
 }
 ```
 
-Feldolgozási sor definíciója: 
+Folyamat definíciója: 
 
 ```json
 {
@@ -176,4 +179,6 @@ Feldolgozási sor definíciója:
 ```
 
 ## <a name="next-steps"></a>További lépések
-Egy adat-előállító létrehozása és a részletes útmutatást lásd: [gyors üzembe helyezés: hozzon létre egy adat-előállító](quickstart-create-data-factory-powershell.md). 
+
+Bemutatja, hogyan hozhat létre adat-előállítók álló folyamatot tartalmaz részletes útmutatást lásd: [a rövid útmutató: adat-előállító létrehozása](quickstart-create-data-factory-powershell.md). 
+

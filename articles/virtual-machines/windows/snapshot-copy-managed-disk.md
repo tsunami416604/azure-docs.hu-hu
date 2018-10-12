@@ -1,6 +1,6 @@
 ---
-title: Pillanatkép készítése a virtuális merevlemez létrehozása az Azure-ban |} Microsoft Docs
-description: Útmutató egy példányát kívánja használni, mint biztonsági másolatot, vagy a problémák elhárítása az Azure virtuális gép létrehozásához.
+title: Hozzon létre egy pillanatképet egy VHD-t az Azure-ban |} A Microsoft Docs
+description: Ismerje meg, hogyan hozhat létre egy másolatot egy Azure virtuális gépek biztonsági mentése vagy kapcsolatos hibaelhárítás során használja.
 documentationcenter: ''
 author: cynthn
 manager: jeconnoc
@@ -12,38 +12,38 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 04/10/2018
+ms.date: 10/08/2018
 ms.author: cynthn
-ms.openlocfilehash: 7d45fd749fea4036d944d740541d8b8607553835
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 87d78178c32aea3ae601983ec14e9df0732b59e2
+ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34658155"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49091300"
 ---
 # <a name="create-a-snapshot"></a>Pillanatkép létrehozása
 
-Pillanatkép készítése a biztonsági mentéshez vagy elhárítása a virtuális gép virtuális merevlemez állít egy operációs rendszer vagy az adatok lemezt. Pillanatkép virtuális merevlemez teljes, csak olvasható másolatát. 
+Pillanatkép a virtuális merevlemez (VHD) egy teljes körű, csak olvasható példányát. A rendszer- és lemez VHD-t használja, mint a biztonsági mentés, vagy a virtuális gép (VM) hibák elhárításához pillanatképet is igénybe vehet. 
 
-## <a name="use-azure-portal-to-take-a-snapshot"></a>Készítsen pillanatképet az Azure portál használatával 
+## <a name="use-the-azure-portal"></a>Az Azure Portal használata 
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-2. Kezdési bal felső sarokban, kattintson a **hozzon létre egy erőforrást** keresse meg a **pillanatkép**.
-3. A pillanatkép paneljén kattintson **létrehozása**.
-4. Adjon meg egy **neve** a pillanatkép.
-5. Válasszon ki egy létező [Erőforráscsoportot](../../azure-resource-manager/resource-group-overview.md#resource-groups), vagy adja meg egy új csoport nevét. 
-6. Válasszon egy Azure-adatközpontban helyét.  
-7. A **forráslemez**, válassza ki a felügyelt lemezt pillanatkép.
-8. Válassza ki a **fiók típusa** használni a pillanatkép tárolására. Ajánlott **Standard_LRS** kivéve, ha esetleg szükség lenne rá egy nagy teljesítményű lemezen tárolja.
-9. Kattintson a **Create** (Létrehozás) gombra.
+2. A bal oldali menüben válassza ki a **erőforrás létrehozása**, majd keresse meg és válassza a **pillanatkép**.
+3. Az a **pillanatkép** ablakban válassza **létrehozás**. A **létrehozás pillanatkép** ablak jelenik meg.
+4. Adjon meg egy **neve** elkészíteni a pillanatképet.
+5. Válasszon egy meglévő [erőforráscsoport](../../azure-resource-manager/resource-group-overview.md#resource-groups) vagy adjon meg egy új tároló nevét. 
+6. Válassza ki egy Azure-adatközpont **helyét**.  
+7. A **forráslemez**, válassza ki a felügyelt lemez, pillanatkép.
+8. Válassza ki a **fiók típusa** tárolja a pillanatkép. Válassza ki **Standard_HDD**, ha nincs szükség a pillanatképet egy nagy teljesítményű lemezen tárolja.
+9. Kattintson a **Létrehozás** gombra.
 
-## <a name="use-powershell-to-take-a-snapshot"></a>Pillanatkép készítése a PowerShell használatával
+## <a name="use-powershell"></a>A PowerShell használata
 
-A következő lépések bemutatják, hogyan kérhet a VHD lemez másolni, hozzon létre a pillanatkép-konfigurációkat és pillanatképet készít, a lemez használatával a [New-AzureRmSnapshot](/powershell/module/azurerm.compute/new-azurermsnapshot) parancsmag. 
+A következő lépések bemutatják, hogyan másolja a VHD-lemez, a pillanatkép-konfiguráció létrehozása és a lemez pillanatfelvételének a [New-AzureRmSnapshot](/powershell/module/azurerm.compute/new-azurermsnapshot) parancsmagot. 
 
-Mielőtt elkezdené, győződjön meg arról, hogy rendelkezik-e a legújabb verzióját a AzureRM.Compute PowerShell-modult. Ez a cikk a AzureRM 5.7.0 verziója szükséges, vagy később. A verzió azonosításához futtassa a következőt: `Get-Module -ListAvailable AzureRM`. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-azurerm-ps) ismertető cikket. Ha helyileg futtatja a PowerShellt, akkor emellett a `Connect-AzureRmAccount` futtatásával kapcsolatot kell teremtenie az Azure-ral.
+Mielőtt elkezdené, győződjön meg arról, hogy a legújabb verzióját az AzureRM.Compute PowerShell-modul, amely 5.7.0 verziójúnak kell lennie, vagy később. A verzió azonosításához futtassa a következőt: `Get-Module -ListAvailable AzureRM`. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-azurerm-ps) ismertető cikket. Ha a PowerShell helyi rendszert használ, futtassa [Connect-AzureRmAccount](https://docs.microsoft.com/powershell/module/azurerm.profile/connect-azurermaccount) kapcsolat létrehozása az Azure-ral.
 
-Egyes paraméterek megadása 
+1. Egyes paraméterek beállítása: 
 
  ```azurepowershell-interactive
 $resourceGroupName = 'myResourceGroup' 
@@ -52,39 +52,36 @@ $vmName = 'myVM'
 $snapshotName = 'mySnapshot'  
 ```
 
-A virtuális gép beolvasása.
+2. A virtuális gép lekérése:
 
  ```azurepowershell-interactive
 $vm = get-azurermvm `
-   -ResourceGroupName $resourceGroupName `
+   -ResourceGroupName $resourceGroupName 
    -Name $vmName
 ```
 
-A pillanatkép-konfiguráció létrehozása. Ebben a példában fogjuk pillanatkép az operációsrendszer-lemezképet.
+3. Hozza létre a pillanatkép-konfigurációt. Ebben a példában a pillanatképet, az operációsrendszer-lemez van:
 
  ```azurepowershell-interactive
-$snapshot =  New-AzureRmSnapshotConfig `
-   -SourceUri $vm.StorageProfile.OsDisk.ManagedDisk.Id `
-   -Location $location `
+$snapshot =  New-AzureRmSnapshotConfig 
+   -SourceUri $vm.StorageProfile.OsDisk.ManagedDisk.Id 
+   -Location $location 
    -CreateOption copy
 ```
    
-> [!NOTE]
-> Ha azt szeretné, a pillanatkép zóna rugalmas tárolás tárolni, olyan régióhoz, amely támogatja a létrehozásához szükséges [rendelkezésre állási zónák](../../availability-zones/az-overview.md) , és tartalmazzák a `-SkuName Standard_ZRS` paraméter.   
-
+   > [!NOTE]
+   > Ha szeretné tárolni a pillanatkép zóna rugalmas tárolás, hozza létre, amely támogatja az egy régióban [rendelkezésre állási zónák](../../availability-zones/az-overview.md) , és tartalmazzák a `-SkuName Standard_ZRS` paraméter.   
    
-A pillanatkép elkészítésére.
+4. A pillanatkép:
 
-```azurepowershell-interactive
-New-AzureRmSnapshot `
-   -Snapshot $snapshot `
-   -SnapshotName $snapshotName `
+ ```azurepowershell-interactive
+New-AzureRmSnapshot 
+   -Snapshot $snapshot 
+   -SnapshotName $snapshotName 
    -ResourceGroupName $resourceGroupName 
 ```
 
 
-
-
 ## <a name="next-steps"></a>További lépések
 
-Virtuális gép létrehozása egy pillanatképből létrehozásával felügyelt lemezes pillanatképet, és majd lemezcsatlakoztatás az új felügyelt az operációs rendszer lemezeként. További információkért lásd: a [hozzon létre egy virtuális Gépet egy pillanatképből](./../scripts/virtual-machines-windows-powershell-sample-create-vm-from-snapshot.md?toc=%2fpowershell%2fmodule%2ftoc.json) minta.
+Virtuális gép létrehozása felügyelt lemez létrehozása pillanatképből, és ezután a az operációsrendszer-lemezként az új felügyelt lemez csatolása egy pillanatképből. További információkért tekintse meg a mintát, a [virtuális gép létrehozása pillanatképből a PowerShell](./../scripts/virtual-machines-windows-powershell-sample-create-vm-from-snapshot.md?toc=%2fpowershell%2fmodule%2ftoc.json).

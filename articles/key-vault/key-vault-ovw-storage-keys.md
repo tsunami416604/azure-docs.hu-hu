@@ -9,12 +9,12 @@ author: bryanla
 ms.author: bryanla
 manager: mbaldwin
 ms.date: 10/03/2018
-ms.openlocfilehash: b5b30f7f5ffc7fcbef918162bc736c1f0a888d1b
-ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
+ms.openlocfilehash: adc8b84f0f22e85de88c4bd80c10a2a35d7b490a
+ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49067737"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49114600"
 ---
 # <a name="azure-key-vault-storage-account-keys"></a>Az Azure Key Vault-Tárfiókkulcsok
 
@@ -38,24 +38,19 @@ ms.locfileid: "49067737"
 -------------------------
 
 1. Az erőforrás-Azonosítóját az Azure Storage-fiókot, amelyet kezelni szeretne kaphat.
-    a. Miután létrehozunk egy storage-fiók 
+    a. Storage-fiók létrehozása után futtassa a következő parancsot a kezelni kívánt beolvasni a storage-fiók erőforrás-azonosító
     ```
     az storage account show -n storageaccountname (Copy ID out of the result of this command)
     ```
-2. Az erőforrás-Azonosítóját az Azure Storage-fiókot, amelyet kezelni szeretne kaphat.
-    ```
-    az storage account show -n storageaccountname (Take ID out of this)
-    ```
-3. Alkalmazás azonosítója az Azure Key Vault szolgáltatás egyszerű beolvasása 
+2. Alkalmazás azonosítója az Azure Key Vault szolgáltatás egyszerű beolvasása 
     ```
     az ad sp show --id cfa8b339-82a2-471a-a3c9-0fc0be7a4093
     ```
-4. Tárolás kulcs operátori szerepkör hozzárendelése az Azure Key Vault Identity
+3. Tárolás kulcs operátori szerepkör hozzárendelése az Azure Key Vault Identity
     ```
     az role assignment create --role "Storage Account Key Operator Service Role"  --assignee-object-id hhjkh --scope idofthestorageaccount
     ```
-5. Key Vault létrehozása felügyelt Tárfiók.     <br /><br />
-   Alább parancs kéri a Key Vault újragenerálja a kulcsot a 90 naponta.
+4. Key Vault létrehozása felügyelt Tárfiók.     <br /><br />
    Alábbi parancsot a tárfiókkulcsok rendszeresen újragenerálja a regenerációs időszakot a Key Vault kéri. Az alábbi azt állítja egy 90 napos regenerációs időszakot. 90 nap után a Key Vault "1. kulcs" újragenerálása és cseréje: key1"a"2. kulcs: az aktív kulcs.
    ### <a name="key-regeneration"></a>Kulcs újragenerálása
     ```

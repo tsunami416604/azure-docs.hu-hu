@@ -9,12 +9,12 @@ ms.component: core
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/24/2018
-ms.openlocfilehash: ced10a54d569531b06ee47b646130f43cedd2963
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 3256c8815b19f9b070cce3cd422f92c296e3e5c3
+ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46984602"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49115182"
 ---
 # <a name="track-experiments-and-training-metrics-in-azure-machine-learning"></a>Kísérletek és az Azure Machine Learning betanítási metrikák követése
 
@@ -148,7 +148,7 @@ Ebben a példában a fent sklearn Ridge alapmodell tartalmazó gyűjteménnyel b
           "test": {"X": X_test, "y": y_test}}
 
   # list of numbers from 0.0 to 1.0 with a 0.05 interval
-  alphas = np.arange(0.0, 1.0, 0.05)
+  alphas = mylib.get_alphas()
 
   for alpha in alphas:
       # Use Ridge algorithm to create a regression model
@@ -213,7 +213,7 @@ Ebben a példában a fent sklearn Ridge alapmodell tartalmazó gyűjteménnyel b
 ## <a name="view-run-details"></a>Futtatás részletei nézet
 
 ### <a name="monitor-run-with-jupyter-notebook-widgets"></a>A figyelő futtatásához a Jupyter notebook widgetek
-Ha a **ScriptRunConfig** elküldéséhez metódus fut, a Futtatás, a Jupyter notebook widgettel állapotát megtekintheti. A futtatási elküldése, például a widget aszinkron és élő frissíti minden 10 – 15 másodperc, amíg a feladat befejeződik.
+Ha a **ScriptRunConfig** elküldéséhez metódus fut, a Futtatás, a Jupyter notebook widgettel állapotát megtekintheti. A futtatás elküldéséhez hasonlóan a vezérlő aszinkron módon működik, és 10-15 másodpercenként élő állapotfrissítést biztosít a feladat befejeződéséig.
 
 1. A Jupyter widget tekintse meg a Futtatás befejeződik várakozás közben.
 
@@ -224,7 +224,7 @@ Ha a **ScriptRunConfig** elküldéséhez metódus fut, a Futtatás, a Jupyter no
 
   ![Képernyőkép a Jupyter notebook widget](./media/how-to-track-experiments/widgets.PNG)
 
-### <a name="get-log-results-upon-completion"></a>Befejezéskor log eredményeinek beolvasása
+### <a name="get-log-results-upon-completion"></a>Naplóeredmények lekérése a befejezéskor
 
 Modell betanítása és figyelési fordulnak elő a háttérben, hogy a várakozás közben egyéb feladatokat is futtathat. Azt is, amíg a modell több kód futtatása előtt képzési befejeződéséig. Ha használ **ScriptRunConfig**, használható ```run.wait_for_completion(show_output = True)``` megjelenítése, ha a modell betanítása befejeződött. A ```show_output``` jelző biztosít részletes kimenet. 
   
@@ -247,8 +247,8 @@ Bármely kimenetek vagy a naplók a Futtatás megtekintéséhez, vagy töltse le
 
 ## <a name="example-notebooks"></a>Példa notebookok
 A következő notebookok a jelen cikk fogalmait bemutatása:
-* `01.getting-started/01.train-within-notebook/01.train-within-notebook.ipynb`
-* `01.getting-started/02.train-on-local/02.train-on-local.ipynb`
+* [01.Getting-Started/01.train-within-notebook/01.train-within-notebook.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/01.getting-started/01.train-within-notebook)
+* [01.Getting-Started/02.train-on-Local/02.train-on-local.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/01.getting-started/02.train-on-local)
 
 Ezeket a notebookokat lekérése: [!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-for-examples.md)]
 

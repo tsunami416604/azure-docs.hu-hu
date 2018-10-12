@@ -1,10 +1,10 @@
 ---
-title: Szabályozhatja az Azure CDN a lekérdezési karakterláncok - prémium csomagban gyorsítótárazásának |} Microsoft Docs
-description: Az Azure CDN lekérdezési karakterláncok gyorsítótárazásának szabályozza, hogyan kerül a gyorsítótárba amikor webes kérelem lekérdezési karakterláncot tartalmaz. Ez a cikk ismerteti a lekérdezési karakterláncok gyorsítótárazásának a a termék Verizon Azure CDN Premium.
+title: Szabályozhatja az Azure CDN gyorsítótárazási viselkedésének vezérlése lekérdezési karakterláncokkal – prémium szintű |} A Microsoft Docs
+description: Az Azure CDN lekérdezési karakterláncok gyorsítótárazásának szabályozza, hogyan kerül a gyorsítótárba Ha webes kérelem lekérdezési karakterláncot tartalmaz. Ez a cikk ismerteti az Azure CDN Premiumhoz a Verizontól termék gyorsítótárazása lekérdezési karakterlánc.
 services: cdn
 documentationcenter: ''
-author: dksimpson
-manager: cfowler
+author: mdgattuso
+manager: danielgi
 editor: ''
 ms.assetid: 99db4a85-4f5f-431f-ac3a-69e05518c997
 ms.service: cdn
@@ -13,56 +13,56 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/11/2018
-ms.author: v-deasim
-ms.openlocfilehash: 3777689af72f580645826a1ca4e31ca84bd65dab
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.author: magattus
+ms.openlocfilehash: 2f0a361d53489e22ccc8e41406e5b86b423ea2f6
+ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35260834"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49091402"
 ---
-# <a name="control-azure-cdn-caching-behavior-with-query-strings---premium-tier"></a>Vezérlő Azure CDN a lekérdezési karakterláncok - prémium csomagban gyorsítótárazásának
+# <a name="control-azure-cdn-caching-behavior-with-query-strings---premium-tier"></a>Azure CDN gyorsítótárazási viselkedésének vezérlése lekérdezési karakterláncokkal – prémium szintű vezérlése
 > [!div class="op_single_selector"]
 > * [Standard csomag](cdn-query-string.md)
 > * [Premium szintű csomag](cdn-query-string-premium.md)
 > 
 
 ## <a name="overview"></a>Áttekintés
-Az Azure Content Delivery Network (CDN), megadhatja a hogyan kerül a gyorsítótárba egy lekérdezési karakterláncot tartalmazó webes kérelem számára. A webes kérelem lekérdezési karakterláncot a lekérdezési karakterlánc része a kérelmet, amely után a kérdőjel (?). A lekérdezési karakterlánc tartalmazhat egy vagy több kulcs-érték párok, amely a mező nevét és az értéke egyenlőségjelnek (=) elválasztva. Minden kulcs-érték párt elválasztott ampersand (&). Például a http:\//www.contoso.com/content.mov?field1=value1 & mező2 = érték2. Ha a kérelem lekérdezési karakterláncként egynél több kulcs-érték pár, a sorrendjük nincs jelentősége. 
+Az Azure Content Delivery Network (CDN), szabályozhatja, hogyan kerül a gyorsítótárba webes egy lekérdezési karakterláncot tartalmazó kérelmek. Egy lekérdezési karakterláncot tartalmazó webes kérés esetén a lekérdezési karakterláncban része, amely a kérelemhez, amely egy kérdőjelet (?) után kerül sor. A lekérdezési karakterlánc tartalmazhat egy vagy több kulcs-érték párok, amelyek a mező nevének és értékének egyenlőségjelnek (=) elválasztva. Minden kulcs-érték pár elválasztott ampersand (&). Ha például a http:\//www.contoso.com/content.mov?field1=value1 & mező2 = value2. Ha egynél több kulcs-érték pár egy kérelem egy lekérdezési karakterláncban, a sorrendjük nem számít. 
 
 > [!IMPORTANT]
-> A standard és prémium szintű CDN-termékek, adja meg ugyanazt a lekérdezési karakterláncot gyorsítótárazási funkció, de a felhasználói felület különböző. Ez a cikk ismerteti a felület **verizon Azure CDN Premium**. Lekérdezési karakterlánc gyorsítótárazást, ha Azure CDN standard termékek, lásd: [vezérlő Azure CDN a lekérdezési karakterláncok - standard csomagra gyorsítótárazásának](cdn-query-string.md).
+> A standard és prémium szintű CDN-termékek, adja meg az azonos lekérdezési karakterlánc gyorsítótárazási funkció, de a felhasználói felület különböző. Ez a cikk ismerteti a felület **verizon Azure CDN Premium**. Lekérdezési karakterlánc gyorsítótárazást, ha standard szintű Azure CDN-termékek, lásd: [Azure CDN gyorsítótárazási viselkedésének vezérlése lekérdezési karakterláncokkal – standard szintű vezérlése](cdn-query-string.md).
 >
 
 
-Lekérdezés-karakterlánc három módot érhetők el:
+Lekérdezési karakterlánc három mód érhetők el:
 
-- **Standard-gyorsítótár**: alapértelmezett mód. Ebben a módban a CDN nyújtó jelenléti pontra (POP) csomópont megfelel a lekérdezési karakterláncok a kérelmezőnek az az eredeti kiszolgálóra az első kérésre, és az eszköz gyorsítótárazza. Az összes további kérelmet az eszköz a kiszolgáló POP szolgáltatott figyelmen kívül hagyja a lekérdezési karakterláncok eléréséig a gyorsítótárazott objektumhoz.
+- **Standard – gyorsítótár**: alapértelmezett mód. Ebben a módban a CDN jelenléti pontok (POP) csomópontot adja át a lekérdezési karakterláncok a kérelmezőnek az eredeti kiszolgálóra első kérésére, és gyorsítótárba helyezi az eszközt. Az összes további kérelmet az eszköz a kiszolgáló POP fájlnévkiterjesztései a lekérdezési karakterláncok figyelmen kívül, amíg le nem jár a gyorsítótárazott objektumhoz.
 
     >[!IMPORTANT] 
-    > Token engedélyezési bármilyen útvonalat ehhez a fiókhoz engedélyezett, ha a standard-gyorsítótár üzemmódban az egyetlen mód használható. 
+    > Token használata engedélyezve van a bármilyen útvonalat ehhez a fiókhoz, standard-gyorsítótáras üzemmód-e a mód, amely használható. 
 
-- **no-cache**: Ebben a módban a lekérdezési karakterláncot tartalmazó kérelmek nem gyorsítótárazzák a CDN POP-ra a csomóponton. A POP-csomópont veszi át az objektumot közvetlenül a forráskiszolgálóról, és minden egyes kérelemmel a kérelmező számára továbbítja azokat.
+- **no-cache**: Ebben a módban lekérdezési karakterláncot tartalmazó kérelmek nincsenek gyorsítótárazva a CDN összes jelenléti Pontjára csomópontban. A POP-csomópont átveszi az eszköz közvetlenül a forráskiszolgálóról, és átadja azokat a kérelmezőnek minden egyes kérelemmel.
 
-- **egyedi gyorsítótár**: Ebben a módban egy egyedi URL-cím, beleértve a lekérdezési karakterlánc minden kérelmet egy egyedi objektum saját gyorsítótár számít. Például a forráskiszolgálóról example.ashx?q=test1 kérelmet a válaszban gyorsítótárba helyezte a POP-csomópont, és későbbi gyorsítótárak az azonos lekérdezési karakterláncot adott vissza. Saját idő a működés közbeni beállítású külön eszközként example.ashx?q=test2 kérelmet gyorsítótárazza.
+- **egyedi gyorsítótár**: Ebben a módban egy egyedi URL-címet, a lekérdezési karakterlánc, beleértve az egyes kérelmek egyedi saját gyorsítótár-eszközként kezelni. Például example.ashx?q=test1 a kérelmek származási kiszolgálótól kapott válasz van a POP-csomópont is gyorsítótárazza, és az ezt követő gyorsítótárakhoz, az ugyanabban a lekérdezési karakterláncban adja vissza. Example.ashx?q=test2 kérelmet a saját time-to-live-beállítással külön eszközként van gyorsítótárazva.
    
     >[!IMPORTANT] 
-    > Ne használja ezt a módot, ha a lekérdezési karakterlánc minden kérelemnél, például egy munkamenet-Azonosítót vagy egy felhasználónevet, változik paramétereket tartalmaz, mert egy kis gyorsítótár találati arány okoz.
+    > Ne használja ezt a módot, ha a lekérdezési karakterlánc paraméterek, amely minden egyes kérelemmel, például a munkamenet-azonosító vagy a felhasználó neve, változást tartalmaz, mert egy alacsony gyorsítótár találati aránya eredményez.
 
-## <a name="changing-query-string-caching-settings-for-premium-cdn-profiles"></a>Lekérdezési karakterláncok gyorsítótárazásának prémium szintű CDN-profil beállításainak módosítása
-1. Nyissa meg a CDN-profilt, majd kattintson a **kezelése**.
+## <a name="changing-query-string-caching-settings-for-premium-cdn-profiles"></a>Lekérdezési karakterláncok gyorsítótárazásának prémium szintű CDN-profilokban használható beállítások módosítása
+1. Nyisson meg egy CDN-profilt, majd kattintson a **kezelés**.
    
-    ![CDN-profil Manage gomb](./media/cdn-query-string-premium/cdn-manage-btn.png)
+    ![A CDN-profil felügyelet gombra](./media/cdn-query-string-premium/cdn-manage-btn.png)
    
-    Megnyitja a CDN-felügyeleti portálon.
-2. Vigye a **HTTP nagy** lapra, és vigye a **gyorsítótár beállításainak** úszó menüje. Kattintson a **lekérdezési karakterlánc-gyorsítótár**.
+    Megnyílik a CDN felügyeleti portálját.
+2. A kurzort a **HTTP nagy** lapfülre, majd mutasson a **gyorsítótár beállításainak** úszó menüjét. Kattintson a **lekérdezési karakterlánc gyorsítótárazási**.
    
     Lekérdezési karakterlánc gyorsítótárazási beállítások jelennek meg.
    
-    ![A CDN a lekérdezési karakterláncban a gyorsítótár](./media/cdn-query-string-premium/cdn-query-string.png)
-3. Válassza ki az lekérdezési karakterláncot, majd kattintson az **frissítés**.
+    ![A CDN-lekérdezési karakterlánc gyorsítótárazási beállítások](./media/cdn-query-string-premium/cdn-query-string.png)
+3. Válasszon ki egy lekérdezési karakterlánc módot, majd kattintson a **frissítés**.
 
 > [!IMPORTANT]
-> A regisztráció CDN propagálásához időt vesz igénybe, mert a gyorsítótár karakterlánc módosításait nem feltétlenül jelennek meg azonnal. Propagálása általában befejezi 10 perc múlva.
+> Mivel némi időre a regisztráció propagálásához a CDN-en keresztül, gyorsítótár karakterlánc módosításai nem jelennek meg azonnal. A propagálás általában 10 perc múlva befejeződik.
  
 

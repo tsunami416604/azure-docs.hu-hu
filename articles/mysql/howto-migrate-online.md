@@ -8,13 +8,13 @@ manager: kfile
 editor: jasonwhowell
 ms.service: mysql
 ms.topic: article
-ms.date: 06/21/2018
-ms.openlocfilehash: 55d5cf97225508d6c7c490347cfe21ced832300e
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.date: 10/11/2018
+ms.openlocfilehash: cb2e1a34748875de9c7f8dd59be27c408ec82818
+ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44091717"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49090331"
 ---
 # <a name="minimal-downtime-migration-to-azure-database-for-mysql"></a>Migrálás minimális állásidővel az Azure Database for MySQL-hez
 Hajthat végre MySQL migrálást az Azure Database for MySQL-hez minimális állásidővel segítségével az újonnan bevezetett **folyamatos szinkronizálás képesség** számára a [Azure Database Migration Service](https://aka.ms/get-dms) (DMS). Ez a funkció az alkalmazás által felmerülő állásidő mennyiségét korlátozza.
@@ -28,4 +28,4 @@ A DMS hajt végre egy kezdeti betöltése a helyszíni az Azure Database for MyS
 
 ## <a name="next-steps"></a>További lépések
 - A videó megtekintésének [egyszerűen migrálhatja a MySQL/PostgreSQL a felügyelt alkalmazások az Azure-bA](https://medius.studios.ms/Embed/Video/THR2201?sid=THR2201), amely tartalmaz egy MySQL-alkalmazások migrálása az Azure Database for MySQL-hez való ismertető bemutató.
-- [MySQL migrálása az Azure Database for MySQL-hez a DMS használatával online] (https://docs.microsoft.com/azure/dms/tutorial-mysql-azure-mysql-online).
+- Lásd a következő oktatóanyagot [MySQL Migrálása az Azure Database for MySQL-hez a DMS használatával online](https://docs.microsoft.com/azure/dms/tutorial-mysql-azure-mysql-online).

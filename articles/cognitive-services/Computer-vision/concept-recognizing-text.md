@@ -10,12 +10,12 @@ ms.component: computer-vision
 ms.topic: conceptual
 ms.date: 08/29/2018
 ms.author: v-deken
-ms.openlocfilehash: 49cba0e9b6958beb07b6f074e6dc748679514525
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: 2a77306f408e87d5055a292d6f403cc041790eba
+ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45985311"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49093867"
 ---
 # <a name="recognizing-printed-and-handwritten-text"></a>Nyomtatott és kézzel írt szöveg felismerése
 
@@ -29,7 +29,7 @@ Számítógépes Látástechnológia képesek felismerni a képeken az alábbi k
 
 - A kép be kell mutatni, JPEG, PNG vagy BMP formátumban
 - A fájlméret nem érheti el a 4 megabájtot (MB)
-- A kép mérete 40 x 40 és 3200 x 3200 képpontban kell esnie
+- A kép mérete 50 x 50 és 4200 x 4200 képpontban kell esnie
 
 > [!NOTE]
 > Ez a technológia jelenleg előzetes verzióban és csak angol nyelvre érhető el.

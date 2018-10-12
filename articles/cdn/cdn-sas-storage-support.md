@@ -1,10 +1,10 @@
 ---
-title: Az Azure CDN használatával a SAS használatával |} Microsoft Docs
-description: Az Azure CDN a közös hozzáférésű Jogosultságkód (SAS) korlátozott hozzáférést biztosít a tároló titkos használatát támogatja.
+title: SAS használatával Azure CDN szolgáltatás használata |} A Microsoft Docs
+description: Az Azure CDN támogatja a közös hozzáférésű Jogosultságkód (SAS) korlátozott hozzáférést privát storage-tárolók használatát.
 services: cdn
 documentationcenter: ''
-author: dksimpson
-manager: cfowler
+author: mdgattuso
+manager: danielgi
 editor: ''
 ms.assetid: ''
 ms.service: cdn
@@ -13,29 +13,29 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/21/2018
-ms.author: v-deasim
-ms.openlocfilehash: 15a4e0a8d62b38fa7aa542d95e53d29621965666
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
+ms.author: magattus
+ms.openlocfilehash: 7180e51a6ac1392e4a3f072097b1aeef3648c605
+ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "36316568"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49093289"
 ---
-# <a name="using-azure-cdn-with-sas"></a>Az Azure CDN használatával a SAS használatával
+# <a name="using-azure-cdn-with-sas"></a>SAS használatával Azure CDN szolgáltatás használata
 
-Miután beállította a storage-fiók az Azure tartalom Delivery Network (CDN) alapértelmezés szerint a gyorsítótár teljes tartalmát, segítségével bárki, aki ismeri a tárolókban URL-férhetnek hozzá az Ön által feltöltött fájlok. A tárfiókban lévő fájlok védelme érdekében beállíthatja a tárolókban magán a nyilvános elérhetőségét. Azonban ha így tesz, nem fogja tudni érni a fájlokat. 
+Beállításakor egy storage-fiókot az Azure tartalom Delivery Network (CDN) használatához a tartalmak gyorsítótárazására alapértelmezés szerint bárki, aki ismeri a storage-tárolók URL-hozzáférhet az Ön által feltöltött fájlokat. A storage-fiókban a fájlok védelméhez, állíthatja be a hozzáférést, a storage-tárolók a nyilvános, privát. Azonban ha így tesz, senki nem fogja tudni elérni a fájlokat. 
 
-Ha azt szeretné, korlátozott hozzáférést biztosít a tároló privát, használhatja a közös hozzáférésű Jogosultságkód (SAS) szolgáltatást, az Azure-tárfiókot. SAS-kód egy URI-t, hogy biztosít anélkül, hogy a fiókkulcs hozzáférési jogosultsága ahhoz, hogy az Azure Storage-erőforrások korlátozva. SAS-kód nem bízik meg a tárfiók kulcsára, az ügyfelek, de, akinek kíván hozzáférést biztosíthat bizonyos tárfiók erőforrásainak biztosíthat. Azáltal, hogy a közös hozzáférésű jogosultságkód URI ezekre az ügyfelekre, akkor adja meg számukra erőforráshoz való hozzáférés egy megadott ideig.
+Ha korlátozott hozzáférést szeretne adni privát tárolókhoz, használhatja Azure-tárfiókjának közös hozzáférésű jogosultságkód (SAS) funkcióját. A SAS olyan URI, amely az Azure Storage erőforrásainak korlátozott hozzáférési jogosultságát biztosítja anélkül, hogy közzétenné a fiók kulcsát. Megadhat egy SAS nem bízik meg a tárfiók kulcsának az ügyfeleken, de szeretne egyes storage-fiók erőforrásokhoz való hozzáférés delegálására. Közös hozzáférésű jogosultságkód URI ezen ügyfeleknek való elosztásával hozzáférést biztosít számukra egy erőforráshoz egy megadott ideig.
  
-SAS-kód, a szolgáltatás segítségével megadhatja a hozzáférés különböző paraméterek egy blobba, például a kezdő és lejárati idejét, engedélyek (olvasás/írás) és IP-címtartományok. Ez a cikk ismerteti a SAS, az Azure CDN együtt használja. További információ a SAS-figyeléséről, valamint azt, és a paraméter beállítások létrehozásához lásd: [használata közös hozzáférésű jogosultságkód (SAS)](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1).
+A SAS használatával megadhat paramétereket, amelyek különböző hozzáférés egy blobba, például a kezdő és lejárati idejét, engedéllyel (olvasás/írás) és IP-címtartományok. Ez a cikk ismerteti az Azure CDN együttes SAS használatával. SAS, beleértve a hogyan hozhat létre, és a paraméterbeállításokkal kapcsolatos további részletekért lásd: [a közös hozzáférésű jogosultságkód (SAS)](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1).
 
-## <a name="setting-up-azure-cdn-to-work-with-storage-sas"></a>Azure CDN beállítani, hogy a tároló SAS
-A következő három módon SAS használatával az Azure CDN szolgáltatás használata ajánlott. Minden beállítás azt feltételezik, hogy már létrehozott egy működő SAS (lásd). 
+## <a name="setting-up-azure-cdn-to-work-with-storage-sas"></a>Az storage SAS használatához az Azure CDN beállítása
+A következő három módon SAS használatával az Azure CDN használata javasolt. Minden beállítás azt feltételezik, hogy már létrehozott egy működő SAS (lásd az Előfeltételek). 
  
 ### <a name="prerequisites"></a>Előfeltételek
-Indítsa el, hozzon létre egy tárfiókot, és előállít egy SAS-kód az eszközhöz. Kétféle tárolt hozzáférési aláírásokkal hozhat létre: a szolgáltatásalapú SAS- vagy SAS fiókkal. További információkért lásd: [közös hozzáférésű jogosultságkód típusú](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1#types-of-shared-access-signatures).
+Először hozzon létre egy tárfiókot, és ezután hozza létre az eszközhöz tartozó SAS. Tárolt hozzáférési aláírások két típusú is létrehozhat: a szolgáltatásalapú SAS vagy egy SAS-fiókot. További információkért lásd: [közös hozzáférésű jogosultságkódok típusú](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1#types-of-shared-access-signatures).
 
-A SAS-jogkivonat létrehozását követően érhető el a blob storage fájl hozzáfűzése `?sv=<SAS token>` az URL-címre. Az URL-cím formátuma a következő: 
+SAS-token létrehozását követően érheti el a blob storage-fájl hozzáfűzése `?sv=<SAS token>` az URL-címre. Az URL-cím formátuma a következő: 
 
 `https://<account name>.blob.core.windows.net/<container>/<file>?sv=<SAS token>`
  
@@ -44,19 +44,19 @@ Példa:
 https://democdnstorage1.blob.core.windows.net/container1/demo.jpg?sv=2017-07-29&ss=b&srt=co&sp=r&se=2038-01-02T21:30:49Z&st=2018-01-02T13:30:49Z&spr=https&sig=QehoetQFWUEd1lhU5iOMGrHBmE727xYAbKJl5ohSiWI%3D
 ```
 
-Beállítás paraméterekkel kapcsolatos további információkért lásd: [SAS paraméter szempontok](#sas-parameter-considerations) és [megosztott hozzáférési aláírást paraméterek](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1#shared-access-signature-parameters).
+Beállítás-paraméterekkel kapcsolatos további információkért lásd: [SAS paraméter szempontok](#sas-parameter-considerations) és [közös hozzáférési aláírási paraméterek](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1#shared-access-signature-parameters).
 
 ![CDN SAS-beállítások](./media/cdn-sas-storage-support/cdn-sas-settings.png)
 
-### <a name="option-1-using-sas-with-pass-through-to-blob-storage-from-azure-cdn"></a>1. lehetőség: SAS használatával csatlakoztatott a blob Storage Azure CDN
+### <a name="option-1-using-sas-with-pass-through-to-blob-storage-from-azure-cdn"></a>1. lehetőség: SAS használata a csatlakoztatott a blob storage-bA az Azure CDN szolgáltatással
 
-Ez a beállítás a legegyszerűbb, és egyetlen SAS tokent, az eredeti kiszolgálóra átadott Azure CDN használ. Támogatják a **Azure CDN Standard verizon** és **Azure CDN Standard Akamai** profilok. 
+Ez a beállítás a legegyszerűbben, és a egy SAS-jogkivonatát, amelyet az Azure CDN a forráskiszolgáló használja. Támogatják a **Azure CDN Standard verizon** és **Azure CDN Akamai Standard** profilok. 
  
-1. Válasszon ki egy végpontot, jelölje be **szabályok gyorsítótárazás**, majd jelölje be **minden egyedi URL-cím gyorsítótárazása** a a **lekérdezési karakterláncok gyorsítótárazása** listája.
+1. Válassza ki a végpont kiválasztása **gyorsítótár-szabályokkal**, majd **minden egyedi URL gyorsítótárazása** a a **lekérdezési karakterláncok gyorsítótárazása** lista.
 
-    ![CDN-gyorsítótárazási szabályok](./media/cdn-sas-storage-support/cdn-caching-rules.png)
+    ![CDN gyorsítótárazási szabályok](./media/cdn-sas-storage-support/cdn-caching-rules.png)
 
-2. Telepítése után SAS a tárfiókon, a fájl eléréséhez a CDN végpont és a forrás URL-eket kell használnia a SAS-jogkivonat. 
+2. SAS a tárfiókon beállította az CDN endpoint és a forrás URL-a SAS-jogkivonat kell használnia a fájl elérésére. 
    
    Az eredményül kapott CDN végponti URL-cím formátuma a következő: `https://<endpoint hostname>.azureedge.net/<container>/<file>?sv=<SAS token>`
 
@@ -65,19 +65,19 @@ Ez a beállítás a legegyszerűbb, és egyetlen SAS tokent, az eredeti kiszolg�
    https://demoendpoint.azureedge.net/container1/demo.jpg/?sv=2017-07-29&ss=b&srt=c&sp=r&se=2027-12-19T17:35:58Z&st=2017-12-19T09:35:58Z&spr=https&sig=kquaXsAuCLXomN7R00b8CYM13UpDbAHcsRfGOW3Du1M%3D
    ```
    
-3. A gyorsítótárazás időtartama finomhangolásához gyorsítótárazási szabályokkal vagy hozzáadásával `Cache-Control` fejlécek az eredeti kiszolgálón. Azure CDN kezeli a SAS-jogkivonat egyszerű lekérdezési karakterláncként, mert ajánlott eljárásként érdemes beállítania gyorsítótárazás időtartama. vagy az azelőtti a SAS-lejárati idő lejár. Ellenkező esetben a fájlt a hosszabb ideig tart, mint a biztonsági Társítások aktív gyorsítótárazza, ha a fájl esetleg érhető el az Azure CDN eredeti kiszolgálóra a SAS-lejárati idő eltelte után. Ha ez a helyzet akkor fordul elő, és engedélyezni szeretné a gyorsítótárazott fájl nem érhető el, végezze el a kiürítési művelet a fájl, törölje a jelölést a gyorsítótárból. A gyorsítótárazás időtartama az Azure CDN beállításával kapcsolatos információkért lásd: [vezérlő Azure CDN szolgáltatás használata a szabályok gyorsítótárazással gyorsítótárazásának](cdn-caching-rules.md).
+3. A gyorsítótárazás időtartama finomhangolása gyorsítótárazási szabályok segítségével, vagy a hozzáadásával `Cache-Control` fejlécek a forrás-kiszolgálón. Mivel az Azure CDN a SAS-jogkivonat kezeli az egyszerű lekérdezési karakterláncként, ajánlott eljárásként érdemes beállítania a gyorsítótárazás időtartamát, vagy az előtt a SAS-lejárati idő lejár. Ellenkező esetben, ha egy fájlt a rendszer több, mint a biztonsági Társítások aktív hosszabb időre gyorsítótárazza, a fájl valószínűleg elérhető az Azure CDN origin kiszolgálóról a SAS-lejárati idő eltelte után. Ha ez a helyzet akkor fordul elő, és azt szeretné, hogy a gyorsítótárazott fájl nem érhető el, törölje a jelölést a gyorsítótárból a fájl egy kiürítési műveletet kell végrehajtania. Az Azure CDN a gyorsítótárazás idejének beállításával kapcsolatos további információkért lásd: [vezérlő Azure CDN gyorsítótárazási viselkedésének gyorsítótár-szabályokkal](cdn-caching-rules.md).
 
-### <a name="option-2-hidden-cdn-sas-token-using-a-rewrite-rule"></a>2. lehetőség: Rejtett átdolgozás szabállyal CDN SAS-jogkivonat
+### <a name="option-2-hidden-cdn-sas-token-using-a-rewrite-rule"></a>2. lehetőség: A rejtett CDN SAS jogkivonat-átírási szabály használatával
  
-Ez a beállítás csak akkor **verizon Azure CDN Premium** profilok. Ezzel a beállítással biztosíthatja a blob-tárolóból a(z) az eredeti kiszolgálóra. Érdemes lehet használja ezt a beállítást, ha nincs szükség speciális hozzáférési korlátozásokat a fájl, de szeretné akadályozni, hogy a felhasználók közvetlenül az Azure CDN kiszervezési alkalommal javítása érdekében a tárolási forrás eléréséhez. A SAS-jogkivonat, amely a felhasználó számára ismeretlen, bárki, aki a fájlokat az eredeti kiszolgálóra tárolócsoportbeli blobtároló eléréséhez szükség. Azonban az URL-újraíró szabály miatt a SAS-jogkivonat nem szükséges a CDN-végpontot.
+Ez a beállítás csak érhető el **verizon Azure CDN Premium** profilok. Ezzel a beállítással gondoskodhat a blob-tárolóból az eredeti kiszolgálóra. Előfordulhat, hogy szeretné használja ezt a beállítást, ha nem szükséges különleges hozzáférési korlátozásokat a fájlt, de szeretné akadályozni, hogy a felhasználók közvetlenül az Azure CDN kiszervezési idők javítása érdekében a tároló forrás eléréséhez. A SAS-jogkivonat, amely a felhasználó ismeretlen, bárki fájlokat az eredeti kiszolgálóra a blobtároló eléréséhez szükség. Azonban az URL-Újraírási szabályt, mert a SAS-jogkivonat nem szükséges a CDN-végponton.
  
-1. Használja a [szabálymotor](cdn-rules-engine.md) URL-újraíró szabály létrehozásához. Új szabályok körülbelül 10 percig propagálása igénybe vehet.
+1. Használja a [szabálymotorral](cdn-rules-engine.md) URL-újraíró szabály létrehozásához. Új szabályok a propagálása körülbelül 10 percet igénybe vehet.
 
    ![CDN kezelése gomb](./media/cdn-sas-storage-support/cdn-manage-btn.png)
 
-   ![CDN szabályok motor gomb](./media/cdn-sas-storage-support/cdn-rules-engine-btn.png)
+   ![CDN szabálymotor gomb](./media/cdn-sas-storage-support/cdn-rules-engine-btn.png)
 
-   Az alábbi minta URL-újraíró szabály egy reguláris kifejezési minta használ rögzítésével csoport és egy végpontot, nevű *storagedemo*:
+   Az alábbi minta URL-újraíró szabály egy reguláris kifejezési mintája rögzítését csoport és a egy nevű végpontot használ *storagedemo*:
    
    Forrás:   
    `(\/container1\/.*)`
@@ -86,24 +86,24 @@ Ez a beállítás csak akkor **verizon Azure CDN Premium** profilok. Ezzel a be�
    ```
    $1?sv=2017-07-29&ss=b&srt=c&sp=r&se=2027-12-19T17:35:58Z&st=2017-12-19T09:35:58Z&spr=https&sig=kquaXsAuCLXomN7R00b8CYM13UpDbAHcsRfGOW3Du1M%3D
    ```
-   ![CDN-URL-újraíró szabály - balra](./media/cdn-sas-storage-support/cdn-url-rewrite-rule.png)
-   ![CDN URL-újraíró szabály – jobb oldali](./media/cdn-sas-storage-support/cdn-url-rewrite-rule-option-2.png)
+   ![A CDN URL-újraíró szabály – bal](./media/cdn-sas-storage-support/cdn-url-rewrite-rule.png)
+   ![CDN URL-újraíró szabály – jobbra](./media/cdn-sas-storage-support/cdn-url-rewrite-rule-option-2.png)
 
-2. Után az új szabály válik aktívvá, bárki hozzáférhet a megadott tároló a CDN-végpont, függetlenül attól, hogy használatát egy SAS-jogkivonatot az URL-címben lévő fájlok. A formátum a következő: `https://<endpoint hostname>.azureedge.net/<container>/<file>`
+2. Miután az új szabály aktiválódásakor, bárki hozzáférhet a CDN-végpont, függetlenül attól, hogy használatát egy SAS-token az URL-címben lévő fájlok a megadott tároló. A következő formátumban: `https://<endpoint hostname>.azureedge.net/<container>/<file>`
  
    Példa:   
    `https://demoendpoint.azureedge.net/container1/demo.jpg`
        
 
-3. A gyorsítótárazás időtartama finomhangolásához gyorsítótárazási szabályokkal vagy hozzáadásával `Cache-Control` fejlécek az eredeti kiszolgálón. Azure CDN kezeli a SAS-jogkivonat egyszerű lekérdezési karakterláncként, mert ajánlott eljárásként érdemes beállítania gyorsítótárazás időtartama. vagy az azelőtti a SAS-lejárati idő lejár. Ellenkező esetben a fájlt a hosszabb ideig tart, mint a biztonsági Társítások aktív gyorsítótárazza, ha a fájl esetleg érhető el az Azure CDN eredeti kiszolgálóra a SAS-lejárati idő eltelte után. Ha ez a helyzet akkor fordul elő, és engedélyezni szeretné a gyorsítótárazott fájl nem érhető el, végezze el a kiürítési művelet a fájl, törölje a jelölést a gyorsítótárból. A gyorsítótárazás időtartama az Azure CDN beállításával kapcsolatos információkért lásd: [vezérlő Azure CDN szolgáltatás használata a szabályok gyorsítótárazással gyorsítótárazásának](cdn-caching-rules.md).
+3. A gyorsítótárazás időtartama finomhangolása gyorsítótárazási szabályok segítségével, vagy a hozzáadásával `Cache-Control` fejlécek a forrás-kiszolgálón. Mivel az Azure CDN a SAS-jogkivonat kezeli az egyszerű lekérdezési karakterláncként, ajánlott eljárásként érdemes beállítania a gyorsítótárazás időtartamát, vagy az előtt a SAS-lejárati idő lejár. Ellenkező esetben, ha egy fájlt a rendszer több, mint a biztonsági Társítások aktív hosszabb időre gyorsítótárazza, a fájl valószínűleg elérhető az Azure CDN origin kiszolgálóról a SAS-lejárati idő eltelte után. Ha ez a helyzet akkor fordul elő, és azt szeretné, hogy a gyorsítótárazott fájl nem érhető el, törölje a jelölést a gyorsítótárból a fájl egy kiürítési műveletet kell végrehajtania. Az Azure CDN a gyorsítótárazás idejének beállításával kapcsolatos további információkért lásd: [vezérlő Azure CDN gyorsítótárazási viselkedésének gyorsítótár-szabályokkal](cdn-caching-rules.md).
 
-### <a name="option-3-using-cdn-security-token-authentication-with-a-rewrite-rule"></a>3. lehetőség: CDN biztonsági tokent használó hitelesítés használata az átírást szabály
+### <a name="option-3-using-cdn-security-token-authentication-with-a-rewrite-rule"></a>3. lehetőség: Egy újraírási szabályt CDN biztonsági jogkivonat-hitelesítés használata
 
-Azure CDN biztonsági tokent használó hitelesítés használatához rendelkeznie kell egy **verizon Azure CDN Premium** profil. Ez a beállítás értéke a legbiztonságosabb és testre szabható. Ügyfél-hozzáférési biztonsági paramétereket, be kell állítani a biztonsági jogkivonat alapul. Miután létrehozott, és állítsa be a biztonsági jogkivonat, akkor igényel az összes CDN végpont URL-cím. Azonban az URL-újraíró szabály miatt a SAS-jogkivonat nem szükséges a CDN-végpontot. A SAS-jogkivonat később érvénytelenné válik, ha Azure CDN már nem lesz képes kísérelje meg újra érvényesítését a tartalmat a forráskiszolgálóról.
+Az Azure CDN biztonsági jogkivonat-hitelesítés használatához rendelkeznie kell egy **verizon Azure CDN Premium** profilt. Ez a beállítás akkor a legbiztonságosabb és testre szabható. Ügyfél-hozzáférési a biztonsági paraméterek, amelyet a biztonsági jogkivonat alapján. Miután létrehozott és állítsa be a biztonsági jogkivonatot, akkor lesz szükség az összes CDN végponti URL-címek. Azonban az URL-Újraírási szabályt, mert a SAS-jogkivonat nem szükséges a CDN-végponton. A SAS-jogkivonat később érvénytelenné válik, ha az Azure CDN már nem lesz képes kísérelje meg újra érvényesítését a tartalmat a forráskiszolgálóról.
 
-1. [Hozzon létre egy Azure CDN biztonsági jogkivonatot](https://docs.microsoft.com/azure/cdn/cdn-token-auth#setting-up-token-authentication) , és aktiválja a szabálymotor segítségével a CDN-végpont és az elérési utat, ahol a felhasználók férhetnek hozzá a fájl.
+1. [Hozzon létre egy Azure CDN biztonsági jogkivonat](https://docs.microsoft.com/azure/cdn/cdn-token-auth#setting-up-token-authentication) , és aktiválja a rules engine használatával a CDN-végpont és az elérési utat, ahol a felhasználók férhetnek hozzá a fájlhoz.
 
-   A biztonsági token-végpont URL-cím formátuma a következő:   
+   Egy biztonsági jogkivonat-végpont URL-cím formátuma a következő:   
    `https://<endpoint hostname>.azureedge.net/<container>/<file>?<security_token>`
  
    Példa:   
@@ -111,11 +111,11 @@ Azure CDN biztonsági tokent használó hitelesítés használatához rendelkezn
    https://demoendpoint.azureedge.net/container1/demo.jpg?a4fbc3710fd3449a7c99986bkquaXsAuCLXomN7R00b8CYM13UpDbAHcsRfGOW3Du1M%3D
    ```
        
-   Egy biztonsági tokent használó hitelesítés paraméter beállításai eltérnek a paraméter egy SAS-jogkivonat-beállításait. Ha szeretne használni, amikor létrehoz egy biztonsági jogkivonatot lejárati időt, akkor kell beállítania a SAS-jogkivonat lejárati idejének értékét. Ezzel biztosítja, hogy a lejárati idő előre jelezhető. 
+   A paraméterbeállításokkal a biztonsági jogkivonat-hitelesítésre eltérnek a paraméterbeállításokkal egy SAS-token. Amikor létrehoz egy biztonsági jogkivonat lejárati idő használatát választja, ha az értéke megegyezik a SAS-jogkivonat lejárati idejének kell beállítania. Így biztosítható, hogy kiszámítható legyen-e a lejárati időt. 
  
-2. Használja a [szabálymotor](cdn-rules-engine.md) újraeléréséhez SAS-token összes BLOB a tárolóban levő URL-újraíró szabály létrehozásához. Új szabályok körülbelül 10 percig propagálása igénybe vehet.
+2. Használja a [szabálymotorral](cdn-rules-engine.md) SAS-token hozzáférést a tárolóban lévő összes BLOB URL-újraíró szabály létrehozásához. Új szabályok a propagálása körülbelül 10 percet igénybe vehet.
 
-   Az alábbi minta URL-újraíró szabály egy reguláris kifejezési minta használ rögzítésével csoport és egy végpontot, nevű *storagedemo*:
+   Az alábbi minta URL-újraíró szabály egy reguláris kifejezési mintája rögzítését csoport és a egy nevű végpontot használ *storagedemo*:
    
    Forrás:   
    `(\/container1\/.*)`
@@ -124,26 +124,26 @@ Azure CDN biztonsági tokent használó hitelesítés használatához rendelkezn
    ```
    $1&sv=2017-07-29&ss=b&srt=c&sp=r&se=2027-12-19T17:35:58Z&st=2017-12-19T09:35:58Z&spr=https&sig=kquaXsAuCLXomN7R00b8CYM13UpDbAHcsRfGOW3Du1M%3D
    ```
-   ![CDN-URL-újraíró szabály - balra](./media/cdn-sas-storage-support/cdn-url-rewrite-rule.png)
-   ![CDN URL-újraíró szabály – jobb oldali](./media/cdn-sas-storage-support/cdn-url-rewrite-rule-option-3.png)
+   ![A CDN URL-újraíró szabály – bal](./media/cdn-sas-storage-support/cdn-url-rewrite-rule.png)
+   ![CDN URL-újraíró szabály – jobbra](./media/cdn-sas-storage-support/cdn-url-rewrite-rule-option-3.png)
 
-3. A biztonsági Társítások újítsa meg, ha győződjön meg arról, hogy az URL-újraíró szabály frissíti az új SAS-jogkivonat. 
+3. Ha megújítja az SAS, győződjön meg arról, hogy az új SAS-jogkivonat használatával frissítse az Url-Újraírási szabályt. 
 
-## <a name="sas-parameter-considerations"></a>SAS paraméter kapcsolatos szempontok
+## <a name="sas-parameter-considerations"></a>SAS paraméterrel kapcsolatos szempontok
 
-SAS-paraméterek és Azure CDN nem láthatók el, mert a Azure CDN nem módosítható a kézbesítési viselkedését őket. A megadott paraméter csak a kérelmek Azure CDN teszi lehetővé az eredeti kiszolgálóra Azure CDN szolgáltatás használata az ügyfél irányuló kérelmek esetén nem érvényesek. Ezt a különbséget fontos figyelembe venni, ha úgy állítja be a SAS-paraméterek. Ha ezeket a lehetőségeket speciális szükségesek, és használja [beállítás 3](#option-3-using-cdn-security-token-authentication-with-a-rewrite-rule), a megfelelő korlátozások beállítása az Azure CDN biztonsági jogkivonatot.
+SAS-paraméterek az Azure CDN nem láthatók el, mert az Azure CDN azokon kézbesítési működését nem módosítható. A paraméter van megadva korlátozások vonatkoznak, csak a kéréseket, amelyek az Azure CDN a forráskiszolgáló, az ügyfél kéréseit, az Azure CDN esetében nem hajt végre. Ezt a különbséget fontos figyelembe venni a SAS-paraméterek beállításakor. Ha ezeket a speciális funkciók szükségesek, és használja [beállítást 3](#option-3-using-cdn-security-token-authentication-with-a-rewrite-rule), a megfelelő korlátozások beállítása az Azure CDN biztonsági jogkivonatot.
 
 | SAS-paraméter neve | Leírás |
 | --- | --- |
-| Indítás | Az az idő, amely az Azure CDN szolgáltatás használata akkor kezdhető meg, a blob-fájl elérésére. Óra miatt döntés (érkezésekor egy órajel különböző időpontokban különböző összetevők), válassza ki a időpontot korábbi 15 perc, ha azt szeretné, azonnal elérhetővé válik, hogy az eszköz. |
-| Befejezés | Az az idő elteltével Azure CDN szolgáltatás használata már nem tud hozzáférni a blob-fájlt. Korábban a gyorsítótárazott Azure CDN szolgáltatás használata a fájlok továbbra is elérhetők maradnak. A fájl lejárati idejének szabályozása, a megfelelő lejárati idő beállítása az Azure CDN biztonsági jogkivonat, vagy az eszköz törlése. |
-| Engedélyezett IP-címek | Választható. Ha használ **Azure CDN Verizon**, ennek a paraméternek is beállíthatja a meghatározott tartományok [peremhálózati kiszolgáló IP-címtartományok Verizon Azure CDN](https://msdn.microsoft.com/library/mt757330.aspx). Ha használ **Akamai Azure CDN**, az IP-címtartományok paraméter nem állítható be, mert az IP-címei nem statikus.|
-| Megengedett protokollok | A SAS-fiókkal kérelme engedélyezett protokollokkal. A HTTPS beállítás ajánlott.|
+| Indítás | Az az idő, amely az Azure CDN megkezdheti a blob fájl elérésére. Óra miatt tevékenységdiagramon (érkezésekor óra jel különböző időpontokban különböző összetevők), válassza a 15 perccel korábbi, ha azt szeretné, hogy az eszköz azonnal elérhető legyen. |
+| Befejezés | Az idő, amely után az Azure CDN már nem tud hozzáférni a blobfájlba. Előzőleg gyorsítótárazott Azure CDN-en fájlok továbbra is elérhető. Szabályozhatja a lejárati időpont, vagy a megfelelő lejárati idő beállítása az Azure CDN biztonsági jogkivonat, vagy az eszköz törlése. |
+| Engedélyezett IP-címek | Választható. Ha használ **verizon Azure CDN**, és a meghatározott tartományok ezzel a paraméterrel megadható [Azure CDN a Verizon peremhálózati kiszolgáló IP-címtartományok](https://msdn.microsoft.com/library/mt757330.aspx). Ha használ **Akamai Azure CDN**, az IP-címtartományok paraméter nem állítható be, mert nem statikus IP-címeket.|
+| Engedélyezett protokollok | Az a fiók SAS kódjával végzett kérelemhez engedélyezett protokoll(ok). A HTTPS beállítás ajánlott.|
 
 ## <a name="next-steps"></a>További lépések
 
-További információ a SAS tekintse meg a következő cikkeket:
-- [Közös hozzáférésű jogosultságkód (SAS) használatával](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1)
-- [Közös hozzáférésű Jogosultságkód, 2. rész: Létrehozása és SAS-kód használata a Blob-tároló](https://docs.microsoft.com/azure/storage/blobs/storage-dotnet-shared-access-signature-part-2)
+SAS kapcsolatos további információkért tekintse meg a következő cikkeket:
+- [Közös hozzáférésű jogosultságkódok (SAS) használata](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1)
+- [A közös hozzáférésű Jogosultságkódot, 2. rész: Hozzon létre, és használhatja az SAS-Blob-tárolóval](https://docs.microsoft.com/azure/storage/blobs/storage-dotnet-shared-access-signature-part-2)
 
-Jogkivonat hitelesítési beállításával kapcsolatos további információkért lásd: [védelmét biztosító Azure Content Delivery Network eszközök token hitelesítéssel](https://docs.microsoft.com/azure/cdn/cdn-token-auth).
+Jogkivonat-hitelesítés beállításával kapcsolatos további információkért lásd: [biztonságossá tétele az Azure Content Delivery Network objektumok jogkivonat-hitelesítéssel](https://docs.microsoft.com/azure/cdn/cdn-token-auth).

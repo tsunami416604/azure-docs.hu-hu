@@ -5,21 +5,23 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 07/03/2018
+ms.date: 10/11/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: dcfcfb24d2b47a8272c576856fc3accc547f354a
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.openlocfilehash: 837601a55bbe97e904f3dece9f4c87563d6dd4e9
+ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "42059158"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49092677"
 ---
 # <a name="create-a-model-in-azure-portal"></a>Modell létrehozása az Azure Portalon
 
 Az Azure Portalon az Azure Analysis Services webes Tervező (előzetes verzió) funkció lehetővé teszi gyors és egyszerű létrehozása és szerkesztése a táblázatos modellek, és lekérdezheti a modell adatait közvetlenül a böngészőben. 
 
-Ne feledje, a webes Tervező **előzetes**. A funkció korlátozódik. Speciális modell fejlesztési és tesztelési célszerű a Visual Studio (SSDT) és az SQL Server Management Studio (SSMS) használja.
+> [!IMPORTANT]
+> Ez a funkció elavult. Előfordulhat, hogy azt eltávolították, vagy egy jövőbeli frissítéssel jelentősen módosult. Ajánlott, hogy megszakítja a meglévő és új projektek a funkciók segítségével fenntartja a jövőbeli frissítések kompatibilitást. Speciális modell fejlesztési és tesztelési célszerű a Visual Studio (SSDT) és az SQL Server Management Studio (SSMS) használja.
+
 
 ## <a name="before-you-begin"></a>Előkészületek
 

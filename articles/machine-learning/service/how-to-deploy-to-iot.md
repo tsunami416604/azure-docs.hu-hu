@@ -10,12 +10,12 @@ author: shivanipatel
 manager: cgronlun
 ms.reviewer: larryfr
 ms.date: 09/24/2018
-ms.openlocfilehash: 66370aec76044454ab4f11eb432fe2e9b0cdb9cf
-ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
+ms.openlocfilehash: 7d706cf71761496fd740c729224ee4331eeb2911
+ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48248585"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49091623"
 ---
 # <a name="prepare-to-deploy-models-on-iot-edge"></a>Az IoT Edge-ben a modellek üzembe helyezés előkészítése
 
@@ -45,9 +45,6 @@ Lépéseit követve megtudhatja, hogyan regisztrálja az eszközt, és az IoT-mo
 
 Az Azure IoT Edge-modulok tárolórendszerképek alapulnak. IoT Edge-eszköz helyezheti üzembe a modellt, regisztrálja a modellt az Azure Machine Learning szolgáltatás a munkaterületen, és a Docker-rendszerkép létrehozásához használja az alábbi lépéseket. 
 
-> [!IMPORTANT]
-> Ha használta az Azure Machine Learning, előfordulhat, hogy már regisztrálva van a munkaterület modellje betanításához, ebben az esetben ugorjon a 3. lépés.
-
 1. A munkaterület inicializálása, és a config.json fájl tölthető be:
 
     ```python
@@ -58,6 +55,9 @@ Az Azure IoT Edge-modulok tárolórendszerképek alapulnak. IoT Edge-eszköz hel
     ```    
 
 1. Regisztrálja a modellt egyszerűen a munkaterületre. Cserélje le az alapértelmezett szöveget a modell elérési útja, neve, a címkék és leírása:
+
+    > [!IMPORTANT]
+    > Ha az Azure Machine Learning a modell betanítását, előfordulhat, hogy már regisztrálva van a munkaterülethez. Ha igen, kihagyhatja ezt a lépést. A munkaterület regisztrált modellek listájának megjelenítéséhez használja `Model.list(ws)`.
 
     ```python
     from azureml.core.model import Model
@@ -81,9 +81,9 @@ Az Azure IoT Edge-modulok tárolórendszerképek alapulnak. IoT Edge-eszköz hel
 
 1. Hozzon létre egy **pontozó szkript** nevű `score.py`. Ez a fájl a lemezkép lévő modell futtatására szolgál. A következő feladatokat kell tartalmaznia:
 
-    * A `init()` függvény, amely általában egy globális objektum betölti a modellt. Ez a függvény fut, csak egyszer, amikor a Docker-tároló elindult. 
+    * Az `init()` függvényt, amely általában a modellt tölti be a globális objektumba. Ezt a függvényt csak egyszer kell futtatni, a Docker-tároló indításakor. 
 
-    * A `run(input_data)` függvény egy értéket a bemeneti adatok alapján előre jelezni a modellt használja. Bemenetek és kimenetek a futtató általában használjon JSON-szerializálás és deszerializálás, de más formátum támogatott.
+    * A `run(input_data)` függvény a modell segítségével értékeket jelez elő a bemeneti adatok alapján. A futtatás bemenetei és kimenetei általában JSON-fájlokat használnak a szerializáláshoz vagy a deszerializáláshoz, de más formátumokat is támogatnak.
 
     Egy vonatkozó példáért tekintse meg a [kép besorolási oktatóanyag](tutorial-deploy-models-with-aml.md#make-script).
 

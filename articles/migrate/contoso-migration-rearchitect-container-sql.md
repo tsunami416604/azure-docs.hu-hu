@@ -5,14 +5,14 @@ services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 09/20/2018
+ms.date: 10/11/2018
 ms.author: raynew
-ms.openlocfilehash: 80234610eda264976f3ec20da2a0ef12c73ccba6
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 9fd83124585e3a0eb19c43e278eeeacb6ec4409c
+ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47035708"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49094105"
 ---
 # <a name="contoso-migration-rearchitect-an-on-premises-app-to-an-azure-container-and-azure-sql-database"></a>Contoso áttelepítési: egy Azure container és az Azure SQL Database a helyszíni alkalmazás újratervezése
 
@@ -35,6 +35,7 @@ Ez a dokumentum az egyik, a cikkeket, amelyek megmutatják, hogyan a fiktív Con
 [11. cikk: Újrabontás a TFS-t az Azure DevOps-szolgáltatásokkal](contoso-migration-tfs-vsts.md) | Contoso áttelepíti a helyi Team Foundation Server központi Azure DevOps-szolgáltatásokkal az Azure-ban. | Elérhető
 A cikk 12: Azure-tárolók és az Azure SQL Database az alkalmazás újratervezése | Contoso annak SmartHotel app áttelepíti az Azure-bA. Ezután azt rearchitects az alkalmazás webes réteg az Azure Service Fabric és az adatbázis az Azure SQL Database-ban futó Windows tárolójaként. | Ez a cikk
 [Cikk 13: Építse újra az alkalmazást az Azure-ban](contoso-migration-rebuild.md) | Contoso újraépíti a SmartHotel alkalmazás számos Azure-szolgáltatások és szolgáltatások, beleértve az Azure App Service, Azure Kubernetes Service (AKS), az Azure Functions, Azure Cognitive Services és az Azure Cosmos DB használatával. | Elérhető 
+[Cikk 14: Áttelepítés az Azure-bA méretezése](contoso-migration-scale.md) | Után próbálja ki a migrálás kombinációit, Contoso előkészíti a teljes migrálás az Azure-ba való méretezése. | Elérhető
 
 Ebben a cikkben a Contoso áttelepíti a kétrétegű Windows WPF, a XAML SmartHotel360 űrlapalkalmazásokat VMware virtuális gépeken futó Azure-bA. Ha szeretné használni ezt az alkalmazást, nyílt forráskódú nyújtja, és töltheti le a [GitHub](https://github.com/Microsoft/SmartHotel360).
 
@@ -515,16 +516,16 @@ Első lépésként a Contoso rendszergazdák üzembe egy Azure Cosmos database.
 
 1. Akkor hozzon létre egy Azure Cosmos DB erőforrást, az Azure Marketplace-ről.
 
-    ![Bővíthető](./media/contoso-migration-rearchitect-container-sql/extend1.png)
+    ![Kiterjesztés](./media/contoso-migration-rearchitect-container-sql/extend1.png)
 
 2. Ezek adjon meg egy adatbázisnevet (**contososmarthotel**), válassza ki az SQL API-t, és helyezze el az erőforrás éles erőforráscsoportban az USA keleti RÉGIÓJA 2 elsődleges régióban.
 
-    ![Bővíthető](./media/contoso-migration-rearchitect-container-sql/extend2.png)
+    ![Kiterjesztés](./media/contoso-migration-rearchitect-container-sql/extend2.png)
 
 3. A **bevezetés**, kiválasztják **adatkezelő**, és adjon hozzá egy új gyűjteményt.
 4. A **gyűjtemény hozzáadása** azonosítóit adja meg, és a tárolási kapacitás és az átviteli sebesség beállítása.
 
-    ![Bővíthető](./media/contoso-migration-rearchitect-container-sql/extend3.png)
+    ![Kiterjesztés](./media/contoso-migration-rearchitect-container-sql/extend3.png)
 
 5. A portál megnyitja az új adatbázis > **gyűjtemény** > **dokumentumok** kattintson **új dokumentum**.
 6. Ezek illessze be a következő JSON-kódot a dokumentum ablakban. Ez a mintaadatok egyetlen tweet formájában.
@@ -548,11 +549,11 @@ Első lépésként a Contoso rendszergazdák üzembe egy Azure Cosmos database.
     }
     ```
 
-    ![Bővíthető](./media/contoso-migration-rearchitect-container-sql/extend4.png)
+    ![Kiterjesztés](./media/contoso-migration-rearchitect-container-sql/extend4.png)
 
 7. A Cosmos DB-végpontként, valamint a hitelesítési kulcs találják. Ezek segítségével az alkalmazás csatlakozzon a gyűjteményhez. Az adatbázis kattintson **kulcsok**, és másolja az URI és primary key a Jegyzettömbbe.
 
-    ![Bővíthető](./media/contoso-migration-rearchitect-container-sql/extend5.png)
+    ![Kiterjesztés](./media/contoso-migration-rearchitect-container-sql/extend5.png)
 
 ### <a name="update-the-sentiment-app"></a>A róluk szóló véleményeket alkalmazás frissítése
 

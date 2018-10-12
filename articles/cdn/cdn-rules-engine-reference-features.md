@@ -3,8 +3,8 @@ title: Az Azure CDN szabálymotor funkciói |} A Microsoft Docs
 description: Az Azure CDN dokumentációja szabályok adatbázismotor-funkciók.
 services: cdn
 documentationcenter: ''
-author: dksimpson
-manager: cfowler
+author: mdgattuso
+manager: danielgi
 editor: ''
 ms.assetid: 669ef140-a6dd-4b62-9b9d-3f375a14215e
 ms.service: cdn
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/09/2018
-ms.author: v-deasim
-ms.openlocfilehash: 57648486e515b5438f937c4295b33843583e622e
-ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
+ms.author: magattus
+ms.openlocfilehash: c5f486498e357927880ae51c1fec13a00296b457
+ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2018
-ms.locfileid: "42058099"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49093358"
 ---
 # <a name="azure-cdn-rules-engine-features"></a>Az Azure CDN szabálymotor funkciói
 Ez a cikk felsorolja a részletes leírását az elérhető funkciók az Azure Content Delivery Network (CDN) [Szabálymotorral](cdn-rules-engine.md).
@@ -902,7 +902,7 @@ Legfontosabb tudnivalókat:
     - továbbított
     - gazdagép
     - -n keresztül
-    - Figyelmeztetés
+    - figyelmeztetés
     - x-továbbított-számára
     - "X-EK" kezdődő összes fejlécnevek vannak fenntartva.
 
@@ -949,7 +949,7 @@ Legfontosabb tudnivalókat:
     - frissítés
     - változnak
     - -n keresztül
-    - Figyelmeztetés
+    - figyelmeztetés
     - "X-EK" kezdődő összes fejlécnevek vannak fenntartva.
 
 [Vissza a tetejére](#azure-cdn-rules-engine-features)
@@ -1070,7 +1070,7 @@ Győződjön meg arról, hogy a megadott fejléc neve nem egyezik a következő 
     - gazdagép
     - változnak
     - -n keresztül
-    - Figyelmeztetés
+    - figyelmeztetés
     - x-továbbított-számára
     - "X-EK" kezdődő összes fejlécnevek vannak fenntartva.
 

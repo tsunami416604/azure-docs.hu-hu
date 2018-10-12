@@ -3,15 +3,15 @@ title: A Linuxos fő célkiszolgáló feladatátvételi telepítse az Azure-ból
 description: Egy Linux rendszerű virtuális gép ismételt védelme, mielőtt szüksége van egy Linux rendszerű fő célkiszolgálót. Ismerje meg, hogyan telepítsen egyet.
 author: nsoneji
 ms.service: site-recovery
-ms.topic: article
-ms.date: 07/06/2018
+ms.topic: conceptual
+ms.date: 10/11/2018
 ms.author: nisoneji
-ms.openlocfilehash: 4443d8fcbf40240e1a7bd718416e522192b4efb3
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 470d4547a63105e319f072461a4d8f24ebe3dbe8
+ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37921069"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49094122"
 ---
 # <a name="install-a-linux-master-target-server"></a>A Linuxos fő célkiszolgáló telepítése
 Miután átadja a feladatokat a virtuális gépek az Azure-ba, visszaadhatja a virtuális gépek, a helyszíni helyre. Feladat-visszavételt, ismételt védelem a virtuális gép az Azure-ból a helyszíni helyre kell. Ez a folyamat szüksége lesz egy a helyszíni fő célkiszolgáló forgalom fogadására. 

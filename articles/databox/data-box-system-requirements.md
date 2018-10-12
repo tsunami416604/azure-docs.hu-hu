@@ -1,25 +1,19 @@
 ---
 title: A Microsoft Azure Data Box követelményei |} A Microsoft Docs
-description: Ismerje meg a szoftver- és az Azure Data Box hálózati követelményei
+description: Az Azure Data Box szoftveres és hálózati követelményeinek ismertetése
 services: databox
-documentationcenter: NA
 author: alkohli
-manager: twooley
-editor: ''
-ms.assetid: ''
 ms.service: databox
-ms.devlang: NA
+ms.subservice: pod
 ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 09/24/2018
 ms.author: alkohli
-ms.openlocfilehash: f97c6174adf454a031e94942843075c457236575
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 957100e042da1d41fb7c8fa27a5663cf99a41c20
+ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46982976"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49093935"
 ---
 # <a name="azure-data-box-system-requirements"></a>Az Azure Data Box rendszerre vonatkozó követelmények
 
@@ -88,7 +82,7 @@ Itt van az adatmásolási műveletet keresztül az ügyfelek a Data Box-eszköz 
 
 ## <a name="networking-requirements"></a>Hálózati követelmények
 
-Az Adatközpont rendelkeznie kell a nagy sebességű hálózat. Javasoljuk, hogy van legalább 10 GbE kapcsolatot. 10 GbE kapcsolatot nem érhető el, ha 1 GbE adatkapcsolat használható adatmásolásra, de az is hatással van a Másolás sebesség.
+Az adatközpontnak nagy sebességű hálózattal kell rendelkeznie. Határozottan javasoljuk, hogy legalább 10 GbE sebességű kapcsolattal rendelkezzen. 10 GbE kapcsolatot nem érhető el, ha 1 GbE adatkapcsolat használható adatmásolásra, de az is hatással van a Másolás sebesség.
 
 ## <a name="next-step"></a>Következő lépés
 

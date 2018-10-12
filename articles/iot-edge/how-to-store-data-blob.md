@@ -9,12 +9,12 @@ ms.date: 10/03/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 6094236269df881eac6f8cd2fd04183dd9d6df3b
-ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
+ms.openlocfilehash: 2a52735a7f573534c6d643e778a898a888dfc81f
+ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49068757"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49114583"
 ---
 # <a name="store-data-at-the-edge-with-azure-blob-storage-on-iot-edge-preview"></a>Az Azure Blob Storage a peremhálózaton data Store az IoT Edge-ben (előzetes verzió)
 
@@ -241,7 +241,7 @@ Nem támogatott:
 ### <a name="block-blobs"></a>Blokkblobok
 
 Támogatott: 
-* PUT letiltása
+* PUT letiltása: – a blokkot kell lennie legfeljebb 4 MB-nál
 * PUT és a blokk-lista lekérése
 
 Nem támogatott:

@@ -8,13 +8,13 @@ manager: kfile
 editor: jasonwhowell
 ms.service: mysql
 ms.topic: article
-ms.date: 09/17/2018
-ms.openlocfilehash: ac5be20815b552c08e5cd1054bf24d7a10b56498
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.date: 10/03/2018
+ms.openlocfilehash: 73be0e4ecff4bc0d9b69249430bba69a93cc54ae
+ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46124269"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49093782"
 ---
 # <a name="server-logs-in-azure-database-for-mysql"></a>Kiszolgálói naplók az Azure Database for MySQL-hez
 Az Azure Database for MySQL-hez a lassú lekérdezések naplója a felhasználók számára érhető el. A tranzakciós naplóba való hozzáférés nem támogatott. A lassú lekérdezések naplója segítségével azonosíthatja a szűk keresztmetszeteket hibaelhárításhoz. 
@@ -45,6 +45,39 @@ Egyéb úgy módosíthatja a paraméterek a következők:
 - **log_throttle_queries_not_using_indexes**: Ez a paraméter csak írható a lassú lekérdezések naplója nem index lekérdezések számát korlátozza. Ezt a paramétert akkor lép érvénybe, ha log_queries_not_using_indexes ON értékre van állítva.
 
 Tekintse meg a MySQL [lassú lekérdezési napló dokumentáció](https://dev.mysql.com/doc/refman/5.7/en/slow-query-log.html) teljes leírását a lassú lekérdezések naplója paramétereket.
+
+## <a name="diagnostic-logs"></a>Diagnosztikai naplók
+Azure Database for MySQL integrálva van az Azure monitort, diagnosztikai naplók. A MySQL-kiszolgáló lassú lekérdezési naplóinak engedélyezése után kiválaszthatja azokat a Log Analytics, az Event Hubs vagy Azure Storage kibocsátott. Diagnosztikai naplók engedélyezésével kapcsolatos további tudnivalókért lásd: szakaszában az útmutató a [diagnosztikai naplók dokumentáció](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md).
+
+A következő táblázat ismerteti, mi az egyes naplókhoz. A kimeneti módszertől függően a mezők és a megjelenési sorrendben eltérőek lehetnek.
+
+| **Tulajdonság** | **Leírás** |
+|---|---|---|
+| TenantId | A bérlő azonosítója |
+| SourceSystem | `Azure` |
+| TimeGenerated [UTC] | Időbélyeg mikor lett rögzítve a napló (UTC) |
+| Típus | A napló típusa. Mindig `AzureDiagnostics` |
+| SubscriptionId | GUID Azonosítóját az előfizetést, amelyhez a kiszolgáló tartozik. |
+| ResourceGroup | A kiszolgáló tartozik az erőforráscsoport neve |
+| ResourceProvider | Az erőforrás-szolgáltató neve. Mindig `MICROSOFT.DBFORMYSQL` |
+| ResourceType | `Servers` |
+| ResourceId | Erőforrás-URI |
+| Erőforrás | A kiszolgáló neve |
+| Kategória | `MySqlSlowLogs` |
+| OperationName | `LogEvent` |
+| Logical_server_name_s | A kiszolgáló neve |
+| start_time_t [UTC] | A lekérdezés kezdetének időpontja |
+| query_time_s | A lekérdezés végrehajtásához szükséges idő összesen |
+| lock_time_s | A lekérdezés zárolva volt idő összesen |
+| user_host_s | Felhasználónév |
+| rows_sent_s | Elküldött sorok száma |
+| rows_examined_s | Vizsgált sorok száma |
+| last_insert_id_s | [last_insert_id](https://dev.mysql.com/doc/refman/8.0/en/information-functions.html#function_last-insert-id) |
+| insert_id_s | Id beszúrása |
+| sql_text_s | Teljes lekérdezést |
+| server_id_s | A kiszolgáló azonosítója |
+| thread_id_s | Id vlákna |
+| \_erőforrás-azonosító | Erőforrás-URI |
 
 ## <a name="next-steps"></a>További lépések
 - [Konfigurálása és a naplók eléréséhez az Azure parancssori felületen](howto-configure-server-logs-in-cli.md).

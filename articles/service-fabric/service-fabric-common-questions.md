@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/18/2017
 ms.author: chackdan
-ms.openlocfilehash: 0b731e94675992e59f79b61a2f3a15fa20bdf8a7
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: fe86e94e745ae9ba65636ab0d1ccfead83261515
+ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42054312"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49094258"
 ---
 # <a name="commonly-asked-service-fabric-questions"></a>Gyakori kérdések a Service Fabric
 
@@ -95,6 +95,9 @@ Még dolgozunk egy továbbfejlesztett még ma, miközben Ön felelős a frissít
 
 ### <a name="can-i-encrypt-attached-data-disks-in-a-cluster-node-type-virtual-machine-scale-set"></a>Egy fürtcsomóponttípus (virtuálisgép-méretezési) a csatlakoztatott adatlemezekkel is titkosítani?
 Igen.  További információkért lásd: [-fürt létrehozása csatlakoztatott adatlemezekkel rendelkező](../virtual-machine-scale-sets/virtual-machine-scale-sets-attached-disks.md#create-a-service-fabric-cluster-with-attached-data-disks), [(PowerShell) lemezek titkosítása](../virtual-machine-scale-sets/virtual-machine-scale-sets-encrypt-disks-ps.md), és [(CLI) lemezek titkosítása](../virtual-machine-scale-sets/virtual-machine-scale-sets-encrypt-disks-cli.md).
+
+### <a name="can-i-use-low-priority-vms-in-a-cluster-node-type-virtual-machine-scale-set"></a>Használható egy fürtcsomóponttípus (virtuálisgép-méretezési) az alacsony prioritású virtuális gépek?
+Nem. Alacsony prioritású virtuális gépek nem támogatottak. 
 
 ### <a name="what-are-the-directories-and-processes-that-i-need-to-exclude-when-running-an-anti-virus-program-in-my-cluster"></a>Mik azok a könyvtárak és folyamatokat kizárhat, amikor egy víruskereső program futtatása a fürtben kell?
 

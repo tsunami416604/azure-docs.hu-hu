@@ -7,12 +7,12 @@ ms.service: cognitive-services
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: nolach
-ms.openlocfilehash: 843ff39f49141ff78219771a6d4af2e9e6e7644b
-ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
+ms.openlocfilehash: 21b37d2b61af81e6481de4c5e7537a3382d895b6
+ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48017482"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49113920"
 ---
 # <a name="creating-custom-voice-fonts"></a>Egyéni hangtípust létrehozása
 
@@ -22,12 +22,9 @@ A hangtípusú létrehozásához, győződjön meg arról, a studio felvételt, 
 
 Az egy kisebb mennyiségű adatot egy megvalósíthatósági megkezdheti. De minél több adatot ad meg, annál természetes és professional a hangját hangzik.
 
-
 ## <a name="prerequisites"></a>Előfeltételek
 
-A **szöveg-beszéd átalakítás** hangalapú testreszabási funkció jelenleg privát előzetes verzióban érhető el. [Az alkalmazás űrlap kitöltésekor](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR0N8Vcdi8MZBllkZb70o6KdURjRaUzhBVkhUNklCUEMxU0tQMEFPMjVHVi4u) hozzáférés figyelembe kell venni.
-
-Az Azure-fiók és a egy előfizetést a beszédfelismerési szolgáltatás is szükséges. [Hozzon létre egyet](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started) Ha még nem tette. Csatlakozás az előfizetés az egyéni beszédfelismerési portálra a következő:
+Az Azure-fiók és a Speech service-előfizetés szükséges. [Hozzon létre egyet](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started) Ha még nem tette. Az előfizetés csatlakozhat az egyéni beszédfelismerési portal itt látható módon.
 
 1. Jelentkezzen be a [egyéni beszédfelismerési portál](https://customvoice.ai) a alkalmazni a hozzáféréshez használt Microsoft-fiók használatával.
 
@@ -37,7 +34,6 @@ Az Azure-fiók és a egy előfizetést a beszédfelismerési szolgáltatás is s
 
 3. Az előfizetések oldalán válassza ki a **csatlakozás meglévő előfizetés**. Vegye figyelembe, hogy beszédszolgáltatások támogatja-e a különböző régiókban. Ellenőrizze a régió, ahol az előfizetési kulcs lett létrehozva, és győződjön meg arról, hogy kapcsolódni a kulcsot a megfelelő alárendelt portálon.  
 
-     
 4. Az előfizetési kulcs illessze be a táblába az alábbi példában látható módon. Minden előfizetési csomaghoz tartozik két kulcsot, és bármelyiket használhatja.
 
      ![Előfizetés hozzáadása](media/custom-voice/add-subscription.png)

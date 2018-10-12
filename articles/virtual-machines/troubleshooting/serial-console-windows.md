@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/07/2018
 ms.author: harijay
-ms.openlocfilehash: 705366dbb055679a2d0adc628938fa419609f6ed
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: ceff8f6134f04409a4df1045a764c06597d997fc
+ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48885119"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49092830"
 ---
 # <a name="virtual-machine-serial-console"></a>Virtuális gépek soros konzolja
 
@@ -83,12 +83,12 @@ Ha a Windows rendszertöltő engedélyeznie kell a rendszerindítási konfigurá
 1. Csatlakozás a Windows virtuális géphez a távoli asztalon keresztül
 2. Egy rendszergazdai parancssorból a következő parancsok futtatásával. 
 * `bcdedit /set {bootmgr} displaybootmenu yes`
-* `bcdedit /set {bootmgr} timeout 30`
+* `bcdedit /set {bootmgr} timeout 10`
 * `bcdedit /set {bootmgr} bootems yes`
 3. Indítsa újra a rendszert, engedélyezni kell a rendszerindító menü
 
 > [!NOTE] 
-> Az időkorlát, a rendszerindító manager menü jelenik meg a beállított negatív hatással lesz az operációs rendszer rendszerindítási ideje a jövőben. Egyes hozzáadni, győződjön meg arról, hogy a rendszertöltés-vezérlő látható soros konzolon keresztül 30 második időtúllépés elfogadható lehet, míg mások érdemes lehet egy rövidebb időkorlát. Időtúllépési értéke teljesebb értéket.
+> Az időkorlát, a rendszerindító manager menü jelenik meg a beállított negatív hatással lesz az operációs rendszer rendszerindítási ideje a jövőben. Egyes hozzáadni, győződjön meg arról, hogy a rendszertöltés-vezérlő látható soros konzolon keresztül 10 második időtúllépés elfogadható lehet, míg mások érdemes lehet egy rövidebb vagy hosszabb időkorlát. Időtúllépési értéke teljesebb értéket.
 
 ## <a name="use-serial-console-for-nmi-calls-in-windows-vms"></a>Használja a soros konzol NMI hívások Windows-beli virtuális gépeken
 Egy nem maszkolható (NMI) úgy tervezték, hogy hozzon létre egy olyan jelet, hogy a szoftverek virtuális gépi nem figyelmen kívül hagyja. Hagyományosan NMIs figyelje a hardverekkel kapcsolatos problémák szerepelnek, amelyek adott válaszidők szükséges rendszereken voltak használva.  Ma, programozók és a rendszer a rendszergazdák gyakran használnak NMI mechanizmusként javításához vagy hibaelhárítása a rendszerek, amelyek leáll.

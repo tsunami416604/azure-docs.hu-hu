@@ -3,16 +3,17 @@ title: A helyszíni számítási feladatok Azure-bA a Contoso migrálásának é
 description: Ismerje meg, hogyan Contoso felméri az Azure Migrate és a Data Migration Assistant használatával a helyszíni gépek az Azure-ba való migrálásra.
 services: site-recovery
 author: rayne-wiselman
+manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 09/05/2018
+ms.date: 10/11/2018
 ms.author: raynew
-ms.openlocfilehash: 3969286b4a748a9dde8c126f91a5b19ee14a7c0d
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 34409197a080b4d755b76f140111b7694925b5df
+ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44303314"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49094054"
 ---
 # <a name="contoso-migration-assess-on-premises-workloads-for-migration-to-azure"></a>Contoso áttelepítése: a helyszíni számítási feladatok Azure-bA migrálásának értékelése
 
@@ -35,6 +36,7 @@ Cikk | Részletek | status
 [11. cikk: Újrabontás a Team Foundation Server az Azure DevOps-szolgáltatásokkal](contoso-migration-tfs-vsts.md) | Contoso áttelepíti a helyi Team Foundation Server központi Azure DevOps-szolgáltatásokkal az Azure-ban. | Elérhető
 [A cikk 12: Azure-tárolók és az Azure SQL Database az alkalmazás újratervezése](contoso-migration-rearchitect-container-sql.md) | Contoso annak SmartHotel app áttelepíti az Azure-bA. Ezután azt rearchitects az alkalmazás webes réteg az Azure Service Fabric és az adatbázis az Azure SQL Database-ban futó Windows tárolójaként. | Elérhető
 [Cikk 13: Építse újra az alkalmazást az Azure-ban](contoso-migration-rebuild.md) | Contoso újraépíti a SmartHotel alkalmazás számos Azure-szolgáltatások és szolgáltatások, beleértve az Azure App Service, Azure Kubernetes Service (AKS), az Azure Functions, Azure Cognitive Services és az Azure Cosmos DB használatával. | Elérhető
+[Cikk 14: Áttelepítés az Azure-bA méretezése](contoso-migration-scale.md) | Után próbálja ki a migrálás kombinációit, Contoso előkészíti a teljes migrálás az Azure-ba való méretezése. | Elérhető
 
 
 ## <a name="overview"></a>Áttekintés
@@ -43,7 +45,7 @@ Contoso úgy véli, hogy az Azure-ba való migrálás, mivel a vállalat a műsz
 
 Első lépések, és jobban megérthessék az érintett technológiákat, a Contoso felméri két a helyszíni alkalmazások esetében a következő táblázat foglalja össze. A vállalat áttelepítési forgatókönyvek felméri a migrálásra, áthelyezési és újrabontása alkalmazásokat. További információ újratárolása, és a újrabontás a [Contoso áttelepítése – áttekintés](contoso-migration-overview.md).
 
-Alkalmazásnév | Platform | Alkalmazás szinten | Részletek
+App neve | Platform | Alkalmazás szinten | Részletek
 --- | --- | --- | ---
 SmartHotel360<br/><br/> (a Contoso utazási követelmények kezeli) | Windows fut az SQL Server-adatbázis | Kétszintű alkalmazás. Az előtérbeli ASP.NET-webhely futtat egy virtuális gép (**WEBVM**) és a egy másik virtuális gépen fut az SQL Server (**SQLVM**). | Virtuális gépek a VMware vCenter-kiszolgáló által kezelt ESXi-gazdagépen futó.<br/><br/> Letöltheti a mintaalkalmazást a [GitHub](https://github.com/Microsoft/SmartHotel360).
 osTicket<br/><br/> (A Contoso ügyfélszolgálati-alkalmazás) | Linux/Apache, a MySQL PHP (a LAMP) fut | Kétszintű alkalmazás. Egy előtér-php-alapú webhely egy virtuális gépen fut (**OSTICKETWEB**) és a MySQL-adatbázist futtat egy másik virtuális Géphez (**OSTICKETMYSQL**). | Az alkalmazás belső alkalmazottai és külső ügyfelek esetében a problémák nyomon követésére ügyfélalkalmazások szolgáltatást használják.<br/><br/> Letöltheti a mintát a [GitHub](https://github.com/osTicket/osTicket).

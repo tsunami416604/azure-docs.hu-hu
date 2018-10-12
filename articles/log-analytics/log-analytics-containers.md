@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 04/26/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 80749fedde17a9567aa13e1e72677dfdd027ca36
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: f9876f3e21a7cfccae2fb7f70913269d4ca1fdf4
+ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48043260"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49115369"
 ---
 # <a name="container-monitoring-solution-in-log-analytics"></a>Figyelés a Log Analytics megoldásra
 
@@ -36,7 +36,7 @@ A megoldás bemutatja, hogy mely tárolók fut, milyen tárolórendszerkép futn
 - Service Fabric
 - Red Hat OpenShift
 
-Ha érdekli a számítási feladatok teljesítményének monitorozásához üzembe helyezett Kubernetes-környezetben lévő üzemeltetett AKS (az Azure Container Service) című témakörben talál [figyelése az Azure Container Service](../monitoring/monitoring-container-health.md).  A Tárolómonitorozási megoldás nem tartalmazza az adott platform figyelésének támogatását.  
+Ha érdekli az üzembe helyezett munkaterhelések teljesítményének figyelése a Kubernetes-környezetben üzemeltetett Azure Kubernetes Service (AKS), lásd: [figyelő Azure Kubernetes Service](../monitoring/monitoring-container-health.md). A Tárolómonitorozási megoldás nem tartalmazza az adott platform figyelésének támogatását.  
 
 Az alábbi ábrán látható, különböző tároló gazdagépek és az ügynökök a Log Analytics használatával kapcsolatai.
 

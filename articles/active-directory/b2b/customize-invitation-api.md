@@ -10,12 +10,12 @@ ms.author: mimart
 author: msmimart
 manager: mtillman
 ms.reviewer: sasubram
-ms.openlocfilehash: 20c824da82d6e3e66bfa2d7447c8a9573cbdce69
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: 8809a5a8b4f76d6e33bbb934e13931e86f2d681c
+ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45985813"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49091770"
 ---
 # <a name="azure-active-directory-b2b-collaboration-api-and-customization"></a>Az Azure Active Directory B2B együttműködés API és testreszabás
 
@@ -79,7 +79,7 @@ További információkért tekintse meg: https://graph.microsoft.io/docs/authori
 
 
 ## <a name="powershell"></a>PowerShell
-Már lehetséges a PowerShell használatával adja hozzá, és a egy szervezet külső felhasználók könnyedén meghívása. Hozzon létre egy meghívást arra parancsmag segítségével:
+PowerShell használatával adja hozzá, és a egy szervezet külső felhasználók könnyedén meghívása. Hozzon létre egy meghívást arra parancsmag segítségével:
 
 ```
 New-AzureADMSInvitation
@@ -92,7 +92,25 @@ Használhatja a következő beállításokat:
 * -SendInvitationMessage
 * -InvitedUserMessageInfo
 
-Emellett megtekinthet a meghívó API-referencia [https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/invitation](https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/invitation)
+### <a name="invitation-status"></a>Meghívás állapota
+
+Miután egy külső felhasználót meghívó küldése, használhatja a **Get-AzureADUser** parancsmaggal ellenőrizheti, ha azok már elfogadott. A Get-AzureADUser alábbi tulajdonságait fel van töltve, egy külső felhasználót küldött meghívót:
+
+* **Felhasználó állapota** azt jelzi, hogy a meghívó **PendingAcceptance** vagy **elfogadva**.
+* **UserStateChangedOn** jeleníti meg a legutóbbi módosításának történő küldés időbélyegzője legyen a **felhasználó állapota** tulajdonság.
+
+Használhatja a **szűrő** szűrheti az eredményeket a beállítással **felhasználó állapota**. Az alábbi példa bemutatja, hogyan szűrheti az eredményeket, csak egy függőben lévő meghívás rendelkező felhasználók megjelenítéséhez. A példában is látható a **Format-List** beállítás, amely lehetővé teszi, hogy Ön adja meg a tulajdonságok megjelenítéséhez. 
+ 
+```
+Get-AzureADUser -Filter "UserState eq 'PendingAcceptance'" | Format-List -Property DisplayName,UserPrincipalName,UserState,UserStateChangedOn
+```
+
+> [!NOTE]
+> Győződjön meg arról, hogy az Azure ad PowerShell-modult vagy AzureADPreview PowerShell-modul legújabb verzióját. 
+
+## <a name="see-also"></a>Lásd még
+
+Tekintse meg a meghívó API-referencia a [ https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/invitation ](https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/invitation).
 
 ## <a name="next-steps"></a>További lépések
 

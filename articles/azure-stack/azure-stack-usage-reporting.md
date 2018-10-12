@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 05/30/2018
 ms.author: sethm
 ms.reviewer: alfredop
-ms.openlocfilehash: 54a81e6c5c6e1fe5c37b985e40174dc369edfe6d
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.openlocfilehash: cf6604730ab3bd9ee04fac36e703022f63dcb949
+ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45630409"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49090365"
 ---
 # <a name="report-azure-stack-usage-data-to-azure"></a>Az Azure-bA az Azure Stack-használati adatok jelentése 
 
@@ -95,10 +95,6 @@ Az Azure Stack multinode a nagyvállalati szerződés (EA) és a CSP-előfizeté
 ## <a name="does-usage-data-reporting-work-in-sovereign-clouds"></a>A független felhőkben munkahelyi jelentéskészítés a használati adatokról nem?
 
 Az Azure Stack Development Kit szükséges használati adatok jelentése a globális Azure rendszerben létrehozott előfizetések. A független felhőkben (Azure Government, Azure Germany és Azure China felhők) egyikében létrehozott előfizetések nem lehet regisztrálni az Azure-ban, így azok nem támogatják a használati adatok jelentése.
-
-## <a name="how-can-users-identify-azure-stack-usage-data-in-the-azure-billing-portal"></a>Hogyan azonosíthatja a felhasználók az Azure Stack használati adatokat az Azure számlázási portálján?
-
-Felhasználói láthatják az Azure Stack használati adatok a használat részletei fájlban. Tudnivalók a használati részletek fájl beolvasásával kapcsolatos, tekintse meg a [használati fájlok letöltéséről a cikk az Azure Account Center](https://docs.microsoft.com/azure/billing/billing-download-azure-invoice-daily-usage-date#download-usage-from-the-account-center-csv). A használati részletei az Azure Stack mérőszámok, amelyek azonosítják az Azure Stack-tárolási és virtuális gépeket tartalmaz. Az Azure Stackben használt összes erőforrást a "Az Azure Stack." nevű régió alatt jelentett
 
 ## <a name="why-doesnt-the-usage-reported-in-azure-stack-match-the-report-generated-from-azure-account-center"></a>Miért nem egyezik meg a használati jelentés készül az Azure Stack az Azure Account Center által létrehozott jelentést?
 

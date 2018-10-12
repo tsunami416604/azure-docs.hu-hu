@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 03/28/2018
 ms.author: tamram
 ms.component: common
-ms.openlocfilehash: 3f2609ea57ea5a5a0cce2544a1031c55199d137b
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: bc6d615409f3c2d0f46286d2ad2ba20c32574afd
+ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39530955"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49091715"
 ---
 # <a name="deciding-when-to-use-azure-blobs-azure-files-or-azure-disks"></a>Annak eldöntése, mikor érdemes használni az Azure-Blobok, az Azure Files és az Azure-lemezek
 
@@ -64,8 +64,8 @@ Az alábbi táblázat hasonlítja össze az Azure Files Azure-lemezek.
 |Felesleges tartalmak törlése|Automatikus|Manuális|  
 |Adatelérési REST használatával|A virtuális merevlemez található fájl nem érhető el|Olyan megosztáson tárolt fájlok elérhetők|  
 |Max. mérete|4 TiB-lemez|5 TiB fájlmegosztás és a megosztáson belüli 1 TiB-fájl|  
-|Maximum 8KB IOps|500 IOps|1000 IOps|  
-|Teljesítmény|Akár 60 MiB/s lemezenként|Akár 60 fájlmegosztásonként MiB/s|  
+|Maximális iops-érték|500 IOps|1000 IOps|  
+|Teljesítmény|Akár 60 MiB/s lemezenként|Cél értéke 60 MiB/s fájlmegosztásonként (beszerezheti a nagyobb, magasabb i/o-méretek esetében)|  
 
 ## <a name="next-steps"></a>További lépések
 

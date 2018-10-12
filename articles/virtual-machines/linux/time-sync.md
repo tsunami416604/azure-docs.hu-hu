@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/17/2018
 ms.author: cynthn
-ms.openlocfilehash: f79b1d4c1afc4d5a516a46a9bf6cb1790034b279
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: 58fd3afa37d965cfbe21dcf23823ddb8425442b9
+ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45986300"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49116711"
 ---
 # <a name="time-sync-for-linux-vms-in-azure"></a>Idő szinkronizálása az Azure-ban Linux rendszerű virtuális gépekhez
 
@@ -44,7 +44,7 @@ A gazdagép virtuálisgép-interakció is befolyásolhatja az óra. Során [karb
 
 Nélkül idő szinkronizálási működő, a virtuális gép órája hibák lenne összeadódhatnak. Ha csak egy virtuális Gépet, a hatás nem jelentős, kivéve, ha a munkaterhelés rendkívül pontos időmérő igényel. De a legtöbb esetben azt kell több, összekapcsolt virtuális gépeket, amelyek idő segítségével nyomon követheti a tranzakciók és az időt kell lennie a teljes telepítés során. Ha más virtuális gépek között eltelt idő, sikerült jelenik meg a következő hatásai vannak:
 
-- Biztonsági protokollok, például a Kerberos vagy a tanúsítvány-függő technológia támaszkodik a rendszeridő konzisztens a rendszerek között. 
+- Hitelesítés sikertelen lesz. Biztonsági protokollok, például a Kerberos vagy a tanúsítvány-függő technológia támaszkodik a rendszeridő konzisztens a rendszerek között.
 - Legyen nagyon nehéz döntse el, mi történhetett rendszerekben, hogy a naplók (vagy egyéb adat) nem fogadom el lehetőséget időben. Az ugyanahhoz az eseményhez jelenne meg, különböző időpontokban, nehéz és korrelációs történt.
 - Ha óra ki kapcsolva, a számlázás helytelenül sikerült kiszámítani.
 

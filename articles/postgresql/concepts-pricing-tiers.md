@@ -8,13 +8,13 @@ manager: kfile
 editor: jasonwhowell
 ms.service: postgresql
 ms.topic: article
-ms.date: 09/27/2018
-ms.openlocfilehash: 696932135cdd3850e04d25370867c0273b99b3bf
-ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
+ms.date: 10/10/2018
+ms.openlocfilehash: aab867e5c58ba9de17b3c68c8e507fca5354eb90
+ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47423544"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49093441"
 ---
 # <a name="azure-database-for-postgresql-pricing-tiers"></a>Azure Database for postgresql-hez tarifacsomagok
 
@@ -46,8 +46,8 @@ A számítási erőforrások szolgálnak, amelyek jelölik az alapul szolgáló 
 
 | **Az Azure-régió** | **A gen 4** | **A gen 5** |
 |:---|:----------:|:--------------------:|
-| USA középső régiója | X | X |
-| USA keleti régiója | X | X |
+| USA középső régiója |  | X |
+| USA keleti régiója |  | X |
 | USA 2. keleti régiója | X | X |
 | USA északi középső régiója | X | X |
 | USA déli középső régiója | X | X |
@@ -97,7 +97,7 @@ Az i/o-használat az Azure Portalon vagy Azure CLI-parancsok használatával kö
 
 ### <a name="reaching-the-storage-limit"></a>Skálázhatósági méretkorlátot
 
-A kiszolgáló van megjelölve csak olvasható, amikor szabad tárterület mérete eléri a kisebb, mint 5 GB-os vagy a felhasznált tárterület 5 %-át, amelyik érték kisebb. Ha például 100 GB tárhelyet kiépítése, és a tényleges használat halad 95 GB, a kiszolgáló van megjelölve, csak olvasható. Azt is megteheti, ha 5 GB adattárolás kiépítése, a kiszolgáló van megjelölve csak olvasható, ha a szabad tárhely eléri a 250 MB-nál kevesebb.  
+A kiszolgáló csak olvashatóként lesz megjelölve, amikor a szabad tárterület 5 GB alá vagy a kiépített tárterület 5%-a alá csökken (amelyik kisebb). Ha például 100 GB tárhelyet kiépítése, és a tényleges használat halad 95 GB, a kiszolgáló van megjelölve, csak olvasható. Ha 5 GB tárterületet osztott ki, a kiszolgáló akkor lesz megjelölve csak olvashatóként, amikor a szabad tárterület 250 MB alá csökken.  
 
 Ha a kiszolgáló értékre van állítva, csak olvasható, az összes meglévő munkamenet le vannak választva, és a nem véglegesített tranzakció vissza legyen állítva. Bármely ezt követő írási műveletek és a tranzakció érvényesítése sikertelen. Minden olvasási lekérdezések zavartalanul fog működni.  
 

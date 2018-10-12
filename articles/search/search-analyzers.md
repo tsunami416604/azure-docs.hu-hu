@@ -1,6 +1,6 @@
 ---
-title: Az Azure Search elemzőkkel |} Microsoft Docs
-description: Hozzárendelése elemzőkkel lecseréli index kereshető szöveg mezők alapértelmezett szabványos Lucene egyéni, előre definiált vagy nyelvspecifikus lehetőségeket.
+title: Elemzők az Azure Search szolgáltatásban |} A Microsoft Docs
+description: Az alapértelmezett egyéni, előre definiált vagy nyelvspecifikus alternatívákkal standard Lucene hozzárendelése egy cserélje le az indexben lévő kereshető szöveges mezők elemzők számát.
 services: search
 ms.service: search
 ms.topic: conceptual
@@ -8,90 +8,90 @@ ms.date: 09/11/2017
 ms.author: heidist
 manager: cgronlun
 author: HeidiSteen
-ms.openlocfilehash: e858966fb5a15b84af1952399a5eff3ca50d0d59
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 68ce4fa5536f21d6d66245a9383a4b58c42febff
+ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31795697"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49116370"
 ---
 # <a name="analyzers-in-azure-search"></a>Elemzők az Azure Search szolgáltatásban
 
-Egy *analyzer* összetevője [teljes szöveges keresés](search-lucene-query-architecture.md) feladata, hogy feldolgozzák a lekérdezési karakterláncok és indexelt dokumentumok szöveget. A következő átalakítások tipikusan elemzés során:
+Egy *analyzer* összetevője [teljes szöveges keresés](search-lucene-query-architecture.md) felelős a lekérdezési karakterláncok és az indexelt dokumentumok feldolgozásáért. A következő átalakításokra tipikus elemzés során:
 
-+ A nem feltétlenül szükséges szavak (szavak) és írásjelek törlődnek.
-+ A kifejezéseket és kötőjellel szavakat osztható összetevői.
-+ A rendszer nagybetűből szavak alsó cased.
-+ Szavakat, hogy időben függetlenül található egyezés a legfelső szintű űrlap csökken.
++ Nem lényeges szavakat (áll), és írásjelek el lesznek távolítva.
++ Mondatok és elválasztható szavak bontásban összetevő részre.
++ A rendszer-nagybetűs szavak alacsonyabb kisbetűsek.
++ Szavak, hogy függetlenül igeidőt egyezés található a legfelső szintű forms csökken.
 
-A nyelvi elemzőkkel convert szöveget bemeneteként egyszerű vagy, amelyek a információ tárolása és lekérése hatékonyan legfelső szintű űrlap. Átalakítás indexelő, ha az index épül, során fordul elő, ha az index olvasható keresési során újra majd. Biztosan nagyobb eséllyel tartják be a keresési eredmények között, ha mindkét műveletekhez használja az ugyanazon szöveg analyzer várt beolvasása.
+Nyelvi elemzők konvertálása szöveges primitív bemeneteként vagy a legfelső szintű képernyő, amely hatékony a információ tárolásához és lekéréséhez. Átalakítás következik-e, ha az index felépítését, az indexelés és keresés, ha az index olvasható során újra. Ön nagyobb valószínűséggel kap a keresési eredmények között, ha az azonos szöveg elemző használhatja mindkét műveletek várt.
 
-Az Azure Search használja a [szabványos Lucene analyzer](https://lucene.apache.org/core/4_0_0/analyzers-common/org/apache/lucene/analysis/standard/StandardAnalyzer.html) alapértelmezés szerint. Felülbírálhatja az alapértelmezett mező által alapon. Ez a cikk ismerteti a választási lehetőségek teljes skáláját és ajánlott eljárások az egyéni elemzési kínál. Példa konfigurációi főbb forgatókönyvek is tartalmazza.
+Az Azure Search használja a [Standard Lucene-elemzőt](https://lucene.apache.org/core/4_0_0/analyzers-common/org/apache/lucene/analysis/standard/StandardAnalyzer.html) alapértelmezés szerint. Felülbírálhatja az alapértelmezett mező szerint történik. Ez a cikk ismerteti a választási lehetőségek körét, és ajánlott eljárások az egyéni elemző kínál. Főbb alkalmazási helyzetek például konfigurációi is tartalmazza.
 
-## <a name="supported-analyzers"></a>Támogatott elemzőkkel
+## <a name="supported-analyzers"></a>Támogatott elemzők
 
-Az alábbi lista ismerteti, hogy mely elemzőkkel az Azure Search támogatottak.
+Az alábbi lista ismerteti, hogy melyik elemzők az Azure Search használata támogatott.
 
 | Kategória | Leírás |
 |----------|-------------|
-| [Standard Lucene elemző eszköz](https://lucene.apache.org/core/4_0_0/analyzers-common/org/apache/lucene/analysis/standard/StandardAnalyzer.html) | Alapértelmezés szerint. Nincs meghatározása vagy a konfiguráció szükség. Az általános célú analyzer hajt végre, a legtöbb nyelveket és forgatókönyvek esetén.|
-| Előre definiált elemzőkkel | Érhető el, ha a kész termék kívánják használható-van, korlátozott testreszabása. <br/>Két típusa van: speciális és nyelvet. Mi válnak "előre definiált" neve, a nem testreszabási hivatkozik. <br/><br/>[Speciális (nyelv független) elemzőkkel](https://docs.microsoft.com/rest/api/searchservice/custom-analyzers-in-azure-search#AnalyzerTable) akkor használatosak, ha a szöveg bemenetei speciális feldolgozó vagy minimális feldolgozási igényelnek. Nem előre definiált lekérdezések-tartalmaznak **Asciifolding**, **kulcsszó**, **mintát**, **egyszerű**, **leállítása**, **Szóköz**.<br/><br/>[Nyelvi elemzőkkel](https://docs.microsoft.com/rest/api/searchservice/language-support) használata, amikor az egyes nyelvek gazdag nyelvi támogatás van szüksége. Az Azure Search 35 Lucene nyelvi elemzőkkel és 50 Microsoft természetes nyelvű feldolgozási elemzőkkel támogatja. |
-|[Egyéni elemzők](https://docs.microsoft.com/rest/api/searchservice/Custom-analyzers-in-Azure-Search) | A meglévő elemet egy jogkivonatokat létrehozó (kötelező), és nem kötelező szűrők (char vagy token) álló kombinációja felhasználói konfiguráció.|
+| [Standard Lucene-elemzőt](https://lucene.apache.org/core/4_0_0/analyzers-common/org/apache/lucene/analysis/standard/StandardAnalyzer.html) | Default (Alapértelmezett): Nincs meghatározása vagy a konfiguráció nem szükséges. Az általános célú analyzer és a legtöbb nyelvek és forgatókönyvek hajt végre.|
+| Előre definiált elemzők | Érhető el, ha egy kész termék kívánják használható – van, korlátozott testreszabási beállításokkal. <br/>Két típusa van: speciális és a nyelvet. Miből őket "előre meghatározott" neve, nincsenek testreszabási beállításokkal hivatkozhat. <br/><br/>[Specializált (nyelvtől) elemzők](https://docs.microsoft.com/rest/api/searchservice/custom-analyzers-in-azure-search#AnalyzerTable) használatosak, amikor a bemeneti szöveg speciális feldolgozó vagy a minimális feldolgozást igényelnek. Például nem előre definiált nyelvelemzők **Asciifolding**, **kulcsszó**, **minta**, **egyszerű**, **leállítása**, **Szóköz**.<br/><br/>[Nyelvi elemzők](https://docs.microsoft.com/rest/api/searchservice/language-support) használatosak, amikor az egyes nyelveket a gazdag nyelvi támogatás szükséges. Az Azure Search 35 Lucene nyelvi elemzőkkel és a Microsoft természetes nyelvek feldolgozása 50 elemzők támogatja. |
+|[Egyéni elemzők](https://docs.microsoft.com/rest/api/searchservice/Custom-analyzers-in-Azure-Search) | Egy felhasználó által definiált konfigurációs meglévő elemeket, egy jogkivonatokat létrehozó (kötelező) és a választható szűrők (char vagy token) álló kombináció.|
 
-Testre szabhatja, mint egy előre meghatározott analyzer **mintát** vagy **leállítása**, alternatív a lehetőségek részletes ismertetését lásd: [előre definiált Analyzer hivatkozás](https://docs.microsoft.com/rest/api/searchservice/custom-analyzers-in-azure-search#AnalyzerTable). Csak az előre definiált elemzőkkel néhány közül állíthatja be. A testreszabás, adja meg az új konfiguráció néven, például a módon *myPatternAnalyzer* azt megkülönböztetni a Lucene mintát analyzer.
+Testre szabhatja egy előre meghatározott elemző eszköz, például **minta** vagy **leállítása**ahhoz, hogy alternatív beállítások részletes ismertetését lásd: [előre meghatározott Analyzer referencia](https://docs.microsoft.com/rest/api/searchservice/custom-analyzers-in-azure-search#AnalyzerTable). Csak az előre meghatározott elemzők néhány közül választhat, amely lehet. Mivel a testreszabás, adja meg az új konfiguráció néven, például *myPatternAnalyzer* csatornától való megkülönböztetés a Lucene-minta analyzer.
 
-## <a name="how-to-specify-analyzers"></a>Elemzőkkel megadása
+## <a name="how-to-specify-analyzers"></a>Elemzők megadása
 
-1. (a csak egyéni lekérdezések esetén) Hozzon létre egy **analyzer** című szakaszában találhat az index definícióját. További információkért lásd: [a Create Index](https://docs.microsoft.com/rest/api/searchservice/create-index) és is [egyéni Lekérdezések > hozzon létre](https://docs.microsoft.com/rest/api/searchservice/Custom-analyzers-in-Azure-Search#create-a-custom-analyzer).
+1. (a csak egyéni elemzőket) Hozzon létre egy **analyzer** az index definícióját szakaszát. További információkért lásd: [a Create Index](https://docs.microsoft.com/rest/api/searchservice/create-index) és is [egyéni elemzőket > Létrehozás](https://docs.microsoft.com/rest/api/searchservice/Custom-analyzers-in-Azure-Search#create-a-custom-analyzer).
 
-2. Az egy [definition mezőben](https://docs.microsoft.com/rest/api/searchservice/create-index) az indexben, állítsa be a **analyzer** tulajdonság egy tároló analyzer nevét (például `"analyzer" = "keyword"`. Érvényes értékek a következők egy előre meghatározott analyzer, nyelvi elemzőt vagy egyéni analyzer is a sémában meghatározott elemnévvel index neve.
+2. Az egy [definíció mező](https://docs.microsoft.com/rest/api/searchservice/create-index) az indexben, állítsa be a **analyzer** tulajdonságát egy cél-elemző eszköz nevére (például `"analyzer" = "keyword"`. Az érvényes értékek egy előre meghatározott elemző, nyelvi elemző vagy az indexséma még definiált egyéni elemző neve.
 
-3. Másik lehetőségként helyett egy **analyzer** tulajdonság, a különböző elemzőkkel indexelő és lekérdezése használatával beállíthatja a **indexAnalyzer** és **searchAnalyzer "** mező a paraméterek. 
+3. Szükség esetén helyett **analyzer** tulajdonság, beállíthatja az indexelés és a lekérdezési a használatával különböző elemzők a **indexAnalyzer** és **searchAnalyzer "** mező a paraméterek. 
 
-3. Egy elemző eszköz hozzáadása egy mező definition azt eredményezi, az indexben írási művelet azok háromszorosa. Ha ad hozzá egy **analyzer** létező indexek, vegye figyelembe a következőket:
+3. Az index az írási művelet egy elemző ad hozzá egy mezőt definíció tekintetében. Ha hozzáad egy **analyzer** létező indexek, vegye figyelembe a következőket:
  
  | Forgatókönyv | Hatás | Lépések |
  |----------|--------|-------|
- | Új mező hozzáadása | minimális | Ha a mező a sémában még nem létezik, nincs nincs mező változat végezhet, mert a mező még nincs fizikai jelenlét az indexben. Használjon [Index frissítése](https://docs.microsoft.com/rest/api/searchservice/update-index) és [mergeOrUpload](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) ehhez a feladathoz.|
- | Egy elemző eszköz hozzáadása egy meglévő indexelt mezőt. | Építse újra | A fordított index mező kell újra létrehoznia az alapoktól fel, és újra kell indexelni mezőket a tartalmát. <br/> <br/>Az indexek aktív fejlesztés alatt [törlése](https://docs.microsoft.com/rest/api/searchservice/delete-index) és [létrehozása](https://docs.microsoft.com/rest/api/searchservice/create-index) átvételéhez mező új meghatározása az index. <br/> <br/>Éles környezetben indexek hozzon létre egy új mezőben adja meg a módosított meghatározása és használatba. Használjon [Index frissítése](https://docs.microsoft.com/rest/api/searchservice/update-index) és [mergeOrUpload](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) átfogó az új mező. Később, a tervezett index karbantartás részeként is távolítja el az elavult mező eltávolítása az index. |
+ | Adjon hozzá egy új mezőt | Minimális | Ha a mező a séma még nem létezik, nem végezhet, mert a mező még nem rendelkezik egy fizikai jelenlét az index nem mező változat. Használat [Index frissítése](https://docs.microsoft.com/rest/api/searchservice/update-index) és [mergeOrUpload](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) erre a célra.|
+ | Egy elemző hozzáadása egy meglévő indexelt mező. | Újraépítése | Ezt a mezőt fordított indexe létre kell hozni az alapoktól fel, és újra kell indexelni a tartalmat az adott mezők. <br/> <br/>Az aktív fejlesztés alatt indexek [törlése](https://docs.microsoft.com/rest/api/searchservice/delete-index) és [létrehozása](https://docs.microsoft.com/rest/api/searchservice/create-index) folytattuk a munkát az új mező definíció indexe. <br/> <br/>Az indexek éles környezetben hozzon létre egy új mezőt a módosított meghatározása és használatba. Használat [Index frissítése](https://docs.microsoft.com/rest/api/searchservice/update-index) és [mergeOrUpload](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) építhetnek be az új mező. Később, az index tervezett karbantartás részeként távolíthatja el az indexet elavult mezők eltávolítása. |
 
 ## <a name="tips-and-best-practices"></a>Tippek és ajánlott eljárások
 
-Ez a szakasz a lekérdezések használata tanácsokat.
+Ez a szakasz tanácsokat ad az elemzők használatának módját.
 
-### <a name="one-analyzer-for-read-write-unless-you-have-specific-requirements"></a>Egy elemző eszköz az olvasási és írási használni, ha nincs kapcsolatos követelmények
+### <a name="one-analyzer-for-read-write-unless-you-have-specific-requirements"></a>Egy elemző eszköz, az olvasási és írási, kivéve, ha nincsenek egyedi igényei
 
-Az Azure Search lehetővé teszi a különböző elemzőkkel indexeléshez adja meg, és keressen további keresztül `indexAnalyzer` és `searchAnalyzer` paraméterek mezőben. Ha nincs megadva, a analyzer beállított a `analyzer` a tulajdonságot használja az indexelés és a keresést. Ha `analyzer` értéke nincs megadva, az alapértelmezett normál Lucene analyzer szolgál.
+Az Azure Search lehetővé teszi, hogy adja meg a különböző elemzők az indexelés és keresés használatával további `indexAnalyzer` és `searchAnalyzer` paraméterek mezőben. Ha nincs megadva, az elemző beállított a `analyzer` tulajdonság szolgál az indexelés és keresés. Ha `analyzer` van meghatározva, az alapértelmezett Standard Lucene-elemzőt használja.
 
-Általános szabály, hogy használja az ugyanazon analyzer indexelő és kérdez le, kivéve, ha a meghatározott követelmények ettől eltérő konfigurációt tesznek. Győződjön meg arról, hogy alaposan tesztelje. Szöveg feldolgozási eltér a keresési indexelő időpontban, amikor futtatja a lekérdezési kifejezések és indexelt feltételeit, ha a Keresés és indexelési analyzer konfigurációk nincsenek egyeztetve eltérő kockázatát.
+Általános szabály, hogy az azonos elemző indexelése és lekérdezése, kivéve, ha az adott igények miatt más módon. Győződjön meg arról, alaposan tesztelni. Szöveg feldolgozási eltér a keresési indexelő időpontban, amikor Ön a veszély, lekérdezési kifejezéseket és indexelt feltételeket, ha a Keresés és az indexelő analyzer konfigurációk nincsenek egyeztetve nem egyezik.
 
-### <a name="test-during-active-development"></a>Aktív a fejlesztés során tesztelése
+### <a name="test-during-active-development"></a>Aktív fejlesztés során tesztelése
 
-Az index rebuild felülbírálja a szabványos elemző szükséges. Ha lehetséges mely elemzőkkel aktív, mielőtt éles környezetben az index a fejlesztés során használandó mellett dönt.
+Az indexkészítés felülbírálja a szabványos elemző szükséges. Ha lehetséges hozza meg, melyik elemzők, mielőtt éles környezetben az index aktív fejlesztés során használ.
 
-### <a name="inspect-tokenized-terms"></a>Vizsgálja meg a tokenekre feltételek
+### <a name="inspect-tokenized-terms"></a>A feltételek tokenekre vizsgálata
 
-A keresés nem várt eredményt adja vissza, ha a legvalószínűbb token eltérés van a kifejezés bemenetek a lekérdezésre, és az index tokenekre feltételeit. Ha a jogkivonatok nem ugyanaz, megfelel nem materializálni. A vizsgálandó jogkivonatokat létrehozó kimeneti, azt javasoljuk, a [elemzése API](https://docs.microsoft.com/rest/api/searchservice/test-analyzer) vizsgálati eszköz. A válasz áll jogkivonatokat, például egy adott elemző eszköz által létrehozott.
+A keresés nem várt eredményeket adjon vissza, ha a legvalószínűbb token fenntartásában kifejezés bemenetei között a lekérdezésre, és az index tokenekre feltételek között. Ha a jogkivonatok nem ugyanaz, egyezések tényleges táblává alakíthatóak sikertelen. Vizsgálhatja meg a kimeneti tokenizer, javasoljuk a [elemezheti API](https://docs.microsoft.com/rest/api/searchservice/test-analyzer) vizsgálati eszköz. A válasz tokenek, áll, például egy adott elemző eszköz által létrehozott.
 
-### <a name="compare-english-analyzers"></a>Angol elemzőkkel összehasonlítása
+### <a name="compare-english-analyzers"></a>Angol nyelvű elemzők összehasonlítása
 
-A [keresési Analyzer bemutató](http://alice.unearth.ai/) egy külső bemutató alkalmazás megjeleníti a szabványos Lucene analyzer Lucene tartozó angol nyelvi elemzőt és a Microsoft angol természetes nyelvű processzor egymás melletti összehasonlítása. Az index rögzített; a népszerű szövegegység szöveget tartalmaz. Minden keresési bemeneti ad meg, mindegyik elemző eszköz eredményei jelennek meg szomszédos ablaktáblák, biztosítva, hogy miként dolgozza fel a mindegyik elemző ugyanazt a karakterláncot. 
+A [keresési Analyzer bemutató](http://alice.unearth.ai/) egy külső bemutató alkalmazás egy egymás mellett hasonlítja, a standard Lucene-elemzőt, a Lucene angol nyelvi elemző és a Microsoft természetes angol nyelvű processzor. Az index rögzített; egy népszerű történetet szöveget tartalmaz. Az egyes keresési feltétele alapján ad meg, az egyes analyzer eredmények jelennek meg a szomszédos csomópontoknak, így jobban, hogy minden egyes analyzer miként dolgozza fel ugyanazt a karakterláncot. 
 
 ## <a name="examples"></a>Példák
 
-Az alábbi példák azt szemléltetik, néhány főbb forgatókönyvek analyzer definícióit.
+Az alábbi példák néhány főbb forgatókönyvek megvalósítását analyzer definíciói.
 
 <a name="Example1"></a>
 ### <a name="example-1-custom-options"></a>1. példa: Egyéni beállítások
 
-Ez a példa egy egyéni beállításokkal analyzer definíciója mutatja be. Char, tokenizers, és token szűrőket egyéni beállításokat külön-külön megadott elnevezett szerkezetek, és majd hivatkozott analyzer definíciójában. Előre meghatározott elemek használatosak- és egyszerűen hivatkozás a név alapján.
+Ebben a példában egy egyéni beállításokkal analyzer definícióját mutatja be. Egyéni beállítások a char szűrők, tokenizers és token szűrők megadott külön-külön elnevezett szerkezeteket, és ezután az elemző-definícióban hivatkozott. Előre meghatározott elemek használják- és neve egyszerűen hivatkozik.
 
-Útmutató alapján ez a példa:
+Ebben a példában ajánljuk figyelmébe:
 
-* Lekérdezések a kereshető mező mező osztály egy tulajdonságát.
-* Egy egyéni analyzer egy Indexdefiníció részét képezi. Lehet, hogy lehet enyhén testre szabott (például egy szűrő az egyetlen lehetőség testreszabása) vagy több helyen is testre szabott.
-* Ebben az esetben az egyéni analyzer "my_analyzer", amely viszont használja egy testreszabott szabványos jogkivonatokat létrehozó "my_standard_tokenizer" és a két token szűrők: kis- és testre szabott asciifolding szűrő "my_asciifolding".
-* Cserélje le minden gondolatjelek aláhúzásjelek (a szabványos jogkivonatokat létrehozó oldaltörések kötőjel azonban nem aláhúzás) létrehozása előtt egyéni "map_dash" char szűrőt is meghatározza.
+* Elemzők a mező osztály kereshető mező tulajdonsága.
+* Egyéni elemző egy indexdefiníciót részét képezi. Előfordulhat, hogy alaposan testreszabható (például egy szűrő az egyetlen lehetőség testreszabása) vagy testre szabott több helyen is.
+* Ebben az esetben az egyéni elemző-e "my_analyzer", amely viszont használja a "my_standard_tokenizer" testre szabott standard jogkivonatokat létrehozó és két token szűrők: kis- és testre szabott asciifolding szűrő "my_asciifolding".
+* Cserélje le az összes kötőjelek aláhúzásjeleket tartalmazhat, mielőtt a jogkivonatok (a standard szintű tokenizer megszakad a dash, de nem az aláhúzás) egyéni "map_dash" char szűrőt is meghatározza.
 
 ~~~~
   {
@@ -134,7 +134,7 @@ Ez a példa egy egyéni beállításokkal analyzer definíciója mutatja be. Cha
      "tokenizers":[
         {
            "name":"my_standard_tokenizer",
-           "@odata.type":"#Microsoft.Azure.Search.StandardTokenizer",
+           "@odata.type":"#Microsoft.Azure.Search.StandardTokenizerV2",
            "maxTokenLength":20
         }
      ],
@@ -149,11 +149,11 @@ Ez a példa egy egyéni beállításokkal analyzer definíciója mutatja be. Cha
 ~~~~
 
 <a name="Example2"></a>
-### <a name="example-2-override-the-default-analyzer"></a>2. példa: Az alapértelmezett analyzer felülbírálása
+### <a name="example-2-override-the-default-analyzer"></a>2. példa: Az alapértelmezett elemző felülbírálása
 
-A szabványos elemző eszköz az alapértelmezett beállítás. Tegyük fel, az alapértelmezett lecseréli egy másik előre definiált elemző eszközt, például a minta analyzer. Ha nem egyéni beállítások megadása, csak adja meg azt a nevet adja meg a mező definícióban kell.
+A standard szintű elemző eszköz az alapértelmezett érték. Tegyük fel, hogy az alapértelmezett cserélje le egy másik előre meghatározott elemző eszköz, például a minta analyzer. Ha nem egyéni beállításainak, csak adja meg azt a mezőt definícióban található nevének kell.
 
-A "analyzer" elem felülbírálja a szabványos analyzer mező által alapon. Nincs globális felülbírálás van. Ebben a példában `text1` a minta elemzőt használ és `text2`, amely nem ad meg egy analyzer használja az alapértelmezett.
+A "analyzer"-elem felülbírálja a szabványos analyzer mező szerint történik. Nincs nincs globális felülbírálás. Ebben a példában `text1` a minta elemzőt használ, és `text2`, amely nem adja meg egy elemzőt használja az alapértelmezett.
 
 ~~~~
   {
@@ -181,9 +181,9 @@ A "analyzer" elem felülbírálja a szabványos analyzer mező által alapon. Ni
 ~~~~
 
 <a name="Example3"></a>
-### <a name="example-3-different-analyzers-for-indexing-and-search-operations"></a>3. példa: Különböző elemzőkkel indexelő és a keresési műveletekhez
+### <a name="example-3-different-analyzers-for-indexing-and-search-operations"></a>3. példa: Különböző elemzők az indexelési és keresési műveletek
 
-Az API-kat a különböző elemzőkkel az indexelő, és keresse meg a további index attribútumait tartalmazza. A `searchAnalyzer` és `indexAnalyzer` attribútumok meg kell adni a mag cseréje a egyetlen, két `analyzer` attribútum.
+Az API-k különböző elemzők az indexelés és keresés megadásával további index attribútumait tartalmazza. A `searchAnalyzer` és `indexAnalyzer` párban, és cserélje le az egyetlen kötelező attribútumok `analyzer` attribútum.
 
 
 ~~~~
@@ -208,9 +208,9 @@ Az API-kat a különböző elemzőkkel az indexelő, és keresse meg a további 
 ~~~~
 
 <a name="Example4"></a>
-### <a name="example-4-language-analyzer"></a>4. példa: Nyelvi elemzőt
+### <a name="example-4-language-analyzer"></a>4. példa: Nyelvi elemző
 
-Különböző nyelveken karakterláncokat tartalmazó mezőket is használható, a nyelvi elemzőt más mezők tartsa meg az alapértéket (vagy valamilyen más előre definiált vagy egyéni analyzer használatának). Ha egy nyelvi elemzőt használ, azt kell használható indexelési és keresési műveletekhez. Rekord egy nyelvi elemzőt használó nem indexeléshez különböző elemzőkkel és keresés.
+Különböző nyelveken karakterláncokat tartalmazó mezők használhatja egy nyelvi elemzőt, míg a többi mező tartsa meg az alapértéket (vagy valamilyen más előre definiált vagy egyéni elemzőt használja). Ha egy nyelvi elemzőt használ, akkor az indexelési és keresési műveletek kell használható. Mezőt, amely egy nyelvi elemzőt használja nem rendelkezik a különböző elemzők az indexelés és keresés.
 
 ~~~~
   {
@@ -241,23 +241,23 @@ Különböző nyelveken karakterláncokat tartalmazó mezőket is használható,
 
 ## <a name="next-steps"></a>További lépések
 
-+ Tekintse át az átfogó magyarázata [hogyan teljes szöveges keresés működik az Azure Search](search-lucene-query-architecture.md). Ez a cikk példák segítségével viselkedéseket, amelyek a felületen counter-intuitive tűnhetnek ismertetik.
++ Tekintse át az átfogó ismertetése [teljes szöveges keresés működése az Azure Search](search-lucene-query-architecture.md). Ebben a cikkben példák azt ismertetik, tűnhet, hogy a Surface counter-intuitive viselkedés tapasztalható.
 
-+ Próbálja meg a további lekérdezés szintaxisa a [dokumentumok keresése](https://docs.microsoft.com/rest/api/searchservice/search-documents#examples) példa szakasz vagy [egyszerű lekérdezés szintaxisát](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search) a keresési ablak a portálon.
++ Próbálja ki a további lekérdezési szintaxis a [dokumentumok keresése](https://docs.microsoft.com/rest/api/searchservice/search-documents#examples) példa szakaszban vagy [egyszerű lekérdezési szintaxis](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search) a keresési ablakban a portálon.
 
-+ Megtudhatja, hogyan alkalmazza [nyelvspecifikus lexikális elemzőkkel](https://docs.microsoft.com/rest/api/searchservice/language-support).
++ Ismerje meg, hogyan alkalmazhatja a [nyelvspecifikus lexikai elemzőket](https://docs.microsoft.com/rest/api/searchservice/language-support).
 
-+ [Konfigurálja az egyéni lekérdezések](https://docs.microsoft.com/rest/api/searchservice/custom-analyzers-in-azure-search) minimális feldolgozási vagy speciális feldolgozását az egyes mezőket.
++ [Egyéni elemzők konfigurálása](https://docs.microsoft.com/rest/api/searchservice/custom-analyzers-in-azure-search) minimális feldolgozás vagy specializált feldolgozási az egyes mezőket.
 
-+ [Hasonlítsa össze a szabványos és az angol nyelvű elemzőkkel](http://alice.unearth.ai/) szomszédos ablaktáblán a bemutató webhelyen. 
++ [Hasonlítsa össze a standard és az angol nyelvű elemzők](http://alice.unearth.ai/) bemutató webhelyhez a szomszédos ablaktáblán. 
 
 ## <a name="see-also"></a>Lásd még
 
- [REST API-t dokumentumok keresése](https://docs.microsoft.com/rest/api/searchservice/search-documents) 
+ [REST API-val dokumentumok keresése](https://docs.microsoft.com/rest/api/searchservice/search-documents) 
 
  [Egyszerű lekérdezési szintaxis](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search) 
 
- [Teljes Lucene lekérdezés szintaxisa](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search) 
+ [Teljes Lucene lekérdezési szintaxis](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search) 
  
  [A keresési eredmények kezelése](https://docs.microsoft.com/azure/search/search-pagination-page-layout)
 

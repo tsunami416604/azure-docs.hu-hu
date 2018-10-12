@@ -14,12 +14,12 @@ ms.date: 08/15/2018
 ms.author: sethm
 ms.reviewer: sijuman
 <!-- dev: viananth -->
-ms.openlocfilehash: c55dcf0736642690f245f680db5cb1620c2175e7
-ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
+ms.openlocfilehash: c4600eda74fbc0ae53f30dac00e0127a984a4fff
+ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44390962"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49093415"
 ---
 # <a name="use-api-version-profiles-with-python-in-azure-stack"></a>API-verzióprofilok használata az Azure Stackben Pythonnal
 
@@ -129,7 +129,7 @@ A példák nem feltétlenül a a fenti listában megadott sorrendben.
     export ARM_ENDPOINT={your AzureStack Resource Manager Endpoint}
     ```
 
-7.  Ez a minta futtatásához, Ubuntu 16.04-LTS és lemezképek WindowsServer-2012-R2-Datacenter jelen kell lennie az Azure Stack-piactér. Ezek lehetnek, vagy [az Azure-ból letöltött](https://docs.microsoft.com/azure/azure-stack/azure-stack-download-azure-marketplace-item) vagy [Platformlemezképtárhoz hozzáadott](https://docs.microsoft.com/azure/azure-stack/azure-stack-add-vm-image).
+7.  Ez a minta futtatásához, Ubuntu 16.04-LTS és lemezképek WindowsServer-2012-R2-Datacenter jelen kell lennie az Azure Stack piactéren. Ezek lehetnek, vagy [az Azure-ból letöltött](https://docs.microsoft.com/azure/azure-stack/azure-stack-download-azure-marketplace-item) vagy [Platformlemezképtárhoz hozzáadott](https://docs.microsoft.com/azure/azure-stack/azure-stack-add-vm-image).
 
 8. Futtassa a mintát.
 

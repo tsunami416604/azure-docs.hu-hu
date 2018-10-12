@@ -12,19 +12,19 @@ ms.topic: conceptual
 ms.date: 07/01/2018
 ms.author: jehollan
 ms.custom: mvc, devcenter
-ms.openlocfilehash: b28e7b158af939defd37734c3ff9fe2309e3ab85
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: d641688b5e2da7bf571b536aa9cc340e9a5b2ace
+ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44094399"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49115420"
 ---
 # <a name="create-your-first-function-with-java-and-intellij-preview"></a>Az első függvény létrehozása a Java és az intellij-vel (előzetes verzió)
 
 > [!NOTE] 
 > A Java for Azure Functions jelenleg előzetes verzióban érhető el.
 
-Ez a cikk bemutatja, hogyan hozhat létre egy [kiszolgáló nélküli](https://azure.microsoft.com/overview/serverless-computing/) Functions-projektet IntelliJ IDEA és az Apache Maven, tesztelése és hibakeresés végrehajtása rajtuk a saját számítógépén az IDE-ből, és üzembe helyezése az Azure Functions. 
+Ez a cikk bemutatja, hogyan hozhat létre egy [kiszolgáló nélküli](https://azure.microsoft.com/solutions/serverless/) Functions-projektet IntelliJ IDEA és az Apache Maven, tesztelése és hibakeresés végrehajtása rajtuk a saját számítógépén az IDE-ből, és üzembe helyezése az Azure Functions. 
 
 <!-- TODO ![Access a Hello World function from the command line with cURL](media/functions-create-java-maven/hello-azure.png) -->
 

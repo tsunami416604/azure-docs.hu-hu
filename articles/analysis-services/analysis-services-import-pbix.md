@@ -5,25 +5,27 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 09/27/2018
+ms.date: 10/11/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: e164488a1bf176d5b6c0e28a84cd1ec22cae4cce
-ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
+ms.openlocfilehash: 8882a44b0b6db1b3c23c017a072ebddfe9aa20f5
+ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47423578"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49090872"
 ---
 # <a name="import-a-power-bi-desktop-file"></a>A Power BI Desktop-fájl importálása
 
 Azure Analysis Services adatmodellt a Power BI Desktop-fájl (pbix) importálhatja. Modell metaadatainak, a gyorsítótárazott adatok és az adatforrás-kapcsolatok importálása. Jelentések és Vizualizációk nem lesznek importálva. Importált adatok a Power BI Desktopból modellek az 1400-as kompatibilitási szinten.
 
+> [!IMPORTANT]
+> Ez a funkció elavult. Előfordulhat, hogy azt eltávolították, vagy egy jövőbeli frissítéssel jelentősen módosult. Ajánlott, hogy megszakítja a meglévő és új projektek a funkciók segítségével fenntartja a jövőbeli frissítések kompatibilitást. Speciális modell fejlesztési és tesztelési célszerű a Visual Studio (SSDT) és az SQL Server Management Studio (SSMS) használja.
+
 **Korlátozások**   
 
-- A portálon, amely a webes Tervező funkcióval egy pbix-fájlból használ **előzetes**. A funkció korlátozódik. Speciális modell fejlesztési és tesztelési célszerű a Visual Studio (SSDT) és az SQL Server Management Studio (SSMS) használja.
-- Ha az adatmodellt hoznak létre a Power BI Desktop 2018 július frissítése (2.60.5169.3201), vagy később, győződjön meg róla, nem előzetes verziójú funkciók vannak engedélyezve. Előzetes verziójú funkciók még nem támogatottak az Azure Analysis Servicesben.  
-Ha importálása során a következő hibaüzenetet kapja, a pbix-fájl rendelkezik előzetes verziójú funkciók engedélyezve van, amely még nem támogatottak az Azure Analysis Servicesben.
+
+- Ha az adatmodellt hoznak létre a Power BI Desktop 2018 július frissítése (2.60.5169.3201), vagy később, győződjön meg róla, nem előzetes verziójú funkciók vannak engedélyezve. Előzetes verziójú funkciók még nem támogatottak az Azure Analysis Servicesben. Ha importálása során a következő hibaüzenetet kapja, a pbix-fájl rendelkezik előzetes verziójú funkciók engedélyezve van, amely még nem támogatottak az Azure Analysis Servicesben.
 
     ![Kompatibilitási szintre vonatkozó figyelmeztetés](./media/analysis-services-import-pbix/aas-import-pbix-cl-warning.png)   
 - Kiszolgáló-rendszergazdai engedélyek egy pbix-fájlból importálni kell rendelkeznie.

@@ -3,8 +3,8 @@ title: Azure CDN-nel dinamikuswebhely-gyorsítás
 description: Az Azure CDN dinamikuswebhely-gyorsításként (DSA) optimalizálási támogatja a dinamikus tartalmat tartalmazó fájlok.
 services: cdn
 documentationcenter: ''
-author: dksimpson
-manager: akucer
+author: mdgattuso
+manager: danielgi
 editor: ''
 ms.assetid: ''
 ms.service: cdn
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/01/2018
-ms.author: rli; v-deasim
-ms.openlocfilehash: 8ecb2c1fa4d421907a338e01d24264c2951a1aba
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ms.author: magattus
+ms.openlocfilehash: 4fa681e800197ea241ba1c6cf2180ba04b6e565b
+ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35761714"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49092583"
 ---
 # <a name="dynamic-site-acceleration-via-azure-cdn"></a>Azure CDN-nel dinamikuswebhely-gyorsítás
 

@@ -10,12 +10,12 @@ ms.component: core
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 2ec0dea7e50747f8af337874c8f12463cecb8df7
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 1297881373943143578695490531d147d7f5523d
+ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47163477"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49115322"
 ---
 # <a name="train-models-with-automated-machine-learning-in-the-cloud"></a>A felhőalapú automatikus machine learning-modellek
 
@@ -190,10 +190,10 @@ Egy, használhatja ugyanazt a Jupyter-widget [az oktatóprogram](tutorial-auto-t
 from azureml.train.widgets import RunDetails
 RunDetails(remote_run).show()
 ```
-Ez a vezérlő statikus képe.  A notebook kattintva megtekintheti a Futtatás tulajdonságait, és kimeneti naplók futtató a táblázatban minden olyan sorban.   A legördülő listában, a diagram felett segítségével is megtekintheti minden elérhető minden egyes ismétléskor metrikát.
+Itt látható a vezérlő statikus képe.  A notebook kattintva megtekintheti a Futtatás tulajdonságait, és kimeneti naplók futtató a táblázatban minden olyan sorban.   A legördülő listában, a diagram felett segítségével is megtekintheti minden elérhető minden egyes ismétléskor metrikát.
 
-![widget tábla](./media/how-to-auto-train-remote/table.png)
-![widget diagram](./media/how-to-auto-train-remote/plot.png)
+![vezérlő táblázata](./media/how-to-auto-train-remote/table.png)
+![vezérlő ábrázolása](./media/how-to-auto-train-remote/plot.png)
 
 A widget használatával tekintse meg, és ismerje meg a Futtatás részletei az egyes URL-címet jeleníti meg.
  
@@ -203,7 +203,7 @@ A DSVM alatt ügynökszámítógépen/azureml_run / {iterationid} a naplók kere
 
 ## <a name="example"></a>Példa
 
-A `automl/03.auto-ml-remote-execution.ipynb` notebook mutatja be a jelen cikk fogalmait.  Ez a jegyzetfüzet lekérése:
+A [automl/03.auto-ml-remote-execution.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/automl/03.auto-ml-remote-execution.ipynb) notebook mutatja be a jelen cikk fogalmait.  Ez a jegyzetfüzet lekérése:
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-for-examples.md)]
 

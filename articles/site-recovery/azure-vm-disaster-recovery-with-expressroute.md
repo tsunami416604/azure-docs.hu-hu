@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 10/02/2018
 ms.author: manayar
-ms.openlocfilehash: 2e8df15da0572e037dedb9e0dd27a0728953ba4a
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: c3fc8edf1601b3bb6f670df64d444edc9dcfbd6d
+ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49079429"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49114876"
 ---
 # <a name="integrate-azure-expressroute-with-disaster-recovery-for-azure-vms"></a>Vészhelyreállítás az Azure virtuális gépek Azure ExpressRoute integrálása
 
@@ -166,7 +166,7 @@ Ez a konfiguráció segít az elsődleges ExpressRoute-kapcsolatcsoport meghibá
 
 Ebben a konfigurációban nincs csak egy Expressroute-kapcsolatcsoportot. Bár a kapcsolatcsoport redundáns kapcsolattal rendelkezik, abban az esetben, ha egy leáll, egy egyetlen expressroute-kapcsolatcsoport nem nyújt rugalmasságot Ha leáll a társviszony-létesítési régióban. Vegye figyelembe:
 
-- Azure virtuális gépek az Azure-régiókba replikálhatja a [azonos földrajzi helyen](azure-to-azure-support-matrix.md#region-support). Ha a cél Azure-régió nem ugyanazon a helyen, mint a forrás-, kívánja engedélyezni az ExpressRoute Premium egy ExpressRoute-kapcsolatcsoport használata. Ismerje meg [ExpressRoute-helyek](../expressroute/expressroute-locations.md#azure-regions-to-expressroute-locations-within-a-geopolitical-region) és [ExpressRoute – díjszabás](https://azure.microsoft.com/pricing/details/expressroute/).
+- Azure virtuális gépek Azure-régiókba replikálhatja a [azonos földrajzi helyen](azure-to-azure-support-matrix.md#region-support). Ha a cél Azure-régió nem ugyanazon a helyen, mint a forrás-, kívánja engedélyezni az ExpressRoute Premium egy ExpressRoute-kapcsolatcsoport használata. Ismerje meg [ExpressRoute-helyek](../expressroute/expressroute-locations.md#azure-regions-to-expressroute-locations-within-a-geopolitical-region) és [ExpressRoute – díjszabás](https://azure.microsoft.com/pricing/details/expressroute/).
 - Nem lehet csatlakoztatni forrás- és virtuális hálózatok egyszerre a kapcsolatcsoporthoz azonos IP-címterület használata a célként megadott régióban. Ebben a forgatókönyvben:    
     -  Szakítsa meg a forrás oldalon kapcsolatot, és ezután a cél ügyféloldali kapcsolat létesítésére. A Site Recovery helyreállítási terv részeként a kapcsolatot change parancsfájlalapú lehet. Vegye figyelembe:
         - A regionális meghibásodással Ha az elsődleges régióban nem érhető el, a leválasztás sikerült sikertelen. Ez hatással lehet a kapcsolat létrehozásakor, a célrégióban.

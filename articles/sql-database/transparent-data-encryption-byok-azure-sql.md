@@ -12,12 +12,12 @@ ms.author: aliceku
 ms.reviewer: vanto
 manager: craigg
 ms.date: 10/05/2018
-ms.openlocfilehash: 2308897737014befb831cbef9880065856c20c77
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.openlocfilehash: aff1d59000a95f2b8f029b9db30ff1facb2f8ba6
+ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48868796"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49114668"
 ---
 # <a name="azure-sql-transparent-data-encryption-bring-your-own-key-support"></a>Az Azure SQL transzparens adattitkosítás: Bring Your Own Key-támogatás
 
@@ -66,7 +66,14 @@ TDE először a TDE-védőhöz, a Key Vault használatára van konfigurálva, am
   > [!NOTE]
   > Ha az Azure AD Identity **van véletlenül törölték, vagy visszavonja a kiszolgáló engedélyek** a kulcstartó hozzáférési szabályzatát használja, a kiszolgáló elveszítette a hozzáférését a key vaultban, és titkosított TDE adatbázisok eldobásakor 24 órán belül.
 
-- Állítsa be az Azure Key Vault egy virtuális hálózat és tűzfal nélkül.  Ha SQL elveszíti a hozzáférést a kulcstartóhoz, a rendszer elveti a TDE titkosított adatbázisok 24 órán belül.
+- Az Azure Key Vault használata a tűzfalak és virtuális hálózatok, konfigurálnia kell a következőket: 
+  - A "Kijelölt hálózatok" hozzáférés engedélyezése 
+  - Adja hozzá a meglévő virtuális hálózatok, és válassza ki az SQL Database hálózathoz, ha van (Ez az egyedülálló adatbázisok esetén nem kötelező és a felügyelt példány esetén szükséges) 
+  - A tűzfal megkerülését, megbízható Microsoft-szolgáltatások – a kiválasztott Igen 
+         
+    > [!NOTE] 
+    > Ha titkosított TDE SQL-adatbázisok elveszti a hozzáférését a key vaultban, mert a tűzfal nem mellőzik, a rendszer elveti az adatbázisok 24 órán belül.
+
 - Naplózás és -jelentések az összes titkosítási kulcs engedélyezése: a Key Vault lehetővé egyszerűen más biztonsági biztonságiadat- és eseménykezelés (SIEM) felügyeleti eszközök behelyezése naplókat. Az Operations Management Suite (OMS) [Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-key-vault) egy szolgáltatás, amely már integrálva van egy példát.
 - Ahhoz, hogy a magas rendelkezésre állású titkosított adatbázisok, konfigurálja mindegyik logikai kiszolgáló két Azure Key vault-Kulcstartók, amelyek különböző régiókban találhatók.
 

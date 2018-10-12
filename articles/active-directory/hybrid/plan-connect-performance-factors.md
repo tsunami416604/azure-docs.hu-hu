@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/06/2018
 ms.reviewer: martincoetzer
 ms.author: billmath
-ms.openlocfilehash: 7cf0e2b211f9d34f6d8f4fe89a230d8a2e97512a
-ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
+ms.openlocfilehash: cdca1b31f9b6cf10113dc0dba70b8f8991bafa2b
+ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49069013"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49093969"
 ---
 # <a name="factors-influencing-the-performance-of-azure-ad-connect"></a>Az Azure AD Connect teljesítményét befolyásoló tényezők
 
@@ -30,7 +30,7 @@ Az Azure AD Connect szinkronizálja az Active Directory, az Azure ad-hez. Ez a k
 | Konfiguráció| Az Azure AD Connect folyamatok a könyvtárak és információkat. |
 | Betöltés| Objektum módosítása gyakorisága. A terhelések egy óra, nap vagy hét folyamán eltérőek lehetnek. Az összetevőtől függően tervezhet a csúcsterheléssel vagy az átlagos terhelés is rendelkezik. |
 
-A jelen dokumentum célja, hogy a teljesítménnyel kapcsolatos megfontolások az Azure AD Connect a kiépítési motor teljesítményét befolyásoló ismertetik. Az Azure AD Connect, a többi összetevő például [az Azure AD Connect health](how-to-connect-health-agent-install.md) és az ügynökök nem terjed ki itt.
+A jelen dokumentum célja, hogy az az Azure AD Connect-kiépítés motor teljesítményét befolyásoló tényezőket ismerteti. Nagy vagy összetett (a szervezetek több mint 100 000 objektumra kiépítése) is alakíthatók a javaslatok optimalizálása az Azure AD Connect végrehajtásuk esetén az itt vázolt okoznak teljesítményproblémákat. Az Azure AD Connect, a többi összetevő például [az Azure AD Connect health](how-to-connect-health-agent-install.md) és az ügynökök nem terjed ki itt.
 
 > [!IMPORTANT]
 > A Microsoft Azure AD Connect műveleteken kívüli módosítását vagy nem támogatja. Minden ilyen művelet azt eredményezheti, hogy az Azure AD Connect szinkronizálása inkonzisztens vagy nem támogatott állapotba kerül. A Microsoft ezért nem tud műszaki támogatást biztosítani az ilyen környezetekhez.
@@ -179,7 +179,7 @@ Az Azure AD Connect megvalósítási a teljesítmény optimalizálása érdekéb
 
 
 - Használja a [hardverkonfiguráció javasolt](how-to-connect-install-prerequisites.md) a megvalósítása az Azure AD Connect-kiszolgáló mérete alapján.
-- Amikor frissíti az Azure AD Connect nagy méretű telepítések, érdemes [áttelepítési módszer párhuzamos](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-upgrade-previous-version#swing-migration), hogy ellenőrizze, hogy a minimális állásidő és a legjobb megbízhatóság. 
+- Történő frissítés az Azure AD Connect a nagyobb méretű környezetek esetén fontolja meg [áttelepítési módszer párhuzamos](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-upgrade-previous-version#swing-migration), hogy ellenőrizze, hogy a minimális állásidő és a legjobb megbízhatóság. 
 - Az SQL database a legjobb teljesítmény írása SSD használja.
 - Az Active Directory szűrje a csak az, hogy szükség lesz az Azure AD-ben a tartomány, szervezeti egység vagy attribútumszűrés objektumokat tartalmazza.
 - Módosítsa az alapértelmezett szabályok attribútum van szüksége, ha először másolja a szabályt, majd módosítsa a másolás és letiltja az eredeti szabályt. Futtassa újra a teljes szinkronizálás a vágólapra.

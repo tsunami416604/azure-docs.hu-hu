@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 10/08/2018
 ms.author: raynew
-ms.openlocfilehash: 82674aec8d62388d0d0f26e730f66b8b078a5d75
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: 5c1858fca1ca5f6bc48f5225ecf2d52dee055c91
+ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48904352"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49092747"
 ---
 # <a name="contoso---scale-a-migration-to-azure"></a>Contoso – méretezési csoport egy áttelepítés az Azure-bA
 
@@ -37,7 +37,7 @@ Ez a cikk egy sorozat, amely dokumentálja a fiktív Contoso hogyan a helyszíni
 [11. cikk: Újrabontás a Team Foundation Server az Azure DevOps-szolgáltatásokkal](contoso-migration-tfs-vsts.md) | Contoso áttelepíti a helyi Team Foundation Server központi Azure DevOps-szolgáltatásokkal az Azure-ban. | Elérhető
 [A cikk 12: Azure-tárolók és az Azure SQL Database az alkalmazás újratervezése](contoso-migration-rearchitect-container-sql.md) | Contoso annak SmartHotel app áttelepíti az Azure-bA. Ezután azt rearchitects az alkalmazás webes réteg az Azure Service Fabric és az alkalmazás-adatbázis az Azure SQL Database-ban futó Windows tárolójaként. | Elérhető    
 [Cikk 13: Építse újra az alkalmazást az Azure-ban](contoso-migration-rebuild.md) | Contoso újraépíti a SmartHotel alkalmazás számos Azure-szolgáltatások és szolgáltatások, beleértve az Azure App Service, Azure Kubernetes Service (AKS), az Azure Functions, Azure Cognitive Services és az Azure Cosmos DB használatával. | Elérhető 
-Cikk 14: Áttelepítés az Azure-bA méretezése | Után próbálja ki a migrálás kombinációit, Contoso most előkészíti a méretezhető, teljes mértékben áttelepíti az Azure-bA. | Ez a cikk
+Cikk 14: Áttelepítés az Azure-bA méretezése | Után próbálja ki a migrálás kombinációit, Contoso előkészíti a teljes migrálás az Azure-ba való méretezése. | Ez a cikk
 
 ## <a name="business-drivers"></a>A stratégiai
 
@@ -65,7 +65,7 @@ A Contoso felhőalapú csapat az áttelepítés célok le van rögzítve. Ezen c
 
 Után rögzíthet célokat és követelményeket állapította meg, a Contoso áttekinti az informatikai rendszer működését, és azonosítja az áttelepítési folyamat.
 
-## <a name="current-app"></a>Aktuális alkalmazás
+## <a name="current-deployment"></a>Aktuális üzemelő példány
 
 Megtervezése és beállítása után egy [Azure-infrastruktúra](contoso-migration-infrastructure.md) , és próbálja ki a fenti táblázatban leírtaknak megfelelően a különböző proof-of-concept (POC) áttelepítési kombinációit, Contoso készen áll a folyamatokról a teljes migrálás az Azure-bA ipari méretekben. Íme, mi a Contoso biztosítani szeretné áttelepíteni.
 

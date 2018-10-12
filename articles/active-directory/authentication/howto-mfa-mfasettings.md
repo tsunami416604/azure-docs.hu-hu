@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: michmcla
-ms.openlocfilehash: 8ba1286f7283a1062b2b94d58c2439e8461c1573
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: a66a7537632aac2190cd39f13665bcd8d4ed6ce7
+ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48817126"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49114987"
 ---
 # <a name="configure-azure-multi-factor-authentication-settings"></a>Az Azure multi-factor Authentication beállításainak konfigurálása
 
@@ -322,11 +322,11 @@ A _multi-factor Authentication megjegyzése_ eszközök és böngészők, amely 
 
 ### <a name="how-the-feature-works"></a>A funkció működése
 
-A tárolása a multi-factor Authentication szolgáltatás egy állandó cookie-t a böngészőben állítja be, amikor egy felhasználó kijelöli a **ne jelenjen meg többé az X nap** bejelentkezéskor lehetőséget. A nem kéri újra a multi-factor Authentication ugyanazzal a böngészővel a mindaddig, amíg a cookie lejár. Ha a felhasználó megnyit egy másik böngészőben ugyanazon az eszközön, vagy törli a cookie-kat, újra kell adnia ellenőrzése. 
+A tárolása a multi-factor Authentication szolgáltatás egy állandó cookie-t a böngészőben állítja be, amikor egy felhasználó kijelöli a **ne jelenjen meg többé az X nap** bejelentkezéskor lehetőséget. A nem kéri újra a multi-factor Authentication ugyanazzal a böngészővel a mindaddig, amíg a cookie lejár. Ha a felhasználó megnyit egy másik böngészőben ugyanazon az eszközön, vagy törli a cookie-kat, újra kell adnia ellenőrzése.
 
-A **ne jelenjen meg többé az X nap** beállítás nem jelenik meg a böngészőn kívüli alkalmazások, függetlenül attól, hogy az alkalmazás támogatja-e a modern hitelesítést. Ezek az alkalmazások használata _frissítési jogkivonatok_ , amely új hozzáférési jogkivonatokat biztosítson óránként. A frissítési jogkivonatok érvényesítve van, az Azure AD ellenőrzi a, hogy történt-e az utolsó kétlépéses ellenőrzést a megadott számú napon belül. 
+A **ne jelenjen meg többé az X nap** beállítás nem jelenik meg a böngészőn kívüli alkalmazások, függetlenül attól, hogy az alkalmazás támogatja-e a modern hitelesítést. Ezek az alkalmazások használata _frissítési jogkivonatok_ , amely új hozzáférési jogkivonatokat biztosítson óránként. A frissítési jogkivonatok érvényesítve van, az Azure AD ellenőrzi a, hogy történt-e az utolsó kétlépéses ellenőrzést a megadott számú napon belül.
 
-A funkció csökkenti a web apps szolgáltatásban, amely minden alkalommal általában kérni a hitelesítések számát. A funkció növeli a modern hitelesítési ügyfelek, amelyek általában kéri a 90 naponta hitelesítések számát.
+A funkció csökkenti a web apps szolgáltatásban, amely minden alkalommal általában kérni a hitelesítések számát. A funkció növeli a modern hitelesítési ügyfelek, amelyek általában kéri a 90 naponta hitelesítések számát. Feltételes hozzáférési szabályzatok kombinálva hitelesítések számát is növelhető.
 
 >[!IMPORTANT]
 >A **multi-factor Authentication megjegyzése** funkció, nem kompatibilis a **bejelentkezve szeretnék maradni** az AD FS, ha felhasználók végrehajtani a kétlépéses ellenőrzés keresztül az Azure multi-factor Authentication AD FS szolgáltatása Hitelesítési kiszolgáló vagy egy harmadik felek többtényezős hitelesítési megoldás.

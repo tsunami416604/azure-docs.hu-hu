@@ -13,56 +13,56 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 03/26/2018
+ms.date: 09/25/2018
 ms.author: cynthn
-ms.openlocfilehash: 8fd88a0e3c5b387ce3ea586f6f23b3643a03e58d
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 22e28e208d46a23a2dd7e36e1c3ba4be13be928a
+ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39618167"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49091952"
 ---
 # <a name="upload-a-generalized-vhd-and-use-it-to-create-new-vms-in-azure"></a>Általános VHD feltöltése és ezzel hozzon létre új virtuális gépeket az Azure-ban
 
-Ez a témakör végigvezeti egy általánosított virtuális gép VHD feltöltése az Azure-ba, a rendszerkép létrehozása a VHD-ből és a egy új virtuális gép létrehozása a rendszerképből PowerShell használatával. Feltölthet egy VHD-t egy helyszíni virtualizálási eszközből vagy egy másik felhőben exportált. Használatával [Managed Disks](managed-disks-overview.md) az új virtuális gép egyszerűbbé teszi a virtuális gép kezelése és jobb rendelkezésre állást biztosít, amikor a virtuális Gépet helyez egy rendelkezésre állási csoportban. 
+Ez a cikk végigvezeti egy általánosított virtuális gép VHD feltöltése az Azure-ba, a virtuális Merevlemezt a rendszerkép létrehozása és egy új virtuális gép létrehozása a rendszerképből PowerShell használatával. Feltölthet egy VHD-t egy helyszíni virtualizálási eszközből vagy egy másik felhőben exportált. Használatával [Managed Disks](managed-disks-overview.md) az új virtuális gép egyszerűbbé teszi a virtuális gép kezelése és jobb rendelkezésre állást biztosít, amikor a virtuális Gépet helyez egy rendelkezésre állási csoportban. 
 
-Ha szeretne egy mintaszkriptet használja, lásd: [mintaparancsfájl VHD feltöltése az Azure-ba, és a egy új virtuális gép létrehozása](../scripts/virtual-machines-windows-powershell-upload-generalized-script.md)
+Mintaparancsprogram lásd [mintaparancsfájl VHD feltöltése az Azure-ba, és hozzon létre egy új virtuális Gépet](../scripts/virtual-machines-windows-powershell-upload-generalized-script.md).
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-- Minden olyan VHD feltöltése az Azure-ba, mielőtt követendő [Windows VHD vagy VHDX feltöltése az Azure előkészítése](prepare-for-upload-vhd-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+- Minden olyan VHD feltöltése az Azure-ba, mielőtt követendő [készítse elő a Windows VHD vagy VHDX, az Azure-bA feltöltendő](prepare-for-upload-vhd-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 - Felülvizsgálat [tervezze meg a migrálás a Managed Disks szolgáltatásba](on-prem-to-azure.md#plan-for-the-migration-to-managed-disks) az áttelepítés megkezdése előtt [Managed Disks](managed-disks-overview.md).
-- Ez a cikk az AzureRM modul 5.6-os vagy újabb verziójára van szükség. A verzió azonosításához futtassa a következőt: ` Get-Module -ListAvailable AzureRM.Compute`. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-azurerm-ps) ismertető cikket.
+- Ez a cikk az AzureRM-modul, 5.6-os vagy újabb verziója szükséges. Futtatás ` Get-Module -ListAvailable AzureRM.Compute` a verzió megkereséséhez. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-azurerm-ps) ismertető cikket.
 
 
-## <a name="generalize-the-source-vm-using-sysprep"></a>A forrásoldali virtuális gép általánosítása a Sysprep használatával
+## <a name="generalize-the-source-vm-by-using-sysprep"></a>A forrásoldali virtuális gép általánosításához használja a Sysprep
 
 A Sysprep többek között minden személyes fiókadatot eltávolít, a gépet pedig előkészíti rendszerképként való használatra. További információ a Sysprepről: a [Sysprep áttekintése](https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep--system-preparation--overview).
 
-Ellenőrizze, hogy a Sysprep a gépen futó kiszolgálói szerepkörök támogatottak. További információkért lásd: [Sysprep támogatási kiszolgálói szerepköre tekintetében](https://msdn.microsoft.com/windows/hardware/commercialize/manufacture/desktop/sysprep-support-for-server-roles)
+Ellenőrizze, hogy a Sysprep a gépen futó kiszolgálói szerepkörök támogatottak. További információkért lásd: [kiszolgálói szerepkörök támogatása a Sysprep](https://msdn.microsoft.com/windows/hardware/commercialize/manufacture/desktop/sysprep-support-for-server-roles).
 
 > [!IMPORTANT]
-> Ha a virtuális merevlemez feltöltése az Azure-ban először előtt futtatja a Sysprep, ellenőrizze, hogy [készíteni a virtuális gép](prepare-for-upload-vhd-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) a Sysprep futtatása előtt. 
+> Ha azt tervezi, a virtuális merevlemez feltöltése az Azure-ban először előtt futtassa a Sysprep eszközt, ellenőrizze, hogy [készíteni a virtuális gép](prepare-for-upload-vhd-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). 
 > 
 > 
 
 1. Jelentkezzen be a Windows virtuális gép.
-2. Nyissa meg a parancsablakot rendszergazdaként. Módosítsa a könyvtárat a **%windir%\system32\sysprep**, majd futtassa a `sysprep.exe`.
-3. A **Rendszer-előkészítő eszköz** párbeszédpanelen válassza **A kezdőélmény indítása** lehetőséget, és győződjön meg róla, hogy be van-e jelölve az **Általánosítás** jelölőnégyzet.
+2. Nyissa meg a parancsablakot rendszergazdaként. Lépjen a % windir%\system32\sysprep, és futtassa `sysprep.exe`.
+3. Az a **rendszer-előkészítő eszköz** párbeszédpanelen jelölje ki **adja meg System Out-of-Box élmény (OOBE)**, és ellenőrizze, hogy a **Generalize** jelölőnégyzet.
 4. A **leállítási beállítások**válassza **leállítási**.
 5. Kattintson az **OK** gombra.
    
     ![Indítsa el a Sysprep](./media/upload-generalized-managed/sysprepgeneral.png)
-6. A Sysprep a feladat befejezése után leállítja a virtuális gépet. Ne indítsa újra a virtuális Gépet.
+6. Amikor a Sysprep befejezte a működést a virtuális gép leáll. Ne indítsa újra a virtuális Gépet.
 
 
-## <a name="get-the-storage-account"></a>A storage-fiók létrehozása
+## <a name="get-a-storage-account"></a>Storage-fiók létrehozása
 
-Az Azure-ban tárolja a virtuális gép feltöltött kép egy tárfiókra van szükség. Használjon egy meglévő tárfiókot, vagy hozzon létre egy újat. 
+Szüksége lesz egy storage-fiókot az Azure-ban, a feltöltött Virtuálisgép-lemezkép tárolásához. Használjon egy meglévő tárfiókot, vagy hozzon létre egy újat. 
 
-Fog használni a virtuális merevlemez létrehozása egy felügyelt lemezt egy virtuális gép, ha a tárfiók helye kell egyeznie a hely, ahol létrehozni a virtuális Gépet.
+Fogja használni a virtuális merevlemez létrehozása egy felügyelt lemezt egy virtuális gép, ha a tárfiók helye, akkor hoz létre a virtuális gép ugyanazon a helyen kell lennie.
 
-A rendelkezésre álló tár fiókokat jeleníti meg, írja be:
+A rendelkezésre álló tár fiókokat jeleníti meg, adja meg:
 
 ```azurepowershell
 Get-AzureRmStorageAccount | Format-Table
@@ -70,7 +70,7 @@ Get-AzureRmStorageAccount | Format-Table
 
 ## <a name="upload-the-vhd-to-your-storage-account"></a>A virtuális lemezek feltöltése a storage-fiókba
 
-Használja a [Add-AzureRmVhd](https://docs.microsoft.com/powershell/module/azurerm.compute/add-azurermvhd) parancsmaggal töltse fel a VHD-t a tárfiókban lévő tárolóba. Ez a példa feltölti a fájlt *myVHD.vhd* a *"C:\Users\Public\Documents\Virtual merevlemezek\"*  tárfiókhoz nevű *mystorageaccount* a a *myResourceGroup* erőforráscsoportot. A fájlt a tárolóba nevű kerülnek *mycontainer* és az új fájl neve lesz *myUploadedVHD.vhd*.
+Használja a [Add-AzureRmVhd](https://docs.microsoft.com/powershell/module/azurerm.compute/add-azurermvhd) parancsmaggal töltse fel a VHD-t a tárfiókban lévő tárolóba. Ez a példa feltölti a fájlt *myVHD.vhd* a *C:\Users\Public\Documents\Virtual merevlemezek\\*  tárfiókhoz nevű *mystorageaccount* a a *myResourceGroup* erőforráscsoportot. A fájlt a tárolóba nevű kerülnek *mycontainer* és az új fájl neve lesz *myUploadedVHD.vhd*.
 
 ```powershell
 $rgName = "myResourceGroup"
@@ -94,7 +94,7 @@ LocalFilePath           DestinationUri
 C:\Users\Public\Doc...  https://mystorageaccount.blob.core.windows.net/mycontainer/myUploadedVHD.vhd
 ```
 
-A hálózati kapcsolat és a VHD-fájl méretétől függően ez a parancs is igénybe vehet igénybe
+A hálózati kapcsolat és a VHD-fájl méretétől függően ez a parancs is igénybe vehet igénybe.
 
 ### <a name="other-options-for-uploading-a-vhd"></a>Más beállításokat a virtuális merevlemez feltöltése
  
@@ -104,11 +104,11 @@ Emellett feltölthet egy virtuális Merevlemezt a tárfiókhoz, használja az al
 - [Az Azure Storage Blob másolásához API](https://msdn.microsoft.com/library/azure/dd894037.aspx)
 - [Az Azure Storage Explorer Blobok feltöltése](https://azurestorageexplorer.codeplex.com/)
 - [Storage Import/Export szolgáltatás REST API-referencia](https://msdn.microsoft.com/library/dn529096.aspx)
--   Import/Export szolgáltatás használatát, ha a 7 napnál hosszabb ideje feltöltése, becsült javasoljuk. Használhat [DataTransferSpeedCalculator](https://github.com/Azure-Samples/storage-dotnet-import-export-job-management/blob/master/DataTransferSpeedCalculator.html) megbecsülni az adatok mérete és átviteli egység időpontját. 
-    Importálási/exportálási átmásolása a standard szintű tárfiók is használható. Szüksége lesz egy eszköz, például az AzCopy használata a premium storage-fiók átmásolása standard storage-ból.
+-   Az Import/Export szolgáltatás használatát, ha a 7 napnál hosszabb idő feltöltése, becsült javasoljuk. Használhat [DataTransferSpeedCalculator](https://github.com/Azure-Samples/storage-dotnet-import-export-job-management/blob/master/DataTransferSpeedCalculator.html) megbecsülni az adatok mérete és átviteli egység időpontját. 
+    Importálási/exportálási átmásolása a standard szintű tárfiók is használható. Standard szintű storage-ból másolása a premium storage-fiók egy eszköz, például az AzCopy használatával kell.
 
 > [!IMPORTANT]
-> Ha a virtuális merevlemez feltöltése az Azure-bA az AzCopy használ, ellenőrizze, hogy meg van [/BlobType:page](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy#blobtypeblock--page--append) -szkript feltöltése futtatása előtt. Ha a cél egy blobot, és ez a beállítás nincs megadva, alapértelmezés szerint az AzCopy egy blokkblobot hoz létre.
+> Ha a VHD feltöltése az Azure-bA az AzCopy használ, ellenőrizze, hogy meg van [ **/BlobType:page** ](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy#blobtypeblock--page--append) a feltöltési parancsfájl futtatása előtt. Ha a cél egy blobot, és ez a beállítás nincs megadva, a AzCopy alapértelmezés szerint a blokkblobok hoz létre.
 > 
 > 
 
@@ -116,7 +116,7 @@ Emellett feltölthet egy virtuális Merevlemezt a tárfiókhoz, használja az al
 
 ## <a name="create-a-managed-image-from-the-uploaded-vhd"></a>Létrehozhat egy felügyelt rendszerképet, a feltöltött virtuális merevlemezből 
 
-Hozzon létre egy felügyelt rendszerképet, a operációs rendszer általánosított virtuális merevlemez használatával. Cserélje le az értékeket a saját adatait.
+Hozzon létre egy felügyelt rendszerképet az általánosított operációs rendszer virtuális merevlemezből. A következő értékeket cserélje le a saját adatait.
 
 
 Először állítsa be az egyes paraméterek:
@@ -146,7 +146,7 @@ New-AzureRmImage `
 
 ## <a name="create-the-vm"></a>Virtuális gép létrehozása
 
-Most, hogy már van egy rendszerképe, létrehozhat belőle egy vagy több új virtuális gépet. Ez a példa létrehoz egy virtuális gép nevű *myVM* származó a *myImage*, a a *myResourceGroup*.
+Most, hogy már van egy rendszerképe, létrehozhat belőle egy vagy több új virtuális gépet. Ez a példa létrehoz egy virtuális gép nevű *myVM* a *myImage*, a *myResourceGroup*.
 
 
 ```powershell

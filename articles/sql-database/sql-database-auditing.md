@@ -11,57 +11,58 @@ author: ronitr
 ms.author: ronitr
 ms.reviewer: vanto
 manager: craigg
-ms.date: 02/10/2018
-ms.openlocfilehash: 99a22c7bd535b8ca020e08004ebbf6423a734a0b
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.date: 10/02/2018
+ms.openlocfilehash: 7362fc634f27227d037b08cd93f0f406fd250e22
+ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48816990"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49115607"
 ---
 # <a name="get-started-with-sql-database-auditing"></a>Ismerkedés az SQL-adatbázis naplózási szolgáltatásával
+
 Az Azure SQL database naplózási nyomon követi az adatbázisok eseményeit és felvezeti ezeket egy naplófájlba, az Azure storage-fiókban. A naplózás is:
 
-* Segít a jogszabályoknak való megfelelőség, adatbázis-tevékenység megértésében, valamint betekintést nyerhet az eltéréseket és rendellenességeket, amelyek üzleti aggályokra vagy biztonsági problémákat.
+- Segít a jogszabályoknak való megfelelőség, adatbázis-tevékenység megértésében, valamint betekintést nyerhet az eltéréseket és rendellenességeket, amelyek üzleti aggályokra vagy biztonsági problémákat.
 
-* Lehetővé teszi, hogy, és megkönnyíti a megfelelőségi szabványok betartásának, bár ez nem garantálja a megfelelőség. Az Azure-ral kapcsolatos további információkat a támogatási szabványoknak való megfelelés programokat, tekintse meg a [Azure adatvédelmi központ](https://azure.microsoft.com/support/trust-center/compliance/).
-
+- Lehetővé teszi, hogy, és megkönnyíti a megfelelőségi szabványok betartásának, bár ez nem garantálja a megfelelőség. Az Azure-ral kapcsolatos további információkat a támogatási szabványoknak való megfelelés programokat, tekintse meg a [Azure adatvédelmi központ](https://azure.microsoft.com/support/trust-center/compliance/).
 
 ## <a id="subheading-1"></a>Az Azure SQL database naplózás – áttekintés
+
 Használhatja az SQL database naplózási szolgáltatásán keresztül:
 
 
-* **Megőrzése** auditnaplót kiválasztott események. Megadhatja, hogy az adatbázis-műveleteket naplózni kívánt kategóriáit.
-* **A jelentés** az adatbázis-tevékenységeket. Előre konfigurált jelentéseket és a egy irányítópult segítségével gyorsan használatba tevékenység és az események naplózásához.
-* **Elemezheti** jelentéseket. Megtalálhatja a gyanús eseményeket, a szokatlan tevékenységeket és a trendeket.
+- **Megőrzése** auditnaplót kiválasztott események. Megadhatja, hogy az adatbázis-műveleteket naplózni kívánt kategóriáit.
+- **A jelentés** az adatbázis-tevékenységeket. Előre konfigurált jelentéseket és a egy irányítópult segítségével gyorsan használatba tevékenység és az események naplózásához.
+- **Elemezheti** jelentéseket. Megtalálhatja a gyanús eseményeket, a szokatlan tevékenységeket és a trendeket.
 
 Konfigurálhatja a különböző típusú eseménykategóriák, naplózás leírtak a [beállítása az adatbázis naplózási](#subheading-2) szakaszban.
 
 > [!IMPORTANT]
 > Auditnaplók írt **hozzáfűző Blobok** egy Azure Blob Storage, Azure-előfizetésében.
 >
-> * **A Premium Storage** jelenleg **nem támogatott** a hozzáfűző Blobok.
-> * **A virtuális hálózatok közötti tárolási** jelenleg **nem támogatott**.
+> - **A Premium Storage** jelenleg **nem támogatott** a hozzáfűző Blobok.
+> - **A virtuális hálózatok közötti tárolási** jelenleg **nem támogatott**.
 
 ## <a id="subheading-8"></a>Adja meg a kiszolgálószintű és adatbázisszintű naplózási házirend
 
 A naplózási házirend egy adott adatbázis vagy a kiszolgáló alapértelmezett szabályzatként adható meg:
 
-* Az összes meglévő és újonnan létrehozott adatbázisok a kiszolgálón a kiszolgáló házirend vonatkozik.
+- Az összes meglévő és újonnan létrehozott adatbázisok a kiszolgálón a kiszolgáló házirend vonatkozik.
 
-* Ha *kiszolgálószintű blobnaplózás engedélyezve van*, azt *mindig vonatkozik, az adatbázis*. Az adatbázis naplózva lesz, függetlenül az adatbázis naplózási beállításait.
+- Ha *kiszolgálószintű blobnaplózás engedélyezve van*, azt *mindig vonatkozik, az adatbázis*. Az adatbázis naplózva lesz, függetlenül az adatbázis naplózási beállításait.
 
-* Engedélyezi a blobnaplózás az adatbázison, a kiszolgálón, egyrészt does *nem* bírálja felül, vagy módosíthatja a kiszolgálószintű blobnaplózás beállításait. Mindkét naplózások egymás mellett fog létezik. Más szóval az adatbázis kétszer párhuzamosan; rögzítése egyszer, a kiszolgáló házirend és egyszer az adatbázis-házirendet.
+- Engedélyezi a blobnaplózás az adatbázison, a kiszolgálón, egyrészt does *nem* bírálja felül, vagy módosíthatja a kiszolgálószintű blobnaplózás beállításait. Mindkét naplózások egymás mellett fog létezik. Más szóval az adatbázis kétszer párhuzamosan; rögzítése egyszer, a kiszolgáló házirend és egyszer az adatbázis-házirendet.
 
    > [!NOTE]
    > Kerülendő, kivéve, ha engedélyezi a kiszolgálószintű blobnaplózás és adatbázis blobnaplózás együtt:
-    > * Egy másik használni kívánt *tárfiók* vagy *megőrzési időszak* egy adott adatbázis számára.
-    > * Eseménytípusok vagy egy adott adatbázis, amely eltér a többi a kiszolgálón lévő adatbázisokhoz kategóriáit naplózni kívánt. Előfordulhat például, hogy tábla Beszúrások, amelyet csak egy adott adatbázishoz kell naplózni kell.
+    > - Egy másik használni kívánt *tárfiók* vagy *megőrzési időszak* egy adott adatbázis számára.
+    > - Eseménytípusok vagy egy adott adatbázis, amely eltér a többi a kiszolgálón lévő adatbázisokhoz kategóriáit naplózni kívánt. Előfordulhat például, hogy tábla Beszúrások, amelyet csak egy adott adatbázishoz kell naplózni kell.
    >
    > Ellenkező esetben javasoljuk, hogy csak a kiszolgálószintű blobnaplózás engedélyezése, és hagyja meg az adatbázisszintű naplózást az összes adatbázis le van tiltva.
 
-
 ## <a id="subheading-2"></a>Az adatbázis naplózás beállítása
+
 Az alábbi szakasz ismerteti a konfigurációt, a naplózás az Azure portal használatával.
 
 1. Nyissa meg az [Azure Portal](https://portal.azure.com).
@@ -100,7 +101,9 @@ Az alábbi szakasz ismerteti a konfigurációt, a naplózás az Azure portal has
 11. A naplózási beállítások konfigurálása után kapcsolja be az új fenyegetés-észlelési szolgáltatást, és konfigurálja a biztonsági riasztást küld e-maileket. A fenyegetésészlelés használata esetén jelezheti a potenciális biztonsági fenyegetések rendellenes adatbázis-tevékenységek a proaktív értesítéseket kap. További információkért lásd: [fenyegetések észlelése – első lépések](sql-database-threat-detection-get-started.md). 
 
 ## <a id="subheading-3"></a>Elemezheti a vizsgálati naplók és jelentések
+
 Ha úgy döntött, hogy auditnaplók írni a Log Analytics:
+
 - Használja a [az Azure portal](https://portal.azure.com).  Nyissa meg a megfelelő adatbázis. Az adatbázis tetején **naplózási** kattintson **naplók megtekintése**.
 
     ![Naplók megtekintése](./media/sql-database-auditing-get-started/7_auditing_get_started_blob_view_audit_logs.png)
@@ -113,9 +116,11 @@ Ha úgy döntött, hogy auditnaplók írni a Log Analytics:
     Itt is használhatja [Operations Management Suite (OMS) Log Analytics](../log-analytics/log-analytics-log-search.md) futtatni speciális keresést a naplózási adatokat. A log Analytics azonnal elemezze a rekordok millióit, a számítási feladatok és kiszolgálók integrált keresést és egyéni irányítópultok segítségével valós idejű az operational insights biztosítja. OMS Log Analytics keresési nyelv és a parancsokkal kapcsolatos további hasznos információk: [Log Analytics keresési referenciáját bemutató](../log-analytics/log-analytics-log-search.md).
 
 Ha úgy döntött, hogy auditnaplók írni az Event Hubs:
+
 - Az Event Hubs naplózási adatok felhasználásához, szüksége lesz egy stream események felhasználásához, és a cél beállítása. További információkért lásd: [Azure Event Hubs – dokumentáció](https://docs.microsoft.com/azure/event-hubs/).
 
 Ha úgy döntött, hogy auditnaplók írni az Azure storage-fiók, több módon használhatja a naplók megtekintéséhez:
+
 - Naplók a telepítés során választott fiókban vannak összesítve. Például egy eszköz használatával megvizsgálhatja auditnaplók [Azure Storage Explorer](http://storageexplorer.com/). Az Azure storage-ban naplói nevű tárolóban lévő blob fájlok kerülnek mentésre **sqldbauditlogs**. A tároló mappa a hierarchiával kapcsolatos további részletekért elnevezési konvenciók és a napló formátuma, tekintse meg a [Blob auditálási napló fájlformátum referenciája](https://go.microsoft.com/fwlink/?linkid=829599).
 
 - Használja a [az Azure portal](https://portal.azure.com).  Nyissa meg a megfelelő adatbázis. Az adatbázis tetején **naplózási** kattintson **naplók megtekintése**.
@@ -124,14 +129,13 @@ Ha úgy döntött, hogy auditnaplók írni az Azure storage-fiók, több módon 
 
     **Naplórekordok** megnyitása, amelyen is elérheti a naplók megtekintéséhez.
 
-    - Kattintva megtekintheti a konkrét dátumokat **szűrő** felső részén a **naplórekordok** lapot.
-    - Naplózás a rekordok által létrehozott között válthat a *kiszolgáló naplózási házirend* és a *adatbázis naplózási házirend* átállításával **naplózási forrás**.
-    - Csak az SQL-injektálás kapcsolódó naplórekordok ellenőrzésével megtekintheti **megjelenítése csak a naplózási bejegyzések az SQL-injektálások** jelölőnégyzetet.
+  - Kattintva megtekintheti a konkrét dátumokat **szűrő** felső részén a **naplórekordok** lapot.
+  - Naplózás a rekordok által létrehozott között válthat a *kiszolgáló naplózási házirend* és a *adatbázis naplózási házirend* átállításával **naplózási forrás**.
+  - Csak az SQL-injektálás kapcsolódó naplórekordok ellenőrzésével megtekintheti **megjelenítése csak a naplózási bejegyzések az SQL-injektálások** jelölőnégyzetet.
 
        ![Navigációs ablaktábla][8]
 
 - A rendszer függvénnyel **sys.fn_get_audit_file** (T-SQL) a naplózási adatokat vissza a táblázatos formátumban. Ez a funkció használatáról további információkért lásd: [sys.fn_get_audit_file](https://docs.microsoft.com/sql/relational-databases/system-functions/sys-fn-get-audit-file-transact-sql).
-
 
 - Használat **naplózási fájlok egyesítése** az SQL Server Management Studio (SSMS 17-től induló):
     1. Az SSMS menüből válassza ki a **fájl** > **nyílt** > **naplózási fájlok egyesítése**.
@@ -145,33 +149,35 @@ Ha úgy döntött, hogy auditnaplók írni az Azure storage-fiók, több módon 
 
 - A Power BI használata. Megtekintheti és elemezheti a naplózási adatokat a Power bi-ban. További információ és a egy letölthető sablon eléréséhez tekintse meg a [Analyzie naplózási adatokat a Power bi-ban](https://blogs.msdn.microsoft.com/azuresqldbsupport/2017/05/26/sql-azure-blob-auditing-basic-power-bi-dashboard/).
 - Letölti a naplófájlokat a portálon keresztül, vagy egy eszköz használatával az Azure Storage blob-tárolóból [Azure Storage Explorer](http://storageexplorer.com/).
-    * Miután letöltötte helyileg egy naplófájl, kattintson duplán a fájlra nyissa meg a, megtekintheti és elemezheti a naplókat az ssms-ben.
-    * Azure Storage Explorer használatával egyszerre több fájl is letölthető. Ehhez kattintson a jobb gombbal egy adott almappát, és válassza ki **Mentés másként** egy helyi mappába menti.
+  - Miután letöltötte helyileg egy naplófájl, kattintson duplán a fájlra nyissa meg a, megtekintheti és elemezheti a naplókat az ssms-ben.
+  - Azure Storage Explorer használatával egyszerre több fájl is letölthető. Ehhez kattintson a jobb gombbal egy adott almappát, és válassza ki **Mentés másként** egy helyi mappába menti.
 
-* További módszereket:
-   * Több fájlt vagy egy almappát, amely tartalmazza a naplófájlok a letöltés után egyesítheti őket helyileg a korábban leírt utasításokat SSMS egyesítési naplófájlokat leírtak szerint.
-   * Nézet blobnaplózás programozott módon jelentkezik:
+- További módszereket:
 
-     * Használja a [bővített események olvasó](https://blogs.msdn.microsoft.com/extended_events/2011/07/20/introducing-the-extended-events-reader/) C# könyvtár.
-     * [Bővített események lekérdezésfájlok](https://sqlscope.wordpress.com/2014/11/15/reading-extended-event-files-using-client-side-tools-only/) PowerShell használatával.
+  - Több fájlt vagy egy almappát, amely tartalmazza a naplófájlok a letöltés után egyesítheti őket helyileg a korábban leírt utasításokat SSMS egyesítési naplófájlokat leírtak szerint.
+  - Nézet blobnaplózás programozott módon jelentkezik:
+
+    - Használja a [bővített események olvasó](https://blogs.msdn.microsoft.com/extended_events/2011/07/20/introducing-the-extended-events-reader/) C# könyvtár.
+    - [Bővített események lekérdezésfájlok](https://sqlscope.wordpress.com/2014/11/15/reading-extended-event-files-using-client-side-tools-only/) PowerShell használatával.
 
 ## <a id="subheading-5"></a>Éles eljárások
+
 <!--The description in this section refers to preceding screen captures.-->
 
 ### <a id="subheading-6">Naplózás a georeplikált adatbázis</a>
+
 Georeplikált adatbázisokhoz amikor engedélyezi a naplózást az elsődleges adatbázis a másodlagos adatbázis lesz azonos a naplózási házirend. A másodlagos adatbázis naplózásának engedélyezésével naplózásának beállítása lehetőség arra is a **másodlagos kiszolgáló**, függetlenül az elsődleges adatbázisból.
 
-* Kiszolgálószintű (**ajánlott**): kapcsolja be a naplózást is a **elsődleges kiszolgáló** , valamint a **másodlagos kiszolgáló** – az elsődleges és másodlagos adatbázisok mindegyike naplózza egymástól függetlenül azok megfelelő kiszolgálószintű házirend alapján.
-
-* Adatbázisszintű: A adatbázisszintű naplózása a másodlagos adatbázisok csak az elsődleges adatbázis naplózási beállításait lehet konfigurálni.
-   * Naplózás engedélyezve kell lennie a *elsődleges adatbázis*, nem a kiszolgálón.
-   * Naplózás engedélyezése után az elsődleges adatbázison, akkor is válik elérhetővé, a másodlagos adatbázison.
+- Kiszolgálószintű (**ajánlott**): kapcsolja be a naplózást is a **elsődleges kiszolgáló** , valamint a **másodlagos kiszolgáló** – az elsődleges és másodlagos adatbázisok mindegyike naplózza egymástól függetlenül azok megfelelő kiszolgálószintű házirend alapján.
+- Adatbázisszintű: A adatbázisszintű naplózása a másodlagos adatbázisok csak az elsődleges adatbázis naplózási beállításait lehet konfigurálni.
+  - Naplózás engedélyezve kell lennie a *elsődleges adatbázis*, nem a kiszolgálón.
+  - Naplózás engedélyezése után az elsődleges adatbázison, akkor is válik elérhetővé, a másodlagos adatbázison.
 
     >[!IMPORTANT]
     >Az adatbázisszintű naplózást, a másodlagos adatbázis tárolási beállításait lesz megegyeznek az elsődleges adatbázis-régiók közti forgalom okozza. Azt javasoljuk, hogy csak a kiszolgálószintű naplózás engedélyezéséhez, és hagyja meg az adatbázisszintű naplózást az összes adatbázis le van tiltva.
-<br>
 
 ### <a id="subheading-6">Tárolás kulcs újragenerálása</a>
+
 Éles környezetben, valószínűleg a tárelérési kulcsok rendszeresen frissíteni. Az Azure storage-naplók írásakor kell mentse el újra a naplózási házirend, a kulcsok frissítésekor. A folyamat a következőképpen történik:
 
 1. Nyissa meg **tárolási adatok**. Az a **Tárelérési kulcs** jelölje ki **másodlagos**, és kattintson a **OK**. Kattintson a **mentése** a naplózási konfiguráció lap tetején.
@@ -185,16 +191,16 @@ Georeplikált adatbázisokhoz amikor engedélyezi a naplózást az elsődleges a
 
 ## <a name="additional-information"></a>További információ
 
-* További információ a napló formátumú, a hierarchiában, a tároló mappa, és elnevezési konvenciók, tekintse meg a [Blob auditálási napló fájlformátum referenciája](https://go.microsoft.com/fwlink/?linkid=829599).
+- További információ a napló formátumú, a hierarchiában, a tároló mappa, és elnevezési konvenciók, tekintse meg a [Blob auditálási napló fájlformátum referenciája](https://go.microsoft.com/fwlink/?linkid=829599).
 
     > [!IMPORTANT]
     > Az Azure SQL Database naplózási tárolja egy naplórekordot data karaktert mezők esetében a 4000 karakternél. Ha a **utasítás** vagy a **data_sensitivity_information** naplózható művelet által visszaadott értékeket tartalmaznak legfeljebb 4000 karakterből, bármely adatait az első 4000 karakter után lesz  **csonkolva, és nem naplózott**.
 
-* Auditnaplók írt **hozzáfűző Blobok** egy Azure Blob Storage, Azure-előfizetésében:
-    * **A Premium Storage** jelenleg **nem támogatott** a hozzáfűző Blobok.
-    * **A virtuális hálózatok közötti tárolási** jelenleg **nem támogatott**.
+- Auditnaplók írt **hozzáfűző Blobok** egy Azure Blob Storage, Azure-előfizetésében:
+  - **A Premium Storage** jelenleg **nem támogatott** a hozzáfűző Blobok.
+  - **A virtuális hálózatok közötti tárolási** jelenleg **nem támogatott**.
 
-* Az alapértelmezett naplózási házirend tartalmazza az összes művelet és az alábbi Műveletcsoportok, amelyek ellenőrizni fogja a lekérdezések és az adatbázis, valamint a sikeres és sikertelen bejelentkezések ellen végrehajtott tárolt eljárások:
+- Az alapértelmezett naplózási házirend tartalmazza az összes művelet és az alábbi Műveletcsoportok, amelyek ellenőrizni fogja a lekérdezések és az adatbázis, valamint a sikeres és sikertelen bejelentkezések ellen végrehajtott tárolt eljárások:
 
     BATCH_COMPLETED_GROUP<br>
     SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP<br>
@@ -206,10 +212,10 @@ Georeplikált adatbázisokhoz amikor engedélyezi a naplózást az elsődleges a
 
 **PowerShell-parancsmagok**:
 
-* [Létrehozás vagy frissítés adatbázis Blob naplórend (Set-AzureRMSqlDatabaseAuditing)][105]
-* [Létrehozni vagy frissíteni Server Blob naplórend (Set-AzureRMSqlServerAuditing)][106]
-* [Adatbázis naplózási házirend lekérése (Get-AzureRMSqlDatabaseAuditing)][101]
-* [Kiszolgáló Blob naplózási házirend lekérése (Get-AzureRMSqlServerAuditing)][102]
+- [Létrehozás vagy frissítés adatbázis Blob naplórend (Set-AzureRMSqlDatabaseAuditing)][105]
+- [Létrehozni vagy frissíteni Server Blob naplórend (Set-AzureRMSqlServerAuditing)][106]
+- [Adatbázis naplózási házirend lekérése (Get-AzureRMSqlDatabaseAuditing)][101]
+- [Kiszolgáló Blob naplózási házirend lekérése (Get-AzureRMSqlServerAuditing)][102]
 
 A parancsfájl példa: [PowerShell-lel, naplózás és fenyegetésészlelés konfigurálása](scripts/sql-database-auditing-and-threat-detection-powershell.md).
 
@@ -217,16 +223,16 @@ A parancsfájl példa: [PowerShell-lel, naplózás és fenyegetésészlelés kon
 
 **REST API - blobnaplózás**:
 
-* [Hozzon létre vagy adatbázis Blob naplózási szabályzatának frissítése](https://docs.microsoft.com/rest/api/sql/database%20auditing%20settings/createorupdate)
-* [Hozzon létre vagy frissítési kiszolgáló Blob naplózási házirend](https://docs.microsoft.com/rest/api/sql/server%20auditing%20settings/createorupdate)
-* [Adatbázis Blob naplózási szabályzatának beolvasása](https://docs.microsoft.com/rest/api/sql/database%20auditing%20settings/get)
-* [Kiszolgáló Blob naplózási szabályzatának beolvasása](https://docs.microsoft.com/rest/api/sql/server%20auditing%20settings/get)
+- [Hozzon létre vagy adatbázis Blob naplózási szabályzatának frissítése](https://docs.microsoft.com/rest/api/sql/database%20auditing%20settings/createorupdate)
+- [Hozzon létre vagy frissítési kiszolgáló Blob naplózási házirend](https://docs.microsoft.com/rest/api/sql/server%20auditing%20settings/createorupdate)
+- [Adatbázis Blob naplózási szabályzatának beolvasása](https://docs.microsoft.com/rest/api/sql/database%20auditing%20settings/get)
+- [Kiszolgáló Blob naplózási szabályzatának beolvasása](https://docs.microsoft.com/rest/api/sql/server%20auditing%20settings/get)
 
 AHOL záradékot támogatja a további szűréshez a kiterjesztett házirend:
-* [Adatbázis frissítése *kiterjesztett* Blob naplózási házirend](https://docs.microsoft.com/rest/api/sql/database%20extended%20auditing%20settings/createorupdate)
-* [Hozzon létre vagy frissítési kiszolgáló *kiterjesztett* Blob naplózási házirend](https://docs.microsoft.com/rest/api/sql/server%20extended%20auditing%20settings/createorupdate)
-* [Adatbázis beolvasása *kiterjesztett* Blob naplózási házirend](https://docs.microsoft.com/rest/api/sql/database%20extended%20auditing%20settings/get)
-* [Első kiszolgáló *kiterjesztett* Blob naplózási házirend](https://docs.microsoft.com/rest/api/sql/server%20extended%20auditing%20settings/get)
+- [Adatbázis frissítése *kiterjesztett* Blob naplózási házirend](https://docs.microsoft.com/rest/api/sql/database%20extended%20auditing%20settings/createorupdate)
+- [Hozzon létre vagy frissítési kiszolgáló *kiterjesztett* Blob naplózási házirend](https://docs.microsoft.com/rest/api/sql/server%20extended%20auditing%20settings/createorupdate)
+- [Adatbázis beolvasása *kiterjesztett* Blob naplózási házirend](https://docs.microsoft.com/rest/api/sql/database%20extended%20auditing%20settings/get)
+- [Első kiszolgáló *kiterjesztett* Blob naplózási házirend](https://docs.microsoft.com/rest/api/sql/server%20extended%20auditing%20settings/get)
 
 <!--Anchors-->
 [Azure SQL Database Auditing overview]: #subheading-1

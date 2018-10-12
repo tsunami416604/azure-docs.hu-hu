@@ -5,15 +5,15 @@ author: johnkemnetz
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: reference
-ms.date: 8/21/2018
+ms.date: 10/11/2018
 ms.author: johnkem
 ms.component: logs
-ms.openlocfilehash: 06d9fda01a89340eb019b4900c02e321e0b73cf5
-ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
+ms.openlocfilehash: 3b665ed0539a41ffeca87511154f3607a57cff4a
+ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42818964"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49116193"
 ---
 # <a name="supported-services-schemas-and-categories-for-azure-diagnostic-logs"></a>Támogatott szolgáltatások, a sémák és a kategóriákat, az Azure diagnosztikai naplók
 
@@ -53,13 +53,14 @@ A séma az erőforrás-diagnosztikai naplók az erőforrás- és naplózási kat
 | Application Gateway-átjárók |[Az Application Gateway diagnosztikai naplózás](../application-gateway/application-gateway-diagnostics.md) |
 | Azure Automation |[Naplóelemzés az Azure Automationben](../automation/automation-manage-send-joblogs-log-analytics.md) |
 | Azure Batch |[Az Azure Batch diagnosztikai naplózás](../batch/batch-diagnostics.md) |
+| Azure Database for MySQL | [Azure Database for MySQL-diagnosztikai naplók](../mysql/concepts-server-logs.md#diagnostic-logs) |
+| Azure Database for PostgreSQL | [Azure Database for PostgreSQL-diagnosztikai naplók](../postgresql/concepts-server-logs.md#diagnostic-logs) |
 | Cognitive Services | A séma nem érhető el. |
 | Content Delivery Network | [A CDN-t az Azure diagnosztikai naplók](../cdn/cdn-azure-diagnostic-logs.md) |
 | CosmosDB | [Az Azure Cosmos DB-naplózás](../cosmos-db/logging.md) |
 | Data Factory | [Az Azure Monitor használatával a Data Factoryk figyelése](../data-factory/monitor-using-azure-monitor.md) |
 | Data Lake Analytics |[Az Azure Data Lake Analytics diagnosztikai naplóinak elérése](../data-lake-analytics/data-lake-analytics-diagnostic-logs.md) |
 | Data Lake Store |[Az Azure Data Lake Store diagnosztikai naplóinak elérése](../data-lake-store/data-lake-store-diagnostic-logs.md) |
-| DB for postgresql-hez |  A séma nem érhető el. |
 | Event Hubs |[Az Azure Event Hubs – diagnosztikai naplók](../event-hubs/event-hubs-diagnostic-logs.md) |
 | Express Route | A séma nem érhető el. |
 | Azure Firewall | A séma nem érhető el. |
@@ -104,6 +105,7 @@ A séma az erőforrás-diagnosztikai naplók az erőforrás- és naplózási kat
 |Microsoft.DataLakeAnalytics/accounts|Kérelmek|Kérelmekről készült naplók|
 |Microsoft.DataLakeStore/accounts|Naplózás|Naplók|
 |Microsoft.DataLakeStore/accounts|Kérelmek|Kérelmekről készült naplók|
+|Microsoft.DBforMySQL/servers|MySqlSlowLogs|MySQL lassú lekérdezések naplói|
 |Microsoft.DBforPostgreSQL/servers|PostgreSQLLogs|PostgreSQL-kiszolgáló naplóit|
 |Microsoft.Devices/IotHubs|Kapcsolatok|Kapcsolatok|
 |Microsoft.Devices/IotHubs|DeviceTelemetry|Eszköztelemetria|
