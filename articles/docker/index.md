@@ -11,12 +11,12 @@ ms.devlang: devops
 ms.topic: landing-page
 ms.date: 06/19/2017
 ms.author: carolz
-ms.openlocfilehash: 76afc558048f1890e5e2440fd002361172acbea2
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: c1dab114ddd010daa88222f380ad7a47f1dd1767
+ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47433835"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49090705"
 ---
 <div class="content">
    <h1>Docker az Azure rendszeren</h1>   
@@ -38,7 +38,7 @@ A Docker egy népszerű tárolókezelő és képalkotó platform, amely lehetőv
 </ol>
 <h2>További források</h2>
 <p>A Docker Azure rendszeren történő használatával kapcsolatos további referenciaanyagokért és eszközökért tekintse meg a következő referenciákat.</p>
-<a href="https://www.docker.com/docker-azure">Docker Azure-hely</a><br/>
+<a href="https://docs.docker.com/docker-for-azure/why/">Docker Azure-hely</a><br/>
 <a href="https://docs.docker.com/machine/drivers/azure/">Docker Azure-illesztő</a><br/>
 <a href="https://docker.com">A Docker ismertetése</a><br/>
 </div>
