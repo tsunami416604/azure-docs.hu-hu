@@ -8,12 +8,12 @@ services: mariadb
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 9b22890bceba6205c995a01105cdf11a08a9c10b
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 551fe303994f6c72f8a4bf39e76f12c62f58026b
+ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46998746"
+ms.lasthandoff: 10/13/2018
+ms.locfileid: "49309535"
 ---
 # <a name="migrate-your-mariadb-database-to-azure-database-for-mariadb-using-dump-and-restore"></a>A MariaDB-adatbázis migrálása az Azure Database for MariaDB memóriakép és visszaállítás használatával
 Ez a cikk azt ismerteti, biztonsági mentése és visszaállítása az Azure Database-adatbázisok a MariaDB-hez két gyakori módjai
@@ -30,7 +30,9 @@ Ez az útmutató elvégezhető, szüksége lesz:
 Közös segédprogramok és eszközök, például a MySQL Workbench, mysqldump, varangy vagy Navicat használatával távolról csatlakozhat, és állítsa vissza adatokat MariaDB-hez készült Azure Database-be. Az ilyen eszközök használata az ügyfélgépen internet-kapcsolattal csatlakozni az Azure Database for MariaDB. Egy SSL-titkosítású kapcsolat használata ajánlott biztonsági eljárásokat, lásd a [SSL-összekapcsolhatóság konfigurálása az Azure Database for MariaDB](concepts-ssl-connection-security.md). Nem kell semmilyen különleges cloud hely helyezze át a memóriaképeket MariaDB-hez készült Azure Database-migráció során. 
 
 ## <a name="common-uses-for-dump-and-restore"></a>Gyakori használati memóriakép és visszaállítás
-Számos gyakori forgatókönyv MariaDB Server egy Azure Database-be például a mysqldump és a dump és a load adatbázisokhoz mysqlpump MySQL segédprogramokat használhatja. <!--In other scenarios, you may use the [Import and Export](concepts-migrate-import-export.md) approach instead.-->
+Számos gyakori forgatókönyv MariaDB Server egy Azure Database-be például a mysqldump és a dump és a load adatbázisokhoz mysqlpump MySQL segédprogramokat használhatja. 
+
+<!--In other scenarios, you may use the [Import and Export](howto-migrate-import-export.md) approach instead.-->
 
 - Adatbázis használata a teljes adatbázis áttelepítésekor listázása. Ez a javaslat tárolja, ha nagy mennyiségű adat áthelyezését, illetve ha élő webhelyek vagy alkalmazások számára a szolgáltatás megszakadásának minimalizálni szeretné. 
 -  Győződjön meg arról, hogy az adatbázis minden táblájához InnoDB tárolási motort használják, amikor az adatok betöltését az Azure Database for MariaDB. Azure Database for MariaDB csak tárolási InnoDB motor támogatja, és ezért nem támogatja a másodlagos tárolási motorokkal. Ha a táblák megtörténik az egyéb tároló-motorral, konvertálja a InnoDB motor formátumra MariaDB-hez készült Azure Database-ba való migrálás előtt.

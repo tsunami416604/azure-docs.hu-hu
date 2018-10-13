@@ -8,12 +8,12 @@ ms.devlang: c
 ms.topic: conceptual
 ms.date: 08/25/2017
 ms.author: yizhon
-ms.openlocfilehash: 0c2f39ed1610598ab4f7f857da3df817089bcb38
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 5e29dcde80da75fa70fe6dcbf35d7f319a5ca3cb
+ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48044739"
+ms.lasthandoff: 10/13/2018
+ms.locfileid: "49311151"
 ---
 # <a name="azure-iot-device-sdk-for-c"></a>Az Azure IoT eszközoldali SDK-t a c nyelvhez készült
 
@@ -87,29 +87,29 @@ Ha még nem ismeri a device explorer eszközzel, az alábbi eljárás ismerteti,
 
 1. A device explorer eszköz telepítése: [a Device Explorer használata az IoT Hub-eszközök](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer).
 
-2. Futtassa a programot, ha ez az interfész jelenik meg:
+1. Futtassa a programot, ha ez az interfész jelenik meg:
 
   ![Device Explorer Ikereszköz képernyőképe](./media/iot-hub-device-sdk-c-intro/DeviceExplorerTwinConfigTab.png)
 
-3. Adja meg a **IoT Hub kapcsolati karakterláncra** az első mezőt, és kattintson a **frissítés**. Ebben a lépésben konfigurálja az eszközt, úgy, hogy képes legyen kommunikálni az IoT Hub. 
+1. Adja meg a **IoT Hub kapcsolati karakterláncra** az első mezőt, és kattintson a **frissítés**. Ebben a lépésben konfigurálja az eszközt, úgy, hogy képes legyen kommunikálni az IoT Hub. 
 
 A **kapcsolati karakterlánc** területen található **IoT Hub szolgáltatás** > **beállítások** > **megosztott elérési házirendet**  >  **iothubowner**.
 
-4. Ha az IoT Hub kapcsolati karakterláncra van konfigurálva, kattintson a **felügyeleti** lapon:
+1. Ha az IoT Hub kapcsolati karakterláncra van konfigurálva, kattintson a **felügyeleti** lapon:
 
   ![Device Explorer Ikereszköz / felügyeleti képernyőképe](./media/iot-hub-device-sdk-c-intro/DeviceExplorerTwinManagementTab.png)
 
 A rendszer ezen a lapon kezelheti az IoT hub-ben regisztrált eszközök.
 
-5. Kattintva olyan eszközt hoz létre a **létrehozás** gombra. Egy párbeszédpanel jelenik meg az olyan előre összeállított kulcsokat (elsődleges és másodlagos). Adjon meg egy **Eszközazonosító** majd **létrehozás**.
+1. Kattintva olyan eszközt hoz létre a **létrehozás** gombra. Egy párbeszédpanel jelenik meg az olyan előre összeállított kulcsokat (elsődleges és másodlagos). Adjon meg egy **Eszközazonosító** majd **létrehozás**.
 
   ![Hozzon létre az eszköz képernyőfelvétel](./media/iot-hub-device-sdk-c-intro/CreateDevice.png)
 
-6. Ha az eszköz jön létre, az eszközök frissítések és a regisztrált eszközök, beleértve a most létrehozott egy listája. Ha a jobb gombbal az új eszközt, ez a menü jelenik meg:
+1. Ha az eszköz jön létre, az eszközök frissítések és a regisztrált eszközök, beleértve a most létrehozott egy listája. Ha a jobb gombbal az új eszközt, ez a menü jelenik meg:
 
   ![Device Explorer Ikereszköz kattintson a jobb gombbal eredménye](./media/iot-hub-device-sdk-c-intro/DeviceExplorerTwinManagementTab_RightClick.png)
 
-7. Ha úgy dönt, **kijelölt eszközhöz tartozó kapcsolati karakterlánc másolása**, az eszköz kapcsolati karakterláncának másolja a vágólapra. Tartsa meg az eszköz kapcsolati karakterláncának másolatát. Meg kell futtatásakor a következő szakaszok ismertetik a mintaalkalmazásokat.
+1. Ha úgy dönt, **kijelölt eszközhöz tartozó kapcsolati karakterlánc másolása**, az eszköz kapcsolati karakterláncának másolja a vágólapra. Tartsa meg az eszköz kapcsolati karakterláncának másolatát. Meg kell futtatásakor a következő szakaszok ismertetik a mintaalkalmazásokat.
 
 Amikor végzett a fenti lépéseket, készen áll bizonyos kód futtatásával elindításához. A legtöbb minták állandónak kell felső részén a fő forrásfájlt, amely lehetővé teszi, hogy adjon meg egy kapcsolati karakterláncot. Például a megfelelő sort a **iothub\_ügyfél\_minta\_mqtt** alkalmazás a következőképpen jelenik meg.
 
@@ -320,7 +320,7 @@ Használja a **IoTHubMessage\_GetByteArray** függvényt az üzenet, amely ebben
 
 Eseményeket küldő és fogadó üzenetek elkészült, az IoT-kódtár meghívná is. Ehhez adja ki a következő függvény hívásához szükséges:
 
-```
+```c
 IoTHubClient_LL_Destroy(iotHubClientHandle);
 ```
 

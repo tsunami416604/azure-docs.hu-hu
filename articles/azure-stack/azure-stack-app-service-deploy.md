@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/12/2018
 ms.author: anwestg
-ms.openlocfilehash: 9f584213a65b9f2408d4ca2a06108cf18222376d
-ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
+ms.openlocfilehash: 08f08d926a9e27e421ff8db46051d8a1e7229041
+ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48268799"
+ms.lasthandoff: 10/12/2018
+ms.locfileid: "49166882"
 ---
 # <a name="add-an-app-service-resource-provider-to-azure-stack"></a>Az App Service erőforrás-szolgáltató hozzáadása az Azure Stackhez
 
@@ -130,7 +130,7 @@ Az App Service erőforrás-szolgáltató üzembe helyezéséhez kövesse az alá
 11. Adja meg, hogy az SQL Server, az App Service erőforrás-szolgáltató adatbázisainak üzemeltetésére, és válassza ki a kiszolgálópéldánynak **tovább**. A telepítő ellenőrzi az SQL-kapcsolat tulajdonságai.
 
     > [!NOTE]
-    > A telepítő megpróbálja az SQL Server, a folytatás előtt a kapcsolat teszteléséhez. De ha egy meglévő virtuális hálózatra telepíti, a kapcsolódási teszt előfordulhat, hogy a fájl. Felhőszolgáltatására, figyelmeztetés és a egy parancssort a folytatáshoz. Ha az SQL Server-adatok helyesek, továbbra is az üzembe helyezés.
+    > A telepítő megpróbálja az SQL Server, a folytatás előtt a kapcsolat teszteléséhez. De ha egy meglévő virtuális hálózatra telepíti, a kapcsolódási teszt sikertelen lehet. Felhőszolgáltatására, figyelmeztetés és a egy parancssort a folytatáshoz. Ha az SQL Server-adatok helyesek, továbbra is az üzembe helyezés.
     >
     > Az Azure App Service, az Azure Stack 1.3 és újabb verziók esetében a telepítő ellenőrzi, hogy rendelkezik-e az SQL Server adatbázis tartalmazási az SQL Server szintjén engedélyezhető.  Nem érhető el, ha a rendszer kéri, a következő kivétel miatt:
     > ```sql

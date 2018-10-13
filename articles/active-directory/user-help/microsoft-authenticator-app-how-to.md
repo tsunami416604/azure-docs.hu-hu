@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 07/30/2018
 ms.author: lizross
 ms.reviewer: librown
-ms.openlocfilehash: 590f9e2a9cf531a1124f9cb132791f2956227d9c
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 5b8264667e09e7dd6c048fae11e363ee8dfdca33
+ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47047507"
+ms.lasthandoff: 10/12/2018
+ms.locfileid: "49165375"
 ---
 # <a name="get-started-with-the-microsoft-authenticator-app"></a>A Microsoft Authenticator alkalmazás használatának első lépései
 
@@ -25,7 +25,7 @@ A Microsoft Authenticator alkalmazás segít az illetéktelen hozzáférés mega
 
 Az alkalmazás a kétlépéses ellenőrzéshez használatakor együtt tudjon működni a két módszer egyikével:
 
-- **Értesítés.** Az alkalmazás értesítést küld az eszközre. Ellenőrizze, hogy az értesítés megfelelő, és adja meg **ellenőrizze**. Ha nem ismeri fel az értesítést, válassza ki a **Megtagadás**.
+- **Értesítés.** Az alkalmazás értesítést küld az eszközre. Ellenőrizze, hogy az értesítés megfelelő, és adja meg **ellenőrizze**. Ha nem ismeri fel az értesítést, válassza ki a **Megtagadás**. Felhasználók vannak megadva a kérelem megjelölése csalás, ha azok nem engedélyezi a lehetőség. 
 
 - **Ellenőrző kódot.** Miután beírta a felhasználónevét és jelszavát, nyissa meg az alkalmazást, és másolja a megadott ellenőrző kód a **fiókok** képernyő be a bejelentkezési képernyő. Az ellenőrző kód egy második hitelesítési mód funkcionál.
 

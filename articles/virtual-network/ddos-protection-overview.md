@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/29/2018
+ms.date: 10/13/2018
 ms.author: jdial
-ms.openlocfilehash: f25da8c1eedc31209a67ae05aef9dded45b706e0
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: ae1a77921cdb3eba003ff6dc8b4885866f2fbe5e
+ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46962402"
+ms.lasthandoff: 10/13/2018
+ms.locfileid: "49310357"
 ---
 # <a name="azure-ddos-protection-standard-overview"></a>Az Azure DDoS Protection Standard áttekintése
 
@@ -29,7 +29,7 @@ Az elosztott szolgáltatásmegtagadási (DDoS-) támadásokat néhány a legnagy
 Az Azure DDoS protection alkalmazás tervezés – ajánlott eljárások, kombinálva DDoS-támadásokkal szembeni védelmet biztosít. Az Azure DDoS protection az alábbi szolgáltatási szinteken biztosít:
 
 - **Alapszintű**: automatikusan engedélyezve van az Azure platform részeként. Állandó forgalomfigyelést, és valós idejű csökkenti a hálózati szintű gyakori támadásoktól, adja meg a Microsoft online services által használt azonos védelem. A teljes méretezési csoport az Azure globális hálózatán használható, és csökkentheti a támadási forgalom régiók között elosztva. Védelmet biztosítanak az IPv4 és IPv6-alapú Azure [nyilvános IP-címek](virtual-network-public-ip-address.md).
-- **Standard szintű**: az alapszintű szolgáltatásszinten kifejezetten az Azure virtuális hálózati erőforrások hangolt keresztül további veszélyelhárítási szolgáltatásokat biztosít. DDoS Protection Standard az egyszerű, ha engedélyezni szeretné, és nem kell application módosítani. Az alkalmazásvédelmi szabályzatok hangolt dedikált forgalomfigyelést és gépi tanulási algoritmus segítségével. Nyilvános IP-címek a virtuális hálózathoz, például az Azure Load Balancer, az Azure Application Gateway és az Azure Service Fabric-ban üzembe helyezett erőforrásokhoz kapcsolódó szabályzatok alkalmazandók. Valós idejű telemetriai támadások során, valamint a korábbi Azure Monitor nézetek érhető el. Gazdag támadási kockázatcsökkentési analytics diagnosztikai beállításokon keresztül érhetők el. Alkalmazásréteg-védelem használatával adhatók hozzá a [Azure Application Gateway webalkalmazásokhoz használható tűzfal](../application-gateway//application-gateway-web-application-firewall-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) vagy a 3. fél tűzfal telepítése az Azure Marketplace-ről. Védelmet biztosítanak a IPv4 Azure [nyilvános IP-címek](virtual-network-public-ip-address.md).
+- **Standard szintű**: az alapszintű szolgáltatásszinten kifejezetten az Azure virtuális hálózati erőforrások hangolt keresztül további veszélyelhárítási szolgáltatásokat biztosít. DDoS Protection Standard az egyszerű, ha engedélyezni szeretné, és nem kell application módosítani. Az alkalmazásvédelmi szabályzatok hangolt dedikált forgalomfigyelést és gépi tanulási algoritmus segítségével. Társított erőforrások üzembe helyezett virtuális hálózatokon, például az Azure Load Balancer, az Azure Application Gateway és az Azure Service Fabric-példányok, nyilvános IP-szabályzatokkal, de ez a védelem az App Service Environment-környezetek nem vonatkozik. Valós idejű telemetriai támadások során, valamint a korábbi Azure Monitor nézetek érhető el. Gazdag támadási kockázatcsökkentési analytics diagnosztikai beállításokon keresztül érhetők el. Alkalmazásréteg-védelem használatával adhatók hozzá a [Azure Application Gateway webalkalmazásokhoz használható tűzfal](../application-gateway//application-gateway-web-application-firewall-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) vagy a 3. fél tűzfal telepítése az Azure Marketplace-ről. Védelmet biztosítanak a IPv4 Azure [nyilvános IP-címek](virtual-network-public-ip-address.md).
 
 ![Az Azure DDoS Protection alapszintű vs. Standard](./media/ddos-protection-overview/ddoscomparison.png)
 

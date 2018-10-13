@@ -12,27 +12,29 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/09/2018
+ms.date: 10/12/2018
 ms.author: ambapat
-ms.openlocfilehash: 639dfb6e3231a5eba3d6ecb9cd0198f5718b4aef
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: 4ad6a18f9937fcc7d24bebc3ac197e23990ff59e
+ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49079021"
+ms.lasthandoff: 10/13/2018
+ms.locfileid: "49309246"
 ---
-# <a name="grant-permission-to-many-applications-to-access-a-key-vault"></a>Engedély megadása a számú alkalmazás részére egy kulcstartó eléréséhez
+# <a name="grant-several-applications-access-to-a-key-vault"></a>A key vault több alkalmazások hozzáférés biztosítása
 
-## <a name="q-i-have-several-applications-that-need-to-access-a-key-vault-how-can-i-give-these-applications-up-to-1024-access-to-key-vault"></a>K: van több kulcstároló elérését igénylő alkalmazások, hogyan tudom ezeket az alkalmazásokat (legfeljebb 1024) hozzáférést biztosíthat a Key Vault?
+Hozzáférés-vezérlési házirend segítségével számos alkalmazások hozzáférést egy kulcstartót. Egy hozzáférés-vezérlési szabályzat legfeljebb 1024 alkalmazásokat, és konfigurációja a következő:
 
-A Key Vault hozzáférés-vezérlési szabályzat legfeljebb 1024 bejegyzések támogatja. Ugyanakkor létrehozhat egy Azure Active Directory biztonsági csoportot is. A társított szolgáltatás rendszerbiztonsági tagok hozzáadása a biztonsági csoport, és ezután a Key Vault a biztonsági csoport hozzáférési jogot.
+1. Hozzon létre egy Azure Active Directory biztonsági csoportot. 
+2. Az alkalmazás összes társított az egyszerű szolgáltatások a biztonsági csoport hozzáadása.
+3. A Key Vault a biztonsági csoport hozzáférési jogot.
 
 Az Előfeltételek a következők:
 * [Az Azure Active Directory V2 PowerShell modul telepítése](https://www.powershellgallery.com/packages/AzureAD).
 * [Telepítse az Azure PowerShellt](/powershell/azure/overview).
 * Futtassa a következő parancsokat, csoportok az Azure Active Directory-bérlő létrehozása/szerkesztése engedélyre van szükségük. Ha nem rendelkezik engedélyekkel, szükség lehet az Azure Active Directory-rendszergazdától. Lásd: [kapcsolatos Azure Key Vault-kulcsok, titkos kulcsok és tanúsítványok](about-keys-secrets-and-certificates.md) részleteiről a Key Vault hozzáférési házirend engedélyek.
 
-Most futtassa a következő parancsokat a PowerShellben.
+Most futtassa a következő parancsokat a PowerShellben:
 
 ```powershell
 # Connect to Azure AD 

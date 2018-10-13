@@ -7,14 +7,14 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 11/25/2017
+ms.date: 10/11/2018
 ms.author: maxluk
-ms.openlocfilehash: 07c2b506007daccd53a8b06a43064e6e274ac43b
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: b3dd31c7890812dfa7e9e5740a48f094badc604e
+ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47433358"
+ms.lasthandoff: 10/12/2018
+ms.locfileid: "49167341"
 ---
 # <a name="use-azure-toolkit-for-intellij-to-create-spark-applications-for-an-hdinsight-cluster"></a>IntelliJ-hez készült Azure eszközkészlet használata Spark-alkalmazások egy HDInsight-fürt létrehozása
 
@@ -68,33 +68,33 @@ Felhasználói lehetőségek közül választhat [jelentkezzen be Azure-előfize
     ![Egy kibontott fürtnév csomópontok](./media/apache-spark-intellij-tool-plugin/view-explorer-4.png)
 
 ## <a name="link-a-cluster"></a>Egy fürtöt
-Kapcsolat egy normál HDInsight-fürt Ambari felügyelt felhasználónév használatával. Hasonlóképpen, egy tartományhoz csatlakoztatott HDInsight-fürtöt, a kapcsolat a tartomány és felhasználónév, mint például a user1@contoso.com.
+Kapcsolat egy normál HDInsight-fürt Ambari felügyelt felhasználónév használatával. Hasonlóképpen, egy tartományhoz csatlakoztatott HDInsight-fürtöt, a kapcsolat a tartomány és felhasználónév, mint például a user1@contoso.com. Livy-Service-fürt is kapcsolhatja.
 
 1. Válassza ki **egy fürtöt** a **Azure Explorer**.
 
    ![hivatkozás fürt helyi menü](./media/apache-spark-intellij-tool-plugin/link-a-cluster-context-menu.png)
 
+2. Fürtök összekapcsolása két lehetősége van. 
 
-1. Adja meg **fürt neve**, **felhasználónév** és **jelszó**. Ellenőrizze a felhasználónevet és jelszót, ha a hitelesítési hiba van szüksége. Szükség esetén adja meg a Tárfiókot, a Tárfiók kulcsát, majd kiválaszthatja a tárolót a Storage-tárolóból. A bal oldali fában a storage Explorer van tárolással
+   * Csatolás a HDInsight-fürt, válassza a **HDInsight-fürt** mezőben **fürt adatai**, adja meg **fürt nevét vagy URL-címe**, **felhasználónév**, és **Jelszó**.
+
+      ![hivatkozás a hdinsight-fürt párbeszédpanel](./media/apache-spark-intellij-tool-plugin/link-hdinsight-cluster-dialog.png)
+
+   * Kapcsolásának Livy-Service-fürt, válassza a **Livy szolgáltatás** mezőben **fürt adatai**, adja meg **Livy végpont**, **fürtnév**. **Yarn-végpont** nem kötelező. A mezőben **hitelesítési**, két lehetősége van megadva. Ezek **alapszintű hitelesítés** és **nincs hitelesítés**. Ha bejelöli **alapszintű hitelesítés**, **felhasználónév** és **jelszó** meg kell adni. Ellenőrizni kell a felhasználónevet és jelszót, ha a hitelesítési hiba van.
+      
+      ![hivatkozás livy fürt párbeszédpanel](./media/apache-spark-intellij-tool-plugin/link-livy-cluster-dialog.png)
    
-   ![hivatkozás fürt párbeszédpanel](./media/apache-spark-intellij-tool-plugin/link-a-cluster-dialog.png)
-
-   > [!NOTE]
-   > Ha a fürt egyaránt bejelentkezett az Azure-előfizetés és a fürthöz társított a társított storage-kulcs, a felhasználónevet és jelszót használunk.
-   > ![az intellij-ben a Storage Explorerben](./media/apache-spark-intellij-tool-plugin/storage-explorer-in-IntelliJ.png)
-
-   
-1. Láthatja, hogy a társított fürt **HDInsight** csomópont, ha a bemeneti adatok megfelelő. Ehhez a fürthöz társított alkalmazás most már küldhet.
+3. Láthatja, hogy a társított fürt **HDInsight** csomópont, ha a bemeneti adatok megfelelő. Ehhez a fürthöz társított alkalmazás most már küldhet.
 
    ![a csatolt fürt](./media/apache-spark-intellij-tool-plugin/linked-cluster.png)
 
-1. Fürt is megszüntetheti **Azure Explorer**.
+4. Fürt is megszüntetheti **Azure Explorer**.
    
    ![nem összekapcsolt fürt](./media/apache-spark-intellij-tool-plugin/unlink.png)
 
-## <a name="run-a-spark-scala-application-on-an-hdinsight-spark-cluster"></a>Futtathatja a Spark Scala alkalmazásokat egy HDInsight Spark-fürtön
+## <a name="create-a-spark-scala-application-on-an-hdinsight-spark-cluster"></a>Egy HDInsight Spark-fürtön a Spark Scala-alkalmazások létrehozása
 
-1. Indítsa el az IntelliJ IDEA-t, majd hozzon létre egy projektet. A **New Project** (Új projekt) párbeszédablakban hajtsa végre az alábbi lépéseket: 
+1. Indítsa el az IntelliJ IDEA-t, majd hozzon létre egy projektet. Az a **új projekt** párbeszédpanelen kövesse az alábbi lépéseket: 
 
    a. Válassza ki a **HDInsight** > **Spark on HDInsight (Scala)** lehetőséget.
 
@@ -165,35 +165,46 @@ Kapcsolat egy normál HDInsight-fürt Ambari felügyelt felhasználónév haszn�
     
         }
 
-1. Futtassa az alkalmazást egy HDInsight Spark-fürtön a következő módon:
+## <a name="run-a-spark-scala-application-on-an-hdinsight-spark-cluster"></a>Futtathatja a Spark Scala alkalmazásokat egy HDInsight Spark-fürtön
+Miután létrehozta a Scala-alkalmazások, elküldheti a fürthöz.
 
-   a. A Project Explorer, kattintson a jobb gombbal a projekt nevét, és válassza **Spark-alkalmazás elküldéséhez HDInsight**.
-      
+1. A Project Explorer keresse meg a Java vagy a Scala-fájlt, majd **Spark-alkalmazás elküldéséhez HDInsight** a helyi menü.
+    
       ![Az HDInsight parancs elküldése Spark alkalmazás](./media/apache-spark-intellij-tool-plugin/hdi-submit-spark-app-1.png)
 
-   b. Az Azure-előfizetés hitelesítő adatainak megadását kéri. Az a **Spark küldésének** párbeszédpanelen adja meg az alábbi értékeket, és válassza **küldés**.
+2. Konfigurációs párbeszédpanelen adja meg a következő értékeket, majd kattintson a **SparkJobRun**.
+
+      ![A Spark küldésének párbeszédpanel](./media/apache-spark-intellij-tool-plugin/hdi-submit-spark-app-2.png)
       
-      * A **Spark-fürtök (csak Linux)**, válassza ki a HDInsight Spark-fürtöt, amelyen szeretné, az alkalmazás futtatásához.
+    * A **Spark-fürtök (csak Linux)**, válassza ki a HDInsight Spark-fürtöt, amelyen szeretné, az alkalmazás futtatásához.
 
-      * Válasszon ki egy összetevőt az IntelliJ-projekt, vagy válasszon egyet a merevlemez-meghajtóról.
+    * Válasszon ki egy összetevőt az IntelliJ-projekt, vagy válasszon egyet a merevlemez-meghajtóról.
 
-      * Az a **Main osztály neve** jelölje ki a három pontra (**...** ), a fő osztályban az alkalmazáskódban forrás, majd válassza ki és **OK**.
+    * **Fő osztálynév** mező: az alapértelmezett értéke a választott fájl a fő osztályt. A három pontra kattintva módosíthatja az osztály (**...** ) és a egy másik osztály kiválasztása.   
 
-        ![A Main osztály kiválasztása párbeszédpanel](./media/apache-spark-intellij-tool-plugin/hdi-submit-spark-app-3.png)
+    * **Feladat konfigurációk** mező: az alapértelmezett értékek vannak beállítva, a fenti képen látható. Módosítsa az értéket, vagy adja hozzá az új kulcs-érték a a feladatok elküldéséhez. További információ: [Apache Livy REST API](http://livy.incubator.apache.org./docs/latest/rest-api.html)
 
-      * Megadhatja a kívánt adatokat. Tudnivalók a **feladat-konfigurációk**, az alapértelmezett érték van. Olvassa el és [Apache Livy REST API-val](http://livy.incubator.apache.org./docs/latest/rest-api.html) a kulcsokkal kapcsolatos további információt. A **parancssori argumentumok**, **hivatkozott JARs** és **hivatkozott fájlok** hasonlóan kell kinéznie a kép alatt. Olvassa el [Spark konfigurációs](https://spark.apache.org/docs/latest/configuration.html#runtime-environment) bővebben **hivatkozott JARs** és **hivatkozott fájlok**. Győződjön meg arról, hogy **hivatkozott JARs** és **hivatkozott fájlok** megfelelően működjön, és a fürthöz, először küld be kell töltse fel az erőforrásokat. Tekintse meg [hogyan tölthetők fel az erőforrások a fürt](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-storage-explorer). A Küldés párbeszédpanelen a következő képen kell hasonlítania.
-        
-        ![A Spark küldésének párbeszédpanel box-konfigurációs jelentése](./media/apache-spark-intellij-tool-plugin/submit-job-configurations.png)
+      ![A Spark küldésének párbeszédpanel box-konfigurációs jelentése](./media/apache-spark-intellij-tool-plugin/submit-job-configurations.png)
 
-        ![A Spark küldésének párbeszédpanelen be jar-fájlok jelentése](./media/apache-spark-intellij-tool-plugin/jar-files-meaning.png)
+    * **Parancssori argumentumok** mező: a hely a fő osztály a felosztás, szükség esetén argumentumok értékeket adhat meg.
 
-        ![A Spark küldésének párbeszédpanel](./media/apache-spark-intellij-tool-plugin/hdi-submit-spark-app-2.png)
+    * **JAR-fájlok kivételével hivatkozott** és **hivatkozott fájlok** mezők: adhat meg az elérési utak a hivatkozott JAR-fájlok kivételével, és a fájlok, ha van ilyen. További információ: [Spark-konfigurációja](https://spark.apache.org/docs/latest/configuration.html#runtime-environment) 
 
-   c. A **Spark küldésének** fülre az ablak alján el kell indulnia, megjelenítés, a folyamat állapotát. Az alkalmazás a piros gomb kiválasztásával is leállíthatja a **Spark küldésének** ablak.
+      ![A Spark küldésének párbeszédpanelen be jar-fájlok jelentése](./media/apache-spark-intellij-tool-plugin/jar-files-meaning.png)
+
+       > [!NOTE]
+       > A hivatkozott JARs és a hivatkozott fájlok feltöltését, tekintse meg: [erőforrások a fürt feltöltése](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-storage-explorer)
+                         
+    * **Töltse fel az elérési út**: adhatja meg, a Jar- vagy a Scala Projekt erőforrások elküldése tárolási helyét. Három tárolási típust támogat: **Azure Blob**, **interaktív használata Spark-munkamenetre összetevők feltöltése**, és **használja a fürt alapértelmezett tárfiók**. Az alábbi képernyőfelvétel, amelyek az Azure Blob.
+
+        ![A Spark küldésének párbeszédpanel](./media/apache-spark-intellij-tool-plugin/hdi-submit-spark-upload-storage-types.png)
+
+        ![A Spark küldésének párbeszédpanel](./media/apache-spark-intellij-tool-plugin/hdi-submit-spark-upload-storage-blob.png)
+
+3. Kattintson a **SparkJobRun** a projekthez, hogy a kijelölt fürt elküldéséhez. A **fürt távoli Spark-feladat** lap alján a feladat végrehajtási folyamatának jeleníti meg. A piros gombra kattintva leállíthatja az alkalmazást. Feladat kimenetének elérésével kapcsolatban lásd: a "hozzáférés és a HDInsight Spark-fürtök kezelése az IntelliJ-hez készült Azure-eszközkészlet használatával" szakasz a cikk későbbi részében.
       
      ![A Spark küldésének ablak](./media/apache-spark-intellij-tool-plugin/hdi-spark-app-result.png)
-      
-      Feladat kimenetének elérésével kapcsolatban lásd: a "hozzáférés és a HDInsight Spark-fürtök kezelése az IntelliJ-hez készült Azure-eszközkészlet használatával" szakasz a cikk későbbi részében.
+
 
 ## <a name="debug-spark-applications-locally-or-remotely-on-an-hdinsight-cluster"></a>Hibakeresés Spark-alkalmazások helyben vagy távolról egy HDInsight-fürtön 
 Javasoljuk továbbá egy másik módja a fürtön a Spark-alkalmazás be. Ehhez a paraméterek beállításával a **Futtatás és hibakeresés konfigurációk** IDE. További információkért lásd: [hibakeresés Spark-alkalmazások helyben vagy távolról egy HDInsight-fürtön az Azure-eszközkészlet ssh-n keresztül az IntelliJ-hez](https://docs.microsoft.com/azure/hdinsight/hdinsight-apache-spark-intellij-tool-debug-remotely-through-ssh).
@@ -242,6 +253,43 @@ Alapértelmezés szerint az IntelliJ-hez a Spark-fürtök, az összes Azure-elő
 1. Az Azure Explorerben, kattintson a jobb gombbal a **Azure** gyökércsomópont, és válassza ki **előfizetések kezelése**. 
 
 1. A párbeszédpanelen törölje a jelölőnégyzet jelölését, amelyet szeretne elérni, és válassza ki az előfizetések mellett **Bezárás**. Lehetőség kiválasztásával **Kijelentkezés** Ha jelentkezzen ki az Azure-előfizetéshez szeretne.
+
+## <a name="spark-console"></a>Spark-konzol
+Futtathat Spark helyi Console(Scala) vagy Spark Livy interaktív munkamenet Console(Scala) futtatni.
+
+### <a name="spark-local-consolescala"></a>A Spark helyi Console(Scala)
+1. A függőségek manuálisan kell hozzáadni. Menü **fájl**->**projekt struktúrák**->**Projektbeállítások**->**kódtárak**, Kattintson a **+**, válassza a **a Maven...** . Majd adja meg **org.apache.spark:spark-repl_2.11:2.1.0** az előugró párbeszédpanelen. A függőségek felvett szalagtárak esetén az első sorba kell áthelyezése a függőségi **modulok** a **projekt struktúrák** ablak. Mielőtt, módosítsa a **hatókör** való **futásidejű**.
+
+    ![Helyi konzol függőségi kódtárak hozzáadása](./media/apache-spark-intellij-tool-plugin/local-console-add-dependency-libraries.png)
+
+    ![Első sor a helyi konzol áthelyezése](./media/apache-spark-intellij-tool-plugin/local-console-move-first-line.png)
+
+2. Ha nem rendelkezik ilyennel, mielőtt, állítsa be a konfigurációt. A **Futtatás és hibakeresés konfigurációk** ablakban kattintson a **+** -> **Azure HDInsight Spark**, jelölje be lapon **helyileg futtassa**, válassza ki a fő osztályban, majd kattintson a **OK**.
+
+    ![Helyi konzol konfigurációjának beállítása](./media/apache-spark-intellij-tool-plugin/console-set-configuration.png)
+ 
+3. Nyissa meg a fájlt a fő osztályban fájlba megfelelő, és kattintson a jobb gombbal **Spark konzol**, majd kattintson a **futtatása Spark helyi Console(Scala)**. Menü, vagy **eszközök**->**Spark konzol**->**futtatása Spark helyi Console(Scala)** , indítsa el a konzolt.
+
+    ![A Spark helyi belépési pont](./media/apache-spark-intellij-tool-plugin/spark-console-local-entry-script.png)
+
+4. Helyi indítását követően sikeresen konzol. Tűnik alatt. Hiba a kívánt teheti meg. Adja meg például **sc.appName**, nyomja le a ctrl + Enter, akkor az eredmény megjelenik.
+
+    ![Helyi konzol eredménye](./media/apache-spark-intellij-tool-plugin/local-console-result.png)
+
+### <a name="spark-livy-interactive-session-consolescala"></a>Spark-Livy interaktív munkamenet Console(Scala)
+Az intellij-vel 2018.2 csak támogatott.
+
+1. Ha nem rendelkezik ilyennel, mielőtt, állítsa be a konfigurációt. A **Futtatás és hibakeresés konfigurációk** ablakban kattintson a **+** -> **Azure HDInsight Spark**válassza lapon **távolról futtatni a fürt** , válassza ki a fürt neve és a fő osztályban, majd kattintson a **OK**.
+
+    ![Interaktív konzol konfigurációs bejegyzés hozzáadása](./media/apache-spark-intellij-tool-plugin/interactive-console-add-config-entry.png)
+
+    ![Interaktív konzol konfigurációjának beállítása](./media/apache-spark-intellij-tool-plugin/interactive-console-configuration.png)
+
+2. Nyissa meg a megfelelő a fő osztályban fájlba, és kattintson a jobb gombbal **Spark konzol**, majd kattintson a **futtatása Spark Livy interaktív munkamenet Console(Scala)**. Menü, vagy **eszközök**, majd kattintson a **Spark konzol**, majd **futtatása Spark Livy interaktív munkamenet Console(Scala)** , indítsa el a konzolt.
+
+3. Sikerült elindítani a konzolt, miután valami azt szeretné, elvégezheti. Adja meg például **sc.appName**, nyomja le a ctrl + Enter, akkor az eredmény megjelenik.
+
+    ![Interaktív konzol eredménye](./media/apache-spark-intellij-tool-plugin/interactive-console-result.png)
 
 ## <a name="convert-existing-intellij-idea-applications-to-use-azure-toolkit-for-intellij"></a>Átalakíthatja az IntelliJ-hez készült Azure-eszközkészlet használata meglévő az IntelliJ IDEA-alkalmazásokat
 Átalakíthatja a meglévő Scala Spark alkalmazásokat az IntelliJ IDEA-kompatibilis, az IntelliJ-hez létrehozott. Ezután használhatja a beépülő modul az alkalmazásokat a HDInsight Spark-fürt elküldéséhez.

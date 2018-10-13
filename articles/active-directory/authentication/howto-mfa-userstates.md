@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: michmcla
-ms.openlocfilehash: df86b8466291ee6b1cb5baf7f0a16bec9c719c6f
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.openlocfilehash: 302cf047ee1ffea685a939bddee84551de7042ec
+ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49115127"
+ms.lasthandoff: 10/12/2018
+ms.locfileid: "49166763"
 ---
 # <a name="how-to-require-two-step-verification-for-a-user"></a>Egy felhasználó kétlépéses ellenőrzést igénylése
 Egy globális rendszergazdai fiók használata szükséges, amelyek a kétlépéses ellenőrzés, hogy a két módszer valamelyikét hajthatja végre. Az első lehetőség, hogy minden felhasználó számára az Azure multi-factor Authentication (MFA) engedélyezéséhez. Amikor a felhasználók külön-külön vannak engedélyezve, a kétlépéses ellenőrzés minden alkalommal, amikor bejelentkeznek az általuk (néhány kivételtől eltekintve, például amikor bejelentkeznek a megbízható IP-címek, vagy ha a _megjegyzett eszközök_ funkció be van kapcsolva). A második lehetőség, hogy bizonyos körülmények között a kétlépéses ellenőrzést igénylő feltételes hozzáférési szabályzat beállítása.
@@ -124,6 +124,8 @@ vagy is lehet Rövidítse le:
     Set-MsolUser -UserPrincipalName user@domain.com -StrongAuthenticationRequirements @()
 
 ## <a name="next-steps"></a>További lépések
+
+Miért lett egy felhasználó kéri vagy a rendszer nem kéri hajthatok végre MFA? Című témakör [az Azure AD bejelentkezési jelentések a jelentések az Azure multi-factor Authentication dokumentum](howto-mfa-reporting.md#azure-ad-sign-ins-report).
 
 További beállítások, például a megbízható IP-címek, egyedi Hangüzenetek és visszaélési riasztás küldésének, lásd: a cikk [konfigurálása az Azure multi-factor Authentication szolgáltatás beállításainak](howto-mfa-mfasettings.md)
 

@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/07/2018
+ms.date: 10/12/2018
 ms.author: sethm
 ms.reviewer: justini
-ms.openlocfilehash: a870ba238239a20af154f611f88e7c2fdb95f9f7
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.openlocfilehash: 2e913881faadd4892ad1ebc8cb404efe6489eb0d
+ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48870927"
+ms.lasthandoff: 10/13/2018
+ms.locfileid: "49310898"
 ---
 # <a name="azure-stack-1808-update"></a>Azure Stack 1808 frissítése
 
@@ -40,7 +40,7 @@ Az Azure Stack 1808 frissítés buildszáma **1.1808.0.97**.
 Ez a frissítés az Azure Stack a következő fejlesztéseket tartalmazza.
 
 <!--  2682594   | IS  --> 
-- **Minden Azure Stack-környezet már használja az egyezményes világidő (UTC) időzóna formátumot.**  Összes adatok naplózása, és most már a kapcsolódó információkat UTC formátumban jeleníti meg. Ha egy előző verziójáról, amely nem lett telepítve az UTC frissíti, a környezet frissül (UTC) használata. 
+- **Minden Azure Stack-környezet már használja az egyezményes világidő (UTC) időzóna formátumot.**  Minden naplóadatokat, és most már a kapcsolódó információk megjelenítéséhez UTC formátumban. Ha egy előző verziójáról, amely nem lett telepítve az UTC frissíti, a környezet frissül (UTC) használata. 
 
 <!-- 2437250  | IS  ASDK --> 
 - **Felügyelt lemezek használata támogatott.** Az Azure Stack virtuális gépek és virtuálisgép-méretezési csoportok most már felügyelt lemez is használható. További információkért lásd: [Azure Stack-Managed Disks: különbségek és szempontok](/azure/azure-stack/user/azure-stack-managed-disk-considerations).
@@ -52,7 +52,7 @@ Ez a frissítés az Azure Stack a következő fejlesztéseket tartalmazza.
 - **A bővítmény gazdagép előkészítése**. A bővítmény gazdagép segítségével biztonságos Azure Stack segítségével a szükséges TCP/IP-portok számának csökkentésével. A 1808 a frissítés előkészítése, bővítmény gazdagép Felkészülés az Azure Stack. További információkért lásd: [előkészítése az Azure stack-bővítmény gazdagép](/azure/azure-stack/azure-stack-extension-host-prepare).
 
 <!-- IS --> 
-- **A Virtual Machine Scale Sets katalóguselemek immár beépített**. A Virtual Machine Scale Set gyűjteményelem elérhetővé válik, a felhasználói és rendszergazdai portálokon nélkül, ahonnan letöltheti azt.  Ha frissít, 1808 érhető el frissítés befejezése után.  
+- **A Virtual Machine Scale Sets katalóguselemek mostantól beépített**. A Virtual Machine Scale Set gyűjteményelem elérhetővé válik, a felhasználói és rendszergazdai portálokon nélkül, ahonnan letöltheti azt.  Ha frissít, 1808 érhető el frissítés befejezése után.  
 
 <!-- IS, ASDK --> 
 - **Skálázás virtuálisgép-méretezési**. A portálon való [méretezése egy virtuálisgép-méretezési csoportban](azure-stack-compute-add-scalesets.md#scale-a-virtual-machine-scale-set) (VMSS).    
@@ -61,10 +61,10 @@ Ez a frissítés az Azure Stack a következő fejlesztéseket tartalmazza.
 - **Egyéni IPSec/IKE-házirend konfigurációk támogatása** a [VPN-átjárók az Azure Stackben](/azure/azure-stack/azure-stack-vpn-gateway-about-vpn-gateways).
 
 <!-- | IS ASDK--> 
-- **Kubernetes Piactéri elem**. Kubernetes-fürtök használatával most már telepítheti a [Kubernetes Piactéri elem](azure-stack-solution-template-kubernetes-cluster-add.md). Felhasználók válassza ki a Kubernetes-elemet, és töltse ki a Kubernetes-fürt üzembe helyezése az Azure Stackhez néhány paramétert. A sablonok az a célja, hogy egyszerűsítsen felhasználóknak, hogy a telepítő fejlesztési-tesztelési Kubernetes-üzembehelyezés néhány lépésben.
+- **Kubernetes Piactéri elem**. Kubernetes-fürtök használatával most már telepítheti a [Kubernetes Piactéri elem](azure-stack-solution-template-kubernetes-cluster-add.md). Felhasználók válassza ki a Kubernetes-elemet, és töltse ki a Kubernetes-fürt üzembe helyezése az Azure Stackhez néhány paramétert. A sablonok az a célja, hogy egyszerűsítsen felhasználóknak, hogy állítsa be a fejlesztési-tesztelési Kubernetes-üzembehelyezés néhány lépésben.
 
 <!-- | IS ASDK--> 
-- **Blockchain-sablonok**. Most már futtathat [Ethereum consortium központi telepítések](azure-stack-ethereum.md) az Azure Stacken. A három új sablonokat is megtalálhatja a [Azure Stack gyors üzembe helyezési sablonokat](https://github.com/Azure/AzureStack-QuickStart-Templates). A felhasználó telepítheti és konfigurálhatja egy többtagú consortium Ethereum hálózati minimális Azure-ban és az Ethereum ismeretekkel lehetővé teszik. A sablonok az a célja, hogy egyszerűsítsen felhasználóknak, hogy a telepítő fejlesztési-tesztelési Blockchain telepítések néhány lépésben.
+- **Blockchain-sablonok**. Most már futtathat [Ethereum consortium központi telepítések](azure-stack-ethereum.md) az Azure Stacken. A három új sablonokat is megtalálhatja a [Azure Stack gyors üzembe helyezési sablonokat](https://github.com/Azure/AzureStack-QuickStart-Templates). A felhasználó telepítheti és konfigurálhatja egy többtagú consortium Ethereum hálózati minimális Azure-ban és az Ethereum ismeretekkel lehetővé teszik. A sablonok az a célja, hogy egyszerűsítsen felhasználóknak, hogy állítsa be a fejlesztési-tesztelési Blockchain központi telepítések néhány lépésben.
 
 <!-- | IS ASDK--> 
 - **Az API verzió profil 2017-03-09-profile frissítve lett, hogy a 2018-03-01-hibrid**. API-profilok adja meg, az Azure erőforrás-szolgáltató és az Azure REST-végpontokat az API-verzió. Profilokkal kapcsolatos további információkért lásd: [kezelése API-verzióprofilok az Azure Stackben](/azure/azure-stack/user/azure-stack-version-profiles).
@@ -144,6 +144,13 @@ Emellett tartalmazza a kockázatcsökkentési spekulatív végrehajtás kockáza
   ```   
 
 ### <a name="known-issues-with-the-update-process"></a>A frissítési folyamat ismert problémái
+
+<!-- TBD - IS -->
+- Az alábbi riasztásokat ismételten megjelenik, és az Azure Stack rendszeren majd eltűnnek jelenhetnek meg:
+   - *Infrastruktúra szerepkör-példány nem érhető el*
+   - *Skálázási egység csomópont offline állapotban.*
+   
+  Futtassa a [Test-AzureStack](azure-stack-diagnostic-test.md) parancsmagot, hogy az infrastruktúra-szerepkör példányai állapotának ellenőrzése és egység csomópontok méretezése. Ha nincsenek problémák észlelhetők által [Test-AzureStack](azure-stack-diagnostic-test.md), ezek a riasztások figyelmen kívül hagyhatja. Ha problémát észlel, próbálja meg elindítani a szerepkörpéldány infrastruktúra vagy a csomópont a felügyeleti portálon vagy a PowerShell használatával.
 
 - Futtatásakor [Test-AzureStack](azure-stack-diagnostic-test.md) a 1808 frissítés után az alaplapi felügyeleti vezérlő (BMC) figyelmeztető üzenet jelenik meg. Biztonságosan figyelmen kívül hagyhatja ezt a figyelmeztetést.
 
@@ -226,7 +233,7 @@ Az alábbiakban a telepítés utáni ismert hibáit a build-verziószáma.
 
 
 <!-- 2812138 | IS --> 
-- Láthatja, hogy egy riasztás **tárolási** összetevő, amely rendelkezik a következő adatokat:
+- Láthatja, hogy egy riasztás **tárolási** összetevő, amely tartalmazza a következő adatokat:
 
    - NAME: Storage szolgáltatás belső kommunikációs hiba  
    - SÚLYOSSÁG: kritikus  

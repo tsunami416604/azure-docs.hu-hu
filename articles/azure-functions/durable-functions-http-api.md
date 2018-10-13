@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 09/06/2018
 ms.author: azfuncdf
-ms.openlocfilehash: c6d7268a8501c602354d21edc5a0feaae9b1a0b2
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: 19351d31331431e3b5137676061aadc681c496a7
+ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45575474"
+ms.lasthandoff: 10/12/2018
+ms.locfileid: "49166627"
 ---
 # <a name="http-apis-in-durable-functions-azure-functions"></a>Durable Functions (az Azure Functions) HTTP API-k
 
@@ -197,6 +197,9 @@ A **HTTP 202** válasz is tartalmaz egy **hely** válaszfejléc, amely az URL-C�
 ### <a name="get-all-instances-status"></a>Az összes példány állapotának beolvasása
 
 Minden példány állapota is lekérdezheti. Távolítsa el a `instanceId` a "Get-példány állapota" kérelemből. A paraméterek ugyanazok, mint a "Get példány állapota." 
+
+Ne feledje, hogy az egyik dolog, hogy `connection` és `code` megadása nem kötelező. Ha a függvény a névtelen hitelesítés kód nincs szükség.
+Ha nem szeretne egy nem definiált AzureWebJobsStorage Alkalmazásbeállítás különböző blobtárolóhoz tartozó kapcsolati karakterláncot, majd biztonságosan figyelmen kívül hagyhatja a kapcsolat lekérdezésisztring-paraméter.
 
 #### <a name="request"></a>Kérés
 

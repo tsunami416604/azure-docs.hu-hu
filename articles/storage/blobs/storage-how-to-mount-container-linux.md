@@ -5,14 +5,14 @@ services: storage
 author: seguler
 ms.service: storage
 ms.topic: article
-ms.date: 05/10/2018
+ms.date: 10/11/2018
 ms.author: seguler
-ms.openlocfilehash: 9964aa4d263e0b75eb59b4e1434a9b3f0aac6ea1
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.openlocfilehash: 4f29933fbd4b9ea5c9868e307a6affa7e2273e3d
+ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39400440"
+ms.lasthandoff: 10/12/2018
+ms.locfileid: "49165181"
 ---
 # <a name="how-to-mount-blob-storage-as-a-file-system-with-blobfuse"></a>Blob-tároló csatlakoztatása fájlrendszerként blobfuse az útmutató
 
@@ -27,7 +27,7 @@ Ez az útmutató bemutatja, hogyan blobfuse használja, és a Linux és a hozzá
 > 
 
 ## <a name="install-blobfuse-on-linux"></a>Blobfuse telepítése Linux rendszeren
-Blobfuse bináris fájlok elérhetők a [Linux a Microsoft szoftverek tárolóhelyekkel](https://docs.microsoft.com/windows-server/administration/Linux-Package-Repository-for-Microsoft-Software). Blobfuse telepítéséhez állítsa be az alábbi két adattár.
+Blobfuse bináris fájlok elérhetők a [Linux a Microsoft szoftverek tárolóhelyekkel](https://docs.microsoft.com/windows-server/administration/Linux-Package-Repository-for-Microsoft-Software) Ubuntun és RHEL disztribúciókat. Annak érdekében, hogy blobfuse telepíti azokat a disztribúciókat, állítsa be a tárházban, a listából. A bináris fájlokat a telepítési lépések kódból származzanak is létrehozható [Itt](https://github.com/Azure/azure-storage-fuse/wiki/1.-Installation#option-2---build-from-source) Ha nincsenek elérhető a disztribúció nem bináris fájlokat.
 
 ### <a name="configure-the-microsoft-package-repository"></a>A Microsoft csomagtárház konfigurálása
 Konfigurálja a [Linux Csomagtárház Microsoft-termékek](https://docs.microsoft.com/windows-server/administration/Linux-Package-Repository-for-Microsoft-Software).
@@ -89,7 +89,7 @@ Blobfuse szükséges a hitelesítő adatokat kell tárolni a fájlt a következ�
 
 ```
 accountName myaccount
-accountKey myaccesskey==
+accountKey 9fD-/KjshdfLDERmcIjabcdefhAUSIHD/asdhfoiasiaAISOIabcdef/askdfewiAASJDNFL+askdlfj==
 containerName mycontainer
 ```
 
@@ -97,6 +97,10 @@ Miután létrehozta ezt a fájlt, ügyeljen arra, hogy korlátozza a hozzáfér�
 ```bash
 chmod 700 fuse_connection.cfg
 ```
+
+> [!NOTE]
+> Ha létrehozta a konfigurációs fájlt a Windows, ügyeljen arra, hogy futtassa `dos2unix` megtisztítása, és a Unix-formátumra konvertálni. 
+>
 
 ### <a name="create-an-empty-directory-for-mounting"></a>Hozzon létre egy üres könyvtárra való csatlakoztatás
 ```bash

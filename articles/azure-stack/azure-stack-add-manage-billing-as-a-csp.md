@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 08/30/2018
 ms.author: sethm
 ms.reviewer: alfredo
-ms.openlocfilehash: b8c00795c7777e5485f4725e1da63fc764973f43
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.openlocfilehash: b4df9d3b107945b2c0797875718f3266b7fd0b10
+ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45628930"
+ms.lasthandoff: 10/12/2018
+ms.locfileid: "49166543"
 ---
 # <a name="manage-usage-and-billing-for-azure-stack-as-a-cloud-service-provider"></a>Használat és számlázás az Azure Stack felhő szolgáltató kezelése 
 
@@ -35,7 +35,7 @@ Az alábbi ábrán látható, válassza ki a megosztott szolgáltatások fiókj�
 
 ![Folyamat használat és a Felhőbeli szolgáltató felügyeletének engedélyezéséhez.](media\azure-stack-add-manage-billing-as-a-csp\process-add-useage-as-a-csp.png)
 
-## <a name="create-a-csp-or-cspss-subscription"></a>CSP vagy CSPSS előfizetés létrehozása
+## <a name="create-a-csp-or-apss-subscription"></a>CSP vagy APSS előfizetés létrehozása
 
 ### <a name="cloud-service-provider-subscription-types"></a>Szolgáltatói előfizetés felhőtípusok
 
@@ -44,13 +44,13 @@ Válassza ki az Azure Stackhez készült használt fióknak a megosztott szolgá
  - Felhőszolgáltató 
  - Megosztott szolgáltatások típusú partneri előfizetéshez 
 
-#### <a name="csp-shared-services"></a>Kriptográfiai Szolgáltató megosztott szolgáltatások
+#### <a name="azure-partner-shared-services"></a>Azure-partneri közös szolgáltatások
 
-Cloud Service Provider megosztott szolgáltatások (CSPSS) előfizetések a regisztráció során egy közvetlen CSP előnyben részesített választás vagy CSP terjesztő működik az Azure Stack.
+Az Azure-partneri közös szolgáltatásokat (APSS) előfizetések a regisztráció során egy közvetlen CSP előnyben részesített választás vagy CSP terjesztő működik az Azure Stack.
 
-Megosztott szolgáltatások bérlő CSPSS előfizetések tartoznak. Ha regisztrálja az Azure Stack, meg kell adnia a hitelesítő adatokat, amely az előfizetés tulajdonosa. A fiókja, regisztrálhat az Azure Stack eltérhetnek az üzembe helyezéshez használt rendszergazdai fiók. Továbbá, hajtsa végre a két fiók *nem* kell tartozniuk ugyanabban a tartományban. Más szóval akkor előfordulhat, hogy az üzembe helyezés, amelyek már használják a bérlő. Például akkor lehet, hogy ContosoCSP.onmicrosoft.com használja, majd regisztráljon egy másik bérlőben, például IURContosoCSP.onmicrosoft.com. Ne feledje, hogy jelentkezzen be ContosoCSP.onmicrosoft.com nap-ne az Azure Stack felügyeleti ekkor kell. Amikor bejelentkezik az Azure-ban IURContosoCSP.onmicrosoft.com, amikor szüksége van regisztrációs műveletek végrehajtásához.
+Megosztott szolgáltatások bérlő APSS előfizetések tartoznak. Ha regisztrálja az Azure Stack, meg kell adnia a hitelesítő adatokat, amely az előfizetés tulajdonosa. A fiókja, regisztrálhat az Azure Stack eltérhetnek az üzembe helyezéshez használt rendszergazdai fiók. Továbbá, hajtsa végre a két fiók *nem* kell tartozniuk ugyanabban a tartományban. Más szóval akkor előfordulhat, hogy az üzembe helyezés, amelyek már használják a bérlő. Például akkor lehet, hogy ContosoCSP.onmicrosoft.com használja, majd regisztráljon egy másik bérlőben, például IURContosoCSP.onmicrosoft.com. Ne feledje, hogy jelentkezzen be ContosoCSP.onmicrosoft.com nap-ne az Azure Stack felügyeleti ekkor kell. Amikor bejelentkezik az Azure-ban IURContosoCSP.onmicrosoft.com, amikor szüksége van regisztrációs műveletek végrehajtásához.
 
-Tekintse meg a következő útmutatást, valamint CSPSS előfizetés leírását előfizetés létrehozásával [hozzáadása az Azure partneri megosztott szolgáltatások](https://msdn.microsoft.com/partner-center/shared-services).
+Tekintse meg a következő útmutatást, valamint APSS előfizetés leírását előfizetés létrehozásával [hozzáadása az Azure partneri megosztott szolgáltatások](https://msdn.microsoft.com/partner-center/shared-services).
 
 #### <a name="csp-subscriptions"></a>CSP-előfizetésekben
 
@@ -58,7 +58,7 @@ Cloud Service Provider (CSP) előfizetések a regisztráció során a CSP-viszon
 
 ## <a name="register-azure-stack"></a>Az Azure Stack regisztrálása
 
-Használja az információk az előző szakaszban létrehozott CSPSS előfizetés regisztrálása az Azure Stack az Azure-ral. További információkért lásd: [regisztrálása az Azure Stack az Azure-előfizetésében](azure-stack-registration.md).
+Használja az információk az előző szakaszban létrehozott APSS előfizetés regisztrálása az Azure Stack az Azure-ral. További információkért lásd: [regisztrálása az Azure Stack az Azure-előfizetésében](azure-stack-registration.md).
 
 ## <a name="add-end-customer"></a>Adja hozzá a végfelhasználó ügyfél
 
@@ -72,7 +72,7 @@ Regisztráció az Azure Stack használatával:
  - Azure Stack-használati adatok továbbítása az Azure kereskedelmi és számlázás az Azure-előfizetéssel.
  - Minden ügyfél használati jelentést egy másik előfizetésben, az Azure Stack több-bérlős telepítésekben. Több-bérlős módhoz lehetővé teszi, hogy az Azure Stack használatával támogatja a különböző szervezetek ugyanazon az Azure Stack-példányon.
 
-Minden egyes Azure stack van egy alapértelmezett előfizetést, és számos bérlői előfizetések. Az alapértelmezett előfizetést az Azure-előfizetéssel, amely akkor kell fizetnie, ha bérlőspecifikus előfizetés nem létezik. Az első az előfizetés regisztrálva kell lennie. A jelentéskészítés működéséhez a több-bérlős használatot az előfizetés CSP vagy CSPSS előfizetést kell lennie.
+Minden egyes Azure stack van egy alapértelmezett előfizetést, és számos bérlői előfizetések. Az alapértelmezett előfizetést az Azure-előfizetéssel, amely akkor kell fizetnie, ha bérlőspecifikus előfizetés nem létezik. Az első az előfizetés regisztrálva kell lennie. A jelentéskészítés működéséhez a több-bérlős használatot az előfizetés CSP vagy APSS előfizetést kell lennie.
 
 Ezt követően a regisztráció frissül az Azure-előfizetés minden bérlő, amelyet szeretne az Azure Stack használata. Bérlői előfizetések a CSP-típusúnak kell lennie, és a partnerrel, aki az alapértelmezett előfizetés tulajdonosa összesítő kell. Más szóval valaki más ügyfelek nem lehet regisztrálni.
 

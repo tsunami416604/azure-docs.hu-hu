@@ -1,6 +1,6 @@
 ---
-title: A távoli figyelési megoldás felhasználói felület – Azure ad hozzá egy úszó |} A Microsoft Docs
-description: Ez a cikk bemutatja, hogyan adhat hozzá egy új úszó egy oldalon, a távoli figyelési megoldás gyorsító webes felhasználói felületen.
+title: A távoli figyelési megoldás felhasználói felület – Azure ad hozzá egy úszó menü |} A Microsoft Docs
+description: Ez a cikk bemutatja, hogyan adhat hozzá egy új úszó menü egy oldalon, a távoli figyelési megoldás gyorsító webes felhasználói felületen.
 author: dominicbetts
 manager: timlt
 ms.author: dobett
@@ -8,21 +8,21 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 10/05/2018
 ms.topic: conceptual
-ms.openlocfilehash: 9ba58ca887332d2ea224320951b25031cacbef0d
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: ccb1a7ff6abbc68f42c7632a8ba7a392b2c48794
+ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49094580"
+ms.lasthandoff: 10/12/2018
+ms.locfileid: "49167426"
 ---
-# <a name="add-a-custom-fly-out-to-the-remote-monitoring-solution-accelerator-web-ui"></a>Egy egyéni úszó ad hozzá a távoli figyelési megoldás gyorsító webes felhasználói felületen
+# <a name="add-a-custom-flyout-to-the-remote-monitoring-solution-accelerator-web-ui"></a>A távoli figyelési megoldás gyorsító webes felhasználói felületen ad hozzá egy egyéni úszó menü
 
-Ez a cikk bemutatja, hogyan adhat hozzá egy új úszó egy lapra a távoli figyelési megoldás gyorsító webes felhasználói felületen. A cikk ismerteti:
+Ez a cikk bemutatja, hogyan adhat hozzá egy új úszó menü egy lapra a távoli figyelési megoldás gyorsító webes felhasználói felületen. A cikk ismerteti:
 
 - Hogyan készítheti elő a helyi fejlesztési környezetet.
-- Hogyan lehet egy új úszó hozzáadása egy laphoz a webes felhasználói felületen.
+- Hogyan adhat hozzá egy új úszó menü egy oldal, a webes felhasználói felületen.
 
-A példa úszó az ebben a cikkben az oldalon, a rácshoz jeleníti meg, amely a [adjon hozzá egy egyéni rács a távoli figyelési megoldás gyorsító webes felhasználói Felületére](iot-accelerators-remote-monitoring-customize-grid.md) útmutató a cikk bemutatja, hogyan adhat hozzá.
+Ebben a cikkben a példa úszó menü jeleníti meg az oldalon, a rácshoz, amely a [adjon hozzá egy egyéni rács a távoli figyelési megoldás gyorsító webes felhasználói Felületére](iot-accelerators-remote-monitoring-customize-grid.md) útmutató a cikk bemutatja, hogyan adhat hozzá.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -39,27 +39,27 @@ A folytatás előtt kell végeznie az alábbi cikkekben leírt lépéseket:
 - [Egy egyéni szolgáltatás hozzáadása a távoli figyelési megoldás gyorsító webes felhasználói felületen](iot-accelerators-remote-monitoring-customize-service.md)
 - [Egy egyéni rács ad hozzá a távoli figyelési megoldás gyorsító webes felhasználói felületen](iot-accelerators-remote-monitoring-customize-grid.md)
 
-## <a name="add-a-fly-out"></a>Adjon hozzá egy úszó
+## <a name="add-a-flyout"></a>Adjon hozzá egy úszó menü
 
-Adjon hozzá egy úszó a webes felhasználói Felületére, szüksége adja hozzá a forrásfájlokat, amelyek meghatározzák az úszó, és néhány meglévő fájlokat, hogy a webes felhasználói felület az új összetevő tisztában módosításához.
+Adjon hozzá egy úszó menü a webes felhasználói Felületére, szüksége adja hozzá a forrásfájlokat, amelyek meghatározzák az úszó menü, és néhány meglévő fájlokat, hogy a webes felhasználói felület az új összetevő tisztában módosításához.
 
-### <a name="add-the-new-files-that-define-the-fly-out"></a>Adja hozzá az új fájlokat, amelyek meghatározzák az úszó
+### <a name="add-the-new-files-that-define-the-flyout"></a>Adja hozzá az új fájlokat, amelyek meghatározzák az úszó menü
 
-Az első lépésekhez, a **src/forgatókönyv/components/oldalak/pageWithFlyout/menük nélküli/exampleFlyout** mappa a fájlokat, amelyek meghatározzák egy úszó tartalmazza:
+Az első lépésekhez, a **src/forgatókönyv/components/oldalak/pageWithFlyout/menük nélküli/exampleFlyout** mappa a fájlokat, amelyek meghatározzák egy úszó menü tartalmazza:
 
 **exampleFlyout.container.js**
 
-[!code-javascript[Example fly-out container](~/remote-monitoring-webui/src/walkthrough/components/pages/pageWithFlyout/flyouts/exampleFlyout/exampleFlyout.container.js?name=flyoutcontainer "Example fly-out container")]
+[!code-javascript[Example flyout container](~/remote-monitoring-webui/src/walkthrough/components/pages/pageWithFlyout/flyouts/exampleFlyout/exampleFlyout.container.js?name=flyoutcontainer "Example flyout container")]
 
 **exampleFlyout.js**
 
-[!code-javascript[Example fly-out](~/remote-monitoring-webui/src/walkthrough/components/pages/pageWithFlyout/flyouts/exampleFlyout/exampleFlyout.js?name=flyout "Example fly-out")]
+[!code-javascript[Example flyout](~/remote-monitoring-webui/src/walkthrough/components/pages/pageWithFlyout/flyouts/exampleFlyout/exampleFlyout.js?name=flyout "Example flyout")]
 
 Másolás a **src/forgatókönyv/components/oldalak/pageWithFlyout/menük nélküli** mappát a **példa src/components/oldalak** mappát.
 
-### <a name="add-the-fly-out-to-the-page"></a>Az úszó hozzáadása az oldalhoz
+### <a name="add-the-flyout-to-the-page"></a>Az úszó menü hozzáadása az oldalhoz
 
-Módosítsa a **src/components/pages/example/basicPage.js** a úszó hozzáadásához.
+Módosítsa a **src/components/pages/example/basicPage.js** hozzáadása a úszó menü.
 
 Adjon hozzá **bevásárlókocsiba** , a származó **összetevők/shared** , és adja hozzá az import **svgs** és **ExampleFlyoutContainer**:
 
@@ -104,7 +104,7 @@ Adja hozzá a következő **konstans** érdekében a **render** függvény:
     const isExampleFlyoutOpen = openFlyoutName === 'example';
 ```
 
-Adjon hozzá egy gombot, a helyi menü úszó megnyitásához:
+Adjon hozzá egy gombot, a környezeti menüjéhez úszó menü megnyitásához:
 
 ```js
       <ContextMenu key="context-menu">
@@ -113,7 +113,7 @@ Adjon hozzá egy gombot, a helyi menü úszó megnyitásához:
       </ContextMenu>,
 ```
 
-Az oldal tartalmát valamilyen szöveget és a úszó tároló hozzáadása:
+Az oldal tartalmát valamilyen szöveget és a úszó menü tároló hozzáadása:
 
 ```js
       <PageContent className="basic-page-container" key="page-content">
@@ -125,7 +125,7 @@ Az oldal tartalmát valamilyen szöveget és a úszó tároló hozzáadása:
       </PageContent>
 ```
 
-## <a name="test-the-fly-out"></a>Az úszó tesztelése
+## <a name="test-the-flyout"></a>Tesztelje a úszó menü
 
 Ha a webes felhasználói felület még nem fut helyi, futtassa a következő parancsot a tárház helyi példányának gyökérmappájában:
 
@@ -139,6 +139,6 @@ Az előző parancs futtatása helyileg, a felhasználói felület [ http://local
 
 Ebben a cikkben megismerkedett az erőforrások hozzáadása vagy a webes felhasználói felület a távoli figyelési megoldásgyorsító oldalainak testreszabása segíti.
 
-Most már meg van adva egy úszó egy oldal, a következő lépés az, hogy [a Vezérlőpult hozzáadása az irányítópulthoz, a távoli figyelési megoldás gyorsító webes felhasználói felületen](iot-accelerators-remote-monitoring-customize-panel.md).
+Most már meg van adva egy úszó menü egy oldal, a következő lépés az, hogy [a Vezérlőpult hozzáadása az irányítópulthoz, a távoli figyelési megoldás gyorsító webes felhasználói felületen](iot-accelerators-remote-monitoring-customize-panel.md).
 
 További elméleti kapcsolatos további információkért a távoli figyelési megoldásgyorsító: [távoli figyelési architektúrával](iot-accelerators-remote-monitoring-sample-walkthrough.md).

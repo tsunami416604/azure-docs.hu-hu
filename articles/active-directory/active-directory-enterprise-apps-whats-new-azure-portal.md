@@ -1,5 +1,5 @@
 ---
-title: What's new in Azure Active Directory vállalati Alkalmazáskezelés |} Microsoft Docs
+title: Vállalati alkalmazások kezelése az Azure Active Directory újdonságai |} A Microsoft Docs
 description: Ismerje meg a vállalati alkalmazások kezelése az Azure Active Directory újdonságai.
 services: active-directory
 documentationcenter: ''
@@ -15,143 +15,142 @@ ms.workload: identity
 ms.date: 07/13/2017
 ms.author: asteen
 ms.reviewer: asteen
-ms.openlocfilehash: 30b3fbd415fac1e11a77b3905cb01e5935a62839
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: fefc508679a309262d07a582fc8f5bdf9f67cfe5
+ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34350865"
+ms.lasthandoff: 10/13/2018
+ms.locfileid: "49310115"
 ---
 # <a name="whats-new-in-enterprise-application-management-in-azure-active-directory"></a>Vállalati alkalmazások kezelése az Azure Active Directory újdonságai 
 
-Azure Active Directory (Azure AD) továbbfejlesztett vállalati alkalmazás felügyeleti eszközöket, az új szolgáltatásokat és képességeket egyszerűbb és hatékony kezelése alkalmazások tételére.
+Az Azure Active Directory (Azure AD) továbbfejlesztett alkalmazás vállalati eszközök, az új szolgáltatásokat és képességeket, hogy az alkalmazások kezelését, egyszerűbb és hatékony.
 
-Az alábbiakban néhány olyan a fejlesztésen esett át az Azure AD-t a [Azure-portálon](https://portal.azure.com).
+Íme néhány a a fejlesztések az Azure AD-t a [az Azure portal](https://portal.azure.com).
 
-- Egy továbbfejlesztett alkalmazáskatalógusában egy egyszerűsített létrehozása alkalmazásmodell élményt, és a használt összes alkalmazástípusokat támogatja. 
-- Egy vadonatúj gyors üzembe helyezés élményt nyújt segítséget az alkalmazás a próbaüzem az induláshoz. 
-- Néhány kattintással önkiszolgáló-szabályzatok konfigurálása. 
-- Az alkalmazásproxy, az egyszeri bejelentkezés konfigurálása és a saját felhasználói élményre, teszi több kész, mint előtt kapcsolja.
+- Egy alkalmazás nagyobb katalógus észlel, egyszerűsített alkalmazás létrehozási modell, és a használt minden alkalmazás esetében támogatja. 
+- Egy vadonatúj gyors üzembe helyezést biztosít, amelyek segítségével az alkalmazás egy próba megkezdéséhez. 
+- Mindössze néhány kattintással önkiszolgáló-szabályzatok konfigurálása. 
+- Application proxy fejlesztései egyszeri bejelentkezés beállításainak, majd válassza a saját alkalmazások felhasználói, így több munka, mint a előtt beolvasása.
 
 ## <a name="improvements-to-the-azure-active-directory-application-gallery"></a>Az Azure Active Directory Alkalmazáskatalógusában fejlesztései
 
-Adja hozzá a kedvenc alkalmazások, hogy származó a [alkalmazáskatalógusában](manage-apps/what-is-single-sign-on.md#get-started-with-the-azure-ad-application-gallery), akkor most kiterjesztése a felhőbe egyéni alkalmazások vagy kidolgozása új alkalmazások.  Ismerkedés az új felhasználói élmény a kattintva **Hozzáadás** alatt **vállalati alkalmazások** vagy **összes alkalmazás**.
+Adja hozzá a kedvenc alkalmazásai a vannak-e a [alkalmazáskatalógusában](manage-apps/what-is-single-sign-on.md#get-started-with-the-azure-ad-application-gallery), egyéni alkalmazásokat, Ön kiterjesztése a felhőbe, vagy új alkalmazásokat fejleszt.  Megkezdheti az új felületet a kattintva **Hozzáadás** alatt **vállalati alkalmazások** vagy **minden alkalmazás**.
  
   ![Egy alkalmazás hozzáadása](./media/active-directory-enterprise-apps-whats-new-azure-portal/01.png)
 
-Egyszer az oldalon láthatja a kiemelt alkalmazások, amelyek támogatják a felhasználók átadása első középső jelenik meg. Megkeresheti az Önt érdeklő alkalmazások elemezze különböző kategóriákban kívüli bármilyen típusú, vagy használhatja a keresési élményt biztosít az alkalmazásokat, amelyet integrálni szeretne gyorsan kereséséhez.
+Miután a katalógusban, látni fogja a kiemelt alkalmazások, amelyek támogatják a felhasználók átadásának elöl és középen jelenik meg. Megkeresheti az Önt érdeklő alkalmazások adatfelhasználás különböző kategóriák számos, vagy a keresési funkció használhatja az alkalmazásokat integrálni szeretné gyorsan megtalálásához.
 
-  ![Az alkalmazás gyűjteménye](./media/active-directory-enterprise-apps-whats-new-azure-portal/02.png)
+  ![Az alkalmazáskatalógusában](./media/active-directory-enterprise-apps-whats-new-azure-portal/02.png)
 
-## <a name="add-custom-applications-from-one-place"></a>Adja hozzá az egyéni alkalmazások egyetlen helyről
+## <a name="add-custom-applications-from-one-place"></a>Adja hozzá az egyéni alkalmazások egy helyen
 
-Mellett előre integrált alkalmazások hozzáadása a gyűjteményből, az egyéni alkalmazás konfigurációjának észlel volt amellyel a klasszikus felügyeleti portálon mindegyike most már az új portálon lehetséges. E kiterjesztése a helyszíni saját jelszó vagy összevont egyszeri Bejelentkezéses alkalmazások integrálása az alkalmazásproxy használatával olyan alkalmazást, vagy egy, az alkalmazás beállításjegyzékkel vadonatúj alkalmazás létrehozása, is elérheti azt minden a Ez egy helyen.
+Előre integrált alkalmazások hozzáadása a katalógusból, mind a egyéni alkalmazás-konfigurációs során lép fel, hogy is használta a klasszikus felügyeleti portálon kívül mostantól lehetséges az új portálon. E kiterjesztése az alkalmazás a helyszíni integrálása saját jelszó vagy összevont egyszeri bejelentkezés alkalmazás, az alkalmazásproxy használatával, vagy egy vadonatúj alkalmazást az application registry használatával hoz létre, érheti el azt az egyetlen helyről egyetlen.
 
   ![Saját alkalmazás hozzáadása](./media/active-directory-enterprise-apps-whats-new-azure-portal/03.png)
 
  
-**Első lépések hozzáadása a saját alkalmazás**:
+**Első lépések a saját alkalmazás hozzáadása**:
 
-1. Kattintson a **saját hivatkozás hozzáadása** a alkalmazáskatalógusában tetején. 
-2. Látni fogja, elé, két lehetőség közül választhat: **telepítsen egy meglévő alkalmazást** vagy **új alkalmazások fejlesztése**. Olvassa el a további tudnivalók a különbség a két beállítás és a használatukat.
+1. Kattintson a **saját hivatkozás hozzáadása** az alkalmazásgyűjteményben tetején. 
+1. Látni fogja a két lehetőség elé,: **egy meglévő alkalmazás üzembe helyezése** vagy **egy új alkalmazást fejleszthet**. Látogasson el lapunkra további tudnivalók a különbség a két lehetőség és azok használatát.
 
-### <a name="deploying-existing-applications"></a>Meglévő alkalmazások központi telepítése
+### <a name="deploying-existing-applications"></a>Meglévő alkalmazások üzembe helyezése
 
-1. Ha van egy alkalmazás már fut, és csak szeretné integrálni Azure ad-val egyszeri bejelentkezést a vagy átadása, válassza ki a **telepítsen egy meglévő alkalmazást** lehetőséget. Adjon meg egy nevet az alkalmazáshoz, kattintson a **Hozzáadás**.
-2. Ennyi az egész! Helyett ismerete szükséges előre az alkalmazás adatait, most állíthatja be az új alkalmazás működése a bal oldali menü nézetre lépne, és a kérelem a tetszőlegesen a konfigurálásával bármikor.
+1. Ha van már fut egy alkalmazásom, és csak azt szeretné integrálni Azure AD egyszeri bejelentkezés a, vagy válassza a kiépítést, a **egy meglévő alkalmazás üzembe helyezése** lehetőséget. Adjon meg egy nevet az alkalmazáshoz, kattintson a **Hozzáadás**.
+1. Ennyi az egész! Tudni, hogy az alkalmazás meghozni részleteinek mobilszolgáltatásokon most állíthat be az új alkalmazás a bal oldali menüben, és az alkalmazás tetszőlegesen a konfigurálása bármikor működésével.
 
-  ![Egy kattintással egy meglévő alkalmazás hozzáadása](./media/active-directory-enterprise-apps-whats-new-azure-portal/04.png)
+  ![Egy meglévő alkalmazást, egyetlen kattintással hozzáadása](./media/active-directory-enterprise-apps-whats-new-azure-portal/04.png)
  
 ### <a name="developing-new-applications"></a>Új alkalmazások fejlesztése
 
-1. Ha az új alkalmazást, nincs egyszerűen tehet szert az alkalmazás beállításjegyzék jobb a gyűjteményből:
-2. Kattintson a **hozzáadása a saját** lehetőséget a Alkalmazáskatalógusában, válassza ki a **kifejleszthet egy meglévő alkalmazást**, és látni fogja, egy Gyorshivatkozás az alkalmazás hozzáadása élmény való jog.
+1. Egy új alkalmazást fejleszt, van-e egy egyszerű módszert kellhet, az alkalmazás beállításjegyzékében a katalógusból:
+1. Kattintson a **adja hozzá a saját** az alkalmazáskatalógusból, válassza ki a beállítás **a meglévő alkalmazások fejlesztése**, és láthatja, hogy közvetlenül az alkalmazás hozzáadása tapasztalatok rövid hivatkozás.
 
   ![Néhány kattintással egy újonnan kifejlesztett alkalmazás hozzáadása](./media/active-directory-enterprise-apps-whats-new-azure-portal/05.png)
 
 
 >[!NOTE]
->Miután hozzáadta az alkalmazás beállításjegyzék használó alkalmazások, láthatja, ahol képes lesz az egyszeri bejelentkezés konfigurálása és kezelése az új alkalmazás-hozzáférési házirendjeit a vállalati alkalmazások listája jelenik meg.
+>Miután hozzáadta az alkalmazás beállításjegyzékében használó alkalmazások, megjelenítése a vállalati alkalmazások hol is elérheti a hozzáférési szabályzatok az új alkalmazás egyszeri bejelentkezés konfigurálására és felügyeletére listáját láthatja.
 
-  ![Az új alkalmazást a vállalati alkalmazásokhoz való hozzáférés kezelése](./media/active-directory-enterprise-apps-whats-new-azure-portal/06.png)
+  ![Az új alkalmazás a vállalati alkalmazásokhoz való hozzáférés kezelése](./media/active-directory-enterprise-apps-whats-new-azure-portal/06.png)
 
 
-## <a name="quickstart-get-going-with-your-new-application-right-away"></a>Gyors üzembe helyezés: Azonnal az új alkalmazást az induláshoz 
+## <a name="quickstart-get-going-with-your-new-application-right-away"></a>Gyors útmutató: Mellett azonnal az új alkalmazással 
 
-Miután hozzáadott egy alkalmazást, hogy előre integrált kell vagy az alkalmazásba, az első gyorsan földelve az új alkalmazások élményt nyújt a következőkhöz ideális gyors üzembe helyezési élmény nagyságú volt. Ha rendszeresen kövesse a beállításokat, azt fogja a felhasználói felületen keresztül, illetve megmutatja, hogyan induláshoz a próbaüzem az új alkalmazás a lehető leggyorsabban tegye. 
+Miután hozzáadott egy alkalmazást, hogy kell-e előre integrált vagy az alkalmazásba, létrehoztuk egy testre szabott gyors üzembe helyezési ahhoz, hogy az új alkalmazások felületen gyorsan földelve felhasználói élményt. Ha rendszeresen hajtsa végre a különböző lehetőségek, azt fog végigvezetik a felhasználói felületen, és bemutatják, hogyan kezdheti egy próbaprogram az új alkalmazás a lehető leggyorsabb. 
  
-  ![Az új alkalmazások gyors üzembe helyezés felületet](./media/active-directory-enterprise-apps-whats-new-azure-portal/07.png)
+  ![Az új alkalmazások gyors üzembe helyezést biztosít](./media/active-directory-enterprise-apps-whats-new-azure-portal/07.png)
 
- Az új gyors üzembe helyezés felhasználói élmény tetszőleges időpontban, és bármely alkalmazás, letöltheti kattintva **gyors üzembe helyezés** alkalmazás bal oldali navigációs menüjében.
+ Keresse fel az új gyors üzembe helyezést biztosít, bármikor és bármilyen alkalmazás kattintva **rövid** az alkalmazás bal oldali navigációs menüjében.
 
 
-## <a name="updated-application-proxy-configuration"></a>Frissített alkalmazás proxy konfigurációja
-Most most szóbeli a hozzáadott új alkalmazások közül a helyszíni környezetben fut, és szeretné integrálni az Azure AD-val.  Az új alkalmazás konfigurációs tapasztalatairól a ritkán használt adatok új dolog az új Azure ad portálon, hogy az alkalmazás bejelentkezés módja az alkalmazás proxykonfigurációt a felosztás is most könnyen teszi Egyszeri jelszót, vagy összevont alkalmazásokat, hogy a vállalati hálózat közvetlenül a felhőbe, anélkül, hogy az alkalmazás több példánya létrehozásához.
+## <a name="updated-application-proxy-configuration"></a>Frissített application proxy konfigurációja
 
-Az új alkalmazások felvett új portálról, beleértve az alkalmazások, amelyek támogatják a natív Windows-hitelesítés lép az Azure AD-alkalmazásproxy jobb való használatra is konfigurálhatja.
+Most tekintsük például a hozzáadott új alkalmazások közül egy a helyszíni környezetben fut, és azt szeretné, hogy integrálja az Azure ad-ben.  A ritkán használt adatok új dolog, az új alkalmazás konfigurációs tapasztalatait az új Azure ad-portál, hogy az alkalmazás bejelentkezési mód az application proxy konfigurációja halmazra mostantól egyszerűen közzéteheti jelszavas egyszeri Bejelentkezést vagy összevont alkalmazások hogy futnak a felhőbe, a vállalati hálózaton közvetlenül az alkalmazás több példányának létrehozása nélkül.
 
-  ![Az alkalmazás bejelentkezésre lehetőség integrált Windows-hitelesítés konfigurálása](./media/active-directory-enterprise-apps-whats-new-azure-portal/08.png)
+Beállíthatja az új alkalmazások hozzáadása az új portál, beleértve a natív Windows-hitelesítési folyamattal támogató alkalmazások az Azure AD-alkalmazásproxy jobb való használatra.
+
+  ![Az alkalmazás bejelentkezési lehetőség integrált Windows-hitelesítés konfigurálása](./media/active-directory-enterprise-apps-whats-new-azure-portal/08.png)
  
-
-A natív Windows-hitelesítés alkalmazás konfigurálása az alkalmazásproxy első lépések:
-1. Kattintson az egyszeri bejelentkezés navigációs elemre, és válassza a **integrált Windows-hitelesítés** a bejelentkezési beállítások és a tetszőlegesen a beállításokat konfigurálja.
-2. Fölött támogató ezek új hitelesítési módok, most már is feltöltheti a tanúsítványokat a egyéni tartományok biztonságos végpontok a szervezeten belül futó alkalmazásokat támogatja.  
+Ismerkedés a Proxy konfigurálása a natív Windows-hitelesítés alkalmazás:
+1. Kattintson az egyszeri bejelentkezés navigációs elemre, és válassza a **integrált Windows-hitelesítés** bejelentkezési beállításaiban, és adja meg a tetszőlegesen a beállításokat.
+1. Felül ezek új hitelesítési módok támogatása, most is feltölthet egyéni tartományokat a biztonságos végpontok a szervezeten belül futó alkalmazásokat támogatja a tanúsítványok.  
  
-   ![Az alkalmazásproxy használni kívánt tanúsítvány feltöltése](./media/active-directory-enterprise-apps-whats-new-azure-portal/09.png)
+   ![Az alkalmazásproxy használható tanúsítvány feltöltése](./media/active-directory-enterprise-apps-whats-new-azure-portal/09.png)
 
-3. Töltse fel a kedvenc a helyszíni alkalmazások új tanúsítványt, kattintson a a **alkalmazásproxy** a bal oldali navigációs menü, majd a **tanúsítvány** választó, és azt használatával titkosítsa tanúsítványfájl kéri le a felhőbeli végpont az alkalmazás feltöltése.
+1. A kedvenc helyszíni alkalmazás egy új tanúsítvány feltöltéséhez kattintson a a **alkalmazásproxy** lehetőséget a bal oldali navigációs menüben, majd kattintson a **tanúsítvány** választó, és töltsön fel egy tanúsítványt a fájl titkosítása a felhőbeli végpont érkező kéréseket az alkalmazás használatával.
 
-## <a name="advanced-federated-single-sign-on-configuration"></a>Speciális összevont egyszeri bejelentkezés konfigurálása
+## <a name="advanced-federated-single-sign-on-configuration"></a>Speciális összevont egyszeri bejelentkezési konfiguráció
 
-Azok a még ma a összevont alkalmazásokat használ nincsenek számos új funkciója a SAML-alapú bejelentkezés konfiguráció. Kezdő-és most meg teljesen testreszabása, hozzáadása, távolítsa el, és a meglévő felhasználói attribútumok a SAML-jogkivonatokat jogcímekként kiadott megfeleltetése.
+Azoknak, összevont alkalmazások használatát még ma nincsenek sok új funkciója a SAML-alapú bejelentkezés beállításainak. A következővel kell kezdődnie most már, is teljes mértékben testre szabhatja, hozzáadása, eltávolítása és a kiállított SAML-jogkivonatok jogcímekként meglévő felhasználói attribútumok leképezésére.
  
-  ![Egy összevont alkalmazás átadott a SAML-jogkivonat felhasználói attribútumok testreszabása](./media/active-directory-enterprise-apps-whats-new-azure-portal/10.png)
+  ![Egy összevont alkalmazás átadva az SAML-jogkivonat felhasználói attribútumok testreszabása](./media/active-directory-enterprise-apps-whats-new-azure-portal/10.png)
 
+Ellenőrizze, hogy ki az új összevont egyszeri bejelentkezés konfigurálása:
+1. Nyisson meg egy összevont alkalmazás **egyszeri bejelentkezési** a bal oldali navigációs menüben, és ellenőrizze, hogy a "*SAML-alapú bejelentkezés** mód van kiválasztva. 
+1. Egyszer, engedélyezze az alábbi jelölőnégyzetet alatt a **felhasználói attribútumok** , amelyek átadott fejlécre a SAML-jogkivonatban szereplő összes módosítása.
 
-Ellenőrizze, hogy meg az új összevont egyszeri bejelentkezés konfigurálása:
-1. Nyisson meg egy összevont alkalmazás **egyszeri bejelentkezés** a bal oldali navigációs menü, és győződjön meg arról, hogy a "*SAML-alapú bejelentkezés** mód van kiválasztva. 
-2. Egyszer, engedélyezze a jelölőnégyzet alatti a **felhasználói attribútumok** módosításához az összes attribútum szerepel a SAML-jogkivonat címsor átadott alkalmazásra.
-
-Akkor is is létrehozása, helyettesítő, és összevont egyszeri bejelentkezéshez használt tanúsítványok kezelése, valamint szerkesztheti, akik lekérdezi értesíti, ha a tanúsítvány érvényessége hamarosan lejár. Látni fogja az alábbi új beállításait a **tanúsítványok** címsor a azonos egyszeri bejelentkezés panelen.
+Akkor is is létrehozni, helyettesítő, és összevont egyszeri bejelentkezéshez használt tanúsítványok kezelése, valamint szerkesztése, ki kap értesítést, amikor a tanúsítvány érvényessége hamarosan lejár. Ezekkel az új beállításokkal alatt látni fogja a **tanúsítványok** fejléc ugyanezen egyszeri bejelentkezéses ablaktábláján.
  
-  ![Egy új tanúsítványt, a lejárat értesítő e-mailt és a tanúsítvány-aláírási beállítások testreszabása létrehozása](./media/active-directory-enterprise-apps-whats-new-azure-portal/11.png)
+  ![A lejárati értesítést e-mailben és a tanúsítvány-aláírási beállítások testreszabása, egy új tanúsítvány létrehozása](./media/active-directory-enterprise-apps-whats-new-azure-portal/11.png)
 
-### <a name="relay-state-parameter"></a>Továbbító-State paraméter
-Végezetül korábban is kiterjesztettük SAML-alapú URL-cím paraméterei közé tartozik a támogatott a **továbbítási-State paraméter**, vagyis a lapon, a felhasználók megnyílik az összevont alkalmazás belül a bejelentkezés befejezése után. Ez az egy hasznos beállítással konfigurálható, ha azt szeretné, hogy a felhasználónak egy adott helyre, hogy melyek gyorsan az alkalmazásban.
+### <a name="relay-state-parameter"></a>Továbbítási Állapot paraméter
+Végül azt korábban is kiterjesztett SAML URL-cím paraméterei közé tartozik a támogatott a **továbbítási Állapot paraméter**, azaz a felhasználók ekkor megnyílik a belül egy összevont alkalmazás a bejelentkezés befejezése után a lap. Ez hasznos beállítás konfigurálása, ha azt szeretné, a felhasználónak egy adott helyen gyors őket bevezetése az alkalmazáson belül.
 
-  ![A SAML továbbítási-State paraméter beállítása](./media/active-directory-enterprise-apps-whats-new-azure-portal/12.png)
+  ![Az SAML-továbbítási Állapot-paraméter](./media/active-directory-enterprise-apps-whats-new-azure-portal/12.png)
  
 **A relay-state paraméter beállítása**:
 
-1. Engedélyezze a **megjelenítése speciális URL-beállításainak** jelölőnégyzetet, a a **tartomány és az URL-címek** konfigurációs ablaktábla egyszeri bejelentkezést a fejléc. 
-2. Új URL-cím csoportja bemeneti megjelenik, amely lehetővé teszi ezt a paramétert, és egyéb SAML-alapú URL-cím beállításainak megadása.
+1. Engedélyezze a **speciális URL-beállítások megjelenítése** alatt jelölőnégyzet a **tartomány és URL-címek** konfigurációs panelen egyszeri bejelentkezéses fejlécét. 
+1. Egy készlet új URL-cím beviteli mező jelenik meg, amelyek lehetővé teszik, hogy ezt a paramétert, és egyéb SAML URL-cím beállításainak megadása.
 
-## <a name="bring-your-own-password-sso-applications"></a>Kapcsolja a saját jelszavát SSO alkalmazások
+## <a name="bring-your-own-password-sso-applications"></a>A saját jelszavát SSO-alkalmazások használata
 
-Tudjuk, hogy nem minden alkalmazás támogatja-e az összevonási jobb kívül a mezőbe. Például lehet, hogy a hozzáadott új alkalmazások egyike egy egyéni bejelentkezési képernyő, felhasználók által használt felhasználónévvel és jelszóval bejelentkezni. Ilyen típusú alkalmazások az Azure AD használatával továbbra is integrálhatja a **kapcsolja a saját alkalmazásai** szolgáltatás, amely érhető el az új portálon konfigurálható.
+Tudjuk, hogy nem minden alkalmazás támogatja-e az összevonási lehetőségeiből közvetlenül. Például esetleg a hozzáadott új alkalmazások egyikét, egy egyéni bejelentkezési képernyő, felhasználók által használt felhasználónévvel és jelszóval bejelentkezni. Ilyen típusú alkalmazásokat az Azure AD-t továbbra is integrálva az **saját alkalmazások importálása** szolgáltatást, amely már elérhető az új portálon konfigurálható.
  
   ![Egyéni jelszó vaulting alkalmazások az Azure AD integrálása](./media/active-directory-enterprise-apps-whats-new-azure-portal/13.png)
 
-**A "Kapcsolja a saját alkalmazásai" funkció kivétele**:
+**Tekintse meg a "Saját alkalmazások importálása" funkció**:
 
-1. Miután beállította a egyetlen bejelentkezés módját egy új egyéni alkalmazás, amely való felvételét **jelszóalapú bejelentkezés**, adja meg az URL-cím, ahol az alkalmazás Ez a beállítás a bejelentkezési képernyőt és 
-2. Kattintson a **Save** (Mentés) gombra.  
-2. Ha így tesz, azt fogja automatikusan scrape a felhasználónévhez URL-címet, és jelszó beviteli mező, és biztonságos átvitelére a jelszavakat, hogy a hozzáférési panel bővítmény használó alkalmazások az Azure AD használatára.
+1. Miután beállította az egyszeri bejelentkezési mód egy új egyéni alkalmazáshoz, amely a hozzáadott **jelszóalapú bejelentkezés**, adja meg az URL-címet, ahol a az alkalmazás rendereli a bejelentkezési képernyőt, és 
+1. Kattintson a **Save** (Mentés) gombra.  
+1. Ha így tesz, azt fogja automatikusan scrape URL-CÍMRE a felhasználónevet, és jelszó beviteli mező, és lehetővé teszik, hogy az Azure AD a jelszavakat az alkalmazást, a hozzáférési panel böngészőbővítményének használatánál használatával küldheti.
 
 ## <a name="configure-self-service-application-access"></a>Önkiszolgáló alkalmazás-hozzáférés konfigurálása
 
-Nagy mennyiségű új alkalmazások hozzáadása után lehet, hogy engedélyezni szeretné a felhasználókat, keresse meg és adja hozzá ezeket az alkalmazásokat a saját hozzáférés panelek anélkül, hogy rendszergazdaként többet jelzi, hogy. Most ezzel a legújabb verzióval, konfigurálható és kezelhető önkiszolgáló alkalmazás-hozzáférés közvetlenül a az új portál.
+Nagy mennyiségű új alkalmazások hozzáadása után esetleg szeretné lehetővé teszi a felhasználók tallózással keresse meg és adja hozzá ezek az alkalmazások saját hozzáférési paneljükön, anélkül, hogy többet jelzi, hogy rendszergazdaként. Most ez a legújabb kiadással konfigurálása, és az új portálon közvetlenül a önkiszolgáló alkalmazás-hozzáférés kezelése.
 
-  ![Önkiszolgáló alkalmazás hozzáférése a jelszót egyszeri bejelentkezési alkalmazás konfigurálása](./media/active-directory-enterprise-apps-whats-new-azure-portal/14.png)
+  ![Az alkalmazás egyszeri bejelentkezési jelszó önkiszolgáló alkalmazás-hozzáférés konfigurálása](./media/active-directory-enterprise-apps-whats-new-azure-portal/14.png)
  
-**Önkiszolgáló alkalmazás-hozzáférés kezelésére és beállítására**:
+**Az önkiszolgáló alkalmazás-hozzáférés konfigurálása és felügyelete**:
 
-1. Először jelölje ki a **önkiszolgáló** lehetőséget az alkalmazás a bal oldali navigációs menü és állítsa be a **az alkalmazáshoz való hozzáférés kérését?** lehetőséggel "**Igen**". 
-2. Ez lehetővé teszi ki jogosult az alkalmazáshoz való hozzáférés jóváhagyásához, és megkapja az önkiszolgáló felhasználók csoport konfigurálása. Ezenkívül ha az alkalmazás van konfigurálva, a jelszó egyszeri bejelentkezést, azt is megtudhatja, amely lehetővé teszi opcionálisan engedélyezi az adott jóváhagyóknak kezelheti a jelszavakat az alkalmazáshoz hozzárendelni egy másik lehetőség.
+1. Első lépésként válassza a **önkiszolgáló** az alkalmazás lehetőséget a bal oldali navigációs menü, és állítsa be a **engedélyezése a felhasználók számára az alkalmazáshoz való hozzáférés kérése?** beállítást "**Igen**". 
+1. Ez lehetővé teszi, hogy kik hagyhatják jóvá az alkalmazáshoz való hozzáférést, és hozzáadódik az önkiszolgáló felhasználók csoport konfigurálása. Emellett ha az alkalmazás a jelszavas egyszeri bejelentkezést a van konfigurálva, is megjelenik egy másik lehetőség, amellyel igény szerint a jóváhagyók ezeket a jelszavakat az alkalmazáshoz hozzárendelt kezeléséhez.
 
 ## <a name="feedback"></a>Visszajelzés
 
-Reméljük, például a továbbfejlesztett használata az Azure AD felhasználói élmény. Ne hamarosan visszajelzését! Visszajelzését és ötleteket javítására szolgáló utáni a **felügyeleti portál** szakasza a [visszajelzési fórumon](https://feedback.azure.com/forums/169401-azure-active-directory/category/162510-admin-portal).  Ritkán használt adatok új dolgai minden nap kiépítésével foglalkozó még érdeklődőbbek és az útmutató a shape felhasználása és határozza meg, mi készíteni.
+Reméljük, például a továbbfejlesztett használatával az Azure AD felhasználói élményt. Ne zárja be a visszajelzés hamarosan elérhető! A visszajelzések és javítására szolgáló ötleteket közzététele a **felügyeleti portálon** szakaszában az [Visszajelzési fórum](https://feedback.azure.com/forums/169401-azure-active-directory/category/162510-admin-portal).  Azt már nagyon Izgatottan várjuk, új cuccok minden nap létrehozásával kapcsolatos és az alakzat útmutatóval használja, és határozza meg, milyen készíteni.
 
 ## <a name="next-steps"></a>További lépések
 

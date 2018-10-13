@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.date: 10/16/2017
 ms.author: glenga
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: dbb21e63a25d6e357287f2f91181f2326850a898
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: aecd68734999c30f3dc8e7a2ea8c7d5e9cdfacb0
+ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46952851"
+ms.lasthandoff: 10/12/2018
+ms.locfileid: "49166338"
 ---
 # <a name="optimize-the-performance-and-reliability-of-azure-functions"></a>A teljesítmény-és az Azure Functions megbízhatóság
 
-Ez a cikk nyújt útmutatást a teljesítményének és megbízhatóságának javítása érdekében a [kiszolgáló nélküli](https://azure.microsoft.com/overview/serverless-computing/) alkalmazások működik. 
+Ez a cikk nyújt útmutatást a teljesítményének és megbízhatóságának javítása érdekében a [kiszolgáló nélküli](https://azure.microsoft.com/solutions/serverless/) alkalmazások működik. 
 
 ## <a name="general-best-practices"></a>Általános ajánlott eljárások
 

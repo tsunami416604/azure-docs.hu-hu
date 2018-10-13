@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 10/11/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 6127e300ee46dbd33f8537f0138963cd4e3b5cc8
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: 67a987d9b491ba6813e900c293529ed677c45757
+ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49094139"
+ms.lasthandoff: 10/12/2018
+ms.locfileid: "49167681"
 ---
 # <a name="update-management-solution-in-azure"></a>Frissítéskezelési megoldás az Azure-ban
 
@@ -35,30 +35,30 @@ Az alábbi ábrán látható egy koncepcióvázlaton jelenítik működését é
 
 ![Frissítéskezelési folyamatdiagramja](media/automation-update-management/update-mgmt-updateworkflow.png)
 
-Az Update Management segítségével natív módon előkészítheti a gépeket ugyanabban a bérlőben több előfizetésben található. Egy másik bérlőben, be kell vezetnie a gépek kezeléséhez, azokat [nem Azure-gépek](automation-onboard-solutions-from-automation-account.md#onboard-a-non-azure-machine). 
+Az Update Management segítségével natív módon előkészítheti a gépeket ugyanabban a bérlőben több előfizetésben található. Egy másik bérlőben található gépek kezeléséhez, be kell vezetnie őket, mint [nem Azure-gépek](automation-onboard-solutions-from-automation-account.md#onboard-a-non-azure-machine).
 
-Ha egy CVE kiadás, a javítás jelenik meg a Linux rendszerű gépek értékelés 2 – 3 órát vesz igénybe.  Windows-gépek megjelenjen az értékeléshez, miután megtörtént a javítás 12 – 15 órát vesz igénybe.
+Ha egy CVE kiadás, a javítás jelenik meg a Linux rendszerű gépek értékelés 2 – 3 órát vesz igénybe.  Windows-gépek Miután megtörtént az értékeléshez jelenik meg a javítás 12 – 15 órát vesz igénybe.
 
-Miután a számítógép frissítési megfelelőség szempontjából vizsgálatot végez, az ügynök továbbítja az adatokat tömeges az Azure Log Analyticshez való. A Windows-számítógépen a megfelelőségi vizsgálat 12 óránként történik alapértelmezés szerint.
+A számítógép frissítési megfelelőség szempontjából vizsgálat befejezése után az ügynök továbbítja az adatokat, tömegesen az Azure Log Analyticshez való. A Windows-számítógépen a megfelelőségi vizsgálat futtatása alapértelmezés szerint 12 óránként.
 
 Az ütemezett vizsgálat mellett a frissítési megfelelőség szempontjából vizsgálatot kezdeményez frissítés telepítése előtt, ha az MMA újraindítása után 15 percen belül és frissítés telepítése után.
 
 Linux rendszerű számítógépen a megfelelőségi vizsgálat három óránként történik alapértelmezés szerint. Az MMA-ügynök újraindítása, ha a megfelelőségi vizsgálatot kezdeményez 15 percen belül.
 
-Jelentések, hogy mennyire naprakész a számítógép az alapján, hogy milyen forrást úgy van konfigurálva, hogy a megoldás szinkronizálni. Ha a Windows-számítógép van konfigurálva, hogy a WSUS, attól függően, ha a WSUS a legutóbbi szinkronizálásra a Microsoft Update, az eredmények eltérőek lehetnek a Microsoft Updates jeleníti meg. Ez megegyezik a Linux rendszerű számítógépek, amelyek a nyilvános adattár helyett helyi adattárnak való jelentésre vannak konfigurálva.
+Jelentések, hogy mennyire naprakész a számítógép az alapján, hogy milyen forrást úgy van konfigurálva, hogy a megoldás szinkronizálni. Ha a Windows-számítógép van konfigurálva, hogy a WSUS, attól függően, ha a WSUS a legutóbbi szinkronizálásra a Microsoft Update, az eredmények eltérőek lehetnek a Microsoft Updates jeleníti meg. Ez a viselkedés megegyezik a Linux rendszerű számítógépek, amelyek a nyilvános adattár helyett helyi adattárnak való jelentésre vannak konfigurálva.
 
 > [!NOTE]
 > Hogy a szolgáltatás megfelelően jelentést, az Update Management igényel, bizonyos URL-címeket és portokat engedélyezni kell. Ezekkel a követelményekkel kapcsolatos további tudnivalókért lásd: [hálózati hibrid feldolgozók tervezése](automation-hybrid-runbook-worker.md#network-planning).
 
 A szoftverfrissítések központi telepítéséhez vagy telepítéséhez létrehozhat egy ütemezett üzembe helyezést a frissítést igénylő számítógépeken. Besorolású frissítések *nem kötelező* nem része a Windows-számítógépek esetében az üzembe helyezés hatálya. Csak a szükséges frissítéseket az üzembe helyezés hatálya szerepelnek. 
 
-Az ütemezett telepítés határozza meg, mely célszámítógépek kapni az alkalmazható frissítéseket, vagy explicit módon adja meg a számítógépeket, vagy kiválasztásával egy [számítógépcsoport](../log-analytics/log-analytics-computer-groups.md) , amelyek naplókeresésekkel, a számítógépek adott halmazára alapul. Is megad egy ütemezés jóváhagyására és kijelölésére a frissítések telepítése során, amelyek adott időszakban.
+Az ütemezett telepítés határozza meg, mely célszámítógépek kapni az alkalmazható frissítéseket, vagy explicit módon adja meg a számítógépeket, vagy kiválasztásával egy [számítógépcsoport](../log-analytics/log-analytics-computer-groups.md) , amelyek naplókeresésekkel, a számítógépek adott halmazára alapul. Is adjon meg egy ütemezést, jóváhagyásához, és állítsa be a frissítések telepítése során, amelyek adott időszakban.
 
-A telepítést az Azure Automation runbookjai végzik. A runbookok nem tekinthetők, és a runbookok nem igényelnek semmilyen konfigurálást. Frissítéstelepítés létrehozásakor a központi telepítési ütemezés, amely a megadott időben az érintett számítógépekre irányuló frissítési mester runbookot elindítja hoz létre. A mester runbook egy gyermek runbookot indít az egyes ügynököket, hajtsa végre a szükséges frissítések telepítését.
+A telepítést az Azure Automation runbookjai végzik. A runbookok nem tekinthetők, és a runbookok nem igényelnek semmilyen konfigurálást. Frissítéstelepítés létrehozásakor a központi telepítési ütemezés, amely a megadott időben az érintett számítógépekre irányuló frissítési mester runbookot elindítja hoz létre. A mester runbook egy gyermek runbookot indít az egyes ügynököket, a szükséges frissítések telepítéséhez.
 
-A dátum és a frissítés központi telepítésben megadott időpontban a célszámítógépek a központi telepítést végre párhuzamosan. A telepítés előtt történik vizsgálat és ellenőrizze, hogy a frissítések továbbra is szükséges. A WSUS-ügyfélszámítógépek Ha a frissítések WSUS, a nem jóváhagyott a frissítés telepítése sikertelen lesz.
+A dátum és a frissítés központi telepítésben megadott időpontban a célszámítógépek a központi telepítést végre párhuzamosan. A telepítés előtt a vizsgálat futtatta, hogy a frissítések továbbra is szükséges. A WSUS-ügyfélszámítógépek Ha a frissítések WSUS, a nem jóváhagyott a frissítés telepítése sikertelen lesz.
 
-Egy gép regisztrálva a Frissítéskezelésről a több Log Analytics-munkaterületek (többkiszolgálós) kellene nem támogatott.
+Kellene egy számítógép egynél több Log Analytics-munkaterületek (többkiszolgálós)-ben regisztrált nem támogatott.
 
 ## <a name="clients"></a>Ügyfelek
 
@@ -92,7 +92,7 @@ Windows-ügynökök egy WSUS-kiszolgálóval való kommunikációhoz kell konfig
 
 #### <a name="linux"></a>Linux
 
-A Linux rendszerre a gép hozzáféréssel kell rendelkeznie valamely frissítési tárházhoz. A frissítés tárház lehet nyilvános vagy privát. A TLS 1.1 és TLS 1.2 használatával kommunikálhat az Update Management szükséges. Ez a megoldás nem támogatott Linux rendszeren, amely több Log Analytics-munkaterületnek való jelentésre van konfigurálva a Log Analytics-ügynököket.
+A Linux rendszerre a gép hozzáféréssel kell rendelkeznie valamely frissítési tárházhoz. A frissítés tárház lehet nyilvános vagy privát. A TLS 1.1 és TLS 1.2 használatával kommunikálhat az Update Management szükséges. A Log Analytics-ügynököket, amely konfigurálva van a jelentés egynél több Log Analytics-munkaterületek a Linuxhoz készült Ez a megoldás nem támogatott.
 
 A Log Analytics-ügynök telepítése Linux- és a legújabb verzió letöltéséhez kapcsolatos információkért lásd: [Operations Management Suite Linux-ügynök](https://github.com/microsoft/oms-agent-for-linux). A Log Analytics az ügynök a Windows telepítésével kapcsolatos információkért lásd: [Operations Management Suite ügynök a Windows](../log-analytics/log-analytics-windows-agent.md).
 
@@ -209,13 +209,13 @@ Hozzon létre egy új frissítéstelepítést, jelölje be **frissítések közp
 | --- | --- |
 | Name (Név) |A frissítéstelepítést beazonosító egyedi név. |
 |Operációs rendszer| Linux vagy Windows|
-| A csoportok frissítése (előzetes verzió)|Egy előfizetés, erőforráscsoport, helyek és címkék felvenni az üzembe helyezés az Azure-beli virtuális dinamikus csoportot hozhat létre kombinációja alapján lekérdezést határoz meg. További tudnivalókért tekintse meg, [dinamikus csoportok](automation-update-management.md#using-dynamic-groups)|
+| A csoportok frissítése (előzetes verzió)|Egy előfizetés, erőforráscsoport, helyek és címkék felvenni az üzembe helyezés az Azure-beli virtuális dinamikus csoportot hozhat létre kombinációja alapján lekérdezést határoz meg. További tudnivalókért lásd: [dinamikus csoportok](automation-update-management.md#using-dynamic-groups)|
 | Frissítendő gépek |Válassza ki, mentett keresést, importált csoporthoz, vagy a legördülő listából válassza ki a gépet, és válassza ki az egyes gépek. Ha a **Gépek** lehetőséget választotta, a gép állapota az **ÜGYNÖK KÉSZÜLTSÉGÉNEK FRISSÍTÉSE** oszlopban látható.</br> A számítógépcsoportok Log Analyticsben lévő létrehozásának különböző módszereivel kapcsolatos további információkért tekintse meg a [Log Analytics számítógépcsoportjait](../log-analytics/log-analytics-computer-groups.md) ismertető részt |
 |Frissítési besorolások|Válassza ki az összes szükséges|
 |Frissítések belefoglalása vagy kizárása|Ekkor megnyílik a **beszámítása vagy kihagyása** lapot. A felügyelt vagy kizárt frissítések olyan külön lapon. A belefoglalási kezelésének további információkért lásd: [belefoglalási viselkedés](automation-update-management.md#inclusion-behavior) |
 |Ütemezési beállítások|Válassza ki az időpontot, elindításához, és válassza ki bármelyik egyszer, vagy az ismétlődés ismétlődés|
 | Előkészítő parancsfájljainak + utáni szkriptek|Válassza ki a parancsfájlok futtatása előtt és után a központi telepítés|
-| Karbantartási időszak |Frissítések beállított percek száma. Az érték lehet nem lehet kisebb, mint 30 perc és legfeljebb 6 óra |
+| Karbantartási időszak |Frissítések beállított percek száma. Az érték nem lehet kisebb, mint 30 perc és legfeljebb 6 óra |
 | Vezérlő újraindítása| Azt határozza meg, hogyan újraindítások kell kezelni. Az elérhető lehetőségek:</br>Újraindítás szükség esetén (alapértelmezett beállítás)</br>Mindig induljon újra</br>Soha ne induljon újra</br>Csak újraindítás – frissítések nem lesznek telepítve|
 
 Frissítéstelepítések programozott módon is létrehozhatók. Frissítéstelepítés létrehozása a REST API-val kapcsolatban lásd: [Update - konfigurációkat létrehozni](/rest/api/automation/softwareupdateconfigurations/create). Emellett van egy heti központi telepítés létrehozásához használható példa runbook. Ez a forgatókönyv kapcsolatos további információkért lásd: [egy heti központi telepítés létrehozása egy erőforráscsoportba tartozó egy vagy több virtuális](https://gallery.technet.microsoft.com/scriptcenter/Create-a-weekly-update-2ad359a1).
@@ -273,6 +273,7 @@ A következő címekre kifejezetten az Update Management szükségesek. Ezek a c
 |*.ods.opinsights.azure.com     |*. ods.opinsights.azure.us         |
 |*.oms.opinsights.azure.com     | *. oms.opinsights.azure.us        |
 |*.blob.core.windows.net|*. blob.core.usgovcloudapi.net|
+|*.azure-automation.net|*.Azure-automation.us|
 
 A hibrid Runbook-feldolgozó által igényelt portokat kapcsolatos további információkért lásd: [hibrid feldolgozói szerepkör portok](automation-hybrid-runbook-worker.md#hybrid-worker-role).
 
@@ -494,7 +495,7 @@ Update
 
 ## <a name="using-dynamic-groups"></a>Dinamikus csoportok (előzetes verzió)
 
-Az Update Management lehetővé teszi egy Azure virtuális gépek dinamikus eszközcsoportot frissítési telepítés céljából. Ezek a csoportok lekérdezéshez, amikor megkezdődik egy központi telepítést, a csoport tagjai értékeli ki. Amikor a lekérdezés meghatározása a következő elemek használható együtt a dinamikus csoport feltöltése
+Az Update Management lehetővé teszi egy Azure virtuális gépek dinamikus eszközcsoportot frissítési telepítés céljából. Ezek a csoportok lekérdezéshez, amikor megkezdődik egy központi telepítést, a csoport tagjai értékeli ki. A lekérdezés meghatározásakor a következő elemek használható együtt a dinamikus csoport feltöltése
 
 * Előfizetés
 * Erőforráscsoportok
@@ -515,9 +516,9 @@ Megtudhatja, hogyan integrálható a felügyeleti megoldás a System Center Conf
 
 ## <a name="inclusion-behavior"></a>Belefoglalási viselkedés
 
-Frissítés belefoglalási lehetővé teszi, hogy adja meg a alkalmazni a frissítéseket. Javítások vagy vannak beállítva, hogy bekerüljenek-csomagok települnek. Amikor a javítások vagy a csomagok vannak beállítva, hogy bekerüljenek, és a egy besorolást, valamint van-e jelölve, a csomagban foglalt elemek és a elemek, amelyek megfelelnek a besorolás telepítve lesz.
+Frissítés belefoglalási lehetővé teszi, hogy adja meg a alkalmazni a frissítéseket. Javítások vagy a csomagok telepítése. Amikor a javítások vagy a csomagok részét képezik, és a egy besorolást, valamint van-e jelölve, a csomagban foglalt elemek és a elemek, amelyek megfelelnek a besorolás telepítve lesz.
 
-Fontos tudni, hogy a kizárások befoglalások felülbírálása. Például, ha meghatároz egy kizárási szabályt a `*`, akkor nincs javítások vagy a csomagok telepítése, minden kizárásról. A Linux rendszerű gépek Ha egy csomag részét képezi, de egy függő csomagot, amely ki van zárva, specifcally volt a csomag nincs telepítve.
+Fontos tudni, hogy a kizárások befoglalások felülbírálása. Például, ha meghatároz egy kizárási szabályt a `*`, akkor nincs javítások vagy a csomagok telepítése, minden kizárásról. A Linux rendszerű gépek csomag része, de egy függő csomagot, amely ki lett zárva, ha a csomag nincs telepítve.
 
 ## <a name="patch-linux-machines"></a>Javítás Linux rendszerű gépeken
 
@@ -535,13 +536,13 @@ A Red Hat Enterprise Linux a kizárni kívánt nevét redhat – kiadás-server.
 
 ### <a name="critical--security-patches-arent-applied"></a>Kritikus fontosságú / biztonsági javításokat nem lesznek alkalmazva
 
-Amikor frissítéseket telepít egy Linux rendszerű gép, kiválaszthatja a frissítési besorolásokat. Ezzel leszűkíti az alkalmazott frissítések körét, amelyek megfelelnek a megadott feltételeknek. A szűrő alkalmazása helyileg a számítógépen a frissítés telepítésekor.
+Amikor frissítéseket telepít egy Linux rendszerű gép, kiválaszthatja a frissítési besorolásokat. Ezzel úgy szűri a frissítéseket, amelyek érvényesek a számítógépen, amely a megadott feltételeknek. A szűrő alkalmazása helyileg a számítógépen a frissítés telepítésekor.
 
 Frissítéskezelési frissítés Adatbővítés végez a felhőben, mert néhány frissítést előfordulhat, hogy a megjelölni az Update Management jelentőségűként biztonsági, annak ellenére, hogy a helyi gép nem rendelkezik az információkat. Ennek eredményeképpen ha Linux rendszerű gép kritikus frissítéseket alkalmazza, előfordulhat frissítéseket, amelyek nincsenek megjelölve jelentőségűként biztonsági, hogy gép és a frissítések nem lesznek alkalmazva.
 
 Azonban az Update Management előfordulhat, hogy továbbra is jelenti, hogy a gép, hogy a megfelelő frissítés további adatait, mert nem megfelelő.
 
-Frissítési besorolás szerint frissítéseinek telepítéséhez nem működik a CentOS beépített. A SUSE kiválasztásával *csak* más frissítéseket, a besorolás vonhat néhány biztonsági frissítések is, ha a biztonsági frissítések telepítve kapcsolódnak a zypper használatával (Csomagkezelő), vagy annak függőségeit először szükség. Ez a zypper használatával korlátozása. Bizonyos esetekben, előfordulhat, hogy kell futtassa újra a frissítés telepítése, ellenőrizze, ellenőrizze a frissítési napló.
+Frissítések besorolás szerint üzembe helyezése beépített a CentOS nem működik. A SUSE kiválasztásával *csak* más frissítéseket, a besorolás vonhat néhány biztonsági frissítések is, ha a biztonsági frissítések telepítve kapcsolódnak a zypper használatával (Csomagkezelő), vagy annak függőségeit először szükség. Ez a zypper használatával korlátozása. Bizonyos esetekben, előfordulhat, hogy kell futtassa újra a frissítés telepítése, ellenőrizze, ellenőrizze a frissítési napló.
 
 ## <a name="troubleshoot"></a>Hibaelhárítás
 

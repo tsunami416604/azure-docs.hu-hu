@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/16/2018
 ms.author: srrengar
-ms.openlocfilehash: d9d40a111faefee705c3ce1987c380ee2ba695ec
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 21c9441e2b3d3ad54d491834e6de097a8880b5b7
+ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48040187"
+ms.lasthandoff: 10/13/2018
+ms.locfileid: "49311116"
 ---
 # <a name="performance-monitoring-with-log-analytics"></a>Alkalmazásteljesítmény-figyelés a Log Analytics használatával
 
@@ -66,7 +66,7 @@ A legjobb módszer a Log Analytics-ügynököket a fürt hozzáadása a virtuál
 
 ## <a name="add-the-agent-via-the-resource-manager-template"></a>Az ügynök használatával a Resource Manager-sablon hozzáadása
 
-Mintául szolgáló Resource Manager-sablonok üzembe helyezése az Azure Log Analytics-munkaterületet, és adja hozzá az ügynök minden egyes csomópontján érhető el a [Windows](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/SF%20OMS%20Samples/Windows) vagy [Linux](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/SF%20OMS%20Samples/Linux).
+Mintául szolgáló Resource Manager-sablonok üzembe helyezése az Azure Log Analytics-munkaterületet, és adja hozzá az ügynök minden egyes csomópontján érhető el a [Windows](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/5-VM-Windows-OMS-UnSecure) vagy [Linux](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/SF%20OMS%20Samples/Linux).
 
 Töltse le, és módosítsa a sablon üzembe helyezése egy fürtöt, amely a legjobban az igényeinek megfelelő.
 

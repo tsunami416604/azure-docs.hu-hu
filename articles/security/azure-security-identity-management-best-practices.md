@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/17/2018
 ms.author: barclayn
-ms.openlocfilehash: f6640e7d179199fbfb5b0c2b0c384729b6f53bcf
-ms.sourcegitcommit: 8b694bf803806b2f237494cd3b69f13751de9926
+ms.openlocfilehash: b1002d046014abd15452489e343ecf7c30b00d73
+ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/20/2018
-ms.locfileid: "46498249"
+ms.lasthandoff: 10/13/2018
+ms.locfileid: "49311337"
 ---
 # <a name="azure-identity-management-and-access-control-security-best-practices"></a>Az Azure identitáskezelési és hozzáférés-vezérlés ajánlott biztonsági eljárások
 
@@ -113,7 +113,7 @@ A kétlépéses ellenőrzést igénylő több lehetőség van. Az Ön számára 
 
 Az alábbiakban lehetőségeket és előnyöket a kétlépéses ellenőrzés engedélyezése:
 
-**1. lehetőség**: [többtényezős hitelesítés engedélyezése felhasználói állapot módosításával](../active-directory/authentication/howto-mfa-userstates.md#enable-azure-mfa-by-changing-user-status).   
+**1. lehetőség**: [többtényezős hitelesítés engedélyezése felhasználói állapot módosításával](../active-directory/authentication/howto-mfa-userstates.md).   
 **Értékelemek**: Ez az a kétlépéses ellenőrzést igénylő hagyományos módszere. Mindkét együttműködik [Azure multi-factor Authentication a felhőben és az Azure multi-factor Authentication-kiszolgáló](../active-directory/authentication/concept-mfa-whichversion.md). Ezzel a módszerrel megköveteli a felhasználóktól a kétlépéses hitelesítés végrehajtására, minden alkalommal, amikor bejelentkeznek, és felülírja a feltételes hozzáférési szabályzatokat.
 
 **2. lehetőség**: [többtényezős hitelesítés engedélyezése a feltételes hozzáférési szabályzattal együtt](../active-directory/authentication/howto-mfa-getstarted.md#enable-multi-factor-authentication-with-conditional-access).   
@@ -121,7 +121,7 @@ Az alábbiakban lehetőségeket és előnyöket a kétlépéses ellenőrzés eng
 
 Ez az a leginkább rugalmas módon engedélyezze a kétlépéses ellenőrzést, a felhasználók számára. Egy feltételes hozzáférési szabályzat engedélyezése csak az Azure multi-factor Authentication a felhőben működik, és az Azure AD prémium szintű funkció. Ez a módszer a további tájékoztatást talál [üzembe helyezése a felhőalapú Azure multi-factor Authentication](../active-directory/authentication/howto-mfa-getstarted.md).
 
-**3. lehetőség**: többtényezős hitelesítés engedélyezése a feltételes hozzáférési szabályzatokat felhasználói és bejelentkezési kockázatát kiértékelésével [Azure AD Identity Protection](../active-directory/active-directory-identityprotection.md).   
+**3. lehetőség**: többtényezős hitelesítés engedélyezése a feltételes hozzáférési szabályzatokat felhasználói és bejelentkezési kockázatát kiértékelésével [Azure AD Identity Protection](../active-directory/authentication/tutorial-risk-based-sspr-mfa.md).   
 **Értékelemek**: Ez a beállítás lehetővé teszi, hogy:
 
 - A szervezet identitásait érintő lehetséges biztonsági résekről észleli.
@@ -131,7 +131,7 @@ Ez az a leginkább rugalmas módon engedélyezze a kétlépéses ellenőrzést, 
 A módszert használ, az Azure AD Identity Protection kockázat kiértékelésekor a kétlépéses ellenőrzéshez szükséges, hogy a felhasználó és minden felhőalapú alkalmazásra bejelentkezési kockázat alapján. Ez a metódus szükséges, Azure Active Directory P2 licencelési. Ez a módszer a további tájékoztatást talál [Azure Active Directory Identity Protection](../active-directory/identity-protection/overview.md).
 
 > [!Note]
-> 1. lehetőség – a multi-factor Authentication szolgáltatás engedélyezése a felhasználói állapot módosításával felülbírálja a feltételes szabályzatokat. 2. és 3 beállítások feltételes hozzáférési szabályzatokat használ, mert azokat az 1. lehetőség nem használható.
+> 1. lehetőség – a multi-factor Authentication szolgáltatás engedélyezése a felhasználói állapot módosításával felülbírálja a feltételes hozzáférési szabályzatokat. 2. és 3 beállítások feltételes hozzáférési szabályzatokat használ, mert azokat az 1. lehetőség nem használható.
 
 A szervezetek, ne adjon hozzá további védelmi rétegeket, identitás, például a kétlépéses ellenőrzést, jobban ki a hitelesítő adatok ellopását alkalmazó támadásokkal. A hitelesítő adatok ellopását alkalmazó támadásokkal a biztonsági adatok vezethet.
 

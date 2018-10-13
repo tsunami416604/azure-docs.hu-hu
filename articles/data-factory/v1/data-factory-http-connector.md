@@ -1,6 +1,6 @@
 ---
-title: Adatok áthelyezése forrásból HTTP - Azure |} Microsoft Docs
-description: További tudnivalók az adatok mozgatása egy helyszíni vagy felhőalapú HTTP forrássá Azure Data Factory használatával.
+title: Adatok áthelyezése egy HTTP-forrás – Azure |} A Microsoft Docs
+description: Ismerje meg, hogyan helyezhet át adatokat a helyszíni vagy felhőbeli HTTP-forrás az Azure Data Factory használatával.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -13,64 +13,68 @@ ms.topic: conceptual
 ms.date: 05/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 29281843dc1b375182eb3dafe95ad86c89217671
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 06eb11132d7e3968850aadb4bfdaa53261f14ada
+ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37052273"
+ms.lasthandoff: 10/12/2018
+ms.locfileid: "49167477"
 ---
-# <a name="move-data-from-an-http-source-using-azure-data-factory"></a>Adatok áthelyezése az Azure Data Factory használatával HTTP forrásból származó
+# <a name="move-data-from-an-http-source-by-using-azure-data-factory"></a>Egy HTTP-forrásból származó adatok áthelyezése az Azure Data Factory használatával
+
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [1-es verziójával](data-factory-http-connector.md)
-> * [(Az aktuális verzió) 2-es verzió](../connector-http.md)
+> * [1-es verzió](data-factory-http-connector.md)
+> * [2-es verzió (aktuális verzió)](../connector-http.md)
 
 > [!NOTE]
-> Ez a cikk a Data Factory 1 verziójára vonatkozik. A Data Factory szolgáltatásnak aktuális verziójának használatakor lásd [HTTP-összekötőt, a V2](../connector-http.md).
+> Ez a cikk a Data Factory 1-es verziójára vonatkozik. Ha a jelenlegi verzió az Azure Data Factory szolgáltatás használ, tekintse meg [a v2-ben HTTP-összekötő](../connector-http.md).
 
 
-Ez a cikk ismerteti a másolási tevékenység használata az Azure Data Factory tárolt adatok mozgatása egy helyszíni/felhőbeli HTTP-végpont támogatott fogadó adattárat. Ez a cikk épít, a [adatok mozgása tevékenységek](data-factory-data-movement-activities.md) cikket, amely megadja az adatmozgás általános áttekintést a másolási tevékenység és a támogatott adatforrások/mosdók adattárolókhoz listáját.
+Ez a cikk ismerteti az Azure Data Factory másolási tevékenység használatával helyezhet át adatokat a helyszíni vagy felhőbeli HTTP-végpontot egy támogatott fogadó adattárba. Ez a cikk számos tekintetben [adatok áthelyezése másolási tevékenységgel](data-factory-data-movement-activities.md), amely adatáthelyezés általános áttekintést mutat be a másolási tevékenység használatával. A cikk az adattárak, amely támogatja a másolási tevékenység a forrásként és fogadóként is megjeleníti.
 
-Adat-előállító jelenleg támogatja egyéb adattárakhoz HTTP forrásból származó csak áthelyezése adatokat, de nem az adatok áthelyezése más adatok egy HTTP-helyen tárolja.
+A Data Factory jelenleg csak helyez át adatokat egy HTTP-forrás pedig más adattárakban támogatja. Más adattárakban helyez át adatokat egy HTTP-cél nem támogatott.
 
 ## <a name="supported-scenarios-and-authentication-types"></a>Támogatott esetek és hitelesítési típusok
-A HTTP-összekötő segítségével adatokat lekérnie **felhő- és a helyszíni HTTP/s-végpont** HTTP-n keresztül **beolvasása** vagy **POST** metódust. A következő hitelesítési típusok támogatottak: **névtelen**, **alapvető**, **kivonatoló**, **Windows**, és  **ClientCertificate**. Jegyezze fel ezt az összekötőt különbségének és a [webes tábla összekötő](data-factory-web-table-connector.md) van: tábla tartalma kibontani HTML weblap használt.
 
-Amikor adatokat másol egy helyszíni HTTP-végpont, a helyszíni környezetben vagy az Azure virtuális gép adatkezelési átjárót kell telepítenie. Lásd: [adatokat a helyszíni helyek és a felhő közötti áthelyezése](data-factory-move-data-between-onprem-and-cloud.md) cikkben tájékozódhat az adatkezelési átjáró és az átjáró beállításával kapcsolatos részletes útmutatás.
+A HTTP-összekötő segítségével adatokat beolvasni *felhő és a egy helyszíni HTTP-vagy Https-végpont* a HTTP protokollal **első** vagy **POST** módszereket. A következő hitelesítési típusok támogatottak: **névtelen**, **alapszintű**, **kivonatoló**, **Windows**, és  **ClientCertificate**. Jegyezze fel ezt az összekötőt közötti különbséget, és a [webes táblázat összekötő](data-factory-web-table-connector.md). A webes táblázat összekötő egy HTML-weblap kigyűjti a tábla tartalmát.
 
-## <a name="getting-started"></a>Első lépések
-A másolási tevékenység, amely HTTP forrásból származó adatokat különböző eszközök/API-k használatával helyezi át a feldolgozási sor hozhatja létre.
+Amikor adatokat másol egy helyszíni HTTP-végpontot, telepítenie kell az adatkezelési átjáró a helyszíni környezetben vagy egy Azure-beli virtuális gépen. Az adatkezelési átjáró és az átjáró beállítása lépésenkénti kapcsolatban lásd: [adatok áthelyezése a felhőbe és a helyszínek](data-factory-move-data-between-onprem-and-cloud.md).
 
-- Hozzon létre egy folyamatot a legegyszerűbb módja használatára a **másolása varázsló**. Lásd: [oktatóanyag: hozzon létre egy folyamatot, másolása varázslóval](data-factory-copy-data-wizard-tutorial.md) létrehozásával egy folyamatot, az adatok másolása varázsló segítségével gyorsan útmutatást.
+## <a name="get-started"></a>Bevezetés
 
-- Az alábbi eszközöket használhatja a folyamatokat létrehozni: **Azure-portálon**, **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager-sablon** , **.NET API**, és **REST API-t**. Lásd: [másolási tevékenység oktatóanyag](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) hozzon létre egy folyamatot a másolási tevékenység részletes útmutatóját. A HTTP-adatforrás adatainak másolása Azure Blob Storage minták JSON, lásd: [JSON példák](#json-examples) Ez a cikk szakasza.
+Adatok áthelyezése a különböző eszközök vagy API-k használatával egy HTTP-forrás egy másolási tevékenységgel rendelkező folyamatot hozhat létre:
 
-## <a name="linked-service-properties"></a>A kapcsolódószolgáltatás-tulajdonságok
-A következő táblázat a társított szolgáltatás JSON-elemek szerepelnek HTTP jellemző leírást.
+- A folyamat létrehozásának legegyszerűbb módja, hogy az adatok másolása varázslóval. Gyors bemutató folyamat létrehozása adatok másolása varázsló használatával, lásd: [oktatóanyag: folyamat létrehozása a másolás varázsló használatával](data-factory-copy-data-wizard-tutorial.md).
 
-| Tulajdonság | Leírás | Szükséges |
-| --- | --- | --- |
-| type | A type tulajdonságot kell beállítani: `Http`. | Igen |
-| url | A webkiszolgáló alap URL-címe | Igen |
-| authenticationType | Megadja a hitelesítési típus. Két érték engedélyezett: **névtelen**, **alapvető**, **kivonatoló**, **Windows**, **ClientCertificate**. <br><br> Tekintse meg a további tulajdonságok és adott hitelesítési típusok JSON-példák a táblázat alatti részek kulcsattribútumokkal. | Igen |
-| enableServerCertificateValidation | Adja meg, hogy a kiszolgálói SSL-tanúsítvány hitelesítése engedélyezése, ha forrás HTTPS-webkiszolgálón. Ha a HTTPS-kiszolgáló önaláírt tanúsítványt használ, állítsa FALSE értékre. | Nem, alapértelmezett érték true |
-| gatewayName | Neve az adatkezelési átjáró HTTP a helyszíni adatforráshoz kapcsolódni. | Igen, ha a helyszíni HTTP forrásból származó adatok másolása. |
-| encryptedCredential | Titkosított hitelesítő adatokat a HTTP-végpont elérésére. Automatikusan létrehozott másolása varázsló vagy a ClickOnce felugró párbeszédpanel a hitelesítő adatok konfigurálásakor. | Nem. Csak akkor, ha az adatok másolása helyi HTTP-kiszolgáló alkalmazni. |
+- Folyamatok létrehozására is használhatja a következő eszközök: a **az Azure portal**, **Visual Studio**, **Azure PowerShell-lel**, egy **Azure Resource Manager sablon**, a **.NET API**, vagy a **REST API-val**. Egy másolási tevékenységgel rendelkező folyamat létrehozása a részletes útmutatót lásd: a [másolási tevékenység oktatóanyagát](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md). JSON-adott adatok másolása a HTTP-forrás az Azure Blob storage-minták, lásd: [JSON példák](#json-examples).
 
-Lásd: [helyezze át az adatokat a helyszíni adatforrások és az adatkezelési átjáró a felhő közötti](data-factory-move-data-between-onprem-and-cloud.md) helyszíni HTTP összekötő adatforráshoz tartozó hitelesítő adatok beállítása vonatkozó további információért.
+## <a name="linked-service-properties"></a>Társított szolgáltatás tulajdonságai
 
-### <a name="using-basic-digest-or-windows-authentication"></a>Basic, a kivonatoló vagy a Windows-hitelesítés használatával
-
-Állítsa be `authenticationType` , `Basic`, `Digest`, vagy `Windows`, és adja meg a HTTP-összekötő fent bevezetett általános ők mellett az alábbi tulajdonságokat:
+A következő táblázat ismerteti a HTTP-beli társított szolgáltatás adott JSON-elemek:
 
 | Tulajdonság | Leírás | Szükséges |
 | --- | --- | --- |
-| felhasználónév | Felhasználónév a HTTP-végpont elérésére. | Igen |
-| jelszó | A felhasználó (felhasználónév) jelszavát. | Igen |
+| type | A **típus** tulajdonságot állítsa **Http**. | Igen |
+| url | Az alap URL-cím a webkiszolgálóhoz. | Igen |
+| authenticationType | A hitelesítési típust határoz meg. Engedélyezett értékek a következők **névtelen**, **alapszintű**, **kivonatoló**, **Windows**, és **ClientCertificate**. <br><br> Ez a cikk további tulajdonságokat, és ezeket a hitelesítési típusokat JSON-minták későbbi részeiben hivatkoznak. | Igen |
+| enableServerCertificateValidation | Megadja, hogy a kiszolgálói SSL-tanúsítvány hitelesítése engedélyezése, ha a forrás egy HTTPS-webkiszolgálón. Ha a HTTPS-kiszolgáló egy önaláírt tanúsítványt használ, állítsa ezt a beállítást **hamis**. | Nem<br /> (az alapértelmezett érték **igaz**) |
+| átjáró neve | Csatlakozhat egy helyszíni HTTP-forrás a Data Management Gateway-példány neve. | Igen, ha adatokat másol egy helyszíni HTTP-forrásból |
+| encryptedCredential | A titkosított hitelesítő adatokat a HTTP-végpont elérésére. Az érték automatikusan létrehozott kell, ha a hitelesítési adatokat a másolás varázsló vagy a használatával a **ClickOnce** párbeszédpanel bezárásához. | Nem<br /> (érvényes csak akkor, amikor adatokat másol egy helyszíni HTTP-kiszolgáló) |
 
-#### <a name="example-using-basic-digest-or-windows-authentication"></a>Példa: Basic, a kivonatoló vagy a Windows-hitelesítés használatával
+HTTP összekötőt a helyszíni adatforrások hitelesítő adatok beállításával kapcsolatos részletekért lásd: [adatok áthelyezése egy helyszíni forrásra, és a felhő között az adatkezelési átjáró segítségével](data-factory-move-data-between-onprem-and-cloud.md).
 
-```JSON
+### <a name="using-basic-digest-or-windows-authentication"></a>Alapszintű, kivonatoló vagy Windows-hitelesítés használatával
+
+Állítsa be **authenticationType** való **alapszintű**, **kivonatoló**, vagy **Windows**. Általános HTTP összekötő tulajdonságaihoz az előző szakaszokban ismertetett állítsa be a következő tulajdonságokat:
+
+| Tulajdonság | Leírás | Szükséges |
+| --- | --- | --- |
+| felhasználónév | A felhasználónév, a HTTP-végpont elérésére használhat. | Igen |
+| jelszó | A felhasználó jelszava (**felhasználónév**). | Igen |
+
+**Példa: Alapszintű, kivonatoló vagy Windows-hitelesítés használatával**
+
+```json
 {
     "name": "HttpLinkedService",
     "properties":
@@ -87,27 +91,28 @@ Lásd: [helyezze át az adatokat a helyszíni adatforrások és az adatkezelési
 }
 ```
 
-### <a name="using-clientcertificate-authentication"></a>ClientCertificate hitelesítéssel
+### <a name="using-clientcertificate-authentication"></a>ClientCertificate hitelesítés használatával
 
-Egyszerű hitelesítést használ, állítsa be `authenticationType` , `ClientCertificate`, és adja meg a HTTP-összekötő fent bevezetett általános ők mellett az alábbi tulajdonságokat:
+Alapszintű hitelesítés használatához állítsa **authenticationType** való **ClientCertificate**. Általános HTTP összekötő tulajdonságaihoz az előző szakaszokban ismertetett állítsa be a következő tulajdonságokat:
 
 | Tulajdonság | Leírás | Szükséges |
 | --- | --- | --- |
-| embeddedCertData | A személyes információcseréhez kapcsolódó (PFX) fájl bináris adatok Base64-kódolású tartalmát. | Adja meg a `embeddedCertData` vagy `certThumbprint`. |
-| certThumbprint | A tanúsítványtároló átjáró számítógépre telepített tanúsítvány ujjlenyomatát. Csak akkor, ha a helyszíni HTTP forrásból származó adat másolása alkalmazni. | Adja meg a `embeddedCertData` vagy `certThumbprint`. |
+| embeddedCertData | Bináris adatok a PFX-fájl Base-64 kódolású tartalmát. | Adja meg **embeddedCertData** vagy **certThumbprint** |
+| certThumbprint | Az átjáró számítógépre tanúsítványtár telepített tanúsítvány ujjlenyomatával. Csak akkor, amikor adatokat másol egy helyszíni HTTP-forrás vonatkoznak. | Adja meg **embeddedCertData** vagy **certThumbprint** |
 | jelszó | A tanúsítványhoz tartozó jelszót. | Nem |
 
-Ha `certThumbprint` hitelesítés és a tanúsítvány telepítése a helyi számítógép személyes tanúsítványokat tartalmazó tárolójában kell az olvasási engedélyt az átjárószolgáltatás:
+Ha **certThumbprint** hitelesítést és a tanúsítvány a helyi számítógép személyes tárolójában van telepítve, olvasási engedélyek hozzárendelése az átjárószolgáltatás számára:
 
-1. Indítsa el a Microsoft Management Console (MMC). Adja hozzá a **tanúsítványok** beépülő modul, amelynek célpontja a **helyi számítógép**.
-2. Bontsa ki a **tanúsítványok**, **személyes**, és kattintson a **tanúsítványok**.
-3. Kattintson a jobb gombbal a tanúsítványt a személyes tárolóba, és válassza ki **feladataival**->**titkos kulcsok kezelése...**
-3. Az a **biztonsági** lapon maradva adja hozzá a felhasználói fiók, amely alatt az adatkezelési átjáró gazdaszolgáltatása fut az olvasási joggal rendelkező tanúsítvány.  
+1. Nyissa meg a Microsoft Management Console (MMC). Adja hozzá a **tanúsítványok** beépülő modul célzó **helyi számítógép**.
+2. Bontsa ki a **tanúsítványok** > **személyes**, majd válassza ki **tanúsítványok**.
+3. Kattintson a jobb gombbal a tanúsítványt a személyes, és válassza **feladatok** >**titkos kulcsok kezelése**.
+3. Az a **biztonsági** lapon maradva adja hozzá a felhasználói fiók, amely alatt a Data Management Gateway szolgáltatás fut, olvasási hozzáférés a tanúsítványt.  
 
-#### <a name="example-using-client-certificate"></a>Példa: ügyfél tanúsítványt használ.
-A kapcsolódó szolgáltatás hivatkozások a data factory egy helyszíni HTTP-webkiszolgálón. Az adatkezelési átjáró telepítve a számítógépen telepített ügyféltanúsítványt használ.
+**Példa: Egy olyan ügyféltanúsítvány használatával.**
 
-```JSON
+A társított szolgáltatás társítja az adat-előállító egy helyszíni HTTP-webkiszolgáló. A gépen, amelyen telepítve van az adatkezelési átjáró telepített ügyfél-tanúsítványt használ.
+
+```json
 {
     "name": "HttpLinkedService",
     "properties":
@@ -125,10 +130,11 @@ A kapcsolódó szolgáltatás hivatkozások a data factory egy helyszíni HTTP-w
 }
 ```
 
-#### <a name="example-using-client-certificate-in-a-file"></a>Példa: ügyfél-tanúsítványt használ egy fájlban
-A kapcsolódó szolgáltatás hivatkozások a data factory egy helyszíni HTTP-webkiszolgálón. Az adatkezelési átjáró telepítése egy ügyfél tanúsítványfájlt, a gép használ.
+**Példa: Egy olyan ügyféltanúsítvány használatával egy fájlban**
 
-```JSON
+A társított szolgáltatás társítja az adat-előállító egy helyszíni HTTP-webkiszolgáló. A gépen, amelyen telepítve van az adatkezelési átjáró ügyfél tanúsítványfájl használ.
+
+```json
 {
     "name": "HttpLinkedService",
     "properties":
@@ -138,7 +144,7 @@ A kapcsolódó szolgáltatás hivatkozások a data factory egy helyszíni HTTP-w
         {
             "authenticationType": "ClientCertificate",
             "url": "https://en.wikipedia.org/wiki/",
-            "embeddedCertData": "base64 encoded cert data",
+            "embeddedCertData": "Base64-encoded cert data",
             "password": "password of cert"
         }
     }
@@ -146,23 +152,26 @@ A kapcsolódó szolgáltatás hivatkozások a data factory egy helyszíni HTTP-w
 ```
 
 ## <a name="dataset-properties"></a>Adatkészlet tulajdonságai
-Szakaszok & meghatározása adatkészletek esetében elérhető tulajdonságok teljes listáját lásd: a [adatkészletek létrehozása](data-factory-create-datasets.md) cikk. Például struktúra, a rendelkezésre állás és a házirend a DataSet adatkészlet JSON hasonlítanak minden adatkészlet esetében (Azure SQL, az Azure blob, Azure-tábla, stb.).
 
-A **typeProperties** szakasz eltérő adatkészlet egyes típusai és információkat nyújt azokról az adattárban adatok helyét. A typeProperties szakasz típusú adatkészlet **Http** tulajdonságai a következők
+Egy adatkészlet JSON-fájlt, például a szerkezetet, rendelkezésre állást és házirend, az egyes szakaszokban hasonlóak az összes adatkészlet esetében (az Azure SQL Database, Azure Blob storage, az Azure Table storage).
+
+Szakaszok és adatkészletek definiálását tulajdonságok teljes listáját lásd: [adatkészletek létrehozása](data-factory-create-datasets.md).
+
+A **typeProperties** szakasz eltér az egyes adatkészlet. A **typeProperties** rész ismerteti az adattárban lévő adatok helyét. A **typeProperties** az adatkészlet a következő szakaszban a **Http** írja be a következő tulajdonságokkal rendelkezik:
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
-| type | A dataset típusának megadása. meg kell `Http`. | Igen |
-| relativeUrl | Az erőforrás adatokat tartalmazó relatív URL-CÍMÉT. Ha nincs megadva, csak a megadott URL-cím a társított szolgáltatás definíciójának használja. <br><br> Dinamikus URL-cím létrehozásához használható [adat-előállító funkciók és rendszerváltozók](data-factory-functions-variables.md), pl. "relativeUrl": "$$Text.Format (" / személyes/jelentés? hónap = {0:yyyy}-{0:MM} & fmt = csv', SliceStart) ". | Nem |
-| requestMethod | HTTP-metódus. Két érték engedélyezett **beolvasása** vagy **POST**. | Nem. Az alapértelmezett szint a `GET`. |
-| additionalHeaders | További HTTP-kérelemfejlécekben. | Nem |
-| requestBody | A HTTP-kérelmek törzsében. | Nem |
-| Formátumban | Ha azt szeretné, hogy egyszerűen **lekérik az adatokat, HTTP-végpont-van** nélkül elemzés azt, hagyja ki a formátumot beállítások. <br><br> Ha azt szeretné, a HTTP-válasz tartalom elemzése során másolása, a következő formátumban típusok támogatottak: **szöveges**, **JsonFormat**, **AvroFormat**,  **OrcFormat**, **ParquetFormat**. További információkért lásd: [szövegformátum](data-factory-supported-file-and-compression-formats.md#text-format), [Json formátumban](data-factory-supported-file-and-compression-formats.md#json-format), [az Avro formátum](data-factory-supported-file-and-compression-formats.md#avro-format), [Orc formátum](data-factory-supported-file-and-compression-formats.md#orc-format), és [Parquet formátum](data-factory-supported-file-and-compression-formats.md#parquet-format) szakaszok. |Nem |
-| tömörítés | Adja meg a típus és az adatok tömörítése szintjét. Támogatott típusok a következők: **GZip**, **Deflate**, **BZip2**, és **ZipDeflate**. Támogatott szintek a következők: **Optimal** és **leggyorsabb**. További információkért lásd: [formátumú és tömörítést az Azure Data Factory](data-factory-supported-file-and-compression-formats.md#compression-support). |Nem |
+| type | A **típus** az adatkészlet értékre kell állítani **Http**. | Igen |
+| relativeurl tulajdonságok közül | Az erőforrás, amely tartalmazza az adatok relatív URL-CÍMÉT. Az elérési út nincs megadva, csak az URL-cím a társított szolgáltatás definíciójában megadott használ. <br><br> Egy dinamikus URL-cím létrehozásához, használhatja a [Data Factory-függvények és rendszerváltozók](data-factory-functions-variables.md). Példa: **relativeurl tulajdonságok közül**: **$$Text.Format ("/ saját/jelentés? hónap = {0: yyyy}-{0:MM} & fmt = csv", SliceStart)**. | Nem |
+| requestMethod | A HTTP-metódust. Engedélyezett értékek a következők **első** és **POST**. | Nem <br />(alapértelmezett érték a **első**) |
+| additionalHeaders | További HTTP-kérelemfejlécek. | Nem |
+| RequestBody | A HTTP-kérelem törzsét. | Nem |
+| Formátum | Ha azt szeretné, hogy *lekérik az adatokat egy HTTP-végpontot,-van* nélkül, elemzés, hagyja ki a **formátum** beállítás. <br><br> Ha meg szeretné elemezni a HTTP-válasz tartalma másolása során, a következő formátumtípusokat támogatja: **TextFormat**, **JsonFormat**, **AvroFormat**,  **OrcFormat**, és **ParquetFormat**. További információkért lásd: [szövegformátum](data-factory-supported-file-and-compression-formats.md#text-format), [JSON formátumban](data-factory-supported-file-and-compression-formats.md#json-format), [Avro formátum](data-factory-supported-file-and-compression-formats.md#avro-format), [Orc formátum](data-factory-supported-file-and-compression-formats.md#orc-format), és [Parquetformátum](data-factory-supported-file-and-compression-formats.md#parquet-format). |Nem |
+| A tömörítés | Adja meg a típus és az adatok tömörítési szintje. Támogatott típusok: **GZip**, **Deflate**, **BZip2**, és **ZipDeflate**. Támogatott szintek: **Optimal** és **leggyorsabb**. További információkért lásd: [fájl- és tömörítési formátumok az Azure Data Factoryban](data-factory-supported-file-and-compression-formats.md#compression-support). |Nem |
 
-### <a name="example-using-the-get-default-method"></a>Példa: a GET (alapértelmezett) metódussal
+**Példa: A metódussal a GET (alapértelmezett)**
 
-```JSON
+```json
 {
     "name": "HttpSourceDataInput",
     "properties": {
@@ -181,9 +190,9 @@ A **typeProperties** szakasz eltérő adatkészlet egyes típusai és informáci
 }
 ```
 
-### <a name="example-using-the-post-method"></a>Példa: a POST metódussal
+**Példa: A POST metódussal**
 
-```JSON
+```json
 {
     "name": "HttpSourceDataInput",
     "properties": {
@@ -204,37 +213,44 @@ A **typeProperties** szakasz eltérő adatkészlet egyes típusai és informáci
 ```
 
 ## <a name="copy-activity-properties"></a>Másolási tevékenység tulajdonságai
-Szakaszok & rendelkezésre álló tevékenységek meghatározó tulajdonságok teljes listáját lásd: a [létrehozása folyamatok](data-factory-create-pipelines.md) cikk. Például a nevét, leírását, valamint bemeneti és kimeneti táblák és házirend tulajdonságai minden típusú tevékenységek érhetők el.
 
-Tulajdonságok érhetők el a **typeProperties** szakasz a tevékenység viszont eltérőek a tevékenységek minden típusának. A másolási tevékenység során két érték források és mosdók típusától függően.
+Tulajdonságok, például a nevét, leírását, bemeneti és kimeneti táblák és a házirend az összes típusú tevékenységek érhetők el.
 
-Ha a forrás, a másolási tevékenység jelenleg típusú **HttpSource**, a következő tulajdonságok támogatottak.
+Szakaszok és a tevékenységek definiálását tulajdonságok teljes listáját lásd: [folyamatok létrehozása](data-factory-create-pipelines.md). 
+
+Az elérhető tulajdonságok köre az **typeProperties** a tevékenység szakaszban tevékenységek minden típusának számától függ. A másolási tevékenység tulajdonságai a forrásként és fogadóként típusú változhat.
+
+Jelenleg Ha a másolási tevékenység forrása a **HttpSource** írja be a következő tulajdonságok támogatottak:
 
 | Tulajdonság | Leírás | Szükséges |
 | -------- | ----------- | -------- |
-| httpRequestTimeout | Időtúllépés (időtartam) válaszol a HTTP-kérelem. Az időtúllépés is válaszol, nem lehet olvasni a válasz adatokat időtúllépés. | Nem. Alapértelmezett érték: 00:01:40 |
+| httpRequestTimeout | Az időtúllépés (a **TimeSpan** érték) válaszol a HTTP-kérelem. Az időkorlát kapott választ, nem választ adatokat olvasni az időkorlátot. | Nem<br />(alapértelmezett érték: **00:01:40**) |
 
-## <a name="supported-file-and-compression-formats"></a>Támogatott formátumú és tömörítés
-Lásd: [formátumú és tömörítést az Azure Data Factory](data-factory-supported-file-and-compression-formats.md) cikk részletei.
+## <a name="supported-file-and-compression-formats"></a>Támogatott fájl- és tömörítési formátumok
+
+Lásd: [fájl- és tömörítési formátumok az Azure Data Factoryban](data-factory-supported-file-and-compression-formats.md) további.
 
 ## <a name="json-examples"></a>JSON-példák
-Az alábbi példában adja meg a minta JSON-definíciókat tartalmazzon, segítségével hozzon létre egy folyamatot [Azure-portálon](data-factory-copy-activity-tutorial-using-azure-portal.md) vagy [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) vagy [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md). HTTP forrásból származó adatok másolása az Azure Blob Storage mutatnak. Azonban az adatok átmásolhatók **közvetlenül** a forrásokban, sem a megadott nyelő [Itt](data-factory-data-movement-activities.md#supported-data-stores-and-formats) a másolási tevékenység során az Azure Data Factory használatával.
 
-### <a name="example-copy-data-from-http-source-to-azure-blob-storage"></a>Példa: Adatok másolása az HTTP-forrás az Azure-Blobtárolóba
-Ez a minta a Data Factory megoldást a következő adat-előállító entitásokat tartalmaz:
+Az alábbi példák megadják példa JSON-definíciók, amelyek segítségével hozzon létre egy folyamatot a [az Azure portal](data-factory-copy-activity-tutorial-using-azure-portal.md), [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md), vagy [Azure PowerShell-lel](data-factory-copy-activity-tutorial-using-powershell.md). A példák bemutatják, hogyan másolhat adatokat egy HTTP-forrásból, az Azure Blob storage. Azonban az adatok átmásolhatók *közvetlenül* egyetlen forrás sem a fogadóként [támogatott](data-factory-data-movement-activities.md#supported-data-stores-and-formats) másolási tevékenységgel az Azure Data Factory használatával.
 
-1. A társított szolgáltatás típusa [HTTP](#linked-service-properties).
-2. A társított szolgáltatás típusa [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties).
-3. Bemeneti [dataset](data-factory-create-datasets.md) típusú [Http](#dataset-properties).
-4. Egy kimeneti [dataset](data-factory-create-datasets.md) típusú [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties).
-5. A [csővezeték](data-factory-create-pipelines.md) a másolási tevékenység által használt [HttpSource](#copy-activity-properties) és [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties).
+**Példa: Adatok másolása egy HTTP-forrás az Azure Blob storage**
 
-A minta másol adatokat egy HTTP-forrás egy Azure blob minden órában. A mintákat a következő szakaszok ismertetik ezeket a mintákat használt JSON-tulajdonságok.
+Ez a példa a Data Factory-megoldás a következő Data Factory-entitásokat tartalmazza:
 
-### <a name="http-linked-service"></a>Kapcsolódó HTTP-szolgáltatás
-A példa a kapcsolódó HTTP-szolgáltatás a névtelen hitelesítést. Lásd: [HTTP társított szolgáltatás](#linked-service-properties) szakasz a különböző típusú hitelesítés használható.
+*   A társított szolgáltatás típusa [HTTP](#linked-service-properties).
+*   A társított szolgáltatás típusa [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties).
+*   Egy bemeneti [adatkészlet](data-factory-create-datasets.md) típusú [Http](#dataset-properties).
+*   Kimenet [adatkészlet](data-factory-create-datasets.md) típusú [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties).
+*   A [folyamat](data-factory-create-pipelines.md) , amely rendelkezik egy másolási tevékenység által használt [HttpSource](#copy-activity-properties) és [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties).
 
-```JSON
+A minta adatokat másol egy HTTP-forrás egy Azure-blobból óránként. Ezek a minták a használt JSON-tulajdonságokat a minta az alábbi szakaszok ismertetik.
+
+### <a name="http-linked-service"></a>HTTP-beli társított szolgáltatás
+
+Ebben a példában a HTTP-társított szolgáltatást a névtelen hitelesítést használ. Lásd: [HTTP társított szolgáltatás](#linked-service-properties) a különböző típusú hitelesítést is használhatja.
+
+```json
 {
     "name": "HttpLinkedService",
     "properties":
@@ -249,24 +265,25 @@ A példa a kapcsolódó HTTP-szolgáltatás a névtelen hitelesítést. Lásd: [
 }
 ```
 
-### <a name="azure-storage-linked-service"></a>Azure Storage társított szolgáltatás
+### <a name="azure-storage-linked-service"></a>Az Azure storage társított szolgáltatás
 
-```JSON
+```json
 {
   "name": "AzureStorageLinkedService",
   "properties": {
     "type": "AzureStorage",
     "typeProperties": {
-      "connectionString": "DefaultEndpointsProtocol=https;AccountName=<accountname>;AccountKey=<accountkey>"
+      "connectionString": "DefaultEndpointsProtocol=https;AccountName=<account name>;AccountKey=<account key>"
     }
   }
 }
 ```
 
-### <a name="http-input-dataset"></a>A bemeneti HTTP-adatkészlet
-Beállítás **külső** való **igaz** tájékoztatja a Data Factory szolgáltatásnak, hogy az adatkészlet data factoryval való külső, és egy tevékenység adat-előállító nem hozzák.
+### <a name="http-input-dataset"></a>HTTP bemeneti adatkészlet
 
-```JSON
+Beállítás **külső** való **igaz** a Data Factory szolgáltatás tájékoztatja, hogy az adatkészlet a data factory a külső és a egy adat-előállító tevékenység által előállított nem.
+
+```json
 {
     "name": "HttpSourceDataInput",
     "properties": {
@@ -286,11 +303,11 @@ Beállítás **külső** való **igaz** tájékoztatja a Data Factory szolgálta
 
 ```
 
-### <a name="azure-blob-output-dataset"></a>Azure Blob kimeneti adatkészlet
+### <a name="azure-blob-output-dataset"></a>Azure blobkimeneti adatkészlet
 
-Adatot ír egy új blob minden órában (gyakoriság: óra, időköz: 1).
+Adatok írása egy új blob minden órában (**gyakorisága**: **óra**, **időköz**: **1**).
 
-```JSON
+```json
 {
     "name": "AzureBlobOutput",
     "properties":
@@ -310,19 +327,19 @@ Adatot ír egy új blob minden órában (gyakoriság: óra, időköz: 1).
 }
 ```
 
-### <a name="pipeline-with-copy-activity"></a>A másolási tevékenység-feldolgozási folyamat
+### <a name="pipeline-that-uses-a-copy-activity"></a>Másolási tevékenységet használó folyamatot
 
-A feldolgozási sor tartalmazza a másolási tevékenység, amely a bemeneti és kimeneti adatkészletek használatára van konfigurálva, és óránkénti futásra nem ütemezték. Az adatcsatorna JSON-definícióból a **forrás** típusúra **HttpSource** és **fogadó** típusúra **BlobSink**.
+A folyamat tartalmazza egy másolási tevékenység, amely a bemeneti és kimeneti adatkészleteket használatára van konfigurálva. A másolási tevékenység való óránkénti futásra van ütemezve. A folyamat JSON-definíciót a **forrás** típusa **HttpSource** és a **fogadó** típusa **BlobSink**.
 
-Lásd: [HttpSource](#copy-activity-properties) a HttpSource által támogatott tulajdonságok listája.
+A tulajdonságok listáját, amelyek **HttpSource** támogatott [HttpSource](#copy-activity-properties).
 
-```JSON
+```json
 {  
     "name":"SamplePipeline",
     "properties":{  
     "start":"2014-06-01T18:00:00",
     "end":"2014-06-01T19:00:00",
-    "description":"pipeline with copy activity",
+    "description":"pipeline with a copy activity",
     "activities":[  
       {
         "name": "HttpSourceToAzureBlob",
@@ -363,7 +380,8 @@ Lásd: [HttpSource](#copy-activity-properties) a HttpSource által támogatott t
 ```
 
 > [!NOTE]
-> Képezze le a fogadó adatkészletből oszlopok forrás adatkészletből oszlopokat, lásd: [Azure Data Factory dataset oszlopai leképezési](data-factory-map-columns.md).
+> Fogadó-adatkészlet az oszlopok a forrásadatkészlet oszlopok leképezésére, lásd: [az Azure Data Factoryban adatkészletoszlopok leképezése](data-factory-map-columns.md).
 
-## <a name="performance-and-tuning"></a>Teljesítmény- és hangolása
-Lásd: [másolási tevékenység teljesítmény- és hangolása útmutató](data-factory-copy-activity-performance.md) tájékozódhat az kulcsfontosságú szerepet játszik adatátvitelt jelölik a (másolási tevékenység során) az Azure Data Factory és különböző módokon optimalizálhatja azt, hogy hatás teljesítményét.
+## <a name="performance-and-tuning"></a>Teljesítmény és finomhangolás
+
+Az Azure Data Factory és optimalizálhatja azt hibakeresésének módjai adatáthelyezés (másolási tevékenységgel) teljesítményét befolyásoló legfontosabb tényezők kapcsolatos további információkért tekintse meg a [másolási tevékenységek teljesítményéről és finomhangolásáról szóló útmutató](data-factory-copy-activity-performance.md).

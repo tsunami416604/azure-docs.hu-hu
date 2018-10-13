@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 10/04/2018
 ms.topic: conceptual
-ms.openlocfilehash: 71f2164c9c419604c513261df7e1264060a2c374
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: e1c694847a1ec16d4d7a7b1118df71cb06396186
+ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49094571"
+ms.lasthandoff: 10/12/2018
+ms.locfileid: "49165930"
 ---
 # <a name="add-a-custom-grid-to-the-remote-monitoring-solution-accelerator-web-ui"></a>Egy egyéni rács ad hozzá a távoli figyelési megoldás gyorsító webes felhasználói felületen
 
@@ -38,7 +38,7 @@ A folytatás előtt kell végeznie az alábbi cikkekben leírt lépéseket:
 - [Egyéni oldal hozzáadása a távoli figyelési megoldás gyorsító webes felhasználói felületen](iot-accelerators-remote-monitoring-customize-page.md).
 - [Egy egyéni szolgáltatás hozzáadása a távoli figyelési megoldás gyorsító webes felhasználói felületen](iot-accelerators-remote-monitoring-customize-service.md)
 
-## <a name="add-a-grid"></a>Adja hozzá a rács
+## <a name="add-a-grid"></a>Rács hozzáadása
 
 Rács hozzáadása a webes felhasználói felületen, szüksége adja hozzá a forrásfájlokat, amelyek meghatározzák a rács, és néhány meglévő fájlokat, hogy a webes felhasználói felület az új összetevő tisztában módosításához.
 
@@ -188,7 +188,7 @@ Az előző parancs futtatása helyileg, a felhasználói felület [ http://local
 
 A felhasználók engedélyezésének sorok kiválasztásához a rács két lehetőség van:
 
-### <a name="hard-select-rows"></a>Rögzített válassza sorok
+### <a name="hard-select-rows"></a>Sorok rögzített kiválasztása
 
 Ha egy felhasználó egyszerre több sort működjön, használja a jelölőnégyzetek alapján:
 
@@ -214,7 +214,7 @@ Ha egy felhasználó egyszerre több sort működjön, használja a jelölőnég
     };
     ```
 
-1. Adja meg a környezet gombokra kattintva a lap a rács egyik sorára keményen kiválasztásakor:
+1. Adja meg a környezet gombokra kattintva a lap merevlemez kijelölt egy sort a rács esetén:
 
     ```js
     this.contextBtns = [
@@ -234,7 +234,7 @@ Ha egy felhasználó egyszerre több sort működjön, használja a jelölőnég
     }
     ```
 
-1. Amikor egy környezetben gombra kattint, kérje le a munkája elvégzéséhez keményen kijelölt elemek:
+1. Ha egy környezet gombra kattint, a rögzített által kiválasztott elemek ezt a munkát a beolvasása:
 
     ```js
     doSomething = () => {
@@ -243,9 +243,9 @@ Ha egy felhasználó egyszerre több sort működjön, használja a jelölőnég
     };
     ```
 
-### <a name="soft-select-rows"></a>Helyreállítható válassza sorok
+### <a name="soft-select-rows"></a>Helyreállítható-válasszon sorok
 
-Ha a felhasználó csak egyetlen sor ahhoz van szüksége, az egy vagy több oszlop helyreállítható válassza kapcsolat konfigurálásához a **columnDefs**.
+Ha a felhasználó csak egyetlen sor ahhoz van szüksége, az egy vagy több oszlop a soft-válasszon kapcsolat konfigurálásához a **columnDefs**.
 
 1. A **exampleGridConfig.js**, adjon hozzá **SoftSelectLinkRenderer** , a **cellRendererFramework** számára egy **columnDef**.
 
@@ -260,7 +260,7 @@ Ha a felhasználó csak egyetlen sor ahhoz van szüksége, az egy vagy több osz
     };
     ```
 
-1. Egy helyreállítható válassza hivatkozásra kattint, amikor elindítja a **onSoftSelectChange** esemény. Hajtsa végre, bármilyen művelet van szükség a sorhoz, például a részletek úszó megnyitása. Ebben a példában egyszerűen ír a konzolon:
+1. Egy helyreállítható-válasszon hivatkozásra kattint, amikor elindítja a **onSoftSelectChange** esemény. Hajtsa végre, bármilyen művelet van szükség a sorhoz, például a részletek úszó menü megnyitása. Ebben a példában egyszerűen ír a konzolon:
 
     ```js
     onSoftSelectChange = (rowId, rowEvent) => {
@@ -281,6 +281,6 @@ Ha a felhasználó csak egyetlen sor ahhoz van szüksége, az egy vagy több osz
 
 Ebben a cikkben megismerkedett az erőforrások hozzáadása vagy a webes felhasználói felület a távoli figyelési megoldásgyorsító oldalainak testreszabása segíti.
 
-Most már beállított egy rácsot, a következő lépés az, hogy [adjon hozzá egy egyéni úszó a távoli figyelési megoldás gyorsító webes felhasználói Felületére](iot-accelerators-remote-monitoring-customize-flyout.md) , amely a lap megjeleníti.
+Most már beállított egy rácsot, a következő lépés az, hogy [adjon hozzá egy egyéni úszó menü a távoli figyelési megoldás gyorsító webes felhasználói Felületére](iot-accelerators-remote-monitoring-customize-flyout.md) , amely a lap megjeleníti.
 
 További elméleti kapcsolatos további információkért a távoli figyelési megoldásgyorsító: [távoli figyelési architektúrával](iot-accelerators-remote-monitoring-sample-walkthrough.md).

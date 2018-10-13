@@ -16,12 +16,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/23/2018
 ms.author: markvi
-ms.openlocfilehash: 56df09f461458071093088159d3b468755b0e4ad
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: 71d8bfa116fd4d0e824d80da26df7271121a595c
+ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47434942"
+ms.lasthandoff: 10/13/2018
+ms.locfileid: "49311371"
 ---
 # <a name="enable-enterprise-state-roaming-in-azure-active-directory"></a>A vállalati állapothordozás engedélyezése az Azure Active Directoryban
 Enterprise State Roaming egy prémium szintű Azure AD vagy Enterprise Mobility + Security (EMS) licenccel rendelkező minden szervezet számára érhető el. Az Azure AD-előfizetés beszerzése További információkért lásd: a [Azure ad-ben termékoldalán](https://azure.microsoft.com/services/active-directory).
@@ -32,9 +32,9 @@ Vállalati Állapothordozás engedélyezése esetén a szervezete automatikusan 
 
 1. Jelentkezzen be a [Azure AD felügyeleti központ](https://aad.portal.azure.com/).
 
-2. Válassza ki **az Azure Active Directory** &gt; **eszközök** &gt; **Enterprise State Roaming**.
+1. Válassza ki **az Azure Active Directory** &gt; **eszközök** &gt; **Enterprise State Roaming**.
 
-3. Válassza ki **felhasználók szinkronizálhatják a beállításokat és alkalmazásadatokat különböző eszközökön**. További információkért lásd: [eszközbeállítások konfigurálása](https://docs.microsoft.com/azure/active-directory/device-management-azure-portal).
+1. Válassza ki **felhasználók szinkronizálhatják a beállításokat és alkalmazásadatokat különböző eszközökön**. További információkért lásd: [eszközbeállítások konfigurálása](https://docs.microsoft.com/azure/active-directory/device-management-azure-portal).
   
   ![Felhasználók feliratú eszközbeállítást képe szinkronizálhatják a beállításokat és alkalmazásadatokat különböző eszközökön](./media/active-directory-windows-enterprise-state-roaming-enable/device-settings.png)
   
@@ -57,15 +57,15 @@ Kövesse az alábbi lépéseket egy felhasználó eszköz szinkronizálása áll
 
 1. Jelentkezzen be a [Azure AD felügyeleti központ](https://aad.portal.azure.com/).
 
-2. Válassza ki **Azure Active Directory** &gt; **felhasználók** &gt; **minden felhasználó**.
+1. Válassza ki **Azure Active Directory** &gt; **felhasználók** &gt; **minden felhasználó**.
 
-3. Válassza ki a felhasználót, és válassza **eszközök**.
+1. Válassza ki a felhasználót, és válassza **eszközök**.
 
-4. A **megjelenítése**válassza **beállításokat és alkalmazásadatokat Szinkronizáló eszközöket** szinkronizálási állapotának megjelenítéséhez.
+1. A **megjelenítése**válassza **beállításokat és alkalmazásadatokat Szinkronizáló eszközöket** szinkronizálási állapotának megjelenítéséhez.
   
   ![Eszközbeállítás szinkronizálási adatokat ábrázoló kép](./media/active-directory-windows-enterprise-state-roaming-enable/sync-status.png)
   
-5. Ha a felhasználó Szinkronizáló eszközöket, az eszközök láthatja itt látható módon.
+1. Ha a felhasználó Szinkronizáló eszközöket, az eszközök láthatja itt látható módon.
   
   ![Eszközadatok szinkronizálása Oszlopalapú képe](./media/active-directory-windows-enterprise-state-roaming-enable/device-status-row.png)
 

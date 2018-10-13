@@ -8,13 +8,13 @@ author: ecfan
 ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
-ms.date: 10/03/2018
-ms.openlocfilehash: ac13080ec6100734a5b777cc7cb243720f8424a6
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.date: 10/11/2018
+ms.openlocfilehash: 8aa2627f46be1e375fb3c3e565848a930ba6726b
+ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48817154"
+ms.lasthandoff: 10/12/2018
+ms.locfileid: "49167443"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Korlátozások és konfigurációs adatokat az Azure Logic Apps
 
@@ -143,6 +143,18 @@ Néhány összekötő műveleteket aszinkron hívásokat, illetve figyeljen a we
 | Újrapróbálkozási kísérletek | 90 | Az alapértelmezett érték a 4. Az alapértelmezett módosításához használja a [ismételje meg a szabályzatparaméter](../logic-apps/logic-apps-workflow-actions-triggers.md). | 
 | Maximális késleltetése | 1 nap | Az alapértelmezett módosításához használja a [ismételje meg a szabályzatparaméter](../logic-apps/logic-apps-workflow-actions-triggers.md). | 
 | Ismételje meg a minimális késleltetés | 5 másodperc | Az alapértelmezett módosításához használja a [ismételje meg a szabályzatparaméter](../logic-apps/logic-apps-workflow-actions-triggers.md). |
+|||| 
+
+<a name="sftp"></a>
+
+## <a name="sftp-and-sftp-ssh-limits"></a>Az SFTP- és az SFTP-SSH korlátozásai
+
+### <a name="file-size"></a>Fájlméret
+
+| Name (Név) | Korlát | Megjegyzések |
+|------|-------|-------|
+| SFTP | 50 MB | Ezt a korlátot, használja a [SFTP-SSH-összekötő](../connectors/connectors-sftp-ssh.md) , vagy tekintse meg [darabolás a nagyméretű üzenetek kezelése](../logic-apps/logic-apps-handle-large-messages.md). Azonban egyes összekötők és API-k előfordulhat, hogy nem támogatja a darabolás vagy akár az alapértelmezett korlát. | 
+| AZ SFTP-SSH | 1 GB | Kerülheti meg ezt a korlátot, lásd: [darabolás a nagyméretű üzenetek kezelése](../logic-apps/logic-apps-handle-large-messages.md). Azonban egyes összekötők és API-k előfordulhat, hogy nem támogatja a darabolás vagy akár az alapértelmezett korlát. | 
 |||| 
 
 <a name="custom-connector-limits"></a>

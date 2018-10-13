@@ -1,6 +1,6 @@
 ---
-title: Docker ügyfél hibákat a Windows hibaelhárítása a Visual Studio használatával |} Microsoft Docs
-description: Hozzon létre és telepíthet webalkalmazásokat az Docker Windows rendszeren Visual Studio 2017 használatával Visual Studio használata során felmerülő problémák megoldásához.
+title: Docker-ügyfél hibákat a Windows hibaelhárítása a Visual studióval |} A Microsoft Docs
+description: Tapasztal, amikor a Visual Studio használatával hozhat létre és helyezhet üzembe webalkalmazásokat Docker a Windows a Visual Studio 2017 használatával kapcsolatos problémák elhárítása.
 services: azure-container-service
 documentationcenter: na
 author: devinb
@@ -14,41 +14,45 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 10/13/2017
 ms.author: devinb
-ms.openlocfilehash: 90dd5df4a607568e2f3a60791da2948af7ce4e50
-ms.sourcegitcommit: 38c9176c0c967dd641d3a87d1f9ae53636cf8260
+ms.openlocfilehash: cd88dec2ad79ad9f4b4c004866060be86b777cd9
+ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2017
-ms.locfileid: "24002930"
+ms.lasthandoff: 10/13/2018
+ms.locfileid: "49311184"
 ---
-# <a name="troubleshoot-visual-studio-2017-development-with-docker"></a>A Visual Studio 2017 fejlesztése a Docker hibaelhárítása
+# <a name="troubleshoot-visual-studio-2017-development-with-docker"></a>Hibaelhárítás a Visual Studio 2017-fejlesztés a docker használatával
 
-Ha a Visual Studio eszközök Docker dolgozik, problémák merülhetnek fel felépítése vagy az alkalmazás hibakeresése közben. Alább van néhány gyakori hibaelhárítási lépéseket.
+Ha a Visual Studio Tools for Docker dolgozik, problémák merülhetnek fel létrehozásához vagy az alkalmazás hibakeresése közben. Alább van néhány gyakori hibaelhárítási lépéseket.
 
-## <a name="volume-sharing-is-not-enabled-enable-volume-sharing-in-the-docker-ce-for-windows-settings--linux-containers-only"></a>Kötet megosztása nem engedélyezett. Kötet a Docker CE Windows beállításai (csak Linux tárolók) megosztásának engedélyezése
+## <a name="volume-sharing-is-not-enabled-enable-volume-sharing-in-the-docker-ce-for-windows-settings--linux-containers-only"></a>Kötet, megosztás nem engedélyezett. Megosztás a Docker CE for Windows beállításai (csak Linux-tárolók esetében) a kötet engedélyezése
 
 A probléma megoldásához:
 
-1. Kattintson a jobb gombbal **Docker for Windows** az értesítési területen, és válassza a **beállítások**.
-1. Válassza ki **megosztott meghajtók** és megoszthatja a rendszermeghajtón és a meghajtó, ahol a projektben található.
+1. Kattintson a jobb gombbal **Docker for Windows** az értesítési területről, és válassza ki a **beállítások**.
+1. Válassza ki **megosztott meghajtók** és megoszthatja a rendszermeghajtó együtt a meghajtó, ahol a projekt található.
 
 > [!NOTE]
-> Ha a fájlok megosztott jelennek meg, előfordulhat, hogy továbbra is szeretné a párbeszédpanel alján "Alaphelyzetbe hitelesítő adatok..." hivatkozásra kattintva újra engedélyezni a kötet megosztása.
+> Ha a fájlok megosztott jelennek meg, továbbra is szükség lehet a "Visszaállítása a hitelesítő adatok..." hivatkozásra a párbeszédpanel alján kattintson az újbóli engedélyezését a kötet, megosztás. Hitelesítő adatok visszaállítása után a folytatáshoz, akkor előfordulhat, hogy indítsa újra a Visual Studio.
 
-![megosztott meghajtók](./media/vs-azure-tools-docker-troubleshooting-docker-errors/shareddrives.png)
+![a megosztott meghajtók](./media/vs-azure-tools-docker-troubleshooting-docker-errors/shareddrives.png)
 
-## <a name="unable-to-start-debugging"></a>Nem lehet elindítani a hibakeresés
+## <a name="mounts-denied"></a>Megtagadva csatlakoztatása
 
-Egyik oka kapcsolatos lehet elavult hibakeresési összetevők rendelkező felhasználói profil mappájába. Hajtsa végre a következő parancsok futtatásával távolítsa el ezeket a mappákat, hogy a legújabb hibakeresési összetevői letöltődnek a következő hibakeresési munkamenetben.
+MacOS-hez készült Docker használatakor előfordulhat, hogy olyan hibaüzenetbe ütközik a mappa /usr/local/share/dotnet/sdk/NuGetFallbackFolder hivatkozik. A mappa hozzáadása a Docker fájlmegosztás lapjára.
+
+## <a name="unable-to-start-debugging"></a>Nem sikerült elindítani a hibakeresés
+
+A felhasználói profil mappájába elavult hibakeresési összetevők kellene egyik oka kapcsolatos lehet. Hajtsa végre a következő parancsokat, hogy a legújabb hibakeresési összetevői letöltődnek az a következő hibakeresési munkamenet, távolítsa el ezeket a mappákat.
 
 - del %userprofile%\vsdbg
 - del %userprofile%\onecoremsvsmon
 
-## <a name="errors-specific-to-networking-when-debugging-your-application"></a>Hibák meghatározott hálózatkezelési, amikor az alkalmazás hibakeresése
+## <a name="errors-specific-to-networking-when-debugging-your-application"></a>Adott, a hibakeresés során hálózati hibák
 
-Próbálja meg végrehajtani a parancsfájl letölthető [tisztítás tároló állomás hálózati](https://github.com/MicrosoftDocs/Virtualization-Documentation/tree/master/windows-server-container-tools/CleanupContainerHostNetworking), amely automatikusan frissíti a hálózattal kapcsolatos összetevők, a gazdagépen.
+Próbálja ki, hajtsa végre a parancsprogramot, amely a letölthető [karbantartása tároló gazdagép hálózati](https://github.com/MicrosoftDocs/Virtualization-Documentation/tree/master/windows-server-container-tools/CleanupContainerHostNetworking), amely frissíti a hálózattal kapcsolatos összetevők a gazdagépen.
 
 
-## <a name="microsoftdockertools-github-repo"></a>Microsoft/DockerTools GitHub-tárház
+## <a name="microsoftdockertools-github-repo"></a>A Microsoft/DockerTools GitHub-adattár
 
-Bármely más problémákat tapasztal, lásd: [Microsoft/DockerTools](https://github.com/microsoft/dockertools/issues) problémákat.
+Bármely más, előforduló hibák, lásd: [Microsoft/DockerTools](https://github.com/microsoft/dockertools/issues) problémákat.

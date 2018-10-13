@@ -1,25 +1,19 @@
 ---
 title: A Microsoft Azure Data Box Gateway rendszerkövetelményei |} A Microsoft Docs
 description: Ismerje meg a szoftver- és az Azure Data Box átjáró hálózati követelményei
-services: databox-edge-gateway
-documentationcenter: NA
+services: databox
 author: alkohli
-manager: twooley
-editor: ''
-ms.assetid: ''
-ms.service: databox-edge-gateway
-ms.devlang: NA
+ms.service: databox
+ms.subservice: gateway
 ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 09/24/2018
 ms.author: alkohli
-ms.openlocfilehash: 915190f6f2773d22d14c75be1140f96b7dd40559
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 16d9604100d3ec37cef7ad4ebbdc376967006e15
+ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46991572"
+ms.lasthandoff: 10/12/2018
+ms.locfileid: "49166695"
 ---
 # <a name="azure-data-box-gateway-system-requirements-preview"></a>Az Azure Data Box Gateway rendszerkövetelményei (előzetes verzió)
 
@@ -31,7 +25,7 @@ A Data Box-átjáró virtuális eszköz rendszerkövetelményei a következők:
 - **Az eszköz hálózatkezelési követelményei** – ismerteti a műveletet a virtuális eszköz vonatkozó hálózati követelmények.
 
 > [!IMPORTANT]
-> Data Box-átjáró az előzetes verzióban. Tekintse át a [az előzetes verzió használati feltételeit](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) Ez a megoldás üzembe helyezése előtt. 
+> A Data Box Gateway előzetes verzióban érhető el. A megoldás üzembe helyezése előtt kérjük tekintse át az [előzetes verziókra vonatkozó használati feltételeket](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). 
 
 ## <a name="supported-os-for-clients-connected-to-device"></a>Az eszközhöz csatlakoztatott ügyfelek támogatott operációs rendszer
 
@@ -134,7 +128,7 @@ Azt javasoljuk, hogy beállította-e a tűzfalszabályok alapján a Data Box Gat
 
 Az alábbi követelmények vonatkoznak minimális internetes sávszélesség a Data Box Gateway eszközökön érhető el.
 
-- A Data Box Gateway rendelkezik egy 20 MB/s sebességű Internet dedikált sávszélesség (vagy még több) mindenkor. A sávszélesség nem osztható más alkalmazásokkal. 
+- A Data Box Gateway számára folyamatosan (legalább) 20 Mbps sebességű dedikált internetes sávszélesség áll rendelkezésre. Ez a sávszélesség nem osztható meg más alkalmazásokkal. 
 - A Data Box Gateway rendelkezik egy dedikált 32 MB/s internetes sávszélesség (vagy még több) hálózati sávszélesség-szabályozás használatakor.
 
 ## <a name="next-step"></a>Következő lépés

@@ -1,6 +1,6 @@
 ---
-title: Feldolgozni, és a szöveg kinyerése az Azure Search képek |} Microsoft Docs
-description: Folyamat, és hogyan nyerhet ki szöveg- és egyéb információkat a képek kognitív keresési folyamatok az Azure Search.
+title: Dolgozza fel, és a szöveg kinyerése a rendszerképeket az Azure Search szolgáltatásban |} A Microsoft Docs
+description: Feldolgozása és kinyerése szöveg- és egyéb információkat cognitive rendszerképekből keresési folyamatok az Azure Search szolgáltatásban.
 services: search
 manager: pablocas
 author: luiscabrer
@@ -10,42 +10,42 @@ ms.workload: search
 ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: luisca
-ms.openlocfilehash: 566b1e731f137863e9d4bc284d8868d408c7a575
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 88e3658216f3eec545d4388ddf2d90cea60995c3
+ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34640200"
+ms.lasthandoff: 10/12/2018
+ms.locfileid: "49166950"
 ---
-#  <a name="how-to-process-and-extract-information-from-images-in-cognitive-search-scenarios"></a>Hogyan kell feldolgozni információk kinyerése kognitív keresési forgatókönyvekben lemezképek
+#  <a name="how-to-process-and-extract-information-from-images-in-cognitive-search-scenarios"></a>Hogyan dolgozza fel, és információt nyerhet ki képekből a kognitív keresés forgatókönyvek
 
-Kognitív keresési képek és képfájlok több képességekkel rendelkezik. A dokumentum repedés során használhatja a *imageAction* fotóit vagy alfanumerikus, például a "STOP" szó a stop bejelentkezési szöveget tartalmazó szöveg kinyerése paramétert. Egyéb forgatókönyvek például a létrehozásakor a kép, például egy dandelion, vagy a szín "sárga" fénykép "dandelion" szöveg megjelenítése. A kép mérete metaadatait is nyerhet.
+Cognitive search, a képeket és képfájlok esetében több képességekkel rendelkezik. Során dokumentumfeltörést, használhatja a *imageAction* szöveg kinyerésére fotóit vagy alfanumerikus szöveget, például a "STOP" szó egy leállítási jelet tartalmazó paraméter. Egyéb forgatókönyvek között megtalálható, kép, például egy fényképet, egy dandelion, vagy a "sárga" szín "dandelion" szöveges ábrázolása létrehozása. Bontsa ki a metaadatokat, például a méret a képen is.
 
-Ez a cikk ismerteti a kép részletesebb feldolgozása, és útmutatást kínál a lemezképek kognitív keresési-feldolgozási folyamat használata.
+Ez a cikk ismerteti részletesebben képfeldolgozó, és útmutatást kínál a kognitív keresés folyamatban lévő lemezképek használata.
 
 <a name="get-normalized-images"></a>
 
-## <a name="get-normalized-images"></a>Normalizált képek beolvasása
+## <a name="get-normalized-images"></a>Normalizált képek bekérése
 
-Dokumentum repedés részeként nincsenek konfigurációs paraméterei indexelő kezelési képfájlok vagy az fájlokban található beágyazott képek új készletét. Ezek a paraméterek segítségével további alárendelt feldolgozási képek optimalizálására. Lemezképek normalizálása révén azokat egységesebb. Nagy méretű képek átméretezése egy maximális magasságát és szélességét használhatóvá tegye őket. A lemezképek a tájolás biztosít a metaadatok kép elforgatásának függőleges betöltése módosul. Metaadatok beállításai az egyes lemezképek létrehozott összetett típusban lesznek rögzítve. 
+Dokumentumfeltörést részeként nincsenek konfigurációs paraméterei indexelő képfájlok vagy a fájlok a beágyazott képek kezelése új készletét. Ezeket a paramétereket az alárendelt feldolgozáshoz további rendszerképeket normalizálása szolgálnak. Képek normalizálása megkönnyíti a több egységes. Nagy méretű képek átméretezése egy maximális magasságának és szélességének ellenőrizze fogyóeszközök. A lemezképek biztosít a metaadatok a tájolás esetén kép elforgatása a függőleges betöltése módosul. Metaadatok korrekciók létrehozott minden egyes képe egy összetett típus rögzíti a rendszer. 
 
-Kikapcsolja a normalizálást kép nem kapcsolható. Lemezképek ismétlés készségeikre normalizált képek várt.
+Nem kapcsolhatja ki rendszerképet normalizálási. Képek ciklustevékenység képességeit normalizált lemezképek várható.
 
 | Konfigurációs paraméter | Leírás |
 |--------------------|-------------|
-| imageAction   | Állítsa be az "none", ha a beágyazott képek vagy képfájlok észlelt kell eljárni semmilyen műveletet. <br/>Állítsa be "generateNormalizedImages" repedés dokumentum részeként bájttömb normalizált lemezképek létrehozásához. Ezeket a lemezképeket elérhetővé tehető a a *normalized_images* mező. <br/>Az alapértelmezett érték a "none." Ez a konfiguráció csak akkor megfelelő blob-adatforrások, ha "dataToExtract" értéke "contentAndMetadata." |
-|  normalizedImageMaxWidth | A maximális szélességét (képpontban) normalizált lemezképek jön létre. Az alapértelmezett érték 2000.|
-|  normalizedImageMaxHeight | Normalizált generált képek maximális magasságát (képpontban). Az alapértelmezett érték 2000.|
+| imageAction   | Ha nem kell műveletet, ha a beágyazott képek vagy képek észlelt állítsa be a "nincs". <br/>Állítsa a "generateNormalizedImages" normalizált lemezképek tömbjét létrehozásához dokumentumleképezési részeként. Ezek a lemezképek a lesz közzétéve a *normalized_images* mező. <br/>Az alapértelmezett érték a "nincs." Ez a konfiguráció csak a tárolására blob az adatforrásokat, ha "dataToExtract" értéke "contentAndMetadata." |
+|  normalizedImageMaxWidth | A maximális szélességét (képpontban) normalizált a képeket. Az alapértelmezett érték 2000.|
+|  normalizedImageMaxHeight | A maximális magasságát (képpontban) normalizált a képeket. Az alapértelmezett érték 2000.|
 
 > [!NOTE]
-> Ha a *imageAction* tulajdonsága csak "nincs" értékre, csak akkor állíthatja be a *parsingMode* tulajdonság csak az "alapértelmezett" értékre.  Előfordulhat, hogy csak beállítása ezen két tulajdonságok egyikét, nem alapértelmezett értékre az indexelő konfigurációját.
+> Ha a *imageAction* tulajdonsága "none" értékre, nem tudja beállítani a *parsingMode* tulajdonság "alapértelmezett" értékre.  Előfordulhat, hogy csak beállította a két tulajdonság közül egy nem alapértelmezett érték az indexelő konfigurációban.
 
-Állítsa be a **parsingMode** paramétert `json` (az index minden egyes blob egyetlen dokumentumként) vagy `jsonArray` (Ha a blobok JSON-tömbök tartalmazhat, és a különálló dokumentum kezelendő tömb egyes elemei kell).
+Állítsa be a **parsingMode** paramétert `json` (az index minden egyes blob egyetlen dokumentumként) vagy `jsonArray` (Ha a blobok tartalmazzák a JSON-tömbök és egy külön dokumentum kell tekinteni a tömb egyes elemei kell).
 
-Az alapértelmezett 2000 képpontos normalizált képek maximális szélességét és magasságát által támogatott maximális méret alapján a [OCR szakértelem](cognitive-search-skill-ocr.md) és a [elemzés szakértelem kép](cognitive-search-skill-image-analysis.md). Ha növeli a maximális korlátai, a feldolgozás sikertelen lehet, a nagyobb méretű képek.
+Az alapértelmezett 2000 képpontos normalizált képek maximális szélességét és magasságát által támogatott maximális méret alapján a [OCR szakértelem](cognitive-search-skill-ocr.md) és a [elemzési szakértelem kép](cognitive-search-skill-image-analysis.md). Ha növeli a maximális korlát, a feldolgozás sikertelen lehet, a nagyobb képeken.
 
 
-Megadja a imageAction a [indexelő definition](https://docs.microsoft.com/rest/api/searchservice/create-indexer) az alábbiak szerint:
+Azt adja meg a imageAction a a [indexelő definíciója](https://docs.microsoft.com/rest/api/searchservice/create-indexer) módon:
 
 ```json
 {
@@ -61,17 +61,17 @@ Megadja a imageAction a [indexelő definition](https://docs.microsoft.com/rest/a
 }
 ```
 
-Ha a *imageAction* "generateNormalizedImages" értékre van állítva az új *normalized_images* mezőben képek tömbjét. Minden rendszerkép egy összetett típus, amely a következő tagokkal rendelkezik:
+Ha a *imageAction* "generateNormalizedImages," értékre van állítva az új *normalized_images* mező tartalmazni fog a képek tömbjét. Minden egyes képe egy összetett típus, amely rendelkezik az alábbi tagokat:
 
 | Kép tag       | Leírás                             |
 |--------------------|-----------------------------------------|
-| adat               | A BASE64 kódolású karakterlánc JPEG formátumú normalizált kép.   |
-| Szélessége              | A képpontban megadott nyílméretét normalizált kép szélessége. |
-| Magassága             | A képpontban megadott nyílméretét normalizált kép magassága. |
+| adatok               | BASE64 kódolású karakterlánc normalizált JPEG formátumú kép.   |
+| Szélesség              | Szélessége a normalizált képen (képpontban). |
+| Magasság             | Magasságát (képpontban) a normalizált képe. |
 | originalWidth      | Normalizálási előtt a kép eredeti szélessége. |
-| originalHeight      | Normalizálási előtt a kép eredeti magasságát. |
-| rotationFromOriginal |  Balra Elforgatás (fokban megadva), amely a normalizált lemezkép létrehozása történt. 0 fok és 360 fok közötti értéket. Ez a lépés a metaadatok a lemezképet, a kamera vagy képolvasó által létrehozott olvassa be. Általában többszöröse 90 fok. |
-| contentOffset |A karaktereltolás, ahol a kép kinyert tartalom mezőjében. Ez a mező csak csak beágyazott képekhez fájlok. |
+| originalHeight      | Normalizálási előtt a kép eredeti magassága. |
+| rotationFromOriginal |  Balra elforgatása a normalizált lemezkép létrehozására történt fokban. 0 fok és 360 fok közötti értéket. Ebben a lépésben a kép, kamera vagy a képolvasó által létrehozott metaadatait olvassa be. Általában többszöröse 90 fok. |
+| contentOffset |A znaku není v platném a tartalom mező, ahol a rendszerkép lett kimásolva. Ez a mező csak akkor érvényes, a fájlok a beágyazott képek. |
 
  Minta értéke *normalized_images*:
 ```json
@@ -88,33 +88,33 @@ Ha a *imageAction* "generateNormalizedImages" értékre van állítva az új *no
 ]
 ```
 
-## <a name="image-related-skills"></a>Kép kapcsolatos ismeretek
+## <a name="image-related-skills"></a>Lemezképpel kapcsolatos ismereteit
 
-Nincsenek a két beépített kognitív képességek, amelyek képek bemenetként: [OCR](cognitive-search-skill-ocr.md) és [kép Analysis](cognitive-search-skill-image-analysis.md). 
+Nincsenek a két beépített kognitív képességeket, amelyek rendszerképeket bemenetként: [OCR](cognitive-search-skill-ocr.md) és [képelemzés](cognitive-search-skill-image-analysis.md). 
 
-Ezek a képességek jelenleg, csak működik együtt a dokumentum jelszófeltörő lépésben létrehozott lemezképek. Így az egyetlen támogatott beviteli van `"/document/normalized_images"`.
+Ezek a képességek jelenleg csak működik a dokumentum krakkolás. lépésben létrehozott képekkel. Mint ilyen, az egyetlen támogatott bemeneti az `"/document/normalized_images"`.
 
-### <a name="image-analysis-skill"></a>Kép elemzés szakértelem
+### <a name="image-analysis-skill"></a>Kép elemzése szakértelem
 
-A [kép elemzés szakértelem](cognitive-search-skill-image-analysis.md) széles választéka vizuális funkciókat a lemezkép tartalom alapján bontja ki. Például hozzon létre egy felirat kép, címkék létrehozása, vagy celebrities és jellegzetes hely azonosítása.
+A [képelemzés szakértelem](cognitive-search-skill-image-analysis.md) kinyeri a sokféle kép tartalma alapján vizuális jellemzőket. Például hozzon létre egy felirat kép, címkék létrehozása, vagy hírességek és tereptárgyak felismerése azonosításához.
 
-### <a name="ocr-skill"></a>OCR szakértelem
+### <a name="ocr-skill"></a>Optikai Karakterfelismerés szakértelem
 
-A [OCR szakértelem](cognitive-search-skill-ocr.md) szöveg kiolvassa a képfájlok például alakíthatóak, PNG vagy bittérképekkel. Azt is kibonthat egy szöveges továbbá az elrendezési adatokat. Az elrendezési adatokat biztosít a határoló mezőkbe az egyes azonosított karakterláncok.
+A [OCR szakértelem](cognitive-search-skill-ocr.md) szöveges állomány kinyerésére például bitképeket, alakíthatóak és PNG képfájl. Ez lehet szöveg kinyerése és elrendezés információkat tartalmazza. Az elrendezési adatokat az egyes azonosított karakterlánc határoló mezők biztosít.
 
-A OCR szakértelem algoritmus felismeri a szöveg a képek használandó kiválasztását teszi lehetővé. Jelenleg támogatja a két algoritmusok, nyomtatott szöveg egyet, majd egy másikat kézzel írt szöveg.
+Az optikai Karakterfelismerés szakértelem az algoritmus felismeri a szöveget a képeken kiválasztását teszi lehetővé. Jelenleg támogatja a két algoritmus, így az nyomtatott szöveg és egy másik írt szöveg felismerése képekből.
 
 ## <a name="embedded-image-scenario"></a>Beágyazott kép forgatókönyv
 
-Egy általános forgatókönyv magában foglalja egy egyetlen karakterláncot tartalmazó összes fájl tartalmát, a szöveg és a lemezkép-eredeti szöveg, a következő lépések elvégzésével:  
+Egy gyakori forgatókönyv áll tartalmazó összes fájl tartalmát, szöveg és a lemezkép-forrás szöveg-, a következő lépések végrehajtásával egyetlen karakterlánc létrehozása:  
 
 1. [Bontsa ki a normalized_images](#get-normalized-images)
-1. Futtatja a OCR szakértelem `"/document/normalized_images"` bemenetként
-1. Ezeket a képeket szöveges ábrázolását egyesítése a nyers szöveggel kibontani a fájlból. Használhatja a [szöveg egyesítése](cognitive-search-skill-textmerger.md) szakértelem mindkét szöveg adattömbök összevonni egy egyetlen nagy karakterlánccá egyesít.
+1. Az optikai Karakterfelismerés szakértelem használatával fusson `"/document/normalized_images"` bemenetként
+1. Egyesítés ezen rendszerképek szöveges ábrázolása a kibontott fájlból a nyers szöveg. Használhatja a [szöveg egyesítése](cognitive-search-skill-textmerger.md) szakértelem konszolidálhatja mindkét szöveg adattömbök egyetlen nagy karakterlánccá.
 
-A következő példa skillset létrehoz egy *merged_text* a dokumentum a szöveges tartalom tartalmazó mezőt. A beágyazott képek mindegyikének OCRed szöveget is tartalmaz. 
+A következő példa indexmezők létrehoz egy *merged_text* tartalmazó szöveges tartalmát a dokumentumot. A beágyazott képek mindegyike OCRed szöveget is tartalmaz. 
 
-#### <a name="request-body-syntax"></a>Törzs szintaxis
+#### <a name="request-body-syntax"></a>Kérelem törzse szintaxis
 ```json
 {
   "description": "Extract text from images and merge with content text to produce merged_text",
@@ -158,7 +158,7 @@ A következő példa skillset létrehoz egy *merged_text* a dokumentum a szöveg
       ],
       "outputs": [
         {
-          "name": "mergedText", "targetname" : "merged_text"
+          "name": "mergedText", "targetName" : "merged_text"
         }
       ]
     }
@@ -166,15 +166,15 @@ A következő példa skillset létrehoz egy *merged_text* a dokumentum a szöveg
 }
 ```
 
-Most, hogy egy merged_text mező, akkor lehetett leképez kereshető mezőt az indexelő-definícióban. A fájlok, a szöveg, képek, beleértve a tartalom lesznek kereshetők.
+Most, hogy egy merged_text mező, akkor hozzárendelheti egy kereshető mező, az indexelő-definícióban. A fájlok, a szöveg, képek, beleértve a tartalom mindegyikét kereshető lesz.
 
-## <a name="visualize-bounding-boxes-of-extracted-text"></a>Határolókeret mezőkbe kibontott szöveg megjelenítése
+## <a name="visualize-bounding-boxes-of-extracted-text"></a>Határoló kinyert szöveg mezők megjelenítése
 
-Egy másik gyakori forgatókönyv van megjelenítése a keresési eredmények elrendezési adatokat. Például előfordulhat, hogy kívánt jelölje ki, ahol szöveg található a kép a keresési eredmények részeként.
+Egy másik gyakori forgatókönyv jelenítenek meg a keresési eredmények elrendezésének adatai. Például érdemes kiemeléséhez, ahol egy adott szöveg található a képet a keresési eredmények részeként.
 
-A normalizált képek a OCR lépés hajtja végre, mert a elrendezés koordináták százalékosan vannak a normalizált kép területet. A normalizált kép megjelenítésekor a koordináták általában nem probléma, de bizonyos helyzetekben előfordulhat, hogy megjeleníteni kívánt az eredeti kép. Ebben az esetben átalakítása minden koordináta pontra az elrendezésben az eredeti kép koordináta-rendszerére. 
+Az optikai Karakterfelismerés lépést a normalizált képeken, mivel a elrendezés koordináták vannak a normalizált kép terület. A normalizált kép megjelenítésekor koordináták meglétének általában nem probléma, de bizonyos esetekben érdemes az eredeti képet jeleníti meg. Ebben az esetben konvertálja az elrendezés koordináta pontok mindegyike az eredeti kép koordináta-rendszerére. 
 
-Segítő, mint az eredeti koordináta területre normalizált koordináták átalakításához használhatja a következő algoritmust:
+A segítő, mint ha átalakítja a normalizált koordináták az eredeti koordináta területre van szüksége használhatja a következő algoritmus:
 
 ```csharp
         /// <summary>
@@ -220,7 +220,7 @@ Segítő, mint az eredeti koordináta területre normalizált koordináták áta
 ## <a name="see-also"></a>Lásd még
 + [Az indexelő (REST) létrehozása](https://docs.microsoft.com/rest/api/searchservice/create-indexer)
 + [Kép Szakértelem elemzése](cognitive-search-skill-image-analysis.md)
-+ [OCR szakértelem](cognitive-search-skill-ocr.md)
++ [Optikai Karakterfelismerés szakértelem](cognitive-search-skill-ocr.md)
 + [Szöveg egyesítési szakértelem](cognitive-search-skill-textmerger.md)
-+ [Egy skillset definiálása](cognitive-search-defining-skillset.md)
-+ [Hogyan bővített mezők](cognitive-search-output-field-mapping.md)
++ [Hogyan képességcsoport megadása](cognitive-search-defining-skillset.md)
++ [Hogyan hidaljuk mezők leképezése](cognitive-search-output-field-mapping.md)

@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 09/06/2018
 ms.author: mabrigg
 ms.reviewer: ppacent
-ms.openlocfilehash: b0fe9acc187aab87e8ee0528cf998e2ef923f897
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: cc7b1b9e96e32b090c0ec9ec9ab029588e5ec4ce
+ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44722010"
+ms.lasthandoff: 10/12/2018
+ms.locfileid: "49166967"
 ---
 # <a name="rotate-secrets-in-azure-stack"></a>Azure Stack titkos kulcsainak rotálása
 
@@ -81,7 +81,8 @@ Az alábbi utasításokat követve titkos Elforgatás futó fog kijavítani ezek
 
    > [!IMPORTANT]  
    > Győződjön meg arról, titkos Elforgatás még nem lett sikeresen végrehajtva a környezetében. Ha titkos Elforgatás már hajtja végre, frissítse az Azure Stack 1807 vagy újabb verziójára titkos Elforgatás végrehajtása előtt. 
-1.  A felhasználók értesítése a karbantartási műveleteket. Normál karbantartási időszakokat, a lehető legnagyobb mértékben, során munkaidőn kívüli ütemezése. Karbantartási műveletek hatással lehet a felhasználó számítási feladatok és a webportálos műveletek.
+1.  Operátorok Észreveheti a riasztások megnyitásához, és automatikusan zárja be az Azure Stack titkos kódok rotációja során.  Ez az elvárt viselkedés, és a riasztások figyelmen kívül hagyható.  Operátorok érvényességét, ezek a riasztások ellenőrzéséhez futtassa a Test-AzureStack.  Az operátorok figyelése SCOM használatával Azure Stack-rendszereket, karbantartási módba helyezi el a rendszer megakadályozza, hogy ezek a riasztások éri el az ITSM-rendszerekkel, de továbbra is riasztás, ha az Azure Stack rendszer elérhetetlenné válik. 
+2. A felhasználók értesítése a karbantartási műveleteket. Normál karbantartási időszakokat, a lehető legnagyobb mértékben, során munkaidőn kívüli ütemezése. Karbantartási műveletek hatással lehet a felhasználó számítási feladatok és a webportálos műveletek.
     > [!note]  
     > A következő lépések csak akkor alkalmazható, ha az Azure Stack külső titkos kódok elforgatása.
 3. Készítse el új helyettesítési külső tanúsítványok. Az új készlet a tanúsítvány előírásoknak megfelel a [Azure Stack PKI-tanúsítványkövetelmények](https://docs.microsoft.com/azure/azure-stack/azure-stack-pki-certs).

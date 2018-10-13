@@ -9,16 +9,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: sngun
-ms.openlocfilehash: b7908f9f9aef51857f0ffb07102e1df245b7a259
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: c183bbe2c20bdc1772160cbbd8260dece0b6eb54
+ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47064458"
+ms.lasthandoff: 10/13/2018
+ms.locfileid: "49309501"
 ---
-# <a name="azure-cosmos-db-serverless-database-computing-using-azure-functions"></a>Az Azure Cosmos DB: Kiszolgáló nélküli adatbázis-használat az Azure Functions használatával
+# <a name="serverless-database-computing-using-azure-cosmos-db-and-azure-functions"></a>Azure Cosmos DB és az Azure Functions használatával kiszolgáló nélküli adatbázis-használat
 
-Kiszolgáló nélküli számítástechnika az összes arról, hogy arra koncentrálhasson, megismételhető és állapot nélküli logika egyéni adatokat. Megtalálhatja megkövetelése nincs infrastruktúra-felügyelettel, és csak másodperc vagy milliszekundum, azok futtatása tartozó használnak erőforrásokat. A kiszolgáló nélküli számítástechnika áthelyezését magját vannak a Funkciók, az Azure-ökoszisztéma által rendelkezésre bocsátott [Azure Functions](https://azure.microsoft.com/services/functions).
+Kiszolgáló nélküli számítástechnika az összes arról, hogy arra koncentrálhasson, megismételhető és állapot nélküli logika egyéni adatokat. Megtalálhatja megkövetelése nincs infrastruktúra-felügyelettel, és csak másodperc vagy milliszekundum, azok futtatása tartozó használnak erőforrásokat. A kiszolgáló nélküli számítástechnika áthelyezését magját vannak a Funkciók, az Azure-ökoszisztéma által rendelkezésre bocsátott [Azure Functions](https://azure.microsoft.com/services/functions). További információ a többi kiszolgáló nélküli végrehajtáshoz környezetek Azure itt talál: [az Azure kiszolgáló nélküli](https://azure.microsoft.com/solutions/serverless/) lapot. 
 
 Közötti natív integrációnak [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db) és az Azure Functions, létrehozhat adatbázis eseményindítók, bemeneti és kimeneti kötések közvetlenül az Azure Cosmos DB-fiókot. Az Azure Functions és az Azure Cosmos DB használatával, létrehozása, és üzembe helyezése az eseményvezérelt, kiszolgáló nélküli alkalmazásokat alacsony késéssel globális felhasználói bázis vonatkozó részletes adatokat.
 

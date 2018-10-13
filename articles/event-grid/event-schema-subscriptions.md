@@ -5,24 +5,24 @@ services: event-grid
 author: tfitzmac
 ms.service: event-grid
 ms.topic: reference
-ms.date: 08/17/2018
+ms.date: 10/12/2018
 ms.author: tomfitz
-ms.openlocfilehash: 18f2a64a4354fbd99f1a471c21cc35cbf5df6619
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.openlocfilehash: ae6513c503b930d9c953f5245a9c98ea096109bb
+ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "42056679"
+ms.lasthandoff: 10/13/2018
+ms.locfileid: "49310234"
 ---
 # <a name="azure-event-grid-event-schema-for-subscriptions"></a>Az előfizetések az Azure Event Grid eseménysémája
 
 Ez a cikk a tulajdonságok és a séma az Azure-előfizetés események. Eseménysémák szeretné megismerni, lásd: [Azure Event Grid-esemény séma](event-schema.md).
 
-Az Azure-előfizetések és -erőforráscsoportok gridre bocsáthatja ki az azonos esemény típusú. Az esemény típusú erőforrások módosításához kapcsolódó. Az elsődleges különbség, hogy erőforráscsoportok gridre bocsáthatja ki az eseményeket az erőforrások az erőforráscsoporton belül, és az Azure-előfizetések eseményeire a PowerShell erőforrások küldik az előfizetésből.
+Az Azure-előfizetések és -erőforráscsoportok gridre bocsáthatja ki az azonos esemény típusú. Az eseménytípusok kapcsolatos műveletek és erőforrás-módosítások. Az elsődleges különbség, hogy erőforráscsoportok gridre bocsáthatja ki az eseményeket az erőforrások az erőforráscsoporton belül, és az Azure-előfizetések eseményeire a PowerShell erőforrások küldik az előfizetésből.
 
-Erőforrás-események PUT, PATCH, jön létre, és törlési műveletek küldött `management.azure.com`. POST és a GET műveletek nem hozható létre eseményeket. Az adatsík küldött műveletek (például `myaccount.blob.core.windows.net`) hozzon létre eseményeket.
+Erőforrás-események PUT, PATCH, bejegyzés jön létre, és a törlési műveletek küldött `management.azure.com`. GET műveleteket nem hoz létre az eseményeket. Az adatsík küldött műveletek (például `myaccount.blob.core.windows.net`) események nem hoz létre. A műveleti események eseményadatok műveletek, mint az erőforrás kulcsainak listázása adja meg.
 
-Amikor előfizet egy Azure-előfizetés eseményeire, a végpont adott előfizetéshez tartozó összes esemény kapja meg. Az események eseményt szeretne látni, például egy virtuális gép frissítése, de események, amelyek esetleg nem fontos számunkra, például az írt új bejegyzést az üzembe helyezési előzmények tartalmazhatnak. Az összes esemény fogadása a végpont és kód írása, amely feldolgozza a kezelni kívánt eseményeket, vagy beállíthatja a szűrőt az esemény-előfizetés létrehozásakor.
+Amikor előfizet egy Azure-előfizetés eseményeire, a végpont adott előfizetéshez tartozó összes esemény kapja meg. Az események eseményt szeretne látni, például egy virtuális gép frissítése, de események, amelyek esetleg nem fontos számunkra, például az írt új bejegyzést az üzembe helyezési előzmények tartalmazhatnak. Az összes esemény fogadása a végponton, és dolgozza fel a kezelni kívánt kód írására. Másik lehetőségként beállíthatja a szűrőt az esemény-előfizetés létrehozásakor.
 
 Események programozott módon kezelje, rendezheti események megtekintésével a `operationName` értéket. Például az esemény-végpont lehet, hogy csak feldolgozni a műveletek eseményeit, amelyek egyenlőnek kell lennie `Microsoft.Compute/virtualMachines/write` vagy `Microsoft.Storage/storageAccounts/write`.
 
@@ -36,12 +36,15 @@ Az Azure-előfizetések gridre bocsáthatja ki felügyeleti események Azure Res
 
 | Esemény típusa | Leírás |
 | ---------- | ----------- |
-| Microsoft.Resources.ResourceWriteSuccess | Meg, ha egy erőforrás létrehozása vagy a frissítés sikeres. |
-| Microsoft.Resources.ResourceWriteFailure | Jelenik meg, ha egy erőforrás-létrehozás vagy frissítés művelet sikertelen lesz. |
-| Microsoft.Resources.ResourceWriteCancel | Meg, ha egy erőforrás létrehozása vagy frissítési művelet meg lett szakítva. |
-| Microsoft.Resources.ResourceDeleteSuccess | Ha egy erőforrás-törlési művelet sikeres következik be. |
-| Microsoft.Resources.ResourceDeleteFailure | Jelenik meg, ha egy erőforrás-törlési művelet sikertelen lesz. |
-| Microsoft.Resources.ResourceDeleteCancel | Jelenik meg, ha egy erőforrás-törlési művelet meg lett szakítva. Ez az esemény történik, ha a sablon központi telepítés meg lett szakítva. |
+| Microsoft.Resources.ResourceActionCancel | Jelenik meg, ha az erőforrás a művelet meg lett szakítva. |
+| Microsoft.Resources.ResourceActionFailure | Jelenik meg, ha az erőforrás a művelet sikertelen lesz. |
+| Microsoft.Resources.ResourceActionSuccess | Jön létre, ha az erőforrás a művelet sikeres. |
+| Microsoft.Resources.ResourceDeleteCancel | Következik be, mikor törölje a művelet meg lett szakítva. Ez az esemény történik, ha a sablon központi telepítés meg lett szakítva. |
+| Microsoft.Resources.ResourceDeleteFailure | Következik be, mikor törlése művelet sikertelen. |
+| Microsoft.Resources.ResourceDeleteSuccess | Következik be, mikor-törlési művelet sikeres. |
+| Microsoft.Resources.ResourceWriteCancel | Következik be, mikor hozzon létre vagy frissítési művelet meg lett szakítva. |
+| Microsoft.Resources.ResourceWriteFailure | Következik be, mikor létrehozása vagy frissítése a művelet sikertelen lesz. |
+| Microsoft.Resources.ResourceWriteSuccess | Következik be, mikor hozzon létre vagy frissítési művelet sikeres. |
 
 ## <a name="example-event"></a>Példa esemény
 
@@ -171,6 +174,62 @@ Az alábbi példa bemutatja a sémában egy **ResourceDeleteSuccess** esemény. 
 }]
 ```
 
+Az alábbi példa bemutatja a sémában egy **ResourceActionSuccess** esemény. Ugyanazzal a sémával használt **ResourceActionFailure** és **ResourceActionCancel** eltérő értékek az események `eventType`.
+
+```json
+[{   
+  "subject": "/subscriptions/{subscription-id}/resourceGroups/{resource-group}/providers/Microsoft.EventHub/namespaces/{namespace}/AuthorizationRules/RootManageSharedAccessKey",
+  "eventType": "Microsoft.Resources.ResourceActionSuccess",
+  "eventTime": "2018-10-08T22:46:22.6022559Z",
+  "id": "{ID}",
+  "data": {
+    "authorization": {
+      "scope": "/subscriptions/{subscription-id}/resourceGroups/{resource-group}/providers/Microsoft.EventHub/namespaces/{namespace}/AuthorizationRules/RootManageSharedAccessKey",
+      "action": "Microsoft.EventHub/namespaces/AuthorizationRules/listKeys/action",
+      "evidence": {
+        "role": "Contributor",
+        "roleAssignmentScope": "/subscriptions/{subscription-id}",
+        "roleAssignmentId": "{ID}",
+        "roleDefinitionId": "{ID}",
+        "principalId": "{ID}",
+        "principalType": "ServicePrincipal"
+      }     
+    },
+    "claims": {
+      "aud": "{audience-claim}",
+      "iss": "{issuer-claim}",
+      "iat": "{issued-at-claim}",
+      "nbf": "{not-before-claim}",
+      "exp": "{expiration-claim}",
+      "aio": "{token}",
+      "appid": "{ID}",
+      "appidacr": "2",
+      "http://schemas.microsoft.com/identity/claims/identityprovider": "{URL}",
+      "http://schemas.microsoft.com/identity/claims/objectidentifier": "{ID}",
+      "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier": "{ID}",       "http://schemas.microsoft.com/identity/claims/tenantid": "{ID}",
+      "uti": "{ID}",
+      "ver": "1.0"
+    },
+    "correlationId": "{ID}",
+    "httpRequest": {
+      "clientRequestId": "{ID}",
+      "clientIpAddress": "{IP-address}",
+      "method": "POST",
+      "url": "https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group}/providers/Microsoft.EventHub/namespaces/{namespace}/AuthorizationRules/RootManageSharedAccessKey/listKeys?api-version=2017-04-01"
+    },
+    "resourceProvider": "Microsoft.EventHub",
+    "resourceUri": "/subscriptions/{subscription-id}/resourceGroups/{resource-group}/providers/Microsoft.EventHub/namespaces/{namespace}/AuthorizationRules/RootManageSharedAccessKey",
+    "operationName": "Microsoft.EventHub/namespaces/AuthorizationRules/listKeys/action",
+    "status": "Succeeded",
+    "subscriptionId": "{subscription-id}",
+    "tenantId": "{tenant-id}"
+  },
+  "dataVersion": "2",
+  "metadataVersion": "1",
+  "topic": "/subscriptions/{subscription-id}" 
+}]
+```
+
 ## <a name="event-properties"></a>Esemény tulajdonságai
 
 Egy esemény a következő legfelső szintű adatokat tartalmaz:
@@ -194,9 +253,9 @@ Az objektum a következő tulajdonságokkal rendelkezik:
 | jogcímek | objektum | A jogcímek tulajdonságait. További információkért lásd: [JWT-specifikáció](http://self-issued.info/docs/draft-ietf-oauth-json-web-token.html). |
 | correlationId | sztring | A hibaelhárítási művelet azonosítója. |
 | Törzsparaméterei | objektum | A művelet részleteit. Ez az objektum csak van hozzáadva, amikor egy meglévő erőforrás frissítése vagy töröl egy erőforrást. |
-| ResourceProvider | sztring | Az erőforrás-szolgáltató a művelet végrehajtása. |
+| ResourceProvider | sztring | Az erőforrás-szolgáltató a művelethez. |
 | resourceUri | sztring | A műveletet az erőforrás URI azonosítója. |
-| operationName | sztring | A végrehajtott műveletet. |
+| operationName | sztring | A művelet, amely kerül. |
 | status | sztring | A művelet állapota. |
 | subscriptionId | sztring | Az erőforrás előfizetés-azonosítója. |
 | tenantId | sztring | Az erőforrás Bérlőazonosítója. |

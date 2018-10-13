@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 10/09/2018
 ms.author: jeffgilb
 ms.reviewer: brbartle
-ms.openlocfilehash: 410566e62daeb42100443e72f2d8a1acb8dad5a3
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: c9106557c7c113281b04d37f1bc3d8b29e2087cc
+ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48902280"
+ms.lasthandoff: 10/13/2018
+ms.locfileid: "49310453"
 ---
 # <a name="register-azure-stack-with-azure"></a>Regisztráljon az Azure Stack az Azure-ral
 
@@ -45,7 +45,7 @@ Regisztráció előtt szüksége lesz a következő helyen:
 
 Mielőtt regisztrálná az Azure Stack az Azure-ral, a következőkkel kell rendelkeznie:
 
-- Azure-előfizetés előfizetés-azonosítója. Csak az EA, CSP vagy a CSP megosztott szolgáltatások előfizetéseket támogatja a regisztrációhoz. CSP-k kell eldöntenie, hogy e [használja egy CSP vagy CSPSS előfizetés](azure-stack-add-manage-billing-as-a-csp.md#create-a-csp-or-cspss-subscription).<br><br>Az azonosító lekéréséhez jelentkezzen be az Azure-ba, kattintson a **minden szolgáltatás**. Ezt követően a **általános** kategória, válassza **előfizetések**, kattintson arra az előfizetésre szeretné használni, majd a **Essentials** is megtalálhatja, hogy az előfizetés-azonosító.
+- Azure-előfizetés előfizetés-azonosítója. Csak az EA, CSP vagy a CSP megosztott szolgáltatások előfizetéseket támogatja a regisztrációhoz. CSP-k kell eldöntenie, hogy e [használja egy CSP vagy APSS előfizetését](azure-stack-add-manage-billing-as-a-csp.md#create-a-csp-or-apss-subscription).<br><br>Az azonosító lekéréséhez jelentkezzen be az Azure-ba, kattintson a **minden szolgáltatás**. Ezt követően a **általános** kategória, válassza **előfizetések**, kattintson arra az előfizetésre szeretné használni, majd a **Essentials** is megtalálhatja, hogy az előfizetés-azonosító.
 
   > [!Note]  
   > A Németországi felhőalapú előfizetések jelenleg nem támogatottak.

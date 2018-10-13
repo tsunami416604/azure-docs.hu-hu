@@ -12,19 +12,19 @@ ms.topic: conceptual
 ms.date: 07/01/2018
 ms.author: jehollan
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 8b0681165fe84dd54f3b81f610c6698998e881de
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 3cab94744a2ab87dce0a145665e957e1fed0dd2f
+ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46125493"
+ms.lasthandoff: 10/12/2018
+ms.locfileid: "49167545"
 ---
 # <a name="create-your-first-function-with-java-and-eclipse-preview"></a>Az első függvény létrehozása a Java és az eclipse-ben (előzetes verzió)
 
 > [!NOTE] 
 > A Java for Azure Functions jelenleg előzetes verzióban érhető el.
 
-Ez a cikk bemutatja, hogyan hozhat létre egy [kiszolgáló nélküli](https://azure.microsoft.com/overview/serverless-computing/) Functions-projektet az Eclipse IDE és az Apache Maven, tesztelheti és hibakeresés végrehajtása rajtuk, majd üzembe helyezése az Azure Functions. 
+Ez a cikk bemutatja, hogyan hozhat létre egy [kiszolgáló nélküli](https://azure.microsoft.com/solutions/serverless/) Functions-projektet az Eclipse IDE és az Apache Maven, tesztelheti és hibakeresés végrehajtása rajtuk, majd üzembe helyezése az Azure Functions. 
 
 <!-- TODO ![Access a Hello World function from the command line with cURL](media/functions-create-java-maven/hello-azure.png) -->
 

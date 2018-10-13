@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 10/05/2018
 ms.topic: conceptual
-ms.openlocfilehash: 656a2375b8b1033e9b698d5d8e1e2bbc32b32a79
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: 3b855c3bed75945f44b55463bdacd049b7930aa7
+ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49094569"
+ms.lasthandoff: 10/12/2018
+ms.locfileid: "49165878"
 ---
 # <a name="add-a-custom-panel-to-the-dashboard-in-the-remote-monitoring-solution-accelerator-web-ui"></a>Egy egyéni panel hozzáadása az irányítópulthoz, a távoli figyelési megoldás gyorsító webes felhasználói felületen
 
@@ -35,7 +35,7 @@ Ez az útmutató a lépések végrehajtásához szüksége van a következő szo
 
 Hajtsa végre a lépéseket a [egyéni lap hozzáadása a távoli figyelési megoldás gyorsító webes felhasználói felületen](iot-accelerators-remote-monitoring-customize-page.md) a cikk a folytatás előtt.
 
-## <a name="add-a-panel"></a>Adjon hozzá egy panel
+## <a name="add-a-panel"></a>Panel hozzáadása
 
 A webes felhasználói felületen ad hozzá egy panel, szüksége adhat hozzá a forrásfájlokat, amelyek meghatározzák a panelen, majd a panelen megjelennek az irányítópulton.
 
@@ -82,7 +82,7 @@ Adja hozzá a következő cella definíciójának az oldal tartalmát a rács:
           </Cell>
 ```
 
-## <a name="test-the-fly-out"></a>Az úszó tesztelése
+## <a name="test-the-flyout"></a>Tesztelje a úszó menü
 
 Ha a webes felhasználói felület még nem fut helyi, futtassa a következő parancsot a tárház helyi példányának gyökérmappájában:
 

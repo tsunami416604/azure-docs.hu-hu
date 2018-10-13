@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/05/2018
 ms.author: yuemlu
 ms.custom: include file
-ms.openlocfilehash: e3d904358282f303a2d1ab35cf4fdc8026d7db55
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: f1fe45283ef2886a50bf6a36e50e7ffe42055ee2
+ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47060924"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49312419"
 ---
 # <a name="cost-effective-standard-storage-and-unmanaged-and-managed-azure-vm-disks"></a>Költséghatékony Standard Storage és a nem felügyelt és felügyelt Azure-beli Virtuálisgép-lemezek
 
@@ -25,7 +25,7 @@ Ez a cikk foglalkozik, a standard szintű SSD és HDD-lemezek használatát. Blo
 
 A standard szintű lemezek létrehozása az Azure virtuális gépek két módja van:
 
-**Nem felügyelt lemezek**: A lemez típusát a eredeti módszer kezelheti az, hogy a Virtuálisgép-lemezek megfelelnek a VHD-fájlok tárolására szolgáló tárfiókot. VHD-fájlokat a storage-fiókok lap blobként vannak tárolva. Nem felügyelt lemezek minden olyan Azure virtuális gép méretét, beleértve a virtuális gépeket, amelyek bevételszerzésre használják a Premium Storage, a DSv2 és GS-sorozat például lehet rendelni. Az Azure virtuális gépek támogatják a több standard szintű lemezek csatolása lehetővé teszi a tárhelyet a maximális hossz 256 PiB. Ha az előzetes verzió lemezméretek használ, legfeljebb körülbelül 2 PiB tárhelyet rendelkezhet. 
+**Nem felügyelt lemezek**: A lemez típusát a eredeti módszer kezelheti az, hogy a Virtuálisgép-lemezek megfelelnek a VHD-fájlok tárolására szolgáló tárfiókot. VHD-fájlokat a storage-fiókok lap blobként vannak tárolva. Nem felügyelt lemezek minden olyan Azure virtuális gép méretét, beleértve a virtuális gépeket, amelyek bevételszerzésre használják a Premium Storage, a DSv2 és GS-sorozat például lehet rendelni. Az Azure virtuális gépek támogatják a több standard szintű lemezek csatolása lehetővé teszi a tárhelyet a maximális hossz 256 Tib-ra. Ha az előzetes verzió lemezméretek használ, legfeljebb körülbelül 2 PiB tárhelyet rendelkezhet.
 
 [**Az Azure Managed Disks**](../articles/virtual-machines/windows/managed-disks-overview.md): Ez a funkció az Ön számára a virtuális gépek lemezeihez használt tárfiókok kezeli. A (prémium szintű SSD, Standard SSD vagy Standard HDD) típusát és méretét adja meg lemez van szüksége, és az Azure létrehozza és felügyeli a lemezt Ön helyett. Nem kell aggódnia a tárfiókok méretezhetőségének korlátai belül marad – az Azure végzi, amely az Ön számára biztosítása érdekében helyezi el a lemezek több tárfiókon keresztül.
 

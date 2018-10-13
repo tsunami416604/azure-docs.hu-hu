@@ -3,17 +3,17 @@ title: Az Azure Maps térkép vezérlőelem használata |} A Microsoft Docs
 description: Ismerje meg, hogyan használható az Azure Maps térkép vezérlőelem ügyféloldali Javascript-függvénytárat.
 author: dsk-2015
 ms.author: dkshir
-ms.date: 09/05/2018
+ms.date: 10/08/2018
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 45890b4bd474c010b2b086be0405b79d340aeebd
-ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
+ms.openlocfilehash: 850f9b28c112c11fd98a8abc81a1811cd26d81cc
+ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45603159"
+ms.lasthandoff: 10/12/2018
+ms.locfileid: "49166029"
 ---
 # <a name="use-the-azure-maps-map-control"></a>Az Azure Maps térkép vezérlőelem használata
 
@@ -32,7 +32,7 @@ A térkép vezérlőelem ügyféloldali Javascript-kódtár használatával egy 
     <script src="https://atlas.microsoft.com/sdk/js/atlas.min.js?api-version=1"></script>
     ```
 
-3. Annak érdekében, hogy a render egy új térkép a böngészőben, adjon hozzá egy **#map** hivatkozzon a `<style>` elem:
+3. Megjelenítése egy új térkép a böngészőben, adjon hozzá egy **#map** hivatkozzon a `<style>` elem:
 
     ```html
     <style>
@@ -43,14 +43,14 @@ A térkép vezérlőelem ügyféloldali Javascript-kódtár használatával egy 
     </style>
     ```
 
-4. A térkép vezérlőelem inicializálásához a html törzsében új definiálására, és hozzon létre egy parancsfájlt. A parancsfájl a saját az Azure Maps-fiók kulcsot használni. Ha hozzon létre egy fiókot, vagy keresse meg a, tekintse meg kell [az Azure Maps-fiók és kulcsok kezelése](how-to-manage-account-keys.md).
+4. A térkép vezérlőelem inicializálása, új definiálására a html törzsében, és hozzon létre egy parancsfájlt. A parancsfájl a saját az Azure Maps-fiók kulcsot használni. Ha hozzon létre egy fiókot, vagy keresse meg a, tekintse meg kell [az Azure Maps-fiók és kulcsok kezelése](how-to-manage-account-keys.md). A **setLanguage** metódus adja meg a használni kívánt nyelvet, térképfeliratait és vezérlők. A támogatott nyelvek további információkért lásd: [támogatott nyelvek](https://docs.microsoft.com/azure/azure-maps/supported-languages).
 
     ```html
     <div id="map">
         <script>
-            var MapsAccountKey = "<_your account key_>";
+            atlas.setSubscriptionKey("<_your account key_>");
+            atlas.setLanguage("en");
             var map = new atlas.Map("map", {
-                "subscription-key": MapsAccountKey,
                 center: [-122.33263,47.59093],
                 zoom: 12
             });

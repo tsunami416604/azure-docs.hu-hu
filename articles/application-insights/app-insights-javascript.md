@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/14/2017
 ms.author: mbullwin
-ms.openlocfilehash: 70269fc71fcb2ef9158b50d3bb281097abee0740
-ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
+ms.openlocfilehash: 6d826702d8302246a225ebfcdf0a5987cf9d2045
+ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38991329"
+ms.lasthandoff: 10/12/2018
+ms.locfileid: "49167052"
 ---
 # <a name="application-insights-for-web-pages"></a>Application Insights weblapokhoz
 Megismerheti a weblap vagy alkalmazás teljesítményét és használatát. Ha a Visual Studio [Application Insightst](app-insights-overview.md) a lap szkriptjeihez adja, megkapja az oldalbetöltések és AJAX-hívások időzítését, a böngészőkivételek és az AJAX-hibák számát és részleteit, valamint a felhasználók és munkamenetek számát. Ezek mindegyike szegmentálható lap, ügyfél operációs rendszere és böngészőverziója, földrajzi hely és más dimenziók alapján. Beállíthat riasztásokat a hibaszámokról és a lassú lapbetöltésekről. Ha nyomkövetési hívásokat szúr be a JavaScript-kódba, nyomon követheti a webalkalmazás különböző szolgáltatásainak használati módját is.
@@ -48,12 +48,6 @@ Ha nincs erőforrása, hozza létre azt:
 *Máris kérdései vannak?* [További információk erőforrások létrehozásáról](app-insights-create-new-resource.md).
 
 ### <a name="add-the-sdk-script-to-your-app-or-web-pages"></a>Az SDK-szkript hozzáadása az alkalmazáshoz vagy weblapokhoz
-A Gyors üzembe helyezés területen kérje le a weblapok szkriptjét:
-
-![Az alkalmazás áttekintési panelén válassza a Gyors üzembe helyezés, Kód letöltése a weblapok figyeléséhez lehetőséget. Másolja a szkriptet.](./media/app-insights-javascript/02-monitor-web-page.png)
-
-> [!NOTE]
-> Az *első lépések* az Application Insights-erőforrás létrehozásakor kiválasztott alkalmazástípustól függően eltérőek lehetnek. Ha az alkalmazás nem tartalmaz szkriptet az előző képernyőképen láthatóhoz hasonló alkalmazásszkriptet, akkor használja a következő szkriptet.
 
 ```HTML
 <!-- 
@@ -127,7 +121,7 @@ Nyissa meg a Böngésző panelt a felhasználók böngészőinek összesített t
 
 ![A portal.azure.com címen nyissa meg az alkalmazás erőforrását, és kattintson a Beállítások, Böngésző lehetőségre](./media/app-insights-javascript/03.png)
 
-Még nincsenek adatok? Kattintson a **Frissítés** gombra a lap tetején. Még mindig semmi? Lásd: [Hibaelhárítás](app-insights-troubleshoot-faq.md).
+Még nincsenek adatok? Kattintson a **Frissítés gombra a lap tetején. Még mindig semmi? Lásd: [Hibaelhárítás](app-insights-troubleshoot-faq.md).
 
 A Böngésző panel [Metrikaböngésző panel](app-insights-metrics-explorer.md) előre beállított szűrőkkel és diagramkijelölésekkel. Ha szeretné, szerkesztheti az időtartomány, a szűrők és a diagram konfigurációját, és kedvencként mentheti az eredményt. Kattintson az **Alapértelmezések visszaállítása** gombra, hogy visszaállítsa az eredeti panelkonfigurációt.
 

@@ -9,12 +9,12 @@ ms.date: 09/15/2018
 ms.service: application-insights
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 6262c7029a76deec2dc1169783e9cbf6311fc3f1
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 853fd1e9939631b6c459caf89994299e7a8406b0
+ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46958271"
+ms.lasthandoff: 10/12/2018
+ms.locfileid: "49165533"
 ---
 # <a name="collect-distributed-traces-from-go-preview"></a>Elosztott nyomkövetések gyűjtéséhez a Góról (előzetes verzió)
 
@@ -182,47 +182,47 @@ Először meg kell létrehoznia az Application Insights-erőforrást egy kialak�
             log.Fatal(http.ListenAndServe(":50030", &ochttp.Handler{Propagation: &tracecontext.HTTPFormat{}}))
         
         }
-        ```
+     ```
 
-3. Once the simple go app is running navigate to `http://localhost:50030`. Each refresh of the browser will generate the text "hello world" accompanied by corresponding span data that is picked up by the local forwarder.
+3. Miután az egyszerű alkalmazás fut-e lépjen `http://localhost:50030`. A szöveg "hello world" kifejezéssel span megfelelő adatok bejegyzéseit, amelyek a helyi továbbító átveszi a böngésző minden egyes frissítés hoz létre.
 
-4. To confirm that the **local forwarder** is picking up the traces check the `LocalForwarder.config` file. If you followed the steps in the [prerequisite](https://docs.microsoft.com/azure/application-insights/local-forwarder#windows-service), it will be located in `C:\LF-WindowsServiceHost`.
+4. Ellenőrizheti, hogy a **helyi továbbító** vesz fel a nyomkövetések ellenőrzés a `LocalForwarder.config` fájlt. Ha követte a lépéseket a [előfeltétel](https://docs.microsoft.com/azure/application-insights/local-forwarder#windows-service), kell elhelyezni a `C:\LF-WindowsServiceHost`.
 
-    In the image below of the log file, you can see that prior to running the second script where we added an exporter `OpenCensus input BatchesReceived` was 0. Once we started running the updated script `BatchesReceived` incremented equal to the number of values we entered:
+    Az alábbi ábrán a naplófájl, láthatja, hogy hol hozzáadtunk egy exportáló a második szkript futtatása előtt `OpenCensus input BatchesReceived` 0. Hogy megkezdése a frissített szkript futtatása után `BatchesReceived` azt a megadott értékek száma egyenlő a növekménye:
     
-    ![New App Insights resource form](./media/opencensus-go/0004-batches-received.png)
+    ![Új App Insights-erőforrás űrlap](./media/opencensus-go/0004-batches-received.png)
 
-## Start monitoring in the Azure portal
+## <a name="start-monitoring-in-the-azure-portal"></a>Monitorozás indítása az Azure Portalon
 
-1. You can now reopen the Application Insights **Overview** page in the Azure portal, to view details about your currently running application. Select **Live Metric Stream**.
+1. Most megnyithatja ismét az Application Insights **áttekintése** a jelenleg futó alkalmazás részleteinek megtekintése az Azure Portalon lapot. Válassza ki **élő Metric Stream**.
 
-   ![Screenshot of overview pane with live metric stream selected in red box](./media/opencensus-go/0005-overview-live-metrics-stream.png)
+   ![Az élő metrikai streamet vörös téglalappal jelölve áttekintő panel képernyőképe](./media/opencensus-go/0005-overview-live-metrics-stream.png)
 
-2. If you run the second Go app again and start refreshing the browser for `http://localhost:50030`, you will see live trace data as it arrives in Application Insights from the local forwarder service.
+2. Ha futtassa újra a második Go-alkalmazást, és indítsa el frissíteni a böngészőt a `http://localhost:50030`, látni fogja élő nyomkövetési adatok, a helyi továbbító szolgáltatásból beérkező az Application Insightsban.
 
-   ![Screenshot of live metric stream with performance data displayed](./media/opencensus-go/0006-stream.png)
+   ![Képernyőkép a teljesítményadatok jelenik meg az élő metrikai streamet](./media/opencensus-go/0006-stream.png)
 
-3. Navigate back to the **Overview** page and select **Application Map** for a visual layout of the dependency relationships and call timing between your application components.
+3. Lépjen vissza a **áttekintése** lapon, és válassza **Alkalmazástérkép** mutató vizuális elrendezés az alkalmazás-összetevők közötti hívások időzítését és a függőségi viszonyok.
 
-    ![Screenshot of basic application map](./media/opencensus-go/0007-application-map.png)
+    ![Képernyőkép az alapvető alkalmazástérkép](./media/opencensus-go/0007-application-map.png)
 
-    Since we were only tracing one method call, our application map isn't as interesting. But application map can scale to visualize far more distributed applications:
+    Azt is csak nyomkövetés egy metódus hívása, mert az alkalmazás-hozzárendelés nem is érdekes. De alkalmazástérkép méretezhető sokkal könnyebben elosztott alkalmazás megjelenítése:
 
-   ![Application Map](./media/app-insights-nodejs-quick-start/application-map.png)
+   ![Alkalmazástérkép](./media/app-insights-nodejs-quick-start/application-map.png)
 
-4. Select **Investigate Performance** to perform detailed performance analysis and determine the root cause of slow performance.
+4. Válassza ki **teljesítményének vizsgálata** részletes teljesítményelemzését végez, és a lassú teljesítmény okának meghatározásához.
 
-    ![Screenshot of performance pane](./media/opencensus-go/0008-performance.png)
+    ![Teljesítmény panel képernyőképe](./media/opencensus-go/0008-performance.png)
 
-5. Selecting **Samples** and then clicking on any of the samples that appear in the right-hand pane will launch the end-to-end transaction details experience. While our sample app will just show us a single event, a more complex application would allow you to explore the end-to-end transaction down to level of an individual event's call stack.
+5. Kiválasztásával **minták** és bármely, a minták jelennek meg a jobb oldali ablaktáblán, majd kattintson a végpontok közötti tranzakció részletei élmény elindul. Mintaalkalmazásunk ugyanúgy jelennek meg velünk a kapcsolatot egy adott eseményhez, miközben olyan összetettebb alkalmazást szeretne tárhatja fel az egyéni esemény hívási verem szintre a végpontok közötti tranzakció.
 
-     ![Screenshot of end-to-end transaction interface](./media/opencensus-go/0009-end-to-end-transaction.png)
+     ![Végpontok közötti tranzakció felület képernyőképe](./media/opencensus-go/0009-end-to-end-transaction.png)
 
-## OpenCensus trace for Go
+## <a name="opencensus-trace-for-go"></a>A Góhoz készült OpenCensus nyomkövetési
 
-We only covered the basics of integrating OpenCensus for Go with the local forwarder and Application Insights. The [official OpenCensus Go usage guidance](https://godoc.org/go.opencensus.io) covers more advanced topics.
+Csak megismerte a Góhoz készült OpenCensus integrálása a helyi továbbító és az Application Insights alapjait. A [hivatalos OpenCensus Go használati útmutatásért](https://godoc.org/go.opencensus.io) speciális témaköröket tartalmazza.
 
-## Next steps
+## <a name="next-steps"></a>További lépések
 
-* [Application map](./app-insights-app-map.md)
-* [End-to-end performance monitoring](./app-insights-tutorial-performance.md)
+* [Alkalmazástérkép](./app-insights-app-map.md)
+* [Teljes körű alkalmazásteljesítmény-figyelés](./app-insights-tutorial-performance.md)

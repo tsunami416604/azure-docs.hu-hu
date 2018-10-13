@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 09/06/2018
 ms.author: jeffpatt
 ms.component: files
-ms.openlocfilehash: 3565793347a8c9704e51e893e5aa916cf54cab8e
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.openlocfilehash: b53be5a5683ca8fcc8760a2d4cb7e766904a44a3
+ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49115573"
+ms.lasthandoff: 10/12/2018
+ms.locfileid: "49167664"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Azure-fájlok szinkronizálásának hibaelhárítása
 Az Azure File Sync használatával fájlmegosztásainak a szervezet az Azure Files között, miközben gondoskodik a rugalmasságát, teljesítményét és kompatibilitását a helyszíni fájlkiszolgálók. Az Azure File Sync Windows Server az Azure-fájlmegosztás gyors gyorsítótáraivá alakítja át. Helyileg, az adatok eléréséhez a Windows Serveren elérhető bármely protokollt használhatja, beleértve az SMB, NFS és FTPS. Tetszőleges számú gyorsítótárak világszerte igény szerint is rendelkezhet.
@@ -135,6 +135,21 @@ A probléma megoldásához hajtsa végre az alábbi lépéseket:
 2. Ellenőrizze a tűzfalakról és Proxykról beállításai megfelelően vannak konfigurálva:
     - Ha a kiszolgáló egy tűzfal mögött található, ellenőrizze a 443-as kimenő porton engedélyezve van. Ha a tűzfal adott tartományokra korlátozza a forgalmat, erősítse meg a tartományokat, a tűzfal szereplő [dokumentáció](https://docs.microsoft.com/en-us/azure/storage/files/storage-sync-files-firewall-and-proxy#firewall) érhetők el.
     - Ha a kiszolgáló proxy mögött található, a gépre kiterjedő vagy alkalmazásspecifikus Proxybeállítások konfigurálása a proxy szakasz lépéseit követve [dokumentáció](https://docs.microsoft.com/en-us/azure/storage/files/storage-sync-files-firewall-and-proxy#proxy).
+
+<a id="endpoint-noactivity-sync"></a>**Kiszolgálói végpont rendelkezik egy "Nincs tevékenység" állapotát, és a regisztrált kiszolgálók panelen a kiszolgáló állapota "Online"**  
+
+Egy kiszolgálói végpont állapotának "Nincs tevékenység" azt jelenti, hogy a kiszolgálói végpont nem naplózott szinkronizálási tevékenység az elmúlt két órában.
+
+A kiszolgálóvégpontok nem lehetséges, hogy jelentkezzen szinkronizálási tevékenység a következő okok miatt:
+
+- A kiszolgáló elérte az egyidejű szinkronizálási munkamenetek maximális számát. Az Azure File Sync jelenleg támogatja a processzor vagy server 8 active sync-munkamenetek legfeljebb 2 active sync-munkamenetek.
+
+- A kiszolgáló rendelkezik egy aktív VSS szinkronizálási munkamenet (SnapshotSync). Aktív a kiszolgálói végpont VSS szinkronizálási munkamenet esetén más kiszolgálói végpontot a kiszolgálón a kezdő szinkronizálási munkamenet a VSS-szinkronizálási munkamenet befejezéséig nem lehet elindítani.
+
+A kiszolgáló jelenlegi szinkronizálási tevékenység megtekintéséhez [hogyan szinkronizálási munkamenet jelenlegi állapotának figyelése?](#how-do-i-monitor-the-progress-of-a-current-sync-session).
+
+> [!Note]  
+> Ha a kiszolgáló állapota, a regisztrált kiszolgálók panelen "Jelenik meg a kapcsolat nélküli", hajtsa végre a leírt lépéseket a [kiszolgálói végpont rendelkezik egy "Nincs tevékenység" vagy "Függő" állapotát, és a regisztrált kiszolgálók panelen a kiszolgáló állapota "Offline jelenik meg" ](#server-endpoint-noactivity) szakaszban.
 
 ## <a name="sync"></a>Sync
 <a id="afs-change-detection"></a>**Ha Létrehoztam egy fájlt közvetlenül a saját Azure-fájlmegosztást az SMB-n keresztül, vagy a portálon keresztül, mennyi ideig tart a fájl szinkronizálása a szinkronizálási csoport kiszolgálóira?**  

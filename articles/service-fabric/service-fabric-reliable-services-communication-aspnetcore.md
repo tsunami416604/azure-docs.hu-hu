@@ -12,14 +12,14 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: required
-ms.date: 08/29/2018
+ms.date: 10/12/2018
 ms.author: vturecek
-ms.openlocfilehash: 384d0fa32b64706c9d9d9baa0e2e0bbb2ac3c522
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: eb020dfd52140375778cf22c6b70e715a7422761
+ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44719596"
+ms.lasthandoff: 10/13/2018
+ms.locfileid: "49310249"
 ---
 # <a name="aspnet-core-in-service-fabric-reliable-services"></a>ASP.NET Core a Service Fabric Reliable Services
 
@@ -252,6 +252,50 @@ protected override IEnumerable<ServiceReplicaListener> CreateServiceReplicaListe
 Ebben a példában egy egypéldányos példányát `IReliableStateManager` a WebHost függőségi injektálási tároló számára. Ez nem feltétlenül szükséges, de ez lehetővé teszi, hogy `IReliableStateManager` és az MVC-vezérlő műveletmetódusokhoz a Reliable Collections.
 
 Egy `Endpoint` -konfiguráció nevét **nem** megadott `KestrelCommunicationListener` egy állapotalapú service-ben. Ennek a magyarázatát részletesebben a következő szakaszban.
+
+### <a name="configure-kestrel-to-use-https"></a>A Kestrel konfigurálása HTTPS használatára
+A szolgáltatás a Kestrel HTTPS engedélyezésekor kell több figyelési beállításainak megadása.  Frissítés a `ServiceInstanceListener` Végponthttps végpont használatát, és (például a 443-as porton) egy adott portot figyeljen. Ha a webes gazdagépet a Kestrel kiszolgáló használatára konfigurálja, konfigurálnia kell az összes hálózati adapter IPv6-címek figyelésére a Kestrel: 
+
+```csharp
+new ServiceInstanceListener(
+serviceContext =>
+    new KestrelCommunicationListener(
+        serviceContext,
+        "EndpointHttps",
+        (url, listener) =>
+        {
+            ServiceEventSource.Current.ServiceMessage(serviceContext, $"Starting Kestrel on {url}");
+
+            return new WebHostBuilder()
+                .UseKestrel(opt =>
+                {
+                    int port = serviceContext.CodePackageActivationContext.GetEndpoint("EndpointHttps").Port;
+                    opt.Listen(IPAddress.IPv6Any, port, listenOptions =>
+                    {
+                        listenOptions.UseHttps(GetCertificateFromStore());
+                        listenOptions.NoDelay = true;
+                    });
+                })
+                .ConfigureAppConfiguration((builderContext, config) =>
+                {
+                    config.AddJsonFile("appsettings.json", optional: false, reloadOnChange: true);
+                })
+
+                .ConfigureServices(
+                    services => services
+                        .AddSingleton<HttpClient>(new HttpClient())
+                        .AddSingleton<FabricClient>(new FabricClient())
+                        .AddSingleton<StatelessServiceContext>(serviceContext))
+                .UseContentRoot(Directory.GetCurrentDirectory())
+                .UseStartup<Startup>()
+                .UseServiceFabricIntegration(listener, ServiceFabricIntegrationOptions.None)
+                .UseUrls(url)
+                .Build();
+        }))
+```
+
+A jelen oktatóanyagban használt teljes példa: [Kestrel konfigurálása HTTPS használatára](service-fabric-tutorial-dotnet-app-enable-https-endpoint.md#configure-kestrel-to-use-https).
+
 
 ### <a name="endpoint-configuration"></a>Végpont-konfiguráció
 Egy `Endpoint` Kestrel használatához nem szükséges konfiguráció. 

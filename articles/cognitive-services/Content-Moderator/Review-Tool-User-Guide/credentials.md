@@ -9,12 +9,12 @@ ms.component: content-moderator
 ms.topic: article
 ms.date: 06/25/2017
 ms.author: sajagtap
-ms.openlocfilehash: 6477879953dc2bb2c7503eb0b2d4b5effa7b6a11
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: 911d62fc2baa50cce6d40f8b5bcc455f308d21d7
+ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44024655"
+ms.lasthandoff: 10/13/2018
+ms.locfileid: "49309655"
 ---
 # <a name="manage-credentials"></a>Hitelesítő adatok kezelése
 
@@ -66,11 +66,11 @@ Azt is vegye figyelembe az API-végpont a régió azonosítója. Ha például **
 
 ### <a name="resource-id"></a>Erőforrás-azonosító
 
-Az ebben a szakaszban tárgyalt témaköröket a [Azure-fiókjával a felülvizsgálati eszköz-és API-val](credentials.md#how-to-use-your-azure-account-with-the-review-tool) szakaszban. A mező kitöltése általában üresen, kivéve, ha az ad hozzá az Azure erőforrás-azonosító ebben a mezőben az előző szakaszban leírtak szerint.
+Az előző szakasz tárgyalja a mezők halmaza [az Azure-fiókot használja a vizsgálóeszközt és API-val](credentials.md#use-the-azure-account-with-the-review-tool-and-review-api). A mező kitöltése általában üresen, kivéve, ha az ad hozzá az Azure erőforrás-azonosító ebben a mezőben az előző szakaszban leírtak szerint.
 
 ### <a name="workflows"></a>Munkafolyamatok
 
-Ez a mezők halmaza alapján az előző szakaszban tárgyalt témaköröket a [a munkafolyamatok futtatásához az Azure-kulcs használatával](credentials.md#use-the-azure-account-with-the-workflows-in-the-review-tool). Alapértelmezés szerint a vizsgálóeszközt az automatikusan létrehozott próbaverziós kulcsot használja a munkafolyamatok futtatásához, és ez milyen jelenik meg először. A két mező lehetővé teszi a meghatározott időszak és a lemezkép listák képernyő szöveges és képi kiértékelése operatív jelölik.
+Az előző szakasz tárgyalja a mezők halmaza [az Azure-fiók használata a munkafolyamatok a felülvizsgálati eszközben](credentials.md#use-the-azure-account-with-the-workflows-in-the-review-tool). Alapértelmezés szerint a vizsgálóeszközt az automatikusan létrehozott próbaverziós kulcsot használja a munkafolyamatok futtatásához, és ez milyen jelenik meg először. A két mező lehetővé teszi a meghatározott időszak és a lemezkép listák képernyő szöveges és képi kiértékelése operatív jelölik.
 
 ## <a name="next-steps"></a>További lépések
 

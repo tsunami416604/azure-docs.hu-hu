@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/13/2018
 ms.author: asrastog
-ms.openlocfilehash: a4ebb64d14b325680a65ffd52f6a07836c1e6ede
-ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
+ms.openlocfilehash: abc32b726eea55f08a052f29a12f1eb237d4f5d6
+ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/01/2018
-ms.locfileid: "47585679"
+ms.lasthandoff: 10/13/2018
+ms.locfileid: "49311320"
 ---
 # <a name="use-message-routing-to-send-device-to-cloud-messages-to-different-endpoints"></a>Üzenet-útválasztása használatával eszköz – felhő üzeneteket küldhet a különböző végpontok
 
@@ -21,7 +21,7 @@ ms.locfileid: "47585679"
 
 Üzenet-útválasztása lehetővé teszi az eszközökről, a felhőalapú szolgáltatások automatizált, méretezhető és megbízható módon küldhet üzeneteket. Üzenet-útválasztása használható: 
 
-* **Eszköz telemetriai messsages, valamint eseményeket küld** nevezetesen, eszköz-életciklussal kapcsolatos események, és módosítsa a beépített végpont, és egyéni végpontok események ikereszköz. Ismerje meg [útválasztási végpontok](##routing-endpoints).
+* **Eszköz telemetriai messsages, valamint eseményeket küld** nevezetesen, eszköz-életciklussal kapcsolatos események, és módosítsa a beépített végpont, és egyéni végpontok események ikereszköz. Ismerje meg [útválasztási végpontok](#routing-endpoints).
 
 * **Előtt érdemes átirányítására a különböző végpontok** részletes lekérdezéseket alkalmazásával. Üzenet-útválasztása lehetővé teszi az üzenet tulajdonságai és üzenet szövegét, valamint device twin címkék és eszköz-ikertulajdonságok lekérdezést. További információ [lekérdezések az üzenet-útválasztása](iot-hub-devguide-routing-query-syntax.md).
 

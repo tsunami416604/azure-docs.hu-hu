@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/29/2018
 ms.author: dobett
-ms.openlocfilehash: 041eed3a65faeb4e6c19cd9220a9e6393e18532a
-ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
+ms.openlocfilehash: 3e6e42da7f3c1423ecf2de507f3c2f0257fbb21f
+ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47452207"
+ms.lasthandoff: 10/13/2018
+ms.locfileid: "49311235"
 ---
 # <a name="understand-the-identity-registry-in-your-iot-hub"></a>Az IoT hub eszközidentitás-jegyzék ismertetése
 
@@ -29,7 +29,9 @@ Használja az eszközidentitás-jegyzék, ha szüksége:
 * A hub eszköz vagy a modul felé néző végpontok száma – eszköz / /-modul hozzáférés szabályozása.
 
 > [!NOTE]
-> Az eszközidentitás-jegyzék nem tartalmaz minden olyan alkalmazás – is szolgáltatásspecifikus metaadatokat.
+> * Az eszközidentitás-jegyzék nem tartalmaz minden olyan alkalmazás – is szolgáltatásspecifikus metaadatokat.
+> * Identitás- és modul ikermodul jelenleg nyilvános előzetes verzióban. A szolgáltatás alatt fog támogatni modul identitás általános esetén érhető el.
+>
 
 ## <a name="identity-registry-operations"></a>Identitásjegyzék műveletei
 
@@ -40,7 +42,6 @@ Az IoT Hub-identitásjegyzék tünteti fel a következő műveleteket:
 * Beolvasása azonosító alapján eszköz vagy a modul identitás
 * Törli az eszköz vagy a modul identitás
 * Legfeljebb 1000 identitások listázása
-> Identitás- és modul ikermodul jelenleg nyilvános előzetes verzióban. A szolgáltatás alatt fog támogatni modul identitás általános esetén érhető el.
 * Az Azure blob storage-eszközidentitások exportálása
 * Eszközidentitások importálása az Azure blob storage-ból
 

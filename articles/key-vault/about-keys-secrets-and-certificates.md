@@ -12,21 +12,21 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/09/2018
+ms.date: 10/12/2018
 ms.author: bryanla
-ms.openlocfilehash: b1330f2f912f3e5974a43e43f649576561fbcc11
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: 1d6f84612dd2bac34c238ad7eaf323dc7fa00ba3
+ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49079225"
+ms.lasthandoff: 10/13/2018
+ms.locfileid: "49311354"
 ---
 # <a name="about-keys-secrets-and-certificates"></a>Tudnivalók a kulcsok, titkos kódok és tanúsítványok
 
 Az Azure Key Vault lehetővé teszi, hogy a Microsoft Azure-alkalmazások és felhasználók tárolhatják és számos különböző típusú adatok titkos kulcs vagy kulcs használata:
 
 - Titkosítási kulcsok: több kulcstípusok és algoritmusokat támogatja, és lehetővé teszi az értékes kulcsok használható hardveres biztonsági modulok (HSM). 
-- Titkos kódok: Lehetővé teszi, hogy a felhasználó titkos adatait, például a jelszavak biztonságos tárolására. A titkok olyan mérete korlátozott oktett objektumok nem adott sémantikou. 
+- Titkos kódok: Biztosít, mint a jelszavak és adatbázis-kapcsolati karakterláncok titkok biztonságos tárolására.
 - Tanúsítványok: Támogatja a tanúsítványok, kulcsok és titkos kulcsok épülnek, és adja hozzá az automatikus megújítási funkciót.
 - Az Azure Storage: Egy Azure Storage-fiók kulcsok kezelheti az Ön számára. Belsőleg, a Key Vault egy Azure Storage-fiók kulcsok (sync) listában, és (elforgatás) újragenerálja a kulcsokat rendszeres időközönként. 
 
@@ -94,7 +94,7 @@ Titkosítási kulcsok a Key Vaultban JSON webes kulcs [JWK] objektumként jelenn
 
      További információ a földrajzi határokon belül: [Microsoft Azure Trust Center](https://azure.microsoft.com/support/trust-center/privacy/)  
 
-A Key Vault támogatja az RSA és az elliptikus görbe alapú kulcsok csak. Jövőbeli kiadások támogathatja más kulcstípusok, például a szimmetrikus.
+A Key Vault támogatja az RSA és az elliptikus görbe alapú kulcsok csak. 
 
 -   **EK**: "Soft" elliptikus görbe alapú kulcsot.
 -   **HSM-EK**: "Merevlemez" elliptikus görbe alapú kulcsot.
@@ -105,7 +105,7 @@ A Key Vault támogatja a 2048, 3072 és 4096-méretek RSA-kulcsok. A Key Vault t
 
 ### <a name="cryptographic-protection"></a>Titkosítási védelme
 
-A Key Vault használó titkosítási moduljait HSM, illetve szoftver –, hogy-e FIPS szabványnak (FIPS) érvényesítve. Nem kell különösebb FIPS-módban történő futtatására. Ha Ön **létrehozása** vagy **importálása** HSM által védett kulcsokat, biztosak lehetünk belül érvényesítve a FIPS 140-2 2 vagy magasabb szintű HSM feldolgozásra. Ha Ön **létrehozása** vagy **importálása** , szoftveres védelemmel ellátott kulcsokkal, azok feldolgozott belül titkosítási moduljait érvényesítve a 1-es szintű FIPS 140-2 vagy újabb verziója. További információkért lásd: [kulcsokat és a kulcstípusok](#keys-and-key-types).
+A Key Vault használó titkosítási moduljait HSM, illetve szoftver –, hogy-e FIPS szabványnak (FIPS) érvényesítve. Nem kell különösebb FIPS-módban történő futtatására. Kulcsok **létrehozott** vagy **importált** , HSM-védelemmel ellátott vannak feldolgozott belül HSM, érvényesítve a FIPS 140-2 2 vagy magasabb szintű. Kulcsok **létrehozott** vagy **importált** szoftveres védelemmel ellátott, mint feldolgozása belül érvényesítve a FIPS 140-2 1 vagy magasabb szintű titkosítási moduljait. További információkért lásd: [kulcsokat és a kulcstípusok](#keys-and-key-types).
 
 ###  <a name="ec-algorithms"></a>EK algoritmusok
  A Key Vault HSM-EK és a kulcsokat a következő algoritmus azonosítók használata támogatott. 
@@ -136,13 +136,13 @@ A Key Vault használó titkosítási moduljait HSM, illetve szoftver –, hogy-e
 
 A Key Vault támogatja a következő műveleteket az objektumok:  
 
--   **Hozzon létre**: lehetővé teszi, hogy hozzon létre egy kulcsot a Kulcstartóban lévő ügyfelekre. A kulcs értékét a Key Vault által generált és tárolja, és nem az ügyfél általánosan elérhető. Aszimmetrikus (és a jövőben elliptikus görbe alapú és Symmetric) lehetséges, hogy hozza létre a kulcsokat a Key vaultban.  
--   **Importálása**: lehetővé teszi, hogy egy ügyfél egy meglévő kulcs importálása a Key vaulthoz. A Key Vault használatával számos különböző csomagolási módszerrel belül egy JWK-szerkezet aszimmetrikus kulcsokhoz is importálhatók. A jövőben elliptikus görbe alapú és Symmetric is lesznek csomagolva azonos.
+-   **Hozzon létre**: lehetővé teszi, hogy hozzon létre egy kulcsot a Kulcstartóban lévő ügyfelekre. A kulcs értékét a Key Vault által generált és tárolja, és nem az ügyfél általánosan elérhető. A Key Vaultban aszimmetrikus kulcsokhoz lehet létrehozni.  
+-   **Importálása**: lehetővé teszi, hogy egy ügyfél egy meglévő kulcs importálása a Key vaulthoz. A Key Vault használatával számos különböző csomagolási módszerrel belül egy JWK-szerkezet aszimmetrikus kulcsokhoz is importálhatók. 
 -   **Frissítés**: lehetővé teszi, hogy a korábban tárolja a Key Vault-kulcshoz tartozó metaadatok (kulcsattribútum) módosításához szükséges engedélyekkel rendelkező ügyfelet.  
 -   **Törlés**: lehetővé teszi, hogy egy ügyfél a megfelelő engedélyekkel a Key Vaultból kulcs törlése.  
 -   **Lista**: lehetővé teszi, hogy egy ügyfél egy adott Key vaultban a összes kulcsok listázását.  
 -   **Verziók listázása**: lehetővé teszi, hogy az ügyfél egy adott kulcs egy adott kulcstartó összes verzió listázása.  
--   **Első**: lehetővé teszi, hogy egy ügyfél a nyilvános részét a Key vault-kulcstartó egy adott kulcs lekéréséhez.  
+-   **Első**: lehetővé teszi, hogy egy ügyfél a nyilvános részét a Key Vaultban egy adott kulcs lekéréséhez.  
 -   **Biztonsági mentés**: egy kulcs, védett formátumban exportálja.  
 -   **Visszaállítás**: importál egy biztonsági másolatból kulcsot.  
 
@@ -226,7 +226,7 @@ Kulcsok való használatáról további információkért lásd: [kulcs a Key Va
 
 ### <a name="working-with-secrets"></a>Titkos kulcsok használata
 
-Key Vault titkos oktett sorozatok maximális mérettel minden 25 kilobájt. A Key Vault szolgáltatás szemantika nem biztosít, például a következők. Csupán az adatokat fogad, titkosítja azokat, tárolja és egy titkos kulcs azonosítóját ("id") adja vissza. Az azonosító lekéréséhez a titkos kulcsot egy későbbi időpontban használható.  
+A fejlesztő szempontból a Key Vault API-k fogadja el, és karakterláncként titkos értéket ad vissza. A Key Vault belsőleg, tárolja és kezeli a titkos kulcsok sorrendje oktetben (8 bites bájt), mint minden 25 kilobájt maximális mérettel. A Key Vault szolgáltatás szemantika nem biztosít, például a következők. Csupán az adatokat fogad, titkosítja azokat, tárolja és egy titkos kulcs azonosítóját ("id") adja vissza. Az azonosító lekéréséhez a titkos kulcsot egy későbbi időpontban használható.  
 
 Szigorúan bizalmas adatok esetén az ügyfelek figyelembe kell venni az kiegészítő védelmi rétegeket, az adatokat. Tárolás előtt egy külön védelmi kulcs használata a Key Vaultban az adatok titkosítása látható egy példa.  
 
@@ -247,7 +247,7 @@ Nincsenek további csak olvasható attribútumok telepítésben lévő semmilyen
 
 #### <a name="date-time-controlled-operations"></a>Dátum-idő ellenőrzött műveletek
 
-A titkos kulcs **első** kívül nem még érvényes, és a lejárt titkos adatait, a fog működni a művelet a *nbf* / *exp* ablak. A titkos kód hívása **lekérése** művelet, nem még érvényes titkos kulcs, a tesztelési célokra használható. Beolvasása (**első**ing) egy lejárt titkos helyreállítási műveletekhez használható.
+A titkos kulcs **első** kívül nem még érvényes, és a lejárt titkos adatait, a fog működni a művelet a *nbf* / *exp* ablak. A titkos kód hívása **lekérése** művelet, nem még érvényes titkos kulcs, a tesztelési célokra használható. Beolvasása (**első**sítése) egy lejárt titkos helyreállítási műveletekhez használható.
 
 Az adattípusok további információkért lásd: [adattípusok](#data-types).  
 
@@ -281,7 +281,7 @@ További alkalmazások – is szolgáltatásspecifikus metaadatokat címkék for
 
 A x509 kezelését biztosítja a Key Vault tanúsítványokkal támogatási tanúsítványok és az alábbi viselkedés tapasztalható:  
 
--   Lehetővé teszi, hogy a tanúsítvány tulajdonosát, hogy hozzon létre egy tanúsítványt, vagy egy meglévő tanúsítvány importálása a Key Vault létrehozási folyamata keresztül. Ez magában foglalja, mindkettő önaláírt, és a hitelesítésszolgáltató generált tanúsítványok.
+-   Lehetővé teszi, hogy a tanúsítvány tulajdonosát, hogy hozzon létre egy tanúsítványt, vagy egy meglévő tanúsítvány importálása a Key Vault létrehozási folyamata keresztül. Tartalmazza a mindkét önaláírt, és a hitelesítésszolgáltató tanúsítványokat jön létre.
 -   Lehetővé teszi, hogy a Key Vault-tanúsítvány tulajdonosának biztonságos tárolását és kezelését a X509 megvalósításához tanúsítványok titkos kulcs adatai közreműködése nélkül.  
 -   Lehetővé teszi, hogy a tanúsítvány tulajdonosát, hogy olyan szabályzatot, amely arra utasítja a Key Vault a tanúsítvány életciklusának kezelésére.  
 -   Lehetővé teszi, hogy a tanúsítvány tulajdonos kapcsolattartási kapcsolatos adatok megadása az értesítésre életciklus-események lejárati és a tanúsítvány megújítása.  
@@ -406,7 +406,7 @@ Ha egy tanúsítási szabályzat automatikus megújítás értékre van állítv
 -   Igényelje a tanúsítvány
 -   Tanúsítványmegújítás figyelmezteti, ha a tanúsítvány megújítása sikeres volt, vagy hiba történt, ha a tanúsítvány manuális megújítás igénylő után.  
 
- Ha egy tanúsítvány-házirend van beállítva, manuálisan megújított (csak e-mailekhez), majd értesítést küld, ha a tanúsítvány megújításához ideje.  
+ A tanúsítási szabályzat, amely manuálisan kell megújítani (csak az e-mailekhez), amikor egy értesítés érkezik, amikor a tanúsítvány megújításához.  
 
 ### <a name="certificate-access-control"></a>Tanúsítvány hozzáférés-vezérlés
 

@@ -1,26 +1,19 @@
 ---
 title: Csatlakozni, konfigurálja és aktiválni az Azure Data Box Gateway az Azure Portalon |} A Microsoft Docs
 description: A Data Box-átjáró üzembe helyezése harmadik oktatóanyag arra utasítja, hogy csatlakozzon, és állítsa be, és aktiválja a virtuális eszköz.
-services: databox-edge-gateway
-documentationcenter: NA
+services: databox
 author: alkohli
-manager: twooley
-editor: ''
-ms.assetid: ''
-ms.service: databox-edge-gateway
-ms.devlang: NA
+ms.service: databox
+ms.subservice: gateway
 ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 09/27/2018
 ms.author: alkohli
-ms.custom: ''
-ms.openlocfilehash: 77ccc6ebbb48ab3d7ce22d6c593bd62aa8dec3ac
-ms.sourcegitcommit: 3150596c9d4a53d3650cc9254c107871ae0aab88
+ms.openlocfilehash: 2126871472b044f9b8c0df99c7cb14df348eab0e
+ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47419480"
+ms.lasthandoff: 10/12/2018
+ms.locfileid: "49166746"
 ---
 # <a name="tutorial-connect-set-up-activate-azure-data-box-gateway-preview"></a>Oktatóanyag: Csatlakozás, állítsa be, aktiválja az Azure Data Box Gateway (előzetes verzió) 
 
@@ -40,7 +33,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 
 > [!IMPORTANT]
-> - Data Box-átjáró az előzetes verzióban. A megoldás megrendelése és üzembe helyezése előtt tekintse át az [Azure előzetes verziókra vonatkozó szolgáltatási feltételeit](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). 
+> - A Data Box Gateway előzetes verzióban érhető el. A megoldás megrendelése és üzembe helyezése előtt tekintse át az [Azure előzetes verziókra vonatkozó szolgáltatási feltételeit](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). 
 
 
 ## <a name="prerequisites"></a>Előfeltételek
@@ -88,7 +81,7 @@ Ekkor a számítógép a **irányítópult** eszköze.
    
     Hálózati beállítások konfigurálásakor vegye figyelembe a következőket:
 
-    - DHCP engedélyezve van a környezetben, ha a hálózati adapterek automatikusan megtörténik. Ezért egy IP-cím, alhálózat, átjáró és DNS automatikusan hozzárendeli.
+    - Ha a DHCP engedélyezve van a környezetben, a hálózati adapterek beállítása automatikusan megtörténik. Ezért egy IP-cím, alhálózat, átjáró és DNS automatikusan hozzárendeli.
     - Ha a DHCP nem engedélyezett, hozzárendelheti statikus IP-címek, szükség esetén.
     - A hálózati adapter IPv4-t konfigurálhatja.
    
@@ -127,7 +120,7 @@ Ekkor a számítógép a **irányítópult** eszköze.
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben az oktatóanyagban megismerkedett a Data Box Gateway témakörök például:
+Ebben az oktatóanyagban a Data Box Gatewayjel kapcsolatos alábbi témakörökkel ismerkedett meg:
 
 > [!div class="checklist"]
 > * Csatlakozás virtuális eszközhöz

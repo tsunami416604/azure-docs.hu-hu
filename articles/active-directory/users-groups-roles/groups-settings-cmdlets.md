@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.component: users-groups-roles
 ms.topic: article
-ms.date: 06/13/2018
+ms.date: 10/12/2018
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
-ms.openlocfilehash: f453afee6bc26c5ddcdb5018405ec69455f8f7e8
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 1e8f5728697e63737ec44fedd8ed336366241f66
+ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46295138"
+ms.lasthandoff: 10/13/2018
+ms.locfileid: "49310742"
 ---
 # <a name="azure-active-directory-cmdlets-for-configuring-group-settings"></a>Azure Active Directory-parancsmagok csoportbeállítások konfigurálásához
 Ez a cikk útmutatást az Azure Active Directory (Azure AD) PowerShell-parancsmagok használatával hozhat létre, és a csoportokat. Ez a tartalom csak az Office 365-csoportok (más néven egyesített csoportok) vonatkozik. 
@@ -27,7 +27,7 @@ Ez a cikk útmutatást az Azure Active Directory (Azure AD) PowerShell-parancsma
 > [!IMPORTANT]
 > Egyes beállítások egy Azure Active Directory Premium P1-licenc szükséges. További információkért lásd: a [sablonbeállítások](#template-settings) tábla.
 
-További információ a nem rendszergazdai felhasználók számára, hogy hogyan *biztonsági* csoportok beállítása `Set-MsolCompanySettings -UsersPermissionToCreateGroupsEnabled $False` leírtak szerint [Set-MSOLCompanySettings](https://docs.microsoft.com/powershell/module/msonline/set-msolcompanysettings?view=azureadps-1.0). 
+További információ a biztonsági csoportok létrehozása a nem rendszergazdai felhasználók megakadályozása beállítása `Set-MsolCompanySettings -UsersPermissionToCreateGroupsEnabled $False` leírtak szerint [Set-MSOLCompanySettings](https://docs.microsoft.com/powershell/module/msonline/set-msolcompanysettings?view=azureadps-1.0). 
 
 Az Office 365-csoportok beállításai vannak konfigurálva, a beállítási objektum és a egy SettingsTemplate objektum használatával. Kezdetben nem jelenik meg minden olyan beállítási objektumok a címtárban, mivel a címtárban az alapértelmezett beállításokkal van konfigurálva. Módosítsa az alapértelmezett beállításokat, létre kell hoznia egy új beállítások objektum beállítások sablon használatával. A Microsoft által definiált beállítások sablonok. Nincsenek számos különböző beállítások sablont. A címtár az Office 365-beállítások konfigurálása, használhatja a "Group.Unified" nevű sablont. Egyetlen csoportnak az Office 365-csoport beállításainak konfigurálásához használja a "Group.Unified.Guest" nevű sablont. Ez a sablon segítségével kezelheti a vendéghozzáférés az Office 365-csoportot. 
 
@@ -45,12 +45,12 @@ Ezeket a lépéseket beállítások létrehozása könyvtár szintjén, amely az
 
 1. A Címtárbeállítások parancsmagok meg kell adnia a használni kívánt SettingsTemplate azonosítója. Ha nem ismeri ezt az Azonosítót, ez a parancsmag minden beállítások sablonok listáját adja vissza:
   
-  ```
+  ```powershell
   PS C:> Get-AzureADDirectorySettingTemplate
   ```
   Ez a parancsmag-hívást az összes sablon elérhető adja vissza:
   
-  ```
+  ```powershell
   Id                                   DisplayName         Description
   --                                   -----------         -----------
   62375ab9-6b52-47ed-826b-58e47e0e304b Group.Unified       ...
@@ -62,32 +62,33 @@ Ezeket a lépéseket beállítások létrehozása könyvtár szintjén, amely az
   ```
 2. Használati útmutató arra az esetre URL-címet hozzáadni, először le szeretné kérni az SettingsTemplate objektum, amely meghatározza a használati útmutató arra az esetre URL-cím értéket; vagyis a Group.Unified sablon:
   
-  ```
+  ```powershell
   $Template = Get-AzureADDirectorySettingTemplate -Id 62375ab9-6b52-47ed-826b-58e47e0e304b
   ```
 3. Ezután hozza létre a sablonon alapuló új beállítások objektum:
   
-  ```
+  ```powershell
   $Setting = $template.CreateDirectorySetting()
   ```  
 4. Ezután frissítse a használati útmutató arra az esetre értéket:
   
-  ```
+  ```powershell
   $setting["UsageGuidelinesUrl"] = "https://guideline.example.com"
-
   ```  
 5. Végül a alkalmazni a beállításokat:
   
-  ```
+  ```powershell
   New-AzureADDirectorySetting -DirectorySetting $setting
   ```
 
 Sikeres telepítést a parancsmag az új beállítások objektum Azonosítóját adja vissza:
-  ```
+
+  ```powershell
   Id                                   DisplayName TemplateId                           Values
   --                                   ----------- ----------                           ------
   c391b57d-5783-4c53-9236-cefb5c6ef323             62375ab9-6b52-47ed-826b-58e47e0e304b {class SettingValue {...
   ```
+
 ## <a name="template-settings"></a>Sablon beállításai
 Az alábbiakban a Group.Unified SettingsTemplate megadott beállítások. Hiányában az ezeket a szolgáltatásokat egy Azure Active Directory Premium P1-licenc szükséges. 
 
@@ -112,27 +113,27 @@ Az alábbiakban a Group.Unified SettingsTemplate megadott beállítások. Hiány
 Ezeket a lépéseket olvassa el a könyvtár szintjén beállításokat, amelyeket a alkalmazni az összes Office-csoportok a címtárban.
 
 1. Olvassa el az összes meglévő címtár beállításai:
-  ```
+  ```powershell
   Get-AzureADDirectorySetting -All $True
   ```
   Ez a parancsmag az összes címtár beállításai listáját adja vissza:
-  ```
+  ```powershell
   Id                                   DisplayName   TemplateId                           Values
   --                                   -----------   ----------                           ------
   c391b57d-5783-4c53-9236-cefb5c6ef323 Group.Unified 62375ab9-6b52-47ed-826b-58e47e0e304b {class SettingValue {...
   ```
 
 2. Olvassa el az egy adott csoport összes beállítása:
-  ```
+  ```powershell
   Get-AzureADObjectSetting -TargetObjectId ab6a3887-776a-4db7-9da4-ea2b0d63c504 -TargetType Groups
   ```
 
 3. Olvassa el az összes könyvtár beállítások értéket egy adott címtárhoz beállítások objektum, a beállítások azonosító GUID használatával:
-  ```
+  ```powershell
   (Get-AzureADDirectorySetting -Id c391b57d-5783-4c53-9236-cefb5c6ef323).values
   ```
   Ez a parancsmag adja vissza a tartalmazó objektum az adott csoport neveket és értékeket:
-  ```
+  ```powershell
   Name                          Value
   ----                          -----
   ClassificationDescriptions
@@ -152,7 +153,7 @@ Ezeket a lépéseket olvassa el a könyvtár szintjén beállításokat, amelyek
 ## <a name="update-settings-for-a-specific-group"></a>Egy adott csoport beállításainak frissítése
 
 1. Keresse meg a "Groups.Unified.Guest" nevű beállítások sablon
-  ```
+  ```powershell
   Get-AzureADDirectorySettingTemplate
   
   Id                                   DisplayName            Description
@@ -164,20 +165,20 @@ Ezeket a lépéseket olvassa el a könyvtár szintjén beállításokat, amelyek
   5cf42378-d67d-4f36-ba46-e8b86229381d Password Rule Settings ...
   ```
 2. Kérje le a sablonobjektum Groups.Unified.Guest sablon:
-  ```
+  ```powershell
   $Template = Get-AzureADDirectorySettingTemplate -Id 08d542b9-071f-4e16-94b0-74abb372e3d9
   ```
 3. Hozzon létre egy új beállítások objektumot a sablonból:
-  ```
+  ```powershell
   $Setting = $Template.CreateDirectorySetting()
   ```
 
 4. Állítsa a beállítást a szükséges érték:
-  ```
+  ```powershell
   $Setting["AllowToAddGuests"]=$False
   ```
 5. Az új beállítás a szükséges csoport létrehozása a könyvtárban:
-  ```
+  ```powershell
   New-AzureADObjectSetting -TargetType Groups -TargetObjectId ab6a3887-776a-4db7-9da4-ea2b0d63c504 -DirectorySetting $Setting
   
   Id                                   DisplayName TemplateId                           Values
@@ -190,29 +191,23 @@ Ezeket a lépéseket olvassa el a könyvtár szintjén beállításokat, amelyek
 Ezeket a lépéseket minden Office 365-csoportok a címtárban könyvtár szintjén beállítások frissítése. Ezek a példák feltételezik, hogy már van egy beállítási objektumot a címtárban.
 
 1. Keresse meg a meglévő beállítási objektumot:
-  ```
-  Get-AzureADDirectorySetting | Where-object -Property Displayname -Value "Group.Unified" -EQ
-  
-  Id                                   DisplayName   TemplateId                           Values
-  --                                   -----------   ----------                           ------
-  c391b57d-5783-4c53-9236-cefb5c6ef323 Group.Unified 62375ab9-6b52-47ed-826b-58e47e0e304b {class SettingValue {...
-  
-  $setting = Get-AzureADDirectorySetting –Id c391b57d-5783-4c53-9236-cefb5c6ef323
+  ```powershell
+  $setting = Get-AzureADDirectorySetting -Id (Get-AzureADDirectorySetting | where -Property DisplayName -Value "Group.Unified" -EQ).id
   ```
 2. Frissítse az értéket:
   
-  ```
+  ```powershell
   $Setting["AllowToAddGuests"] = "false"
   ```
 3. A beállítás frissítése:
   
-  ```
+  ```powershell
   Set-AzureADDirectorySetting -Id c391b57d-5783-4c53-9236-cefb5c6ef323 -DirectorySetting $Setting
   ```
 
 ## <a name="remove-settings-at-the-directory-level"></a>A könyvtár szintjén beállítások eltávolítása
 Ez a lépés eltávolítja a könyvtár szintjén beállításokat, amelyeket a alkalmazni az összes Office-csoportok a címtárban.
-  ```
+  ```powershell
   Remove-AzureADDirectorySetting –Id c391b57d-5783-4c53-9236-cefb5c6ef323c
   ```
 

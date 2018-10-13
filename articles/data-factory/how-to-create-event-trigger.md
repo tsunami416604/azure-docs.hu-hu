@@ -10,14 +10,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/23/2018
+ms.date: 10/11/2018
 ms.author: douglasl
-ms.openlocfilehash: 38fbb62de60bc5604210c8ad7339368a04967c27
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.openlocfilehash: 20ee69654a6b19365c9b7c46e1fa11e102168365
+ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48867052"
+ms.lasthandoff: 10/13/2018
+ms.locfileid: "49309354"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-in-response-to-an-event"></a>Hozzon létre egy eseményindítót, amely futtatja a folyamatot az adott esemény
 
@@ -80,7 +80,7 @@ Az alábbi táblázat áttekintést az eseményalapú eseményindítókat kapcso
 Ez a szakasz példákat eseményalapú eseményindító-beállítások.
 
 -   **BLOB elérési útja kezdődik**('/ Tárolónév /"–) fogadja az eseményeket a blobok a tárolóban.
--   **BLOB elérési útja kezdődik**('/ Tárolónév/blobok/Mappanév") – fogadja az eseményeket az azokat a blobokat a containername tároló és a foldername mappába.
+-   **BLOB elérési útja kezdődik**('/ Tárolónév/blobok/Mappanév") – fogadja az eseményeket az azokat a blobokat a containername tároló és a foldername mappába. Is hivatkozhat egy almappájában; például "/ Tárolónév/blobok/mappanév/subfoldername /".
 -   **BLOB elérési útja kezdődik**('/ containername/blobs/foldername/file.txt ") – fogadja az eseményeket egy BLOB, a foldername mappában található a containername tároló file.txt nevű.
 -   **BLOB elérési útja végződik**("file.txt") – egy blobhoz Receives események nevű file.txt bármely elérési úton.
 -   **BLOB elérési útja végződik**('/ containername/blobs/file.txt ") – fogadja az eseményeket egy BLOB tároló containername alatt file.txt nevű.

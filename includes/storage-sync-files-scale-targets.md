@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/18/2018
 ms.author: wgries
 ms.custom: include file
-ms.openlocfilehash: 3f70a8cf2df25f487de7cd1a8c8cbdf9431839f0
-ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
+ms.openlocfilehash: a29f1c4a625552dd958884c6a172bee470e61ca6
+ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43285628"
+ms.lasthandoff: 10/12/2018
+ms.locfileid: "49312495"
 ---
 | Erőforrás | Cél | Rögzített korlátja |
 |----------|--------------|------------|
@@ -30,3 +30,4 @@ ms.locfileid: "43285628"
 | Maximális (fájlok és könyvtárak) biztonsági leíró objektumméret | 4 KiB | Igen |
 | Fájlméret | 100 GiB | Nem |
 | A fájlok helyezhető el a minimális fájlméret | 64 KiB | Igen |
+| Egyidejű szinkronizálási munkamenetek | processzor- és legfeljebb 8 aktív szinkronizálási munkamenetek kiszolgálónként 2 active sync-munkamenetek | Igen |

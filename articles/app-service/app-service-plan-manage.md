@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/09/2017
 ms.author: cephalin
-ms.openlocfilehash: 2c08522df598bd5c6313c3f026efe48e1c4a2c56
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: f426982163a5e49264bc4f222f6869d9cbb40c89
+ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39449359"
+ms.lasthandoff: 10/12/2018
+ms.locfileid: "49166066"
 ---
 # <a name="manage-an-app-service-plan-in-azure"></a>Az Azure App Service-csomag kezelése
 
@@ -57,6 +57,12 @@ Egy [Azure App Service-csomag](azure-web-sites-web-hosting-plans-in-depth-overvi
 
 Áthelyezheti egy alkalmazást egy másik App Service-csomag, mindaddig, amíg a forrás terv és a célelőfizetésbe a _ugyanazt az erőforráscsoportot és a földrajzi régió_.
 
+> [!NOTE]
+> Az Azure minden egyes új App Service-csomag egy telepítési egység, belsőleg nevű egy webtárhely helyez üzembe. Minden egyes régió rendelkezhet számos webtárhelyének, de az alkalmazás csak helyezheti át ugyanazon webtárhelyen létrehozott tervek között. App Service-környezet egy elkülönített webtárhely, így a alkalmazások áthelyezhetők az azonos App Service-környezet a csomagok között, de nem terveket, a másik App Service Environment-környezetek között.
+>
+> A webtárhely azt szeretné, hogy a csomag létrehozásakor nem adható meg, de győződjön meg arról, hogy egy csomag jön létre egy meglévő csomagot, ugyanazon webtárhelyhez meg lehet. Röviden minden csomag létre ugyanabban az erőforráscsoportban, és a régió kombináció a rendszer üzembe helyezi az azonos webtárhely. Például egy csomagot az erőforráscsoportban A és B régióban létrehozta, majd bármely ezután létrehoz egy erőforráscsoportban és régióban B terv helyezünk üzembe az azonos webtárhely. Vegye figyelembe, hogy csomagok nem helyezhetők át webtárhelyének után jönnek létre, ezért nem helyezhető át a csomag be "az azonos webtárhely" egy másik séma szerint áthelyezi egy másik erőforráscsoportot.
+> 
+
 1. Az a [az Azure portal](https://portal.azure.com), tallózással az áthelyezni kívánt alkalmazást.
 
 1. A menüben keresse meg a **App Service-csomag** szakaszban.
@@ -67,16 +73,7 @@ Egy [Azure App Service-csomag](azure-web-sites-web-hosting-plans-in-depth-overvi
 
 1. Az a **App Service-csomag** választó, válassza egy meglévő szeretne áthelyezni az alkalmazás be.   
 
-> [!IMPORTANT]
-> A **válassza ki az App Service-csomag** lap a következő feltételek szerint van szűrve: 
-> - Az azonos erőforráscsoportban 
-> - Létezik-e ugyanabban a földrajzi régióban 
-> - Az azonos webtárhely létezik  
-> 
-> A _webtárhely_ egy logikai szerkezet, amely meghatározza a kiszolgáló erőforrások csoportosítása App Service-ben. Egy földrajzi régiót (például az USA nyugati RÉGIÓJA) annak érdekében, hogy lefoglalni az ügyfeleink, akik az App Service számos webtárhelyének tartalmazza. App Service-erőforrások jelenleg nem helyezhetők webtárhelyének között. 
-> 
-
-[!INCLUDE [app-service-dev-test-note](../../includes/app-service-dev-test-note.md)]
+A **válassza ki az App Service-csomag** lapon látható csak az ugyanabban az erőforráscsoportban és az aktuális alkalmazás App Service-csomag és a földrajzi régióban lévő terveket.
 
 Minden csomag saját díjszabási szinttel rendelkezik. Egy webhely, például áthelyezése egy **ingyenes** a réteg egy **Standard** szint lehetővé teszi, hogy az a funkciók és erőforrások rendelt összes alkalmazás a **Standard** szint. Azonban egy alkalmazást áthelyezését egy magasabb többrétegű terv többrétegű alacsonyabb díjcsomagra azt jelenti, hogy már nem bizonyos szolgáltatások elérését. Ha az alkalmazás egy szolgáltatás, amely nem érhető el a célként megadott csomag használja, hibaüzenet, amely azt mutatja, melyik szolgáltatást használja, amely nem érhető el. 
 

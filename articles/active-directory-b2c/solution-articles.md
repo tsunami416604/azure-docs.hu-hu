@@ -4,16 +4,16 @@ description: Ez a cikk biztosít a hivatkozások megoldás és képzési adatok,
 services: active-directory-b2c
 author: davidmu1
 ms.author: davidmu
-ms.date: 09/07/2018
+ms.date: 10/11/2018
 ms.topic: conceptual
 ms.service: active-directory
 ms.component: b2c
-ms.openlocfilehash: bdacbe425aa3140f8a3d60fdf121712d1e6eda3e
-ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
+ms.openlocfilehash: 74598aa83a9ed47ee85ef71593745faccfb81ee3
+ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45541602"
+ms.lasthandoff: 10/12/2018
+ms.locfileid: "49165947"
 ---
 # <a name="solutions-and-training-for-azure-active-directory-b2c"></a>Megoldások és az Azure Active Directory B2C-oktatás
 
@@ -22,6 +22,7 @@ Az Azure Active Directory (Azure AD) B2C lehetővé teszi a szervezetek számár
 | Beosztás | Leírás |
 | ----- | ----------- |
 | [Ügyfél Identitáskezelés az Azure AD B2C-vel](https://channel9.msdn.com/Shows/On-NET/Customer-Identity-Management-with-Azure-AD-B2C) | Ebben a cikkben áttekintjük a szolgáltatást, Parakh Jain ([@jainparakh](https://twitter.com/jainparakh)) az Azure AD B2C a csapat USA áttekintést nyújt a szolgáltatás működése, és is bemutatják, hogyan gyorsan csatlakozhassunk B2C-vel egy ASP.NET Core-alkalmazást. |
+| [Azure AD B2C használatának előnyei](https://aka.ms/b2coverview) | Az Azure AD B2C-vel, és az alkalmazás miként hasznosíthatók az CIAM szolgáltatás gyakori forgatókönyvek és előnyök ismertetése. |
 | [Azonosítsa a szakértelmet Azure AD B2C-ben: a fejlesztők tanfolyam](https://aka.ms/learnAADB2C) | A teljes körű tanfolyam a fejlesztők számára az alkalmazások fejlesztése az Azure AD B2C a hitelesítési módszerként a teljes útnak vesz igénybe. A labs tíz részletes modulok szolgálatunk beállítása az Azure-előfizetéssel, amelyek meghatározzák, hogy az ügyfelek megszólítása útvonalról egyedi szabályzatok létrehozásakor. |
 | [Partnerek, a szállítók és az ügyfelek számára, hogy alkalmazásokat az Azure active Directory engedélyezése](https://aka.ms/aadexternalidentities) | Minden szervezet sikeres, függetlenül a méret, iparág, vagy a megfelelőségi és biztonsági állapotáról, szervezeti lehetővé teszi más vállalatokkal működnek együtt, és ügyfelekkel támaszkodik.<br><br>Összevonhatja az Azure Active Directory, Azure AD B2C-vel, és az Azure AD B2B együttműködés, ez az útmutató részletesen az üzleti értéket és az alkalmazás vagy webhely élményt összevont hitelesítési élményt nyújt a környezetében, személyre szabott épület mechanics a az alkalmazottak, üzleti partnerek és szállítók, és ügyfelek. |
 | [Hibrid környezetben az Azure AD B2C áttelepítése alkalmazás hitelesítése](https://aka.ms/MigratetoAADB2C) | A mai modern szervezetek digitális átalakítást, és a felhőbe való áthelyezés történik, fázisában, hibrid identitás környezetben legalább ideiglenesen működik a legtöbb szervezet igénylő.<br><br>Ez az útmutató elsősorban a migrálási tervet, az Azure AD B2C-vel az első alkalmazás létrehozása, és ennek az egy hibrid identitáskezelési környezetet a szempontokat ismerteti. |

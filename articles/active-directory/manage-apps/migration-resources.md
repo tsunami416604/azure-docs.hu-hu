@@ -11,16 +11,16 @@ ms.workload: identity
 ms.date: 09/19/2018
 ms.author: barbkess
 ms.reviewer: baselden
-ms.openlocfilehash: 750bf1905a3ca352e181dcd5b7fcecdfc8d04f76
-ms.sourcegitcommit: 06724c499837ba342c81f4d349ec0ce4f2dfd6d6
+ms.openlocfilehash: d2ede423a92fe9e0d45155d9470d63689bc8d281
+ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46465503"
+ms.lasthandoff: 10/12/2018
+ms.locfileid: "49165541"
 ---
 # <a name="resources-for-migrating-applications-to-azure-active-directory"></a>Erőforrások áttelepítése az Azure Active Directory-alkalmazások
 
-Forrásanyagok az Azure Active Directory (Azure AD-) alkalmazás-hozzáférés és a hitelesítési át. 
+Forrásanyagok az Azure Active Directory (Azure AD-) alkalmazás-hozzáférés és a hitelesítési át. Ez a rövid kérdőívet (https://aka.ms/AppsMigrationFeedback) visszajelzést élmény áttelepítése alkalmazásait az Azure AD (blockers áttelepítése, beleértve a szükséges eszközkészlet / útmutatást, vagy a helyszíni Identitásszolgáltató megőrzése okai). 
 
 | Erőforrás  | Leírás  |
 |:-----------|:-------------|

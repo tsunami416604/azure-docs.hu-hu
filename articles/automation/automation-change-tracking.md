@@ -6,16 +6,16 @@ ms.service: automation
 ms.component: change-inventory-management
 author: georgewallace
 ms.author: gwallace
-ms.date: 08/31/2018
+ms.date: 10/12/2018
 ms.topic: conceptual
 manager: carmonm
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 713c0f676067cb32a84361dd7801031295e2244f
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.openlocfilehash: 2678b9a1b80b1c9de6f1b554ce43bcd4f2dd5d50
+ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45634438"
+ms.lasthandoff: 10/12/2018
+ms.locfileid: "49167001"
 ---
 # <a name="track-changes-in-your-environment-with-the-change-tracking-solution"></a>Változások követése saját környezetében a Change Tracking megoldás
 
@@ -224,6 +224,17 @@ A beállításkulcsok módosításainak figyelése célja, hogy kiszűrheti a b�
 |&nbsp;&nbsp;&nbsp;&nbsp;Figyeli az ismert vagy gyakran használt rendszer DLL-ek; listája Ez a rendszer megakadályozza, hogy a személyek a gyenge directory Alkalmazásengedélyek rendszer DLL-ek trójai faló verzióiban elvetésével ártó szándékkal használja fel.|
 > |**HKEY\_helyi\_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon\Notify**|
 |&nbsp;&nbsp;&nbsp;&nbsp;Figyeli a tudja fogadni az eseményértesítések Winlogon, az interaktív bejelentkezési támogatási modell, a Windows operációs rendszerhez a csomagok listájában.|
+
+## <a name="network-requirements"></a>A hálózatra vonatkozó követelmények
+
+A következő címekre szükség, kifejezetten a Change Tracking megoldásba. Ezek a címek kommunikációt a 443-as porton keresztül történik.
+
+|Azure Public  |Azure Government  |
+|---------|---------|
+|*.ods.opinsights.azure.com     |*. ods.opinsights.azure.us         |
+|*.oms.opinsights.azure.com     | *. oms.opinsights.azure.us        |
+|*.blob.core.windows.net|*. blob.core.usgovcloudapi.net|
+|*.azure-automation.net|*.Azure-automation.us|
 
 ## <a name="use-change-tracking"></a>A Change Tracking használata
 

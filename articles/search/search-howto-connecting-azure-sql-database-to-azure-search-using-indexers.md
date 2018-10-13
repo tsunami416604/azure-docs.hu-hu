@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.topic: conceptual
 ms.date: 04/20/2018
 ms.author: eugenesh
-ms.openlocfilehash: 5897740a1b5a183738c08b4dfde571be652aff3e
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: f92b49ebdff71fc0561cc490cb70ffb479f7fc9e
+ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47092249"
+ms.lasthandoff: 10/13/2018
+ms.locfileid: "49310946"
 ---
 # <a name="connecting-azure-sql-database-to-azure-search-using-indexers"></a>Csatlakozás az Azure SQL Database az Azure Search indexelők használatával
 
@@ -277,7 +277,7 @@ A helyreállítható törlés módszer használata esetén adja meg a helyreáll
         }
     }
 
-A **softDeleteMarkerValue** kell karakterláncot – a tényleges érték karakteres formáját használja. Például, ha egészszám-oszloppal, ahol az érték 1 törölt sorok lesznek megjelölve, használja `"1"`. Ha rendelkezik egy BIT oszlop, ahol törölt sorok lesznek megjelölve az IGAZ logikai értéket, `"True"`.
+A **softDeleteMarkerValue** kell karakterláncot – a tényleges érték karakteres formáját használja. Például, ha egészszám-oszloppal, ahol az érték 1 törölt sorok lesznek megjelölve, használja `"1"`. Ha hol lesznek megjelölve törölt sorokat az IGAZ logikai értéket BIT oszlopot, használja a karakterlánc-literál `True` vagy `true`, így nem számít.
 
 <a name="TypeMapping"></a>
 

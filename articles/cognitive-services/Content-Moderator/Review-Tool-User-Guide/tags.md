@@ -1,6 +1,6 @@
 ---
-title: Az Azure Content moderátor címkék használatával |} Microsoft Docs
-description: Tartalom moderátor alapértelmezett címkét tartalmaz, és hozhat létre egyéni címkék moderálás biztosít a vállalkozásoknak adott tartalmat.
+title: Címkék használatával az Azure Content Moderator |} A Microsoft Docs
+description: A Content Moderator alapértelmezett címkét tartalmaz, és az üzleti igényeinek megfelelő tartalom moderálása egyéni címkéket is létrehozhat.
 services: cognitive-services
 author: sanjeev3
 manager: mikemcca
@@ -9,45 +9,45 @@ ms.component: content-moderator
 ms.topic: article
 ms.date: 06/25/2017
 ms.author: sajagtap
-ms.openlocfilehash: add4c685c07c63944ae89f48a47ac78df28c1623
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: c462ff2937453f942db7fdd5b751f3356b6fe715
+ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35346966"
+ms.lasthandoff: 10/13/2018
+ms.locfileid: "49310079"
 ---
-# <a name="about-tags"></a>Címkékkel kapcsolatos #
+# <a name="about-tags"></a>Címkék #
 
-Két alapértelmezett címkék (– isadult és r – isracy) mellett egyéni címkék hozhatók létre, olyan több megcélzott vizsgálatát. Ezen egyéni címkék hozzárendelése képek vagy szöveges emberi véleményező majd érhetők el.
+A két alapértelmezett címkék mellett **isadult** (**egy**) és **isracy** (**r**), további célzott vizsgálata hozhat létre egyéni címkék. Ezeket az egyéni címkéket emberi teszik a felülvizsgálóknak a képek és szöveg hozzárendelése majd érhetők el.
 
 ## <a name="create-tags"></a>Címkék létrehozása ##
 
-1.  Címkék válassza ki a beállítások lapon.
+1.  Címkék kiválasztása a beállítások lapról.
 
-  ![Tartalom moderálás címkék](images/tags-1.png)
+  ![Tartalom-jóváhagyás címkék](images/tags-1.png)
 
-2.  Adja meg a címke kétbetűs rövid kódját.
-3.  Adja meg a címke nevét. Tartsa rövid és informatív nevét. Például "isNudity."
+2.  Adja meg a címke a kétbetűs rövid kód.
+3.  Adja meg a címke nevét. Tartsa rövid és informatív nevét. Ha például **isbullying**.
 4.  Adjon meg egy leírást.
 5.  Kattintson az Add (Hozzáadás) parancsra.
-6.  Amikor elkészült a címkék létrehozása, kattintson a Mentés gombra.
+6.  Amikor elkészült, a címkék létrehozása, kattintson a Mentés gombra.
 
-![Tartalom moderálás címkék meghatározása](images/tags-2-define.png)
+![Tartalom-jóváhagyás címkék meghatározása](images/tags-2-define.png)
 
 ## <a name="using-custom-tags"></a>Egyéni címkék használatával ##
 
-Egyéni címkék emberi felülvizsgálati során használatosak. Ezek az előzetes megjelenjen, és a felülvizsgáló kiválasztja azt.
+Egyéni címkék emberi vizsgálóeszközt során használatosak. Az előzetes verzióval fognak megjelenni, és a felülvizsgáló választja, kattintson rá.
 
-![Tartalom moderálás címkék használatával](images/tags-3-use.png)
+![Tartalom-jóváhagyás címkék használatával](images/tags-3-use.png)
 
-Kikapcsolhatja a különböző ellenőrzésekhez eltérő címkéket ellenőrzését, vagy innen látható van.
+Kikapcsolhatja a különböző címkék különböző ellenőrzésekhez ellenőrzése vagy eszközhitelesítést látható van.
  
-![Tartalom moderálás címkék letiltása](images/tags-4-disable.png)
+![Tartalom-jóváhagyás címkék letiltása](images/tags-4-disable.png)
 
-A két alapértelmezett címkét, isadult és isracy nem törölhető, amíg definiált egyéni címkéket törölheti. Kattintson a törölni kívánt címkére mellett a szemétgyűjtési használatával.
+Amíg nem törli a két alapértelmezett címkék **isadult** és **isracy**, törölheti a megadott egyéni címkéket. Kattintson a törölni kívánt címke melletti Kuka.
 
-![Tartalom moderálás címkék törlése](images/tags-5-delete.png)
+![Tartalom-jóváhagyás címkék törlése](images/tags-5-delete.png)
 
 ## <a name="next-steps"></a>További lépések ##
 
-A kép moderálás címkék használata további tudnivalókért lásd: [moderált képek megtekintését](Review-Moderated-Images.md).
+Címkék használata képmoderálás kapcsolatban lásd: [áttekintése lemezképek Metz](Review-Moderated-Images.md).

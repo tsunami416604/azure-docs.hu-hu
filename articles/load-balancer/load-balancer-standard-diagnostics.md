@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/9/2018
+ms.date: 10/11/2018
 ms.author: Kumud
-ms.openlocfilehash: 0711b52b76a22e32d05f27e6aae6c981bd2c148a
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: 6c730455e2d8b590a4e4b9ca0392985918678bf4
+ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48902603"
+ms.lasthandoff: 10/12/2018
+ms.locfileid: "49167698"
 ---
 # <a name="metrics-and-health-diagnostics-for-standard-load-balancer"></a>A Standard Load Balancer metrikák és egészségügyi diagnosztikája
 
@@ -220,6 +220,6 @@ A resource health különböző állapotok, és ezek leírását az alábbi táb
 - További tudnivalók a [Standard Load Balancerről](load-balancer-standard-overview.md).
 - Tudjon meg többet a [betölteni a terheléselosztó kimenő kapcsolat](https://aka.ms/lboutbound).
 - Ismerje meg [az Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/overview).
-- További információ a [REST API-t az Azure Monitor-metrikák](https://docs.microsoft.com/rest/api/monitor/metrics/).
+- További információ a [Azure Monitor REST API](https://docs.microsoft.com/rest/api/monitor/) és [hogyan kérheti le a metrikák REST API-n keresztül](https://docs.microsoft.com/rest/api/monitor/metrics/metrics_list).
 
 

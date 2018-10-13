@@ -11,13 +11,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: sashan, moslake
 manager: craigg
-ms.date: 10/09/2018
-ms.openlocfilehash: e93de9b3642e0b01bf65b6761d8832b0d4c2a431
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.date: 10/12/2018
+ms.openlocfilehash: a0d8e225718361c096b914245d73064edb1715c4
+ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48901685"
+ms.lasthandoff: 10/12/2018
+ms.locfileid: "49166355"
 ---
 # <a name="vcore-service-tiers-azure-hybrid-use-benefit-and-migration"></a>virtuális mag szolgáltatásszintek, Azure Hybrid Use Benefit és migrálása
 
@@ -66,9 +66,13 @@ A Virtuálismag-alapú vásárlási modell, az exchange is kedvezményes díjsza
 
 ## <a name="migration-from-dtu-model-to-vcore-model"></a>Áttelepítés a DTU-modellből Virtuálismag-modell
 
-### <a name="migration-of-single-databases-with-geo-replication-links"></a>Georeplikációs hivatkozásokat az önálló adatbázisok migrálása
+### <a name="migration-of-a-database"></a>Adatbázis áttelepítése
 
-DTU-alapú modell Virtuálismag-alapú modellre való áttérés hasonlít a frissítést, vagy alacsonyabb verziójúra változtatása a Standard és prémium szintű adatbázisok közötti georeplikációs kapcsolatot. A georeplikáció, de a felhasználó megszakítást okozó meg kell vizsgálni az alkalmazás-előkészítés szabályok nem igényel. Verzióra, először frissítse a másodlagos adatbázist, és az utána frissítse az elsődleges. Ha alacsonyabb szolgáltatásszintre, fordított sorrendben: kell az elsődleges adatbázis alacsonyabbra először, és ezután alacsonyabbra a másodlagos. 
+Adatbázis áttelepítése az a DTU-alapú vásárlási modell a Virtuálismag-alapú vásárlási modell az hasonlít a frissítést, vagy alacsonyabb verziójúra változtatása a DTU-alapú vásárlási modell a Standard és prémium adatbázisok között.
+
+### <a name="migration-of-databases-with-geo-replication-links"></a>Georeplikációs hivatkozásokat tartalmazó adatbázisok migrálása
+
+DTU-alapú modell Virtuálismag-alapú modellre való áttérés hasonlít a frissítést, vagy alacsonyabb verziójúra változtatása a Standard és prémium szintű adatbázisok közötti georeplikációs kapcsolatot. A georeplikáció, de a felhasználó megszakítást okozó meg kell vizsgálni az alkalmazás-előkészítés szabályok nem igényel. Verzióra, először frissítse a másodlagos adatbázist, és az utána frissítse az elsődleges. Ha alacsonyabb szolgáltatásszintre, fordított sorrendben: kell az elsődleges adatbázis alacsonyabbra először, és ezután alacsonyabbra a másodlagos.
 
 Két, rugalmas készletek közötti georeplikációs használatakor javasoljuk, hogy jelöljön ki egy készletet, az elsődleges és a többi – másodlagos. Rugalmas készletek áttelepítése ebben az esetben kövesse az azonos útmutatókat.  Azonban nem, technikailag lehetséges, hogy a rugalmas készlet tartalmazza az elsődleges és másodlagos adatbázisok. Ebben az esetben áttelepítés megfelelően kell kezelni az "elsődleges" a magasabb kihasználtság a készlet, és kövesse az alkalmazás-előkészítés szabályok ennek megfelelően.  
 
@@ -88,15 +92,15 @@ A következő táblázat tartalmazza az adott áttelepítési forgatókönyvre v
 
 \* Minden 100 DTU standard szintű csomag szükséges legalább 1 virtuális mag, és minden egyes 125 DTU prémium szintű csomag szükséges legalább 1 virtuális mag
 
-### <a name="migration-of-failover-groups"></a>Feladatátvételi csoportok áttelepítése 
+### <a name="migration-of-failover-groups"></a>Feladatátvételi csoportok áttelepítése
 
-Több adatbázis feladatátvételi csoportok áttelepítése az elsődleges és másodlagos adatbázisok az egyes áttelepítési van szükség. A folyamat során a Ha a fenti szempontok és műveleti sorrend vonatkozik. Az adatbázisok konvertálja a Virtuálismag-alapú modellbe, miután a feladatátvételi csoport érvényben marad az ugyanazon házirend-beállításokkal. 
+Több adatbázis feladatátvételi csoportok áttelepítése az elsődleges és másodlagos adatbázisok az egyes áttelepítési van szükség. A folyamat során a Ha a fenti szempontok és műveleti sorrend vonatkozik. Az adatbázisok konvertálja a Virtuálismag-alapú modellbe, miután a feladatátvételi csoport érvényben marad az ugyanazon házirend-beállításokkal.
 
 ### <a name="creation-of-a-geo-replication-secondary"></a>A georeplikáció másodlagos létrehozása
 
 Csak a geo-secondary elsődlegesként ugyanazon a szolgáltatásszinten használatával hozhat létre. Adatbázis magas log sebességet javasolt, hogy a másodlagos számítási mérete megegyezik az elsődleges jön létre. Geo-secondary egyetlen elsődleges adatbázishoz a rugalmas készlet létrehozásakor, ezért javasoljuk, hogy rendelkezik-e a készlet a `maxVCore` beállítása, amely megfelel az elsődleges adatbázis számítási mérete. Geo-secondary a egy elsődleges egy másik rugalmas készletben található rugalmas készlet létrehozásakor, ezért javasoljuk, hogy a címkészleteknek azonos `maxVCore` beállításai
 
-### <a name="using-database-copy-to-convert-a-dtu-based-database-to-a-vcore-based-database"></a>Adatbázis másolatának használata a Virtuálismag-alapú adatbázis DTU-alapú adatbázis konvertálása.
+### <a name="using-database-copy-to-convert-a-dtu-based-database-to-a-vcore-based-database"></a>A DTU-alapú adatbázis konvertálása Virtuálismag-alapú adatbázis adatbázis-másolat használatával
 
 Minden adatbázis DTU-alapú számítási méretű másolhatja vagy speciális alkalmazás-előkészítés, amennyiben a cél számítási méret támogatja a forrásadatbázis adatbázis maximális mérete korlátozások nélkül Virtuálismag-alapú számítási méretű adatbázishoz. Az adatbázis-másolat a másolási művelet kezdési időpontja adatokat pillanatképet készít, és nem hajt végre a forrás- és a cél közötti adatszinkronizálás.
 

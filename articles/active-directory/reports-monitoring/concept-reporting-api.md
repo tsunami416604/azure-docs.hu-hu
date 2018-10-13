@@ -16,12 +16,12 @@ ms.component: report-monitor
 ms.date: 05/07/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 7de7c87e5cf1747f4899f33d9e6b9cbf0bb430e1
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: 1e6ad35702b15090202278cfdead62b245040302
+ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42059483"
+ms.lasthandoff: 10/13/2018
+ms.locfileid: "49309620"
 ---
 # <a name="get-started-with-the-azure-active-directory-reporting-api"></a>Az Azure Active Directory reporting API használatának első lépései
 
@@ -33,6 +33,7 @@ Ez a cikk biztosít egy ütemtervet a kapcsolódó API-val a jelentési adatok e
 
 Ha problémákat tapasztal, tekintse meg [hogyan kérhet támogatást az Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-troubleshooting-support-howto).
 
+Ez a cikk az Azure AD Graph API-ra vonatkozik.  Hasonló a Microsoft Graph API-val kapcsolatos információk: [directoryAudit erőforrástípus](https://developer.microsoft.com/en-us/graph/docs/api-reference/beta/resources/directoryaudit).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
