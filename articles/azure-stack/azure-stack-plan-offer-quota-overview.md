@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 06/07/2018
+ms.date: 10/12/2018
 ms.author: sethm
 ms.reviewer: ''
-ms.openlocfilehash: 70ed5d45701133434c708ad80aaafc58645297e8
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: 343c29db4ac5fba37d8ea1b17862b86566ae15ca
+ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49077119"
+ms.lasthandoff: 10/13/2018
+ms.locfileid: "49309195"
 ---
 # <a name="plan-offer-quota-and-subscription-overview"></a>Csomag, ajánlat, kvóta és előfizetés áttekintése
 
@@ -40,7 +40,7 @@ Ha valamilyen szolgáltatás biztosításához, kövesse az alábbi magas szint�
 2. Hozzon létre egy csomagot, amely rendelkezik egy vagy több szolgáltatást. Amikor csomagot hoz létre, válassza ki, vagy a kvóták, amelyek meghatározzák az egyes szolgáltatások erőforráskorlátok a csomag létrehozása.
 3. Hozzon létre egy ajánlatot, amely egy vagy több csomag tartalmazza. Az ajánlat alapcsomagok és a választható kiegészítő csomagok tartalmazhatnak.
 
-Miután létrehozta az ajánlatra, a felhasználók előfizethetnek hozzáférjen a szolgáltatásokhoz és erőforrásokhoz, az ajánlat biztosít. Felhasználók is előfizethetnek azokra annyi konfigurálhatnak. Az alábbi ábrán egy olyan felhasználó, aki két ajánlatok előfizetett egyszerű példát mutat be. Minden ajánlat esetében a szolgáltatáscsomag vagy a kettő, és minden a terv elérhetik a szolgáltatásokat.
+Miután létrehozta az ajánlatra, a felhasználók előfizethetnek hozzáférjen a szolgáltatásokhoz és erőforrásokhoz, az ajánlat biztosít. Felhasználók is előfizethetnek azokra annyi konfigurálhatnak. Az alábbi ábra egy olyan felhasználó, aki két ajánlatok előfizetett egyszerű példát mutat be. Minden ajánlat esetében a szolgáltatáscsomag vagy a kettő, és minden a terv elérhetik a szolgáltatásokat.
 
 ![Bérlő előfizetési ajánlatok és csomagok](media/azure-stack-key-features/image4.png)
 
@@ -50,7 +50,7 @@ Csomagok egy vagy több szolgáltatás csoportjai. Az Azure Stack operátorait s
 
 ### <a name="quotas"></a>Kvóták
 
-Amelyek segítségével kezelheti a felhő kapacitása, használja az előre konfigurált kvóták, vagy hozzon létre egy új kvótát az egyes szolgáltatások egy csomagban. Kvóták, amely a felhasználói előfizetés is üzembe helyezése és felhasználása felső erőforráskorlátok adja meg. Például kvóta lehetővé teheti a felhasználó legfeljebb öt virtuális gépek (VM) létrehozásához. A virtuális gépek, mint a RAM-MAL és CPU-magok további kvótákról meg.
+Használhatja, amelyek segítségével kezelheti a felhő kapacitása, előre konfigurált *kvóták*, vagy hozzon létre egy új kvótát az egyes szolgáltatások egy csomagban. Kvóták, amely a felhasználói előfizetés is üzembe helyezése és felhasználása felső erőforráskorlátok adja meg. Például kvóta lehetővé teheti a felhasználó legfeljebb öt virtuális gépek (VM) létrehozásához.
 
 Beállíthatja, hogy kvótái régiónként. Például a számítási szolgáltatásokat nyújt a terület A csomagot lehet két virtuális gépet a 4 GB RAM és 8 processzormag-kvótát.
 
@@ -61,7 +61,7 @@ Tudjon meg többet [kvótatípusok az Azure Stackben](azure-stack-quota-types.md
 
 ### <a name="base-plan"></a>Alapcsomag
 
-Az ajánlat létrehozásakor a szolgáltatás-rendszergazda tartalmazhat egy alapcsomagot. Ezek alapcsomagok szerepelnek alapértelmezés szerint, amikor a felhasználó az ajánlat. Amikor a felhasználó, ők is hozzáférhetnek az e alap terveket (és a megfelelő kvóták.) a megadott összes erőforrás-szolgáltató
+Az ajánlat létrehozásakor a szolgáltatás-rendszergazda tartalmazhat egy alapcsomagot. Ezek alapcsomagok szerepelnek alapértelmezés szerint, amikor a felhasználó az ajánlat. Amikor a felhasználó, az e alap terveket (és a megfelelő kvóták) a megadott összes erőforrás-szolgáltató hozzáféréssel rendelkeznek.
 
 ### <a name="add-on-plans"></a>Kiegészítő csomagok
 
@@ -81,8 +81,8 @@ Egy felhasználó egy ajánlatot az egyes kombinációja egy egyedi előfizetés
 
 ### <a name="default-provider-subscription"></a>Alapértelmezett szolgáltatói előfizetés
 
-Az alapértelmezett szolgáltatója előfizetés az Azure Stack Development Kit központi telepítésekor automatikusan létrejön. Ez az előfizetés kezelése az Azure Stack, további erőforrás-szolgáltató üzembe helyezése és csomagokat és ajánlatokat felhasználók létrehozásához használható. Biztonsági és licencelési okokból azt nem használható ügyfél számítási feladatok és alkalmazások futtatásához.
+Az alapértelmezett szolgáltatója előfizetést az Azure Stack Development Kit központi telepítésekor automatikusan létrejön. Ez az előfizetés kezelése az Azure Stack, további erőforrás-szolgáltató üzembe helyezése és csomagokat és ajánlatokat felhasználók létrehozásához használható. Biztonsági és licencelési okokból azt nem használandó ügyfél számítási feladatok és alkalmazások futtatásához.
 
 ## <a name="next-steps"></a>További lépések
 
-[Csomag létrehozása](azure-stack-create-plan.md)
+További információ a csomagok és ajánlatok típusa: [hozzon létre egy csomagot](azure-stack-create-plan.md).
