@@ -14,17 +14,19 @@ ms.devlang: nodejs
 ms.topic: article
 ms.date: 01/05/2016
 ms.author: erikre
-ms.openlocfilehash: 327cea3a24cc47a9cc463b37cc2346ebc475ef7f
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 8908a6ceb87e2c0e4c7222e8a8e72fa7ebfa7f82
+ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38701855"
+ms.lasthandoff: 10/13/2018
+ms.locfileid: "49309263"
 ---
 # <a name="how-to-send-email-using-sendgrid-from-nodejs"></a>Hogyan lehet E-mail küldése a SendGrid, a Node.js használatával
+
 Ez az útmutató bemutatja, hogyan hajthat végre gyakori programozási feladatokat, a SendGrid e-mail szolgáltatással az Azure-ban. A minták írták, a Node.js API-val. Az ismertetett forgatókönyvek között megtalálható **hozhat létre, amely e-mailek**, **e-mail-küldési**, **mellékletek hozzáadása**, **ezekkel a szűrőkkel**, és **tulajdonságainak frissítése**. A SendGrid és az e-mailt küld a további információkért lásd: a [lépések](#next-steps) szakaszban.
 
 ## <a name="what-is-the-sendgrid-email-service"></a>Mi az a SendGrid E-mail szolgáltatással?
+
 A SendGrid van egy [e-mail felhő alapú szolgáltatás] , amely megbízható biztosít [tranzakciós e-mail kézbesítési], a méretezhetőség és a valós idejű analitikát és rugalmas API-kat, amelyek elérhetőbbé teszik egyéni integrációs egyszerű. A SendGrid gyakori használati forgatókönyvek a következők:
 
 * Automatikusan adatokat küldjenek a visszaigazolások az ügyfelek számára
@@ -37,80 +39,96 @@ A SendGrid van egy [e-mail felhő alapú szolgáltatás] , amely megbízható bi
 Tovább információ: [https://sendgrid.com](https://sendgrid.com).
 
 ## <a name="create-a-sendgrid-account"></a>A SendGrid-fiók létrehozása
+
 [!INCLUDE [sendgrid-sign-up](../includes/sendgrid-sign-up.md)]
 
 ## <a name="reference-the-sendgrid-nodejs-module"></a>A SendGrid Node.js modult hivatkozhat.
+
 A SendGrid-modul a node.js-ben a node package Managerrel (npm) keresztül telepíthető a következő paranccsal:
 
-    npm install sendgrid
+```bash
+npm install sendgrid
+```
 
 A telepítés után is szüksége van a modul az alkalmazás a következő kód használatával:
 
-    var sendgrid = require('sendgrid')(sendgrid_username, sendgrid_password);
+```javascript
+var sendgrid = require('sendgrid')(sendgrid_username, sendgrid_password);
+```
 
 A SendGrid modul exportálja a **SendGrid** és **E-mail** funkciók.
 **A SendGrid** feladata a webes API-val, e-mail-küldési közben **E-mail** magában foglalja egy e-mail-üzenetet.
 
 ## <a name="how-to-create-an-email"></a>How to: hozzon létre egy e-mailt
+
 A SendGrid modult használó e-mailbe létrehozása magában foglalja a először létrehoz egy e-mail-üzenetet az E-mail funkció segítségével, és elküldi azt a SendGrid függvény használatával. Az alábbiakban látható egy példa az e-mailek függvény használatával egy új üzenet létrehozását:
 
-    var email = new sendgrid.Email({
-        to: 'john@contoso.com',
-        from: 'anna@contoso.com',
-        subject: 'test mail',
-        text: 'This is a sample email message.'
-    });
+```javascript
+var email = new sendgrid.Email({
+    to: 'john@contoso.com',
+    from: 'anna@contoso.com',
+    subject: 'test mail',
+    text: 'This is a sample email message.'
+});
+```
 
 Megadhat egy HTML-üzenet is html-tulajdonság beállításával támogató ügyfelek. Példa:
 
-    html: This is a sample <b>HTML<b> email message.
+```javascript
+html: This is a sample <b>HTML<b> email message.
+```
 
 Ügyfelek, amelyek nem támogatják a HTML-üzenetek a szöveg és a html-tulajdonságok beállítása sikeres-e tartalékként történő szöveges tartalom biztosít.
 
 További információ az E-mail funkció által támogatott összes tulajdonság: [sendgrid-nodejs][sendgrid-nodejs].
 
 ## <a name="how-to-send-an-email"></a>Útmutató: E-mail küldése
+
 Miután létrehozott egy e-mail-üzenetet az E-mail funkció segítségével, elküldheti azt a SendGrid által biztosított webes API-val. 
 
 ### <a name="web-api"></a>Webes API
-    sendgrid.send(email, function(err, json){
-        if(err) { return console.error(err); }
-        console.log(json);
-    });
+
+```javascript
+sendgrid.send(email, function(err, json){
+    if(err) { return console.error(err); }
+    console.log(json);
+});
+```
 
 > [!NOTE]
 > A fenti példákban egy e-mailt az objektum és a visszahívási függvény megadásának jelennek meg, amíg közvetlenül is hívhat a küldési függvényt közvetlenül megadja az e-mail-tulajdonságok. Példa:  
 > 
-> `````
+> ```javascript
 > sendgrid.send({
 > to: 'john@contoso.com',
 > from: 'anna@contoso.com',
 > subject: 'test mail',
 > text: 'This is a sample email message.'
 > });
-> `````
-> 
-> 
+> ```
+>
 
 ## <a name="how-to-add-an-attachment"></a>Útmutató: a melléklet hozzáadása
 Mellékletek lehet hozzáadni egy üzenetet a fájl neve és elérési úton található megadásával a **fájlok** tulajdonság. A következő példa bemutatja a melléklet küldése:
 
-    sendgrid.send({
-        to: 'john@contoso.com',
-        from: 'anna@contoso.com',
-        subject: 'test mail',
-        text: 'This is a sample email message.',
-        files: [
-            {
-                filename:     '',           // required only if file.content is used.
-                contentType:  '',           // optional
-                cid:          '',           // optional, used to specify cid for inline content
-                path:         '',           //
-                url:          '',           // == One of these three options is required
-                content:      ('' | Buffer) //
-            }
-        ],
-    });
+```javascript
+sendgrid.send({
+    to: 'john@contoso.com',
+    from: 'anna@contoso.com',
+    subject: 'test mail',
+    text: 'This is a sample email message.',
+    files: [
+        {
+            filename:     '',           // required only if file.content is used.
+            contentType:  '',           // optional
+            cid:          '',           // optional, used to specify cid for inline content
+            path:         '',           //
+            url:          '',           // == One of these three options is required
+            content:      ('' | Buffer) //
+        }
+    ],
+});
+```
 
 > [!NOTE]
 > Használatakor a **fájlok** tulajdonság, a fájlnak kell lennie keresztül elérhető [fs.readFile](http://nodejs.org/docs/v0.6.7/api/fs.html#fs.readFile). Ha csatolni kívánt fájlt, például egy Blob-tároló Azure Storage-ban üzemeltetett kell másolnia a fájlt helyi tárolóba vagy egy Azure-meghajtó előtt, egy melléklet használatával küldhető a **fájlok** tulajdonság.
@@ -118,6 +136,7 @@ Mellékletek lehet hozzáadni egy üzenetet a fájl neve és elérési úton tal
 > 
 
 ## <a name="how-to-use-filters-to-enable-footers-and-tracking"></a>How to: Enable láblécek és követési szűrők használata
+
 A SendGrid szűrők használatával e-mail további funkciókat biztosít. Ezek a beállítások, amelyek e-mailbe ahhoz, hogy bizonyos funkciók, például engedélyezheti a kampányban, a Google analytics, előfizetés nyomon követése és így tovább lehet hozzáadni. Szűrők teljes listáját lásd: [szűrőbeállítások][Filter Settings].
 
 Szűrők használatával is alkalmazható egy üzenetet a **szűrők** tulajdonság.
@@ -125,58 +144,71 @@ Minden szűrő egy szűrő-specifikus beállításokat tartalmazó kivonat szeri
 Az alábbi példák bemutatják, az élőláb, majd kattintson a szűrők követés:
 
 ### <a name="footer"></a>Lábléc
-    var email = new sendgrid.Email({
-        to: 'john@contoso.com',
-        from: 'anna@contoso.com',
-        subject: 'test mail',
-        text: 'This is a sample email message.'
-    });
 
-    email.setFilters({
-        'footer': {
-            'settings': {
-                'enable': 1,
-                'text/plain': 'This is a text footer.'
-            }
+```javascript
+var email = new sendgrid.Email({
+    to: 'john@contoso.com',
+    from: 'anna@contoso.com',
+    subject: 'test mail',
+    text: 'This is a sample email message.'
+});
+
+email.setFilters({
+    'footer': {
+        'settings': {
+            'enable': 1,
+            'text/plain': 'This is a text footer.'
         }
-    });
+    }
+});
 
-    sendgrid.send(email);
+sendgrid.send(email);
+```
 
 ### <a name="click-tracking"></a>Kattintson a nyomon követés
-    var email = new sendgrid.Email({
-        to: 'john@contoso.com',
-        from: 'anna@contoso.com',
-        subject: 'test mail',
-        text: 'This is a sample email message.'
-    });
 
-    email.setFilters({
-        'clicktrack': {
-            'settings': {
-                'enable': 1
-            }
+```javascript
+var email = new sendgrid.Email({
+    to: 'john@contoso.com',
+    from: 'anna@contoso.com',
+    subject: 'test mail',
+    text: 'This is a sample email message.'
+});
+
+email.setFilters({
+    'clicktrack': {
+        'settings': {
+            'enable': 1
         }
-    });
+    }
+});
 
-    sendgrid.send(email);
+sendgrid.send(email);
+```
 
 ## <a name="how-to-update-email-properties"></a>How to: e-mailek tulajdonságainak frissítése
-Néhány e-mail-tulajdonságok használatával lehet felülírni **beállítása * tulajdonság***, illetve használatával **hozzáadása*tulajdonság x. Például hozzáadhat további címzettek használatával
 
-    email.addTo('jeff@contoso.com');
+Néhány e-mail-tulajdonságok használatával lehet felülírni **setProperty** , illetve használatával **addProperty**. Például hozzáadhat további címzettek használatával
+
+```javascript
+email.addTo('jeff@contoso.com');
+```
 
 vagy állítsa be a szűrő használatával
 
-    email.addFilter('footer', 'enable', 1);
-    email.addFilter('footer', 'text/html', '<strong>boo</strong>');
+```javascript
+email.addFilter('footer', 'enable', 1);
+email.addFilter('footer', 'text/html', '<strong>boo</strong>');
+```
 
 További információkért lásd: [sendgrid-nodejs][sendgrid-nodejs].
 
 ## <a name="how-to-use-additional-sendgrid-services"></a>How to: további SendGrid-szolgáltatások használata
+
 A SendGrid kínál a webes API-kat használhatja az Azure-alkalmazásból további SendGrid funkciói kihasználhatók. További részletek: a [SendGrid API-dokumentáció][SendGrid API documentation].
 
 ## <a name="next-steps"></a>További lépések
+
 Most, hogy megismerte az alapokat, a SendGrid E-mail szolgáltatás, kövesse az alábbi hivatkozások további.
 
 * A SendGrid Node.js modult tárházat: [sendgrid-nodejs][sendgrid-nodejs]
