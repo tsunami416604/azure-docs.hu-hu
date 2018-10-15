@@ -1,6 +1,7 @@
 ---
-title: Mi a Bing Image Search? | Microsoft Docs
-description: Arra vonatkozó tudnivalók, hogyan kereshet az interneten képeket a Bing Images Search API használatával.
+title: Mi a Bing Image Search?
+titleSuffix: Azure Cognitive Services
+description: A Bing Image Search API segítségével használhatja a Bing kognitív képkeresési képességeit az alkalmazásában. A felhasználói lekérdezések az API-n keresztüli elküldésével releváns és jó minőségű képeket kérhet le és jeleníthet meg a Bing Imageshez hasonlóan.
 services: cognitive-services
 author: aahill
 manager: cgronlun
@@ -10,12 +11,12 @@ ms.component: bing-image-search
 ms.topic: overview
 ms.date: 10/11/2017
 ms.author: aahi
-ms.openlocfilehash: ebf8c28b843768a9081a0086b10e4adf04572ea1
-ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
+ms.openlocfilehash: 5d5d69eea3a064679cbc5ddc41891a73e77e55ea
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2018
-ms.locfileid: "42889258"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46295359"
 ---
 # <a name="what-is-bing-image-search"></a>Mi a Bing Image Search?
 
@@ -40,9 +41,9 @@ Ugyan a Bing Image Search elsősorban releváns képeket keres és ad vissza a k
 
 A Bing Image Search API egy RESTful-webszolgáltatás, így bármely olyan programnyelvből meghívható, amely képes HTTP-lekérdezéseket kezelni és JSON formátumot elemezni. A szolgáltatás a [REST API](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/quickstarts/csharp?) vagy az [SDK](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/image-search-sdk-quickstart) segítségével használható.
 
-1. Hozzon létre egy [Cognitive Services API-fiókot](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account), amely hozzáféréssel rendelkezik a Bing Search API-khoz. Ha nem rendelkezik Azure-előfizetéssel, ingyenesen [létrehozhat egyet](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api). 
+1. Hozzon létre egy [Cognitive Services API-fiókot](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account), amely hozzáféréssel rendelkezik a Bing Search API-khoz. Ha nem rendelkezik Azure-előfizetéssel, ingyenesen [létrehozhat egyet](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api).
 2. Küldjön egy kérést az API-ra egy érvényes [keresési lekérdezéssel](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/concepts/bing-image-search-sending-queries).
-3. Az API válaszának feldolgozásához elemezze a visszaadott JSON-üzenetet. 
+3. Az API válaszának feldolgozásához elemezze a visszaadott JSON-üzenetet.
 
 ## <a name="next-steps"></a>További lépések
 
@@ -64,4 +65,4 @@ Az első API-kérés gyors létrehozásához sajátítsa el a következőket:
 
 * [A képek a Bing Image Search API használatával a webről való lekérését](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/concepts/bing-image-search-get-images) ismertető témakör a weben található képek keresését és lekérését mutatja be.
 
-* A [keresési lekérdezések küldését és használatát](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/concepts/bing-image-search-sending-queries) ismertető témakör a keresési lekérdezések összeállítását, testreszabását és szegmentálását írja le. 
+* A [keresési lekérdezések küldését és használatát](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/concepts/bing-image-search-sending-queries) ismertető témakör a keresési lekérdezések összeállítását, testreszabását és szegmentálását írja le.

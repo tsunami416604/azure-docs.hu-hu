@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: tutorial
 ms.date: 6/27/2018
 ms.author: dineshm
-ms.openlocfilehash: 7d951a959da28187a5971ee218f2bd921d331727
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: fd9dfaa2042cae0923c919f4e76d7b59a170918e
+ms.sourcegitcommit: 06724c499837ba342c81f4d349ec0ce4f2dfd6d6
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43301798"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46466030"
 ---
 # <a name="tutorial-access-azure-data-lake-storage-gen2-preview-data-with-azure-databricks-using-spark"></a>Oktatóanyag: Hozzáférés a 2. generációs Azure Data Lake Storage előzetes verziójának adataihoz az Azure Databricks és a Spark használatával
 
@@ -22,7 +22,6 @@ Ez az oktatóanyag bemutatja, hogyan futtathat Spark-lekérdezéseket egy Azure 
 > [!div class="checklist"]
 > * Databricks-fürt létrehozása
 > * Strukturálatlan adatok betöltése egy tárfiókba
-> * Egy Azure-beli függvény aktiválása az adatok feldolgozásához
 > * Elemzés futtatása a blobtárolóban található adatokon
 
 ## <a name="prerequisites"></a>Előfeltételek
@@ -36,11 +35,8 @@ Ez az oktatóanyag bemutatja, hogyan használhatja fel és kérdezheti le légit
 
 Elsőként hozzon létre egy új [2. generációs Azure Data Lake Storage-fiókot](quickstart-create-account.md), és adjon meg hozzá egy egyedi nevet. Ezután lépjen a tárfiókra a konfigurációs beállítások lekéréséhez.
 
-> [!IMPORTANT]
-> Az előzetes verzióban az Azure Functions csak strukturálatlan névtérrel létrehozott 2. generációs Azure Data Lake Storage-fiókokkal működik.
-
 1. A **Beállítások** oldalon kattintson a **Hozzáférési kulcsok** gombra.
-3. Kattintson a **Másolás** gombra a **key1** elem mellett a kulcs értékének másolásához.
+2. Kattintson a **Másolás** gombra a **key1** elem mellett a kulcs értékének másolásához.
 
 A fióknév és a kulcs egyaránt szükséges az oktatóanyag későbbi lépéseihez. Nyisson meg egy szövegszerkesztőt, és jegyezze fel a fióknevet és a kulcsot a későbbi felhasználáshoz.
 
@@ -74,7 +70,7 @@ A következő lépésben egy [Databricks-fürtöt](https://docs.azuredatabricks.
 
 ### <a name="copy-source-data-into-the-storage-account"></a>Forrásadatok másolása a tárfiókba
 
-A következő lépés az adatok másolása a *.csv* fájlból az Azure-beli tárolóba az AzCopy segítségével. Nyissa meg a parancsablakot, és írja be a következő parancsokat. Győződjön meg arról, hogy a `<DOWNLOAD_FILE_PATH>`, `<ACCOUNT_NAME>` és `<ACCOUNT_KEY>` helyőrzőket lecserélte az előző lépésben feljegyzett megfelelő értékekre.
+A következő lépés az adatok másolása a *.csv* fájlból az Azure-beli tárolóba az AzCopy segítségével. Nyissa meg a parancsablakot, és írja be a következő parancsokat. Győződjön meg arról, hogy a `<DOWNLOAD_FILE_PATH>` és `<ACCOUNT_KEY>` helyőrzőket lecserélte az előző lépésben feljegyzett megfelelő értékekre.
 
 ```bash
 set ACCOUNT_NAME=<ACCOUNT_NAME>
@@ -159,7 +155,7 @@ Az adatforrások adathalmazainak létrehozásához futtassa a következő szkrip
 acDF = spark.read.format('csv').options(header='true', inferschema='true').load(accountsource + "/<YOUR_CSV_FILE_NAME>.csv")
 acDF.write.parquet(accountsource + '/parquet/airlinecodes')
 
-#read the existing parquet file for the flights database that was created via the Azure Function
+#read the existing parquet file for the flights database that was created earlier
 flightDF = spark.read.format('parquet').options(header='true', inferschema='true').load(accountsource + "/parquet/flights")
 
 #print the schema of the dataframes

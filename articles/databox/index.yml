@@ -1,23 +1,22 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: f4ef48157896d7cf4947fbc8ef6eba8b59ec414b
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 7056f5478838eec1cccf6329e172d86ea90d4dd8
+ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46986514"
+ms.lasthandoff: 10/13/2018
+ms.locfileid: "49311048"
 documentType: LandingData
-title: Azure Data Box használata offline adatátvitelhez
+title: Azure Data Box-dokumentáció – Online adatátvitel
 metadata:
-  title: Az Azure Data Box használata offline adatátvitelhez – dokumentáció
-  description: Az Azure Data Box termékcsaláddal gyorsan, olcsón és megbízható módon vihet át több száz terabájtnyi adatot az Azure-ba. Ha az időbeli, hálózati vagy költségvetési lehetőségei korlátozottak, a Data Box-eszközöket offline adatátvitelhez is használhatja.
+  title: Azure Data Box-dokumentáció – Online adatátvitel
+  description: Ha az időbeli, hálózati vagy költségvetési lehetőségei korlátozottak, a Data Box-eszközöket az Azure-ba irányuló offline adatátvitelhez is használhatja.
   services: databox
   author: alkohli
   manager: twooley
   ms.service: databox
-  ms.tgt_pltfrm: na
-  ms.devlang: na
+  ms.subservice: pod
   ms.topic: landing-page
-  ms.date: 09/24/2018
+  ms.date: 10/12/2018
   ms.author: alkohli
 abstract:
   description: 'Az Azure Data Box termékcsaláddal gyorsan, olcsón és megbízható módon vihet át több száz terabájtnyi adatot az Azure-ba. Ha az időbeli, hálózati vagy költségvetési lehetőségei korlátozottak, a Data Box-eszközöket offline adatátvitelhez is használhatja.<p>Az adatok méretétől függően a következő lehetőségek közül választhat: Data Box Disk, Data Box<SUP>előzetes verzió</SUP>, Data Box Heavy<SUP>előzetes verzió</SUP>. Minden eszközről 4 egyszerű lépésben vihet át adatokat az Azure-ba – rendelje meg és vegye át az eszközt, másolja rá az adatokat, majd küldje vissza az Azure-nak. Az Azure-adatközpontban feltöltik, majd törlik az adatokat.</p><p>Rövid útmutatóink és oktatóanyagaink segítségével megtudhatja, hogyan használhatja a Data Boxot offline adatátvitelre.</p>'

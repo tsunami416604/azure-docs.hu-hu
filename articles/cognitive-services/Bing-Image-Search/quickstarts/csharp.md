@@ -1,42 +1,41 @@
 ---
-title: 'Gyors útmutató: A Bing Image Search API-lekérdezések küldési keresési és'
+title: 'Rövid útmutató: Képkeresés a C# használatával – Bing Image Search API'
 titleSuffix: Azure Cognitive Services
-description: Ez a rövid útmutató segítségével keresse meg és -rendszerképek keresése a weben a Bing Web Search API használatával.
+description: Ebből a rövid útmutatóból megtudhatja, hogyan hozhatja létre az első Bing Image Search API-hívását, majd hogyan tekintheti meg a keresési eredményt a JSON-válaszban. Ez az egyszerű C#-alkalmazás elküld egy HTTP-s képkeresési lekérdezést az API-nak, majd megjeleníti az első visszaadott kép URL-címét.
 services: cognitive-services
-documentationcenter: ''
 author: aahill
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-image-search
-ms.topic: article
+ms.topic: quickstart
 ms.date: 9/07/2018
 ms.author: aahi
-ms.openlocfilehash: 22eb54f6adec0335dd89a5ae906117542bb11717
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
-ms.translationtype: MT
+ms.openlocfilehash: 897e380092b029855ac6c986c1126ca4b2d657a9
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45580412"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46296643"
 ---
-# <a name="quickstart-send-search-queries-using-the-bing-image-search-api-and-c"></a>Gyors útmutató: Küldési keresési lekérdezések a Bing Image Search API és a C# használatával
+# <a name="quickstart-send-search-queries-using-the-bing-image-search-api-and-c"></a>Rövid útmutató: Keresési lekérdezések küldése a Bing Image Search API és a C# használatával
 
-Ez a rövid útmutató segítségével a Bing Image Search API az első hívását, és megtekintheti a JSON-válasz keresési eredményeket. Ez egyszerű C#-alkalmazás egy HTTP kép keresési lekérdezést küld az API-t, és a visszaadott első kép URL-címe.
+Ebből a rövid útmutatóból megtudhatja, hogyan hozhatja létre az első Bing Image Search API-hívását, majd hogyan tekintheti meg a keresési eredményt a JSON-válaszban. Ez az egyszerű C#-alkalmazás elküld egy HTTP-s képkeresési lekérdezést az API-nak, majd megjeleníti az első visszaadott kép URL-címét.
 
-Ezt az alkalmazást C# nyelven írt, míg a API-ját egy REST-alapú webszolgáltatás szinte bármelyik programozási nyelvével kompatibilis.
+Bár ez az alkalmazás C# nyelven lett íródott, az API egy RESTful-webszolgáltatás, azaz kompatibilis a legtöbb programnyelvvel.
 
-Az ehhez a mintához forráskódja elérhető [a Githubon](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/dotnet/Search/BingImageSearchv7Quickstart.cs) további hibakezelést és jegyzetek kódot.
+A minta forráskódja további hibakezeléssel és kódmegjegyzésekkel együtt elérhető a [GitHubon](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/dotnet/Search/BingImageSearchv7Quickstart.cs).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Bármely kiadása [Visual Studio 2017](https://www.visualstudio.com/downloads/).
-* A [Json.NET](https://www.newtonsoft.com/json) framework NuGet-csomagként érhető el. 
-* Linux/MacOS rendszeren használja, ha az alkalmazás használatával futtatható [Mono](http://www.mono-project.com/).
+* A [Visual Studio 2017](https://www.visualstudio.com/downloads/) bármely kiadása.
+* A [Json.NET](https://www.newtonsoft.com/json) keretrendszer, amely NuGet-csomagként letölthető.
+* Linux/MacOS rendszer esetében az alkalmazás a [Monóval](http://www.mono-project.com/) futtatható.
 
 [!INCLUDE [cognitive-services-bing-image-search-signup-requirements](../../../../includes/cognitive-services-bing-image-search-signup-requirements.md)]
 
-## <a name="create-and-initialize-a-project"></a>Hozzon létre, és a egy projektet inicializálása
+## <a name="create-and-initialize-a-project"></a>Projekt létrehozása és inicializálása
 
-1. Hozzon létre egy új konzol megoldást nevű `BingSearchApisQuickStart` a Visual Studióban. Ezután adja hozzá a következő névtereket a fő kódfájl.
+1. Hozzon létre egy új, `BingSearchApisQuickStart` nevű konzolmegoldást a Visual Studióban. Ezután adja hozzá a következő névtereket a fő kódfájlhoz.
 
     ```csharp
     using System;
@@ -46,7 +45,7 @@ Az ehhez a mintához forráskódja elérhető [a Githubon](https://github.com/Az
     using Newtonsoft.Json.Linq;
     ```
 
-2. Az API-végpont, az előfizetési kulcs változók létrehozása és a keresési kifejezést.
+2. Hozza létre az API-végpont, az előfizetési kulcs és a keresett fogalom változóit.
 
     ```csharp
     //...
@@ -61,10 +60,10 @@ Az ehhez a mintához forráskódja elérhető [a Githubon](https://github.com/Az
     //...
     ```
 
-## <a name="create-a-struct-to-format-the-bing-image-search-response"></a>Hozzon létre egy struct, formázhatja a Bing Képkeresés válasz
+## <a name="create-a-struct-to-format-the-bing-image-search-response"></a>Struktúra létrehozása a Bing Image Search válaszának formázásához
 
-Adja meg egy `SearchResult` struct a eredményeit, és JSON-fejléc-információkat tartalmazza.
-    
+Definiáljon egy `SearchResult` struktúrát, amely a képkeresés eredményeit, valamint a fejlécadatokat tartalmazza.
+
 ```csharp
     namespace BingSearchApisQuickstart
     {
@@ -79,9 +78,9 @@ Adja meg egy `SearchResult` struct a eredményeit, és JSON-fejléc-információ
 //...
 ```
 
-## <a name="create-a-method-to-send-search-requests"></a>Keresési kérelmek küldésére metódus létrehozása
+## <a name="create-a-method-to-send-search-requests"></a>Metódus létrehozása keresési kérések küldéséhez
 
-Hozzon létre egy metódust `BingImageSearch` végez az API-hívás és a visszatérési típus beállítása a `SearchResult` struct, korábban létrehozott.
+Hozzon létre egy `BingImageSearch` nevű metódust, amely meghívja az API-t, majd állítsa a visszatérési típust a korábban létrehozott `SearchResult` struktúrára.
 
 ```csharp
 //...
@@ -97,11 +96,11 @@ namespace BingSearchApisQuickstart
 //...
 ```
 
-## <a name="create-and-handle-an-image-search-request"></a>Hozzon létre, és a egy rendszerképet a keresési kérelem kezelése
- 
-Az a `BingImageSearch` metódus, hajtsa végre az alábbi lépéseket.
+## <a name="create-and-handle-an-image-search-request"></a>Képkeresési kérés létrehozása és kezelése
 
-1. Hozza létre a keresési kérés URI Azonosítóját. Vegye figyelembe, hogy a keresési kifejezés `toSearch` karakterláncot hozzáfűzésekor előtt kell formázni. 
+A `BingImageSearch` metódusban hajtsa végre a következő lépéseket.
+
+1. Hozza létre a keresési kérés URI-ját. Tartsa észben, hogy a `toSearch` keresési kifejezést a sztringhez való hozzáfűzés előtt kell formáznia.
 
     ```csharp
     static SearchResult BingImageSearch(string toSearch){
@@ -110,7 +109,7 @@ Az a `BingImageSearch` metódus, hajtsa végre az alábbi lépéseket.
     //...
     ```
 
-2. A webes kérelem teljesítéséhez, és a válasz egy JSON-karakterlánc.
+2. Hajtsa végre a webes kérést, és kérje le a JSON-sztringként kapott választ.
 
     ```csharp
     WebRequest request = WebRequest.Create(uriQuery);
@@ -119,7 +118,7 @@ Az a `BingImageSearch` metódus, hajtsa végre az alábbi lépéseket.
     string json = new StreamReader(response.GetResponseStream()).ReadToEnd();
     ```
 
-3. Hozza létre a keresési eredmény objektumot, és csomagolja ki a Bing HTTP-fejléceket. Ezután térjen `searchResult`.
+3. Hozza létre a keresési eredmény objektumát, és nyerje ki a Bing HTTP-fejléceit. Ezután küldje vissza a `searchResult` elemet.
 
     ```csharp
     // Create the result object for return
@@ -138,9 +137,9 @@ Az a `BingImageSearch` metódus, hajtsa végre az alábbi lépéseket.
     return searchResult;
     ```
 
-## <a name="process-and-view-the-response"></a>Folyamat és a válasz megtekintése
+## <a name="process-and-view-the-response"></a>A válasz feldolgozása és megtekintése
 
-1. A fő metódus hívása `BingImageSearch()` és a visszaadott válasz tárolása. Ezután deszerializálja a JSON-objektumba.
+1. A fő metódusban hívja meg a `BingImageSearch()` elemet, és tárolja a kapott választ. Ezután deszerializálja a JSON-fájlt egy objektumba.
 
     ```csharp
     SearchResult result = BingImageSearch(searchTerm);
@@ -148,19 +147,19 @@ Az a `BingImageSearch` metódus, hajtsa végre az alábbi lépéseket.
     dynamic jsonObj = Newtonsoft.Json.JsonConvert.DeserializeObject(result.jsonResult);
     ```
 
-2. Az első visszaadott lemezképének lekérési `jsonObj`, majd nyomtassa ki a cím és a kép URL-CÍMÉT. 
+2. Kérje le a `jsonObj` első képét, majd nyomtassa ki a kép címét és URL-címét.
     ```csharp
     var firstJsonObj = jsonObj["value"][0];
     Console.WriteLine("Title for the first image result: " + firstJsonObj["name"]+"\n");
-    //After running the application, copy the output URL into a browser to see the image. 
+    //After running the application, copy the output URL into a browser to see the image.
     Console.WriteLine("URL for the first image result: " + firstJsonObj["webSearchUrl"]+"\n");
     ```  
-       
-3. Ellenőrizze, hogy az alkalmazás kódjának az előfizetési kulcs eltávolítása.
+
+3. Ne felejtse el eltávolítani az előfizetői azonosítót az alkalmazás kódjából.
 
 ## <a name="json-response"></a>JSON-válasz
 
-A Bing Image Search API érkező válaszokat a rendszer JSON formátumban adja vissza. Ez a minta-válasz a rendszer csonkolta egyetlen eredmény megjelenítéséhez.
+A Bing Image Search API válaszai JSON formátumban érkeznek vissza. A mintaválasz egyetlen eredményre van csonkolva.
 
 ```json
 {
@@ -209,12 +208,12 @@ A Bing Image Search API érkező válaszokat a rendszer JSON formátumban adja v
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Bing – Képkeresés egyoldalas alkalmazás oktatóanyag](../tutorial-bing-image-search-single-page-app.md)
+> [Egyoldalas alkalmazás-oktatóanyag a Bing Image Search használatához](../tutorial-bing-image-search-single-page-app.md)
 
-## <a name="see-also"></a>Lásd még 
+## <a name="see-also"></a>Lásd még
 
-* [Mi az a Bing Képkeresés?](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/overview)  
-* [Próbálja ki az online interaktív bemutatót](https://azure.microsoft.com/services/cognitive-services/bing-image-search-api/)  
-* [Ingyenesen a Cognitive Services hozzáférési kulcs lekérése](https://azure.microsoft.com/try/cognitive-services/?api=bing-image-search-api)  
-* [Az Azure Cognitive Services – dokumentáció](https://docs.microsoft.com/azure/cognitive-services)
-* [A Bing Image Search API-referencia](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference)
+* [Mi a Bing Image Search?](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/overview)  
+* [Online interaktív bemutató kipróbálása](https://azure.microsoft.com/services/cognitive-services/bing-image-search-api/)  
+* [Ingyenes Cognitive Services hozzáférési kulcs beszerzése](https://azure.microsoft.com/try/cognitive-services/?api=bing-image-search-api)  
+* [Az Azure Cognitive Services dokumentációja](https://docs.microsoft.com/azure/cognitive-services)
+* [Bing Video Search API – referencia](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference)

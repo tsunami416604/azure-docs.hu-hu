@@ -1,6 +1,12 @@
 ### YamlMime:YamlDocument
+ms.openlocfilehash: fbe7b703df033a3feacfa20e17868885e459c7e7
+ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/13/2018
+ms.locfileid: "49311134"
 documentType: LandingData
-title: Az Azure Lab Services (korábbi nevén DevTest Labs) előzetes verziójának dokumentációja
+title: Az Azure Lab Services előzetes verzió és az Azure DevTest Labs dokumentációja
 metadata:
   title: Az Azure Lab Services dokumentációja – oktatóanyagok és API-referencia | Microsoft Docs
   description: Ismerje meg, hogyan helyezhet üzembe az Azure Lab Services használatával gyorsan egy fejlesztési, tesztelési, hackathon vagy osztályterem-tesztkörnyezetet a felhőben a csoportja vagy diákjai számára. Azure-oktatóanyagok, minták és egyéb anyagok, amelyekből megtudhatja, hogyan hozza létre, kezelje és tegye biztonságossá a laborokat.
@@ -13,12 +19,6 @@ metadata:
   ms.topic: landing-page
   ms.date: 04/06/2018
   ms.author: spelluru
-  ms.openlocfilehash: 1b37824b113fd9b1aaf225c5cb24b2dd27f1b47f
-  ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
-  ms.translationtype: HT
-  ms.contentlocale: hu-HU
-  ms.lasthandoff: 06/01/2018
-  ms.locfileid: "34636698"
 abstract:
   description: Ismerje meg, hogyan helyezhet üzembe az Azure Lab Services használatával gyorsan egy fejlesztési, tesztelési, hackathon vagy osztályterem-tesztkörnyezetet a felhőben a csoportja vagy diákjai számára. Azure-oktatóanyagok, minták és egyéb anyagok, amelyekből megtudhatja, hogyan hozza létre, kezelje és tegye biztonságossá a laborokat.
 sections:
