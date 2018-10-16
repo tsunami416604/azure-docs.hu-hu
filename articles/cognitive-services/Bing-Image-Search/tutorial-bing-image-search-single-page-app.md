@@ -1,86 +1,89 @@
 ---
-title: Bing kép keresési egyoldalas webalkalmazást |} Microsoft Docs
-description: Bemutatja, hogyan használja a kép Bing keresési API egy egyoldalas webalkalmazást.
+title: 'Oktatóanyag: Egyoldalas webalkalmazás létrehozása – Bing Image Search API'
+titleSuffix: Azure cognitive services
+description: A Bing Image Search API segítségével jó minőségű, releváns képeket kereshet a weben. Ezzel az oktatóanyaggal egyoldalas webalkalmazást készíthet, amely keresési lekérdezéseket küld az API-nak, és a weblapon belül jeleníti meg az eredményeket.
 services: cognitive-services
-author: v-jerkin
-manager: ehansen
+author: aahi
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-image-search
-ms.topic: article
-ms.date: 10/04/2017
-ms.author: v-jerkin
-ms.openlocfilehash: d0e1dc24513c8fc3a405cf1c18f531a0c58fad13
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
-ms.translationtype: MT
+ms.topic: tutorial
+ms.date: 9/12/2018
+ms.author: aahi
+ms.openlocfilehash: e37cb9b9412d257ab238f23b90e4a1077070b2b6
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35349018"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46297451"
 ---
-# <a name="tutorial-single-page-web-app"></a>Oktatóanyag: Egyoldalas webalkalmazást
+# <a name="tutorial-create-a-single-page-app-using-the-bing-image-search-api"></a>Oktatóanyag: Egyoldalas alkalmazás létrehozása a Bing Image Search API használatával
 
-A kép Bing keresési API lehetővé teszi a weben és lemezkép eredményeket a keresési lekérdezés kapcsolódik. Az oktatóanyag azt, hogy a Bing kép keresési API-t használja a keresési eredmények megtekintése céljából egyoldalas-webalkalmazás létrehozása az oldalon jobbra. Az alkalmazás HTML, CSS és JavaScript összetevőket tartalmazza.
+A Bing Image Search API segítségével jó minőségű, releváns képeket kereshet a weben. Ezzel az oktatóanyaggal egyoldalas webalkalmazást készíthet, amely keresési lekérdezéseket küld az API-nak, és a weblapon belül jeleníti meg az eredményeket. Ez az oktatóanyag hasonló a Bing Web Searchre vonatkozó [ugyanilyen típusú oktatóanyaghoz](../Bing-Web-Search/tutorial-bing-web-search-single-page-app.md).
 
-<!-- Remove until we can sanitize images
-![[Single-page Bing Image Search app]](media/cognitive-services-bing-images-api/image-search-spa-demo.png)
--->
-
-> [!NOTE]
-> A JSON és a HTTP-fejléceket, a lap alján a JSON-válasz és a HTTP-kérelem információk kattintáskor felfedése. Ezek az adatok akkor hasznos, ha a szolgáltatás fel.
-
-Az oktatóanyag alkalmazás bemutatja, hogyan:
+Az oktatóanyag részeként összeállított alkalmazás a következők bemutatására szolgál:
 
 > [!div class="checklist"]
-> * Végezze el a Bing kép keresési API-hívás JavaScript
-> * Keresési beállítások átadása a kép Bing keresési API
-> * Keresési eredmények megjelenítése
-> * A keresési eredmények lap
-> * A Bing ügyfél azonosítója és API előfizetés kulcs kezelése
-> * Előforduló hibák kezelésének
+> * Bing Image Search API-hívás indítása a JavaScriptben
+> * A keresési eredmények javítása keresési beállítások használatával
+> * Keresési eredmények megjelenítése lapozással
+> * API-előfizetési kulcs és Bing ügyfélazonosító lekérése és kezelése
 
-Az oktatóprogram lap nincs teljes mértékben; bármely külső keretrendszerek, stíluslapok vagy képfájlok még nem használ. Csak széles körben támogatott JavaScript nyelvi funkciókat használ, és minden nagyobb webböngésző az aktuális verzióival működik.
+Az oktatóanyaghoz tartozó teljes forráskód elérhető a [GitHubon](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/tree/master/Tutorials/Bing-Image-Search).
 
-Ebben az oktatóanyagban arról lesz szó a forráskód csak a kijelölt részei. A teljes forráskód nem érhető el [külön oldalon](tutorial-bing-image-search-single-page-app-source.md). Másolja és illessze be a kódot egy szövegszerkesztőbe, és mentse a fájt `bing.html`.
+## <a name="prerequisites"></a>Előfeltételek
 
-> [!NOTE]
-> Ez az oktatóanyag alapvetően hasonlít, a a [egyoldalas Bing webes keresés app oktatóanyag](../Bing-Web-Search/tutorial-bing-web-search-single-page-app.md), kép keresési eredmények csak foglalkozik, de.
+* A [Node.js](https://nodejs.org/) legújabb verziója.
+* A Node.js-hez készült [Express.js](https://expressjs.com/) keretrendszer. A forráskód telepítési útmutatója a GitHubon elérhető minta információs fájljában (readme) található meg.
 
-## <a name="app-components"></a>Alkalmazások összetevői
+[!INCLUDE [cognitive-services-bing-image-search-signup-requirements](../../../includes/cognitive-services-bing-image-search-signup-requirements.md)]
 
-Bármely egyoldalas webalkalmazást, mint az oktatóanyag alkalmazás három rész tartalmazza:
+## <a name="manage-and-store-user-subscription-keys"></a>Felhasználó előfizetési kulcsainak kezelése és tárolása
 
-> [!div class="checklist"]
-> * HTML - struktúra és a lap tartalma határozza meg
-> * CSS - határozza meg az oldal megjelenítési módja
-> * JavaScript - meghatározza az oldal viselkedését
+Ez az alkalmazás webböngészők állandó tárolójában helyezi el az API-előfizetési kulcsokat. Ha nincs tárolt kulcs, akkor a weboldal a felhasználótól kéri a kulcs megadását, amelyet eltárol a későbbi használathoz. Ha az API később visszautasítja a kulcsot, az alkalmazás eltávolítja azt a tárolóból.
 
-Ez az oktatóanyag nem fedi le a HTML- vagy CSS többségét, részletesen, mivel ezek egyszerű.
 
-A HTML-KÓDBAN a keresés, amelyben a felhasználó beírja egy lekérdezést, majd keresési beállítások tartalmazza. Az űrlap csatlakozik-e a JavaScript, amely végrehajtja a Keresés a `<form>` címke `onsubmit` attribútum:
-
-```html
-<form name="bing" onsubmit="return newBingImageSearch(this)">
-```
-
-A `onsubmit` kezelő azt `false`, amely az űrlap tartja a kiszolgáló nem továbbíthatók. A JavaScript-kód ténylegesen végzi a munka a szükséges információk begyűjtése az űrlap és a keresés végrehajtása.
-
-A HTML is tartalmaz, a részlegek (HTML `<div>` címkék) hol jelenjenek meg a keresési eredmények között.
-
-## <a name="managing-subscription-key"></a>Előfizetés kulcs kezelése
-
-Kívánja kerülni a Bing keresési API-előfizetés kulcs szerepeljenek a kódot, használjuk a böngésző állandó tároló tárolja a kulcsot. Ha nem kulcs, azt meg kell adni a felhasználói kulcs, és későbbi használatra tárolja. Ha a kulcs később elutasította az API-t, azt érvénytelenné válnak a tárolt kulcs így a felhasználó újra.
-
-Meghatároztuk `storeValue` és `retrieveValue` függvények, amelyek használja a `localStorage` objektum (Ha a böngésző támogatja azt), vagy egy cookie-t. A `getSubscriptionKey()` függvény használja ezeket a funkciókat tárolásához és lekéréséhez a felhasználói kulcsot.
+Definiálja a `storeValue` és a `retrieveValue` függvényeket, amelyek vagy a `localStorage` objektumot használják (amennyiben a böngésző ezt támogatja), vagy cookie-kat.
 
 ```javascript
-// cookie names for data we store
+// Cookie names for data being stored
 API_KEY_COOKIE   = "bing-search-api-key";
 CLIENT_ID_COOKIE = "bing-search-client-id";
-
+// The Bing Image Search API endpoint
 BING_ENDPOINT = "https://api.cognitive.microsoft.com/bing/v7.0/images/search";
 
-// ... omitted definitions of storeValue() and retrieveValue()
+try { //Try to use localStorage first
+    localStorage.getItem;   
 
-// get stored API subscription key, or prompt if it's not found
+    window.retrieveValue = function (name) {
+        return localStorage.getItem(name) || "";
+    }
+    window.storeValue = function(name, value) {
+        localStorage.setItem(name, value);
+    }
+} catch (e) {
+    //If the browser doesn't support localStorage, try a cookie
+    window.retrieveValue = function (name) {
+        var cookies = document.cookie.split(";");
+        for (var i = 0; i < cookies.length; i++) {
+            var keyvalue = cookies[i].split("=");
+            if (keyvalue[0].trim() === name) return keyvalue[1];
+        }
+        return "";
+    }
+    window.storeValue = function (name, value) {
+        var expiry = new Date();
+        expiry.setFullYear(expiry.getFullYear() + 1);
+        document.cookie = name + "=" + value.trim() + "; expires=" + expiry.toUTCString();
+    }
+}
+```
+
+A `getSubscriptionKey()` függvény a `retrieveValue` használatával kísérli meg egy korábban tárolt kulcs lekérését. Ha ilyen nem található, akkor a felhasználótól kéri a kulcs megadását, és a `storeValue` használatával tárolja azt.
+
+```javascript
+
+// Get the stored API subscription key, or prompt if it's not found
 function getSubscriptionKey() {
     var key = retrieveValue(API_KEY_COOKIE);
     while (key.length !== 32) {
@@ -92,39 +95,46 @@ function getSubscriptionKey() {
 }
 ```
 
-A HTML `<form>` címke `onsubmit` hívások a `bingWebSearch` függvény által visszaadott a keresési eredmények között. `bingWebSearch` használja a `getSubscriptionKey` minden egyes lekérdezés hitelesítéséhez. Ahogy az az előző definíció `getSubscriptionKey` bekéri a felhasználótól a kulcsot, ha a kulcs nem lett megadva. A kulcsot majd tárolja a folyamatos használata az alkalmazás.
+Egy HTML `<form>` címke, az `onsubmit` meghívja a `bingWebSearch` függvényt, hogy visszaadja a keresési eredményeket. A `bingWebSearch` minden lekérdezés hitelesítéséhez a `getSubscriptionKey` függvényt használja. Ahogy az előző definíció is mutatja, a `getSubscriptionKey` elkéri a felhasználótól az azonosítót, ha az még nem lett megadva. A rendszer ezután eltárolja az azonosítót az alkalmazás által további használatra.
 
 ```html
-<form name="bing" onsubmit="this.offset.value = 0; return bingWebSearch(this.query.value, 
-    bingSearchOptions(this), getSubscriptionKey())">
+<form name="bing" onsubmit="this.offset.value = 0; return bingWebSearch(this.query.value,
+bingSearchOptions(this), getSubscriptionKey())">
 ```
 
-## <a name="selecting-search-options"></a>Keresési beállítások kiválasztása
+## <a name="send-search-requests"></a>Keresési kérések küldése
 
-![[A Bing kép keresési űrlap]](media/cognitive-services-bing-images-api/image-search-spa-form.png)
+Ez az alkalmazás egy HTML `<form>` használatával kezdeményezi a felhasználói keresési kérések küldését, az `onsubmit` attribútummal meghívva a `newBingImageSearch()` függvényt.
 
-A HTML-űrlaphoz, az alábbi funkciókat tartalmazza:
+```html
+<form name="bing" onsubmit="return newBingImageSearch(this)">
+```
 
-| | |
-|-|-|
-|`where`|A legördülő menüből a kereséshez használt piaci (a hely és a nyelvi) kiválasztásához.|
-|`query`|A szövegmezőbe írja be a keresőkifejezést használandó.|
-|`aspect`|A tényleges képek arányát kiválasztásának választógombokkal: nagyjából szögletes, számos, vagy magasságát.|
-|`color`|Szín vagy színes, vagy egy elsődleges választja ki.
-|`when`|A Keresés a legutóbbi naponta, hetente vagy havonta opcionálisan korlátozó legördülő menü.|
-|`safe`|A jelölőnégyzet, amely azt jelzi, hogy Bing tartozó biztonságos keresés funkció segítségével "felnőtt" eredményeket szűrheti.|
-|`count`|Rejtett mező. Keresési eredmények vissza az egyes kérelmek száma. Módosítsa a laponként kevesebb vagy további eredmények megtekintése céljából.|
-|`offset`|Rejtett mező. A kérelem; az első keresési eredmény eltolása a lapozáshoz használt. Lesz visszaállítva `0` az új kérelemhez.|
-|`nextoffset`|Rejtett mező. A keresési eredmény fogadását követően a mező értékének van beállítva a `nextOffset` a válaszban. Ez a mező használatával elkerülhető az egymást átfedő eredmények egymást követő lapokon.|
-|`stack`|Rejtett mező. JSON-kódolású az eltolások listáját az előző keresési eredményeit, lépjen vissza az előző lapokra oldalát.|
+Az `onsubmit` kezelő alapértelmezésként `false` értéket ad vissza, ami megakadályozza az űrlap elküldését.
 
-> [!NOTE]
-> Bing kép keresési kínál számos további lekérdezési paramétereket. Itt használunk csak néhány őket.
+## <a name="select-search-options"></a>Keresési beállítások kiválasztása
 
-A JavaScript függvény `bingSearchOptions()` alakítja át ezeket a mezőket a Bing keresési API által megkívánt formátumban részleges lekérdezési karakterláncként.
+![[Bing Image Search űrlap]](media/cognitive-services-bing-images-api/image-search-spa-form.png)
+
+A Bing Image Search API több [szűrőlekérdezési paramétert](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#filter-query-parameters) kínál a találatok szűkítéséhez és szűréséhez. Ebben az alkalmazásban a HTML-űrlap az alábbi paraméteres beállításokat használja és jeleníti meg:
+
+|              |                                                                                                                                                                                    |
+|--------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `where`      | Legördülő menü a kereséshez használt piac (hely és nyelv) kiválasztásához.                                                                                             |
+| `query`      | Szövegmező a keresőkifejezések megadásához.                                                                                                                                 |
+| `aspect`     | Választógombok a képtalálatok képarányának (nagyjából négyzetes, széles vagy magas) kiválasztásához.                                                                                     |
+| `color`      |                                                                                                                                                                                    |
+| `when`       | Legördülő menü a keresés opcionális, az elmúlt napra, hétre vagy hónapra történő korlátozásához.                                                                                          |
+| `safe`       | Jelölőnégyzet, amellyel megadható, hogy a Bing SafeSearch funkciója kiszűrje-e a „felnőtteknek szánt” tartalmakat.                                                                                      |
+| `count`      | Rejtett mező. A kérésenként visszaadandó keresési eredmények száma. A módosításával oldalanként kevesebb vagy több keresési eredmény jeleníthető meg.                                                            |
+| `offset`     | Rejtett mező. Az első keresési eredmény eltolása a kérésben; a lapozást segíti elő. Új kérésnél `0` értékre van visszaállítva.                                                           |
+| `nextoffset` | Rejtett mező. Keresési eredmény fogadásakor ez a mező a válaszbeli `nextOffset` értékre van beállítva. Ennek a mezőnek a használatával akadályozható meg a találatok átfedése az egymást követő lapokon. |
+| `stack`      | Rejtett mező. A keresési eredmények előző oldalainak eltolásait tároló, JSON-kódolású lista a korábbi oldalakra való visszalapozáshoz.                                                      |
+
+A `bingSearchOptions()` függvény az alkalmazás API-kéréseiben használható részleges lekérdezési sztringgé alakítja ezeket a beállításokat.  
 
 ```javascript
-// build query options from the HTML form
+// Build query options from the HTML form
 function bingSearchOptions(form) {
 
     var options = [];
@@ -146,11 +156,10 @@ function bingSearchOptions(form) {
 }
 ```
 
-Például lehet a biztonságos Keresés funkciót `strict`, `moderate`, vagy `off`, a `moderate` az alapértelmezett alatt. De az űrlap használ a jelölőnégyzet, amelynek csak kétállapotú. A JavaScript-kód alakítja át, ezt a beállítást az egyik `strict` vagy `off` (nem vesszük `moderate`).
+## <a name="performing-the-request"></a>A kérés végrehajtása
 
-## <a name="performing-the-request"></a>A kérelem végrehajtása
+A keresési lekérdezés, a beállítási sztring és az API-kulcs használatával a `BingImageSearch()` függvény egy XMLHttpRequest objektumot használ arra, hogy kérést intézzen a Bing Image Search-végponthoz.
 
-A lekérdezés, a beállítások karakterlánc és az API-kulcsot a `BingImageSearch` függvény egy `XMLHttpRequest` objektum gombra a kérelem a Bing kép keresési végpontnak.
 
 ```javascript
 // perform a search given query, options string, and API key
@@ -169,7 +178,7 @@ function bingImageSearch(query, options, key) {
     // open the request
     try {
         request.open("GET", queryurl);
-    } 
+    }
     catch (e) {
         renderErrorMessage("Bad request (invalid URL)\n" + queryurl);
         return false;
@@ -180,10 +189,10 @@ function bingImageSearch(query, options, key) {
     request.setRequestHeader("Accept", "application/json");
     var clientid = retrieveValue(CLIENT_ID_COOKIE);
     if (clientid) request.setRequestHeader("X-MSEdge-ClientID", clientid);
-    
+
     // event handler for successful response
     request.addEventListener("load", handleBingResponse);
-    
+
     // event handler for erorrs
     request.addEventListener("error", function() {
         renderErrorMessage("Error completing request");
@@ -200,7 +209,7 @@ function bingImageSearch(query, options, key) {
 }
 ```
 
-A HTTP-kérés sikeres befejezését követően a JavaScript-hívásokat az `load` eseménykezelő, a `handleBingResponse()` függvény kezelni egy sikeres HTTP GET kérést az API-t. 
+A HTTP-kérés sikeres befejezése esetén a JavaScript a `handleBingResponse()` „betöltési” eseménykezelőt hívja meg a sikeres HTTP GET kérés kezelésére.
 
 ```javascript
 // handle Bing search request results
@@ -219,7 +228,7 @@ function handleBingResponse() {
 
     // show raw JSON and HTTP request
     showDiv("json", preFormat(JSON.stringify(jsobj, null, 2)));
-    showDiv("http", preFormat("GET " + this.responseURL + "\n\nStatus: " + this.status + " " + 
+    showDiv("http", preFormat("GET " + this.responseURL + "\n\nStatus: " + this.status + " " +
         this.statusText + "\n" + this.getAllResponseHeaders()));
 
     // if HTTP response is 200 OK, try to render search results
@@ -267,21 +276,11 @@ function handleBingResponse() {
 ```
 
 > [!IMPORTANT]
-> A sikeres HTTP-kérelmek does *nem* feltétlenül jelenti azt, hogy a keresési szolgáltatás sikeresen befejeződött. Ha hiba lép fel a keresési művelet, a lemezkép Bing keresési API nem 200-as HTTP - állapotkódot adja vissza, és tartalmazza a hiba adatait a JSON-NÁ válaszul. Emellett a kérelmező sebessége korlátozott, ha a az API-t egy üres választ ad vissza.
+> Sikeres HTTP-kérések is tartalmazhatnak sikertelen keresési információt. Ha a keresési művelet során hiba merül fel, a Bing Image Search API egy nem 200-as értékű HTTP-állapotkódot és a hibára vonatkozó információkat ad vissza a JSON-válaszban. Továbbá, ha a kérés sebessége korlátozva volt, az API üres választ fog visszaadni.
 
-Nagy részét a kódot is az előző funkciók hibakezelés van kijelölve. Hibák fordulhatnak elő a következő szakaszokban:
+## <a name="display-the-search-results"></a>A keresési eredmények megjelenítése
 
-|Fázis|A lehetséges hibák|Kezeli|
-|-|-|-|
-|Épület JavaScript request objektumon|Érvénytelen URL|`try`/`catch` letiltása|
-|A kérést|Hálózati hiba, megszakított kapcsolatok|`error` és `abort` eseménykezelők|
-|A keresés végrehajtása|Érvénytelen kérelemben érvénytelen JSON sebességhatárok|a tesztek `load` eseménykezelő|
-
-Hibák hívásával kezeli `renderErrorMessage()` a hibával kapcsolatos ismert bármely adatokkal. Ha a válasz a teljes gauntlet hiba teszten megfelelt, nevezzük `renderSearchResults()` a keresési eredmények megjelennek a lapon.
-
-## <a name="displaying-search-results"></a>Keresési eredmények megjelenítése
-
-A keresési eredmények megjelenítése a fő funkciója `renderSearchResults()`. Ez a funkció a JSON a Bing kép keresési szolgáltatás által visszaadott vesz igénybe, és ez a beállítás a képeket és a kapcsolódó keres, ha van ilyen.
+A keresési eredményeket a `renderSearchResults()` függvény jeleníti meg, amely a Bing Image Search szolgáltatás által visszaadott JSON birtokában meghívja a megfelelő renderelő függvényt a képtalálatokhoz és a kapcsolódó keresésekhez.
 
 ```javascript
 function renderSearchResults(results) {
@@ -290,14 +289,14 @@ function renderSearchResults(results) {
     var pagingLinks = renderPagingLinks(results);
     showDiv("paging1", pagingLinks);
     showDiv("paging2", pagingLinks);
-    
+
     showDiv("results", renderImageResults(results.value));
     if (results.relatedSearches)
         showDiv("sidebar", renderRelatedItems(results.relatedSearches));
 }
 ```
 
-A fő rendszerkép találatok vissza, a legfelső szintű `value` a JSON-NÁ válaszul objektum. Azt adja meg azokat a függvény `renderImageResults()`, amely telepítéseket őket, és egy külön függvényt HTML egyes elemek megjelenítéséhez. Az eredményül kapott HTML küld vissza `renderSearchResults()`, ahol azt bekerülnek a `results` osztás a lapon.
+A képtalálatokat a JSON-válaszon belüli legfelső szintű `value` objektum tartalmazza. Ezek a `renderImageResults()` függvénynek lesznek átadva, amely a találatokat sorra véve minden elemet HTML-re konvertál.
 
 ```javascript
 function renderImageResults(items) {
@@ -315,39 +314,42 @@ function renderImageResults(items) {
 }
 ```
 
-A kép Bing keresési API legfeljebb négy különböző típusú kapcsolódó saját legfelső szintű objektum eredményeket ad vissza. Ezek a következők:
+A Bing Image Search API négyféle keresési javaslatot adhat vissza a felhasználó keresési élményének támogatására, mindegyiket a saját legfelső szintű objektumában:
 
-|||
-|-|-|
-|`pivotSuggestions`|Lecseréli az eredeti search pivot szót egy másik lekérdezések. Például ha a "red virág", lehet, hogy a pivot szót "red", és előfordulhat, hogy a pivot javaslat "sárga virág."|
-|`queryExpansions`|Azok a lekérdezések, amelyek az eredeti keresés szűkítéséhez további feltételek hozzáadásával. Ha a "Microsoft Surface", a lekérdezés bővítése lehet például "Microsoft Surface Pro."|
-|`relatedSearches`|Az eredeti keresési megadott más felhasználók is megadott lekérdezések. Például ha a "Mount Rudolf", a kapcsolódó keresés lehet "Mt. Saint Helens."|
-|`similarTerms`|A hasonló jelentése van az eredeti keresési lekérdezések. Ha a "kismacskák", egy hasonló kifejezés lehet például "írni."|
+| Javaslat         | Leírás                                                                                                                                                                                                         |
+|--------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `pivotSuggestions` | Lekérdezések, amelyek az eredeti keresés egyik lecserélhető szavát egy másikra cserélik. Ha például a „piros virágok” kifejezésre keres, a „piros” egy lecserélhető szó, a „sárga virágok” pedig egy alternatív javaslat. |
+| `queryExpansions`  | Lekérdezések, amelyek további kifejezések hozzáadásával szűkítik az eredeti keresést. Ha például a „Microsoft Surface” kifejezésre keres, a lekérdezés egyik lehetséges kibővítése a „Microsoft Surface Pro”.                                   |
+| `relatedSearches`  | Az eredeti keresőkifejezéssel is próbálkozó felhasználók további lekérdezései. Ha például a „Mount Rainier” kifejezésre keres, egy lehetséges kapcsolódó keresés lehet a „Mt. Saint Helens”.                       |
+| `similarTerms`     | Lekérdezések, amelyeknek az eredeti kereséshez hasonló jelentésük van. Ha például a „cicák” kifejezésre keres, a „cuki” az egyik ilyen hasonló értelmű keresőszó.                                                                   |
 
-A korábban már látott `renderSearchResults()`, azt csak leképezési a `relatedItems` vonatkozó javaslatokat és a hely a kapott a lap nézetállapotán oldalsávon hivatkozásokat tartalmaz.
+Az alkalmazás csak a `relatedItems` javaslatait rendereli, a kapott hivatkozásokat pedig a lap oldalsávjában helyezi el.
 
-## <a name="rendering-result-items"></a>Eredmény elemek megjelenítése
+## <a name="rendering-search-results"></a>Keresési eredmények renderelése
 
-A JavaScript code egy objektum `searchItemRenderers`, tartalmazó *jelentéselemeket:* függvény alapján, amelyek HTML minden milyen keresési eredmények.
+Ebben az alkalmazásban a `searchItemRenderers` objektum renderelő függvényeket tartalmaz, amelyek minden típusú keresési eredményhez létrehoznak egy HTML-t.
 
 ```javascript
-searchItemRenderers = { 
+searchItemRenderers = {
     images: function(item, index, count) { ... },
     relatedSearches: function(item) { ... }
 }
 ```
 
-A megjelenítő függvény előfordulhat, hogy fogadja el a következő paraméterekkel:
+Ezek a renderelő függvény a következő paramétereket fogadják el:
 
-| | |
-|-|-|
-|`item`|A JavaScript objektumra, amely a elem tulajdonságai, például az URL-CÍMÉT és leírását.|
-|`index`|Az index, az eredmény elem a gyűjteményben.|
-|`count`|A keresési eredmény cikk gyűjtemény elemeinek száma.|
+| Paraméter         | Leírás                                                                                              |
+|---------|----------------------------------------------------------------------------------------------|
+| `item`  | A JavaScript-objektum, amely az elem tulajdonságait tartalmazza, például az URL-címét és a leírását. |
+| `index` | Az eredményelem indexe a saját gyűjteményén belül.                                          |
+| `count` | Az eredményelem gyűjteményében található elemek száma.                                  |
 
-A `index` és `count` paraméterek képes használni a el a szám, speciális HTML-KÓDBAN a elején vagy végén egy gyűjteményhez, a sortörések beszúrása elemek, bizonyos számú után, és így tovább. Ha egy leképező nem kell ezt a funkciót, azt nem kell a két paraméterek elfogadásához.
+Az `index` és a `count` paraméter az eredmények számozására, gyűjtemények számára generált HTML-ekhez, és a tartalom rendszerezésére van felhasználva. Konkrétan:
 
-A következőkben részletes bemutatása a `images` leképező:
+* Kiszámítja a kép miniatűrjének méretét (a szélesség változó, de legalább 120 képpont, a magasság mindig 90).
+* Létrehozza az `<img>` HTML-címkét a képminiatűr megjelenítéséhez.
+* Létrehozza az `<a>` HTML-címkéket, amelyek a képre és a képet tartalmazó oldalra hivatkoznak.
+* Létrehozza a leírást, amely információkat jelenít meg a képről és a képet tartalmazó oldalról.
 
 ```javascript
     images: function (item, index, count) {
@@ -357,7 +359,7 @@ A következőkben részletes bemutatása a `images` leképező:
         if (index === 0) html.push("<p class='images'>");
         var title = escape(item.name) + "\n" + getHost(item.hostPageDisplayUrl);
         html.push("<p class='images' style='max-width: " + width + "px'>");
-        html.push("<img src='"+ item.thumbnailUrl + "&h=" + height + "&w=" + width + 
+        html.push("<img src='"+ item.thumbnailUrl + "&h=" + height + "&w=" + width +
             "' height=" + height + " width=" + width + "'>");
         html.push("<br>");
         html.push("<nobr><a href='" + item.contentUrl + "'>Image</a> - ");
@@ -367,51 +369,44 @@ A következőkben részletes bemutatása a `images` leképező:
     }, // relatedSearches renderer omitted
 ```
 
-A kép megjelenítő funkciót:
+A miniatűr `height` és `width` tulajdonságát az `<img>` címke, illetve a miniatűr URL-címének `h` és `w` mezője is használja. A Bing ezáltal pontosan ekkora méretű [miniatűrt](resize-and-crop-thumbnails.md) tud visszaadni.
 
-> [!div class="checklist"]
-> * Kiszámítja a miniatűr képméret (szélesség változik, legalább 120 képpont, amíg magasság van rögzítve 90 képpont).
-> * A HTML buildek `<img>` címkén belül, hogy a kép miniatűr megjelenítéséhez. 
-> * A HTML buildek `<a>` címkéket, amelyek a lemezkép és az azt tartalmazó lap.
-> * A leírást, információkat jelenít meg a lemezkép és a helyet, mert nem hoz létre.
+## <a name="persisting-client-id"></a>Ügyfél-azonosító megőrzése
 
-Teszteljük a `index` változó beszúrni egy `<p>` címke előtt az első kép eredményt. A miniatűrök egyéb tompa találkoznak egymást és sortörés következik a böngészőablakban igény szerint.
+A Bing Search API-k válaszai tartalmazhatnak egy `X-MSEdge-ClientID` fejlécet, amelyet egymást követő kérésekkel vissza kell küldeni az API-nak. Ha több Bing Search API-t is használ, mindegyikhez ugyanazt az ügyfél-azonosítót használja, ha lehetséges.
 
-A miniatűrök méretének is szerepel a `<img>` címke és a `h` és `w` mezők a Miniatűr URL-címben. A [Bing miniatűr szolgáltatás](resize-and-crop-thumbnails.md) kézbesíti a miniatűr nézete pontosan ez a méret.
+Az `X-MSEdge-ClientID` fejléc megadása lehetővé teszi, hogy a Bing API-k egymáshoz társítsák a felhasználó összes keresését, ami több szempontból is hasznos.
 
-## <a name="persisting-client-id"></a>Persisting ügyfél-azonosító
+Egyrészt lehetővé teszi, hogy a Bing keresőmotorja korábbi kontextusokat is alkalmazzon a keresésekhez olyan találatok megjelenítése érdekében, amelyek jobban megfelelnek a felhasználó igényeinek. Ha például a felhasználó korábban vitorlázáshoz kapcsolódó kifejezésekre keresett rá, egy későbbi keresés a „csomó” kifejezésre nagy valószínűséggel a vitorlázásban használt csomókkal kapcsolatos információkat fog eredményezni.
 
-A Bing keresési API-k válaszainak tartalmazhat egy `X-MSEdge-ClientID` fejlécet tartalmazta, amely vissza az API-t egymást követő kéréseket kell küldeni. Ha több Bing keresési API-k vannak használatban, az azonos ügyfél-Azonosítót kell használható azokat, ha lehetséges.
+Másrészt a Bing véletlenszerűen kiválaszthat felhasználókat, hogy új funkciókat próbálhassanak ki, mielőtt azok széles körben elérhetővé válnának. Ha minden kéréshez ugyanaz az ügyfél-azonosító van megadva, akkor azok a felhasználók, akik ki lettek választva egy funkció használatára, mindig látják azt. Az ügyfél-azonosító nélkül a felhasználó azt tapasztalhatja, hogy egy funkció látszólag véletlenszerűen hol megjelenik, hol eltűnik a keresési eredményeknél.
 
-Így a `X-MSEdge-ClientID` fejléc lehetővé teszi, hogy a Bing API-k az összes felhasználó keresések, amely két fontos előnnyel jár.
-
-Először lehetővé teszi a Bing keresőmotor keresések található eredmények, amelyek jobban megfeleljenek a felhasználói környezet túli alkalmazása. Ha a felhasználó a korábban keresést kihajózás kapcsolódó feltételek, például egy újabb keresse meg a "csomó" Előfordulhat, hogy lehetőleg vonatkozó adatokat ad vissza csomó kihajózás használt.
-
-Második a Bing véletlenszerűen jelölje ki felhasználók számára, hogy mielőtt széles körben elérhető új szolgáltatások. Így az azonos ügyfél-Azonosítót minden egyes kérelemmel biztosítja, hogy a felhasználók, tekintse meg a szolgáltatás mindig választotta látja. Az ügyfél-azonosító nélkül a felhasználó jelenhet meg a szolgáltatás megjelennek és eltűnnek, látszólag véletlenszerű, a keresési eredmények között.
-
-Böngésző biztonsági házirendek (CORS) előfordulhat, hogy a `X-MSEdge-ClientID` rendelkezésre állása, a JavaScript fejléc. Ez a korlátozás következik be, amikor a keresési válasz van egy eltérő eredetű az oldalról, amely azt kéri. Éles környezetben eleget kell tennie ezt a házirendet, amelyet a weblap megegyező tartományban lévő API-hívás kiszolgálóoldali parancsfájl üzemeltetnie. Mivel a parancsfájlt a weblapként azonos forrásból a `X-MSEdge-ClientID` fejléc JavaScript számára elérhető lesz.
+A böngészők biztonsági szabályzatai (CORS) megakadályozhatják, hogy a JavaScript hozzáférjen az `X-MSEdge-ClientID` fejléchez. Ez a korlátozás akkor léphet életbe, ha a keresési válasz eredete különbözik az azt lekérő oldalétól. Éles környezetben egy olyan kiszolgálóoldali szkript futtatásával oldhatja fel a szabályzat okozta korlátozást, amely a weboldaléval megegyező tartományból hívja meg az API-t. Mivel a szkript eredete megegyezik a weboldaléval, az `X-MSEdge-ClientID` fejléc elérhető lesz a JavaScript számára.
 
 > [!NOTE]
-> Webes alkalmazás éles végre kell hajtania a kérelem kiszolgálóoldali ennek ellenére is. Ellenkező esetben a Bing keresési API-kulcsot kell szerepelnie a weblap, amelyen érhető el számára, akik megtekinti az adatforrás. Az API előfizetés kulcs, még akkor is, kérelmeire jogosulatlan felek, ezért fontos, hogy a kulcs alatt minden használatának számlázása.
+> Éles webalkalmazásban a kérést ettől függetlenül is kiszolgálói oldalról érdemes végrehajtani. Ellenkező esetben a weboldalnak tartalmaznia kell a Bing Search API-kulcsot, ahol a forrást megtekintők is hozzáférhetnek. Az API előfizetési kulcsával történő összes használatért Ön fizet, még az illetéktelen felek által létrehozott kérésekért is, ezért fontos, hogy a kulcsot ne tegye elérhetővé.
 
-Fejlesztési célokra szolgál hogy a Bing webes keresési API-kérelem a CORS-proxyn keresztül. Ilyen proxy válaszát rendelkezik egy `Access-Control-Expose-Headers` fejléc adott whitelists válaszfejlécek és elérhetővé válnak a JavaScript nyelvvel.
+Fejlesztési célokból a Bing Web Search API-kérést egy CORS-proxyn keresztül is végrehajthatja. Az ilyen proxyk válasza rendelkezik egy `Access-Control-Expose-Headers` fejléccel, amely engedélyezési listára teszi a válaszfejléceket, és elérhetővé teszi őket a JavaScript számára.
 
-Akkor is könnyen lehetővé teszi az oktatóanyag alkalmazásnak, az ügyfél eléréséhez Tevékenységazonosító fejlécet a CORS-proxyt telepíteni szeretné. Ha még nem rendelkezik, először [telepítse a Node.js-](https://nodejs.org/en/download/). Majd adja ki a következő parancsot a parancssorba:
+CORS-proxyt könnyedén telepíthet annak érdekében, hogy oktatóalkalmazásunk hozzáférhessen az ügyfél-azonosító fejlécéhez. Első lépésként [telepítse a Node.js-t](https://nodejs.org/en/download/), ha még nem tette meg. Ezután hajtsa végre egy parancsablakban a következő parancsot:
 
     npm install -g cors-proxy-server
 
-Ezután módosítsa a Bing keresést a következőben szereplő végpontnál: a HTML-fájlt:
+Következő lépésként írja át a Bing Web Search-végpontot a HTML-fájlban a következőre:
 
     http://localhost:9090/https://api.cognitive.microsoft.com/bing/v7.0/search
 
-Végezetül indítsa el a CORS-proxy a következő paranccsal:
+Végül indítsa el a CORS-proxyt a következő paranccsal:
 
     cors-proxy-server
 
-A parancssori ablakban nyitva hagyja az oktatóanyag alkalmazás; használatakor az ablak bezárása leállítja a proxy. A bővíthető HTTP-fejlécek című szakaszt a keresési eredmények között, a most már megtekintheti a `X-MSEdge-ClientID` fejléc (többek között), és győződjön meg arról, hogy minden kérelem esetén.
+Ne zárja be a parancsablakot, amíg használja az oktatóalkalmazást; az ablak bezárása leállítja a proxyt. A bővíthető HTTP-fejlécek szakaszában, a keresési eredmények alatt, most már az `X-MSEdge-ClientID` fejléc is megjelenik, és ellenőrizheti, hogy ugyanaz a fejléc szerepel-e minden kérésnél.
 
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Bing kép keresési API-referencia](//docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference)
+> [Képadatok kinyerése a Bing Image Search API használatával](tutorial-image-post.md)
 
+## <a name="see-also"></a>Lásd még
+
+* [Bing Image Search API – referencia](//docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference)

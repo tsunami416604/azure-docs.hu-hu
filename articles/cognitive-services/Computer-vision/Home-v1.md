@@ -1,51 +1,52 @@
 ---
-title: Computer Vision API a Microsoft Cognitive Services |} A Microsoft Docs
-description: A Computer Vision API fejlett algoritmusok segítségével dolgozhassa és a Microsoft Cognitive Services információkat ad vissza.
+title: Mi az a Computer Vision API?
+titlesuffix: Azure Cognitive Services
+description: A Computer Vision API speciális képfeldolgozó és információt visszaadó algoritmusokhoz biztosít hozzáférést a fejlesztők számára.
 services: cognitive-services
 author: KellyDF
-manager: corncar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: computer-vision
-ms.topic: article
+ms.topic: overview
 ms.date: 08/10/2017
 ms.author: kefre
-ms.openlocfilehash: 84d931ad79bf32b39a4d771f6afd1c9a05ad2395
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
-ms.translationtype: MT
+ms.openlocfilehash: e2f3a5655b2fbedf3ad80d555421599e26225196
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44714819"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45982101"
 ---
-# <a name="what-is-computer-vision-api-version-10"></a>Mi az számítógép Vision API 1.0-s verzióját?
+# <a name="what-is-computer-vision-api-version-10"></a>Mi a Computer Vision API 1.0-s verziója?
 
 > [!IMPORTANT]
-> Computer Vision API új verziója mostantól elérhető, lásd:
+> A Computer Vision API új verziója érhető el, lásd:
 >- [Áttekintés](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home)
->- [Számítógép Vision API 2.0-s verzió](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44)
+>- [Computer Vision API 2.0-s verzió](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44)
 
-A felhőalapú Computer Vision API a fejlesztők számára hozzáférést biztosít speciális képfeldolgozó és információt visszaadó algoritmusokhoz. Egy kép feltöltésével vagy egy kép URL-címének megadásával a Microsoft Computer Vision algoritmusai különböző módokon elemzik a vizuális tartalmat bemenetek és a felhasználó választásai alapján. A Computer Vision API-val a felhasználók képek is elemezhet:
-* [Címkézhet meg képeket a tartalom alapján.](#Tagging)
+A felhőalapú Computer Vision API a fejlesztők számára hozzáférést biztosít speciális képfeldolgozó és információt visszaadó algoritmusokhoz. Egy kép feltöltésével vagy egy kép URL-címének megadásával a Microsoft Computer Vision algoritmusai különböző módokon elemzik a vizuális tartalmat bemenetek és a felhasználó választásai alapján. A Computer Vision API használatával a felhasználók a következő célokból elemezhetnek képeket:
+* [Képek címkézése tartalom alapján.](#Tagging)
 * [Képek kategorizálása.](#Categorizing)
-* [Azonosítsa a típus és minősége lemezképeket.](#Identifying)
-* [Emberi arcok észlelése és azok koordinátáit adja vissza. ](#Faces)
-* [Ismeri fel a tartomány-specifikus tartalmait.](#Domain-Specific)
-* [Hozzon létre a tartalom leírását.](#Descriptions)
-* [Optikai karakterfelismerés segítségével azonosíthatja a képeken található nyomtatott szöveg.](#OCR)
+* [Képek típusának és minőségének azonosítása.](#Identifying)
+* [Emberi arcok észlelése és azok koordinátáinak visszaadása.](#Faces)
+* [Fogalomkör-specifikus tartalom felismerése.](#Domain-Specific)
+* [Tartalomleírások generálása.](#Descriptions)
+* [A képeken található nyomtatott szöveg azonosítása optikai karakterfelismerés használatával.](#OCR)
 * [Kézzel írt szöveg felismerése.](#RecognizeText)
-* [Színsémák különbséget.](#Color)
-* [Felnőtt tartalom jelző.](#Adult)
-* [Körülvágása fényképeket, a miniatűrök használható.](#Thumbnails)
+* [Színsémák megkülönböztetése.](#Color)
+* [Felnőtt tartalom megjelölése.](#Adult)
+* [Képek körülvágása miniatűrként való felhasználáshoz.](#Thumbnails)
 
 ## <a name="requirements"></a>Követelmények
-* Támogatott bemeneti módszerek: bináris egy application/octet-stream vagy URL-formájában nyers kép.
-* Támogatott képformátum: JPEG, PNG, GIF és BMP.
-* Fájl Képméret: legfeljebb 4 MB.
-* Lemezkép-dimenzió: nagyobb, mint 50 x 50 képpont.
+* Támogatott beviteli módszerek: Nyers bináris képadatok alkalmazás/oktett-stream vagy a képre mutató URL-cím formájában.
+* Támogatott képformátumok: JPEG, PNG, GIF, BMP.
+* Képfájl mérete: Kevesebb, mint 4 MB.
+* Képméret: Nagyobb, mint 50 × 50 képpont.
 
-## <a name="tagging-images"></a>Rendszerképek címkézése
-Computer Vision API több mint 2000 felismerhető objektumok, tárgy, táj és műveletek alapján címkéket adja vissza. Ha a címkék olyan nem egyértelmű vagy nem közismert, az API-válasz biztosít "tippek" ismert beállítását a környezetben a címke jelentésének értelmezéséhez. Címkék nem egy besorolás szerint vannak rendezve, és nincs öröklési hierarchiát létezik. Tartalom címkék gyűjteménye a lemezkép teljes mondatokban formázott emberi olvasható nyelveként megjelenik a "leírás" alapját képezi. Vegye figyelembe, hogy ezen a ponton angol Képleírás az egyetlen támogatott nyelv.
+## <a name="tagging-images"></a>Képek címkézése
+A Computer Vision API több mint 2000 felismerhető tárgy, élőlény, táj és cselekvés alapján ad vissza címkéket eredményül. Amennyiben a címkék félreérthetőek vagy nem közismertek, az API válasza „tippeket” tartalmaz a címke adott környezetben való értelmezésének megkönnyítése érdekében. A címkékhez nincs besorolási rendszer és öröklési hierarchia. A tartalomcímkék gyűjteménye képezi a kép ember által olvasható nyelven, teljes mondatokban megformált „leírásának” alapját. Fontos tudni, hogy a képleírásokhoz jelenleg csak az angol nyelv támogatott.
 
-Kép feltöltése vagy a kép URL-címének megadása után a Computer Vision API algoritmusok kimeneti címkék az objektumok, a tárgy és a műveletek azonosítja a kép alapján. Címkézés nem korlátozódik a fő tulajdonos, például az előtérben, a személy, de is tartalmaz, a beállítás (belső vagy külső) bútordarab, eszközök, üzemek, például állatokat, Kellékek, kütyük stb.
+Egy kép feltöltése vagy egy kép URL-címének megadása után a Computer Vision API algoritmusai címkéket adnak vissza a képen felismert tárgyak, élőlények és cselekvések alapján. A címkézés nem korlátozódik a kép fő témájára, például az előtérben szereplő személyre, hanem magában foglalja a környezetet (beltér vagy kültér), bútorokat, eszközöket, növényeket, állatokat, kiegészítőket, készülékeket stb.
 
 ### <a name="example"></a>Példa
 ![House_Yard](./Images/house_yard.png) '
@@ -90,76 +91,76 @@ Returned Json
 }
 ```
 ## <a name="categorizing-images"></a>Képek kategorizálása
-Címkézés és a leírások mellett a Computer Vision API a korábbi verziókban meghatározott besorolás-alapú kategóriák adja vissza. Ezekben a kategóriákban egy szülő-gyermek örökletes hierarchiákkal rendelkező besorolás szerint vannak rendszerezve. Az összes kategória angolul jelennek meg. Önállóan vagy az új modell használható.
+A címkézésen és leírásokon kívül a Computer Vision API a korábbi verziókban definiált, besorolás-alapú kategóriákat is visszaad. Ezek a kategóriák öröklődő szülő/gyermek hierarchián alapuló elnevezésekkel vannak besorolva. Minden kategórianév angol nyelvű. Önállóan, vagy új modelljeinkkel is használhatók.
 
-### <a name="the-86-category-concept"></a>A kategória 86 fogalma
-Az alábbi ábrán látható 86 fogalmak listája alapján, vizuális jellemzőket a képen található kategorizálhatók és a széles körű-specifikus. A teljes szöveges formátumú besorolás, lásd: [Kategóriaelnevezési](https://docs.microsoft.com/azure/cognitive-services/computer-vision/category-taxonomy).
+### <a name="the-86-category-concept"></a>A 86 kategorizáló fogalom
+A képek elemei az alábbi ábrán látható 86 fogalom szerint sorolhatók be általános vagy szűkebb kategóriákba. Az elnevezések teljes, szöveges listáját a [Kategóriák elnevezései](https://docs.microsoft.com/azure/cognitive-services/computer-vision/category-taxonomy) oldalon találja meg.
 
 ![Kategóriák elemzése](./Images/analyze_categories.png)
 
 Kép                                                  | Válasz
 ------------------------------------------------------ | ----------------
-![Nőről tető](./Images/woman_roof.png)                 | személyek
+![Nő a tetőn](./Images/woman_roof.png)                 | people
 ![Családi fénykép](./Images/family_photo.png)             | people_crowd
-![Cuki kutya](./Images/cute_dog.png)                     | animal_dog
-![Öltözet hegyi](./Images/mountain_vista.png)       | outdoor_mountain
-![Vizuális Food kenyér elemzése](./Images/bread.png)       | food_bread
+![Aranyos kutya](./Images/cute_dog.png)                     | animal_dog
+![Hegyvidéki tájkép](./Images/mountain_vista.png)       | outdoor_mountain
+![Elemzési célra készült, kenyeret ábrázoló kép](./Images/bread.png)       | food_bread
 
-## <a name="identifying-image-types"></a>Képtípus azonosítása
-Többféleképpen is lehet rendszerképeket kategorizálása. Computer Vision API egy logikai jelző, adja meg, hogy egy kép fekete-fehér vagy színes állíthatja be. Azt is beállíthatja azt a jelzőt, hogy jelezze, hogy egy kép Vonalrajz-e. Azt is azt jelzi, hogy kép ClipArt-e, és jelzi a minőségét, például a méretezési csoport 0 – 3.
+## <a name="identifying-image-types"></a>Képtípusok azonosítása
+A képek több módon kategorizálhatók. A Computer Vision API egy logikai jelző beállításával jelezheti, hogy egy kép fekete-fehér-e vagy színes. Azt is ugyanígy tudja jelezni, hogy a kép vonalrajz vagy sem. Jelezni tudja, hogy a kép ClipArt-e, és 0-tól 3-ig terjedő skálán annak minőségét is.
 
 ### <a name="clip-art-type"></a>ClipArt típus
-Észleli, hogy kép ClipArt-e.  
+Észleli, hogy a kép ClipArt, vagy nem.  
 
 Érték | Jelentés
 ----- | --------------
-0     | A nem ClipArt
-1     | Nem egyértelmű
+0     | Nem ClipArt
+1     | nem egyértelmű
 2     | Normál ClipArt
 3     | Jó ClipArt
 
 Kép|Válasz
 ----|----
-![Vizuális sajtok iránti Szenvedélyének ClipArt elemzése](./Images/cheese_clipart.png)|3 jó--ClipArt
-![Vizuális ház Yard elemzése](./Images/house_yard.png)|0 nem--ClipArt
+![Sajtot ábrázoló ClipArt vizuális elemzéshez](./Images/cheese_clipart.png)|3 – jó ClipArt
+![Ház és udvar képe vizuális elemzéshez](./Images/house_yard.png)|0 – Nem ClipArt
 
-### <a name="line-drawing-type"></a>Vonalrajz típusa
-Észleli a lemezkép-e Vonalrajz-e.
+### <a name="line-drawing-type"></a>Vonalrajz típus
+Észleli, hogy a kép vonalrajz, vagy nem.
 
 Kép|Válasz
 ----|----
-![Vizuális Lion rajz elemzése](./Images/lion_drawing.png)|True (Igaz)
-![Vizuális Flower elemzése](./Images/flower.png)|False (Hamis)
+![Oroszlánt ábrázoló rajz vizuális elemzéshez](./Images/lion_drawing.png)|True (Igaz)
+![Virág képe vizuális elemzéshez](./Images/flower.png)|False (Hamis)
 
 ### <a name="faces"></a>Arcok
-A képen látható emberi arcok észlelése, és a face koordináták, a face, nem és életkor négyszöge generál. Ezek a vizuális szolgáltatások face generált metaadatok a részhalmazát képezik. Szélesebb körű metaadatok arcok (arcfelismerési azonosítása, testtartás észlelési és egyéb) hoz létre a Face API-val.  
+Észleli a képen látható emberi arcokat, és megadja az arcok koordinátáit, befoglaló téglalapját, nemét és életkorát. Ezek a vizuális jellemzők az archoz generált metaadatok részhalmazát képezik. Az arcokhoz generált többi metaadat (azonosítás arc alapján, testtartás-felismerés és sok más) a Face API használatával érhető el.  
 
 Kép|Válasz
 ----|----
-![Vizuális Nőről tető Face elemzése](./Images/woman_roof_face.png) | [{"age": 23, a "nemek": "Női", "faceRectangle": {"left": "felső" 1379: 320, "width": 310, "magasság": 310}}]
-![Vizuális Mom Fiamtól Face elemzése](./Images/mom_daughter_face.png) | [{"age": 28 "gender": "Női", "faceRectangle": {"left": "felső" 447: 195, "width": 162, "magasság": 162-es}}, {"age": 10, "gender": "Férfi", "faceRectangle": {"left": 355, a "felső": 87, "width": 143, "magasság": 143}}]
-![Vizuális családi Phot Face elemzése](./Images/family_photo_face.png) | [{"age": 11, a "nemek": "Férfi", "faceRectangle": {"left": "felső" 113: 314, "width": 222, "magasság": 222}}, {"age": 11, a "nemek": "Női", "faceRectangle": {"left": 1200-as, "felső": 632, "width": 215, "magasság": 215}}, {"age": 41, "gender": "Férfi", " faceRectangle": {"left": 514-es,"felső": 223,"width": 205,"magasság": 205}}, {"age": 37, a"nemek":"Női","faceRectangle": {"left":"felső"1008: 277,"width": 201,"magasság": 201-es}}]
+![Tetőn álló nő arcának vizuális elemzése](./Images/woman_roof_face.png) | [ { "age": 23, "gender": "Female", "faceRectangle": { "left": 1379, "top": 320, "width": 310, "height": 310 } } ]
+![Anyát és lányát ábrázoló kép vizuális elemzése](./Images/mom_daughter_face.png) | [ { "age": 28, "gender": "Female", "faceRectangle": { "left": 447, "top": 195, "width": 162, "height": 162 } }, { "age": 10, "gender": "Male", "faceRectangle": { "left": 355, "top": 87, "width": 143, "height": 143 } } ]
+![Családi fotó vizuális elemzése](./Images/family_photo_face.png) | [ { "age": 11, "gender": "Male", "faceRectangle": { "left": 113, "top": 314, "width": 222, "height": 222 } }, { "age": 11, "gender": "Female", "faceRectangle": { "left": 1200, "top": 632, "width": 215, "height": 215 } }, { "age": 41, "gender": "Male", "faceRectangle": { "left": 514, "top": 223, "width": 205, "height": 205 } }, { "age": 37, "gender": "Female", "faceRectangle": { "left": 1008, "top": 277, "width": 201, "height": 201 } } ]
 
 
-## <a name="domain-specific-content"></a>Tartomány-specifikus tartalmait
+## <a name="domain-specific-content"></a>Fogalomkör-specifikus tartalom
 
-Emellett a címkézési és a legfelső szintű kategorizálási, Computer Vision API is támogatja a speciális (vagy tartomány-specifikus) információt. Speciális információk különálló módként alkalmazott, vagy a magas szintű kategorizálással valósítható meg. Tovább finomíthatja a 86-kategóriaelnevezési tartomány-specifikus modelleket hozzáadásával eszközként működik.
+Címkézésen és felső szintű kategorizáláson kívül a Computer Vision API speciális (fogalomkör-specifikus) információk kinyerését is támogatja. Speciális információk kinyerése önálló metódusként, vagy magas szintű kategorizálással is megvalósítható. A 86 kategóriára épülő besorolás további finomítására szolgál fogalomkör-specifikus modellek hozzáadásával.
 
-A csak a támogatott speciális információkat jelenleg hírességek felismerése és tereptárgyak felismerése. Azok a személyek és személyek csoportok kategóriáit és a világ különböző pontjain arcrész tartomány-specifikus finomítások.
+Jelenleg az egyetlen támogatott speciális információ a hírességek és tereptárgyak felismerése. Ezek az people_ (emberek) és people_group (embercsoport) kategóriák fogalomkör-specifikus finomításai, és közismert tereptárgyak a világ minden táján.
 
-A tartomány-specifikus modelleket a két lehetőség van:
+A fogalomkör-specifikus modellek két módon használhatók:
 
-### <a name="option-one---scoped-analysis"></a>A beállítás egy - hatókörön belüli elemzés
-Csak a kiválasztott modell elemzése egy HTTP POST-hívás meghívásával. Ezt a beállítást Ha tudja, hogy melyik modellben is használni szeretné, a modell nevét adja meg, és csak kap információkat megfelelő ehhez a modellhez. Például használhatja ezt a beállítást csak a keresett híresség-felismerés. A válasz lehetséges hírességek, megbízhatósági eredményeiket fűzni megfelelő listáját tartalmazza.
+### <a name="option-one---scoped-analysis"></a>Első lehetőség – hatókörön belüli elemzés
+Csak a kiválasztott modell elemzése egy HTTP POST hívás kezdeményezésével. Ezzel a lehetőséggel, ha tudja, melyik modellt kívánja használni, megadhatja a modell nevét, és csak az arra vonatkozó információkat kapja vissza. Ezt a lehetőséget használhatja például akkor, ha a cél csak a hírességek felismerése. A válasz az esetleg felismert hírességek listáját adja vissza, a felismerésük megbízhatósági értékével együtt.
 
-### <a name="option-two---enhanced-analysis"></a>Továbbfejlesztett elemzési két - beállítás
-Elemezheti a 86 kategóriaelnevezési kategóriák kapcsolatos további információkat. Ez a beállítás érhető el alkalmazásokban használható ahol felhasználókat szeretné, hogy általános képet elemzési adatok mellett egy vagy több tartomány-specifikus modelleket használva. Ez a metódus meghívásakor 86 kategóriaelnevezési osztályozó először nevezzük. Ismert/megfelelő modellek, amelyek egyeznek kategóriákra, az osztályozó által igénybe vett meghívásához egy második fázishoz a következő. Például ha "Részletek = all" vagy "details" "hírességek" közé tartozik, a metódus meghívja a hírességek osztályozó után a 86-kategória osztályozó nevezzük. Az eredmény "people_" kezdődő címkéket tartalmazza.
+### <a name="option-two---enhanced-analysis"></a>Második lehetőség – fejlett elemzés
+Az elemzés további, a 86 besorolási kategóriához kapcsolódó részleteket szolgáltat. Ez a lehetőség olyan alkalmazásokban használható, amelyekben a felhasználó az egy vagy több fogalomkör-specifikus modellből származó részleteken kívül általános képelemzést is szeretne. Ennek a metódusnak a hívásakor először a 86 kategóriaelnevezést használó besorolás lesz meghíva. Ha a kategóriák bármelyike egyezik egy ismert/megfelelő modellével, akkor újabb besorolási hívások következnek. Ha például a „details=all” vagy a „details” tartalmazza a „celebrities” (hírességek) szót, akkor a metódus a 86 kategóriaelnevezést használó besorolás után meghívja hírességek besorolását. Az eredményben „people_” előtagú megnevezések szerepelnek.
 
 ## <a name="generating-descriptions"></a>Leírások generálása 
-Computer Vision API algoritmusok elemezheti a tartalmat a képet. Ez az elemzés egy "leírás" teljes mondatokban emberek számára olvasható nyelveként megjelenik a alapját képezi. A leírás összefoglalja, hogy mi az a képen található. Computer Vision API algoritmusok alapján azonosítja a kép az objektumok különböző leírások létrehozásához. A leírásokat a rendszer kiértékeli, majd megbízhatósági pontszámot hoz létre hozzájuk. A megbízhatósági pontszámok listája csökkenő sorrendbe rendezve érkezik vissza. A robot, amely ezt a technológiát használja, a lemezkép feliratok létrehozása egy példát találhat [Itt](https://github.com/Microsoft/BotBuilder-Samples/tree/master/CSharp/intelligence-ImageCaption).  
+A Computer Vision API algoritmusai a képek tartalmát elemzik. Ez az elemzés képezi a kép ember által olvasható, teljes mondatokban megfogalmazott „leírásának” alapját. A leírás összegzi mindazt, ami a képen látható. A Computer Vision API algoritmusai különböző leírásokat hoznak létre a képen felismert tárgyak alapján. A leírásokat a rendszer kiértékeli, majd megbízhatósági pontszámot hoz létre hozzájuk. A megbízhatósági pontszámok listája csökkenő sorrendbe rendezve érkezik vissza. Ezt a technológiát használja a képek leírásának létrehozására például az [itt](https://github.com/Microsoft/BotBuilder-Samples/tree/master/CSharp/intelligence-ImageCaption) megtalálható robot is.  
 
-### <a name="example-description-generation"></a>Példa Leírás létrehozása
-![B & W épületek](./Images/bw_buildings.png) '
+### <a name="example-description-generation"></a>Példa leírás generálására
+![Épületek fekete-fehér képe](./Images/bw_buildings.png) '
 ```json
  Returned Json
 
@@ -197,81 +198,81 @@ Computer Vision API algoritmusok elemezheti a tartalmat a képet. Ez az elemzés
 }
 ```
 
-## <a name="perceiving-color-schemes"></a>Perceiving színsémák
-A Látástechnológiai algoritmus kigyűjti kép színeket. A színeket három kontextusban (előtér, háttér és teljes kép) elemzi. 12 domináns kiemelési színcsoportba rendezi vannak csoportosítva. Ezen válogatja ki feketék, kék, brown, szürke, zöld, orange, rózsaszínre, lila, vörös, pávakék, fehér és sárga. Attól függően, a képet a színeket visszaadott a színt hexadecimális kódokkal egyszerű fekete-fehér vagy színcsoportba rendezi.
+## <a name="perceiving-color-schemes"></a>Színsémák észlelése
+A Computer Vision algoritmusa kigyűjti a képen található színeket. A színeket három kontextusban (előtér, háttér és teljes kép) elemzi. 12 fő szín szerint válogatja szét őket. Ezek a színek a következők: fekete, kék, barna, szürke, zöld, narancsszín, rózsaszín, lila, vörös, pávakék, fehér és sárga. Egy kép színösszeállításától függően az egyszerű fekete és fehér vagy más színek hexadecimális színkódokként lehetnek visszaadva.
 
-Kép                                                       | előtér |Háttér| Színek
+Kép                                                       | Előtér |Háttér| Színek
 ----------------------------------------------------------- | --------- | ------- | ------
-![Öltözet hegyi](./Images/mountain_vista.png)            | Fekete     | Fekete   | Fehér
-![Vizuális Flower elemzése](./Images/flower.png)               | Fekete     | Fehér   | Fehér, a fekete, a zöld
-![Vizuális elemzése Train állomás](./Images/train_station.png) | Fekete     | Fekete   | Fekete
+![Hegyvidéki tájkép](./Images/mountain_vista.png)            | Fekete     | Fekete   | Fehér
+![Virág képe vizuális elemzéshez](./Images/flower.png)               | Fekete     | Fehér   | Fehér, fekete, zöld
+![Vasútállomás képe vizuális elemzéshez](./Images/train_station.png) | Fekete     | Fekete   | Fekete
 
-### <a name="accent-color"></a>Kiemelőszín
-Domináns színek és színtelítettség keresztül a felhasználók számára a leginkább figyelemfelkeltő szín képviselik kép kinyert színe.
+### <a name="accent-color"></a>Kiegészítő szín
+A képről kinyert szín a felhasználó számára az uralkodó színek és a telítettség által legszembetűnőbbnek szánt színnek felel meg.
 
 Kép                                                       | Válasz
 ----------------------------------------------------------- | ----
-![Öltözet hegyi](./Images/mountain_vista.png)            | #BC6F0F
-![Vizuális Flower elemzése](./Images/flower.png)               | #CAA501
-![Vizuális elemzése Train állomás](./Images/train_station.png) | #484B83
+![Hegyvidéki tájkép](./Images/mountain_vista.png)            | #BC6F0F
+![Virág képe vizuális elemzéshez](./Images/flower.png)               | #CAA501
+![Vasútállomás képe vizuális elemzéshez](./Images/train_station.png) | #484B83
 
 
 ### <a name="black--white"></a>Fekete-fehér
-Logikai jelzőt, amely azt jelzi, hogy egy kép fekete-fehér vagy sem.
+Logikai jelző, amely azt jelzi, hogy a kép fekete-fehér-e vagy sem.
 
 Kép                                                      | Válasz
 ---------------------------------------------------------- | ----
-![Vizuális elemzése létrehozása](./Images/bw_buildings.png)      | True (Igaz)
-![Vizuális ház Yard elemzése](./Images/house_yard.png)      | False (Hamis)
+![Épület képe vizuális elemzéshez](./Images/bw_buildings.png)      | True (Igaz)
+![Ház és udvar képe vizuális elemzéshez](./Images/house_yard.png)      | False (Hamis)
 
 ## <a name="flagging-adult-content"></a>Felnőtt tartalom megjelölése
-A különféle visual osztályok között van a felnőtt és szexuális csoport, amely lehetővé teszi, hogy felnőtt anyagok észlelését, és a szexuális tartalmú képek megjelenítéséhez korlátozza. A felnőtt és szexuális tartalom észlelési szűrő értékét is beállíthat a felhasználói beállítás szerint befogadásához.
+A kategóriák között a felnőtt és kényes tartalom is szerepel, ezáltal észlelhető a felnőtt tartalom, és korlátozható a szexuális tartalmú képek megjelenítése. A felnőtteknek szóló vagy kényes tartalom észlelésére vonatkozó szűrő érzékenységét a felhasználó egy csúszka segítségével állíthatja be igényei szerint.
 
 ## <a name="optical-character-recognition-ocr"></a>Optikai karakterfelismerés (OCR)
-Optikai Karakterfelismerés technológia szöveges tartalom észleli a képet, és az azonosított szöveg kibontása karaktersorozattá. Az eredmény a Keresés és számos más orvosi, biztonságot és banki is használhatja. A szöveg nyelvét automatikusan felismeri. Az optikai Karakterfelismeréssel időt takaríthat meg, és kényelmes: a felhasználók által, ezáltal a szöveg átírás helyett fényképet készítsenek.
+Az ORC-technológia észleli a képek szöveges tartalmát, és számítógép által olvasható karaktersorozattá alakítja az észlelt szöveget. Az eredmény kereséshez és sok más célra, például egészségügyi, biztonsági vagy banki adatként hasznosítható. A szöveg nyelvét automatikusan felismeri. Az optikai karakterfelismeréssel időt takaríthat meg, és használata kényelmes: a szövegek átírása helyett lefényképezheti azt.
 
-Optikai Karakterfelismerés 25 nyelveket támogatja. Ezek a nyelvek a következők: arab, egyszerűsített kínai, hagyományos kínai, Cseh, dán, holland, angol nyelven, finn, francia, német, görög, magyar, olasz, japán, koreai, norvég, lengyel, portugál, román, spanyol, szerb (cirill betűs és a latin betűs) Szlovák, spanyol, svéd és török.
+Az optikai karakterfelismerés 25 nyelvet támogat. Ezek a nyelvek a következők: arab, egyszerűsített kínai, hagyományos kínai, cseh, dán, holland, angol, finn, francia, német, görög, magyar, olasz, japán, koreai, norvég, lengyel, portugál, román, orosz, szerb (cirill és latin betűs), szlovák, spanyol, svéd és török.
 
-Ha szükséges, optikai Karakterfelismerés javítja a felismert szöveget fokban kép vízszintes tengely körüli elforgatásának. Optikai Karakterfelismerés biztosít a keret koordináták minden szó az alábbi ábrán látható módon.
+Szükség esetén az OCR a felismert szöveg dőlésszögét a kép vízszintes tengelyéhez igazítja. Az OCR az alábbi ábrán látható módon adja meg az egyes szavak koordinátáit.
 
-![Optikai Karakterfelismerés – áttekintés](./Images/vision-overview-ocr.png) OCR vonatkozó követelmények:
-- A bemeneti kép mérete 40 x 40 és 3200 x 3200 képpont között kell lennie.
-- A lemezkép nem lehet nagyobb, mint 10 Megapixel.
+![Az optikai karakterfelismerés áttekintése](./Images/vision-overview-ocr.png) – Az OCR használatára vonatkozó követelmények:
+- A bemeneti kép méretének 40 × 40 és 3200 × 3200 képpont között kell lennie.
+- A kép nem lehet 10 megapixelnél nagyobb.
 
-Bemeneti kép szerint bármilyen több 90 fokos, és a egy kis szög az "40 forgatható fok.
+A bemeneti kép a 90 fok bármely többszörösével, plusz egy kis, legfeljebb 40 fokos szöggel lehet elforgatva.
 
-Szövegek felismerése pontossága attól függ, hogy a kép minőségét. Egy pontatlan olvasása a következő helyzetekben okozhatja:
-- Határozatlan képek.
-- Kézzel írt vagy kurzív szöveg.
+A szövegfelismerés pontossága függ a kép minőségétől. Felismerési hibákat okozhatnak az alábbi körülmények:
+- Elmosódott képek.
+- Kézzel írt, folyóírásos szöveg.
 - Művészi betűstílusok.
-- A kis betűméret.
-- Összetett hátterek, árnyékok változása, vagy tükröződést szöveg vagy perspektíva torzulást keresztül.
-- Hiányzik vagy túl nagy méretű nagybetűk szavak alapjait:
-- Dolní index je, apróságok vagy áthúzott szöveg.
+- Kis méretű szöveg.
+- Bonyolult háttér, árnyékok, a szöveget átfedő fényhatás vagy perspektivikus torzítás.
+- Túl nagy méretű vagy hiányzó nagybetűk a szavak elején.
+- Felső vagy alsó indexben lévő, vagy áthúzott szöveg.
 
-Korlátozások: A fényképekhez, ahol szövege a következő meghatározó, téves származhatnak részlegesen felismerhető szavakat. Néhány fényképek, különösen a fényképek nélkül szöveg, a pontosság sokkal függően változhat a kép típusát.
+Korlátozások: olyan fényképeken, ahol a szöveg van túlsúlyban, téves eredmények származhatnak a szavak részleges felismeréséből. Bizonyos képeken, elsősorban szöveg nélküli fényképeken a pontosság jelentősen változhat a kép típusától függően.
 
 ## <a name="recognize-handwritten-text"></a>Kézzel írt szöveg felismerése
-Ez a technológia lehetővé teszi észlelését, és kézzel írt szöveg kinyerése a megjegyzések, levelek, esszék, táblaképek, űrlapok, stb. Különféle felületekkel és hátterekkel használható, például fehér papír, sárga jegyzetlapok vagy fehér tábla.
+Ez a technológia lehetővé teszi kézzel írt jegyzetek, levelek, esszék, táblaképek, űrlapok vagy más elemek szövegének felismerését és kinyerését. Különféle felületekkel és hátterekkel használható, például fehér papír, sárga jegyzetlapok vagy fehér tábla.
 
-A kézírásos szövegek felismerése időt és energiát takarít meg, és növeli a hatékonyságot, hiszen lehetővé teszi, hogy szövegek átírása helyett egyszerűen lefényképezze az adott szöveget. Lehetővé teszi, hogy digitalizálhatók a jegyzetek. A digitalizáció gyors és egyszerű keresés megvalósítását teszi lehetővé. Ezen kívül a papírfelhasználást is csökkenti.
+A kézírásos szövegek felismerése időt és energiát takarít meg, és növeli a hatékonyságot, hiszen lehetővé teszi, hogy szövegek átírása helyett egyszerűen lefényképezze az adott szöveget. Lehetővé teszi jegyzetek digitalizálását. A digitalizálás által gyors és egyszerű keresések végezhetők. Ezen kívül a papírfelhasználást is csökkenti.
 
-A bemeneti követelmények:
-- Támogatott képformátum: JPEG, PNG és BMP.
-- Kép fájlmérete 4 MB-nál kisebbnek kell lennie.
-- Kép mérete legalább 40 x 40, legfeljebb 3200 x 3200 kell lennie.
+A bemenetre vonatkozó követelmények:
+- Támogatott képformátumok: JPEG, PNG, és BMP.
+- A képfájl méretének 4 MB-nál kisebbnek kell lennie.
+- A képméret legalább 40 × 40, legfeljebb 3200 × 3200 lehet.
 
 Megjegyzés: ez a technológia jelenleg előzetes verzióban, és kizárólag angol nyelvre érhető el.
 
 ## <a name="generating-thumbnails"></a>Miniatűrök létrehozása
-A miniatűr a teljes méretű kép kis reprezentációját. Változatos eszközök, például telefonokon, táblagépeken és számítógépeken hozzon létre egy másik felhasználói felület (UX) elrendezések és a miniatűr méretek van szükség. Intelligens vágás, a Computer Vision API szolgáltatás segítségével a probléma megoldásához.
+A miniatűrök a teljes képek kis méretű helyettesítői. A különböző eszközök, például telefonok, táblagépek és asztali számítógépek felhasználói felülete különböző elrendezéseket és miniatűrméreteket követel. A Computer Vision API okos levágás funkciója megoldja ezt a problémát.
 
-Kép feltöltése után egy jó minőségű miniatűrt lekérdezi jön létre, és a Computer Vision API algoritmusa elemzi a tárgyakat. Majd körülvágja a képet a követelményeknek, a "lényeges terület" (ROI). A kimenetben megjelenik speciális keretein belül alább ábrán látható módon. A létrehozott miniatűr egy oldalarányát, amely eltér az eredeti képet, a felhasználók igényeinek megfelelően oldalarányának használatával jelenítheti meg.
+Egy kép feltöltése után abból jó minőségű miniatűr lesz generálva, a Computer Vision API algoritmusa pedig elemzi a képen lévő tárgyakat. Úgy vágja ki a képet, hogy az megfeleljen a releváns tartomány követelményeinek. A kimenet egy speciális keretben jelenik meg, az alábbi ábrán látható módon. A létrehozott miniatűr a felhasználó igényei szerint az eredeti képétől eltérő oldalaránnyal is rendelkezhet.
 
-A miniatűr algoritmus a következőképpen történik:
+A miniatűrt előállító algoritmus működése a következő:
 
-1. Zavaró elemeket eltávolítja a lemezképet, és felismeri a fő objektum, a "lényeges terület" (ROI).
-2. Körülvágja a képet a lényeges azonosított régió alapján.
-3. Az arányt, a cél miniatűr dimenziók megfelelően változik.
+1. Eltávolítja a képről a zavaró elemeket, és felismeri a kép fő tárgyát, a „releváns tartományt” (ROI).
+2. Az azonosított releváns tartomány alapján körülvágja a képet.
+3. A miniatűrhöz megadott méreteknek megfelelően módosítja az oldalarányt.
 
 ![Miniatűrök](./Images/thumbnail-demo.png)
