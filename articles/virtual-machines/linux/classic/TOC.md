@@ -1,7 +1,7 @@
 # [Áttekintés](../overview.md)
 ## [Virtuálisgép-bővítmények](agents-and-extensions-classic.md)
 ## [Rendelkezésre állás](configure-availability-classic.md)
-## [GYIK](faq-classic.md)
+## [Gyakori kérdések](faq-classic.md)
 
 # Első lépések
 ## [Linux rendszerű virtuális gép létrehozása](createportal-classic.md)
@@ -33,7 +33,6 @@
 ### [A Ruby on Rails webalkalmazás](ruby-rails-web-app.md)
 ### [Cassandra- és Node.js-ügyfél](cassandra-nodejs.md)
 ### [Tomcat](setup-tomcat.md)
-### [RDMA-fürt MPI-alkalmazások futtatásához](rdma-cluster.md)
 ### HPC Pack
 #### [Fürt létrehozása linuxos számítási feladatokhoz](hpcpack-cluster-powershell-script.md)
 #### [Linux-csomópontokat tartalmazó fürtök kezelése](hpcpack-cluster.md)
