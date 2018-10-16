@@ -1,0 +1,111 @@
+items:
+- name: Azure IoT – alapok
+  href: /azure/iot-fundamentals
+- name: Azure Digital Twins
+  href: index.yml
+- name: Áttekintés
+  items:
+  - name: Az Azure Digital Twins bemutatása
+    href: about-digital-twins.md
+- name: Gyors útmutatók
+  items:
+  - name: Szabad szobák keresése
+    href: quickstart-view-occupancy-dotnet.md
+- name: Oktatóanyagok
+  items:
+  - name: Épület monitorozása a Digital Twins segítségével
+    items:
+    - name: Üzembe helyezés és konfigurálás
+      href: tutorial-facilities-setup.md
+    - name: Kiépítés és az állapot monitorozása
+      href: tutorial-facilities-udf.md
+    - name: Értesítések küldése a Logic Apps használatával
+      href: tutorial-facilities-events.md
+    - name: Események megjelenítése a TSI-vel
+      href: tutorial-facilities-analyze.md
+- name: Alapelvek
+  items:
+  - name: A Digital Twins objektummodellje és térbeliintelligencia-diagramja
+    href: concepts-objectmodel-spatialgraph.md
+  - name: Eszközkapcsolatok és bemenő telemetriaadatok
+    href: concepts-device-ingress.md
+  - name: Adatfeldolgozás és felhasználó által definiált függvények
+    href: concepts-user-defined-functions.md
+  - name: Események és üzenetek útválasztása
+    href: concepts-events-routing.md
+  - name: A szolgáltatás nyilvános előzetes verziójának korlátozásai
+    href: concepts-service-limits.md
+  - name: Biztonság
+    items:
+    - name: Ajánlott biztonsági eljárások
+      href: security-best-practices.md
+    - name: Szerepköralapú hozzáférés-vezérlés
+      href: security-role-based-access-control.md
+    - name: Szerepkör-hozzárendelések létrehozása és felügyelete
+      href: security-create-manage-role-assignments.md
+    - name: Az Alkalmazáskezelés API-k hitelesítése
+      href: security-authenticating-apis.md
+- name: Útmutatók
+  items:
+  - name: Több-bérlős alkalmazások engedélyezése
+    href: how-to-multitenant-applications.md
+  - name: Felhasználó által definiált függvények létrehozása
+    href: how-to-user-defined-functions.md
+  - name: Hogyan lehet végpontokon keresztül irányítani az események és üzenetek útvonalválasztását
+    href: how-to-egress-endpoints.md
+  - name: A Digital Twins Swagger használata
+    href: how-to-use-swagger.md
+- name: Kapcsolódó témakörök
+  items:
+  - name: Megoldások
+    items:
+    - name: IoT-megoldásgyorsítók
+      href: /azure/iot-accelerators
+    - name: IoT-központ
+      href: https://docs.microsoft.com/microsoft-iot-central/
+  - name: Platformszolgáltatások
+    items:
+    - name: IoT Hub
+      href: /azure/iot-hub
+    - name: IoT Hub Device Provisioning Service
+      href: /azure/iot-dps
+    - name: IoT szolgáltatásoldali SDK-k
+      href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks
+    - name: Maps
+      href: /azure/azure-maps
+    - name: Time Series Insights
+      href: /azure/time-series-insights
+  - name: Edge
+    items:
+    - name: IoT Edge
+      href: /azure/iot-edge
+    - name: IoT eszközoldali SDK-k
+      href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks
+- name: További források
+  items:
+  - name: Azure Digital Twins-minták C# nyelvhez (.NET)
+    href: https://github.com/Azure-Samples/digital-twins-samples-csharp
+  - name: Azure Digital Twins REST API
+    href: https://docs.westcentralus.azuresmartspaces.net/management/swagger
+  - name: Díjszabás
+    href: https://azure.microsoft.com/pricing/details/digital-twins/
+  - name: Díjkalkulátor
+    href: https://azure.microsoft.com/pricing/calculator/
+  - name: Stack Overflow
+    href: https://stackoverflow.com/questions/tagged/azure-digital-twins
+  - name: MSDN-fórum
+    href: https://social.msdn.microsoft.com/Forums/azure/home?forum=azuredigitaltwins
+  - name: Ügyfelek történetei
+    href: https://blogs.microsoft.com/iot/2018/09/24/announcing-azure-digital-twins-create-digital-replicas-of-spaces-and-infrastructure-using-cloud-ai-and-iot/
+  - name: Azure IoT fejlesztői központ
+    href: https://azure.microsoft.com/develop/iot/
+  - name: Azure-ütemterv
+    href: https://azure.microsoft.com/roadmap/?category=iot
+  - name: Videók
+    href: https://channel9.msdn.com/Search?term=%22Azure%20Digital%20Twins%22&lang-en=true
+ms.openlocfilehash: ac70217527d885eeaaa52d4715421d2560393d91
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49323037"

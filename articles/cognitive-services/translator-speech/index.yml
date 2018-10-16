@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 879dd4e9b20a57257dd7b93fddb54168d6bceb33
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: ac2b928e73031adb77616161f844f3f7fabdf146
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47095065"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49339848"
 documentType: LandingData
 title: A Translator Speech API dokumentációja
 metadata:
@@ -23,6 +23,10 @@ metadata:
 abstract:
   description: A Microsoft Cognitive Services API-gyűjteményének a részét képező Microsoft Translator Speech API egy felhőalapú gépi fordítási szolgáltatás, amely tolmácsolást és a beszéd lefordított szöveggé alakítását biztosítja. Az iparági szabványnak számító REST technológián alapuló szolgáltatással teljes körű, valós idejű beszédfordítással bővíthetők az alkalmazások, eszközök, illetve a többnyelvű beszédfordítást igénylő megoldások a cél operációs rendszertől vagy a fejlesztési nyelvtől függetlenül. A támogatott nyelvek listáját a <a href="languages.md">használható nyelvek listáját ismertető</a> dokumentumban találja.
 sections:
+- title: 
+  items:
+  - type: paragraph
+    text: '<b>MEGJEGYZÉS: Az új Speech Service és a kapcsolódó SDK leváltja a Translator Speech API-t, amely 2019. október 15-től kezdve nem fog működni. A Speech Service-re való átállással kapcsolatos további információkat <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-migrate-from-translator-speech-api"> a Translator Speech API-ról a Speech Service-re való migrálással </a></b> foglalkozó cikkben olvashat.'
 - title: 5 perces gyors útmutatók
   items:
   - type: paragraph

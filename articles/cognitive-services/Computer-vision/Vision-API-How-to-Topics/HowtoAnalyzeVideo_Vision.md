@@ -1,35 +1,37 @@
 ---
-title: Valós idejű videó elemzés számítógép Látástechnológiai API-val |} Microsoft Docs
-description: Útmutató élő video-adatfolyamot kognitív szolgáltatásban a számítógép Látástechnológiai API használatával vett keretek közel valós idejű elemzést.
+title: 'Példa: Valós idejű videóelemzés a Computer Vision API-val'
+titlesuffix: Azure Cognitive Services
+description: Megtanulhatja, hogyan végezhet közel valós idejű elemzést egy élő videó-adatfolyam képkockáin a Computer Vision API segítségével.
 services: cognitive-services
 author: KellyDF
-manager: corncar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: computer-vision
-ms.topic: article
+ms.topic: sample
 ms.date: 01/20/2017
 ms.author: kefre
-ms.openlocfilehash: d75b1a887e5e4557d5464d8062e1bde628e7adab
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
-ms.translationtype: MT
+ms.openlocfilehash: 058f2ad58665a88d2d3cf3ce20b43ac0fad30000
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35347587"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45983195"
 ---
-# <a name="how-to-analyze-videos-in-real-time"></a>A valós idejű elemzése a videók
-Ez az útmutató fog bemutatják, hogyan lehet egy élő video-adatfolyamot vett keretek közel valós idejű elemzést. Az ilyen rendszer alapvető összetevői a következők:
-- Szerezzen be videó forrásból keretek
-- Válassza ki a kereteket elemzése
-- Küldje el e keretek az API-hoz
-- Minden egyes visszaküldött eredményből felhasználása az API-hívás
+# <a name="how-to-analyze-videos-in-real-time"></a>Videók valós idejű elemzése
+Ez az útmutató azt ismerteti, hogyan végezhet közel valós idejű elemzést egy élő videó-adatfolyam képkockáin. Egy ilyen rendszer alapvető összetevői a következők:
 
-Ezeket a mintákat a C# nyelven íródtak, és a kód a Githubon itt található: [ https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis ](https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis/).
+- A képkockák kinyerése a videóforrásból
+- Az elemezni kívánt képkockák kiválasztása
+- A képkockák elküldése az API-nak
+- Az API-hívás összes visszaadott elemzési eredményének feldolgozása
+
+Ezek a minták a C# nyelven íródtak, és a kódjuk a következő GitHub-címen érhető el: [https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis](https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis/).
 
 ## <a name="the-approach"></a>A módszer
-Több módon is megoldható a közel valós idejű elemzési futó video-adatfolyamot. A Microsoft képzettsége szintű növekvő három módszer struktúrába rendezése indul el.
+Többféle módon is meg lehet közelíteni a videó-adatfolyamok közel valós idejű elemzésének problémáját. Három különböző megközelítést mutatunk be az egyszerűbbtől az összetettebbekig.
 
-### <a name="a-simple-approach"></a>Egy egyszerű módszer
-A legegyszerűbb kialakítása a közel valós idejű elemzési rendszer végtelen hurkot, ahol minden egyes ismétlés azt keret adása, elemzése, és felhasználni az eredmény esetén:
+### <a name="a-simple-approach"></a>Az egyszerű megközelítés
+A valós idejű elemzési rendszer legegyszerűbb megvalósítása egy végtelen ciklus használata, amelyben minden iterációnál kiragadunk egy képkockát, elemezzük, majd feldolgozzuk az eredményt:
 ```CSharp
 while (true)
 {
@@ -41,10 +43,10 @@ while (true)
     }
 }
 ```
-Ha az analysis egy egyszerűsített ügyféloldali algoritmus állt, ez a megközelítés megfelelő lesz. Azonban az elemzés a felhőben történik, ha a Tiltás késése azt jelenti, hogy egy API-hívás eltarthat néhány másodpercig, amely idő alatt azt nem lemezképek rögzítése és a szál lényegében tesz a semmi. A maximális képkockasebessége korlátozza az API-hívások késését.
+Ha az elemzést egy kis méretű ügyféloldali algoritmus végzi, akkor ez a megoldás megfelelő is lehet. Azonban, ha az elemzés a felhőben történik, a hálózati késés miatt egy-egy API-hívás másodpercekig is tarthat, amely idő alatt nem rögzítünk új képkockákat, és a végrehajtási szálunk lényegében tétlen. A maximális képkockasebességet így az API-hívások okozta késés korlátozza.
 
-### <a name="parallelizing-api-calls"></a>Parallelizing API-hívások
-Egy egyszerű egyszálas hurok egy egyszerűsített ügyféloldali algoritmushoz szabálykészletében, amíg nem fér a késéssel jár felhő API-hívásokban is. A probléma megoldása érdekében a rendszer engedélyezi a hosszan futó API-hívások végrehajtása a keret grabbing párhuzamosan. C# nyelven íródtak azt el lehet érni, ez például feladatalapú párhuzamossági használata:
+### <a name="parallelizing-api-calls"></a>API-hívások párhuzamos futtatása
+Egy egyszerű egyszálas ciklus megfelelő lehet, ha egy kis méretű ügyféloldali algoritmusról van szó, de felhőbeli API-hívások esetén a késés miatt már nem igazán használható. Ezt a problémát úgy oldhatjuk meg, ha lehetővé tesszük, hogy a hosszú futási idejű API-hívások párhuzamosan fussanak a képkockarögzítéssel. A C#-ban ezt a feladatalapú párhuzamos végrehajtás használatával érhetjük el, például így:
 ```CSharp
 while (true)
 {
@@ -59,10 +61,10 @@ while (true)
     }
 }
 ```
-Ekkor elindul egy külön feladatban futtathatja a háttérben, miközben továbbra is új keretek grabbing elemzéseket. Ezzel elkerülhető, hogy blokkolja a fő szálnak-Várakozás egy API-hívás való visszatéréshez, azonban azt megszakadt néhány garanciákat, egyszerű verziója – több API-hívások előfordulhat, hogy párhuzamosan, és előfordulhat, hogy a megfelelő sorrendben adja vissza az eredményeket. Ez több szál ConsumeResult() függvény egyidejűleg, adja meg a legyen veszélyes, ha a függvény nem szálbiztos is okozhatja. Végül, ez a kód egyszerű nem nyomon követheti, létrehozása, feladatok, kivételek csendes eltűnik. Ebből kifolyólag a végső való hozzáadása összetevője, amely a feladatok elemzését követi, kivételek ablakába, kill hosszan futó feladatokat, és győződjön meg arról, az eredmények lekérése felhasznált egyenként, a megfelelő sorrendben "ügyfél" szál.
+Ez a megoldás az elemzéseket egy-egy különálló feladatban indítja el, amelyek tovább futnak a háttérben, amíg mi újabb képkockákat rögzítünk. Ezzel a megoldással elkerüljük a fő szál blokkolását, amíg az API-hívások válaszára várunk, viszont elvesztünk néhány garanciát, amelyeket az egyszerű megoldás biztosított számunkra – vagyis mivel több API-hívás is futhat egyszerre párhuzamosan, az eredmények lehet, hogy rossz sorrendben érkeznek vissza. Ennél a megközelítésnél az is megtörténhet, hogy több szál lép be a ConsumeResult() függvénybe egyidejűleg, ami veszélyes lehet, ha a függvény nem szálbiztos. Végezetül ez a kód nem követi nyomon a létrehozott feladatokat sem, így a kivételek csendben eltűnnek. Ezért az utolsó összetevő, amit hozzá kell adnunk a megoldáshoz, egy "fogyasztó" szál, ami nyomon követi az elemzést, elkapja a kivételeket, leállítja a hosszú ideig futó feladatokat, és biztosítja, hogy az eredmények feldolgozása jó sorrendben egyenként történjen.
 
-### <a name="a-producer-consumer-design"></a>A gyártó-fogyasztó kialakítása
-A végső "készítőhöz-fogyasztó" rendszerben a gyártó szál nagyon hasonló a korábbi végtelen hurkot van. Azonban helyett fel az elemzés eredményeinek, amint érhetők el, a gyártó egyszerűen elhelyezi a feladatok várólista nyomon követéséhez őket.
+### <a name="a-producer-consumer-design"></a>Az előállító-fogyasztó alapú megközelítés
+A végső "előállító-fogyasztó" alapú rendszerünkben van egy előállító szál, amely a korábbi végtelen ciklusunkhoz hasonlít. Azonban ahelyett, hogy az érkező elemzési eredményeket azonnal feldogozná, az előállító csupán egy sorba rakja a feladatokat, hogy azokat nyomon követhesse.
 ```CSharp
 // Queue that will contain the API call tasks. 
 var taskQueue = new BlockingCollection<Task<ResultWrapper>>();
@@ -97,7 +99,7 @@ while (true)
     }
 }
 ```
-Azt is egy fogyasztói szál vesz ki a várólistában, befejeződnek, várakozó feladatok és az eredmény megjelenítéséhez vagy a kivételküldésre lépett fel. A várólista használatával garantáljuk, hogy eredmények lekérése felhasznált egyszerre csak egy, a megfelelő sorrendben, a rendszer maximális képkockasebessége korlátozása nélkül.
+Van egy fogyasztói szálunk is, ami a sorból kiveszi a feladatokat, megvárja, amíg befejeződnek, majd vagy megjeleníti az eredményeket, vagy előlépteti a dobott kivételt. A várakozási sor használatával garantálni tudjuk, hogy az eredmények feldolgozása egyesével, jó sorrendben történjen és anélkül, hogy a rendszer maximális képkocka-sebességét korlátoznánk.
 ```CSharp
 // Consumer thread. 
 while (true)
@@ -122,11 +124,11 @@ while (true)
 
 ## <a name="implementing-the-solution"></a>A megoldás megvalósítása
 ### <a name="getting-started"></a>Első lépések
-Ahhoz, hogy az alkalmazás fel, és minél gyorsabban fut, a Microsoft alkalmaztunk a rendszer a fent említett szándékos volt úgy, hogy elég rugalmas, ugyanakkor nem könnyen használható számos forgatókönyv végrehajtásához. A kód eléréséhez lépjen [ https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis ](https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis).
+Azért, hogy alkalmazása a lehető leghamarabb elkészüljön és futtatni lehessen, úgy valósítottuk meg a fent leírt rendszert, hogy az elég rugalmas legyen többféle forgatókönyv megvalósításához is, de közben könnyen használható is legyen. A kód itt érhető el: [https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis](https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis).
 
-A könyvtár FrameGrabber, a gyártó-fogyasztó rendszer kapcsolatban a fentiekben ismertetett feldolgozni egy webkamera a videó keretek megvalósító osztályt tartalmazza. A felhasználó megadhatja az API-hívás pontos formájában, és az osztály eseményeket használ, hogy a hívó kód tudja, amikor egy új keret keletkezik, vagy egy új eredményből érhető el.
+A kódtár tartalmaz egy FrameGrabber osztályt, ami a webkameráról érkező videóképkockák feldolgozásához a fent tárgyalt előállító-fogyasztó rendszert valósítja meg. A felhasználó megadhatja az API-hívás pontos formáját, az osztály események használatával tudatja a hívó kóddal, amikor új képkockára tett szert vagy amikor egy új elemzési eredmény válik elérhetővé.
 
-Bemutatják az egyes lehetőségek, nincsenek két mintaalkalmazások, hogy használja-e a tárat. Az első egy egyszerű Konzolalkalmazás, és ez egy egyszerűsített verziója alatt jelenik meg. Az alapértelmezett webkamera érkező keretek grabs, és elküldi azokat a Arcfelismerési API felület észleléséhez.
+A lehetőségek illusztrálására két, ezen a kódtáron alapuló mintaalkalmazás mutatunk be. Az első egy egyszerű konzolalkalmazás, amelynek egyszerűsített változata lentebb látható. Rögzíti az alapértelmezett webkamera képkockáit, és elküldi őket arcfelismerésre a Face API-nak.
 ```CSharp
 using System;
 using VideoFrameAnalyzer;
@@ -171,39 +173,39 @@ namespace VideoFrameConsoleApplication
     }
 }
 ```
-A második mintaalkalmazás érdekesebb egy kicsit, és lehetővé teszi annak meghatározását, mely API-hívás a videó keretek. A bal oldali az alkalmazás jeleníti meg az élő videót, a jobb oldali előnézete azt mutatja, hogy a legújabb API-eredményéhez a megfelelő keret átfedett.
+A második mintaalkalmazás kicsit érdekesebb, ennél választhat, hogy melyik API-t hívja meg a videó képkockáira. A bal oldalon az alkalmazás az élő videó előnézetét jeleníti meg, a jobb oldalon pedig a hozzátartozó képkockán a legfrissebb API-eredmény látható.
 
-Legtöbbször lesz látható késleltetés között az élő felvétel a bal oldali és a jobb oldali feladatkonfigurációkat elemzése. Ez a késés az API-hívás végrehajtásához szükséges idő. A kivétel ez alól a "EmotionsWithClientFaceDetect" módban van, amely arcfelismerési észlelési helyileg végrehajtja az ügyfélszámítógépen, OpenCV, használó összes lemezképet kognitív szolgáltatásokhoz való elküldése előtt. Ezzel azt is azonnal jelenítheti meg az észlelt tapasztalt, és frissítse a érzelmek később vissza az API hívása után. Ez azt mutatja be a "hibrid" megközelítést, ha néhány egyszerű feldolgozás az ügyfélen hajtható végre, és majd kognitív szolgáltatások API-k segítségével kiegészítheti a speciális elemzés, amikor erre szükség van a lehetőségét.
+A legtöbb módban látható késés tapasztalható a bal oldali élő videó és a jobb oldali vizualizált elemzési eredmény között. Ez a késés az API-hívás végrehajtásához szükséges idő. Kivétel ez alól a "EmotionsWithClientFaceDetect" mód, amely azelőtt, hogy képeket küldene a Cognitive Services számára, előbb az ügyfélszámítógépen helyileg arcfelismerést végez az OpenCV használatával. Ily módon a felismert arcot azonnal megjeleníthetjük, az érzelmet pedig később frissíthetjük, amikor az API-hívás visszatér a válasszal. Ez jól szemlélteti egy "hibrid" megközelítés lehetőségét, ahol néhány egyszerű adatfeldolgozást az ügyfélszámítógép végez, az eredmény pedig a Cognitive Services API-k fejlettebb elemzéseinek használatával szükség szerint tovább finomítható.
 
 ![HowToAnalyzeVideo](../../Video/Images/FramebyFrame.jpg)
 
-### <a name="integrating-into-your-codebase"></a>A codebase integrálása
-Bevezetés a minta használatába, kövesse az alábbi lépéseket:
+### <a name="integrating-into-your-codebase"></a>Beépítés a kódbázisba
+A minta használatának megkezdéséhez kövesse a következő lépéseket:
 
-1. API-kulcsok beszerzése a Látástechnológiai API- [előfizetések](https://azure.microsoft.com/try/cognitive-services/). Videó keret elemzése a megfelelő API-kat a következők:
+1. Szerezze be a Vision API-khoz használható API-kulcsait az [Előfizetések](https://azure.microsoft.com/try/cognitive-services/) területen. Videóképkocka-elemzéshez használható API-k a következők:
     - [Computer Vision API](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home)
-    - [Érzelemfelismerési API](https://docs.microsoft.com/azure/cognitive-services/emotion/home)
+    - [Emotion API](https://docs.microsoft.com/azure/cognitive-services/emotion/home)
     - [Face API](https://docs.microsoft.com/azure/cognitive-services/face/overview)
-2. Klónozott a [Cognitive-minták-VideoFrameAnalysis](https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis/) GitHub-tárház
+2. Klónozza a [Cognitive-Samples-VideoFrameAnalysis](https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis/) GitHub-adattárat
 
-3. Nyissa meg a minta a Visual Studio 2015, felépítéséhez, valamint a mintaalkalmazások futtatása:
-    - A BasicConsoleSample, Arcfelismerési API-kulcsot nem változtatható közvetlenül a [BasicConsoleSample/Program.cs](https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis/blob/master/Windows/BasicConsoleSample/Program.cs).
-    - LiveCameraSample a kulcsok kell adni az alkalmazás a beállítások ablaktáblára. Ezek maradnak felhasználói adatként-munkamenetek között.
+3. Nyissa meg a mintát a Visual Studio 2015-ben, készítsen buildet, majd futtassa a mintaalkalmazásokat:
+    - A BasicConsoleSample esetén a Face API-kulcs nem változtatható, csak közvetlenül a [BasicConsoleSample/Program.cs](https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis/blob/master/Windows/BasicConsoleSample/Program.cs) programfájlban.
+    - A LiveCameraSample esetén a kulcsokat az alkalmazás beállítások panelén lehet megadni. Ezek felhasználói adatként a munkamenetek között is megőrződnek.
         
 
-Amikor készen áll a integrálása, **egyszerűen a saját projektek használatával hivatkozik a VideoFrameAnalyzer könyvtárban.** 
+Ha készen áll a integrációra, **egyszerűen hivatkozzon saját projektjéből a VideoFrameAnalyzer könyvtárra.** 
 
 
 
-## <a name="developer-code-of-conduct"></a>Fejlesztői viselkedési szabályzat
-Minden kognitív szolgáltatásokkal, az API-k és minták fejlesztése fejlesztők szükséges kövesse a "[fejlesztői etikai kódex Microsoft Cognitive szolgáltatások](https://azure.microsoft.com/support/legal/developer-code-of-conduct/)." 
+## <a name="developer-code-of-conduct"></a>Fejlesztői magatartási kódex
+Mint valamennyi Cognitive Services-szolgáltatás esetében, az API-jainkat használó fejlesztőknek követniük kell a "[Microsoft Cognitive Services Fejlesztői magatartási kódex](https://azure.microsoft.com/support/legal/developer-code-of-conduct/)" iránymutatásait. 
 
 
-A kép, hang-, videó vagy szöveges VideoFrameAnalyzer lehetőségeinek ismertetése Microsoft kognitív szolgáltatásokat használ. A Microsoft fog kapni a képek, hang, video-, és egyéb adatokat, hogy feltöltése (keresztül ezt az alkalmazást), és előfordulhat, hogy használjon szolgáltatás javítása céljából. A személyeket, amelynek adatait az alkalmazás küld a Microsoft kognitív szolgáltatások védelme a segítségét kérjük. 
+A VideoFrameAnalyzer kép-, hang-, videó- és szövegértelmező funkciói a Azure Cognitive Services-szolgáltatásokat használják. A Microsoft az alkalmazáson keresztül feltöltött képeket, hangokat, videókat és egyéb adatokat megkapja, és felhasználhatja őket a szolgáltatás javítása érdekében. Kérjük segítsen minket megvédeni azokat az embereket, akiknek az adatait az alkalmazása elküldi a Azure Cognitive Services számára. 
 
 
 ## <a name="summary"></a>Összegzés
-Ebben az útmutatóban megtanulta, hogyan használhatja a mintakódot a kezdéshez, és közel valós idejű elemzési futtatásáról a oldallal, számítógép stratégiai és Érzelemfelismerési API-k használatával élő video-adatfolyamot. Ismerkedés az alkalmazás elkészítése az ingyenes API-kulcsokat, a [Microsoft kognitív szolgáltatások regisztrációs oldalon](https://azure.microsoft.com/try/cognitive-services/). 
+Ebben az útmutatóban megismerhette, hogyan lehet a Face, Computer Vision és Emotion API-k használatával közel valós idejű elemzéseket futtatni élő videó-adatfolyamon, és láthatta, hogyan használhatja mintakódunkat a kezdéshez. Most már hozzákezdhet saját alkalmazás fejlesztéséhez is, amelyhez ingyenes API-kulcsokat a [Microsoft Cognitive Services regisztrációs oldalán](https://azure.microsoft.com/try/cognitive-services/) talál. 
 
-Küldje el nyugodtan visszajelzését és javaslatait az biztosításához a [GitHub-tárházban](https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis/), vagy további széleskörű API visszajelzés a a [UserVoice webhelyén](https://cognitive.uservoice.com/).
+Visszajelzéseket és javaslatokat örömmel fogadunk a [GitHub adattárban](https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis/), bővebb API-val kapcsolatos visszajelzéseket pedig a [UserVoice oldalunkon](https://cognitive.uservoice.com/) hagyhat.
 

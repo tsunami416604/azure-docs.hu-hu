@@ -6,12 +6,12 @@ description: Ismerje meg, hogyan készíthet és felügyelhet hatékony alkalmaz
 ms.topic: hub-page
 featureFlags:
 - clicktale
-ms.openlocfilehash: 424e3ba5c630a626b6d8d07967fb7c24b8169c61
-ms.sourcegitcommit: 04bd54e97ec580224ffe2e18d72c58dc2221d42b
+ms.openlocfilehash: b6204867e46ce289d8da2d3bc65f05f448c06e5b
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47447250"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49345373"
 ---
 <div id="main" class="v2">
     <div class="container">
@@ -63,7 +63,7 @@ ms.locfileid: "47447250"
                                     </div>
                                 </div>
                                 <div class="cardText">
-                                    <span class="likeAnH3">Ingyenes PluralSight videós képzés az Azure-hoz</span>
+                                    <span class="likeAnH3">Ingyenes Azure-képzések a Pluralsighttól</span>
                                 </div>
                             </div>
                         </div>
@@ -1324,6 +1324,12 @@ Azure-feladatok automatizálása szkriptek használatával a PowerShell-lel </a>
                                             </a>
                                         </li>
                                         <li>
+                                            <a href="/azure/iot-central/">
+                                                <img src="media/index/iot-central.svg" alt="" />
+                                                <p>IoT-központ</p>
+                                            </a>
+                                        </li>
+                                        <li>
                                             <a href="/azure/iot-hub/">
                                                 <img src="media/index/IoTHub.svg" alt="" />
                                                 <p>IoT Hub</p>
@@ -1336,27 +1342,27 @@ Azure-feladatok automatizálása szkriptek használatával a PowerShell-lel </a>
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="/azure/iot-central/">
-                                                <img src="media/index/iot-central.svg" alt="" />
-                                                <p>IoT-központ</p>
-                                            </a>
-                                        </li>
-                                        <li>
                                             <a href="/azure/iot-suite/">
                                                 <img src="media/index/iot-solution-accelerators.svg" alt="" />
                                                 <p>IoT-megoldásgyorsítók</p>
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="/azure/time-series-insights/">
-                                                <img src="media/index/time-series-insights.svg" alt="" />
-                                                <p>Time Series Insights</p>
+                                            <a href="/azure/digital-twins/">
+                                                <img src="media/index/digital_twin.svg" alt="" />
+                                                <p>Azure Digital Twins</p>
                                             </a>
                                         </li>
                                         <li>
                                             <a href="/azure/iot-dps/">
                                                 <img src="media/index/dps.svg" alt="" />
                                                 <p>IoT Hub Device Provisioning Service</p>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="/azure/time-series-insights/">
+                                                <img src="media/index/time-series-insights.svg" alt="" />
+                                                <p>Time Series Insights</p>
                                             </a>
                                         </li>
                                         <li>
@@ -3911,6 +3917,25 @@ Azure-feladatok automatizálása szkriptek használatával a PowerShell-lel </a>
                                 </a>
                             </li>
                             <li>
+                                <a href="/azure/iot-central/">
+                                    <div class="cardSize">
+                                        <div class="cardPadding">
+                                            <div class="card">
+                                                <div class="cardImageOuter">
+                                                    <div class="cardImage">
+                                                        <img src="media/index/iot-central.svg" alt="" />
+                                                    </div>
+                                                </div>
+                                                <div class="cardText">
+                                                    <h3>IoT-központ</h3>
+                                                    <p>Kipróbálhatja az SaaS for IoT-t, amelyhez nincs szükség tapasztalatra a felhőszolgáltatások kezelésében</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
                                 <a href="/azure/iot-hub/">
                                     <div class="cardSize">
                                         <div class="cardPadding">
@@ -3949,25 +3974,6 @@ Azure-feladatok automatizálása szkriptek használatával a PowerShell-lel </a>
                                 </a>
                             </li>
                             <li>
-                                <a href="/azure/iot-central/">
-                                    <div class="cardSize">
-                                        <div class="cardPadding">
-                                            <div class="card">
-                                                <div class="cardImageOuter">
-                                                    <div class="cardImage">
-                                                        <img src="media/index/iot-central.svg" alt="" />
-                                                    </div>
-                                                </div>
-                                                <div class="cardText">
-                                                    <h3>IoT-központ</h3>
-                                                    <p>Kipróbálhatja az SaaS for IoT-t, amelyhez nincs szükség tapasztalatra a felhőszolgáltatások kezelésében</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
                                 <a href="/azure/iot-suite/">
                                     <div class="cardSize">
                                         <div class="cardPadding">
@@ -3987,18 +3993,18 @@ Azure-feladatok automatizálása szkriptek használatával a PowerShell-lel </a>
                                 </a>
                             </li>
                             <li>
-                                <a href="/azure/time-series-insights/">
+                                <a href="/azure/digital-twins/">
                                     <div class="cardSize">
                                         <div class="cardPadding">
                                             <div class="card">
                                                 <div class="cardImageOuter">
                                                     <div class="cardImage">
-                                                        <img src="media/index/time-series-insights.svg" alt="" />
+                                                        <img src="media/index/digital_twin.svg" alt="" />
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Time Series Insights</h3>
-                                                    <p>Idősorozat-adatok azonnali áttekintése és elemzése</p>
+                                                    <h3>Azure Digital Twins</h3>
+                                                    <p>Terek és infrastruktúra digitális replikáinak létrehozása</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -4018,6 +4024,25 @@ Azure-feladatok automatizálása szkriptek használatával a PowerShell-lel </a>
                                                 <div class="cardText">
                                                     <h3>IoT Hub Device Provisioning Service</h3>
                                                     <p>Érintésmentes, igény szerinti kiépítés Azure IoT Hubon</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/azure/time-series-insights/">
+                                    <div class="cardSize">
+                                        <div class="cardPadding">
+                                            <div class="card">
+                                                <div class="cardImageOuter">
+                                                    <div class="cardImage">
+                                                        <img src="media/index/time-series-insights.svg" alt="" />
+                                                    </div>
+                                                </div>
+                                                <div class="cardText">
+                                                    <h3>Time Series Insights</h3>
+                                                    <p>Idősorozat-adatok azonnali áttekintése és elemzése</p>
                                                 </div>
                                             </div>
                                         </div>
