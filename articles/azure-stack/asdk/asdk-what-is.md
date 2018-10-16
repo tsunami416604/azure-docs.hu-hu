@@ -1,6 +1,6 @@
 ---
-title: Az Azure verem Development Kit (ASDK) történő bemutatása |} Microsoft Docs
-description: A ASDK ismerteti és a Microsoft Azure verem értékelése gyakori alkalmazási esetei.
+title: Bevezetés az Azure Stack Development Kit (ASDK) való |} A Microsoft Docs
+description: Leírja, mi a ASDK és gyakori alkalmazási esetei kiértékelését a Microsoft Azure Stackhez.
 services: azure-stack
 documentationcenter: ''
 author: jeffgilb
@@ -13,71 +13,71 @@ pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
 ms.custom: mvc
-ms.date: 06/07/2018
+ms.date: 10/15/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: 951cd1adc09373b9af560097b088fd740ceb51a8
-ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
+ms.openlocfilehash: fa20f746e55f784e02244355c96ac273b9906acc
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34850627"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49339542"
 ---
-# <a name="what-is-the-azure-stack-development-kit"></a>Mi az az Azure verem szoftverfejlesztői készlet?
-[A Microsoft Azure verem integrált rendszerek](.\.\azure-stack-poc.md) mérete a 4 – 12 csomópontok között, és a hardver partnerek és a Microsoft által közösen támogatott. Integrált Azure verem rendszerek használatával engedélyezze a termelési számítási feladatokhoz új forgatókönyvek használhatók. Ha egy Azure verem operátort, akik az integrált rendszerek infrastruktúrával kezeli és szolgáltatásokat biztosít, tekintse meg a [operátor dokumentáció](https://docs.microsoft.com/azure/azure-stack).
+# <a name="what-is-the-azure-stack-development-kit"></a>Mi az az Azure Stack Development Kit?
+[A Microsoft Azure Stack integrált rendszerek](.\.\azure-stack-poc.md) mérete 4-12-csomópontok a tartományt, és közösen egy hardver partner és a Microsoft által támogatott. Azure Stack integrált rendszerek használatával engedélyezhető az új forgatókönyvek használhatók a termelési számítási feladatokhoz. Ha Ön az Azure Stack operátorait, akik az integrált rendszerek infrastruktúrát felügyeli, és szolgáltatásokat kínál, tekintse meg a [operátori dokumentációja](https://docs.microsoft.com/azure/azure-stack).
 
-Az Azure verem Development Kit (ASDK) Azure-vermet, töltse le, és használja egy egy csomópontos telepítési **szabad**. Minden ASDK összetevőinek telepítése a virtuális gépek gazdagépen futó egy egyetlen kiszolgáló kell elérik vagy túllépik a [hardverre vonatkozó minimális elvárásokat](asdk-deploy-considerations.md#hardware). A ASDK célja, hogy olyan környezetet, amelyben Azure verem kiértékelheti és API-k és tooling eszköz konzisztensek legyenek az Azure a modern alkalmazások fejlesztése biztosítson egy *nem éles* környezetben. 
+Az Azure Stack Development Kit (ASDK) az egyetlen csomópontos üzemelő példánya, letöltheti és használhatja az Azure Stack **ingyenes**. Minden ASDK-összetevő telepítve van a virtuális gépek egy egyetlen számítógépen futó kell elérik vagy túllépik a [hardverre vonatkozó minimális](asdk-deploy-considerations.md#hardware). A ASDK hivatott környezet, amelyben az Azure Stack értékeli és API-k használatával, és az Azure-eszközkészlet modern alkalmazások fejlesztése a *nem éles* környezetben. 
 
 > [!IMPORTANT]
-> A ASDK nem használhatók fel-vagy éles környezetben támogatott.
+> A ASDK nem készült fel-vagy éles környezetben használható.
 
-A ASDK összetevőket egy egyetlen development kit állomás számítógépen van telepítve, mert nincsenek korlátozott fizikai erőforrásokat. Az ASDK központi telepítésével, az Azure-verem infrastruktúra virtuális gépek és a bérlői virtuális gépeket lehet kiszolgáló ugyanazon a számítógépen. Ez a konfiguráció nem készült méretezési vagy a teljesítmény kiértékelése.
+Minden ASDK összetevője van telepítve egyetlen development kit gazdagépen, mert nincsenek korlátozott fizikai erőforrásokat. Az ASDK központi, az Azure Stack-infrastruktúra virtuális gépeinek és a bérlői virtuális gépek megtalálhatók a kiszolgáló-számítógépen. Ez a konfiguráció nem célja a méretezési csoport vagy a teljesítmény értékeléséhez.
 
-A ASDK arra tervezték, hogy az Azure-konzisztens hibrid felhő felhasználói élményt nyújtja a:
-- **A rendszergazdák** (Azure verem operátorok). A ASDK értékeli, és ismerje meg az elérhető Azure verem szolgáltatások kiváló forrást.
-- **A fejlesztők**. A ASDK fejlesztéséhez hibrid vagy a modern alkalmazások helyszíni (fejlesztési/tesztelési környezetben) használható. Ez kínál ismételhetőség előtt, vagy együtt, Azure verem üzemelő fejlesztési felület. 
+Adjon meg egy Azure-konzisztens hibrid felhőalapú megoldás a ASDK célja:
+- **A rendszergazdák** (az Azure Stack-operátorok). A ASDK egy nagyszerű forrás kiértékeléséhez, és ismerje meg a rendelkezésre álló Azure Stack-szolgáltatások.
+- **A fejlesztők**. A ASDK fejleszthet hibrid, illetve a modern alkalmazások a helyszíni (fejlesztési-tesztelési környezetben) használható. Ez kínál a fejlesztési környezetet biztosít előtt, vagy az Azure Stack éles környezetekben üzemelő példányok mellett az ismételhetőség. 
 
-A rövid videót a ASDK tájékozódhat:
+Ez a rövid videóban további információ a ASDK:
 
 > [!VIDEO https://www.youtube.com/embed/dbVWDrl00MM]
 
 
-## <a name="asdk-and-multi-node-azure-stack-differences"></a>ASDK és több csomópontos Azure verem különbségek
-Több csomópontos rendszerekhez. Azure-verem kell ügyelnie, néhány fontos módszerek egycsomópontos ASDK központi telepítések eltérnek.
+## <a name="asdk-and-multi-node-azure-stack-differences"></a>ASDK és a több csomópontos az Azure Stack különbségek
+Egy csomópontos ASDK központi telepítések érdemes figyelembe vennie, néhány fontos módon különböznek a több csomópontos Azure Stack üzemelő példányok.
 
-|Leírás|ASDK|Több csomópontos Azure verem|
+|Leírás|ASDK|Több csomópontos az Azure Stack|
 |-----|-----|-----|
-|**Méretezés**|Az összes összetevő egy egy csomópontos kiszolgáló számítógépen telepített.|Mérete a 4 – 12 csomópontok között lehet.|
-|**Rugalmasság**|Single-csomópont-konfiguráció nem biztosít magas rendelkezésre állás|[Magas elérhetőségét](.\.\azure-stack-key-features.md#high-availability-for-azure-stack) képességek támogatottak.|
-|**Hálózat**|A ASDK AzS-BGPNAT01 nevű virtuális gép irányíthatja az összes ASDK hálózati forgalom használ. Nincsenek további kapcsoló.|A AzS-BGPNAT01 VM nem létezik a több csomópontos rendszerekhez. Összetettebb [útválasztási infrastruktúrán hálózati](.\.\azure-stack-network.md#network-infrastructure) szükséges, beleértve a tor (TOR), a alaplapi felügyeleti vezérlő (BMC) és a szegély (adatközpont hálózatán) kapcsolók.|
-|**Javítási és frissítési folyamat**|Helyezze át a ASDK egy új verziója, újra kell telepítenie az development kit állomáson ASDK.|[Javítása és frissítése](.\.\azure-stack-updates.md) a telepített Azure verem frissítésére szolgáló folyamat.|
-|**Támogatás**|Azure-verem MSDN fórum. A Microsoft ügyfél- és szolgálathoz (CSS) támogatás *nem* érhető el, nem éles környezetben.|[Azure-verem MSDN fórum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStack) és teljes CSS támogatja.|
+|**Méretezés**|Az összes összetevő egy egycsomópontos kiszolgálói számítógépre van telepítve.|A 4-12-csomópontok mérete terjedhet.|
+|**Rugalmasságának biztosításával**|Egy csomópontos konfigurációja nem biztosít magas rendelkezésre állás|[Magas rendelkezésre állásának](.\.\azure-stack-key-features.md#high-availability-for-azure-stack) funkciót támogatnak.|
+|**Hálózat**|A ASDK nevű AzS-BGPNAT01 virtuális ASDK minden hálózati forgalmat útvonal használja. Nem vonatkoznak további kapcsoló követelmények.|A AzS-BGPNAT01 virtuális gép nem létezik a több csomópontos rendszerekhez. Összetettebb [hálózati útválasztási infrastruktúra](.\.\azure-stack-network.md#network-infrastructure) szükséges, beleértve a Top-Of-Rack (TOR), alaplapi felügyeleti vezérlő (BMC) és kapcsolók szegély (adatközpont-hálózat).|
+|**Javítási és frissítési folyamat**|Helyezze át a ASDK új verziójára, ismét üzembe kell helyeznie a ASDK a development kit gazdagépen.|[Javítása és frissítése](.\.\azure-stack-updates.md) a telepített Azure Stack-verzió frissítésére szolgáló folyamat.|
+|**Támogatás**|Fórum az MSDN Azure Stack. A Microsoft ügyfélszolgálata és a támogatási szolgálathoz (CSS) támogatás *nem* nem éles környezetekben érhető el.|[MSDN Azure Stack forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStack) és teljes CSS támogatja.|
 | | |
 
-## <a name="learn-about-available-services"></a>További információk az elérhető szolgáltatások
-Kezelőként Azure verem kell tudni, hogy mely szolgáltatások elérhetővé teheti a felhasználók számára. Azure verem támogatja az Azure-szolgáltatások egy részét, és továbbra is támogatott szolgáltatások listájában verzióinformációk.
+## <a name="learn-about-available-services"></a>Elérhető szolgáltatások ismertetése
+Kezelőként Azure Stack kell tudni, hogy mely szolgáltatások elérhetővé teheti a felhasználók számára. Az Azure Stack egy Azure-szolgáltatások részét támogatja, és a támogatott szolgáltatások teljes listájának továbbra is verzióinformációk.
 
-### <a name="foundational-services"></a>Eligazodást szolgáltatások
-Alapértelmezés szerint az Azure-verem tartalmazza a következő "eligazodást szolgáltatások" a ASDK telepítésekor:
+### <a name="foundational-services"></a>Alapvető szolgáltatások
+Alapértelmezés szerint az Azure Stack tartalmazza a következő "alapvető szolgáltatások" az ASDK telepítésekor:
 - Compute
 - Storage
 - Hálózat
 - Key Vault
 
-Ezekkel a legalapvetőbb szolgáltatásokkal kínálhat minimális konfigurációval a felhasználók infrastruktúra,--szolgáltatás (IaaS).
+Alapvető szolgáltatások infrastruktúra--szolgáltatásként (IaaS) elérhetővé teheti a felhasználók minimális konfigurációval.
 
 ### <a name="additional-services"></a>További szolgáltatások
-Jelenleg a következő további Platform,--szolgáltatás (PaaS) szolgáltatások támogatottak:
+Jelenleg a következő további Platform--szolgáltatásként (PaaS) szolgáltatások támogatottak:
 - App Service
 - Azure Functions
-- Az SQL és a MySQL-adatbázisok
+- SQL- és MySQL-adatbázisok
 
 > [!NOTE]
-> Ezek a szolgáltatások további beállításokra van szükség, mielőtt is elérhetővé azokat a felhasználókat, és nem érhetők el alapértelmezés szerint a ASDK telepítésekor.
+> Ezek a szolgáltatások további konfigurációt igényelnek, is elérhetővé tétele a felhasználók számára, és nem érhetők el alapértelmezés szerint a ASDK telepítésekor.
 
-## <a name="service-roadmap"></a>Szolgáltatás terv
-Az Azure verem továbbra is támogatásáról további Azure-szolgáltatásokhoz. Mi az Azure veremnek megfelelő tovább várható kapcsolatos további tudnivalókért lásd: a [Azure verem terv](https://azure.microsoft.com/roadmap/?tag=azure-stack). 
+## <a name="service-roadmap"></a>Szolgáltatás-ütemterv
+További Azure-szolgáltatások támogatása az Azure Stack továbbra is. Az Azure Stack újdonságokat kapcsolatos további információkért tekintse meg a [Azure Stack ütemterv](https://azure.microsoft.com/roadmap/?tag=azure-stack). 
 
 
 ## <a name="next-steps"></a>További lépések
-Első lépésként Azure verem értékelése, elő kell készíteni a development kit állomás számítógépén, majd [telepítése a ASDK](asdk-install.md). Ezt követően is bejelentkezik a rendszergazda és a felhasználói portálon Azure verem elindítására.
+Ismerkedés az Azure Stack kiértékelése, először szüksége [töltse le a legújabb ASDK](asdk-download.md) és készítse elő a ASDK gazdaszámítógépen. Miután előkészítette a development kit gazdagép, a ASDK telepítse, és az Azure Stack használatának megkezdéséhez jelentkezzen be a rendszergazda és a felhasználói portálon.

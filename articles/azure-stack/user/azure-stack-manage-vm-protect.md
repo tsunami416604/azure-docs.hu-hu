@@ -1,6 +1,6 @@
 ---
-title: Azure-veremben telepített virtuális gépek védelme |} Microsoft Docs
-description: Irányelvek Azure verem telepített virtuális gépek védelme.
+title: Az Azure Stack üzembe helyezett virtuális gépek védelme |} A Microsoft Docs
+description: Az Azure Stack üzembe helyezett virtuális gépek védelme vonatkozó útmutatónkat.
 services: azure-stack
 documentationcenter: ''
 author: jeffgilb
@@ -12,158 +12,158 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 05/14/2018
+ms.date: 10/15/2018
 ms.author: jeffgilb
 ms.reviewer: hector.linares
-ms.openlocfilehash: 734ee0e6ffb0dab660a2b63b431780208e0e0484
-ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
+ms.openlocfilehash: 3c27aecf18fcb5e14347d8f02d71891b351292be
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34165264"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49341837"
 ---
-# <a name="protect-virtual-machines-deployed-on-azure-stack"></a>Azure verem telepített virtuális gépek védelme
+# <a name="protect-virtual-machines-deployed-on-azure-stack"></a>Az Azure Stack üzembe helyezett virtuális gépek védelme
 
-Ez a cikk használja a virtuális gépek (VM), hogy a felhasználók Azure veremben védelméhez terv kidolgozása útmutatójaként.
+Ez a cikk egy útmutató, amellyel a virtuális gépek (VM), hogy a felhasználók az Azure Stacken védelméhez tervet használhatja.
 
-Az adatvesztéssel és a nem tervezett leállás elleni kell megvalósítani a felhasználói alkalmazások és az adatok biztonsági mentés-helyreállítás vagy vész-helyreállítási terv. A terv előfordulhat, hogy minden alkalmazáshoz egyedi, de a szervezete átfogó az üzletmenet folytonossága és vészhelyreállítás BC vagy-helyreállítási stratégia által meghatározott keretek követi. A jó kiindulási pont [rugalmas alkalmazások az Azure-tervezése](https://docs.microsoft.com/azure/architecture/resiliency), általános minták és gyakorlatok biztosító alkalmazások rendelkezésre állásáról és rugalmasság.
+Az adatvesztést, és nem tervezett üzemkimaradások elleni védelme érdekében szüksége felhasználói alkalmazások és az adataik biztonsági mentési-helyreállítási vagy vész-helyreállítási terv megvalósításához. Ez a csomag Előfordulhat, hogy minden alkalmazáshoz egyedi, de egy a szervezet átfogó üzleti folytonossági és vészhelyreállítási stratégia (BC/DR) által meghatározott keretek követi. Van egy jó kiindulási pont [rugalmas alkalmazások tervezése az Azure](https://docs.microsoft.com/azure/architecture/resiliency), amely nyújt általános minták és gyakorlatok rendelkezésre állásának és rugalmasság szempontjából.
 
 >[!IMPORTANT]
-> A biztonsági mentés-helyreállítás, valamint a vész-helyreállítási tervek folyamatos tesztelése. Ez annak érdekében, hogy kell:
-> * A csomagok működik
-> * A csomagok továbbra is igényeihez számára tervezték őket.
+> A backup-helyreállítás és a vész-helyreállítási tervek folyamatosan teszteléséhez. Ez annak érdekében, hogy kell tennie:
+> * A csomagok használata
+> * A csomagok továbbra is az igényeihez lettek tervezve.
 
-## <a name="azure-stack-infrastructure-recovery"></a>Az Azure verem infrastruktúra recovery
+## <a name="azure-stack-infrastructure-recovery"></a>Az Azure Stack-infrastruktúra recovery
 
-Felhasználók felelőssége külön védi a virtuális gépek Azure verem infrastruktúra-szolgáltatásokat.
+Felhasználó felelős saját virtuális gépeket külön-külön védi az Azure Stack-infrastruktúra-szolgáltatásokat.
 
-A helyreállítási terv verem Azure infrastruktúra-szolgáltatásokat a **nem** közé tartozik a felhasználói virtuális gépeket, storage-fiókok vagy adatbázisok helyreállítását. Az alkalmazás tulajdonosa Ön felelősséggel tartozik az alkalmazások és adatok helyreállítási terv megvalósításához.
+Az Azure Stack-infrastruktúra-szolgáltatásoknak a helyreállítási terv **nem** közé tartozik a felhasználói virtuális gépek, tárfiókok és adatbázisok helyreállítását. Az alkalmazás tulajdonosa, Ön felelős az alkalmazások és adatok helyreállítási terv megvalósításához.
 
-Ha hosszabb ideig offline állapotban az Azure-verem felhő vagy véglegesen helyreállíthatatlan kell rendelkeznie a helyreállítási terv elhelyezni, amelyek:
+Ha hosszabb ideig offline állapotban az Azure Stack-felhőben, vagy véglegesen helyreállíthatatlan, szüksége lesz egy helyreállítási terv helyezze el, amely:
 
-* Biztosítja a minimális állásidő érdekében
-* Tartja a kritikus fontosságú virtuális gépek, például adatbázis-kiszolgálók fut
-* Lehetővé teszi az alkalmazások a felhasználói kérelmek tartsa karbantartásába
+* Biztosítja a minimális állásidővel
+* Kritikus fontosságú eszközök, például az adatbázis-kiszolgálón futó virtuális gépek megtartja
+* Lehetővé teszi az alkalmazások folyamatosan a felhasználói kérések karbantartásába
 
-Az Azure-verem felhő üzemeltetője a helyreállítási terv az alapul szolgáló Azure verem infrastruktúra és a szolgáltatások létrehozásáért felelős. További tudnivalókért olvassa el a cikk [végzetes adatvesztés helyreállíthatók](https://docs.microsoft.com/azure/azure-stack/azure-stack-backup-recover-data).
+Az Azure Stack-felhő üzemeltetője feladata a mögöttes Azure Stack-infrastruktúra és a szolgáltatások helyreállítási terv létrehozására. További tudnivalókért olvassa el a cikket [végzetes adatvesztés utáni helyreállítás](https://docs.microsoft.com/azure/azure-stack/azure-stack-backup-recover-data).
 
 ## <a name="sourcetarget-combinations"></a>Forrás/cél kombinációk
 
-Minden Azure verem felhő telepítve van egy adatközpont. Egy külön környezetre szükség, így helyreállíthatja az alkalmazások. A helyreállítási környezet lehet egy másik Azure verem felhő ugyanabban az adatközpontban vagy az Azure nyilvános felhőjében. Az adatok közös joghatóság alá és az adatvédelmi követelmények határozza meg a helyreállítási környezet az alkalmazáshoz. Engedélyezi az egyes alkalmazásokhoz tartozó védelmet, mert így rugalmasan kiválaszthatja egy adott helyreállítási lehetőséget a minden egyes. Alkalmazások adatainak biztonsági mentését egy másik adatközponthoz egy előfizetés lehet. Egy másik előfizetésben replikálja adatokat az Azure nyilvános felhőjében.
+Minden egyes Azure Stack-felhőben telepítve van a egyazon adatközpontban. Egy másik környezetbe azért szükséges, hogy helyre tudja állítani az alkalmazások. A helyreállítási környezetre lehet egy másik Azure Stack-felhő egy másik adatközpontban lévő, vagy az Azure nyilvános felhő. Az adatok elkülönítése és az adatok adatvédelmi követelményeket állapítja meg az alkalmazás a helyreállítási környezetét. Engedélyezte a védelmet minden alkalmazáshoz, meg kell minden egyes egy adott helyreállítási lehetőség közül. Alkalmazások az adatok biztonsági mentése egy másik adatközpontba egy előfizetéssel rendelkezhet. Egy másik előfizetésben replikálhatja adatait az Azure nyilvános felhő.
 
-A biztonsági mentés-helyreállítás és vész-helyreállítási stratégia minden alkalmazás határozza meg a cél az egyes alkalmazásokhoz tervezéséhez. A helyreállítási terv segít a szervezet megfelelő méretezés a tárolási kapacitás szükséges a helyszíni és a nyilvános felhőben felhasználási projektre.
+Tervezze meg a backup-helyreállítás és a vész-helyreállítási stratégia minden alkalmazás határozza meg a cél, minden alkalmazáshoz. A helyreállítási terv segít a szervezet megfelelően méretezés a tárolási kapacitás szükséges a helyszíni és a nyilvános felhőben fogyasztás projektre.
 
-|  | Globális Azure | Az Azure vermet helyezett a CSP adatközpontjában, és a CSP által működtetett | Ügyfél adatközpontjába telepített, és az ügyfél által üzemeltetett Azure verem |
+|  | Globális Azure | Az Azure Stack üzembe helyezve a CSP adatközpontjában és a CSP által működtetett | Az Azure Stack ügyfél adatközpontban helyezi üzembe, és az ügyfél által működtetett |
 |------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------|
-| **Az Azure vermet helyezett a CSP adatközpontjában, és a CSP által működtetett** | A működtetett CSP Azure verem felhasználói virtuális gépeket telepít. Felhasználói virtuális gépeket biztonsági másolatból történt visszaállítása vagy közvetlenül az Azure-bA a feladatátvételt. | Kriptográfiai Szolgáltató működik az elsődleges és másodlagos példányai Azure verem saját adatközpontokban. Felhasználói virtuális gépeket állították helyre, vagy átadja a feladatokat a két Azure verem példányai között. | CSP-hez tartozó Azure, az elsődleges helyen működik. Az ügyfél datacenter célja restore vagy a feladatátvétel. |
-| **Ügyfél adatközpontjába telepített, és az ügyfél által üzemeltetett Azure verem** | Felhasználói virtuális gépeket a rendszer telepíti az ügyfél üzemeltetett Azure verem. Felhasználói virtuális gépeket biztonsági másolatból történt visszaállítása vagy közvetlenül az Azure-bA a feladatátvételt. | Ügyfél működik az elsődleges és másodlagos példányai Azure verem saját adatközpontokban. Felhasználói virtuális gépeket állították helyre, vagy átadja a feladatokat a két Azure verem példányai között. | Ügyfél tartozó Azure, az elsődleges helyen működik. A CSP adatközpontjában célja restore vagy a feladatátvétel. |
+| **Az Azure Stack üzembe helyezve a CSP adatközpontjában és a CSP által működtetett** | Az működtetni CSP az Azure Stack felhasználói virtuális gépeket telepít. Felhasználói virtuális gépek biztonsági másolatból történt visszaállítása vagy feladatátvétel közvetlenül az Azure-bA. | Kriptográfiai Szolgáltató az elsődleges és másodlagos példányai az Azure Stack saját adatközpontban működik. Felhasználói virtuális gépeket visszaállított vagy átadta a feladatait a két Azure Stack-példányok között. | Kriptográfiai Szolgáltató az Azure Stack az elsődleges helyen működik. Ügyfél adatközpontja célja visszaállítása vagy feladatátvétel. |
+| **Az Azure Stack ügyfél adatközpontban helyezi üzembe, és az ügyfél által működtetett** | Felhasználói virtuális gépeket a rendszer telepíti az ügyfél üzemeltetett Azure Stack. Felhasználói virtuális gépek biztonsági másolatból történt visszaállítása vagy feladatátvétel közvetlenül az Azure-bA. | Ügyfél az elsődleges és másodlagos példányai az Azure Stack saját adatközpontban működik. Felhasználói virtuális gépeket visszaállított vagy átadta a feladatait a két Azure Stack-példányok között. | Ügyfél az Azure Stack az elsődleges helyen működik. A Felhőszolgáltató adatközpontjában célja visszaállítása vagy feladatátvétel. |
 
-![Forrás-cél kombinációja](media\azure-stack-manage-vm-backup\vm_backupdataflow_01.png)
+![Forrás-cél kombinációk](media\azure-stack-manage-vm-backup\vm_backupdataflow_01.png)
 
 ## <a name="application-recovery-objectives"></a>Alkalmazás helyreállítási célok
 
-Szüksége lesz a szervezet minden alkalmazáshoz tűri állásidő és adatvesztést meghatározni. Mennyiségi meghatározására állásidő és adatvesztést által, hogy minimalizálja a vállalata egy olyan vészhelyzet esetén a helyreállítási tervet is létrehozhat. Az egyes alkalmazásokhoz vegye figyelembe:
+Szüksége lesz a szervezet minden alkalmazáshoz tűri állásidőt és az adatveszteség mennyisége határozza meg. Mennyiségi meghatározására az üzemkimaradás és az adatvesztés létrehozhat egy helyreállítási tervbe, hogy a szervezete katasztrófa hatását. Az egyes alkalmazások vegye figyelembe:
 
- - **A helyreállítási idő célkitűzése (RTO)**  
-RTO az esemény után az alkalmazás nem érhető el lehet maximális elfogadható idő. Egy RTO 90 percig például azt jelenti, hogy kell lennie az alkalmazás fut. 90 percen belül a kezdetektől egy olyan vészhelyzet esetén a visszaállítási lehetőségével. Ha alacsony RTO, előfordulhat, hogy megakadályozhatja a második központi telepítés folyamatosan futó készenléti regionális kimaradás elleni védelem érdekében.
+ - **A helyreállítási időre vonatkozó célkitűzés (RTO)**  
+RTO egy incidens után egy alkalmazás elérhetetlen maradhat maximális elfogadható idejét. Például az RTO 90 perc azt jelenti, hogy be kell állítani az alkalmazás egy működőképes állapotba 90 percen belül a kezdetektől vészhelyzet. Ha alacsony RTO, akkor előfordulhat, hogy tartsa egy második üzemelő példány folyamatosan készenléti módban futhat a regionális üzemkimaradások esetére.
  - **Helyreállítási időkorlát (RPO)**  
-A helyreállítási Időkorlát adatvesztés elfogadható során egy olyan vészhelyzet esetén a maximális időtartama. Ha például egyetlen adatbázisban tárol adatokat, és nem készít replikát egy másik adatbázisba, és óránként végez biztonsági mentéseket, akkor legfeljebb egy órányi adatot veszíthet.
+Helyreállítási Időkorlát, egy katasztrófa során elfogadható adatvesztés maximális időtartama. Ha például egyetlen adatbázisban tárol adatokat, és nem készít replikát egy másik adatbázisba, és óránként végez biztonsági mentéseket, akkor legfeljebb egy órányi adatot veszíthet.
 
-Az RTO-ra és az RPO-ra üzleti követelményként tekinthet. A kockázatbecslés adható meg az alkalmazás RTO és a helyreállítási Időkorlát elvégzésével.
+Az RTO-ra és az RPO-ra üzleti követelményként tekinthet. Az alkalmazás RTO és RPO meghatározásához a kockázatbecslés végez.
 
-A metrika egy másik **visszaállítás középidő** (MTTR), amelyek a meghibásodás után az alkalmazás visszaállítása szükséges átlagos idő. MTTR tapasztalati érték esetén a rendszer. Ha az MTTR nagyobb, mint az RTO, akkor a rendszer hibája az üzletmenet elfogadhatatlan mértékű szüneteltetését okozza, mert nem lehet visszaállítani a rendszert a megadott RTO-n belül.
+Egy másik metrika **helyreállítása időt** (MTTR), azaz a meghibásodás után az alkalmazás visszaállításával átlagos idejét. MTTR empirikus érték egy rendszer számára. Ha az MTTR nagyobb, mint az RTO, akkor a rendszer hibája az üzletmenet elfogadhatatlan mértékű szüneteltetését okozza, mert nem lehet visszaállítani a rendszert a megadott RTO-n belül.
 
 ### <a name="backup-restore"></a>Backup-restore
 
-A Virtuálisgép-alapú alkalmazások leggyakoribb védelmi rendszere biztonsági mentési szoftver használatára. Az operációs rendszer, az operációs rendszer konfigurálása, bináris alkalmazásfájlokat és alkalmazásadatok biztonsági mentése a virtuális gépek általában tartalmazza. A biztonsági mentések hozza létre a köteteket, lemezek vagy a teljes virtuális gép pillanatkép létrehozása van folyamatban. Az Azure veremnek megfelelő a szeretne biztonsági másolatot készíteni a vendég operációs rendszer vagy az Azure-verem tárolásból összefüggésében rugalmasan, és számítási API-k. Az Azure verem nem támogatja a véve a biztonsági mentések a hipervizor szinten.
+A leggyakrabban használt védelmi séma Virtuálisgép-alapú alkalmazásokhoz, hogy biztonsági mentési szoftver. Virtuális gépek biztonsági mentéséről általában tartalmazza az operációs rendszer, az operációs rendszer konfigurálása, alkalmazás bináris fájljainak és az alkalmazásadatokat. A biztonsági mentés pillanatképének elkészítése a köteteket, a lemezek vagy a teljes virtuális Gépet hoznak létre. Az Azure Stack megvan a rugalmasság a biztonsági mentés készül a vendég operációs rendszer vagy az Azure Stack-storage-ból a környezeten belül, és API-k számítási. Az Azure Stack nem támogatja a véve a biztonsági mentések a hipervizor szintjén.
  
 ![Backup-restor](media\azure-stack-manage-vm-backup\vm_backupdataflow_03.png)
 
-Az alkalmazás helyreállítása szükséges visszaállítása egy vagy több, azonos felhőben, vagy új felhő. A datacenter vagy a nyilvános felhő felhő célba. A választott felhő teljesen a vezérlőben, és az adatvédelmi és közös joghatóság alá követelmények alapján.
+Az alkalmazás helyreállítása szükséges egy vagy több virtuális gép visszaállítása, ugyanabban a felhőben vagy egy új felhőt. A célfelhő az adatközpontban vagy a nyilvános felhőben. A választott cloud teljesen a vezérlőben, amely az és az adatvédelmi követelmények alapján.
  
  - RTO: Az órában mért állásidő
- - A helyreállítási Időkorlát: Változó adatvesztés (attól függően, hogy biztonsági mentési gyakoriság)
+ - Helyreállítási Időkorlát: Változó adatvesztés (biztonsági mentés gyakoriságától függően)
  - Üzembe helyezési topológia: aktív/passzív
 
 #### <a name="planning-your-backup-strategy"></a>A biztonsági mentési stratégia tervezése
 
-A biztonsági mentési stratégia megtervezése és méretezési követelmények meghatározásánál tart kezdődik-e a szükséges védelemmel ellátni Virtuálisgép-példányok száma mennyiségi meghatározására. Minden virtuális gépek biztonsági mentéséről környezetben kiszolgálók közötti közös stratégiát is. Az Azure-vermet, van azonban néhány virtuális gépek biztonsági mentése szükséges. Például egy méretezési csoportban lévő virtuális gépek minősülnek elmúló erőforrásokat, amelyek származnak, majd lépjen, néha minden külön értesítés nélkül. Például egy adatbázis vagy az objektum-tároló egy külön tárház kell védeni tartós adatokat tárolja.
+A biztonsági mentési stratégia megtervezése és a méretezési követelmények meghatározásánál tart kezdődik a mennyiségi meghatározására a védendő Virtuálisgép-példányok számát. Gyakori stratégiát az összes virtuális gépek biztonsági mentésének környezet összes kiszolgálója között is. Az Azure Stack, vannak azonban bizonyos virtuális gépek biztonsági mentése. Például egy méretezési csoportban lévő virtuális gépek lesznek figyelembe véve a rövid élettartamú erőforrások, amelyek származnak, és lépjen, néha előzetes értesítés nélkül. Védendő hosszú élettartamú adatok egy különálló, például egy adatbázisba vagy az objektum store tárházat tárolja.
 
-Virtuális gépek biztonsági mentéséről Azure veremben szempontokat:
+Fontos szempontok a virtuális gépek biztonsági mentésének az Azure Stacken:
 
  - **Kategorizálási**
-    - Fontolja meg a modell, ahol felhasználók engedélyezve a virtuális gép biztonsági mentése.
-    - Adja meg a helyreállítási szolgáltatásiszint-szerződés (SLA) az alkalmazások és az üzlet fontossága alapján.
+    - Fontolja meg egy modellt, ahol felhasználók engedélyezve a virtuális gépek biztonsági mentését.
+    - Adjon meg egy helyreállítási szolgáltatásiszint-szerződés (SLA) az alkalmazások és üzleti hatását a prioritás alapján.
  - **Méretezés**
-    - Vegye figyelembe a lépcsőzetes biztonsági mentések, amikor előkészítésének számos új virtuális gépek (Ha a biztonsági mentés szükség).
-    - Értékelje ki a biztonsági mentési termék, amely hatékonyan rögzítése és a megoldás a tartalom minimalizálása érdekében biztonsági mentési adatokat.
-    - Értékelje ki a biztonságimásolat-készítő, amely hatékonyan tárolni a biztonsági mentési adatok növekményes vagy különbözeti biztonsági mentések használatával minimalizálása érdekében a teljes biztonsági mentés van szükség a környezet összes virtuális gép között.
+    - Vegye figyelembe a lépcsőzetes biztonsági mentések, amikor az előkészítési új virtuális gépek nagy számú (Ha a biztonsági másolat megadása kötelező).
+    - Értékelje ki a biztonsági mentési termék, amely hatékonyan rögzítése és a megoldás resource tartalmak minimalizálása érdekében a biztonsági mentési adatok továbbítására.
+    - Értékelje ki a biztonsági mentési termék, amely hatékony biztonsági mentési adatok tárolása az növekményes vagy a különbözeti biztonsági mentések teljes biztonsági mentéseket szükségességének minimálisra csökkentése, minden virtuális gépen a környezetben.
  - **Visszaállítás**
-    - Biztonságimásolat-készítő visszaállíthatja a virtuális lemezeket, egy meglévő virtuális Gépre, vagy a teljes VM erőforrás adatainak és a társított virtuális lemezekkel. A visszaállítási séma van szüksége, attól függ, hogyan szeretné visszaállítani az alkalmazást, és azt befolyásolja az alkalmazás helyreállításra. Például lehet könnyebben telepítse újra az SQL server olyan sablon alapján, és majd állítsa vissza az adatbázisok visszaállítása a teljes virtuális gép vagy a virtuális gépek halmazát helyett.
+    - Biztonságimásolat-készítő virtuális lemezeket, az alkalmazásadatok egy meglévő virtuális Gépet, vagy a teljes VM-erőforrás és a társított virtuális lemezekkel is helyreállíthatja. A visszaállítási séma van szüksége, attól függ, hogyan szeretné állítani az alkalmazás, és ez negatív hatással lesz az alkalmazás helyreállítási időt. Például egyszerűbb lehet, telepítse újra az SQL server-sablonból, és állítsa vissza a helyett a teljes virtuális Gépet vagy virtuális gépek visszaállítása az adatbázisok.
 
-### <a name="replicationmanual-failover"></a>Replikációs/kézi feladatátvételt
+### <a name="replicationmanual-failover"></a>Replikáció vagy manuális feladatátvétel
 
-Egy másik módjáról magas rendelkezésre állást támogató, hogy az alkalmazás virtuális gépek replikálása egy másik felhőhöz, és kézi feladatátvételre támaszkodnak. Az operációs rendszer, a bináris alkalmazásfájlokat és az alkalmazás adatainak a replikálását a virtuális gép vagy vendég operációs rendszer szintjén hajtható végre. A feladatátvételi kezeli, amely nem része az alkalmazás további szoftverrel.
+Egy másik megközelítést magas rendelkezésre állású, hogy az alkalmazás virtuális gépek replikálása egy másik felhőbe, és a manuális feladatátvételt. Az operációs rendszer, az alkalmazás bináris fájljainak és az alkalmazások adatainak a replikálását végezheti el a virtuális gép vagy vendég operációs rendszer szintjén. A feladatátvétel további szoftvereket, amely nem része az alkalmazás kezeli.
 
-Ezt a módszert használja az alkalmazás központi telepítése egy felhőben, és a virtuális gép replikálódik a többi felhőt. Ha akkor váltódik ki, a feladatátvétel, a másodlagos virtuális gépek kell a második felhőben kapcsolható be. Bizonyos esetekben a feladatátvételt a virtuális gépek és nevű lemezek számukra hoz létre. Ez a folyamat befejeződik, különösen a egy többrétegű alkalmazást, amely egy adott kezdeti feladatütemezési szükséges egy hosszú időt vehet igénybe. Is futnia kell az alkalmazás még nem megkezdheti a szolgáltatáskéréseket lépéseket lehet.
+Ezzel a módszerrel a rendszer telepíti az alkalmazást egy felhőben, és a virtuális gép a rendszer replikálja a többi felhőt. A feladatátvételi akkor aktiválódik, ha a másodlagos virtuális gépek kell bekapcsolni a második felhőben. Bizonyos esetekben a feladatátvétel őket a virtuális gépek és rendeli lemezeket hoz létre. Ez a folyamat végrehajtásához, különösen az olyan meghatározott indítási feladatütemezési igénylő többrétegű alkalmazást hosszú időt vehet igénybe. Is előfordulhatnak lépéseket kell futtatni, mielőtt az alkalmazás megkezdheti a szolgáltatáskéréseket.
 
-![Replikációs-kézi feladatátvételt](media\azure-stack-manage-vm-backup\vm_backupdataflow_02.png)
+![Replikálás – kézi feladatátvételt](media\azure-stack-manage-vm-backup\vm_backupdataflow_02.png)
 
  - RTO: Percben mért állásidő
- - A helyreállítási Időkorlát: Változó adatvesztés (replikáció gyakoriságától függően)
- - Üzembe helyezési topológia: aktív/passzív készenléti által
+ - Helyreállítási Időkorlát: Változó adatvesztés (replikáció gyakoriságától függően)
+ - Üzembe helyezési topológia: aktív/passzív készenléti
  
-### <a name="high-availabilityautomatic-failover"></a>Magas rendelkezésre állás vagy automatikus feladatátvétel
+### <a name="high-availabilityautomatic-failover"></a>Magas rendelkezésre állást és automatikus feladatátvétel
 
-Alkalmazások esetében, ahol az üzleti tűri néhány másodperceken vagy perceken állásidő és minimális adatvesztéssel akkor fontolja meg egy magas rendelkezésre állású konfigurációban. Magas rendelkezésre állású alkalmazások úgy tervezték, hogy gyorsan és automatikusan helyreállni hibák. Helyi hardver hibák, az Azure verem infrastruktúra magas rendelkezésre állás a fizikai hálózat két legfontosabb állvány kapcsolók használatával valósítja meg. Számítási szintű hibák, az Azure verem használja több csomópont egy méretezési egység. A virtuális gép szinten használata méretezési csoportok együtt tartalék tartományok biztosításához csomóponthibák nem miatt le az alkalmazást.
+Alkalmazások, ahol az üzleti tűri néhány másodperceken vagy perceken állásidő és a minimális adatvesztéssel szüksége lesz vegye fontolóra egy magas rendelkezésre állású konfigurációban. Magas rendelkezésre állású alkalmazások gyorsan és automatikusan helyreállni hibák lettek kialakítva. Helyi hardveres hibák, az Azure Stack-infrastruktúra magas rendelkezésre állás a fizikai hálózatban két felső részén kapcsolók használatával valósítja meg. Számítási szolgáltatói hibákat az Azure Stack a skálázási egységeken belüli több csomópont használja. A virtuális gép szintjén, a méretezési csoportokkal együtt használhatja a tartalék tartományok csomóponthibák nem lép fel az alkalmazás biztosításához.
 
-Az alkalmazásnak méretezési csoportok együtt, szüksége lesz a natív módon támogatja a magas rendelkezésre állású vagy támogatja a fürtképző szoftverek használatát. Például a Microsoft SQL Server támogatja a magas rendelkezésre állású natív módon szinkron véglegesítésű módot használó adatbázisokról. Azonban ha csak is támogatja az aszinkron replikációját, majd lesz adatvesztést. Alkalmazások is telepíthetők a feladatátvevő fürtök, ahol a fürtszoftver kezeli-e az alkalmazás automatikus feladatátvétel be.
+Az alkalmazásnak méretezési csoportokkal együtt, szüksége lesz a natív módon támogatja a magas rendelkezésre állású vagy támogatja a fürtszolgáltatás szoftver használatát. Például a Microsoft SQL Server támogatja a magas rendelkezésre állású natív módon szinkron véglegesítésű módot használó adatbázisokról. Azonban csak az aszinkron replikáció is támogatottak, ha ezután lesz némi adatvesztést. Alkalmazások üzembe helyezve a feladatátvevő fürtök, ahol a fürtszoftver kezeli-e az alkalmazás az automatikus feladatátvételt is is.
 
-Ezzel a megközelítéssel az alkalmazás csak aktív egy felhőben, de a szoftver központi telepítése több felhők. A többi felhőből készenléti üzemmódban megkezdheti az alkalmazás, a feladatátvétel kezdeményezése esetén van.
+Ezzel a megközelítéssel az alkalmazás csak akkor aktív egy felhőben, de a szoftver központi telepítése több felhő. Az egyéb felhőkben is készenléti módban az alkalmazás megkezdheti a feladatátvétel elindításakor.
 
- - RTO: Állásidő mérése másodpercben történik
- - A helyreállítási Időkorlát: Minimális adatvesztéssel
- - Üzembe helyezési topológia: aktív/aktív készenléti által
+ - RTO: Állásidő idejének mérése másodpercben
+ - Helyreállítási Időkorlát: Minimális adatvesztéssel
+ - Üzembe helyezési topológia: aktív/aktív-készenléti
 
 ### <a name="fault-tolerance"></a>Hibatűrés
 
-Fizikai redundanciát és infrastruktúra szolgáltatás rendelkezésre állása csak hardver elleni védelem érdekében az Azure verem hiba/hibák szinten, ilyen a lemezen, tápegység, hálózati portot vagy csomópont. Azonban ha az alkalmazás mindig elérhetőnek kell lennie, és soha nem el adatokat, akkor az alkalmazás natív módon alkalmazza a hibatűrést, vagy egy másik szoftver használatával a hibatűrés.
+Fizikai redundancia és infrastruktúra-szolgáltatások elérhetőségét csak hardver elleni védelem érdekében az Azure Stack szintű hiba/hibák, például egy lemez, tápegység, hálózati portot vagy csomópont. Azonban ha az alkalmazás mindig elérhetőnek kell lennie, és soha nem elveszíthetik az adatokat, szüksége lesz a hibatűrés megvalósítása az alkalmazás natív módon, vagy további szoftverek használata a hibatűrés engedélyezéséhez.
 
-Először annak érdekében, hogy a virtuális gépek méretezési központilag telepített alkalmazás beállítja a csomópont-szintű hibák elleni védelem érdekében. Offline állapotra vált, a felhő elleni védelem érdekében, ugyanazt az alkalmazást kell már regisztrálva van olyan másik felhőt, így folytathatja a szolgáltatáskéréseket megszakítás nélkül. Ez a modell gyakran emlegetik úgy az aktív-aktív központi telepítése.
+Először annak biztosítása érdekében a virtuális gépek méretezési csoport üzembe helyezett alkalmazás beállítja a csomópont-szintű leállások ellen. A felhő offline állapotra ellen, ugyanazt az alkalmazást már telepíteni kell egy másik felhőbe, így az továbbra is megszakítás nélkül szolgáltatáskéréseket. Ez a modell gyakran emlegetik úgy egy aktív-aktív központi telepítés.
 
-Ne feledje, hogy minden Azure verem felhő egymástól, független, a felhők mindig minősülnek aktív, az infrastruktúra szempontjából. Ebben az esetben az alkalmazás több aktív példányok telepít egy vagy több aktív felhőt.
+Ne feledje, hogy minden egyes Azure Stack-felhőben függetlenek egymástól,-e, a felhők mindig számítanak aktív, az infrastruktúra szempontjából. Ebben az esetben az alkalmazás több aktív példány egy vagy több aktív felhők vannak telepítve.
 
- - RTO: Nincs leállás
- - A helyreállítási Időkorlát: Adatvesztés nélküli
+ - RTO: Nincs állásidő
+ - Helyreállítási Időkorlát: Nincs adatvesztés
  - Üzembe helyezési topológia: aktív/aktív
 
-### <a name="no-recovery"></a>Egyetlen helyreállítási
+### <a name="no-recovery"></a>Nincs recovery
 
-Egyes alkalmazások a környezetben nem esetleg nem tervezett leállások vagy adatvesztés elleni védelem. Például fejlesztési használt virtuális gépek és tesztelési rendszerint nem kell helyre kell állítani. Eldöntheti, hogy egy alkalmazás vagy egy adott virtuális gép védelme nélkül az. Azure verem nem ajánlja fel a biztonsági mentési vagy a virtuális gépek replikálása az alapul szolgáló infrastruktúra. Hasonló az Azure-ba, szüksége lesz a részt az egyes virtuális gépek minden egyes előfizetésnél a védelem.
+Egyes alkalmazások a környezetében előfordulhat, hogy nem kell a nem tervezett leállásokkal vagy adatvesztés elleni védelem. Például a virtuális gépek fejlesztési célokra, és a tesztelés általában nem kell helyreállítani. Egy alkalmazás vagy egy adott virtuális gép védelme nélkül mellett. Az Azure Stack nem kínál biztonsági mentési vagy a virtuális gépek replikálását az alapul szolgáló infrastruktúráról. Az Azure-hoz hasonlóan kell minden egyes előfizetés az egyes virtuális gép védelmét szeretné.
 
  - RTO: helyreállíthatatlan
- - A helyreállítási Időkorlát: Teljes adatvesztés
+ - Helyreállítási Időkorlát: Teljes adatvesztés
 
 ## <a name="recommended-topologies"></a>Ajánlott topológiák
 
-Az Azure-verem üzembe helyezéshez szempontokat:
+Az Azure Stack üzemelő példány fontos szempontjai:
 
-|     | Ajánlás | Hozzászólások |
+|     | Ajánlás | Megjegyzések |
 |-------------------------------------------------------------------------------------------------|-----------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Virtuális gépek biztonsági mentési/visszaállítási már telepítették az adatközpontban található egy külső biztonsági mentési cél | Ajánlott | A meglévő biztonsági mentési infrastruktúra és a működési képességek előnyeit. Ügyeljen arra, hogy a biztonsági mentési infrastruktúra méretezze, hogy készen álljon a további Virtuálisgép-példány védelmét. Ellenőrizze, hogy biztonsági mentési infrastruktúra nincs közel az adatforrásból. A forrás Azure verem, egy másodlagos Azure verem-példányt, vagy Azure virtuális gépek is helyreállíthatja. |
-| Virtuális gépek biztonsági mentési/visszaállítási egy dedikált Azure verem külső biztonsági mentési cél | Ajánlott | Azure verem vásárolhat az új biztonsági mentési infrastruktúra vagy dedikált biztonsági mentési infrastruktúra kiépítéséhez. Ellenőrizze, hogy biztonsági mentési infrastruktúra nincs közel az adatforrásból. A forrás Azure verem, egy másodlagos Azure verem-példányt, vagy Azure virtuális gépek is helyreállíthatja. |
-| Erre a globális Azure vagy egy megbízható szolgáltató virtuális gépek biztonsági mentése/visszaállítása | Ajánlott | Mindaddig, amíg az adatok védelmét és szabályozási követelmények is megfelel, tárolhatja a biztonsági másolatok globális Azure vagy egy megbízható szolgáltató. Ideális esetben a szolgáltató is fut Azure verem így konzisztencia működési élményt nyújt történő visszaállításához. |
-| Replikálás/feladatátvételi virtuális gépek külön Azure veremben példányra | Ajánlott | A feladatátvételi esetben szüksége lesz egy teljesen működőképes második Azure verem felhő rendelkezik kiterjesztett alkalmazás állásidő elkerülése érdekében. |
-| Replikálás/feladatátvételi virtuális gépek közvetlenül az Azure vagy egy megbízható szolgáltató | Ajánlott | Mindaddig, amíg az adatok védelmét és szabályozási követelmények is megfelel, replikálja az adatokat globális Azure vagy egy megbízható szolgáltató. Ideális esetben a szolgáltató is fut Azure verem így konzisztencia működési élményt nyújt a feladatátvételt követően. |
-| Az alkalmazás adatait a azonos Azure verem felhő biztonsági mentési cél telepítése | Nem ajánlott | Ne tárolja a biztonsági mentések azonos Azure verem felhőben. A felhő nem tervezett leállás is csoportszolgáltatáshoz az elsődleges adatok és a biztonsági mentési adatokat. Ha egy biztonsági mentési cél telepítését a virtuális készülék (alkalmazásában optimalizálást biztonsági mentése és visszaállítása), győződjön meg minden adat folyamatosan külső biztonsági mentési helyre másolja. |
-| Az ugyanazon az Azure-verem megoldást futtató állványra a fizikai biztonsági mentési készülék telepítése | Nem támogatott | Ezen a ponton az időben azokat az eszközöket nem lehet csatlakozni az állvány kapcsolók, amelyek nem részei az eredeti megoldásban tetején. |
+| Virtuális gépek biztonsági mentése/visszaállítása egy már üzembe helyezte az adatközpontban található külső biztonsági mentési cél | Ajánlott | Kihasználhatja a meglévő biztonsági mentési infrastruktúra és képességeket. Ellenőrizze, hogy a biztonsági mentési infrastruktúra méretezés, hogy további Virtuálisgép-példányok védelméhez készen álljon. Ellenőrizze, hogy a biztonsági mentési infrastruktúra nem szerepel a forrás közelében. A forrás Azure Stack, egy másodlagos Azure Stack-példányt, vagy Azure virtuális gépek is visszaállíthatók. |
+| Virtuális gépek biztonsági mentése/visszaállítása egy külső biztonsági mentési cél dedikált az Azure Stackhez | Ajánlott | Új biztonsági mentési infrastruktúra vagy dedikált biztonsági mentési infrastruktúra kiépítése az Azure Stack vásárolhatja meg. Ellenőrizze, hogy a biztonsági mentési infrastruktúra nem szerepel a forrás közelében. A forrás Azure Stack, egy másodlagos Azure Stack-példányt, vagy Azure virtuális gépek is visszaállíthatók. |
+| Közvetlenül a globális Azure-ban vagy egy megbízható szolgáltató a virtuális gépek biztonsági mentése/visszaállítása | Ajánlott | Mindaddig, amíg az adatvédelem és a szabályozási követelményeknek is megfeleljen, a biztonsági másolatok tárolhatók a globális Azure-ban vagy egy megbízható szolgáltató. Ideális esetben a szolgáltató is fut-e az Azure Stack így konzisztencia működési felületen történő visszaállításához. |
+| Replikálás és feladatátvételi virtuális gépek egy külön Azure Stack-példányt | Ajánlott | A feladatátvételi esetben szüksége lesz egy második teljesen működőképes Azure Stack-felhővel rendelkezik, kiterjesztett alkalmazás állásidő elkerülése érdekében. |
+| Replikálás és feladatátvételi virtuális gépek közvetlenül az Azure-ban vagy egy megbízható szolgáltató | Ajánlott | Mindaddig, amíg az adatvédelem és a szabályozási követelményeknek is megfelel, replikálja az adatokat globális Azure-ban vagy egy megbízható szolgáltató. Ideális esetben a szolgáltató is fut-e az Azure Stack így konzisztencia működési élményt nyújt a feladatátvételt követően. |
+| Az alkalmazás adatait az azonos Azure Stack-felhőben lévő biztonsági mentési cél üzembe helyezése | Nem ajánlott. | Kerülje a azonos Azure Stack-felhőben lévő biztonsági másolatok tárolásához. A felhő nem tervezett üzemkimaradások megmaradhat az elsődleges és a biztonsági mentési adatokat. Ha szeretné üzembe helyezni a biztonsági mentési cél (optimalizálást a biztonsági mentési és visszaállítási célokra) egy olyan virtuális berendezésre, választja, gondoskodnia kell minden adatot folyamatosan másol egy külső biztonsági mentési helyre. |
+| Fizikai tartalék készülék, ahol az Azure Stack megoldás telepítve van-e az azonos rack üzembe helyezése | Nem támogatott | Ezen a ponton az időben bármely egyéb eszközök nem lehet csatlakozni, amelyek nem részei az eredeti megoldásban kapcsolók tetején. |
 
 ## <a name="next-steps"></a>További lépések
 
-Ez a cikk általános irányelveket előírt telepített Azure veremben felhasználói virtuális gépek védelmét. Azure-szolgáltatások felhasználói virtuális gépeket védelméhez használatával kapcsolatos információkért lásd:
+Ez a cikk általános irányelveket előírt telepíthető az Azure Stack felhasználói virtuális gépek védelmére. A felhasználói virtuális gépek védelme az Azure-szolgáltatások használatával kapcsolatos információkért tekintse meg:
 
- - [Azure Backup használatával biztonsági másolatot a fájlokhoz és alkalmazásokhoz Azure verem](https://docs.microsoft.com/azure/backup/backup-mabs-files-applications-azure-stack)
- - [Azure verem az Azure Backup Server támogatása](https://docs.microsoft.com/azure/backup/ ) 
- - [Azure verem támogatása az Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/)  
+ - [Azure Backup szolgáltatás használatával a fájlok és alkalmazások biztonsági mentése az Azure Stackben](https://docs.microsoft.com/azure/backup/backup-mabs-files-applications-azure-stack)
+ - [Azure Stack az Azure Backup Server támogatása](https://docs.microsoft.com/azure/backup/ ) 
+ - [Azure Stack támogatása az Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/)  
 
-A virtuális gépek védelmét Azure veremben kínáló partner termékekkel kapcsolatos további tudnivalókért tekintse meg a "[védett alkalmazások és adatok Azure veremben](https://azure.microsoft.com/blog/protecting-applications-and-data-on-azure-stack/)."
+A partner-termékek nyújtanak védelmet a virtuális gép az Azure Stacken kapcsolatos további információkért tekintse meg a "[védelméről, alkalmazásokat és adatokat az Azure Stackben](https://azure.microsoft.com/blog/protecting-applications-and-data-on-azure-stack/)."
