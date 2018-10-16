@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/21/2018
+ms.date: 10/10/2018
 ms.author: rkarlin
-ms.openlocfilehash: cb13da7ad9387b7170882752b1620c2756bc3675
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 98533e3c1454867ff09c53902f0f575d198452a3
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46124150"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49320339"
 ---
 # <a name="manage-virtual-machine-access-using-just-in-time"></a>Igény szerint virtuálisgép-hozzáférés kezelése
 
@@ -111,6 +111,33 @@ A **virtuális gépek igény szerinti hozzáférés konfigurációs**, is hozzá
 > [!NOTE]
 >Ha igény szerinti Virtuálisgép-hozzáférés engedélyezve van, az létrehoz egy virtuális Gépet, az Azure Security Center az összes bejövő forgalomra vonatkozó szabályokat a hálózati biztonsági csoportok társítva a kiválasztott portok tiltása. A szabályok lesznek a legmagasabb prioritást, a hálózati biztonsági csoportok, vagy már meglévő szabályoknál alacsonyabb prioritású. Ez attól függ, amely meghatározza, hogy a szabály biztonságos-e az Azure Security Center által végzett elemzés.
 >
+
+
+## <a name="set-just-in-time-within-a-vm"></a>Set-igény virtuális Gépen belül
+
+Megkönnyíti az igény szerinti hozzáférés bevezetése a virtuális gép között, beállíthatja, hogy csak-igény a hozzáférés közvetlenül a virtuális gép egy virtuális Gépet.
+
+1. Az Azure Portalon válassza ki a **virtuális gépek**.
+2. Kattintson a virtuális gépen szeretné korlátozni, igény szerinti elérését.
+3. Kattintson a menü **konfigurációs**.
+4. A **igény-szerinti hozzáférés** kattintson **just-in-time-házirend engedélyezése**. 
+
+Ez lehetővé teszi igény szerinti hozzáférés a virtuális gép a következő beállításokkal:
+
+- Windows-kiszolgálók:
+    - 3389-es RDP-port
+    - hozzáférési 3 óra
+    - Engedélyezett forrásoldali IP-címek kérelmenként beállítása
+- Linux-kiszolgálók:
+    - 22-es SSH-port
+    - hozzáférési 3 óra
+    - Engedélyezett forrásoldali IP-címek kérelmenként beállítása
+     
+Ha a virtuális gép már just-in-time engedélyezve van, amikor a konfigurációs lapon tudják, hogy engedélyezve van a-igény és a hivatkozás segítségével nyissa meg a szabályzatot az Azure Security Center használatával megtekintheti és módosíthatja a beállításokat.
+
+![a virtuális gép JIT-config](./media/security-center-just-in-time/jit-vm-config.png)
+
+
 ## <a name="requesting-access-to-a-vm"></a>Egy virtuális Géphez való hozzáférés kérése
 
 Egy virtuális Géphez való hozzáférés kérése:

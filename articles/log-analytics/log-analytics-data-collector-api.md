@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 07/03/2018
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: 297ba626d8b80d9362476ca4578e34140df5f91a
-ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
+ms.openlocfilehash: f0a982e8a0cb358e29375e05c1752a33b15ec255
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48248653"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49319710"
 ---
 # <a name="send-data-to-log-analytics-with-the-http-data-collector-api-public-preview"></a>Adatokat küldeni a Log Analytics és a HTTP-adatgyűjtő API (nyilvános előzetes verzió)
 Ez a cikk bemutatja, hogyan adatokat küldeni a Log Analytics REST API-ügyfél-nak a HTTP-adatgyűjtő API használatával.  Ismerteti, hogyan formázza a parancsfájl vagy az alkalmazások által gyűjtött adatokat, foglalja bele egy kérelmet, és rendelkezik a Log Analytics által engedélyezett kérelmet.  A példák a PowerShell, a C# és Python.
@@ -101,7 +101,7 @@ A következő szakaszokban a mintákat hozhat létre az engedélyeztetési fejl�
 ## <a name="request-body"></a>Kérelem törzse
 Az üzenet törzse JSON formátumban kell lennie. A tulajdonság név-érték párok az egy vagy több rekord a következő formátumban kell tartalmaznia:
 
-```
+```json
 [
     {
         "property 1": "value1",
@@ -114,7 +114,7 @@ Az üzenet törzse JSON formátumban kell lennie. A tulajdonság név-érték p�
 
 Kötegelt együtt, egyetlen kérelem több rekord a következő formátum használatával. A rekordok az azonos típusú rekorddal kell lennie.
 
-```
+```json
 [
     {
         "property 1": "value1",
@@ -218,7 +218,7 @@ Minden mintához tegye állíthatja be a változókat az engedélyezési fejléc
 Azt is megteheti módosíthatja a változókat a napló típusa és a JSON-adatokat.
 
 ### <a name="powershell-sample"></a>PowerShell-minta
-```
+```powershell
 # Replace with your Workspace ID
 $CustomerId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"  
 
@@ -301,7 +301,7 @@ Post-LogAnalyticsData -customerId $customerId -sharedKey $sharedKey -body ([Syst
 ```
 
 ### <a name="c-sample"></a>C#-minta
-```
+```csharp
 using System;
 using System.Net;
 using System.Net.Http;
@@ -387,7 +387,7 @@ namespace OIAPIExample
 ```
 
 ### <a name="python-2-sample"></a>Python 2-minta
-```
+```python
 import json
 import requests
 import datetime

@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/03/2018
+ms.date: 09/28/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 29517f057599c7bf108d1c4d525b6c67c1b6b46a
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 8b45acebf95d5bf24ff2045f5739c8584f374842
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46311450"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49320458"
 ---
 # <a name="azure-active-directory-pass-through-authentication-quick-start"></a>Az Azure Active Directory átmenő hitelesítés: Gyors útmutató
 
@@ -48,7 +48,7 @@ Győződjön meg arról, hogy az alábbi előfeltételek teljesülnek.
 2. Telepítse a [az Azure AD Connect legújabb verziójának](https://www.microsoft.com/download/details.aspx?id=47594) a kiszolgálón, az előző lépésben azonosított. Ha már rendelkezik Azure AD Connect fut, győződjön meg arról, hogy a verzió 1.1.750.0 vagy újabb.
 
     >[!NOTE]
-    >Az Azure AD Connect-verziók 1.1.557.0, 1.1.558.0, 1.1.561.0 és 1.1.614.0 van a Jelszókivonat-szinkronizálás kapcsolatos probléma. Ha Ön _nem_ kívánja használni a Jelszókivonat-szinkronizálás az átmenő hitelesítéssel, olvassa el a [kibocsátási megjegyzések az Azure AD Connect](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-version-history#116470).
+    >Az Azure AD Connect-verziók 1.1.557.0, 1.1.558.0, 1.1.561.0 és 1.1.614.0 van a Jelszókivonat-szinkronizálás kapcsolatos probléma. Ha Ön _nem_ kívánja használni a Jelszókivonat-szinkronizálás az átmenő hitelesítéssel, olvassa el a [kibocsátási megjegyzések az Azure AD Connect](https://docs.microsoft.com/azure/active-directory/hybrid/reference-connect-version-history#116470).
 
 3. Egy vagy több további kiszolgálók azonosításához (Windows Server 2012 R2 rendszerű vagy újabb), különálló hitelesítési ügynökök futtathatja. Ezek a további kiszolgálók a kérelmet, jelentkezzen be a magas rendelkezésre állás biztosításához szükségesek. A kiszolgálókat hozzáadja a felhasználókat, amelyeknek a jelszava érvényesítenie kell ugyanabban az Active Directory erdőben.
 
@@ -57,13 +57,13 @@ Győződjön meg arról, hogy az alábbi előfeltételek teljesülnek.
 
 4. Ha egy a kiszolgálók és az Azure AD között tűzfal található, adja meg a következő elemek:
    - Győződjön meg arról, hogy a hitelesítési ügynökök kezdeményezhetik *kimenő* kéréseket az Azure AD az alábbi portokon keresztül:
-   
+
     | Portszám | Hogyan használja fel azokat |
     | --- | --- |
     | **80** | A visszavont tanúsítványok listájának (CRL) letölti az SSL-tanúsítvány érvényesítése közben |
     | **443** | Kezeli a szolgáltatással folytatott minden kimenő kommunikáció |
     | **8080-as** (nem kötelező) | Hitelesítési ügynökök jelentik az állapotukat 8080,-as porton tíz percenként, ha a 443-as port nem érhető el. Ez az állapot az Azure AD portálon jelenik meg. 8080-as porton van _nem_ használt felhasználói bejelentkezéseket. |
-   
+
     Ha a tűzfal szabályok alapján származó kikényszeríti, nyissa meg ezeket a portokat, a forgalom hálózati szolgáltatásként futó Windows-szolgáltatások.
    - Ha a tűzfal vagy proxy lehetővé teszi a DNS engedélyezéskor engedélyezett kapcsolatokat  **\*. msappproxy.net** és  **\*. servicebus.windows.net**. Való hozzáférés engedélyezése, ha nem, akkor a [Azure adatközpont IP-címtartományait](https://www.microsoft.com/download/details.aspx?id=41653), amely hetente frissül.
    - A hitelesítési ügynökök hozzáférésre van szükségük **login.windows.net** és **login.microsoftonline.com** kezdeti regisztráció. Nyissa meg a tűzfal, valamint az URL-címeket.
@@ -132,13 +132,13 @@ A második hozzon létre, és a egy felügyelet nélküli telepítési parancsf�
 
 1. Hitelesítési ügynök telepítéséhez a következő parancsot: `AADConnectAuthAgentSetup.exe REGISTERCONNECTOR="false" /q`.
 2. A hitelesítési ügynök regisztrálhatja az szolgáltatás Windows PowerShell használatával. Hozzon létre egy PowerShell hitelesítő objektumot `$cred` egy globális rendszergazdai felhasználónevet és jelszót, amely tartalmazza a bérlő számára. Futtassa a következő parancsot, és cserélje le *\<felhasználónév\>* és  *\<jelszó\>*:
-   
+
         $User = "<username>"
         $PlainPassword = '<password>'
         $SecurePassword = $PlainPassword | ConvertTo-SecureString -AsPlainText -Force
         $cred = New-Object –TypeName System.Management.Automation.PSCredential –ArgumentList $User, $SecurePassword
 3. Lépjen a **C:\Program Files\Microsoft Azure AD Connect hitelesítési ügynökének** , és futtassa az alábbi szkriptet az a `$cred` létrehozott objektum:
-   
+
         RegisterConnector.ps1 -modulePath "C:\Program Files\Microsoft Azure AD Connect Authentication Agent\Modules\" -moduleName "AppProxyPSModule" -Authenticationmode Credentials -Usercredentials $cred -Feature PassthroughAuthentication
 
 ## <a name="next-steps"></a>További lépések
@@ -151,4 +151,3 @@ A második hozzon létre, és a egy felügyelet nélküli telepítési parancsf�
 - [A biztonság részletes bemutatása](how-to-connect-pta-security-deep-dive.md): ismerje meg az átmenő hitelesítés szolgáltatás technikai információit.
 - [Az Azure AD közvetlen egyszeri bejelentkezés](how-to-connect-sso.md): További információ a kiegészítő funkció.
 - [UserVoice](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect): az Azure Active Directory-fórumon használatával új funkcióra vonatkozó javaslata fájlt.
-

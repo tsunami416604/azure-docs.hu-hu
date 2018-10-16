@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 07/06/2018
 ms.author: manayar
-ms.openlocfilehash: aed804a257376308c668ce0c2f3e8ce652ee9b3f
-ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
+ms.openlocfilehash: 0e73abf0fc170079d4b2bc093df45c998e68d184
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "42060595"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49320526"
 ---
 # <a name="map-virtual-networks-in-different-azure-regions"></a>Különböző Azure-régiókban található virtuális hálózatok leképezése
 
@@ -106,7 +106,7 @@ Ha a forrásoldali alhálózat és a célként megadott alhálózat címe külö
 A feladatátvételi virtuális Gépen az alhálózat címtartományának, amely végéről – a következő elérhető IP-Címmel rendelkező hozzájuk: 10.0.0.254 </br>
 
 **Megjegyzés:** terminológia **éles vNet** a neve a "célhálózat" leképezve a vész-helyreállítási konfiguráció során.
-####<a name="2-if-the-target-network-chosen-is-not-the-production-vnet-but-has-the-same-subnet-range-as-production-network"></a>2. Ha a kiválasztott célhálózat nem az éles virtuális hálózathoz, de az egyező alhálózati tartományba éles hálózati környezetben van 
+#### <a name="2-if-the-target-network-chosen-is-not-the-production-vnet-but-has-the-same-subnet-range-as-production-network"></a>2. Ha a kiválasztott célhálózat nem az éles virtuális hálózathoz, de az egyező alhálózati tartományba éles hálózati környezetben van 
 
 - A helyreállítási IP-cím (cél IP-címet) a statikus IP-cím lesz a **azonos IP-címet** (azaz a konfigurált statikus IP-cím), foglalva feladatátvételhez. A megadott azonos IP-cím áll rendelkezésre.
 - Ha a konfigurált statikus IP-cím már hozzá van rendelve egy másik virtuális gép/eszköz, a helyreállítási IP-cím végéről az alhálózat címtartományának következő elérhető IP lesz.

@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 07/06/2018
+ms.date: 10/12/2018
 ms.author: jonbeck
-ms.openlocfilehash: 31e81741d2a627888e478b3871bdbab4e6b6d6f5
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: e00a4c5f5ee307a2d574702844e481894d28cb93
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37902639"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49340307"
 ---
 # <a name="high-performance-compute-vm-sizes"></a>Nagy teljesítményű számítási Virtuálisgép-méretek
 
@@ -50,12 +50,19 @@ ms.locfileid: "37902639"
   
   További információkért lásd: [virtuális gépi bővítmények és szolgáltatások](extensions-features.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). Telepített virtuális gépek is dolgozhat bővítmények a [klasszikus üzemi modell](classic/manage-extensions.md).
 
+### <a name="cluster-configuration-options"></a>Fürt konfigurációs lehetőségek
 
-## <a name="using-hpc-pack"></a>HPC Pack használatával
+Azure Windows HPC virtuális gép, amely az RDMA hálózati használatával kommunikálhatnak fürtöket számos lehetőséget kínál többek között: 
 
-[A Microsoft HPC Pack](https://technet.microsoft.com/library/jj899572.aspx), a Microsoft ingyenes HPC-fürt és a feladat felügyeleti megoldás, az egyik lehetőség, hogy a számítási fürt létrehozása az Azure-ban Windows-alapú MPI-alkalmazások és az egyéb HPC számítási feladatok futtatásához. HPC Pack 2012 R2 és újabb verziók tartalmazzák a futtatási környezetet az RDMA-kompatibilis virtuális gépek üzembe helyezésekor az Azure RDMA-hálózatot használó MS MPI.
+* **Virtuális gépek** – az RDMA-kompatibilis HPC virtuális gépek ugyanazon rendelkezésre állási csoportjának (Ha használja az Azure Resource Manager üzemi modell) üzembe helyezése. Ha a klasszikus üzemi modellt használja, az ugyanazon a felhőszolgáltatáson virtuális gépek üzembe helyezése. 
 
+* **A Virtual machine scale sets** – a Virtuálisgép-méretezési csoport állítsa be, győződjön meg arról, hogy korlátozza az üzembe helyezés az elhelyezési csoportból. Például egy Resource Manager-sablon beállítása az `singlePlacementGroup` tulajdonságot `true`. 
 
+* **Az Azure CycleCloud** – a HPC-fürt létrehozása [Azure CycleCloud](/azure/cyclecloud/) MPI-feladatok futtatásához a Windows-csomópontokon.
+
+* **Az Azure Batch** – hozzon létre egy [Azure Batch](/azure/batch/) MPI számítási feladatok futtatásához a Windows Server a készlet számítási csomópontjain. További információkért lásd: [használata RDMA-kompatibilis vagy a GPU-kompatibilis példányok a Batch-készletek](../../batch/batch-pool-compute-intensive-sizes.md). További tájékoztatás a [Batch hajógyárnak](https://github.com/Azure/batch-shipyard) tárolóalapú számítási feladatok futtatásához a Batch-projektben.
+
+* **A Microsoft HPC Pack** - [HPC Pack](https://docs.microsoft.com/powershell/high-performance-computing/overview) MS-MPI RDMA-kompatibilis Windows virtuális gépek üzembe helyezésekor az Azure RDMA-hálózatot használó futtatókörnyezetének tartalmazza. Például a telepítések esetén lásd: [a HPC Pack segítségével Windows RDMA-fürt beállítása MPI-alkalmazások futtatására](classic/hpcpack-rdma-cluster.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
 
 ## <a name="other-sizes"></a>További méretek
 - [Általános célú](sizes-general.md)

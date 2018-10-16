@@ -2,7 +2,7 @@
 Ha azt szeretné, hogy a Mobile Apps kezelje az alkalmazása hitelesítési folyamatát, regisztrálnia kell az alkalmazását az identitásszolgáltatójánál. Ezután az Azure App Service-ben be kell állítania a szolgáltatótól kapott alkalmazásazonosítót és titkos kulcsot.
 További információt a [hitelesítés alkalmazásokhoz történő hozzáadását](../articles/app-service-mobile/app-service-mobile-cordova-get-started-users.md) ismertető oktatóanyagban találhat.
 
-Ha már regisztrálta az identitásszolgáltatót, hívja meg a `.login()` metódust a szolgáltató nevével. Ha például bejelentkezni Facebook használja a következő kódot:
+Ha már regisztrálta az identitásszolgáltatót, hívja meg a `.login()` metódust a szolgáltató nevével. Ha például való bejelentkezés Facebook használja a következő kódot:
 
 ```
 client.login("facebook").done(function (results) {
@@ -17,9 +17,9 @@ A szolgáltatóhoz tartozó érvényes értékek a következők: „aad”, „f
 > [!NOTE]
 > A hitelesítés Google-fiókkal jelenleg nem használható a Server Flow-n keresztül.  A Google-lel való hitelesítéshez [Client Flow metódust](#client-auth) kell használnia.
 
-Ebben az esetben az Azure App Service felügyeli az OAuth 2.0-s hitelesítési folyamatot.  A kiválasztott szolgáltató bejelentkezési oldalát jeleníti meg, és létrehoz egy App Service hitelesítés jogkivonatot után sikeres bejelentkezés az identitásszolgáltató. Amikor a login függvény lezárult, egy olyan JSON-objektumot ad vissza, amely a felhasználói azonosítót és az App Service-hitelesítési tokent a megfelelő userID és auhenticationToken mezőbe helyezi. Ez a token gyorsítótárazható, és újra felhasználható, amíg le nem jár.
+Ebben az esetben az Azure App Service felügyeli az OAuth 2.0-s hitelesítési folyamatot.  Ez a kiválasztott szolgáltató bejelentkezési oldalát jeleníti meg, és létrehoz egy App Service hitelesítési tokent a sikeres bejelentkezést követően az identitásszolgáltatónál történő. Amikor a login függvény lezárult, egy olyan JSON-objektumot ad vissza, amely a felhasználói azonosítót és az App Service-hitelesítési tokent a megfelelő userID és auhenticationToken mezőbe helyezi. Ez a token gyorsítótárazható, és újra felhasználható, amíg le nem jár.
 
-###<a name="client-auth"></a>Útmutató: Hitelesítés szolgáltatóval (Client Flow)
+### <a name="client-auth"></a>Útmutató: Hitelesítés szolgáltatóval (Client Flow)
 
 Az alkalmazás függetlenül is kapcsolatba léphet az identitásszolgáltatóval, majd átadhatja a visszakapott tokent az App Service-nek hitelesítésre. Ez a Client Flow lehetővé teszi, hogy egyszeri bejelentkezésen alapuló működést tegyen elérhetővé a felhasználóknak, vagy további felhasználói adatokat kérjen le az identitásszolgáltatótól.
 
@@ -61,7 +61,7 @@ WL.login({ scope: "wl.basic"}).then(function (result) {
 
 Ez a példa a Live Connectből kér le egy tokent, majd a login függvény meghívásával átadja azt az App Service-nek.
 
-###<a name="auth-getinfo"></a>Útmutató: A hitelesített felhasználó adatainak lekérdezése
+### <a name="auth-getinfo"></a>Útmutató: A hitelesített felhasználó adatainak lekérdezése
 
 A hitelesítési adatok bármely AJAX-kódtárral lekérhetők az `/.auth/me` végpontról egy HTTP-híváson keresztül.  Ügyeljen arra, hogy a hitelesítési tokenhez az `X-ZUMO-AUTH` fejlécet állítsa be.  A hitelesítési token a következő helyen van tárolva: `client.currentUser.mobileServiceAuthenticationToken`.  Példa a fetch API használatára:
 

@@ -9,24 +9,27 @@ ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 04/26/2018
 ms.author: dobett
-ms.openlocfilehash: 3de08d9e4a45b842fc921436f855831afb6b9ce0
-ms.sourcegitcommit: 7b845d3b9a5a4487d5df89906cc5d5bbdb0507c8
+ms.openlocfilehash: 2c7857cd787e9298e94def5341d61238c5bb3a78
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2018
-ms.locfileid: "42061375"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49321168"
 ---
 # <a name="get-started-with-iot-hub-module-identity-and-module-twin-using-the-portal-and-net-device"></a>Ismerkedés az IoT Hub-modulidentitással és -modulikerrel a portál és a .NET eszköz használata mellett
 
 > [!NOTE]
 > [A modulidentitások és modulikrek](iot-hub-devguide-module-twins.md) az Azure IoT Hub eszközidentitásához és eszközikeréhez hasonlók, de nagyobb részletességet biztosítanak. Amíg az Azure IoT Hub eszközidentitása és eszközikre lehetővé teszi a háttéralkalmazás számára az eszköz konfigurálását, és rálátást nyújt az eszköz feltételeire, a modulidentitás és a moduliker az eszköz egyes összetevőihez biztosítja ezeket a lehetőségeket. A megfelelő, több összetevős eszközök, például az operációs rendszeren vagy a belső vezérlőprogramon alapuló eszközök esetében lehetővé teszi az elkülönített konfigurációk és feltételek beállítását az egyes összetevőkhöz.
+>
 
-Az oktatóanyag során a következőket fogja elsajátítani: 
+Az oktatóanyag során a következőket fogja elsajátítani:
+
 1. Modulidentitás létrehozása a portálon; 
-2. Moduliker frissítése az eszközről a .NET eszköz SDK-jának használatával.
+1. Moduliker frissítése az eszközről a .NET eszköz SDK-jának használatával.
 
 > [!NOTE]
 > Az Azure IoT SDK-kat használhatja az eszközökön és a megoldás háttérrendszerén futó alkalmazások összeállításához egyaránt. Ezekről az [Azure IoT SDK-k][lnk-hub-sdks] című témakörben talál további információt.
+>
 
 Az oktatóanyag teljesítéséhez a következőkre lesz szüksége:
 
@@ -39,115 +42,123 @@ Az oktatóanyag teljesítéséhez a következőkre lesz szüksége:
 
 Ezzel az IoT Hub készen áll. Nyissa meg a [portált](https://portal.azure.com), és keresse meg az IoT Hubot. Kattintson az IoT-eszközök lehetőségre, majd a Hozzáadás gombra az eszközidentitás létrehozásához. Nevezze el a következőképpen: **MyFirstDevice**. 
 
-![Eszközidentitás létrehozása][8]
+  ![Eszközidentitás létrehozása][8]
 
 A mentést követően az eszközidentitási listában láthatja, hogy a MyFirstDevice identitás sikeresen létrejött.
 
-![Létrehozott eszköz azonosítója][11]
+  ![Létrehozott eszköz azonosítója][11]
 
 Ezután kattintson a sorra. Ekkor megjelennek az eszközadatok.
 
-![Eszköz adatai][10]
+  ![Eszköz adatai][10]
 
 ## <a name="create-a-module-identity-in-the-portal"></a>Modulidentitás létrehozása a portálon
 
 Egy eszközidentitáson belül legfeljebb 20 modulidentitás hozható létre. Kattintson a fenti **Modulidentitás hozzáadása** gombra az első, **myFirstModule** nevű modulidentitás létrehozásához. 
 
-![Eszköz adatai][9]
+  ![Eszköz adatai][9]
 
 Mentse a frissen létrehozott modulidentitást, és kattintson rá. Megjelennek a modulidentitás adatai. Mentse el a kapcsolati sztring elsődleges kulcsát. Ezt a következő szakaszban fogjuk használni, amikor beállítjuk a modult az eszközön.
 
-![Eszköz adatai][12]
+  ![Eszköz adatai][12]
 
 ## <a name="update-the-module-twin-using-net-device-sdk"></a>A moduliker frissítése a .NET eszközoldali SDK-val
 
 Sikeresen létrehozta a modulidentitást az IoT Hubban. Ideje megkísérelni a felhővel való kommunikációt a szimulált eszközről. A modulidentitás létrehozása után egy moduliker is implicit módon létrejön az IoT Hubban. Ebben a szakaszban egy .NET-konzolalkalmazást hoz létre a szimulált eszközön a moduliker jelentett tulajdonságainak frissítéséhez.
 
-1. **Visual Studio-projekt létrehozása** – A Visual Studióban adjon hozzá egy Visual C# Windows klasszikus asztalialkalmazás-projektet a meglévő megoldáshoz a **Console App (.NET Framework)** (Konzolalkalmazás (.NET-keretrendszer)) projektsablonnal. A Microsoft .NET-keretrendszer 4.6.1-es vagy újabb verzióját használja. Adja a projektnek az **UpdateModuleTwinReportedProperties** nevet.
+## <a name="create-a-visual-studio-project"></a>Visual Studio-projekt létrehozása
 
-    ![Hozzon létre egy Visual Studio-projektet.][13]
+A Visual Studióban adjon hozzá egy Visual C# Windows klasszikus Asztalialkalmazás-projektet a meglévő megoldáshoz használatával a **Console App (.NET Framework)** projektsablonnal. A Microsoft .NET-keretrendszer 4.6.1-es vagy újabb verzióját használja. Adja a projektnek az **UpdateModuleTwinReportedProperties** nevet.
 
-2. **Telepítse a legújabb Azure IoT hubhoz .NET eszközoldali SDK** – identitás- és modul ikermodul jelenleg nyilvános előzetes verzióban. Ez csak az IoT Hub előzetes verziójú eszközoldali SDK-iban érhető el. A Visual Studióban válassza a Tools (Eszközök) > NuGet Package Manager (NuGet-csomagkezelő) > Manage NuGet Packages for Solution (NuGet-csomagok kezelése a megoldáshoz) elemet. Keresse meg a Microsoft.Azure.Devices.Client csomagot. Győződjön meg arról, hogy az előzetes verzió jelölőnégyzete be van jelölve. Válassza ki a legújabb verziót, és telepítse. Most már az összes modulfunkcióhoz rendelkezik hozzáféréssel. 
+  ![Hozzon létre egy Visual Studio-projektet.][13]
 
-    ![Az Azure IoT Hub .NET szolgáltatási SDK 1.16.0-preview-005-ös verziójának telepítése][14]
+## <a name="install-the-latest-azure-iot-hub-net-device-sdk"></a>A legújabb Azure IoT hubhoz .NET eszközoldali SDK telepítése
 
-3. **Szerezze be a modul kapcsolati sztringjét** – ezt most megteheti, ha bejelentkezik az [Azure Portalra][lnk-portal]. Keresse meg az IoT Hubot, és kattintson az IoT-eszközök elemre. Keresse meg a myFirstDevice elemet, nyissa meg, és győződjön meg arról, hogy a myFirstModule sikeresen létrejött. Másolja ki a modul kapcsolati sztringjét. A következő lépés során szükség lesz rá.
+Identitás- és modul ikermodul jelenleg nyilvános előzetes verzióban. Ez csak az IoT Hub előzetes verziójú eszközoldali SDK-iban érhető el. A Visual Studióban válassza a Tools (Eszközök) > NuGet Package Manager (NuGet-csomagkezelő) > Manage NuGet Packages for Solution (NuGet-csomagok kezelése a megoldáshoz) elemet. Keresse meg a Microsoft.Azure.Devices.Client csomagot. Győződjön meg arról, hogy az előzetes verzió jelölőnégyzete be van jelölve. Válassza ki a legújabb verziót, és telepítse. Most már az összes modulfunkcióhoz rendelkezik hozzáféréssel. 
 
-    ![Az Azure Portal moduladatai][15]
+  ![Az Azure IoT Hub .NET szolgáltatási SDK 1.16.0-preview-005-ös verziójának telepítése][14]
 
-4. **Hozza létre az UpdateModuleTwinReportedProperties konzolalkalmazást.** Adja hozzá a következő `using` utasításokat a **Program.cs** fájl elejéhez:
+## <a name="get-your-module-connection-string"></a>A modul kapcsolati sztring lekérése
 
-    ```csharp
-    using Microsoft.Azure.Devices.Client;
-    using Microsoft.Azure.Devices.Shared;
-    ```
+Jelentkezzen be [az Azure portal][lnk-portal]. Keresse meg az IoT Hubot, és kattintson az IoT-eszközök elemre. Keresse meg a myFirstDevice elemet, nyissa meg, és győződjön meg arról, hogy a myFirstModule sikeresen létrejött. Másolja ki a modul kapcsolati sztringjét. A következő lépés során szükség lesz rá.
 
-    Adja hozzá a **Program** osztályhoz a következő mezőket: A helyőrző értékét írja át a modul kapcsolati sztringjére.
+  ![Az Azure Portal moduladatai][15]
 
-    ```csharp
-    private const string ModuleConnectionString = "<Your module connection string>";
-    private static ModuleClient Client = null;
-    ```
+## <a name="create-updatemoduletwinreportedproperties-console-app"></a>UpdateModuleTwinReportedProperties Konzolalkalmazás létrehozása
 
-    Adja hozzá a **Program** osztályhoz a következő, **OnDesiredPropertyChanged** metódust:
+Adja hozzá a következő `using` utasításokat a **Program.cs** fájl elejéhez:
 
-    ```csharp
-    private static async Task OnDesiredPropertyChanged(TwinCollection desiredProperties, object userContext)
-        {
-            Console.WriteLine("desired property change:");
-            Console.WriteLine(JsonConvert.SerializeObject(desiredProperties));
-            Console.WriteLine("Sending current time as reported property");
-            TwinCollection reportedProperties = new TwinCollection
-            {
-                ["DateTimeLastDesiredPropertyChangeReceived"] = DateTime.Now
-            };
+```csharp
+using Microsoft.Azure.Devices.Client;
+using Microsoft.Azure.Devices.Shared;
+```
 
-            await Client.UpdateReportedPropertiesAsync(reportedProperties).ConfigureAwait(false);
-        }
-    ```
+Adja hozzá a **Program** osztályhoz a következő mezőket: A helyőrző értékét írja át a modul kapcsolati sztringjére.
 
-    Végül adja a következő sorokat a **Main** metódushoz:
+```csharp
+private const string ModuleConnectionString = "<Your module connection string>";
+private static ModuleClient Client = null;
+```
 
-    ```csharp
-    static void Main(string[] args)
+Adja hozzá a **Program** osztályhoz a következő, **OnDesiredPropertyChanged** metódust:
+
+```csharp
+private static async Task OnDesiredPropertyChanged(TwinCollection desiredProperties, object userContext)
     {
-        Microsoft.Azure.Devices.Client.TransportType transport = Microsoft.Azure.Devices.Client.TransportType.Amqp;
-
-        try
+        Console.WriteLine("desired property change:");
+        Console.WriteLine(JsonConvert.SerializeObject(desiredProperties));
+        Console.WriteLine("Sending current time as reported property");
+        TwinCollection reportedProperties = new TwinCollection
         {
-            Client = ModuleClient.CreateFromConnectionString(ModuleConnectionString, transport);
-            Client.SetConnectionStatusChangesHandler(ConnectionStatusChangeHandler);
-            Client.SetDesiredPropertyUpdateCallbackAsync(OnDesiredPropertyChanged, null).Wait();
+            ["DateTimeLastDesiredPropertyChangeReceived"] = DateTime.Now
+        };
 
-            Console.WriteLine("Retrieving twin");
-            var twinTask = Client.GetTwinAsync();
-            twinTask.Wait();
-            var twin = twinTask.Result;
-            Console.WriteLine(JsonConvert.SerializeObject(twin));
-
-            Console.WriteLine("Sending app start time as reported property");
-            TwinCollection reportedProperties = new TwinCollection();
-            reportedProperties["DateTimeLastAppLaunch"] = DateTime.Now;
-
-            Client.UpdateReportedPropertiesAsync(reportedProperties);
-        }
-        catch (AggregateException ex)
-        {
-            Console.WriteLine("Error in sample: {0}", ex);
-        }
-
-        Console.WriteLine("Waiting for Events.  Press enter to exit...");
-        Console.ReadKey();
-        Client.CloseAsync().Wait();
+        await Client.UpdateReportedPropertiesAsync(reportedProperties).ConfigureAwait(false);
     }
-    
-    private static void ConnectionStatusChangeHandler(ConnectionStatus status, ConnectionStatusChangeReason reason)
+```
+
+Végül adja a következő sorokat a **Main** metódushoz:
+
+```csharp
+static void Main(string[] args)
+{
+    Microsoft.Azure.Devices.Client.TransportType transport = Microsoft.Azure.Devices.Client.TransportType.Amqp;
+
+    try
     {
-        Console.WriteLine($"Status {status} changed: {reason}");
-    }
-    ```
+        Client = ModuleClient.CreateFromConnectionString(ModuleConnectionString, transport);
+        Client.SetConnectionStatusChangesHandler(ConnectionStatusChangeHandler);
+        Client.SetDesiredPropertyUpdateCallbackAsync(OnDesiredPropertyChanged, null).Wait();
 
-    A kódminta segítségével megtudhatja, hogyan kérheti le a modulikret és frissítheti a jelentett tulajdonságokat az AMQP-protokollal. A nyilvános előzetes verzióban az AMQP csak a moduliker-műveletek esetében támogatott.
+        Console.WriteLine("Retrieving twin");
+        var twinTask = Client.GetTwinAsync();
+        twinTask.Wait();
+        var twin = twinTask.Result;
+        Console.WriteLine(JsonConvert.SerializeObject(twin));
+
+        Console.WriteLine("Sending app start time as reported property");
+        TwinCollection reportedProperties = new TwinCollection();
+        reportedProperties["DateTimeLastAppLaunch"] = DateTime.Now;
+
+        Client.UpdateReportedPropertiesAsync(reportedProperties);
+    }
+    catch (AggregateException ex)
+    {
+        Console.WriteLine("Error in sample: {0}", ex);
+    }
+
+    Console.WriteLine("Waiting for Events.  Press enter to exit...");
+    Console.ReadKey();
+    Client.CloseAsync().Wait();
+}
+
+private static void ConnectionStatusChangeHandler(ConnectionStatus status, ConnectionStatusChangeReason reason)
+{
+    Console.WriteLine($"Status {status} changed: {reason}");
+}
+```
+
+A kódminta segítségével megtudhatja, hogyan kérheti le a modulikret és frissítheti a jelentett tulajdonságokat az AMQP-protokollal. A nyilvános előzetes verzióban az AMQP csak a moduliker-műveletek esetében támogatott.
 
 ## <a name="run-the-apps"></a>Az alkalmazások futtatása
 

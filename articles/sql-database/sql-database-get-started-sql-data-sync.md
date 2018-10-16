@@ -12,12 +12,12 @@ ms.author: xiwu
 ms.reviewer: douglasl
 manager: craigg
 ms.date: 10/05/2018
-ms.openlocfilehash: 82390ae304fc4d6873efc4a5073725a02b915eaa
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.openlocfilehash: 98d30d2987d42a2c4893e00c3ba2ea6acd471bef
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48870587"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49318809"
 ---
 # <a name="set-up-sql-data-sync-to-sync-data-between-azure-sql-database-and-sql-server-on-premises"></a>A helyszíni adatokat az Azure SQL Database és SQL Server között, az SQL Data Sync beállítása
 
@@ -61,7 +61,7 @@ A teljes PowerShell-példák azt mutatják be, hogyan konfigurálhatja az SQL Da
    2. Az a **szinkronizálási metaadat-adatbázis** területen válassza ki, hogy hozzon létre egy új adatbázist (ajánlott), vagy egy meglévő adatbázis használatát.
 
         > [!NOTE]
-        > A Microsoft azt javasolja, hogy a szinkronizálási metaadat-adatbázisként használni, új, üres adatbázis létrehozása. Adatszinkronizálás hoz létre a táblák az adatbázisban, és a gyakori számítási feladat. Ez az adatbázis automatikusan meg lesz osztva, a szinkronizálási metaadat-adatbázis az összes szinkronizálási csoportot a kiválasztott régióban. A szinkronizálási metaadat-adatbázis vagy a név nélküli eldobása nem módosítható.
+        > A Microsoft azt javasolja, hogy a szinkronizálási metaadat-adatbázisként használni, új, üres adatbázis létrehozása. Adatszinkronizálás hoz létre a táblák az adatbázisban, és a gyakori számítási feladat. Ez az adatbázis automatikusan meg lesz osztva, a szinkronizálási metaadat-adatbázis az összes szinkronizálási csoportot a kiválasztott régióban. A szinkronizálási metaadat-adatbázis vagy a név nem módosítható a régióban a szinkronizálási csoportok és a szinkronizációs ügynökök eltávolítása nélkül.
 
         Ha úgy döntött **új adatbázis**válassza **új adatbázis létrehozása.** A **SQL Database** lap megnyitásakor. Az a **SQL Database** lapon nevezze el és konfigurálja az új adatbázist. Ezután kattintson az **OK** gombra.
 

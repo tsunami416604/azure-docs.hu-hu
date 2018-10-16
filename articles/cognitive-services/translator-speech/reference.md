@@ -10,19 +10,20 @@ ms.component: translator-speech
 ms.topic: reference
 ms.date: 05/18/2018
 ms.author: v-jansko
-ROBOTS: NOINDEX
-ms.openlocfilehash: 46aeab52014a28d1a962195de802d0e000b62509
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 1fc48687141ea8a7e8cb30d3438d81e8f1088e4f
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46978709"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49340443"
 ---
 # <a name="translator-speech-api"></a>Translator Speech API
 
+[!INCLUDE [Deprecation note](../../../includes/cognitive-services-translator-speech-deprecation-note.md)]
+
 Ezt a szolgáltatást kínál egy olyan streamelési API a alapuló átírás természetes nyelvi beszédfelismerési egyik nyelvről egy másik nyelv szöveggé. Az API-t a lefordított szöveg felolvasása szöveg-hang transzformációs képességeket is integrálható. A Translator Speech API lehetővé teszi például a valós idejű fordítását beszélgetések, a Skype fordítóban látható módon.
 
-A Translator Speech API-val ügyfélalkalmazások adatfolyam speech hangot a szolgáltatáshoz, és vissza adatfolyamban kaphatja kézhez az eredmények szöveges többek között a felismert szöveget a forrás nyelvét, és a fordítás a célként megadott nyelven. Szöveg eredményeket hozzák automatikus Speech Recognition (ASR) szolgáltatásra működteti, a bejövő hang adatfolyamba Neurális hálózatok alkalmazása. Nyers ASR kimeneti további továbbfejlesztett egy új technikát TrueText nevű annak érdekében, hogy jobban tükrözzék a felhasználói szándékot. Ha például TrueText eltávolítja disfluencies (hmms és coughs) és a visszaállítás megfelelő írásjelek és a nagybetűk. Maszkolandó vagy kizárása profanities is megtalálható. A felismerés és fordítási motorok különösen képzett természetes nyelvi beszédfelismerési kezelésére. A beszédalapú fordítási szolgáltatás csend észlelési használja az utterance (kifejezés) végén meghatározásához. A voice-tevékenységi szüneteltetése, után a szolgáltatás fog adatfolyam vissza a befejezett utterance (kifejezés) végső eredményt. A szolgáltatás is küldhet vissza részleges eredményeket, amelyek az köztes felismerés és az utterance (kifejezés) a fordítások folyamatban van. A végső eredmények érdekében a szolgáltatás lehetőséget kínál a szintetizálásához speech (szöveg-hang transzformációs) a célként megadott nyelveken a kimondott szöveg. Szöveg-hang transzformációs hang jön létre az ügyfél által megadott formátumban. WAV-és a MP3 érhetők el.
+A Translator Speech API-val ügyfélalkalmazások adatfolyam speech hangot a szolgáltatáshoz, és vissza adatfolyamban kaphatja kézhez az eredmények szöveges többek között a felismert szöveget a forrás nyelvét, és a fordítás a célként megadott nyelven. A szövegeredmények a mély neurális hálózatok által működtetett automatikus beszédfelismerés (ASR) a bejövő audiostreamre való alkalmazásával jönnek létre. Nyers ASR kimeneti további továbbfejlesztett egy új technikát TrueText nevű annak érdekében, hogy jobban tükrözzék a felhasználói szándékot. Ha például TrueText eltávolítja disfluencies (hmms és coughs) és a visszaállítás megfelelő írásjelek és a nagybetűk. Lehetőség van a profanitás kitakarására vagy eltávolítására is. A felismerő- és fordítómotorok kifejezetten a beszélgetések kezelésére lettek kifejlesztve. A beszédalapú fordítási szolgáltatás csend észlelési használja az utterance (kifejezés) végén meghatározásához. A beszédhangokban beállt szünet esetén a szolgáltatás visszastreameli a végleges eredményt a kész kimondott szöveghez. A szolgáltatás visszaküldhet részleges eredményeket is, amelyek köztes felismerést és fordítást biztosítanak a folyamatban lévő kimondott szöveghez. A végső eredmények érdekében a szolgáltatás lehetőséget kínál a szintetizálásához speech (szöveg-hang transzformációs) a célként megadott nyelveken a kimondott szöveg. A szövegfelolvasás audioanyaga az ügyfél által megadott hangformátumban jön létre. A WAV és az MP3 formátum érhető el.
 
 Translator Speech API, az ügyfél és a kiszolgáló közötti kétirányú kommunikációs csatornát biztosítanak a WebSocket protokoll használ. Egy alkalmazás ezeket a lépéseket, a szolgáltatás használatára lesz szükség:
 

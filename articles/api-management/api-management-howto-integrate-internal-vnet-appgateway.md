@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/26/2018
 ms.author: sasolank
-ms.openlocfilehash: ce4fd27c89f529b9c12999689152c3025648d2ce
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: c85aa2f7a41511d809405f3b92c9ded2eb0693ad
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "42054680"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49319863"
 ---
 # <a name="integrate-api-management-in-an-internal-vnet-with-application-gateway"></a>Integrálása belső vnet-en az API Management az Application Gateway segítségével
 
-##<a name="overview"> </a> – Áttekintés
+## <a name="overview"> </a> – Áttekintés
 
 Az API Management szolgáltatás konfigurálható a belső üzemmódban, ami lehetővé teszi a virtuális hálózaton belül csak az elérhető virtuális hálózatban. Az Azure Application Gateway-példány egy PAAS szolgáltatás, amely biztosít egy 7. rétegbeli terheléselosztó. Azt proxykiszolgálói szolgáltatásként funkcionál, és biztosít az ajánlat egy webalkalmazási tűzfal (WAF) között.
 
@@ -43,7 +43,7 @@ Ebben a cikkben ismertetett lépéseket követve, kell rendelkeznie:
 
 * Tanúsítványok – pfx és az API állomásnév cer és a fejlesztői portál gazdanév pfx.
 
-##<a name="scenario"> </a> A forgatókönyv
+## <a name="scenario"> </a> A forgatókönyv
 
 Ez a cikk bemutatja, hogyan használhatja a külső és belső fogyasztók számára egy egy API Management-szolgáltatás, és lehetővé teszi szerepét egy egységes előtérrendszer mind a helyszíni és felhőalapú API-k. Hogyan teszi közzé az API-k (a példában kiemelve jelennek meg a zöld) csak egy részhalmazát útválasztási szolgáltatással elérhető az Application Gatewayben külső felhasználásra is megjelenik.
 
@@ -349,7 +349,7 @@ Az Application Gateway DNS-nevet használjon, hozzon létre egy CNAME rekordot, 
 Get-AzureRmPublicIpAddress -ResourceGroupName $resGroupName -Name "publicIP01"
 ```
 
-##<a name="summary"> </a> Összefoglalás
+## <a name="summary"> </a> Összefoglalás
 Egy virtuális hálózatban konfigurálva az Azure API Management egyetlen átjáró felületet biztosít az összes konfigurált API-k, attól üzemeltetett helyszíni vagy a felhőben. Az Application Gateway integrálása az API Management biztosít szelektív engedélyezésével az adott API-kat az interneten érhető el, valamint a webalkalmazási tűzfal biztosít az API Management-példány egy előtérkiszolgáló, rugalmasságát.
 
 ##<a name="next-steps"> </a> Következő lépések

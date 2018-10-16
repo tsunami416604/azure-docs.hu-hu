@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 10/11/2018
-ms.openlocfilehash: 8aa2627f46be1e375fb3c3e565848a930ba6726b
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.openlocfilehash: 52f30adf1ea383b098d3f187a315257f101e8a9b
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49167443"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49320436"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Korlátozások és konfigurációs adatokat az Azure Logic Apps
 
@@ -111,9 +111,22 @@ Az alábbiakban az egyetlen logikai alkalmazás futtatásának korlátai:
 
 Nyissa meg a fenti ezeket a korlátokat, a normál feldolgozása, vagy futtassa a terheléses tesztelés díjaival, előfordulhat, hogy nyissa meg a fenti ezeket a korlátokat [a Logic Apps-csapat](mailto://logicappsemail@microsoft.com) segítség az igényeinek.
 
+<a name="sftp"></a>
+
+## <a name="ftp-sftp-and-sftp-ssh-limits"></a>FTP SFTP és SFTP-SSH-korlátok
+
+### <a name="file-size"></a>Fájlméret
+
+| Name (Név) | Korlát | Megjegyzések |
+|------|-------|-------|
+| FTP | 50 MB | Kerülheti meg ezt a korlátot, lásd: [darabolás a nagyméretű üzenetek kezelése](../logic-apps/logic-apps-handle-large-messages.md). Azonban egyes összekötők és API-k előfordulhat, hogy nem támogatja a darabolás vagy akár az alapértelmezett korlát. | 
+| SFTP | 50 MB | Ezt a korlátot, használja a [SFTP-SSH-összekötő](../connectors/connectors-sftp-ssh.md) , vagy tekintse meg [darabolás a nagyméretű üzenetek kezelése](../logic-apps/logic-apps-handle-large-messages.md). Azonban egyes összekötők és API-k előfordulhat, hogy nem támogatja a darabolás vagy akár az alapértelmezett korlát. | 
+| AZ SFTP-SSH | 1 GB | Kerülheti meg ezt a korlátot, lásd: [darabolás a nagyméretű üzenetek kezelése](../logic-apps/logic-apps-handle-large-messages.md). Azonban egyes összekötők és API-k előfordulhat, hogy nem támogatja a darabolás vagy akár az alapértelmezett korlát. | 
+|||| 
+
 <a name="request-limits"></a>
 
-## <a name="http-request-limits"></a>HTTP-kérelmekre vonatkozó korlátok
+## <a name="http-limits"></a>HTTP-korlátok
 
 Az alábbiakban egy egyetlen HTTP-kérés vagy a szinkron összekötő hívás a korlátokat:
 
@@ -143,18 +156,6 @@ Néhány összekötő műveleteket aszinkron hívásokat, illetve figyeljen a we
 | Újrapróbálkozási kísérletek | 90 | Az alapértelmezett érték a 4. Az alapértelmezett módosításához használja a [ismételje meg a szabályzatparaméter](../logic-apps/logic-apps-workflow-actions-triggers.md). | 
 | Maximális késleltetése | 1 nap | Az alapértelmezett módosításához használja a [ismételje meg a szabályzatparaméter](../logic-apps/logic-apps-workflow-actions-triggers.md). | 
 | Ismételje meg a minimális késleltetés | 5 másodperc | Az alapértelmezett módosításához használja a [ismételje meg a szabályzatparaméter](../logic-apps/logic-apps-workflow-actions-triggers.md). |
-|||| 
-
-<a name="sftp"></a>
-
-## <a name="sftp-and-sftp-ssh-limits"></a>Az SFTP- és az SFTP-SSH korlátozásai
-
-### <a name="file-size"></a>Fájlméret
-
-| Name (Név) | Korlát | Megjegyzések |
-|------|-------|-------|
-| SFTP | 50 MB | Ezt a korlátot, használja a [SFTP-SSH-összekötő](../connectors/connectors-sftp-ssh.md) , vagy tekintse meg [darabolás a nagyméretű üzenetek kezelése](../logic-apps/logic-apps-handle-large-messages.md). Azonban egyes összekötők és API-k előfordulhat, hogy nem támogatja a darabolás vagy akár az alapértelmezett korlát. | 
-| AZ SFTP-SSH | 1 GB | Kerülheti meg ezt a korlátot, lásd: [darabolás a nagyméretű üzenetek kezelése](../logic-apps/logic-apps-handle-large-messages.md). Azonban egyes összekötők és API-k előfordulhat, hogy nem támogatja a darabolás vagy akár az alapértelmezett korlát. | 
 |||| 
 
 <a name="custom-connector-limits"></a>

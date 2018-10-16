@@ -10,12 +10,12 @@ ms.devlang: c
 ms.topic: conceptual
 ms.date: 04/11/2018
 ms.author: rangv
-ms.openlocfilehash: 8962f41d971ac88134f639a61ef0b42c60bbd419
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: c8e2dcfef1db8bfe3d76ac917f8c14a4060e3968
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44161492"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49318758"
 ---
 # <a name="connect-raspberry-pi-to-azure-iot-hub-c"></a>Raspberry Pi csatlakoztatása az Azure IoT Hub (C)
 
@@ -61,10 +61,9 @@ A következő elemek nem kötelező:
 * 6-F/M átkötés fenyegetéseknek.
 * Szórt 10 mm LED.
 
-
 > [!NOTE] 
-Ezek az elemek nem kötelező, mivel a kód minta támogatási szimulált érzékelői adatokat.
-
+> Ezek az elemek nem kötelező, mivel a kód minta támogatási szimulált érzékelői adatokat.
+>
 
 [!INCLUDE [iot-hub-get-started-create-hub-and-device](../../includes/iot-hub-get-started-create-hub-and-device.md)]
 
@@ -97,7 +96,8 @@ Készítse elő a Raspbian lemezkép telepítésének microSD-kártyán.
    ![ÜTI és a Raspberry Pi-on SSH engedélyezése](media/iot-hub-raspberry-pi-kit-c-get-started/2_enable-spi-ssh-on-raspberry-pi.png)
 
 > [!NOTE] 
-Az SSH és ÜTI engedélyezéséhez találhat további segédanyagok [raspberrypi.org](https://www.raspberrypi.org/documentation/remote-access/ssh/) és [RASPI-CONFIG](https://www.raspberrypi.org/documentation/configuration/raspi-config.md).
+> Az SSH és ÜTI engedélyezéséhez találhat további segédanyagok [raspberrypi.org](https://www.raspberrypi.org/documentation/remote-access/ssh/) és [RASPI-CONFIG](https://www.raspberrypi.org/documentation/configuration/raspi-config.md).
+>
 
 ### <a name="connect-the-sensor-to-pi"></a>Csatlakozás az érzékelő Pi
 
@@ -171,6 +171,7 @@ A Pi kapcsolja be a micro USB-kábelen keresztül és a tápegység. Az Ethernet
 
    > [!NOTE] 
    > Ha, **nem rendelkezik egy fizikai BME280**, használhatja "--szimulált adatok" hőmérsékleti és páratartalom-adatok szimulálása parancssori paraméter. `sudo ./setup.sh --simulated-data`
+   >
 
 ### <a name="build-and-run-the-sample-application"></a>A minta-alkalmazás összeállítása és futtatása
 
@@ -179,6 +180,7 @@ A Pi kapcsolja be a micro USB-kábelen keresztül és a tápegység. Az Ethernet
    ```bash
    cmake . && make
    ```
+   
    ![Kimeneti létrehozása](media/iot-hub-raspberry-pi-kit-c-get-started/7_build-output.png)
 
 1. A mintaalkalmazás futtatása a következő parancs futtatásával:
@@ -188,8 +190,8 @@ A Pi kapcsolja be a micro USB-kábelen keresztül és a tápegység. Az Ethernet
    ```
 
    > [!NOTE] 
-   Győződjön meg arról, másolás és beillesztés az eszköz kapcsolati karakterláncának be a szimpla idézőjelek között.
-
+   > Győződjön meg arról, másolás és beillesztés az eszköz kapcsolati karakterláncának be a szimpla idézőjelek között.
+   >
 
 Amely az érzékelőktől kapott adatok és az IoT hubnak küldött üzeneteket jeleníti meg a következő kimenetnek kell megjelennie.
 

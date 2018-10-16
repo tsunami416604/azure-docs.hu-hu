@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.date: 10/10/2018
 ms.topic: conceptual
 ms.author: raynew
-ms.openlocfilehash: 83c23933acf1ed621728991fbdeea088911cf36c
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: 7c5316aea2bfdb9a96b9aeb2dd5387b2643a92b2
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49078664"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49319727"
 ---
 # <a name="common-questions---hyper-v-to-azure-replication"></a>Gyakori kérdések – a Hyper-V Azure-bA
 
@@ -135,7 +135,7 @@ Az Azure-bA replikálja, amikor replikációs forgalom eléri a nyilvános végp
 
 A replikáció a Hyper-V virtuális gép futnia kell egy támogatott operációs rendszert. Emellett a virtuális gép meg kell felelnie az Azure-beli virtuális gépek követelményeinek. [További](hyper-v-azure-support-matrix.md#replicated-vms) a támogatási mátrixa.
 
-###<a name="how-often-can-i-replicate-to-azure"></a>Milyen gyakran replikálhatja az Azure-bA?
+### <a name="how-often-can-i-replicate-to-azure"></a>Milyen gyakran replikálhatja az Azure-bA?
 
 A Hyper-V virtuális gépek replikálhatók (kivéve a premium storage) 30 másodperc, 5 percenként vagy 15 perc.
 
@@ -207,6 +207,3 @@ Miután a helyszíni infrastruktúra újra működik, visszaadhatja a. Feladat-v
 
 ### <a name="can-i-fail-back-to-a-different-location"></a>E visszaadhatja egy másik helyre?
 Igen, ha az Azure-bA feladatátvétel, visszaadhatja a másik helyet, ha az eredeti kapcsolatot nem érhető el. [További információk](hyper-v-azure-failback.md#failback-to-an-alternate-location-in-hyper-v-environment).
-
-
-

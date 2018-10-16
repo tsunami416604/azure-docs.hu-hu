@@ -2,35 +2,33 @@
 title: Az Azure Cosmos DB használatával az Azure IoT Hub eszköz kapcsolateseményei ORDER |} A Microsoft Docs
 description: Ez a cikk bemutatja, hogyan order, és jegyezze fel az eszköz kapcsolati események az Azure IoT Hub az Azure Cosmos DB a legújabb kapcsolati-állapot karbantartásához
 services: iot-hub
-documentationcenter: ''
-author: ash2017
-manager: briz
-editor: ''
 ms.service: iot-hub
+author: ash2017
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 07/06/2018
 ms.author: asrastog
-ms.openlocfilehash: dd3c750e93646624e46c46afd871ef75af905bf0
-ms.sourcegitcommit: a1140e6b839ad79e454186ee95b01376233a1d1f
+ms.openlocfilehash: 02fc47200157b813da4d0031effa39633719855d
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43145916"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49340205"
 ---
 # <a name="order-device-connection-events-from-azure-iot-hub-using-azure-cosmos-db"></a>Rendelés eszköz az Azure Cosmos DB használatával az Azure IoT Hub kapcsolati események
 
-Az Azure Event Grid segít az eseményalapú alkalmazásokat hozhat létre, és könnyedén integrálhatja a saját vállalati megoldások az IoT-események. Ez a cikk végigvezeti egy, amely segítségével nyomon követheti, és a legújabb eszköz kapcsolat állapot tárolásához a Cosmos DB-ben. Azt a csatlakoztatott eszköz és az eszköz leválasztott esemény elérhető sorszáma használja, és a legfrissebb állapot tárolásához a Cosmos DB-ben. Egy tárolt eljárást, amely egy Cosmos DB-gyűjteményen végrehajtott alkalmazáslogika használni fogjuk.
+Az Azure Event Grid segít az esemény-alapú alkalmazásokat fejleszthet, és könnyedén integrálhatja a saját vállalati megoldások az IoT-események. Ez a cikk végigvezeti a telepítés nyomon követését és a legújabb eszköz kapcsolat állapot tárolásához a Cosmos DB-ben használható. Azt a csatlakoztatott eszköz és az eszköz leválasztott esemény elérhető sorszáma használja, és a legfrissebb állapot tárolásához a Cosmos DB-ben. Egy tárolt eljárást, amely egy Cosmos DB-gyűjteményen végrehajtott alkalmazáslogika használni fogjuk.
 
 A feladatütemezési szám hexadecimális szám karakterláncként. Összehasonlítási karakterlánc segítségével azonosíthatja a nagyobb számot. Ha a hexadecimális karakterlánc, a szám egy 256 bites szám lesz. A sorszám szigorúan növekszik, és az utolsó esemény fog rendelkezni, mint az eseményeket a nagyobb szám. Ez akkor hasznos, ha gyakori eszköz kapcsolódik, és bontja a kapcsolatot, és győződjön meg arról, csak az utolsó esemény segítségével alsóbb rétegbeli műveletet indít, mivel az Azure Event Grid nem támogatja az események rendezése.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Aktív Azure-fiók. Ha még nincs fiókja, [hozzon létre egy ingyenes fiókot](http://azure.microsoft.com/pricing/free-trial/).
+
 * Egy aktív Azure Cosmos DB SQL API-fiók. Ha még nem hozta létre az egyik még, [adatbázisfiók létrehozása](https://docs.microsoft.com/azure/cosmos-db/create-sql-api-dotnet#create-a-database-account) bemutató.
+
 * Az adatbázis-gyűjtemény. Lásd: [gyűjtemény hozzáadása](https://docs.microsoft.com/azure/cosmos-db/create-sql-api-dotnet#add-a-collection) bemutató.
-* Az IoT hubra az Azure-ban. Ha még nem hozott létre központot, [az IoT Hub első lépéseit](../iot-hub/iot-hub-csharp-csharp-getstarted.md) ismertető cikkben talál útmutatást. 
+
+* Egy IoT Hub az Azure-ban. Ha még nem hozott létre központot, [az IoT Hub első lépéseit](../iot-hub/iot-hub-csharp-csharp-getstarted.md) ismertető cikkben talál útmutatást. 
 
 ## <a name="create-a-stored-procedure"></a>Tárolt eljárás létrehozása
 
@@ -40,7 +38,7 @@ Először hozzon létre egy tárolt eljárást, és állítsa be, akár egy logi
 
    ![Tárolt eljárás létrehozása](./media/iot-hub-how-to-order-connection-state-events/create-stored-procedure.png)
 
-2. Adja meg a tárolt eljárás azonosítóját, és illessze be az alábbi "tárolt eljárás törzsének". Vegye figyelembe, hogy ez a kód cserélje le a meglévő kód a tárolt eljárás törzsében. Ez a kód tartja karban a soronként egy Eszközazonosítót, és a legmagasabb sorszám azonosításával adott eszközazonosító legutóbbi kapcsolat állapotát rögzíti. 
+2. Adja meg a tárolt eljárás Azonosítóját, és illessze be az alábbi "tárolt eljárás törzsének". Vegye figyelembe, hogy ez a kód cserélje le a meglévő kód a tárolt eljárás törzsében. Ez a kód tartja karban a soronként egy Eszközazonosítót, és a legmagasabb sorszám azonosításával adott Eszközazonosító legutóbbi kapcsolat állapotát rögzíti. 
 
     ```javascript
     // SAMPLE STORED PROCEDURE
@@ -139,17 +137,18 @@ Először hozzon létre egy logikai alkalmazást, és adjon hozzá egy Event Gri
 
 ### <a name="create-a-logic-app-resource"></a>Logikai alkalmazás erőforrás létrehozása
 
-1. Az a [az Azure portal](https://portal.azure.com)válassza **új** > **integrációs** > **logikai alkalmazás**.
+1. Az [Azure Portalon](https://portal.azure.com) válassza az **Új** > **Integráció** > **Logikai alkalmazás** lehetőséget.
 
    ![Logikai alkalmazás létrehozása](./media/iot-hub-how-to-order-connection-state-events/select-logic-app.png)
 
 2. Adjon az előfizetésben egyedi nevet a logikai alkalmazásnak, majd válassza ki ugyanazt az előfizetést, erőforráscsoportot és helyet, ahová az IoT-központ tartozik. 
-3. Mikor végzett, válassza a **Rögzítés az irányítópulton**, majd a **Létrehozás** lehetőséget.
+
+3. Válassza ki **rögzítés az irányítópulton**, majd válassza a **létrehozás**.
 
    Ezzel létrehozott egy Azure-erőforrást a logikai alkalmazás számára. Miután az Azure üzembe helyezte a logikai alkalmazást, a Logic Apps Designer gyakran használt minták sablonjait jeleníti meg, hogy megkönnyítse az első lépéseket.
 
    > [!NOTE] 
-   > A **Rögzítés az irányítópulton** elemet kiválasztva a logikai alkalmazás automatikusan megnyílik a Logic Apps Designerben. Ellenkező esetben manuálisan is megkeresheti és megnyithatja a logikai alkalmazást.
+   > Ha bejelöli **rögzítés az irányítópulton**, a logikai alkalmazás automatikusan megnyílik a Logic Apps Designerben. Ellenkező esetben manuálisan is megkeresheti és megnyithatja a logikai alkalmazást.
 
 4. A Logic App Designerben a **Sablonok** területen válassza az **Üres logikai alkalmazás** elemet, így az alapoktól építheti fel logikai alkalmazását.
 
@@ -158,13 +157,14 @@ Először hozzon létre egy logikai alkalmazást, és adjon hozzá egy Event Gri
 A trigger a logikai alkalmazást elindító konkrét esemény. Ebben az oktatóanyagban a munkafolyamatot aktiváló trigger HTTP-kapcsolaton keresztül fogad egy kérést.  
 
 1. Írja be a **HTTP** kifejezést az összekötők és triggerek keresősávjába.
+
 2. Válassza ki a **Kérés – HTTP-kérés fogadásakor** lehetőséget triggerként. 
 
    ![HTTP-kérés trigger kiválasztása](./media/iot-hub-how-to-order-connection-state-events/http-request-trigger.png)
 
 3. Válassza a **Séma létrehozása hasznosadat-minta használatával** lehetőséget. 
 
-   ![HTTP-kérés trigger kiválasztása](./media/iot-hub-how-to-order-connection-state-events/sample-payload.png)
+   ![A séma létrehozása hasznosadat-minta használatával](./media/iot-hub-how-to-order-connection-state-events/sample-payload.png)
 
 4. Másolja az alábbi JSON-kódmintát a szövegmezőbe, majd kattintson a **Kész** gombra:
 
@@ -194,13 +194,14 @@ A trigger a logikai alkalmazást elindító konkrét esemény. Ebben az oktatóa
 
 ### <a name="create-a-condition"></a>Feltétel létrehozása
 
-Feltételek súgó adott műveletek végrehajtása után egy adott feltételt ad át, a logikai alkalmazás munkafolyamatának használ. Ha a feltétel teljesül, a kívánt művelet lehet definiálni. Ebben az oktatóanyagban a feltételt, hogy ellenőrizze, hogy eventType csatlakoztatott vagy leválasztott eszköz. A művelet lesz, a tárolt eljárás végrehajtására az adatbázisban. 
+A logikai alkalmazás munkafolyamatának a feltételek segítenek, hogy adott feltétel elhagyása után, meghatározott műveletek futtatása. Ha a feltétel teljesül, a kívánt művelet lehet definiálni. Ebben az oktatóanyagban a feltételt, hogy ellenőrizze, hogy eventType csatlakoztatott vagy leválasztott eszköz. A művelet lesz, a tárolt eljárás végrehajtására az adatbázisban. 
 
 1. Válassza ki **új lépés** majd **Built-ins** és **feltétel**. 
 
 2. Töltse ki a feltétel, csak végrehajtani a csatlakoztatott eszköz és az eszköz leválasztott események alább látható módon:
+
   * Válasszon egy értéket: **esemény típusa**
-  * Módosítsa az egyenlő" **végződik.**
+  * Módosítási "egyenlő" való **végződik.**
   * Válasszon egy értéket: **nected**
 
    ![Töltse ki a feltétel](./media/iot-hub-how-to-order-connection-state-events/condition-detail.png)
@@ -221,20 +222,22 @@ Feltételek súgó adott műveletek végrehajtása után egy adott feltételt ad
 
 ### <a name="copy-the-http-url"></a>A HTTP URL-cím másolása
 
-Mielőtt kilép a Logic Apps Designerből, másolja ki az URL-címet, amelyen a logikai alkalmazás figyeli a triggereket. Erre az URL-címre az Event Grid konfigurálásához lesz szükség. 
+Mielőtt elhagyja a Logic Apps Designer, másolja az URL-cím, amely a logikai alkalmazás az eseményindító figyel. Erre az URL-címre az Event Grid konfigurálásához lesz szükség. 
 
 1. Kattintással bontsa ki a **HTTP-kérés fogadásakor** triggerkonfigurációs mezőt. 
+
 2. Másolja ki a **HTTP POST URL** értékét a mellette lévő másolás gombra kattintva. 
 
    ![A HTTP POST URL másolása](./media/iot-hub-how-to-order-connection-state-events/copy-url.png)
 
 3. Mentse ezt az URL-címet, hogy a következő szakaszban hivatkozhasson majd rá. 
 
-## <a name="configure-subscription-for-iot-hub-events"></a>IoT Hub-események-előfizetés beállítása
+## <a name="configure-subscription-for-iot-hub-events"></a>Az IoT Hub eseményeire való előfizetés beállítása
 
 Ebben a szakaszban konfiguráljuk az IoT-központot, hogy közzétegye a bekövetkező eseményeket. 
 
 1. Az Azure Portalon keresse meg az IoT-központot. 
+
 2. Válassza az **Események** lehetőséget.
 
    ![Az Event Grid-adatok megnyitása](./media/iot-hub-how-to-order-connection-state-events/event-grid.png)
@@ -244,31 +247,39 @@ Ebben a szakaszban konfiguráljuk az IoT-központot, hogy közzétegye a beköve
    ![Új esemény-előfizetés létrehozása](./media/iot-hub-how-to-order-connection-state-events/event-subscription.png)
 
 4. Hozza létre az esemény-előfizetést a következő értékekkel: 
+
    * **Esemény típusa**: törölje a jelet előfizetés összes eseménytípusok, és válassza **csatlakoztatott eszköz** és **eszköz leválasztott** a menüből.
-   * **Végpont részletei**: Endpoint típusának kiválasztása, **Webhook** és kattintson a válassza végpont, és illessze be az URL-cím a logikai alkalmazás kimásolt és kijelölés megerősítéséhez.
 
-   ![Válassza ki a végpont URL-címe](./media/iot-hub-how-to-order-connection-state-events/endpoint-url.png)
+   * **Végpont részletei**: A Végpont típusánál válassza a **Webhook** elemet, kattintson a végpont kiválasztása elemre, majd illessze be a logikai alkalmazásból kimásolt URL-címet, és hagyja jóvá a kiválasztást.
 
-   * **Esemény-előfizetés részleteit**: Adjon meg egy leíró nevet, és válassza ki **Event Grid séma** Ha elkészült, a képernyő az alábbihoz hasonlóan kell kinéznie: 
+       ![végpont url-jének kiválasztása](./media/iot-hub-how-to-order-connection-state-events/endpoint-url.png)
 
-   ![Esemény-előfizetési űrlapminta](./media/iot-hub-how-to-order-connection-state-events/subscription-form.png)
+   * **Esemény-előfizetés részleteit**: Adjon meg egy leíró nevet, és válassza ki **Event Grid séma**.
+   Az űrlapot a következő példához hasonlóan néz ki: 
+
+       ![Esemény-előfizetési űrlapminta](./media/iot-hub-how-to-order-connection-state-events/subscription-form.png)
 
 5. Kattintson a **Létrehozás** gombra az esemény-előfizetés mentéséhez.
 
 ## <a name="observe-events"></a>Tekintse át az események
+
 Most, hogy az esemény-előfizetés be van állítva, nézzük tesztet úgy, egy eszközt.
 
 ### <a name="register-a-device-in-iot-hub"></a>Eszköz regisztrálása az IoT hubon
 
 1. Az IoT-központban válassza az **IoT-eszközök** lehetőséget. 
+
 2. Válassza a **Hozzáadás** lehetőséget.
+
 3. Az **Eszközazonosító** mezőben adja meg a `Demo-Device-1` azonosítót.
+
 4. Kattintson a **Mentés** gombra. 
+
 5. Különböző eszközazonosítókat használatával több eszközt is hozzáadhat.
 
    ![Hogyan eredménye](./media/iot-hub-how-to-order-connection-state-events/AddIoTDevice.png)
 
-6. Másolás a **kapcsolati karakterlánc – elsődleges kulcs** későbbi használat céljából.
+6. Másolás a **kapcsolati karakterlánc – elsődleges kulcs** későbbi használatra.
 
    ![Hogyan eredménye](./media/iot-hub-how-to-order-connection-state-events/DeviceConnString.png)
 
@@ -278,7 +289,8 @@ Most, hogy az esemény-előfizetés be van állítva, nézzük tesztet úgy, egy
 
 [Indítsa el a Raspberry Pi-szimulátor](https://azure-samples.github.io/raspberry-pi-web-simulator/#Getstarted)
 
-### <a name="run-a-sample-applciation-on-the-raspberry-pi-web-simulator"></a>Futtassa a mintát hatóságuknál a Raspberry Pi-webszimulátor
+### <a name="run-a-sample-application-on-the-raspberry-pi-web-simulator"></a>A mintaalkalmazás futtatása a a Raspberry Pi-webszimulátor
+
 Ezzel megkezdődik egy eszköz csatlakoztatott esemény.
 
 1. A kódolási területen helyőrzőt cserélje le a sort 15 eszköz az Azure IoT Hub kapcsolati karakterláncra.
@@ -297,13 +309,13 @@ Amely az érzékelőktől kapott adatok és az IoT hubnak küldött üzeneteket 
 
 ### <a name="observe-events-in-cosmos-db"></a>Tekintse át az események Cosmos DB-ben
 
-Láthatja a végrehajtott tárolt eljárás eredményét a Cosmos DB-dokumentumban. Íme, fog kinézni. Vegye figyelembe, hogy minden egyes sor tartalmazza a legújabb az eszköz kapcsolati állapotát eszközönként
+Láthatja a végrehajtott tárolt eljárás eredményét a Cosmos DB-dokumentumban. Itt látható, hogyan is néz. Minden egyes sor tartalmazza a legújabb az eszköz kapcsolati állapotát eszközönként.
 
    ![Hogyan eredménye](./media/iot-hub-how-to-order-connection-state-events/cosmosDB-outcome.png)
 
 ## <a name="use-the-azure-cli"></a>Az Azure parancssori felületének használata
 
-Az Azure Portal helyett az Azure CLI használatával is végrehajthatja az IoT Hub lépéseit. További információkért lásd: az Azure CLI-vel oldalak [egy esemény-előfizetés létrehozása](https://docs.microsoft.com/cli/azure/eventgrid/event-subscription) és [egy IoT-eszköz létrehozása](https://docs.microsoft.com/cli/azure/iot/device).
+Használata helyett a [az Azure portal](http://portal.azure.com), az IoT Hub lépéseket az Azure CLI használatával is elérheti. További információkért lásd: az Azure CLI-vel oldalak [egy esemény-előfizetés létrehozása](https://docs.microsoft.com/cli/azure/eventgrid/event-subscription) és [egy IoT-eszköz létrehozása](https://docs.microsoft.com/cli/azure/iot/device).
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
@@ -312,25 +324,31 @@ Ebben az oktatóanyagban olyan erőforrásokat használtunk, amelyek költségek
 Ha nem szeretné elveszteni a logikai alkalmazásba fektetett munkáját, a törlés helyett csak tiltsa le. 
 
 1. Keresse meg a logikai alkalmazást.
-2. Az **Áttekintés** panelen válassza a **Törlés** vagy a **Letiltás** elemet. 
+
+2. Az a **áttekintése** panelen válassza ki **törlése** vagy **letiltása**. 
 
 Mindegyik előfizetés egy ingyenes IoT-központtal rendelkezhet. Ha ingyenes központot hozott létre az oktatóanyaghoz, azt nem kell törölnie a költségek megelőzéséhez.
 
 1. Keresse meg az IoT-központot. 
-2. Az **Áttekintés** panelen válassza a **Törlés** elemet. 
+
+2. Az a **áttekintése** panelen válassza ki **törlése**. 
 
 Az esemény-előfizetést akkor is érdemes lehet törölnie, ha megtartja az IoT-központot. 
 
 1. Az IoT-központban válassza az **Event Grid** lehetőséget.
+
 2. Válassza ki a törölni kívánt esemény-előfizetést. 
+
 3. Válassza a **Törlés** elemet. 
 
-Távolítsa el az Azure Cosmos DB-fiókot az Azure Portalról, jogosultságot – kattintson a fiók nevét, és kattintson a **fiók törlése**. Részletes útmutatást lásd: [törlése az Azure Cosmos DB-fiók](https://docs.microsoft.com/azure/cosmos-db/manage-account#delete).
+Távolítsa el az Azure Cosmos DB-fiókot az Azure Portalon, kattintson a jobb gombbal a fiók nevét, és kattintson a **fiók törlése**. Részletes útmutatást lásd: [törlése az Azure Cosmos DB-fiók](https://docs.microsoft.com/azure/cosmos-db/manage-account#delete).
 
 ## <a name="next-steps"></a>További lépések
 
 * Tudjon meg többet [reagálás eseményekre az IoT Hub Event Grid használatával a műveletek indítása](../iot-hub/iot-hub-event-grid.md)
+
 * [Próbálja ki az IoT Hub-események oktatóanyag](../event-grid/publish-iot-hub-events-to-logic-apps.md)
+
 * Ismerje meg, hogy más mi mindent tehet az [Event Grid](../event-grid/overview.md)
 
 

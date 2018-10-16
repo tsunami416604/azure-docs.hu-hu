@@ -13,12 +13,12 @@ ms.topic: troubleshooting
 ms.workload: infrastructure-services
 ms.date: 09/18/2018
 ms.author: vashan, rajraj, changov
-ms.openlocfilehash: 7a1c283820b1ddef0c85899d9b56b6dcc3ea4b95
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: d9d9e9cdb791504c864cae20d1248ba78a180a4c
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48043135"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49320271"
 ---
 # <a name="troubleshooting-api-throttling-errors"></a>API szabályozási hibák elhárítása 
 
@@ -49,7 +49,7 @@ x-ms-ratelimit-remaining-resource: Microsoft.Compute/VMScaleSetBatchedVMRequests
 x-ms-ratelimit-remaining-resource: Microsoft.Compute/VmssQueuedVMOperations;4720 
 ```
 
-##<a name="throttling-error-details"></a>Szabályozás a hiba részletei
+## <a name="throttling-error-details"></a>Szabályozás a hiba részletei
 
 Kérelem elutasítása, mert egy hívás sávszélesség-korlátjának elérése gyakran szolgál a 429 HTTP-állapot. A számítási erőforrás-szolgáltató egy tipikus szabályozási hibaüzenetet az alábbi példához hasonlóan fog kinézni (csak a megfelelő fejlécek látható):
 

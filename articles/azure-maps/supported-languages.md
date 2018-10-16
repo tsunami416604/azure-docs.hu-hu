@@ -1,6 +1,6 @@
 ---
-title: A Maps-Azure támogatott nyelv |} Microsoft Docs
-description: További információk a szolgáltatások, Azure leképezésekben támogatott nyelvek
+title: Támogatott nyelvek az Azure Maps |} A Microsoft Docs
+description: További tudnivalók az Azure Maps szolgáltatásban támogatott nyelvek
 author: juliekohler
 ms.author: julieko
 ms.date: 03/30/2018
@@ -8,22 +8,22 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: 68438a317b33bb7e3e784936cdfd1282ba823ad8
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 380bf5cb89a165534d0084758d532613eeff480a
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34600238"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49320492"
 ---
 # <a name="azure-maps-supported-languages"></a>Az Azure Maps támogatott nyelvek
-Az Azure Maps a különböző nyelveken szolgáltatásban honosított.  A következő táblázat a támogatott nyelvkódok az egyes szolgáltatásokhoz.  
+A szolgáltatások között az Azure Maps honosított a különböző nyelveken.  Az alábbi táblázat a támogatott nyelvkódok biztosít az egyes szolgáltatások.  
   
 
-| ID (Azonosító)         | Name (Név)                   |  Maps | Keresés | Útválasztás | Forgalom incidensek | JS térkép vezérlőelem | Időzóna |
+| ID (Azonosító)         | Name (Név)                   |  Maps | Keresés | Útválasztás | Forgalom incidensek | A térkép vezérlőelem-JS | Időzóna |
 |------------|------------------------|:-----:|:------:|:-------:|:-----------------:|:--------------:|:---------:|
 | af-ZA      | afrikaans              |       |    ✓   |    ✓    |                   |                |     ✓     |
 | ar-SA      | arab                 |   ✓   |    ✓   |    ✓    |         ✓         |        ✓       |     ✓     |
-| EU-ES      | baszk                 |       |        |         |                   |                |     ✓     |
+| az EU-ES      | baszk                 |       |        |         |                   |                |     ✓     |
 | bg-BG      | bolgár              |   ✓   |    ✓   |    ✓    |                   |        ✓       |     ✓     |
 | CA-ES      | katalán                |       |    ✓   |         |                   |                |     ✓     |
 | zh-HanS    | kínai (egyszerűsített)   |       |  zh-CN |         |                   |                |     ✓     |
@@ -34,17 +34,17 @@ Az Azure Maps a különböző nyelveken szolgáltatásban honosított.  A követ
 | NL-NL      | holland                  |   ✓   |    ✓   |    ✓    |         ✓         |        ✓       |     ✓     |
 | nl-BE      | Belorusz        |       |    ✓   |         |                   |                |     ✓     |
 | hu         | Angol                |   ✓   |    ✓   |    ✓    |         ✓         |        ✓       |     ✓     |
-| et-VM –      | észt               |       |    ✓   |         |         ✓         |                |     ✓     |
+| et-EE      | észt               |       |    ✓   |         |         ✓         |                |     ✓     |
 | fi-FI      | finn                |   ✓   |    ✓   |    ✓    |         ✓         |        ✓       |     ✓     |
 | FR-FR      | francia                 |   ✓   |    ✓   |    ✓    |         ✓         |        ✓       |     ✓     |
-| FR-Kanada      | Francia (kanadai)      |       |    ✓   |         |                   |                |     ✓     |
-| Főkönyvi-ES      | galíciai               |       |        |         |                   |                |     ✓     |
+| FR-hitelesítésszolgáltató      | Francia (kanadai)      |       |    ✓   |         |                   |                |     ✓     |
+| GL-ES      | galíciai               |       |        |         |                   |                |     ✓     |
 | de-DE      | német                 |   ✓   |    ✓   |    ✓    |         ✓         |        ✓       |     ✓     |
 | el-GR      | görög                  |   ✓   |    ✓   |    ✓    |         ✓         |        ✓       |     ✓     |
 | He-IL      | héber                 |       |        |         |         ✓         |                |     ✓     |
-| üdv-IN      | hindi                  |       |        |         |                   |                |     ✓     |
+| Üdvözöljük – India      | hindi                  |       |        |         |                   |                |     ✓     |
 | hu-HU      | magyar              |   ✓   |    ✓   |    ✓    |         ✓         |        ✓       |     ✓     |
-| Azonosító      | indonéz             |   ✓   |        |    ✓    |         ✓         |        ✓       |     ✓     |
+| ID-Azonosítóját      | indonéz             |   ✓   |        |    ✓    |         ✓         |        ✓       |     ✓     |
 | it-IT      | olasz                |   ✓   |    ✓   |    ✓    |         ✓         |        ✓       |     ✓     |
 | ja-JP      | japán               |       |        |         |                   |                |     ✓     |
 | kk-KZ      | kazak                 |       |        |         |                   |                |     ✓     |
@@ -53,7 +53,9 @@ Az Azure Maps a különböző nyelveken szolgáltatásban honosított.  A követ
 | lv-LV      | lett                |       |    ✓   |         |         ✓         |                |     ✓     |
 | lt-LT      | litván             |   ✓   |    ✓   |    ✓    |         ✓         |        ✓       |     ✓     |
 | MS-saját      | Maláj (latin betűs)          |   ✓   |    ✓   |    ✓    |                   |        ✓       |     ✓     |
-| nb-NO      | Norvég, Bokmål       |   ✓   |    ✓   |    ✓    |         ✓         |        ✓       |     ✓     |
+| nb-NO      | Norvég bokmal       |   ✓   |    ✓   |    ✓    |         ✓         |        ✓       |     ✓     |
+| NGT        | Semleges földön hiteles – hivatalos nyelven a helyi parancsfájlokat, ha elérhető az összes régióban |   ✓     |        |         |                   |      ✓          |         |
+| NGT-Latn   | Semleges földön hiteles – Latin exonyms. Latin szkript használatosak, ha elérhető |   ✓     |        |         |                   |        ✓         |          |
 | pl-PL      | lengyel                 |   ✓   |    ✓   |    ✓    |         ✓         |        ✓       |     ✓     |
 | pt-BR      | portugál (brazíliai)    |   ✓   |    ✓   |    ✓    |                   |        ✓       |     ✓     |
 | PT-PT      | portugál (általános)  |   ✓   |    ✓   |    ✓    |         ✓         |        ✓       |     ✓     |
@@ -68,5 +70,5 @@ Az Azure Maps a különböző nyelveken szolgáltatásban honosított.  A követ
 | SV -SE     | svéd                |   ✓   |    ✓   |    ✓    |         ✓         |        ✓       |     ✓     |
 | cs-EDIK      | thai                   |   ✓   |        |    ✓    |         ✓         |        ✓       |     ✓     |
 | tr-TR      | török                |   ✓   |    ✓   |    ✓    |         ✓         |        ✓       |     ✓     |
-| Egyesült Királyság-EE      | Ukrán               |       |        |         |                   |                |     ✓     |
+| Egyesült Királyság – UA      | Ukrán               |       |        |         |                   |                |     ✓     |
 | vi-VN      | vietnami             |       |        |         |                   |                |     ✓     |

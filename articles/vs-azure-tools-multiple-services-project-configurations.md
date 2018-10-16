@@ -12,12 +12,12 @@ ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 11/11/2017
 ms.author: ghogen
-ms.openlocfilehash: 56b01855a5996bb62f721bda2bfc207684227854
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: 1ec587f4a4519f86efceb7cefa0acb372035a9a9
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42058420"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49318214"
 ---
 # <a name="configuring-your-azure-project-in-visual-studio-to-use-multiple-service-configurations"></a>Az Azure-projekt konfigurálása a Visual Studióban több szolgáltatás-konfiguráció használata
 
@@ -75,8 +75,9 @@ Hozzon létre egy kapcsolati karakterláncot, jelölje be **beállítás hozzáa
 Válassza ki az új vagy meglévő kapcsolati karakterláncok **...** * jobb oldalán a **érték** mezőt, nyissa meg a **tárolási kapcsolati karakterlánc létrehozása** párbeszédpanel:
 
 1. Alatt **használatával csatlakozzon**, válassza ki a **az előfizetés** lehetőséget válassza ki a tárfiókot az előfizetésből. A Visual Studio ezután lekéri a tárfiók hitelesítő adatai automatikusan a a `.publishsettings` fájlt.
-1. Kiválasztásával **manuálisan kell megadni a hitelesítő adatok** adja meg a fiók nevét és kulcsát, közvetlenül az adatokat az Azure Portal használatával. A fiókkulcs másolásához: egy. Lépjen a tárfiókhoz az Azure Portalon, és válassza a **kulcsok kezelése**.
-    2. A fiókkulcs másolásához, lépjen a storage-fiókba az Azure Portalon, válassza a **beállítások > hozzáférési kulcsok**, a másolási gomb használatával másolja a vágólapra az elsődleges elérési kulcsot.
+1. Kiválasztásával **manuálisan kell megadni a hitelesítő adatok** adja meg a fiók nevét és kulcsát, közvetlenül az adatokat az Azure Portal használatával. A fiókkulcs másolásához:
+    1. Lépjen a tárfiókhoz az Azure Portalon, és válassza a **kulcsok kezelése**.
+    1. A fiókkulcs másolásához, lépjen a storage-fiókba az Azure Portalon, válassza a **beállítások > hozzáférési kulcsok**, a másolási gomb használatával másolja a vágólapra az elsődleges elérési kulcsot.
 1. Válassza ki a kapcsolat beállítások. **Adja meg az egyedi végpontok** arra kéri, hogy a blobok, táblák, konkrét URL-címének megadása, és üzenetsorok. Egyéni végpontok lehetővé teszik, hogy [egyéni tartományok](storage/blobs/storage-custom-domain-name.md) és pontosabban, a hozzáférés szabályozásához. Lásd: [az Azure Storage kapcsolati karakterláncok konfigurálása](./storage/common/storage-configure-connection-string.md).
 1. Válassza ki **OK**, majd **fájl > Mentés** a konfigurációjának frissítése az új kapcsolati karakterlánccal.
 

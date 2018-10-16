@@ -1,6 +1,6 @@
 ---
-title: Az Azure verem integrált rendszerek kapcsolat modellek |} Microsoft Docs
-description: Határozza meg a központi telepítési tervének kidolgozásához többcsomópontos Azure verem.
+title: Az Azure Stackkel integrált rendszerek kapcsolati modellek |} A Microsoft Docs
+description: Tervezési megfontolások az Azure Stack több csomópontos központi telepítés határozza meg.
 services: azure-stack
 documentationcenter: ''
 author: jeffgilb
@@ -12,42 +12,42 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/31/2018
+ms.date: 10/15/2018
 ms.author: jeffgilb
 ms.reviewer: wfayed
-ms.openlocfilehash: e6c94ef1172ea6380a94d5907c24069ed8c48ff5
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 7509d00815f56dc46bd276ffc67c4c607c54070a
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2018
-ms.locfileid: "29118788"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49338896"
 ---
-# <a name="azure-stack-integrated-systems-connection-models"></a>Az Azure verem integrált rendszerek kapcsolat modellek
-Ha érdekli az integrált Azure verem rendszer, kell megérteni [datacenter integráció számos szempontot](azure-stack-datacenter-integration.md) határozza meg, hogyan a rendszer az Adatközpont elfér Azure verem telepítéshez. Továbbá szüksége döntse el, hogy pontosan hogyan integrálja Azure verem hibrid felhő környezetébe. Ez a cikk áttekintést nyújt a fő szempontokat Azure kapcsolat, identitás tárolására, beleértve, és a számlázási modell döntéseket.
+# <a name="azure-stack-integrated-systems-connection-models"></a>Az Azure Stackkel integrált rendszerek kapcsolati modellek
+Ha érdeklik az Azure Stackkel integrált rendszereknél, kell megérteni [több adatközpont integrációja szempontok](azure-stack-datacenter-integration.md) való határozza meg, hogyan elférnek a rendszer a helyi adatközpontban Azure Stack üzembe helyezéshez. Emellett szüksége dönthet arról, hogy pontosan hogyan integrálja az Azure Stack a hibridfelhő-környezet be. Ez a cikk a főbb kérdései, többek között az Azure-kapcsolat, ügyfélidentitás-tárolóval, és a számlázási modell döntések áttekintést nyújt.
 
-Ha úgy dönt, hogy integrált rendszer beszerzési, a számítógépgyártó (OEM) hardver gyártójától segít a részletes útmutatót a tervezési folyamat részletesebben nagy része. Azokat a tényleges telepítési is végez.
+Ha úgy dönt, hogy vásárol egy integrált rendszer, a számítógépgyártó (OEM) hardvergyártójához segítségével vezeti végig a tervezési folyamat további részleteket a jelentős részét. Azok a tényleges telepítési is elvégzi.
 
-## <a name="choose-an-azure-stack-deployment-connection-model"></a>Válasszon egy Azure verem telepítési kapcsolat modell
-Ha szeretné, központi telepítése az Azure-verem csatlakozzon az internethez (és az Azure-bA), vagy nincs csatlakoztatva. Az Azure veremből, beleértve a hibrid forgatókönyvek között Azure verem és az Azure, a legjobb eredmény volna számára telepíteni kívánja kapcsolódik az Azure. Ez a beállítás határozza meg, milyen beállítások érhetők el az (Azure Active Directory vagy Active Directory összevonási szolgáltatások) identitás tárolására és a számlázási modellt (kell fizetnie, ha Ön a használat alapú számlázási vagy kapacitás-alapú számlázási) a következő ábra és táblázat foglalja össze: 
+## <a name="choose-an-azure-stack-deployment-connection-model"></a>Az Azure Stack üzembe helyezési kapcsolat modell kiválasztása
+Kiválaszthatja, hogy csatlakozik az internethez (és az Azure-bA), vagy csatlakoztatva az Azure Stack üzembe helyezése. Hozhatja ki a legnagyobb előnnyel az Azure Stack, hibrid forgatókönyvek között az Azure Stacket és Azure-ban, beleértve a szeretne üzembe helyezése az Azure-hoz csatlakoztatva. Ez a választás határozza meg, melyik lehetőség áll rendelkezésre az ügyfélidentitás-tárolóval (Azure Active Directory vagy Active Directory összevonási szolgáltatások) és a számlázási modellt (kell fizetnie, a használat alapú számlázási vagy a kapacitás-alapú számlázási) a következő ábra és táblázat foglalja össze: 
 
-![Az Azure Alkalmazásveremben üzembe és számlázási forgatókönyvek](media/azure-stack-connection-models/azure-stack-scenarios.png)  
+![Az Azure Stack üzemelő példányához és számlázási forgatókönyvek](media/azure-stack-connection-models/azure-stack-scenarios.png)  
   
 > [!IMPORTANT]
-> Ez az a fő döntési pontok! Válassza az Active Directory összevonási szolgáltatások (AD FS) vagy az Azure Active Directory (Azure AD)-e egy egyszeri döntés, hogy biztosítsa a központi telepítéskor. Ez már nem módosítható később a teljes rendszer újbóli telepítése nélkül.  
+> Ez a fő döntési pont! Az Active Directory összevonási szolgáltatások (AD FS) vagy az Azure Active Directory (Azure AD)-e egy egyszeri döntés üzembe helyezéskor kell végrehajtania. Nem módosíthatja ezt később ismételt üzembe helyezése a teljes rendszer nélkül.  
 
 
-|Beállítások|Az Azure-bA csatlakoztatva|Az Azure-ból leválasztása|
+|Beállítások|Az Azure-hoz csatlakoztatva|Az Azure-ból leválasztva|
 |-----|-----|-----|
 |Azure AD|![Támogatott](media/azure-stack-connection-models/check.png)| |
 |AD FS|![Támogatott](media/azure-stack-connection-models/check.png)|![Támogatott](media/azure-stack-connection-models/check.png)|
-|Fogyasztás alapján történő számlázáshoz|![Támogatott](media/azure-stack-connection-models/check.png)| |
-|Kapacitás alapján történő számlázáshoz|![Támogatott](media/azure-stack-connection-models/check.png)|![Támogatott](media/azure-stack-connection-models/check.png)|
-|Töltse le a frissítési csomagok közvetlenül az Azure-verem|![Támogatott](media/azure-stack-connection-models/check.png)|  |
+|Fogyasztás alapú számlázáshoz|![Támogatott](media/azure-stack-connection-models/check.png)| |
+|Kapacitás-alapú számlázás|![Támogatott](media/azure-stack-connection-models/check.png)|![Támogatott](media/azure-stack-connection-models/check.png)|
+|Töltse le a frissítési csomagok közvetlenül az Azure Stackhez|![Támogatott](media/azure-stack-connection-models/check.png)|  |
 
-Úgy döntött, az Azure kapcsolat modellben használandó Azure Alkalmazásveremben üzembe, miután további, a kapcsolat-függő döntéseket kell meghozni a identitás tárolására és a számlázási módszer. 
+Miután kiválasztotta az az Azure-kapcsolat modell használható az Azure Stack üzemelő példányához, további, a kapcsolat-függő döntéseket kell meghozni az ügyfélidentitás-tárolóval és a számlázási mód. 
 
 ## <a name="next-steps"></a>További lépések
 
-[Az Azure csatlakoztatott Azure verem telepítési döntések](azure-stack-connected-deployment.md)
+[Az Azure csatlakoztatott Azure Stack telepítési döntések](azure-stack-connected-deployment.md)
 
-[Az Azure leválasztott Azure verem telepítési döntések](azure-stack-disconnected-deployment.md)
+[Az Azure leválasztott Azure Stack telepítési döntések](azure-stack-disconnected-deployment.md)

@@ -10,12 +10,12 @@ ms.component: manage
 ms.date: 10/08/2018
 ms.author: mausher
 ms.reviewer: twounder
-ms.openlocfilehash: 3206895b455238033dbb93347e0c06fd71027b0a
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: f2fe1bc06f4122a1d27b22288784b3db167c300c
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48904200"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49321699"
 ---
 # <a name="whats-new-in-azure-sql-data-warehouse-september-2018"></a>Mi az új Azure SQL Data warehouse? 2018. szeptember
 Az Azure SQL Data Warehouse fejlesztései folyamatosan kap. Ez a cikk ismerteti az új szolgáltatásokat és változásokat tartalmazza, amelyek a 2018 szeptember.
@@ -59,7 +59,7 @@ WHERE
     RTRIM(value) <> '';
 ```
 
-###<a name="compressdecompress-functions"></a>COMPRESS/DECOMPRESS funkciók
+### <a name="compressdecompress-functions"></a>COMPRESS/DECOMPRESS funkciók
 A [TÖMÖRÍTÉSE](https://docs.microsoft.com/sql/t-sql/functions/compress-transact-sql) / [DECOMPRESS](https://docs.microsoft.com/sql/t-sql/functions/decompress-transact-sql) funkciója lehetővé teszi, hogy tömörítése és kibontása egy karakterláncot adjon meg a GZIP algoritmus használatával.
 
 #### <a name="example"></a>Példa

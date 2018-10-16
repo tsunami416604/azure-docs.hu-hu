@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/03/2018
+ms.date: 10/15/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 43f077ef07597604eaf42cb4af47cbc2f0e6c524
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 9decd861ff20a45939f700eef99245b6555829f8
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48042003"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49319744"
 ---
 # <a name="collect-data-in-a-hybrid-environment-with-log-analytics-agent"></a>Adatgyűjtés a Log Analytics-ügynököket, a hibrid környezetben
 
@@ -51,15 +51,30 @@ A Windows-ügynök hivatalosan támogatott a Windows operációs rendszer követ
 * Windows 7 SP1 és újabb verziók.
 
 ## <a name="supported-linux-operating-systems"></a>Támogatott Linux operációs rendszerek
-A következő Linux-disztribúciók hivatalosan támogatott.  A Linux-ügynök azonban más disztribúció nem szerepel a listán is futhat.  Ha másként nincs jelezve, az összes kisebb kiadásokban minden felsorolt főverzió támogatottak.  
+Ez a szakasz ismerteti a támogatott Linux-disztribúciók részleteit.    
 
-* Amazon Linux 2012.09 való 2015.09 (x86/x64)
-* CentOS Linux 5, 6 és 7 (x86/x64)  
-* Oracle Linux 5, 6 és 7 (x86/x64) 
-* Red Hat Enterprise Linux Server 5, 6 és 7 (x86/x64)
-* Debian GNU/Linux 6, 7, és 8 (x86/x64)
-* Ubuntu 12.04 LTS, 14.04 LTS, 16.04 LTS (x86/x64)
-* SUSE Linux Enterprise Server 11 – 12 (x86/x64)
+Kiadás dátuma: 2018 augusztus után verzióval kezdődően igyekszünk a következő módosításokat a támogatási modell:  
+
+* Csak a kiszolgáló-verziók támogatottak, nem az ügyfél.  
+* Új verzióinak [Azure Linux által támogatott disztribúciók](../virtual-machines/linux/endorsed-distros.md) mindig támogatottak.  
+* Összes kisebb kiadások támogatottak egyes felsorolt főverzió.
+* Verziók, amelyek megfeleltek a gyártó támogatása befejezési dátum nem támogatottak.  
+* AMI új verziói nem támogatottak.  
+* Csak az SSL futtató verziók 1.x alapértelmezés szerint támogatott.
+
+Ha a disztribúció vagy a verziója, amely jelenleg nem támogatott, és a támogatási modell nem igazodnak használ, javasoljuk, hogy először ágaztatnia ebben a tárházban, bosszankodnak, hogy a Microsoft támogatási nem nyújt segítséget az elágaztatott ügynök verziók.
+
+* Amazon Linux 2017.09 (x 64)
+* CentOS Linux 6 (x86/x64) és 7 (x 64)  
+* Oracle Linux 6 és 7 (x86/x64) 
+* Red Hat Enterprise Linux Server 6 (x86/x64) és 7 (x 64)
+* Debian GNU/Linux 8. és 9 (x86/x64)
+* Ubuntu 14.04 LTS (x86/x64), 16.04 LTS (x86/x64) és 18.04 LTS (x64)
+* SUSE Linux Enterprise Server 12 (x 64)
+
+>[!NOTE]
+>OpenSSL 1.1.0-s csak a x86_x64 platformok (64 bites) és a támogatott OpenSSL-esnél korábbi 1.x bármilyen platformon nem támogatott.
+>
 
 ## <a name="tls-12-protocol"></a>A TLS 1.2 protokoll
 A Log Analytics az átvitt adatok biztonságának biztosítása érdekében, erősen javasoljuk, hogy legalább az ügynök konfigurálása Transport Layer Security (TLS) 1.2-es. Biztonsági rés található régebbi verziói a TLS/Secure Sockets Layer (SSL), és jelenleg továbbra is működnek, hogy a visszamenőleges kompatibilitás, amíg azok **nem ajánlott**.  További információkért tekintse át a [biztonságosan a TLS 1.2 használatával az adatok küldésének](log-analytics-data-security.md#sending-data-securely-using-tls-12). 

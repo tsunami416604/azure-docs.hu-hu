@@ -10,12 +10,12 @@ ms.component: manage
 ms.date: 04/11/2018
 ms.author: kavithaj
 ms.reviewer: igorstan
-ms.openlocfilehash: c894fed56393e1504f54999e57bba6f9ffed27a7
-ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
+ms.openlocfilehash: 18a6234eb56902625fdcc8f150a41b7551d229cc
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43288254"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49318537"
 ---
 # <a name="auditing-in-azure-sql-data-warehouse"></a>Az Azure SQL Data Warehouse naplózása
 
@@ -112,7 +112,7 @@ Naplózási ellenőrzés naplózás használata előtt egy ["Alacsonyabb szintű
 
 ## <a id="subheading-3"></a>Elemezheti a vizsgálati naplók és jelentések
 
-###<a name="server-level-policy-audit-logs"></a>Kiszolgálói szintű csoportházirend-auditnaplók
+### <a name="server-level-policy-audit-logs"></a>Kiszolgálói szintű csoportházirend-auditnaplók
 Kiszolgálószintű auditnaplók írt **hozzáfűző Blobok** egy Azure Blob Storage, Azure-előfizetésében. Mentés nevű tárolóban lévő blob fájlokat gyűjteményeként **sqldbauditlogs**.
 
 A tároló mappa a hierarchiával kapcsolatos további részletekért elnevezési konvenciók és a napló formátuma, tekintse meg a [Blob auditálási napló fájlformátum referenciája](https://go.microsoft.com/fwlink/?linkid=829599).
@@ -147,7 +147,7 @@ Többféleképpen naplófájlokat blob megtekintéséhez használhatja:
 
 
 <br>
-###<a name="database-level-policy-audit-logs"></a>Adatbázisszintű csoportházirend-auditnaplók
+### <a name="database-level-policy-audit-logs"></a>Adatbázisszintű csoportházirend-auditnaplók
 A gyűjteményét, Store az adatbázisszintű auditnaplók összesítjük egy **SQLDBAuditLogs** előtag telepítés közben választott Azure storage-fiókban. Megtekintheti a naplófájlok, például egy eszközzel [Azure Storage Explorer](http://azurestorageexplorer.codeplex.com).
 
 Egy előre konfigurált irányítópult jelentéssablon érhető el, mint egy [letölthető Excel-számolótáblában](http://go.microsoft.com/fwlink/?LinkId=403540) segít gyorsan elemezheti a naplófájlok adatait. A naplókat a sablon használatához szükséges Excel 2013-as vagy újabb verzió és a Power Query, amelyet [innen tölthet le](http://www.microsoft.com/download/details.aspx?id=39379).

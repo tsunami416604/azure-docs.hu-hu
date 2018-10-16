@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/19/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 8055faad3cd546e538def5e7292287b49ce96cb4
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 4ae84ff481b25f1e91a29c067dea74ba25f924aa
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46314509"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49320322"
 ---
 # <a name="user-sign-in-with-azure-active-directory-pass-through-authentication"></a>Felhasználó jelentkezzen be az Azure Active Directory átmenő hitelesítése
 
@@ -38,7 +38,7 @@ Az átmenő hitelesítés kombinálhatja a [zökkenőmentes egyszeri bejelentkez
 
 ## <a name="key-benefits-of-using-azure-ad-pass-through-authentication"></a>Az Azure AD átmenő hitelesítés legfontosabb előnyei
 
-- *Nagyszerű felhasználói élményét*
+- *Nagyszerű felhasználói élmény*
   - Felhasználó használja ugyanazt a jelszót, jelentkezzen be a helyszíni és felhőbeli alkalmazásokat is.
   - Felhasználók kevesebb időt az informatikai segélyszolgálat feloldó jelszó kapcsolatos problémák folytatott kommunikációra.
   - Felhasználók befejezheti [önkiszolgáló jelszókezelés](../authentication/active-directory-passwords-overview.md) feladatokat a felhőben.
@@ -69,7 +69,7 @@ Az átmenő hitelesítés kombinálhatja a [zökkenőmentes egyszeri bejelentkez
 ## <a name="next-steps"></a>További lépések
 
 - [Gyors üzembe helyezési](how-to-connect-pta-quick-start.md) – és az Azure AD átmenő hitelesítés futtató.
-- [Az AD FS át az átmenő hitelesítés](https://github.com/Identity-Deployment-Guides/Identity-Deployment-Guides/blob/master/Authentication/Migrating%20from%20Federated%20Authentication%20to%20Pass-through%20Authentication.docx) – egy részletes útmutató, amellyel áttelepíteni az átmenő hitelesítés az Active Directory összevonási szolgáltatások (vagy más összevonási technológiákkal).
+- [Az AD FS át az átmenő hitelesítés](https://github.com/Identity-Deployment-Guides/Identity-Deployment-Guides/blob/master/Authentication/Migrating%20from%20Federated%20Authentication%20to%20Pass-through%20Authentication.docx?raw=true) – egy részletes útmutató, amellyel áttelepíteni az átmenő hitelesítés az Active Directory összevonási szolgáltatások (vagy más összevonási technológiákkal).
 - [Az intelligens zárolási](../authentication/howto-password-smart-lockout.md) -konfigurálása az intelligens zárolás funkciót a bérlő felhasználói fiókok védelmét.
 - [Aktuális korlátozások](how-to-connect-pta-current-limitations.md) – ismerje meg, melyik forgatókönyvek is támogatottak, és melyek nem.
 - [Részletes technikai](how-to-connect-pta-how-it-works.md) – Ez a funkció működésének megismerése.

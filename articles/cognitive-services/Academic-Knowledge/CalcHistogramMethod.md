@@ -10,12 +10,12 @@ ms.component: academic-knowledge
 ms.topic: conceptual
 ms.date: 03/27/2017
 ms.author: alch
-ms.openlocfilehash: da5e03e5fd3259157ee33744b614e2be3e284eb8
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: 915e2e5a67d068c418ce50eee9d84dc66e61ee00
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48901930"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49321291"
 ---
 # <a name="calchistogram-method"></a>CalcHistogram metódus
 
@@ -35,10 +35,12 @@ Name (Név)  |Érték | Kötelező?  |Leírás
 **kifejezés**    |Szöveges karakterlánc | Igen  |A lekérdezési kifejezés, amely meghatározza az entitásokat, amelyen hisztogramok kiszámításához.
 **Modell** |Szöveges karakterlánc | Nem |Válassza ki a modellt, amely a lekérdezni kívánt nevét.  Jelenleg az alapértelmezett érték *legújabb*.
 **Attribútumok** | Szöveges karakterlánc | Nem<br>alapértelmezett érték: | Egy vesszővel tagolt listája, amely meghatározza az attribútum értékei, amelyek szerepelnek a választ. Attribútumnevek-és nagybetűk.
-**Száma** |Szám | Nem<br>Alapértelmezett: 10 |Visszaadott eredmények száma.
+**count** |Szám | Nem<br>Alapértelmezett: 10 |Visszaadott eredmények száma.
 **eltolás**  |Szám | Nem<br>Alapértelmezett: 0 |Az első eredmény index való visszatéréshez.
-<br>
+**Időtúllépés**  |Szám | Nem<br>Alapértelmezett: 1000 |Időkorlát ezredmásodpercben. Csak a az időtúllépési letelte előtt található értelmezés adja vissza.
+
 ## <a name="response-json"></a>Válasz (JSON)
+
 Name (Név) | Leírás
 --------|---------
 **kifejezés**  |A kifejezés paraméter a kérelemből.
@@ -53,7 +55,7 @@ Name (Név) | Leírás
 **[x] [y] .histogram .count hisztogramok**  |Az attribútumérték egyező entitások száma.
 **megszakítva** | IGAZ, ha a kérelem túllépte az időkorlátot.
 
- <br>
+
 #### <a name="example"></a>Példa:
 ```
 https:// westus.api.cognitive.microsoft.com/academic/v1.0/calchistogram?expr=And(Composite(AA.AuN=='jaime teevan'),Y>2012)&attributes=Y,F.FN&count=4

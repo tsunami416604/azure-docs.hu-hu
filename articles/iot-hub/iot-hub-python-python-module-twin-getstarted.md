@@ -9,17 +9,18 @@ ms.devlang: python
 ms.topic: conceptual
 ms.date: 04/26/2018
 ms.author: menchi
-ms.openlocfilehash: 5a4d9debfcc48279bbb56df076a77a5c8b44e231
-ms.sourcegitcommit: 7b845d3b9a5a4487d5df89906cc5d5bbdb0507c8
+ms.openlocfilehash: 615dfc789db805e51ed3e7c11fed9da6d7079e96
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2018
-ms.locfileid: "42060820"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49319098"
 ---
 # <a name="get-started-with-iot-hub-module-identity-and-module-twin-using-python-back-end-and-python-device"></a>Ismerkedés az IoT Hub identitás- és modul ikermodul Python-háttérrendszer és a Python-eszköz használata
 
 > [!NOTE]
 > [A modulidentitások és modulikrek](iot-hub-devguide-module-twins.md) az Azure IoT Hub eszközidentitásához és eszközikeréhez hasonlók, de nagyobb részletességet biztosítanak. Amíg az Azure IoT Hub eszközidentitása és eszközikre lehetővé teszi a háttéralkalmazás számára az eszköz konfigurálását, és rálátást nyújt az eszköz feltételeire, a modulidentitás és a moduliker az eszköz egyes összetevőihez biztosítja ezeket a lehetőségeket. A megfelelő, több összetevős eszközök, például az operációs rendszeren vagy a belső vezérlőprogramon alapuló eszközök esetében lehetővé teszi az elkülönített konfigurációk és feltételek beállítását az egyes összetevőkhöz.
+>
 
 Ez az oktatóanyag végén kettő Python-alkalmazással rendelkezik:
 
@@ -28,13 +29,13 @@ Ez az oktatóanyag végén kettő Python-alkalmazással rendelkezik:
 
 > [!NOTE]
 > Az Azure IoT SDK-kat használhatja az eszközökön és a megoldás háttérrendszerén futó alkalmazások összeállításához egyaránt. Ezekről az [Azure IoT SDK-k][lnk-hub-sdks] című témakörben talál további információt.
+>
 
 Az oktatóanyag teljesítéséhez a következőkre lesz szüksége:
 
 * Aktív Azure-fiók. (Ha nincs fiókja, létrehozhat egy [ingyenes fiókot][lnk-free-trial] néhány perc alatt.)
 * Egy IoT hubot.
 * Telepítse a legújabb [Python SDK](https://github.com/Azure/azure-iot-sdk-python).
-
 
 Létrehozta az IoT Hubot, és rendelkezik az oktatóanyag további részeinek teljesítéséhez szükséges állomásnévvel és IoT Hub kapcsolati sztringgel.
 
@@ -44,7 +45,7 @@ Ebben a szakaszban hozzon létre egy Python-alkalmazás által létrehozott egy 
 
 A Python-fájlt adja hozzá a következő kódot:
 
-```Python
+```python
 import sys
 import iothub_service_client
 from iothub_service_client import IoTHubRegistryManager, IoTHubRegistryManagerAuthMethod, IoTHubError
@@ -78,6 +79,7 @@ Ez az alkalmazás egy új eszközidentitást hoz létre azonosító **myFirstDev
 
 > [!NOTE]
 > Az IoT Hub-identitásjegyzék csak az IoT Hub biztonságos elérésének biztosításához tárolja az eszköz- és modulidentitásokat. Az identitásjegyzék tárolja az eszközazonosítókat és -kulcsot, és biztonsági hitelesítő adatokként használja őket. Az identitásjegyzék minden egyes eszközhöz tárol egy engedélyezve/letiltva jelzőt is, amellyel letilthatja az eszköz hozzáférését. Ha az alkalmazásnak más eszközspecifikus metaadatokat kell tárolnia, egy alkalmazásspecifikus tárolót kell használnia. A modulidentitások esetében nincs engedélyezési/letiltási jelző. További információkért lásd az [Azure IoT Hub fejlesztői útmutatóját][lnk-devguide-identity].
+>
 
 ## <a name="update-the-module-twin-using-python-device-sdk"></a>Frissítse a Python eszközoldali SDK-val ikermodul
 
@@ -85,11 +87,11 @@ Ebben a szakaszban hoz létre egy Python-alkalmazás a szimulált eszköz, amely
 
 1. **Szerezze be a modul kapcsolati sztringjét** – ezt most megteheti, ha bejelentkezik az [Azure Portalra][lnk-portal]. Keresse meg az IoT Hubot, és kattintson az IoT-eszközök elemre. Keresse meg a myFirstDevice elemet, nyissa meg, és győződjön meg arról, hogy a myFirstModule sikeresen létrejött. Másolja ki a modul kapcsolati sztringjét. A következő lépés során szükség lesz rá.
 
-    ![Az Azure Portal moduladatai][15]
+  ![Az Azure Portal moduladatai][15]
 
-2. **UpdateModuleTwinReportedProperties alkalmazás létrehozása** adja hozzá a következő `using` tetején található utasításokat a **Program.cs** fájlt:
+1. **UpdateModuleTwinReportedProperties alkalmazás létrehozása** adja hozzá a következő `using` tetején található utasításokat a **Program.cs** fájlt:
 
-    ```Python
+    ```python
     import sys
     import iothub_service_client
     from iothub_service_client import IoTHubRegistryManager, IoTHubRegistryManagerAuthMethod, IoTHubDeviceTwin, IoTHubError
@@ -122,9 +124,10 @@ Ebben a szakaszban hoz létre egy Python-alkalmazás a szimulált eszköz, amely
 A kódminta segítségével megtudhatja, hogyan kérheti le a modulikret és frissítheti a jelentett tulajdonságokat az AMQP-protokollal. 
 
 ## <a name="get-updates-on-the-device-side"></a>Az eszközoldalon frissítések beszerzése
+
 Mellett a fenti kóddal, az alábbi kódblokkot, amellyel az ikereszköz frissítésének letöltése hozzáadhat üzenet az eszközön.
 
-```Python
+```python
 import random
 import time
 import sys
@@ -166,7 +169,7 @@ További bevezetés az IoT Hub használatába, valamint egyéb IoT-forgatóköny
 
 
 <!-- Images. -->
-[15]: ./media\iot-hub-csharp-csharp-module-twin-getstarted/module-detail.JPG
+[15]:./media\iot-hub-csharp-csharp-module-twin-getstarted/module-detail.JPG
 <!-- Links -->
 [lnk-hub-sdks]: iot-hub-devguide-sdks.md
 [lnk-free-trial]: http://azure.microsoft.com/pricing/free-trial/

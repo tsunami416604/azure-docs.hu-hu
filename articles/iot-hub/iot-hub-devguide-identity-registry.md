@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/29/2018
 ms.author: dobett
-ms.openlocfilehash: 3e6e42da7f3c1423ecf2de507f3c2f0257fbb21f
-ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
+ms.openlocfilehash: 6291350cab41c123b41f7fee811bf72a21d9ff35
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2018
-ms.locfileid: "49311235"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49319132"
 ---
 # <a name="understand-the-identity-registry-in-your-iot-hub"></a>Az IoT hub eszközidentitás-jegyzék ismertetése
 
@@ -198,6 +198,9 @@ Eszközidentitások jelentésekként jelennek meg az alábbi tulajdonságokkal r
 > [!NOTE]
 > Kapcsolat állapota csak hozhat létre az IoT Hub nézetben, a kapcsolat állapotát. Hálózati körülmények és konfigurációk függően ez az állapot frissítése késhet.
 
+> [!NOTE]
+> Jelenleg az eszköz SDK-k nem támogatják használatával a `+` és `#` karakterek az **deviceId**.
+
 ## <a name="module-identity-properties"></a>A modul identitás tulajdonságai
 
 A modul identitások jelentésekként jelennek meg az alábbi tulajdonságokkal rendelkező JSON-dokumentumok:
@@ -216,6 +219,9 @@ A modul identitások jelentésekként jelennek meg az alábbi tulajdonságokkal 
 | connectionState |csak olvasható |A mező jelzi a kapcsolat állapota: vagy **csatlakoztatva** vagy **leválasztott**. Ez a mező képviseli az IoT Hub nézetben, az eszköz kapcsolati állapotát. **Fontos**: Ez a mező csak fejlesztési és hibakeresési célokra használandó. A kapcsolat állapota úgy frissül, csak a MQTT, AMQP vagy használó eszközök esetében. Ezenkívül protokollszintű pingelésre (MQTT pingelésre vagy AMQP pingelésre.) alapján, és veheti fel a maximális késleltetés csak 5 perc. Ebből kifolyólag lehet téves, például a csatlakoztatott eszközök jelentve, de, amelyek le vannak választva. |
 | connectionStateUpdatedTime |csak olvasható |A historikus mutató, a dátum és idő utolsó megjelenítése a kapcsolati állapot frissítése megtörtént. |
 | lastActivityTime |csak olvasható |Historikus mutató, a dátum és idő utolsó: az eszköz csatlakoztatva, fogadott vagy elküldött egy üzenetet. |
+
+> [!NOTE]
+> Jelenleg az eszköz SDK-k nem támogatják használatával a `+` és `#` karakterek az **deviceId** és **moduleId**.
 
 ## <a name="additional-reference-material"></a>További – referenciaanyag
 

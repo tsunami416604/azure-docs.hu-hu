@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/14/2018
 ms.author: negat
-ms.openlocfilehash: 628d407869d24f466b5a7c056d51d76217e29798
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 49414b06010cf83c10bbc9519f2bced2126661a4
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46996655"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49322073"
 ---
 # <a name="modify-a-virtual-machine-scale-set"></a>Virtuális gép méretezési csoportok módosítása
 Az alkalmazások életciklusa során szükség lehet módosítására vagy frissítésére a virtuálisgép-méretezési csoportot. Ezek a frissítések tartalmazhatnak frissítse a konfigurációt a méretezési, vagy módosítsa az alkalmazás konfigurációját. Ez a cikk ismerteti, hogyan módosíthatja egy meglévő méretezési csoportot a REST API-k, az Azure PowerShell vagy az Azure CLI.
@@ -126,7 +126,7 @@ Ezeket a tulajdonságokat adja meg a virtuális gépeket a méretezési csoportb
 
 
 ### <a name="the-scale-set-vm-model-view"></a>A méretezési csoport Virtuálisgép-modellnézet
-Hogyan méretezési rendelkezik-e egy modellnézet hasonlóan, a méretezési csoportban lévő mindegyik virtuális gép rendelkezik a saját modellnézet. A méretezési csoportok modellnézet lekérdezéséhez használhatja:
+Hogyan méretezési rendelkezik-e egy modellnézet hasonlóan, a méretezési csoportban lévő egyes Virtuálisgép-példány rendelkezik a saját modellnézet. A modell lekérdezésnézet egy méretezési csoportban egy adott Virtuálisgép-példánnyal, használhatja:
 
 - REST API-t [számítási/virtualmachinescalesetvms/get](/rest/api/compute/virtualmachinescalesetvms/get) módon:
 
@@ -162,11 +162,11 @@ $ az vmss show --resource-group myResourceGroup --name myScaleSet
 }
 ```
 
-Ezek a Tulajdonságok konfigurálását a virtuális gép magát, nem a teljes méretezési konfigurációját. Például, a méretezési csoport modelljéből, `overprovision` tulajdonságként, amíg a méretezési csoportban lévő Virtuálisgép-modell nem létezik. Ez a különbség van, mert túlzott egy tulajdonságot a méretezési csoport, egy teljes, nem az egyéni virtuális gépeket a méretezési csoportban lévő (túlzott kapcsolatos további információkért lásd: [kialakítási szempontok a méretezési csoportok](virtual-machine-scale-sets-design-overview.md#overprovisioning)).
+Ezek a tulajdonságok nem konfigurációját a méretezési csoport teljes VM-példány konfigurálását. Például, a méretezési csoport modelljéből, `overprovision` tulajdonságainál, a modell egy méretezési csoportban lévő Virtuálisgép-példányokhoz tartozó azonban nem. Ez a különbség van, mert túlzott egy tulajdonságot a méretezési csoport, egy teljes, nem az egyéni Virtuálisgép-példányok a méretezési csoportban lévő (túlzott kapcsolatos további információkért lásd: [kialakítási szempontok a méretezési csoportok](virtual-machine-scale-sets-design-overview.md#overprovisioning)).
 
 
 ### <a name="the-scale-set-vm-instance-view"></a>A méretezési csoport Virtuálisgép-példányokat tartalmazó nézet
-Hogyan méretezési rendelkezik-e egy példányait tartalmazó nézet hasonlóan, a méretezési csoportban lévő mindegyik virtuális gép rendelkezik a saját példányait tartalmazó nézet. A méretezési csoport példányait tartalmazó nézetet lekérdezéséhez használhatja:
+Hogyan rendelkezik egy méretezési csoportot, egy példányait tartalmazó nézet hasonlóan a méretezési csoportban lévő egyes Virtuálisgép-példány rendelkezik a saját példányait tartalmazó nézet. Példányait tartalmazó nézetet egy adott Virtuálisgép-példányhoz egy méretezési csoportban lévő lekérdezéséhez használhatja:
 
 - REST API-t [számítási/virtualmachinescalesetvms/getinstanceview](/rest/api/compute/virtualmachinescalesetvms/getinstanceview) módon:
 
@@ -239,7 +239,7 @@ $ az vmss get-instance-view --resource-group myResourceGroup --name myScaleSet -
 }
 ```
 
-Ezek a Tulajdonságok írják le a virtuális gépre, amely tartalmazza a alkalmazni a méretezési csoporthoz kiterjesztések aktuális futási állapotát.
+Ezek a Tulajdonságok írják le, hogy a Virtuálisgép-példány, a méretezési csoporthoz a alkalmazni kiterjesztések tartalmazó aktuális futási állapotát.
 
 
 ## <a name="how-to-update-global-scale-set-properties"></a>Globális méretezhetőség frissítése tulajdonságainak beállítása

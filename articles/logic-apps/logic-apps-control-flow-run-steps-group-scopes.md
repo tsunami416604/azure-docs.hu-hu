@@ -1,69 +1,69 @@
 ---
-title: A csoport állapot - Azure Logic Apps alapján műveletek futtatása hatókörök hozzáadása |} Microsoft Docs
-description: Rendszert futtató munkafolyamat-műveleteket az Azure Logic Apps csoport állapota alapján hatókörök létrehozása
+title: Csoport állapota – Azure Logic Apps szerinti futtató hatókört is felvehet |} A Microsoft Docs
+description: Hogyan hozhat létre, amely alapján a csoport műveleti állapota az Azure Logic Apps munkafolyamat-műveletek hatókörök
 services: logic-apps
 ms.service: logic-apps
+ms.suite: integration
 author: ecfan
 ms.author: estfan
 manager: jeconnoc
-ms.date: 03/05/2018
-ms.topic: article
 ms.reviewer: klam, LADocs
-ms.suite: integration
-ms.openlocfilehash: 1258175eb3d28d39be8be08498ba8d2e0998aa43
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.date: 10/03/2018
+ms.topic: article
+ms.openlocfilehash: ac184ce790a0700fcacc63f70c2bb321142d7224
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35298814"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49320543"
 ---
-# <a name="create-scopes-that-run-workflow-actions-based-on-group-status-in-azure-logic-apps"></a>Hozzon létre hatóköröket rendszert futtató munkafolyamat-műveleteket az Azure Logic Apps csoport állapota alapján
+# <a name="run-actions-based-on-group-status-with-scopes-in-azure-logic-apps"></a>Az Azure Logic Appsben hatókörökkel csoport állapota alapján műveletek futtatása
 
-Csak azután egy másik csoport műveletek lesz sikeres vagy sikertelen műveletek futtatására, ezeket a műveleteket belül csoport egy *hatókör*. Ez a struktúra akkor hasznos, ha a kívánt logikai csoport műveletek rendezéséhez, a csoport állapotának kiértékelésére és a hatókör állapotát alapuló műveleteket hajthatja végre. A hatókör összes művelet után a hatóköre is lekéri a saját állapotát. Például a hatókörökkel helyzet megvalósítása [kivétel és hibakezelés](../logic-apps/logic-apps-exception-handling.md#scopes). 
+Csak azt követően a műveletek egy másik csoport sikeres vagy sikertelen műveletek futtatására, csoportban lévő műveletek egy *hatókör*. Ez a struktúra akkor hasznos, ha a kívánt logikai csoportként műveletek rendezhet, kiértékelheti, hogy a csoport állapota és a hatókör állapot alapuló műveletek végrehajtására. A hatókör az összes művelet után a hatókört is lekéri a saját állapota. Például használhat hatókörök, amikor a megvalósítani kívánt [kivétel és hibakezelés](../logic-apps/logic-apps-exception-handling.md#scopes). 
 
-A hatókör állapotának ellenőrzéséhez használja a ugyanazok a feltételek, amelyek segítségével állapítja meg, a logikai alkalmazások futtatása állapotára, például "Succeeded", "Sikertelen", "Megszakítva" és így tovább. Alapértelmezés szerint a hatókör összes művelet sikeres, a hatókör állapotát megjelölve "Sikeres". De ha a hatókörében bármely művelet sikertelen, vagy megszakítja, a hatókör állapotát jelölésű "Sikertelen". Hatókörök használati korlátait, lásd: [korlátozásai és konfigurációs](../logic-apps/logic-apps-limits-and-config.md). 
+A hatókör állapotának ellenőrzéséhez használhatja ugyanezeket a feltételeket, amelyek segítségével meghatározhatja egy logikai alkalmazás futtatási állapota, például a "Sikeres", "Sikertelen", "Megszakítva" és így tovább. Alapértelmezés szerint a hatókör művelet sikeres legyen, amikor állapota a hatókör meg van jelölve "sikeres" üzenet. De ha a hatókörében bármilyen művelet sikertelen, vagy meg lett szakítva, a hatókör állapota "Sikertelen." van megjelölve Hatókörök korlátozásairól lásd: [határértékek és konfiguráció](../logic-apps/logic-apps-limits-and-config.md). 
 
-Például ez egy magas szintű logikai alkalmazást használó hatókör konkrét műveletek és a hatókör állapotának feltétel futtatásához. Ha a hatókörében műveletek sikertelenek, vagy váratlanul leáll, a hatókör van jelölve "Sikertelen" vagy "Megszakadt" rendre, és a logikai alkalmazás "Hatókör nem sikerült" üzenet küldése. A hatókörbe tartozó műveleteket sikeres, ha a logikai alkalmazás "Hatókör sikeresen befejeződött" üzenet küldése.
+Ha például Íme egy bizonyos műveletek és a egy feltétel, a hatókör állapotának ellenőrzéséhez futtassa a hatókört használó magas szintű logikai alkalmazást. Ha a hatókörében műveletek sikertelen, vagy váratlanul leáll, a hatókör meg van jelölve "Sikertelen" vagy "Aborted" jelölik, és a logikai alkalmazás "Hatókör nem sikerült" üzenetet küld. Ha a hatókörrel rendelkező műveletek sikeres, a logikai alkalmazás "Hatókör sikeres" üzenetet küld.
 
-![Állítsa be "Ütemezés – ismétlődési" eseményindító](./media/logic-apps-control-flow-run-steps-group-scopes/scope-high-level.png)
+![Állítsa be a "Ütemezés – ismétlődés" eseményindító](./media/logic-apps-control-flow-run-steps-group-scopes/scope-high-level.png)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Kövesse az ebben a cikkben példa, ezek az elemek szükségesek:
+Kövesse az ebben a cikkben szereplő példa, ezek az elemek szükségesek:
 
 * Azure-előfizetés. Ha még nincs előfizetése, [regisztráljon egy ingyenes Azure-fiókra](https://azure.microsoft.com/free/). 
 
-* Az e-mail-fiók bármely e-mail szolgáltató Logic Apps által támogatott. A példában az Outlook.com-os. Ha külön szolgáltatót használ, az általános folyamat ugyanaz marad, de a felhasználói felület különböző jelenik meg.
+* A Logic Apps által támogatott bármely e-mail-szolgáltatónál e-mail-fiók. Ebben a példában az Outlook.com-ot használ. Ha egy másik szolgáltatót használ, az általános folyamat változatlan marad, de a felhasználói felület különböző jelenik meg.
 
-* A Bing Maps kulcs. Ahhoz, hogy ezt a kulcsot, lásd: <a href="https://msdn.microsoft.com/library/ff428642.aspx" target="_blank">a Bing Maps kulcs lekérése</a>.
+* A Bing térképek-kulcsot. A kulcs lekéréséhez lásd: <a href="https://msdn.microsoft.com/library/ff428642.aspx" target="_blank">Bing térképek-kulcs lekérése</a>.
 
-* Alapszintű ismerete [logic Apps alkalmazások létrehozása](../logic-apps/quickstart-create-first-logic-app-workflow.md)
+* Alapvető ismeretek szerezhetők [logikai alkalmazások létrehozása](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 
 ## <a name="create-sample-logic-app"></a>Minta logikai alkalmazás létrehozása
 
-Először hozzon létre ezen PéldaAlkalmazás logika, hogy a hatókör később veheti fel:
+Először hozza létre a minta logikai alkalmazás, így később is hozzáadhat egy hatókör:
 
 ![Minta logikai alkalmazás létrehozása](./media/logic-apps-control-flow-run-steps-group-scopes/finished-sample-app.png)
 
-* A **ütemezés - ismétlődési** , amely a Bing Maps szolgáltatás ellenőrzi a megadott időközönként eseményindító
-* A **a Bing Maps - Get-útvonal** műveletet, amely ellenőrzi a utazás idő két hely között
-* Egy feltételes utasítást, amely ellenőrzi, hogy a utazás idő meghaladja-e a megadott utazás idő
-* Egy művelet által küldött e-mailben elküldi aktuális utazás idő meghaladja a megadott idő
+* A **ütemezés – ismétlődés** eseményindítót, amely a Bing Maps szolgáltatás ellenőrzi a megadott időközönként
+* A **Bing térképek – útvonal lekérése** műveletet, amely ellenőrzi az utazási időt két helye között
+* Egy feltételes utasítás, amely ellenőrzi, hogy az utazási idő meghaladja a megadott utazási idő
+* Egy műveletet, amely elküldi az e-mail-e a jelenlegi utazási idő meghaladja a megadott időtartam
 
-Mentse a Logic Apps alkalmazást tetszőleges időpontban, ezért gyakran mentsen.
+A logikai alkalmazás mentése bármikor, ezért mentse gyakran a munkáját.
 
-1. Jelentkezzen be a <a href="https://portal.azure.com" target="_blank">Azure-portálon</a>, ha még nem tette meg. Üres logikai alkalmazás létrehozása.
+1. Jelentkezzen be a <a href="https://portal.azure.com" target="_blank">az Azure portal</a>, ha még nem tette. Üres logikai alkalmazás létrehozása.
 
-2. Adja hozzá a **ütemezés - ismétlődési** ezekkel a beállításokkal eseményindító: **időköz** = "1" és **gyakoriság** = "Perc"
+1. Adja hozzá a **ütemezés – ismétlődés** eseményindító ezekkel a beállításokkal: **időköz** = "1" és a **gyakorisága** = "Perc."
 
-   ![Állítsa be "Ütemezés – ismétlődési" eseményindító](./media/logic-apps-control-flow-run-steps-group-scopes/recurrence.png)
+   ![Állítsa be a "Ütemezés – ismétlődés" eseményindító](./media/logic-apps-control-flow-run-steps-group-scopes/recurrence.png)
 
    > [!TIP]
-   > Vizuálisan egyszerűsítése a nézetben, és minden művelet részleteit a tervezőben elrejtése, csukja össze ezeket a lépéseket lépésein végighaladva minden művelet alakú.
+   > Vizuálisan a nézet leegyszerűsítése érdekében, és minden művelet részletei a tervezőben elrejtése, alakzat összecsukása a minden művelet állapotát a fenti lépéseket.
 
-3. Adja hozzá a **a Bing Maps - Get-útvonal** művelet. 
+1. Adja hozzá a **Bing térképek – útvonal lekérése** művelet. 
 
-   1. Ha még nem rendelkezik a Bing Maps kapcsolat, megkérdezi, VPN-kapcsolat létrehozásához.
+   1. Ha még nem rendelkezik Bing térképek-kapcsolattal, kéri, hogy hozzon létre egy kapcsolatot.
 
       | Beállítás | Érték | Leírás |
       | ------- | ----- | ----------- |
@@ -71,137 +71,170 @@ Mentse a Logic Apps alkalmazást tetszőleges időpontban, ezért gyakran mentse
       | **API-kulcs** | <*saját-Bing-Térképek-kulcsa*> | Adja meg a korábban kapott Bing Térképek-kulcsot. | 
       ||||  
 
-   2. Állítsa be a **Get útvonal** művelet, ez a rendszerkép az alábbi táblázatban látható módon:
+   1. Állítsa be a **útvonal lekérése** művelet, ez az ábra alatti táblázatban látható módon:
 
-      ![Állítsa be a "Bing Maps - útvonal Get" művelet](./media/logic-apps-control-flow-run-steps-group-scopes/get-route.png) 
+      ![Állítsa be a "Bing térképek – útvonal lekérése" művelet](./media/logic-apps-control-flow-run-steps-group-scopes/get-route.png) 
 
       További információk ezekről a paraméterekről: [Útvonal kiszámítása](https://msdn.microsoft.com/library/ff701717.aspx).
 
       | Beállítás | Érték | Leírás |
       | ------- | ----- | ----------- |
-      | **1. útvonalpont** | <*Indítsa el*> | Adja meg a útvonal forrása. | 
-      | **2. útvonalpont** | <*Vége*> | Adja meg a útvonal cél. | 
-      | **Elkerülés** | None | Adja meg az elemek elkerülése érdekében a útvonalon, például autópályákat, autópályadíjak, és így tovább. A lehetséges értékeket lásd: [útvonal kiszámításához](https://msdn.microsoft.com/library/ff701717.aspx). | 
-      | **Optimalizálás** | timeWithTraffic | Jelölje ki a paramétert, az útvonal, például a távolság, aktuális forgalmi információk, vagy más idő optimalizálása érdekében. Ez a példa ezt az értéket: "timeWithTraffic" | 
-      | **Távolság mértékegysége** | <*igény-szerint*> | Adja meg a egység távolság a útvonal kiszámításához. Ez a példa ezt az értéket: "Mérföldes" | 
-      | **Közlekedési mód** | Vezetés | Adja meg a útvonal utazás módját. A példában ez az érték "Vezetői" | 
-      | **Tranzit dátuma és időpontja** | None | Csak az átvitel közben üzemmódban vonatkozik. | 
-      | **Átvitel dátuma-típusának** | None | Csak az átvitel közben üzemmódban vonatkozik. | 
+      | **1. útvonalpont** | <*Indítsa el*> | Adja meg az útvonal kiindulópontja. | 
+      | **2. útvonalpont** | <*vége*> | Adja meg az útvonal célállomása. | 
+      | **Elkerülés** | None | Adja meg az elemek elkerülése érdekében az útvonal, például autópályák, útdíjak, és így tovább. A lehetséges értékek megtekintéséhez [útvonal kiszámítása](https://msdn.microsoft.com/library/ff701717.aspx). | 
+      | **Optimalizálás** | timeWithTraffic | Válassza ki például távolság, időt a jelenlegi forgalom adatait, és így tovább, az útvonal optimalizálására szolgáló paraméter. Ebben a példában ez az érték: "timeWithTraffic" | 
+      | **Távolság mértékegysége** | <*igény-szerint*> | Adja meg az irányítása kiszámítására távolság egysége. Ebben a példában ez az érték: "Mérföld" | 
+      | **Közlekedési mód** | Vezetés | Adja meg az utazási mód a útvonal. Ebben a példában ez az érték "Vezetői" | 
+      | **Tranzit dátuma és időpontja** | None | Csak a tranzit módra vonatkozik. | 
+      | **Átvitel dátuma-típusú típusa** | None | Csak a tranzit módra vonatkozik. | 
       ||||  
 
-4. Feltétel hozzáadása ellenőrzése, hogy forgalommal aktuális utazás idő elér egy megadott időpontot. Ehhez a példához kövesse a a lemezkép:
+1. [Feltétel hozzáadása](../logic-apps/logic-apps-control-flow-conditional-statement.md) , amely ellenőrzi, hogy a forgalom a jelenlegi utazási idő meghaladja-e adott ideje. Ebben a példában az alábbi lépéseket követve:
 
-   ![Feltétel létrehozása](./media/logic-apps-control-flow-run-steps-group-scopes/build-condition.png)
+   1. Nevezze át a feltételt a következő leírással: **ha forgalmat idő több, mint a megadott időtartam**
 
-   1. Nevezze át a leírást a feltételei: **Ha forgalom a megadott időtartamnál hosszabb ideje**
+   1. Kattintson a bal szélső oszlopban a **válasszon egy értéket** mezőbe, így a dinamikus tartalmak listája jelenik meg. A listában jelölje ki a **utazás időtartama forgalommal** mező, amely másodpercek alatt. 
 
-   2. A paraméter listájából válassza ki a **utazás időtartama forgalom** mező, amely másodpercben. 
+      ![Feltétel létrehozása](./media/logic-apps-control-flow-run-steps-group-scopes/build-condition.png)
 
-   3. Ez az operátor. Válassza a összehasonlító operátor: **nagyobb, mint**
+   1. A középső mezőben válassza ki azt a operátort: **nagyobb, mint**
 
-   4. Adja meg az összehasonlítási érték esetében **600**, amely másodpercben és egyenértékű 10 percre van.
+   1. A jobb szélső oszlopban, adja meg a összehasonlító értéket, amely másodperc és 10 percre equivlent: **600**
 
-5. A feltételben **igaz értéke esetén** fiókirodai "e-mail küldési" művelet hozzáadása az e-mailek szolgáltató. Ez a művelet a adatokkal beállítása alapján ez a kép táblázatban látható módon:
+      Ha elkészült, a feltétel a következő példához hasonlít:
 
-   ![Adja hozzá a "E-mail küldési" művelet "igaz értéke esetén" ág](./media/logic-apps-control-flow-run-steps-group-scopes/send-email.png)
+      ![Befejezett feltétel](./media/logic-apps-control-flow-run-steps-group-scopes/finished-condition.png)
 
-   1. Az a **való** mezőbe írja be az e-mail cím tesztelési célokra.
+1. Az a **ha igaz** ágban, adjon hozzá egy "e-mail küldése" műveletet az e-mail-szolgáltatóhoz. Állítsa be ezt a műveletet a következő kép alatti lépéseket követve:
 
-   2. Az a **tulajdonos** mezőbe írja be ezt a szöveget:
+   ![Adja hozzá a "E-mail küldése" művelet "Ha true" ág](./media/logic-apps-control-flow-run-steps-group-scopes/send-email.png)
+
+   1. Az a **való** mezőbe írja be az e-mail-címét a tesztelési célokra.
+
+   1. Az a **tulajdonos** mezőbe írja be a következő szöveget:
 
       ```Time to leave: Traffic more than 10 minutes```
 
-   3. Az a **törzs** mezőbe írja be a szöveget egy záró szóköz: 
+   1. Az a **törzs** mezőbe írja be a szöveget, záró szóközzel: 
 
       ```Travel time: ```
 
-      Megjelenik a kurzort, amíg a **törzs** mezőt, a dinamikus tartalom listába nyitva marad, hogy választhatja ki, amelyek ezen a ponton a rendelkezésre álló paramétereket.
+      Amíg a kurzor megjelenik a **törzs** mező, a dinamikus tartalmú lista nyitva marad, hogy kiválaszthatja a paramétereket, érhetők el ezen a ponton.
 
-   4. A dinamikus tartalmak listájában válassza a **Kifejezés** lehetőséget.
+   1. A dinamikus tartalmak listájában válassza a **Kifejezés** lehetőséget.
 
-   5. Keresse meg és jelölje ki a **div (-)** függvény.
+   1. Keresse meg és válassza a **div()** függvény. 
+   Vigye az egérmutatót az a függvény zárójelek.
 
-   6. Bár a kurzort a függvénynek zárójelbe belül, válassza ki **dinamikus tartalom** , hogy adhat hozzá a **forgalom időtartama forgalom** paraméter tovább.
+   1. Bár a kurzort a függvény zárójelek között van, válassza ki **dinamikus tartalom** , hogy a dinamikus tartalmak listája jelenik meg. 
+   
+   1. Az a **útvonal lekérése** szakaszban jelölje be a **forgalom időtartama forgalommal** mező.
 
-   7. A **Get útvonal** dinamikus paraméter listájából válassza ki a **forgalom időtartama forgalom** mező.
+      ![Válassza ki a "Forgalom időtartama forgalommal"](./media/logic-apps-control-flow-run-steps-group-scopes/send-email-2.png)
 
-      ![Válassza ki a "Forgalom időtartama forgalom"](./media/logic-apps-control-flow-run-steps-group-scopes/send-email-2.png)
-
-   8. Után a mező feloldása egy olyan JSON formátumban, hozzáadhatja egy **vesszővel** (```,```) és a számát ```60``` , hogy az érték átalakítása **forgalom időtartama forgalom** percre másodperc. 
+   1. A mező feloldása egy olyan JSON-formátumban, miután hozzá egy **vesszővel** (```,```) és a számát ```60``` úgy, hogy az érték konvertálása **forgalom időtartama forgalommal** perc, másodperc. 
    
       ```
       div(body('Get_route')?['travelDurationTraffic'],60)
       ```
 
-      A kifejezés most ebben a példában néz ki:
+      A kifejezés a példához hasonlóan néz ki:
 
-      ![Befejezés kifejezés](./media/logic-apps-control-flow-run-steps-group-scopes/send-email-3.png)  
+      ![A Befejezés kifejezés](./media/logic-apps-control-flow-run-steps-group-scopes/send-email-3.png)  
 
-   9. Győződjön meg arról, hogy a kiválasztott **OK** befejezése.
+   1. Ha elkészült, válassza ki a **OK**.
 
-  10. Után oldja fel a kifejezést, adja hozzá ezt a szöveget kezdődhet szóközzel: ``` minutes```
+  1. Oldja fel a kifejezés, miután adja hozzá ezt a szöveget egy vezető terület: ``` minutes```
   
-      A **törzs** mező most néz ebben a példában:
+     A **törzs** mező a következőhöz hasonló ebben a példában:
 
-      ![Befejeződött a "Törzs" mező](./media/logic-apps-control-flow-run-steps-group-scopes/send-email-4.png)
+     ![Befejezett "Törzs" mező](./media/logic-apps-control-flow-run-steps-group-scopes/send-email-4.png)
 
-6. Mentse a logikai alkalmazást.
+1. Mentse a logikai alkalmazást.
 
-Ezután adja hozzá a hatókör, hogy a konkrét műveletek csoportban, és azok állapotának kiértékelésére.
+Ezután adjon hozzá egy hatókörhöz, hogy bizonyos műveletek csoport, és azok állapotának értékeléséhez.
 
 ## <a name="add-a-scope"></a>Hatókör hozzáadása
 
-1. Ha még nem tette meg, nyissa meg a Logic Apps alkalmazást Logic App tervezőben. 
+1. Ha még nem tette, nyissa meg a logikai alkalmazás a Logikaialkalmazás-tervezőben. 
 
-2. A munkafolyamat-helyet, amelyet a hatókör hozzáadása. Példa:
+1. Hatókör hozzáadása a munkafolyamat helyen, amelyeket szeretne. Ha például a logikai alkalmazás munkafolyamatának a meglévő lépések közötti hatókör hozzáadása, kövesse az alábbi lépéseket: 
 
-   * A logic app munkafolyamat meglévő lépések között hatókör hozzáadása, vigye az egérmutatót a nyíl ahol a hatókör hozzáadni kívánt. 
-   Válassza ki a **pluszjel** (**+**) > **hatókör hozzáadása**.
+   1. Helyezze az egérmutatót a nyíl felett, ahová a hatókör hozzáadása. 
+   Válassza ki a **plusz jelre** (**+**) > **művelet hozzáadása**.
 
-     ![Hatókör hozzáadása](./media/logic-apps-control-flow-run-steps-group-scopes/add-scope.png)
+      ![Hatókör hozzáadása](./media/logic-apps-control-flow-run-steps-group-scopes/add-scope.png)
 
-     Ha hozzá szeretne adni egy hatókört a Logic Apps alkalmazást alján, a munkafolyamat végén válassza **+ új lépés** > **... További** > **hatókör hozzáadása**.
+   1. A Keresés mezőbe írja be szűrőként "hatókör". 
+   Válassza ki a **hatókör** művelet.
 
-3. Most adja hozzá a lépéseket, vagy húzza a meglévő lépéseket, amelyek hatókörében futtatni szeretné. Ehhez a példához húzza ezeket a műveleteket a hatókör:
+## <a name="add-steps-to-scope"></a>Vegyen fel olyan lépéseket hatókör
+
+1. Most adja hozzá a lépéseket, vagy húzza át a meglévő hatókörében futtatni kívánt lépéseket. Ebben a példában húzza át ezeket a műveleteket a hatókör:
       
-   * **Útvonal beolvasása**
-   * **Ha a forgalom megadott időtartamnál hosszabb ideje**, is magában foglalja a **igaz** és **hamis** ágak
+   * **Útvonal lekérése**
+   * **Ha a forgalom idő több, mint a megadott időtartam**, is magában foglalja a **igaz** és **false (hamis)** ágak
 
-   A logikai alkalmazás most már a következőképpen néz ebben a példában:
+   A logikai alkalmazás most már példához hasonlóan néz ki:
 
    ![Hozzáadott hatókör](./media/logic-apps-control-flow-run-steps-group-scopes/scope-added.png)
 
-4. A hatókör adja hozzá olyan feltétel, amely a hatókör állapotát ellenőrzi. Nevezze át a leírást a feltételei: **hatókör sikertelen**
+1. A hatókör alatt adjon hozzá egy feltételt, amely a hatókör állapotát ellenőrzi. Nevezze át a feltételt a következő leírással: **hatókör sikertelen**
 
    ![Hatókör állapotának feltétel hozzáadása](./media/logic-apps-control-flow-run-steps-group-scopes/add-condition-check-scope-status.png)
   
-5. A kifejezés, amely ellenőrzi, hogy a hatókör állapotát egyenlő összeállítása `Failed` vagy `Aborted`.
+1. Adja hozzá a feltétellel, ezek a kifejezések, ellenőrizze, hogy a hatókör állapota "Sikertelen" vagy "Aborted" egyenlő. 
 
-   ![Adja hozzá, amely ellenőrzi a hatókör állapotát](./media/logic-apps-control-flow-run-steps-group-scopes/build-expression-check-scope-status.png)
+   1. Új sor hozzáadásához válassza ki a **Hozzáadás**. 
 
-   Vagy adja meg a kifejezés szövegként, válassza a **speciális módban szerkesztése**.
+   1. Minden egyes sorban kattintson a bal oldali mezőbe, így a dinamikus tartalmak listája jelenik meg. 
+   A dinamikus tartalmú listából válassza ki a **kifejezés**. A beviteli mezőbe írja be a kifejezést, és válassza **OK**: 
+   
+      `result('Scope')[0]['status']`
 
-   ```@equals('@result(''Scope'')[0][''status'']', 'Failed, Aborted')```
+      ![Kifejezés, amely ellenőrzi a hatókör hozzáadása](./media/logic-apps-control-flow-run-steps-group-scopes/check-scope-status.png)
 
-6. Az a **igaz értéke esetén** és **hamis** elágazásokat, vegye fel a végrehajtandó műveleteket szeretne végrehajtani, például küldjön e-mailben vagy egy üzenetet.
+   1. Mindkét sorok kiválasztása **egyenlő** kezelőként. 
+   
+   1. Az összehasonlítás értékeket, az első sorban adja meg `Failed`. 
+   A második sorban adja meg a `Aborted`. 
 
-   ![Adja hozzá, amely ellenőrzi a hatókör állapotát](./media/logic-apps-control-flow-run-steps-group-scopes/handle-true-false-branches.png)
+      Ha elkészült, a feltétel a következő példához hasonlít:
 
-7. Mentse a logikai alkalmazást.
+      ![Kifejezés, amely ellenőrzi a hatókör hozzáadása](./media/logic-apps-control-flow-run-steps-group-scopes/check-scope-status-finished.png)
 
-A befejezett logikai alkalmazás most néz ebben a példában a alakzatokhoz kibontva:
+      Most állítsa a feltétel `runAfter` tulajdonság, a hatókör állapotát ellenőrzi a feltételt, és futtatja a megfelelő műveletet, amely azt adja meg a későbbi lépésekben.
 
-![Befejezett logikai alkalmazás hatókörű](./media/logic-apps-control-flow-run-steps-group-scopes/scopes-overview.png)
+   1. A a **hatókör sikertelen** feltételt, válassza ki a **három pontot ábrázoló** (...) gombra, és válassza **konfigurálása futtassa**.
+
+      !["RunAfter" tulajdonsága konfigurálása](./media/logic-apps-control-flow-run-steps-group-scopes/configure-run-after.png)
+
+   1. Válassza ki a hatókör-állapotok: **sikeres**, **sikertelen**, **kimarad**, és **túllépte az időkorlátot**
+
+      ![Válassza ki a hatókör-állapotok](./media/logic-apps-control-flow-run-steps-group-scopes/select-run-after-statuses.png)
+
+   1. Ha elkészült, válassza ki a **kész**. 
+   A feltétel most jeleníti meg a "-információk" ikont.
+
+1. Az a **ha igaz** és **ha hamis** ágak, adja hozzá a végrehajtani kívánt műveletek alapján minden hatókör állapotát, például az egy e-mailben vagy az üzenet küldése.
+
+   ![A hatókör állapot alapján elvégzendő műveletek hozzáadása](./media/logic-apps-control-flow-run-steps-group-scopes/handle-true-false-branches.png)
+
+1. Mentse a logikai alkalmazást.
+
+A befejezett logikai alkalmazás most már példához hasonlóan néz ki:
+
+![Hatókörrel rendelkező befejezett logikai alkalmazás](./media/logic-apps-control-flow-run-steps-group-scopes/scopes-overview.png)
 
 ## <a name="test-your-work"></a>A munkahelyi tesztelése
 
-A Tervező eszköztáron válassza **futtatása**. A hatókörbe tartozó műveleteket sikeres, a "Hatókör sikeresen befejeződött" üzenet jelenik meg. A hatókört használó műveletek nem sikerül, a "Hatókör nem sikerült" üzenet jelenik meg. 
+A Tervező eszköztárán válassza **futtatása**. Ha a hatókörrel rendelkező műveletek sikeres legyen, "Hatókör sikeres" üzenetet kap. Ha hatókörrel rendelkező műveletek nem sikerül, a "Hatókör nem sikerült" üzenet jelenik meg. 
 
 <a name="scopes-json"></a>
 
-## <a name="json-definition"></a>JSON-definícióból
+## <a name="json-definition"></a>JSON-definíció
 
-Ha kódnézetben dolgozik, megadhat egy hatókör struktúra a Logic Apps alkalmazást JSON-definícióban helyette. Például ez a JSON-definícióból eseményindító és a korábbi logic App műveletek:
+Ha kód nézetben dolgozik, megadhat egy hatókör struktúra a logikai alkalmazás JSON-definíciójában helyette. Ha például itt látható a JSON-definíciót trigger és műveletek az előző logikai alkalmazásban:
 
 ``` json
 "triggers": {
@@ -210,7 +243,7 @@ Ha kódnézetben dolgozik, megadhat egy hatókör struktúra a Logic Apps alkalm
     "recurrence": {
        "frequency": "Minute",
        "interval": 1
-    },
+    }
   }
 }
 ```
@@ -224,7 +257,7 @@ Ha kódnézetben dolgozik, megadhat egy hatókör struktúra a Logic Apps alkalm
         "type": "ApiConnection",
         "inputs": {
           "body": {
-            "Body": "Scope failed",
+            "Body": "Scope failed. Scope status: @{result('Scope')[0]['status']}",
             "Subject": "Scope failed",
             "To": "<your-email@domain.com>"
           },
@@ -245,7 +278,7 @@ Ha kódnézetben dolgozik, megadhat egy hatókör struktúra a Logic Apps alkalm
           "type": "ApiConnection",
           "inputs": {
             "body": {
-              "Body": "None",
+              "Body": "Scope succeeded. Scope status: @{result('Scope')[0]['status']}",
               "Subject": "Scope succeeded",
               "To": "<your-email@domain.com>"
             },
@@ -261,10 +294,28 @@ Ha kódnézetben dolgozik, megadhat egy hatókör struktúra a Logic Apps alkalm
         }
       }
     },
-    "expression": "@equals('@result(''Scope'')[0][''status'']', 'Failed, Aborted')",
+    "expression": {
+      "or": [ 
+         {
+            "equals": [ 
+              "@result('Scope')[0]['status']", 
+              "Failed"
+            ]
+         },
+         {
+            "equals": [
+               "@result('Scope')[0]['status']", 
+               "Aborted"
+            ]
+         } 
+      ]
+    },
     "runAfter": {
       "Scope": [
-        "Succeeded"
+        "Failed",
+        "Skipped",
+        "Succeeded",
+        "TimedOut"
       ]
     }
   },
@@ -291,14 +342,14 @@ Ha kódnézetben dolgozik, megadhat egy hatókör struktúra a Logic Apps alkalm
         },
         "runAfter": {}
       },
-      "If_traffic_time_more_than_specified_time": {
+      "If_traffic_time_is_more_than_specified_time": {
         "type": "If",
         "actions": {
           "Send_mail_when_traffic_exceeds_10_minutes": {
             "type": "ApiConnection",
             "inputs": {
               "body": {
-                 "Body": "Travel time:@{div(body('Get_route')?['travelDurationTraffic'], 60)} minutes",
+                 "Body": "Travel time:@{div(body('Get_route')?['travelDurationTraffic'],60)} minutes",
                  "Subject": "Time to leave: Traffic more than 10 minutes",
                  "To": "<your-email@domain.com>"
               },
@@ -313,7 +364,16 @@ Ha kódnézetben dolgozik, megadhat egy hatókör struktúra a Logic Apps alkalm
             "runAfter": {}
           }
         },
-        "expression": "@greater(body('Get_route')?['travelDurationTraffic'], 600)",
+        "expression": {
+          "and" : [
+            {
+               "greater": [ 
+                  "@body('Get_route')?['travelDurationTraffic']", 
+                  600
+               ]
+            }
+          ]
+        },
         "runAfter": {
           "Get_route": [
             "Succeeded"
@@ -323,17 +383,17 @@ Ha kódnézetben dolgozik, megadhat egy hatókör struktúra a Logic Apps alkalm
     },
     "runAfter": {}
   }
-}
+},
 ```
 
 ## <a name="get-support"></a>Támogatás kérése
 
 * A kérdéseivel látogasson el az [Azure Logic Apps fórumára](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
-* Küldje el, vagy szavazna funkciók és javaslatok, látogasson el a [Azure Logic Apps felhasználói visszajelzési webhelyet](http://aka.ms/logicapps-wish).
+* Küldje el, vagy szavazhat a funkciók és javaslatok, látogasson el a [Azure Logic Apps felhasználói visszajelzések oldalon](http://aka.ms/logicapps-wish).
 
 ## <a name="next-steps"></a>További lépések
 
-* [A lépéseket (feltételes utasítások) feltétel alapján](../logic-apps/logic-apps-control-flow-conditional-statement.md)
-* [Futtatás (kapcsoló utasítások) eltérő értékek alapján](../logic-apps/logic-apps-control-flow-switch-statement.md)
+* [Hajtsa végre a lépéseket, egy feltételt (feltételes kifejezések) alapján](../logic-apps/logic-apps-control-flow-conditional-statement.md)
+* [Hajtsa végre a lépéseket, a különböző értékek (switch-utasítások) alapján](../logic-apps/logic-apps-control-flow-switch-statement.md)
 * [Futtassa, és ismételje meg a (hurkok)](../logic-apps/logic-apps-control-flow-loops.md)
-* [Futtatás vagy egyesítési párhuzamos lépéseket (ágak)](../logic-apps/logic-apps-control-flow-branches.md)
+* [Futtatás vagy egyesítési párhuzamos lépéseket (ág)](../logic-apps/logic-apps-control-flow-branches.md)

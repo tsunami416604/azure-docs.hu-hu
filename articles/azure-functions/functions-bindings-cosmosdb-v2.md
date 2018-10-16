@@ -11,18 +11,18 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 11/21/2017
 ms.author: glenga
-ms.openlocfilehash: 0ea2a58e61d781e6ebfb72b860a3b7aed6ce0c7d
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: 0726bd3ded0618d7fb45a589c21325717da7a5cf
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47394478"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49319030"
 ---
 # <a name="azure-cosmos-db-bindings-for-azure-functions-2x"></a>Az Azure Functions az Azure Cosmos DB-kötéseket 2.x
 
 > [!div class="op_single_selector" title1="Select the version of the Azure Functions runtime you are using: "]
-> * [1. verzió – Általánosan elérhető](functions-bindings-cosmosdb.md)
-> * [2. verzió – Előzetes verzió](functions-bindings-cosmosdb-v2.md)
+> * [1-es verzió](functions-bindings-cosmosdb.md)
+> * [2. verzió](functions-bindings-cosmosdb-v2.md)
 
 Ez a cikk azt ismerteti, hogyan használható a [Azure Cosmos DB](..\cosmos-db\serverless-computing-database.md) az Azure Functions kötések 2.x. Az Azure Functions támogatja a-trigger, bemeneti és kimeneti kötések az Azure Cosmos DB.
 

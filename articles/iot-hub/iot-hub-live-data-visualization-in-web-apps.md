@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 04/11/2018
 ms.author: rangv
-ms.openlocfilehash: 445bc4b693c8129c4faf42fee3b2be34d90846ae
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: d40bcc8e6fd47a00618b98972f92c1e6fa019612
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44160251"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49318520"
 ---
 # <a name="visualize-real-time-sensor-data-from-your-azure-iot-hub-by-using-the-web-apps-feature-of-azure-app-service"></a>Az Azure App Service Web Apps szolgáltatásának használatát az Azure IoT hub valós idejű érzékelői adatainak megjelenítése
 
@@ -63,6 +63,7 @@ Ebben az oktatóanyagban elsajátíthatja, hogyan jelenítheti meg az IoT hub á
    |---------------------------------------|--------------------------------------------------------------|
    | Azure.IoT.IoTHub.ConnectionString     | Az Azure parancssori felületen kapott                                      |
    | Azure.IoT.IoTHub.ConsumerGroup        | A fogyasztói csoportot adja hozzá az az IoT hub nevét  |
+   | WEBSITE_NODE_DEFAULT_VERSION          | 8.9.4                                                        |
 
    ![A webalkalmazás a kulcs/érték párok beállítások hozzáadása](media/iot-hub-live-data-visualization-in-web-apps/4_web-app-settings-key-value-azure.png)
 

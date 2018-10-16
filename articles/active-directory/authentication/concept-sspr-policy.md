@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: 13b21c4f8fde2b11722d012c207ed75447a7f970
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.openlocfilehash: 3e3b608d3928536d654a594c42cbcc955d620d98
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49114648"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49321733"
 ---
 # <a name="password-policies-and-restrictions-in-azure-active-directory"></a>Jelszóházirendek és -korlátozások az Azure Active Directoryban
 
@@ -27,7 +27,7 @@ Ez a cikk ismerteti a jelszóházirendek és -összetettségi követelményeknek
 
 Az a két-kezdő szabályzat **rendszergazdák nem rendelkezik a biztonsági kérdések használata**.
 
- A két-kezdő szabályzat hitelesítési adatok, például egy e-mail-cím két adatokra van szükség *és* telefonszám. A két-kezdő szabályzat érvényesül, a következő körülmények között:
+A két-kezdő szabályzat hitelesítési adatok, például egy e-mail-cím két adatokra van szükség *és* telefonszám. A két-kezdő szabályzat érvényesül, a következő körülmények között:
 
 * A következő Azure-rendszergazdai szerepkörök érintettek:
   * Ügyfélszolgálati adminisztrátor
@@ -50,29 +50,17 @@ Az a két-kezdő szabályzat **rendszergazdák nem rendelkezik a biztonsági ké
   * CRM-szolgáltatásadminisztrátor
   * A Power BI-szolgáltatásadminisztrátor
 
-* Ha a 30 nap eltelt a próba-előfizetés
-
-  vagy
-
-* Egy személyes tartomány jelen, mint például a contoso.com
-
-  vagy
-
+* Ha a 30 nap eltelt a egy próbaverziós előfizetés; vagy
+* Egy személyes tartomány jelen, mint például a contoso.com; vagy
 * Az Azure AD Connect visszaszinkronizálja identitásokat a helyszíni címtárból
 
 ### <a name="exceptions"></a>Kivételek
 
 Egy egy-kezdő szabályzat megköveteli a hitelesítési adatok, például egy e-mail-cím, egy darab *vagy* telefonszám. Egy egy-kezdő szabályzat érvényesül, a következő körülmények között:
 
-* A próba-előfizetés első 30 napján belül
-
-  vagy
-
-* Egy személyes tartomány nem lesznek jelen (*. onmicrosoft.com)
-
-  és
-
-  Az Azure AD Connect nem szinkronizál identitásokat
+* Próba-előfizetés; az első 30 napján belül vagy
+* Egy személyes tartomány nem lesznek jelen (*. onmicrosoft.com); és
+* Az Azure AD Connect nem szinkronizál identitásokat
 
 ## <a name="userprincipalname-policies-that-apply-to-all-user-accounts"></a>UserPrincipalName házirendek vonatkoznak az összes felhasználói fiók
 
@@ -117,7 +105,7 @@ Első lépésként kell [töltse le és telepítse az Azure AD PowerShell modul]
 ### <a name="check-the-expiration-policy-for-a-password"></a>A jelszó-elévülési szabályzatának ellenőrzése
 
 1. A vállalati rendszergazda hitelesítő adataival csatlakozhat Windows PowerShell.
-2. Hajtsa végre a következő parancsok egyikét:
+1. Hajtsa végre a következő parancsok egyikét:
 
    * Ha soha ne járjon le a felhasználóhoz tartozó jelszó értéke megtekintéséhez futtassa az alábbi parancsmagot az egyszerű felhasználónév használatával (például *aprilr@contoso.onmicrosoft.com*) vagy a felhasználó ellenőrizni kívánja a felhasználói azonosító: `Get-AzureADUser -ObjectId <user ID> | Select-Object @{N="PasswordNeverExpires";E={$_.PasswordPolicies -contains "DisablePasswordExpiration"}}`
    * Megtekintheti a **jelszó sohasem jár le** beállítás az összes felhasználó számára, futtassa a következő parancsmagot: `Get-AzureADUser -All $true | Select-Object UserPrincipalName, @{N="PasswordNeverExpires";E={$_.PasswordPolicies -contains "DisablePasswordExpiration"}}`
@@ -125,7 +113,7 @@ Első lépésként kell [töltse le és telepítse az Azure AD PowerShell modul]
 ### <a name="set-a-password-to-expire"></a>Állítsa be a jelszó lejár
 
 1. A vállalati rendszergazda hitelesítő adataival csatlakozhat Windows PowerShell.
-2. Hajtsa végre a következő parancsok egyikét:
+1. Hajtsa végre a következő parancsok egyikét:
 
    * Egy felhasználó jelszavának beállításához, úgy, hogy a jelszó lejár, az egyszerű felhasználónév vagy a felhasználó a felhasználói azonosító használatával futtassa a következő parancsmagot: `Set-AzureADUser -ObjectId <user ID> -PasswordPolicies None`
    * Az összes olyan felhasználó jelszavának beállítása a szervezet úgy, hogy a lejárat után, használja a következő parancsmagot: `Get-AzureADUser -All $true | Set-AzureADUser -PasswordPolicies None`
@@ -133,7 +121,7 @@ Első lépésként kell [töltse le és telepítse az Azure AD PowerShell modul]
 ### <a name="set-a-password-to-never-expire"></a>Soha ne járjon le a jelszó beállítása
 
 1. A vállalati rendszergazda hitelesítő adataival csatlakozhat Windows PowerShell.
-2. Hajtsa végre a következő parancsok egyikét:
+1. Hajtsa végre a következő parancsok egyikét:
 
    * Egy felhasználó soha ne járjon le a jelszó beállítása, az egyszerű felhasználónév vagy a felhasználó a felhasználói azonosító használatával futtassa a következő parancsmagot: `Set-AzureADUser -ObjectId <user ID> -PasswordPolicies DisablePasswordExpiration`
    * Az összes olyan felhasználó jelszavának beállítása soha ne járjon le a szervezetekben, futtassa a következő parancsmagot: `Get-AzureADUser -All $true | Set-AzureADUser -PasswordPolicies DisablePasswordExpiration`

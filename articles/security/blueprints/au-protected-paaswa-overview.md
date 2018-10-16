@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 08/23/2018
 ms.author: meladie
-ms.openlocfilehash: ea9c9d773cb863c6ee2b052fcbd097275f00fc87
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: d16bb218526a6768ed9f8a6babf5feb186a2b225
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44300987"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49321597"
 ---
 # <a name="azure-security-and-compliance-blueprint---paas-web-application-for-australia-protected"></a>Azure biztonsági és megfelelőségi terv – PaaS-webalkalmazás Ausztráliában védett
 
@@ -82,7 +82,6 @@ Ez a megoldás létrehoz egy virtuális gépet egy tartományhoz csatlakoztatott
 -   [Az Azure Diagnostics bővítmény](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-extensions-diagnostics-template)
 -   [Az Azure Disk Encryption](https://docs.microsoft.com/azure/security/azure-security-disk-encryption) az Azure Key Vaulttal
 -   Egy [automatikus leállítási házirend](https://azure.microsoft.com/blog/announcing-auto-shutdown-for-vms-using-azure-resource-manager/) csökkenthető a fogyasztása a virtuális gépi erőforrások, amikor nincs használatban
--   [Windows Defender Credential Guard](https://docs.microsoft.com/windows/access-protection/credential-guard/credential-guard) engedélyezve van, hogy a hitelesítő adatokat és egyéb titkos adatait, amely el van különítve a futó operációs rendszert a védett környezetben futnak
 
 **App Service Environment v2-környezetet**: A [Azure App Service Environment-környezet](https://docs.microsoft.com/azure/app-service/environment/intro) egy App Service-funkció, amely a biztonságos futtatása nagy méretű App Service-alkalmazások teljesen elkülönített és dedikált környezetet biztosít.
 
@@ -101,7 +100,7 @@ Ez az architektúra App Service Environment-környezetek használatának engedé
 - [Webalkalmazási tűzfal – korlátozzák az adatokat](https://docs.microsoft.com/azure/app-service-web/app-service-app-service-environment-web-application-firewall)
 - Lehetővé teszi [Azure SQL Database-forgalom](https://docs.microsoft.com/azure/app-service-web/app-service-app-service-environment-network-architecture-overview)
 
-**Az Azure Web App**: [Azure Web Apps](https://docs.microsoft.com/azure/app-service/) lehetővé teszi ügyfeleink számára hozhat létre és üzemeltethet webalkalmazásokat az általuk választott programozási nyelven infrastruktúra kezelése nélkül. Automatikus méretezést biztosít, és magas rendelkezésre állás, Windows és Linux egyaránt támogatja, és lehetővé teszi az automatikus telepítéseket a GitHub-, Azure DevOps-szolgáltatásokkal, vagy bármely egyéb Git-adattárból.
+**Az Azure Web App**: [Azure Web Apps](https://docs.microsoft.com/azure/app-service/) lehetővé teszi ügyfeleink számára hozhat létre és üzemeltethet webalkalmazásokat az általuk választott programozási nyelven infrastruktúra kezelése nélkül. Automatikus méretezést és magas rendelkezésre állást kínál, támogatja a Windows és a Linux rendszert is, valamint lehetővé teszi az automatikus üzembe helyezéseket a GitHub, az Azure DevOps Services vagy bármely egyéb Git-adattár használatával.
 
 ### <a name="virtual-network"></a>Virtual Network
 Az architektúra egy 10.200.0.0/16 címtere a privát virtuális hálózat határozza meg.

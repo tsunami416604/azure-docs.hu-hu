@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/27/2018
 ms.author: alzam
-ms.openlocfilehash: bc8e95b07d984505fc0e5fdad41fe120463b5b0e
-ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
+ms.openlocfilehash: c370808d06f31f9d79c99ca0f20f613d9e335d60
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/01/2018
-ms.locfileid: "47585526"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49339051"
 ---
 # <a name="troubleshoot-point-to-site-vpn-connections-from-mac-os-x-vpn-clients"></a>A Mac OS X VPN-ügyfelek a pont – hely VPN-kapcsolatok hibaelhárítása
 
@@ -66,7 +66,9 @@ Ha, próbálja ki az előző lépést, és mindent megfelelően van konfigurálv
 1. Szűrés *isakmp* tekintse meg a **IKE_SA** csomagokat. Tekintse meg az SA-javaslat részletei alapján elvileg a **adattartalom: biztonsági társítás**. 
 2. Ellenőrizze, hogy az ügyfél és a kiszolgáló rendelkezik-e a közös.
 
-  ![csomag](./media/vpn-gateway-troubleshoot-point-to-site-osx-ikev2/packet5.jpg)
+  ![csomag](./media/vpn-gateway-troubleshoot-point-to-site-osx-ikev2/packet5.jpg) 
+  
+3. Ha nem érkezik válasz server, az a hálózati nyomkövetés, ellenőrizze a engedélyezte az IKEv2 protokollt, az Azure Portal webhelyen az Azure-átjáró konfigurációs lapján.
 
 ## <a name="next-steps"></a>További lépések
 További segítségért lásd: [Support](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).

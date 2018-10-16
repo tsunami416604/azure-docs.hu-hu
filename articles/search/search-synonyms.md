@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 04/20/2018
 manager: jlembicz
 ms.author: nateko
-ms.openlocfilehash: 579d92f41e41cdb38d4a1eb0bb6e56ce4d4b2a45
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: 9f887b065cf4fcc295873ee969030c67d17d9e2f
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47093214"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49318469"
 ---
 # <a name="synonyms-in-azure-search"></a>Az Azure Search szolgáltatásban a szinonimák
 
@@ -148,6 +148,8 @@ A szinonimák szolgáltatást a szinonimákat a vagy művelettel az eredeti lek�
 Szinonima funkció keresési lekérdezéseket vonatkozik, és nem vonatkozik a szűrők vagy metszettel. Hasonlóképpen javaslatok alapuló csak az eredeti kifejezés; Szinonima egyezik a válaszban nem jelennek meg.
 
 Szinonima bővülésből nem vonatkoznak a keresőkifejezést helyettesítő; előtag, az intelligens, és a reguláris kifejezés feltételei nem kibontva.
+
+Ha kell tennie, amelyekre vonatkozik a szinonima bővítése és helyettesítő, reguláris kifejezéssel vagy az intelligens keresés egyetlen lekérdezést, kombinálhatja a lekérdezéseket, a OR szintaxis használatával. Például úgy, hogy a szinonimák helyettesítő karaktereket is tartalmazó egyszerű lekérdezési szintaxis, az előfizetési időszak lenne `<query> | <query>*`.
 
 ## <a name="tips-for-building-a-synonym-map"></a>Tippek a szinonimatérkép létrehozásához
 

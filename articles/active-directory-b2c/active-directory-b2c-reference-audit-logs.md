@@ -10,12 +10,12 @@ ms.workload: identity
 ms.date: 08/04/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 1697830f699c9cd50548bcfcdd038348db314020
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: 67e57faf37697697bee74597a40db39149699fe5
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38969659"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49320237"
 ---
 # <a name="accessing-azure-ad-b2c-audit-logs"></a>Auditnaplók eléréséhez az Azure AD B2C-vel
 
@@ -24,7 +24,7 @@ Az Azure Active Directory B2C (Azure AD B2C-vel) tartalmazó rendszertevékenys�
 > [!IMPORTANT]
 > Auditnaplók csak megmaradnak a hét napja. Tervezze meg, töltse le és tárolja a naplókat az alább látható, ha szüksége van-e a hosszabb adatmegőrzési idő módszerek egyikének használatával. 
 
-##<a name="overview-of-activities-available-in-the-b2c-category-of-audit-logs"></a>A naplók a B2C kategóriában elérhető tevékenységek áttekintése
+## <a name="overview-of-activities-available-in-the-b2c-category-of-audit-logs"></a>A naplók a B2C kategóriában elérhető tevékenységek áttekintése
 A **B2C** kategória-naplók az alábbi típusú tevékenységeket tartalmazza:
 |Tevékenység típusa |Leírás  |
 |---------|---------|
@@ -38,10 +38,10 @@ A **B2C** kategória-naplók az alábbi típusú tevékenységeket tartalmazza:
 > [!NOTE]
 > A felhasználói objektum CRUD tevékenységhez, tekintse meg a **alapvető könyvtár** kategória.
 
-##<a name="example-activity"></a>Példa tevékenység
+## <a name="example-activity"></a>Példa tevékenység
 Az alábbi példában látható, amikor egy felhasználó jelentkezik be egy külső identitásszolgáltatónak rögzített adatokat: ![Auditnaplók – példa](./media/active-directory-b2c-reference-audit-logs/audit-logs-example.png)
 
-##<a name="accessing-audit-logs-through-the-azure-portal"></a>Az Azure Portalon keresztül éri el a vizsgálati naplók
+## <a name="accessing-audit-logs-through-the-azure-portal"></a>Az Azure Portalon keresztül éri el a vizsgálati naplók
 1. Nyissa meg az [Azure Portal](https://portal.azure.com). Győződjön meg róla, hogy a B2C-címtárban.
 2. Kattintson a **Azure Active Directory** a Kedvencek sávra a bal oldalon található 
     
@@ -62,18 +62,18 @@ Látni fogja az elmúlt hét napban naplózott tevékenységek listája.
 - Kattint egy adott sorra a listában, ha egy környezetfüggő a jobb oldali mezőbe megjelenik a tevékenység társított további attribútumok
 - Kattintson a **letöltése** tevékenységek letöltése csv-fájlként
 
-##<a name="accessing-audit-logs-through-the-azure-ad-reporting-api"></a>Az Azure AD reporting API keresztül éri el a vizsgálati naplók
+## <a name="accessing-audit-logs-through-the-azure-ad-reporting-api"></a>Az Azure AD reporting API keresztül éri el a vizsgálati naplók
 Auditnaplók más tevékenységek azonos folyamatra számára közzétett Azure Active Directoryban, így azok keresztül érhetők el a [Azure Active Directory reporting API](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-api-audit-reference). 
 
-###<a name="prerequisites"></a>Előfeltételek
+### <a name="prerequisites"></a>Előfeltételek
 Az Azure ad reporting API hitelesítésére először kell regisztrálni egy alkalmazást. Ügyeljen arra, hogy kövesse a [az Azure AD reporting API elérésének előfeltételeit](https://azure.microsoft.com/documentation/articles/active-directory-reporting-api-getting-started/).
 
-###<a name="accesing-the-api"></a>Az API-t egypéldányú
+### <a name="accesing-the-api"></a>Az API-t egypéldányú
 Az API-n keresztül az Azure AD B2C-naplók letöltéséhez, a naplók szűrése szeretné a **B2C** kategória. Szűrés kategória szerint, használja a lekérdezési karakterlánc paramétereként az Azure AD reporting API-végpont hívásakor, ahogy az alábbi:
 
 `https://graph.windows.net/your-b2c-tentant.onmicrosoft.com/activities/audit?api-version=beta&$filter=category eq 'B2C'`
 
-###<a name="powershell-script"></a>PowerShell-szkript
+### <a name="powershell-script"></a>PowerShell-szkript
 Az alábbi parancsprogram azt szemlélteti, lekérdezése az Azure AD reporting API és az eredményeket JSON-fájlként tárolja a PowerShell segítségével:
 
 ```powershell

@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: 43d2ba496be90e9e87185e6365dd998adccfa09d
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 3d9d6aef4fafd6013c86fd5d5883222c0f32b34d
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48804531"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49319371"
 ---
 # <a name="what-is-password-writeback"></a>Mi a jelszóvisszaíró?
 
@@ -43,6 +43,7 @@ A jelszóvisszaíró biztosítja:
 
 > [!Note]
 > A jelszóvisszaíró található védett csoportok a helyszíni Active Directoryban lévő felhasználói fiókok nem használható. Védett csoportokkal kapcsolatos további információkért lásd: [védett fiókok és csoportok az Active Directory](https://technet.microsoft.com/library/dn535499.aspx).
+>
 
 ## <a name="licensing-requirements-for-password-writeback"></a>Jelszóvisszaíró licencelési követelményeket
 
@@ -69,28 +70,30 @@ Amikor összevont vagy a jelszó kivonatát szinkronizálja a felhasználói kí
 1. Ellenőrzi, milyen típusú jelszót a felhasználó tartozik történik. Ha a jelszót a helyszínen kezel:
    * Egy-ellenőrzést hajtanak végre, ha a jelszóvisszaíró szolgáltatás működik és van-e. Ha igen, a felhasználó folytassa.
    * A jelszóvisszaíró szolgáltatás nem működik, ha a felhasználó értesítést kap, hogy a jelszó jelenleg nem állítható alaphelyzetbe.
-2. Ezután a felhasználó a megfelelő hitelesítési kapu továbbítja, és eléri a **jelszó alaphelyzetbe állítása** lapot.
-3. A felhasználó kiválaszt egy új jelszót, és megerősíti azt.
-4. Amikor a felhasználó kiválasztja **küldés**, a titkosítatlan szöveges jelszó a jelszóvisszaíró telepítés során létrehozott szimmetrikus kulcs titkosítva van.
-5. A titkosított jelszót tartalmazza a bérlő-specifikus a service bus relay (beállított Önnek a jelszóvisszaíró telepítés közben) egy HTTPS-csatornán keresztül küldött hasznos. A relay védi, amely csak a helyszíni telepítés tudja, hogy véletlenszerűen létrehozott jelszót.
-6. Az üzenet elérte a service bus, a jelszó-visszaállítási végpont automatikusan felébred, és láthatja, hogy a visszaállítási kérelem függőben van.
-7. A szolgáltatás majd keres a felhasználó a felhő forráshorgony attribútumának használatával. A keresés sikeres: a
+1. Ezután a felhasználó a megfelelő hitelesítési kapu továbbítja, és eléri a **jelszó alaphelyzetbe állítása** lapot.
+1. A felhasználó kiválaszt egy új jelszót, és megerősíti azt.
+1. Amikor a felhasználó kiválasztja **küldés**, a titkosítatlan szöveges jelszó a jelszóvisszaíró telepítés során létrehozott szimmetrikus kulcs titkosítva van.
+1. A titkosított jelszót tartalmazza a bérlő-specifikus a service bus relay (beállított Önnek a jelszóvisszaíró telepítés közben) egy HTTPS-csatornán keresztül küldött hasznos. A relay védi, amely csak a helyszíni telepítés tudja, hogy véletlenszerűen létrehozott jelszót.
+1. Az üzenet elérte a service bus, a jelszó-visszaállítási végpont automatikusan felébred, és láthatja, hogy a visszaállítási kérelem függőben van.
+1. A szolgáltatás majd keres a felhasználó a felhő forráshorgony attribútumának használatával. A keresés sikeres: a
 
    * A user objektum léteznie kell az Active Directory összekötőterében.
    * A user objektum a megfelelő (MV) metaverzum-objektum kell társítani.
    * A user objektum a megfelelő Azure Active Directory-összekötő objektumot kell társítani.
-   * Az Active Directory-összekötő objektum történő hivatkozás a MV rendelkeznie kell a szinkronizálási szabály `Microsoft.InfromADUserAccountEnabled.xxx` hivatkozásra. <br> <br>
+   * Az Active Directory-összekötő objektum történő hivatkozás a MV rendelkeznie kell a szinkronizálási szabály `Microsoft.InfromADUserAccountEnabled.xxx` hivatkozásra.
+   
    A hívást a felhőben érhető el, ha a szinkronizálási motor használja a **cloudAnchor** keresse ki az Azure Active Directory összekötőtér objektuma attribútum. Majd követi a hivatkozást az MV objektumra, és ezután követi a hivatkozást az Active Directory-objektumra. Több Active Directory-objektumok (Többerdős) ugyanaz a felhasználó számára is lehet, mert a szinkronizálási motor támaszkodik a `Microsoft.InfromADUserAccountEnabled.xxx` hivatkozást választja ki a megfelelőt.
 
    > [!Note]
    > Eredményeként a logikai jelszó a jelszóvisszaíró működjön az Azure AD Connect képesnek kell lennie az elsődleges tartományvezérlő (PDC) emulátor folytatott kommunikációhoz. Ezt manuálisan engedélyezni kell, ha az Azure AD Connect csatlakozhat a PDC-emulátor. Kattintson a jobb gombbal a **tulajdonságok** az Active Directory szinkronizálási összekötőjének, majd válassza ki **könyvtárpartíciók konfigurálásának**. Itt keresse meg a **tartományvezérlő kapcsolati beállításainak** szakaszt, és válassza a jelölőnégyzetét **csak az előnyben részesített tartományvezérlők használatának**. Akkor is, ha az előnyben részesített tartományvezérlő nem egy PDC-emulátor, az Azure AD Connect megpróbál kapcsolódni az elsődleges tartományvezérlő jelszóvisszaíró.
 
-8. Miután a felhasználók fiókot talál, a jelszót a megfelelő Active Directory-erdő közvetlenül a kísérlet történik.
-9. Ha a jelszó set művelet sikeres, a felhasználó van, hogy rendelkezik a jelszó megváltozott.
+1. Miután a felhasználók fiókot talál, a jelszót a megfelelő Active Directory-erdő közvetlenül a kísérlet történik.
+1. Ha a jelszó set művelet sikeres, a felhasználó van, hogy rendelkezik a jelszó megváltozott.
    > [!NOTE]
    > A felhasználó Jelszókivonat a Jelszókivonat-szinkronizálás használatával szinkronizálva az Azure AD, ha esetén megvan az esélye, hogy a helyszíni Jelszóházirend, mint a felhőbeli jelszóházirend gyengébb. Ebben az esetben a helyi házirend van érvényben. Ez a házirend biztosítja, hogy a helyi házirend van érvényben a felhőben, függetlenül attól egyszeri bejelentkezést biztosít a Jelszókivonat-szinkronizálás vagy az összevonási használatakor.
+   >
 
-10. A jelszó beállítása a művelet sikertelen lesz, ha a hiba kéri a felhasználót, próbálkozzon újra. A művelet sikertelen lehet, mert:
+1. A jelszó beállítása a művelet sikertelen lesz, ha a hiba kéri a felhasználót, próbálkozzon újra. A művelet sikertelen lehet, mert:
    * A szolgáltatás le lett.
    * A jelszó kiválasztották nem felelt meg a szervezet szabályzatainak.
    * Nem található a felhasználó a helyi Active Directoryban.
@@ -107,10 +110,10 @@ A jelszóvisszaíró szolgáltatás rendkívül biztonságos. Az adatok védelme
    * A service bus relay létrehozása után egy erős szimmetrikus kulcs jön létre, amely titkosítja a jelszót, mivel származik, a hálózaton keresztül szolgál. Ezt a kulcsot csak él a vállalat titkoskód-tárolót a felhőben, amely fokozottan zárolja, és naplózni, mint bármely más jelszót a címtárban.
 * **Iparági standard Transport Layer Security (TLS)**
    1. Ha a jelszó alaphelyzetbe állítása, vagy módosítsa a művelethez szükséges, a felhőben, a titkosítatlan szöveges jelszó a nyilvános kulccsal titkosított.
-   2. A titkosított jelszót kerül egy HTTPS-üzenetet, amely szerint a service bus Relay használatával történő Microsoft SSL-tanúsítványok használatával egy titkosított csatornán keresztül továbbítja.
-   3. Az üzenet érkezik a service bus, miután a helyi ügynök felébred, és a service bus által a korábban létrehozott erős jelszóval hitelesíti magát.
-   4. A helyi ügynök szerzi be a titkosított üzenetekre, és visszafejti a titkos kulcs használatával.
-   5. A helyi ügynök próbál állítsa be a jelszót az AD DS SetPassword API-n keresztül. Ez a lépés nem milyen tevékenységeket engedélyez a az Active Directory a helyszíni jelszóházirend (például az összetettséget, kor, előzményei és szűrők) érvényesítése is a felhőben.
+   1. A titkosított jelszót kerül egy HTTPS-üzenetet, amely szerint a service bus Relay használatával történő Microsoft SSL-tanúsítványok használatával egy titkosított csatornán keresztül továbbítja.
+   1. Az üzenet érkezik a service bus, miután a helyi ügynök felébred, és a service bus által a korábban létrehozott erős jelszóval hitelesíti magát.
+   1. A helyi ügynök szerzi be a titkosított üzenetekre, és visszafejti a titkos kulcs használatával.
+   1. A helyi ügynök próbál állítsa be a jelszót az AD DS SetPassword API-n keresztül. Ez a lépés nem milyen tevékenységeket engedélyez a az Active Directory a helyszíni jelszóházirend (például az összetettséget, kor, előzményei és szűrők) érvényesítése is a felhőben.
 * **Üzenet-érvényességi szabályzatok**
    * Az üzenetet a service bus helyezkedik el, mert a helyszíni szolgáltatással nem működik, ha ez túllépi az időkorlátot, és néhány perc múlva törlődik. Az időkorlát és az üzenet eltávolítása növeli a biztonságot is.
 

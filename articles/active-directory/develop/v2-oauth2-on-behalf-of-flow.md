@@ -17,12 +17,12 @@ ms.date: 06/06/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: da13b7b7b9bd39692db422a315383e0f12aae453
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: 8ff46246d46a6028bc83b8fdf9c984e87f5578a5
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43344876"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49320305"
 ---
 # <a name="azure-active-directory-v20-and-oauth-20-on-behalf-of-flow"></a>Az Azure Active Directory 2.0-s verzió és az OAuth 2.0-alapú meghatalmazásos folyamat
 Az OAuth 2.0-alapú meghatalmazásos folyamat szolgál a használati eset, ahol az alkalmazás meghívja a szolgáltatás/webes API-kat, amelynek be kell meghívni egy másik szolgáltatás/webes API-t. A cél pedig propagálása a delegált felhasználó identitása és a kérelem láncot engedélyeket. A középső rétegű szolgáltatás hitelesített kéréseket küld az alárendelt szolgáltatás kell biztonságossá tételéhez egy hozzáférési jogkivonatot az Azure Active Directory (Azure AD), a felhasználó nevében.
@@ -33,7 +33,7 @@ Az OAuth 2.0-alapú meghatalmazásos folyamat szolgál a használati eset, ahol 
 
 
 > [!IMPORTANT]
-> A [típusú implicit engedélyezés](v2-oauth2-implicit-grant-flow.md) nem használható az On-meghatalmazásos folyamat - gyógyfürdők meg kell felelnie a (implicit folyamat) hozzáférési jogkivonatot egy középső rétegű bizalmas ügyfél OBO folyamatok végrehajtásához. Lásd: [korlátozások](#client-limitations) , amelyen az ügyfelek a alapú meghatalmazásos hívásokat hajthat végre további részletekért.  
+> 2018 május egy `id_token` nem használható az On-meghatalmazásos folyamat - gyógyfürdők meg kell felelnie egy **hozzáférés** tokent egy középső rétegű bizalmas ügyfél számára, hogy OBO folyamatok. Lásd: [korlátozások](#client-limitations) , amelyen az ügyfelek a alapú meghatalmazásos hívásokat hajthat végre további részletekért.
 
 ## <a name="protocol-diagram"></a>Protokoll diagramja
 Tegyük fel, hogy a felhasználó hitelesítése egy alkalmazást a a a [OAuth 2.0 hitelesítési kód adja meg a folyamat](v2-oauth2-auth-code-flow.md). Ezen a ponton az alkalmazás rendelkezik-e a hozzáférési jogkivonat *az API-t A* (token A) a felhasználói jogcímek és a középső rétegű elérésére engedélyt a webes API-t (API-t A). Most API-t A kell egy hitelesített kéréseknél az alsóbb rétegbeli webes API-hoz (API-t, B).

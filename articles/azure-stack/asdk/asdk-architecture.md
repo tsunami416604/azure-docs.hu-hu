@@ -1,6 +1,6 @@
 ---
-title: Az Azure verem Development Kit architektúrája |} Microsoft Docs
-description: Az Azure verem Development Kit (ASDK) architektúráját ismerteti.
+title: Az Azure Stack Development Kit architektúrája |} A Microsoft Docs
+description: Az Azure Stack Development Kit (ASDK) architektúrát ismerteti.
 services: azure-stack
 documentationcenter: ''
 author: jeffgilb
@@ -12,43 +12,43 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/16/2018
+ms.date: 10/15/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: 68da3ac0eb135f5956dfea76e186d9c57beea79c
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 21c54e2e996bb987f7a27ac3e6333df6f74d6f4b
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/17/2018
-ms.locfileid: "29975866"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49338624"
 ---
-# <a name="microsoft-azure-stack-development-kit-architecture"></a>A Microsoft Azure verem szoftverfejlesztői készlet architektúrája
-Az Azure verem Development Kit (ASDK) az Azure verem egycsomópontos központi telepítését. Az összetevők, egy önálló gazdagépen futó virtuális gépek vannak telepítve. 
+# <a name="microsoft-azure-stack-development-kit-architecture"></a>A Microsoft Azure Stack Development Kit architektúrája
+Az Azure Stack Development Kit (ASDK) egy egy csomópontos üzembe helyezhető Azure Stacket. Minden az összetevő telepítve van az önálló gazdagépen futó virtuális gépek. 
 
-## <a name="logical-architecture-diagram"></a>Logikai architektúra diagramja
-A következő ábra szemlélteti a ASDK és az összetevőinek logikai architektúrájának.
+## <a name="logical-architecture-diagram"></a>Logikai architektúra ábrája
+A következő ábra szemlélteti a ASDK és összetevői a logikai architektúrát.
 
 ![ASDK architektúra](media/asdk-architecture/image1.png)
 
 ## <a name="virtual-machine-roles"></a>Virtuálisgép-szerepkörök
-A ASDK használatával a következő virtuális gépeket az development kit állomáson futó szolgáltatásokat nyújtja:
+A ASDK használatával a következő virtuális gépek a development kit gazdagépen futó szolgáltatásokat nyújtja:
 
 | Name (Név) | Leírás |
 | ----- | ----- |
-| **AzS-ACS01** | Az Azure tárolási szolgáltatások a verem.|
-| **AzS-ADFS01** | Az Active Directory összevonási szolgáltatások (AD FS).  |
-| **AzS-BGPNAT01** | Útválasztó él és NAT- és VPN-képességeket biztosít Azure verem számára. |
-| **AzS-CA01** | A tanúsítványszolgáltatás hatóság Azure verem szerepkör-szolgáltatásai.|
-| **AzS-DC01** | A Microsoft Azure verem Active Directory, a DNS és DHCP szolgáltatások.|
-| **AzS-ERCS01** | Vészhelyzeti helyreállítási konzol virtuális gép. |
-| **AzS-GWY01** | A peremhálózati átjáró szolgáltatások, például a VPN-webhelyek kapcsolatok bérlői hálózatok számára.|
-| **AzS-NC01** | Hálózati vezérlő, amely Azure verem hálózati szolgáltatások kezeli.  |
-| **AzS-SLB01** | Terheléselosztás multiplexer szolgáltatások, Azure-készletben a bérlők és a verem Azure infrastruktúra-szolgáltatásokat.  |
-| **AzS-SQL01** | Belső adatok tárolásához Azure verem infrastruktúra-szerepkörök.  |
-| **AzS-WAS01** | Verem Azure felügyeleti portál és az Azure Resource Manager-szolgáltatások.|
-| **AzS-WASP01**| Verem felhasználó (bérlő) az Azure portál és az Azure Resource Manager-szolgáltatások.|
-| **AzS-XRP01** | A Microsoft Azure-vermet, beleértve a számítási, hálózati és Tárolóerőforrás-szolgáltatók infrastruktúra felügyeletvezérlő.|
+| **AzS-ACS01** | Az Azure Stack-tárolási szolgáltatások.|
+| **AzS-ADFS01** | Active Directory összevonási szolgáltatások (ADFS).  |
+| **AzS-BGPNAT01** | Útválasztó él, és a NAT- és VPN-képességeket biztosít az Azure Stackhez. |
+| **AzS-CA01** | A tanúsítványszolgáltatás a szerepkör-szolgáltatások az Azure Stack szolgáltató szolgáltatásaival.|
+| **AzS-DC01** | A Microsoft Azure Stackhez az Active Directory, DNS és DHCP szolgáltatások.|
+| **AzS-ERCS01** | Vészhelyzeti helyreállítási konzol virtuális Gépet. |
+| **AzS-GWY01** | Edge-átjáró szolgáltatásokon, például a VPN-helyek közötti kapcsolatok bérlői hálózatok számára.|
+| **AzS-NC01** | Hálózati vezérlő, amely kezeli az Azure Stack hálózati szolgáltatások.  |
+| **AzS-SLB01** | A terheléselosztás multiplexer szolgáltatások az Azure Stackben egyaránt bérlők és az Azure Stack-infrastruktúra-szolgáltatások.  |
+| **AzS-SQL01** | Belső adatok tárolása az Azure Stack-infrastruktúra-szerepkörök.  |
+| **AzS-WAS01** | Az Azure Stack felügyeleti portálon, és Azure Resource Manager-szolgáltatásokat.|
+| **AzS-WASP01**| Az Azure Stack (bérlő) felhasználói portál és Azure Resource Manager-szolgáltatások.|
+| **AzS-XRP01** | A Microsoft Azure Stack, beleértve a számítási, hálózati és tárolási erőforrás-szolgáltató infrastruktúra felügyeletvezérlő.|
 
 
 ## <a name="next-steps"></a>További lépések
-[Alapszintű ASDK felügyeleti feladatokkal kapcsolatos tudnivalók](asdk-admin-basics.md)
+[Alapszintű ASDK adminisztrációs feladatok megismerése](asdk-admin-basics.md)

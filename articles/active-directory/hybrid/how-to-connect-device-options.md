@@ -15,14 +15,14 @@ ms.topic: article
 ms.date: 09/13/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 6993895b6f2b836308b8ed7c375212c3fae12768
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: c21b4b8996d7dae62c2aa1937c2876a66f6f82bd
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46311975"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49320560"
 ---
-#<a name="azure-ad-connect-device-options"></a>Az Azure AD Connect: Eszköz beállításai
+# <a name="azure-ad-connect-device-options"></a>Az Azure AD Connect: Eszköz beállításai
 
 Az alábbi dokumentáció az Azure AD Connectben elérhető különböző eszköz beállításokkal kapcsolatos információkat biztosít. Az Azure AD Connect segítségével konfigurálhatja az alábbi két műveletet: 
 * **Hibrid Azure AD-csatlakozás**: Ha a környezetben egy helyszíni AD erőforrás-igényű, és azt szeretné, az Azure AD előnyei, a hibrid Azure AD-csatlakoztatott eszközök valósíthat meg. Ezek az eszközök csatlakozva vannak, mind a helyszíni Active Directory és az Azure Active Directoryban.

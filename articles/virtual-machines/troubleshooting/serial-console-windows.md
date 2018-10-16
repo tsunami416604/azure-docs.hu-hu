@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/07/2018
 ms.author: harijay
-ms.openlocfilehash: ceff8f6134f04409a4df1045a764c06597d997fc
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: ee42c279abaf9282b6f37e2b00050d33ebd093d2
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49092830"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49318265"
 ---
 # <a name="virtual-machine-serial-console"></a>Virtuális gépek soros konzolja
 
@@ -196,7 +196,7 @@ A soros konzol problémák ismerjük. Ezekről a problémákról és kockázatcs
 
 Probléma                             |   Kezelés 
 :---------------------------------|:--------------------------------------------|
-Szerezze meg, miután a kapcsolaton transzparens nem jeleníti meg a napló-parancssorban | Tekintse át ezt oldal: [Hitting adja meg a hatástalan](https://github.com/Microsoft/azserialconsole/blob/master/Known_Issues/Hitting_enter_does_nothing.md). Ez előfordulhat, hogy fordulhat elő, ha egy egyéni virtuális Gépet futtat, megerősített készülék, vagy a config LÁRVAJÁRAT adott causers Windows megfelelően csatlakozni a soros port sikertelen lesz.
+Szerezze meg, miután a kapcsolaton transzparens nem jeleníti meg a napló-parancssorban | Tekintse át ezt oldal: [Hitting adja meg a hatástalan](https://github.com/Microsoft/azserialconsole/blob/master/Known_Issues/Hitting_enter_does_nothing.md). Ez akkor fordulhat elő, ha futtatja egy egyéni virtuális Gépet, megerősített készülék vagy a rendszerindítási konfigurációs adott causers Windows megfelelően csatlakozni a soros port sikertelen lesz.
 Írja be a SAC kérdezzen rá Ha engedélyezve van a kernel hibakeresés nem sikerült | A virtuális gép, és futtassa az RDP `bcdedit /debug {current} off` egy rendszergazda jogú parancssorból. Ha Ön nem használhatja az RDP lehet helyette az operációsrendszer-lemez csatolása egy másik Azure virtuális géphez és módosítani, amíg csatlakoztatva, egy lemezt a `bcdedit /store <drive letter of data disk>:\boot\bcd /debug <identifier> off`, majd felcserélheti a lemez vissza.
 Ha az eredeti ismétlődő jellegű rendelkezett SAC eredményez olyan harmadik karaktert a PowerShell történő beillesztéskor | Egy megkerülő megoldás az elmúlt el a PSReadLine modul az aktuális munkamenet. Futtatás `Remove-Module PSReadLine` való eltávolítása a PSReadLine modul az aktuális munkamenet - ezzel nem törli vagy a modul eltávolítása.
 Bizonyos billentyűzetet bemenetek állít elő kimenetet. SAC furcsa. (pl. `[A`, `[3~`) | [VT100](https://aka.ms/vtsequences) escape-karaktersorozatokat nem támogatja a SAC használatával.

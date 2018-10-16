@@ -11,15 +11,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/30/2018
+ms.date: 10/15/2018
 ms.author: sethm
 ms.reviewer: alfredo
-ms.openlocfilehash: b4df9d3b107945b2c0797875718f3266b7fd0b10
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.openlocfilehash: 209152b157ef2cfae872490bcff4f2a7100c3a4d
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49166543"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49339338"
 ---
 # <a name="manage-usage-and-billing-for-azure-stack-as-a-cloud-service-provider"></a>Használat és számlázás az Azure Stack felhő szolgáltató kezelése 
 
@@ -33,7 +33,7 @@ Az alábbi ábrán látható, válassza ki a megosztott szolgáltatások fiókj�
 
 **Lépések hozzáadása a használat nyomon követése egy CSP-hez**
 
-![Folyamat használat és a Felhőbeli szolgáltató felügyeletének engedélyezéséhez.](media\azure-stack-add-manage-billing-as-a-csp\process-add-useage-as-a-csp.png)
+[ ![Engedélyezheti a használati és felügyelete megegyezik a Felhőszolgáltató](media\azure-stack-add-manage-billing-as-a-csp\process-add-useage-as-a-csp.png "engedélyezheti a használati és felügyelete megegyezik a Felhőszolgáltató") ](media\azure-stack-add-manage-billing-as-a-csp\process-add-useage-as-a-csp.png#lightbox)
 
 ## <a name="create-a-csp-or-apss-subscription"></a>CSP vagy APSS előfizetés létrehozása
 

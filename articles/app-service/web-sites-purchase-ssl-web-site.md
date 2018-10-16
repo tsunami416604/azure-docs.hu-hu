@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/01/2017
 ms.author: apurvajo;cephalin
-ms.openlocfilehash: 0c2adcfa4e11e444f66e1a9c04bea6e3d352f117
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: 38f7f82d293409a49c41381cedaa1f7600068cd3
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49077726"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49319404"
 ---
 # <a name="buy-and-configure-an-ssl-certificate-for-your-azure-app-service"></a>SSL-tanúsítvány vásárlása és konfigurálása saját Azure App Service szolgáltatások számára
 
@@ -78,7 +78,7 @@ Az azonos **Tanúsítványkonfiguráció** kattintson a lap a 3. lépésben hasz
 
 Válassza ki a kívánt tartomány-ellenőrzési módszert. 
 
-App Service-tanúsítványok által támogatott tartomány-ellenőrzés négy típusa van: App Service-ben, a tartomány és a manuális ellenőrzést. Ezek a hitelesítési típusok mutatjuk be a további részleteket a [szakasz speciális](#advanced).
+Tartomány-ellenőrzés App Service-tanúsítványok által támogatott három típusa van: App Service-ben, a tartomány és a manuális ellenőrzést. Ezek a hitelesítési típusok mutatjuk be a további részleteket a [szakasz speciális](#advanced).
 
 > [!NOTE]
 > **App Service-ellenőrzés** a legalkalmasabb lehetőség, ha szeretné ellenőrizni a tartományt már hozzá van rendelve egy App Service-alkalmazás ugyanabban az előfizetésben. Azt a tényt, hogy az App Service-alkalmazás már ellenőrizte a tartomány tulajdonjogának kihasználja.

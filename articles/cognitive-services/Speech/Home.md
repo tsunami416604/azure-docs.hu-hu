@@ -10,23 +10,21 @@ ms.component: bing-speech
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: zhouwang
-ROBOTS: NOINDEX
-ms.openlocfilehash: ca1045bcec889e1de47b44a44322579f8b60598f
-ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
+ms.openlocfilehash: 960d2d402f223b306aa6ff05b567d13525e3d525
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/01/2018
-ms.locfileid: "47586189"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49340358"
 ---
 # <a name="what-is-bing-speech"></a>Mit jelent a Bing Speech?
+
+[!INCLUDE [Deprecation note](../../../includes/cognitive-services-bing-speech-api-deprecation-note.md)]
 
 A felhőalapú és a Microsoft Bing Speech API biztosít a fejlesztők könnyedén hozhat létre hatékony beszédfeldolgozó szolgáltatásokat biztosítani az alkalmazásokban, például a voice parancsvezérlő, természetes beszéd beszélgetés, és a lejegyzés és a Diktálás felhasználói párbeszédpanel. Microsoft Speech API-t is támogatja *Speech to Text* és *szöveg-beszéd átalakítás* átalakítás.
 
 - **Beszédfelismerés** API emberi beszéd szöveggé, szabályozhatja az alkalmazás bemeneteként vagy parancsok használható alakítja át.
 - **Szöveg-beszéd átalakítás** API audiostreamek lejátszásával, a felhasználónak az alkalmazás lejátszhatók szöveget alakítja át.
-
-> [!NOTE] 
-> 2018 szeptember, az új óta [beszédszolgáltatás](../speech-service/index.yml) általánosan elérhetővé vált. Javasoljuk, hogy [ingyenes kipróbálása](../speech-service/get-started.md).
 
 ## <a name="speech-to-text-speech-recognition"></a>Diktálás (beszédfelismerés)
 

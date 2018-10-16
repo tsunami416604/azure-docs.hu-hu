@@ -1,24 +1,24 @@
 ---
-title: A Custom Speech Service használatának első lépései
-titlesuffix: Azure Cognitive Services
+title: A Custom Speech Service az Azure-ban – első lépések |} A Microsoft Docs
 description: Fizessen elő a Custom Speech service és a szolgáltatás tevékenységek összekapcsolása a modell betanítását és üzembe helyezést az Azure-előfizetés.
 services: cognitive-services
 author: PanosPeriorellis
-manager: cgronlun
+manager: onano
 ms.service: cognitive-services
 ms.component: custom-speech
-ms.topic: conceptual
+ms.topic: article
 ms.date: 02/08/2017
 ms.author: panosper
-ROBOTS: NOINDEX
-ms.openlocfilehash: ae72edd626bd91dea7cd2812a3ef821b905f59a4
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 4bbd4c57556fd4bfd176c915e26be4a4d198418a
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47225242"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49339933"
 ---
 # <a name="get-started-with-custom-speech-service"></a>Ismerkedés a Custom Speech Service
+
+[!INCLUDE [Deprecation note](../../../includes/cognitive-services-custom-speech-deprecation-note.md)]
 
 Ismerkedés a Custom Speech Service fő funkciói, és megtudhatja, hogyan hozhatók létre, telepíthetők és akusztikai és nyelvi modellek használata az alkalmazásnak szüksége van. Több széles körű dokumentációval és részletes útmutatás található a Custom Speech Services portálon a regisztrációt követően.
 
@@ -34,7 +34,7 @@ A fentiekben lejátszás előtt a példában a kell előfizetni a Custom Speech 
 Előfordulhat, hogy töltse le a egy ügyféloldali kódtár és egy példa keresztül [SDK](https://www.microsoft.com/cognitive-services/en-us/SDK-Sample?api=bing%20speech&category=sdk). A letöltött zip-fájlt egy tetszőleges mappába kinyerni van szüksége, számos felhasználó, válassza ki a Visual Studio 2015 mappát.
 
 ## <a name="creating-a-custom-acoustic-model"></a>Egy egyéni akusztikai modell létrehozása
-Testre szabhatja az akusztikai modell egy adott tartományhoz, a beszéd adatok gyűjteménye szükség. A gyűjtemény beszédadatokat tartalmazó hangfájlokból, valamint az ezek mindegyikének szöveges átiratát tartalmazó szövegfájlból áll. A hívásaiból kell modelleznie, amelyben a felismerő használni kívánt forgatókönyv
+Egy adott tartományhoz tartozó akusztikai modell testreszabásához beszédadatok gyűjteményére van szükség. A gyűjtemény beszédadatokat tartalmazó hangfájlokból, valamint az ezek mindegyikének szöveges átiratát tartalmazó szövegfájlból áll. A hívásaiból kell modelleznie, amelyben a felismerő használni kívánt forgatókönyv
 
 Példa: Ha szeretné jobban beszédfelismerést zajos gyári környezetben, a hangfájlokat beszél a zajos gyár személyek kell állnia.
 Önt érdeklő egyetlen beszélő teljesítményének optimalizálása, például szeretné lefényképezze összes FDR a Fireside csevegés, akkor a példákat, hogy a beszélő csak hangfájlt kell állnia.
@@ -52,7 +52,7 @@ Testreszabott akusztikai modell és/vagy nyelvi modellek létrehozása után, ak
 Egy egyéni hang-szöveg transzformációs végpont létrehozása a részletes leírást talál [Itt](CustomSpeech-How-to-Topics/cognitive-services-custom-speech-create-endpoint.md).
 
 ## <a name="using-a-custom-speech-endpoint"></a>Egy egyéni beszéd-végpont használatával
-Kérelmek lehet küldeni a CRIS hang-szöveg transzformációs végpont nagyon hasonló módon az alapértelmezett Azure Cognitive Services beszédfelismerési végpontként. Vegye figyelembe, hogy ezeket a végpontokat az alapértelmezett végpontok a beszédfelismerő API funkcionálisan azonos. Így az ügyféloldali kódtár vagy a beszédfelismerő API REST API-val keresztül elérhető ugyanazokat a funkciókat is a érhető el az egyéni végpont.
+Kérelmek lehet küldeni a CRIS hang-szöveg transzformációs végpont nagyon hasonló módon az alapértelmezett Microsoft Cognitive Services beszédfelismerési végpontként. Vegye figyelembe, hogy ezeket a végpontokat az alapértelmezett végpontok a beszédfelismerő API funkcionálisan azonos. Így az ügyféloldali kódtár vagy a beszédfelismerő API REST API-val keresztül elérhető ugyanazokat a funkciókat is a érhető el az egyéni végpont.
 
 Részletes leírást talál a hang-szöveg transzformációs egyéni végpont használatát [Itt](CustomSpeech-How-to-Topics/cognitive-services-custom-speech-use-endpoint.md).
 
@@ -62,5 +62,5 @@ Vegye figyelembe, hogy a CRIS segítségével létrehozott végpontok a csomagt�
 A szolgáltatás feltételezi, hogy a valós idejű hang továbbított. Ha gyorsabban továbbítja, a kérelem akkor minősül, amíg a valós idejű időtartam letelte.
 
 * [Áttekintés](cognitive-services-custom-speech-home.md)
-* [GYIK](cognitive-services-custom-speech-faq.md)
+* [Gyakori kérdések](cognitive-services-custom-speech-faq.md)
 * [Szószedet](cognitive-services-custom-speech-glossary.md)

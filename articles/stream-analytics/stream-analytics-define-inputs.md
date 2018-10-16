@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 04/27/2018
-ms.openlocfilehash: 2da388ef2fc0df8b08658900fe91ecc9d440fd3a
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: 9b75db835b0bdcc18cb82f427250630fb936d817
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45579292"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49341215"
 ---
 # <a name="stream-data-as-input-into-stream-analytics"></a>Stream data bemeneti Stream analyticsbe
 
@@ -39,7 +39,7 @@ Az Azure Event Hubs nyújt hatékonyan méretezhető közzétételi és előfize
 `EventEnqueuedUtcTime` egy esemény érkezési az eseményközpontok felé történő küldés időbélyegzője és a Stream Analytics az Event hubs Eseményközpontokból érkező események alapértelmezett időbélyegzője. Az adatok feldolgozása adatfolyamként időbélyeg használatával, abban az esetben, ha adattartalom kell használnia a [TIMESTAMP BY](https://msdn.microsoft.com/library/azure/dn834998.aspx) kulcsszót.
 
 ### <a name="consumer-groups"></a>Felhasználói csoportok
-Be kell állítania minden Stream Analytics eseményközpont szeretné, hogy a saját fogyasztói csoportot adjon meg. Amikor egy feladat önillesztést tartalmaz, vagy rendelkezik több bemenet, néhány bemenetei között meg egynél több olvasó aktiválásához előfordulhat, hogy olvashatják. Ebben a helyzetben befolyásolja az olvasók egyetlen felhasználói csoportban. Az Event Hubs túllépő / partíciónként fogyasztói csoportot öt olvasók elkerüléséhez célszerű minden Stream Analytics-feladat egy fogyasztói csoportot kijelölje. Emellett van egy legfeljebb 20 felhasználói csoportot egy eseményközpontba. További információkért lásd: [hibaelhárítása az Azure Stream Analytics, az Event Hub-érzékelők](stream-analytics-event-hub-consumer-groups.md).
+Be kell állítania minden Stream Analytics eseményközpont szeretné, hogy a saját fogyasztói csoportot adjon meg. Amikor egy feladat önillesztést tartalmaz, vagy rendelkezik több bemenet, néhány bemenetei között meg egynél több olvasó aktiválásához előfordulhat, hogy olvashatják. Ebben a helyzetben befolyásolja az olvasók egyetlen felhasználói csoportban. Az Event Hubs túllépő / partíciónként fogyasztói csoportot öt olvasók elkerüléséhez célszerű minden Stream Analytics-feladat egy fogyasztói csoportot kijelölje. Emellett van egy legfeljebb 20 felhasználói csoportot egy eseményközpontba. További információkért lásd: [hibaelhárítása az Azure Stream Analytics bemenetek](stream-analytics-troubleshoot-input.md).
 
 ### <a name="stream-data-from-event-hubs"></a>Adatok streamelése az Event Hubsból
 A következő táblázat ismerteti az egyes tulajdonságait a **új bemenet** lap egy eseményközpontból érkező bemeneti stream adatokhoz az Azure Portalon:

@@ -1,24 +1,25 @@
 ---
-title: Áttelepítése tarifacsomagok végpontok – Custom Speech Service
-titlesuffix: Azure Cognitive Services
-description: Megtudhatja, hogyan S0 és S1 szint S2 a Custom Speech Service-végpontokra irányuló központi telepítések áttelepíthetők.
+title: Áttelepítése tarifacsomagok végpontok a Custom Speech Service az Azure-ban |} A Microsoft Docs
+description: Megtudhatja, hogyan központi telepítések áttelepíthetők S0 és S1 szint a Cognitive Services S2 a Custom Speech Service-végpont.
 services: cognitive-services
 author: PanosPeriorellis
-manager: cgronlun
+manager: onano
 ms.service: cognitive-services
 ms.component: custom-speech
-ms.topic: conceptual
+ms.topic: article
 ms.date: 07/05/2017
 ms.author: panosper
-ROBOTS: NOINDEX
-ms.openlocfilehash: 560aa0a7b9748f75cdde99691db7f33e2fc10221
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: a9bdb257137db0063d39f028a69e2164eccbdc31
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47224851"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49340460"
 ---
 # <a name="migrate-deployments-to-the-new-pricing-model"></a>Az új díjszabási modellre központi telepítései áttelepítésének
+
+[!INCLUDE [Deprecation note](../../../../includes/cognitive-services-custom-speech-deprecation-note.md)]
+
 2017. július Custom Speech Service kínál egy [új díjszabási modell](https://azure.microsoft.com/pricing/details/cognitive-services/custom-speech-service/). Az új modell *megérteni*, *egyszerűbb költségek kiszámítása,*, és *rugalmasabb* méretezése szempontjából. A méretezés, a Microsoft a méretezési egység fogalma vezetett be. Minden egyes méretezési egység öt kérés párhuzamos képes kezelni. 5 egyidejű kérelmek S0 szint, az egyidejű kérelmek a régi konstrukcióban skálázást lett beállítva, és azt lett beállítva, az S1 szint 12 egyidejű kérelmek. Ezeket a korlátokat kínáló, nagyobb rugalmasságot biztosít a használatieset-követelményeinek megnyitotta azt.
 
 Ha régi S0 vagy az S1 szintet futtatja, javasoljuk, hogy a meglévő telepítések telepíti át az új S2 szintű. Az új S2 szintű az S0 és a S1 szint kiterjed. Az elérhető lehetőségek az alábbi ábrán látható:

@@ -1,5 +1,5 @@
 ---
-title: Application Insights-adatok a LUIS C# használatával
+title: Application Insights-adatok a LUIS Node.js használatával
 titleSuffix: Azure Cognitive Services
 description: A robot a LUIS-alkalmazás és az Application Insights Node.js használatával integrálva hozhat létre.
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 09/24/2018
 ms.author: diberry
-ms.openlocfilehash: 342c4f98d854d94426c3e4a1eb79bb2a6adffaad
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 6199e4a681f7f58ea0cf57b575afb2a63d160eee
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47038000"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49321954"
 ---
 # <a name="add-luis-results-to-application-insights"></a>A LUIS-eredményeket ad hozzá az Application Insights
 Ebben az oktatóanyagban hozzáadja a kérések és válaszok adatokat LUIS [Application Insights](https://azure.microsoft.com/services/application-insights/) telemetriai adatok tárolására. Miután az adatokat, kérdezhet le róla a Kusto-nyelv, vagy elemezheti, összesítése, a Power bi és a jelentés a szándékok és entitások, valós idejű utterance (kifejezés). Az elemzés segít annak meghatározásában, ha kell hozzáadása vagy szerkesztése a szándékok és entitások, a LUIS-alkalmazás.

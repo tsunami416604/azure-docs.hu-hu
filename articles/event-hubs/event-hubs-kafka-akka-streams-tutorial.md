@@ -13,12 +13,12 @@ ms.topic: article
 ms.custom: mvc
 ms.date: 08/06/2018
 ms.author: bahariri
-ms.openlocfilehash: 063f8bc050064d191dd502b74156be85df4f0031
-ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
+ms.openlocfilehash: a7eb335a2e4764287ab9e0b67dc75c2443ba2856
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47182209"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49322005"
 ---
 # <a name="using-akka-streams-with-event-hubs-for-apache-kafka"></a>Az Event Hubs-beli Apache kafka Akka adatfolyamok használata
 Ez az oktatóanyag bemutatja, hogyan Akka Streamek csatlakozni a Kafka-kompatibilis az event hubs a protokollt használó ügyfelek módosítása, vagy saját fürtök futtatása nélkül. Támogatja az Azure Event hubs szolgáltatás a Kafka [Apache Kafka 1.0-s verzióját.](https://kafka.apache.org/10/documentation.html)
@@ -29,6 +29,9 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > * A példa-projekt klónozása
 > * Akka Streamek előállító Futtatás 
 > * Futtatási Akka Streamek fogyasztói
+
+> [!NOTE]
+> Ez a minta elérhető a [GitHubon](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/akka/java).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -50,11 +53,11 @@ Event Hubs-névtér elküldeni vagy fogadni a minden Event Hubs szolgáltatás s
 
 ## <a name="clone-the-example-project"></a>A példa-projekt klónozása
 
-Most, hogy a Kafka-kompatibilis az Event Hubs kapcsolati karakterláncot, az Azure Event Hubs-tárház klónozásához, és keresse meg a `akka` almappát:
+Most, hogy a Kafka-kompatibilis az Event Hubs kapcsolati karakterláncot, az Azure Event Hubs, Kafka-tárház klónozása, és keresse meg a `akka` almappát:
 
 ```shell
-git clone https://github.com/Azure/azure-event-hubs.git
-cd azure-event-hubs/samples/kafka/akka
+git clone https://github.com/Azure/azure-event-hubs-for-kafka.git
+cd azure-event-hubs-for-kafka/tutorials/akka/java
 ```
 
 ## <a name="run-akka-streams-producer"></a>Akka Streamek előállító Futtatás
@@ -149,5 +152,6 @@ További információ az Event Hubs és az Event Hubs a Kafka, a következő té
 
 * [Ismerkedés az Event Hubs szolgáltatással](event-hubs-what-is-event-hubs.md)
 * [További információ az Event Hubs, Kafka for](event-hubs-for-kafka-ecosystem-overview.md)
+* [További minták felfedezése az Event Hubs a Kafka github](https://github.com/Azure/azure-event-hubs-for-kafka)
 * A [MirrorMaker](https://cwiki.apache.org/confluence/pages/viewpage.action?pageId=27846330) használatával [eseményeket streamelhet a helyszíni Kafkából a felhőben található Kafka-kompatibilis Event Hubsba.](event-hubs-kafka-mirror-maker-tutorial.md)
 * Ismerje meg, hogyan streamelése Kafka az engedélyezett az Event Hubs használatával [Kafka natív alkalmazások](event-hubs-quickstart-kafka-enabled-event-hubs.md) vagy [Apache Flink](event-hubs-kafka-flink-tutorial.md)

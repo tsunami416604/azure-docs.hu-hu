@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/09/2018
+ms.date: 09/28/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: addb99478025757257bce465a02287ebedd40bb1
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: f0791173450d5db3b33762ec9d5ed5c1adf96788
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46314978"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49321631"
 ---
 # <a name="prerequisites-for-azure-ad-connect"></a>Az Azure AD Connect előfeltételei
 Ez a témakör ismerteti az előfeltételeket és az Azure AD Connect hardverkövetelményeit.
@@ -29,11 +29,11 @@ Ez a témakör ismerteti az előfeltételeket és az Azure AD Connect hardverkö
 Előtt az Azure AD Connectet telepíti, akkor kell néhány dolgot.
 
 ### <a name="azure-ad"></a>Azure AD
-* Azure-előfizetéssel, vagy egy [az Azure próba-előfizetés](https://azure.microsoft.com/pricing/free-trial/). Ez az előfizetés csak akkor szükséges, az Azure portal eléréséhez, és nem az Azure AD Connect használatával. Ha a PowerShell vagy az Office 365-höz használ, majd nem kell az Azure AD Connect használata Azure-előfizetés. Ha rendelkezik Office 365-licenccel, majd is használhatja az Office 365 portálra. Fizetős Office 365-licenccel rendelkező is kaphat az Azure Portalon, az Office 365-portálról.
-  * Is használhatja a [az Azure portal](https://portal.azure.com). Ezen a portálon nem igényel az Azure AD-licencre.
+* Egy Azure AD-bérlő. Kap egy-egy [Azure ingyenes próbaverziója](https://azure.microsoft.com/pricing/free-trial/). Az Azure AD Connect kezelése a következő portálok egyikét használhatja:
+  * A [az Azure portal](https://portal.azure.com).
+  * A [Office-portálon](https://portal.office.com).  
 * [A tartományok hozzáadásának és hitelesítésének](../active-directory-domains-add-azure-portal.md) tervezi használni az Azure ad-ben. Például ha azt tervezi, hogy a contoso.com a felhasználók számára, majd ellenőrizze, hogy a tartomány ellenőrzése után, és csak nem használja a contoso.onmicrosoft.com alapértelmezett tartomány.
 * Azure AD-bérlő alapértelmezett 50 ezer objektum lehetővé teszi. Ha a tartomány ellenőrzéséhez a korlát 300 k objektumok-ra emelkedett. Ha még több objektumot az Azure ad-ben, majd meg kell nyitnia egy támogatási esetet, még tovább növelni a korlátot. Ha több mint 500 ezer objektumokat, majd licenc szükséges, például az Office 365-höz, az Azure AD alapszintű, az Azure AD Premium vagy Enterprise Mobility + Security.
-* ADSyncPrep egy PowerShell-parancsfájl modul, amely az Active Directory-környezet előkészítése az Azure AD Connect használt funkciókat biztosít.  ADSyncPrep igényel a [v1.1-Azure AD a Microsoft Online PowerShell-modul](https://docs.microsoft.com/powershell/azure/active-directory/install-msonlinev1?view=azureadps-1.0).  2. verzióban nem fog működni. A modul használatával telepítheti a `Install-Module` parancsmagot.  További információ: a megadott hivatkozás.
 
 ### <a name="prepare-your-on-premises-data"></a>A helyszíni adatok előkészítése
 * Használat [IdFix](https://support.office.com/article/Install-and-run-the-Office-365-IdFix-tool-f4bd2439-3e41-4169-99f6-3fabdfa326ac) hibákat, például az ismétlődések és a címtár formázási problémák azonosítására, az Azure AD szinkronizálása előtt és az Office 365.
@@ -47,7 +47,7 @@ Előtt az Azure AD Connectet telepíti, akkor kell néhány dolgot.
 * Javasoljuk, hogy [az Active Directory Lomtár engedélyezése](how-to-connect-sync-recycle-bin.md).
 
 ### <a name="azure-ad-connect-server"></a>Az Azure AD Connect-kiszolgáló
-* Az Azure AD Connect nem telepíthető Small Business Server vagy Windows Server Essentials. A kiszolgáló Windows Server standard vagy jobb kell használnia.
+* Az Azure AD Connect nem telepíthető Small Business Server vagy Windows Server Essentials 2019 előtt (a Windows Server Essentials 2019 támogatott). A kiszolgáló Windows Server standard vagy jobb kell használnia.
 * Az Azure AD Connect-kiszolgáló egy teljes grafikus felhasználói Felülettel telepítve kell rendelkeznie. Ez **nem támogatott** telepítése server core-on.
 * Az Azure AD Connect telepíteni kell a Windows Server 2008 vagy újabb. Ez a kiszolgáló lehet egy olyan tartományvezérlő vagy tagkiszolgáló gyorsbeállítások használata esetén. Ha egyéni beállításokat használja, a kiszolgáló is lehetnek önálló, és nem kell tartományhoz csatlakoztatni.
 * Az Azure AD Connect telepítése a Windows Server 2008 vagy Windows Server 2008 R2 esetén, mindenképpen a legújabb gyorsjavítások alkalmazására a Windows Update webhelyről. A telepítés nem sikerül veszéllyel kiszolgálóról indítsa el.
@@ -69,8 +69,8 @@ Előtt az Azure AD Connectet telepíti, akkor kell néhány dolgot.
 
 ### <a name="accounts"></a>Fiókok
 * Integrálni szeretné az Azure AD-bérlő Azure AD globális rendszergazda fiókkal. Ennek a fióknak kell lennie egy **iskola vagy szervezeti fiókjával** , és nem lehet egy **Microsoft-fiók**.
-* Ha a gyorsbeállítások használata, vagy a frissítés a Dirsync szolgáltatásról, majd rendelkeznie kell egy vállalati rendszergazdai fiók a helyi Active Directory címtárban.
-* [Az Active Directory fiókok](reference-connect-accounts-permissions.md) az egyéni beállítások telepítési használata esetén.
+* Ha a gyorsbeállítások használata, vagy a frissítés a Dirsync szolgáltatásról, majd rendelkeznie kell egy vállalati rendszergazdai fiók számára a helyszíni Active Directoryban.
+* [Az Active Directory fiókok](reference-connect-accounts-permissions.md) a helyszíni Active Directory használatakor az egyéni beállítások telepítési útvonala vagy vállalati rendszergazdai fiókkal.
 
 ### <a name="connectivity"></a>Kapcsolatok
 * Az Azure AD Connect-kiszolgáló intranetes és internetes is szüksége van a DNS-feloldását. A DNS-kiszolgáló a névfeloldást mind a helyszíni Active Directory és az Azure AD-végpontok képesnek kell lennie.
@@ -184,7 +184,6 @@ Active Directory összevonási szolgáltatások vagy a webalkalmazás-Proxy üze
 Az alábbiakban látható, amely a kiszolgálón, amelyen telepítve van-e az Azure AD Connect telepíti az Azure AD Connect összetevők listáját. A lista egy alapszintű expressz telepítéséhez. Ha egy másik SQL Server használata a szinkronizálási szolgáltatások telepítése lapon, majd az SQL Express LocalDB nincs telepítve helyben.
 
 * Azure AD Connect Health
-* A Microsoft Online Services bejelentkezési segéd (de nincs függőség rajta telepítve) informatikai szakemberek számára
 * A Microsoft SQL Server 2012 parancssori segédeszközök
 * A Microsoft SQL Server 2012 Express LocalDB
 * A Microsoft SQL Server 2012 natív ügyfél

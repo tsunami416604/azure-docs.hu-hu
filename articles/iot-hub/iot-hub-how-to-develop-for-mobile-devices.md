@@ -1,54 +1,52 @@
 ---
-title: Azure IoT SDK-k használatával kialakított |} Microsoft Docs
-description: Fejlesztői útmutató – megtudhatja, hogyan fejlesztése az Azure IoT Hub SDK-k használatával.
+title: Fejlesztés az Azure IoT SDK-k használatával mobileszközökhöz |} A Microsoft Docs
+description: Fejlesztői útmutató – ismerje meg, hogyan hozhat létre a mobileszközök az Azure IoT Hub SDK-k használatával.
 author: yzhong94
-manager: ''
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 04/16/2018
 ms.author: yizhon
-ms.openlocfilehash: 9c4b4a61698556f14a6362984b04e5cc409b5763
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 4a94abe69b525dc1b03fe2c1ae9593f3c6399f56
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34634947"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49339753"
 ---
-# <a name="develop-for-mobile-devices-using-azure-iot-sdks"></a>Az Azure IoT SDK-k használatával fejlesztése
+# <a name="develop-for-mobile-devices-using-azure-iot-sdks"></a>Fejlesztés a mobil eszközök Azure IoT SDK-k használatával
 
-Az eszközök internetes hálózatát dolgot nézze meg az eszközök széles különböző alkalmas: érzékelők, mikrovezérlők, intelligens eszközöket, ipari átjárók, valamint még akkor is.  A mobileszköz lehet egy IoT-eszközök, ha az eszköz-felhő telemetriai adatokat küld, és a felhő felügyeli.  Egy háttér-szolgáltatásalkalmazást, amely kezeli a más IoT-eszközök futtató eszköznek az is lehet.  Mindkét esetben [Azure IoT Hub SDK-k] [ lnk-sdk-overview] is használható a mobileszközök kezeléséhez használható alkalmazások fejlesztéséhez.  
+Is az IOT-eszközök számos különböző képesség hivatkozhatnak: érzékelők, mikrovezérlőktől, az intelligens eszközök, átjárók ipari és még a mobileszközök.  A mobileszköz-IoT-eszköz, ahol eszköz – felhő telemetriát küld és a felhő által felügyelt lehet.  A háttérszolgáltatás alkalmazást, amely kezeli az egyéb IoT-eszközök futtató eszköz is lehet.  Mindkét esetben [Azure IoT Hub SDK-k](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-sdks) mobileszközökhöz használható alkalmazások fejlesztéséhez használható.  
 
-## <a name="develop-for-native-ios-platform"></a>Natív iOS platform fejlesztéséhez
+## <a name="develop-for-native-ios-platform"></a>Fejlesztés a natív iOS platform
 
-Az Azure IoT Hub SDK-k támogatása natív iOS platform Azure IoT Hub C SDK használatával.  Az eltolásokat tekintheti, mivel az egy iOS SDK, amely a Swift vagy Objective C XCode projekt is használhatja.  A C SDK használatához az IOS rendszerű eszközökön két módja van:
-- Az XCode projekt CocoaPod tárak közvetlenül használható.  
-- Töltse le a forráskód C SDK-ban, és iOS platform következő összeállítása a [utasítás build] [ lnk-c-devbox] MacOS a.  
+Az Azure IoT Hub SDK-k natív iOS eszközplatform-támogatás révén az Azure IoT Hub C SDK-t adjon meg.  Felfogható, azt egy iOS SDK-t, amely a következő lépésekben a Swift vagy az Objective C XCode-projektben.  IOS-eszközökön az C SDK használatának két módja van:
 
-Az Azure IoT Hub C SDK a különböző platformokon maximális hordozhatóság C99 lett írva.  A furatok magában foglalja a platform-specifikus összetevők, amely itt található a vékony elfogadása réteg írása [iOS][lnk-ios-pal].  A C SDK funkciók is javítható az iOS platform, beleértve a támogatott Azure IoT Hub primitívek és SDK-specifikus szolgáltatások, mint újrapróbálkozási házirendet a hálózati megbízhatóság.  Az IOS SDK objektumfelület is az Azure IoT Hub C SDK felületéhez hasonló.  
+* Az XCode-projektben CocoaPod kódtárak közvetlenül használni.  
 
-A dokumentáció ismerteti, hogyan fejleszthet egy alkalmazást vagy a szolgáltatás alkalmazás iOS-eszközön keresztül:
-- [Gyors üzembe helyezés: Telemetriai adatokat küldhet egy eszközről IoT hubhoz][lnk-device-ios-quickstart]  
-- [A felhő üzenetek küldése az eszközt az IoT hubbal][lnk-service-ios-quickstart]  
+* Letöltheti a forráskódot a C SDK-t és hozhat létre iOS platform következő a [hozhat létre utasítás](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md) MacOS-hez.  
 
-### <a name="develop-with-azure-iot-hub-cocoapod-libraries"></a>Azure IoT Hub CocoaPod könyvtárakkal fejlesztése
+Az Azure IoT Hub C SDK a különböző platformokon maximális hordozhatóságot C99 nyelven van megírva.  A portolási folyamata magában foglalja az egyes platformokra vonatkozó összetevők, amely itt található a dinamikus kiosztás bevezetési réteg írása [iOS](https://github.com/Azure/azure-c-shared-utility/tree/master/pal/ios-osx).  A szolgáltatásokat a C SDK-ban is javítható az iOS platformot, többek között az Azure IoT Hub primitívek támogatott, és SDK-specifikus szolgáltatások például újrapróbálkozási szabályzat a hálózati megbízhatóság.  A felület iOS-hez készült SDK egyben az Azure IoT Hub C SDK-felülethez hasonló.  
 
-Az Azure IoT Hub SDK Objective-C CocoaPod szalagtárak iOS-fejlesztésre készlete kiadását.  CocoaPod szalagtárak legfrissebb listájának megtekintéséhez lásd: [a Microsoft Azure IoT CocoaPods][lnk-cocoapod-list].  Miután a megfelelő könyvtárak be vannak építve az XCode-projektjéhez, két módon az IoT-központ kapcsolódó kód írása:
-- Az Objective C-funkció: a projekt Objective-C nyelven van megírva, ha hívása API-kat az Azure IoT Hub C SDK közvetlenül.  A projekt Swift nyelven van megírva, ha hívása ``@objc func`` előtt a függvény létrehozásához, és folytathatja a Azure IoT Hub C vagy Objective-C kóddal kapcsolatos összes logics írása.  Található minták is, amely tartalmazza a [minta tárház][lnk-ios-samples-repo].  
-- C minták tartalmaznia: Ha egy C eszköz alkalmazás írt, hivatkozhasson rá az XCode-projektjéhez közvetlenül a:
-    - Adjon hozzá a sample.c fájlt az XCode-projektjéhez az xcode-ban.  
-    - A fejléc fájl hozzáadása a függőség.  A fejléc szerepel a [minta tárház] [ lnk-ios-samples-repo] példaként.  További információkért látogasson el az Apple dokumentációs lapja, [Objective-C](https://developer.apple.com/documentation/objectivec).
+Ezek a dokumentációra végig, hogyan hozhat létre egy alkalmazást vagy service-alkalmazás iOS-eszközön:
+
+* [Rövid útmutató: Telemetria küldése egy eszközről IoT Hubra](quickstart-send-telemetry-ios.md)  
+
+* [Üzenetküldés a felhőből az eszközre az IoT hub](iot-hub-ios-swift-c2d.md) 
+
+## <a name="develop-with-azure-iot-hub-cocoapod-libraries"></a>Fejlesztés az Azure IoT Hub CocoaPod kódtárak használatával
+
+Az Azure IoT Hub SDK-k kiadások Objective-C CocoaPod kódtárak iOS-fejlesztésre.  CocoaPod kódtárak legfrissebb listáját lásd: [CocoaPods a Microsoft Azure IoT](https://github.com/Azure/azure-iot-sdk-c/blob/master/iothub_client/samples/ios/CocoaPods.md).  Miután a megfelelő kódtárak be vannak építve az XCode-projektben, két módja van az IoT Hub kapcsolatos kódot írni:
+
+* Objective C-funkció: Ha a projekt Objective-C nyelven írt, meghívhatja API-k az Azure IoT Hub C SDK-t közvetlenül.  Ha a projekt Swift nyelven van megírva, meghívhatja `@objc func` előtt a függvény létrehozása, és folytassa az Azure IoT hubra C vagy az Objective-C kóddal kapcsolatos összes logics írása.  Minták bemutatására is megtalálható a [mintaadattár](https://github.com/Azure-Samples/azure-iot-samples-ios).  
+
+* Építse be a C-minták: Ha egy alkalmazást C írt, hivatkozhasson rá közvetlenül az XCode-projektben a:
+
+    * Adjon hozzá a sample.c fájlt az XCode-projektben az xcode-ban.  
+    
+    * Adja hozzá a fejlécfájlt a függőség.  A fejléc szerepel a [mintaadattár](https://github.com/Azure-Samples/azure-iot-samples-ios) példaként. További információkért látogasson el az Apple dokumentációjában [Objective-C](https://developer.apple.com/documentation/objectivec).
 
 ## <a name="next-steps"></a>További lépések
-* [Az IoT Hub REST API-referencia][lnk-rest-ref]
-* [Az Azure IoT C SDK forráskódja][lnk-c-sdk]
 
-[lnk-sdk-overview]: https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-sdks
-[lnk-c-devbox]: https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md
-[lnk-device-ios-quickstart]:https://docs.microsoft.com/azure/iot-hub/quickstart-send-telemetry-ios
-[lnk-service-ios-quickstart]: https://docs.microsoft.com/azure/iot-hub/iot-hub-ios-swift-c2d
-[lnk-cocoapod-list]: https://github.com/Azure/azure-iot-sdk-c/blob/master/iothub_client/samples/ios/CocoaPods.md
-[lnk-ios-samples-repo]: https://github.com/Azure-Samples/azure-iot-samples-ios
-[lnk-ios-pal]: https://github.com/Azure/azure-c-shared-utility/tree/master/pal/ios-osx
-[lnk-c-sdk]: https://github.com/Azure/azure-iot-sdk-c
-[lnk-rest-ref]: https://docs.microsoft.com/rest/api/iothub/
+* [IoT Hub – REST API-referencia](https://docs.microsoft.com/rest/api/iothub/)
+* [Az Azure IoT C SDK forráskódját](https://github.com/Azure/azure-iot-sdk-c)

@@ -1,24 +1,25 @@
 ---
-title: Egyéni írásmódja – Custom Speech Service használata
-titlesuffix: Azure Cognitive Services
-description: Ismerje meg, hogyan hozhat létre a Custom Speech Service nyelvi modell.
+title: Egyéni írásmódja használata az Azure-ban a Custom Speech Service |} A Microsoft Docs
+description: Ismerje meg, hogyan hozhat létre a Custom Speech Service a Cognitive Services nyelvi modell.
 services: cognitive-services
 author: PanosPeriorellis
-manager: cgronlun
+manager: onano
 ms.service: cognitive-services
 ms.component: custom-speech
-ms.topic: conceptual
+ms.topic: article
 ms.date: 11/23/2017
 ms.author: panosper
-ROBOTS: NOINDEX
-ms.openlocfilehash: 6442eec3e622282ecf6a3bf884110cd435fc18be
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 1e9de9755ef4baee7e2a0e6c093e2cf27cb4281f
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47223474"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49339814"
 ---
 # <a name="enable-custom-pronunciation"></a>Engedélyezze az egyéni kiejtése
+
+[!INCLUDE [Deprecation note](../../../../includes/cognitive-services-custom-speech-deprecation-note.md)]
+
 Egyéni írásmódja lehetővé teszi a felhasználóknak adható meg fonetikus űrlap és megjelenített egy szó vagy kifejezés. Ez hasznos testre szabott feltételek, például termékneveket vagy betűszavakat kezelése. Szüksége egy írásmódja fájlt (egy egyszerű .txt fájlt).
 
 Itt látható, hogyan működik. Egy egyetlen .txt fájlban a több egyéni írásmódja bejegyzést is megadhatja. A struktúra a következőképpen történik:

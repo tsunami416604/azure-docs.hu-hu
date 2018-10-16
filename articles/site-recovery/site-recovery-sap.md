@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/06/2018
 ms.author: asgang
-ms.openlocfilehash: 95e5c53da2556293fc676fa5b1db9b4585038300
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: a498ac9f973bbcf87bec104f18b542cc7e8b5800
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37921429"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49318690"
 ---
 # <a name="protect-a-multi-tier-sap-netweaver-application-deployment-by-using-site-recovery"></a>Egy többrétegű SAP NetWeaver alkalmazás központi telepítésének védeni a Site Recovery használatával
 
@@ -71,10 +71,10 @@ A vészhelyreállítás (DR) meg kell tudni átadja a feladatokat egy másodlago
 #### <a name="vms-running-sap-web-dispatcher-pool"></a>Virtuális gépeken futó SAP Web Dispatcher-készlet 
 A Web Dispatcher összetevő terheléselosztóként szolgál az SAP-forgalmat az SAP-alkalmazáskiszolgálók között. Magas rendelkezésre állás a Web Dispatcher-összetevő, a párhuzamos Web Dispatcher-telepítő megvalósítása HTTP (S)-forgalom elosztását az elérhető webes elosztás a terheléselosztó készlet Ciklikus időszeleteléses konfigurációját az Azure Load Balancer szolgál ki. Ez replikálja az Azure Site Recovery (ASR) használatával, és automatizálási szkriptek load balancer konfigurálása a vészhelyreállítási régióban lévő lesz használható. 
 
-####<a name="vms-running-application-servers-pool"></a>Alkalmazáskészlet-kiszolgálókon futó virtuális gépek
+#### <a name="vms-running-application-servers-pool"></a>Alkalmazáskészlet-kiszolgálókon futó virtuális gépek
 Bejelentkezési csoportokat ABAP alkalmazáskiszolgálók kezeléséhez, az SMLG tranzakció szolgál. A terheléselosztási függvényt az üzenet-kiszolgálón, a központi szolgáltatások használatával oszthatja meg a munkaterhelést SAP alkalmazáskészlet-kiszolgálók között SAPGUIs és RFC forgalmat. A rendszer replikálja az Azure Site Recoveryvel 
 
-####<a name="vms-running-sap-central-services-cluster"></a>SAP Central Services fürt futó virtuális gépek
+#### <a name="vms-running-sap-central-services-cluster"></a>SAP Central Services fürt futó virtuális gépek
 Ez a referenciaarchitektúra a virtuális gépek központi szolgáltatást futtat az alkalmazás szinten. A központi szolgáltatások egy potenciálisan hibaérzékeny pont (SPOF), egyetlen virtuális gép telepítésekor – szokásos telepítése, ha magas rendelkezésre állás nem követelmény.<br>
 
 Egy magas rendelkezésre állású megoldás bevezetésére, vagy egy megosztott lemezfürtök, vagy egy fájlkiszolgáló-megosztás fürt használható. Megosztott lemezfürt virtuális gépek konfigurálásához használja a Windows Server feladatátvételi fürtben. Felhőbeli tanúsító kvórum tanúsító ajánlott. 
@@ -110,7 +110,7 @@ Alább a javaslatot, az egyes csomagok ebben a példában használt vész-helyre
 **Az Active directory virtuális gépek** |  Az Active directory-replikáció 
 **SQL database-kiszolgálók** |  SQL always a replikáció
 
-##<a name="replicate-virtual-machines"></a>Virtuális gépek replikálása
+## <a name="replicate-virtual-machines"></a>Virtuális gépek replikálása
 
 SAP alkalmazás virtuális gépek replikálása az Azure vész-helyreállítási adatközpont, kövesse az útmutató [a virtuális gépek replikálása az Azure-bA](azure-to-azure-walkthrough-enable-replication.md).
 

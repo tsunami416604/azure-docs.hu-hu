@@ -2,54 +2,60 @@
 title: Az Azure IoT Hub (iOS) a felhőből az eszközre irányuló üzenetek |} A Microsoft Docs
 description: Annak a felhőből az eszközre irányuló üzeneteket küld egy eszköz az Azure IoT SDK-k használata iOS-hez készült Azure IoT hubról.
 author: kgremban
-manager: timlt
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 04/19/2018
 ms.author: kgremban
-ms.openlocfilehash: 005136b6da841376daad27fa439949927f098882
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 550c3d7a2294158120ddd42ba56715d1321de04c
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47223747"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49339865"
 ---
 # <a name="send-cloud-to-device-messages-with-iot-hub-ios"></a>Az IoT Hub (iOS) a felhőből az eszközre irányuló üzenetek küldése
+
 [!INCLUDE [iot-hub-selector-c2d](../../includes/iot-hub-selector-c2d.md)]
 
-
-Az Azure IoT Hub egy teljes körűen felügyelt szolgáltatás, amellyel engedélyezheti a megbízható és biztonságos kétirányú kommunikációt több millió eszköz között, és megoldást biztosít a háttérrendszer. A [Telemetria küldése egy eszközről IoT hubra] a cikk bemutatja, hogyan hozzon létre egy IoT hubot, azt az eszközidentitás létrehozását és kód az eszköz a felhőbe irányuló üzeneteket küld egy szimulált eszközalkalmazás.
+Az Azure IoT Hub egy teljes körűen felügyelt szolgáltatás, amellyel engedélyezheti a megbízható és biztonságos kétirányú kommunikációt több millió eszköz között, és megoldást biztosít a háttérrendszer. A [telemetriát küldjön az eszközről az IoT hub](quickstart-send-telemetry-ios.md) a cikk bemutatja, hogyan hozzon létre egy IoT hubot, azt az eszközidentitás létrehozását és kód az eszköz a felhőbe irányuló üzeneteket küld egy szimulált eszközalkalmazás.
 
 Ez a cikk bemutatja, hogyan való:
 
 * A megoldás háttérrendszerének, a felhőből az eszközre irányuló üzenetek küldése IoT hubon keresztül egy adott eszköz.
+
 * Az eszközön a felhőből az eszközre irányuló üzeneteket fogadni.
+
 * A megoldás háttérrendszerének, a kérelmek kézbesítési nyugtázás (*visszajelzés*) az IoT Hub az eszközökre küldött üzenetek.
 
-A felhőből az eszközre irányuló üzenetek további tájékoztatást talál a [IoT Hub fejlesztői útmutatójának][IoT Hub developer guide - C2D].
+A felhőből az eszközre irányuló üzenetek további tájékoztatást talál a [üzenetkezelés az IoT Hub fejlesztői útmutatójának szakaszában](iot-hub-devguide-messaging.md).
 
 Ez a cikk végén található iOS-projektek két Swift, futtassa:
 
-* **minta-eszköz**, ugyanazt az alkalmazást a létrehozott [Telemetria küldése egy eszközről IoT hubra], amely csatlakozik az IoT hubhoz, és megkapja a felhőből az eszközre.
+* **minta-eszköz**, ugyanazt az alkalmazást a létrehozott [telemetriát küldjön az eszközről az IoT hub](quickstart-send-telemetry-ios.md), amely csatlakozik az IoT hubhoz, és megkapja a felhőből az eszközre.
+
 * **minta-szolgáltatás**, amely a felhőből az eszközre üzenetet küld az IoT hubon keresztül a szimulált eszközalkalmazásnak, és annak kézbesítési nyugtázási majd kap.
 
 > [!NOTE]
-> Az IoT Hub SDK számos eszközplatformok és nyelveken (például a C, Java és Javascript) keresztül az Azure IoT eszközoldali SDK-k támogatással rendelkezik. Az eszköz csatlakoztatása, ebben az oktatóanyagban a kódot, és általában az Azure IoT hubba a részletes útmutatót lásd: a [Azure IoT fejlesztői központ].
+> Az IoT Hub SDK számos eszközplatformok és nyelveken (például a C, Java és Javascript) keresztül az Azure IoT eszközoldali SDK-k támogatással rendelkezik. Az eszköz csatlakoztatása, ebben az oktatóanyagban a kódot, és általában az Azure IoT hubba a részletes útmutatót lásd: a [Azure IoT fejlesztői központ](http://www.azure.com/develop/iot).
 
 Az oktatóanyag teljesítéséhez a következőkre lesz szüksége:
 
-- Aktív Azure-fiók. (Ha nincs fiókja, létrehozhat egy [ingyenes fiókot][lnk-free-trial] néhány perc alatt.)
+- Aktív Azure-fiók. (Ha nincs fiókja, létrehozhat egy [ingyenes fiókot](http://azure.microsoft.com/pricing/free-trial/) mindössze néhány perc alatt.)
+
 - Az aktív IoT hubra az Azure-ban. 
+
 - A mintakód a [Azure-minták](https://github.com/Azure-Samples/azure-iot-samples-ios/archive/master.zip) .
+
 - Az iOS SDK legújabb verzióját futtató [XCode](https://developer.apple.com/xcode/) legújabb verziója. A rövid útmutató tesztelése az XCode 9.3-as és az iOS 11.3-as verziójával történt.
+
 - A [CocoaPods](https://guides.cocoapods.org/using/getting-started.html) legújabb verziója.
 
-
 ## <a name="simulate-an-iot-device"></a>Egy IoT-eszköz szimulálása
+
 Ebben a szakaszban a felhőből az eszközre irányuló üzenetek fogadása az IoT hubról Swift-alkalmazást futtató iOS-eszköz szimulálása. 
 
-Ez a minta eszközt ebben a cikkben a [Telemetria küldése egy eszközről IoT hubra]. Ha már rendelkezik, hogy fut, a szakaszt kihagyhatja.
+Ez a minta eszközt ebben a cikkben a [telemetriát küldjön az eszközről az IoT hub](quickstart-send-telemetry-ios.md). Ha már rendelkezik, hogy fut, a szakaszt kihagyhatja.
 
 ### <a name="install-cocoapods"></a>A CocoaPods telepítése
 
@@ -71,7 +77,7 @@ A projekthez szükséges podok telepítésén kívül a telepítési parancs egy
 
 ### <a name="run-the-sample-device-application"></a>A minta eszközalkalmazás futtatása 
 
-1. Az eszköz a kapcsolati karakterlánc lekéréséhez. Ez a karakterlánc másolása az Azure Portalon, az eszközinformációk panelen, vagy lekérni a következő CLI-paranccsal: 
+1. Az eszköz a kapcsolati karakterlánc lekéréséhez. A következő karakterláncot is másolhatja a [az Azure portal](https://portal.azure.com) az eszköz részleteit megjelenítő panelen vagy lekérni a következő CLI-paranccsal: 
 
     ```azurecli-interactive
     az iot hub device-identity show-connection-string --hub-name {YourIoTHubName} --device-id {YourDeviceID} --output table
@@ -84,13 +90,16 @@ A projekthez szükséges podok telepítésén kívül a telepítési parancs egy
    ```
 
 2. Bontsa ki a **MQTT-Ügyfélminta** projektet és az azonos nevű mappát.  
+
 3. Nyissa meg **ViewController.swift** fájlt az XCode-ban való szerkesztéshez. 
+
 4. Keresse meg a **connectionString** változót, és frissítse az értéket az eszköz kapcsolati karakterlánc az első lépésben másolt.
+
 5. Mentse a módosításokat. 
+
 6. Futtassa a projektet az eszközemulátorban a **Létrehozás és futtatás** gombbal vagy a **command + r** billentyűkombinációval. 
 
-   ![A projekt futtatása](media/quickstart-send-telemetry-ios/run-sample.png)
-
+   ![A projekt futtatása](media/iot-hub-ios-swift-c2d/run-sample.png)
 
 ## <a name="simulate-a-service-device"></a>Szolgáltatás-eszköz szimulálása
 
@@ -116,7 +125,7 @@ A projekthez szükséges podok telepítésén kívül a telepítési parancs egy
 
 ### <a name="run-the-sample-service-application"></a>A szolgáltatás-mintaalkalmazás futtatása
 
-1. Az IoT hub szolgáltatás kapcsolati karakterláncára lekéréséhez. Ez a karakterlánc másolása az Azure Portalon a **iothubowner** szabályzat a **megosztott elérési házirendek** panelen vagy lekérni a következő CLI-paranccsal:  
+1. Az IoT hub szolgáltatás kapcsolati karakterláncára lekéréséhez. Másolhatja a karakterláncot, a [az Azure portal](https://portal.azure.com) származó a **iothubowner** szabályzat a **megosztott elérési házirendek** panelen vagy lekérni a következő CLI-paranccsal:  
 
     ```azurecli-interactive
     az iot hub show-connection-string --hub-name {YourIoTHubName} --output table
@@ -129,9 +138,13 @@ A projekthez szükséges podok telepítésén kívül a telepítési parancs egy
    ```
 
 3. Bontsa ki a **AzureIoTServiceSample** projektre, majd bontsa ki a mappát annak ugyanazzal a névvel.  
+
 4. Nyissa meg **ViewController.swift** fájlt az XCode-ban való szerkesztéshez. 
+
 5. Keresse meg a **connectionString** változót, és frissítse az értéket a szolgáltatás korábban kimásolt kapcsolati karakterláncot.
+
 6. Mentse a módosításokat. 
+
 7. Az xcode-ban, mint amennyi az IoT eszköz futtatásához használt egy másik iOS-eszköz emulátor beállításainak módosításával. Xcode-ban több emulátory systému azonos típusú nem futtatható. 
 
    ![Az emulator eszköz módosítása](media/iot-hub-ios-swift-c2d/change-device.png)
@@ -140,43 +153,29 @@ A projekthez szükséges podok telepítésén kívül a telepítési parancs egy
 
    ![A projekt futtatása](media/iot-hub-ios-swift-c2d/run-app.png)
 
-
 ## <a name="send-a-cloud-to-device-message"></a>Felhőből az eszközre irányuló üzenet küldése
+
 Most már készen áll a két alkalmazás használatával a felhőből az eszközre irányuló üzenetek küldése és fogadása.
 
 1. Az a **iOS-alkalmazás-minta** kattintson az IoT szimulált eszközön futó alkalmazás **Start**. Az alkalmazás elindítja az eszköz a felhőbe irányuló üzenetek küldéséhez, de megkezdi a felhőből az eszközre irányuló üzenetek figyeli. 
 
    ![Mintául szolgáló IoT eszközfelügyeleti alkalmazás megtekintése](media/iot-hub-ios-swift-c2d/view-d2c.png)
 
-2. Az a **IoTHub-Service Ügyfélminta** a szolgáltatás szimulált eszközön futó alkalmazás Azonosítóját adja meg az IoT-eszköz kívánt egy üzenet küldéséhez. 
+2. Az a **IoTHub-Service Ügyfélminta** a szolgáltatás szimulált eszközön futó alkalmazáshoz, amelyet szeretne elküldeni egy üzenetet az IoT-eszköz Azonosítóját adja meg. 
+
 3. Egy egyszerű szöveges üzenetet, majd kattintson a **küldése**. 
 
-Több művelet fordulhat elő, amint kattintson a Küldés gombra. A szolgáltatás minta az üzenetet küld az IoT hub, az alkalmazás, amely miatt a szolgáltatáskapcsolati karakterlánc, amikor a megadott hozzáférést. Az IoT hub ellenőrzi az eszköz azonosítója, az üzenetet küld a céleszköz és egy visszaigazolását küld a forráseszközt. Az alkalmazás szimulált IoT-eszközök futó ellenőrzi az üzeneteket az IoT hubról, és a szöveget jelenít meg a legfrissebb ezen a képernyőn a.
+    Több művelet fordulhat elő, amint kattintson a Küldés gombra. A szolgáltatás minta az üzenetet küld az IoT hub, az alkalmazás, amely miatt a szolgáltatáskapcsolati karakterlánc, amikor a megadott hozzáférést. Az IoT hub ellenőrzi az eszköz azonosítója, az üzenetet küld a céleszköz és egy visszaigazolását küld a forráseszközt. Az alkalmazás szimulált IoT-eszközök futó ellenőrzi az üzeneteket az IoT hubról, és a szöveget jelenít meg a legfrissebb ezen a képernyőn a.
 
-A kimenet az alábbihoz hasonlóan kell kinéznie:
+    A kimenet az alábbihoz hasonlóan kell kinéznie:
 
    ![Felhőből az eszközre irányuló üzenetek megtekintése](media/iot-hub-ios-swift-c2d/view-c2d.png)
 
 
 ## <a name="next-steps"></a>További lépések
+
 Ebben az oktatóanyagban megtudhatta, hogyan a felhőből az eszközre irányuló üzenetek küldése és fogadása. 
 
-Példák teljes, végpontok közötti megoldások, amely az IoT Hub használata a megtekintéséhez lásd: [Az Azure IoT távoli figyelési megoldásgyorsító].
+Példák a teljes végpontok közötti megoldások, amely használja az IoT hubot, olvassa el a [Azure IoT-Megoldásgyorsítók](https://azure.microsoft.com/documentation/suites/iot-suite/) dokumentációját.
 
-Az IoT Hub megoldások fejlesztésével kapcsolatos további tudnivalókért tekintse meg a [Az IoT Hub fejlesztői útmutató].
-
-<!-- Images -->
-[img-simulated-device]: media/iot-hub-python-python-c2d/simulated-device.png
-[img-send-command]:  media/iot-hub-python-python-c2d/send-command.png
-[img-message-recieved]: media/iot-hub-python-python-c2d/message-recieved.png
-
-<!-- Links -->
-[Telemetria küldése egy eszközről IoT hubra]: quickstart-send-telemetry-ios.md
-
-[IoT Hub developer guide - C2D]: iot-hub-devguide-messaging.md
-[Az IoT Hub fejlesztői útmutató]: iot-hub-devguide.md
-[Azure IoT fejlesztői központ]: http://www.azure.com/develop/iot
-[lnk-free-trial]: http://azure.microsoft.com/pricing/free-trial/
-[lnk-dev-setup]: https://github.com/Azure/azure-iot-sdk-node/tree/master/doc/node-devbox-setup.md
-[Azure portal]: https://portal.azure.com
-[Az Azure IoT távoli figyelési megoldásgyorsító]: https://azure.microsoft.com/documentation/suites/iot-suite/
+Az IoT Hub megoldások fejlesztésével kapcsolatos további tudnivalókért tekintse meg a [IoT Hub fejlesztői útmutatójának](iot-hub-devguide.md).

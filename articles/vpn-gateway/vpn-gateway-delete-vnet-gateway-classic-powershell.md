@@ -15,24 +15,24 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/11/2017
 ms.author: cherylmc
-ms.openlocfilehash: 0c5d045cb949f5393bb2d9da54715b2b84229c36
-ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
+ms.openlocfilehash: 2c92db96820b9796ba2c952affcb3b3eef5b985e
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39036288"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49319846"
 ---
 # <a name="delete-a-virtual-network-gateway-using-powershell-classic"></a>PowerShell (klasszikus) használatával virtuális hálózati átjáró törlése
+
 > [!div class="op_single_selector"]
 > * [Resource Manager – Azure Portal](vpn-gateway-delete-vnet-gateway-portal.md)
 > * [Resource Manager – PowerShell](vpn-gateway-delete-vnet-gateway-powershell.md)
 > * [Klasszikus – PowerShell](vpn-gateway-delete-vnet-gateway-classic-powershell.md)
 >
->
 
 Ez a cikk segít a klasszikus üzemi modellben a VPN gateway törlése a PowerShell használatával. Miután a virtuális hálózati átjáró törölve lett, módosítsa a hálózati konfigurációs fájlt, amely már nem használt elemek eltávolítása.
 
-##<a name="connect"></a>1. lépés: Csatlakozás az Azure-bA
+## <a name="connect"></a>1. lépés: Csatlakozás az Azure-bA
 
 ### <a name="1-install-the-latest-powershell-cmdlets"></a>1. Telepítse a legújabb PowerShell-parancsmagokat.
 
@@ -101,7 +101,7 @@ Példa:
  </Gateway>
 ```
 
-###<a name="lns"></a>Helyi hálózati helyek
+### <a name="lns"></a>Helyi hálózati helyek
 
 Távolítsa el minden olyan helyek, amely már nem használ. A létrehozott konfigurációtól függően lehetséges, hogy nem rendelkezik az egy **LocalNetworkSite** szerepel.
 

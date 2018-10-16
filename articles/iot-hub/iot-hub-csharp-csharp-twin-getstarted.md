@@ -9,12 +9,12 @@ ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 05/15/2017
 ms.author: dobett
-ms.openlocfilehash: 340453448d38db66558e59edb845f2caf4454cf9
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: defb9f72148e319b36954a8d448d5f441621fc43
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43104150"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49321580"
 ---
 # <a name="get-started-with-device-twins-netnet"></a>Első lépések az ikereszközökhöz (.NET/.NET)
 [!INCLUDE [iot-hub-selector-twin-get-started](../../includes/iot-hub-selector-twin-get-started.md)]
@@ -236,4 +236,4 @@ Az alábbi forrásanyagokból megtudhatja, hogyan lehet:
 
 * konfigurálhatja az eszközöket használó eszköz ikereszköz kívánt tulajdonságait a a [használata kívánt tulajdonságok konfigurálhatja az eszközöket](tutorial-device-twins.md) oktatóanyagban
 
-* Az eszközök, interaktív módon (például egy felhasználó által felügyelt alkalmazásból ventilátor bekapcsolása) szabályozhatja a [közvetlen metódusok használata](quickstart-control-device-node.md) oktatóanyag.
+* Az eszközök, interaktív módon (például egy felhasználó által felügyelt alkalmazásból ventilátor bekapcsolása) szabályozhatja a [közvetlen metódusok használata](quickstart-control-device-dotnet.md) oktatóanyag.

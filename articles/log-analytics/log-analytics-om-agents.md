@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 08/02/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: ba15ecdb59eb98094367d8cd4760323d863332c4
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: f02da6f21d0c11724b4192d5af0d5cc75d2c770c
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47222709"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49321563"
 ---
 # <a name="connect-operations-manager-to-log-analytics"></a>Az Operations Manager csatlakoztatása a Log Analyticshez
 Meglévő System Center Operations Manager-befektetései kamatoztatása, és a Log Analytics képességeinek kiterjesztése érdekében az Operations Managert integrálhatja Log Analytics-munkaterületével. Így kiaknázhatja a Log Analytics lehetőségeit, miközben továbbra is használhatja az Operations Managert a következőkre:
@@ -227,7 +227,7 @@ Ha törölni szeretné a két összekötőt (a Microsoft.SystemCenter.Advisor.Da
 
 ```
     .\OM2012_DeleteConnectors.ps1 “Advisor Connector” <ManagementServerName>
-    .\OM2012_DeleteConnectors.ps1 “Microsoft.SytemCenter.Advisor.DataConnector” <ManagementServerName>
+    .\OM2012_DeleteConnectors.ps1 “Microsoft.SystemCenter.Advisor.DataConnector” <ManagementServerName>
 ```
 
 > [!NOTE]

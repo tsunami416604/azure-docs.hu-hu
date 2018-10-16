@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.reviewer: Dale.Koetke
 ms.date: 08/11/2018
 ms.author: mbullwin
-ms.openlocfilehash: 221d0d8a78a46cad9f1994e9313b21e2867d9563
-ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
+ms.openlocfilehash: 4407322dd415a7c8b2ef8b7ff470a247b8d68f69
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42054489"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49319455"
 ---
 # <a name="manage-pricing-and-data-volume-in-application-insights"></a>Az Application Insights árak és adatmennyiségek kezelése
 
@@ -159,6 +159,10 @@ A parancsfájl a tarifacsomag beállítása az Azure Resource Management haszná
 ## <a name="limits-summary"></a>Korlátozások összegzése
 
 [!INCLUDE [application-insights-limits](../../includes/application-insights-limits.md)]
+
+## <a name="disable-daily-cap-e-mails"></a>Napi korlát e-mailek letiltása
+
+A napi mennyiségi korlát e-mailek, a letiltásához a **konfigurálása** szakaszában az Application Insights-erőforrást, a a **felhasználás és becsült költségek** ablaktáblán válassza **napi korlát** . E-mail küldése, ha a korlát elérése esetén egy állítható figyelmeztetési szint elérésekor, valamint a beállításokat a rendszer. Ha letiltja az összes napi korlát kötettel kapcsolatos, e-mailek törölje mindkét mezőbe.
 
 ## <a name="next-steps"></a>További lépések
 

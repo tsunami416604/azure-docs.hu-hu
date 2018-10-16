@@ -2,19 +2,19 @@
 title: Az Azure IoT Edge biztonsági manager |} A Microsoft Docs
 description: Az IoT Edge-eszköz biztonsági forgalmazóval és biztonsági szolgáltatások biztonságának kezelése.
 services: iot-edge
-keywords: biztonság, az elem, az enklávé, IoT Edge
+keywords: biztonság, a biztonságos elem, az enklávé, TEE, IoT Edge
 author: eustacea
 manager: timlt
 ms.author: eustacea
 ms.date: 07/30/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 4594685291396b8b80e62abe57be109f0abbd81d
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: f0e548cdd1c59dc894899ddbac127dd76db7db26
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46126343"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49321183"
 ---
 # <a name="azure-iot-edge-security-manager"></a>Az Azure IoT Edge-biztonságkezelő
 
@@ -113,7 +113,7 @@ A HSM-PAL kivonatolja a megbízhatósági hardver a fejlesztői vagy a felhaszn�
 
 ## <a name="secure-silicon-root-of-trust-hardware"></a>Biztonságos szilícium gyökér megbízhatósági hardver
 
-Biztonságos szilícium forráshorgony megbízhatósági belül az IoT Edge-eszköz hardveres szükség.  Biztonságos szilícium tartalmazza a platformmegbízhatósági modul (TPM), beágyazott biztonságos elem (eSM), ARM Trustzone, Intel SGX és egyéni biztonságos szilícium technológiák számos különböző származnak.  Biztonságos szilícium főtanúsítvány az eszközök megbízhatósági használata erősen ajánlott a fenyegetések fizikailag IoT-eszközök kisegítő társított megadott.
+Biztonságos szilícium forráshorgony megbízhatósági belül az IoT Edge-eszköz hardveres szükség.  Biztonságos szilícium tartalmazza a platformmegbízhatósági modul (TPM), beágyazott biztonságos elem (eSE), ARM TrustZone, Intel SGX és egyéni biztonságos szilícium technológiák számos különböző származnak.  Biztonságos szilícium főtanúsítvány az eszközök megbízhatósági használata erősen ajánlott a fenyegetések fizikailag IoT-eszközök kisegítő társított megadott.
 
 ## <a name="iot-edge-security-manager-integration-and-maintenance"></a>IoT Edge biztonsági manager integrálása és karbantartás
 

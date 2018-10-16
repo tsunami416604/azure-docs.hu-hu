@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: 057af5e0e5b467ab60e8de7534e9f4428b96c3dc
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 668882b8b39052c3c8e7d7b72c881a64c5c05a10
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46298319"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49321798"
 ---
 # <a name="troubleshoot-self-service-password-reset"></a>Az önkiszolgáló jelszó-visszaállítás hibaelhárítása
 
@@ -173,16 +173,14 @@ Részletesebben követheti nyomon, tekintse meg a frissített listájának [a Mi
 
 További információkért tekintse át a kapcsolat előfeltételeket a [az Azure AD Connect előfeltételei](../hybrid/how-to-connect-install-prerequisites.md) cikk.
 
-
-
 ### <a name="restart-the-azure-ad-connect-sync-service"></a>Az Azure AD Connect szinkronizálási szolgáltatás újraindítása
 
 Csatlakozási problémák vagy egyéb átmeneti problémák a szolgáltatással elhárításához indítsa újra az Azure AD Connect szinkronizálási szolgáltatás:
 
    1. Válassza ki a rendszergazdák **Start** Azure AD Connectet futtató kiszolgálón.
-   2. Adjon meg **services.msc** a keresőmezőbe, és válassza a **Enter**.
-   3. Keresse meg a **a Microsoft Azure AD Sync** bejegyzés.
-   4. Válassza ki a kattintson a jobb gombbal a szolgáltatás bejegyzés **indítsa újra a**, és ezután Várjon, amíg a művelet befejeződik.
+   1. Adjon meg **services.msc** a keresőmezőbe, és válassza a **Enter**.
+   1. Keresse meg a **a Microsoft Azure AD Sync** bejegyzés.
+   1. Válassza ki a kattintson a jobb gombbal a szolgáltatás bejegyzés **indítsa újra a**, és ezután Várjon, amíg a művelet befejeződik.
 
    ![Az Azure AD Sync szolgáltatás újraindítása][Service restart]
 
@@ -193,15 +191,15 @@ Ezeket a lépéseket újra létrehozza a kapcsolatot a felhőalapú szolgáltat�
 A kapcsolati problémák elhárításához, tiltsa le, és majd engedélyezze újra a jelszót a jelszóvisszaíró szolgáltatás:
 
    1. A rendszergazdák Azure AD Connect konfigurálása varázsló megnyitásához.
-   2. A **az Azure AD Connect**, adja meg az Azure AD globális rendszergazdai hitelesítő adatait.
-   3. A **csatlakozhat az AD DS**, adja meg az AD tartományi szolgáltatások rendszergazdai hitelesítő adatait.
-   4. A **felhasználók egyedi azonosítása**, jelölje be a **tovább** gombra.
-   5. A **választható funkciók**, törölje a **jelszóvisszaíró** jelölőnégyzetet.
-   6. Válassza ki **tovább** keresztül a fennmaradó párbeszédpaneljeivel módosítása semmit, amíg nem kap nélkül a **konfigurálásra kész** lapot.
-   7. Ügyeljen arra, hogy a **lapjának konfigurálása kész** jeleníti meg a **jelszóvisszaíró** lehetőséget igény **le van tiltva** és kattintson a zöld **konfigurálása** gombra a módosítások véglegesítéséhez.
-   8. A **befejezett**, törölje a **szinkronizálás most** lehetőséget, majd válassza ki **Befejezés** zárja be a varázslót.
-   9. Nyissa meg újra az Azure AD Connect konfigurációs varázsló.
-   10. Ismételje meg a 2-8, azzal a különbséggel győződjön meg arról, hogy válassza ki a **jelszóvisszaíró** beállítást a **választható funkciók** lapon engedélyezheti újra a szolgáltatást.
+   1. A **az Azure AD Connect**, adja meg az Azure AD globális rendszergazdai hitelesítő adatait.
+   1. A **csatlakozhat az AD DS**, adja meg az AD tartományi szolgáltatások rendszergazdai hitelesítő adatait.
+   1. A **felhasználók egyedi azonosítása**, jelölje be a **tovább** gombra.
+   1. A **választható funkciók**, törölje a **jelszóvisszaíró** jelölőnégyzetet.
+   1. Válassza ki **tovább** keresztül a fennmaradó párbeszédpaneljeivel módosítása semmit, amíg nem kap nélkül a **konfigurálásra kész** lapot.
+   1. Ügyeljen arra, hogy a **lapjának konfigurálása kész** jeleníti meg a **jelszóvisszaíró** lehetőséget igény **le van tiltva** és kattintson a zöld **konfigurálása** gombra a módosítások véglegesítéséhez.
+   1. A **befejezett**, törölje a **szinkronizálás most** lehetőséget, majd válassza ki **Befejezés** zárja be a varázslót.
+   1. Nyissa meg újra az Azure AD Connect konfigurációs varázsló.
+   1. Ismételje meg a 2-8, azzal a különbséggel győződjön meg arról, hogy válassza ki a **jelszóvisszaíró** beállítást a **választható funkciók** lapon engedélyezheti újra a szolgáltatást.
 
 Ezeket a lépéseket újra létrehozza a kapcsolat a felhőszolgáltatással, és hárítsa el a megakadás, léptek fel.
 
@@ -215,10 +213,11 @@ Azt javasoljuk, hogy ez a lépés végrehajtása csak azután kísérli meg a ko
 
 > [!WARNING]
 > Ha testre szabott-a-beépített szinkronizálási szabályok *biztonsági Mentésükhöz frissítés folytatása előtt, és ezt követően manuálisan telepítse újra azokat után végzett.*
+>
 
-   1. Az Azure AD Connect legújabb verzióját töltse le a [Microsoft Download Center](http://go.microsoft.com/fwlink/?LinkId=615771).
-   2. Már telepítette az Azure AD Connect, mert helyben frissíthet az Azure AD Connect telepítés frissítése a legújabb verzióra van szükség.
-   3. A letöltött csomagot, és kövesse a képernyőn megjelenő utasításokat az Azure AD Connect gép frissíteni.
+1. Az Azure AD Connect legújabb verzióját töltse le a [Microsoft Download Center](http://go.microsoft.com/fwlink/?LinkId=615771).
+1. Már telepítette az Azure AD Connect, mert helyben frissíthet az Azure AD Connect telepítés frissítése a legújabb verzióra van szükség.
+1. A letöltött csomagot, és kövesse a képernyőn megjelenő utasításokat az Azure AD Connect gép frissíteni.
 
 Az előző lépésekben kell újra létrehozza a kapcsolat a felhőszolgáltatással való, és Ön tapasztalt megakadás megoldásához.
 
@@ -228,34 +227,33 @@ Ha az Azure AD Connect-kiszolgáló legújabb verziójának telepítése nem old
 
 Az Azure AD Connectnek szüksége van az Active Directory **jelszó alaphelyzetbe állítása** engedéllyel a jelszóvisszaíró végrehajtásához. Ismerje meg, ha az Azure AD Connect egy adott a helyszíni Active Directory felhasználói fiók szükséges engedéllyel rendelkezik, használhatja a hatályos engedélyekhez Windows-szolgáltatás:
 
-   1. Jelentkezzen be az Azure AD Connect-kiszolgáló, és indítsa el a **Synchronization Service Managert** kiválasztásával **Start** > **szinkronizálási szolgáltatás**.
-   2. Alatt a **összekötők** lapra, válassza ki a helyszíni **Active Directory Domain Services** összekötő, és válassza ki **tulajdonságok**.  
-
+1. Jelentkezzen be az Azure AD Connect-kiszolgáló, és indítsa el a **Synchronization Service Managert** kiválasztásával **Start** > **szinkronizálási szolgáltatás**.
+1. Alatt a **összekötők** lapra, válassza ki a helyszíni **Active Directory Domain Services** összekötő, és válassza ki **tulajdonságok**.  
    ![Hatályos engedélyek – 2. lépés](./media/active-directory-passwords-troubleshoot/checkpermission01.png)  
   
-   3. Az előugró ablakban válassza ki a **csatlakozhat az Active Directory-erdő** , és jegyezze fel a **felhasználónév** tulajdonság. Ez a tulajdonság az Azure AD Connect címtár-szinkronizálás végrehajtásához használt AD DS-fiókot. Az Azure AD Connect a jelszóvisszaírás végrehajtásához az AD DS-fiókot kell alaphelyzetbe állítása jelszó engedéllyel.  
+1. Az előugró ablakban válassza ki a **csatlakozhat az Active Directory-erdő** , és jegyezze fel a **felhasználónév** tulajdonság. Ez a tulajdonság az Azure AD Connect címtár-szinkronizálás végrehajtásához használt AD DS-fiókot. Az Azure AD Connect a jelszóvisszaírás végrehajtásához az AD DS-fiókot kell alaphelyzetbe állítása jelszó engedéllyel.  
    
    ![Hatályos engedélyek – 3. lépés](./media/active-directory-passwords-troubleshoot/checkpermission02.png) 
   
-   4. Jelentkezzen be egy helyszíni tartományvezérlővel, és indítsa el a **Active Directory – felhasználók és számítógépek** alkalmazás.
-   5. Válassza ki **nézet** , és győződjön meg arról, hogy a **speciális funkciók** beállítás engedélyezve van.  
+1. Jelentkezzen be egy helyszíni tartományvezérlővel, és indítsa el a **Active Directory – felhasználók és számítógépek** alkalmazás.
+1. Válassza ki **nézet** , és győződjön meg arról, hogy a **speciális funkciók** beállítás engedélyezve van.  
    
    ![Hatályos engedélyek – 5. lépés](./media/active-directory-passwords-troubleshoot/checkpermission03.png) 
   
-   6. Keresse meg az Active Directory felhasználói fiók ellenőrizni szeretné. Kattintson a jobb gombbal a fiók nevét, és válassza ki **tulajdonságok**.  
+1. Keresse meg az Active Directory felhasználói fiók ellenőrizni szeretné. Kattintson a jobb gombbal a fiók nevét, és válassza ki **tulajdonságok**.  
    
    ![Hatályos engedélyek – 6. lépés](./media/active-directory-passwords-troubleshoot/checkpermission04.png) 
 
-   7. A felugró ablakban nyissa meg a **biztonsági** lapot, és válasszon **speciális**.  
+1. A felugró ablakban nyissa meg a **biztonsági** lapot, és válasszon **speciális**.  
    
    ![Hatályos engedélyek – 7. lépés](./media/active-directory-passwords-troubleshoot/checkpermission05.png) 
    
-   8. Az a **rendszergazda speciális biztonsági beállításai** előugró ablakban, keresse fel a **hatályos hozzáférés** fülre.
-   9. Válassza ki **válasszon ki egy felhasználót**, válassza ki az AD DS-fiókot az Azure AD által használt Connect (lásd a 3. lépés), és válassza ki **hatályos hozzáférés megtekintése**.  
-   
+1. Az a **rendszergazda speciális biztonsági beállításai** előugró ablakban, keresse fel a **hatályos hozzáférés** fülre.
+1. Válassza ki **válasszon ki egy felhasználót**, válassza ki az AD DS-fiókot az Azure AD által használt Connect (lásd a 3. lépés), és válassza ki **hatályos hozzáférés megtekintése**.
+
    ![Hatályos engedélyek – 9. lépés](./media/active-directory-passwords-troubleshoot/checkpermission06.png) 
   
-   10. Görgessen lefelé, és keressen **jelszó alaphelyzetbe állítása**. Ha a bejegyzés jelölőnégyzet be van jelölve, az Active Directory tartományi szolgáltatások fióknak legyen jogosultsága a kijelölt Active Directory felhasználói fiók a jelszó alaphelyzetbe állítása.  
+1. Görgessen lefelé, és keressen **jelszó alaphelyzetbe állítása**. Ha a bejegyzés jelölőnégyzet be van jelölve, az Active Directory tartományi szolgáltatások fióknak legyen jogosultsága a kijelölt Active Directory felhasználói fiók a jelszó alaphelyzetbe állítása.  
    
    ![Hatályos engedélyek – 10. lépés](./media/active-directory-passwords-troubleshoot/checkpermission07.png)  
 
@@ -285,8 +283,6 @@ Megfelelően, hogy tegye fel meg minél részletesebb információt a lehető es
     * Az egy csak felhőalapú felhasználói?
 * **Licencelési**: a felhasználó nem rendelkezik egy Azure AD prémium vagy alapszintű Azure AD-licenccel?
 * **Alkalmazás eseménynaplója**: jelszóvisszaíró használ, és a hiba: a helyszíni infrastruktúrában, ha az alkalmazások eseménynaplójában, az Azure AD Connect-kiszolgáló a tömörített másolatát tartalmazza.
-
-
 
 [Service restart]: ./media/active-directory-passwords-troubleshoot/servicerestart.png "Az Azure AD Sync szolgáltatás újraindítása"
 [Support code]: ./media/active-directory-passwords-troubleshoot/supportcode.png "Az ablak alsó jobb támogatási kódot"

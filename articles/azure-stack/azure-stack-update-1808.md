@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 10/12/2018
 ms.author: sethm
 ms.reviewer: justini
-ms.openlocfilehash: 2e913881faadd4892ad1ebc8cb404efe6489eb0d
-ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
+ms.openlocfilehash: 2e40f0520c0f5e605974f883b3327699ff26313e
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2018
-ms.locfileid: "49310898"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49321818"
 ---
 # <a name="azure-stack-1808-update"></a>Azure Stack 1808 frissítése
 
@@ -145,13 +145,6 @@ Emellett tartalmazza a kockázatcsökkentési spekulatív végrehajtás kockáza
 
 ### <a name="known-issues-with-the-update-process"></a>A frissítési folyamat ismert problémái
 
-<!-- TBD - IS -->
-- Az alábbi riasztásokat ismételten megjelenik, és az Azure Stack rendszeren majd eltűnnek jelenhetnek meg:
-   - *Infrastruktúra szerepkör-példány nem érhető el*
-   - *Skálázási egység csomópont offline állapotban.*
-   
-  Futtassa a [Test-AzureStack](azure-stack-diagnostic-test.md) parancsmagot, hogy az infrastruktúra-szerepkör példányai állapotának ellenőrzése és egység csomópontok méretezése. Ha nincsenek problémák észlelhetők által [Test-AzureStack](azure-stack-diagnostic-test.md), ezek a riasztások figyelmen kívül hagyhatja. Ha problémát észlel, próbálja meg elindítani a szerepkörpéldány infrastruktúra vagy a csomópont a felügyeleti portálon vagy a PowerShell használatával.
-
 - Futtatásakor [Test-AzureStack](azure-stack-diagnostic-test.md) a 1808 frissítés után az alaplapi felügyeleti vezérlő (BMC) figyelmeztető üzenet jelenik meg. Biztonságosan figyelmen kívül hagyhatja ezt a figyelmeztetést.
 
 <!-- 2468613 - IS --> 
@@ -174,7 +167,7 @@ Az alábbiakban a telepítés utáni ismert hibáit a build-verziószáma.
 
 ### <a name="portal"></a>Portál
 
-- Az Azure Stack technikai dokumentáció a legfrissebb kiadás összpontosít. Portál változások között, mert megjelenő használata az Azure Stack portálok kissé eltérhetnek a dokumentációban talál. 
+- Az Azure Stack technikai dokumentáció az Azure Stack legújabb kiadása összpontosít. Portál változások között, mert megjelenő használata az Azure Stack portálok kissé eltérhetnek a dokumentációban talál. 
 
 <!-- TBD - IS ASDK --> 
 - Előfordulhat, hogy megjelenik egy üres irányítópult, a portálon. Az irányítópult helyreállítani, kattintson **irányítópult szerkesztése**, majd kattintson a jobb gombbal, és válassza ki **visszaállítja az alapértelmezett állapotba**.
@@ -214,6 +207,14 @@ Az alábbiakban a telepítés utáni ismert hibáit a build-verziószáma.
 
 
 ### <a name="health-and-monitoring"></a>Állapot és figyelés
+
+<!-- TBD - IS -->
+- Az alábbi riasztásokat ismételten megjelenik, és az Azure Stack rendszeren majd eltűnnek jelenhetnek meg:
+   - *Infrastruktúra szerepkör-példány nem érhető el*
+   - *Skálázási egység csomópont offline állapotban.*
+   
+  Futtassa a [Test-AzureStack](azure-stack-diagnostic-test.md) parancsmagot, hogy az infrastruktúra-szerepkör példányai állapotának ellenőrzése és egység csomópontok méretezése. Ha nincsenek problémák észlelhetők által [Test-AzureStack](azure-stack-diagnostic-test.md), ezek a riasztások figyelmen kívül hagyhatja. Ha problémát észlel, próbálja meg elindítani a szerepkörpéldány infrastruktúra vagy a csomópont a felügyeleti portálon vagy a PowerShell használatával.
+
 <!-- 1264761 - IS ASDK --> 
 - A riasztásokat a **egészségügyi vezérlő** összetevő, amely rendelkezik a következő adatokat:  
 

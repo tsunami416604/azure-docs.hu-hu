@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 02/20/2018
 ms.author: abshamsft
 ms.component: ''
-ms.openlocfilehash: e12c513f8812381897804412616be1ef7c743a3d
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 953a004f48bfd9bd68b9500d312240c45cbf3292
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48044093"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49321903"
 ---
 # <a name="network-performance-monitor-solution-in-azure"></a>Network Performance Monitor megoldás az Azure-ban
 
@@ -271,7 +271,7 @@ Ha Ön egy NPM-felhasználó hoz létre riasztást, az Azure Portalon keresztül
 3. Ha Műveletcsoportok használata mellett dönt, akkor kiválaszthat egy korábban létrehozott művelet. Műveletcsoport létrehozása tudhat [itt.](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-action-groups#create-an-action-group-by-using-the-azure-portal) 
 4. Ha a riasztás sikeresen létrejött, a riasztások kezelése hivatkozás segítségével a riasztásokat. 
 
-##<a name="pricing"></a>Díjszabás
+## <a name="pricing"></a>Díjszabás
 
 Díjszabási információk érhetők el [online](log-analytics-network-performance-monitor-pricing-faq.md).
 

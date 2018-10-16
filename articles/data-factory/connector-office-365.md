@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/08/2018
+ms.date: 10/15/2018
 ms.author: jingwang
-ms.openlocfilehash: 3caae8ecae66178bc538d0b9d1240293028f33ad
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.openlocfilehash: 8a36053fe3189a72c33ea14445a6b064260eec01
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48867357"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49318316"
 ---
 # <a name="copy-data-from-office-365-into-azure-using-azure-data-factory-preview"></a>Adatok másolása az Office 365-ből az Azure-bA az Azure Data Factory (előzetes verzió) használatával 
 
@@ -55,7 +55,7 @@ Adatok másolása az Office 365-ből az Azure-ba, a következő előfeltételké
 
 Ha első alkalommal a kért adatokat az ebben a környezetben (kombinációjával, hogy mely tábla folyamatban van a hozzáférés, mely cél fiók be az adatokat, és mely felhasználói identitás, hogy így az adatok hozzáférési kérés), megjelenik a másolási tevékenység állapota "Folyamatban", és csak akkor, ha a megoldásra kattint ["Details" hivatkozásra a műveletek](copy-activity-overview.md#monitoring) , megjelenik az állapot szerint "RequestingConsent".  Az adatelérési jóváhagyó csoportja tagjának kell jóváhagyhatja a kérést a Privileged Access Management, mielőtt konfigurálhatná az adatok kinyerése.
 
-Tekintse meg [Itt](https://github.com/OfficeDev/ManagedAccessMSGraph/wiki/Approving-a-data-access-request) hogyan hagyhatja jóvá, a jóváhagyó a az adatok eléréséhez a kérelmet, és tekintse meg [Itt](https://github.com/OfficeDev/ManagedAccessMSGraph/wiki/On-boarding) általában véve az integrációra, a Privileged Access Management a magyarázat, többek között az adatok beállítása hozzáférés-jóváhagyója csoport.
+Tekintse meg [Itt](https://github.com/OfficeDev/MS-Graph-Data-Connect/wiki/Approving-data-access-requests) hogyan hagyhatja jóvá, a jóváhagyó a az adatok eléréséhez a kérelmet, és tekintse meg [Itt](https://github.com/OfficeDev/MS-Graph-Data-Connect/wiki/Capabilities#integration-with-privileged-access-management) általában véve az integrációra, a Privileged Access Management a magyarázat, többek között az adatok beállítása hozzáférés-jóváhagyója csoport.
 
 ## <a name="policy-validation"></a>Házirend érvényesítése
 
@@ -124,7 +124,7 @@ Adatok másolása az Office 365-höz, a következő tulajdonságok támogatottak
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A type tulajdonságot az adatkészlet értékre kell állítani: **Office365Table** | Igen |
-| tableName | Az adatkészlet nevét a Office 365-ből kibontásához. Tekintse meg itt érhető el a a kivonási Office 365-adatkészletek listáját. | Igen |
+| tableName | Az adatkészlet nevét a Office 365-ből kibontásához. Tekintse meg [Itt](https://github.com/OfficeDev/MS-Graph-Data-Connect/wiki/Capabilities#datasets) kinyerési érhető el az Office 365-adatkészletek listáját. | Igen |
 | Predikátum | A predikátum kifejezés, amely segítségével kibontani az Office 365-höz adott sorok szűrése.  Tekintse meg itt megtudhatja, mely oszlopok predikátum szűrést az egyes táblákat és a szűrő kifejezésnek formátumban is használható. | Nem<br>(Ha nincs predikátum nem lett megadva, az alapértelmezett érték adatokat nyerhet ki az utolsó 30 nap) |
 
 **Példa**

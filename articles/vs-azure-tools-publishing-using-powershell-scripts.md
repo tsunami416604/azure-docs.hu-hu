@@ -12,12 +12,12 @@ ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 11/11/2016
 ms.author: ghogen
-ms.openlocfilehash: dac5425f72ff57e412be664e1bc0c84aee3dec1f
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: 99d723eee6bd5b60289af5490e4b1cd6a855cabb
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42056377"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49319149"
 ---
 # <a name="using-windows-powershell-scripts-to-publish-to-dev-and-test-environments"></a>Windows PowerShell-parancsprogramok használata a fejlesztési és tesztelési környezetben való közzétételhez
 
@@ -52,6 +52,7 @@ A közzététel szkript adott közzététel egy webhelyen vagy virtuális gépen
 A Windows PowerShell-modult, amely a Visual Studio létrehozza a függvények, amelyek a közzététel a szkript tartalmazza. Azure PowerShell-lel függvényekhez nem tartozhat módosítható. Lásd: [How to install and configure Azure PowerShell](/powershell/azure/overview) (Az Azure PowerShell telepítése és konfigurálása).
 
 ### <a name="json-configuration-file"></a>JSON-konfigurációs fájl
+
 A JSON-fájlt hoznak létre a **konfigurációk** mappa, és arról, pontosan mely erőforrásokat helyezze üzembe az Azure konfigurációs adatokat tartalmaz. A fájlt a Visual Studio által létrehozott név project-name-WAWS-dev.json Ha létrehozott egy webhely vagy projekt nevét – Virtuálisgép-dev.json Ha egy virtuális gépet hozott létre. Íme egy példa egy JSON konfigurációs fájl, amely akkor jön létre, amikor létrehoz egy webhelyet. Az értékek többsége magától értetődő. A webhely neve az Azure jön létre, akkor előfordulhat, hogy a projekt neve nem egyezik.
 
 ```json
@@ -150,7 +151,7 @@ Ha egy webhely, amely rendelkezik több üzembehelyezési környezet (más néve
 
 Ha soha nem futtatott Windows PowerShell-parancsfájl előtt, a végrehajtási házirend a parancsfájlok futtatásának engedélyezéséhez először meg kell adnia. A házirend olyan biztonsági funkció, amely megakadályozza, hogy a felhasználók Windows PowerShell-parancsfájlok futtatásakor, ha kártevőket vagy parancsfájlok végrehajtása érintő vírusok kitéve.
 
-### <a name="run-the-script"></a>A parancsfájl futtatása
+### <a name="run-the-script"></a>A szkript futtatása
 
 1. A Web Deploy csomag a projekt létrehozásához. A Web Deploy csomag egy tömörített (.zip kiterjesztésű fájl), amelyet szeretne a webhelyen vagy virtuális gépen másolja a fájlokat tartalmazó. Webes telepítési csomagokat hozhat létre bármely webalkalmazásba a Visual Studióban.
 
@@ -159,29 +160,29 @@ Ha soha nem futtatott Windows PowerShell-parancsfájl előtt, a végrehajtási h
 További információkért lásd: [Útmutató: webes telepítési csomag létrehozása a Visual Studióban](https://msdn.microsoft.com/library/dd465323.aspx). Ugyanígy automatizálható a Web Deploy csomag létrehozása [testreszabása és kibővítése a közzététel scripts[(#customizing-and-extending-publish-scripts)] leírtak szerint
 
 1. A **Megoldáskezelőben**, a parancsfájl a helyi menü megnyitásához, és válassza **nyissa meg a PowerShell ISE-ben**.
-2. Ha a Windows PowerShell-parancsfájlok futtatásakor ezen a számítógépen, először, nyisson meg egy parancssori ablakot rendszergazdai jogosultságokkal, és írja be a következő parancsot:
+1. Ha a Windows PowerShell-parancsfájlok futtatásakor ezen a számítógépen, először, nyisson meg egy parancssori ablakot rendszergazdai jogosultságokkal, és írja be a következő parancsot:
 
     ```powershell
     Set-ExecutionPolicy RemoteSigned
     ```
 
-3. Jelentkezzen be az Azure-bA a következő parancs segítségével.
+1. Jelentkezzen be az Azure-bA a következő parancs segítségével.
 
     ```powershell
     Add-AzureAccount
     ```
 
-    Amikor a rendszer kéri, adja meg a felhasználónevét és jelszavát.
+Amikor a rendszer kéri, adja meg a felhasználónevét és jelszavát.
 
-    Vegye figyelembe, hogy automatizálja a parancsfájlt, amikor ezzel a módszerrel az Azure a hitelesítő adatokkal nem működik. Ehelyett használjon a `.publishsettings` fájl hitelesítő adatait. Egyszer, a paranccsal **Get-AzurePublishSettingsFile** töltse le a fájlt az Azure-ból, és ezt követően használata **Import-AzurePublishSettingsFile** importálja a fájlt. Részletes információk: [Az Azure PowerShell telepítése és konfigurálása](/powershell/azure/overview).
+Vegye figyelembe, hogy automatizálja a parancsfájlt, amikor ezzel a módszerrel az Azure a hitelesítő adatokkal nem működik. Ehelyett használjon a `.publishsettings` fájl hitelesítő adatait. Egyszer, a paranccsal **Get-AzurePublishSettingsFile** töltse le a fájlt az Azure-ból, és ezt követően használata **Import-AzurePublishSettingsFile** importálja a fájlt. Részletes információk: [Az Azure PowerShell telepítése és konfigurálása](/powershell/azure/overview).
 
-4. (Nem kötelező) Ha azt szeretné, például a virtuális gép Azure-erőforrások létrehozása, adatbázis és a webhely a webalkalmazás közzététele nélkül használja a **Publish-WebApplication.ps1** parancsot a **-konfiguráció**argumentum állítsa be a JSON konfigurációs fájl. Ez a parancssor segítségével, hogy a JSON konfigurációs fájl határozza meg, mely erőforrásokat hozhat létre. Parancssori argumentumok használ az alapértelmezett beállításokat, mert létrehozza az erőforrásokat, de nem közzéteheti webalkalmazását. A – részletes lehetőséget biztosít további információt, mi történik.
+1. (Nem kötelező) Ha azt szeretné, például a virtuális gép Azure-erőforrások létrehozása, adatbázis és a webhely a webalkalmazás közzététele nélkül használja a **Publish-WebApplication.ps1** parancsot a **-konfiguráció**argumentum állítsa be a JSON konfigurációs fájl. Ez a parancssor segítségével, hogy a JSON konfigurációs fájl határozza meg, mely erőforrásokat hozhat létre. Parancssori argumentumok használ az alapértelmezett beállításokat, mert létrehozza az erőforrásokat, de nem közzéteheti webalkalmazását. A – részletes lehetőséget biztosít további információt, mi történik.
 
     ```powershell
     Publish-WebApplication.ps1 -Verbose –Configuration C:\Path\WebProject-WAWS-dev.json
     ```
 
-5. Használja a **Publish-WebApplication.ps1** parancs indítja el a szkriptet, és tegye közzé a webalkalmazást az alábbi példák egyikét látható módon. Ha szeretne felülírják az alapértelmezett beállításokat, sem a további argumentumok, például az előfizetés nevét, és tehet közzé, csomag neve, a virtuális gép hitelesítő adatainak vagy az adatbázis hitelesítő adatait, ezeket a paramétereket is megadhat. Használja a **– részletes** beállítással kapcsolatos további információ a folyamat állapotát a közzétételi folyamat.
+1. Használja a **Publish-WebApplication.ps1** parancs indítja el a szkriptet, és tegye közzé a webalkalmazást az alábbi példák egyikét látható módon. Ha szeretne felülírják az alapértelmezett beállításokat, sem a további argumentumok, például az előfizetés nevét, és tehet közzé, csomag neve, a virtuális gép hitelesítő adatainak vagy az adatbázis hitelesítő adatait, ezeket a paramétereket is megadhat. Használja a **– részletes** beállítással kapcsolatos további információ a folyamat állapotát a közzétételi folyamat.
 
     ```powershell
     Publish-WebApplication.ps1 –Configuration C:\Path\WebProject-WAWS-dev-json `
@@ -191,27 +192,29 @@ További információkért lásd: [Útmutató: webes telepítési csomag létreh
     -Verbose
     ```
 
-    Ha egy virtuális gépet hoz létre, a parancs a következőképpen néznek. Ebben a példában azt is bemutatja, hogyan adja meg a több adatbázis hitelesítő adatait. A virtuális gépek, ezek a szkriptek hoz létre az SSL-tanúsítvány nincs a megbízható főtanúsítvány tanúsítványláncát. Ezért kell használnia a **– AllowUntrusted** lehetőséget.
+Ha egy virtuális gépet hoz létre, a parancs a következőképpen néznek. Ebben a példában azt is bemutatja, hogyan adja meg a több adatbázis hitelesítő adatait. A virtuális gépek, ezek a szkriptek hoz létre az SSL-tanúsítvány nincs a megbízható főtanúsítvány tanúsítványláncát. Ezért kell használnia a **– AllowUntrusted** lehetőséget.
 
-    ```powershell
-    Publish-WebApplication.ps1 `
-    -Configuration C:\Path\ADVM-VM-test.json `
-    -SubscriptionName Contoso `
-    -WebDeployPackage C:\Path\ADVM.zip `
-    -AllowUntrusted `
-    -VMPassword @{name = "vmUserName"; password = "YourPasswordHere"} `
-    -DatabaseServerPassword @{Name="server1";Password="adminPassword1"}, @{Name="server2";Password="adminPassword2"} `
-    -Verbose
-    ```
+```powershell
+Publish-WebApplication.ps1 `
+-Configuration C:\Path\ADVM-VM-test.json `
+-SubscriptionName Contoso `
+-WebDeployPackage C:\Path\ADVM.zip `
+-AllowUntrusted `
+-VMPassword @{name = "vmUserName"; password = "YourPasswordHere"} `
+-DatabaseServerPassword @{Name="server1";Password="adminPassword1"}, @{Name="server2";Password="adminPassword2"} `
+-Verbose
+```
 
-    A parancsfájl adatbázist is létrehozhat, de az adatbázis-kiszolgálók nem hoz létre. Ha azt szeretné, hozzon létre egy adatbázis-kiszolgálót, akkor használhatja a **New-AzureSqlDatabaseServer** függvényt az Azure-modul.
+A parancsfájl adatbázist is létrehozhat, de az adatbázis-kiszolgálók nem hoz létre. Ha azt szeretné, hozzon létre egy adatbázis-kiszolgálót, akkor használhatja a **New-AzureSqlDatabaseServer** függvényt az Azure-modul.
 
 ## <a name="customizing-and-extending-the-publish-scripts"></a>Testre szabható és bővíthető a közzétételi parancsprogramok
+
 Testre szabhatja a publish-szkript és a JSON-konfigurációs fájlt. A Windows PowerShell-modul az a funkciók **AzureWebAppPublishModule.psm1** nem tartozhat módosítható. Ha csak át szeretné adjon meg egy másik adatbázist, vagy módosítsa a virtuális gép tulajdonságok némelyike, szerkessze a JSON konfigurációs fájl. Ha azt szeretné, a parancsfájl elkészítését és tesztelését a projekt automatizálásához funkcióinak bővítése érdekében valósítható meg a függvény fájl **Publish-WebApplication.ps1**.
 
 Automatizálhatja a projekt, adja hozzá a kódot, amely meghívja ezt az MSBuild `New-WebDeployPackage` kód ebben a példában látható módon. Az MSBuild parancs elérési útja telepítette a Visual Studio verziójától függően eltérő. A funkció használata megszerezni a helyes elérési utat, **Get-MSBuildCmd**ebben a példában látható módon.
 
 ### <a name="to-automate-building-your-project"></a>A projekt automatizálása
+
 1. Adja hozzá a `$ProjectFile` paraméter a globális param szakaszban.
 
     ```powershell
@@ -221,7 +224,7 @@ Automatizálhatja a projekt, adja hozzá a kódot, amely meghívja ezt az MSBuil
     $ProjectFile,
     ```
 
-2. Másolja a függvény `Get-MSBuildCmd` a szkript fájlba.
+1. Másolja a függvény `Get-MSBuildCmd` a szkript fájlba.
 
     ```powershell
     function Get-MSBuildCmd
@@ -242,7 +245,7 @@ Automatizálhatja a projekt, adja hozzá a kódot, amely meghívja ezt az MSBuil
     }
     ```
 
-3. Cserélje le `New-WebDeployPackage` az a következő kódra, és cserélje le a helyőrzőket a sor felépítéséhez `$msbuildCmd`. Ez a kód a Visual Studio 2017. Ha a Visual Studio 2015-öt használ, módosítsa a **VisualStudioVersion** tulajdonságot `14.0` (`12.0` Pro Visual Studio 2013).
+1. Cserélje le `New-WebDeployPackage` az a következő kódra, és cserélje le a helyőrzőket a sor felépítéséhez `$msbuildCmd`. Ez a kód a Visual Studio 2017. Ha a Visual Studio 2015-öt használ, módosítsa a **VisualStudioVersion** tulajdonságot `14.0` (`12.0` Pro Visual Studio 2013).
 
     ```powershell
     function New-WebDeployPackage
@@ -250,15 +253,15 @@ Automatizálhatja a projekt, adja hozzá a kódot, amely meghívja ezt az MSBuil
         #Write a function to build and package your web application
     ```
 
-    A webalkalmazások létrehozása, MsBuild.exe használja. Segítségre van szüksége MSBuild parancssori útmutatóban, lásd: [http://go.microsoft.com/fwlink/?LinkId=391339](http://go.microsoft.com/fwlink/?LinkId=391339)
+A webalkalmazások létrehozása, MsBuild.exe használja. Segítségre van szüksége MSBuild parancssori útmutatóban, lásd: [http://go.microsoft.com/fwlink/?LinkId=391339](http://go.microsoft.com/fwlink/?LinkId=391339)
 
-    ```powershell
-    Write-VerboseWithTime 'Build-WebDeployPackage: Start'
+```powershell
+Write-VerboseWithTime 'Build-WebDeployPackage: Start'
 
-    $msbuildCmd = '"{0}" "{1}" /T:Rebuild;Package /P:VisualStudioVersion=15.0 /p:OutputPath="{2}\MSBuildOutputPath" /flp:logfile=msbuild.log,v=d' -f (Get-MSBuildCmd), $ProjectFile, $scriptDirectory
+$msbuildCmd = '"{0}" "{1}" /T:Rebuild;Package /P:VisualStudioVersion=15.0 /p:OutputPath="{2}\MSBuildOutputPath" /flp:logfile=msbuild.log,v=d' -f (Get-MSBuildCmd), $ProjectFile, $scriptDirectory
 
-    Write-VerboseWithTime ('Build-WebDeployPackage: ' + $msbuildCmd)
-    ```
+Write-VerboseWithTime ('Build-WebDeployPackage: ' + $msbuildCmd)
+```
 
 ### <a name="start-execution-of-the-build-command"></a>Indítsa el a build parancs végrehajtása
 
@@ -293,7 +296,7 @@ return $WebDeployPackage
     }
     ```
 
-2. A parancssorból megadásának használatával egyéni szkript meghívása a `$Project` argumentum, a következő példához hasonlóan:
+1. A parancssorból megadásának használatával egyéni szkript meghívása a `$Project` argumentum, a következő példához hasonlóan:
 
     ```powershell
     .\Publish-WebApplicationVM.ps1 -Configuration .\Configurations\WebApplication5-VM-dev.json `
@@ -303,9 +306,10 @@ return $WebDeployPackage
     -Verbose
     ```
 
-    Automatizálhatja az alkalmazás tesztelése, adja hozzá a kódot `Test-WebApplication`. Ügyeljen arra, hogy távolítsa el a sorokat **Publish-WebApplication.ps1** ahol ezek a függvények nevezzük. Implementációja nem ad meg, ha manuálisan hozhat létre a projektet a Visual Studio használatával, és futtassa a közzététel parancsfájl közzététele az Azure-bA.
+Automatizálhatja az alkalmazás tesztelése, adja hozzá a kódot `Test-WebApplication`. Ügyeljen arra, hogy távolítsa el a sorokat **Publish-WebApplication.ps1** ahol ezek a függvények nevezzük. Implementációja nem ad meg, ha manuálisan hozhat létre a projektet a Visual Studio használatával, és futtassa a közzététel parancsfájl közzététele az Azure-bA.
 
 ## <a name="publishing-function-summary"></a>Közzétételi összesítő függvény
+
 Segítséget a Windows PowerShell-parancssorban használható függvények, a parancs használata `Get-Help function-name`. A Súgó paraméter Súgó és a példákat tartalmaz. Az azonos súgószöveg is szerepel a parancsfájl forrásfájlok **AzureWebAppPublishModule.psm1** és **Publish-WebApplication.ps1**. A szkript és a Súgó a Visual Studio nyelvével honosított.
 
 **AzureWebAppPublishModule**

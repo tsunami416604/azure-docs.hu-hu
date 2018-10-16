@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: 69f6ed7814feacbd5adf60325aae123d388ffb61
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: f523e2e2d55a34825bbb76a5a879c7c046b6b554
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39222788"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49318962"
 ---
 # <a name="customize-the-azure-ad-functionality-for-self-service-password-reset"></a>Az Azure AD-funkciókról, önkiszolgáló jelszó-visszaállítás testreszabása
 
@@ -55,7 +55,9 @@ Az Active Directory összevonási szolgáltatások (AD FS) a rendszergazdák has
 
 Az AD FS bejelentkezési oldalára hivatkozás hozzáadásához használja a következő parancsot az AD FS-kiszolgálóra. Felhasználók is ezen a lapon adja meg az SSPR-munkafolyamat.
 
-``` Set-ADFSGlobalWebContent -SigninPageDescriptionText "<p><A href='https://passwordreset.microsoftonline.com' target='_blank'>Can’t access your account?</A></p>" ```
+``` powershell
+Set-ADFSGlobalWebContent -SigninPageDescriptionText "<p><A href='https://passwordreset.microsoftonline.com' target='_blank'>Can’t access your account?</A></p>"
+```
 
 ## <a name="customize-the-sign-in-page-and-access-panel-look-and-feel"></a>Bejelentkezési oldal és a hozzáférési panel megjelenésének és testreszabása
 
@@ -65,8 +67,8 @@ A grafikus úgy dönt, a következő körülmények között jelennek meg:
 
 * Miután a felhasználó beírja a felhasználóneve
 * Ha a felhasználó hozzáfér a testre szabott URL-címe:
-    * Tartalmában való böngészéshez illessze a *whr* paramétert a jelszó-visszaállítási oldalra, például "https://login.microsoftonline.com/?whr=contoso.com"
-    * Tartalmában való böngészéshez illessze a *felhasználónév* paramétert a jelszó-visszaállítási oldalra, például "https://login.microsoftonline.com/?username=admin@contoso.com"
+    * Tartalmában való böngészéshez illessze a `whr` paramétert a jelszó-visszaállítási oldalra, például "https://login.microsoftonline.com/?whr=contoso.com"
+    * Tartalmában való böngészéshez illessze a `username` paramétert a jelszó-visszaállítási oldalra, például "https://login.microsoftonline.com/?username=admin@contoso.com"
 
 A konfigurálása a vállalati arculat megjelenítése a cikkben talál [vállalati arculat megjelenítése a bejelentkezési oldal az Azure ad-ben](../fundamentals/customize-branding.md).
 

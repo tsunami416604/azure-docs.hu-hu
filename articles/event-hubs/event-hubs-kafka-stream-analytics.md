@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/29/2018
 ms.author: spelluru
-ms.openlocfilehash: 8a7346f884a065a21b6f0a822b2236fa7ce5dff0
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: 497249baa10956c37762172bd0c48fad7be14e0b
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45732557"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49319319"
 ---
 # <a name="process-apache-kafka-for-event-hubs-events-using-stream-analytics"></a>Apache Kafka for Event Hubs-események feldolgozása Stream Analytics használatával 
 Ez a cikk bemutatja, hogyan adatok streamelése az Event Hubs Kafka-kompatibilis, és az Azure Stream Analyticsszel dolgozza fel. Végigvezeti az alábbi lépéseket: 
@@ -73,8 +73,8 @@ A rövid útmutató elvégzéséhez győződjön meg arról, hogy teljesülnek a
 
 ## <a name="send-messages-with-kafka-in-event-hubs"></a>A Kafka üzenetek küldése az Event Hubs
 
-1. Klónozás a [Azure Event Hubs-tárház](https://github.com/Azure/azure-event-hubs) a gépre.
-2. Lépjen abba a mappába: `azure-event-hubs/samples/kafka/quickstart/producer`. 
+1. Klónozás a [Azure Event Hubs, Kafka-tárház](https://github.com/Azure/azure-event-hubs-for-kafka) a gépre.
+2. Lépjen abba a mappába: `azure-event-hubs-for-kafka/quickstart/java/producer`. 
 4. A konfigurációs adatok frissítése a gyártó `src/main/resources/producer.config`. Adja meg a **neve** és **kapcsolati karakterlánc** számára a **eseményközpont-névtér**. 
 
     ```xml
@@ -84,7 +84,7 @@ A rövid útmutató elvégzéséhez győződjön meg arról, hogy teljesülnek a
     sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule required username="$ConnectionString" password="{CONNECTION STRING for EVENT HUB NAMESPACE}";
     ```
 
-5. Navigáljon a `azure-event-hubs/samples/kafka/quickstart/producer/src/main/java/com/example/app`, és nyissa meg a **TestDataReporter.java** fájlt egy tetszőleges szerkesztőben. 
+5. Navigáljon a `azure-event-hubs-for-kafka/quickstart/java/producer/src/main/java/com/example/app`, és nyissa meg a **TestDataReporter.java** fájlt egy tetszőleges szerkesztőben. 
 6. Tegye megjegyzésbe a következő kódsort:
 
     ```java
@@ -97,7 +97,7 @@ A rövid útmutató elvégzéséhez győződjön meg arról, hogy teljesülnek a
     ```
 
     Ez a kód elküldi az eseményadatokat **JSON** formátumban. Amikor konfigurál egy Stream Analytics-feladat bemenete, akkor adja meg JSON a bemeneti adatok formátumát. 
-7. **Futtassa az előállítói** és a stream Kafka-kompatibilis Event hubsba. A Windows gépen használatakor egy **Node.js parancssort**, váltson át a `azure-event-hubs/samples/kafka/quickstart/producer` mappa ezek a parancsok futtatása előtt. 
+7. **Futtassa az előállítói** és a stream Kafka-kompatibilis Event hubsba. A Windows gépen használatakor egy **Node.js parancssort**, váltson át a `azure-event-hubs-for-kafka/quickstart/java/producer` mappa ezek a parancsok futtatása előtt. 
    
     ```shell
     mvn clean package
@@ -205,7 +205,10 @@ Miután sikeresen beállította a Stream Analytics-feladatot a beérkező adatfo
 
 
 ## <a name="next-steps"></a>További lépések
-Ebben a cikkben bemutattuk, hogyan streamelhet Kafka-kompatibilis Event Hubsba anélkül, hogy módosítaná a protokollügyfeleket vagy saját fürtöket futtatna. További információért folytassa az alábbi oktatóanyaggal:
+Ebben a cikkben bemutattuk, hogyan streamelhet Kafka-kompatibilis Event Hubsba anélkül, hogy módosítaná a protokollügyfeleket vagy saját fürtöket futtatna. További információ az Event Hubs és az Event Hubs a Kafka, a következő témakörben talál:  
 
-> [!div class="nextstepaction"]
-> [Kafka MirrorMaker használata az Event Hubsszal](event-hubs-kafka-mirror-maker-tutorial.md)
+* [Ismerkedés az Event Hubs szolgáltatással](event-hubs-what-is-event-hubs.md)
+* [További információ az Event Hubs, Kafka for](event-hubs-for-kafka-ecosystem-overview.md)
+* [További minták felfedezése az Event Hubs a Kafka github](https://github.com/Azure/azure-event-hubs-for-kafka)
+* A [MirrorMaker](https://cwiki.apache.org/confluence/pages/viewpage.action?pageId=27846330) használatával [eseményeket streamelhet a helyszíni Kafkából a felhőben található Kafka-kompatibilis Event Hubsba.](event-hubs-kafka-mirror-maker-tutorial.md)
+* Ismerje meg, hogyan streamelése Kafka az engedélyezett az Event Hubs használatával [Kafka natív alkalmazások](event-hubs-quickstart-kafka-enabled-event-hubs.md), [Apache Flink](event-hubs-kafka-flink-tutorial.md), vagy [Akka adatfolyamok](event-hubs-kafka-akka-streams-tutorial.md)

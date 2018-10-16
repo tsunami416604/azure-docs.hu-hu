@@ -10,12 +10,12 @@ ms.component: manage
 ms.date: 08/06/2018
 ms.author: twounder
 ms.reviewer: twounder
-ms.openlocfilehash: 5c54505625f40d7c0bd00111e2ff260dc9afaf1c
-ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
+ms.openlocfilehash: c7d2211ca69fcd18588ea1b20b638b2970b8439c
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43288004"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49318843"
 ---
 # <a name="whats-new-in-azure-sql-data-warehouse-july-2018"></a>Mi az új Azure SQL Data warehouse? 2018. július
 Az Azure SQL Data Warehouse fejlesztései folyamatosan kap. Ez a cikk ismerteti az új szolgáltatásokat és a július 2018-ban bevezetett módosításokat.
@@ -30,7 +30,7 @@ Modul teljesítményének, túl a [Gigaom kutatási](https://gigaom.com/report/d
 ![Az Azure SQL Data Warehouse a gyorsabb és olcsóbb, mint az Amazon Redshift](https://azurecomcdn.azureedge.net/mediahandler/acomblog/media/Default/blog/cb76447e-621e-414b-861e-732ffee5345a.png)
 <sub>forrás: [Gigaom kutatási elemzői jelentés: a Felhőbeli teljesítményteszt Data warehouse-bA](https://gigaom.com/report/data-warehouse-in-the-cloud-benchmark/)</sub>
 
-###<a name="query-concurrency"></a>Lekérdezés egyidejűség
+### <a name="query-concurrency"></a>Lekérdezés egyidejűség
 Az SQL Data warehouse-ba is biztosítja, hogy adatok elérhetők a szervezetek között. A Microsoft támogató 128 lekérdezést, hogy több felhasználó lekérdezheti az adatbázist, és nem küldött egyéb kérések által blokkolt továbbfejlesztett. Ezzel szemben az Amazon Redshift korlátozza a maximális párhuzamos lekérdezések 50, korlátozza az adatok elérését a szervezeten belül.
 
 SQL Data Warehouse függetlenített tárolási és számítási az egyedi architektúrája ezek lekérdezési teljesítmény és a lekérdezés egyidejűségi nyereség bármely ár növekedés és az épület nélkül kínál.

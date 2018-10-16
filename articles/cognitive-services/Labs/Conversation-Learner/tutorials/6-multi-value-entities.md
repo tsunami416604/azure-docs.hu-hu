@@ -10,12 +10,12 @@ ms.component: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: 6193a515f0d8136e0d420b7554cf26fee8f50953
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.openlocfilehash: a80577bb226cbec080edf5e06dbd0f31c80a5890
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39173101"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49321427"
 ---
 # <a name="how-to-use-multi-value-entities-with-a-conversation-learner-model"></a>Beszélgetéstanuló modell többértékű entitások használata
 Ez az oktatóanyag bemutatja az entitások "több érték" tulajdonsága.
@@ -24,7 +24,7 @@ Ez az oktatóanyag bemutatja az entitások "több érték" tulajdonsága.
 
 [![Az oktatóanyag 6 előzetes verzió](http://aka.ms/cl-tutorial-06-preview)](http://aka.ms/blis-tutorial-06)
 
-##<a name="requirements"></a>Követelmények
+## <a name="requirements"></a>Követelmények
 Ehhez az oktatóanyaghoz, hogy fut-e az általános oktatóanyag robotot
 
     npm run tutorial-general

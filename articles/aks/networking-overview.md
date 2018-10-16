@@ -5,14 +5,14 @@ services: container-service
 author: iainfoulds
 ms.service: container-service
 ms.topic: article
-ms.date: 08/31/2018
+ms.date: 10/11/2018
 ms.author: iainfou
-ms.openlocfilehash: d278e47979e696183b703f7e67e39757d854fdb2
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: 258eb744cf86fcd14250be8f2e8ec18b5a0fada3
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48857737"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49319421"
 ---
 # <a name="network-configuration-in-azure-kubernetes-service-aks"></a>Hálózati konfiguráció az Azure Kubernetes Service (AKS)
 
@@ -73,23 +73,19 @@ Az IP-cím terv az AKS-fürt tartalmaz egy virtuális hálózat, legalább egy a
 
 Podok száma csomópontonként az AKS-fürt alapértelmezett maximális száma alapszintű és speciális hálózatkezelés és a fürt telepítése közé esik.
 
-### <a name="default-maximum"></a>Az alapértelmezett maximális
-
-Ezek a *alapértelmezett* maximális értékeket, ha telepít egy AKS-fürt üzembe helyezéskor podok maximális számának megadása nélkül:
-
 | Az üzembe helyezési módszer | Alapszintű | Extra szintű | Üzembe helyezés konfigurálhatók |
 | -- | :--: | :--: | -- |
-| Azure CLI | 110 | 30 | Igen |
-| Resource Manager-sablon | 110 | 30 | Igen |
+| Azure CLI | 110 | 30 | Igen (legfeljebb 110) |
+| Resource Manager-sablon | 110 | 30 | Igen (legfeljebb 110) |
 | Portál | 110 | 30 | Nem |
 
 ### <a name="configure-maximum---new-clusters"></a>Maximum – új fürtök konfigurálása
 
-AKS-fürt központi telepítése során megadása a podok száma csomópontonként különböző maximális száma:
+Podok csomópontonkénti maximális számának konfigurálásához tudja *csak fürt üzembe helyezéskor*. Ha az Azure CLI-vel vagy a Resource Manager-sablonnal helyezi üzembe, beállíthatja a maximális podok száma csomópont értéke magas, mint a 110-es.
 
-* **Az Azure CLI**: Adja meg a `--max-pods` argumentum, a fürt telepítésekor a [az aks létrehozása] [ az-aks-create] parancsot.
-* **Resource Manager-sablon**: Adja meg a `maxPods` tulajdonságot a [ManagedClusterAgentPoolProfile] objektum a fürt Resource Manager-sablonnal üzembe.
-* **Az Azure portal**: egy fürtöt az Azure Portal központi telepítésekor nem módosítható a podok csomópontonkénti maximális számát. A speciális hálózati fürtök 30 podok száma csomópontonként, ha az Azure Portalon üzembe helyezett korlátozódnak.
+* **Az Azure CLI**: Adja meg a `--max-pods` argumentum, a fürt telepítésekor a [az aks létrehozása] [ az-aks-create] parancsot. A maximális értéke 110-es.
+* **Resource Manager-sablon**: Adja meg a `maxPods` tulajdonságot a [ManagedClusterAgentPoolProfile] objektum a fürt Resource Manager-sablonnal üzembe. A maximális értéke 110-es.
+* **Az Azure portal**: podok csomópontonkénti maximális száma nem módosítható, ha telepít egy fürtöt az Azure portal használatával. A speciális hálózati fürtök korlátozva, 30 podok száma csomópontonként, ha telepít, az Azure portal használatával.
 
 ### <a name="configure-maximum---existing-clusters"></a>Maximum – meglévő fürtök konfigurálása
 
