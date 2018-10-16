@@ -1,19 +1,19 @@
 ---
 title: Megismerheti az Azure IoT Hub MQTT-támogatás |} A Microsoft Docs
 description: Fejlesztői útmutató – eszközök csatlakoztatása az IoT Hub eszköz felé néző végpont az MQTT protokoll használatával támogatása. Mqtt-ről az Azure IoT eszközoldali SDK-kat támogatja a beépített kapcsolatos információkat tartalmaz.
-author: fsautomata
+author: rezasherafat
 manager: ''
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 03/05/2018
-ms.author: elioda
-ms.openlocfilehash: 2e45422ca6a861894193600eff17f192bc20b357
-ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
+ms.date: 10/12/2018
+ms.author: rezas
+ms.openlocfilehash: 6e2ab773f865a8e52c7b04b94a188dd244540e0d
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2018
-ms.locfileid: "42055709"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49344965"
 ---
 # <a name="communicate-with-your-iot-hub-using-the-mqtt-protocol"></a>Az IoT hubhoz az MQTT protokoll használatával kommunikálnak.
 
@@ -107,7 +107,7 @@ A Device Explorer:
 
 MQTT csatlakoztatása és leválasztása a csomagok, az IoT Hub kiad egy eseményt a a **Működésfigyelés** csatorna. Ez az esemény rendelkezik, amelyek segítségével a kapcsolati hibák elhárításához további információt.
 
-Az eszköz-alkalmazás megadhat egy **fog** jelenik meg az a **CONNECT** csomagot. Az eszköz alkalmazást kell használnia `devices/{device_id}/messages/events/{property_bag}` vagy `devices/{device_id}/messages/events/{property_bag}` , a **fog** témakör neve meghatározásához **fog** telemetriai üzenetnek számít továbbított üzenetek. Ebben az esetben, ha a hálózati kapcsolat megszakad, de egy **DISCONNECT** csomag korábban nem érkezett az eszközről, majd az IoT Hub küldi a **fog** megadott üzenetet a **CONNECT** csomagot a telemetria-csatornára. A telemetriai adatok csatorna lehet vagy az alapértelmezett **események** végpontot, illetve egy útválasztási IoT Hub által definiált egyéni végpont. Az üzenet a **iothub-MessageType** tulajdonság értéke az **fog** rendelve.
+Az eszköz-alkalmazás megadhat egy **fog** jelenik meg az a **CONNECT** csomagot. Az eszköz alkalmazást kell használnia `devices/{device_id}/messages/events/` vagy `devices/{device_id}/messages/events/{property_bag}` , a **fog** témakör neve meghatározásához **fog** telemetriai üzenetnek számít továbbított üzenetek. Ebben az esetben, ha a hálózati kapcsolat megszakad, de egy **DISCONNECT** csomag korábban nem érkezett az eszközről, majd az IoT Hub küldi a **fog** megadott üzenetet a **CONNECT** csomagot a telemetria-csatornára. A telemetriai adatok csatorna lehet vagy az alapértelmezett **események** végpontot, illetve egy útválasztási IoT Hub által definiált egyéni végpont. Az üzenet a **iothub-MessageType** tulajdonság értéke az **fog** rendelve.
 
 ### <a name="tlsssl-configuration"></a>A TLS/SSL-konfigurációja
 
@@ -228,6 +228,8 @@ További információkért lásd: [Device twins fejlesztői útmutató][lnk-devg
 
 ### <a name="update-device-twins-reported-properties"></a>Frissítés eszköz ikereszköz jelentett tulajdonságait
 
+Jelentett tulajdonságok frissítésére, az eszköz kibocsát egy kérelmet az IoT hub egy kiadvány keresztül egy kijelölt MQTT témakör alatt. A kérés feldolgozása után az IoT Hub válaszol egy másik témakörre kiadvány keresztül a frissítési művelet sikeres vagy sikertelen állapotát. Ez a témakör ahhoz, hogy az ikereszköz-frissítési kérés eredményét értesítést küldeni, az eszköz által is fizethet. Az implment a kérelem/válasz való interakció típusa, az mqtt-ről, hogy használhatja a hibabeszúrás fogalmát kérelem azonosítója (`$rid`) kezdetben az eszköz a frissítési kérelem által biztosított. A Kérelemazonosító is megtalálható a válasz az, hogy az az adott korábbi irányuló kérelemre adott válasz korrelációját, ha az eszköz IoT hubról.
+
 A következő szakasz ismerteti, hogyan egy eszközt az IoT Hub az ikereszköz jelentett tulajdonságainak frissítése. a:
 
 1. Egy eszköz először elő kell a `$iothub/twin/res/#` témakörhöz, és a művelet válaszokat kaphatnak az IoT hubról.
@@ -253,6 +255,20 @@ A lehetséges állapotkódok a következők:
 | 400 | Hibás kérés. Helytelen formátumú JSON |
 | 429 | Túl sok kérelem (szabályozott), megfelelően [szabályozása az IoT Hub][lnk-quotas] |
 | 5** | Kiszolgálóhibák |
+
+Az alábbi, python-kódrészlet bemutatja az ikereszköz jelentett tulajdonságait frissítési folyamat keresztüli MQTT (Paho MQTT-ügyfél használatával):
+```python
+from paho.mqtt import client as mqtt
+
+# authenticate the client with IoT Hub (not shown here)
+
+client.subscribe("$iothub/twin/res/#")
+rid = "1"
+twin_reported_property_patch = "{\"firmware_version\": \"v1.1\"}"
+client.publish("$iothub/twin/PATCH/properties/reported/?$rid=" + rid, twin_reported_property_patch, qos=0)
+```
+
+Követően sikeres ikereszköz jelentett tulajdonságait frissítési műveletet a fenti, a kiadvány üzenetet az IoT hubról lesz a következő témakör: `$iothub/twin/res/204/?$rid=1&$version=6`, ahol `204` jelzi a sikert, az állapotkód `$rid=1` felel meg a kérelem azonosítója a kód az eszköz által biztosított és `$version` ikereszközök jelentett tulajdonságok szakaszában verziójának felel meg a frissítés után.
 
 További információkért lásd: [Device twins fejlesztői útmutató][lnk-devguide-twin].
 

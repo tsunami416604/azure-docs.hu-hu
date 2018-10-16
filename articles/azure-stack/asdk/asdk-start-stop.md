@@ -1,6 +1,6 @@
 ---
-title: Elindítása és leállítása a Azure verem Development Kit (ASDK) |} Microsoft Docs
-description: Megtudhatja, hogyan indítsa el, és állítsa le az Azure verem Development Kit (ASDK).
+title: Elindíthatja és leállíthatja a az Azure Stack Development Kit (ASDK) |} A Microsoft Docs
+description: Ismerje meg, hogyan indítsa el, és állítsa le az Azure Stack Development Kit (ASDK).
 services: azure-stack
 documentationcenter: ''
 author: jeffgilb
@@ -12,81 +12,81 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/11/2018
+ms.date: 10/15/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: dfb565803746ecdda9b36a4e12a3c3f2b4d9e0d0
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 98ae7fe0fde922aee28ffc05b64d223a40085447
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31427028"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49340919"
 ---
-# <a name="start-and-stop-the-azure-stack-development-kit-asdk"></a>Elindítása és leállítása a Azure verem Development Kit (ASDK)
-Nem ajánlott a ASDK számítógép egyszerűen újraindítására. Ehelyett kövesse a cikk megfelelően állítsa le és indítsa újra ASDK szolgáltatásokat eljárásokat. 
+# <a name="start-and-stop-the-azure-stack-development-kit-asdk"></a>Elindíthatja és leállíthatja a az Azure Stack Development Kit (ASDK)
+Egyszerűen indítsa újra a ASDK számítógép nem ajánlott. Ehelyett kövesse megfelelően állítsa le és indítsa újra a ASDK szolgáltatások ebben a cikkben szereplő eljárásokat. 
 
-## <a name="stop-azure-stack"></a>Állítsa le az Azure verem 
-Megfelelően állítsa le az Azure-verem szolgáltatások, és a ASDK számítógép, a következő PowerShell-parancsokat használja:
+## <a name="stop-azure-stack"></a>Állítsa le az Azure Stack 
+Megfelelően állítsa le az Azure Stack-szolgáltatásokat, és a ASDK gazdaszámítógépet, használja a következő PowerShell-parancsokat:
 
-1. Jelentkezzen be az ASDK állomáson AzureStack\CloudAdmin.
-2. Nyissa meg a Powershellt rendszergazdaként (nem a PowerShell ISE).
-3. A következő parancsokat egy rendszerjogosultságú végpont (EGP) munkamenetet létrehozni: 
+1. Jelentkezzen AzureStack\CloudAdmin ASDK a gazdagépen.
+2. Nyissa meg a Powershellt rendszergazdaként (nem PowerShell ISE-ben).
+3. A következő parancsokat egy emelt szintű végpont (EGP)-munkamenetet létrehozni: 
 
    ```powershell
    Enter-PSSession -ComputerName AzS-ERCS01 -ConfigurationName PrivilegedEndpoint
    ```
-4. Ezután a EGP-munkamenetben, használhatja a **Stop-AzureStack** Azure verem services leállítása, és állítsa le a ASDK számítógép parancsmagot:
+4. Ezután a EGP-munkamenetben használja a **Stop-AzureStack** parancsmag használatával állítsa le az Azure Stack-szolgáltatásokat, és állítsa le a ASDK számítógép:
 
    ```powershell
    Stop-AzureStack
    ```
-5. Tekintse át a PowerShell kimenete annak érdekében, hogy az összes Azure verem services sikeresen leállt a ASDK számítógép leállítása előtt. A leállítási folyamat néhány percet vesz igénybe.
+5. Tekintse át a PowerShell-kimenetet, annak érdekében, hogy az összes Azure Stack-szolgáltatások rendszer leállítása sikeresen megtörtént a ASDK számítógép leállítása előtt. A leállítási folyamat több percig tart.
 
-## <a name="start-azure-stack"></a>Indítsa el az Azure verem 
-ASDK szolgáltatások a gazdaszámítógép elkezdésének automatikusan elindul. Azonban ASDK infrastruktúra szolgáltatások indítási idő a ASDK fogadó számítógép hardverkonfigurációja teljesítményétől függ. Szolgáltatások újraindítása sikertelen bizonyos esetekben több órát is igénybe vehet.
+## <a name="start-azure-stack"></a>Indítsa el az Azure Stack 
+ASDK szolgáltatások a gazdaszámítógép elkezdésének automatikusan elindul. Azonban ASDK infrastruktúra-szolgáltatások indítási idejének a ASDK fogadó számítógép hardverkonfigurációja teljesítményét alapján változik. Szolgáltatások újraindítása sikertelen bizonyos esetekben több órát is igénybe vehet.
 
-Függetlenül attól, hogy a ASDK le volt állítva és ellenőrizze, hogy az összes Azure verem szolgáltatás elindult, és rendesen működik után a számítógép be van kapcsolva kell tegye a következőket: 
+Függetlenül attól, hogy a ASDK le lett állítva és ellenőrizze, hogy az összes Azure Stack-szolgáltatás elindult, és teljesen működőképes után a számítógép be van-e kapcsolva a következő lépéseket kell használnia: 
 
-1. Kapcsolja a ASDK gazdaszámítógépen. 
-2. Jelentkezzen be az ASDK állomáson AzureStack\CloudAdmin.
-3. Nyissa meg a Powershellt rendszergazdaként (nem a PowerShell ISE).
-4. A következő parancsokat egy rendszerjogosultságú végpont (EGP) munkamenetet létrehozni:
+1. Energiagazdálkodási ASDK a gazdagépen. 
+2. Jelentkezzen AzureStack\CloudAdmin ASDK a gazdagépen.
+3. Nyissa meg a Powershellt rendszergazdaként (nem PowerShell ISE-ben).
+4. A következő parancsokat egy emelt szintű végpont (EGP)-munkamenetet létrehozni:
 
    ```powershell
    Enter-PSSession -ComputerName AzS-ERCS01 -ConfigurationName PrivilegedEndpoint
    ```
-5. Ezután a EGP-munkamenetben a következő parancsokat Azure verem szolgáltatások indítási állapotának ellenőrzéséhez:
+5. Ezután a EGP-munkamenetben futtassa a következő parancsokat az Azure Stack-szolgáltatások indítási állapotának ellenőrzéséhez:
 
    ```powershell
    Get-ActionStatus Start-AzureStack
    ```
-6. Tekintse át a kimenetet, annak érdekében, hogy Azure verem szolgáltatások újraindítása sikeresen megtörtént.
+6. Tekintse át a kimenetet, annak érdekében, hogy az Azure Stack-szolgáltatások újraindítása sikeresen megtörtént.
 
-Megfelelően állítsa le és indítsa újra az Azure-verem szolgáltatások az ajánlott eljárásokkal kapcsolatos további tudnivalókért lásd: [kezdési és befejezési Azure verem](.\.\azure-stack-start-and-stop.md). 
+Megfelelően állítsa le és indítsa újra az Azure Stack-szolgáltatások az ajánlott eljárásokkal kapcsolatos további tudnivalókért lásd: [indítás és leállítás Azure Stack](.\.\azure-stack-start-and-stop.md). 
 
-## <a name="troubleshoot-startup-and-shutdown"></a>Hibaelhárítás indítása és leállítása 
-Hajtsa végre ezeket a lépéseket, ha Azure verem szolgáltatások nem sikeresen elindítani a ASDK gazdaszámítógépen power két órán belül:
+## <a name="troubleshoot-startup-and-shutdown"></a>Indítási és leállítási hibaelhárítása 
+Hajtsa végre ezeket a lépéseket, ha az Azure Stack-szolgáltatások nem sikerült indul el a ASDK gazdaszámítógépen power két órán belül:
 
-1. Jelentkezzen be az ASDK állomáson AzureStack\CloudAdmin.
-2. Nyissa meg a Powershellt rendszergazdaként (nem a PowerShell ISE).
-3. A következő parancsokat egy rendszerjogosultságú végpont (EGP) munkamenetet létrehozni:
+1. Jelentkezzen AzureStack\CloudAdmin ASDK a gazdagépen.
+2. Nyissa meg a Powershellt rendszergazdaként (nem PowerShell ISE-ben).
+3. A következő parancsokat egy emelt szintű végpont (EGP)-munkamenetet létrehozni:
 
    ```powershell
    Enter-PSSession -ComputerName AzS-ERCS01 -ConfigurationName PrivilegedEndpoint
    ```
-4. Ezután a EGP-munkamenetben a következő parancsokat Azure verem szolgáltatások indítási állapotának ellenőrzéséhez:
+4. Ezután a EGP-munkamenetben futtassa a következő parancsokat az Azure Stack-szolgáltatások indítási állapotának ellenőrzéséhez:
 
    ```powershell
    Test-AzureStack
    ```
-5. Tekintse át a kimenetet, és javítsa ki a hibákat. További információkért lásd: [Azure verem teszt futtatása](.\.\azure-stack-diagnostic-test.md).
-6. Indítsa újra a verem Azure-szolgáltatásokat a EGP-munkameneten belül futtatásával a **Start-AzureStack** parancsmagot:
+5. Tekintse át a kimenetet, és javítsa ki a hibákat. További információkért lásd: [futtatása az Azure Stack teszt](.\.\azure-stack-diagnostic-test.md).
+6. Az Azure Stack-szolgáltatások EGP-munkameneten belül futtatásával indítsa újra a **Start-AzureStack** parancsmagot:
 
    ```powershell
    Start-AzureStack
    ```
 
-Ha fut **Start-AzureStack** eredmények hibát, keresse fel a [Azure verem támogatási fórum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurestack) ASDK hibaelhárítási támogatás eléréséhez. 
+Ha fut **Start-AzureStack** , hibát okoz, látogasson el a [Azure Stack támogatási fórum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurestack) hibaelhárítási támogatás ASDK beolvasni. 
 
 ## <a name="next-steps"></a>További lépések 
-További tudnivalók az Azure-verem diagnosztikai eszköz és naplózási ki, lásd: [Azure verem diagnosztikai eszközök](.\.\azure-stack-diagnostics.md).
+További információ az Azure Stack diagnosztikai eszköz, és adja ki a naplózást, lásd: [Azure Stack diagnosztikai eszközök](.\.\azure-stack-diagnostics.md).

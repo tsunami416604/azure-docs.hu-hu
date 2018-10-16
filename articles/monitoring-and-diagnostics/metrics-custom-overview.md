@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: ancav
 ms.component: metrics
-ms.openlocfilehash: c136772e27dab014c22234f1ef1d2baddd2ffe58
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 1bdf1e1f5e58ecb0939d5876e0cef349e32de517
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46978080"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49344750"
 ---
 # <a name="custom-metrics-in-azure-monitor"></a>Egyéni metrikák az Azure monitorban
 
@@ -31,7 +31,7 @@ Egyéni metrikák az Azure Monitor küld, ha egyes adatok pont (vagy értéket) 
 
 ### <a name="authentication"></a>Hitelesítés
 Egyéni metrikák az Azure monitornak küldje el a metrika elküldése entitás rendelkeznie kell egy érvényes Azure Active Directory-jogkivonat a "Tulajdonos" a kérelem fejlécében. Érvényes tulajdonosi jogkivonat-beszerzési néhány támogatott módja van:
-1. [MSI (Felügyeltszolgáltatás-identitás)](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) -identitást biztosít az Azure-erőforrás magát (például a virtuális Géphez). MSI úgy lett kialakítva, erőforrások hajthat végre az egyes műveletek – például lehetővé teszi a saját magáról metrikák kibocsátható egy erőforrást. Az erőforrás (vagy az MSI) "Figyelési metrikákat közzétevő" engedélyeket kaphatnak egy másik erőforrás, ezáltal az MSI kibocsátható, valamint egyéb erőforrások mérőszámait.
+1. [Felügyelt identitások az Azure-erőforrások](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) -identitást biztosít az Azure-erőforrás magát (például a virtuális Géphez). MSI úgy lett kialakítva, erőforrások hajthat végre az egyes műveletek – például lehetővé teszi a saját magáról metrikák kibocsátható egy erőforrást. Az erőforrás (vagy az MSI) "Figyelési metrikákat közzétevő" engedélyeket kaphatnak egy másik erőforrás, ezáltal az MSI kibocsátható, valamint egyéb erőforrások mérőszámait.
 2. [AAD-szolgáltatásnév](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals) -forgatókönyv itt az AAD-alkalmazás (szolgáltatás) lehet engedélyeket kibocsátható egy Azure-erőforrás metrikáit.
 Hitelesíteni a kérelmet, az Azure Monitor ellenőrzi az alkalmazás jogkivonatát AAD nyilvános kulcsok használatával. A meglévő "Figyelési metrikákat közzétevő" szerepkör már rendelkezik ezzel az engedéllyel, amely elérhető az Azure Portalon. A szolgáltatásnév, attól függően, milyen erőforrásokat, azt fogja kibocsátó egyéni metrikákat, a "Figyelési metrikákat közzétevő" szerepkör a hatókörben szükséges (előfizetés, erőforráscsoport vagy adott erőforrás) kell megadni.
 

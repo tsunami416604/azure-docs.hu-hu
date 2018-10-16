@@ -10,15 +10,16 @@ ms.component: bing-speech
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: zhouwang
-ROBOTS: NOINDEX
-ms.openlocfilehash: 6ee61a38615ac8cbf4c4fcf6b8d631c5f9a8f7d1
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 0bbc6b638d11335e6d46501fa651996f05957dd5
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46962776"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49341820"
 ---
 # <a name="bing-speech-websocket-protocol"></a>A Bing Speech WebSocket protokoll
+
+[!INCLUDE [Deprecation note](../../../../includes/cognitive-services-bing-speech-api-deprecation-note.md)]
 
 Bing Speech az felhőalapú platform, amelynek funkciói közül a legtöbb haladó algoritmusok átalakítását beszélt hangot képes szöveggé érhető el. A Bing Speech protokoll határozza meg a [kapcsolat beállítása](#connection-establishment) ügyfélalkalmazások számára, és a szolgáltatás és a speech recognition üzenetek között igényló kicserélt között ([üzenetek ügyfél által kezdeményezett](#client-originated-messages) és [szolgáltatás által kezdeményezett üzenetek](#service-originated-messages)). Emellett [telemetriai üzeneteket](#telemetry-schema) és [hibakezelés](#error-handling) ismerteti.
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 11/03/2017
 ms.author: bharatn
-ms.openlocfilehash: 84869a93dfe2f979e207257ebac80773a172a776
-ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
+ms.openlocfilehash: 04f233384ad0d02cb5b7056df1e5fdfc74b9bec8
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48017924"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49344625"
 ---
 # <a name="reverse-proxy-in-azure-service-fabric"></a>Az Azure Service Fabric fordított proxy
 Az Azure Service Fabric épített fordított proxy segítségével Service Fabric-fürtön futó mikroszolgáltatásokat felderítése és kommunikálni más szolgáltatásokkal, amelyek http-végpontokat.
@@ -155,6 +155,8 @@ A tárolókon belül futó szolgáltatások esetében is használhatja a környe
     var serviceUrl = $"http://{fqdn}:19081/DockerSFApp/UserApiContainer";
 ```
 A helyi fürt `Fabric_NodeIPOrFQDN` alapértelmezés szerint a "localhost" van beállítva. A helyi fürt elindításához a `-UseMachineName` ellenőrizze, hogy a tárolók elérheti a csomóponton futó fordított proxy paramétert. További információkért lásd: [konfigurálja a fejlesztői környezetet, a tárolók debug](service-fabric-how-to-debug-windows-containers.md#configure-your-developer-environment-to-debug-containers).
+
+Tárolók Docker Compose belül futó Service Fabric-szolgáltatások igényelnek speciális docker-compose.yml *szakasz portok* http: vagy https: konfiguráció. További információkért lásd: [az Azure Service Fabric üzembe helyezési támogatás a Docker Compose](service-fabric-docker-compose.md).
 
 ## <a name="next-steps"></a>További lépések
 * [Állítsa be, és a fordított proxy konfigurálása egy fürtön](service-fabric-reverseproxy-setup.md).

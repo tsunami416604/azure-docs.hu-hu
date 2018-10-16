@@ -12,15 +12,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/09/2018
+ms.date: 10/15/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: dd1e64d5ad6982c85a8205e3036d30a2ede92f7c
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.openlocfilehash: 6da81ab90a87285f9e1874e3f10eff4570124192
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37930290"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49344013"
 ---
 # <a name="start-and-stop-azure-stack"></a>Elindítása és leállítása az Azure Stackben
 Ez a cikk megfelelően állítsa le és indítsa újra az Azure Stack-szolgáltatásokat az eljárást kell követnie. Leállítás fizikailag a teljes Azure Stack-környezet lesz kikapcsolásához. Indítási összes infrastruktúra-szerepkörök bekapcsolását, és a leállítás előtt voltak energiaállapotát bérlői erőforrások visszaadja.
@@ -90,4 +90,4 @@ Az alábbi lépések végrehajtásával, ha az infrastrukturális és bérlői s
 
 ## <a name="next-steps"></a>További lépések 
 
-További információ az Azure Stack diagnosztikai eszköz, és adja ki a naplózást, lásd: [Azure Stack diagnosztikai eszközök](azure-stack-diagnostics.md).
+Tudjon meg többet [Azure Stack diagnosztikai eszközök](azure-stack-diagnostics.md)

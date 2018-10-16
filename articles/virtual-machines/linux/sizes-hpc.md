@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 07/06/2018
+ms.date: 10/12/2018
 ms.author: jonbeck
-ms.openlocfilehash: 748cb4612b2b5aed26ba8197cfad0782f2645e1e
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: 70dca655d5300fcd34b4198093e136f6a971963b
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37902129"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49344489"
 ---
 # <a name="high-performance-compute-virtual-machine-sizes"></a>Nagy teljesítményű számítási virtuálisgép-méretek
 
@@ -56,9 +56,21 @@ Számításigényes virtuális gép üzembe helyezése az Azure Marketplace-en, 
   > A CentOS-alapú HPC-képekhez kernelfrissítés le vannak tiltva a **yum** konfigurációs fájlt. Ez azért, mert az RPM csomag oszlanak meg a Linux RDMA-illesztőprogramok és illesztőprogram-frissítések előfordulhat, hogy nem működik, ha a kernel frissül.
   > 
  
-### <a name="cluster-configuration"></a>Fürtkonfiguráció 
-    
-MPI-feladatok futtatása a fürtözött virtuális gépeken további system konfigurációs van szükség. Például a virtuális gépek fürtjeit, szüksége a számítási csomópontok közötti bizalmi kapcsolat létrehozásához. Tipikus beállítások megtekintéséhez [Linux RDMA-fürt beállítása MPI-alkalmazások futtatására](classic/rdma-cluster.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json).
+### <a name="cluster-configuration-options"></a>Fürt konfigurációs lehetőségek
+
+Az Azure Linuxos HPC virtuális gépeken, amely az RDMA hálózati használatával kommunikálhatnak fürtöket számos lehetőséget kínál a többek között: 
+
+* **Virtuális gépek** – az RDMA-kompatibilis HPC virtuális gépek ugyanazon rendelkezésre állási csoportjának (Ha használja az Azure Resource Manager üzemi modell) üzembe helyezése. Ha a klasszikus üzemi modellt használja, az ugyanazon a felhőszolgáltatáson virtuális gépek üzembe helyezése. 
+
+* **A Virtual machine scale sets** – a Virtuálisgép-méretezési csoport állítsa be, győződjön meg arról, hogy korlátozza az üzembe helyezés az elhelyezési csoportból. Például egy Resource Manager-sablon beállítása az `singlePlacementGroup` tulajdonságot `true`. 
+
+* **Az Azure CycleCloud** – a HPC-fürt létrehozása [Azure CycleCloud](/azure/cyclecloud/) MPI-feladatok futtatása a Linux-csomópontokat.
+
+* **Az Azure Batch** – hozzon létre egy [Azure Batch](/azure/batch/) MPI számítási feladatok futtatása Linux-készlet számítási csomópontjain. További információkért lásd: [használata RDMA-kompatibilis vagy a GPU-kompatibilis példányok a Batch-készletek](../../batch/batch-pool-compute-intensive-sizes.md). További tájékoztatás a [Batch hajógyárnak](https://github.com/Azure/batch-shipyard) tárolóalapú számítási feladatok futtatásához a Batch-projektben.
+
+* **A Microsoft HPC Pack** - [HPC Pack](https://docs.microsoft.com/powershell/high-performance-computing/overview) számos Linux-disztribúció futtatását számítási csomópontokra RDMA-kompatibilis Azure-beli virtuális gépeken, támogatja a Windows Server fő csomópontot kezeli. Telepítését bemutató példát lásd: [HPC Pack Linux RDMA-fürt létrehozása az Azure-ban](https://docs.microsoft.com/powershell/high-performance-computing/hpcpack-linux-openfoam).
+
+Fürtkezelő válaszaitól függően szükség lehet további rendszerkonfiguráció MPI-feladatok futtatásához. Például a virtuális gépek fürtjeit, szükség lehet a fürt csomópontjai közötti bizalmi kapcsolat létrehozásához, az SSH-kulcsok létrehozásakor, vagy beállításának SSH megbízhatósági kapcsolat létrehozása.
 
 ### <a name="network-topology-considerations"></a>Hálózati topológia szempontjai
 * Az RDMA-kompatibilis Linuxos virtuális gépek az Azure-ban az Eth1 RDMA hálózati forgalom számára van fenntartva. Ne módosítsa bármely Eth1 beállításai vagy a konfigurációs fájl hivatkozó ezen a hálózaton található bármely információ. Eth0 rendszeres Azure hálózati forgalom számára van fenntartva.
@@ -66,8 +78,7 @@ MPI-feladatok futtatása a fürtözött virtuális gépeken további system konf
 * Az Azure-ban az RDMA hálózati fenntartja a cím terület 172.16.0.0/16. 
 
 
-## <a name="using-hpc-pack"></a>HPC Pack használatával
-[HPC Pack](https://technet.microsoft.com/library/jj899572.aspx), a Microsoft ingyenes HPC-fürt és a feladat felügyeleti megoldás, az egyik lehetőség, hogy a nagy számítási igényű példányok használata Linuxszal. HPC Pack már támogatja a legújabb verzióiban a számos Linux-disztribúció futtatását számítási csomópontokra, az Azure virtuális gépeken, egy Windows Server átjárócsomópont kezeli. Az Intel MPI-t futtató az RDMA-kompatibilis Linuxos számítási csomópontok a HPC Pack is ütemezése és futtatása Linux MPI alkalmazást, hogy az RDMA-hálózatot. Lásd: [Linuxos számítási csomópontok HPC Pack-fürtökben, az Azure-ban – első lépések](classic/hpcpack-cluster.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json).
+
 
 ## <a name="other-sizes"></a>További méretek
 - [Általános célú](sizes-general.md)
@@ -78,8 +89,6 @@ MPI-feladatok futtatása a fürtözött virtuális gépeken további system konf
 - [Előző generációs szoftvereknél jobban](sizes-previous-gen.md)
 
 ## <a name="next-steps"></a>További lépések
-
-- Első lépések, telepítését és használatát a számításigényes méretek és a Linux RDMA-t, tekintse meg [Linux RDMA-fürt beállítása MPI-alkalmazások futtatására](classic/rdma-cluster.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json).
 
 - Tudjon meg többet [Azure számítási egységek (ACU)](acu.md) Azure-termékváltozatok hasonlítsa össze a számítási teljesítményt nyújt segítséget.
 

@@ -10,15 +10,16 @@ ms.component: bing-speech
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: zhouwang
-ROBOTS: NOINDEX
-ms.openlocfilehash: c4fb331076f88d4f14f56201aa31a00160f395aa
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 79f2aa9c3e73037aa25848b7d11c34a73bf35f64
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46995346"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49342398"
 ---
 # <a name="get-started-with-the-speech-recognition-api-in-javascript"></a>A Speech Recognition API a JavaScript használatának első lépései
+
+[!INCLUDE [Deprecation note](../../../../includes/cognitive-services-bing-speech-api-deprecation-note.md)]
 
 Alkalmazások, amelyek a beszélt hangot képes szöveggé a Speech Recognition API használatával is fejleszthet. A JavaScript-klienskódtár használja a [Speech Service WebSocket protokoll](../API-Reference-REST/websocketprotocol.md), egyidejűleg így a kommunikációhoz, és fogadjon megjelenített érzéseket szöveget. Ez a cikk segít a Speech Recognition API a JavaScript használatának első lépései.
 

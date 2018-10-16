@@ -10,14 +10,15 @@ ms.component: bing-speech
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: zhouwang
-ROBOTS: NOINDEX
-ms.openlocfilehash: 3b1e82d65a3eafb9e41277a18569270ef02cd8e5
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 4c5243ec14a4494222168bb33b3e840b96f8465e
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46989039"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49345254"
 ---
+[!INCLUDE [Deprecation note](../../../../includes/cognitive-services-bing-speech-api-deprecation-note.md)]
+
 # <a name="quickstart-use-the-bing-speech-recognition-api-in-java-on-android"></a>Gyors útmutató: A Bing Speech recognition API-t a Java használata Android rendszeren
 
 A Bing Speech Recognition API-val Android-alkalmazások, amelyek a felhőalapú és a Bing Speech Service segítségével a beszélt hangot képes szöveggé alakítani fejleszthet. Az API-t támogatja, hogy valós idejű streamelési, így az alkalmazás egy időben, és aszinkron módon képes is részleges felismerési eredményeket hang, a szolgáltatás által küldött egy időben.
@@ -26,7 +27,7 @@ Ez a cikk egy mintaalkalmazás segítségével hogyan használható a beszédfel
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-### <a name="platform-requirements"></a>Platform-követelmények
+### <a name="platform-requirements"></a>Platformkövetelmények
 
 A minta a rendszer által fejlesztett [Android Studio](http://developer.android.com/sdk/index.html) Java-környezetben a Windows számára.
 

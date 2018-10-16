@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 06/18/2018
 ms.author: martincoetzer
-ms.openlocfilehash: 2a6c94d902c639a2529e501347876d63a3f56d7e
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: 94d96cab28f738984b3d05d5eee0754e8c5e75b6
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39505609"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49341577"
 ---
 # <a name="five-steps-to-securing-your-identity-infrastructure"></a>Öt lépést a személyazonosság-infrastruktúra védelme
 
@@ -32,7 +32,7 @@ Az alábbi ellenőrzőlista segít gyorsan üzembe helyezhet a kritikus fontoss�
 * Lehetővé teszi a több kiszámítható és teljes körű végfelhasználói biztonsági önsegítő együtt.
 
 > [!NOTE]
-> Ebben a dokumentumban szereplő javaslatok a alkalmazni csak olyan alkalmazások, amelyek az identitás-szolgáltatóként az Azure Active Directory használatára vannak konfigurálva. Alkalmazások konfigurálása az egyszeri bejelentkezés hitelesítőadat-szabályzatok, a fenyegetésészlelés, előnyeinek további naplózási, naplózást és egyéb funkciók hozzá ezeket az alkalmazásokat. [Egyszeri bejelentkezés az Azure Active Directoryn keresztül](https://docs.microsoft.com/azure/active-directory/active-directory-enterprise-apps-manage-sso) az alapja – összes ezekkel az ajánlásokkal alapulnak.
+> Ebben a dokumentumban szereplő javaslatok a alkalmazni csak azon alkalmazásoknak, amelyek az identitás-szolgáltatóként az Azure Active Directory használatára vannak konfigurálva. Alkalmazások konfigurálása az egyszeri bejelentkezés hitelesítőadat-szabályzatok, a fenyegetésészlelés, előnyeinek további naplózási, naplózást és egyéb funkciók hozzá ezeket az alkalmazásokat. [Egyszeri bejelentkezés az Azure Active Directoryn keresztül](https://docs.microsoft.com/azure/active-directory/active-directory-enterprise-apps-manage-sso) az alapja – összes ezekkel az ajánlásokkal alapulnak.
 
 ## <a name="before-you-begin-protect-privileged-accounts-with-mfa"></a>Előkészületek: védelme MFA hitelesítéssel kiemelt jogosultságú fiókok
 
@@ -44,7 +44,7 @@ Minden állítható be? Első lépések az ellenőrzőlista a.
 
 ## <a name="step-1---strengthen-your-credentials"></a>1. lépés – a hitelesítő adatok megerősítése 
 
-A legtöbb vállalati biztonsági résekkel szemben származnak, egy olyan fiókkal, az egyik módszer, például a jelszó megfelelő, illetéktelen behatolás visszajátszását vagy adathalász néhány biztonsága sérült. Ezeket a támadásokat, ebből a videóból tájékozódhat:
+A legtöbb vállalati biztonsági résekkel szemben származnak, egy olyan fiókkal, az egyik módszer, például a jelszó megfelelő, illetéktelen behatolás visszajátszását vagy adathalász néhány biztonsága sérült. Ezeket a támadásokat (1h 15 millió) ebből a videóból tájékozódhat:
 > [!VIDEO https://channel9.msdn.com/events/Ignite/Microsoft-Ignite-Orlando-2017/BRK3016/player]
 
 Ha a felhasználók az azonosítási rendszer gyenge jelszót, és nem a multi-factor Authentication hitelesítéshez megerősítése, nem csupán néhány Ha, vagy hogy feltört – csak "milyen gyakran."

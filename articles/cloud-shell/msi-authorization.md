@@ -1,6 +1,6 @@
 ---
-title: MSI-fájl használata Azure-felhőbe rendszerhéj |} Microsoft Docs
-description: Azure Cloud rendszerhéj MSI kódot hitelesítéséhez
+title: Felügyelt identitásokat használ az Azure-erőforrásokhoz az Azure Cloud Shellben |} A Microsoft Docs
+description: Hitelesítés a kódot az Azure Cloud Shellben MSI-vel
 services: azure
 documentationcenter: ''
 author: jluk
@@ -14,41 +14,41 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/14/2018
 ms.author: juluk
-ms.openlocfilehash: 99577faf7328dc773a9da5f7c1227aa63600aa0a
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 09f54efaf3ff89711c34b7960a271438f38cf224
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2018
-ms.locfileid: "31517442"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49345084"
 ---
-# <a name="use-msi-in-azure-cloud-shell"></a>MSI-fájl használata Azure-felhőbe rendszerhéj
+# <a name="use-msi-in-azure-cloud-shell"></a>Az MSI használata az Azure Cloud Shellben
 
-Azure Cloud a rendszerhéj támogatja a felügyelt szolgáltatás-identitások (MSI-fájl) az engedélyezés. Használja a hozzáférési jogkivonatok történő biztonságos kommunikációhoz az Azure-szolgáltatásokkal beolvasása.
+Az Azure Cloud Shell támogatja a engedélyezési a Felügyeltszolgáltatás identitás (MSI). Ez a hozzáférési jogkivonatok biztonságosan kommunikáljon az Azure-szolgáltatások használatára.
 
-## <a name="about-managed-service-identity-msi"></a>Felügyelt Szolgáltatásidentitás (MSI) kapcsolatban
-Egy közös kérdés esetén felhőalapú alkalmazások biztonságosan kezelése a hitelesítő adatokat, amelyek kell lenniük a kódban való hitelesítéséhez. Felhő rendszerhéj szükség lehet egy parancsfájlt kell esetleg hitelesítő adatokat a Key Vault lekérését hitelesítéséhez.
+## <a name="about-managed-service-identity-msi"></a>Tudnivalók a Felügyeltszolgáltatás-identitás (MSI)
+Ha a felhőbeli alkalmazások készítése a hitelesítő adatok biztonságos kezelése közös kihívást, amely kell lenniük a kódban, a cloud serviceshez hitelesítéséhez. A Cloud Shellben szükség lehet a hitelesítő adatait, amely egy szkript szükség lehet a Key Vaultból lekérés hitelesítéséhez.
 
-Felügyelt szolgáltatás identitásának (MSI) teszi egyszerűbbé válik a probléma megoldásához adjon az Azure-szolgáltatások automatikusan felügyelt identitást az Azure Active Directory (Azure AD). Ez az identitás, amely támogatja az Azure AD-alapú hitelesítés, többek között a Key Vault, anélkül, hogy a hitelesítő adatok a kódban a szolgáltatással való hitelesítésre szolgáló használhatja.
+A felügyeltszolgáltatás-identitás (MSI) segít leegyszerűsíteni ezt a problémát, mivel az Azure-szolgáltatások számára egy automatikusan felügyelt identitást biztosít az Azure Active Directoryban (Azure AD-ben). Ezzel az identitással bármely, az Azure AD-hitelesítést támogató szolgáltatásban, többek között a Key Vaultban is elvégezheti a hitelesítést anélkül, hogy a hitelesítő adatokat a kódban kellene tárolnia.
 
-## <a name="acquire-access-token-in-cloud-shell"></a>A felhő rendszerhéj hozzáférési jogkivonat
+## <a name="acquire-access-token-in-cloud-shell"></a>A Cloud Shellben a hozzáférési jogkivonat beszerzése
 
-A következő parancsok futtatásával egy környezeti változó állítja be az MSI-hozzáférési jogkivonat `access_token`.
+Hajtsa végre az alábbi parancsokat az MSI-hozzáférési jogkivonat környezeti változóban, `access_token`.
 ```
 response=$(curl http://localhost:50342/oauth2/token --data "resource=https://management.azure.com/" -H Metadata:true -s)
 access_token=$(echo $response | python -c 'import sys, json; print (json.load(sys.stdin)["access_token"])')
 echo The MSI access token is $access_token
 ```
 
-## <a name="handling-token-expiration"></a>Kezelési jogkivonat lejáratáról
+## <a name="handling-token-expiration"></a>Jogkivonat lejáratának kezelése
 
-A helyi MSI alrendszer gyorsítótárazza a jogkivonatokat. Ezért hívása, amilyen gyakran csak van lehetősége, és az Azure AD egy a tömörített hívás eredménye csak akkor, ha:
-- a gyorsítótár-tévesztései miatt nem jogkivonat a gyorsítótárban történik
-- a jogkivonat érvényessége lejárt
+A helyi MSI-alrendszer gyorsítótárazza a jogkivonatokat. Így meg lehet hívni többször van lehetősége, és a egy Azure ad-hez az átvitel közbeni hívás eredménye csak akkor, ha:
+- gyorsítótár-tévesztés miatt nem jogkivonat a gyorsítótárban történik
+- a jogkivonat lejárt
 
-Ha a jogkivonat gyorsítótárba helyezi a kódban, helyzetek kezelésére, ahol az erőforrás azt jelzi, hogy a jogkivonat lejárt felkészültnek kell lennie.
+Ha a kódban a jogkivonat gyorsítótárba helyezi, forgatókönyvek kezeléséhez, ahol az erőforrás azt jelzi, hogy a jogkivonat lejárt felkészültnek kell lennie.
 
-Token hibák kezelésének, látogasson el a [MSI nézőpontra MSI hozzáférési jogkivonatok sütővasak](https://docs.microsoft.com/azure/active-directory/managed-service-identity/how-to-use-vm-token#error-handling).
+Token hibáinak kezelése, látogasson el a [MSI lap kapcsolatos MSI hozzáférési jogkivonatok sütővasak](https://docs.microsoft.com/azure/active-directory/managed-service-identity/how-to-use-vm-token#error-handling).
 
 ## <a name="next-steps"></a>További lépések
-[További tudnivalók az MSI-fájl](https://docs.microsoft.com/azure/active-directory/managed-service-identity/overview)  
-[MSI virtuális gépek hozzáférési tokenek beszerzése](https://docs.microsoft.com/azure/active-directory/managed-service-identity/how-to-use-vm-token)
+[További információ az MSI](https://docs.microsoft.com/azure/active-directory/managed-service-identity/overview)  
+[MSI-beli virtuális gépekről származó hozzáférési tokenek beszerzése](https://docs.microsoft.com/azure/active-directory/managed-service-identity/how-to-use-vm-token)

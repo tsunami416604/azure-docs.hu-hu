@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 10/05/2018
-ms.openlocfilehash: 124e936b619e3078c71094156bf91a437a28492b
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: 77c761ce72449f91cf91c66219ebc815d1620e94
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48862775"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49343674"
 ---
 # <a name="azure-stream-analytics-preview-features"></a>Az Azure Stream Analytics előzetes verziójú funkciók
 
@@ -67,9 +67,9 @@ A fejlesztők mostantól implementálhatók az egyéni deserializers deszerializ
 
 Már lehetséges az Azure Stream Analytics kimeneti Blob Storage bármely másik oszlopot a lekérdezés alapján particionálásához.
 
-### <a name="managed-service-identity-msi-authentication-to-azure-data-lake-storage"></a>Felügyelt Felügyeltszolgáltatás-identitás (MSI) hitelesítés az Azure Data Lake Storage
+### <a name="managed-identities-for-azure-resources-authentication-to-azure-data-lake-storage"></a>Felügyelt identitások Azure-erőforrások felé történő hitelesítéshez az Azure Data Lake Storage
 
-Mostantól üzembe helyezheti a valós idejű folyamatok MSI-alapú hitelesítéssel az Azure Data Lake Storage Gen1 való írás során lehetővé teszi, hogy a feladatok programozott módon hozhatók létre. További információért látogasson el [használata felügyelt identitások hitelesítésére az Azure Stream Analytics-feladatok az Azure Data Lake Storage Gen1 kimeneti](stream-analytics-managed-identities-adls.md).
+Mostantól üzembe helyezheti a valós idejű folyamatok, az Azure-alapú erőforrások hitelesítéshez az Azure Data Lake Storage Gen1 írása közben a felügyelt identitásokból lehetővé teszi, hogy a feladatok programozott módon hozhatók létre. További információért látogasson el [identitások felügyelt használata az Azure-erőforrásokhoz való hitelesítéséhez az Azure Stream Analytics-feladatok az Azure Data Lake Storage Gen1 kimeneti](stream-analytics-managed-identities-adls.md).
 
 ## <a name="next-steps"></a>További lépések
 

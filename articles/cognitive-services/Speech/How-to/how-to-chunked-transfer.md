@@ -10,15 +10,16 @@ ms.component: bing-speech
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: zhouwang
-ROBOTS: NOINDEX
-ms.openlocfilehash: cf21b11f76592f5df2d81e6bdc10413c79fe895e
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 510bc258aae80582e85478936c3281198e89d755
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46979226"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49343163"
 ---
 # <a name="chunked-transfer-encoding"></a>Darabolásos átviteli kódolás
+
+[!INCLUDE [Deprecation note](../../../../includes/cognitive-services-bing-speech-api-deprecation-note.md)]
 
 A Microsoft beszédfelismerési API lefényképezze beszédfelismerés, lehetővé teszi a hanganyag elküldeni egy teljes adattömbök, vagy a hanganyag részeket felosztása kisebb tömbökre. A hatékony hang streaming, és csökkenti a késéseket beszédátírási, ajánlott használt [darabolásos átviteli kódolás](https://en.wikipedia.org/wiki/Chunked_transfer_encoding) a szolgáltatásnak a hanganyag streamelésére. Más felhasználói által tapasztalt késés magasabb eredményezhet. További információkért lásd: a [Audio-adatfolyamokat](../concepts.md#audio-streams) lapot.
 

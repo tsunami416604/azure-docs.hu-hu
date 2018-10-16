@@ -7,13 +7,13 @@ ms.author: jasonh
 manager: kfile
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 01/03/2018
-ms.openlocfilehash: 136b21f026d208c09b50dfa8601de692e518774e
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.date: 10/15/2018
+ms.openlocfilehash: 661aa85a200d4eafa1c521b06f6e12378d61e93e
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43699110"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49343585"
 ---
 # <a name="compatibility-level-for-azure-stream-analytics-jobs"></a>Az Azure Stream Analytics-feladatok kompatibilitási szintje
  
@@ -68,5 +68,5 @@ Amikor frissíti a kompatibilitási szintet, a T-SQL nyelvű fordítón belülre
   * **jelenlegi verzió:** van több automatikusan upcast, a karakterlánc-értékeket dátum/idő típus dátum/időzóna információkat. Ennek eredményeképpen az időzónaadatok tartani. 
 
 ## <a name="next-steps"></a>További lépések
-* [Az Azure Stream Analytics – hibaelhárítási útmutató](stream-analytics-troubleshooting-guide.md)
+* [Az Azure Stream Analytics bemenetek hibaelhárítása](stream-analytics-troubleshoot-input.md)
 * [Stream Analytics erőforrás-állapot panel](stream-analytics-resource-health.md)

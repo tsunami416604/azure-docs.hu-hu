@@ -1,24 +1,25 @@
 ---
-title: Beszédátírási irányelvek – Custom Speech Service
-titlesuffix: Azure Cognitive Services
-description: Ismerje meg, hogyan készíti elő az adatok a Custom Speech Service.
+title: Custom Speech Service az Azure-ban az átírási irányelveket |} A Microsoft Docs
+description: Ismerje meg, hogyan készíti elő az adatok a Cognitive Services Custom Speech Service.
 services: cognitive-services
 author: PanosPeriorellis
-manager: cgronlun
+manager: onano
 ms.service: cognitive-services
 ms.component: custom-speech
-ms.topic: conceptual
+ms.topic: article
 ms.date: 02/08/2017
 ms.author: panosper
-ROBOTS: NOINDEX
-ms.openlocfilehash: a5daca2dbb3fc792850264bca7d8b0c59e7c8faa
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 6c64b89c2eb933e9bcc24bdc3097e7a0b2aab368
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47220618"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49342466"
 ---
 # <a name="transcription-guidelines"></a>Átírási irányelvek
+
+[!INCLUDE [Deprecation note](../../../../includes/cognitive-services-custom-speech-deprecation-note.md)]
+
 Ahhoz, hogy az a szöveges adatok akusztikai és nyelvi modell testreszabása a legjobb használatát, a következő beszédátírási irányelveket kell követni. Ezeket az irányelveket a nyelvspecifikus.
 
 ## <a name="text-normalization"></a>Szöveg normalizálási

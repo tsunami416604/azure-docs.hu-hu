@@ -8,12 +8,12 @@ ms.topic: howto
 ms.date: 09/24/2018
 ms.author: ancav
 ms.component: metrics
-ms.openlocfilehash: b9808233e08e545c31e171afe104173dccc6abed
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: 7b600bd699ce7f9e4a6c7cba1a41b6bdece16bf0
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47434925"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49343725"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-using-a-resource-manager-template-for-a-windows-virtual-machine-scale-set"></a>Küldés a vendég operációs rendszer mérőszámok az Azure Monitor metrika tárolásához, egy Windows virtuálisgép-méretezési csoportot a Resource Manager-sablon használatával
 
@@ -81,7 +81,7 @@ Keresse meg a virtuálisgép-méretezési definíció az erőforrások szakaszba
 A virtuálisgép-méretezési csoportot erőforrás, keresse meg a **virtualMachineProfile** szakaszban. Adjon hozzá egy új profilt nevű **extensionsProfile** bővítmények kezeléséhez.  
 
 
-Az a **extensionProfile**, új-bővítmény hozzáadása a sablonhoz, ahogy azt a **VMSS-WAD-kiterjesztésben**.  Ez a szakasz a Felügyeltszolgáltatás-identitás (MSI) bővítmény, amely biztosítja, hogy a metrikák alatt kibocsátott fogadja el az Azure Monitor. A **neve** mező tartalmazhat bármilyen nevet. 
+Az a **extensionProfile**, új-bővítmény hozzáadása a sablonhoz, ahogy azt a **VMSS-WAD-kiterjesztésben**.  Ez a szakasz az Azure-erőforrás-bővítmény, amely a metrikák alatt kibocsátott fogadja el az Azure Monitor biztosítja a felügyelt identitásokból. A **neve** mező tartalmazhat bármilyen nevet. 
 
 Az alábbi kódot az MSI-bővítményében is hozzáadja a diagnosztikai bővítmény és a konfiguráció-bővítmény erőforrásként a virtuálisgép-méretezési készlet erőforrás. Nyugodtan igény szerint teljesítményszámlálók hozzáadása/eltávolítása. 
 
@@ -89,7 +89,7 @@ Az alábbi kódot az MSI-bővítményében is hozzáadja a diagnosztikai bővít
           "extensionProfile": { 
             "extensions": [ 
             // BEGINNING of added code  
-            // Managed service identity   
+            // Managed identites for Azure resources   
                 { 
                  "name": "VMSS-WAD-extension", 
                  "properties": { 

@@ -10,15 +10,16 @@ ms.component: bing-speech
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: zhouwang
-ROBOTS: NOINDEX
-ms.openlocfilehash: 2752a8f1db82890e738b65a1c4f646d7749bf7dd
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 35f74630d7f784e7b661257a27ed9ea839b79325
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46961886"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49341327"
 ---
 # <a name="get-started-with-bing-speech"></a>Ismerkedés a Bing Speech
+
+[!INCLUDE [Deprecation note](../../../../includes/cognitive-services-bing-speech-api-deprecation-note.md)]
 
 A Microsoft speech recognition szolgáltatás használatával hanganyagot alakíthat át szöveggé, tekintse meg a beszédfelismerés [REST API-k](GetStartedREST.md) vagy a [klienskódtárak](GetStartedClientLibraries.md).
 

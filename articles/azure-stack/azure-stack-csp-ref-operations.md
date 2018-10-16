@@ -11,33 +11,37 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/12/2018
+ms.date: 10/15/2018
 ms.author: mabrigg
 ms.reviewer: alfredo
-ms.openlocfilehash: 9396d49f455f8f4af1abf7f0020e95e8fd0a14cc
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: 67e1e22bc5569e7d6e20332ee86ffe4c7dd6a354
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45729586"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49343843"
 ---
 # <a name="manage-tenant-registration-in-azure-stack"></a>Az Azure Stack bérlő regisztrációs kezelése
 
 *A következőkre vonatkozik: Azure Stackkel integrált rendszerek*
 
-Ez a cikk segítségével kezelheti a bérlő regisztrációit, és hogyan zajlik a bérlői használat műveletek részleteit tartalmazza. Adja hozzá a listában, vagy távolítsa el a bérlő leképezések részleteit is megtalálhatja. Használhatja PowerShell vagy a számlázási API-végpontokat kezelheti a használat nyomon követése.
+Ez a cikk a regisztráció műveletek részleteit tartalmazza. Ezeket a műveleteket, használhatja:
+- Bérlő regisztrációk kezelése
+- Kezelheti a bérlői használat nyomon követése
+
+Adja hozzá a listában, vagy távolítsa el a bérlő leképezések részleteit is megtalálhatja. Használhatja PowerShell vagy a számlázási API-végpontokat kezelheti a használat nyomon követése. Adja hozzá a listában, vagy távolítsa el a bérlő leképezések részleteit is megtalálhatja. Használhatja PowerShell vagy a számlázási API-végpontokat kezelheti a használat nyomon követése.
 
 ## <a name="add-tenant-to-registration"></a>A regisztrációhoz bérlő hozzáadása
 
-Használja ezt a műveletet, ha meg szeretné hozzáadása egy új bérlőt a regisztrációt, így a használatuk jelentett csatlakozik az Azure Active Directory (Azure AD) bérlő az Azure-előfizetés alatt.
+Ha a regisztráció ad hozzá egy új bérlőt szeretne, használja a műveletet. A bérlők jelentett csatlakozik az Azure Active Directory (Azure AD) bérlő az Azure-előfizetés alatt.
 
-Használhatja ezt a műveletet is, ha meg szeretné változtatni az előfizetés a bérlőhöz tartozó, PUT és New-AzureRMResource meghívhatja újra. A rendszer felülírja a régi leképezést.
+Ha meg szeretné változtatni az előfizetés a bérlőhöz tartozó, használhatja a műveletet. PUT és New-AzureRMResource felülírja az előző leképezési hívjuk.
 
-Vegye figyelembe, hogy csak egy Azure-előfizetéssel is társítható egy bérlőt. Ha előfizetést szeretne hozzáadni egy második meglévő bérlő, az első előfizetés túlterhelt írásos. 
+Egy Azure-előfizetéssel is társíthat egy bérlőt. Ha előfizetést szeretne hozzáadni egy második meglévő bérlő, az első előfizetés túlterhelt írásos.
 
 ### <a name="use-api-profiles"></a>API-profilok használatához
 
-A parancsmagok, ez a cikk a szükséges, hogy egy API-profilt, adja meg, amikor futtatja a Powershellt. API-profilok az Azure erőforrás-szolgáltatók és az API-verziók csoportját képviselik. Ezek segítenek az API-t a megfelelő verzióját használja, ha használata több Azure-felhők, például az Azure és az Azure Stack globális használatakor. Profilok olyan nevet, amely megfelel a kiadási dátum szerint vannak megadva. Az ebben a cikkben azt kell használnia a **2017-09-03** profilt.
+A regisztrációs parancsmagok futtatásához szükséges, adjon meg egy API-profilt, amikor futtatja a Powershellt. API-profilok az Azure erőforrás-szolgáltatók és az API-verziók csoportját képviselik. Ezek segítenek megfelelő verzióját használja, az API-t több Azure-felhők való interakció során. Például azt használni több felhőt az Azure és az Azure Stack globális használatakor. Profilok adjon meg egy nevet, amely megfelel a kiadási dátum. Meg kell használnia a **2017-09-03** profilt.
 
 Az Azure Stacket és API-profilokkal kapcsolatos további információkért lásd: [kezelése API-verzióprofilok az Azure Stackben](user/azure-stack-version-profiles.md). És a PowerShell API-profillal kapcsolatos utasításokért lásd: [használata API-verzióprofilok az Azure Stack PowerShell](user/azure-stack-version-profiles-powershell.md).
 
@@ -46,7 +50,7 @@ Az Azure Stacket és API-profilokkal kapcsolatos további információkért lás
 | Paraméter                  | Leírás |
 |---                         | --- |
 | registrationSubscriptionID | Az Azure-előfizetés, amely a kezdeti regisztráció lett megadva. |
-| customerSubscriptionID     | Az Azure-előfizetést (nem az Azure Stack) regisztrálni kell az ügyfélhez tartozó. Létre kell hozni a Felhőszolgáltató (CSP) szerződéssel. A gyakorlatban ez azt jelenti, hogy Partner Centeren keresztül. Ha egy ügyfél több bérlő rendelkezik, a bérlő Azure Stack-ba való bejelentkezéshez használt ebben az előfizetésben kell létrehozni. |
+| customerSubscriptionID     | Az Azure-előfizetést (nem az Azure Stack) regisztrálni kell az ügyfélhez tartozó. Létre kell hozni a Felhőszolgáltató (CSP) szerződéssel Partner Centeren keresztül. Ha egy ügyfél egynél több bérlőhöz, létrehozott egy előfizetést, jelentkezzen be az Azure Stack a bérlő rendelkezik. |
 | Erőforráscsoport              | Az erőforráscsoport az Azure-ban, amely tárolja a regisztrációt. |
 | registrationName           | Az Azure Stack-regisztrációk neve. Az Azure-ban tárolt objektum. A név általában az űrlap azurestack-CloudID, ahol CloudID-e az Azure Stack üzembe helyezés a Felhőbeli azonosító van. |
 

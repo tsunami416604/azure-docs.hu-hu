@@ -10,15 +10,16 @@ ms.component: bing-speech
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: zhouwang
-ROBOTS: NOINDEX
-ms.openlocfilehash: 5716f7a0af16bd3e40dea4468e2fae884f911718
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: e9b3d3207f5aca6cba3555ba2578b5c66b3bd193
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46967557"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49343691"
 ---
 # <a name="quickstart-use-the-bing-speech-recognition-service-library-in-c35-for-net-windows"></a>Gyors útmutató: Használja a Bing Speech recognition-szolgáltatási kódtára c.&#35; a .NET Windows
+
+[!INCLUDE [Deprecation note](../../../../includes/cognitive-services-bing-speech-api-deprecation-note.md)]
 
 A szolgáltatási kódtár van fejlesztőknek szól, akik a saját felhőalapú szolgáltatás, és szeretnék beszédszolgáltatás meghívni a szolgáltatást. Ha szeretné, eszközhöz kötött alkalmazások hívja meg a speech recognition szolgáltatást, ne használja az SDK. (Használható egyéb ügyfélkódtárakat vagy a REST API-k, amelyek.)
 
@@ -28,7 +29,7 @@ A következő szakaszok ismertetik, hogyan kell telepíteni, hozhat létre és f
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-### <a name="platform-requirements"></a>Platform-követelmények
+### <a name="platform-requirements"></a>Platformkövetelmények
 
 Az alábbi példa a Windows 8 +, és a .NET 4.5-ös + kifejlesztett keretrendszer használatával [Visual Studio 2015, Community Edition](https://www.visualstudio.com/products/visual-studio-community-vs).
 

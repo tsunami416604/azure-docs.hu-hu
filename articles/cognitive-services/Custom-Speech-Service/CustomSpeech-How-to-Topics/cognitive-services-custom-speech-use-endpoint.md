@@ -1,24 +1,25 @@
 ---
-title: Egyéni beszédmodell végpont – Custom Speech Service használatára
-titlesuffix: Azure Cognitive Services
-description: Ismerje meg, hogy egy hang-szöveg transzformációs egyéni végpont használata a Custom Speech Service.
+title: Egy egyéni beszédfelismerési végpont használata az Azure-ban a Custom Speech Service |} A Microsoft Docs
+description: Ismerje meg, hogy egy hang-szöveg transzformációs egyéni végpont használata a Cognitive Services Custom Speech Service.
 services: cognitive-services
 author: PanosPeriorellis
-manager: cgronlun
+manager: onano
 ms.service: cognitive-services
 ms.component: custom-speech
-ms.topic: conceptual
+ms.topic: article
 ms.date: 02/08/2017
 ms.author: panosper
-ROBOTS: NOINDEX
-ms.openlocfilehash: 98c1b58e58490199b0258dfcc8df183c3fe9a8bd
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 9f1a21d6f099bc27c81e8c254f7df73d6c3e585d
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47223372"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49341803"
 ---
 # <a name="use-a-custom-speech-to-text-endpoint"></a>Egyéni beszédfelismerési végpont használata
+
+[!INCLUDE [Deprecation note](../../../../includes/cognitive-services-custom-speech-deprecation-note.md)]
+
 Akkor is végpontra kérést küldhet egy Azure Custom Speech Service hang-szöveg transzformációs, hasonló módon, mint az alapértelmezett a Cognitive Services beszédfelismerő végpontra. Ezeket a végpontokat funkcionálisan megegyeznek a beszédfelismerő API alapértelmezett végpontjait. Ugyanazokat a funkciókat, amelyek az ügyféloldali kódtár vagy a REST API, beszédfelismerő API-n keresztül érhető el, az egyéni végpont is érhető el.
 
 A végpontok a szolgáltatás használatával hoz létre egyidejű kéréseket a különböző számú tud feldolgozni. A kötet attól függ, hogy az előfizetéséhez tartozó tarifacsomagot. Ha túl sok kérelem érkezik, akkor hiba történik. Az ingyenes csomag esetében a havi kérelmek.

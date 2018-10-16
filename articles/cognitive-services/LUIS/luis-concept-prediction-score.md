@@ -1,26 +1,26 @@
 ---
-title: A LUIS által visszaadott előrejelzési pontszám ismertetése
+title: Előrejelzési pontszám - leképezések, entitások - LUIS
 titleSuffix: Azure Cognitive Services
-description: Ismerje meg, mi az előrejelzési pontszám azt jelenti, hogy a LUIS
+description: Előrejelzési pontszámot rendelkezik a LUIS-előrejelzési eredményeket megbízhatósági mértékét jelzi.
 services: cognitive-services
 author: diberry
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 09/10/2018
+ms.date: 10/15/2018
 ms.author: diberry
-ms.openlocfilehash: dc19151e82f44159533050e60ba2f1c6d65466fe
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 56bec5ef4730e47b5c79263af5d1942df5a73f04
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47032229"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49341344"
 ---
 # <a name="prediction-score"></a>Előrejelzési pontszám
 Előrejelzési pontszámot rendelkezik a LUIS-előrejelzési eredményeket megbízhatósági mértékét jelzi. 
 
-Előrejelzési pontszámot általában a nulla (0) és a egy (1) között. Egy példát egy magas abban a LUIS-pontszám 0.99. Egy példa egy alacsony megbízhatósági pontszám, 0,01. 
+Egy előrejelzési pontszám, nulla (0) és a egy (1) között. Egy példát egy magas abban a LUIS-pontszám 0.99. Egy példa egy alacsony megbízhatósági pontszám, 0,01. 
 
 |Pontszám értéke|Megbízhatóság|
 |--|--|

@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/27/2018
-ms.openlocfilehash: af143ef1ec79868294af7d7511548dc54f8ceb8d
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: ca596b2d33a6248dac94ddd7eef9a9c44daac3c8
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43049270"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49343741"
 ---
 # <a name="introduction-to-ml-services-and-open-source-r-capabilities-on-hdinsight"></a>Machine Learning-szolgáltatások és a nyílt forráskódú R funkciókat biztosít a HDInsight bemutatása
 
@@ -148,6 +148,6 @@ Az árak egy Machine Learning-szolgáltatások HDInsight-fürthöz társított h
 
 Machine Learning-szolgáltatások HDInsight-fürtökön való használatával kapcsolatos további tudnivalókért lásd a következő témaköröket:
 
-* [Ismerkedés a Machine Learning Serices HDInsight-fürt](r-server-get-started.md)
+* [Ismerkedés a Machine Learning-szolgáltatások HDInsight-fürt](r-server-get-started.md)
 * [Számítási környezeti beállítások az ML-szolgáltatások HDInsighton belüli fürtjében](r-server-compute-contexts.md)
 * [A Machine Learning-szolgáltatások HDInsight-fürt tárolási lehetőségek](r-server-storage.md)

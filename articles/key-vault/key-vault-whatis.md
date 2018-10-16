@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/05/2018
 ms.author: barclayn
-ms.openlocfilehash: fa8605f4822ff0ee5ba25ee0baca4fb2fec83b17
-ms.sourcegitcommit: 8b694bf803806b2f237494cd3b69f13751de9926
+ms.openlocfilehash: 7e98853b5b2ccc779dca970337fc44217977c8c9
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/20/2018
-ms.locfileid: "46497603"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49342565"
 ---
 # <a name="what-is-azure-key-vault"></a>Mi az Azure Key Vault?
 
@@ -35,7 +35,7 @@ Az Azure Key Vault egy titkos kulcsok biztonságos tárolására és hozzáfér�
 
 Alapvetően módon 3 hitelesítéséhez a Key Vaulthoz
 
-1. **Használatával [Felügyeltszolgáltatás-identitás](https://docs.microsoft.com/en-us/azure/active-directory/managed-identities-azure-resources/overview)**  (**javasolt és ajánlott vagy**): Ha telepít egy alkalmazást az Azure-beli virtuális gépen, hozzárendelheti a virtuális gép, amely hozzáféréssel rendelkezik az identitás a Key vaulttal. Más felsorolt azure-erőforrásokhoz is hozzárendelhetők identitások [Itt](https://docs.microsoft.com/en-us/azure/active-directory/managed-identities-azure-resources/overview). Ezzel a módszerrel előnye az alkalmazás / szolgáltatás nem kezel elforgatási szögét az első titkos kulcsot. Az Azure automatikusan elforgatja az identitást. 
+1. **Használatával [felügyelt identitások az Azure-erőforrások](https://docs.microsoft.com/en-us/azure/active-directory/managed-identities-azure-resources/overview)**  (**javasolt és ajánlott eljárás**): Ha telepít egy alkalmazást az Azure-beli virtuális gépen, hozzárendelheti egy identitást a virtuális gép a Kulcstartóhoz, amely hozzáfér. Más felsorolt azure-erőforrásokhoz is hozzárendelhetők identitások [Itt](https://docs.microsoft.com/en-us/azure/active-directory/managed-identities-azure-resources/overview). Ezzel a módszerrel előnye az alkalmazás / szolgáltatás nem kezel elforgatási szögét az első titkos kulcsot. Az Azure automatikusan elforgatja az identitást. 
 2. **Egyszerű szolgáltatás és a tanúsítvány használatával:** a 2. lehetőség egy egyszerű szolgáltatást, és a egy társított tanúsítvány, amely hozzáfér a Key Vault használatára. Az alkalmazás tulajdonosa vagy a fejlesztői ellátásának elforgatása a tanúsítványt, és ezért ez nem ajánlott
 3. **Egyszerű szolgáltatás és a titkos kulcs használata:** a 3. lehetőség (a nem előnyben részesített beállítás), hogy egy egyszerű szolgáltatást, és a egy titkos kulcsot használják a hitelesítéshez a Key Vaulthoz
 

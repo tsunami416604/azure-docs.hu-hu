@@ -1,6 +1,6 @@
 ---
-title: Azure verem Development Kit alapok |} Microsoft Docs
-description: Ismerteti, hogyan lehet az Azure verem Development Kit (ASDK) az alapvető felügyeleti feladatok elvégzéséhez.
+title: Az Azure Stack Development Kit alapjai |} A Microsoft Docs
+description: Ismerteti, hogyan hajthat végre alapszintű felügyeleti feladatokat a az Azure Stack Development Kit (ASDK).
 services: azure-stack
 documentationcenter: ''
 author: jeffgilb
@@ -12,58 +12,58 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/07/2018
+ms.date: 10/15/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: fa2ee4df9a0a28c08237f30fcf6a4bac50c21100
-ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
+ms.openlocfilehash: 555bf95367ab0d3e6c4afe09edb6777899400dd8
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34849508"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49344668"
 ---
 # <a name="asdk-administration-basics"></a>ASDK Adminisztráció alapjai 
-Számos szempontot Ha most ismerkedik az Azure verem Development Kit (ASDK) felügyeleti tudnia kell. Ez az útmutató áttekintést nyújt az Azure verem kezelőként a kiértékelési környezet a szerepkör, és gyorsan ahhoz, hogy a felhasználók tesztelése hogyan válhat hatékonyabbá.
+Több szempontot, ha most ismerkedik az Azure Stack Development Kit (ASDK) felügyeleti ismernie kell. Ez az útmutató a szerepkör, a kiértékelési környezet az Azure Stack operátorait áttekintést nyújt, és hogyan biztosítson a tesztfelhasználók gyorsan hatékony válhat.
 
-Először tekintse át a [Mi az Azure verem szoftverfejlesztői készlet?](asdk-what-is.md) tudja a ASDK és korlátokkal célja, hogy a cikk. Célszerű használni a csomag "védőfalat," ahol kiértékelheti az Azure-verem fejlesztéséhez és teszteléséhez az alkalmazások nem éles környezetben. 
+Első lépésként tekintse át a [Mi az Azure Stack Development Kit?](asdk-what-is.md) cikket, hogy biztosan a ASDK és korlátatait rendeltetésének megismerése. Használja a csomag egy ", védőfal"mögött, ahol kiértékelheti az Azure Stack-alkalmazások fejlesztése és tesztelése a nem éles környezetben való. 
 
-Például az Azure-ban Azure verem innovates gyorsan, azt fogja rendszeresen kiadási a ASDK új verziói. Azonban a ASDK nem frissíthető, például integrált Azure verem rendszerek központi telepítéseket is. Ezért, ha azt szeretné, a legújabb buildjével áthelyezése, kell teljesen [telepítse újra a ASDK](asdk-redeploy.md). Nem alkalmazhat a frissítési csomagok. Ez a folyamat időt vesz igénybe, de az az előnye, hogy próbálhatja ki a legújabb szolgáltatásokhoz, amint azok elérhetővé válnak. 
+Azure-ban, mint például az Azure Stack innovates gyorsan úgy fogjuk rendszeresen adunk a ASDK új buildek. Azonban a ASDK nem tudja frissíteni, mint az Azure Stackkel integrált rendszerek üzemelő példányok. Ezért, ha szeretné helyezni a legújabb buildre, meg kell teljesen [ismételt üzembe helyezése a ASDK](asdk-redeploy.md). Frissítési csomagokat nem lehet alkalmazni. Ez a folyamat időt vesz igénybe, de az az előnye, hogy kipróbálni a legújabb funkciók, amint azok elérhetővé válnak. 
 
 ## <a name="what-account-should-i-use"></a>Milyen fiókot használjak?
-Nincsenek néhány fiókokkal kapcsolatos megfontolások kell ügyelnie, ha az Azure-verem kezelése. Különösen a központi telepítések segítségével a Windows Server Active Directory összevonási szolgáltatások (AD FS) helyett az Azure Active Directory (Azure AD) identitás-szolgáltatóként. A következő fiókokkal kapcsolatos megfontolások integrált Azure verem rendszerek és ASDK központi telepítéseket is vonatkozik:
+Van néhány fiókokkal kapcsolatos megfontolások érdemes figyelembe vennie, amikor kezelik az Azure Stack. Különösen a központi telepítések segítségével a Windows Server Active Directory összevonási szolgáltatások (AD FS) helyett az Azure Active Directory (Azure AD) identitás-szolgáltatóként. A következő fiókokkal kapcsolatos megfontolások az Azure Stack integrált rendszerek és ASDK üzemelő példányok is vonatkoznak:
 
 |Fiók|Azure AD|AD FS|
 |-----|-----|-----|
-|Helyi rendszergazdai (. \Administrator)|ASDK állomás rendszergazda|ASDK állomás rendszergazda|
-|AzureStack\AzureStackAdmin|ASDK állomás rendszergazda<br><br>Jelentkezzen be a verem Azure felügyeleti portálján is használható<br><br>Olvashatják és felügyelheti a Service Fabric körök|ASDK állomás rendszergazda<br><br>Nem lehet hozzáférni a verem Azure felügyeleti portálon<br><br>Olvashatják és felügyelheti a Service Fabric körök<br><br>Már nem tulajdonosa annak az alapértelmezett szolgáltató előfizetés (terjesztési pontok)|
-|AzureStack\CloudAdmin|Majd futtassa a Rendszerjogosultságú végpont belül engedélyezett parancsok is|Majd futtassa a Rendszerjogosultságú végpont belül engedélyezett parancsok is<br><br>Nem jelentkezhetnek be a ASDK állomás<br><br>Az alapértelmezett szolgáltató előfizetés (terjesztési pontok) tulajdonosa|
-|Azure AD globális rendszergazda|Telepítés során használt<br><br>Az alapértelmezett szolgáltató előfizetés (terjesztési pontok) tulajdonosa|Nem alkalmazható|
+|Helyi rendszergazda (. \Administrator)|ASDK gazdagép-rendszergazda|ASDK gazdagép-rendszergazda|
+|AzureStack\AzureStackAdmin|ASDK gazdagép-rendszergazda<br><br>Jelentkezzen be az Azure Stack felügyeleti portál segítségével<br><br>Megtekintése és kezelése a Service Fabric körök való hozzáférés|ASDK gazdagép-rendszergazda<br><br>Nincs hozzáférés az Azure Stack felügyeleti portálon<br><br>Megtekintése és kezelése a Service Fabric körök való hozzáférés<br><br>Már nem tulajdonosa, az alapértelmezett szolgáltatója előfizetés (DPS)|
+|AzureStack\CloudAdmin|Majd futtassa a kiemelt végponthoz belül engedélyezett parancsokat is|Majd futtassa a kiemelt végponthoz belül engedélyezett parancsokat is<br><br>Nem jelentkezhet be a ASDK gazdagép<br><br>Az alapértelmezett szolgáltatója (DPS) előfizetés tulajdonosa|
+|Az Azure AD globális rendszergazda|A telepítés során használt<br><br>Az alapértelmezett szolgáltatója (DPS) előfizetés tulajdonosa|Nem alkalmazható|
 |
 
-## <a name="what-tools-do-i-use-to-manage"></a>Milyen eszközök használható kezeléséhez?
-Használhatja a [Azure verem adminisztrációs portálhoz](https://adminportal.local.azurestack.external) vagy a PowerShell Azure verem kezeléséhez. Az alapvető fogalmakat további legkönnyebben a portálon keresztül. Ha azt szeretné, ha a PowerShell segítségével, telepítendő [PowerShell Azure verem](asdk-post-deploy.md#install-azure-stack-powershell) és [töltse le az Azure-verem eszközök a Githubról](asdk-post-deploy.md#download-the-azure-stack-tools).
+## <a name="what-tools-do-i-use-to-manage"></a>Milyen eszközöket használhatok kezeléséhez?
+Használhatja a [Azure Stack rendszergazdai portál](https://adminportal.local.azurestack.external) vagy a PowerShell használatával kezelheti az Azure Stack. Ismerje meg, az alapvető fogalmait a legegyszerűbben a portálon keresztül van. Ha azt szeretné, ha a PowerShell segítségével, telepítenie kell [az Azure Stack PowerShell](asdk-post-deploy.md#install-azure-stack-powershell) és [az Azure Stack-eszközök letöltése a githubról](asdk-post-deploy.md#download-the-azure-stack-tools).
 
-Azure verem Azure Resource Manager használ az alapul szolgáló telepítés, a felügyeleti és a szervezet mechanizmusként. Ha Azure verem kezelésére, és segítségével a felhasználók támogatására, elsajátíthatja kell kapcsolatos Azure Resource Manager. Olvasásával többet is megtudhat a [Ismerkedés az Azure Resource Manager tanulmány](http://download.microsoft.com/download/E/A/4/EA4017B5-F2ED-449A-897E-BD92E42479CE/Getting_Started_With_Azure_Resource_Manager_white_paper_EN_US.pdf).
+Az Azure Stack Azure Resource Managert használja az alapul szolgáló telepítés, a felügyeleti és a szervezet mechanizmusként. Megkönnyíti a felhasználók támogatása az Azure Stack kezelését és fog, ha Azure Resource Managerről kell bemutatja. További olvassa el a [Ismerkedés az Azure Resource Manager-tanulmány](http://download.microsoft.com/download/E/A/4/EA4017B5-F2ED-449A-897E-BD92E42479CE/Getting_Started_With_Azure_Resource_Manager_white_paper_EN_US.pdf).
 
 ## <a name="your-typical-responsibilities"></a>A tipikus feladatkörei
-A felhasználók érdemes szolgáltatásokat használni. A szempontjából a fő szerepköre számukra elérhetővé ezeket a szolgáltatásokat. Használja a ASDK, áttekintheti, hogy mely szolgáltatásokat nyújtanak, és azon szolgáltatások által elérhető [terveket, ajánlatok és kvóták létrehozása](asdk-offer-services.md). Is szüksége elemek hozzáadására a piactéren, például virtuálisgép-lemezképeket. A legegyszerűbb módja [töltse le a Piactéri elemek](asdk-marketplace-item.md) Azure veremnek az Azure-ból.
+A felhasználók érdemes szolgáltatásokat használni. A saját szempontjából a fő szerepkör, hogy ezek a szolgáltatások számára elérhető. Használja a ASDK, megtudhatja, hogy mely szolgáltatásokat kínálnak, valamint hogyan javíthatja azokat, szolgáltatásokhoz által elérhető [csomagok, ajánlatok és kvóták létrehozása](asdk-offer-services.md). Emellett szüksége elemek hozzáadása a Marketplace-en, például a virtuálisgép-lemezképeket. A legegyszerűbb módja az, hogy [Piactéri termékek letöltése](asdk-marketplace-item.md) az Azure Stack az Azure-ból.
 
 > [!NOTE]
-> Ha szeretné a tervek, ajánlatok és szolgáltatások, használja a [felhasználói portál](https://portal.local.azurestack.external); nem a [adminisztrációs portálhoz](https://adminportal.local.azurestack.external).
+> Ha szeretné tesztelni a csomagok, ajánlatok és szolgáltatásokat, használja a [felhasználói portál](https://portal.local.azurestack.external); nem a [adminisztrátori portál](https://adminportal.local.azurestack.external).
 
-Szolgáltatásokat nyújtó mellett összes rendszeres feladatot Azure verem operátor tartani a ASDK működik, és el kell végeznie. Ezek a feladatai közé tartozik többek között a következőket:
-- Felhasználói fiókok hozzáadása vagy az Azure Active Directory (Azure AD), vagy az Active Directory összevonási szolgáltatások (AD FS) központi telepítések.
-- Szerepköralapú hozzáférés-vezérlést (RBAC) szerepkörök (ez nem csak a rendszergazdák korlátozni) hozzárendelése
-- Infrastruktúra állapotának figyelése
+Amellett, hogy a szolgáltatások, el kell végeznie minden rendszeres feladatait az Azure Stack-operátorokról, hogy a ASDK helyezheti üzembe. E feladatok közé tartozik többek között a következőket:
+- Adja hozzá a felhasználói fiókok Azure Active Directory (Azure AD) vagy az Active Directory összevonási szolgáltatások (AD FS) központi telepítések.
+- Rendelje hozzá a szerepköralapú hozzáférés-vezérlés (RBAC) szerepkört (ez nem korlátozódik csak rendszergazdák)
+- Infrastruktúra-állapot figyelése
 - Hálózati és tárolási erőforrások kezelése
-- Cserélje le a hibás development kit gazdahardverre számítógép 
+- Sikertelen development kit gazdagép számítógép hardver cseréje 
 
-## <a name="where-to-get-support"></a>Honnan szerezhetők be támogatása
-A csomag, a támogatási egyetlen választása marad: kérje meg a támogatási kapcsolatos kérdések a [Microsoft Azure verem fórum](https://social.msdn.microsoft.com/Forums/azure/home?forum=azurestack). Ha a felügyeleti portál jobb felső sarkában kattintson a Súgó és támogatás ikonra (kérdőjel), és kattintson a **új támogatja a kérelem**, ekkor megnyílik a fórumok hely közvetlenül. Ezek a fórumok rendszeresen figyeli. 
+## <a name="where-to-get-support"></a>Hol kérhet támogatást
+A fejlesztői csomag az egyetlen támogatási lehetősége a támogatási kapcsolatos kérdéseket tehet fel a [a Microsoft Azure Stack-fórum](https://social.msdn.microsoft.com/Forums/azure/home?forum=azurestack). Ha a felügyeleti portál jobb felső sarkában kattintson a Súgó és támogatás ikonra (kérdőjel), és kattintson a **új támogatási kérelem**, ekkor megnyílik a fórumok webhelyre közvetlenül. Ezek a fórumok rendszeresen figyeli a program. 
 
 > [!IMPORTANT]
-> Mivel a ASDK egy kiértékelési környezet, nincs érhető el a Microsoft támogatja a szolgáltatások Ügyféltámogatási hivatalos támogatás.
+> Mivel a ASDK kiértékelési környezet, rendszer nem érhető el – a Microsoft támogatja a szolgáltatások (CSS) hivatalos támogatja.
 
 ## <a name="next-steps"></a>További lépések
-[A ASDK telepítése](asdk-install.md)
+[A ASDK üzembe helyezése](asdk-install.md)
 

@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 10/07/2018
 ms.author: sethm
 ms.reviewer: justini
-ms.openlocfilehash: bce76827c56fd660b6ab4353fed1c43f88132587
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.openlocfilehash: b4ee3354d024034fd47ee50ae78d25d5bb4a38f5
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48868819"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49345271"
 ---
 # <a name="azure-stack-1807-update"></a>Azure Stack 1807 frissítése
 
@@ -232,6 +232,14 @@ Az alábbiakban a telepítés utáni ismert hibáit a build-verziószáma.
 
 
 ### <a name="health-and-monitoring"></a>Állapot és figyelés
+
+<!-- TBD - IS -->
+- Az alábbi riasztásokat ismételten megjelenik, és az Azure Stack rendszeren majd eltűnnek jelenhetnek meg:
+   - *Infrastruktúra szerepkör-példány nem érhető el*
+   - *Skálázási egység csomópont offline állapotban.*
+   
+  Futtassa a [Test-AzureStack](azure-stack-diagnostic-test.md) parancsmagot, hogy az infrastruktúra-szerepkör példányai állapotának ellenőrzése és egység csomópontok méretezése. Ha nincsenek problémák észlelhetők által [Test-AzureStack](azure-stack-diagnostic-test.md), ezek a riasztások figyelmen kívül hagyhatja. Ha problémát észlel, próbálja meg elindítani a szerepkörpéldány infrastruktúra vagy a csomópont a felügyeleti portálon vagy a PowerShell használatával.
+
 <!-- 1264761 - IS ASDK -->  
 - A riasztásokat a **egészségügyi vezérlő** összetevő, amely rendelkezik a következő adatokat:  
 

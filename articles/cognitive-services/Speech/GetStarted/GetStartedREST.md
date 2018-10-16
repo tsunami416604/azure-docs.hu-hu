@@ -10,15 +10,16 @@ ms.component: bing-speech
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: zhouwang
-ROBOTS: NOINDEX
-ms.openlocfilehash: 0f98182a73cebdd4df9f7849b2306f89c620f24b
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: a9f74f4032a78ee51ea2a8f020cd1418bb3330ca
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46973949"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49345356"
 ---
 # <a name="quickstart-use-the-bing-speech-recognition-rest-api"></a>Gyors útmutató: A Bing Speech recognition REST API használata
+
+[!INCLUDE [Deprecation note](../../../../includes/cognitive-services-bing-speech-api-deprecation-note.md)]
 
 A Bing Speech felhő alapú szolgáltatás a beszélt hangot képes szöveggé alakítani a REST API használatával is fejleszthet alkalmazásokat.
 
@@ -62,7 +63,7 @@ https://speech.platform.bing.com/speech/recognition/<RECOGNITION_MODE>/cognitive
 
 Néhány példa a szolgáltatás URI-k az alábbi táblázatban láthatók.
 
-| Elismerés mód  | Nyelv | Kimeneti formátum | Szolgáltatás URI-ja |
+| Felismerési mód  | Nyelv | Kimeneti formátum | Szolgáltatás URI-ja |
 |---|---|---|---|
 | `interactive` | pt-BR | Alapértelmezett | https://speech.platform.bing.com/speech/recognition/interactive/cognitiveservices/v1?language=pt-BR |
 | `conversation` | hu-HU | Részletes |https://speech.platform.bing.com/speech/recognition/conversation/cognitiveservices/v1?language=en-US&format=detailed |

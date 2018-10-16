@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 04/09/2018
 ms.reviewer: sergkanz
 ms.author: mbullwin
-ms.openlocfilehash: 78ae04d3c51cf8039dcdd067594afafae606f5e3
-ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
+ms.openlocfilehash: d9b6f5c08eed5efceafc71feaf654ad8f4fcafa0
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2018
-ms.locfileid: "49310555"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49341123"
 ---
 # <a name="telemetry-correlation-in-application-insights"></a>Az Application Insights telemetriai korreláció
 
@@ -105,17 +105,19 @@ public void ConfigureServices(IServiceCollection services)
 
 ## <a name="open-tracing-and-application-insights"></a>Nyissa meg a nyomkövetés és az Application Insights
 
-[Nyissa meg a nyomkövetési](http://opentracing.io/) és az adatok a modellek úgy tűnik, Application Insights 
+A [nyílt nyomkövetés adatmodell specifikáció](http://opentracing.io/) és Application Insights-adatmodellek képezze le a következő módon:
 
-- `request`, `pageView` képez le **Span** az `span.kind = server`
-- `dependency` a Maps **Span** az `span.kind = client`
-- `id` az egy `request` és `dependency` képez le **Span.Id**
-- `operation_Id` a Maps **TraceId**
-- `operation_ParentId` a Maps **referencia** típusa `ChildOf`
+| Application Insights                  | Nyissa meg a nyomkövetés                                      |
+|------------------------------------   |-------------------------------------------------  |
+| `Request`, `PageView`                 | `Span` a `span.kind = server`                  |
+| `Dependency`                          | `Span` a `span.kind = client`                  |
+| `Id` a `Request` és `Dependency`    | `SpanId`                                          |
+| `Operation_Id`                        | `TraceId`                                         |
+| `Operation_ParentId`                  | `Reference` típusú `ChildOf` (a szülő span)   |
 
-Lásd: [adatmodell](application-insights-data-model.md) Application Insights és modellhez.
+Az Application Insights-adatmodellen alapuló további információkért lásd: [adatmodell](application-insights-data-model.md). 
 
-Lásd: [specifikáció](https://github.com/opentracing/specification/blob/master/specification.md) és [semantic_conventions](https://github.com/opentracing/specification/blob/master/semantic_conventions.md) nyílt nyomkövetés fogalmak definícióját.
+Tekintse meg a nyitott nyomkövetés [specifikáció](https://github.com/opentracing/specification/blob/master/specification.md) és [semantic_conventions](https://github.com/opentracing/specification/blob/master/semantic_conventions.md) nyílt nyomkövetés fogalmak definícióját.
 
 
 ## <a name="telemetry-correlation-in-net"></a>Telemetriai korreláció a .NET-ben

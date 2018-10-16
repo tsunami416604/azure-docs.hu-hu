@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 05/31/2018
 ms.author: cshoe
 ms.component: common
-ms.openlocfilehash: 268459fde7a622079656e637d2c51562cea358a4
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: 584db1400ddd2b4f447b7ca397f2c98b701c7848
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45730949"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49341871"
 ---
 # <a name="azure-storage-security-guide"></a>Az Azure Storage biztonsági útmutatóját
 
@@ -22,7 +22,7 @@ Az Azure Storage biztonsági képességeket, amelyek együttesen lehetővé tesz
 - Azure Storage tárterületre írt összes adat automatikusan titkosítva lesznek használatával [Storage Service Encryption (SSE)](storage-service-encryption.md). További információkért lásd: [bejelentése alapértelmezés titkosításának Azure-Blobok, fájlok, Table és Queue Storage](https://azure.microsoft.com/blog/announcing-default-encryption-for-azure-blobs-files-table-and-queue-storage/).
 - Az Azure Active Directory (Azure AD) és a szerepköralapú hozzáférés-vezérlés (RBAC) támogatottak az Azure Storage erőforrás-felügyeleti műveletek és a műveletekhez, a következő:   
     - Hatóköre a storage-fiók erőforrás felügyeleti műveleteket, mint a kulcskezelés engedélyezésére rendszerbiztonsági tagok és az Azure AD RBAC-szerepkörök rendelhet hozzá.
-    - Az Azure AD-integrációs támogatott műveletekhez a Blob és üzenetsor-szolgáltatás az előzetes verzióban érhető el. RBAC-szerepkör hatóköre egy előfizetés, erőforráscsoport, tárfiók, vagy egy tároló vagy üzenetsor egy rendszerbiztonsági tag vagy a felügyeltszolgáltatás-identitás rendelhet hozzá. További információkért lásd: [hitelesíti a hozzáférést az Azure Storage, Azure Active Directory (előzetes verzió) használatával](storage-auth-aad.md).   
+    - Az Azure AD-integrációs támogatott műveletekhez a Blob és üzenetsor-szolgáltatás az előzetes verzióban érhető el. RBAC-szerepkör hatóköre egy előfizetés, erőforráscsoport, tárfiók, vagy egy tároló vagy üzenetsor egy rendszerbiztonsági tag vagy egy felügyelt identitás, az Azure-erőforrások rendelhet hozzá. További információkért lásd: [hitelesíti a hozzáférést az Azure Storage, Azure Active Directory (előzetes verzió) használatával](storage-auth-aad.md).   
 - Adatokat is védi az alkalmazás és az Azure közötti átvitel [Client-Side Encryption](../storage-client-side-encryption.md), HTTPS és SMB 3.0-s.  
 - Azure-beli virtuális gépek által használt operációsrendszer- és adatlemezek használatával titkosíthatók [az Azure Disk Encryption](../../security/azure-security-disk-encryption.md). 
 - Az Azure Storage az adatobjektumok való delegált hozzáférés adható használatával [közös hozzáférési aláírások](../storage-dotnet-shared-access-signature-part-1.md).

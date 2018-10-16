@@ -10,15 +10,16 @@ ms.component: bing-speech
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: zhouwang
-ROBOTS: NOINDEX
-ms.openlocfilehash: a0fa11633efc610407755ebc109649f3fefdcb55
-ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
+ms.openlocfilehash: 2682236ae9f9256b91d1259248e72139c907c8e5
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/01/2018
-ms.locfileid: "47585815"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49345016"
 ---
 # <a name="get-started-with-bing-speech-service-client-libraries"></a>Bing – beszédszolgáltatás klienskódtárak használatának első lépései
+
+[!INCLUDE [Deprecation note](../../../../includes/cognitive-services-bing-speech-api-deprecation-note.md)]
 
 Amellett, hogy a REST API-n keresztül közvetlen HTTP-kérelem indítására, a Bing Speech Service nyújt a fejlesztőknek Speech klienskódtárak különböző nyelveken. A beszédfelismerés klienskódtárai:
 
@@ -33,9 +34,6 @@ Jelenleg a következő Bing Speech-ügyfélkódtárak érhetők el:
 - [JavaScript-kódtár](GetStartedJSWebsockets.md)
 - [Androidhoz készült Java-kódtár](GetStartedJavaAndroid.md)
 - [IOS-es Objective-C-függvénytár](Get-Started-ObjectiveC-iOS.md)
-
-> [!NOTE] 
-2018 szeptember, az új óta [beszédszolgáltatás](../../speech-service/index.yml) általánosan elérhetővé vált. Javasoljuk, hogy [ingyenes kipróbálása](../../speech-service/get-started.md). 
 
 ## <a name="additional-resources"></a>További források
 

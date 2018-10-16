@@ -8,17 +8,17 @@ ms.topic: include
 ms.date: 05/29/2018
 ms.author: azcspmt;jonbeck;cynthn;danlep
 ms.custom: include file
-ms.openlocfilehash: 296e92d803bb69376f286aa60cfb4a955b08010f
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: c12fff63cdb7241d89e7511a3dac2ff9c1363ae6
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "34669346"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49346104"
 ---
 ## <a name="deployment-considerations"></a>Telepítési szempontok
 * **Azure-előfizetés** –, több nagy számítási igényű példányok üzembe helyezése, fontolja meg a használatalapú fizetéses előfizetésre, vagy egyéb fizetési lehetőségeket. Amennyiben [ingyenes Azure-fiókot](https://azure.microsoft.com/free/) használ, csak korlátozott számú számítási magot használhat az Azure-ban.
 
-* **Díjszabás és a rendelkezésre állási** – ezek a Virtuálisgép-méretek érhetők el csak a Standard tarifacsomagra. Ellenőrizze az [elérhető termékek régiók szerint] (https://azure.microsoft.com/regions/services/) a rendelkezésre állás érdekében az Azure-régióban. 
+* **Díjszabás és a rendelkezésre állási** – ezek a Virtuálisgép-méretek érhetők el csak a Standard tarifacsomagra. Ellenőrizze [elérhető termékek régiók szerint](https://azure.microsoft.com/global-infrastructure/services/) a rendelkezésre állás érdekében az Azure-régióban. 
 * **Magkvóta** – szükség lehet az Azure-előfizetésében az alapértelmezett érték a magkvóta növeléséhez. Az előfizetés is korlátozhatja az egyes virtuális gép többek között a H-sorozat családokban üzembe helyezhető magok számát. Kérje egy kvótájának növelését, [nyisson meg egy támogatási kérést online](../articles/azure-supportability/how-to-create-azure-support-request.md) díjmentesen. (Alapértelmezett korlátok az előfizetés kategória függvénye.)
   
   > [!NOTE]
@@ -37,4 +37,3 @@ Ez az interfész lehetővé teszi az RDMA-kompatibilis példány egy InfiniBand 
 > Az Azure-on keresztül IB IP nem támogatott. Csak IB feletti RDMA használata támogatott.
 >
 
-Az RDMA-kompatibilis HPC virtuális gépek üzembe helyezése az ugyanazon rendelkezésre állási vagy Virtuálisgép-méretezési csoportot (Ha használja az Azure Resource Manager üzemi modell) vagy ugyanazon a felhőszolgáltatáson (Ha használja a klasszikus üzemi modellhez). Ha egy Virtuálisgép-méretezési csoportot használ, győződjön meg arról, korlátozza az egyetlen elhelyezési csoportból; üzembe helyezés például egy Resource Manager-sablon beállítása az *singlePlacementGroup* tulajdonságot *igaz*. Kövesse a további követelmények HPC-RDMA-kompatibilis virtuális gépek az Azure RDMA hálózati hozzáféréshez.

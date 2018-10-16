@@ -9,12 +9,12 @@ ms.date: 04/12/2018
 ms.topic: article
 ms.service: active-directory
 ms.workload: identity
-ms.openlocfilehash: b40004e80bf12782b29f5e156a59fb40c807fe57
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: e2521fe3c7ff14765878a7e98a605a9ebbac7cc7
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46296039"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49345169"
 ---
 # <a name="choose-the-right-authentication-method-for-your-azure-active-directory-hybrid-identity-solution"></a>Válassza ki a megfelelő hitelesítési módszert az Azure Active Directory hibrid identitáskezelési megoldás 
 
@@ -52,11 +52,11 @@ Ha ezt a hitelesítési módszert választja, az Azure AD felhasználói bejelen
 **Az Azure AD a Jelszókivonat-szinkronizálás**. A legegyszerűbben a helyszíni címtárobjektumok az Azure AD-hitelesítés engedélyezése. A felhasználók használhatják ugyanazt a felhasználónevet és jelszót használják-e a helyszíni további infrastruktúra üzembe helyezése nélkül. Egyes prémium szintű funkciók az Azure AD Identity Protection, például a Jelszókivonat-szinkronizálás szükséges, függetlenül attól, hogy mely hitelesítési módszert válasszon.
 
 > [!NOTE] 
-> Jelszavak soha nem szövegként tárolt és az Azure ad-ben visszafejthető algoritmus titkosított. A Jelszókivonat-szinkronizálás folyamatáról további információk: [Jelszókivonat-szinkronizálás és az Azure AD Connect-szinkronizálás megvalósítása](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsync-implement-password-synchronization). 
+> Jelszavak soha nem szövegként tárolt és az Azure ad-ben visszafejthető algoritmus titkosított. A Jelszókivonat-szinkronizálás folyamatáról további információk: [Jelszókivonat-szinkronizálás és az Azure AD Connect-szinkronizálás megvalósítása](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-password-hash-synchronization). 
 
 **Az Azure AD átmenő hitelesítés**. Egy egyszerű jelszó érvényesítése az Azure AD hitelesítési szolgáltatásokat biztosít a szoftver ügynököt futtat egy vagy több helyszíni kiszolgálók használatával. A kiszolgálók ellenőrzése a felhasználók közvetlenül a helyszíni Active Directory, amely biztosítja, hogy a jelszó érvényesítése nem történik a felhőben. 
 
-Vállalatok egy biztonsági követelmény, hogy azonnal érvénybe lépteti a helyi felhasználói fiók állapotok, jelszóházirendek, és a bejelentkezési órában használhatja ezt a hitelesítési módszert. A tényleges átmenő hitelesítési folyamat további információkért lásd: [felhasználó jelentkezzen be az Azure AD átmenő hitelesítésének](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-pass-through-authentication).
+Vállalatok egy biztonsági követelmény, hogy azonnal érvénybe lépteti a helyi felhasználói fiók állapotok, jelszóházirendek, és a bejelentkezési órában használhatja ezt a hitelesítési módszert. A tényleges átmenő hitelesítési folyamat további információkért lásd: [felhasználó jelentkezzen be az Azure AD átmenő hitelesítésének](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-pta).
 
 ### <a name="federated-authentication"></a>Az összevont hitelesítés
 Ha ezt a hitelesítési módszert választja, az Azure AD teljes ki egy külön megbízható hitelesítési rendszerre, például a helyszíni Active Directory összevonási szolgáltatások (AD FS), a hitelesítési folyamat a jelszó érvényesítése.
@@ -88,17 +88,17 @@ Az alábbi szakasz segít eldönteni, melyik hitelesítési módszert az Önnek 
 > [!NOTE]
 > A jelszó lejárt, és a fiók zárolt állapotok jelenleg az Azure AD az Azure AD Connect nem szinkronizálja. 
 
-Tekintse meg [Jelszókivonat-szinkronizálás megvalósítása](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsync-implement-password-synchronization) a telepítési lépéseket.
+Tekintse meg [Jelszókivonat-szinkronizálás megvalósítása](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-password-hash-synchronization) a telepítési lépéseket.
 
 ### <a name="cloud-authentication-pass-through-authentication"></a>Felhőalapú hitelesítés: az átmenő hitelesítés  
 
 * **Tevékenységi**. Átmenő hitelesítés, szüksége lesz egy vagy több (javasoljuk, hogy három) könnyen használható, a meglévő kiszolgálókon telepített ügynökök. Ezeket az ügynököket kell férniük a helyszíni Active Directory tartományi szolgáltatások, többek között a helyszíni AD-tartományvezérlőket. Kimenő Internet-hozzáférés és a hozzáférést a tartományvezérlőkhöz van szükségük. Ezen okból kifolyólag nem támogatott a szegélyhálózaton az ügynökök telepítéséhez. 
 
-    Az átmenő hitelesítés tartományvezérlők korlátozás hálózati hozzáférést igényel. Az összes hálózati forgalom titkosítva, és a hitelesítési kérések korlátozódik. Ezen folyamatról további információkért lásd: a [biztonság részletes bemutatása](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-pass-through-authentication-security-deep-dive) az átmenő hitelesítést.
+    Az átmenő hitelesítés tartományvezérlők korlátozás hálózati hozzáférést igényel. Az összes hálózati forgalom titkosítva, és a hitelesítési kérések korlátozódik. Ezen folyamatról további információkért lásd: a [biztonság részletes bemutatása](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-pta-security-deep-dive) az átmenő hitelesítést.
 
 * **Felhasználói élmény**. Felhasználói bejelentkezési élmény javítása érdekében telepítse a közvetlen egyszeri bejelentkezés az átmenő hitelesítés. Közvetlen egyszeri bejelentkezés használata esetén nem szükségtelen utasításokat után a felhasználók bejelentkeznek.
 
-* **Speciális forgatókönyvek**. Az átmenő hitelesítés az helyi fiók házirend megköveteli a bejelentkezés alkalmával. Ha például a hozzáférés megtagadva állapot le van tiltva, egy helyi felhasználói fiók zárolva, amikor vagy [jelszava lejárt](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-pass-through-authentication-faq#what-happens-if-my-users-password-has-expired-and-they-try-to-sign-in-by-using-pass-through-authentication) vagy az órákat, amikor a felhasználó számára engedélyezett bejelentkezni kívül esik. 
+* **Speciális forgatókönyvek**. Az átmenő hitelesítés az helyi fiók házirend megköveteli a bejelentkezés alkalmával. Ha például a hozzáférés megtagadva állapot le van tiltva, egy helyi felhasználói fiók zárolva, amikor vagy [jelszava lejárt](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-pta-faq#what-happens-if-my-users-password-has-expired-and-they-try-to-sign-in-by-using-pass-through-authentication) vagy az órákat, amikor a felhasználó számára engedélyezett bejelentkezni kívül esik. 
 
     Többtényezős hitelesítés az átmenő hitelesítést igénylő szervezeteknek az Azure multi-factor Authentication (MFA) kell használnia. Ezek a szervezetek egy külső vagy a helyszíni többtényezős hitelesítési módszer nem használható. Speciális funkciók szükséges, hogy a Jelszókivonat-szinkronizálás üzemel-e úgy dönt, hogy átmenő hitelesítést. Ilyen például, a kiszivárgott hitelesítő adatok a jelentés az Identity Protection.
 
@@ -108,9 +108,9 @@ Tekintse meg [Jelszókivonat-szinkronizálás megvalósítása](https://docs.mic
 
 * **Megfontolandó szempontok**. Használhatja a Jelszókivonat-szinkronizálás átmenő hitelesítéshez, a biztonsági mentési hitelesítési módszerként, ha az ügynökök a felhasználó hitelesítő adatait egy helyszíni jelentős hiba miatt nem lehet érvényesíteni. Feladatátvétel a Jelszókivonat-szinkronizálás automatikusan nem történik, és az Azure AD Connect a bejelentkezési módszer váltás manuálisan kell használnia. 
 
-    Egyéb szempontok az átmenő hitelesítés, beleértve a másik azonosító támogatja, lásd: [– gyakori kérdések](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-pass-through-authentication-faq).
+    Egyéb szempontok az átmenő hitelesítés, beleértve a másik azonosító támogatja, lásd: [– gyakori kérdések](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-pta-faq).
 
-Tekintse meg [átmenő hitelesítés végrehajtására](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-pass-through-authentication) a telepítési lépéseket.
+Tekintse meg [átmenő hitelesítés végrehajtására](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-pta) a telepítési lépéseket.
 
 ### <a name="federated-authentication"></a>Az összevont hitelesítés
 
@@ -122,7 +122,7 @@ Tekintse meg [átmenő hitelesítés végrehajtására](https://docs.microsoft.c
 
     * A hitelesítés, amely szükséges az intelligens kártyákkal vagy tanúsítványokkal.
     * A helyszíni MFA-kiszolgálóval, vagy többtényezős külső szolgáltatók.
-    * Hitelesítés a harmadik fél hitelesítési megoldások használatával. Tekintse meg a [az Azure AD összevonás kompatibilitási listája](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-federation-compatibility).
+    * Hitelesítés a harmadik fél hitelesítési megoldások használatával. Tekintse meg a [az Azure AD összevonás kompatibilitási listája](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-fed-compatibility).
     * Jelentkezzen be, amely szükséges az sAMAccountName, például TARTOMÁNY\felhasználónév, helyett egy egyszerű felhasználónév (UPN), például user@domain.com.
 
 * **Üzletmenet-folytonossági**. Összevont rendszerek általában szükség van a kiszolgálók, a farm néven egy elosztott terhelésű tömbje. Ezen a farmon konfigurálva van egy belső hálózatot és a peremhálózati topológia hitelesítési kéréseket a magas rendelkezésre állásának biztosításához.
@@ -136,7 +136,7 @@ Tekintse meg [átmenő hitelesítés végrehajtására](https://docs.microsoft.c
 Tekintse meg [összevonási kiszolgálók üzembe helyezése](https://docs.microsoft.com/windows-server/identity/ad-fs/deployment/deploying-federation-servers) a telepítési lépéseket.
 
 > [!NOTE] 
-> Az Azure AD hibrid identitáskezelési megoldás telepítésekor meg kell valósítani a támogatott topológiák az Azure AD Connect egyik. Ismerje meg a további támogatott és nem támogatott konfigurációi, [az Azure AD Connect-topológiák](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-topologies).
+> Az Azure AD hibrid identitáskezelési megoldás telepítésekor meg kell valósítani a támogatott topológiák az Azure AD Connect egyik. Ismerje meg a további támogatott és nem támogatott konfigurációi, [az Azure AD Connect-topológiák](https://docs.microsoft.com/azure/active-directory/hybrid/plan-connect-topologies).
 
 ## <a name="architecture-diagrams"></a>Architektúra-diagramok
 
@@ -160,11 +160,11 @@ Az alábbi ábrák a magas szintű architektúra minden hitelesítési módszert
 |:-----|:-----|:-----|:-----|
 |Amikor megtörténik a hitelesítés?|A felhőben|Egy biztonságos jelszó ellenőrzési exchange helyszíni hitelesítési ügynök után a felhőben|Helyszíni követelmények|
 |Mik azok a helyszíni kiszolgáló követelmények meghaladják a kiépítési rendszer: az Azure AD Connect?|None|Egy kiszolgáló minden további hitelesítési ügynök|Két vagy több AD FS-kiszolgálók<br><br>A szegélyhálózat-alapú vagy szegélyhálózat (DMZ) hálózatban két vagy több WAP-kiszolgálók|
-|Mik a helyszíni Internet követelményei és hálózatkezelési túl a kiépítési rendszer?|None|[Kimenő Internet-hozzáférés](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-pass-through-authentication-quick-start) a kiszolgálókról a futtató hitelesítési ügynökök|[Bejövő Internet-hozzáférés](https://docs.microsoft.com/windows-server/identity/ad-fs/overview/ad-fs-requirements) a WAP-kiszolgálókat a szegélyhálózaton<br><br>Bejövő hálózati hozzáférést AD FS-kiszolgálók a WAP-kiszolgálókat a szegélyhálózaton<br><br>Hálózati terheléselosztás|
+|Mik a helyszíni Internet követelményei és hálózatkezelési túl a kiépítési rendszer?|None|[Kimenő Internet-hozzáférés](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-pta-quick-start) a kiszolgálókról a futtató hitelesítési ügynökök|[Bejövő Internet-hozzáférés](https://docs.microsoft.com/windows-server/identity/ad-fs/overview/ad-fs-requirements) a WAP-kiszolgálókat a szegélyhálózaton<br><br>Bejövő hálózati hozzáférést AD FS-kiszolgálók a WAP-kiszolgálókat a szegélyhálózaton<br><br>Hálózati terheléselosztás|
 |Van egy SSL-tanúsítványra vonatkozó követelménnyel?|Nem|Nem|Igen|
-|Van egy állapotfigyelési megoldás?|Nem szükséges|Ügynök állapota által biztosított [Azure Active Directory felügyeleti központ](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-troubleshoot-pass-through-authentication)|[Azure AD Connect Health](https://docs.microsoft.com/azure/active-directory/connect-health/active-directory-aadconnect-health-adfs)|
-|Felhasználók beszerzésének egyszeri bejelentkezés a felhőbeli erőforrásokhoz a vállalati hálózaton belüli tartományhoz csatlakoztatott eszközökről?|Igen, a [közvetlen egyszeri bejelentkezés](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-sso)|Igen, a [közvetlen egyszeri bejelentkezés](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-sso)|Igen|
-|Milyen bejelentkezési típusok támogatottak?|UserPrincipalName + jelszó<br><br>Az integrált Windows-hitelesítés [közvetlen egyszeri bejelentkezés](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-sso)<br><br>[Alternatív bejelentkezési Azonosítóval](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-get-started-custom)|UserPrincipalName + jelszó<br><br>Az integrált Windows-hitelesítés [közvetlen egyszeri bejelentkezés](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-sso)<br><br>[Alternatív bejelentkezési Azonosítóval](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-pass-through-authentication-faq)|UserPrincipalName + jelszó<br><br>sAMAccountName és jelszó<br><br>Integrált Windows-hitelesítés<br><br>[Tanúsítvány és az intelligens kártyás hitelesítés](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-user-certificate-authentication)<br><br>[Alternatív bejelentkezési Azonosítóval](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configuring-alternate-login-id)|
+|Van egy állapotfigyelési megoldás?|Nem szükséges|Ügynök állapota által biztosított [Azure Active Directory felügyeleti központ](https://docs.microsoft.com/azure/active-directory/hybrid/tshoot-connect-pass-through-authentication)|[Azure AD Connect Health](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-health-adfs)|
+|Felhasználók beszerzésének egyszeri bejelentkezés a felhőbeli erőforrásokhoz a vállalati hálózaton belüli tartományhoz csatlakoztatott eszközökről?|Igen, a [közvetlen egyszeri bejelentkezés](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sso)|Igen, a [közvetlen egyszeri bejelentkezés](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sso)|Igen|
+|Milyen bejelentkezési típusok támogatottak?|UserPrincipalName + jelszó<br><br>Az integrált Windows-hitelesítés [közvetlen egyszeri bejelentkezés](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sso)<br><br>[Alternatív bejelentkezési Azonosítóval](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-install-custom)|UserPrincipalName + jelszó<br><br>Az integrált Windows-hitelesítés [közvetlen egyszeri bejelentkezés](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sso)<br><br>[Alternatív bejelentkezési Azonosítóval](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-pta-faq)|UserPrincipalName + jelszó<br><br>sAMAccountName és jelszó<br><br>Integrált Windows-hitelesítés<br><br>[Tanúsítvány és az intelligens kártyás hitelesítés](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-user-certificate-authentication)<br><br>[Alternatív bejelentkezési Azonosítóval](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configuring-alternate-login-id)|
 |A Windows Hello for Business támogatott?|[Kulcs megbízhatósági modell](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-identity-verification)<br><br>[Az Intune-nal a tanúsítvány megbízhatósági modell](https://blogs.technet.microsoft.com/microscott/setting-up-windows-hello-for-business-with-intune/)|[Kulcs megbízhatósági modell](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-identity-verification)<br><br>[Az Intune-nal a tanúsítvány megbízhatósági modell](https://blogs.technet.microsoft.com/microscott/setting-up-windows-hello-for-business-with-intune/)|[Kulcs megbízhatósági modell](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-identity-verification)<br><br>[Tanúsítvány megbízhatósági modell](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-key-trust-adfs)|
 |Mik azok a többtényezős hitelesítési beállítások?|[Az Azure MFA](https://docs.microsoft.com/azure/multi-factor-authentication/)<br><br>[A feltételes hozzáférés * az egyéni vezérlők](https://docs.microsoft.com/en-us/azure/active-directory/conditional-access/controls#custom-controls-1)|[Az Azure MFA](https://docs.microsoft.com/azure/multi-factor-authentication/)<br><br>[A feltételes hozzáférés * az egyéni vezérlők](https://docs.microsoft.com/en-us/azure/active-directory/conditional-access/controls#custom-controls-1)|[Az Azure MFA](https://docs.microsoft.com/azure/multi-factor-authentication/)<br><br>[Az Azure MFA-kiszolgáló](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfaserver-deploy)<br><br>[Külső MFA](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-additional-authentication-methods-for-ad-fs)<br><br>[A feltételes hozzáférés * az egyéni vezérlők](https://docs.microsoft.com/en-us/azure/active-directory/conditional-access/controls#custom-controls-1)|
 |Milyen felhasználói fiók állapotok támogatottak?|Letiltott fiókokat<br>(legfeljebb 30 perces késleltetés)|Letiltott fiókokat<br><br>A fiók zárolva<br><br>A fiók lejárt<br><br>A jelszó lejárt<br><br>Jelentkezzen be óra|Letiltott fiókokat<br><br>A fiók zárolva<br><br>A fiók lejárt<br><br>A jelszó lejárt<br><br>Jelentkezzen be óra|
