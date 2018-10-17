@@ -1,24 +1,22 @@
 ---
-title: 'Rövid útmutató: Munkafolyamat elküldése FASTQ bemeneti fájlokkal | Microsoft Docs'
+title: 'Rövid útmutató: Munkafolyamat elküldése FASTQ bemeneti fájlokkal | Microsoft Genomics'
 titleSuffix: Azure
 description: Ez a rövid útmutató feltételezi, hogy az msgen kliens telepítve van, és sikeresen futtatta a mintaadatokat a szolgáltatáson keresztül.
-services: microsoft-genomics
+services: genomics
 author: grhuynh
-manager: jhubbard
-editor: jasonwhowell
+manager: cgronlun
 ms.author: grhuynh
-ms.service: microsoft-genomics
-ms.workload: genomics
+ms.service: genomics
 ms.topic: quickstart
 ms.date: 12/07/2017
-ms.openlocfilehash: f093397803f21c023a2c32e42709ecfcd0e3aec7
-ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
+ms.openlocfilehash: acbcceb32ec54ab85db05ef743e9c10cd8cf025c
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2017
-ms.locfileid: "26684483"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45735849"
 ---
-# <a name="submit-a-workflow-using-fastq-file-inputs"></a>Munkafolyamat elküldése FASTQ bemeneti fájlokkal
+# <a name="submit-a-workflow-using-fastq-file-inputs-in-microsoft-genomics"></a>Munkafolyamat elküldése FASTQ bemeneti fájlokkal a Microsoft Genomics szolgáltatásba
 
 Ez a rövid útmutató ismerteti, hogyan lehet elküldeni egy munkafolyamatot a Microsoft Genomics szolgáltatásba, ha a bemenet egy FASTQ-fájlpárból áll. Ez a témakör feltételezi, hogy már telepítette és futtatta az `msgen` klienst, továbbá megismerkedett az Azure Storage használatával. Ha sikeresen elküldte a munkafolyamatot a rendelkezésre álló mintaadatokkal, készen áll a rövid útmutató folytatására. 
 
@@ -83,5 +81,5 @@ output_storage_account_container: outputs
 
 Küldje el a `config.txt` fájlt a következő hívással: `msgen submit -f config.txt`
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ebben a cikkben egy FASTQ-fájlpárt töltött fel az Azure Storage-ba, valamint elküldött egy munkafolyamatot a Microsoft Genomics szolgáltatásba az `msgen` Python-kliensen keresztül. A munkafolyamatok elküldésével, illetve a Microsoft Genomics szolgáltatásban használható egyéb parancsokkal kapcsolatos további információkért tekintse meg a [Gyakori kérdések](frequently-asked-questions-genomics.md) szakaszt. 

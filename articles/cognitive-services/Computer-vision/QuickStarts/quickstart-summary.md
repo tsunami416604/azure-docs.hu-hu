@@ -1,21 +1,21 @@
 ---
-title: A Computer Vision rövid útmutatóinak összefoglalása | Microsoft Docs
-titleSuffix: Microsoft Cognitive Services
-description: Ezekben a rövid útmutatókban képet elemezhet, miniatűrt hozhat létre, valamint nyomtatott és kézzel írott szöveget nyerhet ki a Computer Visionnel a Cognitive Servicesben.
+title: A Computer Vision rövid útmutatóinak összefoglalása
+titleSuffix: Azure Cognitive Services
+description: Ezekben a rövid útmutatókban képet elemezhet, miniatűrt hozhat létre, valamint nyomtatott és kézzel írott szöveget nyerhet ki a Computer Vision API-val.
 services: cognitive-services
 author: noellelacharite
-manager: nolachar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: computer-vision
 ms.topic: quickstart
 ms.date: 08/28/2018
 ms.author: v-deken
-ms.openlocfilehash: 94424de3f175e82cf8490bad98f4a775761979e4
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: 89502fe49f5eb4b9692d7ee4233c7c46d645b3fb
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43770306"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45576884"
 ---
 # <a name="quickstart-summary"></a>Rövid útmutató: Összefoglalás
 

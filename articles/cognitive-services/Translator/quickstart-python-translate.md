@@ -1,21 +1,21 @@
 ---
-title: 'Translator Text: Szöveg lefordítása a Python használatával | Microsoft Docs'
-titleSuffix: Microsoft Cognitive Services
-description: Ebben a rövid útmutatóban szöveget fordít le egy nyelvről egy másikra a Translator Text API segítségével és a Python használatával a Cognitive Servicesben.
+title: 'Rövid útmutató: Szöveg fordítása – Translator Text, Python'
+titleSuffix: Azure Cognitive Services
+description: Ebben a rövid útmutatóban szöveget fordít le egy nyelvről egy másikra a Translator Text API segítségével Python nyelven.
 services: cognitive-services
 author: noellelacharite
-manager: nolachar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-text
 ms.topic: quickstart
 ms.date: 06/21/2018
 ms.author: nolachar
-ms.openlocfilehash: 8f70ffb77e21131990d6b77a1cb13c9d5c054d06
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
+ms.openlocfilehash: cd1941c0a815d959f3e2e98fdd809062f4e01014
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "43769606"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46129192"
 ---
 # <a name="quickstart-translate-text-with-python"></a>Rövid útmutató: Szöveg lefordítása a Python használatával
 

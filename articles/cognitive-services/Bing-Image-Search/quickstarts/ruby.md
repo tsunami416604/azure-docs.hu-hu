@@ -1,38 +1,38 @@
 ---
-title: 'Gyors útmutató: Küldési keresési lekérdezések a REST API a Bing Image Search API és a Ruby használatával'
-description: Ez a rövid útmutatóban küldeni keresési lekérdezések a Bing Search API, a Ruby használatával megfelelő rendszerképek listájának beolvasása.
+title: 'Rövid útmutató: Képkeresés Ruby használatával – Bing Image Search API'
+description: Ebből a rövid útmutatóból megtudhatja, hogyan hozhatja létre az első Bing Image Search API-hívását, majd hogyan fogadhatja a JSON-választ. Ez az egyszerű Ruby-alkalmazás keresési lekérdezést küld az API-nak, majd megjeleníti a nyers adatokat.
 services: cognitive-services
 documentationcenter: ''
 author: aahill
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-image-search
-ms.topic: article
+ms.topic: quickstart
 ms.date: 8/20/2018
 ms.author: aahi
-ms.openlocfilehash: fdc22971a369effbca31e23305ee57739852a50b
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
-ms.translationtype: MT
+ms.openlocfilehash: 4c2c91b42af46ba42bdda84d7b8b77987c7ea818
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45578801"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46297332"
 ---
-# <a name="quickstart-send-search-queries-using-the-rest-api-and-ruby"></a>Gyors útmutató: Küldési keresési lekérdezések a REST API-t és a Ruby használatával
+# <a name="quickstart-send-search-queries-using-the-rest-api-and-ruby"></a>Rövid útmutató: Keresési lekérdezések küldése a REST API és a Ruby használatával
 
-Ez a rövid útmutató segítségével a Bing Image Search API az első hívását, és a egy JSON-választ kapnak. Ez egyszerű Ruby-alkalmazás egy keresési lekérdezést küld az API-t, és megjeleníti a nyers eredményeken.
+Ebből a rövid útmutatóból megtudhatja, hogyan hozhatja létre az első Bing Image Search API-hívását, majd hogyan fogadhatja a JSON-választ. Ez az egyszerű Ruby-alkalmazás keresési lekérdezést küld az API-nak, majd megjeleníti a nyers adatokat.
 
-Ez az alkalmazás Ruby nyelven van megírva, míg a API-ját szinte bármelyik programozási nyelvével kompatibilis REST-alapú webszolgáltatás.
+Bár ez az alkalmazás Ruby nyelven lett íródott, az API egy RESTful-webszolgáltatás, azaz kompatibilis a legtöbb programnyelvvel.
 
-Ehhez a mintához forráskódja elérhető a [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/ruby/Search/BingImageSearchv7.rb).
+A minta forráskódja a [GitHubon](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/ruby/Search/BingImageSearchv7.rb) érhető el.
 ## <a name="prerequisites"></a>Előfeltételek
 
-* [A legújabb verzióra a Ruby-](https://www.ruby-lang.org/en/downloads/).
+* [A Ruby legújabb verziója.](https://www.ruby-lang.org/en/downloads/)
 
 [!INCLUDE [cognitive-services-bing-image-search-signup-requirements](../../../../includes/cognitive-services-bing-image-search-signup-requirements.md)]
 
-## <a name="create-and-initialize-the-application"></a>Hozzon létre, és az alkalmazás inicializálása
+## <a name="create-and-initialize-the-application"></a>Az alkalmazás létrehozása és inicializálása
 
-1. a következő csomagok importálása a kódfájlhoz.
+1. importálja az alábbi csomagokat a kódfájljába.
 
     ```ruby
     require 'net/https'
@@ -40,7 +40,7 @@ Ehhez a mintához forráskódja elérhető a [GitHub](https://github.com/Azure-S
     require 'json'
     ```
 
-2. Az API-végpont, kép API keresési útvonalat, az előfizetési kulcs változók létrehozása és a keresési kifejezést.
+2. Hozza létre az API-végpont, az Image API keresési útvonala, az előfizetési kulcs és a keresőkifejezés változóit.
 
     ```ruby
     uri  = "https://api.cognitive.microsoft.com"
@@ -48,9 +48,9 @@ Ehhez a mintához forráskódja elérhető a [GitHub](https://github.com/Azure-S
     term = "puppies"
     ```
 
-## <a name="format-and-make-an-api-request"></a>Formázza és a egy API-kérés
+## <a name="format-and-make-an-api-request"></a>Formázás és API-kérelem létrehozása
 
-Az utolsó lépésben a változók használatával az API-kérelem egy keresés URL-cím formátuma. Ezután küldenie a kérelmet.
+Az előző lépés változóit használva formázza a keresési URL-címet az API-kérelemhez. Küldje el a kérelmet.
 
 ```ruby
 uri = URI(uri + path + "?q=" + URI.escape(term))
@@ -64,9 +64,9 @@ response = Net::HTTP.start(uri.host, uri.port, :use_ssl => uri.scheme == 'https'
 end
 ```
 
-## <a name="process-and-print-the-json"></a>Dolgozza fel, és nyomtassa ki a JSON-ban 
+## <a name="process-and-print-the-json"></a>A JSON feldolgozása és nyomtatása
 
-A válasz fogadása után a JSON elemzése, és azt lekérjük az értékeket. Például a Miniatűr URL-címet az első eredményt, és a teljes száma a visszaadott lemezképek.
+Ha megérkezett a válasz, elemezheti a JSON-t, és lekérheti belőle az értékeket. Például az első eredmény miniatűr képének URL-címét és a visszaadott képek teljes számát.
 
 ```ruby
 response.each_header do |key, value|
@@ -84,9 +84,9 @@ puts "total number of returned matches: #{total_returned_images}"
 puts "Url to the thumbnail of the first returned search result: #{first_result}"
 ```
 
-## <a name="sample-json-response"></a>Példa JSON-válasz
+## <a name="sample-json-response"></a>Példa JSON-válaszra
 
-A Bing Image Search API érkező válaszokat a rendszer JSON formátumban adja vissza. Ez a minta-válasz a rendszer csonkolta egyetlen eredmény megjelenítéséhez.
+A Bing Image Search API válaszai JSON formátumban érkeznek vissza. A mintaválasz egyetlen eredményre van csonkolva.
 
 ```json
 {
@@ -136,12 +136,12 @@ A Bing Image Search API érkező válaszokat a rendszer JSON formátumban adja v
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Bing – Képkeresés egyoldalas alkalmazás oktatóanyag](../tutorial-bing-image-search-single-page-app.md)
+> [Egyoldalas alkalmazás-oktatóanyag a Bing Image Search használatához](../tutorial-bing-image-search-single-page-app.md)
 
-## <a name="see-also"></a>Lásd még 
+## <a name="see-also"></a>Lásd még
 
-* [Mi az a Bing Képkeresés?](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/overview)  
-* [Próbálja ki az online interaktív bemutatót](https://azure.microsoft.com/services/cognitive-services/bing-image-search-api/)  
-* [Ingyenesen a Cognitive Services hozzáférési kulcs lekérése](https://azure.microsoft.com/try/cognitive-services/?api=bing-image-search-api)  
-* [Az Azure Cognitive Services – dokumentáció](https://docs.microsoft.com/azure/cognitive-services)
-* [A Bing Image Search API-referencia](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference)
+* [Mi a Bing Image Search?](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/overview)  
+* [Online interaktív bemutató kipróbálása](https://azure.microsoft.com/services/cognitive-services/bing-image-search-api/)  
+* [Ingyenes Cognitive Services hozzáférési kulcs beszerzése](https://azure.microsoft.com/try/cognitive-services/?api=bing-image-search-api)  
+* [Az Azure Cognitive Services dokumentációja](https://docs.microsoft.com/azure/cognitive-services)
+* [Bing Image Search API – referencia](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference)

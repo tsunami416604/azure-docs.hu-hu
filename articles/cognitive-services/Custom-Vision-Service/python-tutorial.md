@@ -1,39 +1,40 @@
 ---
-title: Hozzon létre egy egyéni vizuális szolgáltatás Python-oktatóanyag – Azure Cognitive Services |} A Microsoft Docs
-description: Egy egyszerű Python-alkalmazást, amely a Custom Vision API a Microsoft Cognitive Services bemutatása. Hozzon létre egy projektet, adja hozzá a címkéket, tölthet fel képeket, a projekt betanítását és az alapértelmezett végpont használatával előrejelzést.
+title: 'Oktatóanyag: Képosztályozó projekt készítése – Custom Vision Service, Python'
+titlesuffix: Azure Cognitive Services
+description: Hozzon létre projektet, adjon hozzá címkéket, töltsön fel képeket, tanítsa be a projektet és adjon előrejelzést az alapértelmezett végpont használatával.
 services: cognitive-services
 author: areddish
-manager: chbuehle
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: custom-vision
-ms.topic: article
+ms.topic: tutorial
 ms.date: 08/28/2018
 ms.author: areddish
-ms.openlocfilehash: df0bdc0bbd2768566336323851f366c9ae280a88
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
-ms.translationtype: MT
+ms.openlocfilehash: 14b805a60637a889698132e169d5a41670a8bce0
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44301599"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46363377"
 ---
-# <a name="custom-vision-api-python-tutorial"></a>Egyéni Látástechnológiai API Python-oktatóprogram
+# <a name="tutorial-create-an-image-classification-project-using-the-custom-vision-service-with-python"></a>Oktatóanyag: Képosztályozó projekt készítése a Custom Vision Service és Python használatával
 
-Ismerje meg, hogy egy kép besorolási projekt létrehozása a Custom Vision Service és a egy alapszintű Python-szkriptet. A létrehozást követően, is címkéket adhat hozzá, tölthet fel képeket, betanítását a projektet, a projekt alapértelmezett előrejelzési végpont URL-cím lekérése és, amellyel programozott módon a lemezkép tesztelése. A nyílt forráskódú példa sablonként használni a saját alkalmazás létrehozásához a Custom Vision API használatával.
+Megismerheti, hogyan lehet képosztályozó projektet készíteni a Custom Vision Service használatával és egy egyszerű Python parancsfájllal. Miután elkészült, adhat hozzá címkéket, tölthet fel képeket, betaníthatja a projektet, lekérheti a projekt alapértelmezett előrejelzési végpont URL-címét és ezt felhasználhatja a kép programozott tesztelésére. Ez a nyílt forráskódú példa sablonként használható saját, Custom Vision API használatával készülő alkalmazásaihoz.
 
 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Python 2.7 + vagy a Python 3.5-ös +.
+- Python 2.7+ vagy Python 3.5+.
 - A pip eszköz.
 
-## <a name="get-the-training-and-prediction-keys"></a>A betanítási és Predikciós kulcsok beolvasása
+## <a name="get-the-training-and-prediction-keys"></a>A betanítási és előrejelzési kulcsok letöltése
 
-Ebben a példában használt kulcsok beszerzéséhez látogasson el a [Custom Vision weblap](https://customvision.ai) , és válassza ki a __fogaskerék ikont__ kattintson a jobb felső sarokban. Az a __fiókok__ területén másolja a __képzési kulcs__ és __előrejelzési kulcs__ mezőket.
+Az ebben a példában használt kulcsok megszerzéséhez látogasson el a [Custom Vision weboldalra](https://customvision.ai), válassza ki a __fogaskerék ikont__ a jobb felső sarokban. A __Fiókok__ területen másolja ki a __Betanítási kulcs__ és __Előrejelzési kulcs__ mezők értékeit.
 
-![A felhasználói felület kulcsok képe](./media/python-tutorial/training-prediction-keys.png)
+![A kulcsok felhasználói felület képe](./media/python-tutorial/training-prediction-keys.png)
 
-## <a name="install-the-custom-vision-service-sdk"></a>A Custom Vision Service SDK telepítése
+## <a name="install-the-custom-vision-service-sdk"></a>Telepítse a Custom Vision Service SDK-t
 
 A Custom Vision Service SDK telepítéséhez használja a következő parancsot:
 
@@ -41,18 +42,18 @@ A Custom Vision Service SDK telepítéséhez használja a következő parancsot:
 pip install azure-cognitiveservices-vision-customvision
 ```
 
-## <a name="get-example-images"></a>A példában képek bekérése
+## <a name="get-example-images"></a>Minta képek lekérése
 
-Ebben a példában a képeket a `Samples/Images` könyvtárát a [ https://github.com/Microsoft/Cognitive-CustomVision-Windows ](https://github.com/Microsoft/Cognitive-CustomVision-Windows/tree/master/Samples/Images) projekt. Klónozza, vagy töltse le és csomagolja ki a projektet a fejlesztői környezetbe.
+Ez a példa a képeket a [ https://github.com/Microsoft/Cognitive-CustomVision-Windows ](https://github.com/Microsoft/Cognitive-CustomVision-Windows/tree/master/Samples/Images) projekt `Samples/Images` könyvtárából veszi. Klónozza, vagy töltse le és csomagolja ki a projektet a saját fejlesztői környezetébe.
 
-## <a name="create-a-custom-vision-service-project"></a>A Custom Vision Service-projekt létrehozása
+## <a name="create-a-custom-vision-service-project"></a>Custom Vision Service-projekt létrehozása
 
-A Custom Vision Service új projekt, hozzon létre új fájlt `sample.py`. Használja a fájl tartalmát a következő kódot:
+Új Custom Vision Service-projekt létrehozásához készítsen egy `sample.py` nevű új fájlt. A fájl tartalma a következő kód legyen:
 
 > [!IMPORTANT]
-> Állítsa be a `training_key` , a korábban kapott képzési kulcs értékét.
+> A `training_key` értékét állítsa be a korábban kapott betanítási kulcs értékére.
 >
-> Állítsa be a `prediction_key` , a korábban kapott előrejelzési kulcs értékét.
+> A `prediction_key` értékét állítsa be a korábban kapott előrejelzési kulcs értékére.
 
 ```python
 from azure.cognitiveservices.vision.customvision.training import training_api
@@ -71,7 +72,7 @@ project = trainer.create_project("My Project")
 
 ## <a name="add-tags-to-your-project"></a>Címkék hozzáadása a projekthez
 
-Címkék hozzáadása a projekthez, adja hozzá a következő kódot, végén a `sample.py` fájlt:
+A projekthez címkék hozzáadásához adja az alábbi kódot a `sample.py` fájl végéhez:
 
 ```python
 # Make two tags in the new project
@@ -79,13 +80,13 @@ hemlock_tag = trainer.create_tag(project.id, "Hemlock")
 cherry_tag = trainer.create_tag(project.id, "Japanese Cherry")
 ```
 
-## <a name="upload-images-to-the-project"></a>A projekt képek feltöltése
+## <a name="upload-images-to-the-project"></a>Képek feltöltése a projekthez
 
-A minta képeket hozzáadása a projekthez, szúrja be az alábbi kódot a címke létrehozása után. Ez a kód feltölti a lemezképet a megfelelő címkével:
+A minta képek projekthez adásához, helyezze el a következő kódot a címke létrehozása után. Ez a kód feltölti a képet a megfelelő címkével:
 
 > [!IMPORTANT]
 >
-> Elérési utat módosítsa arra a képek, ahol a Cognitive-CustomVision – Windows-projekt korábban letöltött alapján.
+> A képekhez az elérési utat módosítsa arra, ahová a Cognitive-CustomVision – Windows-projektet korábban letöltötte.
 
 ```python
 base_image_url = "https://raw.githubusercontent.com/Microsoft/Cognitive-CustomVision-Windows/master/Samples/"
@@ -115,9 +116,9 @@ for image_num in range(1,10):
 #        trainer.create_images_from_data(project.id, img_data, [ cherry_tag.id ])
 ```
 
-## <a name="train-the-project"></a>A projekt betanítása
+## <a name="train-the-project"></a>A projekt tanítása
 
-A besorolás betanítására, adja a következő kódot a végéhez a `sample.py` fájlt:
+Az osztályozó betanítására adja hozzá az alábbi kódot a `sample.py` fájl végéhez:
 
 ```python
 import time
@@ -134,9 +135,9 @@ trainer.update_iteration(project.id, iteration.id, is_default=True)
 print ("Done!")
 ```
 
-## <a name="get-and-use-the-default-prediction-endpoint"></a>Letöltheti a az alapértelmezett előrejelzési végpont
+## <a name="get-and-use-the-default-prediction-endpoint"></a>Szerezze meg és használja az alapértelmezett előrejelzési végpontot
 
-Kép küldése a előrejelzési végponthoz, és az előrejelzési lekéréséhez, adja a következő kódot a végéhez a `sample.py` fájlt:
+Az előrejelzési végpontra kép küldéséhez és az előrejelzés lekéréséhez, adja a következő kódot a `sample.py` fájl végéhez:
 
 ```python
 from azure.cognitiveservices.vision.customvision.prediction import prediction_endpoint
@@ -161,15 +162,15 @@ for prediction in results.predictions:
     print ("\t" + prediction.tag_name + ": {0:.2f}%".format(prediction.probability * 100))
 ```
 
-## <a name="run-the-example"></a>A példa Futtatás
+## <a name="run-the-example"></a>A példa futtatása
 
-Futtassa a megoldást. Az előrejelzési eredmények jelennek meg a konzolon.
+Futtassa a megoldást. Az előrejelzési eredmények megjelennek a konzolon.
 
 ```
 python sample.py
 ```
 
-Az alkalmazás kimenete az alábbi szöveghez hasonló:
+Az alkalmazás kimenete az alábbihoz szöveghez hasonló lesz:
 
 ```
 Creating project...

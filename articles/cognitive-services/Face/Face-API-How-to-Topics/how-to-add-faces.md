@@ -1,36 +1,36 @@
 ---
-title: Adja hozzá a lapok Arcfelismerési API-val |} Microsoft Docs
-titleSuffix: Microsoft Cognitive Services
-description: Használja a Arcfelismerési API kognitív Services oldal hozzáadása a képek.
+title: 'Példa: Arcok hozzáadása – Face API'
+titleSuffix: Azure Cognitive Services
+description: A Face API használatával arcokat adhat a képekre.
 services: cognitive-services
 author: SteveMSFT
-manager: corncar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: face-api
-ms.topic: article
+ms.topic: sample
 ms.date: 03/01/2018
 ms.author: sbowles
-ms.openlocfilehash: 3306c13d6c3d231ddbda38cfcbc5419fcdbd30db
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
-ms.translationtype: MT
+ms.openlocfilehash: fb5d03e2cb3c11daf7a94966fda46345ee910ded
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35346999"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46125102"
 ---
-# <a name="how-to-add-faces"></a>Lapok hozzáadása
+# <a name="example-how-to-add-faces"></a>Példa: Hogyan lehet arcokat hozzáadni
 
-Ez az útmutató ismerteti az ajánlott eljárás, személyek és felületei nagy számú hozzáadása egy PersonGroup.
-Az azonos stratégia is FaceList és LargePersonGroup vonatkozik.
-A minták a Arcfelismerési API-ügyfél szalagtárat használó C# nyelven íródtak.
+Ez az útmutató ismerteti az ajánlott eljárást nagy mennyiségű emberek és arcok PersonGrouphoz adására.
+Ugyanez a stratégia vonatkozik a FaceList és a LargePersonGroup esetére is.
+A példák a Face API ügyfélkódtár használatával C# nyelven íródtak.
 
-## <a name="step1"></a> 1. lépés: az inicializálás
+## <a name="step-1-initialization"></a>1. lépés: Inicializálás
 
-Több változók van deklarálva, és segítő függvény megvalósított ütemezni a kérelmeket.
+Több változó deklarálása és a kérések ütemezését végző segédfüggvény megvalósítása.
 
-- `PersonCount` az a személy teljes száma.
-- `CallLimitPerSecond` az előfizetés szint szerint másodpercenként maximális hívások van.
-- `_timeStampQueue` a várólisták jegyezze fel a kérelem időbélyegeket van.
-- `await WaitCallLimitPerSecondAsync()` megvárja, amíg érvényes a következő kérés küldése.
+- `PersonCount` a személy száma összesen.
+- `CallLimitPerSecond` a másodpercenkénti meghívások maximális száma az előfizetés csomag szerint.
+- `_timeStampQueue` a kérés időbélyegeket rögzítő üzenetsor.
+- `await WaitCallLimitPerSecondAsync()` vár, amíg a következő kérés küldése érvényessé nem válik.
 
 ```CSharp
 const int PersonCount = 10000;
@@ -60,20 +60,20 @@ static async Task WaitCallLimitPerSecondAsync()
 }
 ```
 
-## <a name="step2"></a> 2. lépés: Engedélyezze az API-hívás
+## <a name="step-2-authorize-the-api-call"></a>2. lépés: API-hívás engedélyezése
 
-Egy ügyféloldali kódtár használata esetén az Előfizetés kulcs áthalad a FaceServiceClient osztály konstruktor. Példa:
+Az ügyfélkódtár használatakor az előfizetési kulcs megadása a FaceServiceClient osztály konstruktorán keresztül történik. Például:
 
 ```CSharp
 FaceServiceClient faceServiceClient = new FaceServiceClient("<Subscription Key>");
 ```
 
-Az előfizetés kulcsot az Azure-portálon a piactér lapján lehet lekérni. Lásd: [előfizetések](https://www.microsoft.com/cognitive-services/en-us/sign-up).
+Az előfizetési kulcs az Azure Portal Marketplace oldaláról szerezhető be. Lásd [Előfizetések](https://www.microsoft.com/cognitive-services/en-us/sign-up).
 
-## <a name="step3"></a> 3. lépés: A PersonGroup létrehozása
+## <a name="step-3-create-the-persongroup"></a>3. lépés: PersonGroup létrehozása
 
-Egy "MyPersonGroup" nevű PersonGroup menteni a személyek jön létre.
-A kérelem ideje a várólistában levő `_timeStampQueue` az átfogó ellenőrzést biztosításához.
+A „MyPersonGroup” nevű PersonGroup létrejön a személyek mentésére.
+A kérelem időket a `_timeStampQueue` sorba állítja, az általános ellenőrzés biztosítása érdekében.
 
 ```CSharp
 const string personGroupId = "mypersongroupid";
@@ -82,9 +82,9 @@ _timeStampQueue.Enqueue(DateTime.UtcNow);
 await faceServiceClient.CreatePersonGroupAsync(personGroupId, personGroupName);
 ```
 
-## <a name="step4"></a> 4. lépés: A PersonGroup személyeket létrehozása
+## <a name="step-4-create-the-persons-to-the-persongroup"></a>4. lépés: A személyek létrehozása a PersonGroup csoportba
 
-Személyek egyidejűleg jönnek létre és `await WaitCallLimitPerSecondAsync()` elkerülése érdekében a hívás túllépő is vonatkozik.
+A személyek egyidejűleg jönnek létre és a hívási limit túllépésének megelőzésére `await WaitCallLimitPerSecondAsync()` is alkalmazásra kerül.
 
 ```CSharp
 CreatePersonResult[] persons = new CreatePersonResult[PersonCount];
@@ -97,10 +97,10 @@ Parallel.For(0, PersonCount, async i =>
 });
 ```
 
-## <a name="step5"></a> 5. lépés: A személyek lapok hozzáadása
+## <a name="step-5-add-faces-to-the-persons"></a>5. lépés: Arcok adása a személyekhez
 
-Hozzáadása a különböző személyek lapok feldolgozása párhuzamosan, az egy adott személy akkor szekvenciális.
-Ebben az esetben `await WaitCallLimitPerSecondAsync()` meghívták annak érdekében, hogy a kérelem gyakorisága korlátozás hatókörén belül van.
+Arcok hozzáadása több személyhez párhuzamosan, egy konkrét személyhez pedig szekvenciálisan történik.
+Újra csak a `await WaitCallLimitPerSecondAsync()` meghívásával biztosítjuk, hogy a kérések gyakorisága a határértékeken belül maradjon.
 
 ```CSharp
 Parallel.For(0, PersonCount, async i =>
@@ -120,22 +120,23 @@ Parallel.For(0, PersonCount, async i =>
 });
 ```
 
-## <a name="summary"></a> Összefoglalás
+## <a name="summary"></a>Összegzés
 
-Ebben az útmutatóban megtanulhatta, személyek és felületei nagy számú egy PersonGroup létrehozásának folyamatán. Több emlékeztetők:
+Ebben az útmutatóban megismerte, hogyan történhet nagy számú embert és arcot tartalmazó PersonGroup létrehozása. Több emlékeztető:
 
-- Ezt a stratégiát is FaceList és LargePersonGroup vonatkozik.
-- Különböző FaceLists vagy személyek LargePersonGroup lapok hozzáadása vagy törlése egyidejűleg lehet feldolgozni.
-- Egy adott FaceList vagy LargePersonGroup személy ugyanazokat a műveleteket egymás után kell elvégezni.
-- Az egyszerűség kedvéért megtartásához lehetséges kivétel kezelése a jelen útmutató nincs megadva. Ha azt szeretné, további robusztusság javítására, megfelelő újrapróbálkozási házirendje kell alkalmazni.
+- Ez a stratégia vonatkozik a FaceList és a LargePersonGroup esetére is.
+- A LargePersonGroup-hoz személyek és a FaceList-hez arcok hozzáadása/törlése végezhető párhuzamosan.
+- Egy konkrét FaceList-re vagy a LargePersonGroup esetén egy személyre vonatkozóan ugyanazt a műveletet egymás után kell elvégezni.
+- Az egyszerűség kedvéért az esetleges kivételek lekezelésétől eltekintünk az útmutatóban. Ha a robusztusságot növelni szeretné, használni kell a megfelelő újrapróbálkozási szabályokat.
 
-Gyors emlékeztető korábban ismertetése és bemutatta azok a funkciók a következők:
+Az alábbiakban röviden felidézzük a korábban ismertetett és bemutatott funkciókat:
 
-- PersonGroups használatával létrehozása a [PersonGroup - létrehozása](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395244) API
-- Személyek használatával létrehozása a [PersonGroup személy - létrehozása](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523c) API
-- Lapok használatával személyek hozzáadása a [PersonGroup személy - hozzáadása Arcfelismerési](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523b) API
+- PersonGroup csoportok létrehozása a [PersonGroup – Create](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395244) API használatával
+- Személyek létrehozása a [PersonGroup Person – Create](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523c) API használatával
+- Arcok hozzáadása személyekhez a [PersonGroup Person – Add Face](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523b) API használatával
 
-## <a name="related"></a> Kapcsolódó témakörök
-- [A kép néz azonosítása](HowtoIdentifyFacesinImage.md)
-- [A kép néz történő Adatmásolást](HowtoDetectFacesinImage.md)
-- [A felügyeleti teendők központjaként szolgáltatás használata](how-to-use-large-scale.md)
+## <a name="related-topics"></a>Kapcsolódó témakörök
+
+- [Hogyan lehet arcokat azonosítani a képen](HowtoIdentifyFacesinImage.md)
+- [Hogyan lehet arcokat megtalálni a képen](HowtoDetectFacesinImage.md)
+- [Hogyan használható a nagy léptékű funkció](how-to-use-large-scale.md)

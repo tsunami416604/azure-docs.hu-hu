@@ -8,12 +8,12 @@ ms.author: tomfitz
 ms.date: 08/13/2018
 ms.topic: quickstart
 ms.service: event-grid
-ms.openlocfilehash: a47beb3e4299c62ec4b7959b4834d0440fee06f7
-ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
+ms.openlocfilehash: 17fba267e85c7b1421e632930c8bea2bfaf6ff5f
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/23/2018
-ms.locfileid: "42744585"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45736495"
 ---
 # <a name="create-and-route-blob-storage-events-with-the-azure-portal-and-event-grid"></a>Blob Storage-események létrehozása és átirányítása az Azure Portal és az Event Grid segítségével
 
@@ -37,7 +37,7 @@ A folyamat végén látni fogja, hogy a rendszer elküldte az eseményadatokat a
 
    ![Tárhely kiválasztása](./media/blob-event-quickstart-portal/create-storage.png)
 
-1. Az események esetén szüksége lesz vagy egy [Blob Storage-fiókra](../storage/common/storage-create-storage-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#blob-storage-accounts), vagy egy [General Purpose v2-tárfiókra](../storage/common/storage-account-options.md#general-purpose-v2-accounts). A csak blokkok és hozzáfűző blobok tárolását igénylő alkalmazásokhoz javasoljuk a Blob Storage-fiókok használatát. Adjon meg értékeket a Blob Storage- vagy a StorageV2-fiókhoz. Adjon egy egyedi nevet a fióknak. Miután végzett az értékek megadásával, válassza a **Létrehozás** lehetőséget.
+1. Az eseményekre feliratkozáshoz vagy egy általános célú v2 tárfiókot vagy Blob Storage-fiókot hozzon létre. További információ: [Tárfiók létrehozása](../storage/common/storage-quickstart-create-account.md).
 
    ![Kezdeti lépések](./media/blob-event-quickstart-portal/provide-blob-values.png)
 

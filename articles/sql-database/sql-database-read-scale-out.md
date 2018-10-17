@@ -12,12 +12,12 @@ ms.author: sashan
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 10/15/2018
-ms.openlocfilehash: 058c055078d53ca6d972a8d7f8f06472cca8efd5
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 169ebe45287721305800e511174784417569d7b4
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/16/2018
-ms.locfileid: "49345147"
+ms.locfileid: "49352710"
 ---
 # <a name="use-read-only-replicas-to-load-balance-read-only-query-workloads-preview"></a>Csak olvasható replikákat használ a betöltése terheléselosztása csak olvasható lekérdezési számítási feladatok (előzetes verzió)
 
@@ -31,7 +31,7 @@ Prémium szinten lévő minden egyes adatbázishoz ([DTU-alapú vásárlási mod
 
 Ezek a replikák számítási mérete megegyezik a normál adatbázis-kapcsolatok által használt írható-olvasható replika vannak kiosztva. A **olvasási kibővített** funkció lehetővé teszi az egyenleg SQL-adatbázis csak olvasható-alapú számítási feladatokat a kapacitását, csak olvasási replikára osztozik az írható-olvasható replika betölteni. Ezzel a módszerrel a csak olvasható munkaterhelés elkülönül a fő olvasási és írási számítási feladatok, és nem lesz hatással a teljesítményét. A funkció célja az alkalmazások, amelyek tartalmazzák a logikailag elválasztott csak olvasható feladatokhoz, például elemzési, és ezért juthat által nyújtott további kapacitás használatának nélkül többletköltség.
 
-Az olvasási horizontális Felskálázás funkció használatához, hogy adott adatbázissal, explicit módon engedélyeznie kell azt az adatbázis létrehozásakor vagy később a PowerShell használatával meghívásával konfiguráció módosítása a [Set-AzureRmSqlDatabase](/powershell/module/azurerm.sql/set-azurermsqldatabase) vagy a [ Új-AzureRmSqlDatabase](/powershell/module/azurerm.sql/new-azurermsqldatabase) parancsmagok vagy az Azure Resource Manager REST API használatával a [- adatbázisok létrehozása vagy frissítése](/rest/api/sql/databases/createorupdate) metódust.
+Az olvasási horizontális Felskálázás funkció használatához, hogy adott adatbázissal, explicit módon engedélyeznie kell azt az adatbázis létrehozásakor vagy később a PowerShell használatával meghívásával konfiguráció módosítása a [Set-AzureRmSqlDatabase](/powershell/module/azurerm.sql/set-azurermsqldatabase) vagy a [ Új-AzureRmSqlDatabase](/powershell/module/azurerm.sql/new-azurermsqldatabase) parancsmagok vagy az Azure Resource Manager REST API használatával a [- adatbázisok létrehozása vagy frissítése](https://docs.microsoft.com/rest/api/sql/databases/databases_createorupdate) metódust.
 
 Olvasási horizontális Felskálázás egy adatbázis engedélyezését követően, hogy az adatbázis csatlakozó alkalmazások lesznek irányítva, vagy az írható-olvasható replika, vagy egy csak olvasható replika adatbázis szerint a `ApplicationIntent` tulajdonság, az alkalmazás konfigurálása kapcsolati karakterlánc. Információk a `ApplicationIntent` tulajdonságot használja, lásd: [adja meg az alkalmazások szándékáról](https://docs.microsoft.com/sql/relational-databases/native-client/features/sql-server-native-client-support-for-high-availability-disaster-recovery#specifying-application-intent).
 
@@ -118,7 +118,7 @@ Body:
 }
 ```
 
-További információkért lásd: [- adatbázisok létrehozása vagy frissítése](/rest/api/sql/databases/createorupdate).
+További információkért lásd: [- adatbázisok létrehozása vagy frissítése](https://docs.microsoft.com/rest/api/sql/databases/databases_createorupdate).
 
 ## <a name="using-read-scale-out-with-geo-replicated-databases"></a>Horizontális Felskálázás olvasása használata a georeplikált adatbázis
 
@@ -130,4 +130,4 @@ Ha használ betölteni az egyenleg csak olvasható számítási feladatok, a geo
 ## <a name="next-steps"></a>További lépések
 
 - Olvasási kibővített beállítása a PowerShell használatával kapcsolatos információkért lásd: a [Set-AzureRmSqlDatabase](/powershell/module/azurerm.sql/set-azurermsqldatabase) vagy a [New-AzureRmSqlDatabase](/powershell/module/azurerm.sql/new-azurermsqldatabase) parancsmagok.
-- Olvasási kibővített beállítása a REST API használatával kapcsolatos információkért lásd: [- adatbázisok létrehozása vagy frissítése](/rest/api/sql/databases/createorupdate).
+- Olvasási kibővített beállítása a REST API használatával kapcsolatos információkért lásd: [- adatbázisok létrehozása vagy frissítése](https://docs.microsoft.com/rest/api/sql/databases/databases_createorupdate).

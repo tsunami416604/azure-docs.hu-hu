@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/24/2018
 ms.author: roiyz
-ms.openlocfilehash: b8a946588d09eb05e1609344318c91f76c7ee106
-ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
+ms.openlocfilehash: bab579b540dbeed8ecbff8925547509edb1d78c9
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47452122"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49352376"
 ---
 # <a name="log-analytics-virtual-machine-extension-for-linux"></a>Log Analytics virtuálisgép-bővítmény linuxhoz
 
@@ -80,9 +80,9 @@ A következő JSON a Log Analytics-ügynök bővítmény sémáját jeleníti me
 
 ```json
 {
-  "type": "extensions",
+  "type": "Microsoft.Compute/virtualMachines/extensions",
   "name": "OMSExtension",
-  "apiVersion": "2015-06-15",
+  "apiVersion": "2018-06-01",
   "location": "<location>",
   "dependsOn": [
     "[concat('Microsoft.Compute/virtualMachines/', <vm-name>)]"
@@ -101,11 +101,15 @@ A következő JSON a Log Analytics-ügynök bővítmény sémáját jeleníti me
 }
 ```
 
+>[!NOTE]
+>A fenti séma azt feltételezi, hogy ez a sablon gyökér szintű kerülnek. Ha a virtuális gép típusú erőforrást a sablonban található helyezi azt a `type` és `name` tulajdonságokat kell módosítani, amint [kicsit lentebb](#template-deployment).
+>
+
 ### <a name="property-values"></a>Tulajdonságok értékei
 
 | Name (Név) | Érték és példa |
 | ---- | ---- |
-| apiVersion | 2015-06-15 |
+| apiVersion | 2018-06-01 |
 | publisher | Microsoft.EnterpriseCloud.Monitoring |
 | type | OmsAgentForLinux |
 | typeHandlerVersion | 1.7 |
@@ -125,7 +129,7 @@ Az alábbi példa azt feltételezi, hogy a Virtuálisgép-bővítményt a virtu�
 {
   "type": "extensions",
   "name": "OMSExtension",
-  "apiVersion": "2015-06-15",
+  "apiVersion": "2018-06-01",
   "location": "<location>",
   "dependsOn": [
     "[concat('Microsoft.Compute/virtualMachines/', <vm-name>)]"
@@ -150,7 +154,7 @@ Helyezi el a JSON-bővítmény a sablonban gyökérmappájában, amikor az erőf
 {
   "type": "Microsoft.Compute/virtualMachines/extensions",
   "name": "<parentVmResource>/OMSExtension",
-  "apiVersion": "2015-06-15",
+  "apiVersion": "2018-06-01",
   "location": "<location>",
   "dependsOn": [
     "[concat('Microsoft.Compute/virtualMachines/', <vm-name>)]"

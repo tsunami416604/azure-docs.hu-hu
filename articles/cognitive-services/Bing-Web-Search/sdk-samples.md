@@ -1,42 +1,41 @@
 ---
-title: A Bing Web Search SDK-minták
-titleSuffix: Microsoft Cognitive Services
-description: A Bing Web Search SDK segítségével bővítheti keresési képességekkel a Python, Node.js, C# vagy a Java-alkalmazás.
+title: Bing Web Search SDK-minták
+titleSuffix: Azure Cognitive Services
+description: A Bing Web Search SDK használatával keresési képességekkel láthatja el Python, Node.js, C# vagy Java nyelven írt alkalmazásait.
 services: cognitive-services
 author: mikedodaro
-manager: rosh
-ms.assetid: ''
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-web-search
-ms.topic: article
+ms.topic: sample
 ms.date: 08/16/2018
 ms.author: erhopf
-ms.openlocfilehash: 0f82d40611dde69eb8ab63f49d6fd337e34cb8cc
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
-ms.translationtype: MT
+ms.openlocfilehash: b15f4000d30b7b6c6f8055d596b9ab5336d173c5
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43191281"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46126020"
 ---
-# <a name="bing-web-search-sdk-samples"></a>A Bing Web Search SDK-minták
+# <a name="bing-web-search-sdk-samples"></a>Bing Web Search SDK-minták
 
-A Bing Web Search SDK Python, Node.js, C# és Java érhető el. Kódminták, előfeltételeket és utasításokat build biztosítják a Githubon. A következő esetekben terjed ki:
+A Bing Web Search SDK elérhető Pythonhoz, Node.js-hez, C#-hoz, és Javához. A kódmintákat, az előfeltételeket és a fordítási útmutatókat a GitHubon találja meg. Az alábbi esetekben használható:
 
-* A lekérdezés egyetlen szó, és nyomtassa ki a nevét és URL-címét az első eredménye weblapok, képeket, híreket és videókat.
-* Lekérdezési kifejezés, ellenőrizze a eredmények számát, és nyomtassa ki a nevét és URL-címe első eredményt.
-* Keresési kifejezés lekérdezési válasz szűrőkkel beállítása `news` és hírkeresési eredményeket részleteit.
-* Egy keresési kifejezést a lekérdezni `answerCount` és `promote` paramétereket, majd nyomtassa ki a részletes eredmények.
+* Egyszavas lekérdezés és a webhelyekre, képekre, hírekre vagy videókra vonatkozó első találat nevének és URL-címének megjelenítése.
+* Kifejezés lekérdezése, a találatok számának ellenőrzése, és az első találat nevének és URL-címének megjelenítése.
+* Kifejezésre való keresés `news` válaszszűrővel, majd a hírtalálatok adatainak megjelenítése.
+* Kifejezésre való keresés `answerCount` és `promote` paraméterekkel, majd az eredmény adatainak megjelenítése.
 
-## <a name="sdks-and-libraries"></a>SDK-k és tárak
+## <a name="sdks-and-libraries"></a>SDK-k és kódtárak
 
-Az SDK a választott nyelven eléréséhez használja ezeket a hivatkozásokat.
+A kívánt nyelvhez használható SDK-t az alábbi címeken érheti el.
 
-* Ismerkedés a [példák Python programnyelvhez](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples)
-  * Lásd még: [Python-kódtárakat](https://github.com/Azure/azure-sdk-for-python/tree/master/azure-cognitiveservices-search-websearch) definíciókat és függőségeit.
-* Ismerkedés a [Node.js-minták](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples)
-  * Lásd még: [Node.js kódtárak](https://github.com/Azure/azure-sdk-for-node/tree/master/lib/services/webSearch) definíciókat és függőségeit.
-* Ismerkedés a [.NET-minták](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7)
+* Első lépések [Python-mintákkal](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples)
+  * A definíciókat és a függőségeket a [Python-kódtárakban](https://github.com/Azure/azure-sdk-for-python/tree/master/azure-cognitiveservices-search-websearch) találja.
+* Első lépések [Node.js-mintákkal](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples)
+  * A definíciókat és a függőségeket a [Node.js-kódtárakban](https://github.com/Azure/azure-sdk-for-node/tree/master/lib/services/webSearch) találja.
+* Első lépések [.NET-mintákkal](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7)
   * [NuGet-csomag](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.WebSearch/1.2.0)
-  * Lásd még: [.NET-kódtárakra](https://github.com/Azure/azure-sdk-for-net/tree/psSdkJson6/src/SDKs/CognitiveServices/dataPlane/Search/BingWebSearch) definíciókat és függőségeit.
-* Ismerkedés a [Java-példák](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples)
-  * Lásd még: [Java-kódtárak](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples/tree/master/Search/BingWebSearch) definíciókat és függőségeit.
+  * A definíciókat és a függőségeket a [.NET-kódtárakban](https://github.com/Azure/azure-sdk-for-net/tree/psSdkJson6/src/SDKs/CognitiveServices/dataPlane/Search/BingWebSearch) találja.
+* Első lépések [Java-mintákkal](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples)
+  * A definíciókat és a függőségeket a [Java-kódtárakban](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples/tree/master/Search/BingWebSearch) találja.

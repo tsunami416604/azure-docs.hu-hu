@@ -1,21 +1,21 @@
 ---
-title: Face API Node.js – rövid útmutató | Microsoft Docs
-titleSuffix: Microsoft Cognitive Services
+title: 'Rövid útmutató: Arcfelismerés képen – Face API, Node.js'
+titleSuffix: Azure Cognitive Services
 description: Ebben a rövid útmutatóban arcokat fog felismerni egy képről a Face API segítségével és a Node.js használatával a Cognitive Servicesben.
 services: cognitive-services
 author: noellelacharite
-manager: nolachar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: face-api
 ms.topic: quickstart
 ms.date: 06/08/2018
 ms.author: nolachar
-ms.openlocfilehash: 15e6db9c9d92e60f18bf2d7708403fd8b0b7a990
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 53d5ed6c13c2f2822374134d8b403493079e1956
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "43769479"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46123997"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-nodejs"></a>Rövid útmutató: Arcfelismerés egy képen a Node.js használatával
 

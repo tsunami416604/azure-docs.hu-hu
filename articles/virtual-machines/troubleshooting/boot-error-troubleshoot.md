@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 09/21/2018
 ms.author: genli
-ms.openlocfilehash: 05a8b4a8aa5ed79876a33eb1bd09f7675d4c611d
-ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
+ms.openlocfilehash: 8253c4c84e38fc3b8279aa311c1627a540502a6c
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/01/2018
-ms.locfileid: "47586891"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49351486"
 ---
 # <a name="troubleshoot-azure-virtual-machines-boot-errors"></a>Azure virtuális gépek rendszerindítási hibák elhárítása
 
@@ -32,5 +32,6 @@ Ez a cikk felsorolja a gyakori rendszerindítási hibák, amely egy Windows virt
 
 ## <a name="next-steps"></a>További lépések
 
+- [A rendszerindítási diagnosztika](boot-diagnostics.md)
 - [Virtuális gép soros konzol](../windows/serial-console.md)
 - [Hibaelhárítás Windows virtuális gép egy helyreállítási virtuális Gépet az operációsrendszer-lemez csatolása](../windows/troubleshoot-recovery-disks.md)

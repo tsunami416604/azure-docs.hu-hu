@@ -11,17 +11,20 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 05/22/2017
 ms.author: glenga
-ms.openlocfilehash: a257948c97437d6045f705acb02054928d22ff89
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: 024958d8a548313b53fc24ade5805de036a89afb
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44092869"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49351915"
 ---
 # <a name="use-azure-functions-to-connect-to-an-azure-sql-database"></a>Csatlakozás az Azure SQL Database az Azure Functions használatával
 Ez a témakör bemutatja, hogyan hozzon létre egy ütemezett feladatot, amely törli a sorokat egy Azure SQL Database egyik táblájában az Azure Functions használatával. Az új C#-szkriptfüggvény jön létre az Azure Portalon előre meghatározott időzítő eseményindító sablon alapján. Ennek támogatásához is meg kell adni egy adatbázis-kapcsolati karakterlánc, a függvényalkalmazáshoz egy alkalmazásbeállításhoz. Ebben a forgatókönyvben az adatbázison tömeges műveletet használja. 
 
 A függvény folyamat saját kell létrehozni, olvasási, frissítési és törlési (CRUD) műveleteket egy Mobile Apps-tábla, Ehelyett használjon [Mobile Apps-kötések](functions-bindings-mobile-apps.md).
+
+> [!IMPORTANT]
+> Ez a dokumentum a minták a 1.x futásidejű érvényesek. 1.x függvényalkalmazás létrehozásáról [itt találhat](./functions-versions.md#creating-1x-apps) további információt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 

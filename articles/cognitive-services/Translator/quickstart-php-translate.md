@@ -1,21 +1,21 @@
 ---
-title: 'Translator Text: Szöveg lefordítása a PHP használatával | Microsoft Docs'
-titleSuffix: Microsoft Cognitive Services
-description: Ebben a rövid útmutatóban szöveget fordít le egy nyelvről egy másikra a Translator Text API segítségével és a PHP használatával a Cognitive Servicesben.
+title: 'Rövid útmutató: Szöveg fordítása – Translator Text, PHP'
+titleSuffix: Azure Cognitive Services
+description: Ebben a rövid útmutatóban szöveget fordít le egy nyelvről egy másikra a Translator Text API és PHP segítségével.
 services: cognitive-services
 author: noellelacharite
-manager: nolachar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-text
 ms.topic: quickstart
 ms.date: 06/22/2018
 ms.author: nolachar
-ms.openlocfilehash: e7d86e36c6137980ba379371548de6f5e6721302
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 7b9716ba3d2ec793dc9591d5487acc4ced3276fa
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "43769739"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46125136"
 ---
 # <a name="quickstart-translate-text-with-php"></a>Rövid útmutató: Szöveg lefordítása a PHP használatával
 

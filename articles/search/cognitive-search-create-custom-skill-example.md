@@ -9,12 +9,12 @@ ms.devlang: NA
 ms.topic: conceptual
 ms.date: 06/29/2018
 ms.author: luisca
-ms.openlocfilehash: b428e6e7738c8a9052c3fcfe2ad5284bfd5293d6
-ms.sourcegitcommit: cfff72e240193b5a802532de12651162c31778b6
+ms.openlocfilehash: 4dfc4d250cae80e7837db5cfbcc3af15390b2bb4
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39307993"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49352336"
 ---
 # <a name="example-create-a-custom-skill-using-the-text-translate-api"></a>Példa: Hozzon létre egy egyéni ismeretek a szöveg lefordítása API-val
 
@@ -37,6 +37,8 @@ Bár ebben a példában egy Azure-függvényt használ a webes API-k üzemeltet�
 1. A Visual Studióban válassza ki a **új** > **projekt** a Fájl menüből.
 
 1. Új projekt párbeszédpanelen válassza ki a **telepített**, bontsa ki a **Visual C#** > **felhőalapú**, jelölje be **Azure Functions**, adjon meg egy A projekt nevét, és válassza ki **OK**. A függvényalkalmazás nevének egy C#-névtérként is érvényesnek kell lennie, ezért ne használjon aláhúzásjeleket, kötőjeleket vagy más nem alfanumerikus karaktereket.
+
+1. Válassza ki **az Azure Functions v2 (.Net Core)**. Az 1. verzió is megteheti, de a kódot írt alá a v2 sablonon alapul.
 
 1. Válassza ki a kívánt **HTTP-eseményindító**
 

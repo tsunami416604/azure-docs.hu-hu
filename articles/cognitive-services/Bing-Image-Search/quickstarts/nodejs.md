@@ -1,48 +1,48 @@
 ---
-title: 'Gyors útmutató: Küldési keresési lekérdezéseket a Bing Image Search API a Node.js használata'
+title: 'Rövid útmutató: Képkeresés Node.js használatával – Bing Image Search API'
 titleSuffix: Azure Cognitive Services
-description: Ez a rövid útmutató segítségével keresse meg és -rendszerképek keresése a weben a Bing Web Search API használatával.
+description: Ebből a rövid útmutatóból megtudhatja, hogyan hozhatja létre az első Bing Image Search API-hívását, majd hogyan fogadhatja a JSON-választ. Ez az egyszerű JavaScript-alkalmazás keresési lekérdezést küld az API-nak, majd megjeleníti a nyers adatokat.
 services: cognitive-services
 documentationcenter: ''
 author: aahill
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-image-search
-ms.topic: article
+ms.topic: quickstart
 ms.date: 8/20/2018
 ms.author: aahi
-ms.openlocfilehash: 43f0cfec6aa2d4263b6a627736c2a432b2943145
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
-ms.translationtype: MT
+ms.openlocfilehash: 1584b3e0a1e1c560d42b5f8320d0e15ad6242918
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45576646"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46294594"
 ---
-# <a name="quickstart-send-search-queries-using-the-bing-image-search-rest-api-and-nodejs"></a>Gyors útmutató: Küldési keresési lekérdezések a Bing Image Search REST API és a Node.js használatával
+# <a name="quickstart-send-search-queries-using-the-bing-image-search-rest-api-and-nodejs"></a>Rövid útmutató: Keresési lekérdezések küldése a Bing Image Search REST API és Node.js használatával
 
-Ez a rövid útmutató segítségével a Bing Image Search API az első hívását, és a egy JSON-választ kapnak. Az egyszerű JavaScript-alkalmazását egy keresési lekérdezést küld az API-t, és megjeleníti a nyers eredményeken.
+Ebből a rövid útmutatóból megtudhatja, hogyan hozhatja létre az első Bing Image Search API-hívását, majd hogyan fogadhatja a JSON-választ. Ez az egyszerű JavaScript-alkalmazás keresési lekérdezést küld az API-nak, majd megjeleníti a nyers adatokat.
 
-Bár ez az alkalmazás JavaScript nyelven van megírva, és a Node.js, az API-ben fut, egy REST-alapú webes szolgáltatás kompatibilis szinte bármelyik programozási nyelvével.
+Bár ez az alkalmazás JavaScript nyelven lett íródott és Node.js-szel fut, az API egy RESTful-webszolgáltatás, azaz kompatibilis a legtöbb programnyelvvel.
 
-Az ehhez a mintához forráskódja elérhető [a Githubon](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/nodejs/Search/BingImageSearchv7Quickstart.js) további hibakezelést és jegyzetek kódot.
+A minta forráskódja további hibakezeléssel és kódmegjegyzésekkel együtt elérhető a [GitHubon](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/nodejs/Search/BingImageSearchv7Quickstart.js).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* A legújabb [Node.js](https://nodejs.org/en/download/).
+* A [Node.js](https://nodejs.org/en/download/) legújabb verziója.
 
-* A [kérelem JavaScript kódtár](https://github.com/request/request)
+* A [JavaScript lekérési kódtára](https://github.com/request/request)
 [!INCLUDE [cognitive-services-bing-image-search-signup-requirements](../../../../includes/cognitive-services-bing-image-search-signup-requirements.md)]
 
-## <a name="create-and-initialize-the-application"></a>Hozzon létre, és az alkalmazás inicializálása
+## <a name="create-and-initialize-the-application"></a>Az alkalmazás létrehozása és inicializálása
 
-1. Hozzon létre egy új JavaScript-fájlt a kedvenc integrált Fejlesztőkörnyezetével vagy szerkesztőjével, és állítsa be a szigorúsága és a https követelményeket.
+1. Hozzon létre egy új JavaScript-fájlt a kedvenc IDE-környezetében vagy szerkesztőjében, és állítsa be a szigorúságot, a https-követelményeket.
 
     ```javascript
     'use strict';
     let https = require('https');
     ```
 
-2. Az API-végpont, kép API keresési útvonalat, az előfizetési kulcs változók létrehozása és a keresési kifejezést.
+2. Hozza létre az API-végpont, az Image API keresési útvonala, az előfizetési kulcs és a keresőkifejezés változóit.
     ```javascript
     let subscriptionKey = 'enter key here';
     let host = 'api.cognitive.microsoft.com';
@@ -50,9 +50,9 @@ Az ehhez a mintához forráskódja elérhető [a Githubon](https://github.com/Az
     let term = 'tropical ocean';
     ```
 
-## <a name="construct-the-search-request-and-query"></a>A keresési kérelmek és lekérdezési hozhatnak létre.
+## <a name="construct-the-search-request-and-query"></a>A keresési kérelem és a lekérdezés összeállítása.
 
-1. Az utolsó lépésben a változók használatával az API-kérelem egy keresés URL-cím formátuma. Vegye figyelembe, hogy a keresett kifejezés URL-kódolású előtt kell az API felé.
+1. Az előző lépés változóit használva formázza a keresési URL-címet az API-kérelemhez. Ne feledje, hogy a keresési kifejezésnek URL-kódolásúnak kell lennie, mielőtt elküldené az API-nak.
 
     ```javascript
     let request_params = {
@@ -65,32 +65,32 @@ Az ehhez a mintához forráskódja elérhető [a Githubon](https://github.com/Az
     };
     ```
 
-2. A kérelem library használatával a lekérdezés küldése az API-hoz. `response_handler` a következő szakaszban meghatározva.
+2. A lekérési kódtár használatával küldje el a lekérdezést az API-nak. A `response_handler` a következő szakaszban lesz definiálva.
     ```javascript
     let req = https.request(request_params, response_handler);
     req.end();
     ```
 
-## <a name="handle-and-parse-the-response"></a>Kezelni, és a válasz elemzéséhez
+## <a name="handle-and-parse-the-response"></a>A válasz kezelése és elemzése
 
-1. nevű függvény meghatározása `response_handler` egy HTTP-hívással túlterhelés `response`, paraméterként. Ez a függvény belül hajtsa végre az alábbi lépéseket:
-    
-    1. Adjon meg egy változót, a JSON-válasz törzse tartalmazza.  
+1. definiáljon egy `response_handler` nevű függvényt, amely paraméterként a `response` HTTP-hívást használja. a függvényen belül végezze el az alábbi lépéseket:
+
+    1. Definiáljon egy változót, amely a JSON-válasz törzsét tartalmazza majd.  
         ```javascript
         let response_handler = function (response) {
             let body = '';
         };
         ```
 
-    2. A válasz törzse Store során a **adatok** jelző nevezzük. 
+    2. Tárolja a válasz törzsét, ha az **adat** jelölő megjelenik
         ```javascript
         response.on('data', function (d) {
             body += d;
         });
         ```
 
-    3. Ha egy **záró** jelző adja, a dolgozhatók fel a JSON és a URL obrázku nyomtatható visszaadott képek teljes számával együtt.
-    
+    3. Ha **end** jelölő érkezik, a JSON feldolgozható, és megjeleníthető a kép URL-címe és a visszaadott képek teljes száma is.
+
         ```javascript
         response.on('end', function () {
             let firstImageResult = imageResults.value[0];
@@ -102,7 +102,7 @@ Az ehhez a mintához forráskódja elérhető [a Githubon](https://github.com/Az
 
 ## <a name="json-response"></a>JSON-válasz
 
-A Bing Image Search API érkező válaszokat a rendszer JSON formátumban adja vissza. Ez a minta-válasz a rendszer csonkolta egyetlen eredmény megjelenítéséhez.
+A Bing Image Search API válaszai JSON formátumban érkeznek vissza. A mintaválasz egyetlen eredményre van csonkolva.
 
 ```json
 {
@@ -151,12 +151,12 @@ A Bing Image Search API érkező válaszokat a rendszer JSON formátumban adja v
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Bing – Képkeresés egyoldalas alkalmazás oktatóanyag](../tutorial-bing-image-search-single-page-app.md)
+> [Egyoldalas alkalmazás-oktatóanyag a Bing Image Search használatához](../tutorial-bing-image-search-single-page-app.md)
 
-## <a name="see-also"></a>Lásd még 
+## <a name="see-also"></a>Lásd még
 
-* [Mi az a Bing Képkeresés?](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/overview)  
-* [Próbálja ki az online interaktív bemutatót](https://azure.microsoft.com/services/cognitive-services/bing-image-search-api/)  
-* [Ingyenesen a Cognitive Services hozzáférési kulcs lekérése](https://azure.microsoft.com/try/cognitive-services/?api=bing-image-search-api)  
-* [Az Azure Cognitive Services – dokumentáció](https://docs.microsoft.com/azure/cognitive-services)
-* [A Bing Image Search API-referencia](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference)
+* [Mi a Bing Image Search?](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/overview)  
+* [Online interaktív bemutató kipróbálása](https://azure.microsoft.com/services/cognitive-services/bing-image-search-api/)  
+* [Ingyenes Cognitive Services hozzáférési kulcs beszerzése](https://azure.microsoft.com/try/cognitive-services/?api=bing-image-search-api)  
+* [Az Azure Cognitive Services dokumentációja](https://docs.microsoft.com/azure/cognitive-services)
+* [Bing Image Search API – referencia](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference)

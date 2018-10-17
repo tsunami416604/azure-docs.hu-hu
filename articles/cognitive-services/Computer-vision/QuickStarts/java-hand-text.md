@@ -1,67 +1,70 @@
 ---
-title: Computer Vision API – Java rövid útmutató | Microsoft Docs
-titleSuffix: Microsoft Cognitive Services
-description: Ebben a rövid útmutatóban kézzel írott szöveget fog kinyerni egy képből a Computer Vision és a Java használatával a Cognitive Servicesben.
+title: 'Rövid útmutató: Kézzel írt szöveg kinyerése – REST, Java – Computer Vision'
+titleSuffix: Azure Cognitive Services
+description: Ebben a rövid útmutatóban kézzel írt szöveget fog kinyerni egy képből a Computer Vision Javával történő használatával.
 services: cognitive-services
 author: noellelacharite
-manager: nolachar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: computer-vision
 ms.topic: quickstart
 ms.date: 08/28/2018
 ms.author: v-deken
-ms.openlocfilehash: 04e6beda3bdcb97b425190d2e4d5c564e8a5f205
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: b69d36652838f5d5d6caa3ebb7a3287e234b32cf
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43770121"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45629442"
 ---
-# <a name="quickstart-extract-handwritten-text---rest-java"></a>Rövid útmutató: Kézzel írt szöveg kinyerése – REST, Java
+# <a name="quickstart-extract-handwritten-text-using-the-rest-api-and-java-in-computer-vision"></a>Rövid útmutató: Kézzel írt szöveg kinyerése a REST API és a JAVA használatával a Computer Vision szolgáltatásban
 
-Ebben a rövid útmutatóban kézzel írott szöveget fog kinyerni egy képből a Computer Vision segítségével.
+Ebben a rövid útmutatóban kézzel írt szöveget fog kinyerni egy képből a Computer Vision REST API-jának használatával. A [Recognize Text](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/587f2c6a154055056008f200) és a [Get Recognize Text Operation Result](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/587f2cf1154055056008f201) metódussal kézzel írott szöveget észlelhet egy képen, és géppel olvasható karakterfolyamba nyerheti ki a felismert karaktereket.
+
+> [!IMPORTANT]
+> Az [OCR](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) metódussal ellentétben a [Recognize Text](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/587f2c6a154055056008f200) metódus aszinkron módon fut. Ez a metódus nem adja vissza információt a sikeres válaszok törzsében. A Recognize Text metódus ehelyett egy `Operation-Content` értékű URI-t eredményez a válasz fejlécmezőjében. Ezután meghívhatja ezt az URI-t, amely a [Get Recognize Text Operation Result](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/587f2cf1154055056008f201) metódust képviseli, és ellenőrizheti a Recognize Text metódus állapotát, valamint lekérheti annak eredményeit.
+
+Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services) a virtuális gép létrehozásának megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A Computer Vision használatához előfizetési kulcsra van szüksége, lásd az [előfizetési kulcsok beszerzéséről](../Vision-API-How-to-Topics/HowToSubscribe.md) szóló témakört.
+- A gépén telepítve kell lennie a [Java&trade;-platformhoz készült Standard Edition Development Kit 7-es vagy 8-as verziójának](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) (JDK 7 vagy 8).
+- Szüksége lesz egy Computer Vision-előfizetői azonosítóra. Az előfizetői azonosító beszerzéséhez lásd az [előfizetői azonosítók beszerzéséről](../Vision-API-How-to-Topics/HowToSubscribe.md) szóló témakört.
 
-## <a name="recognize-text-request"></a>Szövegfelismerési kérés
+## <a name="create-and-run-the-sample-application"></a>A mintaalkalmazás létrehozása és futtatása
 
-A [Recognize Text](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/587f2c6a154055056008f200) és a [Get Recognize Text Operation Result metódussal](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/587f2cf1154055056008f201) kézzel írott szöveget észlelhet egy képen, és géppel olvasható karakterfolyamba nyerheti ki a felismert karaktereket.
+A minta létrehozásához és futtatásához az alábbi lépéseket kell végrehajtania:
 
-A minta futtatásához az alábbi lépéseket kell végrehajtania:
+1. Hozzon létre egy új Java-projektet a kedvenc IDE-környezetében vagy szerkesztőjében. Ha lehetséges, a Java-projektet egy parancssori alkalmazás sablonjából hozza létre.
+1. Importálja a következő kódtárakat a Java-projektbe. Ha Mavent használ, a Maven-koordináták mindegyik kódtár esetében meg vannak adva.
+   - [Apache HTTP-ügyfél](https://hc.apache.org/downloads.cgi) (org.apache.httpcomponents:httpclient:4.5.5)
+   - [Apache HTTP-mag](https://hc.apache.org/downloads.cgi) (org.apache.httpcomponents:httpcore:4.4.9)
+   - [JSON-kódtár](https://github.com/stleary/JSON-java) (org.json:json:20180130)
+1. Adja hozzá az alábbi `import` utasításokat ahhoz a fájlhoz, amely a projekt `Main` nyilvános osztályát tartalmazza.  
 
-1. Hozzon létre új parancssori alkalmazást.
-1. Cserélje le a Main osztály tartalmát az alábbi kódra (a `package` utasításokat tartsa meg).
-1. A `<Subscription Key>` helyére írja be az érvényes előfizetési kulcsot.
-1. Ha szükséges, változtassa meg az `uriBase` értékét arra a helyre, ahonnan az előfizetési kulcsot beszerezte.
-1. Módosíthatja az `imageToAnalyze` elem értékét egy másik képre.
-1. Töltse le az alábbi kódtárakat a Maven-adattárból a projektje `lib` könyvtárába:
-   * `org.apache.httpcomponents:httpclient:4.5.5`
-   * `org.apache.httpcomponents:httpcore:4.4.9`
-   * `org.json:json:20180130`
-1. Futtassa a „Main” parancsot.
+   ```java
+   import java.net.URI;
+   import org.apache.http.HttpEntity;
+   import org.apache.http.HttpResponse;
+   import org.apache.http.client.methods.HttpGet;
+   import org.apache.http.client.methods.HttpPost;
+   import org.apache.http.client.utils.URIBuilder;
+   import org.apache.http.entity.StringEntity;
+   import org.apache.http.impl.client.CloseableHttpClient;
+   import org.apache.http.impl.client.HttpClientBuilder;
+   import org.apache.http.util.EntityUtils;
+   import org.apache.http.Header;
+   import org.json.JSONObject;
+   ```
+
+1. Cserélje le a `Main` nyilvános osztály teljes tartalmát az alábbi kódra, majd hajtsa végre a következő változtatásokat, ahol szükséges:
+   1. Cserélje le a `subscriptionKey` értéket az előfizetői azonosítóra.
+   1. Szükség esetén cserélje le az `uriBase` értékét azon [Recognize Text](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/587f2c6a154055056008f200) metódus végpontjának URL-címére, amely az előfizetési kulcsokat tartalmazó Azure-régióból származik.
+   1. Ha szeretné, cserélje le az `imageToAnalyze` értéket annak a képnek az URL-címére, amelyből ki szeretné nyerni a kézzel írott szöveget.
+1. Mentse a változtatásokat, majd hozza létre a Java-projektet.
+1. Ha IDE-t használ, futtassa a `Main` metódust. Egyéb esetben nyisson meg egy parancssori ablakot, majd a `java` paranccsal futtassa a lefordított osztályt. Például: `java Main`.
 
 ```java
-// This sample uses the following libraries:
-//  - Apache HTTP client (org.apache.httpcomponents:httpclient:4.5.5)
-//  - Apache HTTP core (org.apache.httpcomponents:httpccore:4.4.9)
-//  - JSON library (org.json:json:20180130).
-
-import java.net.URI;
-
-import org.apache.http.HttpEntity;
-import org.apache.http.HttpResponse;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.client.utils.URIBuilder;
-import org.apache.http.entity.StringEntity;
-import org.apache.http.impl.client.CloseableHttpClient;
-import org.apache.http.impl.client.HttpClientBuilder;
-import org.apache.http.util.EntityUtils;
-import org.apache.http.Header;
-import org.json.JSONObject;
-
 public class Main {
     // **********************************************
     // *** Update or verify the following values. ***
@@ -70,12 +73,14 @@ public class Main {
     // Replace <Subscription Key> with your valid subscription key.
     private static final String subscriptionKey = "<Subscription Key>";
 
-    // You must use the same region in your REST call as you used to get your
-    // subscription keys. For example, if you got your subscription keys from
-    // westus, replace "westcentralus" in the URI below with "westus".
+    // You must use the same Azure region in your REST API method as you used to
+    // get your subscription keys. For example, if you got your subscription keys
+    // from the West US region, replace "westcentralus" in the URL
+    // below with "westus".
     //
-    // Free trial subscription keys are generated in the westcentralus region. If you
-    // use a free trial subscription key, you shouldn't need to change this region.
+    // Free trial subscription keys are generated in the West Central US region.
+    // If you use a free trial subscription key, you shouldn't need to change
+    // this region.
     private static final String uriBase =
         "https://westcentralus.api.cognitive.microsoft.com/vision/v2.0/recognizeText";
 
@@ -94,11 +99,9 @@ public class Main {
             URIBuilder builder = new URIBuilder(uriBase);
 
             // Request parameter.
-            // Note: The request parameter changed for APIv2.
-            // For APIv1, it is "handwriting", "true".
             builder.setParameter("mode", "Handwritten");
 
-            // Prepare the URI for the REST API call.
+            // Prepare the URI for the REST API method.
             URI uri = builder.build();
             HttpPost request = new HttpPost(uri);
 
@@ -111,7 +114,11 @@ public class Main {
                     new StringEntity("{\"url\":\"" + imageToAnalyze + "\"}");
             request.setEntity(requestEntity);
 
-            // Make the first REST API call to detect the text.
+            // Two REST API methods are required to extract handwritten text.
+            // One method to submit the image for processing, the other method
+            // to retrieve the text found in the image.
+
+            // Call the first REST API method to detect the text.
             HttpResponse response = httpTextClient.execute(request);
 
             // Check for success.
@@ -125,11 +132,12 @@ public class Main {
                 return;
             }
 
-            // Stores the URI where you can get the text recognition operation result.
+            // Store the URI of the second REST API method.
+            // This URI is where you can get the results of the first REST API method.
             String operationLocation = null;
 
-            // 'Operation-Location' in the response contains the URI to
-            // retrieve the recognized text.
+            // The 'Operation-Location' response header value contains the URI for
+            // the second REST API method.
             Header[] responseHeaders = response.getAllHeaders();
             for (Header header : responseHeaders) {
                 if (header.getName().equals("Operation-Location")) {
@@ -143,16 +151,19 @@ public class Main {
                 System.exit(1);
             }
 
+            // If the first REST API method completes successfully, the second
+            // REST API method retrieves the text written in the image.
+            //
             // Note: The response may not be immediately available. Handwriting
-            // recognition is an asynchronous operation, which takes a variable
-            // amount of time dependent on the length of the text analyzed. You
-            // may need to wait or retry the Get operation.
+            // recognition is an asynchronous operation that can take a variable
+            // amount of time depending on the length of the handwritten text.
+            // You may need to wait or retry this operation.
 
             System.out.println("\nHandwritten text submitted.\n" +
                     "Waiting 10 seconds to retrieve the recognized text.\n");
             Thread.sleep(10000);
 
-            // Make the second REST API call and get the response.
+            // Call the second REST API method and get the response.
             HttpGet resultRequest = new HttpGet(operationLocation);
             resultRequest.setHeader("Ocp-Apim-Subscription-Key", subscriptionKey);
 
@@ -173,11 +184,9 @@ public class Main {
 }
 ```
 
-## <a name="recognize-text-response"></a>A szövegfelismerés válasza
+## <a name="examine-the-response"></a>A válasz vizsgálata
 
-A rendszer JSON formátumban adja vissza a sikeres választ. A kézírás-felismerés eredményei közé tartozik az észlelt szöveg, valamint az egyes régiókat, sorokat és szavakat határoló keretek.
-
-A program kimenete az alábbi JSON-példára fog hasonlítani:
+A rendszer JSON formátumban adja vissza a sikeres választ. A mintaalkalmazás elemzi és megjeleníti a sikeres választ a konzolablakban, a következő példához hasonló módon:
 
 ```json
 Handwritten text submitted. Waiting 10 seconds to retrieve the recognized text.
@@ -455,9 +464,13 @@ Text recognition result response:
 }
 ```
 
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+
+Ha már nincs rá szükség, törölje a Java-projektet a lefordított osztállyal és az importált kódtárakkal együtt.
+
 ## <a name="next-steps"></a>További lépések
 
-Ismerjen meg egy Java Swing-alkalmazást, amely a Computer Vision segítségével végez optikai karakterfelismerést (OCR), és amellyel intelligens körbevágású miniatűröket hozhat létre, valamint képek vizuális jellemzőit, például arcokat észlelhet, kategorizálhat, címkézhet és írhat le. A Computer Vision API-kkal való gyors kísérletezéshez próbálja ki az [Open API-tesztkonzolt](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa/console).
+Ismerjen meg egy Java Swing-alkalmazást, amely a Computer Vision segítségével végez optikai karakterfelismerést (OCR), és amellyel intelligens körbevágású miniatűröket hozhat létre, valamint képek vizuális jellemzőit, például arcokat észlelhet, kategorizálhat, címkézhet és írhat le. A Computer Vision API-val való gyors kísérletezéshez próbálja ki az [Open API-tesztkonzolt](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa/console).
 
 > [!div class="nextstepaction"]
 > [Computer Vision API – Java-oktatóanyag](../Tutorials/java-tutorial.md)

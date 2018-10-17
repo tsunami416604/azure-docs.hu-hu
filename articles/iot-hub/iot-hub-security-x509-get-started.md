@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 10/10/2017
 ms.author: dobett
-ms.openlocfilehash: 19f6f5d360981c743d819da81eb2f68db1853c8b
-ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
+ms.openlocfilehash: f10f1da93df6a313525e102e4906cfe67a5f6ae3
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43783117"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49351882"
 ---
 # <a name="set-up-x509-security-in-your-azure-iot-hub"></a>Az Azure IoT hub X.509 biztonsági beállítása
 
@@ -72,9 +72,9 @@ Ezek a lépések bemutatják, hogyan adhat hozzá egy új hitelesítésszolgált
 
 ## <a name="create-an-x509-device-for-your-iot-hub"></a>X.509-eszközt az IoT hub létrehozása
 
-1. Az Azure Portalon keresse meg az IoT hub **Device Explorer**.
+1. Az Azure Portalon keresse meg az IoT hub **tallózók > IoT-eszközök** lapot.
 
-2. Kattintson a **Hozzáadás** egy új eszköz hozzáadásához. 
+2. Kattintson a **+ Hozzáadás** egy új eszköz hozzáadásához.
 
 3. Adjon egy rövid nevet a **Eszközazonosító**, és válassza ki **_X.509 Hitelesítésszolgáltatói aláírással_** , a **hitelesítési típus**. Kattintson a **Save** (Mentés) gombra.
 

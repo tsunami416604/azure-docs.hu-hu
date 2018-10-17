@@ -5,16 +5,16 @@ services: automation
 ms.service: automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 06/06/2018
+ms.date: 10/16/2018
 ms.topic: conceptual
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: 5b906b4a90dbceb62c6f2381d0ffa8bc1bee7ef1
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 1ed76b0505747831363ea829f1cb91b3e056282a
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47033821"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49352446"
 ---
 # <a name="onboard-update-management-change-tracking-and-inventory-solutions"></a>Előkészítése az Update Management, Change Tracking és Inventory megoldásainak
 
@@ -93,11 +93,11 @@ Válassza ki **gépek kezelése**. Megnyílik a **gépek kezelése** lapot. Ezen
 
 ### <a name="all-available-machines"></a>Az összes rendelkezésre álló gépek
 
-Az összes rendelkezésre álló gépek a megoldás engedélyezéséhez válassza **engedélyezés minden rendelkezésre álló gépen**. Ez a művelet letiltja a vezérlő egyenként hozzáadni. Ez a feladat hozzáadása a a keresési lekérdezés mentett számítógépcsoport-munkaterületre jelentő gépek összes nevét.
+Az összes rendelkezésre álló gépek a megoldás engedélyezéséhez válassza **engedélyezés minden rendelkezésre álló gépen**. Ez a művelet letiltja a vezérlő egyenként hozzáadni. Ez a feladat hozzáadása a a keresési lekérdezés mentett számítógépcsoport-munkaterületre jelentő gépek összes nevét. Kiválasztásakor Ez letiltja a **gépek kezelése** gombra.
 
 ### <a name="all-available-and-future-machines"></a>Az összes rendelkezésre álló és jövőbeli gépen
 
-Az összes rendelkezésre álló és jövőbeli gépen összes megoldás engedélyezéséhez válassza **engedélyezés minden rendelkezésre álló és jövőbeli gépen**. Ez a lehetőség törli a mentett keresések és a hatókör-konfigurációk a munkaterületről. Ekkor megnyílik az Azure és a nem Azure-a-munkaterületre jelentő gépek megoldást.
+Az összes rendelkezésre álló és jövőbeli gépen összes megoldás engedélyezéséhez válassza **engedélyezés minden rendelkezésre álló és jövőbeli gépen**. Ez a lehetőség törli a mentett keresések és a hatókör-konfigurációk a munkaterületről. Ekkor megnyílik az Azure és a nem Azure-a-munkaterületre jelentő gépek megoldást. Kiválasztásakor Ez letiltja a **gépek kezelése** gombra.
 
 ### <a name="selected-machines"></a>Kijelölt gépek
 
@@ -120,13 +120,13 @@ Miután eltávolítja ezeket a megoldásokat, az Automation-fiók leválasztása
 
 1. Az Azure Portalról nyissa meg az Automation-fiókját, és a az Automation-fiók oldalon válassza ki **csatolt munkaterület** a szakaszában **kapcsolódó erőforrások** a bal oldalon.
 
-1. A leválasztás munkaterület oldalán kattintson a **munkaterület leválasztása**.
+2. A leválasztás munkaterület oldalán kattintson a **munkaterület leválasztása**.
 
    ![Munkaterület oldalán leválasztása](media/automation-onboard-solutions-from-automation-account/automation-unlink-workspace-blade.png).
 
    A rendszer felkéri, hogy erősítse meg, valóban folytani kívánja-e.
 
-1. Bár az Azure Automation próbál meg a fiók leválasztása a Log Analytics-munkaterület, nyomon követheti a folyamat állapotát **értesítések** a menüből.
+3. Bár az Azure Automation próbál meg a fiók leválasztása a Log Analytics-munkaterület, nyomon követheti a folyamat állapotát **értesítések** a menüből.
 
 Az Update Management megoldás használata esetén igény szerint, előfordulhat, hogy el kívánja távolítani a következő elemek, amelyek a megoldás eltávolítása után már nem szükséges.
 

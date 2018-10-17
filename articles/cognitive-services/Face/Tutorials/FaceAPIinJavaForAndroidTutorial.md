@@ -1,21 +1,21 @@
 ---
-title: Face API-oktatóanyag Java Android rendszerhez | Microsoft Docs
-titleSuffix: Microsoft Cognitive Services
-description: Ebben az oktatóanyagban egy egyszerű Android-alkalmazást fogunk létrehozni, amely a Cognitive Services arcfelismerési szolgáltatása segítségével észleli és bekeretezi a képeken lévő arcokat.
+title: 'Oktatóanyag: Arcok észlelése és bekeretezése a képen – Face API, Java for Android'
+titleSuffix: Azure Cognitive Services
+description: Ebben az oktatóanyagban egy egyszerű Android-alkalmazást hozunk létre, amely a Face API segítségével észleli és bekeretezi a képeken lévő arcokat.
 services: cognitive-services
 author: noellelacharite
-manager: nolachar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: face-api
 ms.topic: tutorial
 ms.date: 07/12/2018
 ms.author: nolachar
-ms.openlocfilehash: ad7b85b378db9e9687b5f8081bc9832e91e9ee5e
-ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
+ms.openlocfilehash: 50185588b77f01bced9462d5fd1ad67bb5de6e08
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39125636"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46129726"
 ---
 # <a name="tutorial-create-an-android-app-to-detect-and-frame-faces-in-an-image"></a>Oktatóanyag: Android-alkalmazás készítése képeken lévő arcok észleléséhez és bekeretezéséhez
 

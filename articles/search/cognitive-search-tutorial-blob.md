@@ -9,12 +9,12 @@ ms.devlang: NA
 ms.topic: tutorial
 ms.date: 07/11/2018
 ms.author: luisca
-ms.openlocfilehash: 35295f00b9264e4b6fba2ff9d293772c22b91c50
-ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
+ms.openlocfilehash: 4694d7a580c9544e43cf0b56b192b55c02257531
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38991919"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45730664"
 ---
 # <a name="tutorial-learn-how-to-call-cognitive-search-apis-preview"></a>Oktatóanyag: Ismerje meg a kognitív keresési API-k (előzetes verzió) meghívásának módját
 
@@ -32,6 +32,9 @@ Az oktatóanyagban REST API-hívásokat fog indítani az alábbi feladatok végr
 A kimenet egy teljes szöveges, kereshető index az Azure Search szolgáltatásban. Az indexet egyéb standard képességekkel, például [szinonimákkal](search-synonyms.md), [pontozási profilokkal](https://docs.microsoft.com/rest/api/searchservice/add-scoring-profiles-to-a-search-index), [elemzőkkel](search-analyzers.md) és [szűrőkkel](search-filters.md) is bővítheti.
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
+
+> [!NOTE]
+> A kognitív keresés nyilvános előzetes verzióban érhető el. A képességcsoport, a képkinyerés és a normalizálás jelenleg ingyenesen érhető el. Ezeknek a funkcióknak a díjszabását a későbbiekben jelentjük be. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 

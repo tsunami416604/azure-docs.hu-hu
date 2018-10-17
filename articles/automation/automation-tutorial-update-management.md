@@ -6,15 +6,15 @@ author: zjalexander
 ms.service: automation
 ms.component: update-management
 ms.topic: tutorial
-ms.date: 08/29/2018
+ms.date: 09/18/2018
 ms.author: zachal
 ms.custom: mvc
-ms.openlocfilehash: 8458aaee9f8d328d959fb47fb3e32af176d545b1
-ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
+ms.openlocfilehash: 4d504e0488d35c5c606468faa35bece1318503b4
+ms.sourcegitcommit: 8b694bf803806b2f237494cd3b69f13751de9926
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43247368"
+ms.lasthandoff: 09/20/2018
+ms.locfileid: "46498521"
 ---
 # <a name="manage-windows-updates-by-using-azure-automation"></a>Windows-frissítések kezelése az Azure Automationnel
 
@@ -158,6 +158,8 @@ Az **Új frissítéstelepítés** képernyőn adja meg a következő informáci�
 
 * **Operációs rendszer**: Válassza ki azt az operációs rendszert, amelyre a frissítéstelepítés vonatkozni fog.
 
+* **Frissítendő csoportok (előzetes verzió)**: Meghatározhat egy előfizetéseken, erőforráscsoportokon, helyeken és címkéken alapuló lekérdezést, amellyel egy dinamikus, Azure-beli virtuális gépekből álló csoportot hozhat létre, majd belefoglalhatja a telepítésbe. További információ: [Dinamikus csoportok](automation-update-management.md#using-dynamic-groups)
+
 * **Frissítendő gépek**: Válasszon ki egy Mentett keresést vagy Importált csoportot, vagy válassza a legördülő listában a Gép lehetőséget, és válasszon ki egyes gépeket. Ha a **Gépek** lehetőséget választotta, a gép állapota az **ÜGYNÖK KÉSZÜLTSÉGÉNEK FRISSÍTÉSE** oszlopban látható. A számítógépcsoportok Log Analyticsben lévő létrehozásának különböző módszereivel kapcsolatos további információkért tekintse meg a [Log Analytics számítógépcsoportjait](../log-analytics/log-analytics-computer-groups.md) ismertető részt
 
 * **Frissítési besorolás**: Válassza ki azokat a szoftvertípusokat, amelyeket a frissítéstelepítés belefoglal a telepítésbe. Ebben az oktatóanyagban hagyjon minden típust kiválasztva.
@@ -171,10 +173,13 @@ Az **Új frissítéstelepítés** képernyőn adja meg a következő informáci�
 
    A besorolási típusok ismertetését [a frissítések besorolását](automation-update-management.md#update-classifications) leíró szakaszban találja.
 
+* **Belefoglalandó/kizárandó frissítések** – Ez megnyitja a **Belefoglalás/kizárás** lapot. A belefoglalandó vagy kizárandó frissítések külön lapokon jelennek meg. További információ a belefoglalás menetéről: [Belefoglalási viselkedés](automation-update-management.md#inclusion-behavior)
+
 * **Ütemezési beállítások**: Megnyitja az **Ütemezési beállítások** ablaktáblát. Az alapértelmezett kezdési időpont az aktuális időpontnál 30 perccel későbbi időpont. Bármilyen időpontra beállítható a pillanatnyi időt követő 10. perc után.
 
    Azt is megadhatja, hogy a telepítés egyszer történjen meg, vagy ismétlődő legyen. Az **Ismétlődés** menüpontban válassza az **Egyszer** lehetőséget. Tartsa meg az 1 napos alapértelmezett beállítást, majd kattintson az **OK** gombra. Ezzel egy ismétlődő ütemezést állít be.
 
+* **Előkészítő szkriptek és utólagos szkriptek**: Válassza ki, mely szkripteket szeretné futtatni az üzembe helyezés előtt, illetve után. További információ: [Előkészítő és utólagos szkriptek kezelése](pre-post-scripts.md).
 * **Karbantartási időszak (perc)**: Fogadja el az alapértelmezett értéket. Megadhatja azt az időtartamot, amelyen belül szeretne sort keríteni a frissítés telepítésére. Ez a beállítás biztosítja, hogy a módosítások a megadott szolgáltatási időkereten belül menjenek végbe.
 
 * **Újraindítási beállítások**: Ez a beállítás határozza meg az újraindítások kezelésének módját. Az elérhető lehetőségek:

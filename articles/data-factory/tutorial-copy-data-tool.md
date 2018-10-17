@@ -9,14 +9,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
-ms.date: 06/21/2018
+ms.date: 09/11/2018
 ms.author: jingwang
-ms.openlocfilehash: 1be4769a8a07ac5d4a968ed5aa15ed2e0a2b6db2
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: c1f94c04db69ad44203ef1ada1c3b9fa3df2d779
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43086826"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44718089"
 ---
 # <a name="copy-data-from-azure-blob-storage-to-a-sql-database-by-using-the-copy-data-tool"></a>Adatok másolása az Azure Blob Storage-ból egy SQL Database-be az Adatok másolása eszközzel
 > [!div class="op_single_selector" title1="Select the version of the Data Factory service that you're using:"]
@@ -72,13 +72,7 @@ Készítse elő a Blob Storage-ot és az SQL-adatbázist az oktatóanyaghoz a k�
     CREATE CLUSTERED INDEX IX_emp_ID ON dbo.emp (ID);
     ```
 
-1. Engedélyezze az SQL Server elérését az Azure-szolgáltatások számára. Ellenőrizze, hogy az **Azure-szolgáltatásokhoz való hozzáférés engedélyezése** beállítás engedélyezve van-e az SQL Servert futtató kiszolgálón. Ezzel a beállítással engedélyezheti, hogy a Data Factory adatokat írjon az SQL Server-példányra. A beállítás ellenőrzéséhez és bekapcsolásához hajtsa végre a következő lépéseket:
-
-    a. A bal oldalon válassza ki a **További szolgáltatások**, majd az **SQL-kiszolgálók** elemet.
-
-    b. Válassza ki a kiszolgálót, majd kattintson **BEÁLLÍTÁSOK** > **Tűzfal** elemre.
-
-    c. A **Tűzfalbeállítások** lapon állítsa az **Azure-szolgáltatásokhoz való hozzáférés engedélyezése** beállítást **BE** értékre.
+2. Engedélyezze az SQL Server elérését az Azure-szolgáltatások számára. Ellenőrizze, hogy az **Azure-szolgáltatásokhoz való hozzáférés engedélyezése** beállítás engedélyezve van-e az SQL-adatbázist futtató kiszolgálón. Ezzel a beállítással engedélyezheti, hogy a Data Factory adatokat írjon az adatbázispéldányra. A beállítás ellenőrzéséhez és bekapcsolásához az Azure SQL server > **Biztonság** > **Tűzfalak és virtuális hálózatok** területen a **Hozzáférés engedélyezése Azure-szolgáltatásokhoz** lehetőséget állítsa **Be** értékre.
 
 ## <a name="create-a-data-factory"></a>Data factory létrehozása
 

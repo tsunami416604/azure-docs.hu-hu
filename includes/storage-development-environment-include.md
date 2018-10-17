@@ -1,3 +1,20 @@
+---
+title: fájl belefoglalása
+description: fájl belefoglalása
+services: storage
+author: tamram
+ms.service: storage
+ms.topic: include
+ms.date: 09/15/2018
+ms.author: tamram
+ms.custom: include file
+ms.openlocfilehash: 075e19ecb078bbbd5be0d46ed58405b18ebc8334
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45738467"
+---
 ## <a name="set-up-your-development-environment"></a>A fejlesztési környezet beállítása
 A következő lépésként állítsa be a fejlesztési környezetet a Visual Studióban, hogy kipróbálhassa az útmutatóban megadott példákat.
 
@@ -41,7 +58,7 @@ Az útmutatóban lévő példákat kétféle környezetben futtathatja:
 * A kódot futtathatja a felhőben, egy Azure Storage-fiókban. 
 * A kódot futtathatja az Azure Storage Emulatorban is. A Storage Emulator egy helyi környezet, amely egy Azure Storage-fiókot emulál a felhőben. Az emulátor ingyenes lehetőséget biztosít a kódja tesztelésére és hibakeresésére, amíg az alkalmazása fejlesztés alatt áll. Az emulátor egy jól ismert fiókot és kulcsot használ. További információkért lásd: [Fejlesztés és tesztelés az Azure Storage Emulatorral](../articles/storage/common/storage-use-emulator.md).
 
-Ha egy felhőbeli tárfiókot céloz meg, akkor másolja ki a tárfiók elsődleges hívóbetűjét az Azure Portalról. További információért lásd: [View and copy storage access keys](../articles/storage/common/storage-create-storage-account.md#view-and-copy-storage-access-keys) (A tárelérési kulcsok megtekintése és másolása).
+Ha egy felhőbeli tárfiókot céloz meg, akkor másolja ki a tárfiók elsődleges hívóbetűjét az Azure Portalról. További információ eléréséhez lásd: [Hozzáférési kulcsok](../articles/storage/common/storage-account-manage.md#access-keys).
 
 > [!NOTE]
 > A Storage Emulator megcélzásával elkerülheti az Azure Storage-hoz kapcsolódó költségeket. Ha azonban mégis egy Azure Storage-fiókot céloz meg a felhőben, az oktatóanyag végrehajtásával járó költségek elhanyagolhatóak.

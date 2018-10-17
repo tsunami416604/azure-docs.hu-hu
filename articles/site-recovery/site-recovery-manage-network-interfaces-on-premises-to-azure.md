@@ -2,18 +2,18 @@
 title: Az Azure Site Recovery az Azure-bA helyszíni hálózati adapterek kezelése |} A Microsoft Docs
 description: Ismerteti, hogyan lehet az Azure-bA az Azure Site Recovery helyszíni hálózati adapterek kezelése
 services: site-recovery
-author: mayanknayar
+author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
-ms.topic: article
-ms.date: 07/06/2018
-ms.author: manayar
-ms.openlocfilehash: 75220d964f3e1208c85d34c1da97fab32044e62b
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.topic: conceptual
+ms.date: 10/16/2018
+ms.author: mayg
+ms.openlocfilehash: 0ca2d32910e57042d2cbc9d3b772d226d835b545
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37917108"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49352410"
 ---
 # <a name="manage-virtual-machine-network-interfaces-for-on-premises-to-azure-replication"></a>Az Azure-bA helyszíni virtuális gép hálózati adapterek kezelése
 

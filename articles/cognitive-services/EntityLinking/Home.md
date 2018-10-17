@@ -1,36 +1,37 @@
 ---
-title: Az Eszközintelligencia szolgáltatás API Linking entitás |} Microsoft Docs
-description: Megtudhatja, hogyan entitás csatolása az Eszközintelligencia szolgáltatás API-t használó kognitív szolgáltatások feladatainak entitás csatolása.
+title: Mi az Entity Linking Intelligence Service API?
+titlesuffix: Azure Cognitive Services
+description: Ismerje meg, hogyan használható az Entity Linking Intelligence Service API entitás-összekapcsolási feladatokra.
 services: cognitive-services
 author: DavidLiCIG
-manager: wkwok
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: entity-linking-intelligence
-ms.topic: article
+ms.topic: overview
 ms.date: 03/28/2016
 ms.author: davl
-ms.openlocfilehash: 662295c42a421fe76892e6e5aac7b7e7178d6155
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
-ms.translationtype: MT
+ms.openlocfilehash: b0f839e8f33e9ff48d2ad526621167a89e3b9be8
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35347006"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46366182"
 ---
-# <a name="entity-linking-intelligence-service-api"></a>Entity Linking Intelligence Service API
+# <a name="what-is-the-entity-linking-intelligence-service-api"></a>Mi az Entity Linking Intelligence Service API?
 
-A Microsoft entitás Linking az Eszközintelligencia szolgáltatás, egy webszolgáltatás-bővítmény létrehozásával elősegítheti a fejlesztők a feladatokkal kapcsolatos entitás csatolása Üdvözöljük.
+Üdvözli az Entity Linking Intelligence Service, amely azért készült, hogy segítse a fejlesztőket az entitás-összekapcsolási feladatoknál.
 
 ## <a name="entity-linking"></a>Entitáskapcsolás
 
-Néha különböző környezetekben, a word előfordulhat, hogy használható névvel rendelkező entitás, olyan műveleteket, vagy más word belül egy adott mondat helyett szerepel. Például olyan esetben, amikor a „times” szó valamilyen elnevezett entitást jelent, előfordulhat, hogy két különböző entitásra is utal, például a „The New York Times” vagy a „Times Square” kifejezésekre. Adott dokumentum adott bekezdést, a entitás csatolása az Eszközintelligencia szolgáltatás ismeri fel, és minden különálló entitás környezete alapján azonosíthatja.  
+Különböző kontextusokban néha előfordulhat, hogy a szavakat elnevezett entitásként, igeként vagy más szóformaként használjuk az adott mondaton belül. Például olyan esetben, amikor a „times” szó valamilyen elnevezett entitást jelent, előfordulhat, hogy két különböző entitásra is utal, például a „The New York Times” vagy a „Times Square” kifejezésekre. Valamely dokumentum adott bekezdése esetén az Entitáskapcsolási intelligens szolgáltatás a kontextus alapján felismeri és azonosítja az egyes elkülönült entitásokat.  
 
-Az alábbi ábra azt szemlélteti, entitás csatolása. Pontosabban Wikipedia használata esetén az entitás csatolása az Eszközintelligencia szolgáltatás észleli a bemeneti szöveg belül említett összes entitás és összekapcsolja azokat megfelelő hivatkozási pontok megfelelően a lap azonosítóját.
+Az alábbi ábra egy entitás-összekapcsolási példát mutat. Speciálisan a Wikipedia használata esetén az Entitáskapcsolási intelligens szolgáltatás észleli a bemeneti szövegben említett valamennyi entitást és az oldalazonosítónak megfelelően a vonatkozó referencia pontokhoz kapcsolja őket.
 
- ![A Mars entitás Linking minta](./Images/EntityLinkingSample1.png)
+ ![Entitás-összekapcsolási minta a Mars esetén](./Images/EntityLinkingSample1.png)
  
 ## <a name="get-started"></a>Első lépések
  
-Gyorsan haladhat végig az alapvető funkciók entitás csatolása és előfizetési folyamat, tekintse meg az alapszintű bemutató.
-[Ismerkedés a C# API Linking entitás](GettingStarted.md)
+Az Entiy Linking alapfunkcióit és előfizetési folyamatát gyorsan áttekintheti kezdő oktatóanyagunkban.
+[Entity Linking API első lépések C#-ben](GettingStarted.md)
 
 

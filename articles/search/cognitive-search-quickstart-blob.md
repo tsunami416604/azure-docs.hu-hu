@@ -8,12 +8,12 @@ ms.service: search
 ms.topic: quickstart
 ms.date: 05/01/2018
 ms.author: heidist
-ms.openlocfilehash: 3dda4c330f2dc620662c476aa4e5dbfe3a60fa76
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 85016ffb412b9f8773606639eb1496ac8ad251a7
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39003696"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45729992"
 ---
 # <a name="quickstart-create-a-cognitive-search-pipeline-using-skills-and-sample-data"></a>Rövid útmutató: Kognitív keresési folyamat létrehozása képességek és mintaadatok használatával
 
@@ -32,6 +32,9 @@ A kognitív keresést a következő régiókban létrehozott Azure Search-szolg�
 * Nyugat-Európa
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
+
+> [!NOTE]
+> A kognitív keresés nyilvános előzetes verzióban érhető el. A képességcsoport, a képkinyerés és a normalizálás jelenleg ingyenesen érhető el. Ezeknek a funkcióknak a díjszabását a későbbiekben jelentjük be. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 

@@ -17,12 +17,12 @@ ms.workload: identity
 ms.date: 08/28/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: 050ccff8501a22526e9382a620258b0f846efe5c
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 6f66deff9052b79265222f052bebb8439a95d269
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43128721"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49352744"
 ---
 # <a name="what-are-access-controls-in-azure-active-directory-conditional-access"></a>Mik a hozzáférés-vezérlés az Azure Active Directory feltételes hozzáférés? 
 
@@ -118,13 +118,10 @@ Ezek a vezérlők bizonyos külső vagy egyéni szolgáltatásokat, a feltétele
 Jelenleg az olyan kompatibilis szolgáltatást nyújtó szolgáltatók a következők:
 
 - [A Duo biztonsági](https://duo.com/docs/azure-ca)
-
 - [Entrust-Datacard](https://www.entrustdatacard.com/products/authentication/intellitrust)
-
+- [A ping Identity](https://documentation.pingidentity.com/pingid/pingidAdminGuide/index.shtml#pid_c_AzureADIntegration.html)
 - RSA
-
 - [Trusona](https://www.trusona.com/docs/azure-ad-integration-guide)
-
 
 Ezeket a szolgáltatásokat a további információkért forduljon közvetlenül a szolgáltatók.
 

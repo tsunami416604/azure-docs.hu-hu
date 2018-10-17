@@ -1,60 +1,61 @@
 ---
-title: A Java és a Custom Vision API – Azure Cognitive Services észlelési objektum |} A Microsoft Docs
-description: A Microsoft Cognitive Services a Custom Vision API-t használó alapszintű Windows alkalmazás megismerése. Hozzon létre egy projektet, adja hozzá a címkéket, tölthet fel képeket, a projekt betanítását és az alapértelmezett végpont használatával előrejelzést.
+title: 'Oktatóanyag: Objektum észlelési projekt létrehozása – Custom Vision API, Java'
+titlesuffix: Azure Cognitive Services
+description: Hozzon létre projektet, adjon hozzá címkéket, töltsön fel képeket, tanítsa be a projektet és adjon előrejelzést az alapértelmezett végpont használatával.
 services: cognitive-services
 author: areddish
-manager: chbuehle
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: custom-vision
-ms.topic: article
+ms.topic: tutorial
 ms.date: 08/28/2018
 ms.author: areddish
-ms.openlocfilehash: 333447c6390b269d0665a2d00009307105d58996
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
-ms.translationtype: MT
+ms.openlocfilehash: 661242e4962a8218c48d7ea66d8a6f728b5154c8
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44305696"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46365025"
 ---
-# <a name="use-custom-vision-api-to-build-an-object-detection-project-with-java"></a>Custom Vision API használatával hozhat létre Java-észlelési objektum projektben
+# <a name="tutorial-build-an-object-detection-project-with-java"></a>Oktatóanyag: Objektumészlelési projekt készítése Java nyelven
 
-Fedezze fel egy egyszerű Java-alkalmazást használ a Computer Vision API-objektum észlelési projekt létrehozásához. A létrehozást követően, is címkézett régiók felvételére, tölthet fel képeket, betanítását a projektet, a projekt alapértelmezett előrejelzési végpont URL-cím és ezt a végpont programozott módon képet. A nyílt forráskódú példa sablonként használni a saját alkalmazás létrehozásához a Custom Vision API használatával.
+Nézze meg, hogyan készít a Computer Vision API használatával objektumészlelési projektet egy egyszerű Java alkalmazás. Miután elkészült, adhat hozzá címkézett régiókat, tölthet fel képeket, betaníthatja a projektet, megkaphatja a projekt alapértelmezett előrejelzési végpont URL-címét és ezt a végpontot felhasználhatja kép programozott tesztelésére. Ez a nyílt forráskódú példa sablonként használható saját, Custom Vision API használatával készülő alkalmazásaihoz.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az oktatóanyagban használja, meg kell tegye a következőket:
+Az oktatóanyag használatához a következőkre lesz szüksége:
 
-- Telepítse a JDK 7 vagy 8.
-- Telepítse a Mavent.
+- Telepítse a JDK 7 vagy 8 verziót.
+- Telepítse a Maven-t.
 
-## <a name="install-the-custom-vision-service-sdk"></a>A Custom Vision Service SDK telepítése
+## <a name="install-the-custom-vision-service-sdk"></a>Telepítse a Custom Vision Service SDK-t
 
-Az egyéni Látástechnológiai SDK maven központi tárházból telepíthető:
-* [Képzési SDK](https://mvnrepository.com/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-customvision-training)
+A Custom Vision SDK telepíthető a maven központi tárából:
+* [Betanítási SDK](https://mvnrepository.com/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-customvision-training)
 * [Előrejelzési SDK](https://mvnrepository.com/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-customvision-prediction)
 
-## <a name="get-the-training-and-prediction-keys"></a>A betanítási és Predikciós kulcsok beolvasása
+## <a name="get-the-training-and-prediction-keys"></a>A betanítási és előrejelzési kulcsok letöltése
 
-Ebben a példában használt kulcsok beszerzéséhez látogasson el a [Custom Vision hely](https://customvision.ai) , és válassza ki a __fogaskerék ikont__ kattintson a jobb felső sarokban. Az a __fiókok__ területén másolja a __képzési kulcs__ és __előrejelzési kulcs__ mezőket.
+Az ebben a példában használt kulcsok megszerzéséhez látogasson el a [Custom Vision oldalra](https://customvision.ai), válassza ki a __fogaskerék ikont__ a jobb felső sarokban. A __Fiókok__ területen másolja ki a __Betanítási kulcs__ és __Előrejelzési kulcs__ mezők értékeit.
 
-![A felhasználói felület kulcsok képe](./media/python-tutorial/training-prediction-keys.png)
+![A kulcsok felhasználói felület képe](./media/python-tutorial/training-prediction-keys.png)
 
 ## <a name="understand-the-code"></a>A kód értelmezése
 
-A teljes projekt, képek, beleértve a érhető el a [Java tárház Custom Vision Azure-minták](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples/tree/master). 
+A teljes projekt a képeket is beleértve elérhető a [Java tárház Custom Vision Azure-minták](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples/tree/master) között. 
 
-A kedvenc Java IDE segítségével nyissa meg a `Vision/CustomVision` projekt. 
+Kedvenc Java IDE környezetével nyissa meg a `Vision/CustomVision` projektet. 
 
-Ez az alkalmazás használ a betanítási kulcs nevű új projekt létrehozásához korábban lekért __Java OD Mintaprojektet__. Ezután feltölti a lemezképeket taníthat vagy tesztelhet egy objektum detector használatával. Az objektum detector használatával azonosítja tartalmazó régióban egy __elágazás__ vagy egy pár __olló__.
+Ez az alkalmazás a korábban a __Java OD Mintaprojekt__ nevű projekt létrehozásakor lekért betanítási kulcsot használja. Utána feltölti a képeket az objektum érzékelő tanítására és kipróbálására. Az objektumérzékelő azonosítja a __villát__ vagy __ollót__ tartalmazó régiókat.
 
-Az alábbi kódrészleteket megvalósítása ebben a példában az elsődleges funkciója:
+A példa fő funkcióit az alábbi kódrészlet valósítja meg:
 
-## <a name="create-a-custom-vision-service-project"></a>A Custom Vision Service-projekt létrehozása
+## <a name="create-a-custom-vision-service-project"></a>Custom Vision Service-projekt létrehozása
 
-Vegye figyelembe a különbség a között egy objektumfelismerés létrehozása és lemezkép besorolási projekt a tartományhoz, amelyben a createProject hívhat meg van adva.
+Ne feledje, az objektumérzékelő és a képosztályozó projekt közötti különbség a createProject hívásnak megadott tartomány.
 
 > [!IMPORTANT]
-> Állítsa be a `trainingApiKey` , a korábban kapott képzési kulcs értékét.
+> A `trainingApiKey` értékét állítsa be a korábban kapott betanítási kulcs értékére.
 
 ```java
 final String trainingApiKey = "insert your training key here";
@@ -104,9 +105,9 @@ Tag scissorsTag = trainer.createTag()
     .execute();
 ```
 
-## <a name="upload-images-to-the-project"></a>A projekt képek feltöltése
+## <a name="upload-images-to-the-project"></a>Képek feltöltése a projekthez
 
-Objektum észlelési projekt fel kell töltenie a lemezképet, régiók és címkék. A régió normalizált koordinátákban megadott távolságot, és a címkézett objektum helyét adja meg.
+Az objektumérzékelési projekthez képet, régiókat és címkéket kell feltölteni. A címkézett objektum helyét megadó régiót normalizált koordinátákkal adjuk meg.
 
 
 ```java
@@ -175,7 +176,7 @@ for (int i = 1; i <= 20; i++) {
 }
 ```
 
-Az előző kódrészletben kód két segédfüggvények találhatók, amelyek a rendszerképeket, erőforrás-adatfolyamokat, és feltölti őket a szolgáltatás használ.
+Az előző kódrészlet azt a két segédfüggvényt használja, amelyek a képet erőforrás adatfolyamként feltöltik a szolgáltatásnak.
 
 ```java
 private static void AddImageToProject(Trainings trainer, Project project, String fileName, byte[] contents, UUID tag, double[] regionValues)
@@ -218,9 +219,9 @@ private static byte[] GetImage(String folder, String fileName)
 }
 ```
 
-## <a name="train-the-project"></a>A projekt betanítása
+## <a name="train-the-project"></a>A projekt tanítása
 
-Ez az első példányát hozza létre a projektet, és jelöli meg, az alapértelmezett iteráció aktuális ismétlődésének tömbjében. 
+Ez elkészíti az első iterációt a projektben és megjelöli alapértelmezett iterációként. 
 
 ```java
 System.out.println("Training...");
@@ -235,10 +236,10 @@ System.out.println("Training Status: "+ iteration.status());
 trainer.updateIteration(project.id(), iteration.id(), iteration.withIsDefault(true));
 ```
 
-## <a name="get-and-use-the-default-prediction-endpoint"></a>Letöltheti a az alapértelmezett előrejelzési végpont
+## <a name="get-and-use-the-default-prediction-endpoint"></a>Szerezze meg és használja az alapértelmezett előrejelzési végpontot
 
 > [!IMPORTANT]
-> Állítsa be a `predictionApiKey` , a korábban kapott előrejelzési kulcs értékét.
+> A `predictionApiKey` értékét állítsa be a korábban kapott előrejelzési kulcs értékére.
 
 ```java
 final String predictionApiKey = "insert your prediction key here";
@@ -273,11 +274,11 @@ for (Prediction prediction: results.predictions())
 }
 ```
 
-## <a name="run-the-example"></a>A példa Futtatás
+## <a name="run-the-example"></a>A példa futtatása
 
-Az előrejelzési eredmények jelennek meg a konzol egyes előrehaladásának megjelenítése naplózás együtt.
+Az előrejelzési eredmények megjelennek a konzolon némi naplózással együtt, ami mutatja az előrehaladást.
 
-Fordítsa le és futtassa a maven használatával szeretné megoldást:
+A megoldást fordítsa és futtassa a maven segítségével:
 
 ```
 mvn compile exec:java

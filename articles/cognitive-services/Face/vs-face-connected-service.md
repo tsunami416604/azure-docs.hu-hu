@@ -1,64 +1,64 @@
 ---
-title: Face API a C# oktatóanyag |} A Microsoft Docs
-titleSuffix: Microsoft Cognitive Services
-description: Hozzon létre egy egyszerű Windows-alkalmazást, amely a Cognitive Services Face API segítségével funkcióit arcok észlelése a képet.
+title: 'Oktatóanyag: Face API C#'
+titleSuffix: Azure Cognitive Services
+description: Hozzon létre egy egyszerű Windows-alkalmazást, amely a Cognitive Services Face API segítségével arcok jellemzőket észlel egy képen.
 services: cognitive-services
 author: ghogen
-manager: douge
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: face-api
-ms.topic: conceptual
+ms.topic: tutorial
 ms.date: 05/07/2018
 ms.author: ghogen
-ms.openlocfilehash: b51760f889db27aa25e54582070ee7d3adcf66f8
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
-ms.translationtype: MT
+ms.openlocfilehash: 70414674e563cf3703d2cf3ebc57f09afcdf2691
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38665240"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46129522"
 ---
-# <a name="connecting-to-cognitive-services-face-api-by-using-connected-services-in-visual-studio"></a>Csatlakozás a Visual Studio csatlakoztatott szolgáltatásai segítségével a Cognitive Services Face API
+# <a name="connecting-to-cognitive-services-face-api-by-using-connected-services-in-visual-studio"></a>Csatlakozás a Cognitive Services arcfelismerési API-hoz a Visual Studio csatlakoztatott szolgáltatásai használatával
 
-A Cognitive Services Face API segítségével észlelheti, elemzése, rendszerezése és megjelölése fényképeken.
+A Cognitive Services arcfelismerési API segítségével észlelhetővé, elemezhetővé, rendszerezhetővé és címkézhetővé válnak az arcok a fényképeken.
 
-Ez a cikk és a kiegészítő cikkek adja meg adatait a Visual Studio csatlakoztatott szolgáltatása szolgáltatás Cognitive Services Face API segítségével. A funkció a mindkét Visual Studio 2017 15.7 vagy későbbi, a Cognitive Services-bővítmény telepítve.
+Ez a cikk és kísérő cikkek részletesen ismertetik, hogyan lehet a Visual Studio csatlakoztatott szolgáltatásait a Cognitive Services arcfelismerési API-ra használni. A funkció a Visual Studio 2017 15.7 és későbbi változatokban is elérhető, ha a Cognitive Services bővítmény telepítve van.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 - **Azure-előfizetés**. Ha nem rendelkezik előfizetéssel, regisztrálhat egy [ingyenes fiókkal](https://azure.microsoft.com/pricing/free-trial/).
-- **A Visual Studio 2017 verzió 15.7** együtt a **webfejlesztés** számítási feladattal. [Töltse le most](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs).
+- **Visual Studio 2017 15.7 verzió** telepítése **webfejlesztési** tevékenységprofillal. [Töltse le most](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs).
 
 [!INCLUDE [vs-install-cognitive-services-vsix](../../../includes/vs-install-cognitive-services-vsix.md)]
 
-## <a name="create-a-project-and-add-support-for-cognitive-services-face-api"></a>Hozzon létre egy projektet, és a Cognitive Services Face API támogatása
+## <a name="create-a-project-and-add-support-for-cognitive-services-face-api"></a>Projekt létrehozása és Cognitive Services Face API támogatás hozzáadása
 
-1. Hozzon létre egy új ASP.NET Core web projektet. A projekt üres sablon segítségével. 
+1. Hozzon létre egy új ASP.NET Core web projektet. Használja az üres projekt sablont. 
 
-1. A **Megoldáskezelőben**, válassza a **Hozzáadás** > **csatlakoztatott szolgáltatás**.
-   A projekthez is hozzáadhat szolgáltatásokat a csatlakoztatott szolgáltatás oldalon jelenik meg.
+1. A **Megoldáskezelőben**, válassza a **Csatlakoztatott szolgáltatás** > **hozzáadása** lehetőséget.
+   Megjelenik a projekthez adható szolgáltatásokat mutató Csatlakoztatott szolgáltatás oldal.
 
-   ![Adja hozzá a csatlakoztatott szolgáltatás menüpont](./media/vs-face-connected-service/Connected-Service-Menu.PNG)
+   ![Csatlakoztatott szolgáltatás menüpont hozzáadása](./media/vs-face-connected-service/Connected-Service-Menu.PNG)
 
-1. Elérhető szolgáltatások menüjében válassza **Cognitive Services Face API**.
+1. Az elérhető szolgáltatások menüjében válassza a **Cognitive Services Face API** pontot.
 
-   ![Válassza ki a szolgáltatáshoz való csatlakozáshoz](./media/vs-face-connected-service/Cog-Face-Connected-Service-0.PNG)
+   ![A csatlakoztatni kívánt szolgáltatás kiválasztása](./media/vs-face-connected-service/Cog-Face-Connected-Service-0.PNG)
 
-   Ha már bejelentkezett a Visual Studióban, és a fiókhoz társított Azure-előfizetéssel rendelkezik, megjelenik egy oldal, és a egy legördülő lista az összes előfizetés.
+   Ha már bejelentkezett a Visual Studióba, és rendelkezik a fiókhoz társított Azure-előfizetéssel, akkor megjelenik egy oldal az előfizetéseit tartalmazó legördülő listával.
 
    ![Válassza ki előfizetését.](media/vs-face-connected-service/Cog-Face-Connected-Service-1.PNG)
 
-1. Válassza ki az előfizetést szeretné használni, és válassza a Face API nevét, vagy válassza a Szerkesztés hivatkozásra módosíthatja is az automatikusan létrehozott nevet, válassza ki az erőforráscsoportot és a Tarifacsomagot.
+1. Válassza ki a használni kívánt előfizetést majd válasszon nevet a Face API számára, vagy a Szerkesztés hivatkozást választva módosíthatja az automatikusan létrehozott nevet, válassza ki az erőforráscsoportot és a Tarifacsomagot.
 
-   ![Csatlakoztatott szolgáltatás részleteinek szerkesztése](media/vs-face-connected-service/Cog-Face-Connected-Service-2.PNG)
+   ![A csatlakoztatott szolgáltatás részleteinek szerkesztése](media/vs-face-connected-service/Cog-Face-Connected-Service-2.PNG)
 
-   Kövesse a hivatkozást a tarifacsomagok.
+   A tarifacsomagokkal kapcsolatban kövesse a hivatkozást.
 
-1. Támogatott a csatlakoztatott szolgáltatás hozzáadása a Hozzáadás gombra.
-   A Visual Studio módosítja a NuGet-csomagok, konfigurációs bejegyzéseket és egyéb módosításokat egy kapcsolatot a Face API hozzáadása a projekthez.
+1. Válassza a Hozzáadás gombot a csatlakoztatott szolgáltatás támogatás hozzáadásához.
+   A Visual Studio módosítja a projektet a NuGet-csomagok, a konfigurációs fájl bejegyzések és egyéb a Face API projekthez adásához szükséges módosítások hozzáadásával.
 
-## <a name="use-the-face-api-to-detect-attributes-of-faces-in-an-image"></a>A Face API segítségével a képet attribútumai arcok észlelése
+## <a name="use-the-face-api-to-detect-attributes-of-faces-in-an-image"></a>Arc jellemzők felismerése a képen Face API segítségével
 
-1. Adja hozzá a következő using utasításokat a Startup.cs fájlban.
+1. Adja hozzá a következő using utasításokat a Startup.cs fájlba.
  
    ```csharp
    using System.IO;
@@ -68,7 +68,7 @@ Ez a cikk és a kiegészítő cikkek adja meg adatait a Visual Studio csatlakozt
    using System.Net.Http.Headers;
    ```
  
-1. Adjon hozzá egy konfigurációs mező, és adja hozzá a konstruktort, amely az indítási osztályt konfigurációs ahhoz, hogy a program konfigurációs mezője inicializálja.
+1. Adjon hozzá egy konfigurációs mezőt, és adja hozzá a Startup osztályban a konfigurációs mezőt inicializáló konstruktort, hogy engedélyezze a Konfigurációt a programban.
 
    ```csharp
       private IConfiguration configuration;
@@ -79,15 +79,15 @@ Ez a cikk és a kiegészítő cikkek adja meg adatait a Visual Studio csatlakozt
       }
    ```
 
-1. A projekt wwwroot mappája, a képek mappa hozzáadása, és a képfájl hozzáadása a wwwroot mappája. Tegyük fel, használhatja a rendszerképeket a [Face API oldal](https://azure.microsoft.com/services/cognitive-services/face/). A jobb gombbal a rendszerképeket, mentse a helyi merevlemezről, majd a Megoldáskezelőben kattintson a jobb gombbal a képek mappa, és choosee **Hozzáadás** > **meglévő elem** , adja hozzá a projekthez. A projekt kell kinéznie a Megoldáskezelőben:
+1. A projekt wwwroot mappában készítsen egy képek mappát, és adjon egy képfájlt a wwwroot mappába. Példaként használhatja a képeket erről a [Face API oldalról](https://azure.microsoft.com/services/cognitive-services/face/). A jobb gombbal kattintson a képekre, mentse el a helyi merevlemezre, majd a jobb gombbal kattintson a képek mappán és a **Meglevő elem** > **hozzáadása** kiválasztásával adja hozzá a projekthez. A projektnek ehhez hasonlóan kell kinéznie a Megoldáskezelőben:
  
-   ![Képek mappa képfájl](media/vs-face-connected-service/Cog-Face-Connected-Service-6.PNG)
+   ![képek mappa a képfájllal](media/vs-face-connected-service/Cog-Face-Connected-Service-6.PNG)
 
-1. Kattintson a jobb gombbal a képfájlt, válassza a Tulajdonságok elemet, és válassza **másolás, ha újabb**.
+1. Kattintson jobb gombbal a képfájlra, válassza a Tulajdonságok elemet, majd a **Másolás, ha újabb** lehetőséget.
 
    ![Másolás, ha újabb](media/vs-face-connected-service/Cog-Face-Connected-Service-5.PNG)
  
-1. A konfigurálás módszert cserélje le a következő kódot a Face API eléréséhez, és a egy rendszerkép tesztelése. Módosítsa a imagePath karakterláncot a helyes elérési útját és fájlnevét, a arcképét.
+1. A Configure metódust cserélje a következőre a Face API eléréséhez és a kép teszteléséhez. Az imagePath sztringet változtassa át az arcfelismerés képre mutató útvonalra és fájlnévre.
 
    ```csharp
     // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -147,9 +147,9 @@ Ez a cikk és a kiegészítő cikkek adja meg adatait a Visual Studio csatlakozt
             });
         }
    ```
-    Ebben a lépésben a kód létrehoz egy HTTP-kérést a csatlakoztatott szolgáltatás hozzáadásakor hozzáadott kulccsal a Face REST API-hívással.
+    Ebben a lépésben a kód létrehoz egy HTTP-kérést Face REST API-hívással a csatlakoztatott szolgáltatás hozzáadásakor hozzáadott kulccsal.
 
-1. Adja hozzá a segédfüggvények GetImageAsByteArray és JsonPrettyPrint.
+1. Adja hozzá a GetImageAsByteArray és JsonPrettyPrint segédfüggvényeket.
 
    ```csharp
         /// <summary>
@@ -231,13 +231,13 @@ Ez a cikk és a kiegészítő cikkek adja meg adatait a Visual Studio csatlakozt
         }
    ```
 
-1. A webalkalmazás futtatásához, és tekintse meg, milyen Face API a lemezképben található.
+1. Futtassa a webalkalmazást é nézze meg mit talál a Face API a képen.
  
-   ![A Face API-rendszerképet és a formázott eredmények](media/vs-face-connected-service/Cog-Face-Connected-Service-4.PNG)
+   ![A Face API kép és a formázott eredmények](media/vs-face-connected-service/Cog-Face-Connected-Service-4.PNG)
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha már nincs rá szükség, törölje az erőforráscsoportot. Ezzel törli a cognitive Services-szolgáltatás és a kapcsolódó erőforrásokat. Az erőforráscsoport törlése a Portalon keresztül:
+Ha már nincs rá szükség, törölje az erőforráscsoportot. Ezzel törli a Cognitive szolgáltatást és a kapcsolódó erőforrásokat. Az erőforráscsoport törlése a Portalon keresztül:
 
 1. Írja be az erőforráscsoport nevét a Portal tetején található keresőmezőbe. Amikor az eredmények listájában megjelenik az ebben a rövid útmutatóban használt erőforráscsoport, jelölje ki.
 1. Válassza az **Erőforráscsoport törlése** elemet.
@@ -245,4 +245,4 @@ Ha már nincs rá szükség, törölje az erőforráscsoportot. Ezzel törli a c
 
 ## <a name="next-steps"></a>További lépések
 
-További tudnivalók a Face API olvassa el a [Face API-dokumentáció](Overview.md).
+További információk találhatók a Face API-ról a [Face API-dokumentációban](Overview.md).

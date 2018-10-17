@@ -8,12 +8,12 @@ services: time-series-insights
 ms.topic: tutorial
 ms.date: 06/05/2018
 ms.author: anshan
-ms.openlocfilehash: 445584ef8f9a2534d7f183a4452df19ee87d0025
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: 85d6ac0084343dc821a4eaf91c8053c9885ccfeb
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39626994"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46366046"
 ---
 # <a name="tutorial-explore-the-azure-time-series-insights-javascript-client-library"></a>Oktatóanyag: Az Azure Time Series Insights JavaScript ügyfélkódtár felderítése
 
@@ -27,6 +27,12 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > * A TSI mintaalkalmazás.
 > * A TSI JavaScript ügyfélkódtár.
 > * Hogyan használja a mintaalkalmazás a kódtárat a TSI-adatok megjelenítésére.
+
+## <a name="video"></a>Videó: 
+
+### <a name="in-this-video-we-introduce-the-open-source-time-series-insights-javascript-sdkbr"></a>Ebben a videóban a nyílt forráskódú Time Series Insights JavaScript SDK-t mutatjuk be.</br>
+
+> [!VIDEO https://www.youtube.com/embed/X8sSm7Pl9aA]
 
 ## <a name="prerequisites"></a>Előfeltételek
 

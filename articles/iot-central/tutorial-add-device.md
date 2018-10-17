@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: dd68b65825c9c22453e0191d42a0fcce3b65ca64
-ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
+ms.openlocfilehash: 2e01f61ff915a8fe4327aa78c8867d666dc36fda
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35236086"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45983226"
 ---
 # <a name="tutorial-add-a-real-device-to-your-azure-iot-central-application"></a>Oktatóanyag: Valós eszköz hozzáadása az Azure IoT Central-alkalmazáshoz
 
@@ -56,7 +56,7 @@ Ha valós eszközt szeretne hozzáadni az alkalmazáshoz, használja az [Új esz
 
    ![Új, valós csatlakoztatott légkondicionáló eszköz hozzáadásának megkezdése](media/tutorial-add-device/newreal.png)
 
-3. Át is nevezheti az új eszközt, ha kiválasztja az eszköz nevét, és szerkeszti az értéket:
+3. Adja meg az eszközazonosítót (**csak kisbetűket tartalmazhat**), vagy használja a javasolt eszközazonosítót. Az eszköz nevét is megadhatja.  
 
    ![Az eszköz átnevezése](media/tutorial-add-device/rename.png)
 
@@ -68,23 +68,36 @@ A valós eszköz a **Csatlakoztatott légkondicionáló** eszközsablonból jön
 
     ![Szinkronizálást mutató beállítások](media/tutorial-add-device/settingssyncing.png)
 
-2. Az új, valós csatlakoztatott légkondicionáló eszköz **Tulajdonságok** lapján állítsa a **Sorozatszámot** **rcac0010** értékre, a **Belső vezérlőprogram verzióját** pedig 9.75 értékre. Ezután válassza a **Mentés** lehetőséget:
+2. Az új, valós csatlakoztatott légkondicionáló eszköz **Tulajdonságok** lapján állítsa a **Sorozatszámot** **10001** értékre, a **Belső vezérlőprogram verzióját** pedig 9.75-re. Ezután válassza a **Mentés** lehetőséget:
 
     ![Valós eszköz tulajdonságainak beállítása](media/tutorial-add-device/setproperties.png)
 
 3. Szerkesztőként megtekintheti a valós eszköz **Mérések**, **Szabályok** és **Irányítópult** lapjait.
 
-## <a name="get-connection-string-for-real-device-from-application"></a>Kapcsolati sztring lekérése a valós eszközhöz az alkalmazásból
+## <a name="get-connection-details-for-real-device-from-application"></a>Kapcsolati adatok lekérése a valós eszközhöz az alkalmazásból
 
-Egy eszközfejlesztőnek be kell ágyaznia a valós eszköz *kapcsolati sztringjét* az eszközön futó kódba. A kapcsolati sztring lehetővé teszi, hogy az eszköz biztonságosan csatlakozzon az Azure IoT Central alkalmazáshoz. Minden eszközpéldány egyedi kapcsolati sztringgel rendelkezik. Az alábbi lépések bemutatják, hogyan keresheti meg az alkalmazásban egy eszközpéldány kapcsolati sztringjét:
+Egy eszközfejlesztőnek be kell ágyaznia a valós eszköz *kapcsolati adatait* az eszközön futó kódba. A kapcsolati sztring lehetővé teszi, hogy az eszköz biztonságosan csatlakozzon az Azure IoT Central alkalmazáshoz. Az alábbi lépések bemutatják, hogyan keresheti meg az alkalmazásban egy eszközpéldány kapcsolati sztringjét:
 
 1. A valós csatlakoztatott légkondicionáló eszköz **Eszköz** képernyőjén válassza **Az eszköz csatlakoztatása** lehetőséget:
 
     ![A kapcsolat információit megjelenítő hivatkozást mutató eszközoldal](media/tutorial-add-device/connectionlink.png)
 
-2. A **Csatlakozás** oldalon másolja az **Elsődleges kapcsolati sztringet**, és mentse azt. Ezt az értéket az oktatóanyag második felében fogja használni. Egy eszközfejlesztő ezt az értéket használja az eszközön futó ügyfélalkalmazásban:
+2. A **Kapcsolat** lapon másolja a **Scope ID, Device ID, and Primary key** (hatókör azonosítója, eszközazonosító és elsődleges kulcs) adatokat és mentse őket.
 
-    ![Kapcsolatisztring-értékek](media/tutorial-add-device/connectionstring.png)
+   ![Kapcsolat adatai](media/tutorial-add-device/device-connect.PNG)
+
+   Az eszköz kapcsolati sztringjét az alábbi parancssori eszközzel kérheti le  
+
+    ```cmd/sh
+    npm i -g dps-keygen
+    ```
+    **Használat**
+    
+    Kapcsolati sztring létrehozásához keresse meg a binárist a bin/ mappában
+    ```cmd/sh
+    dps_cstr <scope_id> <device_id> <Primary Key(for device)>
+    ```
+    A parancssori eszközről [itt tudhat meg többet](https://www.npmjs.com/package/dps-keygen).
 
 ## <a name="prepare-the-client-code"></a>Az ügyfélkód előkészítése
 
@@ -130,14 +143,17 @@ A következő lépések bemutatják, hogyan készítheti elő a [Node.js](https:
 
 8. Adja a következő változódeklarációkat a fájlhoz:
 
+ 
+
    ```javascript
    var connectionString = '{your device connection string}';
    var targetTemperature = 0;
    var client = clientFromConnectionString(connectionString);
    ```
+   
 
    > [!NOTE]
-   > A `{your device connection string}` helyőrzőt egy későbbi lépésben fogja frissíteni.
+   > A `{your device connection string}` helyőrzőt egy későbbi lépésben fogja frissíteni. 
 
 9. Mentse az eddig végrehajtott módosításokat, de hagyja nyitva a fájlt.
 
@@ -248,8 +264,7 @@ Az előző szakaszban létrehozott egy Node.js vázprojektet az Azure IoT Centra
 
 ## <a name="configure-client-code-for-the-real-device"></a>Ügyfélkód konfigurálása valós eszközhöz
 
-<!-- Add the connection string to the sample code, build, and run -->
-Ha az ügyfélkódot az Azure IoT Central-alkalmazáshoz való kapcsolódáshoz szeretné konfigurálni, hozzá kell adnia a valós eszköz az oktatóanyag korábbi részében feljegyzett kapcsolati sztringjét.
+<!-- Add the connection string to the sample code, build, and run --> Ha az ügyfélkódot az Azure IoT Central-alkalmazáshoz való kapcsolódáshoz szeretné konfigurálni, hozzá kell adnia a valós eszköz az oktatóanyag korábbi részében feljegyzett kapcsolati sztringjét.
 
 1. A **ConnectedAirConditioner.js** fájlban keresse meg a következő kódsort:
 

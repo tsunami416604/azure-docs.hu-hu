@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: a2601f55bbc7e99321689afdafcab3135b94bd5b
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 7121c83aea75f3b23820a7b0504fa704ec9f3016
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43702544"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45984305"
 ---
 # <a name="tutorial-define-a-new-device-type-in-your-azure-iot-central-application"></a>Oktatóanyag: Új eszköztípus definiálása az Azure IoT Central-alkalmazásban
 
@@ -427,7 +427,7 @@ Most, hogy meghatározta a **Csatlakoztatott légkondicionáló** eszközsablont
     | Cím                   | Sorozatszám |
     | Beállítások és tulajdonságok | Sorozatszám |
 
-    ![Sorozatszám tulajdonság beállításai](./media/tutorial-define-device-type/propertysettings1.png)
+    ![Sorozatszám tulajdonság beállításai](./media/tutorial-define-device-type/propertysettings3.png)
 
     Ezután válassza a **Mentés** lehetőséget.
 
@@ -442,7 +442,7 @@ Most, hogy meghatározta a **Csatlakoztatott légkondicionáló** eszközsablont
     | Cím                   | Belső vezérlőprogram verziója |
     | Beállítások és tulajdonságok | Belső vezérlőprogram verziója |
 
-    ![Sorozatszám tulajdonság beállításai](./media/tutorial-define-device-type/propertysettings2.png)
+    ![Sorozatszám tulajdonság beállításai](./media/tutorial-define-device-type/propertysettings3.png)
 
     Ezután válassza a **Mentés** lehetőséget.
 

@@ -1,24 +1,25 @@
 ---
-title: A Custom Vision Service gépi tanulás áttekintése – Azure Cognitive Services | Microsoft Docs
-description: A Custom Vision Service egy Microsoft Cognitive Services-szolgáltatás, amellyel egyéni képosztályozókat hozhat létre az Azure platformon.
+title: Mi a Custom Vision Service?
+titlesuffix: Azure Cognitive Services
+description: A Custom Vision Service egyéni kép osztályozók készítését teszi lehetővé az Azure-felhőben.
 services: cognitive-services
 author: anrothMSFT
-manager: corncar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: custom-vision
 ms.topic: overview
 ms.date: 05/02/2018
 ms.author: anroth
-ms.openlocfilehash: d2daf7c211f9474f5636b6af69c5b700d597aa14
-ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
+ms.openlocfilehash: 1d3d1a82cf59b06625487fb241a63f51352e18e5
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43285244"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46365859"
 ---
 # <a name="what-is-the-custom-vision-service"></a>Mi a Custom Vision Service?
 
-A Custom Vision Service egy Microsoft Cognitive-szolgáltatás, amellyel egyéni képosztályozókat hozhat létre. Jelentősen megkönnyíti és felgyorsítja a képosztályozók létrehozását, üzembe helyezését és továbbfejlesztését. A Custom Vision Service REST API-t és egy webes felületet biztosít, ahol képek tölthetők fel, és ahol be lehet tanítani a képosztályozókat.
+A Custom Vision Service egy Azure Cognitive-Services szolgáltatás, amellyel egyéni képosztályozókat hozhat létre. Jelentősen megkönnyíti és felgyorsítja a képosztályozók létrehozását, üzembe helyezését és továbbfejlesztését. A Custom Vision Service REST API-t és egy webes felületet biztosít, ahol képek tölthetők fel, és ahol be lehet tanítani a képosztályozókat.
 
 ## <a name="what-does-custom-vision-service-do-well"></a>Mire alkalmas a Custom Vision Service?
 

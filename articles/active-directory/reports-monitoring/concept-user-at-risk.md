@@ -14,12 +14,12 @@ ms.component: report-monitor
 ms.date: 11/14/2017
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 030774716e1af4a7d6817d64ae66ded2bcaf4081
-ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
+ms.openlocfilehash: fde063cb593ca1f610dc35cd044fe41e34ab9202
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "41918325"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45578364"
 ---
 # <a name="users-flagged-for-risk-security-report-in-the-azure-active-directory-portal"></a>Kockázatosként megjelölt felhasználókról szóló biztonsági jelentés az Azure Active Directory portálon
 
@@ -29,9 +29,9 @@ Az Azure Active Directory észleli a felhasználói fiókokhoz kapcsolódó gyan
 
 A rendszer az észlelt kockázati eseményeket a következők kiszámítására használja:
 
-- **Kockázatos bejelentkezések** – A kockázatos bejelentkezés egy olyan bejelentkezési kísérletet jelöl, amelyet elképzelhető, hogy olyan személy hajtott végre, aki nem a felhasználói fiók jogos tulajdonosa. További információkért lásd a [kockázatos bejelentkezésekkel](../identity-protection/overview.md#risky-sign-ins) foglalkozó részt. 
+- **Kockázatos bejelentkezések** – A kockázatos bejelentkezés egy olyan bejelentkezési kísérletet jelöl, amelyet elképzelhető, hogy olyan személy hajtott végre, aki nem a felhasználói fiók jogos tulajdonosa. További információ: [A bejelentkezési kockázati szabályzat konfigurálása](../identity-protection/howto-sign-in-risk-policy.md). 
 
-- **Kockázatosként megjelölt felhasználók** – A kockázatos felhasználó egy olyan felhasználói fiókot jelöl, amelynek elképzelhető, hogy sérült a biztonsága. További információkért lásd a [kockázatosként megjelölt felhasználókkal](../identity-protection/overview.md#users-flagged-for-risk) foglalkozó részt.  
+- **Kockázatosként megjelölt felhasználók** – A kockázatos felhasználó egy olyan felhasználói fiókot jelöl, amelynek elképzelhető, hogy sérült a biztonsága. További információ: [A felhasználó kockázati szabályzat konfigurálása](../identity-protection/howto-user-risk-policy.md).  
 
 Az Azure Portalon a biztonsági jelentések az **Azure Active Directory** panel **Biztonság** szakaszában találhatók.  
 
@@ -78,13 +78,13 @@ Ez a párbeszédablak a következő lehetőségeket kínálja:
 
 Az Azure Active Directory prémium kiadásaiban a kockázatosként megjelölt felhasználókról szóló jelentés a következőket tartalmazza:
 
-- Egy [lista azokról a felhasználói fiókokról](../identity-protection/overview.md#users-flagged-for-risk), amelyeknek elképzelhető, hogy sérült a biztonsága. 
+- Egy lista azokról a felhasználói fiókokról, amelyeknek elképzelhető, hogy sérült a biztonsága 
 
 - Összesített adatok az észlelt [kockázati események típusairól](concept-risk-events.md)
 
 - Lehetőség a jelentés letöltésére
 
-- Egy [felhasználóikockázat-csökkentési szabályzat](../identity-protection/overview.md#user-risk-security-policy) konfigurálását  
+- Egy [felhasználóikockázat-csökkentési szabályzat](../identity-protection/howto-user-risk-policy.md) konfigurálását  
 
 
 ![Kockázatos bejelentkezések](./media/concept-user-at-risk/71.png)
@@ -103,7 +103,7 @@ Egy felhasználó kiválasztásakor megkapja a felhasználó részletes jelenté
 ![Kockázatos bejelentkezések](./media/concept-user-at-risk/324.png)
 
 
-Egy kockázati esemény vizsgálatához válassza ki azt a listából a kockázati eseményhez tartozó **Részletek** panel megnyitásához. A **Részletek** panelen [manuálisan bezárhatja a kockázati eseményeket](../identity-protection/overview.md#closing-risk-events-manually) vagy újra aktiválhatja a manuálisan bezárt kockázati eseményeket. 
+Egy kockázati esemény vizsgálatához válassza ki azt a listából a kockázati eseményhez tartozó **Részletek** panel megnyitásához. A **Részletek** panelen manuálisan bezárhatja a kockázati eseményeket vagy újra aktiválhatja a manuálisan bezárt kockázati eseményeket. 
 
 
 ![Kockázatos bejelentkezések](./media/concept-user-at-risk/325.png)

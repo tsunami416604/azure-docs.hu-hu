@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/18/2018
+ms.date: 10/12/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 96d8977a63d26576d4d783dd0661409fdcee90f8
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 03f096bf160c44f7a35f54a73cff6ea701b87d22
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46314033"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49352919"
 ---
 # <a name="azure-ad-connect-accounts-and-permissions"></a>Az Azure AD Connect: Fiókok és engedélyek
 
@@ -113,6 +113,12 @@ A következő található egy összefoglaló az egyéni installlation varázsló
 | Az AD FS-szolgáltatásfiókot lap, "Használata egy tartományi felhasználói fiókot választja" |AD felhasználói fiók hitelesítő adatait |Tartomány felhasználó |Az AD-felhasználói fiókot, amelynek hitelesítő adatok megadása az AD FS szolgáltatás bejelentkezési fiókként szolgál. |
 
 ### <a name="create-the-ad-ds-connector-account"></a>Az AD DS-összekötő fiók létrehozása
+
+>[!IMPORTANT]
+>Egy új PowerShell-modul elnevezett ADSyncConfig.psm1 jelent meg a build **1.1.880.0** (2018 augusztus jelent meg), amely tartalmaz egy gyűjtemény parancsmagok segítségével konfigurálhatja a megfelelő Active Directory-engedélyek az Azure Active Directory tartományi szolgáltatások Összekötő-fiók.
+>
+>További információ: [az Azure AD Connect: konfigurálja az AD DS-összekötő fiók engedély](how-to-connect-configure-ad-ds-connector-account.md)
+
 A fióknak meg kell adnia a **csatlakoztassa a címtárakat** lap szerepelnie kell az Active Directory telepítése előtt.  Az Azure AD Connect 1.1.524.0 verziója, és később a beállítást engedélyezve lehetővé teheti a létrehozása az Azure AD Connect varázsló a **AD DS-összekötő fiók** Active Directory segítségével kapcsolódhat.  
 
 A szükséges engedélyeket is kell rendelkeznie. A telepítővarázsló ellenőrzi az engedélyek és az esetleges problémákat csak találhatók meg a szinkronizálás során.

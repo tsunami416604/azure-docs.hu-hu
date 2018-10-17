@@ -1,19 +1,21 @@
 ---
-title: 'Rövid útmutató: A Bing Web Search API meghívása a PHP segítségével'
+title: 'Rövid útmutató: Keresés PHP használatával – Bing Web Search API'
+titleSuffix: Azure Cognitive Services
 description: Ebből a rövid útmutatóból megtudhatja, hogyan hozhatja létre első Bing Web Search API-hívását a PHP használatával, majd hogyan fogadhatja a JSON-választ.
 services: cognitive-services
 author: erhopf
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-web-search
 ms.topic: quickstart
 ms.date: 8/16/2018
 ms.author: erhopf
-ms.openlocfilehash: ef5263ce65efccdab0fb461165e66156dd4fce52
-ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
+ms.openlocfilehash: 821d6a1b7df43c3eaddff503f6666e72251deec0
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42888429"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46127901"
 ---
 # <a name="quickstart-use-php-to-call-the-bing-web-search-api"></a>Rövid útmutató: A Bing Web Search API meghívása a PHP segítségével  
 

@@ -1,64 +1,65 @@
 ---
-title: Az entitás Linking API használatába |} Microsoft Docs
-description: Vizsgálja meg a szöveg és a hivatkozás a Tudásbázisban megfelelő bejegyzések entitásokat nevű észlelés szolgáltatásokban az entitás Linking API használatával.
+title: 'Oktatóanyag: Entitás-összekapcsolási alkalmazás készítése – C#'
+titlesuffix: Azure Cognitive Services
+description: Az Entity Linking API használatával szöveg és hivatkozás nevű entitások elemezését végezheti el a tudásbázis megfelelő bejegyzései alapján.
 services: cognitive-services
 author: DavidLiCIG
-manager: wkwok
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: entity-linking-intelligence
-ms.topic: article
+ms.topic: tutorial
 ms.date: 07/06/2016
 ms.author: davl
-ms.openlocfilehash: 54c4a3bbb3637c248bd7705ed291633368b542c9
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
-ms.translationtype: MT
+ms.openlocfilehash: 907b4cab483f1bf63a864094530784f9c632a1c8
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35347131"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46365638"
 ---
-# <a name="get-started-with-entity-linking-api-in-c35"></a>Az API-C Linking entitás első lépései&#35;
+# <a name="tutorial-build-an-entity-linking-app-with-c"></a>Oktatóanyag: Entitás-összekapcsolási alkalmazás készítése C#-pal
 
-A Microsoft entitás csatolás akkor szöveg elemzése és nevű entitások csatolása a megfelelő bejegyzések meg a Tudásbázis természetes nyelvű feldolgozási eszköz. 
+A Microsoft Entity Linking egy természetes nyelvi feldolgozási eszköz, amellyel a szöveg és hivatkozás nevű egyedeknek a tudásbázis megfelelő bejegyzéseivel történő elemzése végezhető el. 
 
-Ez az oktatóanyag ismerteti, az entitás Linking ügyféloldali kódtára a NuGet-csomagként linking entitás. 
+Az oktatóanyag az entitás-összekapcsolást vizsgálja meg az Entity Linking ügyfélkódtár NuGet csomagként történő használatával. 
 
 ### <a name="Prerequisites">Előfeltételek</a>
 
 - Visual Studio 2015
-- A Microsoft kognitív szolgáltatási API-kulcs
-- Az ügyfél első könyvtár és példa
-- Microsoft-jogalany Linking NuGet-csomag
+- Microsoft Cognitive Services API kulcs
+- Az ügyfélkódtár és a példák letöltése
+- Microsoft Entity Linking NuGet csomag
 
-Az entitás Linking az Eszközintelligencia szolgáltatás API ügyféloldali kódtár segítségével letöltheti [SDK](https://www.github.com/microsoft/cognitive-entitylinking-windows). A letöltött zip-fájl szükséges a kiválasztott mappába kinyerni, sok felhasználó válassza ki a Visual Studio 2015 mappát.
+Az Entity Linking Intelligence Service API ügyfélkódtára letölthető az [SDK](https://www.github.com/microsoft/cognitive-entitylinking-windows)-n keresztül. A letöltött zip-fájl tetszőleges mappába ki kell csomagolni, sokan a Visual Studio 2015 mappát választják.
 
-### <a name="step-1-subscribe-entity-linking-intelligence-service-and-get-your-own-key">1. lépés: Entitás csatolása az Eszközintelligencia szolgáltatás előfizetni, és a kulcs lekérése</a>
-Entitás csatolása az Eszközintelligencia szolgáltatás használata előtt regisztrálnia kell az API-kulcs. Lásd: [előfizetések](https://www.microsoft.com/cognitive-services/en-us/sign-up). Ebben az oktatóanyagban mind az elsődleges és másodlagos kulcsot is használható.
+### <a name="step-1-subscribe-entity-linking-intelligence-service-and-get-your-own-key">1. lépés: Előfizetés az Entity Linking Intelligence Service szolgáltatásra és kulcs megszerzése</a>
+Az Entity Linking Intelligence Service használatához először regisztrálni kell az API kulcsért. Lásd [Előfizetések](https://www.microsoft.com/cognitive-services/en-us/sign-up). Ebben az oktatóanyagban az elsődleges és másodlagos kulcs is használható.
 
-### <a name="step-2-create-a-new-project-in-visual-studio"> 2. lépés: A Visual Studio új projekt létrehozása</a>
+### <a name="step-2-create-a-new-project-in-visual-studio"> 2. lépés: Új projekt létrehozása Visual Studióban</a>
 
-Először hozzon létre egy új projektet a Visual Studióban. Először indítsa el a Visual Studio 2015 a Start menüből. Ezután hozzon létre egy új projektet kiválasztásával **→ sablonok → Visual C# → Windows Universal → üres alkalmazás telepítve** a projekt sablonhoz:
+Kezdjük azzal, hogy létrehozunk egy új projektet a Visual Studióban. Először indítsa el a Visual Studio 2015-öt a Start menüből. Ezután hozzon létre egy új projektet a **Telepített→ Sablonok → Visual C# → Windows Universal → Üres alkalmazás** kiválasztásával a projekt sablonnak:
 
- ![Egy univerzális alkalmazás](./Images/CreateUWP.png)
+ ![Univerzális alkalmazás készítése](./Images/CreateUWP.png)
 
-### <a name="step-3-add-the-entity-linking-nuget-package-to-your-project">3. lépés: A entitás Linking NuGet-csomag hozzáadása a projekthez</a>
+### <a name="step-3-add-the-entity-linking-nuget-package-to-your-project">3. lépés: Adja hozzá a projekthez az Entity Linking NuGet csomagot</a>
 
-Entitás csatolása a kognitív szolgáltatások NuGet.org csomag megjelenik, és használata előtt telepítenie kell.
-Adja hozzá a projekthez, keresse fel a **Megoldáskezelőben** lapon kattintson a jobb gombbal a projekt, és válassza ki **Nuget-csomagok kezelése**.
+A Cognitive Services az entitás-összekapcsolást NuGet.org csomagként teszi közzé, használat előtt telepíteni kell.
+Hozzáadása a projekthez: a **Megoldáskezelő** lapon kattintson jobb gombbal a projektre és válassza a **Nuget-csomagok kezelése** pontot.
 
-Az első a **NuGet-Csomagkezelő** ablakban válassza NuGet.org, mint a **csomag forrása** jobb felső sarkában található. Válassza ki **Tallózás** bal felső sarokban, és a keresési mezőbe írja be a "ProjectOxford.EntityLinking". Válassza ki a **Microsoft.ProjectOxford.EntityLinking** NuGet csomagot, majd kattintson a **telepítése**.
+Először a **NuGet-Csomagkezelő** ablakban a jobb felső sarokban adja meg a NuGet.org-ot a **Csomag forrásának**. A bal felső sarokban a **Tallózás** kiválasztása után írja be a keresőmezőbe, hogy „ProjectOxford.EntityLinking”. Válassza ki a **Microsoft.ProjectOxford.EntityLinking** NuGet csomagot, és kattintson a **Telepítésre**.
 
-Ezután keresse meg a newtonsoft.JSON elemet, majd telepíteni. Ha a változtatásokat kéri, kattintson a **OK**. Ha a EntityLinking licencfeltételeket, kattintson a **elfogadom**.
+Ezután keresse meg a Newtonsoft.Json elemet és telepítse. Ha a rendszer kéri a változtatások áttekintését, kattintson az **OK**-ra. Ha megjelennek a EntityLinking licencfeltételei, kattintson az **Elfogadom** lehetőségre.
 
-Entitás Linking most már telepítve van az alkalmazás részeként. Győződhet meg úgy, hogy a ** Microsoft.ProjectOxford.EntityLinking** hivatkozás megtalálható a projektben a Megoldáskezelőre részeként.
+Az Entity Linking most már telepítve van az alkalmazás részeként. Ezt azzal ellenőrizheti, hogy a Megoldáskezelőben a projekt része-e a ** Microsoft.ProjectOxford.EntityLinking** hivatkozás.
 
- ![A projekt tartalmazza nuget könyvtár](./Images/NugetLibraryInProject.png)
+ ![A nuget könyvtár belefoglalása a projektbe](./Images/NugetLibraryInProject.png)
  
-### <a name="step-4-add-an-input-and-output-text-block-to-your-apps-xaml">4. lépés: Adja hozzá a bemeneti és kimeneti az alkalmazás XAML szövegblokk</a>
-Keresse meg ** MainPage.xaml ** a **Megoldáskezelőben**, majd kattintson duplán a fájlra, amely egy új ablakban nyílik. Kényelmi célokat szolgál, akkor is kattintson duplán a **XAML** gombra a **Designer** lapon Ez elrejti a **vizuális tervezőt** és a teljes egészében a kód nézetre a tartalék.
+### <a name="step-4-add-an-input-and-output-text-block-to-your-apps-xaml">4. lépés: Adjon hozzá egy bemeneti és kimeneti szövegtömböt az alkalmazás XAML-be</a>
+Navigáljon a ** MainPage.xaml ** részhez a **Megoldáskezelőben**, majd kattintson a fájlra, amely megnyílik egy új ablakban. Az egyszerűség kedvéért, ha duplán kattint az **XAML** gombra a **Designer** lapon, azzal elrejtheti a **Vizuális Tervezőt** és minden helyet megkap a kódnézet.
 
- ![A projekt tartalmazza nuget könyvtár](./Images/UWPMainPage.png)
+ ![A nuget könyvtár belefoglalása a projektbe](./Images/UWPMainPage.png)
  
-Szolgáltatás a legjobb módszer a funkciók megjelenítése bemeneti és egy kimeneti szövegblokk létrehozása. Ehhez adja hozzá a következő XAML a **rács**. Ez a kód hozzáadása három összetevővel, egy bemeneti szövegmezőben, egy kimeneti szövegblokk és a start gombra.
+Szöveg szolgáltatásról lévén szó, a működés szemléltetésének legjobb módja, ha bemenő és kimenő szövegtömböt hozunk létre. Ehhez adja hozzá a következő XAML-t a **Táblázatba**. Ez a kód három elemet vesz fel, egy szöveges beviteli szövegmezőt, egy kimeneti szövegterületet és az indítógombot.
  
  ```XAML
  <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
@@ -73,17 +74,17 @@ Szolgáltatás a legjobb módszer a funkciók megjelenítése bemeneti és egy k
 </Grid>
  ```
  
-### <a name="step-5-proceed-to-add-entity-linking-intelligence-service">5. lépés: Lépjen entitás csatolása az Eszközintelligencia szolgáltatás hozzáadása</a>
+### <a name="step-5-proceed-to-add-entity-linking-intelligence-service">5. lépés: Folytatás az Entity Linking Intelligence Service hozzáadásával</a>
  
-A felhasználói felület megtörtént. Az entitás Linking szolgáltatás használatához vegye fel a kattintáskezelő kell. Nyissa meg **MainPage.xaml** a **Megoldáskezelőben**. Adja hozzá a button_Click kezelő a gomb végén.
+A felhasználói felület létrehozása megtörtént. Mielőtt az entitás-összekapcsolás szolgáltatást használhatnánk, hozzá kell adnunk a kattintáskezelőt. Nyissa meg a **MainPage.xaml** fájlt a **Megoldáskezelőben**. A gomb végéhez adja hozzá a button_Click kezelőt.
  
  ```XAML
  <Button x:Name="button" Grid.Row="2" Content="Get Result" Click="button_Click" />
  ```
  
-Egy kattintáskezelő meg kell valósítani a kódot. Nyissa meg **MainPage.xaml.cs** a **Megoldáskezelőben** megvalósításához a gombra kattintással. A EntityLinkingServiceClient egy burkoló entitás Linking válaszok beolvasása. A EntityLinkingServiceClient konstruktor argumentuma a kognitív szolgáltatások előfizetés kulcs. Illessze be a kapott az Előfizetés kulcs **1. lépés** hívó entitás csatolása. 
+A button_Click kezelőt a kódban kell kifejteni. Nyissa meg **MainPage.xaml.cs** fájlt a **Megoldáskezelőben** a button-Click megvalósításához. Az EntityLinkingServiceClient egy burkoló az entitás-összekapcsolás válaszok lekéréséhez. A EntityLinkingServiceClient konstruktorának argumentuma a Cognitive Services előfizetési kulcs. Az Entitás-összekapcsolás szolgáltatás hívásához illessze be az **1. lépésben** kapott előfizetési kulcsot. 
 
-Alább van például kód, amely a "wikipediaId" hozzáadja a válasz entitás Linking szolgáltatás segítségével. 
+Az alábbi példa az Entity Linking Service használatával hozzáadja a „wikipediaId”-t a válaszhoz. 
  
  ```csharp
  private async void button_Click(object sender, RoutedEventArgs e)
@@ -96,11 +97,11 @@ Alább van például kód, amely a "wikipediaId" hozzáadja a válasz entitás L
 }
  ```
  
-Most már készen áll az első természetes nyelvű feldolgozása entitás Linking alkalmazás futtatásához. Nyomja meg a **F5 billentyűt** fordításához és az alkalmazás elindításához. Vagy szövegrészek bekezdések illessze be a beviteli mezőbe. A "Get eredménye" gombra, és tekintse meg a kimeneti blokk azonosított entitást.
+Most már készen áll az első természetes nyelvi feldolgozási entitás-összekapcsolási alkalmazás futtatásához. Nyomja le az **F5 billentyűt** a fordításhoz és az alkalmazás elindításához. Illesszen kódrészlet szöveget vagy bekezdést a bemeneti mezőbe. Nyomja meg a „Eredmény kérése” gombot és figyelje meg az azonosított elemeket a kimeneti tömbben.
  
- ![UWP-minta eredménye](./Images/DemoCodeResult.png)
+ ![UWP-minta eredmény](./Images/DemoCodeResult.png)
  
 ### <a name="summary">Összefoglalás</a>
  
-Ebben az oktatóanyagban korábban megtudta, hogyan entitás csatolása az Eszközintelligencia szolgáltatás ügyféloldali kódtár ki csupán néhány sornyi C# és XAML-kódot az alkalmazás létrehozása. 
+Ebben az oktatóanyagban bemutattuk, hogyan hozhat létre egy alkalmazást az Entity Linking Intelligence Service ügyfélkódtár kihasználásával mindössze néhány C# és XAML sor segítségével. 
 

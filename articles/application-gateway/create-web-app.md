@@ -5,16 +5,16 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 8/1/2018
+ms.date: 10/16/2018
 ms.author: victorh
-ms.openlocfilehash: e4b69e6fa587a5d375a1684c982715f8a7ea8166
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: b0bde770e33a08832e7d3a93a745bbba44b04f87
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39579629"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49353339"
 ---
-# <a name="configure-app-service-web-apps-with-application-gateway"></a>App Service Web Apps-alkalmazások konfigurálása az Application Gatewayjel 
+# <a name="configure-app-service-web-apps-with-application-gateway"></a>App Service Web Apps-alkalmazások konfigurálása az Application Gatewayjel
 
 Az Application Gateway lehetővé teszi egy Azure-webalkalmazás vagy egyéb több-bérlős szolgáltatás használatát egy háttérkészlet tagjaként. Ebből a cikkből megismerheti az Azure-webalkalmazások az Application Gatewayjel való konfigurálásának módját. Az első példa meglévő Application Gateway konfigurálását mutatja be egy webalkalmazás háttérkészlettagként való használatára. A második példa egy új Application Gateway létrehozását mutatja be egy olyan webalkalmazással, amely egy háttérkészlet tagja.
 
@@ -41,7 +41,7 @@ Add-AzureRmApplicationGatewayProbeConfig -name webappprobe2 -ApplicationGateway 
 # Retrieve the newly added probe
 $probe = Get-AzureRmApplicationGatewayProbeConfig -name webappprobe2 -ApplicationGateway $gw
 
-# Configure an existing backend http settings 
+# Configure an existing backend http settings
 Set-AzureRmApplicationGatewayBackendHttpSettings -Name appGatewayBackendHttpSettings -ApplicationGateway $gw -PickHostNameFromBackendAddress -Port 80 -Protocol http -CookieBasedAffinity Disabled -RequestTimeout 30 -Probe $probe
 
 # Add the web app to the backend pool
@@ -116,7 +116,7 @@ $fipconfig = New-AzureRmApplicationGatewayFrontendIPConfig -Name fipconfig01 -Pu
 $listener = New-AzureRmApplicationGatewayHttpListener -Name listener01 -Protocol Http -FrontendIPConfiguration $fipconfig -FrontendPort $fp
 
 # Create a new rule
-$rule = New-AzureRmApplicationGatewayRequestRoutingRule -Name rule01 -RuleType Basic -BackendHttpSettings $poolSetting -HttpListener $listener -BackendAddressPool $pool 
+$rule = New-AzureRmApplicationGatewayRequestRoutingRule -Name rule01 -RuleType Basic -BackendHttpSettings $poolSetting -HttpListener $listener -BackendAddressPool $pool
 
 # Define the application gateway SKU to use
 $sku = New-AzureRmApplicationGatewaySku -Name Standard_Small -Tier Standard -Capacity 2
@@ -141,7 +141,7 @@ Id                       : /subscriptions/<subscription_id>/resourceGroups/Conto
 Etag                     : W/"00000d5b-54ed-4907-bae8-99bd5766d0e5"
 ResourceGuid             : 00000000-0000-0000-0000-000000000000
 ProvisioningState        : Succeeded
-Tags                     : 
+Tags                     :
 PublicIpAllocationMethod : Dynamic
 IpAddress                : xx.xx.xxx.xx
 PublicIpAddressVersion   : IPv4
@@ -154,6 +154,12 @@ DnsSettings              : {
                                 "Fqdn": "00000000-0000-xxxx-xxxx-xxxxxxxxxxxx.cloudapp.net"
                             }
 ```
+
+## <a name="restrict-access"></a>Hozzáférés korlátozása
+
+Az ezekben a példákban üzembe helyezett webalkalmazások közvetlenül az internetről elérhető nyilvános IP-címek használatára. A hibaelhárítás, amikor egy új funkciót működésével ismerkedik, és új néhány dolgot, így. Azonban éles üzembe helyezés egy szolgáltatást szeretne, ha szeretné hozzáadhat több korlátozást.
+
+A web Apps korlátozhatja a hozzáférést egy módja [statikus IP-korlátozások az Azure App Service](../app-service/app-service-ip-restrictions.md). Például korlátozhatja a web app, hogy ez csak származó forgalmat megkapja az application gateway. Az app service IP korlátozás szolgáltatás használatával az application gateway virtuális IP-CÍMEK listája csak címként hozzáféréssel rendelkező.
 
 ## <a name="next-steps"></a>További lépések
 

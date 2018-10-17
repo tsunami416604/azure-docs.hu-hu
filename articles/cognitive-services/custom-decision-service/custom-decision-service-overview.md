@@ -1,54 +1,56 @@
 ---
-title: Mi az egyéni döntési szolgáltatás? -Azure kognitív szolgáltatások |} Microsoft Docs
-description: Ez a cikk áttekintése Azure egyéni döntési Service egy felhőalapú API, amely az révén élesíti környezetfüggő döntéshozatali.
+title: Mi a Custom Decision Service?
+titlesuffix: Azure Cognitive Services
+description: A cikk áttekintést nyújt a Custom Decision szolgáltatásról.
 services: cognitive-services
 author: alekh
-manager: slivkins
+manager: cgronlun
 ms.service: cognitive-services
-ms.topic: article
+ms.component: custom-decision-service
+ms.topic: overview
 ms.date: 05/08/2018
-ms.author: slivkins;marcozo;alekh;marossi
-ms.openlocfilehash: 774467446513dcd7ade7255d998b11f41824cafe
-ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
-ms.translationtype: MT
+ms.author: slivkins
+ms.openlocfilehash: 273f2965a0fcaaa729175c5232da1aba69589eec
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "35350015"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46364210"
 ---
-# <a name="what-is-custom-decision-service"></a>Mi az egyéni döntési szolgáltatás?
+# <a name="what-is-custom-decision-service"></a>Mi a Custom Decision Service?
 
-A szokásos webes vagy mobilalkalmazás, több olyan cikket, vagy más típusú tartalmakra első lap hivatkozásainak. Az első oldal betöltése, azt a sorrendet megadó cikkek szerepel-e ez az első oldal egyéni döntési szolgáltatás kérhetik. Igen amikor egy felhasználó egy cikk azt, egy második kérést sikerült elküldeni a egyéni döntési szolgáltatás, amely naplózza, hogy felhasználói művelet eredményét.
+A szokásos webes vagy mobilalkalmazásban a kezdőlapon több cikkre vagy más típusú tartalomra mutató hivatkozás van. Amikor az első oldal töltődik, megkérhetné a Custom Decision szolgáltatást, hogy rangsorolja a kezdőlapon szereplő cikkeket. Így amikor a felhasználó rákattintva kiválaszt egy cikket, lehetne küldeni a Custom Decision szolgáltatásnak egy másik kérést, ami feljegyezné a felhasználói döntés eredményét.
 
-Egyéni döntési szolgáltatása könnyen használható, mivel az csak RSS-hírcsatorna a tartalom és a JavaScript lehet hozzáadni az alkalmazásba néhány sornyi.
+A Custom Decision szolgáltatás használata könnyű, csak az kell hozzá, hogy legyen RSS hírcsatorna a tartalomhoz és néhány sor JavaScriptet kell az alkalmazásba belevenni.
 
-Egyéni döntési szolgáltatás a tartalmat a machine Learning szolgáltatáshoz szolgáltatások alakítja át. A rendszer ezeket a funkciókat használja tudni, hogy a tartalom szöveg, képek, videók, valamint általános céggel kapcsolatos véleményeket. Akkor használja, több más [Microsoft kognitív szolgáltatások](https://www.microsoft.com/cognitive-services), például [entitás Linking](../entitylinking/home.md), [Szövegelemzések](../text-analytics/overview.md), [Érzelemfelismerési](../emotion/home.md), és [Számítógép stratégiai](../computer-vision/home.md).
+A Custom Decision szolgáltatás a gépi tanulási funkciókhoz alakítja át a tartalmat. A rendszer a funkciókat a tartalom megértésére használja, ami a szöveget, képeket, videókat és általános hangulatot illeti. Használ még több más [Microsoft Cognitive Services](https://www.microsoft.com/cognitive-services) is, pl. [Entitáskapcsolás](../entitylinking/home.md), [Text Analytics](../text-analytics/overview.md), [Emotion](../emotion/home.md), és [Computer Vision](../computer-vision/home.md).
 
-Egyéni döntési szolgáltatás néhány gyakori-használati esetek a következők:
+A Custom Decision szolgáltatás néhány gyakori-használati esete a következő:
 
-* Személyre szabás cikkek egy hírek webhelyen
-* Lemezen található media portál testreszabása
-* Ad adatközpontokon vagy az ad vezeti weblapokat optimalizálása
-* Ajánlott egy vásárlásra szolgáló webhelyen elemek rangsorolási.
+* Cikkek személyre szabása újság webhelyeken
+* Videó tartalom személyre szabása média portálon
+* Reklám elhelyezés vagy a weblap optimalizálása, ahova a reklám mutat
+* Ajánlott tételek rangsorolása áruház webhelyeken.
 
-Egyéni döntési szolgáltatása jelenleg *szabad nyilvános előzetes*. Szabhatja, hogy a webhely vagy alkalmazás a cikkek listáját. A szolgáltatás kivonása leginkább megfelelő angol nyelvű tartalom. [Korlátozott funkciók](../text-analytics/overview.md) van érhető el a többi nyelvet, spanyol, francia, német, portugál és japán hasonlóan. Ebben a dokumentációban felül kell vizsgálni, amint az elérhetővé válik az új funkciókat.
+A Custom Decision Service jelenleg *ingyenes nyilvános előzetes verzió*. Személyre szabhatja a cikkek listáját a webhelyen vagy az alkalmazásban. A kivonási funkció legjobban angol nyelvű tartalomnál működik. Egyéb nyelvekre, például spanyol, francia, német, portugál és japán esetében [korlátozott funkciókat](../text-analytics/overview.md) nyújtunk. Ha új funkciók válnak elérhetővé, a dokumentációt frissíteni fogjuk.
 
-Egyéni döntési szolgáltatás használható alkalmazások, amelyek nincsenek a tartalom személyre szabása tartományban. Ezek az alkalmazások remekül beválik, ha egy egyéni előnézeti lehet. [Kapcsolatfelvétel](https://azure.microsoft.com/overview/sales-number/) további.
+A Custom Decision Service nem csak a tartalom személyre szabás területét használó alkalmazásokban használható. Az alkalmazások nagyon jól megfelelhetnek egyedi villámnézetre. További információkért [vegye fel velünk a kapcsolatot](https://azure.microsoft.com/overview/sales-number/).
 
 ## <a name="api-usage-modes"></a>API-használati módok
 
-Egyéni döntési szolgáltatás is alkalmazható weblapjait és a mobilalkalmazásait. Az API-kat a böngészőben vagy az alkalmazás hívható. Az API-használati mind hasonló, de egyes részleteket eltérőek.
+A Custom Decision Service weblapokon és mobilalkalmazásokban is használható. Az API meghívható a böngészőből és alkalmazásból is. Az API használata mindkét esetben hasonló, de van néhány különbség.
 
-## <a name="glossary-of-terms"></a>Szószedet
+## <a name="glossary-of-terms"></a>Kifejezések jegyzéke
 
-A jelen dokumentációban lévő gyakran több feltételek fordulhat elő:
+A dokumentációban van több gyakran előforduló kifejezés is:
 
-* **A művelet set**: A tartalom elemeinek halmazát egyéni döntési szolgáltatáshoz való dimenziószáma. Ebben a készletben adhat meg egy *RSS* vagy *Atom* végpont.
-* **Prioritás**: minden egyéni döntési szolgáltatásnak küldött kérelemben egy vagy több művelet beállítása határozza meg. A rendszer által a tartalom beállításokat a halmazok kiadási válaszol, és visszaadja azokat rangsorolt sorrendje.
-* **A visszahívási függvény**: Ez a függvény, amelyet ad meg, ez a beállítás a felhasználói felületen a tartalmat. A tartalom rendezve egyéni döntési szolgáltatás által visszaadott sorrendet megadó sorrendje.
-* **Ellenszolgáltatás**: biztosítása, hogy hogyan válaszolt a felhasználó a megjelenített tartalmat. Egyéni döntési szolgáltatás gombra kell kattintania a felhasználói válaszra méri. A kattintások jelenti a rendszer egyéni kód szúrja be az alkalmazás használatával.
+* **Művelet halmaz**: A tartalom elemek halmaza, amely a Custom Decision Service rangsorolására vár. A halmaz megadása történhet *RSS* vagy *Atom* végpont formában.
+* **Rangsorolás**: A Custom Decision szolgáltatásnak küldött minden kérés megad egy vagy több művelethalmazt. A rendszer veszi valamennyi tartalom elemet és válaszában rangsorolva küldi vissza őket.
+* **Visszahívási függvény**: Ez az ön által megadott függvény jeleníti meg a felhasználói felületen a tartalmat. A tartalom a Custom Decision Service által visszaadott rangsor alapján van rendezve.
+* **Jutalom**: Azt méri, hogyan reagált a felhasználó a megjelenített tartalomra. A Custom Decision a felhasználói válaszokat a kattintások felhasználásával méri. A kattintásokról a rendszer az alkalmazásba illesztett egyedi kód használatával kap értesítést.
 
 ## <a name="next-steps"></a>További lépések
 
-* [Az alkalmazás regisztrálása](custom-decision-service-get-started-register.md) egyéni döntési szolgáltatással
-* Első lépések optimalizálása [egy weblap](custom-decision-service-get-started-browser.md) vagy [alkalmazással](custom-decision-service-get-started-app.md).
-* Tekintse át a [API-referencia](custom-decision-service-api-reference.md) további információt a megadott funkciót.
+* [Alkalmazás regisztrálása](custom-decision-service-get-started-register.md) a Custom Decision szolgáltatással
+* Első lépések a [weblap](custom-decision-service-get-started-browser.md) vagy [okostelefon alkalmazás](custom-decision-service-get-started-app.md) optimalizálásához.
+* Az [API-referencia](custom-decision-service-api-reference.md) még további információkat tartalmaz a nyújtott funkciókról.

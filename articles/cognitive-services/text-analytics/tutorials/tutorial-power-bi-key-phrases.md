@@ -1,5 +1,6 @@
 ---
-title: Szövegelemzés a Power BI-jal – Azure Cognitive Services | Microsoft Docs
+title: 'Oktatóanyag: A Text Analytics használata a Power BI-jal'
+titleSuffix: Azure Cognitive Services
 description: Megismerheti, hogyan nyerhet ki kulcskifejezéseket a Power BI-ban tárolt szövegekből.
 services: cognitive-services
 author: luiscabrer
@@ -7,105 +8,113 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: text-analytics
 ms.topic: tutorial
-ms.date: 3/07/2018
+ms.date: 09/12/2018
 ms.author: luisca
-ms.openlocfilehash: 2cdb93d44218627efdcb0360d8cf4a4eeeca177a
-ms.sourcegitcommit: 7b845d3b9a5a4487d5df89906cc5d5bbdb0507c8
+ms.openlocfilehash: fe6bc384e4190cd17df00ddf285701db8c4199a6
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2018
-ms.locfileid: "42889314"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45733329"
 ---
-# <a name="text-analytics-with-power-bi"></a>Szövegelemzés a Power BI-jal
+# <a name="tutorial-integrate-power-bi-with-the-text-analytics-cognitive-service"></a>Oktatóanyag: Power BI integrálása a Text Analytics Cognitive Services-szolgáltatásba
 
-A Microsoft Power BI a szervezeti adatokat gyönyörű jelentésekbe tömöríti, amelyeket a gyorsabb és részletesebb tájékoztatás érdekében közzétehet a szervezeten belül. A Text Analytics szolgáltatás a Microsoft Azure Cognitive Services szolgáltatásainak részét képezi, és a Key Phrases API használatával képes kinyerni a legfontosabb kifejezéseket a szövegekből. Ezekkel az eszközökkel gyors bepillantást nyerhet abba, hogy az ügyfelei miről beszélnek, és milyen érzéseket váltottak ki belőlük.
+A Microsoft Power BI Desktop ingyenes alkalmazás segítségével csatlakozni, átalakítani és szemléltetni is lehet az adatokat. A Microsoft Azure Cognitive Services részét képező Text Analytics természetes nyelvi feldolgozást kínál. A nyers, szerkezet nélkül megadott szövegből képes kivonatolni a legfontosabb kifejezéseket, elemzi az érzéseket és azonosítani tud olyan jól ismert dolgokat, mint a márkák. Ezekkel az eszközökkel gyors bepillantást nyerhet abba, hogy az ügyfelei miről beszélnek, és milyen érzéseket váltottak ki belőlük.
 
-Az oktatóanyagból megtudhatja, hogy a Power BI Desktop és a Key Phrases API integrálásával hogyan nyerheti ki a fontosabb kifejezéseket az ügyfelek visszajelzéseiből egy egyéni Power Query-függvény használatával. Ezekből a kifejezésekből egy szófelhőt is készítünk.
-
-## <a name="prerequisites"></a>Előfeltételek
-
-Az oktatóanyag elvégzéséhez a következőkre lesz szüksége:
+Az oktatóanyag segítségével megtanulhatja a következőket:
 
 > [!div class="checklist"]
-> * Microsoft Power BI Desktop. [Töltse le ingyenesen](https://powerbi.microsoft.com/get-started/).
-> * Egy Microsoft Azure-fiók. [Kezdjen egy ingyenes próbaidőszakot](https://azure.microsoft.com/free/), vagy [jelentkezzen be](https://portal.azure.com/).
-> * Egy Text Analytics-hozzáférési kulcs. [Regisztráljon](../../cognitive-services-apis-create-account.md), majd [szerezze be a kulcsot](../how-tos/text-analytics-how-to-access-key.md).
-> * Ügyfelek megjegyzései. [Töltse le a mintaadatokat](https://aka.ms/cogsvc/ta), vagy használjon saját adatokat.
+> * A Power BI Desktop használatával adatokat importálhat és alakíthat át
+> * Egyéni függvény létrehozása a Power BI Desktopban
+> * A Power BI Desktop integrálása a Text Analytics Key Phrases API felületbe
+> * A Text Analytics Key Phrases API használatával az ügyfél visszajelzések közül a legfontosabb kifejezések kiemelése
+> * Szófelhő létrehozása az ügyfél visszajelzésekből
 
-## <a name="loading-customer-data"></a>Ügyféladatok betöltése
+## <a name="prerequisites"></a>Előfeltételek
+<a name="Prerequisites"></a>
 
-Első lépésként nyissa meg a Power BI Desktopot, és töltse be a **FabrikamComments.csv** vesszővel tagolt (CSV-) fájlt. Ez a fájl egy fiktív kisvállalkozás támogatási fórumának egy napi feltételezett tevékenységeit tartalmazza.
+- Microsoft Power BI Desktop. [Töltse le ingyenesen](https://powerbi.microsoft.com/get-started/).
+- Egy Microsoft Azure-fiók. [Kezdjen egy ingyenes próbaidőszakot](https://azure.microsoft.com/free/), vagy [jelentkezzen be](https://portal.azure.com/).
+- Cognitive Services API fiók a Text Analytics API felülettel. Ha még nincs fiókja, [regisztráljon](../../cognitive-services-apis-create-account.md) és használhatja a havi 5000 tranzakciót tartalmazó ingyenes csomagot (lásd [díjszabás](https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/)) az oktatóanyag befejezéséhez.
+- Kell még a regisztráció során létrejött [Text Analytics hozzáférési kulcs](../how-tos/text-analytics-how-to-access-key.md).
+- Ügyfelek megjegyzései. Használhatja [a példaadatokat](https://aka.ms/cogsvc/ta), de a saját adatait is. Az oktatóanyagban azt feltételezzük, hogy a példaadatainkat használja.
+
+## <a name="load-customer-data"></a>Ügyféladatok betöltése
+<a name="LoadingData"></a>
+
+Első lépésként nyissa meg a Power BI Desktopot és töltse be az [Előfeltételeknél](#Prerequisites) letöltött vesszővel tagolt (CSV) fájlt `FabrikamComments.csv`. Ez a fájl egy fiktív kisvállalkozás támogatási fórumának egy napi feltételezett tevékenységeit tartalmazza.
 
 > [!NOTE]
 > A Power BI források széles választékából, például a Facebookról vagy egy SQL-adatbázisból származó adatokat is képes használni. További információt [a Facebook](https://powerbi.microsoft.com/integrations/facebook/) és [az SQL Server a Power BI-jal való integrációját](https://powerbi.microsoft.com/integrations/sql-server/) ismertető cikkekben olvashat.
 
-A Power BI Desktop fő ablakának Kezdőlap szalagján keresse meg a Külső adatok csoportot. A csoport **Adatok lekérése** legördülő menüjében válassza a **Szöveg/CSV** lehetőséget.
+A Power BI Desktop főablakában válassza ki a **Kezdőlap** menüszalagot. A menüszalagon a **Külső adatok** csoportban, nyissa meg az **Adatok lekérése** legördülő menüt és válassza **Szöveg/CSV** opciót.
 
 ![[Az Adatok lekérése gomb]](../media/tutorials/power-bi/get-data-button.png)
 
-Megjelenik a Megnyitás párbeszédpanel. Navigáljon a Letöltések mappához, vagy ahhoz a mappához, amelyben a mintaadatokat tartalmazó fájl található. Kattintson a `FabrikamComments.csv` elemre, majd a **Megnyitás** gombra. Megjelenik a CSV-importálási párbeszédpanel.
+Megjelenik a Megnyitás párbeszédpanel. Keresse meg a Letöltések mappát vagy azt a mappát, ahová letöltötte a `FabrikamComments.csv` fájlt. Kattintson a `FabrikamComments.csv` elemre, majd a **Megnyitás** gombra. Megjelenik a CSV-importálási párbeszédpanel.
 
 ![[A CSV-importálási párbeszédpanel]](../media/tutorials/power-bi/csv-import.png)
 
-A CSV-importálási párbeszédpanelen ellenőrizheti, hogy a Power BI Desktop megfelelően észlelte-e a karakterkészletet, a tagoló karaktert, a fejlécsorokat és az oszloptípusokat. Ezek az információk most rendben vannak, ezért kattintson a **Betöltés** parancsra.
+A CSV-importálási párbeszédpanelen ellenőrizheti, hogy a Power BI Desktop megfelelően észlelte-e a karakterkészletet, a tagoló karaktert, a fejlécsorokat és az oszloptípusokat. Ha minden információ rendben van, kattintson a **Betöltés** parancsra.
 
-A betöltött adatok megtekintéséhez a Power BI-munkaterület bal szélén az Adatnézet gombra kattintva váltson az Adatnézetre. Az adatok egy táblázatban jelennek meg, a Microsoft Excelhez hasonlóan.
+A betöltött adatok megtekintéséhez kattintson a Power BI-munkaterület bal szélén az **Adatnézet** gombra. Megnyílik az adatokat tartalmazó táblázat, mint a Microsoft Excelben.
 
 ![[Az importált adatok kezdeti nézete]](../media/tutorials/power-bi/initial-data-view.png)
 
-## <a name="preparing-the-data"></a>Az adatok előkészítése
+## <a name="prepare-the-data"></a>Az adatok előkészítése
+<a name="PreparingData"></a>
 
-A Power BI Desktopban esetleg át kell alakítania az adatokat, mielőtt azokat a Key Phrases szolgáltatás feldolgozhatná.
+Előfordulhat, hogy az adatokat át kell alakítani a Power BI Desktopban ahhoz, hogy a Text Analytics szolgáltatás Key Phrases API fel tudja dolgozni.
 
-Például esetünkben az adatok egy `subject` és egy `comment` mezőt egyaránt tartalmaznak. A kulcskifejezések kivonatolásakor mindkét mezőben vizsgálnunk kell az adatokat, nem csak a `comment` mezőben. A Power BI Desktop Oszlopok egyesítése függvényével ez egyszerűen megoldható.
+A mintaadatok egy `subject` oszlopot és egy `comment` oszlopot tartalmaznak. A Power BI Desktopon az Oszlopok egyesítése függvénnyel mindkét oszlop adataiból gyűjtheti a kulcskifejezéseket, nem csak az `comment` oszlopból.
 
-Nyissa meg a Lekérdezésszerkesztőt a Power BI Desktop ablak Kezdőlap menüszalagjának Külső adatok csoportjában a **Lekérdezések szerkesztése** parancsra kattintva. 
+A Power BI Desktopon válassza ki a **Kezdőlap** menüszalagot. A **Külső adatok** csoportban kattintson a **Lekérdezések szerkesztése** elemre.
 
 ![[A Külső adatok csoport a Kezdőlap menüszalagon]](../media/tutorials/power-bi/edit-queries.png)
 
-Ha még nem lenne bejelölve, jelölje be a „FabrikamComments” elemet a Lekérdezések listában az ablak bal oldalán.
+Ha még nincs kijelölve, jelölje ki az ablak bal oldalán a `FabrikamComments` elemet a **Lekérdezések** listában.
 
 Most jelölje be a `subject` és a `comment` oszlopot a táblázatban. Lehetséges, hogy vízszintesen görgetnie kell, hogy mindkét oszlopot elérje. Először kattintson a `subject` oszlop fejlécére, majd a Control billentyűt lenyomva tartva kattintson a `comment` oszlop fejlécére is.
 
 ![[Az egyesíteni kívánt mezők kijelölése]](../media/tutorials/power-bi/select-columns.png)
 
-Az Átalakítás menüszalag Szöveges oszlopok csoportjában kattintson az **Oszlopok egyesítése** elemre. Megjelenik az Oszlopok egyesítése párbeszédpanel.
+Válassza ki az **Átalakít** menüszalagot. A menüszalagon a **Szöveges oszlopok** csoportban kattintson az **Oszlopok egyesítése** elemre. Megjelenik az Oszlopok egyesítése párbeszédpanel.
 
 ![[Oszlopok egyesítése az Oszlopok egyesítése párbeszédpanelen]](../media/tutorials/power-bi/merge-columns.png)
 
-Az Oszlopok egyesítése párbeszédpanelen válassza a Tabulátort elválasztó karakterként, majd kattintson az **OK** gombra. Kész!
+Az Oszlopok egyesítése párbeszédpanelen válassza ki az `Tab` elválasztó karaktert, majd kattintson az **OK** gombra.
 
-Ha szeretné, az Üres elemek eltávolítása szűrővel kiszűrheti az üres üzeneteket, illetve a Tisztítás átalakítással kiszűrheti vagy eltávolíthatja a nem nyomtatható karaktereket. Ha az adatkészlet tartalmaz egy `spamscore` vagy hasonló oszlopot, ahogy a mintaadatfájl is, a „spam” megjegyzéseket kiszűrheti egy Számszűrő használatával.
+Ha szeretné, az Üres elemek eltávolítása szűrővel ki is szűrheti az üres üzeneteket, illetve az Átalakítás tisztítással eltávolíthatja a nem nyomtatható karaktereket. Ha az adatok a mintafájl `spamscore` oszlopához hasonló oszlopot tartalmaznak, akkor a Szám szűrővel kihagyhatja a „spam” megjegyzéseket.
 
-## <a name="understanding-the-api"></a>Az API ismertetése
+## <a name="understand-the-api"></a>Az API ismertetése
+<a name="UnderstandingAPI"></a>
 
-A Key Phrases API HTTP-kérésenként ezer szöveges dokumentumot tud feldolgozni. A Power BI azonban jobban szeret egyszerre egy rekordot kezelni, ezért az API-hívásaink csak egyetlen dokumentumot fognak tartalmazni. [Az API](//westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c6) a következő mezőket várja az egyes feldolgozandó dokumentumokhoz.
+A Text Analytics szolgáltatás a [Key Phrases API](//westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c6) útján egy HTTP-kéréssel legfeljebb ezer szöveges dokumentumot tud feldolgozni. A Power BI azonban jobban szereti a rekordokat egyenként kezelni, ezért az oktatóanyagban az API-hívásaink mindig csak egyetlen dokumentumot fognak tartalmazni. A Key Phrases API számára minden feldolgozandó dokumentumra a következő mezőket kell megadni.
 
 | | |
 | - | - |
-| `id`  | A dokumentum egy egyedi azonosítóját a kérésen belül. Ezt a mezőt a válasz is tartalmazza. Így ha több dokumentumot dolgoz fel, a kinyert kulcskifejezéseket könnyen társíthatja azzal a dokumentummal, amelyből származnak. Mi most kérésenként egy dokumentumot dolgozunk fel, ezért már eleve tudjuk, hogy a válasz melyik dokumentummal társítható, ezért az `id` mindegyik kérésben lehet ugyanaz.|
-| `text`  | A feldolgozandó szöveg. Ezt az általunk létrehozott `Merged` oszlopból kapjuk meg, amely a tárgysor és az üzenettörzs kombinált szövegét tartalmazza. A Key Phrases API használatához ennek az adatnak a hossza nem haladhatja meg az 5000 karaktert.|
-| `language` | A dokumentum nyelvét jelölő kód. Esetünkben mindegyik üzenet angol nyelven íródott, ezért szoftveresen rögzíthetjük az `en` nyelvet a lekérdezésben.|
+| `id`  | A dokumentum egy egyedi azonosítóját a kérésen belül. Ezt a mezőt a válasz is tartalmazza. Így több dokumentum feldolgozásakor könnyen társítani lehet a kinyert kulcskifejezéseket a dokumentummal, amelyből származnak. Az oktatóanyagban, mivel kérésenként csak egy dokumentumot dolgozunk fel, az `id` értéket fixen rögzítheti, hogy mindegyik kérésre ugyanaz legyen.|
+| `text`  | A feldolgozandó szöveg. Ennek a mezőnek az értéke az [előző részben](#PreparingData) létrehozott `Merged` oszlopból származik, amely a tárgysor és a megjegyzés kombinált szövegét tartalmazza. A Key Phrases API használatához ennek az adatnak a hossza nem haladhatja meg az 5000 karaktert.|
+| `language` | A dokumentum természetes nyelvét jelölő kód. A mintaadatokban minden üzenet angolul van, így a mezőre rögzítheti a `en` értéket.|
 
-Ezeket a mezőket kombinálnunk kell egy JSON- (JavaScript Object Notation-) dokumentumban, amelyet a Key Phrases API-ba küldünk. A kérésre kapott válasz szintén egy JSON-dokumentum lesz, amelynek az elemzésével kapjuk majd meg a kulcskifejezéseket.
+## <a name="create-a-custom-function"></a>Egyéni függvény létrehozása
+<a name="CreateCustomFunction"></a>
 
-## <a name="creating-a-custom-function"></a>Egyéni függvény létrehozása
-
-Most már készen állunk az egyéni függvény létrehozására, amely integrálja majd a Power BI-t és a Text Analytics szolgáltatást. A Power BI Desktop a függvényt a táblázat minden egyes sorára meghívja, és létrehoz egy új oszlopot az eredményekkel.
-
-A függvény a feldolgozandó szöveget paraméterként kapja meg. Az adatokat átalakítja a szükséges JavaScript Object Notation (JSON) formátumból és vissza, és elküldi a HTTP-kérést a Key Phrases API-végpontra. A válasz elemzését követően a függvény egy sztringet ad vissza, amely a kinyert kulcskifejezések vesszővel tagolt listáját tartalmazza.
+Most már készen áll az egyéni függvény létrehozására, amely integrálja majd a Power BI-t és a Text Analytics szolgáltatást. A függvény a feldolgozandó szöveget paraméterként kapja meg. Elvégzi az adatok átalakítását a szükséges JSON formára és vissza, és elküldi a HTTP-kérést a Key Phrases API-nak. A függvény elemzi az API válaszát és a kinyert kulcskifejezések vesszővel tagolt listáját tartalmazó sztringet ad vissza.
 
 > [!NOTE]
 > A Power BI Desktop egyéni függvényei a [Power Query M képletnyelven](https://msdn.microsoft.com/library/mt211003.aspx) (röviden „M”) vannak megírva. Az M egy funkcionális programozási nyelv, amelynek az alapját az [F#](https://docs.microsoft.com/dotnet/fsharp/) képezi. Az oktatóanyag elvégzéséhez azonban nem kell programozónak lennie. A szükséges kód alább megtalálható.
 
-Még mindig a Lekérdezésszerkesztő ablakában kell lennünk. A Kezdőlap menüszalagon kattintson az **Új forrás** elemre (az Új lekérdezés csoportban), és válassza az **Üres lekérdezés** lehetőséget a legördülő menüben. 
+A Power BI Desktopban ellenőrizze, hogy még a Lekérdezésszerkesztő ablakban van-e. Ha nem, válassza ki a **Kezdőlap** menüszalagot, majd a **Külső adatok** csoportban kattintson a **lekérdezések szerkesztése** elemre.
 
-Egy új lekérdezés jelenik meg a Lekérdezések listában, kezdetben Query1 néven. Kattintson duplán erre az elemre, és nevezze át a `KeyPhrases` névre.
+Most a **Kezdőlap** menüszalagon az **Új lekérdezés** csoportban nyissa meg az **Új forrás** legördülő menüt, majd válassza az **Üres lekérdezést**. 
 
-Most a Kezdőlap menüszalag Lekérdezés csoportjának **Speciális szerkesztő** elemére kattintva nyissa meg a Speciális szerkesztő ablakot. Törölje az eredetileg az ablakban lévő kódot, és illessze be a következőt. 
+Az új lekérdezés eredetileg `Query1` névvel megjelenik a Lekérdezések listában. Kattintson duplán erre az elemre, és nevezze át a `KeyPhrases` névre.
+
+Most a **Kezdőlap** menüszalag **Lekérdezés** csoportjának **Speciális szerkesztő** elemére kattintva nyissa meg a Speciális szerkesztő ablakot. Törölje az eredetileg az ablakban lévő kódot, és illessze be a következőt. 
 
 > [!NOTE]
-> Az alábbi példában úgy vesszük, hogy a végpont a https://westus.api.cognitive.microsoft.com címen érhető el.  A Text Analytics-előfizetések létrehozása 13 régióban támogatott. Ha egy ezektől eltérő régióban regisztrált a szolgáltatásra, mindenképp a kiválasztott régió végpontját használja. Ezt az Azure Portal Áttekintés lapján találja meg a Text Analytics-előfizetésre kattintva.
+> Az alábbi példák azt feltételezik, hogy a Text Analytics API végpont kezdete: `https://westus.api.cognitive.microsoft.com`. A Text Analytics az előfizetések létrehozását 13 különböző régióban támogatja. Ha egy ezektől eltérő régióban regisztrált a szolgáltatásra, mindenképp a kiválasztott régió végpontját használja. A végpont megkereséséhez jelentkezzen be az [Azure portálra](https://azure.microsoft.com/features/azure-portal/) és a Text Analytics előfizetésének kijelölése után válassza az Áttekintés lapot.
 
 ```fsharp
 // Returns key phrases from the text in a comma-separated list
@@ -122,69 +131,72 @@ Most a Kezdőlap menüszalag Lekérdezés csoportjának **Speciális szerkesztő
 in  keyphrases
 ```
 
-Illessze be továbbá a Text Analytics API-kulcsot, amelyet a Microsoft Azure irányítópultján talál az `apikey` kezdetű sorban. (A kulcs előtt és után mindenképp tartsa meg az idézőjeleket.) Ezután kattintson a **Kész** gombra.
+A `YOUR_API_KEY_HERE` helyett írja be saját Text Analytics hozzáférési kulcsát. A kulcsot megkeresheti úgy is, hogy bejelentkezik az [Azure portálra](https://azure.microsoft.com/features/azure-portal/) és a Text Analytics előfizetésének kijelölése után az Áttekintés lapot választja. A kulcs előtt és után mindenképp tartsa meg az idézőjeleket. Ezután kattintson a **Kész** gombra.
 
-## <a name="using-the-function"></a>A függvény használata
+## <a name="use-the-custom-function"></a>Egyéni függvény használata
+<a name="UseCustomFunction"></a>
 
-Most az egyéni függvény használatával kinyerhetjük az ügyfelek megjegyzéseiből a kulcskifejezéseket, és tárolhatjuk azokat a táblázat egy új oszlopában. 
+Ekkor az egyéni függvény használatával kinyerheti az ügyfelek megjegyzéseiből a kulcskifejezéseket, és eltárolhatja őket a táblázat új oszlopában. 
 
-Még mindig a Lekérdezésszerkesztőben váltson vissza a FabrikamComments lekérdezésre, váltson az Oszlop hozzáadása menüszalagra, és kattintson az Általános csoport **Egyéni függvény hívása** gombjára.
+A Power BI Desktopban, a Lekérdezésszerkesztő ablakban váltson vissza a `FabrikamComments` lekérdezésre. Válassza ki a **Oszlop hozzáadása** menüszalagot. Az **Általános** csoportban kattintson az **Egyéni függvény hívása** elemre.
 
 ![[Egyéni függvény hívása gomb]](../media/tutorials/power-bi/invoke-custom-function-button.png)<br><br>
 
-Az Egyéni függvény hívása párbeszédpanelen adja a `keyphrases` nevet az új oszlopnak. Függvénylekérdezésként válassza a `KeyPhrases` egyéni függvényt. 
+Megjelenik az Egyéni függvény hívása párbeszédablak. Az **Új oszlop neve** mezőbe írja be: `keyphrases`. A **Függvénylekérdezésnél** válassza ki a létrehozott, `KeyPhrases` egyéni függvényt.
 
-Egy új mező jelenik meg a párbeszédpanelen, amely rákérdez, hogy melyik mezőt szeretné beadni a függvénynek `text` paraméterként. Válassza a `Merged` értéket (ez az az oszlop, amelyet korábban a tárgysor és az üzenettörzs egyesítésével létrehoztunk) a legördülő menüben.
+A párbeszédpanelen új mező jelenik meg, **(nem kötelező) szöveg**. A mezőben azt kell megadnunk, mely oszlop adja a Key Phrases API `text` paraméterének az értékét. (Ne feledje, a `language` és `id` paraméterek értékeit már rögzítette.) Válassza a `Merged` értéket (ez az az oszlop, amelyet [előzőleg](#PreparingData) a tárgysor és az üzenettörzs egyesítésével létrehoztunk) a legördülő menüben.
 
 ![[Egyéni függvény hívása]](../media/tutorials/power-bi/invoke-custom-function.png)
 
 Végezetül kattintson az **OK** gombra.
 
-Ha mindennel elkészült, a Power BI a táblázat minden sorára meghívja a függvényt, végrehajtja a Key Phrases-lekérdezéseket, és hozzáadja az új oszlopot a táblázathoz. Mielőtt azonban ez megtörténne, lehetséges, hogy meg kell adnia a hitelesítési és adatvédelmi beállításokat.
+Ha minden kész, a Power BI a táblázat minden sorára meghívja egyszer az egyéni függvényt. A lekérdezéseket elküldi a Key Phrases API-nak és új oszlopot ad a táblázathoz az eredmények tárolására. Mielőtt azonban ez megtörténne, lehetséges, hogy meg kell adnia a hitelesítési és adatvédelmi beállításokat.
 
 ## <a name="authentication-and-privacy"></a>Hitelesítés és adatvédelem
+<a name="Authentication"></a>
 
-Miután bezárja az Egyéni függvény hívása párbeszédpanelt, egy értesítés jelenhet meg, amely megkéri, hogy adja meg, miként szeretne csatlakozni a Key Phrases-végponthoz.
+Miután bezárja az Egyéni függvény hívása párbeszédpanelt, egy értesítés jelenhet meg, amely megkéri, hogy adja meg, miként szeretne csatlakozni a Key Phrases API-hoz.
 
 ![[hitelesítő adatok értesítése]](../media/tutorials/power-bi/credentials-banner.png)
 
-Kattintson a **Hitelesítő adatok szerkesztése** gombra, és bizonyosodjon meg róla, hogy a párbeszédpanelen a Névtelen lehetőség van kiválasztva, majd kattintson a **Csatlakozás** parancsra. 
+Kattintson a **Hitelesítő adatok szerkesztése** gombra, majd ellenőrizze, hogy a párbeszédpanelen a `Anonymous` lehetőség legyen kiválasztva, végül kattintson a **Csatlakozás** parancsra. 
 
 > [!NOTE]
-> Miért névtelenül? A Text Analytics szolgáltatás az API-kulcs használatával hitelesíti Önt, ezért a Power BI-nak nem kell hitelesítő adatokat megadnia magához a HTTP-kéréshez.
+> Válassza az `Anonymous` elemet, mert a Text Analytics szolgáltatás a hozzáférési kulcs használatával hitelesíti Önt, ezért a Power BI-nak nem kell hitelesítő adatokat megadnia magához a HTTP-kéréshez.
 
 ![[a névtelen hitelesítés beállítása]](../media/tutorials/power-bi/access-web-content.png)
 
-Ha a Hitelesítő adatok szerkesztése értesítés a névtelen hozzáférés beállítása után is látható, elképzelhető, hogy elfelejtette bemásolni az API-kulcsot. Ellenőrizze az egyéni `KeyPhrases` függvényben a Speciális szerkesztő alatt, hogy bemásolta-e.
+Ha a Hitelesítő adatok szerkesztése értesítés a névtelen hozzáférés beállítása után is látható, elképzelhető, hogy elfelejtette bemásolni a Text Analytics hozzáférési kulcsot az `KeyPhrases` [egyéni függvény](#CreateCustomFunction) kódba.
 
 Ezután egy értesítés jelenhet meg, amely arra kéri, hogy szolgáltasson információkat az adatforrás adatainak védelmével kapcsolatban. 
 
 ![[adatvédelmi értesítés]](../media/tutorials/power-bi/privacy-banner.png)
 
-Kattintson a **Folytatás** gombra, és válassza a Nyilvános beállítást a párbeszédpanelen lévő minden adatforrásnál. Ezután kattintson a **Mentés** gombra.
+Kattintson a **Folytatás** gombra, és válassza a `Public` beállítást a párbeszédpanelen lévő minden adatforrásra. Ezután kattintson a **Mentés** gombra.
 
 ![[adatforrás adatvédelmi beállításainak megadása]](../media/tutorials/power-bi/privacy-dialog.png)
 
-## <a name="creating-the-word-cloud"></a>A szófelhő létrehozása
+## <a name="create-the-word-cloud"></a>A szófelhő létrehozása
+<a name="WordCloud"></a>
 
 Miután a megjelenő értesítéseket elintézte, kattintson a Kezdőlap menüszalag **Bezárás és alkalmazás** elemére a Lekérdezésszerkesztő bezárásához.
 
 A Power BI Desktop néhány pillanatig a szükséges HTTP-kérésekkel lesz elfoglalva. A táblázat mindegyik sorához az új `keyphrases` oszlopban találhatók a szövegben a Key Phrases API által talált kulcskifejezések. 
 
-Ennek az oszlopnak a használatával hozzunk létre egy szövegfelhőt. Első lépésként kattintson a Jelentés gombra a Power BI Desktop főablakában, a munkaterület bal oldalán.
+Most pedig ezzel az oszloppal létrehozunk egy szófelhőt. Első lépésként kattintson a **Jelentés** gombra a Power BI Desktop főablakában, a munkaterület bal oldalán.
 
 > [!NOTE]
 > Miért a kivonatolt kulcskifejezéseket használjuk a szófelhő létrehozásához a megjegyzések teljes szövege helyett? A kulcskifejezések az ügyfelek megjegyzéseiből a *fontos* és nem egyszerűen csak a *leggyakoribb* szavakat tartalmazzák. Emellett a szavak méretezését így nem torzítja az, ha valamely szó csak szűk számú megjegyzésben fordul elő nagyon gyakran.
 
-Ha a Word Cloud (Szófelhő) egyéni vizualizációt még nem telepítette, tegye meg. A munkaterület jobb oldalán lévő Vizualizációk panelen kattintson a három pontra (**...**), és válassza az **Importálás az áruházból** lehetőséget. Ezután keressen rá a „cloud” (felhő) kifejezésre, és kattintson a **Hozzáadás** gombra a Word Cloud (Szófelhő) vizualizáció mellett. A Power BI telepíti a vizualizációt, és tájékoztatja, amint ez sikeresen megtörtént.
+Ha a Word Cloud (Szófelhő) egyéni vizualizációt még nem telepítette, tegye meg. A munkaterület jobb oldalán lévő Vizualizációk panelen kattintson a három pontra (**...**), és válassza az **Importálás az áruházból** lehetőséget. Ezután keressen rá a „cloud” (felhő) kifejezésre, és kattintson a **Hozzáadás** gombra a Word Cloud (Szófelhő) vizualizáció mellett. A Power BI telepíti a szófelhő vizualizációt, és tájékoztatja, amint ez sikeresen megtörtént.
 
 ![[egyéni vizualizáció hozzáadása]](../media/tutorials/power-bi/add-custom-visuals.png)<br><br>
 
-És most végre hozzuk létre azt a szófelhőt!
+Először kattintson a szófelhő ikonjára a Vizualizációk panelen.
 
 ![[A szófelhő ikonja a Vizualizációk panelen]](../media/tutorials/power-bi/visualizations-panel.png)
 
-Először kattintson a szófelhő ikonjára a Vizualizációk panelen. Egy új jelentés jelenik meg a munkaterületen. Húzza a `keyphrases` mezőt a Mezők panelről a Vizualizációk panel Kategória mezőjébe. A szófelhő megjelenik a jelentésben.
+Egy új jelentés jelenik meg a munkaterületen. Húzza a `keyphrases` mezőt a Mezők panelről a Vizualizációk panel Kategória mezőjébe. A szófelhő megjelenik a jelentésben.
 
 Most váltson a Vizualizációk panel Formátum lapjára. A Stopszavak kategóriában kapcsolja be az **Alapértelmezett stopszavak** beállítást a rövid és gyakori szavak (például a névelők) kiszűréséhez a felhőből. 
 
@@ -199,10 +211,11 @@ A jelentésben a Fókusz mód eszközre kattintva közelebbről is megtekintheti
 ![[Egy szófelhő]](../media/tutorials/power-bi/word-cloud.png)
 
 ## <a name="more-text-analytics-services"></a>A Text Analytics további szolgáltatásai
+<a name="MoreServices"></a>
 
 A Text Analytics szolgáltatás a Microsoft Azure Cognitive Services szolgáltatásainak egyike, és hangulatelemzési és nyelvfelismerési funkciókat is kínál. A nyelvfelismerés különösen hasznos, ha az ügyfelek visszajelzései nem mind angol nyelven születnek.
 
-Mindkét további API hasonlóan működik, mint a Key Phrases API. Ezért közel azonos egyéni függvények használhatók ezek a Power BI Desktopba való integrálásához is. Csak hozzon létre egy üres lekérdezést, és illessze be a megfelelő kódot az alábbiak közül a Speciális szerkesztőbe a korábbihoz hasonló módon. (Ne feledkezzen meg a hozzáférési kulcsról!) Ezután, ahogy korábban is, adjon hozzá egy új oszlopot a táblázathoz a függvény használatával.
+Mindkét további API hasonlóan működik, mint a Key Phrases API. Ez azt jelenti, hogy a Power BI Desktoppal integrálni tudja majd őket olyan egyéni függvénnyel, amely majdnem megegyezik az oktatóanyagban létrehozottal. Csak hozzon létre egy üres lekérdezést, és illessze be a megfelelő kódot az alábbiak közül a Speciális szerkesztőbe a korábbihoz hasonló módon. (Ne feledkezzen meg a hozzáférési kulcsról!) Ezután, ahogy korábban is, adjon hozzá egy új oszlopot a táblázathoz a függvény használatával.
 
 Az alábbi hangulatelemzési függvény egy pontszámot ad vissza, amely a szövegben kifejezett hangulatot méri.
 
@@ -224,7 +237,7 @@ in  sentiment
 Íme két változat egy nyelvfelismerési függvényre. Az első a nyelv ISO-kódját adja vissza (például az angol esetében: `en`), a második pedig a közkeletű nevét (például: `English`). Észreveheti, hogy a két változat között csak a törzs utolsó sorában van eltérés.
 
 ```fsharp
-// Returns the two-letter language code (e.g. en for English) of the text
+// Returns the two-letter language code (for example, 'en' for English) of the text
 (text) => let
     apikey      = "YOUR_API_KEY_HERE",
     endpoint    = "https://westus.api.cognitive.microsoft.com/text/analytics/v2.0/languages",
@@ -238,7 +251,7 @@ in  sentiment
 in  language
 ```
 ```fsharp
-// Returns the name (e.g. English) of the language in which the text is written
+// Returns the name (for example, 'English') of the language in which the text is written
 (text) => let
     apikey      = "YOUR_API_KEY_HERE",
     endpoint    = "https://westus.api.cognitive.microsoft.com/text/analytics/v2.0/languages",
@@ -273,6 +286,7 @@ in  keyphrases
 ```
 
 ## <a name="next-steps"></a>További lépések
+<a name="NextSteps"></a>
 
 További információk a Text Analytics szolgáltatásról, a Power Query M képletnyelvről és a Power BI-ról.
 

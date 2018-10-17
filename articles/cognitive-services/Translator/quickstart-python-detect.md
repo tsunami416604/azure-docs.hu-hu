@@ -1,21 +1,21 @@
 ---
-title: 'Translator Text: Nyelv azonosítása szövegből a Python használatával | Microsoft Docs'
-titleSuffix: Microsoft Cognitive Services
-description: Ebben a rövid útmutatóban felismeri a forrásszöveg nyelvét a Translator Text API segítségével és a Python használatával a Cognitive Servicesben.
+title: 'Rövid útmutató: Szöveg nyelvének azonosítása – Translator Text, Python'
+titleSuffix: Azure Cognitive Services
+description: Ebben a rövid útmutatóban felismeri a forrásszöveg nyelvét a Translator Text API és Python segítségével.
 services: cognitive-services
 author: noellelacharite
-manager: nolachar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-text
 ms.topic: quickstart
 ms.date: 06/21/2018
 ms.author: nolachar
-ms.openlocfilehash: 07a16e419bfdd4d73108fcdaa12695e99fecabee
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
+ms.openlocfilehash: 31fb36421dd2aef21f77b4941771e4d3db813730
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "43769601"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46125000"
 ---
 # <a name="quickstart-identify-language-from-text-with-python"></a>Rövid útmutató: Szöveg nyelvének azonosítása Python használatával
 

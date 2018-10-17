@@ -1,5 +1,5 @@
 ---
-title: Felügyelt identitásokat használ az Azure-erőforrásokhoz az Azure Cloud Shellben |} A Microsoft Docs
+title: Felügyelt identitások használata az Azure-erőforrásokhoz az Azure Cloud Shellben |} A Microsoft Docs
 description: Hitelesítés a kódot az Azure Cloud Shellben MSI-vel
 services: azure
 documentationcenter: ''
@@ -14,21 +14,21 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/14/2018
 ms.author: juluk
-ms.openlocfilehash: 09f54efaf3ff89711c34b7960a271438f38cf224
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: fe77deeedc34bf769065e34ac2f81d631b0004d6
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/16/2018
-ms.locfileid: "49345084"
+ms.locfileid: "49352948"
 ---
-# <a name="use-msi-in-azure-cloud-shell"></a>Az MSI használata az Azure Cloud Shellben
+# <a name="use-managed-identities-for-azure-resources-in-azure-cloud-shell"></a>Az Azure-erőforrásokhoz az Azure Cloud Shellben használja a felügyelt identitásokból
 
-Az Azure Cloud Shell támogatja a engedélyezési a Felügyeltszolgáltatás identitás (MSI). Ez a hozzáférési jogkivonatok biztonságosan kommunikáljon az Azure-szolgáltatások használatára.
+Az Azure Cloud Shell engedélyezés és a felügyelt identitásokból támogatja az Azure-erőforrásokhoz. Ez a hozzáférési jogkivonatok biztonságosan kommunikáljon az Azure-szolgáltatások használatára.
 
-## <a name="about-managed-service-identity-msi"></a>Tudnivalók a Felügyeltszolgáltatás-identitás (MSI)
+## <a name="about-managed-identities-for-azure-resources"></a>Tudnivalók az Azure-erőforrások felügyelt identitásairól
 Ha a felhőbeli alkalmazások készítése a hitelesítő adatok biztonságos kezelése közös kihívást, amely kell lenniük a kódban, a cloud serviceshez hitelesítéséhez. A Cloud Shellben szükség lehet a hitelesítő adatait, amely egy szkript szükség lehet a Key Vaultból lekérés hitelesítéséhez.
 
-A felügyeltszolgáltatás-identitás (MSI) segít leegyszerűsíteni ezt a problémát, mivel az Azure-szolgáltatások számára egy automatikusan felügyelt identitást biztosít az Azure Active Directoryban (Azure AD-ben). Ezzel az identitással bármely, az Azure AD-hitelesítést támogató szolgáltatásban, többek között a Key Vaultban is elvégezheti a hitelesítést anélkül, hogy a hitelesítő adatokat a kódban kellene tárolnia.
+Felügyelt identitások az Azure-erőforrások így egyszerűbb a probléma megoldására azzal, hogy az Azure-szolgáltatások automatikusan felügyelt identitás az Azure Active Directoryban (Azure AD). Ezzel az identitással bármely, az Azure AD-hitelesítést támogató szolgáltatásban, többek között a Key Vaultban is elvégezheti a hitelesítést anélkül, hogy a hitelesítő adatokat a kódban kellene tárolnia.
 
 ## <a name="acquire-access-token-in-cloud-shell"></a>A Cloud Shellben a hozzáférési jogkivonat beszerzése
 

@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.component: users-groups-roles
 ms.topic: get-started-article
-ms.date: 09/07/2017
+ms.date: 09/11/2018
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
-ms.openlocfilehash: 8254f6c72141f7a9babfc5af3c319e7e66f30bbf
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 7966705df2a352f2011d5f7611277e92d8e2d11a
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37448669"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46294237"
 ---
 # <a name="set-up-azure-active-directory-for-self-service-group-management"></a>Az Azure Active Directory beállítása önkiszolgáló csoportkezelésre
 A felhasználók saját biztonsági vagy Office 365-csoportokat hozhatnak létre és kezelhetnek az Azure Active Directoryban (Azure AD-ben). A felhasználók ezenkívül biztonsági és Office 365-csoporttagságot igényelhetnek, amelyet ezután a csoport tulajdonosa elfogadhat vagy elutasíthat. A csoporttagság napi szintű felügyelete olyan személyeknek adható ki, akik tisztában vannak az adott tagság üzleti környezetével. Az önkiszolgáló csoportkezelési szolgáltatások kizárólag biztonsági és Office 365-csoportok esetében érhetőek el, levelezési címmel rendelkező biztonsági csoportok vagy terjesztési listák esetében nem.
@@ -46,6 +46,6 @@ E cikkekben további információk találhatók az Azure Active Directoryval kap
 
 * [Erőforrások hozzáférésének kezelése Azure Active Directory-csoportokkal](../fundamentals/active-directory-manage-groups.md)
 * [Azure Active Directory-parancsmagok csoportbeállítások konfigurálásához](groups-settings-cmdlets.md)
-* [Az Azure Active Directory segítségével végzett alkalmazásfelügyeletre vonatkozó cikkek jegyzéke](../active-directory-apps-index.md)
+* [Alkalmazáskezelés az Azure Active Directory használatával](../manage-apps/what-is-application-management.md)
 * [Mi az az Azure Active Directory?](../fundamentals/active-directory-whatis.md)
-* [Helyszíni identitások integrálása az Azure Active Directoryval](../connect/active-directory-aadconnect.md)
+* [Helyszíni identitások integrálása az Azure Active Directoryval](../hybrid/whatis-hybrid-identity.md)

@@ -12,14 +12,14 @@ ms.author: genemi
 ms.reviewer: billgib, stein
 manager: craigg
 ms.date: 04/02/2018
-ms.openlocfilehash: b91960920f0181939e634a221080d493fb8cea63
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.openlocfilehash: ff09a5f09393ad642ddb2059b58bd69a17591aff
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47056658"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49352211"
 ---
-# <a name="deploy-and-explore-a-sharded-multi-tenant-application-that-uses-azure-sql-database"></a>Üzembe helyezése és megismerése a horizontálisan skálázott több-bérlős alkalmazás, amely az Azure SQL Database
+# <a name="deploy-and-explore-a-sharded-multi-tenant-application"></a>Üzembe helyezése és megismerése a horizontálisan skálázott több-bérlős alkalmazás
 
 Ebben az oktatóanyagban üzembe helyezése és a egy több-bérlős SaaS-mintaalkalmazás Wingtip Tickets nevű megismerése. A Wingtip Tickets alkalmazás az Azure SQL Database SaaS-forgatókönyveket végrehajtásának egyszerűsítő szolgáltatásairól bemutatására lett tervezve.
 
@@ -27,7 +27,7 @@ Ez a megvalósítás a Wingtip Tickets alkalmazás egy több-bérlős szilánkok
 
 Az adatbázis minta lehetővé teszi az egyes szegmensek vagy az adatbázis egy vagy több bérlő tárolja. Mindegyik adatbázis több bérlő közösen sablonkonfigurációkat optimalizálhatja legalacsonyabb költségek mellett. Vagy minden egyes adatbázis, tárolására kizárólag egy bérlővel rendelkező szerint optimalizálhatja az elkülönítést. Optimalizálás tetszőleges minden egyes bérlők egymástól függetlenül lehet tenni. A választott lehet tenni, amikor a bérlő első tárolja, és később is megváltoztatja döntését. Az alkalmazás jól mindkét módszer tervezték.
 
-#### <a name="app-deploys-quickly"></a>Alkalmazás üzembe gyorsan
+## <a name="app-deploys-quickly"></a>Alkalmazás üzembe gyorsan
 
 Az alkalmazás az Azure-felhőben fut, és az Azure SQL Database. A következő központi telepítési szakasz biztosít a kék **üzembe helyezés az Azure** gombra. A gomb megnyomásakor az alkalmazás teljes mértékben telepítve van az Azure-előfizetéshez legalább öt perccel. Dolgozunk az egyes alkalmazás-összetevők teljes hozzáféréssel rendelkezik.
 
@@ -35,7 +35,7 @@ Az alkalmazás három minta bérlővel az adatok van telepítve. Egy több-bérl
 
 A Wingtip Tickets bárki tölthetnek le a C# és PowerShell forráskód [a GitHub-adattár][link-github-wingtip-multitenantdb-55g].
 
-#### <a name="learn-in-this-tutorial"></a>Ismerje meg, ez az oktatóanyag
+## <a name="learn-in-this-tutorial"></a>Ismerje meg, ez az oktatóanyag
 
 > [!div class="checklist"]
 > - A Wingtip Tickets SaaS-alkalmazás telepítésének módjáról.
@@ -55,15 +55,15 @@ Az oktatóanyag teljesítéséhez meg kell felelnie az alábbi előfeltételekne
 
 ## <a name="deploy-the-wingtip-tickets-app"></a>Üzembe helyezése a Wingtip Tickets alkalmazás
 
-#### <a name="plan-the-names"></a>A nevek megtervezése
+### <a name="plan-the-names"></a>A nevek megtervezése
 
 Ez a szakasz a lépések adjon meg egy *felhasználói* érték, amely annak biztosítása érdekében, erőforrásnevek globálisan egyedi, és a egy nevet a *erőforráscsoport* központi telepítés által létrehozott összes erőforrást tartalmazó az alkalmazás. Nevű személy *Reino Finley*, javasoljuk, hogy:
-- *Felhasználó:* **af1***(saját monogramját és egy számjegy.   Használjon egy másik értéket (pl. af2) másodszor az alkalmazás telepítésekor.)*
+- *Felhasználó:* **af1***(saját monogramját és egy számjegy. Használjon egy másik értéket (pl. af2) másodszor az alkalmazás telepítésekor.)*
 - *Erőforráscsoport:* **wingtip-mt-af1** *(wingtip-mt azt jelzi, hogy ez az a horizontálisan skálázott több-bérlős alkalmazást. A felhasználó neve af1 hozzáfűzése utal. az erőforráscsoport nevét a benne található erőforrást neveinek.)*
 
 Most válassza ki a nevét, és írja le. 
 
-#### <a name="steps"></a>Lépések
+### <a name="steps"></a>Lépések
 
 1. Kattintson a következő kék **üzembe helyezés az Azure** gombra.
     - A Wingtip Tickets SaaS központi telepítési sablont nyílik az Azure Portalon.
@@ -133,7 +133,7 @@ Egy központi **Eseményközpont** weblapra mutató hivatkozásokat biztosít az
 
    ![Események](./media/saas-multitenantdb-get-started-deploy/fabrikam.png)
 
-#### <a name="azure-traffic-manager"></a>Azure Traffic Manager
+### <a name="azure-traffic-manager"></a>Azure Traffic Manager
 
 Bejövő kérelmek elosztását, a Wingtip alkalmazás által használt [Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md). Az események lapról, az egyes bérlők számára az URL-CÍMÉT a bérlő nevét tartalmazza. Minden egyes URL-cím tartalmazza az adott felhasználó értékét is. Minden egyes URL-cím obeys a megjelenített formátum a következő lépésekkel:
 
@@ -144,7 +144,7 @@ Bejövő kérelmek elosztását, a Wingtip alkalmazás által használt [Azure T
 3. Az alkalmazás megkeresi a kulcsot a katalógusban, és kéri le a bérlői adatbázis megfelelő helyét.
 4. Az alkalmazás használ az adatok keresése és a egy adatbázis, amely tartalmazza az összes adatot a bérlő eléréséhez.
 
-#### <a name="events-hub"></a>Eseményközpont
+### <a name="events-hub"></a>Eseményközpont
 
 1. A **Eseményközpont** a bérlőket a katalógusban, és a helyszínek regisztrált sorolja fel.
 2. A **Eseményközpont** bővebb metaadatokat használ a katalógus lekérni a bérlő nevét társított minden egyes hozhatnak létre az URL-címek hozzárendelését.
@@ -185,6 +185,7 @@ Frissítse a **Eseményközpont**, és az új bérlő mostantól megjelennek a l
 ## <a name="provision-a-new-tenant-in-its-own-database"></a>A saját adatbázisát egy új bérlő kiépítése
 
 A horizontálisan skálázott több-bérlős modell segítségével döntse el, hogy egy új bérlő kiépítése az adatbázis tartalmazza a többi bérlő, vagy a saját adatbázisát. A bérlő egy elkülönített a saját adatbázisban a következő előnyöket élvezi:
+
 - A bérlői adatbázis teljesítményét a többi bérlő igényekkel rendelkező veszélyeztetheti anélkül is felügyelhetők.
 - Ha szükséges, az adatbázis is visszaállítható egy korábbi időpontra időben, mert nincs más bérlők befolyásolhat.
 
@@ -221,7 +222,6 @@ Most megnézzük egyes üzembe helyezett erőforrások:
 
    ![bérlők kiszolgáló](./media/saas-multitenantdb-get-started-deploy/tenants-server.png)
 
-
 ## <a name="monitor-the-performance-of-the-database"></a>Az adatbázis teljesítményének figyelése
 
 Ha a terhelésgenerátor több percig futott, és tekintse meg az adatbázis-figyelési képességek az Azure portal beépített elég telemetriai adat érhető el.
@@ -238,7 +238,7 @@ Ha a terhelésgenerátor több percig futott, és tekintse meg az adatbázis-fig
 
 A terhelésgenerátor egy hasonló terhelést alkalmaz minden bérlő számára, függetlenül attól, mely az adatbázis minden egyes bérlő szerepel. A kizárólag egy bérlővel rendelkező a **salixsalsa** adatbázis, láthatja, hogy az adatbázis egy sokkal magasabb terhelés, mint az adatbázis több bérlő meghibásodást képes. 
 
-#### <a name="resource-allocations-vary-by-workload"></a>Erőforrás-hozzárendelések eltérőek lehetnek a munkaterhelés szerint
+### <a name="resource-allocations-vary-by-workload"></a>Erőforrás-hozzárendelések eltérőek lehetnek a munkaterhelés szerint
 
 Néha egy több-bérlős adatbázisban több erőforrást a jó teljesítmény, mint egy egybérlős adatbázis igényel, de nem mindig. Az erőforrások optimális elosztását függ az adott számítási feladatok jellemzői a bérlők számára a rendszer.
 
@@ -249,8 +249,9 @@ A terhelést létrehozó szkripthez által létrehozott munkaterhelések vannak,
 - Több-bérlős SaaS-alkalmazások kapcsolatos további információkért lásd: [tervezési minták több-bérlős SaaS-alkalmazások](saas-tenancy-app-design-patterns.md).
 
 - Rugalmas készletek kapcsolatos további információkért lásd:
-    - [Rugalmas készletek kezelése és a több Azure SQL-adatbázisok horizontális Súgó](sql-database-elastic-pool.md)
-    - [Horizontális felskálázás az Azure SQL Database segítségével](sql-database-elastic-scale-introduction.md)
+
+  - [Rugalmas készletek kezelése és a több Azure SQL-adatbázisok horizontális Súgó](sql-database-elastic-pool.md)
+  - [Horizontális felskálázás az Azure SQL Database segítségével](sql-database-elastic-scale-introduction.md)
 
 ## <a name="next-steps"></a>További lépések
 

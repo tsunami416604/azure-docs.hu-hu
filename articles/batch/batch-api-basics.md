@@ -15,12 +15,12 @@ ms.workload: big-compute
 ms.date: 08/22/2018
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f1c933c9dcb3e3e2c2cb267073386d4b9c4e2022
-ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
+ms.openlocfilehash: 8b6e543a4835410368e752e70e7e8cb6d8805c0e
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/23/2018
-ms.locfileid: "42746018"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45735579"
 ---
 # <a name="develop-large-scale-parallel-compute-solutions-with-batch"></a>Nagy léptékű párhuzamos számítási megoldások fejlesztése a Batch segítségével
 
@@ -79,11 +79,13 @@ Több Batch számítási feladatot is futtathat egyetlen Batch-fiókon, de el is
 
 Az erőforrásfájlok és a kimeneti fájlok tárolására a legtöbb Batch-megoldás az Azure Storage-ot használja. Például a Batch-tevékenységek (beleértve a szabványos, az indítási, a feladat-előkészítési és a feladatkiadási tevékenységeket) általában olyan erőforrásfájlokat határoznak meg, amelyek egy tárfiókban találhatók.
 
-A Batch az alábbi [Azure Storage-fiókokat](../storage/common/storage-account-options.md) támogatja:
+A Batch az alábbi Azure Storage-fiókokat támogatja:
 
 * Általános célú v2- (GPv2-) fiók 
 * Általános célú v1- (GPv1-) fiók
 * Blob Storage-fiókok (jelenleg a virtuálisgép-konfigurációban lévő készletek esetén támogatott)
+
+További információ a tárfiókokról: [Az Azure-tárfiókok áttekintése](../storage/common/storage-account-overview.md).
 
 A Batch-fiókhoz a Batch-fiók létrehozásakor vagy később is társíthat tárfiókot. Tárfiók kiválasztásakor vegye figyelembe a költségekre és teljesítményre vonatkozó követelményeket. A GPv2 és a Blob-tárfiók például magasabb [kapacitási és méretezhetőségi korlátokat](https://azure.microsoft.com/blog/announcing-larger-higher-scale-storage-accounts/) támogat a GPv1-hez képest. (Ha növelni szeretné a tárolási kapacitást, lépjen kapcsolatba az Azure ügyfélszolgálatával.) Ezek a fiókok növelhetik azon Batch-megoldások teljesítményét, amelyek a tárfiókba író vagy abból olvasó, nagy mennyiségű párhuzamos feladatot tartalmaznak.
 
@@ -540,7 +542,7 @@ Olyan esetekben, ahol néhány tevékenység meghiúsul, a Batch ügyfélalkalma
 [net_rdpfile]: https://msdn.microsoft.com/library/azure/Mt272127.aspx
 [vnet]: https://msdn.microsoft.com/library/azure/dn820174.aspx#bk_netconf
 
-[py_add_user]: https://docs.microsoft.com/en-us/python/azure/?view=azure-python
+[py_add_user]: https://docs.microsoft.com/python/azure/?view=azure-python
 
 [batch_rest_api]: https://msdn.microsoft.com/library/azure/Dn820158.aspx
 [rest_add_job]: https://msdn.microsoft.com/library/azure/mt282178.aspx

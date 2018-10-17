@@ -1,52 +1,53 @@
 ---
-title: A Custom Vision Service használata a C#-alkalmazás – az Azure Cognitive Services |} A Microsoft Docs
-description: Egy egyszerű C# alkalmazást, amely a Custom Vision API a Microsoft Cognitive Services bemutatása. Hozzon létre egy projektet, adja hozzá a címkéket, tölthet fel képeket, a projekt betanítását és az alapértelmezett végpont az előrejelzést.
+title: 'Oktatóanyag: Windows-alkalmazás készítése Custom Vision szolgáltatáshoz C# nyelven'
+titlesuffix: Azure Cognitive Services
+description: Hozzon létre projektet, adjon hozzá címkéket, töltsön fel képeket, tanítsa be a projektet és adjon előrejelzést az alapértelmezett végpont használatával.
 services: cognitive-services
 author: anrothMSFT
-manager: corncar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: custom-vision
-ms.topic: article
+ms.topic: tutorial
 ms.date: 05/03/2018
 ms.author: anroth
-ms.openlocfilehash: d3c2ffb0fd9578458bd07241eed4a87cf70d3c3c
-ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
-ms.translationtype: MT
+ms.openlocfilehash: 9e5ed71d4620f7ffeac8acb15f90d67964a86870
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42617434"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46366641"
 ---
-# <a name="use-the-custom-vision-service-from-a-c35-application"></a>Használja a-C, a Custom Vision Service&#35; alkalmazás
+# <a name="tutorial-use-the-custom-vision-service-from-a-c-application"></a>Oktatóanyag: Custom Vision Service használata C# alkalmazásból
 
-Ismerje meg, hogyan használhatja a Custom Vision Service, a C#-alkalmazás. A létrehozást követően, is címkéket adhat hozzá, tölthet fel képeket, betanítását a projektet, a projekt alapértelmezett előrejelzési végpont URL-cím és ezt a végpont programozott módon képet. A nyílt forráskódú példa sablonként használni a saját alkalmazás létrehozásához a Windows a Custom Vision Service API használatával.
+Ismerje meg hogyan történhet a Custom Vision Service használata C# alkalmazásból. Miután elkészült, adhat hozzá címkéket, tölthet fel képeket, betaníthatja a projektet, megkaphatja a projekt alapértelmezett előrejelzési végpont URL-címét és ezt a végpontot felhasználhatja kép programozott tesztelésére. Ez a nyílt forráskódú példa sablonként használható saját, Custom Vision Service API használatával készülő Windows alkalmazásaihoz.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* A Visual Studio 2017, a Windows valamelyik kiadása.
+* A Visual Studio 2017 bármely kiadása Windowsra.
 
-## <a name="get-the-custom-vision-sdk-and-samples"></a>Az egyéni Látástechnológiai SDK és minták
-Ebben a példában hozhat létre, az egyéni Látástechnológiai SDK NuGet-csomagok szükségesek:
+## <a name="get-the-custom-vision-sdk-and-samples"></a>A Custom Vision SDK és példák letöltése
+A példa elkészítéséhez szüksége lesz a Custom Vision SDK NuGet-csomagokra:
 
 * [Microsoft.Azure.CognitiveServices.Vision.CustomVision.Training](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.CustomVision.Training/)
 * [Microsoft.Azure.CognitiveServices.Vision.CustomVision.Prediction](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.CustomVision.Prediction/)
 
-A képek, valamint letöltheti a [C# minták](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/CustomVision).
+A képeket letöltheti a [C# példákkal](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/CustomVision) együtt.
 
-## <a name="get-the-training-and-prediction-keys"></a>A betanítási és Predikciós kulcsok beolvasása
+## <a name="get-the-training-and-prediction-keys"></a>A betanítási és előrejelzési kulcsok letöltése
 
-Ebben a példában használt kulcsok beszerzéséhez látogasson el a [Custom Vision weblap](https://customvision.ai) , és válassza ki a __fogaskerék ikont__ kattintson a jobb felső sarokban. Az a __fiókok__ területén másolja a __képzési kulcs__ és __előrejelzési kulcs__ mezőket.
+Az ebben a példában használt kulcsok megszerzéséhez látogasson el a [Custom Vision weboldalra](https://customvision.ai), válassza ki a __fogaskerék ikont__ a jobb felső sarokban. A __Fiókok__ területen másolja ki a __Betanítási kulcs__ és __Előrejelzési kulcs__ mezők értékeit.
 
-![A felhasználói felület kulcsok képe](./media/csharp-tutorial/training-prediction-keys.png)
+![A kulcsok felhasználói felület képe](./media/csharp-tutorial/training-prediction-keys.png)
 
 ## <a name="understand-the-code"></a>A kód értelmezése
 
-A Visual Studióban nyissa meg a projekt található a `Samples/CustomVision.Sample/` az SDK projekt könyvtárába.
+A Visual Studióban nyissa meg az SDK projekt `Samples/CustomVision.Sample/` könyvtárában található projektet.
 
-Ez az alkalmazás használ a betanítási kulcs nevű új projekt létrehozásához korábban lekért __saját új projekt__. Ezután feltölti a lemezképeket taníthat vagy tesztelhet egy osztályozó által igénybe vett. Az osztályozó által igénybe vett azonosítja egy fa-e egy __Hemlock__ vagy egy __japán cseresznye__.
+Ez az alkalmazás a korábban lekért betanítási kulcsot használva létrehozza a __My New Projekt__ nevű új projektet. Utána feltölti a képeket az osztályozó tanítására és kipróbálására. Az osztályozó azonosítja, hogy a fa __kanadai fenyő__ vagy __japán cseresznye__-e.
 
-Az alábbi kódrészleteket megvalósítása ebben a példában az elsődleges funkciója:
+A példa fő funkcióit az alábbi kódrészlet valósítja meg:
 
-* __Hozzon létre egy új Custom Vision Service-projektet__:
+* __Új Custom Vision Service-projekt létrehozása__:
 
     ```csharp
      // Create a new project
@@ -62,7 +63,7 @@ Az alábbi kódrészleteket megvalósítása ebben a példában az elsődleges f
     var japaneseCherryTag = trainingApi.CreateTag(project.Id, "Japanese Cherry");
     ```
 
-* __Töltse fel és címkézhet meg képeket__:
+* __Képek feltöltése és címkézése__:
 
     ```csharp
     // Add some images to the tags
@@ -83,7 +84,7 @@ Az alábbi kódrészleteket megvalósítása ebben a példában az elsődleges f
     trainingApi.CreateImagesFromFiles(project.Id, new ImageFileCreateBatch(imageFiles, new List<Guid>() { japaneseCherryTag.Id }));
     ```
 
-* __Az osztályozó által igénybe vett betanításához__:
+* __Az osztályozó betanítása__:
 
     ```csharp
     // Now there are images with tags start training the project
@@ -100,7 +101,7 @@ Az alábbi kódrészleteket megvalósítása ebben a példában az elsődleges f
     }
     ```
 
-* __Állítsa be az előrejelzési végpont egy alapértelmezett iteráció__:
+* __Alapértelmezett iteráció beállítása az előrejelzési végpontra__:
 
     ```csharp
     // The iteration is now trained. Make it the default project endpoint
@@ -109,7 +110,7 @@ Az alábbi kódrészleteket megvalósítása ebben a példában az elsődleges f
     Console.WriteLine("Done!\n");
     ```
 
-* __Hozzon létre egy előrejelzési végpontot__:
+* __Előrejelzési végpont létrehozása__:
  
     ```csharp
     // Create a prediction endpoint, passing in obtained prediction key
@@ -132,21 +133,21 @@ Az alábbi kódrészleteket megvalósítása ebben a példában az elsődleges f
 
 ## <a name="run-the-application"></a>Az alkalmazás futtatása
 
-1. A következő módosításokat a betanítási és Predikciós kulcsok hozzáadni az alkalmazáshoz:
+1. A következő módosításokkal adja hozzá a betanítási és előrejelzési kulcsokat az alkalmazáshoz:
 
-    * Adja hozzá a __képzési kulcs__ a következő sort:
+    * Adja hozzá a __betanítási kulcsot__ a következő sorba:
 
         ```csharp
         string trainingKey = "<your key here>";
         ```
 
-    * Adja hozzá a __előrejelzési kulcs__ a következő sort:
+    * Adja hozzá az __előrejelzési kulcsot__ a következő sorba:
 
         ```csharp
         string predictionKey = "<your key here>";
         ```
 
-2. Futtassa az alkalmazást. Az alkalmazás futása íródik a következő kimenetet a konzolon:
+2. Futtassa az alkalmazást. Az alkalmazás futása közben a következő kimenet írja ki a konzolra:
 
     ```
     Creating new project:
@@ -159,4 +160,4 @@ Az alábbi kódrészleteket megvalósítása ebben a példában az elsődleges f
             Japanese Cherry: 0.0%
     ```
 
-3. Nyomja le bármelyik billentyűt Kilépés az alkalmazásból.
+3. Az alkalmazásból történő kilépéshez nyomjon meg egy billentyűt.

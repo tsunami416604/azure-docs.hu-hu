@@ -1,19 +1,21 @@
 ---
-title: 'Rövid útmutató: A Bing Web Search API meghívása a Java segítségével'
+title: 'Rövid útmutató: Keresés Java használatával – Bing Web Search API'
+titleSuffix: Azure Cognitive Services
 description: Ebből a rövid útmutatóból megtudhatja, hogyan hozhatja létre első Bing Web Search API-hívását a Java használatával, majd hogyan fogadhatja a JSON-választ.
 services: cognitive-services
 author: erhopf
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-web-search
 ms.topic: quickstart
 ms.date: 8/16/2018
 ms.author: erhopf
-ms.openlocfilehash: 8d3e01aef8efdf1503ad7056220e0cba9fb38ed3
-ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
+ms.openlocfilehash: e0c1a038a0d63bcae8620c89462bdecfd88d8227
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42888224"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46121974"
 ---
 # <a name="quickstart-use-java-to-call-the-bing-web-search-api"></a>Rövid útmutató: A Bing Web Search API meghívása a Java segítségével  
 

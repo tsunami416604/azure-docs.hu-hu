@@ -10,12 +10,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.component: B2C
-ms.openlocfilehash: 54ddafbf0e4fe02bfc1445aad23ac3e20b42acb0
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: efe975fa4f89a262faef82df3cc79820d393b60e
+ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43339386"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45605759"
 ---
 # <a name="tutorial-grant-access-to-an-aspnet-core-web-api-from-a-single-page-app-using-azure-active-directory-b2c"></a>Oktatóanyag: ASP.NET Core webes API-hoz való hozzáférés engedélyezése egy egyoldalas alkalmazásból az Azure Active Directory B2C használatával
 
@@ -46,9 +46,9 @@ Jelentkezzen be az [Azure Portalra](https://portal.azure.com/) az Azure AD B2C-b
 
 [!INCLUDE [active-directory-b2c-switch-b2c-tenant](../../includes/active-directory-b2c-switch-b2c-tenant.md)]
 
-1. Az Azure Portalon válassza az **Azure AD B2C** lehetőséget a szolgáltatások listájából.
+1. Válassza az Azure Portal bal felső sarkában található **Minden szolgáltatás** lehetőséget, majd keresse meg és válassza ki az **Azure AD B2C**-t. Ha sikerült, akkor most az előző oktatóanyagban létrehozott bérlőt használja.
 
-2. A B2C beállításaiban kattintson az **Alkalmazások**, majd a **Hozzáadás** lehetőségre.
+2. Válassza az **Alkalmazások**, majd a **Hozzáadás** elemet.
 
     A mintául szolgáló webes API bérlőben történő regisztrálásához használja a következő beállításokat.
     
@@ -59,7 +59,7 @@ Jelentkezzen be az [Azure Portalra](https://portal.azure.com/) az Azure AD B2C-b
     | **Name (Név)** | Hello Core API | Adjon meg egy olyan **nevet**, amely megfelelően körülírja a webes API-t a felhasználók számára. |
     | **Webalkalmazás vagy webes API szerepeltetése** | Igen | Válassza az **Igen** lehetőséget a webes API-k esetén. |
     | **Implicit folyamat engedélyezése** | Igen | Válassza az **Igen** lehetőséget, mivel az API [OpenID Connect bejelentkezést](active-directory-b2c-reference-oidc.md) használ. |
-    | **Válasz URL-cím** | `http://localhost:44332` | A válasz URL-címek olyan végpontok, amelyeken keresztül az Azure AD B2C visszaadja az API által kért jogkivonatokat. Ebben az oktatóanyagban a mintául szolgáló webes API helyileg fut (localhost), és az 5000-es porton figyel. |
+    | **Válasz URL-cím** | `http://localhost:5000` | A válasz URL-címek olyan végpontok, amelyeken keresztül az Azure AD B2C visszaadja az API által kért jogkivonatokat. Ebben az oktatóanyagban a mintául szolgáló webes API helyileg fut (localhost), és az 5000-es porton figyel (ez az oktatóanyag későbbi részében lesz konfigurálva). |
     | **Alkalmazásazonosító URI** | HelloCoreAPI | Az URI egyedileg azonosítja az API-t a bérlőben. Ez lehetővé teszi, hogy bérlőnként több API-t is regisztráljon. A [hatókörök](../active-directory/develop/developer-glossary.md#scopes) szabályozzák a hozzáférést a védett API-erőforrásokhoz, és alkalmazásazonosító URI-nként vannak meghatározva. |
     | **Natív ügyfél** | Nem | Mivel ez egy webes API, nem pedig egy natív ügyfél, válassza a Nem lehetőséget. |
     
@@ -111,7 +111,7 @@ Egy védett webes API alkalmazásból történő hívásához alkalmazásengedé
 
 5. Kattintson az **OK** gombra.
 
-A **Saját egyoldalas mintaalkalmazás** regisztrálva van a védett **Hello Core API** meghívásához. A WPF asztali alkalmazás használatához a felhasználó az Azure AD B2C-vel [hitelesíti magát](../active-directory/develop/developer-glossary.md#authentication). Az asztali alkalmazás lekéri az [engedélyezést](../active-directory/develop/developer-glossary.md#authorization-grant) az Azure AD B2C-ből a védett webes API-hoz való hozzáféréshez.
+A **Saját egyoldalas mintaalkalmazás** regisztrálva van a védett **Hello Core API** meghívásához. Az egyoldalas alkalmazás használatához a felhasználó az Azure AD B2C-vel [hitelesíti magát](../active-directory/develop/developer-glossary.md#authentication). Az egyoldalas alkalmazás lekéri az [engedélyezést](../active-directory/develop/developer-glossary.md#authorization-grant) az Azure AD B2C-ből a védett webes API-hoz való hozzáféréshez.
 
 ## <a name="update-code"></a>Kód frissítése
 
@@ -158,7 +158,7 @@ Ahhoz, hogy az egyoldalas alkalmazás meghívhassa az ASP.NET Core webes API-t, 
         builder.WithOrigins("http://localhost:6420").AllowAnyHeader().AllowAnyMethod());
     ```
 
-3. A **Tulajdonságok** területen nyissa meg a **launchSettings.json** fájlt, keresse meg az *applicationURL* beállítást, és jegyezze fel az értéket a következő szakaszhoz.
+3. Nyissa meg a **launchSettings.json** fájlt a **Tulajdonságok** területen, keresse meg az **iisSettings** *applicationURL* beállítást, és a portszámot állítsa olyan értékre, amely regisztrálva van az API válasz URL-címére: `http://localhost:5000`.
 
 ### <a name="configure-the-single-page-app"></a>Az egyoldalas alkalmazás konfigurálása
 
@@ -174,7 +174,7 @@ Az alkalmazás beállításainak módosításához:
         clientID: '<Application ID for your SPA obtained from portal app registration>',
         authority: "https://<your-tenant-name>.b2clogin.com/tfp/<your-tenant-name>.onmicrosoft.com/B2C_1_SiUpIn",
         b2cScopes: ["https://<Your tenant name>.onmicrosoft.com/HelloCoreAPI/demo.read"],
-        webApi: 'http://localhost:64791/api/values',
+        webApi: 'http://localhost:5000/api/values',
     };
     ```
 

@@ -1,21 +1,21 @@
 ---
-title: 'Translator Text: Alternatív fordítások megkeresése a Node.js használatával | Microsoft Docs'
-titleSuffix: Microsoft Cognitive Services
-description: Ebben a rövid útmutatóban a kifejezések alternatív fordításait és példáit keresi meg a szövegkörnyezetben a Translator Text API segítségével és a Node.js használatával a Cognitive Servicesben.
+title: 'Rövid útmutató: Alternatív fordítások lekérése – Translator Text, Node.js'
+titleSuffix: Azure Cognitive Services
+description: Ebben a rövid útmutatóban a kifejezések alternatív fordításait és példáit keresi meg a szövegkörnyezetben a Translator Text API segítségével és a Node.js használatával.
 services: cognitive-services
 author: noellelacharite
-manager: nolachar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-text
 ms.topic: quickstart
 ms.date: 06/21/2018
 ms.author: nolachar
-ms.openlocfilehash: aeb97e1c4e7c4e8df852bea55383e857f7d5a690
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 5361dce567743e239e0499352affa179b7d40382
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "43769691"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46127227"
 ---
 # <a name="quickstart-find-alternate-translations-and-usage-with-nodejs"></a>Rövid útmutató: Alternatív fordítások és használat lekérése a Node.js használatával
 

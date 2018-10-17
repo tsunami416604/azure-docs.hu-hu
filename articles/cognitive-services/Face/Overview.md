@@ -1,99 +1,99 @@
 ---
-title: Szembesülhetnek API szolgáltatás áttekintése |} Microsoft Docs
-titleSuffix: Microsoft Cognitive Services
-description: A szószedet kifejezések magyarázatát a Arcfelismerési API-szolgáltatás használatakor esetleg előforduló.
+title: Mi a Face API szolgáltatás?
+titleSuffix: Azure Cognitive Services
+description: A szószedet megadja azoknak a kifejezéseknek a magyarázatát, amelyekkel a Face API-szolgáltatással dolgozva találkozhat.
 author: SteveMSFT
-manager: corncar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: face-api
-ms.topic: article
+ms.topic: overview
 ms.date: 03/01/2018
 ms.author: sbowles
-ms.openlocfilehash: fb1d14ff80bf53adc3008d79cc998739ffffde1b
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
-ms.translationtype: MT
+ms.openlocfilehash: 15de899be5ab85e9fe84ba1b6284bc9419fcf8a1
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37048669"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46123470"
 ---
-# <a name="what-is-face-api"></a>Mi a Face API?
+# <a name="what-is-the-face-api-service"></a>Mi a Face API szolgáltatás?
 
-Üdvözli a Microsoft Arcfelismerési API-val, a legtöbb haladó arcfelismerési algoritmusok biztosító felhőalapú szolgáltatás. Arcfelismerési API két fő funkciókkal rendelkezik: attribútumokkal rendelkező észlelési szembesülhetnek, és a felismerési szembesülhetnek.
+Üdvözli a Face API szolgáltatás, ami egy felhőalapú szolgáltatás a legfejlettebb arcfelismerési algoritmusokkal. A Face API két fő funkcióval rendelkezik: arc észlelés attribútumokkal és arcfelismerés.
 
 ## <a name="face-detection"></a>Arcfelismerés
 
-Arcfelismerési API legfeljebb 64 emberi lapok magas pontosság arcfelismerési helyen lévő lemezkép észleli. És fájl bájtok vagy érvényes URL-cím is megadható a kép.
+A Face API nagy pontossággal azonosítja maximum 64 emberi arc helyét a képen. A kép megadása történhet fájlként, bájtokban vagy érvényes URL-lel.
 
-![Áttekintés – Arcfelismerési észlelése](./Images/Face.detection.jpg)
+![Arcfelismerés – Áttekintés](./Images/Face.detection.jpg)
 
-Arcfelismerési téglalap (bal, felső, szélességét és magasságát) jelzi, hogy a kép arcfelismerési helyét adja vissza együtt minden észlelt arcfelismerési. Szükség esetén arcfelismerési észlelési arcfelismerési kapcsolódó attribútumok jelentő, nemét, kor, központi jelentő, arcfelismerést haj és üveg például több bontja ki. További információkért lásd: [szembesülhetnek - észlelése](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236).
+Mindegyik felismert archoz visszaadja az arc helyét a képen belül mutató arc négyszöget (bal, felső, szélesség és magasság). Az arcfelismerés igény szerint kiszűr még egy sor archoz kapcsolódó attribútumot, például testtartás, nem, életkor, fejtartás, arcszőrzet és szemüveg. További információkat lásd: [Face – Detect](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236).
 
-## <a name="face-recognition"></a>Arcfelismerési felismerés
+## <a name="face-recognition"></a>Arcfelismerés
 
-Arcfelismerési felismerés széles körben használt biztonsági, természetes felhasználói felület, kép tartalomelemzés és felügyeleti, mobilalkalmazások és robotics helyzetekben. Négy arcfelismerési felismerés funkciók találhatók: szembesülhetnek ellenőrzési, hasonló lapok megállapítás szokott lenni, arc csoportosítási és személy azonosító.
+Az arcfelismerés széles körben sokféle helyzetben használatos, ideértve a biztonság, a természetes felhasználói felületek, a képtartalom elemzés és kezelés, mobilalkalmazások és robotika területeit. Négy arcfelismerési funkció áll rendelkezésre: arcellenőrzés, hasonló arcok keresése, arcok csoportosítása és személyazonosítás.
 
 ### <a name="face-verification"></a>Arcellenőrzés
 
-Arcfelismerési API-ellenőrzést hajt végre egy két észlelt oldalát hitelesítést vagy hitelesítési észlelt lapot a egy személy objektumhoz. További részletekért lásd: [szembesülhetnek - ellenőrzése](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523a).
+A Face API-ellenőrzés hitelesítést végez két észlelt arccal vagy egy észlelt arccal és egy személy objektummal. Bővebben lásd [Face – Verify](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523a).
 
-### <a name="finding-similar-face"></a>Hasonló oldallal keresése
+### <a name="finding-similar-face"></a>Hasonló arcok keresése
 
-Megadott egy cél észlelt arcfelismerés és keresést segítségével jelölt lapok készlete, a szolgáltatás megkeresi a, amely a leginkább hasonló, így a cél arcfelismerési egy kis készletét. Két működő mód `matchFace` és `matchPerson` támogatottak. `matchPerson` mód hasonló lapok adja vissza, miután ugyanaz a személy küszöbértéket alkalmazó származó [szembesülhetnek - ellenőrzése](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523a). `matchFace` mód figyelmen kívül hagyja a ugyanaz a személy küszöbértéket, és a felső hasonló jelölt lapok adja vissza. Az alábbi példa igénybe, jelölt lapok vannak felsorolva.
-![Áttekintés – Arcfelismerési hasonló](./Images/FaceFindSimilar.Candidates.jpg) és a lekérdezés lap ![áttekintés – Arcfelismerési hasonló keresése](./Images/FaceFindSimilar.QueryFace.jpg)
+Adott a cél felismert arc és a keresendő jelölt arcok halmaza, a szolgáltatás megkeresi a cél archoz leginkább hasonló arcok kis halmazát. Két támogatott üzemmódja van, a `matchFace` és a `matchPerson`. Az `matchPerson` mód a hasonló arcokat azután adja vissza, miután alkalmazta rájuk a [Face – Verify](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523a) általi azonos személy küszöböt. A `matchFace` mód nem foglalkozik az azonos személy küszöbbel és a leginkább hasonló jelöltek arcait adja vissza. Vegyük a következő példát, a jelölt arcok jelennek meg.
+![Áttekintés – Face hasonló keresése](./Images/FaceFindSimilar.Candidates.jpg) és lekérdezett arc ![Áttekintés – Face hasonló keresése](./Images/FaceFindSimilar.QueryFace.jpg)
 
-Négy hasonló arc, található `matchPerson` módot adja vissza (a) és (b), amely ugyanaz a lekérdezés arcfelismerési rendelkező személy tartozik. `matchFace` módot adja vissza (a), (b), (c) és (d), pontosan négy jelöltek akkor is, ha alacsony hasonlóság. További információkért lásd: [Arcfelismerési - hasonló](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395237).
+Négy hasonló arc keresésekor az `matchPerson` mód az (a) és (b) arcokat adja vissza, amelyek ugyanahhoz a személyhez tartoznak, mint a lekérdezett arc. A `matchFace` mód pontosan négy jelöltet ad vissza, (a), (b), (c) és (d), még akkor is, ha a hasonlóság kicsi. További információkat lásd: [Face – Find Similar](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395237).
 
 ### <a name="face-grouping"></a>Arccsoportosítás
 
-A megadott ismeretlen lapok egy készletét, arcfelismerési API automatikusan csoportosítási csoportokba osztja a őket több alapuló. Minden csoport, az eredeti ismeretlen arc különálló megfelelő részhalmazát beállítva, és hasonló lapokat tartalmaz. És ugyanabban a csoportban található összes oldalakat tekinthető azonos személy objektumhoz tartozik. További információkért lásd: [szembesülhetnek - csoport](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395238).
+Adott az ismeretlen arcok halmaza, az arccsoportosító API hasonlóság alapján több csoportra osztja őket. Mindegyik csoport az eredeti ismeretlen arcok halmazának különálló valódi részhalmaza, amelyek hasonló arcokat tartalmaznak. Ugyanabba a csoportba tartozó valamennyi arcot tekinthetjük úgy, hogy ugyanahhoz a személy objektumhoz tartozik. További információkat lásd: [Face – Group](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395238).
 
-### <a name="face-identification"></a>Arcfelismerés
+### <a name="face-identification"></a>Arcok azonosítása
 
-Arcfelismerési API-t egy észlelt arc alapján és (LargePersonGroup/PersonGroup definiálva) személyek adatbázis azonosítására használható. Ez az adatbázis előzetes létrehozása, adott idő alatt is módosíthatók.
+A Face API használható arra, hogy embereket azonosítson a felismert arc és egy emberek (mint LargePersonGroup/PersonGroup definiált) adatbázis alapján. Ez az adatbázis előre létrehozható és az idők során módosítható.
 
-Az alábbi ábra egy példát egy LargePersonGroup/PersonGroup "myfriends" nevű. Minden egyes csoport legfeljebb 1 000 000/10 000 személy objektumokat tartalmazhat. Minden személy objektum eközben regisztrált legfeljebb 248 felületei is rendelkezik.
+Az alábbi ábra egy „myfriends” nevű LargePersonGroup/PersonGroup példa. Mindegyik csoport legfeljebb 1 000 000/10 000 személy objektumot tartalmazhat. Emellett minden egyes személy objektum rendelkezhet maximum 248 regisztrált arccal.
 
 ![Áttekintés – LargePersonGroup/PersonGroup](./Images/person.group.clare.jpg)
 
-Miután LargePersonGroup/PersonGroup létrehozták, és a betanítása, azonosító is hajt végre a csoport és egy új észlelt arc. Ha maga a csoport személy objektumként, akkor a személy objektumot adott vissza.
+A LargePersonGroup/PersonGroup létrehozása és betanítása után, azonosítás végezhető a csoport és az új észlelt arc alapján. Ha az arcot azonosítja mint a csoport egy személy objektumát, a személy objektumot fogja visszaadni.
 
-Személy azonosító kapcsolatos további információkért tekintse meg a következő API-útmutatók:
+Személyek azonosításával kapcsolatos további információkért tekintse meg a következő API-útmutatókat:
 
-[Szembesülhetnek – azonosítása](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239)
-[PersonGroup - létrehozása](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395244)
-[PersonGroup személy - létrehozása](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523c)
-[PersonGroup - vonat](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395249) 
- [LargePersonGroup - létrehozása](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/599acdee6ac60f11b48b5a9d)
-[LargePersonGroup személy - létrehozása](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/599adcba3a7b9412a4d53f40)
-[LargePersonGroup - vonat](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/599ae2d16ac60f11b48b5aa4)
+[Face – Azonosítás](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239)
+[PersonGroup – Létrehozás](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395244)
+[PersonGroup Person – Létrehozás](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523c)
+[PersonGroup – Betanítás](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395249)
+[LargePersonGroup – Létrehozás](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/599acdee6ac60f11b48b5a9d)
+[LargePersonGroup Person – Létrehozás](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/599adcba3a7b9412a4d53f40)
+[LargePersonGroup – Betanítás](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/599ae2d16ac60f11b48b5aa4)
 
-### <a name="face-storage"></a>Face Storage
+### <a name="face-storage"></a>A Face Storage
 
-Arcfelismerési tároló lehetővé teszi, hogy egy szabványos előfizetés tárolásához további megőrzött lapok LargePersonGroup/PersonGroup személy objektumok használata esetén ([PersonGroup személy - hozzáadása Arcfelismerési](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523b)/[LargePersonGroup személy - Hozzáadása Arcfelismerési](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/599adf2a3a7b9412a4d53f42)) vagy LargeFaceLists/FaceLists ([FaceList - hozzáadása Arcfelismerési](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395250)/[LargeFaceList - Arcfelismerési hozzáadása](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/5a158c10d2de3616c086f2d3)) azonosító vagy Arcfelismerési API-val egyező hasonlóság. A tárolt képek van szó, 0,5 $ 1000 lapok száma, és ez a számláló értéke arányosítva naponta. Ingyenes szint előfizetések szabad, de legfeljebb 1000 teljes személyek.
+A Face Storage a LargePersonGroup/PersonGroup Person objektumok ([PersonGroup Person – Add Face](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523b)/[LargePersonGroup Person – Add Face](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/599adf2a3a7b9412a4d53f42)) vagy a LargeFaceLists/FaceLists ([FaceList – Add Face](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395250)/[LargeFaceList – Add Face](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/5a158c10d2de3616c086f2d3)) használatakor standard szintű előfizetést tesz lehetővé a további megőrzött arcok számára a Face API-val történő azonosítás vagy hasonlósági párosítás céljára. A tárolt képek díja 1000 arconként 0,5 dollár és a díjszabás napi lebontású. Az ingyenes szintű előfizetések ingyenesek, de legfeljebb 1000 személyes korlát vonatkozik rájuk.
 
-Arcfelismerési tárolás díjszabása arányosítva naponta. Például, ha a fiókot használja 10 000 megőrzött lapok minden nap a hónap első felében, és nincs a második fele meg akkor is felszámítjuk a díjat csak a 10 000 lapok napra vonatkozó tárolja. Azt is megteheti minden nap a hónap során, akkor néhány órán keresztül 1000 lapok fennállnak, és törölje őket éjszakánként, ha meg szeretné továbbra is számlázni 1000 megőrzött lapok minden nap.
+Az arcképtárolás díjszabása napi lebontású. Például ha a fiókja a hónap első felében napi 10 000 megőrzött képet használ fel, a második felében pedig egyet sem, akkor csak a tárolt napokra kell a 10 000 arcért fizetnie. Tekintsünk meg egy másik példát: ha a hónap minden napján néhány órán keresztül 1000 megőrzött arcot használ fel, majd minden éjjel törli őket, akkor is fizetnie kell minden napra a 1000 megőrzött arcért.
 
-## <a name="getting-started-tutorials"></a>Bevezető oktatóanyagok
+## <a name="getting-started-tutorials"></a>Első lépések oktatóanyag
 
-Az alábbi oktatóanyagok bemutatják az alapvető funkciók Arcfelismerési API-t és az előfizetések folyamatok:
+Az alábbi oktatóanyagok a Face API – alapszintű funkcióit és az előfizetési folyamatokat mutatják be:
 
-- [A csharp nyelvű oktatóprogram Ismerkedés a Arcfelismerési API](Tutorials/FaceAPIinCSharpTutorial.md)
-- [Ismerkedés az Arcfelismerési API-nak Java Android oktatóanyag](Tutorials/FaceAPIinJavaForAndroidTutorial.md)
-- [Az oktatóanyag a Python Ismerkedés a Arcfelismerési API](Tutorials/FaceAPIinPythonTutorial.md)
+- [Első lépések a Face API-val CSharp-oktatóanyag](Tutorials/FaceAPIinCSharpTutorial.md)
+- [Első lépések a Face API-val Java for Android oktatóanyag](Tutorials/FaceAPIinJavaForAndroidTutorial.md)
+- [Első lépések a Face API-val Python oktatóanyag](Tutorials/FaceAPIinPythonTutorial.md)
 
 ## <a name="sample-apps"></a>Mintaalkalmazások
 
-Vessen egy pillantást a Arcfelismerési API-t használó alkalmazásokat.
+Vessen egy pillantást ezekre a mintaalkalmazásokra, amelyek a Face API-t használják.
 
-- [Microsoft Arcfelismerési API: Windows ügyféloldali kódtár & minta](https://github.com/Microsoft/Cognitive-Face-Windows)
-  - Azt mutatja be, több forgatókönyv szerint Arcfelismerési észlelési, elemzés és azonosító WPF mintaalkalmazást.
-- [FamilyNotes UWP-alkalmazást](https://github.com/Microsoft/Windows-appsample-familynotes)
-  - Univerzális Windows Platform (UWP) mintaalkalmazás, amely beszéd átalakítás, Cortana, szabadkézi és forgatókönyv megosztását család Megjegyzés a fényképezőgép használatát mutatja.
-- [Videó keret elemzési minta](https://github.com/microsoft/cognitive-samples-videoframeanalysis)
-  - Univerzális Windows Platform (UWP) mintaalkalmazás, amely élő video-adatfolyamot a oldallal, számítógép stratégiai és Érzelemfelismerési API-k használatával közel valós idejű elemzése.
+- [A Microsoft Face API: Windows ügyfélkódtár és minták](https://github.com/Microsoft/Cognitive-Face-Windows)
+  - A WPF mintaalkalmazás számos arcfelismerési forgatókönyvet, elemzést és azonosítást mutat be.
+- [FamilyNotes UWP-alkalmazás](https://github.com/Microsoft/Windows-appsample-familynotes)
+  - Univerzális Windows Platform (UWP) mintaalkalmazás, amely bemutatja a beszéd, Cortana, kézírás és kamera használatát egy családi jegyzetmegosztó forgatókönyvbe ágyazva.
+- [Videó képkocka elemzés minta](https://github.com/microsoft/cognitive-samples-videoframeanalysis)
+  - Univerzális Windows Platform (UWP) mintaalkalmazás, amely bemutatja az élő video-adatfolyamok közel valós idejű elemzését a Face, a Computer Vision és az Emotion API-k használatával.
 
 ## <a name="related-topics"></a>Kapcsolódó témakörök
 
-- [Arcfelismerési API-verzió 1.0-ás kibocsátási megjegyzései](ReleaseNotes.md)
-- [A kép néz történő Adatmásolást](Face-API-How-to-Topics/HowtoDetectFacesinImage.md)
-- [A kép néz azonosítása](Face-API-How-to-Topics/HowtoIdentifyFacesinImage.md)
+- [Face API 1.0-s verzió kibocsátási megjegyzései](ReleaseNotes.md)
+- [Hogyan lehet arcokat megtalálni a képen](Face-API-How-to-Topics/HowtoDetectFacesinImage.md)
+- [Hogyan lehet arcokat azonosítani a képen](Face-API-How-to-Topics/HowtoIdentifyFacesinImage.md)

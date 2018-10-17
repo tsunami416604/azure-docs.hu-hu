@@ -12,25 +12,35 @@ ms.author: moslake
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 09/14/2018
-ms.openlocfilehash: a46192c79d32ddf5f178541c3be128893e8f6109
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: ee3b8c274b769cd570d70c5e0dfae939e030ecf5
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47159941"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49352429"
 ---
 # <a name="manage-file-space-in-azure-sql-database"></a>Lapozófájl-terület az Azure SQL Database kezelése
 Ez a cikk ismerteti a különböző típusú tárterület az Azure SQL Database és a lépések, amelyeket elvégezhet a fájlhely lefoglalt adatbázisok és rugalmas adatbáziskészletekhez explicit módon kell kezelnie.
 
 ## <a name="overview"></a>Áttekintés
 
-Azure SQL Database-ben tároló terület legtöbb metrika megjelenik az Azure portal és a következő API-k mérheti az adatbázisokhoz és rugalmas készletek használt lapok száma:
+Azure SQL Database-ben nincsenek munkaterhelési mintákat, az adatbázisok alapjául szolgáló adatfájlok elosztása nagyobb, mint a használt adatok oldalak mennyisége válhat. Ez akkor fordulhat elő, amikor növekszik lefoglalt terület és adatok törlődnek. Ez azért, mert lefoglalt terület fájl van nem igényli automatikusan vissza adatok törlésekor.
+
+Fájl lemezterület-használat figyelése és az adatok fájlok zsugorítása folyamatban a következő esetekben szükség lehet:
+- Engedélyezi a rugalmas készletben található adatmennyiség növekedését, ha az adatbázisok számára lefoglalt fájl terület eléri a készlet maximális méretét.
+- Lehetővé teszi egy önálló adatbázist vagy rugalmas készlet maximális méretét.
+- Lehetővé teszi egy önálló adatbázist vagy a rugalmas készlet módosítása különböző szolgáltatási rétegben vagy alacsonyabb maximális mérettel teljesítményszint.
+
+### <a name="monitoring-file-space-usage"></a>Fájl lemezterület-használat figyelése
+A legtöbb tárolási hely metrikák jelennek meg az Azure portal és a következő API-k csak mérésére használt adatok oldalak mennyisége:
 - Az Azure Resource Manager-alapú API-k metrikák többek között a PowerShell [get-metrikák](https://docs.microsoft.com/powershell/module/azurerm.insights/get-azurermmetric)
 - T-SQL: [sys.dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)
+
+Azonban a következő API-kat is mérheti az adatbázisok és rugalmas lefoglalt terület mennyisége készletek:
 - T-SQL: [sys.resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database)
 - T-SQL: [sys.elastic_pool_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-elastic-pool-resource-stats-azure-sql-database)
 
-Nincsenek munkaterhelési mintákat, ahol a mögöttes adatok fájlok adatbázisok lefoglalt nagyobb, mint a használt adatok oldalak mennyisége válhat.  Ez akkor fordulhat elő, amikor növekszik lefoglalt terület és adatok törlődnek.  Ez azért, mert lefoglalt terület fájl van nem igényli automatikusan vissza adatok törlésekor.  Ilyen esetekben egy adatbázis vagy készlet számára lefoglalt terület előfordulhat, hogy meghaladja a támogatott határértékeket megakadályozzák az adatmennyiség növekedése vagy megakadályozzák a szolgáltatási rétegben és számítási változásokat, és szükséges a megoldásához adatok fájlok zsugorítása folyamatban.
+### <a name="shrinking-data-files"></a>Adatok fájlok zsugorítása folyamatban
 
 Az SQL Database szolgáltatás automatikusan nem csökkentheti az adatfájlokat az adatbázis teljesítményét a lehetséges hatás miatt nem használt lefoglalt terület felszabadítását.  Azonban ügyfelek előfordulhat, hogy adatokat fájlok zsugorítása keresztül önkiszolgáló ismertetett lépéseket követve hozhatna egyszerre [visszaigénylési fel nem használt lefoglalt terület](#reclaim-unused-allocated-space). 
 

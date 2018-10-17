@@ -1,36 +1,37 @@
 ---
-title: Számítógép Látástechnológiai API Python oktatóanyag |} Microsoft Docs
-description: Ismerje meg, hogy a számítógép Látástechnológiai API használata a Python Jupyter notebookok használatával a Microsoft kognitív szolgáltatások. A népszerű könyvtárak segítségével eredményeinek képi megjelenítése.
+title: 'Oktatóanyag: Computer Vision API Python'
+titlesuffix: Azure Cognitive Services
+description: Megtudhatja, hogyan használhatja a Computer Vision API-t és a Pythont Jupyter-notebookokkal. Az eredményeket népszerű címtárakkal jelenítheti meg.
 services: cognitive-services
 author: KellyDF
-manager: corncar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: computer-vision
-ms.topic: article
+ms.topic: tutorial
 ms.date: 02/25/2017
 ms.author: kefre
-ms.openlocfilehash: a093c2d066e70a8daf1fe1cd33ccf794ecb196af
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
-ms.translationtype: MT
+ms.openlocfilehash: 59e88ecb253bc6da803ddf34a4a02229b99e259d
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35347535"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45981711"
 ---
-# <a name="computer-vision-api-python-tutorial"></a>Számítógép Látástechnológiai API Python oktatóanyag
+# <a name="tutorial-computer-vision-api-python"></a>Oktatóanyag: Computer Vision API Python
 
-Ez az oktatóanyag a Python számítógép Látástechnológiai API-t használó és a népszerű könyvtárak használatával eredményeinek képi megjelenítése. Az oktatóanyag futtatásához használt Jupyter. Ismerkedés az interaktív Jupyter notebookok beállításáról lásd: [Jupyter Documementation](http://jupyter.readthedocs.io/en/latest/index.html). 
+Ebben az oktatóanyagban megtudhatja, hogyan használhatja a Computer Vision API-t a Pythonban, valamint hogyan jelenítheti meg az eredményeket népszerű címtárakkal. Az oktatóanyag futtatásához használja a Jupytert. Ha többet szeretne megtudni az interaktív Jupyter-notebookok használatáról, tekintse meg a[Jupyter dokumentációját](http://jupyter.readthedocs.io/en/latest/index.html). 
 
-### <a name="opening-the-tutorial-notebook-in-jupyter"></a>Az oktatóanyag Notebook nyithatók meg a Jupyter 
+### <a name="opening-the-tutorial-notebook-in-jupyter"></a>Az oktatóanyag notebokjának megnyitása a Jupyterben 
 
-1. Keresse meg a [github oktatóanyag notebook](https://github.com/Microsoft/Cognitive-Vision-Python). 
-2. Kattintson a klónozáshoz vagy töltse le az oktatóanyag zöld gombra. 
-3. Nyisson meg egy parancssort, és a mappában _Cognitive-stratégiai – Python-master\Jupyter Notebook_. 
-4. Futtassa a parancsot **jupyter notebook** a parancssorból. Jupyter elindítja.
-5. A Jupyter ablakban kattintson a _számítógép Látástechnológiai API Example.ipynb_ az oktatóanyag jegyzetfüzet megnyitása 
+1. Keresse meg az [oktatóanyag notebookját a GitHubon](https://github.com/Microsoft/Cognitive-Vision-Python). 
+2. Az oktatóanyag klónozásához vagy letöltéséhez kattintson a zöld gombra. 
+3. Nyisson meg egy parancssort, és lépjen a _Cognitive-Vision-Python-master\Jupyter Notebook_ mappába. 
+4. Futtassa a **jupyter notebook** parancsot a parancssorból. Ekkor elindul a Jupyter.
+5. A Jupyter ablakában kattintson a _Computer Vision API Example.ipynb_ elemre az oktatóanyag notebookjának megnyitásához 
 
 ### <a name="running-the-tutorial"></a>Az oktatóanyag futtatása
 
-A notebook használatához szüksége lesz egy előfizetés kulcs a számítógép Látástechnológiai API-t. Látogasson el a [előfizetés lapján](https://azure.microsoft.com/try/cognitive-services/) regisztrálni. A "Bejelentkezés" oldalon a Microsoft-fiók használatával jelentkezzen be, és meg fogja tudni szolgáltatásra, és szabad kulcsok beolvasása. A regisztrációs folyamat befejezése után illessze be a kulcsot a változók szakaszban a notebook (az alábbiakban bemutatott). Működik az elsődleges vagy másodlagos kulcsát. Győződjön meg arról, hogy a kulcs tegye idézőjelek közé foglalt abba, hogy egy karakterláncot.
+Ehhez a notebookhoz egy Computer Vision API-előfizetési kulcsra lesz szüksége. A regisztrációhoz nyissa meg az [Előfizetés lapot](https://azure.microsoft.com/try/cognitive-services/). A bejelentkezési oldalon jelentkezzen be Microsoft-fiókjával, így előfizethet és lekérheti az ingyenes kulcsokat. A regisztrációs folyamat befejezését követően illessze be a kulcsot a notebook változókat tartalmazó szakaszába (ahogyan lent láthatja). Az elsődleges vagy a másodlagos kulcsnak működnie kell. Győződjön meg róla, hogy idézőjelek közé tegye a kulcsot, hogy a rendszer sztringként értelmezze.
 
 ```python
 # Variables

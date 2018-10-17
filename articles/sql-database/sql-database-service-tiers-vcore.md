@@ -11,13 +11,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: sashan, moslake
 manager: craigg
-ms.date: 10/12/2018
-ms.openlocfilehash: a0d8e225718361c096b914245d73064edb1715c4
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.date: 10/15/2018
+ms.openlocfilehash: 52f49e0b590219c34750501ae85ccc0def572f44
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49166355"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49352854"
 ---
 # <a name="vcore-service-tiers-azure-hybrid-use-benefit-and-migration"></a>virtuális mag szolgáltatásszintek, Azure Hybrid Use Benefit és migrálása
 
@@ -106,5 +106,5 @@ Minden adatbázis DTU-alapú számítási méretű másolhatja vagy speciális a
 
 ## <a name="next-steps"></a>További lépések
 
-- Részletek az adott számítási méretek és a tároló mérete lehetőségek önálló adatbázis elérhető, lásd: [SQL Database Virtuálismag-alapú erőforráskorlátok az önálló adatbázisok](sql-database-vcore-resource-limits-single-databases.md#single-database-storage-sizes-and-compute-sizes)
-- Részletek az adott számítási méretek és a tároló mérete választható rugalmas készletek számára elérhető, lásd: [SQL Database Virtuálismag-alapú erőforráskorlátok a rugalmas készletek](sql-database-vcore-resource-limits-elastic-pools.md#elastic-pool-storage-sizes-and-compute-sizes).
+- Részletek az adott számítási méretek és a tároló mérete lehetőségek önálló adatbázis elérhető, lásd: [SQL Database Virtuálismag-alapú erőforráskorlátok az önálló adatbázisok](sql-database-vcore-resource-limits-single-databases.md#general-purpose-service-tier-storage-sizes-and-compute-sizes)
+- Részletek az adott számítási méretek és a tároló mérete választható rugalmas készletek számára elérhető, lásd: [SQL Database Virtuálismag-alapú erőforráskorlátok a rugalmas készletek](sql-database-vcore-resource-limits-elastic-pools.md#general-purpose-service-tier-storage-sizes-and-compute-sizes).

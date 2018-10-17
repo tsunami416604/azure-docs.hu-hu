@@ -10,12 +10,12 @@ ms.reviewer: v-mamcge, jasonh, kfile, anshan
 ms.workload: big-data
 ms.topic: overview
 ms.date: 01/26/2018
-ms.openlocfilehash: fa66ded9a35109f874bda00a4bde3af78b436cd5
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: f865086a7e57898adb7d43ec0c02c7d38ef0da9c
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39630721"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46365572"
 ---
 # <a name="what-is-azure-time-series-insights"></a>Mi az Azure Time Series Insights?
 
@@ -33,6 +33,12 @@ A Time Series Insights négy fő feladata:
 Ha létrehoz egy alkalmazást akár belső használatra, akár külső ügyfeleknek, a Time Series Insights használható a háttérben az idősorozat-adatok indexálására, tárolására és összesítésére. Így egyéni vizualizációt és felhasználói élményt hozhat létre.  A Time Series Insights lekérdezési API-kat tesz elérhetővé ennek a forgatókönyvnek az engedélyezéséhez.  
 
 Ha nem biztos abban, hogy az adatai idősorozatok-e, a következőket kell tudnia.  Az idősorozat-adatok mutatják be, hogy hogyan változik az idők során egy adategység vagy folyamat.  Ez abban egyedi, hogy időbélyeggel rendelkezik, és az idő tengelyként a legértelmezhetőbb.  Az idősorozat-adatok általában időrendben érkeznek, és rendszerint inkább beszúrásként vannak kezelve, mint adatbázis-frissítésként.  Mivel a Time Series Insights sorként rögzít és tárol minden új eseményt, a változások mérése idő alapján történik, így lehetőség van visszanézni és megjósolni a jövőbeli változásokat.  Az idősorozat-adatok tárolása, indexelése, lekérdezése, elemzése és vizualizálása nagy mennyiségben kihívást jelenthet.  
+
+## <a name="video"></a>Videó: 
+
+### <a name="in-this-video-we-provide-an-overview-of-time-series-insights-a-cloud-based-iot-analytics-platformbr"></a>Ez a videó a felhőalapú IoT elemző platformot, a Time Series Insights-ot mutatja be.</br>
+
+> [!VIDEO https://www.youtube.com/embed/qNc9gQTLROs]
 
 ## <a name="primary-scenarios"></a>Elsődleges forgatókönyvek
 

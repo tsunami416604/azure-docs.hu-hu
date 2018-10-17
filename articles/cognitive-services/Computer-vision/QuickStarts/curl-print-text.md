@@ -1,53 +1,52 @@
 ---
-title: OCR a Computer Vision API és a cURL használatával – rövid útmutató | Microsoft Docs
-titleSuffix: Microsoft Cognitive Services
-description: Ebben a rövid útmutatóban nyomtatott szöveget fog kinyerni egy képből a Computer Vision és a cURL használatával a Cognitive Servicesben.
+title: 'Rövid útmutató: Nyomtatott szöveg kinyerése (OCR) – REST, cURL – Computer Vision'
+titleSuffix: Azure Cognitive Services
+description: Ebben a rövid útmutatóban nyomtatott szöveget fog kinyerni egy képből a Computer Vision API cURL-lel való használatával.
 services: cognitive-services
 author: noellelacharite
-manager: nolachar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: computer-vision
 ms.topic: quickstart
-ms.date: 08/28/2018
+ms.date: 09/10/2018
 ms.author: v-deken
-ms.openlocfilehash: 3a9ebafa5e367c4fcd7dce63c54c9fdc14eb3812
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: ed064728d32f24e5d61da26f3f9e8297bff8bc99
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43770145"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45630181"
 ---
-# <a name="quickstart-extract-printed-text-ocr---rest-curl"></a>Rövid útmutató: Nyomtatott szöveg kinyerése (OCR) – REST, cURL
+# <a name="quickstart-extract-printed-text-ocr-using-the-rest-api-and-curl-in-computer-vision"></a>Rövid útmutató: Nyomtatott szöveg kinyerése (OCR) a REST API és a cURL használatával a Computer Vision szolgáltatásban
 
-Ebben a rövid útmutatóban nyomtatott szöveget fog kinyerni – más néven optikai karakterfelismerést (OCR) fog végezni – egy képből a Computer Vision segítségével.
+Ebben a rövid útmutatóban optikai karakterfelismerést (OCR) használva nyomtatott szöveget fog kinyerni egy képből a Computer Vision REST API-jával. Az [OCR metódussal](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) nyomtatott szöveget észlelhet egy képen, és géppel olvasható karakterfolyamba nyerheti ki a felismert karaktereket.
+
+Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services) a virtuális gép létrehozásának megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A Computer Vision használatához előfizetési kulcsra van szüksége, lásd az [előfizetési kulcsok beszerzéséről](../Vision-API-How-to-Topics/HowToSubscribe.md) szóló témakört.
+- Rendelkeznie kell a [cURL-lel](https://curl.haxx.se/windows).
+- Szüksége lesz egy Computer Vision-előfizetői azonosítóra. Az előfizetői azonosító beszerzéséhez lásd az [előfizetői azonosítók beszerzéséről](../Vision-API-How-to-Topics/HowToSubscribe.md) szóló témakört.
 
-## <a name="ocr-request"></a>OCR-kérés
+## <a name="create-and-run-the-sample-command"></a>A mintaparancs létrehozása és futtatása
 
-Az [OCR metódussal](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) nyomtatott szöveget észlelhet egy képen, és géppel olvasható karakterfolyamba nyerheti ki a felismert karaktereket.
+A minta létrehozásához és futtatásához az alábbi lépéseket kell végrehajtania:
 
-A minta futtatásához az alábbi lépéseket kell végrehajtania:
+1. Másolja az alábbi parancsot egy szövegszerkesztőbe.
+1. Hajtsa végre a következő módosításokat a parancs megfelelő területein:
+    1. Cserélje le a `<subscriptionKey>` értéket az előfizetői azonosítóra.
+    1. Szükség esetén cserélje le a kérés URL-címét (`https://westcentralus.api.cognitive.microsoft.com/vision/v2.0/ocr`) az [OCR](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) metódus azon végpontjának URL-címére, amely az előfizetési kulcsokat tartalmazó Azure-régióból származik.
+    1. Igény szerint cserélje a kép URL-címét a kérelem törzsében (`https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/Atomist_quote_from_Democritus.png/338px-Atomist_quote_from_Democritus.png\`) egy másik elemzendő kép URL-címére.
+1. Nyisson meg egy parancssort.
+1. Illessze be a szövegszerkesztőből a parancsot, majd futtassa.
 
-1. Másolja az alábbi kódot egy szerkesztőbe.
-1. A `<Subscription Key>` helyére írja be az érvényes előfizetési kulcsot.
-1. Ha szükséges, változtassa meg a kérés URL-címét (`https://westcentralus.api.cognitive.microsoft.com/vision/v2.0`) arra a címre, ahonnan beszerezte az előfizetési kulcsot.
-1. Az elemezni kívánt képet (`{\"url\":\"...`) is módosíthatja.
-1. Nyisson meg egy parancssorablakot egy számítógépen, amelyen a cURL telepítve van.
-1. Másolja be a kódot, és futtassa a parancsot.
-
->[!NOTE]
->A REST-hívásban ugyanazt a helyet kell használnia, ahonnan az előfizetési kulcsot beszerezte. Ha például a westus régióból szerezte be az előfizetési kulcsot, cserélje le az alábbi URL-címben látható „westcentralus” elemet a „westus” elemre.
-
-```json
-curl -H "Ocp-Apim-Subscription-Key: <Subscription Key>" -H "Content-Type: application/json" "https://westcentralus.api.cognitive.microsoft.com/vision/v2.0/ocr?language=unk&detectOrientation=true" -d "{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/Atomist_quote_from_Democritus.png/338px-Atomist_quote_from_Democritus.png\"}"
+```console
+curl -H "Ocp-Apim-Subscription-Key: <subscriptionKey>" -H "Content-Type: application/json" "https://westcentralus.api.cognitive.microsoft.com/vision/v2.0/ocr?language=unk&detectOrientation=true" -d "{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/Atomist_quote_from_Democritus.png/338px-Atomist_quote_from_Democritus.png\"}"
 ```
 
-## <a name="ocr-response"></a>OCR-válasz
+## <a name="examine-the-response"></a>A válasz vizsgálata
 
-A sikeres OCR-művelet eredményei közé tartozik a szöveg, valamint az egyes régiókat, sorokat és szavakat határoló keretek, például:
+A rendszer JSON formátumban adja vissza a sikeres választ. A mintaalkalmazás elemzi és megjeleníti a sikeres választ a parancssorban, a következő példához hasonló módon:
 
 ```json
 {
@@ -148,9 +147,13 @@ A sikeres OCR-művelet eredményei közé tartozik a szöveg, valamint az egyes 
 }
 ```
 
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+
+Ha már nincs rájuk szükség, zárja be a parancssori ablakot és a szövegszerkesztőt.
+
 ## <a name="next-steps"></a>További lépések
 
-Ismerje meg a Computer Vision API-kat, amelyekkel képeket elemezhet, hírességeket és nevezetességeket azonosíthat rajtuk, valamint miniatűrt hozhat létre, illetve nyomtatott és kézzel írott szövegeket nyerhet ki belőlük. A Computer Vision API-kkal való gyors kísérletezéshez próbálja ki az [Open API-tesztkonzolt](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa/console).
+Ismerje meg a Computer Vision API-t, amellyel képeket elemezhet, hírességeket és nevezetességeket azonosíthat rajtuk, valamint miniatűrt hozhat létre, illetve nyomtatott és kézzel írott szövegeket nyerhet ki belőlük. A Computer Vision API-val való gyors kísérletezéshez próbálja ki az [Open API-tesztkonzolt](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa/console).
 
 > [!div class="nextstepaction"]
-> [Ismerkedjen meg a Computer Vision API-k működésével](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44)
+> [A Computer Vision API bemutatása](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44)

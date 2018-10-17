@@ -1,49 +1,53 @@
 ---
-title: Miniatűr létrehozása a Computer Vision és a Python használatával – rövid útmutató | Microsoft Docs
-titleSuffix: Microsoft Cognitive Services
-description: Ebben a rövid útmutatóban miniatűrt fog létrehozni egy képből a Computer Vision és a Python használatával a Cognitive Servicesben.
+title: 'Rövid útmutató: Miniatűr létrehozása – REST, Python – Computer Vision'
+titleSuffix: Azure Cognitive Services
+description: Ebben a rövid útmutatóban miniatűrt hozhat létre egy képből a Computer Vision API és Python használatával.
 services: cognitive-services
 author: noellelacharite
-manager: nolachar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: computer-vision
 ms.topic: quickstart
 ms.date: 08/28/2018
 ms.author: v-deken
-ms.openlocfilehash: bc1d01cd4b8f15ba627d917825ee5205c34f5cdf
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: c5809b3dd62d87e2a1f3bde762d17bef6d5732ae
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43770210"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45632925"
 ---
-# <a name="quickstart-generate-a-thumbnail---rest-python"></a>Rövid útmutató: Miniatűr létrehozása – REST, Python
+# <a name="quickstart-generate-a-thumbnail-using-the-rest-api-and-python-in-computer-vision"></a>Rövid útmutató: Miniatűr létrehozása a REST API és a Python használatával a Computer Vision szolgáltatásban
 
-Ebben a rövid útmutatóban miniatűrt fog létrehozni egy képből a Computer Vision segítségével.
+Ebben a rövid útmutatóban miniatűrt hozhat létre egy képből a Computer Vision API REST API-jának használatával. A [Get Thumbnail](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fb) metódussal egy miniatűrt készíthet egy képből. Megadhatja a magasságát és a szélességét, amely eltérhet a bemeneti kép oldalarányától. A Computer Vision intelligens körbevágással azonosítja a releváns régiót, amely alapján létrehozza a vágási koordinátákat.
 
 Ezt a rövid útmutatót futtathatja lépésenként egy Jupyter-notebook segítségével a [MyBinderben](https://mybinder.org). A Binder indításához válassza az alábbi gombot:
 
 [![Binder](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/Microsoft/cognitive-services-notebooks/master?filepath=VisionAPI.ipynb)
 
+Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services) a virtuális gép létrehozásának megkezdése előtt.
+
 ## <a name="prerequisites"></a>Előfeltételek
 
 A Computer Vision használatához előfizetési kulcsra van szüksége, lásd az [előfizetési kulcsok beszerzéséről](../Vision-API-How-to-Topics/HowToSubscribe.md) szóló témakört.
 
-## <a name="intelligently-generate-a-thumbnail"></a>Miniatűr intelligens létrehozása
+## <a name="prerequisites"></a>Előfeltételek
 
-A [Get Thumbnail metódussal](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fb) létrehozhatja egy kép miniatűrjét. Megadhatja a magasságát és a szélességét, amely eltérhet a bemeneti kép oldalarányától. A Computer Vision intelligens körbevágással azonosítja a releváns régiót, amely alapján létrehozza a vágási koordinátákat.
+- A minta helyi futtatásához rendelkeznie kell a [Pythonnal](https://www.python.org/downloads/).
+- Szüksége lesz egy Computer Vision-előfizetői azonosítóra. Az előfizetői azonosító beszerzéséhez lásd az [előfizetői azonosítók beszerzéséről](../Vision-API-How-to-Topics/HowToSubscribe.md) szóló témakört.
 
-A minta futtatásához az alábbi lépéseket kell végrehajtania:
+## <a name="create-and-run-the-sample"></a>A minta létrehozása és futtatása
 
-1. Másolja a következő kódot egy új Python-szkriptfájlba.
-1. A `<Subscription Key>` helyére írja be az érvényes előfizetési kulcsot.
-1. Ha szükséges, változtassa meg az `vision_base_url` értékét arra a helyre, ahonnan az előfizetési kulcsot beszerezte.
-1. Módosíthatja az `image_url` elem értékét egy másik képre.
-1. Futtassa a szkriptet.
+A minta létrehozásához és futtatásához az alábbi lépéseket kell végrehajtania:
 
-Az alábbi kód a Python `requests` kódtárát használja a Computer Vision képelemző API-jának meghívásához. Az API-kulcsot a rendszer a `headers` szótárral adja át. A miniatűr méretét a rendszer a `params` szótárral adja át. A válaszban a rendszer bájttömbként adja vissza a miniatűrt.
-
-## <a name="get-thumbnail-request"></a>Miniatűrbeszerzési kérés
+1. Másolja az alábbi kódot egy szövegszerkesztőbe.
+1. Hajtsa végre a következő módosításokat a kód megfelelő területein:
+    1. Cserélje le a `subscription_key` értéket az előfizetői azonosítóra.
+    1. Ha szükséges, cserélje le az `vision_base_url` értéket azon Azure-régió Computer Vision-erőforrás metódusának végponti URL-címére, ahol az előfizetői azonosítókat beszerezte.
+    1. Ha szeretné, cserélje le az `image_url` értéket annak a képnek az URL-címére, amelyhez miniatűrt szeretne létrehozni.
+1. Mentse a kódot fájlként `.py` kiterjesztéssel. Például: `get-thumbnail.py`.
+1. Nyisson meg egy parancssort.
+1. Amikor a rendszer kéri, a `python` paranccsal futtassa a mintát. Például: `python get-thumbnail.py`.
 
 ```python
 import requests
@@ -87,9 +91,13 @@ plt.axis("off")
 print("Thumbnail is {0}-by-{1}".format(*thumbnail.size))
 ```
 
+## <a name="examine-the-response"></a>A válasz vizsgálata
+
+A rendszer bináris formátumban adja vissza a sikeres választ, ahol a bináris adatok a miniatűr képadatainak felelnek meg. Sikeres kérés esetén a miniatűr a válaszban levő bináris adatokból lesz összeállítva, és a minta jeleníti meg. Ha a kérés meghiúsul, a válasz a parancssori ablakban jelenik meg. A meghiúsult kérés válasza tartalmaz egy hibakódot és egy üzenetet, amely segít meghatározni a hiba okát.
+
 ## <a name="next-steps"></a>További lépések
 
-Ismerjen meg egy Python-alkalmazást, amely a Computer Vision segítségével végez optikai karakterfelismerést (OCR), és amellyel intelligens körbevágású miniatűröket hozhat létre, valamint képek vizuális jellemzőit, például arcokat észlelhet, kategorizálhat, címkézhet és írhat le. A Computer Vision API-kkal való gyors kísérletezéshez próbálja ki az [Open API-tesztkonzolt](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa/console).
+Ismerjen meg egy Python-alkalmazást, amely a Computer Vision segítségével végez optikai karakterfelismerést (OCR), és amellyel intelligens körbevágású miniatűröket hozhat létre, valamint képek vizuális jellemzőit, például arcokat észlelhet, kategorizálhat, címkézhet és írhat le. A Computer Vision API-val való gyors kísérletezéshez próbálja ki az [Open API-tesztkonzolt](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa/console).
 
 > [!div class="nextstepaction"]
 > [Computer Vision API – Python-oktatóanyag](../Tutorials/PythonTutorial.md)
