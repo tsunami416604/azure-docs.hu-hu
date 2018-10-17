@@ -1,6 +1,6 @@
 ---
-title: Az SQL Database-kapcsolatot biztonságossá tétele az App Service-ből felügyeltszolgáltatás-identitás segítségével | Microsoft Docs
-description: Tegye biztonságosabbá adatbázis-kapcsolatát felügyeltszolgáltatás-identitás segítségével, és alkalmazza ezt egyéb Azure-szolgáltatásoknál is.
+title: Az SQL Database-kapcsolat biztonságossá tétele az App Service-ből felügyelt identitás segítségével | Microsoft Docs
+description: Tegye biztonságosabbá adatbázis-kapcsolatát felügyelt identitás segítségével, és alkalmazza ezt egyéb Azure-szolgáltatásoknál is.
 services: app-service\web
 documentationcenter: dotnet
 author: cephalin
@@ -14,24 +14,24 @@ ms.topic: tutorial
 ms.date: 04/17/2018
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: 173588c0200666c52f3ac0a5d2e70d667cfe3294
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 3125db03dc13f70524fd094736f50b563ef712a4
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39445561"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44379927"
 ---
-# <a name="tutorial-secure-sql-database-connection-with-managed-service-identity"></a>Oktatóanyag: Az SQL Database-kapcsolat védelmének biztosítása felügyeltszolgáltatás-identitás segítségével
+# <a name="tutorial-secure-azure-sql-database-connection-from-app-service-using-a-managed-identity"></a>Oktatóanyag: Az SQL Database-kapcsolat biztonságossá tétele az App Service-ből felügyelt identitás segítségével
 
-Az [App Service](app-service-web-overview.md) egy hatékonyan méretezhető, önjavító webes üzemeltetési szolgáltatás az Azure-ban. [Felügyeltszolgáltatás-identitást](app-service-managed-service-identity.md) biztosít az alkalmazásához, vagyis egy kulcsrakész megoldást, amely biztosítja az [Azure SQL Database-hez](/azure/sql-database/) és egyéb Azure-szolgáltatásokhoz való hozzáférés védelmét. Az App Service-ben található felügyeltszolgáltatás-identitások biztonságosabbá teszik alkalmazását a titkos kódok, pl. a kapcsolati sztringekban lévő hitelesítő adatok szükségességének megszüntetésével. Ebben az oktatóanyagban hozzáadja a felügyeltszolgáltatás-identitást ahhoz a minta ASP.NET-webalkalmazáshoz, amelyet az [Oktatóanyag: ASP.NET-alkalmazás létrehozása az Azure-ban SQL Database használatával](app-service-web-tutorial-dotnet-sqldatabase.md) című szakaszban hozott létre. Ha ezzel végzett, a mintaalkalmazása biztonságosan csatlakozhat az SQL Database-hez, felhasználónév és jelszó használata nélkül.
+Az [App Service](app-service-web-overview.md) egy hatékonyan méretezhető, önjavító webes üzemeltetési szolgáltatás az Azure-ban. [Felügyelt identitást](app-service-managed-service-identity.md) biztosít az alkalmazásához, vagyis egy kulcsrakész megoldást, amely biztosítja az [Azure SQL Database-hez](/azure/sql-database/) és egyéb Azure-szolgáltatásokhoz való hozzáférés védelmét. Az App Service-ben található felügyelt identitások biztonságosabbá teszik alkalmazását a titkos kódok, pl. a kapcsolati sztringekben lévő hitelesítő adatok szükségességének megszüntetésével. Ebben az oktatóanyagban hozzáadja a felügyelt identitást ahhoz a minta ASP.NET-webalkalmazáshoz, amelyet az [Oktatóanyag: ASP.NET-alkalmazás létrehozása az Azure-ban SQL Database használatával](app-service-web-tutorial-dotnet-sqldatabase.md) című szakaszban hozott létre. Ha ezzel végzett, a mintaalkalmazása biztonságosan csatlakozhat az SQL Database-hez, felhasználónév és jelszó használata nélkül.
 
 Az alábbiak végrehajtásának módját ismerheti meg:
 
 > [!div class="checklist"]
-> * Felügyeltszolgáltatás-identitás engedélyezése
-> * SQL Database-hozzáférés engedélyezése a szolgáltatásidentitáshoz
+> * Felügyelt identitások engedélyezése
+> * SQL Database-hozzáférés engedélyezése a felügyelt identitáshoz
 > * Alkalmazáskód konfigurálása SQL Database-hitelesítéshez, az Azure Active Directory-hitelesítés segítségével
-> * Minimális jogosultságok engedélyezése a szolgáltatásidentitáshoz az SQL Database-ben
+> * Minimális jogosultságok engedélyezése a felügyelt identitáshoz az SQL Database-ben
 
 > [!NOTE]
 > Az Azure Active Directory hitelesítése _eltér_ a helyszíni Active Directoryban (AD DS) lévő [integrált Windows-hitelesítéstől](/previous-versions/windows/it-pro/windows-server-2003/cc758557(v=ws.10)). Az AD DS és az Azure Active Directory teljesen más hitelesítési protokollt használ. További információk [a Windows Server AD DS és az Azure AD közötti különbségekről](../active-directory/fundamentals/understand-azure-identity-solutions.md#the-difference-between-windows-server-ad-ds-and-azure-ad).
@@ -46,9 +46,9 @@ Ez a cikk az [Oktatóanyag: ASP.NET-alkalmazás létrehozása az Azure-ban SQL D
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-## <a name="enable-managed-service-identity"></a>Felügyeltszolgáltatás-identitás engedélyezése
+## <a name="enable-managed-identities"></a>Felügyelt identitások engedélyezése
 
-Ha engedélyezni szeretné a szolgáltatásidentitást az Azure-alkalmazásához, használja az [az webapp identity assign](/cli/azure/webapp/identity?view=azure-cli-latest#az-webapp-identity-assign) parancsot a Cloud Shellben. Az alábbi parancsban cserélje le az *\<alkalmazásnév>* elemet.
+Ha engedélyezni szeretné a felügyelt identitást az Azure-alkalmazásához, használja az [az webapp identity assign](/cli/azure/webapp/identity?view=azure-cli-latest#az-webapp-identity-assign) parancsot a Cloud Shellben. Az alábbi parancsban cserélje le az *\<alkalmazásnév>* elemet.
 
 ```azurecli-interactive
 az webapp identity assign --resource-group myResourceGroup --name <app name>
@@ -73,13 +73,13 @@ az ad sp show --id <principalid>
 
 ## <a name="grant-database-access-to-identity"></a>Adatbázis-hozzáférés engedélyezése az identitáshoz
 
-A következő lépésben engedélyezi az adatbázis-hozzáférést az alkalmazása szolgáltatásidentitásához. Ehhez futtassa az [`az sql server ad-admin create`](/cli/azure/sql/server/ad-admin?view=azure-cli-latest#az-sql-server-ad-admin_create) parancsot a Cloud Shellben. Az alábbi parancsban cserélje le a *\<kiszolgáló_neve>* elemet és az <előző_lépés_principalid_értéke> elemet. Adjon meg egy rendszergazdanevet a *\<rendszergazdai_felhasználó >* elemnél.
+A következő lépésben engedélyezi az adatbázis-hozzáférést az alkalmazása felügyelt identitásához. Ehhez futtassa az [`az sql server ad-admin create`](/cli/azure/sql/server/ad-admin?view=azure-cli-latest#az-sql-server-ad-admin_create) parancsot a Cloud Shellben. Az alábbi parancsban cserélje le a *\<kiszolgáló_neve>* elemet és az <előző_lépés_principalid_értéke> elemet. Adjon meg egy rendszergazdanevet a *\<rendszergazdai_felhasználó >* elemnél.
 
 ```azurecli-interactive
 az sql server ad-admin create --resource-group myResourceGroup --server-name <server_name> --display-name <admin_user> --object-id <principalid_from_last_step>
 ```
 
-A felügyeltszolgáltatás-identitás ezentúl hozzáférhet az Azure SQL Database-kiszolgálójához.
+A felügyelt identitás ezentúl hozzáférhet az Azure SQL Database-kiszolgálójához.
 
 ## <a name="modify-connection-string"></a>Kapcsolati sztring módosítása
 
@@ -119,7 +119,7 @@ public MyDatabaseContext(SqlConnection conn) : base(conn, true)
 }
 ```
 
-Ez a konstruktor konfigurál egy egyéni SqlConnection objektumot annak érdekében, hogy az App Service-ből használhassa a hozzáférési jogkivonatot az Azure SQL Database-ben. A hozzáférési jogkivonattal az App Service-alkalmazása hitelesíti az Azure SQL Database-t a felügyeltszolgáltatás-identitás segítségével. További információt a [jogkivonatok Azure-erőforrásokhoz való beszerzéséről](app-service-managed-service-identity.md#obtaining-tokens-for-azure-resources) szóló témakörben talál. Az `if` utasítás lehetővé teszi, hogy a LocalDB segítségével továbbra is tesztelje alkalmazását helyileg.
+Ez a konstruktor konfigurál egy egyéni SqlConnection objektumot annak érdekében, hogy az App Service-ből használhassa a hozzáférési jogkivonatot az Azure SQL Database-ben. A hozzáférési jogkivonattal az App Service-alkalmazása hitelesíti az Azure SQL Database-t a felügyelt identitás segítségével. További információt a [jogkivonatok Azure-erőforrásokhoz való beszerzéséről](app-service-managed-service-identity.md#obtaining-tokens-for-azure-resources) szóló témakörben talál. Az `if` utasítás lehetővé teszi, hogy a LocalDB segítségével továbbra is tesztelje alkalmazását helyileg.
 
 > [!NOTE]
 > Az `SqlConnection.AccessToken` jelenleg csak a .NET-keretrendszerben (4.6-os vagy újabb verzió) támogatott, a [.NET Core-ban](https://www.microsoft.com/net/learn/get-started/windows) nem.
@@ -141,7 +141,7 @@ A **Solution Explorer** (Megoldáskezelő) lapon kattintson a jobb gombbal a **D
 
 ![Közzététel a Megoldáskezelőből](./media/app-service-web-tutorial-dotnet-sqldatabase/solution-explorer-publish.png)
 
-A közzétételi oldalon kattintson a **Publish** (Közzététel) elemre. Amikor az új weblapon megjelenik a feladatlista, az alkalmazása kapcsolódik az adatbázishoz a felügyeltszolgáltatás-identitás segítségével.
+A közzétételi oldalon kattintson a **Publish** (Közzététel) elemre. Amikor az új weblapon megjelenik a feladatlista, az alkalmazása kapcsolódik az adatbázishoz a felügyelt identitás segítségével.
 
 ![Az Azure webalkalmazás a Code First migrálás után](./media/app-service-web-tutorial-dotnet-sqldatabase/this-one-is-done.png)
 
@@ -151,11 +151,11 @@ Most már ugyanúgy szerkesztheti a feladatlistát, mint korábban.
 
 ## <a name="grant-minimal-privileges-to-identity"></a>Minimális jogosultságok engedélyezése az identitáshoz
 
-Az előző lépések során valószínűleg észrevette, hogy a felügyeltszolgáltatás-identitása Azure AD-rendszergazdaként kapcsolódik az SQL Serverhez. Ahhoz, hogy engedélyezze a minimális jogosultságokat a felügyeltszolgáltatás-identitásához, Azure AD-rendszergazdaként kell bejelentkeznie az Azure SQL Database-kiszolgálóba, majd hozzá kell adnia egy Azure Active Directory-csoportot, amely a szolgáltatásidentitást tartalmazza. 
+Az előző lépések során valószínűleg észrevette, hogy a felügyelt identitása Azure AD-rendszergazdaként kapcsolódik az SQL Serverhez. Ahhoz, hogy engedélyezze a minimális jogosultságokat a felügyelt identitásához, Azure AD-rendszergazdaként kell bejelentkeznie az Azure SQL Database-kiszolgálóba, majd hozzá kell adnia egy Azure Active Directory-csoportot, amely a felügyelt identitást tartalmazza. 
 
-### <a name="add-managed-service-identity-to-an-azure-active-directory-group"></a>A felügyeltszolgáltatás-identitás hozzáadása egy Azure Active Directory-csoporthoz
+### <a name="add-managed-identity-to-an-azure-active-directory-group"></a>A felügyelt identitás hozzáadása egy Azure Active Directory-csoporthoz
 
-A Cloud Shellben adja hozzá az alkalmazásának felügyeltszolgáltatás-identitását egy új Azure Active Directory-csoporthoz, amelynek neve _myAzureSQLDBAccessGroup_, az alábbi szkriptben látható módon:
+A Cloud Shellben adja hozzá az alkalmazásának felügyelt identitását egy új Azure Active Directory-csoporthoz, amelynek neve _myAzureSQLDBAccessGroup_, az alábbi szkriptben látható módon:
 
 ```azurecli-interactive
 groupid=$(az ad group create --display-name myAzureSQLDBAccessGroup --mail-nickname myAzureSQLDBAccessGroup --query objectId --output tsv)
@@ -168,7 +168,7 @@ Ha minden egyes parancsnál meg szeretné tekinteni a JSON-kimenetet, hagyja el 
 
 ### <a name="reconfigure-azure-ad-administrator"></a>Az Azure AD-rendszergazda újrakonfigurálása
 
-Előzőleg Azure AD-rendszergazdaként rendelte hozzá a felügyeltszolgáltatás-identitást az SQL Database-hez. Ezt az identitást nem használhatja interaktív bejelentkezéshez (adatbázis-felhasználók hozzáadásához), ezért az igazi Azure AD-felhasználóját kell használnia. Az Azure AD-felhasználója hozzáadásához kövesse az [Azure Active Directory-rendszergazda az Azure SQL Database-kiszolgálóhoz való regisztrálása ](../sql-database/sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-azure-sql-database-server) témakörrel foglalkozó szakasz lépéseit. 
+Előzőleg Azure AD-rendszergazdaként rendelte hozzá a felügyelt identitást az SQL Database-hez. Ezt az identitást nem használhatja interaktív bejelentkezéshez (adatbázis-felhasználók hozzáadásához), ezért az igazi Azure AD-felhasználóját kell használnia. Az Azure AD-felhasználója hozzáadásához kövesse az [Azure Active Directory-rendszergazda az Azure SQL Database-kiszolgálóhoz való regisztrálása ](../sql-database/sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-azure-sql-database-server) témakörrel foglalkozó szakasz lépéseit. 
 
 ### <a name="grant-permissions-to-azure-active-directory-group"></a>Engedélyek kiosztása az Azure Active Directory-csoportnak
 
@@ -204,10 +204,10 @@ GO
 Az alábbiak elvégzését ismerte meg:
 
 > [!div class="checklist"]
-> * Felügyeltszolgáltatás-identitás engedélyezése
-> * SQL Database-hozzáférés engedélyezése a szolgáltatásidentitáshoz
+> * Felügyelt identitások engedélyezése
+> * SQL Database-hozzáférés engedélyezése a felügyelt identitáshoz
 > * Alkalmazáskód konfigurálása SQL Database-hitelesítéshez, az Azure Active Directory-hitelesítés segítségével
-> * Minimális jogosultságok engedélyezése a szolgáltatásidentitáshoz az SQL Database-ben
+> * Minimális jogosultságok engedélyezése a felügyelt identitáshoz az SQL Database-ben
 
 Lépjen a következő oktatóanyaghoz, amelyből megtudhatja, hogyan képezhet le egyedi DNS-nevet a webalkalmazáshoz.
 

@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 05/10/2017
 ms.author: rafats
 ms.custom: mvc
-ms.openlocfilehash: 1d0a660845052f51af84b78584787760e01f16a6
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 624c5e78287fac57b06f6b5112d2523e31256ae0
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38542646"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44049768"
 ---
 # <a name="set-up-azure-cosmos-db-global-distribution-using-the-sql-api"></a>Az Azure Cosmos DB globális terjesztésének beállítása az SQL API használatával
 
@@ -153,9 +153,9 @@ Példaválasz
 * Az összes PUT, POST és DELETE kérelemnek a megadott írási URI-ra kell érkeznie
 * A GET-ek és más csak olvasási kérelmek (például a lekérdezések) az ügyfél által kiválasztott bármelyik végpontra érkezhetnek
 
-A csak olvasási régiókba érkező írási kérelmek meghiúsulnak a 403-as HTTP-hibakóddal („Tiltott”).
+A csak olvasási régiókba érkező írási kérelmek a 403-as HTTP-hibakóddal („Tiltott”) hiúsulnak meg.
 
-Ha az írási régió az ügyfél kezdeti felderítési fázisa után módosul, az előző írási régióba érkező későbbi írások meghiúsulnak a 403-as HTTP-hibakóddal („Tiltott”). Az ügyfélnek ilyenkor ismét le kell kérnie a régiók listáját a GET metódussal a frissített írási régió beszerzéséhez.
+Ha az írási régió az ügyfél kezdeti felderítési fázisa után módosul, az előző írási régióba érkező későbbi írások a 403-as HTTP-hibakóddal („Tiltott”) hiúsulnak meg. Az ügyfélnek ilyenkor ismét le kell kérnie a régiók listáját a GET metódussal a frissített írási régió beszerzéséhez.
 
 Ezzel el is végezte az oktatóanyagot. Ha meg szeretné ismerni, hogyan kezelheti a globálisan replikált fiók konzisztenciáját, olvassa el a [Konzisztenciaszintek az Azure Cosmos DB-ben](consistency-levels.md) című cikket. További információ a globális adatbázis-replikáció működéséről az Azure Cosmos DB szolgáltatásban: [Globális adatterjesztés az Azure Cosmos DB-vel](distribute-data-globally.md).
 

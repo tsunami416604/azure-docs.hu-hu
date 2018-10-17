@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 09/20/2017
 ms.author: msfussell
 ms.custom: mvc
-ms.openlocfilehash: fdb710868a75f64c3fe9f3742482c70ff86f4365
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 5c7586ae2ff1a648348c1155a528035fa72c7744
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34207835"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44299814"
 ---
 # <a name="overview-of-azure-service-fabric"></a>Az Azure Service Fabric áttekintése
 Az Azure Service Fabric egy elosztott rendszerplatform, amely megkönnyíti a skálázható és megbízható mikroszolgáltatások és tárolók csomagolását, üzembe helyezését és kezelését. A Service Fabric emellett választ ad a natív felhőalapú alkalmazások fejlesztésének és felügyeletének jelentős kihívásaira. A fejlesztők és a rendszergazdák elkerülhetik az infrastruktúrával kapcsolatos összetett problémákat, és a kritikus fontosságú, nagy erőforrás-igényű, skálázható, megbízható és felügyelhető számítási feladatok megvalósítására koncentrálhatnak. A Service Fabric egy következő generációs platform az ezen tárolókban futó, nagyvállalati szintű, első rétegbeli, felhőléptékű alkalmazások felépítésére és felügyeletére.
@@ -66,7 +66,7 @@ A Service Fabric alkalmazáséletciklus-felügyeleti képességei lehetővé tes
 
 Az alkalmazások többsége együtt üzembe helyezett állapot nélküli és állapotalapú mikroszolgáltatások, tárolók és egyéb végrehajtható fájlok kombinációjából áll. Az erős típusmegadású alkalmazások révén a Service Fabric lehetővé teszi több alkalmazáspéldány üzembe helyezését. Az egyes példányok felügyelete és frissítése egymástól függetlenül történik. Ami azonban még ennél is fontosabb, a Service Fabric képes tárolókat vagy végrehajtható fájlokat üzembe helyezni és megbízhatóvá tenni. Például a Service Fabric segítségével telepíthet .NET-et, ASP.NET Core-t, node.js-t, Windows-tárolókat, Linux-tárolókat, Java virtuális gépeket, szkripteket, Angulart vagy szó szerint bármit, amelyre az alkalmazásnak szüksége van.
 
-A Service Fabric olyan CI/CD eszközökkel van integrálva, mint a [Visual Studio Team Services](https://www.visualstudio.com/team-services/), a [Jenkins](https://jenkins.io/index.html) és az [Octopus Deploy](https://octopus.com/), és bármely más közismert CI/CD eszközzel is használható.
+A Service Fabric olyan CI-/CD-eszközökkel van integrálva, mint az [Azure Pipelines](https://www.visualstudio.com/team-services/), a [Jenkins](https://jenkins.io/index.html) és az [Octopus Deploy](https://octopus.com/), és bármely más közismert CI-/CD-eszközzel is használható.
 
 Az alkalmazások életciklus-felügyeletével kapcsolatos további tudnivalókért tekintse meg az [alkalmazások életciklusával](service-fabric-application-lifecycle.md) kapcsolatos témakört. A kódok üzembe helyezésével kapcsolatos további tudnivalókért tekintse meg a [futtatható vendégalkalmazás üzembe helyezéséről](service-fabric-deploy-existing-app.md) szóló témakört.
 

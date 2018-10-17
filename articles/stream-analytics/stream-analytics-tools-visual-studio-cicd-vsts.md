@@ -1,6 +1,6 @@
 ---
-title: Azure Stream Analytics-feladat üzembe helyezése a CI/CD-vel és egy VSTS-oktatóanyag használatával
-description: A cikk azt írja le, hogyan helyezhet üzembe egy Azure Stream Analytics-feladatot a CI/CD-vel, a VSTS használatával.
+title: Azure Stream Analytics-feladat üzembe helyezése CI/CD-vel az Azure DevOps Services használatával – oktatóanyag
+description: A cikk azt írja le, hogyan helyezhet üzembe egy Azure Stream Analytics-feladatot a CI/CD-vel az Azure DevOps Services használatával.
 services: stream-analytics
 author: su-jie
 ms.author: sujie
@@ -9,22 +9,22 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: tutorial
 ms.date: 7/10/2018
-ms.openlocfilehash: d4f1e188a1a145ba3be5fb45d2b0ea4d0bfd57a7
-ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
+ms.openlocfilehash: adacbaf718c5ef293b4ee3fa833083704aa41f5c
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/15/2018
-ms.locfileid: "41920087"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44297942"
 ---
-# <a name="tutorial-deploy-an-azure-stream-analytics-job-with-cicd-using-vsts"></a>Oktatóanyag: Azure Stream Analytics-feladat üzembe helyezése a CI/CD-vel, a VSTS használatával
-Ez az oktatóanyag azt ismerteti, hogyan lehet folyamatos integrációt és üzembe helyezést beállítani egy Azure Stream Analytics-feladathoz a Visual Studio Team Services használatával. 
+# <a name="tutorial-deploy-an-azure-stream-analytics-job-with-cicd-using-azure-pipelines"></a>Oktatóanyag: Azure Stream Analytics-feladat üzembe helyezése CI/CD-vel az Azure Pipelines használatával
+Ez az oktatóanyag azt ismerteti, hogyan lehet folyamatos integrációt és üzembe helyezést beállítani egy Azure Stream Analytics-feladathoz az Azure Pipelines használatával. 
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * Forráskezelés hozzáadása a projekthez
-> * Builddefiníció létrehozása a Team Services használatával
-> * Kiadási definíció létrehozása a Team Services használatával
+> * Buildelési folyamat létrehozása az Azure Pipelinesban
+> * Kiadási folyamat létrehozása az Azure Pipelinesban
 > * Alkalmazás automatikus üzembe helyezése és frissítése
 
 ## <a name="prerequisites"></a>Előfeltételek
@@ -33,7 +33,7 @@ Mielőtt hozzálátna, győződjön meg róla, hogy rendelkezik az alábbiakkal:
 * Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * Telepítse a [Visual Studiót](stream-analytics-tools-for-visual-studio-install.md) és az **Azure-fejlesztési** vagy az **Adattárolási és -feldolgozási** számítási feladatokat.
 * Hozzon létre egy [Stream Analytics-projektet a Visual Studióban](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-quick-create-vs).
-* Hozzon létre egy [Visual Studio Team Services](https://visualstudio.microsoft.com/team-services/)-fiókot.
+* Hozzon létre egy [Azure DevOps](https://visualstudio.microsoft.com/team-services/)-szervezetet.
 
 ## <a name="configure-nuget-package-dependency"></a>NuGet csomagfüggőség konfigurálása
 Amennyiben automatikus létrehozást vagy automatikus telepítést kíván alkalmazni egy tetszőleges gépen, a `Microsoft.Azure.StreamAnalytics.CICD` NuGet-csomagot kell használnia. Ez tartalmazza az MSBuild-, helyi futtatási, valamint a telepítési eszközöket, amelyek támogatják a Stream Analytics Visual Studio-projektek folyamatos integrációs és üzembehelyezési folyamatait. További információ: [Stream Analytics CI/CD-eszközök](stream-analytics-tools-for-visual-studio-cicd.md).
@@ -47,34 +47,35 @@ Adja hozzá a **packages.config** fájlt a projekt könyvtárához.
 </packages>
 ```
 
-## <a name="share-your-visual-studio-solution-to-a-new-team-services-git-repo"></a>A Visual Studio-megoldás megosztása egy új Team Services Git-adattárban
-Az alkalmazás forrásfájljait megoszthatja a Team Services egyik csoportprojektjében, és ezáltal buildeket hozhat létre.  
+## <a name="share-your-visual-studio-solution-to-a-new-azure-repos-git-repo"></a>A Visual Studio-megoldás megosztása egy új Azure Repos Git-adattárban
+
+Az alkalmazás forrásfájljait megoszthatja az Azure DevOps egyik projektjében, és ezáltal buildeket hozhat létre.  
 
 1. Hozzon létre egy új helyi Git-adattárat a projekthez. Ehhez válassza ki a Visual Studio jobb alsó sarkában található állapotsoron az **Add to Source Control** (Hozzáadás a forráskezelőhöz), majd a **Git** elemet. 
 
-2. A **Team Explorer** **Synchronization** (Szinkronizálás) nézetében válassza ki a **Push to Visual Studio Team Services** (Leküldés a Visual Studio Team Services szolgáltatásba) alatt található **Publish Git Repo** (Git-adattár közzététele) gombot.
+2. A **Team Explorer** **Synchronization** (Szinkronizálás) nézetében válassza ki a **Push to Azure DevOps Services** (Leküldés az Azure DevOps Services szolgáltatásba) alatt található **Publish Git Repo** (Git-adattár közzététele) gombot.
 
    ![Leküldéses Git-adattár](./media/stream-analytics-tools-visual-studio-cicd-vsts/publishgitrepo.png)
 
-3. Ellenőrizze az e-mail-címet, és válassza ki a saját fiókját a **Team Services Domain** (Team Services tartomány) legördülő listájából. Adja meg az adattár nevét, majd válassza ki a **Publish repository** (Adattár közzététele) lehetőséget.
+3. Ellenőrizze az e-mail-címet, és válassza ki a saját szervezetét az **Azure DevOps Services Domain** (Azure DevOps Services tartomány) legördülő listájából. Adja meg az adattár nevét, majd válassza ki a **Publish repository** (Adattár közzététele) lehetőséget.
 
    ![Leküldéses Git-adattár](./media/stream-analytics-tools-visual-studio-cicd-vsts/publishcode.png)
 
-    Az adattár közzétételével egy új csoportprojekt jön létre a fiókjában a helyi adattáréval azonos néven. Ha egy már meglévő csapatprojektben kíván adattárat létrehozni, az **Adattár neve** mellett kattintson az **Advanced** (Speciális) elemre, és válassza ki a csoportprojektet. A kód böngészőben való megtekintéséhez válassza a **See it on the web** (Megtekintés a weben) lehetőséget.
+    Az adattár közzétételével egy új projekt jön létre a szervezetben a helyi adattáréval azonos néven. Ha egy már meglévő projektben kíván adattárat létrehozni, az **adattár neve** mellett kattintson az **Advanced** (Speciális) elemre, és válassza ki a projektet. A kód böngészőben való megtekintéséhez válassza a **See it on the web** (Megtekintés a weben) lehetőséget.
  
-## <a name="configure-continuous-delivery-with-vsts"></a>Folyamatos továbbítás konfigurálása a VSTS használatával
-A Team Services builddefiníciója egy olyan munkafolyamatot ír le, amely egymás után végrehajtott létrehozási lépések sorozatából áll. További tudnivalók [a Team Services builddefinícióiról](https://www.visualstudio.com/docs/build/define/create). 
+## <a name="configure-continuous-delivery-with-azure-devops"></a>Folyamatos továbbítás konfigurálása az Azure DevOps használatával
+A Team Pipelines buildelési folyamat egy olyan munkafolyamatot ír le, amely egymás után végrehajtott buildelési lépések sorozatából áll. További tudnivalók az [Azure Pipelines buildelési folyamatokról](https://docs.microsoft.com/azure/devops/pipelines/get-started-designer?view=vsts&tabs=new-nav). 
 
-A Team Services kiadási definíciója olyan munkafolyamatot ír le, amely egy alkalmazáscsomagot telepít egy fürtre. Együttes használatuk esetén a builddefiníció és a kiadási definíció a teljes munkafolyamatot végrehajtja, amely a forrásfájlokkal kezdődik, és a fürtön futó alkalmazással ér véget. További tudnivalók a Team Services [kiadási definícióiról](https://www.visualstudio.com/docs/release/author-release-definition/more-release-definition).
+Az Azure Pipelines kiadási folyamata olyan munkafolyamatot ír le, amely egy alkalmazáscsomagot telepít egy fürtre. Együttes használatuk esetén a buildelési és a kiadási folyamat a teljes munkafolyamatot végrehajtja, amely a forrásfájlokkal kezdődik, és a fürtön futó alkalmazással ér véget. További információ az Azure Pipelines [kiadási folyamatairól](https://docs.microsoft.com/azure/devops/pipelines/release/define-multistage-release-process?view=vsts).
 
-### <a name="create-a-build-definition"></a>Builddefiníció létrehozása
-Nyisson meg egy webböngészőt, majd keresse meg a [Visual Studio Team Servicesben](https://app.vsaex.visualstudio.com/) létrehozott csapatprojektet. 
+### <a name="create-a-build-pipeline"></a>Buildelési folyamat létrehozása
+Nyisson meg egy webböngészőt, majd keresse meg az [Azure DevOpsban](https://app.vsaex.visualstudio.com/) létrehozott projektet. 
 
-1. A **Build & Release** (Build és kiadás) lapon válassza a **Builds** (Buildek) és a **+ New** (+ Új) lehetőséget.  Válassza a **VSTS Git** és a **Continue** (Folytatás) lehetőséget.
+1. A **Build & Release** (Build és kiadás) lapon válassza a **Builds** (Buildek) és a **+ New** (+ Új) lehetőséget.  Válassza az **Azure DevOps Services Git** és a **Continue** (Folytatás) lehetőséget.
     
     ![Forrás kiválasztása](./media/stream-analytics-tools-visual-studio-cicd-vsts/build-select-source.png)
 
-2. A **Select a template** (Sablon kiválasztása) területen kattintson az **Empty Process** (Üres folyamat) elemre, ha egy üres definícióval kezdené meg a munkát.
+2. A **Select a template** (Sablon kiválasztása) területen kattintson az **Empty Process** (Üres folyamat) elemre, ha egy üres folyamattal kezdené meg a munkát.
     
     ![Buildsablon kiválasztása](./media/stream-analytics-tools-visual-studio-cicd-vsts/build-select-template.png)
 
@@ -82,7 +83,7 @@ Nyisson meg egy webböngészőt, majd keresse meg a [Visual Studio Team Services
     
     ![Triggerállapot](./media/stream-analytics-tools-visual-studio-cicd-vsts/build-trigger.png)
 
-4. A buildek leküldés vagy bejelentkezés hatására is aktiválódnak. A build folyamatának ellenőrzéséhez váltson át a **Builds** (Buildek) lapra.  Miután meggyőződött arról, hogy a build végrehajtása sikeresen megtörtént, létre kell hoznia a kiadási definíciót, amely telepíti az alkalmazást egy fürtre. Kattintson a jobb gombbal a builddefinícióra, és válassza az **Edit** (Szerkesztés) lehetőséget.
+4. A buildek leküldés vagy bejelentkezés hatására is aktiválódnak. A build folyamatának ellenőrzéséhez váltson át a **Builds** (Buildek) lapra.  Miután meggyőződött arról, hogy a build végrehajtása sikeresen megtörtént, létre kell hoznia a kiadási folyamatot, amely telepíti az alkalmazást egy fürtre. Kattintson a jobb gombbal a buildelési folyamat melletti három pontra, és válassza az **Edit** (Szerkesztés) lehetőséget.
 
 5.  A **Tasks** (Feladatok) között az **Agent queue** (Ügynöküzenetsor) megfelelőjeként adja meg a következőt: Hosted.
     
@@ -125,17 +126,17 @@ Nyisson meg egy webböngészőt, majd keresse meg a [Visual Studio Team Services
     
     ![Tulajdonságok beállítása](./media/stream-analytics-tools-visual-studio-cicd-vsts/build-deploy-2.png)
 
-12. A builddefiníció teszteléséhez kattintson a **Save & Queue** (Mentés és várakozási sorba helyezés) gombra.
+12. A buildelési folyamat teszteléséhez kattintson a **Save & Queue** (Mentés és várakozási sorba helyezés) gombra.
     
     ![Felülbírálási paraméterek beállítása](./media/stream-analytics-tools-visual-studio-cicd-vsts/build-save-queue.png)
 
 ### <a name="failed-build-process"></a>Sikertelen buildelési folyamat
-Lehet, hogy null értékű üzembehelyezési paraméterekről szóló hibaüzenetet kap, ha nem bírálta felül a sablon paramétereit a builddefiníció **Azure-erőforráscsoport üzembe helyezésének** feladatában. A probléma megoldásához térjen vissza a builddefinícióhoz, és bírálja felül a null értékű paramétereket.
+Lehet, hogy null értékű üzembehelyezési paraméterekről szóló hibaüzenetet kap, ha nem bírálta felül a sablon paramétereit a buildelési folyamat **Azure-erőforráscsoport üzembe helyezésének** feladatában. A probléma megoldásához térjen vissza a buildelési folyamathoz, és bírálja felül a null értékű paramétereket.
 
    ![A buildelési folyamat sikertelen](./media/stream-analytics-tools-visual-studio-cicd-vsts/build-process-failed.png)
 
 ### <a name="commit-and-push-changes-to-trigger-a-release"></a>Módosítások véglegesítse és leküldése a kiadás indításához
-A folyamatos integrációs folyamat működésének ellenőrzéséhez adjon be néhány kódmódosítást a Team Servicesbe.    
+A folyamatos integrációs folyamat működésének ellenőrzéséhez adjon be néhány kódmódosítást az Azure DevOpsba.    
 
 A kód írása közben eszközölt módosításokat a Visual Studio automatikusan követi. A helyi Git-adattár módosításainak véglegesítéséhez válassza ki a függőben lévő módosítások ikonját, amely a képernyő jobb oldalának alján lévő állapotsoron található.
 
@@ -143,11 +144,11 @@ A kód írása közben eszközölt módosításokat a Visual Studio automatikusa
 
     ![Módosítások véglegesítése és leküldése](./media/stream-analytics-tools-visual-studio-cicd-vsts/build-push-changes.png)
 
-2. Válassza ki a közzé nem tett változások ikonját az állapotsávon vagy a Sync (Szinkronizálás) nézetet a Team Explorerben. A **Push** (Leküldés) elem kiválasztásával frissítheti a kódot a Team Services/TFS szolgáltatásban.
+2. Válassza ki a közzé nem tett változások ikonját az állapotsávon vagy a Sync (Szinkronizálás) nézetet a Team Explorerben. A **Push** (Leküldés) elem kiválasztásával frissítheti a kódot az Azure DevOps szolgáltatásban.
 
     ![Módosítások véglegesítése és leküldése](./media/stream-analytics-tools-visual-studio-cicd-vsts/build-push-changes-2.png)
 
-A Team Services szolgáltatásba leküldött módosítások automatikusan aktiválnak egy buildet.  Ha a builddefiníció sikeresen befejeződött, a kiadás automatikusan létrejön, és elindítja a fürtön a feladat frissítését.
+Az Azure DevOps szolgáltatásba leküldött módosítások automatikusan aktiválnak egy buildet.  Ha a buildelési folyamat sikeresen befejeződött, a kiadás automatikusan létrejön, és elindítja a fürtön a feladat frissítését.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 

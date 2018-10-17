@@ -14,12 +14,12 @@ ms.topic: quickstart
 ms.date: 06/12/2018
 ms.author: ccompy
 ms.custom: mvc
-ms.openlocfilehash: df4730078b890353c697b0e9213fb66cdb4e7f9b
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: e9d1f77a85d4b5cfb5bb7d3cb80380be3c79315d
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39436692"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44378278"
 ---
 # <a name="create-and-use-an-internal-load-balancer-with-an-app-service-environment"></a>Belső terheléselosztó létrehozása és használata App Service Environmenttel #
 
@@ -56,7 +56,7 @@ Néhány dolog, amit nem tehet meg ILB ASE használata esetén:
 
 Az ILB ASE létrehozása:
 
-1. Az Azure Portalon válassza az **Erőforrás létrehozása** > **Web + mobil** > **App Service Environment** elemet.
+1. Az Azure Portalon válassza az **Erőforrás létrehozása** > **Web** > **App Service Environment** elemet.
 
 1. Válassza ki előfizetését.
 
@@ -209,7 +209,7 @@ Az SCM helynév a Kudu konzolhoz irányítja, az Azure Portal **Speciális port�
 
 A több-bérlős App Service-ben és a külső ASE környezetben az Azure Portal és a Kudu konzol között egyszeri bejelentkezés van. Az ILB ASE esetében viszont közzétételi hitelesítő adatai használatával jelentkezhet be a Kudu konzolba.
 
-A GitHubhoz és Visual Studio Team Services-hez hasonló internetes alapú CI-rendszerek akkor is működnek az ILB ASE környezettel, ha a buildügynök elérhető az internetről, és ugyanazon a hálózaton található, mint az ILB ASE. Tehát a Visual Studio Team Services esetében, ha a buildügynök ugyanazon a VNET-en lett létrehozva, mint az ILB ASE (lehet más alhálózat), képes lesz lekérni a kódot a VSTS gitről és telepíteni az ILB ASE-re. Ha nem szeretne létrehozni saját buildügynököt, egy lekérési modellt használó CI-rendszert kell használnia helyette, például a Dropboxot.
+A GitHubhoz és az Azure DevOpshoz hasonló internetes alapú CI-rendszerek akkor is működnek az ILB ASE környezettel, ha a buildügynök elérhető az internetről, és ugyanazon a hálózaton található, mint az ILB ASE. Tehát az Azure DevOps esetében, ha a buildügynök ugyanazon a VNET-en lett létrehozva, mint az ILB ASE (lehet más alhálózat), képes lesz lekérni a kódot az Azure DevOps-gitről és telepíteni az ILB ASE-re. Ha nem szeretne létrehozni saját buildügynököt, egy lekérési modellt használó CI-rendszert kell használnia helyette, például a Dropboxot.
 
 Az ILB ASE alkalmazásainak közzétételi végpontjai az ILB ASE létrehozásakor megadott tartományt használják. Ez a tartomány az alkalmazás közzétételi profilján és az alkalmazás portálpanelén jelenik meg (**Áttekintés** > **Alapvető szolgáltatások** és **Tulajdonságok**). Ha az ILB ASE altartománya *contoso.net* és az alkalmazás neve *mytest*, akkor FTP-hez használja a *mytest.contoso.net*, webes telepítéshez pedig az *mytest.scm.contoso.net* tartományneveket.
 

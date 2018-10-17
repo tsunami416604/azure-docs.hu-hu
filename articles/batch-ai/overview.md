@@ -1,5 +1,5 @@
 ---
-title: Az Azure Batch AI szolgáltatás áttekintése | Microsoft Docs
+title: Az Azure Batch AI szolgáltatás – mesterséges intelligencia betanítása | Microsoft Docs
 description: Megismerheti, hogyan használható a felügyelt Azure Batch AI szolgáltatás mesterséges intelligenciák (AI) és egyéb gépi tanulási modellek tanításához GPU-k és processzorok fürtjein.
 services: batch-ai
 documentationcenter: ''
@@ -12,86 +12,63 @@ ms.workload: ''
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 10/13/2017
-ms.author: asutton
-ms.custom: ''
-ms.openlocfilehash: 504504f278907536e89055cd5c912d2d1f280931
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.date: 08/01/2018
+ms.author: danlep
+ms.openlocfilehash: 98497812e75d07fc153e0e351331c05484164fdd
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39627202"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44052699"
 ---
-# <a name="what-is-batch-ai-in-azure"></a>Mi az a Batch AI az Azure-ban?
-A Batch AI egy felügyelt szolgáltatás, amely lehetővé teszi az adatelemzők és AI-kutatók számára, hogy betanítsanak mesterséges intelligenciákat és egyéb gépi tanulási modelleket az Azure virtuális gépek fürtjein, beleértve a GPU-támogatással rendelkező virtuális gépeket. Csak adja meg a feladata követelményeit, valamint a bemeneti és kimeneti adatok tárolási helyét, a Batch AI pedig elvégzi a többit.  
- 
-## <a name="why-batch-ai"></a>Milyen előnyöket kínál a Batch AI? 
-A hatékony AI-algoritmusok fejlesztése egy nagy számítási igényű és iteratív folyamat. Az adatelemzők és AI-kutatók egyre növekvő adathalmazokkal dolgoznak. Egyre több réteggel rendelkező modelleket fejlesztenek, és egyre többet kísérleteznek a hálózati kialakításokkal és a hiperparaméteres finomhangolással. Ennek hatékony megvalósításához modellenként több processzor és GPU, a kísérletek párhuzamos futtatása, valamint a betanítási adatok, naplók és modellkimenetek megosztott tárolása szükséges.   
- 
-![Batch AI-folyamat](media/overview/batchai-context.png)
+# <a name="what-is-azure-batch-ai"></a>Mi az az Azure Batch AI?
 
-Az adatelemzők és AI-kutatók a területük szakértői, azonban a nagy léptékű infrastruktúra kezelése gondot okozhat számukra. A nagy léptékű AI-fejlesztéshez számos infrastrukturális feladatot kell elvégezni: virtuális gépek fürtjeinek üzembe helyezése, szoftverek és tárolók telepítése, üzenetsor-kezelés, feladatok prioritásának beállítása és ütemezése, hibák kezelése, adatok terjesztése, eredmények megosztása, erőforrások skálázása a költségek kezelése érdekében és integrálás az eszközökkel és munkafolyamatokkal. A Batch AI elvégzi mindezen feladatokat. 
- 
-## <a name="what-is-batch-ai"></a>Mi az a Batch AI? 
+Az Azure Batch AI egy felügyelt szolgáltatás, amely segít az adatelemzőknek és MI-kutatóknak nagy léptékben betanítani és tesztelni gépi tanulási és MI-modelleket az Azure-ban, anélkül, hogy összetett infrastruktúra felügyeletére lenne szükség. Csak adja meg a számítási erőforrásokat, a futtatni kívánt feladatokat, a modell bemeneti és kimeneti adatainak tárolási helyét, a Batch AI pedig elvégzi a többit.
 
-A Batch AI erőforrás-kezelési és feladatütemezési szolgáltatásokat nyújt az AI-betanításhoz és teszteléshez. Főbb képességek: 
+A Batch AI szolgáltatást használhatja önállóan vagy egy nagyobb fejlesztési munkafolyamat részeként modellbetanításra:
 
-* Hosszan futó kötegelt feladatok futtatása, iteratív kísérletezés és interaktív betanítás 
-* A GPU-kat vagy processzorokat használó VM-fürtök automatikus vagy manuális skálázása 
-* SSH-kommunikáció konfigurálása a VM-ek között és a táveléréshez 
-* Mély tanulási és machine learning-keretrendszerek támogatása az olyan népszerű eszközökre optimalizált konfigurációkkal, mint a [Microsoft Cognitive Toolkit](https://github.com/Microsoft/CNTK) (CNTK), a [TensorFlow](https://www.tensorflow.org/) és a [Chainer](https://chainer.org/). 
-* Prioritásalapú feladat-várólistázás a fürtök megosztásához, illetve az alacsony prioritású virtuális gépek és az Azure Reservations képességeinek kiaknázásához  
-* Rugalmas tárolási lehetőségek, köztük az Azure Files és egy felügyelt NFS-kiszolgáló használata 
-* Távoli fájlmegosztások csatolása a VM-hez és a választható tárolóhoz 
-* Feladatok állapotának biztosítása és újraindítás VM-hibák esetén 
-* Hozzáférés a kimeneti naplókhoz, az stdout és stderr kimenetekhez, valamint modellekhez, beleértve az Azure Storage-ból való streamelést 
-* Azure [parancssori felület](/cli/azure) (CLI), SDK-k a [Pythonhoz](https://github.com/Azure/azure-sdk-for-python), [C#](https://www.nuget.org/packages/Microsoft.Azure.Management.BatchAI/1.0.0-preview)-hoz és Javához, monitorozás az Azure Portalon és integráció a Microsoft AI-eszközeivel 
+* A Batch AI-t önmagában használhatja gépi tanulási algoritmusok és MI-modellek betanítására, tesztelésére és kötegelt pontozására [GPU-](../virtual-machines/linux/sizes-gpu.md) és CPU-fürtökön. 
 
-A Batch AI SDK támogatja a parancsfájlok vagy alkalmazások írását a betanítási folyamatok kezeléséhez és az eszközök integrálásához. Az SDK jelenleg Python, C#, Java és REST API-kat biztosít.  
- 
+* Egy Batch AI-fürtöt meghatározhat egy munkafolyamatban az [Azure Machine Learninggel](../machine-learning/service/overview-what-is-azure-ml.md) vagy egyéb [Azure AI Platform-eszközökkel](https://azure.microsoft.com/overview/ai-platform/). Az Azure ML szolgáltatás adatelőkészítési, kísérletezési és feladatelőzményekkel kapcsolatos eszközök széles kínálatát teszi elérhetővé. Az Azure ML segítségével betanított modelljeit tárolókba csomagolhatja, és üzembe helyezheti következtetés céljából vagy IoT-eszközökön.  
 
-A Batch AI az Azure Resource Managert használja a vezérlősík műveleteihez (létrehozás, listázás, lekérés, törlés). A hitelesítés és a szerepköralapú hozzáférés-vezérlés az Azure Active Directoryt használatával történik.  
- 
-## <a name="how-to-use-batch-ai"></a>A Batch AI használata 
+## <a name="train-machine-learning-and-ai-models"></a>Gépi tanulás és mesterségesintelligencia-modellek betanítása
 
-A Batch AI használatához *fürtöket* és *feladatokat* kell létrehozni és kezelni. 
+A Batch AI szolgáltatást használhatja gépi tanulási modellek, mély neurális hálók (mélytanulás) és más MI-megoldások betanítására. A Batch AI a következő népszerű, nyílt forráskódú MI-kódtárakat és keretrendszereket támogatja: [TensorFlow](https://github.com/tensorflow/tensorflow), [PyTorch](https://github.com/pytorch/pytorch), [Chainer](https://github.com/chainer/chainer) és [Microsoft Cognitive Toolkit (CNTK)](https://github.com/Microsoft/CNTK).
 
- 
-A **fürtök** írják le a számítási követelményeket: 
-* A futtatás helyéül szolgáló Azure-régió 
-* A használandó virtuális gép termékcsaládja és mérete – például egy NC24 VM, amely 4 NVIDIA K80 GPU-t tartalmaz 
-* A virtuális gépek száma, illetve a VM-ek minimális és maximális száma az automatikus skálázáshoz 
-* A virtuálisgép-lemezkép – például Ubuntu 16.04 LTS vagy [Microsoft Deep Learning virtuális gép](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-ads.dsvm-deep-learning)
-* Csatlakoztatandó távoli fájlmegosztási kötetek – például az Azure Filesból vagy egy Batch AI által felügyelt NFS-kiszolgálóról 
-* A VM-eken konfigurálandó felhasználónév és SSH-kulcs vagy jelszó az interaktív bejelentkezés lehetővé tételéhez hibakeresés céljából  
- 
+Miután azonosította a problématerületet és előkészítette az adatokat, a Batch AI szolgáltatással interaktív módon tesztelheti modelljeivel kapcsolatos elgondolásait. Amikor pedig készen áll arra, hogy nagyobb léptékben is kísérletezzen, az MPI vagy más kommunikációs kódtárak segítségével elindíthatja a feladatokat több GPU-n, és párhuzamosan további kísérleteket futtathat.
 
-A **feladatok** a következőket írják le: 
-* A használandó fürt és régió 
-* A feladathoz szükséges virtuális gépek száma 
-* A feladatnak az indításkor átadandó bemeneti és kimeneti könyvtárak. Ez általában a fürt beállításakor csatlakoztatott megosztott fájlrendszert használja 
-* Egy opcionális tároló a szoftver vagy a telepítési parancsfájl futtatásához 
-* Az AI-keretrendszerre vonatkozó konfiguráció, vagy a feladat indításához szükséges parancssor és paraméterek 
- 
+A Batch AI segítségével többféle módon taníthat be modelleket nagyobb léptékben. Például: 
 
-Bevezetés a Batch AI az [Azure CLI](/cli/azure)-vel, illetve a fürtök és feladatok konfigurációs fájljaival való használatába. Ezzel a módszerrel szükség szerint gyorsan létrehozhatja a fürtöt, továbbá feladatokat futtathat a hálózati kialakítással vagy hiperparaméterekkel való kísérletezéshez.  
- 
+|  |  |
+|---------|---------|
+| **Betanítás elosztása**<br/>![Elosztott betanítás](./media/overview/distributed-training.png)  | Vertikálisan felskálázhatja egyetlen feladat betanítását több, hálózaton összekötött GPU-ra, ha nagyobb hálózatot kíván nagyobb mennyiségű adattal betanítani.|
+| **Kísérlet**<br/>![Experimentation](./media/overview/experimentation.png) | A betanítást horizontálisan felskálázhatja több feladattal. Új ötletek kipróbálásánál a pontosság és teljesítmény optimalizálásához futtathat paraméteres frissítéseket vagy finomhangolhat hiperparamétereket. |
+| **Végrehajtás párhuzamosan**![Párhuzamos végrehajtás](./media/overview/parallel-execution.png) | Betaníthat vagy pontozhat egyszerre több modellt is, egy kiszolgálóflottán párhuzamosan futtatva a feladatokat, így gyorsabban végezhet velük.|
 
-A Batch AI segítségével egyszerűen dolgozhat párhuzamosan több GPU-val is. Ha a feladatokat több GPU-ra kell méretezni, a Batch AI beállítja a virtuális gépek közötti biztonságos hálózati kapcsolatot. Az InfiniBand használata esetén a Batch AI konfigurálja az illesztőprogramokat, és elindítja az MPI-t egy feladat csomópontjain.  
+A modell betanítása után a Batch AI segítségével tesztelheti a modellt, ha ez nem volt a betanítási szkript része, vagy kötegelt pontozást végezhet.
 
-## <a name="data-management"></a>Adatkezelés
-A Batch AI rugalmas lehetőségeket nyújt a betanítási szkriptekhez, adatokhoz és kimenetekhez:
-  
-* Használja a **helyi lemez** lehetőséget a korai kísérletezéshez és a kisebb adathalmazokhoz. Ehhez a forgatókönyvhöz érdemes lehet SSH-n keresztül csatlakozni a virtuális géphez a szkriptek szerkesztése és a naplók olvasása céljából. 
+## <a name="how-it-works"></a>Működés
 
-* Használja az **Azure Files**-t a betanítási adatok megosztásához több feladat között, és a kimeneti naplók és modellek egyetlen helyen való tárolásához 
+A Batch AI SDK-k, parancssori szkriptek vagy az Azure Portal segítségével kezelheti a számítási erőforrásokat és ütemezheti az MI-betanítási és tesztelési feladatokat: 
 
-* Állítson be egy **NFS-kiszolgálót**, amely lehetővé teszi nagyobb mennyiségű adat és több virtuális gép használatát a betanításhoz. A Batch AI képes beállítani egy NFS-kiszolgálót egy speciális fürttípusként, amelynek lemezeit az Azure Storage tárolja. 
- 
-* A **párhuzamos fájlrendszer** biztosítja az adatok további méretezhetőségét és a párhuzamos betanítást. Bár a Batch AI nem kezeli a párhuzamos fájlrendszereket, elérhetők üzembehelyezési sablonok a Lustre, Gluster és BeeGFS rendszerekhez.  
+* **Virtuális gépek fürtjeinek kiépítése és méretezése** – Adja meg a csomópontok (virtuális gépek) számát, és válassza ki a betanítási igényeinek megfelelő GPU-kompatibilis vagy más virtuálisgép-méretet. A csomópontok számát felfelé vagy lefelé automatikusan vagy manuálisan is skálázhatja, így mindig csak akkor használ fel erőforrásokat, amikor szüksége van rájuk. 
+
+* **Függőségek és tárolók kezelése** – Alapértelmezés szerint a Batch AI-fürtök linuxos virtuálisgép-rendszerképeket futtatnak, amelyeken a függőségek előre fel vannak telepítve a tárolóalapú betanítási keretrendszerek GPU-n vagy CPU-n történő futtatásához. Ha további konfigurálásra van szüksége, használhat egyéni rendszerképeket vagy futtathat indítási szkripteket.
+
+* **Adatok elosztása** – Az Azure Files, az Azure Blob Storage vagy egy felügyelt NFS-kiszolgáló közül választhat akár többet is a bemeneti adatok és szkriptek, valamint a feladatok kimeneti adatainak tárolására. A Batch AI támogatja az egyéni tárolási megoldásokat, beleértve a nagy teljesítményű párhuzamos fájlrendszereket is. Egyszerű konfigurációs fájlok használatával csatlakoztathatja a tárak fájlrendszereit a fürtcsomópontokhoz és a feladattárolókhoz.
+
+* **Feladatok ütemezése** – Feladatokat küldhet egy prioritásalapú feladat-várólistába a fürtök erőforrásainak megosztásához, illetve az alacsony prioritású virtuális gépek és fenntartott példányok előnyeinek kihasználása érdekében.
+
+* **Hibák kezelése** – Figyelheti a feladatok állapotát, és VM-hibák esetén újraindíthatja az esetleg hosszan futó feladatokat.
+
+* **Eredmények összegyűjtése** – Könnyedén elérheti a kimeneti naplókat, az stdout és stderr kimenetet, valamint a betanított modelleket. A Batch AI-feladatokat konfigurálhatja úgy is, hogy kimenetüket közvetlenül a csatlakoztatott tárolóra írják.
+
+Azure-szolgáltatásként a Batch AI támogatja az olyan közösen használt biztonsági eszközöket, mint például a szerepköralapú hozzáférés-vezérlés (role-based access control, RBAC) és az Azure-beli virtuális hálózatok.  
 
 ## <a name="next-steps"></a>További lépések
 
-* Az első Batch AI betanítási feladat létrehozása az [Azure CLI](quickstart-cli.md) vagy a [Python](quickstart-python.md) használatával.
-* A különböző keretrendszerekhez való [betanítási módszerek](https://github.com/Azure/BatchAI) mintáinak megtekintése.
+* További információk a gépi tanulási és MI-modellek betanításával kapcsolatos [Batch AI-erőforrásokról](resource-concepts.md).
 
+* [Egy mintául szolgáló mélytanulási modell betanításának](quickstart-tensorflow-training-cli.md) első lépései a Batch AI segítségével.
+
+* Népszerű MI-keretrendszerekhez készült [betanítási módszerek](https://github.com/Azure/BatchAI/blob/master/recipes) mintáinak megtekintése.

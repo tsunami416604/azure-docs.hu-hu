@@ -10,7 +10,7 @@ items:
   items:
   - name: Előre összeállított tartományalkalmazás létrehozása
     href: luis-get-started-create-app.md
-  - name: API-k használata
+  - name: REST API-k használata
     items:
     - name: Szándék lekérése
       items:
@@ -164,7 +164,7 @@ items:
       href: luis-how-to-add-example-utterances.md
     - name: Entitások hozzáadása
       href: luis-how-to-add-entities.md
-    - name: API-kkal
+    - name: REST API-kkal
       items:
       - name: Alkalmazás létrehozása programozott módon a Node.js használatával
         href: luis-tutorial-node-import-utterances-csv.md
@@ -172,7 +172,7 @@ items:
         href: luis-tutorial-list-entity.md
   - name: Integrálás
     items:
-    - name: A Bing Spell Check API 7-es verziójával
+    - name: A Bing Spell Check 7-es verziójával
       href: luis-tutorial-bing-spellcheck.md
     - name: Beszédszolgáltatással
       href: luis-tutorial-speech-to-intent.md
@@ -234,13 +234,13 @@ items:
         href: luis-how-to-manage-from-cloud-shell.md
       - name: Végpontkvóta elosztása a kulcsok között a Traffic Managerrel
         href: luis-traffic-manager.md
-  - name: Áttérés az API 2-es verziójára
+  - name: Migrálás a REST API 2-es verziójára
     href: luis-migration-api-v1-to-v2.md
   - name: Régió megkeresése programozott módon
     items:
-    - name: A C# használata
+    - name: A REST API és a C# használata
       href: luis-find-region-csharp.md
-    - name: A Node.js használata
+    - name: A REST API és a Node.js használata
       href: luis-find-region-nodejs.md
 - name: Referencia
   items:
@@ -286,16 +286,18 @@ items:
       href: luis-reference-prebuilt-url.md
   - name: Előre összeállított tartományhivatkozás
     href: luis-reference-prebuilt-domains.md
-  - name: 2-es verziójú API-k létrehozása
-    href: https://aka.ms/luis-authoring-apis
-  - name: 2-es verziójú végponti API
-    href: https://aka.ms/luis-endpoint-apis
-  - name: HTTP-kódok
-    href: luis-reference-response-codes.md
   - name: Azure CLI
     href: https://aka.ms/az-cli-cognitiveservices
   - name: Azure RM PowerShell
     href: https://aka.ms/azure-powershell-cognitiveservices
+  - name: REST API-k
+    items:
+    - name: Tartalomkészítés 2-es verziójú REST API-kkal
+      href: https://aka.ms/luis-authoring-apis
+    - name: 2-es verziójú REST API-végpont
+      href: https://aka.ms/luis-endpoint-apis
+    - name: HTTP-kódok
+      href: luis-reference-response-codes.md
   - name: SDK-k
     items:
     - name: C#
@@ -374,9 +376,9 @@ items:
     href: https://blog.botframework.com/category/luis/
   - name: Tudásbázis
     href: https://cognitive.uservoice.com/knowledgebase/topics/127872-luis-language-understanding-intelligent-service
-ms.openlocfilehash: bf82f62fac518c0442ad67c346c422b06aa73088
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: fe393a2c92cf9391dc620acae4878996d107a68e
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47432770"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49364540"

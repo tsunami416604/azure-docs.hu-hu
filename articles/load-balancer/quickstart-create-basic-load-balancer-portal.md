@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 03/22/2018
 ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: 49fa4cf9b24c432b0956f930a1429e1cdf827f1b
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: 7451d6ade7f8b042a68f456e604e2919cacab0a5
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/18/2018
-ms.locfileid: "34304878"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44378431"
 ---
 # <a name="quickstart-create-a-public-basic-load-balancer-by-using-the-azure-portal"></a>Első lépések: Alapszintű nyilvános terheléselosztó létrehozása az Azure Portallal
 
@@ -36,7 +36,7 @@ Az útmutató minden lépéséhez be kell jelentkeznie az [Azure Portalra](http:
 
 ## <a name="create-a-basic-load-balancer"></a>Alapszintű terheléselosztó létrehozása
 
-Ebben a szakaszban egy nyilvános alapszintű terheléselosztót fog létrehozni a Portal használatával. A nyilvános IP-cím automatikusan konfigurálva van a terheléselosztó előtereként, amikor létrehozza a nyilvános IP-címet és a terheléselosztó erőforrást a Portallal. Az előtér neve **LoadBalancerFrontend**.
+Ebben a szakaszban egy nyilvános alapszintű terheléselosztót fog létrehozni a Portal használatával. A nyilvános IP-cím automatikusan konfigurálva van a terheléselosztó előtereként, amikor létrehozza a nyilvános IP-címet és a terheléselosztó erőforrást a Portallal. Az előtér neve **myLoadBalancer**.
 
 1. A Portal bal felső sarkában kattintson az **Erőforrás létrehozása** > **Hálózat** > **Terheléselosztó** elemre.
 2. A **Terheléselosztó létrehozása** panelen adja meg a következő az értékeket:

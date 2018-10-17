@@ -12,14 +12,14 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.custom: mvc
 ms.topic: overview
-ms.date: 06/26/2017
+ms.date: 09/06/2018
 ms.author: mbullwin
-ms.openlocfilehash: b83d08b9dac4fccc033ad4537afd343a6fbe02c2
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: 799593758bf24924d91d38bd6a626b945247183b
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2017
-ms.locfileid: "23947318"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44050238"
 ---
 # <a name="overview-of-application-insights-for-devops"></a>Az Application Insights áttekintése fejlesztők és üzemeltetők számára
 
@@ -64,7 +64,7 @@ Még fontosabb azonban, hogy minden egyes riasztásról e-mail érkezik a fejles
 ## <a name="monitor-performance"></a>Teljesítmény monitorozása
 Az Application Insights áttekintő oldalán található egy diagram, amely több [kulcsfontosságú metrikát](app-insights-web-monitor-performance.md) tartalmaz.
 
-![Különböző metrikák](./media/app-insights-detect-triage-diagnose/05-perfMetrics.png)
+![Teljesítmény KPI-grafikonok áttekintésének képernyőképe](./media/app-insights-detect-triage-diagnose/overview-graphs.png)
 
 A böngésző oldalbetöltési ideje a közvetlenül a weboldalakról küldött telemetriai adatokból származik. A kiszolgáló válaszidejét, a kiszolgálóhoz érkező kérések számét és a sikertelen kérések számát a webkiszolgáló méri, majd továbbítja az Application Insightsnak.
 
@@ -72,7 +72,7 @@ Marcela kissé aggódik a kiszolgáló válaszadási diagramja miatt. Ez a diagr
 
 Marcela megnyitja a Kiszolgálók diagramokat:
 
-![Különböző metrikák](./media/app-insights-detect-triage-diagnose/06.png)
+![Különböző metrikák](./media/app-insights-detect-triage-diagnose/002-servers.png)
 
 Itt nincs jele erőforráshiánynak, így a kiszolgáló válaszadási idejében látható kiugrások talán csak a véletlennek köszönhetőek.
 
@@ -154,7 +154,7 @@ A kivételek és az események a [Diagnosztikai keresés](app-insights-diagnosti
 ## <a name="monitor-proactively"></a>Proaktív monitorozás
 Marcela nem várja tétlenül a riasztásokat. Minden ismételt üzembe helyezés után nem sokkal ellenőrzi a [válaszidőket](app-insights-web-monitor-performance.md) – a teljes képet, a leglassabb kérések táblázatát és a kivételek számát is.  
 
-![Válaszidő-grafikon és a kiszolgáló válaszidejének táblázata.](./media/app-insights-detect-triage-diagnose/09-dependencies.png)
+![Válaszidő-grafikon és a kiszolgáló válaszidejének táblázata.](./media/app-insights-detect-triage-diagnose/response-time.png)
 
 Minden üzembe helyezés teljesítményét fel tudja mérni, és általában minden hetet az előzővel hasonlít össze. Ha hirtelen romlást tapasztal, megvitatja az érintett fejlesztőkkel.
 
@@ -168,8 +168,6 @@ Ezzel szemben a kivételszámok vagy válaszidők diagramján látható hirtelen
 A személyes próba hasznos osztályozási technika. Ha Ön is tapasztalja a problémát, akkor biztosan valós.
 
 A felhasználók mely része érintett? A hozzávetőleges válaszhoz ossza el a sikertelenségi rátát a munkamenetek számával.
-
-![A sikertelen kérelmek és munkamenetek száma](./media/app-insights-detect-triage-diagnose/10-failureRate.png)
 
 Ha lassúak a válaszok, hasonlítsa össze a leglassabban válaszoló kérések számának táblázatát az egyes oldalak használati gyakoriságával.
 
@@ -203,7 +201,6 @@ A Fabrikam Bank fejlesztési csapata most már sokkal szervezettebb módon végz
 * Az Application Insights áttekintő oldalán célokat határoznak meg bizonyos mértékekhez.
 * Kezdettől fogva teljesítménymértékeket terveznek az alkalmazásba, például olyan mérőszámokat, amelyek a felhasználók előrehaladását mérik a „tölcsérekben”.  
 
-
 ## <a name="monitor-user-activity"></a>A felhasználói tevékenység monitorozása
 Ha a válaszidő egységesen jó, és kevés kivétel van, a fejlesztői csapat továbbléphet a használhatóságra. Most már azon is gondolkodhatnak, hogyan javítsanak a felhasználói élményen és hogyan segítség elő, hogy több felhasználó érje el a kívánt célokat.
 
@@ -211,7 +208,7 @@ Az Application Insights segítségével ezenkívül azt is megtudhatják, mire h
 
 Egy átlagos felhasználó tevékenysége a webhelyen jól látható „tölcsérként” írható le. Sok ügyfél a különböző típusú hitelek árait nézi meg. Néhányuk kitölti az árajánlatkérő űrlapot. Azok közül, akik megkapják az árajánlatot, néhány úgy döntenek, hogy felveszik a hitelt.
 
-![Oldalmegtekintések száma](./media/app-insights-detect-triage-diagnose/12-funnel.png)
+![Oldalmegtekintések száma](./media/app-insights-detect-triage-diagnose/funnel.png)
 
 Annak áttekintésével, hol tűnik el a legtöbb ügyfél, a vállalkozás megtervezheti, hogyan juttathat el több felhasználót a tölcsér aljára. Néhány esetben ez a felhasználói felület (UX) hibája lehet; például nehéz megtalálni a Tovább gombot, vagy nem elég egyértelműek az utasítások. Még valószínűbb, hogy az eltűnésekért alapvető üzleti okok felelősek: talán túl magasak a hitelköltségek.
 
@@ -228,7 +225,7 @@ Ez csapat tehát így használja az Application Insightsot az egyes hibák elhá
 
 > [!VIDEO https://channel9.msdn.com/events/Connect/2016/112/player]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Az alkalmazása tulajdonságaitól függően több módon is hozzáláthat. Válassza ki a legmegfelelőbbet:
 
 * [ASP.NET-es webalkalmazás](app-insights-asp-net.md)

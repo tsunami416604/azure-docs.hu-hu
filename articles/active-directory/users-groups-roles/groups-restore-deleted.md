@@ -14,16 +14,16 @@ ms.date: 08/28/2017
 ms.author: lizross
 ms.reviewer: krbain
 ms.custom: it-pro
-ms.openlocfilehash: 02c1cb90fef4472e97ec16f9eca0fc8a3b6a11c0
-ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
+ms.openlocfilehash: 3b2264817dce63885ce0c428fe4df8427f7cdde6
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "43842811"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44049244"
 ---
 # <a name="restore-a-deleted-office-365-group-in-azure-active-directory"></a>Törölt Office 365-csoport visszaállítása az Azure Active Directoryban
 
-Amikor töröl egy Office 365-csoportot az Azure Active Directoryban (Azure AD), a törlés dátumától számított 30 napig a törölt csoport megmarad, azonban nem látható. Ennek célja az, hogy a csoport és tartalma visszaállítható legyen szükség esetén. Ez a funkció kizárólag Azure AD-ben használt Office 365-csoportokra vonatkozik. Nem használható biztonsági csoportok és terjesztési csoportok esetén.
+Amikor töröl egy Office 365-csoportot az Azure Active Directoryban (Azure AD), a törlés dátumától számított 30 napig a törölt csoport megmarad, azonban nem látható. Ennek célja az, hogy a csoport és tartalma szükség esetén visszaállítható legyen. Ez a funkció kizárólag Azure AD-ben használt Office 365-csoportokra vonatkozik. Nem használható biztonsági csoportok és terjesztési csoportok esetén.
 
 > [!NOTE]
 > Ne használja a `Remove-MsolGroup` parancsot, mert azzal véglegesen törli a csoportot. O365-csoport törléséhez mindig a `Remove-AzureADMSGroup` parancsot használja.
@@ -34,7 +34,7 @@ Szerepkör | Engedélyek
 --------- | ---------
 Vállalati rendszergazda, 2. szintű partnerek támogatása és az InTune szolgáltatás-rendszergazdái | A törölt Office 365-csoportok bármelyikét visszaállíthatják.
 Felhasználói fiókok rendszergazdája és 1. szintű partnerek támogatása | A törölt Office 365-csoportok bármelyikét visszaállíthatják, a vállalati rendszergazda szerepkörhöz rendelt csoportokat kivéve.
-Felhasználó | A korábban a tulajdonában álló törölt Office 365-csoportokat állíthatja vissza
+Felhasználó | A korábban a tulajdonában álló törölt Office 365-csoportokat állíthatja vissza.
 
 
 ## <a name="view-the-deleted-office-365-groups-that-are-available-to-restore"></a>A visszaállítható törölt Office 365-csoportok megtekintése

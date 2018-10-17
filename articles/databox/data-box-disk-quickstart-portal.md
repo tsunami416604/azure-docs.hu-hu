@@ -12,15 +12,15 @@ ms.devlang: NA
 ms.topic: quickstart
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 08/28/2018
+ms.date: 09/07/2018
 ms.author: alkohli
 Customer intent: As an IT admin, I need to quickly deploy Data Box Disk so as to import data into Azure.
-ms.openlocfilehash: 596c4b15ea6ef76d4471bca6994377bf4d5ddc01
-ms.sourcegitcommit: a1140e6b839ad79e454186ee95b01376233a1d1f
+ms.openlocfilehash: b4ec329fc5b1f3df9e6641bee3e1378c3a4d09c6
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43143423"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44378346"
 ---
 # <a name="quickstart-deploy-azure-data-box-disk-using-the-azure-portal-preview"></a>Rövid útmutató: Az Azure Data Box Disk üzembe helyezése az Azure Portal használatával (előzetes verzió)
 
@@ -68,12 +68,12 @@ A Data Box Disk-meghajtót egy UPS Express dobozban küldjük el Önnek. Nyissa 
 
 Ez a lépés nagyjából 5 percet vesz igénybe.
 
-1. A csomagban foglalt kábellel csatlakoztassa a meghajtót a Windows egy támogatott verzióját futtató számítógéphez. A támogatott operációsrendszer-verziókkal kapcsolatos további információkért lásd [az Azure Data Box Disk rendszerkövetelményeit](data-box-disk-system-requirements.md). 
+1. A csomagban foglalt kábellel csatlakoztassa a meghajtót a Windows vagy Linux egy támogatott verzióját futtató számítógéphez. A támogatott operációsrendszer-verziókkal kapcsolatos további információkért lásd [az Azure Data Box Disk rendszerkövetelményeit](data-box-disk-system-requirements.md). 
 2. A meghajtó zárolásának feloldása:
 
     1. Az Azure Portalon lépjen az **Általános > Eszköz adatai** menüpontra, és kérje le a hozzáférési kulcsot.
-    2. Töltse le és csomagolja ki a Data Box Disk zárolását feloldó eszközt az adatok a meghajtókra való másolásához használt számítógépen. 
-    3. Futtassa a *DataBoxDiskUnlock.exe* fájlt, és adja meg a hozzáférési kulcsot. Új lemezek behelyezésekor futtassa újra a zárolást feloldó eszközt, és adja meg a hozzáférési kulcsot. **Ne használja a BitLocker párbeszédpanelt vagy a BitLocker kulcsot a lemez zárolásának feloldására.** 
+    2. Töltse le és csomagolja ki a megfelelő operációs rendszerhez tartozó Data Box Disk zárolását feloldó eszközt az adatok a meghajtókra való másolásához használt számítógépen. 
+    3. Futtassa a Data Box Disk lemezzárolás-feloldó eszközt és adja meg a hozzáférési kulcsot. Új lemezek behelyezésekor futtassa újra a zárolást feloldó eszközt, és adja meg a hozzáférési kulcsot. **Ne használja a BitLocker párbeszédpanelt vagy a BitLocker kulcsot a lemez zárolásának feloldására.** További információt a lemezek feloldásával kapcsolatban a [Lemez feloldása Windows-ügyfélen]() vagy a [Lemez feloldása Linux-ügyfélen]() című szakaszban talál.
     4. A meghajtóhoz rendelt betűjelet az eszköz mutatja. Jegyezze fel az egyes meghajtók betűjelét. Ezt majd a következő lépésekben fogjuk felhasználni.
 
 ## <a name="copy-data-and-verify"></a>Adatok másolása és ellenőrzése
@@ -86,9 +86,9 @@ A művelet végrehajtásának időtartama az adatok mennyiségétől függ.
 
     > [!NOTE] 
     > - Minden tároló és blob nevének követnie kell az [Azure elnevezési konvencióit](data-box-disk-limits.md#azure-block-blob-and-page-blob-naming-conventions). Ha a szabályok nem teljesülnek, az adatok az Azure-ba való feltöltése meghiúsul.
-    > - Győződjön meg róla, hogy a fájlok mérete blokkblobok esetén nem haladja meg a ~4,7 TiB, lapblobok esetén a ~8 TiB méretet.
+    > - Győződjön meg róla, hogy a fájlok mérete blokkblobok esetén nem haladja meg a ~4,75 TiB, lapblobok esetén a ~8 TiB méretet.
 
-2. (Nem kötelező) Javasoljuk, hogy a másolás után az *AzureImportExport* mappában elérhető `AzureExpressDiskService.cmd` futtatásával hozzon létre ellenőrzőösszegeket az ellenőrzéshez. Az adatok mennyiségétől függően ez a lépés némi időt vehet igénybe. 
+2. (Nem kötelező) Javasoljuk, hogy a másolás után az *AzureImportExport* mappában elérhető `DataBoxDiskValidation.cmd` futtatásával hozzon létre ellenőrzőösszegeket az ellenőrzéshez. Az adatok mennyiségétől függően ez a lépés némi időt vehet igénybe. 
 3. Válassza le a meghajtót. 
 
 

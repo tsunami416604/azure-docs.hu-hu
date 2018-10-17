@@ -3,7 +3,7 @@ title: Azure Security Center oktatóanyag – Biztonsági szabályzatok meghatá
 description: Azure Security Center oktatóanyag – Biztonsági szabályzatok meghatározása és értékelése
 services: security-center
 documentationcenter: na
-author: TerryLanfear
+author: rkarlin
 manager: mbaldwin
 editor: ''
 ms.assetid: 2d248817-ae97-4c10-8f5d-5c207a8019ea
@@ -13,14 +13,14 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/30/2018
-ms.author: terrylan
-ms.openlocfilehash: 15c69bce87ede96eb3a7bc0bada4e4f6a6669abb
-ms.sourcegitcommit: 99a6a439886568c7ff65b9f73245d96a80a26d68
+ms.date: 08/30/2018
+ms.author: rkarlin
+ms.openlocfilehash: fcd3c2a95cea0a838fc16149a0a74fad95ea3300
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39358608"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44027061"
 ---
 # <a name="tutorial-define-and-assess-security-policies"></a>Oktatóanyag: Biztonsági szabályzatok meghatározása és értékelése
 A Security Center a számítási feladatokhoz tartozó kívánt konfigurációk biztonsági szabályzatokkal történő meghatározásával segít biztosítani a vállalati vagy hatósági követelményeknek való megfelelést. Miután meghatározza az Azure-előfizetésekre vonatkozó szabályzatokat, majd a számítási feladat típusához vagy az adatok érzékenységéhez igazítja őket, a Security Center biztonsági javaslatokat kínál a számítási, alkalmazásra vonatkozó, hálózati, adatokra és tárolásra, illetve identitásra és hozzáférésre vonatkozó erőforrásokhoz. Az oktatóanyag során a következőket fogja elsajátítani:
@@ -42,8 +42,7 @@ A Security Center automatikusan létrehoz egy alapértelmezett biztonsági szab�
 
   ![Biztonsági szabályzat](./media/tutorial-security-policy/tutorial-security-policy-fig1.png)  
 
-3. A **SZABÁLYZAT ÖSSZETEVŐI** alatt válassza a **Biztonsági szabályzat** lehetőséget
-4. Minden egyes monitorozni kívánt biztonsági konfiguráció esetében válassza a **Be** lehetőséget. A Security Center folyamatosan értékelni fogja a környezet konfigurációját, és ha biztonsági rést fedez fel, biztonsági javaslatot hoz létre. Ha az adott biztonsági konfiguráció nem javasolt vagy nem érvényes, válassza a **Ki** lehetőséget. Például egy fejlesztői vagy tesztkörnyezetben általában más biztonsági szintek szükségesek, mint egy éles környezetben. Az adott környezetnek megfelelő szabályzatok kiválasztása után kattintson a **Mentés** elemre.
+3. A **Számítás és alkalmazások**, **Hálózat** és **Adatok** pont alatt állítsa az összes megfigyelni kívánt konfigurációt **Be** értékűre. A Security Center folyamatosan értékelni fogja a környezet konfigurációját, és ha biztonsági rést fedez fel, biztonsági javaslatot hoz létre. Ha az adott biztonsági konfiguráció nem javasolt vagy nem érvényes, válassza a **Ki** lehetőséget. Például egy fejlesztői vagy tesztkörnyezetben általában más biztonsági szintek szükségesek, mint egy éles környezetben. Az adott környezetnek megfelelő szabályzatok kiválasztása után kattintson a **Mentés** elemre.
 
   ![Biztonsági konfiguráció](./media/tutorial-security-policy/tutorial-security-policy-fig6.png)  
 

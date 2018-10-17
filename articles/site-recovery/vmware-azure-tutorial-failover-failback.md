@@ -6,15 +6,15 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 07/06/2018
+ms.date: 09/11/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 1f7856edef3bb93300fce0ff00d9434400e239f8
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: e9ed0ba8d24f30f67dbb315848dc4c260cae4f50
+ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37917045"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44391368"
 ---
 # <a name="fail-over-and-fail-back-vmware-vms-and-physical-servers-replicated-to-azure"></a>Az Azure-ba replikált VMware virtuális gépek és fizikai kiszolgálók feladatátvétele és feladat-visszavétele
 
@@ -67,7 +67,7 @@ Ellenőrizze a virtuális gép tulajdonságait, és győződjön meg arról, hog
 1. A **Beállítások** > **Replikált elemek** területen kattintson a virtuális gépre > **Feladatátvétel** ikonra.
 
 2. A **Feladatátvétel** területen válassza ki azt a **Helyreállítási pontot**, amelyre a feladatátvételt végezni szeretné. Az alábbi lehetőségek egyikét használhatja:
-   - **Legújabb** (alapértelmezett): Ez a lehetőség először feldolgozza a Site Recovery számára küldött összes adatot. A legalacsonyabb helyreállítási időkorlátot (RPO) nyújtja, mert a feladatátvétel után létrehozott Azure-beli virtuális gép rendelkezik a feladatátvétel elindításakor a Site Recoverybe replikált összes adattal.
+   - **Legújabb**: Ez a lehetőség először feldolgozza a Site Recovery számára küldött összes adatot. A legalacsonyabb helyreállítási időkorlátot (RPO) nyújtja, mert a feladatátvétel után létrehozott Azure-beli virtuális gép rendelkezik a feladatátvétel elindításakor a Site Recoverybe replikált összes adattal.
    - **Legutóbb feldolgozott**: Ez a lehetőség a virtuális gépet a Site Recovery által feldolgozott legutóbbi helyreállítási pontnak adja át. Ez a lehetőség alacsony helyreállítási időre vonatkozó célkitűzést (RTO) nyújt, mert a rendszer nem tölt időt a feldolgozatlan adatok feldolgozásával.
    - **Legutóbbi alkalmazáskonzisztens**: Ez a lehetőség a virtuális gépet a Site Recovery által feldolgozott legutóbbi alkalmazáskonzisztens helyreállítási pontnak adja át.
    - **Egyéni**: Adjon meg egy helyreállítási pontot.
@@ -82,11 +82,14 @@ Egyes forgatókönyvekben a feladatátvételhez további feldolgozás szüksége
 
 ## <a name="connect-to-failed-over-virtual-machine-in-azure"></a>Csatlakozás feladatátvételi virtuális gépekhez az Azure-ban
 
-1. A feladatátvételt követően lépjen a virtuális géphez, és [csatlakozzon](../virtual-machines/windows/connect-logon.md) hozzá érvényesítés céljából.
-2. Az érvényesítést követően a **Véglegesítés** lehetőségre kattintva véglegesítse a virtuális gép feladatátvétel utáni helyreállítási pontját. A véglegesítést követően a rendszer az összes többi rendelkezésre álló helyreállítási pontot törli. Ezzel befejeződik a feladatátvételi tevékenység.
+1. Ha a feladatátvételt követően RDP vagy SSH segítségével szeretne kapcsolódni az Azure-beli virtuális gépekhez, kövesse a táblázatban összefoglalt követelményeket, [itt](site-recovery-test-failover-to-azure.md#prepare-to-connect-to-azure-vms-after-failover).
+2. A feladatátvételt követően lépjen a virtuális géphez, és [csatlakozzon](../virtual-machines/windows/connect-logon.md) hozzá érvényesítés céljából.
+3. Az érvényesítést követően a **Véglegesítés** lehetőségre kattintva véglegesítse a virtuális gép feladatátvétel utáni helyreállítási pontját. A véglegesítést követően a rendszer az összes többi rendelkezésre álló helyreállítási pontot törli. Ezzel befejeződik a feladatátvételi tevékenység.
 
 >[!TIP]
 > A **Helyreállítási pont módosítása** lehetőséggel kiválaszthat egy másik helyreállítási pontot a feladatátvételt követően, ha nem elégedett a feladatátviteli virtuális géppel. A **véglegesítés** műveletét követően ez a lehetőség nem lesz elérhető.
+
+Kövesse az [itt](site-recovery-failover-to-azure-troubleshoot.md) leírt lépéseket a feladatátvitelt követő csatlakozási problémák megoldása érdekében.
 
 ## <a name="preparing-for-reprotection-of-azure-vm"></a>Azure-beli virtuális gép ismételt védelmének előkészítése
 

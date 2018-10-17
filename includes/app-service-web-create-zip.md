@@ -1,6 +1,6 @@
 ## <a name="create-a-project-zip-file"></a>ZIP-fájl létrehozása a projekthez
 
-Készítsen ZIP-archívumot a projekt minden eleméről. A következő parancs a terminál alapértelmezett eszközét használja:
+Győződjön meg arról, hogy még a mintaprojekt gyökérkönyvtárában van. Készítsen ZIP-archívumot a projekt minden eleméről. A következő parancs a terminál alapértelmezett eszközét használja:
 
 ```
 # Bash

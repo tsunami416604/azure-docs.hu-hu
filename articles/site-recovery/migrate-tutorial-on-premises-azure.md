@@ -5,15 +5,15 @@ services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 07/16/2018
+ms.date: 09/12/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: bc04483c35162c0b461fd03c63aaa894b1bc199a
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: bd41244192efa1333bc90bec8c00f38aaaa7f612
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39070677"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44714989"
 ---
 # <a name="migrate-on-premises-machines-to-azure"></a>Helyszíni gépek áttelepítése az Azure-ba
 
@@ -40,10 +40,7 @@ Mielőtt elkezdené, érdemes áttekinteni a [VMware](vmware-azure-architecture.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- A paravirtualizált illesztőprogramok által exportált eszközök nem támogatottak.
- 
-> [!WARNING]
-> A virtuális gépek fizikai kiszolgálóként való kezelése esetén a virtuális gépeket más (a VMware-től és a Hyper-V-től eltérő) virtualizációs platformokon is lehetséges migrálni. Ezt a megközelítést azonban a Microsoft nem tesztelte és nem érvényesítette, és nem garantált a működése. Például az XenServer platformon futó virtuális gépek nem biztos, hogy futnak az Azure-ban, kivéve, ha a migrálás előtt a virtuális gépről eltávolítják a XenServer-eszközöket és a paravirtualizált tárolási és hálózati meghajtókat.
+A paravirtualizált illesztőprogramok által exportált eszközök nem támogatottak.
 
 
 ## <a name="create-a-recovery-services-vault"></a>Recovery Services-tároló létrehozása
@@ -124,10 +121,43 @@ Futtasson egy feladatátvételt a migrálni kívánt gépen.
 
 Egyes forgatókönyvekben a feladatátvételhez további feldolgozás szükséges, ami körülbelül nyolc-tíz percet vesz igénybe. Bizonyára észrevette, hogy hosszabb a feladatátvételi teszt ideje a fizikai kiszolgálókon, a VMware Linux gépeken, a nem DHCP-vel kiosztott IP-című VMware virtuális gépeken, valamint a következő rendszerindító illesztőprogramokkal nem rendelkező VMware virtuális gépeken: storvsc, vmbus, storflt, intelide, atapi.
 
+## <a name="after-migration"></a>Áttelepítés után
+
+Miután befejeződött a gépek áttelepítése az Azure-ba, még meg kell tennie néhány lépést.
+
+Egyes lépések automatikusan is végrehajthatók az áttelepítési folyamat részeként a [helyreállítási tervek]( https://docs.microsoft.com/azure/site-recovery/site-recovery-runbook-automation) beépített automatizálási szkript funkciójával   
+
+
+### <a name="post-migration-steps-in-azure"></a>Áttelepítést követő lépések az Azure-ban
+
+- Hajtson végre minden áttelepítés utáni módosítást az alkalmazáson (például adatbázis-kapcsolati sztringek frissítése és webes kiszolgálók konfigurálása). 
+- Végezze el a végső alkalmazás- és áttelepítés-elfogadás teszteket az Azure-on jelenleg futó alkalmazásoknál.
+- Az [Azure virtuálisgép-ügynök](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-windows) kezeli a virtuális gépek kommunikációját az Azure-hálóvezérlővel. Erre egyes Azure-szolgáltatások, például az Azure Backup, a Site Recovery és az Azure Security esetében van szükség.
+    - VMware-alapú gépek és fizikai kiszolgálók áttelepítése esetében a mobilitási szolgáltatástelepítő telepíti az elérhető Azure virtuálisgép-ügynököt a Windows-rendszerű gépekre. Linux-rendszerű virtuális gépek esetében azt javasoljuk, hogy feladatátvétel után telepítse az ügynököt. a
+    - Azure virtuális gépek másodlagos régióba való áttelepítésekor még az áttelepítés előtt ki kell építeni az Azure virtuálisgép-ügynököt a virtuális gépen.
+    - Hyper-V-alapú virtuális gépek Azure-ba való áttelepítése esetén az Azure virtuálisgép-ügynököt az áttelepítés után telepítse az Azure virtuális gépen.
+- Manuálisan távolítson el minden Site Recovery-szolgáltatót/ügynököt a virtuális gépről. VMware-alapú virtuális gépek vagy fizikai kiszolgálók áttelepítése esetén [távolítsa el a Mobilitási szolgáltatást][vmware-azure-install-mobility-service.md#uninstall-mobility-service-on-a-windows-server-computer] az Azure virtuális gépről.
+- A nagyobb rugalmasság érdekében:
+    - Biztonságba helyezheti az adatokat, ha biztonsági másolatot készít az Azure virtuális gépekről az Azure Backup szolgáltatással. [További információk]( https://docs.microsoft.com/azure/backup/quick-backup-vm-portal).
+    - Biztosíthatja a számítási feladatok folyamatos futtatását és rendelkezésre állását, ha az Azure virtuális gépeket egy másodlagos régióba replikálja a Site Recovery használatával. [További információk](azure-to-azure-quickstart.md).
+- A biztonság fokozása érdekében:
+    - Zárolja és korlátozza a beérkező forgalom hozzáférését az Azure Security Center [igény szerinti felügyelet]( https://docs.microsoft.com/azure/security-center/security-center-just-in-time) funkciójával
+    - Korlátozza a forgalmat felügyeleti végpontokra [hálózati biztonsági csoportok](https://docs.microsoft.com/azure/virtual-network/security-overview) használatával.
+    - Az [Azure Disk Encryption](https://docs.microsoft.com/azure/security/azure-security-disk-encryption-overview) üzembe helyezésével biztonságba helyezheti a lemezeket, és megóvhatja az adatokat a lopási kísérletektől és a jogosulatlan hozzáféréstől.
+    - Látogasson el a [az Azure Security Center](https://azure.microsoft.com/services/security-center/ ) webhelyére, és tudjon meg többet az [IaaS-erőforrások biztosításáról]( https://azure.microsoft.com/services/virtual-machines/secure-well-managed-iaas/ ).
+- Figyelési és felügyeleti eszközök:
+    - Fontolja meg az [Azure Cost Management](https://docs.microsoft.com/azure/cost-management/overview) üzembe helyezését az erőforrás-használat és a költségek figyeléséhez.
+
+### <a name="post-migration-steps-on-premises"></a>Áttelepítést követő helyszíni lépések
+
+- Helyezze át az alkalmazás-forgalmat az áttelepített Azure virtuálisgép-példányon futó alkalmazásra.
+- Távolítsa el a helyszíni virtuális gépeket a helyi virtuálisgép-készletéből.
+- Távolítsa el a helyszíni virtuális gépeket helyi biztonsági mentésekből.
+- Frissítse minden belső dokumentációját az Azure virtuális gépek új helyével és IP-címével.
+
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben az oktatóanyagban helyszíni virtuális gépeket migrált Azure-beli virtuális gépekbe. Most, hogy sikeresen migrálta a virtuális gépeket:
-- [Állítsa be a vészhelyreállítást](azure-to-azure-replicate-after-migration.md) a migrált virtuális gépekre.
-- Használja ki az Azure [biztonságos és felügyelt felhőjének](https://azure.microsoft.com/services/virtual-machines/secure-well-managed-iaas/) képességeit az Azure-beli virtuális gépeinek kezeléséhez.
+Ebben az oktatóanyagban helyszíni virtuális gépeket migrált Azure-beli virtuális gépekbe. Most már készen áll az Azure virtuális gépek másodlagos régióba történő [vészhelyreállításának beállítására](azure-to-azure-replicate-after-migration.md).
+
   

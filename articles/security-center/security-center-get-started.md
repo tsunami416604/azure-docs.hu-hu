@@ -3,7 +3,7 @@ title: Azure Security Center rövid útmutató – Azure-előfizetés felvétele
 description: Ez a rövid útmutató bemutatja, hogyan frissíthet a Security Center Standard tarifacsomagjára a biztonság további erősítése érdekében.
 services: security-center
 documentationcenter: na
-author: TerryLanfear
+author: rkarlin
 manager: MBaldwin
 editor: ''
 ms.assetid: 61e95a87-39c5-48f5-aee6-6f90ddcd336e
@@ -13,14 +13,14 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/26/2018
-ms.author: terrylan
-ms.openlocfilehash: d10cef33ef0c325d41c9539107b9a4cab5e916d8
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.date: 09/2/2018
+ms.author: rkarlin
+ms.openlocfilehash: dc4c07b54085dfea6d97f2ca43a8cdddfcb9e57c
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37059854"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44025464"
 ---
 # <a name="quickstart-onboard-your-azure-subscription-to-security-center-standard"></a>Rövid útmutató: Azure-előfizetés felvétele a Security Center Standard verziójába
 Az Azure Security Center egységes biztonsági felügyeletet és fenyegetésvédelmet biztosít a hibrid felhőalapú számítási feladatokhoz. Míg az Ingyenes szint korlátozott biztonságot nyújt, és azt is csak az Azure-erőforrások számára, a Standard szint kiterjeszti ezeket a képességeket a helyszíni és egyéb felhőkre. A Security Center segítségével megtalálhatja és kijavíthatja a biztonsági réseket, hozzáférés- és alkalmazásvezérlőket alkalmazhat a kártékony tevékenységek blokkolásához, észlelheti a fenyegetéseket az analitika és az intelligencia használatával, valamint gyorsan reagálhat, ha a rendszer támadás alatt áll. Az első 60 napban díjmentesen próbálhatja ki a Security Center Standard verzióját.
@@ -53,20 +53,18 @@ A Security Center képességeinek teljes körű kihasználása érdekében végr
 ## <a name="upgrade-to-the-standard-tier"></a>Frissítés a Standard szintre
 A Security Center rövid útmutatóinak és oktatóanyagainak elvégzéséhez frissítenie kell a Standard szintre. Az első 60 nap ingyenes, és bármikor visszatérhet az Ingyenes szintre.
 
-1. A Security Center főmenüjében válassza a **Speciális biztonsági megoldás előkészítése** elemet.
+1. A Security Center főmenüjében válassza az **Első lépések** elemet.
+ 
+  ![Bevezetés][4]
 
-2. A **Speciális biztonsági megoldás előkészítése** területen a Security Center kilistázza a felvételre jogosult előfizetéseket és munkaterületeket. Válasszon ki egy előfizetést a listából.
+2. A **Frissítés** területen a Security Center felsorolja az előkészítésre jogosult előfizetéseket és munkaterületeket. 
+   - A **Próbaverzió alkalmazása** elemre kattintva megtekintheti előfizetéseinek és munkaterületeinek listáját, valamint a próbaidőszakkal kapcsolatos jogosultsági állapotukat.
+   -    Frissítheti azokat az előfizetéseket és munkaterületeket, amelyek nem jogosultak a próbaidőszakra.
+   -    A próbaidőszak elkezdéséhez válassza ki az erre jogosult munkaterületeket és előfizetéseket.
+3.  A **Próbaverzió indítása** gombbal elindítja a próbaidőszakot a kiválasztott előfizetéseken.
 
-  ![Előfizetés kiválasztása][4]
 
-3. A **Biztonsági szabályzat** információt nyújt az előfizetésben található erőforráscsoportokról. A **Díjszabás** is megnyílik.
-4. A **Díjszabás** területen válassza ki a **Standard** elemet az Ingyenesről a Standard szintre való frissítéshez, majd kattintson a **Mentés** gombra.
-
-  ![Standard kiválasztása][5]
-
-Most, hogy frissített a Standard szintre, elérheti a Security Center további funkcióit, köztük az **adaptív alkalmazásvezérlőket**, az **igény szerinti virtuálisgép-hozzáférést**, a **biztonsági riasztásokat**, a **fenyegetésfelderítést**, az **automatizálási forgatókönyveket**, és egyéb funkciókat. Vegye figyelembe, hogy a biztonsági riasztások csak akkor jelennek meg, ha a Security Center kártékony tevékenységet észlel.
-
-  ![Biztonsági riasztások][7]
+  ![Biztonsági riasztások][9]
 
 ## <a name="automate-data-collection"></a>Adatgyűjtés automatizálása
 A Security Center adatokat gyűjt az Azure-beli virtuális gépekről és a nem Azure-beli számítógépekről a biztonsági rések és fenyegetések megfigyeléséhez. Az adatgyűjtés a Microsoft Monitoring Agent segítségével történik, amely a biztonsághoz kapcsolódó különböző konfigurációkat és eseménynaplókat olvas be a gépről, és elemzés céljából átmásolja az adatokat az Ön munkaterületére. Alapértelmezés szerint a Security Center létre fog hozni egy új munkaterületet.
@@ -76,11 +74,10 @@ Ha az automatikus kiépítés engedélyezve van, a Security Center telepíti a M
 A Microsoft Monitoring Agent automatikus kiépítésének engedélyezése:
 
 1. A Security Center főmenüjében válassza a **Biztonsági szabályzat** elemet.
-2. Válassza ki az előfizetést.
-3. A **Biztonsági szabályzat** területen válassza az **Adatgyűjtés** elemet.
-4. Az **Adatgyűjtés** területen válassza a **Be** lehetőséget az automatikus kiépítés engedélyezéséhez.
-5. Kattintson a **Mentés** gombra.
-
+2. Az előfizetést tartalmazó soron kattintson a **Beállítások szerkesztése>** elemre.
+3. Az **Adatgyűjtés** lapon állítsa az **Automatikus telepítést** **Be** értékre.
+4. Kattintson a **Mentés** gombra.
+****
   ![Automatikus kiépítés engedélyezése][6]
 
 Az Azure-beli virtuális gépekbe való új betekintésnek köszönhetően a Security Center további javaslatokkal láthatja el Önt a rendszerfrissítés állapotával, az operációs rendszer biztonsági konfigurációival és a végpontvédelemmel kapcsolatban, illetve további biztonsági riasztásokat is létrehozhat.
@@ -91,16 +88,15 @@ Az Azure-beli virtuális gépekbe való új betekintésnek köszönhetően a Sec
 A gyűjtemény részét képező többi rövid útmutató és oktatóanyag erre a rövid útmutatóra épül. Ha azt tervezi, hogy az ezt követő rövid útmutatókkal és oktatóanyagokkal dolgozik tovább, továbbra is a Standard szintet futtassa, és hagyja engedélyezve az automatikus kiépítést. Ha nem folytatja a munkát, vagy vissza szeretne térni az Ingyenes szintre:
 
 1. Térjen vissza a Security Center főmenüjébe, és válassza a **Biztonsági szabályzat** elemet.
-2. Válassza ki az előfizetést vagy a szabályzatot, amelyet vissza szeretne állítani Ingyenes állapotba. Megnyílik a **Biztonsági szabályzat** képernyő.
-3. A **SZABÁLYZAT ÖSSZETEVŐI** alatt válassza a **Tarifacsomag** lehetőséget.
-4. Válassza az **Ingyenes** lehetőséget az előfizetés Standard szintről Ingyenes szintre való módosításához.
+2. Azon a soron, amelyen az ingyenes állapotba visszaállítani kívánt előfizetés található, válassza ki a **Beállítások szerkesztése>** elemet.
+3. A **Tarifacsomag** pont alatt válassza az **Ingyenes** lehetőséget az előfizetés Standard szintről Ingyenes szintre való módosításához.
 5. Kattintson a **Mentés** gombra.
 
 Ha le szeretné tiltani az automatikus kiépítést:
 
 1. Térjen vissza a Security Center főmenüjébe, és válassza a **Biztonsági szabályzat** elemet.
-2. Válassza ki azt az előfizetést, amelynél le szeretné tiltani az automatikus kiépítést.
-3. Az automatikus kiépítés letiltásához a **Biztonsági szabályzat – Adatgyűjtés** területen válassza a **Ki** lehetőséget az **Előkészítés** elemnél.
+2. Válassza ki a **Beállítások szerkesztése>** elemet azon a soron, amelyen az az előfizetés található, amelyiknek le szeretné tiltani az automatikus telepítését.
+3. Az **Adatgyűjtés** lapon állítsa az **Automatikus telepítést** **Ki** értékre.
 4. Kattintson a **Mentés** gombra.
 
 >[!NOTE]
@@ -115,8 +111,9 @@ Ebben a rövid útmutatóban frissített a Standard szintre, és kiépítette a 
 
 <!--Image references-->
 [2]: ./media/security-center-get-started/overview.png
-[4]: ./media/security-center-get-started/onboarding.png
+[4]: ./media/security-center-get-started/get-started.png
 [5]: ./media/security-center-get-started/pricing.png
 [6]: ./media/security-center-get-started/enable-automatic-provisioning.png
 [7]: ./media/security-center-get-started/security-alerts.png
 [8]: ./media/security-center-get-started/recommendations.png
+[9]: ./media/security-center-get-started/select-subscription.png

@@ -8,22 +8,22 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 07/31/2018
-ms.openlocfilehash: b364dfb033c3af640892bb305d7df3c916dd3fef
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: a6ad40f90e12bbf4dd85c3cbd22839d39a734ca1
+ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43095767"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44391165"
 ---
 # <a name="deploy-to-azure-app-service-by-using-the-jenkins-plugin"></a>Üzembe helyezés az Azure App Service-ben a Jenkins beépülő modullal 
 
 Ha Java-webalkalmazást szeretne üzembe helyezni az Azure-ban, használhatja az Azure CLI-t a [Jenkins-folyamatban](/azure/jenkins/execute-cli-jenkins-pipeline), vagy az [Azure App Service Jenkins beépülő modulját](https://plugins.jenkins.io/azure-app-service). A Jenkins beépülő modul 1.0-s verziója támogatja a folyamatos üzembe helyezést az Azure App Service Web Apps funkciójának használatával, a következőn keresztül:
-* Git vagy FTP.
+* Fájlfeltöltés.
 * Docker a Web Apps on Linuxhoz.
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > [!div class="checklist"]
-> * A Jenkins konfigurálása Web Apps üzembe helyezéséhez Giten vagy FTP-n keresztül.
+> * A Jenkins konfigurálása Web Apps üzembe helyezéséhez fájlfeltöltésen keresztül.
 > * A Jenkins konfigurálása Web App for Containers üzembe helyezéséhez.
 
 ## <a name="create-and-configure-a-jenkins-instance"></a>Jenkins-példányok létrehozása és konfigurálása
@@ -37,7 +37,7 @@ Ha még nem rendelkezik Jenkins-főkiszolgálóval, kezdje a [megoldássablonnal
 
 A Jenkins beépülő modullal a Web Apps által támogatott bármelyik nyelvvel (például C#, PHP, Java és Node.js) üzembe helyezhetők a webalkalmazások. Ebben az oktatóanyagban egy, [az Azure-hoz készült egyszerű Java-webalkalmazást](https://github.com/azure-devops/javawebappsample) használunk. Ahhoz, hogy elágaztassa az adattárat a saját GitHub-fiókja felé, kattintson a **Fork** (Elágaztatás) gombra a GitHub-felület jobb felső sarkában.  
 > [!NOTE]
-> A Java-projekt létrehozásához szükség van a Java JDK-ra és a Mavenre. Ezeket az összetevőket a Jenkins-főkiszolgálón telepítse, vagy a virtuálisgép-ügynökön, ha az ügynököt folyamatos integráláshoz használja. 
+> A Java-projekt létrehozásához szükség van a Java JDK-ra és a Mavenre. Ezeket az összetevőket a Jenkins-főkiszolgálón telepítse, vagy a virtuálisgép-ügynökön, ha az ügynököt folyamatos integráláshoz használja. Ha Java SE alkalmazást helyez üzembe, a ZIP-re is szükség lesz a buildkiszolgálón.
 
 Az összetevők telepítéséhez jelentkezzen be a Jenkis-példányba az SSH-val, és futtassa az alábbi parancsokat:
 
@@ -60,7 +60,11 @@ Az Azure-ban való üzembe helyezéshez Azure-szolgáltatásnévre van szükség
 
 ## <a name="configure-jenkins-to-deploy-web-apps-by-uploading-files"></a>A Jenkins konfigurálása a Web Apps fájlfeltöltéssel történő üzembe helyezéséhez
 
-Ha a Web Appsben szeretné üzembe helyezni a projektjeit, feltöltheti a buildösszetevőket (például egy WAR-fájlt a Javában) a Git vagy az FTP használatával.
+Ha a Web Appsben szeretné üzembe helyezni a projektjeit, feltöltheti a buildösszetevőket fájlfeltöltésen keresztül. Az Azure App Service különböző üzembehelyezési lehetőségeket támogat. Az Azure App Service Jenkins beépülő modulja egyszerűvé teszi a választást és meghatározza az üzembehelyezési lehetőséget a fájltípus alapján. 
+
+* Java EE-alkalmazások esetén a [WAR üzembe helyezés](/azure/app-service/app-service-deploy-zip#deploy-war-file) használatos.
+* Java SE-alkalmazások esetén a [ZIP üzembe helyezés](/azure/app-service/app-service-deploy-zip#deploy-zip-file) használatos.
+* Más nyelvek esetén a [Git üzembe helyezés](/azure/app-service/app-service-deploy-local-git) használatos.
 
 Mielőtt beállítaná a feladatot a Jenkinsben, szüksége van egy Azure App Service-csomagra és egy webalkalmazásra a Java-alkalmazás futtatásához.
 
@@ -127,7 +131,7 @@ Az Azure App Service Jenkins beépülő modulja készen áll a folyamatok elvég
 
 A Web Apps on Linux támogatja a Dockerrel végzett üzembe helyezést. Ha a Dockerrel szeretné üzembe helyezni a webalkalmazást, meg kell adnia egy Docker-fájlt, amely a webalkalmazást a futtatókörnyezettel együtt egy Docker-rendszerképbe csomagolja. A Jenkins beépülő modul ezután létrehozza a rendszerképet, leküldi a Docker-beállításjegyzékbe, majd üzembe helyezi a rendszerképet a webalkalmazásban.
 
-A Web Apps on Linux a hagyományos üzembe helyezési módszereket is támogatja, például a Gitet és az FTP-t, de csak a beépített nyelvek esetében (.NET Core, Node.js, PHP, Ruby). Ha más nyelvet használ, be kell csomagolnia az alkalmazás kódját és a szolgáltatási futtatókörnyezetet egy Docker-rendszerképbe, és a Dockert kell használnia az üzembe helyezéshez.
+A Web Apps on Linux a hagyományos üzembehelyezési módszereket is támogatja, például a Gitet és a fájlfeltöltést, de csak a beépített nyelvek esetében (.NET Core, Node.js, PHP, Ruby). Ha más nyelvet használ, be kell csomagolnia az alkalmazás kódját és a szolgáltatási futtatókörnyezetet egy Docker-rendszerképbe, és a Dockert kell használnia az üzembe helyezéshez.
 
 Mielőtt beállítaná a feladatot a Jenkinsben, szüksége vagy egy webalkalmazásra a Linuxon. Egy tárolóregisztrációs adatbázisra is szüksége van a privát Docker-tároló rendszerképeinek tárolásához és kezeléséhez. A tárolóregisztrációs adatbázist a DockerHubbal hozhatja létre. Ebben a példában az Azure Container Registryt használjuk.
 
@@ -232,5 +236,5 @@ Ebben az oktatóanyagban az Azure App Service Jenkins beépülő modulját haszn
 Megismerte, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
-> * A Jenkins konfigurálása az Azure App Service FTP-n keresztül történő üzembe helyezéséhez 
+> * A Jenkins konfigurálása az Azure App Service fájlfeltöltésen keresztül történő üzembe helyezéséhez 
 > * A Jenkins konfigurálása Web App for Containersbe történő üzembe helyezéséhez 

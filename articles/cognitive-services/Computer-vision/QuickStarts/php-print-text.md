@@ -1,44 +1,56 @@
 ---
-title: OCR a Computer Vision API és a PHP használatával – rövid útmutató | Microsoft Docs
-titleSuffix: Microsoft Cognitive Services
-description: Ebben a rövid útmutatóban nyomtatott szöveget fog kinyerni egy képből a Computer Vision és a PHP használatával a Cognitive Servicesben.
+title: 'Rövid útmutató: Nyomtatott szöveg kinyerése (OCR) – REST, PHP – Computer Vision'
+titleSuffix: Azure Cognitive Services
+description: Ebben a rövid útmutatóban nyomtatott szöveget fog kinyerni egy képből a Computer Vision API PHP-vel való használatával.
 services: cognitive-services
 author: noellelacharite
-manager: nolachar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: computer-vision
 ms.topic: quickstart
 ms.date: 08/28/2018
 ms.author: v-deken
-ms.openlocfilehash: 85df021357c76330be21ceff77d79491edcc23b0
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: 14c03f2079e695fcd3cac8535b2888d71f41c913
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43770137"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45633231"
 ---
-# <a name="quickstart-extract-printed-text-ocr---rest-php"></a>Rövid útmutató: Nyomtatott szöveg kinyerése (OCR) – REST, PHP
+# <a name="quickstart-extract-printed-text-ocr-using-the-rest-api-and-php-in-computer-vision"></a>Rövid útmutató: Nyomtatott szöveg kinyerése (OCR) a REST API és a PHP használatával a Computer Vision szolgáltatásban
 
-Ebben a rövid útmutatóban nyomtatott szöveget fog kinyerni – más néven optikai karakterfelismerést (OCR) fog végezni – egy képből a Computer Vision segítségével.
+Ebben a rövid útmutatóban optikai karakterfelismerést (OCR) használva nyomtatott szöveget fog kinyerni egy képből a Computer Vision REST API-jával. Az [OCR](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) metódussal nyomtatott szöveget észlelhet egy képen, és géppel olvasható karakterfolyamba nyerheti ki a felismert karaktereket.
+
+Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services) a virtuális gép létrehozásának megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A Computer Vision használatához előfizetési kulcsra van szüksége, lásd az [előfizetési kulcsok beszerzéséről](../Vision-API-How-to-Topics/HowToSubscribe.md) szóló témakört.
+- Rendelkeznie kell a [PHP-vel](https://secure.php.net/downloads.php).
+- Rendelkeznie kell a [Pearrel](https://pear.php.net).
+- Szüksége lesz egy Computer Vision-előfizetői azonosítóra. Az előfizetői azonosító beszerzéséhez lásd az [előfizetői azonosítók beszerzéséről](../Vision-API-How-to-Topics/HowToSubscribe.md) szóló témakört.
 
-## <a name="ocr-request"></a>OCR-kérés
+## <a name="create-and-run-the-sample"></a>A minta létrehozása és futtatása
 
-Az [OCR metódussal](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) nyomtatott szöveget észlelhet egy képen, és géppel olvasható karakterfolyamba nyerheti ki a felismert karaktereket.
+A minta létrehozásához és futtatásához az alábbi lépéseket kell végrehajtania:
 
-A minta futtatásához az alábbi lépéseket kell végrehajtania:
+1. Telepítse a PHP5 [`HTTP_Request2`](http://pear.php.net/package/HTTP_Request2) csomagot.
+   1. Nyissa meg a parancssori ablakot rendszergazdaként.
+   1. Futtassa az alábbi parancsot:
 
-1. Másolja az alábbi kódot egy szerkesztőbe.
-1. A `<Subscription Key>` helyére írja be az érvényes előfizetési kulcsot.
-1. Ha szükséges, változtassa meg az `uriBase` elem értékét arra a helyre, ahonnan az előfizetési kulcsot beszerezte.
-1. Az `imageUrl` elem értékét beállíthatja az elemezni kívánt kép elérési útjára.
-1. Mentse a fájlt `.php` kiterjesztéssel.
-1. Nyissa meg a fájlt egy PHP-támogatással rendelkező böngészőablakban.
+      ```console
+      pear install HTTP_Request2
+      ```
 
-Ebben a példában a PHP5 [HTTP_Request2](http://pear.php.net/package/HTTP_Request2) csomagját használjuk.
+   1. A csomag sikeres telepítése után zárja be a parancssori ablakot.
+
+1. Másolja az alábbi kódot egy szövegszerkesztőbe.
+1. Hajtsa végre a következő módosításokat a kód megfelelő területein:
+    1. Cserélje le a `subscriptionKey` értéket az előfizetői azonosítóra.
+    1. Ha szükséges, cserélje le az `uriBase` értéket azon Azure-régió [OCR](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) metódusának végponti URL-címére, ahol az előfizetői azonosítókat beszerezte.
+    1. Ha szeretné, cserélje le az `imageUrl` értéket egy másik olyan kép URL-címére, amelyből nyomtatott szöveget szeretne kinyerni.
+1. Mentse a kódot fájlként `.php` kiterjesztéssel. Például: `get-printed-text.php`.
+1. Nyisson meg egy PHP-támogatással rendelkező böngészőablakot.
+1. Húzza a fájlt a böngészőablakba.
 
 ```php
 <?php
@@ -101,9 +113,9 @@ catch (HttpException $ex)
 </html>
 ```
 
-## <a name="ocr-response"></a>OCR-válasz
+## <a name="examine-the-response"></a>A válasz vizsgálata
 
-A sikeres OCR-művelet eredményei közé tartozik a szöveg, valamint az egyes régiókat, sorokat és szavakat határoló keretek, például:
+A rendszer JSON formátumban adja vissza a sikeres választ. A mintawebhely elemzi és megjeleníti a sikeres választ a böngészőablakban, a következő példához hasonló módon:
 
 ```json
 {
@@ -204,9 +216,22 @@ A sikeres OCR-művelet eredményei közé tartozik a szöveg, valamint az egyes 
 }
 ```
 
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+
+Ha már nincs rá szükség, törölje a fájlt, majd távolítsa el a PHP5 `HTTP_Request2` csomagot. A csomag eltávolításához hajtsa végre a következő lépéseket:
+
+1. Nyissa meg a parancssori ablakot rendszergazdaként.
+2. Futtassa az alábbi parancsot:
+
+   ```console
+   pear uninstall HTTP_Request2
+   ```
+
+3. A csomag sikeres eltávolítása után zárja be a parancssori ablakot.
+
 ## <a name="next-steps"></a>További lépések
 
-Ismerje meg a Computer Vision API-kat, amelyekkel képeket elemezhet, hírességeket és nevezetességeket azonosíthat rajtuk, valamint miniatűrt hozhat létre, illetve nyomtatott és kézzel írott szövegeket nyerhet ki belőlük. A Computer Vision API-kkal való gyors kísérletezéshez próbálja ki az [Open API-tesztkonzolt](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa/console).
+Ismerje meg a Computer Vision API-t, amellyel képeket elemezhet, hírességeket és nevezetességeket azonosíthat rajtuk, valamint miniatűrt hozhat létre, illetve nyomtatott és kézzel írott szövegeket nyerhet ki belőlük. A Computer Vision API-val való gyors kísérletezéshez próbálja ki az [Open API-tesztkonzolt](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa/console).
 
 > [!div class="nextstepaction"]
-> [Ismerkedjen meg a Computer Vision API-k működésével](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44)
+> [Tekintse át a Computer Vision API-t](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44)

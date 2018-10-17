@@ -2,10 +2,10 @@ A Cloud Shellben hozzon létre egy App Service-csomagot az erőforráscsoportban
 
 <!-- [!INCLUDE [app-service-plan](app-service-plan-linux.md)] -->
 
-Az alábbi példa egy `myAppServicePlan` nevű App Service-csomag létrehozását mutatja be a **Standard** tarifacsomagban (`--sku S1`) és Linux-tárolóban (`--is-linux`).
+Az alábbi példa egy `myAppServicePlan` nevű App Service-csomag létrehozását mutatja be az **Alapszintű** tarifacsomagban (`--sku B1`) és Linux-tárolóban (`--is-linux`).
 
 ```azurecli-interactive
-az appservice plan create --name myAppServicePlan --resource-group myResourceGroup --sku S1 --is-linux
+az appservice plan create --name myAppServicePlan --resource-group myResourceGroup --sku B1 --is-linux
 ```
 
 Az App Service-csomag létrehozása után az Azure CLI az alábbi példához hasonló információkat jelenít meg:

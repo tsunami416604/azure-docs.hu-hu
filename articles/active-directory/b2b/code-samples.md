@@ -1,38 +1,38 @@
 ---
-title: Az Azure Active Directory B2B együttműködési kódmintát és PowerShell-minták |} A Microsoft Docs
-description: Kód és a PowerShell-minták az Azure Active Directory B2B-együttműködés
+title: Az Azure Active Directory B2B-együttműködési kód- és PowerShell-minták | Microsoft Docs
+description: Kód- és a PowerShell-minták az Azure Active Directory B2B-együttműködéshez
 services: active-directory
 ms.service: active-directory
 ms.component: B2B
-ms.topic: article
+ms.topic: sample
 ms.date: 04/11/2017
 ms.author: mimart
 author: msmimart
 manager: mtillman
 ms.reviewer: sasubram
-ms.openlocfilehash: f9740aba27b7a593fdf2b465f539d305d24333de
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
-ms.translationtype: MT
+ms.openlocfilehash: d0f2669610f2086c29d52d95c9796e6a2939622e
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35645680"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45985444"
 ---
-# <a name="azure-active-directory-b2b-collaboration-code-and-powershell-samples"></a>Az Azure Active Directory B2B együttműködési kódmintát és PowerShell-minták
+# <a name="azure-active-directory-b2b-collaboration-code-and-powershell-samples"></a>Az Azure Active Directory B2B-együttműködési kód- és PowerShell-minták
 
-## <a name="powershell-example"></a>A PowerShell-példa
-Akkor is tömeges-meghívó külső felhasználók nyújtva a cég-ban tárolt e-mail-címekről érkező egy. CSV-fájl.
+## <a name="powershell-example"></a>PowerShell-példa
+Tömegesen meghívhat külső felhasználókat egy szervezetbe egy .CSV-fájlban tárolt e-mail-címek használatával.
 
-1. Készítse elő a. Fürt megosztott kötetei szolgáltatás hozzon létre egy új CSV-fájl fájlt, és adja neki invitations.csv. Ebben a példában a fájlt, C:\Data mentett, és a következő információkat tartalmazza:
+1. Készítse elő a .CSV-fájlt. Hozzon létre egy új CSV-fájlt, és adja neki az „invitations.csv” nevet. Ebben a példában a fájlt a C:\Data helyre mentjük, és a következő információkat tartalmazza:
   
-  Name (Név)                  |  InvitedUserEmailAddress
+  Name (Név)                  |  InvitedUserEmailAddress (meghívott felhasználó e-mail-címe)
   --------------------- | --------------------------
-  Gmail-B2B meghívott személy     | b2binvitee@gmail.com
-  Az Outlook B2B meghívott személy   | b2binvitee@outlook.com
+  Gmail B2B Invitee (Gmail B2B meghívott személy)     | b2binvitee@gmail.com
+  Outlook B2B Invitee (Outlook B2B meghívott személy)   | b2binvitee@outlook.com
 
 
-2. Első a legújabb Azure AD PowerShell, az új parancsmagok használatát, telepítenie kell a frissített az Azure AD PowerShell modult, amely innen tölthető le: [a Powershell-modulhoz tartozó kiadási lap](https://www.powershellgallery.com/packages/AzureADPreview)
+2. Szerezze be az Azure AD PowerShell legújabb verzióját. Az új parancsmagok használatához telepítenie kell a frissített Azure AD PowerShell-modult, amely innen tölthető le: [a Powershell-modul kiadási oldala](https://www.powershellgallery.com/packages/AzureADPreview)
 
-3. Jelentkezzen be a vállalat kiszolgálása
+3. Jelentkezzen be a bérlőkhöz
 
     ```
     $cred = Get-Credential
@@ -48,13 +48,13 @@ Akkor is tömeges-meghívó külső felhasználók nyújtva a cég-ban tárolt e
   foreach ($email in $invitations) {New-AzureADMSInvitation -InvitedUserEmailAddress $email.InvitedUserEmailAddress -InvitedUserDisplayName $email.Name -InviteRedirectUrl https://wingtiptoysonline-dev-ed.my.salesforce.com -InvitedUserMessageInfo $messageInfo -SendInvitationMessage $true}
   ```
 
-Ez a parancsmag invitations.csv meghívót az e-mail-címeket küld. A parancsmag további szolgáltatásai többek között:
-- Testreszabott szöveget az e-mail-üzenet
-- Többek között a meghívott felhasználó megjelenített neve
-- Üzenetek küldése az CCs vagy e-mailek érvényesítette újrainduljanak
+Ez a parancsmag meghívót küld az invitations.csv fájlban szereplő e-mail-címekre. A parancsmag további funkciói többek között:
+- Testreszabott szöveg beillesztése az e-mail-üzenetbe
+- Megjelenítendő név hozzárendelése a meghívott felhasználóhoz
+- Üzenetek küldése másolat címzettjeinek vagy minden e-mail-üzenet blokkolása
 
 ## <a name="code-sample"></a>Kódminta
-Itt azt bemutatják, hogyan hívhat meg az API-t meghívó a beváltási URL-Címének lekéréséhez az erőforrás, amelyhez a B2B-felhasználó fióknevet a "csak az alkalmazásra vonatkozó" módban. A cél, hogy egy egyéni meghívó e-mail küldése. Az e-mailben összeállítható egy HTTP-ügyféllel, így testre szabhatja, hogy néz ki és küldje el a Graph API-n keresztül.
+Itt azt mutatjuk be, hogyan hívhatja meg a meghívó API-t „csak alkalmazás” módban, hogy megszerezhesse az érvényesítési URL-címet ahhoz az erőforráshoz, amelyhez meghívja a B2B-felhasználót. A cél egy egyéni meghívó e-mail küldése. Az e-mailt megírhatja egy HTTP-ügyfélben, ahol testre szabhatja az üzenet külalakját, majd a Graph API-val elküldheti.
 
 ```
 namespace SampleInviteApp

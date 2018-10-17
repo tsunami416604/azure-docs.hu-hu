@@ -1,47 +1,57 @@
 ---
-title: Tartománymodell a Computer Vision API és a PHP használatával – rövid útmutató | Microsoft Docs
-titleSuffix: Microsoft Cognitive Services
-description: Ebben a rövid útmutatóban tartománymodellel fog nevezetességeket azonosítani egy képen a Computer Vision és a PHP használatával a Cognitive Servicesben.
+title: 'Rövid útmutató: Tartománymodell használata – REST, PHP – Computer Vision'
+titleSuffix: Azure Cognitive Services
+description: Ebben a rövid útmutatóban tartománymodellel fog nevezetességeket azonosítani egy képen a Computer Vision API és a PHP segítségével.
 services: cognitive-services
 author: noellelacharite
-manager: nolachar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: computer-vision
 ms.topic: quickstart
 ms.date: 08/28/2018
 ms.author: v-deken
-ms.openlocfilehash: 335065b45781dd2712f5416fb03a2f8726182472
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: 40a4fa90442a5771f6b221a25ddca46d3ebc4f5c
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43770290"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45629491"
 ---
-# <a name="quickstart-use-a-domain-model---rest-php"></a>Rövid útmutató: Tartománymodell használata – REST, PHP
+# <a name="quickstart-use-a-domain-model-using-the-rest-api-and-php-in-computer-vision"></a>Rövid útmutató: Tartománymodell használata a REST és a PHP használatával a Computer Visionben
 
-Ebben a rövid útmutatóban tartománymodellel fog nevezetességeket és hírességeket azonosítani egy képen a Computer Vision segítségével.
+Ebben a rövid útmutatóban tartománymodellel fog nevezetességeket és igény szerint hírességeket azonosítani egy távoli képen a Computer Vision REST API-jának segítségével. A [Recognize Domain Specific Content](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e200) metódussal egy tartományspecifikus modellel ismerheti fel a képek tartalmait azonosíthat egy képen.
+
+Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services) a virtuális gép létrehozásának megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A Computer Vision használatához előfizetési kulcsra van szüksége, lásd az [előfizetési kulcsok beszerzéséről](../Vision-API-How-to-Topics/HowToSubscribe.md) szóló témakört.
+- Rendelkeznie kell a [PHP-vel](https://secure.php.net/downloads.php).
+- Rendelkeznie kell a [Pearrel](https://pear.php.net).
+- Szüksége lesz egy Computer Vision-előfizetői azonosítóra. Az előfizetői azonosító beszerzéséhez lásd az [előfizetői azonosítók beszerzéséről](../Vision-API-How-to-Topics/HowToSubscribe.md) szóló témakört.
 
-## <a name="recognize-landmark-request"></a>Nevezetességfelismerési kérés
+## <a name="create-and-run-the-sample"></a>A minta létrehozása és futtatása
 
-A [Recognize Domain Specific Content metódussal](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e200) adott objektumkészleteket azonosíthat egy képen. Jelenleg a _hírességek_ és a _nevezetességek_ tartományspecifikus modell érhető el.
+A minta létrehozásához és futtatásához az alábbi lépéseket kell végrehajtania:
 
-A minta futtatásához az alábbi lépéseket kell végrehajtania:
+1. Telepítse a PHP5 [`HTTP_Request2`](http://pear.php.net/package/HTTP_Request2) csomagot.
+   1. Nyissa meg a parancssori ablakot rendszergazdaként.
+   1. Futtassa az alábbi parancsot:
 
-1. Másolja az alábbi kódot egy szerkesztőbe.
-1. A `<Subscription Key>` helyére írja be az érvényes előfizetési kulcsot.
-1. Ha szükséges, változtassa meg az `uriBase` elem értékét arra a helyre, ahonnan az előfizetési kulcsot beszerezte.
-1. Az `imageUrl` elem értékét beállíthatja az elemezni kívánt kép elérési útjára.
-1. A `domain` elemet beállíthatja `celebrities` értékre a Hírességek modell használatához.
-1. Mentse a fájlt `.php` kiterjesztéssel.
-1. Nyissa meg a fájlt egy PHP-támogatással rendelkező böngészőablakban.
+      ```console
+      pear install HTTP_Request2
+      ```
 
-Az alábbi példa egy nevezetességet azonosít egy képen.
+   1. A csomag sikeres telepítése után zárja be a parancssori ablakot.
 
-Ebben a példában a PHP5 [HTTP_Request2](http://pear.php.net/package/HTTP_Request2) csomagját használjuk.
+1. Másolja az alábbi kódot egy szövegszerkesztőbe.
+1. Hajtsa végre a következő módosításokat a kód megfelelő területein:
+    1. Cserélje le a `subscriptionKey` értéket az előfizetői azonosítóra.
+    1. Szükség esetén cserélje le az `uriBase` értékét azon [Recognize Domain Specific Content](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e200) metódus végpontjának URL-címére, amely az előfizetési kulcsokat tartalmazó Azure-régióból származik.
+    1. Ha szeretné, cserélje le az `imageUrl` értéket egy másik elemzendő kép URL-címére.
+    1. Igény szerint cserélje le a `domain` kérésparaméter értékét a `celebrites` elemre, ha a `celebrities` tartománymodellt szeretné használni a `landmarks` tartománymodell helyett.
+1. Mentse a kódot fájlként `.php` kiterjesztéssel. Például: `use-domain-model.php`.
+1. Nyisson meg egy PHP-támogatással rendelkező böngészőablakot.
+1. Húzza a fájlt a böngészőablakba.
 
 ```php
 <html>
@@ -105,9 +115,9 @@ catch (HttpException $ex)
 </html>
 ```
 
-## <a name="recognize-landmark-response"></a>Nevezetességfelismerési válasz
+## <a name="examine-the-response"></a>A válasz vizsgálata
 
-A rendszer JSON formátumban adja vissza a sikeres választ, például:
+A rendszer JSON formátumban adja vissza a sikeres választ. A mintawebhely elemzi és megjeleníti a sikeres választ a böngészőablakban, a következő példához hasonló módon:
 
 ```json
 {
@@ -128,9 +138,22 @@ A rendszer JSON formátumban adja vissza a sikeres választ, például:
 }
 ```
 
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+
+Ha már nincs rá szükség, törölje a fájlt, majd távolítsa el a PHP5 `HTTP_Request2` csomagot. A csomag eltávolításához hajtsa végre a következő lépéseket:
+
+1. Nyissa meg a parancssori ablakot rendszergazdaként.
+2. Futtassa az alábbi parancsot:
+
+   ```console
+   pear uninstall HTTP_Request2
+   ```
+
+3. A csomag sikeres eltávolítása után zárja be a parancssori ablakot.
+
 ## <a name="next-steps"></a>További lépések
 
-Ismerje meg a Computer Vision API-kat, amelyekkel képeket elemezhet, hírességeket és nevezetességeket azonosíthat rajtuk, valamint miniatűrt hozhat létre, illetve nyomtatott és kézzel írott szövegeket nyerhet ki belőlük. A Computer Vision API-kkal való gyors kísérletezéshez próbálja ki az [Open API-tesztkonzolt](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa/console).
+Ismerje meg a Computer Vision API-t, amellyel képeket elemezhet, hírességeket és nevezetességeket azonosíthat rajtuk, valamint miniatűrt hozhat létre, illetve nyomtatott és kézzel írott szövegeket nyerhet ki belőlük. A Computer Vision API-val való gyors kísérletezéshez próbálja ki az [Open API-tesztkonzolt](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa/console).
 
 > [!div class="nextstepaction"]
-> [Ismerkedjen meg a Computer Vision API-k működésével](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44)
+> [Tekintse át a Computer Vision API-t](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44)

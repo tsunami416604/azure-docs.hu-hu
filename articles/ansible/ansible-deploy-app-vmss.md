@@ -7,13 +7,13 @@ author: tomarcher
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
-ms.date: 08/24/2018
-ms.openlocfilehash: 762c14b5b6e30f6410a8d572d69651c803f079c2
-ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
+ms.date: 09/11/2018
+ms.openlocfilehash: 3512cb7eda9f9e5a6e18dc83f6523029b17a9de2
+ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42918086"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44391470"
 ---
 # <a name="deploy-applications-to-virtual-machine-scale-sets-in-azure-using-ansible"></a>Alkalmazások üzembe helyezése virtuálisgép-méretezési csoportokban az Azure-ban az Ansible használatával
 Az Ansible-lel automatizálhatja az erőforrások üzembe helyezését és konfigurálását a környezetében. Az Ansible használatával üzembe helyezheti alkalmazásait az Azure-ban. Ez a cikk bemutatja, hogyan helyezhet gyorsan üzembe Java-alkalmazást egy Azure-beli virtuálisgép-méretezési csoportban (VMSS).  
@@ -31,7 +31,7 @@ Az Ansible-lel automatizálhatja az erőforrások üzembe helyezését és konfi
 
 ## <a name="get-host-information"></a>Gazdagép információinak lekérése
 
-Ez a szakasz bemutatja, hogyan használhatja az Ansible-t Azure-beli virtuálisgép-csoportok gazdagép-információinak lekéréséhez. Az alábbiakban egy Ansible-példaforgatókönyvet láthat. A kód lekéri az adott erőforráscsoportban szereplő nyilvános IP-címeket és a terheléselosztót, majd létrehoz egy **saclesethosts** nevű gazdagépcsoportot a leltárban. 
+Ez a szakasz bemutatja, hogyan használhatja az Ansible-t Azure-beli virtuálisgép-csoportok gazdagép-információinak lekéréséhez. Az alábbiakban egy Ansible-példaforgatókönyvet láthat. A kód lekéri az adott erőforráscsoportban szereplő nyilvános IP-címeket és a terheléselosztót, majd létrehoz egy **scalesethosts** nevű gazdagépcsoportot a leltárban. 
 
 Mentse a következő mintaforgatókönyvet `get-hosts-tasks.yml` néven: 
 

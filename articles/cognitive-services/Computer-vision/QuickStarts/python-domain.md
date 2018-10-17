@@ -1,51 +1,49 @@
 ---
-title: Tartománymodell a Computer Vision és a Python használatával – rövid útmutató | Microsoft Docs
-titleSuffix: Microsoft Cognitive Services
-description: Ebben a rövid útmutatóban tartománymodellekkel fog hírességeket és nevezetességeket azonosítani egy képen a Computer Vision és a Python használatával a Cognitive Servicesben.
+title: 'Rövid útmutató: Tartománymodell használata – REST, Python – Computer Vision'
+titleSuffix: Azure Cognitive Services
+description: Ebben a rövid útmutatóban tartománymodellekkel fog hírességeket és nevezetességeket azonosítani egy képen a Computer Vision API a Pythonnal való használatával.
 services: cognitive-services
 author: noellelacharite
-manager: nolachar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: computer-vision
 ms.topic: quickstart
 ms.date: 08/28/2018
 ms.author: v-deken
-ms.openlocfilehash: 357cab72c0a6c9a2254350c84cda91c366ac685a
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: 93027e2f9cd3a9b0e9c6ef261b8af876022632a4
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43770106"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45632449"
 ---
-# <a name="quickstart-use-a-domain-model---rest-python"></a>Rövid útmutató: Tartománymodell használata – REST, Python
+# <a name="quickstart-use-a-domain-model-using-the-rest-api-and-python-in-computer-vision"></a>Rövid útmutató: Tartománymodell használata a REST és a Python használatával a Computer Visionben
 
-Ebben a rövid útmutatóban tartománymodellekkel fog hírességeket és nevezetességeket azonosítani egy képen a Computer Vision használatával.
+Ebben a rövid útmutatóban tartománymodellel fog nevezetességeket és igény szerint hírességeket azonosítani egy távoli képen a Computer Vision REST API-jának segítségével. A [Recognize Domain Specific Content](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e200) metódussal egy tartományspecifikus modellel ismerheti fel a képek tartalmait azonosíthat egy képen.
 
 Ezt a rövid útmutatót futtathatja lépésenként egy Jupyter-notebook segítségével a [MyBinderben](https://mybinder.org). A Binder indításához válassza az alábbi gombot:
 
 [![Binder](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/Microsoft/cognitive-services-notebooks/master?filepath=VisionAPI.ipynb)
 
+Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services) a virtuális gép létrehozásának megkezdése előtt.
+
 ## <a name="prerequisites"></a>Előfeltételek
 
-A Computer Vision használatához előfizetési kulcsra van szüksége, lásd az [előfizetési kulcsok beszerzéséről](../Vision-API-How-to-Topics/HowToSubscribe.md) szóló témakört.
+- A minta helyi futtatásához rendelkeznie kell a [Pythonnal](https://www.python.org/downloads/).
+- Szüksége lesz egy Computer Vision-előfizetői azonosítóra. Az előfizetői azonosító beszerzéséhez lásd az [előfizetői azonosítók beszerzéséről](../Vision-API-How-to-Topics/HowToSubscribe.md) szóló témakört.
 
-## <a name="identify-celebrities-and-landmarks"></a>Hírességek és nevezetességek azonosítása
+## <a name="create-and-run-the-landmarks-sample"></a>A nevezetességminta létrehozása és futtatása
 
-A [Recognize Domain Specific Content metódussal](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e200) adott objektumkészleteket azonosíthat egy képen. Jelenleg a _hírességek_ és a _nevezetességek_ tartományspecifikus modell érhető el.
+A nevezetességminta létrehozásához és futtatásához az alábbi lépéseket kell végrehajtania:
 
-A minta futtatásához az alábbi lépéseket kell végrehajtania:
-
-1. Másolja a következő kódot egy új Python-szkriptfájlba.
-1. A `<Subscription Key>` helyére írja be az érvényes előfizetési kulcsot.
-1. Ha szükséges, változtassa meg az `vision_base_url` értékét arra a helyre, ahonnan az előfizetési kulcsot beszerezte.
-1. Módosíthatja az `image_url` elem értékét egy másik képre.
-1. Futtassa a szkriptet.
-
-Az alábbi kód a Python `requests` kódtárát használja a Computer Vision képelemző API-jának meghívásához. Az eredményeket JSON-objektumként adja vissza. Az API-kulcsot a rendszer a `headers` szótárral adja át. A használandó modellt a rendszer a `params` szótárral adja át.
-
-## <a name="landmark-identification"></a>Nevezetességek azonosítása
-
-### <a name="recognize-landmark-request"></a>Nevezetességfelismerési kérés
+1. Másolja az alábbi kódot egy szövegszerkesztőbe.
+1. Hajtsa végre a következő módosításokat a kód megfelelő területein:
+    1. Cserélje le a `subscription_key` értéket az előfizetői azonosítóra.
+    1. Ha szükséges, cserélje le az `vision_base_url` értéket azon Azure-régió Computer Vision-erőforrás metódusának végponti URL-címére, ahol az előfizetői azonosítókat beszerezte.
+    1. Ha szeretné, cserélje le az `image_url` értéket annak a képnek az URL-címére, amelyen nevezetességeket szeretne azonosítani.
+1. Mentse a kódot fájlként `.py` kiterjesztéssel. Például: `get-landmarks.py`.
+1. Nyisson meg egy parancssort.
+1. Amikor a rendszer kéri, a `python` paranccsal futtassa a mintát. Például: `python get-landmarks.py`.
 
 ```python
 import requests
@@ -95,9 +93,9 @@ plt.axis("off")
 _ = plt.title(landmark_name, size="x-large", y=-0.1)
 ```
 
-### <a name="recognize-landmark-response"></a>Nevezetességfelismerési válasz
+## <a name="examine-the-response-for-the-landmarks-sample"></a>A nevezetességminta válaszainak vizsgálata
 
-A rendszer JSON formátumban adja vissza a sikeres választ, például:
+A rendszer JSON formátumban adja vissza a sikeres választ. A mintaweblap elemzi és megjeleníti a sikeres választ a parancssorban, a következő példához hasonló módon:
 
 ```json
 {
@@ -118,9 +116,18 @@ A rendszer JSON formátumban adja vissza a sikeres választ, például:
 }
 ```
 
-## <a name="celebrity-identification"></a>Hírességek azonosítása
+## <a name="create-and-run-the-celebrities-sample"></a>A hírességminta létrehozása és futtatása
 
-### <a name="recognize-celebrity-request"></a>Hírességfelismerési kérés
+A nevezetességminta létrehozásához és futtatásához az alábbi lépéseket kell végrehajtania:
+
+1. Másolja az alábbi kódot egy szövegszerkesztőbe.
+1. Hajtsa végre a következő módosításokat a kód megfelelő területein:
+    1. Cserélje le a `subscription_key` értéket az előfizetői azonosítóra.
+    1. Ha szükséges, cserélje le az `vision_base_url` értéket azon Azure-régió Computer Vision-erőforrás metódusának végponti URL-címére, ahol az előfizetői azonosítókat beszerezte.
+    1. Ha szeretné, cserélje le az `image_url` értéket annak a képnek az URL-címére, amelyen hírességeket szeretne azonosítani.
+1. Mentse a kódot fájlként `.py` kiterjesztéssel. Például: `get-celebrities.py`.
+1. Nyisson meg egy parancssort.
+1. Amikor a rendszer kéri, a `python` paranccsal futtassa a mintát. Például: `python get-celebrities.py`.
 
 ```python
 import requests
@@ -163,9 +170,10 @@ plt.axis("off")
 _ = plt.title(celebrity_name, size="x-large", y=-0.1)
 ```
 
-### <a name="recognize-celebrity-response"></a>Hírességfelismerési válasz
+## <a name="examine-the-response-for-the-celebrities-sample"></a>A hírességminta válaszainak vizsgálata
 
-A rendszer JSON formátumban adja vissza a sikeres választ, például:
+A rendszer JSON formátumban adja vissza a sikeres választ. A mintaweblap elemzi és megjeleníti a sikeres választ a parancssorban, a következő példához hasonló módon:
+
 
 ```json
 {
@@ -192,9 +200,13 @@ A rendszer JSON formátumban adja vissza a sikeres választ, például:
 }
 ```
 
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+
+Ha már nincs rá szükség, törölje mindkét minta fájljait.
+
 ## <a name="next-steps"></a>További lépések
 
-Ismerjen meg egy Python-alkalmazást, amely a Computer Vision segítségével végez optikai karakterfelismerést (OCR), és amellyel intelligens körbevágású miniatűröket hozhat létre, valamint képek vizuális jellemzőit, például arcokat észlelhet, kategorizálhat, címkézhet és írhat le. A Computer Vision API-kkal való gyors kísérletezéshez próbálja ki az [Open API-tesztkonzolt](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa/console).
+Ismerjen meg egy Python-alkalmazást, amely a Computer Vision segítségével végez optikai karakterfelismerést (OCR), és amellyel intelligens körbevágású miniatűröket hozhat létre, valamint képek vizuális jellemzőit, például arcokat észlelhet, kategorizálhat, címkézhet és írhat le. A Computer Vision API-val való gyors kísérletezéshez próbálja ki az [Open API-tesztkonzolt](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa/console).
 
 > [!div class="nextstepaction"]
 > [Computer Vision API – Python-oktatóanyag](../Tutorials/PythonTutorial.md)

@@ -8,57 +8,42 @@ ms.service: cosmos-db
 ms.component: cosmosdb-graph
 ms.devlang: na
 ms.topic: overview
-ms.date: 01/05/2017
+ms.date: 09/05/2018
 ms.author: lbosq
-ms.openlocfilehash: a0eec8aec315eefcbcc859828fa68ea0ccee6190
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 143aa1f26110b68e4dcf417c93b04f65e2993e89
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43695350"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44051646"
 ---
 # <a name="introduction-to-azure-cosmos-db-gremlin-api"></a>Bevezetés az Azure Cosmos DB használatába: Gremlin API
 
-Az [Azure Cosmos DB](introduction.md) a Microsoft globálisan elosztott többmodelles adatbázis-szolgáltatása kritikus fontosságú alkalmazások számára. Az Azure Cosmos DB az alábbi funkciókat biztosítja [az iparág legjobb](https://azure.microsoft.com/support/legal/sla/cosmos-db/) szolgáltatásiszint-szerződéseivel támogatva:
+Az [Azure Cosmos DB](introduction.md) a Microsoft globálisan elosztott többmodelles adatbázis-szolgáltatása kritikus fontosságú alkalmazások számára. Többmodelles adatbázis, amely támogatja a dokumentumokat, a kulcs-érték párokat, a gráfokat és az oszlopos adatmodelleket. Az Azure Cosmos DB Gremlin API segítségével gráfadatokat lehet tárolni, és műveleteket lehet rajtuk végezni. A Gremlin API segítségével gráfadatok modellezhetők és járhatók be.
 
-* [Kulcsrakész globális terjesztés](distribute-data-globally.md)
-* [A teljesítmény és a tárterület rugalmas méretezése](partition-data.md) világszerte
-* Az esetek 99%-ában egyszámjegyű ezredmásodperces késés
-* [Öt jól definiált konzisztenciaszint](consistency-levels.md)
-* Garantáltan magas rendelkezésre állás 
+A cikk áttekintést nyújt az Azure Cosmos DB Gremlin API-járól, és elmagyarázza, hogyan használhatja a nagyméretű, több milliárd csúcsot és élet tartalmazó gráfok tárolására. A gráfokat ezredmásodperces késéssel kérdezheti le, és könnyen fejlesztheti a gráfok struktúráját és sémáját. Az Azure Cosmos DB lekérdezéséhez használhatja az [Apache TinkerPop](http://tinkerpop.apache.org) gráfbejárási nyelvet vagy a [Gremlint](http://tinkerpop.apache.org/docs/current/reference/#graph-traversal-steps).
 
-Az Azure Cosmos DB [automatikusan indexeli az adatokat](http://www.vldb.org/pvldb/vol8/p1668-shukla.pdf) anélkül, hogy a felhasználónak sémákat és indexeket kellene kezelnie. Többmodelles szolgáltatás, amely támogatja a dokumentumokat, a kulcsértékeket, a diagramokat és az oszlopos adatmodelleket.
-
-Az Azure Cosmos DB Gremlin API a következőket biztosítja:
-
-- Gráfmodellezés.
-- Bejárási API-k.
-- Kulcsrakész globális terjesztés.
-- Rugalmasan méretezhető tárhely és teljesítmény 10 ms vagy a 99. percentilisben 15 ms alatti olvasási késéssel.
-- Automatikus indexelés azonnali rendelkezésre állással a lekérdezésekhez.
-- Beállítható konzisztenciaszintek.
-- Átfogó SLA-k, beleértve egy 99,99%-os rendelkezésre állási SLA-t minden enyhén korlátozott konzisztenciájú egyrégiós és többrégiós fiókhoz, valamint 99,999%-os olvasási rendelkezésre állást minden többrégiós adatbázisfiókhoz.
-
-Az Azure Cosmos DB lekérdezéséhez használhatja az [Apache TinkerPop](http://tinkerpop.apache.org) gráfbejárási nyelvet vagy a [Gremlint](http://tinkerpop.apache.org/docs/current/reference/#graph-traversal-steps).
-
-A cikk áttekintést nyújt az Azure Cosmos DB Gremlin API-járól, és elmagyarázza, hogyan használhatja a nagyméretű, több milliárd csúcsot és élet tartalmazó gráfok tárolására. A gráfokat ezredmásodperces késéssel kérdezheti le, és könnyen fejlesztheti a gráfok struktúráját és sémáját.
-
-## <a name="graph-database"></a>Gráfadatbázis
+## <a name="what-is-a-graph-database"></a>Mi az a gráfadatbázis?
 Az adatok a való világban természetes módon kapcsolódnak egymáshoz. A hagyományos adatmodellezés az entitásokra fókuszál. Számos alkalmazás esetében szükséges az entitások és a kapcsolatok természetes modellezése is.
 
-A [gráf](http://mathworld.wolfram.com/Graph.html) egy [csúcsokból](http://mathworld.wolfram.com/GraphVertex.html) és [élekből](http://mathworld.wolfram.com/GraphEdge.html) álló struktúra. A csúcsok és az élek egyaránt tetszőleges számú tulajdonsággal rendelkezhetnek. A csúcsok diszkrét objektumokat jelölnek, például személyeket, helyeket vagy eseményeket. Az élek a csúcsok közötti kapcsolatokat jelölik. Például egy adott személy ismerhet egy másik személyt, részt vehet egy eseményen, vagy nemrégiben meglátogathatott egy helyszínt. A tulajdonságok a csúcsokkal és élekkel kapcsolatos információkat fejeznek ki. Ilyen tulajdonságok lehetnek például a csúcsok neve vagy kora és az élek időbélyege és/vagy súlya. Formálisabban ezt a modellt [tulajdonsággráfnak](http://tinkerpop.apache.org/docs/current/reference/#intro) is nevezik. Az Azure Cosmos DB támogatja a tulajdonsággráf modellt.
+A [gráf](http://mathworld.wolfram.com/Graph.html) egy [csúcsokból](http://mathworld.wolfram.com/GraphVertex.html) és [élekből](http://mathworld.wolfram.com/GraphEdge.html) álló struktúra. A csúcsok és az élek egyaránt tetszőleges számú tulajdonsággal rendelkezhetnek. 
+
+* **Csúcsok** – A csúcsok diszkrét objektumokat jelölnek, például személyeket, helyeket vagy eseményeket. 
+
+* **Élek** – Az élek a csúcsok közötti kapcsolatokat jelölik. Például egy adott személy ismerhet egy másik személyt, részt vehet egy eseményen, vagy nemrégiben meglátogathatott egy helyszínt. 
+
+* **Tulajdonságok** – A tulajdonságok a csúcsokkal és élekkel kapcsolatos információkat jelölik. Ilyen tulajdonságok lehet például a csúcsok neve vagy kora. Vagy egy él időbélyege és/vagy súlya. Formálisabban ezt a modellt [tulajdonsággráfnak](http://tinkerpop.apache.org/docs/current/reference/#intro) is nevezik. Az Azure Cosmos DB támogatja a tulajdonsággráf modellt.
 
 Például az alábbi mintagráf személyek, mobileszközök, érdeklődési körök és operációs rendszerek közti kapcsolatokat ábrázol:
 
 ![Személyeket, eszközöket és érdeklődési köröket tartalmazó mintaadatbázis](./media/graph-introduction/sample-graph.png)
 
-A gráfok a legkülönfélébb adatkészletek ábrázolására alkalmasak a tudományok, a technológiák és az üzlet területén. A gráfadatbázisok segítségével a gráfok természetesen és hatékonyan modellezhetők és tárolhatók, így számos forgatókönyvben hasznosnak bizonyulnak. A gráfadatbázisok jellemzően NoSQL-adatbázisok, mivel az ilyen esetekben gyakran van szükség rugalmas sémákra és gyors iterációra.
-
-A gráfok újszerű és hatékony adatmodellezési technikát kínálnak. Ez a tény magában azonban nem elegendő a gráfadatbázis használatához. A gráfbejárásokat tartalmazó alkalmazási esetek és minták esetében a gráfok nagyságrendekkel jobban teljesítenek a hagyományos SQL- és NoSQL-adatbázisoknál. A teljesítménybeli különbség további nő, amikor több kapcsolatot kell bejárni, például „egy barát barátja” esetében.
+A gráfadatbázisok segítségével a gráfok természetesen és hatékonyan modellezhetők és tárolhatók, így számos forgatókönyvben hasznosnak bizonyulnak. A gráfadatbázisok jellemzően NoSQL-adatbázisok, mivel az ilyen esetekben gyakran van szükség rugalmas sémákra és gyors iterációra.
 
 A gráfadatbázisok által lehetővé tett gyors bejárások kombinálhatók különféle gráfalgoritmusokkal, például mélységi (DFS) és szélességi (BFS) keresésekkel vagy Dijkstra-algoritmusokkal, a legkülönfélébb területekre (például közösségi hálózatok, tartalomkezelés, térinformatika vagy javaslatok kialakítása) tartozó problémák megoldása érdekében.
 
-## <a name="planet-scale-graphs-with-azure-cosmos-db"></a>Globális gráfok az Azure Cosmos DB-ben
+## <a name="features-of-azure-cosmos-db-graph-database"></a>Az Azure Cosmos DB gráfadatbázisának jellemzői
+ 
 Az Azure Cosmos DB egy teljes körűen felügyelt gráfadatbázis, amely globális elosztási, rugalmas tárhely- és teljesítményméretezési, automatikus indexelési és lekérdezési képességeket biztosít, valamint beállítható konzisztenciaszinteket és a TinkerPop szabvány támogatását.
 
 ![Az Azure Cosmos DB gráfarchitektúrája](./media/graph-introduction/cosmosdb-graph-architecture.png)
@@ -96,7 +81,8 @@ Az Azure Cosmos DB a következő megkülönböztetett képességeket biztosítja
 Az Azure Cosmos DB emellett képes többféle modellt (például dokumentumokat és gráfokat) alkalmazni egyazon tárolón/adatbázison belül. Dokumentumtárolók használatával a gráfadatokat a dokumentumokkal együtt tárolhatja. JSON-alapú SQL-lekérdezések és Gremlin-lekérdezések használatával egyaránt lekérdezheti a gráffal egyező adatokat.
 
 ## <a name="get-started"></a>Bevezetés
-Azure Cosmos DB-fiókokat a Gremlin API-t támogató Azure parancssori felület (CLI), Azure PowerShell vagy Azure Portal használatával hozhat létre. A fiókok létrehozását követően az Azure Portal szolgáltatásvégpontot biztosít (például `https://<youraccount>.gremlin.cosmosdb.azure.com`), amely egy WebSocket-előtér a Gremlin számára. TinkerPop-kompatibilis eszközeit, például a [Gremlin konzolt](http://tinkerpop.apache.org/docs/current/reference/#gremlin-console) beállíthatja, hogy ehhez a végponthoz kapcsolódjanak, és az alkalmazásokat a Java, a Node.js vagy bármely Gremlin ügyfél-illesztőprogram használatával hozzák létre.
+
+Az Azure Cosmos DB Gremlin API-fiókok létrehozása és az azokhoz való hozzáférés az Azure parancssori felület (CLI), az Azure PowerShell vagy az Azure Portal használatával lehetséges. Miután létrehozott egy fiókot, az abban található gráfadatbázisokhoz a Gremlin API szolgáltatásvégpontjának (`https://<youraccount>.gremlin.cosmosdb.azure.com`) használatával férhet hozzá, amely WebSocket-előteret biztosít a Gremlinhez. TinkerPop-kompatibilis eszközeit, például a [Gremlin konzolt](http://tinkerpop.apache.org/docs/current/reference/#gremlin-console) beállíthatja, hogy ehhez a végponthoz kapcsolódjanak, és az alkalmazásokat a Java, a Node.js vagy bármely Gremlin ügyfél-illesztőprogram használatával hozzák létre.
 
 Az alábbi táblázat az Azure Cosmos DB-n használható népszerű Gremlin-illesztőprogramokat foglalja össze:
 
@@ -109,7 +95,33 @@ Az alábbi táblázat az Azure Cosmos DB-n használható népszerű Gremlin-ille
 | [PHP](https://packagist.org/packages/brightzone/gremlin-php) | [Gremlin-PHP a GitHubon](https://github.com/PommeVerte/gremlin-php) | [Gráf létrehozása a PHP használatával](create-graph-php.md) |
 | [Gremlin-konzol](https://tinkerpop.apache.org/downloads.html) | [TinkerPop dokumentumok](http://tinkerpop.apache.org/docs/current/reference/#gremlin-console) |  [Gráf létrehozása a Gremlin-konzol használatával](create-graph-gremlin-console.md) |
 
-## <a name="scenarios-for-graph-support-of-azure-cosmos-db"></a>Az Azure Cosmos DB gráftámogatásával kapcsolatos forgatókönyvek
+## <a name="graph-database-design-considerations"></a>Gráfadatbázisok kialakítási szempontjai
+
+Ha a gráftervezés során úgy dönt, hogy egy entitást különálló csúcspontként, és nem más csúcspontentitások tulajdonságaként fog modellezni, akkor ez befolyásolja a teljesítményt és a költségeket is. E döntéshozatal alapjául főként az adatok lekérdezésének módja és a modell méretezhetősége szolgál.
+
+Az entitás modelljének megtervezése előtt a következő kérdéseket kell megfontolni:
+
+* Melyek azok az entitások, amelyeket a legtöbb lekérdezésem csúcspontként kapna vissza?
+
+* Melyek azok az információk, amelyeket adatszűrési célból adok a gráfhoz?
+
+* Melyek azok az entitások, amelyek csupán kapcsolatként szolgálnak további, olyan entitásokhoz, amelyeknek az értékeit le szeretném kérdezni?
+
+* Milyen információkat kell a lekérdezésemnek visszaadnia, és ez milyen kérelemegység-költséggel jár?
+
+Vegyük például az alábbi gráfszerkezetet:
+
+![Példa gráfszerkezet-kialakítási elvekre](./media/graph-introduction/graph-design-considerations-example.png)
+
+* A lekérdezésektől függően elképzelhető, hogy a District (Kerület) -> Store (Áruház) kapcsolatot csak a Store (Áruház) csúcsok szűrésére használjuk. Ezt eredményezik például a „keresd meg az egy adott kerülethez tartozó összes áruházat” formátumú lekérdezések. Amennyiben ez a helyzet, érdemes a District (Kerület) entitást egy önálló csúcspontból a Store (Áruház) csúcspont egy tulajdonságává alakítani. 
+
+* Ennek a megközelítésnek az az előnye, hogy az egyes Store (Áruház) csúcspontok lekérésének költségét csúcspontonként három gráfobjektumról (District (Kerület), District (Kerület) -> Store (Áruház), Store (Áruház)) egyetlen Store (Áruház) csúcspontra csökkentheti. Ez teljesítménynövekedéshez és a lekérdezésenkénti költség csökkentéséhez vezethet.
+
+* A Store (Áruház) csúcspont két különböző entitásra (Employee (Alkalmazott) és Product (Termék)) hivatkozik. Ez szükségessé teszi a Store (Áruház) csúcspont meglétét, mert más bejárási módokra is lehetőséget ad.  
+
+
+
+## <a name="scenarios-that-can-use-gremlin-api"></a>A Gremlin API használatának forgatókönyvei
 Íme néhány forgatókönyv, amelyben az Azure Cosmos DB gráftámogatása hasznosítható:
 
 * Közösségi hálózatok

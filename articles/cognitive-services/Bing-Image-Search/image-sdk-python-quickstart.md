@@ -1,70 +1,70 @@
 ---
-title: 'Gyors útmutató: Keresse meg a képeket, a Bing kép Search SDK és a Python használatával'
+title: 'Gyorskonfigurálás: Képek keresése a Python-hoz készült Bing Image Search SDK használatával'
 titleSuffix: Azure Cognitive Services
-description: Ez a rövid útmutató segítségével keresse meg és -rendszerképek keresése a weben a Bing kép Search SDK és a Python használatával.
+description: Ebből a rövid útmutatóból megtudhatja, hogyan hajthatja végre első képkeresését a Bing Image Search SDK használatával, amely az API burkolójaként szolgál, és ugyanazokkal a funkciókkal rendelkezik. Ez az egyszerű Python-alkalmazás elküld egy képkeresési lekérdezést, elemzi a JSON-választ, és megjeleníti az első visszaadott kép URL-címét.
 services: cognitive-services
 author: aahill
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-image-search
-ms.topic: article
+ms.topic: quickstart
 ms.date: 08/28/2018
 ms.author: aahi
-ms.openlocfilehash: 4a24f1e4e051b627034f1d4664e94e0f47c43014
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
-ms.translationtype: MT
+ms.openlocfilehash: 7afe19cf0167784a5c8b3e2751ec869a2664935d
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45578293"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46296617"
 ---
-# <a name="quickstart-search-for-images-with-the-bing-image-search-sdk-and-python"></a>Gyors útmutató: Keresse meg a képeket a Bing kép Search SDK és a Python használatával
+# <a name="quickstart-search-for-images-with-the-bing-image-search-sdk-and-python"></a>Gyorskonfigurálás: Képek keresése a Bing Image Search SDK és a Python használatával
 
-Ez a rövid útmutató segítségével győződjön meg arról, az első képkeresési Bing kép Search SDK használatával, amely egy burkoló a API-hoz, és ugyanazokat a szolgáltatásokat tartalmazza. Az egyszerű Python-alkalmazás-lemezkép keresési lekérdezést küld, elemzi a JSON-válasz és URL-címét adja vissza az első képet jeleníti meg.
+Ebből a rövid útmutatóból megtudhatja, hogyan hajthatja végre első képkeresését a Bing Image Search SDK használatával, amely az API burkolójaként szolgál, és ugyanazokkal a funkciókkal rendelkezik. Ez az egyszerű Python-alkalmazás elküld egy képkeresési lekérdezést, elemzi a JSON-választ, és megjeleníti az első visszaadott kép URL-címét.
 
-Az ehhez a mintához forráskódja elérhető [a Githubon](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/blob/master/samples/search/image-search-quickstart.py) további hibakezelést és jegyzetek.
+A minta forráskódja, további hibakezeléssel és megjegyzésekkel együtt, elérhető a [GitHubon](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/blob/master/samples/search/image-search-quickstart.py).
 
-## <a name="prerequisites"></a>Előfeltételek 
+## <a name="prerequisites"></a>Előfeltételek
 
-* [Python 2.7 vagy 3.4-es](https://www.python.org/) és újabb verzióit.
+* [Python 2.7 vagy 3.4-es](https://www.python.org/) vagy ennél újabb verzió.
 
-* A [kép: Azure Search SDK](https://pypi.org/project/azure-cognitiveservices-search-imagesearch/) Python
-    * Telepítés használatával `pip install azure-cognitiveservices-search-imagesearch`
+* [Azure Image Search SDK](https://pypi.org/project/azure-cognitiveservices-search-imagesearch/) Pythonhoz
+    * Végezze el a telepítést a `pip install azure-cognitiveservices-search-imagesearch` paranccsal
 
 [!INCLUDE [cognitive-services-bing-image-search-signup-requirements](../../../includes/cognitive-services-bing-image-search-signup-requirements.md)]
 
-## <a name="create-and-initialize-the-application"></a>Hozzon létre, és az alkalmazás inicializálása
+## <a name="create-and-initialize-the-application"></a>Az alkalmazás létrehozása és inicializálása
 
-1. Hozzon létre egy új Python-szkriptet a kedvenc IDE vagy -szerkesztő és az alábbi importálásokat:
+1. Hozzon létre egy új Python-szkriptet a kedvenc IDE-környezetében vagy szerkesztőjében, az alábbi importálásokkal:
 
     ```python
     from azure.cognitiveservices.search.imagesearch import ImageSearchAPI
     from msrest.authentication import CognitiveServicesCredentials
     ```
 
-2. Hozzon létre változókat az előfizetési kulcs és a keresési kifejezés.
+2. Hozza létre az előfizetési kulcs és a keresett kifejezés változóit.
 
     ```python
     subscription_key = "Enter your key here"
     search_term = "canadian rockies"
     ```
 
-## <a name="create-the-image-search-client"></a>A kép keresési ügyfél létrehozása
+## <a name="create-the-image-search-client"></a>A képkeresési ügyfél létrehozása
 
-3. Hozzon létre egy példányt `CognitiveServicesCredentials`, és hozza létre az ügyfél segítségével:
+3. Hozza létre a `CognitiveServicesCredentials` egy példányát, és példányosítsa az ügyfelet:
 
     ```python
     client = ImageSearchAPI(CognitiveServicesCredentials(subscription_key))
     ```
-4. Keresési lekérdezés küldése a Bing Image Search API:
+4. Küldjön egy keresési lekérdezést a Bing Image Search API-nak:
     ```python
     image_results = client.images.search(query=search_term)
     ```
-## <a name="process-and-view-the-results"></a>Dolgozza fel, és az eredmények megtekintése
+## <a name="process-and-view-the-results"></a>Dolgozza fel és tekintse meg az eredményeket
 
-A kép eredményeket, a válasz elemzése.
+Elemezze a válaszban visszaadott képtalálatokat.
 
 
-A válasz tartalmazza a keresési eredmények, ha az első eredmény tárolja, és nyomtassa ki a részleteket, például a Miniatűr URL-cím, az eredeti URL-CÍMÉT, teljes számával együtt adja vissza a lemezképeket.  
+Ha a válasz tartalmaz keresési eredményeket, tárolja az első találatot, és jelenítse meg annak részleteit, például a miniatűr URL-címét és az eredeti URL-címet a visszaadott képek teljes számával együtt.  
 
 ```python
 if image_results.value:
@@ -79,13 +79,13 @@ else:
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Bing – Képkeresés egyoldalas alkalmazás oktatóanyag](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/tutorial-bing-image-search-single-page-app)
+> [Oktatóanyag Bing Image Search egyoldalas alkalmazáshoz ](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/tutorial-bing-image-search-single-page-app)
 
-## <a name="see-also"></a>Lásd még 
+## <a name="see-also"></a>Lásd még
 
-* [Mi az a Bing Képkeresés?](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/overview)  
-* [Próbálja ki az online interaktív bemutatót](https://azure.microsoft.com/services/cognitive-services/bing-image-search-api/)  
-* [Ingyenesen a Cognitive Services hozzáférési kulcs lekérése](https://azure.microsoft.com/try/cognitive-services/?api=bing-image-search-api)
-* [Az Azure Cognitive Services SDK for Python-mintái](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples)  
-* [Az Azure Cognitive Services – dokumentáció](https://docs.microsoft.com/azure/cognitive-services)
-* [A Bing Image Search API-referencia](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference)
+* [Mi a Bing Image Search?](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/overview)  
+* [Online interaktív bemutató kipróbálása](https://azure.microsoft.com/services/cognitive-services/bing-image-search-api/)  
+* [Ingyenes Cognitive Services hozzáférési kulcs beszerzése](https://azure.microsoft.com/try/cognitive-services/?api=bing-image-search-api)
+* [Python-minták az Azure Cognitive Services SDK-hoz](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples)  
+* [Az Azure Cognitive Services dokumentációja](https://docs.microsoft.com/azure/cognitive-services)
+* [A Bing Image Search API referenciaanyaga](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference)
