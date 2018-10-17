@@ -1,25 +1,25 @@
 ---
-title: 'Translator Text: Szövegátalakítási szkript a Java használatával | Microsoft Docs'
-titleSuffix: Microsoft Cognitive Services
-description: Ebben a rövid útmutatóban szöveget alakít át egy nyelven egy szkriptből egy másikba a Translator Text API segítségével és a Java használatával a Cognitive Servicesben.
+title: 'Rövid útmutató: Szöveget konvertáló parancsfájl – Translator Text, Java'
+titleSuffix: Azure Cognitive Services
+description: Ebben a rövid útmutatóban szöveget alakít át egy nyelven egy szkriptből egy másikba a Translator Text API és Java segítségével.
 services: cognitive-services
 author: noellelacharite
-manager: nolachar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-text
 ms.topic: quickstart
 ms.date: 06/21/2018
 ms.author: nolachar
-ms.openlocfilehash: 6f7353ba0a51bdeec2450d7435f3b738687db766
-ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.openlocfilehash: 47d0462dcf7e54a3c2b2e2ea8b713b02af2baf37
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "43769541"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46297429"
 ---
 # <a name="quickstart-transliterate-text-with-java"></a>Rövid útmutató: Szöveg átírása a Java használatával
 
-Ebben a rövid útmutatóban szöveget alakít át egy nyelven egy szkriptből egy másikba a Translator Text API segítségével.
+Ebben a rövid útmutatóban szöveget fog átalakítani egy nyelven egyik szkriptből egy másikba a Translator Text API segítségével.
 
 ## <a name="prerequisites"></a>Előfeltételek
 

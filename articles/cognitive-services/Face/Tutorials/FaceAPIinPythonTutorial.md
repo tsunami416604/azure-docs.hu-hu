@@ -1,41 +1,41 @@
 ---
-title: Arcfelismerési API Python oktatóanyag |} Microsoft Docs
-titleSuffix: Microsoft Cognitive Services
-description: Útmutató a Arcfelismerési API-t a Python SDK-val észlelheti az emberi lapok kognitív szolgáltatások képet.
+title: 'Oktatóanyag: Arcok észlelése és bekeretezése egy képen – Face API, Python'
+titleSuffix: Azure Cognitive Services
+description: Megismerheti, hogyan használható a Face API-t a Python SDK-val egy képen az emberi arcok felismerésére.
 services: cognitive-services
 author: SteveMSFT
-manager: corncar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: face-api
-ms.topic: article
+ms.topic: tutorial
 ms.date: 03/01/2018
 ms.author: sbowles
-ms.openlocfilehash: 90d74d8df2ed59e6f3313ef7c620284d1022a667
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
-ms.translationtype: MT
+ms.openlocfilehash: 6cc3ac25d2196c0275b445503b79b9ac06a791d3
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37049111"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46127737"
 ---
-# <a name="getting-started-with-face-api-in-python-tutorial"></a>Az oktatóanyag a Python Ismerkedés a Arcfelismerési API
+# <a name="tutorial-detect-and-frame-faces-with-the-face-api-and-python"></a>Oktatóanyag: Arcok észlelése és bekeretezése a Face API és Python használatával 
 
-Ebből az oktatóanyagból megtudhatja, a Arcfelismerési API-t a Python SDK emberi lapok azonosíthatók a lemezkép használatával meghívni.
+Ebben az oktatóanyagban megtanulhatja a Face API meghívását a Python SDK-n keresztül a képen az emberi arcok megkeresésére.
 
-## <a name="prerequisites"></a> Előfeltételek
+## <a name="prerequisites"></a>Előfeltételek
 
-Az oktatóanyag használatához szüksége lesz a következőkre:
+Az oktatóanyag használatához a következőkre lesz szüksége:
 
-- Telepítse a Python 2.7 + vagy Python 3.5 +.
-- A pip telepítése.
-- A Python SDK telepítése a Arcfelismerési API-hoz az alábbiak szerint:
+- Vagy Python 2.7 + vagy Python 3.5+ telepítése.
+- Pip telepítése.
+- A Python SDK-t a Face API-hoz a következőképpen telepítheti:
 
 ```bash
 pip install cognitive_face
 ```
 
-- Szerezzen be egy [előfizetés kulcs](https://azure.microsoft.com/try/cognitive-services/) Microsoft kognitív számára. Ebben az oktatóanyagban az elsődleges vagy a másodlagos kulcsot is használhatja. (Vegye figyelembe, hogy Arcfelismerési API-k használatához rendelkeznie kell egy érvényes előfizetés-kulcs.)
+- Szerezzen be [előfizetési kulcsot](https://azure.microsoft.com/try/cognitive-services/) a Microsoft Cognitive Services szolgáltatáshoz. Ebben az oktatóanyagban az elsődleges vagy a másodlagos kulcsot is használhatja. (Ne feledje, mindegyik Face API használatához érvényes előfizetési kulccsal kell rendelkeznie.)
 
-## <a name="sdk-example"></a> A kép egy ARC észlelése
+## <a name="detect-a-face-in-an-image"></a>Arc észlelése egy képen
 
 ```python
 import cognitive_face as CF
@@ -52,15 +52,15 @@ faces = CF.face.detect(img_url)
 print(faces)
 ```
 
-Az alábbiakban van egy példa eredménye. Ez egy `list` az észlelt lapokat. A lista minden eleme van egy `dict` példányán, amelyen `faceId` észlelt maga az egyedi azonosító és `faceRectangle` ismerteti az észlelt arc pozícióját. A tapasztalt ID 24 óra múlva lejár.
+Alább látható egy példa eredménye. Ez `list` az észlelt arcoknak. A lista minden eleme egy `dict` példány, ahol `faceId` az észlelt arc egyedi azonosítja és `faceRectangle` az észlelt arc helyzetét írja le. Az arcazonosító 24 óráig él.
 
 ```python
 [{u'faceId': u'68a0f8cf-9dba-4a25-afb3-f9cdf57cca51', u'faceRectangle': {u'width': 89, u'top': 66, u'height': 89, u'left': 446}}]
 ```
 
-## <a name="draw-rectangles-around-the-faces"></a>A lapok körül téglalapok megrajzolásához
+## <a name="draw-rectangles-around-the-faces"></a>Téglalapok rajzolása az arcok köré
 
-A json-koordináták kapott az előző parancs használata, rajzolásához téglalapok vizuálisan képviselő minden lapot a lemezképre. Szüksége lesz a `pip install Pillow` használata a `PIL` lemezkép-készítési modul.  A fájl elejéhez adja hozzá a következő:
+Az előző parancsban megkapott json-koordinátákat használva téglalapokat rajzolhat képen az arcok jelzésére. A `pip install Pillow` szükséges lesz a `PIL` képalkotó modul használatához.  A fájl tetején adja hozzá a következőket:
 
 ```python
 import requests
@@ -68,7 +68,7 @@ from io import BytesIO
 from PIL import Image, ImageDraw
 ```
 
-Követően `print(faces)`, a parancsfájl tartalmazza a következőt:
+Majd a `print(faces)` után tegye bele a következőket a parancsfájlba:
 
 ```python
 #Convert width height to a point in a rectangle
@@ -93,9 +93,9 @@ for face in faces:
 img.show()
 ```
 
-## <a name='further'></a> További feltárása
+## <a name="further-exploration"></a>További ismerkedés
 
-Segítségre van szüksége további megismerkedhet a Arcfelismerési API-t, ez az oktatóanyag egy grafikus felhasználói Felülettel minta kínál. Futtassa, először telepítenie kell [wxPython](https://wxpython.org/pages/downloads/) futtassa az alábbi parancsokat.
+A Face API további felfedezéséhez az oktatóanyag egy grafikus felhasználói felületet példát biztosít. A futtatásához először telepítse a [wxPython](https://wxpython.org/pages/downloads/)-t, majd futtassa az alábbi parancsokat.
 
 ```bash
 git clone https://github.com/Microsoft/Cognitive-Face-Python.git
@@ -103,11 +103,11 @@ cd Cognitive-Face-Python
 python sample
 ```
 
-## <a name="summary"></a> Összefoglalás
+## <a name="summary"></a>Összegzés
 
-Ebben az oktatóprogramban megtanulhatta, alapvető eljárása keresztül a Python SDK meghívása Arcfelismerési API használatával. API részletei további információkért tekintse meg az útmutató és [API-referencia](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236).
+Ebben az oktatóanyagban megtanulhatta a Face API Python SDK-n keresztüli meghívásának alapvető folyamatát. Részletesebb API információk találhatók a Hogyan kell és [az API-referenciában](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236).
 
-## <a name="related"></a> Kapcsolódó témakörök
+## <a name="related-topics"></a>Kapcsolódó témakörök
 
-- [A csharp nyelvű API néző első lépések](FaceAPIinCSharpTutorial.md)
-- [Ismerkedés az Arcfelismerési API-nak Java androidhoz](FaceAPIinJavaForAndroidTutorial.md)
+- [Első lépések a Face API-val CSharp nyelven](FaceAPIinCSharpTutorial.md)
+- [Első lépések a Face API-val Java for Android nyelven](FaceAPIinJavaForAndroidTutorial.md)

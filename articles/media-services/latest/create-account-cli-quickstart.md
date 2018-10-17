@@ -12,12 +12,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/27/2018
 ms.author: juliako
-ms.openlocfilehash: 9168a66c3afcd8dd0b05de15f5833c516ddb2250
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: abed9fd8d466b582b534b365f4be4257f4986435
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38767102"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45736002"
 ---
 # <a name="quickstart-create-an-azure-media-services-account"></a>Rövid útmutató: Azure Media Services-fiók létrehozása
 
@@ -58,7 +58,7 @@ az group create -n <myresourcegroup> -l westus2
 
 A Media Services-fiók létrehozásakor meg kell adnia egy Azure Storage-fiókhoz tartozó erőforrás azonosítóját. A rendszer a Media Services-fiókhoz csatolja a megadott Storage-fiókot. 
 
-Egy **elsődleges** és tetszőleges számú **másodlagos** Storage-fiókot társíthat a Media Services-fiókhoz. A Media Services támogatja az **Általános célú v2-** (GPv2-) és az **Általános célú v1-** (GPv1-) fiókokat is. A blobfiókok nem megengedettek **elsődleges** tárfiókként. Ha szeretne többet megtudni a Storage-fiókokkal kapcsolatban, tekintse meg [Az Azure Storage-fiók beállításai](../../storage/common/storage-account-options.md) című témakört. 
+Egy **elsődleges** és tetszőleges számú **másodlagos** Storage-fiókot társíthat a Media Services-fiókhoz. A Media Services támogatja az **általános célú v2** és az **általános célú v1** fiókokat is. A blobfiók **elsődleges** tárfiókként nem megengedett. További információ a tárfiókokról: [Az Azure-tárfiókok áttekintése](../../storage/common/storage-account-overview.md). 
 
 Az alábbi parancs egy Storage-fiókot hoz létre, amelyet a rendszer az (elsődleges) Media Services-fiókhoz fog társítani. Az alábbi szkriptben cserélje le a *storageaccountforams* helyőrzőt. A fiók nevének rövidebbnek kell lennie 24 karakternél.
 

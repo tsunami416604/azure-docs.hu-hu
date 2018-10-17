@@ -1,52 +1,53 @@
 ---
-title: A Custom Vision Service prediction végpont – Azure Cognitive Services használata |} A Microsoft Docs
-description: Megtudhatja, hogyan használható az API programozott módon a lemezképek, amelyek a Custom Vision Service osztályozó-teszteléséhez.
+title: 'Példa: Előrejelzési végpont használatával képek tesztelése programból az osztályozóval – Custom Vision'
+titlesuffix: Azure Cognitive Services
+description: Megismerheti, hogyan használható az API képek programozott tesztelésére a Custom Vision Service osztályozóval.
 services: cognitive-services
 author: anrothMSFT
-manager: corncar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: custom-vision
-ms.topic: article
+ms.topic: sample
 ms.date: 05/03/2018
 ms.author: anroth
-ms.openlocfilehash: d7f9b90db06811e16cd0cd6ad2b32a27912cfee5
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
-ms.translationtype: MT
+ms.openlocfilehash: 3a81f3cef6aaeb5c98022d9fc93f4d84f3f58a6e
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43341793"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46363649"
 ---
-# <a name="use-the-prediction-endpoint-to-test-images-programmatically-with-a-custom-vision-service-classifier"></a>Az előrejelzési végpont használatával programozott módon a Custom Vision Service besorolás rendszerképek tesztelése
+# <a name="use-the-prediction-endpoint-to-test-images-programmatically-with-a-custom-vision-service-classifier"></a>Az előrejelzési végpont használatával tesztelje a képeket programból a Custom Vision Service osztályozóval
 
-Miután a modell betanításához tesztelheti lemezképek programozott módon az előrejelzési API-nak elküldésével. 
+Miután betanította a modellt, programozott módon tesztelhet képeket úgy, hogy elküldi őket az előrejelzési API számára. 
 
 > [!NOTE]
-> Ez a dokumentum bemutatja a C# használatával való elküldéséhez a képet, az előrejelzési API-hoz. További információk és az API-t használó példákért tekintse meg a [előrejelzési API-referencia](https://go.microsoft.com/fwlink/?linkid=865445).
+> Ez a dokumentum C# használatával mutatja be a kép elküldését az előrejelzési API-hoz. Az API használatával kapcsolatos bővebb információkért és példákért tekintse meg az [Előrejelzési API-referenciát](https://go.microsoft.com/fwlink/?linkid=865445).
 
-## <a name="get-the-url-and-prediction-key"></a>Az URL-cím és az előrejelzési kulcs lekérése
+## <a name="get-the-url-and-prediction-key"></a>Az URL és az előrejelzési kulcs megszerzése
 
-Az a [Custom Vision weblap](https://customvision.ai), jelölje ki a projektet, és válassza ki a __teljesítmény__ fülre. Az előrejelzési API-val kapcsolatos információk megjelenítéséhez többek között a __előrejelzés-kulcs__válassza __előrejelzési URL-cím__. Projektek az Azure-erőforrás csatlakoztatva a __előrejelzés-kulcs__ is megtalálható a [az Azure Portal](https://portal.azure.com) társított Azure-erőforrásra vonatkozó lap __kulcsok__. Használja az alábbi adatokat másolja az alkalmazásban:
+A [Custom Vision weblapon](https://customvision.ai) jelölje ki a projektet, majd válassza ki a __Teljesítmény__ fület. Az előrejelzési API használatával kapcsolatos információk megjelenítéséhez, az __előrejelzés-kulcsot__ is beleértve, válassza az __Előrejelzési URL-címet__. Azure-erőforráshoz csatolt projekteknél az __Előrejelzés-kulcs__ a társított Azure-erőforrás [Azure Portal](https://portal.azure.com) lapján is megtalálható a __Kulcsok__ alatt. Másolja ki a következő információkat az alkalmazásban történő használatra:
 
-* __URL-cím__ használatának egy __képfájl__.
-* __Előrejelzés-kulcs__ értéket.
+* __URL__ a használt __képfájlhoz__.
+* __Előrejelzés-kulcs__ értéke.
 
 > [!TIP]
-> Ha több ismétlések, szabályozhatja, melyiket használja az alapértelmezett értékre. Válassza ki a ismétléseinek a __ismétléseinek__ területen, majd válassza ki __alapértelmezett__ az oldal tetején.
+> Ha több iteráció is van, akkor az alapértelmezett beállításával szabályozhatja, hogy melyiket használja. Jelölj ki az iterációt az __Iterációk__ területen, majd a lap tetején válassza ki a __Legyen alapértelmezett__ lehetőséget.
 
-![A Teljesítmény lapon megjelenő egy vörös téglalappal az előrejelzési URL-címet.](./media/use-prediction-api/prediction-url.png)
+![Megjelenik a teljesítmény lap, rajta az előrejelzési URL-címet piros téglalap veszi körbe.](./media/use-prediction-api/prediction-url.png)
 
 ## <a name="create-the-application"></a>Az alkalmazás létrehozása
 
-1. A Visual Studióban hozzon létre egy új C# konzolalkalmazást.
+1. A Visual Studio-ban hozzon létre új C# konzolalkalmazást.
 
-2. A következő kód használatával törzseként a __Program.cs__ fájlt.
+2. A __Program.cs__ fájl törzsében használja a következő kódot.
 
     > [!IMPORTANT]
-    > Módosítsa a következő információkat:
+    > Írja át a következő információkat:
     >
-    > * Állítsa be a __névtér__ a projekt nevére.
-    > * Állítsa be a __előrejelzés-kulcs__ kezdődő sort, kapott érték `client.DefaultRequestHeaders.Add("Prediction-Key",`.
-    > * Állítsa be a __URL-cím__ kezdődő sort, kapott érték `string url =`.
+    > * A __névteret__ állítsa a saját projektje nevére.
+    > * A korábban kapott __Előrejelzés-kulcs__ értéket állítsa be a `client.DefaultRequestHeaders.Add("Prediction-Key",` kezdetű sorban.
+    > * A korábban kapott __URL__ értéket állítsa be a `string url =` kezdetű sorban.
 
     ```csharp
     using System;
@@ -103,9 +104,9 @@ Az a [Custom Vision weblap](https://customvision.ai), jelölje ki a projektet, �
     }
     ```
 
-## <a name="use-the-application"></a>Az alkalmazás használatára
+## <a name="use-the-application"></a>Az alkalmazás használata
 
-Az alkalmazás futtatásakor adja meg az elérési út képfájlra mutató. A kép elküldésekor az API-hoz, és a rendszer visszairányítja az eredményeket JSON-dokumentumként. A következő JSON-ja egy példa a válasz
+Az alkalmazás futtatásakor a képfájl elérési útvonalát kell megadni. A képet elküldi az API-hoz, az eredményeket JSON-dokumentumban kapja vissza. A következő JSON példa egy ilyen válaszra
 
 ```json
 {
@@ -122,4 +123,4 @@ Az alkalmazás futtatásakor adja meg az elérési út képfájlra mutató. A k�
 
 ## <a name="next-steps"></a>További lépések
 
-[A modell mobil használatra exportálása](export-your-model.md)
+[A modell exportálása mobil használatra](export-your-model.md)

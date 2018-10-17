@@ -28,10 +28,6 @@ items:
       href: azure-stack-subscribe-services.md
     - name: Virtuális gép létrehozása sablonból
       href: azure-stack-create-vm-template.md
-    - name: Magas rendelkezésre állású SQL-adatbázisok létrehozása
-      href: azure-stack-tutorial-sql.md
-    - name: Magas rendelkezésre állású MySQL-adatbázisok létrehozása
-      href: azure-stack-tutorial-mysql.md
   - name: Hibrid felhő minták
     items:
     - name: Alkalmazások üzembe helyezése az Azure-ban és az Azure Stacken
@@ -218,9 +214,9 @@ items:
     href: http://stackoverflow.com/questions/tagged/azure-stack
   - name: Képzés és tanúsítványok
     href: https://docs.microsoft.com/azure/azure-stack/azure-stack-train-and-cert
-ms.openlocfilehash: 5c4fec260e2b58aa7d34b9f3b7fcaa0d4755abf4
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: 2b65408f4d2171d57031a442725df935f1616764
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49321648"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49364795"

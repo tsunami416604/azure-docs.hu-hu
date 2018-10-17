@@ -1,26 +1,27 @@
 ---
-title: A Microsoft Translator Text API áttekintése – Azure Cognitive Services | Microsoft Docs
-description: A Microsoft Translator Text API az alkalmazásaiba, webhelyeire, eszközeibe és egyéb megoldásaiba való integrálásával többnyelvű felhasználói felületeket hozhat létre.
+title: Mi a Translator Text API?
+titlesuffix: Azure Cognitive Services
+description: A Translator Text API az alkalmazásaiba, webhelyeire, eszközeibe és egyéb megoldásaiba való integrálásával többnyelvű felhasználói felületeket hozhat létre.
 services: cognitive-services
 author: noellelacharite
-manager: nolachar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-text
 ms.topic: overview
 ms.date: 05/10/2018
 ms.author: nolachar
-ms.openlocfilehash: bfbb316ac41045add7f424b5d478581aa226fc19
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.openlocfilehash: 47ac3c81b85424a5cacab00863cd88fab9463fb9
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "42889279"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46124660"
 ---
-# <a name="what-is-microsoft-translator"></a>Mi az a Microsoft Translator?
+# <a name="what-is-translator-text-api"></a>Mi a Translator Text API?
 
-A Microsoft Translator Text API zökkenőmentesen integrálható az alkalmazásaiba, webhelyeire, eszközeibe és egyéb megoldásaiba, és [több mint 60 nyelven](languages.md) képes többnyelvű felhasználói felületeket létrehozni. Bármely hardverplatformon és bármely operációs rendszerrel használható szöveg-szöveg vektorú nyelvi fordítások végrehajtásához.
+A Translator Text API zökkenőmentesen integrálható az alkalmazásaiba, webhelyeire, eszközeibe és egyéb megoldásaiba, és [több mint 60 nyelven](languages.md) képes többnyelvű felhasználói felületeket létrehozni. Bármely hardverplatformon és bármely operációs rendszerrel használható szöveg-szöveg vektorú nyelvi fordítások végrehajtásához.
 
-A Microsoft Translator Text API a felhőalapú gépi tanulási és mesterséges intelligenciára alapuló algoritmusokat biztosító, a fejlesztési projektekben készen használható Microsoft [Cognitive Services API](https://docs.microsoft.com/azure/#pivot=products&panel=ai)-gyűjtemény részét képezi.
+A Translator Text API a felhőalapú gépi tanulási és mesterséges intelligenciára épülő algoritmusokat biztosító, a fejlesztési projektekben készen használható [Azure Cognitive Services API](https://docs.microsoft.com/azure/#pivot=products&panel=ai)-gyűjtemény részét képezi.
 
 ## <a name="about-microsoft-translator"></a>A Microsoft Translator ismertetése
 

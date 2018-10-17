@@ -1,55 +1,56 @@
 ---
-title: Használja a Custom Vision Service REST API-t – az Azure Cognitive Services |} A Microsoft Docs
-description: A REST API használatával hozzon létre, betanítását, tesztelése és exportálni egy egyéni látástechnológiai modellje.
+title: 'Oktatóanyag: A Custom Vision Service REST API használata'
+titlesuffix: Azure Cognitive Services
+description: A REST API használatával custom vision modellt hozhat létre, taníthat be, tesztelhet és exportálhat.
 services: cognitive-services
 author: blackmist
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: custom-vision
-ms.topic: article
+ms.topic: tutorial
 ms.date: 08/07/2018
 ms.author: larryfr
-ms.openlocfilehash: 44fa4d45c33f3064c089724ee761a70d0a8421ab
-ms.sourcegitcommit: 76797c962fa04d8af9a7b9153eaa042cf74b2699
-ms.translationtype: MT
+ms.openlocfilehash: a38f737b5281903328a53d6552b1666ca4f58d80
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "40250269"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46364958"
 ---
-# <a name="tutorial-use-the-custom-vision-rest-api"></a>Oktatóanyag: A Custom Vision API – REST
+# <a name="tutorial-use-the-custom-vision-rest-api"></a>Oktatóanyag: A Custom Vision REST API használata
 
-Ismerje meg, hogyan használhatja a Custom Vision REST API létrehozása, betanítását, tesztelése és exportálni egy modellt.
+Ismerje meg, hogyan történhet a Custom Vision REST API segítségével egy modell létrehozása, betanítása, tesztelése és exportálása.
 
-A jelen dokumentumban lévő információk bemutatja, hogyan lehet REST-ügyféllel használható oktatási a Custom Vision service REST API-val. A példák bemutatják, hogyan használja az API használatával a `curl` segédprogram a bash-környezetet és `Invoke-WebRequest` Windows powershellből.
+A jelen dokumentum bemutatja, hogyan lehet REST-ügyféllel a REST API-t felhasználni a Custom Vision szolgáltatás betanítására. A példák bemutatják, hogyan használható az API a bash környezetből a `curl` segédprogrammal és Windows PowerShellből a `Invoke-WebRequest` segítségével.
 
 > [!div class="checklist"]
-> * Kulcsok beszerzése
+> * Kulcsok megszerzése
 > * Projekt létrehozása
 > * Címkék létrehozása
 > * Képek hozzáadása
-> * Betanítása és teszteli a modellt
+> * A modell betanítása és tesztelése
 > * A modell exportálása
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Egy alapszintű ismerete a Representational State Transfer (REST). Ez a dokumentum nem lépnek részletei a például a HTTP-műveletek, JSON, vagy további tevékenység következik, általánosan használt REST-tel.
+* A Representational State Transfer (REST) alapszintű ismerete. Ez a dokumentum nem foglalkozik részletesen olyan dolgokkal, mint a HTTP-parancsok, a JSON és más REST esetén gyakran használt dolgok.
 
-* Vagy a bash (Bourne újra Shell) együtt a [curl](https://curl.haxx.se) segédprogramot vagy a Windows PowerShell 3.0-s (vagy újabb).
+* Vagy bash (Bourne újra Shell) és [curl](https://curl.haxx.se) segédprogram vagy a Windows PowerShell 3.0-s (vagy újabb).
 
-* A Custom Vision fiók. További információkért lásd: a [Tartalombesoroló létrehozása](getting-started-build-a-classifier.md) dokumentumot.
+* Custom Vision fiók. További információkért lásd az [Osztályozó létrehozása](getting-started-build-a-classifier.md) dokumentumot.
 
-## <a name="get-keys"></a>Kulcsok beszerzése
+## <a name="get-keys"></a>Kulcsok megszerzése
 
-A REST API használata esetén, hitelesítenie kell magát egy kulcs használatával. Felügyeleti vagy a betanítási műveletek végrehajtásakor használni a __képzési kulcs__. Ha a modell segítségével előrejelzéseket, használja a __előrejelzési kulcs__.
+A REST API használata esetén hitelesítenie kell magát egy kulccsal. Felügyeleti vagy a betanítási műveletek végrehajtásakor a __betanítási kulcs__ használatos. Ha a modell segítségével előrejelzéseket végez, az __előrejelzési kulcsot__ használhatja.
 
-A kérés küldésekor a kulcsot a rendszer elküldte, fejléc.
+Kérés küldésekor a kulcsot a rendszer a kérés fejlécben küldi.
 
-Kérnie a kulcsokat a fiókját, látogasson el a [Custom Vision weblap](https://customvision.ai) , és válassza ki a __fogaskerék ikont__ kattintson a jobb felső sarokban. Az a __fiókok__ területén másolja a __képzési kulcs__ és __előrejelzési kulcs__ mezőket.
+A fiókjához használt kulcsok megszerzéséhez látogasson el a [Custom Vision weboldalra](https://customvision.ai), válassza ki a __fogaskerék ikont__ a jobb felső sarokban. A __Fiókok__ területen másolja ki a __Betanítási kulcs__ és __Előrejelzési kulcs__ mezők értékeit.
 
-![A felhasználói felület kulcsok képe](./media/rest-api-tutorial/training-prediction-keys.png)
+![A kulcsok felhasználói felület képe](./media/rest-api-tutorial/training-prediction-keys.png)
 
 > [!IMPORTANT]
-> A kulcsok minden egyes kérés hitelesítésére szolgálnak, mivel ebben a dokumentumban szereplő példák azt feltételezik, hogy a kulcs értékeit tárolják a környezeti változók. A következő parancsokat használja a dokumentum bármely más kódtöredékek használata előtt a környezeti változókat a kulcsok tárolásához:
+> Mivel a kulcsok minden egyes kérés hitelesítéséhez szükségesek, a dokumentumban szereplő példáknál azt feltételezzük, hogy a kulcs értékeket környezeti változók tárolják. Mielőtt használná a dokumentumból valamely kódrészletet, mentse el a kulcsokat a környezeti változókba a következő parancsokkal:
 >
 > ```bash
 > read -p "Enter the training key: " TRAININGKEY
@@ -63,7 +64,7 @@ Kérnie a kulcsokat a fiókját, látogasson el a [Custom Vision weblap](https:/
 
 ## <a name="create-a-new-project"></a>Új projekt létrehozása
 
-Az alábbi példák, hozzon létre egy új projektet nevű `myproject` Custom Vision service-példányában. Ez a szolgáltatás alapértelmezés szerint a `General` tartomány:
+Az alábbi példák egy új, `myproject` nevű projektet hoznak létre a saját Custom Vision Service-példányában. A szolgáltatás alapértelmezés szerinti `General` tartománya:
 
 ```bash
 curl -X POST "https://southcentralus.api.cognitive.microsoft.com/customvision/v2.0/Training/projects?name=myproject" -H "Training-Key: $TRAININGKEY" --data-ascii ""
@@ -77,7 +78,7 @@ $resp = Invoke-WebRequest -Method 'POST' `
 $resp.Content
 ```
 
-A válasz a kérésre a következő JSON-dokumentum hasonlít:
+A kérésre adott válasz a következő JSON dokumentumhoz hasonló:
 
 ```json
 {
@@ -97,13 +98,13 @@ A válasz a kérésre a következő JSON-dokumentum hasonlít:
 ```
 
 > [!TIP]
-> A `id` a válaszban bejegyzés az új projekt azonosítója. További példák a jelen dokumentum a használható.
+> A válaszban a `id` bejegyzés az új projekt azonosítója. Ezt használni fogjuk a dokumentum más példáiban a későbbiekben.
 
-A kérelem további információkért lásd: [CreateProject](https://southcentralus.dev.cognitive.microsoft.com/docs/services/d0e77c63c39c4259a298830c15188310/operations/5a59953940d86a0f3c7a8290).
+A kéréssel kapcsolatos további információk: [CreateProject](https://southcentralus.dev.cognitive.microsoft.com/docs/services/d0e77c63c39c4259a298830c15188310/operations/5a59953940d86a0f3c7a8290).
 
-### <a name="specific-domains"></a>Bizonyos tartományok
+### <a name="specific-domains"></a>Adott tartományok
 
-Hozzon létre egy projektet egy adott tartományban, megadhatja a __ID domény__ , mint egy nem kötelező paraméter. Az alábbi példák bemutatják, hogyan kérdezheti le a rendelkezésre álló tartományok:
+Ha a projektet egy adott tartományban szeretné létrehozni, akkor nem kötelező paraméterként megadhatja a __tartományazonosítót__. Az alábbi példák bemutatják a rendelkezésre álló tartományok listájának lekérdezését:
 
 ```bash
 curl -X GET "https://southcentralus.api.cognitive.microsoft.com/customvision/v2.0/Training/domains" -H "Training-Key: $TRAININGKEY" --data-ascii ""
@@ -117,7 +118,7 @@ $resp = Invoke-WebRequest -Method 'GET' `
 $resp.Content
 ```
 
-A válasz a kérésre a következő JSON-dokumentum hasonlít:
+A kérésre adott válasz a következő JSON dokumentumhoz hasonló:
 
 ```json
 [
@@ -146,9 +147,9 @@ A válasz a kérésre a következő JSON-dokumentum hasonlít:
 ]
 ```
 
-A kérelem további információkért lásd: [GetDomains](https://southcentralus.dev.cognitive.microsoft.com/docs/services/d0e77c63c39c4259a298830c15188310/operations/5a59953940d86a0f3c7a827d).
+A kéréssel kapcsolatos további információk: [GetDomains](https://southcentralus.dev.cognitive.microsoft.com/docs/services/d0e77c63c39c4259a298830c15188310/operations/5a59953940d86a0f3c7a827d).
 
-A következő példa bemutatja, hogy használó új projekt létrehozása a __arcrész__ tartomány:
+A következő példa a __Landmarks__ tartományt használó projekt létrehozását mutatja be:
 
 ```bash
 curl -X POST "https://southcentralus.api.cognitive.microsoft.com/customvision/v2.0/Training/projects?name=myproject&domainId=ca455789-012d-4b50-9fec-5bb63841c793" -H "Training-Key: $TRAININGKEY" --data-ascii ""
@@ -164,7 +165,7 @@ $resp.Content
 
 ## <a name="create-tags"></a>Címkék létrehozása
 
-Címke lemezképek kell használnia egy címkét. A következő példa bemutatja, hogyan hozhat létre egy új címke nevű `cat` , és egy címkét. Cserélje le `{projectId}` azonosítójú, a projekthez. Használja a `name=` paraméterrel adja meg a címke nevét:
+Képek címkézéséhez címkeazonosítót kell használni. A következő példa bemutatja, hogyan hozhat létre egy új, `cat` nevű címkét és címkeazonosítót. A `{projectId}` helyett használja a saját projekt azonosítóját. A `name=` paraméter a címke nevének megadására használható:
 
 ```bash
 curl -X POST "https://southcentralus.api.cognitive.microsoft.com/customvision/v2.0/Training/projects/{projectId}/tags?name=cat" -H "Training-Key: $TRAININGKEY" --data-ascii ""
@@ -178,19 +179,19 @@ $resp = Invoke-WebRequest -Method 'POST' `
 $resp.Content
 ```
 
-A válasz a kérésre hasonlít a JSON-dokumentum: 
+A kérésre adott válasz a JSON dokumentumhoz hasonló: 
 
 ```json
 {"id":"ed6f7ab6-5132-47ad-8649-3ec42ee62d43","name":"cat","description":null,"imageCount":0}
 ```
 
-Mentse a `id` értékét, mivel a rendszerképek címkézése szolgál.
+Mentse a `id` értékét, mivel a képek címkézésénél szükség van rá.
 
-A kérelem további információkért lásd: [CreateTag](https://southcentralus.dev.cognitive.microsoft.com/docs/services/d0e77c63c39c4259a298830c15188310/operations/5a59953940d86a0f3c7a829d).
+A kéréssel kapcsolatos további információk: [CreateTag](https://southcentralus.dev.cognitive.microsoft.com/docs/services/d0e77c63c39c4259a298830c15188310/operations/5a59953940d86a0f3c7a829d).
 
 ## <a name="add-images"></a>Képek hozzáadása
 
-Az alábbi példák bemutatják, hogy egy fájl hozzáadásával URL-címről. Cserélje le `{projectId}` azonosítójú, a projekthez. Cserélje le `{tagId}` azonosítójú, a címke a rendszerkép:
+Az alábbi példák fájl URL-címről történő hozzáadását mutatják be. A `{projectId}` helyett használja a saját projekt azonosítóját. A `{tagId}` helyett használja a kép címkeazonosítóját:
 
 ```bash
 curl -X POST "https://southcentralus.api.cognitive.microsoft.com/customvision/v2.0/Training/projects/{projectId}/images/urls" -H "Training-Key: $TRAININGKEY" -H "Content-Type: application/json" --data-ascii '{"images": [{"url": "http://myimages/cat.jpg","tagIds": ["{tagId}"],"regions": [{"tagId": "{tagId}","left": 119.0,"top": 94.0,"width": 240.0,"height": 140.0}]}], "tagIds": ["{tagId}"]}'
@@ -205,7 +206,7 @@ $resp = Invoke-WebRequest -Method 'POST' `
 $resp.Content
 ```
 
-A válasz a kérésre a következő JSON-dokumentum hasonlít:
+A kérésre adott válasz a következő JSON dokumentumhoz hasonló:
 
 ```json
 {
@@ -246,11 +247,11 @@ A válasz a kérésre a következő JSON-dokumentum hasonlít:
 }
 ```
 
-A kérelem további információkért lásd: [CreateImagesFromUrls](https://southcentralus.dev.cognitive.microsoft.com/docs/services/d0e77c63c39c4259a298830c15188310/operations/5a59953940d86a0f3c7a8287).
+A kéréssel kapcsolatos további információk: [CreateImagesFromUrls](https://southcentralus.dev.cognitive.microsoft.com/docs/services/d0e77c63c39c4259a298830c15188310/operations/5a59953940d86a0f3c7a8287).
 
 ## <a name="train-the-model"></a>A modell betanítása
 
-Az alábbi példák bemutatják, hogyan lehet a modell betanításához. Cserélje le `{projectId}` azonosítójú, a projekthez:
+Az alábbi példák bemutatják, hogyan lehet a modellt betanítani. A `{projectId}` helyett használja a saját projekt azonosítóját:
 
 ```bash
 curl -X POST "https://southcentralus.api.cognitive.microsoft.com/customvision/v2.0/Training/projects/{projectId}/train" -H "Training-Key: $TRAININGKEY" -H "Content-Type: application/json" --data-ascii ""
@@ -264,7 +265,7 @@ $resp = Invoke-WebRequest -Method 'POST' `
 $resp.Content
 ```
 
-A válasz a kérésre a következő JSON-dokumentum hasonlít:
+A kérésre adott válasz a következő JSON dokumentumhoz hasonló:
 
 ```json
 {
@@ -280,13 +281,13 @@ A válasz a kérésre a következő JSON-dokumentum hasonlít:
 }
 ```
 
-Mentse a `id` értékét, mivel segítségével tesztelheti, és exportálja a modellt.
+Mentse a `id` értékét, mivel ennek segítségével tesztelheti, és exportálhatja a modellt.
 
-További információkért lásd: [TrainProject](https://southcentralus.dev.cognitive.microsoft.com/docs/services/d0e77c63c39c4259a298830c15188310/operations/5a59953940d86a0f3c7a8294).
+További információk: [TrainProject](https://southcentralus.dev.cognitive.microsoft.com/docs/services/d0e77c63c39c4259a298830c15188310/operations/5a59953940d86a0f3c7a8294).
 
 ## <a name="test-the-model"></a>A modell tesztelése
 
-Az alábbi példák bemutatják, hogyan hajthat végre egy tesztet a modell. Cserélje le `{projectId}` azonosítójú, a projekthez. Cserélje le `{iterationId}` a modell által visszaadott azonosítóval. Cserélje le `https://linktotestimage` a tesztképre az elérési útját.
+Az alábbi példák bemutatják, hogyan lehet a modell tesztelését elvégezni. A `{projectId}` helyett használja a saját projekt azonosítóját. A `{iterationId}` helyett használja a modell betanításakor visszaadott azonosítót. A `https://linktotestimage` helyett a tesztkép elérési útvonalát használja.
 
 ```bash
 curl -X POST "https://southcentralus.api.cognitive.microsoft.com/customvision/v2.0/Training/projects/{projectId}/quicktest/url?iterationId={iterationId}" -H "Training-Key: $TRAININGKEY" -H "Content-Type: application/json" --data-ascii '{"url":"https://linktotestimage"}'
@@ -301,7 +302,7 @@ $resp = Invoke-WebRequest -Method 'POST' `
 $resp.Content
 ```
 
-A válasz a kérésre a következő JSON-dokumentum hasonlít:
+A kérésre adott válasz a következő JSON dokumentumhoz hasonló:
 
 ```json
 {
@@ -319,15 +320,15 @@ A válasz a kérésre a következő JSON-dokumentum hasonlít:
 }
 ```
 
-További információkért lásd: [QuickTestImageUrl](https://southcentralus.dev.cognitive.microsoft.com/docs/services/d0e77c63c39c4259a298830c15188310/operations/5a59953940d86a0f3c7a828d).
+További információk: [QuickTestImageUrl](https://southcentralus.dev.cognitive.microsoft.com/docs/services/d0e77c63c39c4259a298830c15188310/operations/5a59953940d86a0f3c7a828d).
 
 ## <a name="export-the-model"></a>A modell exportálása
 
-Modell exportálása két lépésből áll. Először meg kell az adatmodell-formátumban adja meg, és lekérhetik az exportált modell URL-CÍMÉT.
+A modell exportálása két lépésből áll. Először meg kell adni a modell formátumot, majd kérni kell az exportált modellhez az URL-t.
 
-### <a name="request-a-model-export"></a>A modell exportálási kérelem
+### <a name="request-a-model-export"></a>A modell exportálás kérése
 
-Az alábbi példák bemutatják, hogyan lehet exportálni egy `coreml` modell. Cserélje le `{projectId}` azonosítójú, a projekthez. Cserélje le `{iterationId}` a modell által visszaadott azonosítóval.
+Az alábbi példák bemutatják, hogyan lehet a `coreml` modellt exportálni. A `{projectId}` helyett használja a saját projekt azonosítóját. A `{iterationId}` helyett használja a modell betanításakor visszaadott azonosítót.
 
 ```bash
 curl -X POST "https://southcentralus.api.cognitive.microsoft.com/customvision/v2.0/Training/projects/{projectId}/iterations/{iterationId}/export?platform=coreml" -H "Training-Key: $TRAININGKEY" -H "Content-Type: application/json" --data-ascii ''
@@ -341,7 +342,7 @@ $resp = Invoke-WebRequest -Method 'POST' `
 $resp.Content
 ```
 
-A válasz a kérésre a következő JSON-dokumentum hasonlít:
+A kérésre adott válasz a következő JSON dokumentumhoz hasonló:
 
 ```json
 {
@@ -352,11 +353,11 @@ A válasz a kérésre a következő JSON-dokumentum hasonlít:
 }
 ```
 
-További információkért lásd: [ExportIteration](https://southcentralus.dev.cognitive.microsoft.com/docs/services/d0e77c63c39c4259a298830c15188310/operations/5a59953940d86a0f3c7a829b).
+További információk: [ExportIteration](https://southcentralus.dev.cognitive.microsoft.com/docs/services/d0e77c63c39c4259a298830c15188310/operations/5a59953940d86a0f3c7a829b).
 
 ### <a name="download-the-exported-model"></a>Az exportált modell letöltése
 
-Az alábbi példák bemutatják, hogyan kérheti le az URL-címét az exportált modell. Cserélje le `{projectId}` azonosítójú, a projekthez. Cserélje le `{iterationId}` a modell által visszaadott azonosítóval.
+Az alábbi példák bemutatják, hogyan kérheti le az exportált modell URL-címét. A `{projectId}` helyett használja a saját projekt azonosítóját. A `{iterationId}` helyett használja a modell betanításakor visszaadott azonosítót.
 
 ```bash
 curl -X GET "https://southcentralus.api.cognitive.microsoft.com/customvision/v2.0/Training/projects/{projectId}/iterations/{iterationId}/export" -H "Training-Key: $TRAININGKEY" -H "Content-Type: application/json" --data-ascii ''
@@ -370,7 +371,7 @@ $resp = Invoke-WebRequest -Method 'GET' `
 $resp.Content
 ```
 
-A válasz a kérésre a következő JSON-dokumentum hasonlít:
+A kérésre adott válasz a következő JSON dokumentumhoz hasonló:
 
 ```json
 [
@@ -383,4 +384,4 @@ A válasz a kérésre a következő JSON-dokumentum hasonlít:
 ]
 ```
 
-További információkért lásd: [GetExports](https://southcentralus.dev.cognitive.microsoft.com/docs/services/d0e77c63c39c4259a298830c15188310/operations/5a59953940d86a0f3c7a829a).
+További információk: [GetExports](https://southcentralus.dev.cognitive.microsoft.com/docs/services/d0e77c63c39c4259a298830c15188310/operations/5a59953940d86a0f3c7a829a).

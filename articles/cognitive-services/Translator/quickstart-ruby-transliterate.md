@@ -1,21 +1,21 @@
 ---
-title: 'Translator Text: Szövegátalakítási szkript a Ruby használatával | Microsoft Docs'
-titleSuffix: Microsoft Cognitive Services
-description: Ebben a rövid útmutatóban szöveget alakít át egy nyelven egy szkriptből egy másikba a Translator Text API segítségével és a Ruby használatával a Cognitive Servicesben.
+title: 'Rövid útmutató: Szöveget konvertáló parancsfájl – Translator Text, Ruby'
+titleSuffix: Azure Cognitive Services
+description: Ebben a rövid útmutatóban szöveget alakít át egy nyelven egy szkriptből egy másikba a Translator Text API és Ruby segítségével.
 services: cognitive-services
 author: noellelacharite
-manager: nolachar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-text
 ms.topic: quickstart
 ms.date: 06/22/2018
 ms.author: nolachar
-ms.openlocfilehash: 56872ed6b6d7168fb1bf2c45de8104a592af34e3
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 6595e486a93811fdded21050c39e99d4f7e5a760
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "43769727"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46121753"
 ---
 # <a name="quickstart-transliterate-text-with-ruby"></a>Rövid útmutató: Szöveg átírása a Ruby használatával
 

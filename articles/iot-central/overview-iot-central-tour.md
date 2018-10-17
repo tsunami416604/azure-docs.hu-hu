@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: 69898358026eab716c057f339d8594df43db136f
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 11112e01e38f85db9f71280c53c27b130275d86f
+ms.sourcegitcommit: 8b694bf803806b2f237494cd3b69f13751de9926
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34629371"
+ms.lasthandoff: 09/20/2018
+ms.locfileid: "46498266"
 ---
 # <a name="take-a-tour-of-the-azure-iot-central-ui"></a>Ismerkedés az Azure IoT Central kezelőfelületével
 
@@ -39,7 +39,7 @@ A bal oldali navigációs menüből érhetők el az alkalmazás különböző te
 
 | Menü | Leírás |
 | ---- | ----------- |
-| ![Bal oldali navigációs menü](media/overview-iot-central-tour/navigationbar.png) | <ul><li>A **Kezdőlap** gomb megjeleníti az alkalmazás kezdőlapját. A szerkesztők testreszabhatják a kezdőlapot az operátorok számára.</li><li>Az **Eszközkereső** gomb felsorolja az alkalmazásban meghatározott eszközsablonokat, valamint az egyes eszközsablonokhoz tartozó valós eszközöket. Az operátorok az **Eszközkereső** használatával kezelhetik a csatlakoztatott eszközöket.</li><li>Az **Eszközkészletek** gomb lehetővé teszi eszközkészletek megtekintését és létrehozását. Az operátorok létrehozhatnak eszközkészleteket, amelyek a lekérdezés által megadott eszközök logikai gyűjteményei.</li><li>Az **Elemzés** gomb az eszközök és eszközkészletek telemetriáiból származó elemzéseket jelenít meg. Az operátorok létrehozhatnak egyéni nézeteket az eszközadatokhoz, így megjelenítve az alkalmazásból származó megállapításokat.</li><li>Az **Alkalmazásszerkesztő** gomb megjeleníti a szerkesztők által használt eszközöket, például az **Eszközsablon-készítő** eszközt.</li><li>Az **Adminisztráció** gomb jeleníti meg azokat az alkalmazásadminisztrációs oldalakat, ahol a rendszergazda az alkalmazás beállításait, felhasználóit és szerepköreit kezelheti.</li></ul> |
+| ![Bal oldali navigációs menü](media/overview-iot-central-tour/navigationbar.png) | <ul><li>A **Kezdőlap** gomb megjeleníti az alkalmazás kezdőlapját. A szerkesztők testreszabhatják a kezdőlapot az operátorok számára.</li><li>Az **Eszközkereső** gomb felsorolja az alkalmazásban meghatározott eszközsablonokat, valamint az egyes eszközsablonokhoz tartozó valós eszközöket. Az operátorok az **Eszközkereső** használatával kezelhetik a csatlakoztatott eszközöket.</li><li>Az **Eszközkészletek** gomb lehetővé teszi eszközkészletek megtekintését és létrehozását. Az operátorok létrehozhatnak eszközkészleteket, amelyek a lekérdezés által megadott eszközök logikai gyűjteményei.</li><li>Az **Elemzés** gomb az eszközök és eszközkészletek telemetriáiból származó elemzéseket jelenít meg. Az operátorok létrehozhatnak egyéni nézeteket az eszközadatokhoz, így megjelenítve az alkalmazásból származó megállapításokat.</li><li>A **Feladatok** gomb tömeges eszközkezelést tesz lehetővé a méretezhető frissítéseket végző feladatok létrehozásával és futtatásával.</li><li>Az **Alkalmazásszerkesztő** gomb megjeleníti a szerkesztők által használt eszközöket, például az **Eszközsablon-készítő** eszközt.</li><li>Az **Adminisztráció** gomb jeleníti meg azokat az alkalmazásadminisztrációs oldalakat, ahol a rendszergazda az alkalmazás beállításait, felhasználóit és szerepköreit kezelheti.</li></ul> |
 
 ## <a name="search-help-and-support"></a>Keresés, súgó és támogatás
 
@@ -81,6 +81,12 @@ Az _Eszközkészletek_ oldalon jelennek meg a szerkesztő által létrehozott es
 ![Elemzés oldal](media/overview-iot-central-tour/analytics.png)
 
 Az Elemzés oldalon diagramok láthatók, amelyek segítenek áttekinteni az alkalmazáshoz csatlakozó eszközök viselkedését. Az operátorok ezen az oldalon monitorozhatják és vizsgálhatják ki a csatlakoztatott eszközökkel kapcsolatos problémákat. Az ezen az oldalon megjelenő diagramokat a szerkesztő határozza meg. További tudnivalókért lásd az [egyéni elemzések az Azure IoT Central-alkalmazásokban történő létrehozását](howto-create-analytics.md) ismertető szakaszt.
+
+## <a name="jobs"></a>Feladatok
+
+![Feladatok oldal](media/overview-iot-central-tour/jobs.png)
+
+A feladatok oldal csoportos eszközfelügyeleti műveletek elvégzését teszi lehetővé az eszközökön. A szerkesztő az oldalt az eszköz tulajdonságok, beállítások és parancsok frissítésére használja. További tudnivalókért tekintse meg a [Feladat futtatása](howto-run-a-job.md) cikket.
 
 ## <a name="application-builder"></a>Alkalmazásszerkesztő
 

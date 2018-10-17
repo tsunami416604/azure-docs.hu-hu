@@ -1,32 +1,33 @@
 ---
-title: Szöveg Analytics REST API-t (Microsoft Azure kognitív szolgáltatások) – útmutató nyelvi az észlelést |} Microsoft Docs
-description: Hogyan szöveg Analytics REST API használatával a Microsoft Azure kognitív Services bemutató oktatóanyag nyelvi észleléséhez.
+title: 'Példa: Nyelvfelismerés a Text Analytics REST API használatával'
+titleSuffix: Azure Cognitive Services
+description: Ismerje meg, hogyan ismerheti fel a nyelvet a Text Analytics REST API használatával.
 services: cognitive-services
 author: HeidiSteen
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: text-analytics
-ms.topic: article
-ms.date: 3/07/2018
+ms.topic: sample
+ms.date: 09/12/2018
 ms.author: heidist
-ms.openlocfilehash: f8e2d9a36533c298addcf42d3cb2061e9c2d1ac7
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
-ms.translationtype: MT
+ms.openlocfilehash: fa71e4ce2e5cb5967bb583c7314072830de08051
+ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35347438"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45604552"
 ---
-# <a name="how-to-detect-language-in-text-analytics"></a>Hogyan azonosíthatók a nyelvi Szövegelemzések
+# <a name="example-how-to-detect-language-in-text-analytics"></a>Példa: Hogyan ismerhető fel a nyelv a Text Analytics-ben
 
-A [nyelvi észlelési API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c7) szöveges bemeneti, és minden egyes dokumentumhoz kiértékeli, és a nyelvi azonosítót ad vissza, amelyben az elemzés erősségével jelző pontszámot. Szövegelemzések legfeljebb 120 nyelvek felismeri.
+A [Nyelvfelismerés API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c7) minden dokumentumra kiértékeli a szöveges bemenetet és visszaadja a nyelv azonosítót az elemzés erősségét jelző pontszámmal együtt. A Text Analytics 120 nyelv felismerésére képes.
 
-Ez a funkció akkor hasznos, a tartalmat tárolja, hogy a gyűjtés tetszőleges szöveg, ahol nyelvi ismeretlen. Annak meghatározásához, milyen nyelven szerepel a bemeneti dokumentum az elemzés eredményeinek tudja értelmezni. A válasz is a pontszám, amely tükrözi a abban, hogy a modell (0 és 1 közötti értéket) adja vissza.
+Ez a funkció véletlen szöveget gyűjtő tartalom áruházak számára hasznos, amikor a nyelv ismeretlen. Az analízis eredményei elemezhetők annak meghatározására, hogy milyen nyelvet használ a bemeneti dokumentum. A válasz visszaad egy pontszámot is, amely tükrözi a modell (0 és 1 közötti értékű) megbízhatóságát.
 
-## <a name="preparation"></a>Előkészítése
+## <a name="preparation"></a>Előkészítés
 
-JSON-dokumentumok rendelkeznie kell a következő formátumban: azonosító, a szöveg
+A JSON-dokumentumnak ilyen formátumban kell lennie: azonosító, szöveg
 
-Dokumentum mérete dokumentumonként a 5000 karakterből állhat, illetve azt, hogy legfeljebb 1000 gyűjteményenként (azonosítók) elemet. A gyűjtemény elküldve a kérelem törzsében. A következő példában látható egy tartalom, lehet, hogy küldje el a nyelvi észleléséhez.
+A dokumentum méretének 5000 karakter alatt kell maradnia, és legfeljebb 1000 elem (azonosító) lehet egy kollekcióban. A kollekció elküldése a kérelem törzsében történik. A következő egy példa nyelvfelismerésre beküldhető tartalomra.
 
    ```
     {
@@ -55,37 +56,37 @@ Dokumentum mérete dokumentumonként a 5000 karakterből állhat, illetve azt, h
     }
 ```
 
-## <a name="step-1-structure-the-request"></a>1. lépés: A kérés struktúra
+## <a name="step-1-structure-the-request"></a>1. lépés: A kérés felépítése
 
-A kérelem definíciója részletek megtalálhatók a [hogyan hívhatja meg a szöveg Analytics API](text-analytics-how-to-call-api.md). Kényelmi vannak megfelelően a következő szempontokat:
+A kérés definícióval kapcsolatos részletek megtalálhatók a [Text Analytics API hívásának módja](text-analytics-how-to-call-api.md) részben. A következő pontokat a kényelem kedvéért itt megismételjük:
 
-+ Hozzon létre egy **POST** kérelmet. Tekintse át a kérelem az API dokumentációjának: [nyelvi észlelési API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c7)
++ Hozzon létre egy **POST** kérést. Nézze meg az API-dokumentációban ezt a kérést: [Nyelvfelismerés API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c7)
 
-+ Állítsa be a HTTP-végpont a nyelvi észleléséhez. Tartalmaznia kell a `/languages` erőforrás: `https://westus.api.cognitive.microsoft.com/text/analytics/v2.0/languages`
++ Állítsa be a HTTP-végpontot a nyelvfelismeréshez. Tartalmaznia kell a `/languages` erőforrást: `https://westus.api.cognitive.microsoft.com/text/analytics/v2.0/languages`
 
-+ Állítsa be a hozzáférési kulcsot a következő Szövegelemzések műveletek közé tartozik a fejléc. További információkért lásd: [végpontok kereséséhez, és hozzáférési kulcsokkal](text-analytics-how-to-access-key.md).
++ A kérés fejlécet állítsa be úgy, hogy tartalmazza a Text Analytics műveletekhez a hozzáférési kulcsot. További információkért lásd: [Végpontok és hozzáférési kulcsok megkeresése](text-analytics-how-to-access-key.md).
 
-+ A kérelem törzsében szereplő adja meg az elemzés az Felkészülés JSON documents gyűjtemény
++ A kérelem törzsében adja meg az elemzéshez előkészített JSON-dokumentum kollekciót
 
 > [!Tip]
-> Használja [Postman](text-analytics-how-to-call-api.md) vagy nyissa meg a **API-tesztelési konzol** a a [dokumentáció](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c7) struktúra egy kérelmet, és KÖZZÉTEHETI a szolgáltatás.
+> Használható a [Postman](text-analytics-how-to-call-api.md) vagy nyissa meg az **API teszt konzolt** a [dokumentációban](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c7) a kérés felépítéséhez és a szolgáltatásnak történő POST elküldéséhez.
 
-## <a name="step-2-post-the-request"></a>2. lépés: Küldje a kérelmet
+## <a name="step-2-post-the-request"></a>2. lépés: A kérés elküldése
 
-Elemzés a kérelem történik. A szolgáltatás fogadja a legfeljebb 100 kérelmek / perc. Minden egyes kérelem legfeljebb 1 MB méretű is lehet.
+Az elemzés a kérelem megkapásakor történik meg. A szolgáltatás percenként legfeljebb 100 kérést fogad. Mindegyik kérés legfeljebb 1 MB lehet.
 
-A visszaírási, hogy állapot nélküli-e a szolgáltatás. Adatot nem tárolja a fiókját. Eredményeinek azonnal a válaszban.
+Ne felejtse, hogy a szolgáltatás állapot nélküli. A fiókban nem tárol semmilyen adatot. Az eredményeket azonnal visszaadja a válaszban.
 
 
-## <a name="step-3-view-results"></a>3. lépés: Az eredmények megtekintése
+## <a name="step-3-view-results"></a>3. lépés: Eredmények megtekintése
 
-Minden POST kérelemhez vissza JSON formátumú válasz azonosítókkal és Tulajdonságok észlelhetők.
+Minden POST kérés egy JSON formátumú választ ad vissza az azonosítókkal és az észlelt tulajdonságokkal.
 
-Kimeneti azonnal adja vissza. Az eredmények JSON elfogadó alkalmazás adatfolyamként vagy kimenetét mentse fájlba a helyi rendszer, és importálja azt az alkalmazást, amely lehetővé teszi rendezni, keresése és az adatok kezelését.
+A kimenetet visszaadása azonnali. Az eredmények adatfolyamát JSON elfogadó alkalmazáshoz küldheti vagy a kimenetet elmentheti fájlba a helyi rendszeren, majd importálható az adatokat rendezni, keresni és kezelni képes alkalmazásba.
 
-A példa egy kérelem eredményeit a következő JSON hasonlóan kell kinéznie. Figyelje meg, hogy a rendszer egy dokumentum több elemet. Angol nyelvű eredménye. Nyelvi azonosítókkal közé tartozik egy rövid nevet, a nyelvkódot [ISO 639-1](https://www.iso.org/standard/22109.html) formátumban.
+A példa kérés eredményének a következő JSON-hoz hasonlóan kell kinéznie. Figyelje meg, hogy ez egy dokumentum több elemmel. A kimenet angol nyelvű. A nyelvi azonosító rövid nevet és [ISO 639-1](https://www.iso.org/standard/22109.html) formátumú nyelvkódot tartalmaz.
 
-Egy pozitív pontszám 1.0 a legmagasabb lehetséges megbízhatósági szint az elemzés fejezi ki.
+Az 1.0 pozitív pontszám a lehetséges legnagyobb megbízhatósági szintet jelenti az elemzésre.
 
 
 
@@ -147,7 +148,7 @@ Egy pozitív pontszám 1.0 a legmagasabb lehetséges megbízhatósági szint az 
 
 ### <a name="ambiguous-content"></a>Nem egyértelmű tartalom
 
-Ha a analyzer nem tudja elemezni a bemeneti (tegyük fel, hogy Ön által küldött egy szövegblokk, amely kizárólag számokat arab), adja vissza, `(Unknown)`.
+Ha az elemző nem tudja elemezni a bemenetet (tegyük fel például, hogy kizárólag arab számokból álló szövegrészt küldött el) akkor adja vissza ezt: `(Unknown)`.
 
 ```
     {
@@ -160,9 +161,9 @@ Ha a analyzer nem tudja elemezni a bemeneti (tegyük fel, hogy Ön által küld�
         }
       ]
 ```
-### <a name="mixed-language-content"></a>Vegyes tartalom nyelv
+### <a name="mixed-language-content"></a>A vegyes nyelvi tartalom
 
-Vegyes nyelvi tartalmakra egyazon dokumentumban a tartalmat a legnagyobb ábrázolását, de egy alacsonyabb pozitív minősítést értékelést marginális erősségével tükröző nyelvét adja eredményül. A következő példában a bemeneti érték egy angol, német és francia keveréke. A analyzer rendelkezik minden szegmensben meghatározni az elsődleges nyelvi karakterek száma.
+Az egy dokumentumon belüli vegyes nyelvi tartalomra a szöveget legnagyobb részt kitevő nyelvet adja vissza, de kisebb pozitív minősítéssel, ami tükrözi az értékelés gyenge erősségét. A következő példában a bemeneti adat angol, német és francia nyelv kombinációja. Az elemző minden szegmensben megszámolja a karakterek számát az uralkodó nyelv meghatározásához.
 
 **Input** (Bemenet)
 
@@ -179,7 +180,7 @@ Vegyes nyelvi tartalmakra egyazon dokumentumban a tartalmat a legnagyobb ábráz
 
 **Kimenet**
 
-Ennek kimenete a elsődleges nyelvét, a kisebb, mint 1.0 pontszám abban, hogy egy gyengébb szintjét jelző áll.
+A kapott eredmény a domináns nyelv, de a gyengébb megbízhatósági szintet jelző 1.0 alatti pontszámmal.
 
 ```
 {
@@ -201,20 +202,20 @@ Ennek kimenete a elsődleges nyelvét, a kisebb, mint 1.0 pontszám abban, hogy 
 
 ## <a name="summary"></a>Összegzés
 
-Ebben a cikkben megtanulta, fogalmak és a munkafolyamat Szövegelemzések használatát kognitív szolgáltatások nyelvi észleléséhez. A fő pontok korábban alapján, és bemutatta gyors emlékeztető a következők:
+Ebben a cikkben a nyelvfelismerés elveivel és folyamatával ismerkedett meg a Cognitive Services Text Analytics használatával. Az alábbiakban röviden felidézzük a korábban ismertetett és bemutatott főbb pontokat:
 
-+ [Nyelvi észlelési API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c7) 120 nyelveken érhető el.
-+ A kérelem törzsében szereplő JSON-dokumentumok egy azonosítója és a szöveges tartalmaznak.
-+ POST-kérelmet, hogy egy `/languages` végpont, egy személyre szabott [hozzáférési kulcs és egy végpontot](text-analytics-how-to-access-key.md) érvényes az előfizetéséhez.
-+ Válasz kimenete, amely tartalmazza az egyes dokumentumazonosító: nyelvi azonosítókkal, továbbítható bármely alkalmazásba, amely támogatja a JSON-NÁ, beleértve az Excel és a Power bi-ban, hogy néhányat említsünk.
++ A [Nyelvfelismerés API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c7) 120 nyelvre érhető el.
++ A kérés törzsében szereplő JSON-dokumentumok azonosítót és szöveget tartalmaznak.
++ POST-kérés a `/languages` végpontra, az előfizetésre érvényes személyre szabott [hozzáférési kulcs és végpont](text-analytics-how-to-access-key.md) használatával.
++ A válasz kimenet, amely minden dokumentumazonosítóhoz tartalmazza a nyelvi azonosítót, továbbítható bármilyen JSON-t elfogadó alkalmazáshoz, beleértve az Excelt és a Power BI-t, hogy csak néhányat említsünk.
 
 ## <a name="see-also"></a>Lásd még 
 
- [Szöveg elemzés áttekintése](../overview.md)  
+ [A Text Analytics áttekintése](../overview.md)  
  [Gyakori kérdések (GYIK)](../text-analytics-resource-faq.md)</br>
- [Szöveg Analytics termék oldalát](//go.microsoft.com/fwlink/?LinkID=759712) 
+ [Text Analytics termékoldala](//go.microsoft.com/fwlink/?LinkID=759712) 
 
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Véleményeket elemzése](text-analytics-how-to-sentiment-analysis.md)
+> [Vélemények elemzése](text-analytics-how-to-sentiment-analysis.md)

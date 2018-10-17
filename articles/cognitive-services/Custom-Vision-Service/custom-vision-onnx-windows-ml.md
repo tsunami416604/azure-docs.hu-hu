@@ -1,154 +1,155 @@
 ---
-title: Egyéni stratégiai ONNX modell Windows ml - kognitív szolgáltatások |} Microsoft Docs
-description: Megtudhatja, hogyan hozzon létre egy Windows UWP-alkalmazást, amely kognitív szolgáltatások exportált ONNX modellt használ.
+title: 'Oktatóanyag: Az ONNX-modell használata Windows ML-gel – Custom Vision Service'
+titlesuffix: Azure Cognitive Services
+description: Megismerheti, hogyan hozhat létre az Azure Cognitive Servicesből exportált ONNX modellt használó Windows UWP-alkalmazást.
 services: cognitive-services
 author: larryfr
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: custom-vision
-ms.topic: conceptual
+ms.topic: tutorial
 ms.date: 06/19/2018
 ms.author: larryfr
-ms.openlocfilehash: 0b128ba1800e74c20c09a9c5711c8473f1dd00d0
-ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
-ms.translationtype: MT
+ms.openlocfilehash: 3a9e9bc92ce38c4bb8d6d83c8017fa223342e7d2
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36939473"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46365604"
 ---
-# <a name="tutorial-use-an-onnx-model-from-custom-vision-with-windows-ml-preview"></a>Oktatóanyag: Az egyéni stratégiai ONNX modell használata Windows ML (előzetes verzió)
+# <a name="tutorial-use-an-onnx-model-from-custom-vision-with-windows-ml-preview"></a>Oktatóanyag: Custom Vision ONNX modell használata Windows ML-lel (előzetes verzió)
 
-Ismerje meg, hogyan használható az exportált Windows ml (előzetes verzió) egyéni stratégiai szolgáltatásból ONNX modell.
+Megismerheti, hogyan használhatja a Custom Vision Service-ből exportált ONNX modellt Windows ML-gel (előzetes verzió).
 
-A jelen dokumentumban szereplő információk az egyéni stratégiai szolgáltatás Windows ml-ból exportált ONNX fájl mutatja be. Például Windows UWP-alkalmazás biztosítja. A példa a betanított modell, amely fel tudja ismerni kutya és macska része. Hogyan használhatja a saját modell az ebben a példában a lépéseket is biztosítja.
+A dokumentum bemutatja, hogyan lehet a Custom Vision Service-ből exportált ONNX-fájlt Windows ML-ben használni. Tartalmaz egy Windows UWP-alkalmazás példát is. A példához tartozik egy kutyákat és macskákat felismerni képes betanított modell. Megadja azt is, hogyan használhatja ehhez a példához a saját modelljét.
 
 > [!div class="checklist"]
-> * A példa alkalmazással kapcsolatos
-> * A mintakód beolvasása
-> * A példa futtatásához
-> * A saját modellt használnak
+> * A példa alkalmazásról
+> * A példa kódjának letöltése
+> * A példa futtatása
+> * Saját modell használata
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* A Windows 10-eszközre:
+* Windows 10-es eszköz és:
 
-    * A kamera.
+    * Kamera.
 
-    * A Visual Studio 2017 15.7 vagy újabb verziója a __univerzális Windows Platform fejlesztési__ munkaterhelés engedélyezve van.
+    * Visual Studio 2017 15.7-es vagy újabb verzió engedélyezett __Univerzális Windows-platform fejlesztési__ tevékenységprofillal.
 
-    * Fejlesztői mód engedélyezve van. További információkért lásd: a [lehetővé teszik az eszköz fejlesztési](https://docs.microsoft.com/windows/uwp/get-started/enable-your-device-for-development) dokumentum.
+    * Engedélyezett fejlesztői mód. További információkért lásd a [Fejlesztés engedélyezése az eszközön](https://docs.microsoft.com/windows/uwp/get-started/enable-your-device-for-development) dokumentumot.
 
-* (Választható) Egy egyéni stratégiai szolgáltatásból exportált ONNX fájlt. További információkért lásd: a [a modell használatra exportálása a mobileszközökkel](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/export-your-model) dokumentum.
+* (Nem kötelező) Custom Vision szolgáltatásból exportált ONNX-fájl. További információkért lásd a [Modell exportálása mobil készülékkel történő használatra](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/export-your-model) dokumentumot.
 
     > [!NOTE]
-    > A saját modell használatához kövesse a [használhatja a saját](#use-your-own-model) szakasz.
+    > Ha a saját modellt kívánja használni, kövesse a [Saját modell használata](#use-your-own-model) részben megadott lépéseket.
 
-## <a name="about-the-example-app"></a>A példa alkalmazással kapcsolatos
+## <a name="about-the-example-app"></a>A példa alkalmazásról
 
-Az alkalmazásra az általános Windows UWP-alkalmazást. Adja meg a képet, hogy a modell a kamera használ a Windows 10-eszközön. A címkék és a modell által visszaadott eredmények a villámnézet alatt jelennek meg.
+Az alkalmazás általános Windows UWP alkalmazás. A Windows 10-es eszközön a kamera használatával látja el a modellt képekkel. A modell által visszaadott címkék és pontszámok a videó villámnézet alatt láthatók.
 
-* Mivel az adatok származnak, ha a kamera [MediaFrameReader](https://docs.microsoft.com/uwp/api/windows.media.capture.frames.mediaframereader) egyes keretek kibontására. A képkockák pontozó kell küldeni a modell.
+* Ahogy az adatok érkeznek a kamerán keresztül, a képkockák kivonását a [MediaFrameReader](https://docs.microsoft.com/uwp/api/windows.media.capture.frames.mediaframereader) végzi. A modell megkapja a képkockákat pontozásra.
 
-* A modell a címkéket a be lett tanítva, és egy lebegőpontos érték, amely jelzi, hogyan abban, hogy a kép tartalmazza-e, hogy az elem adja vissza.
+* A modell visszaadja azokat a címkéket, amire tanították és egy lebegőpontos értéket, ami megadja, menyire biztos, hogy a kép tartalmazza az adott elemet.
 
-### <a name="the-ui"></a>A felhasználói felületen
+### <a name="the-ui"></a>A felhasználói felület
 
-A mintaalkalmazás felhasználói felülete létre __CaptureElement__ és __TextBlock__ szabályozza. A CaptureElement a kamera videó előnézetét, valamint a TextBlock a modellből az adott eredmények jeleníti meg. 
+A mintaalkalmazáshoz a felhasználói felület a __CaptureElement__ és __TextBlock__ vezérlők használatával készül. A CaptureElement megjeleníti a kameráról érkező videó villámnézetét a TextBlock pedig megjeleníti a modell által visszaadott eredményeket. 
 
 ### <a name="the-model"></a>A modell
 
-A modell (`cat-or-dog.onnx`) található meg a példa hozta létre, és a szolgáltatások egyéni kognitív stratégiai szolgáltatással betanítása. A betanított modell majd egy ONNX modell típusúként lett exportálva. Ez a szolgáltatás használatával további információkért lásd: a [hogyan hozhat létre egy osztályozó](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/getting-started-build-a-classifier) és [a modell használatra exportálása a mobileszközökkel](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/export-your-model) dokumentumok.
+A mintához tartozó modell (`cat-or-dog.onnx`) készítése és betanítása a Cognitive Services Custom Vision service használatával történt. A betanított modellt utána exportáltuk ONNX-modellként. A szolgáltatás használatával kapcsolatban lásd: az [Osztályozó létrehozása](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/getting-started-build-a-classifier) és a [Modell exportálása mobil készülékkel történő használatra](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/export-your-model) dokumentumokat.
 
 > [!IMPORTANT]
-> A példa a megadott mintának kutya és cat képek kis számú lett képezni. Ezért nem lehet a világ legjobb: kutya és macska ismer fel.
+> A példához tartozó modellt kutya és macska képek kis halmazán tanítottuk be. Valószínűleg nem túl jó a kutyák és macskák felismerésében.
 
-### <a name="the-model-class-file"></a>A modellfájl osztály
+### <a name="the-model-class-file"></a>A modell osztály fájlja
 
-ONNX fájl hozzáadása egy Windows UWP-alkalmazást, létrehoz egy .cs fájlt. Ez a fájl rendelkezik neve megegyezik a `.onnx` fájl (`cat-or-dog` ebben a példában), és tartalmazza a modell C# használt osztályok. Azonban a létrehozott osztály entitást lehet például a `_x0033_04aa07b_x002D_6c8c_x002D_4641_x002D_93a6_x002D_f3152f8740a1_028da4e3_x002D_9c6e_x002D_480b_x002D_b53c_x002D_c1db13d24d70ModelInput`. Biztonságosan nevezze át ezeket a bejegyzéseket (kattintson a jobb gombbal, nevezze át) egy rövid nevet.
+Amikor az ONNX-fájlt hozzáadja a Windows UWP-alkalmazáshoz, egy .cs fájlt hoz létre. Ennek a fájlnak ugyanaz a neve, mint a `.onnx` fájlnak (`cat-or-dog` ebben a példában), és azokat az osztályokat tartalmazza, amelyekkel C# nyelven dolgozunk a modellel. Azonban a létrehozott osztályban az entitásoknak olyan nevük lehet, mint `_x0033_04aa07b_x002D_6c8c_x002D_4641_x002D_93a6_x002D_f3152f8740a1_028da4e3_x002D_9c6e_x002D_480b_x002D_b53c_x002D_c1db13d24d70ModelInput`. Ezeket nyugodtan át lehet nevezni (jobb egérgomb kattintás, átnevezés) rövidebb névre.
 
 > [!NOTE]
-> A példakódot tartalmaz átkerült a generált osztály és a metódus nevét a következő:
+> A példakód újrabontotta a létrehozott osztály és metódus neveket a következőkre:
 >
 > * `ModelInput`
 > * `ModelOutput`
 > * `Model`
 > * `CreateModel`
 
-### <a name="camera-access"></a>Kamera hozzáférés
+### <a name="camera-access"></a>Kamera-hozzáférés
 
-A __képességek__ lapra a `Package.appxmanifest` fájl van konfigurálva, hogy hozzáférjenek a felhasználó webkamerája és mikrofonja.
+A __Képességek__ lapon a `Package.appxmanifest` fájlra engedélyezett a webkamera és mikrofon elérése.
 
 > [!NOTE]
-> Annak ellenére, hogy ez a példa hang nem használ, szükség lenne a mikrofon engedélyezése előtt szeretnék tudni elérni az eszközön a kamera.
+> Annak ellenére, hogy a példa nem használ hangot, engedélyeznem kellett a mikrofon elérését, csak utána tudtam az eszközön elérni a kamerát.
 
-Az alkalmazás megpróbálja beolvasni hátoldalán található az eszköz kamerájának, ha elérhető ilyen. Használja a [MediaCapture](https://docs.microsoft.com/uwp/api/Windows.Media.Capture.MediaCapture) el a kamera videó osztály. [MediaFrameReader](https://docs.microsoft.com/uwp/api/Windows.Media.Capture.Frames.MediaFrameReader) videó keretek rögzítése, és küldje el a modell használatával.
+Az alkalmazás megpróbál hozzáférni a készülék hátoldali kamerájához, ha van. A [MediaCapture](https://docs.microsoft.com/uwp/api/Windows.Media.Capture.MediaCapture) osztállyal kezdi meg a videó fogadását a kameráról. A [MediaFrameReader](https://docs.microsoft.com/uwp/api/Windows.Media.Capture.Frames.MediaFrameReader) a videó képkockákat rögzíti és elküldi a modellnek.
 
-## <a name="get-the-example-code"></a>A mintakód beolvasása
+## <a name="get-the-example-code"></a>A példa kódjának letöltése
 
-A mintaalkalmazás érhető el: [ https://github.com/Azure-Samples/Custom-Vision-ONNX-UWP ](https://github.com/Azure-Samples/Custom-Vision-ONNX-UWP).
+A mintaalkalmazás itt érhető el: [https://github.com/Azure-Samples/Custom-Vision-ONNX-UWP](https://github.com/Azure-Samples/Custom-Vision-ONNX-UWP).
 
-## <a name="run-the-example"></a>A példa futtatásához
+## <a name="run-the-example"></a>A példa futtatása
 
-1. Használja a `F5` kulcs az alkalmazás indításához a Visual Studio eszközből. Fejlesztői mód engedélyezése kérheti. További információkért lásd: a [lehetővé teszik az eszköz fejlesztési](https://docs.microsoft.com/windows/uwp/get-started/enable-your-device-for-development) dokumentum.
+1. A `F5` kulcs használatával indítsa el az alkalmazást a Visual Studióból. Lehet, hogy a rendszer kéri a fejlesztői mód engedélyezését. További információkért lásd a [Fejlesztés engedélyezése az eszközön](https://docs.microsoft.com/windows/uwp/get-started/enable-your-device-for-development) dokumentumot.
 
-2. Amikor a rendszer kéri, lehetővé teszi az alkalmazás hozzáférjen a kamera és mikrofon az eszközön.
+2. Amikor a rendszer kéri, engedélyezze az alkalmazás számára a hozzáférést az eszközön a kamerához és a mikrofonhoz.
 
-3. A kamera kutya vagy cat mutasson. Az alkalmazás előzetes alatt jelennek meg, hogy a kép kutya vagy cat tartalmaz-e a pontszám.
+3. Irányítsa a kamerát kutyára vagy macskára. A pontszám, hogy a képen van-e kutya vagy macska, az alkalmazásban a villámnézet alatt jelenik meg.
 
     > [!TIP]
-    > Ha nem rendelkezik egy kutya vagy cat lesz szüksége, kutya vagy cat fénykép is használhatja.
+    > Ha nincs a közelben macska vagy kutya, használhat macskáról, kutyáról készült fényképet is.
 
-## <a name="use-your-own-model"></a>A saját modellt használnak
+## <a name="use-your-own-model"></a>Saját modell használata
 
-A saját modell használatára, tegye a következőket:
+Saját modell esetén a következőképpen járjon el:
 
 > [!IMPORTANT]
-> A jelen szakaszban szereplő lépéseket nevezze át az aktuális modell (cat-vagy-dog.cs), és az osztály és a metódus nevének, az új modell refactor. Ez a példa modell ütközések elkerüléséhez.
+> Ebben a részben megadott lépésekkel átnevezzük a modellt (cat-or-dog.cs), és újrabontjuk az új modell osztály és metódus neveit. Ennek célja, hogy a példa modellel elkerüljük a névütközéseket.
 
-1. Az egyéni stratégiai szolgáltatással a modell betanításához. A modell betanításához kapcsolatos információkért lásd: a [hogyan hozhat létre egy osztályozó](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/getting-started-build-a-classifier).
+1. Tanítsa be a modellt a Custom Vision service használatával. A modell betanításáról bővebben lásd: [Osztályozó létrehozása](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/getting-started-build-a-classifier).
 
-2. Exportálja a betanított modell egy ONNX modellre. Egy modell exportálásával kapcsolatos információkért lásd: a [a modell használatra exportálása a mobileszközökkel](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/export-your-model) dokumentum.
+2. Exportálja a betanított modellt ONNX-modellként. Azzal kapcsolatban, hogyan lehet a modellt exportálni, lásd a [Modell exportálása mobil készülékkel történő használatra](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/export-your-model) dokumentumot.
 
-3. A Megoldáskezelőben kattintson a jobb gombbal a __cat vagy dog.cs__ nevezze át és __cat vagy dog.txt__. Átnevezése megakadályozza, hogy az új modell összeütközések nevét.
+3. A Megoldáskezelőben kattintson jobb gombbal a __cat-or-dog.cs__ névre és nevezze át __cat-or-dog.txt__ fájlra. Az átnevezés megakadályozza a névütközéseket az új modellel.
 
     > [!TIP]
-    > Az új modell az osztályneveket a különböző neveket is használhatja, de újból felhasználja a meglévő nevekkel egyszerűbb.
+    > Használhatna más osztály neveket is az új modellben, de a létező neveket használni egyszerűbb.
 
-4. A Megoldáskezelőben kattintson a jobb gombbal a __VisionApp__ bejegyzést, majd válassza ki __Hozzáadás__ > __meglévő cikk...__ .
+4. A Megoldáskezelőben kattintson jobb gombbal a __VisionApp__ elemre, majd válassza a __Létező elem__ > __hozzáadása...__  pontot.
 
-5. A modell osztályt létrehozni, válassza ki az ONNX fájlt importálja, majd válassza ki a __Hozzáadás__ gombra. Egy új osztályt a ONNX fájllal azonos nevű (azonban egy `.cs` bővítmény) kerül a Megoldáskezelőben.
+5. A modellhez az osztály generálásához válassza az importálandó ONNX fájlt, majd válassza a __Hozzáadás__ gombot. Az ONNX-fájllal azonos nevű új osztály (de a bővítménye `.cs`) jön létre a Megoldáskezelőben.
 
-6. Nyissa meg a létrehozott .cs fájlt, és keresse meg a következő elemek nevei:
+6. Nyissa meg a generált .cs fájlt, és keresse meg a következő elemek neveit:
 
     > [!IMPORTANT]
-    > A példa `cat-or-dog.txt` ismeri fel a osztályok és funkciók útmutatójaként fájlt.
+    > A `cat-or-dog.txt` példa fájl segítségével keresse meg az osztályokat és függvényeket.
 
-    * Az osztály, amely meghatározza a bemeneti modell. Lehet, hogy a létrehozott név hasonló `_x0033_04aa07b_x002D_6c8c_x002D_4641_x002D_93a6_x002D_f3152f8740a1_028da4e3_x002D_9c6e_x002D_480b_x002D_b53c_x002D_c1db13d24d70ModelInput`. Nevezze át ezt az osztályt az __ModelInput__.
-    * Az osztály, amely meghatározza a modell kimeneti. Lehet, hogy a létrehozott név hasonló `_x0033_04aa07b_x002D_6c8c_x002D_4641_x002D_93a6_x002D_f3152f8740a1_028da4e3_x002D_9c6e_x002D_480b_x002D_b53c_x002D_c1db13d24d70ModelOutput`. Nevezze át ezt az osztályt az __ModelOutput__.
-    * Az osztály, amely meghatározza a modell. Lehet, hogy a létrehozott név hasonló `_x0033_04aa07b_x002D_6c8c_x002D_4641_x002D_93a6_x002D_f3152f8740a1_028da4e3_x002D_9c6e_x002D_480b_x002D_b53c_x002D_c1db13d24d70Model`. Nevezze át ezt az osztályt az __modell__.
-    * A módszer, amely a modell létrehozása. Lehet, hogy a létrehozott név hasonló `Create_x0033_04aa07b_x002D_6c8c_x002D_4641_x002D_93a6_x002D_f3152f8740a1_028da4e3_x002D_9c6e_x002D_480b_x002D_b53c_x002D_c1db13d24d70Model`. Nevezze át ezt a metódust __CreateModel__.
+    * A modell bemenetét definiáló osztály. A generált név ehhez hasonló lehet: `_x0033_04aa07b_x002D_6c8c_x002D_4641_x002D_93a6_x002D_f3152f8740a1_028da4e3_x002D_9c6e_x002D_480b_x002D_b53c_x002D_c1db13d24d70ModelInput`. Nevezze át az osztályt __ModelInput__ névre.
+    * A modell kimenetét definiáló osztály. A generált név ehhez hasonló lehet: `_x0033_04aa07b_x002D_6c8c_x002D_4641_x002D_93a6_x002D_f3152f8740a1_028da4e3_x002D_9c6e_x002D_480b_x002D_b53c_x002D_c1db13d24d70ModelOutput`. Nevezze át az osztályt __ModelOutput__ névre.
+    * A modellt definiáló osztály. A generált név ehhez hasonló lehet: `_x0033_04aa07b_x002D_6c8c_x002D_4641_x002D_93a6_x002D_f3152f8740a1_028da4e3_x002D_9c6e_x002D_480b_x002D_b53c_x002D_c1db13d24d70Model`. Nevezze át ezt az osztályt __Modell__ névre.
+    * A modellt létrehozó metódus. A generált név ehhez hasonló lehet: `Create_x0033_04aa07b_x002D_6c8c_x002D_4641_x002D_93a6_x002D_f3152f8740a1_028da4e3_x002D_9c6e_x002D_480b_x002D_b53c_x002D_c1db13d24d70Model`. Nevezze át ezt a metódust __CreateModel__ névre.
 
-7. A Megoldáskezelőben, helyezze át a `.onnx` fájlt a __eszközök__ mappát. 
+7. A Megoldáskezelőben helyezze át a `.onnx` fájlt az __Eszközök__ mappába. 
 
-8. Az alkalmazáscsomag felvenni a ONNX fájlt, jelölje ki a `.onnx` fájlt, és __Build művelet__ való __tartalom__ tulajdonságai.
+8. Az ONNX-fájlnak az alkalmazáscsomagba történő belevételéhez, válassza ki a `.onnx` fájlt, és a tulajdonságoknál állítsa be a __Fordítási művelet__ esetében a __Tartalom__ lehetőséget.
 
-9. Nyissa meg a __MainPage.xaml.cs__ fájlt. A következő sorban, majd módosítsa a fájl nevét az új található `.onnx` fájlt:
+9. Nyissa meg a __MainPage.xaml.cs__ fájlt. Keresse meg a következő sort és írja át a fájl nevét az új `.onnx` fájlra:
 
     ```csharp
     var file = await StorageFile.GetFileFromApplicationUriAsync(new Uri($"ms-appx:///Assets/cat-or-dog.onnx"));
     ```
 
-    Ez a változás az új modell futásidőben betölti.
+    A változás az új modellt tölti be futásidőben.
 
-10. Hozza létre, és futtassa az alkalmazást. Most használja az új modell pontozása képek.
+10. Hozza létre és futtassa az alkalmazást. Most már az új modellt használja a képek pontozására.
 
 ## <a name="next-steps"></a>További lépések
 
-Annak megállapításához, egyéb módjai exportálása és egyéni stratégiai modellt használnak, lásd a következő dokumentumokat:
+Egyéb exportálási lehetőségekről és a Custom Vision modell használatáról bővebb információt a következő dokumentumokban talál:
 
 * [A modell exportálása](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/export-your-model)
-* [Exportált Tensorflow modellt használhatja az Android alkalmazás](https://github.com/Azure-Samples/cognitive-services-android-customvision-sample)
-* [Használja az exportált CoreML modell Swift iOS-alkalmazásokban](https://go.microsoft.com/fwlink/?linkid=857726)
-* [Használjon exportált CoreML modell a xamarin iOS-alkalmazás](https://github.com/xamarin/ios-samples/tree/master/ios11/CoreMLAzureModel)
+* [Exportált Tensorflow-modell használata Android-alkalmazásban](https://github.com/Azure-Samples/cognitive-services-android-customvision-sample)
+* [Exportált CoreML modell használata Swift iOS-alkalmazásban](https://go.microsoft.com/fwlink/?linkid=857726)
+* [Exportált CoreML modell használata iOS alkalmazásban Xamarinnal](https://github.com/xamarin/ios-samples/tree/master/ios11/CoreMLAzureModel)
 
-A Windows ml ONNX modellek segítségével további információkért lásd: a [modell integrálja az alkalmazás a Windows ML](https://docs.microsoft.com/windows/uwp/machine-learning/integrate-model) dokumentum.
+Az ONNX-modellek Windows ML-lel történő használatáról bővebb információk találhatók a [Modell integrálása az alkalmazásba a Windows ML használatával](https://docs.microsoft.com/windows/uwp/machine-learning/integrate-model) dokumentumban.

@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 09/26/2018
 ms.author: mabrigg
 ms.reviewer: Anjay.Ajodha
-ms.openlocfilehash: c195f2ee24b61a57c098d5214a37f65e80845074
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 28ff8dbf073596e5f9565c56ae903af6af68f3e2
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47410204"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49353716"
 ---
 # <a name="tutorial-create-an-edge-machine-learning-solution-with-azure-and-azure-stack"></a>Oktatóanyag: Hozzon létre egy gépi tanulási megoldásokat az Azure és az Azure Stack megoldás
 
@@ -210,7 +210,7 @@ Helyezze el az új dsvm-hez az újonnan létrehozott tárfiók ugyanabban az er�
 
     d.  Az a **diagnosztikai Tárfiók**, válassza ki a korábban létrehozott tárfiókot.
 
-    e.  Megjegyzés: Az aad-ben engedélyezni és konfigurálni az Azure-előfizetéshez tartozó, a Felügyeltszolgáltatás-identitást engedélyezhető is.
+    e.  Megjegyzés: Az aad-ben engedélyezni és konfigurálni az Azure-előfizetéshez tartozó, felügyelt identitások Azure-erőforrások számára engedélyezhető is.
 
 2.  Kattintson az **OK** gombra.
 

@@ -1,36 +1,37 @@
 ---
-title: Szöveg Analytics REST API-ban (Microsoft Azure kognitív szolgáltatások) – útmutató legfontosabb kifejezés kivonása |} Microsoft Docs
-description: Bontsa ki a szöveg Analytics REST API használatával a Microsoft Azure kognitív Services bemutató oktatóanyag legfontosabb kifejezések módjáról.
+title: 'Példa: Hogyan nyerhetők ki a kulcsszavak a Text Analytics használatával'
+titleSuffix: Azure Cognitive Services
+description: Ismerje meg, hogyan nyerhetők ki a kulcsszavak a Text Analytics REST API használatával.
 services: cognitive-services
 author: HeidiSteen
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: text-analytics
-ms.topic: article
-ms.date: 3/07/2018
+ms.topic: sample
+ms.date: 09/12/2018
 ms.author: heidist
-ms.openlocfilehash: 78b100e737242fa9f56e50275ef2038d8895349e
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
-ms.translationtype: MT
+ms.openlocfilehash: 62c078a8a72cd0a3633b7dd5fda1545f01067dbc
+ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35347439"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45605487"
 ---
-# <a name="how-to-extract-key-phrases-in-text-analytics"></a>Szövegelemzések a legfontosabb kifejezések kicsomagolása
+# <a name="example-how-to-extract-key-phrases-in-text-analytics"></a>Példa: Hogyan nyerhetők ki a kulcsszavak a Text Analytics használatával
 
-A [kulcs kifejezés kibontási API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c6) strukturálatlan szöveg kiértékeli, és minden JSON-dokumentum, a legfontosabb kifejezések listáját adja vissza. 
+A [Key Phrase Extraction API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c6) strukturálatlan szöveget értékel ki és minden JSON-dokumentumra visszaadja a kulcsszavak listáját. 
 
-Ez a funkció akkor hasznos, ha szeretné gyorsan azonosíthatja a dokumentumok gyűjtemény főbb pontjai. Például adott bemeneti szöveg "az étele delicious volt, és nem találhatók a csodálatos személyzet", a szolgáltatás adja vissza a fő beszélő pontokat: "étele" és "csodálatos személyzet".
+Ez a funkció akkor hasznos, ha szeretné gyorsan azonosítani a dokumentum gyűjtemény fő témáit. Például „Az étel finom, a személyzet nagyszerű volt” bemeneti szövegre a szolgáltatás visszaadja a fő kulcsszavakat: „étel” és „nagyszerű személyzet”.
 
-Kulcs kifejezés kibontási jelenleg angol, német, spanyol és japán. Egyéb nyelvek még csak előzetes verziójúak. További információkért lásd: [támogatott nyelv](../text-analytics-supported-languages.md).
+Jelenleg a Key Phrase Extraction az angol, német, spanyol és japán nyelvet támogatja. Más nyelvek előzetes verzióban érhetők el. További információk: [Támogatott nyelvek](../text-analytics-supported-languages.md).
 
-## <a name="preparation"></a>Előkészítése
+## <a name="preparation"></a>Előkészítés
 
-Kulcs kifejezés kibontási működik optimálisan, ha a szöveg elérje a nagyobb mennyiségű adjon neki. Ez az ellentétes a céggel kapcsolatos véleményeket elemzés, melyik teljesít jobban kisebb címblokkok szöveg. Ahhoz, hogy a legjobb eredmények elérése érdekében a mindkét művelettől, fontolja meg a át lesznek strukturálva a bemenetek ennek megfelelően.
+A kulcsszókeresés akkor működik a legjobban, ha nagyobb méretű szövegen dolgozhat. Ez ellentétes a hangulatelemzéssel, amelyik pedig a kisebb szövegekre működik jobban. A legjobb eredmény elérése érdekében célszerű a bemenetet ennek megfelelően átszervezni.
 
-JSON-dokumentumok rendelkeznie kell a következő formátumban: azonosító, a szöveg, a nyelvi
+A JSON-dokumentumnak ilyen formátumban kell lennie: azonosító, szöveg, nyelv
 
-Dokumentum mérete dokumentumonként a 5000 karakterből állhat, illetve azt, hogy legfeljebb 1000 gyűjteményenként (azonosítók) elemet. A gyűjtemény elküldve a kérelem törzsében. A következő példa olyan bemutatásáért, előfordulhat, hogy küldje el kulcs kifejezés kiolvasásához tartalom.
+A dokumentum méretének 5000 karakter alatt kell maradnia, és legfeljebb 1000 elem (azonosító) lehet egy kollekcióban. A kollekció elküldése a kérelem törzsében történik. A következő példa egy kulcsszókeresésre beküldhető szöveget mutat be.
 
 ```
     {
@@ -64,34 +65,34 @@ Dokumentum mérete dokumentumonként a 5000 karakterből állhat, illetve azt, h
     }
 ```    
     
-## <a name="step-1-structure-the-request"></a>1. lépés: A kérés struktúra
+## <a name="step-1-structure-the-request"></a>1. lépés: A kérés felépítése
 
-A kérelem definíciója részletek megtalálhatók a [hogyan hívhatja meg a szöveg Analytics API](text-analytics-how-to-call-api.md). Kényelmi vannak megfelelően a következő szempontokat:
+A kérés definícióval kapcsolatos részletek megtalálhatók a [Text Analytics API hívásának módja](text-analytics-how-to-call-api.md) részben. A következő pontokat a kényelem kedvéért itt megismételjük:
 
-+ Hozzon létre egy **POST** kérelmet. Tekintse át a kérelem az API dokumentációjának: [kulcs kifejezések API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c6)
++ Hozzon létre egy **POST** kérést. Nézze meg az API-dokumentációban ezt a kérést: [Key Phrases API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c6)
 
-+ Állítsa be a HTTP-végpont kulcs kifejezés kiolvasásához. Tartalmaznia kell a `/keyphrases` erőforrás: `https://westus.api.cognitive.microsoft.com/text/analytics/v2.0/keyPhrases`
++ Állítsa be a kulcsszókereséshez a HTTP-végpontot. Tartalmaznia kell a `/keyphrases` erőforrást: `https://westus.api.cognitive.microsoft.com/text/analytics/v2.0/keyPhrases`
 
-+ Állítsa be a hozzáférési kulcsot a következő Szövegelemzések műveletek közé tartozik a fejléc. További információkért lásd: [végpontok kereséséhez, és hozzáférési kulcsokkal](text-analytics-how-to-access-key.md).
++ A kérés fejlécet állítsa be úgy, hogy tartalmazza a Text Analytics műveletekhez a hozzáférési kulcsot. További információkért lásd: [Végpontok és hozzáférési kulcsok megkeresése](text-analytics-how-to-access-key.md).
 
-+ A kérelem törzsében szereplő adja meg az elemzés az Felkészülés JSON documents gyűjtemény
++ A kérelem törzsében adja meg az elemzéshez előkészített JSON-dokumentum kollekciót
 
 > [!Tip]
-> Használja [Postman](text-analytics-how-to-call-api.md) vagy nyissa meg a **API-tesztelési konzol** a a [dokumentáció](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c6) struktúra egy kérelmet, és KÖZZÉTEHETI a szolgáltatás.
+> Használható a [Postman](text-analytics-how-to-call-api.md) vagy nyissa meg az **API teszt konzolt** a [dokumentációban](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c6) a kérés felépítéséhez és a szolgáltatásnak történő POST elküldéséhez.
 
-## <a name="step-2-post-the-request"></a>2. lépés: Küldje a kérelmet
+## <a name="step-2-post-the-request"></a>2. lépés: A kérés elküldése
 
-Elemzés a kérelem történik. A szolgáltatás fogadja a legfeljebb 100 kérelmek / perc. Minden egyes kérelem legfeljebb 1 MB méretű is lehet.
+Az elemzés a kérelem megkapásakor történik meg. A szolgáltatás percenként legfeljebb 100 kérést fogad. Mindegyik kérés legfeljebb 1 MB lehet.
 
-A visszaírási, hogy állapot nélküli-e a szolgáltatás. Adatot nem tárolja a fiókját. Eredményeinek azonnal a válaszban.
+Ne felejtse, hogy a szolgáltatás állapot nélküli. A fiókban nem tárol semmilyen adatot. Az eredményeket azonnal visszaadja a válaszban.
 
-## <a name="step-3-view-results"></a>3. lépés: Az eredmények megtekintése
+## <a name="step-3-view-results"></a>3. lépés: Eredmények megtekintése
 
-Minden POST kérelemhez vissza JSON formátumú válasz azonosítókkal és Tulajdonságok észlelhetők.
+Minden POST kérés egy JSON formátumú választ ad vissza az azonosítókkal és az észlelt tulajdonságokkal.
 
-Kimeneti azonnal adja vissza. Az eredmények JSON elfogadó alkalmazás adatfolyamként vagy kimenetét mentse fájlba a helyi rendszer, és importálja azt az alkalmazást, amely lehetővé teszi rendezni, keresése és az adatok kezelését.
+A kimenetet visszaadása azonnali. Az eredmények adatfolyamát JSON elfogadó alkalmazáshoz küldheti vagy a kimenetet elmentheti fájlba a helyi rendszeren, majd importálható az adatokat rendezni, keresni és kezelni képes alkalmazásba.
 
-A kulcs kifejezés kiolvasásához kimeneti példa tovább:
+Egy példa a kulcsszókeresés eredményére a következő:
 
 ```
     "documents": [
@@ -138,24 +139,24 @@ A kulcs kifejezés kiolvasásához kimeneti példa tovább:
         }
 ```
 
-Amint azt a analyzer talál és elveti a nem szükséges szavak, és egy szót vagy kifejezést, és a tulajdonos vagy a mondatok objektum tartja. 
+Amint említettük, az elemző törli a lényegtelen szavakat és azokat a szavakat vagy kifejezéseket tartja meg, amelyek a mondat lényegéhez, tárgyához tartozónak tűnnek. 
 
 ## <a name="summary"></a>Összegzés
 
-Ebben a cikkben megtanulta, fogalmak és a munkafolyamat kulcs kifejezés kiolvasásához Szövegelemzések kognitív szolgáltatások használatával. Összefoglalva:
+Ebben a cikkben a kulcsszókeresés elveivel és folyamatával ismerkedett meg a Cognitive Services Text Analytics használatával. Összegezve:
 
-+ [Kulcs kifejezés kibontási API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c6) kiválasztott nyelveken érhető el.
-+ A kérelem törzsében szereplő JSON-dokumentumok közé tartozik egy azonosítót, a szöveg és a nyelvi kódot.
-+ POST-kérelmet, hogy egy `/keyphrases` végpont, egy személyre szabott [hozzáférési kulcs és egy végpontot](text-analytics-how-to-access-key.md) érvényes az előfizetéséhez.
-+ Válasz kimenete, amely kulcs szavak és kifejezések minden dokumentum azonosítóhoz, továbbítható bármely alkalmazásba, amely támogatja a JSON-NÁ, beleértve az Excel és a Power bi-ban, hogy néhányat említsünk.
++ A [Kulcsszókeresés API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c6) csak egyes nyelvekre érhető el.
++ A kérés törzsében szereplő JSON-dokumentumok azonosítót, szöveget és nyelvkódot tartalmaznak.
++ POST-kérés a `/keyphrases` végpontra, az előfizetésre érvényes személyre szabott [hozzáférési kulcs és végpont](text-analytics-how-to-access-key.md) használatával.
++ A válasz kimenet, amely minden dokumentumazonosítóhoz tartalmazza a kulcsszavakat és kifejezéseket, továbbítható bármilyen JSON-t elfogadó alkalmazáshoz, beleértve az Excelt és a Power BI-t, hogy csak néhányat említsünk.
 
 ## <a name="see-also"></a>Lásd még 
 
- [Szöveg elemzés áttekintése](../overview.md)  
+ [A Text Analytics áttekintése](../overview.md)  
  [Gyakori kérdések (GYIK)](../text-analytics-resource-faq.md)</br>
- [Szöveg Analytics termék oldalát](//go.microsoft.com/fwlink/?LinkID=759712) 
+ [Text Analytics termékoldala](//go.microsoft.com/fwlink/?LinkID=759712) 
 
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Szövegelemzések API](//westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c6)
+> [Text Analytics API](//westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c6)

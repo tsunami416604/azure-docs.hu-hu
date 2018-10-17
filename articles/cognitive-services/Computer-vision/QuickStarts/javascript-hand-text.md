@@ -1,43 +1,48 @@
 ---
-title: Computer Vision API – JavaScript rövid útmutató | Microsoft Docs
-titleSuffix: Microsoft Cognitive Services
-description: Ebben a rövid útmutatóban kézzel írt szöveget fog kinyerni egy képből a Computer Vision és a JavaScript használatával a Cognitive Servicesben.
+title: 'Rövid útmutató: Kézzel írt szöveg kinyerése – REST, JavaScript – Computer Vision'
+titleSuffix: Azure Cognitive Services
+description: Ebben a rövid útmutatóban kézzel írt szöveget fog kinyerni egy képből a Computer Vision JavaScripttel történő használatával.
 services: cognitive-services
 author: noellelacharite
-manager: nolachar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: computer-vision
 ms.topic: quickstart
 ms.date: 08/28/2018
 ms.author: v-deken
-ms.openlocfilehash: c6b52bfdf1c42499772da1e5f72897baa65a4786
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: 82c51c95bf8a538ce50dd190cce737b0295abc6e
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43770105"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45634676"
 ---
-# <a name="quickstart-extract-handwritten-text---rest-javascript"></a>Rövid útmutató: Kézzel írt szöveg kinyerése – REST, JavaScript
+# <a name="quickstart-extract-handwritten-text-using-the-rest-api-and-javascript-in-computer-vision"></a>Rövid útmutató: Kézzel írt szöveg kinyerése a REST API és a JavaScript használatával a Computer Vision szolgáltatásban
 
-Ebben a rövid útmutatóban kézzel írt szöveget fog kinyerni egy képből a Computer Vision segítségével.
+Ebben a rövid útmutatóban kézzel írt szöveget fog kinyerni egy képből a Computer Vision REST API-jának használatával. A [Recognize Text](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/587f2c6a154055056008f200) és a [Get Recognize Text Operation Result](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/587f2cf1154055056008f201) metódussal kézzel írott szöveget észlelhet egy képen, és géppel olvasható karakterfolyamba nyerheti ki a felismert karaktereket.
+
+> [!IMPORTANT]
+> Az [OCR](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) metódussal ellentétben a [Recognize Text](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/587f2c6a154055056008f200) metódus aszinkron módon fut. Ez a metódus nem adja vissza információt a sikeres válaszok törzsében. A Recognize Text metódus ehelyett egy `Operation-Content` értékű URI-t eredményez a válasz fejlécmezőjében. Ezután meghívhatja ezt az URI-t, amely a [Get Recognize Text Operation Result](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/587f2cf1154055056008f201) metódust képviseli, és ellenőrizheti a Recognize Text metódus állapotát, valamint lekérheti annak eredményeit.
+
+Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services) a virtuális gép létrehozásának megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A Computer Vision használatához előfizetési kulcsra van szüksége, lásd az [előfizetési kulcsok beszerzéséről](../Vision-API-How-to-Topics/HowToSubscribe.md) szóló témakört.
+Szüksége lesz egy Computer Vision-előfizetői azonosítóra. Az előfizetői azonosító beszerzéséhez lásd az [előfizetői azonosítók beszerzéséről](../Vision-API-How-to-Topics/HowToSubscribe.md) szóló témakört.
 
-## <a name="recognize-text-request"></a>Szövegfelismerési kérés
+## <a name="create-and-run-the-sample"></a>A minta létrehozása és futtatása
 
-A [Recognize Text](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/587f2c6a154055056008f200) és a [Get Recognize Text Operation Result metódussal](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/587f2cf1154055056008f201) kézzel írott szöveget észlelhet egy képen, és géppel olvasható karakterfolyamba nyerheti ki a felismert karaktereket.
+A minta létrehozásához és futtatásához az alábbi lépéseket kell végrehajtania:
 
-A minta futtatásához az alábbi lépéseket kell végrehajtania:
-
-1. Másolja és mentse egy fájlba az alábbi szöveget, például `handwriting.html` néven.
-1. A `<Subscription Key>` helyére írja be az érvényes előfizetési kulcsot.
-1. Ha szükséges, változtassa meg az `uriBase` értékét arra a helyre, ahonnan az előfizetési kulcsot beszerezte.
-1. Húzza a fájlt a böngészőbe.
-1. Kattintson a `Read image` gombra.
-
-Ebben a példában a jQuery 1.9.0-t használjuk. Egy jQuery nélküli JavaScriptet használó minta megtekintéséhez lásd a [miniatűr intelligens létrehozásával](javascript-thumb.md) foglalkozó cikket.
+1. Másolja az alábbi kódot egy szövegszerkesztőbe.
+1. Hajtsa végre a következő módosításokat a kód megfelelő területein:
+    1. Cserélje le a `subscriptionKey` értéket az előfizetői azonosítóra.
+    1. Szükség esetén cserélje le az `uriBase` értékét azon [Recognize Text](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/587f2c6a154055056008f200) metódus végpontjának URL-címére, amely az előfizetési kulcsokat tartalmazó Azure-régióból származik.
+    1. Ha szeretné, cserélje le az `inputImage` vezérlő `value` értékét egy másik olyan kép URL-címére, amelyből kézzel írt szöveget szeretne kinyerni.
+1. Mentse a kódot fájlként `.html` kiterjesztéssel. Például: `get-handwriting.html`.
+1. Nyisson meg egy böngészőablakot.
+1. A böngészőben húzza a fájlt a böngészőablakba.
+1. Amikor megjelenik a weblap, kattintson a **Kép felolvasása** gombra.
 
 ```html
 <!DOCTYPE html>
@@ -57,19 +62,18 @@ Ebben a példában a jQuery 1.9.0-t használjuk. Egy jQuery nélküli JavaScript
         // Replace <Subscription Key> with your valid subscription key.
         var subscriptionKey = "<Subscription Key>";
 
-        // You must use the same region in your REST call as you used to get your
-        // subscription keys. For example, if you got your subscription keys from
-        // westus, replace "westcentralus" in the URI below with "westus".
+        // You must use the same Azure region in your REST API method as you used to
+        // get your subscription keys. For example, if you got your subscription keys
+        // from the West US region, replace "westcentralus" in the URL
+        // below with "westus".
         //
-        // Free trial subscription keys are generated in the westcentralus region.
+        // Free trial subscription keys are generated in the West Central US region.
         // If you use a free trial subscription key, you shouldn't need to change
         // this region.
         var uriBase =
             "https://westcentralus.api.cognitive.microsoft.com/vision/v2.0/recognizeText";
 
         // Request parameter.
-        // Note: The request parameter changed for APIv2.
-        // For APIv1, it is "handwriting": "true".
         var params = {
             "mode": "Handwritten",
         };
@@ -186,11 +190,9 @@ Image to read:
 </html>
 ```
 
-## <a name="recognize-text-response"></a>A szövegfelismerés válasza
+## <a name="examine-the-response"></a>A válasz vizsgálata
 
-A rendszer JSON formátumban adja vissza a sikeres választ. A visszaadott kézíráseredmények közé tartozik az észlelt szöveg, valamint az egyes régiókat, sorokat és szavakat határoló keretek.
-
-A program kimenete az alábbi JSON-példára fog hasonlítani:
+A rendszer JSON formátumban adja vissza a sikeres választ. A mintaweblap elemzi és megjeleníti a sikeres választ a böngészőablakban, a következő példához hasonló módon:
 
 ```json
 {
@@ -468,9 +470,13 @@ A program kimenete az alábbi JSON-példára fog hasonlítani:
 }
 ```
 
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+
+Ha már nincs rá szükség, törölje a fájlt.
+
 ## <a name="next-steps"></a>További lépések
 
-Ismerjen meg egy JavaScript-alkalmazást, amely a Computer Vision segítségével végez optikai karakterfelismerést (OCR), és amellyel intelligens körbevágású miniatűröket hozhat létre, valamint képek vizuális jellemzőit, például arcokat észlelhet, kategorizálhat, címkézhet és írhat le. A Computer Vision API-kkal való gyors kísérletezéshez próbálja ki az [Open API-tesztkonzolt](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa/console).
+Ismerjen meg egy JavaScript-alkalmazást, amely a Computer Vision segítségével végez optikai karakterfelismerést (OCR), és amellyel intelligens körbevágású miniatűröket hozhat létre, valamint képek vizuális jellemzőit, például arcokat észlelhet, kategorizálhat, címkézhet és írhat le. A Computer Vision API-val való gyors kísérletezéshez próbálja ki az [Open API-tesztkonzolt](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa/console).
 
 > [!div class="nextstepaction"]
 > [Computer Vision API – JavaScript-oktatóanyag](../Tutorials/javascript-tutorial.md)

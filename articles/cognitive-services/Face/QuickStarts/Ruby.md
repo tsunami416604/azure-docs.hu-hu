@@ -1,21 +1,21 @@
 ---
-title: Face API Ruby – rövid útmutató | Microsoft Docs
-titleSuffix: Microsoft Cognitive Services
-description: Ebben a rövid útmutatóban arcokat fog felismerni egy képről a Face API segítségével és a Ruby használatával a Cognitive Servicesben.
+title: 'Rövid útmutató: Arcfelismerés képen – Face API, Ruby'
+titleSuffix: Azure Cognitive Services
+description: Ebben a rövid útmutatóban arcokat fog felismerni egy képről a Face API segítségével és a Ruby használatával.
 services: cognitive-services
 author: noellelacharite
-manager: nolachar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: face-api
 ms.topic: quickstart
 ms.date: 05/30/2018
 ms.author: nolachar
-ms.openlocfilehash: b7fc23259475b7d165171ce42f1d0dff90d1069c
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: a76be6d6afa198762448cea7125b5c49e7fc1009
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "43769463"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46124796"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-ruby"></a>Rövid útmutató: Arcfelismerés egy képen a Ruby használatával
 

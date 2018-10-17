@@ -9,16 +9,16 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: af2aa8d7b01d973da400808fd3e97d0739693cd2
-ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
+ms.openlocfilehash: fb13bcee411b4fa27bf3ce5cd62fa3a483ea23e6
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35236331"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45731892"
 ---
 # <a name="tutorial-configure-rules-and-actions-for-your-device-in-azure-iot-central"></a>Oktatóanyag: Az eszközre vonatkozó szabályok és műveletek konfigurálása az Azure IoT Centralban
 
-Ez az oktatóanyag bemutatja, hogy szerkesztőként hogyan konfigurálhat telemetria-alapú szabályokat és műveleteket a Microsoft Azure IoT Central-alkalmazásban.
+*Ez a cikk operátorokra, fejlesztőkre és rendszergazdákra vonatkozik.*
 
 Ebben az oktatóanyagban létrehoz egy szabályt, amely e-mailt küld, amikor a csatlakoztatott légkondicionáló készülék hőmérséklete meghaladja a 90 &deg;F értéket.
 
@@ -36,37 +36,41 @@ Az oktatóanyag elkezdése előtt el kell végeznie az [Új eszköztípus defini
 
 1. Ha új, telemetria-alapú szabályt szeretne hozzáadni az alkalmazáshoz, válassza a bal oldali navigációs menüben lévő **Eszközkereső** elemet:
 
-    ![Eszközkereső oldal](media/tutorial-configure-rules/explorerpage.png)
+    ![Eszközkereső oldal](media/tutorial-configure-rules/explorerpage1.png)
 
     Láthatja a **Csatlakoztatott légkondicionáló (1.0.0)** eszközsablont és az előző oktatóanyagban létrehozott **Csatlakoztatott légkondicionáló-1** eszközt.
 
 2. A csatlakoztatott légkondicionáló eszköz testreszabásának megkezdéséhez válassza ki az előző oktatóanyagban létrehozott eszközt:
 
-    ![Csatlakoztatott légkondicionáló oldal](media/tutorial-configure-rules/builderdevicelist.png)
+    ![Csatlakoztatott légkondicionáló oldal](media/tutorial-configure-rules/builderdevicelist1.png)
 
-3. Ha szabályt szeretne hozzáadni a **Szabályok** nézethez, válassza a **Szabályok** lehetőséget:
+3. Ha szabályt szeretne hozzáadni a **Szabályok** nézethez, válassza a **Szabályok** lehetőséget, majd kattintson a **Sablon szerkesztése** elemre:
 
-    ![Szabályok nézet](media/tutorial-configure-rules/builderrulesview.png)
+    ![Szabályok nézet](media/tutorial-configure-rules/builderedittemplate.png)
 
-4. Küszöbérték-alapú telemetriaszabály létrehozásához válassza az **Új szabály** lehetőséget, majd a **Telemetria** elemet.
+4. Küszöbérték-alapú telemetriaszabály létrehozásához kattintson az **Új szabály** lehetőségre majd a **Telemetria** elemre.
+
+    ![Sablon szerkesztése](media/tutorial-configure-rules/buildernewrule.png)
 
 5. A szabály meghatározásához használja a következő táblázatban lévő információkat:
 
-    | Beállítás     | Érték                          |
-    | ----------- | ------------------------------ |
-    | Name (Név)        | Légkondicionáló hőmérséklete    |
-    | Szabály engedélyezése | Bekapcsolva                             |
-    | Állapot   | A hőmérséklet nagyobb, mint 90 |
+    | Beállítás                                      | Érték                             |
+    | -------------------------------------------- | ------------------------------    |
+    | Name (Név)                                         | Légkondicionáló hőmérsékletével kapcsolatos figyelmeztetés |
+    | Szabály bekapcsolása a sablon összes eszközén | Bekapcsolva                                |
+    | Szabály bekapcsolása ezen az eszközön                   | Bekapcsolva                                |
+    | Állapot                                    | A hőmérséklet nagyobb, mint 90    |
+    | Összesítés                                  | None                              |
 
-    ![Hőmérsékleti szabályfeltétel](media/tutorial-configure-rules/buildertemperaturerule.png)
+    ![Hőmérsékleti szabályfeltétel](media/tutorial-configure-rules/buildertemperaturerule1.png)
 
 ## <a name="add-an-action"></a>Művelet hozzáadása
 
 A szabályok definiálásakor egy műveletet is meghatároz, amely a szabályfeltételek teljesülésekor fut. Ebben az oktatóanyagban olyan műveletet ad hozzá, amely értesítő e-mailt küld a szabály elindításáról.
 
-1. **Művelet** hozzáadásához görgessen lefelé a **Telemetria-szabály konfigurálása** panelen, majd válassza a **Műveletek** melletti **+** elemet, és válassza az **E-mail** lehetőséget:
+1. **Művelet** hozzáadásához **mentse** el a szabályt, majd görgessen lefelé a **Telemetria-szabály konfigurálása** panelen, majd válassza a **Műveletek** melletti **+** elemet, végül az **E-mail** lehetőséget:
 
-    ![Hőmérsékleti szabályművelet](media/tutorial-configure-rules/builderaddaction.png)
+    ![Hőmérsékleti szabályművelet](media/tutorial-configure-rules/builderaddaction1.png)
 
 2. A művelet meghatározásához használja a következő táblázatban lévő információkat:
 
@@ -82,7 +86,10 @@ A szabályok definiálásakor egy műveletet is meghatároz, amely a szabályfel
 
 3. Válassza a **Mentés** elemet. A szabály a **Szabályok** oldalon szerepel:
 
-    ![Alkalmazásszerkesztő szabályok](media/tutorial-configure-rules/builderrules.png)
+    ![Alkalmazásszerkesztő szabályok](media/tutorial-configure-rules/builderrules1.png)
+
+4. Válassza a **Kész** lehetőséget a **Sablon szerkesztése** módból való kilépéshez.
+ 
 
 ## <a name="test-the-rule"></a>A szabály tesztelése
 

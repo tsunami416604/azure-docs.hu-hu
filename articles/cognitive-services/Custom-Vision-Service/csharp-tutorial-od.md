@@ -1,51 +1,53 @@
 ---
-title: Egy objektum észlelési projekt a C# – Custom Vision Service – az Azure Cognitive Services |} A Microsoft Docs
-description: A Microsoft Cognitive Services a Custom Vision API-t használó alapszintű Windows alkalmazás megismerése. Hozzon létre egy projektet, adja hozzá a címkéket, tölthet fel képeket, a projekt betanítását és az alapértelmezett végpont az előrejelzést.
+title: 'Oktatóanyag: Egy objektumészlelő projekt készítése C#-ben – Custom Vision Service'
+titlesuffix: Azure Cognitive Services
+description: Hozzon létre projektet, adjon hozzá címkéket, töltsön fel képeket, tanítsa be a projektet és adjon előrejelzést az alapértelmezett végpont használatával.
 services: cognitive-services
 author: areddish
-manager: chbuehle
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: custom-vision
-ms.topic: article
+ms.topic: tutorial
 ms.date: 05/07/2018
 ms.author: areddish
-ms.openlocfilehash: e3def864267a590c86a2dd6663561d8488081ad6
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
-ms.translationtype: MT
+ms.openlocfilehash: d04fb86abbc0f174e895c166d97fc5467831206f
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "36301080"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46366913"
 ---
-# <a name="use-custom-vision-api-to-build-an-object-detection-project-in-c35"></a>Custom Vision API használatával hozhat létre C objektum észlelési projektben&#35; 
-Ismerje meg, hogyan használható egy alapszintű Windows alkalmazás használ a Computer Vision API-objektum észlelési projekt létrehozása. A létrehozást követően, is címkézett régiók felvételére, tölthet fel képeket, betanítását a projektet, a projekt alapértelmezett előrejelzési végpont URL-cím és ezt a végpont programozott módon képet. A nyílt forráskódú példa sablonként használni a saját alkalmazás létrehozásához a Windows a Custom Vision API használatával.
+# <a name="tutorial-use-custom-vision-api-to-build-an-object-detection-project-in-c"></a>Oktatóanyag: Custom Vision API használatával objektumészlelési projekt létrehozása C#-ben
+
+Ismerje meg, hogyan készít a Computer Vision API használatával objektumészlelési projektet egy egyszerű Windows-alkalmazás. Miután elkészült, adhat hozzá címkézett régiókat, tölthet fel képeket, betaníthatja a projektet, megkaphatja a projekt alapértelmezett előrejelzési végpont URL-címét és ezt a végpontot felhasználhatja kép programozott tesztelésére. Ez a nyílt forráskódú példa sablonként használható saját, Custom Vision API használatával készülő Windows alkalmazásaihoz.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-### <a name="get-the-custom-vision-sdk-and-samples"></a>Az egyéni Látástechnológiai SDK és minták
-Ebben a példában hozhat létre, az egyéni Látástechnológiai SDK NuGet-csomagok szükségesek:
+### <a name="get-the-custom-vision-sdk-and-samples"></a>A Custom Vision SDK és példák letöltése
+A példa elkészítéséhez szüksége lesz a Custom Vision SDK NuGet-csomagokra:
 
 * [Microsoft.Azure.CognitiveServices.Vision.CustomVision.Training](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.CustomVision.Training/)
 * [Microsoft.Azure.CognitiveServices.Vision.CustomVision.Prediction](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.CustomVision.Prediction/)
 
-A képek, valamint letöltheti a [C# minták](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/CustomVision).
+A képeket letöltheti a [C# példákkal](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/CustomVision) együtt.
 
-## <a name="get-the-training-and-prediction-keys"></a>A betanítási és Predikciós kulcsok beolvasása
+## <a name="get-the-training-and-prediction-keys"></a>A betanítási és előrejelzési kulcsok letöltése
 
-Ebben a példában használt kulcsok beszerzéséhez látogasson el a [Custom Vision weblap](https://customvision.ai) , és válassza ki a __fogaskerék ikont__ kattintson a jobb felső sarokban. Az a __fiókok__ területén másolja a __képzési kulcs__ és __előrejelzési kulcs__ mezőket.
+Az ebben a példában használt kulcsok megszerzéséhez látogasson el a [Custom Vision weboldalra](https://customvision.ai), válassza ki a __fogaskerék ikont__ a jobb felső sarokban. A __Fiókok__ területen másolja ki a __Betanítási kulcs__ és __Előrejelzési kulcs__ mezők értékeit.
 
-![A felhasználói felület kulcsok képe](./media/csharp-tutorial/training-prediction-keys.png)
+![A kulcsok felhasználói felület képe](./media/csharp-tutorial/training-prediction-keys.png)
 
-## <a name="step-1-create-a-console-application"></a>1. lépés: Hozzon létre egy konzolalkalmazást
+## <a name="step-1-create-a-console-application"></a>1. lépés: Konzolalkalmazás létrehozása
 
-Ebben a lépésben hozzon létre egy konzolalkalmazást, és készítse elő a betanítási kulcs és a lemezképek, a példában a szükséges:
+Ebben a lépésben elkészít egy konzolalkalmazást és előkészíti a példához szükséges betanítási kulcsot és képeket:
 
-1. Indítsa el a Visual Studio 2015 Community Edition kiadását. 
+1. Indítsa el a Visual Studio 2015, Community Edition programot. 
 2. Hozzon létre egy új konzolalkalmazást.
-3. Adja hozzá a két nuget-csomagok hivatkozásokat:
+3. Adja hozzá a hivatkozás a két nuget-csomagra:
     * Microsoft.Azure.CognitiveServices.Vision.CustomVision.Training
     * Microsoft.Azure.CognitiveServices.Vision.CustomVision.Prediction
 
-4. Cserélje le a tartalmát **Program.cs** az alábbi kódra.
+4. A **Program.cs** tartalmát cserélje le az alábbira.
 
 ```csharp
 using Microsoft.Azure.CognitiveServices.Vision.CustomVision.Prediction;
@@ -73,9 +75,9 @@ namespace SampleObjectDetection
 }
 ```
 
-## <a name="step-2-create-a-custom-vision-service-project"></a>2. lépés: A Custom Vision Service-projekt létrehozása
+## <a name="step-2-create-a-custom-vision-service-project"></a>2. lépés Custom Vision Service-projekt létrehozása
 
-Hozzon létre egy új Custom Vision Service-projektet, adja hozzá a következő kódot, végén a **Main()** metódust.
+Új Custom Vision Service-projekt létrehozásához adja hozzá a következő kódot a **Main()** metódus végére.
 
 ```csharp
     // Find the object detection domain
@@ -87,9 +89,9 @@ Hozzon létre egy új Custom Vision Service-projektet, adja hozzá a következő
     var project = trainingApi.CreateProject("My New Project", null, objDetectionDomain.Id);
 ```
 
-## <a name="step-3-add-tags-to-your-project"></a>3. lépés: A címkék hozzáadása a projekthez
+## <a name="step-3-add-tags-to-your-project"></a>3. lépés: Címkék hozzáadása a projekthez
 
-Címkék hozzáadása a projekthez, helyezze be a következő kód hívása után **CreateProject()**:
+A projekthez címkék hozzáadásához, illessze be a következő kódot a **CreateProject()** meghívása után:
 
 ```csharp
     // Make two tags in the new project
@@ -97,9 +99,9 @@ Címkék hozzáadása a projekthez, helyezze be a következő kód hívása utá
     var scissorsTag = trainingApi.CreateTag(project.Id, "scissors");
 ```
 
-## <a name="step-4-upload-images-to-the-project"></a>4. lépés: A projekt képek feltöltése
+## <a name="step-4-upload-images-to-the-project"></a>4. lépés: Képek feltöltése a projekthez
 
-Az objektum észlelési projektekhez kell azonosítani a régiót az objektum normalizált koordináták és a egy címke használatával. A képek és címkézett régiók hozzáadása, helyezze be a következő kód végén a **Main()** módszer:
+Az objektum észlelési projektekhez azonosítanunk kell az objektum régióját normalizált koordinátákkal és címkével. A képek és címkézett régiók hozzáadásához illessze be a következő kódot a **Main()** metódus végére:
 
 ```csharp
     Dictionary<string, double[]> fileToRegionMap = new Dictionary<string, double[]>()
@@ -173,12 +175,12 @@ Az objektum észlelési projektekhez kell azonosítani a régiót az objektum no
     trainingApi.CreateImagesFromFiles(project.Id, new ImageFileCreateBatch(imageFileEntries));
 ```
 
-## <a name="step-5-train-the-project"></a>5. lépés: A projekt betanítása
+## <a name="step-5-train-the-project"></a>5. lépés A projekt tanítása
 
-Most, hogy a projekt hozzáadta a címkék és a képeket, akkor betaníthatja: 
+Most, hogy a projekthez hozzáadta a címkéket és képeket, következhet a betanítása: 
 
-1. Szúrja be az alábbi kódot végén **Main()**. Ez az első példányát hoz létre a projektben.
-2. Mark as az alapértelmezett iteráció aktuális ismétlődésének tömbjében.
+1. Illessze be a következő kódot a **Main()** metódus végére. Ez készíti az első iterációt a projektben.
+2. Jelölje meg ezt alapértelmezett iterációnak.
 
 ```csharp
     // Now there are images with tags start training the project
@@ -200,12 +202,12 @@ Most, hogy a projekt hozzáadta a címkék és a képeket, akkor betaníthatja:
     Console.WriteLine("Done!\n");
 ```
 
-## <a name="step-6-get-and-use-the-default-prediction-endpoint"></a>6. lépés: Get, és használja az alapértelmezett előrejelzési végpont
+## <a name="step-6-get-and-use-the-default-prediction-endpoint"></a>6. lépés: Kérje le és használja az alapértelmezett előrejelzési végpontot
 
-Most már készen áll a modell használatának előrejelzéshez: 
+Most már készen áll, hogy a modellt előrejelzésre használja: 
 
-1. Szerezze be a végpont a következő kód végén található beszúrásával alapértelmezett ismétléseinek társított **Main()**. 
-2. Egy teszt rendszerképet küldi a projekthez, hogy a végpont használatával.
+1. Kérje le az alapértelmezett iterációhoz tartozó végpontot a következő kódnak a **Main()** végére történő beillesztésével. 
+2. Küldjön képet a projektnek ezt a végpontot felhasználva.
 
 ```csharp
     // Now there is a trained endpoint, it can be used to make a prediction
@@ -232,6 +234,6 @@ Most már készen áll a modell használatának előrejelzéshez:
     }
 ```
 
-## <a name="step-7-run-the-example"></a>7. lépés: Futtassa a példa
+## <a name="step-7-run-the-example"></a>7. lépés: Futtassa a példát
 
-Hozhat létre, és futtassa a megoldást. Az előrejelzési eredmények jelennek meg a konzolon.
+Fordítsa le és futtassa a megoldást. Az előrejelzési eredmények megjelennek a konzolon.
