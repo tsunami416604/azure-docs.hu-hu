@@ -1,71 +1,70 @@
 ---
-title: Az Azure Media Services kapcsolatos gyakori kérdések |} Microsoft Docs
+title: Az Azure Media Services – gyakori kérdések |} A Microsoft Docs
 description: Gyakori kérdések (GYIK)
 services: media-services
 documentationcenter: ''
 author: Juliako
-manager: cfowler
+manager: femila
 editor: ''
-ms.assetid: 5374f7f4-c189-43ef-8b7f-f2f4141e2748
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/29/2017
+ms.date: 10/15/2018
 ms.author: juliako
-ms.openlocfilehash: a47163d06e24814ca5724d1fabea84058f8764cf
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: d4b7d8ec5cb162e5fc844f107fbd5eb08fb00639
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33788535"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49353533"
 ---
 # <a name="frequently-asked-questions"></a>Gyakori kérdések
 
-Ez a cikk foglalkozik az Azure Media Services (AMS) felhasználói Közösség által kiváltott gyakran ismételt kérdések.
+Ez a cikk a gyakori kérdések az Azure Media Services (AMS) felhasználói Közösség által kiváltott foglalkozik.
 
 ## <a name="general-ams-faqs"></a>Általános AMS – gyakori kérdések
 
-K: hogyan tegye meg az adatfolyamot a Apple iOS-eszközöket
+K: hogyan tegye meg streamelése Apple iOS-eszközökön
 
-V: hozzáadása "(formátum = m3u8-aapl)" elérési út az URL-cím közölheti a folyamatos átviteli származási kiszolgálóval hátsó HLS tartalom felhasználása vissza az Apple iOS natív eszközök (a részleteket lásd: (tartalomtovábbítás) ["/ Manifest" részéhez Media-services-kézbesítése-tartalom-overview.md]),
+V: hozzáadása "(formátum = m3u8-aapl)" elérési utat az URL-címet adja meg a streamelési forráskiszolgáló eszközöket adja vissza a felhasználásához vissza HLS-tartalom Apple iOS rendszeren natív (a részleteket lásd: (tartalmak továbbítása) ["/ jegyzékfájl" részéhez a Media-services-Delivery-tartalom – overview.md]),
 
-K: hogyan, méretezhető, indexelő?
+K: hogyan, méretezhető, az indexelés?
 
-V: a fenntartott egységek esetén azonosak kódolás és indexelő feladat. Kövesse az utasításokat [méretezési kódoláshoz fenntartott egységek hogyan](media-services-scale-media-processing-overview.md). **Megjegyzés:** , hogy az indexelő teljesítmény nem érinti a fenntartott egység típusát.
+V: a szolgáltatás számára fenntartott egységek ugyanazok a kódolás és indexelési feladatokat. Kövesse az utasításokat [méretezési kódoláshoz fenntartott egységek hogyan](media-services-scale-media-processing-overview.md). **Megjegyzés:** , hogy az indexelő teljesítményét nem befolyásolja a fenntartott egység típussal.
 
-K: I feltöltött, kódolt és videó közzé. Mi lehet a következő okból: a videó nem tölt meg adatfolyamként való?
+Kérdés feltöltött, kódolt és közzétett egy videót. Mi lenne a OK, a videó nem lejátszani jelenik meg, adatfolyamként?
 
-A leggyakoribb okai egy A:, nem rendelkezik a streamvégpontra, amelyről kívánt lejátszását a **futtató** állapotát.  
+V: egy leggyakoribb okai a rendszer nem rendelkezik a streamvégpontra, amelyről a lejátszás próbált a **futó** állapota.  
 
-K: feladatokat lehet elvégezni egy élő adatfolyam összeállítás?
+K: Használhatom az élő stream összeállítás?
 
-A: az élő adatfolyamok összeállítás jelenleg nem érhető el Azure Media Services, így előre állítható össze a számítógépen kell.
+V: összeállítás, az élő adatfolyamok jelenleg nem érhető el az Azure Media Servicesben, így előre compose a számítógépen kell.
 
-K: használhatok Azure CDN élő adatfolyam-továbbítási?
+K: Használhatom az Azure CDN az élő adatfolyam?
 
-V: Media Services támogatja az Azure CDN integrációja (további információkért lásd: [adatfolyam-továbbítási végpontok kezelése egy Media Services-fiók hogyan](media-services-portal-manage-streaming-endpoints.md)).  Live streaming CDN is használhatja. Az Azure Media Services Smooth Streaming, HLS és MPEG-DASH kimenetek biztosít. Ezek a formátumok adatok átvitele a HTTP Protokollt használja, és a HTTP-gyorsítótárazás előnyök. Élő adatfolyam tényleges videó/hang adatok felosztásának a töredékeket, és az egyes töredék beolvasása gyorsítótárazza a CDN. Csak adattárolási igényeinek frissíteni kell az jegyzék adatai. CDN rendszeresen frissülnek a jegyzék adatokat.
+V: a Media Services az Azure CDN-integrációt támogatja (további információkért lásd: [adatfolyam-továbbítási végpontok kezelése egy Media Services-fiók hogyan](media-services-portal-manage-streaming-endpoints.md)).  Élő adások online közvetítése a CDN-t is használhatja. Az Azure Media Services biztosítja a Smooth Streaming, HLS és MPEG-DASH kimenetek. Ezek a formátumok adatok átvitele a HTTP Protokollt használja, és a get HTTP-gyorsítótár használatának előnyei. Az élő streamelés tényleges, videó vagy hang a töredékekre van osztva, és ez egyes töredék első gyorsítótárazza a CDN-t. Csak adattárolási igényeinek lesznek frissítve az alkalmazásjegyzék adatok. A CDN rendszeres időközönként frissíti a jegyzékfájl adatokat.
 
-K: Does Azure Media services támogatja a tárolni lemezképeket?
+K: Does Azure Media services támogatja a lemezképek tárolását?
 
-A:, ha most szeretne JPEG vagy PNG lemezképeket menteni, azokat az Azure Blob Storage legyen. Nincs a abba a Media Services-fiók kivéve, ha meg szeretné tartani ezeket a videó vagy a hang eszközök társított előnye. Vagy előfordulhat, hogy a képek használják a videókódoló az átfedések kell. Media Encoder Standard felirataként Képek videók felett, és, hogy mi felsorolja JPEG és PNG támogatott formátumok bemeneti. További információkért lásd: [létrehozása átfedések](media-services-advanced-encoding-with-mes.md#overlay).
+V: Ha csupán arra kíváncsi, JPEG vagy PNG-képek tárolásához, érdemes megtartani az Azure Blob Storage. Nem jár előnnyel, kivéve, ha meg szeretné tartani őket a videó vagy hang eszközök társított helyezné azokat a Media Services-fiók. Vagy ha lehet, hogy nincs szüksége a képek hangátfedések, a videó kódoló a használandó. Media Encoder Standard támogatja az átfedő képek, videók felett, és ez milyen felsorolja JPEG és PNG támogatott bemeneti formátumok. További információkért lásd: [létrehozása átfedések](media-services-advanced-encoding-with-mes.md#overlay).
 
-K: Hogyan tudom átmásolhatja eszközök egy Media Services-fiók egy másikra.
+K: hogyan is másolható eszközök egy Media Services-fiókból egy másikba.
 
-V: eszközök másolhat egy Media Services-fiók egy másikra történő a .NET, használatával [IAsset.Copy](https://github.com/Azure/azure-sdk-for-media-services-extensions/blob/dev/MediaServices.Client.Extensions/IAssetExtensions.cs#L354) kiterjesztésmetódus érhető el a [Azure Media Services .NET SDK-bővítmények](https://github.com/Azure/azure-sdk-for-media-services-extensions/) tárházba. További információkért lásd: [ez](https://social.msdn.microsoft.com/Forums/azure/28912d5d-6733-41c1-b27d-5d5dff2695ca/migrate-media-services-across-subscription?forum=MediaServices) fórum szál.
+V: az objektumok másolása egy Media Services-fiókból egy másikba használata a .NET használatával [IAsset.Copy](https://github.com/Azure/azure-sdk-for-media-services-extensions/blob/dev/MediaServices.Client.Extensions/IAssetExtensions.cs#L354) elérhető metódust a [Azure Media Services .NET SDK-bővítmények](https://github.com/Azure/azure-sdk-for-media-services-extensions/) tárház. További információkért lásd: [ez](https://social.msdn.microsoft.com/Forums/azure/28912d5d-6733-41c1-b27d-5d5dff2695ca/migrate-media-services-across-subscription?forum=MediaServices) fórum-hozzászóláslánc.
 
-K: Mik azok a fájlok elnevezési az AMS használatakor a támogatott karakterekből álló?
+Kérdés: melyek a támogatott karakterek az AMS használatakor a fájlok elnevezési?
 
-V: Media Services a IAssetFile.Name tulajdonság értékét használja, amikor az adatfolyam-tartalmak (például http://{AMSAccount}.origin.mediaservices.windows.net/{GUID}/{IAssetFile.Name}/streamingParameters.) a URL-címek kiépítéséhez Emiatt százalék-kódolás nem engedélyezett. Értékét a **neve** tulajdonság nem lehet a következő [százalék kódolás-fenntartott karakterek](http://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters):! *' ();: @& = + $, /? % # [] ". Emellett csak lehet egy "." a fájlnévkiterjesztés.
+V: a Media Services a IAssetFile.Name tulajdonság értékét használja, URL-címek létrehozását, a streamelési tartalom (például http://{AMSAccount}.origin.mediaservices.windows.net/{GUID}/{IAssetFile.Name}/streamingParameters.) Ebből kifolyólag százalék-kódolást nem engedélyezett. Értékét a **neve** tulajdonság nem lehet a következő [százalék-kódolás – fenntartott karakterek](http://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters):! *' ();: @& = + $, /? % # [] ". Emellett csak lehet egy "." a fájlnév kiterjesztésével.
 
-K: hogyan csatlakozzon a többi használatával?
+K: hogyan csatlakozzon a REST használatával?
 
-V: információ az AMS API-hoz kapcsolódáshoz: [elérni az Azure Media Services API-t az Azure AD-alapú hitelesítés](media-services-use-aad-auth-to-access-ams-api.md). 
+V: az AMS API-t kapcsolódás információkért lásd: [eléréséhez az Azure Media Services API Azure AD-hitelesítés](media-services-use-aad-auth-to-access-ams-api.md). 
 
-K: hogyan lehet videó elforgatása a kódolási során.
+K: hogyan lehet egy videó elforgatása a kódolás során.
 
-Válasz: a [Media Encoder Standard](media-services-dotnet-encode-with-media-encoder-standard.md) elforgatási szög által 90/180 vagy 270 támogatja. Az alapértelmezett viselkedés az "Auto", ha megkísérli a Elforgatás metaadatok észlelése a bejövő MP4/MOV fájlban, és ellensúlyozza a azt. Adja meg a következőket **források** elemben, amely a megadott json-készletek egyikét [Itt](media-services-mes-presets-overview.md):
+V: a [Media Encoder Standard](media-services-dotnet-encode-with-media-encoder-standard.md) szögek rotációját 90/180 vagy 270 támogatja. Alapértelmezés szerint az "Auto", ahol megpróbálja Elforgatás metaadatait a bejövő MP4/MOV fájlban, és azt kompenzálja. A következők **források** elem a json-készletek definiált egyik [Itt](media-services-mes-presets-overview.md):
 
     "Version": 1.0,
     "Sources": [

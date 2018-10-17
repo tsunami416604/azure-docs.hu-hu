@@ -12,12 +12,12 @@ ms.author: v-daljep
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 09/20/2018
-ms.openlocfilehash: 5bfc11fdf6cbde9c9eed131bbcc7f7ab1dfbc442
-ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
+ms.openlocfilehash: 1cbb46f5238c2019225ab724abaf49e878d19598
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/06/2018
-ms.locfileid: "48830693"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49353866"
 ---
 # <a name="troubleshoot-azure-sql-database-performance-issues-with-intelligent-insights"></a>Intelligent Insights az Azure SQL Database teljesítménnyel kapcsolatos problémáinak elhárítása
 
@@ -61,7 +61,7 @@ Az alábbi szakasz ismerteti részletesebben cserélhető eszközként észlelhe
 
 Ez a minta cserélhető eszközként észlelhetőnek teljesítmény egyesíti az elérhető erőforrás-korlátozások, a feldolgozó korlátozások és a munkamenet-korlátok elérése kapcsolatos teljesítményproblémák. Után ezen teljesítményprobléma észlel, egy leírást a diagnosztikai napló azt jelzi, hogy a teljesítménnyel kapcsolatos problémák kapcsolatos erőforrás, a feldolgozó vagy a munkamenet-korlátok.
 
-Az SQL Database erőforrásokat általában hivatkozunk [DTU](https://docs.microsoft.com/azure/sql-database/sql-database-what-is-a-dtu) vagy [virtuális mag](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-service-tiers-vcore) erőforrásokat. Erőforráskorlátok elérése minta észlelésekor elismert lekérdezési teljesítmény romlását okozzák a mért erőforrás-korlátok bármelyikét elérése.
+Az SQL Database erőforrásokat általában hivatkozunk [DTU](https://docs.microsoft.com/azure/sql-database/sql-database-what-is-a-dtu) vagy [virtuális mag](https://docs.microsoft.com/azure/sql-database/sql-database-service-tiers-vcore) erőforrásokat. Erőforráskorlátok elérése minta észlelésekor elismert lekérdezési teljesítmény romlását okozzák a mért erőforrás-korlátok bármelyikét elérése.
 
 A munkamenet-korlátok erőforrás azt jelzi, hogy az SQL Database elérhető egyidejű bejelentkezések száma. Ez a teljesítmény-minta rendszer ismeri fel, amikor az SQL Database-adatbázisokhoz csatlakozó alkalmazásokat elérte az adatbázis elérhető egyidejű bejelentkezések száma. Alkalmazás próbálja a használatához további előadások, mint amennyi rendelkezésre áll, adatbázis, a lekérdezés teljesítménye érintett.
 

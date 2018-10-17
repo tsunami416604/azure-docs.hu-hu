@@ -11,21 +11,21 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 09/20/2018
-ms.openlocfilehash: c2855a9cdbb2abc01b3d3b55b12b979a2dbbf8bb
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.date: 10/15/2018
+ms.openlocfilehash: f74577a5f8042a7b373d1ff1944088036a0c94f5
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47165357"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49354206"
 ---
-# <a name="create-and-manage-logical-servers-and-single-databases-in-azure-sql-database"></a>Logikai kiszolgáló és az Azure SQL Database önálló adatbázisok létrehozása és kezelése 
+# <a name="create-and-manage-logical-servers-and-single-databases-in-azure-sql-database"></a>Logikai kiszolgáló és az Azure SQL Database önálló adatbázisok létrehozása és kezelése
 
 Hozzon létre, és kezelheti az Azure SQL database logikai kiszolgálóiról és az önálló adatbázisok az Azure portal, PowerShell, Azure CLI, REST API és a Transact-SQL használatával.
 
 ## <a name="azure-portal-manage-logical-servers-and-databases"></a>Az Azure portal: logikai kiszolgálóiról és adatbázisairól kezelése
 
-Az Azure SQL database erőforráscsoport előre, vagy a kiszolgáló létrehozásakor is létrehozhat. Több módszerrel hozzon létre új SQL-kiszolgáló vagy egy új adatbázis létrehozása során egy új SQL server űrlapot bemutató. 
+Az Azure SQL database erőforráscsoport előre, vagy a kiszolgáló létrehozásakor is létrehozhat. Több módszerrel hozzon létre új SQL-kiszolgáló vagy egy új adatbázis létrehozása során egy új SQL server űrlapot bemutató.
 
 ### <a name="create-a-blank-sql-server-logical-server"></a>Hozzon létre egy üres SQL server (logikai kiszolgáló)
 
@@ -33,7 +33,7 @@ Hozzon létre egy Azure SQL Database-kiszolgálón (nélkül egy adatbázis), a 
 
 ### <a name="create-a-blank-or-sample-sql-database"></a>Hozzon létre egy üres vagy minta SQL-adatbázis
 
-Hozzon létre egy Azure SQL database, a [az Azure portal](https://portal.azure.com), nyissa meg egy üres SQL Database űrlapját, és adja meg a kért adatokat. Az Azure SQL database erőforrás-csoport és a logikai kiszolgáló időben, vagy maga az adatbázis létrehozásakor is létrehozhat. Hozzon létre egy üres adatbázist, vagy hozzon létre egy mintaadatbázist az Adventure Works LT. alapján 
+Hozzon létre egy Azure SQL database, a [az Azure portal](https://portal.azure.com), nyissa meg egy üres SQL Database űrlapját, és adja meg a kért adatokat. Az Azure SQL database erőforrás-csoport és a logikai kiszolgáló időben, vagy maga az adatbázis létrehozásakor is létrehozhat. Hozzon létre egy üres adatbázist, vagy hozzon létre egy mintaadatbázist az Adventure Works LT. alapján
 
   ![adatbázis létrehozása-1](./media/sql-database-get-started-portal/create-database-1.png)
 
@@ -42,28 +42,25 @@ Hozzon létre egy Azure SQL database, a [az Azure portal](https://portal.azure.c
 
 Felügyelt példány létrehozásához lásd: [felügyelt példány létrehozása](sql-database-managed-instance-get-started.md)
 
-### <a name="manage-an-existing-sql-server"></a>Egy meglévő SQL-kiszolgáló kezelése
+## <a name="manage-an-existing-sql-server"></a>Egy meglévő SQL-kiszolgáló kezelése
 
-Meglévő kiszolgáló kezeléséhez, a kiszolgáló több különféle módszerek – például adott SQL database oldalon keresse meg a **SQL Server-kiszolgálók** lapon vagy a **összes erőforrás** lap. 
+Meglévő kiszolgáló kezeléséhez, a kiszolgáló több különféle módszerek – például adott SQL database oldalon keresse meg a **SQL Server-kiszolgálók** lapon vagy a **összes erőforrás** lap.
 
-Létező adatbázis kezeléséhez, lépjen a **SQL-adatbázisok** lapon, majd kattintson a kezelni kívánt adatbázisra. A következő képernyőképen látható, hogy hogyan kezdheti meg az adatbázis kiszolgálószintű tűzfal beállítása az **áttekintése** egy adatbázishoz tartozó lap. 
+Létező adatbázis kezeléséhez, lépjen a **SQL-adatbázisok** lapon, majd kattintson a kezelni kívánt adatbázisra. A következő képernyőképen látható, hogy hogyan kezdheti meg az adatbázis kiszolgálószintű tűzfal beállítása az **áttekintése** egy adatbázishoz tartozó lap.
 
-   ![kiszolgálói tűzfalszabály](./media/sql-database-get-started-portal/server-firewall-rule.png) 
+   ![kiszolgálói tűzfalszabály](./media/sql-database-get-started-portal/server-firewall-rule.png)
 
 > [!IMPORTANT]
 > Adatbázis teljesítményének tulajdonságok beállítása: [DTU-alapú vásárlási modell](sql-database-service-tiers-dtu.md) és [Virtuálismag-alapú vásárlási modell](sql-database-service-tiers-vcore.md).
->
-
 > [!TIP]
 > Az Azure portal rövid útmutatójában talál [egy Azure SQL database létrehozása az Azure Portalon](sql-database-get-started-portal.md).
 
 ## <a name="powershell-manage-logical-servers-and-databases"></a>PowerShell: Logikai kiszolgálóiról és adatbázisairól kezelése
 
-Létrehozása és kezelése az Azure SQL server, adatbázisok és tűzfalak az Azure PowerShell használatával, a következő PowerShell-parancsmagokat használja. Ha telepíteni vagy frissíteni a PowerShell, lásd: kell [Azure PowerShell-modul telepítését](/powershell/azure/install-azurerm-ps). 
+Létrehozása és kezelése az Azure SQL server, adatbázisok és tűzfalak az Azure PowerShell használatával, a következő PowerShell-parancsmagokat használja. Ha telepíteni vagy frissíteni a PowerShell, lásd: kell [Azure PowerShell-modul telepítését](/powershell/azure/install-azurerm-ps).
 
 > [!TIP]
 > A PowerShell a rövid útmutatóban talál [egyetlen Azure SQL-adatbázis létrehozása PowerShell használatával](sql-database-get-started-portal.md). PowerShell-példa szkriptek, lásd: [használja a Powershellt egy Azure SQL-adatbázis létrehozása és tűzfalszabály konfigurálása](scripts/sql-database-create-and-configure-database-powershell.md) és [figyelés és méret egy önálló SQL database PowerShell-lel](scripts/sql-database-monitor-and-scale-database-powershell.md).
->
 
 | Parancsmag | Leírás |
 | --- | --- |
@@ -116,13 +113,10 @@ Létrehozása és kezelése az Azure SQL server, adatbázisok és tűzfalak az [
 
 Hozzon létre és kezeli az Azure SQL server, adatbázisok és tűzfalak a Transact-SQL, használja a következő T-SQL-parancsokat. Ezek a parancsok az Azure portal használatával adhat ki [SQL Server Management Studio](/sql/ssms/use-sql-server-management-studio), [Visual Studio Code](https://code.visualstudio.com/docs), vagy bármely más programot, amely képes csatlakozni egy Azure SQL Database-kiszolgálóhoz, és adja át a Transact-SQL parancsok. Rugalmas készletek kezeléséhhez lásd: [rugalmas készletek](sql-database-elastic-pool.md).
 
-
 > [!TIP]
 > Ehhez a rövid útmutatóhoz, a Microsoft Windows SQL Server Management Studio használatával, lásd: [Azure SQL Database: az SQL Server Management Studio való csatlakozás és adatlekérdezés](sql-database-connect-query-ssms.md). A rövid útmutató a macOS, Linux vagy Windows Visual Studio Code használatával, lásd: [Azure SQL Database: a Visual Studio Code való csatlakozás és adatlekérdezés](sql-database-connect-query-vscode.md).
-
 > [!IMPORTANT]
 > Nem hozható létre, vagy kiszolgáló törlése a Transact-SQL használatával.
->
 
 | Parancs | Leírás |
 | --- | --- |
@@ -142,29 +136,28 @@ Hozzon létre és kezeli az Azure SQL server, adatbázisok és tűzfalak a Trans
 |[sys.database_firewall_rules (Azure SQL Database)](/sql/relational-databases/system-catalog-views/sys-database-firewall-rules-azure-sql-database)|Az adatbázisszintű tűzfal beállításai a Microsoft Azure SQL Database társított kapcsolatos információkat ad vissza. |
 |[sp_delete_database_firewall_rule (Azure SQL Database)](/sql/relational-databases/system-stored-procedures/sp-delete-database-firewall-rule-azure-sql-database)|Adatbázisszintű tűzfal beállítása az Azure SQL Database vagy az SQL Data Warehouse eltávolítja. |
 
-
-
 ## <a name="rest-api-manage-logical-servers-and-databases"></a>REST API-val: Logikai kiszolgálóiról és adatbázisairól kezelése
 
 Létrehozása és kezelése az Azure SQL server, adatbázisok és tűzfalak, ezek a REST API-kérelmek használja.
 
 | Parancs | Leírás |
 | --- | --- |
-|[Kiszolgálók – létrehozása vagy frissítése](/rest/api/sql/servers/createorupdate)|Létrehozza vagy frissíti az új kiszolgálóra.|
-|[Kiszolgálók – törlés](/rest/api/sql/servers/delete)|SQL-kiszolgáló törlése.|
-|[Kiszolgálók – Get](/rest/api/sql/servers/get)|Lekérdezi a kiszolgálót.|
-|[Kiszolgálók – lista](/rest/api/sql/servers/list)|A kiszolgálók listáját adja vissza.|
-|[Kiszolgálók – lista erőforráscsoport alapján](/rest/api/sql/servers/listbyresourcegroup)|A kiszolgálók listáját adja vissza egy erőforráscsoportban.|
-|[Kiszolgálók – frissítés](/rest/api/sql/servers/update)|Frissíti egy meglévő kiszolgálóra.|
-|[-Adatbázis létrehozása vagy frissítése](/rest/api/sql/databases/createorupdate)|Új adatbázis létrehozása vagy frissítése egy meglévő adatbázist.|
-|[Adatbázisok – Get](/rest/api/sql/databases/get)|Egy adatbázis beolvasása.|
-|[Adatbázis - listát a rugalmas készlet](/rest/api/sql/databases/listbyelasticpool)|Rugalmas készletben található adatbázisok listáját adja vissza.|
-|[Adatbázis - kiszolgáló által lista](/rest/api/sql/databases/listbyserver)|A kiszolgálón az adatbázisok listáját adja vissza.|
-|[Adatbázis - frissítés](/rest/api/sql/databases/update)|Frissíti egy meglévő adatbázist.|
-|[A tűzfal - szabályok létrehozása vagy frissítése](/rest/api/sql/firewallrules/createorupdate)|Létrehozza vagy frissíti egy tűzfalszabályt.|
-|[Tűzfalszabályok – törlés](/rest/api/sql/firewallrules/delete)|Törli a tűzfalszabályt.|
-|[Tűzfalszabályok - Get](/rest/api/sql/firewallrules/get)|Lekérdezi egy tűzfalszabályt.|
-|[Tűzfalszabályok - lista-kiszolgáló](/rest/api/sql/firewallrules/listbyserver)|Tűzfalszabályok listáját adja vissza.|
+|[Kiszolgálók – létrehozása vagy frissítése](https://docs.microsoft.com/rest/api/sql/servers/servers_createorupdate/rest/api)|Létrehozza vagy frissíti az új kiszolgálóra.|
+|[Kiszolgálók – törlés](https://docs.microsoft.com/rest/api/sql/servers/servers_delete)|SQL-kiszolgáló törlése.|
+|[Kiszolgálók – Get](https://docs.microsoft.com/rest/api/sql/servers/servers_get)|Lekérdezi a kiszolgálót.|
+|[Kiszolgálók – lista](https://docs.microsoft.com/rest/api/sql/servers/servers_list)|A kiszolgálók listáját adja vissza.|
+|[Kiszolgálók – lista erőforráscsoport alapján](https://docs.microsoft.com/rest/api/sql/servers/servers_listbyresourcegroup)|A kiszolgálók listáját adja vissza egy erőforráscsoportban.|
+|[Kiszolgálók – frissítés](https://docs.microsoft.com/rest/api/sql/servers/servers_update)|Frissíti egy meglévő kiszolgálóra.|
+|[-Adatbázis létrehozása vagy frissítése](https://docs.microsoft.com/rest/api/sql/databases/databases_createorupdate)|Új adatbázis létrehozása vagy frissítése egy meglévő adatbázist.|
+|[Adatbázisok – törlés](https://docs.microsoft.com/rest/api/sql/databases/databases_delete)|Töröl egy adatbázist.|
+|[Adatbázisok – Get](https://docs.microsoft.com/rest/api/sql/databases/databases_get)|Egy adatbázis beolvasása.|
+|[Adatbázis - listát a rugalmas készlet](https://docs.microsoft.com/rest/api/sql/databases/databases_listbyelasticpool)|Rugalmas készletben található adatbázisok listáját adja vissza.|
+|[Adatbázis - kiszolgáló által lista](https://docs.microsoft.com/rest/api/sql/databases/databases_listbyserver)|A kiszolgálón az adatbázisok listáját adja vissza.|
+|[Adatbázis - frissítés](https://docs.microsoft.com/rest/api/sql/databases/databases_update)|Frissíti egy meglévő adatbázist.|
+|[A tűzfal - szabályok létrehozása vagy frissítése](https://docs.microsoft.com/rest/api/sql/firewallrules/firewallrules_createorupdate)|Létrehozza vagy frissíti egy tűzfalszabályt.|
+|[Tűzfalszabályok – törlés](https://docs.microsoft.com/rest/api/sql/firewallrules/firewallrules_delete)|Törli a tűzfalszabályt.|
+|[Tűzfalszabályok - Get](https://docs.microsoft.com/rest/api/sql/firewallrules/firewallrules_get)|Lekérdezi egy tűzfalszabályt.|
+|[Tűzfalszabályok - lista-kiszolgáló](https://docs.microsoft.com/rest/api/sql/firewallrules/firewallrules_listbyserver)|Tűzfalszabályok listáját adja vissza.|
 
 ## <a name="next-steps"></a>További lépések
 

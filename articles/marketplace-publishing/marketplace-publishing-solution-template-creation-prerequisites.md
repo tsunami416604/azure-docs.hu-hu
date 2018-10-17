@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/28/2016
 ms.author: hascipio; v-divte
-ms.openlocfilehash: 0aa9ab99aea08f5e368efbb97d8a1be7fbb79552
-ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
+ms.openlocfilehash: be4964e36766a27e9115311448529c279e3ae74a
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39713431"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49365543"
 ---
 # <a name="technical-prerequisites-for-creating-a-solution-template-for-the-azure-marketplace"></a>Technikai Előfeltételek megoldás sablon létrehozása az Azure Marketplace-en
 A folyamat megkezdése előtt figyelmesen olvassa el, és megismerheti, hogy hol és miért érdemes minden egyes lépést. Amennyire csak lehetséges, meg kell a vállalati adatok és egyéb adatok előkészítése, töltse le a szükséges eszközök, illetve műszaki összetevőket hozhat létre a ajánlat létrehozásának megkezdése előtt.  
@@ -29,7 +29,7 @@ A megoldássablon a közzétételi portál a folytatás előtt el kell döntenie
 
 1. [Azure Resource Manager-sablonok készítése](../azure-resource-manager/resource-group-authoring-templates.md)
 2. Az Azure gyorsindítási sablonok:
-   * [https://azure.microsoft.com/en-us/documentation/templates/](https://azure.microsoft.com/documentation/templates/)
+   * [https://azure.microsoft.com/documentation/templates/](https://azure.microsoft.com/documentation/templates/)
    * [https://github.com/azure/azure-quickstart-templates](https://github.com/azure/azure-quickstart-templates)
 
 ## <a name="next-steps"></a>További lépések

@@ -7,12 +7,12 @@ ms.service: container-instances
 ms.topic: article
 ms.date: 08/31/2018
 ms.author: danlep
-ms.openlocfilehash: dde40b8f53aa40f1c15fe0efd810889b8c4510fb
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: 41c9302d280d6027e12f2516bca26a98d224f301
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48854864"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49354189"
 ---
 # <a name="use-azure-container-instances-as-a-jenkins-build-agent"></a>A Jenkins használata Azure Container Instances szolgáltatásban az ügynök létrehozása
 
@@ -47,7 +47,7 @@ További információ az Azure Container Instances: [kapcsolatos Azure Container
 
    ![A Jenkins portálon keresztüli üzembe helyezési további beállításai](./media/container-instances-jenkins/jenkins-portal-02.png)
 
-4. A szolgáltatás egyszerű integráció, válassza ki a **Auto(MSI)** rendelkezik az [Azure Felügyeltszolgáltatás-identitás] [felügyelt-identitások – azure-erőforrások] automatikusan hozzon létre egy hitelesítési identitást a Jenkins-példány. Válassza ki **manuális** saját szolgáltatásnév hitelesítő adatainak megadását.
+4. A szolgáltatás egyszerű integráció, válassza ki a **Auto(MSI)** [felügyelt identitások az Azure-erőforrások] [felügyelt-identitások – azure-erőforrások] automatikusan hozzon létre egy hitelesítési identitást a Jenkins-példány. Válassza ki **manuális** saját szolgáltatásnév hitelesítő adatainak megadását.
 
 5. Felhő-ügynökök konfigurálása egy felhőalapú platform, Jenkins felépítési feladatok. Válassza ki az ebben a cikkben **ACI**. Az ACI felhőalapú ügynököt minden egyes Jenkins létrehozási feladatot futtatja egy tárolópéldányt.
 

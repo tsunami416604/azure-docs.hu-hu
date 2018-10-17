@@ -12,14 +12,14 @@ ms.workload: ''
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: article
-ms.date: 10/05/2018
+ms.date: 10/15/2018
 ms.author: yijenj
-ms.openlocfilehash: 99df133b9f626f970189df578c6d107086b9dab9
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: a0b3c220a1cd857bc8bea0eb5ab41625845fcc5d
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48855000"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49365623"
 ---
 # <a name="azure-partner-customer-usage-attribution"></a>Azure-partneri ügyfél használati megnevezése
 
@@ -44,7 +44,7 @@ Számos partneri megoldás telepítve vannak, egy ügyfél előfizetését Resou
 
 Adjon hozzá egy globálisan egyedi azonosítóját (GUID), győződjön meg a fő sablonfájl egyetlen módosítása:
 
-1. Hozzon létre egy GUID Azonosítót (például eb7927c8-dd66-43e1-b0cf-c346a422063).
+1. [Hozzon létre egy GUID Azonosítót](#create-guids) (pl. eb7927c8-dd66-43e1-b0cf-c346a422063) és [regisztrálja a GUID](#register-guids-and-offers).
 
 1. Nyissa meg a Resource Manager-sablon.
 
@@ -55,6 +55,8 @@ Adjon hozzá egy globálisan egyedi azonosítóját (GUID), győződjön meg a f
 1. Ellenőrizze a sablont, a hibákat.
 
 1. Tegye közzé újra a sablont a megfelelő tárházban.
+
+1. [Sikerességéről GUID Azonosítóját a sablon központi telepítésben lévő](#verify-the-guid-deployment).
 
 ### <a name="sample-template-code"></a>Sablon mintakód
 
@@ -99,6 +101,24 @@ Az Azure CLI használatával fűzze hozzá a GUID Azonosítót, ha a **AZURE_HTT
 ```
 export AZURE_HTTP_USER_AGENT='pid-eb7927c8-dd66-43e1-b0cf-c346a422063'
 ```
+
+## <a name="create-guids"></a>Hozzon létre GUID-azonosítói
+
+GUID 32 hexadecimális számjegyet tartalmaz egyedi hivatkozási szám. Követési GUID azonosítókat létrehozni, egy GUID-generátort kell használnia. Javasoljuk, hogy kihasználhatja [Azure Storage GUID generátor űrlap](https://aka.ms/StoragePartners). Azonban nem szeretné használni az Azure Storage GUID-generátort, van-e több [online GUID generátorok](https://www.bing.com/search?q=guid%20generator) használható.
+
+> [!Note]
+> Erősen ajánlott a használata [Azure Storage GUID generátor űrlap](https://aka.ms/StoragePartners) hozhat létre a GUID Azonosítót. További információkért lásd: a [– gyakori kérdések](#faq).
+
+Hozzon létre egy egyedi GUID azonosító minden ajánlat és a terjesztési csatornák. Ha két megoldás üzembe helyezése sablon használatával, és mindegyikhez az Azure Marketplace-en és githubon érhető el, hozzon létre négy GUID szeretné:
+
+*   Az Azure Marketplace-en A ajánlat 
+*   Ajánlat A githubon
+*   B ajánlat az Azure Marketplace-en 
+*   Az ajánlat B a Githubon
+
+Jelentéskészítés végzi el a partner érték (Microsoft-Partnerazonosító) és a globálisan egyedi Azonosítót. 
+
+GUID azonosítókat, például a Termékváltozat, ahol a termékváltozatok a következők ajánlat változatának részletesebb szinten is követheti.
 
 ## <a name="register-guids-and-offers"></a>Regisztrálja a GUID-ok és ajánlatok
 
@@ -183,21 +203,6 @@ foreach ($deployment in $deployments){
 }
 ```
 
-## <a name="create-guids"></a>Hozzon létre GUID-azonosítói
-
-GUID 32 hexadecimális számjegyet tartalmaz egyedi hivatkozási szám. Követési GUID azonosítókat létrehozni, egy GUID-generátort kell használnia. Egyszerre több [online GUID generátorok](https://www.bing.com/search?q=guid%20generator&qs=n&form=QBRE&sp=-1&ghc=2&pq=guid%20g&sc=8-6&sk=&cvid=0BAFAFCD70B34E4296BB97FBFA3E1B4E) használható.
-
-Hozzon létre egy egyedi GUID azonosító minden ajánlat és a terjesztési csatornák. Ha két megoldás üzembe helyezése sablon használatával, és mindegyikhez az Azure Marketplace-en és githubon érhető el, hozzon létre négy GUID szeretné:
-
-*   Az Azure Marketplace-en A ajánlat 
-*   Ajánlat A githubon
-*   B ajánlat az Azure Marketplace-en 
-*   Az ajánlat B a Githubon
-
-Jelentéskészítés végzi el a partner érték (Microsoft-Partnerazonosító) és a globálisan egyedi Azonosítót. 
-
-GUID azonosítókat, például a Termékváltozat, ahol a termékváltozatok a következők ajánlat változatának részletesebb szinten is követheti.
-
 ## <a name="notify-your-customers"></a>Az ügyfelek értesítése
 
 Partnerek kapcsolatos követési Resource Manager GUID használó központi telepítések tájékoztatnia kell az ügyfeleknek. A Microsoft ezeket az üzemelő példányokat a partnert társított Azure-használatát jelenti. A következő tartalom értesítse a felhasználókat arról a történő központi telepítését, amelyekkel például. A példákban cserélje le a \<PARTNER > a vállalat nevére. Partnerek győződjön meg arról, hogy adataikat adatvédelmi és -gyűjteményt házirendek, beleértve az ügyfelek ki lesznek zárva a követési illeszkedik az értesítést. 
@@ -275,3 +280,7 @@ Igen, partnereknek, akik ajánlatok közzététele az Azure Marketplace-en kapha
 **Ez a módszer követési több hasonló a digitális partnert a rekord (DPOR) az?**
 
 Ez az új módszer az üzembe helyezés és használat kapcsolódni egy partneri megoldás lehetővé teszi a partneri megoldások összekapcsolása az Azure-használat. Tanácsadási (rendszerintegrátor) vagy (felügyelt szolgáltató) felügyeleti partnertől, az ügyfél Azure-előfizetés társítása dpor használatára alkalmas.   
+
+**Mi az az előnye az Azure Storage GUID-generátor űrlap?**
+
+Az Azure Storage GUID-generátor űrlap garantáltan hozzon létre egy GUID Azonosítót a kötelező formátum. Ezenkívül ha bármelyik Azure Storage-adatsík nyomon követési módszereket használ, használhatja a Marketplace-en vezérlősík követési ugyanaz a GUID. Ez lehetővé teszi lehetővé külön GUID karbantartása nélkül egy Partner tesznek elérhetővé; ilyenek egységes célalhálózathoz GUID azonosító.

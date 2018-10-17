@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/01/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: 1490e60f3c6537a661fc1e76907b502a586547c9
-ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
+ms.openlocfilehash: bcede1f985937058196b75a93f539cb34da73992
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48248879"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49365062"
 ---
 # <a name="log-alerts-in-azure-monitor"></a>Naplóriasztások az Azure monitorban
 Ez a cikk ismerteti a riasztások részleteinek közé tartoznak a különböző típusú riasztások belül támogatott a [Azure Alerts](monitoring-overview-unified-alerts.md) és a felhasználó használhat az Azure elemzési platform alapjaként, mert így.
@@ -110,7 +110,7 @@ De a fenti listán szereplő esetben 1:15 PM -, Azure-riasztások nem tudja meg�
 
 
 ## <a name="pricing-and-billing-of-log-alerts"></a>Árak és számlázás az riasztások
-Naplóriasztásokra vonatkozó díjszabás érvényes van megadva a [Azure Monitor szolgáltatás díjszabása](https://azure.microsoft.com/en-us/pricing/details/monitor/) lapot. Az Azure-számlák tartoznak, a riasztások jelentésekként jelennek meg a típus `microsoft.insights/scheduledqueryrules` együtt:
+Naplóriasztásokra vonatkozó díjszabás érvényes van megadva a [Azure Monitor szolgáltatás díjszabása](https://azure.microsoft.com/pricing/details/monitor/) lapot. Az Azure-számlák tartoznak, a riasztások jelentésekként jelennek meg a típus `microsoft.insights/scheduledqueryrules` együtt:
 - Az Application Insights-erőforrás-csoport és riasztás tulajdonságai együtt pontos riasztás neve mellett látható riasztások
 - A Log Analytics riasztási néven látható naplóriasztások `<WorkspaceName>|<savedSearchId>|<scheduleId>|<ActionId>` erőforráscsoportot és a riasztás tulajdonságai
 

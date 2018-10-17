@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 05/08/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: b98b9e0a10f142cb0177e7e5ea831b61f79a4b7a
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 389c519d5f63b311b2e9c2b1d48d6e09e02c7d81
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46311093"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49361069"
 ---
 # <a name="azure-ad-connect-enabling-device-writeback"></a>Az Azure AD Connect: Eszközvisszaírás engedélyezése
 > [!NOTE]
@@ -32,7 +32,7 @@ A következő dokumentáció arról nyújt tájékoztatást az Azure AD Connect 
 
 * Feltételes hozzáférési házirend alapján AD FS-eszközök engedélyezése (2012 R2 vagy újabb) által védett alkalmazások (függő entitások megbízhatóságainak).
 
-Ez biztosítja a további biztonsági és biztosítható, hogy csak a megbízható eszközökhöz való engedélyezett alkalmazásokhoz való hozzáférést a rendszer. Feltételes hozzáféréssel kapcsolatos további információkért lásd: [kockázat kezelése feltételes hozzáféréssel](../active-directory-conditional-access-azure-portal.md) és [helyszíni feltételes hozzáférés beállítása az Azure Active Directory Eszközregisztrációs](../active-directory-conditional-access-automatic-device-registration-setup.md).
+Ez biztosítja a további biztonsági és biztosítható, hogy csak a megbízható eszközökhöz való engedélyezett alkalmazásokhoz való hozzáférést a rendszer. Feltételes hozzáféréssel kapcsolatos további információkért lásd: [kockázat kezelése feltételes hozzáféréssel](../active-directory-conditional-access-azure-portal.md) és [helyszíni feltételes hozzáférés beállítása az Azure Active Directory Eszközregisztrációs](../../active-directory/active-directory-device-registration-on-premises-setup.md).
 
 > [!IMPORTANT]
 > <li>Eszközök a felhasználók ugyanabban az erdőben kell működnie. Eszközök kell visszaírása az egyetlen erdővel, mivel ez a funkció jelenleg nem támogatja a több felhasználó erdő telepítésben.</li>
@@ -81,7 +81,7 @@ Eszközvisszaírás most kell megfelelően működik. Vegye figyelembe, hogy az 
    ![Az Active Directory felügyeleti központ regisztrált eszközök listája](./media/how-to-connect-device-writeback/devicewriteback6.png)
 
 ## <a name="enable-conditional-access"></a>Feltételes hozzáférés engedélyezése
-Részletes útmutatás a forgatókönyv engedélyezésének érhető el, [helyszíni feltételes hozzáférés beállítása az Azure Active Directory Eszközregisztrációs](../active-directory-conditional-access-automatic-device-registration-setup.md).
+Részletes útmutatás a forgatókönyv engedélyezésének érhető el, [helyszíni feltételes hozzáférés beállítása az Azure Active Directory Eszközregisztrációs](../../active-directory/active-directory-device-registration-on-premises-setup.md).
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 ### <a name="the-writeback-checkbox-is-still-disabled"></a>A jelszóvisszaíró jelölőnégyzet továbbra is le van tiltva.
@@ -125,7 +125,7 @@ Az Active Directory konfigurációjának ellenőrzése:
 
 ## <a name="additional-information"></a>További információ
 * [Kockázatkezelés feltételes hozzáférés](../active-directory-conditional-access-azure-portal.md)
-* [A helyszíni feltételes hozzáférés használata az Azure Active Directory Eszközregisztráció beállítása](../active-directory-device-registration-on-premises-setup.md)
+* [A helyszíni feltételes hozzáférés használata az Azure Active Directory Eszközregisztráció beállítása](../../active-directory/active-directory-device-registration-on-premises-setup.md)
 
 ## <a name="next-steps"></a>További lépések
 További információ: [Helyszíni identitások integrálása az Azure Active Directoryval](whatis-hybrid-identity.md).

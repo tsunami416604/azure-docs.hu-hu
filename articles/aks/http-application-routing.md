@@ -8,18 +8,21 @@ ms.service: container-service
 ms.topic: article
 ms.date: 04/25/2018
 ms.author: laevenso
-ms.openlocfilehash: 181a37504569088e44dbe39da9113257bfb35c4e
-ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
+ms.openlocfilehash: 9a096588c5a8fda64343e001fdbd895d02153f58
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49068942"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49362704"
 ---
 # <a name="http-application-routing"></a>HTTP-alkalmazások útválasztása
 
 A HTTP-kérelem útválasztási megoldás megkönnyíti az Azure Kubernetes Service (AKS) fürtön üzembe helyezett alkalmazások eléréséhez. A megoldás engedélyezésekor a Bejövőforgalom-vezérlőt az AKS-fürt azt konfigurálja. Alkalmazások vannak telepítve, mint a megoldás létrehoz végpontjainak nyilvánosan elérhető-e DNS-neveit is.
 
 Ha a bővítmény engedélyezve van, az előfizetésben hoz létre egy DNS-zónát. További információ a DNS-költség: [DNS díjszabási][dns-pricing].
+
+> [!CAUTION]
+> A HTTP-kérelem útválasztási bővítmény célja, hogy gyorsan létrehozhat egy bejövőforgalom-vezérlőt és az alkalmazások eléréséhez. Ez a bővítmény nem ajánlott éles környezetben való használatra. Támogatja az éles használatra kész bejövő üzemelő példánya, amely tartalmazza a replikák és a TLS, lásd: [hozzon létre egy HTTPS bejövőforgalom-vezérlőjéhez](https://docs.microsoft.com/en-us/azure/aks/ingress-tls).
 
 ## <a name="http-routing-solution-overview"></a>HTTP-útválasztási megoldás áttekintése
 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/17/2018
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: 935e2b9e861a889bef48c1d7ba119ab694cddfb3
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 4809881276da752ac6eb08773fb8be145dc5f4c7
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43094053"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49367028"
 ---
 ## <a name="create-a-device-identity"></a>Eszközidentitás létrehozása
 
@@ -31,11 +31,11 @@ Ebben a szakaszban használhatja a [az Azure portal](https://portal.azure.com) h
 
    [!INCLUDE [iot-hub-pii-note-naming-device](iot-hub-pii-note-naming-device.md)]
 
-   ![Új eszköz felvétele](./media/iot-hub-get-started-create-device-identity-portal/add-device.png)
+   ![Új eszköz felvétele](./media/iot-hub-get-started-create-device-identity-portal/create-a-device.png)
 
 1. Az eszközlistában, kattintson az újonnan létrehozott eszköz és a példány a **kapcsolati karakterlánc---elsődleges kulcs** későbbi használat céljából.
 
-    ![Eszköz kapcsolati karakterláncát](./media/iot-hub-get-started-create-device-identity-portal/device-connection-string.png)
+    ![Eszköz kapcsolati karakterláncát](./media/iot-hub-get-started-create-device-identity-portal/device-details.png)
 
 > [!NOTE]
 > Az IoT Hub-identitásjegyzék csak az IoT Hub biztonságos elérésének biztosításához tárolja az eszközidentitásokat. Az eszközazonosítókat és kulcsokat biztonsági hitelesítő adatokként tárolja, valamint tartalmaz egy engedélyezve/letiltva jelzőt, amellyel letilthatja egy adott eszköz hozzáférését. Ha az alkalmazásnak más eszközspecifikus metaadatokat kell tárolnia, egy alkalmazásspecifikus tárolót kell használnia. További információkért lásd: [IoT Hub fejlesztői útmutatójának](../articles/iot-hub/iot-hub-devguide-identity-registry.md).

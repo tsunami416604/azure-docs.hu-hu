@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/17/2018
 ms.author: shvija
-ms.openlocfilehash: fbde6e5a5ed053d6c151b3af25535c397a496ef4
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.openlocfilehash: ed337689360428d66657e5391ee52bb0ae39dc14
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40005334"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49365645"
 ---
 # <a name="event-hubs-samples"></a>Event Hubs-minták 
 Az Event Hubs-minták találhat [GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples). Ezek a minták bemutatják a legfontosabb jellemzők [Azure Event Hubs](/azure/event-hubs/). Ez a cikk kategorizálja, és ismerteti a rendelkezésre álló, hivatkozásokkal az egyes minták.
@@ -44,6 +44,23 @@ Az Event Hubs-minták találhat [GitHub](https://github.com/Azure/azure-event-hu
 | [EventProcessorSample](https://github.com/Azure/azure-event-hubs/blob/master/samples/Java/Basic/EventProcessorSample) |Ez a példa bemutatja, hogyan események fogadása az eseményközpontok a több egyidejű fogadóra automatikus partíció-kiválasztási és -feladatátvételt biztosító event processor host használatával. | 
 | [AutoScaleOnIngress](https://github.com/Azure/azure-event-hubs/blob/master/samples/Java/Benchmarks/AutoScaleOnIngress) | Ez a példa bemutatja, hogyan egy eseményközpont is automatikus vertikális felskálázás a magas terhelés. A minta gyakorisággal csupán haladhatja meg az eseményközpontok felé, ami az vertikális felskálázása az event hubs konfigurált arányát eseményeket küld. | 
 | [IngressBenchmark](https://github.com/Azure/azure-event-hubs/blob/master/samples/Java/Benchmarks/IngressBenchmark) | Ez a minta lehetővé teszi, hogy a bejövő forgalom mérése. | 
+
+## <a name="python-samples"></a>Python-példák
+Python-minták az Azure Event Hubs megtalálja a [azure-event-hubs-python](https://github.com/Azure/azure-event-hubs-python/tree/master/examples) GitHub-adattárban.
+
+## <a name="nodejs-samples"></a>Node.js-példák
+Node.js-minták az Azure Event Hubs megtalálja a [azure-event-hubs-csomópont](https://github.com/Azure/azure-event-hubs-node) GitHub-adattárban.
+
+## <a name="go-samples"></a>Go-minta
+Go-minták az Azure Event Hubs megtalálja a [azure-event-hubs-go](https://github.com/Azure/azure-event-hubs-go/tree/master/_examples) GitHub-adattárban.
+
+## <a name="azure-cli-samples"></a>Azure CLI-minták
+Azure CLI-minták az Azure Event Hubs megtalálja a [azure-event-hubs](https://github.com/Azure/azure-event-hubs/tree/master/samples/Management/CLI) GitHub-adattárban.
+
+## <a name="azure-powershell-samples"></a>Azure PowerShell-minták
+Azure PowerShell-minták az Azure Event Hubs megtalálja a [azure-event-hubs](https://github.com/Azure/azure-event-hubs/tree/master/samples/Management/PowerShell) GitHub-adattárban.
+ 
+
 
 ## <a name="next-steps"></a>További lépések
 További információ az Event Hubs az alábbi cikkeket:

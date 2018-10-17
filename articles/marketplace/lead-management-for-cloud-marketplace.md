@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 10/05/2018
 ms.author: yijenj
-ms.openlocfilehash: 47333a7b5ad7d76ee8bbac19884ba8246eadc05e
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: 9d2745f1211aa6f818f89d9597867e1b3b2de03f
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48855782"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49362653"
 ---
 # <a name="lead-management-for-cloud-marketplace"></a>A felhőbeli piactér felügyeleti vezethet
 
@@ -214,7 +214,7 @@ Lehetséges, hogy a felhasználó e-mail-tartományhoz, .edu. Adatvédelmi okokb
 
  **Konfiguráltam az Azure-tábla-vagy az Azure BLOB saját érdeklődő célhelyeként, hogyan tekinthetem meg az érdeklődők?** 
 
-A blob vagy table elérheti az Azure Portalról, vagy letöltheti és telepítheti [Azure Storage Explorer](https://azure.microsoft.com/en-us/features/storage-explorer/) ingyenes, táblák és blobok az Azure storage-fiók megtekintéséhez. 
+A blob vagy table elérheti az Azure Portalról, vagy letöltheti és telepítheti [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) ingyenes, táblák és blobok az Azure storage-fiók megtekintéséhez. 
 
 
 **Konfiguráltam az Azure Table saját érdeklődő célhelyeként, is szeretnék értesítést kaphat, amikor új érdeklődő piactér által küldött?** 

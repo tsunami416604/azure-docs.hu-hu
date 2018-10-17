@@ -11,13 +11,13 @@ author: oslake
 ms.author: moslake
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 09/14/2018
-ms.openlocfilehash: 7459ae5153434887ade74f841a2239c76a7caef9
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.date: 10/15/2018
+ms.openlocfilehash: 6673fa9d377400d7e80fc95dc7d0ce12f4b2e60e
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48043712"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49354172"
 ---
 # <a name="azure-sql-database-vcore-based-purchasing-model-limits-for-elastic-pools"></a>Az Azure SQL Database Virtuálismag-alapú vásárlási modell a rugalmas készletek korlátai
 
@@ -28,16 +28,15 @@ DTU-alapú vásárlási modell korlátozásairól lásd: [SQL Database DTU-alap�
 > [!IMPORTANT]
 > Bizonyos körülmények között szükség lehet az adatbázis nem használt terület felszabadítását zsugorítani. További információkért lásd: [kezelése az Azure SQL Database területe](sql-database-file-space-management.md).
 
-## <a name="elastic-pool-storage-sizes-and-compute-sizes"></a>Rugalmas készlet: tárterületet és számítási méretek
-
-Az SQL Database rugalmas készletek esetén az alábbi táblázatok megjelenítése az egyes szolgáltatásszinteken elérhető erőforrások és számítási mérete. A szolgáltatási rétegben, a számítási méretét és a tárolási mennyiséget használatával beállíthatja a [az Azure portal](sql-database-elastic-pool-manage.md#azure-portal-manage-elastic-pools-and-pooled-databases), [PowerShell](sql-database-elastic-pool-manage.md#powershell-manage-elastic-pools-and-pooled-databases), a [Azure CLI-vel](sql-database-elastic-pool-manage.md#azure-cli-manage-elastic-pools-and-pooled-databases), vagy a [REST API](sql-database-elastic-pool-manage.md#rest-api-manage-elastic-pools-and-pooled-databases).
+A szolgáltatási rétegben, a számítási méretét és a tárolási mennyiséget használatával beállíthatja a [az Azure portal](sql-database-elastic-pool-manage.md#azure-portal-manage-elastic-pools-and-pooled-databases), [PowerShell](sql-database-elastic-pool-manage.md#powershell-manage-elastic-pools-and-pooled-databases), a [Azure CLI-vel](sql-database-elastic-pool-manage.md#azure-cli-manage-elastic-pools-and-pooled-databases), vagy a [REST API](sql-database-elastic-pool-manage.md#rest-api-manage-elastic-pools-and-pooled-databases).
 
 > [!NOTE]
 > A rugalmas készletek az egyes adatbázisok erőforráskorlátok kívül címkészleteket, amelyek azonos az önálló adatbázisokat azonos számítási mérete általában. Például a maximális egyidejű feldolgozók GP_Gen4_1 adatbázishoz 200 feldolgozók. Tehát egy adatbázis GP_Gen4_1 készletben a maximális egyidejű feldolgozók egyben 200 feldolgozók. Vegye figyelembe, GP_Gen4_1 készlet egyidejű feldolgozók száma 210.
 
-### <a name="general-purpose-service-tier"></a>Általános célú szolgáltatásszint
+## <a name="general-purpose-service-tier-storage-sizes-and-compute-sizes"></a>Általános célú szolgáltatásszint: tárterületet és számítási méretek
 
-#### <a name="generation-4-compute-platform"></a>4. generációs számítási platform
+### <a name="generation-4-compute-platform"></a>4. generációs számítási platform
+
 |Számítási mérete|GP_Gen4_1|GP_Gen4_2|GP_Gen4_4|GP_Gen4_8|GP_Gen4_16|GP_Gen4_24|
 |:--- | --: |--: |--: |--: |--: |--: |
 |H/W generálása|4|4|4|4|4|4|
@@ -61,7 +60,8 @@ Az SQL Database rugalmas készletek esetén az alábbi táblázatok megjelenít�
 |Biztonsági mentési tárterület|1 X-adatbázis mérete|1 X-adatbázis mérete|1 X-adatbázis mérete|1 X-adatbázis mérete|1 X-adatbázis mérete|1 X-adatbázis mérete|
 |||
 
-#### <a name="generation-5-compute-platform"></a>5. generáció számítási platform
+### <a name="generation-5-compute-platform"></a>5. generáció számítási platform
+
 |Számítási mérete|GP_Gen5_2|GP_Gen5_4|GP_Gen5_8|GP_Gen5_16|GP_Gen5_24|GP_Gen5_32|GP_Gen5_40|GP_Gen5_80|
 |:--- | --: |--: |--: |--: |--: |--: |--: |--: |
 |H/W generálása|5|5|5|5|5|5|5|5|
@@ -85,9 +85,10 @@ Az SQL Database rugalmas készletek esetén az alábbi táblázatok megjelenít�
 |Biztonsági mentési tárterület|1 X-adatbázis mérete|1 X-adatbázis mérete|1 X-adatbázis mérete|1 X-adatbázis mérete|1 X-adatbázis mérete|1 X-adatbázis mérete|1 X-adatbázis mérete|1 X-adatbázis mérete|
 |||
 
-### <a name="business-critical-service-tier"></a>Üzleti kritikus fontosságú szolgáltatási szint
+## <a name="business-critical-service-tier-storage-sizes-and-compute-sizes"></a>Üzleti kritikus fontosságú szolgáltatási szint: tárterületet és számítási méretek
 
-#### <a name="generation-4-compute-platform"></a>4. generációs számítási platform
+### <a name="generation-4-compute-platform"></a>4. generációs számítási platform
+
 |Számítási mérete|BC_Gen4_1|BC_Gen4_2|BC_Gen4_4|BC_Gen4_8|BC_Gen4_16|BC_Gen4_24|
 |:--- | --: |--: |--: |--: |--: |--: |
 |H/W generálása|4|4|4|4|4|4|
@@ -112,6 +113,7 @@ Az SQL Database rugalmas készletek esetén az alábbi táblázatok megjelenít�
 |||
 
 #### <a name="generation-5-compute-platform"></a>5. generáció számítási platform
+
 |Számítási mérete|BC_Gen5_2|BC_Gen5_4|BC_Gen5_8|BC_Gen5_16|BC_Gen5_24|BC_Gen5_32|BC_Gen5_40|BC_Gen5_80|
 |:--- | --: |--: |--: |--: |--: |--: |--: |--: |
 |H/W generálása|5|5|5|5|5|5|5|5|
@@ -137,17 +139,17 @@ Az SQL Database rugalmas készletek esetén az alábbi táblázatok megjelenít�
 
 Ha az összes virtuális mag a rugalmas készlet foglalt, a készletben lévő minden adatbázis ugyanannyi számítási erőforrásokat, amelyek a lekérdezések feldolgozásához kap. Az SQL Database szolgáltatás egyenlő erőforrás-megosztást biztosít az adatbázisok között azáltal, hogy mindegyiküknek egyenlő szeleteket ad a számítási időből. Mennyiségéhez garantált erőforrások minden egyes adatbázishoz. Ha a vcore magok adatbázisonkénti minimális értéke nem nulla értékre van állítva, a rugalmas készlet erőforrás-elosztást megosztást.
 
-### <a name="database-properties-for-pooled-databases"></a>Készletezett adatbázisok adatbázis-tulajdonságai
+## <a name="database-properties-for-pooled-databases"></a>Készletezett adatbázisok adatbázis-tulajdonságai
 
 A következő táblázat ismerteti a készletezett adatbázisok tulajdonságait.
 
 | Tulajdonság | Leírás |
 |:--- |:--- |
-| Max. virtuális magok adatbázisonkénti |A készletben található adatbázisok mindegyike számára virtuális magok maximális számának felhasználhatja, ha elérhető a kihasználtság alapján más a készletben található adatbázisok által. Max. virtuális magok adatbázisonkénti nem garantálja az adatbázis-erőforrásokat. Ez a beállítás egy globális beállítás, amely a készletben található minden adatbázisra vonatkozik. Állítsa be elég nagy csúcsokkal is elbírjon az adatbázis-kihasználtsági adatbázisonkénti maximális virtuális maggal. Elvárható, hogy a szükségesnél valamivel nagyobb értéket adjon meg, mivel a készlet általában hullámzó használati mintákat feltételez az adatbázisokkal kapcsolatban, amelyekben az adatbázisok kihasználtsága nem egyszerre éri el a csúcsértéket.|
+| Max. virtuális magok adatbázisonkénti |A készletben található adatbázisok mindegyike számára virtuális magok maximális számának felhasználhatja, ha elérhető a kihasználtság alapján más a készletben található adatbázisok által. Max. virtuális magok adatbázisonkénti nem garantálja az adatbázis-erőforrásokat. Ez a beállítás egy globális beállítás, amely a készletben található minden adatbázisra vonatkozik. Állítsa be elég nagy csúcsokkal is elbírjon az adatbázis-kihasználtsági adatbázisonkénti maximális virtuális maggal. Bizonyos fokú túlterhelt véglegesítése várható, mivel a készlet általában hullámzó használati mintákat adatbázisok feltételezi ahol minden adatbázis vannak nem egyidejűleg kiugró kihasználtságú.|
 | Az adatbázisonkénti minimális magok |Minimális számú virtuális magot kapnak a készletben található adatbázisok mindegyike számára garantált. Ez a beállítás egy globális beállítás, amely a készletben található minden adatbázisra vonatkozik. A minimális virtuális magok adatbázisonkénti 0 értékre lehet beállítani, és egyben az alapértelmezett érték. Ez a tulajdonság értéke bárhol 0 és az átlagos virtuális magok adatbázisonkénti felhasználási között. A termék, a készlet és a minimális virtuális magok adatbázisonkénti adatbázisok száma nem haladhatja meg a virtuális magok száma készletenként.|
 | Maximális tárterület adatbázisonként |A készletben található adatbázis a felhasználó által beállított adatbázis maximális méretét. Készletezett adatbázisok osztoznak a készlettárolón lefoglalt, elérheti egy adatbázis mérete korlátozott, így a kisebb fennmaradó készletéből, storage és az adatbázis méretét. Az adatbázis maximális mérete az adatfájlok maximális méretére vonatkozik, és nem tartalmazza a naplófájlok által használt területet. |
 |||
- 
+
 ## <a name="next-steps"></a>További lépések
 
 - Lásd: [SQL Database: gyakori kérdések](sql-database-faq.md) kapcsolatos gyakori kérdésekre adott válaszokat.

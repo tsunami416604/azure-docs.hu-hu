@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/08/2018
-ms.openlocfilehash: 724d3d7fe8ff037b82bbce797e391c21060aa53d
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.openlocfilehash: 6455322a1a1cf392c16aba708ce8445f8c80c3df
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48870961"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49363843"
 ---
 # <a name="extend-azure-hdinsight-using-an-azure-virtual-network"></a>Az Azure Virtual Network használata Azure HDInsight kiterjesztése
 
@@ -173,7 +173,7 @@ További információkért lásd: a [virtuális gépek és Szerepkörpéldányok
 
 ## <a name="directly-connect-to-hadoop-services"></a>Közvetlenül csatlakozhat a Hadoop-szolgáltatásokhoz
 
-A legtöbb dokumentáció a HDInsight feltételezi, hogy a fürt a hozzáférést az interneten keresztül. Például hogy a https://CLUSTERNAME.azurehdinsight.net címen tud csatlakozni a fürthöz. A cím, amely nem érhető el, ha használta az NSG-k vagy udr-EK hozzáférés korlátozása az internetről a nyilvános átjárót használja.
+Csatlakozhat a fürthöz https://CLUSTERNAME.azurehdinsight.net. A cím egy nyilvános IP-címet használja, ami nem feltétlenül érhető el, ha használta az NSG-k vagy udr-EK az internetről bejövő forgalom korlátozására. Emellett a fürt egy virtuális hálózaton üzembe hozzá tud férni a privát végpont használatával https://CLUSTERNAME-internal.azurehdinsight.net. Ez a végpont a fürt hozzáférés a virtuális hálózaton belül egy privát IP-cím mutat.
 
 Az Ambari és a más weblapok, a virtuális hálózaton keresztül csatlakozni, használja az alábbi lépéseket:
 

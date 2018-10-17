@@ -11,12 +11,12 @@ ms.topic: article
 description: Gyors Kubernetes-fejlesztés tárolókkal és mikroszolgáltatásokkal az Azure-ban
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, tárolók
 manager: douge
-ms.openlocfilehash: 91bec065b2c83eac6b646ae6a55bc1ae0aae01db
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 3f30a62a2f351aecabc37206607c3e28ec5e3ab5
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47226891"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49353358"
 ---
 # <a name="troubleshooting-guide"></a>Hibaelhárítási útmutató
 
@@ -76,6 +76,23 @@ A Visual Studióban:
 
     ![Képernyőkép a beállítások panel](media/common/VerbositySetting.PNG)
     
+Ez a hiba jelenhet meg használatakor egy többlépcsős docker-fájlban. A részletes kimenet a következőképpen jelenik meg:
+
+```cmd
+$ azds up
+Using dev space 'default' with target 'AksClusterName'
+Synchronizing files...6s
+Installing Helm chart...2s
+Waiting for container image build...10s
+Building container image...
+Step 1/12 : FROM [imagename:tag] AS base
+Error parsing reference: "[imagename:tag] AS base" is not a valid repository/tag: invalid reference format
+Failed to build container image.
+Service cannot be started.
+```
+
+Ennek az oka egy régebbi verziója, amely nem támogatja a többlépcsős Docker futtatása AKS-csomópontok épít. A docker-fájlban többlépcsős buildek elkerülése érdekében újraírási kell.
+
 ## <a name="dns-name-resolution-fails-for-a-public-url-associated-with-a-dev-spaces-service"></a>DNS-névfeloldás nem sikerül, egy fejlesztői tárolóhelyek szolgáltatással társított nyilvános URL-cím
 
 Ha a DNS-névfeloldás nem sikerül, megjelenhet egy "A lap nem jeleníthető meg." vagy "ezen a helyen nem érhető el" hiba a böngészőben, amikor egy fejlesztési tárolóhelyek szolgáltatás próbál csatlakozni a nyilvános URL-címhez társított.
@@ -206,6 +223,14 @@ Az Azure-előfizetés-tulajdonosi vagy közreműködői hozzáféréssel rendelk
 ```cmd
 az provider register --namespace Microsoft.DevSpaces
 ```
+
+## <a name="error-could-not-find-a-ready-tiller-pod-when-launching-dev-spaces"></a>"Hiba: nem található készen áll a tiller valóban podot" fejlesztői, szóközök indításakor
+
+### <a name="reason"></a>Ok
+Ez a hiba akkor fordul elő, ha a Helm-ügyfél már nem képes kommunikálni a tiller valóban pod a fürtben futó.
+
+### <a name="try"></a>Próbálja ki:
+Az ügynökcsomópontok általában a fürtben lévő újraindítás megszünteti a ezt a problémát.
 
 ## <a name="azure-dev-spaces-doesnt-seem-to-use-my-existing-dockerfile-to-build-a-container"></a>Az Azure fejlesztési szóközt nem a Microsoft saját meglévő docker-fájl használatával hozhat létre egy tárolót 
 

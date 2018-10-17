@@ -9,12 +9,12 @@ ms.component: speech-service
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: erhopf
-ms.openlocfilehash: 3d03cd6a5cceb805ed8ee34548bd1a3973e9d78b
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.openlocfilehash: 5a19366f6aeec2422ec8671ba3c32f642b5e01ac
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49167086"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49361436"
 ---
 # <a name="about-the-speech-to-text-api"></a>Tudnivalók a Speech to Text API
 
@@ -38,7 +38,7 @@ A **Speech to Text** API a következő szolgáltatásokat nyújtja:
 
 ## <a name="api-capabilities"></a>API-funkciók
 
-Az a funkciók némelyike a **Speech to Text** API - különös tekintettel testreszabása – REST-en keresztül érhetők el. Az alábbi táblázat foglalja össze az egyes módszerek az API eléréséhez képességeit. 
+Az a funkciók némelyike a **Speech to Text** API-t, különös tekintettel a testreszabás, érhetők el REST-en keresztül. Az alábbi táblázat foglalja össze az egyes módszerek az API eléréséhez képességeit. Képességek és API-részletek teljes listáját lásd: [referencia Swagger](https://westus.cris.ai/swagger/ui/index).
 
 | Használati eset | REST | SDK-k |
 |-----|-----|-----|----|
@@ -55,7 +55,7 @@ Az a funkciók némelyike a **Speech to Text** API - különös tekintettel test
 | Modell üzembe helyezett megoldások kezelése & létrehozása | Igen | Nem |
 
 > [!NOTE]
-> A REST API-t valósít meg, amely korlátozza az API-kérelmek 25, 5 másodpercenként szabályozás. Üzenet hearders tájékoztatni fogja korlátját
+> A REST API-t valósít meg, amely korlátozza az API-kérelmek 25, 5 másodpercenként szabályozás. Fejlécek tájékoztatni fogja korlátját
 
 \* *A LUIS szándékok és entitások egy külön LUIS-előfizetése lehet nyerni. Ennek az előfizetésnek az SDK a LUIS hívja meg, és adja meg az entitás- és leképezés eredményeket, valamint a speech beszédátírás. A LUIS hívása a REST API-val saját magának, hogy szándékokat és entitásokat a LUIS-előfizetéshez.*
 

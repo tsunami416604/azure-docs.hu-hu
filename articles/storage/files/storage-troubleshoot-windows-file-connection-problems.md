@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 05/11/2018
 ms.author: jeffpatt
 ms.component: files
-ms.openlocfilehash: 935d4a3ba3fc3199177be5bd4e70f82239c3c971
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: a0a330d3ea7362ffabb20a5d390cee87cbf7d8ff
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39531533"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49365405"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows"></a>A Windows Azure Files-problémák hibaelhárítása
 
@@ -32,16 +32,17 @@ Amikor egy fájlmegosztás csatlakoztatása a helyszíni, illetve egy másik ada
 
 ### <a name="cause-1-unencrypted-communication-channel"></a>1. ok: Nem titkosított kommunikációs csatornát
 
-Biztonsági okokból az Azure-fájlmegosztások kapcsolatok le lesznek tiltva, ha a kommunikációs csatornát nincs titkosítva, és ha a csatlakozási kísérlet nem ugyanabban az adatközpontban az Azure-fájlmegosztások-ket. Kommunikációs csatorna titkosítási van megadva, csak akkor, ha a felhasználó ügyfél operációs rendszere támogatja az SMB-titkosítás.
+Biztonsági okokból az Azure-fájlmegosztások kapcsolatok le lesznek tiltva, ha a kommunikációs csatornát nincs titkosítva, és ha a csatlakozási kísérlet nem ugyanabban az adatközpontban az Azure-fájlmegosztások-ket. Titkosítatlan kapcsolat az adatközpontokon belül is blokkolhatók, ha a [biztonságos átvitelre van szükség](https://docs.microsoft.com/en-us/azure/storage/common/storage-require-secure-transfer) beállítás engedélyezve van a tárfiókon. Kommunikációs csatorna titkosítási van megadva, csak akkor, ha a felhasználó ügyfél operációs rendszere támogatja az SMB-titkosítás.
 
 A Windows 8, Windows Server 2012 és egyes rendszerek újabb verzióit egyeztetni az SMB 3.0-s, amely támogatja a titkosítást tartalmazó kérelmeket.
 
 ### <a name="solution-for-cause-1"></a>1 OK megoldás
 
-Csatlakozás ügyfélről, amely az alábbi lehetőségek közül:
+1. Ellenőrizze a [biztonságos átvitelre van szükség](https://docs.microsoft.com/en-us/azure/storage/common/storage-require-secure-transfer) beállítás le van tiltva, a tárfiókban.
+2. Csatlakozás ügyfélről, amely az alábbi lehetőségek közül:
 
-- Megfelel a követelményeknek, Windows 8 és Windows Server 2012 vagy újabb verzió
-- Csatlakoztatja a virtuális gépről ugyanabban az adatközpontban, az Azure-fájlmegosztás használt Azure storage-fiókban
+    - Megfelel a követelményeknek, Windows 8 és Windows Server 2012 vagy újabb verzió
+    - Csatlakoztatja a virtuális gépről ugyanabban az adatközpontban, az Azure-fájlmegosztás használt Azure storage-fiókban
 
 ### <a name="cause-2-port-445-is-blocked"></a>2. ok: 445-ös Port le van tiltva
 

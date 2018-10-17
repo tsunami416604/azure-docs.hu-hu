@@ -9,17 +9,17 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 04/09/2018
-ms.openlocfilehash: 045d7623c3f00ee984dad406247e3197a4ecc45a
-ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
+ms.openlocfilehash: 2f35f54c7ec5ad169673aebe08602294270f470a
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/01/2018
-ms.locfileid: "47586171"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49364455"
 ---
 # <a name="anomaly-detection-in-azure-stream-analytics"></a>Anomáliadetektálás az Azure Stream Analytics szolgáltatásban
 
 > [!IMPORTANT]
-> Ezt a funkciót, mert folyamatban van, de váltja fel az új funkciók. További információért látogasson el a [nyolc új funkciók az Azure Stream Analyticsben](https://azure.microsoft.com/en-us/blog/eight-new-features-in-azure-stream-analytics/) blogbejegyzést.
+> Ezt a funkciót, mert folyamatban van, de váltja fel az új funkciók. További információért látogasson el a [nyolc új funkciók az Azure Stream Analyticsben](https://azure.microsoft.com/blog/eight-new-features-in-azure-stream-analytics/) blogbejegyzést.
 
 A **AnomalyDetection** operátor annak észlelésére használnak, különböző típusú anomáliákról az eseménystreameket. Például lehet, hogy a szabad memória a hosszú idővel lassú csökkenését, a memóriavesztés, vagy a webszolgáltatási kérelmeket, amelyek számos stabil száma előfordulhat, hogy jelentős mértékben növelése vagy csökkentése.  
 

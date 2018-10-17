@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 02/20/2018
 ms.author: abshamsft
 ms.component: ''
-ms.openlocfilehash: 953a004f48bfd9bd68b9500d312240c45cbf3292
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: 634958265193a1dedb7c860c34f712160e4120d2
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49321903"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49353291"
 ---
 # <a name="network-performance-monitor-solution-in-azure"></a>Network Performance Monitor megoldás az Azure-ban
 
@@ -257,7 +257,7 @@ A topológia a gráfon látható 3. rétegbeli topológia, és nem tartalmazza 2
 
 A Network Performance Monitor riasztási képességeit használja [Azure Monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-unified-alerts).
 
-Ez azt jelenti, hogy az összes riasztás kezelhetők [Műveletcsoportok](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-action-groups#overview).  
+Ez azt jelenti, hogy minden értesítés, amely segítségével kezelt [Műveletcsoportok](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-action-groups#overview).  
 
 Ha Ön egy NPM-felhasználó hoz létre riasztást az OMS-n keresztül: 
 1. Megjelenik egy hivatkozás, amely átirányítja Önt az Azure Portalon. Kattintson rá a portál eléréséhez.
@@ -270,6 +270,10 @@ Ha Ön egy NPM-felhasználó hoz létre riasztást, az Azure Portalon keresztül
 2. Adja meg az e-maileket közvetlenül választja, ha egy művelet nevű csoport **NPM Email ActionGroup** jön létre, és az e-mail-azonosító van adva ehhez a csoporthoz művelet.
 3. Ha Műveletcsoportok használata mellett dönt, akkor kiválaszthat egy korábban létrehozott művelet. Műveletcsoport létrehozása tudhat [itt.](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-action-groups#create-an-action-group-by-using-the-azure-portal) 
 4. Ha a riasztás sikeresen létrejött, a riasztások kezelése hivatkozás segítségével a riasztásokat. 
+
+Minden alkalommal, amikor létrehoz egy riasztás npm-et az Azure Monitor egy lekérdezés alapú riasztási szabály hoz létre. Ez a lekérdezés triggerred van alapértelmezés szerint 5 percenként. Az Azure monitor nem kell fizetni az első 250 létrehozott riasztási szabályok jelentkezik, és korlátozza a 250 naplóriasztási szabály riasztási szabályok fenti lesznek kiszámlázva, [riasztást küld, az Azure monitorban díjszabását ismertető lapon díjszabás](https://azure.microsoft.com/en-us/pricing/details/monitor/).
+Értesítések megfelelően külön számoljuk [díjszabás az Azure Monitor pricig lapon értesítések](https://azure.microsoft.com/en-us/pricing/details/monitor/).
+
 
 ## <a name="pricing"></a>Díjszabás
 

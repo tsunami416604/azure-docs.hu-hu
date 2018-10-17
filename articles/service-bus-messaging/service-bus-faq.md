@@ -8,16 +8,16 @@ ms.service: service-bus-messaging
 ms.topic: article
 ms.date: 09/05/2018
 ms.author: spelluru
-ms.openlocfilehash: 87a6ccf61e10a6a8c7feeccad3690cdcb9b63641
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: c851c8a9384acf909dc88d3565d49021e1ee67e9
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48857856"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49362016"
 ---
 # <a name="service-bus-faq"></a>Service Bus – GYIK
 
-Ez a cikk ismerteti a néhány gyakori kérdés a Microsoft Azure Service Bus szolgáltatásról. Emellett letöltheti a [– gyakori kérdések az Azure támogatja a](https://azure.microsoft.com/en-us/support/faq/) általános Azure díjszabását és támogatási információk.
+Ez a cikk ismerteti a néhány gyakori kérdés a Microsoft Azure Service Bus szolgáltatásról. Emellett letöltheti a [– gyakori kérdések az Azure támogatja a](https://azure.microsoft.com/support/faq/) általános Azure díjszabását és támogatási információk.
 
 ## <a name="general-questions-about-azure-service-bus"></a>Azure Service Bus általános kérdések
 ### <a name="what-is-azure-service-bus"></a>Mi az Azure Service Bus?
@@ -56,7 +56,7 @@ Ez a szakasz néhány – gyakori kérdések a Service Bus díjszabási struktú
 
 A [a Service Bus díjszabása és számlázási](service-bus-pricing-billing.md) a cikk ismerteti a Service Bus a számlázási mérőszámok. További részletes információ a Service Bus díjszabási lehetőségek: [a Service Bus díjszabásáról](https://azure.microsoft.com/pricing/details/service-bus/).
 
-Emellett letöltheti a [Azure támogatás – gyakori kérdések](https://azure.microsoft.com/en-us/support/faq/) általános Azure díjszabási információk. 
+Emellett letöltheti a [Azure támogatás – gyakori kérdések](https://azure.microsoft.com/support/faq/) általános Azure díjszabási információk. 
 
 ### <a name="how-do-you-charge-for-service-bus"></a>Hogyan tegye meg díja szerint számítjuk fel a Service Bus?
 Teljes információ a Service Bus díjszabásáról: [díjszabása a Service Bus][Pricing overview]. A feltüntetett árak mellett díjkötelesek kapcsolódó adatforgalmi kimenő kívül az adatközpontot, amelyben az alkalmazás ki van építve.

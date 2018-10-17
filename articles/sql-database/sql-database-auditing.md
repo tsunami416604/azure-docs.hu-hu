@@ -11,13 +11,13 @@ author: ronitr
 ms.author: ronitr
 ms.reviewer: vanto
 manager: craigg
-ms.date: 10/02/2018
-ms.openlocfilehash: 7362fc634f27227d037b08cd93f0f406fd250e22
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.date: 10/15/2018
+ms.openlocfilehash: bd40faf8a77a8940dc78375ec516c39742540231
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49115607"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49352837"
 ---
 # <a name="get-started-with-sql-database-auditing"></a>Ismerkedés az SQL-adatbázis naplózási szolgáltatásával
 
@@ -30,7 +30,6 @@ Az Azure SQL database naplózási nyomon követi az adatbázisok eseményeit és
 ## <a id="subheading-1"></a>Az Azure SQL database naplózás – áttekintés
 
 Használhatja az SQL database naplózási szolgáltatásán keresztül:
-
 
 - **Megőrzése** auditnaplót kiválasztott események. Megadhatja, hogy az adatbázis-műveleteket naplózni kívánt kategóriáit.
 - **A jelentés** az adatbázis-tevékenységeket. Előre konfigurált jelentéseket és a egy irányítópult segítségével gyorsan használatba tevékenység és az események naplózásához.
@@ -98,7 +97,7 @@ Az alábbi szakasz ismerteti a konfigurációt, a naplózás az Azure portal has
 
 9. Kattintson a **Save** (Mentés) gombra.
 10. Ha szeretné a naplózott események testreszabásához, ehhez keresztül [PowerShell-parancsmagok](#subheading-7) vagy a [REST API-val](#subheading-9).
-11. A naplózási beállítások konfigurálása után kapcsolja be az új fenyegetés-észlelési szolgáltatást, és konfigurálja a biztonsági riasztást küld e-maileket. A fenyegetésészlelés használata esetén jelezheti a potenciális biztonsági fenyegetések rendellenes adatbázis-tevékenységek a proaktív értesítéseket kap. További információkért lásd: [fenyegetések észlelése – első lépések](sql-database-threat-detection-get-started.md). 
+11. A naplózási beállítások konfigurálása után kapcsolja be az új fenyegetés-észlelési szolgáltatást, és konfigurálja a biztonsági riasztást küld e-maileket. A fenyegetésészlelés használata esetén jelezheti a potenciális biztonsági fenyegetések rendellenes adatbázis-tevékenységek a proaktív értesítéseket kap. További információkért lásd: [fenyegetések észlelése – első lépések](sql-database-threat-detection-get-started.md).
 
 ## <a id="subheading-3"></a>Elemezheti a vizsgálati naplók és jelentések
 
@@ -223,16 +222,17 @@ A parancsfájl példa: [PowerShell-lel, naplózás és fenyegetésészlelés kon
 
 **REST API - blobnaplózás**:
 
-- [Hozzon létre vagy adatbázis Blob naplózási szabályzatának frissítése](https://docs.microsoft.com/rest/api/sql/database%20auditing%20settings/createorupdate)
-- [Hozzon létre vagy frissítési kiszolgáló Blob naplózási házirend](https://docs.microsoft.com/rest/api/sql/server%20auditing%20settings/createorupdate)
-- [Adatbázis Blob naplózási szabályzatának beolvasása](https://docs.microsoft.com/rest/api/sql/database%20auditing%20settings/get)
-- [Kiszolgáló Blob naplózási szabályzatának beolvasása](https://docs.microsoft.com/rest/api/sql/server%20auditing%20settings/get)
+- [Hozzon létre vagy adatbázis Blob naplózási szabályzatának frissítése](https://docs.microsoft.com/rest/api/sql/database%20auditing%20settings/databaseblobauditingpolicies_createorupdate)
+- [Hozzon létre vagy frissítési kiszolgáló Blob naplózási házirend](https://docs.microsoft.com/rest/api/sql/server%20auditing%20settings/serverblobauditingpolicies_createorupdate)
+- [Adatbázis Blob naplózási szabályzatának beolvasása](https://docs.microsoft.com/rest/api/sql/database%20auditing%20settings/databaseblobauditingpolicies_get)
+- [Kiszolgáló Blob naplózási szabályzatának beolvasása](https://docs.microsoft.com/rest/api/sql/server%20auditing%20settings/serverblobauditingpolicies_get)
 
 AHOL záradékot támogatja a további szűréshez a kiterjesztett házirend:
-- [Adatbázis frissítése *kiterjesztett* Blob naplózási házirend](https://docs.microsoft.com/rest/api/sql/database%20extended%20auditing%20settings/createorupdate)
-- [Hozzon létre vagy frissítési kiszolgáló *kiterjesztett* Blob naplózási házirend](https://docs.microsoft.com/rest/api/sql/server%20extended%20auditing%20settings/createorupdate)
-- [Adatbázis beolvasása *kiterjesztett* Blob naplózási házirend](https://docs.microsoft.com/rest/api/sql/database%20extended%20auditing%20settings/get)
-- [Első kiszolgáló *kiterjesztett* Blob naplózási házirend](https://docs.microsoft.com/rest/api/sql/server%20extended%20auditing%20settings/get)
+
+- [Adatbázis frissítése *kiterjesztett* Blob naplózási házirend](https://docs.microsoft.com/rest/api/sql/database%20extended%20auditing%20settings/extendeddatabaseblobauditingpolicies_createorupdate)
+- [Hozzon létre vagy frissítési kiszolgáló *kiterjesztett* Blob naplózási házirend](https://docs.microsoft.com/rest/api/sql/server%20auditing%20settings/serverblobauditingpolicies_createorupdate)
+- [Adatbázis beolvasása *kiterjesztett* Blob naplózási házirend](https://docs.microsoft.com/rest/api/sql/database%20extended%20auditing%20settings/extendeddatabaseblobauditingpolicies_get)
+- [Első kiszolgáló *kiterjesztett* Blob naplózási házirend](https://docs.microsoft.com/rest/api/sql/server%20auditing%20settings/serverblobauditingpolicies_get)
 
 <!--Anchors-->
 [Azure SQL Database Auditing overview]: #subheading-1

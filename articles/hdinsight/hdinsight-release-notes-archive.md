@@ -9,12 +9,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 03/20/2018
 ms.author: jasonh
-ms.openlocfilehash: 1dd0e33b3ec6cc5521d5087d48e9e5467911c2b6
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: f3be4b5e74c0c5cac9acd281b86e55c96b011763
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43109763"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49363792"
 ---
 # <a name="archived-release-notes-for-azure-hdinsight"></a>Az Azure HDInsight archivált kibocsátási megjegyzései
 
@@ -24,7 +24,7 @@ Az a **legutóbbi** Azure HDInsight kibocsátási frissítések, lásd: [HDInsig
 > A Linux az egyetlen operációs rendszer, amely a HDInsight 3.4-es vagy újabb verziói esetében használható. További információkért lásd: [HDInsight versioning cikk](hdinsight-component-versioning.md).
 
 ## <a name="notes-for-06272018---release-of-new-open-source-versions-adls-gen2-etc-on-hdinsight-36"></a>Megjegyzések a 06/27 vagy 2018 - új nyílt forráskódú verziók megjelenésével, a HDInsight 3.6-os ADLS Gen2 stb.
-Az új frissítések és funkciók ügyfeleink számára jelentős HDInsight 2018 június kiadása nem. Olvassa el ezt [közzététele](https://azure.microsoft.com/en-us/blog/enterprises-get-deeper-insights-with-hadoop-and-spark-updates-on-azure-hdinsight/) további részletekért.
+Az új frissítések és funkciók ügyfeleink számára jelentős HDInsight 2018 június kiadása nem. Olvassa el ezt [közzététele](https://azure.microsoft.com/blog/enterprises-get-deeper-insights-with-hadoop-and-spark-updates-on-azure-hdinsight/) további részletekért.
 
 Az alábbiakban a fontosabb eseményeket. A részletes kibocsátási megjegyzések javított, az ismert problémákról, stb., olvassa el a [Azure HDInsight kibocsátási megjegyzései](hdinsight-release-notes.md).
 

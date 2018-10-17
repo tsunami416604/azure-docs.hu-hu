@@ -1,20 +1,20 @@
 ---
-title: Szöveg-beszéd átalakítás kapcsolatban
-description: Szöveg-beszéd átalakítás lehetőségeinek áttekintése.
-titleSuffix: Microsoft Cognitive Services
+title: Kapcsolatos szövegfelolvasás – beszédszolgáltatás
+titleSuffix: Azure Cognitive Services
+description: A Microsoft Text-to-Speech szolgáltatás kínál a több mint 75 beszédhangot legfeljebb 45 nyelvet és területi beállításokat. Standard hangtípust használatához meg kell a hangalapú nevének megadásakor a beszédfelismerési szolgáltatás hívásakor néhány más paramétereket.
 services: cognitive-services
 author: erhopf
 ms.service: cognitive-services
 ms.component: speech-service
-ms.topic: article
-ms.date: 05/07/2018
+ms.topic: conceptual
+ms.date: 10/16/2018
 ms.author: erhopf
-ms.openlocfilehash: bc60eed63fb40c42fc4331edb01e15f850bf6ecb
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.openlocfilehash: 2f79ecbb42ba6453c7fb615114c0b7e56402ada3
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49166083"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49363063"
 ---
 # <a name="about-the-text-to-speech-api"></a>Tudnivalók a Text to Speech API
 
@@ -26,7 +26,7 @@ Melyik beszéd összefoglaló kik forgatókönyvek a következők:
 
 * *Kisegítő lehetőségek javítása:* **szöveg-beszéd átalakítás** technológia lehetővé teszi a tartalmak tulajdonosai, és különböző módokon személyek válaszolni a kiadók használhatja a saját tartalmakat. Készült kisegítő funkciók vagy olvasási nehézségekkel emberek értékeljük képes arra, hogy a tartalmak felhasználása aurally. Hangalapú kimeneti is megkönnyíti a szöveges tartalmakat, például újságok és blogok, miközben utazás, illetve az ilyen mobileszközök csak a felhasználók számára.
 
-* *Többfeladatos feldolgozáshoz forgatókönyvekben válaszol:* **szöveg-beszéd átalakítás** lehetővé teszi személyek számára fontos információk gyorsan és kényelmesen vezetési vagy más módon kívül egy kényelmes környezet olvasása közben. Navigáció: egy közös alkalmazás ezen a területen. 
+* *Többfeladatos feldolgozáshoz forgatókönyvekben válaszol:* **szöveg-beszéd átalakítás** lehetővé teszi személyek számára fontos információk gyorsan és kényelmesen vezetési vagy más módon kívül egy kényelmes környezet olvasása közben. Navigáció: egy közös alkalmazás ezen a területen.
 
 * *Több módok learning növelése:* különböző emberek különböző módokon Ismerkedjen meg a legjobb. Internetes tanulás szakértőktől kimutatták, hogy együtt nyújtó hanghívási és SMS is könnyebben információk ismerje meg, és azokat megőrizheti.
 
@@ -34,13 +34,13 @@ Melyik beszéd összefoglaló kik forgatókönyvek a következők:
 
 ## <a name="voice-support"></a>Beszédfelismerési támogatása
 
-A Microsoft **szöveg-hang transzformációs** szolgáltatás kínál a több mint 75 beszédhangot legfeljebb 45 nyelvet és területi beállításokat. Ezek szabványos "hangtípust" használatához meg kell adja meg a hangalapú nevét néhány más paraméterekkel, amikor a szolgáltatás REST API-t hívja. A támogatott beszédhangot részletekért lásd: [támogatott nyelvek](language-support.md#text-to-speech). 
+A Microsoft **szöveg-hang transzformációs** szolgáltatás kínál a több mint 75 beszédhangot legfeljebb 45 nyelvet és területi beállításokat. Ezek szabványos "hangtípust" használatához meg kell adja meg a hangalapú nevét néhány más paraméterekkel, amikor a szolgáltatás REST API-t hívja. A támogatott beszédhangot részletekért lásd: [támogatott nyelvek](language-support.md#text-to-speech).
 
 Ha az alkalmazás egyéni szeretne, létrehozhat [egyéni hangtípust](how-to-customize-voice-font.md) saját speech mintákból.
 
 ## <a name="api-capabilities"></a>API-funkciók
 
-Nagy mennyiségű képességeit a **szöveg-beszéd átalakítás** API – különös tekintettel a testreszabási – REST-en keresztül érhető el. Az alábbi táblázat foglalja össze az egyes módszerek az API eléréséhez képességeit. Képességek és API-részletek teljes listájáért tekintse meg [Swagger](https://swagger/service/11ed9226-335e-4d08-a623-4547014ba2cc#/),
+Nagy mennyiségű képességeit a **szöveg-beszéd átalakítás** API-t, különös tekintettel a testreszabás, érhetők el REST-en keresztül. Az alábbi táblázat foglalja össze az egyes módszerek az API eléréséhez képességeit. Képességek és API-részletek teljes listáját lásd: [referencia Swagger](https://westus.cris.ai/swagger/ui/index).
 
 | Használati eset | REST | SDK-k |
 |-----|-----|-----|----|
@@ -51,7 +51,7 @@ Nagy mennyiségű képességeit a **szöveg-beszéd átalakítás** API – kül
 | Előfizetések kezelése | Igen | Nem |
 
 > [!NOTE]
-> Az API-t valósít meg, amely korlátozza az API-kérelmek 25, 5 másodpercenként szabályozás. Üzenet hearders tájékoztatni fogja korlátját.
+> Az API-t valósít meg, amely korlátozza az API-kérelmek 25, 5 másodpercenként szabályozás. Fejlécek tájékoztatja korlátját.
 
 ## <a name="next-steps"></a>További lépések
 

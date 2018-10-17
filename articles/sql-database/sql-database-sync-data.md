@@ -12,12 +12,12 @@ ms.author: xiwu
 ms.reviewer: douglasl
 manager: craigg
 ms.date: 08/09/2018
-ms.openlocfilehash: 602bbdcd21e56bb64515a19623e08ae617c99a59
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.openlocfilehash: dfa5929daffb27617d3d1047f044a5af037e42ff
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48870911"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49362237"
 ---
 # <a name="sync-data-across-multiple-cloud-and-on-premises-databases-with-sql-data-sync"></a>Az SQL Data Sync szolgáltatással több felhőalapú és helyszíni adatbázis közötti adatszinkronizálás
 
@@ -152,7 +152,7 @@ Adatok szinkronizálása nem tudják szinkronizálni a csak olvasható vagy rend
 | **Méretek**                                                      | **Korlát**              | **Megkerülő megoldás**              |
 |-----------------------------------------------------------------|------------------------|-----------------------------|
 | Szinkronizálási csoportok maximális száma bármilyen adatbázis is tartozhat.       | 5                      |                             |
-| Egyetlen szinkronizálási csoport végpontok maximális száma              | 30                     | Több szinkronizálási csoport létrehozása |
+| Egyetlen szinkronizálási csoport végpontok maximális száma              | 30                     |                             |
 | A helyszíni végpontokig egy szinkronizálási csoportban maximális számát. | 5                      | Több szinkronizálási csoport létrehozása |
 | Adatbázis-, tábla-, séma, és oszlop                       | név szerint 50 karakter hosszú lehet |                             |
 | A szinkronizálási csoport táblák                                          | 500                    | Több szinkronizálási csoport létrehozása |
@@ -160,6 +160,8 @@ Adatok szinkronizálása nem tudják szinkronizálni a csak olvasható vagy rend
 | Egy tábla adatok sor mérete                                        | 24 Mb                  |                             |
 | Minimális szinkronizálási időköz                                           | 5 perc              |                             |
 |||
+> [!NOTE]
+> Lehet legfeljebb 30 végpontok egy szinkronizálási csoportban esetén csak egy szinkronizálási csoportot. Ha egynél több szinkronizálási csoport, a végpontok között az összes szinkronizálási csoportok száma nem lehet hosszabb 30. Ha egy adatbázis több szinkronizálási csoport tagja, több végpontot, nem pedig egy számít.
 
 ## <a name="faq-about-sql-data-sync"></a>Az SQL Data Sync szolgáltatással kapcsolatos gyakori kérdések
 

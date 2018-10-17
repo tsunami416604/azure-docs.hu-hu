@@ -9,20 +9,16 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/21/2018
-ms.openlocfilehash: 9b076709ee24c61b2699672d28bd61204c88a744
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 8e32939f3e253bfdd6f8d989f616f30e1b9f27eb
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43048041"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49364863"
 ---
 # <a name="use-zeppelin-notebooks-with-apache-spark-cluster-on-azure-hdinsight"></a>Zeppelin notebookok használata Azure HDInsight az Apache Spark-fürt
 
 HDInsight Spark-fürtök tartalmazzák, amelyek segítségével a Spark-feladatok futtatása a Zeppelin notebookok. Ebből a cikkből elsajátíthatja a Zeppelin notebook használata egy HDInsight-fürtön.
-
-> [!NOTE]
-> Zeppelin notebookok csak a HDInsight 3.5-ös 1.6.3 Spark és a Spark 2.1.0 on HDInsight 3.6-os érhetők el.
->
 
 **Előfeltételek:**
 
@@ -50,7 +46,7 @@ HDInsight Spark-fürtök tartalmazzák, amelyek segítségével a Spark-feladato
    
     Az üres bekezdés, amely az Új jegyzetfüzet alapértelmezés szerint létrejön illessze be az alábbi kódrészletet.
    
-        %livy.spark
+        %livy2.spark
         //The above magic instructs Zeppelin to use the Livy Scala interpreter
    
         // Create an RDD using the default Spark context, sc
@@ -77,6 +73,11 @@ HDInsight Spark-fürtök tartalmazzák, amelyek segítségével a Spark-feladato
     ![Hozzon létre egy ideiglenes táblát a nyers adatoktól](./media/apache-spark-zeppelin-notebook/hdinsight-zeppelin-load-data.png "hozzon létre egy ideiglenes táblát nyers adatokból")
    
     Minden bekezdéséhez címet is megadhatja. A jobb oldali sarokban, kattintson a **beállítások** ikonra, majd kattintson **Zobrazit název**.
+
+> [!NOTE]
+> a(z) % spark2 interpret nem támogatott a Zeppelin-jegyzetfüzetek minden HDInsight-verziók és % sh interpret nem támogatja a HDInsight 4.0 és újabb verziók esetében.
+>
+
 1. Spark SQL-utasítások mostantól futtathatja a **hvac** tábla. Ha új bekezdést illessze be a következő lekérdezést. A lekérdezés lekéri a az épület-Azonosítót és a különbség a cél és minden egyes létrehozásához egy adott időpontban aktuális hőmérséklet. Nyomja meg **SHIFT + ENTER**.
    
         %sql

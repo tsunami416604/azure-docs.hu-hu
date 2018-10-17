@@ -1,21 +1,20 @@
 ---
-title: Az Azure Cosmos DB tömeges végrehajtó erőforrástár áttekintése |} A Microsoft Docs
-description: További információ az Azure Cosmos DB tömeges végrehajtó könyvtárban, a könyvtárban, és architektúrájának használatával járó előnyöket.
-keywords: Java tömeges végrehajtó
+title: Tömeges importálás és frissítheti az adatokat az Azure Cosmos DB a tömeges végrehajtó kódtár használatával |} A Microsoft Docs
+description: Tömeges műveletek végrehajtása az Azure Cosmos DB tömeges importálás keresztül, és tömeges frissítése a tömeges végrehajtó kódtár által nyújtott API-k.
 services: cosmos-db
 author: tknandu
 manager: kfile
 ms.service: cosmos-db
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/07/2018
+ms.date: 10/16/2018
 ms.author: ramkris
-ms.openlocfilehash: 823cb536a1cd0b8f5da7442906b14447c15ae044
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: a760de998c78ce2afdd24a15d9dd6e5d0cf44dc1
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49091353"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49363544"
 ---
 # <a name="azure-cosmos-db-bulk-executor-library-overview"></a>Az Azure Cosmos DB tömeges végrehajtó erőforrástár áttekintése
  
@@ -27,7 +26,7 @@ Az Azure Cosmos DB egy gyors, rugalmas és globálisan elosztott adatbázis-szol
 A tömeges végrehajtó könyvtár kihasználja a nagy teljesítményt és tárolókapacitást nyújt segítséget. A tömeges végrehajtó kódtár lehetővé teszi tömeges műveletek az Azure Cosmos DB tömeges importálás és tömeges frissítése API-k. Tudjon meg többet tömeges végrehajtó könyvtár a következő szakaszokban az szolgáltatásokról. 
 
 > [!NOTE] 
-> Jelenleg tömeges végrehajtó kódtár támogatja az importálási és frissítési műveleteket és a könyvtár csak az Azure Cosmos DB SQL API-fiókok által támogatott. Lásd: [.NET](sql-api-sdk-bulk-executor-dot-net.md) és [Java](sql-api-sdk-bulk-executor-java.md) kibocsátási megjegyzések a frissítéseket a könyvtárhoz.
+> Jelenleg tömeges végrehajtó kódtár támogatja az importálási és frissítési műveleteket és a könyvtár csak az Azure Cosmos DB SQL API és a Gremlin API fiókok által támogatott.
  
 ## <a name="key-features-of-the-bulk-executor-library"></a>A tömeges végrehajtó library kulcsfunkciói  
  

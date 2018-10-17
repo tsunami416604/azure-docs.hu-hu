@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: 033e5e5e054b0a29961ad60e72b1466b51d1df0c
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 5fda0ac590e5faeaa8b6ec44a7d649d2c0122eeb
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47035198"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49352985"
 ---
 # <a name="entity-roles-in-patterns-are-contextual-subtypes"></a>A minták entitás szerepkör a környezeti altípus
 Ezek az entitások csak a felhasznált nevesített, környezetfüggő altípusainak [minták](luis-concept-patterns.md).
@@ -28,6 +28,8 @@ Szerepkörök e különbségek adjon meg egy nevet:
 |--|--|--|
 |Hely|forrás|Ha az adatsík elhagyja a|
 |Hely|cél|Ha az adatsík hajtanak végre|
+|Előre összeállított datetimeV2|erre:|Záró dátum|
+|Előre összeállított datetimeV2|forrás:|Kezdő dátum|
 
 ## <a name="how-are-roles-used-in-patterns"></a>Hogyan használhatók a szerepkörök a minták?
 A minta sablon utterance (kifejezés), a szerepkörök az utterance (kifejezés) használunk: 
@@ -47,6 +49,14 @@ Hierarchikus entitások, adja meg az azonos környezetfüggő adatokat szerepkö
 |--|--|
 |hierarchikus entitások|Leképezések|
 |roles|Minták|
+
+## <a name="roles-with-prebuilt-entities"></a>Szerepkörök az előre összeállított entitások
+
+Az előre összeállított entitások szerepkörök használatával jelentése adhat különböző példányai az előre létrehozott entitás az utterance (kifejezés) belül. 
+
+### <a name="roles-with-datetimev2"></a>DatetimeV2 szerepkörök
+
+Az előre összeállított entitások datetimeV2, hajtja végre egy remek, számos különböző ismertetése a dátumok és időpontok a kimondott szöveg. Adja meg a dátum- és más, mint az előre összeállított entitások alapértelmezett ismertetése dátumtartományokat érdemes. 
 
 ## <a name="next-steps"></a>További lépések
 

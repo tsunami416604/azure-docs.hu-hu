@@ -7,18 +7,18 @@ ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 09/27/2018
-ms.openlocfilehash: 72bf467cc0f2ba195aa4f25228bc9e08605cd4ee
-ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
+ms.openlocfilehash: 41b3dcc03f7cfbfee11798738a3b2daaf5e96741
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48018593"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49365288"
 ---
 # <a name="use-managed-identities-to-authenticate-azure-stream-analytics-jobs-to-azure-data-lake-storage-gen1-output-preview"></a>Felügyelt identitások használatával hitelesíti az Azure Stream Analytics-feladatok az Azure Data Lake Storage Gen1 kimenet (előzetes verzió)
 
 Az Azure Stream Analytics felügyelt identitás hitelesítés az Azure Data Lake Storage (ADLS) Gen1 kimeneti támogatja. Az identitás az Azure Active Directoryban, amely egy adott Stream Analytics-feladat egy felügyelt alkalmazást, és célzott erőforrás hitelesítéséhez használható. Felügyelt identitások megszüntetheti a felhasználó-alapú hitelesítési módszerek, például a jelszó módosítására vagy a felhasználói jogkivonat lejárhat 90 naponként előforduló miatt hitelesítse magát újra kellene vonatkozó korlátozások. Ezenkívül a felügyelt identitások, amelyek az Azure Data Lake Storage Gen1 kimenete Stream Analytics-feladat központitelepítését automatizálással segítségével.
 
-Látogasson el a [nyolc új funkciók az Azure Stream Analyticsben](https://azure.microsoft.com/en-us/blog/eight-new-features-in-azure-stream-analytics/) feliratkozás az előzetes verzió és tanulmányozza részletesen az új funkciók a blogbejegyzést.
+Látogasson el a [nyolc új funkciók az Azure Stream Analyticsben](https://azure.microsoft.com/blog/eight-new-features-in-azure-stream-analytics/) feliratkozás az előzetes verzió és tanulmányozza részletesen az új funkciók a blogbejegyzést.
 
 Ez a cikk bemutatja, két különböző módon az Azure Stream Analytics-feladat, amely egy Azure Data Lake Storage Gen1 a felügyelt identitás engedélyezése: az Azure portal és az Azure Resource Manager-sablon üzembe helyezése révén.
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/17/2018
 ms.author: miradic
-ms.openlocfilehash: db4f83d0d407ad3d9e895759ea2a687662f5620a
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: fbaf6b92a2605d284a749365d542c223e09f730d
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44053295"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49362602"
 ---
 # <a name="introduction-to-auto-scaling"></a>Automatikus skálázás bemutatása
 Automatikus skálázás egy további lehetőség a Service Fabric dinamikusan méretezheti az services szolgáltatásokat jelent, vagy az erőforrások használat alapján a terhelés alapján. Automatikus skálázás nagy rugalmasságot biztosít, és lehetővé teszi, hogy további példányok vagy a partíciók az igény szerinti szolgáltatás kiépítése. A teljes automatikus skálázást folyamat automatizált és átlátható, és a szabályzatok a szolgáltatás beállítása után esetén nem kell a szolgáltatási szintű manuális méretezési műveletekhez. Automatikus skálázás is be kell kapcsolni vagy szolgáltatás-létrehozás időpontjában, vagy bármikor a szolgáltatás frissítésével.
@@ -120,7 +120,7 @@ A második eseményindító a terhelés az egyik szolgáltatás összes partíci
 * _Felső betöltési küszöb_ érték, amely azt határozza meg, ha a szolgáltatás lesz **horizontálisan felskálázott**. Ha az átlagos terhelés, a szolgáltatás összes partíció nagyobb, mint ezt az értéket, majd a szolgáltatás fogja terjeszthető ki.
 * _Méretezési időközhöz_ határozza meg, hogy milyen gyakran kell ellenőrizni az eseményindító. Amint az eseményindító be van jelölve, ha szükség van a méretezés a mechanizmus lépnek érvénybe. Ha már nincs szükség a méretezés, semmilyen művelet nem lesz végrehajtva. Mindkét esetben az eseményindító nem kerül sor újra méretezési időközhöz újra lejárta előtt.
 
-Ez az eseményindító lehet használt mindkettőt, állapotalapú és állapotmentes szolgáltatások. A csak mechanizmus, amely erre az eseményindítóra használható AddRemoveIncrementalNamedParitionScalingMechanism. Szolgáltatás horizontálisan felskálázott, majd egy új partíciót hozzáadásakor, illetve egy meglévő partíciók méretezett szolgáltatás törlődik. Szolgáltatás létrehozásakor vagy frissítésekor és a szolgáltatás létrehozása és frissítése sikertelen lesz, ha ezek a feltételek nem teljesülnek ellenőrzött korlátozások vonatkoznak:
+Ez az eseményindító lehet használt mindkettőt, állapotalapú és állapotmentes szolgáltatások. A csak mechanizmus, amely erre az eseményindítóra használható AddRemoveIncrementalNamedPartitionScalingMechanism. Szolgáltatás horizontálisan felskálázott, majd egy új partíciót hozzáadásakor, illetve egy meglévő partíciók méretezett szolgáltatás törlődik. Szolgáltatás létrehozásakor vagy frissítésekor és a szolgáltatás létrehozása és frissítése sikertelen lesz, ha ezek a feltételek nem teljesülnek ellenőrzött korlátozások vonatkoznak:
 * A szolgáltatás elnevezett partícióséma kell használni.
 * Kell állnia egymást követő egész számok, mint "0", "1",...
 * Első partíció neve "0" kell lennie.
@@ -137,7 +137,7 @@ Azonos mechanizmust, amely használja a példányok hozzáadását és eltávol�
 * _Minimális példányszám_ határozza meg az alsó határ méretezését. Ha a szolgáltatás a partíciók száma eléri ezt a korlátot, majd szolgáltatás fogja nem növelhető a függetlenül a terhelés.
 
 > [!WARNING] 
-> AddRemoveIncrementalNamedParitionScalingMechanism használata az állapotalapú szolgáltatások esetén a Service Fabric hozzáadása, vagy távolítsa el a partíciók **értesítési hiba vagy figyelmeztetés nélkül**. Az adatok újraparticionálása nem történik méretezés mechanizmus aktiválásakor. Abban az esetben a vertikális felskálázási művelete, új partíció üres lesz, és vertikális leskálázási művelet esetén **partíció és a benne található összes adat törlődik**.
+> AddRemoveIncrementalNamedPartitionScalingMechanism használata az állapotalapú szolgáltatások esetén a Service Fabric hozzáadása, vagy távolítsa el a partíciók **értesítési hiba vagy figyelmeztetés nélkül**. Az adatok újraparticionálása nem történik méretezés mechanizmus aktiválásakor. Abban az esetben a vertikális felskálázási művelete, új partíció üres lesz, és vertikális leskálázási művelet esetén **partíció és a benne található összes adat törlődik**.
 
 ## <a name="setting-auto-scaling-policy"></a>Az automatikus skálázási szabályzat beállítása
 
@@ -146,7 +146,7 @@ Azonos mechanizmust, amely használja a példányok hozzáadását és eltávol�
 <ServiceScalingPolicies>
     <ScalingPolicy>
         <AverageServiceLoadScalingTrigger MetricName="servicefabric:/_MemoryInMB" LowerLoadThreshold="300" UpperLoadThreshold="500" ScaleIntervalInSeconds="600"/>
-        <AddRemoveIncrementalNamedParitionScalingMechanism MinPartitionCount="1" MaxPartitionCount="3" ScaleIncrement="1"/>
+        <AddRemoveIncrementalNamedPartitionScalingMechanism MinPartitionCount="1" MaxPartitionCount="3" ScaleIncrement="1"/>
     </ScalingPolicy>
 </ServiceScalingPolicies>
 ```
@@ -155,7 +155,7 @@ Azonos mechanizmust, amely használja a példányok hozzáadását és eltávol�
 FabricClient fabricClient = new FabricClient();
 StatefulServiceUpdateDescription serviceUpdate = new StatefulServiceUpdateDescription();
 AveragePartitionLoadScalingTrigger trigger = new AverageServiceLoadScalingTrigger();
-PartitionInstanceCountScaleMechanism mechanism = new AddRemoveIncrementalNamedParitionScalingMechanism();
+PartitionInstanceCountScaleMechanism mechanism = new AddRemoveIncrementalNamedPartitionScalingMechanism();
 mechanism.MaxPartitionCount = 4;
 mechanism.MinPartitionCount = 1;
 mechanism.ScaleIncrement = 1;
@@ -171,7 +171,7 @@ await fabricClient.ServiceManager.UpdateServiceAsync(new Uri("fabric:/AppName/Se
 ```
 ### <a name="using-powershell"></a>Powershell-lel
 ```posh
-$mechanism = New-Object -TypeName System.Fabric.Description.AddRemoveIncrementalNamedParitionScalingMechanism
+$mechanism = New-Object -TypeName System.Fabric.Description.AddRemoveIncrementalNamedPartitionScalingMechanism
 $mechanism.MinPartitionCount = 1
 $mechanism.MaxPartitionCount = 3
 $mechanism.ScaleIncrement = 2

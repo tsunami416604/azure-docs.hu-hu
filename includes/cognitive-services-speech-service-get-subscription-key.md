@@ -2,14 +2,14 @@
 author: wolfma61
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 07/16/2018
+ms.date: 10/16/2018
 ms.author: wolfma
-ms.openlocfilehash: 7f0606dd143da426b4f34eeb819e7c0da5142f6c
-ms.sourcegitcommit: a1140e6b839ad79e454186ee95b01376233a1d1f
+ms.openlocfilehash: e832470884d07ae1c9637559c51e14dd770aa24f
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43143874"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49366019"
 ---
 > [!NOTE]
-> Először kérje le egy előfizetési kulcsot. További információkért lásd: [próbálja ki ingyenesen a speech service](~/articles/cognitive-services/speech-service/get-started.md).
+> Telepítés egy fejlesztési projekt esetében a platform és a kedvenc fejlesztési környezetében található információk a [útmutatóink](~/articles/cognitive-services/speech-service/quickstart-csharp-dotnet-windows.md) cikkek ebben a dokumentációban. Minden esetben szüksége lesz egy előfizetést, tekintse meg [próbálja ki ingyenesen a speech service](~/articles/cognitive-services/speech-service/get-started.md).

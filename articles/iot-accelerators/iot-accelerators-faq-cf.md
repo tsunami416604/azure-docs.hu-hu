@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 12/12/2017
 ms.author: dobett
-ms.openlocfilehash: 737a76ba313dddaa58c302f1df501f16a5c4e9e8
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: e9e88fc9aa3aad902c140ac176e31571b9e55ee3
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46966557"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49353741"
 ---
 # <a name="frequently-asked-questions-for-connected-factory-solution-accelerator"></a>Gyakori kérdések az Okosgyár-megoldásgyorsító
 
@@ -140,33 +140,21 @@ Az IoT hubnak küldött adatok nem jelenik meg, majd van-e a szimuláció probl�
 
 ### <a name="how-do-i-enable-an-interactive-map-in-my-connected-factory-solution"></a>Hogyan engedélyezhetem interaktív térkép a csatlakoztatott gyár megoldás?
 
-Ahhoz, hogy a csatlakoztatott gyár megoldás egy olyan interaktív térkép, egy meglévő Bing térképek API nagyvállalati csomagra kell rendelkeznie.
+Ahhoz, hogy a csatlakoztatott gyár megoldás egy olyan interaktív térkép, az Azure Maps-fiókkal kell rendelkeznie.
 
-Amikor üzembe helyezése a [www.azureiotsolutions.com](http://www.azureiotsolutions.com), az üzembe helyezési folyamat ellenőrzi, hogy az előfizetése van egy engedélyezett Bing térképek API nagyvállalati csomagra, és interaktív térkép automatikusan telepíti a csatlakoztatott gyár be. Ha nem ez a helyzet, továbbra is engedélyezheti a interaktív térkép a központi telepítésben a következő:
+Amikor üzembe helyezése a [www.azureiotsolutions.com](http://www.azureiotsolutions.com), az üzembe helyezési folyamat az erőforráscsoport, amely tartalmazza a megoldás gyorsító szolgáltatások ad hozzá az Azure Maps-fiók.
 
-Központi telepítése esetén használja a `build.ps1` parancsfájlt a csatlakoztatott gyári github a tárházat, és hogy ki rendelkezik Bing térképek API nagyvállalati csomagra, a környezeti változót `$env:MapApiQueryKey` a lekérdezési kulcsot a csomag a build-ablakban. Az interaktív térkép ezután automatikusan engedélyezve lesz.
+Központi telepítése esetén használja a `build.ps1` szkriptet a csatlakoztatott gyár GitHub-tárház beállítása a környezeti változó `$env:MapApiQueryKey` a build-ablakban a [az Azure Maps-fiók kulcsok](../azure-maps/how-to-manage-account-keys.md). Az interaktív térkép ezután automatikusan engedélyezve lesz.
 
-Ha nem rendelkezik Bing térképek API nagyvállalati csomagra, üzembe helyezése a csatlakoztatott gyár megoldást [www.azureiotsolutions.com](http://www.azureiotsolutions.com) használatával vagy a `build.ps1` parancsfájlt. Majd adja hozzá a Bing térképek API nagyvállalati csomagra az előfizetés leírtak [Hogyan hozhatok létre vállalati fiók Bing térképek API?](#how-do-i-create-a-bing-maps-api-for-enterprise-account). Keressük meg ezt a fiókot a lekérdezési kulcs leírtak szerint [a Bing térképek API beszerzése a vállalati querykey értékét](#how-to-obtain-your-bing-maps-api-for-enterprise-querykey) és mentette a kulcsot. Keresse meg az Azure Portalon, és a csatlakoztatott gyár központi telepítésben az App Service erőforrás elérésére. Navigáljon a **Alkalmazásbeállítások**, hol található a szakasz **Alkalmazásbeállítások**. Állítsa be a **MapApiQueryKey** a beszerzett lekérdezési kulcsot. Mentse a beállításokat, majd lépjen **áttekintése** , és indítsa újra az App Service-ben.
+A megoldásgyorsító üzembe helyezés után is hozzáadhat az Azure Maps-fiók kulcsára. Keresse meg az Azure Portalon, és a csatlakoztatott gyár központi telepítésben az App Service erőforrás elérésére. Navigáljon a **Alkalmazásbeállítások**, hol található a szakasz **Alkalmazásbeállítások**. Állítsa be a **MapApiQueryKey** , a [az Azure Maps-fiók kulcsok](../azure-maps/how-to-manage-account-keys.md). Mentse a beállításokat, majd lépjen **áttekintése** , és indítsa újra az App Service-ben.
 
-### <a name="how-do-i-create-a-bing-maps-api-for-enterprise-account"></a>Hogyan hozhatok létre vállalati fiók Bing térképek API
+### <a name="how-do-i-create-a-azure-maps-account"></a>Hogyan hozhatok létre egy Azure Maps-fiók?
 
-Kap egy ingyenes *belső tranzakció szintjét 1 a Bing Maps Enterprise* tervet. Azonban csak adhat az alábbi díjcsomagok két Azure-előfizetéssel. Ha nem rendelkezik Bing térképek API vállalati fiók, hozzon létre egyet az Azure Portalon kattintva **+ erőforrás létrehozása**. Majd keresse meg az **vállalati Bing térképek API** , és kövesse az utasításokat követve hozza létre.
+Látható, [az Azure Maps-fiók és kulcsok kezelése](../azure-maps/how-to-manage-account-keys.md).
 
-![A Bing-kulcs](./media/iot-accelerators-faq-cf/bing.png)
+### <a name="how-to-obtain-your-azure-maps-account-key"></a>Az Azure Maps fiókkulcs beszerzése
 
-### <a name="how-to-obtain-your-bing-maps-api-for-enterprise-querykey"></a>A Bing térképek API vállalati querykey kulcsát szervizcsomagjának beszerzése
-
-Miután létrehozta a Bing térképek API nagyvállalati csomagra, a Bing térképek vállalati erőforráshoz hozzá az erőforráscsoportot, a csatlakoztatott gyár megoldás az Azure Portalon.
-
-1. Az Azure Portalon keresse meg az erőforráscsoportot, amely tartalmazza a Bing térképek API nagyvállalati csomagra.
-
-1. Kattintson a **minden beállítás**, majd **kulcskezelés**.
-
-1. Két kulcs létezi: **MasterKey** és **QueryKey**. Másolás a **QueryKey** értéket.
-
-1. Dolgozza fel a kulcsot a `build.ps1` parancsfájl, a környezeti változót `$env:MapApiQueryKey` a PowerShell környezetében a **QueryKey** a csomaghoz. A felépítési szkriptjének ezután automatikusan hozzáadja az érték beállításait, az App Service-ben.
-
-1. Futtasson helyi vagy felhőbeli üzembe helyezése a `build.ps1` parancsfájlt.
+Látható, [az Azure Maps-fiók és kulcsok kezelése](../azure-maps/how-to-manage-account-keys.md).
 
 ### <a name="how-do-enable-the-interactive-map-while-debugging-locally"></a>Hogyan az interaktív térkép engedélyezése helyi hibakeresése során?
 

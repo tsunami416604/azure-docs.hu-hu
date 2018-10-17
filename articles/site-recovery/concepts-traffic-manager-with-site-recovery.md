@@ -3,24 +3,24 @@ title: Az Azure Site Recovery az Azure Traffic Manager |} A Microsoft Docs
 description: Az Azure Traffic Manager használata az Azure Site Recovery vész-helyreállítási és áttelepítés
 services: site-recovery
 documentationcenter: ''
-author: mayanknayar
+author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
-ms.topic: article
-ms.date: 07/06/2018
-ms.author: manayar
-ms.openlocfilehash: 0be013a1b8d2c619d58034157240eafb241c4e59
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.topic: conceptual
+ms.date: 10/16/2018
+ms.author: mayg
+ms.openlocfilehash: 8f303ec3349b0003ef764e437c6f06cf498dcc57
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37919036"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49353254"
 ---
 # <a name="azure-traffic-manager-with-azure-site-recovery"></a>Azure Traffic Manager az Azure Site Recovery-vel
 
-Az Azure Traffic Manager lehetővé teszi, hogy az alkalmazás végpontok közötti forgalom elosztását. A végpont bármely internethez csatlakoztatott szolgáltatás belül, vagy az Azure-on kívül üzemeltetett.
+Az Azure Traffic Manager lehetővé teszi, hogy az alkalmazás végpontok közötti forgalom elosztását. A végpont egy, az Azure-on kívül vagy belül üzemeltetett, internetkapcsolattal rendelkező szolgáltatás.
 
-A TRAFFIC Manager a tartománynévrendszer (DNS) használatával a leginkább megfelelő végpontra, a forgalom-útválasztási módszer és a végpontok állapota alapján az ügyfélkéréseket. A TRAFFIC Manager biztosít széles körű [forgalom-útválasztási módszerek](../traffic-manager/traffic-manager-routing-methods.md) és [megfigyelési lehetőségek végpont](../traffic-manager/traffic-manager-monitoring.md) különböző alkalmazás igényeinek megfelelően, és automatikus feladatátvételi modellek megfelelően. Az ügyfelek közvetlenül kapcsolódni a kiválasztott végpont. A TRAFFIC Manager nem a proxy- vagy egy átjárót, és nem jelenik meg a forgalom az ügyfél és a szolgáltatás között.
+A TRAFFIC Manager a tartománynévrendszer (DNS) használatával a leginkább megfelelő végpontra, a forgalom-útválasztási módszer és a végpontok állapota alapján az ügyfélkéréseket. A Traffic Manager különböző [forgalom-útválasztási módszereket](../traffic-manager/traffic-manager-routing-methods.md) és [végpont-monitorozási lehetőségeket](../traffic-manager/traffic-manager-monitoring.md) biztosít, hogy megfeleljen a különböző alkalmazások igényeinek és az automatikus feladatátvételi modelleknek. Az ügyfelek közvetlenül kapcsolódni a kiválasztott végpont. A TRAFFIC Manager nem a proxy- vagy egy átjárót, és nem jelenik meg a forgalom az ügyfél és a szolgáltatás között.
 
 Ez a cikk bemutatja, hogyan kombinálhatja az Azure a forgalmat figyelő intelligens útválasztás az Azure Site Recovery hatékony vészhelyreállítás és migrálási képességeken.
 

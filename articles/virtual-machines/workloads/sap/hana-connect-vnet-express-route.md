@@ -14,25 +14,25 @@ ms.workload: infrastructure
 ms.date: 09/10/2018
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5efdda485e4e1f5013948c6636b267f0d388f4d5
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: a64a60603cd9898386a975313afc676e3b253326
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44164717"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49353597"
 ---
-# <a name="connecting-a-vnet-to-hana-large-instance-expressroute"></a>Virtuális hálózat csatlakoztatása HANA nagyméretű példányok az ExpressRoute
+# <a name="connect-a-virtual-network-to-hana-large-instances"></a>Egy virtuális hálózat csatlakoztatása nagyméretű HANA-példányok
 
-Meghatározott összes IP-címtartományokat, és most már rendelkezik az adatok vissza a Microsoft, megkezdése előtt létrehozott virtuális hálózat csatlakozik a nagyméretű HANA-példányokhoz. Az Azure virtuális hálózat létrehozása után a virtuális hálózat az ExpressRoute-kapcsolatcsoport, amely csatlakozik az ügyfélbérlőn, a nagyméretű szolgáltatáspéldányban a virtuális hálózat összekapcsolása egy ExpressRoute-átjárót kell létrehoznia.
+Miután létrehozott egy Azure virtuális hálózatra, a nagyméretű példányok az Azure ezt a hálózatot csatlakozhatnak az SAP Hana-hoz. Hozzon létre egy Azure ExpressRoute-átjárót a virtuális hálózaton. Ez az átjáró lehetővé teszi, hogy a virtuális hálózat, amely csatlakozik az ügyfélbérlőn, a nagyméretű szolgáltatáspéldányban az ExpressRoute-kapcsolatcsoporthoz.
 
 > [!NOTE] 
-> Ez a lépés végrehajtásához, az új átjáró be van-e a kijelölt Azure-előfizetésében létrehozott, és ezután csatlakozik a megadott Azure virtuális hálózat akár 30 percet is igénybe vehet.
+> Ez a lépés akár 30 percet is igénybe vehet. Az új átjáró a kijelölt Azure-előfizetésében létrehozott, és ezután a megadott Azure virtuális hálózathoz csatlakozik.
 
-Ha már létezik egy átjárót, ellenőrizze, hogy azt egy ExpressRoute-átjáróval vagy sem. Ha nem, akkor kell törölte és újra létre kell hozni egy ExpressRoute-átjárót, az átjáró. Ha egy ExpressRoute-átjárót már létrejött, mivel az Azure virtuális hálózat már csatlakoztatva van a helyszíni kapcsolat ExpressRoute-kapcsolatcsoporthoz, folytassa a virtuális hálózatok összekapcsolása az alábbi szakaszban.
+Ha már létezik egy átjárót, ellenőrizze, hogy azt egy ExpressRoute-átjáróval vagy sem. Ha nem, törölje az átjárót, és újra hozza létre egy ExpressRoute-átjárót. Ha már létrejött egy ExpressRoute-átjárót, tekintse meg a következő szakaszban Ez a cikk "Hivatkozás virtuális hálózatokhoz." 
 
-- Használata vagy a (új) [az Azure portal](https://portal.azure.com/), vagy a PowerShell használatával egy ExpressRoute-VPN-átjáró létrehozása a virtuális hálózathoz csatlakozik.
-  - Ha használja az Azure Portalon, vegyen fel egy új **virtuális hálózati átjáró** majd **ExpressRoute** , az átjáró típusa.
-  - Ha ehelyett PowerShell, először töltse le és használja a legújabb [Azure PowerShell SDK](https://azure.microsoft.com/downloads/) annak biztosítása érdekében az optimális működés érdekében. A következő parancsok hozzon létre egy ExpressRoute-átjárót. A szövegek utasításnak egy _$_ is frissíteni kell az információkat a felhasználó által definiált változókat.
+- Használja a [az Azure portal](https://portal.azure.com/) vagy a PowerShell használatával egy ExpressRoute-VPN-átjáró létrehozása a virtuális hálózathoz csatlakozik.
+  - Ha használja az Azure Portalon, vegyen fel egy új **virtuális hálózati átjáró**, majd válassza ki **ExpressRoute** , az átjáró típusa.
+  - Ha a PowerShell segítségével, először töltse le és használja a legújabb [Azure PowerShell SDK](https://azure.microsoft.com/downloads/). A következő parancsok hozzon létre egy ExpressRoute-átjárót. A szövegek utasításnak egy _$_ vannak a felhasználó által definiált változókat, amelyek információkat frissíteni kell.
 
 ```PowerShell
 # These Values should already exist, update to match your environment
@@ -44,7 +44,7 @@ $myVNetName = "VNet01"
 $myGWName = "VNet01GW"
 $myGWConfig = "VNet01GWConfig"
 $myGWPIPName = "VNet01GWPIP"
-$myGWSku = "HighPerformance" # Supported values for HANA Large Instances are: HighPerformance or UltraPerformance
+$myGWSku = "HighPerformance" # Supported values for HANA large instances are: HighPerformance or UltraPerformance
 
 # These Commands create the Public IP and ExpressRoute Gateway
 $vnet = Get-AzureRmVirtualNetwork -Name $myVNetName -ResourceGroupName $myGroupName
@@ -60,23 +60,23 @@ New-AzureRmVirtualNetworkGateway -Name $myGWName -ResourceGroupName $myGroupName
 -GatewaySku $myGWSku -VpnType PolicyBased -EnableBgp $true
 ```
 
-Ebben a példában a nagy teljesítményű átjárók Termékváltozatainak lett megadva. A lehetőségek a következők HighPerformance vagy UltraPerformance csak átjáró SKU-k az SAP Hana az Azure-ban (nagyméretű példányok) által támogatott.
+Ebben a példában a nagy teljesítményű átjárók Termékváltozatainak lett megadva. A beállítások, az SAP HANA az Azure-ban (nagyméretű példányok) által támogatott egyetlen átjáró-termékváltozatok: az HighPerformance vagy UltraPerformance.
 
 > [!IMPORTANT]
-> A HANA nagyméretű példányok az II. típusú classs Termékváltozat a használatát az UltraPerformance átjáró-Termékváltozat megadása kötelező.
+> HANA nagyméretű példányok az II. típusú osztály Termékváltozat az UltraPerformance átjáró-Termékváltozatot kell használnia.
 
-**Virtuális hálózatok összekapcsolása**
+## <a name="link-virtual-networks"></a>Hivatkozás virtuális hálózatok
 
-Most, hogy az Azure virtuális hálózat egy ExpressRoute-átjáróval rendelkezik, a Microsoft által biztosított engedélyezési adatok használatával az ExpressRoute-átjárót, az SAP Hana-val létrehozott a kapcsolathoz (nagyméretű példányok) az Azure ExpressRoute-kapcsolatcsoport a csatlakozáshoz. Ebben a lépésben az Azure portal vagy a PowerShell használatával elvégezhető. A portál használata javasolt, de PowerShell-utasításokat az alábbiak szerint. 
+Az Azure virtuális hálózat most már rendelkezik egy ExpressRoute-átjárót. A Microsoft által biztosított engedélyezési adatok használatával kapcsolódhat az ExpressRoute-átjárót, az SAP HANA az Azure-ban (nagyméretű példányok) ExpressRoute-kapcsolatcsoportot. Csatlakoztathatja az Azure portal vagy a PowerShell használatával. A portál használata ajánlott, de ha azt szeretné, ha a PowerShell segítségével, az utasításokat a következők. 
 
-- Akkor hajtsa végre a következő parancsokat minden egyes virtuális hálózati átjáró használatával egy másik AuthGUID minden kapcsolat. Az első két bejegyzés jelenik meg a következő szkriptet a Microsoft által biztosított adatokat származnak. Emellett a AuthGUID a jellemző minden virtuális hálózat és az átjáróhoz. Azt jelenti, ha szeretne hozzáadni egy másik Azure virtuális hálózat, le szeretné kérni egy másik AuthID az ExpressRoute-kapcsolatcsoport, amely kapcsolódik a HANA nagyméretű példányok az Azure-bA. 
+Futtassa a következő parancsokat minden egyes virtuális hálózati átjáró egy másik AuthGUID minden kapcsolat használatával. Az első két bejegyzés az alábbi szkriptben látható a Microsoft által biztosított adatokat származnak. Emellett a AuthGUID a jellemző minden virtuális hálózat és az átjáróhoz. Ha szeretne egy másik Azure virtuális hálózat hozzáadása, kell egy másik AuthID lekérése az ExpressRoute-kapcsolatcsoport, amely kapcsolódik a HANA nagyméretű példányok az Azure-bA. 
 
 ```PowerShell
 # Populate with information provided by Microsoft Onboarding team
 $PeerID = "/subscriptions/9cb43037-9195-4420-a798-f87681a0e380/resourceGroups/Customer-USE-Circuits/providers/Microsoft.Network/expressRouteCircuits/Customer-USE01"
 $AuthGUID = "76d40466-c458-4d14-adcf-3d1b56d1cd61"
 
-# Your ExpressRoute Gateway Information
+# Your ExpressRoute Gateway information
 $myGroupName = "SAP-East-Coast"
 $myGWName = "VNet01GW"
 $myGWLocation = "East US"
@@ -92,8 +92,8 @@ New-AzureRmVirtualNetworkGatewayConnection -Name $myConnectionName `
 -PeerId $PeerID -ConnectionType ExpressRoute -AuthorizationKey $AuthGUID
 ```
 
-Ha szeretné összekapcsolni az átjárót több ExpressRoute-kapcsolatcsoporttal az előfizetéséhez tartozó, szükség lehet többször végrehajtani ezt a lépést. Ha például valószínűleg fog, amely a virtuális hálózathoz kapcsolódik a helyszíni hálózat az ExpressRoute-kapcsolatcsoport a ugyanazon virtuális hálózati átjáró csatlakoztatása.
+Csatlakozhat az átjáró egynél több ExpressRoute-kapcsolatcsoporthoz az előfizetéséhez tartozó, szüksége lehet többször futtassa ezt a lépést. Ha például valószínűleg fog, amely a virtuális hálózat csatlakozik a helyszíni hálózat az ExpressRoute-kapcsolatcsoport a ugyanazon virtuális hálózati átjáró csatlakoztatása.
 
-**Következő lépések**
+## <a name="next-steps"></a>További lépések
 
-- Tekintse meg [HLI további hálózati követelményei](hana-additional-network-requirements.md).
+- [HLI további hálózati követelményei](hana-additional-network-requirements.md)

@@ -4,7 +4,7 @@ description: Útmutató a webjobs funkció használata háttérfeladatok futtat�
 services: app-service
 documentationcenter: ''
 author: ggailey777
-manager: erikre
+manager: jeconnoc
 editor: jimbe
 ms.assetid: af01771e-54eb-4aea-af5f-f883ff39572b
 ms.service: app-service
@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/09/2017
-ms.author: glenga;david.ebbo;suwatch;pbatum;naren.soni
-ms.openlocfilehash: c3a41733dd193d10349a0126bfa9c25ce4ba56e7
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.date: 10/16/2018
+ms.author: glenga;msangapu;david.ebbo;suwatch;pbatum;naren.soni;
+ms.openlocfilehash: 901cf32557e0a437e938ceb50ecd500c69c8c3be
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39577677"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49364030"
 ---
 # <a name="run-background-tasks-with-webjobs-in-azure-app-service"></a>Háttérfeladatok futtatása a WebJobs Azure App Service-ben
 
@@ -44,7 +44,7 @@ A következő táblázat ismerteti a közötti különbségeket *folyamatos* és
 | Támogatja a távoli hibakeresésről. | Nem támogatja a távoli hibakeresésről.|
 
 > [!NOTE]
-> Webes alkalmazás időkorlát 20 perc inaktivitás után is. Az scm (üzembe helyezés) helyet, vagy a portálon a webalkalmazás lapjára csak kérések az időzítő alaphelyzetbe állítása. A tényleges helyet kérelmeket az időzítő nem alaphelyzetbe. Ha az alkalmazás futása folyamatos vagy ütemezett webjobs-feladatok engedélyezése **Always On** annak érdekében, hogy a webjobs-feladatok megbízhatóan fusson. Ez a funkció csak a Basic, Standard és prémium szintű érhető el [tarifacsomagok](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
+> Webes alkalmazás időkorlát 20 perc inaktivitás után is. Csak a tényleges webalkalmazáshoz kérelmeket az időzítő alaphelyzetbe állítása. Az alkalmazás konfigurációját megtekintése az Azure Portalon, vagy a speciális eszközök helyhez-kérelem indítására (https:// < alkalmazás_neve >. scm.azurewebsites.net) nem az időzítő alaphelyzetbe. Ha az alkalmazás futása folyamatos vagy ütemezett webjobs-feladatok engedélyezése **Always On** annak érdekében, hogy a webjobs-feladatok megbízhatóan fusson. Ez a funkció csak a Basic, Standard és prémium szintű érhető el [tarifacsomagok](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 
 ## <a name="acceptablefiles"></a>Szkriptek vagy programok használható fájltípusok
 

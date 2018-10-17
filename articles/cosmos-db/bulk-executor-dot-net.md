@@ -1,25 +1,26 @@
 ---
-title: Tömeges végrehajtó .NET-kódtár használatával tömeges műveletek végrehajtásához az Azure Cosmos DB |} A Microsoft Docs
-description: Azure Cosmos DB tömeges végrehajtó .NET-kódtár használatával tömeges importálás, és frissítheti a dokumentumokat az Azure Cosmos DB-tárolók.
-keywords: .NET tömeges végrehajtó
+title: Tömeges végrehajtó .NET-kódtár segítségével hajtsa végre a tömeges importálási és frissítési műveleteket az Azure Cosmos DB |} A Microsoft Docs
+description: Tömeges importálás, és frissítse az Azure Cosmos DB-dokumentumot tömeges végrehajtó .NET-kódtár használatával.
 services: cosmos-db
 author: tknandu
 manager: kfile
 ms.service: cosmos-db
 ms.devlang: dotnet
 ms.topic: conceptual
-ms.date: 05/07/2018
+ms.date: 10/16/2018
 ms.author: ramkris
-ms.openlocfilehash: cc0faa44501ea130309a02bb48d02f9c5b33febd
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: 04894fdd0ffff38ad129097ce839259f2993332c
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44053380"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49363398"
 ---
 # <a name="use-bulk-executor-net-library-to-perform-bulk-operations-in-azure-cosmos-db"></a>Tömeges végrehajtó .NET-kódtár használatával tömeges műveletek végrehajtása az Azure Cosmos DB-ben
 
-Ebben az oktatóanyagban útmutatás segítségével az Azure Cosmos DB tömeges végrehajtó .NET-kódtár importálása és az Azure Cosmos DB-tárolók dokumentumok frissítéséhez. Tömeges végrehajtó kódtár, és segítséget nyújt a nagy átviteli sebesség és a storage kapcsolatos további információkért lásd: [tömeges végrehajtó ügyfélkódtár áttekintése](bulk-executor-overview.md) cikk. Ez az oktatóanyag végigvezeti egy .NET mintaalkalmazás, amely importálja, véletlenszerűen generált dokumentumok tömeges egy Azure Cosmos DB-tárolóba. Az importálás után azt mutatja, hogy kötegelve tölthesse be az importált adatok frissítése javítások végrehajtásához az adott dokumentum mezők műveletként megadásával.
+Ebben az oktatóanyagban útmutatás segítségével az Azure Cosmos DB tömeges végrehajtó .NET-kódtár importálása és az Azure Cosmos DB-tárolók dokumentumok frissítéséhez. Tömeges végrehajtó kódtár, és segítséget nyújt a nagy átviteli sebesség és a storage kapcsolatos további információkért lásd: [tömeges végrehajtó ügyfélkódtár áttekintése](bulk-executor-overview.md) cikk. Ebben az oktatóanyagban látni fogja, véletlenszerűen tömeges importálás .NET mintaalkalmazás dokumentumok létrehozott egy Azure Cosmos DB-tárolóba. Az importálás után azt mutatja, hogy kötegelve tölthesse be az importált adatok frissítése javítások végrehajtásához az adott dokumentum mezők műveletként megadásával. 
+
+Tömeges végrehajtó könyvtár jelenleg az Azure Cosmos DB SQL API-t, és csak a Gremlin API-fiókok által támogatott. Ez a cikk ismerteti a tömeges végrehajtó .NET-kódtár használata SQL API-fiókok. Tömeges végrehajtó .NET-kódtár használatával a Gremlin API-val kapcsolatos további információkért lásd: [tömeges műveletek végrehajtása az Azure Cosmos DB Gremlin API](bulk-executor-graph-dotnet.md). 
 
 ## <a name="prerequisites"></a>Előfeltételek
 

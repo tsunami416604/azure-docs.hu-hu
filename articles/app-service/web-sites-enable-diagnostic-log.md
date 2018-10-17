@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/06/2016
 ms.author: cephalin
-ms.openlocfilehash: 37b11eea5c37103c0bc296a5f466658fbc77ed24
-ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
+ms.openlocfilehash: 5cd56abd02c55dbf72c92ed070f9988fae2b6762
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/15/2018
-ms.locfileid: "42058401"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49365254"
 ---
 # <a name="enable-diagnostics-logging-for-web-apps-in-azure-app-service"></a>Az Azure App Service web Apps-alkalmazások diagnosztikai célú naplózásának engedélyezése
 ## <a name="overview"></a>Áttekintés
@@ -82,7 +82,7 @@ Fájlrendszer, a table storage vagy a blob storage bármilyen kombinációját i
 Habár minden három tárolási helyek naplózott eseményeket, ugyanazokat az alapvető információkat biztosít **táblatároló** és **a blob storage-** további információk, például a példány Azonosítóját, a hozzászóláslánc azonosítója és a egy egyéb naplózása részletes timestamp (osztásjelek formátum), mint a naplózás **fájlrendszer**.
 
 > [!NOTE]
-> A tárolt adatok **táblatároló** vagy **a blob storage-** csak érhetők el a storage-kliens vagy olyan alkalmazás, amely közvetlenül is dolgozhat a tárolórendszerek használatával. Például a Visual Studio 2013 tartalmaz, amelyek segítségével ismerje meg a tábla- vagy blob storage a Storage Explorer, és a HDInsight érhessék el az a blob storage-ban tárolt adatokat. Egy alkalmazás, amely hozzáfér az Azure Storage egyikének használatával is kiírhatja a [Azure SDK-k](https://azure.microsoft.com/en-us/downloads/).
+> A tárolt adatok **táblatároló** vagy **a blob storage-** csak érhetők el a storage-kliens vagy olyan alkalmazás, amely közvetlenül is dolgozhat a tárolórendszerek használatával. Például a Visual Studio 2013 tartalmaz, amelyek segítségével ismerje meg a tábla- vagy blob storage a Storage Explorer, és a HDInsight érhessék el az a blob storage-ban tárolt adatokat. Egy alkalmazás, amely hozzáfér az Azure Storage egyikének használatával is kiírhatja a [Azure SDK-k](https://azure.microsoft.com/downloads/).
 >
 > [!NOTE]
 > Diagnosztika is engedélyezhető az Azure PowerShell használatával a **Set-AzureWebsite** parancsmagot. Ha nem telepítette az Azure PowerShell-lel, vagy nincs konfigurálva, hogy az Azure-előfizetéssel, lásd: [telepítse és konfigurálja az Azure Powershellt](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-5.6.0).

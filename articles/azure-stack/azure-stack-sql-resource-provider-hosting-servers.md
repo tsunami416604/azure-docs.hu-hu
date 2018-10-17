@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/27/2018
+ms.date: 10/16/2018
 ms.author: jeffgilb
 ms.reviewer: quying
-ms.openlocfilehash: 57033de3224b5966b2dfa80dd1cb45fafd83b26b
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: a0a482e44617732c9dc6cd6609672e8204001dbc
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48238728"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49362058"
 ---
 # <a name="add-hosting-servers-for-the-sql-resource-provider"></a>Az erőforrás-szolgáltató SQL üzemeltetési kiszolgáló hozzáadása
 
@@ -173,23 +173,24 @@ Ezeket a parancsokat használja a tartalmazott adatbázis hitelesítési kiszolg
    > Az Always On instances ugyanazon Termékváltozat nem használhatók vegyesen önálló kiszolgálón. Kísérlet történt vegyesen típusok hozzáadása az első üzemeltetési kiszolgáló eredmények hiba után.
 
 ## <a name="sku-notes"></a>Termékváltozat-megjegyzések
-
-SKU-k segítségével szolgáltatásajánlatok megkülönböztetéséhez. Rendelkezhet például egy SQL Enterprise-példányt, amely a következő jellemzőkkel rendelkezik:
+Használja a Termékváltozat a kiszolgálók, a termékváltozat, például a kapacitás és teljesítmény funkcióit írja le. A név, amely a felhasználókat a megfelelő termékváltozatra adatbázisaikat üzembe ábrázolt funkcionál. Használhatja például a Termékváltozat neve megkülönböztetéséhez szolgáltatásajánlatok szerint a következő jellemzőkkel:
   
 * nagy kapacitású
 * nagy teljesítményű
 * magas rendelkezésre állás
 
-SKU-k az adott felhasználók vagy csoportok ebben a kiadásban nem lehet hozzárendelni.
-
- SKU-k órát is igénybe vehet egy lesznek láthatók a portálon. Felhasználók nem hozható létre adatbázis, amíg a Termékváltozat létrehozása befejeződött.
-
->[!TIP]
->Használja a Termékváltozat neve, amely tükrözi a kiszolgálók, a termékváltozat, például a kapacitás és teljesítmény funkcióit írja le. A név, amely a felhasználókat a megfelelő termékváltozatra adatbázisaikat üzembe ábrázolt funkcionál.
-
 Ajánlott eljárásként a üzemeltetési kiszolgáló, a Termékváltozat az azonos erőforrás és teljesítménybeli jellemzőit kell rendelkeznie.
 
-## <a name="make-the-sql-databases-available-to-users"></a>Az SQL-adatbázisok elérhetővé tétele a felhasználók számára
+SKU-k az adott felhasználók vagy csoportok nem lehet hozzárendelni.
+
+SKU-k órát is igénybe vehet egy lesznek láthatók a portálon. Felhasználók nem hozható létre adatbázis, amíg a Termékváltozat létrehozása befejeződött.
+
+A Termékváltozat szerkesztéséhez lépjen a **minden szolgáltatás** > **SQL Adapter** > **termékváltozatok**. Válassza ki a Termékváltozat módosítása, végezze el a szükséges módosításokat, majd kattintson a **mentése** módosítások mentéséhez. A Termékváltozat, amely már nem szükséges törléséhez lépjen a **minden szolgáltatás** > **SQL Adapter** > **termékváltozatok**. Kattintson a jobb gombbal a Termékváltozat nevét, és válassza ki **törlése** törli-e.
+
+> [!TIP]
+> Ön módosíthatja és törölheti-szolgáltató erőforráskvóták SQL ugyanazon a helyen.
+
+## <a name="make-sql-databases-available-to-users"></a>SQL-adatbázisok elérhetővé tétele a felhasználók számára
 
 Hozzon létre a csomagok és ajánlatok az SQL Database-adatbázisok elérhetővé tétele a felhasználók számára. Adja hozzá a **Microsoft.SqlAdapter** a terv szolgáltatást, és a egy új kvóta létrehozása.
 

@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/27/2018
+ms.date: 10/16/2018
 ms.author: jeffgilb
 ms.reviewer: quying
-ms.openlocfilehash: 72824e5afb9f8d77c2f7d3bd01e6ff2035e95a95
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: 833d8e7960bfb7ee3c135df57e6d4dfec97af037
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48237264"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49364665"
 ---
 # <a name="add-hosting-servers-for-the-mysql-resource-provider"></a>Üzemeltetési kiszolgáló hozzáadása a MySQL erőforrás-szolgáltató
 
@@ -75,6 +75,24 @@ A következő információkat az RP és a MySQL-kiszolgálót üzemeltető vonat
 ## <a name="increase-backend-database-capacity"></a>Növeli a háttér adatbázis-kapacitást
 
 Az Azure Stack portálon további MySQL-kiszolgálók üzembe helyezésével növelheti a háttérbeli adatbázis-kapacitást. Ezek a kiszolgálók hozzáadása egy új vagy meglévő Termékváltozat. Ha egy kiszolgálót ad hozzá egy meglévő Termékváltozat, ügyeljen arra, hogy a kiszolgáló jellemzőkkel ugyanazok, mint a többi kiszolgáló, a termékváltozat.
+
+## <a name="sku-notes"></a>Termékváltozat-megjegyzések
+Használja a Termékváltozat a kiszolgálók, a termékváltozat, például a kapacitás és teljesítmény funkcióit írja le. A név, amely a felhasználókat a megfelelő termékváltozatra adatbázisaikat üzembe ábrázolt funkcionál. Használhatja például a Termékváltozat neve megkülönböztetéséhez szolgáltatásajánlatok szerint a következő jellemzőkkel:
+  
+* nagy kapacitású
+* nagy teljesítményű
+* magas rendelkezésre állás
+
+Ajánlott eljárásként a üzemeltetési kiszolgáló, a Termékváltozat az azonos erőforrás és teljesítménybeli jellemzőit kell rendelkeznie.
+
+SKU-k az adott felhasználók vagy csoportok nem lehet hozzárendelni.
+
+SKU-k órát is igénybe vehet egy lesznek láthatók a portálon. Felhasználók nem hozható létre adatbázis, amíg a Termékváltozat létrehozása befejeződött.
+
+A Termékváltozat szerkesztéséhez lépjen a **minden szolgáltatás** > **MySQL Adapter** > **termékváltozatok**. Válassza ki a Termékváltozat módosítása, végezze el a szükséges módosításokat, majd kattintson a **mentése** módosítások mentéséhez. A Termékváltozat, amely már nem szükséges törléséhez lépjen a **minden szolgáltatás** > **MySQL Adapter** > **termékváltozatok**. Kattintson a jobb gombbal a Termékváltozat nevét, és válassza ki **törlése** törli-e.
+
+> [!TIP]
+> Kíván szerkeszteni vagy törölni a MySQL erőforrás-szolgáltató kvóták ugyanazon a helyen.
 
 ## <a name="make-mysql-database-servers-available-to-your-users"></a>MySQL-adatbázis-kiszolgálók elérhetővé tétele a felhasználók számára
 

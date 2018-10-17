@@ -7,12 +7,12 @@ ms.service: storage
 ms.date: 10/04/2018
 ms.author: renash
 ms.component: files
-ms.openlocfilehash: b3aca33bea8f7847b7069bba3f2a6dcd143cf29c
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: 20a87148e3c0df29e5f4dffd74a8f5389e3658b9
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49079129"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49364558"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>Az Azure Files kapcsolatos gyakori kérdések (GYIK)
 [Az Azure Files](storage-files-introduction.md) teljes körűen felügyelt fájlmegosztást kínáló, amely az iparági szabványnak megfelelő keresztül érhető el a felhőben [Server Message Block (SMB) protokoll](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx). Azure-fájlmegosztások párhuzamosan csatlakoztathatja felhőbeli vagy helyszíni üzemelő példányok esetében a Windows, Linux és macOS. A Windows Server-gépek Azure-fájlmegosztások közel, ahol az adatok felhasználásának gyors hozzáférés az Azure File Sync használatával képes gyorsítótárazni.
@@ -182,7 +182,7 @@ Ez a cikk az Azure Files szolgáltatást és funkciót, beleértve az Azure File
 * <a id="ad-support-regions"></a>
 **Érhető el az előzetes verzió, az Azure AD SMB-n keresztül az Azure Files számára az összes Azure-régióban?**
 
-    Az összes nyilvános régióban, az alábbiakat kivéve az előzetes verzió érhető el: USA nyugati RÉGIÓJA, USA déli középső Régiója, USA középső RÉGIÓJA, Nyugat-Európa, Észak-Európa.
+    Az előzetes verzió érhető el az összes nyilvános régióban, kivéve a: Észak-Európa.
 
 * <a id="ad-support-on-premises"></a>
 **Támogatja az Azure AD-hitelesítés SMB-n keresztül az Azure Files (előzetes verzió) hitelesítés a helyszíni gépeket az Azure AD-vel?**

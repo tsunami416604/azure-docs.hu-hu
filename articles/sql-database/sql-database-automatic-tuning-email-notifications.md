@@ -11,19 +11,19 @@ author: danimir
 ms.author: v-daljep
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 09/19/2018
-ms.openlocfilehash: 86639be7c4d934929272e6d578485bfc8bfb9cc9
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.date: 10/15/2018
+ms.openlocfilehash: 1177703dc67e81e537d7682dcf9bbeb475748315
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47064101"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49353934"
 ---
 # <a name="email-notifications-for-automatic-tuning"></a>Az automatikus hangolási e-mail-értesítések
 
 SQL-adatbázis hangolási ajánlásokat az Azure SQL Database által generált [az automatikus hangolás](sql-database-automatic-tuning.md). Ez a megoldás folyamatosan figyeli és elemzi a számítási feladatok SQL-adatbázisok biztosító testre szabott finomhangolási javaslatai az indexlétrehozást, index törlésre és lekérdezések végrehajtási tervét optimalizálása kapcsolatos minden egyes adatbázis.
 
-Az SQL Database automatikus finomhangolási javaslatai lehet megtekinteni a [az Azure portal](sql-database-advisor-portal.md), a beolvasott [REST API-val](https://docs.microsoft.com/rest/api/sql/databaserecommendedactions/listbydatabaseadvisor) meghívja, vagy a [T-SQL](https://azure.microsoft.com/blog/automatic-tuning-introduces-automatic-plan-correction-and-t-sql-management/) és [ PowerShell](https://docs.microsoft.com/powershell/module/azurerm.sql/get-azurermsqldatabaserecommendedaction) parancsokat. Ez a cikk alapján automatikus hangolási ajánlásokat lekérni egy PowerShell-parancsfájl használatával.
+Az SQL Database automatikus finomhangolási javaslatai lehet megtekinteni a [az Azure portal](sql-database-advisor-portal.md), a beolvasott [REST API-val](https://docs.microsoft.com/rest/api/sql/databaserecommendedactions/databaserecommendedactions_listbydatabaseadvisor) meghívja, vagy a [T-SQL](https://azure.microsoft.com/blog/automatic-tuning-introduces-automatic-plan-correction-and-t-sql-management/) és [ PowerShell](https://docs.microsoft.com/powershell/module/azurerm.sql/get-azurermsqldatabaserecommendedaction) parancsokat. Ez a cikk alapján automatikus hangolási ajánlásokat lekérni egy PowerShell-parancsfájl használatával.
 
 ## <a name="automate-email-notifications-for-automatic-tuning-recommendations"></a>E-mail értesítések automatikus finomhangolási ajánlásait automatizálása
 
@@ -99,7 +99,7 @@ Több előfizetés esetén később is hozzáadhatja, vesszővel tagolt a paranc
 #
 # Microsoft Azure SQL Database team, 2018-01-22.
 
-# Set subscriptions : IMPORTANT – REPLACE <SUBSCRIPTION_ID_WITH_DATABASES> WITH YOUR SUBSCRIPTION ID 
+# Set subscriptions : IMPORTANT – REPLACE <SUBSCRIPTION_ID_WITH_DATABASES> WITH YOUR SUBSCRIPTION ID
 $subscriptions = ("<SUBSCRIPTION_ID_WITH_DATABASES>", "<SECOND_SUBSCRIPTION_ID_WITH_DATABASES>", "<THIRD_SUBSCRIPTION_ID_WITH_DATABASES>")
 
 # Get credentials
@@ -112,8 +112,8 @@ $advisors = ("CreateIndex", "DropIndex");
 $results = @()
 
 # Loop through all subscriptions
-foreach($subscriptionId in $subscriptions) {    
-    Select-AzureRmSubscription -SubscriptionId $subscriptionId    
+foreach($subscriptionId in $subscriptions) {
+    Select-AzureRmSubscription -SubscriptionId $subscriptionId
     $rgs = Get-AzureRmResourceGroup
 
     # Loop through all resource groups
@@ -122,7 +122,7 @@ foreach($subscriptionId in $subscriptions) {
 
         # Loop through all resource types
         foreach($resourceType in $resourceTypes) {
-            $resources = Get-AzureRmResource -ResourceGroupName $rgname -ResourceType $resourceType    
+            $resources = Get-AzureRmResource -ResourceGroupName $rgname -ResourceType $resourceType
 
             # Loop through all databases
             # Extract resource groups, servers and databases
@@ -141,7 +141,7 @@ foreach($subscriptionId in $subscriptions) {
                 if ($resourceId -match ".*/DATABASES/(?<content>.*)") {
                     $DatabaseName = $matches['content']
                 } else {
-                    continue 
+                    continue
                 }
 
                 # Skip if master
@@ -163,7 +163,7 @@ foreach($subscriptionId in $subscriptions) {
                             $results += $object
                         }
                     }
-                }                
+                }
             }
         }
     }
@@ -174,7 +174,7 @@ $table = $results | Format-List
 Write-Output $table
 ```
 
-Kattintson a "**mentése**" gombra a jobb felső sarokban a parancsfájl mentéséhez. Ha elégedett a parancsfájlt, kattintson a "**közzététel**" gombra a runbook közzétételéhez. 
+Kattintson a "**mentése**" gombra a jobb felső sarokban a parancsfájl mentéséhez. Ha elégedett a parancsfájlt, kattintson a "**közzététel**" gombra a runbook közzétételéhez.
 
 A fő runbook ablaktáblán, kattintson a választhatja a "**Start**" gombra kattintva **tesztelése** a parancsfájl. Kattintson a "**kimeneti**" a szkript eredményeinek megtekintése. Ez a kimenet az e-mail tartalma lesz. A szkript kimenetében minta az alábbi képernyőképen látható.
 
@@ -186,7 +186,7 @@ A fenti lépéseket, az automatikus hangolási ajánlásokat lekérni a PowerShe
 
 ## <a name="automate-the-email-jobs-with-microsoft-flow"></a>A Microsoft Flow az e-mail-feladatok automatizálása
 
-A megoldás, mint az utolsó lépés végrehajtásához automation folyamat létrehozása a Microsoft Flow álló három műveletet (feladat): 
+A megoldás, mint az utolsó lépés végrehajtásához automation folyamat létrehozása a Microsoft Flow álló három műveletet (feladat):
 
 1. "**Azure Automation - feladat létrehozása**" – automatikus finomhangolási javaslatai az Azure Automation-runbook belül beolvasni a PowerShell-parancsfájl végrehajtása használatos
 2. "**Azure Automation - feladat kimeneti Get**" használt lekérnie a kimenetet a végrehajtott PowerShell-példaszkript –
@@ -205,25 +205,28 @@ Ebben a lépésben előfeltétele, hogy regisztráljon [Microsoft Flow](https://
 A következő lépés, hogy az újonnan létrehozott ismétlődő folyamat hozzáadása (létrehozása, get-kimenet és küldése e-mailben) három feladat. Ehhez a szükséges feladatok hozzáadása a folyamathoz, kövesse az alábbi lépéseket:
 
 1. Művelet, amely végrehajtja a hangolási javaslatokat beolvasni a PowerShell-parancsprogram létrehozása
-- Jelölje be "**+ új lépés**", majd a"**művelet hozzáadása**" ismétlődési folyamat ablaktáblájában
-- A Keresés mezőbe írja be "**automation**"és válassza a"**Azure Automation-feladat létrehozása**" a keresési eredmények közül
-- A létrehozás a feladat panelt konfigurálja a feladat tulajdonságai. Ehhez a konfigurációhoz, szüksége lesz az Azure-előfizetés Azonosítóját, erőforráscsoport és az Automation-fiók részletei **korábban rögzített** , a **Automation-fiók panelen**. Ez a szakasz az elérhető beállításokkal kapcsolatos további tudnivalókért lásd: [Azure Automation - feladat létrehozása](https://docs.microsoft.com/connectors/azureautomation/#create-job).
-- Ez a művelet létrehozásának kattintva "**folyamat mentése**"
+
+   - Jelölje be "**+ új lépés**", majd a"**művelet hozzáadása**" ismétlődési folyamat ablaktáblájában
+   - A Keresés mezőbe írja be "**automation**"és válassza a"**Azure Automation-feladat létrehozása**" a keresési eredmények közül
+   - A létrehozás a feladat panelt konfigurálja a feladat tulajdonságai. Ehhez a konfigurációhoz, szüksége lesz az Azure-előfizetés Azonosítóját, erőforráscsoport és az Automation-fiók részletei **korábban rögzített** , a **Automation-fiók panelen**. Ez a szakasz az elérhető beállításokkal kapcsolatos további tudnivalókért lásd: [Azure Automation - feladat létrehozása](https://docs.microsoft.com/connectors/azureautomation/#create-job).
+   - Ez a művelet létrehozásának kattintva "**folyamat mentése**"
 
 2. Művelet lekérnie a kimenetet a végrehajtott PowerShell-parancsprogram létrehozása
-- Jelölje be "**+ új lépés**", majd a"**művelet hozzáadása**" ismétlődési folyamat ablaktáblájában
-- A keresés mezőtípusokra "**automation**"és válassza a"**Azure Automation – Get-feladat kimeneti**" a keresési eredmények közül. Ez a szakasz az elérhető beállításokkal kapcsolatos további tudnivalókért lásd: [Azure Automation – Get-feladat kimeneti](https://docs.microsoft.com/connectors/azureautomation/#get-job-output).
-- Töltse fel mezők szükséges (hasonló az előző feladat létrehozása) – töltse ki az Azure-előfizetés Azonosítóját, erőforráscsoport, és az Automation-fiók (mivel az Automation-fiók panel be)
-- Kattintson a mezőbe "**Feladatazonosító**" számára a "**dinamikus tartalom**" menü jelenik meg. A belül ebből a menüből válassza a "**Feladatazonosító**".
-- Ez a művelet létrehozásának kattintva "**folyamat mentése**"
+
+   - Jelölje be "**+ új lépés**", majd a"**művelet hozzáadása**" ismétlődési folyamat ablaktáblájában
+   - A keresés mezőtípusokra "**automation**"és válassza a"**Azure Automation – Get-feladat kimeneti**" a keresési eredmények közül. Ez a szakasz az elérhető beállításokkal kapcsolatos további tudnivalókért lásd: [Azure Automation – Get-feladat kimeneti](https://docs.microsoft.com/connectors/azureautomation/#get-job-output).
+   - Töltse fel mezők szükséges (hasonló az előző feladat létrehozása) – töltse ki az Azure-előfizetés Azonosítóját, erőforráscsoport, és az Automation-fiók (mivel az Automation-fiók panel be)
+   - Kattintson a mezőbe "**Feladatazonosító**" számára a "**dinamikus tartalom**" menü jelenik meg. A belül ebből a menüből válassza a "**Feladatazonosító**".
+   - Ez a művelet létrehozásának kattintva "**folyamat mentése**"
 
 3. Küldje el e-mailt Office 365-integráció használatával művelet létrehozása
-- Jelölje be "**+ új lépés**", majd a"**művelet hozzáadása**" ismétlődési folyamat ablaktáblájában
-- A keresés mezőtípusokra "**e-mail küldése**"és válassza a"**Office 365 Outlook – e-mail küldése**" a keresési eredmények közül
-- Az a "**való**" mezőbe írja be az e-mail-címet, amelyhez szeretne értesítő e-mail küldése
-- Az a "**tulajdonos**" mezőbe írja be az e-mail tárgya, például "automatikus finomhangolási ajánlásait e-mailes értesítés"
-- Kattintson a mezőbe "**törzs**" számára a "**dinamikus tartalom**" menü jelenik meg. Az ebben a menüben található alatt "**feladat kimenetének beolvasása**", jelölje be"**tartalom**" 
-- Ez a művelet létrehozásának kattintva "**folyamat mentése**"
+
+   - Jelölje be "**+ új lépés**", majd a"**művelet hozzáadása**" ismétlődési folyamat ablaktáblájában
+   - A keresés mezőtípusokra "**e-mail küldése**"és válassza a"**Office 365 Outlook – e-mail küldése**" a keresési eredmények közül
+   - Az a "**való**" mezőbe írja be az e-mail-címet, amelyhez szeretne értesítő e-mail küldése
+   - Az a "**tulajdonos**" mezőbe írja be az e-mail tárgya, például "automatikus finomhangolási ajánlásait e-mailes értesítés"
+   - Kattintson a mezőbe "**törzs**" számára a "**dinamikus tartalom**" menü jelenik meg. Az ebben a menüben található alatt "**feladat kimenetének beolvasása**", jelölje be"**tartalom**"
+   - Ez a művelet létrehozásának kattintva "**folyamat mentése**"
 
 > [!TIP]
 > Automatikus e-mailek küldése a különböző címzetteknek, hozzon létre külön folyamatokat. Ezek a további folyamatok módosítsa a "To" mező a címzett e-mail-címét, és e-mailek Tárgy mezőjében a "Tulajdonos" mező. Az Azure Automation az új runbookok létrehozása egyéni PowerShell-parancsfájlok (például az módosítása az Azure-előfizetés azonosítója) lehetővé teszi, hogy további testreszabási automatizált forgatókönyvek, például van például e-mailben automatikus finomhangolásával külön címzettek önálló előfizetések javaslatok.
@@ -247,7 +250,7 @@ A végső kimenetet az automatikus e-mail fogadása után ez a megoldás készí
 
 A PowerShell-parancsfájl módosításával módosíthatja a kimenet és az automatikus e-mailt az igényeinek megfelelően formázását.
 
-Előfordulhat, hogy további testre szabhatja a megoldást hozhat létre egy adott hangolási esemény alapján, és több címzettnek több előfizetést vagy adatbázisok függően az egyéni példahelyzetekre e-mail-értesítéseket. 
+Előfordulhat, hogy további testre szabhatja a megoldást hozhat létre egy adott hangolási esemény alapján, és több címzettnek több előfizetést vagy adatbázisok függően az egyéni példahelyzetekre e-mail-értesítéseket.
 
 ## <a name="next-steps"></a>További lépések
 

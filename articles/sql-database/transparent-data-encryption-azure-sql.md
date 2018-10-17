@@ -11,13 +11,13 @@ author: aliceku
 ms.author: aliceku
 ms.reviewer: vanto
 manager: craigg
-ms.date: 07/09/2018
-ms.openlocfilehash: 935c54cf04854e75c39df55d8063138086be73a6
-ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
+ms.date: 10/15/2018
+ms.openlocfilehash: 94a3a502d5756d57cfebdf6698a4435dc1e19948
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2018
-ms.locfileid: "49309484"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49353030"
 ---
 # <a name="transparent-data-encryption-for-sql-database-and-data-warehouse"></a>Transzparens adattitkosítás az SQL Database és a Data warehouse-bA
 
@@ -25,7 +25,7 @@ Transzparens adattitkosítás (TDE) segítségével az Azure SQL Database és az
 
 TDE manuálisan a régebbi adatbázisokhoz vagy Azure SQL Data Warehouse engedélyezni kell.  
 
-Transzparens adattitkosítás a tárolót a teljes adatbázisra az adatbázis-titkosítási kulcs nevű szimmetrikus kulcs használatával titkosítja. A transzparens titkosítási védelme védi az adatbázis-titkosítási kulcs. A védő, vagy a szolgáltatás által kezelt tanúsítvány (szolgáltatás által kezelt transzparens adattitkosítás) vagy aszimmetrikus kulccsal (Bring Your Own Key) az Azure Key vaultban tárolt. Beállíthatja a transzparens titkosítási védelmet a kiszolgáló szintjén. 
+Transzparens adattitkosítás a tárolót a teljes adatbázisra az adatbázis-titkosítási kulcs nevű szimmetrikus kulcs használatával titkosítja. A transzparens titkosítási védelme védi az adatbázis-titkosítási kulcs. A védő, vagy a szolgáltatás által kezelt tanúsítvány (szolgáltatás által kezelt transzparens adattitkosítás) vagy aszimmetrikus kulccsal (Bring Your Own Key) az Azure Key vaultban tárolt. Beállíthatja a transzparens titkosítási védelmet a kiszolgáló szintjén.
 
 Az adatbázis indításakor a titkosított adatbázis-titkosítási kulcs visszafejteni és visszafejtési és újbóli titkosítása az adatbázisfájlokat az SQL Server adatbázismotor folyamat használja. Transzparens adattitkosítás valós idejű i/o-titkosítás és a visszafejtés, a lapszintű hajt végre. Minden egyes lap visszafejtése a memóriába, és ezután írás előtt titkosítja a lemezre. Transzparens adattitkosítás általános ismertetését lásd: [transzparens adattitkosítás](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption).
 
@@ -35,11 +35,10 @@ Is-Azure virtuális gépen futó SQL Server használhatja a Key Vaultból aszimm
 
 Az Azure-ban az alapértelmezett beállítás a transzparens adattitkosítás, hogy az adatbázis-titkosítási kulcs egy beépített kiszolgálói tanúsítvány védi. A beépített kiszolgálói tanúsítvány egy egyedülálló megoldás minden olyan kiszolgáló esetén. Ha egy adatbázis georeplikációs kapcsolatban, az elsődleges adatbázis szülő kiszolgálókulcs védi az elsődleges és a geo-secondary adatbázis. Ha a két adatbázis ugyanazon a kiszolgálón csatlakozik, a beépített tanúsítvány osztoznak. A Microsoft legalább 90 naponként automatikusan elforgatja ezeket a tanúsítványokat.
 
-A Microsoft is zökkenőmentesen helyezi és kezeli a georeplikációhoz szükséges kulcsokat, és helyreállítja. 
+A Microsoft is zökkenőmentesen helyezi és kezeli a georeplikációhoz szükséges kulcsokat, és helyreállítja.
 
 > [!IMPORTANT]
 > Minden újonnan létrehozott SQL-adatbázis szolgáltatás által kezelt transzparens adattitkosítás használatával alapértelmezés szerint vannak titkosítva. Meglévő adatbázisok előtt 2017 május és a visszaállítás, georeplikáció és adatbázis-másolat létrehozott alapértelmezés szerint nem titkosított.
->
 
 ## <a name="bring-your-own-key"></a>A saját kulcs használata
 
@@ -54,13 +53,14 @@ Transzparens adattitkosítás használatával Bring Your Own Key-támogatással 
 ## <a name="move-a-transparent-data-encryption-protected-database"></a>Transzparens-titkosítás által védett adatbázis áthelyezése
 
 Nem kell adatbázisok Azure-ban műveletek visszafejtéséhez. A transzparens adattitkosítási beállítások a forrás-adatbázison vagy az elsődleges adatbázis transzparens módon öröklődnek a célon. Részét képező Operations jár:
-- A GEO-visszaállítás.
-- Önkiszolgáló időponthoz visszaállítását.
-- Törölt adatbázis visszaállítása.
-- Aktív georeplikáció.
-- Adatbázis-másolat létrehozása.
 
-Transzparens titkosítás által védett adatbázis exportálásakor az exportált tartalmat, az adatbázis nem titkosított. Az exportált tartalmat titkosítatlan BACPAC-fájlok tárolják. Győződjön meg arról, megfelelően védeni a BACPAC-fájlok és a transzparens adattitkosítás engedélyezése után az új adatbázis importálása befejeződött.
+- Georedundáns helyreállítás
+- Önkiszolgáló időponthoz visszaállítás
+- Törölt adatbázis visszaállítása
+- Aktív georeplikáció
+- Adatbázis-másolat létrehozása
+
+Transzparens titkosítás által védett adatbázis exportálásakor az exportált tartalmat, az adatbázis nem titkosított. Az exportált tartalom nem titkosított BACPAC-fájl tárolja. Győződjön meg arról, megfelelően védeni a BACPAC-fájlok és a transzparens adattitkosítás engedélyezése után az új adatbázis importálása befejeződött.
 
 Például az a BACPAC-fájlba exportál egy helyszíni SQL Server-példány, ha az importált tartalom az új adatbázis nem automatikusan titkosítja. Hasonlóképpen ha a BACPAC-fájlba exportálja a helyszíni SQL Server-példány, az új adatbázis is nem automatikusan titkosítja.
 
@@ -68,19 +68,19 @@ Az egyetlen kivétel a és a egy SQL database-ből való exportálás. Transzpar
 
 ## <a name="manage-transparent-data-encryption-in-the-azure-portal"></a>Transzparens adattitkosítás az Azure Portalon kezelheti.
 
-Az Azure Portalon keresztül transzparens adattitkosításának konfigurálásához, csatlakoznia kell az Azure tulajdonos, közreműködő vagy SQL-biztonságkezelő. 
+Az Azure Portalon keresztül transzparens adattitkosításának konfigurálásához, csatlakoznia kell az Azure tulajdonos, közreműködő vagy SQL-biztonságkezelő.
 
-Transzparens adattitkosítás meg az adatbázis-szint. Ahhoz, hogy az adatbázisok transzparens adattitkosítás, nyissa meg a [az Azure portal](https://portal.azure.com) , és jelentkezzen be az Azure-rendszergazdájának vagy Közreműködőjének fiókjával. Keresse meg a transzparens adattitkosítási beállítások szerint a felhasználói adatbázishoz. Alapértelmezés szerint a szolgáltatás által kezelt transzparens adattitkosítás szolgál. A transzparens adattitkosítási tanúsítványának automatikusan jön létre a kiszolgáló, amely tartalmazza az adatbázist. 
+Transzparens adattitkosítás meg az adatbázis-szint. Ahhoz, hogy az adatbázisok transzparens adattitkosítás, nyissa meg a [az Azure portal](https://portal.azure.com) , és jelentkezzen be az Azure-rendszergazdájának vagy Közreműködőjének fiókjával. Keresse meg a transzparens adattitkosítási beállítások szerint a felhasználói adatbázishoz. Alapértelmezés szerint a szolgáltatás által kezelt transzparens adattitkosítás szolgál. A transzparens adattitkosítási tanúsítványának automatikusan jön létre a kiszolgáló, amely tartalmazza az adatbázist.
 
 ![Szolgáltatás által kezelt transzparens adattitkosítás](./media/transparent-data-encryption-azure-sql/service-managed-tde.png)  
 
-Beállíthatja a transzparens titkosítási főkulcs, más néven a transzparens titkosítási védelmet a kiszolgáló szintjén. Transzparens adattitkosítás használata a Bring Your Own Key-támogatás és az adatbázisok védelmét a Key Vaultból egy kulccsal: a transzparens adattitkosítási beállítások a kiszolgáló alatt. 
+Beállíthatja a transzparens titkosítási főkulcs, más néven a transzparens titkosítási védelmet a kiszolgáló szintjén. Transzparens adattitkosítás használata a Bring Your Own Key-támogatás és az adatbázisok védelmét a Key Vaultból egy kulccsal: a transzparens adattitkosítási beállítások a kiszolgáló alatt.
 
-![Transzparens adattitkosítás Bring Your Own Key-támogatással](./media/transparent-data-encryption-azure-sql/tde-byok-support.png) 
+![Transzparens adattitkosítás Bring Your Own Key-támogatással](./media/transparent-data-encryption-azure-sql/tde-byok-support.png)
 
 ## <a name="manage-transparent-data-encryption-by-using-powershell"></a>Transzparens adattitkosítás kezelése a PowerShell használatával
 
-Transzparens adattitkosítás Powershellen keresztüli konfigurálásához, csatlakoznia kell az Azure tulajdonos, közreműködő vagy SQL-biztonságkezelő. 
+Transzparens adattitkosítás Powershellen keresztüli konfigurálásához, csatlakoznia kell az Azure tulajdonos, közreműködő vagy SQL-biztonságkezelő.
 
 | Parancsmag | Leírás |
 | --- | --- |
@@ -102,28 +102,28 @@ Csatlakozás az adatbázis, amely rendszergazdája vagy tagja bejelentkezés has
 | --- | --- |
 | [Az ALTER DATABASE (Azure SQL Database)](/sql/t-sql/statements/alter-database-azure-sql-database) | BEÁLLÍTVA TITKOSÍTÁSI be-/ kikapcsolási titkosítja, és mindig visszafejti az adatbázis |
 | [sys.dm_database_encryption_keys](/sql/relational-databases/system-dynamic-management-views/sys-dm-database-encryption-keys-transact-sql) |Titkosítási kulcsok egy adatbázis és a kapcsolódó adatbázis titkosítási állapotával kapcsolatos információkat ad vissza |
-| [sys.dm_pdw_nodes_database_encryption_keys](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-nodes-database-encryption-keys-transact-sql) |Információt ad vissza a titkosítási állapotát az egyes adatok adatraktár-csomópont és a társított adatbázis titkosítási kulcsai | 
+| [sys.dm_pdw_nodes_database_encryption_keys](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-nodes-database-encryption-keys-transact-sql) |Információt ad vissza a titkosítási állapotát az egyes adatok adatraktár-csomópont és a társított adatbázis titkosítási kulcsai |
 |  | |
 
 Nem lehet átváltani a transzparens titkosítási védelmet egy kulcsot a Key Vaultból Transact-SQL használatával. Használja a Powershellt vagy az Azure Portalon.
 
 ## <a name="manage-transparent-data-encryption-by-using-the-rest-api"></a>Transzparens adattitkosítás kezelése a REST API-val
- 
-A REST API-n keresztül transzparens adattitkosításának konfigurálásához, csatlakoznia kell az Azure tulajdonos, közreműködő vagy SQL-biztonságkezelő. 
+
+A REST API-n keresztül transzparens adattitkosításának konfigurálásához, csatlakoznia kell az Azure tulajdonos, közreműködő vagy SQL-biztonságkezelő.
 
 | Parancs | Leírás |
 | --- | --- |
-|[Hozzon létre vagy frissítési kiszolgáló](/rest/api/sql/servers/createorupdate)|Az Azure Active Directory-identitás hozzáadása egy SQL Server-példány (hozzáférés biztosítása a Key Vault használatos)|
-|[Hozzon létre vagy kiszolgálói kulcs frissítése](/rest/api/sql/serverkeys/createorupdate)|A Key Vault-kulcs ad hozzá egy SQL Server-példány|
-|[Kiszolgálói kulcs törlése](/rest/api/sql/serverkeys/delete)|A Key Vault-kulcs távolít el egy SQL Server-példány|
-|[Kiszolgáló-kulcsok beolvasása](/rest/api/sql/serverkeys/get)|Egy adott Key Vault-kulcs olvas be egy SQL Server-példány|
-|[Kiszolgáló kiszolgálói kulcsok listázása](/rest/api/sql/serverkeys/listbyserver)|Az SQL Server-példányt a Key Vault-kulcsok beolvasása |
-|[Létrehozás vagy frissítés titkosítási védelme](/rest/api/sql/encryptionprotectors/createorupdate)|A transzparens titkosítási védelmet egy SQL Server-példány beállítása|
-|[Titkosítási beolvasása](/rest/api/sql/encryptionprotectors/get)|A transzparens titkosítási védelme SQL Server-példány beolvasása|
-|[Lista titkosítási Protectors-kiszolgáló](/rest/api/sql/encryptionprotectors/listbyserver)|A transzparens titkosítási kulcsvédők egy SQL Server-példány beolvasása |
-|[Hozzon létre vagy a transzparens titkosítási konfiguráció frissítése](/rest/api/sql/transparentdataencryptions/createorupdate)|Engedélyezheti vagy letilthatja a-adatbázis transzparens adattitkosítás|
-|[Transzparens titkosítási konfiguráció beolvasása](/rest/api/sql/transparentdataencryptions/get)|Az adatbázis transzparens titkosítási konfiguráció beolvasása|
-|[Lista transzparens titkosítási konfiguráció eredmények](/rest/api/sql/transparentdataencryptionactivities/ListByConfiguration)|Lekéri a titkosítási eredmény adatbázis|
+|[Hozzon létre vagy frissítési kiszolgáló](https://docs.microsoft.com/rest/api/sql/servers/servers_createorupdate)|Az Azure Active Directory-identitás hozzáadása egy SQL Server-példány (hozzáférés biztosítása a Key Vault használatos)|
+|[Hozzon létre vagy kiszolgálói kulcs frissítése](https://docs.microsoft.com/rest/api/sql/serverkeys/serverkeys_createorupdate)|A Key Vault-kulcs ad hozzá egy SQL Server-példány|
+|[Kiszolgálói kulcs törlése](https://docs.microsoft.com/rest/api/sql/serverkeys/serverkeys_delete)|A Key Vault-kulcs távolít el egy SQL Server-példány|
+|[Kiszolgáló-kulcsok beolvasása](https://docs.microsoft.com/rest/api/sql/serverkeys/serverkeys_get)|Egy adott Key Vault-kulcs olvas be egy SQL Server-példány|
+|[Kiszolgáló kiszolgálói kulcsok listázása](https://docs.microsoft.com/rest/api/sql/serverkeys/serverkeys_listbyserver)|Az SQL Server-példányt a Key Vault-kulcsok beolvasása |
+|[Létrehozás vagy frissítés titkosítási védelme](https://docs.microsoft.com/rest/api/sql/encryptionprotectors/encryptionprotectors_createorupdate)|A transzparens titkosítási védelmet egy SQL Server-példány beállítása|
+|[Titkosítási beolvasása](https://docs.microsoft.com/rest/api/sql/encryptionprotectors/encryptionprotectors_get)|A transzparens titkosítási védelme SQL Server-példány beolvasása|
+|[Lista titkosítási Protectors-kiszolgáló](https://docs.microsoft.com/rest/api/sql/encryptionprotectors/encryptionprotectors_listbyserver)|A transzparens titkosítási kulcsvédők egy SQL Server-példány beolvasása |
+|[Hozzon létre vagy a transzparens titkosítási konfiguráció frissítése](https://docs.microsoft.com/rest/api/sql/transparentdataencryptions/transparentdataencryptions_createorupdate)|Engedélyezheti vagy letilthatja a-adatbázis transzparens adattitkosítás|
+|[Transzparens titkosítási konfiguráció beolvasása](https://docs.microsoft.com/rest/api/sql/transparentdataencryptions/transparentdataencryptions_get)|Az adatbázis transzparens titkosítási konfiguráció beolvasása|
+|[Lista transzparens titkosítási konfiguráció eredmények](https://docs.microsoft.com/rest/api/sql/transparentdataencryptionactivities/transparentdataencryptionactivities_listbyconfiguration)|Lekéri a titkosítási eredmény adatbázis|
 
 ## <a name="next-steps"></a>További lépések
 

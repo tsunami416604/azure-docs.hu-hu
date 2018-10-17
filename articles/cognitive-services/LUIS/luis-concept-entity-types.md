@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: 3ed10ac428b7ce2e528ccf46e34c1d394523bdec
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: e6bb0735de94d0baaac3a8504ec1811cfbfff27f
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47042448"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49353917"
 ---
 # <a name="entities-in-luis"></a>A LUIS entitások
 
@@ -93,7 +93,7 @@ A LUIS kínál számos különböző típusú entitások; előre összeállítot
 Felülvizsgálat [korlátok](luis-boundaries.md#model-boundaries) megértéséhez, hogy hány különböző típusú entitás is hozzáadhat egy modellt.
 
 ## <a name="entity-roles"></a>Entitás szerepkörök
-Entitás [szerepkörök](luis-concept-roles.md) minták csak használatban vannak. 
+Entitás [szerepkörök](luis-concept-roles.md) egyéni és előre összeállított entitások a alkalmazni, és csak a mintákat használják. 
 
 ## <a name="composite-vs-hierarchical-entities"></a>Hierarchikus entitások összetett vs
 Összetett hierarchikus alá tartozó alanyokra és egyaránt rendelkezik szülő-gyermek típusú kapcsolatokat és megtanult gép. A machine learning lehetővé teszi, hogy a LUIS tudni, hogy az entitások különböző környezetekben (szavak elrendezésének) alapján. Összetett entitások olyan rugalmasabb, mivel lehetővé teszik különböző entitástípusok gyermekeként. Egy hierarchikus entitás gyermekek csak egyszerű entitásokat is. 

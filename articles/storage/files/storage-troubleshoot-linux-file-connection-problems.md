@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 05/11/2018
 ms.author: jeffpatt
 ms.component: files
-ms.openlocfilehash: 0f99913ab252b94d475f920bd734e68ff5f3b3d3
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 31a0ffc2937f6d93a630bf6ce474d7dcf20c923f
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39525120"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49364387"
 ---
 # <a name="troubleshoot-azure-files-problems-in-linux"></a>A Linux Azure Files-problémák hibaelhárítása
 
@@ -82,7 +82,7 @@ Egyes Linux-disztribúciókon egyelőre nem támogatják a titkosítási szolgá
 
 ### <a name="solution"></a>Megoldás
 
-Linuxos SMB 3.0 titkosítás funkciót a 4.11 kernel jelent meg. Ez a funkció lehetővé teszi a helyszíni vagy más Azure-régióban az Azure-fájlmegosztás csatlakoztatása. Ez a funkció a közzététel időpontjában backported Ubuntu 17.04 és Ubuntu 16.10 volt. Ha a Linuxos SMB-ügyfél nem támogatja a titkosítást, a csatlakoztatási Azure fájlok, amely ugyanabban az adatközpontban, a File storage-fiók Azure Linux virtuális gép az SMB 2.1 használatával.
+Linuxos SMB 3.0 titkosítás funkciót a 4.11 kernel jelent meg. Ez a funkció lehetővé teszi a helyszíni vagy más Azure-régióban az Azure-fájlmegosztás csatlakoztatása. Ez a funkció a közzététel időpontjában backported Ubuntu 17.04 és Ubuntu 16.10 volt. Ha a Linuxos SMB-ügyfél nem támogatja a titkosítást, csatlakoztatása az Azure Files SMB 2.1 az Azure Linux VM, amely ugyanabban az adatközpontban a fájlként való használatával megosztása, és ellenőrizze a [biztonságos átvitelre van szükség]( https://docs.microsoft.com/en-us/azure/storage/common/storage-require-secure-transfer) beállítás le van tiltva, a Storage fiók. 
 
 <a id="slowperformance"></a>
 ## <a name="slow-performance-on-an-azure-file-share-mounted-on-a-linux-vm"></a>Lassú teljesítmény az Azure-fájlmegosztás csatlakoztatása egy Linux rendszerű virtuális gépen
@@ -149,7 +149,8 @@ A probléma gyakori okai a következők:
 - A minimális SMB/CIFS 2.1-es verziója nincs telepítve az ügyfélre.
 - SMB 3.0-titkosítás nem támogatott az ügyfélen. Az SMB 3.0 titkosítás Ubuntu 16.4 és újabb verzióra, a SUSE 12.3 és újabb verziója érhető el. Más disztribúciók kernel 4.11 és újabb verzió szükséges.
 - Csatlakozás egy tárfiókhoz TCP-porton keresztül 445-ös, amely nem támogatott kívánt.
-- Szeretne csatlakozni egy Azure virtuális gép Azure-fájlmegosztás próbálja ki, és a virtuális gép nem található, és a Storage-fiók ugyanabban a régióban.
+- Szeretne csatlakozni egy Azure virtuális gép Azure-fájlmegosztást, és a virtuális gép nem található, és a Storage-fiók ugyanabban a régióban.
+- Ha [biztonságos átvitelre van szükség]( https://docs.microsoft.com/en-us/azure/storage/common/storage-require-secure-transfer) beállítás engedélyezve van a tárfiókon, az Azure Files csak akkor engedélyezi a kapcsolatok használatával az SMB 3.0-s titkosítással.
 
 ### <a name="solution"></a>Megoldás
 

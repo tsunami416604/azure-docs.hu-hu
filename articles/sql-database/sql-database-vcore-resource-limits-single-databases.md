@@ -11,13 +11,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 09/14/2018
-ms.openlocfilehash: 9ad43ecf2aa5649e582f1aa4159352edf9c8fa5b
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.date: 10/15/2018
+ms.openlocfilehash: 12074ad28e27a249a6dc378986f014ede1cd2ab3
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48042597"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49353580"
 ---
 # <a name="azure-sql-database-vcore-based-purchasing-model-limits-for-a-single-database"></a>Az Azure SQL Database Virtuálismag-alapú vásárlási modell korlátok egy önálló adatbázis
 
@@ -28,14 +28,12 @@ DTU-alapú vásárlási modell korlátok egy logikai kiszolgálón az önálló 
 > [!IMPORTANT]
 > Bizonyos körülmények között szükség lehet az adatbázis nem használt terület felszabadítását zsugorítani. További információkért lásd: [kezelése az Azure SQL Database területe](sql-database-file-space-management.md).
 
+A szolgáltatási rétegben, a számítási méretét és a egy önálló adatbázis a tárolókapacitás is megadhatja a [az Azure portal](sql-database-single-databases-manage.md#azure-portal-manage-logical-servers-and-databases), [Transact-SQL](sql-database-single-databases-manage.md#transact-sql-manage-logical-servers-and-databases), [PowerShell](sql-database-single-databases-manage.md#powershell-manage-logical-servers-and-databases), a [ Az Azure CLI](sql-database-single-databases-manage.md#azure-cli-manage-logical-servers-and-databases), vagy a [REST API-val](sql-database-single-databases-manage.md#rest-api-manage-logical-servers-and-databases).
 
-## <a name="single-database-storage-sizes-and-compute-sizes"></a>Önálló adatbázis: tárterületet és számítási méretek
+## <a name="general-purpose-service-tier-storage-sizes-and-compute-sizes"></a>Általános célú szolgáltatásszint: tárterületet és számítási méretek
 
-Az önálló adatbázisok számára az alábbi táblázatok egy önálló adatbázis rendelkezésre álló erőforrások megjelenítése az egyes szolgáltatásszinteken, és számítási mérete. A szolgáltatási rétegben, a számítási méretét és a egy önálló adatbázis a tárolókapacitás is megadhatja a [az Azure portal](sql-database-single-databases-manage.md#azure-portal-manage-logical-servers-and-databases), [Transact-SQL](sql-database-single-databases-manage.md#transact-sql-manage-logical-servers-and-databases), [PowerShell](sql-database-single-databases-manage.md#powershell-manage-logical-servers-and-databases), a [ Az Azure CLI](sql-database-single-databases-manage.md#azure-cli-manage-logical-servers-and-databases), vagy a [REST API-val](sql-database-single-databases-manage.md#rest-api-manage-logical-servers-and-databases).
+### <a name="generation-4-compute-platform"></a>4. generációs számítási platform
 
-### <a name="general-purpose-service-tier"></a>Általános célú szolgáltatásszint
-
-#### <a name="generation-4-compute-platform"></a>4. generációs számítási platform
 |Számítási mérete|GP_Gen4_1|GP_Gen4_2|GP_Gen4_4|GP_Gen4_8|GP_Gen4_16|GP_Gen4_24
 |:--- | --: |--: |--: |--: |--: |--: |
 |H/W generálása|4|4|4|4|4|4|
@@ -57,7 +55,8 @@ Az önálló adatbázisok számára az alábbi táblázatok egy önálló adatb�
 |Biztonsági mentési tárterület|1 X-adatbázis mérete|1 X-adatbázis mérete|1 X-adatbázis mérete|1 X-adatbázis mérete|1 X-adatbázis mérete|1 X-adatbázis mérete|
 |||
 
-#### <a name="generation-5-compute-platform"></a>5. generáció számítási platform
+### <a name="generation-5-compute-platform"></a>5. generáció számítási platform
+
 |Számítási mérete|GP_Gen5_2|GP_Gen5_4|GP_Gen5_8|GP_Gen5_16|GP_Gen5_24|GP_Gen5_32|GP_Gen5_40| GP_Gen5_80|
 |:--- | --: |--: |--: |--: |---: | --: |--: |--: |--: |
 |H/W generálása|5|5|5|5|5|5|5|
@@ -79,9 +78,10 @@ Az önálló adatbázisok számára az alábbi táblázatok egy önálló adatb�
 |Biztonsági mentési tárterület|1 X-adatbázis mérete|1 X-adatbázis mérete|1 X-adatbázis mérete|1 X-adatbázis mérete|1 X-adatbázis mérete|1 X-adatbázis mérete|1 X-adatbázis mérete|1 X-adatbázis mérete|
 |||
 
-### <a name="business-critical-service-tier"></a>Üzleti kritikus fontosságú szolgáltatási szint
+## <a name="business-critical-service-tier-storage-sizes-and-compute-sizes"></a>Üzleti kritikus fontosságú szolgáltatási szint: tárterületet és számítási méretek
 
-#### <a name="generation-4-compute-platform"></a>4. generációs számítási platform
+### <a name="generation-4-compute-platform"></a>4. generációs számítási platform
+
 |Számítási mérete|BC_Gen4_1|BC_Gen4_2|BC_Gen4_4|BC_Gen4_8|BC_Gen4_16|BC_Gen4_24|
 |:--- | --: |--: |--: |--: |--: |--: |
 |H/W generálása|4|4|4|4|4|4|
@@ -103,7 +103,8 @@ Az önálló adatbázisok számára az alábbi táblázatok egy önálló adatb�
 |Biztonsági mentési tárterület|1 X-adatbázis mérete|1 X-adatbázis mérete|1 X-adatbázis mérete|1 X-adatbázis mérete|1 X-adatbázis mérete|1 X-adatbázis mérete|
 |||
 
-#### <a name="generation-5-compute-platform"></a>5. generáció számítási platform
+### <a name="generation-5-compute-platform"></a>5. generáció számítási platform
+
 |Számítási mérete|BC_Gen5_2|BC_Gen5_4|BC_Gen5_8|BC_Gen5_16|BC_Gen5_24|BC_Gen5_32|BC_Gen5_40|BC_Gen5_80|
 |:--- | --: |--: |--: |--: |---: | --: |--: |--: |--: |--: |--: |--: |--: |
 |H/W generálása|5|5|5|5|5|5|5|5|
@@ -125,9 +126,10 @@ Az önálló adatbázisok számára az alábbi táblázatok egy önálló adatb�
 |Biztonsági mentési tárterület|1 X-adatbázis mérete|1 X-adatbázis mérete|1 X-adatbázis mérete|1 X-adatbázis mérete|1 X-adatbázis mérete|1 X-adatbázis mérete|1 X-adatbázis mérete|1 X-adatbázis mérete|
 |||
 
-### <a name="hyperscale-service-tier-preview"></a>Nagy kapacitású szolgáltatási szint (előzetes verzió)
+## <a name="hyperscale-service-tier-preview"></a>Nagy kapacitású szolgáltatási szint (előzetes verzió)
 
-#### <a name="generation-4-compute-platform"></a>4. generációs számítási platform
+### <a name="generation-4-compute-platform-storage-sizes-and-compute-sizes"></a>4. generációs platform számítási: tárterületet és számítási méretek
+
 |Teljesítményszint|HS_Gen4_1|HS_Gen4_2|HS_Gen4_4|HS_Gen4_8|HS_Gen4_16|HS_Gen4_24|
 |:--- | --: |--: |--: |--: |--: |--: |--: |
 |H/W generálása|4|4|4|4|4|4|
@@ -148,7 +150,9 @@ Az önálló adatbázisok számára az alábbi táblázatok egy önálló adatb�
 |Felskálázás olvasása|Igen|Igen|Igen|Igen|Igen|Igen|
 |Biztonsági mentési tárterület|7|7|7|7|7|7|
 |||
+
 ### <a name="generation-5-compute-platform"></a>5. generáció számítási platform
+
 |Teljesítményszint|HS_Gen5_2|HS_Gen5_4|HS_Gen5_8|HS_Gen5_16|HS_Gen5_24|HS_Gen5_32|HS_Gen5_40|HS_Gen5_80|
 |:--- | --: |--: |--: |--: |---: | --: |--: |--: |--: |--: |--: |--: |--: |
 |H/W generálása|5|5|5|5|5|5|5|5|

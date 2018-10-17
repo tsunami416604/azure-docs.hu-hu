@@ -13,12 +13,12 @@ ms.workload: identity
 ms.date: 09/27/2018
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: ee2a72a65902347a2e58f79d0f621c9d08178104
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: d9cf46a1fd28985d9ca98d173bbef17380b7de21
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47410306"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49354393"
 ---
 # <a name="azure-resource-manager-resource-provider-operations"></a>Az Azure Resource Manager erőforrás-szolgáltatói műveletek
 
@@ -3346,8 +3346,6 @@ Az erőforrás-szolgáltatói műveletek mindig folyamatosan fejlődik. A legúj
 > | Műveletek | Microsoft.Network/loadBalancers/backendAddressPools/join/action | A load balancer háttércímkészlet csatlakozik |
 > | Műveletek | Microsoft.Network/loadBalancers/backendAddressPools/read | Lekérdezi egy load balancer háttérrendszer cím készlet definíciója |
 > | Műveletek | Microsoft.Network/loadBalancers/delete | Terheléselosztó törlése |
-> | Műveletek | Microsoft.Network/loadBalancers/frontendIPConfigurations/join/action | A terheléselosztó előtérbeli IP-konfiguráció csatlakozik. |
-> | Műveletek | Microsoft.Network/loadBalancers/frontendIPConfigurations/read | Egy terhelés terheléselosztó előtérbeli IP-konfiguráció definíciójának beolvasása |
 > | Műveletek | Microsoft.Network/loadBalancers/inboundNatPools/join/action | Csatlakozik a terheléselosztó bejövő nat-készlet |
 > | Műveletek | Microsoft.Network/loadBalancers/inboundNatPools/read | Lekéri a terheléselosztó bejövő nat-készlet definíciója |
 > | Műveletek | Microsoft.Network/loadBalancers/inboundNatRules/delete | Törli a terheléselosztó bejövő nat-szabály |
@@ -3477,10 +3475,6 @@ Az erőforrás-szolgáltatói műveletek mindig folyamatosan fejlődik. A legúj
 > | Műveletek | Microsoft.Network/publicIPAddresses/dnsAliases/read | Egy nyilvános Ip-cím DNS-Alias erőforrás beolvasása |
 > | Műveletek | Microsoft.Network/publicIPAddresses/dnsAliases/write | Létrehoz egy nyilvános Ip-cím DNS-Alias erőforrást |
 > | Műveletek | Microsoft.Network/publicIPAddresses/join/action | Nyilvános ip-címmel csatlakozik |
-> | Műveletek | Microsoft.Network/publicIPAddresses/loadBalancerPools/delete | Egy nyilvános IP-címet a terheléselosztó háttérkészletének törlése |
-> | Műveletek | Microsoft.Network/publicIPAddresses/loadBalancerPools/join/action | Egy nyilvános IP-címet a terheléselosztó háttérkészletének csatlakozik |
-> | Műveletek | Microsoft.Network/publicIPAddresses/loadBalancerPools/read | Lekérdezi egy nyilvános IP-cím load balancer háttérrendszer készlet definíciója |
-> | Műveletek | Microsoft.Network/publicIPAddresses/loadBalancerPools/write | Egy nyilvános IP-címet a terheléselosztó háttérkészletének létrehoz vagy frissít egy meglévő nyilvános IP-címet a terheléselosztó háttérkészletének |
 > | Műveletek | Microsoft.Network/publicIPAddresses/providers/Microsoft.Insights/diagnosticSettings/read | A nyilvános IP-cím diagnosztikai beállításainak beolvasása |
 > | Műveletek | Microsoft.Network/publicIPAddresses/providers/Microsoft.Insights/diagnosticSettings/write | Hozzon létre vagy nyilvános IP-cím a diagnosztikai beállítások frissítése |
 > | Műveletek | Microsoft.Network/publicIPAddresses/providers/Microsoft.Insights/logDefinitions/read | A nyilvános IP-cím naplódefinícióinak beolvasása |

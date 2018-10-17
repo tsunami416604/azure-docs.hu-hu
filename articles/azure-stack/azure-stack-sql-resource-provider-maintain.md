@@ -11,19 +11,19 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/20/2018
+ms.date: 10/16/2018
 ms.author: jeffgilb
-ms.reviewer: jeffgo
-ms.openlocfilehash: ad899739dab1dc51d64368d2136ab87f73f6f3a0
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.reviewer: quying
+ms.openlocfilehash: 360661402289ab9b06eb01be447dc98942c93302
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "36300910"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49364095"
 ---
 # <a name="sql-resource-provider-maintenance-operations"></a>SQL erőforrás-szolgáltatói karbantartási műveletek
 
-Az erőforrás-szolgáltató SQL zárolt virtuális gépen fut. Ahhoz, hogy a karbantartási műveleteket, frissíteni szeretné a virtuális gép biztonsági. Ehhez használja a legalacsonyabb jogosultsági szint elvének használható [PowerShell csak Enough Administration (JEA)](https://docs.microsoft.com/en-us/powershell/jea/overview) végpont *DBAdapterMaintenance*. Az erőforrás-szolgáltató telepítési csomag tartalmaz egy parancsfájlt, ehhez a művelethez.
+Az erőforrás-szolgáltató SQL zárolt virtuális gépen fut. Ahhoz, hogy a karbantartási műveleteket, frissíteni szeretné a virtuális gép biztonsági. Ehhez használja a legalacsonyabb jogosultsági szint elvének használható [PowerShell csak Enough Administration (JEA)](https://docs.microsoft.com/powershell/jea/overview) végpont *DBAdapterMaintenance*. Az erőforrás-szolgáltató telepítési csomag tartalmaz egy parancsfájlt, ehhez a művelethez.
 
 ## <a name="patching-and-updating"></a>Javításait és frissítését
 
@@ -53,9 +53,9 @@ A beállítások módosításához válassza **Tallózás** &gt; **felügyeleti 
 
 ## <a name="secrets-rotation"></a>Titkos kódok rotációja
 
-*Ezek az utasítások csak az Azure Stack integrált rendszerek verzió 1804 és később vonatkoznak. Ne próbálja az 1804-előtti Azure Stack-verziók a titkos kulcsok rotálására.*
+*Ezek az utasítások csak az Azure Stack integrált rendszerek vonatkoznak.*
 
-Ha az SQL- és MySQL erőforrás-szolgáltatók használata az Azure Stack integrált rendszerek, a következő infrastruktúra (üzembe helyezés) titkos kulcsok elfordításával:
+Ha az SQL- és MySQL erőforrás-szolgáltatók használata az Azure Stack integrált rendszerek, az Azure Stack – operátor felelős a következő erőforrás szolgáltató infrastruktúra titkos győződjön meg arról, hogy azok ne járjanak le az elforgatást:
 
 - Külső SSL-tanúsítvány [üzembe helyezés során](azure-stack-pki-certs.md).
 - A resource provider virtuális gép helyi rendszergazdai fiók jelszavának üzembe helyezés során.

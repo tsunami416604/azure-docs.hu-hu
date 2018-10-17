@@ -8,12 +8,12 @@ services: digital-twins
 ms.topic: conceptual
 ms.date: 10/10/2018
 ms.author: adgera
-ms.openlocfilehash: 412e0d42744c9defa3fef6b3ae9643166e6c3b5c
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: 28eb8b5dc0f75b5e031070803d35c8a1ceb1f000
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49324143"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49364342"
 ---
 # <a name="security-best-practices"></a>Ajánlott biztonsági eljárások
 
@@ -54,7 +54,7 @@ Figyelheti a kiugró értékek, a fenyegetések vagy kívül esne a szokásos m�
 Az Azure digitális Twins az Azure Active Directory felhasználók hitelesítéséhez és alkalmazások védelmét. Az Azure Active Directory hitelesítési modern architektúrák, mindegyiket alapján szabványos protokollok, mint például az OAuth 2.0 vagy OpenID Connect többféle támogatja. Biztonságos IoT tárhely az Azure Active Directory néhány kulcsfontosságú eljárások a következők:
 
 > [!div class="checklist"]
-> * Azure Active Directory-alkalmazás titkos kódok és kulcsok biztonságos helyen Store például [Key Vault](https://azure.microsoft.com/en-us/services/key-vault/).
+> * Azure Active Directory-alkalmazás titkos kódok és kulcsok biztonságos helyen Store például [Key Vault](https://azure.microsoft.com/services/key-vault/).
 > * Egy megbízható által kibocsátott tanúsítványt használja [hitelesítésszolgáltatók](https://docs.microsoft.com/azure/active-directory/authentication/active-directory-certificate-based-authentication-get-started) helyett Alkalmazáskulcs hitelesítéséhez.
 > * OAuth 2.0 hozzáférési jogkivonat hatóköre korlátozza.
 > * Mennyi ideig jogkivonat érvényességét. Ellenőrizze, és hogy-e a jogkivonat érvényes marad.

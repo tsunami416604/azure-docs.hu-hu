@@ -2,18 +2,18 @@
 title: VMware-replikáció az Azure Site Recovery és a Cloud Solution Provider (CSP) program több-bérlős környezet beállítása |} A Microsoft Docs
 description: Ismerteti, hogyan hozhat létre és a CSP programban bérlői előfizetések kezelése és üzembe helyezése az Azure Site Recovery egy több-bérlős beállítása
 services: site-recovery
-author: mayanknayar
+author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
-ms.topic: article
-ms.date: 07/06/2018
-ms.author: manayar
-ms.openlocfilehash: d384a77054cdcab0305b9e6d3fe5bb824e49bb16
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.topic: conceptual
+ms.date: 10/16/2018
+ms.author: mayg
+ms.openlocfilehash: bd356a7e4285f8663b91da1f200cc2ae3c266bf3
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37916802"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49354121"
 ---
 # <a name="set-up-vmware-replication-in-a-multi-tenancy-environment-with-the-cloud-solution-provider-csp-program"></a>A Cloud Solution Provider (CSP) program, több-bérlős környezetben VMware-replikálás beállítása
 
