@@ -1,229 +1,235 @@
+items:
 - name: A Data Factory V1 dokumentációja
-  href: null
 - name: Váltás az aktuális verzió dokumentációjára
   href: ../introduction.md
 - name: Áttekintés
   items:
-    - name: Az Azure Data Factory bemutatása
-      href: data-factory-introduction.md
-    - name: Alapelvek
-      items:
-        - name: Folyamatok és tevékenységek
-          href: data-factory-create-pipelines.md
-        - name: Adathalmazok
-          href: data-factory-create-datasets.md
-        - name: Ütemezés és végrehajtás
-          href: data-factory-scheduling-and-execution.md
+  - name: Az Azure Data Factory bemutatása
+    href: data-factory-introduction.md
+  - name: Alapelvek
+    items:
+    - name: Folyamatok és tevékenységek
+      href: data-factory-create-pipelines.md
+    - name: Adathalmazok
+      href: data-factory-create-datasets.md
+    - name: Ütemezés és végrehajtás
+      href: data-factory-scheduling-and-execution.md
 - name: Első lépések
-  expanded: true
   items:
-    - name: Folyamat létrehozása adatmásoláshoz
-      href: data-factory-copy-data-from-azure-blob-storage-to-sql-database.md
-      items:
-        - name: Másolás varázsló
-          href: data-factory-copy-data-wizard-tutorial.md
-        - name: Azure Portal
-          href: data-factory-copy-activity-tutorial-using-azure-portal.md
-        - name: Visual Studio
-          href: data-factory-copy-activity-tutorial-using-visual-studio.md
-        - name: Azure PowerShell
-          href: data-factory-copy-activity-tutorial-using-powershell.md
-        - name: REST API
-          href: data-factory-copy-activity-tutorial-using-rest-api.md
-        - name: .NET API
-          href: data-factory-copy-activity-tutorial-using-dotnet-api.md
-    - name: Folyamat létrehozása adatok átalakításához
-      href: data-factory-build-your-first-pipeline.md
-      items:
-        - name: Azure Portal
-          href: data-factory-build-your-first-pipeline-using-editor.md
-        - name: Visual Studio
-          href: data-factory-build-your-first-pipeline-using-vs.md
-        - name: Azure PowerShell
-          href: data-factory-build-your-first-pipeline-using-powershell.md
-        - name: Azure Resource Manager-sablon
-          href: data-factory-build-your-first-pipeline-using-arm.md
-        - name: REST API
-          href: data-factory-build-your-first-pipeline-using-rest-api.md
-    - name: Adatok áthelyezése a helyszíni rendszer és a felhő között
-      href: data-factory-move-data-between-onprem-and-cloud.md
-    - name: GYIK
-      href: data-factory-faq.md
+  - name: Folyamat létrehozása adatmásoláshoz
+    href: data-factory-copy-data-from-azure-blob-storage-to-sql-database.md
+    items:
+    - name: Másolás varázsló
+      href: data-factory-copy-data-wizard-tutorial.md
+    - name: Azure Portal
+      href: data-factory-copy-activity-tutorial-using-azure-portal.md
+    - name: Visual Studio
+      href: data-factory-copy-activity-tutorial-using-visual-studio.md
+    - name: Azure PowerShell
+      href: data-factory-copy-activity-tutorial-using-powershell.md
+    - name: REST API
+      href: data-factory-copy-activity-tutorial-using-rest-api.md
+    - name: .NET API
+      href: data-factory-copy-activity-tutorial-using-dotnet-api.md
+  - name: Folyamat létrehozása adatok átalakításához
+    href: data-factory-build-your-first-pipeline.md
+    items:
+    - name: Azure Portal
+      href: data-factory-build-your-first-pipeline-using-editor.md
+    - name: Visual Studio
+      href: data-factory-build-your-first-pipeline-using-vs.md
+    - name: Azure PowerShell
+      href: data-factory-build-your-first-pipeline-using-powershell.md
+    - name: Azure Resource Manager-sablon
+      href: data-factory-build-your-first-pipeline-using-arm.md
+    - name: REST API
+      href: data-factory-build-your-first-pipeline-using-rest-api.md
+  - name: Adatok áthelyezése a helyszíni rendszer és a felhő között
+    href: data-factory-move-data-between-onprem-and-cloud.md
+  - name: GYIK
+    href: data-factory-faq.md
+  expanded: true
 - name: Útmutató
   items:
-    - name: Adatok áthelyezése
+  - name: Adatok áthelyezése
+    items:
+    - name: Másolási tevékenység áttekintése
+      href: data-factory-data-movement-activities.md
+    - name: A Data Factory másolási varázslója
+      href: data-factory-azure-copy-wizard.md
       items:
-        - name: Másolási tevékenység áttekintése
-          href: data-factory-data-movement-activities.md
-        - name: A Data Factory másolási varázslója
-          href: data-factory-azure-copy-wizard.md
-          items:
-            - name: 1 TB adat betöltése 15 perc alatt
-              href: data-factory-load-sql-data-warehouse.md
-        - name: Teljesítmény- és finomhangolási útmutató
-          href: data-factory-copy-activity-performance.md
-        - name: Hibatűrés
-          href: data-factory-copy-activity-fault-tolerance.md
-        - name: Biztonsági szempontok
-          href: data-factory-data-movement-security-considerations.md
-        - name: Összekötők
-          items:
-            - name: Amazon Redshift
-              href: data-factory-amazon-redshift-connector.md
-            - name: Amazon S3
-              href: data-factory-amazon-simple-storage-service-connector.md
-            - name: Azure Blob Storage
-              href: data-factory-azure-blob-connector.md
-            - name: Azure Cosmos DB
-              href: data-factory-azure-documentdb-connector.md
-            - name: 1. generációs Azure Data Lake Storage
-              href: data-factory-azure-datalake-connector.md
-            - name: Azure Search
-              href: data-factory-azure-search-connector.md
-            - name: Azure SQL Database
-              href: data-factory-azure-sql-connector.md
-            - name: Azure SQL Data Warehouse
-              href: data-factory-azure-sql-data-warehouse-connector.md
-            - name: Azure Table Storage
-              href: data-factory-azure-table-connector.md
-            - name: Cassandra
-              href: data-factory-onprem-cassandra-connector.md
-            - name: DB2
-              href: data-factory-onprem-db2-connector.md
-            - name: Fájlrendszer
-              href: data-factory-onprem-file-system-connector.md
-            - name: FTP
-              href: data-factory-ftp-connector.md
-            - name: HDFS
-              href: data-factory-hdfs-connector.md
-            - name: HTTP
-              href: data-factory-http-connector.md
-            - name: MongoDB
-              href: data-factory-on-premises-mongodb-connector.md
-            - name: MySQL
-              href: data-factory-onprem-mysql-connector.md
-            - name: OData
-              href: data-factory-odata-connector.md
-            - name: ODBC
-              href: data-factory-odbc-connector.md
-            - name: Oracle
-              href: data-factory-onprem-oracle-connector.md
-            - name: PostgreSQL
-              href: data-factory-onprem-postgresql-connector.md
-            - name: Salesforce
-              href: data-factory-salesforce-connector.md
-            - name: SAP Business Warehouse
-              href: data-factory-sap-business-warehouse-connector.md
-            - name: SAP HANA
-              href: data-factory-sap-hana-connector.md
-            - name: SFTP
-              href: data-factory-sftp-connector.md
-            - name: SQL Server
-              href: data-factory-sqlserver-connector.md
-            - name: Sybase
-              href: data-factory-onprem-sybase-connector.md
-            - name: Teradata
-              href: data-factory-onprem-teradata-connector.md
-            - name: Webtábla
-              href: data-factory-web-table-connector.md
-        - name: Adatkezelési átjáró
-          href: data-factory-data-management-gateway.md
-    - name: Adatok átalakítása
-      href: data-factory-data-transformation-activities.md
+      - name: 1 TB adat betöltése 15 perc alatt
+        href: data-factory-load-sql-data-warehouse.md
+    - name: Teljesítmény- és finomhangolási útmutató
+      href: data-factory-copy-activity-performance.md
+    - name: Hibatűrés
+      href: data-factory-copy-activity-fault-tolerance.md
+    - name: Biztonsági szempontok
+      href: data-factory-data-movement-security-considerations.md
+    - name: Összekötők
       items:
-        - name: HDInsight Hive-tevékenység
-          href: data-factory-hive-activity.md
-        - name: HDInsight Pig-tevékenység
-          href: data-factory-pig-activity.md
-        - name: HDInsight MapReduce-tevékenység
-          href: data-factory-map-reduce.md
-        - name: HDInsight Streaming-tevékenység
-          href: data-factory-hadoop-streaming-activity.md
-        - name: HDInsight Spark-tevékenység
-          href: data-factory-spark.md
-        - name: Machine Learning kötegelt végrehajtási tevékenység
-          href: data-factory-azure-ml-batch-execution-activity.md
-        - name: Machine Learning Update-erőforrástevékenység
-          href: data-factory-azure-ml-update-resource-activity.md
-        - name: Tárolt eljárási tevékenység
-          href: data-factory-stored-proc-activity.md
-        - name: Data Lake Analytics U-SQL-tevékenység
-          href: data-factory-usql-activity.md
-        - name: .NET egyéni tevékenység
-          href: data-factory-use-custom-activities.md
-        - name: R-szkriptek meghívása
-          href: 'https://github.com/Azure/Azure-DataFactory/tree/master/Samples/RunRScriptUsingADFSample'
-        - name: Modellek újrafeldolgozása az Azure Analysis Servicesben
-          href: 'https://github.com/Azure/Azure-DataFactory/tree/master/Samples/AzureAnalysisServicesProcessSample'
-        - name: Társított szolgáltatások számítása
-          href: data-factory-compute-linked-services.md
-    - name: Fejlesztés
-      items:
-        - name: Azure Resource Manager-sablon
-          href: data-factory-how-to-use-resource-manager-templates.md
-        - name: Példák
-          href: data-factory-samples.md
-        - name: Függvények és rendszerváltozók
-          href: data-factory-functions-variables.md
-        - name: Elnevezési szabályok
-          href: data-factory-naming-rules.md
-        - name: .NET API-változásnapló
-          href: data-factory-api-change-log.md
-    - name: Megfigyelés és kezelés
-      items:
-        - name: Figyelési és felügyeleti alkalmazás
-          href: data-factory-monitor-manage-app.md
-        - name: Azure Data Factory-folyamatok
-          href: data-factory-monitor-manage-pipelines.md
-        - name: A .NET SDK használata
-          href: data-factory-create-data-factories-programmatically.md
-        - name: Data Factory-hibák elhárítása
-          href: data-factory-troubleshoot.md
-        - name: Az adatkezelési átjáró használata közben felmerülő hibák elhárítása
-          href: data-factory-troubleshoot-gateway-issues.md
-    - name: SSIS-csomagok meghívása tárolt eljárási tevékenységgel
-      href: how-to-invoke-ssis-package-stored-procedure-activity.md
+      - name: Amazon Redshift
+        href: data-factory-amazon-redshift-connector.md
+      - name: Amazon S3
+        href: data-factory-amazon-simple-storage-service-connector.md
+      - name: Azure Blob Storage
+        href: data-factory-azure-blob-connector.md
+      - name: Azure Cosmos DB
+        href: data-factory-azure-documentdb-connector.md
+      - name: 1. generációs Azure Data Lake Storage
+        href: data-factory-azure-datalake-connector.md
+      - name: Azure Search
+        href: data-factory-azure-search-connector.md
+      - name: Azure SQL Database
+        href: data-factory-azure-sql-connector.md
+      - name: Azure SQL Data Warehouse
+        href: data-factory-azure-sql-data-warehouse-connector.md
+      - name: Azure Table Storage
+        href: data-factory-azure-table-connector.md
+      - name: Cassandra
+        href: data-factory-onprem-cassandra-connector.md
+      - name: DB2
+        href: data-factory-onprem-db2-connector.md
+      - name: Fájlrendszer
+        href: data-factory-onprem-file-system-connector.md
+      - name: FTP
+        href: data-factory-ftp-connector.md
+      - name: HDFS
+        href: data-factory-hdfs-connector.md
+      - name: HTTP
+        href: data-factory-http-connector.md
+      - name: MongoDB
+        href: data-factory-on-premises-mongodb-connector.md
+      - name: MySQL
+        href: data-factory-onprem-mysql-connector.md
+      - name: OData
+        href: data-factory-odata-connector.md
+      - name: ODBC
+        href: data-factory-odbc-connector.md
+      - name: Oracle
+        href: data-factory-onprem-oracle-connector.md
+      - name: PostgreSQL
+        href: data-factory-onprem-postgresql-connector.md
+      - name: Salesforce
+        href: data-factory-salesforce-connector.md
+      - name: SAP Business Warehouse
+        href: data-factory-sap-business-warehouse-connector.md
+      - name: SAP HANA
+        href: data-factory-sap-hana-connector.md
+      - name: SFTP
+        href: data-factory-sftp-connector.md
+      - name: SQL Server
+        href: data-factory-sqlserver-connector.md
+      - name: Sybase
+        href: data-factory-onprem-sybase-connector.md
+      - name: Teradata
+        href: data-factory-onprem-teradata-connector.md
+      - name: Webtábla
+        href: data-factory-web-table-connector.md
+    - name: Adatkezelési átjáró
+      href: data-factory-data-management-gateway.md
+  - name: Adatok átalakítása
+    href: data-factory-data-transformation-activities.md
+    items:
+    - name: HDInsight Hive-tevékenység
+      href: data-factory-hive-activity.md
+    - name: HDInsight Pig-tevékenység
+      href: data-factory-pig-activity.md
+    - name: HDInsight MapReduce-tevékenység
+      href: data-factory-map-reduce.md
+    - name: HDInsight Streaming-tevékenység
+      href: data-factory-hadoop-streaming-activity.md
+    - name: HDInsight Spark-tevékenység
+      href: data-factory-spark.md
+    - name: Machine Learning kötegelt végrehajtási tevékenység
+      href: data-factory-azure-ml-batch-execution-activity.md
+    - name: Machine Learning Update-erőforrástevékenység
+      href: data-factory-azure-ml-update-resource-activity.md
+    - name: Tárolt eljárási tevékenység
+      href: data-factory-stored-proc-activity.md
+    - name: Data Lake Analytics U-SQL-tevékenység
+      href: data-factory-usql-activity.md
+    - name: .NET egyéni tevékenység
+      href: data-factory-use-custom-activities.md
+    - name: R-szkriptek meghívása
+      href: https://github.com/Azure/Azure-DataFactory/tree/master/Samples/RunRScriptUsingADFSample
+    - name: Modellek újrafeldolgozása az Azure Analysis Servicesben
+      href: https://github.com/Azure/Azure-DataFactory/tree/master/Samples/AzureAnalysisServicesProcessSample
+    - name: Társított szolgáltatások számítása
+      href: data-factory-compute-linked-services.md
+  - name: Fejlesztés
+    items:
+    - name: Azure Resource Manager-sablon
+      href: data-factory-how-to-use-resource-manager-templates.md
+    - name: Példák
+      href: data-factory-samples.md
+    - name: Függvények és rendszerváltozók
+      href: data-factory-functions-variables.md
+    - name: Elnevezési szabályok
+      href: data-factory-naming-rules.md
+    - name: .NET API-változásnapló
+      href: data-factory-api-change-log.md
+  - name: Megfigyelés és kezelés
+    items:
+    - name: Figyelési és felügyeleti alkalmazás
+      href: data-factory-monitor-manage-app.md
+    - name: Azure Data Factory-folyamatok
+      href: data-factory-monitor-manage-pipelines.md
+    - name: A .NET SDK használata
+      href: data-factory-create-data-factories-programmatically.md
+    - name: Data Factory-hibák elhárítása
+      href: data-factory-troubleshoot.md
+    - name: Az adatkezelési átjáró használata közben felmerülő hibák elhárítása
+      href: data-factory-troubleshoot-gateway-issues.md
+  - name: SSIS-csomagok meghívása tárolt eljárási tevékenységgel
+    href: how-to-invoke-ssis-package-stored-procedure-activity.md
 - name: Referencia
   items:
-    - name: Kódminták
-      href: 'https://azure.microsoft.com/en-us/resources/samples/?service=data-factory'
-    - name: Azure PowerShell
-      href: /powershell/module/azurerm.datafactories
-    - name: .NET
-      href: /dotnet/api/microsoft.azure.management.datafactories.models
-    - name: REST
-      href: /rest/api/datafactory/
-    - name: JSON
-      href: data-factory-json-scripting-reference.md
+  - name: Kódminták
+    href: https://azure.microsoft.com/resources/samples/?service=data-factory
+  - name: Azure PowerShell
+    href: /powershell/module/azurerm.datafactories
+  - name: .NET
+    href: /dotnet/api/microsoft.azure.management.datafactories.models
+  - name: REST
+    href: /rest/api/datafactory/
+  - name: JSON
+    href: data-factory-json-scripting-reference.md
 - name: További források
   items:
-    - name: Azure-ütemterv
-      href: 'https://azure.microsoft.com/roadmap/'
-    - name: Esettanulmányok
-      href: data-factory-customer-case-studies.md
-    - name: Képzési terv
-      href: 'https://azure.microsoft.com/documentation/learning-paths/data-factory'
-    - name: MSDN fórum
-      href: 'https://social.msdn.microsoft.com/Forums/home?forum=AzureDataFactory'
-    - name: Díjszabás
-      href: 'https://azure.microsoft.com/pricing/details/data-factory/'
-    - name: Díjkalkulátor
-      href: 'https://azure.microsoft.com/pricing/calculator/'
-    - name: Az adatkezelési átjáró kibocsátási megjegyzései
-      href: data-factory-gateway-release-notes.md
-    - name: Szolgáltatás igénylése
-      href: 'https://feedback.azure.com/forums/270578-azure-data-factory'
-    - name: Szolgáltatási hírek
-      href: 'https://azure.microsoft.com/updates/?product=data-factory'
-    - name: Stack Overflow
-      href: 'http://stackoverflow.com/questions/tagged/azure-data-factory'
-    - name: Videók
-      href: 'https://azure.microsoft.com/documentation/videos/index/?services=data-factory'
-    - name: Nagyméretű adatkészletek feldolgozása a Data Factory és a Batch használatával
-      href: data-factory-data-processing-using-batch.md
-    - name: esettanulmányok
-      items:
-        - name: Ügyfélprofil készítése
-          href: data-factory-customer-profiling-usecase.md
-        - name: Termékekre vonatkozó javaslatok
-          href: data-factory-product-reco-usecase.md
+  - name: Azure-ütemterv
+    href: https://azure.microsoft.com/roadmap/
+  - name: Esettanulmányok
+    href: data-factory-customer-case-studies.md
+  - name: Képzési terv
+    href: https://azure.microsoft.com/documentation/learning-paths/data-factory
+  - name: MSDN fórum
+    href: https://social.msdn.microsoft.com/Forums/home?forum=AzureDataFactory
+  - name: Díjszabás
+    href: https://azure.microsoft.com/pricing/details/data-factory/
+  - name: Díjkalkulátor
+    href: https://azure.microsoft.com/pricing/calculator/
+  - name: Az adatkezelési átjáró kibocsátási megjegyzései
+    href: data-factory-gateway-release-notes.md
+  - name: Szolgáltatás igénylése
+    href: https://feedback.azure.com/forums/270578-azure-data-factory
+  - name: Szolgáltatási hírek
+    href: https://azure.microsoft.com/updates/?product=data-factory
+  - name: Stack Overflow
+    href: http://stackoverflow.com/questions/tagged/azure-data-factory
+  - name: Videók
+    href: https://azure.microsoft.com/documentation/videos/index/?services=data-factory
+  - name: Nagyméretű adatkészletek feldolgozása a Data Factory és a Batch használatával
+    href: data-factory-data-processing-using-batch.md
+  - name: esettanulmányok
+    items:
+    - name: Ügyfélprofil készítése
+      href: data-factory-customer-profiling-usecase.md
+    - name: Termékekre vonatkozó javaslatok
+      href: data-factory-product-reco-usecase.md
+ms.openlocfilehash: 5f2c249f5e822b26d7e1cd5a4fe0c340feb108bf
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49363037"

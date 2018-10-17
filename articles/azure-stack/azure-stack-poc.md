@@ -12,20 +12,20 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 06/04/2018
+ms.date: 10/15/2018
 ms.author: jeffgilb
 ms.reviewer: unknown
 ms.custom: mvc
-ms.openlocfilehash: 848df59b01cc0c03b9a5f3dae2644d469c8651bb
-ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
+ms.openlocfilehash: b2b81938eafe104369e52e72f9958e2adf2cca6f
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35234886"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49345220"
 ---
 # <a name="what-is-azure-stack"></a>Mi az Azure Stack?
 
-A Microsoft Azure Stack egy hibrid felhő platform, amely lehetővé teszi az Azure-szolgáltatások biztosításához az adatközpontban található. Ehhez a platformhoz készült fenyegető üzleti igényei támogatásához. Azure Stack engedélyezheti a modern alkalmazások, széle és a kapcsolat nélküli környezetekben, például új forgatókönyvek használhatók vagy egyéni biztonsági és megfelelőségi követelményeknek megfelelő.
+A Microsoft Azure Stack egy hibrid felhő platform, amely lehetővé teszi az Azure-szolgáltatások biztosításához az adatközpontban található. Erre a platformra készült fejlődő üzleti igényei támogatásához. Azure Stack engedélyezheti a modern alkalmazások, széle és a kapcsolat nélküli környezetekben, például új forgatókönyvek használhatók vagy egyéni biztonsági és megfelelőségi követelményeknek megfelelő.
 
 Azure Stack tartományregisztráció két központi telepítési beállításai az igényeinek.
 
@@ -34,18 +34,19 @@ Integrált rendszerek felkínált keresztül egy partneri kapcsolat áll fenn a 
 
 ## <a name="azure-stack-development-kit"></a>Azure Stack fejlesztői készlete
 
-Microsoft [Azure Stack Development Kit (ASDK)](.\asdk\asdk-what-is.md) egy egy csomópontos telepítés Azure Stacket, kiértékeléséhez és megismerése az Azure Stack használható.  ASDK a fejlesztői környezet, az API-kkal és tooling eszköz alkalmazások készítéséhez, amely megfelelő Azure is használható.
+Microsoft [Azure Stack Development Kit (ASDK)](.\asdk\asdk-what-is.md) egy egy csomópontos telepítés Azure Stacket, kiértékeléséhez és megismerése az Azure Stack használható.  ASDK egy fejlesztői környezet használatával az API-k és eszközök alkalmazásokat hozhat létre, amely összhangban is használhatja.
 
 >[!Note]
->A ASDK nem készült, éles környezetben használható.
+>A ASDK használata nem javasolt éles környezetben használható.
 
-A ASDK rendelkezik a következő korlátozások vonatkoznak:
+A ASDK a következő korlátozások vonatkoznak:
 
-* ASDK egyetlen Azure Active Directory (Azure AD) vagy Active Directory összevonási szolgáltatások (AD FS) identitásszolgáltató hozzá rendelve. Több felhasználó létrehozása a könyvtárban, és előfizetések hozzárendelése minden felhasználóhoz.
-* Azure Stack összetevőket telepít egy állomáson, mert nincsenek korlátozott fizikai erőforrások bérlői erőforrásokhoz. Ez a konfiguráció nem célja a skála vagy a teljesítmény kiértékelése.
-* Hálózati forgatókönyvek a egyetlen gazdagép és a hálózati telepítési követelményei miatt korlátozódnak.
+* ASDK egy egyetlen Azure Active Directory (Azure AD) vagy az Active Directory összevonási szolgáltatások (AD FS) identitásszolgáltató társítva. Több felhasználó létrehozása ebben a könyvtárban, és az előfizetések hozzárendelése minden felhasználóhoz.
+* Azure Stack összetevőket telepít egy állomáson, mert nincsenek korlátozott fizikai erőforrások bérlői erőforrásokhoz. Ez a konfiguráció nem célja a méretezési csoport vagy a teljesítmény kiértékelése.
+* Hálózati forgatókönyvek a egyetlen gazdagép és a hálózati adapter központi telepítésére vonatkozó követelmények miatt korlátozva.
 
 ## <a name="next-steps"></a>További lépések
 
-- [A legfontosabb jellemzők és fogalmak](azure-stack-key-features.md)
-- Azure Stack: Az Azure (pdf) kiterjesztés](https://azure.microsoft.com/resources/azure-stack-an-extension-of-azure/)
+[A legfontosabb jellemzők és fogalmak](azure-stack-key-features.md)
+
+[Azure Stack: Az Azure (pdf) kiterjesztés](https://azure.microsoft.com/resources/azure-stack-an-extension-of-azure/)

@@ -1,45 +1,52 @@
+items:
 - name: A Custom Decision Service dokumentációja
   href: index.yml
 - name: Áttekintés
   items:
-    - name: Mi a Custom Decision Service?
-      href: custom-decision-service-overview.md
-    - name: A Custom Decision Service munkafolyamata
-      href: custom-decision-service-workflow.md
+  - name: Mi a Custom Decision Service?
+    href: custom-decision-service-overview.md
+  - name: A Custom Decision Service munkafolyamata
+    href: custom-decision-service-workflow.md
 - name: Gyors útmutatók
-  expanded: true
   items:
-    - name: Alkalmazás regisztrálása
-      href: custom-decision-service-get-started-register.md
-    - name: API hívása egy böngészőből
-      href: custom-decision-service-get-started-browser.md
-    - name: API hívása egy alkalmazásból
-      href: custom-decision-service-get-started-app.md
+  - name: Alkalmazás regisztrálása
+    href: custom-decision-service-get-started-register.md
+  - name: API hívása egy böngészőből
+    href: custom-decision-service-get-started-browser.md
+  - name: API hívása egy alkalmazásból
+    href: custom-decision-service-get-started-app.md
+  expanded: true
 - name: Oktatóanyagok
   items:
-    - name: Cikk személyre szabása
-      href: custom-decision-service-tutorial-news.md
-    - name: Gépi tanulás
-      href: custom-decision-service-tutorial-ml.md
+  - name: Cikk személyre szabása
+    href: custom-decision-service-tutorial-news.md
+  - name: Gépi tanulás
+    href: custom-decision-service-tutorial-ml.md
 - name: Referencia
   items:
-    - name: API
-      href: custom-decision-service-api-reference.md
-    - name: Kísérletezés
-      href: custom-decision-service-experimentation-reference.md
-    - name: LogDownloader
-      href: custom-decision-service-log-downloader-reference.md
+  - name: API
+    href: custom-decision-service-api-reference.md
+  - name: Kísérletezés
+    href: custom-decision-service-experimentation-reference.md
+  - name: LogDownloader
+    href: custom-decision-service-log-downloader-reference.md
 - name: További források
   items:
-    - name: Régiónkénti rendelkezésre állás
-      href: 'https://azure.microsoft.com/en-us/global-infrastructure/services/'
-    - name: Díjszabás (ingyenes)
-      href: 'https://azure.microsoft.com/en-us/pricing/details/cognitive-services/custom-decision-service/'
-    - name: UserVoice
-      href: 'https://cognitive.uservoice.com/forums/598138-custom-decision-service'
-    - name: Stack Overflow
-      href: 'https://stackoverflow.com/questions/tagged/microsoft-cognitive'
-    - name: Tudásbázis
-      href: 'https://cognitive.uservoice.com/knowledgebase'
-    - name: Azure-ütemterv
-      href: 'https://azure.microsoft.com/roadmap/'
+  - name: Régiónkénti rendelkezésre állás
+    href: https://azure.microsoft.com/global-infrastructure/services/
+  - name: Díjszabás (ingyenes)
+    href: https://azure.microsoft.com/pricing/details/cognitive-services/custom-decision-service/
+  - name: UserVoice
+    href: https://cognitive.uservoice.com/forums/598138-custom-decision-service
+  - name: Stack Overflow
+    href: https://stackoverflow.com/questions/tagged/microsoft-cognitive
+  - name: Tudásbázis
+    href: https://cognitive.uservoice.com/knowledgebase
+  - name: Azure-ütemterv
+    href: https://azure.microsoft.com/roadmap/
+ms.openlocfilehash: 7ab7a5126602d2efb3c568cd547900e527740587
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49363524"

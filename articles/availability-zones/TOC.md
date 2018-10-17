@@ -38,7 +38,7 @@
 ### [Nyilvános IP-cím](../virtual-network/virtual-network-public-ip-address.md#create-a-public-ip-address)
 
 ### SQL Database
-#### [Rendelkezésre állási zónák és SQL Database](../sql-database/sql-database-high-availability.md#availability-zones)
+#### [Rendelkezésre állási zónák és SQL Database](../sql-database/sql-database-high-availability.md#zone-redundant-configuration)
 
 ### Storage
 #### [Zónaredundáns tárolás](../storage/common/storage-redundancy-zrs.md)
