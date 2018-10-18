@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/15/2018
 ms.author: juliako
-ms.openlocfilehash: 860d28aa37f37ed24346e2fba635b9436684114c
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: 531cdf9a69e0ecfa2d2d8ae02f8f88fd5f400479
+ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49353782"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49378941"
 ---
 # <a name="azure-media-services-release-notes"></a>Az Azure Media Services kibocsátási megjegyzései
 Ezek a kibocsátási megjegyzések az Azure Media Services összefoglalója változásokat a korábbi kiadások és ismert problémáit.
@@ -44,6 +44,16 @@ Ezek a kibocsátási megjegyzések az Azure Media Services összefoglalója vál
 
 ## <a name="a-idrestversionhistoryrest-api-version-history"></a><a id="rest_version_history"/>REST API-korábbi verziók
 A Media Services REST API-korábbi verziók kapcsolatos információkért tekintse meg a [Az Azure Media Services REST API-referencia].
+
+## <a name="october-2018"></a>2018. október
+
+### <a name="cmaf-support"></a>CMAF támogatása
+
+CMAF és "cbcs" titkosítás támogatása (iOS 11 +) Apple HLS és MPEG-DASH, amelyek támogatják a CMAF lejátszók.
+
+### <a name="web-vtt-thumbnail-sprites"></a>Webes VTT miniatűr sprites
+
+Mostantól használhatja a Media Services webes VTT miniatűr sprites a v2 API-k használatával létrehozni. További információkért lásd: [hozzon létre egy miniatűr sprite](generate-thumbnail-sprite.md).
 
 ## <a name="july-2018"></a>2018. július
 

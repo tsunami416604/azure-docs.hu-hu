@@ -3,19 +3,19 @@ title: 'Rövid útmutató: Távoli kép elemzése – REST, Go – Computer Visi
 titleSuffix: Azure Cognitive Services
 description: Ebben a rövid útmutatóban egy képet fog elemezni a Computer Vision API és a Go segítségével.
 services: cognitive-services
-author: noellelacharite
+author: PatrickFarley
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: computer-vision
 ms.topic: quickstart
 ms.date: 08/28/2018
-ms.author: v-deken
-ms.openlocfilehash: ccdd8922993fb1ea3e723a68f28f95f7b6ffe93b
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.author: pafarley
+ms.openlocfilehash: 57c8309af47e71226f41df8cce255e73f33b27c5
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45632228"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49341038"
 ---
 # <a name="quickstart-analyze-a-remote-image-using-the-rest-api-and-go-in-computer-vision"></a>Rövid útmutató: Távoli kép elemzése a REST API és a Go használatával a Computer Visionben
 

@@ -1,30 +1,31 @@
 ---
-title: Ismerkedés a Tudásbázis feltárása szolgáltatással |} Microsoft Docs
-description: Tudásbázis feltárása szolgáltatás (KES) segítségével egy motor interaktív keresési élményt teremtsen academic kiadványok kognitív Microsoft-szolgáltatásokban.
+title: 'Példa: Első lépések – Knowledge Exploration Service API'
+titlesuffix: Azure Cognitive Services
+description: A Knowledge Exploration Service (KES) API használatával az akadémiai kiadványok közötti interaktív kereséshez készíthető motor.
 services: cognitive-services
 author: bojunehsu
-manager: stesp
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: knowledge-exploration
-ms.topic: article
+ms.topic: sample
 ms.date: 03/26/2016
 ms.author: paulhsu
-ms.openlocfilehash: 02dc9368eef02d6fa507335ef3171e923412acca
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
-ms.translationtype: MT
+ms.openlocfilehash: 6cee339793269af0e8060cce56f94fa81db6a6c5
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35347626"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46124015"
 ---
-<a name="getting-started"></a>
-# <a name="get-started-with-the-knowledge-exploration-service"></a>A Tudásbázis feltárása szolgáltatás az első lépései
-Ebben a bemutatóban feltárása szolgáltatás (KES) létrehozására használhatja a motor interaktív keresési élményt academic kiadványok esetében. A parancssori eszköz telepítése [ `kes.exe` ](CommandLine.md), és minden példa fájlokat a [Tudásbázis feltárása szolgáltatás SDK](https://www.microsoft.com/en-us/download/details.aspx?id=51488).
+# <a name="get-started-with-the-knowledge-exploration-service"></a>Első lépések a Knowledge Exploration Service szolgáltatással
 
-A academic kiadványok példa 1000 academic által írt cikkeket a Microsoft kutatói által közzétett mintát tartalmaz.  Minden egyes dokumentum címét, a kiadvány év, a szerzők és a kulcsszavak társítva. Minden egyes Szerző egy Azonosítót, nevét és a kiadvány időpontjában kapcsolatot jelöl. Lehet, hogy minden kulcsszó olyan készlete (például a "támogatási vektoros gép" kulcsszó lehet társítani a szinonima "svm") már társítva.
+Ez az útmutató végigvezeti egy motor létrehozásának lépésein az akadémiai kiadványok közötti interaktív kereséshez a Knowledge Exploration Service (KES) használatával. A parancssori eszközt, [`kes.exe`](CommandLine.md), és minden példa fájlt telepíthet a [Knowledge Exploration Service SDK](https://www.microsoft.com/en-us/download/details.aspx?id=51488) csomagból.
 
-<a name="defining-schema"></a>
-## <a name="define-the-schema"></a>A séma meghatározása
-A séma leíró a tartományban lévő objektumok attribútum. Azt adja meg a nevét, és az adatok minden attribútum JSON formátumban. A következő példa: a fájl tartalma *Academic.schema*.
+Az akadémiai kiadványok példa a Microsoft kutatói által közzétett 1000 tudományos dolgozatból álló mintát tartalmazza.  Minden egyes tanulmányhoz cím, kiadás éve, szerzők és kulcsszavak tartoznak. Mindegyik szerzőt egy azonosító, név és a publikáció időpontjában aktuális munkaviszony kapcsolat képviseli. Minden kulcsszóhoz szinonima halmaz társítható (például a „support vector machine” társítható a „svm” szinonimájával).
+
+## <a name="define-the-schema"></a>A séma megadása
+
+A séma a tartományban lévő objektumok attribútum felépítését ismerteti. A JSON-fájl formátumban levő minden attribútumra megadja a nevet és az adattípust. Az alábbi példa az *Academic.schema* fájl tartalmát mutatja.
 
 ```json
 {
@@ -40,11 +41,11 @@ A séma leíró a tartományban lévő objektumok attribútum. Azt adja meg a ne
 }
 ```
 
-Itt adhat meg *cím*, *év*, és *kulcsszó* karakterlánc, egész szám, és a karakterlánc attribútummal, illetve. Szerzők Azonosítóját, nevét és kapcsolatot képviseli, mivel meghatározása *Szerző* három alárendelt attribútumokkal rendelkező összetett attribútumaként: *Author.Id*, *Author.Name*, és *Author.Affiliation*.
+Itt a *Cím*, *Év* és *Kulcsszó* attribútumokat rendre string, integer és string típusnak definiáljuk. Mivel a szerzőket az azonosító, név és kapcsolat hármasával adjuk meg, az *Author* tulajdonságot három résztulajdonsággal rendelkező összetett attribútumként definiáljuk: *Author.Id*, *Author.Name*, és *Author.Affiliation*.
 
-Alapértelmezés szerint attribútumok érhető el minden műveletet támogat az adattípus, beleértve a *egyenlő*, *starts_with*, és *is_between*. Szerző azonosító csak belső azonosítóként szolgál, mert az alapértelmezett, és adja meg *egyenlő* , az egyetlen indexelve a műveletet.
+Alapértelmezés szerint az attribútumok valamennyi az adattípusra létező műveletet támogatják, beleértve az *equals*, *starts_with* és *is_between* műveleteket is. Mivel a szerző azonosító csak belső használatra szolgál, változtassa meg az alapértelmezést és az egyedüli indexelt műveletnek az *equals*-t adja meg.
 
-Az a *kulcsszó* attribútumot, hogy a szinonimák a szinonima fájl megadásával kanonikus kulcsszó értékekre *Keyword.syn* szereplő attribútumdefiníciót. Ez a fájl tartalmazza a kanonikus listája és érték párok szinonimát:
+A *Kulcsszó* attribútumra az attribútumdefinícióban a *Keyword.syn* szinonima fájl megadásával engedélyezze a kanonikus kulcsszó értékekre a szinonima társítást. Ez a fájl a kanonikus és szinonima értékpárok listáját tartalmazza:
 
 ```json
 ...
@@ -59,11 +60,11 @@ Az a *kulcsszó* attribútumot, hogy a szinonimák a szinonima fájl megadásáv
 ...
 ```
 
-A sémadefiníciót kapcsolatos további információkért lásd: [séma formátum](SchemaFormat.md).
+A sémadefinícióval kapcsolatos további információk: [Sémaformátum](SchemaFormat.md).
 
-<a name="generating-data"></a>
-## <a name="generate-data"></a>Adatok létrehozása
-Az adatfájl indexelésre, minden sor egy papír attribútum értékének megadásával a kiadványok listáját ismertető [JSON formátumban](http://json.org/).  A következő példa: az adatok fájlból egy sor *Academic.data*, formázott olvashatóság érdekében:
+## <a name="generate-data"></a>Adatok generálása
+
+Az adatfájl az indexelendő kiadványok listáját adja meg, mindegyik sora egy kiadvány attribútum értékeit adja meg [JSON formátumban](http://json.org/).  Az alábbi példa az *Academic.data* adatfájl egy sora, az olvashatóság érdekében formázva:
 
 ```
 ...
@@ -87,23 +88,23 @@ Az adatfájl indexelésre, minden sor egy papír attribútum értékének megad�
 ...
 ```
 
-Ezt a kódrészletet a adja meg a *cím* és *év* a papír egy JSON-karakterláncban és a szám, attribútum kulcsattribútumokkal. Több értékeket jelölik JSON-tömbök használata. Mivel *Szerző* összetett attribútum, minden egyes érték szerepel az alárendelt attribútumokból JSON-objektum használatával. A hiányzó értékeket, például a attribútumok *kulcsszó* ebben az esetben is ki kell zárni a JSON-megjelenítés.
+Ebben a kódrészletben, a kiadvány *Cím* és *Év* attribútumait adja meg rendre JSON-karakterlánc és szám alakban. A többszörös értékekhez JSON-tömböket használunk. Mivel az *Author* összetett attribútum, mindegyik értéket a részattribútumaiból felépülő JSON objektum képvisel. Ha az attribútum értéke hiányzik, mint a *Kulcsszó* esetében, az attribútum kizárható a JSON ábrázolásból.
 
-Megkülönböztetni azokat a különböző által írt cikkeket valószínűségét, adja meg a relatív napló valószínűség a beépített *logprob* attribútum. A valószínűségi megadott *p* 0 és 1 között a napló valószínűséggel napló számítási (*p*), ahol a log() a természetes log függvény.
+A különböző tanulmányok valószínűségeinek megkülönböztetéséhez adja meg a relatív logaritmikus valószínűséget a beépített *logprob* attribútum alapján. Adott *p* 0 és 1 közötti valószínűségre a logaritmikus valószínűség kiszámítása a log(*p*) szerint történik, ahol a log() a természetes logaritmusfüggvényt jelenti.
 
-További információkért lásd: [adatformátum](DataFormat.md).
+További információ: [Adatformátumok](DataFormat.md).
 
-<a name="building-index"></a>
-## <a name="build-a-compressed-binary-index"></a>A tömörített bináris index létrehozása
-A következő sémafájl és az után adatfájlt, használatával hozhat létre az adatok objektumok tömörített bináris index [ `kes.exe build_index` ](CommandLine.md#build_index-command). Ebben a példában a indexfájlja build *Academic.index* a bemeneti sémát fájlból *Academic.schema* és adatfájl *Academic.data*. Használja az alábbi parancsot:
+## <a name="build-a-compressed-binary-index"></a>Bináris tömörített index létrehozása
+
+Miután a séma- és adatfájlunk megvan, létrehozhatjuk az adatobjektumok bináris tömörített indexét a [`kes.exe build_index`](CommandLine.md#build_index-command) használatával. Ebben a példában az *Academic.index* indexfájlt az *Academic.schema* bemeneti séma- és az *Academic.data* adatfájlból készítjük el. Használja az alábbi parancsot:
 
 `kes.exe build_index Academic.schema Academic.data Academic.index`
 
-A gyors prototípusának Azure,-on kívüli [ `kes.exe build_index` ](CommandLine.md#build_index-command) hozhat létre a kis indexek helyben, legfeljebb 10 000 objektumokat tartalmazó adatok fájlokból. Nagyobb adatfájlok, vagy futtathatja a parancsot belül egy [Windows Azure-ban](../../../articles/virtual-machines/windows/quick-create-portal.md), vagy hajtsa végre a távoli build az Azure-ban. További információkért lásd: [vertikális Felskálázásával](#scaling-up).
+Azure-on kívül gyors prototípuskészítéséhez az [ `kes.exe build_index` ](CommandLine.md#build_index-command) létrehozhat kis helyi indexeket a legfeljebb 10 000 objektumot tartalmazó adatfájlokból. Nagyobb méretű adatfájloknál vagy futtatja a parancsot a [Windows VM-en az Azure-ban](../../../articles/virtual-machines/windows/quick-create-portal.md) belül vagy távoli fordítást végezhet az Azure-ban. További információk: [Felskálázás](#scaling-up).
 
-<a name="authoring-grammar"></a>
-## <a name="use-an-xml-grammar-specification"></a>Az XML-nyelvtan specifikáció használata
-A nyelvtan Megadja, hogy a szolgáltatás el tudja értelmezni, valamint hogyan a természetes nyelvű lekérdezéseket Szemantikus lekérdezési kifejezések fordításának természetes nyelvű lekérdezések. Ebben a példában a használja, a megadott nyelvtan *academic.xml*:
+## <a name="use-an-xml-grammar-specification"></a>Az XML nyelvtan specifikáció használata
+
+A nyelvtan megadja a természetes nyelvű lekérdezések halmazát, amelyeket a szolgáltatás értelmezni tud, valamint azt is, milyen szemantikai lekérdezési kifejezésekre történik ezek lefordítása. Ebben a példában az *academic.xml* fájlban megadott nyelvtant használjuk:
 
 ```xml
 <grammar root="GetPapers">
@@ -196,73 +197,73 @@ A nyelvtan Megadja, hogy a szolgáltatás el tudja értelmezni, valamint hogyan 
 </grammar>
 ```
 
-A nyelvtan specification szintaxissal kapcsolatos további információkért lásd: [Nyelvtanformátum](GrammarFormat.md).
+A nyelvet megadó szintaxisról bővebben: [Nyelvtan formátuma](GrammarFormat.md).
 
-<a name="compiling-grammar"></a>
-## <a name="compile-the-grammar"></a>A nyelvtan összeállítása
-Miután az XML-nyelvtan specifikáció, állíthat össze, a bináris nyelvtan be használatával [ `kes.exe build_grammar` ](CommandLine.md#build_grammar-command). Vegye figyelembe, hogy ha a nyelvtan importálja a séma, a következő sémafájl kell a nyelvtan XML az adott elérési úton található. Ebben a példában a bináris nyelvtan fájl build *Academic.grammar* a bemeneti XML-nyelvtan fájlból *Academic.xml*. Használja az alábbi parancsot:
+## <a name="compile-the-grammar"></a>A nyelvtan lefordítása
+
+Miután kész az XML nyelvi specifikáció, a [`kes.exe build_grammar`](CommandLine.md#build_grammar-command) használatával lefordítható bináris nyelvtanra. Ne feledje, ha a nyelvtan sémát importál, akkor a séma fájlnak ugyanazon az útvonalon kell lennie, ahol a nyelvtan XML is van. Ebben a példában az *Academic.grammar* bináris nyelvtan fájlt készítjük el az *Academic.xml* bemeneti XML-nyelvtan fájlból. Használja az alábbi parancsot:
 
 `kes.exe build_grammar Academic.xml Academic.grammar`
 
-<a name="hosting-index"></a>
-## <a name="host-the-grammar-and-index-in-a-web-service"></a>A nyelvtan és egy webszolgáltatás-bővítmény indexe
-A gyors prototípusának tárolhatja a nyelvtan és egy webszolgáltatás-bővítmény a helyi gépen index használatával [ `kes.exe host_service` ](CommandLine.md#host_service-command). A szolgáltatás keresztül érheti el [webes API-khoz](WebAPI.md) az adatok helyességét és a nyelvtan terv ellenőrzése. Ebben a példában a nyelvtanfájl gazdagép *Academic.grammar* és indexfájlja *Academic.index* : http://localhost:8000/. Használja az alábbi parancsot:
+## <a name="host-the-grammar-and-index-in-a-web-service"></a>A nyelvtan és az index tárolása webszolgáltatásban
+
+Gyors prototípuskészítéshez a nyelvtan és az index elhelyezhető a helyi gép egy webszolgáltatásán a [`kes.exe host_service`](CommandLine.md#host_service-command) használatával. Utána a szolgáltatás [webes API-k](WebAPI.md) segítségével elérhető az adathelyesség és nyelvtan tervezés helyességének ellenőrzésére. Ebben a példában az *Academic.grammar* nyelvtani fájlnak és az *Academic.index* indexfájlnak az http://localhost:8000/ ad helyet. Használja az alábbi parancsot:
 
 `kes.exe host_service Academic.grammar Academic.index --port 8000`
 
-Ez elindít egy helyi példányát a webes szolgáltatás. Látogasson el a szolgáltatást interaktív módon tesztelheti `http::localhost:<port>` böngészővel. További információkért lásd: [szolgáltatás tesztelés](#testing-service).
+Ez elindítja a webszolgáltatás helyi példányát. A szolgáltatást interaktívan tesztelheti úgy, hogy böngészőben meglátogatja a `http::localhost:<port>` szolgáltatást. További információk: [Szolgáltatás tesztelése](#testing-service).
 
-Közvetlenül is hívása különböző [webes API-khoz](WebAPI.md) természetes nyelv értelmezése, a lekérdezés végrehajtási, a strukturált lekérdezés kiértékelése és a számítást, hisztogram teszteléséhez. A szolgáltatás leállításához írja be a következőt "lépjen ki a" azokat a `kes.exe host_service` parancssort, vagy a Ctrl + C. Néhány példa:
+A különböző [webes API-k](WebAPI.md) emellett közvetlenül is meghívhatók természetes nyelvi értelmezésre, lekérdezés kiegészítésre, strukturált lekérdezések kiértékelésére és hisztogram kiszámításra. A szolgáltatás leállításához írja be a `kes.exe host_service` parancssorba a „quit” szót, vagy nyomja le a Ctrl + C billentyűkombinációt. Néhány példa:
 
-* [http://localhost:8000/interpret?query=papers susan t dumais által](http://localhost:8000/interpret?query=papers%20by%20susan%20t%20dumais)
-* [http://localhost:8000/interpret?query=papers susan t d & teljes = 1](http://localhost:8000/interpret?query=papers%20by%20susan%20t%20d&complete=1)
-* [http://localhost:8000/evaluate?expr=Composite(Author.Name=="susan t dumais") & attributes=Title,Year,Author.Name,Author.Id & count = 2](http://localhost:8000/evaluate?expr=Composite%28Author.Name==%27susan%20t%20dumais%27%29&attributes=Title,Year,Author.Name,Author.Id&count=2)
-* [http://localhost:8000/calchistogram?expr=And(Composite(Author.Name=="susan t dumais"), év > = 2013) & attribútumok = év, kulcsszó & count = 4](http://localhost:8000/calchistogram?expr=And%28Composite%28Author.Name=='susan%20t%20dumais'%29,Year>=2013%29&attributes=Year,Keyword&count=4)
+* [http://localhost:8000/interpret?query=papers by susan t dumais](http://localhost:8000/interpret?query=papers%20by%20susan%20t%20dumais)
+* [http://localhost:8000/interpret?query=papers by susan t d&complete=1](http://localhost:8000/interpret?query=papers%20by%20susan%20t%20d&complete=1)
+* [http://localhost:8000/evaluate?expr=Composite(Author.Name=='susan t dumais')&attributes=Title,Year,Author.Name,Author.Id&count=2](http://localhost:8000/evaluate?expr=Composite%28Author.Name==%27susan%20t%20dumais%27%29&attributes=Title,Year,Author.Name,Author.Id&count=2)
+* [http://localhost:8000/calchistogram?expr=And(Composite(Author.Name=='susan t dumais'),Year>=2013)&attributes=Year,Keyword&count=4](http://localhost:8000/calchistogram?expr=And%28Composite%28Author.Name=='susan%20t%20dumais'%29,Year>=2013%29&attributes=Year,Keyword&count=4)
 
-Azure-ban kívül [ `kes.exe host_service` ](CommandLine.md#host_service-command) indexek legfeljebb 10 000 objektumok korlátozódik. Más korlátok közé tartozik egy 10 kérelmek / másodperc API arányát és 1000 kérelmek összesen előtt automatikusan megszakítja a folyamatot. Ezek a korlátozások megkerülése, futtassa a parancsot belül egy [Windows Azure-ban](../../../articles/virtual-machines/windows/quick-create-portal.md), vagy az Azure-felhőszolgáltatás segítségével telepítheti a [ `kes.exe deploy_service` ](CommandLine.md#deploy_service-command) parancsot. További információkért lásd: [szolgáltatás telepítése](#deploying-service).
+Azure-on kívül [ `kes.exe host_service` ](CommandLine.md#host_service-command) az indexek legfeljebb 10 000 objektumra korlátozódnak. Egyéb korlátot jelent a másodpercenkénti 10 API-kérés és az összesen 1000 kérés, ami után a folyamat automatikusan véget ér. Ezeknek a korlátozásoknak a megkerülésére futtassa a parancsot a [Windows VM-en az Azure-ban](../../../articles/virtual-machines/windows/quick-create-portal.md) környezeten belül, vagy a [`kes.exe deploy_service`](CommandLine.md#deploy_service-command) paranccsal tegye át Azure felhőszolgáltatásra. További információk: [Szolgáltatás telepítése](#deploying-service).
 
-<a name="scaling-up"></a>
-## <a name="scale-up-to-host-larger-indices"></a>A gazdagép nagyobb indexek növelheti
-Amikor fut `kes.exe` kívül Azure, az index korlátozódik, 10 000 objektumra. Hozza létre, és nagyobb indexeket üzemeltetni az Azure használatával. Regisztráljon egy [ingyenes próbaverzió](https://azure.microsoft.com/pricing/free-trial/). Másik lehetőségként, ha a Visual Studio vagy MSDN előfizetett, is [aktiválhatja előfizetői előnyeit](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/). Minden hónap ezek kínál néhány Azure-krediteket.
+## <a name="scale-up-to-host-larger-indices"></a>Válasszon nagyobb méretet nagyobb indexek tárolására
 
-Hogy `kes.exe` az Azure-fiók, hozzáféréssel [töltse le az Azure közzétételi beállítási fájlját](https://portal.azure.com/#blade/Microsoft_Azure_ClassicResources/PublishingProfileBlade) Azure-portálról. Ha a rendszer kéri, jelentkezzen be arra a kívánt Azure-fiókot. Mentse a fájlt *AzurePublishSettings.xml* a munkakönyvtárat, amelyről a `kes.exe` futtatja.
+Ha a `kes.exe` futtatása Azure-n kívül történik, az index maximális mérete 10 000 objektum. Az Azure használatával készíthet és tárolhat nagyobb indexet. Regisztráljon az [ingyenes próbaverzióra](https://azure.microsoft.com/pricing/free-trial/). Visual Studio vagy MSDN előfizetőként [előfizetői kedvezményeket érvényesíthet](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/). Ezeket minden hónapban néhány Azure-kredittel jutalmazzuk.
 
-Két módon lehet létrehozni, és nagy indexek üzemeltetésére. Az egyik készítse elő a a Windows Azure-ban a séma- és fájlokat. Ezután futtassa [ `kes.exe build_index` ](#building-index) hozhat létre az index helyileg a virtuális Gépre, méret korlátozások nélkül. Az indexet az alábbiakon tárolható helyileg a virtuális gép használatával [ `kes.exe host_service` ](#hosting-service) a gyors prototípusának újra korlátozások nélkül. Részletes útmutató: a [Azure virtuális gép oktatóanyag](../../../articles/virtual-machines/windows/quick-create-portal.md).
+Azure-fiók esetén a `kes.exe` hozzáférés engedélyezéséhez [töltse le az Azure közzétételi beállítások fájlt](https://portal.azure.com/#blade/Microsoft_Azure_ClassicResources/PublishingProfileBlade) az Azure portálról. Ha a rendszer kéri, jelentkezzen be a megfelelő Azure-fiókba. Mentse el a fájlt *AzurePublishSettings.xml* néven a munkakönyvtárba, ahonnan a `kes.exe` fut.
 
-Második módszer: használatával történő végrehajtásához a távoli Azure build [ `kes.exe build_index` ](CommandLine.md#build_index-command) rendelkező a `--remote` paraméter. Azt határozza meg az Azure virtuális gép méretét. Ha a `--remote` paraméter meg van adva, a parancs létrehoz egy ideiglenes Azure virtuális Gépet, a megadott méretű. Majd épít fel az index a virtuális Gépre, feltölti az indexet a cél blob-tároló, és törli a virtuális gép létrehozása után. Az Azure-előfizetés fel van töltve a költség, a virtuális gép közben az index részét.
+Kétféleképpen hozhat létre és üzemeltethet nagy indexeket. Az első, hogy a séma és adatfájlokat az Azure-beli Windows virtuális gépen készíti elő. Ezután a [ `kes.exe build_index` ](#building-index) futtatásával helyileg felépítheti az indexet a virtuális gépen, mindenféle méretkorlátozás nélkül. Az eredményül kapott indexet üzemeltetheti helyileg a virtuális gépen a [ `kes.exe host_service` ](#hosting-service) használatával, ami gyors prototípuskészítést biztosít, ugyancsak bármiféle méretkorlátozás nélkül. Részletes lépések leírása: [Azure-beli Virtuálisgép-oktatóanyag](../../../articles/virtual-machines/windows/quick-create-portal.md).
 
-A távoli Azure-létrehozási funkció lehetővé teszi, hogy [ `kes.exe build_index` ](CommandLine.md#build_index-command) minden környezetben futtatható. Távoli build hajtja végre, amikor a bemeneti séma és az adatok lehetnek helyi elérési utat vagy [Azure blob storage](../../storage/blobs/storage-dotnet-how-to-use-blobs.md) URL-címeket. A kimeneti indexargumentum egy blob storage URL-címet kell lennie. Egy Azure storage-fiók létrehozásához lásd: [tudnivalók az Azure storage-fiókok](../../storage/common/storage-create-storage-account.md). A hatékonyan másolja a fájlokat, és a blob storage használata a [AzCopy](../../storage/common/storage-use-azcopy.md) segédprogramot.
+A második módszer a távoli Azure fordítás, a [ `kes.exe build_index` ](CommandLine.md#build_index-command) használatával és a `--remote` paraméter megadásával. Ez megadja az Azure virtuális gép méretét. A `--remote` paraméter megadása esetén a parancs ekkora méretű ideiglenes Azure virtuális gépet hoz létre. Ezután felépíti az indexet a virtuális gépen, feltölti az indexet a cél blobtárolóba, majd a végén törli a virtuális gépet. Az Azure-előfizetés számára a virtuális gép költsége az index felépítési idejére kerül felszámításra.
 
-Ebben a példában feltételezzük, hogy a következő blob-tároló már létezik: http://&lt;*fiók*&gt;.blob.core.windows.net/&lt;*tároló* &gt;/. A séma tartalmaz *Academic.schema*, a hivatkozott szinonimát fájl *Keywords.syn*, és a teljes körű adatfájl *Academic.full.data*. A teljes index távolról hozhat létre a következő paranccsal:
+Ezzel a távoli Azure építés funkcióval a [ `kes.exe build_index` ](CommandLine.md#build_index-command) bármilyen környezetben futtatható. A távoli építés végzésekor a bemeneti séma és az adat argumentumok lehetnek helyi fájl elérési útvonalon vagy [Azure blobtároló](../../storage/blobs/storage-dotnet-how-to-use-blobs.md) URL-címen. A kimeneti index argumentuma csak blobtároló URL lehet. Azure tárfiók létrehozása: [Tudnivalók az Azure tárfiókokról](../../storage/common/storage-create-storage-account.md). Fájlok blobtárolóba és vissza történő másolásához használja a [AzCopy](../../storage/common/storage-use-azcopy.md) segédprogramot.
+
+Ebben a példában feltételezzük, hogy a következő blobtártároló konténer már létezik: http://&lt;*account*&gt;.blob.core.windows.net/&lt;*container*&gt;/. Tartalmazza az *Academic.schema* nevű sémát, a *Keywords.syn* hivatkozott szinonima fájlt, és az *Academic.full.data* teljes méretű adatfájlt. A teljes indexet távolról a következő paranccsal lehet létrehozni:
 
 `kes.exe build_index http://<account>.blob.core.windows.net/<container>/Academic.schema http://<account>.blob.core.windows.net/<container>/Academic.full.data http://<account>.blob.core.windows.net/<container>/Academic.full.index --remote <vm_size>`
 
-Vegye figyelembe, hogy egy virtuális Gépet az index létrehozása temporay kiépítéséhez 5 – 10 percig is eltarthat. A gyors prototípusának a következő műveletek végezhetők el:
-- Kidolgozhat egy kisebb adatkészlet bármely gépen helyileg.
-- Manuálisan [hozzon létre egy Azure virtuális gép](../../../articles/virtual-machines/windows/quick-create-portal.md), [kapcsolódni hozzá](../../../articles/virtual-machines/windows/quick-create-portal.md#connect-to-virtual-machine) távoli asztalon keresztül telepítse a [Tudásbázis feltárása szolgáltatás SDK](https://www.microsoft.com/en-us/download/details.aspx?id=51488), és futtassa [ `kes.exe` ](CommandLine.md) át a virtuális Gépen belül.
+Vegye figyelembe, hogy egy ideiglenes virtuális gép létrehozása az index kiépítésére 5 – 10 percig is eltarthat. Gyors prototípuskészítéséhez a következőket teheti:
+- Fejleszthet helyileg kisebb adathalmazzal bármilyen gépen.
+- Manuálisan [hozzon létre egy Azure virtuális gépet](../../../articles/virtual-machines/windows/quick-create-portal.md), [csatlakozzon hozzá](../../../articles/virtual-machines/windows/quick-create-portal.md#connect-to-virtual-machine) távoli asztalon keresztül, telepítse a [Knowledge Exploration Service SDK](https://www.microsoft.com/en-us/download/details.aspx?id=51488)-t és futtassa [ `kes.exe` ](CommandLine.md)-t a virtuális gépen.
 
-Lapozófájl lelassítja az összeállítási folyamat. Lapozófájl elkerülése érdekében használja a virtuális gépek háromszor a RAM mennyisége a a bemeneti adatok méretét index építése. Egy virtuális Gépet használjon több RAM üzemeltetéséhez index mint 1 GB. Elérhető Virtuálisgép-méretek listáját lásd: [virtuális gépek méretei](../../../articles/virtual-machines/virtual-machines-windows-sizes.md).
+A lapozás lassítja az építési folyamatot. A lapozás elkerülése érdekében használjon az index készítéshez használt adatfájl méretének háromszorosa méretű RAM-mal rendelkező virtuális gépet. Az index tárolt méreténél 1 GB RAM-mal több memóriával rendelkező virtuális gépet használjon. Elérhető virtuálisgép-méretek listája: [Virtuális gépek méretei](../../../articles/virtual-machines/virtual-machines-windows-sizes.md).
 
-<a name="deploying-service"></a>
 ## <a name="deploy-the-service"></a>A szolgáltatás üzembe helyezése
-Miután egy nyelvtan és egy indexet, készen áll a szolgáltatás telepítése egy Azure felhőszolgáltatást. Hozzon létre egy új Azure felhőszolgáltatást, tekintse meg [létrehozásáról és központi telepítése egy felhőalapú szolgáltatás](../../../articles/cloud-services/cloud-services-how-to-create-deploy-portal.md). Ne adjon meg ezen a ponton a központi telepítési csomagot.  
 
-A felhőalapú szolgáltatás létrehozása után használhat [ `kes.exe deploy_service` ](CommandLine.md#deploy_service-command) telepíti a szolgáltatást. Azure-felhőszolgáltatás van két üzembe helyezési: üzemi és átmeneti. Élő felhasználói forgalmat fogadó szolgáltatáshoz először telepítse az átmeneti tárolási helyre. Várjon, amíg a szolgáltatás elindításához és inicializálása sikertelen. Ezután ellenőrizheti a telepítését, és győződjön meg arról, hogy megfelel-e egyszerű tesztek néhány kérelmeket küldhet.
+Miután megvan a nyelvtan és az index, készen áll a szolgáltatás üzembe helyezése egy Azure felhőszolgáltatásban. Új Azure felhőszolgáltatás létrehozása: [Felhőszolgáltatás létrehozása és üzembe helyezése](../../../articles/cloud-services/cloud-services-how-to-create-deploy-portal.md). Ne adjon meg ezen a ponton még telepítőcsomagot.  
 
-[A felcserélendő](../../../articles/cloud-services/cloud-services-nodejs-stage-application.md) az átmeneti tartalmát úgy, hogy az élő forgalom most irányul, az újonnan telepített szolgáltatás tárolóhely az éles webalkalmazásra. Ez az eljárás megismétlésével az új adatokat a szolgáltatás frissített verziójának telepítésekor. Hasonlóan az összes többi Azure felhőszolgáltatások, opcionálisan az Azure-portál konfigurálása [automatikus skálázás](../../../articles/cloud-services/cloud-services-how-to-scale-portal.md).
+Miután létrehozta a felhőszolgáltatást, a [`kes.exe deploy_service`](CommandLine.md#deploy_service-command) használatával a telepítheti a szolgáltatást. Az Azure-felhőszolgáltatásban két üzembe helyezési pont van: üzemelési és előkészítési. Az élő felhasználói forgalmat fogadó szolgáltatást először a előkészítési pontra kell telepíteni. Várja meg, amíg a szolgáltatás elindul és inicializálja magát. Ezután elküldhet néhány kérést az üzembe helyezés ellenőrzésére és annak ellenőrzésére, hogy átmegy-e az alapteszteken.
 
-Ebben a példában a központilag telepíteni a *Academic* az átmeneti helyet egy meglévő felhőalapú szolgáltatást index *< vm_size >* virtuális gépeket. Használja az alábbi parancsot:
+[Cserélje](../../../articles/cloud-services/cloud-services-nodejs-stage-application.md) fel az előkészítési és üzemelési pontok tartalmát, hogy az élő forgalom most már az újonnan üzembe helyezett szolgáltatásra menjen. Ugyanezt az eljárást ismételje meg, amikor a szolgáltatást új adatokkal frissített verzióját telepíti. Ahogy minden más Azure-felhőszolgáltatásnál, igény szerint itt is használhatja az Azure portálon az [automatikus skálázás](../../../articles/cloud-services/cloud-services-how-to-scale-portal.md) konfigurálását.
+
+Ebben a példában az *Academic* indexet egy már meglévő felhőszolgáltatás előkészítési pontján helyezzük üzembe a *<vm_size>* virtuális gépekkel. Használja az alábbi parancsot:
 
 `kes.exe deploy_service http://<account>.blob.core.windows.net/<container>/Academic.grammar http://<account>.blob.core.windows.net/<container>/Academic.index <serviceName> <vm_size> --slot Staging`
 
-Elérhető Virtuálisgép-méretek listáját lásd: [virtuális gépek méretei](../../../articles/virtual-machines/virtual-machines-windows-sizes.md).
+Elérhető virtuálisgép-méretek listája: [Virtuális gépek méretei](../../../articles/virtual-machines/virtual-machines-windows-sizes.md).
 
-A szolgáltatás telepítése után hívása a különböző [webes API-khoz](WebAPI.md) természetes nyelv értelmezése, a lekérdezés végrehajtási, a strukturált lekérdezés kiértékelése és a számítást, hisztogram teszteléséhez.  
+A szolgáltatás üzembe helyezése után meghívhatja a különböző [webes API-kat](WebAPI.md) a természetes nyelvi értelmezésre, lekérdezés kiegészítésre, strukturált lekérdezések kiértékelésére és hisztogram kiszámításra.  
 
-<a name="testing-service"></a>
 ## <a name="test-the-service"></a>A szolgáltatás tesztelése
-Hibakeresési élő szolgáltatásként, keresse meg a gazdagép gépnek egy webböngészőből. A helyi keresztül telepített [host_service](#hosting-service), látogasson el `http://localhost:<port>/`.  Az Azure cloud service keresztül telepített [deploy_service](#deploying-service), látogasson el `http://<serviceName>.cloudapp.net/`.
 
-Ezen a lapon API hívása alapszintű statisztikákat, valamint a nyelvtan és index: Ez a szolgáltatás üzemeltetett kapcsolatos információkra mutató hivatkozást tartalmaz. Ezen a lapon is tartalmaz, amely bemutatja, hogy a webes API-k interaktív keresési illesztőfelület. Adja meg a lekérdezés eredményeinek megtekintéséhez a keresőmezőbe a [értelmezhetők](interpretMethod.md), [kiértékelése](evaluateMethod.md), és [calchistogram](calchistogramMethod.md) API-hívásokat. Példa bemutatja, hogyan integrálható a webes API-knak az alkalmazásba, gazdag, interaktív keresési környezetet is szolgál az alapul szolgáló HTML-forrásának ezen a lapon.
+Az élő szolgáltatás hibakereséséhez keresse meg a gazdagépet egy webböngészőben. A [host_service](#hosting-service)-en keresztül üzembe helyezett szolgáltatás esetén lásd: `http://localhost:<port>/`.  A [deploy_service](#deploying-service)-en keresztül üzembe helyezett Azure felhőszolgáltatás esetén lásd: `http://<serviceName>.cloudapp.net/`.
+
+Ez az oldal statisztikai információkat tartalmaz az alapvető API-hívásokról, valamint a szolgáltatáson helyet foglaló nyelvtanról és indexről. Az oldal tartalmaz egy interaktív kereső felületet is, amely bemutatja a webes API-k használatát. A kérést írja a kereső mezőbe és megtekintheti az [értelmezési](interpretMethod.md), [kiértékelési](evaluateMethod.md) és [számítási hisztogram](calchistogramMethod.md) API-hívások eredményeit. Az oldal HTML forrása példa arra is, hogy a webes API-k alkalmazásba integrálásával hogyan lehet gazdag, interaktív keresési élményt biztosítani.
 
 

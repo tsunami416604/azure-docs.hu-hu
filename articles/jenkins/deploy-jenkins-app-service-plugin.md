@@ -8,12 +8,12 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 07/31/2018
-ms.openlocfilehash: a6ad40f90e12bbf4dd85c3cbd22839d39a734ca1
-ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
+ms.openlocfilehash: 5f76d18662105df6d278e09e047baa13773ab4ac
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44391165"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49319353"
 ---
 # <a name="deploy-to-azure-app-service-by-using-the-jenkins-plugin"></a>Üzembe helyezés az Azure App Service-ben a Jenkins beépülő modullal 
 
@@ -36,8 +36,10 @@ Ha még nem rendelkezik Jenkins-főkiszolgálóval, kezdje a [megoldássablonnal
 * [Azure App Service](https://plugins.jenkins.io/azure-app-service), 0.1-es verzió
 
 A Jenkins beépülő modullal a Web Apps által támogatott bármelyik nyelvvel (például C#, PHP, Java és Node.js) üzembe helyezhetők a webalkalmazások. Ebben az oktatóanyagban egy, [az Azure-hoz készült egyszerű Java-webalkalmazást](https://github.com/azure-devops/javawebappsample) használunk. Ahhoz, hogy elágaztassa az adattárat a saját GitHub-fiókja felé, kattintson a **Fork** (Elágaztatás) gombra a GitHub-felület jobb felső sarkában.  
+
 > [!NOTE]
 > A Java-projekt létrehozásához szükség van a Java JDK-ra és a Mavenre. Ezeket az összetevőket a Jenkins-főkiszolgálón telepítse, vagy a virtuálisgép-ügynökön, ha az ügynököt folyamatos integráláshoz használja. Ha Java SE alkalmazást helyez üzembe, a ZIP-re is szükség lesz a buildkiszolgálón.
+>
 
 Az összetevők telepítéséhez jelentkezzen be a Jenkis-példányba az SSH-val, és futtassa az alábbi parancsokat:
 
@@ -48,7 +50,7 @@ sudo apt-get install -y maven
 
 A Web App for Containers szolgáltatásban való üzembe helyezéshez telepítse a Dockert a Jenkis-főkiszolgálóra vagy a létrehozáshoz használt virtuálisgép-ügynökre. Az utasításokért lásd [a Docker Ubuntun történő telepítését](https://docs.docker.com/engine/installation/linux/ubuntu/) ismertető cikket.
 
-##<a name="service-principal"></a> Azure-szolgáltatásnév hozzáadása a Jenkins hitelesítő adataihoz
+## <a name="service-principal"></a> Azure-szolgáltatásnév hozzáadása a Jenkins hitelesítő adataihoz
 
 Az Azure-ban való üzembe helyezéshez Azure-szolgáltatásnévre van szükség. 
 

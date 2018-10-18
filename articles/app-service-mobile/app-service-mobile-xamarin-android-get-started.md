@@ -12,14 +12,14 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-xamarin-android
 ms.devlang: dotnet
 ms.topic: hero-article
-ms.date: 10/01/2016
+ms.date: 09/24/2018
 ms.author: crdun
-ms.openlocfilehash: abc4fa4129a596c3f3304dc37af3a9b659f45473
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: a3b039b1ea492c44505c427ec171cf7a4a5fad01
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38595501"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47062435"
 ---
 # <a name="create-a-xamarinandroid-app"></a>Xamarin.Android-alkalmazás létrehozása
 [!INCLUDE [app-service-mobile-selector-get-started](../../includes/app-service-mobile-selector-get-started.md)]
@@ -64,6 +64,11 @@ Már kiépített egy Azure Mobile Apps-háttérszolgáltatást, amelyet mobil ü
    > A mobil-háttéralkalmazás számára az adatok lekérdezéséhez és beszúrásához hozzáférést biztosító kódot a ToDoActivity.cs C# fájlban tekintheti meg.
    >
    >
+
+## <a name="troubleshooting"></a>Hibaelhárítás
+Ha a megoldás elkészítése során problémákat tapasztal, futtassa a NuGet csomagkezelőt, és frissítse a `Xamarin.Android` támogatási csomagokat. Előfordulhat, hogy a gyorsindítási projektek nem tartalmazzák a legújabb verziót.
+
+Vegye figyelembe, hogy a projektjében hivatkozott összes támogatási csomagnak azonos verziójúnak kell lennie. Az [Azure Mobile Apps NuGet-csomag](https://www.nuget.org/packages/Microsoft.Azure.Mobile.Client/) Android platform esetén `Xamarin.Android.Support.CustomTabs`-függőséggel rendelkezik, így ha a projektjében újabb támogatási csomagokat használ, akkor az ütközések elkerülése érdekében közvetlenül kell telepítenie ennek a csomagnak a szükséges verzióját.
 
 ## <a name="next-steps"></a>További lépések
 * [Offline szinkronizálás hozzáadása az alkalmazáshoz](app-service-mobile-xamarin-android-get-started-offline-data.md)

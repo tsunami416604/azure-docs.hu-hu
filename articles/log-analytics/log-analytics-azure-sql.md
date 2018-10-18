@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 05/03/2018
 ms.author: v-daljep
 ms.component: ''
-ms.openlocfilehash: bc82e030742bb5ea9621e972fcce2435cdda61ea
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: d16f9add2cd31eb5a8db650798c241c3dcf2610f
+ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49353458"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49379304"
 ---
 # <a name="monitor-azure-sql-database-using-azure-sql-analytics-preview"></a>Az Azure SQL Database megfigyelése az Azure SQL Analytics (előzetes verzió)
 
@@ -35,8 +35,6 @@ A gyakorlati áttekintése az Azure SQL Analytics megoldás használatával és 
 
 > [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Get-Intelligent-Insights-for-Improving-Azure-SQL-Database-Performance/player]
 >
-
-Bár a megoldás használata ingyenes, vonatkozik-e az diagnostics telemetriai adatainak fent az adatbetöltés lefoglalva minden hónapban ingyenes egységek felhasználását, lásd: [Log Analytics díjszabása](https://azure.microsoft.com/en-us/pricing/details/monitor). Az adatbetöltés foglalt ingyenes egységek ingyenes figyelés engedélyezése több adatbázis minden hónapban. Vegye figyelembe, hogy a nagyobb számítási feladatok több aktív adatbázisok inaktív adatbázisokat és több adatot képes feldolgozni. Az adathasználat Adatbetöltési a megoldás az OMS-munkaterület kiválasztásával az Azure SQL Analytics, a navigációs menü, és kiválasztja a használat és becsült költségek egyszerűen figyelheti.
 
 ## <a name="connected-sources"></a>Összekapcsolt források
 
@@ -160,6 +158,10 @@ SQL-adatbázisok és rugalmas készletek rendelkezik a saját konkrét jelentés
 A lekérdezés időtartama és a lekérdezés vár perspektívák összehasonlíthatja lekérdezés jelentés használatával minden lekérdezés teljesítményére. Ez a jelentés a lekérdezési teljesítmény összehasonlítja a különböző adatbázisok között, és megkönnyíti a rögzítési ponthoz, amely a kijelölt lekérdezést is, amelyet a lassú és adatbázisok.
 
 ![Az Azure SQL Analytics-lekérdezések](./media/log-analytics-azure-sql/azure-sql-sol-queries.png)
+
+### <a name="pricing"></a>Díjszabás
+
+Bár a megoldás használata ingyenes, vonatkozik-e az diagnostics telemetriai adatainak fent az adatbetöltés lefoglalva minden hónapban ingyenes egységek felhasználását, lásd: [Log Analytics díjszabása](https://azure.microsoft.com/en-us/pricing/details/monitor). Az adatbetöltés foglalt ingyenes egységek ingyenes figyelés engedélyezése több adatbázis minden hónapban. Vegye figyelembe, hogy a nagyobb számítási feladatok több aktív adatbázisok inaktív adatbázisokat és több adatot képes feldolgozni. Az adathasználat Adatbetöltési a megoldás az OMS-munkaterület kiválasztásával az Azure SQL Analytics, a navigációs menü, és kiválasztja a használat és becsült költségek egyszerűen figyelheti.
 
 ### <a name="analyze-data-and-create-alerts"></a>Adatok elemzése és riasztások létrehozása
 

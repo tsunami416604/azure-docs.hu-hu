@@ -3,19 +3,19 @@ title: 'Rövid útmutató: Arcfelismerés képen – Face API, JavaScript'
 titleSuffix: Azure Cognitive Services
 description: Ebben a rövid útmutatóban arcokat fog felismerni egy képről a Face API segítségével és JavaScript használatával a Cognitive Servicesben.
 services: cognitive-services
-author: noellelacharite
+author: PatrickFarley
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: face-api
 ms.topic: quickstart
 ms.date: 05/10/2018
-ms.author: nolachar
-ms.openlocfilehash: b5c2b5bb6e0a4507a294700a6de78a1498cbe961
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.author: pafarley
+ms.openlocfilehash: eb860c054ddb18d6c26cc4853e1bf230739aa51d
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46129403"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49340188"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-javascript"></a>Első lépések: Arcok felismerése a képen JavaScript használatával
 

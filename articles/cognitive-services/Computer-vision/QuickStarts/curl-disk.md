@@ -3,19 +3,19 @@ title: 'Rövid útmutató: Helyi kép elemzése – REST, cURL – Computer Visi
 titleSuffix: Azure Cognitive Services
 description: Ebben a rövid útmutatóban egy helyi képet fog elemezni a Computer Vision API és a cURL használatával.
 services: cognitive-services
-author: noellelacharite
+author: PatrickFarley
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: computer-vision
 ms.topic: quickstart
 ms.date: 09/10/2018
-ms.author: v-deken
-ms.openlocfilehash: 1952d0045550362a242ce1c105c58bd65c815ea6
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.author: pafarley
+ms.openlocfilehash: c7c3cf2bae66e1739c4a62e1ce823542d0dfce36
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45631242"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49339916"
 ---
 # <a name="quickstart-analyze-a-local-image-using-the-rest-api-and-curl-in-computer-vision"></a>Rövid útmutató: Helyi kép elemzése a REST API és a cURL használatával a Computer Visionben
 
@@ -34,7 +34,7 @@ A minta létrehozásához és futtatásához az alábbi lépéseket kell végreh
 
 1. Másolja az alábbi parancsot egy szövegszerkesztőbe.
 1. Hajtsa végre a következő módosításokat a parancs megfelelő területein:
-    1. Cserélje le az `<subscriptionKey>` értéket az előfizetői azonosítóra.
+    1. Cserélje le a `<subscriptionKey>` értéket az előfizetői azonosítóra.
     1. Ha szükséges, cserélje le a kérés URL-címét (`https://westcentralus.api.cognitive.microsoft.com/vision/v2.0/analyze`) azon Azure-régió [Analyze Image](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) metódusának végponti URL-címére, ahol az előfizetői azonosítókat beszerezte.
     1. Cserélj le a(z) `<localImage>` értékét az elemezni kívánt fájl teljes útvonalára és nevére. Például: `@C:/Pictures/ImageToAnalyze.jpg`.
     1. Igény szerint változtassa meg a kérés URL-címének (`language=en`) nyelvi paraméterét egy másik támogatott nyelvre.

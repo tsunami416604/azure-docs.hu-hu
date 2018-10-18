@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 09/06/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: f3b80af1dfaca921efbe656356e85aeb353a576b
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 93bd141b591cda5ec6ff1d9d042222070d3146e6
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46315307"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49390312"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Az Azure AD Connect: Verziókiadások
 Az Azure Active Directory (Azure AD) csapat rendszeresen frissíti az Azure AD Connect új szolgáltatásait és funkcióit. Nem minden hozzárendelések nem gyarapítsa alkalmazható.
@@ -112,7 +112,7 @@ Az Azure AD Connect frissítés sikertelen lesz, ha SQL mindig a rendelkezésre 
 
 ### <a name="fixed-issues"></a>Hibák kijavítva: 
 
-- Ebben a kiadásban az SQL Server 2012 SP4, amely többek között számos biztonsági rések javításokat nyújt az SQL Server Express telepítések frissíti.  Lásd: [Itt](https://support.microsoft.com/en-ca/help/4018073/sql-server-2012-service-pack-4-release-information) további információ az SQL Server 2012 SP4.
+- Ebben a kiadásban az SQL Server 2012 SP4, amely többek között számos biztonsági rések javításokat nyújt az SQL Server Express telepítések frissíti.  Lásd: [Itt](https://support.microsoft.com/help/4018073/sql-server-2012-service-pack-4-release-information) további információ az SQL Server 2012 SP4.
 - Szinkronizálási szabály feldolgozása: kimenő illesztési szinkronizálási szabályokat nincs csatlakozás feltétellel kell megszüntetéséhez alkalmazott Ha a fölérendelt szinkronizálási szabály már nem alkalmazható
 - Számos kisegítő-javítások alkalmazása a Synchronization Service Manager felhasználói felületén és a szinkronizálási Szabályszerkesztővel
 - Az Azure AD Connect varázsló: Hiba történt a létrehozásakor AD-összekötő fiók van amikor az Azure AD Connect egy munkacsoporthoz tartozik

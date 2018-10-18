@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 08/16/2018
 ms.author: shvija
-ms.openlocfilehash: b1f0c0d06f6c5f99a843a384e1dda667b967a02b
-ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
+ms.openlocfilehash: 305776db1d3e0bacc266e514e0a59fe6b3fbd4b4
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/23/2018
-ms.locfileid: "42743907"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49388527"
 ---
 # <a name="quickstart-create-an-event-hub-using-azure-powershell"></a>Rövid útmutató: Eseményközpont létrehozása a PowerShell-lel
 
@@ -33,7 +33,7 @@ Az oktatóanyag elvégzéséhez győződjön meg arról, hogy rendelkezik a köv
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Ha helyileg használja a PowerShellt, a rövid útmutató elvégzéséhez a PowerShell legújabb verzióját kell futtatnia. Ha telepíteni vagy frissíteni szeretne: [Az Azure PowerShell telepítése és konfigurálása](https://docs.microsoft.com/en-us/powershell/azure/install-azurerm-ps?view=azurermps-5.7.0).
+Ha helyileg használja a PowerShellt, a rövid útmutató elvégzéséhez a PowerShell legújabb verzióját kell futtatnia. Ha telepíteni vagy frissíteni szeretne: [Az Azure PowerShell telepítése és konfigurálása](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-5.7.0).
 
 ## <a name="provision-resources"></a>Erőforrások kiosztása
 

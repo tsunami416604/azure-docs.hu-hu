@@ -10,12 +10,12 @@ ms.custom: quick start connect, mvc
 ms.devlang: java
 ms.topic: quickstart
 ms.date: 09/24/2018
-ms.openlocfilehash: fcb707f886b960335e69a6af3e485634ebb0a506
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 89271385ad7d8d1e4290ce95b977ea4e43a8c2f2
+ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46974034"
+ms.lasthandoff: 10/12/2018
+ms.locfileid: "49167576"
 ---
 # <a name="quickstart-build-a-cassandra-app-with-java-and-azure-cosmos-db"></a>Rövid útmutató: Cassandra alkalmazás felépítése a Java és az Azure Cosmos DB használatával
 
@@ -164,7 +164,7 @@ Lépjen vissza az Azure Portalra a kapcsolati sztring adataiért, majd másolja 
 
     A config.properties 2. sorának ekkor a következőhöz hasonlóan kell kinéznie: 
 
-    `cassandra_host=cosmos-db-quickstarts.cassandra.cosmosdb.azure.com`
+    `cassandra_host=cosmos-db-quickstart.cassandra.cosmosdb.azure.com`
 
 3. Lépjen vissza a Portalba, és másolja a USERNAME értéket. Illessze be a USERNAME értéket a Portalból a 4. sorban található `<cassandra endpoint username>` érték helyére.
 

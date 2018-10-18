@@ -12,12 +12,12 @@ ms.date: 12/15/2017
 ms.author: glenga
 ms.reviewer: sunayv
 ms.custom: mvc, cc996988-fb4f-47
-ms.openlocfilehash: a085d7e25854a928778802d2b4ef50cf9e57eff9
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 70eda1d69bdbdc969c5d6bc1774820b50ddc7c83
+ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46960923"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49093392"
 ---
 # <a name="create-an-openapi-definition-for-a-function"></a>OpenAPI definíció létrehozása egy függvényhez
 A REST API-k leírása gyakran egy OpenAPI-definíció (korábbi nevén [Swagger](http://swagger.io/)-fájl) használatával történik. Ez a definíció tartalmazza az API-ban elérhető műveletekkel kapcsolatos információkat, illetve az API kérés- és válaszadatainak felépítését.
@@ -61,17 +61,22 @@ Az oktatóanyag egy HTTP-vel aktivált függvényt használ, amelynek két bemen
 1. Cserélje le a run.csx fájl tartalmát a következő kódra, majd kattintson a **Mentés** parancsra:
 
     ```csharp
+    #r "Newtonsoft.Json"
+
     using System.Net;
+    using Microsoft.AspNetCore.Mvc;
+    using Microsoft.Extensions.Primitives;
+    using Newtonsoft.Json;
 
     const double revenuePerkW = 0.12; 
     const double technicianCost = 250; 
     const double turbineCost = 100;
 
-    public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, TraceWriter log)
+    public static async Task<IActionResult> Run(HttpRequest req, ILogger log)
     {   
-
         //Get request body
-        dynamic data = await req.Content.ReadAsAsync<object>();
+        string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
+        dynamic data = JsonConvert.DeserializeObject(requestBody);
         int hours = data.hours;
         int capacity = data.capacity;
 
@@ -87,7 +92,7 @@ Az oktatóanyag egy HTTP-vel aktivált függvényt használ, amelynek két bemen
             repairTurbine = "No";
         }
 
-        return req.CreateResponse(HttpStatusCode.OK, new{
+        return (ActionResult) new OkObjectResult(new{
             message = repairTurbine,
             revenueOpportunity = "$"+ revenueOpportunity,
             costToFix = "$"+ costToFix         

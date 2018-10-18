@@ -2,25 +2,19 @@
 title: Rövid útmutató – Microsoft Azure Data Box Disk | Microsoft Docs
 description: A rövid útmutató segítségével gyorsan üzembe helyezheti az Azure Data Box Disket az Azure Portalon.
 services: databox
-documentationcenter: NA
 author: alkohli
-manager: twooley
-editor: ''
-ms.assetid: ''
 ms.service: databox
-ms.devlang: NA
+ms.subservice: disk
 ms.topic: quickstart
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 09/07/2018
 ms.author: alkohli
 Customer intent: As an IT admin, I need to quickly deploy Data Box Disk so as to import data into Azure.
-ms.openlocfilehash: b4ec329fc5b1f3df9e6641bee3e1378c3a4d09c6
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: ca0fb177c8b6a16cf624fd4533c9c9040e6d9dee
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44378346"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49365234"
 ---
 # <a name="quickstart-deploy-azure-data-box-disk-using-the-azure-portal-preview"></a>Rövid útmutató: Az Azure Data Box Disk üzembe helyezése az Azure Portal használatával (előzetes verzió)
 
@@ -28,7 +22,7 @@ A rövid útmutató az Azure Data Box Disk az Azure Portal használatával való
 
 A részletes üzembehelyezési és nyomkövetési utasításokért lásd az [Azure Data Box Disk-meghajtók megrendelését ismertető oktatóanyagot](data-box-disk-deploy-ordered.md). 
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/en-us/free/?WT.mc_id=A261C142F).
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 > [!IMPORTANT]
 > A Data Box Disk előzetes verzióban érhető el. A megoldás üzembe helyezése előtt tekintse át [az Azure az előzetes verziókra vonatkozó szolgáltatási feltételeit](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).

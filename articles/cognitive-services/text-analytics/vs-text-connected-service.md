@@ -1,60 +1,60 @@
 ---
-title: Text Analytics C# oktatóanyag |} A Microsoft Docs
-titleSuffix: Microsoft Cognitive Services
-description: Szövegelemzés csatlakozhat egy ASP.NET Core-webalkalmazás.
+title: 'Oktatóanyag: A Text Analytics használata C#-pal'
+titleSuffix: Azure Cognitive Services
+description: Text Analytics kapcsolat az ASP.NET Core-webalkalmazásból.
 services: cognitive-services
 author: ghogen
-manager: douge
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: text-analytics
-ms.topic: conceptual
-ms.date: 06/01/2018
+ms.topic: tutorial
+ms.date: 09/12/2018
 ms.author: ghogen
-ms.openlocfilehash: eb9730f785b01a620e36a265216488c401eac63a
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
-ms.translationtype: MT
+ms.openlocfilehash: 95de174087fb2a73ad6c75a2e96caf872c351854
+ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39068488"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45605232"
 ---
-# <a name="connect-to-the-text-analytics-service-by-using-connected-services-in-visual-studio"></a>Csatlakozás a Text Analytics szolgáltatással a Visual Studio csatlakoztatott szolgáltatásai segítségével
+# <a name="tutorial-connect-to-the-text-analytics-cognitive-service-by-using-connected-services-in-visual-studio"></a>Oktatóanyag: Text Analytics Cognitive Service kapcsolat a Visual Studio csatlakoztatott szolgáltatásai segítségével
 
-A Text Analytics szolgáltatással a vizuális adatok kategorizálásához és feldolgozásához részletes információt nyerhet ki, és hajtsa végre a gépi támogatású képmoderálás segítheti a szolgáltatások összeválogatásában.
+A Text Analytics Service használatával részletes információkat nyerhet ki képekből a vizuális adatok kategorizálásához és feldolgozásához, a gépi támogatású képmoderálás segít őrködni a szolgáltatások felett.
 
-Ez a cikk és a kiegészítő cikkek adja meg adatait a Text Analytics szolgáltatáshoz a Visual Studio csatlakoztatott szolgáltatása funkció használatát. A funkció a mindkét Visual Studio 2017 15.7 vagy későbbi, a Cognitive Services-bővítmény telepítve.
+Ez a cikk és a kísérő cikkek részletesen ismertetik, hogyan lehet a Visual Studio csatlakoztatott szolgáltatási funkcióját a Text Analytics Service esetében felhasználni. A funkció a Visual Studio 2017 15.7 és későbbi változatokban is elérhető, ha a Cognitive Services bővítmény telepítve van.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 - Azure-előfizetés. Ha nem rendelkezik előfizetéssel, regisztrálhat egy [ingyenes fiókkal](https://azure.microsoft.com/pricing/free-trial/).
-- A Visual Studio 2017 15.7, futtassa a következőt a webalkalmazás-fejlesztési számítási feladattal. [Töltse le most](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs).
+- Visual Studio 2017 15.7 verzió telepítése webfejlesztési tevékenységprofillal. [Töltse le most](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs).
 
 [!INCLUDE [vs-install-cognitive-services-vsix](../../../includes/vs-install-cognitive-services-vsix.md)]
 
-## <a name="add-support-to-your-project-for-the-text-analytics-service"></a>Támogatás hozzáadása a projekthez a Text Analytics szolgáltatáshoz
+## <a name="add-support-to-your-project-for-the-text-analytics-service"></a>Támogatás hozzáadása a projekthez a Text Analytics Service számára
 
-1. Hozzon létre egy új ASP.NET Core web projektet TextAnalyticsDemo nevű. Az összes alapértelmezett beállításokkal használhatja a webalkalmazás (Model-View-Controller) projektsablonnal. Fontos adja a projektnek MyWebApplication, így a névtér megegyezik, amikor a kód másolását a projektbe.  A példában ez a cikk az MVC-t használja, de a Text Analytics csatlakoztatott szolgáltatás használata az ASP.NET-projekt típustól.
+1. Hozza létre a TextAnalyticsDemo nevű új ASP.NET Core web projektet. Használja a webalkalmazás (Model-View-Controller) projektsablont az összes alapértelmezett beállítással. Fontos, hogy a projektnek a MyWebApplication nevet adja, hogy a névtér egyezzen, amikor a kódot a projektbe másolja.  A példában ez a cikk az MVC-t használja, de a Text Analytics csatlakoztatott szolgáltatás bármely ASP.NET-projekttípussal használható.
 
-1. A **Megoldáskezelőben**, kattintson duplán a **csatlakoztatott szolgáltatás** elemet.
-   A csatlakoztatott szolgáltatás oldalon jelenik meg, a projekthez is hozzáadhat szolgáltatásokkal.
+1. A **Megoldáskezelőben** kattintson duplán a **csatlakoztatott szolgáltatás** elemen.
+   Megjelenik a projekthez adható szolgáltatásokat mutató Csatlakoztatott szolgáltatás oldal.
 
-   ![Képernyőkép a csatlakoztatott szolgáltatás a Megoldáskezelőben](../media/vs-common/Connected-Services-Solution-Explorer.PNG)
+   ![Képernyőkép a csatlakoztatott szolgáltatásról a Megoldáskezelőben](../media/vs-common/Connected-Services-Solution-Explorer.PNG)
 
-1. Elérhető szolgáltatások menüjében válassza **vélemények kiértékelése, szövegelemzés**.
+1. Az elérhető szolgáltatások menüjében válassza a **Hangulat kiértékelés a Text Analytics segítségével** lehetőséget.
 
-   ![A csatlakoztatott szolgáltatások képernyőfelvételen képernyő](./media/vs-text-connected-service/Cog-Text-Connected-Service-0.PNG)
+   ![A csatlakoztatott szolgáltatások képernyőjének képe](./media/vs-text-connected-service/Cog-Text-Connected-Service-0.PNG)
 
-   Ha már bejelentkezett a Visual Studióban, és a fiókhoz társított Azure-előfizetéssel rendelkezik, megjelenik egy oldal, és a egy legördülő lista az összes előfizetés.
+   Ha már bejelentkezett a Visual Stúdióba, és rendelkezik a fiókhoz társított Azure-előfizetéssel, akkor megjelenik egy oldal az előfizetéseit tartalmazó legördülő listával.
 
-   ![Képernyőkép a Text Analytics csatlakoztatott szolgáltatás képernyő](media/vs-text-connected-service/Cog-Text-Connected-Service-1.PNG)
+   ![A Text Analytics csatlakoztatott szolgáltatás képernyőjének képe](media/vs-text-connected-service/Cog-Text-Connected-Service-1.PNG)
 
-1. Válassza ki az előfizetést szeretné használni, majd válasszon egy nevet a Text Analytics szolgáltatás, vagy válassza ki a **szerkesztése** módosíthatja is az automatikusan létrehozott nevet, válassza ki az erőforráscsoportot és a Tarifacsomag hivatkozásra.
+1. Válassza ki a használni kívánt előfizetést majd válasszon nevet a Text Analytics Service számára, vagy a **Szerkesztés** hivatkozást választva módosíthatja az automatikusan létrehozott nevet, válassza ki az erőforráscsoportot és a Tarifacsomagot.
 
-   ![Képernyőkép az erőforráscsoportot és az árképzési szint mezők](media/vs-text-connected-service/Cog-Text-Connected-Service-2.PNG)
+   ![Az erőforráscsoport és a tarifacsomag mezők képernyőképe](media/vs-text-connected-service/Cog-Text-Connected-Service-2.PNG)
 
-   Kövesse a hivatkozást a tarifacsomagok.
+   A tarifacsomagokkal kapcsolatban kövesse a hivatkozást.
 
-1. Válasszon **Hozzáadás** a csatlakoztatott szolgáltatás támogatása érdekében.
-   A Visual Studio módosítja a NuGet-csomagok, konfigurációs bejegyzéseket és egyéb módosításokat a Text Analytics szolgáltatással való kapcsolat hozzáadása a projekthez. A **kimeneti ablak** naplózását, hogy mi történik a projekthez. A következőhöz hasonló kell megjelennie:
+1. Válassza a **Hozzáadás** gombot a csatlakoztatott szolgáltatáshoz támogatás hozzáadásához.
+   A Visual Studio módosítja a projektet a NuGet-csomagok, a konfigurációs fájl bejegyzések és egyéb a Text Analytics Service projekthez adásához szükséges módosítások hozzáadásával. A **kimeneti ablak** naplózza, hogy mi történik a projekttel. Az alábbihoz hasonlót kell látnia:
 
    ```output
     [6/1/2018 3:04:02.347 PM] Adding Text Analytics to the project.
@@ -67,9 +67,9 @@ Ez a cikk és a kiegészítő cikkek adja meg adatait a Text Analytics szolgált
     [6/1/2018 3:05:01.840 PM] Successfully added Text Analytics to the project.
     ```
  
-## <a name="use-the-text-analytics-service-to-detect-the-language-for-a-text-sample"></a>A Text Analytics szolgáltatás használatával észlelje a nyelvet, szöveges minta.
+## <a name="use-the-text-analytics-service-to-detect-the-language-for-a-text-sample"></a>A Text Analytics Service szolgáltatás használatával detektálja egy mintaszöveg nyelvét.
 
-1. Adja hozzá a következő using utasításokat a Startup.cs fájlban.
+1. Adja hozzá a következőket utasításokkal a Startup.cs fájlba.
  
    ```csharp
    using System.IO;
@@ -79,7 +79,7 @@ Ez a cikk és a kiegészítő cikkek adja meg adatait a Text Analytics szolgált
    using Microsoft.Extensions.Configuration;
    ```
  
-1. Adjon hozzá egy konfigurációs mező, és adja hozzá a konstruktort, amely a konfigurációs mező konfigurációs ahhoz, hogy a program az indítási osztályban inicializálja.
+1. A programbeli konfiguráció engedélyezéséhez adjon hozzá egy konfigurációs mezőt és adjon a Startup osztályhoz a konfigurációs mezőt inicializáló konstruktort.
 
    ```csharp
       private IConfiguration configuration;
@@ -90,7 +90,7 @@ Ez a cikk és a kiegészítő cikkek adja meg adatait a Text Analytics szolgált
       }
    ```
 
-1. Adjon hozzá egy osztály fájlt a tartományvezérlők DemoTextAnalyzeController nevű mappában, és cserélje le annak tartalmát az alábbira:
+1. Adjon hozzá egy DemoTextAnalyzeController nevű osztály fájlt a tartományvezérlők mappába, és cserélje le annak tartalmát az alábbira:
 
     ```csharp
     using System;
@@ -153,9 +153,9 @@ Ez a cikk és a kiegészítő cikkek adja meg adatait a Text Analytics szolgált
     }
     ```
     
-    A kód GetTextAnalyzeClient megszerezni az objektum, amelyet használhat a szövegelemzési API meghívására, és a egy kérelem-kezelő, amely meghívja a DetectLanguage a egy adott szöveg tartalmazza.
+    A kód tartalmazza a GetTextAnalyzeClient-et az ügyfél objektum lekérésére, amelyet a Text Analytics API meghívására használhat, és egy kérés kezelőt, ami egy adott szöveggel meghívja a DetectLanguage eljárást.
 
-1. Adja hozzá a MyHandler segítő osztályt, amelyet a fenti kóddal.
+1. Adja hozzá a MyHandler segédosztályt, amelyet a fenti kóddal használunk.
 
     ```csharp
         class MyHandler : DelegatingHandler
@@ -171,7 +171,7 @@ Ez a cikk és a kiegészítő cikkek adja meg adatait a Text Analytics szolgált
         }
     ```
 
-1. A Models mappát adja hozzá a modell osztályát.
+1. A Models mappába vegyen fel egy osztályt a modellnek.
 
     ```csharp
     using System;
@@ -193,7 +193,7 @@ Ez a cikk és a kiegészítő cikkek adja meg adatait a Text Analytics szolgált
     }
     ```
 
-1. Adjon hozzá egy nézetet, hogy az elemzett szöveg, határozza meg a nyelvet és a pontszám, amely a megbízhatósági szint az elemzés jelöli. Ehhez kattintson a jobb gombbal a **nézetek** mappát, válassza a **Hozzáadás**, majd **nézet**. A megjelenő párbeszédpanelen adjon meg egy nevet _TextAnalyzeResult_, fogadja el az alapértelmezett érték hozzáadása egy új fájlt _TextAnalyzeResult.cshtml_ a a **nézetek** mappát és másolja az alábbi tartalmat a fájlba:
+1. Adjon hozzá egy nézetet az elemzett szöveg, a meghatározott nyelv, és az elemzés megbízhatóságát jelző pontszám megtekintéséhez. Ehhez kattintson a jobb gombbal a **Nézetek** mappán, válassza a **Hozzáadás**, majd a **Nézet** lehetőséget. A megjelenő párbeszédpanelen adjon meg egy _TextAnalyzeResult_ nevet, fogadja el az alapértelmezéseket egy új, _TextAnalyzeResult.cshtml_ nevű fájlnak a hozzáadásához a **Nézetek** mappába és másolja be az alábbi tartalmat a fájlba:
     
     ```cshtml
     @using System
@@ -255,16 +255,16 @@ Ez a cikk és a kiegészítő cikkek adja meg adatait a Text Analytics szolgált
     
     ```
  
-1. Hozhat létre, és a példa helyileg történő futtatása. Írjon be szöveget, és tekintse meg a Szövegelemzés felismeri a nyelvet.
+1. Fordítsa és futtassa a példát helyileg. Írjon be valamilyen szöveget, és nézze meg milyen nyelvnek ismeri fel a Text Analytics.
    
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha már nincs rá szükség, törölje az erőforráscsoportot. Ezzel törli a cognitive Services-szolgáltatás és a kapcsolódó erőforrásokat. Az erőforráscsoport törlése a Portalon keresztül:
+Ha már nincs rá szükség, törölje az erőforráscsoportot. Ezzel törli a kognitív szolgáltatást és a kapcsolódó erőforrásokat. Az erőforráscsoport törlése a Portalon keresztül:
 
-1. Írja be az erőforráscsoport nevét a Portal tetején található keresőmezőbe. Amikor megjelenik a keresési eredmények ebben az oktatóanyagban használt erőforráscsoport, jelölje ki azt.
+1. Írja be az erőforráscsoport nevét a Portal tetején található keresőmezőbe. Amikor az eredmények listájában megjelenik az ebben az oktatóanyagban használt erőforráscsoport, jelölje ki.
 2. Válassza az **Erőforráscsoport törlése** elemet.
 3. Az **ÍRJA BE AZ ERŐFORRÁSCSOPORT NEVÉT:** mezőbe írja be az erőforráscsoport nevét, és válassza a **Törlés** lehetőséget.
 
 ## <a name="next-steps"></a>További lépések
 
-További információ a Text Analytics szolgáltatás olvassa el a [Text Analytics szolgáltatás dokumentációja](index.yml).
+További információ a Text Analytics szolgáltatásról: [Text Analytics szolgáltatás dokumentációja](index.yml).

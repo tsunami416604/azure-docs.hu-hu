@@ -10,12 +10,12 @@ ms.author: mimart
 author: msmimart
 manager: mtillman
 ms.reviewer: sasubram
-ms.openlocfilehash: d0f2669610f2086c29d52d95c9796e6a2939622e
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: 9d2fa8ec96f629ff85d785897398bc9af52ab3bc
+ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45985444"
+ms.lasthandoff: 10/12/2018
+ms.locfileid: "49165759"
 ---
 # <a name="azure-active-directory-b2b-collaboration-code-and-powershell-samples"></a>Az Azure Active Directory B2B-együttműködési kód- és PowerShell-minták
 
@@ -34,14 +34,14 @@ Tömegesen meghívhat külső felhasználókat egy szervezetbe egy .CSV-fájlban
 
 3. Jelentkezzen be a bérlőkhöz
 
-    ```
+    ```powershell
     $cred = Get-Credential
     Connect-AzureAD -Credential $cred
     ```
 
 4. Futtassa a PowerShell-parancsmagot
 
-  ```
+  ```powershell
   $invitations = import-csv C:\data\invitations.csv
   $messageInfo = New-Object Microsoft.Open.MSGraph.Model.InvitedUserMessageInfo
   $messageInfo.customizedMessageBody = "Hey there! Check this out. I created an invitation through PowerShell"
@@ -56,7 +56,7 @@ Ez a parancsmag meghívót küld az invitations.csv fájlban szereplő e-mail-c�
 ## <a name="code-sample"></a>Kódminta
 Itt azt mutatjuk be, hogyan hívhatja meg a meghívó API-t „csak alkalmazás” módban, hogy megszerezhesse az érvényesítési URL-címet ahhoz az erőforráshoz, amelyhez meghívja a B2B-felhasználót. A cél egy egyéni meghívó e-mail küldése. Az e-mailt megírhatja egy HTTP-ügyfélben, ahol testre szabhatja az üzenet külalakját, majd a Graph API-val elküldheti.
 
-```
+```csharp
 namespace SampleInviteApp
 {
     using System;

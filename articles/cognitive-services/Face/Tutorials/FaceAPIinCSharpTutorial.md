@@ -3,19 +3,19 @@ title: 'Oktatóanyag: Arcok észlelése és bekeretezése egy képen – Face AP
 titleSuffix: Azure Cognitive Services
 description: Ebben az oktatóanyagban egy Windows-alkalmazást hozunk létre, amely a Face API segítségével észleli és bekeretezi a képeken lévő arcokat.
 services: cognitive-services
-author: noellelacharite
+author: PatrickFarley
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: face-api
 ms.topic: tutorial
 ms.date: 09/24/2018
-ms.author: nolachar
-ms.openlocfilehash: 657c471761c36de5095763623210909308f55c2a
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.author: pafarley
+ms.openlocfilehash: ba850c1d4f9d8018f333662eead56f8e91b3fbd7
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47162611"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49340953"
 ---
 # <a name="tutorial-create-a-wpf-app-to-detect-and-frame-faces-in-an-image"></a>Oktatóanyag: WPF-alkalmazás létrehozása képeken lévő arcok észleléséhez és bekeretezéséhez
 

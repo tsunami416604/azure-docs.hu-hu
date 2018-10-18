@@ -17,7 +17,7 @@
 ##  Alapelvek
 ### [Virtuális hálózatok](../virtual-network/virtual-networks-overview.md?toc=%2fazure%2fnetworking%2ftoc.json)
 ### [Hálózati terheléselosztás](../load-balancer/load-balancer-overview.md?toc=%2fazure%2fnetworking%2ftoc.json)
-### [Alkalmazásterhelés-elosztás](../application-gateway/application-gateway-introduction.md?toc=%2fazure%2fnetworking%2ftoc.json)
+### [Alkalmazásterhelés-elosztás](../application-gateway/overview.md?toc=%2fazure%2fnetworking%2ftoc.json)
 ### [DNS](../dns/dns-overview.md?toc=%2fazure%2fnetworking%2ftoc.json)
 ### [DNS-alapú forgalomelosztás](../traffic-manager/traffic-manager-overview.md?toc=%2fazure%2fnetworking%2ftoc.json)
 ### [Helyszíni kapcsolódás – VPN](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fnetworking%2ftoc.json)

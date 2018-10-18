@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 06/08/2018
 ms.author: dekapur
 ms.custom: mvc
-ms.openlocfilehash: 9eea0cabebb67095d4c6c813e7d13c885a447db4
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: 24b4cbe0eb13a41ccd6ae98db90d4bf0cf7d22a7
+ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44378890"
+ms.lasthandoff: 10/13/2018
+ms.locfileid: "49311218"
 ---
 # <a name="tutorial-monitor-windows-containers-on-service-fabric-using-log-analytics"></a>Oktatóanyag: A Service Fabric Windows-tárolóinak monitorozása a Log Analytics használatával
 
@@ -42,7 +42,7 @@ Az oktatóanyag elkezdése előtt:
 
 ## <a name="setting-up-log-analytics-with-your-cluster-in-the-resource-manager-template"></a>Log Analytics beállítása a fürttel a Resource Manager-sablonban
 
-Abban az esetben, ha az oktatóanyag első részében [megadott sablont](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/Tutorial) használta, tartalmaznia kell az általános Service Fabric Azure Resource Manager-sablon alábbi kiegészítéseit. Ha saját fürttel rendelkezik, amelyet a tárolók Log Analytics szolgáltatással való monitorozására szeretne használni:
+Abban az esetben, ha az oktatóanyag első részében [megadott sablont](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/5-VM-Windows-OMS-UnSecure) használta, tartalmaznia kell az általános Service Fabric Azure Resource Manager-sablon alábbi kiegészítéseit. Ha saját fürttel rendelkezik, amelyet a tárolók Log Analytics szolgáltatással való monitorozására szeretne használni:
 
 * Hajtsa végre az alábbi módosításokat a Resource Manager-sablonon.
 * Helyezze üzembe a PowerShell használatával a fürt a [sablon üzembe helyezésével](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-creation-via-arm) történő frissítéséhez. Az Azure Resource Manager megállapítja, hogy az erőforrás létezik, ezután pedig frissítésként közzéteszi.

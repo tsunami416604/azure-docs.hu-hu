@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/03/2018
+ms.date: 10/16/2018
 ms.author: magoedte
-ms.openlocfilehash: 0e23f5ac8dcce940389f62097fef7de36abe2387
-ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
+ms.openlocfilehash: 33d16e211667edc6c082ab8c101e69ee5875efb8
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48269208"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49390244"
 ---
 # <a name="how-to-onboard-the-azure-monitor-for-vms"></a>Hogyan üzembe helyezni az Azure figyelheti a virtuális gépek 
 Ez a cikk ismerteti, hogyan állítható be az Azure Monitor az Azure-beli virtuális gépek operációs rendszer állapotának figyelésére és felderítése és képezze le az alkalmazás függőségeit, amelyek rajtuk üzemeltethető virtuális gépek számára.  
@@ -43,6 +43,10 @@ Log Analytics-munkaterület az alábbi régiókban jelenleg támogatott:
   - Délkelet-Ázsia<sup>1</sup>  
 
 <sup>1</sup> ebben a régióban jelenleg nem támogatja az Azure Monitor állapota funkcióját a virtuális gépek   
+
+>[!NOTE]
+>Azure-beli virtuális gépek előre telepített bármely régió és nem korlátozottak a támogatott régiók, a Log Analytics-munkaterületen.
+>
 
 Ha nem rendelkezik egy munkaterületet, létrehozhat keresztül [Azure CLI-vel](../log-analytics/log-analytics-quick-create-workspace-cli.md)segítségével, [PowerShell](../log-analytics/log-analytics-quick-create-workspace-posh.md), a a [az Azure portal](../log-analytics/log-analytics-quick-create-workspace.md), vagy [Azure Resource Manager](../log-analytics/log-analytics-template-workspace-configuration.md).  Ha engedélyezi az Azure Portalon egy Azure virtuális gép figyelése, lehetősége van, hozzon létre egy munkaterületet a folyamat során.  
 

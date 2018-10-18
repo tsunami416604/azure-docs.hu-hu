@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: c0b42c3efd5e015eaf1fbd750f835d8de8818de9
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.openlocfilehash: d99b76faf618439e51735d5f1096fd4f1cfd2364
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43185851"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47038289"
 ---
 # <a name="tutorial-customize-the-azure-iot-central-operators-view"></a>Oktatóanyag: Az Azure IoT Central operátori nézeteinek testreszabása
 
@@ -50,9 +50,9 @@ Szerkesztőként meghatározhatja, milyen információk jelenjenek meg egy eszk�
 
     ![A csatlakoztatott légkondicionáló eszköz kiválasztása](media/tutorial-customize-operator/selectdevice.png)
 
-    Amikor módosít egy eszközt, például a **Csatlakoztatott légkondicionáló-1** eszközt, módosítja az alapul szolgáló sablont is. További információkért lásd az [új eszközsablon-verzió létrehozását](howto-version-devicetemplate.md) ismertető szakaszt.
+    Egy eszközön, például a **Csatlakoztatott légkondicionáló-1** eszközön belül a **Sablon szerkesztése** lehetőséggel az alapul szolgáló sablont is módosíthatja. További információkért lásd az [új eszközsablon-verzió létrehozását](howto-version-devicetemplate.md) ismertető szakaszt.
 
-3. Az irányítópult szerkesztéséhez válassza az **Irányítópult** lehetőséget:
+3. Az irányítópult szerkesztéséhez válassza az **Irányítópult**, majd a **Sablon szerkesztése** lehetőséget:
 
     ![Eszközsablon irányítópultja oldal](media/tutorial-customize-operator/dashboard.png)
 
@@ -77,11 +77,13 @@ Szerkesztőként meghatározhatja, milyen információk jelenjenek meg egy eszk�
 
     ![Irányítópult elrendezésének szerkesztése](media/tutorial-customize-operator/dashboardlayout.png)
 
+7. Ha végzett a módosításokkal, kattintson a **Kész** lehetőségre.
+
 ## <a name="configure-your-settings-layout"></a>A beállítások elrendezésének konfigurálása
 
 Szerkesztőként az eszközbeállítások operátori nézetét is konfigurálhatja. Az operátorok az eszközbeállítások oldalán konfigurálják az eszközöket. Egy operátor például a beállítások oldalán állítja be a hűtőszekrény célhőmérsékletét.
 
-1. A csatlakoztatott légkondicionáló-beállítások elrendezésének szerkesztéséhez válassza a **Beállítások** lehetőséget:
+1. A csatlakoztatott légkondicionáló-beállítások elrendezésének szerkesztéséhez válassza a **Beállítások**, majd a **Sablon szerkesztése** lehetőséget:
 
     ![Beállítások lap](media/tutorial-customize-operator/settings.png)
 
@@ -89,14 +91,16 @@ Szerkesztőként az eszközbeállítások operátori nézetét is konfigurálhat
 
     ![A beállítások elrendezésének szerkesztése](media/tutorial-customize-operator/settingslayout.png)
 
+3. Ha végzett a módosításokkal, kattintson a **Kész** lehetőségre.
+
 > [!NOTE]
-> **Tervezési módban** nem szerkesztheti a beállítások értékeit.
+> **Sablonszerkesztési** módban nem szerkesztheti a beállítások értékeit.
 
 ## <a name="configure-your-properties-layout"></a>A tulajdonságok elrendezésének konfigurálása
 
 Az irányítópult és a beállítások mellett az eszköztulajdonságok operátori nézetét is konfigurálhatja. Az operátorok az eszköztulajdonságok oldalán kezelik az eszközök metaadatait. Egy operátor például a tulajdonságok oldalán tekintheti meg az eszköz sorozatszámát vagy frissítheti a gyártó kapcsolattartási adatait.
 
-1. A csatlakoztatott légkondicionáló-tulajdonságok elrendezésének szerkesztéséhez válassza a **Tulajdonságok** lehetőséget:
+1. A csatlakoztatott légkondicionáló-tulajdonságok elrendezésének szerkesztéséhez válassza a **Tulajdonságok**, majd a **Sablon szerkesztése** lehetőséget:
 
     ![Tulajdonságok lap](media/tutorial-customize-operator/properties.png)
 
@@ -104,16 +108,18 @@ Az irányítópult és a beállítások mellett az eszköztulajdonságok operát
 
     ![A tulajdonságok elrendezésének szerkesztése](media/tutorial-customize-operator/propertieslayout.png)
 
+3. Ha végzett a módosításokkal, kattintson a **Kész** lehetőségre.
+
 > [!NOTE]
-> **Tervezési módban** nem szerkesztheti a tulajdonságok értékeit.
+> **Sablonszerkesztési** módban nem szerkesztheti a tulajdonságok értékeit.
 
 ## <a name="preview-the-connected-air-conditioner-device-as-an-operator"></a>A csatlakoztatott légkondicionáló eszköz előnézetének megtekintése operátorként
 
-**Tervezési módban** testreszabhatja az operátor irányítópult, a beállítások és a tulajdonságok oldalát. Ha kikapcsolja a **Tervezési módot**, operátorként tekintheti meg az alkalmazást.
+**Sablonszerkesztési** módban testreszabhatja az operátor irányítópult, a beállítások és a tulajdonságok oldalát. Ha nem **Sablonszerkesztési** módban van, operátorként tekintheti meg az alkalmazást.
 
-1. Ha operátorként szeretné megtekinteni a csatlakoztatott légkondicionáló eszközt, ki kell kapcsolnia a **Tervezési módot**. A **Tervezési mód** kikapcsolásához kapcsolja ki az oldal jobb felső részén lévő **Tervezési mód** kapcsolót.
+1. Ha operátorként szeretné megtekinteni a csatlakoztatott légkondicionáló eszközt, a **Kész** lehetőségre kattintva meg kell szakítania a sablon szerkesztését. Ezzel visszatér az eszköz operátori nézetére.
 
-2. Az eszköz sorozatszámának frissítéséhez szerkessze a sorozatszámcsempén lévő értéket, és válassza a **Mentés** lehetőséget:
+2. Az eszköz helyének frissítéséhez szerkessze a helycsempén lévő értéket, és válassza a **Mentés** lehetőséget:
 
     ![Tulajdonságérték szerkesztése](media/tutorial-customize-operator/editproperty.png)
 
@@ -131,7 +137,7 @@ Az irányítópult és a beállítások mellett az eszköztulajdonságok operát
 
 Amikor egy szerkesztő vagy operátor bejelentkezik az Azure IoT Central-alkalmazásba, egy kezdőlapot lát. Szerkesztőként konfigurálhatja e kezdőlap tartalmát, hogy az operátor számára leghasznosabb és legfontosabb tartalmakat foglalja bele.
 
-1. Az alapértelmezett kezdőlap testreszabásához lépjen a **Kezdőlapra**, és kapcsolja be a **Tervezési módot** az oldal jobb felső részén. A **Tervezési mód** bekapcsolásakor kinyílik egy panel a jobb oldalon a kezdőlapra adható objektumok listájával.
+1. Az alapértelmezett kezdőlap testreszabásához lépjen a **Kezdőlapra**, és válassza a **Szerkesztés** lehetőséget az oldal jobb felső részén. A **Szerkesztés** választásakor a jobb oldalon megnyílik egy panel a kezdőlapra adható objektumok listájával.
 
     ![Alkalmazásszerkesztő oldal](media/tutorial-customize-operator/builderhome.png)
 
@@ -150,7 +156,7 @@ Amikor egy szerkesztő vagy operátor bejelentkezik az Azure IoT Central-alkalma
 
 ## <a name="preview-the-default-home-page-as-an-operator"></a>Az alapértelmezett kezdőlap előnézetének megtekintése operátorként
 
-Ha operátorként szeretné megtekinteni a kezdőlap előnézetét, kapcsolja ki a **Tervezési módot** az oldal jobb felső részén:
+Ha nem kívánja tovább szerkeszteni a kezdőlapot, hanem operátorként szeretné megtekinteni annak előnézetét, válassza a **Kész** lehetőséget az oldal jobb felső részén
 
 ![A Tervezési mód be- és kikapcsolása](media/tutorial-customize-operator/operatorviewhome.png)
 
