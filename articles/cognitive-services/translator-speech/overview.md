@@ -10,15 +10,17 @@ ms.component: translator-speech
 ms.topic: overview
 ms.date: 3/5/2018
 ms.author: v-jansko
-ROBOTS: NOINDEX
-ms.openlocfilehash: fd974d153e9db48b25c1b732b9719c21b16b5e01
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 77e60fe39f7cbb985ee0e7ed2785805e80c389ae
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46948774"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49341140"
 ---
 # <a name="what-is-translator-speech-api"></a>Mi az a Translator Speech API?
+
+[!INCLUDE [Deprecation note](../../../includes/cognitive-services-translator-speech-deprecation-note.md)]
+
 A Translator Speech API-val teljes körű, valós idejű beszédfordítással bővíthetők az alkalmazások, eszközök, illetve a többnyelvű beszédfordítást igénylő megoldások a cél operációs rendszertől vagy a fejlesztési nyelvtől függetlenül. Az API tolmácsoláshoz és beszéd lefordított szöveggé alakításához is használható.
 
 A Translator Text API egy Azure-szolgáltatás, amely a felhőalapú gépi tanulási és mesterséges intelligenciára épülő algoritmusokat biztosító, a fejlesztési projektekben készen használható [Azure Cognitive Services API](https://docs.microsoft.com/azure/#pivot=products&panel=cognitive)-gyűjtemény részét képezi.

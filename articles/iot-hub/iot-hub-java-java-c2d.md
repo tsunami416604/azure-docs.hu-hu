@@ -2,53 +2,59 @@
 title: Felhőből az eszközre irányuló üzeneteket az Azure IoT Hub (Java) szolgáltatással |} A Microsoft Docs
 description: Annak a felhőből az eszközre irányuló üzeneteket küld egy eszköz az Azure IoT SDK használata Javához készült Azure IoT hubról. Módosítja egy szimulált eszközalkalmazás felhőből az eszközre irányuló üzenetek fogadása és módosíthat egy háttér-alkalmazást a felhőből az eszközre irányuló üzenetek küldéséhez.
 author: dominicbetts
-manager: timlt
 ms.service: iot-hub
 services: iot-hub
 ms.devlang: java
 ms.topic: conceptual
 ms.date: 06/28/2017
 ms.author: dobett
-ms.openlocfilehash: e4d0df28449a2e50e72b192f0118a8eae3325d15
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 2c784fa2879a78e52ed7aa80cb50535a830b1ed7
+ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47220202"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49376686"
 ---
 # <a name="send-cloud-to-device-messages-with-iot-hub-java"></a>Az IoT Hub (Java) szolgáltatással felhőből az eszközre irányuló üzenetek küldéséhez
+
 [!INCLUDE [iot-hub-selector-c2d](../../includes/iot-hub-selector-c2d.md)]
 
-Az Azure IoT Hub egy teljes körűen felügyelt szolgáltatás, amellyel engedélyezheti a megbízható és biztonságos kétirányú kommunikációt több millió eszköz között, és megoldást biztosít a háttérrendszer. A [IoT Hub használatának első lépései] az oktatóanyag bemutatja, hogyan hozzon létre egy IoT hubot, azt az eszközidentitás létrehozását és kód az eszköz a felhőbe irányuló üzeneteket küld egy szimulált eszközalkalmazás.
+Az Azure IoT Hub egy teljes körűen felügyelt szolgáltatás, amellyel engedélyezheti a megbízható és biztonságos kétirányú kommunikációt több millió eszköz között, és megoldást biztosít a háttérrendszer. A [telemetriát küldjön az eszközről a Hub (Java)](quickstart-send-telemetry-java.md) az oktatóanyag bemutatja, hogyan hozzon létre egy IoT hubot, azt az eszközidentitás létrehozását és kód az eszköz a felhőbe irányuló üzeneteket küld egy szimulált eszközalkalmazás.
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
-Ebben az oktatóanyagban épül [IoT Hub használatának első lépései]. Azt mutatja, hogy:
+Ebben az oktatóanyagban épül [telemetriát küldjön az eszközről az IoT Hub (Java)](quickstart-send-telemetry-java.md). Ez bemutatja, hogyan végezze el a következőket:
 
 * A megoldás háttérrendszerének, a felhőből az eszközre irányuló üzenetek küldése IoT hubon keresztül egy adott eszköz.
+
 * Az eszközön a felhőből az eszközre irányuló üzeneteket fogadni.
+
 * A megoldás háttérrendszerének, a kérelmek kézbesítési nyugtázás (*visszajelzés*) az IoT Hub az eszközökre küldött üzenetek.
 
-A felhőből az eszközre irányuló üzenetek további tájékoztatást talál a [IoT Hub fejlesztői útmutatójának][IoT Hub developer guide - C2D].
+További információt talál a [felhőből az eszközre irányuló üzeneteket az IoT Hub fejlesztői útmutatójának](iot-hub-devguide-messaging.md).
 
 Ez az oktatóanyag végén két Java-konzolalkalmazással futtassa:
 
-* **a szimulált eszköz**, a létrehozott alkalmazás egy módosított verziója [IoT Hub használatának első lépései], amely csatlakozik az IoT hubhoz, és megkapja a felhőből az eszközre.
+* **a szimulált eszköz**, a létrehozott alkalmazás egy módosított verziója [telemetriát küldjön az eszközről a Hub (Java)](quickstart-send-telemetry-java.md), amely csatlakozik az IoT hubhoz, és megkapja a felhőből az eszközre.
+
 * **küldési-c2d-üzenetek**, amely a felhőből az eszközre üzenetet küld az IoT hubon keresztül a szimulált eszközalkalmazásnak, és annak kézbesítési nyugtázási majd kap.
 
 > [!NOTE]
-> Az IoT Hub SDK számos eszközplatformok és nyelveken (például a C, Java és Javascript) keresztül az Azure IoT eszközoldali SDK-k támogatással rendelkezik. Az eszköz csatlakoztatása, ebben az oktatóanyagban a kódot, és általában az Azure IoT hubba a részletes útmutatót lásd: a [Azure IoT fejlesztői központ].
+> Az IoT Hub SDK számos eszközplatformok és nyelveken (például a C, Java és Javascript) keresztül az Azure IoT eszközoldali SDK-k támogatással rendelkezik. Az eszköz csatlakoztatása, ebben az oktatóanyagban a kódot, és általában az Azure IoT hubba a részletes útmutatót lásd: a [Azure IoT fejlesztői központ](http://azure.microsoft.com/develop/iot).
 
 Az oktatóanyag teljesítéséhez a következőkre lesz szüksége:
 
-* Egy teljes működő verziójához a [IoT Hub használatának első lépései](quickstart-send-telemetry-java.md) vagy [folyamat IoT Hub-eszköz – felhő üzenetek](tutorial-routing.md) oktatóanyag.
+* Egy teljes működő verziójához a [telemetriát küldjön az eszközről a Hub (Java)](quickstart-send-telemetry-java.md) vagy a [konfigurálása az IoT Hub üzenet-útválasztása](tutorial-routing.md) oktatóanyag.
+
 * A legújabb [Java SE Development Kit 8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
+
 * [Maven 3](https://maven.apache.org/install.html)
-* Aktív Azure-fiók. (Ha nincs fiókja, létrehozhat egy [ingyenes fiókot][lnk-free-trial] néhány perc alatt.)
+
+* Aktív Azure-fiók. Ha nincs fiókja, létrehozhat egy [ingyenes fiókot](http://azure.microsoft.com/pricing/free-trial/) mindössze néhány perc alatt.
 
 ## <a name="receive-messages-in-the-simulated-device-app"></a>Üzenetek fogadása a szimulált eszköz alkalmazásban
 
-Ebben a szakaszban módosítsa a szimulált eszközalkalmazás létrehozott [IoT Hub használatának első lépései] felhőből az eszközre irányuló üzenetek fogadása az IoT hubról.
+Ebben a szakaszban módosítsa a szimulált eszközalkalmazás létrehozott [telemetriát küldjön az eszközről a Hub (Java)](quickstart-send-telemetry-java.md) felhőből az eszközre irányuló üzenetek fogadása az IoT hubról.
 
 1. Egy szövegszerkesztővel nyissa meg a simulated-device\src\main\java\com\mycompany\app\App.java fájlt.
 
@@ -75,7 +81,7 @@ Ebben a szakaszban módosítsa a szimulált eszközalkalmazás létrehozott [IoT
     ```
 
     > [!NOTE]
-    > Ha az átvitelhez mqtt-ről vagy AMQP helyett a HTTPS PROTOKOLLT használja. a **DeviceClient** példány ellenőrzi az üzeneteket az IoT hub felől ritkán (kevesebb mint 25 percenként). MQTT, AMQP és a HTTPS-támogatás és az IoT Hub szabályozás közötti különbségekkel kapcsolatos további információkért lásd: a [IoT Hub fejlesztői útmutatójának][IoT Hub developer guide - C2D].
+    > Ha az átvitelhez mqtt-ről vagy AMQP helyett a HTTPS PROTOKOLLT használja. a **DeviceClient** példány ellenőrzi az üzeneteket az IoT hub felől ritkán (kevesebb mint 25 percenként). MQTT, AMQP és a HTTPS-támogatás és az IoT Hub szabályozás közötti különbségekkel kapcsolatos további információkért lásd: a [üzenetkezelés az IoT Hub fejlesztői útmutatójának szakaszában](iot-hub-devguide-messaging.md).
 
 4. Ha a **simulated-device** alkalmazást a Maven használatával szeretné felépíteni, futtassa a következő parancsot a parancssorban a simulated-device mappában:
 
@@ -85,7 +91,7 @@ Ebben a szakaszban módosítsa a szimulált eszközalkalmazás létrehozott [IoT
 
 ## <a name="send-a-cloud-to-device-message"></a>Felhőből az eszközre irányuló üzenet küldése
 
-Ebben a szakaszban egy Java-konzolalkalmazást, amely a felhőből az eszközre irányuló üzeneteket küld a szimulált eszközalkalmazás létrehozása. Az eszköz azonosítója, az eszköz a hozzáadott van szüksége a [IoT Hub használatának első lépései] oktatóanyag. Emellett az IoT Hub kapcsolati karakterláncra, amely találhatja meg a hub a [Azure Portal].
+Ebben a szakaszban egy Java-konzolalkalmazást, amely a felhőből az eszközre irányuló üzeneteket küld a szimulált eszközalkalmazás létrehozása. Az eszköz azonosítója, az eszköz a hozzáadott van szüksége a [telemetriát küldjön az eszközről a Hub (Java)](quickstart-send-telemetry-java.md) rövid. Emellett az IoT Hub kapcsolati karakterláncra, amely találhatja meg a hub a [az Azure portal](https://portal.azure.com).
 
 1. Hozzon létre egy nevű Maven-projektet **c2d-üzeneteket küldhetünk** használja az alábbi parancsot a parancssorba. Megjegyzés: Ez a parancs nem egyetlen hosszú parancs:
 
@@ -106,7 +112,7 @@ Ebben a szakaszban egy Java-konzolalkalmazást, amely a felhőből az eszközre 
     ```
 
     > [!NOTE]
-    > Az **iot-service-client** legújabb verzióját a [Maven keresési funkciójával][lnk-maven-service-search] tekintheti meg.
+    > Ellenőrizze, hogy a legújabb **iot-service-client** használatával [Maven keresési](http://search.maven.org/#search%7Cga%7C1%7Ca%3A%22iot-service-client%22%20g%3A%22com.microsoft.azure.sdk.iot%22).
 
 4. Mentse és zárja be a pom.xml fájlt.
 
@@ -125,7 +131,8 @@ Ebben a szakaszban egy Java-konzolalkalmazást, amely a felhőből az eszközre 
     ```java
     private static final String connectionString = "{yourhubconnectionstring}";
     private static final String deviceId = "{yourdeviceid}";
-    private static final IotHubServiceClientProtocol protocol = IotHubServiceClientProtocol.AMQPS;
+    private static final IotHubServiceClientProtocol protocol =    
+        IotHubServiceClientProtocol.AMQPS;
     ```
 
 8. Cserélje le a **fő** módszer a következő kóddal. Ez a kód csatlakozik az IoT hubhoz, egy üzenetet küld az eszközre, és majd megvárja, amíg egy visszaigazolás, hogy az eszköz és az üzenetet dolgoz:
@@ -180,7 +187,7 @@ Most már készen áll az alkalmazások futtatására.
     mvn exec:java -Dexec.mainClass="com.mycompany.app.App" 
     ```
 
-    ![A szimulált eszközalkalmazás futtatása][img-simulated-device]
+    ![A szimulált eszközalkalmazás futtatása](./media/iot-hub-java-java-c2d/receivec2d.png)
 
 2. A Küldés-c2d-messages mappában egy parancssorban futtassa a következő parancsot a felhőből az eszközre irányuló üzenetküldés, és várjon, amíg a visszajelzés visszaigazolás:
 
@@ -188,27 +195,12 @@ Most már készen áll az alkalmazások futtatására.
     mvn exec:java -Dexec.mainClass="com.mycompany.app.App"
     ```
 
-    ![Futtassa a parancsot a felhőből az eszközre irányuló üzenetek küldéséhez][img-send-command]
+    ![Futtassa a parancsot a felhőből az eszközre irányuló üzenetek küldéséhez](media/iot-hub-java-java-c2d/sendc2d.png)
 
 ## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban megtudhatta, hogyan a felhőből az eszközre irányuló üzenetek küldése és fogadása. 
 
-Példák teljes, végpontok közötti megoldások, amely az IoT Hub használata a megtekintéséhez lásd: [Az Azure IoT távoli figyelési megoldásgyorsító].
+Példák teljes, végpontok közötti megoldások, amely az IoT Hub használata a megtekintéséhez lásd: [Azure IoT-Megoldásgyorsítók](https://azure.microsoft.com/documentation/suites/iot-suite/).
 
-Az IoT Hub megoldások fejlesztésével kapcsolatos további tudnivalókért tekintse meg a [Az IoT Hub fejlesztői útmutató].
-
-<!-- Images -->
-[img-simulated-device]: media/iot-hub-java-java-c2d/receivec2d.png
-[img-send-command]:  media/iot-hub-java-java-c2d/sendc2d.png
-<!-- Links -->
-
-[IoT Hub használatának első lépései]: quickstart-send-telemetry-java.md
-[IoT Hub developer guide - C2D]: iot-hub-devguide-messaging.md
-[Az IoT Hub fejlesztői útmutató]: iot-hub-devguide.md
-[Azure IoT fejlesztői központ]: http://azure.microsoft.com/develop/iot
-[lnk-free-trial]: http://azure.microsoft.com/pricing/free-trial/
-[lnk-dev-setup]: https://github.com/Azure/azure-iot-sdk-java
-[Azure Portal]: https://portal.azure.com
-[Az Azure IoT távoli figyelési megoldásgyorsító]: https://azure.microsoft.com/documentation/suites/iot-suite/
-[lnk-maven-service-search]: http://search.maven.org/#search%7Cga%7C1%7Ca%3A%22iot-service-client%22%20g%3A%22com.microsoft.azure.sdk.iot%22
+Az IoT Hub megoldások fejlesztésével kapcsolatos további tudnivalókért tekintse meg a [IoT Hub fejlesztői útmutatójának](iot-hub-devguide.md).

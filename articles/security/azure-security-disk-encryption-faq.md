@@ -6,13 +6,13 @@ ms.service: security
 ms.subservice: Azure Disk Encryption
 ms.topic: article
 ms.author: mstewart
-ms.date: 09/10/2018
-ms.openlocfilehash: 9d1414959ef8eae2277e530e6eca57ec06aaec37
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.date: 10/16/2018
+ms.openlocfilehash: 8da966154f1da8cb1be090f70d80e4484e9bce0d
+ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44345507"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49377291"
 ---
 # <a name="azure-disk-encryption-faq"></a>Az Azure Disk Encryption – gyakori kérdések
 
@@ -132,6 +132,11 @@ Ha ezt a munkafolyamatot nem lehetséges, a függő entitások [a Storage Servic
 "Rendelkeznek BEk-kel kötet" Windows vagy a "/ mnt/azure_bek_disk" Linux olyan helyi kötet, amely biztonságosan tárolja a titkosítási kulcsok titkosított Azure IaaS virtuális gépekhez.
 > [!NOTE]
 > Nem törölheti vagy szerkesztheti a bármely tartalmát ezt a lemezt. Válassza le a lemez nem, mivel a titkosítási kulcs jelenlét szükséges az IaaS virtuális gép titkosítási műveleteket.
+
+
+## <a name="what-encryption-method-does-azure-disk-encryption-use"></a>Milyen titkosítási módszert használ az Azure Disk Encryption?
+
+A Windows, ADE használ a Bitlocker AES256 titkosítási módszert (a Windows Server 2012 előtti verziókról AES256WithDiffuser). Linux rendszeren ADE használ az aes-xts-plain64 dmcrypt alapértelmezett egy 256 bites kötetfőkulccsal.
 
 ## <a name="if-i-use-encryptformatall-and-specify-all-volume-types-will-it-erase-the-data-on-the-data-drives-that-we-already-encrypted"></a>Ha EncryptFormatAll használja, és adja meg a minden kötet esetében, azt az adatot töröl már titkosított adatok meghajtókon?
 Nem, adatokat a rendszer nem törli a már Azure Disk Encryption használatával titkosított meghajtók. Hogyan EncryptFormatAll nem újratitkosítása az operációs rendszer meghajtójának hasonlóan, nem fog újra már a titkosított adatok meghajtójának titkosításához. További információkért lásd: a [EncryptFormatAll feltételek](azure-security-disk-encryption-linux.md#bkmk_EFACriteria).        

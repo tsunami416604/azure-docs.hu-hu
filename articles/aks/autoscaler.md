@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 07/19/18
 ms.author: sakthivetrivel
 ms.custom: mvc
-ms.openlocfilehash: 6ec39116596c7abb7b1d26f864cdb57d839c88be
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.openlocfilehash: e16c82f7c49bf90fc074732d0a989b9de94a52c5
+ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/17/2018
-ms.locfileid: "49365135"
+ms.locfileid: "49375851"
 ---
 # <a name="cluster-autoscaler-on-azure-kubernetes-service-aks---preview"></a>Méretező fürt az Azure Kubernetes Service (AKS) – előzetes verzió
 
@@ -26,11 +26,22 @@ Ez a cikk ismerteti, hogyan helyezhet üzembe az ügynökcsomópontok a fürt au
 > Az Azure Kubernetes Service (AKS)-fürt méretező integrációja jelenleg **előzetes**. Az előzetes verziók azzal a feltétellel érhetők el, hogy Ön beleegyezik a [kiegészítő használati feltételekbe](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). A szolgáltatás néhány eleme megváltozhat a nyilvános rendelkezésre állás előtt.
 >
 
-## <a name="prerequisites"></a>Előfeltételek
+## <a name="prerequisites-and-considerations"></a>Előfeltételek és szempontok
 
 Jelen dokumentum céljából feltételezzük, hogy az RBAC-kompatibilis AKS-fürt. Ha egy AKS-fürtre van szüksége, tekintse meg a [Azure Kubernetes Service (AKS) rövid][aks-quick-start].
 
  Fürt automatikus méretező használatához, a fürt Kubernetes v1.10.X kell használnia, vagy magasabb szintű és az RBAC-engedélyezve kell lennie. Frissítse a fürtöt, tekintse meg a cikket [AKS-fürt frissítése][aks-upgrade].
+
+Adja meg a podokat megszünteti az erőforrás-kérelmek. A fürt méretező úgy tűnik, hogy milyen erőforrás-kérelmek podok, nincs használatban, a podok horizontális méretező does erőforrások alapján történik. Belül a `spec: containers` szakaszban, az üzemelő példány definíciója a CPU és memória-követelmények meghatározása. Az alábbi példa kódrészlet 0,5 vCPU-64Mb memória a csomóponton kéri:
+
+  ```yaml
+  resources:
+    requests:
+      cpu: 500m
+      memory: 64Mb
+  ```
+
+Fürt méretező használata esetén ne manuális méretezése a csomópontok számát. Fürt automatikus méretező nem lehet határozza meg a szükséges számítási erőforrások a megfelelő mennyiségű és manuális megadása között csomópontok száma ütköznek.
 
 ## <a name="gather-information"></a>Információgyűjtés
 

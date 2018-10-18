@@ -4,21 +4,21 @@ description: Ez a témakör a Microsoft Azure Media Services-forgatókönyvek á
 services: media-services
 documentationcenter: ''
 author: Juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 07/10/2017
-ms.author: juliako;anilmur
-ms.openlocfilehash: 8381cdfffd34ffa25d1b87be3a3aca3de69c2802
-ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
+ms.date: 10/15/2018
+ms.author: juliako
+ms.openlocfilehash: 0e9537f09049d5fe056819e6f8b9718cfc52f489
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34809279"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49352814"
 ---
 # <a name="scenarios-and-availability-of-media-services-features-across-datacenters"></a>Forgatókönyvek és a Media Services-szolgáltatások rendelkezésre állása az egyes adatközpontokban
 
@@ -158,7 +158,7 @@ Az AMS-ügyfelek méretezhetik a streamvégpontokat, a médiafeldolgozást és a
     További információkért olvassa el a [médiafeldolgozás méretezését](media-services-portal-scale-media-processing.md) ismertető cikket.
 * A Media Services-fiókját tárfiókok hozzáadásával is méretezheti. Minden tárfiók legfeljebb 500 TB kapacitású lehet. Ha a tárolót az alapértelmezett határérték fölé szeretné bővíteni, több tárfiókot is társíthat ugyanahhoz a Media Services-fiókhoz. További információkért olvassa el a [tárfiókok kezelését](meda-services-managing-multiple-storage-accounts.md) ismertető cikket.
 
-##<a id="availability"></a> A Media Services-funkciók rendelkezésre állása az egyes adatközpontokban
+## <a id="availability"></a> A Media Services-funkciók rendelkezésre állása az egyes adatközpontokban
 
 Ez a szakasz a Media Services-funkciók az adatközpontok közötti rendelkezésre állásáról nyújt részleteket.
 

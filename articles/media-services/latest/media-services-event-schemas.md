@@ -4,19 +4,19 @@ description: A Media Services-események az Azure Event GRID használatával biz
 services: media-services
 documentationcenter: ''
 author: Juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: reference
-ms.date: 08/17/2018
+ms.date: 10/16/2018
 ms.author: juliako
-ms.openlocfilehash: a6a6c459e170627d26aa1445f4f4dd193965fe70
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.openlocfilehash: 44e195055c74babd903cf4fb830167ab92951d4a
+ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "42055314"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49376788"
 ---
 # <a name="azure-event-grid-schemas-for-media-services-events"></a>A Media Services-események Azure Event Grid-sémák
 
@@ -26,14 +26,56 @@ Mintaszkriptek és oktatóanyagok listáját lásd: [Media Services eseményforr
 
 ## <a name="available-event-types"></a>Rendelkezésre álló események típusai
 
-A Media Services a következő esemény típusú bocsát ki:
+### <a name="job-related-event-types"></a>Feladat kapcsolatos események típusai
+
+A Media Services bocsát ki a **feladat** alább ismertetett eseménytípusok kapcsolatos. A két kategóriába sorolhatók a **feladat** kapcsolatos eseményeket: "A feladat állapot változásainak figyelése" és "Figyelési feladat kimeneti Állapotváltozásai". 
+
+Regisztrálhat az események a JobStateChange esemény való feliratkozással. Vagy, előfizethet a meghatározott események csak (például végső államok JobErrored JobFinished és JobCanceled hasonlóan). 
+
+#### <a name="monitoring-job-state-changes"></a>Figyelési feladat állapota
 
 | Esemény típusa | Leírás |
 | ---------- | ----------- |
-| Microsoft.Media.JobStateChange| A feladat állapota megváltozik. |
+| Microsoft.Media.JobStateChange| Esemény beolvasása az összes feladat állapota változáshoz. |
+| Microsoft.Media.JobScheduled| Egy eseményt, amikor a feladat átkerül az ütemezett állapot beolvasása. |
+| Microsoft.Media.JobProcessing| Egy eseményt, amikor a feladat átkerül a feldolgozási állapot beolvasása. |
+| Microsoft.Media.JobCanceling| Egy eseményt, amikor a feladat megszakítása állapot átkerül beolvasása. |
+| Microsoft.Media.JobFinished| Egy eseményt, amikor a feladat kész állapot átkerül beolvasása. Ez a végállapota feladatkimenetek tartalmazza.|
+| Microsoft.Media.JobCanceled| Első egy eseményt, amikor a feladat megszakítva állapotba értékre vált. Ez a végállapota feladatkimenetek tartalmazza.|
+| Microsoft.Media.JobErrored| Egy eseményt, amikor a feladat hibás állapotú átkerül beolvasása. Ez a végállapota feladatkimenetek tartalmazza.|
+
+#### <a name="monitoring-job-output-state-changes"></a>Figyelési feladat kimeneti állapota
+
+| Esemény típusa | Leírás |
+| ---------- | ----------- |
+| Microsoft.Media.JobOutputStateChange| Az esemény állapota az összes feladat kimenetének beolvasása. |
+| Microsoft.Media.JobOutputScheduled| Egy eseményt, amikor a feladat kimeneti tér át, ütemezett állapot beolvasása. |
+| Microsoft.Media.JobOutputProcessing| Egy eseményt, amikor a feladat kimeneti tér át, a feldolgozási állapot beolvasása. |
+| Microsoft.Media.JobOutputCanceling| Egy eseményt, amikor a feladat kimeneti tér át, az állapot megszakítása beolvasása.|
+| Microsoft.Media.JobOutputFinished| Egy eseményt, amikor a feladat kimeneti tér át, Befejezett állapot beolvasása.|
+| Microsoft.Media.JobOutputCanceled| Egy eseményt, amikor a feladat kimeneti tér át, meg lett szakítva állapot beolvasása.|
+| Microsoft.Media.JobOutputErrored| Egy eseményt, amikor a feladat kimeneti tér át, a hibás állapotú beolvasása.|
+
+### <a name="live-event-types"></a>Élő események típusai
+
+A Media Services emellett bocsát ki a **élő** eseménytípusok az alábbiakban. A két kategóriába sorolhatók a **élő** események: stream-szintű eseményeit, és nyomon követése-szintű eseményeit. 
+
+#### <a name="stream-level-events"></a>Stream-szintű eseményeit
+
+Stream-szintű eseményeit stream vagy kapcsolat aktiválódnak. Minden egyes esemény egy `StreamId` paraméter, amely azonosítja a kapcsolatot, vagy adatfolyamként továbbíthatja. Minden stream vagy kapcsolat van egy vagy több, különböző típusú nyomon követi. Egy kapcsolat forrása lehet például négy videó nyomon követi, és egy hangsávra. A stream esemény típusok a következők:
+
+| Esemény típusa | Leírás |
+| ---------- | ----------- |
 | Microsoft.Media.LiveEventConnectionRejected | Kódoló kapcsolatfelvételt. |
 | Microsoft.Media.LiveEventEncoderConnected | Kódoló az élő esemény kapcsolatot létesít. |
 | Microsoft.Media.LiveEventEncoderDisconnected | Kódoló leválasztása. |
+
+#### <a name="track-level-events"></a>Nyomon követheti-szintű eseményeit
+
+Nyomon követheti-szintű eseményeit számonkénti aktiválódnak. A sledování událostí típusok a következők:
+
+| Esemény típusa | Leírás |
+| ---------- | ----------- |
 | Microsoft.Media.LiveEventIncomingDataChunkDropped | Kiszolgáló adathalmaz csökken, mert késő vagy egy átfedő timestamp (időbélyeg az új adatok adattömbök érték kisebb, mint az előző adathalmaz befejezési időpontja). |
 | Microsoft.Media.LiveEventIncomingStreamReceived | Media kiszolgáló egyes nyomon követése az első adathalmaz kap a streamben vagy a kapcsolat. |
 | Microsoft.Media.LiveEventIncomingStreamsOutOfSync | Media-kiszolgáló észleli a hang és video-adatfolyamokat nincsenek szinkronban. Figyelmeztetés használjuk, mert előfordulhat, hogy nem változik a felhasználói élmény. |
@@ -41,24 +83,9 @@ A Media Services a következő esemény típusú bocsát ki:
 | Microsoft.Media.LiveEventIngestHeartbeat | Közzétett 20 másodpercenként minden egyes nyomon követése, az élő esemény futtatásakor. Itt állapotösszegzése betöltését. |
 | Microsoft.Media.LiveEventTrackDiscontinuityDetected | Kiszolgáló kihagyást észleli a bejövő nyomon követése. |
 
-A két kategóriába sorolhatók a **élő** események: stream-szintű eseményeit, és nyomon követése-szintű eseményeit. 
+## <a name="event-schemas-and-properties"></a>Eseménysémák és tulajdonságok
 
-Stream-szintű eseményeit stream vagy kapcsolat aktiválódnak. Minden egyes esemény egy `StreamId` paraméter, amely azonosítja a kapcsolatot, vagy adatfolyamként továbbíthatja. Minden stream vagy kapcsolat van egy vagy több, különböző típusú nyomon követi. Egy kapcsolat forrása lehet például négy videó nyomon követi, és egy hangsávra. A stream esemény típusok a következők:
-
-* LiveEventConnectionRejected
-* LiveEventEncoderConnected
-* LiveEventEncoderDisconnected
-
-Nyomon követheti-szintű eseményeit számonkénti aktiválódnak. A sledování událostí típusok a következők:
-
-* LiveEventIncomingDataChunkDropped
-* LiveEventIncomingStreamReceived
-* LiveEventIncomingStreamsOutOfSync
-* LiveEventIncomingVideoStreamsOutOfSync
-* LiveEventIngestHeartbeat
-* LiveEventTrackDiscontinuityDetected
-
-## <a name="jobstatechange"></a>JobStateChange
+### <a name="jobstatechange"></a>JobStateChange
 
 Az alábbi példa bemutatja a séma, a **JobStateChange** esemény: 
 
@@ -89,7 +116,142 @@ Az objektum a következő tulajdonságokkal rendelkezik:
 
 Ha a feladat állapota lehet egy értéket: *várólistán*, *ütemezett*, *feldolgozása*, *befejezett*, *hiba*, *Meg lett szakítva*, *megszakítása*
 
-## <a name="liveeventconnectionrejected"></a>LiveEventConnectionRejected
+### <a name="jobscheduled"></a>JobScheduled
+### <a name="jobprocessing"></a>JobProcessing
+### <a name="jobcanceling"></a>JobCanceling
+
+Feladat (például JobScheduled, JobProcessing, JobCanceling) állapotban nem végleges módosítás esetén a példa séma a következőhöz hasonlóan néz ki:
+
+```json
+[{
+  "topic": "/subscriptions/<subscription-id>/resourceGroups/<rg-name>/providers/Microsoft.Media/mediaservices/<account-name>",
+  "subject": "transforms/VideoAnalyzerTransform/jobs/<job-id>",
+  "eventType": "Microsoft.Media.JobProcessing",
+  "eventTime": "2018-10-12T16:12:18.0839935",
+  "id": "a0a6efc8-f647-4fc2-be73-861fa25ba2db",
+  "data": {
+    "previousState": "Scheduled",
+    "state": "Processing",
+    "correlationData": {
+      "TestKey1": "TestValue1",
+      "testKey2": "testValue2"
+    }
+  },
+  "dataVersion": "1.0",
+  "metadataVersion": "1"
+}]
+```
+
+### <a name="jobfinished"></a>JobFinished
+### <a name="jobcanceled"></a>JobCanceled
+### <a name="joberrored"></a>JobErrored
+
+Végső feladat állapota módosítás (például JobFinished, JobCanceled, JobErrored) esetén a példa séma az alábbihoz hasonlóan néz ki:
+
+```json
+[{
+  "topic": "/subscriptions/<subscription-id>/resourceGroups/<rg-name>/providers/Microsoft.Media/mediaservices/<account-name>",
+  "subject": "transforms/VideoAnalyzerTransform/jobs/<job-id>",
+  "eventType": "Microsoft.Media.JobFinished",
+  "eventTime": "2018-10-12T16:25:56.4115495",
+  "id": "9e07e83a-dd6e-466b-a62f-27521b216f2a",
+  "data": {
+    "outputs": [
+      {
+        "@odata.type": "#Microsoft.Media.JobOutputAsset",
+        "assetName": "output-7640689F",
+        "error": null,
+        "label": "VideoAnalyzerPreset_0",
+        "progress": 100,
+        "state": "Finished"
+      }
+    ],
+    "previousState": "Processing",
+    "state": "Finished",
+    "correlationData": {
+      "TestKey1": "TestValue1",
+      "testKey2": "testValue2"
+    }
+  },
+  "dataVersion": "1.0",
+  "metadataVersion": "1"
+}]
+```
+
+Az objektum a következő tulajdonságokkal rendelkezik:
+
+| Tulajdonság | Típus | Leírás |
+| -------- | ---- | ----------- |
+| Kimenetek | Tömb | A feladat kimeneti beolvasása.|
+
+### <a name="joboutputstatechange"></a>JobOutputStateChange
+
+Az alábbi példa bemutatja a séma, a **JobOutputStateChange** esemény:
+
+```json
+[{
+  "topic": "/subscriptions/<subscription-id>/resourceGroups/<rg-name>/providers/Microsoft.Media/mediaservices/<account-name>",
+  "subject": "transforms/VideoAnalyzerTransform/jobs/<job-id>",
+  "eventType": "Microsoft.Media.JobOutputStateChange",
+  "eventTime": "2018-10-12T16:25:56.0242854",
+  "id": "dde85f46-b459-4775-b5c7-befe8e32cf90",
+  "data": {
+    "previousState": "Processing",
+    "output": {
+      "@odata.type": "#Microsoft.Media.JobOutputAsset",
+      "assetName": "output-7640689F",
+      "error": null,
+      "label": "VideoAnalyzerPreset_0",
+      "progress": 100,
+      "state": "Finished"
+    },
+    "jobCorrelationData": {
+      "TestKey1": "TestValue1",
+      "testKey2": "testValue2"
+    }
+  },
+  "dataVersion": "1.0",
+  "metadataVersion": "1"
+}]
+```
+
+### <a name="joboutputscheduled"></a>JobOutputScheduled
+### <a name="joboutputprocessing"></a>JobOutputProcessing
+### <a name="joboutputfinished"></a>JobOutputFinished
+### <a name="joboutputcanceling"></a>JobOutputCanceling
+### <a name="joboutputcanceled"></a>JobOutputCanceled
+### <a name="joboutputerrored"></a>JobOutputErrored
+
+Az egyes JobOutput állapotváltozás a példa séma az alábbihoz hasonlóan néz ki:
+
+```json
+[{
+  "topic": "/subscriptions/<subscription-id>/resourceGroups/<rg-name>/providers/Microsoft.Media/mediaservices/<account-name>",
+  "subject": "transforms/VideoAnalyzerTransform/jobs/<job-id>",
+  "eventType": "Microsoft.Media.JobOutputProcessing",
+  "eventTime": "2018-10-12T16:12:18.0061141",
+  "id": "f1fd5338-1b6c-4e31-83c9-cd7c88d2aedb",
+  "data": {
+    "previousState": "Scheduled",
+    "output": {
+      "@odata.type": "#Microsoft.Media.JobOutputAsset",
+      "assetName": "output-7640689F",
+      "error": null,
+      "label": "VideoAnalyzerPreset_0",
+      "progress": 0,
+      "state": "Processing"
+    },
+    "jobCorrelationData": {
+      "TestKey1": "TestValue1",
+      "testKey2": "testValue2"
+    }
+  },
+  "dataVersion": "1.0",
+  "metadataVersion": "1"
+}]
+```
+
+### <a name="liveeventconnectionrejected"></a>LiveEventConnectionRejected
 
 Az alábbi példa bemutatja a séma, a **LiveEventConnectionRejected** esemény: 
 
@@ -136,7 +298,7 @@ Az eredmény kódok a következők:
 | MPE_INGEST_BITRATE_AGGREGATED_EXCEEDED | Összesített sávszélességű meghaladja a megengedett maximális korlátot. |
 | MPE_RTMP_FLV_TAG_TIMESTAMP_INVALID | A video- és audiotartalmak FLVTag történő küldés időbélyegzője legyen az RTMP-kódoló érvénytelen. |
 
-## <a name="liveeventencoderconnected"></a>LiveEventEncoderConnected
+### <a name="liveeventencoderconnected"></a>LiveEventEncoderConnected
 
 Az alábbi példa bemutatja a séma, a **LiveEventEncoderConnected** esemény: 
 
@@ -169,7 +331,7 @@ Az objektum a következő tulajdonságokkal rendelkezik:
 | EncoderIp | sztring | A kódoló IP-cím. |
 | EncoderPort | sztring | A kódoló a stream forrását a port. |
 
-## <a name="liveeventencoderdisconnected"></a>LiveEventEncoderDisconnected
+### <a name="liveeventencoderdisconnected"></a>LiveEventEncoderDisconnected
 
 Az alábbi példa bemutatja a séma, a **LiveEventEncoderDisconnected** esemény: 
 
@@ -225,7 +387,7 @@ A biztonságos kapcsolat bontása eredménykódok a következők:
 | MPI_REST_API_CHANNEL_STOP | A csatorna karbantartás alatt áll. |
 | MPI_STREAM_HIT_EOF | A kódoló EOF stream küldi. |
 
-## <a name="liveeventincomingdatachunkdropped"></a>LiveEventIncomingDataChunkDropped
+### <a name="liveeventincomingdatachunkdropped"></a>LiveEventIncomingDataChunkDropped
 
 Az alábbi példa bemutatja a séma, a **LiveEventIncomingDataChunkDropped** esemény: 
 
@@ -261,7 +423,7 @@ Az objektum a következő tulajdonságokkal rendelkezik:
 | időskálára | sztring | Az időbélyeg-időskálára. |
 | Eredménykód | sztring | Az adatok adatköteget csepp OK. **FragmentDrop_OverlapTimestamp** vagy **FragmentDrop_NonIncreasingTimestamp**. |
 
-## <a name="liveeventincomingstreamreceived"></a>LiveEventIncomingStreamReceived
+### <a name="liveeventincomingstreamreceived"></a>LiveEventIncomingStreamReceived
 
 Az alábbi példa bemutatja a séma, a **LiveEventIncomingStreamReceived** esemény: 
 
@@ -303,7 +465,7 @@ Az objektum a következő tulajdonságokkal rendelkezik:
 | Időbélyeg | sztring | Első időbélyegzője az adathalmaz kapott. |
 | időskálára | sztring | Amelyben időbélyeg jelölt időskálára. |
 
-## <a name="liveeventincomingstreamsoutofsync"></a>LiveEventIncomingStreamsOutOfSync
+### <a name="liveeventincomingstreamsoutofsync"></a>LiveEventIncomingStreamsOutOfSync
 
 Az alábbi példa bemutatja a séma, a **LiveEventIncomingStreamsOutOfSync** esemény: 
 
@@ -319,7 +481,9 @@ Az alábbi példa bemutatja a séma, a **LiveEventIncomingStreamsOutOfSync** ese
       "minLastTimestamp": "319996",
       "typeOfStreamWithMinLastTimestamp": "Audio",
       "maxLastTimestamp": "366000",
-      "typeOfStreamWithMaxLastTimestamp": "Video"
+      "typeOfStreamWithMaxLastTimestamp": "Video",
+      "timescaleOfMinLastTimestamp": "10000000", 
+      "timescaleOfMaxLastTimestamp": "10000000"       
     },
     "dataVersion": "1.0",
     "metadataVersion": "1"
@@ -335,8 +499,10 @@ Az objektum a következő tulajdonságokkal rendelkezik:
 | TypeOfTrackWithMinLastTimestamp | sztring | A nyomon követése (hang- vagy) a minimális utolsó időbélyeg típusú. |
 | MaxLastTimestamp | sztring | Minden szám (hang- vagy) között az összes időbélyegei legfeljebb. |
 | TypeOfTrackWithMaxLastTimestamp | sztring | A nyomon követése (hang- vagy) az utolsó maximális időbélyegző típusú. |
+| TimescaleOfMinLastTimestamp| sztring | Lekérdezi a "MinLastTimestamp" jelöli, amelyben időskálára.|
+| TimescaleOfMaxLastTimestamp| sztring | Lekérdezi a "MaxLastTimestamp" jelöli, amelyben időskálára.|
 
-## <a name="liveeventincomingvideostreamsoutofsync"></a>LiveEventIncomingVideoStreamsOutOfSync
+### <a name="liveeventincomingvideostreamsoutofsync"></a>LiveEventIncomingVideoStreamsOutOfSync
 
 Az alábbi példa bemutatja a séma, a **LiveEventIncomingVideoStreamsOutOfSync** esemény: 
 
@@ -352,7 +518,8 @@ Az alábbi példa bemutatja a séma, a **LiveEventIncomingVideoStreamsOutOfSync*
       "FirstTimestamp": "2162058216",
       "FirstDuration": "2000",
       "SecondTimestamp": "2162057216",
-      "SecondDuration": "2000"
+      "SecondDuration": "2000",
+      "timescale": "10000000"      
     },
     "dataVersion": "1.0"
   }
@@ -367,8 +534,9 @@ Az objektum a következő tulajdonságokkal rendelkezik:
 | FirstDuration | sztring | Az adathalmaz első időbélyeggel időtartama. |
 | SecondTimestamp | sztring  | Az időbélyeg néhány egyéb nyomon követése és minőségi szintjét a videó típus érkezett. |
 | SecondDuration | sztring | A második időbélyeggel adathalmaz időtartama. |
+| időskálára | sztring | Időskálára időbélyegeket és időtartamát.|
 
-## <a name="liveeventingestheartbeat"></a>LiveEventIngestHeartbeat
+### <a name="liveeventingestheartbeat"></a>LiveEventIngestHeartbeat
 
 Az alábbi példa bemutatja a séma, a **LiveEventIngestHeartbeat** esemény: 
 
@@ -417,7 +585,7 @@ Az objektum a következő tulajdonságokkal rendelkezik:
 | Állapot | sztring | Az élő esemény állapota. |
 | Kifogástalan | Logikai | Azt jelzi, hogy betöltési állapota megfelelő számát és a jelzők alapján. Kifogástalan igaz. Ha OverlapCount = 0 & & DiscontinuityCount = 0 & & NonIncreasingCount = 0 & & UnexpectedBitrate = false. |
 
-## <a name="liveeventtrackdiscontinuitydetected"></a>LiveEventTrackDiscontinuityDetected
+### <a name="liveeventtrackdiscontinuitydetected"></a>LiveEventTrackDiscontinuityDetected
 
 Az alábbi példa bemutatja a séma, a **LiveEventTrackDiscontinuityDetected** esemény: 
 
@@ -456,7 +624,7 @@ Az objektum a következő tulajdonságokkal rendelkezik:
 | DiscontinuityGap | sztring | Különbség a két időbélyegek felett. |
 | időskálára | sztring | A melyik időbélyeg és a kihagyást gap időskálára szerepelnek. |
 
-## <a name="common-event-properties"></a>Közös Eseménytulajdonságok
+### <a name="common-event-properties"></a>Közös Eseménytulajdonságok
 
 Egy esemény a következő legfelső szintű adatokat tartalmaz:
 

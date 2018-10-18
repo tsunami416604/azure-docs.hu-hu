@@ -7,19 +7,19 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/26/2018
-ms.openlocfilehash: cc041104169ca8c4344b9d3de597283d122e63db
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: 38cfac8932859db7daa76e831372c97d97f0b24c
+ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47394760"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49376311"
 ---
 # <a name="query-performance-insight"></a>Lekérdezési terheléselemző 
 
 **A következőkre vonatkozik:** Azure Database for PostgreSQL 9.6 és 10
 
 > [!IMPORTANT]
-> A lekérdezési Terheléselemző használata korlátozott számú régióban nyilvános előzetes verzióban érhető el. 
+> A lekérdezési Terheléselemző funkció nyilvános előzetes verzióban érhető el. 
 
 Lekérdezési Terheléselemző segít gyorsan azonosítani a leghosszabban futó lekérdezések vannak, hogyan változnak idővel és milyen feladatot hatással vannak, azokat.
 

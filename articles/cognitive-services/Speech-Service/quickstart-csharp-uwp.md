@@ -9,12 +9,12 @@ ms.component: speech-service
 ms.topic: quickstart
 ms.date: 09/24/2018
 ms.author: wolfma
-ms.openlocfilehash: 2eb6bda7066a01e5532fe7c0e20b0ee13f4289b6
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: d9a90869e060d2f8f1a1c522a4528e74841caada
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47432987"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49339614"
 ---
 # <a name="quickstart-recognize-speech-in-a-uwp-app-by-using-the-speech-sdk"></a>Rövid útmutató: Beszéd felismerése egy UWP-alkalmazásban a Speech SDK segítségével
 
@@ -69,7 +69,7 @@ A rövid útmutató elvégzéséhez szüksége van a Speech Service előfizetői
 1. A következő kimeneti sor a Csomagkezelő konzolban jelenik meg.
 
    ```text
-   Successfully installed 'Microsoft.CognitiveServices.Speech 1.0.0' to helloworld
+   Successfully installed 'Microsoft.CognitiveServices.Speech 1.0.1' to helloworld
    ```
 
 1. Mivel az alkalmazás mikrofont használ a beszédbevitelhez, hozzá kell adnia a **Mikrofon** képességet a projekthez. A Megoldáskezelőben kattintson duplán a **Package.appxmanifest** elemre az alkalmazásjegyzék szerkesztéséhez. Ezután váltson a **Képességek** lapra, jelölje be a **Mikrofon** képesség jelölőnégyzetét, és mentse a módosításokat.

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/17/2018
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: 4809881276da752ac6eb08773fb8be145dc5f4c7
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.openlocfilehash: ffd5da239f8e271a8c9b2aaf3f6d5fd9f885c79c
+ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/17/2018
-ms.locfileid: "49367028"
+ms.locfileid: "49400116"
 ---
 ## <a name="create-a-device-identity"></a>Eszközidentitás létrehozása
 
@@ -21,19 +21,19 @@ Ebben a szakaszban használhatja a [az Azure portal](https://portal.azure.com) h
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com)
 
-1. Válassza ki **összes erőforrás** , és keresse meg az IoT hub-erőforrást.
+2. Válassza ki **összes erőforrás** , és keresse meg az IoT hub-erőforrást.
 
-1. Amikor az IoT hub-erőforrás meg van nyitva, kattintson a **IoT-eszközök** eszközt, és kattintson a **Hozzáadás** tetején. 
+3. Amikor az IoT hub-erőforrás meg van nyitva, kattintson a **IoT-eszközök** eszközt, és kattintson a **Hozzáadás** tetején. 
 
     ![Eszközidentitás létrehozása a portálon](./media/iot-hub-get-started-create-device-identity-portal/create-identity-portal.png)
 
-1. Adjon meg egy nevet az új eszköz, például: **myDeviceId**, és kattintson a **mentése**. Ez a művelet létrehoz egy új eszközidentitást az IoT hub.
+4. Adjon meg egy nevet az új eszköz, például: **myDeviceId**, és kattintson a **mentése**. Ez a művelet létrehoz egy új eszközidentitást az IoT hub.
 
    [!INCLUDE [iot-hub-pii-note-naming-device](iot-hub-pii-note-naming-device.md)]
 
    ![Új eszköz felvétele](./media/iot-hub-get-started-create-device-identity-portal/create-a-device.png)
 
-1. Az eszközlistában, kattintson az újonnan létrehozott eszköz és a példány a **kapcsolati karakterlánc---elsődleges kulcs** későbbi használat céljából.
+5. Az eszközlistában, kattintson az újonnan létrehozott eszköz és a példány a **kapcsolati karakterlánc---elsődleges kulcs** későbbi használat céljából.
 
     ![Eszköz kapcsolati karakterláncát](./media/iot-hub-get-started-create-device-identity-portal/device-details.png)
 

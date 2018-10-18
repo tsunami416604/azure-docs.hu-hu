@@ -1,46 +1,46 @@
 ---
-title: Azure Media Services v3 használatával egyéni átalakító kódolása |} Microsoft Docs
-description: Ez a témakör bemutatja az Azure Media Services v3 használata egyéni átalakító kódolására.
+title: Az Azure Media Services v3 használatával egyéni átalakító kódolása |} A Microsoft Docs
+description: Ez a témakör bemutatja az Azure Media Services v3 használatával egyéni átalakító kódolása.
 services: media-services
 documentationcenter: ''
 author: Juliako
-manager: cflower
+manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
 ms.custom: ''
-ms.date: 05/17/2018
+ms.date: 10/15/2018
 ms.author: juliako
-ms.openlocfilehash: d298070877a366d04b2df1ef8ac63b08f8771de0
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: c3318020b54beb121ac48d993a8ce794ac8e377f
+ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34655196"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49376635"
 ---
-# <a name="how-to-encode-with-a-custom-transform"></a>Az egyéni átalakítási kódolással
+# <a name="how-to-encode-with-a-custom-transform"></a>Az egyéni átalakítási kódolása
 
-Ha az Azure Media Services kódolási funkciójához kezdheti gyorsan, ahogyan az ágazatban kialakult bevált gyakorlaton alapuló ajánlott a beépített beállítások egyikét a [adatfolyam-fájlok](stream-files-tutorial-with-api.md) oktatóanyag, vagy választhatja azt hozhat létre egyéni előre definiált, amelyekre az adott forgatókönyv vagy az eszköz igények szerint. 
+Ha az Azure Media Services encoding, ismerkedhet meg gyorsan az, ahogyan az ágazatban kialakult bevált gyakorlaton alapuló ajánlott a beépített beállítások egyikét a [fájlok Streamelési](stream-files-tutorial-with-api.md) oktatóanyagot, vagy dönthet úgy, hogy egyéni előre definiált, amelyekre a saját forgatókönyvéhez vagy eszköz követelményeinek. 
 
 > [!Note]
-> Az Azure Media Services v3 minden kódolási átviteli sebességet van bit / másodperc. Ez eltér a többi v2 Media Encoder Standard készleteket. Például a v2 sávszélességű 128 volna meg, de a v3 128000 lenne.
+> Az Azure Media Services v3-as a kódolási átviteli sebességek összes bit / másodperc. Ez eltér a többi v2 Media Encoder Standard készletek. Ha például az átviteli sebesség a v2-ben ezt kell megadni, mint 128, de a v3-as 128000 lenne.
 
 ## <a name="download-the-sample"></a>A minta letöltése
 
-Klónozza a GitHub-adattár, amely tartalmazza a teljes .NET Core minta a számítógépen a következő parancsot:  
+Klónozza a GitHub-adattár, amely tartalmazza a teljes .NET Core-minta a gépre a következő paranccsal:  
 
  ```bash
  git clone https://github.com/Azure-Samples/media-services-v3-dotnet-core-tutorials.git
  ```
  
-Az egyéni előre definiált minta található a [EncodeCustomTransform](https://github.com/Azure-Samples/media-services-v3-dotnet-core-tutorials/blob/master/NETCore/EncodeCustomTransform/) mappa.
+Az egyéni előre definiált mintát található a [EncodeCustomTransform](https://github.com/Azure-Samples/media-services-v3-dotnet-core-tutorials/blob/master/NETCore/EncodeCustomTransform/) mappát.
 
-## <a name="create-a-transform-with-a-custom-preset"></a>Hozzon létre egy egyéni készletet átalakítás 
+## <a name="create-a-transform-with-a-custom-preset"></a>Hozzon létre egy-egy átalakítási egyéni előbeállítás 
 
-Amikor hoz létre egy új [átalakítási](https://docs.microsoft.com/rest/api/media/transforms), meg kell adnia a kívánt műveleteket kimenetként létrehozásához. A kötelező paraméter egy **TransformOutput** objektum, ahogyan az az alábbi kódban látható. Minden **TransformOutput** objektum tartalmaz **előzetes beállításokat**. Az **előzetes beállítások** részletesen leírják azokat a video- és audiofeldolgozási műveleteket, amelyek a kívánt **TransformOutput** objektum előállításához szükségesek. A következő **TransformOutput** egyéni kodekeket és a réteg kimeneti beállításokat hoz létre.
+Egy új létrehozásakor [átalakítása](https://docs.microsoft.com/rest/api/media/transforms), meg kell adnia a kívánt műveleteket, mint kimenet előállításához. A kötelező paraméter egy **TransformOutput** objektum, ahogyan az az alábbi kódban látható. Minden **TransformOutput** objektum tartalmaz **előzetes beállításokat**. Az **előzetes beállítások** részletesen leírják azokat a video- és audiofeldolgozási műveleteket, amelyek a kívánt **TransformOutput** objektum előállításához szükségesek. A következő **TransformOutput** hoz létre egyéni kodeket, és a réteg kimeneti beállításait.
 
-[Átalakítások](https://docs.microsoft.com/rest/api/media/transforms) létrehozásakor ellenőrizze a **Get** metódussal, hogy létezik-e már átalakítás, ahogyan az az alábbi kódban látható.  A Media Services v3 **beolvasása** módszerek az entitásokra **null** Ha az entitás nem létezik (a név nem betűérzékeny ellenőrzése).
+[Átalakítások](https://docs.microsoft.com/rest/api/media/transforms) létrehozásakor ellenőrizze a **Get** metódussal, hogy létezik-e már átalakítás, ahogyan az az alábbi kódban látható.  A Media Services v3 **első** módszerek is szolgálnak az entitásokon **null** Ha az entitás nem létezik (a kis-és ellenőrizze a nevét).
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-core-tutorials/NETCore/EncodeCustomTransform/MediaV3ConsoleApp/Program.cs#EnsureTransformExists)]
 

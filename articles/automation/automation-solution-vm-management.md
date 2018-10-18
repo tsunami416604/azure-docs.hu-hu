@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 10/04/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 8ae3a2d8dc42944bdea2b3e6ebac0a40029c0540
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: 642fc66bff763105e9d5463886474703a9a50781
+ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48817177"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49376703"
 ---
 # <a name="startstop-vms-during-off-hours-solution-in-azure-automation"></a>Virtuális gépek indítása/leállítása munkaidőn kívül megoldás az Azure Automationben
 
@@ -297,6 +297,9 @@ Itt meg is további elemzéseket végezhet a feladatrekordokon a fánkdiagram cs
 ## <a name="configure-email-notifications"></a>E-mail értesítések konfigurálása
 
 A megoldás üzembe helyezése után e-mail-értesítések megváltoztatásához módosítsa a telepítés során létrehozott műveletcsoport.  
+
+> [!NOTE]
+> Az Azure Government cloud előfizetések nem támogatják az e-mail funkció, a megoldás.
 
 Az Azure Portalon keresse meg a figyelő Műveletcsoportok ->. Válassza ki a műveletcsoport nevű **StartStop_VM_Notication**.
 
