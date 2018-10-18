@@ -10,12 +10,12 @@ ms.component: bing-visual-search
 ms.topic: tutorial
 ms.date: 06/21/2018
 ms.author: rosh
-ms.openlocfilehash: bda4bdeea019d8cf3ae677d5eaf81e631ca38d16
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 06d6bc8e53276b5542210c2843d7221d6fd79c09
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47222573"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49386434"
 ---
 # <a name="tutorial-bing-visual-search-sdk-imageinsightstoken-and-results"></a>Oktatóanyag: Bing Visual Search SDK – ImageInsightsToken és eredmények
 A Visual Search SDK tartalmaz egy beállítást, amely egy korábbi keresés képeit keresi meg online, és visszaadott eredménye egy `ImageInsightsToken`.  Ez a példa egy `ImageInsightsToken` lekérése után felhasználja a jogkivonatot egy későbbi kereséshez.  A kód elküldi az `ImageInsightsToken` adatot a Bing számára, majd visszaad eredményeket, amelyek tartalmazzák a Bing Search URL-címeket és az online talált hasonló képek URL-címeit.
@@ -25,7 +25,7 @@ Visual Studio 2017. Ha szükséges, töltse le az ingyenes közösségi verziót
 Az SDK-hívások hitelesítéséhez Cognitive Services API-kulcsra van szükség. Regisztráljon egy ingyenes próbaverzióra. A próbakulcs másodpercenként egy hívással hét napig érvényes. Az éles forgatókönyvekhez vásároljon hozzáférési kulcsot. Lásd még a díjszabási információkat.
 A .NET Core SDK- és .NET Core 1.1-alkalmazások futtatásának képessége. A CORE, a keretrendszer és a futtatókörnyezet innen tölthetők le: https://www.microsoft.com/net/download/.
 
-##<a name="application-dependencies"></a>Alkalmazásfüggőségek
+## <a name="application-dependencies"></a>Alkalmazásfüggőségek
 Ha a Bing Web Search SDK-val szeretne beállítani egy konzolalkalmazást, keresse meg a NuGet-csomagok kezelése lehetőséget a Visual Studio Megoldáskezelőjében. Adja hozzá a következőket:
 * Microsoft.Azure.CognitiveServices.Search.VisualSearch
 * Microsoft.Azure.CognitiveServices.Search.ImageSearchpackage csomagok.
@@ -37,7 +37,8 @@ A NuGet Web Search SDK-csomag telepítésekor függőségeket is telepít, péld
 * Newtonsoft.Json
 
 ## <a name="get-the-imageinsightstoken-from-image-search"></a>Az ImageInsightsToken lekérése a képkeresésből
-Ez a példa egy `ImageInsightsToken` használatára épül, amely a következő módszerrel szerezhető be.  További információk erről a hívásról: [Image Search SDK C# – rövid útmutató](https://docs.microsoft.com/en-us/azure/cognitive-services/bing-image-search/image-search-sdk-quickstart).
+
+Ez a példa egy `ImageInsightsToken` használatára épül, amely a következő módszerrel szerezhető be.  További információk erről a hívásról: [Image Search SDK C# – rövid útmutató](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/image-search-sdk-quickstart).
 
 A kód rákeres a „Canadian Rockies” (kanadai Sziklás-hegység) lekérdezés eredményeire, és lekér egy ImageInsightsToken jogkivonatot. Kinyomtatja az első kép megállapítási jogkivonatát, a miniatűr URL-címét, és a képtartalom URL-címét.  A módszer által visszaadott `ImageInsightsToken` egy későbbi Visual Search-kérésben újra használható.
 
@@ -86,12 +87,15 @@ A kód rákeres a „Canadian Rockies” (kanadai Sziklás-hegység) lekérdezé
 ```
 
 ## <a name="specify-the-imageinsightstoken-for-visual-search-request"></a>Egy Visual Search-kérés ImageInsightsToken jogkivonatának megadása
+
 Ez a példa az előző metódus által visszaadott megállapítási jogkivonatot használja. A következő kód létrehoz egy `ImageInfo` objektumot az `ImageInsightsToken` alapján, és betölti az ImageInfo objektumot a következő helyre: `VisualSearchRequest`. Egy `ImageInsightsToken` megadása a következőben: `ImageInfo`, a következőhöz: `VisualSearchRequest`
 
 ```
 ImageInfo ImageInfo = new ImageInfo(imageInsightsToken: insightsTok);
 ```
+
 ## <a name="use-visual-search-to-find-images-from-an-imageinsightstoken"></a>Egy ImageInsightsToken jogkivonatból származó képek keresése a Visual Search segítségével
+
 A `VisualSearchRequest` információkat tartalmaz az `ImageInfo` objektumban keresendő képre vonatkozó.  A `VisualSearchMethodAsync` metódus az eredményeket kéri le.
 ```
 // An image binary is not necessary here, as the image is specified by insights token.
@@ -135,7 +139,8 @@ A képek tényleges URL-jeinek a lekéréséhez szükség van egy olyan átalak�
         }
     }
 ```
-További információk ezekről az adattípusokról: [Képek – Visual Search](https://docs.microsoft.com/en-us/rest/api/cognitiveservices/bingvisualsearch/images/visualsearch).
+További információk ezekről az adattípusokról: [Képek – Visual Search](https://docs.microsoft.com/rest/api/cognitiveservices/bingvisualsearch/images/visualsearch).
+
 ## <a name="complete-code"></a>Teljes kód
 
 A következő kód futtatja az előző példákat. Elküldi az `ImageInsightsToken` elemet egy közzétételi kérésben. Ezután kinyomtatja az egyes ActionType típusok Bing keresési URL-címeit. Ha az ActionType értéke `PagesIncluding`, a kód lekéri a `ImageObject` elemeket a `Data` objektumból.  A `Data` tartalmazza az értékek listáját, azaz a weboldalakon lévő képek URL-címeit.  Másolja, majd illessze be a Visual Search által visszaadott URL-eket a böngészőbe az eredmények megjelenítéséhez. Másolja, majd illessze be a ContentUrl elemeket a böngészőbe a képek megjelenítéséhez.
@@ -283,5 +288,6 @@ namespace VisualSearchFeatures
 }
 
 ```
+
 ## <a name="next-steps"></a>További lépések
 [Visual Search válasz](https://docs.microsoft.com/azure/cognitive-services/bing-visual-search/overview#the-response)

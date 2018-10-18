@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 08/10/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: dc3bd6258d2da331c83d0aaa9c6c0e57b44f2930
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: d7862ef96b5a237c4c9e553f3bea5d39684468e6
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46950080"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49388544"
 ---
 # <a name="tutorial-create-and-manage-windows-vms-with-azure-powershell"></a>Oktatóanyag: Windows rendszerű virtuális gépek létrehozása és felügyelete Azure PowerShell-lel
 
@@ -54,7 +54,7 @@ Az erőforráscsoport meghatározására a virtuális gép létrehozásakor vagy
 
 Egy virtuális gép létrehozásakor több lehetőség is rendelkezésre áll, például az operációsrendszer-lemezkép, a hálózati konfiguráció vagy a rendszergazdai hitelesítő adatok. Ebben a példában létrehozunk egy *myVM* nevű virtuális gépet, amely a Windows Server 2016 Datacenter alapértelmezett, legújabb verzióját futtatja.
 
-A virtuális gép rendszergazdai fiókjának felhasználónevét és jelszavát állítsa be a [Get-Credential](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.security/get-credential?view=powershell-6) paranccsal:
+A virtuális gép rendszergazdai fiókjának felhasználónevét és jelszavát állítsa be a [Get-Credential](https://docs.microsoft.com/powershell/module/microsoft.powershell.security/get-credential?view=powershell-6) paranccsal:
 
 ```azurepowershell-interactive
 $cred = Get-Credential

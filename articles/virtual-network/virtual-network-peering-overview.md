@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/16/2018
 ms.author: jdial
-ms.openlocfilehash: c20375d42786b817f677be22dee8f4e71e710bc5
-ms.sourcegitcommit: 1aedb52f221fb2a6e7ad0b0930b4c74db354a569
+ms.openlocfilehash: 493beb254852464765d506c61c7ae6ce3b3835d3
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "41917746"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49362891"
 ---
 # <a name="virtual-network-peering"></a>Társviszony létesítése virtuális hálózatok között
 
@@ -92,7 +92,7 @@ További információ a virtuális hálózatok közötti társviszonyok létreho
 
 Egy névleges díj vonatkozik a társviszony-kapcsolatot használó bejövő és kimenő forgalomra. A virtuális társhálózatok és a globális virtuális társhálózatok díjszabásával kapcsolatos további tájékoztatás a [díjszabási lapon](https://azure.microsoft.com/pricing/details/virtual-network) olvasható.
 
-Az átjáróval történő átvitel olyan társviszony-létesítési tulajdonság, amely lehetővé teszi egy virtuális hálózat számára egy VPN-átjáró használatát valamely virtuális társhálózaton belül a létesítmények vagy virtuális hálózatok közötti csatlakozáshoz. Ebben a forgatókönyvben a távoli átjárón áthaladó forgalomra a [VPN-átjáró díjai](https://azure.microsoft.com/en-us/pricing/details/vpn-gateway/) érvényesek, [virtuális társhálózati díjakat](https://azure.microsoft.com/pricing/details/virtual-network) azonban nem kell fizetni. Ha például az A virtuális hálózat VPN-átjáróval rendelkezik a helyszíni csatlakozáshoz, a B virtuális hálózat pedig megfelelő tulajdonságokkal konfigurált társviszonyban van az A virtuális hálózattal, akkor a B virtuális hálózatról a helyszíni felé irányuló forgalom után csak a VPN-átjáróra vonatkozó díjszabás szerint kell fizetni. Virtuális társhálózati díjak nem lesznek felszámolva. Ismerje meg, hogyan [konfigurálhat VPN-átjáróval történő adatátvitelt virtuális hálózatok közötti társviszony létesítéséhez](../vpn-gateway/vpn-gateway-peering-gateway-transit.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+Az átjáróval történő átvitel olyan társviszony-létesítési tulajdonság, amely lehetővé teszi egy virtuális hálózat számára egy VPN-átjáró használatát valamely virtuális társhálózaton belül a létesítmények vagy virtuális hálózatok közötti csatlakozáshoz. Ebben a forgatókönyvben a távoli átjárón áthaladó forgalomra a [VPN-átjáró díjai](https://azure.microsoft.com/pricing/details/vpn-gateway/) érvényesek, [virtuális társhálózati díjakat](https://azure.microsoft.com/pricing/details/virtual-network) azonban nem kell fizetni. Ha például az A virtuális hálózat VPN-átjáróval rendelkezik a helyszíni csatlakozáshoz, a B virtuális hálózat pedig megfelelő tulajdonságokkal konfigurált társviszonyban van az A virtuális hálózattal, akkor a B virtuális hálózatról a helyszíni felé irányuló forgalom után csak a VPN-átjáróra vonatkozó díjszabás szerint kell fizetni. Virtuális társhálózati díjak nem lesznek felszámolva. Ismerje meg, hogyan [konfigurálhat VPN-átjáróval történő adatátvitelt virtuális hálózatok közötti társviszony létesítéséhez](../vpn-gateway/vpn-gateway-peering-gateway-transit.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
 ## <a name="next-steps"></a>További lépések
 

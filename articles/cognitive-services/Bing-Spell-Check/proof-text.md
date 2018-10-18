@@ -10,12 +10,12 @@ ms.component: bing-spell-check
 ms.topic: overview
 ms.date: 05/03/2018
 ms.author: nolachar
-ms.openlocfilehash: 81c80ab6c8d10d263de96566f5554709a2404a24
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 4caa05ffa96dbc15922fed85edfdefdb68ead68b
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48802593"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49361711"
 ---
 # <a name="what-is-bing-spell-check-api"></a>Mi a Bing Spell Check API?
 
@@ -36,7 +36,7 @@ Ez a helyesírás-ellenőrző bármilyen szövegszerkesztési esetet képes keze
 
 ## <a name="spell-check-modes"></a>Helyesírás-ellenőrzési módok
 
-Az API kétféle ellenőrzési módot támogat: `Proof` és `Spell`.  Próbálja ki a példákat [itt](https://azure.microsoft.com/en-us/services/cognitive-services/spell-check/).
+Az API kétféle ellenőrzési módot támogat: `Proof` és `Spell`.  Próbálja ki a példákat [itt](https://azure.microsoft.com/services/cognitive-services/spell-check/).
 ### <a name="proof---for-documents-scenario"></a>Proof – a dokumentumokhoz
 Az alapértelmezett mód a `Proof`. A `Proof` helyesírási mód biztosítja a legátfogóbb ellenőrzéseket, és a nagybetűs írásmód, az alapvető központozás és más funkciók hozzáadásával segíti a dokumentumok létrehozását. Azonban ez a mód kizárólag az en-US (angol-amerikai), es-ES (spanyol), pt-BR (portugál) piacokon érhető el (megjegyzés: a spanyol és portugál piac esetében csak béta verzióban). Minden más piachoz állítsa be a lekérdezési paramétert Spell módra. 
 <br /><br/>**MEGJEGYZÉS:** Ha a lekérdezés szövegének hossza meghaladja a 4096 karaktert, feldolgozás előtt 4096 karakterre lesz csonkolva. 

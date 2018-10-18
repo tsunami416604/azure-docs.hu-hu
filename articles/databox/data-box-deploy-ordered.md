@@ -2,24 +2,18 @@
 title: A Microsoft Azure Data Box megrendelése | Microsoft Docs
 description: Megismerheti az Azure Data Box üzembe helyezési követelményeit és a megrendelésének folyamatát
 services: databox
-documentationcenter: NA
 author: alkohli
-manager: twooley
-editor: ''
-ms.assetid: ''
 ms.service: databox
-ms.devlang: NA
+ms.subservice: pod
 ms.topic: tutorial
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 10/10/2018
 ms.author: alkohli
-ms.openlocfilehash: 0d77353b510dbeb18e96e2d8313e9010c04e25a7
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: d02557ecd84ea14db297ee07f7055a08304e7fcd
+ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49077933"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49091215"
 ---
 # <a name="tutorial-order-azure-data-box"></a>Oktatóanyag: Az Azure Data Box megrendelése
 

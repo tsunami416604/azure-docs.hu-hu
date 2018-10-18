@@ -1,26 +1,19 @@
 ---
 title: A Microsoft Azure Data Box Edge áttekintése | Microsoft Docs
 description: Az Azure Data Box Edge nevű tárolási megoldást ismerteti, amely egy fizikai eszközt használ az Azure-ba való hálózatalapú átvitelhez.
-services: databox-edge-gateway
-documentationcenter: NA
+services: databox
 author: alkohli
-manager: twooley
-editor: ''
-ms.assetid: ''
-ms.service: databox-edge-gateway
-ms.devlang: NA
+ms.service: databox
+ms.subservice: edge
 ms.topic: overview
-ms.custom: ''
-ms.tgt_pltfrm: NA
-ms.workload: TBD
 ms.date: 09/24/2018
 ms.author: alkohli
-ms.openlocfilehash: b64489912725872db971c19965ac58c84cb2fc2e
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 6422482a31ad8022b795cb357c37ad8560781767
+ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46993527"
+ms.lasthandoff: 10/12/2018
+ms.locfileid: "49166593"
 ---
 # <a name="what-is-azure-data-box-edge-preview"></a>Mi az Azure Data Box Edge (előzetes verzió)? 
 
