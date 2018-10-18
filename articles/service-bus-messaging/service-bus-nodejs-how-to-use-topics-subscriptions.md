@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: article
-ms.date: 08/10/2018
+ms.date: 10/16/2018
 ms.author: spelluru
-ms.openlocfilehash: f13e46b310f4f9048b38ab50ce0241d1b2b3161b
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: 00ae254a9e9d40ec88802f2f46666aff72cb242a
+ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47395695"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49377650"
 ---
 # <a name="how-to-use-service-bus-topics-and-subscriptions-with-nodejs"></a>Hogyan használható a Service Bus-üzenettémák és előfizetések a node.js használatával
 
@@ -38,7 +38,7 @@ Ez az útmutató azt ismerteti, hogyan használható a Service Bus-üzenettémá
 [!INCLUDE [howto-service-bus-topics](../../includes/howto-service-bus-topics.md)]
 
 ## <a name="create-a-nodejs-application"></a>Node.js alkalmazás létrehozása
-Hozzon létre egy üres Node.js-alkalmazás. Node.js-alkalmazás létrehozásával kapcsolatos útmutatóért lásd: [létrehozása és a Node.js-alkalmazás üzembe helyezése az Azure-webhelyek], [Node.js Felhőszolgáltatás] [ Node.js Cloud Service] Windows használatával A PowerShell vagy WebMatrix-webhely.
+Hozzon létre egy üres Node.js-alkalmazás. Node.js-alkalmazás létrehozásával kapcsolatos útmutatóért lásd: [Hozzon létre és telepíthet egy Node.js-alkalmazást az Azure-webhelyekre], [Node.js Felhőszolgáltatás] [ Node.js Cloud Service] Windows használatával A PowerShell vagy WebMatrix-webhely.
 
 ## <a name="configure-your-application-to-use-service-bus"></a>A Service Bus-alkalmazás konfigurálása
 Service Bus használata a Node.js az Azure-csomag letöltése. Ez a csomag tartalmaz-kódtárak, amely a Service Bus REST-szolgáltatásokkal kommunikálni.
@@ -73,7 +73,7 @@ var azure = require('azure');
 ### <a name="set-up-a-service-bus-connection"></a>A Service Bus-kapcsolat beállítása
 Az Azure-modul olvassa be a környezeti változó `AZURE_SERVICEBUS_CONNECTION_STRING` az előző lépésben beszerzett kapcsolati karakterláncot, az "a hitelesítő adatok beszerzése." Ha nincs beállítva ehhez a környezeti változóhoz, meg kell adnia a fiókadatok hívásakor `createServiceBusService`.
 
-Példa a környezeti változók beállítása az Azure Cloud Services számára, lásd: [Storage Node.js Felhőszolgáltatás][Node.js Cloud Service with Storage].
+Példa a környezeti változók beállítása az Azure Cloud Services számára, lásd: [környezeti változókat](../container-instances/container-instances-environment-variables.md#azure-cli-example).
 
 
 
@@ -127,7 +127,7 @@ function (returnObject, finalCallback, next)
 
 A visszahívási, és feldolgozás után a `returnObject` (a válasz a kérelemből a kiszolgálóhoz), a visszahívás kell meghívni mellett (ha létezik) más szűrők feldolgozása a folytatáshoz, vagy meghívása `finalCallback` a szolgáltatásmeghívási befejezéséhez.
 
-Az Azure SDK for Node.js tartalmaz két szűrőt (**ExponentialRetryPolicyFilter** és **LinearRetryPolicyFilter**), amelyek újrapróbálkozási logikát implementálnak. A következő létrehoz egy **ServiceBusService** objektum, amely használja a **ExponentialRetryPolicyFilter**:
+Az Azure SDK for Node.js tartalmaz két szűrőt (**ExponentialRetryPolicyFilter** és **LinearRetryPolicyFilter**), amelyek újrapróbálkozási logikát implementálnak. Az alábbi kód létrehoz egy **ServiceBusService** objektum, amely használja a **ExponentialRetryPolicyFilter**:
 
 ```javascript
 var retryOperations = new azure.ExponentialRetryPolicyFilter();
@@ -242,7 +242,7 @@ Egy üzenetet küld egy Service Bus-témakörbe, az alkalmazás használatához 
 Service Bus-témakörökbe küldött üzenetek vannak **BrokeredMessage** objektumokat.
 **BrokeredMessage** objektumok rendelkeznek egy szabványos tulajdonságkészlettel (például `Label` és `TimeToLive`), egyéni alkalmazásspecifikus tulajdonságokat használt, valamint egy karakterláncadatokat törzse. Az alkalmazás beállíthatja az üzenet törzsét egy karakterláncértéket történő átadásával az `sendTopicMessage` és a szükséges alapvető tulajdonságainak alapértelmezett értékek szerint fel van töltve.
 
-Az alábbi példa bemutatja, hogyan küldhető öt tesztüzenet az `MyTopic`. A `messagenumber` egyes üzenetek tulajdonság értéke a ciklus ismétléseinek a változik (Ez határozza meg, melyik előfizetések megkapni):
+Az alábbi példa bemutatja, hogyan küldhető öt tesztüzenet az `MyTopic`. A `messagenumber` egyes üzenetek tulajdonság értéke a ciklus ismétléseinek a változik (Ez a tulajdonság azt határozza meg, melyik előfizetések megkapni):
 
 ```javascript
 var message = {
@@ -268,7 +268,7 @@ A Service Bus-üzenettémakörök a [Standard csomagban](service-bus-premium-mes
 ## <a name="receive-messages-from-a-subscription"></a>Üzenetek fogadása egy előfizetésből
 Üzenetek kapott egy előfizetés az a `receiveSubscriptionMessage` metódust a **ServiceBusService** objektum. Üzenetek alapértelmezés szerint törlődnek az előfizetésből, beolvasni azokat. Ugyanakkor beállíthatja a nem kötelező paraméter `isPeekLock` való **igaz** (betekintési) és az üzenet zárolása anélkül, hogy törölné az előfizetést.
 
-Az alapértelmezett viselkedést, beolvasása, illetve a fogadás művelet részeként az üzenet törlése a legegyszerűbb modell, és forgatókönyvek, amelyben az alkalmazás működését nem dolgoz fel üzenetet egy hiba esetén a legjobban. Ez a viselkedés megismeréséhez, fontolja meg egy forgatókönyvet, amelyben a fogyasztó a fogadási kérést, és majd összeomlik a feldolgozása előtt. Mivel a Service Bus az üzenetet, van megjelölve, majd az alkalmazás újraindításakor és megkezdésekor üzeneteket, kimaradt az összeomlás előtt feldolgozott üzenetet.
+Az alapértelmezett viselkedést, beolvasása, illetve a fogadás művelet részeként az üzenet törlése a legegyszerűbb modell, és a leginkább forgatókönyvek, amelyben az alkalmazás működését nem dolgoz fel üzenetet, ha hiba történik. Ez a viselkedés megismeréséhez, fontolja meg egy forgatókönyvet, amelyben a fogyasztó a fogadási kérést, és majd összeomlik a feldolgozása előtt. Mivel a Service Bus az üzenetet, van megjelölve, majd az alkalmazás újraindításakor és megkezdésekor üzeneteket, kimaradt az összeomlás előtt feldolgozott üzenetet.
 
 Ha a `isPeekLock` paraméter értéke **igaz**, a fogadás kétszakaszos művelet lesz, amely lehetővé teszi az olyan alkalmazások támogatását, amelyek működését zavarják a hiányzó üzenetek. A Service Bus-kérést kap, amikor azt talál fel a következő üzenet, zárolja azt, hogy más fogyasztók számára fogadni, és visszaadja az alkalmazásnak.
 Miután az alkalmazás feldolgozza az üzenetet (vagy megbízható módon tárolja a jövőbeli feldolgozáshoz), a fogadási folyamat második fázisa befejezné meghívásával **deleteMessage** módot, és az üzenet törlése egy paraméterként átadja. A **deleteMessage** metódus feldolgozottként jelöli meg az üzenetet, és eltávolítja az előfizetésből.
@@ -338,6 +338,6 @@ Most, hogy megismerte a Service Bus-üzenettémakörök alapjait, kövesse az al
 [Queues, topics, and subscriptions]: service-bus-queues-topics-subscriptions.md
 [SqlFilter]: /dotnet/api/microsoft.servicebus.messaging.sqlfilter
 [Node.js Cloud Service]: ../cloud-services/cloud-services-nodejs-develop-deploy-app.md
-[létrehozása és a Node.js-alkalmazás üzembe helyezése az Azure-webhelyek]: ../app-service/app-service-web-get-started-nodejs.md
+[Hozzon létre és telepíthet egy Node.js-alkalmazást az Azure-webhelyekre]: ./app-service/app-service-web-get-started-nodejs.md
 [Node.js Cloud Service with Storage]: ../cloud-services/cloud-services-nodejs-develop-deploy-app.md
 
