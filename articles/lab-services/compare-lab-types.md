@@ -13,20 +13,22 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 05/17/2018
 ms.author: spelluru
-ms.openlocfilehash: 7e86ba2b7fc729bd4663503282a936a5eaddf3ca
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 8cf779f203850ca03942ba2395baf07412712610
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34637873"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47092969"
 ---
 # <a name="compare-managed-labs-in-azure-lab-services-and-devtest-labs"></a>Az Azure Lab Services és DevTest Labs felügyelt tesztkörnyezeteinek összehasonlítása
 Kétféle tesztkörnyezetet hozhat létre, **felügyelt tesztkörnyezetet** az Azure Lab Services szolgáltatással, és **egyéni tesztkörnyezetet** az Azure DevTest Labs szolgáltatással. Ha csak azt szeretné megadni, hogy mire van szüksége a tesztkörnyezetben, és a szolgáltatás fogja beállítani és felügyelni a tesztkörnyezethez szükséges infrastruktúrát, válassza a **felügyelt tesztkörnyezetek** egyikét. Jelenleg az **osztályterem-tesztkörnyezet** a felügyelt tesztkörnyezetek egyetlen olyan típusa, amelyet az Azure Lab Services szolgáltatással létrehozhat. Ha saját infrastruktúrát szeretne felügyelni, hozzon létre egy tesztkörnyezetet az Azure DevTest Labs szolgáltatással.
 
 Az alábbi szakaszokban részletesen is tárgyaljuk ezeket a tesztkörnyezeteket. 
 
-## <a name="managed-labs"></a>Felügyelt tesztkörnyezetek
-A felügyelt tesztkörnyezetek az adott igényeknek megfelelő különböző típusú tesztkörnyezeteket nyújtanak. Az Azure Lab Services jelenleg csak az **osztályterem-tesztkörnyezetet** támogatja felügyelt tesztkörnyezetként. A felügyelt tesztkörnyezetekkel minimális beállítást követően azonnal elkezdheti a munkát. A szolgáltatás maga gondoskodik a tesztkörnyezet infrastruktúrájának átfogó kezeléséről, a virtuális gépek indításától a hibák kezelésén keresztül az infrastruktúra méretezéséig. Felügyelt tesztkörnyezet létrehozásához először létre kell hoznia egy tesztkörnyezetfiókot a vállalat számára. A tesztkörnyezetfiók központi fiókként szolgál a vállalat összes tesztkörnyezetének a felügyeletéhez. 
+## <a name="managed-lab-types"></a>Felügyelt tesztkörnyezet-típusok
+Az Azure Lab Services segítségével Azure által kezelt infrastruktúrával rendelkező tesztkörnyezeteket hozhat létre. Ez a cikk ezeket felügyelt tesztkörnyezeteknek hívja. A felügyelt tesztkörnyezetek az adott igényeknek megfelelő különböző típusú tesztkörnyezeteket nyújtanak. Jelenleg az egyetlen támogatott tesztkörnyezettípus az **osztályterem-tesztkörnyezet**. 
+
+A felügyelt tesztkörnyezetekkel minimális beállítást követően azonnal elkezdheti a munkát. A szolgáltatás maga gondoskodik a tesztkörnyezet infrastruktúrájának átfogó kezeléséről, a virtuális gépek indításától a hibák kezelésén keresztül az infrastruktúra méretezéséig. Felügyelt tesztkörnyezet (például osztályterem-tesztkörnyezet) létrehozásához először létre kell hoznia egy tesztkörnyezetfiókot a vállalat számára. A tesztkörnyezetfiók központi fiókként szolgál a vállalat összes tesztkörnyezetének a felügyeletéhez. 
 
 Amikor Azure-erőforrásokat hoz létre és használ ezekben a felügyelt tesztkörnyezetekben, a szolgáltatás belső Microsoft-előfizetésekben hozza létre és felügyeli az erőforrásokat, nem pedig az Ön Azure-előfizetésében. A szolgáltatás belső Microsoft-előfizetésekben követi nyomon ezen erőforrások használatát. A használat számlázása a tesztkörnyezetfiókot tartalmazó Azure-előfizetésben történik.   
 
@@ -51,11 +53,11 @@ A **DevTest Labs tesztkörnyezetek néhány alkalmazási helyzete**:
 - Képzési foglalkozások biztosítása az ügyfeleknek a termék legújabb verziójával konfigurált tesztkörnyezettel. Korlátozott mennyiségű idő biztosítása minden ügyfél számára a tesztkörnyezet használatához. 
 
 
-## <a name="managed-labs-vs-devtest-labs"></a>Felügyelt tesztkörnyezetek és DevTest Labs
+## <a name="managed-lab-types-vs-devtest-labs"></a>Felügyelt tesztkörnyezet-típusok és a DevTest Labs
 Az alábbi táblázat az Azure Lab Services által támogatott tesztkörnyezetek két típusát hasonlítja össze: 
 
 | Szolgáltatások | Felügyelt tesztkörnyezetek | DevTest Labs |
-| -------- | ----------------  | ---------- |
+| -------- | ----------------- | ---------- |
 | Az Azure-infrastruktúra felügyelete a tesztkörnyezetben. |  A szolgáltatás automatikusan felügyeli. | A felhasználó saját maga felügyeli.  |
 | Beépített rugalmasság az infrastruktúrával kapcsolatos problémákkal szemben | A szolgáltatás automatikusan kezeli. | A felhasználó saját maga felügyeli.  |
 | Előfizetés-kezelés | A szolgáltatás kezeli az erőforrások kiosztását a szolgáltatást támogató Microsoft-előfizetéseken belül. A szolgáltatás automatikusan kezeli a méretezést. | A felhasználó saját maga felügyeli a saját Azure-előfizetésében. Az előfizetések automatikusan méretezését a szolgáltatás nem biztosítja. |

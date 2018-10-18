@@ -4,7 +4,7 @@ description: Ez a cikk általános áttekintését nyújt a Media Services szolg
 services: media-services
 documentationcenter: na
 author: Juliako
-manager: cfowler
+manager: femila
 editor: ''
 tags: ''
 keywords: azure media services, stream, szórás, élő, offline
@@ -13,15 +13,15 @@ ms.devlang: multiple
 ms.topic: overview
 ms.tgt_pltfrm: multiple
 ms.workload: media
-ms.date: 07/14/2018
+ms.date: 09/25/2018
 ms.author: juliako
 ms.custom: mvc
-ms.openlocfilehash: 6c3fb7391c25628ba12526a04c022215bdbd9d40
-ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
+ms.openlocfilehash: 3641806870c3eab0b3a05f538015a72d9a0b34ef
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39325931"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47221934"
 ---
 # <a name="what-is-azure-media-services-v3"></a>Az Azure Media Services v3 ismertetése
 
@@ -55,7 +55,7 @@ A v3 egy egységes API felületen alapul, amely az Azure Resource Manager szolg�
 Ez a verzió az alábbi képességeket biztosítja:  
 
 * **Átalakítás**, amellyel a médiafeldolgozási vagy az -elemzési feladatok egyszerű munkafolyamatait határozhatja meg. Az átalakítás a video- és hangfájlok feldolgozásának rögzített folyamata. A későbbiekben ismételten alkalmazhatja a tartalomtárban levő összes fájl feldolgozásához a feladatoknak az átalakítási szolgáltatás számára történő elküldésével.
-* **Feladatok** a videók feldolgozásához (kódolás vagy elemzés). A bemenő tartalmak HTTP- URL-, SAS URL-címekkel vagy az Azure Blob Storage-ban található fájlok elérési útjával határozhatók meg a feladatokban. 
+* **Feladatok** a videók feldolgozásához (kódolás vagy elemzés). A bemenő tartalmak HTTPS- URL- és SAS URL-címekkel vagy az Azure Blob Storage-ban található fájlok elérési útjával határozhatók meg a feladatokban. Az AMS v3 jelenleg nem támogatja a HTTPS URL-címekkel történő darabolásos átviteli kódolást.
 * **Értesítések**, amelyek monitorozzák a feladat előrehaladását vagy állapotát, az élő csatornák elindítását/leállítását és a hibaeseményeket. Az értesítések az Azure Event Grid értesítési rendszerével vannak integrálva. Könnyedén előfizethet az Azure Media Services több erőforrásának eseményeire. 
 * Az **Azure Resource Manager-sablonokkal** átalakítások, streamelési végpontok, csatornák és egyebek hozhatók létre és helyezhetők üzembe.
 * **Szerepköralapú hozzáférés-vezérlés** állítható be az erőforrásszinten, amely lehetővé teszi az adott erőforrásokhoz, például az átalakításokhoz, csatornákhoz és egyebekhez való hozzáférés zárolását.

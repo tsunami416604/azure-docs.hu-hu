@@ -10,12 +10,12 @@ ms.service: postgresql
 ms.custom: tutorial, mvc
 ms.topic: tutorial
 ms.date: 03/20/2018
-ms.openlocfilehash: 181e31530960f031dd2785b852c0ae15c21af782
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 6a3241e15cc72d1d50862a9dec14c23712ec4226
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/23/2018
-ms.locfileid: "30186308"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47406382"
 ---
 # <a name="tutorial-design-an-azure-database-for-postgresql-using-the-azure-portal"></a>Oktatóanyag: Azure Database for PostgreSQL tervezése az Azure Portallal
 
@@ -35,7 +35,7 @@ Ebből az oktatóanyagból az Azure Portal használatával megtanulhatja a köve
 Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
 
 ## <a name="log-in-to-the-azure-portal"></a>Bejelentkezés az Azure Portalra
-Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
 ## <a name="create-an-azure-database-for-postgresql"></a>Azure-adatbázis létrehozása PostgreSQL-hez
 
@@ -85,7 +85,7 @@ Az Azure Database for PostgreSQL szolgáltatás a kiszolgáló szintjén haszná
 
 2.  A kiszolgáló lapján válassza a **Kapcsolatbiztonság** elemet. 
 
-3.  Kattintson a **Szabálynév** alatti szövegmezőbe, és adjon hozzá egy új tűzfalszabályt az IP-címtartomány összekapcsolhatóságának engedélyezéséhez. Ebben az oktatóanyagban engedélyezzünk minden IP-címet. Ehhez írja be a következőket: **Rule Name = AllowAllIps**, **Start IP = 0.0.0.0** és **End IP = 255.255.255.255**, majd kattintson a **Mentés** gombra. Beállíthat egy adott tűzfalszabályt, amely lefed egy kisebb IP-címtartományt, annak érdekében, hogy csatlakozni tudjon a saját hálózatából.
+3.  Kattintson a **Szabálynév** alatti szövegmezőbe, és adjon hozzá egy új tűzfalszabályt az IP-címtartomány összekapcsolhatóságának engedélyezéséhez. Adja meg az IP-címtartományt. Kattintson a **Save** (Mentés) gombra.
 
    ![Azure-adatbázis PostgreSQL-hez - Tűzfalszabály létrehozása](./media/tutorial-design-database-using-azure-portal/5-firewall-2.png)
 

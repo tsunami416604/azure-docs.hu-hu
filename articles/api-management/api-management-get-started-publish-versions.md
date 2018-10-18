@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.custom: mvc
 ms.topic: tutorial
-ms.date: 11/19/2017
+ms.date: 06/15/2018
 ms.author: apimpm
-ms.openlocfilehash: 1cbe63184578f7d1e72992577a11c58b9b83a002
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: a7e5051248a579b0943fa69620215b060bd1e235
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33937317"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47092693"
 ---
 # <a name="publish-multiple-versions-of-your-api"></a>Az API több verziójának közzététele 
 
@@ -44,7 +44,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 ![Az API helyi menüje – Verzió hozzáadása](media/api-management-getstarted-publish-versions/AddVersionMenu.png)
 
-1. Válassza a **Conference API** elemet az API-k listájából.
+1. Válassza a **Demo Conference API** lehetőséget az API-k listájából.
 2. Válassza a mellette lévő helyi menüt (**...**).
 3. Válassza a **+ Verzió hozzáadása** lehetőséget.
 
@@ -53,42 +53,44 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 ## <a name="choose-a-versioning-scheme"></a>Verziókezelési séma kiválasztása
 
-Az Azure API Management segítségével meghatározhatja, hogy a hívók hogyan adhassák meg, hogy az API melyik verzióját szeretnék használni. A használandó API-verziót egy **verziókezelési séma** kiválasztásával határozhatja meg. Ez a séma lehet **elérési út, fejléc vagy lekérdezési karakterlánc**. Az alábbi példában az elérési utat használjuk a verziókezelési séma kiválasztására.
+Az Azure API Management segítségével meghatározhatja, hogy a hívók hogyan adhassák meg, hogy az API melyik verzióját szeretnék használni. A használandó API-verziót egy **verziókezelési séma** kiválasztásával határozhatja meg. Ez a séma lehet **elérési út, fejléc vagy lekérdezési sztring**. Az alábbi példában az elérési utat használjuk a verziókezelési séma kiválasztására.
 
 ![Verzió hozzáadása képernyő](media/api-management-getstarted-publish-versions/AddVersion.PNG)
 
 1. A **verziókezelési sémánál** hagyja bejelölve az **elérési út** beállítást.
-2. Adja hozzá a **v1** tagot **verzióazonosítóként**.
+2. Adja hozzá a **v1** tagot **névként** és **verzióazonosítóként**.
 
     > [!TIP]
-    > Ha a **fejléc** vagy a **lekérdezési karakterlánc** lehetőséget választja verziókezelési sémaként, meg kell adnia egy további értéket is – a fejléc vagy a lekérdezési karakterlánc paraméterének nevét.
+    > Ha a **fejléc** vagy a **lekérdezési sztring** lehetőséget választja verziókezelési sémaként, meg kell adnia egy további értéket is – a fejléc vagy a lekérdezési sztring paraméterének nevét.
 
-3. Igény szerint egy leírást is megadhat.
-4. Válassza a **Létrehozás** lehetőséget az új verzió beállításához.
-5. Az API listában a **Big Conference API** alatt most két különböző API látható – az **Eredeti** és a **v1**.
+3. Válassza a **Létrehozás** lehetőséget az új verzió beállításához.
+4. Az API listában a **Demo Conference API** alatt most két különböző API látható – az **Eredeti** és a **v1**.
 
     ![Az API alatt listázott verziók az Azure Portalon](media/api-management-getstarted-publish-versions/VersionList.PNG)
 
     > [!Note]
     > Ha egy verzióval nem rendelkező API-hoz ad hozzá egy verziót, automatikusan létrejön egy **Eredeti** verzió – ez az alapértelmezett URL-címen válaszol. Ez biztosítja, hogy a meglévő hívók kapcsolata ne szakadjon meg az új verzió hozzáadásával. Ha egy új API létrehozásakor engedélyezi a verziókat, nem jön létre Eredeti verzió.
 
-6. A **v1** most az **Eredeti** API-tól eltérő API-ként szerkeszthető és konfigurálható. Az egyik verzió módosítása nem érinti a másikat.
+5. A **v1** most az **Eredeti** API-tól eltérő API-ként szerkeszthető és konfigurálható. Az egyik verzió módosítása nem érinti a másikat.
 
 ## <a name="add-the-version-to-a-product"></a>A verzió hozzáadása egy termékhez
 
 Ahhoz, hogy a hívók láthassák az új verziót, hozzá kell adni azt egy **termékhez**.
 
 1. Válassza a **Termékek** lehetőséget a klasszikus üzemi modell oldalán.
+
+    ![API Management-termékek](media/api-management-getstarted-publish-versions/Products.png)
+
 2. Válassza a **Korlátlan** lehetőséget.
 3. Válassza az **API-k** lehetőséget.
 4. Válassza a **Hozzáadás** lehetőséget.
-5. Válassza a **Conference API, v1 verzió** elemet.
+5. Válassza a **Demo Conference API, v1 verzió** elemet.
 6. Lépjen a szolgáltatásfelügyeleti oldalra, és válassza az **API-k** elemet.
 
 ## <a name="browse-the-developer-portal-to-see-the-version"></a>A fejlesztői portál tallózása a verzió megtekintéséhez
 
 1. A felső menüben kattintson a **Fejlesztői portál** elemre.
-2. Válassza az **API-k** lehetőséget, ahol láthatja, hogy a **Conference API** alatt az **Eredeti** és a **v1** verziók láthatók.
+2. Válassza az **API-k** lehetőséget, ahol láthatja, hogy a **Demo Conference API** alatt az **Eredeti** és a **v1** verziók láthatók.
 3. Válassza a **v1** lehetőséget.
 4. Figyelje meg a lista első műveletének **Kérés URL-címe** értékét. Azt mutatja, hogy az API URL-címe tartalmazza a **v1** tagot.
 
@@ -107,4 +109,4 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 Folytassa a következő oktatóanyaggal:
 
 > [!div class="nextstepaction"]
-> [Frissítés és skálázás](upgrade-and-scale.md)
+> [A fejlesztői portál oldalstílusának testreszabása](api-management-customize-styles.md)

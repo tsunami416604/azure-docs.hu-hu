@@ -9,13 +9,13 @@ editor: jasonwhowell
 ms.service: mysql
 ms.custom: mvc
 ms.topic: quickstart
-ms.date: 03/20/2018
-ms.openlocfilehash: dea380378aa1b6c2203c76f5c48e5af400ec8719
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.date: 09/12/2018
+ms.openlocfilehash: f26cadf28205359b111a8f92b8fadcbd9f26f958
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35266703"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47407621"
 ---
 # <a name="create-an-azure-database-for-mysql-server-by-using-the-azure-portal"></a>Azure-adatbázis létrehozása MySQL-kiszolgálóhoz az Azure Portal használatával
 
@@ -51,7 +51,7 @@ Kövesse az alábbi lépéseket egy, a MySQL-kiszolgálóhoz készült Azure-ada
     Jelszó | *A választása szerint* | Adjon meg új jelszót a kiszolgálói rendszergazdai fiók számára. 8–128 karakter hosszúságú lehet. A jelszónak tartalmaznia kell karaktereket a következő kategóriák közül legalább háromból: angol nagybetűs karakterek, angol kisbetűs karakterek, számjegyek (0–9) és nem alfanumerikus karakterek (!, $, #, % stb.).
     Jelszó megerősítése | *A választása szerint*| Erősítse meg a rendszergazdafiók jelszavát.
     Hely | *A felhasználókhoz legközelebb eső régió*| Válassza ki a felhasználókhoz vagy a többi Azure-alkalmazásához legközelebb eső helyet.
-    Verzió | *A legújabb verzió*| A legújabb verzió (ha nincsenek más verzió használatát megkövetelő egyedi igényei).
+    Verzió | *A legújabb főverzió*| A legújabb főverzió (ha nincsenek más verzió használatát megkövetelő egyedi igényei).
     Tarifacsomag | **Általános célú**, **4. generációs**, **2 virtuális mag**, **5 GB**, **7 nap**, **Georedundáns** | Az új kiszolgáló számítási, tárolási és biztonsági mentési konfigurációi. Válassza a **Tarifacsomag** lehetőséget, majd az **Általános célú** lapot. A **Számítási generáció**, **Virtuális mag**, **Tárolás** és **Biztonsági mentések megőrzési időszaka** beállítások alapértelmezett értékei a következők: *4. generációs*, *2 virtuális mag*, *5 GB* és *7 nap*. A csúszkákat nem szükséges módosítania. A kiszolgáló georedundáns tárhelyre való biztonsági mentésének engedélyezéséhez válassza a **Biztonsági másolat redundanciabeállításai** területen a **Georedundáns** lehetőséget. A tarifacsomag beállításának mentéséhez válassza az **OK** gombot. A következő képernyőkép ezeket a beállításokat tartalmazza.
   
     > [!IMPORTANT]
@@ -74,17 +74,11 @@ A MySQL szolgáltatáshoz készült Azure-adatbázis a kiszolgáló szintjén ho
 
 2. A kiszolgáló lapján válassza a **Kapcsolatbiztonság** elemet.
 
-3.  A **Tűzfalszabályok** szakaszban kattintson az üres mezőbe a **Szabály neve** oszlopban egy új tűzfalszabály létrehozásának megkezdéséhez. 
-
-   Ebben a rövid útmutatóban engedélyezünk minden bemenő IP-címet a kiszolgálón. Ehhez adjuk meg az egyes oszlopok mezőjében a következő értékeket:
-
-   Szabály neve | Kezdő IP-cím | Záró IP-cím 
-   ---|---|---
-   AllowAllIps |  0.0.0.0 | 255.255.255.255
+3.  A **Tűzfalszabályok** szakaszban kattintson az üres mezőbe a **Szabály neve** oszlopban egy új tűzfalszabály létrehozásának megkezdéséhez. Adja meg a kiszolgálóhoz csatlakozni kívánó ügyfelek pontos IP-címtartományát.
    
-   ![Kapcsolatbiztonság – Tűzfalszabályok](./media/quickstart-create-mysql-server-database-using-azure-portal/5_firewall-settings.png)
+   ![Kapcsolatbiztonság – Tűzfalszabályok](./media/quickstart-create-mysql-server-database-using-azure-portal/5-firewall-2.png)
 
-   Az összes IP-cím engedélyezése nem biztonságos. Ez a példa az egyszerűséget tartja szem előtt, de valós környezetben ismernie kell a pontos IP-címtartományokat az alkalmazások és felhasználók számára történő hozzáadáshoz. 
+
 
 4. A **Kapcsolatbiztonság** lap felső eszköztárában kattintson a **Mentés** gombra. A folytatás előtt várjon, amíg meg nem jelenik a frissítés sikeres befejezését jelző értesítés. 
 

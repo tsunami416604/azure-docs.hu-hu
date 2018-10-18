@@ -11,14 +11,14 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-xamarin
 ms.devlang: dotnet
 ms.topic: hero-article
-ms.date: 05/25/2018
+ms.date: 09/24/2018
 ms.author: crdun
-ms.openlocfilehash: b2dafbcf0e41e7387157590e145f74430686321c
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: ef371447e851fece207d77fe656283abe3dc4164
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38307119"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47063863"
 ---
 # <a name="create-a-xamarinforms-app-with-azure"></a>Xamarin.Forms-alkalmazás létrehozása az Azure-ral
 
@@ -181,7 +181,9 @@ Ez a művelet egy közzétételi kérést küld az Azure szolgáltatásban üzem
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 
-Ha a megoldás fordítása során problémákat tapasztal, futtassa a NuGet csomagkezelőt, és frissítsen a Xamarin.Forms legújabb verziójára, az Android-projektben pedig frissítse a Xamarin.Android támogatási csomagjait. Előfordulhat, hogy a gyorsindítási projektek nem tartalmazzák a legújabb verziót.
+Ha a megoldás fordítása során problémákat tapasztal, futtassa a NuGet csomagkezelőt, és frissítsen a `Xamarin.Forms` legújabb verziójára, az Android-projektben pedig frissítse a `Xamarin.Android` támogatási csomagjait. Előfordulhat, hogy a gyorsindítási projektek nem tartalmazzák a legújabb verziót.
+
+Vegye figyelembe, hogy az Android-projektjében hivatkozott összes támogatási csomagnak azonos verziójúnak kell lennie. Az [Azure Mobile Apps NuGet csomag](https://www.nuget.org/packages/Microsoft.Azure.Mobile.Client/) Android platform esetén `Xamarin.Android.Support.CustomTabs`-függőséggel rendelkezik, így ha a projektjében újabb támogatási csomagokat használ, akkor az ütközések elkerülése érdekében közvetlenül kell telepítenie ennek a csomagnak a szükséges verzióját.
 
 ## <a name="next-steps"></a>További lépések
 

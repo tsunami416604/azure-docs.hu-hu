@@ -10,15 +10,15 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 08/24/2018
+ms.date: 09/07/2018
 ms.topic: quickstart
 ms.author: jgao
-ms.openlocfilehash: 540aabc9164e43776d2166926430f4512dd23f49
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: a2b4c4824960c21011876a7c0adf029fc56d93d2
+ms.sourcegitcommit: 3150596c9d4a53d3650cc9254c107871ae0aab88
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43106049"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47419117"
 ---
 # <a name="quickstart-create-azure-resource-manager-templates-by-using-visual-studio-code"></a>Rövid útmutató: Azure Resource Manager-sablonok létrehozása a Visual Studio Code használatával
 
@@ -96,22 +96,38 @@ A sablonok üzembe helyezésének számos módszere létezik.  Ebben a rövid ú
 
     ![Azure Portal – Cloud Shell](./media/resource-manager-quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell.png)
 
-    A Cloud Shell a képernyő alján van megnyitva.
+    A Cloud Shell az ablak alján van megnyitva.
 
-3. A Cloud Shell bal felső sarkában vagy a **PowerShell**, vagy a **Bash** látható. A parancssori felület használatához Bash-munkamenetet kell megnyitnia. A PowerShell használatához PowerShell-munkamenetet kell megnyitnia. A váltáshoz válassza a lefelé mutató nyilat, majd válassza az értelmezőt. Az alábbi képen a PowerShellről Bashre váltás látható.
+3. A Cloud Shell bal felső sarkában vagy a **PowerShell**, vagy a **Bash** látható. A parancssori felület használatához Bash-munkamenetet kell megnyitnia. A PowerShell használatához PowerShell-munkamenetet kell megnyitnia. A Bash és a PowerShell közötti váltáshoz válassza a lefelé mutató nyilat. Az alábbi képen a PowerShellről Bashre váltás látható.
 
     ![Azure Portal – Cloud Shell – Parancssori felület](./media/resource-manager-quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-choose-cli.png)
 
     A váltáskor a felületet újra kell indítani.
 4. Kattintson a **Fájlok feltöltése/letöltése**, majd a **Feltöltés** elemre.
 
+    # <a name="clitabcli"></a>[Parancssori felület](#tab/CLI)
+
     ![Azure Portal – Cloud Shell – Fájl feltöltése](./media/resource-manager-quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-upload-file.png)
+   
+    # <a name="powershelltabpowershell"></a>[PowerShell](#tab/PowerShell)
+    
+    ![Azure Portal – Cloud Shell – Fájl feltöltése](./media/resource-manager-quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-upload-file-powershell.png)
+    
+    ---
 
     Fel kell töltenie a sablonfájlt, mielőtt üzembe helyezhetné a felületről.
 5. Válassza az e rövid útmutatóban korábban mentett fájlt. Alapértelmezés szerint a fájl neve a következő: **azuredeploy.json**.
 6. A fájl sikeres feltöltésének ellenőrzéséhez futtassa az **ls** parancsot a Cloud Shellben. A **cat** paranccsal a sablon tartalmát is ellenőrizheti. Az alábbi képen a parancs Bashben történő futtatása látható.  Ugyanezeket a parancsokat használja a PowerShell-munkamenetben is.
 
+    # <a name="clitabcli"></a>[Parancssori felület](#tab/CLI)
+
     ![Azure Portal – Cloud Shell – Fájlok listázása](./media/resource-manager-quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-list-file.png)
+   
+    # <a name="powershelltabpowershell"></a>[PowerShell](#tab/PowerShell)
+    
+    ![Azure Portal – Cloud Shell – Fájlok listázása](./media/resource-manager-quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-list-file-powershell.png)
+    
+    ---
 7. Futtassa az alábbi parancsokat a Cloud Shellben. Válassza ki a megfelelő lapot a PowerShell-kód vagy a parancssori felület kód megjelenítéséhez.
 
     # <a name="clitabcli"></a>[Parancssori felület](#tab/CLI)
@@ -131,9 +147,17 @@ A sablonok üzembe helyezésének számos módszere létezik.  Ebben a rövid ú
     
     ---
 
-    A következő képernyőkép egy minta parancssori felületi üzembe helyezést mutat be:
+    A következő képernyőkép egy felületi üzembe helyezés mintáját mutatja be:
+
+    # <a name="clitabcli"></a>[Parancssori felület](#tab/CLI)
 
     ![Azure Portal – Cloud Shell – Sablon üzembe helyezése](./media/resource-manager-quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-deploy-template.png)
+   
+    # <a name="powershelltabpowershell"></a>[PowerShell](#tab/PowerShell)
+    
+    ![Azure Portal – Cloud Shell – Sablon üzembe helyezése](./media/resource-manager-quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-deploy-template-powershell.png)
+    
+    ---
 
     A képernyőképen az alábbi értékek láthatók:
 
@@ -170,7 +194,7 @@ Ha már nincs szükség az Azure-erőforrásokra, törölje az üzembe helyezett
 
 ## <a name="next-steps"></a>További lépések
 
-Az oktatóanyag elsősorban az Azure-gyorssablonok közül egy meglévő sablon a Visual Studio Code-dal történő szerkesztését mutatta be. Emellett azt is megismerte, hogyan helyezheti üzembe a sablont az Azure Cloud Shellben a parancssori felület vagy a PowerShell használatával. Az Azure-gyorssablonok nem biztos, hogy minden tekintetben megfelelnek Önnek. A következő oktatóanyag azt mutatja be, hogyan keresheti meg a megfelelő információkat a sablonreferenciában titkosított Azure Storage-fiók létrehozásához.
+A rövid útmutató elsősorban az Azure-gyorssablonok közül egy meglévő sablon a Visual Studio Code-dal történő szerkesztését mutatja be. Emellett azt is megismerte, hogyan helyezheti üzembe a sablont az Azure Cloud Shellben a parancssori felület vagy a PowerShell használatával. Az Azure-gyorssablonok nem biztos, hogy minden tekintetben megfelelnek Önnek. A következő oktatóanyag azt mutatja be, hogyan keresheti meg a megfelelő információkat a sablonreferenciában titkosított Azure Storage-fiók létrehozásához.
 
 > [!div class="nextstepaction"]
 > [Titkosított tárfiók létrehozása](./resource-manager-tutorial-create-encrypted-storage-accounts.md)

@@ -2,20 +2,20 @@
 title: Az Azure Database for PostgreSQL relációsadatbázis-szolgáltatás áttekintése
 description: Az Azure Database for PostgreSQL relációsadatbázis-szolgáltatás áttekintését nyújtja.
 services: postgresql
-author: kamathsun
-ms.author: sukamat
+author: rachel-msft
+ms.author: raagyema
 manager: kfile
 editor: jasonwhowell
 ms.custom: mvc
 ms.service: postgresql
 ms.topic: overview
-ms.date: 06/02/2018
-ms.openlocfilehash: fab3aa7d0b1fe0f4fafd4b2fdca24ad0e8a3d03c
-ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
+ms.date: 06/15/2018
+ms.openlocfilehash: 86a8b824479173024b1a14bb8612073ffbfac468
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34737231"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47092157"
 ---
 # <a name="what-is-azure-database-for-postgresql"></a>Mi az Azure Database for PostgreSQL?
 
@@ -56,7 +56,7 @@ Az Azure Database for PostgreSQL szolgáltatás tárolási titkosítást haszná
 Alapértelmezés szerint az Azure Database for PostgreSQL szolgáltatás úgy van konfigurálva, hogy [SSL-kapcsolatbiztonságot](./concepts-ssl-connection-security.md) igényeljen a hálózatok között mozgó adatokhoz. Az adatbázis-kiszolgáló és az ügyfélalkalmazások közötti SSL-kapcsolatok kikényszerítése elősegíti a „köztes” támadások elleni védelmet, mert titkosítja a kiszolgáló és az alkalmazás közötti streameket. Választhatja az SSL megkövetelésének letiltását az adatbázis-szolgáltatáshoz való kapcsolódáshoz, ha az ügyfélalkalmazás nem támogatja az SSL-kapcsolatokat.
 
 ## <a name="contacts"></a>Kapcsolatok
-Ha kérdései vagy javaslatai vannak az Azure Database for MySQL használatával kapcsolatban, írjon egy e-mailt az Azure Database for MySQL csapatának ([@Ask Azure DB for PostgreSQL](mailto:AskAzureDBforPostgreSQL@service.microsoft.com)). Ne feledje, hogy ez nem műszaki támogatás.
+Ha kérdései vagy javaslatai vannak az Azure Database for PostgreSQL használatával kapcsolatban, írjon egy e-mailt az Azure Database for PostgreSQL csapatának ([@Ask Azure DB for PostgreSQL](mailto:AskAzureDBforPostgreSQL@service.microsoft.com)). Ne feledje, hogy ez nem műszaki támogatás.
 
 Ezenkívül a következő elérhetőségeken léphet velünk kapcsolatba:
 - Ha az Azure-támogatással szeretne kapcsolatba lépni, [nyújtson be igénylést az Azure Portalon](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).

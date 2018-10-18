@@ -4,15 +4,15 @@ description: A cikk áttekintést nyújt az Azure Migrate szolgáltatásról.
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: overview
-ms.date: 08/08/2018
+ms.date: 09/25/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 8371a160d129586f63b2f14946ed34a8d0637f6c
-ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
+ms.openlocfilehash: d2a8885ffb9148d408eff0e8a7d2ef09121e5359
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39714240"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47162038"
 ---
 # <a name="about-azure-migrate"></a>Az Azure Migrate bemutatása
 
@@ -33,9 +33,12 @@ Az Azure Migrate az alábbiakban nyújt segítséget:
 - Hyper-V virtuális gépek felméréséhez az [Azure Site Recovery Deployment Plannert](http://aka.ms/asr-dp-hyperv-doc), fizikai gépek felméréséhez pedig [partnereszközeinket](https://azure.microsoft.com/migration/partners/) használja.
 - Egyetlen felderítéssel legfeljebb 1500 virtuális gépet, egyetlen projekt részeként pedig szintén legfeljebb 1500 virtuális gépet deríthet fel. Egyetlen értékeléssel emellett legfeljebb 1500 virtuális gépet értékelhet.
 - Ha egy nagyobb méretű környezetet szeretne felderíteni, feloszthatja a felderítést, és létrehozhat több projektet. [További információk](how-to-scale-assessment.md). Az Azure Migrate előfizetésenként legfeljebb 20 projektet támogat.
-- Azure Migrate-projektet csak az USA középnyugati régiójában és keleti régiójában lehet létrehozni. Ettől függetlenül megtervezheti a migrálást egy tetszőleges Azure-beli célhelyre. A migrálási projekt helyét a rendszer csak a helyszíni környezetből felderített metaadatok tárolására használja.
 - Az Azure Migrate kizárólag a felügyelt lemezek migrálásfelmérését támogatja.
+- Azure Migrate-projektet csak egyesült államokbeli földrajzi helyen lehet létrehozni. Ettől függetlenül megtervezheti a migrálást egy tetszőleges Azure-beli célhelyre. A migrálási projekt helyét a rendszer csak a helyszíni környezetből felderített metaadatok tárolására használja. [További információ](https://docs.microsoft.com/azure/migrate/resources-faq#discovery-and-assessment) az Azure Migrate által gyűjtött metaadatokról. A gyűjtött metaadatok a kijelölt [Azure-régiócsoport](https://azure.microsoft.com/global-infrastructure/geographies/) egyik régiójában vannak tárolva:
 
+**Régiócsoport** | **Régiók**
+--- | ---
+Egyesült Államok | USA nyugati középső régiója, USA keleti régiója
 
 ## <a name="what-do-i-need-to-pay-for"></a>Mi az, amiért fizetnem kell?
 
@@ -49,14 +52,14 @@ Az értékelési beállítások az adott igényekhez szabhatók. Az értékelés
 **Tulajdonság** | **Részletek**
 --- | ---
 **Célhely** | Az Azure-beli hely, ahová a migrálást szeretné végezni.<br/><br/>Az Azure Migrate jelenleg 30 régiót támogat. [Régiók megtekintése](https://azure.microsoft.com/global-infrastructure/services/). Az alapértelmezetten beállított célrégió az USA 2. nyugati régiója.
-**Tárolás típusa** | Az Azure-ban lefoglalni kívánt lemezek típusa. Csak akkor alkalmazható, ha a méretezési feltétel a **helyszíni**. A céllemez típusa prémium (ez az alapértelmezett) vagy standard szintű felügyelt lemez lehet. Teljesítményalapú méretezés esetén a lemez méretezésére vonatkozó javaslatot a rendszer automatikusan adja meg a virtuális gépek teljesítményadatainak figyelembevételével. 
-**Méretezési feltétel** | A méretezés történhet a helyszíni virtuális gépek **teljesítményelőzményei** alapján, esetleg **helyszíniként** (ez az alapértelmezett), a teljesítményelőzmények figyelembevétele nélkül. 
+**Tárolás típusa** | Az Azure-ban lefoglalni kívánt lemezek típusa. Csak akkor alkalmazható, ha a méretezési feltétel a **helyszíni**. A céllemez típusa prémium (ez az alapértelmezett) vagy standard szintű felügyelt lemez lehet. Teljesítményalapú méretezés esetén a lemez méretezésére vonatkozó javaslatot a rendszer automatikusan adja meg a virtuális gépek teljesítményadatainak figyelembevételével.
+**Méretezési feltétel** | A méretezés történhet a helyszíni virtuális gépek **teljesítményelőzményei** alapján, esetleg **helyszíniként** (ez az alapértelmezett), a teljesítményelőzmények figyelembevétele nélkül.
 **Azure-ajánlat** | Az [Azure-ajánlat](https://azure.microsoft.com/support/legal/offer-details/), amelyre regisztrált. Az Azure Migrate ez alapján becsüli meg a költségeket.
 **Azure Hybrid Benefit** | Az értékelés figyelembe veszi, hogy rendelkezik-e szoftvergaranciával, és jogosult-e az [Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-use-benefit/) kedvezményes díjainak igénybevételére.
 **Fenntartott példányok** |  Az értékelés figyelembe veszi, hogy vannak-e [fenntartott példányai](https://azure.microsoft.com/pricing/reserved-vm-instances/) az Azure-ban. Az Azure Migrate ez alapján becsüli meg a költségeket.
 **Virtuális gép üzemideje** | A virtuális gépek Azure-ban való futtatásának időtartama. A költségbecslés ezt is figyelembe veszi.
 **Tarifacsomag** | A cél Azure-beli virtuális gépek [tarifacsomagja (alapszintű/standard)](../virtual-machines/windows/sizes-general.md). Például ha azt tervezi, hogy éles környezetet migrál, érdemes a standard szintet választani, amely kis késleltetésű virtuális gépeket biztosít, de többe kerülhet. Tesztkörnyezetben viszont érdemes lehet az alapszintű csomag mellett dönteni, amely nagyobb késleltetésű virtuális gépeket biztosít, alacsonyabb költségek mellett. Alapértelmezés szerint a rendszer a [standard](../virtual-machines/windows/sizes-general.md) csomagot használja.
-**Teljesítményelőzmények** | Alapértelmezés szerint az Azure Migrate a helyszíni gépek teljesítményét az utolsó nap teljesítményelőzményei alapján, 95%-os százalékértékkel értékeli ki. 
+**Teljesítményelőzmények** | Alapértelmezés szerint az Azure Migrate a helyszíni gépek teljesítményét az utolsó nap teljesítményelőzményei alapján, 95%-os százalékértékkel értékeli ki.
 **Virtuálisgép-sorozatok** | Méretbecslésekhez használt virtuálisgép-sorozatok. Például egy olyan éles környezetben, amelyet nem szeretne A-sorozatú virtuális gépekre migrálni az Azure-ban, kizárhatja a listából vagy sorozatból az A-sorozatot. Ilyenkor a méretezés csak a kiválasztott sorozatokat veszi figyelembe.   
 **Kényelmi faktor** | Az Azure Migrate az értékelés során figyelembe veszi a puffert (kényelmi faktor). Ezt a puffert a rendszer a virtuális gépek gépkihasználtsági adatai (CPU, memória, lemez és hálózat) mellett alkalmazza. A kényelmi faktor áll az olyan problémák mögött, mint a szezonális használat, a rövid teljesítményelőzmények és a jövőbeli használat várható növekedése.<br/><br/> Például egy 10 magos virtuális gép 20%-os kihasználtsággal normál esetben egy 2 magos virtuális gépnek felel meg. 2.0x-es kényelmi faktorral azonban az eredmény ehelyett egy 4 magos virtuális gép. Az alapértelmezett kényelmi beállítás 1.3x.
 
@@ -80,10 +83,10 @@ Az értékelési beállítások az adott igényekhez szabhatók. Az értékelés
 A táblázat összefoglalja az Azure Migrate kommunikációjához szükséges portokat.
 
 Összetevő | Kommunikációs cél |  Részletek
---- | --- |--- 
+--- | --- |---
 Gyűjtő  | Azure Migrate szolgáltatás | A gyűjtő a 443-as SSL-porton keresztül csatlakozik a szolgáltatáshoz.
-Gyűjtő | vCenter Server | Alapértelmezés szerint a gyűjtő a 443-as porton csatlakozik a vCenter Serverhez. Ha a kiszolgáló egy másik porton figyel, azt kimenő portként kell konfigurálni a gyűjtő virtuális gépen. 
-Helyszíni virtuális gép | Log Analytics-munkaterület | [443-as TCP] | [A Microsoft Monitoring Agent (MMA)](../log-analytics/log-analytics-windows-agent.md) a 443-as TCP-portot használja a Log Analyticshez való csatlakozáshoz. Erre a portra csak akkor van szükség, ha a függőségmegjelenítési funkciót használja, amelyhez szükség van az MMA-ügynökre. 
+Gyűjtő | vCenter Server | Alapértelmezés szerint a gyűjtő a 443-as porton csatlakozik a vCenter Serverhez. Ha a kiszolgáló egy másik porton figyel, azt kimenő portként kell konfigurálni a gyűjtő virtuális gépen.
+Helyszíni virtuális gép | Log Analytics-munkaterület | [443-as TCP] | [A Microsoft Monitoring Agent (MMA)](../log-analytics/log-analytics-windows-agent.md) a 443-as TCP-portot használja a Log Analyticshez való csatlakozáshoz. Erre a portra csak akkor van szükség, ha a függőségmegjelenítési funkciót használja, amelyhez szükség van az MMA-ügynökre.
 
 
 ## <a name="what-happens-after-assessment"></a>Mi történik az értékelés után?
@@ -91,7 +94,7 @@ Helyszíni virtuális gép | Log Analytics-munkaterület | [443-as TCP] | [A Mic
 Miután értékelte a helyszíni gépeket, többféle eszközzel is végrehajthatja a migrálást:
 
 - **Azure Site Recovery**: Az Azure Site Recovery segítségével az Azure-ba végezhet migrálást. Ehhez [elő kell készítenie a szükséges Azure-összetevőket](../site-recovery/tutorial-prepare-azure.md), például a tárfiókot és a virtuális hálózatot. A helyszínen [a VMware-környezetet kell előkészítenie](../site-recovery/vmware-azure-tutorial-prepare-on-premises.md). Ha minden készen áll, állítsa be és engedélyezze az Azure-ba való replikációt, majd migrálja a virtuális gépeket. [További információk](../site-recovery/vmware-azure-tutorial.md).
-- **Azure Database Migration**: Ha a helyszíni gépek adatbázist futtatnak (például SQL Servert, MySQL-t vagy Oracle-t), az Azure-ba való migráláshoz használhatja az [Azure Database Migration Service](../dms/dms-overview.md)-t is. 
+- **Azure Database Migration**: Ha a helyszíni gépek adatbázist futtatnak (például SQL Servert, MySQL-t vagy Oracle-t), az Azure-ba való migráláshoz használhatja az [Azure Database Migration Service](../dms/dms-overview.md)-t is.
 
 
 ## <a name="next-steps"></a>További lépések

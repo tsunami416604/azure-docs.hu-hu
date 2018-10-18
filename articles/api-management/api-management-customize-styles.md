@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.custom: mvc
 ms.topic: tutorial
-ms.date: 11/19/2017
+ms.date: 06/15/2018
 ms.author: apimpm
-ms.openlocfilehash: d1f638c9825ea5eedf6eaee0e0ca2ccfd5a491bc
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 00e6f2ed866afd13343df37de625e2913f613dfa
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "33933708"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47092403"
 ---
 # <a name="customize-the-style-of-the-developer-portal-pages"></a>A fejlesztői portál oldalstílusának testreszabása
 
@@ -82,5 +82,4 @@ Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 > * A **fejlesztői** portál oldalain lévő elemek stílusának testreszabása
 > * A módosítások megtekintése
 
-> [!div class="nextstepaction"]
-> [Az Azure API Management fejlesztői portál testreszabása sablonok használatával](api-management-developer-portal-templates.md)
+További érdekes tudnivalók [az Azure API Management fejlesztői portál sablonok használatával történő testreszabásáról](api-management-developer-portal-templates.md).

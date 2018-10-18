@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: e10dbc5ef0899134a1d629a058412b1eb36df335
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 88bc55bfcf1fef825ab7475f6008d49ed274d534
+ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47163409"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49393218"
 documentType: LandingData
 title: Az Azure Stack felhasználói dokumentációja
 metadata:
@@ -18,7 +18,7 @@ metadata:
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
-  ms.date: 09/25/2018
+  ms.date: 10/16/2018
   ms.author: jeffgilb
 abstract:
   description: A Microsoft Azure Stack egy hibrid felhőplatform, amellyel Azure-szolgáltatásokat használhat a szervezete vagy a szolgáltatója adatközpontjából. Fejlesztőként létrehozhat alkalmazásokat az Azure Stackben. Ezeket üzembe helyezheti magában az Azure Stackben vagy az Azure-ban is, vagy létrehozhat valódi hibrid alkalmazásokat is, amelyek az Azure Stack felhő és az Azure közötti kapcsolatot használják ki. Rövid útmutatóink és oktatóanyagaink segítségével megtudhatja, hogyan hozhat létre erőforrásokat és helyezhet üzembe alkalmazásokat.<br/><br/>Ha Ön az Azure Stack operátorait, akik az infrastruktúrát felügyeli, és szolgáltatásokat kínál, tekintse meg a <a href="/azure/azure-stack/">operátori dokumentációja</a>.<br/><br/>Ha érdeklik az az Azure Stack Development Kit (ASDK), egy egy csomópontos üzembe helyezhető Azure Stacket ingyenesen, és töltse le az Azure Stack operátorait tekintse meg a <a href="/azure/azure-stack/asdk">ASDK dokumentáció</a>.
@@ -73,8 +73,6 @@ sections:
     - html: <a href="/azure/azure-stack/user/azure-stack-solution-staged-data-analytics">Hozzon létre egy előkészített adatelemzési megoldással az Azure és az Azure Stackben </a>
     - html: <a href="/azure/azure-stack/user/azure-stack-solution-cloud-burst">A felhőbe irányuló méretezési megoldások létrehozása az Azure-ral</a>
     - html: <a href="/azure/azure-stack/user/azure-stack-solution-geo-distributed">Földrajzilag elosztott alkalmazás megoldás létrehozása az Azure és az Azure Stackben</a>
-    - html: <a href="/azure/azure-stack/user/azure-stack-tutorial-sql">Magas rendelkezésre állású SQL-adatbázisok létrehozása</a>
-    - html: <a href="/azure/azure-stack/user/azure-stack-tutorial-mysql">Magas rendelkezésre állású MySQL-adatbázisok létrehozása</a>
 - title: Leírások
   items:
   - type: list

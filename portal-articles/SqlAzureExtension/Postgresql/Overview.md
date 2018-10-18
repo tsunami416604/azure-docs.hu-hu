@@ -8,12 +8,12 @@ ms.service: postgresql
 ms.topic: article
 ms.date: 05/10/2017
 ms.author: sewatson
-ms.openlocfilehash: 9c930d1171b77ddf0bb6621fbf012f98816fd763
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6282acaf165d2f31a1a1ac525dad75ebc64a2a7c
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23073843"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47434789"
 ---
 # <a name="azure-database-for-postgresql-documentation"></a>A PostgreSQL-hez készült Azure Database dokumentációja
 
@@ -31,7 +31,7 @@ További információ a PostgreSQL-adatbázisok a következőkkel való létreho
 Az alábbiak végrehajtásának módját ismerheti meg:
 
 - Adatbázis tervezése: [Azure Portal](/azure/postgresql/tutorial-design-database-using-azure-portal) |  [Azure CLI](/azure/postgresql/tutorial-design-database-using-azure-cli)
-- [Webalkalmazás készítése a Python és a CLI használatával](/azure/app-service-web/app-service-web-tutorial-docker-python-postgresql-app?toc=%2fazure%2fpostgresql%2ftoc.json)
+- [Webalkalmazás készítése a Python és a CLI használatával](/azure/app-service/containers/tutorial-python-postgresql-app?toc=%2fazure%2fpostgresql%2ftoc.json)
 
 ## <a name="samples"></a>Példák 
 

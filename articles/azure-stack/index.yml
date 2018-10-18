@@ -1,10 +1,16 @@
 ### YamlMime:YamlDocument
+ms.openlocfilehash: 0183261a561e139105a93421af06f581b67fb926
+ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49393590"
 documentType: LandingData
 title: Az Azure Stack operátori dokumentációja
 metadata:
   document_id: cbf798da-6f1a-7d4d-7707-5d5e02589e22
   title: Az Azure Stack operátori dokumentációja – oktatóanyagok és API-referencia
-  description: Ismerje meg, hogyan Azure verem használható Azure-szolgáltatások letölteni az Adatközpont. Ismerje meg, és funkciókat fogunk bemutatni, egy szoftverfejlesztői készlet vagy egy integrált rendszerek környezetben.
+  description: Ismerje meg, hogyan használható az Azure Stack az Azure-szolgáltatások továbbítására az adatközpontból. Ismerje meg, és a fejlesztői csomag vagy integrált rendszerek környezet szolgáltatások bemutatásához.
   services: azure-stack
   author: jeffgilb
   manager: femila
@@ -12,21 +18,15 @@ metadata:
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
-  ms.date: 04/13/2018
+  ms.date: 10/16/2018
   ms.author: jeffgilb
-  ms.openlocfilehash: 9da39d733c51c637fdf13d1fb9c5649276ea8a23
-  ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
-  ms.translationtype: MT
-  ms.contentlocale: hu-HU
-  ms.lasthandoff: 04/23/2018
-  ms.locfileid: "31786536"
 abstract:
-  description: 'A Microsoft Azure Stack egy hibrid felhőplatform, amellyel Azure-szolgáltatásokat biztosíthat az adatközpontjából. Útmutató: az Azure-verem integrált rendszerek infrastruktúra kezelése és a quickstarts és oktatóanyagok szolgáltatást kínál.<br/><br/>Ha olyan szolgáltatásokat használ, vagy hozza létre az alkalmazások Azure verem Azure verem felhasználó, tekintse meg a <a href="/azure/azure-stack/user">felhasználói dokumentáció</a>.<br/><br/>Ha érdekelt a a Azure verem Development Kit (ASDK), töltse le és használja az ingyenes Azure-verem egycsomópontos telepítése Azure verem kezelőként tekintse meg a <a href="/azure/azure-stack/asdk">ASDK dokumentáció</a>.'
+  description: A Microsoft Azure Stack egy hibrid felhőplatform, amellyel Azure-szolgáltatásokat biztosíthat az adatközpontjából. Megismerheti az Azure Stack integrált rendszerek infrastruktúra kezelése és szolgáltatásajánlatokhoz útmutatóink és oktatóanyagaink segítségével.<br/><br/>Ha Ön egy Azure Stack-felhasználó, aki szolgáltatásokat használ, vagy hoz létre az alkalmazások az Azure Stack, tekintse meg a <a href="/azure/azure-stack/user">felhasználói dokumentáció</a>.<br/><br/>Ha érdeklik az az Azure Stack Development Kit (ASDK), egy egy csomópontos üzembe helyezhető Azure Stacket ingyenesen, és töltse le az Azure Stack operátorait tekintse meg a <a href="/azure/azure-stack/asdk">ASDK dokumentáció</a>.
 sections:
 - title: Első lépések
   items:
   - type: paragraph
-    text: A hardver beállítása és telepítése az Azure verem szoftverfejlesztői készlet.
+    text: A hardver beállítása és üzembe helyezése az Azure Stack Development Kit.
   - type: list
     style: icon48
     items:
@@ -37,13 +37,15 @@ sections:
 - title: Részletes útmutatók
   items:
   - type: paragraph
-    text: Útmutató a szolgáltatások az Azure Alkalmazásveremben üzembe.
+    text: Ismerje meg a szolgáltatások hozzáadása az Azure Stack üzemelő példányához.
   - type: list
     style: ordered
     items:
-    - html: <a href="/azure/azure-stack/azure-stack-tutorial-tenant-vm">Virtuális gépek Azure-veremben ajánlat</a>
-    - html: <a href="/azure/azure-stack/azure-stack-tutorial-sql-server">SQL-adatbázisok Azure veremben ajánlat</a>
-    - html: <a href="/azure/azure-stack/azure-stack-tutorial-app-service">Kínál a webalkalmazások Azure veremben</a>
+    - html: <a href="/azure/azure-stack/azure-stack-tutorial-tenant-vm">Virtuális gépek az Azure Stackben biztosítása</a>
+    - html: <a href="/azure/azure-stack/azure-stack-tutorial-sql-server">Az Azure Stackben SQL-adatbázisok biztosítása</a>
+    - html: <a href="/azure/azure-stack/azure-stack-tutorial-sql">Magas rendelkezésre állású SQL-adatbázisok létrehozása</a>
+    - html: <a href="/azure/azure-stack/azure-stack-tutorial-mysql">Magas rendelkezésre állású MySQL-adatbázisok létrehozása</a>
+    - html: <a href="/azure/azure-stack/azure-stack-tutorial-app-service">Az Azure Stackben webalkalmazások biztosítása</a>
 - title: Ingyenes Pluralsight videós képzés
   items:
   - type: list

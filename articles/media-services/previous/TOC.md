@@ -64,6 +64,7 @@
 ##### [Media Encoder Standard-beállításkészletek testreszabása](media-services-custom-mes-presets-with-dotnet.md)
 ##### [Miniatűrök létrehozása a .NET-es Media Encoder Standard használatával](media-services-dotnet-generate-thumbnail-with-mes.md)
 ##### [Videók körülvágása a Media Encoder Standarddel](media-services-crop-video.md)
+##### [Miniatűr sprite létrehozása](generate-thumbnail-sprite.md)
 #### MES-sémák
 ##### [Media Encoder Standard-séma](media-services-mes-schema.md)
 ##### [Bemeneti metaadatok](media-services-input-metadata-schema.md)
@@ -243,5 +244,5 @@
 ## [Azure-ütemterv](https://azure.microsoft.com/roadmap/?category=web-mobile)
 ## [Díjszabás](https://azure.microsoft.com/pricing/details/media-services/)
 ## [Díjkalkulátor](https://azure.microsoft.com/pricing/calculator/)
-## [Kiadási megjegyzések](media-services-release-notes.md)
+## [Kibocsátási megjegyzések](media-services-release-notes.md)
 ## [Videók](https://azure.microsoft.com/resources/videos/index/?services=media-services)

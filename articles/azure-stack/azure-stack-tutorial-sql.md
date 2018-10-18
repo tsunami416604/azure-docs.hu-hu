@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 10/16/2018
 ms.author: jeffgilb
 ms.reviewer: quying
-ms.openlocfilehash: cb659a79f374b7a48cd3cc29f9f46bc6598c04dc
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.openlocfilehash: 17f06a08388720c4483ef1c187edf20ec8359121
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/17/2018
-ms.locfileid: "49366628"
+ms.locfileid: "49386383"
 ---
 # <a name="tutorial-offer-highly-available-sql-databases"></a>Oktatóanyag: Magas rendelkezésre állású SQL-adatbázisok biztosítása
 
@@ -123,7 +123,7 @@ A másodlagos SQL-példányok (az AlwaysOn rendelkezésre állási csoport nevé
 >  ![Másodlagos SQL-példány parancsfájl](./media/azure-stack-tutorial-sqlrp/sql2.png)
 
 ### <a name="configure-contained-database-authentication"></a>Tartalmazott adatbázis-hitelesítés konfigurálása
-Mielőtt hozzáadná egy tartalmazott adatbázis egy rendelkezésre állási csoport, győződjön meg arról, hogy a tartalmazott adatbázis hitelesítése kiszolgálói beállítás értéke 1 a minden a rendelkezésre állási csoport egy rendelkezésre állási másodpéldányt futtató kiszolgálópéldány. További információkért lásd: [tartalmazott adatbázis hitelesítése](https://docs.microsoft.com/en-us/sql/database-engine/configure-windows/contained-database-authentication-server-configuration-option?view=sql-server-2017).
+Mielőtt hozzáadná egy tartalmazott adatbázis egy rendelkezésre állási csoport, győződjön meg arról, hogy a tartalmazott adatbázis hitelesítése kiszolgálói beállítás értéke 1 a minden a rendelkezésre állási csoport egy rendelkezésre állási másodpéldányt futtató kiszolgálópéldány. További információkért lásd: [tartalmazott adatbázis hitelesítése](https://docs.microsoft.com/sql/database-engine/configure-windows/contained-database-authentication-server-configuration-option?view=sql-server-2017).
 
 Ezeket a parancsokat használja a tartalmazott adatbázis hitelesítési kiszolgáló lehetőséget minden egyes SQL Server-példány beállítása a rendelkezésre állási csoportban:
 

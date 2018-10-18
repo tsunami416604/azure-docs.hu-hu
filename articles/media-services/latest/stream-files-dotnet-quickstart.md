@@ -4,28 +4,29 @@ description: Ezen rövid útmutató lépéseivel egy új Azure Media Services-fi
 services: media-services
 documentationcenter: ''
 author: Juliako
-manager: cfowler
+manager: femila
 editor: ''
 keywords: azure media services, stream
 ms.service: media-services
 ms.workload: media
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 04/08/2018
+ms.date: 09/25/2018
 ms.author: juliako
-ms.openlocfilehash: 48f85311f38d7e4ab1414dfc22c111b92163740e
-ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
+ms.openlocfilehash: 8bef52bb7cb56646b0f09e2cb7910bab3f55e0c0
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42022612"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47223542"
 ---
 # <a name="quickstart-stream-video-files---net"></a>Rövid útmutató: Videofájlok streamelése – .NET
 
 > [!NOTE]
 > Az Azure Media Services legújabb verziója előzetes verzió, és v3 néven is ismert. A v3 API-k használatának megkezdéséhez létre kell hoznia egy új Media Services-fiókot a jelen rövid útmutatóban leírt módon. 
 
-Ez a rövid útmutató bemutatja, hogy milyen könnyen kezdheti meg a videók streamelését számos különféle böngészőben és eszközön az Azure Media Services használatával. A témakörben szereplő minta olyan tartalmakat kódol, amelyeket HTTPS URL-cím segítségével tehet elérhetővé. 
+Ez a rövid útmutató bemutatja, hogy milyen könnyen kezdheti meg a videók kódolását és streamelését számos különféle böngészőben és eszközön az Azure Media Services használatával. A bemenő tartalmak HTTPS- URL- és SAS URL-címekkel vagy az Azure Blob Storage-ban található fájlok elérési útjával határozhatók meg.
+A témakörben szereplő minta olyan tartalmakat kódol, amelyeket HTTPS URL-cím segítségével tehet elérhetővé. Vegye figyelembe, hogy az AMS v3 jelenleg nem támogatja a HTTPS URL-címekkel történő darabolásos átviteli kódolást.
 
 A rövid útmutató végére képes lesz videók streamelésére.  
 

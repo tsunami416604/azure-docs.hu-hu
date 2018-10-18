@@ -1,22 +1,22 @@
 ---
-title: Csoportos fejlesztés az Azure Dev Spaces és a VS Code használatával | Microsoft Docs
+title: Csoportos fejlesztés az Azure Dev Spaces, a Java és a VS Code használatával | Microsoft Docs
 titleSuffix: Azure Dev Spaces
 services: azure-dev-spaces
 ms.service: azure-dev-spaces
 ms.component: azds-kubernetes
-author: ghogen
-ms.author: ghogen
-ms.date: 07/09/2018
+author: stepro
+ms.author: stephpr
+ms.date: 08/01/2018
 ms.topic: tutorial
 description: Gyors Kubernetes-fejlesztés tárolókkal és mikroszolgáltatásokkal az Azure-ban
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, tárolók
-manager: douge
-ms.openlocfilehash: 215807798e6ae15f11302fa647e21238bdfb7751
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+manager: mmontwil
+ms.openlocfilehash: b1f05c176c6005a2fda8025b4645813013a30cb3
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47434268"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47407178"
 ---
 # <a name="team-development-with-azure-dev-spaces"></a>Csoportos fejlesztés az Azure Dev Spaces használatával
 
@@ -26,52 +26,51 @@ Ezen oktatóanyagból megismerheti, hogyan használhat több Dev Spaces-teret a 
 
 Ebben a szakaszban egy második, `mywebapi` nevű szolgáltatást fog létrehozni, és a `webfrontend` használatával fogja hívni azt. Minden szolgáltatás különálló tárolókban fut. Ezt követően hibakeresést fog futtatni mindkét tárolóban.
 
-![](media/common/multi-container.png)
+![Több tároló](media/common/multi-container.png)
 
-### <a name="open-sample-code-for-mywebapi"></a>Mintakód megnyitása a *mywebapi* szolgáltatáshoz
-Elvileg már rendelkeznie kell a `mywebapi` ezen útmutatóban használt mintakódjával a `samples` nevű mappában (ha még nem töltötte le, navigáljon a https://github.com/Azure/dev-spaces helyre, és válassza a **Klónozás vagy Letöltés** lehetőséget a GitHub-adattár letöltéséhez.) Az ehhez a szakaszhoz tartozó kód a következő helyen található: `samples/nodejs/getting-started/mywebapi`.
+### <a name="download-sample-code-for-mywebapi"></a>Mintakód letöltése a *mywebapi* szolgáltatáshoz
+Az egyszerűség kedvéért töltsünk le egy mintakódot a GitHub-adattárból. Navigáljon a https://github.com/Azure/dev-spaces helyre, és válassza a **Klónozás vagy Letöltés** lehetőséget a GitHub-adattár letöltéséhez. Az ehhez a szakaszhoz tartozó kód a következő helyen található: `samples/java/getting-started/mywebapi`.
 
 ### <a name="run-mywebapi"></a>A *mywebapi* szolgáltatás futtatása
 1. Nyissa meg a `mywebapi` mappát egy *különálló VS Code-ablakban*.
-1. Nyissa meg a **parancskatalógust** (**Nézet | Parancskatalógus** menü), és az automatikus kitöltés használatával írja be és válassza ki a következő parancsot: `Azure Dev Spaces: Prepare configuration files for Azure Dev Spaces`. Ez a parancs nem keverendő össze az `azds prep` paranccsal, amely az üzembe helyezéshez konfigurálja a projektet.
+1. Nyissa meg a **parancskatalógust** (**Nézet | Parancskatalógus** menü), és az automatikus kitöltés használatával írja be és válassza ki a következő parancsot: `Azure Dev Spaces: Prepare configuration files for Azure Dev Spaces`.
 1. Nyomja le az F5 billentyűt, és várjon, amíg a rendszer felépíti és telepíti a szolgáltatást. A folyamat befejezését a VS Code hibakeresési ablakának megjelenése jelzi.
-1. Jegyezze fel a végpont URL-címét, amely valahogy így fog kinézni: http://localhost:\<portnumber\>. **Tipp: A VS Code-állapotsáv egy kattintható URL-címet jelenít meg.** Úgy tűnhet, hogy a tároló helyileg fut, de valójában az Azure-beli fejlesztői környezetében fut. A localhost cím oka az, hogy a `mywebapi` nem határozott meg egy nyilvános végpontot sem, és kizárólag a Kubernetes-példányon belülről lehet hozzáférni. Az Ön kényelme, valamint a helyi gép és a privát szolgáltatás közötti interakció elősegítése érdekében az Azure Dev Spaces egy ideiglenes SSH-csatornát hoz létre az Azure-ban futó tárolóhoz.
-1. Ha a `mywebapi` elkészült, nyissa meg a böngészőben a localhost címét. Választ kell kapnia a `mywebapi` szolgáltatástól („Üdvözöljük a mywebapiban”).
-
+1. A végpont URL-címe valahogy így fog kinézni: http://localhost:\<portnumber\>. **Tipp: A VS Code-állapotsáv egy kattintható URL-címet jelenít meg.** Úgy tűnhet, hogy a tároló helyileg fut, de valójában az Azure-beli Dev Spaces-terünkben fut. A localhost cím oka az, hogy a `mywebapi` nem határozott meg egy nyilvános végpontot sem, és kizárólag a Kubernetes-példányon belülről lehet hozzáférni. Az Ön kényelme, valamint a helyi gép és a privát szolgáltatás közötti interakció elősegítése érdekében az Azure Dev Spaces egy ideiglenes SSH-csatornát hoz létre az Azure-ban futó tárolóhoz.
+1. Ha a `mywebapi` elkészült, nyissa meg a böngészőben a localhost címét.
+1. Ha minden lépés sikeres volt, választ kell kapnia a `mywebapi` szolgáltatástól.
 
 ### <a name="make-a-request-from-webfrontend-to-mywebapi"></a>Kérés indítása a *webfrontend*-ből a *mywebapi*-ba
 Most írjunk olyan kódot a `webfrontend` szolgáltatásban, amely kérést indít a `mywebapi` felé.
 1. Váltson a `webfrontend` VS Code-ablakára.
-1. Adja hozzá ezeket a kódsorokat a `server.js` fájl elejéhez:
-    ```javascript
-    var request = require('request');
-    ```
+1. *Adja hozzá* a következő `import`-utasításokat a `package` utasítás alatt:
 
-3. *Cserélje le* a `/api` GET-kezelőhöz tartozó kódot. Kérés kezelésekor hívást indít a `mywebapi` felé, majd visszaadja az eredményeket mindkét szolgáltatásból.
+   ```java
+   import java.io.*;
+   import java.net.*;
+   ```
+1. *Cserélje le* az üdvözlő metódushoz tartozó kódot:
 
-    ```javascript
-    app.get('/api', function (req, res) {
-       request({
-          uri: 'http://mywebapi',
-          headers: {
-             /* propagate the dev space routing header */
-             'azds-route-as': req.headers['azds-route-as']
-          }
-       }, function (error, response, body) {
-           res.send('Hello from webfrontend and ' + body);
-       });
-    });
+    ```java
+    @RequestMapping(value = "/greeting", produces = "text/plain")
+    public String greeting(@RequestHeader(value = "azds-route-as", required = false) String azdsRouteAs) throws Exception {
+        URLConnection conn = new URL("http://mywebapi/").openConnection();
+        conn.setRequestProperty("azds-route-as", azdsRouteAs); // propagate dev space routing header
+        try (BufferedReader reader = new BufferedReader(new InputStreamReader(conn.getInputStream())))
+        {
+            return "Hello from webfrontend and " + reader.lines().reduce("\n", String::concat);
+        }
+    }
     ```
- 4. *Távolítsa el* a `server.close()` sort a `server.js` végén
 
 Az előző példakód továbbítja az `azds-route-as` fejlécet a bejövő kérelemből a kimenő kérelemhez. Később látni fogja, hogy ez miként segíti a csapatot az együttműködésen alapuló fejlesztésben.
 
 ### <a name="debug-across-multiple-services"></a>Hibakeresés több szolgáltatásban
 1. Ezen a ponton a `mywebapi` elvileg még mindig fut a hozzácsatolt hibakeresővel. Ha nem fut, nyomja le az F5 billentyűt a `mywebapi` projektben.
-1. Állítson be egy töréspontot az alapértelmezett GET `/` kezelőben.
-1. A `webfrontend` projektben állítson be egy töréspontot, mielőtt az GET kérést küld a `http://mywebapi` felé.
-1. Nyomja le az F5 billentyűt a `webfrontend` projektben.
-1. Nyissa meg a webalkalmazást, és tekintse át a kódot mindkét szolgáltatásban. A webalkalmazásban a két szolgáltatás által összefűzött üzenetnek kell megjelennie: „Üdvözöljük a webfrontendben és Üdvözöljük a mywebapiban.”
+1. Állítson be egy töréspontot a `webapi` projekt `index()` metódusában.
+1. A `webfrontend` projektben állítson be egy töréspontot a `try` kezdetű sorban, mielőtt a projekt GET-kérést küld a `mywebapi` felé.
+1. A `webfrontend` projektben nyomja le az F5 billentyűt (vagy indítsa újra a hibakeresőt, ha már fut).
+1. Hívja meg a webalkalmazást, és tekintse át a kódot mindkét szolgáltatásban.
+1. A webalkalmazás About (Információ) oldalán a két szolgáltatás által összefűzött üzenet jelenik meg: „Hello from webfrontend and Hello from mywebapi.”
 
 Remek! Most már rendelkezik egy többtárolós alkalmazással, ahol az egyes tárolók külön-külön fejleszthetők és helyezhetők üzembe.
 
@@ -79,14 +78,14 @@ Remek! Most már rendelkezik egy többtárolós alkalmazással, ahol az egyes t�
 
 [!INCLUDE [](../../includes/team-development-1.md)]
 
-Most lássuk működés közben:
-1. Váltson a `mywebapi` VS Code-ablakára, és szerkessze az alapértelmezett GET `/` kezelő kódját, például:
+Lássuk működés közben. Váltson a `mywebapi` VS Code-ablakára, és szerkessze a `String index()` metódus kódját, például:
 
-    ```javascript
-    app.get('/', function (req, res) {
-        res.send('mywebapi now says something new');
-    });
-    ```
+```java
+@RequestMapping(value = "/", produces = "text/plain")
+public String index() {
+    return "Hello from mywebapi says something new";
+}
+```
 
 [!INCLUDE [](../../includes/team-development-2.md)]
 
@@ -110,7 +109,3 @@ Az alábbi példa listázza az aktív előfizetése Azure Dev Spaces-vezérlőit
     azds controller list
     az aks remove-dev-spaces --name myaks --resource-group myaks-rg
 ```
-
-
-
-

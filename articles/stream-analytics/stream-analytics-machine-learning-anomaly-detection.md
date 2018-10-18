@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 04/09/2018
-ms.openlocfilehash: 3cd9b5a2bfed49ee712b89040477389ba9ea7715
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
-ms.translationtype: MT
+ms.openlocfilehash: 2f35f54c7ec5ad169673aebe08602294270f470a
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/17/2018
-ms.locfileid: "49389632"
+ms.locfileid: "49364455"
 ---
 # <a name="anomaly-detection-in-azure-stream-analytics"></a>Anomáliadetektálás az Azure Stream Analytics szolgáltatásban
 
@@ -243,7 +243,7 @@ Ha a bemeneti stream nem egységes, az összesítés lépés segít átalakítja
 ## <a name="references"></a>Referencia
 
 * [Rendellenességek észlelése – a gépi tanulás segítségével észlelheti a rendellenességeket idősorozat-adatok](https://blogs.technet.microsoft.com/machinelearning/2014/11/05/anomaly-detection-using-machine-learning-to-detect-abnormalities-in-time-series-data/)
-* [A Machine learning anomáliadetektálás API](https://docs.microsoft.com/azure/machine-learning/machine-learning-apps-anomaly-detection-api)
+* [A Machine learning anomáliadetektálás API](https://docs.microsoft.com/en-gb/azure/machine-learning/machine-learning-apps-anomaly-detection-api)
 * [Time series anomáliadetektálás](https://msdn.microsoft.com/library/azure/mt775197.aspx)
 
 ## <a name="next-steps"></a>További lépések

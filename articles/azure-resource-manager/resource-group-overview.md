@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/30/2018
+ms.date: 09/26/2018
 ms.author: tomfitz
-ms.openlocfilehash: 24add63639f5fffe18e4b4468bfd78600a38c5f3
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: dc73bbd775da31faecf236716a2b028171438b7c
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46969291"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47220887"
 ---
 # <a name="azure-resource-manager-overview"></a>Az Azure Resource Manager áttekintése
 Az alkalmazás infrastruktúrája általában számos összetevőből áll – például egy virtuális gépből, tárfiókból és virtuális hálózatból, vagy egy webalkalmazásból, adatbázisból, adatbázis-kiszolgálóból és harmadik féltől származó szolgáltatásokból. Ezeket az összetevőket nem külön entitásokként látja, hanem egyetlen entitás kapcsolódó és egymással összefüggő részeiként. Csoportként érdemes telepíteni, kezelni és megfigyelni őket. Az Azure Resource Manager lehetővé teszi, hogy a megoldásában az erőforrásokkal egy csoportként dolgozzon. A megoldás összes erőforrását egyetlen, koordinált műveletben telepítheti, frissítheti vagy törölheti. A telepítéshez egy sablon használatos, amely különböző, például tesztelési, átmeneti és üzemi környezetben is képes működni. A Resource Manager biztonsági, naplózási és címkézési szolgáltatásokat biztosít, hogy segítsen az erőforrások kezelésében a telepítést követően. 
@@ -155,6 +155,12 @@ A sablon meghatározása után készen áll, hogy üzembe helyezze az erőforrá
 * [Erőforrások üzembe helyezése Resource Manager-sablonokkal és az Azure Portallal](resource-group-template-deploy-portal.md)
 * [Erőforrások üzembe helyezése Resource Manager-sablonokkal és az Azure Manager REST API-val](resource-group-template-deploy-rest.md)
 
+## <a name="safe-deployment-practices"></a>Biztonságos üzembehelyezési gyakorlatok
+
+Összetett szolgáltatások Azure-ban való üzembe helyezésekor előfordulhat, hogy több régióban üzembe kell helyeznie a szolgáltatást, a következő lépés előtt pedig ellenőriznie kell annak állapotát. A [Azure Deployment Managerrel](deployment-manager-overview.md) koordinálhatja a szolgáltatás előkészített kibocsátását. A szolgáltatás kibocsátásának előkészítésével a régiókban történő üzembe helyezés előtt azonosíthat potenciális problémákat. Ha nem szeretné megtenni ezeket az óvintézkedéseket, válassza az előző szakasz üzembe helyezési műveleteit.
+
+A Deployment Manager jelenleg nyilvános előzetes verzióban érhető el.
+
 ## <a name="tags"></a>Címkék
 A Resource Manager biztosít egy címkézési funkciót, amellyel a felügyeleti vagy számlázási követelményeinek megfelelően kategorizálhatja az erőforrásokat. Használjon címkéket, ha összetett erőforráscsoport- és erőforrás-gyűjteménnyel rendelkezik, és egyedi módon szeretné vizuálisan megjeleníteni az eszközöket. Például elláthat címkével olyan erőforrásokat, amelyek hasonló szerepet töltenek be a szervezetben, vagy ugyanahhoz a részleghez tartoznak. Címkék nélkül a szervezet felhasználói létrehozhatnak több olyan erőforrást is, amelyeket később nehéz lehet azonosítani és felügyelni. Előfordulhat például, hogy törölni szeretné egy adott projekt összes erőforrását. Ha ezek az erőforrások nincsenek a projektnek megfelelően megcímkézve, akkor manuálisan kell őket megkeresnie. A címkézés hasznos módja a felesleges költségek csökkentéséhez az előfizetésében. 
 
@@ -176,20 +182,6 @@ A következő példa egy virtuális gép címkével való ellátását mutatja b
   }
 ]
 ```
-
-A következő PowerShell-parancsmaggal lekérdezheti az összes olyan erőforrást, amely címkeértékkel rendelkezik:
-
-```powershell
-Find-AzureRmResource -TagName costCenter -TagValue Finance
-```
-
-A következő Azure CLI-parancsot is használhatja:
-
-```azurecli
-az resource list --tag costCenter=Finance
-```
-
-A címkézett erőforrásokat az Azure Portalon is megtekintheti.
 
 Az előfizetéshez tartozó [használati jelentés](../billing/billing-understand-your-bill.md) tartalmazza a címkék nevét és értékeit, így a címkék alapján részletezheti a költségeket. A címkékkel kapcsolatos további információért tekintse meg [Az Azure-erőforrások rendszerezése címkék használatával](resource-group-using-tags.md) című cikket.
 
@@ -228,29 +220,8 @@ Egyes esetekben előfordulhat, hogy olyan kódot vagy szkriptet kíván futtatni
 
 Kifejezetten zárolhatja a kritikus erőforrásokat is, megakadályozva, hogy a felhasználók törölhessék vagy módosíthassák azokat. További információ: [Erőforrások zárolása az Azure Resource Manager eszközzel](resource-group-lock-resources.md).
 
-## <a name="activity-logs"></a>Tevékenységnaplók
-A Resource Manager naplózza az erőforrásokat létrehozó, módosító és törlő műveleteket. A tevékenységnaplókból hibaelhárításkor megkeresheti a hibákat, vagy nyomon követheti, hogy a szervezete felhasználói hogyan módosították az erőforrásokat. A naplókat számos érték alapján szűrheti, például aszerint, hogy melyik felhasználó kezdeményezte a műveletet. További információ a vizsgálati naplók használatáról: [Vizsgálati naplók megtekintése az Azure erőforrások kezeléséhez](resource-group-audit.md).
-
 ## <a name="customized-policies"></a>Testreszabott házirendek
 A Resource Manager lehetővé teszi, hogy létrehozzon testreszabott házirendeket az erőforrások kezeléséhez. Az Ön által létrehozott házirendek különböző forgatókönyveket tartalmazhatnak. Kényszerítheti egy adott elnevezési konvenció használatát az erőforrásokon, korlátozhatja a telepíthető példányok és erőforrások típusát, illetve korlátozhatja azokat az adott típusú erőforrás tárolásához használható régiókat. A számlázás részlegek szerinti rendszerzéséhez megkövetelheti egy adott címkeérték meglétét az erőforrásokon. A házirendek segítségével csökkentheti a költségeket és biztosíthatja az egységességet az előfizetésében. 
-
-A házirendeket a JSON használatával határozhatja meg, majd alkalmazhatja őket az előfizetésében vagy az erőforráscsoportban. A házirendek abban különböznek a szerepköralapú hozzáférés-vezérléstől, hogy az erőforrástípusokra érvényesek.
-
-A következő példa egy olyan házirendet mutat be, amely annak meghatározásával biztosítja a címkék egységességét, hogy minden erőforrásnak tartalmaznia kell egy costCenter címkét.
-
-```json
-{
-  "if": {
-    "not" : {
-      "field" : "tags",
-      "containsKey" : "costCenter"
-    }
-  },
-  "then" : {
-    "effect" : "deny"
-  }
-}
-```
 
 Rengeteg típusú házirendet hozhat létre. További információ: [Mi az az Azure Policy?](../azure-policy/azure-policy-introduction.md)
 

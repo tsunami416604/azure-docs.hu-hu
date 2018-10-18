@@ -4,25 +4,21 @@ description: Megtudhatja, hogyan optimalizálhat aszinkron számítási feladato
 services: functions
 documentationcenter: na
 author: mattchenderson
-manager: cfowler
-editor: ''
-tags: ''
+manager: jeconnoc
 keywords: azure-függvények, függvények, eseményfeldolgozás, webhookok, dinamikus számítás, kiszolgáló nélküli architektúra
 ms.assetid: 01d6ca9f-ca3f-44fa-b0b9-7ffee115acd4
-ms.service: functions
+ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: overview
-ms.tgt_pltfrm: multiple
-ms.workload: na
 ms.date: 10/03/2017
 ms.author: glenga
 ms.custom: H1Hack27Feb2017, mvc
-ms.openlocfilehash: d60c898225b944801504f38d536262134a31e021
-ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
+ms.openlocfilehash: bf3ebbf0c607bd87254ad7b9f8fae0a99ca66278
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2017
-ms.locfileid: "24877901"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47392737"
 ---
 # <a name="an-introduction-to-azure-functions"></a>Az Azure Functions bemutatása  
 Az Azure Functions megoldással egyszerűen futtathatók kisebb kódrészletek, más néven „függvények”, a felhőben. Elég, ha a szóban forgó problémára vonatkozó kódot megírja, nem kell egy egész alkalmazással vagy futtató infrastruktúrával bajlódnia. A függvények használatával még hatékonyabbá válhat a fejlesztés, amelyhez tetszőleges nyelvet használhat, legyen az akár a C#, az F#, a Node.js, a Java vagy a PHP. Csak annyi időért kell fizetnie, amennyit a kódja fut, a szükség szerinti méretezést pedig rábízhatja az Azure szolgáltatásra. Az Azure Functions segítségével [kiszolgáló nélküli](https://azure.microsoft.com/overview/serverless-computing/) alkalmazások fejleszthetők a Microsoft Azure-on.
@@ -37,7 +33,7 @@ A Functions néhány főbb jellemzője:
 * **Saját függőségek használata** – A Functions a NuGetet és az NPM-et is támogatja, így Ön a kedvenc könyvtárait használhatja.  
 * **Beépített biztonság** – a HTTP-eseményindítókkal aktivált függvényeket olyan OAuth-szolgáltatókkal védheti, mint az Azure Active Directory, a Facebook, a Google, a Twitter és a Microsoft-fiókok.  
 * **Egyszerűsített integráció** – Könnyedén kihasználhatja az Azure-szolgáltatások és szolgáltatásként nyújtott szoftverek (SaaS) lehetőségeit. Erre vonatkozó példákat az [integrációs szakaszban](#integrations) talál.  
-* **Rugalmas fejlesztés** – A függvényeket közvetlenül a portálon írhatja meg, vagy beállíthat folyamatos integrációt, és a kódját a [GitHub](../app-service/scripts/app-service-cli-continuous-deployment-github.md), a [Visual Studio Team Services](../app-service/scripts/app-service-cli-continuous-deployment-vsts.md) vagy egyéb [támogatott fejlesztőeszközök](../app-service/app-service-deploy-local-git.md) segítségével helyezheti üzembe.  
+* **Rugalmas fejlesztés** – A függvényeket közvetlenül a portálon írhatja meg, vagy beállíthat folyamatos integrációt, és a kódját a [GitHub](../app-service/scripts/app-service-cli-continuous-deployment-github.md), az [Azure DevOps Services](../app-service/scripts/app-service-cli-continuous-deployment-vsts.md) vagy egyéb [támogatott fejlesztőeszközök](../app-service/app-service-deploy-local-git.md) segítségével helyezheti üzembe.  
 * **Nyílt forráskód** – A Functions futtatókörnyezete nyílt forráskódú, és [elérhető a GitHubon](https://github.com/azure/azure-webjobs-sdk-script).  
 
 ## <a name="what-can-i-do-with-functions"></a>Mire használhatom a Functions szolgáltatást?
@@ -47,11 +43,10 @@ A Functions sablonokkal segít megtenni az első lépéseket a legfontosabb forg
 
 * **HTTPTrigger** – Kód végrehajtásának aktiválása egy HTTP-kéréssel. Példaként tekintse meg [az első függvény létrehozását](functions-create-first-azure-function.md).
 * **TimerTrigger** – Törlés vagy egyéb kötegelt feladatok végrehajtása egy előre meghatározott menetrend szerint. Példaként tekintse meg az [időzítő által aktivált függvények létrehozását](functions-create-scheduled-function.md).
-* **GitHub webhook** – Válaszadás a Github-adattárakban történő eseményekre. Példaként tekintse meg a [GitHub-webhookok által aktivált függvények létrehozását](functions-create-github-webhook-triggered-function.md).
-* **Általános webhook** – Bármely webhookokat támogató szolgáltatás felől érkező webhook HTTP-kérések feldolgozása. Példaként tekintse meg az [általános webhookok által aktivált függvények létrehozását](functions-create-generic-webhook-triggered-function.md).
-* **CosmosDBTrigger** – Azure Cosmos DB-dokumentumok feldolgozása, egy NoSQL-adatbázisban található gyűjteményekhez való hozzáadáskor vagy a frissítéskor. Példaként tekintse meg az [Azure Cosmos DB által aktivált függvények létrehozását](functions-create-cosmos-db-triggered-function.md).
+* **CosmosDBTrigger** – Azure Cosmos DB-dokumentumok feldolgozása, egy NoSQL-adatbázisban található gyűjteményekhez való hozzáadáskor vagy a frissítéskor. További információ: [Azure Cosmos DB-kötések](functions-bindings-cosmosdb-v2.md).
 * **BlobTrigger** – Azure Storage-blobok feldolgozása tárolókhoz való hozzáadáskor. Ez a függvény rendszerképek átméretezéséhez használható. További információért lásd [a blobtárolók kötéseit](functions-bindings-storage-blob.md).
-* **QueueTrigger** – Válaszadás az Azure Storage üzenetsorába beérkező üzenetekre. Példaként tekintse meg az [Azure Queue Storage által aktivált függvények létrehozását](functions-create-storage-queue-triggered-function.md).
+* **QueueTrigger** – Válaszadás az Azure Storage üzenetsorába beérkező üzenetekre. További információ: [Azure Queue Storage-kötések](functions-bindings-storage-queue.md).
+* **EventGridTrigger** – Válaszadás egy Azure Event Grid-előfizetésnek kézbesített eseményekre. Egy előfizetés-alapú eseményfogadó modellt támogat, amely a szűrést is magában foglalja. Remek megoldás az eseményalapú architektúrák kiépítéséhez. Példa: [Feltöltött képek átméretezésének automatizálása az Event Grid használatával](../event-grid/resize-images-on-storage-blob-upload-event.md).
 * **EventHubTrigger** – Válaszadás egy Azure Eseményközponthoz kézbesített eseményekre. Ez különösen hasznos az alkalmazások felépítésében, a felhasználói élmények vagy munkafolyamatok feldolgozásában és az eszközök internetes hálózatát (IoT) érintő forgatókönyvekben. További információért lásd [az Event Hubs kötéseit](functions-bindings-event-hubs.md).
 * **ServiceBusQueueTrigger** – Kód csatlakoztatása egyéb Azure-szolgáltatásokhoz vagy helyi szolgáltatásokhoz az üzenetsor figyelésével. További információért lásd [a Service Bus kötéseit](functions-bindings-service-bus.md).
 * **ServiceBusTopicTrigger** – Kód csatlakoztatása egyéb Azure-szolgáltatásokhoz vagy helyi szolgáltatásokhoz témakörökre való feliratkozással. További információért lásd [a Service Bus kötéseit](functions-bindings-service-bus.md).
@@ -62,13 +57,11 @@ Az Azure Functions támogatja az *eseményindítókat*, amelyek egy kód végreh
 Az Azure Functions számos Azure-szolgáltatással és harmadik féltől származó szolgáltatással integrálható. Ezek a szolgáltatások a függvény aktiválására és végrehajtásának megkezdésére, vagy a kódhoz tartozó be- és kimenetként is használhatók. Az Azure Functions a következő szolgáltatásokkal való integrációt támogatja:
 
 * Azure Cosmos DB
-* Azure Event Hubs 
+* Azure Event Hubs
 * Azure Event Grid
-* Azure Mobile Apps (táblák)
 * Azure Notification Hubs
 * Azure Service Bus (üzenetsorok és témakörök)
-* Azure Storage (blob, üzenetsorok és táblák) 
-* GitHub (webhookok)
+* Azure Storage (blob, üzenetsorok és táblák)
 * Helyszíni szolgáltatások (a Service Bus használatával)
 * Twilio (SMS-üzenetek)
 
@@ -76,11 +69,11 @@ Az Azure Functions számos Azure-szolgáltatással és harmadik féltől szárma
 Az Azure Functions kétféle díjszabási csomaggal érhető el. Válassza azt, amelyik leginkább megfelel az igényeinek: 
 
 * **Használatalapú csomag** – A függvény futásakor az Azure biztosít minden szükséges számítási erőforrást. Önnek nem kell foglalkoznia az erőforrás-kezeléssel, és csak annyi időért kell fizetnie, amennyit a kódja fut. 
-* **App Service-csomag** – Függvényeit ugyanúgy futtathatja, ahogy a webes, mobilos és API-alkalmazásait. Ha már más alkalmazásokhoz is használja az App Service szolgáltatást, ugyanabban a csomagban további költségek nélkül futtathatja a függvényeit. 
+* **App Service-csomag** – Függvényeit ugyanúgy futtathatja, ahogy a webalkalmazásait. Ha már más alkalmazásokhoz is használja az App Service szolgáltatást, ugyanabban a csomagban további költségek nélkül futtathatja a függvényeit. 
 
 További információt a szolgáltatási csomagokról [az Azure Functions szolgáltatási csomagok áttekintésében](functions-scale.md) talál. Az árképzés további részleteiért lásd [a Functions díjszabási oldalát](https://azure.microsoft.com/pricing/details/functions/).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [Az első Azure-függvény létrehozása](functions-create-first-azure-function.md)  
   Lásson azonnal munkához, és hozza létre az első függvényét az Azure Functions gyorsindítójával. 
 * [Az Azure Functions fejlesztői segédanyagai](functions-reference.md)  

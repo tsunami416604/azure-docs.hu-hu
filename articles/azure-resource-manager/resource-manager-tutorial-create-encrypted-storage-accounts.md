@@ -10,15 +10,15 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 08/27/2018
+ms.date: 09/07/2018
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 57d5f7039831c9fd617926f20f3ff001b22ef314
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: d48374d7919be3d141ea199e8238a220dbfe0332
+ms.sourcegitcommit: 3150596c9d4a53d3650cc9254c107871ae0aab88
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43097885"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47419525"
 ---
 # <a name="tutorial-create-an-azure-resource-manager-template-for-deploying-an-encrypted-storage-account"></a>Oktatóanyag: Titkosított tárfiók üzembe helyezésére szolgáló Azure Resource Manager-sablon létrehozása
 
@@ -112,9 +112,14 @@ A sablonban meghatározott változó használata:
 Az oktatóanyag célja, hogy meghatározza a titkosított tárfiók létrehozásához szükséges sablont.  A mintasablon csak egy alapszintű, titkosítatlan tárfiókot hoz létre. A titkosítással kapcsolatos konfiguráció megkereséséhez az Azure Storage-fiók sablonreferenciáját fogja használni.
 
 1. Tallózással keresse meg az [Azure Templates](https://docs.microsoft.com/azure/templates/) (Azure-sablonok) elemet.
-2. A bal oldali tartalomjegyzékben válassza ki a **Reference** (Referencia) -> **Storage** -> **Storage Accounts** (Tárfiókok) elemet. Vagy a **Filter by title** (Szűrés cím alapján) szövegmezőben adja meg a **storage** kifejezést.  Ezen az oldalon megtalálható a tárfiókadatok meghatározásához használható séma.
-3. Tekintse át a titkosítással kapcsolatos információkat.  
-4. A tárfiók erőforrás-definíciójának tulajdonságokat tartalmazó eleméhez adja hozzá a következő JSON-adatokat:
+2. A **Szűrés cím szerint** területen adja meg a **tárfiókokat**.
+3. Válassza a **Referencia/Sablonreferencia/Tárhely/Tárfiókok** lehetőséget a következő képernyőkép alapján:
+
+    ![Resource Manager-sablonreferencia – tárfiók](./media/resource-manager-tutorial-create-encrypted-storage-accounts/resource-manager-template-resources-reference-storage-accounts.png)
+
+    resource-manager-template-resources-reference-storage-accounts
+1. Tekintse át a titkosítással kapcsolatos információkat.  
+1. A tárfiók erőforrás-definíciójának tulajdonságokat tartalmazó eleméhez adja hozzá a következő JSON-adatokat:
 
     ```json
     "encryption": {
@@ -151,7 +156,7 @@ Ha már nincs szükség az Azure-erőforrásokra, törölje az üzembe helyezett
 
 ## <a name="next-steps"></a>További lépések
 
-Ez az oktatóanyag azt ismertette, hogyan használhatja a sablonreferenciát egy létező sablon testreszabására. Ebben az oktatóanyagban olyan sablont használtunk, amely csak egyetlen Azure-erőforrást tartalmaz.  A következő oktatóanyagban egy több erőforrást tartalmazó sablont fog fejleszteni. Egyes erőforrások függő erőforrásokkal rendelkeznek.
+Ez az oktatóanyag azt ismertette, hogyan használhatja a sablonreferenciát egy létező sablon testreszabására. Több tárfiókpéldány létrehozása:
 
 > [!div class="nextstepaction"]
-> [Több erőforrás létrehozása](./resource-manager-tutorial-create-templates-with-dependent-resources.md)
+> [Több példány létrehozása](./resource-manager-tutorial-create-multiple-instances.md)

@@ -10,12 +10,12 @@ ms.service: postgresql
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 03/20/2018
-ms.openlocfilehash: 002ec2f99e488af76654c2391416e4b90e16e4c0
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: d32fb6e1a85865d89a2f8ee1483eb8fd599b4bb6
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43050227"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47408912"
 ---
 # <a name="quickstart-create-an-azure-database-for-postgresql-server-in-the-azure-portal"></a>Rövid útmutató: Azure Database for PostgreSQL-kiszolgáló létrehozása az Azure Portalon
 
@@ -50,7 +50,7 @@ Azure Database for PostgreSQL-kiszolgáló létrehozásához kövesse az alábbi
     Kiszolgáló-rendszergazdai bejelentkezés |*myadmin*| A kiszolgálóhoz való csatlakozáshoz használt bejelentkezési fiókja. A rendszergazdai bejelentkezési név nem lehet **azure_superuser**, **azure_pg_admin**, **admin**, **administrator**, **root**, **guest** és **public**. Nem kezdődhet a következővel: **pg_**.
     Jelszó |Az Ön jelszava| Egy új jelszó a kiszolgálói rendszergazdai fiók számára. A jelszó 8–128 karakterből állhat. A jelszónak tartalmaznia kell karaktereket a következő kategóriák közül legalább háromból: angol nagybetűs karakterek, angol kisbetűs karakterek, számjegyek (0–9) és nem alfanumerikus karakterek (!, $, #, % stb.).
     Hely|A felhasználókhoz legközelebb eső régió| A felhasználókhoz legközelebb eső hely.
-    Verzió|A legújabb verzió| A legújabb PostgreSQL-verzió, hacsak nincsenek más konkrét követelmények.
+    Verzió|A legújabb főverzió| A legújabb PostgreSQL-főverzió, hacsak nincsenek más konkrét követelmények.
     Tarifacsomag | **Általános célú**, **4. generációs**, **2 virtuális mag**, **5 GB**, **7 nap**, **Georedundáns** | Az új kiszolgáló számítási, tárolási és biztonsági mentési konfigurációi. Válassza a **Tarifacsomag** lehetőséget, majd az **Általános célú** lapot. A **Számítási generáció**, **Virtuális mag**, **Tárolás** és **Biztonsági mentések megőrzési időszaka** beállítások alapértelmezett értékei a következők: *4. generációs*, *2 virtuális mag*, *5 GB* és *7 nap*. A csúszkákat nem szükséges módosítania. A kiszolgáló georedundáns tárhelyre való biztonsági mentésének engedélyezéséhez válassza a **Biztonsági másolat redundanciabeállításai** területen a **Georedundáns** lehetőséget. A tarifacsomag beállításának mentéséhez válassza az **OK** gombot. A következő képernyőkép ezeket a beállításokat tartalmazza.
 
     > [!IMPORTANT]
@@ -78,17 +78,10 @@ Az Azure Database for PostgreSQL kiszolgálószinten hoz létre egy tűzfalat. E
 
 3. A **Tűzfalszabályok** szakasz **Szabály neve** oszlopában válassza az üres mezőt egy új tűzfalszabály létrehozásának megkezdéséhez. 
 
-    Ebben a rövid útmutatóban engedélyezünk minden bemenő IP-címet a kiszolgálón. Adjuk meg az egyes oszlopok szövegmezőiben a következő értékeket:
+   Adjon meg egy nevet és a kiszolgálóhoz hozzáférni kívánó ügyfelek IP-címtartományának elejét és végét a szövegmezőkben. Ha ez egyetlen IP-cím, használja ugyanazt az értéket a kezdő és a befejező IP-címnek.
 
-    Szabály neve | Kezdő IP-cím | Záró IP-cím 
-    ---|---|---
-    AllowAllIps | 0.0.0.0 | 255.255.255.255
-
-     ![Tűzfalszabályok beállítása](./media/quickstart-create-database-portal/5-firewall-2.png)
+   ![Tűzfalszabályok beállítása](./media/quickstart-create-database-portal/5-firewall-2.png)
      
-      > [!NOTE]
-      > Éles példányok esetében úgy állítsa be a tűzfalszabályokat, hogy bejövő kérelmeket csak ismert IP-címektől fogadjanak.  Az itt megadott beállítások csupán példák.
-      >
 
 4. A **Kapcsolatbiztonság** lap felső eszköztárában kattintson a **Mentés** gombra. A folytatás előtt várjon, amíg meg nem jelenik a kapcsolatbiztonsági frissítés sikeres befejezését jelző értesítés.
 

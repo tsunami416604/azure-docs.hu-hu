@@ -3,18 +3,17 @@ title: Privát Docker-tárolójegyzékek az Azure-ban
 description: Bevezetés az Azure Container Registry szolgáltatásba, amely felhőalapú, felügyelt és magán Docker-beállításjegyzékeket biztosít.
 services: container-registry
 author: stevelas
-manager: jeconnoc
 ms.service: container-registry
 ms.topic: overview
-ms.date: 05/08/2018
+ms.date: 09/25/2018
 ms.author: stevelas
 ms.custom: mvc
-ms.openlocfilehash: f282d7d6950278d0c270009256cf054a0d630e60
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 5d60144c6b3aada74e4b89c905085835dd5b32d2
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43120635"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47031331"
 ---
 # <a name="introduction-to-private-docker-container-registries-in-azure"></a>Az Azure-beli privát Docker-tárolójegyzékek bemutatása
 
@@ -28,12 +27,12 @@ A Dockerrel és a tárolókkal kapcsolatos háttér-információkért lásd a [D
 
 Rendszerképek lekérése egy Azure-beli tároló-beállításjegyzékből különféle telepítési célokra:
 
-* **Méretezhető előkészítési rendszerek**, amelyek tárolóalapú alkalmazásokat kezelnek gazdagépfürtökben (többek között [DC/OS](https://docs.mesosphere.com/), [Docker Swarm](https://docs.docker.com/swarm/) és [Kubernetes](http://kubernetes.io/docs/)).
+* **Méretezhető előkészítési rendszerek**, amelyek tárolóalapú alkalmazásokat kezelnek gazdagépfürtökben (többek között [Kubernetes](http://kubernetes.io/docs/), [DC/OS](https://docs.mesosphere.com/) és [Docker Swarm](https://docs.docker.com/swarm/)).
 * **Azure-szolgáltatások**, amelyek támogatják az alkalmazások építését és nagy mennyiségű alkalmazás futtatását, beleértve az [Azure Kubernetes Service (AKS)](../aks/index.yml), az [App Service](../app-service/index.yml), a [Batch](../batch/index.yml), a [Service Fabric](/azure/service-fabric/) és egyéb szolgáltatásokat.
 
-A fejlesztők emellett le is küldhetik a tároló-beállításjegyzékeket a tárolófejlesztési munkafolyamatok részeként. Például megcélozhat egy tároló-beállításjegyzéket egy olyan folyamatos integrációs és üzembe helyezési eszközből, mint a [Visual Studio Team Services](https://www.visualstudio.com/docs/overview) vagy a [Jenkins](https://jenkins.io/).
+A fejlesztők emellett le is küldhetik a tároló-beállításjegyzékeket a tárolófejlesztési munkafolyamatok részeként. Például megcélozhat egy tároló-beállításjegyzéket egy olyan folyamatos integrációs és üzembe helyezési eszközből, mint az [Azure DevOps Services](https://www.visualstudio.com/docs/overview) vagy a [Jenkins](https://jenkins.io/).
 
-Konfigurálja úgy az [ACR Build](#azure-container-registry-build) összeállítási feladatait, hogy az alapszintű rendszerképek frissítésekor a rendszer automatikusan újraépítse az alkalmazás-rendszerképeket. Az ACR Build használatával automatizálhatja a rendszerképek összeállítását, ha a csoport kódot véglegesít egy Git-adattárban. *Az ACR Build jelenleg előzetes verzióban érhető el.*
+Konfigurálja úgy az [ACR Tasks](#azure-container-registry-build) szolgáltatást, hogy az alapszintű rendszerképek frissítésekor a rendszer automatikusan újraépítsék az alkalmazás-rendszerképeket. Az ACR Tasks használatával automatizálhatja a rendszerképek összeállítását, ha a csoport kódot véglegesít egy Git-adattárban.
 
 ## <a name="key-concepts"></a>Fő fogalmak
 
@@ -51,14 +50,14 @@ Konfigurálja úgy az [ACR Build](#azure-container-registry-build) összeállít
 
 * **Tároló** – A tároló egy szoftveralkalmazást határoz meg annak függőségeivel együtt egy teljes fájlrendszerbe csomagolva, beleértve a kódot, a futtatókörnyezetet, a rendszereszközöket és a könyvtárakat. A Docker-tárolókat a tároló-beállításjegyzékekből előhívott Windows- vagy Linux-rendszerképek alapján futtathatja. Az egy gépen futó tárolók osztoznak az operációs rendszer kernelén. A Docker-tárolók teljes mértékben használhatók az összes nagyobb Linux-disztribúción, MacOS-en és Windowson is.
 
-## <a name="azure-container-registry-build-preview"></a>Azure Container Registry Build (előzetes verzió)
+## <a name="azure-container-registry-tasks"></a>Azure Container Registry Tasks
 
-Az [Azure Container Registry Build](container-registry-build-overview.md) (ACR Build) az Azure Container Registry egy szolgáltatáscsomagja, amely lehetővé teszi a Docker-tárolórendszerképek zökkenőmentes és hatékony összeállítását az Azure-ban. Az ACR Build használatával kiterjesztheti a felhőbe a belső fejlesztési ciklust a `docker build`-műveletek Azure-ba való áthelyezése által. Konfigurálhat összeállítási feladatokat a tároló operációs rendszerének és a keretrendszer javítási folyamatának automatizálására, valamint a rendszerképek automatikus összeállítására, ha a csoport kódot véglegesít a forráskezelőben.
+Az [Azure Container Registry Tasks](container-registry-tasks-overview.md) (ACR Tasks) az Azure Container Registry egy szolgáltatáscsomagja, amely lehetővé teszi a Docker-tárolórendszerképek zökkenőmentes és hatékony összeállítását az Azure-ban. Az ACR Tasks használatával kiterjesztheti a felhőbe a belső fejlesztési ciklust a `docker build`-műveletek Azure-ba való áthelyezése által. Konfigurálhat összeállítási feladatokat a tároló operációs rendszerének és a keretrendszer javítási folyamatának automatizálására, valamint a rendszerképek automatikus összeállítására, ha a csoport kódot véglegesít a forráskezelőben.
 
-[!INCLUDE [container-registry-build-preview-note](../../includes/container-registry-build-preview-note.md)]
+A [többlépéses feladatok](container-registry-tasks-overview.md#multi-step-tasks-preview) az ACR Tasks egyik előzetes verziós funkciója, amelyekkel lépésekre osztott feladatdefiníciókat és buildelési, tesztelési és felhőbeli tárolólemezkép-javítást végezhet. A feladatlépések tárolólemezképek különálló buildelési és leküldéses műveleteit határozzák meg. Emellett egy vagy több tároló végrehajtását is definiálhatják; a lépések a tárolót használják végrehajtási környezetnek.
 
 ## <a name="next-steps"></a>További lépések
 
 * [Tároló-beállításjegyzék létrehozása az Azure Portalon](container-registry-get-started-portal.md)
 * [Tároló beállításjegyzék létrehozása az Azure CLI-vel](container-registry-get-started-azure-cli.md)
-* [Operációsrendszer- és keretrendszer-javítás az ACR Build használatával](container-registry-build-overview.md) (előzetes verzió)
+* [Operációs rendszer és keretrendszer javításának automatizálása az ACR Tasksszal](container-registry-tasks-overview.md)

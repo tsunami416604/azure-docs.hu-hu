@@ -14,12 +14,12 @@ ms.tgt_pltfrm: dotnet
 ms.workload: na
 ms.date: 08/16/2018
 ms.author: spelluru
-ms.openlocfilehash: 4f7aa0b0c5142237f3b6fc66bb8593302c95f5af
-ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
+ms.openlocfilehash: e66a1651a46cfaeb7fb8b232eeb7cf6a2fb8044d
+ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41920556"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47451222"
 ---
 # <a name="get-started-with-relay-hybrid-connections-http-requests-in-net"></a>Ismerkedés a hibrid Relay-kapcsolatok HTTP-kéréseivel a .NET-ben
 [!INCLUDE [relay-selector-hybrid-connections](../../includes/relay-selector-hybrid-connections.md)]
@@ -64,9 +64,14 @@ A Visual Studióban egy C# nyelven íródott konzolalkalmazást hozunk létre az
 [!INCLUDE [relay-hybrid-connections-http-requests-dotnet-get-started-client](../../includes/relay-hybrid-connections-http-requests-dotnet-get-started-client.md)]
 
 ## <a name="5-run-the-applications"></a>5. Az alkalmazások futtatása
-1. Futtassa a kiszolgálóalkalmazást.
-2. Futtassa az ügyfélalkalmazást, és adjon meg szöveget.
-3. Győződjön meg arról, hogy az alkalmazás konzolja megjeleníti a szöveget, amely az ügyfélalkalmazásban lett megadva.
+1. Futtassa a kiszolgálóalkalmazást. A konzolon a következő szöveget fogja látni:
+
+    ```
+    Online
+    Server listening
+    ```
+1. Futtassa az ügyfélalkalmazást. Megjelenik a `hello!` üzenet az ügyfélablakban. Az ügyfél egy HTTP-kérést küldött a kiszolgálónak, amely `hello!` üzenettel válaszolt. 
+3. A konzolablakok bezárásához nyomja le az **ENTER** billentyűt mindkét konzolablakban. 
 
 Gratulálunk, végpontok közötti hibrid kapcsolati alkalmazást hozott létre!
 

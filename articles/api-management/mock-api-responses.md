@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.custom: mvc
 ms.topic: tutorial
-ms.date: 11/27/2017
+ms.date: 06/15/2018
 ms.author: apimpm
-ms.openlocfilehash: 4383ce3788f6fade5299d69ef99b80221c58d9e7
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 916d0cf37ab3588091d4ca2d45f43a5669afe4f1
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33936983"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47094895"
 ---
 # <a name="mock-api-responses"></a>API-válaszok utánzása
 
@@ -46,7 +46,7 @@ Tekintse át a következő rövid útmutatót: [Azure API Management-példány l
 
 A jelen szakaszban ismertetett lépések bemutatják, hogyan hozható létre egy háttérrendszer nélküli üres API. Azt is bemutatja, hogyan lehet műveletet hozzáadni az API-hoz. A szakasz lépéseinek végrehajtása után a művelet meghívása hibát ad vissza. A hibák a „Válaszutánzás engedélyezése” szakasz lépéseinek végrehajtásával megszűnnek.
 
-1. Válassza ki az **API-kat** az **API MANAGEMENT** részben.
+1. Az **API Management**t szolgáltatásban válassza az **API** lehetőséget.
 2. A bal oldali menüben válassza az **+ API hozzáadása** elemet.
 3. Válassza az **Üres API** elemet a listából.
 4. A **Megjelenítendő név** mezőben adja meg a „*Tesztelési API*” nevet.
@@ -57,14 +57,13 @@ A jelen szakaszban ismertetett lépések bemutatják, hogyan hozható létre egy
 
 1. Válassza ki az előző lépésben létrehozott API-t.
 2. Kattintson a **+ Művelet hozzáadása** elemre.
-
-    ![Utánzott műveleti válasz](./media/mock-api-responses/mock-api-responses02.png)
+    ![Utánzott műveleti válasz](./media/mock-api-responses/mock-api-responses-add-operation.png)
 
     |Beállítás|Érték|Leírás|
     |---|---|---|
+    |**Megjelenített név**|*Teszthívás*|A **fejlesztői portálon** megjelenített név.|
     |**URL** (HTTP-művelet)|GET|Az előre meghatározott HTTP-műveletek közül választhat.|
     |**URL-cím** |*/test*|Az API URL-címe. |
-    |**Megjelenített név**|*Teszthívás*|A **fejlesztői portálon** megjelenített név.|
     |**Leírás**||Adja meg a művelet leírását, amely dokumentációként szolgál majd a **fejlesztői portálon** az API-t használó fejlesztők számára.|
     |**Lekérdezés** lap||Hozzáadhat lekérdezési paramétereket. A név és a leírás megadása mellett megadhatja az ehhez a paraméterhez rendelhető értékeket is. Az értékek egyike megjelölhető alapértelmezettként (választható).|
     |**Kérés** lap||Definiálhatja a kéréshez tartozó tartalomtípusokat, példákat és sémákat. |
@@ -75,18 +74,19 @@ A jelen szakaszban ismertetett lépések bemutatják, hogyan hozható létre egy
 5. Válassza a **200 OK** elemet a listából.
 6. A jobb oldali **Ábrázolások** fejléc alatt válassza a **+ Ábrázolás hozzáadása** lehetőséget.
 7. Írja be az „*alkalmazás/json*” kifejezést a keresőmezőbe, és válassza ki az **alkalmazás/json** tartalomtípust.
-8. A **Minta** szövegmezőbe írja be a következőt: *{ 'sampleField' : 'test' }*.
-9. Kattintson a **Mentés** gombra.
+8. A **Minta** szövegmezőbe írja be a következőt: `{ 'sampleField' : 'test' }`.
+9. Kattintson a **Létrehozás** gombra.
 
 ## <a name="enable-response-mocking"></a>Válaszutánzás engedélyezése
 
 1. Válassza ki a „Tesztelési API létrehozása” lépésben létrehozott API-t.
 2. Válassza ki a hozzáadott tesztműveletet.
-2. A jobb oldali ablakban kattintson a **Tervezés** lapra.
-3. A **Bejövő feldolgozás** ablakban kattintson a ceruza ikonra.
-4. Az **Utánzás** lapon válassza a **Statikus válaszok** lehetőséget az **Utánzási viselkedés** mezőben.
-5. **Az API Management válasza:** szövegmezőbe írja be a következőt: **200 OK, alkalmazás/json**. Ez a beállítás azt jelzi, hogy az API az előző szakaszban definiált mintaválaszt adja vissza.
-6. Kattintson a **Mentés** gombra.
+3. A jobb oldali ablakban kattintson a **Tervezés** lapra.
+4. A **Bejövő feldolgozás** ablakban kattintson a ceruza ikonra.
+5. Az **Utánzás** lapon válassza a **Statikus válaszok** lehetőséget az **Utánzási viselkedés** mezőben.
+6. **Az API Management válasza:** szövegmezőbe írja be a következőt: **200 OK, alkalmazás/json**. Ez a beállítás azt jelzi, hogy az API az előző szakaszban definiált mintaválaszt adja vissza.
+    ![Válaszutánzás engedélyezése](./media/mock-api-responses/mock-api-responses-set-mocking.png)
+7. Kattintson a **Save** (Mentés) gombra.
 
 ## <a name="test-the-mocked-api"></a>Az utánzott API tesztelése
 
@@ -97,8 +97,9 @@ A jelen szakaszban ismertetett lépések bemutatják, hogyan hozható létre egy
     > [!TIP]
     > Egy sárga, **Utánzás engedélyezve** szöveggel ellátott sáv jelzi, hogy az API Management által visszaadott válaszokat egy utánzási szabályzat küldi, és nem a háttérrendszer valós válaszairól van szó.
 
-3. Teszthívás indításához válassza a **Küldés** lehetőséget.
-4. A **HTTP-válasz** mező az oktatóanyag első szakaszában mintaként megadott JSON-t jeleníti meg.
+4. Teszthívás indításához válassza a **Küldés** lehetőséget.
+5. A **HTTP-válasz** mező az oktatóanyag első szakaszában mintaként megadott JSON-t jeleníti meg.
+    ![Válaszutánzás engedélyezése](./media/mock-api-responses/mock-api-responses-test-response.png)
 
 ## <a name="video"></a>Videó
 

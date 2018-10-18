@@ -6,12 +6,12 @@ author: mscurrell
 ms.author: markscu
 ms.date: 08/02/2018
 ms.topic: tutorial
-ms.openlocfilehash: 8df9054e069540398c137290e682bb4160b4a799
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: 46c65cd7ac5734134fa7c4ad6fd85f39d1188e28
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "40036479"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47392553"
 ---
 # <a name="tutorial-render-a-blender-scene-using-batch-explorer"></a>Oktatóanyag: Blender-jelenet renderelése a Batch Explorerrel
 
@@ -24,9 +24,9 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > * Több képkocka renderelése
 > * A renderelt képkockafájlok megtekintése és letöltése
 
-Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
-
 ## <a name="prerequisites"></a>Előfeltételek
+
+Ha használatalapú fizetést szeretne alkalmazni a Batch renderelő alkalmazásaira, használatalapú előfizetésre vagy egy egyéb Azure vásárlási opcióra van szüksége. A használatalapú fizetés licencelése nem támogatott, ha olyan ingyenes Azure-ajánlatot használ, amely kreditfeltöltést kínál.
 
 Szüksége van egy Azure Batch-fiókra, társított tárfiókkal.  Batch-fiók létrehozásához tekintse meg bármelyik Batch rövid útmutatót, például a [parancssori felülettel kapcsolatos cikket](https://docs.microsoft.com/azure/batch/quick-create-cli).
 
@@ -38,7 +38,7 @@ Telepítve kell lennie a [Batch Explorernek](https://azure.github.io/BatchExplor
 
 Töltse le a Blender „Class room” (Osztályterem) ZIP-fájlját a [Blender bemutatófájlok weboldaláról](https://www.blender.org/download/demo-files/), és bontsa ki egy helyi meghajtón.
 
-## <a name="upload-a-scene-to-azure-storage"></a>Jelenet feltöltése az Azure-tárolóba
+## <a name="upload-a-scene-to-azure-storage"></a>jelenet feltöltése az Azure-tárolóba;
 
 Hozzon létre egy tárfióktárolót a bemutatójelenet fájljaihoz:
 

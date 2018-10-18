@@ -105,6 +105,7 @@
 #### [Tevékenységnaplók archiválása egy Azure Storage-fiókba](reports-monitoring/quickstart-azure-monitor-route-logs-to-storage-account.md)
 #### [Tevékenységnaplók integrálása a Splunkkal az Azure Monitor használatával](reports-monitoring/tutorial-integrate-activity-logs-with-splunk.md)
 #### [Tevékenységnaplók integrálása a SumoLogickal az Azure Monitor használatával](reports-monitoring/howto-integrate-activity-logs-with-sumologic.md)
+#### [Tevékenységnaplók integrálása a Log Analytics rendszerbe az Azure Monitor segítségével](reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
 ### Referencia
 #### [Megőrzés](reports-monitoring/reference-reports-data-retention.md)
