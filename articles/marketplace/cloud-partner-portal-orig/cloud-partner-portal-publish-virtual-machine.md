@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/18/2018
 ms.author: pbutlerm
-ms.openlocfilehash: e01fc839e901b39618990946a11ee8883dbe5f74
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 3b046022990e95e65ed02880bd3fefbd78bcad28
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48810832"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49387360"
 ---
 # <a name="publish-a-virtual-machine-to-azure-marketplace"></a>Virtuális gép közzététele az Azure piactéren
 
@@ -43,7 +43,7 @@ A következő műszaki és nem technikai jellegű Előfeltételek vonatkoznak k�
 
 -   [Virtuális merevlemez létrehozása során tapasztalt gyakori hibáinak elhárítása](https://docs.microsoft.com/azure/marketplace-publishing/marketplace-publishing-vm-image-creation-troubleshooting)
 
--   [Biztonsági javaslatok az Azure Marketplace-rendszerképek](https://docs.microsoft.com/en-us/azure/security/security-recommendations-azure-marketplace-images)
+-   [Biztonsági javaslatok az Azure Marketplace-rendszerképek](https://docs.microsoft.com/azure/security/security-recommendations-azure-marketplace-images)
 
 
 ### <a name="non-technical-business-requirements"></a>Nem technikai jellegű (üzleti követelmények)

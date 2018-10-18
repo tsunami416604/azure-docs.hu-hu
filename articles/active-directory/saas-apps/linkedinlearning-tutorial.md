@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/16/2018
 ms.author: jeedes
-ms.openlocfilehash: 02e7d9d26b389e82365f3447cceb5566244236f1
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 618437d0007668800e0a14e8233db1676be2a364
+ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39440908"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49379263"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-linkedin-learning"></a>Oktatóanyag: A LinkedIn Learning Azure Active Directory-integráció
 
@@ -37,7 +37,7 @@ Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsol
 
 Az Azure AD-integráció konfigurálása a LinkedIn Learning, a következőkre van szükség:
 
-- Az Azure AD-előfizetéshez
+- Azure AD-előfizetés
 - A LinkedIn Learning egyszeri bejelentkezéses engedélyezett előfizetés
 
 > [!NOTE]
@@ -59,7 +59,7 @@ Az Azure AD integrálása a LinkedIn Learning konfigurálásához hozzá kell Li
 
 **LinkedIn Learning hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a  **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
+1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
 
     ![Active Directory][1]
 
@@ -110,7 +110,7 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
 
     ![Egyszeri bejelentkezés konfigurálása](./media/linkedinlearning-tutorial/tutorial_linkedin_admin_01.png)
 
-1. Kattintson a **, vagy kattintson ide betöltése, és másolja ki az egyes mezők az űrlap** és másolási **entitásazonosító** és **helyességi feltétel fogyasztói Access (ACS) URL-címe**
+1. Kattintson a **, vagy kattintson ide betöltése, és másolja ki az egyes mezők az űrlap** és másolási **entitásazonosító** és **helyességi feltétel fogyasztói Service (ACS) URL-címe**
 
     ![Egyszeri bejelentkezés konfigurálása](./media/linkedinlearning-tutorial/tutorial_linkedin_admin_03.png)
 
@@ -120,9 +120,9 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
 
     a. Az a **azonosító** szövegmezőbe írja be a **Entitásazonosító** LinkedIn Portalról másolt 
 
-    b. Az a **válasz URL-cím** szövegmezőbe írja be a **helyességi feltétel fogyasztói Access (ACS) URL-cím** LinkedIn Portalról másolt
+    b. Az a **válasz URL-cím** szövegmezőbe írja be a **helyességi feltétel fogyasztói Service (ACS) URL-cím** LinkedIn Portalról másolt
 
-1. Ha szeretné az egyszeri bejelentkezést **SP által kezdeményezett**, majd kattintson a speciális URL-cím megjelenítése beállítás a konfigurációs szakaszban, és a bejelentkezési URL-cím konfigurálása a következő mintának:
+1. Ha szeretné az egyszeri bejelentkezést **SP által kezdeményezett**, majd kattintson a speciális URL-cím megjelenítése a bejelentkezési URL-cím megadására a konfigurálási szakaszban beállítás.  A bejelentkezési URL-cím másolása létrehozásához a **helyességi feltétel fogyasztói Service (ACS) URL-cím** és /saml/ cserélje/bejelentkezési /.   Miután, hogy megtörtént, a bejelentkezési URL-rendelkeznie kell a következő mintának:
 
     `https://www.linkedin.com/checkpoint/enterprise/login/<AccountId>?application=learning&applicationInstanceId=<InstanceId>`
 
@@ -136,7 +136,7 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
 
     | Attribútum neve | Attribútum értéke |
     | --- | --- |
-    | e-mailben| user.mail |    
+    | e-mail| user.mail |    
     | Szervezeti egység| User.Department |
     | Keresztnév| User.givenName |
     | Vezetéknév| User.surname |

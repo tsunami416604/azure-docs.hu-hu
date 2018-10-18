@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/16/2018
 ms.author: jdial
-ms.openlocfilehash: 1ec60300d179edf69e32dc07653b6c69c7cc8e52
-ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
+ms.openlocfilehash: cf540caebd5f993cdba0d85f4109a6e78e201658
+ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/15/2018
-ms.locfileid: "42054480"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49378754"
 ---
 # <a name="plan-virtual-networks"></a>Virtuális hálózatok tervezése
 
@@ -93,7 +93,7 @@ Vagy is kapcsolódni egy virtuális hálózatot más virtuális hálózatokhoz v
 
 ### <a name="peering"></a>Társviszony-létesítés
 
-Használata esetén [virtuális hálózatok közötti társviszony](virtual-network-peering-overview.md), a virtuális hálózatok lehetnek azonos vagy eltérő, Azure-régióban támogatott. A virtuális hálózatok lehetnek azonos vagy eltérő Azure-előfizetések, a mindaddig, amíg mindkét előfizetéshez hozzárendelt ugyanahhoz az Azure Active Directory-bérlőhöz. Mielőtt létrehozná a társviszonyt, javasoljuk, hogy, ismerje meg az összes a társviszony-létesítés [-követelmények és korlátozások](virtual-network-manage-peering.md#requirements-and-constraints). Sávszélesség-erőforrások a virtuális hálózatok közötti társviszonyban, ugyanabban a régióban van ugyanaz, mintha az erőforrásokat ugyanabban a virtuális hálózatban.
+Használata esetén [virtuális hálózatok közötti társviszony](virtual-network-peering-overview.md), a virtuális hálózatok lehetnek azonos vagy eltérő, Azure-régióban támogatott. A virtuális hálózatok lehetnek azonos vagy eltérő Azure-előfizetések (még akkor is, előfizetések alá tartozó másik Azure Active Directory-bérlők). Mielőtt létrehozná a társviszonyt, javasoljuk, hogy, ismerje meg az összes a társviszony-létesítés [-követelmények és korlátozások](virtual-network-manage-peering.md#requirements-and-constraints). Sávszélesség-erőforrások a virtuális hálózatok közötti társviszonyban, ugyanabban a régióban van ugyanaz, mintha az erőforrásokat ugyanabban a virtuális hálózatban.
 
 ### <a name="vpn-gateway"></a>VPN-átjáró
 

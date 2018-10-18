@@ -9,12 +9,12 @@ ms.author: xshi
 ms.date: 09/24/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 9cc8e1db577859ad7637902a5ccd5a044efcd033
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 768ff899ca2c71cb32fe29bdd5d58654d8f7d431
+ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46978522"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49394748"
 ---
 # <a name="use-visual-studio-2017-to-develop-and-debug-c-modules-for-azure-iot-edge-preview"></a>Fejlesztés és az Azure IoT Edge (előzetes verzió) C# modul hibakeresése a Visual Studio 2017 használatával
 
@@ -90,6 +90,21 @@ A **IoTEdgeModule1** projekt egy .net Core 2.1-es konzolalkalmazást. Tartalmaz 
 Az alapértelmezett C# modul kód, amely a megoldás a következő helyen található **IoTEdgeModule1** > **Program.cs**. A modul és a deployment.template.json fájl legyenek beállítva, hogy a megoldás felépítéséhez, küldje le azt a tárolóregisztrációs adatbázisba, és telepítheti az eszközöket, hogy a kód módosítása nélkül tesztelés megkezdése. A modul csak igénybe vehet a bemeneti forrásból (ami jelen esetben a tempSensor modul, amely szimulálja az adatokat), és átadhatja azt az IoT hubhoz való használatra készült. 
 
 Ha készen áll a C#-sablont a saját kód testreszabása, használja a [Azure IoT Hub SDK-k](../iot-hub/iot-hub-devguide-sdks.md) hozhat létre a modulok a kulcsot kell IoT-megoldások, például a biztonság, a kezelés és a megbízhatóság címmel. 
+
+## <a name="initialize-iotegehubdev-with-iot-edge-device-connection-string"></a>Inicializálása **iotegehubdev** IoT Edge-eszköz kapcsolati karakterlánccal
+
+1. Minden IoT Edge-eszköz kapcsolati karakterláncot kapott, a Cloud Explorer hajtsa végre a Visual Studio 2017-ben is másolhatja az "Elsődleges kapcsolati karakterlánc" értékét. Meg nem másolja a kapcsolati karakterlánc nem peremhálózati eszköz, az ikonra az IoT Edge-eszköz nem Edge-eszköz az egyik eltér.
+
+   ![Edge-eszköz kapcsolati karakterlánc másolása](./media/how-to-visual-studio-develop-csharp-module/copy-edge-conn-string.png)
+
+2. Kattintson a jobb gombbal kell **AzureIoTEdgeApp1** projekt helyi menü megnyitásához, majd kattintson a **beállítása peremhálózati eszköz kapcsolati karakterláncának**, jelenik meg az Azure IoT Edge beállítása ablakban.
+
+   ![Set Edge kapcsolati karakterlánc ablak megnyitása](./media/how-to-visual-studio-develop-csharp-module/set-edge-conn-string.png)
+
+3. A telepítési ablakra adjon meg az első lépésben kapott kapcsolati karakterláncot, majd kattintson **OK** gombra.
+
+>[!NOTE]
+>Ez egyszeri work, csak kell futtatásakor ebben a lépésben egyszer egy számítógépen, az összes későbbi Azure IoT Edge megoldások fog kapni, ha az ingyenes. Természetesen újra futtathatja ezt a lépést, ha a kapcsolati karakterlánc érvénytelen, vagy egy másik kapcsolati karakterláncot, módosítani kell.
 
 ## <a name="build-and-debug-single-c-module"></a>Hozhat létre, és a egy C# modul hibakeresése
 
@@ -190,7 +205,10 @@ Az IoT Edge-eszköz beállításához használt rövid útmutatóban egy modult 
 
 2. A **Cloud Explorer**, bontsa ki az előfizetést, keresse meg az Azure IoT Hub és az Azure IoT Edge-eszköz számára telepíteni kívánja.
 
-3. IoT Edge-eszköz, a központi telepítés létrehozásához kattintson a jobb gombbal, válassza ki a központi telepítési jegyzékfájl alatt kell létrehoznia a `$AzureIoTEdgeApp1\config\Debug|Release\deployment.json`.
+3. IoT Edge-eszköz, a központi telepítés létrehozásához kattintson a jobb gombbal, válassza ki a központi telepítési jegyzékfájl alatt kell létrehoznia a `$AzureIoTEdgeAppSolutionDir\config\deployment.(amd64|amd64.debug|windows-amd64).json`.
+
+>>[!NOTE]
+>>Nem kell választania `$AzureIoTEdgeAppSolutionDir\config\deployment_for_local_debug.json`
 
 4. Kattintson a frissítés gombra. Az új modulokat fut kell megjelennie a **TempSensor** modul és a **$edgeAgent** és **$edgeHub**.
 

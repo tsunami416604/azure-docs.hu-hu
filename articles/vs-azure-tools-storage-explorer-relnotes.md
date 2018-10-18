@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/12/2018
 ms.author: cawa
-ms.openlocfilehash: 7e73f676f47de8256928224aae55ea30eb414ddf
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 708b80787337d549ebc5e66bca21e734620616ac
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49344757"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49388297"
 ---
 # <a name="microsoft-azure-storage-explorer-release-notes"></a>A Microsoft Azure Storage Explorer kibocsátási megjegyzései
 
@@ -72,7 +72,7 @@ Ez a cikk az Azure Storage Explorer 1.4.3 kiadás kibocsátási megjegyzései, v
 ./StorageExplorer.exe --disable-gpu
 ```
 
-* Linux-felhasználók esetén, telepítenie kell [.NET Core 2.0](https://docs.microsoft.com/en-us/dotnet/core/linux-prerequisites?tabs=netcore2x).
+* Linux-felhasználók esetén, telepítenie kell [.NET Core 2.0](https://docs.microsoft.com/dotnet/core/linux-prerequisites?tabs=netcore2x).
 * A felhasználók számára az Ubuntu 14.04, szüksége lesz annak biztosítása érdekében a GCC naprakész – a következő parancsok futtatásával, és indítsa újra a gép erre:
 
     ```
@@ -160,7 +160,7 @@ Ez a cikk az Azure Storage Explorer 1.4.3 kiadás kibocsátási megjegyzései, v
 ./StorageExplorer.exe --disable-gpu
 ```
 
-* Linux-felhasználók esetén, telepítenie kell [.NET Core 2.0](https://docs.microsoft.com/en-us/dotnet/core/linux-prerequisites?tabs=netcore2x).
+* Linux-felhasználók esetén, telepítenie kell [.NET Core 2.0](https://docs.microsoft.com/dotnet/core/linux-prerequisites?tabs=netcore2x).
 * A felhasználók számára az Ubuntu 14.04, szüksége lesz annak biztosítása érdekében a GCC naprakész – a következő parancsok futtatásával, és indítsa újra a gép erre:
 
     ```
@@ -215,7 +215,7 @@ Ez a cikk az Azure Storage Explorer 1.4.3 kiadás kibocsátási megjegyzései, v
 ./StorageExplorer.exe --disable-gpu
 ```
 
-* Linux-felhasználók esetén, telepítenie kell [.NET Core 2.0](https://docs.microsoft.com/en-us/dotnet/core/linux-prerequisites?tabs=netcore2x).
+* Linux-felhasználók esetén, telepítenie kell [.NET Core 2.0](https://docs.microsoft.com/dotnet/core/linux-prerequisites?tabs=netcore2x).
 * A felhasználók számára az Ubuntu 14.04, szüksége lesz annak biztosítása érdekében a GCC naprakész – a következő parancsok futtatásával, és indítsa újra a gép erre:
 
     ```
@@ -275,7 +275,7 @@ Ez a cikk az Azure Storage Explorer 1.4.3 kiadás kibocsátási megjegyzései, v
 ./StorageExplorer.exe --disable-gpu
 ```
 
-* Linux-felhasználók esetén, telepítenie kell [.NET Core 2.0](https://docs.microsoft.com/en-us/dotnet/core/linux-prerequisites?tabs=netcore2x).
+* Linux-felhasználók esetén, telepítenie kell [.NET Core 2.0](https://docs.microsoft.com/dotnet/core/linux-prerequisites?tabs=netcore2x).
 * A felhasználók számára az Ubuntu 14.04, szüksége lesz annak biztosítása érdekében a GCC naprakész – a következő parancsok futtatásával, és indítsa újra a gép erre:
 
     ```
@@ -332,7 +332,7 @@ Ez a cikk az Azure Storage Explorer 1.4.3 kiadás kibocsátási megjegyzései, v
 ./StorageExplorer.exe --disable-gpu
 ```
 
-* Linux-felhasználók esetén, telepítenie kell [.NET Core 2.0](https://docs.microsoft.com/en-us/dotnet/core/linux-prerequisites?tabs=netcore2x).
+* Linux-felhasználók esetén, telepítenie kell [.NET Core 2.0](https://docs.microsoft.com/dotnet/core/linux-prerequisites?tabs=netcore2x).
 * A felhasználók számára az Ubuntu 14.04, szüksége lesz annak biztosítása érdekében a GCC naprakész – a következő parancsok futtatásával, és indítsa újra a gép erre:
 
     ```
@@ -389,7 +389,7 @@ Ez a cikk az Azure Storage Explorer 1.4.3 kiadás kibocsátási megjegyzései, v
 ./StorageExplorer.exe --disable-gpu
 ```
 
-* Linux-felhasználók esetén, telepítenie kell [.NET Core 2.0](https://docs.microsoft.com/en-us/dotnet/core/linux-prerequisites?tabs=netcore2x).
+* Linux-felhasználók esetén, telepítenie kell [.NET Core 2.0](https://docs.microsoft.com/dotnet/core/linux-prerequisites?tabs=netcore2x).
 * A felhasználók számára az Ubuntu 14.04, szüksége lesz annak biztosítása érdekében a GCC naprakész – a következő parancsok futtatásával, és indítsa újra a gép erre:
 
     ```
@@ -410,7 +410,7 @@ Ez a cikk az Azure Storage Explorer 1.4.3 kiadás kibocsátási megjegyzései, v
 
 ### <a name="new"></a>Új
 * Storage Explorer mostantól támogatja a Azurite. Megjegyzés: az alapértelmezett fejlesztési végpontjaira szoftveresen kötött áll a kapcsolat Azurite.
-* Storage Explorer mostantól támogatja az elérési szint csak Blob és a GPV2-Tárfiókok esetében. További tudnivalók a hozzáférési rétegek [Itt](https://docs.microsoft.com/en-us/azure/storage/blobs/storage-blob-storage-tiers).
+* Storage Explorer mostantól támogatja az elérési szint csak Blob és a GPV2-Tárfiókok esetében. További tudnivalók a hozzáférési rétegek [Itt](https://docs.microsoft.com/azure/storage/blobs/storage-blob-storage-tiers).
 * Kezdési idő már nem szükséges, SAS készítésekor.
 
 ### <a name="fixes"></a>Javítások
@@ -443,7 +443,7 @@ Ez a cikk az Azure Storage Explorer 1.4.3 kiadás kibocsátási megjegyzései, v
 ./StorageExplorer.exe --disable-gpu
 ```
 
-* Linux-felhasználók esetén, telepítenie kell [.NET Core 2.0](https://docs.microsoft.com/en-us/dotnet/core/linux-prerequisites?tabs=netcore2x).
+* Linux-felhasználók esetén, telepítenie kell [.NET Core 2.0](https://docs.microsoft.com/dotnet/core/linux-prerequisites?tabs=netcore2x).
 * A felhasználók számára az Ubuntu 14.04, szüksége lesz annak biztosítása érdekében a GCC naprakész – a következő parancsok futtatásával, és indítsa újra a gép erre:
 
     ```
@@ -470,7 +470,7 @@ Ez a cikk az Azure Storage Explorer 1.4.3 kiadás kibocsátási megjegyzései, v
 * Storage Explorer visszajelzés most lakik a Githubon. Balra vagy lépjen a alján lévő visszajelzés gombra kattintva elérheti a problémák oldalát [ https://github.com/Microsoft/AzureStorageExplorer/issues ](https://github.com/Microsoft/AzureStorageExplorer/issues). Kérdéseit elküldheti a javaslatokat, problémák jelentése, kérdéseket tehet fel, vagy hagyja üresen a visszajelzés bármilyen más formájában.
 * Ha problémákba SSL-tanúsítványt, és nem a hibát okozó tanúsítvány található, most már elindíthatja Storage Explorer parancsot a parancssorból a `--ignore-certificate-errors` jelzőt. Ez a jelző indításakor Storage Explorer figyelmen kívül hagyja az SSL-tanúsítvánnyal kapcsolatos hiba.
 * Már létezik egy "Letöltés" lehetőséget a helyi menüben a blobok és fájlok elemek.
-* Javított kisegítő lehetőségek és képernyőolvasó támogatása. Ha kisegítő lehetőségeket nyújtó szolgáltatásai használ, tekintse meg a [kisegítő dokumentáció](https://docs.microsoft.com/en-us/azure/vs-azure-tools-storage-explorer-accessibility) további információt.
+* Javított kisegítő lehetőségek és képernyőolvasó támogatása. Ha kisegítő lehetőségeket nyújtó szolgáltatásai használ, tekintse meg a [kisegítő dokumentáció](https://docs.microsoft.com/azure/vs-azure-tools-storage-explorer-accessibility) további információt.
 * Storage Explorer Electron 1.8.3 használja
 
 ### <a name="breaking-changes"></a>Kompatibilitástörő változások
@@ -509,7 +509,7 @@ Ez a cikk az Azure Storage Explorer 1.4.3 kiadás kibocsátási megjegyzései, v
 ./StorageExplorer.exe --disable-gpu
 ```
 
-* Linux-felhasználók esetén, telepítenie kell [.NET Core 2.0](https://docs.microsoft.com/en-us/dotnet/core/linux-prerequisites?tabs=netcore2x).
+* Linux-felhasználók esetén, telepítenie kell [.NET Core 2.0](https://docs.microsoft.com/dotnet/core/linux-prerequisites?tabs=netcore2x).
 * A felhasználók számára az Ubuntu 14.04, szüksége lesz annak biztosítása érdekében a GCC naprakész – a következő parancsok futtatásával, és indítsa újra a gép erre:
 
     ```

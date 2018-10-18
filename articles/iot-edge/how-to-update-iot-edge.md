@@ -9,12 +9,12 @@ ms.date: 10/05/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 88ea4b2eab57684bc5455c0d8eb23a5d62f9dd77
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: b04f909d58e1555cad9f34b682f9062bbd96cd0e
+ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48817499"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49394731"
 ---
 # <a name="update-the-iot-edge-runtime"></a>Az IoT Edge-futtatókörnyezet frissítése
 
@@ -24,10 +24,11 @@ IoT Edge-eszköz két összetevőből, ha újabb verzióra szeretne frissíteni 
 
 Az Azure IoT Edge legújabb verzióját, lásd: [Azure IoT Edge-kiadások](https://github.com/Azure/azure-iotedge/releases).
 
-
 ## <a name="update-the-security-daemon"></a>A biztonsági démon frissítése
 
 Az IoT Edge biztonsági démon a natív összetevője, amely az IoT Edge-eszközön a package manager használatával frissíteni kell. 
+
+Ellenőrizze a verziót a biztonsági démon a paranccsal az eszközön futó `iotedge version`. 
 
 ### <a name="linux-devices"></a>Linux rendszerű eszközök
 
@@ -59,6 +60,10 @@ Install-SecurityDaemon -Manual -ContainerOS <Windows or Linux>
 ## <a name="update-the-runtime-containers"></a>A futtatókörnyezet tárolóiból frissítése
 
 Az Edge agentet és az Edge hub-tárolók frissítése módja attól függ, hogy használhat működés közbeni címkéket (például az 1.0-s) vagy adott címkék (például 1.0.2-es) a központi telepítésben. 
+
+Az IoT Edge-ügynök és az Edge hub-modulok jelenleg az eszközön a parancsokkal verziójának ellenőrzése `iotedge logs edgeAgent` vagy `iotedge logs edgeHub`. 
+
+  ![Tároló verzió megtekintése](./media/how-to-update-iot-edge/container-version.png)
 
 ### <a name="understand-iot-edge-tags"></a>IoT Edge-címkék ismertetése
 
@@ -117,5 +122,4 @@ A JSON manifest nasazení, frissítse a modulban lévő rendszerképek az **syst
 
 Megtekintheti a legfrissebb [Azure IoT Edge-kiadások](https://github.com/Azure/azure-iotedge/releases).
 
-Maradjon naprakész a legújabb frissítések és a közlemény a [IOT-blog](https://azure.microsoft.com/blog/topics/internet-of-things/
-) 
+Maradjon naprakész a legújabb frissítések és a közlemény a [IOT-blog](https://azure.microsoft.com/blog/topics/internet-of-things/) 

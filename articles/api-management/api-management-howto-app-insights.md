@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/20/2018
 ms.author: apimpm
-ms.openlocfilehash: a660b36f383eaf1fd0e868200ad7f59aba0f8225
-ms.sourcegitcommit: 7b845d3b9a5a4487d5df89906cc5d5bbdb0507c8
+ms.openlocfilehash: 52e034f9a0c11c2b27888d181304bc16c3369e4a
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2018
-ms.locfileid: "42060606"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49390023"
 ---
 # <a name="how-to-integrate-azure-api-management-with-azure-application-insights"></a>Hogyan integrálható az Azure API Management az Azure Application insights segítségével
 
@@ -51,12 +51,12 @@ Az Azure Application Insights használata előtt először a szolgáltatás egy 
     ![App Insights naplózót](media/api-management-howto-app-insights/apim-app-insights-logger-2.png)  
 
 > [!NOTE]
-> A helyszín mögött egy [naplózó](https://docs.microsoft.com/en-us/rest/api/apimanagement/logger/createorupdate) entitás jön létre az API Management példánya, amely tartalmazza a kialakítási kulcsot az Application Insights-példány.
+> A helyszín mögött egy [naplózó](https://docs.microsoft.com/rest/api/apimanagement/logger/createorupdate) entitás jön létre az API Management példánya, amely tartalmazza a kialakítási kulcsot az Application Insights-példány.
 
 ## <a name="enable-application-insights-logging-for-your-api"></a>Az API-hoz az Application Insights-naplózás engedélyezése
 
 1. Keresse meg a **Azure API Management-szolgáltatáspéldány** a a **az Azure portal**.
-2. Válassza ki **API-k** a bal oldali menüből.
+2. A bal oldali menüből válassza ki az **API-k** elemet.
 3. Ebben az esetben kattintson az API-t, a **Demo Conference API**.
 4. Nyissa meg a **beállítások** a felső sávon fülre.
 5. Görgessen le a **diagnosztikai naplók** szakaszban.  
@@ -68,7 +68,7 @@ Az Azure Application Insights használata előtt először a szolgáltatás egy 
 10. Kattintson a **Save** (Mentés) gombra.
 
 > [!NOTE]
-> A helyszín mögött egy [diagnosztikai](https://docs.microsoft.com/en-us/rest/api/apimanagement/diagnostic/createorupdate) "applicationinsights" nevű entitás jön létre az API szintjén.
+> A helyszín mögött egy [diagnosztikai](https://docs.microsoft.com/rest/api/apimanagement/diagnostic/createorupdate) "applicationinsights" nevű entitás jön létre az API szintjén.
 
 | Beállítás neve                        | Érték típusa                        | Leírás                                                                                                                                                                                                                                                                                                                                      |
 |-------------------------------------|-----------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -123,5 +123,5 @@ A rendszer kihagyja a fejlécek és törzs kérelmek és válaszok naplózását
 
 ## <a name="next-steps"></a>További lépések
 
-+ Tudjon meg többet [Azure Application Insights](https://docs.microsoft.com/en-us/azure/application-insights/).
++ Tudjon meg többet [Azure Application Insights](https://docs.microsoft.com/azure/application-insights/).
 + Érdemes lehet [az Azure Event Hubs-naplózás](api-management-howto-log-event-hubs.md).

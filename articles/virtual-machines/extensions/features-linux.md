@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/30/2018
 ms.author: roiyz
-ms.openlocfilehash: b4e2971b5bb4ed5add2e68c1aabbc82443a61160
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.openlocfilehash: 255fe84f0d155902b2a3ac477a1e677efef42bb4
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/17/2018
-ms.locfileid: "49363382"
+ms.locfileid: "49386656"
 ---
 # <a name="virtual-machine-extensions-and-features-for-linux"></a>Virtuális gépi bővítmények és szolgáltatások linuxhoz
 
@@ -65,7 +65,7 @@ Bővítménycsomagok letöltődnek az Azure Storage-bővítmény adattárból, �
 > [!IMPORTANT]
 > Ha a hozzáférést a letiltott *168.63.129.1* a Vendég tűzfalat használ, akkor bővítmények sikertelen a fenti függetlenül.
 
-Ügynökök csak bővítménycsomagok és állapotjelentést letöltéséhez használható. Például, ha a bővítmény telepítését le kell töltenie egy szkriptet a Githubról (egyéni szkript), vagy kell elérni az Azure Storage (Azure Backup), majd további tűzfal és a hálózati biztonsági csoport portokat kell megnyitni. A különböző bővítmények eltérő követelmények vonatkoznak, lehet, mert a saját jobb alkalmazások. Az Azure Storage-hozzáférést igénylő bővítmények, Azure NSG szolgáltatás címkék használatával hozzáférést biztosíthat [tárolási](https://docs.microsoft.com/en-us/azure/virtual-network/security-overview#service-tags).
+Ügynökök csak bővítménycsomagok és állapotjelentést letöltéséhez használható. Például, ha a bővítmény telepítését le kell töltenie egy szkriptet a Githubról (egyéni szkript), vagy kell elérni az Azure Storage (Azure Backup), majd további tűzfal és a hálózati biztonsági csoport portokat kell megnyitni. A különböző bővítmények eltérő követelmények vonatkoznak, lehet, mert a saját jobb alkalmazások. Az Azure Storage-hozzáférést igénylő bővítmények, Azure NSG szolgáltatás címkék használatával hozzáférést biztosíthat [tárolási](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags).
 
 Ügynökkérelmek forgalom átirányítása, a Linux-ügynök van a proxykiszolgáló-támogatás. A proxykiszolgáló-támogatás azonban nem vonatkozik a bővítmények. Be kell állítania minden egyes bővítmény proxyval működjenek.
 
@@ -259,7 +259,7 @@ Az előző példa kimenetében, a szülő vagy a "csomag telepített verzió: az
 
 A "cél állapot ügynök" az automatikus frissítési verziója.
 
-Azt javasoljuk, hogy mindig legyen az automatikus frissítés az ügynökhöz [AutoUpdate.Enabled=y](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/update-agent). Nem kellene az engedélyezett azt jelenti, hogy továbbra is szeretné frissíteni az ügynököt, és nem kérdezhető le a hibajavításokat és biztonsági javításokat.
+Azt javasoljuk, hogy mindig legyen az automatikus frissítés az ügynökhöz [AutoUpdate.Enabled=y](https://docs.microsoft.com/azure/virtual-machines/linux/update-agent). Nem kellene az engedélyezett azt jelenti, hogy továbbra is szeretné frissíteni az ügynököt, és nem kérdezhető le a hibajavításokat és biztonsági javításokat.
 
 #### <a name="extension-updates"></a>Bővítmény-frissítések
 

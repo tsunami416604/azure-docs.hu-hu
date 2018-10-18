@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/03/2018
+ms.date: 10/17/2018
 ms.author: tomfitz
-ms.openlocfilehash: b4dc1517c909439c499749eaf18dca11983eecee
-ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
+ms.openlocfilehash: ea926a64e3df853d6845266ff20255b76d9ff387
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49069148"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49386722"
 ---
 # <a name="using-linked-and-nested-templates-when-deploying-azure-resources"></a>Kapcsolt és beágyazott sablonok, az Azure-erőforrások üzembe helyezésekor
 
@@ -401,7 +401,7 @@ A következő sablon mutató hivatkozásokat tartalmaz a fenti sablon. Három ny
 
 A telepítést követően a kimeneti értékeket a következő PowerShell-parancsfájllal kérheti le:
 
-```powershell
+```azurepowershell-interactive
 $loopCount = 3
 for ($i = 0; $i -lt $loopCount; $i++)
 {
@@ -411,9 +411,11 @@ for ($i = 0; $i -lt $loopCount; $i++)
 }
 ```
 
-Vagy az Azure CLI-szkript:
+Vagy az Azure CLI-szkript Bash-felületen:
 
-```azurecli
+```azurecli-interactive
+#!/bin/bash
+
 for i in 0 1 2;
 do
     name="linkedTemplate$i";
@@ -459,16 +461,18 @@ Az alábbi példa bemutatja, hogyan adhatók át a SAS-token való egy sablont:
 
 A PowerShell a tároló egy token beszerzéséhez, és az alábbi parancsokkal a sablonok üzembe helyezése. Figyelje meg, hogy a **containerSasToken** paraméter van definiálva a sablonban. A paraméter nem fut a **New-AzureRmResourceGroupDeployment** parancsot.
 
-```powershell
+```azurepowershell-interactive
 Set-AzureRmCurrentStorageAccount -ResourceGroupName ManageGroup -Name storagecontosotemplates
 $token = New-AzureStorageContainerSASToken -Name templates -Permission r -ExpiryTime (Get-Date).AddMinutes(30.0)
 $url = (Get-AzureStorageBlob -Container templates -Blob parent.json).ICloudBlob.uri.AbsoluteUri
 New-AzureRmResourceGroupDeployment -ResourceGroupName ExampleGroup -TemplateUri ($url + $token) -containerSasToken $token
 ```
 
-Az Azure CLI-ben a tároló egy token beszerzéséhez, és a sablonok a következő kód üzembe helyezése:
+Azure CLI Bash-felületen a tároló egy token beszerzéséhez, és a sablonok a következő kód üzembe helyezése:
 
-```azurecli
+```azurecli-interactive
+#!/bin/bash
+
 expiretime=$(date -u -d '30 minutes' +%Y-%m-%dT%H:%MZ)
 connection=$(az storage account show-connection-string \
     --resource-group ManageGroup \

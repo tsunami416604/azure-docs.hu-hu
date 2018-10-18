@@ -10,12 +10,12 @@ ms.author: mimart
 author: msmimart
 manager: mtillman
 ms.reviewer: mal
-ms.openlocfilehash: 4ffe6cf3f1da4c149d1cb39856d02fc40acd20cf
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: 396fb947a95ebc634ab0dea24d20f35126bc006e
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45984792"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49389445"
 ---
 # <a name="add-google-as-an-identity-provider-for-b2b-guest-users"></a>Adja hozzá a Google B2B vendégfelhasználó Identitásszolgáltatóként
 
@@ -68,7 +68,7 @@ Először hozzon létre egy új projektet a Google fejlesztői konzolon a ügyf�
 Most, értékre állítjuk a Google-ügyfél-Azonosítót és a titkos kulcsot, az Azure AD portálon megadásával vagy a PowerShell használatával. Győződjön meg arról, Gmail-címet használó és a kísérlet beváltani a meghívót a meghívott Google-fiókkal való meghívása saját maga által a Google-összevonási konfiguráció tesztelése. 
 
 #### <a name="to-configure-google-federation-in-the-azure-ad-portal"></a>A Google-összevonás konfigurálása az Azure AD portálon 
-1. Nyissa meg az [Azure Portal](https://portal.azure.com). A bal oldali panelen válassza ki a **Azure Active Directory**. 
+1. Nyissa meg az [Azure Portal](https://portal.azure.com). A bal oldali panelen válassza az **Azure Active Directory** lehetőséget. 
 2. Válassza ki **szervezeti kapcsolatok**.
 3. Válassza ki **Identitásszolgáltatók**, majd kattintson a **Google** gombra.
 4. Adjon meg egy nevet. Majd adja meg az ügyfél-azonosító és titkos Ügyfélkód korábban szerzett be. Kattintson a **Mentés** gombra. 
@@ -84,13 +84,13 @@ Most, értékre állítjuk a Google-ügyfél-Azonosítót és a titkos kulcsot, 
    `New-AzureADMSIdentityProvider -Type Google -Name Google -ClientId [Client ID] -ClientSecret [Client secret]`
  
    > [!NOTE]
-   > Használja az ügyfél-azonosítót és az alkalmazásból a létrehozott titkos "1. lépés: a Google developer-projekt konfigurálásához." További információkért lásd: a [New-AzureADMSIdentityProvider](https://docs.microsoft.com/en-us/powershell/module/azuread/new-azureadmsidentityprovider?view=azureadps-2.0-preview) cikk. 
+   > Használja az ügyfél-azonosítót és az alkalmazásból a létrehozott titkos "1. lépés: a Google developer-projekt konfigurálásához." További információkért lásd: a [New-AzureADMSIdentityProvider](https://docs.microsoft.com/powershell/module/azuread/new-azureadmsidentityprovider?view=azureadps-2.0-preview) cikk. 
  
 ## <a name="how-do-i-remove-google-federation"></a>Hogyan távolíthatom el a Google összevonási?
 A Google-összevonási telepítés törölheti. Ha így tesz, Google vendég felhasználók, akik már beváltott a meghívót nem lesz lehetősége bejelentkezni, de átadásával hozzáférés ismét az erőforrásokhoz való törlésével őket a könyvtárból, és újra meghívja őket. 
  
 ### <a name="to-delete-google-federation-in-the-azure-ad-portal"></a>Az Azure AD portálon Google összevonási törlése: 
-1. Nyissa meg az [Azure Portal](https://portal.azure.com). A bal oldali panelen válassza ki a **Azure Active Directory**. 
+1. Nyissa meg az [Azure Portal](https://portal.azure.com). A bal oldali panelen válassza az **Azure Active Directory** lehetőséget. 
 2. Válassza ki **szervezeti kapcsolatok**.
 3. Válassza ki **Identitásszolgáltatók**, majd kattintson a **Google** gombra.
 4. Válassza ki **Google**, majd válassza ki **törlése**. 
@@ -108,4 +108,4 @@ A Google-összevonási telepítés törölheti. Ha így tesz, Google vendég fel
     `Remove-AzureADMSIdentityProvider -Id Google-OAUTH`
 
    > [!NOTE]
-   > További információkért lásd: [Remove-AzureADMSIdentityProvider](https://docs.microsoft.com/en-us/powershell/module/azuread/Remove-AzureADMSIdentityProvider?view=azureadps-2.0-preview). 
+   > További információkért lásd: [Remove-AzureADMSIdentityProvider](https://docs.microsoft.com/powershell/module/azuread/Remove-AzureADMSIdentityProvider?view=azureadps-2.0-preview). 

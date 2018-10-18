@@ -13,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 07/31/2018
 ms.author: tarcher
 ms.custom: jenkins
-ms.openlocfilehash: cfe67fbed61b4af9b4a4f5b490397ca1a6e1d752
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 4e91c0287bfe50b297b9a3ef118ececb67909f21
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44299491"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49388489"
 ---
 # <a name="tutorial-deploy-your-app-to-linux-virtual-machines-in-azure-with-using-jenkins-and-azure-devops-services"></a>Oktatóanyag: Az alkalmazás üzembe helyezése Linux rendszerű virtuális gépeken az Azure-ban a Jenkins és az Azure DevOps Services használatával
 
@@ -26,7 +26,7 @@ Folyamatos integráció (CI) és a folyamatos üzembe helyezés (CD) egy folyama
 
 Ebben az oktatóanyagban a Jenkinst fogja használni Node.js-alapú webalkalmazás építésére. Ezután az Azure DevOps használatával üzembe helyezi azt
 
-egy Linux rendszerű virtuális gépeket tartalmazó [üzembehelyezési csoportban](https://docs.microsoft.com/en-us/azure/devops/pipelines/release/deployment-groups/index?view=vsts). Az alábbiak végrehajtásának módját ismerheti meg:
+egy Linux rendszerű virtuális gépeket tartalmazó [üzembehelyezési csoportban](https://docs.microsoft.com/azure/devops/pipelines/release/deployment-groups/index?view=vsts). Az alábbiak végrehajtásának módját ismerheti meg:
 
 > [!div class="checklist"]
 > * Mintaalkalmazás letöltése.

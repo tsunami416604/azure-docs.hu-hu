@@ -6,19 +6,19 @@ author: jeffpatt24
 tags: storage
 ms.service: storage
 ms.topic: article
-ms.date: 05/11/2018
+ms.date: 10/16/2018
 ms.author: jeffpatt
 ms.component: files
-ms.openlocfilehash: 31a0ffc2937f6d93a630bf6ce474d7dcf20c923f
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.openlocfilehash: 87190a7f46a209ae66ca47d9346ed4b5929ac8fd
+ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/17/2018
-ms.locfileid: "49364387"
+ms.locfileid: "49394201"
 ---
 # <a name="troubleshoot-azure-files-problems-in-linux"></a>A Linux Azure Files-problémák hibaelhárítása
 
-Ez a cikk a Linux-ügyfelek csatlakozáskor a Microsoft Azure Files kapcsolatos gyakori problémák sorolja fel. Is biztosít a lehetséges okokért és megoldásokért ezeket a problémákat.
+Ez a cikk a Linux-ügyfelek csatlakozáskor a Microsoft Azure Files kapcsolatos gyakori problémák sorolja fel. Is biztosít a lehetséges okokért és megoldásokért ezeket a problémákat. A hibaelhárítási lépéseket ebben a cikkben mellett is használhatja [AzFileDiagnostics](https://gallery.technet.microsoft.com/Troubleshooting-tool-for-02184089) annak biztosítására, a Linux rendszerű ügyfél rendelkezik a megfelelő előfeltételek. AzFileDiagnostics automatizálja a jelenség a jelen cikkben említett, és a segítségével állítsa be a környezetet az optimális teljesítmény eléréséhez a legtöbb felismerése. Ezt az információt is megtalálhatja a [Azure-fájlmegosztási hibaelhárító](https://support.microsoft.com/help/4022301/troubleshooter-for-azure-files-shares) , amelyek segítenek a problémák az Azure Files csatlakozás és leképezés/csatlakoztatási fájlmegosztások lépéseit ismerteti.
 
 <a id="permissiondenied"></a>
 ## <a name="permission-denied-disk-quota-exceeded-when-you-try-to-open-a-file"></a>"[engedély megtagadva] meghaladta lemezkvótát" amikor próbálja megnyitni a fájlt
@@ -82,7 +82,7 @@ Egyes Linux-disztribúciókon egyelőre nem támogatják a titkosítási szolgá
 
 ### <a name="solution"></a>Megoldás
 
-Linuxos SMB 3.0 titkosítás funkciót a 4.11 kernel jelent meg. Ez a funkció lehetővé teszi a helyszíni vagy más Azure-régióban az Azure-fájlmegosztás csatlakoztatása. Ez a funkció a közzététel időpontjában backported Ubuntu 17.04 és Ubuntu 16.10 volt. Ha a Linuxos SMB-ügyfél nem támogatja a titkosítást, csatlakoztatása az Azure Files SMB 2.1 az Azure Linux VM, amely ugyanabban az adatközpontban a fájlként való használatával megosztása, és ellenőrizze a [biztonságos átvitelre van szükség]( https://docs.microsoft.com/en-us/azure/storage/common/storage-require-secure-transfer) beállítás le van tiltva, a Storage fiók. 
+Linuxos SMB 3.0 titkosítás funkciót a 4.11 kernel jelent meg. Ez a funkció lehetővé teszi a helyszíni vagy más Azure-régióban az Azure-fájlmegosztás csatlakoztatása. Ez a funkció a közzététel időpontjában backported Ubuntu 17.04 és Ubuntu 16.10 volt. Ha a Linuxos SMB-ügyfél nem támogatja a titkosítást, csatlakoztatása az Azure Files SMB 2.1 az Azure Linux VM, amely ugyanabban az adatközpontban a fájlként való használatával megosztása, és ellenőrizze a [biztonságos átvitelre van szükség]( https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer) beállítás le van tiltva, a Storage fiók. 
 
 <a id="slowperformance"></a>
 ## <a name="slow-performance-on-an-azure-file-share-mounted-on-a-linux-vm"></a>Lassú teljesítmény az Azure-fájlmegosztás csatlakoztatása egy Linux rendszerű virtuális gépen
@@ -150,7 +150,7 @@ A probléma gyakori okai a következők:
 - SMB 3.0-titkosítás nem támogatott az ügyfélen. Az SMB 3.0 titkosítás Ubuntu 16.4 és újabb verzióra, a SUSE 12.3 és újabb verziója érhető el. Más disztribúciók kernel 4.11 és újabb verzió szükséges.
 - Csatlakozás egy tárfiókhoz TCP-porton keresztül 445-ös, amely nem támogatott kívánt.
 - Szeretne csatlakozni egy Azure virtuális gép Azure-fájlmegosztást, és a virtuális gép nem található, és a Storage-fiók ugyanabban a régióban.
-- Ha [biztonságos átvitelre van szükség]( https://docs.microsoft.com/en-us/azure/storage/common/storage-require-secure-transfer) beállítás engedélyezve van a tárfiókon, az Azure Files csak akkor engedélyezi a kapcsolatok használatával az SMB 3.0-s titkosítással.
+- Ha [biztonságos átvitelre van szükség]( https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer) beállítás engedélyezve van a tárfiókon, az Azure Files csak akkor engedélyezi a kapcsolatok használatával az SMB 3.0-s titkosítással.
 
 ### <a name="solution"></a>Megoldás
 
@@ -191,7 +191,7 @@ Tudják symlinks használni, a CIFS mount parancs végéhez adja hozzá a követ
 Így a parancs a következőhöz hasonlóan kell kinéznie:
 
 ```
-sudo mount -t cifs //<storage-account-name>.file.core.windows.net/<share-name> <mount-point> -o vers=<smb-version>,username=<storage-account-name>,password=<storage-account-key>,dir_mode=0777,file_mode=0777,serverino,mfsynlinks
+sudo mount -t cifs //<storage-account-name>.file.core.windows.net/<share-name> <mount-point> -o vers=<smb-version>,username=<storage-account-name>,password=<storage-account-key>,dir_mode=0777,file_mode=0777,serverino,mfsymlinks
 ```
 
 Miután hozzáadta, akkor fogja tudni symlinks hozzon létre a gyakran a [Wiki](https://wiki.samba.org/index.php/UNIX_Extensions#Storing_symlinks_on_Windows_servers).

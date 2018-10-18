@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/19/2018
 ms.author: magoedte
-ms.openlocfilehash: 308a447ff99cd11ad6a28df0bdb515764b0f546b
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: 282620342d2348868ceab5257de7415a9cb2147c
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47063455"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49388359"
 ---
 # <a name="azure-monitor-for-vms-frequently-asked-questions"></a>A virtuális gépek az Azure Monitor – gyakori kérdések
 A Microsoft FAQ az összetevővel kapcsolatos gyakori kérdésekre az Azure Monitor a Microsoft Azure-beli virtuális gépek listája. Ha a megoldásról a további kérdése van, lépjen a [fórum](https://feedback.azure.com/forums/34192--general-feedback) és felteheti kérdéseit. Egy kérdést gyakran ismételt, amikor hozzáadjuk ehhez a cikkhez, hogy gyorsan és könnyen megtalálhatók.
@@ -76,7 +76,7 @@ Virtuális gépek térkép funkció az Azure Monitor Service Map alapul, de rend
 Ez akkor fordulhat elő, a több okból is.  Azokban az esetekben, ahol az adatok gyűjtésének eseményáramlási kimaradást azt jelzik a pontozott, a sorokat.  Ha módosította a teljesítményszámlálókkal, engedélyezve van az adatok mintavételi gyakoriság (az alapértelmezett beállítás a adatgyűjtéshez 60 másodpercenként), pontozott vonal a diagramon látható, ha úgy dönt, hogy a diagram keskeny időtartományt, és a mintavételi gyakoriság kevesebb, mint a gyűjtő mérete a diagramon használt (például a mintavételi gyakoriság 10 percenként pedig a diagramon az egyes gyűjtők 5 perc).  Megtekintéséhez szélesebb körű időtartomány kiválasztása eredményezhetik a diagram sorokat pontok helyett a folytonos vonal ebben az esetben jelennek meg.
 
 ## <a name="are-groups-supported-with-azure-monitor-for-vms"></a>Csoportok támogatottak az Azure Monitor szolgáltatással a virtuális gépek?
-A teljesítmény funkció támogatja a csoportokat a kijelölt erőforrások belül egy adott munkaterület alapján, valamint egy adott Azure-beli virtuálisgép-méretezési csoportot és egy felhőalapú szolgáltatás alapuló csoportosítást.
+Igen, a csoportok alapján az előfizetés, erőforráscsoport, a megjelenítéséhez a virtuális gépekről gyűjtött információkat függőségi ügynök telepítése után virtuálisgép-méretezési csoportokban, és felhőszolgáltatásokat fejleszthet.  Ha már használja a Service Map és gépcsoportok hozott létre, ezeket is megjelenik.  Ha a munkaterület megtekintésekor hozott számítógépcsoportok is megjelennek a csoportok szűrőt. 
 
 ## <a name="how-do-i-see-the-details-for-what-is-driving-the-95th-percentile-line-in-the-aggregate-performance-charts"></a>Hogyan tekinthető meg a részleteket az Előfeltételek a 95. percentilis vonal aggregált teljesítménydiagramok?
 Alapértelmezés szerint a lista rendezett mutatni, a virtuális gépek, amelyek esetén a 95. percentilis a kiválasztott metrika a legmagasabb érték kivételével a rendelkezésre álló memória diagram, amely a gépek az 5. percentilis legalacsonyabb értékét jeleníti meg.  A diagramra kattintva megnyílik a **felső N lista** a megfelelő a kiválasztott metrika tartalmazó nézetet.

@@ -11,13 +11,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 10/15/2018
-ms.openlocfilehash: 372f1a0b7e2ad07612caaac478aea14693e002fa
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.date: 10/17/2018
+ms.openlocfilehash: 526b6ac9c510b13461181d76c0032602d8f3f435
+ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49352302"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49377982"
 ---
 # <a name="hyperscale-service-tier-preview-for-up-to-100-tb"></a>Akár 100 TB kapacitású szolgáltatási réteg (előzetes verzió)
 
@@ -148,8 +148,8 @@ Nagy kapacitású szolgáltatási szint jelenleg nyilvános előzetes verzióban
 
 | Probléma | Leírás |
 | :---- | :--------- |
-| ManageBackups panelen a logikai kiszolgáló nem jelenik meg a rendkívül nagy adatbázisok az SQL Serverből lesznek szűrve ->  | Nagy kapacitású rendelkezik egy külön metódusba biztonsági mentések kezeléséhez, és mint ilyen a hosszú távú adatmegőrzési és az idő a biztonsági mentés megőrzési beállításait pont csak akkor érvényesíthetők / érvénytelenné válnak. Ennek megfelelően a nagy kapacitású adatbázisok nem jelennek meg a biztonsági mentés kezelése ablak. |
-| Adott időpontnak megfelelő helyreállítás | Adatbázis áttelepítése, a nagy kapacitású szolgáltatási rétegben, miután egy pont kötött visszaállítás nem támogatott.|
+| A biztonsági másolatok kezelése ablak esetében a logikai kiszolgáló nem jelenik meg a rendkívül nagy adatbázisok az SQL Serverből lesznek szűrve ->  | Nagy kapacitású rendelkezik egy külön metódusba biztonsági mentések kezeléséhez, és mint ilyen a hosszú távú adatmegőrzési és az idő a biztonsági mentés megőrzési beállításait pont csak akkor érvényesíthetők / érvénytelenné válnak. Ennek megfelelően a nagy kapacitású adatbázisok nem jelennek meg a biztonsági mentés kezelése ablak. |
+| Adott időpontnak megfelelő helyreállítás | Adatbázis áttelepítése, a nagy kapacitású szolgáltatási rétegben, miután egy-időponthoz az áttelepítés előtt visszaállítás nem támogatott.|
 | Ha egy adatbázisfájl növekedésével az áttelepítést egy aktív számítási feladatok során, és átlép egy fájl határ az 1 TB-os, az áttelepítés sikertelen | Megoldások: <br> – Ha lehetséges, telepítse át az adatbázis nincs frissítés futó számítási feladat esetén.<br> – Próbálkozzon újra az áttelepítést, a sikeres lesz, amíg az 1 TB-os határ nem áthaladnak a migrálás során.|
 | Felügyelt példány jelenleg nem támogatott | Jelenleg nem támogatott |
 | Nagy kapacitású való migrálás jelenleg egy egyirányú művelet | Egy adatbázis van történő migrálást követően megismerkedhet nagy kapacitású, azt közvetlenül a nem nagy kapacitású szolgáltatásréteghez nem migrálható. Jelenleg az egyetlen módszer a nagy kapacitású adatbázis áttelepítése nem nagy kapacitású az Exportálás/importálás BACPAC-fájl használatával.|

@@ -12,12 +12,12 @@ ms.topic: reference
 ms.date: 03/09/2018
 ms.author: rnagpal
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 76ad14bb52e2eedbfa1450c53a8b947719fef310
-ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
+ms.openlocfilehash: 27b7b4efdb14872ee2d841e17d2e253b6c7c30c3
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/06/2018
-ms.locfileid: "48830784"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49389768"
 ---
 # <a name="azure-cosmos-db-net-sdk-for-sql-api-download-and-release-notes"></a>Az Azure Cosmos DB .NET SDK, az SQL API-hoz: Töltse le és kibocsátási megjegyzések
 > [!div class="op_single_selector"]
@@ -40,7 +40,7 @@ ms.locfileid: "48830784"
 
 <tr><td>**API-dokumentáció**</td><td>[.NET API dokumentációja](/dotnet/api/overview/azure/cosmosdb?view=azure-dotnet)</td></tr>
 
-<tr><td>**Minták**</td><td>[.NET platformra írt kódmintái](sql-api-dotnet-samples.md)</td></tr>
+<tr><td>**Példák**</td><td>[.NET platformra írt kódmintái](sql-api-dotnet-samples.md)</td></tr>
 
 <tr><td>**Első lépések**</td><td>[Az Azure Cosmos DB .NET SDK használatának első lépései](sql-api-get-started.md)</td></tr>
 
@@ -50,6 +50,10 @@ ms.locfileid: "48830784"
 </table></br>
 
 ## <a name="release-notes"></a>Kibocsátási megjegyzések
+### <a name="a-name213213"></a><a name="2.1.3"/>2.1.3
+
+* Frissített System.Net.Security 4.3.2 való.
+
 ### <a name="a-name212212"></a><a name="2.1.2"/>2.1.2
 
 * Diagnosztikai nyomkövetés fejlesztései
@@ -331,6 +335,7 @@ Az Azure Cosmos DB egy kivont SDK használatával bármilyen kérelmeket a szolg
 
 | Verzió | Kiadás dátuma | Visszavonás dátuma |
 | --- | --- | --- |
+| [2.1.3](#2.1.3) |2018. október 15. |--- |
 | [2.1.2](#2.1.2) |2018. október 04. |--- |
 | [2.1.1](#2.1.1) |2018. szeptember 27. |--- |
 | [2.1.0](#2.1.0) |2018. szeptember 21. |--- |

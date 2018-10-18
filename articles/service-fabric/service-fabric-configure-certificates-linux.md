@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/26/2018
 ms.author: v-jamebr
-ms.openlocfilehash: 97f33a1c0c42b534dafd1e4ed378b655b339395a
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: aa84dc4cb23a0fa2fa854e1f3d6da1234ec00bd6
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42056701"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49386637"
 ---
 # <a name="certificates-and-security-on-linux-clusters"></a>Tanúsítványok és biztonság Linux-fürtökön
 
@@ -35,7 +35,7 @@ Ha a tanúsítvány Azure Key vault használatával telepíti egy [Resource Mana
 
 ## <a name="certificates-referenced-in-the-application-manifest"></a>Az alkalmazásjegyzékben hivatkozott tanúsítványok
 
-A kérelemben megadott tanúsítványok manifest, például keresztül a [ **SecretsCertificate** ](https://docs.microsoft.com/azure/service-fabric/service-fabric-service-model-schema-elements#secretscertificate-element) vagy [ **EndpointCertificate** ](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-service-model-schema-elements#endpointcertificate-element)elemek, a jelen kell lennie a */var/lib/sfcerts* könyvtár. Az elemek, amelyek adja meg a tanúsítványok az alkalmazásjegyzékben, a tanúsítványok szerepelnie kell az alapértelmezett címtár nem lépnek egy elérési út attribútumban. Ezek az elemek igénybe egy nem kötelező **X509StoreName** attribútum. Az alapértelmezett érték a "My" kifejezést, amely a */var/lib/sfcerts* Linux-csomópontok könyvtárába. Bármely más érték nincs definiálva egy Linux-fürtön. Azt javasoljuk, hogy kihagyja a **X509StoreName** attribútum a Linux-fürtökön futó alkalmazások. 
+A kérelemben megadott tanúsítványok manifest, például keresztül a [ **SecretsCertificate** ](https://docs.microsoft.com/azure/service-fabric/service-fabric-service-model-schema-elements#secretscertificate-element) vagy [ **EndpointCertificate** ](https://docs.microsoft.com/azure/service-fabric/service-fabric-service-model-schema-elements#endpointcertificate-element)elemek, a jelen kell lennie a */var/lib/sfcerts* könyvtár. Az elemek, amelyek adja meg a tanúsítványok az alkalmazásjegyzékben, a tanúsítványok szerepelnie kell az alapértelmezett címtár nem lépnek egy elérési út attribútumban. Ezek az elemek igénybe egy nem kötelező **X509StoreName** attribútum. Az alapértelmezett érték a "My" kifejezést, amely a */var/lib/sfcerts* Linux-csomópontok könyvtárába. Bármely más érték nincs definiálva egy Linux-fürtön. Azt javasoljuk, hogy kihagyja a **X509StoreName** attribútum a Linux-fürtökön futó alkalmazások. 
 
 ## <a name="certificates-referenced-in-the-configuration-package-settingsxml"></a>A konfigurációs csomag (Settings.xml) hivatkozott tanúsítványok
 

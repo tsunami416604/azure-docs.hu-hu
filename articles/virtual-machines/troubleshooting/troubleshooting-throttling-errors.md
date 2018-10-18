@@ -13,12 +13,12 @@ ms.topic: troubleshooting
 ms.workload: infrastructure-services
 ms.date: 09/18/2018
 ms.author: vashan, rajraj, changov
-ms.openlocfilehash: d9d9e9cdb791504c864cae20d1248ba78a180a4c
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: b951d0b8d91729340cf382e70f72511fb009053e
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49320271"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49386552"
 ---
 # <a name="troubleshooting-api-throttling-errors"></a>API szabályozási hibák elhárítása 
 
@@ -26,7 +26,7 @@ Azure számítási kérelmek szabályozva előfordulhat, hogy egy előfizetés �
 
 ## <a name="throttling-by-azure-resource-manager-vs-resource-providers"></a>Azure Resource Manager-és erőforrás-szolgáltatók által szabályozás  
 
-Kezdettől fogva az Azure-ba, mint Azure Resource Manager hajtja végre a hitelesítési és elsőrendű érvényesítési és az összes bejövő API-kérelmek szabályozása. Az Azure Resource Manager-hívás sebességhatárok és a kapcsolódó diagnosztikai válasz HTTP-fejlécek [Itt](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-manager-request-limits).
+Kezdettől fogva az Azure-ba, mint Azure Resource Manager hajtja végre a hitelesítési és elsőrendű érvényesítési és az összes bejövő API-kérelmek szabályozása. Az Azure Resource Manager-hívás sebességhatárok és a kapcsolódó diagnosztikai válasz HTTP-fejlécek [Itt](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-request-limits).
  
 Amikor egy Azure API-ügyfél megkapja a sávszélesség-szabályozási hiba, a HTTP-állapot akkor 429 Too Many Requests. Szeretné megtudni, ha a kérelemszabályozás végzi el az Azure Resource Manager vagy az alapul szolgáló erőforrás-szolgáltató például a CRP, vizsgálja meg a `x-ms-ratelimit-remaining-subscription-reads` a GET-kérésekhez és `x-ms-ratelimit-remaining-subscription-writes` válaszfejlécek nem GET kérelmek esetén. A fennmaradó hívások számát közeledik 0, ha az előfizetés általános hívás Azure Resource Manager által meghatározott elérte. Az összes előfizetés ügyfelek tevékenységek együtt bájtjai számítanak. Ellenkező esetben a szabályozás származik a célként megadott erőforrás-szolgáltató (az egyik címzett által a `/providers/<RP>` szegmense, amely a kérelem URL-CÍMÉT). 
 
@@ -88,4 +88,4 @@ Ahogy fent ábrázolt minden szabályozási hiba magában foglalja a `Retry-Afte
 
 ## <a name="next-steps"></a>További lépések
 
-Újrapróbálkozási útmutatás más Azure-szolgáltatások kapcsolatos további információkért lásd: [újrapróbálkozási útmutatás adott szolgáltatásoknál](https://docs.microsoft.com/en-us/azure/architecture/best-practices/retry-service-specific)
+Újrapróbálkozási útmutatás más Azure-szolgáltatások kapcsolatos további információkért lásd: [újrapróbálkozási útmutatás adott szolgáltatásoknál](https://docs.microsoft.com/azure/architecture/best-practices/retry-service-specific)

@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/10/2018
 ms.author: raynew
-ms.openlocfilehash: cd0af3bc9489452dfc98efaa3ded768a8ca775ab
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: 71d96d7e88404c1f8b617370ef5cc841aad882f8
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49079480"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49390040"
 ---
 # <a name="azure-site-recovery-frequently-asked-questions-faq"></a>Az Azure Site Recovery: gyakori kérdések (GYIK)
 Ez a cikk az Azure Site Recovery – gyakori kérdések tartalmazza. Ha kérdése van a cikk elolvasása után, el őket az a [Azure Recovery Services fórumon](https://social.msdn.microsoft.com/Forums/azure/home?forum=hypervrecovmgr).
@@ -70,7 +70,7 @@ VMware virtuális gépek védelméhez vSphere hipervizorra van szükség, a virt
 Igen. A Site Recovery használatával a fiókirodákban replikációjának és feladatátvételének megszervezése, amikor egy egységes vezénylésével és a nézet az összes a fiókiroda számítási feladatait kap egy központi helyen. A központi telephelyről könnyen intézheti a feladatátvételt és a vészhelyreállítást az összes fiókiroda tekintetében anélkül, hogy el kellene látogatnia a fiókirodák telephelyeire.
 
 ## <a name="pricing"></a>Díjszabás
-A díjszabással kapcsolatos kérdésekre, tekintse meg a gyakori Kérdéseket, [Azure Site Recovery díjszabásáról](https://azure.microsoft.com/en-in/pricing/details/site-recovery/).
+A díjszabással kapcsolatos kérdésekre, tekintse meg a gyakori Kérdéseket, [Azure Site Recovery díjszabásáról](https://azure.microsoft.com/pricing/details/site-recovery/).
 
 ## <a name="security"></a>Biztonság
 ### <a name="is-replication-data-sent-to-the-site-recovery-service"></a>A replikációs adatok el lesznek küldve a Site Recovery szolgáltatáshoz?

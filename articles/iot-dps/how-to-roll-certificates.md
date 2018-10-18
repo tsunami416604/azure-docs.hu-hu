@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
-ms.openlocfilehash: a40f4489e63c30a101dd708b5a175c25788fb04b
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 51e96065f726fadd528323157609034b5bb3f151
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46976754"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49387888"
 ---
 # <a name="how-to-roll-x509-device-certificates"></a>Hogyan szeretné visszaállítani az X.509 tanúsítványok
 
@@ -52,7 +52,7 @@ Amikor egy eszköz kezdetben kiépítése keresztül az Automatikus kiépítés,
 
 Miután egy új levél tanúsítványt az eszközre lett állítva, hogy már nem kapcsolódni az IoT hub mert csatlakozni egy új tanúsítványt használ. Az IoT hub csak felismeri a régi tanúsítványt az eszközre. Az eszköz kapcsolódási kísérlet eredménye "nem engedélyezett" kapcsolati hiba lesz. Ez a hiba elhárításához frissítenie kell az eszközt, hogy figyelembe vegye az eszköz új levél tanúsítvány beléptetési bejegyzésében. Ezután a kiépítési szolgáltatás frissítheti az IoT Hub eszköz beállításjegyzék-információk szerint van szükség, amikor az eszköz van-e kiépíteni. 
 
-Az ilyen csatlakozási hibát egyetlen lehetséges kivétel lenne egy olyan forgatókönyvet, ahol létrehozta egy [regisztrációs csoportot](concepts-service.md#enrollment-group) az eszközt a kiépítési szolgáltatáshoz. Ebben az esetben ha a tanúsítvány megbízhatósági láncában az eszköz nem működés közbeni a legfelső szintű vagy köztes tanúsítványt, majd az eszköz felismer Ha az új tanúsítványt a regisztrációs csoport meghatározott megbízhatósági lánc része. Ebben a forgatókönyvben a biztonsági incidensek adott válaszként merül fel, ha legalább az adott eszköz tanúsítványokat a csoportban kell megsértették tekintendő tiltólistára kell. További információkért lásd: [adott eszközökre egy regisztrációs csoportnak tiltólistára](https://docs.microsoft.com/en-us/azure/iot-dps/how-to-revoke-device-access-portal#blacklist-specific-devices-in-an-enrollment-group).
+Az ilyen csatlakozási hibát egyetlen lehetséges kivétel lenne egy olyan forgatókönyvet, ahol létrehozta egy [regisztrációs csoportot](concepts-service.md#enrollment-group) az eszközt a kiépítési szolgáltatáshoz. Ebben az esetben ha a tanúsítvány megbízhatósági láncában az eszköz nem működés közbeni a legfelső szintű vagy köztes tanúsítványt, majd az eszköz felismer Ha az új tanúsítványt a regisztrációs csoport meghatározott megbízhatósági lánc része. Ebben a forgatókönyvben a biztonsági incidensek adott válaszként merül fel, ha legalább az adott eszköz tanúsítványokat a csoportban kell megsértették tekintendő tiltólistára kell. További információkért lásd: [adott eszközökre egy regisztrációs csoportnak tiltólistára](https://docs.microsoft.com/azure/iot-dps/how-to-revoke-device-access-portal#blacklist-specific-devices-in-an-enrollment-group).
 
 A tételek frissítése a listákban összesített tanúsítványok történik a **beléptetések kezelése** lapot. Az oldal eléréséhez kövesse az alábbi lépéseket:
 

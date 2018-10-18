@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/15/2018
 ms.author: jingwang
-ms.openlocfilehash: 8a36053fe3189a72c33ea14445a6b064260eec01
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: c9252380581e77049e9464316ca77cc135f784b6
+ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49318316"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49377599"
 ---
 # <a name="copy-data-from-office-365-into-azure-using-azure-data-factory-preview"></a>Adatok másolása az Office 365-ből az Azure-bA az Azure Data Factory (előzetes verzió) használatával 
 
@@ -125,7 +125,7 @@ Adatok másolása az Office 365-höz, a következő tulajdonságok támogatottak
 |:--- |:--- |:--- |
 | type | A type tulajdonságot az adatkészlet értékre kell állítani: **Office365Table** | Igen |
 | tableName | Az adatkészlet nevét a Office 365-ből kibontásához. Tekintse meg [Itt](https://github.com/OfficeDev/MS-Graph-Data-Connect/wiki/Capabilities#datasets) kinyerési érhető el az Office 365-adatkészletek listáját. | Igen |
-| Predikátum | A predikátum kifejezés, amely segítségével kibontani az Office 365-höz adott sorok szűrése.  Tekintse meg itt megtudhatja, mely oszlopok predikátum szűrést az egyes táblákat és a szűrő kifejezésnek formátumban is használható. | Nem<br>(Ha nincs predikátum nem lett megadva, az alapértelmezett érték adatokat nyerhet ki az utolsó 30 nap) |
+| Predikátum | A predikátum kifejezés, amely segítségével kibontani az Office 365-höz adott sorok szűrése.  Tekintse meg [Itt](https://github.com/OfficeDev/MS-Graph-Data-Connect/wiki/Capabilities#filters) megtudhatja, mely oszlopok predikátum szűrést az egyes táblákat és a szűrő kifejezésnek formátumban is használható. | Nem<br>(Ha nincs predikátum nem lett megadva, az alapértelmezett érték adatokat nyerhet ki az utolsó 30 nap) |
 
 **Példa**
 

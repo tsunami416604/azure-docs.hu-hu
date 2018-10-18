@@ -4,7 +4,7 @@ description: Hive táblákat hozhat létre és tölt be adatokat a hive-táblák
 services: machine-learning,storage
 documentationcenter: ''
 author: deguhath
-manager: jhubbard
+manager: cgronlun
 editor: cgronlun
 ms.assetid: cff9280d-18ce-4b66-a54f-19f358d1ad90
 ms.service: machine-learning
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/04/2017
 ms.author: deguhath
-ms.openlocfilehash: ccfa3f8681b220d01f8347abd58140e2621f4282
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 7ed861a58b82435f9f50a5798ff821fcd6020096
+ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43122285"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49394133"
 ---
 # <a name="create-hive-tables-and-load-data-from-azure-blob-storage"></a>Hive táblák létrehozása és az adatok betöltése az Azure Blob Storage-ból
 Ez a témakör bemutatja az általános Hive-lekérdezések, amelyek Hive táblákat hozhat létre, és az adatok betöltése az Azure blob storage-ból. Hive Táblák particionálása és az optimalizált sor Oszlopalapú (ORC) lekérdezési teljesítmény javításához formázás használatával útmutatást is tartalmaz.

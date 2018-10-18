@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/06/2017
 ms.author: dekapur
-ms.openlocfilehash: 7aa7fc2620fa02af4a720a97eece3c0734252245
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: feb9d0a01cbba75fc9868f5a603d494c5c09ae2e
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42060619"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49386297"
 ---
 # <a name="manage-applications-and-services-as-azure-resource-manager-resources"></a>Az Azure Resource Manager-erőforrások, alkalmazások és szolgáltatások kezelése
 
@@ -264,7 +264,7 @@ A következő kódrészlet azt mutatja be, a különböző típusú erőforráso
 Ha a fürt már fel, és néhány alkalmazást, hogy szeretné, Resource Manager erőforrások már telepítve lettek, ahelyett, hogy eltávolítaná az alkalmazások kezeléséhez, és újbóli őket, használhatja az azonos API-k használatával szeretné, hogy az alkalmazások Put művelet meghívásával beolvasása arra vonatkozik, mint a Resource Manager-erőforrások. 
 
 > [!NOTE]
-> A vásárló lehetővé teszik a nem megfelelő alkalmazások figyelmen kívül a fürtfrissítések adhat meg "maxPercentUnhealthyApplications: 100" a "upgradeDescription/healthPolicy" szakaszban; a rendszer részletes leírását, hogy minden beállítás [szolgáltatás hálók REST API-t fürtben házirend dokumentációja](https://docs.microsoft.com/en-us/rest/api/servicefabric/sfrp-model-clusterupgradepolicy).
+> A vásárló lehetővé teszik a nem megfelelő alkalmazások figyelmen kívül a fürtfrissítések adhat meg "maxPercentUnhealthyApplications: 100" a "upgradeDescription/healthPolicy" szakaszban; a rendszer részletes leírását, hogy minden beállítás [szolgáltatás hálók REST API-t fürtben házirend dokumentációja](https://docs.microsoft.com/rest/api/servicefabric/sfrp-model-clusterupgradepolicy).
 
 ## <a name="next-steps"></a>További lépések
 

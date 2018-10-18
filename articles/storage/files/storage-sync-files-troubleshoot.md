@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 09/06/2018
 ms.author: jeffpatt
 ms.component: files
-ms.openlocfilehash: b53be5a5683ca8fcc8760a2d4cb7e766904a44a3
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.openlocfilehash: d240bafa543633999a74ef66efcfd7130a4a7b7a
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49167664"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49389275"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Azure-fájlok szinkronizálásának hibaelhárítása
 Az Azure File Sync használatával fájlmegosztásainak a szervezet az Azure Files között, miközben gondoskodik a rugalmasságát, teljesítményét és kompatibilitását a helyszíni fájlkiszolgálók. Az Azure File Sync Windows Server az Azure-fájlmegosztás gyors gyorsítótáraivá alakítja át. Helyileg, az adatok eléréséhez a Windows Serveren elérhető bármely protokollt használhatja, beleértve az SMB, NFS és FTPS. Tetszőleges számú gyorsítótárak világszerte igény szerint is rendelkezhet.
@@ -133,8 +133,8 @@ A probléma megoldásához hajtsa végre az alábbi lépéseket:
 
 1. A kiszolgálón nyissa meg a Feladatkezelőt, és ellenőrizze, hogy fut-e a Storage Sync figyelő (AzureStorageSyncMonitor.exe) folyamat. A folyamat nem fut, ha először próbálja meg újraindítani a kiszolgálót. Ha a kiszolgáló újraindítása nem oldja meg a probléma, frissítse az Azure File Sync ügynök verzióra [3.3.0.0]( https://support.microsoft.com/help/4457484/update-rollup-for-azure-file-sync-agent-september-2018) Ha jelenleg nem telepített.
 2. Ellenőrizze a tűzfalakról és Proxykról beállításai megfelelően vannak konfigurálva:
-    - Ha a kiszolgáló egy tűzfal mögött található, ellenőrizze a 443-as kimenő porton engedélyezve van. Ha a tűzfal adott tartományokra korlátozza a forgalmat, erősítse meg a tartományokat, a tűzfal szereplő [dokumentáció](https://docs.microsoft.com/en-us/azure/storage/files/storage-sync-files-firewall-and-proxy#firewall) érhetők el.
-    - Ha a kiszolgáló proxy mögött található, a gépre kiterjedő vagy alkalmazásspecifikus Proxybeállítások konfigurálása a proxy szakasz lépéseit követve [dokumentáció](https://docs.microsoft.com/en-us/azure/storage/files/storage-sync-files-firewall-and-proxy#proxy).
+    - Ha a kiszolgáló egy tűzfal mögött található, ellenőrizze a 443-as kimenő porton engedélyezve van. Ha a tűzfal adott tartományokra korlátozza a forgalmat, erősítse meg a tartományokat, a tűzfal szereplő [dokumentáció](https://docs.microsoft.com/azure/storage/files/storage-sync-files-firewall-and-proxy#firewall) érhetők el.
+    - Ha a kiszolgáló proxy mögött található, a gépre kiterjedő vagy alkalmazásspecifikus Proxybeállítások konfigurálása a proxy szakasz lépéseit követve [dokumentáció](https://docs.microsoft.com/azure/storage/files/storage-sync-files-firewall-and-proxy#proxy).
 
 <a id="endpoint-noactivity-sync"></a>**Kiszolgálói végpont rendelkezik egy "Nincs tevékenység" állapotát, és a regisztrált kiszolgálók panelen a kiszolgáló állapota "Online"**  
 
@@ -343,7 +343,7 @@ Ez a hiba akkor fordul elő, amikor egy probléma az Azure File Sync által hasz
 | **Hibakarakterlánc** | ECS_E_AGENT_VERSION_BLOCKED |
 | **Szervizelés szükséges** | Igen |
 
-Ez a hiba akkor fordul elő, ha az Azure File Sync ügynök verziója telepítve van a kiszolgálón nem támogatott. Ez a probléma megoldásához [frissítése]( https://docs.microsoft.com/en-us/azure/storage/files/storage-files-release-notes#upgrade-paths) , egy [ügynök verziója támogatott]( https://docs.microsoft.com/en-us/azure/storage/files/storage-files-release-notes#supported-versions).
+Ez a hiba akkor fordul elő, ha az Azure File Sync ügynök verziója telepítve van a kiszolgálón nem támogatott. Ez a probléma megoldásához [frissítése]( https://docs.microsoft.com/azure/storage/files/storage-files-release-notes#upgrade-paths) , egy [ügynök verziója támogatott]( https://docs.microsoft.com/azure/storage/files/storage-files-release-notes#supported-versions).
 
 <a id="-2134351810"></a>**A megosztás Azure fájltárolási korlátot elérte.**  
 | | |

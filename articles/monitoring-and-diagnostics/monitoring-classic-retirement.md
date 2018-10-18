@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/04/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: 93bd04ce654b8403ab3cd69ecd6837b97063e5e8
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.openlocfilehash: ebbb231e7d9eefa8eb681b0e14c711e2c4f1fad7
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/17/2018
-ms.locfileid: "49363946"
+ms.locfileid: "49386519"
 ---
 # <a name="unified-alerting--monitoring-in-azure-monitor-replaces-classic-alerting--monitoring"></a>Egyesített riasztások és -monitorozás az Azure monitorban váltja fel a klasszikus riasztások és -monitorozás
 
@@ -49,8 +49,8 @@ Az új egységesített figyelés és riasztások kezelése az Application Insigh
 A korábban leírtaknak, monitorozási és riasztási jelenleg használható a platform a klasszikus a [riasztások (klasszikus) szakasz](monitoring-overview-alerts-classic.md) az Azure portal kivezetjük a hónap adott érkező azok felváltották a újabb rendszerre.
 Monitorozási és riasztási régebbi klasszikus kivonjuk a forgalomból. június 30 verzióját 2019; beleértve a kapcsolódó API-k, az Azure portál felület és a szolgáltatások megszüntetés. Pontosabban ezek a funkciók megszűnnek:
 
-- Régebbi (klasszikus) metrikákkal és riasztásokkal, jelenleg Azure-erőforrások rendelkezésre állása [riasztások (klasszikus) szakasz](monitoring-overview-alerts-classic.md) az Azure portal; érhető el [microsoft.insights/alertrules](https://docs.microsoft.com/en-us/rest/api/monitor/alertrules) erőforrás
-- Régebbi (klasszikus) platform, és egyéni metrikákat az Application Insights, valamint azokat jelenleg elérhető a riasztási [riasztások (klasszikus) szakasz](monitoring-overview-alerts-classic.md) az Azure Portalon, és elérhetőnek [microsoft.insights/ alertrules](https://docs.microsoft.com/en-us/rest/api/monitor/alertrules) erőforrás
+- Régebbi (klasszikus) metrikákkal és riasztásokkal, jelenleg Azure-erőforrások rendelkezésre állása [riasztások (klasszikus) szakasz](monitoring-overview-alerts-classic.md) az Azure portal; érhető el [microsoft.insights/alertrules](https://docs.microsoft.com/rest/api/monitor/alertrules) erőforrás
+- Régebbi (klasszikus) platform, és egyéni metrikákat az Application Insights, valamint azokat jelenleg elérhető a riasztási [riasztások (klasszikus) szakasz](monitoring-overview-alerts-classic.md) az Azure Portalon, és elérhetőnek [microsoft.insights/ alertrules](https://docs.microsoft.com/rest/api/monitor/alertrules) erőforrás
 - Régebbi (klasszikus) rendellenes hibák riasztás jelenleg elérhető [belül az Application Insights intelligens detektálás](../application-insights/app-insights-proactive-diagnostics.md) ; riasztás konfigurálva az Azure Portalon látható [riasztások (klasszikus) szakasz](monitoring-overview-alerts-classic.md) Azure portál
 
 Az összes klasszikus monitorozási és riasztási rendszer, köztük a megfelelő [API](https://msdn.microsoft.com/library/azure/dn931945.aspx), [PowerShell](insights-alerts-powershell.md), [CLI](insights-alerts-command-line-interface.md), [Azure portal oldalán, és [Resource-sablon](monitoring-enable-alerts-using-template.md) június a 2019-ig használható marad. Ezt a dátumot követően klasszikus figyelés és riasztások szolgáltatás hamarosan megszűnő már nem elérhető; használatra amíg bármilyen a riasztási szabályok, amelyek továbbra is létezik a riasztások (klasszikus) túli június 2019 hajtható végre, de nem áll rendelkezésre, a módosítás továbbra is.

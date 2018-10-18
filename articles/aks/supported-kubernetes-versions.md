@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 09/21/2018
 ms.author: saudas
-ms.openlocfilehash: 6b55825107ae8872b146b3ad4fde0ef4b917b71d
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: d8da717b83b43395309c695a4f9edaeda8144a8b
+ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47047575"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49379195"
 ---
 # <a name="supported-kubernetes-versions-in-azure-kubernetes-service-aks"></a>Támogatott az Azure Kubernetes Service (AKS) Kubernetes-verzió
 
@@ -32,6 +32,29 @@ Például, ha az AKS vezet be *1.11.x* még ma, támogatást is biztosítunk *1.
 Amikor egy új alverzió bemutatott, a legrégebbi kisebb verziója és a javítás kiadások támogatott kivezettük. az új alverzió és a következő használatból való kivonást egyaránt kiadása előtt 15 napon keresztül bejelentés az Azure frissítési csatornákon keresztül történik. Ha a fenti példában *1.11.x* van nyilvánosan, a kivont verziók a következők *1.7.g* + *1.7.h*.
 
 Amikor telepít egy AKS-fürtöt a portálon vagy az Azure CLI-vel, a fürt értéke mindig a n-1 alverzió és a legújabb javítást. Például, ha támogatja az AKS *1.11.x*, *1.10.a* + *1.10.b*, *1.9.c* + *1.9 d* , *1.8.e* + *1.8F*, az alapértelmezett verzió új fürtök *1.10.b*.
+
+## <a name="list-currently-supported-versions"></a>Jelenleg a támogatott verziók listája
+
+Ismerje meg, hogy mely verziói érhetők el jelenleg az előfizetés és a régiót, használja a [az aks get-verziók] [ az-aks-get-versions] parancsot. Az alábbi példa felsorolja az elérhető Kubernetes-verzió esetében a *EastUS* régió:
+
+```azurecli-interactive
+az aks get-versions --location eastus --output table
+```
+
+A kimenet hasonlít a következő példának, amely bemutatja, hogy a Kubernetes-verziót *1.11.3* a legfrissebb verzió érhető el:
+
+```
+KubernetesVersion    Upgrades
+-------------------  ----------------------
+1.11.3               None available
+1.11.2               1.11.3
+1.10.8               1.11.2, 1.11.3
+1.10.7               1.10.8, 1.11.2, 1.11.3
+1.9.10               1.10.7, 1.10.8
+1.9.9                1.9.10, 1.10.7, 1.10.8
+1.8.15               1.9.9, 1.9.10
+1.8.14               1.8.15, 1.9.9, 1.9.10
+```
 
 ## <a name="faq"></a>GYIK
 
@@ -65,3 +88,4 @@ A fürt frissítésével kapcsolatos információkért lásd: [Azure Kubernetes 
 
 <!-- LINKS - Internal -->
 [aks-upgrade]: upgrade-cluster.md
+[az-aks-get-versions]: /cli/azure/aks#az-aks-get-versions

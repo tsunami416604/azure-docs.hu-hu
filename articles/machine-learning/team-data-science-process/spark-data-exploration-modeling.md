@@ -1,10 +1,10 @@
 ---
-title: Az adatok feltárása és Spark modellezés |} Microsoft Docs
-description: Az feltárására és modellezési képességek az Azure-on a Spark MLlib eszközkészlet bővíthető.
+title: Adatáttekintés és modellezés a Spark segítségével |} A Microsoft Docs
+description: Bemutatja az adatok feltárására és modellezés képességeit a Spark MLlib eszközkészlet az Azure-ban.
 services: machine-learning
 documentationcenter: ''
 author: deguhath
-manager: jhubbard
+manager: cgronlun
 editor: cgronlun
 ms.assetid: b989b918-5ba5-4696-b8d0-76ae510a23f4
 ms.service: machine-learning
@@ -15,60 +15,60 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/15/2017
 ms.author: deguhath
-ms.openlocfilehash: 244175be3c520e24f114675d19bcac8564ce2c8e
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: e6115abbb2cd122dfd35710b5232a308b48dfd71
+ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34838915"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49394923"
 ---
 # <a name="data-exploration-and-modeling-with-spark"></a>Adatáttekintés és modellezés a Spark segítségével
 [!INCLUDE [machine-learning-spark-modeling](../../../includes/machine-learning-spark-modeling.md)]
 
-Ez az útmutató az adatok feltárása ehhez használja a HDInsight Spark és bináris osztályozás és feladatok modellezési a következőt: a minta regressziós út taxiköltség és 2013 dataset díjszabás.  Az végigvezeti a lépéseken, a [adatok tudományos folyamat](http://aka.ms/datascienceprocess), végpontok közötti, egy HDInsight Spark-fürt kezelése és az Azure BLOB használatával tárolja az adatokat, majd a modellt. A folyamat felderíti és az Azure Storage-Blobból adatok visualizes, és ezután előkészíti az adatokat a prediktív modellek létrehozásához. Ezek a modellek buildre, a Spark MLlib eszközkészlet bináris osztályozás és regressziós modellezéshez hatékony feladatok elvégzésére.
+Ez az útmutató a HDInsight Spark használja az adatok feltárása ehhez és bináris besorolási és regressziós tevékenységek modellezése a NYC mintában taxiköltség utazást és 2013 adatkészlet díjszabás.  Emellett végigvezeti a lépéseken, a [adatelemzési folyamat](http://aka.ms/datascienceprocess), a végpontok közötti, feldolgozási és az Azure-blobok esetében a HDInsight Spark-fürt használata az adatok és a modellek. A folyamatot ismerteti, és egy Azure Storage-blobból adatok elérhetővé, és ezután előkészíti az adatokat, prediktív modelleket hozhat létre. Ezek a modellek olyan bináris besorolási és regressziós modellezéshez feladatokat végezheti el a Spark MLlib eszközkészlet használatával hozhat létre.
 
-* A **bináris osztályozási** feladat-e a út tipp fizetett előrejelzése céljából. 
-* A **regressziós** feladata más tip szolgáltatások alapján tipp mennyisége előre jelezni. 
+* A **bináris osztályozási** tevékenység-e az utazás tipp fizetős előrejelzésére. 
+* A **regressziós** feladata előre jelezni a funkciókat a tip alapján tipp mennyisége. 
 
-A modellek használjuk logisztikai és lineáris regressziós, véletlenszerű erdők és átmenetes súlyozott fák tartalmazza:
+A modellek használjuk a logisztikai és lineáris regresszió, véletlenszerű erdők és gyorsított fa átmenetes tartalmazza:
 
-* [A SGD lineáris regressziós](https://spark.apache.org/docs/latest/api/python/pyspark.mllib.html#pyspark.mllib.regression.LinearRegressionWithSGD) egy lineáris regressziós modellt, amely Stochastic átmenetes módszeren (SGD) módszerrel és optimalizálási, valamint a szolgáltatás skálázás tipp összegek előre fizetett. 
-* [A LBFGS logisztikai regresszió](https://spark.apache.org/docs/latest/api/python/pyspark.mllib.html#pyspark.mllib.classification.LogisticRegressionWithLBFGS) vagy a "logit" regresszió egy regressziós modell kategorikus adatok besorolása ehhez a függő változó esetén használható. LBFGS egy látszólagos Newton optimalizálási algoritmus, amely megközelíti a Broyden – Fletcher – Goldfarb – Shanno (BFGS) algoritmus csak korlátozott mennyiségű memóriát használ, és a gépi tanulás széles körben használt.
-* [Véletlenszerű erdők](http://spark.apache.org/docs/latest/mllib-ensembles.html#Random-Forests) döntési fák együttes vannak.  Összekapcsolásának sok döntési fa overfitting kockázatának csökkentéséhez. Véletlenszerű erdők regressziós és besorolási használ, és kezelni tud a kategorikus szolgáltatásokat, és annak a multiclass adatbesorolás beállításai. Azok szolgáltatás skálázás nem igényelnek, és képesek nemlinearitás rögzítése és kapcsolati funkció. Véletlenszerű erdők a legtöbb sikeres gépi tanulási modellek besorolás és regressziós egyikét.
-* [Színátmenet súlyozott fák](http://spark.apache.org/docs/latest/ml-classification-regression.html#gradient-boosted-trees-gbts) (GBTs) együttes döntési fák. GBTs ismételt adatvesztés függvény minimalizálása érdekében a döntési fák betanítása. GBTs regressziós és besorolási használ és kezelni tud a kategorikus szolgáltatásokat, nincs szükség a méretezés szolgáltatás és képesek nemlinearitás rögzítése és kapcsolati funkció. Is is szerepel a multiclass-adatbesorolás beállításai.
+* [A SGD lineáris regressziós](https://spark.apache.org/docs/latest/api/python/pyspark.mllib.html#pyspark.mllib.regression.LinearRegressionWithSGD) egy lineáris regressziós modellt, amely egy Sztochasztikus átmenetes Grádiens (SGD) módszert használja, és optimalizálása és a szolgáltatás méretezési lehetőségek érhetők el a tip mennyiségeket előrejelzése kifizetett. 
+* [A LBFGS logisztikai regressziós](https://spark.apache.org/docs/latest/api/python/pyspark.mllib.html#pyspark.mllib.classification.LogisticRegressionWithLBFGS) , vagy "logit" regressziós, egy regressziós modellt, amely a kategorikus adatok besorolása ehhez a függő változó esetén használható. LBFGS egy kvázi Newton algoritmus, amely megközelíti a Broyden – Fletcher – Goldfarb – Shanno (BFGS) algoritmus használatával korlátozott mennyiségű memóriát és széles körben használt a machine Learning szolgáltatásban.
+* [Véletlenszerű erdők](http://spark.apache.org/docs/latest/mllib-ensembles.html#Random-Forests) együttesek döntési fák vannak.  Overfitting kockázatának csökkentése érdekében számos döntési fák kombinálhatja azokat. Véletlenszerű erdők regressziós és besorolási használ, és kezelhetik a kategorikus funkciók és többosztályos osztályozási beállítás is kiterjeszthető. Ezek nem igénylik a szolgáltatás méretezése, és képesek nemlinearitás rögzítése és a szolgáltatás kapcsolati. Véletlenszerű erdők a legsikeresebb gépi tanulási besorolási és regressziós modellek tartoznak.
+* [Színátmenet súlyozott fák](http://spark.apache.org/docs/latest/ml-classification-regression.html#gradient-boosted-trees-gbts) (GBTs) együttesek döntési fák. GBTs iteratív, hogy minimalizálják az adatvesztést függvény döntési fák betanítása. GBTs regressziós és besorolási használ és kezelhetik a kategorikus funkciókat, nincs szükség a szolgáltatás méretezése, és képesek nemlinearitás rögzítése és a szolgáltatás kapcsolati. Ezek is használható osztályú-besorolás beállításban.
 
-A modellezési lépések a kód bemutatja, hogyan képzése, értékelje ki és mentse a modell típusonkénti is tartalmaznak. A megoldás code, és a megfelelő előkészítésére megjelenítése Python használatban van.   
+A modellezés lépéseket is bemutató betanításához, kiértékelheti és mentse a modell különböző típusú kódot tartalmaznak. Python-kód a megoldás és a megfelelő grafikon megjelenítése használatban van.   
 
 > [!NOTE]
-> Bár a Spark MLlib eszközkészlet célja, hogy működik a nagy adatkészleteket, viszonylag kis minta (KB. 30 Mb használatával 170K sorok, az eredeti NYC adatkészlet hamarosan 0,1 %) használható itt kényelmét szolgálja. Az itt megadott gyakorlat 2 munkavégző csomópontokhoz a HDInsight-fürtök a hatékony (KB) a fut. Ugyanazt a kódot, kisebb módosításokkal nagyobb-adatmennyiség megfelelő módosításával az adatokat a memóriában, és a fürt méretének módosítása feldolgozásához használható.
+> A Spark MLlib eszközkészlet tervezték Nagy adatkészleteken, bár egy viszonylag kis minta (KB. 30 Mb 170K sorok, körülbelül 0,1 %-át az eredeti NYC adatkészlet használatával) használatos itt kényelmi célokat szolgál. Az itt megadott gyakorlat futtat hatékonyan (körülbelül 10 percet) a 2 feldolgozó csomópontot egy HDInsight-fürtöt. Ugyanazt a kódot, kisebb módosításokkal segítségével adathalmazokba nagyobb –, a megfelelő módosításokat az adatokat a memóriában, és a fürt méretének módosítása.
 > 
 > 
 
 ## <a name="prerequisites"></a>Előfeltételek
-Az Azure-fiók és a Spark 1.6-os (vagy külső 2.0) HDInsight-fürt forgatókönyv végrehajtásához. Tekintse meg a [áttekintése adatok tudományos Spark on Azure HDInsight használatának](spark-overview.md) útmutatást ezeknek a követelményeknek. Témakör az itt használt NYC 2013 Taxi adatokat és a kód végrehajtása a Spark-fürt Jupyter notebook útmutatást leírását is tartalmazza. 
+Az Azure-fiók és a egy Spark 1.6-os (vagy a Spark 2.0-s) van szüksége a forgatókönyv végrehajtásához HDInsight-fürtön. Tekintse meg a [áttekintése az adatelemzés az Azure HDInsight Spark használatával](spark-overview.md) ezeknek a követelményeknek való létrehozásával kapcsolatos útmutatást. A témakör leírását a NYC 2013-i taxik adatait itt használt, és hajtsa végre a Spark-fürtön lévő Jupyter notebook kód útmutatást is tartalmaz. 
 
-## <a name="spark-clusters-and-notebooks"></a>A Spark-fürtök és notebookok
-Beállítási lépéseket és kód okat ebben a forgatókönyvben egy HDInsight Spark 1.6 használatával. De Jupyter notebookok HDInsight Spark 1.6-os és a Spark 2.0 fürtök rendelkeznek. A jegyzetfüzetek és a hozzájuk hivatkozások leírása szerepelnek a [Readme.md](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Readme.md) az azokat tartalmazó GitHub-tárházban. Ezenkívül a kód itt és a csatolt jegyzetfüzetekben általános és a Spark-fürt kell működnie. Ha nem használja a HDInsight Spark, a fürt beállítása, és lehet, hogy a felügyeleti lépések némileg eltér az itt látható. Kényelmi célokat szolgál az alábbiakban a hivatkozásokat a Jupyter notebookok Spark 1.6 (futtatásához a pySpark kernel a Jupyter Notebook kiszolgáló) és a Spark 2.0-s verzióját (a pySpark3 kernel a Jupyter Notebook kiszolgáló kell futtatni):
+## <a name="spark-clusters-and-notebooks"></a>A Spark-fürtök és jegyzetfüzetek
+Beállítási lépéseket és a kód-okat Ez az útmutató egy HDInsight Spark 1.6-os használatával. De Jupyter notebookok a HDInsight Spark 1.6-os és a Spark 2.0 fürtök biztosított. A jegyzetfüzetek és a rájuk mutató hivatkozást leírása tartalmazza a [Readme.md](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Readme.md) az azokat tartalmazó GitHub-adattárban. Továbbá, a kód itt és a társított notebookok az általános és működnie kell bármelyik Spark-fürtön. Ha nem használja a HDInsight Spark, a fürt beállítása és lehet, hogy a felügyeleti lépések kissé eltérhetnek az itt látható. Az egyszerűség kedvéért az alábbiakban a Spark 1.6-os (a futtatható a pySpark kernel a Jupyter Notebook Server) és a Spark 2.0-s verzióját (kell futtatni a pySpark3 kernel a Jupyter Notebook Server) a Jupyter notebookok mutató hivatkozásokat:
 
-### <a name="spark-16-notebooks"></a>Spark 1.6-os notebookok
+### <a name="spark-16-notebooks"></a>A Spark 1.6-os notebookok
 
-[pySpark-machine-learning-data-science-spark-data-exploration-modeling.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark1.6/pySpark-machine-learning-data-science-spark-data-exploration-modeling.ipynb): információt biztosít az adatok feltárása, modellezéséhez, és számos különböző algoritmusok pontozási végrehajtásához.
+[pySpark-machine-learning-data-science-spark-data-exploration-modeling.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark1.6/pySpark-machine-learning-data-science-spark-data-exploration-modeling.ipynb): információt nyújt az adatfeltárás, modellezés és kiértékelés a számos különböző algoritmus végrehajtásához.
 
-### <a name="spark-20-notebooks"></a>Spark 2.0 notebookok
-A regresszió és besorolási feladatokat, amelyeket a rendszer egy külső 2.0 fürt használatával külön jegyzetfüzetek és a besorolási notebook használja egy másik adatkészletet:
+### <a name="spark-20-notebooks"></a>A Spark 2.0 notebookok
+A Spark 2.0-fürt segítségével megvalósított regressziós és besorolási feladatokat külön jegyzetfüzetek és a besorolási notebookot használja egy másik adatkészletet:
 
-- [Spark2.0-pySpark3-Machine-Learning-Data-Science-Spark-Advanced-Data-exploration-Modeling.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb): Ez a fájl hogyan hajthat végre az adatok feltárása, modellezési, és a NYC Taxi út használata Spark 2.0 pontozási fürtök és jegy ára-adatkészlet leírt [Itt](https://docs.microsoft.com/azure/machine-learning/machine-learning-data-science-spark-overview#the-nyc-2013-taxi-data). A notebook gyorsan felfedezése a Spark 2.0 adtunk kódot az jó kiindulási pont lehet. További részletes notebook elemzi az NYC Taxi adatokat, lásd: a következő notebook ezen a listán. Tekintse meg a megjegyzéseket, a lista a következő, hasonlítsa össze ezeket a jegyzetfüzetek. 
-- [Spark2.0-pySpark3_NYC_Taxi_Tip_Regression.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0_pySpark3_NYC_Taxi_Tip_Regression.ipynb): Ez a fájl bemutatja, hogyan végezhet wrangling (Spark SQL és dataframe műveletek), feltárása, modellezéséhez és a NYC Taxi út és a jegy ára adatkészlet leírt pontozási [Itt ](https://docs.microsoft.com/azure/machine-learning/machine-learning-data-science-spark-overview#the-nyc-2013-taxi-data).
-- [Spark2.0-pySpark3_Airline_Departure_Delay_Classification.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0_pySpark3_Airline_Departure_Delay_Classification.ipynb): Ez a fájl bemutatja, hogyan végezhet wrangling (Spark SQL és dataframe műveletek), feltárása, modellezéséhez és pontozási a jól ismert légitársaság időben indító használatával a DataSet 2012 és a 2011. Azt integrálva az adatokkal repülőtéri időjárási (pl. szélsebesség, hőmérséklet, magasság stb.) a légitársaság dataset előtt modellezési, így időjárási felhasználásokhoz felvehetők a modell.
+- [Spark2.0-pySpark3-Machine-Learning-Data-Science-Spark-Advanced-Data-exploration-Modeling.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb): Ez a fájl információt nyújt az adatfeltárás, modellezés, végrehajtására és pontozás a Spark 2.0-fürtök használatával a NYC Taxi út és diszkont-adatkészlet leírt [Itt](https://docs.microsoft.com/azure/machine-learning/machine-learning-data-science-spark-overview#the-nyc-2013-taxi-data). Ez a jegyzetfüzet gyorsan megismerheti a kódot, a Spark 2.0 biztosítunk jó kiindulási pont lehet. Részletesebb jegyzetfüzet a NYC i taxik adatait elemzi, lásd a következő notebook ebben a listában. Lásd az alábbi listát, hasonlítsa össze ezeket a notebookokat. 
+- [Spark2.0-pySpark3_NYC_Taxi_Tip_Regression.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0_pySpark3_NYC_Taxi_Tip_Regression.ipynb): Ez a fájl bemutatja, hogyan hajtsa végre az adatok konvertálását (Spark SQL- és dataframe műveletek), feltárásában, modellezés és a NYC Taxi utazást és a leírt diszkont adatkészlet pontozás [Itt ](https://docs.microsoft.com/azure/machine-learning/machine-learning-data-science-spark-overview#the-nyc-2013-taxi-data).
+- [Spark2.0-pySpark3_Airline_Departure_Delay_Classification.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0_pySpark3_Airline_Departure_Delay_Classification.ipynb): Ez a fájl bemutatja, hogyan hajtsa végre az adatok konvertálását (Spark SQL- és dataframe műveletek), feltárásában, modellezés és pontozás a jól ismert légitársaság időben indító használatával a 2011 és 2012 adatkészlet. Integráltuk az repülőtér időjárási adatok (például szélsebesség, hőmérséklet, tengerszint stb.) a légitársaság adatkészlet előtt modellezés, ezért ezek időjárási szolgáltatások is tartalmazza, a modellben.
 
 <!-- -->
 
 > [!NOTE]
-> A légitársaság dataset lett hozzáadva, a Spark 2.0 jegyzetfüzeteihez jobban a besorolási algoritmusok használatát mutatja be. Tekintse meg a következőket légitársaság kapcsolatos információk időben indító dataset és időjárási adatkészlet:
+> A légitársaság adatkészlet hozzá lett adva a Spark 2.0 notebookok jobban a besorolási algoritmusok használatát mutatja be. Lásd az alábbi hivatkozásokat légitársaság kapcsolatos információk időben indító adatkészletet és időjárási adatkészletet:
 
->- Légitársaság időben indító adatokat: [http://www.transtats.bts.gov/ONTIME/](http://www.transtats.bts.gov/ONTIME/)
+>- Légitársaság időben indító adatok: [http://www.transtats.bts.gov/ONTIME/](http://www.transtats.bts.gov/ONTIME/)
 
->- Repülőtéri időjárási adatokat: [https://www.ncdc.noaa.gov/](https://www.ncdc.noaa.gov/) 
+>- Időjárási adatok repülőtér: [https://www.ncdc.noaa.gov/](https://www.ncdc.noaa.gov/) 
 > 
 > 
 
@@ -77,7 +77,7 @@ A regresszió és besorolási feladatokat, amelyeket a rendszer egy külső 2.0 
 <!-- -->
 
 > [!NOTE]
-A Spark 2.0 jegyzetfüzeteket az NYC taxi és légitársaság repülési késleltetés-készleteket is igénybe vehet, 10 perc vagy több (attól függően, hogy a HDI-fürtnek a mérete). A fenti listában első notebook mutatja az adatok feltárása sok területén, a képi megjelenítés és ML minta egy jegyzetfüzetet le mintát NYC adatkészlet, amelyben a taxi és jegy ára fájlok voltak előre illesztett futtatásához kevesebb időt vesz igénybe, a képzési: [Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb) jegyzetfüzet (2-3 perc) befejezéséhez sokkal rövidebb ideig tart, és előfordulhat, hogy lehet Jó kiindulópont gyorsan felfedezése a Spark 2.0 adtunk kódot. 
+A Spark 2.0 notebookok a NYC taxi és légitársaság repülési késleltetés-adatkészleteken alapuló is igénybe vehet, 10 perc vagy több (függően a HDI-fürt mérete). A fenti listában az első jegyzetfüzet mutatja az adatfeltárás számos aspektusát, megjelenítési és gépi Tanulási modell egy jegyzetfüzetet, futtathat le mintavételezés NYC adatkészlet, amelyben a taxi és diszkont fájlok már előre illesztett kevesebb időt vesz igénybe a képzés: [ Spark2.0-pySpark3-Machine-Learning-Data-Science-Spark-Advanced-Data-exploration-Modeling.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb) Ez a jegyzetfüzet (2-3 perc) befejezéséhez sokkal rövidebb ideig tart, és előfordulhat, hogy lehet egy jó kiindulási pontjaként gyorsan megismerheti a kód adtunk meg a Spark 2.0-s. 
 
 <!-- -->
 
@@ -86,17 +86,17 @@ A Spark 2.0 jegyzetfüzeteket az NYC taxi és légitársaság repülési késlel
 <!-- -->
 
 > [!NOTE]
-Az alábbi leírásokat Spark 1.6 használatához kapcsolódó. Spark 2.0-s verziói a notebookok ismertetett és a fentebbiekben hivatkozott használjon. 
+A lenti leírások Spark 1.6-os használatához kapcsolódó. A Spark 2.0-s verziójához használja a notebookok ismertetett és a fentebbiekben hivatkozott. 
 
 <!-- -->
 
-## <a name="setup-storage-locations-libraries-and-the-preset-spark-context"></a>Telepítő: tárolóhelyek, könyvtárak, és az előre definiált Spark környezet
-Spark el tudja olvasni és írni az Azure Storage-blobba (más néven WASB). A meglévő adatok tárolása nem tudja feldolgozni használata Spark- és az eredmények WASB újra tárolja.
+## <a name="setup-storage-locations-libraries-and-the-preset-spark-context"></a>A telepítő: tárolási helyek, kódtárak és az előre beállított Spark-környezetben
+A Spark is képes olvasni és írni az Azure Storage-Blob (más néven WASB). A meglévő adatokat tárolja, Nincs feldolgozható használata Spark- és WASB újra tárolja az eredményeket.
 
-A WASB modellek vagy a fájlok mentéséhez az elérési utat kell megadni megfelelően. Az alapértelmezett tároló, a Spark-fürt csatolva egy elérési utat kezdetű használatával lehet hivatkozni: "wasb: / / /". Más helyeken által hivatkozott "wasb: / /".
+Szeretné menteni a modellek vagy fájlokat a WASB, az elérési utat meg kell határozni megfelelően. Az alapértelmezett tároló csatlakozik a Spark-fürtöt egy elérési út kezdetű használatával lehet hivatkozni: "wasb: / / /". Más helyeken által hivatkozott "wasb: / /".
 
-### <a name="set-directory-paths-for-storage-locations-in-wasb"></a>Tárolási helye a WASB set könyvtár elérési útja
-A következő példakód határozza meg a helyét, olvassa el az adatokat, valamint a, amelyhez a modell mentésekor modell tároló könyvtár elérési útja:
+### <a name="set-directory-paths-for-storage-locations-in-wasb"></a>Állítsa be a tárolási helyek elérési utak a WASB
+Az alábbi kódmintában kell olvasni az adatokat, és a könyvtár elérési útját modell tárolási, amelyhez a modell kimeneti mentett helyét adja meg:
 
     # SET PATHS TO FILE LOCATIONS: DATA AND MODEL STORAGE
 
@@ -109,7 +109,7 @@ A következő példakód határozza meg a helyét, olvassa el az adatokat, valam
 
 
 ### <a name="import-libraries"></a>Könyvtárak importálása
-Beállítása is szükséges a szükséges kódtárak importálása. Spark környezet beállítása, majd importálja a szükséges kódtárak az alábbi kódra:
+Állítsa be a is szükséges a szükséges kódtárak importálása. Állítsa be a spark környezet, és importálja a szükséges kódtárak a következő kóddal:
 
     # IMPORT LIBRARIES
     import pyspark
@@ -127,29 +127,29 @@ Beállítása is szükséges a szükséges kódtárak importálása. Spark körn
     import datetime
 
 
-### <a name="preset-spark-context-and-pyspark-magics"></a>Spark és az PySpark magics az adott néven beállítás
-A Jupyter notebookok kapnak PySpark kernelt beállításkészletet kontextusban rendelkezik. Így nem kell beállítani a Spark, vagy Hive-környezeteket elindítása az alkalmazás használata előtt explicit módon fejleszt. Ezek a környezetek érhetők el, alapértelmezés szerint. Ezek a környezetek a következők:
+### <a name="preset-spark-context-and-pyspark-magics"></a>Előre beállított Spark-környezet és a PySpark magics
+A PySpark-kernelek Jupyter notebookok a kell egy előre beállított környezetet. Így nem kell beállítani a Spark vagy a Hive-környezetek az alkalmazás használatának megkezdése előtt explicit módon fejleszti. Ezek a környezetek érhetők el alapértelmezés szerint. Ezek a környezetek a következők:
 
-* sc - a Spark 
-* az sqlContext - struktúra
+* sc - és Spark 
+* kontext sqlContext – Hive
 
-A PySpark kernel tartalmaz néhány előre definiált "magics", amelyeket speciális meghívhatja a parancsok %%. Nincsenek két ilyen parancsot a következő kód mintákat használt.
+A PySpark kernel tartalmaz néhány előre meghatározott "magics", amelyek különleges parancsok, amelyek segítségével meghívhatja a %%. Nincsenek két ilyen parancsot a kód a példákon használt.
 
-* **%% helyi** határozza meg, amely a kódot az egymás utáni sorok helyileg hajthatnak végre. Kód érvényes Python-kódot kell lennie.
-* **%% sql -o <variable name>**  végrehajtja a Hive-lekérdezések a sqlContext ellen. Ha az -o paramétert, a lekérdezés eredménye megőrződjön-e az a %%, egy Pandas DataFrame helyi Python-környezetben.
+* **%% helyi** határozza meg, amely a kódot a további sorokban helyileg kell végrehajtani. Kód érvényes a Python-kód kell lennie.
+* **%% sql -o <variable name>**  ellen a kontext sqlContext Hive-lekérdezést hajt végre. Az -o paramétert, ha a lekérdezés eredménye a rendszer megőrzi a %% Pandas DataFrame helyi Python-környezetben.
 
-További információ a Jupyter notebookokból és az előre meghatározott kernelek "magics", amely a biztosítanak, lásd: [HDInsight Spark Linux és a Jupyter notebookok elérhető kernelek a HDInsight-fürtök](../../hdinsight/spark/apache-spark-jupyter-notebook-kernels.md).
+További információk a-kernelek Jupyter-notebookok és az előre meghatározott "magics", amely számára biztosítanak, lásd: [notebookokhoz elérhető kernelek Jupyter notebookok a HDInsight Spark Linux-fürtök HDInsight az](../../hdinsight/spark/apache-spark-jupyter-notebook-kernels.md).
 
-## <a name="data-ingestion-from-public-blob"></a>A nyilvános blob adatfeldolgozást
-Az első lépés az adatok tudományos folyamatban elemzendő forrásokból származó adatok hol van az adatok feltárása és modellezési környezetbe helyezkedik el. A környezet Spark ebben a forgatókönyvben. Ez a szakasz a kód feladatok sorozatát befejezéséhez:
+## <a name="data-ingestion-from-public-blob"></a>Adatbetöltés nyilvános blobból
+Az adatelemzési folyamat első lépése a forrásból származó elemezni az adatokat, hogy hol van az adatok feltárására és modellezés környezetben található. A környezet ebben az útmutatóban a Spark. Ez a szakasz tartalmazza a kódot, és végezze el a tevékenységeket:
 
-* betöltési modellezni adatok minta
-* olvassa a bemeneti adatkészletet (.tsv fájlként tárolja)
-* formázza és az adatok törlése
-* Hozzon létre és objektumok (RDDs vagy adatkeretek) a memóriában gyorsítótárazása
-* regisztrálja az SQL-környezetben temp-táblázatként.
+* betöltési modellezni az adatokat minta
+* olvassa el a bemeneti adatkészlet (.tsv-fájlként tárolja)
+* az adatok formázása és
+* Hozzon létre és objektumok (rdd-k vagy adatkeretek) a memóriában gyorsítótárazza
+* regisztrálja az SQL-környezetben temp-táblaként.
 
-A kód adatfeldolgozást az itt látható.
+A kód Adatbetöltési itt látható.
 
     # INGEST DATA
 
@@ -213,18 +213,18 @@ A kód adatfeldolgozást az itt látható.
 
 Cella fent ideje: 51.72 másodperc
 
-## <a name="data-exploration--visualization"></a>Az adatok feltárása & képi megjelenítés
-Miután az adatok külső üzembe, az tudományos folyamat következő lépése hoz mélyrehatóbb ismereteket szerezhet az adatok feltárása és a képi megjelenítés keresztül. Ebben a részben azt vizsgálja meg az SQL-lekérdezések használatával taxi adatok és a cél változók és a visual hálózatfelügyeleti potenciális funkcióit megrajzolásához. Pontosabban azt megrajzolásához utas számát taxi való adatváltások számát, a gyakoriság tipp díjak és hogyan tippek változhat fizetési mennyiségét, és írja be a gyakoriságát.
+## <a name="data-exploration--visualization"></a>Az adatok feltárása és képi megjelenítés
+Miután az adatok Spark üzembe, az adatelemzési folyamat következő lépése az az adatokat adatáttekintési és vizualizációs mélyrehatóbb ismereteket szerezhet. Ebben a szakaszban azt az SQL-lekérdezések használatával taxi adatok vizsgálatát és jeleníti meg a cél változók és vizuális ellenőrzése az leendő szolgáltatásai. Pontosabban azt jeleníti meg az utasok számát taxi lelassítja tipp összegeket a gyakoriság és hogyan tippek régiónként eltérő fizetési összeg, és írja be a gyakorisága.
 
-### <a name="plot-a-histogram-of-passenger-count-frequencies-in-the-sample-of-taxi-trips"></a>A mintában taxi utak utas száma gyakoriságértékek listáját hisztogram ábrázolása
-A kód és a további részletek a minta és az adatok ábrázolására helyi magic lekérdezése SQL magic segítségével.
+### <a name="plot-a-histogram-of-passenger-count-frequencies-in-the-sample-of-taxi-trips"></a>Nyomtatandó hisztogram utas száma gyakoriságok taxi lelassítja-minta
+A kód és a következő kódrészletek használata SQL Magic Quadrant a minta és az adatok ábrázolásához helyi Magic Quadrant lekérdezéséhez.
 
-* **SQL magic (`%%sql`)** a HDInsight PySpark kernel a sqlContext könnyen beágyazott HiveQL lekérdezéseket támogatja. A (-o VARIABLE_NAME) argumentum az SQL-lekérdezés kimenetét a Jupyter kiszolgálón egy Pandas DataFrame, továbbra is fennáll. Ez azt jelenti, hogy a helyi módban érhető el.
-* A  **`%%local` magic** kód futtatása helyben a Jupyter kiszolgálón, amely a HDInsight-fürt headnode szolgál. Általában akkor használják `%%local` magic együtt a `%%sql` magic -o paraméterrel. Az -o paraméter szeretné megőrizni a helyileg az SQL-lekérdezés kimenete, majd %% helyi magic kiváltották futtatásához helyi SQL-lekérdezések eredményének helyileg fennállásának kódrészletet a következő készlete
+* **SQL Magic Quadrant (`%%sql`)** a HDInsight PySpark kernelt támogatja az egyszerű beágyazott HiveQL-lekérdezéseket futtassanak a kontext sqlContext. A (-o VARIABLE_NAME) argumentum az SQL-lekérdezés kimenetét a Jupyter kiszolgálón egy Pandas DataFrame, továbbra is fennáll. Ez azt jelenti, hogy a helyi módban érhető el.
+* A  **`%%local` Magic Quadrant** kód futtatása a Jupyter-kiszolgálón, amelyen a HDInsight-fürt átjárócsomópontjával helyben szolgál. Általában használni `%%local` magic együtt a `%%sql` magic -o paraméterrel. Az -o paraméter helyileg az SQL-lekérdezés kimenete szeretné megőrizni, majd %% helyi Magic Quadrant kódrészletet, amely a helyi rendszer megőrzi az SQL-lekérdezések kimenetének helyi futtatásához a következő készletét lép működésbe.
 
-A kimeneti automatikusan történik, a kód futtatása után.
+A kód futtatása után a rendszer automatikusan vizualizálja a kimenetet.
 
-Ez a lekérdezés lekéri a utazgatással utas száma szerint. 
+Ez a lekérdezés lekéri a lelassítja utas száma szerint. 
 
     # PLOT FREQUENCY OF PASSENGER COUNTS IN TAXI TRIPS
 
@@ -235,10 +235,10 @@ Ez a lekérdezés lekéri a utazgatással utas száma szerint.
     WHERE passenger_count > 0 and passenger_count < 7 
     GROUP BY passenger_count 
 
-Ez a kód létrehoz egy helyi adatok-keret a lekérdezés eredményében, és az adatok tevékenységtérkép. A `%%local` magic létrehoz egy helyi adatok-keret, `sqlResults`, a matplotlib ábrázolásához használható. 
+Ez a kód létrehoz egy helyi adatkeretbe a lekérdezés kimenetét, és jeleníti meg az adatokat. A `%%local` Magic Quadrant létrehoz egy helyi-adatkeretbe, `sqlResults`, amelyek használhatók a matplotlib ábrázolásához. 
 
 > [!NOTE]
-> A PySpark magic ebben a bemutatóban több alkalommal van használva. Nagy adatmennyiség esetén a kell minta lehet adatok-keret létrehozásához a helyi memóriához.
+> A PySpark Magic Quadrant Ez az útmutató több alkalommal van használva. Nagy adatmennyiség esetén meg kell minta hozzon létre egy adat-keretet, amelyek illeszkednek a helyi memóriához.
 > 
 > 
 
@@ -251,7 +251,7 @@ Ez a kód létrehoz egy helyi adatok-keret a lekérdezés eredményében, és az
     # CLICK ON THE TYPE OF PLOT TO BE GENERATED (E.G. LINE, AREA, BAR ETC.)
     sqlResults
 
-Útjaira által utas száma ábrázolásához kód
+A nyomtatandó utas száma szerint a lelassítja kódja
 
     # PLOT PASSENGER NUMBER VS. TRIP COUNTS
     %%local
@@ -268,12 +268,12 @@ Ez a kód létrehoz egy helyi adatok-keret a lekérdezés eredményében, és az
 
 **A KIMENETRE:**
 
-![Út gyakoriság utas száma szerint](./media/spark-data-exploration-modeling/trip-freqency-by-passenger-count.png)
+![Utazás gyakorisága utas száma szerint](./media/spark-data-exploration-modeling/trip-freqency-by-passenger-count.png)
 
-Között számos különböző típusú megjelenítések (táblázat, torta, vonal, terület vagy sáv) segítségével kiválaszthatja a **típus** a notebook menü gombjai. A sáv rajzot itt jelenik meg.
+Választhat a különböző típusú Vizualizációk (tábla, a kör, vonal, terület vagy sáv) közül a **típus** menü gombok a jegyzetfüzet. A sáv diagram itt jelenik meg.
 
-### <a name="plot-a-histogram-of-tip-amounts-and-how-tip-amount-varies-by-passenger-count-and-fare-amounts"></a>Tipp összegek és hogyan függ a tipp összeg utas számát és a jegy ára összegek hisztogram ábrázolásához.
-Mintaadatokat egy SQL-lekérdezést használja.
+### <a name="plot-a-histogram-of-tip-amounts-and-how-tip-amount-varies-by-passenger-count-and-fare-amounts"></a>Tipp összegek és hogyan tipp összeg eltérő utas száma és diszkont összegek hisztogram ábrázolásához.
+Használja a mintaadatok az SQL-lekérdezést.
 
     #PLOT HISTOGRAM OF TIP AMOUNTS AND VARIATION BY PASSENGER COUNT AND PAYMENT TYPE
 
@@ -290,7 +290,7 @@ Mintaadatokat egy SQL-lekérdezést használja.
     AND tip_amount < 25
 
 
-Ez a kód cella használja az SQL-lekérdezést három előkészítésére az adatokat.
+A kódcella az SQL-lekérdezést használ, az adatok három grafikon létrehozásához.
 
     # RUN THE CODE LOCALLY ON THE JUPYTER SERVER
     %%local
@@ -322,24 +322,24 @@ Ez a kód cella használja az SQL-lekérdezést három előkészítésére az ad
 
 **A KIMENETRE:** 
 
-![Tipp összeg terjesztési](./media/spark-data-exploration-modeling/tip-amount-distribution.png)
+![Összeg terjesztési tipp](./media/spark-data-exploration-modeling/tip-amount-distribution.png)
 
 ![Tipp összeg utas száma szerint](./media/spark-data-exploration-modeling/tip-amount-by-passenger-count.png)
 
-![Tipp jegy ára mennyiséggel összeg](./media/spark-data-exploration-modeling/tip-amount-by-fare-amount.png)
+![Tipp összeg diszkont értékkel](./media/spark-data-exploration-modeling/tip-amount-by-fare-amount.png)
 
-## <a name="feature-engineering-transformation-and-data-preparation-for-modeling"></a>A funkció modellezési mérnöki csapathoz, átalakítása és az adatok előkészítése
-Ez a szakasz ismerteti, és lehetővé teszi a kód készíti elő az adatok ML modellezési használható használt eljárásokat. Azt mutatja be a következő feladatok elvégzéséhez:
+## <a name="feature-engineering-transformation-and-data-preparation-for-modeling"></a>A szolgáltatás modellezési mérnöki csapathoz, átalakítási és az adatok előkészítése
+Ez a szakasz ismerteti, és a kódot biztosít az adatok előkészítéséhez használt gépi Tanulási modellezési használható eljárások. Azt mutatja be a következő feladatokat végezheti el:
 
-* Hozzon létre egy új szolgáltatás a forgalom idő gyűjtők dobozolás óránként
-* Index és kategorikus szolgáltatások kódolása
-* Gépi tanulás függvényekké bemeneti címkézett pont objektumok létrehozása
-* Hozzon létre egy véletlenszerű alárendelt mintavétel az adatok, és ossza képzési és egy tesztelési
-* A szolgáltatás skálázás
+* Hozzon létre egy új szolgáltatás be forgalom idő gyűjtők dobozolási órák száma alapján
+* Index és a kategorikus funkciók kódolása
+* A gépi Tanulási funkciók be címkézett pont objektumok létrehozása
+* Hozzon létre egy véletlenszerű alárendelt mintavétel az adatok, és azt fel képzési és egy tesztelési
+* A szolgáltatás méretezése
 * A memóriában objektumok
 
-### <a name="create-a-new-feature-by-binning-hours-into-traffic-time-buckets"></a>Hozzon létre egy új szolgáltatás a forgalom idő gyűjtők dobozolás óránként
-Ez a kód egy új szolgáltatás létrehozása a dobozolás órával a forgalom idő gyűjtők és az eredményül kapott adatok keret memóriában gyorsítótárazásának jeleníti meg. Ha ismételten elosztott rugalmas adatkészleteket (RDDs) és adatkeretek használnak, továbbfejlesztett végrehajtásának lassúságát gyorsítótárazás vezet. Ennek megfelelően azt a gyorsítótár RDDs és adatkeretek, a forgatókönyv több lépésből áll. 
+### <a name="create-a-new-feature-by-binning-hours-into-traffic-time-buckets"></a>Hozzon létre egy új szolgáltatás be forgalom idő gyűjtők dobozolási órák száma alapján
+Ez a kód bemutatja, hogyan hozhat létre egy új szolgáltatás dobozolási órák száma alapján forgalom idő gyűjtők be, majd az eredményül kapott adathalmaz a memóriában gyorsítótárazza. Ha ismételten rugalmas elosztott adatkészleteket (rdd-k) és a data-keretek használnak, továbbfejlesztett végrehajtási időpontok gyorsítótárazás vezet. Ennek megfelelően a azt gyorsítótár rdd-k és a data-keretek, a forgatókönyv több lépésből áll. 
 
     # CREATE FOUR BUCKETS FOR TRAFFIC TIMES
     sqlStatement = """
@@ -364,13 +364,13 @@ Ez a kód egy új szolgáltatás létrehozása a dobozolás órával a forgalom 
 
 126050
 
-### <a name="index-and-encode-categorical-features-for-input-into-modeling-functions"></a>Index és a bemenő funkciók modellezési kategorikus funkciói kódolása
-Ez a szakasz bemutatja, hogyan index, vagy a modellezési függvényekké bemeneti kategorikus szolgáltatások kódolása. A modellezési és előrejelzése MLlib feladatai szükséges szolgáltatások kategorikus indexelt vagy használata előtt kódolású bemeneti adatokkal. Attól függően, hogy a modell szeretnénk index vagy kódolás különböző módon:  
+### <a name="index-and-encode-categorical-features-for-input-into-modeling-functions"></a>Index és a kategorikus funkcióinak be modellezési funkciók kódolása
+Ez a szakasz bemutatja, hogyan index, vagy a modellezési funkciók be kategorikus funkciói kódolása. A modellezés és MLlib függvényekben kategorikus indexelve vagy használata előtt kódolású bemeneti adatokat a funkciókat. A modelltől függően kell index vagy más módon kell kódolnia azokat:  
 
-* **Fa-alapú modellezési** numerikus értékként kódolni kategóriák igényel (például három kategóriába szolgáltatás előfordulhat, hogy kódolhatók 0, 1, 2). Ez biztosítja a MLlib [StringIndexer](http://spark.apache.org/docs/latest/ml-features.html#stringindexer) függvény. Ez a függvény egy karakterlánc-oszlopnak címke indexek címke gyakoriságot szerint rendezett oszlophoz címkék kódolja. Bár az indexelt numerikus értékeket kell megadni a bemeneti és a kezelése, a fa-alapú algoritmusok megfelelően kezeli őket kategóriák adható meg. 
-* **Logisztikai és lineáris regressziós modell** egy közbeni kódolási funkciójához szükséges, ha például három kategóriába szolgáltatás bővíthetők minden tartalmazó 0 vagy 1 attól függően, hogy egy megfigyelési kategória három funkció oszlopokba. MLlib biztosít [OneHotEncoder](http://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OneHotEncoder.html#sklearn.preprocessing.OneHotEncoder) függvényét egy közbeni kódolást. A kódoló címke indexek oszlop bináris vektorok értékű legfeljebb egyetlen egy-egy oszlop rendeli hozzá. Ez a kódolás lehetővé teszi, hogy a várt numerikus fontos funkciók, például logisztikai regresszió kategorikus szolgáltatások alkalmazandó algoritmusokat.
+* **Fa-alapú modellezési** kategóriák a numerikus értékek kódolható igényel (például három kategóriába szolgáltatás is kódolhatók 0, 1, 2). Ez a MLlib által biztosított [StringIndexer](http://spark.apache.org/docs/latest/ml-features.html#stringindexer) függvény. Ez a függvény egy karakterláncokat tartalmazó oszlopot tartalmazó oszlop, amely címke gyakoriságok szerint vannak rendezve: címke indexek, címkék kódolja. Numerikus értékek a bemenetekhez és adatkezeléssel-indexelt, bár a fa-alapú algoritmusok, megfelelően kezeli őket kategóriák adható meg. 
+* **Logisztikai és lineáris regressziós modellek** szükséges egy gyakori kódolási, ahol, például három kategóriába szolgáltatás bővíthet egyes tartalmazó 0 vagy 1 kategóriájától függően egy megfigyelési szolgáltatás három oszlopot. MLlib biztosít [OneHotEncoder](http://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OneHotEncoder.html#sklearn.preprocessing.OneHotEncoder) egy gyakori kódolási függvényét. A kódoló címke indexek oszlop bináris vektorok értékkel legfeljebb egyetlen egy-egy számoszlop rendeli hozzá. Ehhez a kódoláshoz lehetővé teszi, hogy a numerikus értékelt szolgáltatások, például a logisztikai regressziós kategorikus funkciók alkalmazandó elvárt algoritmusokat.
 
-Index és kategorikus szolgáltatások kódolja a kód itt látható:
+A következő index és a kategorikus funkciók kódolása a kódot:
 
     # INDEX AND ENCODE CATEGORICAL FEATURES
 
@@ -415,14 +415,14 @@ Index és kategorikus szolgáltatások kódolja a kód itt látható:
 
 **A KIMENETRE:**
 
-Cella fent ideje: 1.28 másodpercben
+Cella fent ideje: 1.28 másodperc
 
-### <a name="create-labeled-point-objects-for-input-into-ml-functions"></a>Gépi tanulás függvényekké bemeneti címkézett pont objektumok létrehozása
-Ez a szakasz bemutatja, hogyan kategorikus szöveges adatok címkézett pont adattípusú értékként index és, hogy képzése és MLlib logisztikai regresszió és egyéb besorolási modell teszteléséhez használható kódolása kódját tartalmazza. Címkézett pont objektum rugalmas elosztott adatkészletek (RDD) formázott oly módon, hogy a bemeneti adatként ML algoritmusok MLlib a legtöbb van szükség. A [pont feliratú](https://spark.apache.org/docs/latest/mllib-data-types.html#labeled-point) egy helyi vektor, sűrű vagy ritka, társítva van egy címke-válasz.  
+### <a name="create-labeled-point-objects-for-input-into-ml-functions"></a>A gépi Tanulási funkciók be címkézett pont objektumok létrehozása
+Ez a szakasz bemutatja, hogyan címkézett pont adattípusú értékként kategorikus szöveges adatok indexelése és kódolja azt, hogy a taníthat vagy tesztelhet MLlib logisztikai regressziós és más képbesorolási modellek használható kódot tartalmazza. Címkézett pont objektumok olyan rugalmas elosztott adatkészleteket (RDD) formátumú úgy, hogy a gépi Tanulási algoritmusokat a MLlib többsége által bemeneti adatként van szükség. A [pont feliratú](https://spark.apache.org/docs/latest/mllib-data-types.html#labeled-point) sűrű vagy ritka, a helyi vektor társítva van egy címke/válasz.  
 
-Ez a szakasz kódot tartalmaz, amely bemutatja, hogyan kategorikus szöveg adatait, mivel az index egy [pont feliratú](https://spark.apache.org/docs/latest/mllib-data-types.html#labeled-point) adattípusúra, és így képzése és MLlib logisztikai regresszió és egyéb besorolási modell teszteléséhez használható kódolása. Címkézett pont objektum rugalmas elosztott adatkészletek (RDD) címke (cél-válasz változó) és a szolgáltatás vektoros. Ezt a formátumot a MLlib számos ML algoritmus bemeneti van szükség.
+Ez a szakasz tartalmazza a kódot, amely bemutatja, hogyan kategorikus szöveges adatok indexelése egy [pont feliratú](https://spark.apache.org/docs/latest/mllib-data-types.html#labeled-point) adattípusúra, és kódolása, így betanítására és MLlib logisztikai regressziós és más képbesorolási modellek teszteléséhez használható. Címkézett pont objektumok rugalmas elosztott adatkészleteket (RDD) címkét (cél/válasz változó) és a szolgáltatás vektor. Ezt a formátumot a MLlib számos gépi Tanulási algoritmusokat bemenetként van szükség.
 
-Ez a kód index és a bináris osztályozási funkciói szöveg kódolása.
+Az index és a bináris osztályozási funkciói szöveg kódolása a kód itt látható.
 
     # FUNCTIONS FOR BINARY CLASSIFICATION
 
@@ -448,7 +448,7 @@ Ez a kód index és a bináris osztályozási funkciói szöveg kódolása.
         return  labPt
 
 
-Ez a kód kódolásához és lineáris regressziós elemzési szolgáltatásainak kategorikus szöveg index.
+Íme a kódot, amellyel kódolása és lineáris regressziós elemzést funkciói kategorikus szöveges indexelés.
 
     # FUNCTIONS FOR REGRESSION WITH TIP AMOUNT AS TARGET VARIABLE
 
@@ -471,8 +471,8 @@ Ez a kód kódolásához és lineáris regressziós elemzési szolgáltatásaina
         return  labPt
 
 
-### <a name="create-a-random-sub-sampling-of-the-data-and-split-it-into-training-and-testing-sets"></a>Hozzon létre egy véletlenszerű alárendelt mintavétel az adatok, és ossza képzési és egy tesztelési
-Ez a kód hoz létre egy véletlenszerű mintavételi (25 % itt használt) adatok. Bár nem szükséges ehhez a példához a mérete miatt a DataSet adatkészlet, bemutatjuk, hogyan segítségével mintavételi itt így megtudhatja, hogy miképpen lehet vele a saját probléma, ha szükséges. Ha minták nagy, ez is tanítási modell jelentős időt takaríthat meg. Ezután azt ossza fel a minta egy képzési (Itt 75 %) és egy tesztelési részét (25 %-os itt) használata a besorolás és regressziós modellezéshez hatékony.
+### <a name="create-a-random-sub-sampling-of-the-data-and-split-it-into-training-and-testing-sets"></a>Hozzon létre egy véletlenszerű alárendelt mintavétel az adatok, és azt fel képzési és egy tesztelési
+Ez a kód létrehoz egy véletlenszerű mintavételi (25 %-os itt használt) adatok. Bár ez nem szükséges ehhez a példához az adatkészlet méretének miatt, bemutatjuk, hogyan segítségével mintavételi itt, hogy tudja, hogyan használható a saját probléma, ha szükséges. Ha minták nagy, ez is tanítási modell jelentős időt takaríthat meg. Ezután azt ossza fel a minta-képzés (Itt 75 %) és egy tesztelési részét (Itt 25 %) besorolási és regressziós modellezéshez.
 
     # RECORD START TIME
     timestart = datetime.datetime.now()
@@ -510,17 +510,17 @@ Ez a kód hoz létre egy véletlenszerű mintavételi (25 % itt használt) adato
 
 **A KIMENETRE:**
 
-Cella fent ideje: 0,24 másodpercben
+Cella fent ideje: 0,24 másodperc
 
-### <a name="feature-scaling"></a>A szolgáltatás skálázás
-Szolgáltatás skálázást, más néven adatok normalizálási biztosítja, hogy szolgáltatások széles körben folyósított értékekkel van nem a megadott túlzott mérjük a objektív függvényben. A szolgáltatás által használt skálázás kódját a [StandardScaler](https://spark.apache.org/docs/latest/api/python/pyspark.mllib.html#pyspark.mllib.feature.StandardScaler) méretezési egység eltérése a szolgáltatásokat. Ez biztosítja MLlib lineáris regressziós rendelkező Stochastic átmenetes módszeren (SGD), egy népszerű más gépi tanulási modellek például rendeződik regresszió vagy támogatási vektoros gépek (SVM) számos különféle képzési algoritmus használható.
+### <a name="feature-scaling"></a>A szolgáltatás méretezése
+A szolgáltatás méretezése adatok normalizálási, más néven adatblokkok, hogy funkciók széles körben folyósított értékekkel van nem adott túlzott mérjük a cél függvényben. Skálázás használja a funkciónak a [StandardScaler](https://spark.apache.org/docs/latest/api/python/pyspark.mllib.html#pyspark.mllib.feature.StandardScaler) egység eltérése a szolgáltatások méretezése. Lineáris regresszió a Sztochasztikus átmenetes Grádiens (SGD), számos más gépi tanulási modelleket például rendeződik regressziót vagy támogatási vektor gépek (SVM) betanításához egy népszerű algoritmus használatra MLlib nyújtja.
 
 > [!NOTE]
-> Találtunk, amelyeknek a LinearRegressionWithSGD algoritmust kell skálázás funkció-és nagybetűket.
+> A LinearRegressionWithSGD algoritmust kell lenniük a szolgáltatás méretezése található.
 > 
 > 
 
-Ez a kód méretezési változók a regularized lineáris SGD algoritmus való használatra.
+Íme a kódot a skála változók a regularized lineáris SGD algoritmus való használatra.
 
     # FEATURE SCALING
 
@@ -556,7 +556,7 @@ Ez a kód méretezési változók a regularized lineáris SGD algoritmus való h
 Cella fent ideje: 13.17 másodperc
 
 ### <a name="cache-objects-in-memory"></a>A memóriában objektumok
-A modell betanítására és tesztelésére ML algoritmusok szükséges idő a bemeneti adatok keret objektumok az osztályozás, regressziós, és a szolgáltatások méretezhető gyorsítótárazásával csökkenthető.
+A képzés és a gépi Tanulási algoritmusok tesztelési idő objektumokat az osztályozás, regressziós, és szolgáltatások méretezése a bemeneti adatok keret gyorsítótárazásával csökkenthető.
 
     # RECORD START TIME
     timestart = datetime.datetime.now()
@@ -584,25 +584,25 @@ A modell betanítására és tesztelésére ML algoritmusok szükséges idő a b
 
 **A KIMENETRE:** 
 
-Cella fent ideje: 0,15 másodpercben
+Cella fent ideje: 0,15 másodperc
 
-## <a name="predict-whether-or-not-a-tip-is-paid-with-binary-classification-models"></a>Függetlenül attól, tipp bináris osztályozási modellekkel való fizetnek előrejelzése
-Ez a szakasz bemutatja, hogyan használható három modelleket használnak becslése a bináris osztályozási feladatát tipp taxi útnak fizetnek-e. A modell jelenik meg a következő:
+## <a name="predict-whether-or-not-a-tip-is-paid-with-binary-classification-models"></a>E tipp: a bináris osztályozási modell fizetős előrejelzése
+Ez a szakasz bemutatja, hogyan használható három-modellekhez előrejelzésére bináris osztályozási feladatának tipp fizetős taxi útnak-e. A bemutatott modellek a következők:
 
-* Logisztikai regresszió rendeződik 
+* Logisztikai regressziós rendeződik 
 * Véletlenszerű erdőmodell
-* Átmenet kiemelési fák
+* Színátmenet kiemelési fák
 
-Egyes modellek kód szakasz felépítése lépéseket oszlik: 
+Minden modell létrehozásához a kód szakaszban van felosztva, amelyek lépéseket: 
 
-1. **A modell betanítási** egy paraméterhalmaz adatok
-2. **A modell kiértékelése** a metrikák a teszt adatkészlet
-3. **Modell mentése** BLOB a jövőbeni felhasználásához
+1. **Modell a betanítási** egy paraméterkészlettel adatok
+2. **Minta értékelés** egy tesztelési adathalmazon metrikákkal
+3. **Modell mentése** későbbi felhasználásra blobba
 
-### <a name="classification-using-logistic-regression"></a>A besorolási logisztikai regresszió segítségével
-Ebben a szakaszban a kód bemutatja, hogyan betanítása, értékelje ki és logisztikai regresszió modell mentése [LBFGS](https://en.wikipedia.org/wiki/Broyden%E2%80%93Fletcher%E2%80%93Goldfarb%E2%80%93Shanno_algorithm) , amely képes-e tipp fizetnek NYC taxi út és a jegy ára adatkészlet útnak.
+### <a name="classification-using-logistic-regression"></a>Logisztikai regressziós besorolás
+Ebben a szakaszban a kód bemutatja, hogyan betanításához, kiértékelése és a egy logisztikai regressziós modellt a Mentés [LBFGS](https://en.wikipedia.org/wiki/Broyden%E2%80%93Fletcher%E2%80%93Goldfarb%E2%80%93Shanno_algorithm) , amely a fedélzeti e tipp NYC taxi utazást és diszkont adatkészlet útnak fizetnek.
 
-**A KtgE és hyperparameter abszolút logisztikai regresszió modell betanításához**
+**CV és a hiperparaméter kezdik logisztikai regressziós modell betanítása**
 
     # LOGISTIC REGRESSION CLASSIFICATION WITH CV AND HYPERPARAMETER SWEEPING
 
@@ -643,7 +643,7 @@ INTERCEPT:-0.0111216486893
 
 Cella fent ideje: 14.43 másodperc
 
-**A szabványos metrikák bináris osztályozási modell kiértékelése**
+**A standard metrikák bináris osztályozási modell értékelése**
 
     #EVALUATE LOGISTIC REGRESSION MODEL WITH LBFGS
 
@@ -691,30 +691,30 @@ Cella fent ideje: 14.43 másodperc
 
 **A KIMENETRE:** 
 
-Törlés a ka területen = 0.985297691373
+Lekéréses kérelem alatti terület = 0.985297691373
 
-ROC területen = 0.983714670256
+Terület alatt ROC = 0.983714670256
 
-Összesített statisztikák
+Összefoglaló statisztikák
 
 Pontosság = 0.984304060189
 
-Visszahívása = 0.984304060189
+Idézze = 0.984304060189
 
 F1 Score = 0.984304060189
 
 Cella fent ideje: 57.61 másodperc
 
-**A: ROC-görbe ábrázolásához.**
+**A ROC-görbe ábrázolásához.**
 
-A *predictionAndLabelsDF* táblaként, regisztrálva van *tmp_results*, az előző cella. *tmp_results* segítségével do lekérdezések és a kimeneti eredmények keretbe sqlResults adatok-ábrázolásához. A kód itt látható.
+A *predictionAndLabelsDF* táblázatként, regisztrálva van *tmp_results*, az előző cella. *tmp_results* használható do lekérdezések és a kimeneti eredmények a data-keretben sqlResults küldik az ábrázolást. A kód itt látható.
 
     # QUERY RESULTS                              
     %%sql -q -o sqlResults
     SELECT * from tmp_results
 
 
-Ez a kód előrejelzéseket készítsen, és a ROC-görbe megrajzolásához.
+Itt látható az előrejelzéseket és ROC-görbe megjeleníteni a kódot.
 
     # MAKE PREDICTIONS AND PLOT ROC-CURVE
 
@@ -747,7 +747,7 @@ Ez a kód előrejelzéseket készítsen, és a ROC-görbe megrajzolásához.
 ![Logistic regression ROC curve.png](./media/spark-data-exploration-modeling/logistic-regression-roc-curve.png)
 
 ### <a name="random-forest-classification"></a>Véletlenszerű erdő besorolás
-Ebben a szakaszban a kód bemutatja, hogyan betanítása, értékelje ki és mentése egy véletlenszerű erdő modell, amely képes-e tipp NYC taxi út és a jegy ára adatkészlet útnak fizetnek.
+Ebben a szakaszban a kód bemutatja, hogyan betanításához, kiértékelése és a egy véletlenszerű erdőmodell, amely képes-e tipp NYC taxi utazást és diszkont adatkészlet útnak fizetős mentés.
 
     #PREDICT WHETHER A TIP IS PAID OR NOT USING RANDOM FOREST
 
@@ -794,12 +794,12 @@ Ebben a szakaszban a kód bemutatja, hogyan betanítása, értékelje ki és men
 
 **A KIMENETRE:**
 
-ROC területen = 0.985297691373
+Terület alatt ROC = 0.985297691373
 
 Cella fent ideje: 31.09 másodperc
 
-### <a name="gradient-boosting-trees-classification"></a>Átmenet kiemelési fák besorolás
-Ebben a szakaszban a kód bemutatja, hogyan képzése, értékelje ki, és átmenetes kiemelési fák modell, amely képes-e tipp egy út a következőt: taxi út a fizetett mentéséhez és díjszabás adatkészlet.
+### <a name="gradient-boosting-trees-classification"></a>Színátmenet kiemelési fák besorolás
+Ebben a szakaszban a kód bemutatja, hogyan betanításához, kiértékeléséhez, és mentse egy színátmenetes kiemelési fák modellt, az e tipp: a NYC taxi út útnak fizetős és az adatkészlet díjszabás.
 
     #PREDICT WHETHER A TIP IS PAID OR NOT USING GRADIENT BOOSTING TREES
 
@@ -840,28 +840,28 @@ Ebben a szakaszban a kód bemutatja, hogyan képzése, értékelje ki, és átme
 
 **A KIMENETRE:**
 
-ROC területen = 0.985297691373
+Terület alatt ROC = 0.985297691373
 
 Cella fent ideje: 19.76 másodperc
 
-## <a name="predict-tip-amounts-for-taxi-trips-with-regression-models"></a>Tipp összegek taxi utakat regressziós modell előrejelzése
-Ez a szakasz bemutatja, hogyan használja a tipp mennyisége előrejelzésére regressziós feladatának három licencmodellek fizetett taxi útnak más tip szolgáltatások alapján. A modell jelenik meg a következő:
+## <a name="predict-tip-amounts-for-taxi-trips-with-regression-models"></a>Előrejelzésére regressziós modellek taxi utakat összeget tipp
+Ez a szakasz bemutatja, hogyan használja az ötlet mennyisége előrejelzésére regressziós feladatának három modellt fizetős funkciókat a tip alapján taxi útnak. A bemutatott modellek a következők:
 
-* Lineáris regressziós rendeződik
+* Lineáris regresszió rendeződik
 * Véletlenszerű erdő
-* Átmenet kiemelési fák
+* Színátmenet kiemelési fák
 
-Ezek a modellek leírt a Bevezetés. Egyes modellek kód szakasz felépítése lépéseket oszlik: 
+Ezek a modellek a bevezetésben is ismerteti. Minden modell létrehozásához a kód szakaszban van felosztva, amelyek lépéseket: 
 
-1. **A modell betanítási** egy paraméterhalmaz adatok
-2. **A modell kiértékelése** a metrikák a teszt adatkészlet
-3. **Modell mentése** BLOB a jövőbeni felhasználásához
+1. **Modell a betanítási** egy paraméterkészlettel adatok
+2. **Minta értékelés** egy tesztelési adathalmazon metrikákkal
+3. **Modell mentése** későbbi felhasználásra blobba
 
-### <a name="linear-regression-with-sgd"></a>A SGD lineáris regressziós
-A kódot az itt látható egy lineáris regressziós optimális stochastic átmenetes módszeren (SGD) használó betanítása méretezett szolgáltatások használatának, pontozása, értékelje ki és mentse a modellt az Azure Blob Storage (WASB).
+### <a name="linear-regression-with-sgd"></a>A SGD lineáris regresszió
+A kód ebben a szakaszban mutatja be, hogyan használja a méretezhető szolgáltatások egy lineáris regressziós optimalizálás sztochasztikus gradiens módszeres (SGD) használó, és hogyan pontszám, kiértékelheti és mentse a módosítást az Azure Blob Storage (WASB).
 
 > [!TIP]
-> Az a tapasztalat LinearRegressionWithSGD modellek konvergencia problémái lehetnek, és paraméterek kell lennie a megváltozott/optimalizálva gondosan megszerezni egy érvényes modell. A változók jelentősen skálázás elősegíti a konvergencia. 
+> Tapasztalataink LinearRegressionWithSGD modellek az átszervezés problémái lehetnek, és paramétereket kell lennie a módosított/optimalizált gondosan beszerzése érvényes modellt. Az átszervezés változók skálázás jelentősen nyújtanak segítséget. 
 > 
 > 
 
@@ -916,8 +916,8 @@ R-sqr = 0.608017146081
 
 Cella fent ideje: 58.42 másodperc
 
-### <a name="random-forest-regression"></a>Véletlenszerű erdő regressziós
-Ebben a szakaszban a kód bemutatja, hogyan képzése, értékelje ki és mentse egy véletlenszerű erdő regressziós, hogy a NYC taxi út adatok tipp összeg előrejelzi.
+### <a name="random-forest-regression"></a>Véletlenszerű erdő regresszió
+Ebben a szakaszban a kód bemutatja, hogyan betanításához, kiértékelheti és mentse egy véletlenszerű erdő regressziós, amely előrejelzi a NYC taxi útadatok tipp összege.
 
     #PREDICT TIP AMOUNTS USING RANDOM FOREST
 
@@ -968,8 +968,8 @@ R-sqr = 0.759661334921
 
 Cella fent ideje: 49.21 másodperc
 
-### <a name="gradient-boosting-trees-regression"></a>Átmenet kiemelési fák regressziós
-Ebben a szakaszban a kód bemutatja, hogyan betanítása, kiértékeléséhez és átmenetes kiemelési fák modell, amely képes tipp összeg a következőt: taxi út adatok mentése.
+### <a name="gradient-boosting-trees-regression"></a>Színátmenet kiemelési fák regresszió
+Ebben a szakaszban a kód bemutatja, hogyan betanításához, kiértékelése és a egy színátmenetes kiemelési fák modellt, a NYC taxi útadatok tipp összege az mentés.
 
 **Betanítása és kiértékelése**
 
@@ -1019,9 +1019,9 @@ R-sqr = 0.753835096681
 
 Cella fent ideje: 34.52 másodperc
 
-**Ábrázolása**
+**Diagram**
 
-*tmp_results* az előző cella Hive tábla néven van regisztrálva. Kerülnek a kimenetbe az eredményeket a táblából a *sqlResults* adatok-keret ábrázolásához. A kód itt látható
+*tmp_results* regisztrálva van az előző cella Hive-táblaként. Kerülnek a kimenetbe az eredményeket a táblából a *sqlResults* adatkeretbe ábrázolásához. A kód itt látható
 
     # PLOT SCATTER-PLOT BETWEEN ACTUAL AND PREDICTED TIP VALUES
 
@@ -1029,7 +1029,7 @@ Cella fent ideje: 34.52 másodperc
     %%sql -q -o sqlResults
     SELECT * from tmp_results
 
-A Jupyter kiszolgálóval az adatok ábrázolása a kód itt látható.
+Íme a kódot, a Jupyter-kiszolgáló használata az adatok ábrázolásához.
 
     # RUN THE CODE LOCALLY ON THE JUPYTER SERVER AND IMPORT LIBRARIES
     %%local
@@ -1051,8 +1051,8 @@ A Jupyter kiszolgálóval az adatok ábrázolása a kód itt látható.
 
 ![Actual-vs-predicted-tip-amounts](./media/spark-data-exploration-modeling/actual-vs-predicted-tips.png)
 
-## <a name="clean-up-objects-from-memory"></a>A memóriából objektumainak eltávolítása
-Használjon `unpersist()` jelenleg a memóriában lévő objektumok törlése.
+## <a name="clean-up-objects-from-memory"></a>A memóriából objektumok törlése
+Használat `unpersist()` törli a memóriában gyorsítótárazott objektumokat.
 
     # REMOVE ORIGINAL DFs
     taxi_df_train_cleaned.unpersist()
@@ -1075,8 +1075,8 @@ Használjon `unpersist()` jelenleg a memóriában lévő objektumok törlése.
     oneHotTESTregScaled.unpersist()
 
 
-## <a name="record-storage-locations-of-the-models-for-consumption-and-scoring"></a>A modellek felhasználása és pontozási rekord tárolóhelyek
-Fogadni, és egy független adatkészlet ismertetett pontozása a [pontszám és értékelje ki a Spark-beépített gépi tanulási modellek](spark-model-consumption.md) másolja és illessze be a következő fájl neve, a mentett a fogyasztás Jupyter notebook az itt létrehozott modelleket tartalmazó kell a témakörben. Ez a kód nyomtassa ki a van szüksége a modell fájlok elérési útjait.
+## <a name="record-storage-locations-of-the-models-for-consumption-and-scoring"></a>A modellek a fogyasztás és pontozás rekord tárolási helyek
+Fogadni, és a egy független adatkészlet ismertetett pontszám a [pontszám és értékelje a Spark használatával összeállított gépi tanulási modellek](spark-model-consumption.md) másolja és illessze be a következő fájl neve, a mentett, a felhasználás az itt létrehozott modellek tartalmazó kell a témakörben Jupyter notebookot. Íme a kódot, és nyomtassa ki van szüksége a modell fájlok elérési útja.
 
     # MODEL FILE LOCATIONS FOR CONSUMPTION
     print "logisticRegFileLoc = modelDir + \"" + logisticregressionfilename + "\"";
@@ -1102,9 +1102,9 @@ BoostedTreeClassificationFileLoc = modelDir + "GradientBoostingTreeClassificatio
 BoostedTreeRegressionFileLoc = modelDir + "GradientBoostingTreeRegression_2016-05-0317_06_51.737282"
 
 ## <a name="whats-next"></a>A következő lépések
-Most, hogy a Spark MlLib regressziós és besorolási modell hozott létre, készen áll útmutató pontozása, és ezek a modellek kiértékeléséhez. A speciális adatok feltárása és a notebook modellezési dives mélyebb kereszt-ellenőrzési, hyper paraméter abszolút, beleértve azokat, és a modell kiértékelése. 
+Most, hogy a Spark MlLib a létrehozott regressziós és besorolási modellek, készen áll a pontszám, és ezek a modellek kiértékelése. A speciális adatáttekintés és modellezés jegyzetfüzet, beleértve a kereszt-ellenőrzés, abszolút, a hyper-paraméter mélyebb ismertetőinken és modell kiértékelése. 
 
-**Modellhez tartozó felhasználás:** pontozása és kiértékelheti a besorolás és regressziós modellek létrehozása ebben a témakörben, lásd: [pontszám és értékelje ki a Spark-beépített machine learning modellek](spark-model-consumption.md).
+**Használati modell:** pontszám és kiértékelheti a besorolási és regressziós modellek, ebben a témakörben létrehozott kapcsolatban lásd: [pontszám és kiértékelheti a Spark használatával összeállított gépi tanulási modellek](spark-model-consumption.md).
 
-**Kereszt-ellenőrzési és hyperparameter abszolút**: lásd: [speciális adatok feltárása és Spark modellezés](spark-advanced-data-exploration-modeling.md) meg, hogyan lehet a modellek betanítása a kereszt-ellenőrzési és a hyper-paraméter abszolút használatával
+**Kereszt-ellenőrzési és a hiperparaméter kezdik**: lásd: [speciális adatáttekintés és modellezés a Spark segítségével](spark-advanced-data-exploration-modeling.md) meg, hogyan lehet a modellek tanítása az kezdik kereszt-ellenőrzési és a hyper-paraméter
 

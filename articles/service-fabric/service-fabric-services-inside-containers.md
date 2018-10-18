@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 5/23/2018
 ms.author: anmola
-ms.openlocfilehash: d3ed1ff46bf4c82a172954828ec74bae80241288
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: 5672f5fffd9c93f710f8001285380fdbfcab0c5d
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44057103"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49386983"
 ---
 # <a name="containerize-your-service-fabric-reliable-services-and-reliable-actors-on-windows"></a>A Service Fabric Reliable Services és Reliable Actors Windows a tárolóba
 
@@ -103,7 +103,7 @@ A dokumentum a Windows-tárolón belül futó service útmutatóval szolgál.
 </Policies>
  ```
 
-9. Tároló elkülönítési mód konfigurálása, lásd: [elkülönítési mód konfigurálása]( https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-get-started-containers#configure-isolation-mode). A Windows a tárolók két elkülönítési módját támogatja: a folyamatalapú és a Hyper-V módot. Az alábbi kódrészletek bemutatják, hogyan az elkülönítési mód az Alkalmazásjegyzék-fájl megadott.
+9. Tároló elkülönítési mód konfigurálása, lásd: [elkülönítési mód konfigurálása]( https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started-containers#configure-isolation-mode). A Windows a tárolók két elkülönítési módját támogatja: a folyamatalapú és a Hyper-V módot. Az alábbi kódrészletek bemutatják, hogyan az elkülönítési mód az Alkalmazásjegyzék-fájl megadott.
 
  ```xml
 <Policies>

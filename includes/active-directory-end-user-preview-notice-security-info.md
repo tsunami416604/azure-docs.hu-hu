@@ -8,14 +8,14 @@ ms.topic: include
 ms.date: 07/25/2018
 ms.author: lizross
 ms.custom: include file
-ms.openlocfilehash: bac8ced2722254af1dab0a2b4d6b5e6df1553357
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: b645634fc6e0c1edac3951be18dc6eae9ae18877
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39347303"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49400378"
 ---
 | |
 |--|
-|Ha a képernyőn megjelenő elemek nem felelnek meg a jelen cikkben ismertetetteknek, az azt jelenti, hogy a rendszergazda még nem kapcsolta be a szolgáltatást. A szolgáltatás bekapcsolásáig kövesse a [Kétlépéses ellenőrzés beállítása a saját fiókhoz](https://docs.microsoft.com/en-us/azure/active-directory/user-help/multi-factor-authentication-end-user-first-time) című részben található utasításokat és információkat.|
+|Ha a képernyőn megjelenő elemek nem felelnek meg a jelen cikkben ismertetetteknek, az azt jelenti, hogy a rendszergazda még nem kapcsolta be a szolgáltatást. A szolgáltatás bekapcsolásáig kövesse a [Kétlépéses ellenőrzés beállítása a saját fiókhoz](https://docs.microsoft.com/azure/active-directory/user-help/multi-factor-authentication-end-user-first-time) című részben található utasításokat és információkat.|
 | |

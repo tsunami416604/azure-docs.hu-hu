@@ -9,12 +9,12 @@ ms.date: 07/25/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 28aa2904f63a9802305d24fec1650f84e38601ab
-ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
+ms.openlocfilehash: c6700dc4bc0cc458e34e129b2468daad88ecc8be
+ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39258433"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49393457"
 ---
 # <a name="deploy-and-monitor-iot-edge-modules-at-scale-using-the-azure-portal"></a>Üzembe helyezés és monitorozás az Azure portal használatával nagy mennyiségű IoT Edge-modulok
 
@@ -39,11 +39,11 @@ Központi telepítés létrehozásához, akkor megadhatja, mely eszközöket sze
 }
 ```
 
-Ikereszközök és címkékkel kapcsolatos további információkért lásd: [ikereszközök megismerése és használata az IoT Hub][lnk-device-twin].
+Ikereszközök és címkékkel kapcsolatos további információkért lásd: [ikereszközök megismerése és használata az IoT Hub](../iot-hub/iot-hub-devguide-device-twins.md).
 
 ## <a name="create-a-deployment"></a>Központi telepítés létrehozása
 
-1. Az a [az Azure portal][lnk-portal], keresse fel az IoT hubnak. 
+1. Az a [az Azure portal](https://portal.azure.com), keresse fel az IoT hubnak. 
 1. Válassza ki **IoT Edge**.
 1. Válassza ki **üzemelő IoT Edge-példány hozzáadása**.
 
@@ -77,7 +77,7 @@ Egyéni kód hozzáadása modulként, vagy manuálisan adja hozzá az Azure-szol
 1. Válassza ki **IoT Edge-modul**.
 1. A modul adjon egy **neve**.
 1. Az a **rendszerkép URI** mezőben adja meg a tároló rendszerképét a modul. 
-1. Bármely **tároló létrehozása beállítások** , amely a tárolóhoz kell átadni. További információkért lásd: [docker létrehozása][lnk-docker-create].
+1. Bármely **tároló létrehozása beállítások** , amely a tárolóhoz kell átadni. További információkért lásd: [docker létrehozása](https://docs.docker.com/engine/reference/commandline/create/).
 1. Válassza ki a legördülő menü használatával egy **újraindítási házirend**. Az alábbi lehetőségek közül választhat: 
    * **Mindig** – a modul mindig újraindul, ha valamilyen okból vannak leáll.
    * **Soha ne** – a modul soha nem indul újra, ha valamilyen okból vannak leáll.
@@ -117,11 +117,11 @@ Tekintse át a telepítési adatokat, majd válassza a **küldés**.
 
 A központi telepítés a részletek megtekintéséhez és az azt futtató eszközök figyelését, kövesse az alábbi lépéseket:
 
-1. Jelentkezzen be a [az Azure portal] [ lnk-portal] , és keresse meg az IoT hubot. 
+1. Jelentkezzen be a [az Azure portal](https://portal.azure.com) , és keresse meg az IoT hubot. 
 1. Válassza ki **IoT Edge**.
 1. Válassza ki **IoT Edge-telepítések**. 
 
-   ![IoT Edge-telepítések megtekintése][1]
+   ![IoT Edge-telepítések megtekintése](./media/how-to-deploy-monitor/iot-edge-deployments.png)
 
 1. Vizsgálja meg a központi telepítés listában. Minden egyes üzemelő példányhoz a következő adatokat tekintheti meg:
    * **ID** – a központi telepítés nevét.
@@ -144,11 +144,11 @@ A célfeltétel frissít, ha elő a következő frissítéseket:
 
 Központi telepítés módosításához használja az alábbi lépéseket: 
 
-1. Jelentkezzen be a [az Azure portal] [ lnk-portal] , és keresse meg az IoT hubot. 
+1. Jelentkezzen be a [az Azure portal](https://portal.azure.com) , és keresse meg az IoT hubot. 
 1. Válassza ki **IoT Edge**.
 1. Válassza ki **IoT Edge-telepítések**. 
 
-   ![IoT Edge-telepítések megtekintése][1]
+   ![IoT Edge-telepítések megtekintése](./media/how-to-deploy-monitor/iot-edge-deployments.png)
 
 1. Válassza ki a telepítést, amelyet módosítani szeretne. 
 1. Hajtsa végre a frissítéseket a következő mezőket: 
@@ -156,17 +156,17 @@ Központi telepítés módosításához használja az alábbi lépéseket:
    * Címkék 
    * Prioritás 
 1. Kattintson a **Mentés** gombra.
-1. Kövesse a [központi telepítésének figyeléséről] [ anchor-monitor] megkezdik a módosítások megtekintéséhez. 
+1. Kövesse a [központi telepítésének figyeléséről](#monitor-a-deployment) megkezdik a módosítások megtekintéséhez. 
 
 ## <a name="delete-a-deployment"></a>Üzemelő példányának törlése
 
 Ha töröl egy központi telepítést, a következő legmagasabb prioritású üzembe helyezés az egyik eszközön sem igénybe vehet. Ha az eszközök nem felelnek meg a célfeltétel, bármely más konfigurációért, majd a modulok nem lesznek eltávolítva az üzemelő példány törlése. 
 
-1. Jelentkezzen be a [az Azure portal] [ lnk-portal] , és keresse meg az IoT hubot. 
+1. Jelentkezzen be a [az Azure portal](https://portal.azure.com) , és keresse meg az IoT hubot. 
 1. Válassza ki **IoT Edge**.
 1. Válassza ki **IoT Edge-telepítések**. 
 
-   ![IoT Edge-telepítések megtekintése][1]
+   ![IoT Edge-telepítések megtekintése](./media/how-to-deploy-monitor/iot-edge-deployments.png)
 
 1. A jelölőnégyzet segítségével válassza ki a törölni kívánt központi telepítés. 
 1. Válassza a **Törlés** elemet.
@@ -174,16 +174,4 @@ Ha töröl egy központi telepítést, a következő legmagasabb prioritású ü
 
 ## <a name="next-steps"></a>További lépések
 
-Tudjon meg többet [modulok üzembe helyezéséhez a peremhálózati eszközökre][lnk-deployments].
-
-<!-- Images -->
-[1]: ./media/how-to-deploy-monitor/iot-edge-deployments.png
-
-<!-- Links -->
-[lnk-device-twin]: ../iot-hub/iot-hub-devguide-device-twins.md
-[lnk-portal]: https://portal.azure.com
-[lnk-docker-create]: https://docs.docker.com/engine/reference/commandline/create/
-[lnk-deployments]: module-deployment-monitoring.md
-
-<!-- Anchor links -->
-[anchor-monitor]: #monitor-a-deployment
+Tudjon meg többet [modulok üzembe helyezéséhez a peremhálózati eszközökre](module-deployment-monitoring.md).

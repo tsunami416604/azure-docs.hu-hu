@@ -10,16 +10,16 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 09/22/2018
 ms.author: glenga
-ms.openlocfilehash: b3b96bec7a56a0d1f8471f0290ae928ef80d7b3a
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: ec309bc5484c0ac96d1323c56670c147737e7c64
+ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48883737"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49377863"
 ---
 # <a name="app-settings-reference-for-azure-functions"></a>Az Azure Functions – alkalmazásbeállítási referencia
 
-Alkalmazásbeállításokat a függvényalkalmazáshoz, amelyek befolyásolják, hogy a függvényalkalmazás a függvények globális konfigurációs beállításokat tartalmaznak. Ha helyileg futtatja, ezeket a beállításokat a környezeti változók találhatók. Ez a cikk az alkalmazásbeállításokat a függvényalkalmazások sorolja fel.
+Alkalmazásbeállításokat a függvényalkalmazáshoz, amelyek befolyásolják, hogy a függvényalkalmazás a függvények globális konfigurációs beállításokat tartalmaznak. Ha helyileg futtatja, ezek a beállítások szerepelnek [környezeti változók](functions-run-local.md#local-settings-file). Ez a cikk az alkalmazásbeállításokat a függvényalkalmazások sorolja fel.
 
 [!INCLUDE [Function app settings](../../includes/functions-app-settings.md)]
 

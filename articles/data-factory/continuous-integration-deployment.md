@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/09/2018
 ms.author: douglasl
-ms.openlocfilehash: 5da9d4b33951e14df251fe4939c54cff822843aa
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: 89ea3d576f20f6e62730b40e0e4f4f8d5f798142
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48901957"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49386984"
 ---
 # <a name="continuous-integration-and-delivery-cicd-in-azure-data-factory"></a>Folyamatos integráció és teljesítés (CI/CD) az Azure Data Factoryban
 
@@ -728,7 +728,7 @@ Hasonló lépésekkel és a hasonló kóddal (az a `Start-AzureRmDataFactoryV2Tr
 
 ## <a name="sample-script-to-stop-and-restart-triggers-and-clean-up"></a>Mintaparancsfájl állítsa le és indítsa újra az eseményindítók és karbantartása
 
-Íme egy minta parancsfájlt eseményindítók telepítés előtt állítsa le, és ezt követően indítsa újra az eseményindítók. A parancsfájl használatával törölje az erőforrást, amelyek el lettek távolítva a kódot is tartalmaz. Telepítse az Azure PowerShell legújabb verzióját, lásd: [Azure PowerShell telepítése a Windows a Powershellgettel](https://docs.microsoft.com/en-us/powershell/azure/install-azurerm-ps?view=azurermps-6.9.0).
+Íme egy minta parancsfájlt eseményindítók telepítés előtt állítsa le, és ezt követően indítsa újra az eseményindítók. A parancsfájl használatával törölje az erőforrást, amelyek el lettek távolítva a kódot is tartalmaz. Telepítse az Azure PowerShell legújabb verzióját, lásd: [Azure PowerShell telepítése a Windows a Powershellgettel](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-6.9.0).
 
 ```powershell
 param

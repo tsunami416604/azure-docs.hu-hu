@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 07/30/2018
 ms.author: barbkess
 ms.reviewer: asmalser
-ms.openlocfilehash: 9170f6f90b9e9b0a310f3b078c82dcab3f179fb3
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: 935fef5ea988908787ae04688985606acec41bfd
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49321308"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49387277"
 ---
 # <a name="automate-user-provisioning-and-deprovisioning-to-saas-applications-with-azure-active-directory"></a>Kiépítés és megszüntetés SaaS-alkalmazásokhoz az Azure Active Directory felhasználói automatizálása
 
@@ -267,9 +267,9 @@ Dinamikus csoportok használatáért azonban befolyásolhatja a SaaS-alkalmazás
 
 Nem. "Szinkronizálás csak a hozzárendelt felhasználók és csoportok" konfigurálva, amikor a kiszolgáló üzembe helyezése az Azure AD felhasználói nem sikerül, olvasni, vagy a beágyazott csoportok lévő felhasználók kiépítése. A rendszer csak olvashatja, és konfigurálta a felhasználókat, amelyek az explicit módon hozzárendelt csoport közvetlen tagjai.
 
-Ez az egyik korlátozása "alkalmazások hozzárendelések. csoport-alapú", amely szintén hatással van az egyszeri bejelentkezés, és leírt [csoport használatával SaaS-alkalmazásokhoz való hozzáférés kezelése](https://docs.microsoft.com/en-us/azure/active-directory/users-groups-roles/groups-saasapps ).
+Ez az egyik korlátozása "alkalmazások hozzárendelések. csoport-alapú", amely szintén hatással van az egyszeri bejelentkezés, és leírt [csoport használatával SaaS-alkalmazásokhoz való hozzáférés kezelése](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-saasapps ).
 
-Áthidaló megoldásként, érdemes explicit módon hozzárendelése (vagy más módon [hatókörét a](https://docs.microsoft.com/en-us/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)) a csoportokat, amelyek a felhasználókkal, akik szükség lesz.
+Áthidaló megoldásként, érdemes explicit módon hozzárendelése (vagy más módon [hatókörét a](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)) a csoportokat, amelyek a felhasználókkal, akik szükség lesz.
 
 ## <a name="related-articles"></a>Kapcsolódó cikkek
 

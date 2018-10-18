@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: michmcla
-ms.openlocfilehash: 0d68c88bdad63bb022babcc4a6ee4ee7c59ce58a
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: 696c331111fef9d6fc238b733e15230ab3ee1e56
+ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39158454"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49378016"
 ---
 # <a name="which-version-of-azure-mfa-is-right-for-my-organization"></a>Az Azure MFA melyik verziója a szervezetem számára megfelelő?
 
@@ -61,7 +61,7 @@ A következő táblázat a felhőbeli Multi-Factor Authentication és a Multi-Fa
 | Mobilalkalmazásos ellenőrzőkód második tényezőként | ● | ● |
 | Telefonhívás második tényezőként | ● | ● |
 | Egyirányú SMS második tényezőként | ● | ● |
-| Hardvertokenek második tényezőként | | ● |
+| Hardvertokenek második tényezőként | ● (nyilvános előzetes verzió) | ● |
 | Alkalmazásjelszavak az MFA-t nem támogató Office 365-ügyfelekhez | ● | |
 | A hitelesítési módszerek rendszergazdai szabályozása | ● | ● |
 | PIN-mód | | ● |

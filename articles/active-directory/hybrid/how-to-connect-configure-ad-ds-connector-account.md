@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 10/12/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: a14462ec5311a9b82293ba7f6e9ae76dc1972b36
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: a12549a52171afc1c95588f9a2b259829e170fcc
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49355503"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49389955"
 ---
 # <a name="azure-ad-connectconfigure-ad-ds-connector-account-permissions"></a>Az Azure AD Connect: Az AD DS-összekötő fiók engedélyeinek konfigurálása 
 
@@ -42,7 +42,7 @@ Az alábbi táblázatban egy AD-objektumok szükséges engedélyek összefoglal�
 | Group writeback (Csoportvisszaíró) |Olvassa el, létrehozási, frissítési és törlési csoport objektumok szinkronizálva a **Office 365-csoportok**.  További információ: [Csoportvisszaírás](how-to-connect-preview.md#group-writeback).|
 
 ## <a name="using-the-adsyncconfig-powershell-module"></a>A ADSyncConfig PowerShell-modullal 
-A ADSyncConfig modulhoz szükséges a [távoli kiszolgálófelügyelet eszközei (RSAT) az AD DS](https://docs.microsoft.com/en-us/windows-server/remote/remote-server-administration-tools) óta attól függ, az AD DS PowerShell-modult és eszközöket. Az RSAT telepítése az AD DS Szolgáltatáshoz, nyissa meg a "Futtatás mint Administrator" egy Windows PowerShell-ablakot, és hajtsa végre: 
+A ADSyncConfig modulhoz szükséges a [távoli kiszolgálófelügyelet eszközei (RSAT) az AD DS](https://docs.microsoft.com/windows-server/remote/remote-server-administration-tools) óta attól függ, az AD DS PowerShell-modult és eszközöket. Az RSAT telepítése az AD DS Szolgáltatáshoz, nyissa meg a "Futtatás mint Administrator" egy Windows PowerShell-ablakot, és hajtsa végre: 
 
 ``` powershell
 Install-WindowsFeature RSAT-AD-Tools 

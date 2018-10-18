@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 05/25/2017
 ms.author: jasonh
 ROBOTS: NOINDEX
-ms.openlocfilehash: abf9cd311af141a646c56f452ded77a914bc1d2f
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 294353cfcfba617ab19e703f11f35402bcf7ea82
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43093298"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49387581"
 ---
 # <a name="analyze-twitter-data-using-hive-in-hdinsight"></a>Hive HDInsight használatával egy Twitter-adatok elemzése
 Közösségi webhelyek egyik fő környezetbarát big-data bevezetésére. Nyilvános API-kat, mint például a Twitter által biztosított okai a hasznos adatok elemzéséhez és megértéséhez népszerű trendeket.
@@ -72,7 +72,7 @@ OAuth használata az első lépés az új alkalmazás létrehozása a fejlesztő
 
 **Twitter-alkalmazás létrehozása**
 
-1. Jelentkezzen be a [ https://apps.twitter.com/ ](https://apps.twitter.com/). Kattintson a **regisztráció** hivatkozásra, ha nem rendelkezik egy Twitter-fiókkal.
+1. Jelentkezzen be itt: [https://apps.twitter.com/](https://apps.twitter.com/). Kattintson a **regisztráció** hivatkozásra, ha nem rendelkezik egy Twitter-fiókkal.
 2. Kattintson a **új alkalmazás létrehozása**.
 3. Adja meg **neve**, **leírás**, **webhely**. Meghatározhat egy URL-címe be a **webhely** mező. Az alábbi táblázat néhány mintaértékeket használhatja:
 
@@ -95,7 +95,7 @@ Ebben az oktatóanyagban a Windows PowerShell használatával, hogy a webes szol
 
 **Twitter-üzenetek beolvasásához**
 
-1. Nyissa meg a Windows PowerShell integrált parancsfájl-kezelési környezet (ISE). (Írja be a Windows 8 Start képernyő **PowerShell_ISE** majd **Windows PowerShell ISE-ben**. Lásd: [indítsa el a Windows PowerShell, a Windows 8 és Windows](https://docs.microsoft.com/en-us/powershell/scripting/setup/starting-windows-powershell?view=powershell-6)
+1. Nyissa meg a Windows PowerShell integrált parancsfájl-kezelési környezet (ISE). (Írja be a Windows 8 Start képernyő **PowerShell_ISE** majd **Windows PowerShell ISE-ben**. Lásd: [indítsa el a Windows PowerShell, a Windows 8 és Windows](https://docs.microsoft.com/powershell/scripting/setup/starting-windows-powershell?view=powershell-6)
 2. Másolja a parancsfájl panelen a következő parancsfájlt:
 
     ```powershell

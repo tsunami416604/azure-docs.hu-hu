@@ -16,12 +16,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/01/2017
 ms.author: negat
-ms.openlocfilehash: 1716ebf1d3490511d7102c8c756c78c0f0c55291
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: e03016b80b0a7043a72e55b6c8b68b67b55283b1
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43669920"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49388126"
 ---
 # <a name="design-considerations-for-scale-sets"></a>Kialakítási szempontok a méretezési csoportokhoz
 Ez a cikk ismerteti a Virtual Machine Scale Sets kapcsolatos kialakítási szempontok. Mik azok a Virtual Machine Scale Sets kapcsolatos információkért tekintse meg [virtuálisgép-méretezési csoportok – áttekintés](virtual-machine-scale-sets-overview.md).
@@ -33,8 +33,8 @@ Ez a cikk ismerteti a Virtual Machine Scale Sets kapcsolatos kialakítási szemp
 
 - Miután megadta a méretezési csoport konfigurációs, frissítheti a *kapacitás* tulajdonság további virtuális gépek párhuzamos üzembe helyezése. Ez a folyamat jobb, mint írása egy parancsfájl történő párhuzamos számos, az egyes virtuális gépek üzembe helyezéséhez.
 - Is [a méretezési csoport automatikus méretezése az Azure automatikus méretezési funkciójával használatával](./virtual-machine-scale-sets-autoscale-overview.md) , de nem az egyéni virtuális gépeket.
-- Is [reimage méretezési csoport virtuális gépeinek](https://docs.microsoft.com/en-us/rest/api/compute/virtualmachinescalesets/reimage) , de [nem az egyes virtuális gépek](https://docs.microsoft.com/rest/api/compute/virtualmachines).
-- Is [overprovision](https://docs.microsoft.com/en-us/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-design-overview#overprovisioning) méretezési csoport virtuális gépeinek a nagyobb megbízhatóság és gyorsabb üzembe helyezéshez szükséges idő. Az egyes virtuális gépek nem overprovision, kivéve, ha ez a művelet végrehajtásához egyéni kód írása.
+- Is [reimage méretezési csoport virtuális gépeinek](https://docs.microsoft.com/rest/api/compute/virtualmachinescalesets/reimage) , de [nem az egyes virtuális gépek](https://docs.microsoft.com/rest/api/compute/virtualmachines).
+- Is [overprovision](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-design-overview#overprovisioning) méretezési csoport virtuális gépeinek a nagyobb megbízhatóság és gyorsabb üzembe helyezéshez szükséges idő. Az egyes virtuális gépek nem overprovision, kivéve, ha ez a művelet végrehajtásához egyéni kód írása.
 - Megadhat egy [frissítési szabályzatának](./virtual-machine-scale-sets-upgrade-scale-set.md) megkönnyíti a frissítés bevezetése virtuális gépek között a méretezési csoportban lévő. Az egyes virtuális gépekhez meg kell levezényelni saját magának.
 
 ### <a name="vm-specific-features"></a>Virtuálisgép-specifikus szolgáltatásai

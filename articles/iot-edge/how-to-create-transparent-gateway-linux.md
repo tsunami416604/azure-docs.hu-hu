@@ -8,16 +8,16 @@ ms.date: 6/20/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: df1ca1358d1b111d8412d730575eb7bf66c8ebdf
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 079a22ebaa7abfec7e8db142bc8f277ff12ab77e
+ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46950012"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49394969"
 ---
 # <a name="create-a-linux-iot-edge-device-that-acts-as-a-transparent-gateway"></a>Hozzon létre egy Linux IoT Edge-eszköz, amely transzparens átjáróként
 
-Ez a cikk részletes utasításokat a transzparens átjáróként IoT Edge-eszköz használatával. Ez a cikk a többi kifejezés *IoT Edge-átjáró* IoT Edge-eszköz transzparens átjáróként használt hivatkozik. Részletesebb információkért lásd: [hogyan az IoT Edge-eszközt átjáróként használható][lnk-edge-as-gateway], révén fogalmi áttekintése.
+Ez a cikk részletes utasításokat a transzparens átjáróként IoT Edge-eszköz használatával. Ez a cikk a többi kifejezés *IoT Edge-átjáró* IoT Edge-eszköz transzparens átjáróként használt hivatkozik. Részletesebb információkért lásd: [hogyan az IoT Edge-eszközt átjáróként használható](./iot-edge-as-gateway.md), révén fogalmi áttekintése.
 
 >[!NOTE]
 >Jelenleg:
@@ -27,9 +27,9 @@ Ez a cikk részletes utasításokat a transzparens átjáróként IoT Edge-eszk�
 
 Transzparens átjáró létrehozása a rögzített rész biztonságos összekapcsolása az alsóbb rétegbeli eszközök átjárót. Az Azure IoT Edge lehetővé teszi, hogy ezek az eszközök közötti biztonságos TLS-kapcsolatok beállítása a PKI-infrastruktúra használatával. Ebben az esetben azt engedélyezi egy alsóbb rétegbeli eszközök transzparens átjáróként működő IoT Edge-eszköz csatlakozni.  Ésszerű biztonságának fenntartása érdekében az alsóbb rétegbeli eszközök ellenőrizze identitását a peremhálózati eszköz, mivel csak az eszközök csatlakoztatása az átjárók és a egy potenciálisan kártékony átjáró nincs.
 
-Minden olyan tanúsítvány-infrastruktúra, amely lehetővé teszi a megbízhatósági kapcsolat szükséges az eszköz-átjáró topológiát hozhat létre. Ez a cikk feltételezzük, hogy az azonos tanúsítvány beállítása, hogy engedélyezni szeretné használni [x.509-es Hitelesítésszolgáltatói biztonsági] [ lnk-iothub-x509] az IoT Hub, amely magában foglalja egy adott IoT hub (az IoT hub tulajdonosa hitelesítésszolgáltató társított X.509 Hitelesítésszolgáltatói tanúsítvány ), és a egy sorozat tanúsítványok, a hitelesítésszolgáltató és a egy hitelesítésszolgáltató aláírt az Edge-eszköz.
+Minden olyan tanúsítvány-infrastruktúra, amely lehetővé teszi a megbízhatósági kapcsolat szükséges az eszköz-átjáró topológiát hozhat létre. Ez a cikk feltételezzük, hogy az azonos tanúsítvány beállítása, hogy engedélyezni szeretné használni [x.509-es Hitelesítésszolgáltatói biztonsági](../iot-hub/iot-hub-x509ca-overview.md) az IoT Hub, amelyek egy adott IoT hub (az IoT hub tulajdonos CA), és a egy sorozat tanúsítványok társított X.509 Hitelesítésszolgáltatói tanúsítvány, a hitelesítésszolgáltató és hitelesítésszolgáltató aláírt az Edge-eszköz számára.
 
-![Átjáró beállítása][1]
+![Átjáró beállítása](./media/how-to-create-transparent-gateway/gateway-setup.png)
 
 Az átjáró a peremhálózati eszköz Hitelesítésszolgáltatói tanúsítványát az alsóbb rétegbeli eszközre során a kapcsolat kezdeményezése mutat be. Az alsóbb rétegbeli eszköz ellenőrzi, hogy a peremhálózati eszköz Hitelesítésszolgáltatói tanúsítványt a tulajdonos Hitelesítésszolgáltatói tanúsítvány aláírásával. Ez a folyamat lehetővé teszi, hogy az alsóbb rétegbeli eszközök annak ellenőrzéséhez, hogy az átjáró egy megbízható forrásból származik.
 
@@ -37,8 +37,8 @@ A következő lépések végigvezetik a folyamat a tanúsítványok létrehozás
 
 ## <a name="prerequisites"></a>Előfeltételek
 1.  Telepítse az Azure IoT Edge-futtatókörnyezet a transzparens átjáróként használni kívánt Linux rendszerű eszközön.
-   * [Linux x64][lnk-install-linux-x64]
-   * [Linux ARM32][lnk-install-linux-arm]
+   * [Linux x64](./how-to-install-iot-edge-linux.md)
+   * [Linux ARM32](./how-to-install-iot-edge-linux-arm.md)
 
 2.  Szerezze be az alábbi parancsot a szükséges nem éles tanúsítványokat létrehozni a szkripteket. Ezek a parancsfájlok segítségével hozhat létre a szükséges tanúsítványok beállítása a transzparens átjáró. 
 
@@ -61,7 +61,7 @@ A következő lépések végigvezetik a folyamat a tanúsítványok létrehozás
       ```
 
 ## <a name="certificate-creation"></a>Tanúsítvány létrehozása
-1.  Hozzon létre a tulajdonos Hitelesítésszolgáltatói tanúsítvány és a egy köztes tanúsítványt. Ezek az összes kerüljenek a `$WRKDIR`.
+1.  Hozzon létre a tulajdonos Hitelesítésszolgáltatói tanúsítvány és a egy köztes tanúsítványt. Ezek a tanúsítványok vannak elhelyezve `$WRKDIR`.
 
    ```cmd
    ./certGen.sh create_root_and_intermediate
@@ -134,7 +134,7 @@ Az Azure IoT Edge egyik legfontosabb képessége a modulok felhőből való üze
 6. Tekintse át a sablon lépésben válassza ki a **küldés**.
 
 ## <a name="installation-on-the-downstream-device"></a>Az alsóbb rétegbeli eszközök telepítése
-Alsóbb rétegbeli eszközök bármilyen alkalmazások lehetnek használatával a [Azure IoT eszközoldali SDK-t][lnk-devicesdk], például egy egyszerű ismertetett [az eszköz csatlakoztatása az IoT hubhoz .NET használatával] [ lnk-iothub-getstarted]. Egy alsóbb rétegbeli eszközök alkalmazás rendelkezik megbízzon a **tulajdonosa hitelesítésszolgáltató** tanúsítványt annak érdekében, hogy az átjáró-eszközökre a TLS kapcsolatok ellenőrzése. Ezt a lépést általában két módon hajtható végre: az operációs rendszer szintjén, vagy (az egyes nyelvekhez) az alkalmazás szintjén.
+Alsóbb rétegbeli eszközök bármilyen alkalmazások lehetnek használatával a [Azure IoT eszközoldali SDK-t](../iot-hub/iot-hub-devguide-sdks.md), például egy egyszerű ismertetett [az eszköz csatlakoztatása az IoT hubhoz .NET használatával](../iot-hub/quickstart-send-telemetry-dotnet.md). Egy alsóbb rétegbeli eszközök alkalmazás rendelkezik megbízzon a **tulajdonosa hitelesítésszolgáltató** tanúsítványt annak érdekében, hogy az átjáró-eszközökre a TLS kapcsolatok ellenőrzése. Ezt a lépést általában két módon hajtható végre: az operációs rendszer szintjén, vagy (az egyes nyelvekhez) az alkalmazás szintjén.
 
 ### <a name="os-level"></a>Operációs rendszer szintjén
 Ez a tanúsítvány telepítése az operációs rendszer tanúsítványtárolójában lehetővé teszi minden alkalmazás használatához a tulajdonos Hitelesítésszolgáltatói tanúsítvány, egy megbízható tanúsítványt.
@@ -148,11 +148,11 @@ Ez a tanúsítvány telepítése az operációs rendszer tanúsítványtárolój
  
     Egy üzenet arról tájékoztatja, "a tanúsítványok frissítése az /etc/ssl/certs... 1 hozzáadása, eltávolítása 0; kész."
 
-* Windows - Íme egy példa a CA tanúsítvány telepítése egy Windows-gazdagép.
-  * A start menüben írja be "Manage számítógép-tanúsítványok". Ez egy nevű segédprogramot kell vizualizációjára `certlm`.
-  * Navigáljon a tanúsítványokat a helyi számítógép megbízható legfelső szintű tanúsítványok-->--> tanúsítványok jobb--> kattintson a feladatok-->--> Importálás a Tanúsítványimportáló varázsló elindításához.
-  * Kövesse a lépéseket megfelelően, és importálja a tanúsítványt fájl $CERTDIR/certs/azure-iot-test-only.root.ca.cert.pem.
-  * Amikor elkészült, egy "Importálása sikeresen befejeződött" üzenetnek kell megjelennie.
+* Windows - Íme egy példa egy hitelesítésszolgáltató-tanúsítvány telepítése egy Windows-gazdagépen.
+  1. A start menüben írja be "Manage számítógép-tanúsítványok". Ez egy nevű segédprogramot kell vizualizációjára `certlm`.
+  2. Navigáljon a **tanúsítványok helyi számítógép** > **megbízható legfelső szintű tanúsítványok** > **tanúsítványok** > kattintson a jobb gombbal > **Feladatok** > **importálása** a Tanúsítványimportáló varázsló elindításához.
+  3. Kövesse a lépéseket megfelelően, és importálja a tanúsítványt fájl $CERTDIR/certs/azure-iot-test-only.root.ca.cert.pem.
+  4. Amikor elkészült, egy "Importálása sikeresen befejeződött" üzenetnek kell megjelennie.
 
 ### <a name="application-level"></a>Alkalmazás-szint
 A .NET-alkalmazásokban a következő kódrészletet egy PEM formátumú tanúsítvány megbízható is hozzáadhat. A változó inicializálása `certPath` a `$CERTDIR/certs/azure-iot-test-only.root.ca.cert.pem`.
@@ -169,7 +169,7 @@ A .NET-alkalmazásokban a következő kódrészletet egy PEM formátumú tanús�
    ```
 
 ## <a name="connect-the-downstream-device-to-the-gateway"></a>Az alsóbb rétegbeli eszköz csatlakoztatása az átjáró
-Az IoT Hub eszközoldali sdk inicializálnia kell az átjáró eszköz állomásnevét hivatkozó egy olyan kapcsolati karakterlánccal. Ez történik, amelyeket a `GatewayHostName` tulajdonságot az eszköz kapcsolati karakterláncát. Például itt látható egy minta eszköz kapcsolati karakterláncát egy eszközhöz, hogy hozzáfűzi a `GatewayHostName` tulajdonság:
+Az IoT Hub eszközoldali SDK inicializálásához az átjáróeszköz állomásnevét hivatkozó egy olyan kapcsolati karakterlánccal. Ez történik, amelyeket a `GatewayHostName` tulajdonságot az eszköz kapcsolati karakterláncát. Például itt látható egy minta eszköz kapcsolati karakterláncát egy eszközhöz, hogy hozzáfűzi a `GatewayHostName` tulajdonság:
 
    ```
    HostName=yourHub.azure-devices.net;DeviceId=yourDevice;SharedAccessKey=XXXYYYZZZ=;GatewayHostName=mygateway.contoso.com
@@ -187,31 +187,9 @@ Az IoT Edge-futtatókörnyezet továbbíthatnak hasonlóan modulok által küld�
    { "routes":{ "sensorToAIInsightsInput1":"FROM /messages/* WHERE NOT IS_DEFINED($connectionModuleId) INTO BrokeredEndpoint(\"/modules/ai_insights/inputs/input1\")", "AIInsightsToIoTHub":"FROM /messages/modules/ai_insights/outputs/output1 INTO $upstream" } }
    ```
 
-Tekintse meg a [modul összeállítás cikk] [ lnk-module-composition] üzenet-útválasztással kapcsolatos részletekért.
+Tekintse meg a [modul összeállítás cikk](./module-composition.md) üzenet-útválasztással kapcsolatos részletekért.
 
-[!INCLUDE [](../../includes/iot-edge-extended-offline-preview.md)]
+[!INCLUDE [iot-edge-offline-preview](../../includes/iot-edge-extended-offline-preview.md)]
 
 ## <a name="next-steps"></a>További lépések
-[A követelmények és az eszközök IoT Edge-modulok megismerése][lnk-module-dev].
-
-<!-- Images -->
-[1]: ./media/how-to-create-transparent-gateway/gateway-setup.png
-
-<!-- Links -->
-[lnk-install-linux-x64]: ./how-to-install-iot-edge-linux.md
-[lnk-install-linux-arm]: ./how-to-install-iot-edge-linux-arm.md
-[lnk-module-composition]: ./module-composition.md
-[lnk-devicesdk]: ../iot-hub/iot-hub-devguide-sdks.md
-[lnk-tutorial1-win]: tutorial-simulate-device-windows.md
-[lnk-tutorial1-lin]: tutorial-simulate-device-linux.md
-[lnk-edge-as-gateway]: ./iot-edge-as-gateway.md
-[lnk-module-dev]: module-development.md
-[lnk-iothub-getstarted]: ../iot-hub/quickstart-send-telemetry-dotnet.md
-[lnk-iothub-x509]: ../iot-hub/iot-hub-x509ca-overview.md
-[lnk-iothub-secure-deployment]: ../iot-hub/iot-hub-security-deployment.md
-[lnk-iothub-tokens]: ../iot-hub/iot-hub-devguide-security.md#security-tokens
-[lnk-iothub-throttles-quotas]: ../iot-hub/iot-hub-devguide-quotas-throttling.md
-[lnk-iothub-devicetwins]: ../iot-hub/iot-hub-devguide-device-twins.md
-[lnk-iothub-c2d]: ../iot-hub/iot-hub-devguide-messages-c2d.md
-[lnk-ca-scripts]: https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md
-[lnk-modbus-module]: https://github.com/Azure/iot-edge-modbus
+[A követelmények és az eszközök IoT Edge-modulok megismerése](module-development.md).

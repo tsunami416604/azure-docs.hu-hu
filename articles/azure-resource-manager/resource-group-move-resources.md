@@ -10,14 +10,14 @@ ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/25/2018
+ms.date: 10/17/2018
 ms.author: tomfitz
-ms.openlocfilehash: 33d5560f2bfef04678cf7a2236fd920385d68aac
-ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
+ms.openlocfilehash: c32c4f97a963485e87e36afc44e9cea2ebcebd90
+ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47452156"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49394410"
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>Erőforrások áthelyezése új erőforráscsoportba vagy előfizetésbe
 
@@ -110,7 +110,7 @@ Kapcsolattartó [támogatja](https://portal.azure.com/#blade/Microsoft_Azure_Sup
 
 ## <a name="validate-move"></a>Áthelyezésének ellenőrzése
 
-A [áthelyezési művelet érvényesítése](/rest/api/resources/resources/validatemoveresources) az áthelyezési forgatókönyv teszteléséhez ténylegesen az erőforrások áthelyezése nélkül teszi lehetővé. Ez a művelet segítségével határozhatja meg, ha az áthelyezés sikeres lesz. Ez a művelet végrehajtásához szükséges a:
+A [áthelyezési művelet érvényesítése](/rest/api/resources/resources/resources_validatemoveresources) az áthelyezési forgatókönyv teszteléséhez ténylegesen az erőforrások áthelyezése nélkül teszi lehetővé. Ez a művelet segítségével határozhatja meg, ha az áthelyezés sikeres lesz. Ez a művelet végrehajtásához szükséges a:
 
 * a forrás erőforráscsoport nevét
 * erőforrás-azonosító a célként megadott erőforráscsoport
@@ -219,7 +219,7 @@ Az alábbi lista egy új erőforráscsoportot és egy előfizetést is áthelyez
 * Keresés
 * Service Bus
 * Service Fabric
-* Service Fabric háló
+* Service Fabric Mesh
 * SignalR szolgáltatás
 * Storage - tárfiókok különböző régiókban lévő műveletben nem lehet áthelyezni. Ehelyett használjon minden régióhoz külön műveletnek.
 * Tekintse meg a tároló (klasszikus) – [klasszikus üzembe helyezési korlátozásoknak](#classic-deployment-limitations)

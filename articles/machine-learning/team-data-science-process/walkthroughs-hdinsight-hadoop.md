@@ -1,10 +1,10 @@
 ---
-title: HDInsight Hadoop adatok tudományos forgatókönyvek Azure a Hive használatával |} Microsoft Docs
-description: Példák az Team tudományos folyamat, amely a prediktív elemzés végrehajtásához Azure HDInsight hadoop Hive segítségével ismerteti.
+title: HDInsight Hadoop adatelemzési útmutatók Hive használatával egy Azure-on |} A Microsoft Docs
+description: Példák a csoportos adatelemzési folyamat, amely a prediktív elemzések az Azure HDInsight hadoop Hive használatával bejárása.
 services: machine-learning
 documentationcenter: ''
 author: deguhath
-manager: jhubbard
+manager: cgronlun
 editor: cgronlun
 ms.assetid: ''
 ms.service: machine-learning
@@ -15,37 +15,37 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/04/2017
 ms.author: deguhath
-ms.openlocfilehash: 8b7eead12b6546ad86f6ff0aa48f4754c00a4734
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 2aa64d6dc144e85e1a0f03b8548fa47dba91a2eb
+ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34838755"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49393159"
 ---
-# <a name="hdinsight-hadoop-data-science-walkthroughs-using-hive-on-azure"></a>HDInsight Hadoop adatok tudományos forgatókönyvek az Azure-on a Hive eszközzel 
+# <a name="hdinsight-hadoop-data-science-walkthroughs-using-hive-on-azure"></a>Hive használatával egy Azure HDInsight Hadoop adatelemzési útmutatók 
 
-Ezek a forgatókönyvek Hive HDInsight Hadoop-fürthöz prediktív elemzési kell használni. Ezek leírt lépések az adatok tudományos folyamatban. Az Team tudományos folyamat áttekintését lásd: [adatok tudományos folyamat](overview.md). Megismerkedhet az Azure HDInsight, lásd: [Bevezetés az Azure HDInsight Hadoop technológiai területekre, és az Hadoop-fürtök](../../hdinsight/hadoop/apache-hadoop-introduction.md).
+Ezek az útmutatók a Hive használata egy HDInsight Hadoop-fürtöt a prediktív elemzések. A csoportos adatelemzési folyamat lépéseinek követik. A csoportos adatelemzési folyamat áttekintését lásd: [adatelemzési folyamat](overview.md). Bevezetés az Azure HDInsight, lásd: [Azure HDInsight bemutatása, Hadoop-technológiák és a Hadoop-fürtök](../../hdinsight/hadoop/apache-hadoop-introduction.md).
 
-További adatok tudományos forgatókönyvek, amelyek az Team tudományos folyamat végrehajtása szerint vannak csoportosítva a **platform** használnak. Lásd: [az Team tudományos folyamat végrehajtása forgatókönyvek](walkthroughs.md) ezekben a példákban az részletezéshez.
+További adatelemzési útmutatók, a csoportos adatelemzési folyamat végrehajtható szerint vannak csoportosítva a **platform** használnak. Lásd: [forgatókönyvek végrehajtása a csoportos adatelemzési folyamat](walkthroughs.md) a példák egy részletezéshez.
 
 
-## <a name="predict-taxi-tips-using-hive-with-hdinsight-hadoop"></a>A HDInsight Hadoop Hive eszközzel taxi tippek előrejelzése
+## <a name="predict-taxi-tips-using-hive-with-hdinsight-hadoop"></a>HDInsight Hadoop Hive-val taxi tippek előrejelzése
 
-A [használata a HDInsight Hadoop-fürtök](hive-walkthrough.md) forgatókönyv előre jelezni Győr taxikra adatait használja: 
+A [használata a HDInsight Hadoop-fürtök](hive-walkthrough.md) forgatókönyv New York-i taxikra adatait használja előrejelzésére: 
 
-- Tipp: fizetnek e 
-- A terjesztési tipp díjak
+- Tipp: fizetős e 
+- Tipp összegek eloszlása
 
-A forgatókönyv a Hive segítségével van megvalósítva egy [Azure HDInsight Hadoop-fürt](https://azure.microsoft.com/services/hdinsight/). Megismerheti, hogyan tárolja, így megismerkedhet, és nyilvánosan elérhető NYC visszafejtés adatait a szolgáltatás taxiköltség út és a jegy ára adatkészlet. Azure Machine Learning létrehozásához és telepítéséhez a modellek is használja.
+A forgatókönyv valósul meg, a Hive használatával egy [Azure HDInsight Hadoop-fürt](https://azure.microsoft.com/services/hdinsight/). Megtudhatja, hogyan tárolhatja, ismerje meg, és a egy nyilvánosan elérhető NYC funkciót engineer adatait taxiköltség utazást és diszkont adatkészlet. Is használhatja az Azure Machine Learning készíthet és helyezhet üzembe a modellt.
 
-## <a name="predict-advertisement-clicks-using-hive-with-hdinsight-hadoop"></a>HDInsight Hadoop Hive használata a hirdetés kattintással előrejelzése
+## <a name="predict-advertisement-clicks-using-hive-with-hdinsight-hadoop"></a>Hirdetmény kattintások és a HDInsight Hadoop Hive használatának előrejelzése
 
-A [használata Azure HDInsight Hadoop-fürtök az 1 TB méretű dataset](hive-criteo-walkthrough.md) forgatókönyv használ egy nyilvánosan elérhető [Criteo](http://labs.criteo.com/downloads/download-terabyte-click-logs/) kattintson dataset előre jelezni, hogy tipp fizetnek és a tartomány díjak a várható. A forgatókönyv a Hive segítségével van megvalósítva egy [Azure HDInsight Hadoop-fürt](https://azure.microsoft.com/services/hdinsight/) tárolására, megismerkedhet a beállítást, a visszafejtés és mintaadatokat tölthet le. Az Azure Machine Learning segítségével felépítéséhez, betanítását és pontozását egy bináris osztályozási modell előrejelzése, hogy a felhasználó hirdetmény kattint. Megjelenik a forgatókönyv bemutatja, hogyan közzététele egy ezek a modellek webszolgáltatásként.
+A [használata Azure HDInsight Hadoop-fürtök 1 TB méretű adatkészleteken](hive-criteo-walkthrough.md) egy nyilvánosan elérhető forgatókönyv [Criteo](http://labs.criteo.com/downloads/download-terabyte-click-logs/) kattintson az adatkészlet tipp fizetős e, és a tartomány a várt mennyiségű előrejelzésére. A forgatókönyv valósul meg, a Hive használatával egy [Azure HDInsight Hadoop-fürt](https://azure.microsoft.com/services/hdinsight/) szeretné tárolni, ismerje meg, a visszafejtés funkciót, és le a mintaadatokat. Az Azure Machine Learning segítségével hozhat létre, betanítását és pontozását egy bináris osztályozási modell előrejelzésének, hogy a felhasználó rákattint az alkalmazásban a hirdetmény forráshierarchiából. A forgatókönyv azt állapítja meg, közzé egy, ezek a modellek webszolgáltatásként való ismertető.
 
 
 ## <a name="next-steps"></a>További lépések
 
-A fő összetevőből épül fel az Team tudományos folyamat tárgyalását lásd: [Team adatok tudományos folyamat áttekintése](overview.md).
+A csoportos adatelemzési folyamat alkotó főbb összetevőit, lásd: [csoportos adatelemzési folyamat áttekintése](overview.md).
 
-A csoport az tudományos folyamata életciklussal, amely segítségével az adatok tudományos projektek szerkezeti tárgyalását lásd: [Team adatok tudományos folyamat életciklus](lifecycle.md). Az életciklus kezdetétől a végéig, projektek általában követve azok végrehajtásakor, lépéseit mutatja be. 
+A csoportos adatelemzési folyamat életciklusa, amelyek segítségével az adatelemzési projektek strukturálása tárgyalását lásd: [csoportos adatelemzési folyamat életciklusa](lifecycle.md). Az életciklus elejétől a végéig, projektek általában követve azok végrehajtásakor, lépéseit ismerteti. 
 

@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: 745b26661d34357e44b6a7c2ed6e40f3195781f1
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: 35feb1b2aa593d403b3b54781ddbba41964d15e5
+ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48237993"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49394833"
 ---
 # <a name="become-a-cloud-marketplace-publisher"></a>Felhőbeli piactér kiadói válik
 
@@ -97,7 +97,7 @@ Az egyes regisztrálása [Dev Center](https://developer.microsoft.com/store/regi
 Befejezése után a [Dev Center](https://developer.microsoft.com/store/register) regisztrációs, összekapcsolása a Cloud Partner profilja az a [Dev Center](https://developer.microsoft.com/store/register) fiókra (lásd a részletes lépéseket). Ebben a lépésben a transact-ajánlat közzététele előtt kell elvégezni. 
 
 >[!Note]
->Elengedni az $99 fejlesztői központ regisztrációs díj, a Marketplace-en regisztrációs űrlap kitöltése és kapni fog egy e-mailt a promóciós kódot. 
+>A $99 fejlesztői központ-regisztráció díj elengedni, végezze el a [marketplace regisztrációs űrlap](https://azuremarketplace.microsoft.com/en-us/sell/signup) és a egy a promóciós kódot tartalmazó e-mailt fog kapni. 
 
 >[!Important]
 >Mielőtt létrehozna egy Dev Center a Microsoft-fiókot, győződjön meg arról, hogy a szervezete még nem rendelkezik a fejlesztői központban lévő fiókjához ismétlődő fiókok elkerülése érdekében. További információért látogasson el a [a fejlesztői központban regisztrálása](https://docs.microsoft.com/azure/marketplace/register-dev-center) szakaszban.

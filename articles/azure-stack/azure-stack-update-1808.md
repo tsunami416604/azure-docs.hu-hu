@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 10/12/2018
 ms.author: sethm
 ms.reviewer: justini
-ms.openlocfilehash: 2e40f0520c0f5e605974f883b3327699ff26313e
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: 3843898ba2d7cdd3697236a9f4cc19070c6f07c3
+ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49321818"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49395173"
 ---
 # <a name="azure-stack-1808-update"></a>Azure Stack 1808 frissítése
 
@@ -261,6 +261,10 @@ Az alábbiakban a telepítés utáni ismert hibáit a build-verziószáma.
    2. Ha egy több-bérlős környezet van beállítva, egy belső hiba miatt meghiúsulhat egy előfizetésben, és a Vendég címtár tartozó virtuális gépek üzembe helyezéséhez. A hiba elhárításához kövesse az alábbi lépéseket:
       1. Alkalmazza a [1808 Azure Stack gyorsjavítás](https://support.microsoft.com/help/4467062/).
       2. Kövesse a [Ez a cikk](azure-stack-enable-multitenancy.md#registering-azure-stack-with-the-guest-directory) újrakonfigurálása a Vendég címtárak mindegyike.
+      
+<!-- 3179561 - IS --> 
+- Felügyelt lemezek használatának órában jelentett, leírtak szerint a [Azure Stack-használat – gyakori kérdések](azure-stack-usage-related-faq.md#managed-disks). Azonban az Azure Stack a számlázás a havi díjak; ezek helyett használja, akkor előfordulhat, hogy nem megfelelően kell fizetnie a Managed Disks-használat vagy az előtt szeptember 27. Azt ideiglenesen felfüggesztette a díjak a Managed Disks után szeptember mindaddig, amíg a számlázási kérdést 27. Ha Ön felszámítani, nem megfelelően a Managed Disks-használat, lépjen kapcsolatba a Microsoft számlázási támogatást.
+Az Azure Stack-használati API-k készült használati jelentések megfelelő mennyiséget, és használható.
 
 <!-- 2869209 – IS, ASDK --> 
 - Használatakor a [ **Add-AzsPlatformImage** parancsmag](https://docs.microsoft.com/powershell/module/azs.compute.admin/add-azsplatformimage?view=azurestackps-1.4.0), kell használnia a **- OsUri** paramétert, a tárfiók URI, ahol fel a rendszer a lemezen. Ha helyi elérési útját a lemezt használ, a parancsmag a következő hibával meghiúsul: *hosszú ideig futó művelet sikertelen volt, "Sikertelen" állapotú*. 

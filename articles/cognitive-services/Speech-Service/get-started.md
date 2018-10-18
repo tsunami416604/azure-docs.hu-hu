@@ -9,12 +9,12 @@ ms.component: speech-service
 ms.topic: article
 ms.date: 09/24/2018
 ms.author: erhopf
-ms.openlocfilehash: 4530ecca973054ee73a02ca4e047dfe52ea90d04
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.openlocfilehash: 7ca423a4953dbe05af119d6b6eb12976c722e374
+ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49166185"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49393269"
 ---
 # <a name="try-the-speech-service-for-free"></a>Próbálja ki ingyenesen a Beszédszolgáltatást
 
@@ -67,7 +67,7 @@ Miután létrehozta az Azure-fiókjával, kövesse a következő szakaszban a Sp
 
 A beszédfelismerési szolgáltatás-erőforrás (ingyenes vagy fizetős szint) hozzáadása az Azure-fiókjával:
 
-1. Jelentkezzen be a [az Azure portal](https://ms.portal.azure.com/) Microsoft-fiókjával.
+1. Jelentkezzen be a [az Azure portal](https://portal.azure.com/) Microsoft-fiókjával.
 
 1. Válassza ki **erőforrás létrehozása** , a portál bal felső.
 

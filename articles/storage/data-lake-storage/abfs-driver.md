@@ -9,12 +9,12 @@ ms.author: jamesbak
 ms.date: 06/27/2018
 ms.service: storage
 ms.component: data-lake-storage-gen2
-ms.openlocfilehash: dedf398064dd0a49e5691e952ea7c9b6d16e34fd
-ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
+ms.openlocfilehash: f618b925839d6f501635748734327293a2073b64
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "42055701"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49384855"
 ---
 # <a name="the-azure-blob-filesystem-driver-abfs-a-dedicated-azure-storage-driver-for-hadoop"></a>Az Azure Blob fájlrendszer illesztőprogram (ABFS): egy dedikált Azure Storage-illesztőprogram a Hadoophoz
 
@@ -26,7 +26,7 @@ A Windows Azure Storage-Blobba illesztőprogram vagy [WASB illesztőprogram](htt
 
 ## <a name="the-azure-blob-file-system-driver"></a>Az Azure Blob fájlrendszer illesztőprogramja
 
-A [Azure Data Lake Storage REST-felület](https://docs.microsoft.com/en-us/rest/api/storageservices/data-lake-storage-gen2) keresztül az Azure Blob Storage támogatja a fájlrendszer szemantikáját. Tekintve, hogy a Hadoop-fájlrendszer is célja, hogy támogatja az azonos esetében nem követelmény az illesztőprogram egy összetett leképezés. Így az Azure Blob fájlrendszerének illesztőprogram (vagy a ABFS) egy puszta ügyfél segédkód a REST API-hoz.
+A [Azure Data Lake Storage REST-felület](https://docs.microsoft.com/rest/api/storageservices/data-lake-storage-gen2) keresztül az Azure Blob Storage támogatja a fájlrendszer szemantikáját. Tekintve, hogy a Hadoop-fájlrendszer is célja, hogy támogatja az azonos esetében nem követelmény az illesztőprogram egy összetett leképezés. Így az Azure Blob fájlrendszerének illesztőprogram (vagy a ABFS) egy puszta ügyfél segédkód a REST API-hoz.
 
 Vannak azonban bizonyos funkciók, amely az illesztőprogram továbbra is el kell végeznie:
 

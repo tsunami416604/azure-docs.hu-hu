@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/02/2018
 ms.author: apimpm
-ms.openlocfilehash: 8c4ae9c7b8be8cf390ad4ad6d99cd1ec41cd3d08
-ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
+ms.openlocfilehash: ce4ff33a8af9cf864ad4902599a0ab18b2b27182
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/15/2018
-ms.locfileid: "42055101"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49387225"
 ---
 # <a name="how-to-save-and-configure-your-api-management-service-configuration-using-git"></a>Mentse, és a Git használatával az API Management-szolgáltatás konfigurációjának beállítása
 
@@ -219,14 +219,14 @@ A végső beállítás `$ref-policy`, leképezi a globális szabályzat utasít�
 ### <a name="apis-folder"></a>API-k mappa
 A `apis` mappa tartalmaz egy mappát az egyes API-t a szolgáltatás példánya, amely a következő elemeket tartalmazza.
 
-* `apis\<api name>\configuration.json` – Ez a konfiguráció az API-hoz és a háttérkiszolgáló URL-címe és a műveletek tartalmaz információkat. Ez az, hogy ugyanazokat az információkat, amelyek a rendszer visszaadna, ha hívása [beolvasása egy adott API](https://docs.microsoft.com/en-us/rest/api/apimanagement/api/get) a `export=true` a `application/json` formátumban.
-* `apis\<api name>\api.description.html` – Ez az API-t leírása, amely megfelel a `description` tulajdonságát a [API-entitás](https://docs.microsoft.com/en-us/java/api/com.microsoft.azure.storage.table._entity_property).
-* `apis\<api name>\operations\` – Ez a mappa tartalmaz `<operation name>.description.html` fájlok, amelyek leképezik a műveletek az API-ban. Minden fájl tartalmaz, amely az API-ban egyetlen művelet leírása a `description` tulajdonságát a [művelet entitás](https://docs.microsoft.com/en-us/rest/api/visualstudio/operations/list#operationproperties) a REST API-ban.
+* `apis\<api name>\configuration.json` – Ez a konfiguráció az API-hoz és a háttérkiszolgáló URL-címe és a műveletek tartalmaz információkat. Ez az, hogy ugyanazokat az információkat, amelyek a rendszer visszaadna, ha hívása [beolvasása egy adott API](https://docs.microsoft.com/rest/api/apimanagement/api/get) a `export=true` a `application/json` formátumban.
+* `apis\<api name>\api.description.html` – Ez az API-t leírása, amely megfelel a `description` tulajdonságát a [API-entitás](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.table._entity_property).
+* `apis\<api name>\operations\` – Ez a mappa tartalmaz `<operation name>.description.html` fájlok, amelyek leképezik a műveletek az API-ban. Minden fájl tartalmaz, amely az API-ban egyetlen művelet leírása a `description` tulajdonságát a [művelet entitás](https://docs.microsoft.com/rest/api/visualstudio/operations/list#operationproperties) a REST API-ban.
 
 ### <a name="groups-folder"></a>csoportok mappa
 A `groups` mappa tartalmaz egy mappát a szolgáltatáspéldány meghatározott csoportokra.
 
-* `groups\<group name>\configuration.json` – Ez az a csoport konfigurációját. Ez az, hogy ugyanazokat az információkat, amelyek a rendszer visszaadna, ha hívása a [beolvasása egy adott csoport](https://docs.microsoft.com/en-us/rest/api/apimanagement/group/get) műveletet.
+* `groups\<group name>\configuration.json` – Ez az a csoport konfigurációját. Ez az, hogy ugyanazokat az információkat, amelyek a rendszer visszaadna, ha hívása a [beolvasása egy adott csoport](https://docs.microsoft.com/rest/api/apimanagement/group/get) műveletet.
 * `groups\<group name>\description.html` – Ez a csoport leírását, amely megfelel a `description` tulajdonságát a [entitás csoport](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-group-entity).
 
 ### <a name="policies-folder"></a>házirend mappa
@@ -246,7 +246,7 @@ A `portalStyles` mappa tartalmazza a konfigurációs és stílus táblázatok a 
 ### <a name="products-folder"></a>termékek mappa
 A `products` mappa tartalmaz egy mappát az egyes termékek, a szolgáltatáspéldány meghatározott.
 
-* `products\<product name>\configuration.json` – Ez a termék a konfiguráció. Ez az, hogy ugyanazokat az információkat, amelyek a rendszer visszaadna, ha hívása a [beolvasása egy bizonyos termékben](https://docs.microsoft.com/en-us/rest/api/apimanagement/product/get) műveletet.
+* `products\<product name>\configuration.json` – Ez a termék a konfiguráció. Ez az, hogy ugyanazokat az információkat, amelyek a rendszer visszaadna, ha hívása a [beolvasása egy bizonyos termékben](https://docs.microsoft.com/rest/api/apimanagement/product/get) műveletet.
 * `products\<product name>\product.description.html` – Ez a termék leírását, amely megfelel a `description` tulajdonságát a [termék entitás](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-product-entity) a REST API-ban.
 
 ### <a name="templates"></a>sablonok

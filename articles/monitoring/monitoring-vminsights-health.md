@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/24/2018
+ms.date: 10/15/2018
 ms.author: magoedte
-ms.openlocfilehash: 5c9211486fa40e49afd91eba7c432990b0ee860b
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 84314f64d8a96e65f63cb5c6051f7f5e902cd682
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47160621"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49387821"
 ---
 # <a name="understand-the-health-of-your-azure-virtual-machines-with-azure-monitor-for-vms"></a>A virtuális gépek az Azure Monitor szolgáltatással az Azure virtuális gépek állapotának ismertetése
 Az Azure több szolgáltatást tartalmaz, amelyek külön-külön végrehajtani egy adott szerepkör vagy a feladatot a figyelés területen, de biztosít az Azure-beli virtuális gépeken futó operációs rendszer egy részletes állapota szempontjából nem volt elérhető.  A Log Analytics vagy az Azure Monitor használatával különböző feltételek esetén felügyelheti, amíg nem tervezték őket modellezheti, és az alapvető összetevők állapotát vagy a virtuális gép általános állapotát.  Az Azure virtuális gépek Állapotfigyelő szolgáltatás figyelője proaktív módon figyeli a rendelkezésre állás és a Windows vagy Linux-alapú vendég operációs rendszer, amelyek a legfontosabb összetevők és a kapcsolatok, feltételek, amely meghatározza, hogy miként állapotát, a modell teljesítményét összetevők, és riasztást küld, ha a nem kifogástalan állapot észlelésekor.  
@@ -31,7 +31,7 @@ Ez a cikk segítséget nyújt a megtudhatja, hogyan mérheti fel gyorsan, kivizs
 A virtuális gépek az Azure Monitor konfigurálásával kapcsolatos további információkért lásd: [engedélyezése az Azure Monitor-beli virtuális gépek](monitoring-vminsights-onboard.md).
 
 ## <a name="monitoring-configuration-details"></a>Figyelési konfiguráció részletei
-Ez a rész bemutatja az Azure Windows és Linux rendszerű virtuális gépek figyelése meghatározott alapértelmezett állapotára vonatkozó feltételek.
+Ez a rész bemutatja az Azure Windows és Linux rendszerű virtuális gépek figyelése meghatározott alapértelmezett állapotára vonatkozó feltételek. Az összes állapotára vonatkozó feltételek riasztás előre konfigurálva, a nem megfelelő állapotú feltétel teljesülése esetén. 
 
 ### <a name="windows-vms"></a>Windows rendszerű virtuális gépek
 
@@ -110,7 +110,7 @@ Health a Windows operációs rendszert futtató Azure virtuális gépből elér�
 
 ![VM-elemzés, monitorozás az Azure Monitor megtekintése](./media/monitoring-vminsights-health/vminsights-aggregate-health.png)
 
-Az a **előfizetés** és **erőforráscsoport** legördülő listákban válassza ki a megfelelő verziót, amely tartalmazza a cél virtuális gépek előkészítve az állapota megtekintése. 
+Az a **előfizetés** és **erőforráscsoport** legördülő listák, válassza ki a megfelelő erőforráscsoportot a virtuális gépeket a csoporthoz kapcsolódó, annak érdekében, hogy a jelentett állapot megtekintéséhez.  A kijelölés csak az állapotfigyelő szolgáltatás vonatkozik, és nem vállalunk pénzügyi teljesítmény vagy a térképen.
 
 Az a **egészségügyi** lapon is tudja ismerje meg a következőket:
 
@@ -253,21 +253,29 @@ Virtuális gép állapota riasztások súlyosság szerint osztályozva száma é
 
 ![Az összes súlyossági szint 1 riasztás – példa](./media/monitoring-vminsights-health/vminsights-sev1-alerts-01.png)
 
+Az a **riasztások** lap, akkor csak hatóköre nem a kijelölt megfelelő riasztások megjelenítése, de az is szűrve **erőforrástípus** csak az állapotriasztások váltotta ki a virtuális gép típusú erőforrást jeleníti meg.  Ez megjelenik a riasztások listája, az oszlop alatt **célerőforrás**, ahol az Azure virtuális Gépen, a riasztás kiadását okozó számára az adott feltételeknek nem megfelelő állapotú feltétel teljesülésekor jeleníti meg.  
+
+Más típusú erőforrások vagy szolgáltatások riasztásai nem célja, hogy ez a nézet szerepelnek, például a riasztások a lekérdezések alapján a Log Analytics vagy a mérőszám, amely riasztást küld, általában az alapértelmezett Azure Monitor lenne megtekintése [minden riasztás](../monitoring-and-diagnostics/monitoring-overview-alerts.md#all-alerts-page) lapot. 
+
 Ez a nézet legördülő listák az oldal tetején lévő értékek kijelölésével szűrheti.
 
 |Oszlop |Leírás | 
 |-------|------------| 
 |Előfizetés |Válasszon ki egy Azure-előfizetést. Csak a kijelölt előfizetésben riasztások nézetében megtalálhatók. | 
 |Erőforráscsoport |Válasszon egy erőforráscsoportot. Csak azon riasztások t a kiválasztott erőforráscsoportban megtalálhatók a nézetet. | 
-|Erőforrás típusa |Válassza ki egy vagy több erőforrás-típus. Csak azon riasztások t a kiválasztott típusú megtalálhatók a nézetet. Ez az oszlop csak akkor használható, miután lett megadva egy erőforráscsoportot. | 
+|Erőforrás típusa |Válassza ki egy vagy több erőforrás-típus. Alapesetben csak a cél riasztások **virtuális gépek** van jelölve, és ez a nézet tartalmazza. Ez az oszlop csak akkor használható, miután lett megadva egy erőforráscsoportot. | 
 |Erőforrás |Válasszon ki egy erőforrást. Csak azon riasztások t célként adott erőforrásra a nézet szerepelnek. Ez az oszlop csak akkor használható, miután egy erőforrás-típus lett megadva. | 
 |Severity |egy riasztás súlyossága használatba vétele, vagy válasszon *minden* minden súlyossági szint esetében riasztásokat tartalmazza. | 
 |A figyelőre érvényes feltétel |Válassza ki a figyelési feltétel szűrése figyelmezteti, ha azok *Fired* a rendszer vagy *Megoldva* a rendszer, ha a feltétel már nem aktív. Válassza ki vagy *összes* tartalmazza az összes feltétel riasztásokat. | 
 |Riasztás állapota |Válasszon egy riasztás állapotának *új*, *Acknowledge*, *lezárva*, vagy válasszon ki *összes* államok riasztásokat tartalmazza. | 
-|Szolgáltatás monitorozása |Válasszon ki egy szolgáltatást, vagy válasszon *összes* tartalmazza az összes szolgáltatás. Ez a funkció csak az Infrastructure Insights riasztásainak támogatottak. | 
+|Szolgáltatás monitorozása |Válasszon ki egy szolgáltatást, vagy válasszon *összes* tartalmazza az összes szolgáltatás. Csak a riasztások *VM Insights* Ez a funkció támogatja.| 
 |Időtartomány| Csak az adott időtartamon belül aktivált riasztások nézetében megtalálhatók. Támogatott értékei a következők: az elmúlt egy órában, az elmúlt 24 órában, az elmúlt 7 napban és az elmúlt 30 napban. | 
 
-A **riasztás részletes** ki kell választania egy riasztást a riasztás részleteinek megadása és az állapot módosítását lehetővé tevő lap jelenik meg. Riasztási szabályok kezelése és a riasztások kezelésével kapcsolatos további információkért lásd: [létrehozása, megtekintése és kezelése az Azure Monitor használatával riasztások](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md).
+A **riasztás részletes** ki kell választania egy riasztást a riasztás részleteinek megadása és az állapot módosítását lehetővé tevő lap jelenik meg. Riasztások kezelésével kapcsolatos további tudnivalókért lásd: [létrehozása, megtekintése és kezelése az Azure Monitor használatával riasztások](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md).  
+
+>[!NOTE]
+>Jelenleg nem támogatott állapotára vonatkozó feltételek új riasztásokat hozhat létre, vagy módosíthatja a meglévő erőforrásállapot-riasztási szabályok az Azure monitorban a portálról.  
+>
 
 ![Riasztás részleteinek ablaktáblája tartalmazza a kijelölt riasztás](./media/monitoring-vminsights-health/alert-details-pane-01.png)
 

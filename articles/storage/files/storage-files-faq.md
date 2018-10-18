@@ -7,12 +7,12 @@ ms.service: storage
 ms.date: 10/04/2018
 ms.author: renash
 ms.component: files
-ms.openlocfilehash: 20a87148e3c0df29e5f4dffd74a8f5389e3658b9
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.openlocfilehash: 29f09034988acde3643eebe368445caab035fabd
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/17/2018
-ms.locfileid: "49364558"
+ms.locfileid: "49387503"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>Az Azure Files kapcsolatos gyakori kérdések (GYIK)
 [Az Azure Files](storage-files-introduction.md) teljes körűen felügyelt fájlmegosztást kínáló, amely az iparági szabványnak megfelelő keresztül érhető el a felhőben [Server Message Block (SMB) protokoll](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx). Azure-fájlmegosztások párhuzamosan csatlakoztathatja felhőbeli vagy helyszíni üzemelő példányok esetében a Windows, Linux és macOS. A Windows Server-gépek Azure-fájlmegosztások közel, ahol az adatok felhasználásának gyors hozzáférés az Azure File Sync használatával képes gyorsítótárazni.
@@ -242,7 +242,7 @@ Ez a cikk az Azure Files szolgáltatást és funkciót, beleértve az Azure File
 * <a id="data-compliance-policies"></a>
 **Milyen adatok megfelelőségi szabályzatok támogatja az Azure Files?**  
 
-   Az Azure Files fut. a más tárolási szolgáltatásokra az Azure Storage-ban használt azonos tárolási architektúrával. Az Azure Files az azonos megfelelőségi szabályzatok az egyéb Azure storage-szolgáltatások által használt vonatkozik. Az Azure Storage-adatok megfelelőségi kapcsolatos további információkért olvassa el [Azure Storage-megfelelőségi ajánlatok](https://docs.microsoft.com/en-us/azure/storage/common/storage-compliance-offerings), és nyissa meg a [Microsoft Trust Center](https://microsoft.com/en-us/trustcenter/default.aspx).
+   Az Azure Files fut. a más tárolási szolgáltatásokra az Azure Storage-ban használt azonos tárolási architektúrával. Az Azure Files az azonos megfelelőségi szabályzatok az egyéb Azure storage-szolgáltatások által használt vonatkozik. Az Azure Storage-adatok megfelelőségi kapcsolatos további információkért olvassa el [Azure Storage-megfelelőségi ajánlatok](https://docs.microsoft.com/azure/storage/common/storage-compliance-offerings), és nyissa meg a [Microsoft Trust Center](https://microsoft.com/en-us/trustcenter/default.aspx).
 
 ## <a name="on-premises-access"></a>Helyszíni hozzáférés
 * <a id="expressroute-not-required"></a>
@@ -258,7 +258,7 @@ Ez a cikk az Azure Files szolgáltatást és funkciót, beleértve az Azure File
 ## <a name="backup"></a>Backup
 * <a id="backup-share"></a>
 **Hogyan oszthatom saját Azure-fájlmegosztások biztonsági mentése meg?**  
-    Rendszeres használható [megosztási pillanatképek](storage-snapshots-files.md) véletlen törlés elleni védelem. Is használhatja az AzCopy, Robocopy vagy egy külső biztonsági mentési eszköz, amely egy csatlakoztatott fájlmegosztás készíthető. Az Azure Backup kínál az Azure Files biztonsági mentése. Tudjon meg többet [biztonsági mentése az Azure-fájlmegosztások az Azure Backup](https://docs.microsoft.com/en-us/azure/backup/backup-azure-files).
+    Rendszeres használható [megosztási pillanatképek](storage-snapshots-files.md) véletlen törlés elleni védelem. Is használhatja az AzCopy, Robocopy vagy egy külső biztonsági mentési eszköz, amely egy csatlakoztatott fájlmegosztás készíthető. Az Azure Backup kínál az Azure Files biztonsági mentése. Tudjon meg többet [biztonsági mentése az Azure-fájlmegosztások az Azure Backup](https://docs.microsoft.com/azure/backup/backup-azure-files).
 
 ## <a name="share-snapshots"></a>Megosztási pillanatképek
 

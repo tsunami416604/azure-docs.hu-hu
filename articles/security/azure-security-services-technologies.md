@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/25/2018
 ms.author: barclayn
-ms.openlocfilehash: 0addad1db4d9f897736a7793c5489897bca2cd38
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: 32174af9edcd6da7b87b6b38c0824fa7f07aa8f9
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47093426"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49384887"
 ---
 # <a name="security-services-and-technologies-available-on-azure"></a>Biztonsági szolgáltatások és technológiák elérhető az Azure-ban
 
@@ -48,7 +48,7 @@ Ez a lista idővel módosítja, és növekszik, ugyanúgy, mint az Azure elvégz
 | [Az Azure Storage közös hozzáférésű Jogosultságkód](../storage/common/storage-dotnet-shared-access-signature-part-1.md)|Közös hozzáférésű jogosultságkód a tárfiókban található erőforrások delegált hozzáférést biztosít.  |
 |[Az Azure Storage Account Keys](../storage/common/storage-create-storage-account.md)| Az Azure storage, a tárfiók elérésekor használt hitelesítés hozzáférési vezérlés módját. |
 |[Azure-fájlmegosztások az SMB 3.0-titkosítás](../storage/files/storage-files-introduction.md)|Egy hálózati biztonsági technológia lehetővé teszi az automatikus hálózati titkosítás a Server Message Block (SMB) fájlmegosztási protokollt. |
-|[Az Azure Storage Analytics](https://docs.microsoft.com/en-us/rest/api/storageservices/Storage-Analytics)| Naplózás és mérőszámok generálásához technológia a tárfiókban lévő adatokat. |
+|[Az Azure Storage Analytics](https://docs.microsoft.com/rest/api/storageservices/Storage-Analytics)| Naplózás és mérőszámok generálásához technológia a tárfiókban lévő adatokat. |
 
 <!------>
 
@@ -58,8 +58,8 @@ Ez a lista idővel módosítja, és növekszik, ugyanúgy, mint az Azure elvégz
 | [Azure&nbsp;SQL&nbsp;tűzfal](../sql-database/sql-database-firewall-configure.md)|Egy hálózati hozzáférést vezérlő szolgáltatás, amely az adatbázis hálózatalapú támadások ellen védi. |
 |[Azure&nbsp;SQL&nbsp;cella&nbsp;titkosítási szint](https://blogs.msdn.microsoft.com/sqlsecurity/2015/05/12/recommendations-for-using-cell-level-encryption-in-azure-sql-database/)| Adatbázis biztonsági technológia, amely részletes titkosítását biztosítja.  |
 | [Azure&nbsp;SQL&nbsp;kapcsolat titkosítása](../sql-database/sql-database-control-access.md)|A biztonság garantálása érdekében az SQL Database IP-cím alapján történő kapcsolatkorlátozást érvényesítő tűzfalszabályokkal, a felhasználói identitás igazolását megkövetelő hitelesítési mechanizmusokkal, illetve csak bizonyos műveletek és adatok elérését lehetővé tévő engedélyezési mechanizmusokkal vezérli a hozzáférést. |
-| [Az Azure SQL mindig a titkosítási](https://docs.microsoft.com/en-us/sql/relational-databases/security/encryption/always-encrypted-database-engine?view=sql-server-2017)|Bizalmas adatok, például hitelkártya-számokat vagy különféle nemzeti azonosítószámokat (például Egyesült államokbeli társadalombiztosítási szám), Azure SQL Database vagy SQL Server-adatbázisokban tárolt védi.  |
-| [Azure&nbsp;SQL&nbsp;transzparens adattitkosítás](https://docs.microsoft.com/en-us/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql?view=azuresqldb-current)| Egy adatbázis biztonsági funkció, amely titkosítja a tárolót a teljes adatbázisra vonatkozóan. |
+| [Az Azure SQL mindig a titkosítási](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine?view=sql-server-2017)|Bizalmas adatok, például hitelkártya-számokat vagy különféle nemzeti azonosítószámokat (például Egyesült államokbeli társadalombiztosítási szám), Azure SQL Database vagy SQL Server-adatbázisokban tárolt védi.  |
+| [Azure&nbsp;SQL&nbsp;transzparens adattitkosítás](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql?view=azuresqldb-current)| Egy adatbázis biztonsági funkció, amely titkosítja a tárolót a teljes adatbázisra vonatkozóan. |
 | [Az Azure SQL Database naplózás](../sql-database/sql-database-auditing.md)|Egy adatbázis-naplózás funkció, amely nyomon követi az adatbázisok eseményeit és felvezeti ezeket egy naplófájlba, az Azure storage-fiókban.  |
 
 

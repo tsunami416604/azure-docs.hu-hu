@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/27/2018
 ms.author: chackdan
-ms.openlocfilehash: 86099c5385c14ce7cf10bbc84ebe1b5e70b2b3e6
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: d8f2dbe4885f1cb85ab5eb78ae4f06b2ad702d53
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49094207"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49389581"
 ---
 # <a name="service-fabric-cluster-capacity-planning-considerations"></a>Tervezési megfontolások a Service Fabric-fürt kapacitása
 Éles rendszerek üzembe a kapacitástervezés egy fontos lépés. Íme néhány, az elem, meg kell figyelembe venni, hogy a folyamat részeként.
@@ -83,7 +83,7 @@ A tartóssági szint, amelyek jelzik, hogy a rendszer a jogosultságokat, amely 
 > [!WARNING]
 > A csomóponttípusok a bronz tartóssági futó beszerzése _jogosultság nélküli_. Ez azt jelenti, hogy infrastruktúra feladatok, amelyek hatással az állapot nélküli munkaterhelés nem kell leállt vagy késleltetett, ami hatással lehet a számítási feladatokat. Csak az állapot nélküli számítási feladatokat futtató csomóponttípusok csak bronz használja. Az éles számítási feladatokhoz Silver vagy javasolt felett. 
 
-> Függetlenül bármely tartóssági szint [felszabadítási](https://docs.microsoft.com/en-us/rest/api/compute/virtualmachinescalesets/deallocate) Virtuálisgép-méretezési művelet szüntesse meg a fürt
+> Függetlenül bármely tartóssági szint [felszabadítási](https://docs.microsoft.com/rest/api/compute/virtualmachinescalesets/deallocate) Virtuálisgép-méretezési művelet szüntesse meg a fürt
 
 **Silver vagy Gold tartóssági szint használatának előnyei**
  

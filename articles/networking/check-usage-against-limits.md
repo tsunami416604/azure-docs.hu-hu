@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/05/2018
 ms.author: jdial
-ms.openlocfilehash: 124653f95dedbb1606e85cbfcd8229c026cf7341
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: d57f34da261d51707caf499bfdf1fffa344b72a9
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46960651"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49385515"
 ---
 # <a name="check-resource-usage-against-limits"></a>Ellenőrizze az erőforrás-használati korlátozások
 
@@ -49,7 +49,7 @@ Ebből a cikkből elsajátíthatja, hogyan tekintsük meg minden egyes hálózat
 
 A következő parancsokat futtathat a [Azure Cloud Shell](https://shell.azure.com/powershell), vagy a számítógépről futtatja a Powershellt. Az Azure Cloud Shell olyan ingyenes interaktív kezelőfelület. A fiókjával való használat érdekében a gyakran használt Azure-eszközök már előre telepítve és konfigurálva vannak rajta. Ha futtatja a PowerShell a számítógépről, akkor a *AzureRM* PowerShell-modult, 6.0.1 verzió vagy újabb. Futtatás `Get-Module -ListAvailable AzureRM` a számítógépen, a telepített verzió azonosításához. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-azurerm-ps) ismertető cikket. Ha helyileg futtatja PowerShell, is futtatni szeretné `Login-AzureRmAccount` bejelentkezni az Azure-bA.
 
-A korlátozások a használati adatok megtekintéséhez [Get-AzureRmNetworkUsage](https://docs.microsoft.com/en-us/powershell/module/azurerm.network/get-azurermnetworkusage?view=azurermps-6.8.0). Az alábbi példa lekéri a használati erőforrásokhoz, amennyiben legalább egy erőforrás üzembe van helyezve az USA keleti régiójában:
+A korlátozások a használati adatok megtekintéséhez [Get-AzureRmNetworkUsage](https://docs.microsoft.com/powershell/module/azurerm.network/get-azurermnetworkusage?view=azurermps-6.8.0). Az alábbi példa lekéri a használati erőforrásokhoz, amennyiben legalább egy erőforrás üzembe van helyezve az USA keleti régiójában:
 
 ```azurepowershell-interactive
 Get-AzureRmNetworkUsage `

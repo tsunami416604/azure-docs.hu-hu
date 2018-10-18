@@ -9,12 +9,12 @@ ms.component: speech
 ms.topic: article
 ms.date: 05/18/2018
 ms.author: erhopf
-ms.openlocfilehash: 53e159c7fc357d0c3776102294f4871863cbf4a5
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.openlocfilehash: 300e2d593dfe00b2d7348c7eaf15b0f26ec7e0dd
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49167375"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49389887"
 ---
 # <a name="get-started-with-the-speech-devices-sdk"></a>A beszédfelismerés eszközök SDK használatának első lépései
 
@@ -39,9 +39,9 @@ Fejlesztés a Speech Devices SDK-val a Kezdés előtt gyűjtse össze az adatoka
 
 * Get- [Speech service előfizetési kulcs](get-started.md). 30 napos ingyenes próbaverzió beszerzése, illetve egy kulcs lekérése az Azure-irányítópulton.
 
-* Ha szeretné használni a Speech service szándékának felismerése, iratkozzon fel a [hangfelismerési szolgáltatás](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/) (LUIS) és [előfizetési kulcs lekérése](https://docs.microsoft.com/en-us/azure/cognitive-services/luis/azureibizasubscription). 
+* Ha szeretné használni a Speech service szándékának felismerése, iratkozzon fel a [hangfelismerési szolgáltatás](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/) (LUIS) és [előfizetési kulcs lekérése](https://docs.microsoft.com/azure/cognitive-services/luis/azureibizasubscription). 
 
-    Is [hozzon létre egy egyszerű LUIS-modellnek](https://docs.microsoft.com/en-us/azure/cognitive-services/luis/) vagy használja a LUIS-modell, a LUIS-example.json mintát. A LUIS-modell érhető el minta a [Speech eszközök SDK letöltési hely](https://shares.datatransfer.microsoft.com/). Feltölteni a JSON-fájlt is a modell a [LUIS portál](https://www.luis.ai/home), jelölje be **importálása új alkalmazás**, majd válassza ki a JSON-fájlt.
+    Is [hozzon létre egy egyszerű LUIS-modellnek](https://docs.microsoft.com/azure/cognitive-services/luis/) vagy használja a LUIS-modell, a LUIS-example.json mintát. A LUIS-modell érhető el minta a [Speech eszközök SDK letöltési hely](https://shares.datatransfer.microsoft.com/). Feltölteni a JSON-fájlt is a modell a [LUIS portál](https://www.luis.ai/home), jelölje be **importálása új alkalmazás**, majd válassza ki a JSON-fájlt.
 
 ## <a name="set-up-the-development-kit"></a>A fejlesztői készlet beállítása
 

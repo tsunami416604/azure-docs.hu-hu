@@ -8,12 +8,12 @@ ms.subservice: disk
 ms.topic: article
 ms.date: 09/04/2018
 ms.author: alkohli
-ms.openlocfilehash: bbaf1f10284fb520cc3a52a6c04c4150de3b6546
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: 1a4fe30881f06d8af851a67f389a6faafbe3dfef
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49092014"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49389462"
 ---
 # <a name="azure-data-box-disk-limits-preview"></a>Az Azure Data Box-lemezek korlátait (előzetes verzió)
 
@@ -57,7 +57,7 @@ Az Azure storage szolgáltatási korlátai és gyakorlati tanácsok az elnevezé
 
 ## <a name="azure-storage-account-size-limits"></a>Az Azure storage-fiók blobméretének korlátjai
 
-Itt az adatok tárfiókba történő másolt mérete korlátok vonatkoznak. Győződjön meg arról, hogy a feltöltött adatok megfelel-e ezeket a korlátokat. Ezek a korlátok a legfrissebb információkért nyissa meg [az Azure blob storage méretezési célokat](https://docs.microsoft.com/en-us/azure/storage/common/storage-scalability-targets#azure-blob-storage-scale-targets) és [Azure Files tárolók skálázása](https://docs.microsoft.com/en-us/azure/storage/common/storage-scalability-targets#azure-files-scale-targets).
+Itt az adatok tárfiókba történő másolt mérete korlátok vonatkoznak. Győződjön meg arról, hogy a feltöltött adatok megfelel-e ezeket a korlátokat. Ezek a korlátok a legfrissebb információkért nyissa meg [az Azure blob storage méretezési célokat](https://docs.microsoft.com/azure/storage/common/storage-scalability-targets#azure-blob-storage-scale-targets) és [Azure Files tárolók skálázása](https://docs.microsoft.com/azure/storage/common/storage-scalability-targets#azure-files-scale-targets).
 
 | Az Azure storage-fiókra másolni adatok mérete                      | Alapértelmezett korlát          |
 |---------------------------------------------------------------------|------------------------|

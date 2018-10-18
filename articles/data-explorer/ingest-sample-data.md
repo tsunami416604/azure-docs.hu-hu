@@ -2,18 +2,18 @@
 title: Mintaadatok betöltése az Azure Data Explorer
 description: További tudnivalók az Azure Data Explorer (betöltés) Időjárással kapcsolatos mintaadatok betöltését.
 services: data-explorer
-author: mgblythe
-ms.author: mblythe
+author: orspod
+ms.author: v-orspod
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 7eb0e48a5b66775ac97ed0cab751db0ef367f667
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 7fdd32f9263b4d1694a0516a98b681ba8744ab6b
+ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46964615"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49394578"
 ---
 # <a name="ingest-sample-data-into-azure-data-explorer"></a>Mintaadatok betöltése az Azure Data Explorer
 
@@ -24,15 +24,15 @@ Ez a cikk bemutatja, hogyan az Adatkezelőbe az Azure database-be (betöltés) m
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-[Egy teszt fürt és adatbázis](create-cluster-database-portal.md)
+[Egy tesztfürt és -adatbázis](create-cluster-database-portal.md)
 
 ## <a name="ingest-data"></a>Adatok betöltése
 
-A **StormEvents** minta adatkészlet Időjárással kapcsolatos adatokat tartalmaz a [környezeti információkat National Központjaiként](https://www.ncdc.noaa.gov/stormevents/).
+A **StormEvents** mintaadatkészlet a [környezeti adatok nemzeti központjaiból](https://www.ncdc.noaa.gov/stormevents/) származó, időjárással kapcsolatos adatokat tartalmaz.
 
-1. Jelentkezzen be a [ https://dataexplorer.azure.com ](https://dataexplorer.azure.com).
+1. Jelentkezzen be itt: [https://dataexplorer.azure.com](https://dataexplorer.azure.com).
 
-1. Válassza a bal felső sarokban az alkalmazás, **hozzáadása fürthöz**.
+1. A bal felső sarokban válassza a **Fürt hozzáadása** lehetőséget.
 
 1. Az a **hozzáadása fürthöz** párbeszédpanelen adja meg a fürt URL-cím formájában `https://<ClusterName>.<Region>.kusto.windows.net/`, majd válassza **hozzáadása**.
 
@@ -57,6 +57,6 @@ A **StormEvents** minta adatkészlet Időjárással kapcsolatos adatokat tartalm
 
 ## <a name="next-steps"></a>További lépések
 
-[A lekérdezésírásra összpontosíthat](write-queries.md)
+[Lekérdezések írása](write-queries.md)
 
 [Az Azure Data Explorer adatbetöltés](ingest-data-overview.md)

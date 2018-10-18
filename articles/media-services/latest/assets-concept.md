@@ -1,83 +1,92 @@
 ---
-title: Az Azure Media Services eszközök |} Microsoft Docs
-description: Ez a cikk lehetőséget ad olyan eszközök vannak, és megismerkedhet használatukkal Azure Media Services által ismertetése.
+title: Az Azure Media Services eszközök |} A Microsoft Docs
+description: Ez a cikk biztosítja az eszközök vannak, és hogyan használják az Azure Media Services ismertetése.
 services: media-services
 documentationcenter: ''
 author: Juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 03/19/2018
+ms.date: 10/15/2018
 ms.author: juliako
-ms.openlocfilehash: 61555eb6cca6995215ce43051abbda9aa43539ec
-ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.openlocfilehash: fcb4500a1e4503d90b00528544ae98fa93e16191
+ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36284838"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49379218"
 ---
 # <a name="assets"></a>Objektumok
 
-Egy **eszköz** digitális fájlok (például a videó, hang, képeket, miniatűröket, szöveges nyomon követi és feliratfájlokat fájlok) és a mindezen fájlok metaadatait tartalmazza. Miután a digitális fájlok feltöltése az objektumba, akkor a Media Services kódolási és adatfolyam-munkafolyamatok is használható.
+Egy **eszköz** mindezen fájlok metaadatait és a digitális fájlok (beleértve a videókhoz, audiofájlokhoz, képeket, miniatűröket, szövegsávok és a feliratfájlok) tartalmaz. Miután a digitális fájlok feltöltése egy adategységbe, azok a Media Services encoding és adatfolyam-munkafolyamatok használható.
 
-Egy eszköz egy blob-tároló az van leképezve a [Azure Storage-fiók](storage-account-concept.md) és az adott tároló blokkblobként tárolja a fájlokat az eszköz. Az adategység-fájloknak a tárolókban, a Storage szolgáltatás SDK-ügyfél használatával kommunikálhat.
+Egy eszköz található blob-tárolóra lesz leképezve a [Azure Storage-fiók](storage-account-concept.md) és az adategységben található fájlokat a tárolóban blokkblobként vannak tárolva. Az adategység-fájlok, a tárolókban, a Storage SDK-ügyfél használatával kezelheti.
 
-Az Azure Media Services támogatja a Blob rétegek, ha a fiók használ az általános célú v2 (GPv2) tároló. A GPv2 áthelyezheti hűtésével fájlok vagy a cold tároló. Cold tárolási alkalmas archiválás forrásfájlokat, ha már nem szükséges (például után azok van kódolva.)
+Az Azure Media Services támogatja a Blob-rétegek, ha a fiók használ az általános célú v2 (GPv2) storage. A GPv2 továbbléphet a fájlokat a ritka elérésű vagy ritka elérésű tárolási. Ritka elérésű tárolási ideális archiválása a forrásfájlokat, ha már nincs szükség (például, miután azok van kódolva.)
 
-A Media Services v3 a feladat bemeneti is létrehozható eszközök vagy a http (s) URL-címeket. Egy eszköz, a feladat használható bemenetként létrehozásához lásd: [létrehozni a feladat bemeneti helyi fájlból](job-input-from-local-file-how-to.md).
+A Media Services v3-as a feladat bemenetére is létrehozható eszközök vagy a http (s) URL-címeket. Hozzon létre egy objektumot, a feladat bemeneteként felhasználható, lásd: [hozzon létre egy feladat bemenete egy helyi fájlból](job-input-from-local-file-how-to.md).
 
-Emellett olvassa [storage-fiókok a Media Services](storage-account-concept.md) és [átalakítások, a feladatok](transform-concept.md).
+Emellett olvassa [storage-fiókok a Media Services](storage-account-concept.md) és [átalakítások és feladatok](transform-concept.md).
 
-## <a name="asset-definition"></a>Eszköz meghatározása
+## <a name="asset-definition"></a>Az eszközintelligencia-definíció
 
-A következő táblázat az eszköz tulajdonságok láthatók, és lehetőséget ad a definíciójukat.
+Az alábbi táblázat az objektum tulajdonságait jeleníti meg, és lehetővé teszi a definíciójukat.
 
 |Name (Név)|Típus|Leírás|
 |---|---|---|
-|Azonosító|sztring|Az erőforrás teljes erőforrás-azonosító.|
+|id|sztring|Az erőforrás teljes erőforrás-azonosítója.|
 |név|sztring|Az erőforrás neve.|
 |properties.alternateId |sztring|Az eszköz a másik azonosító.|
 |properties.assetId |sztring|Az eszköz azonosítója.|
-|Properties.Container |sztring|Az eszköz blob tároló nevét.|
-|Properties.created |sztring|Az eszköz létrehozásának dátuma.|
+|Properties.Container |sztring|Az eszközintelligencia blobtároló neve.|
+|Properties.created |sztring|A létrehozást, az eszköz.|
 |properties.description |sztring|Az eszköz leírása.|
-|properties.lastModified |sztring|Az utolsó módosításának dátuma vagy az eszköz.|
+|properties.lastModified |sztring|Az utolsó módosítás dátuma az eszköz.|
 |properties.storageAccountName |sztring|A tárfiók neve.|
-|properties.storageEncryptionFormat |AssetStorageEncryptionFormat |Az eszköz titkosítási formátumban. Nincs egyikét vagy MediaStorageEncryption.|
-|type|sztring|Az erőforrás típusa.|
+|properties.storageEncryptionFormat |AssetStorageEncryptionFormat |Az eszköz titkosításának formátuma. Egyik sem, vagy MediaStorageEncryption.|
+|type|sztring|Az erőforrás típusát.|
 
 A teljes meghatározása: [eszközök](https://docs.microsoft.com/rest/api/media/assets).
 
-## <a name="filtering-ordering-paging"></a>Szűrési, rendezési, lapozás
+## <a name="filtering-ordering-paging"></a>Szűrési, rendezési, stránkování
 
-A Media Services a következő OData-lekérdezés beállításai eszközöket támogatja: 
+A Media Services a következő OData lekérdezési beállítások eszközöket támogatja: 
 
 * $filter 
 * $orderby 
 * $top 
 * $skiptoken 
 
-### <a name="filteringordering"></a>Szűrés/rendezés
+Operátor leírása:
+
+* EQ = egyenlő
+* Ú = nem egyenlő
+* A GE = nagyobb vagy egyenlő
+* Le = kisebb vagy egyenlő
+* Gt = nagyobb, mint
+* Lt = kisebb, mint
+
+### <a name="filteringordering"></a>Szűrés és rendezés
 
 Az alábbi táblázat bemutatja, hogyan lehet alkalmazni ezeket a beállításokat az eszköz tulajdonságok: 
 
-|Name (Név)|Szűrés|Sorrend|
+|Name (Név)|Szűrés|Rendelés|
 |---|---|---|
-|Azonosító|A következőket támogatja:<br/>Egyenlő<br/>Nagyobb mint<br/>Kisebb, mint|A következőket támogatja:<br/>Növekvő<br/>Csökkenő|
-|név|||
-|properties.alternateId |A következőket támogatja:<br/>Egyenlő||
-|properties.assetId |A következőket támogatja:<br/>Egyenlő||
+|id|||
+|név|Támogatott rendszerek: Eq, Gt, Lt|Támogatja: növekvő vagy csökkenő sorrendben|
+|properties.alternateId |Támogatja: Eq||
+|properties.assetId |Támogatja: Eq||
 |Properties.Container |||
-|Properties.created|A következőket támogatja:<br/>Egyenlő<br/>Nagyobb mint<br/>Kisebb, mint|A következőket támogatja:<br/>Növekvő<br/>Csökkenő|
+|Properties.created|Támogatott rendszerek: Eq, Gt, Lt| Támogatott rendszerek: Növekvő vagy csökkenő sorrendben|
 |properties.description |||
 |properties.lastModified |||
 |properties.storageAccountName |||
 |properties.storageEncryptionFormat | ||
 |type|||
 
-A következő C# példa szűrő a létrehozás dátuma:
+Az alábbi C#-példa szűrőit a létrehozás dátuma:
 
 ```csharp
 var odataQuery = new ODataQuery<Asset>("properties/created lt 2018-05-11T17:39:08.387Z");
@@ -86,13 +95,16 @@ var firstPage = await MediaServicesArmClient.Assets.ListAsync(CustomerResourceGr
 
 ### <a name="pagination"></a>Tördelés
 
-A négy engedélyezve van a rendezési sorrend mindegyikének tördelési támogatott. 
+Tördelés a négy engedélyezve van a rendezési sorrend mindegyike támogatott. Az oldalméret jelenleg 1000.
 
-Ha a lekérdezési válasz tartalmaz számos (jelenleg keresztül 1000) elem, a szolgáltatás adja vissza egy "\@odata.nextLink" tulajdonság használatával beolvassa a következő oldalra. Ez használható a teljes eredménykészlet keresztül lapra. Az oldalméret nincs a felhasználó által konfigurálható. 
+> [!TIP]
+> A gyűjtemény enumerálása, és nem függ egy adott oldal méretét a következő hivatkozás mindig használjon.
 
-Ha az eszközök létrehozása vagy törlése során a gyűjtemény lapozást, a módosítások megjelennek a visszaadott eredmények (ha ezeket a módosításokat a részében a gyűjteményt, amely nem töltődött le.) 
+A lekérdezési válasz számos elemet tartalmaz, ha a szolgáltatás visszaadja egy "\@odata.nextLink" tulajdonságát a következő lapra az eredmények lekérése. Ez használható a lapozza végig a teljes eredményhalmaz. Az oldal méretét nem lehet konfigurálni. 
 
-A következő C# példa bemutatja, hogyan keresztül az eszközök a fiók enumerálása.
+Eszközök létrehozott vagy a gyűjtemény átlapozva közben, ha a módosítások megjelennek a kapott találatok közül (ha ezek a módosítások a gyűjteményt, amely még nincs letöltve részén.) 
+
+Az alábbi C#-példa bemutatja a fiókban lévő összes eszköz számba.
 
 ```csharp
 var firstPage = await MediaServicesArmClient.Assets.ListAsync(CustomerResourceGroup, CustomerAccountName);
@@ -104,24 +116,23 @@ while (currentPage.NextPageLink != null)
 }
 ```
 
-További példákért lásd [eszközök – lista](https://docs.microsoft.com/rest/api/media/assets/list)
+További példák: [eszközök – lista](https://docs.microsoft.com/rest/api/media/assets/assets_list)
 
 
-## <a name="storage-side-encryption"></a>Tárolási kiszolgálóoldali titkosítás
+## <a name="storage-side-encryption"></a>Storage ügyféloldali titkosítása
 
-Az inaktív eszközök védelme érdekében az eszközöket a storage ügyféloldali titkosítása titkosítani kell. Az alábbi táblázat a storage ügyféloldali titkosítás a Media Services működése:
+Az inaktív eszközök védelmére, titkosítani kell az eszközök által a storage ügyféloldali titkosítása. Az alábbi táblázat a storage ügyféloldali titkosítása működését mutatja a Media Services:
 
-|a titkosítási beállítás|Leírás|Media Services v2|Media Services v3|
+|Titkosítási beállítás|Leírás|Media Services v2|Media Services v3|
 |---|---|---|---|
-|Media Services-tárolás titkosítása|AES-256 titkosítás, kulcs Media Services által felügyelt|Támogatott<sup>(1)</sup>|Nem támogatott<sup>(2)</sup>|
-|[Storage szolgáltatás titkosítási az inaktív adatok](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)|Kiszolgálóoldali titkosítás Azure Storage által kínált kulcsát kezeli az Azure-ban vagy az ügyfél által|Támogatott|Támogatott|
-|[Storage ügyféloldali titkosítása](https://docs.microsoft.com/azure/storage/common/storage-client-side-encryption)|Azure-tárolót, a Key Vault ügyfél által felügyelt kulcs által kínált ügyféloldali titkosítás|Nem támogatott|Nem támogatott|
+|Media Services, tárolás titkosítása|AES-256 titkosítással, kulcsfontosságú a Media Services által felügyelt|Támogatott<sup>(1)</sup>|Nem támogatott<sup>(2)</sup>|
+|[A Storage Service Encryption for Data at Rest](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)|A kiszolgálóoldali titkosítást az Azure Storage által kínált kulcs felügyelt ügyfél vagy Azure által|Támogatott|Támogatott|
+|[Storage ügyféloldali titkosítás](https://docs.microsoft.com/azure/storage/common/storage-client-side-encryption)|Az Azure storage, a Key Vault az ügyfél által felügyelt kulcs által kínált ügyféloldali titkosítás|Nem támogatott|Nem támogatott|
 
-<sup>1</sup> közben a Media Services kezelni a tartalom szövegként/bármilyen titkosítás nélkül, ez nem ajánlott.
+<sup>1</sup> közben a Media Services támogatja a tartalom kezelésére, a titkosítatlan/bármilyen titkosítás nélkül, ez nem ajánlott.
 
-<sup>2</sup> v3 a Media Services, storage encryption (az AES-256 titkosítás) van csak a visszamenőleges kompatibilitás létrehozásakor támogatott az eszközök volt a Media Services v2. Tehát a meglévő tárhely v3 együttműködik eszközök titkosítottak, de nem teszi lehetővé a újakat.
+<sup>2</sup> a Media Services v3, tárolás titkosítása (AES-256 titkosítás) van csak támogatott a visszamenőleges kompatibilitás a Media Services v2 létrehozásakor a rendszer az eszközöket. Tehát v3 együttműködik a meglévő tárhely eszközök titkosított, de nem teszi meg újakat.
 
 ## <a name="next-steps"></a>További lépések
 
-> [!div class="nextstepaction"]
-> [Fájl streamelése](stream-files-dotnet-quickstart.md)
+[Fájl streamelése](stream-files-dotnet-quickstart.md)

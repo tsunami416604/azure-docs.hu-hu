@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.component: compliance
 ms.date: 09/04/2018
 ms.author: rolyon
-ms.openlocfilehash: 9fa966999e220ea4357d5b5c37f0038c75fe2339
-ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
+ms.openlocfilehash: b6cc81a49875739a61aa397a65eb70c6b4f082ef
+ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45607926"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49393983"
 ---
 # <a name="azure-active-directory-terms-of-use-feature"></a>Azure Active Directory – Használati feltételek funkció
 Az Azure AD Használati feltételek funkcióján keresztül a vállalatok egyszerűen láthatják el a végfelhasználókat a szükséges információkkal. Ez a bemutató gondoskodik arról, hogy a felhasználók megkapják a jogi vagy megfelelőségi követelményekre vonatkozó nyilatkozatokat. Ez a cikk az Azure AD Használati feltételek funkcióval kapcsolatos kezdeti lépéseket ismerteti.
@@ -128,7 +128,7 @@ A felhasználóknak csak kell fogadja el a használati feltételeket egyszer, é
 ### <a name="how-users-can-review-their-terms-of-use"></a>A használati feltételek áttekintése a felhasználók által
 A felhasználók az alábbi eljárással tekinthetik át az általuk elfogadott használati feltételeket.
 
-1. Jelentkezzen be a [ https://myapps.microsoft.com ](https://myapps.microsoft.com).
+1. Jelentkezzen be itt: [https://myapps.microsoft.com](https://myapps.microsoft.com).
 
 1. A jobb felső sarokban kattintson a nevére, és válassza a **Profil** lehetőséget a legördülő menüből.
 
@@ -242,4 +242,4 @@ V: is [felülvizsgálati korábban elfogadott használati feltételeket tartalma
 
 ## <a name="next-steps"></a>További lépések
 
-- [A feltételes hozzáféréssel kapcsolatos ajánlott eljárások az Azure Active Directoryban](../../cognitive-services/qnamaker/concepts/best-practices.md)
+- [A feltételes hozzáféréssel kapcsolatos ajánlott eljárások az Azure Active Directoryban](../../active-directory/conditional-access/best-practices.md)

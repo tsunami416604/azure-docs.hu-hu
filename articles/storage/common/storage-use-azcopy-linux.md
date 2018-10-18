@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 04/26/2018
 ms.author: seguler
 ms.component: common
-ms.openlocfilehash: 3863c2eeb73997361a6a903f0b382a8c50ad6d4f
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.openlocfilehash: 1aff2ecdec83886d40d12b76e64a14a81451e89e
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48870757"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49386688"
 ---
 # <a name="transfer-data-with-azcopy-on-linux"></a>Adatok áthelyezése az Azcopyval Linux rendszeren
 
@@ -713,7 +713,7 @@ További, az Azure Storage szolgáltatással és az AzCopyval kapcsolatos adatok
 * [How to use Blob storage from Pythonnal (A Blob Storage használata Pythonnal)](../blobs/storage-python-how-to-use-blob-storage.md)
 
 ### <a name="azure-storage-blog-posts"></a>Az Azure Storage-blogbejegyzések:
-* [Az AzCopy a Linuxos előzetes bejelentése](https://azure.microsoft.com/en-in/blog/announcing-azcopy-on-linux-preview/)
+* [Az AzCopy a Linuxos előzetes bejelentése](https://azure.microsoft.com/blog/announcing-azcopy-on-linux-preview/)
 * [Introducing Azure Storage adatátviteli könyvtár Adatelőnézet](https://azure.microsoft.com/blog/introducing-azure-storage-data-movement-library-preview-2/)
 * [Az AzCopy: Bemutatkozik a szinkron másolása és testre szabott tartalom típusa](http://blogs.msdn.com/b/windowsazurestorage/archive/2015/01/13/azcopy-introducing-synchronous-copy-and-customized-content-type.aspx)
 * [Az AzCopy: Általános rendelkezésre állás az AzCopy 3.0 és az előzetes kiadásban az AzCopy 4.0 támogatásával, tábla és fájl bejelentése](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/10/29/azcopy-announcing-general-availability-of-azcopy-3-0-plus-preview-release-of-azcopy-4-0-with-table-and-file-support.aspx)

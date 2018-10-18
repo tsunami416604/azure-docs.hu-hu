@@ -4,25 +4,25 @@ description: Ez a cikk ismerteti, hogyan használja a Media Services a storage-f
 services: media-services
 documentationcenter: ''
 author: Juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 03/19/2018
+ms.date: 10/16/2018
 ms.author: juliako
-ms.openlocfilehash: 883aecaa82f1a83af22bf345d364c2b43776e559
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: dbd8dea32bbd4cacefd64e91541ab20b1056731e
+ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45732209"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49379033"
 ---
 # <a name="storage-accounts"></a>Tárfiókok
 
 A Media Services-fiók létrehozásakor meg kell adnia egy Azure Storage-fiókhoz tartozó erőforrás nevét. A rendszer a Media Services-fiókhoz csatolja a megadott Storage-fiókot. 
 
-Rendelkeznie kell egy **elsődleges** storage-fiókot, és tetszőleges számú rendelkezhet **másodlagos** a Media Services-fiókjához társított storage-fiókok. A Media Services támogatja az **Általános célú v2-** (GPv2-) és az **Általános célú v1-** (GPv1-) fiókokat is. 
+Egy **elsődleges** és tetszőleges számú **másodlagos** Storage-fiókot társíthat a Media Services-fiókhoz. A Media Services támogatja az **Általános célú v2-** (GPv2-) és az **Általános célú v1-** (GPv1-) fiókokat is. 
 
 >[!NOTE]
 > A blobfiókok nem megengedettek **elsődleges** tárfiókként. 

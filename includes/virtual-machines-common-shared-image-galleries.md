@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/20/2018
 ms.author: akjosh; cynthn
 ms.custom: include file
-ms.openlocfilehash: 6a64d85cc476c7494a1730959b96e9480115cd90
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 56f48f6676b3c878effe788316024e642c17ff5a
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47047663"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49400393"
 ---
 Megosztott lemezkép-katalógus szolgáltatása segít kialakítani a struktúra és a szervezet a VM-rendszerképeit körül. Megosztott képgyűjtemény biztosít három fő értéknövelő
 - Egyszerű kezelés
@@ -75,9 +75,9 @@ Megosztott lemezkép-katalógus lehetővé teszi a képek automatikusan repliká
 ## <a name="access"></a>Hozzáférés
 A megosztott lemezkép-katalógusában, megosztott kép és megosztott lemezkép verziója összes erőforrást, is megoszthassa a beépített natív Azure RBAC-vezérlők használatával. Az RBAC használatával megoszthatja ezeket az erőforrásokat más felhasználók, az egyszerű szolgáltatások és csoportokat a szervezetben. Ezeket az erőforrásokat megosztó hatókörén belül az azonos AD-bérlő van. Miután egy felhasználó hozzáfér a megosztott lemezkép verziója, akkor egy virtuális Gépet, vagy bármely, ők is hozzáférhetnek az azonos AD-ben, a megosztott lemezkép verziója bérlői előfizetések virtuális gép méretezési telepítheti.  A megosztási mátrix, amely segít megérteni, hogy mi a felhasználó hozzáférést kap a következő:
 
-| Felhasználóval megosztott     | Megosztott lemezkép-katalógusában | Megosztott kép | Megosztott lemezkép verziója |
+| Felhasználóval megosztott     | Megosztott rendszerkép-katalógus | Megosztott kép | Megosztott lemezkép verziója |
 |----------------------|----------------------|--------------|----------------------|
-| Megosztott lemezkép-katalógusában | Igen                  | Igen          | Igen                  |
+| Megosztott rendszerkép-katalógus | Igen                  | Igen          | Igen                  |
 | Megosztott kép         | Nem                   | Igen          | Igen                  |
 | Megosztott lemezkép verziója | Nem                   | Nem           | Igen                  |
 
@@ -146,7 +146,7 @@ Register-AzureRmResourceProvider -ProviderNamespace Microsoft.Compute
 
 **K.** Létrehozhatok egy lemezkép verziója specializált lemezből?
 
- A. Nem, hogy jelenleg nem támogatják speciális lemezről képek. Ha egy specializált lemezzel rendelkezik, akkor [virtuális gép létrehozása virtuális merevlemezről](https://docs.microsoft.com/azure/virtual-machines/windows/create-vm-specialized-portal#create-a-vm-from-a-disk) egy új virtuális géphez a specializeddisk csatolásával. Ha már rendelkezik egy futó virtuális Gépre, kövesse az utasításokat, létrehozhat egy felügyelt rendszerképet a virtuális gépről [Windows] kell (https://docs.microsoft.com/en-us/azure/virtual-machines/windows/tutorial-custom-images) vagy [Linux rendszerű virtuális gép](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/tutorial-custom-images). Ha már rendelkezik egy általános felügyelt rendszerkép, elindíthatja a folyamatot, hozzon létre egy megosztott kép leírását és a lemezkép-verzió.
+ A. Nem, hogy jelenleg nem támogatják speciális lemezről képek. Ha egy specializált lemezzel rendelkezik, akkor [virtuális gép létrehozása virtuális merevlemezről](https://docs.microsoft.com/azure/virtual-machines/windows/create-vm-specialized-portal#create-a-vm-from-a-disk) egy új virtuális géphez a specializeddisk csatolásával. Ha már rendelkezik egy futó virtuális Gépre, kövesse az utasításokat, létrehozhat egy felügyelt rendszerképet a virtuális gépről [Windows] kell (https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-custom-images) vagy [Linux rendszerű virtuális gép](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-custom-images). Ha már rendelkezik egy általános felügyelt rendszerkép, elindíthatja a folyamatot, hozzon létre egy megosztott kép leírását és a lemezkép-verzió.
 
 
 **K.** Egy megosztott lemezkép-katalógusában, a rendszerkép definíciójában és a lemezkép verziója az Azure Portalon hozhatnak létre?

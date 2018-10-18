@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 6/8/2018
 ms.author: raiye
 ms.custom: include file
-ms.openlocfilehash: 049c5d86bc78a8861faff13d82a47579ac24c516
-ms.sourcegitcommit: 99a6a439886568c7ff65b9f73245d96a80a26d68
+ms.openlocfilehash: a7fe2cf151b79b02f4f8996ad938d8fc262a5f77
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39361401"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49400428"
 ---
 # <a name="enable-write-accelerator"></a>Írásgyorsító engedélyezése
 
@@ -74,23 +74,23 @@ Annak érdekében, hogy engedélyezi vagy támogatja Írásgyorsító lemezek ü
 
 Új kapcsolóparaméter **- WriteAccelerator** hozzá van adva a következő parancsmagokat:
 
-- [Set-AzureRmVMOsDisk](https://docs.microsoft.com/en-us/powershell/module/azurerm.compute/set-azurermvmosdisk?view=azurermps-6.0.0)
-- [Add-AzureRmVMDataDisk](https://docs.microsoft.com/en-us/powershell/module/AzureRM.Compute/Add-AzureRmVMDataDisk?view=azurermps-6.0.0)
-- [Set-AzureRmVMDataDisk](https://docs.microsoft.com/en-us/powershell/module/AzureRM.Compute/Set-AzureRmVMDataDisk?view=azurermps-6.0.0)
-- [Add-AzureRmVmssDataDisk](https://docs.microsoft.com/en-us/powershell/module/AzureRM.Compute/Add-AzureRmVmssDataDisk?view=azurermps-6.0.0)
+- [Set-AzureRmVMOsDisk](https://docs.microsoft.com/powershell/module/azurerm.compute/set-azurermvmosdisk?view=azurermps-6.0.0)
+- [Add-AzureRmVMDataDisk](https://docs.microsoft.com/powershell/module/AzureRM.Compute/Add-AzureRmVMDataDisk?view=azurermps-6.0.0)
+- [Set-AzureRmVMDataDisk](https://docs.microsoft.com/powershell/module/AzureRM.Compute/Set-AzureRmVMDataDisk?view=azurermps-6.0.0)
+- [Add-AzureRmVmssDataDisk](https://docs.microsoft.com/powershell/module/AzureRM.Compute/Add-AzureRmVmssDataDisk?view=azurermps-6.0.0)
 
 A paraméter nincs megadva tulajdonságát hamis értékre állítja be, és nem támogató által Írásgyorsító lemezek fog üzembe helyezni.
 
 Új kapcsolóparaméter **- OsDiskWriteAccelerator** hozzá lett adva a következő parancsmagokat:
 
-- [Set-AzureRmVmssStorageProfile](https://docs.microsoft.com/en-us/powershell/module/AzureRM.Compute/Set-AzureRmVmssStorageProfile?view=azurermps-6.0.0)
+- [Set-AzureRmVmssStorageProfile](https://docs.microsoft.com/powershell/module/AzureRM.Compute/Set-AzureRmVmssStorageProfile?view=azurermps-6.0.0)
 
 Nem adja meg a paraméter tulajdonságot állítja be a hamis értéket visszaadó, nem az Írásgyorsító lemezek alapértelmezés szerint.
 
 Új választható logikai (nem nullázható) paramétert, **- OsDiskWriteAccelerator** hozzá lett adva a következő parancsmagokat:
 
-- [Update-azurermvm parancsmaghoz](https://docs.microsoft.com/en-us/powershell/module/AzureRM.Compute/Update-AzureRmVM?view=azurermps-6.0.0)
-- [Update-AzureRmVmss](https://docs.microsoft.com/en-us/powershell/module/AzureRM.Compute/Update-AzureRmVmss?view=azurermps-6.0.0)
+- [Update-azurermvm parancsmaghoz](https://docs.microsoft.com/powershell/module/AzureRM.Compute/Update-AzureRmVM?view=azurermps-6.0.0)
+- [Update-AzureRmVmss](https://docs.microsoft.com/powershell/module/AzureRM.Compute/Update-AzureRmVmss?view=azurermps-6.0.0)
 
 Adja meg a $true vagy $false szabályozhatja az Azure Írásgyorsító lemezek által támogatott.
 
@@ -165,13 +165,13 @@ A portálon, ahol meg kell adnia a lemezt gyorsítótárazási beállítások Í
 
 ## <a name="enabling-write-accelerator-using-the-azure-cli"></a>Az Azure CLI-vel Írásgyorsító engedélyezése
 
-Használhatja a [Azure CLI-vel](https://docs.microsoft.com/en-us/cli/azure/?view=azure-cli-latest) Írásgyorsító engedélyezése.
+Használhatja a [Azure CLI-vel](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) Írásgyorsító engedélyezése.
 
-Meglévő lemez Írásgyorsító engedélyezéséhez használja [az vm update](https://docs.microsoft.com/en-us/cli/azure/vm?view=azure-cli-latest#az-vm-update), használhatja az alábbi példák, ha a diskName VMName és ResourceGroup lecseréli a saját értékeire: `az vm update -g group1 -n vm1 -write-accelerator 1=true`
+Meglévő lemez Írásgyorsító engedélyezéséhez használja [az vm update](https://docs.microsoft.com/cli/azure/vm?view=azure-cli-latest#az-vm-update), használhatja az alábbi példák, ha a diskName VMName és ResourceGroup lecseréli a saját értékeire: `az vm update -g group1 -n vm1 -write-accelerator 1=true`
 
-Lemez csatolása írásgyorsítót engedélyezve a használati [az vm disk attach](https://docs.microsoft.com/en-us/cli/azure/vm/disk?view=azure-cli-latest#az-vm-disk-attach), ha Ön a saját értékeit helyettesítse be a következő példában használhatja: `az vm disk attach -g group1 -vm-name vm1 -disk d1 --enable-write-accelerator`
+Lemez csatolása írásgyorsítót engedélyezve a használati [az vm disk attach](https://docs.microsoft.com/cli/azure/vm/disk?view=azure-cli-latest#az-vm-disk-attach), ha Ön a saját értékeit helyettesítse be a következő példában használhatja: `az vm disk attach -g group1 -vm-name vm1 -disk d1 --enable-write-accelerator`
 
-Írásgyorsító letiltásához használja [az vm update](https://docs.microsoft.com/en-us/cli/azure/vm?view=azure-cli-latest#az-vm-update), a tulajdonságok beállítása false értékre: `az vm update -g group1 -n vm1 -write-accelerator 0=false 1=false`
+Írásgyorsító letiltásához használja [az vm update](https://docs.microsoft.com/cli/azure/vm?view=azure-cli-latest#az-vm-update), a tulajdonságok beállítása false értékre: `az vm update -g group1 -n vm1 -write-accelerator 0=false 1=false`
 
 ## <a name="enabling-write-accelerator-using-rest-apis"></a>Rest API-k használatával Írásgyorsító engedélyezése
 

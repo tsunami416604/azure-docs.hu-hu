@@ -6,15 +6,15 @@ ms.service: automation
 ms.component: process-automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 10/08/2018
+ms.date: 10/17/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 66f3558a4314b1639d54d4e8ea6814eea9064073
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.openlocfilehash: 2b1a6e2921fdaf9ede1184cfc02c3f61f63c60ac
+ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49113886"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49393763"
 ---
 # <a name="runbook-execution-in-azure-automation"></a>Runbook végrehajtása az Azure Automationben
 
@@ -135,19 +135,11 @@ Get-AzureRmLog -ResourceId $JobResourceID -MaxRecord 1 | Select Caller
 
 ## <a name="fair-share"></a>Igazságos elosztás
 
-Annak érdekében, hogy megoszthatják az erőforrásokat az összes runbook a felhőben, Azure Automation átmenetileg el lesz minden olyan feladat után három óráig futott. Ebben az időszakban feladatai [PowerShell-alapú runbookok](automation-runbook-types.md#powershell-runbooks) le lesz állítva, és a rendszer nem indítható újra. A feladat állapota látható **leállítva**. Az ilyen típusú runbook mindig újraindul az elejéről, mivel azok nem támogatják az ellenőrzőpontokat.
+Annak érdekében, hogy megoszthatják az erőforrásokat az összes runbook a felhőben, Azure Automation fog átmenetileg el vagy több mint három óra alatt futó összes feladat leállítása. A feladatok [PowerShell-alapú runbookok](automation-runbook-types.md#powershell-runbooks) és [Python runbookok](automation-runbook-types.md#python-runbooks) le lesznek állítva és nem indítják újra, és a feladat állapota leállítva.
 
-[PowerShell-munkafolyamat-alapú runbookok](automation-runbook-types.md#powershell-workflow-runbooks) újrakezdődnek az elmúlt [ellenőrzőpont](https://docs.microsoft.com/system-center/sma/overview-powershell-workflows#bk_Checkpoints). Után három órán keresztül fut, a runbook-feladat fel van függesztve, a szolgáltatást és annak állapotát jeleníti meg **fut, a Várakozás az erőforrások**. Amikor elérhetővé válik egy tesztkörnyezet, a runbook az Automation szolgáltatást, és folytatja az utolsó ellenőrzőponttól automatikusan újraindul. Ez a viselkedés a normál PowerShell-munkafolyamat működés felfüggesztése/újraindításhoz. Ha a runbook újra nagyobb, mint három óra futtatókörnyezet, a folyamat ismétlődik, legfeljebb három alkalommal. A harmadik újraindításkor, ha a runbook még nem fejeződött be három óra, akkor a runbook-feladat nem sikerült, és a feladatok állapotát mutatja **sikertelen, Várakozás az erőforrások**. Ebben az esetben az a hiba a következő kivételt kap.
+A hosszan futó feladatok esetén ajánlott [hibrid runbook-feldolgozót](automation-hrw-run-runbooks.md#job-behavior) használni. Hibrid Runbook-feldolgozók igazságos elosztás nincs korlátozva, és a egy korlátozás nem rendelkezik a mennyi runbookot hajthat végre. A többi feladat [korlátok](../azure-subscription-service-limits.md#automation-limits) Azure próbakörnyezetbe lefordítja a és a hibrid Runbook-feldolgozók egyaránt érvényesek. Hibrid Runbook-feldolgozók a hozzáférésüket nem korlátozza a 3 óra igazságos elosztás korlátot, miközben runbookok futtatta rajtuk továbbra is támogatja a helyi infrastruktúra váratlan problémák újraindítási viselkedés kell kidolgozni.
 
-*A feladat fut, mert azt a ismételten fürtből az azonos ellenőrzőpont nem folytatható. Ellenőrizze, hogy a Runbook nem hajt végre műveletek végzésekor állapotában megőrzése nélkül.*
-
-Ez a viselkedés a szolgáltatás szembeni nélkül, határozatlan ideig futó runbookok, mivel azok nem tudja, hogy a következő ellenőrzőpontot, anélkül, hogy újra eltávolítása folyamatban.
-
-Ha a runbook rendelkezik nincsenek ellenőrzőpontok, vagy a feladat nem érte el a az első ellenőrzőpont folyamatban előtt, majd újraindul az elejétől.
-
-A hosszan futó feladatok esetén ajánlott [hibrid runbook-feldolgozót](automation-hrw-run-runbooks.md#job-behavior) használni. Hibrid Runbook-feldolgozók igazságos elosztás nincs korlátozva, és a egy korlátozás nem rendelkezik a mennyi runbookot hajthat végre. A többi feladat [korlátok](../azure-subscription-service-limits.md#automation-limits) Azure próbakörnyezetbe lefordítja a és a hibrid Runbook-feldolgozók egyaránt érvényesek.
-
-Az Azure-ban, egy PowerShell-munkafolyamati forgatókönyv használ, amikor a runbook létrehozása, ha, gondoskodnia kell a két ellenőrzőpontok közötti tevékenységeket futási időnek nem haladja meg a három óra. Szükség lehet az ellenőrzőpontokat ad hozzá a runbookot, hogy ellenőrizze, hogy nem eléri ezt a három óra korlátot vagy feloszthatja a hosszú ideig futó műveletek. Azt jelzi, például a runbook futhat-e a nagy méretű SQL-adatbázis egy reindex. Ha a egyetlen művelet nem fejeződik az igazságos elosztás időkorláton belül, majd a feladat a memóriából és indítani az elejétől. Ebben az esetben kell részekre a reindex művelet, például újraindexeléshez egy olyan táblát, egyszerre több lépésekre, és helyezze ellenőrzőpont után minden művelet, így a feladat sikerült folytatni a legutóbbi művelet befejezését követően.
+Egy másik lehetőség, hogy a runbook optimalizálása gyermek runbookok használatával. Ha a runbook végighalad az erőforrások, például a több adatbázis, adatbázis-művelet számos ugyanannak a függvénynek helyezheti át a függvényt egy [gyermekrunbook](automation-child-runbooks.md) és adja neki a a [ Start-AzureRMAutomationRunbook](/powershell/module/azurerm.automation/start-azurermautomationrunbook) parancsmagot. Ezen gyermek runbookok mindegyike különálló folyamatban, egymással párhuzamosan fut, így csökkentik a szülő runbook futtatásának befejezéséhez szükséges teljes időt. Használhatja a [Get-AzureRmAutomationJob](/powershell/module/azurerm.automation/Get-AzureRmAutomationJob) parancsmagot a runbook a feladat állapotának ellenőrzése minden gyermek, ha a művelet, amely a gyermekrunbook befejezése után kell elvégezni.
 
 ## <a name="next-steps"></a>További lépések
 

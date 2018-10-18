@@ -9,12 +9,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/07/2018
 ms.author: govindk
-ms.openlocfilehash: a4758e5597876112fa7a85850786491e22af8c83
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 868f465cc651043d3ef4b1735b4b528252572dbb
+ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47037140"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49378085"
 ---
 # <a name="secure-access-to-an-azure-cosmos-db-account-by-using-azure-virtual-network-service-endpoint"></a>Biztonságos hozzáférés az Azure Cosmos DB-fiókot az Azure virtuális hálózati szolgáltatásvégpont
 
@@ -226,7 +226,7 @@ Igen, különböző régiókban létrehozott virtuális hálózatok érhetik el 
 
 Igen, virtuális hálózati szolgáltatásvégpont és a egy tűzfal is elérhetőek. Általánosságban elmondható biztosítania kell, hogy portáljához való hozzáférésre, mindig engedélyezve van a virtuális hálózati szolgáltatásvégpont beállítása előtt ahhoz, hogy a tároló társítva a metrikákat tekinthet meg.
 
-### <a name="can-i-allow-access-to-other-azure-services-from-a-given-azure-region-when-service-endpoint-access-is-enabled-for-azure-cosmos-db"></a>"Engedélyezhető, hozzáférés az egyéb Azure-szolgáltatások egy adott Azure-régióból" Ha a szolgáltatás-végponti hozzáférés engedélyezve van az Azure Cosmos DB?  
+### <a name="can-i-accept-connections-from-within-public-azure-datacenters-when-service-endpoint-access-is-enabled-for-azure-cosmos-db"></a>Is szeretnék "Accept-kapcsolatok a nyilvános Azure-adatközpontok belül" Ha a szolgáltatás-végponti hozzáférés engedélyezve van az Azure Cosmos DB?  
 
 Erre azért szükség, ha azt szeretné, hogy az Azure Cosmos DB-fiók, Azure első felet elérésének services, Azure Data factory, az Azure Search vagy bármely szolgáltatás, amely csak a megadott Azure-régióban üzemel.
 

@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry, michmcla
-ms.openlocfilehash: a8bcbc37ffba2caace0934c5414e1ccfd6fbb558
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: 67f99e68bc4091d076e27aee06c2851bc77e6fc7
+ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48901991"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49378924"
 ---
 # <a name="what-are-authentication-methods"></a>Mik a hitelesítési módszerek?
 
@@ -148,11 +148,13 @@ A Microsoft Authenticator alkalmazást, vagy más harmadik felek alkalmazásaiho
 > A önkiszolgáló jelszó-átállítási mikor csak egy módszert szükség ellenőrző kód alaphelyzetbe állítása az egyetlen lehetőség a felhasználók számára elérhető **annak biztosítása érdekében a legmagasabb szintű biztonság**.
 >
 
-## <a name="oath-hardware-tokens"></a>Az OATH-tokenek hardver
+## <a name="oath-hardware-tokens-public-preview"></a>OATH hardvertokenek (nyilvános előzetes verzió)
 
 A rendszer OATH nyílt szabvány, amely megadja, hogy egyszeri jelszavas (OTP) kódok jönnek létre. Azure ad-ben az OATH-TOTP SHA-1-tokenek a 30 másodperces vagy 60 másodperces fajta használatát támogatja. Ügyfelek is be kell szereznie ezek a jogkivonatok a szállítótól választott eszközükön. Vegye figyelembe, hogy a titkos kulcsok legfeljebb 128 karakter hosszúságú lehet, nem lesz kompatibilis az összes jogkivonat.
 
 ![Az OATH-tokenek tölt fel az MFA-kiszolgáló OATH-tokenek panel az Azure Portalon](media/concept-authentication-methods/oath-tokens-azure-ad.png)
+
+Az OATH-tokenek hardver részeként egy nyilvános előzetes verziója támogatott. Előzetes verziók kapcsolatos további információkért lásd: [kiegészítő használati feltételek a Microsoft Azure Előzetesekre vonatkozó](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)
 
 Miután jogkivonatok beszerzett, fel kell tölteni egy vesszővel tagolt (CSV) fájlformátumban, például az egyszerű felhasználónév, sorozatszám, titkos kulcs, időtartam alatt, gyártó és modell, az alábbi példában.
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 293b6af1d591c0c9763c2914713fe892392ae7ea
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: d25142cecd62fc34a08939d5f1915ba9b2cee749
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45578140"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49387429"
 ---
 # <a name="find-an-address-using-the-azure-maps-search-service"></a>Keresse meg egy címet az Azure Maps search szolgáltatással
 
@@ -59,7 +59,7 @@ Alapértelmezés szerint a legtöbb keresési lekérdezések `maxFuzzyLevel=1` t
 
 4. Kattintson a **küldése** , és tekintse át a válasz törzse.
 
-    A nem egyértelmű lekérdezési karakterlánc a "kétpizzás" visszaadott 10 [pont az érdeklődés eredmény](https://docs.microsoft.com/en-us/rest/api/maps/search/getsearchpoi#searchpoiresponse) (KOORDINÁTÁIIG) eredménye az alá tartozó, a "kétpizzás" és "éttermi" kategóriák. Minden eredményt adja vissza egy utca, házszám, szélességi / hosszúsági értékeket, megtekintheti a port és a hely elérésére.
+    A nem egyértelmű lekérdezési karakterlánc a "kétpizzás" visszaadott 10 [pont az érdeklődés eredmény](https://docs.microsoft.com/rest/api/maps/search/getsearchpoi#searchpoiresponse) (KOORDINÁTÁIIG) eredménye az alá tartozó, a "kétpizzás" és "éttermi" kategóriák. Minden eredményt adja vissza egy utca, házszám, szélességi / hosszúsági értékeket, megtekintheti a port és a hely elérésére.
   
     Az eredmények ebben a lekérdezésben nem kötődik bármely adott hivatkozás helyére a különböző. Használhatja a **countrySet** paraméterrel adja meg a csak az országok, amelynek az alkalmazásnak kell lefedettség, mivel alapértelmezés szerint kereshet az egész világ, potenciálisan a szükségtelen eredményt adnak vissza.
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/03/2018
 ms.author: srrengar
-ms.openlocfilehash: fe8cf752337bdb3fcd61ce6aa9f3e5cb834fb0aa
-ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
+ms.openlocfilehash: a870c99718ecafe8af33e13be9aa46631888c8cb
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2018
-ms.locfileid: "49310963"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49389683"
 ---
 # <a name="event-aggregation-and-collection-using-windows-azure-diagnostics"></a>Események összesítése és -gyűjteményt Windows Azure Diagnostics használatával
 > [!div class="op_single_selector"]
@@ -65,7 +65,7 @@ Most, hogy meg van összesítésével események az Azure Storage [Log Analytics
 ## <a name="deploy-the-diagnostics-extension-through-azure-resource-manager"></a>A diagnosztikai bővítmény az Azure Resource Manager üzembe helyezése
 
 ### <a name="create-a-cluster-with-the-diagnostics-extension"></a>A diagnosztikai bővítmény-fürt létrehozása
-Fürt létrehozása a Resource Manager használatával, adja hozzá a diagnosztikai konfigurációs JSON-fájlt a teljes Resource Manager-sablon, a fürt létrehozása előtt kell. Diagnosztikai konfiguráció a Resource Manager-sablonminták részeként hozzáadja biztosítunk egy mintát öt virtuális fürt Resource Manager-sablon. Az Azure-minták galériájában található ezen a helyen láthatja: [diagnosztikai erőforrás-kezelő sablon minta az ötcsomópontos fürt](https://azure.microsoft.com/en-in/resources/templates/service-fabric-secure-cluster-5-node-1-nodetype/).
+Fürt létrehozása a Resource Manager használatával, adja hozzá a diagnosztikai konfigurációs JSON-fájlt a teljes Resource Manager-sablon, a fürt létrehozása előtt kell. Diagnosztikai konfiguráció a Resource Manager-sablonminták részeként hozzáadja biztosítunk egy mintát öt virtuális fürt Resource Manager-sablon. Az Azure-minták galériájában található ezen a helyen láthatja: [diagnosztikai erőforrás-kezelő sablon minta az ötcsomópontos fürt](https://azure.microsoft.com/resources/templates/service-fabric-secure-cluster-5-node-1-nodetype/).
 
 A Resource Manager-sablonban a diagnosztikai beállítás megtekintéséhez nyissa meg az azuredeploy.json fájlt, és keresse meg **IaaSDiagnostics**. Ez a sablon használatával a fürt létrehozásához válassza a **üzembe helyezés az Azure** gombra a fenti hivatkozáson érhető el.
 

@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 06/20/2018
 ms.author: dlap
-ms.openlocfilehash: 637f837ec2421f0bef5131a33c709087b891aa0f
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: d52785dd7569560f4b6986080b14723762537ec8
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39505111"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49388320"
 ---
 # <a name="trusted-internet-connections-guidance"></a>Megbízható internetes kapcsolatok útmutató
 
@@ -223,7 +223,7 @@ Az alábbi minta házirendek TIC megfelelőségi célokra használhatók:
 
 ### <a name="network-watcher-traffic-analytics"></a>Network Watcher a traffic analytics
 
-Network Watcher [traffic analytics](https://azure.microsoft.com/en-in/blog/traffic-analytics-in-preview/) felhasználhatják folyamat naplóadatokat és a egy magas szintű áttekintést nyújt a hálózati forgalom, a többi naplófájlt. Az adatok akkor hasznos, a naplózás megfelelőségi TIC, és azonosíthatja a problémás. A magas szintű Irányítópult segítségével történik a kommunikáció az internettel és a egy célzott-lista lekérése TIC útválasztás a virtuális gépek gyors képernyőn.
+Network Watcher [traffic analytics](https://azure.microsoft.com/blog/traffic-analytics-in-preview/) felhasználhatják folyamat naplóadatokat és a egy magas szintű áttekintést nyújt a hálózati forgalom, a többi naplófájlt. Az adatok akkor hasznos, a naplózás megfelelőségi TIC, és azonosíthatja a problémás. A magas szintű Irányítópult segítségével történik a kommunikáció az internettel és a egy célzott-lista lekérése TIC útválasztás a virtuális gépek gyors képernyőn.
 
 ![Traffic Analytics](media/tic-traffic-analytics-1.png)
 

@@ -12,19 +12,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/03/2018
+ms.date: 10/15/2018
 ms.author: magoedte
-ms.openlocfilehash: 43000993c6a26ef8d44e941f5235ebad7aeee66f
-ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
+ms.openlocfilehash: 6d1f1d1ae07ec32262f655fd6ed7205a70e252f4
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48248060"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49385091"
 ---
 # <a name="known-issues-with-azure-monitor-for-vms"></a>A virtuális gépek az Azure Monitor szolgáltatással kapcsolatos ismert problémák
 
 Az alábbi ismert problémák az Azure monitor az állapotfigyelő szolgáltatás a virtuális gépek:
 
+- Az állapotfigyelő szolgáltatás az összes virtuális gép onbaorded csatlakozik a Log Analytics-munkaterületet, akkor is, ha bevezetési kezdeményezett, és egyetlen virtuális gép befejeződött.
 - Ha egy Azure virtuális gép többé nem létezik, mert lett eltávolítva, vagy törölve, a virtuális gép listanézetben három hét napig ez fog megjelenni. Ezenkívül kattintva eltávolított vagy törölt virtuális gép állapotát szeretné indítsa el a **egészségügyi diagnosztikai** nézetet, majd vonatkozik betöltése hurkot, amely. A törölt virtuális gép nevét kiválasztva indul el egy panel üzenet figyelmezteti, hogy a virtuális gép törölve lett.
 - Ebben a kiadásban nem lehet módosítani az adott időszakban és gyakoriságát tartalmazza állapotára vonatkozó feltételek. 
 - Nem lehet letiltani a állapotára vonatkozó feltételek. 

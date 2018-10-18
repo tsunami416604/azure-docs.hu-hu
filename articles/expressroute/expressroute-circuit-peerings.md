@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 10/01/2018
 ms.author: cherylmc
-ms.openlocfilehash: c1fbc99702e077e600f01959224f3321e7543e59
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 8ef231982cfdc9a2c4387ee47e651fdf1af0baaf
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48044399"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49388425"
 ---
 # <a name="expressroute-circuits-and-routing-domains"></a>Az ExpressRoute-Kapcsolatcsoportok és útválasztási tartományok
  Kell rendelni egy *ExpressRoute-kapcsolatcsoport* a helyszíni infrastruktúra csatlakozni a Microsoft egy kapcsolatszolgáltatón keresztül. A következő ábrán látható a WAN és a Microsoft közötti kapcsolat logikai megfelelője.
@@ -82,7 +82,7 @@ Ha szeretné, hogy az összes három társviszony-létesítési munkameneteket, 
 ## <a name="expressroute-health"></a>Az ExpressRoute állapota
 Az ExpressRoute-Kapcsolatcsoportok figyelhetik a rendelkezésre állás érdekében a virtuális hálózatok és a sávszélesség kihasználtsága használatával való kapcsolódás [Network Performance Monitor](https://docs.microsoft.com/azure/networking/network-monitoring-overview) (NPM).
 
-Npm-et az Azure privát társviszony-létesítés és a Microsoft társviszony-létesítés állapotát figyeli.  Tekintse meg a [közzététele](https://azure.microsoft.com/en-in/blog/monitoring-of-azure-expressroute-in-preview/) további információt.
+Npm-et az Azure privát társviszony-létesítés és a Microsoft társviszony-létesítés állapotát figyeli.  Tekintse meg a [közzététele](https://azure.microsoft.com/blog/monitoring-of-azure-expressroute-in-preview/) további információt.
 
 ## <a name="next-steps"></a>További lépések
 * Találjon egy szolgáltatót. Lásd: [ExpressRoute-szolgáltatókat és -helyeket szolgáltatás](expressroute-locations.md).

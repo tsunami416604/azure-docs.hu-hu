@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 09/05/2018
 ms.author: dobett
-ms.openlocfilehash: 377f28f4798a1ffb6423c1f4d9f4e34b4fc60234
-ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
+ms.openlocfilehash: b7ef5d2853cdf4a7b09aa52c510c268cb42a245f
+ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48018842"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49395156"
 ---
 # <a name="reference---iot-hub-quotas-and-throttling"></a>Referencia az IoT Hub kvótái és szabályozása
 
@@ -75,9 +75,9 @@ Az IoT Hub kikényszeríti, egyéb működési korlátai:
 | Eszközről-a-felhőbe üzenetkezelés | Üzenetek maximális mérete 256 KB |
 | Üzenetküldés a felhőből az eszközre<sup>1</sup> | Üzenetek maximális mérete 64 KB. Függőben lévő kézbesítésre üzenetek maximális mérete 50. |
 | A közvetlen módszer<sup>1</sup> | Maximális közvetlen metódus hasznos adatainak mérete 128 KB-os. |
-| Konfigurációk | 20-konfigurációk száma hub. |
-| Edge-telepítések | 20 telepítések száma az eseményközpont. 20 modulok száma üzemelő példányonként. |
-| A párok | Ikereszköz szakaszban (címkék, kívánt tulajdonságok, jelentett Tulajdonságok) naplónkénti méretkorlát 8 KB-os |
+| Automatikus eszközkonfigurációkat<sup>1</sup> | 100-konfigurációk száma fizetős Termékváltozat hub. 20-konfigurációk száma ingyenes Termékváltozat hub. |
+| Automatikus Edge-telepítések<sup>1</sup> | 20 modulok száma üzemelő példányonként. az üzemelő példányok 100 / fizetős Termékváltozat hub. ingyenes Termékváltozat hub száma 20 telepítések. |
+| A párok<sup>1</sup> | Ikereszköz szakaszban (címkék, kívánt tulajdonságok, jelentett Tulajdonságok) naplónkénti méretkorlát 8 KB-os |
 
 <sup>1</sup>Ez a funkció nem érhető el az IoT hub az alapszintű díjcsomagban. További információkért lásd: [kiválasztása a megfelelő IoT Hub](iot-hub-scaling.md).
 

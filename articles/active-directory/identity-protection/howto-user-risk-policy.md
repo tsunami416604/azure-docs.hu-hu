@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 11/08/2017
 ms.author: markvi
 ms.reviewer: raluthra
-ms.openlocfilehash: a54403b7794d26d87c810f5cd20050db35c078f1
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.openlocfilehash: 3ba8c93d158a6ff80c3db788924503e9d4e87242
+ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47054332"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49378119"
 ---
 # <a name="how-to-configure-the-user-risk-policy"></a>Útmutató: A felhasználói kockázati szabályzat beállítása
 
@@ -41,7 +41,7 @@ Az összes kockázati események, amelyek az észlelt felhasználó számára, �
 A felhasználói kockázati házirend egy automatikus válasz konfigurálhatja egy adott felhasználói kockázati szint. Felhasználói kockázati házirendet az erőforrásokhoz való hozzáférés letiltása, vagy egy felhasználói fiók visszaszerzéséhez tiszta állapotot jelszómódosítás megkövetelése.
 
 
-## <a name="how-do-i-access-the-sign-in-risk-policy"></a>Hogyan érhetem el a bejelentkezési kockázati házirend?
+## <a name="how-do-i-access-the-user-risk-policy"></a>Hogyan férhetek hozzá a felhasználói kockázati házirend?
    
 A bejelentkezési kockázati házirend van a **konfigurálása** szakaszában a [Azure AD Identity Protection lapról](https://portal.azure.com/#blade/Microsoft_AAD_ProtectionCenter/IdentitySecurityDashboardMenuBlade/SignInPolicy).
    
@@ -73,7 +73,7 @@ A szabályzat konfigurációs párbeszédpanel a konfiguráció hatásának megb
 
 ![Becsült hatás](./media/howto-user-risk-policy/15.png)
 
-## <a name="what-you-should-know"></a>Tudnivalók
+## <a name="what-you-should-know"></a>Alapismeretek
 
 Biztonsági szabályzat felhasználói kockázat és bejelentkezési függően a kockázati szint esetén a felhasználók megadható.
 

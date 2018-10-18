@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 9/20/2018
 ms.author: anandh
-ms.openlocfilehash: f79be44d33a327f3ead8d950885cb5d47ce3a015
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 67778a269aa962b3184bf55c692154570e8357ba
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47414058"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49387388"
 ---
 # <a name="performance-diagnostics-for-azure-virtual-machines"></a>Azure-beli virtuális gépek teljesítménydiagnosztikája
 
@@ -103,7 +103,7 @@ A feltöltés után új diagnosztikai jelentés szerepel az Azure Portalon.
 Használja a **beállítások** eszköztár gombra kattintva módosíthatja a tárfiókot, ahol a diagnosztikai elemzéseket, és a kimeneti tárolhatók. Teljesítménybeli problémák diagnosztizálása használó több virtuális gépek ugyanazt a tárfiókot is használhat. Amikor módosítja a tárfiókot, a régi jelentést és elemzést nem törlődnek. Azonban azok már megjelennek a diagnosztikai jelentések listáját. 
 
 ## <a name="review-insights-and-performance-diagnostics-report"></a>Elemzések és a diagnosztika teljesítményjelentés áttekintése
-Minden egyes Futtatás diagnosztikai elemzéseket és javaslatok, érintett erőforrások, naplófájlok és más részletes diagnosztikai adatokat gyűjtött listáját, valamint az offline megtekintésre a jelentést tartalmaz. Az összes gyűjtött diagnosztikai adatok teljes listáját lásd: [milyen típusú információkat gyűjti a PerfInsights?](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/how-to-use-perfinsights#what-kind-of-information-is-collected-by-perfinsights) 
+Minden egyes Futtatás diagnosztikai elemzéseket és javaslatok, érintett erőforrások, naplófájlok és más részletes diagnosztikai adatokat gyűjtött listáját, valamint az offline megtekintésre a jelentést tartalmaz. Az összes gyűjtött diagnosztikai adatok teljes listáját lásd: [milyen típusú információkat gyűjti a PerfInsights?](https://docs.microsoft.com/azure/virtual-machines/windows/how-to-use-perfinsights#what-kind-of-information-is-collected-by-perfinsights) 
 
 ### <a name="select-a-performance-diagnostics-report"></a>Válassza ki a diagnosztikai teljesítményjelentés
 A diagnosztikai jelentések listája segítségével futtatott diagnosztikai jelentések találja. A lista tartalmazza az elemzés használt adatait, amelyek található és a hatás szintre. Válassza ki egy sort a további részletek megtekintéséhez.
@@ -123,7 +123,7 @@ Kiválaszthat egy elemzést az érintett erőforrások, a javasolt megoldások �
 ![Képernyőkép egy diagnosztikai insight teljesítmény részletei](media/performance-diagnostics/insight-detail.png)
 
 ### <a name="download-and-review-the-full-performance-diagnostics-report"></a>Töltse le és tekintse át a teljes diagnosztikai teljesítményjelentés
-Használhatja a **jelentés letöltése** gombra kattintva töltse le egy HTML-jelentést, amely tartalmazza a további részletes diagnosztikai információkat, például a storage és a hálózati konfigurációt, a teljesítményszámlálók, nyomkövetéseket, a folyamatok listájában, és naplózza. A tartalom a kiválasztott elemzés függ. Speciális hibaelhárításhoz, a jelentés és interaktív diagramok magas CPU-felhasználás, magas lemezhasználat és folyamatokat, amelyek túl sok memóriát kapcsolatos további információkat is tartalmazhat. A diagnosztika teljesítményjelentés kapcsolatos további információkért lásd: [tekintse át a diagnosztikai jelentés](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/how-to-use-perfinsights#review-the-diagnostics-report).
+Használhatja a **jelentés letöltése** gombra kattintva töltse le egy HTML-jelentést, amely tartalmazza a további részletes diagnosztikai információkat, például a storage és a hálózati konfigurációt, a teljesítményszámlálók, nyomkövetéseket, a folyamatok listájában, és naplózza. A tartalom a kiválasztott elemzés függ. Speciális hibaelhárításhoz, a jelentés és interaktív diagramok magas CPU-felhasználás, magas lemezhasználat és folyamatokat, amelyek túl sok memóriát kapcsolatos további információkat is tartalmazhat. A diagnosztika teljesítményjelentés kapcsolatos további információkért lásd: [tekintse át a diagnosztikai jelentés](https://docs.microsoft.com/azure/virtual-machines/windows/how-to-use-perfinsights#review-the-diagnostics-report).
 
 ## <a name="manage-performance-diagnostics-reports"></a>Teljesítmény diagnosztikai jelentések kezelése
 Egy vagy több teljesítmény diagnosztikai jelentések használatával törölheti az **jelentés törlése** gombra.

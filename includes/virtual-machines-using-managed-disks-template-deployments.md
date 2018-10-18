@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/05/2018
 ms.author: jaboes
 ms.custom: include file
-ms.openlocfilehash: c7db8eaf57bf29e17b4543e99a44655030aa6172
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: 0c21ba3df6805c053f3d318d1ca3734a89c2ab60
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45979546"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49400418"
 ---
 # <a name="using-managed-disks-in-azure-resource-manager-templates"></a>A felügyelt lemezek az Azure Resource Manager-sablonok használatával
 
@@ -256,4 +256,4 @@ A REST API-leírások teljes információk megkereséséhez tekintse át a [hozz
 * Látogasson el a [Azure Managed Disks – áttekintés](../articles/virtual-machines/windows/managed-disks-overview.md) dokumentum további információk a felügyelt lemezekről.
 * Tekintse át a sablon referenciadokumentációjából virtuálisgép-erőforrások meglátogatják a [Microsoft.Compute/virtualMachines sablonreferenciája](/azure/templates/microsoft.compute/virtualmachines) dokumentumot.
 * Tekintse át a sablon referenciadokumentációjából lemez erőforrások meglátogatják a [Microsoft.Compute/disks sablonreferenciája](/azure/templates/microsoft.compute/disks) dokumentumot.
-* A felügyelt lemezek használata az Azure-beli virtuálisgép-méretezési csoportok további információért látogasson el a [adatlemezek használata méretezési csoportokkal](https://docs.microsoft.com/en-us/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-attached-disks) dokumentumot.
+* A felügyelt lemezek használata az Azure-beli virtuálisgép-méretezési csoportok további információért látogasson el a [adatlemezek használata méretezési csoportokkal](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-attached-disks) dokumentumot.

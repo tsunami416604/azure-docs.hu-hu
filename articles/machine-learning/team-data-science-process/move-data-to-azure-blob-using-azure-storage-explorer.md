@@ -1,10 +1,10 @@
 ---
-title: Adatok áthelyezése, illetve onnan a Blob Storage-ban az Azure Storage-kezelővel |} Microsoft Docs
+title: Adatok áthelyezése az Azure Storage Explorer használatával Blob Storage szolgáltatásba vagy onnan |} A Microsoft Docs
 description: Adatok áthelyezése Azure Blob Storage-tárolóba vagy onnan máshová az Azure Storage Explorer használatával
 services: machine-learning,storage
 documentationcenter: ''
 author: deguhath
-manager: jhubbard
+manager: cgronlun
 editor: cgronlun
 ms.assetid: 10bd283f-0875-4c67-af63-6492270b7656
 ms.service: machine-learning
@@ -15,45 +15,45 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/04/2017
 ms.author: deguhath
-ms.openlocfilehash: 464290901959ee052059b092b737e369928bd19b
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 295fadd69a86769f74ec45ed3e77e8a5b807e14f
+ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34837789"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49392522"
 ---
-# <a name="move-data-to-and-from-azure-blob-storage-using-azure-storage-explorer"></a>Adatok áthelyezése, és az Azure Blob Storage Azure Storage Explorerrel
-Az Azure Tártallózó egy olyan szabad eszköz a Microsoft, amely lehetővé teszi a Windows, a macOS és a Linux Azure Storage-adatokkal dolgozni. Ez a témakör ismerteti, és töltse le az adatokat az Azure blob storage használatával. Az eszköz letölthető a [Microsoft Azure Tártallózó](http://storageexplorer.com/).
+# <a name="move-data-to-and-from-azure-blob-storage-using-azure-storage-explorer"></a>Adatok importálására és az Azure Blob Storage Azure Storage Explorer használatával
+Az Azure Storage Explorer egy olyan ingyenes eszköz, a Microsoft, amely lehetővé teszi, hogy az Azure Storage-adatokkal Windows, macOS és Linux rendszereken. Ez a témakör ismerteti, hogyan használható a fel- és letöltése az adatok Azure blob storage-ból. Az eszköz letölthető a [Microsoft Azure Storage Explorer](http://storageexplorer.com/).
 
 [!INCLUDE [blob-storage-tool-selector](../../../includes/machine-learning-blob-storage-tool-selector.md)]
 
 > [!NOTE]
-> Ha virtuális Gépet, amely a parancsfájlok által biztosított be lett állítva az [adatok tudományos virtuális gépek Azure-ban](virtual-machines.md), majd Azure Tártallózó már telepítve van a virtuális Gépen.
+> Ha használja a virtuális Gépet, amely be lett állítva a parancsfájlok által biztosított [Data Science virtuális gépek Azure-ban](virtual-machines.md), majd az Azure Storage Explorer már telepítve van a virtuális gépen.
 > 
 > [!NOTE]
-> Az Azure blob storage teljes bevezetéséhez hivatkoznak [Azure Blob alapjai](../../storage/blobs/storage-dotnet-how-to-use-blobs.md) és [Azure Blob szolgáltatás](https://msdn.microsoft.com/library/azure/dd179376.aspx).   
+> Teljes körű Bevezetés az Azure blob storage, tekintse meg a [Azure Blob alapjai](../../storage/blobs/storage-dotnet-how-to-use-blobs.md) és [Azure Blob Service-ben](https://msdn.microsoft.com/library/azure/dd179376.aspx).   
 > 
 > 
 
 ## <a name="prerequisites"></a>Előfeltételek
-Jelen dokumentum céljából feltételezzük, hogy az Azure-előfizetéssel, a tárfiók és a megfelelő kulcsot adott fiók rendelkezik. Adatok feltöltése/letöltése, előtt ismernie kell az Azure storage-fiók nevét és a fiók kulcs. 
+Jelen dokumentum céljából feltételezzük, hogy rendelkezik Azure-előfizetéssel, egy storage-fiókot és a kapcsolódó tárfiók-kulcsot az adott fiók. Adatok feltöltése/letöltése, előtt ismernie kell az Azure storage-fiók tárfióknév és fiókkulcs. 
 
-* Állítsa be Azure-előfizetéssel, lásd: [ingyenes egy hónapos próbaverzió](https://azure.microsoft.com/pricing/free-trial/).
-* A storage-fiók létrehozásával és az első fiók és a fontos információkat lásd: [tudnivalók az Azure storage-fiókok](../../storage/common/storage-create-storage-account.md). Jegyezze fel a tárfiók elérési kulcsának ezt a kulcsot, a fiók az Azure Tártallózó eszközzel való csatlakozáshoz szükség szerint.
-* Az Azure Tártallózó eszköz letölthető a [Microsoft Azure Tártallózó](http://storageexplorer.com/). Fogadja el az alapértelmezett telepítés során.
+* Azure-előfizetés beállításával kapcsolatban lásd: [ingyenes egy hónapos próbaidőszak](https://azure.microsoft.com/pricing/free-trial/).
+* Storage-fiók létrehozásával és az első fiók és a kulcsadatokat: [tudnivalók az Azure storage-fiókok](../../storage/common/storage-create-storage-account.md). Jegyezze fel a tárfiók elérési kulcsának ezt a kulcsot az Azure Storage Explorer eszközzel a fiókhoz való csatlakozáshoz szükség szerint.
+* Az Azure Storage Explorer eszköz letölthető a [Microsoft Azure Storage Explorer](http://storageexplorer.com/). Elfogadhatja az alapértelmezett beállításokat a telepítés során.
 
 <a id="explorer"></a>
 
-## <a name="use-azure-storage-explorer"></a>Az Azure Storage-kezelővel
-Az alábbi lépéseket a dokumentum feltöltése/letöltése Azure Tártallózó adatokat. 
+## <a name="use-azure-storage-explorer"></a>Az Azure Storage Explorer használata
+A dokumentum feltöltése/letöltése Azure Storage Explorer használata az adatok az alábbi lépéseket. 
 
-1. Indítsa el a Microsoft Azure Tártallózó.
-2. Elindítani a **jelentkezzen be a fiókba...**  varázslóban válassza **Azure-fiók beállításai** ikonra, majd **vegyen fel egy fiókot** és adja meg hitelesítő adatokat. ![Egy Azure storage-fiók hozzáadása](./media/move-data-to-azure-blob-using-azure-storage-explorer/add-an-azure-store-account.png)
-3. Elindítani a **csatlakozás az Azure Storage** lapján jelölje be a **csatlakozás az Azure storage** ikonra. ![Csatlakozás az Azure storage](./media/move-data-to-azure-blob-using-azure-storage-explorer/connect-to-azure-storage-1.png)
-4. Adja meg az elérési kulcsot az Azure-tárfiókot a a **csatlakozás az Azure Storage** varázsló, majd **következő**. ![Csatlakozás az Azure storage](./media/move-data-to-azure-blob-using-azure-storage-explorer/connect-to-azure-storage-2.png)
-5. A tárfiók nevét adja meg a **fióknév** mezőbe, majd válassza ki **következő**. ![Külső tárterület csatolása](./media/move-data-to-azure-blob-using-azure-storage-explorer/attach-external-storage.png)
-6. A hozzáadott tárfiókot most kell felsorolni. A tárfiók a blob-tároló létrehozásához kattintson a jobb gombbal a **Blobtárolók** fiók, jelölje be a csomópont **Blob-tároló létrehozása**, és adjon meg egy nevet.
-7. Adatok feltöltése a tárolóhoz, válassza ki a cél-tároló, majd kattintson a **feltöltése** gomb.![ Storage-fiókok](./media/move-data-to-azure-blob-using-azure-storage-explorer/storage-accounts.png)
-8. Kattintson a **...**  jobb oldalán a **fájlok** mezőben adja meg egy vagy több fájl feltöltése a fájlrendszerből, és kattintson a **feltöltése** a fájlok feltöltése a kezdéshez.![ Fájlok feltöltése](./media/move-data-to-azure-blob-using-azure-storage-explorer/upload-files-to-blob.png)
-9. Adatok, jelölje ki a megfelelő tárolót, hogy töltse le, és kattintson a blob letöltése **letöltése**. ![Fájlok letöltése](./media/move-data-to-azure-blob-using-azure-storage-explorer/download-files-from-blob.png)
+1. Indítsa el a Microsoft Azure Storage Explorerben.
+2. Csatlakozva a **bejelentkezni a fiókjába...**  varázslóban válassza **Azure-fiók beállításai** ikonra, majd **vegyen fel egy fiókot** adja meg hitelesítő adatait. ![Az Azure storage-fiók hozzáadása](./media/move-data-to-azure-blob-using-azure-storage-explorer/add-an-azure-store-account.png)
+3. Csatlakozva a **csatlakozás az Azure Storage** varázslóban válassza a **csatlakozás az Azure storage** ikonra. ![Csatlakozás az Azure storage](./media/move-data-to-azure-blob-using-azure-storage-explorer/connect-to-azure-storage-1.png)
+4. Írja be a hozzáférési kulcsot az Azure storage-fiókból a **csatlakozás az Azure Storage** varázslót, majd **tovább**. ![Csatlakozás az Azure storage](./media/move-data-to-azure-blob-using-azure-storage-explorer/connect-to-azure-storage-2.png)
+5. Adja meg a tárfiók nevét a **fióknév** mezőbe, majd **tovább**. ![Külső tárterület csatolása](./media/move-data-to-azure-blob-using-azure-storage-explorer/attach-external-storage.png)
+6. A storage-fiókot hozzá kell láthatók. Hozzon létre egy blobtárolót a tárfiókban lévő, kattintson a jobb gombbal a **Blobtárolók** a fiókját, válassza a csomópontot **Blobtároló létrehozása**, és adjon meg egy nevet.
+7. Adatok feltöltése a tárolóba, válassza ki a céltárolót, és kattintson a **feltöltése** gomb.![ Storage-fiókok](./media/move-data-to-azure-blob-using-azure-storage-explorer/storage-accounts.png)
+8. Kattintson a **...**  jobb oldalán a **fájlok** jelölje ki egy vagy több fájlokat a fájlrendszerből, és kattintson a **feltöltése** a fájlok feltöltése a kezdéshez.![ Fájlok feltöltése](./media/move-data-to-azure-blob-using-azure-storage-explorer/upload-files-to-blob.png)
+9. Töltse le az adatokon, és válassza a blob letöltéséhez, és kattintson a megfelelő tárolóban való **letöltése**. ![Fájlok letöltése](./media/move-data-to-azure-blob-using-azure-storage-explorer/download-files-from-blob.png)
 

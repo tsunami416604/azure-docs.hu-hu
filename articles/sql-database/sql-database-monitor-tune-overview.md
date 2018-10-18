@@ -12,12 +12,12 @@ ms.author: v-daljep
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 10/16/2018
-ms.openlocfilehash: dca23940053fa6bf1f716ffa1a6fa0bcd7b41c91
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.openlocfilehash: 5ef15b7a757b87c14bf0bd764bdd6ca6e6da64e0
+ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/17/2018
-ms.locfileid: "49362619"
+ms.locfileid: "49379046"
 ---
 # <a name="monitoring-and-performance-tuning"></a>Figyelés és a teljesítmény hangolása
 
@@ -62,7 +62,7 @@ Többféle módon futó kapcsolatos teljesítménybeli problémák azonosítás�
 
 Először is meg, lehet, hogy ez nem egy nagy-Processzor, a futó kapcsolatos teljesítménybeli problémát. Nem érhető el, ha a következő lépés az azonosításához az alkalmazás számítási társított felső vár.  Általános módszer az első bemutató Várakozás típusa kategóriák:
 
-- A [Query Store](https://docs.microsoft.com/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store) idővel várakozási statisztika lekérdezésenként biztosít. A Query Store várjon típusok mostantól várakozási kategóriák. A leképezés típusú várjon a kategóriák várakozási érhető el a [sys.query_store_wait_stats](https://docs.microsoft.com/en-us/sql/relational-databases/system-catalog-views/sys-query-store-wait-stats-transact-sql?view=sql-server-2017#wait-categories-mapping-table).
+- A [Query Store](https://docs.microsoft.com/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store) idővel várakozási statisztika lekérdezésenként biztosít. A Query Store várjon típusok mostantól várakozási kategóriák. A leképezés típusú várjon a kategóriák várakozási érhető el a [sys.query_store_wait_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-query-store-wait-stats-transact-sql?view=sql-server-2017#wait-categories-mapping-table).
 - [sys.dm_db_wait_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-wait-stats-azure-sql-database) által végrehajtott művelet során észlelt összes vár kapcsolatos információkat ad vissza. Ez a összesített nézet segítségével diagnosztizálhatja a teljesítménnyel kapcsolatos problémák az Azure SQL Database és az adott lekérdezések és -kötegek.
 - [sys.dm_os_waiting_tasks](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-os-waiting-tasks-transact-sql) feladat, amely néhány erőforrás várakozik a várakozási sorral kapcsolatos információkat ad vissza.
 

@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/17/2018
+ms.date: 10/16/2018
 ms.author: magoedte
-ms.openlocfilehash: 06073197254245727cfa41020f060d904a4e50f9
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 63549768f616e60e92c853047525c18cefdaddb4
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46957561"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49386277"
 ---
 # <a name="how-to-chart-performance-with-azure-monitor-for-vms"></a>Hogyan lehet a virtuális gépek és az Azure Monitor teljesítmény mutató részletes diagram
 Az Azure Monitor-beli virtuális gépek több fő teljesítménymutatók (KPI-k) segítségével eldöntheti, milyen jól a virtuális gép működik-e a cél teljesítménydiagramok készletét tartalmazza. A diagramok megjelenítése az erőforrás-használatot egy időszakon belül, így azonosíthatja a szűk keresztmetszeteket, a rendellenességeket, vagy váltson át az egyes gépek megtekintése a kiválasztott metrika alapján erőforrás-használat listázása egy perspektíva. Bár vannak számos elemet kell figyelembe venni, amikor foglalkoznak, teljesítmény, a virtuális gépek az Azure Monitor összpontosít az operációs rendszer keresztül a processzor, memória, hálózati adapterek és lemezek, ahogy. Teljesítmény egészíti ki a állapotát a figyelési funkció, és tegye elérhetővé a problémákat, amelyek jelzik, hogy egy lehetséges rendszer összetevő hibája, támogatási finomhangolása és optimalizálási hatékonyság elérése érdekében, vagy támogatja a kapacitástervezés segít.  
@@ -33,7 +33,9 @@ Az Azure Monitor a teljesítmény funkció erőforráscsoportok, előfizetések 
 
 ![Virtuális gép insights teljesítményének felső N lista megtekintése](./media/monitoring-vminsights-performance/vminsights-performance-aggview-01.png)
 
-Az a **felső N diagramok** lapon, ha egynél több Log Analytics-munkaterületen, válassza ki azt, amelyik integrálva van a megoldást a **munkaterület** választó, amely a lap tetején.  Majd válassza ki azt a **csoport** választó, egy előfizetés, erőforráscsoport vagy adott számítógéphez, a megadott időszakon belül.  Alapértelmezés szerint a diagramok megjelenítése az elmúlt 24 órában.  Használatával a **TimeRange** választó, lekérdezheti a múltbéli tartományok megjelenítése, hogyan teljesítmény kikeresi az elmúlt 30 napig.   
+Az a **felső N diagramok** lapon, ha egynél több Log Analytics-munkaterületen, válassza ki a munkaterületet a megoldás engedélyezve van a **munkaterület** választó, amely a lap tetején. A **csoport** választóval adja vissza az előfizetések, erőforráscsoportok, [számítógépcsoportok](../log-analytics/log-analytics-computer-groups.md), és a számítógépek, amelyek segítségével tovább szűrheti az eredményeket jelenik meg a kijelölt munkaterülethez kapcsolódó Virtuálisgép-méretezési csoportok a diagramokban és az egyéb oldalain ezen az oldalon. A kijelölés csak a teljesítmény funkció vonatkozik, és nem vállalunk pénzügyi vagy a térképen.  
+
+Alapértelmezés szerint a diagramok megjelenítése az elmúlt 24 órában. Használatával a **TimeRange** választó, lekérdezheti a múltbéli tartományok megjelenítése, hogyan teljesítmény kikeresi az elmúlt 30 napig.   
 
 Az öt kapacitás kihasználtsága diagramok az oldalon látható a következők:
 
@@ -100,6 +102,9 @@ A következő kapacitás kihasználtsága diagramok áll rendelkezésre:
 * Bájt Receive-forgalom – alapértelmezett értékeket megjelenítő fogadott bájtok átlagos száma
 
 ![Virtuális gép insights teljesítmény közvetlenül a virtuális gép megtekintése](./media/monitoring-vminsights-performance/vminsights-performance-directvm-01.png)
+
+## <a name="alerting-and-alert-management"></a>Riasztások és a riasztások kezelése 
+Előre konfigurált riasztási szabályok engedélyezve van az Azure Monitor részeként a virtuális gépek teljesítmény-mérőszámok nem tartalmazzák. Bár vannak állapotriasztások megfelelő teljesítménnyel kapcsolatos problémák az Azure virtuális gépen észlelt, például a magas CPU-kihasználtság, kevés a memória érhető el, kevés a lemezterület stb., ugyanahhoz a Log Analytics-munkaterülethez csatlakozó virtuális gépek csak érvényesek ezen állapotriasztások az Azure Monitor szolgáltatással integrált virtuális gépek számára. Adja meg a saját feltételek vagy a logikai rugalmasan van szüksége, ha is létrehozhat egyéni riasztási szabályok az alábbi [létrehozása, megtekintése és kezelése az Azure Monitor használatával riasztások](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md). 
 
 ## <a name="next-steps"></a>További lépések
 Az állapotfigyelő szolgáltatás használatával kapcsolatban lásd: [a virtuális gépek állapotának megtekintése az Azure Monitor](monitoring-vminsights-health.md), vagy a felderített alkalmazások függőségeinek megtekintése: [megtekintése az Azure Monitor virtuális gépeket a térképen](monitoring-vminsights-maps.md). 

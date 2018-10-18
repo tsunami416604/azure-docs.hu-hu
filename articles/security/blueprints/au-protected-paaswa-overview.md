@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 08/23/2018
 ms.author: meladie
-ms.openlocfilehash: d16bb218526a6768ed9f8a6babf5feb186a2b225
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: bd6ac05da5f60fdbe86897ce03ccd6646e6bf191
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49321597"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49390262"
 ---
 # <a name="azure-security-and-compliance-blueprint---paas-web-application-for-australia-protected"></a>Azure biztonsági és megfelelőségi terv – PaaS-webalkalmazás Ausztráliában védett
 
@@ -201,7 +201,7 @@ A következő Log Analytics [felügyeleti megoldások](https://docs.microsoft.co
 
 **Az Azure Monitor**: [Azure Monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/) segít a felhasználóknak a teljesítmény, biztonság fenntartására és a trendek azonosítására által lehetővé teszi a cégeknek naplózása, riasztásokat hozhat létre, és archiválja az adatokat, többek között API-hívások nyomon követése az Azure-ban az erőforrásokat.
 
-Az Azure Network Watcher: [Azure Network Watcher] 9 https://docs.microsoft.com/en-us/azure/network-watcher/network-watcher-monitoring-overview) eszközeivel monitorozása, diagnosztizálása, megtekintheti a metrikákat, és engedélyezheti vagy tilthatja le a naplókat a további erőforrások az Azure-beli virtuális hálózathoz.  Közösségének entitások meg kell valósítania a Network Watcher flow-naplók az NSG-ket és virtuális gépekhez. Ezek a naplók, amely csak a biztonsági naplók vannak tárolva, és a tárfiókhoz való hozzáférést kell biztosítani, a szerepkör alapú hozzáférés-vezérlés dedikált tárfiókban kell tárolni.
+Az Azure Network Watcher: [Azure Network Watcher] 9 https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview) eszközeivel monitorozása, diagnosztizálása, megtekintheti a metrikákat, és engedélyezheti vagy tilthatja le a naplókat a további erőforrások az Azure-beli virtuális hálózathoz.  Közösségének entitások meg kell valósítania a Network Watcher flow-naplók az NSG-ket és virtuális gépekhez. Ezek a naplók, amely csak a biztonsági naplók vannak tárolva, és a tárfiókhoz való hozzáférést kell biztosítani, a szerepkör alapú hozzáférés-vezérlés dedikált tárfiókban kell tárolni.
 
 ## <a name="threat-model"></a>Fenyegetések modellezése
 

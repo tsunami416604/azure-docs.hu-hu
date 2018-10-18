@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/09/2018
 ms.author: bryanla
-ms.openlocfilehash: d5cc634451c5412f9a3339c8d2d26654c4d5c1b8
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 60920aaa62d8472eaca8f929c62ce1c0af08f9a4
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44298913"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49385634"
 ---
 # <a name="get-started-with-key-vault-certificates"></a>Ismerkedés a Key Vault-tanúsítványok
 A következő esetekben felvázolják a Key Vault tanúsítvány management szolgáltatás többek között a további lépéseket az első tanúsítvány létrehozásához a key vaultban lévő szükséges elsődleges használatokban.
@@ -83,7 +83,7 @@ Megjegyzés: ezt a folyamatot, 3.1. lépés egy olyan egyszeri művelet.
       -   Megújítási információkat - > ex. a lejárat előtt 90 nappal  
 
   - Egy tanúsítvány-létrehozási folyamata általában egy aszinkron folyamat, amely magában foglalja a key vault létrehozása tanúsítványművelet állapotának lekérdezése.  
-[Tanúsítványművelet beolvasása](https://docs.microsoft.com/en-us/rest/api/keyvault/getcertificateoperation)  
+[Tanúsítványművelet beolvasása](https://docs.microsoft.com/rest/api/keyvault/getcertificateoperation)  
       -   Állapot: befejezett, sikertelen, hiba adataival vagy, a visszavont  
       -   A késleltetés hozhat létre, mert a művelet megszakítása kezdeményezhetők. Előfordulhat, hogy a Mégse gombra, vagy nem lehet érvényes.  
 

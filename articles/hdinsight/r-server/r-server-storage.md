@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/27/2018
-ms.openlocfilehash: 5bd5919efa84f2dd22929075b806747b413ac346
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 4c3b36891030ae97f382d5e1d0623fa7c698dbf6
+ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43051793"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49395087"
 ---
 # <a name="azure-storage-solutions-for-ml-services-on-azure-hdinsight"></a>Azure Storage-megoldások Machine Learning-szolgáltatások az Azure HDInsight
 
@@ -159,7 +159,7 @@ A Data Lake Store-fiók konfigurálása RevoShare címtárhoz, és adja hozzá a
 
 ## <a name="use-azure-file-storage-with-ml-services-on-hdinsight"></a>Azure File storage használata a HDInsight Machine Learning-szolgáltatások
 
-Van egy kényelmes adatok tárolási lehetőség, használatra az élcsomóponton, az Azure Files] nevű ((https://azure.microsoft.com/services/storage/files/). Lehetővé teszi, hogy egy Azure-tárolófájl-megosztás és a Linux-fájlrendszer csatlakoztatási. Lehet, hogy ezt a beállítást az adatfájlok, R-szkriptek és az esetleg szükséges később, különösen akkor, ha a natív fájlrendszer használatára a HDFS helyett az élcsomóponthoz logikus eredményobjektumok tárolására is praktikus. 
+Van egy kényelmes adatok tárolási lehetőség, használatra az élcsomóponti operacionalizáláshoz nevű [Azure Files](https://azure.microsoft.com/services/storage/files/). Lehetővé teszi, hogy egy Azure-tárolófájl-megosztás és a Linux-fájlrendszer csatlakoztatási. Lehet, hogy ezt a beállítást az adatfájlok, R-szkriptek és az esetleg szükséges később, különösen akkor, ha a natív fájlrendszer használatára a HDFS helyett az élcsomóponthoz logikus eredményobjektumok tárolására is praktikus. 
 
 Az Azure Files egyik fő előnye az, hogy a fájlmegosztások csatlakoztatva van-e, és hogy minden, amely rendelkezik egy támogatott operációs rendszer, például a Windows vagy Linux rendszeren használja. Például akkor használható, amelynek Ön vagy valaki a csapata egy másik HDInsight-fürt, egy Azure virtuális Gépen, vagy akár egy helyszíni rendszer szerint. További információkért lásd:
 

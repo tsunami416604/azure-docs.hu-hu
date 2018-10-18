@@ -8,12 +8,12 @@ ms.date: 08/13/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 9c9c04a8310a46605cf5733131db1418b7cb7f7a
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 97a2180aaf236d3541cff30d2151f26ce70b14af
+ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47218784"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49393474"
 ---
 # <a name="understand-the-azure-iot-edge-runtime-and-its-architecture"></a>Az Azure IoT Edge-futtatókörnyezet és architektúrájának ismertetése
 
@@ -23,13 +23,13 @@ Az IoT Edge-futtatókörnyezet az IoT Edge-eszközökön a következő funkciók
 
 * Telepíti és frissíti az eszközökön a számítási feladatokat.
 * Fenntartja Azure IoT Edge biztonsági szabványait az eszközön.
-* Biztosítja, hogy [az IoT Edge-modulok]-[lnk-modulok] folyamatos futását.
+* Biztosítja, hogy [IoT Edge-modulok](iot-edge-modules.md) folyamatos futását.
 * Jelenti a modulok állapotát a felhőnek a távoli monitorozáshoz.
 * Kommunikációt létesít alárendelt levéleszközök és az IoT Edge-eszközök között.
 * Kommunikációt létesít a modulok és az IoT Edge-eszköz között.
 * Kommunikációt létesít az IoT Edge-eszközök és a felhő között.
 
-![IoT Edge-futtatókörnyezet elemzéseket és a modulok állapotát az IoT hub kommunikál][1]
+![IoT Edge-futtatókörnyezet elemzéseket és a modulok állapotát az IoT hub kommunikál](./media/iot-edge-runtime/Pipeline.png)
 
 Az IoT Edge-futtatókörnyezet feladatai két kategóriába sorolhatók: kommunikációs és modul-kezelés. E két szerepkör két összetevőből, az IoT Edge-futtatókörnyezet végzi. Az IoT Edge hubot felelős közötti kommunikáció, míg az IoT Edge-ügynök üzembe helyezése és figyelése a modulok kezeli. 
 
@@ -49,7 +49,7 @@ Az Edge hub nem áll a helyileg futó IoT Hub teljes verzióját. Néhány dolog
 
 Az IoT Edge-megoldás sávszélesség csökkentése érdekében használja, az Edge hub optimalizálja hány tényleges kapcsolatok hozhatók létre a felhőben. Edge hubot felveszi azt a logikai kapcsolatok ügyfelek, mint a modulok vagy levéleszközök és egyesíti azokat a felhőbe egyetlen fizikai kapcsolathoz. Ez a folyamat részletei transzparensek a megoldás többi részétől. Az ügyfelek úgy gondolja, hogy hozzáadhatják saját kapcsolatukat a felhőbe rendelkeznek, annak ellenére, hogy azok minden távozási ugyanazon a kapcsolaton keresztül. 
 
-![Edge hubot átjáróként működik, több fizikai eszköz és a felhő között][2]
+![Edge hubot átjáróként működik, több fizikai eszköz és a felhő között](./media/iot-edge-runtime/Gateway.png)
 
 Edge hubot megállapíthatja, hogy csatlakozik az IoT Hub. Ha megszakad a kapcsolat, Edge hubot menti az üzenetek vagy a helyi ikereszköz-frissítések. Miután a kapcsolat helyreállt, a szinkronizált összes adatot. Az átmeneti gyorsítótár használt helyet az Edge hub ikermodul tulajdonsága határozza meg. A gyorsítótár méretét nem maximumon, és az eszköz tárkapacitása is növekszik. 
 
@@ -57,7 +57,7 @@ Edge hubot megállapíthatja, hogy csatlakozik az IoT Hub. Ha megszakad a kapcso
 
 Edge hubot modult a modul kommunikációt létesít. Használja az Edge Hub üzenetközvetítőként tartja a modulok egymástól független. Modulok csak adja meg, amelyen a üzenetek és a kimeneteket, amelyhez a üzeneteket írhat elfogadják a bemeneteket kell. A megoldás fejlesztő ezután összefűzi ezeket a bemeneteket, és kiírja együtt, hogy a modulok a rendelés megoldásra jellemző adatok feldolgozása. 
 
-![Edge hubot modul-modul kommunikációt létesít][3]
+![Edge hubot modul-modul kommunikációt létesít](./media/iot-edge-runtime/ModuleEndpoints.png)
 
 Az Edge hub adatokat küldeni, a modul meghívja a SendEventAsync metódust. Az első argumentum meghatározza a milyen kimenetet az üzenet elküldéséhez. A következő pseudocode output1 üzenetet küld:
 
@@ -77,7 +77,7 @@ A megoldás fejlesztő feladata a szabályok, amelyek meghatározzák, hogyan Ed
 
 <!--- For more info on how to declare routes between modules, see []. --->   
 
-![Útvonalak modulok között][4]
+![Útvonalak modulok között](./media/iot-edge-runtime/ModuleEndpointsWithRoutes.png)
 
 ## <a name="iot-edge-agent"></a>IoT Edge-ügynök
 
@@ -117,13 +117,4 @@ További információ az Azure IoT Edge biztonsági keretrendszert, olvassa el a
 
 ## <a name="next-steps"></a>További lépések
 
-[Megismerheti az Azure IoT Edge-tanúsítványok][lnk-certs]
-
-<!-- Images -->
-[1]: ./media/iot-edge-runtime/Pipeline.png
-[2]: ./media/iot-edge-runtime/Gateway.png
-[3]: ./media/iot-edge-runtime/ModuleEndpoints.png
-[4]: ./media/iot-edge-runtime/ModuleEndpointsWithRoutes.png
-
-<!-- Links -->
-[lnk-certs]: iot-edge-certs.md
+[Megismerheti az Azure IoT Edge-tanúsítványok](iot-edge-certs.md)

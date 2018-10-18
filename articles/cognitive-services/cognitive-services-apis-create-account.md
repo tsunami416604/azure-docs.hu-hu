@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 02/01/2018
 ms.author: garye
-ms.openlocfilehash: 9c4aea2493ffed12b90f82113baf81c6c77a0ea2
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 37f53303a3b0c224c1286fb488a796fd5cdee0e5
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48801403"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49386416"
 ---
 # <a name="quickstart-create-a-cognitive-services-account-in-the-azure-portal"></a>Rövid útmutató: A Cognitive Services-fiók létrehozása az Azure Portalon
 
@@ -49,7 +49,7 @@ Ez a rövid útmutató segítségével az Azure Cognitive Services használatán
 ## <a name="access-your-resource"></a>Az erőforrás eléréséhez 
 
 > [!NOTE]
-> Az előfizetés-tulajdonosokat letilthatja a Cognitive Services-fiókok az erőforráscsoportok és előfizetések létrehozása alkalmazásával [az Azure policy](https://docs.microsoft.com/en-us/azure/governance/policy/overview#policy-definition), a "nem engedélyezett erőforrástípusok" szabályzatdefiníció hozzárendelése és megadása**Microsoft.CognitiveServices/accounts** a cél erőforrás típusaként.
+> Az előfizetés-tulajdonosokat letilthatja a Cognitive Services-fiókok az erőforráscsoportok és előfizetések létrehozása alkalmazásával [az Azure policy](https://docs.microsoft.com/azure/governance/policy/overview#policy-definition), a "nem engedélyezett erőforrástípusok" szabályzatdefiníció hozzárendelése és megadása**Microsoft.CognitiveServices/accounts** a cél erőforrás típusaként.
 
 Miután létrehozta az erőforrást, hozzá tud férni az Azure irányítópultján Ha rögzítette azt. Ellenkező esetben megtalálja a **erőforráscsoportok**.
 

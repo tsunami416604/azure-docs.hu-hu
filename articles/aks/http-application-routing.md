@@ -8,12 +8,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 04/25/2018
 ms.author: laevenso
-ms.openlocfilehash: 9a096588c5a8fda64343e001fdbd895d02153f58
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.openlocfilehash: c2f68afb685cb04d456e06cadf378bd1c3ebb1fb
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/17/2018
-ms.locfileid: "49362704"
+ms.locfileid: "49384978"
 ---
 # <a name="http-application-routing"></a>HTTP-alkalmazások útválasztása
 
@@ -22,7 +22,7 @@ A HTTP-kérelem útválasztási megoldás megkönnyíti az Azure Kubernetes Serv
 Ha a bővítmény engedélyezve van, az előfizetésben hoz létre egy DNS-zónát. További információ a DNS-költség: [DNS díjszabási][dns-pricing].
 
 > [!CAUTION]
-> A HTTP-kérelem útválasztási bővítmény célja, hogy gyorsan létrehozhat egy bejövőforgalom-vezérlőt és az alkalmazások eléréséhez. Ez a bővítmény nem ajánlott éles környezetben való használatra. Támogatja az éles használatra kész bejövő üzemelő példánya, amely tartalmazza a replikák és a TLS, lásd: [hozzon létre egy HTTPS bejövőforgalom-vezérlőjéhez](https://docs.microsoft.com/en-us/azure/aks/ingress-tls).
+> A HTTP-kérelem útválasztási bővítmény célja, hogy gyorsan létrehozhat egy bejövőforgalom-vezérlőt és az alkalmazások eléréséhez. Ez a bővítmény nem ajánlott éles környezetben való használatra. Támogatja az éles használatra kész bejövő üzemelő példánya, amely tartalmazza a replikák és a TLS, lásd: [hozzon létre egy HTTPS bejövőforgalom-vezérlőjéhez](https://docs.microsoft.com/azure/aks/ingress-tls).
 
 ## <a name="http-routing-solution-overview"></a>HTTP-útválasztási megoldás áttekintése
 

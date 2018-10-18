@@ -10,12 +10,12 @@ ms.component: monitor and tune
 ms.date: 09/06/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 1cf2fcb2ce99d4c6c670e5afdb1c4208158ea4de
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: 1d366850bc886dc48afc59ffaf0958b39314ebb1
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44096265"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49385532"
 ---
 # <a name="how-to-monitor-the-gen2-cache"></a>A Gen2 cache figyelése
 A tároló-architektúra Gen2 automatikusan rétegezi a leggyakrabban lekérdezett oszlopcentrikus szegmensek egy gyorsítótárban levő NVMe SSD-k alapján készült Gen2 data warehouse-adattárházak. Nagyobb teljesítmény van adatmegfelelőség, ha a lekérdezések beolvasása szegmenset, amely a gyorsítótárban levő vannak. Ez a cikk bemutatja, hogyan monitorozást és hibaelhárítást végezhet a lassú lekérdezések teljesítményének meghatározása, hogy a számítási feladatok optimális kihasználása a Gen2-gyorsítótár.  
@@ -43,7 +43,7 @@ A mátrix az alábbi forgatókönyvek a gyorsítótár-metrikák értékei alapj
 
 **2. forgatókönyv:** az aktuális adatok munkakészletének nem fér el őket a gyorsítótárhoz, amely egy alacsony gyorsítótár találati százaléka fizikai olvasások miatt. Érdemes felskálázni az teljesítményi szinthez, és futtassa újra a számítási feladatok, a gyorsítótár feltöltése miatt.
 
-**3. forgatókönyv:** valószínű, hogy a lekérdezés lassan fut, a gyorsítótár nem okok miatt. [Hibaelhárítás](https://docs.microsoft.com/en-us/azure/sql-data-warehouse/sql-data-warehouse-manage-monitor) más területeken, amely előfordulhat, hogy a lekérdezések kell lelassul. Emellett érdemes lehet [vertikális leskálázást a példány](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-manage-monitor) csökkentése érdekében a gyorsítótár méretét a költségek csökkentése érdekében. 
+**3. forgatókönyv:** valószínű, hogy a lekérdezés lassan fut, a gyorsítótár nem okok miatt. [Hibaelhárítás](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-manage-monitor) más területeken, amely előfordulhat, hogy a lekérdezések kell lelassul. Emellett érdemes lehet [vertikális leskálázást a példány](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-manage-monitor) csökkentése érdekében a gyorsítótár méretét a költségek csökkentése érdekében. 
 
 **4. forgatókönyv:** kellett egy ritkán használt gyorsítótár, amely lehet az oka, miért érdemes a lekérdezés lassú volt. Vegye figyelembe, hogy a lekérdezés ismételt módon működő adatkészlet most már a gyorsítótárba kerüljenek. 
 

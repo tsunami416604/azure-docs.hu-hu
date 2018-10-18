@@ -8,12 +8,12 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 06/07/2018
 ms.author: kgremban
-ms.openlocfilehash: b5316479011a432f3822448f03b8ad6ecddd4fe1
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: 031524f4ef00b57f598c1114d594fb70eeedd15b
+ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39590588"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49394000"
 ---
 # <a name="connect-modbus-tcp-devices-through-an-iot-edge-device-gateway"></a>Modbus TCP-eszközök csatlakoztatása az IoT Edge-eszközátjárón keresztül
 
@@ -23,7 +23,7 @@ Ha egy Azure IoT Hubhoz Modbus TCP vagy RTU protokollt használó IoT-eszközök
 
 Ez a cikk bemutatja, hogyan hozható létre saját tárolórendszerkép egy Modbus-modulhoz (vagy használhat előre létrehozott mintát), és ezután ez hogyan helyezhető üzembe az átjáróként szolgáló IoT Edge-eszközön. 
 
-A cikk azt feltételezi, hogy Modbus TCP protokollt használ. További információ a modul Modbus RTU-támogatáshoz való konfigurálásáról: [Azure IoT Edge Modbus-modul](https://github.com/Azure/iot-edge-modbus) projekt a GitHubon. 
+A cikk azt feltételezi, hogy Modbus TCP protokollt használ. A modul Modbus RTU támogató konfigurálásával kapcsolatos további információkért lásd: a [Azure IoT Edge Modbus-modul](https://github.com/Azure/iot-edge-modbus) projektet a Githubon. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 * Azure IoT Edge-eszköz. Az eszköz beállítását bemutató cikkek: [Azure IoT Edge üzembe helyezése szimulált eszközön Windows](quickstart.md) vagy [Linux rendszeren](quickstart-linux.md). 
@@ -38,7 +38,7 @@ Ha tesztelni kívánja a Modbus-átjáró funkcionalitását, a Microsoft rendel
 mcr.microsoft.com/azureiotedge/modbus:1.0
 ```
 
-Ha saját modult kíván létrehozni és testre szabni a környezethez, a GitHubon található egy nyílt forráskódú [Azure IoT Edge Modbus-modul](https://github.com/Azure/iot-edge-modbus) projekt. Kövesse a projektben található útmutatót saját tárolórendszerkép létrehozásához. Ha saját tárolórendszerképet hoz létre, a tárolórendszerképek beállításjegyzékbe való közzétételének módjáról és az egyéni modulok az eszközén való üzembe helyezéséről a [C# IoT Edge-modul fejlesztését és üzembe helyezését](tutorial-csharp-module.md) ismertető részben talál útmutatást. 
+Ha azt szeretné, hozzon létre saját modult, és testre szabni a környezethez, nincs-e egy nyílt forráskódú [Azure IoT Edge Modbus-modul](https://github.com/Azure/iot-edge-modbus) projektet a Githubon. Kövesse a projektben található útmutatót saját tárolórendszerkép létrehozásához. Ha saját tárolórendszerképet hoz létre, a tárolórendszerképek beállításjegyzékbe való közzétételének módjáról és az egyéni modulok az eszközén való üzembe helyezéséről a [C# IoT Edge-modul fejlesztését és üzembe helyezését](tutorial-csharp-module.md) ismertető részben talál útmutatást. 
 
 
 ## <a name="run-the-solution"></a>A megoldás futtatása
@@ -54,13 +54,12 @@ Ha saját modult kíván létrehozni és testre szabni a környezethez, a GitHub
 
       ```JSON
       {  
-        "properties.desired":{  
+        "properties.desired":{
           "PublishInterval":"2000",
-          "SlaveConfigs":{  
-            "Slave01":{  
-              "SlaveConnection":"<IPV4 address>",
-              "HwId":"PowerMeter-0a:01:01:01:01:01",
-              "Operations":{  
+          "SlaveConfigs":{
+            "Slave01":{
+              "SlaveConnection":"<IPV4 address>","HwId":"PowerMeter-0a:01:01:01:01:01",
+              "Operations":{
                 "Op01":{  
                   "PollingInterval": "1000",
                   "UnitId":"1",
@@ -96,12 +95,9 @@ Tekintse meg a Modbus-modulon keresztül érkező adatokat:
 docker logs -f modbus
 ```
 
-Az eszköz által küldött telemetriát is megtekintheti a [Azure IoT-eszközkészlet bővítmény a Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit). 
+Az eszköz által küldött telemetriát is megtekintheti a [Visual Studio Code Azure IoT Toolkit bővítményével](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit). 
 
 ## <a name="next-steps"></a>További lépések
 
-- Hogyan IoT Edge-eszközök átjáróként való működéséről kapcsolatos további információkért lásd: [transzparens átjáróként IoT Edge-eszköz létrehozása][lnk-transparent-gateway-linux]
+- További információk az IoT Edge-eszközök átjáróként való működéséről: [Transzparens átjáróként működő IoT Edge-eszköz létrehozása](./how-to-create-transparent-gateway-linux.md).
 - További információk az IoT Edge-modulok működéséről: [Az Azure IoT Edge-modulok megismerése](iot-edge-modules.md)
-
-<!-- Links -->
-[lnk-transparent-gateway-linux]: ./how-to-create-transparent-gateway-linux.md

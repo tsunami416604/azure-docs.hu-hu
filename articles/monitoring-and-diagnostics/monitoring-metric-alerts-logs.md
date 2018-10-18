@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/17/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: abfe7f0b39463a842b1eb167661af7da90bc9eca
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: bed0c15504323aba4ebf680273870720a8ff833a
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46980848"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49388309"
 ---
 # <a name="create-metric-alerts-for-logs-in-azure-monitor"></a>Metrikákhoz kapcsolódó riasztások létrehozása az Azure Monitor-naplók  
 
@@ -58,11 +58,11 @@ Részletesen és -minták –: [létrehozásába és kezelésébe metrikákhoz k
 - A kiválasztott metrikariasztás kiválasztott jel *Log Analytics-munkaterület* típusú **metrika**
 - Az egyes esetekben vagy ezekkel a szűrőkkel dimenzió; erőforrás szűrése metrikák, naplók többdimenziós.
 - Konfigurálásakor *Jellogika*, egyetlen riasztás hozható létre több több érték dimenzió (például számítógép)
-- Ha **nem** metrikariasztás létrehozása a kiválasztott az Azure portal használatával *Log Analytics-munkaterület*; felhasználónak manuálisan kell majd először hozzon létre egy explicit szabály a Teljesítménynapló-adatok átalakítása használatávalmetrika[Az azure Monitor - ütemezett lekérdezési szabály](https://docs.microsoft.com/en-us/rest/api/monitor/scheduledqueryrules
+- Ha **nem** metrikariasztás létrehozása a kiválasztott az Azure portal használatával *Log Analytics-munkaterület*; felhasználónak manuálisan kell majd először hozzon létre egy explicit szabály a Teljesítménynapló-adatok átalakítása használatávalmetrika[Az azure Monitor - ütemezett lekérdezési szabály](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules
 ).
 
 > [!NOTE]
-> Metrikariasztás az Azure Portalon – Log Analytics-munkaterület létrehozásakor szabály Teljesítménynapló-adatok átalakítása a metrika-n keresztül a megfelelő [Azure Monitor - ütemezett lekérdezési szabály](https://docs.microsoft.com/en-us/rest/api/monitor/scheduledqueryrules) automatikusan jön létre a háttér-információkért  *művelet vagy felhasználói beavatkozás nélkül*. Metrikariasztás naplók létrehozási azt jelenti, hogy nem az Azure portal használatával, lásd: [erőforrás sablon metrika riasztások naplók](#resource-template-for-metric-alerts-for-logs) szakasz a minta azt jelenti, hogy egy alapú ScheduledQueryRule napló metrika átalakítási szabály előtt metrikariasztás létrehozása létrehozás – más nem lesznek a létrehozott naplók a metrikariasztás nincsenek adatok.
+> Metrikariasztás az Azure Portalon – Log Analytics-munkaterület létrehozásakor szabály Teljesítménynapló-adatok átalakítása a metrika-n keresztül a megfelelő [Azure Monitor - ütemezett lekérdezési szabály](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) automatikusan jön létre a háttér-információkért  *művelet vagy felhasználói beavatkozás nélkül*. Metrikariasztás naplók létrehozási azt jelenti, hogy nem az Azure portal használatával, lásd: [erőforrás sablon metrika riasztások naplók](#resource-template-for-metric-alerts-for-logs) szakasz a minta azt jelenti, hogy egy alapú ScheduledQueryRule napló metrika átalakítási szabály előtt metrikariasztás létrehozása létrehozás – más nem lesznek a létrehozott naplók a metrikariasztás nincsenek adatok.
 
 ## <a name="resource-template-for-metric-alerts-for-logs"></a>Metrikákhoz kapcsolódó riasztások naplók erőforrás sablonja
 Ahogyan korábban hangsúlyoztuk, a folyamat a naplókból metrikákhoz kapcsolódó riasztások létrehozása a következő két pronged:

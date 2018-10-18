@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/30/2017
 ms.author: msfussell
-ms.openlocfilehash: 9072a25b55bf461ad7dcc8393b98a66d87866d48
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: ae7eba9997c4f567eb7b07e23ab42c9ac7740698
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42060626"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49388109"
 ---
 # <a name="partition-service-fabric-reliable-services"></a>A Service Fabric reliable services particionálása
 Ez a cikk mutatja be az Azure Service Fabric reliable services particionálása alapvető fogalmait. A cikkben használt forráskódja is elérhető a [GitHub](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/classic/Services/AlphabetPartitions).
@@ -365,7 +365,7 @@ Hogy szó szerint szeretné egy partíciót engedélyez betűvel, használhatjuk
 A teljes minta forráskódja elérhető a [GitHub](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/classic/Services/AlphabetPartitions).
 
 ## <a name="reliable-services-and-actor-forking-subprocesses"></a>Reliable Services és a Aktor elágaztatási magában
-A Service Fabric reliable services és ezt követően a reliable actors elágaztatási magában nem támogatja. Miért nem támogatott például [CodePackageActivationContext](https://docs.microsoft.com/en-us/dotnet/api/system.fabric.codepackageactivationcontext?view=azure-dotnet) nem használható egy nem támogatott részfolyamathoz regisztrálni, és a kerettúllépést tokenek csak küldi el a regisztrált folyamatok; sokféle problémák, például eredményez frissítési hibák, amikor magában ne zárja be, miután a szülőfolyamat kerettúllépést jogkivonatot kapott. 
+A Service Fabric reliable services és ezt követően a reliable actors elágaztatási magában nem támogatja. Miért nem támogatott például [CodePackageActivationContext](https://docs.microsoft.com/dotnet/api/system.fabric.codepackageactivationcontext?view=azure-dotnet) nem használható egy nem támogatott részfolyamathoz regisztrálni, és a kerettúllépést tokenek csak küldi el a regisztrált folyamatok; sokféle problémák, például eredményez frissítési hibák, amikor magában ne zárja be, miután a szülőfolyamat kerettúllépést jogkivonatot kapott. 
 
 ## <a name="next-steps"></a>További lépések
 A Service Fabric fogalmakról további információkért tekintse meg a következőket:

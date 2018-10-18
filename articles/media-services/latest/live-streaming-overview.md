@@ -4,29 +4,29 @@ description: Ez a témakör nyújt áttekintést élő adatfolyam továbbítása
 services: media-services
 documentationcenter: ''
 author: Juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 06/06/2018
+ms.date: 10/16/2018
 ms.author: juliako
-ms.openlocfilehash: e9ecf1ba3022ca057fa09bad2413aa19d902ae23
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: 533aa505c38d3cbfb46d70acecd43cc66614b13d
+ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38972179"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49378136"
 ---
 # <a name="live-streaming-with-azure-media-services-v3"></a>Élő Stream a az Azure Media Services v3
 
 Ha az Azure Media Services események élő adatfolyamainak továbbítása a következő összetevőket gyakran játszik szerepet:
 
 * Egy kamera, amely az eseményt közvetíti.
-* Egy élő videókódoló, amely átalakítja a jeleket a kamerához (vagy egy másik eszköz, például a hordozható számítógépen) Streamek küldött a Media Services élő adatfolyam-szolgáltatást. A jeleket hirdetési SCTE – 35 és Ad-kötegek is tartalmazhat. 
-* A Media Services élő streamelési szolgáltatás lehetővé teszi a betöltési, előzetes verzió, csomag, jegyezze fel, titkosítására, és a tartalom az ügyfelek részére, vagy egy CDN-re további terjesztés céljából.
+* Egy élő videókódoló, amely átalakítja a jeleket a kamerához (vagy egy másik eszköz, például a hordozható számítógépen) a Lve Streamelési szolgáltatásnak küldött Streamek. A jeleket hirdetési SCTE – 35 és Ad-kötegek is tartalmazhat. 
+* A Media Services élő Streamelési szolgáltatás lehetővé teszi a betöltési, előzetes verzió, csomag, jegyezze fel, titkosítására, és a tartalom az ügyfelek részére, vagy egy CDN-re további terjesztés céljából.
 
 Ez a cikk részletes áttekintést nyújt, és fő összetevőit az élő adások online közvetítése a Media Services részt ábrákért tartalmazza.
 
@@ -40,6 +40,17 @@ A Media Services lehetővé teszi, hogy a tartalom, dinamikusan titkosítja (**a
 
 Igény szerint is alkalmazhat **dinamikus szűrés**, amely nyomon követi, formátumát, bitsebességre való átkódolása, a játékosok megismerése által küldött meg, hány használható. A Media Services-beillesztését is támogatja.
 
+### <a name="new-live-encoding-improvements"></a>Új, élő kódolási fejlesztései
+
+A következő új fejlesztéseket elkészült, a legújabb kiadásban.
+
+- Az új közel valós idejű módban élő (10 másodperc – végpontok).
+- Továbbfejlesztett RMTP-támogatása (fokozott stabilitás és további forráskód kódoló).
+- Biztonságos RTMPS betöltését.
+
+    Amikor létrehoz egy mostantól videókhoz 4 betöltési URL-címeket. A 4 betöltési URL-címek olyan majdnem teljesen megegyezik, rendelkezik a azonos streamelési token (alkalmazásazonosító), csak a port száma rész nem egyezik. Az URL-címek kettő elsődleges és tartalék RTMPS számára.   
+- 24 órás átkódolása támogatása. 
+- Továbbfejlesztett támogatást ad jelzés RTMP SCTE35 keresztül.
 
 ## <a name="liveevent-types"></a>Videókhoz típusok
 
