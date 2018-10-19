@@ -1,63 +1,64 @@
 ---
-title: Mi a Bing Custom Search? | Microsoft Docs
-description: Magas szintű áttekintést nyújt a Bing egyéni keresés
+title: Mi a Bing Custom Search?
+titlesuffix: Azure Cognitive Services
+description: Általános áttekintést nyújt a Bing Custom Search funkcióról.
 services: cognitive-services
 author: brapel
-manager: ehansen
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-custom-search
-ms.topic: article
+ms.topic: overview
 ms.date: 09/29/2017
 ms.author: v-brapel
-ms.openlocfilehash: b6f50844d6571cca6d63c1db7a85863e3d22d411
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
-ms.translationtype: MT
+ms.openlocfilehash: 2483bf36bb18af21bc454e08f3321b33094c43c8
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46948077"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48814304"
 ---
 # <a name="what-is-bing-custom-search"></a>Mi a Bing Custom Search?
 
-Bing Custom Search lehetővé teszi, hogy a témakörök, amelyek az Ön számára személyre szabott keresési funkciókkal. Például ha saját keresési funkciókat biztosító webhely, megadhatja a tartományok, webhelyek és a Bing keresési weblapok. Megjelennek a felhasználók számára a tartalom nem érdeklő szabott keresési eredmények – keresési eredmények, amelyek irreleváns tartalma oldalra.
+A Bing Custom Search szolgáltatással személyre szabott keresési funkciókat hozhat létre olyan témakörökhöz kapcsolódóan, amelyek jelentőséggel bírnak az Ön számára. Ha például egy keresési funkciót is biztosító webhellyel rendelkezik, megadhatja azokat a tartományokat, webhelyeket és weblapokat, amelyeken a Bingnek keresnie kell. A felhasználók az érdeklődési körükhöz igazított keresési eredményeket látnak ahelyett, hogy több oldalnyi irreleváns találatot kellene átnézniük.
 
-A webes egyéni nézetének létrehozásához használja a Bing Custom Search [portál](https://customsearch.ai). A portál segítségével hozhat létre egy egyéni keresési példány, amely meghatározza a tartományok, webhelyek, és, amelyek azt szeretné, hogy a Keresés a Bing és a webhelyeket, amelyeket nem szeretné, hogy a keresés. A tartalom, hogy megismerkedett az URL-címek megadása, mellett is használhatja a portálon található kapcsolódó tartalom, lehet, hogy hozzá szeretné.
+Az egyéni kívánalmaknak megfelelő webes keresés létrehozásához használja a Bing Custom Search [portált](https://customsearch.ai). A portálon létrehozható egy egyéni keresési példány, amely meghatározza a Bing által keresendő tartományokat, webhelyeket és weboldalakat, és azokat a webhelyeket, amelyeken nem végezhet keresést. Az ismert tartalmak URL-címeinek megadása mellett a portál arra is használható, hogy további vonatkozó tartalmakra is rátaláljon.
 
-A portál segítségével rögzítheti egy adott weboldal a keresési eredmények tetejére, ha a felhasználó egy adott keresési kifejezést ad meg. 
+A portál azt is lehetővé teszi, hogy egy meghatározott weboldalt rögzítsen a keresési eredmények elején, ha a felhasználó egy bizonyos keresési kifejezést ad meg. 
 
-A példány meghatározása, után integrálhatja egyéni keresési webhelyre, az asztali alkalmazás, vagy a mobilalkalmazás az egyéni keresési API meghívásával. Ha egy web-alapú webhely vagy alkalmazás, hagyhatja, hogy a központi felhasználói felület jelennek meg a keresési felület az Ön számára.
+A példány definiálása után az egyéni keresés integrálható a webhellyel, asztali vagy mobilalkalmazással a Custom Search API meghívásával. Webhely vagy webes alkalmazás esetén az üzemeltetett felhasználói felület renderelheti a keresési felületet.
 
-Az alábbi képen látható az egyéni keresési integráció egyszerűsége.
+A következő kép azt illusztrálja, milyen könnyen integrálható az egyéni keresés.
 
-![kép alt](./media/bcs-overview.png "hogyan a Bing Custom Search működik.")
+![picture alt](./media/bcs-overview.png "A Bing Custom Search működése.")
 
-## <a name="adding-custom-search-box-suggestions"></a>Egyéni keresési mező javaslatok hozzáadása
+## <a name="adding-custom-search-box-suggestions"></a>Egyéni keresőmező-javaslatok hozzáadása
 
-Gazdagabbá teheti az egyéni keresés be az egyéni keresési élmény. Ez a funkció lehetővé teszi, hogy egyéni keresési javaslatok kapcsolódik a keresési funkciót biztosíthat. A felhasználó beír a keresőmezőbe, a legördülő listából a felhasználó részleges lekérdezési karakterlánc alapján javasolt lekérdezési karakterláncokat tartalmaz. Megadhatja, hogy csak a vonatkozó egyéni javaslatok vissza vagy Bing javaslatokat is tartalmazhatnak. [További információk](define-custom-suggestions.md).
+Gazdagabbá teheti az egyéni keresési élményt a keresőmező mellett megjelenő javaslatokkal. Ez a funkció lehetővé teszi, hogy az adott kereséshez kapcsolódó egyéni keresési javaslatokat adjon meg. Miközben a felhasználó gépel a keresőmezőbe, a legördülő lista lekérdezési sztringeket kínál fel az addig begépelt kifejezés alapján. Megadhatja, hogy csak a saját egyéni javaslatait szeretné-e megjeleníteni, vagy a Bing javaslatait is. [További információ](define-custom-suggestions.md).
 
-## <a name="adding-custom-image-search-experience"></a>Hozzáadásával egyéni rendszerkép keresési funkciót
+## <a name="adding-custom-image-search-experience"></a>Egyéni képkeresési élmény hozzáadása
 
-Gazdagabbá teheti az egyéni keresési funkciókat lemezképekkel. Hasonló webes találatokat, képeket webhelyek listájában a példány keresése egyéni keresési támogatja. [További információk](get-images-from-instance.md).
+Képekkel gazdagabbá teheti az egyéni keresés élményét. A webes találatokhoz hasonlóan az egyéni keresés a képkeresést is támogatja azokon a webhelyeken, amelyek a keresési példányhoz engedélyezve vannak. [További információ](get-images-from-instance.md).
 
-## <a name="adding-custom-video-search-experience"></a>Egyéni videó keresési funkció hozzáadása
+## <a name="adding-custom-video-search-experience"></a>Egyéni videókeresési élmény hozzáadása
 
-Gazdagabbá teheti a videókat egyéni keresési élményét. Hasonló webes találatokat, egyéni keresés támogatja a videók a webhelyek listája a példány keresése. [További információk](get-videos-from-instance.md).
+Videókkal még gazdagabbá teheti az egyéni keresés élményét. A webes találatokhoz hasonlóan az egyéni keresés a videókeresést is támogatja azokon a webhelyeken, amelyek a keresési példányhoz engedélyezve vannak. [További információ](get-videos-from-instance.md).
 
-## <a name="sharing-your-custom-search-instance-with-others"></a>Az egyéni keresőpéldányok megosztása másokkal
+## <a name="sharing-your-custom-search-instance-with-others"></a>Az egyéni keresési példány megosztása másokkal
 
-Könnyen engedélyezheti szerkesztését, és a tesztelést a példány szert a csapat tagjai által biztosított együttműködési környezettel. [További információk](share-your-custom-search.md).
+Ha a példányt megosztja csapata tagjaival, akkor közösen is dolgozhatnak annak szerkesztésén és tesztelésén. [További információ](share-your-custom-search.md).
 
 ## <a name="next-steps"></a>További lépések
 
-Tekintse meg a gyors kezdéshez, [az első Bing Custom Search-példány létrehozása](quick-start.md).
+Annak érdekében, hogy gyorsan nekiláthasson, olvassa el [az első Bing Custom Search-példányok létrehozásáról](quick-start.md) szóló cikket.
 
-A keresési példány testreszabásával kapcsolatos részletekért lásd: [egy egyéni keresési példány meghatározása](define-your-custom-view.md).
+A keresési példány testreszabásával kapcsolatos részletekért lásd az [az egyéni keresési példány definiálásával](define-your-custom-view.md) foglalkozó témakört.
 
-Ismerkedjen meg a referencia-tartalom minden, az egyéni keresési végpontok. A hivatkozás tartalmazza a végpontokat, fejlécek és lekérdezési paraméterek, amelyek a keresési eredmények kérelem szeretné használni. és a válaszobjektumok definícióit is megtalálja benne.
+Tekintse át az egyéni keresési végpontokra vonatkozó referenciákat. A referencia olyan végpontokat, fejléceket és lekérdezési paramétereket tartalmaz, amelyekkel keresési eredményeket kérhet le, és a válaszobjektumok definícióit is megtalálja benne.
 
-- [Egyéni keresési API](https://docs.microsoft.com/rest/api/cognitiveservices/bing-custom-search-api-v7-reference)
-- [Egyéni kép API](https://docs.microsoft.com/rest/api/cognitiveservices/bing-custom-images-api-v7-reference)
-- [Egyéni Vidoe API](https://docs.microsoft.com/rest/api/cognitiveservices/bing-custom-videos-api-v7-reference)
-- [Egyéni automatikus kiegészítés API](https://docs.microsoft.com/rest/api/cognitiveservices/bing-custom-autosuggest-api-v7-reference)
+- [Custom Search API](https://docs.microsoft.com/rest/api/cognitiveservices/bing-custom-search-api-v7-reference)
+- [Custom Image API](https://docs.microsoft.com/rest/api/cognitiveservices/bing-custom-images-api-v7-reference)
+- [Custom Video API](https://docs.microsoft.com/rest/api/cognitiveservices/bing-custom-videos-api-v7-reference)
+- [Custom Autosuggest API](https://docs.microsoft.com/rest/api/cognitiveservices/bing-custom-autosuggest-api-v7-reference)
 
 
 Mindenképpen olvassa el a [Bing használati és megjelenítési előírásait,](./use-and-display-requirements.md) hogy ne szegje meg a keresési eredmények használatának szabályait.

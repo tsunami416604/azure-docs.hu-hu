@@ -1,42 +1,42 @@
 ---
-title: Entitás keresési SDK Python gyors üzembe helyezés |} Microsoft Docs
-description: A telepítő entitás Search SDK konzolalkalmazást.
-titleSuffix: Azure Entity Search SDK Python quickstart
+title: 'Rövid útmutató: Bing Entity Search SDK, Python'
+titlesuffix: Azure Cognitive Services
+description: A Bing Entity Search SDK konzolalkalmazás beállítása.
 services: cognitive-services
 author: mikedodaro
-manager: rosh
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-entity-search
-ms.topic: article
+ms.topic: quickstart
 ms.date: 02/15/2018
 ms.author: v-gedod
-ms.openlocfilehash: 95449fa3753291269e1a83d1431df3bf0cbe372f
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
-ms.translationtype: MT
+ms.openlocfilehash: 908373a216d0b14bb2dd41d3bb740b5582ac3ab1
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35349451"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48814236"
 ---
-# <a name="entity-search-sdk-python-quickstart"></a>Entitás keresési SDK Python gyors üzembe helyezés
+# <a name="quickstart-bing-entity-search-sdk-with-python"></a>Rövid útmutató: A Bing Entity Search SDK a Python használatával
 
-Az entitás keresési SDK tartalmaz a REST API webkiszolgáló lekérdezések és elemzési eredmények funkcióit.
+Az Entity Search SDK a REST API funkcióit biztosítja az internetes lekérdezésekhez és az eredmények elemzéséhez.
 
-A [forráskód Python Bing entitás keresési SDK minták](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/blob/master/samples/search/entity_search_samples.py) érhető el a Git központ.
+A [Python Bing Entity Search SDK-minták forráskódja](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/blob/master/samples/search/entity_search_samples.py) elérhető a GitHubon.
 
 ## <a name="application-dependencies"></a>Alkalmazásfüggőségek
-Ha az még nincs, telepítse a Python. Az SDK nem kompatibilis a Python 2.7, 3.3-as, 3.4, 3.5-ös és 3.6.
+Ha még nincs telepítve a Python, telepítse. Az SDK a Python 2.7-es, 3.3-as, 3.4-es, 3.5-ös és 3.6-os verziójával kompatibilis.
 
-A Python fejlesztési általános javaslat, hogy használja a [virtuális környezet](https://docs.python.org/3/tutorial/venv.html). Telepítse, és a virtuális környezet inicializálása a [venv modul](https://pypi.python.org/pypi/virtualenv). Python 2.7 virtualenv kell telepítenie.
+A Pythonnal való fejlesztéskor általánosságban javasolt egy [virtuális környezet](https://docs.python.org/3/tutorial/venv.html) használata. Telepítse és inicializálja a virtuális környezetet az új [venv modullal](https://pypi.python.org/pypi/virtualenv). Telepítse a Python 2.7-hez készült virtualenv modult.
 ```
 python -m venv mytestenv
 ```
-Bing entitás keresési SDK-függőség telepítése:
+Telepítse a Bing Entity Search SDK függőségeit:
 ```
 cd mytestenv
 python -m pip install azure-cognitiveservices-search-entitysearch
 ```
-## <a name="entity-search-client"></a>Entitás keresési ügyfél
-Első egy [kognitív szolgáltatások hozzáférési kulcs](https://azure.microsoft.com/try/cognitive-services/) alatt *keresési*. Adja hozzá a importálásokat:
+## <a name="entity-search-client"></a>Entity Search-ügyfél
+A [Cognitive Services hozzáférési kulcsát](https://azure.microsoft.com/try/cognitive-services/) a *Keresés* területen kérheti le. Adja hozzá az importálásokat:
 ```
 from azure.cognitiveservices.search.entitysearch import EntitySearchAPI
 from azure.cognitiveservices.search.entitysearch.models import Place, ErrorResponseException
@@ -44,11 +44,11 @@ from msrest.authentication import CognitiveServicesCredentials
 
 subscription_key = "YOUR-SUBSCRIPTION-KEY"
 ```
-Hozzon létre egy példányát a `CognitiveServicesCredentials`. Az ügyfél hozható létre:
+Hozza létre a `CognitiveServicesCredentials` egy példányát. Ezután példányosítsa az ügyfelet:
 ```
 client = EntitySearchAPI(CognitiveServicesCredentials(subscription_key))
 ```
-Keresse meg egyetlen entitás (Gibralter), és nyomtassa ki a rövid leírása:
+Egyetlen entitás (Gibralter) keresése, és a rövid leírás kinyomtatása:
 ```
 entity_data = client.entities.search(query="Gibralter")
 
@@ -68,7 +68,7 @@ else:
     print("Didn't see any data..")
 
 ```
-Keresés és a leíró Egyértelműsítő (William kapu) nem egyértelmű lekérdezés eredménye.
+Többértelmű lekérdezés (William Gates) egyértelműsítő találatainak keresése és kezelése:
 ```
 def handling_disambiguation(subscription_key):
 
@@ -112,7 +112,7 @@ def handling_disambiguation(subscription_key):
         print("Encountered exception. {}".format(err))
 
 ```
-Kereshet egy adott tárolóban (Microsoft Store), és nyomtassa ki a telefonszámot.
+Keresés egyetlen áruházra (Microsoft Store) és az áruház telefonszámának kinyomtatása:
 ```
 def store_lookup(subscription_key):
 
@@ -153,7 +153,7 @@ def store_lookup(subscription_key):
         print("Encountered exception. {}".format(err))
 
 ```
-Keresse meg az éttermekben (Budapesten éttermekben) listáját, és nyomtassa ki a nevük és telefonszámokat.
+Keresés éttermek egy listájára (Seattle restaurants, éttermek Seattle-ben), és a találatok nevének és telefonszámának kinyomtatása:
 ```
 def multiple_restaurant_lookup(subscription_key):
 
@@ -192,7 +192,7 @@ def multiple_restaurant_lookup(subscription_key):
         print("Encountered exception. {}".format(err))
 
 ```
-Indítás, hibás kérelmet, és olvassa el a hibaüzenetet.
+Hibás kérelem kiváltása és a hibaüzenet elolvasása:
 ```
 def error(subscription_key):
 
@@ -216,5 +216,5 @@ def error(subscription_key):
 ```
 ## <a name="next-steps"></a>További lépések
 
-[Kognitív szolgáltatások Python SDK-minták](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples)
+[Cognitive Services Python SDK-minták](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples)
 

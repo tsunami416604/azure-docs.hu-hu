@@ -1,38 +1,40 @@
 ---
-title: Érzelemfelismerési API Python oktatóanyag |} Microsoft Docs
-description: Jupyter notebook használatával megtudhatja, hogyan kognitív szolgáltatások Érzelemfelismerési API-t használó Python. Az eredmények megjelenítése népszerű könyvtárak használatával.
+title: 'Oktatóanyag: Érzelemfelismerés képeken szereplő arcokon – Emotion API, Python'
+titlesuffix: Azure Cognitive Services
+description: Egy Jupyter-notebook segítségével megtudhatja, hogyan használhatja az Emotion API-t a Pythonnal. Az eredményeket népszerű kódtárak használatával jelenítheti meg.
 services: cognitive-services
 author: anrothMSFT
-manager: corncar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: emotion-api
-ms.topic: article
+ms.topic: tutorial
 ms.date: 05/23/2017
 ms.author: anroth
-ms.openlocfilehash: 70c8ca48c651601f3d7cbb3717c32bfe112176fe
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
-ms.translationtype: MT
+ROBOTS: NOINDEX
+ms.openlocfilehash: 31e346cd9a3f43f8181ebee4474ae6c9ee2cc6fc
+ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35347550"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48237857"
 ---
-# <a name="emotion-api-using-python-tutorial"></a>Érzelemfelismerési API Python-oktatóprogram
+# <a name="tutorial-use-the-emotion-api-with-a-jupyter-notebook--python"></a>Oktatóanyag: Az Emotion API használata egy Jupyter-notebookkal és a Pythonnal.
 
 > [!IMPORTANT]
-> Villámnézet API a 2017. október 30 véget ér. Kipróbálhatja az új [videó indexelő API előnézete](https://azure.microsoft.com/services/cognitive-services/video-indexer/) insights könnyen kibontani videók, és tartalom felderítési lép, például a keresési eredmények, növelje a szóbeli szavakat, a lapok, a karakterek és a érzelmek észlelésével. [További információk](https://docs.microsoft.com/azure/cognitive-services/video-indexer/video-indexer-overview).
+> Az Emotion API 2019. február 15-ével elavulttá válik. Az érzelemfelismerési képesség mostantól a [Face API](https://docs.microsoft.com/azure/cognitive-services/face/) részeként általánosan elérhető. 
 
-Hogy megkönnyítse a Érzelemfelismerési API használatába, az alábbi hivatkozásokon elérhető Jupyter notebook bemutatja, hogyan történő API a Python és hogyan kell a népszerű könyvtárak használatával eredményeinek képi megjelenítése. 
+Az Emotion API-val való ismerkedés megkönnyítése érdekében az alább hivatkozott Jupyter-notebook bemutatja, hogyan használható az API a Pythonban, és hogyan jelenítheti meg az eredményeket népszerű kódtárak használatával.
 
-[A Githubon notebook csatolása](https://github.com/Microsoft/Cognitive-Emotion-Python/blob/master/Jupyter%20Notebook/Emotion%20Analysis%20Example.ipynb)
+[Hivatkozás a GitHub-on található notebookra](https://github.com/Microsoft/Cognitive-Emotion-Python/blob/master/Jupyter%20Notebook/Emotion%20Analysis%20Example.ipynb)
 
-### <a name="using-the-jupyter-notebook"></a>A Jupyter Notebook használatával
+### <a name="using-the-jupyter-notebook"></a>A Jupyter-notebook használata
 
-A notebook interaktív használatához szüksége lesz klónozza, és futtassa azt Jupyter. Annak megismerése, hogyan lásson interaktív Jupyter notebookok, kövesse http://jupyter.readthedocs.org/en/latest/install.html. 
+Az interaktív használathoz klónoznia kell a notebookot, és futtatnia kell a Jupyterben. Az interaktív Jupyter-notebookok használatát a http://jupyter.readthedocs.org/en/latest/install.html címen található utasításokat követve sajátíthatja el.
 
-A notebook használatához szüksége lesz egy előfizetés kulcs a Érzelemfelismerési API-t. Látogasson el a [előfizetés lapján](https://azure.microsoft.com/try/cognitive-services/) regisztrálni. A "Bejelentkezés" oldalon a Microsoft-fiók használatával jelentkezzen be, és meg fogja tudni szolgáltatásra, és szabad kulcsok beolvasása. A regisztrációs folyamat befejezése után illessze be a kulcsot a változók szakaszban alább látható. Működik az elsődleges vagy másodlagos kulcsát.
+A notebook használatához szüksége lesz egy előfizetői azonosítóra az Emotion API-hoz. A regisztrációhoz nyissa meg az [Előfizetés lapot](https://azure.microsoft.com/try/cognitive-services/). A „Bejelentkezés” lapon jelentkezzen be Microsoft-fiókjával. Ezt követően előfizethet, és beszerezheti az ingyenes kulcsokat. A regisztrációs folyamat befejezése után illessze be a kapott kulcsot az alább látható „variables” (változók) szakaszba. Az elsődleges és a másodlagos kulcs közül csak az egyik használható.
 
 ```
-Python Example 
+Python Example
 
 #Variables
 

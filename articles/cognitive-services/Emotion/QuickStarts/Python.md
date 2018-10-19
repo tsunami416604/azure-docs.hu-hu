@@ -1,36 +1,37 @@
 ---
-title: Érzelemfelismerési API Python – első lépések |} Microsoft Docs
-description: Get információkat és a kód minták segítségével gyorsan használatának megkezdésében a Érzelemfelismerési API Python kognitív szolgáltatásban.
+title: 'Rövid útmutató: Érzelemfelismerés képeken szereplő arcokon – Emotion API, Python'
+description: Információk és kódminták segítségével ismerkedhet meg az Emotion API Pythonnal való használatának első lépéseivel.
 services: cognitive-services
 author: anrothMSFT
-manager: corncar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: emotion-api
-ms.topic: article
+ms.topic: quickstart
 ms.date: 02/05/2018
 ms.author: anroth
-ms.openlocfilehash: ff1f6b2ddc872d0ee63d9885b04b1f007bc86e33
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
-ms.translationtype: MT
+ROBOTS: NOINDEX
+ms.openlocfilehash: c7611628918cf40800d173dc9404b0948b9a68a4
+ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35347038"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48236567"
 ---
-# <a name="emotion-api-python-quickstart"></a>Érzelemfelismerési API Python gyors üzembe helyezés
+# <a name="quickstart-build-an-app-to-recognize-emotions-on-faces-in-an-image"></a>Rövid útmutató: Alkalmazás létrehozása a képeken szereplő arcokon tükröződő érzelmek felismeréséhez.
 
 > [!IMPORTANT]
-> 2017. október 30 villámnézet API rendszerhez. Kipróbálhatja az új [videó indexelő API előnézete](https://azure.microsoft.com/services/cognitive-services/video-indexer/) insights könnyen kibontani videók, és tartalom felderítési lép, például a keresési eredmények, növelje a szóbeli szavakat, a lapok, a karakterek és a érzelmek észlelésével. [További információk](https://docs.microsoft.com/azure/cognitive-services/video-indexer/video-indexer-overview).
+> Az Emotion API 2019. február 15-ével elavulttá válik. Az érzelemfelismerési képesség mostantól a [Face API](https://docs.microsoft.com/azure/cognitive-services/face/) részeként általánosan elérhető. 
 
-Ez a forgatókönyv és a segítségével gyorsan kódmintákat az első lépéseiben a [Érzelemfelismerési API-t ismeri fel a metódust](https://westus.dev.cognitive.microsoft.com/docs/services/5639d931ca73072154c1ce89/operations/563b31ea778daf121cc3a5fa) Python ismeri fel a kép egy vagy több személy által kifejezett érzelmek. 
+Ez az útmutató információkkal és kódmintákkal szolgál, amelyeken keresztül gyorsan elsajátíthatja, hogyan ismerheti fel a képeken szereplő egy vagy több személy által kifejezett érzelmeket az [Emotion API Recognize metódusa](https://westus.dev.cognitive.microsoft.com/docs/services/5639d931ca73072154c1ce89/operations/563b31ea778daf121cc3a5fa) és a Python használatával.
 
-Futtathatja, ebben a példában Jupyter notebook [MyBinder](https://mybinder.org) az indítási kötő kattintva jelvények: [ ![kötő](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/Microsoft/cognitive-services-notebooks/master?filepath=EmotionAPI.ipynb)
+Ezt a példát futtathatja Jupyter-notebookként a [MyBinderen](https://mybinder.org), az indítás Binder-jelvényére kattintva: [![Binder](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/Microsoft/cognitive-services-notebooks/master?filepath=EmotionAPI.ipynb).
 
 
 ## <a name="prerequisite"></a>Előfeltétel
-Az ingyenes előfizetés kulcs lekérése [Itt](https://azure.microsoft.com/try/cognitive-services/)
+Ingyenes előfizetői azonosítóját [itt](https://azure.microsoft.com/try/cognitive-services/) szerezheti be
 
-## <a name="running-the-walkthrough"></a>A forgatókönyv futtatása
-Ez a forgatókönyv folytatásához, cserélje le a `subscription_key` korábban beszerzett API-kulcs.
+## <a name="running-the-walkthrough"></a>Az útmutató futtatása
+Az útmutató folytatásához cserélje le a `subscription_key` kulcsot a korábban beszerzett API-kulcsra.
 
 
 ```python
@@ -38,29 +39,29 @@ subscription_key = None
 assert subscription_key
 ```
 
-Ezt követően győződjön meg arról, hogy a szolgáltatás URL-címe megegyezik a régió, az API-kulcs beállítása során használt. Ha egy próba-kulcsot használ, nem kell hajtsa végre a módosításokat.
+Ezután győződjön meg arról, hogy a szolgáltatás URL-címe megfelel az API-kulcs beállításakor használt régiónak. Ha próbaverziós kulcsot használ, nem kell módosításokat végeznie.
 
 
 ```python
 emotion_recognition_url = "https://westus.api.cognitive.microsoft.com/emotion/v1.0/recognize"
 ```
 
-Ez az útmutató használja, a lemezen tárolt lemezképet. Elérhető egy nyilvánosan elérhető URL-CÍMEN keresztül képek is használható. További információkért lásd: a [REST API-dokumentáció](https://westus.dev.cognitive.microsoft.com/docs/services/5639d931ca73072154c1ce89/operations/563b31ea778daf121cc3a5fa).
+Ez az útmutató lemezen tárolt képeket használ. Nyilvános URL-címen elérhető képeket is használhat. További információkért tekintse meg a [REST API dokumentációját](https://westus.dev.cognitive.microsoft.com/docs/services/5639d931ca73072154c1ce89/operations/563b31ea778daf121cc3a5fa).
 
-Mivel a képadatok megnevezése szerepel a kérelem törzse, figyelje meg, hogy be kell állítani a `Content-Type` fejlécének `application/octet-stream`. Ha a kép URL-címet keresztül átadott, ne felejtse el a fejléc értéke:
+Mivel a képadatok a kérés törzsének részeként vannak átadva, figyelje meg, hogy a `Content-Type` fejlécet `application/octet-stream` értékre kell állítania. Ha URL-címen keresztül ad át egy képet, ne felejtse el a következőre állítani a fejlécet:
 ```python
 header = {'Ocp-Apim-Subscription-Key': subscription_key }
 ```
-az URL-címet tartalmazó szótár létrehozása:
+az URL-címet tartalmazó szótárt létrehozni:
 ```python
 data = {'url': image_url}
 ```
-és adja át, hogy a `requests` könyvtár használatával:
+és átadni azt a `requests` kódtárnak a következővel:
 ```python
 requests.post(emotion_recognition_url, headers=headers, json=image_data)
 ```
 
-Először töltse le a néhány minta lemezképet rögzíthet a [Érzelemfelismerési API](https://azure.microsoft.com/services/cognitive-services/emotion/) hely.
+Először töltsön le néhány mintaképet az [Emotion API](https://azure.microsoft.com/services/cognitive-services/emotion/) webhelyéről.
 
 
 ```bash
@@ -101,9 +102,9 @@ analysis
 
 
 
-A visszaadott JSON-objektum tartalmazza a lapok, amelyek együtt a észlelt érzelmek felismerhető a határoló jelölőnégyzetéből. Minden érzelemfelismerési rendelve egy 0 és 1 közötti pontszámot több azonosítóját egy érzelemfelismerési alacsonyabb pontszám-nál magasabb pontszám esetén. 
+A visszaadott JSON-objektum tartalmazza a felismert arcok határoló kereteit és a felismert érzelmeket. Minden érzelem 0 és 1 közötti pontszámmal rendelkezik, ahol a magasabb pontszám valószínűbbként jelöli az adott érzelmet, mint az alacsonyabb pontszám.
 
-Az alábbi adatsorokat code meg a lemezkép használatával lapok észlelt érzelmek a `matplotlib` könyvtár. Rendezettség, csak az első három érzelmek jelennek meg.
+A következő kódsorok a képen szereplő arcok érzelmeit a `matplotlib` kódtárral ismerik fel. A zsúfoltság csökkentése érdekében csak az első három érzelem jelenik meg.
 
 
 ```python
@@ -129,7 +130,7 @@ for face in analysis:
 _ = plt.axis("off")
 ```
 
-A `annotate_image` látható a következő függvény segítségével átfedő érzelmek fölött lemezképfájl elérési úttal megadott a fájlrendszerben. A korábban bemutatott Érzelemfelismerési API-be irányuló hívás kódjának alapul.
+A következő `annotate_image` függvénnyel érzelmek helyezhetők a képfájlra, ha megadja annak a fájlrendszeren keresztüli elérési útját. Ez a korábban látott, Emotion API-ba küldött híváson alapul.
 
 
 ```python
@@ -156,7 +157,7 @@ def annotate_image(image_path):
     _ = plt.axis("off")
 ```
 
-Végezetül a `annotate_image` függvény nem hívható meg a képfájl látható módon a következő sort:
+Végül egy képfájlon meghívható az `annotate_image` függvény, ahogyan a következő sorban látható:
 
 
 ```python

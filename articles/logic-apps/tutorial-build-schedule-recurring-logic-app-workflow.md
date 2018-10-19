@@ -10,14 +10,14 @@ ms.reviewer: klam, LADocs
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 01/12/2018
-ms.openlocfilehash: 43f826414ae7f279c23f6e9e2e39d4d21267e158
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 70d7adc9ea8c65a7e6a21165864b7e6d661c6f8c
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43124018"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48042291"
 ---
-# <a name="check-traffic-with-a-schedule-based-logic-app"></a>Forgalom ellenőrzése ütemezésalapú logikai alkalmazás használatával
+# <a name="check-traffic-on-a-schedule-with-azure-logic-apps"></a>Ütemezés szerinti forgalom ellenőrzése az Azure Logic Apps használatával
 
 Az Azure Logic Apps segítségével automatizálhatja az ütemezés szerint futó munkafolyamatokat. Ez az oktatóanyag bemutatja, hogyan hozhat létre egy ütemező eseményindítóval rendelkező [logikai alkalmazást](../logic-apps/logic-apps-overview.md), amely hétköznap reggelenként fut, és ellenőrzi az utazási időt két pont között, a forgalommal együtt. Ha az idő meghaladja a megadott határértéket, a logikai alkalmazás e-mailt küld, amely az utazási időt és az úti cél eléréséhez szükséges többletidőt tartalmazza.
 

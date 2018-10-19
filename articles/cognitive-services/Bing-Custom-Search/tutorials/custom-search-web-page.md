@@ -1,157 +1,158 @@
 ---
-title: 'Bing Custom Search: Hozzon létre egy egyéni keresési weblap |} A Microsoft Docs'
-description: Ismerteti, hogyan konfigurálhat egy egyéni keresési példány, és integrálhatja azt webes
+title: 'Oktatóanyag: Custom Search-weboldal létrehozása – Bing Custom Search'
+titlesuffix: Azure Cognitive Services
+description: Ez a cikk ismerteti, hogyan konfigurálható és integrálható egy weboldalba egy Custom Search-példány.
 services: cognitive-services
 author: brapel
-manager: ehansen
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-custom-search
-ms.topic: article
+ms.topic: tutorial
 ms.date: 10/16/2017
 ms.author: v-brapel
-ms.openlocfilehash: 8bc1520325afc256ac62cc1f1dfaf24c53da4b83
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
-ms.translationtype: MT
+ms.openlocfilehash: 3e892131a0109d2fff924940542b5d8b2b701950
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46979998"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48815375"
 ---
-# <a name="build-a-custom-search-web-page"></a>Custom Search-webhely létrehozása
+# <a name="tutorial-build-a-custom-search-web-page"></a>Oktatóanyag: Custom Search-weboldal létrehozása
 
-Bing Custom Search lehetővé teszi, hogy a témakörök, amelyek az Ön számára személyre szabott keresési funkciókkal. Például ha saját keresési funkciókat biztosító Harcművészet webhely, megadhatja a tartományok, alhelyek és a Bing keresési weblapok. A tartalom helyett előfordulhat, hogy irreleváns tartalmat tartalmazó általános keresési eredmények átlapozva érdeklő szabott keresési eredmények megjelennek a felhasználók számára. 
+A Bing Custom Search szolgáltatással személyre szabott keresési funkciókat hozhat létre olyan témakörökhöz kapcsolódóan, amelyek jelentőséggel bírnak az Ön számára. Ha például egy keresési funkciót is biztosító, küzdősportokról szóló webhellyel rendelkezik, megadhatja azokat a tartományokat, alwebhelyeket és weblapokat, amelyeken a Bingnek keresnie kell. A felhasználók az érdeklődési körükhöz igazított keresési eredményeket látnak ahelyett, hogy több oldalnyi általános találatot kellene átnézniük, amelyben irreleváns tartalom is lehet. 
 
-Ez az oktatóanyag bemutatja, hogyan konfigurálhatja egy egyéni keresési példány, és integrálnia kell az új weblap.
+Az oktatóanyag bemutatja, hogyan állíthat be egy Custom Search-példányt, és hogyan integrálhatja egy új weboldalba.
 
-A kezelt feladatok a következők:
+Az oktatóanyag az alábbi feladatokat tárgyalja:
 
 > [!div class="checklist"]
-> - Hozzon létre egy egyéni keresési példány
-> - Aktív bejegyzés hozzáadása
-> - Letiltott bejegyzés hozzáadása
-> - Rögzített bejegyzés hozzáadása
-> - Egyéni keresési integrálása egy weblap
+> - Egyéni keresési példány létrehozása
+> - Aktív bejegyzések hozzáadása
+> - Blokkolt bejegyzések hozzáadása
+> - Rögzített bejegyzések hozzáadása
+> - Egyéni keresés integrálása egy weboldalba
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Követheti az oktatóanyagot, szükség van egy előfizetési kulcsot a Bing Custom Search API.  A kulcs lekéréséhez lásd: [próbálja meg a Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=bing-custom-search).
+- Ahhoz, hogy követni tudja az oktatóanyagot, szüksége lesz egy előfizetői azonosítóra a Bing Custom Search API-hoz.  Az előfizetői azonosító beszerzéséhez lásd [A Cognitive Services kipróbálása](https://azure.microsoft.com/try/cognitive-services/?api=bing-custom-search) témakört.
 - Ha nincs telepítve a Visual Studio 2017, letöltheti és használhatja az **ingyenes** [Visual Studio 2017 Community Edition](https://www.visualstudio.com/downloads/)t.
 
-## <a name="create-a-custom-search-instance"></a>Hozzon létre egy egyéni keresési példány
+## <a name="create-a-custom-search-instance"></a>Egyéni keresési példány létrehozása
 
 Bing Custom Search-példány létrehozása:
 
-1. Nyisson meg egy webböngészőt.  
+1. Nyisson meg egy internetböngészőt.  
   
-2. Keresse meg az egyéni keresési [portál](https://customsearch.ai).  
+2. Navigáljon a Custom Search [portálra](https://customsearch.ai).  
   
-3. Jelentkezzen be Microsoft-fiókkal (MSA) a portálon. Ha az MSA nem rendelkezik, kattintson a **Microsoft-fiók létrehozásához**. Ha most először a portál használatával, kérni fogja a engedélyekkel az adatok eléréséhez. Kattintson a **Yes** (Igen) gombra.  
+3. Egy Microsoft-fiók (MSA) használatával jelentkezzen be a portálra. Ha nincs MSA-fiókja, kattintson a **Microsoft-fiók létrehozása** elemre. A portál az első használat során engedélyeket fog kérni, hogy hozzáférhessen az adataihoz. Kattintson a **Yes** (Igen) gombra.  
   
-4. Miután bejelentkezett, kattintson a **új egyéni keresés**. Az a **hozzon létre egy új egyéni keresési példány** ablakban adjon meg egy nevet, amely jelentéssel bíró, és ismerteti a visszaadott tartalom típusát. A név bármikor módosíthatja.  
+4. A bejelentkezés után kattintson a **New custom search** (Új egyéni keresés) elemre. A **Create a new custom search instance** (Új Custom Search-példány létrehozása) ablakban adjon meg egy jelentéssel bíró nevet, amely leírja a visszaadott tartalom típusát. A nevet bármikor módosíthatja.  
   
-  ![Képernyőkép a hozzon létre egy új egyéni keresési példány használata](../media/newCustomSrch.png)  
+  ![A Create a new custom search (Új Custom Search-példány) mező képernyőképe](../media/newCustomSrch.png)  
   
-5. Kattintson az OK gombra, adja meg egy URL-címet, valamint az URL-cím mindegyik lapot tünteti tartalmazza.  
+5. Kattintson az OK gombra, adja meg az URL-címet, és hogy az URL aloldalait is figyelembe kívánja-e venni.  
   
-  ![Definíció lap képernyőképe az URL-címe](../media/newCustomSrch1-a.png)  
+  ![Az URL-meghatározó oldal képernyőképe](../media/newCustomSrch1-a.png)  
 
 
-## <a name="add-active-entries"></a>Aktív bejegyzés hozzáadása
+## <a name="add-active-entries"></a>Aktív bejegyzések hozzáadása
 
-Adott webhelyekhez vagy URL-címek eredményeinek történő felvételéhez adja hozzá őket a **aktív** fülre.
+Ha adott webhelyekről vagy URL-címekről származó eredményeket szeretne figyelembe venni, adja hozzá a címeket az **Active** (Aktív) laphoz.
 
-1.  Az a **konfigurációs** lap, kattintson a **aktív** lapra, és adjon meg egy vagy több webhely fel szeretne venni a Keresés URL-CÍMÉT.
+1.  A **Configuration** (Konfiguráció) oldalon kattintson az **Active** (Aktív) lapra, és adja meg a keresésbe belefoglalni kívánt egy vagy több webhely URL-címét.
 
-    ![A definíció szerkesztő aktív lap képernyőképe](../media/customSrchEditor.png)
+    ![A Definíciószerkesztő aktív lapjának képernyőképe](../media/customSrchEditor.png)
 
-2.  Győződjön meg arról, hogy a példány eredményeket ad vissza, adjon meg egy lekérdezést az előnézeti ablaktáblában láthatja a jobb oldalon. Bing – csak a nyilvános webhelyekhez, rendelkezik indexelt eredményeket adja vissza.
+2.  Ha meg kíván győződni arról, hogy a példány visszaad eredményeket, akkor adjon meg egy lekérdezést a jobb oldalon található előnézet panelen. A Bing csak az általa indexelt nyilvános webhelyekről jelenít meg eredményeket.
 
-## <a name="add-blocked-entries"></a>Letiltott bejegyzés hozzáadása
+## <a name="add-blocked-entries"></a>Blokkolt bejegyzések hozzáadása
 
-Szeretné kizárni az eredményeket az egyes webhelyek vagy URL-címek, adja hozzá őket a **letiltott** fülre.
+Ha szeretné kizárni egyes webhelyek vagy URL-címek eredményeit, adja hozzá a címeket a **Blocked** (Letiltott) laphoz.
 
-1. Az a **konfigurációs** lap, kattintson a **letiltott** lapra, és adja meg a Keresés a kizárni kívánt egy vagy több webhely URL-CÍMÉT.
+1. A **Configuration** (Konfiguráció) oldalon kattintson a **Blocked** (Letiltva) lapra, és adja meg a keresésből kihagyni kívánt egy vagy több webhely URL-címét.
 
-    ![A definíció szerkesztő letiltott lap képernyőképe](../media/blockedCustomSrch.png)
+    ![A Definíciószerkesztő letiltva lapjának képernyőképe](../media/blockedCustomSrch.png)
 
 
-2. Győződjön meg arról, hogy a példány nem eredményeinek visszaadása a letiltott webhelyek, adjon meg egy lekérdezést az előnézeti ablaktáblában láthatja a jobb oldalon. 
+2. Ha meg kíván győződni arról, hogy a példány nem ad vissza eredményeket a blokkolt webhelyekről, akkor adjon meg egy lekérdezést a jobb oldalon található előnézet panelen. 
 
-## <a name="add-pinned-entries"></a>Rögzített bejegyzés hozzáadása
+## <a name="add-pinned-entries"></a>Rögzített bejegyzések hozzáadása
 
-Egy adott weboldal a keresési eredmények tetejére rögzít, adja hozzá a weblapon és a lekérdezési kifejezés a **Pinned** fülre. A **Pinned** lapon adja meg a weblap, egy adott lekérdezésre vonatkozó felső eredményként megjelenő weblap és a lekérdezési kifejezés párok listáját tartalmazza. A weblap rögzítve van, csak akkor, ha a felhasználó lekérdezési karakterlánc megfelel a PIN-kód lekérdezési karakterlánc PIN kód egyezés feltétel alapján. [További információk](../define-your-custom-view.md#pin-to-top).
+Ha egy adott webhelyet rögzíteni kíván a keresési találatok első helyén, adja hozzá a webhelyet és a lekérdezési kifejezést a **Pinned** (Rögzített) laphoz. A **Pinned** (Rögzített) lap a webhelyek és lekérdezési kifejezések olyan párosainak listáját tartalmazza, amely meghatározza, hogy egy adott lekérdezésnél melyik webhely jelenjen meg első eredményként. A webhely csak akkor rögzített, ha a felhasználó lekérdezési sztringje egyezik a rögzített elem egyezési állapotának rögzített lekérdezési sztringjével. [További információ](../define-your-custom-view.md#pin-to-top).
 
-1. Az a **konfigurációs** lap, kattintson a **Pinned** lapra, és adja meg a weblap, amelyen a felső eredményezi lekérdezni kívánt weblap és a lekérdezési időszak.  
+1. A **Configuration** (Konfiguráció) lapon kattintson a **Pinned** (Rögzített) lapra, és adja meg az első helyen megjeleníteni kívánt weblapot és a hozzá tartozó lekérdezési kifejezést.  
   
-2. Alapértelmezés szerint a felhasználói lekérdezési karakterlánc pontosan meg kell egyeznie a PIN-kód lekérdezési karakterláncot a Bing, a képernyőn látható weblapon visszaadandó felső eredményezi. Az egyezési feltétellel módosításához szerkessze a PIN-kód (kattintson a ceruza ikonra), kattintson a Exact a **lekérdezés az egyezési feltétellel** oszlopra, és válassza a megfelelő az alkalmazás az egyezési feltétellel.  
+2. Ahhoz, hogy a Bing az első helyen jelenítse meg a webhelyet alapértelmezés szerint a felhasználói lekérdezési sztringnek pontosan egyeznie kell a rögzített elem lekérdezési sztringjével. Az egyezési feltétel módosításához szerkessze a rögzített elemet (kattintson a ceruza ikonra), a **Query match condition** (Lekérdezés egyezési feltétele) oszlopban kattintson az Exact (Pontos) elemre, és válassza ki az alkalmazása számára megfelelő egyezési állapotot.  
   
-    ![Képernyőkép a definíció szerkesztő rögzített lap](../media/pinnedCustomSrch.png)
+    ![A Definíciószerkesztő rögzített lapjának képernyőképe](../media/pinnedCustomSrch.png)
   
-3. Győződjön meg arról, hogy ha a példány a megadott weblapra adja vissza a felső eredményezi, adja meg a lekérdezési kifejezés rögzítette az előnézeti ablaktáblában láthatja a jobb oldalon.
+3. Ha meg szeretne győződni arról, hogy a példány a megadott weblapot adja vissza az első helyen, a jobb oldalon található előnézet panelen adja meg a rögzített lekérdezési kifejezést.
 
-## <a name="configure-hosted-ui"></a>Központi felhasználói felület konfigurálása
+## <a name="configure-hosted-ui"></a>Üzemeltetett felhasználói felületi konfigurálása
 
-Egyéni keresési renderelni a JSON-válasz az egyéni keresési példány üzemeltetett felhasználói Felületet biztosít. A felhasználói felület meghatározása:
+A Custom Search üzemeltetett felhasználói felületet biztosít, amelyen megjelenítheti a Custom Search-példány JSON-válaszát. A felhasználói felület testreszabása:
 
-1. Kattintson a **üzemeltetett felhasználói felület** fülre.  
+1. Kattintson a **Hosted UI** (Üzemeltetett felhasználói felület) lapra.  
   
-2. Válasszon egy elrendezést.  
+2. Válasszon ki egy elrendezést.  
   
-  ![A tárolt felhasználói felület képernyőképe válassza ki az elrendezés lépés](./media/custom-search-hosted-ui-select-layout.png)  
+  ![A Hosted UI (Üzemeltetett felhasználói felület) elrendezéskiválasztó lépésének képernyőképe](./media/custom-search-hosted-ui-select-layout.png)  
   
-3. Válassza ki a színtémát.  
+3. Válasszon ki egy színtémát.  
   
-  ![A tárolt felhasználói felület képernyőképe színtémát kiválasztása](./media/custom-search-hosted-ui-select-color-theme.png)  
+  ![A Hosted UI (Üzemeltetett felhasználói felület) színtémaválasztásának képernyőképe](./media/custom-search-hosted-ui-select-color-theme.png)  
 
-  Ha szeretné jobban integrálhatja a webalkalmazással, kattintson a színtémát finomhangolása **testreszabás téma**. Nem minden szín hatással van minden elrendezés téma. Ha módosítani szeretné egy színt, a megfelelő mezőben adja meg a színt HEXADECIMÁLIS RGB-értéke (például #366eb8). Vagy, a color gombra, majd a shade az Önnek legmegfelelőbb. Mindig úgy gondolja, hogy kisegítő lehetőségek a színek kiválasztásánál.
+  Ha a webalkalmazással való jobb integráció érdekében szeretné még részletesebben beállítani a színtémát, kattintson a **Customize theme** (Téma testreszabása) elemre. Nem minden színbeállítás alkalmazható minden elrendezési témára. Ha módosítani szeretné egy színt, a megfelelő mezőben adja meg a szín HEXADECIMÁLIS RGB-értékét (például #366eb8). Vagy kattintson a szín gombra, majd a megfelelő árnyalatra. A színek kiválasztásánál mindig gondoljon a kisegítő lehetőségekre.
   
-  ![A tárolt felhasználói felület képernyőképe színtémát testreszabása](./media/custom-search-hosted-ui-customize-color-theme.png)  
+  ![Képernyőkép az üzemeltetett felhasználói felület színtéma-testreszabásáról](./media/custom-search-hosted-ui-customize-color-theme.png)  
 
   
-4. Adja meg a további konfigurációs beállításokat.  
+4. Adja meg a további beállítási lehetőségeket.  
   
-  ![A felhasználói felület üzemeltetett további konfigurációs lépés képernyőképe](./media/custom-search-hosted-ui-additional-configurations.png)  
+  ![Képernyőkép az üzemeltetett felhasználói felület további beállítási lépéséről](./media/custom-search-hosted-ui-additional-configurations.png)  
   
-  Speciális konfigurációk, kattintson a **speciális konfigurációk megjelenítése**. Ezzel hozzáad konfigurációk például *hivatkozáscéllal* a webes keresési beállítások, *szűrők engedélyezése* képi és a beállítások, és *keresési szöveg helyőrző* a vegyes beállítások.
+  A speciális konfigurációkat a **Show advanced configurations** (Speciális konfigurációk megjelenítése) elemre kattintva érheti el. Ezzel olyan beállításokat adhat hozzá, mint például a *Link target* (Hivatkozási cím) a webkeresési beállításokhoz, az *Enable filters* (Szűrők engedélyezése) a kép- és videobeállításokhoz, valamint a *Search box text placeholder* (Keresőmező szöveges helyőrzője) az egyéb beállításokhoz.
 
-  ![A felhasználói felület üzemeltetett speciális konfigurációk lépés képernyőképe](./media/custom-search-hosted-ui-advanced-configurations.png)  
+  ![Képernyőkép az üzemeltetett felhasználói felület speciális beállítási lépéséről](./media/custom-search-hosted-ui-advanced-configurations.png)  
   
-5. A legördülő listákból válassza ki az előfizetési kulcsok. Vagy megadhatja manuálisan az előfizetési kulcsot. További információ a kulcsainak beolvasásakor: [próbálja meg a Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=bing-custom-search-api).  
+5. Válassza ki előfizetési kulcsait a legördülő listákból. Másik lehetőségként manuálisan is megadhatja az előfizetési kulcsot. További információ az előfizetői kulcsok beszerzéséről: [A Cognitive Services kipróbálása](https://azure.microsoft.com/try/cognitive-services/?api=bing-custom-search-api).  
   
-  ![A felhasználói felület üzemeltetett további konfigurációs lépés képernyőképe](./media/custom-search-hosted-ui-subscription-key.png)
+  ![Képernyőkép az üzemeltetett felhasználói felület további beállítási lépéséről](./media/custom-search-hosted-ui-subscription-key.png)
 
 [!INCLUDE[publish or revert](../includes/publish-revert.md)]
 
 <a name="consuminghostedui"></a>
-## <a name="consuming-hosted-ui"></a>Felhasználó központi felhasználói felületen
+## <a name="consuming-hosted-ui"></a>Üzemeltetett felhasználói felületi felhasználása
 
-Két módon felhasználását a központi felhasználói felületen.  
+Az üzemeltetett felhasználói felület kétféleképpen használható fel.  
 
-- 1. lehetőség: A megadott JavaScript-kódrészletet beágyazása az alkalmazásba.
-- 2. lehetőség: A HTML-végpontot használja, a megadott.
+- 1. lehetőség: A megadott JavaScript-kódrészlet integrálása az alkalmazásba.
+- 2. lehetőség: A megadott HTML-végpont használata.
 
-Ez az oktatóanyag további részében látható **1. lehetőség: Javascript-kódrészletet**.  
+Az oktatóanyag fennmaradó része az **1. lehetőséget, vagyis a Javascript-kódrészletet** mutatja be.  
 
-## <a name="set-up-your-visual-studio-solution"></a>A Visual Studio megoldás beállítása
+## <a name="set-up-your-visual-studio-solution"></a>A Visual Studio-megoldás beállítása
 
 1. Nyissa meg a **Visual Studiót** a számítógépén.  
   
 2. A **Fájl** menüben válassza az **Új**, majd a **Projekt** elemet.  
   
-3. Az a **új projekt** ablakban válassza **Visual C# vagy webes és az ASP.NET Core-webalkalmazás**, nevezze el a projektet, és kattintson **OK**.  
+3. A **New Project** (Új projekt) párbeszédpanelen válassza a **Visual C# / Web / ASP.NET Core Web Application** (Visual C#- / Web / ASP.NET Core-webalkalmazás) elemet, nevezze el a projektet, majd kattintson az **OK** gombra.  
   
-  ![Képernyőkép az új projekt ablakról](./media/custom-search-new-project.png)  
+  ![Az új projekt ablak képernyőképe](./media/custom-search-new-project.png)  
   
-4. Az a **új ASP.NET Core-webalkalmazás** ablakban válassza **webalkalmazás** kattintson **OK**.  
+4. A **New ASP.NET Core Web Application** (Új ASP.NET Core-webalkalmazás) ablakban válassza a **Web Application** (Webalkalmazás) lehetőséget, majd kattintson az **OK** gombra.  
   
-  ![Képernyőkép az új projekt ablakról](./media/custom-search-new-webapp.png)  
+  ![Az új projekt ablak képernyőképe](./media/custom-search-new-webapp.png)  
 
-## <a name="edit-indexcshtml"></a>Index.cshtml szerkesztése
+## <a name="edit-indexcshtml"></a>Az index.cshtml szerkesztése
 
-1. Az a **Megoldáskezelőben**, bontsa ki a **oldalak** , és kattintson duplán a **index.cshtml** megnyitni a fájlt.  
+1. A **Megoldáskezelőben** bontsa ki a **Pages** (Oldalak) elemet, és kattintson duplán az **index.cshtml** fájlra a megnyitásához.  
   
-  ![A megoldáskezelőben kibontva oldalak és a kiválasztott index.cshtml képernyőképe](./media/custom-search-visual-studio-webapp-solution-explorer-index.png)  
+  ![Képernyőkép a megoldáskezelőről kibontott oldalakkal és a kiválasztott index.cshtml fájllal](./media/custom-search-visual-studio-webapp-solution-explorer-index.png)  
   
-2. Index.cshtml törölje minden alatt és a 7. sorban.  
+2. Az index.cshtml fájlban töröljön mindent a 7. sortól kezdve.  
   
   ```razor
   @page
@@ -161,7 +162,7 @@ Ez az oktatóanyag további részében látható **1. lehetőség: Javascript-k�
   }    
   ```  
   
-3. Adjon hozzá egy sor/csere típusú elem és a egy div tárolóként.  
+3. Adjon hozzá egy sörtörés elemet és egy tárolóként működő div elemet.  
   
   ```html
   @page
@@ -173,13 +174,13 @@ Ez az oktatóanyag további részében látható **1. lehetőség: Javascript-k�
   <div id="customSearch"></div>
   ```  
   
-4. Az a **üzemeltetett felhasználói felület** lapon görgessen le a részre **használ a felhasználói felület**. Kattintson a *végpontok* eléréséhez a JavaScript-kódrészletet. Akkor is elérhető a kódrészlet kattintva **éles** , majd a **üzemeltetett felhasználói felület** lapon.
+4. A **Hosted UI** (Üzemeltetett felhasználói felület) oldalon görgessen le a **Consuming the UI** (Felhasználói felület felhasználása) szakaszhoz. A JavaScript-kódrészlet eléréséhez kattintson az *Endpoints* (Végpontok) elemre. A kódrészletet úgy is elérheti, ha először a **Production** (Termelés), majd a **Hosted UI** (Üzemeltetett felhasználói felület) lapra kattint.
   
   <!-- Get new screenshot after prod gets new bits
   ![Screenshot of the Hosted UI save button](./media/custom-search-hosted-ui-consuming-ui.png)  
   -->
   
-5. Illessze be a parancsfájl elem a tároló adott hozzá.  
+5. A szkriptrészletet illessze be a hozzáadott tárolóba.  
   
   ``` html
   @page
@@ -196,19 +197,19 @@ Ez az oktatóanyag további részében látható **1. lehetőség: Javascript-k�
   </div>
   ```  
   
-6. Az a **Megoldáskezelőben**, kattintson a jobb gombbal **wwwroot** kattintson **Megtekintés böngészőben**.  
+6. A **Megoldáskezelőben** kattintson a jobb gombbal a **wwwroot** elemre, majd a **View in Browser** (Megtekintés böngészőben) parancsra.  
   
-  ![Képernyőkép a nézet kijelölése a böngészőben a wwwroot helyi menüből a megoldáskezelőben](./media/custom-search-webapp-view-in-browser.png)  
+  ![Képernyőkép a megoldáskezelőről, a wwwroot helyi menü View in Browser (Megtekintés böngészőben) lehetőségének kiválasztásával](./media/custom-search-webapp-view-in-browser.png)  
 
-Az új egyéni keresési weblap ehhez hasonlóan kell kinéznie:
+Az új Custom Search-weboldal a következőhöz hasonlóan néz ki:
 
-![Egyéni keresési webes oldalát bemutató képernyőkép](./media/custom-search-webapp-browse-index.png)
+![Képernyőkép a Custom Search-weboldalról](./media/custom-search-webapp-browse-index.png)
 
-Keresés végrehajtása ehhez hasonló eredmény jelenik meg:
+A keresés végrehajtásakor a következőkhöz hasonló eredmények jelennek meg:
 
-![Képernyőfelvétel a egyéni keresési eredmények](./media/custom-search-webapp-results.png)
+![Képernyőkép az egyéni keresés eredményeiről](./media/custom-search-webapp-results.png)
 
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Hívást a Bing Custom Search végpont (C#)](../call-endpoint-csharp.md)
+> [Bing Custom Search-végpont hívása (C#)](../call-endpoint-csharp.md)

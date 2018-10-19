@@ -1,40 +1,41 @@
 ---
-title: NODE.js gyors üzembe helyezés az Azure kognitív szolgáltatások, a Bing hírek keresési API |} Microsoft Docs
-description: Get információkat és a kód minták segítségével gyorsan Ismerkedés a Bing hírek Search API használatával a Microsoft Azure kognitív Services.
+title: 'Rövid útmutató: Bing News Search API, Node.js'
+titlesuffix: Azure Cognitive Services
+description: Információk és kódminták segítségével ismerkedhet meg a Bing News Search API használatának első lépéseivel.
 services: cognitive-services
-documentationcenter: ''
 author: v-jerkin
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-news-search
-ms.topic: article
+ms.topic: quickstart
 ms.date: 9/21/2017
 ms.author: v-jerkin
-ms.openlocfilehash: 1c68e75319a34f4ac9726c047fc7d6d0269634ba
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
-ms.translationtype: MT
+ms.openlocfilehash: 923566dc2764037164725f795e411beef939d92a
+ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35349190"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48802070"
 ---
-# <a name="quickstart-for-bing-news-search-api-with-nodejs"></a>A Bing hírek keresés a Node.js API gyors üzembe helyezés
+# <a name="quickstart-for-bing-news-search-api-with-nodejs"></a>Rövid útmutató a Bing News Search API és a Node.js használatához
 
-Ez a cikk bemutatja, hogyan a Bing hírek keresési API-t használja, a Microsoft kognitív szolgáltatások, Azure része. Amíg ez a cikk alkalmazta a Node.js, az API-t olyan kompatibilis bármely programozási nyelv, amely HTTP-kérelmeket, és elemezni a JSON a RESTful webes szolgáltatás. 
+Ez a cikk bemutatja, hogyan használható a Microsoft Cognitive Services részét képező Bing News Search API az Azure-on. Bár ez a cikk Node.js-t használ, az API egy RESTful-webszolgáltatás, így kompatibilis minden olyan programozási nyelvvel, amely képes HTTP-kérések küldésére és JSON-elemzésre. 
 
-A példa JavaScript nyelven van megírva, és fut a Node.js 6.
+A példa JavaScriptben íródott, és Node.js 6 alatt fut.
 
-Tekintse meg a [API-referencia](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference) az API-k technikai részleteiért.
+Az API-k technikai részleteit az [API-referencia](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference) című részben tekintheti meg.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Rendelkeznie kell egy [kognitív szolgáltatások API-fiók](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) rendelkező **Bing keresési API-k**. A [ingyenes próbaverzió](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) elegendő-e a gyors üzembe helyezés. Szüksége lesz az elérési kulcsot, ha aktiválja az ingyenes próbaverzió, vagy egy fizetős kulcsot az Azure irányítópultról használhat.
+Egy **Bing Search API-kat** tartalmazó [Cognitive Services API-fiókkal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) kell rendelkeznie. Az [ingyenes próbaverzió](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) elegendő ehhez a rövid útmutatóhoz. Szüksége lesz az ingyenes próbaverzió aktiválásakor kapott hozzáférési kulcsra, de beszerezhet egy fizetős előfizetői azonosítót is az Azure-irányítópultról.
 
-## <a name="bing-news-search"></a>Bing hírek keresése
+## <a name="bing-news-search"></a>Bing News search
 
-A [Bing hírek Search API](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference) hírek eredményeket ad vissza a Bing keresőmotort.
+A [Bing News Search API](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference) a Bing keresőmotor hírtalálatait adja vissza.
 
-1. Hozzon létre egy új Node.js-projektet a kedvenc IDE vagy szerkesztő.
+1. Hozzon létre egy új Node.js-projektet a kedvenc IDE-környezetében vagy szerkesztőjében.
 2. Adja hozzá az alábbi kódot.
-3. Cserélje le a `subscriptionKey` hívóbetű érvényes az előfizetéshez tartozó értéket.
+3. A `subscriptionKey` értéket cserélje le az előfizetéshez érvényes hozzáférési kulcsra.
 4. Futtassa a programot.
 
 ```javascript
@@ -97,7 +98,7 @@ bing_news_search(term);
 
 **Válasz**
 
-A sikeres válasz ad vissza a JSON-ban, a következő példában látható módon: 
+A rendszer JSON formátumban ad vissza egy sikeres választ a következő példában látható módon: 
 
 ```json
 {
@@ -193,8 +194,8 @@ A sikeres válasz ad vissza a JSON-ban, a következő példában látható módo
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Lapozófájl hírek](paging-news.md)
-> [decoration jelölők használatával szöveg kiemeléséhez](hit-highlighting.md)
-> [keresése a weben hírek](search-the-web.md)  
-> [Próbálja ki](https://azure.microsoft.com/services/cognitive-services/bing-news-search-api/)
+> [Hírek lapozása](paging-news.md)
+> [Szöveg kiemelése díszítő jelölőkkel](hit-highlighting.md)
+> [Hírek keresése az interneten](search-the-web.md)  
+> [Kipróbálás](https://azure.microsoft.com/services/cognitive-services/bing-news-search-api/)
 

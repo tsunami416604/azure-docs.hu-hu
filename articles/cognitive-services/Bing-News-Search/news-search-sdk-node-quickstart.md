@@ -1,44 +1,44 @@
 ---
-title: Hírek keresési SDK csomópont gyors üzembe helyezés |} Microsoft Docs
-description: Állítsa be a hírek keresési SDK Konzolalkalmazás
-titleSuffix: Azure cognitive services
+title: 'Rövid útmutató: Bing News Search SDK, Node'
+titleSuffix: Azure Cognitive Services
+description: Bing News Search SDK-konzolalkalmazás beállítása
 services: cognitive-services
 author: mikedodaro
-manager: rosh
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-news-search
-ms.topic: article
+ms.topic: quickstart
 ms.date: 02/12/2018
 ms.author: v-gedod
-ms.openlocfilehash: 4ae99aa100b697a0dd75863c6f0c3c556dfa3d21
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
-ms.translationtype: MT
+ms.openlocfilehash: 2279a6475ab8c39b3ff599f7244caea59d622651
+ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35349474"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48803001"
 ---
-# <a name="news-search-sdk-node-quickstart"></a>Hírek keresési SDK csomópont gyors üzembe helyezés
+# <a name="quickstart-bing-news-search-sdk-with-node"></a>Rövid útmutató: A Bing News Search SDK és a Node használata
 
-A Bing hírek keresési SDK tartalmazza a REST API hírek lekérdezések és elemzési eredmények funkcióit. 
+A Bing News Search SDK a REST API funkcióit biztosítja a hírek lekérdezéséhez és az eredmények elemzéséhez. 
 
-A [forráskód csomópont Bing hírek keresési SDK minták](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/blob/master/Samples/newsSearch.js) érhető el a Git központ.
+A [Node Bing News Search SDK-minták forráskódja](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/blob/master/Samples/newsSearch.js) elérhető a GitHubon.
 
 ## <a name="application-dependencies"></a>Alkalmazásfüggőségek
 
-Egy konzolalkalmazást, a Bing hírek keresési SDK használatával beállításához futtassa `npm install azure-cognitiveservices-newssearch` a fejlesztői környezetben.
+Ha a Bing News Search SDK-val szeretne beállítani egy konzolalkalmazást, futtassa a fejlesztési környezetben a következőt: `npm install azure-cognitiveservices-newssearch`.
 
-## <a name="news-search-client"></a>Hírek keresési ügyfél
-Első egy [kognitív szolgáltatások hozzáférési kulcs](https://azure.microsoft.com/try/cognitive-services/) alatt *keresési*. Hozzon létre egy példányát a `CognitiveServicesCredentials`:
+## <a name="news-search-client"></a>News Search-ügyfél
+A [Cognitive Services hozzáférési kulcsát](https://azure.microsoft.com/try/cognitive-services/) a *Keresés* területen kérheti le. Hozza létre a `CognitiveServicesCredentials` egy példányát:
 ```
 const CognitiveServicesCredentials = require('ms-rest-azure').CognitiveServicesCredentials;
 let credentials = new CognitiveServicesCredentials('YOUR-ACCESS-KEY');
 ```
-Az ügyfél ezután példányosítható:
+Ezután példányosítsa az ügyfelet:
 ```
 const NewsSearchAPIClient = require('azure-cognitiveservices-newssearch');
 let client = new NewsSearchAPIClient(credentials);
 ```
-A lekérdezésszöveg ebben az esetben "Téli olimpia" kereséséhez az ügyfél használni:
+Az ügyféllel keressen rá a lekérdezési szövegre, ami ebben az esetben a „Winter Olympics” (téli olimpia):
 ```
 client.newsOperations.search('Winter Olympics').then((result) => {
     console.log(result.value);
@@ -47,11 +47,11 @@ client.newsOperations.search('Winter Olympics').then((result) => {
 });
 
 ```
-A kód kinyomtatja `result.value` elemek elemzése szöveg nélkül a konzolon. Az eredményeket, ha vannak ilyenek, kategóriánként tartalmazza:
-- í_rja be: "NewsArticle"
-- í_rja be: "WebPage"
-- í_rja be: "VideoObject"
-- í_rja be: "ImageObject"
+A kód `result.value`-elemeket jelenít meg a konzolon bármilyen szövegelemzés nélkül. Az eredmények – ha egyáltalán van találat egy kategóriában – a következőket fogják tartalmazni:
+- _type: 'NewsArticle'
+- _type: 'WebPage'
+- _type: 'VideoObject'
+- _type: 'ImageObject'
 
 <!-- Remove until we can replace with santized version
 ![News results](media/node-sdk-quickstart-results.png)
@@ -59,4 +59,4 @@ A kód kinyomtatja `result.value` elemek elemzése szöveg nélkül a konzolon. 
 
 ## <a name="next-steps"></a>További lépések
 
-[Kognitív szolgáltatások Node.js SDK-minták](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples)
+[Cognitive Services Node.js SDK-minták](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples)

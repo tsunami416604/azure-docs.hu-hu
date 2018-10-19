@@ -5,19 +5,23 @@ services: event-grid
 keywords: ''
 author: tfitzmac
 ms.author: tomfitz
-ms.date: 07/05/2018
+ms.date: 10/02/2018
 ms.topic: quickstart
 ms.service: event-grid
-ms.openlocfilehash: ec85a866279412232aa23fad8f975d1642525772
-ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
+ms.openlocfilehash: 630130bde0440a8a5f51589386f42214f27af59a
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42023013"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48040626"
 ---
 # <a name="create-and-route-custom-events-with-the-azure-portal-and-event-grid"></a>Egyéni események létrehozása és átirányítása az Azure Portallal és az Event Griddel
 
-Az Azure Event Grid egy felhőalapú eseménykezelési szolgáltatás. Ebben a cikkben létrehozunk egy egyéni témakört az Azure Portallal, feliratkozunk a témakörre, majd kiváltjuk az eseményt az eredmény megtekintéséhez. Az eseményt elküldi az eseményadatokat naplózó Azure-függvénynek. A folyamat végén látni fogja, hogy a rendszer elküldte az eseményadatokat egy végpontnak, és naplózta őket.
+Az Azure Event Grid egy felhőalapú eseménykezelési szolgáltatás. Ebben a cikkben létrehozunk egy egyéni témakört az Azure Portallal, feliratkozunk az egyéni témakörre, majd kiváltjuk az eseményt az eredmény megtekintéséhez. Általában olyan végpontoknak szoktunk eseményeket küldeni, amelyek eseményadatokat dolgoznak fel és műveleteket hajtanak végre. A cikk egyszerűsítése érdekében azonban az eseményeket egy olyan webalkalmazásnak küldjük el, amely az üzenetek gyűjtésével és megjelenítésével foglalkozik.
+
+A folyamat végén látni fogja, hogy a rendszer elküldte az eseményadatokat a webalkalmazásnak.
+
+![Eredmények megtekintése](./media/custom-event-quickstart-portal/view-result.png)
 
 [!INCLUDE [quickstarts-free-trial-note.md](../../includes/quickstarts-free-trial-note.md)]
 
@@ -27,7 +31,7 @@ Az Azure Event Grid egy felhőalapú eseménykezelési szolgáltatás. Ebben a c
 
 Az Event Grid-témakörök egy felhasználó által meghatározott végpontot biztosítanak, amelyben közzéteheti az eseményeket. 
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
+1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
 
 1. Egyéni témakör létrehozásához válassza az **Erőforrás létrehozása** elemet. 
 
@@ -61,77 +65,61 @@ Az Event Grid-témakörök egy felhasználó által meghatározott végpontot bi
 
    ![Névütközés](./media/custom-event-quickstart-portal/name-conflict.png)
 
-## <a name="create-an-azure-function"></a>Azure-függvény létrehozása
+## <a name="create-a-message-endpoint"></a>Üzenetvégpont létrehozása
 
-A témakörre való feliratkozás előtt hozzuk létre az eseményüzenet végpontját. Ebben a cikkben Azure-függvényekkel hozhat létre egy függvényalkalmazást a végponthoz.
+Az egyéni témakörre való feliratkozás előtt hozzuk létre az eseményüzenet végpontját. A végpont általában az eseményadatok alapján hajt végre műveleteket. Az útmutató egyszerűsítése érdekében egy olyan [előre létrehozott webalkalmazást](https://github.com/Azure-Samples/azure-event-grid-viewer) helyezünk üzembe, amely megjeleníti az esemény üzeneteit. Az üzembe helyezett megoldás egy App Service-csomagot, egy App Service-webalkalmazást és egy, a GitHubról származó forráskódot tartalmaz.
 
-1. Függvény létrehozásához válassza az **Erőforrás létrehozása** elemet.
+1. A megoldásnak az előfizetésébe való telepítéséhez válassza az **Üzembe helyezés az Azure-ban** lehetőséget. Az Azure Portalon adjon meg értékeket a paraméterekhez.
 
-   ![Erőforrás létrehozása](./media/custom-event-quickstart-portal/create-resource-small.png)
+   <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-event-grid-viewer%2Fmaster%2Fazuredeploy.json" target="_blank"><img src="http://azuredeploy.net/deploybutton.png"/></a>
 
-1. Válassza a **Számítás** és a **Függvényalkalmazás** elemet.
+1. Az üzembe helyezés befejezése eltarthat néhány percig. A sikeres üzembe helyezést követően tekintse meg a webalkalmazást, hogy meggyőződjön annak működéséről. Egy webböngészőben navigáljon a következő helyre: `https://<your-site-name>.azurewebsites.net`.
 
-   ![Függvény létrehozása](./media/custom-event-quickstart-portal/create-function.png)
+1. A hely látható, de még nem lett közzétéve esemény.
 
-1. Adjon egy egyedi nevet az Azure-függvénynek. Ne a képen látható nevet használja. Válassza ki az ebben a cikkben létrehozott erőforráscsoportot. Szolgáltatási csomagként válassza a **Használatalapú csomagot**. Használja a javasolt új tárfiókot. Kikapcsolhatja az Application Insights szolgáltatást. Az értékek megadása után válassza a **Létrehozás** elemet.
+   ![Új hely megtekintése](./media/custom-event-quickstart-portal/view-site.png)
 
-   ![Függvényértékek megadása](./media/custom-event-quickstart-portal/provide-function-values.png)
+## <a name="subscribe-to-custom-topic"></a>Feliratkozás egyéni témakörre
 
-1. Az üzembe helyezés befejezése után válassza az **Erőforrás megnyitása** elemet.
+Az Event Grid-témakörre való feliratkozással lehet tudatni az Event Griddel, hogy mely eseményeket kívánja nyomon követni, és hová szeretné küldeni az eseményeket.
 
-   ![Erőforrás megnyitása](./media/custom-event-quickstart-portal/go-to-resource.png)
+1. A portálon válassza ki az egyéni témakört.
 
-1. A **Függvények** mellett válassza a **+** elemet.
+   ![Egyéni témakör kiválasztása](./media/custom-event-quickstart-portal/select-custom-topic.png)
 
-   ![Függvény hozzáadása](./media/custom-event-quickstart-portal/add-function.png)
+1. Válassza a **+ Esemény-előfizetés** lehetőséget.
 
-1. Válassza az **Egyéni függvény** elemet az elérhető lehetőségek közül.
+   ![Esemény-előfizetés hozzáadása](./media/custom-event-quickstart-portal/new-event-subscription.png)
 
-   ![Egyéni függvény](./media/custom-event-quickstart-portal/select-custom-function.png)
+1. Válassza ki a **Webhook** végponttípust. Adja meg az esemény-előfizetés nevét.
 
-1. Görgessen lefelé, amíg meg nem találja az **Event Grid-triggert**. Válassza a **C#** elemet.
+   ![Esemény-előfizetés értékeinek megadása](./media/custom-event-quickstart-portal/provide-subscription-values.png)
 
-   ![Event Grid-trigger kiválasztása](./media/custom-event-quickstart-portal/select-event-grid-trigger.png)
+1. Válassza a **Végpont kiválasztása** lehetőséget. 
 
-1. Fogadja el az alapértelmezett értékeket, és válassza a **Létrehozás** elemet.
+1. A webhook végponthoz adja meg a webalkalmazás URL-címét, és adja hozzá az `api/updates` elemet a kezdőlap URL-címéhez. Válassza a **Kiválasztás megerősítése** lehetőséget.
 
-   ![Új függvény](./media/custom-event-quickstart-portal/new-function.png)
+   ![Végpont URL-címének megadása](./media/custom-event-quickstart-portal/provide-endpoint.png)
 
-A függvény készen áll az események fogadására.
+1. Miután végzett az esemény-előfizetés értékeinek megadásával, válassza a **Létrehozás** lehetőséget.
 
-## <a name="subscribe-to-a-topic"></a>Feliratkozás témakörre
+Tekints meg újra a webalkalmazást, ahol láthatja, hogy az fogadta az előfizetés érvényesítési eseményét. Az eseményadatok kibontásához kattintson a szem ikonra. Az Event Grid elküldi az érvényesítési eseményt, így a végpont megerősítheti, hogy eseményadatokat akar kapni. A webalkalmazás az előfizetés érvényesítéséhez szükséges kódot tartalmaz.
 
-A témakörre való feliratkozással lehet tudatni az Event Griddel, hogy mely eseményeket kívánja nyomon követni, és hová szeretné küldeni az eseményeket.
-
-1. Az Azure-függvényben válassza az **Event Grid-előfizetés hozzáadása** elemet.
-
-   ![Event Grid-előfizetés hozzáadása](./media/custom-event-quickstart-portal/add-event-grid-subscription.png)
-
-1. Adja meg az előfizetés értékeit. A témakör típusánál válassza az **Event Grid-témakörök** elemet. Az előfizetéshez és az erőforráscsoporthoz válassza ki azt az előfizetést és erőforráscsoportot, amelyben létrehozta az egyéni témakört. Válassza ki például az egyéni témakör nevét. Az előfizető végpontja előre ki van töltve a függvény URL-jével.
-
-   ![Előfizetés értékeinek megadása](./media/custom-event-quickstart-portal/provide-subscription-values.png)
-
-1. Az esemény elindítása előtt nyissa meg a függvény naplóit, hogy lássa az eseményadatokat az elküldéskor. Az Azure-függvény alján válassza a **Naplók** elemet.
-
-   ![Naplók kiválasztása](./media/custom-event-quickstart-portal/select-logs.png)
-
-Most aktiváljunk egy eseményt, és lássuk, hogyan küldi el az üzenetet az Event Grid a végpontnak. A cikkben leírt folyamat leegyszerűsítése érdekében a Cloud Shell használatával küldjön mintául szolgáló eseményadatokat az egyéni témakörbe. Egy alkalmazás vagy Azure-szolgáltatás általában eseményadatokat küld el.
-
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+![Előfizetési esemény megtekintése](./media/custom-event-quickstart-portal/view-subscription-event.png)
 
 ## <a name="send-an-event-to-your-topic"></a>Esemény elküldése a témakörbe
 
-Az Azure CLI vagy a PowerShell használatával küldjön teszteseményt az egyéni témakörbe.
+Most aktiváljunk egy eseményt, és lássuk, hogyan küldi el az üzenetet az Event Grid a végpontnak. Az Azure CLI vagy a PowerShell használatával küldjön teszteseményt az egyéni témakörbe. Egy alkalmazás vagy Azure-szolgáltatás általában eseményadatokat küld el.
 
-Az első példa az Azure CLI-t használja. Ez lekéri a témakör URL-címét és kulcsát, valamint a mintául szolgáló eseményadatokat. A `<topic_name>` helyett használja a témakör nevét. A teljes esemény megjelenítéséhez használja az `echo "$body"` elemet. A JSON `data` eleme az esemény hasznos adata. Bármilyen, megfelelően formált JSON megadható ebben a mezőben. A speciális útválasztáshoz és szűréshez használhatja a tárgy mezőt is. A CURL egy olyan segédprogram, amely HTTP-kéréseket küld.
+Az első példa az Azure CLI-t használja. Ez lekéri az egyéni témakör URL-címét és kulcsát, valamint a mintául szolgáló eseményadatokat. A `<topic_name>` helyett használja az egyéni témakör nevét. Ez mintául szolgáló eseményadatokat hoz létre. A JSON `data` eleme az esemény hasznos adata. Bármilyen, megfelelően formált JSON megadható ebben a mezőben. A speciális útválasztáshoz és szűréshez használhatja a tárgy mezőt is. A CURL egy olyan segédprogram, amely HTTP-kéréseket küld.
 
 ```azurecli-interactive
 endpoint=$(az eventgrid topic show --name <topic_name> -g myResourceGroup --query "endpoint" --output tsv)
 key=$(az eventgrid topic key list --name <topic_name> -g myResourceGroup --query "key1" --output tsv)
 
-body=$(eval echo "'$(curl https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/event-grid/customevent.json)'")
+event='[ {"id": "'"$RANDOM"'", "eventType": "recordInserted", "subject": "myapp/vehicles/motorcycles", "eventTime": "'`date +%Y-%m-%dT%H:%M:%S%z`'", "data":{ "make": "Ducati", "model": "Monster"},"dataVersion": "1.0"} ]'
 
-curl -X POST -H "aeg-sas-key: $key" -d "$body" $endpoint
+curl -X POST -H "aeg-sas-key: $key" -d "$event" $endpoint
 ```
 
 A második példa a PowerShell használatával végez hasonló lépéseket.
@@ -165,9 +153,25 @@ $body = "["+(ConvertTo-Json $htbody)+"]"
 Invoke-WebRequest -Uri $endpoint -Method POST -Body $body -Headers @{"aeg-sas-key" = $keys.Key1}
 ```
 
-Ön kiváltotta az eseményt, az Event Grid pedig elküldte az üzenetet a feliratkozáskor konfigurált végpontnak. Az eseményadatokat a naplókban tekintheti meg.
+Ön kiváltotta az eseményt, az Event Grid pedig elküldte az üzenetet a feliratkozáskor konfigurált végpontnak. Tekintse meg a webalkalmazást az imént elküldött esemény megtekintéséhez.
 
-![Naplók megtekintése](./media/custom-event-quickstart-portal/view-log-entry.png)
+```json
+[{
+  "id": "1807",
+  "eventType": "recordInserted",
+  "subject": "myapp/vehicles/motorcycles",
+  "eventTime": "2017-08-10T21:03:07+00:00",
+  "data": {
+    "make": "Ducati",
+    "model": "Monster"
+  },
+  "dataVersion": "1.0",
+  "metadataVersion": "1",
+  "topic": "/subscriptions/{subscription-id}/resourceGroups/{resource-group}/providers/Microsoft.EventGrid/topics/{topic}"
+}]
+```
+
+
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 

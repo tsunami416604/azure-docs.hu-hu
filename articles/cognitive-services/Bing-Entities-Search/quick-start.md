@@ -1,60 +1,59 @@
 ---
-title: Entitások Search API – első lépések |} Microsoft Docs
-description: Első lépések entitások Bing keresési API használatával jeleníti meg.
+title: 'Rövid útmutató: Bing Entity Search API'
+description: Bemutatja a Bing Entity Search API használatának első lépéseit.
 services: cognitive-services
 author: swhite-msft
-manager: ehansen
-ms.assetid: B206A254-B7E9-49FF-AFD5-87B1E4D6D30B
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-entity-search
-ms.topic: article
+ms.topic: quickstart
 ms.date: 07/06/2017
 ms.author: scottwhi
-ms.openlocfilehash: 12031d2447920c7e2d6180f35cf4fb29aa1b6150
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
-ms.translationtype: MT
+ms.openlocfilehash: ffc9ebb21c6646b1a39af4659053adf4157d204b
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35346967"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48813957"
 ---
-# <a name="making-your-first-entities-request"></a>Az első entitások kérelem elvégzése
+# <a name="quickstart-making-your-first-bing-entity-search-request"></a>Rövid útmutató: Az első Bing Entity Search-kérelem létrehozása
 
-Az entitás Search API keresési lekérdezést küld a Bing, és lekérdezi az eredmények, amelyek tartalmazzák az entitásokat és helyek. Hely eredmények tartalmazzák a éttermekben, Szálloda vagy más helyi vállalatok számára. A helyek a lekérdezés adhat meg a helyi vállalati nevét, vagy azt (például a közeli éttermekben) listáját kérje meg. Entitás eredmények tartalmazza a személyek, helyek vagy dolgot. Ebben a környezetben helye sport létesítmények, állapotok, országok, stb. 
+A Bing Entity Search API egy keresési lekérdezést küld a Bingnek, majd entitásokat és helyeket tartalmazó találatokat kap vissza. A helytalálatok lehetnek éttermek, szállodák vagy egyéb helyi vállalkozások. A helyekre vonatkozó lekérdezések meghatározhatják egy helyi vállalkozás nevét, vagy egy listát is lekérhetnek (például „éttermek a közelben”). Az entitástalálatok személyek, helyek vagy dolgok lehetnek. A hely ebben a vonatkozásban látnivalókat, államokat, országokat stb. jelent. 
 
 ## <a name="first-steps"></a>Első lépések
 
-Mielőtt az első hívás, kell egy kognitív szolgáltatások előfizetés kulcs beszerzése. Ahhoz, hogy a kulcs, lásd: [kognitív szolgáltatások próbálja](https://azure.microsoft.com/try/cognitive-services/?api=bing-entities-search-api). (Ha az entitások Search API nem felső részén látható, kattintson a **keresési** lapra, és görgessen lefelé, amíg meg nem jelenik azt.)
+Ahhoz, hogy elvégezhesse az első hívást, be kell szereznie egy előfizetési azonosítót a Cognitive Serviceshez. Az előfizetői azonosító beszerzéséhez lásd [A Cognitive Services kipróbálása](https://azure.microsoft.com/try/cognitive-services/?api=bing-entities-search-api) témakört. (Ha az Entities Search API nem látható legfelül, kattintson a **Keresés** fülre, és görgessen le, amíg meg nem találja.)
 
 ## <a name="the-endpoint"></a>A végpont
 
-Entitás, és helyezze el a keresési eredmények között, GET kérés küldése a következő végponthoz:  
+Az entitás- és helykeresés találatainak lekéréséhez egy GET kérelmet kell küldeni a következő végpontra:  
   
 ```
 https://api.cognitive.microsoft.com/bing/v7.0/entities
 ```
 
-A kérelmet HTTPS protokollt kell használnia.
+A kérelemnek a HTTPS protokollt kell használnia.
 
-Azt javasoljuk, hogy az összes kérelem-kiszolgálótól származik. A kulcs terjesztése ügyfélalkalmazás részeként rosszindulatú harmadik fél elérésére több lehetőséget biztosít a. Is, a kiszolgálótól érkező hívás egyetlen frissítési pontot biztosít az API-t a jövőbeli verzióiban.
+Javasoljuk, hogy minden kérelem egy kiszolgálóról induljon. Az azonosítónak egy ügyfélalkalmazás részeként való terjesztése több lehetőséget ad arra, hogy rosszindulatú külső felek hozzáférjenek az azonosítóhoz. Emellett a hívások kiszolgálóról való indítása egyetlen frissítési pontot teremt az API későbbi verziói számára.
 
-## <a name="specifying-query-parameters-and-headers"></a>Lekérdezés-paraméterek és a fejlécek megadása
+## <a name="specifying-query-parameters-and-headers"></a>A lekérési paraméterek és fejlécek meghatározása
 
-A kérelemnek meg kell adnia a [q](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference#query) lekérdezési paraméter, amely tartalmazza a felhasználó keresési kifejezés. A kérelem is meg kell adnia a [mkt](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference#mkt) lekérdezési paraméter, amely azonosítja a piacon, ha azt szeretné, hogy az eredmények származnia. Nem kötelező lekérdezési paraméterek listáját lásd: [lekérdezésparamétereket](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference#query-parameters). URL-címet az összes lekérdezési paraméterek kódolása.  
+A kérelemnek tartalmaznia kell a [q](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference#query) lekérdezési paramétert, amely a felhasználó keresési kifejezését adja meg. A kérelemnek tartalmaznia kell egy [mkt](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference#mkt) lekérdezési paramétert is, amely azonosítja a piacot, ahonnan eredményeket szeretne kapni. Az opcionális lekérdezési paraméterek listáját lásd a [lekérdezési paramétereket](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference#query-parameters) ismertető cikkben. Minden lekérdezési paraméternek URL-kódolásúnak kell lennie.  
   
-A kérelemnek meg kell adnia a [Ocp-Apim-előfizetés-kulcs](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference#subscriptionkey) fejléc. Bár nem kötelező, meg hosszúan is adja meg a következő fejléc:  
+A kérelemnek tartalmaznia kell az [Ocp-Apim-Subscription-Key](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference#subscriptionkey) fejlécet. Nem kötelező, de javasolt a következő fejlécek megadása is:  
   
--   [Felhasználói ügynök](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference#useragent)  
+-   [User-Agent](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference#useragent)  
 -   [X-MSEdge-ClientID](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference#clientid)  
--   [X-MSEdge-Ügyfélip](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference#clientip)  
--   [X keresése](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference#location)  
+-   [X-MSEdge-ClientIP](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference#clientip)  
+-   [X-Search-Location](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference#location)  
 
-Az ügyfél IP-cím és a hely fejlécek fontosak hely kompatibilis tartalom visszaküldésével.  
+Az ügyfél IP-címe és helye fontos a helyfüggő tartalmak visszaadása szempontjából.  
 
-Az összes kérés- és válaszfejlécekről listájáért lásd: [fejlécek](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference#headers).
+Az összes kérelem- és válaszfejléc listáját lásd a [Fejlécek](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference#headers) cikkben.
 
 ## <a name="the-request"></a>A kérelem
 
-Az alábbi példában látható, amely tartalmazza a javasolt lekérdezés-paraméterek és a fejlécek entitások kérelmet. 
+Az alábbiakban egy olyan entitáskeresési kérés látható, amely az összes javasolt lekérdezési paramétert és fejlécet tartalmazza. 
 
 ```  
 GET https://api.cognitive.microsoft.com/bing/v7.0/entities?q=mount+rainier&mkt=en-us HTTP/1.1  
@@ -66,11 +65,11 @@ X-MSEdge-ClientID: <blobFromPriorResponseGoesHere>
 Host: api.cognitive.microsoft.com  
 ```  
 
-Ha most először hívja a Bing API-k bármelyikét, az ügyfél-azonosító fejléc nem tartalmaz. Az ügyfél-azonosító csak tartalmazzák, ha korábban már hívott a Bing API és a Bing visszaadott egy ügyfél-Azonosítót, a felhasználó és eszköz kombinációja.
+Ha első alkalommal hívja meg bármelyik Bing API-t, ne használja az ügyfél-azonosító fejlécét. Csak akkor használja az ügyfél-azonosítót, ha korábban már meghívott egy Bing API-t, és visszakapott egy ügyfél-azonosítót a felhasználó és az eszköz kombinációjához.
 
 ## <a name="the-response"></a>A válasz
 
-Az alábbiakban látható a korábbi kérelemre adott válasz. A példában is látható a Bing-specifikus response fejlécekkel együtt. A válasz objektumra vonatkozó információkért lásd: [SearchResponse](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference#searchresponse).
+Az alábbiakban az előző kérelemre adott válasz látható. A példában a Bing-specifikus válaszfejlécek is láthatók. A válaszobjektumra vonatkozó további információért lásd: [SearchResponse](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference#searchresponse).
 
 ```
 BingAPIs-TraceId: 76DD2C2549B94F9FB55B4BD6FEB6AC
@@ -137,8 +136,8 @@ BingAPIs-Market: en-US
 
 ## <a name="next-steps"></a>További lépések
 
-Próbálja ki az API-t. Ugrás a [entitások keresési API-tesztelési konzol](https://dev.cognitive.microsoft.com/docs/services/7a3fb374be374859a823b79fd938cc65/). 
+Próbálja ki az API-t. Nyissa meg az [Entities Search API tesztkonzolját](https://dev.cognitive.microsoft.com/docs/services/7a3fb374be374859a823b79fd938cc65/). 
 
-A válasz objektumok fel kapcsolatos részletekért lásd: [entitás és a helyek a webes keresés](./search-the-web.md).
+A válaszobjektumok feldolgozásával kapcsolatban lásd: [Entitások és helyek keresése az interneten](./search-the-web.md).
 
-Olvassa el [Bing használatát és a megjelenített követelmények](./use-display-requirements.md) , nem megszakítja a keresési eredmények használatára vonatkozó szabályok egyike.
+Mindenképpen olvassa el a [Bing használati és megjelenítési előírásait,](./use-display-requirements.md) hogy ne szegje meg a keresési eredmények használatának szabályait.

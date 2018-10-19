@@ -1,87 +1,89 @@
 ---
-title: Érzelemfelismerési API C# oktatóanyag |} Microsoft Docs
-description: Egy alapszintű Windows-alkalmazást, amely a kognitív szolgáltatások Érzelemfelismerési API ismeri fel a kép lapok által kifejezett érzelmek vizsgálatát.
+title: 'Oktatóanyag: Érzelemfelismerés képeken szereplő arcokon – Emotion API, C#'
+titlesuffix: Azure Cognitive Services
+description: Megismerhet egy, a képeken szereplő arcok által kifejezett érzelmek felismerésére szolgáló, alapszintű Windows-alkalmazást.
 services: cognitive-services
 author: anrothMSFT
-manager: corncar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: emotion-api
-ms.topic: article
+ms.topic: tutorial
 ms.date: 01/23/2017
 ms.author: anroth
-ms.openlocfilehash: f015e5720f65d0951a77de76ce8882a6dcdc1c3b
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
-ms.translationtype: MT
+ROBOTS: NOINDEX
+ms.openlocfilehash: f3a84a68718fba29e2a4b2fae057e68976119c95
+ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35347591"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48237024"
 ---
-# <a name="emotion-api-in-c35-tutorial"></a>Érzelemfelismerési API c.&#35; oktatóanyag
+# <a name="tutorial-recognize-emotions-on-a-face-in-an-image"></a>Oktatóanyag: Érzelemfelismerés képeken szereplő arcokon.
 
 > [!IMPORTANT]
-> Villámnézet API a 2017. október 30 véget ér. Kipróbálhatja az új [videó indexelő API előnézete](https://azure.microsoft.com/services/cognitive-services/video-indexer/) insights könnyen kibontani videók, és tartalom felderítési lép, például a keresési eredmények, növelje a szóbeli szavakat, a lapok, a karakterek és a érzelmek észlelésével. [További információk](https://docs.microsoft.com/azure/cognitive-services/video-indexer/video-indexer-overview).
+> Az Emotion API 2019. február 15-ével elavulttá válik. Az érzelemfelismerési képesség mostantól a [Face API](https://docs.microsoft.com/azure/cognitive-services/face/) részeként általánosan elérhető. 
 
-Egy alapszintű Windows-alkalmazás, amely Érzelemfelismerési API ismeri fel a kép lapok által kifejezett érzelmek vizsgálatát. Az alábbi példa segítségével elküldeni egy kép URL-CÍMÉT vagy egy helyileg tárolt fájlt. A nyílt forráskódú példa sablonként használhatja a saját alkalmazás a Windows rendszert a Érzelemfelismerési API-t és a WPF (a Windows Presentation Foundation), a .NET-keretrendszer része kiépítéséhez.
+Megismerhet egy, a képeken szereplő arcok által kifejezett érzelmek felismerésére szolgáló, az Emotion API-t használó, alapszintű Windows-alkalmazást. Az alábbi példában elküldheti egy kép URL-címét vagy egy helyileg tárolt fájlt. Ezt a nyílt forráskódú példát sablonként használhatja a saját Windows-alkalmazásának az Emotion API és a .NET-keretrendszer részeként elérhető WPF (Windows Presentation Foundation) használatával történő elkészítéséhez.
 
 ## <a name="Prerequisites">Előfeltételek</a>
-#### <a name="platform-requirements"></a>Platform-követelmények  
-Az alábbi példában kidolgozott a .NET-keretrendszer használatával [Visual Studio 2015, Community Edition](https://www.visualstudio.com/products/visual-studio-community-vs).  
+#### <a name="platform-requirements"></a>Platformkövetelmények  
+Az alábbi példa a [Visual Studio 2015 Community Editiont](https://www.visualstudio.com/products/visual-studio-community-vs) használó .NET-keretrendszerhez lett kidolgozva.  
 
-#### <a name="subscribe-to-emotion-api-and-get-a-subscription-key"></a>Érzelemfelismerési API-ra szolgáltatásra, és egy előfizetés kulcs beszerzése  
-Mielőtt létrehozná a példa, elő kell fizetnie Érzelemfelismerési API-hoz a Microsoft kognitív szolgáltatások részét képező. Lásd: [előfizetések](https://azure.microsoft.com/try/cognitive-services/). Ebben az oktatóanyagban mind az elsődleges és másodlagos kulcsot is használható. Ügyeljen arra, hogy kövesse a bevált gyakorlatokat, hogy az API-kulcs titkos kulcsot, és biztonságáról.  
+#### <a name="subscribe-to-emotion-api-and-get-a-subscription-key"></a>Előfizetés az Emotion API használatára és előfizetői azonosító beszerzése  
+A példa létrehozása előtt elő kell fizetnie a Microsoft Cognitive Services részét képező Emotion API-ra. Lásd az [előfizetéseket](https://azure.microsoft.com/try/cognitive-services/). Ehhez az oktatóanyaghoz az elsődleges és a másodlagos kulcs is használható. Az API-kulcs biztonságban és titokban tartásához mindenképpen kövesse az ajánlott eljárásokat.  
 
-#### <a name="get-the-client-library-and-example"></a>Az ügyfél első könyvtár és példa  
-Előfordulhat, hogy töltse le a Érzelemfelismerési API ügyféloldali kódtár keresztül [SDK](https://www.github.com/microsoft/cognitive-emotion-windows). A letöltött zip-fájl szükséges a kiválasztott mappába kinyerni, sok felhasználó válassza ki a Visual Studio 2015 mappát.
-## <a name="Step1">1. lépés: Nyissa meg a példa</a>
-1.  Indítsa el a Microsoft Visual Studio 2015-öt, és kattintson a **fájl**, jelölje be **nyitott**, majd **projekt/megoldás**.
-2.  Keresse meg a mappát, ahová menteni szeretné a letöltött Érzelemfelismerési API-fájlokat. Kattintson a **Érzelemfelismerési**, majd **Windows**, majd a **minta-WPF** mappát.
-3.  Kattintson duplán a Visual Studio 2015 megoldás (.sln) fájl nevű **EmotionAPI-WPF-Samples.sln**. Ekkor megnyílik a megoldást a Visual Studióban.
+#### <a name="get-the-client-library-and-example"></a>Az ügyfélkódtár és a példa lekérése  
+[SDK-n](https://www.github.com/microsoft/cognitive-emotion-windows) keresztül letöltheti az Emotion API ügyfélkódtárat. A letöltött zip-fájlt ki kell csomagolni egy tetszőleges mappába. Számos felhasználó a Visual Studio 2015 mappát választja.
+## <a name="Step1">1. lépés: A példa megnyitása</a>
+1.  Indítsa el a Microsoft Visual Studio 2015-öt, és kattintson a **File** (Fájl) elemre, válassza az **Open** (Megnyitás) parancsot, majd a **Project/Solution** (Projekt/Megoldás) elemet.
+2.  Lépjen abba a mappába, amelybe a letöltött Emotion API-fájlokat mentette. Kattintson az **Emotion** elemre, majd a **Windows** elemre, végül a **Sample-WPF** mappára.
+3.  Kattintson duplán az **EmotionAPI-WPF-Samples.sln** nevű Visual Studio 2015 Solution- (.sln-) fájl megnyitásához. Ez megnyitja a megoldást a Visual Studióban.
 
-## <a name="Step2">2. lépés: A példában létrehozása</a>
-1. A **Megoldáskezelőben**, kattintson a jobb gombbal **hivatkozások** válassza **NuGet-csomagok kezelése**.
+## <a name="Step2">2. lépés: A példa létrehozása</a>
+1. A **Solution Explorer** (Megoldáskezelő) ablakban kattintson a jobb gombbal a **References** (Hivatkozások) elemre, és válassza a **Manage NuGet Packages** (NuGet-csomagok kezelése) lehetőséget.
 
-  ![Nyissa meg a Nuget-Csomagkezelő](../Images/EmotionNuget.png)
+  ![A NuGet-csomagkezelő megnyitása](../Images/EmotionNuget.png)
 
-2.  A **NuGet-Csomagkezelő** ablak nyílik meg. Először válassza **Tallózás** a bal felső sarokban, majd a keresési mezőbe írja be a "Newtonsoft.Json", válassza ki a **Newtonsoft.Json** csomagot, majd kattintson a **telepítése**.  
+2.  Megnyílik a **NuGet Package Manager** (NuGet-csomagkezelő) ablak. Először válassza a bal felső sarokban lévő **Browse** (Tallózás) gombot, majd a keresőmezőbe írja be a „Newtonsoft.Json” kifejezést, válassza a **Newtonsoft.Json** csomagot, és kattintson az **Install** (Telepítés) parancsra.  
 
-  ![Keresse meg a NuGet-csomag](../Images/EmotionNugetBrowse.png)  
+  ![NuGet-csomag megkeresése tallózással](../Images/EmotionNugetBrowse.png)  
 
-3.  Nyomja le a Ctrl + Shift + B, vagy kattintson **Build** menüszalagon válassza a menü, majd **megoldás fordítása**.
+3.  Nyomja le a Ctrl+Shift+B billentyűparancsot vagy kattintson a menüszalag **Build** (Összeállítás) elemére, majd a **Build Solution** (Megoldás összeállítása) parancsra.
 
-## <a name="Step3">3. lépés: A példában futtatása</a>
-1.  A létrehozás befejezése után nyomja le az **F5** , vagy kattintson a **Start** a menüszalag menü a példa futtatásához.
-2.  Keresse meg a Érzelemfelismerési API-ablakot a **szövegmező** olvasása "**illessze be ide az Előfizetés kulcs elindításához**". Az Előfizetés kulcs illessze be a szövegmezőben Képernyőkép az alábbiak szerint. Az Előfizetés kulcs a számítógépen vagy hordozható megőrizni a "Kulcs mentése" gombra kattintva választhat. Ha törölni szeretné az Előfizetés kulcs a rendszerből, kattintson a "Kulcs törlése" eltávolítása a PC- vagy hordozható.
-  
-  ![Érzelemfelismerési funkció felület](../Images/EmotionKey.png)
+## <a name="Step3">3. lépés: A példa futtatása</a>
+1.  A létrehozás befejezése után nyomja le az **F5** billentyűt, vagy kattintson a menüszalag **Start** (Indítás) elemére a példa futtatásához.
+2.  Keresse meg az Emotion API-ablakot a „**Paste your subscription key here to start**” (Illessze be ide az előfizetési azonosítót a kezdéshez) üzenetet tartalmazó **szövegmezővel**. Illessze az előfizetési azonosítót a szövegmezőbe az alábbi képernyőképen látható módon. A „Save Key” (Kulcs mentése) gombra kattintva tárolhatja az előfizetési azonosítót a számítógépén vagy laptopján. Ha törölni szeretné az előfizetési azonosítót a rendszerről, kattintson a „Delete Key” (Kulcs törlése) parancsra, hogy eltávolítsa a számítógépéről vagy laptopjáról.
 
-3.  A "**válassza ki a forgatókönyv**"kattintson ide a két említett helyzet bármelyikével"**észleléséhez használja a stream érzelemfelismerési**"vagy"**észleli az egy URL-cím segítségével érzelemfelismerési**", és kövesse az utasításokat a képernyőn. A Microsoft a képek feltöltése, és előfordulhat, hogy felhasználja javítására Érzelemfelismerési API-t és a kapcsolódó szolgáltatások kap. Kép történő elküldésekor által meggyőződött róla, hogy elvégezte a [fejlesztői viselkedési](https://azure.microsoft.com/support/legal/developer-code-of-conduct/).
-4.  A mintaalkalmazás használható például képek vannak. Ezeket a lemezképeket található [a Arcfelismerési API Github-tárház](https://github.com/Microsoft/Cognitive-Face-Windows/tree/master/Data) alatt a **adatok** mappát. Vegye figyelembe ezeket a lemezképeket használatát licencbe valós használja megállapodás használhat ez a példa tesztelési, de nem újbóli közzétételét azok jelentését.
+  ![Az érzelemfelismerési funkció felülete](../Images/EmotionKey.png)
 
-## <a name="Review">Tekintse át, és ismerje meg</a>
-Most, hogy a futó alkalmazások, ossza meg velünk tekintse át a példa az alkalmazás kognitív Microsoft-szolgáltatásokkal integrálja az hogyan. Ez megkönnyíti épület ezt az alkalmazást, vagy a saját Microsoft Érzelemfelismerési API-jával alkalmazás fejlesztése. 
+3.  A „**Select Scenario**” (Forgatókönyv kiválasztása) területen kattintson a „**Detect emotion using a stream**” (Érzelemfelismerés streammel) vagy a „**Detect emotion using a URL**” (Érzelemfelismerés URL-címmel) forgatókönyvre, majd kövesse a képernyőn megjelenő utasításokat. A Microsoft megkapja a feltöltött képeket, és a használatukkal javíthatja az Emotion API és a kapcsolódó szolgáltatások működését. Egy kép elküldésekor megerősíti, hogy betartotta a [Fejlesztői magatartási kódexet](https://azure.microsoft.com/support/legal/developer-code-of-conduct/).
+4.  Ezzel a példaalkalmazással példaképek is használhatók. Ezeket a képeket [a Face API Github-adattárban](https://github.com/Microsoft/Cognitive-Face-Windows/tree/master/Data), a **Data** mappában találja. Vegye figyelembe, hogy ezek a képek a méltányos használattal kapcsolatos megállapodás hatálya alá tartoznak, ami azt jelenti, hogy a példa teszteléséhez használhatók, de ismételt közzétételhez nem.
 
-Ez például az alkalmazás lehetővé teszi a Érzelemfelismerési API ügyféloldali kódtár, a dinamikus C# ügyfél burkolót a Microsoft Érzelemfelismerési API-t használja. A fent ismertetett példa app parancsfájlkezelő, ha az ügyféloldali kódtár kapott NuGet-csomagot. Tekintse át a mappában, című ügyféloldali kódtár forráskódját "[ügyféloldali kódtár](https://github.com/Microsoft/Cognitive-Emotion-Windows/tree/master/ClientLibrary)" alatt **Érzelemfelismerési**, **Windows**, **ügyféloldali kódtár** , amely a letöltött fájl tárház részeként fenti a [Előfeltételek](#Prerequisites).
- 
-Azt is megtudhatja, hogyan használható az ügyféloldali kódtár kód **Megoldáskezelőben**: A **EmotionAPI-WPF_Samples**, bontsa ki a **DetectEmotionUsingStreamPage.xaml** számára Keresse meg **DetectEmotionUsingStreamPage.xaml.cs**, amely egy helyileg tárolt fájlt tallózással szolgál, vagy bontsa ki a **DetectEmotionUsingURLPage.xaml** található  **DetectEmotionUsingURLPage.xaml.cs**, amellyel feltöltésekor a rendszer egy kép URL-CÍMÉT. Kattintson duplán a. Ezek xaml.cs fájlok megnyitása a Visual Studio új windows. 
+## <a name="Review">Áttekintés és tanulás</a>
+Most, hogy egy futó alkalmazással rendelkezik, tekintsük át, hogyan integrálható ez a példaalkalmazás a Microsoft Cognitive Services-szolgáltatásokkal. Ez megkönnyíti az alkalmazás fejlesztésének folytatását, vagy saját alkalmazás kifejlesztését a Microsoft Emotion API-val.
 
-Vizsgáljuk meg megtekintette a Érzelemfelismerési ügyféloldali kódtár lekérdezi használatáról példa alkalmazásnak, a két kódtöredékek **DetectEmotionUsingStreamPage.xaml.cs** és **DetectEmotionUsingURLPage.xaml.cs**. Minden fájl "Kulcs minta kód KEZDŐDIK itt" és "Kulcs minta kód karakterlánccal végződik-e itt" hogy könnyebben megtalálja az alábbiakban bemutatott kódtöredékek kód jelző kód megjegyzéseket tartalmaz.
+Ez a példaalkalmazás az Emotion API ügyfélkódtárat használja, amely a Microsoft Emotion API vékony C#-ügyfélburkolója. Ha a fent leírt módon építette fel a példaalkalmazást, egy NuGet-csomagból szerezte be az ügyfélkódtárat. Az ügyfélkódtár forráskódját a „[Client Library](https://github.com/Microsoft/Cognitive-Emotion-Windows/tree/master/ClientLibrary)” (Ügyfélkódtár) nevű mappában tekintheti át az **Emotion**, **Windows**, **Client Library** alatt, amely a fenti [előfeltételekben](#Prerequisites) említett letöltött fájltár részét képezi.
 
-A Érzelemfelismerési API dolgozhasson bemenetként kép URL-címe vagy bináris adatok (formájában egy octet-stream). A két lehetőség alatt felülvizsgálata. Mindkét esetben először látnia egy irányelv, amely lehetővé teszi, hogy a Érzelemfelismerési ügyféloldali Kódtárára. 
+Azt is megtudhatja, hogyan használhatja az ügyfélkódtár kódját a **Solution Explorer** (Megoldáskezelő) alatt: Az **EmotionAPI-WPF_Samples** területen bontsa ki a **DetectEmotionUsingStreamPage.xaml** fájlt a **DetectEmotionUsingStreamPage.xaml.cs** megkereséséhez, amellyel egy helyileg tárolt fájlhoz juthat, vagy bontsa ki a **DetectEmotionUsingURLPage.xaml** fájlt a **DetectEmotionUsingURLPage.xaml.cs** megkereséséhez, amely egy kép URL-címének feltöltésére szolgál. Kattintson duplán a .xaml.cs-fájlokra, hogy egy új ablakban nyissa meg azokat a Visual Studióban.
+
+A példaalkalmazásban az Emotion ügyfélkódtár használatának áttekintéséhez nézzük meg a **DetectEmotionUsingStreamPage.xaml.cs** és a **DetectEmotionUsingURLPage.xaml.cs** két kódtöredékét. Mindegyik fájl kódmegjegyzéseket tartalmaz a „KEY SAMPLE CODE STARTS HERE” (A mintakód itt kezdődik) és a „KEY SAMPLE CODE ENDS HERE” (A mintakód itt fejeződik be) elnevezéssel, hogy könnyebben megtalálja az alább szereplő kódrészleteket.
+
+Az Emotion API bemenetként a kép URL-címével és bináris képadatokkal (oktettstream formájában) is tud dolgozni. A két lehetőség áttekintését alább láthatja. Mindkét esetben először egy using utasítást talál, amellyel az Emotion ügyfélkódtárat használhatja.
 ```csharp
 
-            // ----------------------------------------------------------------------- 
-            // KEY SAMPLE CODE STARTS HERE 
-            // Use the following namespace for EmotionServiceClient 
-            // ----------------------------------------------------------------------- 
-            using Microsoft.ProjectOxford.Emotion; 
-            using Microsoft.ProjectOxford.Emotion.Contract; 
-            // ----------------------------------------------------------------------- 
-            // KEY SAMPLE CODE ENDS HERE 
-            // ----------------------------------------------------------------------- 
+            // -----------------------------------------------------------------------
+            // KEY SAMPLE CODE STARTS HERE
+            // Use the following namespace for EmotionServiceClient
+            // -----------------------------------------------------------------------
+            using Microsoft.ProjectOxford.Emotion;
+            using Microsoft.ProjectOxford.Emotion.Contract;
+            // -----------------------------------------------------------------------
+            // KEY SAMPLE CODE ENDS HERE
+            // -----------------------------------------------------------------------
 ```
-#### <a name="detectemotionusingurlpagexamlcs"></a>DetectEmotionUsingURLPage.xaml.cs 
+#### <a name="detectemotionusingurlpagexamlcs"></a>DetectEmotionUsingURLPage.xaml.cs
 
-A kódrészletet bemutatja, hogyan nyújt az Előfizetés kulcs és a Érzelemfelismerési API szolgáltatás fénykép URL-CÍMÉT az ügyféloldali kódtár segítségével. 
+Ez a kódrészlet bemutatja, hogyan küldheti el az előfizetési azonosítót és egy fénykép URL-címét az ügyfélkódtárral az Emotion API szolgáltatásba.
 
 ```csharp
 
@@ -115,9 +117,9 @@ A kódrészletet bemutatja, hogyan nyújt az Előfizetés kulcs és a Érzelemfe
             // KEY SAMPLE CODE ENDS HERE
             // -----------------------------------------------------------------------
 ```
-#### <a name="detectemotionusingstreampagexamlcs"></a>DetectEmotionUsingStreamPage.xaml.cs 
+#### <a name="detectemotionusingstreampagexamlcs"></a>DetectEmotionUsingStreamPage.xaml.cs
 
-Alább látható, hogyan nyújt az Előfizetés kulcs és a Érzelemfelismerési API-t egy helyileg tárolt lemezképet. 
+Alább látható, hogyan küldheti el az előfizetési azonosítót és egy helyileg tárolt képet az Emotion API-nak.
 
 
 ```csharp

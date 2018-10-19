@@ -1,91 +1,92 @@
 ---
-title: Bing entitás keresési egyoldalas webalkalmazást |} Microsoft Docs
-description: Bemutatja, hogyan használja az entitás Bing keresési API egy egyoldalas webalkalmazást.
+title: 'Oktatóanyag: Bing Entity Search egyoldalas webalkalmazás'
+titlesuffix: Azure Cognitive Services
+description: Útmutató a Bing Entity Search API egyoldalas webalkalmazásban való használatához.
 services: cognitive-services
 author: v-jerkin
-manager: ehansen
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-entity-search
-ms.topic: article
+ms.topic: tutorial
 ms.date: 12/08/2017
 ms.author: v-jerkin
-ms.openlocfilehash: 91c60913cd806baf100e5511cbf59299bf9a84f0
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
-ms.translationtype: MT
+ms.openlocfilehash: 9aabecbec144797b9fbafdff7179213b68921447
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35349231"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48815545"
 ---
-# <a name="tutorial-single-page-web-app"></a>Oktatóanyag: Egyoldalas webalkalmazást
+# <a name="tutorial-single-page-web-app"></a>Oktatóanyag: Egyoldalas webalkalmazás
 
-Az entitás Bing keresési API lehetővé teszi, hogy kapcsolatos információ a webes keresés *entitások* és *helyezi.* Típusú eredményt, vagy mindkettőt egy adott lekérdezésre kérheti. Helyek és a szervezetek a definíciók alább.
+A Bing Entity Search API-val *entitásokról* és *helyekről* kereshet információkat a weben. Egy adott lekérdezésben kérheti a helyeket, az entitásokat vagy mindkettőt. A helyek és entitások definícióját az alábbiakban találja.
 
 |||
 |-|-|
-|Entitások|Az ismert személyek, helyek és a Keresés név alapján, amit|
-|Helyek|Éttermekben, a szállodák és más helyi vállalatok számára, hogy a Keresés név alapján *vagy* típusa (olasz éttermekben) szerint|
+|Entitások|Ismert személyek, helyek és dolgok, amelyeket/akiket név alapján talál meg|
+|Helyek|Éttermek, szállodák és egyéb helyi vállalkozások, amelyeket név *vagy* típus alapján talál meg (olasz éttermek)|
 
-Az oktatóanyag azt, hogy a Bing entitás keresési API-t használja a keresési eredmények megtekintése céljából egyoldalas-webalkalmazás létrehozása az oldalon jobbra. Az alkalmazás HTML, CSS és JavaScript összetevőket tartalmazza.
+Ebben az oktatóanyagban létrehozunk egy egyoldalas webalkalmazást, amely a Bing Entity Search API-val jeleníti meg a keresési eredményeket közvetlenül az oldalon. Az alkalmazás HTML-, CSS- és JavaScript-összetevőkből áll.
 
-Az API lehetővé teszi a hely szerint eredmények rangsorolására. A mobilalkalmazásban kérje meg az eszköz a saját helyéhez. A webes alkalmazás, használhatja a `getPosition()` függvény. De a hívás csak biztonságos környezetben működik, és nem is biztosít a pontos helyet. Is a felhasználó is szeretne keresni entitások nem a saját közelében.
+Az API-val hely szerint állíthatja fontossági sorrendbe az eredményeket. Egy mobilalkalmazásban magától az eszköztől kérdezheti le a helyét. Egy webalkalmazásban használhatja a `getPosition()` függvényt. Ez a hívás azonban csak biztonságos környezetben működik, és nem mindig biztosít pontos helyet. Az is lehet, hogy a felhasználó a saját helyétől eltérő helyeken szeretne entitásokat keresni.
 
-Az alkalmazás ezért felszólítja a Bing Maps szolgáltatás szélességi és hosszúsági beszerzése egy felhasználó által megadott helyről. A felhasználó megadhatja egy jellegzetes ("terület tű") vagy egy teljes vagy részleges címet ("New York City") nevét, és a Bing térképek API biztosítja a koordináták százalékosan.
+Az alkalmazás ezért meghívja a Bing Térképek szolgáltatást, amelyből megszerzi a felhasználó által megadott hely szélességi és hosszúsági koordinátáit. A felhasználó megadhatja egy nevezetesség nevét („Space Needle”), vagy egy teljes vagy részleges címet („New York City”), és a Bing Térképek API megadja a koordinátákat.
 
 <!-- Remove until we can replace with a sanitized version.
 ![[Single-page Bing Entity Search app]](media/entity-search-spa-demo.png)
 -->
 
 > [!NOTE]
-> A JSON és a HTTP-fejléceket, a lap alján a JSON-válasz és a HTTP-kérelem információk kattintáskor felfedése. Ezek az adatok akkor hasznos, ha a szolgáltatás fel.
+> A lap alján található JSON- és HTTP-fejlécek a JSON-válasz és a HTTP-kérés adatait mutatják, ha rájuk kattint. Ezek a részletek hasznosak, ha meg szeretne ismerkedni a szolgáltatással.
 
-Az oktatóanyag alkalmazás bemutatja, hogyan:
+Az oktatóanyag részeként összeállított alkalmazás a következők bemutatására szolgál:
 
 > [!div class="checklist"]
-> * Végezze el a Bing entitás keresési API-hívás JavaScript
-> * Hajtsa végre a Bing Maps `locationQuery` a JavaScript API-hívás
-> * Keresési beállítások átadása az API-hívások
+> * Bing Entity Search API-hívás indítása a JavaScriptben
+> * Bing Térképek `locationQuery` API-hívás indítása a JavaScriptben
+> * Keresési beállítások továbbítása az API-hívásoknak
 > * Keresési eredmények megjelenítése
-> * A Bing ügyfél azonosítója és API előfizetés kulcsok kezelése
-> * Bármilyen felmerülő hibák kezelése
+> * A Bing-ügyfélazonosító és az API előfizetői kulcsok kezelése
+> * Az esetlegesen előforduló problémák kezelése
 
-Az oktatóprogram lap nincs teljes mértékben; bármely külső keretrendszerek, stíluslapok vagy képfájlok még nem használ. Csak széles körben támogatott JavaScript nyelvi funkciókat használ, és minden nagyobb webböngésző az aktuális verzióival működik.
+Az oktatóanyag oldala teljesen önálló; nem használ semmilyen külső keretrendszert, stíluslapot vagy képfájlt. Egyedül széles körben támogatott JavaScript nyelvi funkciókat használ, és az összes nagyobb webböngésző aktuális verziójával kompatibilis.
 
-Ebben az oktatóanyagban arról lesz szó a forráskód csak a kijelölt részei. A teljes forráskód nem érhető el [külön oldalon](tutorial-bing-entities-search-single-page-app-source.md). Másolja és illessze be a kódot egy szövegszerkesztőbe, és mentse a fájt `bing.html`.
+Ebben az oktatóanyagban a forráskódnak csak egyes részeit fogjuk megtárgyalni. A teljes forráskód elérhető [egy külön oldalon](tutorial-bing-entities-search-single-page-app-source.md). Másolja a forráskódot egy szövegszerkesztőbe, és mentse `bing.html` néven.
 
 > [!NOTE]
-> Oktatóprogram alapvetően hasonlít, a a [egyoldalas Bing webes keresés app oktatóanyag](../Bing-Web-Search/tutorial-bing-web-search-single-page-app.md), de csak az entitás keresési eredmények foglalkozik.
+> Ez az oktatóanyag nagyrészt hasonlít az [egyoldalas Bing Web Search alkalmazás oktatóanyagához](../Bing-Web-Search/tutorial-bing-web-search-single-page-app.md), de csak az entitásokra vonatkozó keresési eredményekkel foglalkozik.
 
-## <a name="app-components"></a>Alkalmazások összetevői
+## <a name="app-components"></a>Alkalmazás-összetevők
 
-Bármely egyoldalas webalkalmazást, mint az oktatóanyag alkalmazás három rész tartalmazza:
+Mint minden egyoldalas webalkalmazás, ez az oktatóalkalmazás is három részből áll:
 
 > [!div class="checklist"]
-> * HTML - struktúra és a lap tartalma határozza meg
-> * CSS - határozza meg az oldal megjelenítési módja
-> * JavaScript - meghatározza az oldal viselkedését
+> * HTML – Meghatározza az oldal szerkezetét és tartalmát
+> * CSS – Meghatározza az oldal megjelenését
+> * JavaScript – Meghatározza az oldal viselkedését
 
-Ez az oktatóanyag nem fedi le a HTML- vagy CSS többségét, részletesen, mivel ezek egyszerű.
+Ez az oktatóanyag nem fedi le részletesen a HTML és CSS többségét, mivel ezek egyértelműek.
 
-A HTML-KÓDBAN a keresés, amelyben a felhasználó beírja egy lekérdezést, majd keresési beállítások tartalmazza. Az űrlap csatlakozik-e a JavaScript, amely végrehajtja a Keresés a `<form>` címke `onsubmit` attribútum:
+A HTML tartalmazza a keresési űrlapot, amelyen a felhasználó megad egy lekérdezést, és kiválasztja a keresési beállításokat. Az űrlap a JavaScripthez van csatlakoztatva, amely tulajdonképpen végrehajtja a keresést a `<form>` címke `onsubmit` attribútumával:
 
 ```html
 <form name="bing" onsubmit="return newBingEntitySearch(this)">
 ```
 
-A `onsubmit` kezelő azt `false`, amely az űrlap tartja a kiszolgáló nem továbbíthatók. A JavaScript-kód ténylegesen végzi a munka a szükséges információk begyűjtése az űrlap és a keresés végrehajtása.
+Az `onsubmit` kezelő `false` értéket ad vissza, ami megakadályozza az űrlap elküldését a kiszolgálóra. A JavaScript-kód tulajdonképpen begyűjti a szükséges adatokat az űrlapból, és végrehajtja a keresést.
 
-A keresés két fázisban történik. Először Ha a felhasználó megadott helyre korlátozás, a Bing Maps lekérdezés történik koordináták alakítja. Ehhez a lekérdezéshez a visszahívás majd másolattól a Bing entitás keresési lekérdezés.
+A keresés két fázisban történik. Először, ha a felhasználó megadott egy helymegkötést, a rendszer egy Bing Térképek-lekérdezéssel koordinátákká alakítja át. A lekérdezésre érkező visszahívás ezután elindítja a Bing Entity Search-lekérdezést.
 
-A HTML is tartalmaz, a részlegek (HTML `<div>` címkék) hol jelenjenek meg a keresési eredmények között.
+A HTML azokat a részlegeket (HTML `<div>` címkéket) is tartalmazza, amelyekben a keresési eredmények megjelennek.
 
-## <a name="managing-subscription-keys"></a>Előfizetés kulcsok kezelése
+## <a name="managing-subscription-keys"></a>Előfizetői kulcsok kezelése
 
 > [!NOTE]
-> Az alkalmazás használatához előfizetés kulcsok a Bing keresési API-t és a Bing térképek API-t. Használhatja a [Próbakulcs Bing keresési](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) és egy [alapvető a Bing Maps kulcs](https://www.microsoft.com/maps/create-a-bing-maps-key).
+> Az alkalmazáshoz a Bing Search API és a Bing Térképek API előfizetési kulcsaira is szükség van. Használhatja a [Bing Search próbaverziós kulcsát](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) és a [Bing Térképek alapszintű kulcsát](https://www.microsoft.com/maps/create-a-bing-maps-key) is.
 
-Ne kelljen felvenni a Bing keresési és a Bing térképek API előfizetés kulcsok a kódot, hogy használjuk a böngésző állandó tároló tárolja őket. Vagy a kulcs nem tárolt, ha azt az kérni, és későbbi használatra tárolja. Ha a kulcs később elutasította az API-t, azt érvénytelenné válnak a tárolt kulcs, a felhasználónak kapcsolatba azt követően a következő keresési.
+Annak érdekében, hogy a Bing Search és a Bing Térképek API előfizetői kulcsait ki lehessen hagyni a kódból, a böngésző állandó tárolójában tároljuk a kulcsokat. Ha a rendszer nem tárolta valamelyik kulcsot, akkor rákérdezünk, és tároljuk későbbi használatra. Ha az API később elutasítja a kulcsot, akkor érvénytelenítjük a tárolt kulcsot, ezért a következő keresésnél újra rá kell kérdeznünk a felhasználónál.
 
-Meghatároztuk `storeValue` és `retrieveValue` függvények, amelyek használja a `localStorage` objektum (Ha a böngésző támogatja azt), vagy egy cookie-t. A `getSubscriptionKey()` függvény használja ezeket a funkciókat tárolásához és lekéréséhez a felhasználói kulcsot.
+Meghatározzuk a `storeValue` és `retrieveValue` függvényeket, amelyek vagy a `localStorage` objektumot használják (ha a böngésző támogatja), vagy egy cookie-t. A `getSubscriptionKey()` függvény a felhasználó kulcsának tárolására és lekérésére használja ezeket a függvényeket.
 
 ```javascript
 // cookie names for data we store
@@ -119,7 +120,7 @@ function getSearchSubscriptionKey() {
 }
 ```
 
-A HTML `<body>` címke tartalmaz egy `onload` attribútum, amely behívja `getSearchSubscriptionKey()` és `getMapsSubscriptionKey()` Ha a lap betöltődik. Az adott hívások osztja ki az azonnal kérni a felhasználót, a kulcsok, ha azok nem még adott őket.
+A `<body>` HTML-címke tartalmaz egy `onload` attribútumot, amely a lap betöltődése után meghívja a `getSearchSubscriptionKey()` és `getMapsSubscriptionKey()` függvényeket. Ezek a hívások azt a célt szolgálják, hogy ha a felhasználó még nem adta meg a kulcsait, akkor a hívások azonnal kérik őket.
 
 ```html
 <body onload="document.forms.bing.query.focus(); getSearchSubscriptionKey(); getMapsSubscriptionKey();">
@@ -127,22 +128,22 @@ A HTML `<body>` címke tartalmaz egy `onload` attribútum, amely behívja `getSe
 
 ## <a name="selecting-search-options"></a>Keresési beállítások kiválasztása
 
-![[A Bing entitás keresési űrlap]](media/entity-search-spa-form.png)
+![[Bing Entity Search-űrlap]](media/entity-search-spa-form.png)
 
-A HTML-űrlaphoz, az alábbi funkciókat tartalmazza:
+A HTML-űrlap a következő vezérlőket tartalmazza:
 
 | | |
 |-|-|
-|`where`|A legördülő menüből a kereséshez használt piaci (a hely és a nyelvi) kiválasztásához.|
-|`query`|A szövegmezőbe írja be a keresőkifejezést használandó.|
-|`safe`|A jelölőnégyzet, amely azt jelzi, hogy biztonságos keresés be van kapcsolva ("felnőtt" keresési eredmények korlátozása)|
-|`what`|Keresse meg az entitások vagy helyek a menü.|
-|`mapquery`|A szövegmező, amelyben a felhasználó megadhat egy teljes vagy részleges cím, egy jellegzetes, a Bing entitás visszatérési több megfelelő találatok segítségével stb.|
+|`where`|Legördülő menü a kereséshez használt piac (hely és nyelv) kiválasztásához.|
+|`query`|Szövegmező a keresőkifejezések megadásához.|
+|`safe`|Jelölőnégyzet, amely jelzi, hogy a SafeSearch be van-e kapcsolva (korlátozza a „felnőtteknek szánt” tartalmakat)|
+|`what`|Menü, amelyből kiválaszthatja, hogy entitásokat, helyeket vagy mindkettőt szeretne keresni.|
+|`mapquery`|Szöveges mező, amelyben a felhasználó megadhat egy részleges vagy teljes címet, egy látnivalót stb., hogy ennek segítségével a Bing Entity Search relevánsabb eredményeket jeleníthessen meg.|
 
 > [!NOTE]
-> Helyek eredményei jelenleg csak az Egyesült Államokban érhető el. A `where` és `what` menün kellene végiglépkednie tartozik: Ez a korlátozás érvényesítését. Választhat egy nem amerikai piaci Forráshelyek kiválasztása a a `what` menü `what` semmit változik. Ha egy nem amerikai piaci kiválasztása a helyek választja a `where` menü `where` vált, az USA.
+> A helyekre vonatkozó eredmények jelenleg csak az Egyesült Államokban érhetők el. A `where` és `what` menük kódja tartalmazza a korlátozás kényszerítését. Ha egy nem egyesült államokbeli piacon a `what` menüben ki van a Helyek beállítás van kiválasztva, a `what` Bármi értékre változik. Ha a Helyek lehetőséget választja, miközben egy nem Egyesült Államokbeli piac van kiválasztva a `where` menüben, a `where` Egyesült Államok értékre változik.
 
-A JavaScript függvény `bingSearchOptions()` alakítja ezeket a mezőket egy részleges lekérdezési karakterlánc a Bing keresési API-hoz.
+A `bingSearchOptions()` JavaScript-függvény részleges lekérdezési sztringgé alakítja ezeket a mezőket a Bing Search API számára.
 
 ```javascript
 // build query options from the HTML form
@@ -156,17 +157,17 @@ function bingSearchOptions(form) {
 }
 ```
 
-Például lehet a biztonságos Keresés funkciót `strict`, `moderate`, vagy `off`, a `moderate` az alapértelmezett alatt. De az űrlap használ a jelölőnégyzet, amelynek csak kétállapotú. A JavaScript-kód alakítja át, ezt a beállítást az egyik `strict` vagy `off` (nem vesszük `moderate`).
+A SafeSearch funkció értéke például `strict`, `moderate` vagy `off` lehet. Ezek közül a `moderate` az alapértelmezett. A mi űrlapunk viszont egy jelölőnégyzetet használ, amelynek csak két állapota van. A JavaScript-kód ezt a beállítást `strict` vagy `off` értékké alakítja (a `moderate` nem használatos).
 
-A `mapquery` mező a nem kezelt `bingSearchOptions()` mert nem a Bing entitás keresés a Bing Maps hely lekérdezés használja.
+A `bingSearchOptions()` nem kezeli a `mapquery` mezőt, mert a rendszer ezt a Bing Térképek helylekérdezésekben használja, nem a Bing Entity Searchnél.
 
-## <a name="obtaining-a-location"></a>Egy hely beszerzése
+## <a name="obtaining-a-location"></a>Hely koordinátáinak beszerzése
 
-A Bing térképek API kínál a [ `locationQuery` metódus](//msdn.microsoft.com/library/ff701711.aspx), amelyek használatával a szélességi található, és a földrajzi hosszúság értéke annak a helynek a felhasználó megadja. E koordináták majd továbbítódnak a Bing entitás keresési API-t a felhasználó kérésére. A keresési eredmények rangsorolhatja entitásokat és a helyek, amely megközelíti a megadott helyen.
+A Bing Térképek API-nak van egy [`locationQuery` metódusa](//msdn.microsoft.com/library/ff701711.aspx), amellyel meg tudjuk határozni a felhasználó által megadott hely szélességi és hosszúsági koordinátáit. Ezeket a koordinátákat ezután a Bing Entity Search API-nak továbbítjuk a felhasználó kérésével együtt. A keresési eredmények a fontossági sorrendben előbbre helyezik azokat a helyeket, amelyek a megadott helyhez közel találhatók.
 
-Nem lehet hozzáférni a Bing térképek API használatával egy beállítás `XMLHttpRequest` lekérdezni a webalkalmazásban, mert a szolgáltatás nem támogatja az eltérő eredetű lekérdezések. Szerencsére támogatja a JSONP (a "P" kell "hosszúságra"). A rendszer a JSONP választ, egy szokásos JSON-válasz függvényhívás burkolva. A kérelem által beszúrása egy `<script>` címke a dokumentumhoz. (A parancsfájlok betöltése nincs böngésző biztonsági házirend.)
+A Bing Térképek API nem érhető el egy átlagos `XMLHttpRequest` lekérdezéssel egy webalkalmazásban, mert a szolgáltatás nem támogatja az eltérő eredetű lekérdezéseket. Szerencsére viszont támogatja a JSONP-t (a „P” a „padded”, azaz kitöltött szót jelöli). A JSONP-válasz egy függvényhívásba ágyazott, átlagos JSON-válasz. A kérelem létrehozásához a rendszer egy `<script>` címkét szúr be a dokumentumba. (A szkriptek betöltését nem befolyásolják a böngésző biztonsági szabályzatai.)
 
-A `bingMapsLocate()` függvény hoz létre, és szúrja be a `<script>` címke a lekérdezéshez. A `jsonp=bingMapsCallback` szegmens a lekérdezési karakterláncot a függvény hívása a válasz nevét adja meg.
+A `bingMapsLocate()` függvény a lekérdezéshez létrehozza és beilleszti a `<script>` címkét. A lekérdezési sztring `jsonp=bingMapsCallback` szegmense megadja a válasszal meghívandó függvény nevét.
 
 ```javascript
 function bingMapsLocate(where) {
@@ -197,9 +198,9 @@ function bingMapsLocate(where) {
 ```
 
 > [!NOTE]
-> Ha a Bing térképek API nem válaszol, a `bingMapsCallBack()` függvény soha nem hívja. Általában ez azt jelenti, hogy `bingEntitySearch()` nem nevezik, és az entitás keresési eredmények nem jelennek meg. Ebben az esetben elkerülése érdekében `bingMapsLocate()` is beállít egy időzítőt, amely hívja `bingEntitySearch()` öt másodperc múlva. Az entitás keresés végrehajtása kétszer elkerülése érdekében a visszahívási függvény nincs logikát.
+> Ha a Bing Maps API nem válaszol, a rendszer soha nem hívja meg a `bingMapsCallBack()` függvényt. Ez normál esetben azt jelentené, hogy a rendszer nem hívja meg a `bingEntitySearch()` függvényt, és az entitáskeresés eredményei nem jelennek meg. A helyzet elkerülése érdekében a `bingMapsLocate()` egy időzítőt is beállít, amely öt másodperc után meghívja a `bingEntitySearch()` függvényt. A visszahívási függvényben van egy logika, amely nem engedi, hogy az entitáskeresés kétszer fusson le.
 
-Ha a lekérdezés befejeződött, a `bingMapsCallback()` függvény hívása esetén, mert a kért.
+A lekérdezés befejezése után a rendszer a kérés szerint meghívja a `bingMapsCallback()` függvényt.
 
 ```javascript
 function bingMapsCallback(response) {
@@ -246,15 +247,15 @@ function bingMapsCallback(response) {
 }
 ```
 
-Szélességi és hosszúsági, valamint a Bing entitás keresési lekérdezés igényli egy *radius* azt jelzi, hogy a Tartózkodásihely-adatok pontosságát. A radius használatával kiszámításához azt a *határolókeret* a Bing Maps válaszban megadott. A határolókeret téglalap, amely körbeveszi a teljes helyre. Ha a felhasználó megadja például `NYC`, az eredmény New York Város és egy határolókeret, amely magában foglalja a város nagyjából központi koordinátáit tartalmazza. 
+A szélességi és hosszúsági koordináták mellett a Bing Entity Search-lekérdezésnek szüksége van egy *sugárra* is, amely a helyinformáció pontosságát jelzi. A sugarat a Bing Térképek válaszában megadott *határolókeret* alapján számítja ki a rendszer. A határolókeret egy téglalap, amely az egész helyet körülöleli. Ha egy felhasználó például megadja a `NYC` helyet, a válaszban benne lesznek nagyjából New York közepének koordinátái, valamint a várost körülölelő határolókeret. 
 
-Azt először ki kell számítani az egyes funkcióval határolókeret négy pontjának elsődleges koordinátáit távolságra `haversineDistance()` (nincs ábrázolva). A radius a legnagyobb ezek négy távolság használják azt. A minimális radius kilométer. Ezt az értéket is használja a alapértelmezés szerint, ha nincs határolókeret áll rendelkezésre a válaszban.
+Először kiszámítjuk az elsődleges koordináták távolságát a határolókeret egyes sarkaitól való távolságot a `haversineDistance()` függvény használatával (itt nem látható). Ezek közül a távolságok közül a legnagyobbat használjuk sugárként. A legkisebb sugár egy kilométer lehet. A rendszer ugyanezt az értéket használja, ha a válaszban nincs meghatározva határolókeret.
 
-A koordináták és a RADIUS-nyertek, majd nevezzük `bingEntitySearch()` a tényleges keresés végrehajtásához.
+A koordináták és a sugár ismeretében ezután meghívjuk a `bingEntitySearch()` függvényt, amely elvégzi a tulajdonképpeni keresést.
 
-## <a name="performing-the-search"></a>A keresés végrehajtása
+## <a name="performing-the-search"></a>Keresés végrehajtása
 
-A lekérdezés, illetve egy helyet, beállítások karakterláncra és az API-kulcsot adott a `BingEntitySearch()` függvény a Bing entitás keresési kérést.
+A lekérdezés, a hely, egy beállítási sztring és az API-kulcs ismeretében a `BingEntitySearch()` függvény végrehajtja a Bing Entity Search-kérést.
 
 ```javascript
 // perform a search given query, location, options string, and API keys
@@ -307,7 +308,7 @@ function bingEntitySearch(query, latlong, options, key) {
 }
 ```
 
-A HTTP-kérés sikeres befejezését követően a JavaScript-hívásokat az `load` eseménykezelő, a `handleBingResponse()` függvény kezelni egy sikeres HTTP GET kérést az API-t. 
+A HTTP-kérés sikeres befejezése esetén a JavaScript meghívja a `load` eseménykezelőnket, a `handleBingResponse()` függvényt, hogy kezeljen egy, az API-hoz intézett sikeres HTTP GET kérést. 
 
 ```javascript
 // handle Bing search request results
@@ -375,43 +376,43 @@ function handleBingResponse() {
 ```
 
 > [!IMPORTANT]
-> A sikeres HTTP-kérelmek does *nem* feltétlenül jelenti azt, hogy a keresési szolgáltatás sikeresen befejeződött. Ha hiba lép fel a keresési művelet, entitás a Bing keresési API nem 200-as HTTP - állapotkódot adja vissza, és tartalmazza a hiba adatait a JSON-NÁ válaszul. Emellett a kérelmező sebessége korlátozott, ha a az API-t egy üres választ ad vissza.
+> Egy sikeres HTTP-kérés *nem* feltétlenül jelenti azt, hogy maga a keresés is sikeres volt. Ha a keresési műveletben hiba merül fel, a Bing Entity Search API visszaad egy nem 200-as értékű HTTP-állapotkódot, és belefoglalja a hibára vonatkozó információkat a JSON-válaszba. Továbbá, ha a kérés sebessége korlátozva volt, az API egy üres választ ad vissza.
 
-Nagy részét a kódot is az előző funkciók hibakezelés van kijelölve. Hibák fordulhatnak elő a következő szakaszokban:
+Az előző két függvény kódjainak nagy része a hibakezelésért felel. A következő fázisoknál léphetnek fel hibák:
 
-|Fázis|A lehetséges hibák|Kezeli|
+|Fázis|Lehetséges hiba vagy hibák|Kezelő|
 |-|-|-|
-|Épület JavaScript request objektumon|Érvénytelen URL|`try`/`catch` letiltása|
-|A kérést|Hálózati hiba, megszakított kapcsolatok|`error` és `abort` eseménykezelők|
-|A keresés végrehajtása|Érvénytelen kérelemben érvénytelen JSON sebességhatárok|a tesztek `load` eseménykezelő|
+|JavaScript-kérésobjektum létrehozása|Érvénytelen URL-cím|`try`/`catch` blokk|
+|Kérés végrehajtása|Hálózati hibák, megszakított kapcsolatok|`error` és `abort` eseménykezelők|
+|Keresés végrehajtása|Érvénytelen kérés, érvénytelen JSON, sebességkorlátok|tesztek a `load` eseménykezelőben|
 
-Hibák hívásával kezeli `renderErrorMessage()` a hibával kapcsolatos ismert bármely adatokkal. Ha a válasz a teljes gauntlet hiba teszten megfelelt, nevezzük `renderSearchResults()` a keresési eredmények megjelennek a lapon.
+A hibák kezelése a `renderErrorMessage()` meghívásával történik a hibával kapcsolatos ismert részletek megadásával. Ha a válasz hibatesztek teljes skáláját továbbítja, meghívjuk a `renderSearchResults()` függvényt, hogy megjelenítse a keresési eredményeket az oldalon.
 
 ## <a name="displaying-search-results"></a>Keresési eredmények megjelenítése
 
-Az entitás Bing keresési API [eredmények megjelenítése a megadott sorrendben kell](use-display-requirements.md). Az API-t válaszok két különböző típusú térhetnek vissza, mert nincs elég a legfelső szintű iterációt `Entities` vagy `Places` a JSON-NÁ válaszul gyűjtemény és az eredmények megjelenítéséhez. (Ha azt szeretné, hogy csak egy típusú eredményt, használja a `responseFilter` lekérdezésparaméter.)
+A Bing Entity Search API számára [adott sorrendben kell megjelenítenie az eredményeket](use-display-requirements.md). Mivel az API két különböző típusú választ adhat vissza, nem elég, ha végighalad a JSON-válasz legfelső szintű `Entities` elemein vagy a `Places` gyűjteményen, és megjeleníti ezeket az eredményeket. (Ha csak egy típusú eredményt szeretne megkapni, használja a `responseFilter` lekérdezési paramétert.)
 
-Ehelyett használjuk a `rankingResponse` gyűjtemény a keresési eredmények megjelenítése az eredmények rendezéséhez. Ez az objektum elemekre hivatkozik a `Entitiess` és/vagy `Places` gyűjtemények.
+Ehelyett a `rankingResponse` gyűjteményt használjuk a keresési eredményeknél a megjelenített eredmények rendezéséhez. Ez az objektum az `Entitiess` és/vagy a `Places` gyűjtemények elemeire mutat.
 
-`rankingResponse` a keresési eredmények kijelölt legfeljebb három gyűjtemények tartalmazhat `pole`, `mainline`, és `sidebar`. 
+A `rankingResponse` legfeljebb három keresési eredménygyűjteményt tartalmazhat, amelyek a következők: `pole`, `mainline` és `sidebar`. 
 
-`pole`, ha telepítve van, a legfontosabb keresési eredményt, és észrevehető üzenetnek kell megjelennie. `mainline` a keresési eredmények tömeges hivatkozik. Mainline eredmények üzenetnek kell megjelennie után azonnal `pole` (vagy első, ha `pole` nincs jelen). 
+Ha jelen van, akkor a `pole` a legrelevánsabb keresési eredmény, és jól láthatóan kell megjeleníteni. A `mainline` a keresési eredmények nagyját teszi ki. A fő eredményeket közvetlenül a `pole` után kell megjeleníteni (vagy elsőként, ha a `pole` nincs jelen). 
 
-Végül. `sidebar` kiegészítő keresési eredmények hivatkozik. Egy tényleges oldalsávon vagy egyszerűen a mainline eredmények után megjelenhet. Azt választotta az utóbbi az oktatóanyag alkalmazás.
+Végül A `sidebar` a kiegészítő keresési eredményeket jelenti. Ezeket megjelenítheti egy tényleges oldalsávon, vagy egyszerűen a fő eredmények után. Az oktatóanyag alkalmazásánál az utóbbi mellett döntöttünk.
 
-Minden eleme egy `rankingResponse` gyűjtemény két különböző, de egyenértékű, módon hivatkozik a tényleges keresési eredmény tételszámának.
+A `rankingResponse` gyűjtemények minden eleme a valós keresési eredményekre mutat két különböző, de egyenértékű módon.
 
 | | |
 |-|-|
-|`id`|A `id` URL-címet a következőképpen néz, de a hivatkozások nem használható. A `id` rangsorolási eredményt megegyezik a `id` vagy keresési eredmény található cikk egy válasz gyűjteményt *vagy* egy teljes válasz gyűjteményt (például `Entities`).
-|`answerType`<br>`resultIndex`|A `answerType` hivatkozik a legfelső szintű válasz gyűjteményt, amely tartalmazza az eredmény (például `Entities`). A `resultIndex` hivatkozik, az eredmény index adott gyűjteményen belül. Ha `resultIndex` van megadva, a rangsorolási eredménye hivatkozik a teljes gyűjteményt.
+|`id`|Az `id` úgy néz ki, mint egy URL, de nem célszerű hivatkozásokhoz használni. A rangsoroló eredmények `id` típusa megegyezik egy válaszgyűjtemény keresési eredményeinek eleméhez *vagy* egy teljes válaszgyűjteményhez (mint például `Entities`) tartozó `id` típussal.
+|`answerType`<br>`resultIndex`|Az `answerType` azt a legfelső szintű válaszgyűjteményt jelenti, amely az eredményt tartalmazza (például `Entities`). A `resultIndex` az eredmény adott gyűjteményen belüli indexét jelenti. Ha a `resultIndex` kimarad, a rangsorolási eredmény az egész gyűjteményre vonatkozik.
 
 > [!NOTE]
-> Ez a kijelző, a keresési válasz további információkért lásd: [dimenziószáma eredmények](rank-results.md).
+> További információ a keresési válasz ezen részéről: [Eredmények rangsorolása](rank-results.md).
 
-Bármelyik módszert a hivatkozott keresési eredmény elem keresése legkényelmesebben, az alkalmazás használhat. Az oktatóanyag kód használjuk a `answerType` és `resultIndex` egyes eredmények kereséséhez.
+Bármelyik módszert használhatja, amellyel alkalmazása könnyebben megtalálja a hivatkozott keresési eredményt. Az oktatóanyag kódjában mi az `answerType` és a `resultIndex` használatával keressük meg az egyes keresési eredményeket.
 
-Végül tekintse meg a függvény az idő `renderSearchResults()`. Ez a funkció elemein végiglépkedve a három `rankingResponse` gyűjteményeket, amelyek megfelelnek a három szakasz a keresési eredmények. Minden szakaszhoz nevezzük `renderResultsItems()` az adott eredmények megjelenítéséhez.
+Végezetül ideje, hogy vessünk egy pillantást a `renderSearchResults()` függvényre. Ez a függvény a keresési eredmények három szakaszát képviselő három `rankingResponse` gyűjteményen fut le. Minden szakaszban meghívjuk a `renderResultsItems()` függvényt az adott szakasz eredményeinek leképezéséhez.
 
 ```javascript
 // render the search results given the parsed JSON response
@@ -429,9 +430,9 @@ function renderSearchResults(results) {
 }
 ```
 
-## <a name="rendering-result-items"></a>Eredmény elemek megjelenítése
+## <a name="rendering-result-items"></a>Eredményelemek renderelése
 
-A JavaScript code egy objektum `searchItemRenderers`, tartalmazó *jelentéselemeket:* függvény alapján, amelyek HTML minden milyen keresési eredmények.
+A JavaScript-kódban a `searchItemRenderers` objektum *leképezőket* is tartalmazhat, olyan függvényeket, amelyek minden típusú keresési eredményhez HTML-kódot hoznak létre.
 
 ```javascript
 searchItemRenderers = { 
@@ -440,17 +441,17 @@ searchItemRenderers = {
 }
 ```
 
-A megjelenítő függvény előfordulhat, hogy fogadja el a következő paraméterekkel:
+A leképező függvények a következő paramétereket fogadhatják el:
 
 | | |
 |-|-|
-|`item`|A JavaScript objektumra, amely a elem tulajdonságai, például az URL-CÍMÉT és leírását.|
-|`index`|Az index, az eredmény elem a gyűjteményben.|
-|`count`|A keresési eredmény cikk gyűjtemény elemeinek száma.|
+|`item`|A JavaScript-objektum, amely az elem tulajdonságait tartalmazza, például az URL-címét és a leírását.|
+|`index`|Az eredményelem indexe a saját gyűjteményén belül.|
+|`count`|Az eredményelem gyűjteményében található elemek száma.|
 
-A `index` és `count` paraméterek képes használni a el a szám, speciális HTML-KÓDBAN a elején vagy végén egy gyűjteményhez, a sortörések beszúrása elemek, bizonyos számú után, és így tovább. Ha egy leképező nem kell ezt a funkciót, azt nem kell a két paraméterek elfogadásához. Tulajdonképpen azt nem használhatók a megjelenítő az oktatóanyag alkalmazásnak.
+Az `index` és `count` paraméterek használhatók a találatok megszámozására, egy gyűjtemény elején vagy végén egy speciális HTML létrehozására, egy bizonyos számú elem utáni sortörés beszúrására és így tovább. Ha egy leképezőnek nincs szüksége erre a funkcióra, akkor nem kell elfogadnia ezt a két paramétert. Ami azt illeti, az oktatóanyag alkalmazásában nem is használjuk őket a leképezőknél.
 
-A következőkben részletes bemutatása a `entities` leképező:
+Nézzük meg közelebbről a `entities` leképezőt:
 
 ```javascript
     entities: function(item) {
@@ -501,51 +502,51 @@ A következőkben részletes bemutatása a `entities` leképező:
     }, // places renderer omitted
 ```
 
-Az entitás megjelenítő funkciót:
+Az entitásleképező függvény:
 
 > [!div class="checklist"]
-> * A HTML buildek `<img>` megjelenítéséhez a kép miniatűrjét, ha van ilyen címke. 
-> * A HTML buildek `<a>` a képet tartalmazó lapra mutató kódelem.
-> * A leírást, információkat jelenít meg a lemezkép és a helyet, mert nem hoz létre.
-> * Magában foglalja az entitás besorolás a megjelenítési mutatók használatával, ha van ilyen.
-> * Az entitás kapcsolatban további információkat a Bing keresési mutató hivatkozást tartalmaz.
-> * Bármely adatforrások által igényelt licencelési vagy attribútumára információit jeleníti meg.
+> * Létrehozza az `<img>` HTML-címkét a képminiatűr megjelenítéséhez, ha van. 
+> * Létrehozza az `<a>` HTML-címkét, amely a képet tartalmazó oldalra hivatkozik.
+> * Létrehozza a leírást, amely információkat jelenít meg a képről és a képet tartalmazó oldalról.
+> * Magában foglalja az entitás besorolását a megjelenített tippekkel, ha vannak.
+> * Tartalmaz egy Bing-keresésre mutató hivatkozást, ahol további információt talál az entitásról.
+> * Megjeleníti az adatforrások számára szükséges összes licencelési vagy forráskövetési információt.
 
-## <a name="persisting-client-id"></a>Persisting ügyfél-azonosító
+## <a name="persisting-client-id"></a>Ügyfél-azonosító megőrzése
 
-A Bing keresési API-k válaszainak tartalmazhat egy `X-MSEdge-ClientID` fejlécet tartalmazta, amely vissza az API-t egymást követő kéréseket kell küldeni. Ha több Bing keresési API-k vannak használatban, az azonos ügyfél-Azonosítót kell használható azokat, ha lehetséges.
+A Bing Search API-k válaszai tartalmazhatnak egy `X-MSEdge-ClientID` fejlécet, amelyet egymást követő kérésekkel vissza kell küldeni az API-nak. Ha több Bing Search API-t is használ, mindegyikhez ugyanazt az ügyfél-azonosítót használja, ha lehetséges.
 
-Így a `X-MSEdge-ClientID` fejléc lehetővé teszi, hogy a Bing API-k az összes felhasználó keresések, amely két fontos előnnyel jár.
+Az `X-MSEdge-ClientID` fejléc megadása lehetővé teszi, hogy a Bing API-k egymáshoz társítsák a felhasználó összes keresését, amelynek két fontos előnye van.
 
-Először lehetővé teszi a Bing keresőmotor keresések található eredmények, amelyek jobban megfeleljenek a felhasználói környezet túli alkalmazása. Ha a felhasználó korábban már rendelkezik keresett kihajózás kapcsolatos feltételeket, például "tárolók" későbbi keresése előfordulhat, hogy lehetőleg vonatkozó adatokat ad vissza egy VitorlásHajó rögzítéséhez helyek.
+Egyrészt lehetővé teszi, hogy a Bing keresőmotorja korábbi kontextusokat is alkalmazzon a keresésekhez olyan találatok megjelenítése érdekében, amelyek jobban megfelelnek a felhasználó igényeinek. Ha például a felhasználó korábban vitorlázáshoz kapcsolódó kifejezésekre keresett rá, egy későbbi keresés a „dokkok” kifejezésre nagy valószínűséggel a vitorlások kikötésére alkalmas dokkokkal kapcsolatos információkat fog eredményezni.
 
-Második a Bing véletlenszerűen jelölje ki felhasználók számára, hogy mielőtt széles körben elérhető új szolgáltatások. Így az azonos ügyfél-Azonosítót minden egyes kérelemmel biztosítja, hogy a felhasználók, tekintse meg a szolgáltatás mindig választotta látja. Az ügyfél-azonosító nélkül a felhasználó jelenhet meg a szolgáltatás megjelennek és eltűnnek, látszólag véletlenszerű, a keresési eredmények között.
+Másrészt a Bing véletlenszerűen kiválaszthat felhasználókat, hogy új funkciókat próbálhassanak ki, mielőtt azok széles körben elérhetővé válnának. Ha minden kéréshez ugyanazt az ügyfél-azonosítót adja meg, akkor azok a felhasználók, akiket kijelölt a funkció megtekintésére, mindig látni fogják. Az ügyfél-azonosító nélkül a felhasználó azt tapasztalhatja, hogy egy funkció látszólag véletlenszerűen hol megjelenik, hol eltűnik a keresési eredményeknél.
 
-Böngésző biztonsági házirendek (CORS) előfordulhat, hogy a `X-MSEdge-ClientID` rendelkezésre állása, a JavaScript fejléc. Ez a korlátozás következik be, amikor a keresési válasz van egy eltérő eredetű az oldalról, amely azt kéri. Éles környezetben eleget kell tennie ezt a házirendet, amelyet a weblap megegyező tartományban lévő API-hívás kiszolgálóoldali parancsfájl üzemeltetnie. Mivel a parancsfájlt a weblapként azonos forrásból a `X-MSEdge-ClientID` fejléc JavaScript számára elérhető lesz.
+A böngészők biztonsági szabályzatai (CORS) megakadályozhatják, hogy a JavaScript hozzáférjen az `X-MSEdge-ClientID` fejléchez. Ez a korlátozás akkor léphet életbe, ha a keresési válasz eredete különbözik az azt lekérő oldalétól. Éles környezetben egy olyan kiszolgálóoldali szkript futtatásával oldhatja fel a szabályzat okozta korlátozást, amely a weboldaléval megegyező tartományból hívja meg az API-t. Mivel a szkript eredete megegyezik a weboldaléval, az `X-MSEdge-ClientID` fejléc elérhető lesz a JavaScript számára.
 
 > [!NOTE]
-> Webes alkalmazás éles végre kell hajtania a kérelem kiszolgálóoldali ennek ellenére is. Ellenkező esetben a Bing keresési API-kulcsot kell szerepelnie a weblap, amelyen érhető el számára, akik megtekinti az adatforrás. Az API előfizetés kulcs, még akkor is, kérelmeire jogosulatlan felek, ezért fontos, hogy a kulcs alatt minden használatának számlázása.
+> Éles webalkalmazásban egyébként is a kiszolgálói oldalról hajtsa végre a kérést. Ellenkező esetben a weboldalnak tartalmaznia kell a Bing Search API-kulcsot, ahol a forrást megtekintők is hozzáférhetnek. Az API előfizetési kulcsával történő összes használatért Ön fizet, még az illetéktelen felek által létrehozott kérésekért is, ezért fontos, hogy a kulcsot ne tegye elérhetővé.
 
-Fejlesztési célokra szolgál hogy a Bing webes keresési API-kérelem a CORS-proxyn keresztül. Ilyen proxy válaszát rendelkezik egy `Access-Control-Expose-Headers` fejléc adott whitelists válaszfejlécek és elérhetővé válnak a JavaScript nyelvvel.
+Fejlesztési célokból a Bing Web Search API-kérést egy CORS-proxyn keresztül is végrehajthatja. Egy ilyen proxyk válasza rendelkezik egy `Access-Control-Expose-Headers` fejléccel, amely engedélyezési listára teszi a válaszfejléceket, és elérhetővé teszi őket a JavaScript számára.
 
-Akkor is könnyen lehetővé teszi az oktatóanyag alkalmazásnak, az ügyfél eléréséhez Tevékenységazonosító fejlécet a CORS-proxyt telepíteni szeretné. Ha még nem rendelkezik, először [telepítse a Node.js-](https://nodejs.org/en/download/). Majd adja ki a következő parancsot a parancssorba:
+CORS-proxyt könnyedén telepíthet annak érdekében, hogy oktatóalkalmazásunk hozzáférhessen az ügyfél-azonosító fejlécéhez. Első lépésként [telepítse a Node.js-t](https://nodejs.org/en/download/), ha még nem tette meg. Ezután hajtsa végre egy parancsablakban a következő parancsot:
 
     npm install -g cors-proxy-server
 
-Ezután módosítsa a Bing keresést a következőben szereplő végpontnál: a HTML-fájlt:
+Következő lépésként írja át a Bing Web Search-végpontot a HTML-fájlban a következőre:
 
     http://localhost:9090/https://api.cognitive.microsoft.com/bing/v7.0/search
 
-Végezetül indítsa el a CORS-proxy a következő paranccsal:
+Végül indítsa el a CORS-proxyt a következő paranccsal:
 
     cors-proxy-server
 
-A parancssori ablakban nyitva hagyja az oktatóanyag alkalmazás; használatakor az ablak bezárása leállítja a proxy. A bővíthető HTTP-fejlécek című szakaszt a keresési eredmények között, a most már megtekintheti a `X-MSEdge-ClientID` fejléc (többek között), és győződjön meg arról, hogy minden kérelem esetén.
+Ne zárja be a parancsablakot, amíg használja az oktatóalkalmazást; az ablak bezárása leállítja a proxyt. A bővíthető HTTP-fejlécek szakaszában, a keresési eredmények alatt, most már az `X-MSEdge-ClientID` fejléc is megjelenik, és ellenőrizheti, hogy ugyanaz a fejléc szerepel-e minden kérésnél.
 
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Bing entitás keresési API-referencia](//docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference)
+> [Bing Entity Search API-referencia](//docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference)
 
 > [!div class="nextstepaction"]
-> [A Bing térképek API-JÁNAK dokumentációja](//msdn.microsoft.com/library/dd877180.aspx)
+> [Bing Maps API-dokumentáció](//msdn.microsoft.com/library/dd877180.aspx)

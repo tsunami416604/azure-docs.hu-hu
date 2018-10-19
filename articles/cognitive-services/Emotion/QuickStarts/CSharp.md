@@ -1,41 +1,43 @@
 ---
-title: Érzelemfelismerési API C# – első lépések |} Microsoft Docs
-description: Információ és a segítségével gyorsan megismerkedhet a C# kognitív szolgáltatásban a Érzelemfelismerési API használatával kódminta kapják meg.
+title: 'Rövid útmutató: Érzelemfelismerés képeken szereplő arcokon – Emotion API, C#'
+titlesuffix: Azure Cognitive Services
+description: Információk és egy kódminta segítségével ismerkedhet meg az Emotion API C#-pal való használatának első lépéseivel.
 services: cognitive-services
 author: anrothMSFT
-manager: corncar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: emotion-api
-ms.topic: article
+ms.topic: quickstart
 ms.date: 11/02/2017
 ms.author: anroth
-ms.openlocfilehash: 89735ae54395447e3cb421f45db3d6b99001ecd6
-ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
-ms.translationtype: MT
+ROBOTS: NOINDEX
+ms.openlocfilehash: 530d05887e585884b184635e01031c1332fad3fb
+ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37016565"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48239370"
 ---
-# <a name="emotion-api-c-quick-start"></a>Érzelemfelismerési API C# – első lépések
+# <a name="quickstart-build-an-app-to-recognize-emotions-on-faces-in-an-image"></a>Rövid útmutató: Alkalmazás létrehozása a képeken szereplő arcokon tükröződő érzelmek felismeréséhez.
 
 > [!IMPORTANT]
-> A Video API előzetese 2017. október 30-án véget ért. Elemzések könnyen kibontani videók, kipróbálhatja az új [videó indexelő API előnézete](https://azure.microsoft.com/services/cognitive-services/video-indexer/). Is használhatja szóbeli szavakat, a lapok, a karakterek és a érzelmek észlelésével javítása érdekében a tartalom felderítési lép, például a keresési eredmények között. További tudnivalókért tekintse meg a [videó indexelő előnézete](https://docs.microsoft.com/azure/cognitive-services/video-indexer/video-indexer-overview) áttekintése.
+> Az Emotion API 2019. február 15-ével elavulttá válik. Az érzelemfelismerési képesség mostantól a [Face API](https://docs.microsoft.com/azure/cognitive-services/face/) részeként általánosan elérhető.
 
-Ez a cikk ismerteti, hogy információkat és a segítségével gyorsan kódminta használatával Ismerkedés a [Érzelemfelismerési API-t ismeri fel a metódust](https://westus.dev.cognitive.microsoft.com/docs/services/5639d931ca73072154c1ce89/operations/563b31ea778daf121cc3a5fa) a C#. Használhatja a kép egy vagy több személy által kifejezett érzelmek ismeri fel. 
+Ebben a cikkben információk és egy kódminta segítségével rövid idő alatt megismerkedhet az [Emotion API Recognize metódusának](https://westus.dev.cognitive.microsoft.com/docs/services/5639d931ca73072154c1ce89/operations/563b31ea778daf121cc3a5fa) C#-pal való használatának alapjaival. Ezt a funkciót használhatja egy képen szereplő egy vagy több személy által kifejezett érzelmek felismerésére.
 
 ## <a name="prerequisites"></a>Előfeltételek
-* A kognitív szolgáltatások [Érzelemfelismerési API-ablakok SDK](https://www.nuget.org/packages/Microsoft.ProjectOxford.Emotion/).
-* Az ingyenes beolvasása [előfizetés kulcs](https://azure.microsoft.com/try/cognitive-services/).
+* Szerezze be a Cognitive Services [Emotion API Windows SDK-t](https://www.nuget.org/packages/Microsoft.ProjectOxford.Emotion/).
+* Szerezze be ingyenes [előfizetői azonosítóját](https://azure.microsoft.com/try/cognitive-services/).
 
-## <a name="emotion-recognition-c-example-request"></a>Érzelemfelismerési felismerés C# kérelem (példa)
+## <a name="emotion-recognition-c-example-request"></a>Érzelemfelismerési C#-kérésminta
 
-Új konzol megoldás létrehozása a Visual Studióban, és akkor cserélje le a program.cs fájlt a következő kóddal. Módosítsa a `string uri` a régió, ahol szerezte be az előfizetés kulcsok használatára. Cserélje le a **Ocp-Apim-előfizetés-kulcs** értéke az érvényes előfizetés-kulccsal. Keresse meg az előfizetés kulcsot, ugorjon az Azure-portálon. A navigációs ablakban a bal oldali alatt a **kulcsok** területén keresse meg az Érzelemfelismerési API-erőforrást. Ehhez hasonlóan kaphat a megfelelő csatlakozás URI-azonosító található a **áttekintése** panel az erőforráshoz tartozó **végpont**.
+Hozzon létre egy új konzolmegoldást a Visual Studióban, majd cserélje le a Program.cs fájlt az alábbi kódra. Módosítsa a `string uri` értékét úgy, hogy azt a régiót használja, ahonnan beszerezte az előfizetési azonosítókat. Cserélje le az **Ocp-Apim-Subscription-Key** értéket az érvényes előfizetői azonosítóra. Az előfizetői azonosítót megtalálhatja az Azure Portalon. A bal oldalon található navigációs ablakban, a **Kulcsok** szakaszban keresse meg az Emotion API-erőforrást. A megfelelő csatlakozási URI-t megtalálhatja a **Végpont** terület listájában szereplő erőforrás **Áttekintés** ablaktábláján.
 
-![Az erőforrás API-kulcsokat](../../media/emotion-api/keys.png)
+![Az API-erőforráskulcsok](../../media/emotion-api/keys.png)
 
-A kérelem a válasz feldolgozása, például egy szalagtár használja `Newtonsoft.Json`. Ezzel a módszerrel kezelhető objektumokban, úgynevezett jogkivonatok sorozataként képes kezelni egy JSON-karakterláncban. Az ebben a könyvtárban felvétele a csomagba, kattintson a jobb gombbal a projektben a Megoldáskezelőre, és válassza ki **Nuget-csomagok kezelése**. Majd keresse meg a **Newtonsoft**. Az első eredmény kell **Newtonsoft.Json**. Válassza az **Install** (Telepítés) lehetőséget. Ezt a szalagtárat hivatkozhat az alkalmazásban.
+A kérésre adott válasz feldolgozásához használja a `Newtonsoft.Json` vagy egy hasonló kódtárat. Ezzel a módszerrel tokeneknek nevezett, kezelhető objektumokból álló sorozatként kezelheti a JSON-sztringeket. Ha ezt a kódtárat szeretné hozzáadni a csomaghoz, kattintson a jobb gombbal a projektjére a Solution Explorerben (Megoldáskezelő), és válassza a **Manage NuGet Packages** (NuGet-csomagok kezelése) lehetőséget. Ezután keressen a **Newtonsoft** kifejezésre. Az első eredmény a **Newtonsoft.Json** lesz. Válassza az **Install** (Telepítés) lehetőséget. Most már hivatkozhat erre a kódtárra az alkalmazásban.
 
-![Telepítse a newtonsoft.JSON elemet](../../media/emotion-api/newtonsoft-nuget.png)
+![A Newtonsoft.Json telepítése](../../media/emotion-api/newtonsoft-nuget.png)
 
 ```csharp
 using System;
@@ -71,10 +73,10 @@ namespace CSHttpClientSample
             var client = new HttpClient();
 
             // Request headers - replace this example key with your valid key.
-            client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", "<your-subscription-key>"); // 
+            client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", "<your-subscription-key>"); //
 
             // NOTE: You must use the same region in your REST call as you used to obtain your subscription keys.
-            //   For example, if you obtained your subscription keys from westcentralus, replace "westus" in the 
+            //   For example, if you obtained your subscription keys from westcentralus, replace "westus" in the
             //   URI below with "westcentralus".
             string uri = "https://westus.api.cognitive.microsoft.com/emotion/v1.0/recognize?";
             HttpResponseMessage response;
@@ -120,14 +122,14 @@ namespace CSHttpClientSample
 }
 ```
 
-## <a name="recognize-emotions-sample-response"></a>Felismeri a érzelmek mintát választ
-Sikeres meghívását arcfelismerési bejegyzések tömbje és a kapcsolódó érzelemfelismerési eredményeiket adja vissza. A sorrendje által tapasztalt téglalap mérete csökkenő sorrendben. Üres választ, hogy nincs lapok észlelt. Érzelemfelismerési bejegyzés a következő mezőket tartalmazza:
+## <a name="recognize-emotions-sample-response"></a>Érzelemfelismerési válaszminta
+A sikeres hívás egy, az arcrekordokat és a hozzájuk tartozó érzelempontszámokat tartalmazó tömböt ad vissza. Az adatok az arcot jelölő téglalap mérete szerinti csökkenő sorrendben jelennek meg. Az üres válasz azt jelzi, hogy a rendszer nem észlelt arcot. Az érzelemrekord a következő mezőket foglalja magában:
 
-* faceRectangle: a kép arcfelismerési téglalap helye
-* pontszámok: Érzelemfelismerési pontszámaihoz a kép minden lap 
+* faceRectangle: Az arcot jelölő téglalap helye a képen.
+* scores: A képen szereplő egyes arcokhoz tartozó érzelempontszámok.
 
 ```json
-application/json 
+application/json
 [
   {
     "faceRectangle": {

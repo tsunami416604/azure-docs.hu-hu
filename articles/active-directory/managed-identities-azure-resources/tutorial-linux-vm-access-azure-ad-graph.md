@@ -14,18 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 08/20/2018
 ms.author: daveba
-ms.openlocfilehash: 548111a6c2b9e0cf8c5b20eee5cc8fa45fe02da8
-ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
+ms.openlocfilehash: 1d1e0d8f5a030daadb8dab1233dee52d5485c8fb
+ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47453115"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48237483"
 ---
 # <a name="tutorial-use-a-linux-vm-system-assigned-managed-identity-to-access-azure-ad-graph-api"></a>Oktatóanyag: Hozzáférés az Azure AD Graph API-hoz egy Linux VM-beli, rendszer által hozzárendelt felügyelt identitással
 
 [!INCLUDE[preview-notice](~/includes/active-directory-msi-preview-notice.md)]
 
-Ez az oktatóanyag bemutatja, hogyan férhet hozzá az Azure AD Graph API-hoz és kérheti le annak csoporttagságait egy Linux rendszerű virtuális gép (VM) rendszer által hozzárendelt felügyelt identitásával. Az Azure-erőforrások felügyelt identitásainak kezelését automatikusan az Azure végzi, és lehetővé teszi a hitelesítést az Azure AD-hitelesítést támogató szolgáltatásokban anélkül, hogy be kellene szúrnia a hitelesítő adatokat a kódba.  
+Ez az oktatóanyag bemutatja, hogyan férhet hozzá az Azure AD Graph API-hoz, és kérheti le annak csoporttagságait egy Linux rendszerű virtuális gép (VM) rendszer által hozzárendelt felügyelt identitásával. Az Azure-erőforrások felügyelt identitásainak kezelését automatikusan az Azure végzi, és lehetővé teszi a hitelesítést az Azure AD-hitelesítést támogató szolgáltatásokban anélkül, hogy be kellene szúrnia a hitelesítő adatokat a kódba.  
 
 Ebben az oktatóanyagban a virtuális gép identitásának Azure AD-csoportbeli tagságát kérdezi le. A csoportadatokra gyakran engedélyezési döntések során van szükség. A virtuális gép felügyelt identitása a háttérben **szolgáltatásnévként** jelenik meg az Azure AD-ben. 
 
@@ -61,7 +61,7 @@ az login
 
 ## <a name="add-your-vms-identity-to-a-group-in-azure-ad"></a>Virtuális gép identitásának hozzáadása egy csoporthoz az Azure AD-ben
 
-Amikor engedélyezte a rendszer által hozzárendelt felügyelt identitást a Linux rendszerű virtuális gépen, az létrehozott egy szolgáltatásnevet az Azure AD-ben.  Hozzá kell adnia a virtuális gépet egy csoporthoz. A következő cikkből megtudhatja, hogyan adhatja hozzá virtuális gépét egy csoporthoz az Azure AD-ben:
+Amikor engedélyezte a rendszer által hozzárendelt felügyelt identitást a Linux rendszerű virtuális gépen, az létrehozott egy szolgáltatásnevet az Azure AD-ben.  A virtuális gépet hozzá kell adnia egy csoporthoz. A következő cikkből megtudhatja, hogyan adhatja hozzá virtuális gépét egy csoporthoz az Azure AD-ben:
 
 - [Csoporttagok hozzáadása](/cli/azure/ad/group/member?view=azure-cli-latest#az-ad-group-member-add)
 
@@ -137,7 +137,7 @@ Azure AD Graph:
    curl "https://graph.windows.net/myorganization/servicePrincipals/<VM Object ID>/appRoleAssignments?api-version=1.6" -X POST -d '{"id":"5778995a-e1bf-45b8-affa-663a9f3f4d04","principalId":"<VM Object ID>","resourceId":"81789304-ff96-402b-ae73-07ec0db26721"}'-H "Content-Type: application/json" -H "Authorization: Bearer <ACCESS TOKEN>"
    ``` 
  
-## <a name="get-an-access-token-using-the-vms-identity-and-use-it-to-call-azure-ad-graph"></a>Hozzáférési jogkivonat beszerzése a virtuális gép identitásával, majd az Azure AD Graph meghívása annak használatával 
+## <a name="get-an-access-token-using-the-vms-identity-to-call-azure-ad-graph"></a>Hozzáférési jogkivonat beszerzése a virtuális gép identitásával az Azure AD Graph meghívásához 
 
 A lépések elvégzéséhez szüksége lesz egy SSH-ügyfélre. Windows használata esetén használhatja a [Linux Windows alrendszerében](https://msdn.microsoft.com/commandline/wsl/about) elérhető SSH-ügyfelet. Amennyiben segítségre van szüksége az SSH-ügyfél kulcsának konfigurálásához, [Az SSH-kulcsok és a Windows együttes használata az Azure-ban](../../virtual-machines/linux/ssh-from-windows.md) vagy [Nyilvános és titkos SSH-kulcspár létrehozása és használata az Azure-ban Linux rendszerű virtuális gépekhez](../../virtual-machines/linux/mac-create-ssh-keys.md) című cikkekben talál további információt.
 

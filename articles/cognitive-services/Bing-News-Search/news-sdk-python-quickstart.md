@@ -1,53 +1,53 @@
 ---
-title: Hírek keresési SDK Python gyors üzembe helyezés |} Microsoft Docs
-description: A telepítő hírek keresési SDK konzol alkalmazáshoz.
-titleSuffix: Azure News Search SDK Python quickstart
+title: 'Rövid útmutató: Bing News Search SDK, Python'
+titleSuffix: Azure Cognitive Services
+description: A Bing News Search SDK-konzolalkalmazás beállítása.
 services: cognitive-services
 author: mikedodaro
-manager: rosh
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-news-search
-ms.topic: article
+ms.topic: quickstart
 ms.date: 02/14/2018
 ms.author: v-gedod
-ms.openlocfilehash: 6d212d1477ecf583a038e33e72aab3d60f6aa050
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
-ms.translationtype: MT
+ms.openlocfilehash: 8e4343b053835c0fc2219373ad60f96c7b80636a
+ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35349466"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48803341"
 ---
-# <a name="news-search-sdk-python-quickstart"></a>Hírek keresési SDK Python gyors üzembe helyezés
+# <a name="quickstart-bing-news-search-sdk-with-python"></a>Rövid útmutató: A Bing News Search SDK és a Python használata
 
-A hírek keresési SDK a REST API webkiszolgáló lekérdezések és elemzési eredmények funkcióit tartalmazza. 
+A News Search SDK a REST API funkcióit biztosítja az internetes lekérdezésekhez és az eredmények elemzéséhez. 
 
-A [forráskód Python Bing hírek keresési SDK minták](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/blob/master/samples/search/news_search_samples.py) érhető el a Git központ.
+A [Python Bing News Search SDK-minták forráskódja](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/blob/master/samples/search/news_search_samples.py) elérhető a GitHubon.
 
 ## <a name="application-dependencies"></a>Alkalmazásfüggőségek
-Ha az még nincs, telepítse a Python. Az SDK nem kompatibilis a Python 2.7, 3.3-as, 3.4, 3.5-ös és 3.6.
+Ha még nincs telepítve a Python, telepítse. Az SDK a Python 2.7-es, 3.3-as, 3.4-es, 3.5-ös és 3.6-os verziójával kompatibilis.
 
-A Python fejlesztési általános javaslat, hogy használja a [virtuális környezet](https://docs.python.org/3/tutorial/venv.html). Telepítse, és a virtuális környezet inicializálása a [venv modul](https://pypi.python.org/pypi/virtualenv). Python 2.7 virtualenv kell telepítenie.
+A Pythonnal való fejlesztéskor általánosságban javasolt egy [virtuális környezet](https://docs.python.org/3/tutorial/venv.html) használata. Telepítse és inicializálja a virtuális környezetet az új [venv modullal](https://pypi.python.org/pypi/virtualenv). Telepítse a Python 2.7-hez készült virtualenv modult.
 ```
 python -m venv mytestenv
 ```
-Bing hírek keresési SDK-függőség telepítése:
+Telepítse a Bing News Search SDK függőségeit:
 ```
 cd mytestenv
 python -m pip install azure-cognitiveservices-search-newssearch
 ```
-## <a name="news-search-client"></a>Hírek keresési ügyfél
-Első egy [kognitív szolgáltatások hozzáférési kulcs](https://azure.microsoft.com/try/cognitive-services/) alatt *keresési*. Adja hozzá a importálásokat:
+## <a name="news-search-client"></a>News Search-ügyfél
+A [Cognitive Services hozzáférési kulcsát](https://azure.microsoft.com/try/cognitive-services/) a *Keresés* területen kérheti le. Adja hozzá az importálásokat:
 ```
 from azure.cognitiveservices.search.newssearch import NewsSearchAPI
 from msrest.authentication import CognitiveServicesCredentials
 
 subscription_key = "YOUR-SUBSCRIPTION-KEY"
 ```
-Hozzon létre egy példánya `CognitiveServicesCredentials`. Az ügyfél hozható létre:
+Hozza létre a `CognitiveServicesCredentials` egy példányát. Ezután példányosítsa az ügyfelet:
 ```
 client = NewsSearchAPI(CognitiveServicesCredentials(subscription_key))
 ```
-Keresse meg az eredményeket, és nyomtassa ki az első képernyőn látható weblapon eredmény:
+Keressen rá az eredményekre, és jelenítse meg az eredményként kapott első weblapot:
 ```
 news_result = client.news.search(query="Quantum Computing", market="en-us", count=10)
 print("Search news for query \"Quantum Computing\" with market and count")
@@ -65,7 +65,7 @@ else:
     print("Didn't see any news result data..")
 
 ```
-A szűrőket a "Mesterséges Eszközintelligencia" kapcsolatos legfrissebb híreket tartalmazó keresési `freshness` és `sortBy` paraméterek. Ellenőrizze az eredmények számát, és nyomtassa ki `totalEstimatedMatches`, `name`, `url`, `description`, `published time`, és `name of provider` az első hírek elem eredmény.
+Szűrőkkel keresse meg a legfrissebb híreket az „Artificial Intelligence” (mesterséges intelligencia) témában a `freshness` és a `sortBy` paraméterrel. Ellenőrizze a találatok számát, és jelenítse meg az első eredményül kapott hír `totalEstimatedMatches`, `name`, `url`, `description`, `published time` és `name of provider` tulajdonságát.
 ```
 def news_search_with_filtering(subscription_key):
 
@@ -95,7 +95,7 @@ def news_search_with_filtering(subscription_key):
         print("Encountered exception. {}".format(err))
 
 ```
-Keresés a kategória hírek movie és TV Szórakozás biztonságos keresés. Ellenőrizze az eredmények számát, és nyomtassa ki `category`, `name`, `url`, `description`, `published time`, és `name of provider` az első hírek elem eredmény.
+Keressen a mozis és televíziós kategóriák híreiben biztonságos kereséssel. Ellenőrizze a találatok számát, és jelenítse meg az első eredményül kapott hír `category`, `name`, `url`, `description`, `published time` és `name of provider` tulajdonságát.
 ```
 def news_category(subscription_key):
 
@@ -126,7 +126,7 @@ def news_category(subscription_key):
 
 
 ```
-Bing hírek trendekkel kapcsolatos témakörök keresni.  Ellenőrizze az eredmények számát, és nyomtassa ki `name`, `text of query`, `webSearchUrl`, `newsSearchUrl`, és `image Url` az első hírek eredmény.
+Keressen népszerű témákkal foglalkozó hírek között a Bing keresővel.  Ellenőrizze a találatok számát, és jelenítse meg az első eredményül kapott hír `name`, `text of query`, `webSearchUrl`, `newsSearchUrl`, `image Url` és tulajdonságát.
 ```
 def news_trending(subscription_key):
 
@@ -154,6 +154,6 @@ def news_trending(subscription_key):
 
 ## <a name="next-steps"></a>További lépések
 
-[Kognitív szolgáltatások Python SDK-minták](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples)
+[Cognitive Services Python SDK-minták](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples)
 
 

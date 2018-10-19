@@ -1,33 +1,33 @@
 ---
-title: Mi a Bing Entity Search? | Microsoft Docs
-description: Ismerje meg, hogyan entitásokat és a helyek keresése a weben a Bing Entity Search API használatával.
+title: Mi a Bing Entity Search?
+titlesuffix: Azure Cognitive Services
+description: Megtudhatja, hogyan kereshet entitásokat és helyeket az interneten a Bing Entity Search API-val.
 services: cognitive-services
 author: swhite-msft
-manager: ehansen
-ms.assetid: 0B54E747-61BF-42AA-8788-E25D63F625FC
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-entity-search
-ms.topic: article
+ms.topic: overview
 ms.date: 07/06/2016
 ms.author: scottwhi
-ms.openlocfilehash: 275430bc6ee8f935978243e61f68713974648189
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
-ms.translationtype: MT
+ms.openlocfilehash: 2b3adf07a8522322434a6596475fa06c0df978e8
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39008110"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48813600"
 ---
 # <a name="what-is-bing-entity-search"></a>Mi a Bing Entity Search?
 
-A Bing Entity Search API a Bing keresési lekérdezést küld, és lekéri az eredmények, amelyek tartalmazzák az entitások és a helyek. Éttermek, Szálloda vagy más helyi üzletek helyre kiterjed. A Bing helyen adja vissza, ha a lekérdezés nevét adja meg a helyi üzleti vagy üzleti (például éttermek a közelben) írja be a következőt kéri. A Bing entitásokat ad vissza, ha a lekérdezés a jól ismert személyek, helyek (idegenforgalmi létesítmények, állapotok, országban, stb.) vagy dolgot határoz meg.
+A Bing Entity Search API egy keresési lekérdezést küld a Bingnek, majd entitásokat és helyeket tartalmazó találatokat kap vissza. A helytalálatok lehetnek éttermek, szállodák vagy egyéb helyi vállalkozások. A Bing helyeket ad vissza, ha a lekérdezés a helyi vállalkozás nevét adja meg, vagy egy vállalkozástípus iránt érdeklődik (például „éttermek a közelben”). A Bing entitásokat ad vissza, ha a lekérdezés közismert személyeket, helyeket (látnivalókat, államokat, országokat stb.) vagy dolgokat ad meg.
 
 ## <a name="suggesting--using-search-terms"></a>Keresési kifejezések javaslása és használata
 
 Ha biztosít egy olyan keresőmezőt, ahol a felhasználók megadhatják a keresőkifejezést, a [Bing Autosuggest API](../bing-autosuggest/get-suggested-search-terms.md) használatával kényelmesebbé teheti a felhasználói élményt. Az API javasolt lekérdezési sztringeket ad vissza a részleges keresőkifejezések alapján, miközben a felhasználó gépel.
 
-Miután a felhasználó megadja a keresőkifejezést, kódolja URL-címként a karakterláncot a [q](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference#query) lekérdezési paraméter beállítása előtt. Például, ha a felhasználó megadja *Marcus Appel*állítsa be `q` való *Marcus + Appel* vagy *Marcus % 20Appel*.
+Miután a felhasználó megadja a keresőkifejezést, kódolja URL-címként a karakterláncot a [q](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference#query) lekérdezési paraméter beállítása előtt. Ha például a felhasználó a *Marcus Appel* kifejezésre keres, a `q` értéke legyen *Marcus+Appel* vagy *Marcus%20Appel*.
 
-Ha a keresett kifejezés egy gépelési hibát tartalmaz, a keresési válasz tartalmazza a [QueryContext](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference#querycontext) objektum. Az objektum az eredeti helyesírás- és a javított helyesírás-ellenőrzés, hogy a keresési Bing használt jeleníti meg.
+Ha a keresőkifejezésben elírás van, a keresésre adott válasz tartalmaz egy [QueryContext](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference#querycontext) objektumot. Az objektum az eredeti és a javított helyesírást is mutatja, amelyet a Bing a keresés során használt.
 
 ```json
 "queryContext": {
@@ -38,21 +38,21 @@ Ha a keresett kifejezés egy gépelési hibát tartalmaz, a keresési válasz ta
 }
 ```
 
-## <a name="requesting-entities"></a>Entitások kérése
+## <a name="requesting-entities"></a>Entitások lekérése
 
-Egy kérelem (példa), lásd: [az első kérést](./quick-start.md).
+Példa a lekérésre: [Az első kérés létrehozása](./quick-start.md).
 
 ## <a name="the-response"></a>A válasz
 
-A válasz tartalmaz egy [SearchResponse](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference#searchresponse) objektum. Bing talál egy entitás vagy a hely, amely fontos, ha az objektum tartalmazza a `entities` mezőben `places` mezőt, vagy mindkettőt. Ellenkező esetben a válasz objektum nem tartalmaz vagy mező.
+A válasz tartalmaz egy [SearchResponse](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference#searchresponse) objektumot. Ha a Bing talál egy vonatkozó entitást vagy helyet, az objektum tartalmazza az `entities` mezőt, a `places` mezőt, vagy mindkettőt. Ha nem talál, akkor a válaszobjektum egyik mezőt sem tartalmazza.
 > [!NOTE]
-> Entitás válaszok támogatja több piacokon, de a helyek válasz csak az USA üzleti helyek támogatja. 
+> Az entitásválaszok több piacot is támogatnak, de a „helyek” típusú válaszok csak az Egyesült Államokban található vállalkozásokat támogatják. 
 
-A `entities` mező egy [EntityAnswer](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference#entityanswer) listáját tartalmazó objektum [entitás](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference#entity) objektumok (lásd a `value` mezőben). A lista is tartalmazhat, egyetlen domináns entitás, több Egyértelműsítő entitás vagy mindkettőt. 
+Az `entities` mező egy [EntityAnswer](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference#entityanswer) objektum, amely az [Entitás](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference#entity) objektumok listáját tartalmazza (lásd: `value` mező). A lista tartalmazhat egyetlen domináns entitást, több egyértelműsítő entitást, vagy mindkettőt. 
 
-Domináns entitás olyan entitás, amely szerint a Bing, az egyetlen entitás, amely eleget tesz a kérelem (nincs feltárhatja, hogy mely entitás eleget tesz a kérelem félreérthetőség). Több entitás sikerült teljesíteni a kérést, lista tartalmazza-e több Egyértelműsítő entitást. Például ha a kérelem egy filmet névhasználati általános címe használ, a listán, valószínűleg Egyértelműsítő entitásokat tartalmaz. De ha a kérés a névhasználati az adott címét határozza meg, a listán, valószínűleg egy egyetlen domináns kiemelési entitást tartalmaz.
+A domináns entitás egy olyan entitás, amelyen kívül más entitások a Bing szerint nem felelnek meg a kérelemnek (teljesen egyértelmű, hogy melyik entitás a válasz a feltett kérdésre). Ha több entitás is megfelelhet a kérelemnek, a lista több egyértelműsítő entitást tartalmaz. Ha például a kérelem egy filmes franchise általános címét tartalmazza, a lista nagy valószínűséggel egyértelműsítő entitásokat fog tartalmazni. De ha a kérelem a franchise egyik filmjének a pontos címét adja meg, a lista valószínűleg egyetlen domináns entitásból fog állni.
 
-Entitások közé tartozik például az előadók, actors, elnyert érmek számának trendjeit, modellek jól ismert személyiséghez.; helyek és tereptárgyak felismerése, például a csatlakoztatási Rudolf vagy Lincoln emlékművet; és többek között az banán, goldendoodle, könyv vagy film címét. A [entityPresentationInfo](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference#entitypresentationinfo) mező tartalmazza, amelyek azonosítják az entitástípus mutatók. Például ha egy személy, filmet, szolgáltatást vagy a vonzás. Lehetséges típusainak listáját lásd: [entitástípusok](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference#entity-types)
+Az entitások lehetnek közismert személyek, például énekesek, színészek, sportolók, modellek stb.; helyek és nevezetességek, például a Mount Rainier vagy a Lincoln-emlékmű; valamint dolgok, például egy banán, goldendoodle kutya, könyv- vagy filmcím. Az [entityPresentationInfo](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference#entitypresentationinfo) mező tartalmazza az entitás típusát azonosító mutatókat. Meghatározza például, hogy az entitás egy személy, film, állat vagy látnivaló. A lehetséges típusok listájáért lásd az [entitások különböző típusait](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference#entity-types) ismertető szakaszt.
 
 ```json
 "entityPresentationInfo": {
@@ -62,7 +62,7 @@ Entitások közé tartozik például az előadók, actors, elnyert érmek szám�
 }, ...
 ```
 
-Az alábbiakban látható egy választ, amely meghatározó és -egyértelműsítéssel entitást tartalmaz.
+Az alábbiakban egy olyan válasz látható, amely egy domináns és egy egyértelműsítő entitást tartalmaz.
 
 ```json
 {
@@ -148,7 +148,7 @@ Az alábbiakban látható egy választ, amely meghatározó és -egyértelműsí
 }
 ```
 
-Az entitás tartalmaz egy `name`, `description`, és `image` mező. Ezek a mezők a felhasználói élmény jeleníti meg, amikor attribútum kell őket. A `contractualRules` mező, telepítenie kell az adatok listáját tartalmazza. Az általános szabály azonosítja a mezőt, amely a tesznek elérhetővé; ilyenek vonatkozik. Tesznek elérhetővé; ilyenek alkalmazásával kapcsolatos további információkért lásd: [tesznek elérhetővé; ilyenek](#data-attribution).
+Az entitás tartalmaz egy `name`, `description` és `image` mezőt. Amikor megjeleníti ezeket a mezőket a felhasználók számára, meg kell adnia a forrásukat. A `contractualRules` mező az alkalmazandó forrásmegjelölések listáját tartalmazza. A szerződéses szabály azonosítja azt a mezőt, amelyre a forrásmegjelölés vonatkozik. A forrásmegjelölés alkalmazására vonatkozó információért lásd a [forrásmegjelöléssel](#data-attribution) foglalkozó témakört.
 
 ```json
 "contractualRules": [{
@@ -176,12 +176,12 @@ Az entitás tartalmaz egy `name`, `description`, és `image` mező. Ezek a mező
 }], ...
 ```
 
-Az entitásadatokat (név, leírás és image) megjelenítésekor az URL-címet is használnia kell a `webSearchUrl` mező segítségével a Bing keresési eredmények oldal, amely az entitás tartalmaz.
+Az entitásinformáció (név, leírás és kép) megjelenítésekor a `webSearchUrl` mezőben lévő URL-címmel hivatkozni kell a Bing-keresés találati oldalára, amely tartalmazza az entitást.
 
 
-A `places` mező egy [LocalEntityAnswer](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference#localentityanswer) listáját tartalmazó objektum [helyen](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference#place) objektumok (lásd a `value` mezőben). A lista tartalmaz egy vagy több helyi entitások, amelyek megfelelnek a kérelmet.
+A `places` mező egy [LocalEntityAnswer](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference#localentityanswer) objektum, amely a [Hely](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference#place) típusú objektumok listáját tartalmazza (lásd: `value` mező). A lista egy vagy több, a kérésre választ adó helyi entitást tartalmaz.
 
-Helyek éttermi, a "Hotels" vagy a helyi üzletek tartalmazza. A [entityPresentationInfo](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference#entitypresentationinfo) mező tartalmazza, amelyek azonosítják a helyi entitástípus mutatók. A listán például hely, LocalBusiness, éttermi mutatók listáját tartalmazza. A tömb minden egyes egymást követő mutató szűkíthető az entitás típusa. Lehetséges típusainak listáját lásd: [entitástípusok](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference#entity-types)
+A helyek lehetnek éttermek, szállodák vagy különböző helyi vállalkozások. Az [entityPresentationInfo](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference#entitypresentationinfo) mező tartalmazza a helyi entitás típusát azonosító mutatókat. Ilyen mutató lehet például a Place (hely), LocaLBusiness (helyi vállalkozás), Restaurant (étterem). Az egymást követő mutatók leszűkítik az entitás típusát. A lehetséges típusok listájáért lásd az [entitások különböző típusait](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference#entity-types) ismertető szakaszt.
 
 ```json
 "entityPresentationInfo": {
@@ -192,9 +192,9 @@ Helyek éttermi, a "Hotels" vagy a helyi üzletek tartalmazza. A [entityPresenta
 }, ...
 ```
 > [!NOTE]
-> Entitás válaszok támogatja több piacokon, de a helyek válasz csak az USA üzleti helyek támogatja. 
+> Az entitásválaszok több piacot is támogatnak, de a „helyek” típusú válaszok csak az Egyesült Államokban található vállalkozásokat támogatják. 
 
-Helyi figyelembe entitás lekérdezések: *éttermek a közelben* szükség pontos eredményeket a felhasználó földrajzi helye. A kérések mindig használjon a hely keresése X és az X-MSEdge-Ügyfélip fejlécet adja meg a felhasználó helyét. A Bing fenyegetésként észlel, a lekérdezés a felhasználó földrajzi helye előnyös, ha beállítja a `askUserForLocation` mezőjében [QueryContext](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference#querycontext) való **igaz**. 
+A helyfüggő entitáslekérdezésekben, amely például *a közeli éttermekre* vonatkozhat, a pontos találatokhoz ismerni kell a felhasználó tartózkodási helyét. A kérelemnek mindig használnia kell az X-Search-Location és az X-MSEdge-ClientIP fejléceket a felhasználó helyzetének meghatározásához. Ha a Bing úgy véli, hogy a lekérdezéshez érdemes lehet ismerni a felhasználó tartózkodási helyét, beállítja a [QueryContext](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference#querycontext) `askUserForLocation` mezőjét **igaz** értékre. 
 
 ```json
 {
@@ -207,7 +207,7 @@ Helyi figyelembe entitás lekérdezések: *éttermek a közelben* szükség pont
 }
 ```
 
-Egy helyen eredményt a hely nevét, címét, telefonszámát és URL-cím tartalmazza az entitás webhelyre. Az entitásadatokat megjelenítésekor az URL-címet is használnia kell a `webSearchUrl` mező segítségével a Bing keresési eredmények oldal, amely az entitás tartalmaz.
+A helytalálat tartalmazza a hely nevét, címét és telefonszámát, valamint az entitás webhelyének URL-címét. Az entitásadatok megjelenítésekor a `webSearchUrl` mezőben lévő URL-címmel hivatkozni kell a Bing-keresés találati oldalára, amely tartalmazza az entitást.
 
 ```json
 "places": {
@@ -235,15 +235,15 @@ Egy helyen eredményt a hely nevét, címét, telefonszámát és URL-cím tarta
 ```
 
 > [!NOTE]
-> Vagy egy harmadik féltől származó, az Ön nevében, előfordulhat, hogy nem használja, megőrzése, tárolásához, gyorsítótár, oszt meg, vagy a tesztelés, fejlesztés, képzés, terjesztése vagy minden nem Microsoft-szolgáltatás elérhetővé tétele céljából az entitások API-ból adatokat terjeszteni vagy szolgáltatás.  
+> Ön vagy az Ön nevében eljáró harmadik fél nem használhatja, őrizheti meg, tárolhatja, gyorsítótárazhatja, oszthatja meg vagy terjesztheti az Entities API-ról szerzett adatokat tesztelés, fejlesztés, képzés, terjesztés vagy bármely nem Microsoft szolgáltatás vagy funkció elérhetővé tétele céljából.  
 
-## <a name="data-attribution"></a>Adatokat tesznek elérhetővé; ilyenek.
+## <a name="data-attribution"></a>Adatok forrásmegjelölése
 
-A Bing Entity API válaszok harmadik fél által birtokolt információkat tartalmaznak. Ön felelőssége annak biztosítása érdekében, használatára megfelelő, például úgy, hogy megfelel a creative commons licencet a felhasználói élmény támaszkodhat.
+A Bing Entity API által adott válaszok külső felek tulajdonában álló információkat tartalmaznak. Az Ön felelőssége az információk megfelelő használatának biztosítása, például azzal, hogy megfelel a felhasználói felületeihez és folyamataihoz igénybe vett Creative Commons-licencek feltételeinek.
 
-Ha egy válasz vagy az eredmény tartalmazza a `contractualRules`, `attributions`, vagy `provider` mezők, meg kell attribútum az adatokat. Ha a válasz nem tartalmazza a mezőt, nem tesznek elérhetővé; ilyenek nem szükséges. Ha az eredmény tartalmazza a `contractualRules` mezőt és a `attributions` és/vagy `provider` mezőket, szerződéses szabályok segítségével attribútum az adatokat.
+Ha valamely válasz vagy eredmény tartalmazza az `contractualRules`, `attributions` vagy `provider` mezőket, az adatok forrását meg kell jelölnie. Ha a válasz egyiket sem tartalmazza, nem kell megjelölni a forrást. Ha a válasz a `contractualRules` mezőt, valamint az `attributions` és/vagy a `provider` mezőt tartalmazza, az adatok forrásának megjelöléséhez a szerződéses szabályokat kell alkalmaznia.
 
-Az alábbi példa bemutatja egy olyan entitás, amely tartalmaz egy MediaAttribution szerződéses szabály és a egy rendszerképet, amely tartalmazza a `provider` mező. A MediaAttribution szabály azonosítja a kép a szabály céljaként, így lenne, figyelmen kívül a lemezkép `provider` mező, ezért használja inkább a MediaAttribution szabály tesznek elérhetővé; ilyenek biztosít.  
+A következő példa bemutat egy entitást, amely tartalmazza a MediaAttribution (médiatartalmak forrásmegjelölésére vonatkozó) szerződéses szabályt, valamint egy képet, amely egy `provider` mezőt tartalmaz. A MediaAttribution szabály megállapítja, hogy a szabály a képre is vonatkozik, így a kép `provider` mezője figyelmen kívül hagyható, és helyette a MediaAttribution szabály alkalmazható a forrás megjelöléséhez.  
 
 ```json
 "value": [{
@@ -272,9 +272,9 @@ Az alábbi példa bemutatja egy olyan entitás, amely tartalmaz egy MediaAttribu
 }]
 ```
 
-Ha egy szerződéses szabályt tartalmaz a `targetPropertyName` mező, a szabály vonatkozik csak a célként megadott mezőben. Ellenkező esetben a szabály vonatkozik-e a szülői objektumot, amely tartalmazza a `contractualRules` mező.
+Ha egy szerződéses szabály tartalmazza a `targetPropertyName` mezőt, a szabály csak az érintett mezőkre vonatkozik. Ha nem, akkor a szabály a `contractualRules` mezőt tartalmazó szülőobjektumra vonatkozik.
 
-A következő példában a `LinkAttribution` szabály tartalmazza a `targetPropertyName` mező, ezért a szabály vonatkozik a `description` mező. Bizonyos mezők alkalmazó szabályok meg kell adnia egy követő a meghatározott adatok a szolgáltató webhelyéről mutató hivatkozást tartalmazó sor. Az attribútum a leírást, például egy vonal azonnal ebben az esetben a leíró szöveg, amely tartalmaz egy hivatkozást az adatok a szolgáltató webhelyéről, a következő létrehozása a contoso.com mutató hivatkozást.
+A következő példában a `LinkAttribution` szabály tartalmazza a `targetPropertyName` mezőt, így a szabály a `description` mezőre vonatkozik. Az egyes mezőkre vonatkozó szabályoknál be kell szúrnia egy sort közvetlenül a célzott adatok után, amely a szolgáltató webhelyére mutató hivatkozást tartalmaz. A leírás forrásának megjelöléséhez például szúrjon be egy sort közvetlenül a leírás szövege után a szolgáltató webhelyére mutató hivatkozással (esetünkben ez a contoso.com).
 
 ```json
 "entities": {
@@ -293,44 +293,44 @@ A következő példában a `LinkAttribution` szabály tartalmazza a `targetPrope
   
 ```
 
-### <a name="license-attribution"></a>Licenc megnevezése
+### <a name="license-attribution"></a>Licencek forrásmegjelölése
 
-Ha szerződéses szabályok listája tartalmaz egy [LicenseAttribution](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference#licenseattribution) szabály, meg kell jelenítenie a hirdetmény a sor következett közvetlenül a tartalmat, amely a licenc vonatkozik. A `LicenseAttribution` szabályt használ a `targetPropertyName` mező segítségével azonosítja a tulajdonságot, amely a licenc vonatkozik.
+Ha a szerződéses szabályok listája tartalmaz egy [LicenseAttribution](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference#licenseattribution) szabályt, a licencre vonatkozó tájékoztatást közvetlenül azután a tartalom után kell megjeleníteni, amelyre a licenc vonatkozik. A `LicenseAttribution` szabály a `targetPropertyName` mező segítségével azonosítja a tulajdonságot, amelyre a licenc vonatkozik.
 
-A következő látható egy példa, amely magában foglalja egy `LicenseAttribution` szabály.
+Az alábbi példa tartalmaz egy `LicenseAttribution` szabályt.
 
-![Licenc megnevezése](./media/cognitive-services-bing-entities-api/licenseattribution.png)
+![Licencek forrásmegjelölése](./media/cognitive-services-bing-entities-api/licenseattribution.png)
 
-A licenc figyelje meg, hogy jelenítjük meg azt a webhelyet, a licenc információkat tartalmaz egy hivatkozást kell tartalmaznia. Általában akkor győződjön meg arról, a licenc neve hivatkozás. Például, ha az értesítés **CC biztonsági Társítás licenc szöveg** és CC biztonsági Társítás a licenc neve, akkor biztosítja, CC biztonsági Társítás hivatkozás.
+A megjelenített licencadatok között kell lennie egy hivatkozásnak, amely a licenc információit tartalmazó webhelyre mutat. Általában a licenc nevét szokás hivatkozásként szerepeltetni. Például ha a tájékoztatás így szól: **A szövegre a CC-BY-SA licenc vonatkozik**, és a CC-BY-SA a licenc neve, a CC-BY-SA nevet érdemes hivatkozássá tenni.
 
-### <a name="link-and-text-attribution"></a>Csatolás és a szöveges megnevezése
+### <a name="link-and-text-attribution"></a>Hivatkozások és szövegek forrásmegjelölése
 
-A [LinkAttribution](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference#linkattribution) és [TextAttribution](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference#textattribution) szabályok általában az adatok a szolgáltató azonosítására szolgál. A `targetPropertyName` mező azonosítja a mezőt, amely a szabály vonatkozik.
+A [LinkAttribution](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference#linkattribution) és [TextAttribution](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference#textattribution) szabályokat általában az adatszolgáltató azonosítására alkalmazzuk. A `targetPropertyName` mező azonosítja a mezőt, amelyre a szabály vonatkozik.
 
-Az attribútum a szolgáltatók, vegyen fel egy közvetlenül követő tartalmat a alkalmazni az adatok (például a megcélzott mezőhöz). A sor egyértelműen feliratú jelzi, hogy a szolgáltatók a következők: az adatok forrását. Például "adatait: contoso.com". A `LinkAttribution` szabályok, létre kell hoznia egy hivatkozást a szolgáltató webhelyéről.
+A szolgáltató megjelölése érdekében szúrjon be egy sort közvetlenül a tartalom után, amelyre a forrásmegjelölés vonatkozik (például a célmező után). A sorban egyértelműen jelezni kell, hogy a szolgáltató az adatok forrása. Egy erre alkalmas megfogalmazás például a következő: „Az adatok forrása: contoso.com”. A `LinkAttribution` szabályoknál létre kell hoznia egy hivatkozást, amely a szolgáltató webhelyére mutat.
 
-Az alábbi példa, amely tartalmazza az `LinkAttribution` és `TextAttribution` szabályokat.
+Az alábbi példa `LinkAttribution` és `TextAttribution` szabályokat is tartalmaz.
 
-![Hivatkozás szövege megnevezése](./media/cognitive-services-bing-entities-api/linktextattribution.png)
+![Hivatkozások és szövegek forrásmegjelölése](./media/cognitive-services-bing-entities-api/linktextattribution.png)
 
-### <a name="media-attribution"></a>Media megnevezése
+### <a name="media-attribution"></a>Médiatartalmak forrásmegjelölése
 
-Ha az entitás tartalmaz egy képet, és megjeleníti azt, meg kell adnia a szolgáltató webhelyéről átkattintásos mutat. Ha az entitás tartalmaz egy [MediaAttribution](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference#mediaattribution) szabály, használja a szabály URL-címet az átkattintásos hivatkozást szeretne létrehozni. Ellenkező esetben használja az URL-címet, a lemezkép részeként történő `provider` mező az átkattintásos hivatkozást szeretne létrehozni.
+Ha az entitás képet tartalmaz, amelyet megjelenít, egy, a szolgáltató webhelyére mutató átkattintásos hivatkozást kell beszúrnia. Ha az entitás tartalmaz egy [MediaAttribution](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference#mediaattribution) szabályt, a szabály URL-címe alapján kell létrehozni az átkattintásos hivatkozást. Ha nem tartalmaz, használja a kép `provider` mezőjében lévő URL-címet.
 
-A következő látható egy példa, amely tartalmaz egy képet `provider` mező, és szerződéses szabályokat. Mivel a példa tartalmazza az általános szabály, akkor figyelmen kívül a lemezkép `provider` mezőben, majd a alkalmazni a `MediaAttribution` szabály.
+Az alábbi példa egy kép `provider` mezőjét és szerződéses szabályait mutatja be. Mivel a példa tartalmazza a szerződéses szabályt, a kép `provider` mezőjét figyelmen kívül kell hagyni, és a `MediaAttribution` szabályt kell alkalmazni.
 
-![Media megnevezése](./media/cognitive-services-bing-entities-api/mediaattribution.png)
+![Médiatartalmak forrásmegjelölése](./media/cognitive-services-bing-entities-api/mediaattribution.png)
 
-### <a name="search-or-search-like-experience"></a>Keresés vagy a search-hez hasonló felhasználói élményt
+### <a name="search-or-search-like-experience"></a>Keresési vagy kereséshez hasonló funkciók
 
-Csakúgy, mint a Bing Web Search API a Bing Entity Search API csak használhatók egy közvetlen felhasználói lekérdezés vagy a keresési, vagy egy alkalmazás vagy környezetet biztosít, amely logikailag egy felhasználói keresési kérelmek úgy művelet eredményeként. Illusztrációs célok esetében az alábbiakban néhány példa a elfogadható search vagy hasonló keresési élményt.
+A Bing Web Search API-hoz hasonlóan a Bing Entity Search API is használható úgy, hogy csak a közvetlen felhasználói lekérdezésekre vagy keresésekre adjon ki eredményt, de úgy is beállítható, hogy egy alkalmazáson vagy funkción belüli olyan műveletekre is reagáljon, amelyek felhasználói keresési kérelemként is értelmezhetők. Szemléltetés céljából a következő esetek ilyen keresési vagy kereséshez hasonló funkciókra szolgálnak például.
 
-- Felhasználó ad meg egy lekérdezést közvetlenül a keresőmezőbe az alkalmazás
-- A megadott szöveg vagy kép és a kérelem "További információ" vagy "További információk" a felhasználó kiválaszt
-- Felhasználói keresési robotprogramok kéri egy adott témakör
-- Egy adott objektum vagy egy vizuális keresési típus forgatókönyvben entitás dwells felhasználó
+- A felhasználó megad egy lekérdezést közvetlenül egy alkalmazás keresőmezőjében.
+- A felhasználó kiválaszt egy meghatározott szöveget vagy képet, és „több információt” vagy „további információt” kér.
+- A felhasználó egy keresési robotot kérdez egy adott témáról.
+- A felhasználó egy meghatározott objektummal vagy entitással foglalkozik egy vizuális keresés során.
 
-Ha nem biztos benne, hogy a felhasználói élmény olyan keresési-szerű környezetet lehessen venni, javasoljuk, hogy ellenőrizze a Microsofttal.
+Amennyiben nem biztos benne, hogy egy művelet vagy szándék felfogható-e kereséshez hasonló funkcióként, ajánlott egyeztetni a Microsofttal.
 
 ## <a name="throttling-requests"></a>Kérelmek szabályozása
 
@@ -338,9 +338,9 @@ Ha nem biztos benne, hogy a felhasználói élmény olyan keresési-szerű körn
 
 ## <a name="next-steps"></a>További lépések
 
-Gyorsan megkezdheti az első kérelmét, lásd: [tétele az első kérelem](./quick-start.md).
+Annak érdekében, hogy gyorsan nekiláthasson az első kérelem létrehozásának, olvassa el az [első kérelem létrehozását bemutató](./quick-start.md) cikket.
 
-Ismerje meg az a [Bing Entity Search API 7-es verziója](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference) hivatkozást. A hivatkozás a fejlécek és lekérdezési paraméterek, amellyel keresési eredmények kérelem tartalmazza. és a válaszobjektumok definícióit is megtalálja benne. 
+Ismerkedjen meg a [Bing Entity Search API 7-es verziójának](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference) referenciáival. A referencia olyan fejléceket és lekérdezési paramétereket tartalmaz, amelyekkel keresési eredményeket kérhet le. és a válaszobjektumok definícióit is megtalálja benne. 
 
 A keresőmező felhasználói élményének fejlesztésére vonatkozó további tudnivalókért tekintse át a [Bing Autosuggest API](../bing-autosuggest/get-suggested-search-terms.md) ismertetését. Ahogy a felhasználó megadja a lekérdezési kifejezést, meghívhatja ezt az API-t, hogy mások által használt kapcsolódó lekérdezési kifejezéseket jelenítsen meg.
 

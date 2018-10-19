@@ -1,42 +1,44 @@
 ---
-title: Az Emotion API a JavaScript gyors üzembe helyezési |} A Microsoft Docs
-description: Get information és kód minták segítségével gyorsan Ismerkedjen meg az Emotion API-val, a Cognitive Services JavaScript.
+title: 'Rövid útmutató: Érzelemfelismerés képeken szereplő arcokon – Emotion API, JavaScript'
+titlesuffix: Azure Cognitive Services
+description: Információk és kódminták segítségével ismerkedhet meg az Emotion API JavaScripttel való használatának első lépéseivel.
 services: cognitive-services
 author: anrothMSFT
-manager: corncar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: emotion-api
-ms.topic: article
+ms.topic: quickstart
 ms.date: 05/23/2017
 ms.author: anroth
-ms.openlocfilehash: fb9cc2335582c4ec75ec45635e519346d65d7e08
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
-ms.translationtype: MT
+ROBOTS: NOINDEX
+ms.openlocfilehash: eeaf2ea080d8c0b604b9831532028e31b8306169
+ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39072092"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48239489"
 ---
-# <a name="emotion-api-javascript-quick-start"></a>Az Emotion API a JavaScript gyors üzembe helyezési
+# <a name="quickstart-build-an-app-to-recognize-emotions-on-faces-in-an-image"></a>Rövid útmutató: Alkalmazás létrehozása a képeken szereplő arcokon tükröződő érzelmek felismeréséhez.
 
 > [!IMPORTANT]
-> Video API előzetes verziója 2017. október 30-én megszűnik. Próbálja ki az új [Video Indexer API előzetes verzióját](https://azure.microsoft.com/services/cognitive-services/video-indexer/) könnyedén kiértékelheti a videókkal és javíthatja a tartalomkeresés élményét, például a keresési eredmények között, mely képes észlelni a videóban elhangzó szövegre keressenek, arcok, karakterek és érzelmeket. [További információk](https://docs.microsoft.com/azure/cognitive-services/video-indexer/video-indexer-overview).
+> Az Emotion API 2019. február 15-ével elavulttá válik. Az érzelemfelismerési képesség mostantól a [Face API](https://docs.microsoft.com/azure/cognitive-services/face/) részeként általánosan elérhető. 
 
-Ez a cikk nyújt információt, és kódminták segítségével gyorsan használatának első lépései a [metódus az Emotion API-t ismerik fel](https://westus.dev.cognitive.microsoft.com/docs/services/5639d931ca73072154c1ce89/operations/563b31ea778daf121cc3a5fa) JavaScript, a kép egy vagy több személynek által kifejezett érzelemfelismerés.
+Ez a cikk információkkal és kódmintákkal szolgál, amelyeken keresztül gyorsan elsajátíthatja, hogyan ismerheti fel a képeken szereplő egy vagy több személy által kifejezett érzelmeket az [Emotion API Recognize metódusa](https://westus.dev.cognitive.microsoft.com/docs/services/5639d931ca73072154c1ce89/operations/563b31ea778daf121cc3a5fa) és a JavaScript használatával.
 
 ## <a name="prerequisite"></a>Előfeltétel
-* Az ingyenes előfizetési kulcs lekérése [Itt](https://azure.microsoft.com/try/cognitive-services/), ha rendelkezik Azure-előfizetéssel, vagy az Emotion API-erőforrás létrehozásához és az előfizetési kulcs és a végpont érheti el.
+* Ingyenes előfizetői azonosítóját [itt](https://azure.microsoft.com/try/cognitive-services/) szerezheti be, illetve ha már rendelkezik Azure-előfizetéssel, hozzon létre egy Emotion API-erőforrást, ahonnan beszerezheti az előfizetői azonosítót és a végpontot.
 
-![Az Emotion API-erőforrás létrehozása](../Images/create-resource.png)
+![Emotion API-erőforrás létrehozása](../Images/create-resource.png)
 
-## <a name="recognize-emotions-javascript-example-request"></a>Érzelmek JavaScript példa kérelem felismerése
+## <a name="recognize-emotions-javascript-example-request"></a>Érzelemfelismerési JavaScript-kérésminta
 
-Másolja a következőket, és mentse azt egy fájlba például `test.html`. A változáskérés `url` használhatja azt a helyet, ahol az előfizetési kulcsok szerezte be, és az "Ocp-Apim-Subscription-Key" értékét cserélje le az érvényes előfizetési kulcs. Találhatók az Azure Portalon, az Emotion API erőforrás áttekintése és a kulcsok szakaszában jelölik. 
+Másolja és mentse egy fájlba az alábbi szöveget, például `test.html` néven. Változtassa meg a kérésben szereplő `url` értékét arra a címre, ahonnan beszerezte az előfizetői azonosítókat, majd cserélje le az „Ocp-Apim-Subscription-Key” értékét az érvényes előfizetői azonosítójára. Ezek az Azure Portalon, az Emotion API-erőforrás Áttekintés és Kulcsok szakaszában találhatók meg.
 
 ![API-végpont](../Images/api-url.png)
 
-![API-előfizetési kulcs](../Images/keys.png)
+![API-előfizetői azonosító](../Images/keys.png)
 
-Módosítsa a kérés törzse egy használni kívánt lemezkép helyét. A futtassa a mintát, és húzza a fájlt a böngészőbe.
+Módosítsa a kérés törzsét a használni kívánt kép helyére. A minta futtatásához húzza a fájlt a böngészőbe.
 
 ```html
 <!DOCTYPE html>
@@ -62,10 +64,10 @@ Módosítsa a kérés törzse egy használni kívánt lemezkép helyét. A futta
     $(function() {
         // No query string parameters for this API call.
         var params = { };
-      
+
         $.ajax({
             // NOTE: You must use the same location in your REST call as you used to obtain your subscription keys.
-            //   For example, if you obtained your subscription keys from westcentralus, replace "westus" in the 
+            //   For example, if you obtained your subscription keys from westcentralus, replace "westus" in the
             //   URL below with "westcentralus".
             url: "https://westus.api.cognitive.microsoft.com/emotion/v1.0/recognize?" + $.param(params),
             beforeSend: function(xhrObj){
@@ -87,7 +89,7 @@ Módosítsa a kérés törzse egy használni kívánt lemezkép helyét. A futta
             for (var prop in faceRectangle) {
                 faceRectangleList.append("<li> " + prop + ": " + faceRectangle[prop] + "</li>");
             }
-            
+
             // Get emotion confidence scores
             var scores = data[0].scores;
             var scoresList = $('#scores');
@@ -105,13 +107,13 @@ Módosítsa a kérés törzse egy használni kívánt lemezkép helyét. A futta
 </html>
 ```
 
-## <a name="recognize-emotions-sample-response"></a>Mintaválasz érzelmek felismerése
-Egy sikeres meghívásához face bejegyzések tömbjét és társított érzelemfelismerési eredményeiket, csökkenő sorrendben face téglalap méret szerint rangsorolva, amelyekről adja vissza. Üres választ, hogy nincs arcok észlelt. Érzelemfelismerési bejegyzés a következő mezőket tartalmazzák:
-* faceRectangle - archoz téglalap helyét.
-* pontszámok – Emotion pontszámok minden lap a képen. 
+## <a name="recognize-emotions-sample-response"></a>Érzelemfelismerési válaszminta
+A sikeres hívás egy, az arcrekordokat és a hozzájuk tartozó érzelempontszámokat tartalmazó tömböt ad vissza, amely az adatokat az arcot jelölő téglalap mérete szerinti csökkenő sorrendben listázza. Az üres válasz azt jelzi, hogy a rendszer nem észlelt arcot. Az érzelemrekord a következő mezőket foglalja magában:
+* faceRectangle – Az arcot jelölő téglalap helye a képen.
+* scores – A képen szereplő egyes arcokhoz tartozó érzelempontszámok.
 
 ```json
-application/json 
+application/json
 [
   {
     "faceRectangle": {

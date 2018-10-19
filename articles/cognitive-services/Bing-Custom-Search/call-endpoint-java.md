@@ -1,40 +1,41 @@
 ---
-title: Végpont meghívása a Microsoft Cognitive Services – Bing egyéni keresés – Java használatával
-description: 'Ez a rövid útmutató bemutatja, hogyan keresési eredmények kérhet az egyéni keresőpéldányok: a Bing Custom Search-végpont meghívása a Java használatával.'
+title: 'Rövid útmutató: Végpont hívása Java használatával – Bing Custom Search'
+titlesuffix: Azure Cognitive Services
+description: Ez a rövid útmutató bemutatja, hogyan kérhet le keresési eredményeket egyéni keresési példányokról a Bing Custom Search-végpont Javával való meghívásával.
 services: cognitive-services
 author: brapel
-manager: ehansen
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-custom-search
-ms.topic: conceptual
+ms.topic: quickstart
 ms.date: 05/07/2018
 ms.author: v-brapel
-ms.openlocfilehash: 7ef4de749d5b9152bbe043a26d3c60fe7f09f869
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
-ms.translationtype: MT
+ms.openlocfilehash: ba1eb9799bc95dede081c6f1a6d972896c126da6
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46951814"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48814117"
 ---
-# <a name="call-bing-custom-search-endpoint-java"></a>Hívást a Bing Custom Search-végpont (Java)
+# <a name="quickstart-call-bing-custom-search-endpoint-java"></a>Rövid útmutató: A Bing Custom Search-végpont meghívása (Java)
 
-Ez a rövid útmutató bemutatja, hogyan kérhet a keresési eredmények a Java használatával hívja meg a Bing Custom Search-végpont egyéni keresési példány. 
+Ez a rövid útmutató bemutatja, hogyan kérhetők le keresési eredmények az egyéni keresési példányból a Bing Custom Search-végpont Javával történő meghívásával. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 A rövid útmutató elvégzéséhez a következőkre lesz szüksége:
 
-- Egy használatra kész egyéni keresési példány. Lásd: [az első Bing Custom Search-példány létrehozása](quick-start.md).
-- [Java](https://www.java.com) telepítve.
-- Egy előfizetési kulcsot. Is kap egy előfizetési kulcsot, aktiválásakor a [az ingyenes próbaidőszak](https://azure.microsoft.com/try/cognitive-services/?api=bing-custom-search), vagy használhat egy díjköteles előfizetési kulcsot az Azure irányítópultján (lásd: [Cognitive Services API-fiók](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)).    
+- Egy használatra kész Custom Search-példány. Lásd: [Az első Bing Custom Search-példánya létrehozása](quick-start.md).
+- Telepített [Java](https://www.java.com).
+- Egy előfizetői kulcs. Használhatja az [ingyenes próbaverzió](https://azure.microsoft.com/try/cognitive-services/?api=bing-custom-search) aktiválásakor kapott előfizetői azonosítót, vagy egy fizetős előfizetői azonosítót az Azure-irányítópultról (lásd: [Cognitive Services API-fiók](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)).    
 
 ## <a name="run-the-code"></a>A kód futtatása
 
-Ez a példa futtatásához kövesse az alábbi lépéseket:
+A példa futtatásához kövesse az alábbi lépéseket:
 
-1. A Java ide Környezethez választott hozzon létre egy csomagot.  
+1. A kiválasztott Java IDE segítségével hozzon létre egy csomagot.  
   
-2. Hozzon létre egy fájlt CustomSrchJava.java a csomagban, és másolja az alábbi kódot a fájlba. Cserélje le **YOUR-SUBSCRIPTION-KEY** és **YOUR-CUSTOM-CONFIG-ID** az előfizetési kulcs és a konfiguráció azonosítója.  
+2. A csomagban hozzon létre egy CustomSrchJava.java nevű fájlt, és másolja az alábbi kódot a fájlba. A **YOUR-SUBSCRIPTION-KEY** (előfizetői azonosító) és a **YOUR-CUSTOM-CONFIG-ID** (konfigurációs azonosító) helyére írja be saját adatait.  
   
     ```java
     import java.io.InputStream;
@@ -135,6 +136,6 @@ Ez a példa futtatásához kövesse az alábbi lépéseket:
 4. Futtassa a programot.
     
 ## <a name="next-steps"></a>További lépések
-- [A központi felhasználói felület konfigurálása](./hosted-ui.md)
-- [Kiemeli a szöveget decoration jelölők használatával](./hit-highlighting.md)
-- [Oldal weblapok](./page-webpages.md)
+- [Üzemeltetett felhasználói felület konfigurálása](./hosted-ui.md)
+- [Díszítő jelölők használata szövegkiemeléshez](./hit-highlighting.md)
+- [Weboldalak lapozása](./page-webpages.md)

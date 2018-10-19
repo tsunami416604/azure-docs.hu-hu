@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: Képbesorolási modell betanítása az Azure Machine Learninggel'
+title: 'Oktatóanyag: Képbesorolási modell betanítása az Azure Machine Learning szolgáltatással'
 description: Ez az oktatóanyag bemutatja, hogyan használható az Azure Machine Learning szolgáltatás képbesorolási modell betanítására a scikit-learn alkalmazásával egy Python Jupyter-notebookban. Ez az oktatóanyag egy kétrészes sorozat első része.
 services: machine-learning
 ms.service: machine-learning
@@ -9,18 +9,18 @@ author: hning86
 ms.author: haining
 ms.reviewer: sgilley
 ms.date: 09/24/2018
-ms.openlocfilehash: 6fbca5e83d8ab4b3c34c6448c7a2303697da623b
-ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
+ms.openlocfilehash: 7110d8df5ee837829f97fec8ab26d929689e3436
+ms.sourcegitcommit: 4edf9354a00bb63082c3b844b979165b64f46286
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47181398"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48785138"
 ---
-# <a name="tutorial-1-train-an-image-classification-model-with-azure-machine-learning"></a>1. oktatóanyag: Képbesorolási modell betanítása az Azure Machine Learning szolgáltatással
+# <a name="tutorial-1-train-an-image-classification-model-with-azure-machine-learning-service"></a>1. oktatóanyag: Képbesorolási modell betanítása az Azure Machine Learning szolgáltatással
 
 Az oktatóanyag során egy gépi tanulási modellt fog betanítani helyi és távoli számítási erőforrások használatával. Az Azure Machine Learning szolgáltatás (előzetes verzió) betanítási és üzembehelyezési munkafolyamatát fogja használni egy Python Jupyter-notebookban.  Ezután a notebookot sablonként használhatja a saját gépi tanulási modelljének saját adatokkal való betanításához. Ez az oktatóanyag **egy kétrészes sorozat első része**.  
 
-Ez az oktatóanyag egy egyszerű logisztikai regresszió betanítását foglalja magában, a [MNIST](http://yann.lecun.com/exdb/mnist/)-adathalmaz, a [scikit-learn](http://scikit-learn.org) és az Azure Machine Learning használatával.  Az MNIST egy 70 000 szürkeárnyalatos képből álló, népszerű adathalmaz. Mindegyik képe egy 28x28 képpontos, 0 és 9 közötti, kézzel írt számjegy. A cél egy többosztályos besoroló létrehozása, amely képes azonosítani az egyes képeken látható számjegyeket. 
+Ez az oktatóanyag egy egyszerű logisztikai regresszió betanítását foglalja magában, a [MNIST](http://yann.lecun.com/exdb/mnist/)-adathalmaz, a [scikit-learn](http://scikit-learn.org) és az Azure Machine Learning szolgáltatás használatával.  Az MNIST egy 70 000 szürkeárnyalatos képből álló, népszerű adathalmaz. Mindegyik képe egy 28x28 képpontos, 0 és 9 közötti, kézzel írt számjegy. A cél egy többosztályos besoroló létrehozása, amely képes azonosítani az egyes képeken látható számjegyeket. 
 
 Az alábbiak végrehajtásának módját ismerheti meg:
 
@@ -37,7 +37,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 ## <a name="get-the-notebook"></a>A notebook beszerzése
 
-Az Ön kényelme érdekében ez az oktatóanyag Jupyter-notebookként is elérhető. Az alábbi két módszer valamelyikével klónozza a [Machine Learning Sample Notebooks GitHub-adattárat](https://github.com/Azure/MachineLearningNotebooks), majd futtassa a `tutorials/01.train-models.ipynb` notebookot:
+Az Ön kényelme érdekében ez az oktatóanyag [Jupyter-notebookként](https://github.com/Azure/MachineLearningNotebooks/blob/master/tutorials/01.train-models.ipynb) is elérhető. A `01.train-models.ipynb` notebook az Azure Notebooks szolgáltatásban vagy a saját Jupyter-notebookkiszolgálóján futtatható.
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-in-azure-notebook.md)]
 
@@ -454,7 +454,7 @@ compute_target.delete()
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben az Azure Machine Learning-oktatóanyagban a következőkhöz használta a Pythont:
+Ebben az Azure Machine Learning szolgáltatáshoz kapcsolódó oktatóanyagban a következőkhöz használta a Pythont:
 
 > [!div class="checklist"]
 > * A fejlesztési környezet beállítása

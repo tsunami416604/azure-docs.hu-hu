@@ -9,12 +9,12 @@ ms.author: govindk
 ms.topic: tutorial
 ms.date: 09/24/2018
 ms.reviewer: sngun
-ms.openlocfilehash: 0bf5e47513ded4b2c65e7291db497e53a42776a8
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: f73a201a25bb2f975e8a261a6c21aa7b066c3a7c
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46976176"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48247850"
 ---
 # <a name="migrate-your-data-to-azure-cosmos-db-cassandra-api-account"></a>Adatok migrálása az Azure Cosmos DB Cassandra API-fiókba
 
@@ -62,7 +62,7 @@ Miután felmérte a meglévő számítási feladathoz szükséges kapacitásokat
 
 ## <a name="prerequisites-for-migration"></a>A migrálás előfeltételei
 
-* **Táblák létrehozása az Azure Cosmos DB Cassandra API-fiókban:** Az adatok migrálásának indítása előtt hozza létre előre az összes táblát az Azure Portalról vagy a cqlsh-val.
+* **Táblák létrehozása az Azure Cosmos DB Cassandra API-fiókban:** Az adatok migrálásának indítása előtt hozza létre előre az összes táblát az Azure Portalról vagy a cqlsh-val. Ha egy olyan Azure Cosmos DB-fiókba migrál, amely adatbázisszintű átviteli sebességgel rendelkezik, az Azure Cosmos DB-tárolók létrehozásakor mindenképpen adjon meg egy partíciókulcsot.
 
 * **Átviteli sebesség növelése:** Az adatok migrálásának időtartama az Azure Cosmos DB-táblákhoz lefoglalt átviteli sebességtől függ. A migrálás idejére növelje meg az átviteli sebességet. Nagyobb átviteli sebesség beállításakor nincs szükség a sebesség korlátozására, és gyorsabban végezhet a migrálással. A migrálás befejezése után, a költségtakarékosság érdekében csökkentse az átviteli sebességet. További információ az átviteli sebesség növeléséről az Azure Cosmos DB-tárolók [átviteli sebességének beállítását](set-throughput.md) ismertető szakaszban található. Emellett javasolt az Azure Cosmos DB-fiókot és a forrásadatbázist azonos régióban használni. 
 

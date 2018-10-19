@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: c9350704943bebada217338488e51b97acc550ca
-ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
+ms.openlocfilehash: 188e3c0e8b9a9d421b40e142e534aca2741fee56
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47423612"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48248886"
 ---
 # <a name="tutorial-deploy-azure-machine-learning-as-an-iot-edge-module-preview"></a>Oktatóanyag: Az Azure Machine Learning üzembe helyezése IoT Edge-modulként (előzetes verzió)
 
@@ -46,11 +46,8 @@ Egy Azure IoT Edge-eszköz:
 Felhőerőforrások:
 
 * Egy ingyenes szintű [IoT Hub](../iot-hub/iot-hub-create-through-portal.md) az Azure-ban. 
-* Egy Azure Machine Learning-fiók. Kövesse az [Azure Machine Learning-fiókok létrehozása és az Azure Machine Learning Workbench telepítése](../machine-learning/desktop-workbench/quickstart-installation.md) szakaszban megadott utasításokat. Az oktatóanyag elvégzéséhez nincs szükség a Workbench alkalmazás telepítésére. 
+* Egy Azure Machine Learning-munkaterület. A létrehozáshoz kövesse [a modellek IoT Edge-ben történő üzembe helyezésének előkészítését](../machine-learning/service/how-to-deploy-to-iot.md) ismertető témakörben található utasításokat.
 
-Fejlesztési erőforrások:
-
-* Az Azure ML modelljeinek kezelése. A környezet beállításához és fiók létrehozásához kövesse [A modellkezelés beállítása](../machine-learning/desktop-workbench/deployment-setup-configuration.md) szakaszban megadott utasításokat. Az üzembe helyezés során lehetőség szerint a fürt helyett helyi lépéseket használjon.
 
 ### <a name="disable-process-identification"></a>Folyamatazonosítás letiltása
 
@@ -94,18 +91,7 @@ export IOTEDGE_HOST="http://172.17.0.1:15580"
 ## <a name="create-the-azure-ml-container"></a>Azure ML-tároló létrehozása
 Ebben a szakaszban letölti a betanított modell fájljait, és Azure ML-tárolóvá konvertálja azokat.
 
-Az Azure ML modellkezelési alkalmazását futtató számítógépen töltse le és mentse a GitHub Azure ML IoT-eszközkészletéből származó [iot_score.py](https://github.com/Azure/ai-toolkit-iot-edge/blob/master/IoT%20Edge%20anomaly%20detection%20tutorial/iot_score.py) és a [model.pkl](https://github.com/Azure/ai-toolkit-iot-edge/blob/master/IoT%20Edge%20anomaly%20detection%20tutorial/model.pkl) fájlt. Ezek a fájlok határozzák meg azt a betanított Machine Learning-modellt, amelyet az IoT Edge-eszközön üzembe fog helyezni.
-
-A betanított modell használatával hozzon létre egy, az IoT Edge-eszközökön üzembe helyezhető tárolót. Az alábbi paranccsal végezze el a következőket:
-
-   * Regisztrálja a modellt.
-   * Hozzon létre egy jegyzéket.
-   * Hozzon létre egy Docker-tárolórendszerképet *machinelearningmodule* néven.
-   * Helyezze üzembe a rendszerképet az Azure Kubernetes Service- (AKS-) fürtön.
-
-```cmd
-az ml service create realtime --model-file model.pkl -f iot_score.py -n machinelearningmodule -r python
-```
+Ha szeretne létrehozni egy Docker-tárolót, amely a gépi tanulási modellt tartalmazza, kövesse [a modellek IoT Edge-ben történő üzembe helyezésének előkészítését](../machine-learning/service/how-to-deploy-to-iot.md) ismertető témakörben található utasításokat.  A Docker-rendszerképhez szükséges összetevők megtalálhatók az [Azure IoT Edge GitHub-adattár AI-eszközkészletében](https://github.com/Azure/ai-toolkit-iot-edge/tree/master/IoT%20Edge%20anomaly%20detection%20tutorial).
 
 ### <a name="view-the-container-repository"></a>A tárolóadattár megtekintése
 

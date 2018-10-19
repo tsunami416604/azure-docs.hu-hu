@@ -1,41 +1,42 @@
 ---
-title: A PHP gyors üzembe helyezés az Azure kognitív szolgáltatások, a Bing hírek keresési API |} Microsoft Docs
-description: Get információkat és a kód minták segítségével gyorsan Ismerkedés a Bing hírek Search API használatával a Microsoft Azure kognitív Services.
+title: 'Rövid útmutató: Bing News Search API, PHP'
+titlesuffix: Azure Cognitive Services
+description: Információk és kódminták segítségével ismerkedhet meg a Bing News Search API használatának első lépéseivel.
 services: cognitive-services
-documentationcenter: ''
 author: v-jerkin
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-news-search
-ms.topic: article
+ms.topic: quickstart
 ms.date: 9/21/2017
 ms.author: v-jerkin
-ms.openlocfilehash: a1e62a63ec926b77bca290767ee453cde83de3df
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
-ms.translationtype: MT
+ms.openlocfilehash: 8f70352a8f9f07b94b53fae0aac286bc65e3f0dc
+ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35349182"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48801744"
 ---
-# <a name="quickstart-for-bing-news-search-api-with-php"></a>A Bing hírek keresés a PHP API gyors üzembe helyezés
+# <a name="quickstart-for-bing-news-search-api-with-php"></a>Rövid útmutató a Bing News Search API és a PHP használatához
 
-Ez a cikk bemutatja, hogyan a Bing hírek keresési API-t használja, a Microsoft kognitív szolgáltatások, Azure része. Amíg ez a cikk alkalmazta a PHP, az API-t olyan kompatibilis bármely programozási nyelv, amely HTTP-kérelmeket, és elemezni a JSON a RESTful webes szolgáltatás. 
+Ez a cikk bemutatja, hogyan használható a Microsoft Cognitive Services részét képező Bing News Search API az Azure-on. Bár ez a cikk PHP-t használ, az API egy RESTful-webszolgáltatás, így kompatibilis minden olyan programozási nyelvvel, amely képes HTTP-kérések küldésére és JSON-elemzésre. 
 
-A kód írása volt a PHP 5.6 működik.
+A mintakód úgy lett megírva, hogy PHP 5.6 alatt működjön.
 
-Tekintse meg a [API-referencia](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference) az API-k technikai részleteiért.
+Az API-k technikai részleteit az [API-referencia](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference) című részben tekintheti meg.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Rendelkeznie kell egy [kognitív szolgáltatások API-fiók](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) rendelkező **Bing keresési API-k**. A [ingyenes próbaverzió](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) elegendő-e a gyors üzembe helyezés. Szüksége lesz az elérési kulcsot, ha aktiválja az ingyenes próbaverzió, vagy egy fizetős kulcsot az Azure irányítópultról használhat.
+Egy **Bing Search API-kat** tartalmazó [Cognitive Services API-fiókkal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) kell rendelkeznie. Az [ingyenes próbaverzió](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) elegendő ehhez a rövid útmutatóhoz. Szüksége lesz az ingyenes próbaverzió aktiválásakor kapott hozzáférési kulcsra, de beszerezhet egy fizetős előfizetői azonosítót is az Azure-irányítópultról.
 
-## <a name="bing-news-search"></a>Bing hírek keresése
+## <a name="bing-news-search"></a>Bing News search
 
-A [Bing hírek Search API](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference) hírek eredményeket ad vissza a Bing keresőmotort.
+A [Bing News Search API](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference) a Bing keresőmotor hírtalálatait adja vissza.
 
-1. Győződjön meg arról, hogy a biztonságos HTTP-támogatása engedélyezve van a `php.ini` a kód Megjegyzés leírtak szerint.
-2. Hozzon létre egy új PHP-projektet a kedvenc IDE vagy szerkesztő.
+1. Gondoskodjon róla, hogy a biztonságos HTTP támogatása a kódhoz tartozó megjegyzésben megadottak szerint engedélyezve legyen a `php.ini` fájlban.
+2. Hozzon létre egy új PHP-projektet a kedvenc IDE-környezetében vagy szerkesztőjében.
 3. Adja hozzá az alábbi kódot.
-4. Cserélje le a `accessKey` hívóbetű érvényes az előfizetéshez tartozó értéket.
+4. A `accessKey` értéket cserélje le az előfizetéshez érvényes hozzáférési kulcsra.
 5. Futtassa a programot.
 
 ```php
@@ -100,7 +101,7 @@ echo json_encode(json_decode($json), JSON_PRETTY_PRINT);
 
 **Válasz**
 
-A sikeres válasz ad vissza a JSON-ban, a következő példában látható módon: 
+A rendszer JSON formátumban ad vissza egy sikeres választ a következő példában látható módon: 
 
 ```json
 {
@@ -196,8 +197,8 @@ A sikeres válasz ad vissza a JSON-ban, a következő példában látható módo
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Lapozófájl hírek](paging-news.md)
-> [decoration jelölők használatával szöveg kiemeléséhez](hit-highlighting.md)
-> [keresése a weben hírek](search-the-web.md)  
-> [Próbálja ki](https://azure.microsoft.com/services/cognitive-services/bing-news-search-api/)
+> [Hírek lapozása](paging-news.md)
+> [Szöveg kiemelése díszítő jelölőkkel](hit-highlighting.md)
+> [Hírek keresése az interneten](search-the-web.md)  
+> [Kipróbálás](https://azure.microsoft.com/services/cognitive-services/bing-news-search-api/)
 

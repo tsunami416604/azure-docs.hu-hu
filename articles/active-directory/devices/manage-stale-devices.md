@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 09/20/2018
+ms.date: 10/03/2018
 ms.author: markvi
-ms.reviewer: jairoc
-ms.openlocfilehash: f9664e22be5d7a17dd2a2a7c328593d8168c26f0
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.reviewer: spunukol
+ms.openlocfilehash: 1b8a6e6a6b5f482a4e3575c4da18a02a958c4081
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47434738"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48249366"
 ---
 # <a name="how-to-manage-the-stale-devices-in-azure-ad"></a>Útmutató: Elavult eszközök kezelése az Azure AD-ben
 
@@ -111,7 +111,7 @@ Amennyiben az eszközt az Intune vagy más MDM-megoldás vezérli, vonja ki az e
 
 ### <a name="system-managed-devices"></a>Rendszer által felügyelt eszközök
 
-A rendszer által felügyelt eszközöket sose törölje. Ezek általában a robotpilótához hasonló eszközök. Ezeket az eszközöket a törlést követően nem lehet újból kiépíteni. Az új Get-MmsolDevice parancsmag alapértelmezés szerint kizárja a rendszer által felügyelt eszközöket. 
+A rendszer által felügyelt eszközöket sose törölje. Ezek általában a robotpilótához hasonló eszközök. Ezeket az eszközöket a törlést követően nem lehet újból kiépíteni. Az új `get-msoldevice` parancsmag alapértelmezés szerint kizárja a rendszer által felügyelt eszközöket. 
 
 
 ### <a name="hybrid-azure-ad-joined-devices"></a>Hibrid Azure AD-csatlakoztatott eszközök
@@ -137,7 +137,7 @@ Azure AD-ben regisztrált eszközök letiltása vagy törlése az Azure AD-ben
 
 
 
-## <a name="cleanup-stale-devices-in-the-azure-portal"></a>Elavult eszközök törlése az Azure Portalon  
+## <a name="clean-up-stale-devices-in-the-azure-portal"></a>Elavult eszközök törlése az Azure Portalon  
 
 Bár az elavult eszközök törlése az Azure Portalon is elvégezhető, hatékonyabb megoldás egy PowerShell-szkripttel kezelni a folyamatot. Használja a legújabb PowerShell V1 modult, hogy alkalmazhassa az időbélyegző szűrőt, amely kiszűri a rendszer által felügyelt eszközöket (például robotpilótát). Jelenleg nem javasoljuk a PowerShell V2 használatát.
 
@@ -150,7 +150,9 @@ A folyamat jellemzően a következő lépésekből áll:
 
 3. Az eszköz letiltása a [Disable-MsolDevice](https://docs.microsoft.com/powershell/module/msonline/disable-msoldevice?view=azureadps-1.0) parancsmaggal. 
 
-4. Az eszköz törlése a [Remove-MsolDevice](https://docs.microsoft.com/powershell/module/msonline/remove-msoldevice?view=azureadps-1.0) parancsmaggal.
+4. Az eszköz törlése előtt várja ki a kívánt hosszúságú türelmi időszakot.
+
+5. Az eszköz törlése a [Remove-MsolDevice](https://docs.microsoft.com/powershell/module/msonline/remove-msoldevice?view=azureadps-1.0) parancsmaggal.
 
 ### <a name="get-the-list-of-devices"></a>Az eszközök listájának lekérése
 

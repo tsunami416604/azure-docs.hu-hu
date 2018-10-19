@@ -8,14 +8,14 @@ services: iot-hub
 ms.devlang: python
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 04/30/2018
+ms.date: 09/07/2018
 ms.author: dobett
-ms.openlocfilehash: 7d5f2246eec20144a30e0abbc31038bdf04ab2b0
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: 2d851bc8d5af7f824512cc9f14e6b1120026dd07
+ms.sourcegitcommit: 4edf9354a00bb63082c3b844b979165b64f46286
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43339276"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48785155"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-read-the-telemetry-from-the-hub-with-a-back-end-application-python"></a>Rövid útmutató: Telemetria küldése egy eszközről IoT Hubra, és a telemetria olvasása a háttéralkalmazással (Python)
 
@@ -33,7 +33,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 A rövid útmutatóban futtatott két mintaalkalmazás a Python használatával készült. A fejlesztői gépen szükség lesz a Python 2.7.x vagy a 3.5.x verziójára.
 
-A Pythont a [Python.org](https://www.python.org/downloads/) oldalról töltheti le többféle platformra.
+A Pythont a [Python.org](https://www.python.org/downloads/) oldalról töltheti le többféle platformra. Válassza az Ön által használt rendszer architektúrájának megfelelő Python-telepítőt. Amennyiben a rendszer CPU-architektúrája 32 bites, az alapértelmezett x86-os telepítőt töltse le a Python.org oldalról, 64 bites architektúra esetén pedig az x86-64 jelzésű telepítőt.
 
 A Python aktuális verzióját a következő parancsok egyikével ellenőrizheti a fejlesztői gépen:
 
@@ -46,20 +46,6 @@ python3 --version
 ```
 
 Töltse le a Python-mintaprojektet a https://github.com/Azure-Samples/azure-iot-samples-python/archive/master.zip címről, és bontsa ki a ZIP-archívumot.
-
-Az IoT Hubról telemetriát olvasó parancssori felületi segédprogram telepítéséhez először telepítse a Node.js v4.x.x vagy újabb verzióját a fejlesztői gépen. A Node.js-t a [nodejs.org](https://nodejs.org) oldalról töltheti le többféle platformra.
-
-A Node.js aktuális verzióját a következő paranccsal ellenőrizheti a fejlesztői gépen:
-
-```cmd/sh
-node --version
-```
-
-Az `iothub-explorer` parancssori felületi segédprogram telepítéséhez futtassa az alábbi parancsot:
-
-```cmd/sh
-npm install -g iothub-explorer
-```
 
 ## <a name="create-an-iot-hub"></a>IoT Hub létrehozása
 
@@ -85,14 +71,6 @@ Az eszköznek regisztrálva kell lennie az IoT Hubbal, hogy csatlakozhasson hozz
     ```
 
     Jegyezze fel az eszköz kapcsolati sztringjét, amely a következőképpen néz ki: `Hostname=...=`. Ezt az értéket használni fogja a rövid útmutató későbbi részében.
-
-1. Szüksége van egy _szolgáltatáskapcsolati sztringre_ is azért, hogy a `iothub-explorer` parancssori felületi segédprogram csatlakozhasson az IoT Hubhoz, és üzeneteket kérhessen le. Az alábbi parancs lekéri az IoT Hub szolgáltatáskapcsolati sztringjét:
-
-    ```azurecli-interactive
-    az iot hub show-connection-string --hub-name {YourIoTHubName} --output table
-    ```
-
-    Jegyezze fel a szolgáltatás-kapcsolati sztringet, amely a következőképpen néz ki: `Hostname=...=`. Ezt az értéket használni fogja a rövid útmutató későbbi részében. A szolgáltatáskapcsolati sztring nem azonos az eszközkapcsolati sztringgel.
 
 ## <a name="send-simulated-telemetry"></a>Szimulált telemetria küldése
 
@@ -122,15 +100,15 @@ A szimulálteszköz-alkalmazás egy az IoT Hubon található eszközspecifikus v
 
 ## <a name="read-the-telemetry-from-your-hub"></a>Telemetria olvasása a Hubról
 
-Az `iothub-explorer` CLI-segédprogram a szolgáltatásoldali **Események** végponthoz csatlakozik az IoT Hubon. A segédprogram fogadja az eszközről a felhőbe irányuló üzeneteket, amelyeket a rendszer a szimulált eszközről küld. Az IoT Hub-háttéralkalmazások általában a felhőben futnak, hogy fogadják és feldolgozzák az eszközről a felhőbe küldött üzeneteket.
+Az IoT Hub CLI-bővítmény csatlakozhat a szolgáltatásoldali **Események** végponthoz az IoT Hubon. A bővítmény fogadja az eszközről a felhőbe irányuló üzeneteket, amelyeket a rendszer a szimulált eszközről küld. Az IoT Hub-háttéralkalmazások általában a felhőben futnak, hogy fogadják és feldolgozzák az eszközről a felhőbe küldött üzeneteket.
 
-Egy másik terminálablakban futtassa a következő parancsokat, és cserélje le a `{your hub service connection string}` értéket az eszköz korábban lejegyzett szolgáltatáskapcsolati sztringjével:
+Futtassa a következő Azure CLI-parancsokat úgy, hogy a `{YourIoTHubName}` helyére az IoT Hub neve kerüljön:
 
-```cmd/sh
-iothub-explorer monitor-events MyPythonDevice --login "{your hub service connection string}"
+```azurecli-interactive
+az iot hub monitor-events --device-id MyPythonDevice --hub-name {YourIoTHubName}
 ```
 
-A következő képernyőképen az a kimenet látható, amikor a segédprogram fogadja a szimulálteszköz-alkalmazás által az IoT Hubnak küldött telemetriát:
+A következő képernyőképen az a kimenet látható, amikor a bővítmény fogadja a szimulált eszköz által az IoT Hubnak küldött telemetriát:
 
 ![A háttéralkalmazás futtatása](media/quickstart-send-telemetry-python/ReadDeviceToCloud.png)
 

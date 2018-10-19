@@ -1,6 +1,6 @@
 ---
 title: Az Azure Data Box beállítása | Microsoft Docs
-description: Az Azure Data Box szoftveres és hálózati követelményeinek ismertetése
+description: Bemutatja az Azure Data Box bekábelezését és csatlakoztatását
 services: databox
 documentationcenter: NA
 author: alkohli
@@ -12,14 +12,14 @@ ms.devlang: NA
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 09/24/2018
+ms.date: 10/03/2018
 ms.author: alkohli
-ms.openlocfilehash: 6623744a26d79ccbc8b68ba84baf3a37024e0ed7
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: f9671e3acdb71affe2187258582254561785780e
+ms.sourcegitcommit: 4edf9354a00bb63082c3b844b979165b64f46286
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46952307"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48785636"
 ---
 # <a name="tutorial-cable-and-connect-to-your-azure-data-box"></a>Oktatóanyag: Az Azure Data Box bekábelezése és csatlakoztatása
 
@@ -36,15 +36,15 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 Mielőtt hozzákezd, győződjön meg az alábbiakról:
 
 1. Befejezte [az Azure Data Box rendelését ismertető oktatóanyagot](data-box-deploy-ordered.md).
-2. Megkapta a Data Boxot, és a portálon a megrendelés **Kézbesítve** állapotú. 
+2. Megkapta a Data Boxot, és a portálon a megrendelés **Kézbesítve** állapotú. Az aktuális fuvarlevélcímke alatt egy átlátszó zacskó van rögzítve az eszközre, benne egy másik címkével. Őrizze meg ezt a címkét, mivel ezt fogja használni a küldemény visszaküldéséhez.
 3. Áttekintette [a Data Box biztonsági útmutatásait](data-box-safety.md).
 4. Kapott egy földelt tápkábelt a 100 TB-os tárolóeszközhöz.
 5. Rendelkezik egy gazdagéppel, amelyen a Data Boxra másolni kívánt adatok találhatók. A gazdaszámítógépen:
     - egy [támogatott operációs rendszernek](data-box-system-requirements.md) kell futnia;
-    - egy nagy sebességű hálózathoz kell csatlakoznia. Határozottan javasoljuk, hogy legalább 10 GbE sebességű kapcsolattal rendelkezzen. Ha 10 GbE kapcsolat nem áll rendelkezésre, egy 1 GbE sebességű adatkapcsolat is használható, azonban ez rontja a másolási sebességet. 
+    - egy nagy sebességű hálózathoz kell csatlakoznia. Határozottan javasoljuk, hogy legalább 10 GbE sebességű kapcsolattal rendelkezzen. Ha 10 GbE sebességű kapcsolat nem áll rendelkezésre, egy 1 GbE sebességű adatkapcsolat is használható, azonban ez csökkenti a másolási sebességet. 
 6. Szüksége lesz egy vízszintes felületre, ahová a Data Boxot helyezheti. Ha az eszközt egy standard kiszolgálószekrény-polcra szeretné helyezni, egy legalább 7U méretű helyre lesz szükség az adatközponti szekrényben. Az eszközt a talpán vagy az oldalán is elhelyezheti a szekrényben.
 7. A következő kábelekkel rendelkezik a Data Box a gazdagéphez való csatlakoztatásához.
-    - Két 10 GbE SFP+ Twinax rézkábel (a DATA 1 és DATA 2 hálózati adapterekhez)
+    - Két 10 GbE SFP+ Twinax-rézkábel (a DATA 1 és DATA 2 hálózati adapterhez)
     - Egy RJ-45 CAT 6 hálózati kábel (az MGMT hálózati adapterhez)
     - Egy RJ-45 CAT 6A VAGY egy RJ-45 CAT 6 hálózati kábel (a DATA 3 hálózati adapterhez 10 Gb/s vagy 1 Gb/s sebességre konfigurálva)
 
@@ -62,7 +62,7 @@ Kövesse az alábbi lépéseket az eszköz bekábelezéséhez.
     2. Az RJ-45 CAT 6-kábellel csatlakoztasson egy laptopot az eszköz felügyeleti portjára (MGMT).            
     3. Az RJ-45 CAT 6A-kábel egyik végét csatlakoztassa a DATA 3-portra. A DATA 3-port 10 GbE sebességre van konfigurálva RJ-45 CAT 6A-kábellel való csatlakozáshoz, és 1 GbE sebességre RJ-45 CAT 6-kábellel való csatlakozáshoz.
     4. A 10 GbE SFP+ Twinax-rézkábeleket csatlakoztassa a DATA 1- és DATA 2-porthoz. 
-    5. Az adatportokra csatlakoztatott kábelek másik vége a gazdagéphez csatlakozik egy 10 GbE sebességű kapcsolón keresztül.
+    5. Az adatportokhoz csatlakoztatott kábelek másik vége a gazdagéphez csatlakozik egy 10 GbE sebességű kapcsolón keresztül.
 
 4. Keresse meg a bekapcsológombot az eszköz előlapján. Kapcsolja be az eszközt.
 

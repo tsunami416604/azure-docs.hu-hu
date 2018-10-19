@@ -1,39 +1,39 @@
 ---
-title: Node.JS gyors üzembe helyezés az Azure kognitív szolgáltatások, a Bing entitás keresési API |} Microsoft Docs
-description: Get információkat és a kód minták segítségével gyorsan entitás a Bing keresési API a Microsoft Azure kognitív Services használatának megkezdése.
+title: 'Rövid útmutató: Bing Entity Search API, Node.js'
+titlesuffix: Azure Cognitive Services
+description: Információk és kódminták segítségével ismerkedhet meg a Bing Entity Search API használatának első lépéseivel.
 services: cognitive-services
-documentationcenter: ''
 author: v-jaswel
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-entity-search
-ms.topic: article
+ms.topic: quickstart
 ms.date: 11/28/2017
 ms.author: v-jaswel
-ms.openlocfilehash: 7396976453c240d5ea9a767f8c26ac96d10d1e1f
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
-ms.translationtype: MT
+ms.openlocfilehash: b14bcece77b17e79ec9e39bbb6bb64ae34abd3a0
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35349183"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48815154"
 ---
-# <a name="quickstart-for-microsoft-bing-entity-search-api-with-nodejs"></a>A Microsoft Bing entitás keresés a Node.JS API gyors üzembe helyezés 
-<a name="HOLTop"></a>
+# <a name="quickstart-for-bing-entity-search-api-with-nodejs"></a>Rövid útmutató a Bing Entity Search API és a Node.js használatához
 
-Ez a cikk bemutatja, hogyan használható a [Bing entitás keresési](https://docs.microsoft.com/azure/cognitive-services/bing-entities-search/search-the-web) a Node.JS API.
+Ez a cikk bemutatja, hogyan használhatja a [Bing Entity Search](https://docs.microsoft.com/azure/cognitive-services/bing-entities-search/search-the-web) API-t a Node.js-sel.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Szüksége lesz [Node.js 6](https://nodejs.org/en/download/) futtatásához ezt a kódot.
+A kód futtatásához [Node.js 6](https://nodejs.org/en/download/) szükséges.
 
-Rendelkeznie kell egy [kognitív szolgáltatások API-fiók](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) rendelkező **Bing entitás Search API**. A [ingyenes próbaverzió](https://azure.microsoft.com/try/cognitive-services/?api=bing-entity-search-api) elegendő-e a gyors üzembe helyezés. Az elérési kulcsot, ha aktiválja az ingyenes próbaverzió, vagy egy fizetős kulcsot használhatja az Azure irányítópultról van szüksége.
+Rendelkeznie kell egy [Cognitive Services API-fiókkal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account), amely tartalmazza a **Bing Entity Search API-t**. Az [ingyenes próbaverzió](https://azure.microsoft.com/try/cognitive-services/?api=bing-entity-search-api) elegendő ehhez a rövid útmutatóhoz. Szüksége lesz az ingyenes próbaverzió aktiválásakor kapott hozzáférési kulcsra, vagy beszerezhet egy fizetős előfizetői azonosítót az Azure-irányítópultról.
 
-## <a name="search-entities"></a>Keresési entitások
+## <a name="search-entities"></a>Entitások keresése
 
 Az alkalmazás futtatásához kövesse az alábbi lépéseket.
 
-1. Hozzon létre egy új Node.JS-projektet a kedvenc ide.
+1. Hozzon létre egy új Node.js-projektet kedvenc IDE-környezetében.
 2. Adja hozzá az alábbi kódot.
-3. Cserélje le a `key` hívóbetű érvényes az előfizetéshez tartozó értéket.
+3. A `key` értéket cserélje le az előfizetéshez érvényes hozzáférési kulcsra.
 4. Futtassa a programot.
 
 ```nodejs
@@ -90,7 +90,7 @@ Search ();
 
 **Válasz**
 
-A sikeres válasz ad vissza a JSON-ban, a következő példában látható módon: 
+A rendszer JSON formátumban ad vissza egy sikeres választ a következő példában látható módon: 
 
 ```json
 {
@@ -153,11 +153,11 @@ A sikeres válasz ad vissza a JSON-ban, a következő példában látható módo
 }
 ```
 
-[Lap tetejére](#HOLTop)
+[Vissza a tetejére](#HOLTop)
 
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Bing entitás keresési oktatóanyag](../tutorial-bing-entities-search-single-page-app.md)
-> [Bing entitás keresési áttekintése](../search-the-web.md )
+> [Bing Entity Search-oktatóanyag](../tutorial-bing-entities-search-single-page-app.md)
+> [A Bing Entity Search áttekintése](../search-the-web.md )
 > [API-referencia](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference)

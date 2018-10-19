@@ -1,6 +1,6 @@
 ---
-title: Mi történt az Azure Machine Learning Workbench alkalmazással? | Microsoft Docs
-description: Megtudhatja, mi történt a Workbench alkalmazással, mi változott az Azure Machine Learningben, és hogy milyen hosszú a támogatási ciklus.
+title: Mi történik az Azure Machine Learning Workbench alkalmazással? | Microsoft Docs
+description: A cikkből megtudhatja, mi történik a Workbench alkalmazással, mi változott az Azure Machine Learningben, és megismerheti a támogatási ütemtervet.
 services: machine-learning
 ms.service: machine-learning
 ms.component: core
@@ -9,22 +9,22 @@ ms.reviewer: jmartens
 author: j-martens
 ms.author: jmartens
 ms.date: 09/24/2018
-ms.openlocfilehash: 620d8b370b050a4d91ee6d94cba2c133b4313aed
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 88e7dad15a7080c4132a6983d949f9451ad5ce69
+ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47159984"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48239260"
 ---
-# <a name="what-happened-to-workbench-in-azure-machine-learning-preview"></a>Mi történt a Workbench alkalmazással az Azure Machine Learning (előzetes verzió) szolgáltatásban?
+# <a name="what-is-happening-to-workbench-in-azure-machine-learning-preview"></a>Mi történik a Workbench alkalmazással az Azure Machine Learning (előzetes verzió) szolgáltatásban?
 
-A 2018. szeptemberi kiadásban a Workbench alkalmazás és néhány egyéb korai funkció elavult, hogy utat adjon a továbbfejlesztett [architektúra](concept-azure-machine-learning-architecture.md) számára. A kiadás számos, ügyfélvisszajelzésen alapuló jelentős frissítést tartalmaz a felhasználói élmény javítása érdekében. Az kísérleti futtatásoktól a modell-üzembehelyezésig az alapvető funkciók nem változtak, de most már használhatja a robusztus <a href="http://aka.ms/aml-sdk" target="_blank">SDK</a> és [CLI](reference-azure-machine-learning-cli.md) eszközöket a gépi tanulási feladatok és folyamatok végrehajtására.  
+A 2018. szeptemberi kiadásban a Workbench alkalmazás és néhány egyéb korai funkció elavulttá vált, hogy lehetővé tegye a továbbfejlesztett [architektúra](concept-azure-machine-learning-architecture.md) bevezetését. A kiadás számos, ügyfélvisszajelzésen alapuló jelentős frissítést tartalmaz a felhasználói élmény javítása érdekében. Az kísérleti futtatásoktól a modell-üzembehelyezésig az alapvető funkciók nem változtak, de most már használhatja a robusztus <a href="http://aka.ms/aml-sdk" target="_blank">SDK</a> és [CLI](reference-azure-machine-learning-cli.md) eszközöket a gépi tanulási feladatok és folyamatok végrehajtására.  
 
 Ebből a cikkből elsajátíthatja, mi változott, és hogyan érinti ez a már meglévő munkáját az Azure Machine Learning szolgáltatásban.
 
 ## <a name="what-changed"></a>Mi változott?
 
-Az Azure Machine Learning legújabb kiadása a következőket tartalmazza:
+Az Azure Machine Learning szolgáltatás legújabb kiadása a következőket tartalmazza:
 + Egy [egyszerűsített Azure-erőforrásmodell](concept-azure-machine-learning-architecture.md)
 + [Új portál felhasználói felület](how-to-track-experiments.md) a kísérletek és számítási célok kezeléséhez
 + Egy új, szélesebb körű Python <a href="http://aka.ms/aml-sdk" target="_blank">SDK</a>
