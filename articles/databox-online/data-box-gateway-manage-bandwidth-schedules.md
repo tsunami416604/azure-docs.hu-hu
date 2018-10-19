@@ -1,26 +1,19 @@
 ---
 title: Azure Data Box Gateway – Felhasználók kezelése | Microsoft Docs
 description: Ez a cikk bemutatja, hogyan történik az Azure Data Box Gateway sávszélesség-ütemezési beállításainak kezelése az Azure Portalon.
-services: databox-edge-gateway
-documentationcenter: NA
+services: databox
 author: alkohli
-manager: twooley
-editor: ''
-ms.assetid: ''
 ms.service: databox
-ms.devlang: NA
+ms.subservice: gateway
 ms.topic: overview
-ms.custom: ''
-ms.tgt_pltfrm: NA
-ms.workload: TBD
 ms.date: 10/09/2018
 ms.author: alkohli
-ms.openlocfilehash: d1049ef66ad02987c6523e4b5ec5dd9959e0fa47
-ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
+ms.openlocfilehash: e4bc5de9345bcb65f82ca7ac0095b3e0fd3907e9
+ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49070546"
+ms.lasthandoff: 10/12/2018
+ms.locfileid: "49165998"
 ---
 # <a name="use-the-azure-portal-to-manage-bandwidth-schedules-on-your-azure-data-box-gateway"></a>Az Azure Data Box Gateway sávszélesség-ütemezési beállításait az Azure Portalon keresztül kezelheti  
 

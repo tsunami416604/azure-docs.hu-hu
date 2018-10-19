@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: tutorial
 ms.date: 09/25/2018
 ms.author: diberry
-ms.openlocfilehash: ce5b704a7ac251621698352608ea3eefa4629aea
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: 3ccec4fbd0fd69539e29e2f15f71115444bf0a48
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48886573"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49389292"
 ---
 # <a name="tutorial-luis-bot-in-c"></a>Oktatóanyag: LUIS-robot a C#-ben
 A C# használatával létrehozhat egy integrált nyelvfelismerési (LUIS) képességekkel rendelkező csevegőrobotot. Ez a robot a HomeAutomation app használatával valósítja meg a robotmegoldást. A robot összeállításához a [Bot Framework 4-es verzióját](https://github.com/Microsoft/botbuilder-js) és az Azure [webalkalmazás-robotot](https://docs.microsoft.com/azure/bot-service/) használja.
@@ -291,9 +291,9 @@ A `BasicBot.cs` fájlban adja hozzá az új szándékok kezeléséhez szüksége
 ## <a name="learn-more-about-bot-framework"></a>További tudnivalók a Bot Frameworkről
 Az Azure Bot Service a Bot Framework SDK-t használja. További információk az SDK-ról és a Bot Frameworkről:
 
-* Az [Azure Bot Service](https://docs.microsoft.com/en-us/azure/bot-service/bot-service-overview-introduction?view=azure-bot-service-4.0) v4 dokumentációja
+* Az [Azure Bot Service](https://docs.microsoft.com/azure/bot-service/bot-service-overview-introduction?view=azure-bot-service-4.0) v4 dokumentációja
 * [Bot Builder minták](https://github.com/Microsoft/botbuilder-samples)
-* [Bot Builder SDK](https://docs.microsoft.com/en-us/javascript/api/botbuilder-core/?view=botbuilder-ts-latest)
+* [Bot Builder SDK](https://docs.microsoft.com/javascript/api/botbuilder-core/?view=botbuilder-ts-latest)
 * [Bot Builder eszközök](https://github.com/Microsoft/botbuilder-tools):
 
 ## <a name="next-steps"></a>További lépések

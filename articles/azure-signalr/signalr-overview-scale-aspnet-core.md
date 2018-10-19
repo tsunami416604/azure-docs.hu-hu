@@ -12,18 +12,18 @@ ms.topic: overview
 ms.workload: tbd
 ms.date: 09/13/2018
 ms.author: zhshang
-ms.openlocfilehash: 380b70ac55bb1f9b447eb07dc475e354956f409e
-ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
+ms.openlocfilehash: af100c015845d095f39ee4245f71689a4d2a43c0
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48267351"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49385004"
 ---
 # <a name="scale-aspnet-core-signalr-applications-with-azure-signalr-service"></a>ASP.NET Core SignalR-alkalmazások skálázása az Azure SignalR szolgáltatással
 
 ## <a name="developing-signalr-apps"></a>SignalR-alkalmazások fejlesztése
 
-Jelenleg a SignalR [két verziója](https://docs.microsoft.com/en-us/aspnet/core/signalr/version-differences) használható a webalkalmazásokhoz: a SignalR for ASP.NET és az ASP.NET Core SignalR, amely egyben a legújabb verzió is. Az Azure SignalR szolgáltatás az ASP.NET Core SignalR-re épülő, az Azure által kezelt szolgáltatás. 
+Jelenleg a SignalR [két verziója](https://docs.microsoft.com/aspnet/core/signalr/version-differences) használható a webalkalmazásokhoz: a SignalR for ASP.NET és az ASP.NET Core SignalR, amely egyben a legújabb verzió is. Az Azure SignalR szolgáltatás az ASP.NET Core SignalR-re épülő, az Azure által kezelt szolgáltatás. 
 
 Az ASP.NET Core SignalR az előző verzió átdolgozása. Ezért az ASP.NET Core SignalR visszamenőlegesen nem kompatibilis a SignalR korábbi verzióival. Az API-k és a szolgáltatás működése eltérő. Az ASP.NET Core SignalR SDK a .NET Standard verziójához készült, ezért továbbra is használható a .NET-keretrendszerrel. Azonban az új API-kat kell használnia a régiek helyett. Ha a SignalRt használja és szeretne ASP.NET Core SignalRre vagy Azure SignalR szolgáltatásra váltani, úgy kell módosítania a kódot, hogy kezelje az API-k közötti különbségeket.
 

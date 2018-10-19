@@ -2,24 +2,18 @@
 title: Rövid útmutató – Microsoft Azure Data Box | Microsoft Docs
 description: Megtudhatja, hogyan helyezheti gyorsan üzembe az Azure Data Boxot az Azure Portalon.
 services: databox
-documentationcenter: NA
 author: alkohli
-manager: twooley
-editor: ''
-ms.assetid: ''
 ms.service: databox
-ms.devlang: NA
+ms.subservice: pod
 ms.topic: quickstart
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 10/04/2018
 ms.author: alkohli
-ms.openlocfilehash: fe15167a5e88dbc9a97383c9a074a32c91f4219a
-ms.sourcegitcommit: 4edf9354a00bb63082c3b844b979165b64f46286
+ms.openlocfilehash: a2f8d295ca161ff2263f53b8faa407c7a42a4c6b
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48784637"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49385842"
 ---
 # <a name="quickstart-deploy-azure-data-box-using-the-azure-portal"></a>Rövid útmutató: Az Azure Data Box üzembe helyezése az Azure Portal használatával
 
@@ -35,7 +29,7 @@ Előkészületek:
     - Microsoft nagyvállalati szerződés (EA). További információk az [EA-előfizetésekről](https://azure.microsoft.com/pricing/enterprise-agreement/).
     - Felhőszolgáltató (CSP). További információk az [Azure CSP programjáról](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-overview).
     - Használat – használatalapú fizetés. További információk az Azure [használatalapú előfizetéseiről](https://azure.microsoft.com/offers/ms-azr-0003p/).
-    - Microsoft Azure szponzorálás. További információk az [Azure szponzorálási programjáról](https://azure.microsoft.com/en-in/offers/ms-azr-0036p/). 
+    - Microsoft Azure szponzorálás. További információk az [Azure szponzorálási programjáról](https://azure.microsoft.com/offers/ms-azr-0036p/). 
 
 - A Data Box-rendelések létrehozásához tulajdonosi vagy közreműködői jogosultsággal kell rendelkeznie az előfizetésen.
 - Tekintse át [a Data Box biztonsági útmutatásait](data-box-safety.md).

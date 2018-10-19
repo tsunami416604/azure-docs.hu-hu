@@ -47,7 +47,7 @@ A következő szakasz egy meglévő ASP.NET-alkalmazás egy Azure virtuális gé
 5. Válassza ki a megfelelő fiókot (az Azure-előfizetést a virtuális gép csatlakozik).  
    - Visual Studio-felhasználó jelentkezett be, ha a fiók listában megjelenik a hitelesített fiókok.  
    - Ha nincs bejelentkezve, vagy ha a van szüksége a fiók nem szerepel a listán, válassza a "Fiók hozzáadása...", és kövesse az utasításokat követve jelentkezzen be.  
-   ![Azure-fiók-választó]  
+   ![Azure Account Selector]  
 
 6. Válassza ki a megfelelő virtuális Gépet a listából a meglévő virtuális gépek.
 

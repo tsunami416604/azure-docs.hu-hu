@@ -11,12 +11,12 @@ ms.topic: quickstart
 description: Gyors Kubernetes-fejlesztés tárolókkal és mikroszolgáltatásokkal az Azure-ban
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, tárolók
 manager: douge
-ms.openlocfilehash: a5bcd814cce6612c0074f2a85bb8757b50f183ca
-ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
+ms.openlocfilehash: abceef1d73cafdc24099f9ac9ca67bb36e7e96d1
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/01/2018
-ms.locfileid: "47585594"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49318061"
 ---
 # <a name="quickstart-create-a-kubernetes-dev-space-with-azure-dev-spaces-net-core-and-vs-code"></a>Rövid útmutató: Kubernetes Dev Spaces-tér létrehozása az Azure Dev Spaces segítségével (.NET Core és VS Code)
 
@@ -37,8 +37,8 @@ Ebből az útmutatóból a következőket tudhatja meg:
 - Az EastUS, CentralUS, WestUS2, WestEurope, CanadaCentral vagy CanadaEast régióban lévő, a Kubernetes 1.9.6-os vagy újabb verzióját futtató Kubernetes-fürt, amelyen engedélyezve van a **HTTP-alkalmazásútválasztás**.
 
     ```cmd
-    az group create --name MyResourceGroup --region <region>
-    az aks create -g MyResourceGroup -n MyAKS --location <region> --kubernetes-version 1.11.2 --enable-addons http_application_routing
+    az group create --name MyResourceGroup --location <region>
+    az aks create -g MyResourceGroup -n MyAKS --location <region> --kubernetes-version 1.11.2 --enable-addons http_application_routing --generate-ssh-keys
     ```
 
 ## <a name="set-up-azure-dev-spaces"></a>Az Azure Dev Spaces beállítása

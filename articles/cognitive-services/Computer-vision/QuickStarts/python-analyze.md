@@ -3,19 +3,19 @@ title: 'Rövid útmutató: Távoli kép elemzése – REST, Python – Computer 
 titleSuffix: Azure Cognitive Services
 description: Ebben a rövid útmutatóban egy távoli képet fog elemezni a Computer Vision API és a Python használatával.
 services: cognitive-services
-author: noellelacharite
+author: PatrickFarley
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: computer-vision
 ms.topic: quickstart
 ms.date: 08/28/2018
-ms.author: v-deken
-ms.openlocfilehash: 1fc7c58ec4e5c200ae62c70698db7ec813d82703
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.author: pafarley
+ms.openlocfilehash: 8f8503277ec03bd6036431bcacd3719dac7378de
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48883941"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49338738"
 ---
 # <a name="quickstart-analyze-a-remote-image-using-the-rest-api-and-python-in-computer-vision"></a>Rövid útmutató: Távoli kép elemzése a REST API és a Python használatával a Computer Visionben
 
@@ -37,7 +37,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 A minta létrehozásához és futtatásához az alábbi lépéseket kell végrehajtania:
 
 1. Másolja az alábbi kódot egy szövegszerkesztőbe.
-1. Szükség szerint hajtsa végre a következő módosításokat a kódban:
+1. Hajtsa végre a következő módosításokat a kód megfelelő területein:
     1. Cserélje le a `subscription_key` értéket az előfizetői azonosítóra.
     1. Ha szükséges, cserélje le a `vision_base_url` értéket azon Azure-régió Computer Vision erőforrásának végponti URL-címére, ahol az előfizetői azonosítókat beszerezte.
     1. Ha szeretné, cserélje le az `image_url` értéket egy olyan kép URL-címére, amelyet elemezni szeretne.

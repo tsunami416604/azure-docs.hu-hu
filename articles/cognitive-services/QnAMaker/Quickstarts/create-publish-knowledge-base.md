@@ -9,12 +9,12 @@ ms.component: qna-maker
 ms.topic: quickstart
 ms.date: 09/12/2018
 ms.author: diberry
-ms.openlocfilehash: 85b4630492d5f5b3fb71d563b0947d8a72ae4e1d
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: 99f9259c9fa73a9ba4842b2684cde8a44f73145a
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48886560"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49389666"
 ---
 # <a name="quickstart-create-train-and-publish-your-knowledge-base"></a>Rövid útmutató: Tudásbázis létrehozása, betanítása és közzététele
 
@@ -41,7 +41,7 @@ Létrehozhat egy QnA Maker-tudásbázist a saját tartalmak, például gyakori k
 
 5. A 3. lépésben adja a tudásbázisnak a **My Sample QnA KB** nevet.
 
-6. A tudásbázis tartalmakkal való feltöltéséhez válasszon ki háromféle adatforrást. A 4. lépésben a **Populate your KB** (Tudásbázis feltöltése) területen adja meg a [BitLocker-helyreállítás gyakori kérdéseinek](https://docs.microsoft.com/en-us/windows/security/information-protection/bitlocker/bitlocker-overview-and-requirements-faq) URL-címét az **URL** mezőben.
+6. A tudásbázis tartalmakkal való feltöltéséhez válasszon ki háromféle adatforrást. A 4. lépésben a **Populate your KB** (Tudásbázis feltöltése) területen adja meg a [BitLocker-helyreállítás gyakori kérdéseinek](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-overview-and-requirements-faq) URL-címét az **URL** mezőben.
 
    ![QnA-szolgáltatás tudásbázisának kiválasztása](../media/qnamaker-quickstart-kb/add-datasources.png)
 

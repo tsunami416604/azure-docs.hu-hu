@@ -1,27 +1,20 @@
 ---
 title: Adatok átalakítása az Azure Data Box Edge segítségével | Microsoft Docs
 description: Megismerheti, hogyan konfigurálhatja a számítási szerepköröket a Data Box Edge-ben, és hogyan alakíthatja át az adatokat, mielőtt beküldené őket az Azure-nak.
-services: databox-edge-gateway
-documentationcenter: NA
+services: databox
 author: alkohli
-manager: twooley
-editor: ''
-ms.assetid: ''
-ms.service: databox-edge-gateway
-ms.devlang: NA
+ms.service: databox
+ms.subservice: edge
 ms.topic: tutorial
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 10/08/2018
 ms.author: alkohli
-ms.custom: ''
 Customer intent: As an IT admin, I need to understand how to configure compute on Data Box Edge so I can use it to transform the data before sending it to Azure.
-ms.openlocfilehash: fd04c906f57a9378879ef6357e2724695533d370
-ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
+ms.openlocfilehash: 4729e08399132243543c6f4e1cadd537d185e9e3
+ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/06/2018
-ms.locfileid: "48832833"
+ms.lasthandoff: 10/12/2018
+ms.locfileid: "49166253"
 ---
 # <a name="tutorial-transform-data-with-azure-data-box-edge-preview"></a>Oktatóanyag: Adatok átalakítása az Azure Data Box Edge segítségével (előzetes verzió)
 
@@ -74,7 +67,7 @@ Az alábbi lépésekkel állíthat be számítási szerepkört az eszközön.
 
     ![Számítási szerepkör beállítása](./media/data-box-edge-deploy-configure-compute/setup-compute-2.png)
  
-2. A legördülő menüből válassza ki az előző lépésben létrehozott **IoT Hub-erőforrást**. Az IoT Edge-eszközön ezen a ponton csak a Linux platform érhető el. Kattintson a **Létrehozás** gombra.
+2. A legördülő menüből válassza ki az előző lépésben létrehozott **IoT Hub-erőforrást**. Az IoT Edge-eszközön ezen a ponton csak a Linux platform érhető el. Kattintson a **Create** (Létrehozás) gombra.
 
     ![Számítási szerepkör beállítása](./media/data-box-edge-deploy-configure-compute/setup-compute-3.png)
  
@@ -107,7 +100,7 @@ Ebben a szakaszban egy egyéni modult fog hozzáadni az IoT Edge-eszközhöz.
 
 Az eljárás egy olyan példát használ, amelyben az egyéni modul az Edge-eszköz helyi megosztásából fájlokat helyez át az eszköz felhőalapú megosztásába. A felhőalapú megosztás ezután a vele társított Azure-tárfiókba küldi tovább a fájlokat. 
 
-1. Az első lépés a helyi megosztás hozzáadása az Edge-eszközhöz. A Data Box Edge-erőforrásban menjen a **Megosztások** oldalra. Kattintson a **+ Megosztás hozzáadása** gombra. Adja meg a megosztás nevét, és válassza ki a megosztás típusát. Helyi megosztás létrehozásához jelölje ki a **helyi Edge-megosztásként történő konfigurálás** jelölőnégyzetét. Válasszon ki egy **meglévő felhasználót**, vagy **hozzon létre egy újat**. Kattintson a **Létrehozás** gombra.
+1. Az első lépés a helyi megosztás hozzáadása az Edge-eszközhöz. A Data Box Edge-erőforrásban menjen a **Megosztások** oldalra. Kattintson a **+ Megosztás hozzáadása** gombra. Adja meg a megosztás nevét, és válassza ki a megosztás típusát. Helyi megosztás létrehozásához jelölje ki a **helyi Edge-megosztásként történő konfigurálás** jelölőnégyzetét. Válasszon ki egy **meglévő felhasználót**, vagy **hozzon létre egy újat**. Kattintson a **Create** (Létrehozás) gombra.
 
     ![Egyéni modul hozzáadása](./media/data-box-edge-deploy-configure-compute/add-a-custom-module-1.png) 
 
