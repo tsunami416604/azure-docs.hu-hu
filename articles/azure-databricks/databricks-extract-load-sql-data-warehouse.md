@@ -11,12 +11,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.workload: Active
 ms.date: 07/26/2018
-ms.openlocfilehash: 11046089bd25e1ca9e117d5d8908471858450e6d
-ms.sourcegitcommit: cfff72e240193b5a802532de12651162c31778b6
+ms.openlocfilehash: c416937f98f6bcb49f86fce18213ca4ed349c513
+ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39308796"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48902059"
 ---
 # <a name="tutorial-extract-transform-and-load-data-using-azure-databricks"></a>Oktatóanyag: Adatok kinyerése, átalakítása és betöltése az Azure Databricks használatával
 
@@ -47,7 +47,7 @@ Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](h
 Mielőtt nekilát az oktatóanyagnak, ellenőrizze, hogy megfelel-e a következő feltételeknek:
 - Hozzon létre egy Azure SQL Data Warehouse-t, hozzon létre egy kiszolgálószintű tűzfalszabályt, majd csatlakozzon a kiszolgálóhoz kiszolgáló-rendszergazdaként. Kövesse az [Azure SQL Data Warehouse létrehozásáról szóló rövid útmutató](../sql-data-warehouse/create-data-warehouse-portal.md) utasításait
 - Hozzon létre egy fő adatbáziskulcsot az Azure SQL Data Warehouse számára. Kövesse a [Fő adatbázisfőkulcs létrehozását](https://docs.microsoft.com/sql/relational-databases/security/encryption/create-a-database-master-key) ismertető dokumentum utasításait.
-- Hozzon létre egy Azure Blob Storage-fiókot, benne egy tárolóval. A hozzáférési kulcsot is kérje le a tárfiók eléréséhez. Kövesse az [Azure Blog-tárfiók létrehozásáról szóló rövid útmutató](../storage/blobs/storage-quickstart-blobs-portal.md) utasításait.
+- Hozzon létre egy Azure Blob Storage-fiókot, benne egy tárolóval. A hozzáférési kulcsot is kérje le a tárfiók eléréséhez. A kapcsolódó utasításokért lásd az [Azure Blob Storage-fiók létrehozását ismertető rövid útmutatót](../storage/blobs/storage-quickstart-blobs-portal.md).
 
 ## <a name="log-in-to-the-azure-portal"></a>Bejelentkezés az Azure Portalra
 

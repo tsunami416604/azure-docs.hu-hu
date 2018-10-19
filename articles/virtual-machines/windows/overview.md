@@ -1,5 +1,5 @@
 ---
-title: Windows-rendszerű virtuális gépek áttekintése | Microsoft Docs
+title: A Windows rendszerű virtuális gépek áttekintése – Azure | Microsoft Docs
 description: Tudnivalók Windows rendszerű virtuális gépek létrehozásáról és kezeléséről az Azure-ban.
 services: virtual-machines-windows
 documentationcenter: ''
@@ -13,15 +13,15 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 07/17/2017
+ms.date: 10/04/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: e12b8153494eaefb1f7e2d27fc667ef0070c68d0
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: 6ec151222bda3d87386cc3be4c54821775880795
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "41919919"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48816837"
 ---
 # <a name="overview-of-windows-virtual-machines-in-azure"></a>Windows rendszerű virtuális gépek áttekintése az Azure-ban
 
@@ -83,9 +83,9 @@ Az alábbi tábla bemutat néhány módszert, amelyekkel egy rendszerképről t�
 | Módszer | Leírás |
 | --- | --- |
 | Azure Portal |Az értékek a rendszerképek kiválasztásakor automatikusan megjelennek. |
-| Azure PowerShell |[Get-AzureRMVMImagePublisher](https://docs.microsoft.com/powershell/module/azurerm.compute/get-azurermvmimagepublisher) -Location "location"<BR>[Get-AzureRMVMImageOffer](https://docs.microsoft.com/powershell/module/azurerm.compute/get-azurermvmimageoffer) -Location "location" -Publisher "publisherName"<BR>[Get-AzureRMVMImageSku](/powershell/module/azurerm.compute/get-azurermvmimagesku) -Location "location" -Publisher "publisherName" -Offer "offerName" |
+| Azure PowerShell |[Get-AzureRMVMImagePublisher](https://docs.microsoft.com/powershell/module/azurerm.compute/get-azurermvmimagepublisher) -Location *location*<BR>[Get-AzureRMVMImageOffer](https://docs.microsoft.com/powershell/module/azurerm.compute/get-azurermvmimageoffer) -Location *location* -Publisher *publisherName*<BR>[Get-AzureRMVMImageSku](/powershell/module/azurerm.compute/get-azurermvmimagesku) -Location *location* -Publisher *publisherName* -Offer *offerName* |
 | REST API-k |[Rendszerkép-közzétevők listázása](https://docs.microsoft.com/rest/api/compute/platformimages/platformimages-list-publishers)<BR>[Rendszerkép-ajánlatok listázása](https://docs.microsoft.com/rest/api/compute/platformimages/platformimages-list-publisher-offers)<BR>[Rendszerkép-termékváltozatok listázása](https://docs.microsoft.com/rest/api/compute/platformimages/platformimages-list-publisher-offer-skus) |
-| Azure CLI |[az vm image list-publishers](https://docs.microsoft.com/cli/azure/vm/image?view=azure-cli-latest#az_vm_image_list_publishers) --location "location"<BR>[az vm image list-offers](https://docs.microsoft.com/cli/azure/vm/image?view=azure-cli-latest#az_vm_image_list_offers) --location "location" --publisher "publisherName"<BR>[az vm image list-skus](https://docs.microsoft.com/cli/azure/vm?view=azure-cli-latest#az_vm_list_skus) --location "location" --publisher "publisherName" --offer "offerName"|
+| Azure CLI |[az vm image list-publishers](https://docs.microsoft.com/cli/azure/vm/image?view=azure-cli-latest#az_vm_image_list_publishers) --location *location*<BR>[az vm image list-offers](https://docs.microsoft.com/cli/azure/vm/image?view=azure-cli-latest#az_vm_image_list_offers) --location *location* --publisher *publisherName*<BR>[az vm image list-skus](https://docs.microsoft.com/cli/azure/vm?view=azure-cli-latest#az_vm_list_skus) --location *location* --publisher *publisherName* --offer *offerName*|
 
 Lehetősége van egy [saját rendszerképek feltöltésére és használatára](upload-generalized-managed.md#upload-the-vhd-to-your-storage-account) is, ebben az esetben a közzétevő neve, az ajánlat és a termékváltozat adatok nem használatosak.
 
@@ -124,7 +124,7 @@ Az alábbi táblázat információkat nyújt a virtuális gépek létrehozásán
 | REST API-k |[Virtuális gépek létrehozása vagy frissítése](https://docs.microsoft.com/rest/api/compute/virtualmachines/virtualmachines-create-or-update) |
 | Azure CLI |[Virtuális gép létrehozása az Azure CLI-vel](https://docs.microsoft.com/azure/virtual-machines/scripts/virtual-machines-windows-cli-sample-create-vm) |
 
-Reménykedhet, hogy sosem következik be, de várhatóan időnként elromlik valami. Ha ilyen helyzet áll elő, tekintse át [A Resource Manager üzembe helyezési hibáinak elhárítása egy Windows rendszerű virtuális gép létrehozásakor az Azure-ban](troubleshoot-deployment-new-vm.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) témakört.
+Reménykedhet, hogy sosem következik be, de várhatóan időnként elromlik valami. Ha ilyen helyzet áll elő, tekintse át [A Resource Manager üzembe helyezési hibáinak elhárítása egy Windows rendszerű virtuális gép létrehozásakor az Azure-ban](../troubleshooting/troubleshoot-deployment-new-vm-windows.md) témakört.
 
 ## <a name="how-do-i-manage-the-vm-that-i-created"></a>Hogyan kezelhetem a létrehozott virtuális gépet?
 A virtuális gépek felügyelhetők egy böngészőalapú portállal, parancsfájlkezelést támogató parancssori eszközökkel, vagy közvetlenül az API-kon keresztül. A tipikus kezelési feladatok közé tartozik a virtuális gépek adatainak lekérése, a virtuális gépekre való bejelentkezés, a rendelkezésre állás kezelése és a biztonsági mentések készítése.
@@ -141,10 +141,10 @@ Az alábbi táblázatban az elérhető helyek listájának megismeréséhez olva
 | Azure CLI |A virtuális gépek Azure CLI-vel való kezelésével kapcsolatban tekintse meg [az Azure CLI referenciaanyagát](https://docs.microsoft.com/cli/azure/vm). |
 
 ### <a name="log-on-to-the-vm"></a>Bejelentkezés a virtuális gépre
-Használja az Azure Portal Csatlakozás gombját [egy távoli asztali (RDP) munkamenet elindításához](connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). A távoli kapcsolatok használatának megkísérlésekor időnként hibák történhetnek. Ha ez a helyzet áll elő, tekintse át a súgó információit a [Távoli asztali kapcsolatok hibaelhárítása Windows rendszert futtató Azure virtuális gépeken](troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) szakaszban.
+Használja az Azure Portal Csatlakozás gombját [egy távoli asztali (RDP) munkamenet elindításához](connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). A távoli kapcsolatok használatának megkísérlésekor időnként hibák történhetnek. Ha ez a helyzet áll elő, tekintse át a súgó információit a [Távoli asztali kapcsolatok hibaelhárítása Windows rendszert futtató Azure virtuális gépeken](../troubleshooting/troubleshoot-rdp-connection.md) szakaszban.
 
 ### <a name="manage-availability"></a>Rendelkezésre állás kezelése
-Fontos, hogy tisztában legyen azzal, hogyan [biztosíthatja alkalmazása magas rendelkezésre állását](manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). Ebben a konfigurációban több virtuális gépet hozhat létre, hogy közülük legalább egy mindig, mindenképp fusson.
+Fontos, hogy tisztában legyen azzal, hogyan [biztosíthatja alkalmazása magas rendelkezésre állását](manage-availability.md). Ebben a konfigurációban több virtuális gépet hozhat létre, hogy közülük legalább egy mindig, mindenképp fusson.
 
 Ahhoz, hogy az üzembe helyezett példány megfeleljen a 99,95-ös virtuálisgép-szolgáltatói szerződésünknek, legalább két virtuális gépet kell üzembe helyeznie a számítási feladatok futtatásához egy [rendelkezésre állási csoporton](tutorial-availability-sets.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) belül. Ez a konfiguráció biztosítja, hogy a virtuális gépek több tartalék tartomány között oszoljanak meg, és az őket futtató gazdagépeknek különböző karbantartási időszakaik legyenek. Az Azure egészére vonatkozó rendelkezésre állási garancia magyarázata a teljes [Azure SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/)-ban található.
 
@@ -152,5 +152,5 @@ Ahhoz, hogy az üzembe helyezett példány megfeleljen a 99,95-ös virtuálisgé
 A [Recovery Services tároló](../../backup/backup-introduction-to-azure-backup.md) megvédi az Azure Backup és az Azure Site Recovery szolgáltatásokban található adatokat és adategységeket. Igénybe vehet egy Recovery Services tárolót a [Resource Managerrel üzembe helyezett virtuális gépek biztonsági mentéseinek létrehozásához és kezeléséhez a PowerShell használatával.](../../backup/backup-azure-vms-automation.md) 
 
 ## <a name="next-steps"></a>További lépések
-* Ha Linux rendszerű virtuális gépeket tervez használni, nézze át [Az Azure és a Linux](../linux/overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) témakört.
-* Infrastruktúra-beállítási útmutatóért lásd [Az Azure-infrastruktúra bemutatása példákkal](infrastructure-example.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) témakört.
+* Ha Linux rendszerű virtuális gépeket tervez használni, nézze át [Az Azure és a Linux](../linux/overview.md) témakört.
+* Infrastruktúra-beállítási útmutatóért lásd [Az Azure-infrastruktúra bemutatása példákkal](infrastructure-example.md) témakört.

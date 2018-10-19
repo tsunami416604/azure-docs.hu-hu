@@ -1,53 +1,54 @@
 ---
-title: Projekt Akusztika minta bemutatója – Cognitive Services
-description: Ez az útmutató ismerteti a Unity-minta jelenet projekt Akusztika, beleértve az asztali és VR való üzembe helyezés.
+title: 'Példa: Project Acoustics'
+titlesuffix: Azure Cognitive Services
+description: Ez az útmutató a Unity nevű Project Acoustics-mintajelenetet ismerteti, beleértve az asztali számítógépen és VR-ban történő üzembe helyezést is.
 services: cognitive-services
 author: kegodin
-manager: noelc
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: acoustics
-ms.topic: article
+ms.topic: sample
 ms.date: 08/17/2018
 ms.author: kegodin
-ms.openlocfilehash: eaf7ff9f7f791fd6d04e6b76d256b4987c50cd13
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
-ms.translationtype: MT
+ms.openlocfilehash: f5ea565e68579dfad601d1037daeb4113e3daa43
+ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47434092"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48901158"
 ---
 # <a name="unity-sample-walkthrough"></a>Unity mintaútmutató
-Ez a bemutató a projekt Akusztika minta. További információ a milyen projekt Akusztika van, tekintse meg a [projekt Akusztika bemutatása](what-is-acoustics.md). A projekt Akusztika csomagot ad hozzá egy már meglévő Unity-projektet a segítségre van szüksége, használja a [a kezdeti lépések útmutatóban](getting-started.md).
+Ez egy Project Acoustics-mintaútmutató. A Project Acousticsról további információkat a [Project Acoustics bevezető részében](what-is-acoustics.md) talál. Ha segítségre van szüksége a Project Acoustics-csomag már meglévő Unity-projekthez való hozzáadásában, tekintse meg az [első lépéseket ismertető útmutatót](getting-started.md).
 
-## <a name="requirements-for-running-the-sample-project"></a>A mintaprojekt futtatásának követelményei
-* Unity 2018.2 +, .NET 4.x scripting futásidejű verzió használatával
+## <a name="requirements-for-running-the-sample-project"></a>A mintaprojekt futtatásához kapcsolódó követelmények
+* Unity 2018.2+, .NET 4.x Scripting Runtime-verzióval
 * Windows 64-bit Unity szerkesztő
-* A minta támogatja a Windows asztali, UWP- és Android teljesítménycéljait, beleértve a fő csatlakoztatott jeleníti meg (HMDS-t)
-* Az Azure Batch-előfizetés szükséges bake folyamat
+* A minta támogatja a Windows asztali verzióját, az UWP-t és az androidos céleszközöket, például a fejre erősített kijelzőket (HMD-ket) is
+* A beépítési folyamathoz Azure Batch-előfizetés szükséges
 
-## <a name="sample-project-setup"></a>Minta-projekt beállítása
-Töltse le és importálja a **MicrosoftAcoustics.Sample.unitypackage**. Importálási, a beállításokat, beleértve a projekt **Spatializer** és **Verze modulu Runtime Scripting** frissülnek, hogy a beépülő modul követelményeinek. Ha ez befejeződött, megjelenik a Unity-konzolon, a hiba **AcousticsGeometry.cs** módosításával a parancsfájl-kezelési futtatókörnyezet verziójának **.NET 4.x egyenértékű**. Ezen beállítások módosítása a csomag importálása részeként történik, de a Unity érvénybe léptetéséhez újraindítás szükséges. Indítsa újra most Unity.
+## <a name="sample-project-setup"></a>A mintaprojekt beállítása
+Töltse le és importálja a **MicrosoftAcoustics.Sample.unitypackage** csomagot. Importáláskor a beépülő modul követelményeinek megfeleljenek frissülnek a projektbeállítások (például a **Spatializer** és a **Scripting Runtime Version** (Scripting Runtime-verzió)). Ezt követően az **AcousticsGeometry.cs** hibaüzenet küld a Unity konzoljára, hogy a Scripting Runtime Version (Scripting Runtime-verzió) beállítás értéke **.NET 4.x-nek megfelelőre** módosult. A beállítások módosítása a csomag importálásával megtörtént, de azok érvénybe lépéséhez a Unity újraindítása szükséges. Indítsa újra a Unityt.
 
 ## <a name="running-the-sample"></a>A minta futtatása
-A minta tartalmaz egy bemutató jelenet **Assets/AcousticsDemo/ProjectAcousticsDemo.unity**. A helyszín rendelkezik három megbízható forrásból. Alapértelmezés szerint csak egy megbízható forrás lejátszása, és a másik kettőt fel vannak függesztve. Ezek alatt találhatók **hang források** a a **hierarchia**. Általános navigációs parancsfájl segítségével, a fő kamera CameraHolder objektum gyermek. 
+A minta egy bemutatójelenetet (**Assets/AcousticsDemo/ProjectAcousticsDemo.unity**) is tartalmaz. A jelenethez három hangforrás tartozik. Alapértelmezés szerint csak az egyik hangforrás aktív, a másik kettő szüneteltetve van. Ezek a **Hierarchy** (Hierarchia) nézet **Sound Sources** (Hangforrások) területén találhatók meg. Az általános navigációs szkript létrehozásának megkönnyítése érdekében a Main Camera a CameraHolder objektum gyermekeleme. 
 
-![Hierarchia megtekintése](media/SampleHierarchyView.png)
+![Hierarchy (Hierarchia) nézet](media/SampleHierarchyView.png)
 
-A jelenet már lett számlázásnak és a egy ACE-fájlt az társított a **MicrosoftAcoustics** a prefab a **hierarchia**. 
+A jelenet beépítése már megtörtént, és a **Hierarchy** (Hierarchia) nézetben egy ACE-fájl van társítva az előgyártott **MicrosoftAcoustics** elemhez. 
 
-Figyeljen, hogy a jelenet úgy érzi, a Unity-szerkesztőben a lejátszás gombra kattintva. A számítógépen, használjon W, A, S, D és az egérrel való mozgáshoz. Hasonlítsa össze, hogy a jelenet úgy érzi, és anélkül Akusztika, nyomja le az **R** gombra mindaddig, amíg az átfedő szöveg változik, és a "Akusztika: letiltva." Több vezérlő használható billentyűparancsok megtekintéséhez nyomja meg az **F1**. Az összes vezérlő is gyakorlatot a jobb gombbal kattintva válassza ki a végrehajtandó műveletet, majd balra kattintson a művelet végrehajtásához.
+A Unity szerkesztőjének Play (Lejátszás) gombjára kattintva ellenőrizheti a jelenet hangját. Asztali számítógépen a W, A, S, D billentyűkkel és az egérrel navigálhat. Ha meg szeretné hallgatni, hogy milyen lenne a jelenet hangja az Acoustics használata nélkül, tartsa lenyomva az **R** billentyűt, amíg vörös színnel meg nem jelenik az Acoustics: Disabled (Acoustics: Letiltva) átfedő szöveg. További billentyűparancsok megtekintéséhez nyomja le az **F1** billentyűt. Mindegyik vezérlő esetében lehetőség van a jobb gombbal kattintva kijelölni, majd a bal egérgombbal kattintva végrehajtani a műveletet.
 
-## <a name="targeting-other-platforms"></a>Más platformok célzó
-A minta futtatásához a Windows asztali, UWP, a Windows vegyes valóság, Android és Oculus Go beállításait tartalmazza. Alapértelmezés szerint a projekt Windows asztal konfigurálva van. VR célplatform, nyissa meg a lejátszó beállításai (**szerkesztése > Projektbeállítások > Player**), keresse meg a **XR beállítások**, és ellenőrizze a **virtuális valóságban támogatott** jelölőnégyzetet.
+## <a name="targeting-other-platforms"></a>További célplatformok
+A minta a következő platformokhoz tartalmaz futtatási beállításokat: Windows asztali rendszer, UWP, Windows Mixed Reality, Android és Oculus Go. Alapértelmezés szerint a projekt Windows asztali rendszerre van konfigurálva. VR-célplatform esetén nyissa meg a lejátszó beállításait (**Edit (Szerkesztés) > Project Settings (Projekt beállításai) > Player (Lejátszó)**), keresse meg az **XR Settings** (XR-beállítások) elemet, majd jelölje be a **Virtual Reality Supported** (Virtuális valóság támogatása) jelölőnégyzetet.
 
-![VR engedélyezése](media/VRSupport.png)  
+![A VR engedélyezése](media/VRSupport.png)  
 
-VR mikrofonos kapcsolódni a Számítógéphez. Lépjen a **fájl > Build Settings**, és kattintson a **létrehozásához és futtatásához** , a minta üzembe helyezése a VR mikrofonos. Haladjon végig a mozgásban lévő adatoknak egyaránt vezérlő használata a mikrofonos jelenet, vagy használjon W, A, S, D-t a billentyűzettel.    
-Android- és Oculus Go célozza meg, válassza ki az Android a **Build Settings** menü. Kattintson a **cél váltson**, majd **létrehozásához és futtatásához**. Ez a minta jelenet telepíti a csatlakoztatott Androidos eszközön. További információ a Unity fejlesztési Android: [Unity-dokumentáció](https://docs.unity3d.com/Manual/android-GettingStarted.html).
+Csatlakoztasson egy VR-headsetet a számítógéphez. A **File (Fájl) > Build Settings (Létrehozási beállítások)** menüpontban a **Build and Run** (Létrehozás és futtatás) gombra kattintva telepítheti a mintát a VR-headsetre. A jelenetben a headset mozgásvezérlőivel vagy a billentyűzet W, A, S, D billentyűivel navigálhat.    
+Android és Oculus Go esetében a **Build Settings** (Létrehozási beállítások) menüben válassza az Android lehetőséget. Kattintson a **Switch Target** (Cél váltása) elemre, majd a **Build and Run** (Létrehozás és futtatás) gombra. Ezzel telepíti a mintajelenetet a csatlakoztatott androidos eszközre. Az Android rendszerre történő Unity-fejlesztésről további információt [a Unity dokumentációjában](https://docs.unity3d.com/Manual/android-GettingStarted.html) talál.
 
-![Cél Android](media/TargetAndroid.png)  
+![Androidos cél](media/TargetAndroid.png)  
 
 ## <a name="next-steps"></a>További lépések
-* [Azure-fiók létrehozása](create-azure-account.md) a saját kódfejlesztést
-* Fedezze fel a [folyamat tervezése](design-process.md)
+* [Azure-fiók létrehozása](create-azure-account.md) beépíteni kívánt saját tartalmak számára
+* A [tervezési folyamat](design-process.md) áttekintése
 

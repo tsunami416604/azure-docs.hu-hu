@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 09/27/2018
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: 27600cd4656f70b4cd01745667c0e0fd2a2f4997
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 33b95c1b0e3d654ce8bb6eda3e96b7b3e9c9bc13
+ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47405819"
+ms.lasthandoff: 10/06/2018
+ms.locfileid: "48831483"
 ---
 # <a name="tutorial-deploy-a-linux-service-fabric-cluster-into-an-azure-virtual-network"></a>Oktatóanyag: Linux-alapú Service Fabric-fürt üzembe helyezése Azure Virtual Networkön
 
@@ -85,7 +85,7 @@ Ez a sablon egy öt virtuális gépből álló biztonságos fürtöt és egyetle
 
 ### <a name="service-fabric-cluster"></a>Service Fabric-fürt
 
-A rendszer üzembe helyez egy Linux-fürtöt, amely a következő jellemzőkkel rendelkezik:
+A **Microsoft.ServiceFabric/clusters** erőforrásban a rendszer üzembe helyez egy Linux-fürtöt, amelyet a következők jellemeznek:
 
 * egyetlen csomóponttípus;
 * öt csomópont az elsődleges csomóponttípusban (a sablon paramétereiben konfigurálható);
@@ -99,7 +99,7 @@ A rendszer üzembe helyez egy Linux-fürtöt, amely a következő jellemzőkkel 
 
 ### <a name="azure-load-balancer"></a>Azure Load Balancer
 
-A rendszer egy terheléselosztót helyez üzembe, a mintavételeket és szabályokat pedig az alábbi portokra állítja be:
+A **Microsoft.Network/loadBalancers** erőforrásban a rendszer egy terheléselosztót konfigurál, a mintavételeket és szabályokat pedig az alábbi portokra állítja be:
 
 * ügyfélkapcsolati végpont: 19000;
 * HTTP-átjáró végpontja: 19080;
@@ -108,7 +108,7 @@ A rendszer egy terheléselosztót helyez üzembe, a mintavételeket és szabály
 
 ### <a name="virtual-network-and-subnet"></a>Virtuális hálózat és alhálózat
 
-A virtuális hálózat és az alhálózat neve a sablon paramétereiben határozható meg.  A virtuális hálózat és az alhálózat címtere szintén a sablon paramétereiben határozható meg:
+A virtuális hálózat és az alhálózat neve a sablon paramétereiben határozható meg.  A virtuális hálózat és az alhálózat címtere szintén a sablon paramétereiben határozható meg, és a **Microsoft.Network/virtualNetworks** erőforrásban van konfigurálva:
 
 * virtuális hálózat címtere: 10.0.0.0/16
 * Service Fabric-alhálózat címtere: 10.0.2.0/24

@@ -9,14 +9,14 @@ ms.assetid: 9b7d065e-1979-4397-8298-eeba3aec4792
 ms.service: key-vault
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 07/20/2018
+ms.date: 10/09/2018
 ms.author: barclayn
-ms.openlocfilehash: ff59e39e54433aa673b093e2ee1fbe8c74010e54
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.openlocfilehash: b66c9912ba0b6508c2beb786d2327efa779c6645
+ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39171323"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49079463"
 ---
 # <a name="tutorial-use-azure-key-vault-from-a-web-application"></a>Oktatóanyag: Az Azure Key Vault használata egy webalkalmazásból
 
@@ -42,8 +42,7 @@ Az oktatóanyag teljesítéséhez a következő elemekre lesz szüksége:
 
 Végezze el a [Bevezetés az Azure Key Vault használatába](key-vault-get-started.md) című szakaszt egy titkos kód URI-jének, egy ügyfél-azonosítónak és egy titkos ügyfélkulcsnak a lekéréséhez, és regisztrálja az alkalmazást. A webalkalmazás hozzá fog férni a tárolóhoz, és regisztrálva kell lennie az Azure Active Directoryban. Hozzáférési jogosultságokkal is rendelkeznie kell a Key Vaulthoz. Ha nem így van, térjen vissza az első lépéseket ismertető oktatóanyag Alkalmazás regisztrálása című szakaszára, és ismételje meg az ott leírt lépéseket. További információ az Azure Web Apps létrehozásáról: [A Web Apps áttekintése](../app-service/app-service-web-overview.md).
 
-Ez a minta az Azure Active Directory-identitások manuális kiépítésétől függ. Ezért inkább használja a [Managed Service Identityt (MSI)](https://docs.microsoft.com/azure/active-directory/msi-overview). Az MSI automatikusan épít ki Azure AD-identitásokat. További információt a [GitHubon](https://github.com/Azure-Samples/app-service-msi-keyvault-dotnet/) lévő mintában és az [MSI App Service-szel és Functionsszel való használatát ismertető kapcsolódó oktatóanyagban](https://docs.microsoft.com/azure/app-service/app-service-managed-service-identity) talál. Emellett megtekintheti a Key Vaultra vonatkozó [MSI-oktatóanyagunkat](tutorial-web-application-keyvault.md).
-
+Ez a minta az Azure Active Directory-identitások manuális kiépítésétől függ. Érdemes inkább az [Azure-erőforrások felügyelt identitásai](../active-directory/managed-identities-azure-resources/overview.md) lehetőséget választani, amely automatikusan létrehozza az Azure AD-identitásokat. További információt [a GitHubon lévő mintában](https://github.com/Azure-Samples/app-service-msi-keyvault-dotnet/), valamint a kapcsolódó, [az App Service és a Functions használatát ismertető oktatóanyagban](https://docs.microsoft.com/azure/app-service/app-service-managed-service-identity) talál. Az [Azure-webalkalmazások konfigurálása a Key Vault titkos kulcsainak olvasásához](tutorial-web-application-keyvault.md) című oktatóanyag kifejezetten a Key Vaulttal foglalkozik.
 
 ## <a id="packages"></a>NuGet-csomagok hozzáadása
 
@@ -145,14 +144,19 @@ Most, hogy megismerkedett az Azure AD-alkalmazás ügyfél-azonosítóval és ti
 
 ```powershell
 #Create self-signed certificate and export pfx and cer files 
-$PfxFilePath = "c:\data\KVWebApp.pfx" 
-$CerFilePath = "c:\data\KVWebApp.cer" 
-$DNSName = "MyComputer.Contoso.com" 
-$Password ="MyPassword" 
+$PfxFilePath = 'KVWebApp.pfx'
+$CerFilePath = 'KVWebApp.cer'
+$DNSName = 'MyComputer.Contoso.com'
+$Password = 'MyPassword"'
+
+$StoreLocation = 'CurrentUser' #be aware that LocalMachine requires elevated privileges
+$CertBeginDate = Get-Date
+$CertExpiryDate = $CertBeginDate.AddYears(1)
+
 $SecStringPw = ConvertTo-SecureString -String $Password -Force -AsPlainText 
-$Cert = New-SelfSignedCertificate -DnsName $DNSName -CertStoreLocation "cert:\LocalMachine\My" -NotBefore 05/15/2018 -NotAfter 05/15/2019 
-Export-PfxCertificate -cert $cert -FilePath $PFXFilePath -Password $SecStringPw 
-Export-Certificate -cert $cert -FilePath $CerFilePath 
+$Cert = New-SelfSignedCertificate -DnsName $DNSName -CertStoreLocation "cert:\$StoreLocation\My" -NotBefore $CertBeginDate -NotAfter $CertExpiryDate -KeySpec Signature
+Export-PfxCertificate -cert $Cert -FilePath $PFXFilePath -Password $SecStringPw 
+Export-Certificate -cert $Cert -FilePath $CerFilePath 
 ```
 
 Jegyezze fel a .pfx fájl záró dátumát és jelszavát (ebben a példában 2019. május 15. és MyPassword). Ezekre az alábbi szkripthez lesz szükség. 
@@ -172,7 +176,7 @@ $adapp = New-AzureRmADApplication -DisplayName "KVWebApp" -HomePage "http://kvwe
 $sp = New-AzureRmADServicePrincipal -ApplicationId $adapp.ApplicationId
 
 
-Set-AzureRmKeyVaultAccessPolicy -VaultName 'contosokv' -ServicePrincipalName "http://kvwebapp" -PermissionsToSecrets all -ResourceGroupName 'contosorg'
+Set-AzureRmKeyVaultAccessPolicy -VaultName 'contosokv' -ServicePrincipalName "http://kvwebapp" -PermissionsToSecrets get,list,set,delete,backup,restore,recover,purge -ResourceGroupName 'contosorg'
 
 # get the thumbprint to use in your app settings
 $x509.Thumbprint

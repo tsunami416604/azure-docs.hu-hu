@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: tutorial
 ms.date: 09/09/2018
 ms.author: diberry
-ms.openlocfilehash: 92b6327cbb97ed871cd4b10977bcd73a81494e20
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: a469bc600715b2e276d6654596da50d75659aadb
+ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47042125"
+ms.lasthandoff: 10/06/2018
+ms.locfileid: "48831024"
 ---
 # <a name="tutorial-5-extract-contextually-related-data"></a>5. oktatóanyag: Szövegkörnyezet szerint kapcsolódó adatok kinyerése
 Ebben az oktatóanyagban kapcsolódó adatrészleteket keresünk szövegkörnyezet alapján. Kapcsolódó lehet például az indulási hely és a cél egy épületből és irodából egy másik épületbe és irodába történő fizikai mozgás során. Munkarendelés létrehozásához mindkét adatrészletre szükség lehet, és az adatrészletek kapcsolódnak egymáshoz.  
@@ -61,7 +61,7 @@ A teljes kimondott szöveg megjelenítéséhez és a hierarchikus gyermek megjel
 
 2. Válassza az **Entities** (Entitások) elemet a bal oldali menüben.
 
-3. Kattintson a listában lévő szám entitás jobb oldalán található három pontra (***...***). Válassza a **Törlés** elemet. 
+3. Jelölje be a listában lévő számentitás bal oldalán található jelölőnégyzetet. Válassza a **Törlés** elemet. 
 
 ## <a name="add-utterances-to-moveemployee-intent"></a>Kimondott szövegek hozzáadása a MoveEmployee szándékhoz
 
@@ -98,7 +98,7 @@ A kimondott szövegben két hely van megadva: `a-2349` és `b-1298`. Tegyük fel
  
 Ha egy hierarchikus entitásnak csak az egyik gyermeke (az indulás vagy az érkezés) van jelen, az alkalmazás akkor is kinyeri. Egy vagy néhány gyermek kinyeréséhez nem szükséges az összes gyermeket megtalálni. 
 
-1. A `Displace 425-555-0000 away from g-2323 toward hh-2345` kimondott szövegben válassza ki a következő szót: `g-2323`. Megjelenik egy legördülő menü egy szövegmezővel a tetején. Adja meg az entitás nevét (`Locations`) a szövegmezőben, majd a legördülő menüben válassza a **Create new entity** (Új entitás létrehozása) lehetőséget. 
+1. A(z) `Displace 425-555-0000 away from g-2323 toward hh-2345` kimondott szövegben válassza ki a következő szót: `g-2323`. Megjelenik egy legördülő menü egy szövegmezővel a tetején. Adja meg az entitás nevét (`Locations`) a szövegmezőben, majd a legördülő menüben válassza a **Create new entity** (Új entitás létrehozása) lehetőséget. 
 
     [![](media/luis-quickstart-intent-and-hier-entity/hr-create-new-entity-1.png "Képernyőkép: Új entitás létrehozása a szándék lapon")](media/luis-quickstart-intent-and-hier-entity/hr-create-new-entity-1.png#lightbox)
 

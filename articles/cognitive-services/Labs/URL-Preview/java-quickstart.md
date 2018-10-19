@@ -1,31 +1,33 @@
 ---
-title: Java-gyors üzembe helyezési projekt URL-cím Preview - Microsoft kognitív szolgáltatások |} Microsoft Docs
-description: A projekt URL-cím Preview a Microsoft Azure kognitív Services használatának megkezdése minta parancsfájlt.
+title: 'Rövid útmutató: Az URL-cím előnézete projekt, Java'
+titlesuffix: Azure Cognitive Services
+description: Az URL-cím előnézete projekt Java nyelvvel való használatába bevezető szkriptminta.
 services: cognitive-services
 author: mikedodaro
+manager: cgronlun
 ms.service: cognitive-services
-ms.technology: project-url-preview
-ms.topic: article
+ms.component: project-url-preview
+ms.topic: quickstart
 ms.date: 04/24/2018
 ms.author: rosh, v-gedod
-ms.openlocfilehash: 2de74f48882605bfcf05f65723ba5d8993587f51
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
-ms.translationtype: MT
+ms.openlocfilehash: 95e33ceddc2fbbab51d3c4f0164b410847430244
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35348638"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48867116"
 ---
-# <a name="url-preview-java-quickstart"></a>URL-cím Preview Java gyors üzembe helyezés
+# <a name="quickstart-url-preview-with-java"></a>Rövid útmutató: Az URL-cím előnézete Java nyelven
 
-A következő Java parancs létrehozza a SwiftKey webhely URL-cím előnézete: https://swiftkey.com/en.
+Az alábbi Java-példa létrehoz egy URL-előnézetet a SwiftKey webhelyhez: https://swiftkey.com/en.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az ingyenes próbaidőszakra hozzáférési kulcs beszerzése [kognitív szolgáltatások Labs](https://aka.ms/answersearchsubscription)
+Hozzáférési kulcs lekérése a [Cognitive Services Labs](https://aka.ms/answersearchsubscription) ingyenes próbaverziójához
 
 ## <a name="request"></a>Kérés 
 
-Az alábbi kód létrehoz egy `WebRequest`, beállítja a hozzáférési kulcs fejléc, és hozzáadja a lekérdezési karakterlánc a "https://swiftkey.com/en".  Ezután elküldi a kérelmet, és hozzárendeli a JSON-szövegben tartalmazó karakterláncot választ.
+A következő kód például létrehoz egy `WebRequest`-kérést, beállítja a hozzáférési kulcs fejlécét, és hozzáad egy lekérdezési sztringet a „https://swiftkey.com/en” webhelyhez.  Ezután elküldi a kérést, és hozzárendeli a választ egy sztringhez, hogy az tartalmazza a JSON-szöveget.
 
 ````
     // construct URL of search request (endpoint + query string)
@@ -49,11 +51,11 @@ Az alábbi kód létrehoz egy `WebRequest`, beállítja a hozzáférési kulcs f
 
 ## <a name="complete-code"></a>Teljes kód
 
-Válasz a Bing keresési API eredményeket ad vissza, a Bing keresőmotort.
-1. Töltse le, vagy telepítse a gson könyvtárban.
-2. Hozzon létre egy új Java-projektet a kedvenc IDE vagy szerkesztő.
+A Bing Answer Search API a Bing keresőmotor találatait adja vissza.
+1. Töltse le vagy telepítse a gson-kódtárat.
+2. Hozzon létre egy új Java-projektet a kedvenc IDE-környezetében vagy szerkesztőjében.
 3. Adja hozzá az alábbi kódot.
-4. Cserélje le a subscriptionKey értékét egy előfizetési érvényes elérési kulcsával.
+4. A subscriptionKey értékét cserélje le az előfizetéshez használható hozzáférési kulcsra.
 5. Futtassa a programot.
 
 ````
@@ -166,7 +168,7 @@ class SearchResults{
 ````
 
 ## <a name="next-steps"></a>További lépések
-- [C# gyors üzembe helyezés](csharp.md)
-- [JavaScript gyors üzembe helyezés](javascript.md)
-- [Csomópont gyors üzembe helyezés](node-quickstart.md)
-- [PYthon gyors üzembe helyezés](python-quickstart.md)
+- [C# – rövid útmutató](csharp.md)
+- [JavaScript – rövid útmutató](javascript.md)
+- [Node – rövid útmutató](node-quickstart.md)
+- [Python – rövid útmutató](python-quickstart.md)

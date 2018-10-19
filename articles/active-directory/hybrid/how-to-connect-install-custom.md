@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 09/28/2018
+ms.date: 10/04/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: e984dc985100bcdabbee4fb86bd1819a329301a5
-ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
+ms.openlocfilehash: 95a0ffc6deecb7fd3bd6fce740f578352fdf2d66
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47452632"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48888143"
 ---
 # <a name="custom-installation-of-azure-ad-connect"></a>Az Azure AD Connect testreszabott telepítése
 Az Azure AD Connect **Custom settings** (Egyéni beállítások) menüje akkor használható, ha részletesebb beállításokra van szükség a telepítéshez. Akkor van rá szükség, ha több erdővel rendelkezik vagy ha választható szolgáltatásokat kíván konfigurálni, amelyeket a gyorstelepítés nem tartalmaz. Minden olyan esetben szükséges, ahol a [**gyorstelepítés**](how-to-connect-install-express.md) beállítás nem megfelelő az üzemelő példányhoz vagy a topológiához.
@@ -156,12 +156,19 @@ A csoportra szűrés szolgáltatás használatával szinkronizálhatja az objekt
 ### <a name="optional-features"></a>Optional Features (Választható szolgáltatások)
 A képernyő segítségével beállíthatja a választható szolgáltatásokat az egyedi forgatókönyvekhez.
 
+>[!WARNING]
+>Az Azure AD Connect az **1.0.8641.0-s** verzióig bezárólag az Azure Access Control szolgáltatást használta a jelszavak visszaírására.  Ezt a szolgáltatást **2018. november 7-vel** megszüntetjük.  Amennyiben az Azure AD Connect valamely érintett verzióját használja, és a jelszóvisszaírás engedélyezve van, a szolgáltatás megszüntetését követően a felhasználók esetleg nem lesznek többé képesek módosítani vagy visszaállítani a jelszavukat. Az Azure AD Connect érintett verzióiban a jelszóvisszaírás nem lesz támogatva.
+>
+>Az Access Control Service szolgáltatással kapcsolatos további információért lásd a [Migrálás az Azure Access Control Service-ből](../develop/active-directory-acs-migration.md) című cikket.
+>
+>Az Azure AD Connect legújabb verziójának letöltéséhez kattintson [ide](https://www.microsoft.com/en-us/download/details.aspx?id=47594).
+
 ![Választható szolgáltatások](./media/how-to-connect-install-custom/optional2.png)
 
 > [!WARNING]
 > Amennyiben a DirSync vagy az Azure AD Sync jelenleg aktív, ne aktiválja az Azure AD Connect egyik visszaíró szolgáltatását sem.
->
->
+
+
 
 | Optional Features (Választható szolgáltatások) | Leírás |
 | --- | --- |
@@ -190,6 +197,9 @@ Az előző lépésben kiválasztott szolgáltatások alapján ez az oldal azt mu
 
 ### <a name="directory-extension-attribute-sync"></a>Címtárbővítmény-attribútumok szinkronizálása
 Az Azure AD szolgáltatásban lévő sémát kiterjesztheti a szervezet által hozzáadott egyedi attribútumokkal vagy az Active Directory szolgáltatásban lévő egyéb attribútumokkal. A szolgáltatás használatához válassza a **Directory Extension attribute sync** (Címtárbővítmény-attribútumok szinkronizálása) szakaszt az **Optional Features** (Választható szolgáltatások) lapon. Több attribútumot is kiválaszthat szinkronizálásra ezen az oldalon.
+
+>[!NOTE]
+>Az Elérhető attribútumok mező megkülönbözteti a kis- és nagybetűket.
 
 ![Címtárbővítmények](./media/how-to-connect-install-custom/extension2.png)
 

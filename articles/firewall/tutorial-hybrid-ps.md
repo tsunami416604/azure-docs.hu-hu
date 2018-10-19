@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: tutorial
-ms.date: 9/25/2018
+ms.date: 10/2/2018
 ms.author: victorh
-ms.openlocfilehash: 919051a945d423a104b286e9c5703c5b749cf026
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 27221ac4b23f52dd6976a959e6e5529eb0cc89fa
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46946459"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48856071"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-in-a-hybrid-network-using-azure-powershell"></a>Oktatóanyag: Az Azure Firewall üzembe helyezése és konfigurálása hibrid hálózatban az Azure PowerShell használatával
 
@@ -134,6 +134,28 @@ $VNetSpoke = New-AzureRmVirtualNetwork -Name $VnetNameSpoke -ResourceGroupName $
 -Location $Location1 -AddressPrefix $VNetSpokePrefix -Subnet $Spokesub,$GWsubSpoke
 ```
 
+## <a name="create-and-configure-the-onprem-vnet"></a>A helyszíni virtuális hálózat létrehozása és konfigurálása
+
+Határozza meg a virtuális hálózat részét képező alhálózatokat:
+
+```azurepowershell
+$Onpremsub = New-AzureRmVirtualNetworkSubnetConfig -Name $SNNameOnprem -AddressPrefix $SNOnpremPrefix
+$GWOnpremsub = New-AzureRmVirtualNetworkSubnetConfig -Name $SNnameGW -AddressPrefix $SNGWOnpremPrefix
+```
+
+Most hozza létre a helyszíni virtuális hálózatot:
+
+```azurepowershell
+$VNetOnprem = New-AzureRmVirtualNetwork -Name $VNetnameOnprem -ResourceGroupName $RG1 `
+-Location $Location1 -AddressPrefix $VNetOnpremPrefix -Subnet $Onpremsub,$GWOnpremsub
+```
+Kérje egy nyilvános IP-cím kiosztását a virtuális hálózat számára létrehozni kívánt átjáróhoz. Látható, hogy az *AllocationMethod* értéke **Dynamic**. A használni kívánt IP-címet nem adhatja meg. Ennek kiosztása az átjáró számára dinamikusan történik. 
+
+  ```azurepowershell
+  $gwOnprempip = New-AzureRmPublicIpAddress -Name $GWOnprempipName -ResourceGroupName $RG1 `
+  -Location $Location1 -AllocationMethod Dynamic
+```
+
 ## <a name="configure-and-deploy-the-firewall"></a>A tűzfal konfigurálása és üzembe helyezése
 
 Most helyezze üzembe a tűzfalat a központi virtuális hálózaton.
@@ -154,11 +176,13 @@ $AzfwPrivateIP
 
 ### <a name="configure-network-rules"></a>Hálózati szabályok konfigurálása
 
+<!--- $Rule2 = New-AzureRmFirewallNetworkRule -Name "AllowPing" -Protocol ICMP -SourceAddress $SNOnpremPrefix `
+   -DestinationAddress $VNetSpokePrefix -DestinationPort *--->
+
 ```azurepowershell
 $Rule1 = New-AzureRmFirewallNetworkRule -Name "AllowWeb" -Protocol TCP -SourceAddress $SNOnpremPrefix `
    -DestinationAddress $VNetSpokePrefix -DestinationPort 80
-$Rule2 = New-AzureRmFirewallNetworkRule -Name "AllowPing" -Protocol ICMP -SourceAddress $SNOnpremPrefix `
-   -DestinationAddress $VNetSpokePrefix -DestinationPort *
+
 $Rule3 = New-AzureRmFirewallNetworkRule -Name "AllowRDP" -Protocol TCP -SourceAddress $SNOnpremPrefix `
    -DestinationAddress $VNetSpokePrefix -DestinationPort 3389
 
@@ -262,27 +286,7 @@ A parancsmag futtatása után tekintse meg az értékeket. Az alábbi példában
 "egressBytesTransferred": 4142431
 ```
 
-## <a name="create-and-configure-the-onprem-vnet"></a>A helyszíni virtuális hálózat létrehozása és konfigurálása
 
-Határozza meg a virtuális hálózat részét képező alhálózatokat:
-
-```azurepowershell
-$Onpremsub = New-AzureRmVirtualNetworkSubnetConfig -Name $SNNameOnprem -AddressPrefix $SNOnpremPrefix
-$GWOnpremsub = New-AzureRmVirtualNetworkSubnetConfig -Name $SNnameGW -AddressPrefix $SNGWOnpremPrefix
-```
-
-Most hozza létre a helyszíni virtuális hálózatot:
-
-```azurepowershell
-$VNetOnprem = New-AzureRmVirtualNetwork -Name $VNetnameOnprem -ResourceGroupName $RG1 `
--Location $Location1 -AddressPrefix $VNetOnpremPrefix -Subnet $Onpremsub,$GWOnpremsub
-```
-Kérje egy nyilvános IP-cím kiosztását a virtuális hálózat számára létrehozni kívánt átjáróhoz. Látható, hogy az *AllocationMethod* értéke **Dynamic**. A használni kívánt IP-címet nem adhatja meg. Ennek kiosztása az átjáró számára dinamikusan történik. 
-
-  ```azurepowershell
-  $gwOnprempip = New-AzureRmPublicIpAddress -Name $GWOnprempipName -ResourceGroupName $RG1 `
-  -Location $Location1 -AllocationMethod Dynamic
-```
 
 ## <a name="peer-the-hub-and-spoke-vnets"></a>Társviszony létesítése a központi és a küllő virtuális hálózatok között
 
@@ -300,6 +304,9 @@ Add-AzureRmVirtualNetworkPeering -Name SpoketoHub -VirtualNetwork $VNetSpoke -Re
 Ezután hozzon létre néhány útvonalat: 
 - Egy útvonalat a központi átjáró alhálózatától a küllő alhálózatához a tűzfal IP-címén keresztül
 - Egy alapértelmezett útvonalat a küllő alhálózattól a tűzfal IP-címén keresztül
+
+> [!NOTE]
+> Az Azure Firewall BGP segítségével megismeri a helyszíni hálózatokat. Ebbe beletartozhat egy alapértelmezett útvonal, amely az internetes forgalmat a helyszíni hálózaton keresztül irányítja vissza. Ha ehelyett azt szeretné, hogy az internetes forgalmat a rendszer közvetlenül a tűzfalról küldje az internetre, adjon hozzá egy felhasználó által megadott alapértelmezett útvonalat (0.0.0.0/0) az AzureFirewallSubnet alhálózaton úgy, hogy a következő ugrás típusa **Internet** legyen. A helyszíni irányított forgalom továbbra is kényszerített bújtatással halad át a VPN/ExpressRoute átjárón a BGP-ből megismert konkrétabb útvonalak használatával.
 
 ```azurepowershell
 #Create a route table
@@ -397,8 +404,9 @@ Set-AzureRmVMExtension `
     -TypeHandlerVersion 1.4 `
     -SettingString '{"commandToExecute":"powershell Add-WindowsFeature Web-Server"}' `
     -Location $Location1
+```
 
-#Create a host firewall rule to allow ping in
+<!---#Create a host firewall rule to allow ping in
 Set-AzureRmVMExtension `
     -ResourceGroupName $RG1 `
     -ExtensionName IIS `
@@ -407,8 +415,8 @@ Set-AzureRmVMExtension `
     -ExtensionType CustomScriptExtension `
     -TypeHandlerVersion 1.4 `
     -SettingString '{"commandToExecute":"powershell New-NetFirewallRule –DisplayName “Allow ICMPv4-In” –Protocol ICMPv4"}' `
-    -Location $Location1
-```
+    -Location $Location1--->
+
 
 ### <a name="create-the-onprem-virtual-machine"></a>A helyszíni virtuális gép létrehozása
 Ez egy egyszerű virtuális gép, amelyhez a távoli asztal használatával csatlakozhat a nyilvános IP-címmel. Innen pedig a tűzfalon keresztül csatlakozhat a helyszíni kiszolgálóhoz. Amikor a rendszer kéri, adjon meg egy felhasználónevet és jelszót a virtuális gép számára.
@@ -431,10 +439,10 @@ $NIC.IpConfigurations.privateipaddress
 ```
 
 1. Az Azure Portalról csatlakozzon a **VM-Onprem** virtuális géphez.
-2. Nyisson meg egy Windows PowerShell-parancssort a **VM-Onprem** virtuális gépen, és pingelje a **VM-spoke-01** magánhálózati IP-címét.
+<!---2. Open a Windows PowerShell command prompt on **VM-Onprem**, and ping the private IP for **VM-spoke-01**.
 
-   Választ kell kapnia.
-1. Nyisson meg egy webböngészőt a **VM-Onprem** virtuális gépen, majd lépjen a következő webhelyre: http://\<VM-spoke-01 magánhálózati IP-címe\>
+   You should get a reply.--->
+2. Nyisson meg egy webböngészőt a **VM-Onprem** virtuális gépen, majd lépjen a következő webhelyre: http://\<VM-spoke-01 magánhálózati IP-címe\>
 
    Az Internet Information Services alapértelmezett oldalának kell megjelennie.
 
@@ -444,7 +452,7 @@ $NIC.IpConfigurations.privateipaddress
 
 Ezzel ellenőrizte, hogy a tűzfalszabályok működnek-e:
 
-- Tudja pingelni a kiszolgálót a küllő virtuális hálózaton.
+<!---- You can ping the server on the spoke VNet.--->
 - Tud böngészni a webkiszolgálón a küllő virtuális hálózaton.
 - Tud csatlakozni a kiszolgálóhoz a küllő virtuális hálózaton RDP használatával.
 

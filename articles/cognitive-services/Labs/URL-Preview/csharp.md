@@ -1,41 +1,43 @@
 ---
-title: Gyorsútmutató C# projekt URL-cím Preview - Microsoft kognitív szolgáltatások |} Microsoft Docs
-description: A Microsoft Azure kognitív Services projekt URL-cím Preview az első lépéseiben.
+title: 'Rövid útmutató: Az URL-cím előnézete projekt, C#'
+titlesuffix: Azure Cognitive Services
+description: Az URL-cím előnézete projekt használatának első lépései a C#-pal.
 services: cognitive-services
 author: mikedodaro
+manager: cgronlun
 ms.service: cognitive-services
-ms.technology: project-url-preview
-ms.topic: article
+ms.component: project-url-preview
+ms.topic: quickstart
 ms.date: 03/16/2018
-ms.author: rosh, v-gedod
-ms.openlocfilehash: 17d44bd0c23d0a1e67da5a0e91248700d3166c1a
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
-ms.translationtype: MT
+ms.author: rosh
+ms.openlocfilehash: 8d31d3a83f9873ce550b9c78626eea0d96ac39bb
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35348635"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48867442"
 ---
-# <a name="url-preview-query-in-c"></a>A C# URL-cím Preview lekérdezés
+# <a name="quickstart-url-preview-query-in-c"></a>Rövid útmutató: Az URL-cím előnézetének lekérdezése a C#-pal
 
-Az alábbi C# példakód létrehozza a SwiftKey webhely URL-cím előnézete: https://swiftkey.com/en.
+Az alábbi C#-példa létrehoz egy URL-előnézetet a SwiftKey webhelyhez: https://swiftkey.com/en.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Szüksége lesz [Visual Studio 2017](https://www.visualstudio.com/downloads/) ezt a kódot futtathatnak Windows. (Az ingyenes közösségi Edition fog működni.)
+A kód Windowson történő futtatásához [Visual Studio 2017](https://www.visualstudio.com/downloads/) szükséges. (Az ingyenes Community Edition is elegendő.)
 
-Az ingyenes próbaidőszakra hozzáférési kulcs beszerzése [kognitív szolgáltatások Labs](https://aka.ms/answersearchsubscription)
+Hozzáférési kulcs lekérése a [Cognitive Services Labs](https://aka.ms/answersearchsubscription) ingyenes próbaverziójához
 
-## <a name="code-scenario"></a>Kód forgatókönyv
+## <a name="code-scenario"></a>Kódforgatókönyv
 
-A következő C#-kódban hoz létre a SwiftKey webhely URL-cím előnézete: https://swiftkey.com/en. 
+Az alábbi C#-kód létrehozza a SwiftKey webhely URL-előnézetét: https://swiftkey.com/en. 
 
-Az alábbi lépéseket a megvalósított:
-1. Deklarálja a változókat, adja meg a végpont és az előzetes lekérdezési URL.  
-2. Hozzon létre a kérelmet.
-3. Adja hozzá a *Ocp-Apim-előfizetés-kulcs* fejléc. 
-4. A webes kérelem aszinkron módon futnak. 
-5. A válasz olvasása.
-6. A fejlécek és a JSON-eredmények a konzol nyomtatása.
+Implementálására a következő lépésekben kerül sor:
+1. Deklarálja a változókat a végpont megadásához, valamint egy lekérdezési URL-címet az előnézethez.  
+2. Létrehozza a kérést.
+3. Hozzáadja az *Ocp-Apim-Subscription-Key* fejlécet. 
+4. Aszinkron módon futtatja a webes kérést. 
+5. Beolvassa a választ.
+6. Megjeleníti a fejléceket és a JSON-eredményeket a konzolon.
 
 **Forráskód**
 
@@ -153,15 +155,15 @@ namespace UrlPrevCshp
 ```
 ## <a name="running-the-application"></a>Az alkalmazás futtatása
 
-Az alkalmazás futtatásához:
+Az alkalmazás futtatása:
 
-1. Új konzol megoldás létrehozása a Visual Studióban.
-2. Cserélje le `Program.cs` a megadott kód.
-3. Cserélje le a `YOUR-ACCESS-KEY` egy érvényes elérési kulcsot az előfizetéshez tartozó értéket.
+1. Hozzon létre egy új konzolmegoldást a Visual Studióban.
+2. Írja felül a `Program.cs` értékét a megadott kóddal.
+3. A `YOUR-ACCESS-KEY` értéket cserélje le az előfizetéshez érvényes hozzáférési kulcsra.
 4. Futtassa a programot.
 
 ## <a name="next-steps"></a>További lépések
-- [Java gyors üzembe helyezés](java-quickstart.md)
-- [JavaScript gyors üzembe helyezés](javascript.md)
-- [Csomópont gyors üzembe helyezés](node-quickstart.md)
-- [Python gyors üzembe helyezés](python-quickstart.md)
+- [Java – rövid útmutató](java-quickstart.md)
+- [JavaScript – rövid útmutató](javascript.md)
+- [Node – rövid útmutató](node-quickstart.md)
+- [Python – rövid útmutató](python-quickstart.md)

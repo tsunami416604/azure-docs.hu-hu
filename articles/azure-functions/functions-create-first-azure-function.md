@@ -12,16 +12,16 @@ ms.topic: quickstart
 ms.date: 03/28/2018
 ms.author: glenga
 ms.custom: mvc, devcenter, cc996988-fb4f-47
-ms.openlocfilehash: d208a4b72a27eb288d46ee591f42a8f6b71c4f70
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: a1a593dc037901f6661bc8c7268d835bc5a48c94
+ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44094059"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48900616"
 ---
 # <a name="create-your-first-function-in-the-azure-portal"></a>Az első függvény létrehozása az Azure portálon
 
-Az Azure Functions lehetővé teszi a kód [kiszolgáló nélküli](https://azure.microsoft.com/overview/serverless-computing/) környezetben történő végrehajtását anélkül, hogy először létre kellene hoznia egy virtuális gépet, vagy közzé kellene tennie egy webalkalmazást. Ebben a témakörben megismerheti, hogyan használhatja a Functions szolgáltatást egy „hello world” függvény létrehozására az Azure Portalon.
+Az Azure Functions lehetővé teszi a kód [kiszolgáló nélküli](https://azure.microsoft.com/solutions/serverless/) környezetben történő végrehajtását anélkül, hogy először létre kellene hoznia egy virtuális gépet, vagy közzé kellene tennie egy webalkalmazást. Ebben a témakörben megismerheti, hogyan használhatja a Functions szolgáltatást egy „hello world” függvény létrehozására az Azure Portalon.
 
 ![Függvényalkalmazás létrehozása az Azure Portalon](./media/functions-create-first-azure-function/function-app-in-portal-editor.png)
 
@@ -44,13 +44,15 @@ Ezután létrehozhat egy függvényt az új függvényalkalmazásban.
 
 ## <a name="create-function"></a>HTTP által aktivált függvény létrehozása
 
-1. Bontsa ki az új függvényalkalmazást, majd kattintson a **Függvények** elem melletti **+** gombra.
+1. Bontsa ki az új függvényalkalmazást, majd kattintson a **Függvények** elem melletti **+** gombra, és válassza a **Portálba épített**, majd a **Folytatás** lehetőséget.
 
-2.  A **Gyors kezdés** lapon kattintson a **WebHook + API** elemre, **válasszon egy nyelvet** a függvény számára, majd kattintson a **Függvény létrehozása** elemre. 
-   
+    ![Függvény rövid útmutatója – platform kiválasztása](./media/functions-create-first-azure-function/function-app-quickstart-choose-portal.png)
+
+1. Válassza a **WebHook + API**, majd a **Létrehozás** lehetőséget.
+
     ![A függvények gyors létrehozása az Azure Portalon.](./media/functions-create-first-azure-function/function-app-quickstart-node-webhook.png)
 
-A rendszer létrehoz egy függvényt a választott nyelven a HTTP által indított függvények sablonjának használatával. Ez a témakör egy C#-szkriptfüggvény használatát mutatja be a portálon, de bármely [támogatott nyelven](supported-languages.md) létrehozhat függvényeket. 
+A rendszer létrehoz egy függvényt egy HTTP által indított függvény nyelvspecifikus sablonjának használatával.
 
 Mostantól egy HTTP-kérelem küldésével futtathatja az új függvényt.
 
@@ -62,13 +64,13 @@ Mostantól egy HTTP-kérelem küldésével futtathatja az új függvényt.
 
 2. Illessze be a függvény URL-címét a böngésző címsorába. Az URL-cím végéhez adja hozzá a `&name=<yourname>` lekérdezési sztring értéket, majd nyomja le az `Enter` billentyűt a billentyűzeten a kérés végrehajtásához. Ekkor a függvény által visszaadott válasz jelenik meg a böngészőben.  
 
-    Az alábbi példa az Edge böngészőben megjelenő választ mutatja be (más böngészők is tartalmazhatják a megjelenített XML-t):
+    Az alábbi példa a böngészőben visszaadott választ mutatja:
 
     ![A függvény által visszaadott válasz a böngészőben.](./media/functions-create-first-azure-function/function-app-browser-testing.png)
 
-    A kérelem URL-címe alapértelmezés szerint tartalmazza a függvény HTTP protokollon keresztüli eléréséhez szükséges kulcsot.   
+    A kérelem URL-címe alapértelmezés szerint tartalmazza a függvény HTTP protokollon keresztüli eléréséhez szükséges kulcsot.
 
-3. A függvény futásakor a rendszer nyomkövetési adatok ír a naplókba. Az előző végrehajtás nyomkövetési adatainak megtekintéséhez térjen vissza a függvényhez a portálon, és kattintson a képernyő alján található nyílra a **Naplók** elem kibontásához. 
+3. A függvény futásakor a rendszer nyomkövetési adatok ír a naplókba. Az előző végrehajtás nyomkövetési adatainak megtekintéséhez térjen vissza a függvényhez a portálon, és kattintson a képernyő alján található nyílra a **Naplók** elem kibontásához.
 
    ![A függvények naplómegtekintője az Azure Portalon.](./media/functions-create-first-azure-function/function-view-logs.png)
 
@@ -82,7 +84,4 @@ Létrehozott egy függvényalkalmazást és egy HTTP által aktivált egyszerű 
 
 [!INCLUDE [Next steps note](../../includes/functions-quickstart-next-steps.md)]
 
-További információ: [Azure Functions – HTTP- és webhookkötések](functions-bindings-http-webhook.md).
-
-
-
+További információt az [Azure Functions HTTP-kötéseit](functions-bindings-http-webhook.md) ismertető cikkben talál.

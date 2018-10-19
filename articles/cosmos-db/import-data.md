@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 03/30/2018
 ms.author: dech
 ms.custom: mvc
-ms.openlocfilehash: 771c4a33603ddf262df3b35992d318d34de6c2dc
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: af6faa6abcc54ef11e066d3a348dac28b23c7af4
+ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43698111"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49079089"
 ---
 # <a name="use-data-migration-tool-to-migrate-your-data-to-azure-cosmos-db"></a>Használja az adatok migrálása eszközt az adatok Azure Cosmos DB-be történő migrálásához 
 
@@ -42,7 +42,9 @@ A jelen cikkben lévő utasítások követése előtt győződjön meg róla, ho
 
 * [Microsoft .NET-keretrendszer 4.51](https://www.microsoft.com/download/developer-tools.aspx) vagy újabb
 
-* Átviteli sebesség növelése: Az adatáttelepítés időtartamát az egyéni gyűjteményhez vagy a gyűjteménycsoporthoz beállított átviteli sebesség határozza meg. Nagyobb adatmigrálásoknál mindenképpen növelje az átviteli sebességet. A migrálás befejezése után, a költségtakarékosság érdekében csökkentse az átviteli sebességet. Az átviteli sebesség Azure Portalon való növeléséről bővebben Az Azure Cosmos DB teljesítményszintjei és tarifacsomagjai című cikkben olvashat.
+* **Az átviteli sebesség növelése:** Az adatok migrálásának időtartama az egyes gyűjteményekhez vagy egy gyűjteménykészlethez beállított átviteli sebességtől függ. Nagyobb adatmigrálásoknál mindenképpen növelje az átviteli sebességet. A migrálás befejezése után, a költségtakarékosság érdekében csökkentse az átviteli sebességet. További információk az átviteli sebesség növeléséről az Azure Portalon: Teljesítményszintek és tarifacsomagok az Azure Cosmos DB-ben.
+
+* **Azure Cosmos DB-erőforrások létrehozása:** Az adatok migrálásának indítása előtt hozza előre létre az összes gyűjteményt az Azure Portalról. Ha egy olyan Azure Cosmos DB-fiókba migrál, amely adatbázisszintű átviteli sebességgel rendelkezik, az Azure Cosmos DB-gyűjtemények létrehozásakor mindenképpen adjon meg egy partíciókulcsot.
 
 ## <a id="Overviewl"></a>Áttekintés
 Az adatáttelepítési eszköz egy nyílt forráskódú megoldás, mellyel adatokat importálhat az Azure Cosmos DB-be különféle forrásokból, ideértve az alábbiakat:
@@ -522,6 +524,14 @@ Választhatja az eredményként kapott JSON-fájl emberi olvasásra való formá
       }
     ]
     }]
+
+Parancssori példa a JSON-fájl Azure Blob Storage-ba történő exportálásához:
+
+```
+dt.exe /ErrorDetails:All /s:DocumentDB /s.ConnectionString:"AccountEndpoint=<CosmosDB Endpoint>;AccountKey=<CosmosDB Key>;Database=<CosmosDB database_name>" /s.Collection:<CosmosDB collection_name>
+/t:JsonFile /t.File:"blobs://<Storage account key>@<Storage account name>.blob.core.windows.net:443/<Container_name>/<Blob_name>"
+/t.Overwrite
+```
 
 ## <a name="advanced-configuration"></a>Speciális konfiguráció
 Adja meg a speciális konfigurációs képernyőn annak a naplófájlnak a helyét, amelybe az esetlegesen előforduló hibákat szeretné menteni. Az alábbi szabályok érvényesek erre a lapra:

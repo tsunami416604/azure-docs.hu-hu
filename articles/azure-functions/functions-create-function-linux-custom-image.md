@@ -11,16 +11,16 @@ ms.service: azure-functions
 ms.custom: mvc
 ms.devlang: azure-cli
 manager: jeconnoc
-ms.openlocfilehash: eb03d2dae42d656e62b8f02eeccf1f7312f07732
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: a77018d5ee1738f24518742c2386e6e261a7c6a8
+ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46962438"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48901448"
 ---
 # <a name="create-a-function-on-linux-using-a-custom-image-preview"></a>Függvény létrehozása Linux rendszerben egyéni rendszerkép használatával (előzetes verzió)
 
-Az Azure Functions lehetővé teszi, hogy a függvényeit Linux rendszerben egy saját egyéni tárolóban üzemeltesse. Emellett [egy alapértelmezett Azure App Service-tárolóban is üzemeltetheti](functions-create-first-azure-function-azure-cli-linux.md). Ez a szolgáltatás jelenleg csak előzetes verzióban érhető el, és a használatához a szintén előzetes verzióként elérhető [Functions 2.0 futtatókörnyezet](functions-versions.md) szükséges.
+Az Azure Functions lehetővé teszi, hogy a függvényeit Linux rendszerben egy saját egyéni tárolóban üzemeltesse. Emellett [egy alapértelmezett Azure App Service-tárolóban is üzemeltetheti](functions-create-first-azure-function-azure-cli-linux.md). Ez a szolgáltatás jelenleg csak előzetes verzióban érhető el, és a használatához a [Functions 2.0 futtatókörnyezet](functions-versions.md) szükséges.
 
 Ez az oktatóanyag bemutatja, hogyan helyezheti a függvényalkalmazásokat üzembe egyéni Docker-rendszerképként. Ez a minta akkor hasznos, ha testre kell szabnia a beépített App Service-tároló rendszerképét. Érdemes lehet egyéni rendszerképet használnia, ha a funkciók egy adott nyelvi verziójára vagy egy konkrét függőségre vagy konfigurációra van szükség, amely a beépített rendszerképben nem biztosított.
 

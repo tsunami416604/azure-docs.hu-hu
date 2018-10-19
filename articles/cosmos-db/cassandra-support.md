@@ -9,12 +9,12 @@ ms.service: cosmos-db
 ms.component: cosmosdb-cassandra
 ms.topic: overview
 ms.date: 09/24/2018
-ms.openlocfilehash: 636b0d9ef42ad1e87d891329be7b7c11c4efcb4a
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 06f2f81f5be496e2e55874c07a31fdf1c0a5d0f2
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47220142"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48868679"
 ---
 # <a name="apache-cassandra-features-supported-by-azure-cosmos-db-cassandra-api"></a>Az Azure Cosmos DB Cassandra API-ja által támogatott Apache Cassandra-funkciók 
 
@@ -106,11 +106,13 @@ Az Azure Cosmos DB Cassandra API egy felügyelt szolgáltatási platform. A für
 
 CQLSH parancssori segédprogram tartalmazza az Apache Cassandra 3.1.1 verzióját, és a következő engedélyezett környezeti változókkal azonnal használható:
 
+Az alábbi parancsok futtatása előtt [vegyen fel egy Baltimore-gyökértanúsítványt a cacerts tárolóba](https://docs.microsoft.com/java/azure/java-sdk-add-certificate-ca-store?view=azure-java-stable#to-add-a-root-certificate-to-the-cacerts-store). 
+
 **Windows:** 
 
 ```bash
 set SSL_VERSION=TLSv1_2 
-SSL_CERTIFICATE=<path to balitmore root ca cert>
+SSL_CERTIFICATE=<path to Baltimore root ca cert>
 set CQLSH_PORT=10350 
 cqlsh <YOUR_ACCOUNT_NAME>.cassandra.cosmosdb.azure.com 10350 -u <YOUR_ACCOUNT_NAME> -p <YOUR_ACCOUNT_PASSWORD> –ssl 
 ```
@@ -118,7 +120,7 @@ cqlsh <YOUR_ACCOUNT_NAME>.cassandra.cosmosdb.azure.com 10350 -u <YOUR_ACCOUNT_NA
 
 ```bash
 export SSL_VERSION=TLSv1_2 
-SSL_CERTIFICATE=<path to balitmore root ca cert>
+SSL_CERTIFICATE=<path to Baltimore root ca cert>
 cqlsh <YOUR_ACCOUNT_NAME>.cassandra.cosmosdb.azure.com 10350 -u <YOUR_ACCOUNT_NAME> -p <YOUR_ACCOUNT_PASSWORD> –ssl 
 ```
 
@@ -127,24 +129,17 @@ cqlsh <YOUR_ACCOUNT_NAME>.cassandra.cosmosdb.azure.com 10350 -u <YOUR_ACCOUNT_NA
 Az Azure Cosmos DB a következő adatbázisparancsokat támogatja a Cassandra API-fiókok esetében.
 
 * CREATE KEYSPACE 
-
 * CREATE TABLE 
-
 * ALTER TABLE 
-
 * USE 
-
 * INSERT 
-
 * SELECT 
-
 * UPDATE 
-
 * BATCH – csak nem naplózott parancsok használata támogatott 
-
 * DELETE
 
 A CQLV4-kompatibilis SDK használatával végrehajtott összes crud művelet további információval szolgál a hibáról, a felhasznált kérelemegységekről és tevékenységazonosítóról. A kiépített erőforrások túlhasználatának elkerüléséhez a törlési és frissítési parancsokat az erőforrások irányítását figyelembe véve kell kezelni. 
+* Ügyeljen arra, hogy a gc_grace_seconds értékének nullának kell lennie, ha meg van adva.
 
 ```csharp
 var tableInsertStatement = table.Insert(sampleEntity); 
@@ -165,6 +160,14 @@ Az Azure Cosmos DB Cassandra API konzisztenciaválasztási lehetőséget kínál
 ## <a name="permission-and-role-management"></a>Engedély- és szerepkörkezelés
 
 Az Azure Cosmos DB támogatja a szerepköralapú hozzáférés-vezérlést (RBAC), illetve az írható-olvasható és a csak olvasható jelszavakat/kulcsokat, amelyeket az [Azure Portalon](https://portal.azure.com lehet beszerezni. Az Azure Cosmos DB az adatsík-tevékenységek esetében még nem támogatja a felhasználókat és a szerepköröket. 
+
+## <a name="planned-support"></a>Tervezett támogatás 
+* Az időbélyeg és a TTL együttes használata  
+* A régió nevét a create keyspace parancsban a rendszer figyelmen kívül hagyja – Az adatok elosztása az alapul szolgáló Cosmos DB platformon valósul meg, és a portálon vagy a fiókhoz tartozó PowerShellen keresztül történik a közzététel. 
+
+
+
+
 
 ## <a name="next-steps"></a>További lépések
 

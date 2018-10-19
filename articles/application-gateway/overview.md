@@ -8,14 +8,14 @@ ms.service: application-gateway
 ms.topic: overview
 ms.custom: mvc
 ms.workload: infrastructure-services
-ms.date: 5/15/2018
+ms.date: 10/11/2018
 ms.author: victorh
-ms.openlocfilehash: 045443637c06745472458dd9e33670875a33352b
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 8352a95fa0701f6d2a0261d8d2fe2431971eccef
+ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34193067"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49068095"
 ---
 # <a name="what-is-azure-application-gateway"></a>Mi az Azure Application Gateway?
 
@@ -27,7 +27,38 @@ A hagyományos terheléselosztók az átviteli rétegen működnek (OSI 4. réte
 
 Ezt a fajta útválasztást alkalmazásrétegbeli (OSI 7. réteg) terheléselosztásnak nevezzük. Az Azure Application Gateway URL-alapú és egyéb útválasztásra is képes. 
 
-Az Azure Application Gateway a következő funkciókkal rendelkezik: 
+Az Azure Application Gateway a következő funkciókkal rendelkezik:
+
+## <a name="autoscaling-public-preview"></a>Az automatikus skálázás nyilvános előzetes verziója
+
+A jelen cikkben ismertetett funkciókon kívül az Application Gateway egy új [Standard_V2] termékváltozat nyilvános előzetes verzióját is tartalmazza, amely automatikus skálázást és egyéb kritikus fontosságú teljesítményjavítási funkciókat biztosít.
+
+- **Automatikus skálázás** – Az automatikus skálázású termékváltozat lehetővé teszi az üzemelő Application Gateway- vagy WAF-példányok esetében a változó adatforgalmi terhelési mintázatok alapján történő vertikális fel- és leskálázást. Az automatikus skálázással elkerülhető, hogy már a kiépítés során meg kelljen határozni az üzemelő példány méretét vagy a példányszámot. 
+
+- **Zónaredundancia**  – Az üzemelő Application Gateway- vagy WAF-példányok átfoghatnak több rendelkezésre állási zónát is, így nem kell minden egyes zónában külön Application Gateway-példányokat kiépíteni és átléptetni a Traffic Managerrel.
+
+- **Statikus virtuális IP-cím** – Az Application Gateway virtuális IP-címe mostantól kizárólag statikus virtuális IP-cím lehet. Így biztosítható, hogy az Application Gatewayhez társított virtuális IP-cím újraindítást követően se módosuljon.
+
+- **Gyorsabb üzembe helyezés és frissítés** az általánosan elérhető termékváltozathoz képest. 
+
+- **Ötször hatékonyabb SSL-kiszervezés** az általánosan elérhető termékváltozathoz képest.
+
+Az Application Gateway nyilvános előzetes verziójú funkcióival kapcsolatban további információt az [automatikus skálázású és zónaredundáns Application Gatewayt (nyilvános előzetes verzió)](application-gateway-autoscaling-zone-redundant.md) bemutató cikk tartalmaz.
+
+## <a name="azure-kubernetes-service-aks-ingress-controller-preview"></a>Az Azure Kubernetes Service (AKS) bejövőforgalom-vezérlője (előzetes verzió) 
+
+Az Application Gateway bejövőforgalom-vezérlője podként fut az AKS-fürtön belül, és lehetővé teszi az Application Gateway egy AKS-fürt bemeneti pontjaként való üzemeltetését. 
+
+További információt az [Azure Application Gateway bejövőforgalom-vezérlőjét](https://azure.github.io/application-gateway-kubernetes-ingress/) ismertető részben talál.
+
+## <a name="connection-draining"></a>Kapcsolatkiürítés
+
+A kapcsolatkiürítéssel zökkenőmentesen végrehajtható a háttérkészlettagok eltávolítása a tervezett szolgáltatásfrissítések során. E beállítás engedélyezése háttérbeli HTTP-beállítással történik, és a szabálylétrehozás keretében az adott háttérkészlet összes tagjára alkalmazható. Az engedélyezést követően az Application Gateway gondoskodik arról, hogy azon háttérkészletbeli példányok, amelyek regisztrációja megszüntetés alatt áll, ne fogadjanak új kéréseket, a meglévő kérések viszont végre legyenek hajtva a megadott időkorláton belül. Ez egyaránt vonatkozik azokra a háttérpéldányokra, amelyek API-hívással, explicit módon lettek eltávolítva a háttérkészletből, és azokra is, amelyeket az állapot-mintavételek „Nem kifogástalan” állapotúnak minősítenek.
+
+## <a name="custom-error-pages"></a>Egyéni hibalapok
+Az Application Gatewayjel testreszabhatók a hibaoldalak. Az egyéni hibaoldalakon feltüntetheti saját védjegyeit, és egyéni elrendezést használhat.
+
+További információt az [egyéni Application Gateway-hibaoldalak létrehozását ismertető részben](custom-error.md) talál.
 
 ## <a name="secure-sockets-layer-ssl-termination"></a>Secure Sockets Layer- (SSL-) lezárás
 

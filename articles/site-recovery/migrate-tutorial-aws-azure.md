@@ -6,15 +6,15 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 08/24/2018
+ms.date: 10/10/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 48714d71edcf54726eb362c7f56950a1350fd52b
-ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
+ms.openlocfilehash: 04e7506562d29e37abb65b7a760fbc9bd707e2c6
+ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42885325"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49078936"
 ---
 # <a name="migrate-amazon-web-services-aws-vms-to-azure"></a>Amazon Web Services-beli (AWS) virtuális gépek áttelepítése az Azure-ba
 
@@ -239,10 +239,9 @@ Egyes forgatókönyvekben a feladatátvételhez további feldolgozás szüksége
 Futtasson egy tényleges feladatátvételt az EC2-példányokon az Azure-beli virtuális gépekre való migrálásukhoz:
 
 1. A **Védett elemek** > **Replikált elemek** területen válassza az AWS-példányokat, majd a **Feladatátvétel** lehetőséget.
-2. A **Feladatátvétel** területen válassza ki a **helyreállítási pontot** a feladatok átvételéhez. Válassza a legutóbbi helyreállítási pontot.
-3. Válassza a **Gép leállítása a feladatátvétel megkezdése előtt** lehetőséget, ha azt szeretné, hogy a Site Recovery megkísérelje leállítani a forrás virtuális gépeket a feladatátvétel indítása előtt. A feladatátvételi akkor is folytatódik, ha a leállítás meghiúsul. A feladatátvételi folyamatot a **Feladatok** lapon követheti nyomon.
-4. Győződjön meg arról, hogy a virtuális gép megjelenik a **replikált elemek** között.
-5. Kattintson a jobb gombbal az egyes virtuális gépekre, majd válassza a **Migrálás befejezése** lehetőséget. Ez befejezi az áttelepítési folyamatot, valamint leállítja az AWS virtuális gép replikálását és a gép Site Recovery-számlázását.
+2. A **Feladatátvétel** területen válassza ki a **helyreállítási pontot** a feladatok átvételéhez. Válassza a legutóbbi helyreállítási pontot, és indítsa el a feladatátvételt. A feladatátvételi folyamatot a **Feladatok** lapon követheti nyomon.
+1. Győződjön meg arról, hogy a virtuális gép megjelenik a **replikált elemek** között.
+2. Kattintson a jobb gombbal az egyes virtuális gépekre, majd válassza a **Migrálás befejezése** lehetőséget. Ez befejezi az áttelepítési folyamatot, valamint leállítja az AWS virtuális gép replikálását és a gép Site Recovery-számlázását.
 
     ![Az áttelepítés befejezése](./media/migrate-tutorial-aws-azure/complete-migration.png)
 

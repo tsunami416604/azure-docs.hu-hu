@@ -1,33 +1,34 @@
 ---
-title: Válasz keresési Java – első lépések – Microsoft kognitív szolgáltatások projekt |} Microsoft Docs
-description: Indítsa el a projekt válasz keresése a Java használatával.
+title: 'Rövid útmutató: Válaszkeresés projekt, Java'
+titlesuffix: Azure Cognitive Services
+description: A Válaszkeresés projekt Javában történő használatának első lépései.
 services: cognitive-services
 author: mikedodaro
-manager: rosh
+manager: cgronlun
 ms.service: cognitive-services
-ms.technology: project-answer-search
-ms.topic: article
+ms.component: project-answer-search
+ms.topic: quickstart
 ms.date: 04/13/2018
-ms.author: rosh, v-gedod
-ms.openlocfilehash: 4e1f606e1564981589e638e0e51a8b42633ca7b0
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
-ms.translationtype: MT
+ms.author: rosh
+ms.openlocfilehash: 1e10ecf685aaf5b60b94a5e9e0d8e118f45e5168
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35348578"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48867034"
 ---
-# <a name="project-answer-search-query-in-java"></a>Projekt válasz keresési lekérdezés Java nyelven
-Ez a cikk Java használatával bemutatják, a Bing válasz Search API, a Microsoft kognitív szolgáltatások, Azure része. Az API-t egy olyan bármely programozási nyelv, amely HTTP-kérelmeket, és elemezni a JSON-kompatibilis REST webes szolgáltatás.
+# <a name="quickstart-project-answer-search-query-in-java"></a>Rövid útmutató: Válaszkeresés projekt lekérdezése a Javában
+Ez a cikk Javát használ annak bemutatására, hogyan használható a Microsoft Cognitive Services részét képező Bing Answer Search API az Azure-on. Az API egy REST-webszolgáltatás, így kompatibilis minden olyan programozási nyelvvel, amely képes HTTP-kérések küldésére és JSON-elemzésre.
  
-A mintakód Java minimális külső függőségekkel rendelkező használja.  Is futtatható a Linux- vagy Mac OS X rendszer monó.
+A példakód olyan Javát használ, amely csak minimális mértékű külső függőségekkel rendelkezik.  A Mono használatával Linux vagy Mac OS X rendszeren is futtatható.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az ingyenes próbaidőszakra hozzáférési kulcs beszerzése [kognitív szolgáltatások Labs](https://aka.ms/answersearchsubscription)
+Egy hozzáférési kulcs a [Cognitive Services Labs](https://aka.ms/answersearchsubscription) ingyenes próbaverziójához.
 
 ## <a name="request"></a>Kérés 
 
-Az alábbi kód létrehoz egy `WebRequest`, állítja be a hozzáférési kulcs fejlécet, és hozzáadja a lekérdezési karakterlánc a "Gibraltár".  Ezután elküldi a kérelmet, és hozzárendeli a JSON-szövegben tartalmazó karakterláncot választ.
+A következő kód például létrehoz egy `WebRequest` kérést, beállítja a hozzáférési kulcs fejlécét, és hozzáad egy lekérdezési sztringet a „Gibraltár” szóhoz.  Ezután elküldi a kérelmet, és hozzárendeli a választ egy sztringhez, hogy az tartalmazza a JSON-szöveget.
 
 ````
     static String host = "https://api.labs.cognitive.microsoft.com";
@@ -49,11 +50,11 @@ Az alábbi kód létrehoz egy `WebRequest`, állítja be a hozzáférési kulcs 
 
 ## <a name="complete-code"></a>Teljes kód
 
-Válasz a Bing keresési API eredményeket ad vissza, a Bing keresőmotort.
-1. Töltse le, vagy telepítse a gson könyvtárban.
-2. Hozzon létre egy új Java-projektet a kedvenc IDE vagy szerkesztő.
+A Bing Answer Search API a Bing keresőmotor találatait adja vissza.
+1. Töltse le vagy telepítse a gson-kódtárat.
+2. Hozzon létre egy új Java-projektet a kedvenc IDE-környezetében vagy szerkesztőjében.
 3. Adja hozzá az alábbi kódot.
-4. Cserélje le a subscriptionKey értékét egy előfizetési érvényes elérési kulcsával.
+4. A subscriptionKey értékét cserélje le az előfizetéshez használható hozzáférési kulcsra.
 5. Futtassa a programot.
 
 ````
@@ -150,6 +151,6 @@ public class KnowledgeSrch {
 ````
 
 ## <a name="next-steps"></a>További lépések
-- [C# gyors üzembe helyezés](c-sharp-quickstart.md)
-- [Java gyors üzembe helyezés](java-quickstart.md)
-- [Csomópont gyors üzembe helyezés](node-quickstart.md)
+- [C# – rövid útmutató](c-sharp-quickstart.md)
+- [Java – rövid útmutató](java-quickstart.md)
+- [Node – rövid útmutató](node-quickstart.md)

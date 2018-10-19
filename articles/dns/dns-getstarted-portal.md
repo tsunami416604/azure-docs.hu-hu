@@ -8,12 +8,12 @@ ms.service: dns
 ms.topic: quickstart
 ms.date: 6/13/2018
 ms.author: victorh
-ms.openlocfilehash: 3ec2c44c168b47fd66d1ffa9a0c8d0069600ecb0
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 0acb5bf18c078d8b7eb6a5c14a61fcef622f9f2d
+ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46958101"
+ms.lasthandoff: 10/06/2018
+ms.locfileid: "48831127"
 ---
 # <a name="quickstart-configure-azure-dns-for-name-resolution-using-the-azure-portal"></a>Rövid útmutató: Az Azure DNS konfigurálása névfeloldásra az Azure Portalon
 
@@ -38,12 +38,12 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
     ![DNS-zóna](./media/dns-getstarted-portal/openzone650.png)
 
-4. A **DNS-zóna létrehozása** lapon adja meg a következő értékeket, majd kattintson a **Létrehozás** elemre:
+4. A **DNS-zóna létrehozása** lapon adja meg a következő értékeket, majd kattintson a **Létrehozás** gombra:
 
 
    | **Beállítás** | **Érték** | **Részletek** |
    |---|---|---|
-   |**Name (Név)**|contoso.xyz|A DNS-zóna neve ebben a példában. A rövid útmutatóhoz bármilyen értéket használhat, ha az még nincs konfigurálva az Azure DNS-kiszolgálókon. Valós érték lehet például egy tartomány, amelyet egy tartományregisztrálótól vásárolt.|
+   |**Név**|contoso.xyz|A rövid útmutatóhoz bármilyen értéket használhat a DNS-zóna neveként, ha az még nincs konfigurálva az Azure DNS-kiszolgálókon. Valós érték lehet például egy tartomány, amelyet egy tartományregisztrálótól vásárolt.|
    |**Előfizetés**|[Az Ön előfizetése]|Válassza ki azt az előfizetést, amelyben létre fogja hozni a DNS-zónát.|
    |**Erőforráscsoport**|**Új létrehozása:** dns-test|Hozzon létre egy erőforráscsoportot. Az erőforráscsoport nevének egyedinek kell lennie a kiválasztott előfizetésen belül. |
    |**Hely**|USA keleti régiója||
@@ -52,7 +52,7 @@ A zóna létrehozása eltarthat néhány percig.
 
 ## <a name="create-a-dns-record"></a>DNS-rekord létrehozása
 
-Most hozzon létre egy új címrekordot („A” rekord). Az "A" rekordokkal lehet feloldani a gazdagépneveket egy IPv4-címre.
+Most hozzon létre egy új címrekordot („A” rekord). Az „A” rekordokkal lehet feloldani a gazdagépneveket egy IPv4-címre.
 
 1. Az Azure Portal **Kedvencek** panelén kattintson az **Összes erőforrás** elemre. A Minden erőforrás lapon kattintson a **contoso.xyz** DNS-zónára. Ha a kiválasztott előfizetésben már több erőforrás szerepel, a DNS-zóna egyszerű eléréséhez beírhatja a **contoso.xyz** nevet a **Szűrés név alapján…** mezőbe.
 
@@ -74,7 +74,7 @@ Mivel ebben a rövid útmutatóban nem vásárol valódi tartománynevet, nem ke
 
 ## <a name="test-the-name-resolution"></a>A névfeloldás tesztelése
 
-Most, hogy létrehozott egy „A” tesztrekordot tartalmazó tesztzónát, tesztelheti a névfeloldást az nslookup nevű eszközzel. 
+Most, hogy létrehozott egy „A” tesztrekordot tartalmazó tesztzónát, tesztelheti a névfeloldást az *nslookup* nevű eszközzel. 
 
 1. Először fel kell jegyeznie az nslookup eszközzel használni kívánt Azure DNS-névkiszolgálókat. 
 

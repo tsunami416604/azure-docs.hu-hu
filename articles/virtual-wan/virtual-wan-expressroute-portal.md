@@ -5,15 +5,15 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: tutorial
-ms.date: 09/26/2018
+ms.date: 10/5/2018
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to connect my corporoate on-premises network(s) to my VNets using Virtual WAN and ExpressRoute.
-ms.openlocfilehash: 0b8de4d04d9cca47423634164e458e8699154f30
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 10b73843e2ca2e0ee0af766ef1ad7ee9cbf61f94
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47405308"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48854605"
 ---
 # <a name="tutorial-create-an-expressroute-association-using-azure-virtual-wan-preview"></a>Oktatóanyag: ExpressRoute-társítás létrehozása az Azure Virtual WAN (előzetes verzió) használatával
 
@@ -41,28 +41,12 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 ## <a name="register"></a>A funkció regisztrálása
 
-Kattintson a **Kipróbálás** gombra a funkció egyszerű regisztrálásához az Azure Cloud Shell használatával.
+A Virtual WAN konfigurálása előtt regisztrálnia kell az előfizetését az előzetes verzióban. Máskülönben nem használhatja a Virtual WAN-t a portálon. Ehhez küldjön egy e-mailt a következő címre az előfizetés azonosítójával: **azurevirtualwan@microsoft.com**. Az előfizetés regisztrációja után egy e-mailt fog kapni.
 
->[!NOTE]
->Ha nem regisztrálja a funkciót, nem használhatja, és nem jelenik meg a portálon sem.
->
->
+**Előzetes verzióval kapcsolatos szempontok:**
 
-Miután a **Kipróbálás** gombra kattintva megnyílik az Azure Cloud Shell, másolja és illessze be a következő parancsokat:
-
-```azurepowershell-interactive
-Register-AzureRmProviderFeature -ProviderNamespace Microsoft.Network -FeatureName AllowCortexExpressRouteGateway
-```
- 
-```azurepowershell-interactive
-Get-AzureRmProviderFeature -ProviderNamespace Microsoft.Network -FeatureName AllowCortexExpressRouteGateway
-```
-
-Amikor a funkció már regisztráltként jelenik meg, regisztrálja újra az előfizetést a Microsoft.Network névtérben.
-
-```azurepowershell-interactive
-Register-AzureRmResourceProvider -ProviderNamespace Microsoft.Network
-```
+* Régiónkénti rendelkezésre állás: USA nyugati középső régiója
+* Olyan országban, amely támogatja az [ExpressRoute Global Reach](https://docs.microsoft.com/azure/expressroute/expressroute-faqs#where-is-expressroute-global-reach-supported) használatát, engedélyezni kell az ExpressRoute-kapcsolatcsoportot.
 
 ## <a name="vnet"></a>1. Virtuális hálózat létrehozása
 

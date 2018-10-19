@@ -1,41 +1,42 @@
 ---
-title: A Microsoft kognitív szolgáltatásokban projekt válasz keresése csomópont gyors üzembe helyezés |} Microsoft Docs
-description: Projekt válasz keresése, Microsoft Azure kognitív Services az első lépéseiben.
+title: 'Rövid útmutató: Válaszkeresés projekt, Node'
+description: A Válaszkeresés projekt használatának első lépései a Node-dal.
 services: cognitive-services
 author: mikedodaro
+manager: cgronlun
 ms.service: cognitive-services
-ms.technology: project-answer-search
-ms.topic: article
+ms.component: project-answer-search
+ms.topic: quickstart
 ms.date: 04/13/2018
-ms.author: rosh, v-gedod
-ms.openlocfilehash: 36b2709d39230aae7929164ba4c9306f57043b43
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
-ms.translationtype: MT
+ms.author: rosh
+ms.openlocfilehash: 99dba482c9dec4448110301201c7c9e79a7a6380
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35348599"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48867425"
 ---
-# <a name="project-answer-search-node-quickstart"></a>Projekt válasz keresési csomópont gyors üzembe helyezés
+# <a name="quickstart-project-answer-search-with-node"></a>Rövid útmutató: A Válaszkeresés projekt használata a Node-dal
 
-A következő csomópont példa létrehoz egy lekérdezést Yosemite National Park kapcsolatos információkat.
+Az alábbi Node-példa létrehoz egy lekérdezést a Yosemite Nemzeti Parkkal kapcsolatos információk vonatkozásában.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az ingyenes próbaidőszakra hozzáférési kulcs beszerzése [kognitív szolgáltatások Labs](https://aka.ms/answersearchsubscription)
+Hozzáférési kulcs lekérése a [Cognitive Services Labs](https://aka.ms/answersearchsubscription) ingyenes próbaverziójához
 
-Ez a példa csomópont v8.9.4
+Ez a példa a Node 8.9.4-es verzióját használja.
 
-## <a name="code-scenario"></a>Kód forgatókönyv 
+## <a name="code-scenario"></a>Kódforgatókönyv 
 
-A következő kód jogosultságot kap a válaszokat.
-Az alábbi lépéseket a megvalósított:
-1. Deklarálja a változókat, adja meg a végpont által állomás és az elérési utat.
-2. Adja meg a lekérdezés URL-címe az előzetes, és adja hozzá a lekérdezési paramétert.  
-3. A válasz kezelő függvény létrehozása.
-4. Adja meg a keresési funkció, amely hozza létre a kérelmet, és hozzáadja a *Ocp-Apim-előfizetés-kulcs* fejléc.
-5. Futtassa a keresési funkciót. 
+Az alábbi kód válaszokat kér le.
+Implementálására a következő lépésekben kerül sor:
+1. Deklarálja a változókat a végpont gazdagép és útvonal szerinti megadásához.
+2. Megadja a lekérdezési URL-címet az előnézethez, és hozzáad egy lekérdezési paramétert.  
+3. Létrehoz egy függvényt a válasz kezeléséhez.
+4. Definiálja a kérést létrehozó és az *Ocp-Apim-Subscription-Key* fejlécet hozzáadó Search függvényt.
+5. Futtatja a Search függvényt. 
 
-A teljes kód látható ebben a bemutatóban a következőképpen:
+Az útmutatóban használt teljes kód a következő:
 
 ````
 'use strict';
@@ -87,6 +88,6 @@ Search();
 ````
 
 ## <a name="next-steps"></a>További lépések
-- [C#-példakód](c-sharp-quickstart.md)
-- [Java gyors üzembe helyezés](java-quickstart.md)
-- [Python gyors üzembe helyezés](python-quickstart.md)
+- [C#-mintakód](c-sharp-quickstart.md)
+- [Java – rövid útmutató](java-quickstart.md)
+- [Python – rövid útmutató](python-quickstart.md)

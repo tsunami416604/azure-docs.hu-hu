@@ -9,20 +9,25 @@ manager: cgronlund
 ms.custom: include file
 ms.topic: include
 ms.date: 09/24/2018
-ms.openlocfilehash: dfde11c509ef25b0c0bae314c937fc43fa78aef4
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
-ms.translationtype: MT
+ms.openlocfilehash: 0ece66c176241b53e333071ccfb1882e7018df4c
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47020778"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48874013"
 ---
-* **Az Azure notebookok** – ingyenes Jupyter notebookok az Azure-felhő alapú
-    1. [![Az Azure notebookok](https://notebooks.azure.com/launch.png)](https://aka.ms/aml-clone-azure-notebooks)
-    [mintafüzetek importálja az Azure-jegyzetfüzetek](https://aka.ms/aml-clone-azure-notebooks).
-    1.  Hozzon létre egy munkaterületet, és a konfigurációs fájl (**config.json**) található utasításokat követve [konfigurálása az Azure Machine Learning szolgáltatás a fejlesztési környezet](https://aka.ms/aml-how-to-configure-environment).
-    1. Válassza ki `+New` hozzáadása az Azure-jegyzetfüzet eszköztáron a **config.json** ugyanabban a mappában a jegyzetfüzet-fájlt.
-    1. A notebook megnyitásához.
+### <a name="azure-notebooks---free-jupyter-based-notebooks-in-the-azure-cloud"></a>**Azure Notebooks** – Ingyenes Jupyter-alapú notebookok az Azure-felhőben
+Az SDK már telepítve és konfigurálva van az Azure Notebooksban.
+  
+1. Az [első lépéseket ismertető útmutató](../articles/machine-learning/service/quickstart-get-started.md) elvégzésével létrehozhat egy munkaterületet és elindíthatja az Azure Notebooks szolgáltatást.
+1. Lépjen az [Azure Notebooks](https://notebooks.azure.com/) felületére.
+1. A rövid útmutatóban létrehozott `Getting Started` könyvtárban lépjen a `tutorials` mappára.
+1. Nyissa meg a notebookot.
 
-* **A saját Jupyter notebook server**
-
-    Klónozás [a GitHub-adattár](https://aka.ms/aml-notebooks) , és kövesse a **információs** szoftver a kiszolgáló telepítésére vonatkozó utasításokat.
+### <a name="your-own-jupyter-notebook-server"></a>**Saját Jupyter-notebook-kiszolgáló**
+1. Az [első lépéseket ismertető Python SDK-útmutató](../articles/machine-learning/service/quickstart-create-workspace-with-python.md) elvégzésével telepítse az SDK-t, és hozzon létre egy munkaterületet.
+1. Klónozza [a GitHub-adattárat](https://aka.ms/aml-notebooks).
+1. Másolja a rövid útmutatóban létrehozott `aml_config` könyvtárat a klónozott könyvtárba.
+1. Indítsa el a notebook-kiszolgálót a klónozott könyvtárból.
+1. Lépjen a `tutorials` mappára.
+1. Nyissa meg a notebookot.

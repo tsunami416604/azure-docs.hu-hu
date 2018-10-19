@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 09/27/2018
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: 1ee3000ab26dbb0eea33de828812959fe709aaa2
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 2f503a534f79440e6e6c572b7fb29ce3048ee7bc
+ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47410017"
+ms.lasthandoff: 10/06/2018
+ms.locfileid: "48831569"
 ---
 # <a name="tutorial-deploy-a-service-fabric-windows-cluster-into-an-azure-virtual-network"></a>Oktatóanyag: Windows-alapú Service Fabric-fürt üzembe helyezése Azure virtuális hálózatban
 
@@ -88,7 +88,7 @@ Ez a sablon egy öt virtuális gépből álló biztonságos fürtöt és egyetle
 
 ### <a name="service-fabric-cluster"></a>Service Fabric-fürt
 
-Egy Windows-fürt üzembe helyezése történik az alábbi jellemzőkkel:
+A **Microsoft.ServiceFabric/clusters** erőforrásban egy Windows-fürt az alábbi jellemzőkkel lesz konfigurálva:
 
 * egyetlen csomóponttípus;
 * öt csomópont az elsődleges csomóponttípusban (a sablon paramétereiben konfigurálható);
@@ -103,7 +103,7 @@ Egy Windows-fürt üzembe helyezése történik az alábbi jellemzőkkel:
 
 ### <a name="azure-load-balancer"></a>Azure Load Balancer
 
-A rendszer egy terheléselosztót helyez üzembe, a mintavételeket és szabályokat pedig az alábbi portokra állítja be:
+A **Microsoft.Network/loadBalancers** erőforrásban a rendszer egy terheléselosztót konfigurál, a mintavételeket és szabályokat pedig az alábbi portokra állítja be:
 
 * ügyfélkapcsolati végpont: 19000;
 * HTTP-átjáró végpontja: 19080;
@@ -111,16 +111,16 @@ A rendszer egy terheléselosztót helyez üzembe, a mintavételeket és szabály
 * alkalmazásport: 443;
 * Service Fabric fordított proxyja: 19081.
 
-Ha további alkalmazásportokra van szükség, akkor módosítania kell a Microsoft.Network/loadBalancers és a Microsoft.Network/networkSecurityGroups erőforrást a forgalom beengedésére.
+Ha további alkalmazásportokra van szükség, akkor módosítania kell a **Microsoft.Network/loadBalancers** és a **Microsoft.Network/networkSecurityGroups** erőforrást a forgalom beengedésére.
 
 ### <a name="virtual-network-subnet-and-network-security-group"></a>Virtuális hálózat, alhálózat és hálózati biztonsági csoport
 
-A virtuális hálózat, az alhálózat és a hálózati biztonsági csoport neve a sablon paramétereiben van meghatározva.  A virtuális hálózat és az alhálózat címtere szintén a sablon paramétereiben határozható meg:
+A virtuális hálózat, az alhálózat és a hálózati biztonsági csoport neve a sablon paramétereiben van meghatározva.  A virtuális hálózat és az alhálózat címtere szintén a sablon paramétereiben határozható meg és a **Microsoft.Network/virtualNetworks** erőforrásban van konfigurálva:
 
 * virtuális hálózat címtere: 172.16.0.0/20,
 * Service Fabric-alhálózat címtere: 172.16.2.0/23.
 
-Az alábbi bejövő forgalmi szabályok vannak engedélyezve a hálózati biztonsági csoportban. A portok értékét a sablon változóinak módosításával módosíthatja.
+Az alábbi bejövő forgalmi szabályok vannak engedélyezve a **Microsoft.Network/networkSecurityGroups** erőforrásban. A portok értékét a sablon változóinak módosításával módosíthatja.
 
 * ClientConnectionEndpoint (TCP): 19000
 * HttpGatewayEndpoint (HTTP/TCP): 19080
@@ -131,7 +131,7 @@ Az alábbi bejövő forgalmi szabályok vannak engedélyezve a hálózati bizton
 * alkalmazásportok tartománya – 49152–65534 (a szolgáltatások közötti kommunikációra szolgál, és nincs megnyitva a terheléselosztóban),
 * összes többi port letiltása.
 
-Ha további alkalmazásportokra van szükség, akkor módosítania kell a Microsoft.Network/loadBalancers és a Microsoft.Network/networkSecurityGroups erőforrást a forgalom beengedésére.
+Ha további alkalmazásportokra van szükség, akkor módosítania kell a **Microsoft.Network/loadBalancers** és a **Microsoft.Network/networkSecurityGroups** erőforrást a forgalom beengedésére.
 
 ## <a name="set-template-parameters"></a>Sablon paramétereinek megadása
 

@@ -6,15 +6,15 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 07/06/2018
+ms.date: 10/10/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 4638b697dcaa0d4c11bae1878a94f76f6237d4a4
-ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
+ms.openlocfilehash: 0404774f1cb347ceead8b78d1a9a6506712dea5c
+ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42154781"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49069097"
 ---
 # <a name="set-up-disaster-recovery-for-azure-vms-to-a-secondary-azure-region"></a>Azure-beli virtuális gépek másodlagos Azure-régióba történő vészhelyreállításának beállítása
 
@@ -169,6 +169,19 @@ Az alapértelmezett replikációsszabályzat-beállítások felülbírálásáho
 
 > [!IMPORTANT]
   Ha engedélyezte a több virtuális gépre kiterjedő konzisztenciát, a replikációs csoportban található gépek a 20004-es porton kommunikálnak egymással. Ellenőrizze, hogy nem blokkolja-e tűzfal a virtuális gépek között a 20004-es porton keresztül zajló belső kommunikációt. Ha Linux rendszerű virtuális gépeket szeretne egy replikációs csoport részévé tenni, győződjön meg arról, hogy a 20004-es port esetében a kimenő adatforgalom manuális megnyitása megtörtént-e az adott Linux-verzió útmutatásainak megfelelően.
+
+### <a name="configure-encryption-settings"></a>Titkosítási beállítások konfigurálása
+
+Ha a forrás virtuális gépen engedélyezve van az Azure Disk Encryption (ADE), az alábbi titkosítási beállítások jelennek meg.
+
+- **Lemeztitkosítási kulcstárolók**: Alapértelmezés szerint az Azure Site Recovery a forrás VM lemeztitkosítási kulcsai alapján létrehoz a célrégióban egy új kulcstárolót, amelynek a neve az „asr” utótaggal rendelkezik. Ha az Azure Site Recovery által létrehozott kulcstároló már létezik, a rendszer azt használja újra.
+- **Kulcstitkosítási kulcstároló**: Alapértelmezés szerint az Azure Site Recovery a forrás VM kulcstitkosítási kulcsai alapján létrehoz a célrégióban egy új kulcstárolót, amelynek a neve az „asr” utótaggal rendelkezik. Ha az Azure Site Recovery által létrehozott kulcstároló már létezik, a rendszer azt használja újra.
+
+Az alapértelmezett titkosítási beállítások felülbírálásához és egyéni kulcstárolók kiválasztásához kattintson a „Testreszabás” elemre.
+
+>[!NOTE]
+>Az Azure Site Recovery jelenleg csak Windows operációs rendszert futtató Azure-beli virtuális gépeket támogat, amelyeken [engedélyezve van az Azure AD alkalmazással végzett titkosítás](https://aka.ms/ade-aad-app).
+>
 
 ### <a name="track-replication-status"></a>A replikáció állapotának nyomon követése
 

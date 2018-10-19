@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 06/28/2018
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: 4aac44d46b6c5d202431aa34a1dc7b962466c799
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.openlocfilehash: 1af74cc44391c95fba781cbce14e9118ca36c14b
+ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37346188"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49078494"
 ---
 # <a name="tutorial-create-and-deploy-an-application-with-an-aspnet-core-web-api-front-end-service-and-a-stateful-back-end-service"></a>Oktatóanyag: Alkalmazás létrehozása és üzembe helyezése egy ASP.NET Core Web API kezelőfelületi szolgáltatás és egy állapotalapú háttérszolgáltatás segítségével
 
@@ -40,7 +40,7 @@ Ebben az oktatóanyag-sorozatban az alábbiakkal ismerkedhet meg:
 > * .NET Service Fabric-alkalmazás létrehozása
 > * [Az alkalmazás üzembe helyezése egy távoli fürtön](service-fabric-tutorial-deploy-app-to-party-cluster.md)
 > * [HTTPS-végpont hozzáadása ASP.NET Core kezelőfelületi szolgáltatáshoz](service-fabric-tutorial-dotnet-app-enable-https-endpoint.md)
-> * [A CI/CD konfigurálása a Visual Studio Team Services használatával](service-fabric-tutorial-deploy-app-with-cicd-vsts.md)
+> * [A CI/CD konfigurálása az Azure Pipelines használatával](service-fabric-tutorial-deploy-app-with-cicd-vsts.md)
 > * [Figyelés és diagnosztika beállítása az alkalmazáshoz](service-fabric-tutorial-monitoring-aspnet.md)
 
 ## <a name="prerequisites"></a>Előfeltételek
@@ -455,6 +455,9 @@ A következő lépésben két szolgáltatást fog összekapcsolni, majd beállí
 A Service Fabric teljes rugalmasságot biztosít a megbízható szolgáltatásokkal folytatott kommunikáció terén. Egy alkalmazáson belül előfordulhat, hogy TCP-n keresztül elérhető szolgáltatások vannak. Elképzelhető, hogy más szolgáltatások egy HTTP REST API-n keresztül, megint más szolgáltatások pedig webes szoftvercsatornákon keresztül érhetők el. A rendelkezésre álló lehetőségekről és azok kompromisszumairól a [szolgáltatásokkal folytatott kommunikációt](service-fabric-connect-and-communicate-with-services.md) ismertető részben találhat további információt.
 
 Ez az oktatóanyag az [ASP.NET Core Web API-t](service-fabric-reliable-services-communication-aspnetcore.md) és a [Service Fabric fordított proxyt](service-fabric-reverseproxy.md) használja, hogy a VotingWeb webes kezelőfelületi szolgáltatás kommunikálhasson a háttérbeli VotingData szolgáltatással. A fordított proxy alapértelmezés szerint a 19081-es port használatára van konfigurálva, és alkalmasnak kell lennie ehhez az oktatóanyaghoz. A portot a fürt beállítására használt ARM-sablonban kell beállítani. A használt portot a **Microsoft.ServiceFabric/clusters** erőforrás fürtsablonjában tudja megkeresni, illetve a fürtjegyzék HttpApplicationGatewayEndpoint elemében.
+
+> [!NOTE]
+> A fordított proxy csak Windows 8 vagy újabb, illetve Windows Server 2012 vagy újabb rendszeren futtatott fürtön támogatott.
 
 <u>Microsoft.ServiceFabric/clusters reverseProxyEndpointPort erőforrás</u>
 

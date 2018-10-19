@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 08/25/2018
 ms.author: markvi
 ms.reviewer: sandeo
-ms.openlocfilehash: ff2a161cbc39cdb4cf35cad2b8bd403ef2d3260c
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: b3a3baaf22fa9c382bb45a5b2a2065ef7678faf5
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47222167"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48855954"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-join-for-managed-domains"></a>Oktatóanyag: A hibrid Azure Active Directory-csatlakozás konfigurálása felügyelt tartományokhoz
 
@@ -68,7 +68,7 @@ A hibrid Azure AD-csatlakozáshoz szükséges, hogy az eszközök hozzáférjene
 - https://device.login.microsoftonline.com
 - https://autologon.microsoftazuread-sso.com (Ha közvetlen egyszeri bejelentkezést használ, vagy tervezi annak használatát)
 
-Ha a szervezet egy kimenő proxy használatát írja elő az internethez való csatlakozáshoz, a Windows 10 1709-es verziójától kezdve a számítógép proxybeállításai egy csoportszabályzat-objektummal (GPO) konfigurálhatók. Ha a számítógépen a Windows 10 1709-es verziójánál régebbi operációs rendszer fut, az Automatikus webproxykereső (WPA) protokoll használatával lehet engedélyezni, hogy a Windows 10 rendszerű számítógépek eszközregisztrációt végezzenek az Azure AD-ben. 
+Ha a szervezet egy kimenő proxy használatát írja elő az internethez való csatlakozáshoz, a Windows 10 1709-es verziójától kezdve [a számítógép proxybeállításai egy csoportszabályzat-objektummal (GPO) konfigurálhatók](https://blogs.technet.microsoft.com/netgeeks/2018/06/19/winhttp-proxy-settings-deployed-by-gpo/). Ha a számítógépen a Windows 10 1709-es verziójánál régebbi operációs rendszer fut, az Automatikus webproxykereső (WPA) protokoll használatával lehet engedélyezni, hogy a Windows 10 rendszerű számítógépek eszközregisztrációt végezzenek az Azure AD-ben. 
 
 Ha a szervezet egy hitelesített kimenő proxy használatát írja elő az internethez való csatlakozáshoz, gondoskodni kell arról, hogy a Windows 10 rendszerű számítógépek sikeres hitelesítést tudjanak végezni a kimenő proxyval. Mivel a Windows 10-es számítógépek az eszközregisztrációt gépi kontextusban futtatják, a kimenő proxy hitelesítését is gépi kontextus használatával kell konfigurálni. A konfiguráció követelményeivel kapcsolatban forduljon a kimenő proxy szolgáltatójához. 
 

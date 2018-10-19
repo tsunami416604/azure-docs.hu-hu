@@ -12,14 +12,14 @@ ms.devlang: NA
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 09/25/2018
+ms.date: 10/10/2018
 ms.author: alkohli
-ms.openlocfilehash: 9bc84a9b08c4cfbdf7f24416c923e0dbd7076556
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: d606b7b536147b7e1d96bfb6cebf2522e5b4f85f
+ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47161930"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49078857"
 ---
 # <a name="tutorial-copy-data-to-azure-data-box"></a>Oktatóanyag: Adatok másolása az Azure Data Boxra 
 
@@ -88,11 +88,11 @@ Amennyiben Windows Server rendszerű gazdagépet használ, a következő módon 
     The command completed successfully.
     ```
 
-4. Nyomja le a Windows + R billentyűkombinációt. A **Futtatás** ablakban adja meg a következőt: `\\<device IP address>`. Kattintson az **OK** gombra. Ekkor megnyílik a Fájlkezelő.
+4. Nyomja le a Windows + R billentyűkombinációt. A **Futtatás** ablakban adja meg a következőt: `\\<device IP address>`. Kattintson az **OK** gombra. Ekkor megnyílik a Fájlkezelő. A megosztásoknak ezután mappaként kell megjelenniük.
     
     ![Kapcsolódás a megosztáshoz a Fájlkezelővel 2](media/data-box-deploy-copy-data/connect-shares-file-explorer1.png)
 
-5. A megosztásoknak ezután mappaként kell megjelenniük. Hozzon létre egy mappát a másolni kívánt fájlok (ezúttal sablonok) számára. Néha egy szürke kereszt jelenik meg a mappákon. Ez a kereszt nem hibaállapotot jelez. A mappákat az alkalmazás jelölte meg, hogy nyomon követhesse az állapotukat.
+5.  **Mindig hozzon létre egy mappát azokhoz a fájlokhoz, amelyeket másolni szeretne a megosztás alatt, majd másolja a fájlokat a létrehozott mappába**. Néha egy szürke kereszt jelenik meg a mappákon. Ez a kereszt nem hibaállapotot jelez. A mappákat az alkalmazás jelölte meg, hogy nyomon követhesse az állapotukat.
     
     ![Kapcsolódás a megosztáshoz a Fájlkezelővel 2](media/data-box-deploy-copy-data/connect-shares-file-explorer2.png) ![Kapcsolódás a megosztáshoz a Fájlkezelővel 2](media/data-box-deploy-copy-data/connect-shares-file-explorer2.png) 
 
@@ -239,11 +239,14 @@ Amennyiben az rsyncet használja többszálas másoláshoz, a következő irány
 
  - Telepítse a **CIFS Utils** vagy az **NFS Utils** csomagot, attól függően, hogy a Linux-ügyfél milyen fájlrendszert használ.
 
-    `sudo apt-get install cifs-utils` `sudo apt-get install nfs-utils`
+    `sudo apt-get install cifs-utils`
+
+    `sudo apt-get install nfs-utils`
 
  -  Telepítse az **Rsyncet** és a **Parallelt** (a Linux elosztott verziójától függően).
 
     `sudo apt-get install rsync`
+   
     `sudo apt-get install parallel` 
 
  - Hozzon létre egy csatlakozási pontot.

@@ -1,43 +1,45 @@
 ---
-title: Python gyors üzembe helyezési projekt URL-cím Preview - Microsoft kognitív szolgáltatások |} Microsoft Docs
-description: Gyorsan az első lépéseiben a projekt URL-cím Preview a Microsoft Azure kognitív Services minta parancsfájlt.
+title: 'Rövid útmutató: Az URL-cím előnézete projekt, Python'
+titlesuffix: Azure Cognitive Services
+description: Az URL-cím előnézete projekt Python nyelvvel való azonnali használatába bevezető szkriptminta.
 services: cognitive-services
 author: mikedodaro
+manager: cgronlun
 ms.service: cognitive-services
-ms.technology: project-url-preview
-ms.topic: article
+ms.component: project-url-preview
+ms.topic: quickstart
 ms.date: 03/29/2018
-ms.author: rosh, v-gedod
-ms.openlocfilehash: 78b2d83b02aa9ea32509029c7456e04e420b8572
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
-ms.translationtype: MT
+ms.author: rosh
+ms.openlocfilehash: c4af701188c6453bd3c067b838519c32862af13d
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35348627"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48867272"
 ---
-# <a name="url-preview-python-quickstart"></a>URL-cím Preview Python gyors üzembe helyezés
+# <a name="quickstart-url-preview-with-python"></a>Rövid útmutató: Az URL-cím előnézete Python nyelven
 
-Az alábbi Python-példakód létrehozza a SwiftKey webhely URL-cím előnézete: https://swiftkey.com/en.
+Az alábbi Python-példa létrehoz egy URL-előnézetet a SwiftKey webhelyhez: https://swiftkey.com/en.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az ingyenes próbaidőszakra hozzáférési kulcs beszerzése [kognitív szolgáltatások Labs](https://aka.ms/answersearchsubscription)
+Hozzáférési kulcs lekérése a [Cognitive Services Labs](https://aka.ms/answersearchsubscription) ingyenes próbaverziójához
 
-A példa Python 3.6.
+Ez a példa a Python 3.6-ot használja.
 
-## <a name="code-scenario"></a>Kód forgatókönyv 
+## <a name="code-scenario"></a>Kódforgatókönyv 
 
-A következő kód egy URL-cím Preview hoz létre.
-Az alábbi lépéseket a megvalósított:
-1. Deklarálja a változókat, adja meg a végpont által állomás és az elérési utat.
-2. Adja meg a lekérdezés URL-címe az előzetes, és adja hozzá a lekérdezési paramétert.  
-3. Állítsa be a lekérdezési paraméter.
-4. Adja meg a keresési funkció, amely hozza létre a kérelmet, és hozzáadja a *Ocp-Apim-előfizetés-kulcs* fejléc.
-5. Állítsa be a *Ocp-Apim-előfizetés-kulcs* fejléc. 
-6. A kapcsolathoz, és a kérelem küldése.
-7. A JSON-eredmények nyomtatása.
+A következő kód egy URL-előnézetet hoz létre.
+Implementálására a következő lépésekben kerül sor:
+1. Deklarálja a változókat a végpont gazdagép és útvonal szerinti megadásához.
+2. Megadja a lekérdezési URL-címet az előnézethez, és hozzáad egy lekérdezési paramétert.  
+3. Megadja a lekérdezési paramétert.
+4. Definiálja a kérést létrehozó és az *Ocp-Apim-Subscription-Key* fejlécet hozzáadó Search függvényt.
+5. Megadja az *Ocp-Apim-Subscription-Key* fejlécet. 
+6. Létrehozza a kapcsolatot, és elküldi a kérést.
+7. Megjeleníti a JSON-eredményeket.
 
-A teljes kód látható ebben a bemutatóban a következőképpen:
+Az útmutatóban használt teljes kód a következő:
 
 ````
 import http.client, urllib.parse
@@ -64,7 +66,7 @@ result = get_preview ()
 print (json.dumps(json.loads(result), indent=4))
 ````
 ## <a name="next-steps"></a>További lépések
-- [C# gyors üzembe helyezés](csharp.md)
-- [Java gyors üzembe helyezés](java-quickstart.md)
-- [JavaScript gyors üzembe helyezés](javascript.md)
-- [Csomópont URL-cím gyors üzembe helyezés](node-quickstart.md)
+- [C# – rövid útmutató](csharp.md)
+- [Java – rövid útmutató](java-quickstart.md)
+- [JavaScript – rövid útmutató](javascript.md)
+- [Node URL – rövid útmutató](node-quickstart.md)

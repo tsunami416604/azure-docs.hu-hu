@@ -16,9 +16,9 @@ items:
   expanded: true
 - name: Oktatóanyagok
   items:
-  - name: Titkosított tárfiók létrehozása
+  - name: A sablonreferencia felhasználása
     href: resource-manager-tutorial-create-encrypted-storage-accounts.md
-  - name: Több tárfiókpéldány létrehozása
+  - name: Több erőforráspéldány létrehozása
     href: resource-manager-tutorial-create-multiple-instances.md
   - name: Erőforrások üzembehelyezési sorrendjének beállítása
     href: resource-manager-tutorial-create-templates-with-dependent-resources.md
@@ -128,10 +128,6 @@ items:
       href: programmatically-create-subscription.md
     - name: Hozzáférés biztosítása EA-előfizetések létrehozásához
       href: grant-access-to-create-subscription.md
-    - name: Felügyeleti csoportok létrehozása
-      href: management-groups-create.md
-    - name: Felügyeleti csoportok kezelése
-      href: management-groups-manage.md
   - name: Vezérlési hozzáférés
     items:
     - name: Egyszerű szolgáltatás létrehozása
@@ -236,9 +232,9 @@ items:
     href: resource-manager-personal-data.md
   - name: Videók
     href: https://azure.microsoft.com/documentation/videos/index/?services=azure-resource-manager
-ms.openlocfilehash: c47c85917445330ed2fa2ec50541b6db3f676a27
-ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
+ms.openlocfilehash: 3e7fc5f0e26bcfd0c52b874196eff1ac332b62bc
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/01/2018
-ms.locfileid: "47585934"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49403356"

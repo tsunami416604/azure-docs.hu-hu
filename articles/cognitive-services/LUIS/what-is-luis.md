@@ -7,14 +7,14 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: overview
-ms.date: 08/15/2018
+ms.date: 10/06/2018
 ms.author: diberry
-ms.openlocfilehash: a8e9deb7c677d04634b223045adc2d31fa74ba6e
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 0520c00ab20ca7210b3bb13567f9998e7231be43
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47033039"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48867669"
 ---
 # <a name="what-is-language-understanding-luis"></a>Mi a Language Understanding (LUIS)?
 
@@ -151,7 +151,7 @@ A JSON-végpont minimális válasza tartalmazza a lekérdezési kimondott szöve
 
 ## <a name="improve-model-prediction"></a>Modell-előrejelzés javítása
 
-Miután egy LUIS-modell a közzététele után valós felhasználói kimondott szövegeket fogad, a LUIS több módszert is biztosít az előrejelzés pontosításához: végponti kimondott szövegek [aktív tanulása](#active-learning), [kifejezéslisták](#phrase-lists) a tartomány szavainak belefoglalása érdekében, valamint [minták](#patterns) a szükséges kimondott szövegek számának csökkentésére.
+Miután egy LUIS-modell a közzététele után valós felhasználói kimondott szövegeket fogad, a LUIS több módszert is biztosít az előrejelzés pontosításához: végponti kimondott szövegek [aktív tanulása](luis-concept-review-endpoint-utterances.md), [kifejezéslisták](luis-concept-feature.md) a tartomány szavainak belefoglalása érdekében, valamint [minták](luis-concept-patterns.md) a szükséges kimondott szövegek számának csökkentésére.
 <!--
 ### Active learning
 
@@ -171,25 +171,37 @@ Patterns allow you to simplify an intent's utterance collection into common [tem
 Author LUIS from the [authoring](https://aka.ms/luis-authoring-apis) APIs or from the LUIS portal. Query the published prediction endpoint of the model from the [endpoint](https://aka.ms/luis-endpoint-apis) APIs.
 -->
 
-## <a name="integrating-with-luis"></a>Integráció a LUIS szolgáltatással
+## <a name="development-lifecycle"></a>Fejlesztési életciklus
+A LUIS eszközöket és verziókezelést, valamint a többi LUIS-szerzővel való együttműködés lehetőségét biztosítva teszi lehetővé az integrációt a teljes fejlesztési ügyfélciklusban az ügyfélalkalmazás és a nyelvi modell szintjén. 
+
+## <a name="implementing-luis"></a>A LUIS implementálása
 Mivel a LUIS egy REST API, bármely olyan termékkel, szolgáltatással vagy keretrendszerrel használható, amely HTTP-kéréseket hoz létre. Az alábbi lista tartalmazza a főbb, LUIS szolgáltatással használható Microsoft-termékeket és -szolgáltatásokat.
 
-A LUIS szolgáltatással használható Microsoft-ügyfélalkalmazások a következők:
+A LUIS leggyakoribb ügyfélalkalmazása:
 * A [Web app bot](https://docs.microsoft.com/azure/bot-service/?view=azure-bot-service-3.0) gyorsan létrehoz egy LUIS-kompatibilis csevegőrobotot, amely szövegbevitel útján kommunikál a felhasználóval. A [Bot Framework][bot-framework] [3.x](https://github.com/Microsoft/BotBuilder) vagy [4.x](https://github.com/Microsoft/botbuilder-dotnet) verzióját használja a teljes körű, robotokkal kapcsolatos szolgáltatások biztosításához.
-* [Windows Mixed Reality](https://docs.microsoft.com/windows/mixed-reality/) – további információ: [Vegyes valóság kurzus](https://docs.microsoft.com/windows/mixed-reality/mr-azure-303) a LUIS használatával. 
 
-Microsoft eszközök a LUIS robotokkal való használatához:
+Eszközök a LUIS robotokkal való gyors és egyszerű használatához:
+* [LUIS CLI](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/LUIS) – Az NPM-csomag tartalomkészítési és előrejelzési funkciókat biztosít különálló parancssori eszközként vagy importált tartalmakként. 
+* A [LUISGen](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/LUISGen) eszközzel szigorú típusmegadású C#- és TypeScript-forráskód hozható létre exportált LUIS-modellekből.
 * A [Dispatch](https://aka.ms/dispatch-tool) többféle LUIS- és QnA Maker-alkalmazás számára is lehetővé teszi, hogy elérhetők legyenek egy Dispatcher-modellt használó szülőalkalmazásból.
-* A [Conversation learner](https://docs.microsoft.com/azure/cognitive-services/labs/conversation-learner/overview) robotbeszélgetések gyorsabb létrehozását teszi lehetővé a LUIS szolgáltatással.
-* A [Project personality chat](https://docs.microsoft.com/azure/cognitive-services/project-personality-chat/overview) a robotokkal való társalgást kezeli.
+* A [LUDown](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/Ludown) a robotok nyelvi modelljeinek kezelését egyszerűsítő parancssori eszköz.
 
 További, a LUIS szolgáltatással használható Cognitive Services szolgáltatások:
 * A [QnA Maker][qnamaker] különböző típusú szövegek kombinálásával teszi lehetővé egy kérdéseken és válaszokon alapuló tudásbázis kialakítását.
 * A [Bing Spell Check API](../bing-spell-check/proof-text.md) az előrejelzés előtt lehetővé teszi a szöveg javítását. 
 * A [Speech service](../Speech-Service/overview.md) szöveggé alakítja a szóbeli kéréseket. 
+* A [Conversation learner](https://docs.microsoft.com/azure/cognitive-services/labs/conversation-learner/overview) robotbeszélgetések gyorsabb létrehozását teszi lehetővé a LUIS szolgáltatással.
+* A [Project personality chat](https://docs.microsoft.com/azure/cognitive-services/project-personality-chat/overview) a robotokkal való társalgást kezeli.
+<!--
+## Other ways of implementing LUIS
+
+A client application for LUIS is:
+* [Windows Mixed Reality](https://docs.microsoft.com/windows/mixed-reality/) - learn more with this [Mixed reality course](https://docs.microsoft.com/windows/mixed-reality/mr-azure-303) with LUIS. 
 
 
+Labs: 
 
+-->
 ## <a name="next-steps"></a>További lépések
 
 Hozzon létre új LUIS alkalmazást [előre összeállított](luis-get-started-create-app.md) vagy [egyéni](luis-quickstart-intents-only.md) tartománnyal. [Kérdezze le egy nyilvános IoT-alkalmazás előrejelzési végpontját](luis-get-started-cs-get-intent.md).

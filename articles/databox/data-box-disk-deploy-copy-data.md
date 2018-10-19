@@ -12,15 +12,15 @@ ms.devlang: NA
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 09/28/2018
+ms.date: 10/09/2018
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: 776f70b6b24288006d52cb0e91797d1074180160
-ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
+ms.openlocfilehash: 7eb17138f42cdada10edd5ef08873eb2afee91fe
+ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47452615"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49068978"
 ---
 # <a name="tutorial-copy-data-to-azure-data-box-disk-and-verify"></a>Oktatóanyag: Adatok másolása Azure Data Box Diskre, majd azok ellenőrzése
 
@@ -163,7 +163,75 @@ Az alábbi lépések elvégzésével csatlakoztathatja, majd másolhatja át az 
 > -  Adatok másolása közben győződjön meg arról, hogy az adatok mérete megfelel az [Azure Storage és a Data Box Disk korlátaival](data-box-disk-limits.md) foglalkozó cikkben ismertetett méretkorlátoknak. 
 > - Ha a Data Box Disk által éppen feltöltés alatt álló adatokat egyidejűleg egy másik alkalmazás is feltölti a Data Box Disken kívül, ez a feltöltési feladatok meghiúsulásához és az adatok meghibásodásához vezethet.
 
-## <a name="verify-data"></a>Az adatok ellenőrzése 
+### <a name="split-and-copy-data-to-disks"></a>Adatok szétosztása és másolása lemezekre
+
+Ez a választható eljárás akkor lehet hasznos, ha több lemezt használ, és nagy adatkészletet kell szétosztania és átmásolnia ezekre a lemezre. A Data Box másolásfelosztó eszköze segítséget nyújt az adatok felosztásában és másolásában Windows rendszerű számítógépen.
+
+1. Ellenőrizze Windows rendszerű számítógépén, hogy a Data Box másolásfelosztó eszköze le lett-e töltve és ki lett-e csomagolva egy helyi mappába. Ezt az eszközt a windowsos Data Box Disk-eszközkészlet részeként töltötte le.
+2. Nyissa meg a Fájlkezelőt. Jegyezze fel az adatforrásként szolgáló meghajtó nevét és a Data Box Diskhez rendelt meghajtóbetűjeleket. 
+
+     ![Felosztásos adatmásolás ](media/data-box-disk-deploy-copy-data/split-copy-1.png)
+ 
+3. Keresse meg a másolni kívánt forrásadatokat. Ebben az esetben például a következőt:
+    - A rendszer az alábbi blokkblobadatokat azonosította.
+
+         ![Felosztásos adatmásolás ](media/data-box-disk-deploy-copy-data/split-copy-2.png)    
+
+    - A rendszer az alábbi lapblobadatokat azonosította.
+
+         ![Felosztásos adatmásolás ](media/data-box-disk-deploy-copy-data/split-copy-3.png)
+ 
+4. Nyissa meg azt a mappát, amelybe a szoftver ki lett csomagolva. Keresse meg a mappában a SampleConfig.json fájlt. Ez egy írásvédett fájl, amelyet módosíthat és menthet.
+
+   ![Felosztásos adatmásolás ](media/data-box-disk-deploy-copy-data/split-copy-4.png)
+ 
+5. Módosítsa a SampleConfig.json fájlt.
+ 
+    - Adja meg a feladat nevét. Ezzel létrehoz egy mappát a Data Box Diskben, amely a későbbiekben tárolóként fog szolgálni a lemezekhez társított Azure Storage-fiókban. A feladat nevének meg kell felelnie az Azure-tárolókra vonatkozó elnevezési konvencióknak. 
+    - Adja meg a forrásútvonalat, és jegyezze fel annak a SampleConfigFile.json fájlban megadott formátumát. 
+    - Adja meg a céllemezeknek megfelelő meghajtóbetűjeleket. Ekkor elkezdődik a forrásadatok másolása a lemezekre.
+    - Adja meg a naplófájlok elérési útvonalát. Alapértelmezés szerint ezek a fájlok abba a könyvtárba kerülnek, ahol az .exe fájl is található.
+
+     ![Felosztásos adatmásolás ](media/data-box-disk-deploy-copy-data/split-copy-5.png)
+
+6. A fájlformátum ellenőrzéséhez nyissa meg a JSONlint eszközt. Mentse a fájlt ConfigFile.json néven. 
+
+     ![Felosztásos adatmásolás ](media/data-box-disk-deploy-copy-data/split-copy-6.png)
+ 
+7. Nyisson meg egy parancssori ablakot. 
+
+8. Futtassa a DataBoxDiskSplitCopy.exe fájlt. Típus
+
+    `DataBoxDiskSplitCopy.exe PrepImport /config:<Your-config-file-name.json>`
+
+     ![Felosztásos adatmásolás ](media/data-box-disk-deploy-copy-data/split-copy-7.png)
+ 
+9. Nyomja le az Enter billentyűt a szkript folytatásához.
+
+    ![Felosztásos adatmásolás ](media/data-box-disk-deploy-copy-data/split-copy-8.png)
+  
+10. Az adatkészlet felosztását és másolását követően a másolásfelosztó eszköz összegzést készít a másolási munkamenetről. Az alábbiakban egy példa látható a kimenetre.
+
+    ![Felosztásos adatmásolás ](media/data-box-disk-deploy-copy-data/split-copy-9.png)
+ 
+11. Ellenőrizze, hogy az adatok sikeresen szét lettek-e osztva a céllemezekre. 
+ 
+    ![Felosztásos adatmásolás ](media/data-box-disk-deploy-copy-data/split-copy-10.png)
+    ![Felosztásos adatmásolás ](media/data-box-disk-deploy-copy-data/split-copy-11.png)
+     
+    Ha alaposabban megvizsgálja az n: meghajtó tartalmát, láthatja, hogy két almappa jött létre a blokkblob és a lapblob formátumú adatok számára.
+    
+     ![Felosztásos adatmásolás ](media/data-box-disk-deploy-copy-data/split-copy-12.png)
+
+12. Ha a másolási munkamenet meghiúsul, a következő paranccsal állíthatja helyre és folytathatja azt:
+
+    `DataBoxDiskSplitCopy.exe PrepImport /config:<configFile.json> /ResumeSession`
+
+
+Az adatmásolást követő lépés az adatok ellenőrzése. 
+
+
+## <a name="validate-data"></a>Az adatok ellenőrzése 
 
 Az adatok ellenőrzéséhez hajtsa végre a következő lépéseket.
 
@@ -177,7 +245,7 @@ Az adatok ellenőrzéséhez hajtsa végre a következő lépéseket.
 
     > [!TIP]
     > - Állítsa alaphelyzetbe az eszközt két futtatás között.
-    > - Az 1. lehetőséget nagy számú, kis méretű fájlokat (~KBs) tartalmazó adatkészletek érvényesítésére használja. Ezekben az esetekben az ellenőrzőösszeg létrehozása nagyon hosszú időt vehet igénybe, és a folyamat jelentősen lelassíthatja a rendszert.
+    > - Az 1. lehetőség kis méretű (néhány kB-os) fájlokat tartalmazó, nagy adatkészlet fájljainak ellenőrzésére szolgál. Ezekben az esetekben az ellenőrzőösszeg létrehozása nagyon hosszú időt vehet igénybe, és a folyamat jelentősen lelassíthatja a rendszert.
 
 3. Több lemez használata esetén futtassa a parancsot minden lemezen.
 

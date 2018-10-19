@@ -11,16 +11,16 @@ ms.service: azure-functions
 ms.custom: mvc
 ms.devlang: azure-cli
 manager: jeconnoc
-ms.openlocfilehash: 608d15afaaff15ad960a0fe8b7a56854f41662b6
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 1cf20a4a93ef1b5bfb9c7818f35be5e75e45a3d2
+ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46993408"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48901090"
 ---
 # <a name="create-your-first-function-running-on-linux-using-the-azure-cli-preview"></a>Az első függvény létrehozása Linux rendszerben az Azure CLI használatával (előzetes verzió)
 
-Az Azure Functions lehetővé teszi, hogy a függvényeit Linux rendszerben egy alapértelmezett Azure App Service-tárolóban üzemeltesse. [Használhatja saját egyéni tárolóját](functions-create-function-linux-custom-image.md) is. Ez a szolgáltatás jelenleg csak előzetes verzióban érhető el, és a használatához a szintén előzetes verzióként elérhető [Functions 2.0 futtatókörnyezet](functions-versions.md) szükséges.
+Az Azure Functions lehetővé teszi, hogy a függvényeit Linux rendszerben egy alapértelmezett Azure App Service-tárolóban üzemeltesse. [Használhatja saját egyéni tárolóját](functions-create-function-linux-custom-image.md) is. Ez a szolgáltatás jelenleg csak előzetes verzióban érhető el, és a használatához [Functions 2.0 futtatókörnyezet](functions-versions.md) szükséges.
 
 Ez a rövid útmutató bemutatja, hogyan hozhatja létre az első, az alapértelmezett App Service-tárolóban üzemeltetett függvényalkalmazását Linux rendszerben az Azure Functions és az Azure CLI segítségével. Magát a függvénykódot a GitHub mintaadattárából helyezheti üzembe a rendszerképen.    
 
@@ -83,6 +83,18 @@ Mivel a `myAppServicePlan` egy Linux-csomag, a rendszer a beépített Docker-ren
 
 >[!NOTE]  
 >A mintaadattár jelenleg két parancsfájlt tartalmaz [deploy.sh](https://github.com/Azure-Samples/functions-quickstart-linux/blob/master/deploy.sh) és [.deployment](https://github.com/Azure-Samples/functions-quickstart-linux/blob/master/.deployment) néven. A .deployment fájl utasítja az üzembehelyezési folyamatot, hogy a deploy.sh fájlt használja [egyéni üzembehelyezési szkriptként](https://github.com/projectkudu/kudu/wiki/Custom-Deployment-Script). A jelenlegi előzetes kiadásban szükség van szkriptekre a függvényalkalmazás Linux-rendszerképen való üzembe helyezéséhez.  
+
+## <a name="configure-the-function-app"></a>A függvényalkalmazás konfigurálása
+
+A GitHub-adattárban található projekthez a Functions futtatókörnyezet 1.x verziója szükséges. A `FUNCTIONS_WORKER_RUNTIME` alkalmazásbeállítás `~1` értékre állítása a legújabb 1.x verzióra rögzíti a függvényalkalmazást. Adja meg az alkalmazásbeállításokat az [az functionapp config appsettings set](https://docs.microsoft.com/cli/azure/functionapp/config/appsettings#set) paranccsal.
+
+A következő Azure CLI-parancsban az <app_name> a függvényalkalmazás neve.
+
+```azurecli-interactive
+az functionapp config appsettings set --name <app_name> \
+--resource-group myResourceGroup \
+--settings FUNCTIONS_WORKER_RUNTIME=~1
+```
 
 [!INCLUDE [functions-test-function-code](../../includes/functions-test-function-code.md)]
 

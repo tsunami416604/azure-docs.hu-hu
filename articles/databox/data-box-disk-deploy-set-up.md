@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 09/24/2018
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: e4a913aaeb6eeb3c58b70dbcd714f1360875594f
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: b1e647c6aee251bebd257db5e4e631deba0be3fa
+ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47161536"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49068808"
 ---
 # <a name="tutorial-unpack-connect-and-unlock-azure-data-box-disk"></a>Oktatóanyag: Azure Data Box Disk kicsomagolása, csatlakoztatása és a zárolás feloldása
 
@@ -76,12 +76,14 @@ Attól függően, hogy Windows- vagy Linux-ügyfélhez csatlakozik, a lemezek z�
 A meghajtók csatlakoztatásához és a zárolás feloldásához kövesse az alábbi lépéseket.
      
 1. Az Azure Portalon lépjen az **Általános > Eszköz adatai** menüpontra. 
-2. Töltse le a Data Box Disk Windows-ügyfélhez tartozó eszközkészletét. 
+2. Töltse le a Data Box Disk Windows-ügyfélhez tartozó eszközkészletét. Ez az eszközkészlet 3 eszközt tartalmaz: a Data Box Disk lemezzárolás-feloldó, érvényesítési és másolásfelosztó eszközét. 
+
+    Ezúttal csak a Data Box Disk lemezzárolás-feloldó eszközét fogja használni. A két további eszköz később kap szerepet.
 
     > [!div class="nextstepaction"]
     > [Data Box Disk eszközkészlet letöltése Windowsra](http://aka.ms/databoxdisktoolswin)         
 
-3. Csomagolja ki az eszközt ugyanazon a számítógépen, amelyet az adatok másolásához használ majd.
+3. Csomagolja ki az eszközkészletet ugyanarra a számítógépre, amelyet az adatok másolásához fog használni. 
 4. Nyisson meg egy parancssori ablakot, vagy futtassa a Windows PowerShellt rendszergazdai jogosultsággal ugyanazon a számítógépen.
 5. (Nem kötelező) Annak érdekében, hogy meggyőződhessen róla, hogy a meghajtó zárolásának feloldásához használt számítógép teljesíti az operációs rendszerre vonatkozó követelményeket, futtassa a rendszerellenőrzési parancsot. Az alábbiakban egy példa látható a kimenetre. 
 

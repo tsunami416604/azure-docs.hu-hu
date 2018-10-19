@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 08/25/2018
 ms.author: markvi
 ms.reviewer: sandeo
-ms.openlocfilehash: bc2b391457d7652b62558c9a752376b07b50a8c1
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: 2f020bdf79811c959e07d753231fc133fe597861
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47391806"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48855178"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-join-for-federated-domains"></a>A hibrid Azure Active Directory-csatlakozás konfigurálása összevont tartományokhoz
 
@@ -78,7 +78,9 @@ A hibrid Azure AD-csatlakozáshoz szükséges, hogy az eszközök hozzáférjene
 - A szervezet biztonsági jegykiadó szolgáltatása (összevont tartományok esetén)
 - https://autologon.microsoftazuread-sso.com (Ha közvetlen egyszeri bejelentkezést használ, vagy tervezi annak használatát)
 
-Ha a szervezet egy kimenő proxy használatát írja elő az internethez való csatlakozáshoz, a Windows 10 1709-es verziójától kezdve a számítógép proxybeállításai egy csoportszabályzat-objektummal (GPO) konfigurálhatók. Ha a számítógépen a Windows 10 1709-es verziójánál régebbi operációs rendszer fut, az Automatikus webproxykereső (WPA) protokoll használatával lehet engedélyezni, hogy a Windows 10 rendszerű számítógépek eszközregisztrációt végezzenek az Azure AD-ben. 
+A Windows 10 1803-as verziójától kezdve, ha az összevont tartomány azonnali Hibrid Azure AD-csatlakozása (pl.: AD FS) meghiúsul, az Azure AD Connectre támaszkodunk az Azure AD-ben lévő, később a Hibrid Azure AD-csatlakozáshoz történő eszközregisztráció elvégzéséhez használt számítógép-objektum szinkronizálásához.
+
+Ha a szervezet egy kimenő proxy használatát írja elő az internethez való csatlakozáshoz, a Windows 10 1709-es verziójától kezdve [a számítógép proxybeállításai egy csoportszabályzat-objektummal (GPO) konfigurálhatók](https://blogs.technet.microsoft.com/netgeeks/2018/06/19/winhttp-proxy-settings-deployed-by-gpo/). Ha a számítógépen a Windows 10 1709-es verziójánál korábbi operációs rendszer fut, az Automatikus webproxykereső (WPAD) protokoll használatával lehet engedélyezni, hogy a Windows 10 rendszerű számítógépek eszközregisztrációt végezzenek az Azure AD-ben. 
 
 Ha a szervezet egy hitelesített kimenő proxy használatát írja elő az internethez való csatlakozáshoz, gondoskodni kell arról, hogy a Windows 10 rendszerű számítógépek sikeres hitelesítést tudjanak végezni a kimenő proxyval. Mivel a Windows 10-es számítógépek az eszközregisztrációt gépi kontextusban futtatják, a kimenő proxy hitelesítését is gépi kontextus használatával kell konfigurálni. A konfiguráció követelményeivel kapcsolatban forduljon a kimenő proxy szolgáltatójához. 
 

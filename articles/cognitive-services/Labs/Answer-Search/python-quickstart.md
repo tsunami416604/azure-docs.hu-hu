@@ -1,43 +1,45 @@
 ---
-title: Python gyors üzembe helyezés, a Microsoft kognitív szolgáltatásokban projekt válasz keresése |} Microsoft Docs
-description: Python példa projekt válasz keresése, Microsoft Azure kognitív szolgáltatások használatának megkezdéséhez.
+title: 'Rövid útmutató: Válaszkereséses projekt, Python'
+titlesuffix: Azure Cognitive Services
+description: Egy Python-alapú példa a Válaszkereséses projekt használatának első lépéseihez.
 services: cognitive-services
 author: mikedodaro
+manager: cgronlun
 ms.service: cognitive-services
-ms.technology: project-answer-search
-ms.topic: article
+ms.component: project-answer-search
+ms.topic: quickstart
 ms.date: 04/13/2018
 ms.author: rosh, v-gedod
-ms.openlocfilehash: 9cb5406c616ed8e96d73c00c788a0d20f66dcabd
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
-ms.translationtype: MT
+ms.openlocfilehash: c33a88b65dcdf5ddddff9f5109afbe0cca7247c4
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35348571"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48869828"
 ---
-# <a name="project-answer-search-python-quickstart"></a>Projekt válasz keresési Python gyors üzembe helyezés
+# <a name="quickstart-project-answer-search-with-python"></a>Rövid útmutató a Válaszkereséses projekt a Pythonnal való használatához
 
-A következő Python példa hoz létre, és elküld egy kérést "Gibraltár Rock" kapcsolatos információkat.
+Ez a Python-alapú példa egy, a „Gibraltár-sziklával” kapcsolatos információkra vonatkozó kérést hoz létre és küld el.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az ingyenes próbaidőszakra hozzáférési kulcs beszerzése [kognitív szolgáltatások Labs](https://aka.ms/answersearchsubscription)
+Egy hozzáférési kulcs a [Cognitive Services Labs](https://aka.ms/answersearchsubscription) ingyenes próbaverziójához.
 
-Ez a példa Python 3.6.4
+Ez a példa a Python 3.6.4-et használja.
 
-## <a name="code-scenario"></a>Kód forgatókönyv 
+## <a name="code-scenario"></a>Kódforgatókönyv 
 
-A következő kód egy URL-cím Preview hoz létre.
-Az alábbi lépéseket a megvalósított:
-1. Deklarálja a változókat, adja meg a végpont által állomás és az elérési utat.
-2. Adja meg a lekérdezés URL-címe az előzetes, és adja hozzá a lekérdezési paramétert.  
-3. Állítsa be a lekérdezési paraméter.
-4. Adja meg a keresési funkció, amely hozza létre a kérelmet, és hozzáadja a *Ocp-Apim-előfizetés-kulcs* fejléc.
-5. Állítsa be a *Ocp-Apim-előfizetés-kulcs* fejléc. 
-6. A kapcsolathoz, és a kérelem küldése.
-7. A JSON-eredmények nyomtatása.
+A következő kód egy URL-előnézetet hoz létre.
+Implementálása a következő lépésekben történik:
+1. A változók deklarálása a végpont megadásához gazdagép és elérési út szerint.
+2. Az előnézetben megtekintendő lekérdezési URL megadása és egy lekérdezési paraméter hozzáadása.  
+3. A lekérdezési paraméter megadása.
+4. A kérést létrehozó és az *Ocp-Apim-Subscription-Key* fejlécet felvevő Search-függvény definiálása.
+5. Az *Ocp-Apim-Subscription-Key* fejléc megadása. 
+6. A kapcsolat létrehozása és a kérés elküldése.
+7. A JSON-eredmények kinyomtatása.
 
-A teljes kód látható ebben a bemutatóban a következőképpen:
+Az útmutatóban használt teljes kód a következő:
 
 ````
 import http.client, urllib.parse
@@ -65,6 +67,6 @@ print (json.dumps(json.loads(result), indent=4))
 
 ````
 ## <a name="next-steps"></a>További lépések
-- [C# gyors üzembe helyezés](c-sharp-quickstart.md)
-- [Java gyors üzembe helyezés](java-quickstart.md)
-- [Csomópont gyors üzembe helyezés](node-quickstart.md)
+- [C# – rövid útmutató](c-sharp-quickstart.md)
+- [Java – rövid útmutató](java-quickstart.md)
+- [Node – rövid útmutató](node-quickstart.md)

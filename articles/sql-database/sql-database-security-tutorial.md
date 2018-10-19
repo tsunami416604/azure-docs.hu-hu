@@ -12,12 +12,12 @@ ms.author: daredis
 ms.reviewer: vanto, carlrab
 manager: craigg
 ms.date: 09/07/2018
-ms.openlocfilehash: 7db0276f03511273e2607378f993957ce3a6c094
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: ceed69503900b38d7f6a29bbe116ab9a4d54e396
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47160434"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48857958"
 ---
 # <a name="secure-your-azure-sql-database"></a>Az Azure SQL Database-adatbázis védelme
 
@@ -174,7 +174,7 @@ Az Azure SQL Database naplózási szolgáltatása nyomon követi az adatbázisok
 
 1. Válassza az **SQL-adatbázisok** elemet a bal oldali menüben, majd kattintson az adatbázisra az **SQL-adatbázisok** oldalon. 
 
-2. A Beállítások panelen válassza a **Naplózás és fenyegetésészlelés** elemet. Vegye figyelembe, hogy a kiszolgálószintű naplózás le van tiltva, és a **View server settings** (Kiszolgálóbeállítások megtekintése) hivatkozás teszi lehetővé a kiszolgálónaplózási beállítások megtekintését vagy módosítását ebből a környezetből.
+2. A Beállítások panelen válassza a **Naplózás és fenyegetésészlelés** elemet. Vegye figyelembe, hogy a kiszolgálószintű naplózás le van tiltva, és a **Kiszolgálóbeállítások megtekintése** hivatkozás teszi lehetővé a kiszolgálónaplózási beállítások megtekintését vagy módosítását ebből a környezetből.
 
     ![Auditing (Naplózás) panel](./media/sql-database-security-tutorial/auditing-get-started-settings.png)
 

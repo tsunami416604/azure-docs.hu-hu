@@ -3,20 +3,20 @@ title: MySQL online migrálása az Azure Database for MySQL-be, az Azure Databas
 description: Megtudhatja, hogyan végezhet online migrálást a helyszíni MySQL-ből az Azure Database for MySQL-be, az Azure Database Migration Service használatával.
 services: dms
 author: HJToland3
-ms.author: jtoland
+ms.author: scphang
 manager: craigg
 ms.reviewer: ''
 ms.service: dms
 ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
-ms.date: 08/31/2018
-ms.openlocfilehash: c36a771266f595f6d8dc8575d100fa5bb9496584
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.date: 10/06/2018
+ms.openlocfilehash: 4825985253f5525314a496f2adbc40657231f5d5
+ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44714929"
+ms.lasthandoff: 10/06/2018
+ms.locfileid: "48829851"
 ---
 # <a name="migrate-mysql-to-azure-database-for-mysql-online-using-dms"></a>MySQL online migrálása az Azure Database for MySQL-be a DMS használatával
 Az Azure Database Migration Service használatával minimális szolgáltatáskieséssel migrálhatja egy helyszíni MySQL-példány adatbázisait az [Azure Database for MySQL](https://docs.microsoft.com/azure/mysql/)-be. Ez azt jelenti, hogy a migrálás az alkalmazás minimális ideig tartó leállásával végezhető el. Ebben az oktatóanyagban az **Employees** mintaadatbázist fogja migrálni a MySQL 5.7 egy helyszíni példányáról az Azure Database for MySQL-be az Azure Database Migration Service online migrálási tevékenységének használatával.
@@ -50,13 +50,23 @@ Az oktatóanyag elvégzéséhez a következőkre lesz szüksége:
 - Az Azure Database for MySQL csak az InnoDB-táblákat támogatja. Ha a MyISAM-táblákat InnoDB-táblákká szeretné alakítani, tekintse meg a [táblák MyISAM-ból InnoDB-vé konvertálását ismertető](https://dev.mysql.com/doc/refman/5.7/en/converting-tables-to-innodb.html) részt 
 
 - Engedélyezze a bináris naplózást a forrásadatbázisban szereplő my.ini (Windows) vagy a my.cnf (Unix) fájlban az alábbi konfiguráció használatával:
+
+    - **server_id** = 1 vagy nagyobb (csak a MySQL 5.6-os verziójára vonatkozik)
+    - **log-bin** =<path> (csak a MySQL 5.6-os verziójára vonatkozik)
+
+        Példa: log-bin = E:\MySQL_logs\BinLog
+    - **binlog_format** = row
+    - **Expire_logs_days** = 5 (a nullát nem ajánlott használni; csak a MySQL 5.6-os verziójára vonatkozik)
+    - **Binlog_row_image** = full (csak a MySQL 5.6-os verziójára vonatkozik)
+    - **log_slave_updates** = 1
+ 
 - A felhasználónak a ReplicationAdmin szerepkörrel kell rendelkeznie az alábbi jogosultságokkal:
     - **REPLICATION CLIENT** – Csak változásfeldolgozási feladatokhoz szükséges. Vagyis a csak teljes betöltési feladatokhoz nincs szükség erre a jogosultságra.
     - **REPLICATION REPLICA** – Csak változásfeldolgozási feladatokhoz szükséges. Vagyis a csak teljes betöltési feladatokhoz nincs szükség erre a jogosultságra.
     - **SUPER** – Kizárólag a MySQL 5.6.6-os verziójánál korábbi verziókban szükséges.
 
 ## <a name="migrate-the-sample-schema"></a>A mintaséma migrálása
-Ahhoz, hogy az összes adatbázis-objektumot táblasémaként, indexekként és tárolt eljárásokként egészíthessük ki, ki kell bontanunk a forrásadatbázis sémáját, és alkalmaznunk kell az adatbázisra. A séma kibontásához használhatja a mysqldump segédprogramot - - no-data paraméterrel.
+Ahhoz, hogy az összes adatbázis-objektumot táblasémaként, indexekként és tárolt eljárásokként egészíthessük ki, ki kell bontanunk a forrásadatbázis sémáját, és alkalmaznunk kell az adatbázisra. A séma kibontásához használhatja a mysqldump segédprogramot a `--no-data` paraméterrel.
  
 Feltételezve, hogy rendelkezik egy alkalmazotti MySQL-mintaadatbázissal a helyszíni rendszerben, a mysqldumppal történő sémamigráláshoz szükséges parancs a következő:
 ```

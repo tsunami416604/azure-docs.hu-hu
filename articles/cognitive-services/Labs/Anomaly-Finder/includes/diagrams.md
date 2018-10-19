@@ -5,24 +5,24 @@ services: cognitive-services
 author: chliang
 manager: bix
 ms.service: cognitive-services
-ms.technology: anomaly-finder
+ms.component: anomaly-finder
 ms.topic: include
 ms.date: 04/13/2018
 ms.author: chliang
 ms.custom: include file
-ms.openlocfilehash: df7326cb8e671d0f71924e813a1354dfef1e20c7
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
-ms.translationtype: MT
+ms.openlocfilehash: a1cda1cea2089363331ae437cb7ad802429779f4
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35348151"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48888696"
 ---
-Az adatokat, a várt érték és az alapértelmezett felső és alsó margó lett visszaadva. A gyakorlatban egy [érzékenységi] paraméter határozza meg, és használja (ExpectedValue + érzékenységi * UpperMargin), a felső határa és (ExpectedValue - érzékenységi * LowerMargin), az alsó határ értékének a anomáliadetektálási hangolására irányítsa yourselves. A [érzékenységi] értékének 1-nél nagyobbnak kell lennie. Az alábbiakban néhány diagramok a finomhangoláshoz.
+Az adatok a várt értékkel és az alapértelmezett felső és alsó határértékekkel lettek visszaadva. A gyakorlatban megadhat egy [sensitivity] (érzékenység) paramétert, majd saját kezűleg hangolhatja a rendellenességi pontot a (ExpectedValue + sensitivity * UpperMargin) és (ExpectedValue - sensitivity * LowerMargin) értékekkel ((várt érték + érzékenység * felső határ) és (várt érték + érzékenység * alsó határ)). Az [sensitivity] értékének 1-nél nagyobbnak kell lennie. Az alábbiakban látható néhány ábra a hangoláshoz.
 
 > [!NOTE]
-> Az ábrák nem generálja a mintaalkalmazáshoz. A mintaalkalmazás külön eszköz létrehozzák őket.
+> Az ábrákat nem a mintaalkalmazás hozza létre, hanem egy külön eszköz a mintaalkalmazással.
 
-![– Hangolási: érzékenységi = 1.0](../media/sensitivity_1.png)
-![– hangolási: érzékenységi 1.5-ös =](../media/sensitivity_1.5.png)
-![– hangolási: érzékenységi = 2](../media/sensitivity_2.png)
-![– hangolási: érzékenységi = 3.5](../media/sensitivity_3.5.png)
+![Hangolás: érzékenység = 1,0](../media/sensitivity_1.png)
+![Hangolás: érzékenység 1,5 =](../media/sensitivity_1.5.png)
+![Hangolás: érzékenység = 2](../media/sensitivity_2.png)
+![Hangolás: érzékenység = 3,5](../media/sensitivity_3.5.png)

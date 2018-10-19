@@ -1,49 +1,44 @@
 ---
-title: Az Azure CLI minták – az Azure Functions |} Microsoft Docs
-description: Az Azure CLI minták – az Azure Functions
+title: Azure CLI-minták – Azure Functions | Microsoft Docs
+description: Azure CLI-minták – Azure Functions
 services: functions
 documentationcenter: functions
 author: syntaxc4
-manager: cfowler
-editor: ggailey777
-tags: azure-service-management
+manager: jeconnoc
 ms.assetid: 577d2f13-de4d-40d2-9dfc-86ecc79f3ab0
-ms.service: functions
-ms.devlang: na
+ms.service: azure-functions
 ms.topic: sample
-ms.tgt_pltfrm: na
-ms.workload: functions
 ms.date: 01/09/2018
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: ebeec7a9e88cd1c654128da2c197589aaf7c1b5e
-ms.sourcegitcommit: 6fb44d6fbce161b26328f863479ef09c5303090f
+ms.openlocfilehash: 99ea221dcd236d3e8c42aec25d651b5fda2ae1d1
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2018
-ms.locfileid: "27740101"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48887429"
 ---
-# <a name="azure-cli-samples"></a>Az Azure CLI-minták
+# <a name="azure-cli-samples"></a>Azure CLI-minták
 
-A következő táblázat a bash parancsfájlok az Azure Functions az Azure CLI-t használó mutató hivatkozásokat tartalmaz.
+A következő táblázat az Azure Functions az Azure CLI-t használó Bash-szkriptjeire mutató hivatkozásokat tartalmaz.
 
 | | |
 |-|-|
-|**Alkalmazás létrehozása**||
-| [A kiszolgáló nélküli végrehajtáshoz függvény-alkalmazás létrehozása](scripts/functions-cli-create-serverless.md) | Létrehoz egy függvény alkalmazást egy fogyasztás tervben.  |
-| [Egy függvény-alkalmazás létrehozása az App Service-csomagot](scripts/functions-cli-create-app-service-plan.md) | Függvény-alkalmazás létrehozása a kijelölt App Service-csomag. |
+|<a name="create"></a>**Alkalmazás létrehozása**||
+| [Függvényalkalmazás létrehozása kiszolgáló nélküli végrehajtáshoz](scripts/functions-cli-create-serverless.md) | Létrehoz egy függvényalkalmazást egy használatalapú csomagban.  |
+| [Függvényalkalmazás létrehozása egy App Service-csomagban](scripts/functions-cli-create-app-service-plan.md) | Létrehoz egy függvényalkalmazást egy dedikált App Service-csomagban. |
 | | |
-|**Integrálása**||
-| [Hozzon létre egy függvény alkalmazást, és csatlakozzon a storage-fiók](scripts/functions-cli-create-function-app-connect-to-storage-account.md) | Hozzon létre egy függvény alkalmazást, és csatlakoztassa a storage-fiók. |
-| [Hozzon létre egy függvény alkalmazást, és csatlakozzon az Azure Cosmos Adatbázishoz.](scripts/functions-cli-create-function-app-connect-to-cosmos-db.md) | Hozzon létre egy függvény alkalmazást, és csatlakoztassa egy Azure Cosmos DB. |
+|**Integrálás**||
+| [Függvényalkalmazás létrehozása és csatlakoztatása egy tárfiókhoz](scripts/functions-cli-create-function-app-connect-to-storage-account.md) | Létrehoz egy függvényalkalmazást, és csatlakoztatja egy tárfiókhoz. |
+| [Függvényalkalmazás létrehozása és csatlakoztatása egy Azure Cosmos DB-adatbázishoz](scripts/functions-cli-create-function-app-connect-to-cosmos-db.md) | Létrehoz egy függvényalkalmazást, és csatlakoztatja egy Azure Cosmos DB-adatbázishoz. |
 | | |
 |**Folyamatos üzembe helyezés**||
-| [A Githubból telepítése](scripts/functions-cli-create-function-app-github-continuous.md) | A GitHub-tárházban központi telepítését végző függvény-alkalmazás létrehozása.  |
-| [A VSTS telepítése](scripts/functions-cli-create-function-app-vsts-continuous.md) | A Visual Studio Team Services (VSTS) tárházból központi telepítését végző függvény-alkalmazás létrehozása.  |
+| [Üzembe helyezés a GitHubból](scripts/functions-cli-create-function-app-github-continuous.md) | Létrehoz egy függvényalkalmazást, amely egy GitHub-adattárból lesz üzembe helyezve.  |
+| [Üzembe helyezés az Azure DevOpsból](scripts/functions-cli-create-function-app-vsts-continuous.md) | Létrehoz egy függvényalkalmazást, amely az Azure DevOpsból lesz üzembe helyezve.  |
 | | |
 |**Alkalmazás konfigurálása**||
-| [Egyéni tartomány leképezése egy függvény alkalmazást](scripts/functions-cli-configure-custom-domain.md) | Adja meg a funkciók egy egyéni tartományt.  |
-| [Egy SSL-tanúsítvány kötését függvény alkalmazásokhoz](scripts/functions-cli-configure-ssl-certificate.md)  |  A funkciók egy egyéni tartomány SSL-tanúsítványok feltöltése. |
+| [Egyéni tartomány leképezése egy függvényalkalmazásra](scripts/functions-cli-configure-custom-domain.md) | Definiál egy egyéni tartományt a függvényekhez.  |
+| [SSL-tanúsítvány kötése egy függvényalkalmazáshoz](scripts/functions-cli-configure-ssl-certificate.md)  |  Feltölti egy egyéni tartományban lévő függvények SSL-tanúsítványait. |
 
 <!---
 

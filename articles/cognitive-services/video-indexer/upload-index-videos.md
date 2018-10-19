@@ -10,12 +10,12 @@ ms.component: video-indexer
 ms.topic: sample
 ms.date: 09/15/2018
 ms.author: juliako
-ms.openlocfilehash: e84411535b82b3e4861b529f490bdde0eb25fd42
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: f3889d1cddce92cbdd3049d4421bfdffc69da41e
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45983885"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48884306"
 ---
 # <a name="example-upload-and-index-your-videos"></a>Példa: Videók feltöltése és indexelése  
 
@@ -36,6 +36,11 @@ A cikk emellett ismertet néhányat az API-ban beállítható paraméterek köz�
 - A videó URL-cím alapján történő feltöltésekor (előnyben részesített) a végpontot a TLS 1.2-es (vagy újabb) verziójával kell védeni
 - A bájttömb lehetőség 2 GB-ra van korlátozva, és 30 perc után átlépi az időkorlátot
 - A `videoURL` paraméterben megadott URL-címet kódolni kell
+
+> [!Tip]
+> Javasoljuk, hogy a .NET-keretrendszer 4.6.2-es vagy újabb verzióját használja, mivel a régebbi verziók nem a TLS 1.2-t használják alapértelmezés szerint.
+>
+> Ha régebbi verziót kell használnia, adjon hozzá egy sort a kódban a REST API-hívás indítása előtt:  <br/> System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12;
 
 ## <a name="configurations-and-params"></a>Konfigurációk és paraméterek
 
@@ -243,8 +248,14 @@ public class AccountContractSlim
     public string AccessToken { get; set; }
 }
 ```
+## <a name="common-errors"></a>Gyakori hibák
 
+A Feltöltés művelet által visszaadott lehetséges állapotkódok az alábbi táblázatban láthatók.
 
+|Állapotkód|Hibatípus (a válasz törzsében)|Leírás|
+|---|---|---|
+|400|VIDEO_ALREADY_IN_PROGRESS|Ugyanannak a videónak a feldolgozása már folyamatban van az adott fiókban.|
+|400|VIDEO_ALREADY_FAILED|Ugyanannak a videónak a feldolgozása már meghiúsult az adott fiókban 2 órán belül. Az API-ügyfeleknek legalább 2 órát várniuk kell a videó ismételt feltöltése előtt.|
 
 ## <a name="next-steps"></a>További lépések
 

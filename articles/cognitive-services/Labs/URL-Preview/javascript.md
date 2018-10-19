@@ -1,34 +1,36 @@
 ---
-title: JavaScript a rövid útmutató a projekt URL-cím előnézete – a Microsoft Cognitive Services |} A Microsoft Docs
-description: Példaszkript gyorsan használatba a Bing URL-cím előzetes API-t a Microsoft Cognitive Services, Azure-ban.
+title: 'Rövid útmutató: Az URL-cím előnézete projekt, JavaScript'
+titlesuffix: Azure Cognitive Services
+description: A Bing URL Preview API JavaScript nyelvvel való azonnali használatába bevezető szkriptminta.
 services: cognitive-services
 author: mikedodaro
+manager: cgronlun
 ms.service: cognitive-services
-ms.technology: project-url-preview
-ms.topic: article
+ms.component: project-url-preview
+ms.topic: quickstart
 ms.date: 03/16/2018
-ms.author: rosh, v-gedod
-ms.openlocfilehash: dda6f7c105dfbadc3c22f0c008aa8759fe12fa03
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
-ms.translationtype: MT
+ms.author: rosh
+ms.openlocfilehash: b10e33a0947057c35bb6227cc43f92c4f0a56ceb
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43301352"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48869465"
 ---
-# <a name="url-preview-in-javascript"></a>A JavaScript URL-cím előnézete 
+# <a name="quickstart-url-preview-in-javascript"></a>Rövid útmutató: Az URL-cím előnézete JavaScript nyelven 
 
-A következő egyoldalas alkalmazás JavaScript használatával hozzon létre egy SwiftKey webhely URL-cím előnézete: https://swiftkey.com/en. 
+Az alábbi egyoldalas alkalmazás a JavaScript segítségével hoz létre egy URL-előnézetet a SwiftKey webhelyhez: https://swiftkey.com/en. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az ingyenes próbaverzióra hívóbetű lekérése [Cognitive Services Labs tevékenységét](https://labs.cognitive.microsoft.com/en-us/project-url-preview)
+Hozzáférési kulcs lekérése a [Cognitive Services Labs](https://labs.cognitive.microsoft.com/en-us/project-url-preview) ingyenes próbaverziójához
 
-## <a name="code-scenario"></a>Kód forgatókönyv
-Ez a példa javascript tartalmaz egy szövegmező bemeneti objektumot, ahol a felhasználó sikeresen megadja az URL-cím, az előzetes verzióra.  Amikor a felhasználó rákattint a **előzetes** gomb, onclick metódus útvonalakat `getPreview` állít elő, ahol kódot a webes kérelem a **UrlPreview** végpont.
+## <a name="code-scenario"></a>Kódforgatókönyv
+Az alábbi JavaScript-példa tartalmaz egy szövegmezős bemeneti objektumot, ahol a felhasználó megadja az előnézethez használni kívánt URL-címet.  Ha a felhasználó az **előnézeti** gombra kattint, az onclick metódus átirányítja a `getPreview` metódushoz, ahol a kód létrehoz egy webes kérést az **UrlPreview** végponthoz.
 
-A kód létrehoz egy *XMLHttpRequest*, hozzáadja a *Ocp-Apim-Subscription-Key* fejlécet és a kulcsot, és elküldi a kérelmet.  Hozzáad egy aszinkron eseménykezelő feldolgozni a választ.
+A kód létrehoz egy *XMLHttpRequest*-kérést, hozzáadja az *Ocp-Apim-Subscription-Key* fejlécet és kulcsot, majd elküldi a kérést.  Hozzáad egy aszinkron eseménykezelőt is a válasz feldolgozásához.
 
-Sikerült a választ adja vissza, ha a kezelő rendeli hozzá a JSON-szöveget az adott válaszban a `demo` bekezdés az oldalon. Más válasz elemek vannak állítva a következő bekezdések a megjelenítéshez.
+Ha a sikerességet jelző válasz érkezik, a kezelő hozzárendeli a válasz JSON-szövegét a `demo` bekezdéshez az oldalon. Az egyéb válaszelemek az alábbi bekezdésekben való megjelenítéshez vannak beállítva.
 
 **Nyers JSON-válasz**
 
@@ -46,19 +48,19 @@ Sikerült a választ adja vissza, ha a kezelő rendeli hozzá a JSON-szöveget a
 
 ````
 
-**A futó demó**
+**A példa futás közben**
 
-![A példa JavaScript URL-cím előnézete](./media/java-script-demo.png)
+![URL-cím előnézete JavaScript nyelven – példa](./media/java-script-demo.png)
 
 ## <a name="running-the-application"></a>Az alkalmazás futtatása
 
-Az alkalmazás futtatásához:
+Az alkalmazás futtatása:
 
-1. Cserélje le a `YOUR-SUBSCRIPTION-KEY` értéket az előfizetéshez tartozó érvényes elérési kulcsot.
-2. Mentse a HTML- és parancsfájl .html kiterjesztésű fájlt.
-3. A weblap futtatása a böngészőben.
-4. Használja a meglévő URL-címet, vagy adjon meg egy másik a szövegmezőbe.
-5. Kattintson a **előzetes** gombra.
+1. A `YOUR-SUBSCRIPTION-KEY` értéket cserélje le az előfizetéshez érvényes hozzáférési kulcsra.
+2. Mentse a HTML-t és a szkriptet egy .html kiterjesztésű fájlba.
+3. Futtassa a weboldalt egy böngészőben.
+4. Használhatja a meglévő URL-címet, vagy megadhat egy másikat a szövegmezőben.
+5. Kattintson a **Preview** (Előnézet) gombra.
 
 **Forráskód:**
 
@@ -127,7 +129,7 @@ Az alkalmazás futtatásához:
 ```
 
 ## <a name="next-steps"></a>További lépések
-- [C# gyorsútmutató](csharp.md)
-- [Java a rövid útmutató](java-quickstart.md)
-- [Csomópont a rövid útmutató](node-quickstart.md)
-- [Python a rövid útmutató](python-quickstart.md)
+- [C# – rövid útmutató](csharp.md)
+- [Java – rövid útmutató](java-quickstart.md)
+- [Node – rövid útmutató](node-quickstart.md)
+- [Python – rövid útmutató](python-quickstart.md)

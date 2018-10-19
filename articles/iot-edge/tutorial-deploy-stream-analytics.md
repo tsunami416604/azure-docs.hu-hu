@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 6997d40603bd6ebf39f8797a3e354e92c04da58d
-ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
+ms.openlocfilehash: de856aed32b596209f7af2861b76ed6648d0caca
+ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47422745"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49067822"
 ---
 # <a name="tutorial-deploy-azure-stream-analytics-as-an-iot-edge-module-preview"></a>Oktatóanyag: Az Azure Stream Analytics üzembe helyezése IoT Edge-modulként (előzetes verzió)
 
@@ -139,7 +139,9 @@ Ebben a szakaszban három elem (bemenet, kimenet és lekérdezés) használatáv
 
 Ha elő szeretné készíteni a Stream Analytics-feladatot egy IoT Edge-eszközre való üzembe helyezésre, a feladatot egy tárfiókon lévő tárolóval kell társítania. Amikor a feladat üzembe helyezésébe kezd, a feladat definícióját exportálja a tárolóba. 
 
-1. A **Konfigurálás** területen válassza az **IoT Edge-beállítások** lehetőséget.
+1. A **Konfigurálás** területen válassza a **Tárfiók beállításai** lehetőséget.
+
+1. Válassza ki a **Tárfiók hozzáadása** lehetőséget. 
 
 1. Válassza ki a **tárfiókját** a legördülő listából.
 

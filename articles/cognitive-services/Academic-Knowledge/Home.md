@@ -1,43 +1,44 @@
 ---
-title: Academic Knowledge API Microsoft Academic diagramhoz |} Microsoft Docs
-description: Academic Knowledge API segítségével felhasználói lekérdezések értelmezi, és a Academic diagramhoz kognitív Microsoft-szolgáltatásokban gazdag adatok lekérését.
+title: Mi az Academic Knowledge API?
+titlesuffix: Azure Cognitive Services
+description: Az Academic Knowledge API segítségével értelmezhetők a felhasználói lekérdezések és részletes információk kérhetők le az Academic Graph-ból.
 services: cognitive-services
 author: mvorvoreanu
-manager: kuansanw
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: academic-knowledge
-ms.topic: article
+ms.topic: overview
 ms.date: 03/27/2017
 ms.author: mivorvor
-ms.openlocfilehash: e241f9a87cd58b62eafd754bd3cb4283aa0a1e92
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
-ms.translationtype: MT
+ms.openlocfilehash: d08cd7124b232e50365e72753eba97c6309f401c
+ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35347514"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48901210"
 ---
 # <a name="academic-knowledge-api"></a>Academic Knowledge API
 
-Üdvözli a Academic Knowledge API. E szolgáltatás lehetővé teszi a kutatási célú felhasználói lekérdezések értelmezését és gazdag információt hív le a Microsoft Academic Graph-ból (MAG). A súly Tudásbázis a webalkalmazás skálázása heterogén entitás diagramhoz tudományos tevékenységek modell entitások áll: tanulmány, Szerző, intézmény, helyszínére, és az esemény mezőjét. 
+Üdvözli az Academic Knowledge API. Ez a szolgáltatás lehetővé teszi a tudományos jellegű felhasználói lekérdezések értelmezését, és részletes információkat kér le a Microsoft Academic Graph-ból (MAG). A MAG tudásbázisa egy webes heterogén entitásgrafikon, amely a tudományos tevékenységeket modellező entitásokból áll: tanulmányi terület, szerző, intézmény, tanulmány, helyszín és esemény. 
 
-A súly adatokat a Bing webes index, valamint egy belső fejlesztésű Tudásbázis a Bing szolgáltatástól származó van bányásszák. Eredményeképpen a további folyamatos indexelő Bing, az API a következő felderítési és a Bing által indexelő webes friss adatait fogja tartalmazni. Ez az adatkészlet alapján, a Academic Knowledge API-k lehetővé teszi, hogy zökkenőmentesen reaktív keresési proaktív javaslat feladatait, a gazdag kutatási papír graph találatok és a hisztogram disztribúciók Tudásbázis-vezérelt, interaktív párbeszédpanel a attribútum értékei által írt cikkeket és a kapcsolódó entitásokból.
+A MAG-adatok a Bing webes indexéből, valamint a Bing egy belső tudásbázisából származnak. A folyamatos Bing-indexelésnek köszönhetően az API friss webes információkat fog tartalmazni, miután azokat a Bing felderítette és indexelte. Ezen adatkészlet segítségével az Academic Knowledge API-k lehetővé teszik a tudásalapú, interaktív párbeszédet, amely zökkenőmentesen kombinálja a reaktív keresést a proaktív javaslati megoldásokkal, a részletes tanulmánykeresési gráfokkal, valamint a tanulmányok és a kapcsolódó entitások attribútumértékeinek hisztogramdisztribúcióival.
 
-A Microsoft Academic grafikonon további információkért lásd: [ http://aka.ms/academicgraph ](http://aka.ms/academicgraph).
+A Microsoft Academic Graphról itt talál további információt: [http://aka.ms/academicgraph](http://aka.ms/academicgraph).
 
-Academic Knowledge API kognitív szolgáltatások laborokhoz kognitív Services előzetes verzió tért át. Az új kezdőlapja a projekt van: [ https://labs.cognitive.microsoft.com/en-us/project-academic-knowledge ](https://labs.cognitive.microsoft.com/en-us/project-academic-knowledge). A meglévő API-kulcs 2018. május 24. amíg továbbra is működnek. Ezt követően hozzon létre egy új API-kulcsot. Vegye figyelembe, hogy fizetős preview többé nem érhető el a meglévő kulcs lejárta után. Lépjen kapcsolatba a csapat, ha az ingyenes csomagot az API nem elegendő a célokra. 
+Az Academic Knowledge API átkerült a Cognitive Services előzetes verziójából a Cognitive Services Labsbe. A projekt új kezdőlapja: [https://labs.cognitive.microsoft.com/en-us/project-academic-knowledge](https://labs.cognitive.microsoft.com/en-us/project-academic-knowledge). A meglévő API-kulcsok 2018. május 24-ig működnek. E dátumot követően hozzon létre egy új API-kulcsot. Vegye figyelembe, hogy a fizetett előzetes verzió a meglévő kulcs lejártát követően nem lesz elérhető. Lépjen kapcsolatba velünk, ha az API ingyenes szintje nem elegendő a céljai megvalósításához. 
 
 ## <a name="features"></a>Szolgáltatások
-Academic Knowledge API négy kapcsolódó többi végpontokból áll:  
-  1. **értelmezhetők** – természetes nyelvű felhasználói lekérdezési karakterláncként értelmezi. Annotált értelmezések, amelyek lehetővé teszik a keresőmezők automatikus kiegészítését, mintegy előre látva, hogy a felhasználó mit kíván írni.  
-  2. **értékelje ki** – egy lekérdezési kifejezésben kiértékeli, és Academic Knowledge entitás eredményeket ad vissza.  
-  3. **calchistogram** – a terjesztés az attribútumértékek egy lekérdezési kifejezésben, például a terjesztése idézetei év által egy adott szerző által visszaadott academic entitások hisztogram számítja ki.  
-  4. **Graph keresési** – mintát, a megfelelő entitás eredményeket ad vissza a megadott gráffal keres.
+Az Academic Knowledge API négy egymáshoz kapcsolódó REST-végpontból áll:  
+  1. **interpret** (értelmezés) – Értelmez egy természetes nyelven megfogalmazott felhasználói lekérdezési sztringet. Jegyzettel ellátott értelmezéseket ad vissza, amelyek lehetővé teszik a keresőmezők automatikus kiegészítését, előre jelezve, hogy a felhasználó mit fog írni.  
+  2. **evaluate** (kiértékelés) – Kiértékel egy lekérdezési kifejezést és visszaadja az Academic Knowledge-entitásokkal kapcsolatos eredményeket.  
+  3. **calchistogram** (hisztogramszámítás) – Kiszámítja egy keresőkifejezés által visszaadott tudományos entitások attribútumértékeinek eloszlási hisztogramját, pl. egy adott szerző idézettségének évenkénti eloszlását.  
+  4. **graph search** (gráfkeresés) – Egy adott gráfmintázatot keres, és az annak megfelelő entitásokat adja vissza eredményként.
 
-Együtt használja, ezek API módszerek használatával hozhat létre egy gazdag szemantikai keresési élményt biztosít. A felhasználó lekérdezési karakterlánc, adott a **értelmezhetők** módszer lehetővé teszi a lekérdezés és a strukturált lekérdezési kifejezésben, a mögöttes academic szemantikáját alapján a felhasználó lekérdezése opcionálisan végrehajtásánál megjegyzésekkel ellátott verziója adatok. Például, ha a felhasználó a karakterlánc *rejtett s*, a **értelmezhetők** módszer is kínálnak rangsorolt értelmezéseket, amelyek arra utalnak, hogy a felhasználó előfordulhat, hogy keresése a vizsgálat mező  *rejtett szemantikai elemzés*, a dokumentum *rejtett struktúra elemzése*, vagy más entitás kifejezések kezdve *rejtett s*. Ez az információ segítségével gyorsan útmutató a felhasználó a megfelelő keresési eredmények között.
+Ezen API-metódusok együttes használatával részletes szemantikai keresési felületet hozhat létre. Egy megadott felhasználói lekérdezési sztring esetén az **interpret** metódus visszaadja a lekérdezés egy jegyzetekkel ellátott verzióját és egy strukturált lekérdezési kifejezést, miközben a mögöttes tudományos adatok szemantikája alapján opcionálisan kiegészíti a felhasználói lekérdezést. Például ha a felhasználó által beírt sztring a *látens s*, az **interpret** metódus képes megadni különböző értelmezések egy rangsorolt készletét, amelyek alapján a felhasználó kereshet a *látens szemantikai elemzés* területre, a *látens struktúraelemzés* tanulmányra, vagy bármely más entitáskifejezésre, amelynek kezdete a *látens s*. Ezen információk segítségével a felhasználó gyorsan eljuthat a kívánt keresési eredményekhez.
 
-A **kiértékelése** módszer használható álló papír entitásokat a academic Tudásbázis beolvasása és a **calchistogram** kiszámításához az attribútumértékek a telepítési módszer használható azon papír entitások, amelyek segítségével további az eredmények szűréséhez.        
+Az **evaluate** metódus segítségével egyező tanulmányentitások kérhetők le a tudományos tudásbázisból, a **calchistogram** metódussal pedig kiszámítható a tanulmányentitások attribútumértékeinek eloszlása, amely alapján tovább szűrhetők a keresési eredmények.        
 
-A **graph keresési** metódusnak két módja van: *json* és *lambda*. A *json* mód végezheti graph jogcímértékekhez a mintaegyezési funkciót a JSON-objektum által megadott graph mintáknak megfelelően. A *lambda* mód végezheti kiszolgálóoldali számítások alapján a felhasználó által megadott lambda kifejezések graph traversals során.
+A **graph search** metódusnak két módja van: *json* és *lambda*. A *json* módban gráfminták egyeztetése végezhető el egy JSON-objektum által megadott gráfmintáknak megfelelően. A *lambda* mód kiszolgálóoldali számításokat végezhet el a gráfok bejárása során a felhasználó által megadott lambda-kifejezéseknek megfelelően.
 
 ## <a name="getting-started"></a>Első lépések 
-Tekintse meg a részletes dokumentációt a bal oldali altémakörei.  Vegye figyelembe, hogy a példák olvashatóságának, a REST API-hívások karakterek (például a tárolóhelyek), amely nem rendelkezik URL-kódolású.  A kódot kell alkalmazni a megfelelő URL-kódolású.
+Részletes dokumentációt a bal oldali altémakörökben talál.  Vegye figyelembe, hogy a példák olvashatóbbá tétele érdekében a REST API-hívások olyan karaktereket is tartalmaznak (például szóközöket), amelyek nem URL-kódolásúak.  Saját kódjának mindig a megfelelő URL-kódolásokat kell alkalmaznia.
